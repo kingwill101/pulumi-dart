@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementServerPropertiesResponse {
   /// Management server Fully Qualified Domain Name.
   final pulumi.Input<String> fqdn;
+
   /// Management server health state.
   final pulumi.Input<String> healthState;
+
   /// Management server Name
   final pulumi.Input<String> serverName;
+
   /// Represent whether the Server is a Management Server and/or Web Console Server.
   final pulumi.Input<String> serverRoles;
+
   /// Azure VM Resource Id of the Management server.
   final pulumi.Input<String> vmResId;
 
@@ -41,12 +45,11 @@ class ManagementServerPropertiesResponse {
 
   factory ManagementServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagementServerPropertiesResponse(
-      fqdn: (map['fqdn'] as String).input(),
-      healthState: (map['healthState'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      serverRoles: (map['serverRoles'] as String).input(),
-      vmResId: (map['vmResId'] as String).input(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      healthState: pulumi.Input.fromValue(map['healthState'] as String),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      serverRoles: pulumi.Input.fromValue(map['serverRoles'] as String),
+      vmResId: pulumi.Input.fromValue(map['vmResId'] as String),
     );
   }
 }
-

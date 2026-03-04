@@ -10,16 +10,15 @@ enum CompensationEntryType {
   tips("TIPS"),
   otherCompensationType("OTHER_COMPENSATION_TYPE");
 
-  const CompensationEntryType(this.value);
-  final String value;
+  const CompensationEntryType(this.wireValue);
+  final String wireValue;
 
   static CompensationEntryType fromValue(String value) {
     for (final item in CompensationEntryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompensationEntryType value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsAccessKeyResponse {
   /// AWS access key ID.
   final pulumi.Input<String> accessKeyId;
+
   /// AWS secret access key. This field is not returned in RPC responses.
   final pulumi.Input<String> secretAccessKey;
 
@@ -26,9 +27,8 @@ class AwsAccessKeyResponse {
 
   factory AwsAccessKeyResponse.fromMap(Map<String, dynamic> map) {
     return AwsAccessKeyResponse(
-      accessKeyId: (map['accessKeyId'] as String).input(),
-      secretAccessKey: (map['secretAccessKey'] as String).input(),
+      accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
+      secretAccessKey: pulumi.Input.fromValue(map['secretAccessKey'] as String),
     );
   }
 }
-

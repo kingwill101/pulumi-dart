@@ -10,20 +10,29 @@ class GooglePrivacyDlpV2Export {
 
   /// Creates a new [GooglePrivacyDlpV2Export].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
-  GooglePrivacyDlpV2Export({
-    this.profileTable,
-  });
+  GooglePrivacyDlpV2Export({this.profileTable});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'profileTable': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BigQueryTable, Map<String, dynamic>>(profileTable, (value) => value.toMap()),
+      'profileTable':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2BigQueryTable,
+            Map<String, dynamic>
+          >(profileTable, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2Export.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Export(
-      profileTable: map['profileTable'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['profileTable']! as Map).cast<String, dynamic>())).input(),
+      profileTable: (() {
+        final guardedValue = map['profileTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2BigQueryTable.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'workspace_workspace_state.dart';
 ///
 /// For information about PAI Workspace Workspace and how to use it, see [What is Workspace](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateWorkspace).
 ///
-/// > **NOTE:** Available since v1.233.0.
+/// &gt; **NOTE:** Available since v1.233.0.
 ///
 /// ## Example Usage
 ///
@@ -159,16 +159,21 @@ import 'workspace_workspace_state.dart';
 class WorkspaceWorkspace extends pulumi.CustomResource {
   /// The UTC time when the workspace is created. The time format is ISO8601.
   late final pulumi.Output<String> createTime;
+
   /// Workspace description, no more than 80 characters.
   late final pulumi.Output<String> description;
+
   /// It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
   late final pulumi.Output<String?> displayName;
+
   /// Environments contained in the workspace:
   /// - Simple mode only production environment (prod).
   /// - Standard mode includes development environment (dev) and production environment (prod).
   late final pulumi.Output<List<String>> envTypes;
+
   /// Workspace state, possible values:
   late final pulumi.Output<String> status;
+
   /// The workspace name. The format is as follows:
   /// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
   /// - Must start with a large or small letter.
@@ -184,17 +189,17 @@ class WorkspaceWorkspace extends pulumi.CustomResource {
     WorkspaceWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.envTypes = registerOutput<List<String>>('envTypes');
-    this.status = registerOutput<String>('status');
-    this.workspaceName = registerOutput<String>('workspaceName');
+         'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String?>('displayName');
+    envTypes = registerOutput<List<String>>('envTypes');
+    status = registerOutput<String>('status');
+    workspaceName = registerOutput<String>('workspaceName');
   }
 
   /// Gets an existing [WorkspaceWorkspace] resource's state with the given [name] and [id].
@@ -215,16 +220,16 @@ class WorkspaceWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.envTypes = registerOutput<List<String>>('envTypes');
-    this.status = registerOutput<String>('status');
-    this.workspaceName = registerOutput<String>('workspaceName');
+         'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String?>('displayName');
+    envTypes = registerOutput<List<String>>('envTypes');
+    status = registerOutput<String>('status');
+    workspaceName = registerOutput<String>('workspaceName');
   }
 }

@@ -9,20 +9,19 @@ class NetworkInterface {
 
   /// Creates a new [NetworkInterface].
   /// [privateIpAddress] Private Ip address of the interface
-  NetworkInterface({
-    this.privateIpAddress,
-  });
+  NetworkInterface({this.privateIpAddress});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'privateIpAddress': ?privateIpAddress,
-    };
+    return <String, dynamic>{'privateIpAddress': ?privateIpAddress};
   }
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

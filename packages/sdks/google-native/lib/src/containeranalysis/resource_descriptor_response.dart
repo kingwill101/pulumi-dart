@@ -43,14 +43,19 @@ class ResourceDescriptorResponse {
 
   factory ResourceDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptorResponse(
-      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
-      content: (map['content'] as String).input(),
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      downloadLocation: (map['downloadLocation'] as String).input(),
-      mediaType: (map['mediaType'] as String).input(),
-      name: (map['name'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      annotations: pulumi.Input.fromValue(
+        (map['annotations'] as Map).cast<String, String>(),
+      ),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      downloadLocation: pulumi.Input.fromValue(
+        map['downloadLocation'] as String,
+      ),
+      mediaType: pulumi.Input.fromValue(map['mediaType'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

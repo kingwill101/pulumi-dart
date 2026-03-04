@@ -8,7 +8,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// When a cross-account (requester's AWS account differs from the accepter's AWS account) requester creates a Network Firewall with Transit Gateway ID using `aws.networkfirewall.Firewall`. Then an EC2 Transit Gateway VPC Attachment resource is automatically created in the accepter's account.
 /// The accepter can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to "adopt" its side of the connection into management.
 ///
-/// > **NOTE:** If the `transit_gateway_id` argument in the `aws.networkfirewall.Firewall` resource is used to attach a firewall to a transit gateway in a cross-account setup (where **Auto accept shared attachments** is disabled), the resource will be considered created when the transit gateway attachment is in the *Pending Acceptance* state and the firewall is in the *Provisioning* status. At this point, you can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to finalize the network firewall deployment. Once the transit gateway attachment reaches the *Available* state, the firewall status *Ready*.
+/// &gt; **NOTE:** If the `transit_gateway_id` argument in the `aws.networkfirewall.Firewall` resource is used to attach a firewall to a transit gateway in a cross-account setup (where **Auto accept shared attachments** is disabled), the resource will be considered created when the transit gateway attachment is in the *Pending Acceptance* state and the firewall is in the *Provisioning* status. At this point, you can use the `aws.networkfirewall.FirewallTransitGatewayAttachmentAccepter` resource to finalize the network firewall deployment. Once the transit gateway attachment reaches the *Available* state, the firewall status *Ready*.
 ///
 /// ## Example Usage
 ///
@@ -111,7 +111,9 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  late final pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts?> timeouts;
+  late final pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts?>
+  timeouts;
+
   /// The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
   late final pulumi.Output<String> transitGatewayAttachmentId;
 
@@ -124,14 +126,19 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     FirewallTransitGatewayAttachmentAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+         'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    timeouts =
+        registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
+          'timeouts',
+        );
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
   }
 
   /// Gets an existing [FirewallTransitGatewayAttachmentAccepter] resource's state with the given [name] and [id].
@@ -152,13 +159,18 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+         'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    timeouts =
+        registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
+          'timeouts',
+        );
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
   }
 }

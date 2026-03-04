@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDefinitionVersionArgs {
   /// The name of the policy definition.
   final pulumi.Input<String> policyDefinitionName;
+
   /// The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   final pulumi.Input<String> policyDefinitionVersion;
 
@@ -29,9 +30,12 @@ class GetPolicyDefinitionVersionArgs {
 
   factory GetPolicyDefinitionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionVersionArgs(
-      policyDefinitionName: (map['policyDefinitionName'] as String).input(),
-      policyDefinitionVersion: (map['policyDefinitionVersion'] as String).input(),
+      policyDefinitionName: pulumi.Input.fromValue(
+        map['policyDefinitionName'] as String,
+      ),
+      policyDefinitionVersion: pulumi.Input.fromValue(
+        map['policyDefinitionVersion'] as String,
+      ),
     );
   }
 }
-

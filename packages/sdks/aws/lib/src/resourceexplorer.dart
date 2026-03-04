@@ -1,5 +1,3 @@
-library module_resourceexplorer;
-
 export 'resourceexplorer/functions.dart';
 export 'resourceexplorer/index.dart';
 export 'resourceexplorer/index_args.dart';

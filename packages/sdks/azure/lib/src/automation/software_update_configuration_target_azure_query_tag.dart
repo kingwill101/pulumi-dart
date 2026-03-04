@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoftwareUpdateConfigurationTargetAzureQueryTag {
   /// Specifies the name of the tag to filter.
   final pulumi.Input<String> tag;
+
   /// Specifies a list of values for this tag key.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class SoftwareUpdateConfigurationTargetAzureQueryTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tag': tag,
-      'values': values,
-    };
+    return <String, dynamic>{'tag': tag, 'values': values};
   }
 
-  factory SoftwareUpdateConfigurationTargetAzureQueryTag.fromMap(Map<String, dynamic> map) {
+  factory SoftwareUpdateConfigurationTargetAzureQueryTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SoftwareUpdateConfigurationTargetAzureQueryTag(
-      tag: (map['tag'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

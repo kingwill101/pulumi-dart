@@ -12,7 +12,7 @@ import 'get_znodes_result.dart';
 
 /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.94.0.
+/// &gt; **NOTE:** Available since v1.94.0.
 ///
 /// ## Example Usage
 ///
@@ -370,7 +370,7 @@ Future<GetClustersResult> getClusters(
 
 /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.166.0.
+/// &gt; **NOTE:** Available since v1.166.0.
 ///
 /// ## Example Usage
 ///
@@ -741,7 +741,7 @@ Future<GetEngineNamespacesResult> getEngineNamespaces(
 
 /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.157.0+.
+/// &gt; **NOTE:** Available in v1.157.0+.
 ///
 /// ## Example Usage
 ///
@@ -926,7 +926,7 @@ Future<GetGatewaysResult> getGateways(
 
 /// This data source provides the Mse Nacos Configs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.233.0.
+/// &gt; **NOTE:** Available since v1.233.0.
 ///
 /// ## Example Usage
 ///
@@ -1357,7 +1357,7 @@ Future<GetNacosConfigsResult> getNacosConfigs(
 
 /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.162.0+.
+/// &gt; **NOTE:** Available in v1.162.0+.
 ///
 /// ## Example Usage
 ///

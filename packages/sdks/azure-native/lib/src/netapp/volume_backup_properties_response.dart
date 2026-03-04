@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeBackupPropertiesResponse {
   /// Backup Policy Resource ID
   final pulumi.Input<String>? backupPolicyId;
+
   /// Backup Vault Resource ID
   final pulumi.Input<String>? backupVaultId;
+
   /// Policy Enforced
   final pulumi.Input<bool>? policyEnforced;
 
@@ -31,10 +33,21 @@ class VolumeBackupPropertiesResponse {
 
   factory VolumeBackupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VolumeBackupPropertiesResponse(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
-      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId']! as String).input(),
-      policyEnforced: map['policyEnforced'] == null ? null : (map['policyEnforced']! as bool).input(),
+      backupPolicyId: (() {
+        final guardedValue = map['backupPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupVaultId: (() {
+        final guardedValue = map['backupVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyEnforced: (() {
+        final guardedValue = map['policyEnforced'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

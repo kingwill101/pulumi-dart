@@ -4,16 +4,15 @@ enum VariableType {
   valueBool("Bool"),
   valueArray("Array");
 
-  const VariableType(this.value);
-  final String value;
+  const VariableType(this.wireValue);
+  final String wireValue;
 
   static VariableType fromValue(String value) {
     for (final item in VariableType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VariableType value: $value');
   }
 }
-

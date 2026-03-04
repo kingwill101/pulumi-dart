@@ -12,15 +12,14 @@ class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': disabled,
-    };
+    return <String, dynamic>{'disabled': disabled};
   }
 
-  factory GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(
-      disabled: (map['disabled'] as bool).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
-

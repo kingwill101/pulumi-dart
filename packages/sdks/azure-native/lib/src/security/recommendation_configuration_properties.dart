@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecommendationConfigurationProperties {
   /// The type of IoT Security recommendation.
   final pulumi.Input<String> recommendationType;
+
   /// Recommendation status. When the recommendation status is disabled recommendations are not generated.
   final pulumi.Input<String> status;
 
@@ -24,11 +25,14 @@ class RecommendationConfigurationProperties {
     };
   }
 
-  factory RecommendationConfigurationProperties.fromMap(Map<String, dynamic> map) {
+  factory RecommendationConfigurationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecommendationConfigurationProperties(
-      recommendationType: (map['recommendationType'] as String).input(),
-      status: (map['status'] as String).input(),
+      recommendationType: pulumi.Input.fromValue(
+        map['recommendationType'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

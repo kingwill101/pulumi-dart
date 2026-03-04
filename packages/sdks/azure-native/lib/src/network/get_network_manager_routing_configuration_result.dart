@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetNetworkManagerRoutingConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A description of the routing configuration.
   final String? description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Unique identifier for this resource.
   final String resourceGuid;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -59,18 +67,25 @@ class GetNetworkManagerRoutingConfigurationResult {
     };
   }
 
-  factory GetNetworkManagerRoutingConfigurationResult.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkManagerRoutingConfigurationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkManagerRoutingConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

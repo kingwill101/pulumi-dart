@@ -6,16 +6,15 @@ enum PartnerConnectorType {
   kafkaAzureCosmosDBSink("KafkaAzureCosmosDBSink"),
   kafkaAzureSynapseAnalyticsSink("KafkaAzureSynapseAnalyticsSink");
 
-  const PartnerConnectorType(this.value);
-  final String value;
+  const PartnerConnectorType(this.wireValue);
+  final String wireValue;
 
   static PartnerConnectorType fromValue(String value) {
     for (final item in PartnerConnectorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PartnerConnectorType value: $value');
   }
 }
-

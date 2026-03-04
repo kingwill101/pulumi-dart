@@ -9,20 +9,19 @@ class DPMContainerExtendedInfoResponse {
 
   /// Creates a new [DPMContainerExtendedInfoResponse].
   /// [lastRefreshedAt] Last refresh time of the DPMContainer.
-  DPMContainerExtendedInfoResponse({
-    this.lastRefreshedAt,
-  });
+  DPMContainerExtendedInfoResponse({this.lastRefreshedAt});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lastRefreshedAt': ?lastRefreshedAt,
-    };
+    return <String, dynamic>{'lastRefreshedAt': ?lastRefreshedAt};
   }
 
   factory DPMContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return DPMContainerExtendedInfoResponse(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
+      lastRefreshedAt: (() {
+        final guardedValue = map['lastRefreshedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

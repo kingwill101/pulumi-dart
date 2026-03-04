@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTunnelDestGroupIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> destGroup;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the tunnel group. Must be the same as the network resources in the group.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
@@ -38,10 +40,17 @@ class GetTunnelDestGroupIamPolicyArgs {
 
   factory GetTunnelDestGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTunnelDestGroupIamPolicyArgs(
-      destGroup: (map['destGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      destGroup: pulumi.Input.fromValue(map['destGroup'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

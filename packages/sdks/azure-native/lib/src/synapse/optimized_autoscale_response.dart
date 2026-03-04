@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OptimizedAutoscaleResponse {
   /// A boolean value that indicate if the optimized autoscale feature is enabled or not.
   final pulumi.Input<bool> isEnabled;
+
   /// Maximum allowed instances count.
   final pulumi.Input<int> maximum;
+
   /// Minimum allowed instances count.
   final pulumi.Input<int> minimum;
+
   /// The version of the template defined, for instance 1.
   final pulumi.Input<int> version;
 
@@ -36,11 +39,10 @@ class OptimizedAutoscaleResponse {
 
   factory OptimizedAutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return OptimizedAutoscaleResponse(
-      isEnabled: (map['isEnabled'] as bool).input(),
-      maximum: (map['maximum'] as int).input(),
-      minimum: (map['minimum'] as int).input(),
-      version: (map['version'] as int).input(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      maximum: pulumi.Input.fromValue(map['maximum'] as int),
+      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      version: pulumi.Input.fromValue(map['version'] as int),
     );
   }
 }
-

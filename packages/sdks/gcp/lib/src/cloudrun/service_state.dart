@@ -14,23 +14,29 @@ class ServiceState {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   final pulumi.Input<bool>? autogenerateRevisionName;
+
   /// The location of the cloud run instance. eg us-central1
   final pulumi.Input<String>? location;
+
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   /// Structure is documented below.
   final pulumi.Input<ServiceMetadata>? metadata;
+
   /// Name must be unique within a Google Cloud project and region.
   /// Is required when creating resources. Name is primarily intended
   /// for creation idempotence and configuration definition. Cannot be updated.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<List<ServiceStatus>>? statuses;
+
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -42,6 +48,7 @@ class ServiceState {
   /// responsible for materializing the container image from source.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplate>? template;
+
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
@@ -71,26 +78,107 @@ class ServiceState {
     return <String, dynamic>{
       'autogenerateRevisionName': ?autogenerateRevisionName,
       'location': ?location,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ServiceMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceMetadata,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<ServiceStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<ServiceStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'template': ?pulumi.Input.mapOptionalInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
-      'traffics': ?pulumi.Input.mapOptionalInputValue<List<ServiceTraffic>, List<Map<String, dynamic>>>(traffics, (value) => pulumi.Input.encodeList<ServiceTraffic, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceStatus>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<ServiceStatus, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'template':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTemplate,
+            Map<String, dynamic>
+          >(template, (value) => value.toMap()),
+      'traffics':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceTraffic>,
+            List<Map<String, dynamic>>
+          >(
+            traffics,
+            (value) =>
+                pulumi.Input.encodeList<ServiceTraffic, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : (map['autogenerateRevisionName']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ServiceMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ServiceStatus>(map['statuses']!, (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      template: map['template'] == null ? null : (ServiceTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
-      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceTraffic>(map['traffics']!, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autogenerateRevisionName: (() {
+        final guardedValue = map['autogenerateRevisionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceStatus>(
+            guardedValue,
+            (value) =>
+                ServiceStatus.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTemplate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      traffics: (() {
+        final guardedValue = map['traffics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceTraffic>(
+            guardedValue,
+            (value) =>
+                ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

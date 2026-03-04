@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZonePrimaryNameserver {
   /// Public IPv4 or IPv6 address of the primary nameserver.
   final pulumi.Input<String> address;
+
   /// Port of the primary nameserver.
   final pulumi.Input<int> port;
+
   /// Transaction signature (TSIG) algorithm used to generate the TSIG key.
   final pulumi.Input<String> tsigAlgorithm;
+
   /// Transaction signature (TSIG) key
   final pulumi.Input<String> tsigKey;
 
@@ -35,11 +38,10 @@ class GetZonesZonePrimaryNameserver {
 
   factory GetZonesZonePrimaryNameserver.fromMap(Map<String, dynamic> map) {
     return GetZonesZonePrimaryNameserver(
-      address: (map['address'] as String).input(),
-      port: (map['port'] as int).input(),
-      tsigAlgorithm: (map['tsigAlgorithm'] as String).input(),
-      tsigKey: (map['tsigKey'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      tsigAlgorithm: pulumi.Input.fromValue(map['tsigAlgorithm'] as String),
+      tsigKey: pulumi.Input.fromValue(map['tsigKey'] as String),
     );
   }
 }
-

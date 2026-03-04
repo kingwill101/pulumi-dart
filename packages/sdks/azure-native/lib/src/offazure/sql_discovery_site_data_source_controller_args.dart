@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDiscoverySiteDataSourceControllerArgs {
   /// SQL Discovery site data source name.
   final pulumi.Input<String>? discoverySiteDataSourceName;
+
   /// Gets or sets the discovery site Id.
   final pulumi.Input<String>? discoverySiteId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Site name
   final pulumi.Input<String> siteName;
+
   /// SQL site name.
   final pulumi.Input<String> sqlSiteName;
 
@@ -42,14 +46,25 @@ class SqlDiscoverySiteDataSourceControllerArgs {
     };
   }
 
-  factory SqlDiscoverySiteDataSourceControllerArgs.fromMap(Map<String, dynamic> map) {
+  factory SqlDiscoverySiteDataSourceControllerArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlDiscoverySiteDataSourceControllerArgs(
-      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName']! as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
-      sqlSiteName: (map['sqlSiteName'] as String).input(),
+      discoverySiteDataSourceName: (() {
+        final guardedValue = map['discoverySiteDataSourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoverySiteId: (() {
+        final guardedValue = map['discoverySiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
+      sqlSiteName: pulumi.Input.fromValue(map['sqlSiteName'] as String),
     );
   }
 }
-

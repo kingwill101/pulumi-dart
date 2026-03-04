@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleAssignmentArgs {
   /// The name of the role assignment.
   final pulumi.Input<String> assignmentName;
+
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetRoleAssignmentArgs {
 
   factory GetRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArgs(
-      assignmentName: (map['assignmentName'] as String).input(),
-      hubName: (map['hubName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assignmentName: pulumi.Input.fromValue(map['assignmentName'] as String),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

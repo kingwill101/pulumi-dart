@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayApiState {
   /// The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   final pulumi.Input<String>? apiId;
+
   /// The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
   final pulumi.Input<String>? gatewayId;
 
   /// Creates a new [GatewayApiState].
   /// [apiId] The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   /// [gatewayId] The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
-  GatewayApiState({
-    this.apiId,
-    this.gatewayId,
-  });
+  GatewayApiState({this.apiId, this.gatewayId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiId': ?apiId,
-      'gatewayId': ?gatewayId,
-    };
+    return <String, dynamic>{'apiId': ?apiId, 'gatewayId': ?gatewayId};
   }
 
   factory GatewayApiState.fromMap(Map<String, dynamic> map) {
     return GatewayApiState(
-      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      apiId: (() {
+        final guardedValue = map['apiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

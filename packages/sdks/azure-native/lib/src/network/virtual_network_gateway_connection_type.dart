@@ -5,16 +5,17 @@ enum VirtualNetworkGatewayConnectionType {
   valueExpressRoute("ExpressRoute"),
   valueVPNClient("VPNClient");
 
-  const VirtualNetworkGatewayConnectionType(this.value);
-  final String value;
+  const VirtualNetworkGatewayConnectionType(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkGatewayConnectionType fromValue(String value) {
     for (final item in VirtualNetworkGatewayConnectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualNetworkGatewayConnectionType value: $value');
+    throw ArgumentError(
+      'Unknown VirtualNetworkGatewayConnectionType value: $value',
+    );
   }
 }
-

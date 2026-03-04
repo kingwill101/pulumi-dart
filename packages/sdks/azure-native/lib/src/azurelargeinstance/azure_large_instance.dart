@@ -301,32 +301,46 @@ import 'system_data_response.dart';
 class AzureLargeInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the Azure Large Instance unique ID.
   late final pulumi.Output<String?> azureLargeInstanceId;
+
   /// Specifies the hardware settings for the Azure Large Instance.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// Hardware revision of an Azure Large Instance
   late final pulumi.Output<String?> hwRevision;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the network settings for the Azure Large Instance.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// Specifies the operating system settings for the Azure Large Instance.
   late final pulumi.Output<OsProfileResponse?> osProfile;
+
   /// Resource power state
   late final pulumi.Output<String?> powerState;
+
   /// State of provisioning of the AzureLargeInstance
   late final pulumi.Output<String> provisioningState;
+
   /// Resource proximity placement group
   late final pulumi.Output<String?> proximityPlacementGroup;
+
   /// Specifies the storage settings for the Azure Large Instance disks.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -339,25 +353,29 @@ class AzureLargeInstance extends pulumi.CustomResource {
     AzureLargeInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurelargeinstance:AzureLargeInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureLargeInstanceId = registerOutput<String?>('azureLargeInstanceId');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.hwRevision = registerOutput<String?>('hwRevision');
-    this.location = registerOutput<String>('location');
+         'azure-native:azurelargeinstance:AzureLargeInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLargeInstanceId = registerOutput<String?>('azureLargeInstanceId');
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    hwRevision = registerOutput<String?>('hwRevision');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OsProfileResponse?>('osProfile');
-    this.powerState = registerOutput<String?>('powerState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.proximityPlacementGroup = registerOutput<String?>('proximityPlacementGroup');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OsProfileResponse?>('osProfile');
+    powerState = registerOutput<String?>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<String?>(
+      'proximityPlacementGroup',
+    );
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

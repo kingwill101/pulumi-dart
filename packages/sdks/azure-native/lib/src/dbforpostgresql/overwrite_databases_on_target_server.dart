@@ -3,16 +3,17 @@ enum OverwriteDatabasesOnTargetServer {
   true_("True"),
   false_("False");
 
-  const OverwriteDatabasesOnTargetServer(this.value);
-  final String value;
+  const OverwriteDatabasesOnTargetServer(this.wireValue);
+  final String wireValue;
 
   static OverwriteDatabasesOnTargetServer fromValue(String value) {
     for (final item in OverwriteDatabasesOnTargetServer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OverwriteDatabasesOnTargetServer value: $value');
+    throw ArgumentError(
+      'Unknown OverwriteDatabasesOnTargetServer value: $value',
+    );
   }
 }
-

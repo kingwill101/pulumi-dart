@@ -31,10 +31,11 @@ class GetSecurityActionArgs {
 
   factory GetSecurityActionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityActionArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      securityActionId: (map['securityActionId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      securityActionId: pulumi.Input.fromValue(
+        map['securityActionId'] as String,
+      ),
     );
   }
 }
-

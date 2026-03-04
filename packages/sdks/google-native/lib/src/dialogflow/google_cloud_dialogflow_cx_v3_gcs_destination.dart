@@ -9,20 +9,17 @@ class GoogleCloudDialogflowCxV3GcsDestination {
 
   /// Creates a new [GoogleCloudDialogflowCxV3GcsDestination].
   /// [uri] The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-  GoogleCloudDialogflowCxV3GcsDestination({
-    required this.uri,
-  });
+  GoogleCloudDialogflowCxV3GcsDestination({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GoogleCloudDialogflowCxV3GcsDestination.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3GcsDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3GcsDestination(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

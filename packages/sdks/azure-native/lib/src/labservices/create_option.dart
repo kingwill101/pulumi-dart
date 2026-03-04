@@ -3,16 +3,15 @@ enum CreateOption {
   valueImage("Image"),
   valueTemplateVM("TemplateVM");
 
-  const CreateOption(this.value);
-  final String value;
+  const CreateOption(this.wireValue);
+  final String wireValue;
 
   static CreateOption fromValue(String value) {
     for (final item in CreateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CreateOption value: $value');
   }
 }
-

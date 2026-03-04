@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataLakeStoreAccountInformationResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The optional suffix for the Data Lake Store account.
   final pulumi.Input<String> suffix;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -34,13 +37,14 @@ class DataLakeStoreAccountInformationResponse {
     };
   }
 
-  factory DataLakeStoreAccountInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory DataLakeStoreAccountInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataLakeStoreAccountInformationResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      suffix: (map['suffix'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      suffix: pulumi.Input.fromValue(map['suffix'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

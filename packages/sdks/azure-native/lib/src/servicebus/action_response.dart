@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionResponse {
   /// This property is reserved for future use. An integer value showing the compatibility level, currently hard-coded to 20.
   final pulumi.Input<int>? compatibilityLevel;
+
   /// Value that indicates whether the rule action requires preprocessing.
   final pulumi.Input<bool>? requiresPreprocessing;
+
   /// SQL expression. e.g. MyProperty='ABC'
   final pulumi.Input<String>? sqlExpression;
 
@@ -31,10 +33,21 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
-      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing']! as bool).input(),
-      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression']! as String).input(),
+      compatibilityLevel: (() {
+        final guardedValue = map['compatibilityLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      requiresPreprocessing: (() {
+        final guardedValue = map['requiresPreprocessing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sqlExpression: (() {
+        final guardedValue = map['sqlExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

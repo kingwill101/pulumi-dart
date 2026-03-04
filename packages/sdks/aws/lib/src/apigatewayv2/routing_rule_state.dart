@@ -8,18 +8,24 @@ import 'routing_rule_condition.dart';
 class RoutingRuleState {
   /// Configuration of resulting action based on matching routing rules condition. See below.
   final pulumi.Input<List<RoutingRuleAction>>? actions;
+
   /// Conditions configuration. See below.
   final pulumi.Input<List<RoutingRuleCondition>>? conditions;
+
   /// Domain name. Must be between 1 and 512 characters in length.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? domainName;
+
   /// The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   final pulumi.Input<int>? priority;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the Routing Rule.
   final pulumi.Input<String>? routingRuleArn;
+
   /// ID of the Routing Rule.
   final pulumi.Input<String>? routingRuleId;
 
@@ -43,8 +49,30 @@ class RoutingRuleState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<RoutingRuleAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<RoutingRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<RoutingRuleCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<RoutingRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RoutingRuleAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RoutingRuleAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RoutingRuleCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RoutingRuleCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'domainName': ?domainName,
       'priority': ?priority,
       'region': ?region,
@@ -55,14 +83,55 @@ class RoutingRuleState {
 
   factory RoutingRuleState.fromMap(Map<String, dynamic> map) {
     return RoutingRuleState(
-      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<RoutingRuleAction>(map['actions']!, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions']!, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routingRuleArn: map['routingRuleArn'] == null ? null : ((map['routingRuleArn'] as String).input()).input(),
-      routingRuleId: map['routingRuleId'] == null ? null : ((map['routingRuleId'] as String).input()).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RoutingRuleAction>(
+            guardedValue,
+            (value) => RoutingRuleAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RoutingRuleCondition>(
+            guardedValue,
+            (value) => RoutingRuleCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingRuleArn: (() {
+        final guardedValue = map['routingRuleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingRuleId: (() {
+        final guardedValue = map['routingRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

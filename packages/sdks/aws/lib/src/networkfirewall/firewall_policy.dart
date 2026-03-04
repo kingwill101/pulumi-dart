@@ -1135,20 +1135,29 @@ import 'firewall_policy_state.dart';
 class FirewallPolicy extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) that identifies the firewall policy.
   late final pulumi.Output<String> arn;
+
   /// A friendly description of the firewall policy.
   late final pulumi.Output<String?> description;
+
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  late final pulumi.Output<FirewallPolicyEncryptionConfiguration?> encryptionConfiguration;
+  late final pulumi.Output<FirewallPolicyEncryptionConfiguration?>
+  encryptionConfiguration;
+
   /// A configuration block describing the rule groups and policy actions to use in the firewall policy. See Firewall Policy below for details.
   late final pulumi.Output<FirewallPolicyFirewallPolicy> firewallPolicy;
+
   /// A friendly name of the firewall policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// A string token used when updating a firewall policy.
   late final pulumi.Output<String> updateToken;
 
@@ -1161,20 +1170,25 @@ class FirewallPolicy extends pulumi.CustomResource {
     FirewallPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/firewallPolicy:FirewallPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encryptionConfiguration = registerOutput<FirewallPolicyEncryptionConfiguration?>('encryptionConfiguration');
-    this.firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>('firewallPolicy');
+         'aws:networkfirewall/firewallPolicy:FirewallPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionConfiguration =
+        registerOutput<FirewallPolicyEncryptionConfiguration?>(
+          'encryptionConfiguration',
+        );
+    firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>(
+      'firewallPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.updateToken = registerOutput<String>('updateToken');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    updateToken = registerOutput<String>('updateToken');
   }
 
   /// Gets an existing [FirewallPolicy] resource's state with the given [name] and [id].
@@ -1195,19 +1209,24 @@ class FirewallPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/firewallPolicy:FirewallPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encryptionConfiguration = registerOutput<FirewallPolicyEncryptionConfiguration?>('encryptionConfiguration');
-    this.firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>('firewallPolicy');
+         'aws:networkfirewall/firewallPolicy:FirewallPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionConfiguration =
+        registerOutput<FirewallPolicyEncryptionConfiguration?>(
+          'encryptionConfiguration',
+        );
+    firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>(
+      'firewallPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.updateToken = registerOutput<String>('updateToken');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    updateToken = registerOutput<String>('updateToken');
   }
 }

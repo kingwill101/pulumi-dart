@@ -16,7 +16,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.148.0+.
+/// &gt; **NOTE:** Available in v1.148.0+.
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.148.0+.
+/// &gt; **NOTE:** Available in v1.148.0+.
 ///
 /// ## Example Usage
 ///
@@ -260,7 +260,7 @@ Future<GetAuditPoliciesResult> getAuditPolicies(
 
 /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.13.0.
+/// &gt; **NOTE:** Available since v1.13.0.
 ///
 /// ## Example Usage
 ///
@@ -581,7 +581,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.148.0+.
+/// &gt; **NOTE:** Available in v1.148.0+.
 ///
 /// ## Example Usage
 ///
@@ -778,7 +778,7 @@ Future<GetServerlessInstancesResult> getServerlessInstances(
 
 /// This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.157.0+.
+/// &gt; **NOTE:** Available in v1.157.0+.
 ///
 /// ## Example Usage
 ///
@@ -894,7 +894,8 @@ Future<GetServerlessInstancesResult> getServerlessInstances(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_mongodb_get_sharding_network_private_addresses_get_sharding_network_private_addresses_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(
+Future<GetShardingNetworkPrivateAddressesResult>
+getShardingNetworkPrivateAddresses(
   GetShardingNetworkPrivateAddressesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -909,7 +910,7 @@ Future<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddres
 
 /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.149.0+.
+/// &gt; **NOTE:** Available in v1.149.0+.
 ///
 /// ## Example Usage
 ///
@@ -1025,7 +1026,8 @@ Future<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddres
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_mongodb_get_sharding_network_public_addresses_get_sharding_network_public_addresses_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(
+Future<GetShardingNetworkPublicAddressesResult>
+getShardingNetworkPublicAddresses(
   GetShardingNetworkPublicAddressesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1040,7 +1042,7 @@ Future<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresse
 
 /// This data source provides availability zones for mongoDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

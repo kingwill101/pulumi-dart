@@ -9,8 +9,11 @@ import 'provisioning_details.dart';
 class ProductDetails {
   /// Hierarchy of the product which uniquely identifies the product.
   final pulumi.Input<HierarchyInformation> hierarchyInformation;
+
   /// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
-  final pulumi.Input<List<AdditionalConfiguration>>? optInAdditionalConfigurations;
+  final pulumi.Input<List<AdditionalConfiguration>>?
+  optInAdditionalConfigurations;
+
   /// Device Provisioning Details for Parent.
   final pulumi.Input<ProvisioningDetails>? parentProvisioningDetails;
 
@@ -26,18 +29,59 @@ class ProductDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hierarchyInformation': pulumi.Input.mapInputValue<HierarchyInformation, Map<String, dynamic>>(hierarchyInformation, (value) => value.toMap()),
-      'optInAdditionalConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AdditionalConfiguration>, List<Map<String, dynamic>>>(optInAdditionalConfigurations, (value) => pulumi.Input.encodeList<AdditionalConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'parentProvisioningDetails': ?pulumi.Input.mapOptionalInputValue<ProvisioningDetails, Map<String, dynamic>>(parentProvisioningDetails, (value) => value.toMap()),
+      'hierarchyInformation':
+          pulumi.Input.mapInputValue<
+            HierarchyInformation,
+            Map<String, dynamic>
+          >(hierarchyInformation, (value) => value.toMap()),
+      'optInAdditionalConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AdditionalConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            optInAdditionalConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AdditionalConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'parentProvisioningDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProvisioningDetails,
+            Map<String, dynamic>
+          >(parentProvisioningDetails, (value) => value.toMap()),
     };
   }
 
   factory ProductDetails.fromMap(Map<String, dynamic> map) {
     return ProductDetails(
-      hierarchyInformation: (HierarchyInformation.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
-      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfiguration>(map['optInAdditionalConfigurations']!, (value) => AdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetails.fromMap((map['parentProvisioningDetails']! as Map).cast<String, dynamic>())).input(),
+      hierarchyInformation: pulumi.Input.fromValue(
+        HierarchyInformation.fromMap(
+          (map['hierarchyInformation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      optInAdditionalConfigurations: (() {
+        final guardedValue = map['optInAdditionalConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AdditionalConfiguration>(
+            guardedValue,
+            (value) => AdditionalConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      parentProvisioningDetails: (() {
+        final guardedValue = map['parentProvisioningDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProvisioningDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

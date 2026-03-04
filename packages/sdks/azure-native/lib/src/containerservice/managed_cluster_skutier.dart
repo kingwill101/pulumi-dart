@@ -4,16 +4,15 @@ enum ManagedClusterSKUTier {
   valueStandard("Standard"),
   valueFree("Free");
 
-  const ManagedClusterSKUTier(this.value);
-  final String value;
+  const ManagedClusterSKUTier(this.wireValue);
+  final String wireValue;
 
   static ManagedClusterSKUTier fromValue(String value) {
     for (final item in ManagedClusterSKUTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedClusterSKUTier value: $value');
   }
 }
-

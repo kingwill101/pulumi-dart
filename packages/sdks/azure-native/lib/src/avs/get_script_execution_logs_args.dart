@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScriptExecutionLogsArgs {
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the script cmdlet.
   final pulumi.Input<String> scriptExecutionName;
 
@@ -34,10 +36,15 @@ class GetScriptExecutionLogsArgs {
 
   factory GetScriptExecutionLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetScriptExecutionLogsArgs(
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scriptExecutionName: (map['scriptExecutionName'] as String).input(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scriptExecutionName: pulumi.Input.fromValue(
+        map['scriptExecutionName'] as String,
+      ),
     );
   }
 }
-

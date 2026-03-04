@@ -172,24 +172,34 @@ import 'system_topic_args.dart';
 class SystemTopic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Identity information for the resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
+
   /// Location of the resource.
   late final pulumi.Output<String> location;
+
   /// Metric resource id for the system topic.
   late final pulumi.Output<String> metricResourceId;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the system topic.
   late final pulumi.Output<String> provisioningState;
+
   /// Source for the system topic.
   late final pulumi.Output<String?> source;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// TopicType for the system topic.
   late final pulumi.Output<String?> topicType;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -202,21 +212,21 @@ class SystemTopic extends pulumi.CustomResource {
     SystemTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:SystemTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityInfoResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.metricResourceId = registerOutput<String>('metricResourceId');
+         'azure-native:eventgrid:SystemTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityInfoResponse?>('identity');
+    location = registerOutput<String>('location');
+    metricResourceId = registerOutput<String>('metricResourceId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.source = registerOutput<String?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicType = registerOutput<String?>('topicType');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicType = registerOutput<String?>('topicType');
+    type = registerOutput<String>('type');
   }
 }

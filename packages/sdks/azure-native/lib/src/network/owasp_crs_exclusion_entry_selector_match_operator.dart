@@ -6,16 +6,17 @@ enum OwaspCrsExclusionEntrySelectorMatchOperator {
   valueEndsWith("EndsWith"),
   valueEqualsAny("EqualsAny");
 
-  const OwaspCrsExclusionEntrySelectorMatchOperator(this.value);
-  final String value;
+  const OwaspCrsExclusionEntrySelectorMatchOperator(this.wireValue);
+  final String wireValue;
 
   static OwaspCrsExclusionEntrySelectorMatchOperator fromValue(String value) {
     for (final item in OwaspCrsExclusionEntrySelectorMatchOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OwaspCrsExclusionEntrySelectorMatchOperator value: $value');
+    throw ArgumentError(
+      'Unknown OwaspCrsExclusionEntrySelectorMatchOperator value: $value',
+    );
   }
 }
-

@@ -4,9 +4,9 @@ import 'group_template_deployment_state.dart';
 
 /// Manages a Template Deployment at a Management Group Scope.
 ///
-/// > **Note:** Deleting a Deployment at the Management Group Scope will not delete any resources created by the deployment.
+/// &gt; **Note:** Deleting a Deployment at the Management Group Scope will not delete any resources created by the deployment.
 ///
-/// > **Note:** Deployments to a Management Group are always Incrementally applied. Existing resources that are not part of the template will not be removed.
+/// &gt; **Note:** Deployments to a Management Group are always Incrementally applied. Existing resources that are not part of the template will not be removed.
 ///
 /// ## Example Usage
 ///
@@ -751,20 +751,28 @@ import 'group_template_deployment_state.dart';
 class GroupTemplateDeployment extends pulumi.CustomResource {
   /// The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
   late final pulumi.Output<String?> debugLevel;
+
   /// The Azure Region where the Template should exist. Changing this forces a new Template to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Management Group to apply the Deployment Template to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
+
   /// The name which should be used for this Template Deployment. Changing this forces a new Template Deployment to be created.
   late final pulumi.Output<String> name;
+
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   late final pulumi.Output<String> outputContent;
+
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
   late final pulumi.Output<String> parametersContent;
+
   /// A mapping of tags which should be assigned to the Template.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   late final pulumi.Output<String> templateContent;
+
   /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
@@ -777,20 +785,20 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
     GroupTemplateDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.debugLevel = registerOutput<String?>('debugLevel');
-    this.location = registerOutput<String>('location');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    location = registerOutput<String>('location');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.outputContent = registerOutput<String>('outputContent');
-    this.parametersContent = registerOutput<String>('parametersContent');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateContent = registerOutput<String>('templateContent');
-    this.templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
 
   /// Gets an existing [GroupTemplateDeployment] resource's state with the given [name] and [id].
@@ -811,19 +819,19 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.debugLevel = registerOutput<String?>('debugLevel');
-    this.location = registerOutput<String>('location');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    location = registerOutput<String>('location');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.outputContent = registerOutput<String>('outputContent');
-    this.parametersContent = registerOutput<String>('parametersContent');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateContent = registerOutput<String>('templateContent');
-    this.templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
 }

@@ -12,23 +12,31 @@ class SupabaseProjectArgs {
   /// - Support for special characters:! @#$%^& *()_+-=
   /// - Length is 8~32 characters.
   final pulumi.Input<String> accountPassword;
+
   /// cloud disk performance level
   final pulumi.Input<String>? diskPerformanceLevel;
+
   /// The project name. The naming rules are as follows:
   /// - 1~128 characters in length.
   /// - Can only contain English letters, numbers, dashes (-) and underscores (_).
   /// - Must begin with an English letter or an underscore (_).
   final pulumi.Input<String> projectName;
+
   /// The performance level of the Supabase instance.
   final pulumi.Input<String> projectSpec;
+
   /// The IP address whitelist.
   final pulumi.Input<List<String>> securityIpLists;
+
   /// The storage capacity of the instance. Unit: GB.
   final pulumi.Input<int>? storageSize;
+
   /// The VPC ID.
   final pulumi.Input<String> vpcId;
+
   /// The vSwitch ID.
   final pulumi.Input<String> vswitchId;
+
   /// The Zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -70,16 +78,25 @@ class SupabaseProjectArgs {
 
   factory SupabaseProjectArgs.fromMap(Map<String, dynamic> map) {
     return SupabaseProjectArgs(
-      accountPassword: (map['accountPassword'] as String).input(),
-      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      projectSpec: (map['projectSpec'] as String).input(),
-      securityIpLists: ((map['securityIpLists'] as List).cast<String>()).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      accountPassword: pulumi.Input.fromValue(map['accountPassword'] as String),
+      diskPerformanceLevel: (() {
+        final guardedValue = map['diskPerformanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      projectSpec: pulumi.Input.fromValue(map['projectSpec'] as String),
+      securityIpLists: pulumi.Input.fromValue(
+        (map['securityIpLists'] as List).cast<String>(),
+      ),
+      storageSize: (() {
+        final guardedValue = map['storageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

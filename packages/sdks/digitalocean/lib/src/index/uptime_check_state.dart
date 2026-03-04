@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UptimeCheckState {
   /// A boolean value indicating whether the check is enabled/disabled.
   final pulumi.Input<bool>? enabled;
+
   /// A human-friendly display name for the check.
   final pulumi.Input<String>? name;
+
   /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
   final pulumi.Input<List<String>>? regions;
+
   /// The endpoint to perform healthchecks on.
   final pulumi.Input<String>? target;
+
   /// The type of health check to perform: 'ping' 'http' 'https'.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,31 @@ class UptimeCheckState {
 
   factory UptimeCheckState.fromMap(Map<String, dynamic> map) {
     return UptimeCheckState(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

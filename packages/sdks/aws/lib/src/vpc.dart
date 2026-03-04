@@ -1,5 +1,3 @@
-library module_vpc;
-
 export 'vpc/endpoint_private_dns.dart';
 export 'vpc/endpoint_private_dns_args.dart';
 export 'vpc/endpoint_private_dns_state.dart';

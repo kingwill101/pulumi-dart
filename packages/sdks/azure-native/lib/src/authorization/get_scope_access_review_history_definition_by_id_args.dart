@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScopeAccessReviewHistoryDefinitionByIdArgs {
   /// The id of the access review history definition.
   final pulumi.Input<String> historyDefinitionId;
+
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 
@@ -27,11 +28,14 @@ class GetScopeAccessReviewHistoryDefinitionByIdArgs {
     };
   }
 
-  factory GetScopeAccessReviewHistoryDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
+  factory GetScopeAccessReviewHistoryDefinitionByIdArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScopeAccessReviewHistoryDefinitionByIdArgs(
-      historyDefinitionId: (map['historyDefinitionId'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      historyDefinitionId: pulumi.Input.fromValue(
+        map['historyDefinitionId'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableEntitiesArgs {
   /// The filter used to retrieve the entities.
   final pulumi.Input<String> filter;
+
   /// A list of properties to select from the returned Storage Table Entities.
   final pulumi.Input<List<String>>? selects;
+
   /// The Storage Table ID where the entities exist.
   final pulumi.Input<String> storageTableId;
 
@@ -34,10 +36,13 @@ class GetTableEntitiesArgs {
 
   factory GetTableEntitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetTableEntitiesArgs(
-      filter: (map['filter'] as String).input(),
-      selects: map['selects'] == null ? null : ((map['selects']! as List).cast<String>()).input(),
-      storageTableId: (map['storageTableId'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      selects: (() {
+        final guardedValue = map['selects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      storageTableId: pulumi.Input.fromValue(map['storageTableId'] as String),
     );
   }
 }
-

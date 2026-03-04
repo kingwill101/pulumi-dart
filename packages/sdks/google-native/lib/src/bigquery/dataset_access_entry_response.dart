@@ -18,16 +18,25 @@ class DatasetAccessEntryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataset': pulumi.Input.mapInputValue<DatasetReferenceResponse, Map<String, dynamic>>(dataset, (value) => value.toMap()),
+      'dataset':
+          pulumi.Input.mapInputValue<
+            DatasetReferenceResponse,
+            Map<String, dynamic>
+          >(dataset, (value) => value.toMap()),
       'targetTypes': targetTypes,
     };
   }
 
   factory DatasetAccessEntryResponse.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntryResponse(
-      dataset: (DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      targetTypes: ((map['targetTypes'] as List).cast<String>()).input(),
+      dataset: pulumi.Input.fromValue(
+        DatasetReferenceResponse.fromMap(
+          (map['dataset']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetTypes: pulumi.Input.fromValue(
+        (map['targetTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

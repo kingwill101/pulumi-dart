@@ -12,15 +12,16 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustFile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateChain': certificateChain,
-    };
+    return <String, dynamic>{'certificateChain': certificateChain};
   }
 
-  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustFile.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustFile(
-      certificateChain: (map['certificateChain'] as String).input(),
+      certificateChain: pulumi.Input.fromValue(
+        map['certificateChain'] as String,
+      ),
     );
   }
 }
-

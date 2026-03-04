@@ -10,20 +10,28 @@ class GetCatalogDevBoxDefinitionErrorDetailsResult {
 
   /// Creates a new [GetCatalogDevBoxDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetCatalogDevBoxDefinitionErrorDetailsResult({
-    required this.errors,
-  });
+  GetCatalogDevBoxDefinitionErrorDetailsResult({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<CatalogErrorDetailsResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            CatalogErrorDetailsResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
-  factory GetCatalogDevBoxDefinitionErrorDetailsResult.fromMap(Map<String, dynamic> map) {
+  factory GetCatalogDevBoxDefinitionErrorDetailsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCatalogDevBoxDefinitionErrorDetailsResult(
-      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(map['errors'], (value) => CatalogErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(
+        map['errors']!,
+        (value) => CatalogErrorDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

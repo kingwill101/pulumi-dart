@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatisticsReservationUsageItemResponse {
   /// Reservation name or "unreserved" for on-demand resources usage.
   final pulumi.Input<String> name;
+
   /// Slot-milliseconds the job spent in the given reservation.
   final pulumi.Input<String> slotMs;
 
@@ -17,17 +18,15 @@ class JobStatisticsReservationUsageItemResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'slotMs': slotMs,
-    };
+    return <String, dynamic>{'name': name, 'slotMs': slotMs};
   }
 
-  factory JobStatisticsReservationUsageItemResponse.fromMap(Map<String, dynamic> map) {
+  factory JobStatisticsReservationUsageItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobStatisticsReservationUsageItemResponse(
-      name: (map['name'] as String).input(),
-      slotMs: (map['slotMs'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      slotMs: pulumi.Input.fromValue(map['slotMs'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum HttpCheckContentType {
   urlEncoded("URL_ENCODED"),
   userProvided("USER_PROVIDED");
 
-  const HttpCheckContentType(this.value);
-  final String value;
+  const HttpCheckContentType(this.wireValue);
+  final String wireValue;
 
   static HttpCheckContentType fromValue(String value) {
     for (final item in HttpCheckContentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpCheckContentType value: $value');
   }
 }
-

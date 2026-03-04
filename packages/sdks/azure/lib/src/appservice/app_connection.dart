@@ -527,7 +527,7 @@ import 'app_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceLinker` - 2024-04-01, 2022-05-01
@@ -542,14 +542,17 @@ import 'app_connection_state.dart';
 class AppConnection extends pulumi.CustomResource {
   /// The authentication info. An `authentication` block as defined below.
   ///
-  /// > **Note:** If a Managed Identity is used, this will need to be configured on the App Service.
+  /// &gt; **Note:** If a Managed Identity is used, this will need to be configured on the App Service.
   late final pulumi.Output<AppConnectionAuthentication> authentication;
   late final pulumi.Output<String?> clientType;
+
   /// The ID of the data source function app. Changing this forces a new resource to be created.
   late final pulumi.Output<String> functionAppId;
+
   /// The name of the service connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<AppConnectionSecretStore?> secretStore;
+
   /// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   late final pulumi.Output<String> targetResourceId;
   late final pulumi.Output<String?> vnetSolution;
@@ -563,18 +566,20 @@ class AppConnection extends pulumi.CustomResource {
     AppConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/appConnection:AppConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<AppConnectionAuthentication>('authentication');
-    this.clientType = registerOutput<String?>('clientType');
-    this.functionAppId = registerOutput<String>('functionAppId');
+         'azure:appservice/appConnection:AppConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<AppConnectionAuthentication>(
+      'authentication',
+    );
+    clientType = registerOutput<String?>('clientType');
+    functionAppId = registerOutput<String>('functionAppId');
     this.name = registerOutput<String>('name');
-    this.secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.vnetSolution = registerOutput<String?>('vnetSolution');
+    secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
   }
 
   /// Gets an existing [AppConnection] resource's state with the given [name] and [id].
@@ -595,17 +600,19 @@ class AppConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/appConnection:AppConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<AppConnectionAuthentication>('authentication');
-    this.clientType = registerOutput<String?>('clientType');
-    this.functionAppId = registerOutput<String>('functionAppId');
+         'azure:appservice/appConnection:AppConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<AppConnectionAuthentication>(
+      'authentication',
+    );
+    clientType = registerOutput<String?>('clientType');
+    functionAppId = registerOutput<String>('functionAppId');
     this.name = registerOutput<String>('name');
-    this.secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.vnetSolution = registerOutput<String?>('vnetSolution');
+    secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
   }
 }

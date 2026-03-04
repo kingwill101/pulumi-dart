@@ -11,6 +11,7 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// VOICE_ONLY
   /// CHAT_ONLY
   final pulumi.Input<String>? modality;
+
   /// (Output)
   /// The theme of the web widget.
   /// Possible values:
@@ -18,6 +19,7 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// LIGHT
   /// DARK
   final pulumi.Input<String>? theme;
+
   /// (Output)
   /// The title of the web widget.
   final pulumi.Input<String>? webWidgetTitle;
@@ -40,12 +42,25 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
     };
   }
 
-  factory AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig(
-      modality: map['modality'] == null ? null : (map['modality']! as String).input(),
-      theme: map['theme'] == null ? null : (map['theme']! as String).input(),
-      webWidgetTitle: map['webWidgetTitle'] == null ? null : (map['webWidgetTitle']! as String).input(),
+      modality: (() {
+        final guardedValue = map['modality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      theme: (() {
+        final guardedValue = map['theme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webWidgetTitle: (() {
+        final guardedValue = map['webWidgetTitle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

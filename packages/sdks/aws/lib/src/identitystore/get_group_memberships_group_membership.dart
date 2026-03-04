@@ -6,8 +6,10 @@ import 'get_group_memberships_group_membership_member_id.dart';
 class GetGroupMembershipsGroupMembership {
   /// The identifier for a group in the Identity Store.
   final pulumi.Input<String> groupId;
+
   /// Identity Store ID associated with the Single Sign-On Instance.
   final pulumi.Input<String> identityStoreId;
+
   /// An object containing the identifier of a group member. See `member_id` below.
   final pulumi.Input<GetGroupMembershipsGroupMembershipMemberId> memberId;
   final pulumi.Input<String> membershipId;
@@ -28,18 +30,25 @@ class GetGroupMembershipsGroupMembership {
     return <String, dynamic>{
       'groupId': groupId,
       'identityStoreId': identityStoreId,
-      'memberId': pulumi.Input.mapInputValue<GetGroupMembershipsGroupMembershipMemberId, Map<String, dynamic>>(memberId, (value) => value.toMap()),
+      'memberId':
+          pulumi.Input.mapInputValue<
+            GetGroupMembershipsGroupMembershipMemberId,
+            Map<String, dynamic>
+          >(memberId, (value) => value.toMap()),
       'membershipId': membershipId,
     };
   }
 
   factory GetGroupMembershipsGroupMembership.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsGroupMembership(
-      groupId: (map['groupId'] as String).input(),
-      identityStoreId: (map['identityStoreId'] as String).input(),
-      memberId: (GetGroupMembershipsGroupMembershipMemberId.fromMap((map['memberId']! as Map).cast<String, dynamic>())).input(),
-      membershipId: (map['membershipId'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      identityStoreId: pulumi.Input.fromValue(map['identityStoreId'] as String),
+      memberId: pulumi.Input.fromValue(
+        GetGroupMembershipsGroupMembershipMemberId.fromMap(
+          (map['memberId']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
     );
   }
 }
-

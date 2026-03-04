@@ -8,11 +8,22 @@ import 'dapr_component_resiliency_policy_timeout_policy_configuration_response.d
 /// Dapr Component Resiliency Policy Configuration.
 class DaprComponentResiliencyPolicyConfigurationResponse {
   /// The optional circuit breaker policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse>? circuitBreakerPolicy;
+  final pulumi.Input<
+    DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse
+  >?
+  circuitBreakerPolicy;
+
   /// The optional HTTP retry policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse>? httpRetryPolicy;
+  final pulumi.Input<
+    DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse
+  >?
+  httpRetryPolicy;
+
   /// The optional timeout policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse>? timeoutPolicy;
+  final pulumi.Input<
+    DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse
+  >?
+  timeoutPolicy;
 
   /// Creates a new [DaprComponentResiliencyPolicyConfigurationResponse].
   /// [circuitBreakerPolicy] The optional circuit breaker policy configuration
@@ -26,18 +37,55 @@ class DaprComponentResiliencyPolicyConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'circuitBreakerPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse, Map<String, dynamic>>(circuitBreakerPolicy, (value) => value.toMap()),
-      'httpRetryPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse, Map<String, dynamic>>(httpRetryPolicy, (value) => value.toMap()),
-      'timeoutPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse, Map<String, dynamic>>(timeoutPolicy, (value) => value.toMap()),
+      'circuitBreakerPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse,
+            Map<String, dynamic>
+          >(circuitBreakerPolicy, (value) => value.toMap()),
+      'httpRetryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse,
+            Map<String, dynamic>
+          >(httpRetryPolicy, (value) => value.toMap()),
+      'timeoutPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse,
+            Map<String, dynamic>
+          >(timeoutPolicy, (value) => value.toMap()),
     };
   }
 
-  factory DaprComponentResiliencyPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DaprComponentResiliencyPolicyConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaprComponentResiliencyPolicyConfigurationResponse(
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap((map['circuitBreakerPolicy']! as Map).cast<String, dynamic>())).input(),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap((map['httpRetryPolicy']! as Map).cast<String, dynamic>())).input(),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap((map['timeoutPolicy']! as Map).cast<String, dynamic>())).input(),
+      circuitBreakerPolicy: (() {
+        final guardedValue = map['circuitBreakerPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      httpRetryPolicy: (() {
+        final guardedValue = map['httpRetryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeoutPolicy: (() {
+        final guardedValue = map['timeoutPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

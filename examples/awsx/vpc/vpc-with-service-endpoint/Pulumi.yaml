@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-vpc-with-service-endpoint
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC with service endpoint example in Dart.

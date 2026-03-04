@@ -14,7 +14,7 @@ import 'ai_logic_config_telemetry_config.dart';
 ///
 ///
 ///
-/// > **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -795,15 +795,20 @@ class AiLogicConfig extends pulumi.CustomResource {
   /// API key is stored in this configuration *on the server* so that you do
   /// **not** add your Gemini API key directly into your app's codebase.
   /// Structure is documented below.
-  late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?> generativeLanguageConfig;
+  late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?>
+  generativeLanguageConfig;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String?> location;
+
   /// Identifier. The resource name of the config.
   /// Format: projects/{project}/locations/{location}/config
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Configuration for telemetry.
   /// Telemetry is the collection of metrics, logs, and traces recorded by the
   /// Firebase AI Logic backend.
@@ -819,16 +824,21 @@ class AiLogicConfig extends pulumi.CustomResource {
     AiLogicConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/aiLogicConfig:AiLogicConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig');
-    this.location = registerOutput<String?>('location');
+         'gcp:firebase/aiLogicConfig:AiLogicConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    generativeLanguageConfig =
+        registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
+          'generativeLanguageConfig',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig');
+    project = registerOutput<String>('project');
+    telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>(
+      'telemetryConfig',
+    );
   }
 
   /// Gets an existing [AiLogicConfig] resource's state with the given [name] and [id].
@@ -849,15 +859,20 @@ class AiLogicConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/aiLogicConfig:AiLogicConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig');
-    this.location = registerOutput<String?>('location');
+         'gcp:firebase/aiLogicConfig:AiLogicConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    generativeLanguageConfig =
+        registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
+          'generativeLanguageConfig',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig');
+    project = registerOutput<String>('project');
+    telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>(
+      'telemetryConfig',
+    );
   }
 }

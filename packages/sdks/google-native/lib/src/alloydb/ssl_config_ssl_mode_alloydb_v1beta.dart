@@ -7,16 +7,15 @@ enum SslConfigSslModeAlloydbV1beta {
   allowUnencryptedAndEncrypted("ALLOW_UNENCRYPTED_AND_ENCRYPTED"),
   encryptedOnly("ENCRYPTED_ONLY");
 
-  const SslConfigSslModeAlloydbV1beta(this.value);
-  final String value;
+  const SslConfigSslModeAlloydbV1beta(this.wireValue);
+  final String wireValue;
 
   static SslConfigSslModeAlloydbV1beta fromValue(String value) {
     for (final item in SslConfigSslModeAlloydbV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigSslModeAlloydbV1beta value: $value');
   }
 }
-

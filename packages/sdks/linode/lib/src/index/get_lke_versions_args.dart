@@ -12,20 +12,19 @@ class GetLkeVersionsArgs {
 
   /// Creates a new [GetLkeVersionsArgs].
   /// [tier] The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-  GetLkeVersionsArgs({
-    this.tier,
-  });
+  GetLkeVersionsArgs({this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tier': ?tier,
-    };
+    return <String, dynamic>{'tier': ?tier};
   }
 
   factory GetLkeVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetLkeVersionsArgs(
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

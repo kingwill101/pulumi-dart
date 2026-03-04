@@ -8,14 +8,19 @@ import 'system_data_response.dart';
 class GetMaintenanceConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// List of maintenance schedules for a managed environment.
   final List<ScheduledEntryResponse> scheduledEntries;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -40,7 +45,11 @@ class GetMaintenanceConfigurationResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'scheduledEntries': pulumi.Input.encodeList<ScheduledEntryResponse, Map<String, dynamic>>(scheduledEntries, (value) => value.toMap()),
+      'scheduledEntries':
+          pulumi.Input.encodeList<ScheduledEntryResponse, Map<String, dynamic>>(
+            scheduledEntries,
+            (value) => value.toMap(),
+          ),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -51,10 +60,16 @@ class GetMaintenanceConfigurationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      scheduledEntries: pulumi.Input.decodeList<ScheduledEntryResponse>(map['scheduledEntries'], (value) => ScheduledEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      scheduledEntries: pulumi.Input.decodeList<ScheduledEntryResponse>(
+        map['scheduledEntries']!,
+        (value) => ScheduledEntryResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

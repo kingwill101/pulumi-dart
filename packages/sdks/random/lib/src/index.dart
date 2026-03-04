@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/random_bytes.dart';
 export 'index/random_bytes_args.dart';
 export 'index/random_bytes_state.dart';

@@ -12,20 +12,19 @@ class GetLocationsArgs {
 
   /// Creates a new [GetLocationsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLocationsArgs({
-    this.region,
-  });
+  GetLocationsArgs({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetLocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationsArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

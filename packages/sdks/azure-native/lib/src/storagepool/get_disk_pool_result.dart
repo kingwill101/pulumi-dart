@@ -8,34 +8,49 @@ import 'system_metadata_response.dart';
 class GetDiskPoolResult {
   /// List of additional capabilities for Disk Pool.
   final List<String>? additionalCapabilities;
+
   /// Logical zone for Disk Pool resource; example: ["1"].
   final List<String> availabilityZones;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// List of Azure Managed Disks to attach to a Disk Pool.
   final List<DiskResponse>? disks;
+
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives.
   final String location;
+
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
   final String managedBy;
+
   /// List of Azure resource ids that manage this resource.
   final List<String> managedByExtended;
+
   /// The name of the resource
   final String name;
+
   /// State of the operation on the resource.
   final String provisioningState;
+
   /// Operational status of the Disk Pool.
   final String status;
+
   /// Azure Resource ID of a Subnet for the Disk Pool.
   final String subnetId;
+
   /// Resource metadata required by ARM RPC
   final SystemMetadataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Sku tier
   final String? tier;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final String type;
 
@@ -80,7 +95,14 @@ class GetDiskPoolResult {
       'additionalCapabilities': ?additionalCapabilities,
       'availabilityZones': availabilityZones,
       'azureApiVersion': azureApiVersion,
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(disks!, (value) => value.toMap()),
+      'disks': ?(() {
+        final guardedValue = disks;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'location': location,
       'managedBy': managedBy,
@@ -98,10 +120,22 @@ class GetDiskPoolResult {
 
   factory GetDiskPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDiskPoolResult(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : (map['additionalCapabilities']! as List).cast<String>(),
+      additionalCapabilities: (() {
+        final guardedValue = map['additionalCapabilities'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<DiskResponse>(map['disks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<DiskResponse>(
+          guardedValue,
+          (value) =>
+              DiskResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       managedBy: map['managedBy'] as String,
@@ -110,11 +144,20 @@ class GetDiskPoolResult {
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       subnetId: map['subnetId'] as String,
-      systemData: SystemMetadataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      tier: map['tier'] == null ? null : map['tier']! as String,
+      systemData: SystemMetadataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

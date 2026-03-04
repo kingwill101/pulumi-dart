@@ -8,20 +8,19 @@ class JobConfigMuxStreamSegmentSettings {
 
   /// Creates a new [JobConfigMuxStreamSegmentSettings].
   /// [segmentDuration] Duration of the segments in seconds. The default is `6.0s`.
-  JobConfigMuxStreamSegmentSettings({
-    this.segmentDuration,
-  });
+  JobConfigMuxStreamSegmentSettings({this.segmentDuration});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'segmentDuration': ?segmentDuration,
-    };
+    return <String, dynamic>{'segmentDuration': ?segmentDuration};
   }
 
   factory JobConfigMuxStreamSegmentSettings.fromMap(Map<String, dynamic> map) {
     return JobConfigMuxStreamSegmentSettings(
-      segmentDuration: map['segmentDuration'] == null ? null : (map['segmentDuration']! as String).input(),
+      segmentDuration: (() {
+        final guardedValue = map['segmentDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

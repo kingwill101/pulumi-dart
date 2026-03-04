@@ -11,52 +11,75 @@ import 'registered_domain_tech_contact.dart';
 class RegisteredDomainState {
   /// Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
   final pulumi.Input<String>? abuseContactEmail;
+
   /// Phone number for reporting abuse.
   final pulumi.Input<String>? abuseContactPhone;
+
   /// Details about the domain administrative contact. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainAdminContact>? adminContact;
+
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
   final pulumi.Input<bool>? adminPrivacy;
+
   /// Whether the domain registration is set to renew automatically. Default: `true`.
   final pulumi.Input<bool>? autoRenew;
+
   /// Details about the domain billing contact. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainBillingContact>? billingContact;
+
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
   final pulumi.Input<bool>? billingPrivacy;
+
   /// The date when the domain was created as found in the response to a WHOIS query.
   final pulumi.Input<String>? creationDate;
+
   /// The name of the registered domain.
   final pulumi.Input<String>? domainName;
+
   /// The date when the registration for the domain is set to expire.
   final pulumi.Input<String>? expirationDate;
+
   /// The list of nameservers for the domain. See `name_server` Blocks for more details.
   final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
+
   /// Details about the domain registrant. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
+
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
   final pulumi.Input<bool>? registrantPrivacy;
+
   /// Name of the registrar of the domain as identified in the registry.
   final pulumi.Input<String>? registrarName;
+
   /// Web address of the registrar.
   final pulumi.Input<String>? registrarUrl;
+
   /// Reseller of the domain.
   final pulumi.Input<String>? reseller;
+
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
   final pulumi.Input<List<String>>? statusLists;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Details about the domain technical contact. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainTechContact>? techContact;
+
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   final pulumi.Input<bool>? techPrivacy;
+
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// > **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
   final pulumi.Input<bool>? transferLock;
+
   /// The last updated date of the domain as found in the response to a WHOIS query.
   final pulumi.Input<String>? updatedDate;
+
   /// The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
   final pulumi.Input<String>? whoisServer;
 
@@ -116,16 +139,39 @@ class RegisteredDomainState {
     return <String, dynamic>{
       'abuseContactEmail': ?abuseContactEmail,
       'abuseContactPhone': ?abuseContactPhone,
-      'adminContact': ?pulumi.Input.mapOptionalInputValue<RegisteredDomainAdminContact, Map<String, dynamic>>(adminContact, (value) => value.toMap()),
+      'adminContact':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegisteredDomainAdminContact,
+            Map<String, dynamic>
+          >(adminContact, (value) => value.toMap()),
       'adminPrivacy': ?adminPrivacy,
       'autoRenew': ?autoRenew,
-      'billingContact': ?pulumi.Input.mapOptionalInputValue<RegisteredDomainBillingContact, Map<String, dynamic>>(billingContact, (value) => value.toMap()),
+      'billingContact':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegisteredDomainBillingContact,
+            Map<String, dynamic>
+          >(billingContact, (value) => value.toMap()),
       'billingPrivacy': ?billingPrivacy,
       'creationDate': ?creationDate,
       'domainName': ?domainName,
       'expirationDate': ?expirationDate,
-      'nameServers': ?pulumi.Input.mapOptionalInputValue<List<RegisteredDomainNameServer>, List<Map<String, dynamic>>>(nameServers, (value) => pulumi.Input.encodeList<RegisteredDomainNameServer, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'registrantContact': ?pulumi.Input.mapOptionalInputValue<RegisteredDomainRegistrantContact, Map<String, dynamic>>(registrantContact, (value) => value.toMap()),
+      'nameServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegisteredDomainNameServer>,
+            List<Map<String, dynamic>>
+          >(
+            nameServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegisteredDomainNameServer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'registrantContact':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegisteredDomainRegistrantContact,
+            Map<String, dynamic>
+          >(registrantContact, (value) => value.toMap()),
       'registrantPrivacy': ?registrantPrivacy,
       'registrarName': ?registrarName,
       'registrarUrl': ?registrarUrl,
@@ -133,7 +179,11 @@ class RegisteredDomainState {
       'statusLists': ?statusLists,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'techContact': ?pulumi.Input.mapOptionalInputValue<RegisteredDomainTechContact, Map<String, dynamic>>(techContact, (value) => value.toMap()),
+      'techContact':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegisteredDomainTechContact,
+            Map<String, dynamic>
+          >(techContact, (value) => value.toMap()),
       'techPrivacy': ?techPrivacy,
       'transferLock': ?transferLock,
       'updatedDate': ?updatedDate,
@@ -143,31 +193,153 @@ class RegisteredDomainState {
 
   factory RegisteredDomainState.fromMap(Map<String, dynamic> map) {
     return RegisteredDomainState(
-      abuseContactEmail: map['abuseContactEmail'] == null ? null : ((map['abuseContactEmail'] as String).input()).input(),
-      abuseContactPhone: map['abuseContactPhone'] == null ? null : ((map['abuseContactPhone'] as String).input()).input(),
-      adminContact: map['adminContact'] == null ? null : ((RegisteredDomainAdminContact.fromMap((map['adminContact']! as Map).cast<String, dynamic>())).input()).input(),
-      adminPrivacy: map['adminPrivacy'] == null ? null : ((map['adminPrivacy'] as bool).input()).input(),
-      autoRenew: map['autoRenew'] == null ? null : ((map['autoRenew'] as bool).input()).input(),
-      billingContact: map['billingContact'] == null ? null : ((RegisteredDomainBillingContact.fromMap((map['billingContact']! as Map).cast<String, dynamic>())).input()).input(),
-      billingPrivacy: map['billingPrivacy'] == null ? null : ((map['billingPrivacy'] as bool).input()).input(),
-      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      expirationDate: map['expirationDate'] == null ? null : ((map['expirationDate'] as String).input()).input(),
-      nameServers: map['nameServers'] == null ? null : ((pulumi.Input.decodeList<RegisteredDomainNameServer>(map['nameServers']!, (value) => RegisteredDomainNameServer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      registrantContact: map['registrantContact'] == null ? null : ((RegisteredDomainRegistrantContact.fromMap((map['registrantContact']! as Map).cast<String, dynamic>())).input()).input(),
-      registrantPrivacy: map['registrantPrivacy'] == null ? null : ((map['registrantPrivacy'] as bool).input()).input(),
-      registrarName: map['registrarName'] == null ? null : ((map['registrarName'] as String).input()).input(),
-      registrarUrl: map['registrarUrl'] == null ? null : ((map['registrarUrl'] as String).input()).input(),
-      reseller: map['reseller'] == null ? null : ((map['reseller'] as String).input()).input(),
-      statusLists: map['statusLists'] == null ? null : (((map['statusLists'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      techContact: map['techContact'] == null ? null : ((RegisteredDomainTechContact.fromMap((map['techContact']! as Map).cast<String, dynamic>())).input()).input(),
-      techPrivacy: map['techPrivacy'] == null ? null : ((map['techPrivacy'] as bool).input()).input(),
-      transferLock: map['transferLock'] == null ? null : ((map['transferLock'] as bool).input()).input(),
-      updatedDate: map['updatedDate'] == null ? null : ((map['updatedDate'] as String).input()).input(),
-      whoisServer: map['whoisServer'] == null ? null : ((map['whoisServer'] as String).input()).input(),
+      abuseContactEmail: (() {
+        final guardedValue = map['abuseContactEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      abuseContactPhone: (() {
+        final guardedValue = map['abuseContactPhone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminContact: (() {
+        final guardedValue = map['adminContact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegisteredDomainAdminContact.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      adminPrivacy: (() {
+        final guardedValue = map['adminPrivacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      billingContact: (() {
+        final guardedValue = map['billingContact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegisteredDomainBillingContact.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      billingPrivacy: (() {
+        final guardedValue = map['billingPrivacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      creationDate: (() {
+        final guardedValue = map['creationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameServers: (() {
+        final guardedValue = map['nameServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegisteredDomainNameServer>(
+            guardedValue,
+            (value) => RegisteredDomainNameServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      registrantContact: (() {
+        final guardedValue = map['registrantContact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegisteredDomainRegistrantContact.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      registrantPrivacy: (() {
+        final guardedValue = map['registrantPrivacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      registrarName: (() {
+        final guardedValue = map['registrarName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrarUrl: (() {
+        final guardedValue = map['registrarUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reseller: (() {
+        final guardedValue = map['reseller'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusLists: (() {
+        final guardedValue = map['statusLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      techContact: (() {
+        final guardedValue = map['techContact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegisteredDomainTechContact.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      techPrivacy: (() {
+        final guardedValue = map['techPrivacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transferLock: (() {
+        final guardedValue = map['transferLock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updatedDate: (() {
+        final guardedValue = map['updatedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      whoisServer: (() {
+        final guardedValue = map['whoisServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

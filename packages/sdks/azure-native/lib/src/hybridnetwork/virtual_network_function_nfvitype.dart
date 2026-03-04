@@ -4,16 +4,15 @@ enum VirtualNetworkFunctionNFVIType {
   valueAzureCore("AzureCore"),
   valueAzureOperatorNexus("AzureOperatorNexus");
 
-  const VirtualNetworkFunctionNFVIType(this.value);
-  final String value;
+  const VirtualNetworkFunctionNFVIType(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkFunctionNFVIType fromValue(String value) {
     for (final item in VirtualNetworkFunctionNFVIType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualNetworkFunctionNFVIType value: $value');
   }
 }
-

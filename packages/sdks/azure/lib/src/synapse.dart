@@ -1,5 +1,3 @@
-library module_synapse;
-
 export 'synapse/firewall_rule.dart';
 export 'synapse/firewall_rule_args.dart';
 export 'synapse/firewall_rule_state.dart';

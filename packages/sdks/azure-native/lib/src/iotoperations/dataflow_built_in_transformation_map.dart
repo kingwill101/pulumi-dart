@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowBuiltInTransformationMap {
   /// A user provided optional description of the mapping function.
   final pulumi.Input<String>? description;
+
   /// Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
   final pulumi.Input<String>? expression;
+
   /// List of fields for mapping in JSON path expression.
   final pulumi.Input<List<String>> inputs;
+
   /// Where and how the input fields to be organized in the output record.
   final pulumi.Input<String> output;
+
   /// Type of transformation.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,23 @@ class DataflowBuiltInTransformationMap {
 
   factory DataflowBuiltInTransformationMap.fromMap(Map<String, dynamic> map) {
     return DataflowBuiltInTransformationMap(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
-      inputs: ((map['inputs'] as List).cast<String>()).input(),
-      output: (map['output'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputs: pulumi.Input.fromValue((map['inputs'] as List).cast<String>()),
+      output: pulumi.Input.fromValue(map['output'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

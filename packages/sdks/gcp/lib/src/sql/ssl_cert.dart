@@ -192,27 +192,36 @@ import 'ssl_cert_state.dart';
 class SslCert extends pulumi.CustomResource {
   /// The actual certificate data for this client certificate.
   late final pulumi.Output<String> cert;
+
   /// The serial number extracted from the certificate data.
   late final pulumi.Output<String> certSerialNumber;
+
   /// The common name to be used in the certificate to identify the
   /// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
   late final pulumi.Output<String> commonName;
+
   /// The time when the certificate was created in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   late final pulumi.Output<String> createTime;
+
   /// The time when the certificate expires in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   late final pulumi.Output<String> expirationTime;
+
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
   late final pulumi.Output<String> instance;
+
   /// The private key associated with the client certificate.
   late final pulumi.Output<String> privateKey;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The CA cert of the server this client cert was generated from.
   late final pulumi.Output<String> serverCaCert;
+
   /// The SHA1 Fingerprint of the certificate.
   late final pulumi.Output<String> sha1Fingerprint;
 
@@ -225,21 +234,21 @@ class SslCert extends pulumi.CustomResource {
     SslCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:sql/sslCert:SslCert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cert = registerOutput<String>('cert');
-    this.certSerialNumber = registerOutput<String>('certSerialNumber');
-    this.commonName = registerOutput<String>('commonName');
-    this.createTime = registerOutput<String>('createTime');
-    this.expirationTime = registerOutput<String>('expirationTime');
-    this.instance = registerOutput<String>('instance');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.project = registerOutput<String>('project');
-    this.serverCaCert = registerOutput<String>('serverCaCert');
-    this.sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+         'gcp:sql/sslCert:SslCert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cert = registerOutput<String>('cert');
+    certSerialNumber = registerOutput<String>('certSerialNumber');
+    commonName = registerOutput<String>('commonName');
+    createTime = registerOutput<String>('createTime');
+    expirationTime = registerOutput<String>('expirationTime');
+    instance = registerOutput<String>('instance');
+    privateKey = registerOutput<String>('privateKey');
+    project = registerOutput<String>('project');
+    serverCaCert = registerOutput<String>('serverCaCert');
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
   }
 
   /// Gets an existing [SslCert] resource's state with the given [name] and [id].
@@ -260,20 +269,20 @@ class SslCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:sql/sslCert:SslCert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cert = registerOutput<String>('cert');
-    this.certSerialNumber = registerOutput<String>('certSerialNumber');
-    this.commonName = registerOutput<String>('commonName');
-    this.createTime = registerOutput<String>('createTime');
-    this.expirationTime = registerOutput<String>('expirationTime');
-    this.instance = registerOutput<String>('instance');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.project = registerOutput<String>('project');
-    this.serverCaCert = registerOutput<String>('serverCaCert');
-    this.sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+         'gcp:sql/sslCert:SslCert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cert = registerOutput<String>('cert');
+    certSerialNumber = registerOutput<String>('certSerialNumber');
+    commonName = registerOutput<String>('commonName');
+    createTime = registerOutput<String>('createTime');
+    expirationTime = registerOutput<String>('expirationTime');
+    instance = registerOutput<String>('instance');
+    privateKey = registerOutput<String>('privateKey');
+    project = registerOutput<String>('project');
+    serverCaCert = registerOutput<String>('serverCaCert');
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
   }
 }

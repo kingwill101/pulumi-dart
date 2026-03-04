@@ -7,12 +7,18 @@ class PreventionDiscoveryConfigActionPubSubNotification {
   /// How much data to include in the pub/sub message.
   /// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
   final pulumi.Input<String>? detailOfMessage;
+
   /// The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
   /// Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
   final pulumi.Input<String>? event;
+
   /// Conditions for triggering pubsub
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition>? pubsubCondition;
+  final pulumi.Input<
+    PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition
+  >?
+  pubsubCondition;
+
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
   final pulumi.Input<String>? topic;
 
@@ -32,18 +38,43 @@ class PreventionDiscoveryConfigActionPubSubNotification {
     return <String, dynamic>{
       'detailOfMessage': ?detailOfMessage,
       'event': ?event,
-      'pubsubCondition': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition, Map<String, dynamic>>(pubsubCondition, (value) => value.toMap()),
+      'pubsubCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition,
+            Map<String, dynamic>
+          >(pubsubCondition, (value) => value.toMap()),
       'topic': ?topic,
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotification.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionPubSubNotification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionPubSubNotification(
-      detailOfMessage: map['detailOfMessage'] == null ? null : (map['detailOfMessage']! as String).input(),
-      event: map['event'] == null ? null : (map['event']! as String).input(),
-      pubsubCondition: map['pubsubCondition'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap((map['pubsubCondition']! as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      detailOfMessage: (() {
+        final guardedValue = map['detailOfMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubCondition: (() {
+        final guardedValue = map['pubsubCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

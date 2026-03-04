@@ -39,12 +39,15 @@ class GetLineageEventArgs {
 
   factory GetLineageEventArgs.fromMap(Map<String, dynamic> map) {
     return GetLineageEventArgs(
-      lineageEventId: (map['lineageEventId'] as String).input(),
-      location: (map['location'] as String).input(),
-      processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      runId: (map['runId'] as String).input(),
+      lineageEventId: pulumi.Input.fromValue(map['lineageEventId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      processId: pulumi.Input.fromValue(map['processId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runId: pulumi.Input.fromValue(map['runId'] as String),
     );
   }
 }
-

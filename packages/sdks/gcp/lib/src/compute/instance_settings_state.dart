@@ -8,12 +8,15 @@ class InstanceSettingsState {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   final pulumi.Input<String>? fingerprint;
+
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
   final pulumi.Input<InstanceSettingsMetadata>? metadata;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String>? zone;
 
@@ -32,7 +35,11 @@ class InstanceSettingsState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fingerprint': ?fingerprint,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<InstanceSettingsMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceSettingsMetadata,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'project': ?project,
       'zone': ?zone,
     };
@@ -40,11 +47,30 @@ class InstanceSettingsState {
 
   factory InstanceSettingsState.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsState(
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      metadata: map['metadata'] == null ? null : (InstanceSettingsMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceSettingsMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

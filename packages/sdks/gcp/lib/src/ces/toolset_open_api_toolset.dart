@@ -9,17 +9,23 @@ class ToolsetOpenApiToolset {
   /// Authentication information required for API calls.
   /// Structure is documented below.
   final pulumi.Input<ToolsetOpenApiToolsetApiAuthentication>? apiAuthentication;
+
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
   final pulumi.Input<bool>? ignoreUnknownFields;
+
   /// The OpenAPI schema of the toolset.
   final pulumi.Input<String> openApiSchema;
+
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetServiceDirectoryConfig>?
+  serviceDirectoryConfig;
+
   /// The TLS configuration.
   /// Structure is documented below.
   final pulumi.Input<ToolsetOpenApiToolsetTlsConfig>? tlsConfig;
+
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -47,24 +53,67 @@ class ToolsetOpenApiToolset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiAuthentication': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthentication, Map<String, dynamic>>(apiAuthentication, (value) => value.toMap()),
+      'apiAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            ToolsetOpenApiToolsetApiAuthentication,
+            Map<String, dynamic>
+          >(apiAuthentication, (value) => value.toMap()),
       'ignoreUnknownFields': ?ignoreUnknownFields,
       'openApiSchema': openApiSchema,
-      'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
-      'tlsConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
+      'serviceDirectoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ToolsetOpenApiToolsetServiceDirectoryConfig,
+            Map<String, dynamic>
+          >(serviceDirectoryConfig, (value) => value.toMap()),
+      'tlsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ToolsetOpenApiToolsetTlsConfig,
+            Map<String, dynamic>
+          >(tlsConfig, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory ToolsetOpenApiToolset.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolset(
-      apiAuthentication: map['apiAuthentication'] == null ? null : (ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication']! as Map).cast<String, dynamic>())).input(),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields']! as bool).input(),
-      openApiSchema: (map['openApiSchema'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      apiAuthentication: (() {
+        final guardedValue = map['apiAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ToolsetOpenApiToolsetApiAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ignoreUnknownFields: (() {
+        final guardedValue = map['ignoreUnknownFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      openApiSchema: pulumi.Input.fromValue(map['openApiSchema'] as String),
+      serviceDirectoryConfig: (() {
+        final guardedValue = map['serviceDirectoryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tlsConfig: (() {
+        final guardedValue = map['tlsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ToolsetOpenApiToolsetTlsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

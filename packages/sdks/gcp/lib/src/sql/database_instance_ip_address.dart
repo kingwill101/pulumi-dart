@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceIpAddress {
   /// The IPv4 address assigned.
   final pulumi.Input<String>? ipAddress;
+
   /// The time this IP address will be retired, in RFC
   /// 3339 format.
   final pulumi.Input<String>? timeToRetire;
+
   /// The type of this IP address.
   final pulumi.Input<String>? type;
 
@@ -15,11 +17,7 @@ class DatabaseInstanceIpAddress {
   /// [ipAddress] The IPv4 address assigned.
   /// [timeToRetire] The time this IP address will be retired, in RFC
   /// [type] The type of this IP address.
-  DatabaseInstanceIpAddress({
-    this.ipAddress,
-    this.timeToRetire,
-    this.type,
-  });
+  DatabaseInstanceIpAddress({this.ipAddress, this.timeToRetire, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class DatabaseInstanceIpAddress {
 
   factory DatabaseInstanceIpAddress.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceIpAddress(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeToRetire: (() {
+        final guardedValue = map['timeToRetire'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

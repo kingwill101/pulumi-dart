@@ -6,12 +6,16 @@ import 'get_node_device_info_capability.dart';
 class GetNodeDeviceInfoResult {
   /// Device capability details. Fields populated depend on the device type.
   final GetNodeDeviceInfoCapability capability;
+
   /// Internal identifier for this data source.
   final String id;
+
   /// Device name from `libvirt.getNodeDevices` data source (e.g., `pci_0000_00_1f_2`).
   final String name;
+
   /// Parent device name in the device hierarchy.
   final String parent;
+
   /// Sysfs path to the device.
   final String path;
 
@@ -41,7 +45,9 @@ class GetNodeDeviceInfoResult {
 
   factory GetNodeDeviceInfoResult.fromMap(Map<String, dynamic> map) {
     return GetNodeDeviceInfoResult(
-      capability: GetNodeDeviceInfoCapability.fromMap((map['capability'] as Map).cast<String, dynamic>()),
+      capability: GetNodeDeviceInfoCapability.fromMap(
+        (map['capability']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       parent: map['parent'] as String,
@@ -49,4 +55,3 @@ class GetNodeDeviceInfoResult {
     );
   }
 }
-

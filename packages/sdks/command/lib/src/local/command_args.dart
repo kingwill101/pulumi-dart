@@ -12,6 +12,7 @@ class CommandArgs {
   /// injected into the environment of the next run as PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR.
   /// Defaults to true.
   final pulumi.Input<bool>? addPreviousOutputInEnv;
+
   /// A list of path globs to return as a single archive asset after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -51,6 +52,7 @@ class CommandArgs {
   /// - src/index.js
   /// ```
   final pulumi.Input<List<String>>? archivePaths;
+
   /// A list of path globs to read after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -90,6 +92,7 @@ class CommandArgs {
   /// - src/index.js
   /// ```
   final pulumi.Input<List<String>>? assetPaths;
+
   /// The command to run once on resource creation.
   ///
   /// If an `update` command isn't provided, then `create` will also be run when the resource's inputs are modified.
@@ -98,24 +101,31 @@ class CommandArgs {
   ///
   /// Use `local.runOutput` if you need to run a command on every execution of your program.
   final pulumi.Input<String>? create;
+
   /// The command to run on resource delettion.
   ///
   /// The environment variables `PULUMI_COMMAND_STDOUT` and `PULUMI_COMMAND_STDERR` are set to the stdout and stderr properties of the Command resource from previous create or update steps.
   final pulumi.Input<String>? delete;
+
   /// The directory from which to run the command from. If `dir` does not exist, then
   /// `Command` will fail.
   final pulumi.Input<String>? dir;
+
   /// Additional environment variables available to the command's process.
   final pulumi.Input<Map<String, String>>? environment;
+
   /// The program and arguments to run the command.
   /// On Linux and macOS, defaults to: `["/bin/sh", "-c"]`. On Windows, defaults to: `["cmd", "/C"]`
   final pulumi.Input<List<String>>? interpreter;
+
   /// If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// stdout and stderr as outputs. If there might be secrets in the output, you can disable logging here and mark the
   /// outputs as secret via 'additionalSecretOutputs'. Defaults to logging both stdout and stderr.
   final pulumi.Input<Logging>? logging;
+
   /// Pass a string to the command's process as standard in
   final pulumi.Input<String>? stdin;
+
   /// The resource will be updated (or replaced) if any of these values change.
   ///
   /// The trigger values can be of any type.
@@ -124,6 +134,7 @@ class CommandArgs {
   ///
   /// Please see the resource documentation for examples.
   final pulumi.Input<List<dynamic>>? triggers;
+
   /// The command to run when the resource is updated.
   ///
   /// If empty, the create command will be executed instead.
@@ -173,7 +184,10 @@ class CommandArgs {
       'dir': ?dir,
       'environment': ?environment,
       'interpreter': ?interpreter,
-      'logging': ?pulumi.Input.mapOptionalInputValue<Logging, String>(logging, (value) => value.value),
+      'logging': ?pulumi.Input.mapOptionalInputValue<Logging, String>(
+        logging,
+        (value) => value.wireValue,
+      ),
       'stdin': ?stdin,
       'triggers': ?triggers,
       'update': ?update,
@@ -182,19 +196,70 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv']! as bool).input(),
-      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths']! as List).cast<String>()).input(),
-      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths']! as List).cast<String>()).input(),
-      create: map['create'] == null ? null : (map['create']! as String).input(),
-      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
-      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
-      interpreter: map['interpreter'] == null ? null : ((map['interpreter']! as List).cast<String>()).input(),
-      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging']! as String)).input(),
-      stdin: map['stdin'] == null ? null : (map['stdin']! as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers']! as List).cast<dynamic>()).input(),
-      update: map['update'] == null ? null : (map['update']! as String).input(),
+      addPreviousOutputInEnv: (() {
+        final guardedValue = map['addPreviousOutputInEnv'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      archivePaths: (() {
+        final guardedValue = map['archivePaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      assetPaths: (() {
+        final guardedValue = map['assetPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      create: (() {
+        final guardedValue = map['create'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      delete: (() {
+        final guardedValue = map['delete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dir: (() {
+        final guardedValue = map['dir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      interpreter: (() {
+        final guardedValue = map['interpreter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logging: (() {
+        final guardedValue = map['logging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Logging.fromValue(guardedValue as String),
+        );
+      })(),
+      stdin: (() {
+        final guardedValue = map['stdin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      update: (() {
+        final guardedValue = map['update'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

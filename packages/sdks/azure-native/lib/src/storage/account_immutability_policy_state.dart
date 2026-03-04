@@ -4,16 +4,15 @@ enum AccountImmutabilityPolicyState {
   valueLocked("Locked"),
   valueDisabled("Disabled");
 
-  const AccountImmutabilityPolicyState(this.value);
-  final String value;
+  const AccountImmutabilityPolicyState(this.wireValue);
+  final String wireValue;
 
   static AccountImmutabilityPolicyState fromValue(String value) {
     for (final item in AccountImmutabilityPolicyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccountImmutabilityPolicyState value: $value');
   }
 }
-

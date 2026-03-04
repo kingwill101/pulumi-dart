@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityUptimeResponse {
   /// Gets the days per month.
   final pulumi.Input<int>? daysPerMonth;
+
   /// Gets the hours per day.
   final pulumi.Input<int>? hoursPerDay;
 
   /// Creates a new [EntityUptimeResponse].
   /// [daysPerMonth] Gets the days per month.
   /// [hoursPerDay] Gets the hours per day.
-  EntityUptimeResponse({
-    this.daysPerMonth,
-    this.hoursPerDay,
-  });
+  EntityUptimeResponse({this.daysPerMonth, this.hoursPerDay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EntityUptimeResponse {
 
   factory EntityUptimeResponse.fromMap(Map<String, dynamic> map) {
     return EntityUptimeResponse(
-      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth']! as int).input(),
-      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay']! as int).input(),
+      daysPerMonth: (() {
+        final guardedValue = map['daysPerMonth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      hoursPerDay: (() {
+        final guardedValue = map['hoursPerDay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

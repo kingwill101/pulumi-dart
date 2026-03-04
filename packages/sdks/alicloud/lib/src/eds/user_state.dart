@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserState {
   /// The email of the user email.
   final pulumi.Input<String>? email;
+
   /// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
   final pulumi.Input<String>? endUserId;
+
   /// The password of the user password.
   final pulumi.Input<String>? password;
+
   /// The phone of the mobile phone number.
   final pulumi.Input<String>? phone;
+
   /// The status of the resource. Valid values: `Unlocked`, `Locked`.
   final pulumi.Input<String>? status;
 
@@ -41,12 +45,31 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      endUserId: map['endUserId'] == null ? null : (map['endUserId']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endUserId: (() {
+        final guardedValue = map['endUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phone: (() {
+        final guardedValue = map['phone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

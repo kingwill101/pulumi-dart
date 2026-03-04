@@ -118,7 +118,7 @@ import 'get_pool_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -253,7 +253,7 @@ Future<GetAccountResult> getAccount(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -274,7 +274,7 @@ Future<GetApplicationResult> getApplication(
 
 /// Use this data source to access information about an existing certificate in a Batch Account.
 ///
-/// > **Note:** The `azure.batch.Certificate` data source has been deprecated due to Azure retiring the Azure Batch Account Certificates Feature, and will be removed in v5.0 of the AzureRM provider.
+/// &gt; **Note:** The `azure.batch.Certificate` data source has been deprecated due to Azure retiring the Azure Batch Account Certificates Feature, and will be removed in v5.0 of the AzureRM provider.
 ///
 /// ## Example Usage
 ///
@@ -390,7 +390,7 @@ Future<GetApplicationResult> getApplication(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -515,7 +515,7 @@ Future<GetCertificateResult> getCertificate(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01

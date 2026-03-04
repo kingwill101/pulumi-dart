@@ -6,8 +6,10 @@ import 'get_test_grok_pattern_test_grok_attribute.dart';
 class GetTestGrokPatternTestGrok {
   /// Nested list containing information about any attributes that were extracted.
   final pulumi.Input<List<GetTestGrokPatternTestGrokAttribute>> attributes;
+
   /// The log line that was tested against.
   final pulumi.Input<String> logLine;
+
   /// Whether the Grok pattern matched.
   final pulumi.Input<bool> matched;
 
@@ -23,7 +25,18 @@ class GetTestGrokPatternTestGrok {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': pulumi.Input.mapInputValue<List<GetTestGrokPatternTestGrokAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GetTestGrokPatternTestGrokAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributes':
+          pulumi.Input.mapInputValue<
+            List<GetTestGrokPatternTestGrokAttribute>,
+            List<Map<String, dynamic>>
+          >(
+            attributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTestGrokPatternTestGrokAttribute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'logLine': logLine,
       'matched': matched,
     };
@@ -31,10 +44,16 @@ class GetTestGrokPatternTestGrok {
 
   factory GetTestGrokPatternTestGrok.fromMap(Map<String, dynamic> map) {
     return GetTestGrokPatternTestGrok(
-      attributes: (pulumi.Input.decodeList<GetTestGrokPatternTestGrokAttribute>(map['attributes'], (value) => GetTestGrokPatternTestGrokAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logLine: (map['logLine'] as String).input(),
-      matched: (map['matched'] as bool).input(),
+      attributes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTestGrokPatternTestGrokAttribute>(
+          map['attributes']!,
+          (value) => GetTestGrokPatternTestGrokAttribute.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      logLine: pulumi.Input.fromValue(map['logLine'] as String),
+      matched: pulumi.Input.fromValue(map['matched'] as bool),
     );
   }
 }
-

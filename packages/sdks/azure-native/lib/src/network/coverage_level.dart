@@ -7,16 +7,15 @@ enum CoverageLevel {
   valueAboveAverage("AboveAverage"),
   valueFull("Full");
 
-  const CoverageLevel(this.value);
-  final String value;
+  const CoverageLevel(this.wireValue);
+  final String wireValue;
 
   static CoverageLevel fromValue(String value) {
     for (final item in CoverageLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CoverageLevel value: $value');
   }
 }
-

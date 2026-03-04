@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'run_book_args.dart';
 import 'run_book_draft.dart';
-import 'run_book_job_schedule.dart';
 import 'run_book_publish_content_link.dart';
 import 'run_book_state.dart';
 
@@ -247,38 +246,52 @@ import 'run_book_state.dart';
 class RunBook extends pulumi.CustomResource {
   /// The name of the automation account in which the Runbook is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The desired content of the runbook.
   ///
-  /// > **Note:** The Azure API requires a `publish_content_link` to be supplied even when specifying your own `content`.
+  /// &gt; **Note:** The Azure API requires a `publish_content_link` to be supplied even when specifying your own `content`.
   late final pulumi.Output<String> content;
+
   /// A description for the runbook.
   late final pulumi.Output<String?> description;
+
   /// A `draft` block as defined below.
   late final pulumi.Output<RunBookDraft?> draft;
+
   /// One or more `job_schedule` block as defined below.
   ///
-  /// > **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `job_schedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
-  late final pulumi.Output<List<RunBookJobSchedule>> jobSchedules;
+  /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `job_schedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
+  late final pulumi.Output<List<Map<String, dynamic>>> jobSchedules;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the activity-level tracing options of the runbook, available only for Graphical runbooks. Possible values are `0` for None, `9` for Basic, and `15` for Detailed. Must turn on Verbose logging in order to see the tracing.
   late final pulumi.Output<int?> logActivityTraceLevel;
+
   /// Progress log option.
   late final pulumi.Output<bool> logProgress;
+
   /// Verbose log option.
   late final pulumi.Output<bool> logVerbose;
+
   /// Specifies the name of the Runbook. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One `publish_content_link` block as defined below.
   late final pulumi.Output<RunBookPublishContentLink?> publishContentLink;
+
   /// The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell`, `PowerShell72`, `Python`, `Python3`, `Python2` or `Script`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> runbookType;
+
   /// The runtime environment name for the runbook.
   ///
-  /// > **Note:** The `runbook_type` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
+  /// &gt; **Note:** The `runbook_type` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
   late final pulumi.Output<String?> runtimeEnvironmentName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -291,26 +304,28 @@ class RunBook extends pulumi.CustomResource {
     RunBookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/runBook:RunBook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.content = registerOutput<String>('content');
-    this.description = registerOutput<String?>('description');
-    this.draft = registerOutput<RunBookDraft?>('draft');
-    this.jobSchedules = registerOutput<List<RunBookJobSchedule>>('jobSchedules');
-    this.location = registerOutput<String>('location');
-    this.logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
-    this.logProgress = registerOutput<bool>('logProgress');
-    this.logVerbose = registerOutput<bool>('logVerbose');
+         'azure:automation/runBook:RunBook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    content = registerOutput<String>('content');
+    description = registerOutput<String?>('description');
+    draft = registerOutput<RunBookDraft?>('draft');
+    jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
+    location = registerOutput<String>('location');
+    logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
+    logProgress = registerOutput<bool>('logProgress');
+    logVerbose = registerOutput<bool>('logVerbose');
     this.name = registerOutput<String>('name');
-    this.publishContentLink = registerOutput<RunBookPublishContentLink?>('publishContentLink');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.runbookType = registerOutput<String>('runbookType');
-    this.runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publishContentLink = registerOutput<RunBookPublishContentLink?>(
+      'publishContentLink',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runbookType = registerOutput<String>('runbookType');
+    runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [RunBook] resource's state with the given [name] and [id].
@@ -331,25 +346,27 @@ class RunBook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/runBook:RunBook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.content = registerOutput<String>('content');
-    this.description = registerOutput<String?>('description');
-    this.draft = registerOutput<RunBookDraft?>('draft');
-    this.jobSchedules = registerOutput<List<RunBookJobSchedule>>('jobSchedules');
-    this.location = registerOutput<String>('location');
-    this.logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
-    this.logProgress = registerOutput<bool>('logProgress');
-    this.logVerbose = registerOutput<bool>('logVerbose');
+         'azure:automation/runBook:RunBook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    content = registerOutput<String>('content');
+    description = registerOutput<String?>('description');
+    draft = registerOutput<RunBookDraft?>('draft');
+    jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
+    location = registerOutput<String>('location');
+    logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
+    logProgress = registerOutput<bool>('logProgress');
+    logVerbose = registerOutput<bool>('logVerbose');
     this.name = registerOutput<String>('name');
-    this.publishContentLink = registerOutput<RunBookPublishContentLink?>('publishContentLink');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.runbookType = registerOutput<String>('runbookType');
-    this.runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publishContentLink = registerOutput<RunBookPublishContentLink?>(
+      'publishContentLink',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runbookType = registerOutput<String>('runbookType');
+    runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -8,8 +8,10 @@ import 'interactive_query_cluster_roles_zookeeper_node.dart';
 class InteractiveQueryClusterRoles {
   /// A `head_node` block as defined above.
   final pulumi.Input<InteractiveQueryClusterRolesHeadNode> headNode;
+
   /// A `worker_node` block as defined below.
   final pulumi.Input<InteractiveQueryClusterRolesWorkerNode> workerNode;
+
   /// A `zookeeper_node` block as defined below.
   final pulumi.Input<InteractiveQueryClusterRolesZookeeperNode> zookeeperNode;
 
@@ -25,18 +27,41 @@ class InteractiveQueryClusterRoles {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headNode': pulumi.Input.mapInputValue<InteractiveQueryClusterRolesHeadNode, Map<String, dynamic>>(headNode, (value) => value.toMap()),
-      'workerNode': pulumi.Input.mapInputValue<InteractiveQueryClusterRolesWorkerNode, Map<String, dynamic>>(workerNode, (value) => value.toMap()),
-      'zookeeperNode': pulumi.Input.mapInputValue<InteractiveQueryClusterRolesZookeeperNode, Map<String, dynamic>>(zookeeperNode, (value) => value.toMap()),
+      'headNode':
+          pulumi.Input.mapInputValue<
+            InteractiveQueryClusterRolesHeadNode,
+            Map<String, dynamic>
+          >(headNode, (value) => value.toMap()),
+      'workerNode':
+          pulumi.Input.mapInputValue<
+            InteractiveQueryClusterRolesWorkerNode,
+            Map<String, dynamic>
+          >(workerNode, (value) => value.toMap()),
+      'zookeeperNode':
+          pulumi.Input.mapInputValue<
+            InteractiveQueryClusterRolesZookeeperNode,
+            Map<String, dynamic>
+          >(zookeeperNode, (value) => value.toMap()),
     };
   }
 
   factory InteractiveQueryClusterRoles.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterRoles(
-      headNode: (InteractiveQueryClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>())).input(),
-      workerNode: (InteractiveQueryClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>())).input(),
-      zookeeperNode: (InteractiveQueryClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>())).input(),
+      headNode: pulumi.Input.fromValue(
+        InteractiveQueryClusterRolesHeadNode.fromMap(
+          (map['headNode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      workerNode: pulumi.Input.fromValue(
+        InteractiveQueryClusterRolesWorkerNode.fromMap(
+          (map['workerNode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      zookeeperNode: pulumi.Input.fromValue(
+        InteractiveQueryClusterRolesZookeeperNode.fromMap(
+          (map['zookeeperNode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

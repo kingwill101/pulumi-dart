@@ -1,32 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFwGroupV2.
 class GetFwGroupV2Result {
   /// See Argument Reference above.
   final bool adminStateUp;
+
   /// See Argument Reference above.
   final String? description;
+
   /// See Argument Reference above.
   final String? egressFirewallPolicyId;
+
   /// See Argument Reference above.
   final String? groupId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String? ingressFirewallPolicyId;
+
   /// See Argument Reference above.
   final String? name;
+
   /// Ports associated with the firewall group.
   final List<String> ports;
+
   /// See Argument Reference above.
   final String projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final bool shared;
+
   /// See Argument Reference above.
   final String status;
+
   /// See Argument Reference above.
   final String tenantId;
 
@@ -81,12 +92,32 @@ class GetFwGroupV2Result {
   factory GetFwGroupV2Result.fromMap(Map<String, dynamic> map) {
     return GetFwGroupV2Result(
       adminStateUp: map['adminStateUp'] as bool,
-      description: map['description'] == null ? null : map['description']! as String,
-      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : map['egressFirewallPolicyId']! as String,
-      groupId: map['groupId'] == null ? null : map['groupId']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      egressFirewallPolicyId: (() {
+        final guardedValue = map['egressFirewallPolicyId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : map['ingressFirewallPolicyId']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      ingressFirewallPolicyId: (() {
+        final guardedValue = map['ingressFirewallPolicyId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       ports: (map['ports'] as List).cast<String>(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,
@@ -96,4 +127,3 @@ class GetFwGroupV2Result {
     );
   }
 }
-

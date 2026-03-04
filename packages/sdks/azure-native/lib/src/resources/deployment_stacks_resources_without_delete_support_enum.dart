@@ -3,16 +3,20 @@ enum DeploymentStacksResourcesWithoutDeleteSupportEnum {
   detach("detach"),
   fail("fail");
 
-  const DeploymentStacksResourcesWithoutDeleteSupportEnum(this.value);
-  final String value;
+  const DeploymentStacksResourcesWithoutDeleteSupportEnum(this.wireValue);
+  final String wireValue;
 
-  static DeploymentStacksResourcesWithoutDeleteSupportEnum fromValue(String value) {
-    for (final item in DeploymentStacksResourcesWithoutDeleteSupportEnum.values) {
-      if (item.value == value) {
+  static DeploymentStacksResourcesWithoutDeleteSupportEnum fromValue(
+    String value,
+  ) {
+    for (final item
+        in DeploymentStacksResourcesWithoutDeleteSupportEnum.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeploymentStacksResourcesWithoutDeleteSupportEnum value: $value');
+    throw ArgumentError(
+      'Unknown DeploymentStacksResourcesWithoutDeleteSupportEnum value: $value',
+    );
   }
 }
-

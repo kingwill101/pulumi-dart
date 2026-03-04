@@ -108,7 +108,7 @@ import 'agreement_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.MarketplaceOrdering` - 2015-06-01
@@ -122,11 +122,14 @@ import 'agreement_state.dart';
 /// ```
 class Agreement extends pulumi.CustomResource {
   late final pulumi.Output<String> licenseTextLink;
+
   /// The Offer of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> offer;
+
   /// The Plan of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> plan;
   late final pulumi.Output<String> privacyPolicyLink;
+
   /// The Publisher of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publisher;
 
@@ -139,16 +142,16 @@ class Agreement extends pulumi.CustomResource {
     AgreementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:marketplace/agreement:Agreement',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.licenseTextLink = registerOutput<String>('licenseTextLink');
-    this.offer = registerOutput<String>('offer');
-    this.plan = registerOutput<String>('plan');
-    this.privacyPolicyLink = registerOutput<String>('privacyPolicyLink');
-    this.publisher = registerOutput<String>('publisher');
+         'azure:marketplace/agreement:Agreement',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    licenseTextLink = registerOutput<String>('licenseTextLink');
+    offer = registerOutput<String>('offer');
+    plan = registerOutput<String>('plan');
+    privacyPolicyLink = registerOutput<String>('privacyPolicyLink');
+    publisher = registerOutput<String>('publisher');
   }
 
   /// Gets an existing [Agreement] resource's state with the given [name] and [id].
@@ -169,15 +172,15 @@ class Agreement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:marketplace/agreement:Agreement',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.licenseTextLink = registerOutput<String>('licenseTextLink');
-    this.offer = registerOutput<String>('offer');
-    this.plan = registerOutput<String>('plan');
-    this.privacyPolicyLink = registerOutput<String>('privacyPolicyLink');
-    this.publisher = registerOutput<String>('publisher');
+         'azure:marketplace/agreement:Agreement',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    licenseTextLink = registerOutput<String>('licenseTextLink');
+    offer = registerOutput<String>('offer');
+    plan = registerOutput<String>('plan');
+    privacyPolicyLink = registerOutput<String>('privacyPolicyLink');
+    publisher = registerOutput<String>('publisher');
   }
 }

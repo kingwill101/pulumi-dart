@@ -7,16 +7,17 @@ enum VmwareEnginePreferencesCommitmentPlan {
   commitment1YearUpfrontPayment("COMMITMENT_1_YEAR_UPFRONT_PAYMENT"),
   commitment3YearUpfrontPayment("COMMITMENT_3_YEAR_UPFRONT_PAYMENT");
 
-  const VmwareEnginePreferencesCommitmentPlan(this.value);
-  final String value;
+  const VmwareEnginePreferencesCommitmentPlan(this.wireValue);
+  final String wireValue;
 
   static VmwareEnginePreferencesCommitmentPlan fromValue(String value) {
     for (final item in VmwareEnginePreferencesCommitmentPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VmwareEnginePreferencesCommitmentPlan value: $value');
+    throw ArgumentError(
+      'Unknown VmwareEnginePreferencesCommitmentPlan value: $value',
+    );
   }
 }
-

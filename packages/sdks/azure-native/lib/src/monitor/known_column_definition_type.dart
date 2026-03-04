@@ -8,16 +8,15 @@ enum KnownColumnDefinitionType {
   valueDatetime("datetime"),
   valueDynamic("dynamic");
 
-  const KnownColumnDefinitionType(this.value);
-  final String value;
+  const KnownColumnDefinitionType(this.wireValue);
+  final String wireValue;
 
   static KnownColumnDefinitionType fromValue(String value) {
     for (final item in KnownColumnDefinitionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KnownColumnDefinitionType value: $value');
   }
 }
-

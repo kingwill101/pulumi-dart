@@ -7,16 +7,15 @@ enum PropertySelectorOperator {
   lt("Lt"),
   le("Le");
 
-  const PropertySelectorOperator(this.value);
-  final String value;
+  const PropertySelectorOperator(this.wireValue);
+  final String wireValue;
 
   static PropertySelectorOperator fromValue(String value) {
     for (final item in PropertySelectorOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PropertySelectorOperator value: $value');
   }
 }
-

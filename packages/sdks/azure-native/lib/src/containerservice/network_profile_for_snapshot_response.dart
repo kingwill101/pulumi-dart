@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkProfileForSnapshotResponse {
   /// loadBalancerSku for managed cluster snapshot.
   final pulumi.Input<String>? loadBalancerSku;
+
   /// networkMode for managed cluster snapshot.
   final pulumi.Input<String>? networkMode;
+
   /// networkPlugin for managed cluster snapshot.
   final pulumi.Input<String>? networkPlugin;
+
   /// NetworkPluginMode for managed cluster snapshot.
   final pulumi.Input<String>? networkPluginMode;
+
   /// networkPolicy for managed cluster snapshot.
   final pulumi.Input<String>? networkPolicy;
 
@@ -41,12 +45,31 @@ class NetworkProfileForSnapshotResponse {
 
   factory NetworkProfileForSnapshotResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileForSnapshotResponse(
-      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku']! as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as String).input(),
-      networkPlugin: map['networkPlugin'] == null ? null : (map['networkPlugin']! as String).input(),
-      networkPluginMode: map['networkPluginMode'] == null ? null : (map['networkPluginMode']! as String).input(),
-      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy']! as String).input(),
+      loadBalancerSku: (() {
+        final guardedValue = map['loadBalancerSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkMode: (() {
+        final guardedValue = map['networkMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkPlugin: (() {
+        final guardedValue = map['networkPlugin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkPluginMode: (() {
+        final guardedValue = map['networkPluginMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkPolicy: (() {
+        final guardedValue = map['networkPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

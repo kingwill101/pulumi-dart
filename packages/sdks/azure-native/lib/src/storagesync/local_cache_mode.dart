@@ -3,16 +3,15 @@ enum LocalCacheMode {
   downloadNewAndModifiedFiles("DownloadNewAndModifiedFiles"),
   updateLocallyCachedFiles("UpdateLocallyCachedFiles");
 
-  const LocalCacheMode(this.value);
-  final String value;
+  const LocalCacheMode(this.wireValue);
+  final String wireValue;
 
   static LocalCacheMode fromValue(String value) {
     for (final item in LocalCacheMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalCacheMode value: $value');
   }
 }
-

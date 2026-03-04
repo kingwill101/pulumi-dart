@@ -179,26 +179,37 @@ import 'system_data_response.dart';
 class FluidRelayServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// All encryption configuration for a resource.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
+
   /// The Fluid Relay Service endpoints for this server.
   late final pulumi.Output<FluidRelayEndpointsResponse> fluidRelayEndpoints;
+
   /// The Fluid tenantId for this server
   late final pulumi.Output<String> frsTenantId;
+
   /// The type of identity used for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provision states for FluidRelay RP
   late final pulumi.Output<String?> provisioningState;
+
   /// Sku of the storage associated with the resource
   late final pulumi.Output<String?> storagesku;
+
   /// System meta data for this resource, including creation and modification information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -211,22 +222,24 @@ class FluidRelayServer extends pulumi.CustomResource {
     FluidRelayServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:fluidrelay:FluidRelayServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
-    this.fluidRelayEndpoints = registerOutput<FluidRelayEndpointsResponse>('fluidRelayEndpoints');
-    this.frsTenantId = registerOutput<String>('frsTenantId');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:fluidrelay:FluidRelayServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
+    fluidRelayEndpoints = registerOutput<FluidRelayEndpointsResponse>(
+      'fluidRelayEndpoints',
+    );
+    frsTenantId = registerOutput<String>('frsTenantId');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.storagesku = registerOutput<String?>('storagesku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String?>('provisioningState');
+    storagesku = registerOutput<String?>('storagesku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

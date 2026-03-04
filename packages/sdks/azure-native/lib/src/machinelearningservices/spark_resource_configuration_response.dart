@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkResourceConfigurationResponse {
   /// Optional type of VM used as supported by the compute target.
   final pulumi.Input<String>? instanceType;
+
   /// Version of spark runtime used for the job.
   final pulumi.Input<String>? runtimeVersion;
 
   /// Creates a new [SparkResourceConfigurationResponse].
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [runtimeVersion] Version of spark runtime used for the job.
-  SparkResourceConfigurationResponse({
-    this.instanceType,
-    this.runtimeVersion,
-  });
+  SparkResourceConfigurationResponse({this.instanceType, this.runtimeVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class SparkResourceConfigurationResponse {
 
   factory SparkResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SparkResourceConfigurationResponse(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeVersion: (() {
+        final guardedValue = map['runtimeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

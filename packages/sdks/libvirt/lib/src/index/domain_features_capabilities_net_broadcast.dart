@@ -8,20 +8,21 @@ class DomainFeaturesCapabilitiesNetBroadcast {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetBroadcast].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetBroadcast({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesNetBroadcast({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
-  factory DomainFeaturesCapabilitiesNetBroadcast.fromMap(Map<String, dynamic> map) {
+  factory DomainFeaturesCapabilitiesNetBroadcast.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainFeaturesCapabilitiesNetBroadcast(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

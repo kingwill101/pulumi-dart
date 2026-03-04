@@ -210,32 +210,46 @@ import 'orchestrator_instance_service_details_args.dart';
 class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
   /// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   late final pulumi.Output<String?> apiServerEndpoint;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// RootCA certificate of kubernetes cluster base64 encoded
   late final pulumi.Output<String?> clusterRootCA;
+
   /// Properties of the controller.
   late final pulumi.Output<ControllerDetailsResponse> controllerDetails;
+
   /// The identity of the orchestrator
   late final pulumi.Output<OrchestratorIdentityResponse?> identity;
+
   /// The kind of workbook. Choices are user and shared.
   late final pulumi.Output<String> kind;
+
   /// Location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// AAD ID used with apiserver
   late final pulumi.Output<String?> orchestratorAppId;
+
   /// TenantID of server App ID
   late final pulumi.Output<String?> orchestratorTenantId;
+
   /// private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   late final pulumi.Output<String?> privateLinkResourceId;
+
   /// The current state of orchestratorInstance resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource guid.
   late final pulumi.Output<String> resourceGuid;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of resource.
   late final pulumi.Output<String> type;
 
@@ -248,25 +262,27 @@ class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     OrchestratorInstanceServiceDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:delegatednetwork:OrchestratorInstanceServiceDetails',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiServerEndpoint = registerOutput<String?>('apiServerEndpoint');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterRootCA = registerOutput<String?>('clusterRootCA');
-    this.controllerDetails = registerOutput<ControllerDetailsResponse>('controllerDetails');
-    this.identity = registerOutput<OrchestratorIdentityResponse?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:delegatednetwork:OrchestratorInstanceServiceDetails',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiServerEndpoint = registerOutput<String?>('apiServerEndpoint');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterRootCA = registerOutput<String?>('clusterRootCA');
+    controllerDetails = registerOutput<ControllerDetailsResponse>(
+      'controllerDetails',
+    );
+    identity = registerOutput<OrchestratorIdentityResponse?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.orchestratorAppId = registerOutput<String?>('orchestratorAppId');
-    this.orchestratorTenantId = registerOutput<String?>('orchestratorTenantId');
-    this.privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    orchestratorAppId = registerOutput<String?>('orchestratorAppId');
+    orchestratorTenantId = registerOutput<String?>('orchestratorTenantId');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,16 +7,15 @@ enum HTTPSchemeType {
   valueHTTP("HTTP"),
   valueHTTPS("HTTPS");
 
-  const HTTPSchemeType(this.value);
-  final String value;
+  const HTTPSchemeType(this.wireValue);
+  final String wireValue;
 
   static HTTPSchemeType fromValue(String value) {
     for (final item in HTTPSchemeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HTTPSchemeType value: $value');
   }
 }
-

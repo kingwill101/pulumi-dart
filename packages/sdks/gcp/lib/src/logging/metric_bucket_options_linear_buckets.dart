@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricBucketOptionsLinearBuckets {
   /// Must be greater than 0.
   final pulumi.Input<int> numFiniteBuckets;
+
   /// Lower bound of the first bucket.
   final pulumi.Input<double> offset;
+
   /// Must be greater than 0.
   final pulumi.Input<double> width;
 
@@ -30,10 +32,9 @@ class MetricBucketOptionsLinearBuckets {
 
   factory MetricBucketOptionsLinearBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsLinearBuckets(
-      numFiniteBuckets: (map['numFiniteBuckets'] as int).input(),
-      offset: (map['offset'] as double).input(),
-      width: (map['width'] as double).input(),
+      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
+      offset: pulumi.Input.fromValue(map['offset'] as double),
+      width: pulumi.Input.fromValue(map['width'] as double),
     );
   }
 }
-

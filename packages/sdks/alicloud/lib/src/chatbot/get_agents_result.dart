@@ -7,12 +7,15 @@ import 'get_agents_agent.dart';
 class GetAgentsResult {
   /// The agent Name.
   final String agentName;
+
   /// A list of availability zones. Each element contains the following attributes:
   final List<GetAgentsAgent> agents;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of chatbot agents names.
   final List<String> names;
   final String? outputFile;
@@ -44,7 +47,10 @@ class GetAgentsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentName': agentName,
-      'agents': pulumi.Input.encodeList<GetAgentsAgent, Map<String, dynamic>>(agents, (value) => value.toMap()),
+      'agents': pulumi.Input.encodeList<GetAgentsAgent, Map<String, dynamic>>(
+        agents,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -58,15 +64,34 @@ class GetAgentsResult {
   factory GetAgentsResult.fromMap(Map<String, dynamic> map) {
     return GetAgentsResult(
       agentName: map['agentName'] as String,
-      agents: pulumi.Input.decodeList<GetAgentsAgent>(map['agents'], (value) => GetAgentsAgent.fromMap((value as Map).cast<String, dynamic>())),
+      agents: pulumi.Input.decodeList<GetAgentsAgent>(
+        map['agents']!,
+        (value) =>
+            GetAgentsAgent.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

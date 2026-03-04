@@ -3,16 +3,17 @@ enum SecurityPolicyRuleMatcherVersionedExpr {
   firewall("FIREWALL"),
   srcIpsV1("SRC_IPS_V1");
 
-  const SecurityPolicyRuleMatcherVersionedExpr(this.value);
-  final String value;
+  const SecurityPolicyRuleMatcherVersionedExpr(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyRuleMatcherVersionedExpr fromValue(String value) {
     for (final item in SecurityPolicyRuleMatcherVersionedExpr.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyRuleMatcherVersionedExpr value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyRuleMatcherVersionedExpr value: $value',
+    );
   }
 }
-

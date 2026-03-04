@@ -8,18 +8,26 @@ import 'system_data_response.dart';
 class GetDiskAccessAPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The resource of private end point.
   final PrivateEndpointResponse privateEndpoint;
+
   /// A collection of information about the state of the connection between DiskAccess and Virtual Network.
-  final PrivateLinkServiceConnectionStateResponse privateLinkServiceConnectionState;
+  final PrivateLinkServiceConnectionStateResponse
+  privateLinkServiceConnectionState;
+
   /// The provisioning state of the private endpoint connection resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -49,24 +57,34 @@ class GetDiskAccessAPrivateEndpointConnectionResult {
       'id': id,
       'name': name,
       'privateEndpoint': privateEndpoint.toMap(),
-      'privateLinkServiceConnectionState': privateLinkServiceConnectionState.toMap(),
+      'privateLinkServiceConnectionState': privateLinkServiceConnectionState
+          .toMap(),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetDiskAccessAPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
+  factory GetDiskAccessAPrivateEndpointConnectionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDiskAccessAPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      privateEndpoint: PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      privateEndpoint: PrivateEndpointResponse.fromMap(
+        (map['privateEndpoint']! as Map).cast<String, dynamic>(),
+      ),
+      privateLinkServiceConnectionState:
+          PrivateLinkServiceConnectionStateResponse.fromMap(
+            (map['privateLinkServiceConnectionState']! as Map)
+                .cast<String, dynamic>(),
+          ),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

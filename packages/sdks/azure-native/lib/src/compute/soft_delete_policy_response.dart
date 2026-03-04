@@ -9,20 +9,19 @@ class SoftDeletePolicyResponse {
 
   /// Creates a new [SoftDeletePolicyResponse].
   /// [isSoftDeleteEnabled] Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
-  SoftDeletePolicyResponse({
-    this.isSoftDeleteEnabled,
-  });
+  SoftDeletePolicyResponse({this.isSoftDeleteEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isSoftDeleteEnabled': ?isSoftDeleteEnabled,
-    };
+    return <String, dynamic>{'isSoftDeleteEnabled': ?isSoftDeleteEnabled};
   }
 
   factory SoftDeletePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicyResponse(
-      isSoftDeleteEnabled: map['isSoftDeleteEnabled'] == null ? null : (map['isSoftDeleteEnabled']! as bool).input(),
+      isSoftDeleteEnabled: (() {
+        final guardedValue = map['isSoftDeleteEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

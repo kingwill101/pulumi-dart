@@ -13,15 +13,14 @@ class MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguratio
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'insightsTarget': insightsTarget,
-    };
+    return <String, dynamic>{'insightsTarget': insightsTarget};
   }
 
-  factory MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration(
-      insightsTarget: (map['insightsTarget'] as String).input(),
+      insightsTarget: pulumi.Input.fromValue(map['insightsTarget'] as String),
     );
   }
 }
-

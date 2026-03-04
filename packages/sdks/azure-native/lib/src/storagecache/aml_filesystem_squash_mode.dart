@@ -4,16 +4,15 @@ enum AmlFilesystemSquashMode {
   valueRootOnly("RootOnly"),
   valueAll("All");
 
-  const AmlFilesystemSquashMode(this.value);
-  final String value;
+  const AmlFilesystemSquashMode(this.wireValue);
+  final String wireValue;
 
   static AmlFilesystemSquashMode fromValue(String value) {
     for (final item in AmlFilesystemSquashMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AmlFilesystemSquashMode value: $value');
   }
 }
-

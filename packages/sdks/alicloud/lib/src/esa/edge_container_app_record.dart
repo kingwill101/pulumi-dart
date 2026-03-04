@@ -8,7 +8,7 @@ import 'edge_container_app_record_state.dart';
 ///
 /// For information about ESA Edge Container App Record and how to use it, see [What is Edge Container App Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateEdgeContainerAppRecord).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -364,10 +364,13 @@ import 'edge_container_app_record_state.dart';
 class EdgeContainerAppRecord extends pulumi.CustomResource {
   /// The application ID
   late final pulumi.Output<String> appId;
+
   /// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// The associated domain name.
   late final pulumi.Output<String> recordName;
+
   /// The website ID.
   late final pulumi.Output<String> siteId;
 
@@ -380,15 +383,15 @@ class EdgeContainerAppRecord extends pulumi.CustomResource {
     EdgeContainerAppRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.createTime = registerOutput<String>('createTime');
-    this.recordName = registerOutput<String>('recordName');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    createTime = registerOutput<String>('createTime');
+    recordName = registerOutput<String>('recordName');
+    siteId = registerOutput<String>('siteId');
   }
 
   /// Gets an existing [EdgeContainerAppRecord] resource's state with the given [name] and [id].
@@ -409,14 +412,14 @@ class EdgeContainerAppRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.createTime = registerOutput<String>('createTime');
-    this.recordName = registerOutput<String>('recordName');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    createTime = registerOutput<String>('createTime');
+    recordName = registerOutput<String>('recordName');
+    siteId = registerOutput<String>('siteId');
   }
 }

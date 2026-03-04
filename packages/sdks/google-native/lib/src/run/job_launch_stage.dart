@@ -9,16 +9,15 @@ enum JobLaunchStage {
   ga("GA"),
   deprecated("DEPRECATED");
 
-  const JobLaunchStage(this.value);
-  final String value;
+  const JobLaunchStage(this.wireValue);
+  final String wireValue;
 
   static JobLaunchStage fromValue(String value) {
     for (final item in JobLaunchStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobLaunchStage value: $value');
   }
 }
-

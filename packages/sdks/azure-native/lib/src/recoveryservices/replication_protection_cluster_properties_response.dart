@@ -11,62 +11,94 @@ import 'shared_disk_replication_item_properties_response.dart';
 class ReplicationProtectionClusterPropertiesResponse {
   /// The Current active location of the Protection cluster.
   final pulumi.Input<String>? activeLocation;
+
   /// The Agent cluster Id.
   final pulumi.Input<String>? agentClusterId;
+
   /// The allowed operations on the Replication protection cluster.
   final pulumi.Input<List<String>>? allowedOperations;
+
   /// A value indicating whether all nodes of the cluster are registered or not.
   final pulumi.Input<bool>? areAllClusterNodesRegistered;
+
   /// The cluster FQDN.
   final pulumi.Input<String>? clusterFqdn;
+
   /// The List of cluster Node FQDNs.
   final pulumi.Input<List<String>>? clusterNodeFqdns;
+
   /// The List of Protected Item Id's.
   final pulumi.Input<List<String>>? clusterProtectedItemIds;
+
   /// The registered node details.
-  final pulumi.Input<List<RegisteredClusterNodesResponse>>? clusterRegisteredNodes;
+  final pulumi.Input<List<RegisteredClusterNodesResponse>>?
+  clusterRegisteredNodes;
+
   /// The current scenario.
   final pulumi.Input<CurrentScenarioDetailsResponse>? currentScenario;
+
   /// List of health errors.
   final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
+
   /// The last successful failover time.
   final pulumi.Input<String>? lastSuccessfulFailoverTime;
+
   /// The last successful test failover time.
   final pulumi.Input<String>? lastSuccessfulTestFailoverTime;
+
   /// The name of Policy governing this PE.
   final pulumi.Input<String>? policyFriendlyName;
+
   /// The Policy Id.
   final pulumi.Input<String>? policyId;
+
   /// The friendly name of the primary fabric.
   final pulumi.Input<String>? primaryFabricFriendlyName;
+
   /// The fabric provider of the primary fabric.
   final pulumi.Input<String>? primaryFabricProvider;
+
   /// The name of primary protection container friendly name.
   final pulumi.Input<String>? primaryProtectionContainerFriendlyName;
+
   /// The type of protection cluster type.
   final pulumi.Input<String>? protectionClusterType;
+
   /// The protection status.
   final pulumi.Input<String>? protectionState;
+
   /// The protection state description.
   final pulumi.Input<String>? protectionStateDescription;
+
   /// The Replication cluster provider custom settings.
-  final pulumi.Input<A2AReplicationProtectionClusterDetailsResponse>? providerSpecificDetails;
+  final pulumi.Input<A2AReplicationProtectionClusterDetailsResponse>?
+  providerSpecificDetails;
+
   /// The provisioning state of the cluster.
   final pulumi.Input<String> provisioningState;
+
   /// The recovery container Id.
   final pulumi.Input<String>? recoveryContainerId;
+
   /// The friendly name of recovery fabric.
   final pulumi.Input<String>? recoveryFabricFriendlyName;
+
   /// The Arm Id of recovery fabric.
   final pulumi.Input<String>? recoveryFabricId;
+
   /// The name of recovery container friendly name.
   final pulumi.Input<String>? recoveryProtectionContainerFriendlyName;
+
   /// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
   final pulumi.Input<String>? replicationHealth;
+
   /// The shared disk properties.
-  final pulumi.Input<SharedDiskReplicationItemPropertiesResponse>? sharedDiskProperties;
+  final pulumi.Input<SharedDiskReplicationItemPropertiesResponse>?
+  sharedDiskProperties;
+
   /// The Test failover state.
   final pulumi.Input<String>? testFailoverState;
+
   /// The Test failover state description.
   final pulumi.Input<String>? testFailoverStateDescription;
 
@@ -143,65 +175,246 @@ class ReplicationProtectionClusterPropertiesResponse {
       'clusterFqdn': ?clusterFqdn,
       'clusterNodeFqdns': ?clusterNodeFqdns,
       'clusterProtectedItemIds': ?clusterProtectedItemIds,
-      'clusterRegisteredNodes': ?pulumi.Input.mapOptionalInputValue<List<RegisteredClusterNodesResponse>, List<Map<String, dynamic>>>(clusterRegisteredNodes, (value) => pulumi.Input.encodeList<RegisteredClusterNodesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'currentScenario': ?pulumi.Input.mapOptionalInputValue<CurrentScenarioDetailsResponse, Map<String, dynamic>>(currentScenario, (value) => value.toMap()),
-      'healthErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clusterRegisteredNodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegisteredClusterNodesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            clusterRegisteredNodes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegisteredClusterNodesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'currentScenario':
+          ?pulumi.Input.mapOptionalInputValue<
+            CurrentScenarioDetailsResponse,
+            Map<String, dynamic>
+          >(currentScenario, (value) => value.toMap()),
+      'healthErrors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HealthErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            healthErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HealthErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'lastSuccessfulFailoverTime': ?lastSuccessfulFailoverTime,
       'lastSuccessfulTestFailoverTime': ?lastSuccessfulTestFailoverTime,
       'policyFriendlyName': ?policyFriendlyName,
       'policyId': ?policyId,
       'primaryFabricFriendlyName': ?primaryFabricFriendlyName,
       'primaryFabricProvider': ?primaryFabricProvider,
-      'primaryProtectionContainerFriendlyName': ?primaryProtectionContainerFriendlyName,
+      'primaryProtectionContainerFriendlyName':
+          ?primaryProtectionContainerFriendlyName,
       'protectionClusterType': ?protectionClusterType,
       'protectionState': ?protectionState,
       'protectionStateDescription': ?protectionStateDescription,
-      'providerSpecificDetails': ?pulumi.Input.mapOptionalInputValue<A2AReplicationProtectionClusterDetailsResponse, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
+      'providerSpecificDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            A2AReplicationProtectionClusterDetailsResponse,
+            Map<String, dynamic>
+          >(providerSpecificDetails, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'recoveryContainerId': ?recoveryContainerId,
       'recoveryFabricFriendlyName': ?recoveryFabricFriendlyName,
       'recoveryFabricId': ?recoveryFabricId,
-      'recoveryProtectionContainerFriendlyName': ?recoveryProtectionContainerFriendlyName,
+      'recoveryProtectionContainerFriendlyName':
+          ?recoveryProtectionContainerFriendlyName,
       'replicationHealth': ?replicationHealth,
-      'sharedDiskProperties': ?pulumi.Input.mapOptionalInputValue<SharedDiskReplicationItemPropertiesResponse, Map<String, dynamic>>(sharedDiskProperties, (value) => value.toMap()),
+      'sharedDiskProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SharedDiskReplicationItemPropertiesResponse,
+            Map<String, dynamic>
+          >(sharedDiskProperties, (value) => value.toMap()),
       'testFailoverState': ?testFailoverState,
       'testFailoverStateDescription': ?testFailoverStateDescription,
     };
   }
 
-  factory ReplicationProtectionClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ReplicationProtectionClusterPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationProtectionClusterPropertiesResponse(
-      activeLocation: map['activeLocation'] == null ? null : (map['activeLocation']! as String).input(),
-      agentClusterId: map['agentClusterId'] == null ? null : (map['agentClusterId']! as String).input(),
-      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations']! as List).cast<String>()).input(),
-      areAllClusterNodesRegistered: map['areAllClusterNodesRegistered'] == null ? null : (map['areAllClusterNodesRegistered']! as bool).input(),
-      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn']! as String).input(),
-      clusterNodeFqdns: map['clusterNodeFqdns'] == null ? null : ((map['clusterNodeFqdns']! as List).cast<String>()).input(),
-      clusterProtectedItemIds: map['clusterProtectedItemIds'] == null ? null : ((map['clusterProtectedItemIds']! as List).cast<String>()).input(),
-      clusterRegisteredNodes: map['clusterRegisteredNodes'] == null ? null : (pulumi.Input.decodeList<RegisteredClusterNodesResponse>(map['clusterRegisteredNodes']!, (value) => RegisteredClusterNodesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentScenario: map['currentScenario'] == null ? null : (CurrentScenarioDetailsResponse.fromMap((map['currentScenario']! as Map).cast<String, dynamic>())).input(),
-      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastSuccessfulFailoverTime: map['lastSuccessfulFailoverTime'] == null ? null : (map['lastSuccessfulFailoverTime']! as String).input(),
-      lastSuccessfulTestFailoverTime: map['lastSuccessfulTestFailoverTime'] == null ? null : (map['lastSuccessfulTestFailoverTime']! as String).input(),
-      policyFriendlyName: map['policyFriendlyName'] == null ? null : (map['policyFriendlyName']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      primaryFabricFriendlyName: map['primaryFabricFriendlyName'] == null ? null : (map['primaryFabricFriendlyName']! as String).input(),
-      primaryFabricProvider: map['primaryFabricProvider'] == null ? null : (map['primaryFabricProvider']! as String).input(),
-      primaryProtectionContainerFriendlyName: map['primaryProtectionContainerFriendlyName'] == null ? null : (map['primaryProtectionContainerFriendlyName']! as String).input(),
-      protectionClusterType: map['protectionClusterType'] == null ? null : (map['protectionClusterType']! as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      protectionStateDescription: map['protectionStateDescription'] == null ? null : (map['protectionStateDescription']! as String).input(),
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2AReplicationProtectionClusterDetailsResponse.fromMap((map['providerSpecificDetails']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      recoveryContainerId: map['recoveryContainerId'] == null ? null : (map['recoveryContainerId']! as String).input(),
-      recoveryFabricFriendlyName: map['recoveryFabricFriendlyName'] == null ? null : (map['recoveryFabricFriendlyName']! as String).input(),
-      recoveryFabricId: map['recoveryFabricId'] == null ? null : (map['recoveryFabricId']! as String).input(),
-      recoveryProtectionContainerFriendlyName: map['recoveryProtectionContainerFriendlyName'] == null ? null : (map['recoveryProtectionContainerFriendlyName']! as String).input(),
-      replicationHealth: map['replicationHealth'] == null ? null : (map['replicationHealth']! as String).input(),
-      sharedDiskProperties: map['sharedDiskProperties'] == null ? null : (SharedDiskReplicationItemPropertiesResponse.fromMap((map['sharedDiskProperties']! as Map).cast<String, dynamic>())).input(),
-      testFailoverState: map['testFailoverState'] == null ? null : (map['testFailoverState']! as String).input(),
-      testFailoverStateDescription: map['testFailoverStateDescription'] == null ? null : (map['testFailoverStateDescription']! as String).input(),
+      activeLocation: (() {
+        final guardedValue = map['activeLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentClusterId: (() {
+        final guardedValue = map['agentClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      allowedOperations: (() {
+        final guardedValue = map['allowedOperations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      areAllClusterNodesRegistered: (() {
+        final guardedValue = map['areAllClusterNodesRegistered'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterFqdn: (() {
+        final guardedValue = map['clusterFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterNodeFqdns: (() {
+        final guardedValue = map['clusterNodeFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clusterProtectedItemIds: (() {
+        final guardedValue = map['clusterProtectedItemIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clusterRegisteredNodes: (() {
+        final guardedValue = map['clusterRegisteredNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegisteredClusterNodesResponse>(
+            guardedValue,
+            (value) => RegisteredClusterNodesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      currentScenario: (() {
+        final guardedValue = map['currentScenario'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CurrentScenarioDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      healthErrors: (() {
+        final guardedValue = map['healthErrors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HealthErrorResponse>(
+            guardedValue,
+            (value) => HealthErrorResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      lastSuccessfulFailoverTime: (() {
+        final guardedValue = map['lastSuccessfulFailoverTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastSuccessfulTestFailoverTime: (() {
+        final guardedValue = map['lastSuccessfulTestFailoverTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyFriendlyName: (() {
+        final guardedValue = map['policyFriendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryFabricFriendlyName: (() {
+        final guardedValue = map['primaryFabricFriendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryFabricProvider: (() {
+        final guardedValue = map['primaryFabricProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryProtectionContainerFriendlyName: (() {
+        final guardedValue = map['primaryProtectionContainerFriendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionClusterType: (() {
+        final guardedValue = map['protectionClusterType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionStateDescription: (() {
+        final guardedValue = map['protectionStateDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerSpecificDetails: (() {
+        final guardedValue = map['providerSpecificDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          A2AReplicationProtectionClusterDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      recoveryContainerId: (() {
+        final guardedValue = map['recoveryContainerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryFabricFriendlyName: (() {
+        final guardedValue = map['recoveryFabricFriendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryFabricId: (() {
+        final guardedValue = map['recoveryFabricId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryProtectionContainerFriendlyName: (() {
+        final guardedValue = map['recoveryProtectionContainerFriendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationHealth: (() {
+        final guardedValue = map['replicationHealth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedDiskProperties: (() {
+        final guardedValue = map['sharedDiskProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SharedDiskReplicationItemPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      testFailoverState: (() {
+        final guardedValue = map['testFailoverState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testFailoverStateDescription: (() {
+        final guardedValue = map['testFailoverStateDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

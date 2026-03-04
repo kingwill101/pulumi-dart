@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeTypeArgs {
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// The name of the node type.
   final pulumi.Input<String> nodeTypeName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetNodeTypeArgs {
 
   factory GetNodeTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTypeArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      nodeTypeName: (map['nodeTypeName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      nodeTypeName: pulumi.Input.fromValue(map['nodeTypeName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

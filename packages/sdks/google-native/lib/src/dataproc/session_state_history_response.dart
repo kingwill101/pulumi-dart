@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionStateHistoryResponse {
   /// The state of the session at this point in the session history.
   final pulumi.Input<String> state;
+
   /// Details about the state at this point in the session history.
   final pulumi.Input<String> stateMessage;
+
   /// The time when the session entered the historical state.
   final pulumi.Input<String> stateStartTime;
 
@@ -31,10 +33,9 @@ class SessionStateHistoryResponse {
 
   factory SessionStateHistoryResponse.fromMap(Map<String, dynamic> map) {
     return SessionStateHistoryResponse(
-      state: (map['state'] as String).input(),
-      stateMessage: (map['stateMessage'] as String).input(),
-      stateStartTime: (map['stateStartTime'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
+      stateStartTime: pulumi.Input.fromValue(map['stateStartTime'] as String),
     );
   }
 }
-

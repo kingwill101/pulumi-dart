@@ -404,7 +404,7 @@ import 'pool_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -419,30 +419,40 @@ import 'pool_state.dart';
 class Pool extends pulumi.CustomResource {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// Whether the NetApp Pool can hold cool access enabled volumes. Defaults to `false`.
   ///
-  /// > **Note:** Disabling `cool_access_enabled` is not allowed and forces a new resource to be created.
+  /// &gt; **Note:** Disabling `cool_access_enabled` is not allowed and forces a new resource to be created.
   late final pulumi.Output<bool?> coolAccessEnabled;
+
   /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `service_level` is set to `Flexible` and `qos_type` is set to `Manual`.
   late final pulumi.Output<int?> customThroughputMibps;
+
   /// The encryption type of the pool. Valid values include `Single`, and `Double`. Defaults to `Single`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> encryptionType;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the NetApp Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// QoS Type of the pool. Valid values include `Auto` or `Manual`. Defaults to `Auto`.
   late final pulumi.Output<String?> qosType;
+
   /// The name of the resource group where the NetApp Pool should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The service level of the file system. Valid values include `Premium`, `Standard`, `Ultra`, and `Flexible`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceLevel;
+
   /// Provisioned size of the pool in TB. Value must be between `1` and `2048`.
   ///
-  /// > **Note:** `2` TB capacity pool sizing is currently in preview. You can only take advantage of the `2` TB minimum if all the volumes in the capacity pool are using `Standard` network features. If any volume is using `Basic` network features, the minimum size is `4` TB. Please see the product [documentation](https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) for more information.
+  /// &gt; **Note:** `2` TB capacity pool sizing is currently in preview. You can only take advantage of the `2` TB minimum if all the volumes in the capacity pool are using `Standard` network features. If any volume is using `Basic` network features, the minimum size is `4` TB. Please see the product [documentation](https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) for more information.
   ///
-  /// > **Note:** The maximum `size_in_tb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
+  /// &gt; **Note:** The maximum `size_in_tb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
   late final pulumi.Output<int> sizeInTb;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -450,35 +460,28 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_netapp_pool_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:netapp/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
-    this.customThroughputMibps = registerOutput<int?>('customThroughputMibps');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.location = registerOutput<String>('location');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:netapp/pool:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountName = registerOutput<String>('accountName');
+    coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
+    customThroughputMibps = registerOutput<int?>('customThroughputMibps');
+    encryptionType = registerOutput<String?>('encryptionType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.qosType = registerOutput<String?>('qosType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceLevel = registerOutput<String>('serviceLevel');
-    this.sizeInTb = registerOutput<int>('sizeInTb');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    qosType = registerOutput<String?>('qosType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    sizeInTb = registerOutput<int>('sizeInTb');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
-  static Pool get(
-    String name,
-    pulumi.Input<String> id, {
-    PoolState? state,
-  }) {
+  static Pool get(String name, pulumi.Input<String> id, {PoolState? state}) {
     return Pool._get(
       name,
       state: state?.toMap(),
@@ -491,21 +494,21 @@ class Pool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
-    this.customThroughputMibps = registerOutput<int?>('customThroughputMibps');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.location = registerOutput<String>('location');
+         'azure:netapp/pool:Pool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
+    customThroughputMibps = registerOutput<int?>('customThroughputMibps');
+    encryptionType = registerOutput<String?>('encryptionType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.qosType = registerOutput<String?>('qosType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceLevel = registerOutput<String>('serviceLevel');
-    this.sizeInTb = registerOutput<int>('sizeInTb');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    qosType = registerOutput<String?>('qosType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    sizeInTb = registerOutput<int>('sizeInTb');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

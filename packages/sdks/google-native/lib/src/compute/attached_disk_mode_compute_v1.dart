@@ -3,16 +3,15 @@ enum AttachedDiskModeComputeV1 {
   readOnly("READ_ONLY"),
   readWrite("READ_WRITE");
 
-  const AttachedDiskModeComputeV1(this.value);
-  final String value;
+  const AttachedDiskModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskModeComputeV1 fromValue(String value) {
     for (final item in AttachedDiskModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachedDiskModeComputeV1 value: $value');
   }
 }
-

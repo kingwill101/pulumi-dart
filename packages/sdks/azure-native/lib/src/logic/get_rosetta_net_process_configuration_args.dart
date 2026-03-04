@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRosettaNetProcessConfigurationArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The integration account RosettaNetProcessConfiguration name.
   final pulumi.Input<String> rosettaNetProcessConfigurationName;
 
@@ -32,12 +34,19 @@ class GetRosettaNetProcessConfigurationArgs {
     };
   }
 
-  factory GetRosettaNetProcessConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRosettaNetProcessConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRosettaNetProcessConfigurationArgs(
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rosettaNetProcessConfigurationName: (map['rosettaNetProcessConfigurationName'] as String).input(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rosettaNetProcessConfigurationName: pulumi.Input.fromValue(
+        map['rosettaNetProcessConfigurationName'] as String,
+      ),
     );
   }
 }
-

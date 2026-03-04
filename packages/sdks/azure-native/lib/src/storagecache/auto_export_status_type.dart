@@ -6,16 +6,15 @@ enum AutoExportStatusType {
   valueDisableFailed("DisableFailed"),
   valueFailed("Failed");
 
-  const AutoExportStatusType(this.value);
-  final String value;
+  const AutoExportStatusType(this.wireValue);
+  final String wireValue;
 
   static AutoExportStatusType fromValue(String value) {
     for (final item in AutoExportStatusType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoExportStatusType value: $value');
   }
 }
-

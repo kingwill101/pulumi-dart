@@ -10,20 +10,17 @@ class A2ACrossClusterMigrationPolicyCreationInput {
 
   /// Creates a new [A2ACrossClusterMigrationPolicyCreationInput].
   /// [instanceType] The class type.
-  A2ACrossClusterMigrationPolicyCreationInput({
-    required this.instanceType,
-  });
+  A2ACrossClusterMigrationPolicyCreationInput({required this.instanceType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceType': instanceType,
-    };
+    return <String, dynamic>{'instanceType': instanceType};
   }
 
-  factory A2ACrossClusterMigrationPolicyCreationInput.fromMap(Map<String, dynamic> map) {
+  factory A2ACrossClusterMigrationPolicyCreationInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return A2ACrossClusterMigrationPolicyCreationInput(
-      instanceType: (map['instanceType'] as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

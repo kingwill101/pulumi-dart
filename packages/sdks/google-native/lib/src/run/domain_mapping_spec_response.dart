@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainMappingSpecResponse {
   /// The mode of the certificate.
   final pulumi.Input<String> certificateMode;
+
   /// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
   final pulumi.Input<bool> forceOverride;
+
   /// The name of the Knative Route that this DomainMapping applies to. The route must exist.
   final pulumi.Input<String> routeName;
 
@@ -31,10 +33,9 @@ class DomainMappingSpecResponse {
 
   factory DomainMappingSpecResponse.fromMap(Map<String, dynamic> map) {
     return DomainMappingSpecResponse(
-      certificateMode: (map['certificateMode'] as String).input(),
-      forceOverride: (map['forceOverride'] as bool).input(),
-      routeName: (map['routeName'] as String).input(),
+      certificateMode: pulumi.Input.fromValue(map['certificateMode'] as String),
+      forceOverride: pulumi.Input.fromValue(map['forceOverride'] as bool),
+      routeName: pulumi.Input.fromValue(map['routeName'] as String),
     );
   }
 }
-

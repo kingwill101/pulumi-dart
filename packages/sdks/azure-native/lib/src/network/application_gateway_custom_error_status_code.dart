@@ -10,16 +10,17 @@ enum ApplicationGatewayCustomErrorStatusCode {
   valueHttpStatus503("HttpStatus503"),
   valueHttpStatus504("HttpStatus504");
 
-  const ApplicationGatewayCustomErrorStatusCode(this.value);
-  final String value;
+  const ApplicationGatewayCustomErrorStatusCode(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayCustomErrorStatusCode fromValue(String value) {
     for (final item in ApplicationGatewayCustomErrorStatusCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewayCustomErrorStatusCode value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewayCustomErrorStatusCode value: $value',
+    );
   }
 }
-

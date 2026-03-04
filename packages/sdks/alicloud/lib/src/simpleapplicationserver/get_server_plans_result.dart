@@ -9,6 +9,7 @@ class GetServerPlansResult {
   final int? core;
   final int? diskSize;
   final int? flow;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -51,24 +52,59 @@ class GetServerPlansResult {
       'ids': ids,
       'memory': ?memory,
       'outputFile': ?outputFile,
-      'plans': pulumi.Input.encodeList<GetServerPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
+      'plans':
+          pulumi.Input.encodeList<GetServerPlansPlan, Map<String, dynamic>>(
+            plans,
+            (value) => value.toMap(),
+          ),
       'platform': ?platform,
     };
   }
 
   factory GetServerPlansResult.fromMap(Map<String, dynamic> map) {
     return GetServerPlansResult(
-      bandwidth: map['bandwidth'] == null ? null : map['bandwidth']! as int,
-      core: map['core'] == null ? null : map['core']! as int,
-      diskSize: map['diskSize'] == null ? null : map['diskSize']! as int,
-      flow: map['flow'] == null ? null : map['flow']! as int,
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      core: (() {
+        final guardedValue = map['core'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      diskSize: (() {
+        final guardedValue = map['diskSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      flow: (() {
+        final guardedValue = map['flow'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      memory: map['memory'] == null ? null : map['memory']! as double,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      plans: pulumi.Input.decodeList<GetServerPlansPlan>(map['plans'], (value) => GetServerPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      platform: map['platform'] == null ? null : map['platform']! as String,
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      plans: pulumi.Input.decodeList<GetServerPlansPlan>(
+        map['plans']!,
+        (value) =>
+            GetServerPlansPlan.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

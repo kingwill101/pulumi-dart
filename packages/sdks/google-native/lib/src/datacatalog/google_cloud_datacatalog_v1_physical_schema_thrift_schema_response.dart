@@ -14,15 +14,14 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-    };
+    return <String, dynamic>{'text': text};
   }
 
-  factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse(
-      text: (map['text'] as String).input(),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

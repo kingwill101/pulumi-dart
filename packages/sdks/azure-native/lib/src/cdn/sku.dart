@@ -21,20 +21,19 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] Name of the pricing tier.
-  Sku({
-    this.name,
-  });
+  Sku({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -106,7 +106,7 @@ import 'get_environment_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -226,7 +226,7 @@ Future<GetAppResult> getApp(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -378,7 +378,7 @@ Future<GetEnvironmentResult> getEnvironment(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01

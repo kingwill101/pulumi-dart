@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusResponseGkehubV1alpha {
   /// Code specifies AppDevExperienceFeature's subcomponent ready state.
   final pulumi.Input<String> code;
+
   /// Description is populated if Code is Failed, explaining why it has failed.
   final pulumi.Input<String> description;
 
   /// Creates a new [StatusResponseGkehubV1alpha].
   /// [code] Code specifies AppDevExperienceFeature's subcomponent ready state.
   /// [description] Description is populated if Code is Failed, explaining why it has failed.
-  StatusResponseGkehubV1alpha({
-    required this.code,
-    required this.description,
-  });
+  StatusResponseGkehubV1alpha({required this.code, required this.description});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'description': description,
-    };
+    return <String, dynamic>{'code': code, 'description': description};
   }
 
   factory StatusResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return StatusResponseGkehubV1alpha(
-      code: (map['code'] as String).input(),
-      description: (map['description'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

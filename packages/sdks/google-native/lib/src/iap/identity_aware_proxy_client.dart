@@ -5,11 +5,14 @@ import 'identity_aware_proxy_client_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class IdentityAwareProxyClient extends pulumi.CustomResource {
   late final pulumi.Output<String> brandId;
+
   /// Human-friendly name given to the OAuth client.
   late final pulumi.Output<String> displayName;
+
   /// Unique identifier of the OAuth client.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Client secret of the OAuth client.
   late final pulumi.Output<String> secret;
 
@@ -22,15 +25,15 @@ class IdentityAwareProxyClient extends pulumi.CustomResource {
     IdentityAwareProxyClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:iap/v1:IdentityAwareProxyClient',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.brandId = registerOutput<String>('brandId');
-    this.displayName = registerOutput<String>('displayName');
+         'google-native:iap/v1:IdentityAwareProxyClient',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    brandId = registerOutput<String>('brandId');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.secret = registerOutput<String>('secret');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
   }
 }

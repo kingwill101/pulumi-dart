@@ -8,10 +8,13 @@ class StatelessAgentProfile {
   /// Discriminator property for AgentProfile.
   /// Expected value is 'Stateless'.
   final pulumi.Input<String> kind;
+
   /// Defines pool buffer/stand-by agents.
   final pulumi.Input<dynamic>? resourcePredictions;
+
   /// Defines how the pool buffer/stand-by agents is provided.
-  final pulumi.Input<AutomaticResourcePredictionsProfile>? resourcePredictionsProfile;
+  final pulumi.Input<AutomaticResourcePredictionsProfile>?
+  resourcePredictionsProfile;
 
   /// Creates a new [StatelessAgentProfile].
   /// [kind] Discriminator property for AgentProfile.
@@ -27,16 +30,31 @@ class StatelessAgentProfile {
     return <String, dynamic>{
       'kind': kind,
       'resourcePredictions': ?resourcePredictions,
-      'resourcePredictionsProfile': ?pulumi.Input.mapOptionalInputValue<AutomaticResourcePredictionsProfile, Map<String, dynamic>>(resourcePredictionsProfile, (value) => value.toMap()),
+      'resourcePredictionsProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutomaticResourcePredictionsProfile,
+            Map<String, dynamic>
+          >(resourcePredictionsProfile, (value) => value.toMap()),
     };
   }
 
   factory StatelessAgentProfile.fromMap(Map<String, dynamic> map) {
     return StatelessAgentProfile(
-      kind: (map['kind'] as String).input(),
-      resourcePredictions: map['resourcePredictions'] == null ? null : (map['resourcePredictions']!).input(),
-      resourcePredictionsProfile: map['resourcePredictionsProfile'] == null ? null : (AutomaticResourcePredictionsProfile.fromMap((map['resourcePredictionsProfile']! as Map).cast<String, dynamic>())).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      resourcePredictions: (() {
+        final guardedValue = map['resourcePredictions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      resourcePredictionsProfile: (() {
+        final guardedValue = map['resourcePredictionsProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutomaticResourcePredictionsProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

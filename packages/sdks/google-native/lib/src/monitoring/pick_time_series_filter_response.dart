@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PickTimeSeriesFilterResponse {
   /// How to use the ranking to select time series that pass through the filter.
   final pulumi.Input<String> direction;
+
   /// How many time series to allow to pass through the filter.
   final pulumi.Input<int> numTimeSeries;
+
   /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
   final pulumi.Input<String> rankingMethod;
 
@@ -31,10 +33,9 @@ class PickTimeSeriesFilterResponse {
 
   factory PickTimeSeriesFilterResponse.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilterResponse(
-      direction: (map['direction'] as String).input(),
-      numTimeSeries: (map['numTimeSeries'] as int).input(),
-      rankingMethod: (map['rankingMethod'] as String).input(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      numTimeSeries: pulumi.Input.fromValue(map['numTimeSeries'] as int),
+      rankingMethod: pulumi.Input.fromValue(map['rankingMethod'] as String),
     );
   }
 }
-

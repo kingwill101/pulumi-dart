@@ -4,16 +4,15 @@ enum ParamIndicator {
   keyId("KeyId"),
   signature("Signature");
 
-  const ParamIndicator(this.value);
-  final String value;
+  const ParamIndicator(this.wireValue);
+  final String wireValue;
 
   static ParamIndicator fromValue(String value) {
     for (final item in ParamIndicator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ParamIndicator value: $value');
   }
 }
-

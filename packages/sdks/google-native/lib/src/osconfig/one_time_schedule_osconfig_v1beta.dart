@@ -9,20 +9,15 @@ class OneTimeScheduleOsconfigV1beta {
 
   /// Creates a new [OneTimeScheduleOsconfigV1beta].
   /// [executeTime] The desired patch job execution time.
-  OneTimeScheduleOsconfigV1beta({
-    required this.executeTime,
-  });
+  OneTimeScheduleOsconfigV1beta({required this.executeTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'executeTime': executeTime,
-    };
+    return <String, dynamic>{'executeTime': executeTime};
   }
 
   factory OneTimeScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return OneTimeScheduleOsconfigV1beta(
-      executeTime: (map['executeTime'] as String).input(),
+      executeTime: pulumi.Input.fromValue(map['executeTime'] as String),
     );
   }
 }
-

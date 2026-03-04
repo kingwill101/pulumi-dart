@@ -7,10 +7,13 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
   /// specified name. The chain name must be 1-63 characters long and comply
   /// with RFC1035.
   final pulumi.Input<String> chainName;
+
   /// Whether to perform a 'guest aware' snapshot.
   final pulumi.Input<bool> guestFlush;
+
   /// A set of key-value pairs.
   final pulumi.Input<Map<String, String>> labels;
+
   /// Cloud Storage bucket location to store the auto snapshot
   /// (regional or multi-regional)
   final pulumi.Input<List<String>> storageLocations;
@@ -36,13 +39,18 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     };
   }
 
-  factory GetResourcePolicySnapshotSchedulePolicySnapshotProperty.fromMap(Map<String, dynamic> map) {
+  factory GetResourcePolicySnapshotSchedulePolicySnapshotProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResourcePolicySnapshotSchedulePolicySnapshotProperty(
-      chainName: (map['chainName'] as String).input(),
-      guestFlush: (map['guestFlush'] as bool).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      storageLocations: ((map['storageLocations'] as List).cast<String>()).input(),
+      chainName: pulumi.Input.fromValue(map['chainName'] as String),
+      guestFlush: pulumi.Input.fromValue(map['guestFlush'] as bool),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      storageLocations: pulumi.Input.fromValue(
+        (map['storageLocations'] as List).cast<String>(),
+      ),
     );
   }
 }
-

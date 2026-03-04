@@ -15,23 +15,33 @@ class NotificationHubArgs {
   /// Creates a new [NotificationHubArgs].
   /// [notificationHubRegion] Notification Hub region.
   /// [timeouts] Optional.
-  NotificationHubArgs({
-    required this.notificationHubRegion,
-    this.timeouts,
-  });
+  NotificationHubArgs({required this.notificationHubRegion, this.timeouts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'notificationHubRegion': notificationHubRegion,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<NotificationHubTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotificationHubTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory NotificationHubArgs.fromMap(Map<String, dynamic> map) {
     return NotificationHubArgs(
-      notificationHubRegion: (map['notificationHubRegion'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : ((NotificationHubTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      notificationHubRegion: pulumi.Input.fromValue(
+        map['notificationHubRegion'] as String,
+      ),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotificationHubTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

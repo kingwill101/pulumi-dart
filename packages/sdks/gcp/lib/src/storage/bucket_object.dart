@@ -405,66 +405,91 @@ import 'bucket_object_state.dart';
 class BucketObject extends pulumi.CustomResource {
   /// The name of the containing bucket.
   late final pulumi.Output<String> bucket;
+
   /// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
   /// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
   late final pulumi.Output<String?> cacheControl;
+
   /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
   late final pulumi.Output<String> content;
+
   /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
   late final pulumi.Output<String?> contentDisposition;
+
   /// [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
   late final pulumi.Output<String?> contentEncoding;
+
   /// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
   late final pulumi.Output<String?> contentLanguage;
+
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
   late final pulumi.Output<String> contentType;
+
   /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
   late final pulumi.Output<BucketObjectContexts?> contexts;
+
   /// (Computed) Base 64 CRC32 hash of the uploaded data.
   late final pulumi.Output<String> crc32c;
+
   /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
   /// Structure is documented below.
   late final pulumi.Output<BucketObjectCustomerEncryption?> customerEncryption;
   late final pulumi.Output<String?> deletionPolicy;
   late final pulumi.Output<String?> detectMd5hash;
+
   /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   late final pulumi.Output<bool?> eventBasedHold;
+
   /// When set to true, it ensure the object's Content-Type is empty.
   late final pulumi.Output<bool?> forceEmptyContentType;
+
   /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
   late final pulumi.Output<int> generation;
+
   /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
   late final pulumi.Output<String> kmsKeyName;
+
   /// (Computed) Base 64 MD5 hash of the uploaded data.
   late final pulumi.Output<String> md5hash;
+
   /// (Computed) Hex value of md5hash`
   late final pulumi.Output<String> md5hexhash;
+
   /// (Computed) A url reference to download this object.
   late final pulumi.Output<String> mediaLink;
+
   /// User-provided metadata, in key/value pairs.
   ///
   /// One of the following is required:
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
   late final pulumi.Output<String> name;
+
   /// (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
   late final pulumi.Output<String> outputName;
+
   /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
   late final pulumi.Output<BucketObjectRetention?> retention;
+
   /// (Computed) A url reference to this object.
   late final pulumi.Output<String> selfLink;
+
   /// A path to the data you want to upload. Must be defined
   /// if `content` is not.
   ///
   /// - - -
   late final pulumi.Output<dynamic> source;
+
   /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
   late final pulumi.Output<String?> sourceMd5hash;
+
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
   /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
   /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
   late final pulumi.Output<String> storageClass;
+
   /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
   late final pulumi.Output<bool?> temporaryHold;
 
@@ -477,39 +502,41 @@ class BucketObject extends pulumi.CustomResource {
     BucketObjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/bucketObject:BucketObject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<String>('content');
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLanguage = registerOutput<String?>('contentLanguage');
-    this.contentType = registerOutput<String>('contentType');
-    this.contexts = registerOutput<BucketObjectContexts?>('contexts');
-    this.crc32c = registerOutput<String>('crc32c');
-    this.customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.detectMd5hash = registerOutput<String?>('detectMd5hash');
-    this.eventBasedHold = registerOutput<bool?>('eventBasedHold');
-    this.forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
-    this.generation = registerOutput<int>('generation');
-    this.kmsKeyName = registerOutput<String>('kmsKeyName');
-    this.md5hash = registerOutput<String>('md5hash');
-    this.md5hexhash = registerOutput<String>('md5hexhash');
-    this.mediaLink = registerOutput<String>('mediaLink');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'gcp:storage/bucketObject:BucketObject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String>('content');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLanguage = registerOutput<String?>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    contexts = registerOutput<BucketObjectContexts?>('contexts');
+    crc32c = registerOutput<String>('crc32c');
+    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>(
+      'customerEncryption',
+    );
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    eventBasedHold = registerOutput<bool?>('eventBasedHold');
+    forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
+    generation = registerOutput<int>('generation');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    md5hash = registerOutput<String>('md5hash');
+    md5hexhash = registerOutput<String>('md5hexhash');
+    mediaLink = registerOutput<String>('mediaLink');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.outputName = registerOutput<String>('outputName');
-    this.retention = registerOutput<BucketObjectRetention?>('retention');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.source = registerOutput<dynamic>('source');
-    this.sourceMd5hash = registerOutput<String?>('sourceMd5hash');
-    this.storageClass = registerOutput<String>('storageClass');
-    this.temporaryHold = registerOutput<bool?>('temporaryHold');
+    outputName = registerOutput<String>('outputName');
+    retention = registerOutput<BucketObjectRetention?>('retention');
+    selfLink = registerOutput<String>('selfLink');
+    source = registerOutput<dynamic>('source');
+    sourceMd5hash = registerOutput<String?>('sourceMd5hash');
+    storageClass = registerOutput<String>('storageClass');
+    temporaryHold = registerOutput<bool?>('temporaryHold');
   }
 
   /// Gets an existing [BucketObject] resource's state with the given [name] and [id].
@@ -530,38 +557,40 @@ class BucketObject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/bucketObject:BucketObject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<String>('content');
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLanguage = registerOutput<String?>('contentLanguage');
-    this.contentType = registerOutput<String>('contentType');
-    this.contexts = registerOutput<BucketObjectContexts?>('contexts');
-    this.crc32c = registerOutput<String>('crc32c');
-    this.customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.detectMd5hash = registerOutput<String?>('detectMd5hash');
-    this.eventBasedHold = registerOutput<bool?>('eventBasedHold');
-    this.forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
-    this.generation = registerOutput<int>('generation');
-    this.kmsKeyName = registerOutput<String>('kmsKeyName');
-    this.md5hash = registerOutput<String>('md5hash');
-    this.md5hexhash = registerOutput<String>('md5hexhash');
-    this.mediaLink = registerOutput<String>('mediaLink');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'gcp:storage/bucketObject:BucketObject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String>('content');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLanguage = registerOutput<String?>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    contexts = registerOutput<BucketObjectContexts?>('contexts');
+    crc32c = registerOutput<String>('crc32c');
+    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>(
+      'customerEncryption',
+    );
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    eventBasedHold = registerOutput<bool?>('eventBasedHold');
+    forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
+    generation = registerOutput<int>('generation');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    md5hash = registerOutput<String>('md5hash');
+    md5hexhash = registerOutput<String>('md5hexhash');
+    mediaLink = registerOutput<String>('mediaLink');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.outputName = registerOutput<String>('outputName');
-    this.retention = registerOutput<BucketObjectRetention?>('retention');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.source = registerOutput<dynamic>('source');
-    this.sourceMd5hash = registerOutput<String?>('sourceMd5hash');
-    this.storageClass = registerOutput<String>('storageClass');
-    this.temporaryHold = registerOutput<bool?>('temporaryHold');
+    outputName = registerOutput<String>('outputName');
+    retention = registerOutput<BucketObjectRetention?>('retention');
+    selfLink = registerOutput<String>('selfLink');
+    source = registerOutput<dynamic>('source');
+    sourceMd5hash = registerOutput<String?>('sourceMd5hash');
+    storageClass = registerOutput<String>('storageClass');
+    temporaryHold = registerOutput<bool?>('temporaryHold');
   }
 }

@@ -2,19 +2,18 @@
 enum SettingsActivationPolicy {
   sqlActivationPolicyUnspecified("SQL_ACTIVATION_POLICY_UNSPECIFIED"),
   always("ALWAYS"),
-  never("NEVER"),
+  never_("NEVER"),
   onDemand("ON_DEMAND");
 
-  const SettingsActivationPolicy(this.value);
-  final String value;
+  const SettingsActivationPolicy(this.wireValue);
+  final String wireValue;
 
   static SettingsActivationPolicy fromValue(String value) {
     for (final item in SettingsActivationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsActivationPolicy value: $value');
   }
 }
-

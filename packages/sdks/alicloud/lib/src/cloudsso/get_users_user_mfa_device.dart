@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUserMfaDevice {
   /// The MFA Device ID.
   final pulumi.Input<String> deviceId;
+
   /// The MFA Device Name.
   final pulumi.Input<String> deviceName;
+
   /// The MFA Device Type.
   final pulumi.Input<String> deviceType;
+
   /// The Effective Time of MFA Device.
   final pulumi.Input<String> effectiveTime;
 
@@ -35,11 +38,10 @@ class GetUsersUserMfaDevice {
 
   factory GetUsersUserMfaDevice.fromMap(Map<String, dynamic> map) {
     return GetUsersUserMfaDevice(
-      deviceId: (map['deviceId'] as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      deviceType: (map['deviceType'] as String).input(),
-      effectiveTime: (map['effectiveTime'] as String).input(),
+      deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      deviceType: pulumi.Input.fromValue(map['deviceType'] as String),
+      effectiveTime: pulumi.Input.fromValue(map['effectiveTime'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupArgs {
   /// Name of the backup.
   final pulumi.Input<String>? backupName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -34,10 +36,15 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      backupName: (() {
+        final guardedValue = map['backupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

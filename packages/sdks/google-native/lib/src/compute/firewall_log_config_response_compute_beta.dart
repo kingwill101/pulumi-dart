@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallLogConfigResponseComputeBeta {
   /// This field denotes whether to enable logging for a particular firewall rule.
   final pulumi.Input<bool> enable;
+
   /// This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
   final pulumi.Input<String> metadata;
 
@@ -18,17 +19,15 @@ class FirewallLogConfigResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-      'metadata': metadata,
-    };
+    return <String, dynamic>{'enable': enable, 'metadata': metadata};
   }
 
-  factory FirewallLogConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FirewallLogConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallLogConfigResponseComputeBeta(
-      enable: (map['enable'] as bool).input(),
-      metadata: (map['metadata'] as String).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      metadata: pulumi.Input.fromValue(map['metadata'] as String),
     );
   }
 }
-

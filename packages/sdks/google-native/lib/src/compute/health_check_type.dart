@@ -9,16 +9,15 @@ enum HealthCheckType {
   tcp("TCP"),
   udp("UDP");
 
-  const HealthCheckType(this.value);
-  final String value;
+  const HealthCheckType(this.wireValue);
+  final String wireValue;
 
   static HealthCheckType fromValue(String value) {
     for (final item in HealthCheckType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HealthCheckType value: $value');
   }
 }
-

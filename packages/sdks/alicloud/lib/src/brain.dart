@@ -1,5 +1,3 @@
-library module_brain;
-
 export 'brain/functions.dart';
 export 'brain/get_industrial_pid_loops_args.dart';
 export 'brain/get_industrial_pid_loops_loop.dart';

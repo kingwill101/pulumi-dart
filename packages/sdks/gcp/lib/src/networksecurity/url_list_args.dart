@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlListArgs {
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
+
   /// The location of the url lists.
   final pulumi.Input<String> location;
+
   /// Short name of the UrlList resource to be created.
   /// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// FQDNs and URLs.
   final pulumi.Input<List<String>> values;
 
@@ -46,12 +50,23 @@ class UrlListArgs {
 
   factory UrlListArgs.fromMap(Map<String, dynamic> map) {
     return UrlListArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaVulnerablePackageArchitecture {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final pulumi.Input<String> comparison;
+
   /// (Required) The value to filter on.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class FilterFilterCriteriaVulnerablePackageArchitecture {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory FilterFilterCriteriaVulnerablePackageArchitecture.fromMap(Map<String, dynamic> map) {
+  factory FilterFilterCriteriaVulnerablePackageArchitecture.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FilterFilterCriteriaVulnerablePackageArchitecture(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

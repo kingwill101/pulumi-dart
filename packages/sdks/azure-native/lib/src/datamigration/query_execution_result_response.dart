@@ -7,10 +7,13 @@ import 'execution_statistics_response.dart';
 class QueryExecutionResultResponse {
   /// Query text retrieved from the source server
   final pulumi.Input<String>? queryText;
+
   /// Query analysis result from the source
   final pulumi.Input<ExecutionStatisticsResponse>? sourceResult;
+
   /// Total no. of statements in the batch
   final pulumi.Input<double>? statementsInBatch;
+
   /// Query analysis result from the target
   final pulumi.Input<ExecutionStatisticsResponse>? targetResult;
 
@@ -29,19 +32,50 @@ class QueryExecutionResultResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'queryText': ?queryText,
-      'sourceResult': ?pulumi.Input.mapOptionalInputValue<ExecutionStatisticsResponse, Map<String, dynamic>>(sourceResult, (value) => value.toMap()),
+      'sourceResult':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionStatisticsResponse,
+            Map<String, dynamic>
+          >(sourceResult, (value) => value.toMap()),
       'statementsInBatch': ?statementsInBatch,
-      'targetResult': ?pulumi.Input.mapOptionalInputValue<ExecutionStatisticsResponse, Map<String, dynamic>>(targetResult, (value) => value.toMap()),
+      'targetResult':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionStatisticsResponse,
+            Map<String, dynamic>
+          >(targetResult, (value) => value.toMap()),
     };
   }
 
   factory QueryExecutionResultResponse.fromMap(Map<String, dynamic> map) {
     return QueryExecutionResultResponse(
-      queryText: map['queryText'] == null ? null : (map['queryText']! as String).input(),
-      sourceResult: map['sourceResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['sourceResult']! as Map).cast<String, dynamic>())).input(),
-      statementsInBatch: map['statementsInBatch'] == null ? null : (map['statementsInBatch']! as double).input(),
-      targetResult: map['targetResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['targetResult']! as Map).cast<String, dynamic>())).input(),
+      queryText: (() {
+        final guardedValue = map['queryText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceResult: (() {
+        final guardedValue = map['sourceResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionStatisticsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      statementsInBatch: (() {
+        final guardedValue = map['statementsInBatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      targetResult: (() {
+        final guardedValue = map['targetResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionStatisticsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

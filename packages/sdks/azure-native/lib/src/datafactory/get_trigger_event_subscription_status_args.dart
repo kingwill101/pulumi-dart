@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerEventSubscriptionStatusArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The trigger name.
   final pulumi.Input<String> triggerName;
 
@@ -32,12 +34,15 @@ class GetTriggerEventSubscriptionStatusArgs {
     };
   }
 
-  factory GetTriggerEventSubscriptionStatusArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTriggerEventSubscriptionStatusArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTriggerEventSubscriptionStatusArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      triggerName: (map['triggerName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
     );
   }
 }
-

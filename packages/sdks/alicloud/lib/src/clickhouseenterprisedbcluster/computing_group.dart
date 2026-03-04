@@ -8,7 +8,7 @@ import 'computing_group_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster Computing Group and how to use it, see [What is Enterprise Db Cluster Computing Group](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateComputingGroup).
 ///
-/// > **NOTE:** Available since v1.270.0.
+/// &gt; **NOTE:** Available since v1.270.0.
 ///
 /// ## Example Usage
 ///
@@ -388,24 +388,34 @@ import 'computing_group_state.dart';
 class ComputingGroup extends pulumi.CustomResource {
   /// Computing group name
   late final pulumi.Output<String?> computingGroupDescription;
+
   /// A list of computing group endpoint names.
   late final pulumi.Output<List<String>> computingGroupEndpointNames;
+
   /// List of computing group endpoints.
   late final pulumi.Output<List<String>> computingGroupEndpoints;
+
   /// A resource property field representing the primary resource ID.
   late final pulumi.Output<String> computingGroupId;
+
   /// List of public endpoints for the computing group.
   late final pulumi.Output<List<String>> computingGroupPublicEndpoints;
+
   /// Computing group status.
   late final pulumi.Output<String> computingGroupStatus;
+
   /// ClickHouse Enterprise Edition instance ID
   late final pulumi.Output<String> dbInstanceId;
+
   /// Computing group read-only
   late final pulumi.Output<bool> isReadonly;
+
   /// Number of computing group nodes
   late final pulumi.Output<int> nodeCount;
+
   /// Computing group node elasticity upper limit
   late final pulumi.Output<int> nodeScaleMax;
+
   /// Lower limit of computing group node elasticity
   late final pulumi.Output<int> nodeScaleMin;
 
@@ -418,22 +428,30 @@ class ComputingGroup extends pulumi.CustomResource {
     ComputingGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computingGroupDescription = registerOutput<String?>('computingGroupDescription');
-    this.computingGroupEndpointNames = registerOutput<List<String>>('computingGroupEndpointNames');
-    this.computingGroupEndpoints = registerOutput<List<String>>('computingGroupEndpoints');
-    this.computingGroupId = registerOutput<String>('computingGroupId');
-    this.computingGroupPublicEndpoints = registerOutput<List<String>>('computingGroupPublicEndpoints');
-    this.computingGroupStatus = registerOutput<String>('computingGroupStatus');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.isReadonly = registerOutput<bool>('isReadonly');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.nodeScaleMax = registerOutput<int>('nodeScaleMax');
-    this.nodeScaleMin = registerOutput<int>('nodeScaleMin');
+         'alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computingGroupDescription = registerOutput<String?>(
+      'computingGroupDescription',
+    );
+    computingGroupEndpointNames = registerOutput<List<String>>(
+      'computingGroupEndpointNames',
+    );
+    computingGroupEndpoints = registerOutput<List<String>>(
+      'computingGroupEndpoints',
+    );
+    computingGroupId = registerOutput<String>('computingGroupId');
+    computingGroupPublicEndpoints = registerOutput<List<String>>(
+      'computingGroupPublicEndpoints',
+    );
+    computingGroupStatus = registerOutput<String>('computingGroupStatus');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    isReadonly = registerOutput<bool>('isReadonly');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeScaleMax = registerOutput<int>('nodeScaleMax');
+    nodeScaleMin = registerOutput<int>('nodeScaleMin');
   }
 
   /// Gets an existing [ComputingGroup] resource's state with the given [name] and [id].
@@ -454,21 +472,29 @@ class ComputingGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computingGroupDescription = registerOutput<String?>('computingGroupDescription');
-    this.computingGroupEndpointNames = registerOutput<List<String>>('computingGroupEndpointNames');
-    this.computingGroupEndpoints = registerOutput<List<String>>('computingGroupEndpoints');
-    this.computingGroupId = registerOutput<String>('computingGroupId');
-    this.computingGroupPublicEndpoints = registerOutput<List<String>>('computingGroupPublicEndpoints');
-    this.computingGroupStatus = registerOutput<String>('computingGroupStatus');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.isReadonly = registerOutput<bool>('isReadonly');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.nodeScaleMax = registerOutput<int>('nodeScaleMax');
-    this.nodeScaleMin = registerOutput<int>('nodeScaleMin');
+         'alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computingGroupDescription = registerOutput<String?>(
+      'computingGroupDescription',
+    );
+    computingGroupEndpointNames = registerOutput<List<String>>(
+      'computingGroupEndpointNames',
+    );
+    computingGroupEndpoints = registerOutput<List<String>>(
+      'computingGroupEndpoints',
+    );
+    computingGroupId = registerOutput<String>('computingGroupId');
+    computingGroupPublicEndpoints = registerOutput<List<String>>(
+      'computingGroupPublicEndpoints',
+    );
+    computingGroupStatus = registerOutput<String>('computingGroupStatus');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    isReadonly = registerOutput<bool>('isReadonly');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeScaleMax = registerOutput<int>('nodeScaleMax');
+    nodeScaleMin = registerOutput<int>('nodeScaleMin');
   }
 }

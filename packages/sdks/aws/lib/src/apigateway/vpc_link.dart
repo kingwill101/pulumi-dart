@@ -4,7 +4,7 @@ import 'vpc_link_state.dart';
 
 /// Provides an API Gateway VPC Link.
 ///
-/// > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
+/// &gt; **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
 /// To enable private integration for HTTP APIs, use the Amazon API Gateway Version 2 VPC Link resource.
 ///
 /// ## Example Usage
@@ -182,16 +182,22 @@ import 'vpc_link_state.dart';
 /// ```
 class VpcLink extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
+
   /// Description of the VPC link.
   late final pulumi.Output<String?> description;
+
   /// Name used to label and identify the VPC link.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
   late final pulumi.Output<String> targetArn;
 
@@ -204,18 +210,18 @@ class VpcLink extends pulumi.CustomResource {
     VpcLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/vpcLink:VpcLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:apigateway/vpcLink:VpcLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetArn = registerOutput<String>('targetArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetArn = registerOutput<String>('targetArn');
   }
 
   /// Gets an existing [VpcLink] resource's state with the given [name] and [id].
@@ -236,17 +242,17 @@ class VpcLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/vpcLink:VpcLink',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:apigateway/vpcLink:VpcLink',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetArn = registerOutput<String>('targetArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetArn = registerOutput<String>('targetArn');
   }
 }

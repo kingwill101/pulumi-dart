@@ -10,20 +10,34 @@ class FileHashesResponse {
 
   /// Creates a new [FileHashesResponse].
   /// [fileHash] Collection of file hashes.
-  FileHashesResponse({
-    required this.fileHash,
-  });
+  FileHashesResponse({required this.fileHash});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fileHash': pulumi.Input.mapInputValue<List<HashResponse>, List<Map<String, dynamic>>>(fileHash, (value) => pulumi.Input.encodeList<HashResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fileHash':
+          pulumi.Input.mapInputValue<
+            List<HashResponse>,
+            List<Map<String, dynamic>>
+          >(
+            fileHash,
+            (value) =>
+                pulumi.Input.encodeList<HashResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory FileHashesResponse.fromMap(Map<String, dynamic> map) {
     return FileHashesResponse(
-      fileHash: (pulumi.Input.decodeList<HashResponse>(map['fileHash'], (value) => HashResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileHash: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HashResponse>(
+          map['fileHash']!,
+          (value) =>
+              HashResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

@@ -5,34 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretParametersParameter {
   /// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> constraints;
+
   /// The time when the encryption parameter was created.
   final pulumi.Input<String> createTime;
+
   /// The user who created the encryption parameter.
   final pulumi.Input<String> createdBy;
+
   /// The description of the encryption parameter.
   final pulumi.Input<String> description;
+
   /// The ID of the Secret Parameter.
   final pulumi.Input<String> id;
+
   /// The ID of the key of Key Management Service (KMS) that is used for encryption.
   final pulumi.Input<String> keyId;
+
   /// The version number of the encryption parameter.
   final pulumi.Input<int> parameterVersion;
+
   /// The ID of the Resource Group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The ID of the encryption parameter.
   final pulumi.Input<String> secretParameterId;
+
   /// The name of the Secret Parameter.
   final pulumi.Input<String> secretParameterName;
+
   /// The share type of the encryption parameter.
   final pulumi.Input<String> shareType;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The type of the parameter.
   final pulumi.Input<String> type;
+
   /// The user who updated the encryption parameter.
   final pulumi.Input<String> updatedBy;
+
   /// The time when the encryption parameter was updated.
   final pulumi.Input<String> updatedDate;
+
   /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
   final pulumi.Input<String> value;
 
@@ -95,23 +110,26 @@ class GetSecretParametersParameter {
 
   factory GetSecretParametersParameter.fromMap(Map<String, dynamic> map) {
     return GetSecretParametersParameter(
-      constraints: (map['constraints'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      keyId: (map['keyId'] as String).input(),
-      parameterVersion: (map['parameterVersion'] as int).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      secretParameterId: (map['secretParameterId'] as String).input(),
-      secretParameterName: (map['secretParameterName'] as String).input(),
-      shareType: (map['shareType'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
-      updatedBy: (map['updatedBy'] as String).input(),
-      updatedDate: (map['updatedDate'] as String).input(),
-      value: (map['value'] as String).input(),
+      constraints: pulumi.Input.fromValue(map['constraints'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      parameterVersion: pulumi.Input.fromValue(map['parameterVersion'] as int),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      secretParameterId: pulumi.Input.fromValue(
+        map['secretParameterId'] as String,
+      ),
+      secretParameterName: pulumi.Input.fromValue(
+        map['secretParameterName'] as String,
+      ),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updatedBy: pulumi.Input.fromValue(map['updatedBy'] as String),
+      updatedDate: pulumi.Input.fromValue(map['updatedDate'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

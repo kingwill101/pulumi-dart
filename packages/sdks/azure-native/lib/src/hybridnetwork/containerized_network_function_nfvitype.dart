@@ -3,16 +3,17 @@ enum ContainerizedNetworkFunctionNFVIType {
   valueUnknown("Unknown"),
   valueAzureArcKubernetes("AzureArcKubernetes");
 
-  const ContainerizedNetworkFunctionNFVIType(this.value);
-  final String value;
+  const ContainerizedNetworkFunctionNFVIType(this.wireValue);
+  final String wireValue;
 
   static ContainerizedNetworkFunctionNFVIType fromValue(String value) {
     for (final item in ContainerizedNetworkFunctionNFVIType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ContainerizedNetworkFunctionNFVIType value: $value');
+    throw ArgumentError(
+      'Unknown ContainerizedNetworkFunctionNFVIType value: $value',
+    );
   }
 }
-

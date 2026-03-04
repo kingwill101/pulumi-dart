@@ -7,16 +7,15 @@ enum ConditionOp {
   notIn("NOT_IN"),
   noOp("NO_OP");
 
-  const ConditionOp(this.value);
-  final String value;
+  const ConditionOp(this.wireValue);
+  final String wireValue;
 
   static ConditionOp fromValue(String value) {
     for (final item in ConditionOp.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionOp value: $value');
   }
 }
-

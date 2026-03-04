@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'voice_connector_group_args.dart';
-import 'voice_connector_group_connector.dart';
 import 'voice_connector_group_state.dart';
 
 /// Creates an Amazon Chime Voice Connector group under the administrator's AWS account. You can associate Amazon Chime Voice Connectors with the Amazon Chime Voice Connector group by including VoiceConnectorItems in the request.
@@ -238,9 +237,11 @@ import 'voice_connector_group_state.dart';
 /// ```
 class VoiceConnectorGroup extends pulumi.CustomResource {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
-  late final pulumi.Output<List<VoiceConnectorGroupConnector>?> connectors;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connectors;
+
   /// The name of the Amazon Chime Voice Connector group.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -253,14 +254,14 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
     VoiceConnectorGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors');
+         'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectors = registerOutput<List<Map<String, dynamic>>?>('connectors');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [VoiceConnectorGroup] resource's state with the given [name] and [id].
@@ -281,13 +282,13 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors');
+         'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectors = registerOutput<List<Map<String, dynamic>>?>('connectors');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StoreEncryptConfUserCmkInfo {
   /// Role arn.
   final pulumi.Input<String>? arn;
+
   /// User master key id.
   final pulumi.Input<String>? cmkKeyId;
+
   /// Region id where the user master key id is located.
   final pulumi.Input<String>? regionId;
 
@@ -14,11 +16,7 @@ class StoreEncryptConfUserCmkInfo {
   /// [arn] Role arn.
   /// [cmkKeyId] User master key id.
   /// [regionId] Region id where the user master key id is located.
-  StoreEncryptConfUserCmkInfo({
-    this.arn,
-    this.cmkKeyId,
-    this.regionId,
-  });
+  StoreEncryptConfUserCmkInfo({this.arn, this.cmkKeyId, this.regionId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class StoreEncryptConfUserCmkInfo {
 
   factory StoreEncryptConfUserCmkInfo.fromMap(Map<String, dynamic> map) {
     return StoreEncryptConfUserCmkInfo(
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      cmkKeyId: map['cmkKeyId'] == null ? null : (map['cmkKeyId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cmkKeyId: (() {
+        final guardedValue = map['cmkKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

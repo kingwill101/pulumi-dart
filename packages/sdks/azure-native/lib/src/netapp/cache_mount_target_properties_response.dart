@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheMountTargetPropertiesResponse {
   /// The mount target's IPv4 address, used to mount the cache.
   final pulumi.Input<String> ipAddress;
+
   /// UUID v4 used to identify the MountTarget
   final pulumi.Input<String> mountTargetId;
+
   /// The SMB server's Fully Qualified Domain Name, FQDN
   final pulumi.Input<String> smbServerFqdn;
 
@@ -31,10 +33,9 @@ class CacheMountTargetPropertiesResponse {
 
   factory CacheMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CacheMountTargetPropertiesResponse(
-      ipAddress: (map['ipAddress'] as String).input(),
-      mountTargetId: (map['mountTargetId'] as String).input(),
-      smbServerFqdn: (map['smbServerFqdn'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      mountTargetId: pulumi.Input.fromValue(map['mountTargetId'] as String),
+      smbServerFqdn: pulumi.Input.fromValue(map['smbServerFqdn'] as String),
     );
   }
 }
-

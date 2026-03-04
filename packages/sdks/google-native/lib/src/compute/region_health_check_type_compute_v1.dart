@@ -8,16 +8,15 @@ enum RegionHealthCheckTypeComputeV1 {
   ssl("SSL"),
   tcp("TCP");
 
-  const RegionHealthCheckTypeComputeV1(this.value);
-  final String value;
+  const RegionHealthCheckTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionHealthCheckTypeComputeV1 fromValue(String value) {
     for (final item in RegionHealthCheckTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionHealthCheckTypeComputeV1 value: $value');
   }
 }
-

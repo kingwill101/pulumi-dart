@@ -7,29 +7,51 @@ import 'system_parameter.dart';
 class SystemParameterRule {
   /// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
   final pulumi.Input<List<SystemParameter>>? parameters;
+
   /// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
   final pulumi.Input<String>? selector;
 
   /// Creates a new [SystemParameterRule].
   /// [parameters] Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
   /// [selector] Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
-  SystemParameterRule({
-    this.parameters,
-    this.selector,
-  });
+  SystemParameterRule({this.parameters, this.selector});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<SystemParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<SystemParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SystemParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<SystemParameter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'selector': ?selector,
     };
   }
 
   factory SystemParameterRule.fromMap(Map<String, dynamic> map) {
     return SystemParameterRule(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SystemParameter>(map['parameters']!, (value) => SystemParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SystemParameter>(
+            guardedValue,
+            (value) =>
+                SystemParameter.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

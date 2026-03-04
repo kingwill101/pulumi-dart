@@ -7,83 +7,109 @@ import 'vpc_security_group_membership_response.dart';
 
 /// Definition of awsDatabaseMigrationServiceReplicationInstance
 class AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse {
-  /// <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+  /// &lt;p&gt;The amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
   final pulumi.Input<int>? allocatedStorage;
-  /// <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
+
+  /// &lt;p&gt;Boolean value indicating if minor version upgrades will be automatically applied to the instance.&lt;/p&gt;
   final pulumi.Input<bool>? autoMinorVersionUpgrade;
-  /// <p>The Availability Zone for the instance.</p>
+
+  /// &lt;p&gt;The Availability Zone for the instance.&lt;/p&gt;
   final pulumi.Input<String>? availabilityZone;
-  /// <p>The DNS name servers supported for the replication instance to access your on-premise source or target database.</p>
+
+  /// &lt;p&gt;The DNS name servers supported for the replication instance to access your on-premise source or target database.&lt;/p&gt;
   final pulumi.Input<String>? dnsNameServers;
-  /// <p>The engine version number of the replication instance.</p> <p>If an engine version number is not specified when a replication instance is created, the default is the latest engine version available.</p> <p>When modifying a major engine version of an instance, also set <code>AllowMajorVersionUpgrade</code> to <code>true</code>.</p>
+
+  /// &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt; &lt;p&gt;If an engine version number is not specified when a replication instance is created, the default is the latest engine version available.&lt;/p&gt; &lt;p&gt;When modifying a major engine version of an instance, also set &lt;code&gt;AllowMajorVersionUpgrade&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? engineVersion;
-  /// <p> The expiration date of the free replication instance that is part of the Free DMS program. </p>
+
+  /// &lt;p&gt; The expiration date of the free replication instance that is part of the Free DMS program. &lt;/p&gt;
   final pulumi.Input<String>? freeUntil;
-  /// <p>The time the replication instance was created.</p>
+
+  /// &lt;p&gt;The time the replication instance was created.&lt;/p&gt;
   final pulumi.Input<String>? instanceCreateTime;
-  /// <p>An KMS key identifier that is used to encrypt the data on the replication instance.</p> <p>If you don't specify a value for the <code>KmsKeyId</code> parameter, then DMS uses your default encryption key.</p> <p>KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.</p>
+
+  /// &lt;p&gt;An KMS key identifier that is used to encrypt the data on the replication instance.&lt;/p&gt; &lt;p&gt;If you don't specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then DMS uses your default encryption key.&lt;/p&gt; &lt;p&gt;KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.&lt;/p&gt;
   final pulumi.Input<String>? kmsKeyId;
-  /// <p> Specifies whether the replication instance is a Multi-AZ deployment. You can't set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+
+  /// &lt;p&gt; Specifies whether the replication instance is a Multi-AZ deployment. You can't set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<bool>? multiAZ;
-  /// <p>The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</p>
+
+  /// &lt;p&gt;The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
   final pulumi.Input<String>? networkType;
-  /// <p>The pending modification values.</p>
-  final pulumi.Input<ReplicationPendingModifiedValuesResponse>? pendingModifiedValues;
-  /// <p>The maintenance window times for the replication instance. Any pending upgrades to the replication instance are performed during this time.</p>
+
+  /// &lt;p&gt;The pending modification values.&lt;/p&gt;
+  final pulumi.Input<ReplicationPendingModifiedValuesResponse>?
+  pendingModifiedValues;
+
+  /// &lt;p&gt;The maintenance window times for the replication instance. Any pending upgrades to the replication instance are performed during this time.&lt;/p&gt;
   final pulumi.Input<String>? preferredMaintenanceWindow;
-  /// <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+
+  /// &lt;p&gt; Specifies the accessibility options for the replication instance. A value of &lt;code&gt;true&lt;/code&gt; represents an instance with a public IP address. A value of &lt;code&gt;false&lt;/code&gt; represents an instance with a private IP address. The default value is &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<bool>? publiclyAccessible;
-  /// <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
   final pulumi.Input<String>? replicationInstanceArn;
-  /// <p>The compute and memory capacity of the replication instance as defined for the specified replication instance class. It is a required parameter, although a default value is pre-selected in the DMS console.</p> <p>For more information on the settings and capacities for the available replication instance classes, see <a href='https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth'> Selecting the right DMS replication instance for your migration</a>. </p>
+
+  /// &lt;p&gt;The compute and memory capacity of the replication instance as defined for the specified replication instance class. It is a required parameter, although a default value is pre-selected in the DMS console.&lt;/p&gt; &lt;p&gt;For more information on the settings and capacities for the available replication instance classes, see &lt;a href='https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth'&gt; Selecting the right DMS replication instance for your migration&lt;/a&gt;. &lt;/p&gt;
   final pulumi.Input<String>? replicationInstanceClass;
-  /// <p>The replication instance identifier is a required parameter. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1-63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+
+  /// &lt;p&gt;The replication instance identifier is a required parameter. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1-63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myrepinstance&lt;/code&gt; &lt;/p&gt;
   final pulumi.Input<String>? replicationInstanceIdentifier;
-  /// <p>One or more IPv6 addresses for the replication instance.</p>
+
+  /// &lt;p&gt;One or more IPv6 addresses for the replication instance.&lt;/p&gt;
   final pulumi.Input<List<String>>? replicationInstanceIpv6Addresses;
-  /// <p>The private IP address of the replication instance.</p>
+
+  /// &lt;p&gt;The private IP address of the replication instance.&lt;/p&gt;
   final pulumi.Input<String>? replicationInstancePrivateIpAddress;
-  /// <p>One or more private IP addresses for the replication instance.</p>
+
+  /// &lt;p&gt;One or more private IP addresses for the replication instance.&lt;/p&gt;
   final pulumi.Input<List<String>>? replicationInstancePrivateIpAddresses;
-  /// <p>The public IP address of the replication instance.</p>
+
+  /// &lt;p&gt;The public IP address of the replication instance.&lt;/p&gt;
   final pulumi.Input<String>? replicationInstancePublicIpAddress;
-  /// <p>One or more public IP addresses for the replication instance.</p>
+
+  /// &lt;p&gt;One or more public IP addresses for the replication instance.&lt;/p&gt;
   final pulumi.Input<List<String>>? replicationInstancePublicIpAddresses;
-  /// <p>The status of the replication instance. The possible return values include:</p> <ul> <li> <p> <code>'available'</code> </p> </li> <li> <p> <code>'creating'</code> </p> </li> <li> <p> <code>'deleted'</code> </p> </li> <li> <p> <code>'deleting'</code> </p> </li> <li> <p> <code>'failed'</code> </p> </li> <li> <p> <code>'modifying'</code> </p> </li> <li> <p> <code>'upgrading'</code> </p> </li> <li> <p> <code>'rebooting'</code> </p> </li> <li> <p> <code>'resetting-master-credentials'</code> </p> </li> <li> <p> <code>'storage-full'</code> </p> </li> <li> <p> <code>'incompatible-credentials'</code> </p> </li> <li> <p> <code>'incompatible-network'</code> </p> </li> <li> <p> <code>'maintenance'</code> </p> </li> </ul>
+
+  /// &lt;p&gt;The status of the replication instance. The possible return values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'available'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'creating'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'deleted'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'deleting'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'failed'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'modifying'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'upgrading'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'rebooting'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'resetting-master-credentials'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'storage-full'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'incompatible-credentials'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'incompatible-network'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'maintenance'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? replicationInstanceStatus;
-  /// <p>The subnet group for the replication instance.</p>
+
+  /// &lt;p&gt;The subnet group for the replication instance.&lt;/p&gt;
   final pulumi.Input<ReplicationSubnetGroupResponse>? replicationSubnetGroup;
-  /// <p>The Availability Zone of the standby replication instance in a Multi-AZ deployment.</p>
+
+  /// &lt;p&gt;The Availability Zone of the standby replication instance in a Multi-AZ deployment.&lt;/p&gt;
   final pulumi.Input<String>? secondaryAvailabilityZone;
-  /// <p>The VPC security group for the instance.</p>
-  final pulumi.Input<List<VpcSecurityGroupMembershipResponse>>? vpcSecurityGroups;
+
+  /// &lt;p&gt;The VPC security group for the instance.&lt;/p&gt;
+  final pulumi.Input<List<VpcSecurityGroupMembershipResponse>>?
+  vpcSecurityGroups;
 
   /// Creates a new [AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse].
-  /// [allocatedStorage] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
-  /// [autoMinorVersionUpgrade] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
-  /// [availabilityZone] <p>The Availability Zone for the instance.</p>
-  /// [dnsNameServers] <p>The DNS name servers supported for the replication instance to access your on-premise source or target database.</p>
-  /// [engineVersion] <p>The engine version number of the replication instance.</p> <p>If an engine version number is not specified when a replication instance is created, the default is the latest engine version available.</p> <p>When modifying a major engine version of an instance, also set <code>AllowMajorVersionUpgrade</code> to <code>true</code>.</p>
-  /// [freeUntil] <p> The expiration date of the free replication instance that is part of the Free DMS program. </p>
-  /// [instanceCreateTime] <p>The time the replication instance was created.</p>
-  /// [kmsKeyId] <p>An KMS key identifier that is used to encrypt the data on the replication instance.</p> <p>If you don't specify a value for the <code>KmsKeyId</code> parameter, then DMS uses your default encryption key.</p> <p>KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.</p>
-  /// [multiAZ] <p> Specifies whether the replication instance is a Multi-AZ deployment. You can't set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
-  /// [networkType] <p>The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</p>
-  /// [pendingModifiedValues] <p>The pending modification values.</p>
-  /// [preferredMaintenanceWindow] <p>The maintenance window times for the replication instance. Any pending upgrades to the replication instance are performed during this time.</p>
-  /// [publiclyAccessible] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
-  /// [replicationInstanceArn] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
-  /// [replicationInstanceClass] <p>The compute and memory capacity of the replication instance as defined for the specified replication instance class. It is a required parameter, although a default value is pre-selected in the DMS console.</p> <p>For more information on the settings and capacities for the available replication instance classes, see <a href='https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth'> Selecting the right DMS replication instance for your migration</a>. </p>
-  /// [replicationInstanceIdentifier] <p>The replication instance identifier is a required parameter. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1-63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
-  /// [replicationInstanceIpv6Addresses] <p>One or more IPv6 addresses for the replication instance.</p>
-  /// [replicationInstancePrivateIpAddress] <p>The private IP address of the replication instance.</p>
-  /// [replicationInstancePrivateIpAddresses] <p>One or more private IP addresses for the replication instance.</p>
-  /// [replicationInstancePublicIpAddress] <p>The public IP address of the replication instance.</p>
-  /// [replicationInstancePublicIpAddresses] <p>One or more public IP addresses for the replication instance.</p>
-  /// [replicationInstanceStatus] <p>The status of the replication instance. The possible return values include:</p> <ul> <li> <p> <code>'available'</code> </p> </li> <li> <p> <code>'creating'</code> </p> </li> <li> <p> <code>'deleted'</code> </p> </li> <li> <p> <code>'deleting'</code> </p> </li> <li> <p> <code>'failed'</code> </p> </li> <li> <p> <code>'modifying'</code> </p> </li> <li> <p> <code>'upgrading'</code> </p> </li> <li> <p> <code>'rebooting'</code> </p> </li> <li> <p> <code>'resetting-master-credentials'</code> </p> </li> <li> <p> <code>'storage-full'</code> </p> </li> <li> <p> <code>'incompatible-credentials'</code> </p> </li> <li> <p> <code>'incompatible-network'</code> </p> </li> <li> <p> <code>'maintenance'</code> </p> </li> </ul>
-  /// [replicationSubnetGroup] <p>The subnet group for the replication instance.</p>
-  /// [secondaryAvailabilityZone] <p>The Availability Zone of the standby replication instance in a Multi-AZ deployment.</p>
-  /// [vpcSecurityGroups] <p>The VPC security group for the instance.</p>
+  /// [allocatedStorage] &lt;p&gt;The amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
+  /// [autoMinorVersionUpgrade] &lt;p&gt;Boolean value indicating if minor version upgrades will be automatically applied to the instance.&lt;/p&gt;
+  /// [availabilityZone] &lt;p&gt;The Availability Zone for the instance.&lt;/p&gt;
+  /// [dnsNameServers] &lt;p&gt;The DNS name servers supported for the replication instance to access your on-premise source or target database.&lt;/p&gt;
+  /// [engineVersion] &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt; &lt;p&gt;If an engine version number is not specified when a replication instance is created, the default is the latest engine version available.&lt;/p&gt; &lt;p&gt;When modifying a major engine version of an instance, also set &lt;code&gt;AllowMajorVersionUpgrade&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+  /// [freeUntil] &lt;p&gt; The expiration date of the free replication instance that is part of the Free DMS program. &lt;/p&gt;
+  /// [instanceCreateTime] &lt;p&gt;The time the replication instance was created.&lt;/p&gt;
+  /// [kmsKeyId] &lt;p&gt;An KMS key identifier that is used to encrypt the data on the replication instance.&lt;/p&gt; &lt;p&gt;If you don't specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then DMS uses your default encryption key.&lt;/p&gt; &lt;p&gt;KMS creates the default encryption key for your Amazon Web Services account. Your Amazon Web Services account has a different default encryption key for each Amazon Web Services Region.&lt;/p&gt;
+  /// [multiAZ] &lt;p&gt; Specifies whether the replication instance is a Multi-AZ deployment. You can't set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
+  /// [networkType] &lt;p&gt;The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
+  /// [pendingModifiedValues] &lt;p&gt;The pending modification values.&lt;/p&gt;
+  /// [preferredMaintenanceWindow] &lt;p&gt;The maintenance window times for the replication instance. Any pending upgrades to the replication instance are performed during this time.&lt;/p&gt;
+  /// [publiclyAccessible] &lt;p&gt; Specifies the accessibility options for the replication instance. A value of &lt;code&gt;true&lt;/code&gt; represents an instance with a public IP address. A value of &lt;code&gt;false&lt;/code&gt; represents an instance with a private IP address. The default value is &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
+  /// [replicationInstanceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
+  /// [replicationInstanceClass] &lt;p&gt;The compute and memory capacity of the replication instance as defined for the specified replication instance class. It is a required parameter, although a default value is pre-selected in the DMS console.&lt;/p&gt; &lt;p&gt;For more information on the settings and capacities for the available replication instance classes, see &lt;a href='https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth'&gt; Selecting the right DMS replication instance for your migration&lt;/a&gt;. &lt;/p&gt;
+  /// [replicationInstanceIdentifier] &lt;p&gt;The replication instance identifier is a required parameter. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1-63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myrepinstance&lt;/code&gt; &lt;/p&gt;
+  /// [replicationInstanceIpv6Addresses] &lt;p&gt;One or more IPv6 addresses for the replication instance.&lt;/p&gt;
+  /// [replicationInstancePrivateIpAddress] &lt;p&gt;The private IP address of the replication instance.&lt;/p&gt;
+  /// [replicationInstancePrivateIpAddresses] &lt;p&gt;One or more private IP addresses for the replication instance.&lt;/p&gt;
+  /// [replicationInstancePublicIpAddress] &lt;p&gt;The public IP address of the replication instance.&lt;/p&gt;
+  /// [replicationInstancePublicIpAddresses] &lt;p&gt;One or more public IP addresses for the replication instance.&lt;/p&gt;
+  /// [replicationInstanceStatus] &lt;p&gt;The status of the replication instance. The possible return values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'available'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'creating'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'deleted'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'deleting'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'failed'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'modifying'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'upgrading'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'rebooting'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'resetting-master-credentials'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'storage-full'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'incompatible-credentials'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'incompatible-network'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;'maintenance'&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [replicationSubnetGroup] &lt;p&gt;The subnet group for the replication instance.&lt;/p&gt;
+  /// [secondaryAvailabilityZone] &lt;p&gt;The Availability Zone of the standby replication instance in a Multi-AZ deployment.&lt;/p&gt;
+  /// [vpcSecurityGroups] &lt;p&gt;The VPC security group for the instance.&lt;/p&gt;
   AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse({
     this.allocatedStorage,
     this.autoMinorVersionUpgrade,
@@ -124,52 +150,190 @@ class AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse {
       'kmsKeyId': ?kmsKeyId,
       'multiAZ': ?multiAZ,
       'networkType': ?networkType,
-      'pendingModifiedValues': ?pulumi.Input.mapOptionalInputValue<ReplicationPendingModifiedValuesResponse, Map<String, dynamic>>(pendingModifiedValues, (value) => value.toMap()),
+      'pendingModifiedValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicationPendingModifiedValuesResponse,
+            Map<String, dynamic>
+          >(pendingModifiedValues, (value) => value.toMap()),
       'preferredMaintenanceWindow': ?preferredMaintenanceWindow,
       'publiclyAccessible': ?publiclyAccessible,
       'replicationInstanceArn': ?replicationInstanceArn,
       'replicationInstanceClass': ?replicationInstanceClass,
       'replicationInstanceIdentifier': ?replicationInstanceIdentifier,
       'replicationInstanceIpv6Addresses': ?replicationInstanceIpv6Addresses,
-      'replicationInstancePrivateIpAddress': ?replicationInstancePrivateIpAddress,
-      'replicationInstancePrivateIpAddresses': ?replicationInstancePrivateIpAddresses,
+      'replicationInstancePrivateIpAddress':
+          ?replicationInstancePrivateIpAddress,
+      'replicationInstancePrivateIpAddresses':
+          ?replicationInstancePrivateIpAddresses,
       'replicationInstancePublicIpAddress': ?replicationInstancePublicIpAddress,
-      'replicationInstancePublicIpAddresses': ?replicationInstancePublicIpAddresses,
+      'replicationInstancePublicIpAddresses':
+          ?replicationInstancePublicIpAddresses,
       'replicationInstanceStatus': ?replicationInstanceStatus,
-      'replicationSubnetGroup': ?pulumi.Input.mapOptionalInputValue<ReplicationSubnetGroupResponse, Map<String, dynamic>>(replicationSubnetGroup, (value) => value.toMap()),
+      'replicationSubnetGroup':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicationSubnetGroupResponse,
+            Map<String, dynamic>
+          >(replicationSubnetGroup, (value) => value.toMap()),
       'secondaryAvailabilityZone': ?secondaryAvailabilityZone,
-      'vpcSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<VpcSecurityGroupMembershipResponse>, List<Map<String, dynamic>>>(vpcSecurityGroups, (value) => pulumi.Input.encodeList<VpcSecurityGroupMembershipResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcSecurityGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VpcSecurityGroupMembershipResponse>,
+            List<Map<String, dynamic>>
+          >(
+            vpcSecurityGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VpcSecurityGroupMembershipResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsDatabaseMigrationServiceReplicationInstancePropertiesResponse(
-      allocatedStorage: map['allocatedStorage'] == null ? null : (map['allocatedStorage']! as int).input(),
-      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] == null ? null : (map['autoMinorVersionUpgrade']! as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      dnsNameServers: map['dnsNameServers'] == null ? null : (map['dnsNameServers']! as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
-      freeUntil: map['freeUntil'] == null ? null : (map['freeUntil']! as String).input(),
-      instanceCreateTime: map['instanceCreateTime'] == null ? null : (map['instanceCreateTime']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      multiAZ: map['multiAZ'] == null ? null : (map['multiAZ']! as bool).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
-      pendingModifiedValues: map['pendingModifiedValues'] == null ? null : (ReplicationPendingModifiedValuesResponse.fromMap((map['pendingModifiedValues']! as Map).cast<String, dynamic>())).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow']! as String).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible']! as bool).input(),
-      replicationInstanceArn: map['replicationInstanceArn'] == null ? null : (map['replicationInstanceArn']! as String).input(),
-      replicationInstanceClass: map['replicationInstanceClass'] == null ? null : (map['replicationInstanceClass']! as String).input(),
-      replicationInstanceIdentifier: map['replicationInstanceIdentifier'] == null ? null : (map['replicationInstanceIdentifier']! as String).input(),
-      replicationInstanceIpv6Addresses: map['replicationInstanceIpv6Addresses'] == null ? null : ((map['replicationInstanceIpv6Addresses']! as List).cast<String>()).input(),
-      replicationInstancePrivateIpAddress: map['replicationInstancePrivateIpAddress'] == null ? null : (map['replicationInstancePrivateIpAddress']! as String).input(),
-      replicationInstancePrivateIpAddresses: map['replicationInstancePrivateIpAddresses'] == null ? null : ((map['replicationInstancePrivateIpAddresses']! as List).cast<String>()).input(),
-      replicationInstancePublicIpAddress: map['replicationInstancePublicIpAddress'] == null ? null : (map['replicationInstancePublicIpAddress']! as String).input(),
-      replicationInstancePublicIpAddresses: map['replicationInstancePublicIpAddresses'] == null ? null : ((map['replicationInstancePublicIpAddresses']! as List).cast<String>()).input(),
-      replicationInstanceStatus: map['replicationInstanceStatus'] == null ? null : (map['replicationInstanceStatus']! as String).input(),
-      replicationSubnetGroup: map['replicationSubnetGroup'] == null ? null : (ReplicationSubnetGroupResponse.fromMap((map['replicationSubnetGroup']! as Map).cast<String, dynamic>())).input(),
-      secondaryAvailabilityZone: map['secondaryAvailabilityZone'] == null ? null : (map['secondaryAvailabilityZone']! as String).input(),
-      vpcSecurityGroups: map['vpcSecurityGroups'] == null ? null : (pulumi.Input.decodeList<VpcSecurityGroupMembershipResponse>(map['vpcSecurityGroups']!, (value) => VpcSecurityGroupMembershipResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocatedStorage: (() {
+        final guardedValue = map['allocatedStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoMinorVersionUpgrade: (() {
+        final guardedValue = map['autoMinorVersionUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsNameServers: (() {
+        final guardedValue = map['dnsNameServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      freeUntil: (() {
+        final guardedValue = map['freeUntil'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCreateTime: (() {
+        final guardedValue = map['instanceCreateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiAZ: (() {
+        final guardedValue = map['multiAZ'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pendingModifiedValues: (() {
+        final guardedValue = map['pendingModifiedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicationPendingModifiedValuesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      preferredMaintenanceWindow: (() {
+        final guardedValue = map['preferredMaintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publiclyAccessible: (() {
+        final guardedValue = map['publiclyAccessible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      replicationInstanceArn: (() {
+        final guardedValue = map['replicationInstanceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationInstanceClass: (() {
+        final guardedValue = map['replicationInstanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationInstanceIdentifier: (() {
+        final guardedValue = map['replicationInstanceIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationInstanceIpv6Addresses: (() {
+        final guardedValue = map['replicationInstanceIpv6Addresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      replicationInstancePrivateIpAddress: (() {
+        final guardedValue = map['replicationInstancePrivateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationInstancePrivateIpAddresses: (() {
+        final guardedValue = map['replicationInstancePrivateIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      replicationInstancePublicIpAddress: (() {
+        final guardedValue = map['replicationInstancePublicIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationInstancePublicIpAddresses: (() {
+        final guardedValue = map['replicationInstancePublicIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      replicationInstanceStatus: (() {
+        final guardedValue = map['replicationInstanceStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationSubnetGroup: (() {
+        final guardedValue = map['replicationSubnetGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicationSubnetGroupResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secondaryAvailabilityZone: (() {
+        final guardedValue = map['secondaryAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcSecurityGroups: (() {
+        final guardedValue = map['vpcSecurityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VpcSecurityGroupMembershipResponse>(
+            guardedValue,
+            (value) => VpcSecurityGroupMembershipResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

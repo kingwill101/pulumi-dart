@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StudioApplicationInstance {
   /// The id of the instance.
   final pulumi.Input<String>? id;
+
   /// The name of the instance.
   final pulumi.Input<String>? nodeName;
+
   /// The type of the instance.
   final pulumi.Input<String>? nodeType;
 
@@ -14,11 +16,7 @@ class StudioApplicationInstance {
   /// [id] The id of the instance.
   /// [nodeName] The name of the instance.
   /// [nodeType] The type of the instance.
-  StudioApplicationInstance({
-    this.id,
-    this.nodeName,
-    this.nodeType,
-  });
+  StudioApplicationInstance({this.id, this.nodeName, this.nodeType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class StudioApplicationInstance {
 
   factory StudioApplicationInstance.fromMap(Map<String, dynamic> map) {
     return StudioApplicationInstance(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeType: (() {
+        final guardedValue = map['nodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

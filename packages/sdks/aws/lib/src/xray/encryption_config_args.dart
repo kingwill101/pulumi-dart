@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionConfigArgs {
   /// An AWS KMS customer master key (CMK) ARN.
   final pulumi.Input<String>? keyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   final pulumi.Input<String> type;
 
@@ -18,26 +20,25 @@ class EncryptionConfigArgs {
   /// [keyId] An AWS KMS customer master key (CMK) ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
-  EncryptionConfigArgs({
-    this.keyId,
-    this.region,
-    required this.type,
-  });
+  EncryptionConfigArgs({this.keyId, this.region, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyId': ?keyId,
-      'region': ?region,
-      'type': type,
-    };
+    return <String, dynamic>{'keyId': ?keyId, 'region': ?region, 'type': type};
   }
 
   factory EncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigArgs(
-      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      keyId: (() {
+        final guardedValue = map['keyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

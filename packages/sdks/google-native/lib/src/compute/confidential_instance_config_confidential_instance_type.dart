@@ -5,16 +5,20 @@ enum ConfidentialInstanceConfigConfidentialInstanceType {
   sevSnp("SEV_SNP"),
   tdx("TDX");
 
-  const ConfidentialInstanceConfigConfidentialInstanceType(this.value);
-  final String value;
+  const ConfidentialInstanceConfigConfidentialInstanceType(this.wireValue);
+  final String wireValue;
 
-  static ConfidentialInstanceConfigConfidentialInstanceType fromValue(String value) {
-    for (final item in ConfidentialInstanceConfigConfidentialInstanceType.values) {
-      if (item.value == value) {
+  static ConfidentialInstanceConfigConfidentialInstanceType fromValue(
+    String value,
+  ) {
+    for (final item
+        in ConfidentialInstanceConfigConfidentialInstanceType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConfidentialInstanceConfigConfidentialInstanceType value: $value');
+    throw ArgumentError(
+      'Unknown ConfidentialInstanceConfigConfidentialInstanceType value: $value',
+    );
   }
 }
-

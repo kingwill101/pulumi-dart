@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceV2Network {
   /// The IPv4 address assigned to this network port.
   final pulumi.Input<String> fixedIpV4;
+
   /// The IPv6 address assigned to this network port.
   final pulumi.Input<String> fixedIpV6;
+
   /// The MAC address assigned to this network interface.
   final pulumi.Input<String> mac;
+
   /// The name of the network
   final pulumi.Input<String> name;
+
   /// The port UUID for this network
   final pulumi.Input<String> port;
+
   /// The UUID of the network
   final pulumi.Input<String> uuid;
 
@@ -45,13 +50,12 @@ class GetInstanceV2Network {
 
   factory GetInstanceV2Network.fromMap(Map<String, dynamic> map) {
     return GetInstanceV2Network(
-      fixedIpV4: (map['fixedIpV4'] as String).input(),
-      fixedIpV6: (map['fixedIpV6'] as String).input(),
-      mac: (map['mac'] as String).input(),
-      name: (map['name'] as String).input(),
-      port: (map['port'] as String).input(),
-      uuid: (map['uuid'] as String).input(),
+      fixedIpV4: pulumi.Input.fromValue(map['fixedIpV4'] as String),
+      fixedIpV6: pulumi.Input.fromValue(map['fixedIpV6'] as String),
+      mac: pulumi.Input.fromValue(map['mac'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }
 }
-

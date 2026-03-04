@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3CustomDomainTlsConfig {
   /// List of TLS cipher suites
   final pulumi.Input<List<String>>? cipherSuites;
+
   /// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
   final pulumi.Input<String>? maxVersion;
+
   /// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
   final pulumi.Input<String>? minVersion;
 
@@ -30,10 +32,21 @@ class V3CustomDomainTlsConfig {
 
   factory V3CustomDomainTlsConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainTlsConfig(
-      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites']! as List).cast<String>()).input(),
-      maxVersion: map['maxVersion'] == null ? null : (map['maxVersion']! as String).input(),
-      minVersion: map['minVersion'] == null ? null : (map['minVersion']! as String).input(),
+      cipherSuites: (() {
+        final guardedValue = map['cipherSuites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxVersion: (() {
+        final guardedValue = map['maxVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minVersion: (() {
+        final guardedValue = map['minVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

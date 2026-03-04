@@ -6,15 +6,19 @@ import 'get_prefix_lists_list.dart';
 /// Result data returned by getPrefixLists.
 class GetPrefixListsResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// A list of Vpc Prefix Lists. Each element contains the following attributes:
   final List<GetPrefixListsList> lists;
   final String? nameRegex;
+
   /// A list of Prefix List names.
   final List<String> names;
   final String? outputFile;
+
   /// The name of the prefix list.
   final String? prefixListName;
 
@@ -43,7 +47,11 @@ class GetPrefixListsResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'lists': pulumi.Input.encodeList<GetPrefixListsList, Map<String, dynamic>>(lists, (value) => value.toMap()),
+      'lists':
+          pulumi.Input.encodeList<GetPrefixListsList, Map<String, dynamic>>(
+            lists,
+            (value) => value.toMap(),
+          ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -53,15 +61,34 @@ class GetPrefixListsResult {
 
   factory GetPrefixListsResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lists: pulumi.Input.decodeList<GetPrefixListsList>(map['lists'], (value) => GetPrefixListsList.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      lists: pulumi.Input.decodeList<GetPrefixListsList>(
+        map['lists']!,
+        (value) =>
+            GetPrefixListsList.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      prefixListName: map['prefixListName'] == null ? null : map['prefixListName']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      prefixListName: (() {
+        final guardedValue = map['prefixListName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

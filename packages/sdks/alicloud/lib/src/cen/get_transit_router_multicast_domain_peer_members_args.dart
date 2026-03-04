@@ -9,18 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterMulticastDomainPeerMembersArgs {
   /// A list of Cen Transit Router Multicast Domain Peer Member IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The IDs of the inter-region multicast domains.
   final pulumi.Input<List<String>>? peerTransitRouterMulticastDomains;
+
   /// The ID of the resource associated with the multicast resource.
   final pulumi.Input<String>? resourceId;
+
   /// The type of the multicast resource. Valid values:
   /// * VPC: queries multicast resources by VPC.
   /// * TR: queries multicast resources that are also deployed in a different region.
   final pulumi.Input<String>? resourceType;
+
   /// The ID of the network instance connection.
   final pulumi.Input<String>? transitRouterAttachmentId;
+
   /// The ID of the multicast domain to which the multicast member belongs.
   final pulumi.Input<String> transitRouterMulticastDomainId;
 
@@ -54,16 +60,43 @@ class GetTransitRouterMulticastDomainPeerMembersArgs {
     };
   }
 
-  factory GetTransitRouterMulticastDomainPeerMembersArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterMulticastDomainPeerMembersArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterMulticastDomainPeerMembersArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : ((map['peerTransitRouterMulticastDomains']! as List).cast<String>()).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
-      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peerTransitRouterMulticastDomains: (() {
+        final guardedValue = map['peerTransitRouterMulticastDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterAttachmentId: (() {
+        final guardedValue = map['transitRouterAttachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainId'] as String,
+      ),
     );
   }
 }
-

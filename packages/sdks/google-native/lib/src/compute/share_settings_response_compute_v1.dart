@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareSettingsResponseComputeV1 {
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   final pulumi.Input<Map<String, String>> projectMap;
+
   /// Type of sharing for this shared-reservation
   final pulumi.Input<String> shareType;
 
@@ -18,17 +19,15 @@ class ShareSettingsResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'projectMap': projectMap,
-      'shareType': shareType,
-    };
+    return <String, dynamic>{'projectMap': projectMap, 'shareType': shareType};
   }
 
   factory ShareSettingsResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ShareSettingsResponseComputeV1(
-      projectMap: ((map['projectMap'] as Map).cast<String, String>()).input(),
-      shareType: (map['shareType'] as String).input(),
+      projectMap: pulumi.Input.fromValue(
+        (map['projectMap'] as Map).cast<String, String>(),
+      ),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
     );
   }
 }
-

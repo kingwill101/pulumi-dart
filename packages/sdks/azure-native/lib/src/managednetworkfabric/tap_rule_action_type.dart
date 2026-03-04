@@ -8,16 +8,15 @@ enum TapRuleActionType {
   valueRedirect("Redirect"),
   valueMirror("Mirror");
 
-  const TapRuleActionType(this.value);
-  final String value;
+  const TapRuleActionType(this.wireValue);
+  final String wireValue;
 
   static TapRuleActionType fromValue(String value) {
     for (final item in TapRuleActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TapRuleActionType value: $value');
   }
 }
-

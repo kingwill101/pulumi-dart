@@ -12,16 +12,15 @@ enum CryptoKeyVersionState {
   pendingExternalDestruction("PENDING_EXTERNAL_DESTRUCTION"),
   externalDestructionFailed("EXTERNAL_DESTRUCTION_FAILED");
 
-  const CryptoKeyVersionState(this.value);
-  final String value;
+  const CryptoKeyVersionState(this.wireValue);
+  final String wireValue;
 
   static CryptoKeyVersionState fromValue(String value) {
     for (final item in CryptoKeyVersionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CryptoKeyVersionState value: $value');
   }
 }
-

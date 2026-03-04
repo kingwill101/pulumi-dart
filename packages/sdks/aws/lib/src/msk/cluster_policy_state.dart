@@ -7,8 +7,10 @@ class ClusterPolicyState {
   /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
   final pulumi.Input<String>? clusterArn;
   final pulumi.Input<String>? currentVersion;
+
   /// Resource policy for cluster.
   final pulumi.Input<String>? policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -35,11 +37,26 @@ class ClusterPolicyState {
 
   factory ClusterPolicyState.fromMap(Map<String, dynamic> map) {
     return ClusterPolicyState(
-      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
-      currentVersion: map['currentVersion'] == null ? null : ((map['currentVersion'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      clusterArn: (() {
+        final guardedValue = map['clusterArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentVersion: (() {
+        final guardedValue = map['currentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum NICType {
   valueE1000e("e1000e"),
   valuePcnet32("pcnet32");
 
-  const NICType(this.value);
-  final String value;
+  const NICType(this.wireValue);
+  final String wireValue;
 
   static NICType fromValue(String value) {
     for (final item in NICType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NICType value: $value');
   }
 }
-

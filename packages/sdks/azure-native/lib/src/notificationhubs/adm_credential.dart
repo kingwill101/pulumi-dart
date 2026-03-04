@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdmCredential {
   /// Gets or sets the URL of the authorization token.
   final pulumi.Input<String> authTokenUrl;
+
   /// Gets or sets the client identifier.
   final pulumi.Input<String> clientId;
+
   /// Gets or sets the credential secret access key.
   final pulumi.Input<String> clientSecret;
 
@@ -31,10 +33,9 @@ class AdmCredential {
 
   factory AdmCredential.fromMap(Map<String, dynamic> map) {
     return AdmCredential(
-      authTokenUrl: (map['authTokenUrl'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
+      authTokenUrl: pulumi.Input.fromValue(map['authTokenUrl'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
     );
   }
 }
-

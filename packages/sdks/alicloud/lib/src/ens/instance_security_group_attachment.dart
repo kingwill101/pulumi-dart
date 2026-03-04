@@ -8,7 +8,7 @@ import 'instance_security_group_attachment_state.dart';
 ///
 /// For information about ENS Instance Security Group Attachment and how to use it, see [What is Instance Security Group Attachment](https://next.api.alibabacloud.com/document/Ens/2017-11-10/JoinSecurityGroup).
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -280,6 +280,7 @@ import 'instance_security_group_attachment_state.dart';
 class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// Security group ID.
   late final pulumi.Output<String> securityGroupId;
 
@@ -292,13 +293,13 @@ class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
     InstanceSecurityGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 
   /// Gets an existing [InstanceSecurityGroupAttachment] resource's state with the given [name] and [id].
@@ -319,12 +320,12 @@ class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 }

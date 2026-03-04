@@ -10,39 +10,58 @@ import 'share_settings_response.dart';
 /// Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
 class ReservationResponse {
   /// Reservation for aggregated resources, providing shape flexibility.
-  final pulumi.Input<AllocationAggregateReservationResponse> aggregateReservation;
+  final pulumi.Input<AllocationAggregateReservationResponse>
+  aggregateReservation;
+
   /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
   final pulumi.Input<String> commitment;
+
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
+
   /// Duration time relative to reservation creation when GCE will automatically delete this resource.
   final pulumi.Input<DurationResponse> deleteAfterDuration;
+
   /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
   final pulumi.Input<String> deleteAtTime;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String> description;
+
   /// Type of the resource. Always compute#reservations for reservations.
   final pulumi.Input<String> kind;
+
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String> name;
+
   /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
   final pulumi.Input<Map<String, String>> resourcePolicies;
+
   /// Status information for Reservation resource.
   final pulumi.Input<AllocationResourceStatusResponse> resourceStatus;
+
   /// Reserved for future use.
   final pulumi.Input<bool> satisfiesPzs;
+
   /// Server-defined fully-qualified URL for this resource.
   final pulumi.Input<String> selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   final pulumi.Input<String> selfLinkWithId;
+
   /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
   final pulumi.Input<ShareSettingsResponse> shareSettings;
+
   /// Reservation for instances with specific machine shapes.
-  final pulumi.Input<AllocationSpecificSKUReservationResponse> specificReservation;
+  final pulumi.Input<AllocationSpecificSKUReservationResponse>
+  specificReservation;
+
   /// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
   final pulumi.Input<bool> specificReservationRequired;
+
   /// The status of the reservation.
   final pulumi.Input<String> status;
+
   /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
   final pulumi.Input<String> zone;
 
@@ -88,21 +107,41 @@ class ReservationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregateReservation': pulumi.Input.mapInputValue<AllocationAggregateReservationResponse, Map<String, dynamic>>(aggregateReservation, (value) => value.toMap()),
+      'aggregateReservation':
+          pulumi.Input.mapInputValue<
+            AllocationAggregateReservationResponse,
+            Map<String, dynamic>
+          >(aggregateReservation, (value) => value.toMap()),
       'commitment': commitment,
       'creationTimestamp': creationTimestamp,
-      'deleteAfterDuration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(deleteAfterDuration, (value) => value.toMap()),
+      'deleteAfterDuration':
+          pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(
+            deleteAfterDuration,
+            (value) => value.toMap(),
+          ),
       'deleteAtTime': deleteAtTime,
       'description': description,
       'kind': kind,
       'name': name,
       'resourcePolicies': resourcePolicies,
-      'resourceStatus': pulumi.Input.mapInputValue<AllocationResourceStatusResponse, Map<String, dynamic>>(resourceStatus, (value) => value.toMap()),
+      'resourceStatus':
+          pulumi.Input.mapInputValue<
+            AllocationResourceStatusResponse,
+            Map<String, dynamic>
+          >(resourceStatus, (value) => value.toMap()),
       'satisfiesPzs': satisfiesPzs,
       'selfLink': selfLink,
       'selfLinkWithId': selfLinkWithId,
-      'shareSettings': pulumi.Input.mapInputValue<ShareSettingsResponse, Map<String, dynamic>>(shareSettings, (value) => value.toMap()),
-      'specificReservation': pulumi.Input.mapInputValue<AllocationSpecificSKUReservationResponse, Map<String, dynamic>>(specificReservation, (value) => value.toMap()),
+      'shareSettings':
+          pulumi.Input.mapInputValue<
+            ShareSettingsResponse,
+            Map<String, dynamic>
+          >(shareSettings, (value) => value.toMap()),
+      'specificReservation':
+          pulumi.Input.mapInputValue<
+            AllocationSpecificSKUReservationResponse,
+            Map<String, dynamic>
+          >(specificReservation, (value) => value.toMap()),
       'specificReservationRequired': specificReservationRequired,
       'status': status,
       'zone': zone,
@@ -111,25 +150,50 @@ class ReservationResponse {
 
   factory ReservationResponse.fromMap(Map<String, dynamic> map) {
     return ReservationResponse(
-      aggregateReservation: (AllocationAggregateReservationResponse.fromMap((map['aggregateReservation'] as Map).cast<String, dynamic>())).input(),
-      commitment: (map['commitment'] as String).input(),
-      creationTimestamp: (map['creationTimestamp'] as String).input(),
-      deleteAfterDuration: (DurationResponse.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())).input(),
-      deleteAtTime: (map['deleteAtTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourcePolicies: ((map['resourcePolicies'] as Map).cast<String, String>()).input(),
-      resourceStatus: (AllocationResourceStatusResponse.fromMap((map['resourceStatus'] as Map).cast<String, dynamic>())).input(),
-      satisfiesPzs: (map['satisfiesPzs'] as bool).input(),
-      selfLink: (map['selfLink'] as String).input(),
-      selfLinkWithId: (map['selfLinkWithId'] as String).input(),
-      shareSettings: (ShareSettingsResponse.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificReservation: (AllocationSpecificSKUReservationResponse.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
-      specificReservationRequired: (map['specificReservationRequired'] as bool).input(),
-      status: (map['status'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      aggregateReservation: pulumi.Input.fromValue(
+        AllocationAggregateReservationResponse.fromMap(
+          (map['aggregateReservation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      commitment: pulumi.Input.fromValue(map['commitment'] as String),
+      creationTimestamp: pulumi.Input.fromValue(
+        map['creationTimestamp'] as String,
+      ),
+      deleteAfterDuration: pulumi.Input.fromValue(
+        DurationResponse.fromMap(
+          (map['deleteAfterDuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      deleteAtTime: pulumi.Input.fromValue(map['deleteAtTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourcePolicies: pulumi.Input.fromValue(
+        (map['resourcePolicies'] as Map).cast<String, String>(),
+      ),
+      resourceStatus: pulumi.Input.fromValue(
+        AllocationResourceStatusResponse.fromMap(
+          (map['resourceStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      satisfiesPzs: pulumi.Input.fromValue(map['satisfiesPzs'] as bool),
+      selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
+      selfLinkWithId: pulumi.Input.fromValue(map['selfLinkWithId'] as String),
+      shareSettings: pulumi.Input.fromValue(
+        ShareSettingsResponse.fromMap(
+          (map['shareSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      specificReservation: pulumi.Input.fromValue(
+        AllocationSpecificSKUReservationResponse.fromMap(
+          (map['specificReservation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      specificReservationRequired: pulumi.Input.fromValue(
+        map['specificReservationRequired'] as bool,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

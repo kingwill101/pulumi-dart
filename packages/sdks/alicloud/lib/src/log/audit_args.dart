@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuditArgs {
   /// Aliuid value of your account.
   final pulumi.Input<String> aliuid;
+
   /// Name of SLS log audit.
   final pulumi.Input<String> displayName;
+
   /// Multi-account configuration, please fill in multiple aliuid.
   final pulumi.Input<List<String>>? multiAccounts;
+
   /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
   final pulumi.Input<String>? resourceDirectoryType;
+
   /// Log audit detailed configuration.
   final pulumi.Input<Map<String, String>>? variableMap;
 
@@ -44,12 +48,25 @@ class AuditArgs {
 
   factory AuditArgs.fromMap(Map<String, dynamic> map) {
     return AuditArgs(
-      aliuid: (map['aliuid'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      multiAccounts: map['multiAccounts'] == null ? null : ((map['multiAccounts']! as List).cast<String>()).input(),
-      resourceDirectoryType: map['resourceDirectoryType'] == null ? null : (map['resourceDirectoryType']! as String).input(),
-      variableMap: map['variableMap'] == null ? null : ((map['variableMap']! as Map).cast<String, String>()).input(),
+      aliuid: pulumi.Input.fromValue(map['aliuid'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      multiAccounts: (() {
+        final guardedValue = map['multiAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceDirectoryType: (() {
+        final guardedValue = map['resourceDirectoryType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      variableMap: (() {
+        final guardedValue = map['variableMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

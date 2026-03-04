@@ -6,9 +6,9 @@ import 'dnat_entry_state.dart';
 ///
 /// For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/adddnatentry).
 ///
-/// > **NOTE:** Available since v1.63.0.
+/// &gt; **NOTE:** Available since v1.63.0.
 ///
-/// > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -171,16 +171,22 @@ import 'dnat_entry_state.dart';
 class DnatEntry extends pulumi.CustomResource {
   /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
   late final pulumi.Output<String?> externalIp;
+
   /// The public port.Value range: 1 to 65535 or "any".
   late final pulumi.Output<String> externalPort;
+
   /// The destination private IP address.
   late final pulumi.Output<String> internalIp;
+
   /// The destination private port.Value range: 1 to 65535 or "any".
   late final pulumi.Output<String> internalPort;
+
   /// The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
   late final pulumi.Output<String> ipProtocol;
+
   /// The ID of the SAG instance.
   late final pulumi.Output<String> sagId;
+
   /// The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
   late final pulumi.Output<String> type;
 
@@ -193,18 +199,18 @@ class DnatEntry extends pulumi.CustomResource {
     DnatEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/dnatEntry:DnatEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalIp = registerOutput<String?>('externalIp');
-    this.externalPort = registerOutput<String>('externalPort');
-    this.internalIp = registerOutput<String>('internalIp');
-    this.internalPort = registerOutput<String>('internalPort');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.sagId = registerOutput<String>('sagId');
-    this.type = registerOutput<String>('type');
+         'alicloud:sag/dnatEntry:DnatEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalIp = registerOutput<String?>('externalIp');
+    externalPort = registerOutput<String>('externalPort');
+    internalIp = registerOutput<String>('internalIp');
+    internalPort = registerOutput<String>('internalPort');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    sagId = registerOutput<String>('sagId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [DnatEntry] resource's state with the given [name] and [id].
@@ -225,17 +231,17 @@ class DnatEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/dnatEntry:DnatEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalIp = registerOutput<String?>('externalIp');
-    this.externalPort = registerOutput<String>('externalPort');
-    this.internalIp = registerOutput<String>('internalIp');
-    this.internalPort = registerOutput<String>('internalPort');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.sagId = registerOutput<String>('sagId');
-    this.type = registerOutput<String>('type');
+         'alicloud:sag/dnatEntry:DnatEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalIp = registerOutput<String?>('externalIp');
+    externalPort = registerOutput<String>('externalPort');
+    internalIp = registerOutput<String>('internalIp');
+    internalPort = registerOutput<String>('internalPort');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    sagId = registerOutput<String>('sagId');
+    type = registerOutput<String>('type');
   }
 }

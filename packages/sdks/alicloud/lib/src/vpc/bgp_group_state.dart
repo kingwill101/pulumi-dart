@@ -6,30 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpGroupState {
   /// The authentication key of the BGP group.
   final pulumi.Input<String>? authKey;
+
   /// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   final pulumi.Input<String>? bgpGroupName;
+
   /// Specifies whether to clear the secret key. Valid values: `true`, `false`.
   final pulumi.Input<bool>? clearAuthKey;
+
   /// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? description;
+
   /// The IP version. Valid values:
   /// - `IPv4`: This is the default value.
   /// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
   final pulumi.Input<String>? ipVersion;
+
   /// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
   ///
-  /// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+  /// &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
   final pulumi.Input<bool>? isFakeAsn;
+
   /// The custom ASN on the Alibaba Cloud side. Valid values:
   final pulumi.Input<int>? localAsn;
+
   /// The ASN of the gateway device in the data center.
   final pulumi.Input<int>? peerAsn;
+
   /// The Region ID of the BGP group.
   final pulumi.Input<String>? regionId;
+
   /// The maximum number of routes supported by a BGP peer. Default value: 110.
   final pulumi.Input<int>? routeLimit;
+
   /// The ID of the virtual border router (VBR) that is associated with the BGP group.
   final pulumi.Input<String>? routerId;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -80,19 +91,66 @@ class BgpGroupState {
 
   factory BgpGroupState.fromMap(Map<String, dynamic> map) {
     return BgpGroupState(
-      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
-      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName']! as String).input(),
-      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn']! as bool).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as int).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit']! as int).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      authKey: (() {
+        final guardedValue = map['authKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bgpGroupName: (() {
+        final guardedValue = map['bgpGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clearAuthKey: (() {
+        final guardedValue = map['clearAuthKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isFakeAsn: (() {
+        final guardedValue = map['isFakeAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      localAsn: (() {
+        final guardedValue = map['localAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      peerAsn: (() {
+        final guardedValue = map['peerAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeLimit: (() {
+        final guardedValue = map['routeLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

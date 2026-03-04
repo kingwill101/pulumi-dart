@@ -7,8 +7,10 @@ import 'disk_sku_response.dart';
 class DiskVolumeConfigurationResponse {
   /// The total number of disks required for the concerned volume.
   final pulumi.Input<double>? count;
+
   /// The disk size in GB.
   final pulumi.Input<double>? sizeGB;
+
   /// The disk SKU details.
   final pulumi.Input<DiskSkuResponse>? sku;
 
@@ -16,26 +18,41 @@ class DiskVolumeConfigurationResponse {
   /// [count] The total number of disks required for the concerned volume.
   /// [sizeGB] The disk size in GB.
   /// [sku] The disk SKU details.
-  DiskVolumeConfigurationResponse({
-    this.count,
-    this.sizeGB,
-    this.sku,
-  });
+  DiskVolumeConfigurationResponse({this.count, this.sizeGB, this.sku});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': ?count,
       'sizeGB': ?sizeGB,
-      'sku': ?pulumi.Input.mapOptionalInputValue<DiskSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskSkuResponse,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
     };
   }
 
   factory DiskVolumeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskVolumeConfigurationResponse(
-      count: map['count'] == null ? null : (map['count']! as double).input(),
-      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB']! as double).input(),
-      sku: map['sku'] == null ? null : (DiskSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      sizeGB: (() {
+        final guardedValue = map['sizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskSkuResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

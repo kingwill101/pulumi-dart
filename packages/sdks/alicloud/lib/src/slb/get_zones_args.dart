@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesArgs {
   /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
   final pulumi.Input<String>? availableSlbAddressIpVersion;
+
   /// Filter the results by a slb instance network type. Valid values:
   /// * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
   /// * classic_internet: a public-facing SLB instance.
   /// * classic_intranet: an internal SLB instance that is deployed in a classic network.
   final pulumi.Input<String>? availableSlbAddressType;
+
   /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
   final pulumi.Input<bool>? enableDetails;
+
   /// The primary zone.
   final pulumi.Input<String>? masterZoneId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The secondary zone.
   final pulumi.Input<String>? slaveZoneId;
 
@@ -52,13 +57,36 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion']! as String).input(),
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      masterZoneId: map['masterZoneId'] == null ? null : (map['masterZoneId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      slaveZoneId: map['slaveZoneId'] == null ? null : (map['slaveZoneId']! as String).input(),
+      availableSlbAddressIpVersion: (() {
+        final guardedValue = map['availableSlbAddressIpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availableSlbAddressType: (() {
+        final guardedValue = map['availableSlbAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      masterZoneId: (() {
+        final guardedValue = map['masterZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slaveZoneId: (() {
+        final guardedValue = map['slaveZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

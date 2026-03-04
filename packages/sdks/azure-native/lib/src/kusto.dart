@@ -1,5 +1,3 @@
-library module_kusto;
-
 export 'kusto/accepted_audiences.dart';
 export 'kusto/accepted_audiences_response.dart';
 export 'kusto/attached_database_configuration.dart';

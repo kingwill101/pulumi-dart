@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneyPotsPot {
   /// Honeypot ID.
   final pulumi.Input<String> honeypotId;
+
   /// The image ID of the honeypot.
   final pulumi.Input<String> honeypotImageId;
+
   /// Honeypot mirror name.
   final pulumi.Input<String> honeypotImageName;
+
   /// Honeypot custom name.
   final pulumi.Input<String> honeypotName;
+
   /// Honeypot ID. The value is the same as `honeypot_id`.
   final pulumi.Input<String> id;
+
   /// The ID of the honeypot management node.
   final pulumi.Input<String> nodeId;
+
   /// The custom parameter ID of honeypot.
   final pulumi.Input<String> presetId;
+
   /// Honeypot status.
   final pulumi.Input<List<String>> states;
+
   /// The status of the resource
   final pulumi.Input<String> status;
 
@@ -60,16 +68,17 @@ class GetHoneyPotsPot {
 
   factory GetHoneyPotsPot.fromMap(Map<String, dynamic> map) {
     return GetHoneyPotsPot(
-      honeypotId: (map['honeypotId'] as String).input(),
-      honeypotImageId: (map['honeypotImageId'] as String).input(),
-      honeypotImageName: (map['honeypotImageName'] as String).input(),
-      honeypotName: (map['honeypotName'] as String).input(),
-      id: (map['id'] as String).input(),
-      nodeId: (map['nodeId'] as String).input(),
-      presetId: (map['presetId'] as String).input(),
-      states: ((map['states'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
+      honeypotId: pulumi.Input.fromValue(map['honeypotId'] as String),
+      honeypotImageId: pulumi.Input.fromValue(map['honeypotImageId'] as String),
+      honeypotImageName: pulumi.Input.fromValue(
+        map['honeypotImageName'] as String,
+      ),
+      honeypotName: pulumi.Input.fromValue(map['honeypotName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
+      presetId: pulumi.Input.fromValue(map['presetId'] as String),
+      states: pulumi.Input.fromValue((map['states'] as List).cast<String>()),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

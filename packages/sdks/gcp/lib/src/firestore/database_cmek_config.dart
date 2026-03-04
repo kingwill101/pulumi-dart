@@ -10,6 +10,7 @@ class DatabaseCmekConfig {
   /// The expected format is
   /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
   final pulumi.Input<List<String>>? activeKeyVersions;
+
   /// The resource ID of a Cloud KMS key. If set, the database created will
   /// be a Customer-managed Encryption Key (CMEK) database encrypted with
   /// this key. This feature is allowlist only in initial launch.
@@ -26,10 +27,7 @@ class DatabaseCmekConfig {
   /// Creates a new [DatabaseCmekConfig].
   /// [activeKeyVersions] (Output)
   /// [kmsKeyName] The resource ID of a Cloud KMS key. If set, the database created will
-  DatabaseCmekConfig({
-    this.activeKeyVersions,
-    required this.kmsKeyName,
-  });
+  DatabaseCmekConfig({this.activeKeyVersions, required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +38,12 @@ class DatabaseCmekConfig {
 
   factory DatabaseCmekConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseCmekConfig(
-      activeKeyVersions: map['activeKeyVersions'] == null ? null : ((map['activeKeyVersions']! as List).cast<String>()).input(),
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      activeKeyVersions: (() {
+        final guardedValue = map['activeKeyVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

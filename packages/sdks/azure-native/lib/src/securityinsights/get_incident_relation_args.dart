@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIncidentRelationArgs {
   /// Incident ID
   final pulumi.Input<String> incidentId;
+
   /// Relation Name
   final pulumi.Input<String> relationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetIncidentRelationArgs {
 
   factory GetIncidentRelationArgs.fromMap(Map<String, dynamic> map) {
     return GetIncidentRelationArgs(
-      incidentId: (map['incidentId'] as String).input(),
-      relationName: (map['relationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      incidentId: pulumi.Input.fromValue(map['incidentId'] as String),
+      relationName: pulumi.Input.fromValue(map['relationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

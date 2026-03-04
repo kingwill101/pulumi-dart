@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FaceConfigState {
   /// Scene name.
   final pulumi.Input<String>? bizName;
+
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   final pulumi.Input<String>? bizType;
+
   /// Last Modified Date.
   final pulumi.Input<String>? gmtModified;
 
@@ -15,11 +17,7 @@ class FaceConfigState {
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   /// [gmtModified] Last Modified Date.
-  FaceConfigState({
-    this.bizName,
-    this.bizType,
-    this.gmtModified,
-  });
+  FaceConfigState({this.bizName, this.bizType, this.gmtModified});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class FaceConfigState {
 
   factory FaceConfigState.fromMap(Map<String, dynamic> map) {
     return FaceConfigState(
-      bizName: map['bizName'] == null ? null : (map['bizName']! as String).input(),
-      bizType: map['bizType'] == null ? null : (map['bizType']! as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
+      bizName: (() {
+        final guardedValue = map['bizName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bizType: (() {
+        final guardedValue = map['bizType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtModified: (() {
+        final guardedValue = map['gmtModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

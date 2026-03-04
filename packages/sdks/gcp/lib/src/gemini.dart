@@ -1,5 +1,3 @@
-library module_gemini;
-
 export 'gemini/code_repository_index.dart';
 export 'gemini/code_repository_index_args.dart';
 export 'gemini/code_repository_index_state.dart';

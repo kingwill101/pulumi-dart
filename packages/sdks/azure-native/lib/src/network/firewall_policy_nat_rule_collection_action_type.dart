@@ -2,16 +2,17 @@
 enum FirewallPolicyNatRuleCollectionActionType {
   valueDNAT("DNAT");
 
-  const FirewallPolicyNatRuleCollectionActionType(this.value);
-  final String value;
+  const FirewallPolicyNatRuleCollectionActionType(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyNatRuleCollectionActionType fromValue(String value) {
     for (final item in FirewallPolicyNatRuleCollectionActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyNatRuleCollectionActionType value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyNatRuleCollectionActionType value: $value',
+    );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_managedidentity;
-
 export 'managedidentity/federated_identity_credential.dart';
 export 'managedidentity/federated_identity_credential_args.dart';
 export 'managedidentity/functions.dart';

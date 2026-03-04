@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertContactsContact {
   /// Contact ID.
   final pulumi.Input<String> alertContactId;
+
   /// The name of the alert contact.
   final pulumi.Input<String> alertContactName;
+
   /// The Creation Time Timestamp.
   final pulumi.Input<String> createTime;
+
   /// The webhook URL of the DingTalk chatbot.
   final pulumi.Input<String> dingRobotWebhookUrl;
+
   /// The email address of the alert contact.
   final pulumi.Input<String> email;
+
   /// The ID of the Alert Contact.
   final pulumi.Input<String> id;
+
   /// The mobile number of the alert contact.
   final pulumi.Input<String> phoneNum;
+
   /// Specifies whether the alert contact receives system notifications.
   final pulumi.Input<bool> systemNoc;
+
   /// Webhook Information.
   final pulumi.Input<String> webhook;
 
@@ -60,16 +68,19 @@ class GetAlertContactsContact {
 
   factory GetAlertContactsContact.fromMap(Map<String, dynamic> map) {
     return GetAlertContactsContact(
-      alertContactId: (map['alertContactId'] as String).input(),
-      alertContactName: (map['alertContactName'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dingRobotWebhookUrl: (map['dingRobotWebhookUrl'] as String).input(),
-      email: (map['email'] as String).input(),
-      id: (map['id'] as String).input(),
-      phoneNum: (map['phoneNum'] as String).input(),
-      systemNoc: (map['systemNoc'] as bool).input(),
-      webhook: (map['webhook'] as String).input(),
+      alertContactId: pulumi.Input.fromValue(map['alertContactId'] as String),
+      alertContactName: pulumi.Input.fromValue(
+        map['alertContactName'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dingRobotWebhookUrl: pulumi.Input.fromValue(
+        map['dingRobotWebhookUrl'] as String,
+      ),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      phoneNum: pulumi.Input.fromValue(map['phoneNum'] as String),
+      systemNoc: pulumi.Input.fromValue(map['systemNoc'] as bool),
+      webhook: pulumi.Input.fromValue(map['webhook'] as String),
     );
   }
 }
-

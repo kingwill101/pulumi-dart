@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineReference {
   /// Reference name.
   final pulumi.Input<String>? name;
+
   /// Reference pipeline name.
   final pulumi.Input<String> referenceName;
+
   /// Pipeline reference type.
   final pulumi.Input<String> type;
 
@@ -31,10 +33,13 @@ class PipelineReference {
 
   factory PipelineReference.fromMap(Map<String, dynamic> map) {
     return PipelineReference(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      referenceName: (map['referenceName'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

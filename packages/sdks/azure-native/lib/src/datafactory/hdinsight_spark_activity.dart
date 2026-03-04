@@ -10,37 +10,53 @@ import 'user_property.dart';
 class HDInsightSparkActivity {
   /// The user-specified arguments to HDInsightSparkActivity.
   final pulumi.Input<List<dynamic>>? arguments;
+
   /// The application's Java/Spark main class.
   final pulumi.Input<String>? className;
+
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
+
   /// Activity description.
   final pulumi.Input<String>? description;
+
   /// The relative path to the root folder of the code/package to be executed. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> entryFilePath;
+
   /// Debug info option.
   final pulumi.Input<String>? getDebugInfo;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+
   /// Activity name.
   final pulumi.Input<String> name;
+
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
+
   /// Activity policy.
   final pulumi.Input<ActivityPolicy>? policy;
+
   /// The user to impersonate that will execute the job. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? proxyUser;
+
   /// The root path in 'sparkJobLinkedService' for all the job’s files. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> rootPath;
+
   /// Spark configuration property.
   final pulumi.Input<Map<String, dynamic>>? sparkConfig;
+
   /// The storage linked service for uploading the entry file and dependencies, and for receiving logs.
   final pulumi.Input<LinkedServiceReference>? sparkJobLinkedService;
+
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
+
   /// Type of activity.
   /// Expected value is 'HDInsightSpark'.
   final pulumi.Input<String> type;
+
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
 
@@ -86,44 +102,154 @@ class HDInsightSparkActivity {
     return <String, dynamic>{
       'arguments': ?arguments,
       'className': ?className,
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityDependency>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityDependency,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'entryFilePath': entryFilePath,
       'getDebugInfo': ?getDebugInfo,
-      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceReference,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActivityPolicy,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
       'proxyUser': ?proxyUser,
       'rootPath': rootPath,
       'sparkConfig': ?sparkConfig,
-      'sparkJobLinkedService': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(sparkJobLinkedService, (value) => value.toMap()),
+      'sparkJobLinkedService':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceReference,
+            Map<String, dynamic>
+          >(sparkJobLinkedService, (value) => value.toMap()),
       'state': ?state,
       'type': type,
-      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserProperty>,
+            List<Map<String, dynamic>>
+          >(
+            userProperties,
+            (value) =>
+                pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory HDInsightSparkActivity.fromMap(Map<String, dynamic> map) {
     return HDInsightSparkActivity(
-      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<dynamic>()).input(),
-      className: map['className'] == null ? null : (map['className']! as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      entryFilePath: (map['entryFilePath']).input(),
-      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo']! as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
-      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser']!).input(),
-      rootPath: (map['rootPath']).input(),
-      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig']! as Map).cast<String, dynamic>()).input(),
-      sparkJobLinkedService: map['sparkJobLinkedService'] == null ? null : (LinkedServiceReference.fromMap((map['sparkJobLinkedService']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arguments: (() {
+        final guardedValue = map['arguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      className: (() {
+        final guardedValue = map['className'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityDependency>(
+            guardedValue,
+            (value) => ActivityDependency.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entryFilePath: pulumi.Input.fromValue(map['entryFilePath']),
+      getDebugInfo: (() {
+        final guardedValue = map['getDebugInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      onInactiveMarkAs: (() {
+        final guardedValue = map['onInactiveMarkAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      proxyUser: (() {
+        final guardedValue = map['proxyUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      rootPath: pulumi.Input.fromValue(map['rootPath']),
+      sparkConfig: (() {
+        final guardedValue = map['sparkConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      sparkJobLinkedService: (() {
+        final guardedValue = map['sparkJobLinkedService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userProperties: (() {
+        final guardedValue = map['userProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserProperty>(
+            guardedValue,
+            (value) =>
+                UserProperty.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

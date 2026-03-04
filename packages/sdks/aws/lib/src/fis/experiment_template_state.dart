@@ -12,25 +12,35 @@ import 'experiment_template_target.dart';
 class ExperimentTemplateState {
   /// Action to be performed during an experiment. See below.
   final pulumi.Input<List<ExperimentTemplateAction>>? actions;
+
   /// Description for the experiment template.
   final pulumi.Input<String>? description;
+
   /// The experiment options for the experiment template. See experiment_options below for more details!
   final pulumi.Input<ExperimentTemplateExperimentOptions>? experimentOptions;
+
   /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
-  final pulumi.Input<ExperimentTemplateExperimentReportConfiguration>? experimentReportConfiguration;
+  final pulumi.Input<ExperimentTemplateExperimentReportConfiguration>?
+  experimentReportConfiguration;
+
   /// The configuration for experiment logging. See below.
   final pulumi.Input<ExperimentTemplateLogConfiguration>? logConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of an IAM role that grants the AWS FIS service permission to perform service actions on your behalf.
   final pulumi.Input<String>? roleArn;
+
   /// When an ongoing experiment should be stopped. See below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ExperimentTemplateStopCondition>>? stopConditions;
+
   /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Target of an action. See below.
   final pulumi.Input<List<ExperimentTemplateTarget>>? targets;
 
@@ -62,34 +72,159 @@ class ExperimentTemplateState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<ExperimentTemplateAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<ExperimentTemplateAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExperimentTemplateAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExperimentTemplateAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
-      'experimentOptions': ?pulumi.Input.mapOptionalInputValue<ExperimentTemplateExperimentOptions, Map<String, dynamic>>(experimentOptions, (value) => value.toMap()),
-      'experimentReportConfiguration': ?pulumi.Input.mapOptionalInputValue<ExperimentTemplateExperimentReportConfiguration, Map<String, dynamic>>(experimentReportConfiguration, (value) => value.toMap()),
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<ExperimentTemplateLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'experimentOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExperimentTemplateExperimentOptions,
+            Map<String, dynamic>
+          >(experimentOptions, (value) => value.toMap()),
+      'experimentReportConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExperimentTemplateExperimentReportConfiguration,
+            Map<String, dynamic>
+          >(experimentReportConfiguration, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExperimentTemplateLogConfiguration,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'region': ?region,
       'roleArn': ?roleArn,
-      'stopConditions': ?pulumi.Input.mapOptionalInputValue<List<ExperimentTemplateStopCondition>, List<Map<String, dynamic>>>(stopConditions, (value) => pulumi.Input.encodeList<ExperimentTemplateStopCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stopConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExperimentTemplateStopCondition>,
+            List<Map<String, dynamic>>
+          >(
+            stopConditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExperimentTemplateStopCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'targets': ?pulumi.Input.mapOptionalInputValue<List<ExperimentTemplateTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<ExperimentTemplateTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExperimentTemplateTarget>,
+            List<Map<String, dynamic>>
+          >(
+            targets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExperimentTemplateTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ExperimentTemplateState.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateState(
-      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateAction>(map['actions']!, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      experimentOptions: map['experimentOptions'] == null ? null : ((ExperimentTemplateExperimentOptions.fromMap((map['experimentOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      experimentReportConfiguration: map['experimentReportConfiguration'] == null ? null : ((ExperimentTemplateExperimentReportConfiguration.fromMap((map['experimentReportConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : ((ExperimentTemplateLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      stopConditions: map['stopConditions'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateStopCondition>(map['stopConditions']!, (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateTarget>(map['targets']!, (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExperimentTemplateAction>(
+            guardedValue,
+            (value) => ExperimentTemplateAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      experimentOptions: (() {
+        final guardedValue = map['experimentOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExperimentTemplateExperimentOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      experimentReportConfiguration: (() {
+        final guardedValue = map['experimentReportConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExperimentTemplateExperimentReportConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExperimentTemplateLogConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stopConditions: (() {
+        final guardedValue = map['stopConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExperimentTemplateStopCondition>(
+            guardedValue,
+            (value) => ExperimentTemplateStopCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExperimentTemplateTarget>(
+            guardedValue,
+            (value) => ExperimentTemplateTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

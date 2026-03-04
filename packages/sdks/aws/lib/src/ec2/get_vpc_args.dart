@@ -10,20 +10,27 @@ import 'get_vpc_filter.dart';
 class GetVpcArgs {
   /// Cidr block of the desired VPC.
   final pulumi.Input<String>? cidrBlock;
+
   /// Boolean constraint on whether the desired VPC is
   /// the default VPC for the region.
   final pulumi.Input<bool>? default_;
+
   /// DHCP options id of the desired VPC.
   final pulumi.Input<String>? dhcpOptionsId;
+
   /// Custom filter block as described below.
   final pulumi.Input<List<GetVpcFilter>>? filters;
+
   /// ID of the specific VPC to retrieve.
   final pulumi.Input<String>? id;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Current state of the desired VPC.
   /// Can be either `"pending"` or `"available"`.
   final pulumi.Input<String>? state;
+
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired VPC.
   ///
@@ -56,7 +63,18 @@ class GetVpcArgs {
       'cidrBlock': ?cidrBlock,
       'default': ?default_,
       'dhcpOptionsId': ?dhcpOptionsId,
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetVpcFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetVpcFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'id': ?id,
       'region': ?region,
       'state': ?state,
@@ -66,15 +84,54 @@ class GetVpcArgs {
 
   factory GetVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
-      default_: map['default'] == null ? null : ((map['default'] as bool).input()).input(),
-      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : ((map['dhcpOptionsId'] as String).input()).input(),
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcFilter>(map['filters']!, (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      default_: (() {
+        final guardedValue = map['default'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dhcpOptionsId: (() {
+        final guardedValue = map['dhcpOptionsId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetVpcFilter>(
+            guardedValue,
+            (value) =>
+                GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

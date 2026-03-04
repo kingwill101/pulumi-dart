@@ -10,12 +10,16 @@ import 'license_resource_requirements_compute_beta.dart';
 class LicenseComputeBetaArgs {
   /// An optional textual description of the resource; provided by the client when the resource is created.
   final pulumi.Input<String>? description;
+
   /// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
-  final pulumi.Input<LicenseResourceRequirementsComputeBeta>? resourceRequirements;
+  final pulumi.Input<LicenseResourceRequirementsComputeBeta>?
+  resourceRequirements;
+
   /// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
   final pulumi.Input<bool>? transferable;
 
@@ -41,20 +45,51 @@ class LicenseComputeBetaArgs {
       'name': ?name,
       'project': ?project,
       'requestId': ?requestId,
-      'resourceRequirements': ?pulumi.Input.mapOptionalInputValue<LicenseResourceRequirementsComputeBeta, Map<String, dynamic>>(resourceRequirements, (value) => value.toMap()),
+      'resourceRequirements':
+          ?pulumi.Input.mapOptionalInputValue<
+            LicenseResourceRequirementsComputeBeta,
+            Map<String, dynamic>
+          >(resourceRequirements, (value) => value.toMap()),
       'transferable': ?transferable,
     };
   }
 
   factory LicenseComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return LicenseComputeBetaArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (LicenseResourceRequirementsComputeBeta.fromMap((map['resourceRequirements']! as Map).cast<String, dynamic>())).input(),
-      transferable: map['transferable'] == null ? null : (map['transferable']! as bool).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRequirements: (() {
+        final guardedValue = map['resourceRequirements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LicenseResourceRequirementsComputeBeta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      transferable: (() {
+        final guardedValue = map['transferable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

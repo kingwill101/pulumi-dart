@@ -10,20 +10,25 @@ class RubySettingsResponse {
 
   /// Creates a new [RubySettingsResponse].
   /// [common] Some settings.
-  RubySettingsResponse({
-    required this.common,
-  });
+  RubySettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'common': pulumi.Input.mapInputValue<CommonLanguageSettingsResponse, Map<String, dynamic>>(common, (value) => value.toMap()),
+      'common':
+          pulumi.Input.mapInputValue<
+            CommonLanguageSettingsResponse,
+            Map<String, dynamic>
+          >(common, (value) => value.toMap()),
     };
   }
 
   factory RubySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RubySettingsResponse(
-      common: (CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
+      common: pulumi.Input.fromValue(
+        CommonLanguageSettingsResponse.fromMap(
+          (map['common']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

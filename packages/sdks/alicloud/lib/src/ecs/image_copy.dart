@@ -4,13 +4,13 @@ import 'image_copy_state.dart';
 
 /// Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
 ///
-/// > **NOTE:** You can only copy the custom image when it is in the Available state.
+/// &gt; **NOTE:** You can only copy the custom image when it is in the Available state.
 ///
-/// > **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+/// &gt; **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
 ///
-/// > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+/// &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
 ///
-/// > **NOTE:** Available since v1.66.0.
+/// &gt; **NOTE:** Available since v1.66.0.
 ///
 /// ## Example Usage
 ///
@@ -460,23 +460,31 @@ import 'image_copy_state.dart';
 /// ```
 class ImageCopy extends pulumi.CustomResource {
   late final pulumi.Output<bool?> deleteAutoSnapshot;
+
   /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether to encrypt the image.
   late final pulumi.Output<bool?> encrypted;
+
   /// Indicates whether to force delete the custom image, Default is `false`.
   /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
   /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
   late final pulumi.Output<bool?> force;
+
   /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
   late final pulumi.Output<String> imageName;
+
   /// Key ID used to encrypt the image.
   late final pulumi.Output<String?> kmsKeyId;
   late final pulumi.Output<String> name;
+
   /// The source image ID.
   late final pulumi.Output<String> sourceImageId;
+
   /// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
   late final pulumi.Output<String> sourceRegionId;
+
   /// The tag value of an image. The value of N ranges from 1 to 20.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -489,21 +497,21 @@ class ImageCopy extends pulumi.CustomResource {
     ImageCopyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageCopy:ImageCopy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.force = registerOutput<bool?>('force');
-    this.imageName = registerOutput<String>('imageName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+         'alicloud:ecs/imageCopy:ImageCopy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    force = registerOutput<bool?>('force');
+    imageName = registerOutput<String>('imageName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
-    this.sourceImageId = registerOutput<String>('sourceImageId');
-    this.sourceRegionId = registerOutput<String>('sourceRegionId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    sourceImageId = registerOutput<String>('sourceImageId');
+    sourceRegionId = registerOutput<String>('sourceRegionId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ImageCopy] resource's state with the given [name] and [id].
@@ -524,20 +532,20 @@ class ImageCopy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageCopy:ImageCopy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.force = registerOutput<bool?>('force');
-    this.imageName = registerOutput<String>('imageName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+         'alicloud:ecs/imageCopy:ImageCopy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    force = registerOutput<bool?>('force');
+    imageName = registerOutput<String>('imageName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
-    this.sourceImageId = registerOutput<String>('sourceImageId');
-    this.sourceRegionId = registerOutput<String>('sourceRegionId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    sourceImageId = registerOutput<String>('sourceImageId');
+    sourceRegionId = registerOutput<String>('sourceRegionId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,16 +6,15 @@ enum AddressNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const AddressNetworkTier(this.value);
-  final String value;
+  const AddressNetworkTier(this.wireValue);
+  final String wireValue;
 
   static AddressNetworkTier fromValue(String value) {
     for (final item in AddressNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressNetworkTier value: $value');
   }
 }
-

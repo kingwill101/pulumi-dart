@@ -9,20 +9,19 @@ class PingConfig {
 
   /// Creates a new [PingConfig].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  PingConfig({
-    this.pingsCount,
-  });
+  PingConfig({this.pingsCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pingsCount': ?pingsCount,
-    };
+    return <String, dynamic>{'pingsCount': ?pingsCount};
   }
 
   factory PingConfig.fromMap(Map<String, dynamic> map) {
     return PingConfig(
-      pingsCount: map['pingsCount'] == null ? null : (map['pingsCount']! as int).input(),
+      pingsCount: (() {
+        final guardedValue = map['pingsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

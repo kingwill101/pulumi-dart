@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceDisasterRecoveryConfigArgs {
   /// The Shared access policies used to access the connection string for the alias.
   final pulumi.Input<String>? aliasAuthorizationRuleId;
+
   /// Specifies the name of the Disaster Recovery Config. This is the alias DNS name that will be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Service Bus Namespace to replicate to.
   final pulumi.Input<String> partnerNamespaceId;
+
   /// The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   final pulumi.Input<String> primaryNamespaceId;
 
@@ -37,13 +40,26 @@ class NamespaceDisasterRecoveryConfigArgs {
     };
   }
 
-  factory NamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory NamespaceDisasterRecoveryConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespaceDisasterRecoveryConfigArgs(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      partnerNamespaceId: (map['partnerNamespaceId'] as String).input(),
-      primaryNamespaceId: (map['primaryNamespaceId'] as String).input(),
+      aliasAuthorizationRuleId: (() {
+        final guardedValue = map['aliasAuthorizationRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerNamespaceId: pulumi.Input.fromValue(
+        map['partnerNamespaceId'] as String,
+      ),
+      primaryNamespaceId: pulumi.Input.fromValue(
+        map['primaryNamespaceId'] as String,
+      ),
     );
   }
 }
-

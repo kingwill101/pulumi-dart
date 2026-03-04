@@ -1,5 +1,3 @@
-library module_workspaces;
-
 export 'workspaces/connection_alias.dart';
 export 'workspaces/connection_alias_args.dart';
 export 'workspaces/connection_alias_state.dart';

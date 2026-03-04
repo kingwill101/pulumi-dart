@@ -5,16 +5,15 @@ enum EnterpriseGradeCdnStatus {
   valueDisabled("Disabled"),
   valueDisabling("Disabling");
 
-  const EnterpriseGradeCdnStatus(this.value);
-  final String value;
+  const EnterpriseGradeCdnStatus(this.wireValue);
+  final String wireValue;
 
   static EnterpriseGradeCdnStatus fromValue(String value) {
     for (final item in EnterpriseGradeCdnStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnterpriseGradeCdnStatus value: $value');
   }
 }
-

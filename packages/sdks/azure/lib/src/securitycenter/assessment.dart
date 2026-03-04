@@ -544,10 +544,13 @@ import 'assessment_status.dart';
 class Assessment extends pulumi.CustomResource {
   /// A map of additional data to associate with the assessment.
   late final pulumi.Output<Map<String, String>?> additionalData;
+
   /// The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   late final pulumi.Output<String> assessmentPolicyId;
+
   /// A `status` block as defined below.
   late final pulumi.Output<AssessmentStatus> status;
+
   /// The ID of the target resource. Changing this forces a new security Assessment to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -560,15 +563,15 @@ class Assessment extends pulumi.CustomResource {
     AssessmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/assessment:Assessment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<Map<String, String>?>('additionalData');
-    this.assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
-    this.status = registerOutput<AssessmentStatus>('status');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+         'azure:securitycenter/assessment:Assessment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
+    status = registerOutput<AssessmentStatus>('status');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 
   /// Gets an existing [Assessment] resource's state with the given [name] and [id].
@@ -589,14 +592,14 @@ class Assessment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/assessment:Assessment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<Map<String, String>?>('additionalData');
-    this.assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
-    this.status = registerOutput<AssessmentStatus>('status');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+         'azure:securitycenter/assessment:Assessment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
+    status = registerOutput<AssessmentStatus>('status');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

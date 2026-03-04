@@ -10,10 +10,14 @@ import 'configuration_set_event_destination_event_destination.dart';
 class ConfigurationSetEventDestinationArgs {
   /// The name of the configuration set.
   final pulumi.Input<String> configurationSetName;
+
   /// A name that identifies the event destination within the configuration set.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestination> eventDestination;
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestination>
+  eventDestination;
+
   /// An object that defines the event destination. See `event_destination` Block for details.
   final pulumi.Input<String> eventDestinationName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,19 +36,36 @@ class ConfigurationSetEventDestinationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationSetName': configurationSetName,
-      'eventDestination': pulumi.Input.mapInputValue<ConfigurationSetEventDestinationEventDestination, Map<String, dynamic>>(eventDestination, (value) => value.toMap()),
+      'eventDestination':
+          pulumi.Input.mapInputValue<
+            ConfigurationSetEventDestinationEventDestination,
+            Map<String, dynamic>
+          >(eventDestination, (value) => value.toMap()),
       'eventDestinationName': eventDestinationName,
       'region': ?region,
     };
   }
 
-  factory ConfigurationSetEventDestinationArgs.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationSetEventDestinationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationSetEventDestinationArgs(
-      configurationSetName: (map['configurationSetName'] as String).input(),
-      eventDestination: (ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination']! as Map).cast<String, dynamic>())).input(),
-      eventDestinationName: (map['eventDestinationName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      configurationSetName: pulumi.Input.fromValue(
+        map['configurationSetName'] as String,
+      ),
+      eventDestination: pulumi.Input.fromValue(
+        ConfigurationSetEventDestinationEventDestination.fromMap(
+          (map['eventDestination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      eventDestinationName: pulumi.Input.fromValue(
+        map['eventDestinationName'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

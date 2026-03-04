@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationServiceEnvironmentManagedApiArgs {
   /// The api name.
   final pulumi.Input<String> apiName;
+
   /// The integration service environment name.
   final pulumi.Input<String> integrationServiceEnvironmentName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroup;
 
@@ -32,12 +34,15 @@ class GetIntegrationServiceEnvironmentManagedApiArgs {
     };
   }
 
-  factory GetIntegrationServiceEnvironmentManagedApiArgs.fromMap(Map<String, dynamic> map) {
+  factory GetIntegrationServiceEnvironmentManagedApiArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIntegrationServiceEnvironmentManagedApiArgs(
-      apiName: (map['apiName'] as String).input(),
-      integrationServiceEnvironmentName: (map['integrationServiceEnvironmentName'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
+      apiName: pulumi.Input.fromValue(map['apiName'] as String),
+      integrationServiceEnvironmentName: pulumi.Input.fromValue(
+        map['integrationServiceEnvironmentName'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
-

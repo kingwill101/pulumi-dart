@@ -20,34 +20,50 @@ import 'traffic_analytics_properties_response.dart';
 class FlowLog extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Flag to enable/disable flow logging.
   late final pulumi.Output<bool?> enabled;
+
   /// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
   late final pulumi.Output<String?> enabledFilteringCriteria;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Parameters that define the configuration of traffic analytics.
-  late final pulumi.Output<TrafficAnalyticsPropertiesResponse?> flowAnalyticsConfiguration;
+  late final pulumi.Output<TrafficAnalyticsPropertiesResponse?>
+  flowAnalyticsConfiguration;
+
   /// Parameters that define the flow log format.
   late final pulumi.Output<FlowLogFormatParametersResponse?> format;
+
   /// FlowLog resource Managed Identity
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the flow log.
   late final pulumi.Output<String> provisioningState;
+
   /// Parameters that define the retention policy for flow log.
   late final pulumi.Output<RetentionPolicyParametersResponse?> retentionPolicy;
+
   /// ID of the storage account which is used to store the flow log.
   late final pulumi.Output<String> storageId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Guid of network security group to which flow log will be applied.
   late final pulumi.Output<String> targetResourceGuid;
+
   /// ID of network security group to which flow log will be applied.
   late final pulumi.Output<String> targetResourceId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -60,26 +76,33 @@ class FlowLog extends pulumi.CustomResource {
     FlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:FlowLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.enabledFilteringCriteria = registerOutput<String?>('enabledFilteringCriteria');
-    this.etag = registerOutput<String>('etag');
-    this.flowAnalyticsConfiguration = registerOutput<TrafficAnalyticsPropertiesResponse?>('flowAnalyticsConfiguration');
-    this.format = registerOutput<FlowLogFormatParametersResponse?>('format');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:FlowLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enabled = registerOutput<bool?>('enabled');
+    enabledFilteringCriteria = registerOutput<String?>(
+      'enabledFilteringCriteria',
+    );
+    etag = registerOutput<String>('etag');
+    flowAnalyticsConfiguration =
+        registerOutput<TrafficAnalyticsPropertiesResponse?>(
+          'flowAnalyticsConfiguration',
+        );
+    format = registerOutput<FlowLogFormatParametersResponse?>('format');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.retentionPolicy = registerOutput<RetentionPolicyParametersResponse?>('retentionPolicy');
-    this.storageId = registerOutput<String>('storageId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceGuid = registerOutput<String>('targetResourceGuid');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    retentionPolicy = registerOutput<RetentionPolicyParametersResponse?>(
+      'retentionPolicy',
+    );
+    storageId = registerOutput<String>('storageId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceGuid = registerOutput<String>('targetResourceGuid');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    type = registerOutput<String>('type');
   }
 }

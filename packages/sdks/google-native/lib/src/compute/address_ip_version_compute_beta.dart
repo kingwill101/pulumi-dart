@@ -4,16 +4,15 @@ enum AddressIpVersionComputeBeta {
   ipv6("IPV6"),
   unspecifiedVersion("UNSPECIFIED_VERSION");
 
-  const AddressIpVersionComputeBeta(this.value);
-  final String value;
+  const AddressIpVersionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AddressIpVersionComputeBeta fromValue(String value) {
     for (final item in AddressIpVersionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressIpVersionComputeBeta value: $value');
   }
 }
-

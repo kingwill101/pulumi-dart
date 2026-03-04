@@ -9,14 +9,16 @@ import 'upgrade_mode.dart';
 class UpgradePolicy {
   /// Configuration parameters used for performing automatic OS Upgrade.
   final pulumi.Input<AutomaticOSUpgradePolicy>? automaticOSUpgradePolicy;
-  /// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
+
+  /// Specifies the mode of an upgrade to virtual machines in the scale set.&lt;br /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt; **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.&lt;br /&gt;&lt;br /&gt; **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
   final pulumi.Input<UpgradeMode>? mode;
+
   /// The configuration parameters used while performing a rolling upgrade.
   final pulumi.Input<RollingUpgradePolicy>? rollingUpgradePolicy;
 
   /// Creates a new [UpgradePolicy].
   /// [automaticOSUpgradePolicy] Configuration parameters used for performing automatic OS Upgrade.
-  /// [mode] Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
+  /// [mode] Specifies the mode of an upgrade to virtual machines in the scale set.&lt;br /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt; **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.&lt;br /&gt;&lt;br /&gt; **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
   /// [rollingUpgradePolicy] The configuration parameters used while performing a rolling upgrade.
   UpgradePolicy({
     this.automaticOSUpgradePolicy,
@@ -26,18 +28,50 @@ class UpgradePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automaticOSUpgradePolicy': ?pulumi.Input.mapOptionalInputValue<AutomaticOSUpgradePolicy, Map<String, dynamic>>(automaticOSUpgradePolicy, (value) => value.toMap()),
-      'mode': ?pulumi.Input.mapOptionalInputValue<UpgradeMode, String>(mode, (value) => value.value),
-      'rollingUpgradePolicy': ?pulumi.Input.mapOptionalInputValue<RollingUpgradePolicy, Map<String, dynamic>>(rollingUpgradePolicy, (value) => value.toMap()),
+      'automaticOSUpgradePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutomaticOSUpgradePolicy,
+            Map<String, dynamic>
+          >(automaticOSUpgradePolicy, (value) => value.toMap()),
+      'mode': ?pulumi.Input.mapOptionalInputValue<UpgradeMode, String>(
+        mode,
+        (value) => value.wireValue,
+      ),
+      'rollingUpgradePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RollingUpgradePolicy,
+            Map<String, dynamic>
+          >(rollingUpgradePolicy, (value) => value.toMap()),
     };
   }
 
   factory UpgradePolicy.fromMap(Map<String, dynamic> map) {
     return UpgradePolicy(
-      automaticOSUpgradePolicy: map['automaticOSUpgradePolicy'] == null ? null : (AutomaticOSUpgradePolicy.fromMap((map['automaticOSUpgradePolicy']! as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (UpgradeMode.fromValue(map['mode']! as String)).input(),
-      rollingUpgradePolicy: map['rollingUpgradePolicy'] == null ? null : (RollingUpgradePolicy.fromMap((map['rollingUpgradePolicy']! as Map).cast<String, dynamic>())).input(),
+      automaticOSUpgradePolicy: (() {
+        final guardedValue = map['automaticOSUpgradePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutomaticOSUpgradePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UpgradeMode.fromValue(guardedValue as String),
+        );
+      })(),
+      rollingUpgradePolicy: (() {
+        final guardedValue = map['rollingUpgradePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RollingUpgradePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

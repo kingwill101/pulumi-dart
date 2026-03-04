@@ -6,7 +6,7 @@ import 'listener_additional_certificate_attachment_state.dart';
 ///
 /// For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateadditionalcertificateswithlistener).
 ///
-/// > **NOTE:** Available since v1.161.0.
+/// &gt; **NOTE:** Available since v1.161.0.
 ///
 /// ## Example Usage
 ///
@@ -1047,10 +1047,13 @@ import 'listener_additional_certificate_attachment_state.dart';
 class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
   /// The Certificate ID.
   late final pulumi.Output<String> certificateId;
+
   /// The type of the certificate.
   late final pulumi.Output<String> certificateType;
+
   /// The ID of the ALB listener.
   late final pulumi.Output<String> listenerId;
+
   /// The status of the certificate.
   late final pulumi.Output<String> status;
 
@@ -1063,15 +1066,15 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     ListenerAdditionalCertificateAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<String>('certificateId');
-    this.certificateType = registerOutput<String>('certificateType');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<String>('certificateId');
+    certificateType = registerOutput<String>('certificateType');
+    listenerId = registerOutput<String>('listenerId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ListenerAdditionalCertificateAttachment] resource's state with the given [name] and [id].
@@ -1092,14 +1095,14 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<String>('certificateId');
-    this.certificateType = registerOutput<String>('certificateType');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<String>('certificateId');
+    certificateType = registerOutput<String>('certificateType');
+    listenerId = registerOutput<String>('listenerId');
+    status = registerOutput<String>('status');
   }
 }

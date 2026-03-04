@@ -6,35 +6,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSourceResponse {
   /// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final pulumi.Input<String> bucket;
+
   /// Google Cloud Storage generation for the object.
   final pulumi.Input<String> generation;
+
   /// Google Cloud Storage object containing source.
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [StorageSourceResponse].
   /// [bucket] Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// [generation] Google Cloud Storage generation for the object.
-  /// [object] Google Cloud Storage object containing source.
+  /// [object_] Google Cloud Storage object containing source.
   StorageSourceResponse({
     required this.bucket,
     required this.generation,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
       'generation': generation,
-      'object': object,
+      'object': object_,
     };
   }
 
   factory StorageSourceResponse.fromMap(Map<String, dynamic> map) {
     return StorageSourceResponse(
-      bucket: (map['bucket'] as String).input(),
-      generation: (map['generation'] as String).input(),
-      object: (map['object'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generation: pulumi.Input.fromValue(map['generation'] as String),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

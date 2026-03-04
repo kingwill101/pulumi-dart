@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RateLimits {
   /// The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
   final pulumi.Input<int>? maxConcurrentDispatches;
+
   /// The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * The maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
   final pulumi.Input<double>? maxDispatchesPerSecond;
 
   /// Creates a new [RateLimits].
   /// [maxConcurrentDispatches] The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
   /// [maxDispatchesPerSecond] The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * The maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
-  RateLimits({
-    this.maxConcurrentDispatches,
-    this.maxDispatchesPerSecond,
-  });
+  RateLimits({this.maxConcurrentDispatches, this.maxDispatchesPerSecond});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RateLimits {
 
   factory RateLimits.fromMap(Map<String, dynamic> map) {
     return RateLimits(
-      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches']! as int).input(),
-      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond']! as double).input(),
+      maxConcurrentDispatches: (() {
+        final guardedValue = map['maxConcurrentDispatches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxDispatchesPerSecond: (() {
+        final guardedValue = map['maxDispatchesPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

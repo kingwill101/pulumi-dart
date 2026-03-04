@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorConfigResponse {
   /// Topology of TPU in chips.
   final pulumi.Input<String> topology;
+
   /// Type of TPU.
   final pulumi.Input<String> type;
 
   /// Creates a new [AcceleratorConfigResponse].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU.
-  AcceleratorConfigResponse({
-    required this.topology,
-    required this.type,
-  });
+  AcceleratorConfigResponse({required this.topology, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topology': topology,
-      'type': type,
-    };
+    return <String, dynamic>{'topology': topology, 'type': type};
   }
 
   factory AcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigResponse(
-      topology: (map['topology'] as String).input(),
-      type: (map['type'] as String).input(),
+      topology: pulumi.Input.fromValue(map['topology'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

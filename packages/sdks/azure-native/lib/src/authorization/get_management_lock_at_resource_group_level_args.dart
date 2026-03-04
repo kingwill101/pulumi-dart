@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementLockAtResourceGroupLevelArgs {
   /// The name of the lock to get.
   final pulumi.Input<String> lockName;
+
   /// The name of the locked resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetManagementLockAtResourceGroupLevelArgs {
     };
   }
 
-  factory GetManagementLockAtResourceGroupLevelArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagementLockAtResourceGroupLevelArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagementLockAtResourceGroupLevelArgs(
-      lockName: (map['lockName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      lockName: pulumi.Input.fromValue(map['lockName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

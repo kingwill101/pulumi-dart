@@ -7,16 +7,22 @@ import 'virtual_hub_route_v2_response.dart';
 class GetVirtualHubRouteTableV2Result {
   /// List of all connections attached to this route table v2.
   final List<String>? attachedConnections;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
+
   /// The provisioning state of the virtual hub route table v2 resource.
   final String provisioningState;
+
   /// List of all routes.
   final List<VirtualHubRouteV2Response>? routes;
 
@@ -46,20 +52,47 @@ class GetVirtualHubRouteTableV2Result {
       'id': ?id,
       'name': ?name,
       'provisioningState': provisioningState,
-      'routes': ?routes == null ? null : pulumi.Input.encodeList<VirtualHubRouteV2Response, Map<String, dynamic>>(routes!, (value) => value.toMap()),
+      'routes': ?(() {
+        final guardedValue = routes;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          VirtualHubRouteV2Response,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetVirtualHubRouteTableV2Result.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubRouteTableV2Result(
-      attachedConnections: map['attachedConnections'] == null ? null : (map['attachedConnections']! as List).cast<String>(),
+      attachedConnections: (() {
+        final guardedValue = map['attachedConnections'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualHubRouteV2Response>(map['routes']!, (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>())),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<VirtualHubRouteV2Response>(
+          guardedValue,
+          (value) => VirtualHubRouteV2Response.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -282,10 +282,13 @@ import 'resource_policy_state.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the resource policy.
   late final pulumi.Output<String> arn;
+
   /// Content for the resource policy. The text must be correctly formatted JSON that complies with the syntax for the resource policy's type. See the [_AWS Organizations User Guide_](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_delegate_examples.html) for examples.
   late final pulumi.Output<String> content;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -298,15 +301,15 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:organizations/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.content = registerOutput<String>('content');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:organizations/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    content = registerOutput<String>('content');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ResourcePolicy] resource's state with the given [name] and [id].
@@ -327,14 +330,14 @@ class ResourcePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:organizations/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.content = registerOutput<String>('content');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:organizations/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    content = registerOutput<String>('content');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

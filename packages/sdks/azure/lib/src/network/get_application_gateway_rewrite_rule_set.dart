@@ -6,10 +6,13 @@ import 'get_application_gateway_rewrite_rule_set_rewrite_rule.dart';
 class GetApplicationGatewayRewriteRuleSet {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
+
   /// One or more `rewrite_rule` blocks as defined below.
-  final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRule>> rewriteRules;
+  final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRule>>
+  rewriteRules;
 
   /// Creates a new [GetApplicationGatewayRewriteRuleSet].
   /// [id] The ID of the Rewrite Rule Set
@@ -25,16 +28,35 @@ class GetApplicationGatewayRewriteRuleSet {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'rewriteRules': pulumi.Input.mapInputValue<List<GetApplicationGatewayRewriteRuleSetRewriteRule>, List<Map<String, dynamic>>>(rewriteRules, (value) => pulumi.Input.encodeList<GetApplicationGatewayRewriteRuleSetRewriteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rewriteRules':
+          pulumi.Input.mapInputValue<
+            List<GetApplicationGatewayRewriteRuleSetRewriteRule>,
+            List<Map<String, dynamic>>
+          >(
+            rewriteRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetApplicationGatewayRewriteRuleSetRewriteRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetApplicationGatewayRewriteRuleSet.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayRewriteRuleSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayRewriteRuleSet(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      rewriteRules: (pulumi.Input.decodeList<GetApplicationGatewayRewriteRuleSetRewriteRule>(map['rewriteRules'], (value) => GetApplicationGatewayRewriteRuleSetRewriteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      rewriteRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetApplicationGatewayRewriteRuleSetRewriteRule>(
+          map['rewriteRules']!,
+          (value) => GetApplicationGatewayRewriteRuleSetRewriteRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

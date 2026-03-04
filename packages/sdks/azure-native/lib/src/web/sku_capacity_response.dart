@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuCapacityResponse {
   /// Default number of workers for this App Service plan SKU.
   final pulumi.Input<int>? default_;
+
   /// Maximum number of Elastic workers for this App Service plan SKU.
   final pulumi.Input<int>? elasticMaximum;
+
   /// Maximum number of workers for this App Service plan SKU.
   final pulumi.Input<int>? maximum;
+
   /// Minimum number of workers for this App Service plan SKU.
   final pulumi.Input<int>? minimum;
+
   /// Available scale configurations for an App Service plan.
   final pulumi.Input<String>? scaleType;
 
@@ -41,12 +45,31 @@ class SkuCapacityResponse {
 
   factory SkuCapacityResponse.fromMap(Map<String, dynamic> map) {
     return SkuCapacityResponse(
-      default_: map['default'] == null ? null : (map['default']! as int).input(),
-      elasticMaximum: map['elasticMaximum'] == null ? null : (map['elasticMaximum']! as int).input(),
-      maximum: map['maximum'] == null ? null : (map['maximum']! as int).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum']! as int).input(),
-      scaleType: map['scaleType'] == null ? null : (map['scaleType']! as String).input(),
+      default_: (() {
+        final guardedValue = map['default'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      elasticMaximum: (() {
+        final guardedValue = map['elasticMaximum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maximum: (() {
+        final guardedValue = map['maximum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimum: (() {
+        final guardedValue = map['minimum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scaleType: (() {
+        final guardedValue = map['scaleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

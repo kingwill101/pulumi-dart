@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamPoolSourceResource {
   /// ID of the resource.
   final pulumi.Input<String> resourceId;
+
   /// Owner of the resource.
   final pulumi.Input<String> resourceOwner;
+
   /// Region where the resource exists. Must match the `locale` of the parent IPAM Pool.
   final pulumi.Input<String> resourceRegion;
+
   /// Type of the resource. (`vpc`)
   final pulumi.Input<String> resourceType;
 
@@ -35,11 +38,10 @@ class VpcIpamPoolSourceResource {
 
   factory VpcIpamPoolSourceResource.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolSourceResource(
-      resourceId: (map['resourceId'] as String).input(),
-      resourceOwner: (map['resourceOwner'] as String).input(),
-      resourceRegion: (map['resourceRegion'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceOwner: pulumi.Input.fromValue(map['resourceOwner'] as String),
+      resourceRegion: pulumi.Input.fromValue(map['resourceRegion'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

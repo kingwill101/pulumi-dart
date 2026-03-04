@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiLogicPromptTemplateArgs {
   /// The display name of the PromptTemplate.
   final pulumi.Input<String>? displayName;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The unique ID of the PromptTemplate, which is the final component of the
   /// PromptTemplate's resource name.
   final pulumi.Input<String> templateId;
+
   /// The DotPrompt raw template string.
   final pulumi.Input<String> templateString;
 
@@ -46,12 +50,19 @@ class AiLogicPromptTemplateArgs {
 
   factory AiLogicPromptTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      templateId: (map['templateId'] as String).input(),
-      templateString: (map['templateString'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
+      templateString: pulumi.Input.fromValue(map['templateString'] as String),
     );
   }
 }
-

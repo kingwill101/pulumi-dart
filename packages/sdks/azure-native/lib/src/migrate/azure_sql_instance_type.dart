@@ -5,16 +5,15 @@ enum AzureSqlInstanceType {
   singleInstance("SingleInstance"),
   instancePools("InstancePools");
 
-  const AzureSqlInstanceType(this.value);
-  final String value;
+  const AzureSqlInstanceType(this.wireValue);
+  final String wireValue;
 
   static AzureSqlInstanceType fromValue(String value) {
     for (final item in AzureSqlInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSqlInstanceType value: $value');
   }
 }
-

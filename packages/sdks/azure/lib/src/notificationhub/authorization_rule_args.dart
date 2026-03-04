@@ -9,18 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizationRuleArgs {
   /// Does this Authorization Rule have Listen access to the Notification Hub? Defaults to `false`.
   final pulumi.Input<bool>? listen;
+
   /// Does this Authorization Rule have Manage access to the Notification Hub? Defaults to `false`.
   ///
-  /// > **Note:** If `manage` is set to `true` then both `send` and `listen` must also be set to `true`.
+  /// &gt; **Note:** If `manage` is set to `true` then both `send` and `listen` must also be set to `true`.
   final pulumi.Input<bool>? manage;
+
   /// The name to use for this Authorization Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Notification Hub Namespace in which the Notification Hub exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the Notification Hub for which the Authorization Rule should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> notificationHubName;
+
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
   final pulumi.Input<bool>? send;
 
@@ -56,14 +62,33 @@ class AuthorizationRuleArgs {
 
   factory AuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      notificationHubName: (map['notificationHubName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      notificationHubName: pulumi.Input.fromValue(
+        map['notificationHubName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

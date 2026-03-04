@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponseFailingPeriods {
   /// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
   final pulumi.Input<double>? minFailingPeriodsToAlert;
+
   /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
   final pulumi.Input<double>? numberOfEvaluationPeriods;
 
@@ -26,9 +27,16 @@ class ConditionResponseFailingPeriods {
 
   factory ConditionResponseFailingPeriods.fromMap(Map<String, dynamic> map) {
     return ConditionResponseFailingPeriods(
-      minFailingPeriodsToAlert: map['minFailingPeriodsToAlert'] == null ? null : (map['minFailingPeriodsToAlert']! as double).input(),
-      numberOfEvaluationPeriods: map['numberOfEvaluationPeriods'] == null ? null : (map['numberOfEvaluationPeriods']! as double).input(),
+      minFailingPeriodsToAlert: (() {
+        final guardedValue = map['minFailingPeriodsToAlert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      numberOfEvaluationPeriods: (() {
+        final guardedValue = map['numberOfEvaluationPeriods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

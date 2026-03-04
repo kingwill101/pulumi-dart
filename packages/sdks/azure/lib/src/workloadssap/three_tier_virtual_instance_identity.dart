@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreeTierVirtualInstanceIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this SAP Three Tier Virtual Instance.
   final pulumi.Input<List<String>> identityIds;
+
   /// The type of Managed Service Identity that should be configured on this SAP Three Tier Virtual Instance. Only possible value is `UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class ThreeTierVirtualInstanceIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identityIds': identityIds,
-      'type': type,
-    };
+    return <String, dynamic>{'identityIds': identityIds, 'type': type};
   }
 
   factory ThreeTierVirtualInstanceIdentity.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceIdentity(
-      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
+      identityIds: pulumi.Input.fromValue(
+        (map['identityIds'] as List).cast<String>(),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

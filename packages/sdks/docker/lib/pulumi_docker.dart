@@ -1,254 +1,327 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_docker;
-
-import 'package:pulumi_docker/index.dart' as _index;
-import 'package:pulumi_docker/providers.dart' as _providers;
+import 'package:pulumi_docker/index.dart' as module_index;
+import 'package:pulumi_docker/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final BuilderVersion = _index.BuilderVersion.values;
-  final BuildxBuilder = _index.BuildxBuilder.new;
-  final BuildxBuilderArgs = _index.BuildxBuilderArgs.new;
-  final BuildxBuilderDockerContainer = _index.BuildxBuilderDockerContainer.new;
-  final BuildxBuilderDockerContainerArgs = _index.BuildxBuilderDockerContainer.new;
-  final BuildxBuilderKubernetes = _index.BuildxBuilderKubernetes.new;
-  final BuildxBuilderKubernetesArgs = _index.BuildxBuilderKubernetes.new;
-  final BuildxBuilderKubernetesLimits = _index.BuildxBuilderKubernetesLimits.new;
-  final BuildxBuilderKubernetesLimitsArgs = _index.BuildxBuilderKubernetesLimits.new;
-  final BuildxBuilderKubernetesQemu = _index.BuildxBuilderKubernetesQemu.new;
-  final BuildxBuilderKubernetesQemuArgs = _index.BuildxBuilderKubernetesQemu.new;
-  final BuildxBuilderKubernetesRequests = _index.BuildxBuilderKubernetesRequests.new;
-  final BuildxBuilderKubernetesRequestsArgs = _index.BuildxBuilderKubernetesRequests.new;
-  final BuildxBuilderRemote = _index.BuildxBuilderRemote.new;
-  final BuildxBuilderRemoteArgs = _index.BuildxBuilderRemote.new;
-  final BuildxBuilderState = _index.BuildxBuilderState.new;
-  final BuildxBuilderStateArgs = _index.BuildxBuilderState.new;
-  final CacheFrom = _index.CacheFrom.new;
-  final CacheFromArgs = _index.CacheFrom.new;
-  final Container = _index.Container.new;
-  final ContainerArgs = _index.ContainerArgs.new;
-  final ContainerCapabilities = _index.ContainerCapabilities.new;
-  final ContainerCapabilitiesArgs = _index.ContainerCapabilities.new;
-  final ContainerDevice = _index.ContainerDevice.new;
-  final ContainerDeviceArgs = _index.ContainerDevice.new;
-  final ContainerHealthcheck = _index.ContainerHealthcheck.new;
-  final ContainerHealthcheckArgs = _index.ContainerHealthcheck.new;
-  final ContainerHost = _index.ContainerHost.new;
-  final ContainerHostArgs = _index.ContainerHost.new;
-  final ContainerLabel = _index.ContainerLabel.new;
-  final ContainerLabelArgs = _index.ContainerLabel.new;
-  final ContainerMount = _index.ContainerMount.new;
-  final ContainerMountArgs = _index.ContainerMount.new;
-  final ContainerMountBindOptions = _index.ContainerMountBindOptions.new;
-  final ContainerMountBindOptionsArgs = _index.ContainerMountBindOptions.new;
-  final ContainerMountTmpfsOptions = _index.ContainerMountTmpfsOptions.new;
-  final ContainerMountTmpfsOptionsArgs = _index.ContainerMountTmpfsOptions.new;
-  final ContainerMountVolumeOptions = _index.ContainerMountVolumeOptions.new;
-  final ContainerMountVolumeOptionsArgs = _index.ContainerMountVolumeOptions.new;
-  final ContainerMountVolumeOptionsLabel = _index.ContainerMountVolumeOptionsLabel.new;
-  final ContainerMountVolumeOptionsLabelArgs = _index.ContainerMountVolumeOptionsLabel.new;
-  final ContainerNetworkData = _index.ContainerNetworkData.new;
-  final ContainerNetworkDataArgs = _index.ContainerNetworkData.new;
-  final ContainerNetworksAdvanced = _index.ContainerNetworksAdvanced.new;
-  final ContainerNetworksAdvancedArgs = _index.ContainerNetworksAdvanced.new;
-  final ContainerPort = _index.ContainerPort.new;
-  final ContainerPortArgs = _index.ContainerPort.new;
-  final ContainerState = _index.ContainerState.new;
-  final ContainerStateArgs = _index.ContainerState.new;
-  final ContainerUlimit = _index.ContainerUlimit.new;
-  final ContainerUlimitArgs = _index.ContainerUlimit.new;
-  final ContainerUpload = _index.ContainerUpload.new;
-  final ContainerUploadArgs = _index.ContainerUpload.new;
-  final ContainerVolume = _index.ContainerVolume.new;
-  final ContainerVolumeArgs = _index.ContainerVolume.new;
-  final DockerBuild = _index.DockerBuild.new;
-  final DockerBuildArgs = _index.DockerBuild.new;
-  final GetLogsArgs = _index.GetLogsArgs.new;
-  final GetLogsResult = _index.GetLogsResult.new;
-  final GetLogsResultArgs = _index.GetLogsResult.new;
-  final GetNetworkArgs = _index.GetNetworkArgs.new;
-  final GetNetworkIpamConfig = _index.GetNetworkIpamConfig.new;
-  final GetNetworkIpamConfigArgs = _index.GetNetworkIpamConfig.new;
-  final GetNetworkResult = _index.GetNetworkResult.new;
-  final GetNetworkResultArgs = _index.GetNetworkResult.new;
-  final GetPluginArgs = _index.GetPluginArgs.new;
-  final GetPluginResult = _index.GetPluginResult.new;
-  final GetPluginResultArgs = _index.GetPluginResult.new;
-  final GetRegistryImageArgs = _index.GetRegistryImageArgs.new;
-  final GetRegistryImageManifestsArgs = _index.GetRegistryImageManifestsArgs.new;
-  final GetRegistryImageManifestsAuthConfig = _index.GetRegistryImageManifestsAuthConfig.new;
-  final GetRegistryImageManifestsAuthConfigArgs = _index.GetRegistryImageManifestsAuthConfig.new;
-  final GetRegistryImageManifestsManifest = _index.GetRegistryImageManifestsManifest.new;
-  final GetRegistryImageManifestsManifestArgs = _index.GetRegistryImageManifestsManifest.new;
-  final GetRegistryImageManifestsResult = _index.GetRegistryImageManifestsResult.new;
-  final GetRegistryImageManifestsResultArgs = _index.GetRegistryImageManifestsResult.new;
-  final GetRegistryImageResult = _index.GetRegistryImageResult.new;
-  final GetRegistryImageResultArgs = _index.GetRegistryImageResult.new;
-  final GetRemoteImageArgs = _index.GetRemoteImageArgs.new;
-  final GetRemoteImageResult = _index.GetRemoteImageResult.new;
-  final GetRemoteImageResultArgs = _index.GetRemoteImageResult.new;
-  final Image = _index.Image.new;
-  final ImageArgs = _index.ImageArgs.new;
-  final Network = _index.Network.new;
-  final NetworkArgs = _index.NetworkArgs.new;
-  final NetworkIpamConfig = _index.NetworkIpamConfig.new;
-  final NetworkIpamConfigArgs = _index.NetworkIpamConfig.new;
-  final NetworkLabel = _index.NetworkLabel.new;
-  final NetworkLabelArgs = _index.NetworkLabel.new;
-  final NetworkState = _index.NetworkState.new;
-  final NetworkStateArgs = _index.NetworkState.new;
-  final Plugin = _index.Plugin.new;
-  final PluginArgs = _index.PluginArgs.new;
-  final PluginGrantPermission = _index.PluginGrantPermission.new;
-  final PluginGrantPermissionArgs = _index.PluginGrantPermission.new;
-  final PluginState = _index.PluginState.new;
-  final PluginStateArgs = _index.PluginState.new;
-  final ProviderRegistryAuth = _index.ProviderRegistryAuth.new;
-  final ProviderRegistryAuthArgs = _index.ProviderRegistryAuth.new;
-  final Registry = _index.Registry.new;
-  final RegistryArgs = _index.Registry.new;
-  final RegistryImage = _index.RegistryImage.new;
-  final RegistryImageArgs = _index.RegistryImageArgs.new;
-  final RegistryImageAuthConfig = _index.RegistryImageAuthConfig.new;
-  final RegistryImageAuthConfigArgs = _index.RegistryImageAuthConfig.new;
-  final RegistryImageBuild = _index.RegistryImageBuild.new;
-  final RegistryImageBuildArgs = _index.RegistryImageBuild.new;
-  final RegistryImageBuildAuthConfig = _index.RegistryImageBuildAuthConfig.new;
-  final RegistryImageBuildAuthConfigArgs = _index.RegistryImageBuildAuthConfig.new;
-  final RegistryImageBuildSecret = _index.RegistryImageBuildSecret.new;
-  final RegistryImageBuildSecretArgs = _index.RegistryImageBuildSecret.new;
-  final RegistryImageBuildUlimit = _index.RegistryImageBuildUlimit.new;
-  final RegistryImageBuildUlimitArgs = _index.RegistryImageBuildUlimit.new;
-  final RegistryImageState = _index.RegistryImageState.new;
-  final RegistryImageStateArgs = _index.RegistryImageState.new;
-  final RemoteImage = _index.RemoteImage.new;
-  final RemoteImageArgs = _index.RemoteImageArgs.new;
-  final RemoteImageBuild = _index.RemoteImageBuild.new;
-  final RemoteImageBuildArgs = _index.RemoteImageBuild.new;
-  final RemoteImageBuildAuthConfig = _index.RemoteImageBuildAuthConfig.new;
-  final RemoteImageBuildAuthConfigArgs = _index.RemoteImageBuildAuthConfig.new;
-  final RemoteImageBuildSecret = _index.RemoteImageBuildSecret.new;
-  final RemoteImageBuildSecretArgs = _index.RemoteImageBuildSecret.new;
-  final RemoteImageBuildUlimit = _index.RemoteImageBuildUlimit.new;
-  final RemoteImageBuildUlimitArgs = _index.RemoteImageBuildUlimit.new;
-  final RemoteImageState = _index.RemoteImageState.new;
-  final RemoteImageStateArgs = _index.RemoteImageState.new;
-  final Secret = _index.Secret.new;
-  final SecretArgs = _index.SecretArgs.new;
-  final SecretLabel = _index.SecretLabel.new;
-  final SecretLabelArgs = _index.SecretLabel.new;
-  final SecretState = _index.SecretState.new;
-  final SecretStateArgs = _index.SecretState.new;
-  final Service = _index.Service.new;
-  final ServiceArgs = _index.ServiceArgs.new;
-  final ServiceAuth = _index.ServiceAuth.new;
-  final ServiceAuthArgs = _index.ServiceAuth.new;
-  final ServiceConfig = _index.ServiceConfig.new;
-  final ServiceConfigArgs = _index.ServiceConfigArgs.new;
-  final ServiceConfigState = _index.ServiceConfigState.new;
-  final ServiceConfigStateArgs = _index.ServiceConfigState.new;
-  final ServiceConvergeConfig = _index.ServiceConvergeConfig.new;
-  final ServiceConvergeConfigArgs = _index.ServiceConvergeConfig.new;
-  final ServiceEndpointSpec = _index.ServiceEndpointSpec.new;
-  final ServiceEndpointSpecArgs = _index.ServiceEndpointSpec.new;
-  final ServiceEndpointSpecPort = _index.ServiceEndpointSpecPort.new;
-  final ServiceEndpointSpecPortArgs = _index.ServiceEndpointSpecPort.new;
-  final ServiceLabel = _index.ServiceLabel.new;
-  final ServiceLabelArgs = _index.ServiceLabel.new;
-  final ServiceMode = _index.ServiceMode.new;
-  final ServiceModeArgs = _index.ServiceMode.new;
-  final ServiceModeReplicated = _index.ServiceModeReplicated.new;
-  final ServiceModeReplicatedArgs = _index.ServiceModeReplicated.new;
-  final ServiceRollbackConfig = _index.ServiceRollbackConfig.new;
-  final ServiceRollbackConfigArgs = _index.ServiceRollbackConfig.new;
-  final ServiceState = _index.ServiceState.new;
-  final ServiceStateArgs = _index.ServiceState.new;
-  final ServiceTaskSpec = _index.ServiceTaskSpec.new;
-  final ServiceTaskSpecArgs = _index.ServiceTaskSpec.new;
-  final ServiceTaskSpecContainerSpec = _index.ServiceTaskSpecContainerSpec.new;
-  final ServiceTaskSpecContainerSpecArgs = _index.ServiceTaskSpecContainerSpec.new;
-  final ServiceTaskSpecContainerSpecConfig = _index.ServiceTaskSpecContainerSpecConfig.new;
-  final ServiceTaskSpecContainerSpecConfigArgs = _index.ServiceTaskSpecContainerSpecConfig.new;
-  final ServiceTaskSpecContainerSpecDnsConfig = _index.ServiceTaskSpecContainerSpecDnsConfig.new;
-  final ServiceTaskSpecContainerSpecDnsConfigArgs = _index.ServiceTaskSpecContainerSpecDnsConfig.new;
-  final ServiceTaskSpecContainerSpecHealthcheck = _index.ServiceTaskSpecContainerSpecHealthcheck.new;
-  final ServiceTaskSpecContainerSpecHealthcheckArgs = _index.ServiceTaskSpecContainerSpecHealthcheck.new;
-  final ServiceTaskSpecContainerSpecHost = _index.ServiceTaskSpecContainerSpecHost.new;
-  final ServiceTaskSpecContainerSpecHostArgs = _index.ServiceTaskSpecContainerSpecHost.new;
-  final ServiceTaskSpecContainerSpecLabel = _index.ServiceTaskSpecContainerSpecLabel.new;
-  final ServiceTaskSpecContainerSpecLabelArgs = _index.ServiceTaskSpecContainerSpecLabel.new;
-  final ServiceTaskSpecContainerSpecMount = _index.ServiceTaskSpecContainerSpecMount.new;
-  final ServiceTaskSpecContainerSpecMountArgs = _index.ServiceTaskSpecContainerSpecMount.new;
-  final ServiceTaskSpecContainerSpecMountBindOptions = _index.ServiceTaskSpecContainerSpecMountBindOptions.new;
-  final ServiceTaskSpecContainerSpecMountBindOptionsArgs = _index.ServiceTaskSpecContainerSpecMountBindOptions.new;
-  final ServiceTaskSpecContainerSpecMountTmpfsOptions = _index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
-  final ServiceTaskSpecContainerSpecMountTmpfsOptionsArgs = _index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptions = _index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsArgs = _index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabel = _index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabelArgs = _index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
-  final ServiceTaskSpecContainerSpecPrivileges = _index.ServiceTaskSpecContainerSpecPrivileges.new;
-  final ServiceTaskSpecContainerSpecPrivilegesArgs = _index.ServiceTaskSpecContainerSpecPrivileges.new;
-  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpec = _index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
-  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpecArgs = _index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
-  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext = _index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
-  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContextArgs = _index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
-  final ServiceTaskSpecContainerSpecSecret = _index.ServiceTaskSpecContainerSpecSecret.new;
-  final ServiceTaskSpecContainerSpecSecretArgs = _index.ServiceTaskSpecContainerSpecSecret.new;
-  final ServiceTaskSpecLogDriver = _index.ServiceTaskSpecLogDriver.new;
-  final ServiceTaskSpecLogDriverArgs = _index.ServiceTaskSpecLogDriver.new;
-  final ServiceTaskSpecNetworksAdvanced = _index.ServiceTaskSpecNetworksAdvanced.new;
-  final ServiceTaskSpecNetworksAdvancedArgs = _index.ServiceTaskSpecNetworksAdvanced.new;
-  final ServiceTaskSpecPlacement = _index.ServiceTaskSpecPlacement.new;
-  final ServiceTaskSpecPlacementArgs = _index.ServiceTaskSpecPlacement.new;
-  final ServiceTaskSpecPlacementPlatform = _index.ServiceTaskSpecPlacementPlatform.new;
-  final ServiceTaskSpecPlacementPlatformArgs = _index.ServiceTaskSpecPlacementPlatform.new;
-  final ServiceTaskSpecResources = _index.ServiceTaskSpecResources.new;
-  final ServiceTaskSpecResourcesArgs = _index.ServiceTaskSpecResources.new;
-  final ServiceTaskSpecResourcesLimits = _index.ServiceTaskSpecResourcesLimits.new;
-  final ServiceTaskSpecResourcesLimitsArgs = _index.ServiceTaskSpecResourcesLimits.new;
-  final ServiceTaskSpecResourcesReservation = _index.ServiceTaskSpecResourcesReservation.new;
-  final ServiceTaskSpecResourcesReservationArgs = _index.ServiceTaskSpecResourcesReservation.new;
-  final ServiceTaskSpecResourcesReservationGenericResources = _index.ServiceTaskSpecResourcesReservationGenericResources.new;
-  final ServiceTaskSpecResourcesReservationGenericResourcesArgs = _index.ServiceTaskSpecResourcesReservationGenericResources.new;
-  final ServiceTaskSpecRestartPolicy = _index.ServiceTaskSpecRestartPolicy.new;
-  final ServiceTaskSpecRestartPolicyArgs = _index.ServiceTaskSpecRestartPolicy.new;
-  final ServiceUpdateConfig = _index.ServiceUpdateConfig.new;
-  final ServiceUpdateConfigArgs = _index.ServiceUpdateConfig.new;
-  final Tag = _index.Tag.new;
-  final TagArgs = _index.TagArgs.new;
-  final TagState = _index.TagState.new;
-  final TagStateArgs = _index.TagState.new;
-  final Volume = _index.Volume.new;
-  final VolumeArgs = _index.VolumeArgs.new;
-  final VolumeCluster = _index.VolumeCluster.new;
-  final VolumeClusterArgs = _index.VolumeCluster.new;
-  final VolumeLabel = _index.VolumeLabel.new;
-  final VolumeLabelArgs = _index.VolumeLabel.new;
-  final VolumeState = _index.VolumeState.new;
-  final VolumeStateArgs = _index.VolumeState.new;
-  final getLogs = _index.getLogs;
-  final getNetwork = _index.getNetwork;
-  final getPlugin = _index.getPlugin;
-  final getRegistryImage = _index.getRegistryImage;
-  final getRegistryImageManifests = _index.getRegistryImageManifests;
-  final getRemoteImage = _index.getRemoteImage;
+  final BuilderVersion = module_index.BuilderVersion.values;
+  final BuildxBuilder = module_index.BuildxBuilder.new;
+  final BuildxBuilderArgs = module_index.BuildxBuilderArgs.new;
+  final BuildxBuilderDockerContainer =
+      module_index.BuildxBuilderDockerContainer.new;
+  final BuildxBuilderDockerContainerArgs =
+      module_index.BuildxBuilderDockerContainer.new;
+  final BuildxBuilderKubernetes = module_index.BuildxBuilderKubernetes.new;
+  final BuildxBuilderKubernetesArgs = module_index.BuildxBuilderKubernetes.new;
+  final BuildxBuilderKubernetesLimits =
+      module_index.BuildxBuilderKubernetesLimits.new;
+  final BuildxBuilderKubernetesLimitsArgs =
+      module_index.BuildxBuilderKubernetesLimits.new;
+  final BuildxBuilderKubernetesQemu =
+      module_index.BuildxBuilderKubernetesQemu.new;
+  final BuildxBuilderKubernetesQemuArgs =
+      module_index.BuildxBuilderKubernetesQemu.new;
+  final BuildxBuilderKubernetesRequests =
+      module_index.BuildxBuilderKubernetesRequests.new;
+  final BuildxBuilderKubernetesRequestsArgs =
+      module_index.BuildxBuilderKubernetesRequests.new;
+  final BuildxBuilderRemote = module_index.BuildxBuilderRemote.new;
+  final BuildxBuilderRemoteArgs = module_index.BuildxBuilderRemote.new;
+  final BuildxBuilderState = module_index.BuildxBuilderState.new;
+  final BuildxBuilderStateArgs = module_index.BuildxBuilderState.new;
+  final CacheFrom = module_index.CacheFrom.new;
+  final CacheFromArgs = module_index.CacheFrom.new;
+  final Container = module_index.Container.new;
+  final ContainerArgs = module_index.ContainerArgs.new;
+  final ContainerCapabilities = module_index.ContainerCapabilities.new;
+  final ContainerCapabilitiesArgs = module_index.ContainerCapabilities.new;
+  final ContainerDevice = module_index.ContainerDevice.new;
+  final ContainerDeviceArgs = module_index.ContainerDevice.new;
+  final ContainerHealthcheck = module_index.ContainerHealthcheck.new;
+  final ContainerHealthcheckArgs = module_index.ContainerHealthcheck.new;
+  final ContainerHost = module_index.ContainerHost.new;
+  final ContainerHostArgs = module_index.ContainerHost.new;
+  final ContainerLabel = module_index.ContainerLabel.new;
+  final ContainerLabelArgs = module_index.ContainerLabel.new;
+  final ContainerMount = module_index.ContainerMount.new;
+  final ContainerMountArgs = module_index.ContainerMount.new;
+  final ContainerMountBindOptions = module_index.ContainerMountBindOptions.new;
+  final ContainerMountBindOptionsArgs =
+      module_index.ContainerMountBindOptions.new;
+  final ContainerMountTmpfsOptions =
+      module_index.ContainerMountTmpfsOptions.new;
+  final ContainerMountTmpfsOptionsArgs =
+      module_index.ContainerMountTmpfsOptions.new;
+  final ContainerMountVolumeOptions =
+      module_index.ContainerMountVolumeOptions.new;
+  final ContainerMountVolumeOptionsArgs =
+      module_index.ContainerMountVolumeOptions.new;
+  final ContainerMountVolumeOptionsLabel =
+      module_index.ContainerMountVolumeOptionsLabel.new;
+  final ContainerMountVolumeOptionsLabelArgs =
+      module_index.ContainerMountVolumeOptionsLabel.new;
+  final ContainerNetworkData = module_index.ContainerNetworkData.new;
+  final ContainerNetworkDataArgs = module_index.ContainerNetworkData.new;
+  final ContainerNetworksAdvanced = module_index.ContainerNetworksAdvanced.new;
+  final ContainerNetworksAdvancedArgs =
+      module_index.ContainerNetworksAdvanced.new;
+  final ContainerPort = module_index.ContainerPort.new;
+  final ContainerPortArgs = module_index.ContainerPort.new;
+  final ContainerState = module_index.ContainerState.new;
+  final ContainerStateArgs = module_index.ContainerState.new;
+  final ContainerUlimit = module_index.ContainerUlimit.new;
+  final ContainerUlimitArgs = module_index.ContainerUlimit.new;
+  final ContainerUpload = module_index.ContainerUpload.new;
+  final ContainerUploadArgs = module_index.ContainerUpload.new;
+  final ContainerVolume = module_index.ContainerVolume.new;
+  final ContainerVolumeArgs = module_index.ContainerVolume.new;
+  final DockerBuild = module_index.DockerBuild.new;
+  final DockerBuildArgs = module_index.DockerBuild.new;
+  final GetLogsArgs = module_index.GetLogsArgs.new;
+  final GetLogsResult = module_index.GetLogsResult.new;
+  final GetLogsResultArgs = module_index.GetLogsResult.new;
+  final GetNetworkArgs = module_index.GetNetworkArgs.new;
+  final GetNetworkIpamConfig = module_index.GetNetworkIpamConfig.new;
+  final GetNetworkIpamConfigArgs = module_index.GetNetworkIpamConfig.new;
+  final GetNetworkResult = module_index.GetNetworkResult.new;
+  final GetNetworkResultArgs = module_index.GetNetworkResult.new;
+  final GetPluginArgs = module_index.GetPluginArgs.new;
+  final GetPluginResult = module_index.GetPluginResult.new;
+  final GetPluginResultArgs = module_index.GetPluginResult.new;
+  final GetRegistryImageArgs = module_index.GetRegistryImageArgs.new;
+  final GetRegistryImageManifestsArgs =
+      module_index.GetRegistryImageManifestsArgs.new;
+  final GetRegistryImageManifestsAuthConfig =
+      module_index.GetRegistryImageManifestsAuthConfig.new;
+  final GetRegistryImageManifestsAuthConfigArgs =
+      module_index.GetRegistryImageManifestsAuthConfig.new;
+  final GetRegistryImageManifestsManifest =
+      module_index.GetRegistryImageManifestsManifest.new;
+  final GetRegistryImageManifestsManifestArgs =
+      module_index.GetRegistryImageManifestsManifest.new;
+  final GetRegistryImageManifestsResult =
+      module_index.GetRegistryImageManifestsResult.new;
+  final GetRegistryImageManifestsResultArgs =
+      module_index.GetRegistryImageManifestsResult.new;
+  final GetRegistryImageResult = module_index.GetRegistryImageResult.new;
+  final GetRegistryImageResultArgs = module_index.GetRegistryImageResult.new;
+  final GetRemoteImageArgs = module_index.GetRemoteImageArgs.new;
+  final GetRemoteImageResult = module_index.GetRemoteImageResult.new;
+  final GetRemoteImageResultArgs = module_index.GetRemoteImageResult.new;
+  final Image = module_index.Image.new;
+  final ImageArgs = module_index.ImageArgs.new;
+  final Network = module_index.Network.new;
+  final NetworkArgs = module_index.NetworkArgs.new;
+  final NetworkIpamConfig = module_index.NetworkIpamConfig.new;
+  final NetworkIpamConfigArgs = module_index.NetworkIpamConfig.new;
+  final NetworkLabel = module_index.NetworkLabel.new;
+  final NetworkLabelArgs = module_index.NetworkLabel.new;
+  final NetworkState = module_index.NetworkState.new;
+  final NetworkStateArgs = module_index.NetworkState.new;
+  final Plugin = module_index.Plugin.new;
+  final PluginArgs = module_index.PluginArgs.new;
+  final PluginGrantPermission = module_index.PluginGrantPermission.new;
+  final PluginGrantPermissionArgs = module_index.PluginGrantPermission.new;
+  final PluginState = module_index.PluginState.new;
+  final PluginStateArgs = module_index.PluginState.new;
+  final ProviderRegistryAuth = module_index.ProviderRegistryAuth.new;
+  final ProviderRegistryAuthArgs = module_index.ProviderRegistryAuth.new;
+  final Registry = module_index.Registry.new;
+  final RegistryArgs = module_index.Registry.new;
+  final RegistryImage = module_index.RegistryImage.new;
+  final RegistryImageArgs = module_index.RegistryImageArgs.new;
+  final RegistryImageAuthConfig = module_index.RegistryImageAuthConfig.new;
+  final RegistryImageAuthConfigArgs = module_index.RegistryImageAuthConfig.new;
+  final RegistryImageBuild = module_index.RegistryImageBuild.new;
+  final RegistryImageBuildArgs = module_index.RegistryImageBuild.new;
+  final RegistryImageBuildAuthConfig =
+      module_index.RegistryImageBuildAuthConfig.new;
+  final RegistryImageBuildAuthConfigArgs =
+      module_index.RegistryImageBuildAuthConfig.new;
+  final RegistryImageBuildSecret = module_index.RegistryImageBuildSecret.new;
+  final RegistryImageBuildSecretArgs =
+      module_index.RegistryImageBuildSecret.new;
+  final RegistryImageBuildUlimit = module_index.RegistryImageBuildUlimit.new;
+  final RegistryImageBuildUlimitArgs =
+      module_index.RegistryImageBuildUlimit.new;
+  final RegistryImageState = module_index.RegistryImageState.new;
+  final RegistryImageStateArgs = module_index.RegistryImageState.new;
+  final RemoteImage = module_index.RemoteImage.new;
+  final RemoteImageArgs = module_index.RemoteImageArgs.new;
+  final RemoteImageBuild = module_index.RemoteImageBuild.new;
+  final RemoteImageBuildArgs = module_index.RemoteImageBuild.new;
+  final RemoteImageBuildAuthConfig =
+      module_index.RemoteImageBuildAuthConfig.new;
+  final RemoteImageBuildAuthConfigArgs =
+      module_index.RemoteImageBuildAuthConfig.new;
+  final RemoteImageBuildSecret = module_index.RemoteImageBuildSecret.new;
+  final RemoteImageBuildSecretArgs = module_index.RemoteImageBuildSecret.new;
+  final RemoteImageBuildUlimit = module_index.RemoteImageBuildUlimit.new;
+  final RemoteImageBuildUlimitArgs = module_index.RemoteImageBuildUlimit.new;
+  final RemoteImageState = module_index.RemoteImageState.new;
+  final RemoteImageStateArgs = module_index.RemoteImageState.new;
+  final Secret = module_index.Secret.new;
+  final SecretArgs = module_index.SecretArgs.new;
+  final SecretLabel = module_index.SecretLabel.new;
+  final SecretLabelArgs = module_index.SecretLabel.new;
+  final SecretState = module_index.SecretState.new;
+  final SecretStateArgs = module_index.SecretState.new;
+  final Service = module_index.Service.new;
+  final ServiceArgs = module_index.ServiceArgs.new;
+  final ServiceAuth = module_index.ServiceAuth.new;
+  final ServiceAuthArgs = module_index.ServiceAuth.new;
+  final ServiceConfig = module_index.ServiceConfig.new;
+  final ServiceConfigArgs = module_index.ServiceConfigArgs.new;
+  final ServiceConfigState = module_index.ServiceConfigState.new;
+  final ServiceConfigStateArgs = module_index.ServiceConfigState.new;
+  final ServiceConvergeConfig = module_index.ServiceConvergeConfig.new;
+  final ServiceConvergeConfigArgs = module_index.ServiceConvergeConfig.new;
+  final ServiceEndpointSpec = module_index.ServiceEndpointSpec.new;
+  final ServiceEndpointSpecArgs = module_index.ServiceEndpointSpec.new;
+  final ServiceEndpointSpecPort = module_index.ServiceEndpointSpecPort.new;
+  final ServiceEndpointSpecPortArgs = module_index.ServiceEndpointSpecPort.new;
+  final ServiceLabel = module_index.ServiceLabel.new;
+  final ServiceLabelArgs = module_index.ServiceLabel.new;
+  final ServiceMode = module_index.ServiceMode.new;
+  final ServiceModeArgs = module_index.ServiceMode.new;
+  final ServiceModeReplicated = module_index.ServiceModeReplicated.new;
+  final ServiceModeReplicatedArgs = module_index.ServiceModeReplicated.new;
+  final ServiceRollbackConfig = module_index.ServiceRollbackConfig.new;
+  final ServiceRollbackConfigArgs = module_index.ServiceRollbackConfig.new;
+  final ServiceState = module_index.ServiceState.new;
+  final ServiceStateArgs = module_index.ServiceState.new;
+  final ServiceTaskSpec = module_index.ServiceTaskSpec.new;
+  final ServiceTaskSpecArgs = module_index.ServiceTaskSpec.new;
+  final ServiceTaskSpecContainerSpec =
+      module_index.ServiceTaskSpecContainerSpec.new;
+  final ServiceTaskSpecContainerSpecArgs =
+      module_index.ServiceTaskSpecContainerSpec.new;
+  final ServiceTaskSpecContainerSpecConfig =
+      module_index.ServiceTaskSpecContainerSpecConfig.new;
+  final ServiceTaskSpecContainerSpecConfigArgs =
+      module_index.ServiceTaskSpecContainerSpecConfig.new;
+  final ServiceTaskSpecContainerSpecDnsConfig =
+      module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
+  final ServiceTaskSpecContainerSpecDnsConfigArgs =
+      module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
+  final ServiceTaskSpecContainerSpecHealthcheck =
+      module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
+  final ServiceTaskSpecContainerSpecHealthcheckArgs =
+      module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
+  final ServiceTaskSpecContainerSpecHost =
+      module_index.ServiceTaskSpecContainerSpecHost.new;
+  final ServiceTaskSpecContainerSpecHostArgs =
+      module_index.ServiceTaskSpecContainerSpecHost.new;
+  final ServiceTaskSpecContainerSpecLabel =
+      module_index.ServiceTaskSpecContainerSpecLabel.new;
+  final ServiceTaskSpecContainerSpecLabelArgs =
+      module_index.ServiceTaskSpecContainerSpecLabel.new;
+  final ServiceTaskSpecContainerSpecMount =
+      module_index.ServiceTaskSpecContainerSpecMount.new;
+  final ServiceTaskSpecContainerSpecMountArgs =
+      module_index.ServiceTaskSpecContainerSpecMount.new;
+  final ServiceTaskSpecContainerSpecMountBindOptions =
+      module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
+  final ServiceTaskSpecContainerSpecMountBindOptionsArgs =
+      module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
+  final ServiceTaskSpecContainerSpecMountTmpfsOptions =
+      module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
+  final ServiceTaskSpecContainerSpecMountTmpfsOptionsArgs =
+      module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptions =
+      module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsArgs =
+      module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabel =
+      module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabelArgs =
+      module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
+  final ServiceTaskSpecContainerSpecPrivileges =
+      module_index.ServiceTaskSpecContainerSpecPrivileges.new;
+  final ServiceTaskSpecContainerSpecPrivilegesArgs =
+      module_index.ServiceTaskSpecContainerSpecPrivileges.new;
+  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpec =
+      module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
+  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpecArgs =
+      module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
+  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext =
+      module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
+  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContextArgs =
+      module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
+  final ServiceTaskSpecContainerSpecSecret =
+      module_index.ServiceTaskSpecContainerSpecSecret.new;
+  final ServiceTaskSpecContainerSpecSecretArgs =
+      module_index.ServiceTaskSpecContainerSpecSecret.new;
+  final ServiceTaskSpecLogDriver = module_index.ServiceTaskSpecLogDriver.new;
+  final ServiceTaskSpecLogDriverArgs =
+      module_index.ServiceTaskSpecLogDriver.new;
+  final ServiceTaskSpecNetworksAdvanced =
+      module_index.ServiceTaskSpecNetworksAdvanced.new;
+  final ServiceTaskSpecNetworksAdvancedArgs =
+      module_index.ServiceTaskSpecNetworksAdvanced.new;
+  final ServiceTaskSpecPlacement = module_index.ServiceTaskSpecPlacement.new;
+  final ServiceTaskSpecPlacementArgs =
+      module_index.ServiceTaskSpecPlacement.new;
+  final ServiceTaskSpecPlacementPlatform =
+      module_index.ServiceTaskSpecPlacementPlatform.new;
+  final ServiceTaskSpecPlacementPlatformArgs =
+      module_index.ServiceTaskSpecPlacementPlatform.new;
+  final ServiceTaskSpecResources = module_index.ServiceTaskSpecResources.new;
+  final ServiceTaskSpecResourcesArgs =
+      module_index.ServiceTaskSpecResources.new;
+  final ServiceTaskSpecResourcesLimits =
+      module_index.ServiceTaskSpecResourcesLimits.new;
+  final ServiceTaskSpecResourcesLimitsArgs =
+      module_index.ServiceTaskSpecResourcesLimits.new;
+  final ServiceTaskSpecResourcesReservation =
+      module_index.ServiceTaskSpecResourcesReservation.new;
+  final ServiceTaskSpecResourcesReservationArgs =
+      module_index.ServiceTaskSpecResourcesReservation.new;
+  final ServiceTaskSpecResourcesReservationGenericResources =
+      module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
+  final ServiceTaskSpecResourcesReservationGenericResourcesArgs =
+      module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
+  final ServiceTaskSpecRestartPolicy =
+      module_index.ServiceTaskSpecRestartPolicy.new;
+  final ServiceTaskSpecRestartPolicyArgs =
+      module_index.ServiceTaskSpecRestartPolicy.new;
+  final ServiceUpdateConfig = module_index.ServiceUpdateConfig.new;
+  final ServiceUpdateConfigArgs = module_index.ServiceUpdateConfig.new;
+  final Tag = module_index.Tag.new;
+  final TagArgs = module_index.TagArgs.new;
+  final TagState = module_index.TagState.new;
+  final TagStateArgs = module_index.TagState.new;
+  final Volume = module_index.Volume.new;
+  final VolumeArgs = module_index.VolumeArgs.new;
+  final VolumeCluster = module_index.VolumeCluster.new;
+  final VolumeClusterArgs = module_index.VolumeCluster.new;
+  final VolumeLabel = module_index.VolumeLabel.new;
+  final VolumeLabelArgs = module_index.VolumeLabel.new;
+  final VolumeState = module_index.VolumeState.new;
+  final VolumeStateArgs = module_index.VolumeState.new;
+  final getLogs = module_index.getLogs;
+  final getNetwork = module_index.getNetwork;
+  final getPlugin = module_index.getPlugin;
+  final getRegistryImage = module_index.getRegistryImage;
+  final getRegistryImageManifests = module_index.getRegistryImageManifests;
+  final getRemoteImage = module_index.getRemoteImage;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Docker = _providers.ProviderProvider.new;
-  final DockerArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final terraformConfig = _providers.terraformConfig;
+  final Docker = module_providers.ProviderProvider.new;
+  final DockerArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
-

@@ -1,12 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'additional_location_response.dart';
 import 'api_management_service_args.dart';
 import 'api_management_service_identity_response.dart';
 import 'api_management_service_sku_properties_response.dart';
 import 'api_version_constraint_response.dart';
-import 'certificate_configuration_response.dart';
-import 'hostname_configuration_response.dart';
-import 'remote_private_endpoint_connection_wrapper_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_configuration_response.dart';
 
@@ -2359,83 +2355,124 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 class ApiManagementService extends pulumi.CustomResource {
   /// Additional datacenter locations of the API Management service.
-  late final pulumi.Output<List<AdditionalLocationResponse>?> additionalLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> additionalLocations;
+
   /// Control Plane Apis version constraint for the API Management service.
   late final pulumi.Output<ApiVersionConstraintResponse?> apiVersionConstraint;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
-  late final pulumi.Output<List<CertificateConfigurationResponse>?> certificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+
   /// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String> createdAtUtc;
-  /// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+  /// Custom properties of the API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.&lt;/br&gt; Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
   late final pulumi.Output<Map<String, String>?> customProperties;
+
   /// DEveloper Portal endpoint URL of the API Management service.
   late final pulumi.Output<String> developerPortalUrl;
+
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
   late final pulumi.Output<bool?> disableGateway;
+
   /// Property only meant to be used for Consumption SKU Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
   late final pulumi.Output<bool?> enableClientCertificate;
+
   /// ETag of the resource.
   late final pulumi.Output<String> etag;
+
   /// Gateway URL of the API Management service in the Default Region.
   late final pulumi.Output<String> gatewayRegionalUrl;
+
   /// Gateway URL of the API Management service.
   late final pulumi.Output<String> gatewayUrl;
+
   /// Custom hostname configuration of the API Management service.
-  late final pulumi.Output<List<HostnameConfigurationResponse>?> hostnameConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hostnameConfigurations;
+
   /// Managed service identity of the Api Management service.
   late final pulumi.Output<ApiManagementServiceIdentityResponse?> identity;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Management API endpoint URL of the API Management service.
   late final pulumi.Output<String> managementApiUrl;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Property can be used to enable NAT Gateway for this API Management service.
   late final pulumi.Output<String?> natGatewayState;
+
   /// Email address from which the notification will be sent.
   late final pulumi.Output<String?> notificationSenderEmail;
+
   /// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
   late final pulumi.Output<List<String>> outboundPublicIPAddresses;
+
   /// Compute Platform Version running the service in this location.
   late final pulumi.Output<String> platformVersion;
+
   /// Publisher portal endpoint Url of the API Management service.
   late final pulumi.Output<String> portalUrl;
+
   /// List of Private Endpoint Connections of this service.
-  late final pulumi.Output<List<RemotePrivateEndpointConnectionWrapperResponse>?> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateEndpointConnections;
+
   /// Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
   late final pulumi.Output<List<String>> privateIPAddresses;
+
   /// The current provisioning state of the API Management service which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
   late final pulumi.Output<String> provisioningState;
+
   /// Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU.
   late final pulumi.Output<List<String>> publicIPAddresses;
+
   /// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
   late final pulumi.Output<String?> publicIpAddressId;
+
   /// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Publisher email.
   late final pulumi.Output<String> publisherEmail;
+
   /// Publisher name.
   late final pulumi.Output<String> publisherName;
+
   /// Undelete Api Management Service if it was previously soft-deleted. If this flag is specified and set to True all other properties will be ignored.
   late final pulumi.Output<bool?> restore;
+
   /// SCM endpoint URL of the API Management service.
   late final pulumi.Output<String> scmUrl;
+
   /// SKU properties of the API Management service.
   late final pulumi.Output<ApiManagementServiceSkuPropertiesResponse> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The provisioning state of the API Management service, which is targeted by the long running operation started on the service.
   late final pulumi.Output<String> targetProvisioningState;
+
   /// Resource type for API Management resource is set to Microsoft.ApiManagement.
   late final pulumi.Output<String> type;
+
   /// Virtual network configuration of the API Management service.
-  late final pulumi.Output<VirtualNetworkConfigurationResponse?> virtualNetworkConfiguration;
+  late final pulumi.Output<VirtualNetworkConfigurationResponse?>
+  virtualNetworkConfiguration;
+
   /// The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
   late final pulumi.Output<String?> virtualNetworkType;
+
   /// A list of availability zones denoting where the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -2448,50 +2485,67 @@ class ApiManagementService extends pulumi.CustomResource {
     ApiManagementServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiManagementService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalLocations = registerOutput<List<AdditionalLocationResponse>?>('additionalLocations');
-    this.apiVersionConstraint = registerOutput<ApiVersionConstraintResponse?>('apiVersionConstraint');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certificates = registerOutput<List<CertificateConfigurationResponse>?>('certificates');
-    this.createdAtUtc = registerOutput<String>('createdAtUtc');
-    this.customProperties = registerOutput<Map<String, String>?>('customProperties');
-    this.developerPortalUrl = registerOutput<String>('developerPortalUrl');
-    this.disableGateway = registerOutput<bool?>('disableGateway');
-    this.enableClientCertificate = registerOutput<bool?>('enableClientCertificate');
-    this.etag = registerOutput<String>('etag');
-    this.gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
-    this.gatewayUrl = registerOutput<String>('gatewayUrl');
-    this.hostnameConfigurations = registerOutput<List<HostnameConfigurationResponse>?>('hostnameConfigurations');
-    this.identity = registerOutput<ApiManagementServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managementApiUrl = registerOutput<String>('managementApiUrl');
+         'azure-native:apimanagement:ApiManagementService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalLocations = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalLocations',
+    );
+    apiVersionConstraint = registerOutput<ApiVersionConstraintResponse?>(
+      'apiVersionConstraint',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    createdAtUtc = registerOutput<String>('createdAtUtc');
+    customProperties = registerOutput<Map<String, String>?>('customProperties');
+    developerPortalUrl = registerOutput<String>('developerPortalUrl');
+    disableGateway = registerOutput<bool?>('disableGateway');
+    enableClientCertificate = registerOutput<bool?>('enableClientCertificate');
+    etag = registerOutput<String>('etag');
+    gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
+    gatewayUrl = registerOutput<String>('gatewayUrl');
+    hostnameConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'hostnameConfigurations',
+    );
+    identity = registerOutput<ApiManagementServiceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
+    managementApiUrl = registerOutput<String>('managementApiUrl');
     this.name = registerOutput<String>('name');
-    this.natGatewayState = registerOutput<String?>('natGatewayState');
-    this.notificationSenderEmail = registerOutput<String?>('notificationSenderEmail');
-    this.outboundPublicIPAddresses = registerOutput<List<String>>('outboundPublicIPAddresses');
-    this.platformVersion = registerOutput<String>('platformVersion');
-    this.portalUrl = registerOutput<String>('portalUrl');
-    this.privateEndpointConnections = registerOutput<List<RemotePrivateEndpointConnectionWrapperResponse>?>('privateEndpointConnections');
-    this.privateIPAddresses = registerOutput<List<String>>('privateIPAddresses');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPAddresses = registerOutput<List<String>>('publicIPAddresses');
-    this.publicIpAddressId = registerOutput<String?>('publicIpAddressId');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.publisherEmail = registerOutput<String>('publisherEmail');
-    this.publisherName = registerOutput<String>('publisherName');
-    this.restore = registerOutput<bool?>('restore');
-    this.scmUrl = registerOutput<String>('scmUrl');
-    this.sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetProvisioningState = registerOutput<String>('targetProvisioningState');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkConfiguration = registerOutput<VirtualNetworkConfigurationResponse?>('virtualNetworkConfiguration');
-    this.virtualNetworkType = registerOutput<String?>('virtualNetworkType');
-    this.zones = registerOutput<List<String>?>('zones');
+    natGatewayState = registerOutput<String?>('natGatewayState');
+    notificationSenderEmail = registerOutput<String?>(
+      'notificationSenderEmail',
+    );
+    outboundPublicIPAddresses = registerOutput<List<String>>(
+      'outboundPublicIPAddresses',
+    );
+    platformVersion = registerOutput<String>('platformVersion');
+    portalUrl = registerOutput<String>('portalUrl');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpointConnections',
+    );
+    privateIPAddresses = registerOutput<List<String>>('privateIPAddresses');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddresses = registerOutput<List<String>>('publicIPAddresses');
+    publicIpAddressId = registerOutput<String?>('publicIpAddressId');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publisherEmail = registerOutput<String>('publisherEmail');
+    publisherName = registerOutput<String>('publisherName');
+    restore = registerOutput<bool?>('restore');
+    scmUrl = registerOutput<String>('scmUrl');
+    sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetProvisioningState = registerOutput<String>('targetProvisioningState');
+    type = registerOutput<String>('type');
+    virtualNetworkConfiguration =
+        registerOutput<VirtualNetworkConfigurationResponse?>(
+          'virtualNetworkConfiguration',
+        );
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

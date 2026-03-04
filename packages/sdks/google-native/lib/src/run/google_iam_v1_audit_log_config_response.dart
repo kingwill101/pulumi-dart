@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleIamV1AuditLogConfigResponse {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>> exemptedMembers;
+
   /// The log type that this config enables.
   final pulumi.Input<String> logType;
 
@@ -26,9 +27,10 @@ class GoogleIamV1AuditLogConfigResponse {
 
   factory GoogleIamV1AuditLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfigResponse(
-      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: (map['logType'] as String).input(),
+      exemptedMembers: pulumi.Input.fromValue(
+        (map['exemptedMembers'] as List).cast<String>(),
+      ),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

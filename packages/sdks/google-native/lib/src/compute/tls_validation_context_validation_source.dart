@@ -4,16 +4,17 @@ enum TlsValidationContextValidationSource {
   usePath("USE_PATH"),
   useSds("USE_SDS");
 
-  const TlsValidationContextValidationSource(this.value);
-  final String value;
+  const TlsValidationContextValidationSource(this.wireValue);
+  final String wireValue;
 
   static TlsValidationContextValidationSource fromValue(String value) {
     for (final item in TlsValidationContextValidationSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TlsValidationContextValidationSource value: $value');
+    throw ArgumentError(
+      'Unknown TlsValidationContextValidationSource value: $value',
+    );
   }
 }
-

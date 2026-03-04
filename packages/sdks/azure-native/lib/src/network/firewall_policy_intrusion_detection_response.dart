@@ -6,9 +6,12 @@ import 'firewall_policy_intrusion_detection_configuration_response.dart';
 /// Configuration for intrusion detection mode and rules.
 class FirewallPolicyIntrusionDetectionResponse {
   /// Intrusion detection configuration properties.
-  final pulumi.Input<FirewallPolicyIntrusionDetectionConfigurationResponse>? configuration;
+  final pulumi.Input<FirewallPolicyIntrusionDetectionConfigurationResponse>?
+  configuration;
+
   /// Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
   final pulumi.Input<String>? mode;
+
   /// IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
   final pulumi.Input<String>? profile;
 
@@ -24,18 +27,39 @@ class FirewallPolicyIntrusionDetectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyIntrusionDetectionConfigurationResponse, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirewallPolicyIntrusionDetectionConfigurationResponse,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'mode': ?mode,
       'profile': ?profile,
     };
   }
 
-  factory FirewallPolicyIntrusionDetectionResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyIntrusionDetectionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyIntrusionDetectionResponse(
-      configuration: map['configuration'] == null ? null : (FirewallPolicyIntrusionDetectionConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirewallPolicyIntrusionDetectionConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

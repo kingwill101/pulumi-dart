@@ -5,28 +5,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultRouteTableRoute {
   /// The CIDR block of the route.
   final pulumi.Input<String>? cidrBlock;
+
   /// The Amazon Resource Name (ARN) of a core network.
   final pulumi.Input<String>? coreNetworkArn;
+
   /// The ID of a managed prefix list destination of the route.
   ///
   /// One of the following target arguments must be supplied:
   final pulumi.Input<String>? destinationPrefixListId;
+
   /// Identifier of a VPC Egress Only Internet Gateway.
   final pulumi.Input<String>? egressOnlyGatewayId;
+
   /// Identifier of a VPC internet gateway or a virtual private gateway.
   final pulumi.Input<String>? gatewayId;
+
   /// Identifier of an EC2 instance.
   final pulumi.Input<String>? instanceId;
+
   /// The Ipv6 CIDR block of the route
   final pulumi.Input<String>? ipv6CidrBlock;
+
   /// Identifier of a VPC NAT gateway.
   final pulumi.Input<String>? natGatewayId;
+
   /// Identifier of an EC2 network interface.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// Identifier of an EC2 Transit Gateway.
   final pulumi.Input<String>? transitGatewayId;
+
   /// Identifier of a VPC Endpoint. This route must be removed prior to VPC Endpoint deletion.
   final pulumi.Input<String>? vpcEndpointId;
+
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
@@ -79,19 +90,66 @@ class DefaultRouteTableRoute {
 
   factory DefaultRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableRoute(
-      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : ((map['coreNetworkArn'] as String).input()).input(),
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : ((map['destinationPrefixListId'] as String).input()).input(),
-      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : ((map['egressOnlyGatewayId'] as String).input()).input(),
-      gatewayId: map['gatewayId'] == null ? null : ((map['gatewayId'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : ((map['vpcPeeringConnectionId'] as String).input()).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreNetworkArn: (() {
+        final guardedValue = map['coreNetworkArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationPrefixListId: (() {
+        final guardedValue = map['destinationPrefixListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      egressOnlyGatewayId: (() {
+        final guardedValue = map['egressOnlyGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6CidrBlock: (() {
+        final guardedValue = map['ipv6CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natGatewayId: (() {
+        final guardedValue = map['natGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayId: (() {
+        final guardedValue = map['transitGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointId: (() {
+        final guardedValue = map['vpcEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcPeeringConnectionId: (() {
+        final guardedValue = map['vpcPeeringConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

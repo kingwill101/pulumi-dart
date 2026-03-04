@@ -6,12 +6,17 @@ import 'waf_rule_config_rate_limit_threshold_response_status.dart';
 class WafRuleConfigRateLimitThreshold {
   /// The maximum number of distinct managed rules that can be triggered.
   final pulumi.Input<int>? distinctManagedRules;
+
   /// The maximum number of times that managed rules can be triggered.
   final pulumi.Input<int>? managedRulesBlocked;
+
   /// The maximum number of allowed requests within a time interval.
   final pulumi.Input<int>? request;
+
   /// Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
-  final pulumi.Input<WafRuleConfigRateLimitThresholdResponseStatus>? responseStatus;
+  final pulumi.Input<WafRuleConfigRateLimitThresholdResponseStatus>?
+  responseStatus;
+
   /// The maximum allowed traffic within a time interval (deprecated).
   final pulumi.Input<String>? traffic;
 
@@ -34,19 +39,46 @@ class WafRuleConfigRateLimitThreshold {
       'distinctManagedRules': ?distinctManagedRules,
       'managedRulesBlocked': ?managedRulesBlocked,
       'request': ?request,
-      'responseStatus': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigRateLimitThresholdResponseStatus, Map<String, dynamic>>(responseStatus, (value) => value.toMap()),
+      'responseStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            WafRuleConfigRateLimitThresholdResponseStatus,
+            Map<String, dynamic>
+          >(responseStatus, (value) => value.toMap()),
       'traffic': ?traffic,
     };
   }
 
   factory WafRuleConfigRateLimitThreshold.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitThreshold(
-      distinctManagedRules: map['distinctManagedRules'] == null ? null : (map['distinctManagedRules']! as int).input(),
-      managedRulesBlocked: map['managedRulesBlocked'] == null ? null : (map['managedRulesBlocked']! as int).input(),
-      request: map['request'] == null ? null : (map['request']! as int).input(),
-      responseStatus: map['responseStatus'] == null ? null : (WafRuleConfigRateLimitThresholdResponseStatus.fromMap((map['responseStatus']! as Map).cast<String, dynamic>())).input(),
-      traffic: map['traffic'] == null ? null : (map['traffic']! as String).input(),
+      distinctManagedRules: (() {
+        final guardedValue = map['distinctManagedRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      managedRulesBlocked: (() {
+        final guardedValue = map['managedRulesBlocked'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      responseStatus: (() {
+        final guardedValue = map['responseStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WafRuleConfigRateLimitThresholdResponseStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      traffic: (() {
+        final guardedValue = map['traffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_drds;
-
 export 'drds/functions.dart';
 export 'drds/get_instances_args.dart';
 export 'drds/get_instances_instance.dart';

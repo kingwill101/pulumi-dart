@@ -35,12 +35,31 @@ class GetAppSpecIngressRuleRedirect {
 
   factory GetAppSpecIngressRuleRedirect.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleRedirect(
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      redirectCode: map['redirectCode'] == null ? null : (map['redirectCode']! as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      redirectCode: (() {
+        final guardedValue = map['redirectCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheme: (() {
+        final guardedValue = map['scheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

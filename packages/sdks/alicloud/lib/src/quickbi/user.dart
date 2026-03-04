@@ -6,7 +6,7 @@ import 'user_state.dart';
 ///
 /// For information about Quick BI User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/33813.htm).
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -137,14 +137,19 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Alibaba Cloud account ID.
   late final pulumi.Output<String?> accountId;
+
   /// An Alibaba Cloud account, Alibaba Cloud name.
   late final pulumi.Output<String> accountName;
+
   /// Whether it is the administrator. Valid values: `true` and `false`.
   late final pulumi.Output<bool> adminUser;
+
   /// Whether this is a permissions administrator. Valid values: `false`, `true`.
   late final pulumi.Output<bool> authAdminUser;
+
   /// The nickname of the user.
   late final pulumi.Output<String> nickName;
+
   /// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   late final pulumi.Output<String> userType;
 
@@ -152,30 +157,23 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_quickbi_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:quickbi/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String?>('accountId');
-    this.accountName = registerOutput<String>('accountName');
-    this.adminUser = registerOutput<bool>('adminUser');
-    this.authAdminUser = registerOutput<bool>('authAdminUser');
-    this.nickName = registerOutput<String>('nickName');
-    this.userType = registerOutput<String>('userType');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:quickbi/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountId = registerOutput<String?>('accountId');
+    accountName = registerOutput<String>('accountName');
+    adminUser = registerOutput<bool>('adminUser');
+    authAdminUser = registerOutput<bool>('authAdminUser');
+    nickName = registerOutput<String>('nickName');
+    userType = registerOutput<String>('userType');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -188,16 +186,16 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:quickbi/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String?>('accountId');
-    this.accountName = registerOutput<String>('accountName');
-    this.adminUser = registerOutput<bool>('adminUser');
-    this.authAdminUser = registerOutput<bool>('authAdminUser');
-    this.nickName = registerOutput<String>('nickName');
-    this.userType = registerOutput<String>('userType');
+         'alicloud:quickbi/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String?>('accountId');
+    accountName = registerOutput<String>('accountName');
+    adminUser = registerOutput<bool>('adminUser');
+    authAdminUser = registerOutput<bool>('authAdminUser');
+    nickName = registerOutput<String>('nickName');
+    userType = registerOutput<String>('userType');
   }
 }

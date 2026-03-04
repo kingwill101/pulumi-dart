@@ -7,16 +7,17 @@ enum PickTimeSeriesFilterRankingMethod {
   methodSum("METHOD_SUM"),
   methodLatest("METHOD_LATEST");
 
-  const PickTimeSeriesFilterRankingMethod(this.value);
-  final String value;
+  const PickTimeSeriesFilterRankingMethod(this.wireValue);
+  final String wireValue;
 
   static PickTimeSeriesFilterRankingMethod fromValue(String value) {
     for (final item in PickTimeSeriesFilterRankingMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PickTimeSeriesFilterRankingMethod value: $value');
+    throw ArgumentError(
+      'Unknown PickTimeSeriesFilterRankingMethod value: $value',
+    );
   }
 }
-

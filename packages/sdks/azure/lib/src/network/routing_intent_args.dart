@@ -10,8 +10,10 @@ import 'routing_intent_routing_policy.dart';
 class RoutingIntentArgs {
   /// The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// One or more `routing_policy` blocks as defined below.
   final pulumi.Input<List<RoutingIntentRoutingPolicy>> routingPolicies;
+
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualHubId;
 
@@ -28,17 +30,38 @@ class RoutingIntentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'routingPolicies': pulumi.Input.mapInputValue<List<RoutingIntentRoutingPolicy>, List<Map<String, dynamic>>>(routingPolicies, (value) => pulumi.Input.encodeList<RoutingIntentRoutingPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routingPolicies':
+          pulumi.Input.mapInputValue<
+            List<RoutingIntentRoutingPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            routingPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RoutingIntentRoutingPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'virtualHubId': virtualHubId,
     };
   }
 
   factory RoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return RoutingIntentArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      routingPolicies: (pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies'], (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualHubId: (map['virtualHubId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingPolicies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(
+          map['routingPolicies']!,
+          (value) => RoutingIntentRoutingPolicy.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
     );
   }
 }
-

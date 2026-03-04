@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoftDeletePolicyResponse {
   /// The timestamp when the policy was last updated.
   final pulumi.Input<String> lastUpdatedTime;
+
   /// The number of days after which a soft-deleted item is permanently deleted.
   final pulumi.Input<int>? retentionDays;
+
   /// The value that indicates whether the policy is enabled or not.
   final pulumi.Input<String>? status;
 
@@ -31,10 +33,17 @@ class SoftDeletePolicyResponse {
 
   factory SoftDeletePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicyResponse(
-      lastUpdatedTime: (map['lastUpdatedTime'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      lastUpdatedTime: pulumi.Input.fromValue(map['lastUpdatedTime'] as String),
+      retentionDays: (() {
+        final guardedValue = map['retentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

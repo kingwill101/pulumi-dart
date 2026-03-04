@@ -7,25 +7,35 @@ import 'proxy_resource_response_system_data.dart';
 class GetKafkaConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Consumer group for hook event hub.
   final String? consumerGroup;
+
   /// Credentials to access the event streaming service attached to the purview account.
   final CredentialsResponse? credentials;
+
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
   final String? eventHubPartitionId;
   final String? eventHubResourceId;
+
   /// The event hub type.
   final String? eventHubType;
+
   /// The state of the event streaming service
   final String? eventStreamingState;
+
   /// The event streaming service type
   final String? eventStreamingType;
+
   /// Gets or sets the identifier.
   final String id;
+
   /// Gets or sets the name.
   final String name;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final ProxyResourceResponseSystemData systemData;
+
   /// Gets or sets the type.
   final String type;
 
@@ -61,7 +71,7 @@ class GetKafkaConfigurationResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'consumerGroup': ?consumerGroup,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?credentials?.toMap(),
       'eventHubPartitionId': ?eventHubPartitionId,
       'eventHubResourceId': ?eventHubResourceId,
       'eventHubType': ?eventHubType,
@@ -77,18 +87,49 @@ class GetKafkaConfigurationResult {
   factory GetKafkaConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      consumerGroup: map['consumerGroup'] == null ? null : map['consumerGroup']! as String,
-      credentials: map['credentials'] == null ? null : CredentialsResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>()),
-      eventHubPartitionId: map['eventHubPartitionId'] == null ? null : map['eventHubPartitionId']! as String,
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : map['eventHubResourceId']! as String,
-      eventHubType: map['eventHubType'] == null ? null : map['eventHubType']! as String,
-      eventStreamingState: map['eventStreamingState'] == null ? null : map['eventStreamingState']! as String,
-      eventStreamingType: map['eventStreamingType'] == null ? null : map['eventStreamingType']! as String,
+      consumerGroup: (() {
+        final guardedValue = map['consumerGroup'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return CredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      eventHubPartitionId: (() {
+        final guardedValue = map['eventHubPartitionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventHubResourceId: (() {
+        final guardedValue = map['eventHubResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventHubType: (() {
+        final guardedValue = map['eventHubType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventStreamingState: (() {
+        final guardedValue = map['eventStreamingState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventStreamingType: (() {
+        final guardedValue = map['eventStreamingType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: ProxyResourceResponseSystemData.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: ProxyResourceResponseSystemData.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_config;
-
 export 'config/assume_role.dart';
 export 'config/assume_role_with_oidc.dart';
 export 'config/endpoints.dart';

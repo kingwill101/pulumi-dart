@@ -9,20 +9,15 @@ class AnimationEndResponse {
 
   /// Creates a new [AnimationEndResponse].
   /// [startTimeOffset] The time to end overlay object, in seconds. Default: 0
-  AnimationEndResponse({
-    required this.startTimeOffset,
-  });
+  AnimationEndResponse({required this.startTimeOffset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeOffset': startTimeOffset,
-    };
+    return <String, dynamic>{'startTimeOffset': startTimeOffset};
   }
 
   factory AnimationEndResponse.fromMap(Map<String, dynamic> map) {
     return AnimationEndResponse(
-      startTimeOffset: (map['startTimeOffset'] as String).input(),
+      startTimeOffset: pulumi.Input.fromValue(map['startTimeOffset'] as String),
     );
   }
 }
-

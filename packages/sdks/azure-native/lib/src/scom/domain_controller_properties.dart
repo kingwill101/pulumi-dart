@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainControllerProperties {
   /// IP address of DNS server
   final pulumi.Input<String>? dnsServer;
+
   /// Fully qualified domain name
   final pulumi.Input<String>? domainName;
+
   /// Organizational Unit path in which the SCOM servers will be present
   final pulumi.Input<String>? ouPath;
 
@@ -15,11 +17,7 @@ class DomainControllerProperties {
   /// [dnsServer] IP address of DNS server
   /// [domainName] Fully qualified domain name
   /// [ouPath] Organizational Unit path in which the SCOM servers will be present
-  DomainControllerProperties({
-    this.dnsServer,
-    this.domainName,
-    this.ouPath,
-  });
+  DomainControllerProperties({this.dnsServer, this.domainName, this.ouPath});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class DomainControllerProperties {
 
   factory DomainControllerProperties.fromMap(Map<String, dynamic> map) {
     return DomainControllerProperties(
-      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      ouPath: map['ouPath'] == null ? null : (map['ouPath']! as String).input(),
+      dnsServer: (() {
+        final guardedValue = map['dnsServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ouPath: (() {
+        final guardedValue = map['ouPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

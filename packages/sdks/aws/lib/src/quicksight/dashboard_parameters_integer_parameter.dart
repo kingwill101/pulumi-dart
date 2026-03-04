@@ -16,17 +16,15 @@ class DashboardParametersIntegerParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
-  factory DashboardParametersIntegerParameter.fromMap(Map<String, dynamic> map) {
+  factory DashboardParametersIntegerParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardParametersIntegerParameter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<int>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<int>()),
     );
   }
 }
-

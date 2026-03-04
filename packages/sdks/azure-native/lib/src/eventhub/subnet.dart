@@ -9,20 +9,19 @@ class Subnet {
 
   /// Creates a new [Subnet].
   /// [id] Resource ID of Virtual Network Subnet
-  Subnet({
-    this.id,
-  });
+  Subnet({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,15 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'bastion_host_instance_ad_auth_server.dart';
 import 'bastion_host_instance_args.dart';
-import 'bastion_host_instance_ldap_auth_server.dart';
 import 'bastion_host_instance_state.dart';
 
 class BastionHostInstance extends pulumi.CustomResource {
-  late final pulumi.Output<List<BastionHostInstanceAdAuthServer>> adAuthServers;
+  late final pulumi.Output<List<Map<String, dynamic>>> adAuthServers;
   late final pulumi.Output<String> bandwidth;
   late final pulumi.Output<String> description;
   late final pulumi.Output<bool> enablePublicAccess;
-  late final pulumi.Output<List<BastionHostInstanceLdapAuthServer>> ldapAuthServers;
+  late final pulumi.Output<List<Map<String, dynamic>>> ldapAuthServers;
   late final pulumi.Output<String> licenseCode;
   late final pulumi.Output<int?> period;
   late final pulumi.Output<String> planCode;
@@ -33,29 +31,31 @@ class BastionHostInstance extends pulumi.CustomResource {
     BastionHostInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:yundun/bastionHostInstance:BastionHostInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adAuthServers = registerOutput<List<BastionHostInstanceAdAuthServer>>('adAuthServers');
-    this.bandwidth = registerOutput<String>('bandwidth');
-    this.description = registerOutput<String>('description');
-    this.enablePublicAccess = registerOutput<bool>('enablePublicAccess');
-    this.ldapAuthServers = registerOutput<List<BastionHostInstanceLdapAuthServer>>('ldapAuthServers');
-    this.licenseCode = registerOutput<String>('licenseCode');
-    this.period = registerOutput<int?>('period');
-    this.planCode = registerOutput<String>('planCode');
-    this.publicWhiteLists = registerOutput<List<String>?>('publicWhiteLists');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalPeriodUnit = registerOutput<String>('renewalPeriodUnit');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.slaveVswitchId = registerOutput<String?>('slaveVswitchId');
-    this.storage = registerOutput<String>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:yundun/bastionHostInstance:BastionHostInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adAuthServers = registerOutput<List<Map<String, dynamic>>>('adAuthServers');
+    bandwidth = registerOutput<String>('bandwidth');
+    description = registerOutput<String>('description');
+    enablePublicAccess = registerOutput<bool>('enablePublicAccess');
+    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>(
+      'ldapAuthServers',
+    );
+    licenseCode = registerOutput<String>('licenseCode');
+    period = registerOutput<int?>('period');
+    planCode = registerOutput<String>('planCode');
+    publicWhiteLists = registerOutput<List<String>?>('publicWhiteLists');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalPeriodUnit = registerOutput<String>('renewalPeriodUnit');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    slaveVswitchId = registerOutput<String?>('slaveVswitchId');
+    storage = registerOutput<String>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [BastionHostInstance] resource's state with the given [name] and [id].
@@ -76,28 +76,30 @@ class BastionHostInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:yundun/bastionHostInstance:BastionHostInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adAuthServers = registerOutput<List<BastionHostInstanceAdAuthServer>>('adAuthServers');
-    this.bandwidth = registerOutput<String>('bandwidth');
-    this.description = registerOutput<String>('description');
-    this.enablePublicAccess = registerOutput<bool>('enablePublicAccess');
-    this.ldapAuthServers = registerOutput<List<BastionHostInstanceLdapAuthServer>>('ldapAuthServers');
-    this.licenseCode = registerOutput<String>('licenseCode');
-    this.period = registerOutput<int?>('period');
-    this.planCode = registerOutput<String>('planCode');
-    this.publicWhiteLists = registerOutput<List<String>?>('publicWhiteLists');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalPeriodUnit = registerOutput<String>('renewalPeriodUnit');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.slaveVswitchId = registerOutput<String?>('slaveVswitchId');
-    this.storage = registerOutput<String>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:yundun/bastionHostInstance:BastionHostInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adAuthServers = registerOutput<List<Map<String, dynamic>>>('adAuthServers');
+    bandwidth = registerOutput<String>('bandwidth');
+    description = registerOutput<String>('description');
+    enablePublicAccess = registerOutput<bool>('enablePublicAccess');
+    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>(
+      'ldapAuthServers',
+    );
+    licenseCode = registerOutput<String>('licenseCode');
+    period = registerOutput<int?>('period');
+    planCode = registerOutput<String>('planCode');
+    publicWhiteLists = registerOutput<List<String>?>('publicWhiteLists');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalPeriodUnit = registerOutput<String>('renewalPeriodUnit');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    slaveVswitchId = registerOutput<String?>('slaveVswitchId');
+    storage = registerOutput<String>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

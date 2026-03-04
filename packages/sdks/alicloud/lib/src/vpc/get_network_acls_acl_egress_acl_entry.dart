@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkAclsAclEgressAclEntry {
   /// Give the description information of the direction rule.
   final pulumi.Input<String> description;
+
   /// The destination address segment.
   final pulumi.Input<String> destinationCidrIp;
+
   /// The name of the entry for the direction rule.
   final pulumi.Input<String> networkAclEntryName;
+
   /// The  authorization policy.
   final pulumi.Input<String> policy;
+
   /// Destination port range.
   final pulumi.Input<String> port;
+
   /// Transport  layer protocol.
   final pulumi.Input<String> protocol;
 
@@ -45,13 +50,16 @@ class GetNetworkAclsAclEgressAclEntry {
 
   factory GetNetworkAclsAclEgressAclEntry.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsAclEgressAclEntry(
-      description: (map['description'] as String).input(),
-      destinationCidrIp: (map['destinationCidrIp'] as String).input(),
-      networkAclEntryName: (map['networkAclEntryName'] as String).input(),
-      policy: (map['policy'] as String).input(),
-      port: (map['port'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      destinationCidrIp: pulumi.Input.fromValue(
+        map['destinationCidrIp'] as String,
+      ),
+      networkAclEntryName: pulumi.Input.fromValue(
+        map['networkAclEntryName'] as String,
+      ),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

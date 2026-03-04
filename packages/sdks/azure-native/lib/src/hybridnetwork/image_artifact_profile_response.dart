@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageArtifactProfileResponse {
   /// Image name.
   final pulumi.Input<String>? imageName;
+
   /// Image version.
   final pulumi.Input<String>? imageVersion;
 
   /// Creates a new [ImageArtifactProfileResponse].
   /// [imageName] Image name.
   /// [imageVersion] Image version.
-  ImageArtifactProfileResponse({
-    this.imageName,
-    this.imageVersion,
-  });
+  ImageArtifactProfileResponse({this.imageName, this.imageVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ImageArtifactProfileResponse {
 
   factory ImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return ImageArtifactProfileResponse(
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageVersion: (() {
+        final guardedValue = map['imageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

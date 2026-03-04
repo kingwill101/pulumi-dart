@@ -8,20 +8,15 @@ class GetClusterRestoreBackupSource {
 
   /// Creates a new [GetClusterRestoreBackupSource].
   /// [backupName] The name of the backup that this cluster is restored from.
-  GetClusterRestoreBackupSource({
-    required this.backupName,
-  });
+  GetClusterRestoreBackupSource({required this.backupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backupName': backupName,
-    };
+    return <String, dynamic>{'backupName': backupName};
   }
 
   factory GetClusterRestoreBackupSource.fromMap(Map<String, dynamic> map) {
     return GetClusterRestoreBackupSource(
-      backupName: (map['backupName'] as String).input(),
+      backupName: pulumi.Input.fromValue(map['backupName'] as String),
     );
   }
 }
-

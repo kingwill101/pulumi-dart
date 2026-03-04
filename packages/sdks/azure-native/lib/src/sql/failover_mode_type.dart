@@ -3,16 +3,15 @@ enum FailoverModeType {
   valueNone("None"),
   valueManual("Manual");
 
-  const FailoverModeType(this.value);
-  final String value;
+  const FailoverModeType(this.wireValue);
+  final String wireValue;
 
   static FailoverModeType fromValue(String value) {
     for (final item in FailoverModeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FailoverModeType value: $value');
   }
 }
-

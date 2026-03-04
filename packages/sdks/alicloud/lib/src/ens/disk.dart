@@ -8,7 +8,7 @@ import 'disk_state.dart';
 ///
 /// For information about ENS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createdisk).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -153,28 +153,38 @@ import 'disk_state.dart';
 class Disk extends pulumi.CustomResource {
   /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
   late final pulumi.Output<String> category;
+
   /// The time when the disk was created.
   late final pulumi.Output<String> createTime;
+
   /// The name of the disk.
   late final pulumi.Output<String?> diskName;
+
   /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
   late final pulumi.Output<bool?> encrypted;
+
   /// The ID of the edge node.
   late final pulumi.Output<String> ensRegionId;
+
   /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
   late final pulumi.Output<String> kmsKeyId;
+
   /// The billing method of the instance. Valid values: `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// The size of the disk instance. Unit: GiB.
   late final pulumi.Output<int?> size;
+
   /// The ID of the snapshot used to create the cloud disk.
   ///
   /// The SnapshotId and Size parameters have the following limitations:
   /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
   /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
   late final pulumi.Output<String?> snapshotId;
+
   /// The status of the disk.
   late final pulumi.Output<String> status;
+
   /// The label to which the instance is bound.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -182,35 +192,28 @@ class Disk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Disk]. {@macro pulumi_ens_disk_disk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Disk(
-    String name, {
-    DiskArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ens/disk:Disk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.diskName = registerOutput<String?>('diskName');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.size = registerOutput<int?>('size');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+  Disk(String name, {DiskArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ens/disk:Disk',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    diskName = registerOutput<String?>('diskName');
+    encrypted = registerOutput<bool?>('encrypted');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    paymentType = registerOutput<String>('paymentType');
+    size = registerOutput<int?>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Disk] resource's state with the given [name] and [id].
-  static Disk get(
-    String name,
-    pulumi.Input<String> id, {
-    DiskState? state,
-  }) {
+  static Disk get(String name, pulumi.Input<String> id, {DiskState? state}) {
     return Disk._get(
       name,
       state: state?.toMap(),
@@ -223,21 +226,21 @@ class Disk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/disk:Disk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.diskName = registerOutput<String?>('diskName');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.size = registerOutput<int?>('size');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ens/disk:Disk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    diskName = registerOutput<String?>('diskName');
+    encrypted = registerOutput<bool?>('encrypted');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    paymentType = registerOutput<String>('paymentType');
+    size = registerOutput<int?>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

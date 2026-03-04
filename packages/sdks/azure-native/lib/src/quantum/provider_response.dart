@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderResponse {
   /// The provider's marketplace application display name.
   final pulumi.Input<String>? applicationName;
+
   /// A Uri identifying the specific instance of this provider.
   final pulumi.Input<String>? instanceUri;
+
   /// Unique id of this provider.
   final pulumi.Input<String>? providerId;
+
   /// The sku associated with pricing information for this provider.
   final pulumi.Input<String>? providerSku;
+
   /// Provisioning status field
   final pulumi.Input<String>? provisioningState;
+
   /// Id to track resource usage for the provider.
   final pulumi.Input<String>? resourceUsageId;
 
@@ -46,13 +51,36 @@ class ProviderResponse {
 
   factory ProviderResponse.fromMap(Map<String, dynamic> map) {
     return ProviderResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
-      instanceUri: map['instanceUri'] == null ? null : (map['instanceUri']! as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
-      providerSku: map['providerSku'] == null ? null : (map['providerSku']! as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId']! as String).input(),
+      applicationName: (() {
+        final guardedValue = map['applicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceUri: (() {
+        final guardedValue = map['instanceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerId: (() {
+        final guardedValue = map['providerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerSku: (() {
+        final guardedValue = map['providerSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceUsageId: (() {
+        final guardedValue = map['resourceUsageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum GoogleCloudAiplatformV1beta1PresetsModality {
   text("TEXT"),
   tabular("TABULAR");
 
-  const GoogleCloudAiplatformV1beta1PresetsModality(this.value);
-  final String value;
+  const GoogleCloudAiplatformV1beta1PresetsModality(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudAiplatformV1beta1PresetsModality fromValue(String value) {
     for (final item in GoogleCloudAiplatformV1beta1PresetsModality.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1PresetsModality value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1beta1PresetsModality value: $value',
+    );
   }
 }
-

@@ -9,15 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAclServiceArgs {
   /// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
   final pulumi.Input<bool> enable;
+
   /// The type of endpoint. Valid values: `internet`.
   final pulumi.Input<String> endpointType;
+
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
+
   /// The ModuleName. Valid values: `Registry`.
   ///
-  /// > **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+  /// &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
   ///
-  /// > **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
+  /// &gt; **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
   final pulumi.Input<String>? moduleName;
 
   /// Creates a new [GetEndpointAclServiceArgs].
@@ -43,11 +46,14 @@ class GetEndpointAclServiceArgs {
 
   factory GetEndpointAclServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclServiceArgs(
-      enable: (map['enable'] as bool).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      moduleName: map['moduleName'] == null ? null : (map['moduleName']! as String).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      moduleName: (() {
+        final guardedValue = map['moduleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

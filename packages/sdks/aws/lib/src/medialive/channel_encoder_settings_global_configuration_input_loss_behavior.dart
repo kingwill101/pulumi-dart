@@ -6,7 +6,10 @@ import 'channel_encoder_settings_global_configuration_input_loss_behavior_input_
 class ChannelEncoderSettingsGlobalConfigurationInputLossBehavior {
   final pulumi.Input<int>? blackFrameMsec;
   final pulumi.Input<String>? inputLossImageColor;
-  final pulumi.Input<ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate>? inputLossImageSlate;
+  final pulumi.Input<
+    ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate
+  >?
+  inputLossImageSlate;
   final pulumi.Input<String>? inputLossImageType;
   final pulumi.Input<int>? repeatFrameMsec;
 
@@ -28,20 +31,49 @@ class ChannelEncoderSettingsGlobalConfigurationInputLossBehavior {
     return <String, dynamic>{
       'blackFrameMsec': ?blackFrameMsec,
       'inputLossImageColor': ?inputLossImageColor,
-      'inputLossImageSlate': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate, Map<String, dynamic>>(inputLossImageSlate, (value) => value.toMap()),
+      'inputLossImageSlate':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate,
+            Map<String, dynamic>
+          >(inputLossImageSlate, (value) => value.toMap()),
       'inputLossImageType': ?inputLossImageType,
       'repeatFrameMsec': ?repeatFrameMsec,
     };
   }
 
-  factory ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsGlobalConfigurationInputLossBehavior(
-      blackFrameMsec: map['blackFrameMsec'] == null ? null : ((map['blackFrameMsec'] as int).input()).input(),
-      inputLossImageColor: map['inputLossImageColor'] == null ? null : ((map['inputLossImageColor'] as String).input()).input(),
-      inputLossImageSlate: map['inputLossImageSlate'] == null ? null : ((ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate.fromMap((map['inputLossImageSlate']! as Map).cast<String, dynamic>())).input()).input(),
-      inputLossImageType: map['inputLossImageType'] == null ? null : ((map['inputLossImageType'] as String).input()).input(),
-      repeatFrameMsec: map['repeatFrameMsec'] == null ? null : ((map['repeatFrameMsec'] as int).input()).input(),
+      blackFrameMsec: (() {
+        final guardedValue = map['blackFrameMsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inputLossImageColor: (() {
+        final guardedValue = map['inputLossImageColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputLossImageSlate: (() {
+        final guardedValue = map['inputLossImageSlate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inputLossImageType: (() {
+        final guardedValue = map['inputLossImageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repeatFrameMsec: (() {
+        final guardedValue = map['repeatFrameMsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

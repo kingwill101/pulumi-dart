@@ -14,16 +14,15 @@ enum ClassificationModels {
   valueGradientBoosting("GradientBoosting"),
   valueXGBoostClassifier("XGBoostClassifier");
 
-  const ClassificationModels(this.value);
-  final String value;
+  const ClassificationModels(this.wireValue);
+  final String wireValue;
 
   static ClassificationModels fromValue(String value) {
     for (final item in ClassificationModels.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClassificationModels value: $value');
   }
 }
-

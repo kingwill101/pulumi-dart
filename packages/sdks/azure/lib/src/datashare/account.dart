@@ -178,7 +178,7 @@ import 'account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -193,12 +193,16 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<AccountIdentity> identity;
+
   /// The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Data Share Account.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -211,16 +215,16 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datashare/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:datashare/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -241,15 +245,15 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datashare/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:datashare/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

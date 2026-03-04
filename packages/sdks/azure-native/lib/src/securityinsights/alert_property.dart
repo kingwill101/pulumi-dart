@@ -10,16 +10,15 @@ enum AlertProperty {
   valueRemediationSteps("RemediationSteps"),
   valueTechniques("Techniques");
 
-  const AlertProperty(this.value);
-  final String value;
+  const AlertProperty(this.wireValue);
+  final String wireValue;
 
   static AlertProperty fromValue(String value) {
     for (final item in AlertProperty.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertProperty value: $value');
   }
 }
-

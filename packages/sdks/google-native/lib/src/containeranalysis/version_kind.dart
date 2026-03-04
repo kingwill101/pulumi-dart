@@ -5,16 +5,15 @@ enum VersionKind {
   minimum("MINIMUM"),
   maximum("MAXIMUM");
 
-  const VersionKind(this.value);
-  final String value;
+  const VersionKind(this.wireValue);
+  final String wireValue;
 
   static VersionKind fromValue(String value) {
     for (final item in VersionKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionKind value: $value');
   }
 }
-

@@ -6,12 +6,16 @@ import 'plan_trigger_condition.dart';
 class PlanTrigger {
   /// Action to trigger. Valid values: `activate`, `deactivate`.
   final pulumi.Input<String> action;
+
   /// List of conditions that must be met. See Conditions below.
   final pulumi.Input<List<PlanTriggerCondition>>? conditions;
+
   /// Description of the trigger.
   final pulumi.Input<String>? description;
+
   /// Minimum delay in minutes between executions.
   final pulumi.Input<int> minDelayMinutesBetweenExecutions;
+
   /// Target region for the trigger.
   final pulumi.Input<String> targetRegion;
 
@@ -32,7 +36,18 @@ class PlanTrigger {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<PlanTriggerCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PlanTriggerCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PlanTriggerCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlanTriggerCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'minDelayMinutesBetweenExecutions': minDelayMinutesBetweenExecutions,
       'targetRegion': targetRegion,
@@ -41,12 +56,28 @@ class PlanTrigger {
 
   factory PlanTrigger.fromMap(Map<String, dynamic> map) {
     return PlanTrigger(
-      action: (map['action'] as String).input(),
-      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<PlanTriggerCondition>(map['conditions']!, (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      minDelayMinutesBetweenExecutions: (map['minDelayMinutesBetweenExecutions'] as int).input(),
-      targetRegion: (map['targetRegion'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PlanTriggerCondition>(
+            guardedValue,
+            (value) => PlanTriggerCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minDelayMinutesBetweenExecutions: pulumi.Input.fromValue(
+        map['minDelayMinutesBetweenExecutions'] as int,
+      ),
+      targetRegion: pulumi.Input.fromValue(map['targetRegion'] as String),
     );
   }
 }
-

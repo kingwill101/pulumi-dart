@@ -7,16 +7,17 @@ enum ManagedCassandraProvisioningState {
   valueFailed("Failed"),
   valueCanceled("Canceled");
 
-  const ManagedCassandraProvisioningState(this.value);
-  final String value;
+  const ManagedCassandraProvisioningState(this.wireValue);
+  final String wireValue;
 
   static ManagedCassandraProvisioningState fromValue(String value) {
     for (final item in ManagedCassandraProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedCassandraProvisioningState value: $value');
+    throw ArgumentError(
+      'Unknown ManagedCassandraProvisioningState value: $value',
+    );
   }
 }
-

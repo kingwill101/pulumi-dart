@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisioningTemplatePreProvisioningHook {
   /// The version of the payload that was sent to the target function. The only valid (and the default) payload version is `"2020-04-01"`.
   final pulumi.Input<String>? payloadVersion;
+
   /// The ARN of the target function.
   final pulumi.Input<String> targetArn;
 
@@ -23,11 +24,16 @@ class ProvisioningTemplatePreProvisioningHook {
     };
   }
 
-  factory ProvisioningTemplatePreProvisioningHook.fromMap(Map<String, dynamic> map) {
+  factory ProvisioningTemplatePreProvisioningHook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProvisioningTemplatePreProvisioningHook(
-      payloadVersion: map['payloadVersion'] == null ? null : ((map['payloadVersion'] as String).input()).input(),
-      targetArn: (map['targetArn'] as String).input(),
+      payloadVersion: (() {
+        final guardedValue = map['payloadVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetArn: pulumi.Input.fromValue(map['targetArn'] as String),
     );
   }
 }
-

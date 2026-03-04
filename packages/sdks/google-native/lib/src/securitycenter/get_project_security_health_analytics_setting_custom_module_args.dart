@@ -25,11 +25,16 @@ class GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
     };
   }
 
-  factory GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customModuleId: (map['customModuleId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      customModuleId: pulumi.Input.fromValue(map['customModuleId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

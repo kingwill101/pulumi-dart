@@ -25,12 +25,25 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings(
-      audioRenditionSets: map['audioRenditionSets'] == null ? null : ((map['audioRenditionSets'] as String).input()).input(),
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : ((map['nielsenId3Behavior'] as String).input()).input(),
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : ((map['timedMetadataBehavior'] as String).input()).input(),
+      audioRenditionSets: (() {
+        final guardedValue = map['audioRenditionSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nielsenId3Behavior: (() {
+        final guardedValue = map['nielsenId3Behavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataBehavior: (() {
+        final guardedValue = map['timedMetadataBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

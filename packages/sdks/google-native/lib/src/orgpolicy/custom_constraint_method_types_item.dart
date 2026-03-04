@@ -4,16 +4,17 @@ enum CustomConstraintMethodTypesItem {
   update("UPDATE"),
   delete("DELETE");
 
-  const CustomConstraintMethodTypesItem(this.value);
-  final String value;
+  const CustomConstraintMethodTypesItem(this.wireValue);
+  final String wireValue;
 
   static CustomConstraintMethodTypesItem fromValue(String value) {
     for (final item in CustomConstraintMethodTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CustomConstraintMethodTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown CustomConstraintMethodTypesItem value: $value',
+    );
   }
 }
-

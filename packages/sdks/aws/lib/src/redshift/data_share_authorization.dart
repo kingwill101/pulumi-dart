@@ -112,16 +112,21 @@ import 'data_share_authorization_state.dart';
 class DataShareAuthorization extends pulumi.CustomResource {
   /// Whether to allow write operations for a datashare.
   late final pulumi.Output<bool?> allowWrites;
+
   /// Identifier of the data consumer that is authorized to access the datashare. This identifier is an AWS account ID or a keyword, such as `ADX`.
   late final pulumi.Output<String> consumerIdentifier;
+
   /// Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> dataShareArn;
+
   /// Identifier of a datashare to show its managing entity.
   late final pulumi.Output<String> managedBy;
+
   /// Amazon Resource Name (ARN) of the producer.
   late final pulumi.Output<String> producerArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -134,17 +139,17 @@ class DataShareAuthorization extends pulumi.CustomResource {
     DataShareAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/dataShareAuthorization:DataShareAuthorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowWrites = registerOutput<bool?>('allowWrites');
-    this.consumerIdentifier = registerOutput<String>('consumerIdentifier');
-    this.dataShareArn = registerOutput<String>('dataShareArn');
-    this.managedBy = registerOutput<String>('managedBy');
-    this.producerArn = registerOutput<String>('producerArn');
-    this.region = registerOutput<String>('region');
+         'aws:redshift/dataShareAuthorization:DataShareAuthorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowWrites = registerOutput<bool?>('allowWrites');
+    consumerIdentifier = registerOutput<String>('consumerIdentifier');
+    dataShareArn = registerOutput<String>('dataShareArn');
+    managedBy = registerOutput<String>('managedBy');
+    producerArn = registerOutput<String>('producerArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [DataShareAuthorization] resource's state with the given [name] and [id].
@@ -165,16 +170,16 @@ class DataShareAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/dataShareAuthorization:DataShareAuthorization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowWrites = registerOutput<bool?>('allowWrites');
-    this.consumerIdentifier = registerOutput<String>('consumerIdentifier');
-    this.dataShareArn = registerOutput<String>('dataShareArn');
-    this.managedBy = registerOutput<String>('managedBy');
-    this.producerArn = registerOutput<String>('producerArn');
-    this.region = registerOutput<String>('region');
+         'aws:redshift/dataShareAuthorization:DataShareAuthorization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowWrites = registerOutput<bool?>('allowWrites');
+    consumerIdentifier = registerOutput<String>('consumerIdentifier');
+    dataShareArn = registerOutput<String>('dataShareArn');
+    managedBy = registerOutput<String>('managedBy');
+    producerArn = registerOutput<String>('producerArn');
+    region = registerOutput<String>('region');
   }
 }

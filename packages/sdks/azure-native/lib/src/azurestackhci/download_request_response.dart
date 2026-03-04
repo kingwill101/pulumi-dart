@@ -7,29 +7,34 @@ import 'download_os_profile_response.dart';
 class DownloadRequestResponse {
   /// Operating system profile.
   final pulumi.Input<DownloadOsProfileResponse> osProfile;
+
   /// Target operating system to support polymorphic resource.
   final pulumi.Input<String> target;
 
   /// Creates a new [DownloadRequestResponse].
   /// [osProfile] Operating system profile.
   /// [target] Target operating system to support polymorphic resource.
-  DownloadRequestResponse({
-    required this.osProfile,
-    required this.target,
-  });
+  DownloadRequestResponse({required this.osProfile, required this.target});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osProfile': pulumi.Input.mapInputValue<DownloadOsProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'osProfile':
+          pulumi.Input.mapInputValue<
+            DownloadOsProfileResponse,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DownloadRequestResponse.fromMap(Map<String, dynamic> map) {
     return DownloadRequestResponse(
-      osProfile: (DownloadOsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      target: (map['target'] as String).input(),
+      osProfile: pulumi.Input.fromValue(
+        DownloadOsProfileResponse.fromMap(
+          (map['osProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
-

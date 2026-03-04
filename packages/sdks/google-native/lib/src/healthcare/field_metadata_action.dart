@@ -5,16 +5,15 @@ enum FieldMetadataAction {
   inspectAndTransform("INSPECT_AND_TRANSFORM"),
   doNotTransform("DO_NOT_TRANSFORM");
 
-  const FieldMetadataAction(this.value);
-  final String value;
+  const FieldMetadataAction(this.wireValue);
+  final String wireValue;
 
   static FieldMetadataAction fromValue(String value) {
     for (final item in FieldMetadataAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FieldMetadataAction value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum ImageAnnotationType {
   valueBoundingBox("BoundingBox"),
   valueInstanceSegmentation("InstanceSegmentation");
 
-  const ImageAnnotationType(this.value);
-  final String value;
+  const ImageAnnotationType(this.wireValue);
+  final String wireValue;
 
   static ImageAnnotationType fromValue(String value) {
     for (final item in ImageAnnotationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageAnnotationType value: $value');
   }
 }
-

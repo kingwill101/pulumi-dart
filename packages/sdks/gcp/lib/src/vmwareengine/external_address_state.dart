@@ -8,22 +8,30 @@ class ExternalAddressState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+
   /// User-provided description for this resource.
   final pulumi.Input<String>? description;
+
   /// The external IP address of a workload VM.
   final pulumi.Input<String>? externalIp;
+
   /// The internal IP address of a workload VM.
   final pulumi.Input<String>? internalIp;
+
   /// The ID of the external IP Address.
   final pulumi.Input<String>? name;
+
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
   final pulumi.Input<String>? parent;
+
   /// State of the resource.
   final pulumi.Input<String>? state;
+
   /// System-generated unique identifier for the resource.
   final pulumi.Input<String>? uid;
+
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -67,16 +75,51 @@ class ExternalAddressState {
 
   factory ExternalAddressState.fromMap(Map<String, dynamic> map) {
     return ExternalAddressState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalIp: (() {
+        final guardedValue = map['externalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalIp: (() {
+        final guardedValue = map['internalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

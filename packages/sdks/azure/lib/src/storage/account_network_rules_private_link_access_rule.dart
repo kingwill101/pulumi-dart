@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountNetworkRulesPrivateLinkAccessRule {
   /// The resource id of the resource access rule to be granted access.
   final pulumi.Input<String> endpointResourceId;
+
   /// The tenant id of the resource of the resource access rule to be granted access. Defaults to the current tenant id.
   final pulumi.Input<String>? endpointTenantId;
 
@@ -23,11 +24,18 @@ class AccountNetworkRulesPrivateLinkAccessRule {
     };
   }
 
-  factory AccountNetworkRulesPrivateLinkAccessRule.fromMap(Map<String, dynamic> map) {
+  factory AccountNetworkRulesPrivateLinkAccessRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountNetworkRulesPrivateLinkAccessRule(
-      endpointResourceId: (map['endpointResourceId'] as String).input(),
-      endpointTenantId: map['endpointTenantId'] == null ? null : (map['endpointTenantId']! as String).input(),
+      endpointResourceId: pulumi.Input.fromValue(
+        map['endpointResourceId'] as String,
+      ),
+      endpointTenantId: (() {
+        final guardedValue = map['endpointTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

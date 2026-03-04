@@ -4,16 +4,15 @@ enum BackendBalancingModeComputeV1 {
   rate("RATE"),
   utilization("UTILIZATION");
 
-  const BackendBalancingModeComputeV1(this.value);
-  final String value;
+  const BackendBalancingModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static BackendBalancingModeComputeV1 fromValue(String value) {
     for (final item in BackendBalancingModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendBalancingModeComputeV1 value: $value');
   }
 }
-

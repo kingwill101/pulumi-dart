@@ -12,20 +12,21 @@ class DeploymentChannelProfilePersonaProperty {
 
   /// Creates a new [DeploymentChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.
-  DeploymentChannelProfilePersonaProperty({
-    this.persona,
-  });
+  DeploymentChannelProfilePersonaProperty({this.persona});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'persona': ?persona,
-    };
+    return <String, dynamic>{'persona': ?persona};
   }
 
-  factory DeploymentChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
+  factory DeploymentChannelProfilePersonaProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentChannelProfilePersonaProperty(
-      persona: map['persona'] == null ? null : (map['persona']! as String).input(),
+      persona: (() {
+        final guardedValue = map['persona'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

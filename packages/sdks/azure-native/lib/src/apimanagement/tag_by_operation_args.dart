@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagByOperationArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
+
   /// Operation identifier within an API. Must be unique in the current API Management service instance.
   final pulumi.Input<String> operationId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? tagId;
 
@@ -44,12 +48,17 @@ class TagByOperationArgs {
 
   factory TagByOperationArgs.fromMap(Map<String, dynamic> map) {
     return TagByOperationArgs(
-      apiId: (map['apiId'] as String).input(),
-      operationId: (map['operationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      tagId: map['tagId'] == null ? null : (map['tagId']! as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      operationId: pulumi.Input.fromValue(map['operationId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      tagId: (() {
+        final guardedValue = map['tagId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

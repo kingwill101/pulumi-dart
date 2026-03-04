@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterSecretManagerConfigRotationConfig {
   /// Enable the roation in Sync as K8s secret feature for this cluster.
   final pulumi.Input<bool> enabled;
+
   /// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
   final pulumi.Input<String>? rotationInterval;
 
@@ -23,11 +24,16 @@ class ClusterSecretManagerConfigRotationConfig {
     };
   }
 
-  factory ClusterSecretManagerConfigRotationConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterSecretManagerConfigRotationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterSecretManagerConfigRotationConfig(
-      enabled: (map['enabled'] as bool).input(),
-      rotationInterval: map['rotationInterval'] == null ? null : (map['rotationInterval']! as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      rotationInterval: (() {
+        final guardedValue = map['rotationInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

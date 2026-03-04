@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexDocumentMetadataConfigurationUpdateRelevance {
   /// Time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-Duration).
   final pulumi.Input<String> duration;
+
   /// How "fresh" a document is. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-Freshness).
   final pulumi.Input<bool> freshness;
+
   /// Relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
   final pulumi.Input<int> importance;
+
   /// Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
   final pulumi.Input<String> rankOrder;
+
   /// A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
   final pulumi.Input<Map<String, int>> valuesImportanceMap;
 
@@ -38,14 +42,17 @@ class GetIndexDocumentMetadataConfigurationUpdateRelevance {
     };
   }
 
-  factory GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap(Map<String, dynamic> map) {
+  factory GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIndexDocumentMetadataConfigurationUpdateRelevance(
-      duration: (map['duration'] as String).input(),
-      freshness: (map['freshness'] as bool).input(),
-      importance: (map['importance'] as int).input(),
-      rankOrder: (map['rankOrder'] as String).input(),
-      valuesImportanceMap: ((map['valuesImportanceMap'] as Map).cast<String, int>()).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      freshness: pulumi.Input.fromValue(map['freshness'] as bool),
+      importance: pulumi.Input.fromValue(map['importance'] as int),
+      rankOrder: pulumi.Input.fromValue(map['rankOrder'] as String),
+      valuesImportanceMap: pulumi.Input.fromValue(
+        (map['valuesImportanceMap'] as Map).cast<String, int>(),
+      ),
     );
   }
 }
-

@@ -19694,36 +19694,53 @@ import 'system_data_response.dart';
 class SapVirtualInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
   late final pulumi.Output<DeploymentConfigurationResponse> configuration;
+
   /// Defines the environment type - Production/Non Production.
   late final pulumi.Output<String> environment;
+
   /// Indicates any errors on the Virtual Instance for SAP solutions resource.
   late final pulumi.Output<SAPVirtualInstanceErrorResponse> errors;
+
   /// Defines the health of SAP Instances.
   late final pulumi.Output<String> health;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<SAPVirtualInstanceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Managed resource group configuration
-  late final pulumi.Output<ManagedRGConfigurationResponse?> managedResourceGroupConfiguration;
+  late final pulumi.Output<ManagedRGConfigurationResponse?>
+  managedResourceGroupConfiguration;
+
   /// Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
   late final pulumi.Output<String?> managedResourcesNetworkAccessType;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines the SAP Product type.
   late final pulumi.Output<String> sapProduct;
+
   /// Defines the Virtual Instance for SAP state.
   late final pulumi.Output<String> state;
+
   /// Defines the SAP Instance status.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -19736,27 +19753,34 @@ class SapVirtualInstance extends pulumi.CustomResource {
     SapVirtualInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:SapVirtualInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configuration = registerOutput<DeploymentConfigurationResponse>('configuration');
-    this.environment = registerOutput<String>('environment');
-    this.errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
-    this.health = registerOutput<String>('health');
-    this.identity = registerOutput<SAPVirtualInstanceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupConfiguration = registerOutput<ManagedRGConfigurationResponse?>('managedResourceGroupConfiguration');
-    this.managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+         'azure-native:workloads:SapVirtualInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configuration = registerOutput<DeploymentConfigurationResponse>(
+      'configuration',
+    );
+    environment = registerOutput<String>('environment');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    health = registerOutput<String>('health');
+    identity = registerOutput<SAPVirtualInstanceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration =
+        registerOutput<ManagedRGConfigurationResponse?>(
+          'managedResourceGroupConfiguration',
+        );
+    managedResourcesNetworkAccessType = registerOutput<String?>(
+      'managedResourcesNetworkAccessType',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sapProduct = registerOutput<String>('sapProduct');
+    state = registerOutput<String>('state');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

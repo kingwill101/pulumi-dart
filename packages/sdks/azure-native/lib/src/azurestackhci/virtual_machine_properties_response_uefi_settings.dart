@@ -8,20 +8,21 @@ class VirtualMachinePropertiesResponseUefiSettings {
 
   /// Creates a new [VirtualMachinePropertiesResponseUefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine.
-  VirtualMachinePropertiesResponseUefiSettings({
-    this.secureBootEnabled,
-  });
+  VirtualMachinePropertiesResponseUefiSettings({this.secureBootEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secureBootEnabled': ?secureBootEnabled,
-    };
+    return <String, dynamic>{'secureBootEnabled': ?secureBootEnabled};
   }
 
-  factory VirtualMachinePropertiesResponseUefiSettings.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesResponseUefiSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesResponseUefiSettings(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
+      secureBootEnabled: (() {
+        final guardedValue = map['secureBootEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

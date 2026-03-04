@@ -1,5 +1,3 @@
-library module_dns;
-
 export 'dns/dns_managed_zone_iam_binding.dart';
 export 'dns/dns_managed_zone_iam_binding_args.dart';
 export 'dns/dns_managed_zone_iam_binding_condition.dart';

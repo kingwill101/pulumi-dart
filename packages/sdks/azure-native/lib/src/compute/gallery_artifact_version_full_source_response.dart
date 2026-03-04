@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryArtifactVersionFullSourceResponse {
   /// The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.
   final pulumi.Input<String>? communityGalleryImageId;
+
   /// The id of the gallery artifact version source.
   final pulumi.Input<String>? id;
+
   /// The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
   final pulumi.Input<String>? virtualMachineId;
 
@@ -29,12 +31,25 @@ class GalleryArtifactVersionFullSourceResponse {
     };
   }
 
-  factory GalleryArtifactVersionFullSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GalleryArtifactVersionFullSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryArtifactVersionFullSourceResponse(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
+      communityGalleryImageId: (() {
+        final guardedValue = map['communityGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualMachineId: (() {
+        final guardedValue = map['virtualMachineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -11,23 +11,30 @@ import 'cx_page_transition_route.dart';
 /// Input properties used for looking up and filtering CxPage resources.
 class CxPageState {
   /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  /// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+  /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   final pulumi.Input<CxPageAdvancedSettings>? advancedSettings;
+
   /// The human-readable name of the page, unique within the agent.
   final pulumi.Input<String>? displayName;
+
   /// The fulfillment to call when the session is entering the page.
   /// Structure is documented below.
   final pulumi.Input<CxPageEntryFulfillment>? entryFulfillment;
+
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
   /// Structure is documented below.
   final pulumi.Input<List<CxPageEventHandler>>? eventHandlers;
+
   /// The form associated with the page, used for collecting parameters relevant to the page.
   /// Structure is documented below.
   final pulumi.Input<CxPageForm>? form;
+
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  final pulumi.Input<CxPageKnowledgeConnectorSettings>? knowledgeConnectorSettings;
+  final pulumi.Input<CxPageKnowledgeConnectorSettings>?
+  knowledgeConnectorSettings;
+
   /// The language of the following fields in page:
   /// Page.entry_fulfillment.messages
   /// Page.entry_fulfillment.conditional_cases
@@ -41,17 +48,21 @@ class CxPageState {
   /// Page.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
   final pulumi.Input<String>? languageCode;
+
   /// The unique identifier of the page.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   final pulumi.Input<String>? name;
+
   /// The flow to create a page for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   final pulumi.Input<String>? parent;
+
   /// Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
-  /// If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
+  /// If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route &gt; page's transition route group &gt; flow's transition routes.
   /// If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
-  /// Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
+  /// Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
   final pulumi.Input<List<String>>? transitionRouteGroups;
+
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
   /// When we are in a certain page, the TransitionRoutes are evalauted in the following order:
   /// TransitionRoutes defined in the page with intent specified.
@@ -91,34 +102,143 @@ class CxPageState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSettings': ?pulumi.Input.mapOptionalInputValue<CxPageAdvancedSettings, Map<String, dynamic>>(advancedSettings, (value) => value.toMap()),
+      'advancedSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageAdvancedSettings,
+            Map<String, dynamic>
+          >(advancedSettings, (value) => value.toMap()),
       'displayName': ?displayName,
-      'entryFulfillment': ?pulumi.Input.mapOptionalInputValue<CxPageEntryFulfillment, Map<String, dynamic>>(entryFulfillment, (value) => value.toMap()),
-      'eventHandlers': ?pulumi.Input.mapOptionalInputValue<List<CxPageEventHandler>, List<Map<String, dynamic>>>(eventHandlers, (value) => pulumi.Input.encodeList<CxPageEventHandler, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'form': ?pulumi.Input.mapOptionalInputValue<CxPageForm, Map<String, dynamic>>(form, (value) => value.toMap()),
-      'knowledgeConnectorSettings': ?pulumi.Input.mapOptionalInputValue<CxPageKnowledgeConnectorSettings, Map<String, dynamic>>(knowledgeConnectorSettings, (value) => value.toMap()),
+      'entryFulfillment':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageEntryFulfillment,
+            Map<String, dynamic>
+          >(entryFulfillment, (value) => value.toMap()),
+      'eventHandlers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CxPageEventHandler>,
+            List<Map<String, dynamic>>
+          >(
+            eventHandlers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CxPageEventHandler,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'form':
+          ?pulumi.Input.mapOptionalInputValue<CxPageForm, Map<String, dynamic>>(
+            form,
+            (value) => value.toMap(),
+          ),
+      'knowledgeConnectorSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageKnowledgeConnectorSettings,
+            Map<String, dynamic>
+          >(knowledgeConnectorSettings, (value) => value.toMap()),
       'languageCode': ?languageCode,
       'name': ?name,
       'parent': ?parent,
       'transitionRouteGroups': ?transitionRouteGroups,
-      'transitionRoutes': ?pulumi.Input.mapOptionalInputValue<List<CxPageTransitionRoute>, List<Map<String, dynamic>>>(transitionRoutes, (value) => pulumi.Input.encodeList<CxPageTransitionRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transitionRoutes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CxPageTransitionRoute>,
+            List<Map<String, dynamic>>
+          >(
+            transitionRoutes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CxPageTransitionRoute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CxPageState.fromMap(Map<String, dynamic> map) {
     return CxPageState(
-      advancedSettings: map['advancedSettings'] == null ? null : (CxPageAdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      entryFulfillment: map['entryFulfillment'] == null ? null : (CxPageEntryFulfillment.fromMap((map['entryFulfillment']! as Map).cast<String, dynamic>())).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<CxPageEventHandler>(map['eventHandlers']!, (value) => CxPageEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      form: map['form'] == null ? null : (CxPageForm.fromMap((map['form']! as Map).cast<String, dynamic>())).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxPageKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups']! as List).cast<String>()).input(),
-      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<CxPageTransitionRoute>(map['transitionRoutes']!, (value) => CxPageTransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedSettings: (() {
+        final guardedValue = map['advancedSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageAdvancedSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entryFulfillment: (() {
+        final guardedValue = map['entryFulfillment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageEntryFulfillment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eventHandlers: (() {
+        final guardedValue = map['eventHandlers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CxPageEventHandler>(
+            guardedValue,
+            (value) => CxPageEventHandler.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      form: (() {
+        final guardedValue = map['form'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageForm.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      knowledgeConnectorSettings: (() {
+        final guardedValue = map['knowledgeConnectorSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageKnowledgeConnectorSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitionRouteGroups: (() {
+        final guardedValue = map['transitionRouteGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      transitionRoutes: (() {
+        final guardedValue = map['transitionRoutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CxPageTransitionRoute>(
+            guardedValue,
+            (value) => CxPageTransitionRoute.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

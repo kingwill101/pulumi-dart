@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointRootDirectoryCreationInfo {
   /// POSIX owner group ID
   final pulumi.Input<int> ownerGid;
+
   /// POSIX owner user ID
   final pulumi.Input<int> ownerUid;
+
   /// POSIX permissions mode
   final pulumi.Input<String> permissions;
 
@@ -28,12 +30,13 @@ class GetAccessPointRootDirectoryCreationInfo {
     };
   }
 
-  factory GetAccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
+  factory GetAccessPointRootDirectoryCreationInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessPointRootDirectoryCreationInfo(
-      ownerGid: (map['ownerGid'] as int).input(),
-      ownerUid: (map['ownerUid'] as int).input(),
-      permissions: (map['permissions'] as String).input(),
+      ownerGid: pulumi.Input.fromValue(map['ownerGid'] as int),
+      ownerUid: pulumi.Input.fromValue(map['ownerUid'] as int),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
     );
   }
 }
-

@@ -158,25 +158,35 @@ import 'system_data_response.dart';
 class ReadWriteDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
+
   /// Indicates whether the database is followed.
   late final pulumi.Output<bool> isFollowed;
+
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String?> softDeletePeriod;
+
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -189,21 +199,21 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     ReadWriteDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:ReadWriteDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.isFollowed = registerOutput<bool>('isFollowed');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:synapse:ReadWriteDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    isFollowed = registerOutput<bool>('isFollowed');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.softDeletePeriod = registerOutput<String?>('softDeletePeriod');
-    this.statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String?>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

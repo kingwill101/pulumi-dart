@@ -1059,30 +1059,43 @@ import 'integration_account_agreement_args.dart';
 class IntegrationAccountAgreement extends pulumi.CustomResource {
   /// The agreement type.
   late final pulumi.Output<String> agreementType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The changed time.
   late final pulumi.Output<String> changedTime;
+
   /// The agreement content.
   late final pulumi.Output<AgreementContentResponse> content;
+
   /// The created time.
   late final pulumi.Output<String> createdTime;
+
   /// The business identity of the guest partner.
   late final pulumi.Output<BusinessIdentityResponse> guestIdentity;
+
   /// The integration account partner that is set as guest partner for this agreement.
   late final pulumi.Output<String> guestPartner;
+
   /// The business identity of the host partner.
   late final pulumi.Output<BusinessIdentityResponse> hostIdentity;
+
   /// The integration account partner that is set as host partner for this agreement.
   late final pulumi.Output<String> hostPartner;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -1095,24 +1108,24 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     IntegrationAccountAgreementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccountAgreement',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agreementType = registerOutput<String>('agreementType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.content = registerOutput<AgreementContentResponse>('content');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.guestIdentity = registerOutput<BusinessIdentityResponse>('guestIdentity');
-    this.guestPartner = registerOutput<String>('guestPartner');
-    this.hostIdentity = registerOutput<BusinessIdentityResponse>('hostIdentity');
-    this.hostPartner = registerOutput<String>('hostPartner');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:logic:IntegrationAccountAgreement',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agreementType = registerOutput<String>('agreementType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<AgreementContentResponse>('content');
+    createdTime = registerOutput<String>('createdTime');
+    guestIdentity = registerOutput<BusinessIdentityResponse>('guestIdentity');
+    guestPartner = registerOutput<String>('guestPartner');
+    hostIdentity = registerOutput<BusinessIdentityResponse>('hostIdentity');
+    hostPartner = registerOutput<String>('hostPartner');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

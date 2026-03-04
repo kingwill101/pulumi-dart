@@ -4,16 +4,15 @@ enum CaPoolTier {
   enterprise("ENTERPRISE"),
   devops("DEVOPS");
 
-  const CaPoolTier(this.value);
-  final String value;
+  const CaPoolTier(this.wireValue);
+  final String wireValue;
 
   static CaPoolTier fromValue(String value) {
     for (final item in CaPoolTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CaPoolTier value: $value');
   }
 }
-

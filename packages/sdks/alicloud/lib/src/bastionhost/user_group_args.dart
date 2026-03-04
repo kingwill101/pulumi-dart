@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupArgs {
   /// Specify the New Group of Remark Information. Supports up to 500 Characters.
   final pulumi.Input<String>? comment;
+
   /// Specify the New Group of the Bastion Host of Instance Id.
   final pulumi.Input<String> instanceId;
+
   /// Specify the New Group Name. Supports up to 128 Characters.
   final pulumi.Input<String> userGroupName;
 
@@ -34,10 +36,13 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      userGroupName: (map['userGroupName'] as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      userGroupName: pulumi.Input.fromValue(map['userGroupName'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_transcribe;
-
 export 'transcribe/language_model.dart';
 export 'transcribe/language_model_args.dart';
 export 'transcribe/language_model_input_data_config.dart';

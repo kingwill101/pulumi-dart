@@ -13,15 +13,14 @@ class FileCacheLustreConfigurationMetadataConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageCapacity': storageCapacity,
-    };
+    return <String, dynamic>{'storageCapacity': storageCapacity};
   }
 
-  factory FileCacheLustreConfigurationMetadataConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FileCacheLustreConfigurationMetadataConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FileCacheLustreConfigurationMetadataConfiguration(
-      storageCapacity: (map['storageCapacity'] as int).input(),
+      storageCapacity: pulumi.Input.fromValue(map['storageCapacity'] as int),
     );
   }
 }
-

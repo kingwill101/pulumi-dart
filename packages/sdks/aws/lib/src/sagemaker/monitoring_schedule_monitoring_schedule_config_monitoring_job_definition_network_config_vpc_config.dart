@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig {
   /// VPC security group IDs.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// Subnet IDs.
   final pulumi.Input<List<String>> subnets;
 
@@ -23,11 +24,14 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkCo
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig.fromMap(Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig(
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

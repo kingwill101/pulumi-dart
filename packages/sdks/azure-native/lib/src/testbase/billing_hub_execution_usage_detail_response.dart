@@ -69,23 +69,80 @@ class BillingHubExecutionUsageDetailResponse {
     };
   }
 
-  factory BillingHubExecutionUsageDetailResponse.fromMap(Map<String, dynamic> map) {
+  factory BillingHubExecutionUsageDetailResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BillingHubExecutionUsageDetailResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
-      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion']! as String).input(),
-      billedCharges: map['billedCharges'] == null ? null : (map['billedCharges']! as double).input(),
-      endTimeStamp: map['endTimeStamp'] == null ? null : (map['endTimeStamp']! as String).input(),
-      executionRequestId: map['executionRequestId'] == null ? null : (map['executionRequestId']! as String).input(),
-      meterId: map['meterId'] == null ? null : (map['meterId']! as String).input(),
-      osBuild: map['osBuild'] == null ? null : (map['osBuild']! as String).input(),
-      release: map['release'] == null ? null : (map['release']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      startTimeStamp: map['startTimeStamp'] == null ? null : (map['startTimeStamp']! as String).input(),
-      testType: map['testType'] == null ? null : (map['testType']! as String).input(),
-      updateType: map['updateType'] == null ? null : (map['updateType']! as String).input(),
-      usedBillableHours: map['usedBillableHours'] == null ? null : (map['usedBillableHours']! as double).input(),
-      usedFreeHours: map['usedFreeHours'] == null ? null : (map['usedFreeHours']! as double).input(),
+      applicationName: (() {
+        final guardedValue = map['applicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationVersion: (() {
+        final guardedValue = map['applicationVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      billedCharges: (() {
+        final guardedValue = map['billedCharges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      endTimeStamp: (() {
+        final guardedValue = map['endTimeStamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionRequestId: (() {
+        final guardedValue = map['executionRequestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      meterId: (() {
+        final guardedValue = map['meterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osBuild: (() {
+        final guardedValue = map['osBuild'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      release: (() {
+        final guardedValue = map['release'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTimeStamp: (() {
+        final guardedValue = map['startTimeStamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testType: (() {
+        final guardedValue = map['testType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateType: (() {
+        final guardedValue = map['updateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usedBillableHours: (() {
+        final guardedValue = map['usedBillableHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      usedFreeHours: (() {
+        final guardedValue = map['usedFreeHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

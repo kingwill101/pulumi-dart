@@ -3,16 +3,15 @@ enum VNetSolutionType {
   valueServiceEndpoint("serviceEndpoint"),
   valuePrivateLink("privateLink");
 
-  const VNetSolutionType(this.value);
-  final String value;
+  const VNetSolutionType(this.wireValue);
+  final String wireValue;
 
   static VNetSolutionType fromValue(String value) {
     for (final item in VNetSolutionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VNetSolutionType value: $value');
   }
 }
-

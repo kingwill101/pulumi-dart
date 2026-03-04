@@ -1,5 +1,3 @@
-library module_devspaces;
-
 export 'devspaces/controller.dart';
 export 'devspaces/controller_args.dart';
 export 'devspaces/controller_connection_details_response.dart';

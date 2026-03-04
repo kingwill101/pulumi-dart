@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// Service name.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID or Amazon Resource Name (ARN) of the service.
   final pulumi.Input<String>? serviceIdentifier;
+
   /// List of tags associated with the service.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -21,12 +24,7 @@ class GetServiceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service.
   /// [tags] List of tags associated with the service.
-  GetServiceArgs({
-    this.name,
-    this.region,
-    this.serviceIdentifier,
-    this.tags,
-  });
+  GetServiceArgs({this.name, this.region, this.serviceIdentifier, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +37,28 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : ((map['serviceIdentifier'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceIdentifier: (() {
+        final guardedValue = map['serviceIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

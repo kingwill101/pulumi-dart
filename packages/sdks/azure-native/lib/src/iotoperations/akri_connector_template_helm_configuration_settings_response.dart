@@ -8,15 +8,22 @@ import 'akri_connector_template_helm_container_registry_response.dart';
 class AkriConnectorTemplateHelmConfigurationSettingsResponse {
   /// Advanced configuration for the Helm chart.
   /// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
-  final pulumi.Input<AkriConnectorTemplateHelmAdvancedConfigurationResponse>? advancedConfiguration;
+  final pulumi.Input<AkriConnectorTemplateHelmAdvancedConfigurationResponse>?
+  advancedConfiguration;
+
   /// The registry settings for the helm chart to be used.
-  final pulumi.Input<AkriConnectorTemplateHelmContainerRegistryResponse>? registrySettings;
+  final pulumi.Input<AkriConnectorTemplateHelmContainerRegistryResponse>?
+  registrySettings;
+
   /// The release name of the Helm chart.
   final pulumi.Input<String> releaseName;
+
   /// The name of the repository
   final pulumi.Input<String> repositoryName;
+
   /// A map of values to pass to the helm chart.
   final pulumi.Input<Map<String, String>>? values;
+
   /// The version of the Helm chart.
   final pulumi.Input<String> version;
 
@@ -38,8 +45,16 @@ class AkriConnectorTemplateHelmConfigurationSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedConfiguration': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmAdvancedConfigurationResponse, Map<String, dynamic>>(advancedConfiguration, (value) => value.toMap()),
-      'registrySettings': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmContainerRegistryResponse, Map<String, dynamic>>(registrySettings, (value) => value.toMap()),
+      'advancedConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AkriConnectorTemplateHelmAdvancedConfigurationResponse,
+            Map<String, dynamic>
+          >(advancedConfiguration, (value) => value.toMap()),
+      'registrySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AkriConnectorTemplateHelmContainerRegistryResponse,
+            Map<String, dynamic>
+          >(registrySettings, (value) => value.toMap()),
       'releaseName': releaseName,
       'repositoryName': repositoryName,
       'values': ?values,
@@ -47,15 +62,38 @@ class AkriConnectorTemplateHelmConfigurationSettingsResponse {
     };
   }
 
-  factory AkriConnectorTemplateHelmConfigurationSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorTemplateHelmConfigurationSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorTemplateHelmConfigurationSettingsResponse(
-      advancedConfiguration: map['advancedConfiguration'] == null ? null : (AkriConnectorTemplateHelmAdvancedConfigurationResponse.fromMap((map['advancedConfiguration']! as Map).cast<String, dynamic>())).input(),
-      registrySettings: map['registrySettings'] == null ? null : (AkriConnectorTemplateHelmContainerRegistryResponse.fromMap((map['registrySettings']! as Map).cast<String, dynamic>())).input(),
-      releaseName: (map['releaseName'] as String).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, String>()).input(),
-      version: (map['version'] as String).input(),
+      advancedConfiguration: (() {
+        final guardedValue = map['advancedConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AkriConnectorTemplateHelmAdvancedConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      registrySettings: (() {
+        final guardedValue = map['registrySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AkriConnectorTemplateHelmContainerRegistryResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      releaseName: pulumi.Input.fromValue(map['releaseName'] as String),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

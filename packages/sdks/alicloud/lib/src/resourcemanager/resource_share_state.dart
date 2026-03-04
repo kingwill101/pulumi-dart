@@ -9,33 +9,43 @@ class ResourceShareState {
   /// - false (default): Only sharing within the resource directory is allowed.
   /// - true: Allow sharing to any account.
   final pulumi.Input<bool>? allowExternalTargets;
+
   /// The create time of resource share.
   final pulumi.Input<String>? createTime;
+
   /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<List<String>>? permissionNames;
+
   /// ResourceArns
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<List<String>>? resourceArns;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of resource share.
   final pulumi.Input<String>? resourceShareName;
+
   /// The owner of resource share,  `Self` and `OtherAccounts`.
   final pulumi.Input<String>? resourceShareOwner;
+
   /// List of shared resources. See `resources` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<List<ResourceShareResource>>? resources;
+
   /// The status of resource share.  `Active`,`Deleted` and `Deleting`.
   final pulumi.Input<String>? status;
+
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Resource user.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<List<String>>? targets;
 
   /// Creates a new [ResourceShareState].
@@ -73,7 +83,18 @@ class ResourceShareState {
       'resourceGroupId': ?resourceGroupId,
       'resourceShareName': ?resourceShareName,
       'resourceShareOwner': ?resourceShareOwner,
-      'resources': ?pulumi.Input.mapOptionalInputValue<List<ResourceShareResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<ResourceShareResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceShareResource>,
+            List<Map<String, dynamic>>
+          >(
+            resources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceShareResource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': ?status,
       'tags': ?tags,
       'targets': ?targets,
@@ -82,18 +103,70 @@ class ResourceShareState {
 
   factory ResourceShareState.fromMap(Map<String, dynamic> map) {
     return ResourceShareState(
-      allowExternalTargets: map['allowExternalTargets'] == null ? null : (map['allowExternalTargets']! as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      permissionNames: map['permissionNames'] == null ? null : ((map['permissionNames']! as List).cast<String>()).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns']! as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      resourceShareName: map['resourceShareName'] == null ? null : (map['resourceShareName']! as String).input(),
-      resourceShareOwner: map['resourceShareOwner'] == null ? null : (map['resourceShareOwner']! as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceShareResource>(map['resources']!, (value) => ResourceShareResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targets: map['targets'] == null ? null : ((map['targets']! as List).cast<String>()).input(),
+      allowExternalTargets: (() {
+        final guardedValue = map['allowExternalTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissionNames: (() {
+        final guardedValue = map['permissionNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceArns: (() {
+        final guardedValue = map['resourceArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareName: (() {
+        final guardedValue = map['resourceShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareOwner: (() {
+        final guardedValue = map['resourceShareOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceShareResource>(
+            guardedValue,
+            (value) => ResourceShareResource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

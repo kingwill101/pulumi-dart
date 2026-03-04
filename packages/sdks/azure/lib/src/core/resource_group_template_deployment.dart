@@ -4,7 +4,7 @@ import 'resource_group_template_deployment_state.dart';
 
 /// Manages a Resource Group Template Deployment.
 ///
-/// > **Note:** This resource will automatically attempt to delete resources deployed by the ARM Template when it is deleted. This behavior can be disabled in the provider `features` block by setting the `delete_nested_items_during_deletion` field to `false` within the `template_deployment` block.
+/// &gt; **Note:** This resource will automatically attempt to delete resources deployed by the ARM Template when it is deleted. This behavior can be disabled in the provider `features` block by setting the `delete_nested_items_during_deletion` field to `false` within the `template_deployment` block.
 ///
 /// ## Example Usage
 ///
@@ -557,24 +557,32 @@ import 'resource_group_template_deployment_state.dart';
 class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
   /// The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
   late final pulumi.Output<String?> debugLevel;
+
   /// The Deployment Mode for this Resource Group Template Deployment. Possible values are `Complete` (where resources in the Resource Group not specified in the ARM Template will be destroyed) and `Incremental` (where resources are additive only).
   ///
-  /// > **Note:** If `deployment_mode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
+  /// &gt; **Note:** If `deployment_mode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
   late final pulumi.Output<String> deploymentMode;
+
   /// The name which should be used for this Resource Group Template Deployment. Changing this forces a new Resource Group Template Deployment to be created.
   late final pulumi.Output<String> name;
+
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   late final pulumi.Output<String> outputContent;
+
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
   ///
-  /// > An example of how to pass variables into an ARM Template can be seen in the example.
+  /// &gt; An example of how to pass variables into an ARM Template can be seen in the example.
   late final pulumi.Output<String> parametersContent;
+
   /// The name of the Resource Group where the Resource Group Template Deployment should exist. Changing this forces a new Resource Group Template Deployment to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Resource Group Template Deployment.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   late final pulumi.Output<String> templateContent;
+
   /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
@@ -587,20 +595,20 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
     ResourceGroupTemplateDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.debugLevel = registerOutput<String?>('debugLevel');
-    this.deploymentMode = registerOutput<String>('deploymentMode');
+         'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    deploymentMode = registerOutput<String>('deploymentMode');
     this.name = registerOutput<String>('name');
-    this.outputContent = registerOutput<String>('outputContent');
-    this.parametersContent = registerOutput<String>('parametersContent');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateContent = registerOutput<String>('templateContent');
-    this.templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
 
   /// Gets an existing [ResourceGroupTemplateDeployment] resource's state with the given [name] and [id].
@@ -621,19 +629,19 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.debugLevel = registerOutput<String?>('debugLevel');
-    this.deploymentMode = registerOutput<String>('deploymentMode');
+         'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    deploymentMode = registerOutput<String>('deploymentMode');
     this.name = registerOutput<String>('name');
-    this.outputContent = registerOutput<String>('outputContent');
-    this.parametersContent = registerOutput<String>('parametersContent');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateContent = registerOutput<String>('templateContent');
-    this.templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
 }

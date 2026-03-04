@@ -10,16 +10,22 @@ import 'sku.dart';
 class ClusterArgs {
   /// Name of the cluster
   final pulumi.Input<String>? clusterName;
+
   /// The cluster size
   final pulumi.Input<int>? clusterSize;
+
   /// The hosts
   final pulumi.Input<List<String>>? hosts;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final pulumi.Input<Sku> sku;
+
   /// Name of the vsan datastore associated with the cluster
   final pulumi.Input<String>? vsanDatastoreName;
 
@@ -48,21 +54,45 @@ class ClusterArgs {
       'hosts': ?hosts,
       'privateCloudName': privateCloudName,
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'vsanDatastoreName': ?vsanDatastoreName,
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: pulumi.Input.fromValue(
+        Sku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      vsanDatastoreName: (() {
+        final guardedValue = map['vsanDatastoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

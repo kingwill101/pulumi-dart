@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EipState {
   /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
   final pulumi.Input<int>? bandwidth;
+
   /// The creation time of the EIP instance.
   final pulumi.Input<String>? createTime;
+
   /// The description of the EIP.
   final pulumi.Input<String>? description;
+
   /// The name of the EIP.
   final pulumi.Input<String>? eipName;
+
   /// Ens node ID.
   final pulumi.Input<String>? ensRegionId;
+
   /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
   final pulumi.Input<String>? internetChargeType;
+
   /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   final pulumi.Input<String>? isp;
+
   /// The billing method of the EIP. Valid value: `PayAsYouGo`.
   final pulumi.Input<String>? paymentType;
+
   /// The status of the EIP.
   final pulumi.Input<String>? status;
 
@@ -61,16 +69,51 @@ class EipState {
 
   factory EipState.fromMap(Map<String, dynamic> map) {
     return EipState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      eipName: map['eipName'] == null ? null : (map['eipName']! as String).input(),
-      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId']! as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
-      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eipName: (() {
+        final guardedValue = map['eipName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ensRegionId: (() {
+        final guardedValue = map['ensRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internetChargeType: (() {
+        final guardedValue = map['internetChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isp: (() {
+        final guardedValue = map['isp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

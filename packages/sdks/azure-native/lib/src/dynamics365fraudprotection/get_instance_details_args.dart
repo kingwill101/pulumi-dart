@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceDetailsArgs {
   /// The name of the instance. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> instanceName;
+
   /// The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetInstanceDetailsArgs {
 
   factory GetInstanceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceDetailsArgs(
-      instanceName: (map['instanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

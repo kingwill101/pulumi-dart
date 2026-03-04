@@ -7,20 +7,28 @@ import 'resource_basics_response.dart';
 class GetIpamPoolUsageResult {
   /// List of IP address prefixes of the resource.
   final List<String> addressPrefixes;
+
   /// List of assigned IP address prefixes.
   final List<String> allocatedAddressPrefixes;
+
   /// List of available IP address prefixes.
   final List<String> availableAddressPrefixes;
+
   /// List of IpamPool that are children of this IpamPool.
   final List<ResourceBasicsResponse> childPools;
+
   /// Total number of assigned IP addresses in the IpamPool.
   final String numberOfAllocatedIPAddresses;
+
   /// Total number of available IP addresses in the IpamPool.
   final String numberOfAvailableIPAddresses;
+
   /// Total number of reserved IP addresses in the IpamPool.
   final String numberOfReservedIPAddresses;
+
   /// List of reserved IP address prefixes. These IP addresses could be reclaimed if not assigned in the given time.
   final List<String> reservedAddressPrefixes;
+
   /// Total number of IP addresses managed in the IpamPool.
   final String totalNumberOfIPAddresses;
 
@@ -51,7 +59,11 @@ class GetIpamPoolUsageResult {
       'addressPrefixes': addressPrefixes,
       'allocatedAddressPrefixes': allocatedAddressPrefixes,
       'availableAddressPrefixes': availableAddressPrefixes,
-      'childPools': pulumi.Input.encodeList<ResourceBasicsResponse, Map<String, dynamic>>(childPools, (value) => value.toMap()),
+      'childPools':
+          pulumi.Input.encodeList<ResourceBasicsResponse, Map<String, dynamic>>(
+            childPools,
+            (value) => value.toMap(),
+          ),
       'numberOfAllocatedIPAddresses': numberOfAllocatedIPAddresses,
       'numberOfAvailableIPAddresses': numberOfAvailableIPAddresses,
       'numberOfReservedIPAddresses': numberOfReservedIPAddresses,
@@ -63,15 +75,24 @@ class GetIpamPoolUsageResult {
   factory GetIpamPoolUsageResult.fromMap(Map<String, dynamic> map) {
     return GetIpamPoolUsageResult(
       addressPrefixes: (map['addressPrefixes'] as List).cast<String>(),
-      allocatedAddressPrefixes: (map['allocatedAddressPrefixes'] as List).cast<String>(),
-      availableAddressPrefixes: (map['availableAddressPrefixes'] as List).cast<String>(),
-      childPools: pulumi.Input.decodeList<ResourceBasicsResponse>(map['childPools'], (value) => ResourceBasicsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      numberOfAllocatedIPAddresses: map['numberOfAllocatedIPAddresses'] as String,
-      numberOfAvailableIPAddresses: map['numberOfAvailableIPAddresses'] as String,
+      allocatedAddressPrefixes: (map['allocatedAddressPrefixes'] as List)
+          .cast<String>(),
+      availableAddressPrefixes: (map['availableAddressPrefixes'] as List)
+          .cast<String>(),
+      childPools: pulumi.Input.decodeList<ResourceBasicsResponse>(
+        map['childPools']!,
+        (value) => ResourceBasicsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      numberOfAllocatedIPAddresses:
+          map['numberOfAllocatedIPAddresses'] as String,
+      numberOfAvailableIPAddresses:
+          map['numberOfAvailableIPAddresses'] as String,
       numberOfReservedIPAddresses: map['numberOfReservedIPAddresses'] as String,
-      reservedAddressPrefixes: (map['reservedAddressPrefixes'] as List).cast<String>(),
+      reservedAddressPrefixes: (map['reservedAddressPrefixes'] as List)
+          .cast<String>(),
       totalNumberOfIPAddresses: map['totalNumberOfIPAddresses'] as String,
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTenantActionGroupArgs {
   /// The management group id.
   final pulumi.Input<String> managementGroupId;
+
   /// The name of the action group.
   final pulumi.Input<String> tenantActionGroupName;
 
@@ -29,9 +30,12 @@ class GetTenantActionGroupArgs {
 
   factory GetTenantActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetTenantActionGroupArgs(
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      tenantActionGroupName: (map['tenantActionGroupName'] as String).input(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      tenantActionGroupName: pulumi.Input.fromValue(
+        map['tenantActionGroupName'] as String,
+      ),
     );
   }
 }
-

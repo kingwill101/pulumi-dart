@@ -6,19 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActivityTimelineItemResponse {
   /// The grouping bucket end time.
   final pulumi.Input<String> bucketEndTimeUTC;
+
   /// The grouping bucket start time.
   final pulumi.Input<String> bucketStartTimeUTC;
+
   /// The activity timeline content.
   final pulumi.Input<String> content;
+
   /// The time of the first activity in the grouping bucket.
   final pulumi.Input<String> firstActivityTimeUTC;
+
   /// The entity query kind
   /// Expected value is 'Activity'.
   final pulumi.Input<String> kind;
+
   /// The time of the last activity in the grouping bucket.
   final pulumi.Input<String> lastActivityTimeUTC;
+
   /// The activity query id.
   final pulumi.Input<String> queryId;
+
   /// The activity timeline title.
   final pulumi.Input<String> title;
 
@@ -57,15 +64,22 @@ class ActivityTimelineItemResponse {
 
   factory ActivityTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return ActivityTimelineItemResponse(
-      bucketEndTimeUTC: (map['bucketEndTimeUTC'] as String).input(),
-      bucketStartTimeUTC: (map['bucketStartTimeUTC'] as String).input(),
-      content: (map['content'] as String).input(),
-      firstActivityTimeUTC: (map['firstActivityTimeUTC'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      lastActivityTimeUTC: (map['lastActivityTimeUTC'] as String).input(),
-      queryId: (map['queryId'] as String).input(),
-      title: (map['title'] as String).input(),
+      bucketEndTimeUTC: pulumi.Input.fromValue(
+        map['bucketEndTimeUTC'] as String,
+      ),
+      bucketStartTimeUTC: pulumi.Input.fromValue(
+        map['bucketStartTimeUTC'] as String,
+      ),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      firstActivityTimeUTC: pulumi.Input.fromValue(
+        map['firstActivityTimeUTC'] as String,
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      lastActivityTimeUTC: pulumi.Input.fromValue(
+        map['lastActivityTimeUTC'] as String,
+      ),
+      queryId: pulumi.Input.fromValue(map['queryId'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

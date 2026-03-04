@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserSettingsToolbarConfiguration {
   /// List of toolbar items to be hidden.
   final pulumi.Input<List<String>>? hiddenToolbarItems;
+
   /// Maximum display resolution that is allowed for the session.
   final pulumi.Input<String>? maxDisplayResolution;
+
   /// Type of toolbar displayed during the session.
   final pulumi.Input<String>? toolbarType;
+
   /// Visual mode of the toolbar.
   final pulumi.Input<String>? visualMode;
 
@@ -35,11 +38,26 @@ class UserSettingsToolbarConfiguration {
 
   factory UserSettingsToolbarConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsToolbarConfiguration(
-      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : (((map['hiddenToolbarItems'] as List).cast<String>()).input()).input(),
-      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : ((map['maxDisplayResolution'] as String).input()).input(),
-      toolbarType: map['toolbarType'] == null ? null : ((map['toolbarType'] as String).input()).input(),
-      visualMode: map['visualMode'] == null ? null : ((map['visualMode'] as String).input()).input(),
+      hiddenToolbarItems: (() {
+        final guardedValue = map['hiddenToolbarItems'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxDisplayResolution: (() {
+        final guardedValue = map['maxDisplayResolution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toolbarType: (() {
+        final guardedValue = map['toolbarType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visualMode: (() {
+        final guardedValue = map['visualMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

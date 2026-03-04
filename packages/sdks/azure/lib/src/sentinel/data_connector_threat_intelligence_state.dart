@@ -6,13 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorThreatIntelligenceState {
   /// The ID of the Log Analytics Workspace that this Threat Intelligence Data Connector resides in. Changing this forces a new Threat Intelligence Data Connector to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
+
   /// The lookback date for the this Threat Intelligence Data Connector in RFC3339. Defaults to `1970-01-01T00:00:00Z`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? lookbackDate;
+
   /// The name which should be used for this Threat Intelligence Data Connector. Changing this forces a new Threat Intelligence Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the tenant that this Threat Intelligence Data Connector connects to. Changing this forces a new Threat Intelligence Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [DataConnectorThreatIntelligenceState].
@@ -36,13 +39,30 @@ class DataConnectorThreatIntelligenceState {
     };
   }
 
-  factory DataConnectorThreatIntelligenceState.fromMap(Map<String, dynamic> map) {
+  factory DataConnectorThreatIntelligenceState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataConnectorThreatIntelligenceState(
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
-      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      logAnalyticsWorkspaceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lookbackDate: (() {
+        final guardedValue = map['lookbackDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

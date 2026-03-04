@@ -6,10 +6,18 @@ import 'flow_source_flow_config_source_connector_properties_sapo_data_parallelis
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   final pulumi.Input<String> objectPath;
+
   /// Sets the page size for each concurrent process that transfers OData records from your SAP instance.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig>? paginationConfig;
+  final pulumi.Input<
+    FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig
+  >?
+  paginationConfig;
+
   /// Sets the number of concurrent processes that transfers OData records from your SAP instance.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig>? parallelismConfig;
+  final pulumi.Input<
+    FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig
+  >?
+  parallelismConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoData].
   /// [objectPath] Required.
@@ -24,17 +32,42 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectPath': objectPath,
-      'paginationConfig': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig, Map<String, dynamic>>(paginationConfig, (value) => value.toMap()),
-      'parallelismConfig': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig, Map<String, dynamic>>(parallelismConfig, (value) => value.toMap()),
+      'paginationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig,
+            Map<String, dynamic>
+          >(paginationConfig, (value) => value.toMap()),
+      'parallelismConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig,
+            Map<String, dynamic>
+          >(parallelismConfig, (value) => value.toMap()),
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoData(
-      objectPath: (map['objectPath'] as String).input(),
-      paginationConfig: map['paginationConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap((map['paginationConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      parallelismConfig: map['parallelismConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap((map['parallelismConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      objectPath: pulumi.Input.fromValue(map['objectPath'] as String),
+      paginationConfig: (() {
+        final guardedValue = map['paginationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      parallelismConfig: (() {
+        final guardedValue = map['parallelismConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

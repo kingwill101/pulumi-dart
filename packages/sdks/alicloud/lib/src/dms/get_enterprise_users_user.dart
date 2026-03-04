@@ -5,21 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseUsersUser {
   /// The Alibaba Cloud unique ID (UID) of the user.
   final pulumi.Input<String> id;
+
   /// The DingTalk number or mobile number of the user.
   final pulumi.Input<String> mobile;
+
   /// The nickname of the user.
   final pulumi.Input<String> nickName;
+
   /// The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
   final pulumi.Input<int> parentUid;
+
   /// The list ids of the role that the user plays.
   final pulumi.Input<List<int>> roleIds;
+
   /// The list names of the role that he user plays.
   final pulumi.Input<List<String>> roleNames;
+
   /// The status of the user.
   final pulumi.Input<String> status;
   final pulumi.Input<String> uid;
+
   /// The ID of the user.
   final pulumi.Input<String> userId;
+
   /// The nickname of the user.
   final pulumi.Input<String> userName;
 
@@ -64,17 +72,18 @@ class GetEnterpriseUsersUser {
 
   factory GetEnterpriseUsersUser.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseUsersUser(
-      id: (map['id'] as String).input(),
-      mobile: (map['mobile'] as String).input(),
-      nickName: (map['nickName'] as String).input(),
-      parentUid: (map['parentUid'] as int).input(),
-      roleIds: ((map['roleIds'] as List).cast<int>()).input(),
-      roleNames: ((map['roleNames'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      uid: (map['uid'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mobile: pulumi.Input.fromValue(map['mobile'] as String),
+      nickName: pulumi.Input.fromValue(map['nickName'] as String),
+      parentUid: pulumi.Input.fromValue(map['parentUid'] as int),
+      roleIds: pulumi.Input.fromValue((map['roleIds'] as List).cast<int>()),
+      roleNames: pulumi.Input.fromValue(
+        (map['roleNames'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      uid: pulumi.Input.fromValue(map['uid'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

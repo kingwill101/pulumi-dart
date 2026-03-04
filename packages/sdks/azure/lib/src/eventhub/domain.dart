@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
 import 'domain_identity.dart';
-import 'domain_inbound_ip_rule.dart';
 import 'domain_input_mapping_default_values.dart';
 import 'domain_input_mapping_fields.dart';
 import 'domain_state.dart';
@@ -162,7 +161,7 @@ import 'domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -177,34 +176,50 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Whether to create the domain topic when the first event subscription at the scope of the domain topic is created. Defaults to `true`.
   late final pulumi.Output<bool?> autoCreateTopicWithFirstSubscription;
+
   /// Whether to delete the domain topic when the last event subscription at the scope of the domain topic is deleted. Defaults to `true`.
   late final pulumi.Output<bool?> autoDeleteTopicWithLastSubscription;
+
   /// The Endpoint associated with the EventGrid Domain.
   late final pulumi.Output<String> endpoint;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<DomainIdentity?> identity;
+
   /// One or more `inbound_ip_rule` blocks as defined below.
-  late final pulumi.Output<List<DomainInboundIpRule>?> inboundIpRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+
   /// A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<DomainInputMappingDefaultValues?> inputMappingDefaultValues;
+  late final pulumi.Output<DomainInputMappingDefaultValues?>
+  inputMappingDefaultValues;
+
   /// A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DomainInputMappingFields?> inputMappingFields;
+
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> inputSchema;
+
   /// Whether local authentication methods is enabled for the EventGrid Domain. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the EventGrid Domain resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Primary Shared Access Key associated with the EventGrid Domain.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// Whether or not public network access is allowed for this server. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Secondary Shared Access Key associated with the EventGrid Domain.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -212,32 +227,42 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_eventhub_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:eventhub/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreateTopicWithFirstSubscription = registerOutput<bool?>('autoCreateTopicWithFirstSubscription');
-    this.autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.identity = registerOutput<DomainIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<DomainInboundIpRule>?>('inboundIpRules');
-    this.inputMappingDefaultValues = registerOutput<DomainInputMappingDefaultValues?>('inputMappingDefaultValues');
-    this.inputMappingFields = registerOutput<DomainInputMappingFields?>('inputMappingFields');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:eventhub/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    autoCreateTopicWithFirstSubscription = registerOutput<bool?>(
+      'autoCreateTopicWithFirstSubscription',
+    );
+    autoDeleteTopicWithLastSubscription = registerOutput<bool?>(
+      'autoDeleteTopicWithLastSubscription',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<DomainIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputMappingDefaultValues =
+        registerOutput<DomainInputMappingDefaultValues?>(
+          'inputMappingDefaultValues',
+        );
+    inputMappingFields = registerOutput<DomainInputMappingFields?>(
+      'inputMappingFields',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -258,26 +283,39 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreateTopicWithFirstSubscription = registerOutput<bool?>('autoCreateTopicWithFirstSubscription');
-    this.autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.identity = registerOutput<DomainIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<DomainInboundIpRule>?>('inboundIpRules');
-    this.inputMappingDefaultValues = registerOutput<DomainInputMappingDefaultValues?>('inputMappingDefaultValues');
-    this.inputMappingFields = registerOutput<DomainInputMappingFields?>('inputMappingFields');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:eventhub/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreateTopicWithFirstSubscription = registerOutput<bool?>(
+      'autoCreateTopicWithFirstSubscription',
+    );
+    autoDeleteTopicWithLastSubscription = registerOutput<bool?>(
+      'autoDeleteTopicWithLastSubscription',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<DomainIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputMappingDefaultValues =
+        registerOutput<DomainInputMappingDefaultValues?>(
+          'inputMappingDefaultValues',
+        );
+    inputMappingFields = registerOutput<DomainInputMappingFields?>(
+      'inputMappingFields',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

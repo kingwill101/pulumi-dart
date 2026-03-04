@@ -10,16 +10,15 @@ enum NetworkTypeEnum {
   valueInternal("Internal"),
   valueMirrored("Mirrored");
 
-  const NetworkTypeEnum(this.value);
-  final String value;
+  const NetworkTypeEnum(this.wireValue);
+  final String wireValue;
 
   static NetworkTypeEnum fromValue(String value) {
     for (final item in NetworkTypeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkTypeEnum value: $value');
   }
 }
-

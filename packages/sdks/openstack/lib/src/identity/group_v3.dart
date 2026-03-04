@@ -4,7 +4,7 @@ import 'group_v3_state.dart';
 
 /// Manages a V3 group resource within OpenStack Keystone.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -114,10 +114,13 @@ import 'group_v3_state.dart';
 class GroupV3 extends pulumi.CustomResource {
   /// A description of the group.
   late final pulumi.Output<String?> description;
+
   /// The domain the group belongs to.
   late final pulumi.Output<String> domainId;
+
   /// The name of the group.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new group.
@@ -132,15 +135,15 @@ class GroupV3 extends pulumi.CustomResource {
     GroupV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/groupV3:GroupV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
+         'openstack:identity/groupV3:GroupV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [GroupV3] resource's state with the given [name] and [id].
@@ -161,14 +164,14 @@ class GroupV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/groupV3:GroupV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
+         'openstack:identity/groupV3:GroupV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

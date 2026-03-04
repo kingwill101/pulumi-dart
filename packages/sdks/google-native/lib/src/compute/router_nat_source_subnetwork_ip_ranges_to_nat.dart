@@ -4,16 +4,17 @@ enum RouterNatSourceSubnetworkIpRangesToNat {
   allSubnetworksAllPrimaryIpRanges("ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"),
   listOfSubnetworks("LIST_OF_SUBNETWORKS");
 
-  const RouterNatSourceSubnetworkIpRangesToNat(this.value);
-  final String value;
+  const RouterNatSourceSubnetworkIpRangesToNat(this.wireValue);
+  final String wireValue;
 
   static RouterNatSourceSubnetworkIpRangesToNat fromValue(String value) {
     for (final item in RouterNatSourceSubnetworkIpRangesToNat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatSourceSubnetworkIpRangesToNat value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatSourceSubnetworkIpRangesToNat value: $value',
+    );
   }
 }
-

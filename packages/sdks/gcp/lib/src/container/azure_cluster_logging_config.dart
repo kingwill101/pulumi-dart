@@ -9,20 +9,29 @@ class AzureClusterLoggingConfig {
 
   /// Creates a new [AzureClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.
-  AzureClusterLoggingConfig({
-    this.componentConfig,
-  });
+  AzureClusterLoggingConfig({this.componentConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?pulumi.Input.mapOptionalInputValue<AzureClusterLoggingConfigComponentConfig, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
+      'componentConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureClusterLoggingConfigComponentConfig,
+            Map<String, dynamic>
+          >(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory AzureClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (AzureClusterLoggingConfigComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      componentConfig: (() {
+        final guardedValue = map['componentConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureClusterLoggingConfigComponentConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

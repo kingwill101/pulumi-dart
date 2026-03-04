@@ -9,34 +9,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommonLicenseManageBigIqArgs {
   /// The type of assignment, which is determined by whether the BIG-IP is unreachable, unmanaged, or managed by BIG-IQ. Possible values: “UNREACHABLE”, “UNMANAGED”, or “MANAGED”.
   final pulumi.Input<String> assignmentType;
+
   /// BIGIQ License Manager IP Address, variable type `string`
   final pulumi.Input<String> bigiqAddress;
+
   /// BIGIQ Login reference for token authentication
   final pulumi.Input<String>? bigiqLoginRef;
+
   /// BIGIQ License Manager password.  variable type `string`
   final pulumi.Input<String> bigiqPassword;
+
   /// type `int`, BIGIQ License Manager Port number, specify if port is other than `443`
   final pulumi.Input<String>? bigiqPort;
+
   /// type `bool`, if set to `true` enables Token based Authentication,default is `false`
   final pulumi.Input<bool>? bigiqTokenAuth;
+
   /// BIGIQ License Manager username, variable type `string`
   final pulumi.Input<String> bigiqUser;
+
   /// Status of Licence Assignment
   final pulumi.Input<String>? deviceLicenseStatus;
+
   /// Identifies the platform running the BIG-IP VE. Possible values: “aws”, “azure”, “gce”, “vmware”, “hyperv”, “kvm”, or “xen”. type `string`
   final pulumi.Input<String>? hypervisor;
+
   /// License Assignment is done with specified `key`, supported only with RegKeypool type License assignement. type `string`
   final pulumi.Input<String>? key;
+
   /// A name given to the license pool. type `string`
   final pulumi.Input<String> licensePoolname;
+
   /// MAC address of the BIG-IP. type `string`
   final pulumi.Input<String>? macAddress;
+
   /// An optional offering name. type `string`
   final pulumi.Input<String>? skukeyword1;
+
   /// An optional offering name. type `string`
   final pulumi.Input<String>? skukeyword2;
+
   /// For an unreachable BIG-IP, you can provide an optional description for the assignment in this field.
   final pulumi.Input<String>? tenant;
+
   /// The units used to measure billing. For example, “hourly” or “daily”. Type `string`
   final pulumi.Input<String>? unitOfMeasure;
 
@@ -99,23 +114,66 @@ class CommonLicenseManageBigIqArgs {
 
   factory CommonLicenseManageBigIqArgs.fromMap(Map<String, dynamic> map) {
     return CommonLicenseManageBigIqArgs(
-      assignmentType: (map['assignmentType'] as String).input(),
-      bigiqAddress: (map['bigiqAddress'] as String).input(),
-      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef']! as String).input(),
-      bigiqPassword: (map['bigiqPassword'] as String).input(),
-      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort']! as String).input(),
-      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth']! as bool).input(),
-      bigiqUser: (map['bigiqUser'] as String).input(),
-      deviceLicenseStatus: map['deviceLicenseStatus'] == null ? null : (map['deviceLicenseStatus']! as String).input(),
-      hypervisor: map['hypervisor'] == null ? null : (map['hypervisor']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      licensePoolname: (map['licensePoolname'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
-      skukeyword1: map['skukeyword1'] == null ? null : (map['skukeyword1']! as String).input(),
-      skukeyword2: map['skukeyword2'] == null ? null : (map['skukeyword2']! as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
-      unitOfMeasure: map['unitOfMeasure'] == null ? null : (map['unitOfMeasure']! as String).input(),
+      assignmentType: pulumi.Input.fromValue(map['assignmentType'] as String),
+      bigiqAddress: pulumi.Input.fromValue(map['bigiqAddress'] as String),
+      bigiqLoginRef: (() {
+        final guardedValue = map['bigiqLoginRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqPassword: pulumi.Input.fromValue(map['bigiqPassword'] as String),
+      bigiqPort: (() {
+        final guardedValue = map['bigiqPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqTokenAuth: (() {
+        final guardedValue = map['bigiqTokenAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      bigiqUser: pulumi.Input.fromValue(map['bigiqUser'] as String),
+      deviceLicenseStatus: (() {
+        final guardedValue = map['deviceLicenseStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hypervisor: (() {
+        final guardedValue = map['hypervisor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licensePoolname: pulumi.Input.fromValue(map['licensePoolname'] as String),
+      macAddress: (() {
+        final guardedValue = map['macAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skukeyword1: (() {
+        final guardedValue = map['skukeyword1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skukeyword2: (() {
+        final guardedValue = map['skukeyword2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenant: (() {
+        final guardedValue = map['tenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      unitOfMeasure: (() {
+        final guardedValue = map['unitOfMeasure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

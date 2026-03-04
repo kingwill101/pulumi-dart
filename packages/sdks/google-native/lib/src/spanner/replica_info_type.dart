@@ -5,16 +5,15 @@ enum ReplicaInfoType {
   readOnly("READ_ONLY"),
   witness("WITNESS");
 
-  const ReplicaInfoType(this.value);
-  final String value;
+  const ReplicaInfoType(this.wireValue);
+  final String wireValue;
 
   static ReplicaInfoType fromValue(String value) {
     for (final item in ReplicaInfoType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicaInfoType value: $value');
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VswitchCidrReservationArgs {
   /// Reserved network segment CIdrBlock.
   final pulumi.Input<String>? cidrReservationCidr;
+
   /// The description of the reserved CIDR block.
   final pulumi.Input<String>? cidrReservationDescription;
+
   /// Reserved segment mask.
   final pulumi.Input<String>? cidrReservationMask;
+
   /// Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
   final pulumi.Input<String>? cidrReservationType;
+
   /// Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
   final pulumi.Input<String>? ipVersion;
+
   /// The name of the resource.
   final pulumi.Input<String>? vswitchCidrReservationName;
+
   /// The Id of the switch instance.
   final pulumi.Input<String> vswitchId;
 
@@ -54,14 +60,37 @@ class VswitchCidrReservationArgs {
 
   factory VswitchCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return VswitchCidrReservationArgs(
-      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : (map['cidrReservationCidr']! as String).input(),
-      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : (map['cidrReservationDescription']! as String).input(),
-      cidrReservationMask: map['cidrReservationMask'] == null ? null : (map['cidrReservationMask']! as String).input(),
-      cidrReservationType: map['cidrReservationType'] == null ? null : (map['cidrReservationType']! as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : (map['vswitchCidrReservationName']! as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      cidrReservationCidr: (() {
+        final guardedValue = map['cidrReservationCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrReservationDescription: (() {
+        final guardedValue = map['cidrReservationDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrReservationMask: (() {
+        final guardedValue = map['cidrReservationMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrReservationType: (() {
+        final guardedValue = map['cidrReservationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchCidrReservationName: (() {
+        final guardedValue = map['vswitchCidrReservationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'get_instance_client_connection_config_ssl_config.dart';
 class GetInstanceClientConnectionConfig {
   /// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   final pulumi.Input<bool> requireConnectors;
+
   /// SSL config option for this instance.
-  final pulumi.Input<List<GetInstanceClientConnectionConfigSslConfig>> sslConfigs;
+  final pulumi.Input<List<GetInstanceClientConnectionConfigSslConfig>>
+  sslConfigs;
 
   /// Creates a new [GetInstanceClientConnectionConfig].
   /// [requireConnectors] Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
@@ -20,15 +22,34 @@ class GetInstanceClientConnectionConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'requireConnectors': requireConnectors,
-      'sslConfigs': pulumi.Input.mapInputValue<List<GetInstanceClientConnectionConfigSslConfig>, List<Map<String, dynamic>>>(sslConfigs, (value) => pulumi.Input.encodeList<GetInstanceClientConnectionConfigSslConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sslConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetInstanceClientConnectionConfigSslConfig>,
+            List<Map<String, dynamic>>
+          >(
+            sslConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstanceClientConnectionConfigSslConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetInstanceClientConnectionConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceClientConnectionConfig(
-      requireConnectors: (map['requireConnectors'] as bool).input(),
-      sslConfigs: (pulumi.Input.decodeList<GetInstanceClientConnectionConfigSslConfig>(map['sslConfigs'], (value) => GetInstanceClientConnectionConfigSslConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireConnectors: pulumi.Input.fromValue(
+        map['requireConnectors'] as bool,
+      ),
+      sslConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInstanceClientConnectionConfigSslConfig>(
+          map['sslConfigs']!,
+          (value) => GetInstanceClientConnectionConfigSslConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -7,37 +7,48 @@ import 'toolset_open_api_toolset.dart';
 class ToolsetState {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? app;
+
   /// Timestamp when the toolset was created.
   final pulumi.Input<String>? createTime;
+
   /// The description of the toolset.
   final pulumi.Input<String>? description;
+
   /// The display name of the toolset. Must be unique within the same app.
   final pulumi.Input<String>? displayName;
+
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String>? etag;
+
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
   final pulumi.Input<String>? executionType;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
+
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
   final pulumi.Input<ToolsetOpenApiToolset>? openApiToolset;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID to use for the toolset, which will become the final component of
   /// the toolset's resource name. If not provided, a unique ID will be
   /// automatically assigned for the toolset.
   final pulumi.Input<String>? toolsetId;
+
   /// Timestamp when the toolset was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -79,7 +90,11 @@ class ToolsetState {
       'executionType': ?executionType,
       'location': ?location,
       'name': ?name,
-      'openApiToolset': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolset, Map<String, dynamic>>(openApiToolset, (value) => value.toMap()),
+      'openApiToolset':
+          ?pulumi.Input.mapOptionalInputValue<
+            ToolsetOpenApiToolset,
+            Map<String, dynamic>
+          >(openApiToolset, (value) => value.toMap()),
       'project': ?project,
       'toolsetId': ?toolsetId,
       'updateTime': ?updateTime,
@@ -88,19 +103,70 @@ class ToolsetState {
 
   factory ToolsetState.fromMap(Map<String, dynamic> map) {
     return ToolsetState(
-      app: map['app'] == null ? null : (map['app']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      openApiToolset: map['openApiToolset'] == null ? null : (ToolsetOpenApiToolset.fromMap((map['openApiToolset']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      toolsetId: map['toolsetId'] == null ? null : (map['toolsetId']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      app: (() {
+        final guardedValue = map['app'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionType: (() {
+        final guardedValue = map['executionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      openApiToolset: (() {
+        final guardedValue = map['openApiToolset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ToolsetOpenApiToolset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toolsetId: (() {
+        final guardedValue = map['toolsetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

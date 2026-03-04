@@ -9,16 +9,22 @@ import 'resource_requests_response.dart';
 class ConnectorVersionInfraConfigResponse {
   /// The window used for ratelimiting runtime requests to connections.
   final pulumi.Input<String> connectionRatelimitWindowSeconds;
+
   /// HPA autoscaling config.
   final pulumi.Input<HPAConfigResponse> hpaConfig;
+
   /// Max QPS supported for internal requests originating from Connd.
   final pulumi.Input<String> internalclientRatelimitThreshold;
+
   /// Max QPS supported by the connector version before throttling of requests.
   final pulumi.Input<String> ratelimitThreshold;
+
   /// System resource limits.
   final pulumi.Input<ResourceLimitsResponse> resourceLimits;
+
   /// System resource requests.
   final pulumi.Input<ResourceRequestsResponse> resourceRequests;
+
   /// The name of shared connector deployment.
   final pulumi.Input<String> sharedDeployment;
 
@@ -43,25 +49,58 @@ class ConnectorVersionInfraConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds,
-      'hpaConfig': pulumi.Input.mapInputValue<HPAConfigResponse, Map<String, dynamic>>(hpaConfig, (value) => value.toMap()),
+      'hpaConfig':
+          pulumi.Input.mapInputValue<HPAConfigResponse, Map<String, dynamic>>(
+            hpaConfig,
+            (value) => value.toMap(),
+          ),
       'internalclientRatelimitThreshold': internalclientRatelimitThreshold,
       'ratelimitThreshold': ratelimitThreshold,
-      'resourceLimits': pulumi.Input.mapInputValue<ResourceLimitsResponse, Map<String, dynamic>>(resourceLimits, (value) => value.toMap()),
-      'resourceRequests': pulumi.Input.mapInputValue<ResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'resourceLimits':
+          pulumi.Input.mapInputValue<
+            ResourceLimitsResponse,
+            Map<String, dynamic>
+          >(resourceLimits, (value) => value.toMap()),
+      'resourceRequests':
+          pulumi.Input.mapInputValue<
+            ResourceRequestsResponse,
+            Map<String, dynamic>
+          >(resourceRequests, (value) => value.toMap()),
       'sharedDeployment': sharedDeployment,
     };
   }
 
-  factory ConnectorVersionInfraConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectorVersionInfraConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorVersionInfraConfigResponse(
-      connectionRatelimitWindowSeconds: (map['connectionRatelimitWindowSeconds'] as String).input(),
-      hpaConfig: (HPAConfigResponse.fromMap((map['hpaConfig'] as Map).cast<String, dynamic>())).input(),
-      internalclientRatelimitThreshold: (map['internalclientRatelimitThreshold'] as String).input(),
-      ratelimitThreshold: (map['ratelimitThreshold'] as String).input(),
-      resourceLimits: (ResourceLimitsResponse.fromMap((map['resourceLimits'] as Map).cast<String, dynamic>())).input(),
-      resourceRequests: (ResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
-      sharedDeployment: (map['sharedDeployment'] as String).input(),
+      connectionRatelimitWindowSeconds: pulumi.Input.fromValue(
+        map['connectionRatelimitWindowSeconds'] as String,
+      ),
+      hpaConfig: pulumi.Input.fromValue(
+        HPAConfigResponse.fromMap(
+          (map['hpaConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      internalclientRatelimitThreshold: pulumi.Input.fromValue(
+        map['internalclientRatelimitThreshold'] as String,
+      ),
+      ratelimitThreshold: pulumi.Input.fromValue(
+        map['ratelimitThreshold'] as String,
+      ),
+      resourceLimits: pulumi.Input.fromValue(
+        ResourceLimitsResponse.fromMap(
+          (map['resourceLimits']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceRequests: pulumi.Input.fromValue(
+        ResourceRequestsResponse.fromMap(
+          (map['resourceRequests']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sharedDeployment: pulumi.Input.fromValue(
+        map['sharedDeployment'] as String,
+      ),
     );
   }
 }
-

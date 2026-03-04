@@ -13,15 +13,14 @@ class GetControlOrganizationIntelligenceConfigTrialConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expireTime': expireTime,
-    };
+    return <String, dynamic>{'expireTime': expireTime};
   }
 
-  factory GetControlOrganizationIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
+  factory GetControlOrganizationIntelligenceConfigTrialConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetControlOrganizationIntelligenceConfigTrialConfig(
-      expireTime: (map['expireTime'] as String).input(),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
     );
   }
 }
-

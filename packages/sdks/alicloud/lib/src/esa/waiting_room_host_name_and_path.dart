@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WaitingRoomHostNameAndPath {
   /// The domain name.
   final pulumi.Input<String> domain;
+
   /// The path.
   final pulumi.Input<String> path;
+
   /// The subdomain.
   final pulumi.Input<String> subdomain;
 
@@ -30,10 +32,9 @@ class WaitingRoomHostNameAndPath {
 
   factory WaitingRoomHostNameAndPath.fromMap(Map<String, dynamic> map) {
     return WaitingRoomHostNameAndPath(
-      domain: (map['domain'] as String).input(),
-      path: (map['path'] as String).input(),
-      subdomain: (map['subdomain'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      subdomain: pulumi.Input.fromValue(map['subdomain'] as String),
     );
   }
 }
-

@@ -177,22 +177,31 @@ import 'system_data_response.dart';
 class OutboundEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ETag of the outbound endpoint.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of the outbound endpoint. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// The resourceGuid property of the outbound endpoint resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The reference to the subnet used for the outbound endpoint.
   late final pulumi.Output<SubResourceResponse> subnet;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -205,20 +214,20 @@ class OutboundEndpoint extends pulumi.CustomResource {
     OutboundEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dnsresolver:OutboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:dnsresolver:OutboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.subnet = registerOutput<SubResourceResponse>('subnet');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnet = registerOutput<SubResourceResponse>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

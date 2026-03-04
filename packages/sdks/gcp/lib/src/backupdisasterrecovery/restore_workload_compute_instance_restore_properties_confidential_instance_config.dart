@@ -18,10 +18,15 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig 
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
+      enableConfidentialCompute: (() {
+        final guardedValue = map['enableConfidentialCompute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

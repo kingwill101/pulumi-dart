@@ -33,14 +33,35 @@ class InstanceFromMachineImageSourceMachineImageEncryptionKey {
     };
   }
 
-  factory InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageSourceMachineImageEncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey']! as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyServiceAccount: (() {
+        final guardedValue = map['kmsKeyServiceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawKey: (() {
+        final guardedValue = map['rawKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rsaEncryptedKey: (() {
+        final guardedValue = map['rsaEncryptedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha256: (() {
+        final guardedValue = map['sha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

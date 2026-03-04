@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseBackupsFilter {
   /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
   final pulumi.Input<String>? matchBy;
+
   /// The name of the field to filter by.
   final pulumi.Input<String> name;
+
   /// A list of values for the filter to allow. These values should all be in string form.
   final pulumi.Input<List<String>> values;
 
@@ -30,10 +32,13 @@ class GetDatabaseBackupsFilter {
 
   factory GetDatabaseBackupsFilter.fromMap(Map<String, dynamic> map) {
     return GetDatabaseBackupsFilter(
-      matchBy: map['matchBy'] == null ? null : (map['matchBy']! as String).input(),
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      matchBy: (() {
+        final guardedValue = map['matchBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

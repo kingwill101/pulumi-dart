@@ -4,16 +4,17 @@ enum PersistenceConfigPersistenceModeRedisV1beta1 {
   disabled("DISABLED"),
   rdb("RDB");
 
-  const PersistenceConfigPersistenceModeRedisV1beta1(this.value);
-  final String value;
+  const PersistenceConfigPersistenceModeRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static PersistenceConfigPersistenceModeRedisV1beta1 fromValue(String value) {
     for (final item in PersistenceConfigPersistenceModeRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PersistenceConfigPersistenceModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown PersistenceConfigPersistenceModeRedisV1beta1 value: $value',
+    );
   }
 }
-

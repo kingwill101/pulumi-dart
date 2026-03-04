@@ -8,14 +8,19 @@ import 'push_filter_response.dart';
 class GitHubEventsConfigResponse {
   /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   final pulumi.Input<String> enterpriseConfigResourceName;
+
   /// The installationID that emits the GitHub event.
   final pulumi.Input<String> installationId;
+
   /// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
   final pulumi.Input<String> name;
+
   /// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
   final pulumi.Input<String> owner;
+
   /// filter to match changes in pull requests.
   final pulumi.Input<PullRequestFilterResponse> pullRequest;
+
   /// filter to match changes in refs like branches, tags.
   final pulumi.Input<PushFilterResponse> push;
 
@@ -41,20 +46,37 @@ class GitHubEventsConfigResponse {
       'installationId': installationId,
       'name': name,
       'owner': owner,
-      'pullRequest': pulumi.Input.mapInputValue<PullRequestFilterResponse, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
-      'push': pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(push, (value) => value.toMap()),
+      'pullRequest':
+          pulumi.Input.mapInputValue<
+            PullRequestFilterResponse,
+            Map<String, dynamic>
+          >(pullRequest, (value) => value.toMap()),
+      'push':
+          pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(
+            push,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GitHubEventsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitHubEventsConfigResponse(
-      enterpriseConfigResourceName: (map['enterpriseConfigResourceName'] as String).input(),
-      installationId: (map['installationId'] as String).input(),
-      name: (map['name'] as String).input(),
-      owner: (map['owner'] as String).input(),
-      pullRequest: (PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: (PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      enterpriseConfigResourceName: pulumi.Input.fromValue(
+        map['enterpriseConfigResourceName'] as String,
+      ),
+      installationId: pulumi.Input.fromValue(map['installationId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
+      pullRequest: pulumi.Input.fromValue(
+        PullRequestFilterResponse.fromMap(
+          (map['pullRequest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      push: pulumi.Input.fromValue(
+        PushFilterResponse.fromMap(
+          (map['push']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
   /// "apiextensions.k8s.io", "storage.k8s.io", etc.
   /// Use empty string for core group.
   final pulumi.Input<String>? resourceGroup;
+
   /// Kind of a Kubernetes resource, e.g.
   /// "CustomResourceDefinition", "StorageClass", etc.
   final pulumi.Input<String>? resourceKind;
@@ -26,11 +27,20 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
     };
   }
 
-  factory RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind.fromMap(Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind(
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceKind: (() {
+        final guardedValue = map['resourceKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

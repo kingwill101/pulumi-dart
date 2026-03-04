@@ -13,10 +13,7 @@ class GetOrganizationSinkArgs {
   /// Creates a new [GetOrganizationSinkArgs].
   /// [organizationId] Required.
   /// [sinkId] Required.
-  GetOrganizationSinkArgs({
-    required this.organizationId,
-    required this.sinkId,
-  });
+  GetOrganizationSinkArgs({required this.organizationId, required this.sinkId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetOrganizationSinkArgs {
 
   factory GetOrganizationSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSinkArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      sinkId: (map['sinkId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      sinkId: pulumi.Input.fromValue(map['sinkId'] as String),
     );
   }
 }
-

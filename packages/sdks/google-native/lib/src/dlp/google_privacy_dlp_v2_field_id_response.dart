@@ -9,20 +9,15 @@ class GooglePrivacyDlpV2FieldIdResponse {
 
   /// Creates a new [GooglePrivacyDlpV2FieldIdResponse].
   /// [name] Name describing the field.
-  GooglePrivacyDlpV2FieldIdResponse({
-    required this.name,
-  });
+  GooglePrivacyDlpV2FieldIdResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GooglePrivacyDlpV2FieldIdResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldIdResponse(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

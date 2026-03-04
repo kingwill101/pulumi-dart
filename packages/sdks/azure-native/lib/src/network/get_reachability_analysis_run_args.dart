@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReachabilityAnalysisRunArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// Reachability Analysis Run name.
   final pulumi.Input<String> reachabilityAnalysisRunName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,16 @@ class GetReachabilityAnalysisRunArgs {
 
   factory GetReachabilityAnalysisRunArgs.fromMap(Map<String, dynamic> map) {
     return GetReachabilityAnalysisRunArgs(
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      reachabilityAnalysisRunName: (map['reachabilityAnalysisRunName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      reachabilityAnalysisRunName: pulumi.Input.fromValue(
+        map['reachabilityAnalysisRunName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

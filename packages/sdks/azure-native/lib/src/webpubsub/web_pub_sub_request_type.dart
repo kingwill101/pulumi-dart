@@ -5,16 +5,15 @@ enum WebPubSubRequestType {
   valueRESTAPI("RESTAPI"),
   valueTrace("Trace");
 
-  const WebPubSubRequestType(this.value);
-  final String value;
+  const WebPubSubRequestType(this.wireValue);
+  final String wireValue;
 
   static WebPubSubRequestType fromValue(String value) {
     for (final item in WebPubSubRequestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebPubSubRequestType value: $value');
   }
 }
-

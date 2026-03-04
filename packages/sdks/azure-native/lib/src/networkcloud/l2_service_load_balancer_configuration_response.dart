@@ -9,20 +9,41 @@ class L2ServiceLoadBalancerConfigurationResponse {
 
   /// Creates a new [L2ServiceLoadBalancerConfigurationResponse].
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  L2ServiceLoadBalancerConfigurationResponse({
-    this.ipAddressPools,
-  });
+  L2ServiceLoadBalancerConfigurationResponse({this.ipAddressPools});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipAddressPools': ?pulumi.Input.mapOptionalInputValue<List<IpAddressPoolResponse>, List<Map<String, dynamic>>>(ipAddressPools, (value) => pulumi.Input.encodeList<IpAddressPoolResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipAddressPools':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressPoolResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipAddressPools,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpAddressPoolResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory L2ServiceLoadBalancerConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory L2ServiceLoadBalancerConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return L2ServiceLoadBalancerConfigurationResponse(
-      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPoolResponse>(map['ipAddressPools']!, (value) => IpAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressPools: (() {
+        final guardedValue = map['ipAddressPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressPoolResponse>(
+            guardedValue,
+            (value) => IpAddressPoolResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentAccepterArgs {
   /// ID of the attachment.
   final pulumi.Input<String> attachmentId;
+
   /// Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
   final pulumi.Input<String> attachmentType;
 
@@ -29,9 +30,8 @@ class AttachmentAccepterArgs {
 
   factory AttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentAccepterArgs(
-      attachmentId: (map['attachmentId'] as String).input(),
-      attachmentType: (map['attachmentType'] as String).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      attachmentType: pulumi.Input.fromValue(map['attachmentType'] as String),
     );
   }
 }
-

@@ -8,12 +8,15 @@ class GetAccountsResult {
   /// A list of accounts. Each element contains the following attributes:
   final List<GetAccountsAccount> accounts;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? outputFile;
+
   /// The status of the member.
   final String? status;
+
   /// (Available since v1.259.0) The tags that are added to the member.
   final Map<String, String>? tags;
 
@@ -37,7 +40,11 @@ class GetAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts':
+          pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(
+            accounts,
+            (value) => value.toMap(),
+          ),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -49,14 +56,33 @@ class GetAccountsResult {
 
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
-      accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts'], (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      accounts: pulumi.Input.decodeList<GetAccountsAccount>(
+        map['accounts']!,
+        (value) =>
+            GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

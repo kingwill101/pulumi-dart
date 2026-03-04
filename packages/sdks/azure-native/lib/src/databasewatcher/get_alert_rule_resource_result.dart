@@ -6,24 +6,34 @@ import 'system_data_response.dart';
 class GetAlertRuleResourceResult {
   /// The resource ID of the alert rule resource.
   final String alertRuleResourceId;
+
   /// The template ID associated with alert rule resource.
   final String alertRuleTemplateId;
+
   /// The alert rule template version.
   final String alertRuleTemplateVersion;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The properties with which the alert rule resource was created.
   final String createdWithProperties;
+
   /// The creation time of the alert rule resource.
   final String creationTime;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state of the alert rule resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -80,9 +90,10 @@ class GetAlertRuleResourceResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

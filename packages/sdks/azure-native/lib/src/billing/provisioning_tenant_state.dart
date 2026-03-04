@@ -8,16 +8,15 @@ enum ProvisioningTenantState {
   valueBillingRequestDeclined("BillingRequestDeclined"),
   valueRevoked("Revoked");
 
-  const ProvisioningTenantState(this.value);
-  final String value;
+  const ProvisioningTenantState(this.wireValue);
+  final String wireValue;
 
   static ProvisioningTenantState fromValue(String value) {
     for (final item in ProvisioningTenantState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProvisioningTenantState value: $value');
   }
 }
-

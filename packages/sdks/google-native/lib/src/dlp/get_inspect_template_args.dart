@@ -31,10 +31,15 @@ class GetInspectTemplateArgs {
 
   factory GetInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetInspectTemplateArgs(
-      inspectTemplateId: (map['inspectTemplateId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      inspectTemplateId: pulumi.Input.fromValue(
+        map['inspectTemplateId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

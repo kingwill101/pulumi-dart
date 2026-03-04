@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'group_contract_properties_response.dart';
 import 'user_args.dart';
-import 'user_identity_contract_response.dart';
 
 /// User details.
 ///
@@ -160,24 +158,34 @@ import 'user_identity_contract_response.dart';
 class User extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Email address.
   late final pulumi.Output<String?> email;
+
   /// First name.
   late final pulumi.Output<String?> firstName;
+
   /// Collection of groups user is part of.
-  late final pulumi.Output<List<GroupContractPropertiesResponse>> groups;
+  late final pulumi.Output<List<Map<String, dynamic>>> groups;
+
   /// Collection of user identities.
-  late final pulumi.Output<List<UserIdentityContractResponse>?> identities;
+  late final pulumi.Output<List<Map<String, dynamic>>?> identities;
+
   /// Last name.
   late final pulumi.Output<String?> lastName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Optional note about a user set by the administrator.
   late final pulumi.Output<String?> note;
+
   /// Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> registrationDate;
+
   /// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   late final pulumi.Output<String?> state;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -185,26 +193,23 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_apimanagement_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:apimanagement:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.email = registerOutput<String?>('email');
-    this.firstName = registerOutput<String?>('firstName');
-    this.groups = registerOutput<List<GroupContractPropertiesResponse>>('groups');
-    this.identities = registerOutput<List<UserIdentityContractResponse>?>('identities');
-    this.lastName = registerOutput<String?>('lastName');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:apimanagement:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    email = registerOutput<String?>('email');
+    firstName = registerOutput<String?>('firstName');
+    groups = registerOutput<List<Map<String, dynamic>>>('groups');
+    identities = registerOutput<List<Map<String, dynamic>>?>('identities');
+    lastName = registerOutput<String?>('lastName');
     this.name = registerOutput<String>('name');
-    this.note = registerOutput<String?>('note');
-    this.registrationDate = registerOutput<String?>('registrationDate');
-    this.state = registerOutput<String?>('state');
-    this.type = registerOutput<String>('type');
+    note = registerOutput<String?>('note');
+    registrationDate = registerOutput<String?>('registrationDate');
+    state = registerOutput<String?>('state');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,30 +9,38 @@ class AccountState {
   /// - If you are creating a new resource account, this parameter is not required.
   /// - If you are enrolling a existing account to account factory, this parameter is required.
   final pulumi.Input<int>? accountId;
+
   /// Account name prefix.
   /// - This parameter is required if you are creating a new resource account.
   /// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
   final pulumi.Input<String>? accountNamePrefix;
+
   /// The tags of the account See `account_tags` below.
   final pulumi.Input<List<AccountAccountTag>>? accountTags;
+
   /// The baseline ID.
   ///
   /// If it is left blank, the system default baseline is used by default.
   final pulumi.Input<String>? baselineId;
+
   /// The domain name is used to qualify the login name of RAM users and RAM roles.
   final pulumi.Input<String>? defaultDomainName;
+
   /// The account display name.
   /// - This parameter is required if you are creating a new resource account.
   /// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
   final pulumi.Input<String>? displayName;
+
   /// The ID of the parent resource folder.
   ///
   /// If you want to create a new resource account and leave this parameter blank, the account is created in the Root folder by default.
   ///
   /// If the registration application is applied to an existing account, this parameter does not need to be filled in.
   final pulumi.Input<String>? folderId;
+
   /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
   final pulumi.Input<int>? payerAccountId;
+
   /// Account registration status. Value:
   final pulumi.Input<String>? status;
 
@@ -62,7 +70,18 @@ class AccountState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'accountNamePrefix': ?accountNamePrefix,
-      'accountTags': ?pulumi.Input.mapOptionalInputValue<List<AccountAccountTag>, List<Map<String, dynamic>>>(accountTags, (value) => pulumi.Input.encodeList<AccountAccountTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accountTags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AccountAccountTag>,
+            List<Map<String, dynamic>>
+          >(
+            accountTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AccountAccountTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'baselineId': ?baselineId,
       'defaultDomainName': ?defaultDomainName,
       'displayName': ?displayName,
@@ -74,16 +93,58 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as int).input(),
-      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix']! as String).input(),
-      accountTags: map['accountTags'] == null ? null : (pulumi.Input.decodeList<AccountAccountTag>(map['accountTags']!, (value) => AccountAccountTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      baselineId: map['baselineId'] == null ? null : (map['baselineId']! as String).input(),
-      defaultDomainName: map['defaultDomainName'] == null ? null : (map['defaultDomainName']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
-      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      accountNamePrefix: (() {
+        final guardedValue = map['accountNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountTags: (() {
+        final guardedValue = map['accountTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AccountAccountTag>(
+            guardedValue,
+            (value) => AccountAccountTag.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      baselineId: (() {
+        final guardedValue = map['baselineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultDomainName: (() {
+        final guardedValue = map['defaultDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folderId: (() {
+        final guardedValue = map['folderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payerAccountId: (() {
+        final guardedValue = map['payerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

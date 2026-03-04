@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineScaleSetPlan {
   /// Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
+
   /// Specifies the product of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
+
   /// Specifies the publisher of the image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -30,10 +32,9 @@ class LinuxVirtualMachineScaleSetPlan {
 
   factory LinuxVirtualMachineScaleSetPlan.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetPlan(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
-

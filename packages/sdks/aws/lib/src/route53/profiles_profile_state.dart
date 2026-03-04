@@ -7,19 +7,26 @@ import 'profiles_profile_timeouts.dart';
 class ProfilesProfileState {
   /// ARN of the Profile.
   final pulumi.Input<String>? arn;
+
   /// Name of the Profile.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Share status of the Profile.
   final pulumi.Input<String>? shareStatus;
+
   /// Status of the Profile.
   final pulumi.Input<String>? status;
+
   /// Status message of the Profile.
   final pulumi.Input<String>? statusMessage;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ProfilesProfileTimeouts>? timeouts;
@@ -59,23 +66,74 @@ class ProfilesProfileState {
       'statusMessage': ?statusMessage,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ProfilesProfileTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProfilesProfileTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ProfilesProfileState.fromMap(Map<String, dynamic> map) {
     return ProfilesProfileState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      shareStatus: map['shareStatus'] == null ? null : ((map['shareStatus'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ProfilesProfileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareStatus: (() {
+        final guardedValue = map['shareStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusMessage: (() {
+        final guardedValue = map['statusMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProfilesProfileTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

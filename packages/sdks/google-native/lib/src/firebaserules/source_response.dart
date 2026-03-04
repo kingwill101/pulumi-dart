@@ -10,20 +10,34 @@ class SourceResponse {
 
   /// Creates a new [SourceResponse].
   /// [files] `File` set constituting the `Source` bundle.
-  SourceResponse({
-    required this.files,
-  });
+  SourceResponse({required this.files});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'files': pulumi.Input.mapInputValue<List<FileResponse>, List<Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeList<FileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files':
+          pulumi.Input.mapInputValue<
+            List<FileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            files,
+            (value) =>
+                pulumi.Input.encodeList<FileResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      files: (pulumi.Input.decodeList<FileResponse>(map['files'], (value) => FileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<FileResponse>(
+          map['files']!,
+          (value) =>
+              FileResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

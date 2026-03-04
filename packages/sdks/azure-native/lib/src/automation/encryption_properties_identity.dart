@@ -9,20 +9,19 @@ class EncryptionPropertiesIdentity {
 
   /// Creates a new [EncryptionPropertiesIdentity].
   /// [userAssignedIdentity] The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  EncryptionPropertiesIdentity({
-    this.userAssignedIdentity,
-  });
+  EncryptionPropertiesIdentity({this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userAssignedIdentity': ?userAssignedIdentity,
-    };
+    return <String, dynamic>{'userAssignedIdentity': ?userAssignedIdentity};
   }
 
   factory EncryptionPropertiesIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionPropertiesIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']!).input(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

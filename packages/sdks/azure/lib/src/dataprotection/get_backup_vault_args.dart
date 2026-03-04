@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupVaultArgs {
   /// Specifies the name of the Backup Vault.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Backup Vault exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetBackupVaultArgs].
   /// [name] Specifies the name of the Backup Vault.
   /// [resourceGroupName] The name of the Resource Group where the Backup Vault exists.
-  GetBackupVaultArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetBackupVaultArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetBackupVaultArgs {
 
   factory GetBackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

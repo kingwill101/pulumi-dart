@@ -9,7 +9,7 @@ import 'v3_layer_version_state.dart';
 ///
 /// For information about FCV3 Layer Version and how to use it, see [What is Layer Version](https://www.alibabacloud.com/help/en/functioncompute/api-fc-2023-03-30-createlayerversion).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -173,24 +173,34 @@ import 'v3_layer_version_state.dart';
 class V3LayerVersion extends pulumi.CustomResource {
   /// The access permission of the layer, 1: public, 0: private, default is private
   late final pulumi.Output<String?> acl;
+
   /// Layer code configuration See `code` below.
   late final pulumi.Output<V3LayerVersionCode?> code;
+
   /// (Available since v1.234.0) The code package size of the layer, in bytes.
   late final pulumi.Output<String> codeSize;
+
   /// List of runtime environments supported by the layer
   late final pulumi.Output<List<String>> compatibleRuntimes;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Description of the version
   late final pulumi.Output<String?> description;
+
   /// Name of the layer
   late final pulumi.Output<String> layerName;
+
   /// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
   late final pulumi.Output<String> layerVersionArn;
+
   /// Layer License Agreement
   late final pulumi.Output<String?> license;
+
   /// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
   late final pulumi.Output<String?> public;
+
   /// The version of the layer
   late final pulumi.Output<String> version;
 
@@ -203,22 +213,22 @@ class V3LayerVersion extends pulumi.CustomResource {
     V3LayerVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3LayerVersion:V3LayerVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.code = registerOutput<V3LayerVersionCode?>('code');
-    this.codeSize = registerOutput<String>('codeSize');
-    this.compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.layerName = registerOutput<String>('layerName');
-    this.layerVersionArn = registerOutput<String>('layerVersionArn');
-    this.license = registerOutput<String?>('license');
-    this.public = registerOutput<String?>('public');
-    this.version = registerOutput<String>('version');
+         'alicloud:fc/v3LayerVersion:V3LayerVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    code = registerOutput<V3LayerVersionCode?>('code');
+    codeSize = registerOutput<String>('codeSize');
+    compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    layerName = registerOutput<String>('layerName');
+    layerVersionArn = registerOutput<String>('layerVersionArn');
+    license = registerOutput<String?>('license');
+    public = registerOutput<String?>('public');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [V3LayerVersion] resource's state with the given [name] and [id].
@@ -239,21 +249,21 @@ class V3LayerVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3LayerVersion:V3LayerVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.code = registerOutput<V3LayerVersionCode?>('code');
-    this.codeSize = registerOutput<String>('codeSize');
-    this.compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.layerName = registerOutput<String>('layerName');
-    this.layerVersionArn = registerOutput<String>('layerVersionArn');
-    this.license = registerOutput<String?>('license');
-    this.public = registerOutput<String?>('public');
-    this.version = registerOutput<String>('version');
+         'alicloud:fc/v3LayerVersion:V3LayerVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    code = registerOutput<V3LayerVersionCode?>('code');
+    codeSize = registerOutput<String>('codeSize');
+    compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    layerName = registerOutput<String>('layerName');
+    layerVersionArn = registerOutput<String>('layerVersionArn');
+    license = registerOutput<String?>('license');
+    public = registerOutput<String?>('public');
+    version = registerOutput<String>('version');
   }
 }

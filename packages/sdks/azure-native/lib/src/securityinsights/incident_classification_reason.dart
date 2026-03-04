@@ -5,16 +5,15 @@ enum IncidentClassificationReason {
   valueIncorrectAlertLogic("IncorrectAlertLogic"),
   valueInaccurateData("InaccurateData");
 
-  const IncidentClassificationReason(this.value);
-  final String value;
+  const IncidentClassificationReason(this.wireValue);
+  final String wireValue;
 
   static IncidentClassificationReason fromValue(String value) {
     for (final item in IncidentClassificationReason.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentClassificationReason value: $value');
   }
 }
-

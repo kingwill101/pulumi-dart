@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicSchemaSetting {
   /// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
   final pulumi.Input<String> encoding;
+
   /// The name of the schema that messages published should be
   /// validated against. Format is projects/{project}/schemas/{schema}.
   /// The value of this field will be _deleted-schema_
@@ -14,23 +15,16 @@ class GetTopicSchemaSetting {
   /// Creates a new [GetTopicSchemaSetting].
   /// [encoding] The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
   /// [schema] The name of the schema that messages published should be
-  GetTopicSchemaSetting({
-    required this.encoding,
-    required this.schema,
-  });
+  GetTopicSchemaSetting({required this.encoding, required this.schema});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'encoding': encoding,
-      'schema': schema,
-    };
+    return <String, dynamic>{'encoding': encoding, 'schema': schema};
   }
 
   factory GetTopicSchemaSetting.fromMap(Map<String, dynamic> map) {
     return GetTopicSchemaSetting(
-      encoding: (map['encoding'] as String).input(),
-      schema: (map['schema'] as String).input(),
+      encoding: pulumi.Input.fromValue(map['encoding'] as String),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
-

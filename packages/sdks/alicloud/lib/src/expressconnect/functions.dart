@@ -18,7 +18,7 @@ import 'get_virtual_physical_connections_result.dart';
 
 /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -173,7 +173,7 @@ Future<GetAccessPointsResult> getAccessPoints(
 
 /// This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.196.0+.
+/// &gt; **NOTE:** Available in v1.196.0+.
 ///
 /// ## Example Usage
 ///
@@ -306,7 +306,7 @@ Future<GetGrantRuleToCensResult> getGrantRuleToCens(
 ///
 /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
 ///
-/// > **NOTE:** Available since v1.132.0
+/// &gt; **NOTE:** Available since v1.132.0
 ///
 /// ## Example Usage
 ///
@@ -413,7 +413,7 @@ Future<GetPhysicalConnectionServiceResult> getPhysicalConnectionService(
 
 /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -568,7 +568,7 @@ Future<GetPhysicalConnectionsResult> getPhysicalConnections(
 
 /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 ///
-/// > **NOTE:** Available in 1.199.0+
+/// &gt; **NOTE:** Available in 1.199.0+
 ///
 /// ## Example Usage
 ///
@@ -696,7 +696,7 @@ Future<GetRouterInterfacesResult> getRouterInterfaces(
 
 /// This data source provides Express Connect Vbr Pconn Association available to the user.
 ///
-/// > **NOTE:** Available in 1.196.0+
+/// &gt; **NOTE:** Available in 1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -825,7 +825,7 @@ Future<GetVbrPconnAssociationsResult> getVbrPconnAssociations(
 
 /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -1069,7 +1069,7 @@ Future<GetVirtualBorderRoutersResult> getVirtualBorderRouters(
 
 /// This data source provides Express Connect Virtual Physical Connection available to the user.
 ///
-/// > **NOTE:** Available in 1.196.0+
+/// &gt; **NOTE:** Available in 1.196.0+
 ///
 /// ## Example Usage
 ///

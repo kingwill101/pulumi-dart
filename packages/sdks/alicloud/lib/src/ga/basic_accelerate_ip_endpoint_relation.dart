@@ -6,7 +6,7 @@ import 'basic_accelerate_ip_endpoint_relation_state.dart';
 ///
 /// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateipendpointrelation).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -582,10 +582,13 @@ import 'basic_accelerate_ip_endpoint_relation_state.dart';
 class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
   /// The ID of the Basic Accelerate IP.
   late final pulumi.Output<String> accelerateIpId;
+
   /// The ID of the Basic GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The ID of the Basic Endpoint.
   late final pulumi.Output<String> endpointId;
+
   /// The status of the Basic Accelerate Ip Endpoint Relation.
   late final pulumi.Output<String> status;
 
@@ -598,15 +601,15 @@ class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
     BasicAccelerateIpEndpointRelationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateIpId = registerOutput<String>('accelerateIpId');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateIpId = registerOutput<String>('accelerateIpId');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    endpointId = registerOutput<String>('endpointId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BasicAccelerateIpEndpointRelation] resource's state with the given [name] and [id].
@@ -627,14 +630,14 @@ class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateIpId = registerOutput<String>('accelerateIpId');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateIpId = registerOutput<String>('accelerateIpId');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    endpointId = registerOutput<String>('endpointId');
+    status = registerOutput<String>('status');
   }
 }

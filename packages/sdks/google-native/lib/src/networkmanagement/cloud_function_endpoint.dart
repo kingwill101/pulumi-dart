@@ -9,20 +9,19 @@ class CloudFunctionEndpoint {
 
   /// Creates a new [CloudFunctionEndpoint].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
-  CloudFunctionEndpoint({
-    this.uri,
-  });
+  CloudFunctionEndpoint({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory CloudFunctionEndpoint.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpoint(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

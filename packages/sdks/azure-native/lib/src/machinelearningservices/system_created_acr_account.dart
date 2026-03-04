@@ -6,8 +6,10 @@ import 'arm_resource_id.dart';
 class SystemCreatedAcrAccount {
   /// Name of the ACR account
   final pulumi.Input<String>? acrAccountName;
+
   /// SKU of the ACR account
   final pulumi.Input<String>? acrAccountSku;
+
   /// This is populated once the ACR account is created.
   final pulumi.Input<ArmResourceId>? armResourceId;
 
@@ -25,16 +27,33 @@ class SystemCreatedAcrAccount {
     return <String, dynamic>{
       'acrAccountName': ?acrAccountName,
       'acrAccountSku': ?acrAccountSku,
-      'armResourceId': ?pulumi.Input.mapOptionalInputValue<ArmResourceId, Map<String, dynamic>>(armResourceId, (value) => value.toMap()),
+      'armResourceId':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArmResourceId,
+            Map<String, dynamic>
+          >(armResourceId, (value) => value.toMap()),
     };
   }
 
   factory SystemCreatedAcrAccount.fromMap(Map<String, dynamic> map) {
     return SystemCreatedAcrAccount(
-      acrAccountName: map['acrAccountName'] == null ? null : (map['acrAccountName']! as String).input(),
-      acrAccountSku: map['acrAccountSku'] == null ? null : (map['acrAccountSku']! as String).input(),
-      armResourceId: map['armResourceId'] == null ? null : (ArmResourceId.fromMap((map['armResourceId']! as Map).cast<String, dynamic>())).input(),
+      acrAccountName: (() {
+        final guardedValue = map['acrAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acrAccountSku: (() {
+        final guardedValue = map['acrAccountSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      armResourceId: (() {
+        final guardedValue = map['armResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArmResourceId.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

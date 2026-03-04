@@ -8,20 +8,21 @@ class ClusterNodePoolAutoConfigNetworkTags {
 
   /// Creates a new [ClusterNodePoolAutoConfigNetworkTags].
   /// [tags] List of network tags applied to auto-provisioned node pools.
-  ClusterNodePoolAutoConfigNetworkTags({
-    this.tags,
-  });
+  ClusterNodePoolAutoConfigNetworkTags({this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
-  factory ClusterNodePoolAutoConfigNetworkTags.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolAutoConfigNetworkTags.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolAutoConfigNetworkTags(
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

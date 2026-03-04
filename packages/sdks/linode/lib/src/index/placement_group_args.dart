@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementGroupArgs {
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
   final pulumi.Input<String> label;
+
   /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
   final pulumi.Input<String>? placementGroupPolicy;
+
   /// The placement group type to use when placing Linodes in this group.
   final pulumi.Input<String> placementGroupType;
+
   /// The region of the Placement Group.
   final pulumi.Input<String> region;
 
@@ -39,11 +42,16 @@ class PlacementGroupArgs {
 
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
-      label: (map['label'] as String).input(),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy']! as String).input(),
-      placementGroupType: (map['placementGroupType'] as String).input(),
-      region: (map['region'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      placementGroupPolicy: (() {
+        final guardedValue = map['placementGroupPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      placementGroupType: pulumi.Input.fromValue(
+        map['placementGroupType'] as String,
+      ),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

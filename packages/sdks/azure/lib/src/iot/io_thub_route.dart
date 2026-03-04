@@ -3,19 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubRoute {
-  /// The condition that is evaluated to apply the routing rule. Defaults to `true`. For grammar, see: <https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language>.
+  /// The condition that is evaluated to apply the routing rule. Defaults to `true`. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;.
   final pulumi.Input<String>? condition;
+
   /// Used to specify whether a route is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The list of endpoints to which messages that satisfy the condition are routed.
   final pulumi.Input<List<String>> endpointNames;
+
   /// The name of the route.
   final pulumi.Input<String> name;
+
   /// The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `Invalid`, `DeviceMessages`, `TwinChangeEvents`, `DeviceLifecycleEvents`, `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents` and `DigitalTwinChangeEvents`.
   final pulumi.Input<String> source;
 
   /// Creates a new [IoTHubRoute].
-  /// [condition] The condition that is evaluated to apply the routing rule. Defaults to `true`. For grammar, see: <https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language>.
+  /// [condition] The condition that is evaluated to apply the routing rule. Defaults to `true`. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;.
   /// [enabled] Used to specify whether a route is enabled.
   /// [endpointNames] The list of endpoints to which messages that satisfy the condition are routed.
   /// [name] The name of the route.
@@ -40,12 +44,17 @@ class IoTHubRoute {
 
   factory IoTHubRoute.fromMap(Map<String, dynamic> map) {
     return IoTHubRoute(
-      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      source: (map['source'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      endpointNames: pulumi.Input.fromValue(
+        (map['endpointNames'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

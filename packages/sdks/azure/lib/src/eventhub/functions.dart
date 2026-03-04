@@ -130,7 +130,7 @@ import 'get_service_bus_namespace_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -259,7 +259,7 @@ Future<GetAuthorizationRuleResult> getAuthorizationRule(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -390,7 +390,7 @@ Future<GetClusterResult> getCluster(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -525,7 +525,7 @@ Future<GetConsumeGroupResult> getConsumeGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -654,7 +654,7 @@ Future<GetEventHubResult> getEventHub(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -783,7 +783,7 @@ Future<GetEventhubNamespaceResult> getEventhubNamespace(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -918,7 +918,7 @@ Future<GetNamespaceResult> getNamespace(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -1391,7 +1391,7 @@ Future<GetSasResult> getSas(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01

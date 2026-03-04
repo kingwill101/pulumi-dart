@@ -4,16 +4,15 @@ enum MonitorProtocol {
   hTTPS("HTTPS"),
   tCP("TCP");
 
-  const MonitorProtocol(this.value);
-  final String value;
+  const MonitorProtocol(this.wireValue);
+  final String wireValue;
 
   static MonitorProtocol fromValue(String value) {
     for (final item in MonitorProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitorProtocol value: $value');
   }
 }
-

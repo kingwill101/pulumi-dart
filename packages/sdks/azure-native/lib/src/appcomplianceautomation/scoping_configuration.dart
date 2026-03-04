@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'scoping_answer_response.dart';
 import 'scoping_configuration_args.dart';
 import 'system_data_response.dart';
 
@@ -214,15 +213,20 @@ import 'system_data_response.dart';
 /// ```
 class ScopingConfiguration extends pulumi.CustomResource {
   /// List of scoping question answers.
-  late final pulumi.Output<List<ScopingAnswerResponse>?> answers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> answers;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -235,16 +239,16 @@ class ScopingConfiguration extends pulumi.CustomResource {
     ScopingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appcomplianceautomation:ScopingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.answers = registerOutput<List<ScopingAnswerResponse>?>('answers');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:appcomplianceautomation:ScopingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    answers = registerOutput<List<Map<String, dynamic>>?>('answers');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

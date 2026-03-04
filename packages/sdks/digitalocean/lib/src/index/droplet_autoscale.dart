@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'droplet_autoscale_args.dart';
 import 'droplet_autoscale_config.dart';
-import 'droplet_autoscale_current_utilization.dart';
 import 'droplet_autoscale_droplet_template.dart';
 import 'droplet_autoscale_state.dart';
 
@@ -334,19 +333,25 @@ class DropletAutoscale extends pulumi.CustomResource {
   /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
   /// documented below.
   late final pulumi.Output<DropletAutoscaleConfig> config;
+
   /// Created at timestamp for the Droplet Autoscale pool.
   late final pulumi.Output<String> createdAt;
+
   /// The current average resource utilization of the Droplet Autoscale pool, this attribute further
   /// embeds `memory` and `cpu` attributes to respectively report utilization data.
-  late final pulumi.Output<List<DropletAutoscaleCurrentUtilization>> currentUtilizations;
+  late final pulumi.Output<List<Map<String, dynamic>>> currentUtilizations;
+
   /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// are documented below.
   late final pulumi.Output<DropletAutoscaleDropletTemplate> dropletTemplate;
+
   /// The name of the Droplet Autoscale pool.
   late final pulumi.Output<String> name;
+
   /// Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
   /// traffic, or in an error state and needs user intervention.
   late final pulumi.Output<String> status;
+
   /// Updated at timestamp for the Droplet Autoscale pool.
   late final pulumi.Output<String> updatedAt;
 
@@ -359,18 +364,22 @@ class DropletAutoscale extends pulumi.CustomResource {
     DropletAutoscaleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/dropletAutoscale:DropletAutoscale',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<DropletAutoscaleConfig>('config');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.currentUtilizations = registerOutput<List<DropletAutoscaleCurrentUtilization>>('currentUtilizations');
-    this.dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>('dropletTemplate');
+         'digitalocean:index/dropletAutoscale:DropletAutoscale',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<DropletAutoscaleConfig>('config');
+    createdAt = registerOutput<String>('createdAt');
+    currentUtilizations = registerOutput<List<Map<String, dynamic>>>(
+      'currentUtilizations',
+    );
+    dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>(
+      'dropletTemplate',
+    );
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [DropletAutoscale] resource's state with the given [name] and [id].
@@ -391,17 +400,21 @@ class DropletAutoscale extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/dropletAutoscale:DropletAutoscale',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<DropletAutoscaleConfig>('config');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.currentUtilizations = registerOutput<List<DropletAutoscaleCurrentUtilization>>('currentUtilizations');
-    this.dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>('dropletTemplate');
+         'digitalocean:index/dropletAutoscale:DropletAutoscale',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<DropletAutoscaleConfig>('config');
+    createdAt = registerOutput<String>('createdAt');
+    currentUtilizations = registerOutput<List<Map<String, dynamic>>>(
+      'currentUtilizations',
+    );
+    dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>(
+      'dropletTemplate',
+    );
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

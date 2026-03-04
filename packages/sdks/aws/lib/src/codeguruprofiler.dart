@@ -1,5 +1,3 @@
-library module_codeguruprofiler;
-
 export 'codeguruprofiler/functions.dart';
 export 'codeguruprofiler/get_profiling_group_agent_orchestration_config.dart';
 export 'codeguruprofiler/get_profiling_group_args.dart';

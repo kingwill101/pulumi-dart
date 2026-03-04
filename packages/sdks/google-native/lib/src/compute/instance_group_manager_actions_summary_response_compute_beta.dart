@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupManagerActionsSummaryResponseComputeBeta {
   /// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
   final pulumi.Input<int> abandoning;
+
   /// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
   final pulumi.Input<int> creating;
+
   /// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
   final pulumi.Input<int> creatingWithoutRetries;
+
   /// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
   final pulumi.Input<int> deleting;
+
   /// The number of instances in the managed instance group that are running and have no scheduled actions.
   final pulumi.Input<int> none;
+
   /// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
   final pulumi.Input<int> recreating;
+
   /// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
   final pulumi.Input<int> refreshing;
+
   /// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
   final pulumi.Input<int> restarting;
+
   /// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
   final pulumi.Input<int> resuming;
+
   /// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
   final pulumi.Input<int> starting;
+
   /// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
   final pulumi.Input<int> stopping;
+
   /// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
   final pulumi.Input<int> suspending;
+
   /// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
   final pulumi.Input<int> verifying;
 
@@ -78,22 +90,25 @@ class InstanceGroupManagerActionsSummaryResponseComputeBeta {
     };
   }
 
-  factory InstanceGroupManagerActionsSummaryResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerActionsSummaryResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerActionsSummaryResponseComputeBeta(
-      abandoning: (map['abandoning'] as int).input(),
-      creating: (map['creating'] as int).input(),
-      creatingWithoutRetries: (map['creatingWithoutRetries'] as int).input(),
-      deleting: (map['deleting'] as int).input(),
-      none: (map['none'] as int).input(),
-      recreating: (map['recreating'] as int).input(),
-      refreshing: (map['refreshing'] as int).input(),
-      restarting: (map['restarting'] as int).input(),
-      resuming: (map['resuming'] as int).input(),
-      starting: (map['starting'] as int).input(),
-      stopping: (map['stopping'] as int).input(),
-      suspending: (map['suspending'] as int).input(),
-      verifying: (map['verifying'] as int).input(),
+      abandoning: pulumi.Input.fromValue(map['abandoning'] as int),
+      creating: pulumi.Input.fromValue(map['creating'] as int),
+      creatingWithoutRetries: pulumi.Input.fromValue(
+        map['creatingWithoutRetries'] as int,
+      ),
+      deleting: pulumi.Input.fromValue(map['deleting'] as int),
+      none: pulumi.Input.fromValue(map['none'] as int),
+      recreating: pulumi.Input.fromValue(map['recreating'] as int),
+      refreshing: pulumi.Input.fromValue(map['refreshing'] as int),
+      restarting: pulumi.Input.fromValue(map['restarting'] as int),
+      resuming: pulumi.Input.fromValue(map['resuming'] as int),
+      starting: pulumi.Input.fromValue(map['starting'] as int),
+      stopping: pulumi.Input.fromValue(map['stopping'] as int),
+      suspending: pulumi.Input.fromValue(map['suspending'] as int),
+      verifying: pulumi.Input.fromValue(map['verifying'] as int),
     );
   }
 }
-

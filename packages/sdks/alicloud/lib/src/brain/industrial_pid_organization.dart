@@ -4,9 +4,9 @@ import 'industrial_pid_organization_state.dart';
 
 /// Provides a Brain Industrial Pid Organization resource.
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.222.0`.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.222.0`.
 ///
 /// ## Example Usage
 ///
@@ -109,6 +109,7 @@ import 'industrial_pid_organization_state.dart';
 class IndustrialPidOrganization extends pulumi.CustomResource {
   /// The ID of parent pid organization.
   late final pulumi.Output<String?> parentPidOrganizationId;
+
   /// The name of pid organization.
   late final pulumi.Output<String> pidOrganizationName;
 
@@ -121,13 +122,15 @@ class IndustrialPidOrganization extends pulumi.CustomResource {
     IndustrialPidOrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parentPidOrganizationId = registerOutput<String?>('parentPidOrganizationId');
-    this.pidOrganizationName = registerOutput<String>('pidOrganizationName');
+         'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parentPidOrganizationId = registerOutput<String?>(
+      'parentPidOrganizationId',
+    );
+    pidOrganizationName = registerOutput<String>('pidOrganizationName');
   }
 
   /// Gets an existing [IndustrialPidOrganization] resource's state with the given [name] and [id].
@@ -148,12 +151,14 @@ class IndustrialPidOrganization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parentPidOrganizationId = registerOutput<String?>('parentPidOrganizationId');
-    this.pidOrganizationName = registerOutput<String>('pidOrganizationName');
+         'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parentPidOrganizationId = registerOutput<String?>(
+      'parentPidOrganizationId',
+    );
+    pidOrganizationName = registerOutput<String>('pidOrganizationName');
   }
 }

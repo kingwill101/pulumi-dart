@@ -1,5 +1,3 @@
-library module_ses;
-
 export 'ses/active_receipt_rule_set.dart';
 export 'ses/active_receipt_rule_set_args.dart';
 export 'ses/active_receipt_rule_set_state.dart';

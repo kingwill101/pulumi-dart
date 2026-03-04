@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupNamedPortState {
   /// The name of the instance group.
   final pulumi.Input<String>? group;
+
   /// The name for this named port. The name must be 1-63 characters
   /// long, and comply with RFC1035.
   final pulumi.Input<String>? name;
+
   /// The port number, which can be a value between 1 and 65535.
   final pulumi.Input<int>? port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The zone of the instance group.
   final pulumi.Input<String>? zone;
 
@@ -43,12 +47,31 @@ class InstanceGroupNamedPortState {
 
   factory InstanceGroupNamedPortState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupNamedPortState(
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

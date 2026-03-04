@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverFirewallConfigState {
   /// Determines how Route 53 Resolver handles queries during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply. By default, fail open is disabled, which means the failure mode is closed. This approach favors security over availability. DNS Firewall blocks queries that it is unable to evaluate properly. If you enable this option, the failure mode is open. This approach favors availability over security. DNS Firewall allows queries to proceed if it is unable to properly evaluate them. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? firewallFailOpen;
+
   /// The AWS account ID of the owner of the VPC that this firewall configuration applies to.
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPC that the configuration is for.
   final pulumi.Input<String>? resourceId;
 
@@ -36,11 +39,26 @@ class ResolverFirewallConfigState {
 
   factory ResolverFirewallConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallConfigState(
-      firewallFailOpen: map['firewallFailOpen'] == null ? null : ((map['firewallFailOpen'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      firewallFailOpen: (() {
+        final guardedValue = map['firewallFailOpen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

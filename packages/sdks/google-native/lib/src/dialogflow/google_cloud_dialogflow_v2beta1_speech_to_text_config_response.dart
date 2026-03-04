@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse {
   /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
   final pulumi.Input<String> model;
+
   /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
   final pulumi.Input<String> speechModelVariant;
+
   /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
   final pulumi.Input<bool> useTimeoutBasedEndpointing;
 
@@ -29,12 +31,17 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse(
-      model: (map['model'] as String).input(),
-      speechModelVariant: (map['speechModelVariant'] as String).input(),
-      useTimeoutBasedEndpointing: (map['useTimeoutBasedEndpointing'] as bool).input(),
+      model: pulumi.Input.fromValue(map['model'] as String),
+      speechModelVariant: pulumi.Input.fromValue(
+        map['speechModelVariant'] as String,
+      ),
+      useTimeoutBasedEndpointing: pulumi.Input.fromValue(
+        map['useTimeoutBasedEndpointing'] as bool,
+      ),
     );
   }
 }
-

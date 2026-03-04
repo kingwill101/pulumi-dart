@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PluginAttachmentArgs {
   /// The api_id that plugin attaches to.
   final pulumi.Input<String> apiId;
+
   /// The group that the api belongs to.
   final pulumi.Input<String> groupId;
+
   /// The plugin that attaches to the api.
   final pulumi.Input<String> pluginId;
+
   /// Stage that the plugin attaches to.
   final pulumi.Input<String> stageName;
 
@@ -39,11 +42,10 @@ class PluginAttachmentArgs {
 
   factory PluginAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PluginAttachmentArgs(
-      apiId: (map['apiId'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      pluginId: (map['pluginId'] as String).input(),
-      stageName: (map['stageName'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      pluginId: pulumi.Input.fromValue(map['pluginId'] as String),
+      stageName: pulumi.Input.fromValue(map['stageName'] as String),
     );
   }
 }
-

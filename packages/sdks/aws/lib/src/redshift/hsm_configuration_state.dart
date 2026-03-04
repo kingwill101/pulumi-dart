@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HsmConfigurationState {
   /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
   final pulumi.Input<String>? arn;
+
   /// A text description of the HSM configuration to be created.
   final pulumi.Input<String>? description;
+
   /// The identifier to be assigned to the new Amazon Redshift HSM configuration.
   final pulumi.Input<String>? hsmConfigurationIdentifier;
+
   /// The IP address that the Amazon Redshift cluster must use to access the HSM.
   final pulumi.Input<String>? hsmIpAddress;
+
   /// The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.
   final pulumi.Input<String>? hsmPartitionName;
+
   /// The password required to access the HSM partition.
   final pulumi.Input<String>? hsmPartitionPassword;
+
   /// The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.
   final pulumi.Input<String>? hsmServerPublicCertificate;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -66,17 +75,60 @@ class HsmConfigurationState {
 
   factory HsmConfigurationState.fromMap(Map<String, dynamic> map) {
     return HsmConfigurationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      hsmConfigurationIdentifier: map['hsmConfigurationIdentifier'] == null ? null : ((map['hsmConfigurationIdentifier'] as String).input()).input(),
-      hsmIpAddress: map['hsmIpAddress'] == null ? null : ((map['hsmIpAddress'] as String).input()).input(),
-      hsmPartitionName: map['hsmPartitionName'] == null ? null : ((map['hsmPartitionName'] as String).input()).input(),
-      hsmPartitionPassword: map['hsmPartitionPassword'] == null ? null : ((map['hsmPartitionPassword'] as String).input()).input(),
-      hsmServerPublicCertificate: map['hsmServerPublicCertificate'] == null ? null : ((map['hsmServerPublicCertificate'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmConfigurationIdentifier: (() {
+        final guardedValue = map['hsmConfigurationIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmIpAddress: (() {
+        final guardedValue = map['hsmIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmPartitionName: (() {
+        final guardedValue = map['hsmPartitionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmPartitionPassword: (() {
+        final guardedValue = map['hsmPartitionPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmServerPublicCertificate: (() {
+        final guardedValue = map['hsmServerPublicCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

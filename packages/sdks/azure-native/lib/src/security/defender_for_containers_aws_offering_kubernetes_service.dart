@@ -9,20 +9,21 @@ class DefenderForContainersAwsOfferingKubernetesService {
 
   /// Creates a new [DefenderForContainersAwsOfferingKubernetesService].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for provisioning resources
-  DefenderForContainersAwsOfferingKubernetesService({
-    this.cloudRoleArn,
-  });
+  DefenderForContainersAwsOfferingKubernetesService({this.cloudRoleArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudRoleArn': ?cloudRoleArn,
-    };
+    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
   }
 
-  factory DefenderForContainersAwsOfferingKubernetesService.fromMap(Map<String, dynamic> map) {
+  factory DefenderForContainersAwsOfferingKubernetesService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForContainersAwsOfferingKubernetesService(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

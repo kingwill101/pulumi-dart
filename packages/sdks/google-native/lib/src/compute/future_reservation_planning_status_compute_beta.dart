@@ -4,16 +4,17 @@ enum FutureReservationPlanningStatusComputeBeta {
   planningStatusUnspecified("PLANNING_STATUS_UNSPECIFIED"),
   submitted("SUBMITTED");
 
-  const FutureReservationPlanningStatusComputeBeta(this.value);
-  final String value;
+  const FutureReservationPlanningStatusComputeBeta(this.wireValue);
+  final String wireValue;
 
   static FutureReservationPlanningStatusComputeBeta fromValue(String value) {
     for (final item in FutureReservationPlanningStatusComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FutureReservationPlanningStatusComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown FutureReservationPlanningStatusComputeBeta value: $value',
+    );
   }
 }
-

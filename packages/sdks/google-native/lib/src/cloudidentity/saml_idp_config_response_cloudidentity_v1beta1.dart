@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SamlIdpConfigResponseCloudidentityV1beta1 {
   /// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
   final pulumi.Input<String> changePasswordUri;
+
   /// The SAML **Entity ID** of the identity provider.
   final pulumi.Input<String> entityId;
+
   /// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
   final pulumi.Input<String> logoutRedirectUri;
+
   /// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
   final pulumi.Input<String> singleSignOnServiceUri;
 
@@ -34,13 +37,20 @@ class SamlIdpConfigResponseCloudidentityV1beta1 {
     };
   }
 
-  factory SamlIdpConfigResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SamlIdpConfigResponseCloudidentityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SamlIdpConfigResponseCloudidentityV1beta1(
-      changePasswordUri: (map['changePasswordUri'] as String).input(),
-      entityId: (map['entityId'] as String).input(),
-      logoutRedirectUri: (map['logoutRedirectUri'] as String).input(),
-      singleSignOnServiceUri: (map['singleSignOnServiceUri'] as String).input(),
+      changePasswordUri: pulumi.Input.fromValue(
+        map['changePasswordUri'] as String,
+      ),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      logoutRedirectUri: pulumi.Input.fromValue(
+        map['logoutRedirectUri'] as String,
+      ),
+      singleSignOnServiceUri: pulumi.Input.fromValue(
+        map['singleSignOnServiceUri'] as String,
+      ),
     );
   }
 }
-

@@ -1,0 +1,10 @@
+name: awsx-dart-vpc-ipam-ipv4-auto-cidrblock-with-specs
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC IPv4 IPAM auto CIDR with subnet specs in Dart.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallArgs {
   /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when it is `true`.
   final pulumi.Input<bool>? dnsProxyEnabled;
+
   /// The name of the Azure Firewall.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group in which the Azure Firewall exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetFirewallArgs {
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dnsProxyEnabled: (() {
+        final guardedValue = map['dnsProxyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

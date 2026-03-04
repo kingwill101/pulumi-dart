@@ -4,16 +4,17 @@ enum EndpointsApiServiceRolloutStrategy {
   fixed("FIXED"),
   managed("MANAGED");
 
-  const EndpointsApiServiceRolloutStrategy(this.value);
-  final String value;
+  const EndpointsApiServiceRolloutStrategy(this.wireValue);
+  final String wireValue;
 
   static EndpointsApiServiceRolloutStrategy fromValue(String value) {
     for (final item in EndpointsApiServiceRolloutStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategy value: $value');
+    throw ArgumentError(
+      'Unknown EndpointsApiServiceRolloutStrategy value: $value',
+    );
   }
 }
-

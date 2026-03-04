@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigMapNodeConfigSource {
   /// KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.
   final pulumi.Input<String> kubeletConfigKey;
+
   /// Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.
   final pulumi.Input<String> name;
+
   /// Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.
   final pulumi.Input<String> namespace;
+
   /// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
   final pulumi.Input<String>? resourceVersion;
+
   /// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
   final pulumi.Input<String>? uid;
 
@@ -41,12 +45,21 @@ class ConfigMapNodeConfigSource {
 
   factory ConfigMapNodeConfigSource.fromMap(Map<String, dynamic> map) {
     return ConfigMapNodeConfigSource(
-      kubeletConfigKey: (map['kubeletConfigKey'] as String).input(),
-      name: (map['name'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      kubeletConfigKey: pulumi.Input.fromValue(
+        map['kubeletConfigKey'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      resourceVersion: (() {
+        final guardedValue = map['resourceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -142,7 +142,7 @@ import 'get_workspace_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -277,7 +277,7 @@ Future<GetApiResult> getApi(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -427,7 +427,7 @@ Future<GetApiVersionSetResult> getApiVersionSet(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -624,7 +624,7 @@ Future<GetGatewayResult> getGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -759,7 +759,7 @@ Future<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfiguration(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -894,7 +894,7 @@ Future<GetGroupResult> getGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -1023,7 +1023,7 @@ Future<GetProductResult> getProduct(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01, 2022-08-01
@@ -1152,7 +1152,7 @@ Future<GetServiceResult> getService(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -1287,7 +1287,7 @@ Future<GetSubscriptionResult> getSubscription(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -1507,7 +1507,7 @@ Future<GetUserResult> getUser(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01

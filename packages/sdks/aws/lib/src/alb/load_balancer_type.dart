@@ -2,16 +2,15 @@ enum LoadBalancerType {
   application("application"),
   network("network");
 
-  const LoadBalancerType(this.value);
-  final String value;
+  const LoadBalancerType(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerType fromValue(String value) {
     for (final item in LoadBalancerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoadBalancerType value: $value');
   }
 }
-

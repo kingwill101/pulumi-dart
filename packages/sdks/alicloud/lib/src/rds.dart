@@ -1,5 +1,3 @@
-library module_rds;
-
 export 'rds/account.dart';
 export 'rds/account_args.dart';
 export 'rds/account_privilege.dart';

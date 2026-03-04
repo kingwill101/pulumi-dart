@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceCompilationOverrides {
   /// Optional. The default database (Google Cloud project ID).
   final pulumi.Input<String>? defaultDatabase;
+
   /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
   final pulumi.Input<String>? schemaSuffix;
+
   /// Optional. The prefix that should be prepended to all table names.
   final pulumi.Input<String>? tablePrefix;
 
@@ -31,10 +33,21 @@ class WorkspaceCompilationOverrides {
 
   factory WorkspaceCompilationOverrides.fromMap(Map<String, dynamic> map) {
     return WorkspaceCompilationOverrides(
-      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase']! as String).input(),
-      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix']! as String).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
+      defaultDatabase: (() {
+        final guardedValue = map['defaultDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaSuffix: (() {
+        final guardedValue = map['schemaSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tablePrefix: (() {
+        final guardedValue = map['tablePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,21 +6,31 @@ import 'region_security_policy_rule_network_match_user_defined_field.dart';
 class RegionSecurityPolicyRuleNetworkMatch {
   /// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
   final pulumi.Input<List<String>>? destIpRanges;
+
   /// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
   final pulumi.Input<List<String>>? destPorts;
+
   /// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
   final pulumi.Input<List<String>>? ipProtocols;
+
   /// BGP Autonomous System Number associated with the source IP address.
   final pulumi.Input<List<int>>? srcAsns;
+
   /// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
   final pulumi.Input<List<String>>? srcIpRanges;
+
   /// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
   final pulumi.Input<List<String>>? srcPorts;
+
   /// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
   final pulumi.Input<List<String>>? srcRegionCodes;
+
   /// User-defined fields. Each element names a defined field and lists the matching values for that field.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>>? userDefinedFields;
+  final pulumi.Input<
+    List<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>
+  >?
+  userDefinedFields;
 
   /// Creates a new [RegionSecurityPolicyRuleNetworkMatch].
   /// [destIpRanges] Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
@@ -51,21 +61,75 @@ class RegionSecurityPolicyRuleNetworkMatch {
       'srcIpRanges': ?srcIpRanges,
       'srcPorts': ?srcPorts,
       'srcRegionCodes': ?srcRegionCodes,
-      'userDefinedFields': ?pulumi.Input.mapOptionalInputValue<List<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>, List<Map<String, dynamic>>>(userDefinedFields, (value) => pulumi.Input.encodeList<RegionSecurityPolicyRuleNetworkMatchUserDefinedField, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userDefinedFields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>,
+            List<Map<String, dynamic>>
+          >(
+            userDefinedFields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionSecurityPolicyRuleNetworkMatchUserDefinedField,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RegionSecurityPolicyRuleNetworkMatch.fromMap(Map<String, dynamic> map) {
+  factory RegionSecurityPolicyRuleNetworkMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionSecurityPolicyRuleNetworkMatch(
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
-      destPorts: map['destPorts'] == null ? null : ((map['destPorts']! as List).cast<String>()).input(),
-      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols']! as List).cast<String>()).input(),
-      srcAsns: map['srcAsns'] == null ? null : ((map['srcAsns']! as List).cast<int>()).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
-      srcPorts: map['srcPorts'] == null ? null : ((map['srcPorts']! as List).cast<String>()).input(),
-      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes']! as List).cast<String>()).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>(map['userDefinedFields']!, (value) => RegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destIpRanges: (() {
+        final guardedValue = map['destIpRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destPorts: (() {
+        final guardedValue = map['destPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipProtocols: (() {
+        final guardedValue = map['ipProtocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      srcAsns: (() {
+        final guardedValue = map['srcAsns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      srcIpRanges: (() {
+        final guardedValue = map['srcIpRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      srcPorts: (() {
+        final guardedValue = map['srcPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      srcRegionCodes: (() {
+        final guardedValue = map['srcRegionCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userDefinedFields: (() {
+        final guardedValue = map['userDefinedFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RegionSecurityPolicyRuleNetworkMatchUserDefinedField
+          >(
+            guardedValue,
+            (value) =>
+                RegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

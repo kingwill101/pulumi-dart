@@ -6,7 +6,7 @@ import 'accelerator_spare_ip_attachment_state.dart';
 ///
 /// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createspareips).
 ///
-/// > **NOTE:** Available since v1.167.0.
+/// &gt; **NOTE:** Available since v1.167.0.
 ///
 /// ## Example Usage
 ///
@@ -278,10 +278,13 @@ import 'accelerator_spare_ip_attachment_state.dart';
 class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
+
   /// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   late final pulumi.Output<String> spareIp;
+
   /// The status of the standby CNAME IP address.
   late final pulumi.Output<String> status;
 
@@ -294,15 +297,15 @@ class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
     AcceleratorSpareIpAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.spareIp = registerOutput<String>('spareIp');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    dryRun = registerOutput<bool?>('dryRun');
+    spareIp = registerOutput<String>('spareIp');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AcceleratorSpareIpAttachment] resource's state with the given [name] and [id].
@@ -323,14 +326,14 @@ class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.spareIp = registerOutput<String>('spareIp');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    dryRun = registerOutput<bool?>('dryRun');
+    spareIp = registerOutput<String>('spareIp');
+    status = registerOutput<String>('status');
   }
 }

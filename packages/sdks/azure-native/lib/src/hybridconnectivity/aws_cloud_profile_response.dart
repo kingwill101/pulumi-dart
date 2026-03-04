@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsCloudProfileResponse {
   /// Account id for the AWS account.
   final pulumi.Input<String> accountId;
+
   /// List of AWS accounts which need to be excluded.
   final pulumi.Input<List<String>>? excludedAccounts;
+
   /// Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
   final pulumi.Input<bool>? isOrganizationalAccount;
 
@@ -31,10 +33,17 @@ class AwsCloudProfileResponse {
 
   factory AwsCloudProfileResponse.fromMap(Map<String, dynamic> map) {
     return AwsCloudProfileResponse(
-      accountId: (map['accountId'] as String).input(),
-      excludedAccounts: map['excludedAccounts'] == null ? null : ((map['excludedAccounts']! as List).cast<String>()).input(),
-      isOrganizationalAccount: map['isOrganizationalAccount'] == null ? null : (map['isOrganizationalAccount']! as bool).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      excludedAccounts: (() {
+        final guardedValue = map['excludedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isOrganizationalAccount: (() {
+        final guardedValue = map['isOrganizationalAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

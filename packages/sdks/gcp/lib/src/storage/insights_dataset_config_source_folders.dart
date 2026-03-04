@@ -8,20 +8,19 @@ class InsightsDatasetConfigSourceFolders {
 
   /// Creates a new [InsightsDatasetConfigSourceFolders].
   /// [folderNumbers] The list of folder numbers to include in the DatasetConfig.
-  InsightsDatasetConfigSourceFolders({
-    this.folderNumbers,
-  });
+  InsightsDatasetConfigSourceFolders({this.folderNumbers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'folderNumbers': ?folderNumbers,
-    };
+    return <String, dynamic>{'folderNumbers': ?folderNumbers};
   }
 
   factory InsightsDatasetConfigSourceFolders.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigSourceFolders(
-      folderNumbers: map['folderNumbers'] == null ? null : ((map['folderNumbers']! as List).cast<String>()).input(),
+      folderNumbers: (() {
+        final guardedValue = map['folderNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

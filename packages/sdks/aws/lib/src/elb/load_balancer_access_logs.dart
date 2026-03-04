@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerAccessLogs {
   /// The S3 bucket name to store the logs in.
   final pulumi.Input<String> bucket;
+
   /// The S3 bucket prefix. Logs are stored in the root if not configured.
   final pulumi.Input<String>? bucketPrefix;
+
   /// Boolean to enable / disable `access_logs`. Default is `true`
   final pulumi.Input<bool>? enabled;
+
   /// The publishing interval in minutes. Valid values: `5` and `60`. Default: `60`
   final pulumi.Input<int>? interval;
 
@@ -35,11 +38,22 @@ class LoadBalancerAccessLogs {
 
   factory LoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogs(
-      bucket: (map['bucket'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

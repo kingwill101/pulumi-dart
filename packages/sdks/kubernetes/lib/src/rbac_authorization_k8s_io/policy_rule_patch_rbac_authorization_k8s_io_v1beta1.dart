@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyRulePatchRbacAuthorizationK8sIoV1beta1 {
   /// APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.
   final pulumi.Input<List<String>>? apiGroups;
+
   /// NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.
   final pulumi.Input<List<String>>? nonResourceURLs;
+
   /// ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
   final pulumi.Input<List<String>>? resourceNames;
+
   /// Resources is a list of resources this rule applies to.  '*' represents all resources in the specified apiGroups. '*/foo' represents the subresource 'foo' for all resources in the specified apiGroups.
   final pulumi.Input<List<String>>? resources;
+
   /// Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.
   final pulumi.Input<List<String>>? verbs;
 
@@ -39,14 +43,35 @@ class PolicyRulePatchRbacAuthorizationK8sIoV1beta1 {
     };
   }
 
-  factory PolicyRulePatchRbacAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory PolicyRulePatchRbacAuthorizationK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyRulePatchRbacAuthorizationK8sIoV1beta1(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs']! as List).cast<String>()).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
+      apiGroups: (() {
+        final guardedValue = map['apiGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nonResourceURLs: (() {
+        final guardedValue = map['nonResourceURLs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceNames: (() {
+        final guardedValue = map['resourceNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      verbs: (() {
+        final guardedValue = map['verbs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

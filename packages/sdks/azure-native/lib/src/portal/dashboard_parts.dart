@@ -8,29 +8,46 @@ import 'dashboard_parts_position.dart';
 class DashboardParts {
   /// The dashboard's part metadata.
   final pulumi.Input<DashboardPartMetadata>? metadata;
+
   /// The dashboard's part position.
   final pulumi.Input<DashboardPartsPosition> position;
 
   /// Creates a new [DashboardParts].
   /// [metadata] The dashboard's part metadata.
   /// [position] The dashboard's part position.
-  DashboardParts({
-    this.metadata,
-    required this.position,
-  });
+  DashboardParts({this.metadata, required this.position});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?pulumi.Input.mapOptionalInputValue<DashboardPartMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'position': pulumi.Input.mapInputValue<DashboardPartsPosition, Map<String, dynamic>>(position, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            DashboardPartMetadata,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'position':
+          pulumi.Input.mapInputValue<
+            DashboardPartsPosition,
+            Map<String, dynamic>
+          >(position, (value) => value.toMap()),
     };
   }
 
   factory DashboardParts.fromMap(Map<String, dynamic> map) {
     return DashboardParts(
-      metadata: map['metadata'] == null ? null : (DashboardPartMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      position: (DashboardPartsPosition.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DashboardPartMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      position: pulumi.Input.fromValue(
+        DashboardPartsPosition.fromMap(
+          (map['position']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

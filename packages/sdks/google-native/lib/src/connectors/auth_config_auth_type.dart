@@ -7,16 +7,15 @@ enum AuthConfigAuthType {
   sshPublicKey("SSH_PUBLIC_KEY"),
   oauth2AuthCodeFlow("OAUTH2_AUTH_CODE_FLOW");
 
-  const AuthConfigAuthType(this.value);
-  final String value;
+  const AuthConfigAuthType(this.wireValue);
+  final String wireValue;
 
   static AuthConfigAuthType fromValue(String value) {
     for (final item in AuthConfigAuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthConfigAuthType value: $value');
   }
 }
-

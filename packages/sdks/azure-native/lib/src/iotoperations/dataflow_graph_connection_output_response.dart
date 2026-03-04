@@ -9,20 +9,17 @@ class DataflowGraphConnectionOutputResponse {
 
   /// Creates a new [DataflowGraphConnectionOutputResponse].
   /// [name] Name of the destination node.
-  DataflowGraphConnectionOutputResponse({
-    required this.name,
-  });
+  DataflowGraphConnectionOutputResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory DataflowGraphConnectionOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory DataflowGraphConnectionOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowGraphConnectionOutputResponse(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

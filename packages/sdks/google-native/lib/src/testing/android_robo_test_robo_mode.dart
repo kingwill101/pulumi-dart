@@ -4,16 +4,15 @@ enum AndroidRoboTestRoboMode {
   roboVersion1("ROBO_VERSION_1"),
   roboVersion2("ROBO_VERSION_2");
 
-  const AndroidRoboTestRoboMode(this.value);
-  final String value;
+  const AndroidRoboTestRoboMode(this.wireValue);
+  final String wireValue;
 
   static AndroidRoboTestRoboMode fromValue(String value) {
     for (final item in AndroidRoboTestRoboMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AndroidRoboTestRoboMode value: $value');
   }
 }
-

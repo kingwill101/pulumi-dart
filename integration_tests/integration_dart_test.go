@@ -20,8 +20,8 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"sync"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/engine"
@@ -159,8 +159,10 @@ func TestStackComponentDart(t *testing.T) {
 
 // TestStackComponentServiceProviderDart tests the creation of the stack using IServiceProvider.
 func TestStackComponentServiceProviderDart(t *testing.T) {
+	// Legacy fixture directory name retained for parity with upstream layout.
+	const serviceProviderFixtureDir = "service_provider"
 	testDartProgram(t, &integration.ProgramTestOptions{
-		Dir:   "dotnet_service_provider",
+		Dir:   serviceProviderFixtureDir,
 		Quick: true,
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
 			// Ensure the checkpoint contains a single resource, the Stack, with two outputs.
@@ -179,7 +181,7 @@ func TestStackComponentServiceProviderDart(t *testing.T) {
 	})
 }
 
-// Tests basic configuration from the perspective of a Pulumi .NET program.
+// Tests basic configuration from the perspective of a Pulumi Dart program.
 func TestConfigBasicDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:   "config_basic",
@@ -1079,7 +1081,7 @@ func setupLocalDartLanguagePluginPath(t *testing.T, rootPath string) {
 }
 
 var (
-	preseedConversionPluginsOnce   sync.Once
+	preseedConversionPluginsOnce sync.Once
 	preseedConversionPluginsHome = defaultPulumiHome()
 )
 
@@ -1264,9 +1266,9 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	require.NoError(t, err)
 	for _, expected := range []string{
 		"library pulumi_my_namespace_mypkg;",
-		"import 'package:pulumi_my_namespace_mypkg/index.dart' as _index;",
+		"import 'package:pulumi_my_namespace_mypkg/index.dart' as module_index;",
 		"final index = _IndexModuleNamespace();",
-		"final getResource = _index.getResource;",
+		"final getResource = module_index.getResource;",
 	} {
 		assert.Contains(t, string(rootSDK), expected)
 	}
@@ -1386,13 +1388,13 @@ func TestResourceRefsGetResourceDart(t *testing.T) {
 	})
 }
 
-// TestSln tests that we run a program with a .sln file next to it.
-func TestSln(t *testing.T) {
+// TestEntrypointDefaultDart validates default Dart entrypoint resolution.
+func TestEntrypointDefaultDart(t *testing.T) {
 	validation := func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 		var foundStdout int
 		for _, ev := range stack.Events {
 			if de := ev.DiagnosticEvent; de != nil {
-				if strings.HasPrefix(de.Message, "With sln") {
+				if strings.HasPrefix(de.Message, "With entrypoint") {
 					foundStdout++
 				}
 			}
@@ -1400,19 +1402,19 @@ func TestSln(t *testing.T) {
 		assert.Equal(t, 1, foundStdout)
 	}
 	testDartProgram(t, &integration.ProgramTestOptions{
-		Dir:                    "sln",
+		Dir:                    "entrypoint_default",
 		Quick:                  true,
 		ExtraRuntimeValidation: validation,
 	})
 }
 
-// TestSlnMultiple tests that we run a .sln file with multiple nested projects by setting the "main" option.
-func TestSlnMultipleNested(t *testing.T) {
+// TestEntrypointMainOverrideDart validates entrypoint selection when main is overridden.
+func TestEntrypointMainOverrideDart(t *testing.T) {
 	validation := func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 		var foundStdout int
 		for _, ev := range stack.Events {
 			if de := ev.DiagnosticEvent; de != nil {
-				if strings.HasPrefix(de.Message, "With sln") {
+				if strings.HasPrefix(de.Message, "With entrypoint") {
 					foundStdout++
 				}
 			}
@@ -1420,7 +1422,7 @@ func TestSlnMultipleNested(t *testing.T) {
 		assert.Equal(t, 1, foundStdout)
 	}
 	testDartProgram(t, &integration.ProgramTestOptions{
-		Dir:                    "sln_multiple_nested",
+		Dir:                    "entrypoint_main_override",
 		Quick:                  true,
 		ExtraRuntimeValidation: validation,
 	})

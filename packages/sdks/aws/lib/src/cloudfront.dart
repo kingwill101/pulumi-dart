@@ -1,5 +1,3 @@
-library module_cloudfront;
-
 export 'cloudfront/anycast_ip_list.dart';
 export 'cloudfront/anycast_ip_list_args.dart';
 export 'cloudfront/anycast_ip_list_state.dart';

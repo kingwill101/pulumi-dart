@@ -8,8 +8,10 @@ import 'transfer_configuration.dart';
 class DataExportDetails {
   /// Account details of the data to be transferred
   final pulumi.Input<ManagedDiskDetails> accountDetails;
+
   /// Level of the logs to be collected.
   final pulumi.Input<String>? logCollectionLevel;
+
   /// Configuration for the data transfer.
   final pulumi.Input<TransferConfiguration> transferConfiguration;
 
@@ -25,18 +27,37 @@ class DataExportDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountDetails': pulumi.Input.mapInputValue<ManagedDiskDetails, Map<String, dynamic>>(accountDetails, (value) => value.toMap()),
+      'accountDetails':
+          pulumi.Input.mapInputValue<ManagedDiskDetails, Map<String, dynamic>>(
+            accountDetails,
+            (value) => value.toMap(),
+          ),
       'logCollectionLevel': ?logCollectionLevel,
-      'transferConfiguration': pulumi.Input.mapInputValue<TransferConfiguration, Map<String, dynamic>>(transferConfiguration, (value) => value.toMap()),
+      'transferConfiguration':
+          pulumi.Input.mapInputValue<
+            TransferConfiguration,
+            Map<String, dynamic>
+          >(transferConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DataExportDetails.fromMap(Map<String, dynamic> map) {
     return DataExportDetails(
-      accountDetails: (ManagedDiskDetails.fromMap((map['accountDetails'] as Map).cast<String, dynamic>())).input(),
-      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel']! as String).input(),
-      transferConfiguration: (TransferConfiguration.fromMap((map['transferConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accountDetails: pulumi.Input.fromValue(
+        ManagedDiskDetails.fromMap(
+          (map['accountDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      logCollectionLevel: (() {
+        final guardedValue = map['logCollectionLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transferConfiguration: pulumi.Input.fromValue(
+        TransferConfiguration.fromMap(
+          (map['transferConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

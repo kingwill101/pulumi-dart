@@ -8,14 +8,19 @@ import 'resource_user_access_param.dart';
 class ResourceState {
   /// Used to provide a description or comment on the compute cluster.
   final pulumi.Input<String>? clusterDesc;
+
   /// Used to uniquely identify a computing cluster.
   final pulumi.Input<String>? clusterId;
+
   /// Represents the name of the compute cluster, usually including the model number.
   final pulumi.Input<String>? clusterName;
+
   /// Generally refers to the type or instance type of a computing resource. See `machine_types` below.
   final pulumi.Input<ResourceMachineTypes>? machineTypes;
+
   /// The ID of the Resource.
   final pulumi.Input<String>? resourceId;
+
   /// Used to define the access parameters for the user. See `user_access_param` below.
   final pulumi.Input<ResourceUserAccessParam>? userAccessParam;
 
@@ -40,21 +45,60 @@ class ResourceState {
       'clusterDesc': ?clusterDesc,
       'clusterId': ?clusterId,
       'clusterName': ?clusterName,
-      'machineTypes': ?pulumi.Input.mapOptionalInputValue<ResourceMachineTypes, Map<String, dynamic>>(machineTypes, (value) => value.toMap()),
+      'machineTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceMachineTypes,
+            Map<String, dynamic>
+          >(machineTypes, (value) => value.toMap()),
       'resourceId': ?resourceId,
-      'userAccessParam': ?pulumi.Input.mapOptionalInputValue<ResourceUserAccessParam, Map<String, dynamic>>(userAccessParam, (value) => value.toMap()),
+      'userAccessParam':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceUserAccessParam,
+            Map<String, dynamic>
+          >(userAccessParam, (value) => value.toMap()),
     };
   }
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      machineTypes: map['machineTypes'] == null ? null : (ResourceMachineTypes.fromMap((map['machineTypes']! as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      userAccessParam: map['userAccessParam'] == null ? null : (ResourceUserAccessParam.fromMap((map['userAccessParam']! as Map).cast<String, dynamic>())).input(),
+      clusterDesc: (() {
+        final guardedValue = map['clusterDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineTypes: (() {
+        final guardedValue = map['machineTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceMachineTypes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAccessParam: (() {
+        final guardedValue = map['userAccessParam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceUserAccessParam.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

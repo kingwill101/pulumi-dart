@@ -9,20 +9,19 @@ class SecurityContext {
 
   /// Creates a new [SecurityContext].
   /// [runAsUser] The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-  SecurityContext({
-    this.runAsUser,
-  });
+  SecurityContext({this.runAsUser});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'runAsUser': ?runAsUser,
-    };
+    return <String, dynamic>{'runAsUser': ?runAsUser};
   }
 
   factory SecurityContext.fromMap(Map<String, dynamic> map) {
     return SecurityContext(
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      runAsUser: (() {
+        final guardedValue = map['runAsUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

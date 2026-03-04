@@ -7,18 +7,25 @@ import 'load_balancer_profile.dart';
 class NetworkProfile {
   /// DNSServiceIP - An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
   final pulumi.Input<String>? dnsServiceIP;
+
   /// LoadBalancerProfile - Profile of the cluster load balancer.
   final pulumi.Input<LoadBalancerProfile>? loadBalancerProfile;
+
   /// LoadBalancerSku - The load balancer sku for the provisioned cluster. Possible values: 'unstacked-haproxy', 'stacked-kube-vip', 'stacked-metallb', 'unmanaged'. The default is 'unmanaged'.
   final pulumi.Input<String>? loadBalancerSku;
+
   /// NetworkPolicy - Network policy used for building Kubernetes network. Possible values include: 'calico', 'flannel'. Default is 'calico'
   final pulumi.Input<String>? networkPolicy;
+
   /// PodCidr - A CIDR notation IP range from which to assign pod IPs when kubenet is used.
   final pulumi.Input<String>? podCidr;
+
   /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
   final pulumi.Input<List<String>>? podCidrs;
+
   /// ServiceCidr - A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   final pulumi.Input<String>? serviceCidr;
+
   /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
   final pulumi.Input<List<String>>? serviceCidrs;
 
@@ -45,7 +52,11 @@ class NetworkProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dnsServiceIP': ?dnsServiceIP,
-      'loadBalancerProfile': ?pulumi.Input.mapOptionalInputValue<LoadBalancerProfile, Map<String, dynamic>>(loadBalancerProfile, (value) => value.toMap()),
+      'loadBalancerProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            LoadBalancerProfile,
+            Map<String, dynamic>
+          >(loadBalancerProfile, (value) => value.toMap()),
       'loadBalancerSku': ?loadBalancerSku,
       'networkPolicy': ?networkPolicy,
       'podCidr': ?podCidr,
@@ -57,15 +68,50 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      dnsServiceIP: map['dnsServiceIP'] == null ? null : (map['dnsServiceIP']! as String).input(),
-      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (LoadBalancerProfile.fromMap((map['loadBalancerProfile']! as Map).cast<String, dynamic>())).input(),
-      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku']! as String).input(),
-      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy']! as String).input(),
-      podCidr: map['podCidr'] == null ? null : (map['podCidr']! as String).input(),
-      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs']! as List).cast<String>()).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
-      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs']! as List).cast<String>()).input(),
+      dnsServiceIP: (() {
+        final guardedValue = map['dnsServiceIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerProfile: (() {
+        final guardedValue = map['loadBalancerProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LoadBalancerProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loadBalancerSku: (() {
+        final guardedValue = map['loadBalancerSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkPolicy: (() {
+        final guardedValue = map['networkPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      podCidr: (() {
+        final guardedValue = map['podCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      podCidrs: (() {
+        final guardedValue = map['podCidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serviceCidr: (() {
+        final guardedValue = map['serviceCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceCidrs: (() {
+        final guardedValue = map['serviceCidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

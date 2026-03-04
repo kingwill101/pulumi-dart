@@ -7,6 +7,7 @@ import 'ssl_config_response.dart';
 class ClientConnectionConfigResponse {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   final pulumi.Input<bool> requireConnectors;
+
   /// Optional. SSL config option for this instance.
   final pulumi.Input<SslConfigResponse> sslConfig;
 
@@ -21,15 +22,24 @@ class ClientConnectionConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'requireConnectors': requireConnectors,
-      'sslConfig': pulumi.Input.mapInputValue<SslConfigResponse, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
+      'sslConfig':
+          pulumi.Input.mapInputValue<SslConfigResponse, Map<String, dynamic>>(
+            sslConfig,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ClientConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientConnectionConfigResponse(
-      requireConnectors: (map['requireConnectors'] as bool).input(),
-      sslConfig: (SslConfigResponse.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      requireConnectors: pulumi.Input.fromValue(
+        map['requireConnectors'] as bool,
+      ),
+      sslConfig: pulumi.Input.fromValue(
+        SslConfigResponse.fromMap(
+          (map['sslConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

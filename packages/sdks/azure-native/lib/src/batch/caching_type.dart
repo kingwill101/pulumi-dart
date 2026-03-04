@@ -4,16 +4,15 @@ enum CachingType {
   readOnly("ReadOnly"),
   readWrite("ReadWrite");
 
-  const CachingType(this.value);
-  final String value;
+  const CachingType(this.wireValue);
+  final String wireValue;
 
   static CachingType fromValue(String value) {
     for (final item in CachingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CachingType value: $value');
   }
 }
-

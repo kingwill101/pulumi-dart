@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelectedCertificateInput {
   /// Name of certificate to be exported.
   final pulumi.Input<String> certificateName;
+
   /// Password to use for encrypting the exported certificate.
   final pulumi.Input<String> password;
 
@@ -26,9 +27,8 @@ class SelectedCertificateInput {
 
   factory SelectedCertificateInput.fromMap(Map<String, dynamic> map) {
     return SelectedCertificateInput(
-      certificateName: (map['certificateName'] as String).input(),
-      password: (map['password'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
     );
   }
 }
-

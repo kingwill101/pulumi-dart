@@ -5,7 +5,11 @@ import 'permissions_boundary_attachment_permissions_boundary_customer_managed_po
 
 class PermissionsBoundaryAttachmentPermissionsBoundary {
   /// Specifies the name and path of a customer managed policy. See below.
-  final pulumi.Input<PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference>? customerManagedPolicyReference;
+  final pulumi.Input<
+    PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference
+  >?
+  customerManagedPolicyReference;
+
   /// AWS-managed IAM policy ARN to use as the permissions boundary.
   final pulumi.Input<String>? managedPolicyArn;
 
@@ -19,16 +23,33 @@ class PermissionsBoundaryAttachmentPermissionsBoundary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedPolicyReference': ?pulumi.Input.mapOptionalInputValue<PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference, Map<String, dynamic>>(customerManagedPolicyReference, (value) => value.toMap()),
+      'customerManagedPolicyReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference,
+            Map<String, dynamic>
+          >(customerManagedPolicyReference, (value) => value.toMap()),
       'managedPolicyArn': ?managedPolicyArn,
     };
   }
 
-  factory PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(Map<String, dynamic> map) {
+  factory PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PermissionsBoundaryAttachmentPermissionsBoundary(
-      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : ((PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference']! as Map).cast<String, dynamic>())).input()).input(),
-      managedPolicyArn: map['managedPolicyArn'] == null ? null : ((map['managedPolicyArn'] as String).input()).input(),
+      customerManagedPolicyReference: (() {
+        final guardedValue = map['customerManagedPolicyReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedPolicyArn: (() {
+        final guardedValue = map['managedPolicyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

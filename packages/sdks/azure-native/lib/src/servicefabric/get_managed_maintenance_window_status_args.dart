@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedMaintenanceWindowStatusArgs {
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetManagedMaintenanceWindowStatusArgs {
     };
   }
 
-  factory GetManagedMaintenanceWindowStatusArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagedMaintenanceWindowStatusArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedMaintenanceWindowStatusArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

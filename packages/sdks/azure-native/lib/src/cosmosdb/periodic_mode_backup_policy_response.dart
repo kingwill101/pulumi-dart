@@ -8,8 +8,10 @@ import 'periodic_mode_properties_response.dart';
 class PeriodicModeBackupPolicyResponse {
   /// The object representing the state of the migration between the backup policies.
   final pulumi.Input<BackupPolicyMigrationStateResponse>? migrationState;
+
   /// Configuration values for periodic mode backup
   final pulumi.Input<PeriodicModePropertiesResponse>? periodicModeProperties;
+
   /// Describes the mode of backups.
   /// Expected value is 'Periodic'.
   final pulumi.Input<String> type;
@@ -26,18 +28,41 @@ class PeriodicModeBackupPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationState': ?pulumi.Input.mapOptionalInputValue<BackupPolicyMigrationStateResponse, Map<String, dynamic>>(migrationState, (value) => value.toMap()),
-      'periodicModeProperties': ?pulumi.Input.mapOptionalInputValue<PeriodicModePropertiesResponse, Map<String, dynamic>>(periodicModeProperties, (value) => value.toMap()),
+      'migrationState':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupPolicyMigrationStateResponse,
+            Map<String, dynamic>
+          >(migrationState, (value) => value.toMap()),
+      'periodicModeProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            PeriodicModePropertiesResponse,
+            Map<String, dynamic>
+          >(periodicModeProperties, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PeriodicModeBackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicModeBackupPolicyResponse(
-      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationStateResponse.fromMap((map['migrationState']! as Map).cast<String, dynamic>())).input(),
-      periodicModeProperties: map['periodicModeProperties'] == null ? null : (PeriodicModePropertiesResponse.fromMap((map['periodicModeProperties']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      migrationState: (() {
+        final guardedValue = map['migrationState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackupPolicyMigrationStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      periodicModeProperties: (() {
+        final guardedValue = map['periodicModeProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PeriodicModePropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

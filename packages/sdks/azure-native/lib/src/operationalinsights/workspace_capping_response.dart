@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceCappingResponse {
   /// The workspace daily quota for ingestion.
   final pulumi.Input<double>? dailyQuotaGb;
+
   /// The status of data ingestion for this workspace.
   final pulumi.Input<String> dataIngestionStatus;
+
   /// The time when the quota will be rest.
   final pulumi.Input<String> quotaNextResetTime;
 
@@ -31,10 +33,17 @@ class WorkspaceCappingResponse {
 
   factory WorkspaceCappingResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceCappingResponse(
-      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb']! as double).input(),
-      dataIngestionStatus: (map['dataIngestionStatus'] as String).input(),
-      quotaNextResetTime: (map['quotaNextResetTime'] as String).input(),
+      dailyQuotaGb: (() {
+        final guardedValue = map['dailyQuotaGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      dataIngestionStatus: pulumi.Input.fromValue(
+        map['dataIngestionStatus'] as String,
+      ),
+      quotaNextResetTime: pulumi.Input.fromValue(
+        map['quotaNextResetTime'] as String,
+      ),
     );
   }
 }
-

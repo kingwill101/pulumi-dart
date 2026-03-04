@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointSyncActivityStatusResponse {
   /// Applied bytes
   final pulumi.Input<double> appliedBytes;
+
   /// Applied item count.
   final pulumi.Input<double> appliedItemCount;
+
   /// Per item error count
   final pulumi.Input<double> perItemErrorCount;
+
   /// Session minutes remaining (if available)
   final pulumi.Input<int> sessionMinutesRemaining;
+
   /// Sync mode
   final pulumi.Input<String> syncMode;
+
   /// Timestamp when properties were updated
   final pulumi.Input<String> timestamp;
+
   /// Total bytes (if available)
   final pulumi.Input<double> totalBytes;
+
   /// Total item count (if available)
   final pulumi.Input<double> totalItemCount;
 
@@ -54,17 +61,24 @@ class ServerEndpointSyncActivityStatusResponse {
     };
   }
 
-  factory ServerEndpointSyncActivityStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerEndpointSyncActivityStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerEndpointSyncActivityStatusResponse(
-      appliedBytes: (map['appliedBytes'] as double).input(),
-      appliedItemCount: (map['appliedItemCount'] as double).input(),
-      perItemErrorCount: (map['perItemErrorCount'] as double).input(),
-      sessionMinutesRemaining: (map['sessionMinutesRemaining'] as int).input(),
-      syncMode: (map['syncMode'] as String).input(),
-      timestamp: (map['timestamp'] as String).input(),
-      totalBytes: (map['totalBytes'] as double).input(),
-      totalItemCount: (map['totalItemCount'] as double).input(),
+      appliedBytes: pulumi.Input.fromValue(map['appliedBytes'] as double),
+      appliedItemCount: pulumi.Input.fromValue(
+        map['appliedItemCount'] as double,
+      ),
+      perItemErrorCount: pulumi.Input.fromValue(
+        map['perItemErrorCount'] as double,
+      ),
+      sessionMinutesRemaining: pulumi.Input.fromValue(
+        map['sessionMinutesRemaining'] as int,
+      ),
+      syncMode: pulumi.Input.fromValue(map['syncMode'] as String),
+      timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
+      totalBytes: pulumi.Input.fromValue(map['totalBytes'] as double),
+      totalItemCount: pulumi.Input.fromValue(map['totalItemCount'] as double),
     );
   }
 }
-

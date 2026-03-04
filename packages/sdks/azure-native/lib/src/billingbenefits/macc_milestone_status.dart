@@ -12,16 +12,15 @@ enum MaccMilestoneStatus {
   valueShortfallCharged("ShortfallCharged"),
   valueShortfallWaived("ShortfallWaived");
 
-  const MaccMilestoneStatus(this.value);
-  final String value;
+  const MaccMilestoneStatus(this.wireValue);
+  final String wireValue;
 
   static MaccMilestoneStatus fromValue(String value) {
     for (final item in MaccMilestoneStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MaccMilestoneStatus value: $value');
   }
 }
-

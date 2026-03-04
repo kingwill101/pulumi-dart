@@ -3,16 +3,15 @@ enum DestinationPortBehavior {
   valueNone("None"),
   valueListenIfAvailable("ListenIfAvailable");
 
-  const DestinationPortBehavior(this.value);
-  final String value;
+  const DestinationPortBehavior(this.wireValue);
+  final String wireValue;
 
   static DestinationPortBehavior fromValue(String value) {
     for (final item in DestinationPortBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DestinationPortBehavior value: $value');
   }
 }
-

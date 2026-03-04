@@ -27,9 +27,10 @@ class GetSecurityProfileArgs {
 
   factory GetSecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityProfileArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      securityProfileId: (map['securityProfileId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      securityProfileId: pulumi.Input.fromValue(
+        map['securityProfileId'] as String,
+      ),
     );
   }
 }
-

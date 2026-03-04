@@ -164,14 +164,19 @@ import 'api_issue_comment_args.dart';
 class ApiIssueComment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Date and time when the comment was created.
   late final pulumi.Output<String?> createdDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Comment text.
   late final pulumi.Output<String> text;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A resource identifier for the user who left the comment.
   late final pulumi.Output<String> userId;
 
@@ -184,16 +189,16 @@ class ApiIssueComment extends pulumi.CustomResource {
     ApiIssueCommentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiIssueComment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String?>('createdDate');
+         'azure-native:apimanagement:ApiIssueComment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String?>('createdDate');
     this.name = registerOutput<String>('name');
-    this.text = registerOutput<String>('text');
-    this.type = registerOutput<String>('type');
-    this.userId = registerOutput<String>('userId');
+    text = registerOutput<String>('text');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String>('userId');
   }
 }

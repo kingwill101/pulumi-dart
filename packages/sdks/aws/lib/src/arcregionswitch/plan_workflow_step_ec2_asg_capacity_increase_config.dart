@@ -6,15 +6,21 @@ import 'plan_workflow_step_ec2_asg_capacity_increase_config_ungraceful.dart';
 
 class PlanWorkflowStepEc2AsgCapacityIncreaseConfig {
   /// Auto Scaling group configuration. See ASG below.
-  final pulumi.Input<List<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>>? asgs;
+  final pulumi.Input<List<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>>?
+  asgs;
+
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
+
   /// Target capacity percentage.
   final pulumi.Input<int>? targetPercent;
+
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
+
   /// Ungraceful behavior configuration. See Ungraceful below.
-  final pulumi.Input<PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful>? ungraceful;
+  final pulumi.Input<PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful>?
+  ungraceful;
 
   /// Creates a new [PlanWorkflowStepEc2AsgCapacityIncreaseConfig].
   /// [asgs] Auto Scaling group configuration. See ASG below.
@@ -32,22 +38,69 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asgs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>, List<Map<String, dynamic>>>(asgs, (value) => pulumi.Input.encodeList<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'asgs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>,
+            List<Map<String, dynamic>>
+          >(
+            asgs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'capacityMonitoringApproach': capacityMonitoringApproach,
       'targetPercent': ?targetPercent,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungraceful': ?pulumi.Input.mapOptionalInputValue<PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful, Map<String, dynamic>>(ungraceful, (value) => value.toMap()),
+      'ungraceful':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful,
+            Map<String, dynamic>
+          >(ungraceful, (value) => value.toMap()),
     };
   }
 
-  factory PlanWorkflowStepEc2AsgCapacityIncreaseConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEc2AsgCapacityIncreaseConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEc2AsgCapacityIncreaseConfig(
-      asgs: map['asgs'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>(map['asgs']!, (value) => PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      capacityMonitoringApproach: (map['capacityMonitoringApproach'] as String).input(),
-      targetPercent: map['targetPercent'] == null ? null : ((map['targetPercent'] as int).input()).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
-      ungraceful: map['ungraceful'] == null ? null : ((PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap((map['ungraceful']! as Map).cast<String, dynamic>())).input()).input(),
+      asgs: (() {
+        final guardedValue = map['asgs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg
+          >(
+            guardedValue,
+            (value) => PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      capacityMonitoringApproach: pulumi.Input.fromValue(
+        map['capacityMonitoringApproach'] as String,
+      ),
+      targetPercent: (() {
+        final guardedValue = map['targetPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeoutMinutes: (() {
+        final guardedValue = map['timeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ungraceful: (() {
+        final guardedValue = map['ungraceful'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

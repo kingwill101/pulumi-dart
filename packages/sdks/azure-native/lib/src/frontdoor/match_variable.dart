@@ -10,16 +10,15 @@ enum MatchVariable {
   valueCookies("Cookies"),
   valueSocketAddr("SocketAddr");
 
-  const MatchVariable(this.value);
-  final String value;
+  const MatchVariable(this.wireValue);
+  final String wireValue;
 
   static MatchVariable fromValue(String value) {
     for (final item in MatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MatchVariable value: $value');
   }
 }
-

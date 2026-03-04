@@ -1,5 +1,3 @@
-library module_hdinsight;
-
 export 'hdinsight/application.dart';
 export 'hdinsight/application_args.dart';
 export 'hdinsight/application_get_endpoint.dart';

@@ -6,16 +6,15 @@ enum KubernetesPluginType {
   valueMACVLAN("MACVLAN"),
   valueIPVLAN("IPVLAN");
 
-  const KubernetesPluginType(this.value);
-  final String value;
+  const KubernetesPluginType(this.wireValue);
+  final String wireValue;
 
   static KubernetesPluginType fromValue(String value) {
     for (final item in KubernetesPluginType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KubernetesPluginType value: $value');
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiftrBaseSingleSignOnPropertiesV2Response {
   /// List of AAD domains fetched from Microsoft Graph for user.
   final pulumi.Input<List<String>>? aadDomains;
+
   /// AAD enterprise application Id used to setup SSO
   final pulumi.Input<String>? enterpriseAppId;
+
   /// State of the Single Sign On for the resource
   final pulumi.Input<String>? state;
+
   /// Type of Single Sign-On mechanism being used
   final pulumi.Input<String> type;
+
   /// URL for SSO to be used by the partner to redirect the user to their system
   final pulumi.Input<String>? url;
 
@@ -39,14 +43,31 @@ class LiftrBaseSingleSignOnPropertiesV2Response {
     };
   }
 
-  factory LiftrBaseSingleSignOnPropertiesV2Response.fromMap(Map<String, dynamic> map) {
+  factory LiftrBaseSingleSignOnPropertiesV2Response.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LiftrBaseSingleSignOnPropertiesV2Response(
-      aadDomains: map['aadDomains'] == null ? null : ((map['aadDomains']! as List).cast<String>()).input(),
-      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      aadDomains: (() {
+        final guardedValue = map['aadDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enterpriseAppId: (() {
+        final guardedValue = map['enterpriseAppId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

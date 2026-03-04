@@ -5,16 +5,17 @@ enum EnvironmentConfigEnvironmentSize {
   environmentSizeMedium("ENVIRONMENT_SIZE_MEDIUM"),
   environmentSizeLarge("ENVIRONMENT_SIZE_LARGE");
 
-  const EnvironmentConfigEnvironmentSize(this.value);
-  final String value;
+  const EnvironmentConfigEnvironmentSize(this.wireValue);
+  final String wireValue;
 
   static EnvironmentConfigEnvironmentSize fromValue(String value) {
     for (final item in EnvironmentConfigEnvironmentSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnvironmentConfigEnvironmentSize value: $value');
+    throw ArgumentError(
+      'Unknown EnvironmentConfigEnvironmentSize value: $value',
+    );
   }
 }
-

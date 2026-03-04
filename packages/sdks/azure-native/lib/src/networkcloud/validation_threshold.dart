@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationThreshold {
   /// Selection of how the type evaluation is applied to the cluster calculation.
   final pulumi.Input<String> grouping;
+
   /// Selection of how the threshold should be evaluated.
   final pulumi.Input<String> type;
+
   /// The numeric threshold value.
   final pulumi.Input<double> value;
 
@@ -30,10 +32,9 @@ class ValidationThreshold {
 
   factory ValidationThreshold.fromMap(Map<String, dynamic> map) {
     return ValidationThreshold(
-      grouping: (map['grouping'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as double).input(),
+      grouping: pulumi.Input.fromValue(map['grouping'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

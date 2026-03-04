@@ -6,8 +6,10 @@ import 'diagnostic_backend_request_data_masking.dart';
 class DiagnosticBackendRequest {
   /// Number of payload bytes to log (up to 8192).
   final pulumi.Input<int>? bodyBytes;
+
   /// A `data_masking` block as defined below.
   final pulumi.Input<DiagnosticBackendRequestDataMasking>? dataMasking;
+
   /// Specifies a list of headers to log.
   final pulumi.Input<List<String>>? headersToLogs;
 
@@ -24,17 +26,36 @@ class DiagnosticBackendRequest {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bodyBytes': ?bodyBytes,
-      'dataMasking': ?pulumi.Input.mapOptionalInputValue<DiagnosticBackendRequestDataMasking, Map<String, dynamic>>(dataMasking, (value) => value.toMap()),
+      'dataMasking':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiagnosticBackendRequestDataMasking,
+            Map<String, dynamic>
+          >(dataMasking, (value) => value.toMap()),
       'headersToLogs': ?headersToLogs,
     };
   }
 
   factory DiagnosticBackendRequest.fromMap(Map<String, dynamic> map) {
     return DiagnosticBackendRequest(
-      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes']! as int).input(),
-      dataMasking: map['dataMasking'] == null ? null : (DiagnosticBackendRequestDataMasking.fromMap((map['dataMasking']! as Map).cast<String, dynamic>())).input(),
-      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs']! as List).cast<String>()).input(),
+      bodyBytes: (() {
+        final guardedValue = map['bodyBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataMasking: (() {
+        final guardedValue = map['dataMasking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiagnosticBackendRequestDataMasking.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      headersToLogs: (() {
+        final guardedValue = map['headersToLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

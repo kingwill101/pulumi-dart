@@ -4,10 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInterfaceAttachment {
   final pulumi.Input<String>? attachmentId;
+
   /// Integer to define the devices index.
   final pulumi.Input<int> deviceIndex;
+
   /// ID of the instance to attach to.
   final pulumi.Input<String> instance;
+
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   final pulumi.Input<int>? networkCardIndex;
 
@@ -34,11 +37,18 @@ class NetworkInterfaceAttachment {
 
   factory NetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachment(
-      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
-      deviceIndex: (map['deviceIndex'] as int).input(),
-      instance: (map['instance'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
+      attachmentId: (() {
+        final guardedValue = map['attachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      networkCardIndex: (() {
+        final guardedValue = map['networkCardIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

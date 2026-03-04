@@ -4,16 +4,15 @@ enum NetworkInterfaceStackType {
   ipv4Only("IPV4_ONLY"),
   ipv6Only("IPV6_ONLY");
 
-  const NetworkInterfaceStackType(this.value);
-  final String value;
+  const NetworkInterfaceStackType(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceStackType fromValue(String value) {
     for (final item in NetworkInterfaceStackType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkInterfaceStackType value: $value');
   }
 }
-

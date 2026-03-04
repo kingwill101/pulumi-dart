@@ -13,15 +13,18 @@ class LogDeliveryDestinationDeliveryDestinationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinationResourceArn': ?destinationResourceArn,
-    };
+    return <String, dynamic>{'destinationResourceArn': ?destinationResourceArn};
   }
 
-  factory LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogDeliveryDestinationDeliveryDestinationConfiguration(
-      destinationResourceArn: map['destinationResourceArn'] == null ? null : ((map['destinationResourceArn'] as String).input()).input(),
+      destinationResourceArn: (() {
+        final guardedValue = map['destinationResourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

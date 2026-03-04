@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRunbookReceiver {
   /// The Azure automation account Id which holds this runbook and authenticate to Azure resource.
   final pulumi.Input<String> automationAccountId;
+
   /// Indicates whether this instance is global runbook.
   final pulumi.Input<bool> isGlobalRunbook;
+
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
   final pulumi.Input<String>? managedIdentity;
+
   /// Indicates name of the webhook.
   final pulumi.Input<String>? name;
+
   /// The name for this runbook.
   final pulumi.Input<String> runbookName;
+
   /// The URI where webhooks should be sent.
   final pulumi.Input<String>? serviceUri;
+
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool>? useCommonAlertSchema;
+
   /// The resource id for webhook linked to this runbook.
   final pulumi.Input<String> webhookResourceId;
 
@@ -56,15 +63,34 @@ class AutomationRunbookReceiver {
 
   factory AutomationRunbookReceiver.fromMap(Map<String, dynamic> map) {
     return AutomationRunbookReceiver(
-      automationAccountId: (map['automationAccountId'] as String).input(),
-      isGlobalRunbook: (map['isGlobalRunbook'] as bool).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      runbookName: (map['runbookName'] as String).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
-      webhookResourceId: (map['webhookResourceId'] as String).input(),
+      automationAccountId: pulumi.Input.fromValue(
+        map['automationAccountId'] as String,
+      ),
+      isGlobalRunbook: pulumi.Input.fromValue(map['isGlobalRunbook'] as bool),
+      managedIdentity: (() {
+        final guardedValue = map['managedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runbookName: pulumi.Input.fromValue(map['runbookName'] as String),
+      serviceUri: (() {
+        final guardedValue = map['serviceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useCommonAlertSchema: (() {
+        final guardedValue = map['useCommonAlertSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      webhookResourceId: pulumi.Input.fromValue(
+        map['webhookResourceId'] as String,
+      ),
     );
   }
 }
-

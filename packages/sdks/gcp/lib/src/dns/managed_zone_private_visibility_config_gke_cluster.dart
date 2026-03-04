@@ -10,20 +10,17 @@ class ManagedZonePrivateVisibilityConfigGkeCluster {
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigGkeCluster].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to.
-  ManagedZonePrivateVisibilityConfigGkeCluster({
-    required this.gkeClusterName,
-  });
+  ManagedZonePrivateVisibilityConfigGkeCluster({required this.gkeClusterName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gkeClusterName': gkeClusterName,
-    };
+    return <String, dynamic>{'gkeClusterName': gkeClusterName};
   }
 
-  factory ManagedZonePrivateVisibilityConfigGkeCluster.fromMap(Map<String, dynamic> map) {
+  factory ManagedZonePrivateVisibilityConfigGkeCluster.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZonePrivateVisibilityConfigGkeCluster(
-      gkeClusterName: (map['gkeClusterName'] as String).input(),
+      gkeClusterName: pulumi.Input.fromValue(map['gkeClusterName'] as String),
     );
   }
 }
-

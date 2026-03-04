@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddVCenterRequestProperties {
   /// The friendly name of the vCenter.
   final pulumi.Input<String>? friendlyName;
+
   /// The IP address of the vCenter to be discovered.
   final pulumi.Input<String>? ipAddress;
+
   /// The port number for discovery.
   final pulumi.Input<String>? port;
+
   /// The process server Id from where the discovery is orchestrated.
   final pulumi.Input<String>? processServerId;
+
   /// The account Id which has privileges to discover the vCenter.
   final pulumi.Input<String>? runAsAccountId;
 
@@ -41,12 +45,31 @@ class AddVCenterRequestProperties {
 
   factory AddVCenterRequestProperties.fromMap(Map<String, dynamic> map) {
     return AddVCenterRequestProperties(
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      processServerId: map['processServerId'] == null ? null : (map['processServerId']! as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processServerId: (() {
+        final guardedValue = map['processServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runAsAccountId: (() {
+        final guardedValue = map['runAsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

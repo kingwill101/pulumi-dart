@@ -1,5 +1,3 @@
-library module_changeanalysis;
-
 export 'changeanalysis/azure_monitor_workspace_properties.dart';
 export 'changeanalysis/azure_monitor_workspace_properties_response.dart';
 export 'changeanalysis/change_details_mode.dart';

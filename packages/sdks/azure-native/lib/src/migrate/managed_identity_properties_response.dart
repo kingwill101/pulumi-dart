@@ -39,13 +39,36 @@ class ManagedIdentityPropertiesResponse {
 
   factory ManagedIdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityPropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      managedIdentityName: map['managedIdentityName'] == null ? null : (map['managedIdentityName']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedIdentityName: (() {
+        final guardedValue = map['managedIdentityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

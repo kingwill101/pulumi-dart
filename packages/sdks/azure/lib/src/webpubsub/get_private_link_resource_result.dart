@@ -7,8 +7,10 @@ import 'get_private_link_resource_shared_private_link_resource_type.dart';
 class GetPrivateLinkResourceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A `shared_private_link_resource_types` block as defined below.
-  final List<GetPrivateLinkResourceSharedPrivateLinkResourceType> sharedPrivateLinkResourceTypes;
+  final List<GetPrivateLinkResourceSharedPrivateLinkResourceType>
+  sharedPrivateLinkResourceTypes;
   final String webPubsubId;
 
   /// Creates a new [GetPrivateLinkResourceResult].
@@ -24,7 +26,11 @@ class GetPrivateLinkResourceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'sharedPrivateLinkResourceTypes': pulumi.Input.encodeList<GetPrivateLinkResourceSharedPrivateLinkResourceType, Map<String, dynamic>>(sharedPrivateLinkResourceTypes, (value) => value.toMap()),
+      'sharedPrivateLinkResourceTypes':
+          pulumi.Input.encodeList<
+            GetPrivateLinkResourceSharedPrivateLinkResourceType,
+            Map<String, dynamic>
+          >(sharedPrivateLinkResourceTypes, (value) => value.toMap()),
       'webPubsubId': webPubsubId,
     };
   }
@@ -32,9 +38,17 @@ class GetPrivateLinkResourceResult {
   factory GetPrivateLinkResourceResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkResourceResult(
       id: map['id'] as String,
-      sharedPrivateLinkResourceTypes: pulumi.Input.decodeList<GetPrivateLinkResourceSharedPrivateLinkResourceType>(map['sharedPrivateLinkResourceTypes'], (value) => GetPrivateLinkResourceSharedPrivateLinkResourceType.fromMap((value as Map).cast<String, dynamic>())),
+      sharedPrivateLinkResourceTypes:
+          pulumi.Input.decodeList<
+            GetPrivateLinkResourceSharedPrivateLinkResourceType
+          >(
+            map['sharedPrivateLinkResourceTypes']!,
+            (value) =>
+                GetPrivateLinkResourceSharedPrivateLinkResourceType.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       webPubsubId: map['webPubsubId'] as String,
     );
   }
 }
-

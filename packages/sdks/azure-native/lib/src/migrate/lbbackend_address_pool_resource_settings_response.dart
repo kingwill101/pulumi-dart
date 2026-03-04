@@ -9,20 +9,21 @@ class LBBackendAddressPoolResourceSettingsResponse {
 
   /// Creates a new [LBBackendAddressPoolResourceSettingsResponse].
   /// [name] Gets or sets the backend address pool name.
-  LBBackendAddressPoolResourceSettingsResponse({
-    this.name,
-  });
+  LBBackendAddressPoolResourceSettingsResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
-  factory LBBackendAddressPoolResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory LBBackendAddressPoolResourceSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LBBackendAddressPoolResourceSettingsResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

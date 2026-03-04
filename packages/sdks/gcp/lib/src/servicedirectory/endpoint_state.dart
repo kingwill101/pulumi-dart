@@ -6,22 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointState {
   /// IPv4 or IPv6 address of the endpoint.
   final pulumi.Input<String>? address;
+
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   final pulumi.Input<String>? endpointId;
+
   /// Metadata for the endpoint. This data can be consumed
   /// by service clients. The entire metadata dictionary may contain
   /// up to 512 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The resource name for the endpoint in the format
   /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
   final pulumi.Input<String>? name;
+
   /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
   final pulumi.Input<String>? network;
+
   /// Port that the endpoint is running on, must be in the
   /// range of [0, 65535]. If unspecified, the default is 0.
   final pulumi.Input<int>? port;
+
   /// The resource name of the service that this endpoint provides.
   final pulumi.Input<String>? service;
 
@@ -57,14 +63,43 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointId: (() {
+        final guardedValue = map['endpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

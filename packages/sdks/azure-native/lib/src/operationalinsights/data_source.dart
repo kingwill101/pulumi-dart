@@ -156,16 +156,22 @@ import 'data_source_args.dart';
 class DataSource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The ETag of the data source.
   late final pulumi.Output<String?> etag;
+
   /// The kind of the DataSource.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The data source properties in raw json format, each kind of data source have it's own schema.
   late final pulumi.Output<dynamic> properties;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,17 +184,17 @@ class DataSource extends pulumi.CustomResource {
     DataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:DataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:operationalinsights:DataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<dynamic>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

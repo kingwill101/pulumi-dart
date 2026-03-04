@@ -3,7 +3,7 @@ import 'deployment_args.dart';
 
 class DeploymentType extends pulumi.ComponentResource {
   /// The IP Address of the global service
-  late final pulumi.Output<String> ipAddress;
+  late final pulumi.Output<String?> ipAddress;
 
   /// Creates a new [DeploymentType].
   /// [name] The Pulumi resource name.
@@ -14,11 +14,12 @@ class DeploymentType extends pulumi.ComponentResource {
     DeploymentArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'gcp-global-cloudrun:index:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.ipAddress = registerOutput<String>('ipAddress');
+         'gcp-global-cloudrun:index:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    ipAddress = registerOutput<String?>('ipAddress');
   }
 }

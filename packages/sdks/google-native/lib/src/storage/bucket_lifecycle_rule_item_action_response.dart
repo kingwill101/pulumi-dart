@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleRuleItemActionResponse {
   /// Target storage class. Required iff the type of the action is SetStorageClass.
   final pulumi.Input<String> storageClass;
+
   /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,15 @@ class BucketLifecycleRuleItemActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageClass': storageClass,
-      'type': type,
-    };
+    return <String, dynamic>{'storageClass': storageClass, 'type': type};
   }
 
-  factory BucketLifecycleRuleItemActionResponse.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleRuleItemActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleRuleItemActionResponse(
-      storageClass: (map['storageClass'] as String).input(),
-      type: (map['type'] as String).input(),
+      storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'rds_parameter_group_param_detail.dart';
 class RdsParameterGroupArgs {
   /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
   final pulumi.Input<String> engine;
+
   /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
   final pulumi.Input<String> engineVersion;
+
   /// Parameter list. See `param_detail` below.
   final pulumi.Input<List<RdsParameterGroupParamDetail>> paramDetails;
+
   /// The description of the parameter template.
   final pulumi.Input<String>? parameterGroupDesc;
+
   /// The name of the parameter template.
   final pulumi.Input<String> parameterGroupName;
 
@@ -37,7 +41,18 @@ class RdsParameterGroupArgs {
     return <String, dynamic>{
       'engine': engine,
       'engineVersion': engineVersion,
-      'paramDetails': pulumi.Input.mapInputValue<List<RdsParameterGroupParamDetail>, List<Map<String, dynamic>>>(paramDetails, (value) => pulumi.Input.encodeList<RdsParameterGroupParamDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'paramDetails':
+          pulumi.Input.mapInputValue<
+            List<RdsParameterGroupParamDetail>,
+            List<Map<String, dynamic>>
+          >(
+            paramDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RdsParameterGroupParamDetail,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'parameterGroupDesc': ?parameterGroupDesc,
       'parameterGroupName': parameterGroupName,
     };
@@ -45,12 +60,24 @@ class RdsParameterGroupArgs {
 
   factory RdsParameterGroupArgs.fromMap(Map<String, dynamic> map) {
     return RdsParameterGroupArgs(
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      paramDetails: (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc']! as String).input(),
-      parameterGroupName: (map['parameterGroupName'] as String).input(),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      paramDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<RdsParameterGroupParamDetail>(
+          map['paramDetails']!,
+          (value) => RdsParameterGroupParamDetail.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      parameterGroupDesc: (() {
+        final guardedValue = map['parameterGroupDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterGroupName: pulumi.Input.fromValue(
+        map['parameterGroupName'] as String,
+      ),
     );
   }
 }
-

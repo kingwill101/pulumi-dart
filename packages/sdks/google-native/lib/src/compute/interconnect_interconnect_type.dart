@@ -4,16 +4,15 @@ enum InterconnectInterconnectType {
   itPrivate("IT_PRIVATE"),
   partner("PARTNER");
 
-  const InterconnectInterconnectType(this.value);
-  final String value;
+  const InterconnectInterconnectType(this.wireValue);
+  final String wireValue;
 
   static InterconnectInterconnectType fromValue(String value) {
     for (final item in InterconnectInterconnectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InterconnectInterconnectType value: $value');
   }
 }
-

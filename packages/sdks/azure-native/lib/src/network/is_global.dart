@@ -3,16 +3,15 @@ enum IsGlobal {
   valueFalse("False"),
   valueTrue("True");
 
-  const IsGlobal(this.value);
-  final String value;
+  const IsGlobal(this.wireValue);
+  final String wireValue;
 
   static IsGlobal fromValue(String value) {
     for (final item in IsGlobal.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IsGlobal value: $value');
   }
 }
-

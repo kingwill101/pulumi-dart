@@ -233,21 +233,31 @@ import 'remediation_eta_response.dart';
 /// ```
 class GovernanceAssignment extends pulumi.CustomResource {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
-  late final pulumi.Output<GovernanceAssignmentAdditionalDataResponse?> additionalData;
+  late final pulumi.Output<GovernanceAssignmentAdditionalDataResponse?>
+  additionalData;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  late final pulumi.Output<GovernanceEmailNotificationResponse?> governanceEmailNotification;
+  late final pulumi.Output<GovernanceEmailNotificationResponse?>
+  governanceEmailNotification;
+
   /// Defines whether there is a grace period on the governance assignment
   late final pulumi.Output<bool?> isGracePeriod;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
   late final pulumi.Output<String?> owner;
+
   /// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   late final pulumi.Output<String> remediationDueDate;
+
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   late final pulumi.Output<RemediationEtaResponse?> remediationEta;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -260,19 +270,25 @@ class GovernanceAssignment extends pulumi.CustomResource {
     GovernanceAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:GovernanceAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<GovernanceAssignmentAdditionalDataResponse?>('additionalData');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.governanceEmailNotification = registerOutput<GovernanceEmailNotificationResponse?>('governanceEmailNotification');
-    this.isGracePeriod = registerOutput<bool?>('isGracePeriod');
+         'azure-native:security:GovernanceAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData =
+        registerOutput<GovernanceAssignmentAdditionalDataResponse?>(
+          'additionalData',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    governanceEmailNotification =
+        registerOutput<GovernanceEmailNotificationResponse?>(
+          'governanceEmailNotification',
+        );
+    isGracePeriod = registerOutput<bool?>('isGracePeriod');
     this.name = registerOutput<String>('name');
-    this.owner = registerOutput<String?>('owner');
-    this.remediationDueDate = registerOutput<String>('remediationDueDate');
-    this.remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta');
-    this.type = registerOutput<String>('type');
+    owner = registerOutput<String?>('owner');
+    remediationDueDate = registerOutput<String>('remediationDueDate');
+    remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta');
+    type = registerOutput<String>('type');
   }
 }

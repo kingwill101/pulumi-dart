@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceLimitResponse {
   /// Maximum amount of the resource in the cluster.
   final pulumi.Input<String> maximum;
+
   /// Minimum amount of the resource in the cluster.
   final pulumi.Input<String> minimum;
+
   /// Resource name "cpu", "memory" or gpu-specific string.
   final pulumi.Input<String> resourceType;
 
@@ -31,10 +33,9 @@ class ResourceLimitResponse {
 
   factory ResourceLimitResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitResponse(
-      maximum: (map['maximum'] as String).input(),
-      minimum: (map['minimum'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      maximum: pulumi.Input.fromValue(map['maximum'] as String),
+      minimum: pulumi.Input.fromValue(map['minimum'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

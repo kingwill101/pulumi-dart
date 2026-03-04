@@ -31,10 +31,13 @@ class GetGlossaryArgs {
 
   factory GetGlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GetGlossaryArgs(
-      glossaryId: (map['glossaryId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      glossaryId: pulumi.Input.fromValue(map['glossaryId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

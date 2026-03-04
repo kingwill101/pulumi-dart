@@ -5,16 +5,17 @@ enum ApplicationDefinitionArtifactName {
   valueCreateUiDefinition("CreateUiDefinition"),
   valueMainTemplateParameters("MainTemplateParameters");
 
-  const ApplicationDefinitionArtifactName(this.value);
-  final String value;
+  const ApplicationDefinitionArtifactName(this.wireValue);
+  final String wireValue;
 
   static ApplicationDefinitionArtifactName fromValue(String value) {
     for (final item in ApplicationDefinitionArtifactName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationDefinitionArtifactName value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationDefinitionArtifactName value: $value',
+    );
   }
 }
-

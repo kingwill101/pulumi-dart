@@ -14,15 +14,16 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'knowledgeBases': knowledgeBases,
-    };
+    return <String, dynamic>{'knowledgeBases': knowledgeBases};
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse(
-      knowledgeBases: ((map['knowledgeBases'] as List).cast<String>()).input(),
+      knowledgeBases: pulumi.Input.fromValue(
+        (map['knowledgeBases'] as List).cast<String>(),
+      ),
     );
   }
 }
-

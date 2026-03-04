@@ -3,16 +3,15 @@ enum ProtocolTypes {
   valueHttp("Http"),
   valueHttps("Https");
 
-  const ProtocolTypes(this.value);
-  final String value;
+  const ProtocolTypes(this.wireValue);
+  final String wireValue;
 
   static ProtocolTypes fromValue(String value) {
     for (final item in ProtocolTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtocolTypes value: $value');
   }
 }
-

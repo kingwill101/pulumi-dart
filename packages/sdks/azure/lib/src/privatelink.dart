@@ -1,5 +1,3 @@
-library module_privatelink;
-
 export 'privatelink/application_security_group_association.dart';
 export 'privatelink/application_security_group_association_args.dart';
 export 'privatelink/application_security_group_association_state.dart';

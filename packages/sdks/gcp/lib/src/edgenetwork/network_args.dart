@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkArgs {
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
+
   /// IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
   final pulumi.Input<int>? mtu;
+
   /// A unique ID that identifies this network.
   final pulumi.Input<String> networkId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The name of the target Distributed Cloud Edge zone.
   final pulumi.Input<String> zone;
 
@@ -58,14 +64,31 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
-      networkId: (map['networkId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      mtu: (() {
+        final guardedValue = map['mtu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkId: pulumi.Input.fromValue(map['networkId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

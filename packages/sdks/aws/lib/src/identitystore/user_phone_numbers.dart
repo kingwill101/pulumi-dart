@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPhoneNumbers {
   /// When `true`, this is the primary phone number associated with the user.
   final pulumi.Input<bool>? primary;
+
   /// The type of phone number.
   final pulumi.Input<String>? type;
+
   /// The user's phone number.
   final pulumi.Input<String>? value;
 
@@ -14,11 +16,7 @@ class UserPhoneNumbers {
   /// [primary] When `true`, this is the primary phone number associated with the user.
   /// [type] The type of phone number.
   /// [value] The user's phone number.
-  UserPhoneNumbers({
-    this.primary,
-    this.type,
-    this.value,
-  });
+  UserPhoneNumbers({this.primary, this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class UserPhoneNumbers {
 
   factory UserPhoneNumbers.fromMap(Map<String, dynamic> map) {
     return UserPhoneNumbers(
-      primary: map['primary'] == null ? null : ((map['primary'] as bool).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

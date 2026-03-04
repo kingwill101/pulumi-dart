@@ -1,5 +1,3 @@
-library module_automanage;
-
 export 'automanage/configuration.dart';
 export 'automanage/configuration_antimalware.dart';
 export 'automanage/configuration_antimalware_exclusions.dart';

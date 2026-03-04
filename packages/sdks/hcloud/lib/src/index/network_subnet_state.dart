@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkSubnet resources.
 class NetworkSubnetState {
   final pulumi.Input<String>? gateway;
+
   /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
   final pulumi.Input<String>? ipRange;
+
   /// ID of the Network the subnet should be added to.
   final pulumi.Input<int>? networkId;
+
   /// Name of network zone.
   final pulumi.Input<String>? networkZone;
+
   /// Type of subnet. `server`, `cloud` or `vswitch`
   final pulumi.Input<String>? type;
+
   /// ID of the vswitch, Required if type is `vswitch`
   final pulumi.Input<int>? vswitchId;
 
@@ -45,13 +50,36 @@ class NetworkSubnetState {
 
   factory NetworkSubnetState.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetState(
-      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
-      networkZone: map['networkZone'] == null ? null : (map['networkZone']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as int).input(),
+      gateway: (() {
+        final guardedValue = map['gateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRange: (() {
+        final guardedValue = map['ipRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkZone: (() {
+        final guardedValue = map['networkZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

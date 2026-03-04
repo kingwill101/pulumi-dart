@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'access_control_list_acl_entry.dart';
 import 'access_control_list_args.dart';
 import 'access_control_list_state.dart';
 
@@ -7,7 +6,7 @@ import 'access_control_list_state.dart';
 ///
 /// For information about Api Gateway Access Control List and how to use it, see [What is Access Control List](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createaccesscontrollist).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -190,9 +189,11 @@ import 'access_control_list_state.dart';
 class AccessControlList extends pulumi.CustomResource {
   /// Access control list name.
   late final pulumi.Output<String> accessControlListName;
+
   /// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
   /// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
-  late final pulumi.Output<List<AccessControlListAclEntry>> aclEntrys;
+  late final pulumi.Output<List<Map<String, dynamic>>> aclEntrys;
+
   /// The IP version. Valid values: ipv4 and ipv6.
   late final pulumi.Output<String> addressIpVersion;
 
@@ -205,14 +206,14 @@ class AccessControlList extends pulumi.CustomResource {
     AccessControlListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/accessControlList:AccessControlList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlListName = registerOutput<String>('accessControlListName');
-    this.aclEntrys = registerOutput<List<AccessControlListAclEntry>>('aclEntrys');
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
+         'alicloud:apigateway/accessControlList:AccessControlList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlListName = registerOutput<String>('accessControlListName');
+    aclEntrys = registerOutput<List<Map<String, dynamic>>>('aclEntrys');
+    addressIpVersion = registerOutput<String>('addressIpVersion');
   }
 
   /// Gets an existing [AccessControlList] resource's state with the given [name] and [id].
@@ -233,13 +234,13 @@ class AccessControlList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/accessControlList:AccessControlList',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlListName = registerOutput<String>('accessControlListName');
-    this.aclEntrys = registerOutput<List<AccessControlListAclEntry>>('aclEntrys');
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
+         'alicloud:apigateway/accessControlList:AccessControlList',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlListName = registerOutput<String>('accessControlListName');
+    aclEntrys = registerOutput<List<Map<String, dynamic>>>('aclEntrys');
+    addressIpVersion = registerOutput<String>('addressIpVersion');
   }
 }

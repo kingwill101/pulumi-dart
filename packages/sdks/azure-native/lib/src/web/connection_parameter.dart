@@ -8,29 +8,48 @@ import 'connection_parameter_type.dart';
 class ConnectionParameter {
   /// OAuth settings for the connection provider
   final pulumi.Input<ApiOAuthSettings>? oAuthSettings;
+
   /// Type of the parameter
   final pulumi.Input<ConnectionParameterType>? type;
 
   /// Creates a new [ConnectionParameter].
   /// [oAuthSettings] OAuth settings for the connection provider
   /// [type] Type of the parameter
-  ConnectionParameter({
-    this.oAuthSettings,
-    this.type,
-  });
+  ConnectionParameter({this.oAuthSettings, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oAuthSettings': ?pulumi.Input.mapOptionalInputValue<ApiOAuthSettings, Map<String, dynamic>>(oAuthSettings, (value) => value.toMap()),
-      'type': ?pulumi.Input.mapOptionalInputValue<ConnectionParameterType, String>(type, (value) => value.value),
+      'oAuthSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiOAuthSettings,
+            Map<String, dynamic>
+          >(oAuthSettings, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<ConnectionParameterType, String>(
+            type,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory ConnectionParameter.fromMap(Map<String, dynamic> map) {
     return ConnectionParameter(
-      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettings.fromMap((map['oAuthSettings']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (ConnectionParameterType.fromValue(map['type']! as String)).input(),
+      oAuthSettings: (() {
+        final guardedValue = map['oAuthSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiOAuthSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionParameterType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

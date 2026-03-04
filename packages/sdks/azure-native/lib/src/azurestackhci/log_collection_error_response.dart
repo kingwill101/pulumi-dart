@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogCollectionErrorResponse {
   /// Error Code of the log collection
   final pulumi.Input<String> errorCode;
+
   /// Error Message of the log collection
   final pulumi.Input<String> errorMessage;
 
@@ -26,9 +27,8 @@ class LogCollectionErrorResponse {
 
   factory LogCollectionErrorResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionErrorResponse(
-      errorCode: (map['errorCode'] as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
     );
   }
 }
-

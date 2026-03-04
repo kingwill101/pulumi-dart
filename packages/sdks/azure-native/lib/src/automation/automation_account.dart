@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_account_args.dart';
 import 'encryption_properties_response.dart';
 import 'identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -164,40 +163,59 @@ import 'system_data_response.dart';
 class AutomationAccount extends pulumi.CustomResource {
   /// URL of automation hybrid service which is used for hybrid worker on-boarding.
   late final pulumi.Output<String?> automationHybridServiceUrl;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether requests using non-AAD authentication are blocked
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// Encryption properties for the automation account
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
+
   /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Gets or sets the last modified by.
   late final pulumi.Output<String?> lastModifiedBy;
+
   /// Gets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of Automation operations supported by the Automation resource provider.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateEndpointConnections;
+
   /// Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
   late final pulumi.Output<bool?> publicNetworkAccess;
+
   /// Gets or sets the SKU of account.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Gets status of account.
   late final pulumi.Output<String> state;
+
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -210,29 +228,33 @@ class AutomationAccount extends pulumi.CustomResource {
     AutomationAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:AutomationAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationHybridServiceUrl = registerOutput<String?>('automationHybridServiceUrl');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.lastModifiedBy = registerOutput<String?>('lastModifiedBy');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.location = registerOutput<String?>('location');
+         'azure-native:automation:AutomationAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationHybridServiceUrl = registerOutput<String?>(
+      'automationHybridServiceUrl',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<IdentityResponse?>('identity');
+    lastModifiedBy = registerOutput<String?>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections');
-    this.publicNetworkAccess = registerOutput<bool?>('publicNetworkAccess');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpointConnections',
+    );
+    publicNetworkAccess = registerOutput<bool?>('publicNetworkAccess');
+    sku = registerOutput<SkuResponse?>('sku');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -11,9 +11,11 @@ import 'connectivity_test_source.dart';
 class ConnectivityTestArgs {
   /// Whether the analysis should skip firewall checking. Default value is false.
   final pulumi.Input<bool>? bypassFirewallChecks;
+
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
   final pulumi.Input<String>? description;
+
   /// Required. Destination specification of the Connectivity Test.
   /// You can use a combination of destination IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the destination location.
@@ -22,25 +24,32 @@ class ConnectivityTestArgs {
   /// destination that you don't intend to test.
   /// Structure is documented below.
   final pulumi.Input<ConnectivityTestDestination> destination;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Unique name for the connectivity test.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
   final pulumi.Input<String>? protocol;
+
   /// Other projects that may be relevant for reachability analysis.
   /// This is applicable to scenarios where a test can cross project
   /// boundaries.
   final pulumi.Input<List<String>>? relatedProjects;
+
   /// Whether run analysis for the return path from destination to source.
   /// Default value is false.
   final pulumi.Input<bool>? roundTrip;
+
   /// Required. Source specification of the Connectivity Test.
   /// You can use a combination of source IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the source location.
@@ -78,30 +87,79 @@ class ConnectivityTestArgs {
     return <String, dynamic>{
       'bypassFirewallChecks': ?bypassFirewallChecks,
       'description': ?description,
-      'destination': pulumi.Input.mapInputValue<ConnectivityTestDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            ConnectivityTestDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
       'protocol': ?protocol,
       'relatedProjects': ?relatedProjects,
       'roundTrip': ?roundTrip,
-      'source': pulumi.Input.mapInputValue<ConnectivityTestSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            ConnectivityTestSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory ConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestArgs(
-      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : (map['bypassFirewallChecks']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destination: (ConnectivityTestDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects']! as List).cast<String>()).input(),
-      roundTrip: map['roundTrip'] == null ? null : (map['roundTrip']! as bool).input(),
-      source: (ConnectivityTestSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      bypassFirewallChecks: (() {
+        final guardedValue = map['bypassFirewallChecks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: pulumi.Input.fromValue(
+        ConnectivityTestDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relatedProjects: (() {
+        final guardedValue = map['relatedProjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roundTrip: (() {
+        final guardedValue = map['roundTrip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      source: pulumi.Input.fromValue(
+        ConnectivityTestSource.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

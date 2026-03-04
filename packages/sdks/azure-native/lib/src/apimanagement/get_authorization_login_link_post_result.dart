@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAuthorizationLoginLinkPost.
 class GetAuthorizationLoginLinkPostResult {
   /// The login link
@@ -8,20 +7,21 @@ class GetAuthorizationLoginLinkPostResult {
 
   /// Creates a new [GetAuthorizationLoginLinkPostResult].
   /// [loginLink] The login link
-  GetAuthorizationLoginLinkPostResult({
-    this.loginLink,
-  });
+  GetAuthorizationLoginLinkPostResult({this.loginLink});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loginLink': ?loginLink,
-    };
+    return <String, dynamic>{'loginLink': ?loginLink};
   }
 
-  factory GetAuthorizationLoginLinkPostResult.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorizationLoginLinkPostResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorizationLoginLinkPostResult(
-      loginLink: map['loginLink'] == null ? null : map['loginLink']! as String,
+      loginLink: (() {
+        final guardedValue = map['loginLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

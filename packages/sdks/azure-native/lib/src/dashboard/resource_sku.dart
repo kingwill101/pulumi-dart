@@ -7,20 +7,13 @@ class ResourceSku {
 
   /// Creates a new [ResourceSku].
   /// [name] Required.
-  ResourceSku({
-    required this.name,
-  });
+  ResourceSku({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory ResourceSku.fromMap(Map<String, dynamic> map) {
-    return ResourceSku(
-      name: (map['name'] as String).input(),
-    );
+    return ResourceSku(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

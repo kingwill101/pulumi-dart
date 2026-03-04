@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityConnectorApplicationArgs {
   /// The security Application key - unique key for the standard application
   final pulumi.Input<String>? applicationId;
+
   /// description of the application
   final pulumi.Input<String>? description;
+
   /// display name of the application
   final pulumi.Input<String>? displayName;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
+
   /// The application source, what it affects, e.g. Assessments
   final pulumi.Input<String> sourceResourceType;
 
@@ -49,13 +54,30 @@ class SecurityConnectorApplicationArgs {
 
   factory SecurityConnectorApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConnectorApplicationArgs(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityConnectorName: (map['securityConnectorName'] as String).input(),
-      sourceResourceType: (map['sourceResourceType'] as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityConnectorName: pulumi.Input.fromValue(
+        map['securityConnectorName'] as String,
+      ),
+      sourceResourceType: pulumi.Input.fromValue(
+        map['sourceResourceType'] as String,
+      ),
     );
   }
 }
-

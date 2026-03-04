@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
   final pulumi.Input<String>? effect;
+
   /// Matches a taint key (not necessarily unique).
   final pulumi.Input<String>? key;
+
   /// Matches a taint operator.
   final pulumi.Input<String>? operator;
+
   /// Matches a taint value.
   final pulumi.Input<String>? value;
 
@@ -33,13 +36,30 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     };
   }
 
-  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(Map<String, dynamic> map) {
+  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

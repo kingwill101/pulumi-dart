@@ -9,8 +9,10 @@ class GetTransitRouterMulticastDomainSourcesResult {
   final String id;
   final List<String> ids;
   final String? outputFile;
+
   /// A list of Transit Router Multicast Domain Source Entries. Each element contains the following attributes:
   final List<GetTransitRouterMulticastDomainSourcesSource> sources;
+
   /// The ID of the multicast domain to which the multicast source belongs.
   final String transitRouterMulticastDomainId;
 
@@ -33,19 +35,35 @@ class GetTransitRouterMulticastDomainSourcesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'sources': pulumi.Input.encodeList<GetTransitRouterMulticastDomainSourcesSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
+      'sources':
+          pulumi.Input.encodeList<
+            GetTransitRouterMulticastDomainSourcesSource,
+            Map<String, dynamic>
+          >(sources, (value) => value.toMap()),
       'transitRouterMulticastDomainId': transitRouterMulticastDomainId,
     };
   }
 
-  factory GetTransitRouterMulticastDomainSourcesResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterMulticastDomainSourcesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterMulticastDomainSourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      sources: pulumi.Input.decodeList<GetTransitRouterMulticastDomainSourcesSource>(map['sources'], (value) => GetTransitRouterMulticastDomainSourcesSource.fromMap((value as Map).cast<String, dynamic>())),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sources:
+          pulumi.Input.decodeList<GetTransitRouterMulticastDomainSourcesSource>(
+            map['sources']!,
+            (value) => GetTransitRouterMulticastDomainSourcesSource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      transitRouterMulticastDomainId:
+          map['transitRouterMulticastDomainId'] as String,
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalAddressArgs {
   /// User-provided description for this resource.
   final pulumi.Input<String>? description;
+
   /// The internal IP address of a workload VM.
   final pulumi.Input<String> internalIp;
+
   /// The ID of the external IP Address.
   final pulumi.Input<String>? name;
+
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -41,11 +44,18 @@ class ExternalAddressArgs {
 
   factory ExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAddressArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      internalIp: (map['internalIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: (map['parent'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

@@ -260,7 +260,7 @@ import 'network_security_perimeter_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -275,13 +275,16 @@ import 'network_security_perimeter_association_state.dart';
 class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
   /// Access mode for the associated resource on the Network Security Perimeter. Possible values are `Audit`, `Enforced`, and `Learning`.
   late final pulumi.Output<String> accessMode;
+
   /// The name which should be used for this Network Security Perimeter Association. Changing this forces a new Network Security Perimeter Association to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Association to be created.
   late final pulumi.Output<String> networkSecurityPerimeterProfileId;
+
   /// The ID of the associated resource. Changing this forces a new Network Security Perimeter Association to be created.
   ///
-  /// > **Note:** A resource can only be associated with one Network Security Perimeter at a time.
+  /// &gt; **Note:** A resource can only be associated with one Network Security Perimeter at a time.
   /// If the target resource is already associated with another Network Security Perimeter, the creation of this association may appear to succeed in Terraform but will not be reflected in Azure. In such cases, the association will not actually exist and subsequent Terraform operations may show unexpected behavior.
   late final pulumi.Output<String> resourceId;
 
@@ -294,15 +297,17 @@ class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
     NetworkSecurityPerimeterAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterAssociation:NetworkSecurityPerimeterAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessMode = registerOutput<String>('accessMode');
+         'azure:network/networkSecurityPerimeterAssociation:NetworkSecurityPerimeterAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessMode = registerOutput<String>('accessMode');
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    this.resourceId = registerOutput<String>('resourceId');
+    networkSecurityPerimeterProfileId = registerOutput<String>(
+      'networkSecurityPerimeterProfileId',
+    );
+    resourceId = registerOutput<String>('resourceId');
   }
 
   /// Gets an existing [NetworkSecurityPerimeterAssociation] resource's state with the given [name] and [id].
@@ -323,14 +328,16 @@ class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterAssociation:NetworkSecurityPerimeterAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessMode = registerOutput<String>('accessMode');
+         'azure:network/networkSecurityPerimeterAssociation:NetworkSecurityPerimeterAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessMode = registerOutput<String>('accessMode');
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    this.resourceId = registerOutput<String>('resourceId');
+    networkSecurityPerimeterProfileId = registerOutput<String>(
+      'networkSecurityPerimeterProfileId',
+    );
+    resourceId = registerOutput<String>('resourceId');
   }
 }

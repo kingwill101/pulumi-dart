@@ -10,20 +10,25 @@ class UpdateInfoResponseContainerV1beta1 {
 
   /// Creates a new [UpdateInfoResponseContainerV1beta1].
   /// [blueGreenInfo] Information of a blue-green upgrade.
-  UpdateInfoResponseContainerV1beta1({
-    required this.blueGreenInfo,
-  });
+  UpdateInfoResponseContainerV1beta1({required this.blueGreenInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenInfo': pulumi.Input.mapInputValue<BlueGreenInfoResponseContainerV1beta1, Map<String, dynamic>>(blueGreenInfo, (value) => value.toMap()),
+      'blueGreenInfo':
+          pulumi.Input.mapInputValue<
+            BlueGreenInfoResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(blueGreenInfo, (value) => value.toMap()),
     };
   }
 
   factory UpdateInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return UpdateInfoResponseContainerV1beta1(
-      blueGreenInfo: (BlueGreenInfoResponseContainerV1beta1.fromMap((map['blueGreenInfo'] as Map).cast<String, dynamic>())).input(),
+      blueGreenInfo: pulumi.Input.fromValue(
+        BlueGreenInfoResponseContainerV1beta1.fromMap(
+          (map['blueGreenInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

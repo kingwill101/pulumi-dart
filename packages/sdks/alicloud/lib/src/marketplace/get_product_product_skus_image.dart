@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductProductSkusImage {
   /// The Ecs image id.
   final pulumi.Input<String> imageId;
+
   /// The Ecs image display name.
   final pulumi.Input<String> imageName;
+
   /// The Ecs image region.
   final pulumi.Input<String> regionId;
 
@@ -30,10 +32,9 @@ class GetProductProductSkusImage {
 
   factory GetProductProductSkusImage.fromMap(Map<String, dynamic> map) {
     return GetProductProductSkusImage(
-      imageId: (map['imageId'] as String).input(),
-      imageName: (map['imageName'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

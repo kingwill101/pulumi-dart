@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetArgs {
   /// The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
   final pulumi.Input<String> targetResourceId;
+
   /// The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
   final pulumi.Input<String> targetType;
 
@@ -34,10 +36,15 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      targetResourceId: (map['targetResourceId'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceId: pulumi.Input.fromValue(
+        map['targetResourceId'] as String,
+      ),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
-

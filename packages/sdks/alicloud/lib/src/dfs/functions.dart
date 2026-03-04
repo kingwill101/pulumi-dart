@@ -12,7 +12,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///
@@ -167,7 +167,7 @@ Future<GetAccessGroupsResult> getAccessGroups(
 
 /// This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -309,7 +309,7 @@ Future<GetAccessRulesResult> getAccessRules(
 
 /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -464,7 +464,7 @@ Future<GetFileSystemsResult> getFileSystems(
 
 /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -606,7 +606,7 @@ Future<GetMountPointsResult> getMountPoints(
 
 /// This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///

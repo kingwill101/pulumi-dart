@@ -9,20 +9,21 @@ class MarketplaceSaaSInfoResponseMarketplaceSubscription {
 
   /// Creates a new [MarketplaceSaaSInfoResponseMarketplaceSubscription].
   /// [id] Marketplace Subscription Id. This is a GUID-formatted string.
-  MarketplaceSaaSInfoResponseMarketplaceSubscription({
-    this.id,
-  });
+  MarketplaceSaaSInfoResponseMarketplaceSubscription({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap(Map<String, dynamic> map) {
+  factory MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MarketplaceSaaSInfoResponseMarketplaceSubscription(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIssueResourcesArgs {
   /// The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'"
   final pulumi.Input<String>? filter;
+
   /// The name of the IssueResource
   final pulumi.Input<String> issueName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -34,10 +36,13 @@ class ListIssueResourcesArgs {
 
   factory ListIssueResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      issueName: (map['issueName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issueName: pulumi.Input.fromValue(map['issueName'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

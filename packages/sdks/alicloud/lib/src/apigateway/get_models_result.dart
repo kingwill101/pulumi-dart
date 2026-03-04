@@ -7,14 +7,18 @@ import 'get_models_model.dart';
 class GetModelsResult {
   /// The group of the model belongs to.
   final String groupId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// The name of the Model.
   final String? modelName;
+
   /// A list of Api Gateway Models. Each element contains the following attributes:
   final List<GetModelsModel> models;
   final String? nameRegex;
+
   /// A list of Model names.
   final List<String> names;
   final String? outputFile;
@@ -51,7 +55,10 @@ class GetModelsResult {
       'id': id,
       'ids': ids,
       'modelName': ?modelName,
-      'models': pulumi.Input.encodeList<GetModelsModel, Map<String, dynamic>>(models, (value) => value.toMap()),
+      'models': pulumi.Input.encodeList<GetModelsModel, Map<String, dynamic>>(
+        models,
+        (value) => value.toMap(),
+      ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -65,14 +72,37 @@ class GetModelsResult {
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      modelName: map['modelName'] == null ? null : map['modelName']! as String,
-      models: pulumi.Input.decodeList<GetModelsModel>(map['models'], (value) => GetModelsModel.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      modelName: (() {
+        final guardedValue = map['modelName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      models: pulumi.Input.decodeList<GetModelsModel>(
+        map['models']!,
+        (value) =>
+            GetModelsModel.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

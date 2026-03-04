@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistrationTokenMinimalResponse {
   /// Expiration time of registration token.
   final pulumi.Input<String>? expirationTime;
+
   /// The registration token base64 encoded string.
   final pulumi.Input<String>? token;
 
   /// Creates a new [RegistrationTokenMinimalResponse].
   /// [expirationTime] Expiration time of registration token.
   /// [token] The registration token base64 encoded string.
-  RegistrationTokenMinimalResponse({
-    this.expirationTime,
-    this.token,
-  });
+  RegistrationTokenMinimalResponse({this.expirationTime, this.token});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RegistrationTokenMinimalResponse {
 
   factory RegistrationTokenMinimalResponse.fromMap(Map<String, dynamic> map) {
     return RegistrationTokenMinimalResponse(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
-      token: map['token'] == null ? null : (map['token']! as String).input(),
+      expirationTime: (() {
+        final guardedValue = map['expirationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

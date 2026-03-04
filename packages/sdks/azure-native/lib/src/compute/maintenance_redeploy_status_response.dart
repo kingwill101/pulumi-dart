@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceRedeployStatusResponse {
   /// True, if customer is allowed to perform Maintenance.
   final pulumi.Input<bool>? isCustomerInitiatedMaintenanceAllowed;
+
   /// Message returned for the last Maintenance Operation.
   final pulumi.Input<String>? lastOperationMessage;
+
   /// The Last Maintenance Operation Result Code.
   final pulumi.Input<String>? lastOperationResultCode;
+
   /// End Time for the Maintenance Window.
   final pulumi.Input<String>? maintenanceWindowEndTime;
+
   /// Start Time for the Maintenance Window.
   final pulumi.Input<String>? maintenanceWindowStartTime;
+
   /// End Time for the Pre Maintenance Window.
   final pulumi.Input<String>? preMaintenanceWindowEndTime;
+
   /// Start Time for the Pre Maintenance Window.
   final pulumi.Input<String>? preMaintenanceWindowStartTime;
 
@@ -39,7 +45,8 @@ class MaintenanceRedeployStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isCustomerInitiatedMaintenanceAllowed': ?isCustomerInitiatedMaintenanceAllowed,
+      'isCustomerInitiatedMaintenanceAllowed':
+          ?isCustomerInitiatedMaintenanceAllowed,
       'lastOperationMessage': ?lastOperationMessage,
       'lastOperationResultCode': ?lastOperationResultCode,
       'maintenanceWindowEndTime': ?maintenanceWindowEndTime,
@@ -51,14 +58,41 @@ class MaintenanceRedeployStatusResponse {
 
   factory MaintenanceRedeployStatusResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceRedeployStatusResponse(
-      isCustomerInitiatedMaintenanceAllowed: map['isCustomerInitiatedMaintenanceAllowed'] == null ? null : (map['isCustomerInitiatedMaintenanceAllowed']! as bool).input(),
-      lastOperationMessage: map['lastOperationMessage'] == null ? null : (map['lastOperationMessage']! as String).input(),
-      lastOperationResultCode: map['lastOperationResultCode'] == null ? null : (map['lastOperationResultCode']! as String).input(),
-      maintenanceWindowEndTime: map['maintenanceWindowEndTime'] == null ? null : (map['maintenanceWindowEndTime']! as String).input(),
-      maintenanceWindowStartTime: map['maintenanceWindowStartTime'] == null ? null : (map['maintenanceWindowStartTime']! as String).input(),
-      preMaintenanceWindowEndTime: map['preMaintenanceWindowEndTime'] == null ? null : (map['preMaintenanceWindowEndTime']! as String).input(),
-      preMaintenanceWindowStartTime: map['preMaintenanceWindowStartTime'] == null ? null : (map['preMaintenanceWindowStartTime']! as String).input(),
+      isCustomerInitiatedMaintenanceAllowed: (() {
+        final guardedValue = map['isCustomerInitiatedMaintenanceAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastOperationMessage: (() {
+        final guardedValue = map['lastOperationMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastOperationResultCode: (() {
+        final guardedValue = map['lastOperationResultCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceWindowEndTime: (() {
+        final guardedValue = map['maintenanceWindowEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceWindowStartTime: (() {
+        final guardedValue = map['maintenanceWindowStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preMaintenanceWindowEndTime: (() {
+        final guardedValue = map['preMaintenanceWindowEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preMaintenanceWindowStartTime: (() {
+        final guardedValue = map['preMaintenanceWindowStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

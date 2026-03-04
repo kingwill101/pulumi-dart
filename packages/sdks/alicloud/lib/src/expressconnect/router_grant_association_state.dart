@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterGrantAssociationState {
   /// The ID of the associated Leased Line Gateway instance.
   final pulumi.Input<String>? ecrId;
+
   /// The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
   final pulumi.Input<int>? ecrOwnerAliUid;
+
   /// The ID of the network instance.
   final pulumi.Input<String>? instanceId;
+
   /// The ID of the region where the authorized network instance is located.
   final pulumi.Input<String>? instanceRegionId;
+
   /// The type of the network instance. Value:
   /// - `VBR`: the VBR instance.
   /// - `VPC`: VPC instance.
   final pulumi.Input<String>? instanceType;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -48,13 +53,36 @@ class RouterGrantAssociationState {
 
   factory RouterGrantAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterGrantAssociationState(
-      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
-      ecrOwnerAliUid: map['ecrOwnerAliUid'] == null ? null : (map['ecrOwnerAliUid']! as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ecrId: (() {
+        final guardedValue = map['ecrId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecrOwnerAliUid: (() {
+        final guardedValue = map['ecrOwnerAliUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceRegionId: (() {
+        final guardedValue = map['instanceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

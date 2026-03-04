@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnatPoolArgs {
   /// Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   final pulumi.Input<List<String>> members;
+
   /// Name of the snatpool
   final pulumi.Input<String> name;
 
   /// Creates a new [SnatPoolArgs].
   /// [members] Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   /// [name] Name of the snatpool
-  SnatPoolArgs({
-    required this.members,
-    required this.name,
-  });
+  SnatPoolArgs({required this.members, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'members': members,
-      'name': name,
-    };
+    return <String, dynamic>{'members': members, 'name': name};
   }
 
   factory SnatPoolArgs.fromMap(Map<String, dynamic> map) {
     return SnatPoolArgs(
-      members: ((map['members'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

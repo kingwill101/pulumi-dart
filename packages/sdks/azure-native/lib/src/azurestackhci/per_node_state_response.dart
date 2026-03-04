@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PerNodeStateResponse {
   /// Fully qualified resource ID for the Arc agent of this node.
   final pulumi.Input<String> arcInstance;
+
   /// The service principal id of the arc for server node
   final pulumi.Input<String> arcNodeServicePrincipalObjectId;
+
   /// Name of the Node in HCI Cluster
   final pulumi.Input<String> name;
+
   /// State of Arc agent in this node.
   final pulumi.Input<String> state;
 
@@ -36,11 +39,12 @@ class PerNodeStateResponse {
 
   factory PerNodeStateResponse.fromMap(Map<String, dynamic> map) {
     return PerNodeStateResponse(
-      arcInstance: (map['arcInstance'] as String).input(),
-      arcNodeServicePrincipalObjectId: (map['arcNodeServicePrincipalObjectId'] as String).input(),
-      name: (map['name'] as String).input(),
-      state: (map['state'] as String).input(),
+      arcInstance: pulumi.Input.fromValue(map['arcInstance'] as String),
+      arcNodeServicePrincipalObjectId: pulumi.Input.fromValue(
+        map['arcNodeServicePrincipalObjectId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

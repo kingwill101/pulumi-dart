@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedirectIncompatibleRowSettings {
   /// Name of the Azure Storage, Storage SAS, or Azure Data Lake Store linked service used for redirecting incompatible row. Must be specified if redirectIncompatibleRowSettings is specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> linkedServiceName;
+
   /// The path for storing the redirect incompatible row data. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? path;
 
   /// Creates a new [RedirectIncompatibleRowSettings].
   /// [linkedServiceName] Name of the Azure Storage, Storage SAS, or Azure Data Lake Store linked service used for redirecting incompatible row. Must be specified if redirectIncompatibleRowSettings is specified. Type: string (or Expression with resultType string).
   /// [path] The path for storing the redirect incompatible row data. Type: string (or Expression with resultType string).
-  RedirectIncompatibleRowSettings({
-    required this.linkedServiceName,
-    this.path,
-  });
+  RedirectIncompatibleRowSettings({required this.linkedServiceName, this.path});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class RedirectIncompatibleRowSettings {
 
   factory RedirectIncompatibleRowSettings.fromMap(Map<String, dynamic> map) {
     return RedirectIncompatibleRowSettings(
-      linkedServiceName: (map['linkedServiceName']).input(),
-      path: map['path'] == null ? null : (map['path']!).input(),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName']),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

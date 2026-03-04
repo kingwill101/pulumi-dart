@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworksPropertiesVmipPool {
   /// Ending IP address for the IP Pool
   final pulumi.Input<String>? endIP;
+
   /// Starting IP address for the IP Pool
   final pulumi.Input<String>? startIP;
 
   /// Creates a new [VirtualNetworksPropertiesVmipPool].
   /// [endIP] Ending IP address for the IP Pool
   /// [startIP] Starting IP address for the IP Pool
-  VirtualNetworksPropertiesVmipPool({
-    this.endIP,
-    this.startIP,
-  });
+  VirtualNetworksPropertiesVmipPool({this.endIP, this.startIP});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endIP': ?endIP,
-      'startIP': ?startIP,
-    };
+    return <String, dynamic>{'endIP': ?endIP, 'startIP': ?startIP};
   }
 
   factory VirtualNetworksPropertiesVmipPool.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesVmipPool(
-      endIP: map['endIP'] == null ? null : (map['endIP']! as String).input(),
-      startIP: map['startIP'] == null ? null : (map['startIP']! as String).input(),
+      endIP: (() {
+        final guardedValue = map['endIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startIP: (() {
+        final guardedValue = map['startIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

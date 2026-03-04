@@ -8,20 +8,21 @@ class DomainDevicesHostdevSubsysUsbSourceProduct {
 
   /// Creates a new [DomainDevicesHostdevSubsysUsbSourceProduct].
   /// [id] Specifies the unique identifier for the vendor of the USB device.
-  DomainDevicesHostdevSubsysUsbSourceProduct({
-    this.id,
-  });
+  DomainDevicesHostdevSubsysUsbSourceProduct({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory DomainDevicesHostdevSubsysUsbSourceProduct.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesHostdevSubsysUsbSourceProduct.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesHostdevSubsysUsbSourceProduct(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

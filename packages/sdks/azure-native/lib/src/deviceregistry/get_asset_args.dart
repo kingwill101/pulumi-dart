@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssetArgs {
   /// Asset name parameter.
   final pulumi.Input<String> assetName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAssetArgs].
   /// [assetName] Asset name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAssetArgs({
-    required this.assetName,
-    required this.resourceGroupName,
-  });
+  GetAssetArgs({required this.assetName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetAssetArgs {
 
   factory GetAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetArgs(
-      assetName: (map['assetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assetName: pulumi.Input.fromValue(map['assetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

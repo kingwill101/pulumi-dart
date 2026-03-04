@@ -5,7 +5,7 @@ import 'invocation_logging_configuration_state.dart';
 
 /// Manages Bedrock model invocation logging configuration.
 ///
-/// > Model invocation logging is configured per AWS region. To avoid overwriting settings, this resource should not be defined in multiple configurations.
+/// &gt; Model invocation logging is configured per AWS region. To avoid overwriting settings, this resource should not be defined in multiple configurations.
 ///
 /// ## Example Usage
 ///
@@ -425,7 +425,9 @@ import 'invocation_logging_configuration_state.dart';
 /// ```
 class InvocationLoggingConfiguration extends pulumi.CustomResource {
   /// The logging configuration values to set. See `logging_config` Block for details.
-  late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
+  late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig>
+  loggingConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -438,13 +440,15 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
     InvocationLoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig');
-    this.region = registerOutput<String>('region');
+         'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>(
+      'loggingConfig',
+    );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [InvocationLoggingConfiguration] resource's state with the given [name] and [id].
@@ -465,12 +469,14 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig');
-    this.region = registerOutput<String>('region');
+         'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>(
+      'loggingConfig',
+    );
+    region = registerOutput<String>('region');
   }
 }

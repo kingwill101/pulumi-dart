@@ -13,15 +13,16 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'addressDefinition': addressDefinition,
-    };
+    return <String, dynamic>{'addressDefinition': addressDefinition};
   }
 
-  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource(
-      addressDefinition: (map['addressDefinition'] as String).input(),
+      addressDefinition: pulumi.Input.fromValue(
+        map['addressDefinition'] as String,
+      ),
     );
   }
 }
-

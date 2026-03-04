@@ -8,20 +8,17 @@ class BareMetalAdminClusterLoadBalancerVipConfig {
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
-  BareMetalAdminClusterLoadBalancerVipConfig({
-    required this.controlPlaneVip,
-  });
+  BareMetalAdminClusterLoadBalancerVipConfig({required this.controlPlaneVip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'controlPlaneVip': controlPlaneVip,
-    };
+    return <String, dynamic>{'controlPlaneVip': controlPlaneVip};
   }
 
-  factory BareMetalAdminClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerVipConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterLoadBalancerVipConfig(
-      controlPlaneVip: (map['controlPlaneVip'] as String).input(),
+      controlPlaneVip: pulumi.Input.fromValue(map['controlPlaneVip'] as String),
     );
   }
 }
-

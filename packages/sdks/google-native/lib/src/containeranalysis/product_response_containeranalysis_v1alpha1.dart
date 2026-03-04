@@ -7,6 +7,7 @@ import 'identifier_helper_response.dart';
 class ProductResponseContaineranalysisV1alpha1 {
   /// Helps in identifying the underlying product.
   final pulumi.Input<IdentifierHelperResponse> identifierHelper;
+
   /// Name of the product.
   final pulumi.Input<String> name;
 
@@ -20,16 +21,25 @@ class ProductResponseContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identifierHelper': pulumi.Input.mapInputValue<IdentifierHelperResponse, Map<String, dynamic>>(identifierHelper, (value) => value.toMap()),
+      'identifierHelper':
+          pulumi.Input.mapInputValue<
+            IdentifierHelperResponse,
+            Map<String, dynamic>
+          >(identifierHelper, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory ProductResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ProductResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProductResponseContaineranalysisV1alpha1(
-      identifierHelper: (IdentifierHelperResponse.fromMap((map['identifierHelper'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      identifierHelper: pulumi.Input.fromValue(
+        IdentifierHelperResponse.fromMap(
+          (map['identifierHelper']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

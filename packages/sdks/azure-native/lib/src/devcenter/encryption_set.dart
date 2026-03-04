@@ -18,22 +18,31 @@ import 'system_data_response.dart';
 class EncryptionSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
   late final pulumi.Output<String?> devboxDisksEncryptionEnableStatus;
+
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
   late final pulumi.Output<String?> keyEncryptionKeyUrl;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -46,20 +55,22 @@ class EncryptionSet extends pulumi.CustomResource {
     EncryptionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:EncryptionSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.devboxDisksEncryptionEnableStatus = registerOutput<String?>('devboxDisksEncryptionEnableStatus');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.keyEncryptionKeyUrl = registerOutput<String?>('keyEncryptionKeyUrl');
-    this.location = registerOutput<String>('location');
+         'azure-native:devcenter:EncryptionSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    devboxDisksEncryptionEnableStatus = registerOutput<String?>(
+      'devboxDisksEncryptionEnableStatus',
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    keyEncryptionKeyUrl = registerOutput<String?>('keyEncryptionKeyUrl');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

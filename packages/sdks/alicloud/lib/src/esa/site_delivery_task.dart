@@ -13,7 +13,7 @@ import 'site_delivery_task_state.dart';
 ///
 /// For information about ESA Site Delivery Task and how to use it, see [What is Site Delivery Task](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateSiteDeliveryTask).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -348,38 +348,50 @@ class SiteDeliveryTask extends pulumi.CustomResource {
   /// Real-time log type. Valid values:
   /// - `dcdn_log_access_l1 (default)`: access log.
   late final pulumi.Output<String> businessType;
+
   /// Data Center. Values:
   late final pulumi.Output<String> dataCenter;
+
   /// Delivery Type:
   late final pulumi.Output<String> deliveryType;
+
   /// If the discard rate is not filled, the default value is 0.
   late final pulumi.Output<double?> discardRate;
+
   /// The list of delivery fields to be modified, separated by commas.
   late final pulumi.Output<String> fieldName;
+
   /// HTTP delivery configuration parameters. See `http_delivery` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskHttpDelivery?> httpDelivery;
+
   /// Kafka delivery configuration parameters. See `kafka_delivery` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskKafkaDelivery?> kafkaDelivery;
+
   /// OSS delivery configuration. See `oss_delivery` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskOssDelivery?> ossDelivery;
+
   /// S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskS3Delivery?> s3Delivery;
+
   /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
   late final pulumi.Output<String> siteId;
+
   /// SLS delivery configuration. See `sls_delivery` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskSlsDelivery?> slsDelivery;
+
   /// Task status, value:
   late final pulumi.Output<String> status;
+
   /// The task name.
   late final pulumi.Output<String> taskName;
 
@@ -392,24 +404,28 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     SiteDeliveryTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessType = registerOutput<String>('businessType');
-    this.dataCenter = registerOutput<String>('dataCenter');
-    this.deliveryType = registerOutput<String>('deliveryType');
-    this.discardRate = registerOutput<double?>('discardRate');
-    this.fieldName = registerOutput<String>('fieldName');
-    this.httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>('httpDelivery');
-    this.kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>('kafkaDelivery');
-    this.ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
-    this.s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
-    this.siteId = registerOutput<String>('siteId');
-    this.slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
-    this.status = registerOutput<String>('status');
-    this.taskName = registerOutput<String>('taskName');
+         'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessType = registerOutput<String>('businessType');
+    dataCenter = registerOutput<String>('dataCenter');
+    deliveryType = registerOutput<String>('deliveryType');
+    discardRate = registerOutput<double?>('discardRate');
+    fieldName = registerOutput<String>('fieldName');
+    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
+      'httpDelivery',
+    );
+    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
+      'kafkaDelivery',
+    );
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
+    siteId = registerOutput<String>('siteId');
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
+    status = registerOutput<String>('status');
+    taskName = registerOutput<String>('taskName');
   }
 
   /// Gets an existing [SiteDeliveryTask] resource's state with the given [name] and [id].
@@ -430,23 +446,27 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessType = registerOutput<String>('businessType');
-    this.dataCenter = registerOutput<String>('dataCenter');
-    this.deliveryType = registerOutput<String>('deliveryType');
-    this.discardRate = registerOutput<double?>('discardRate');
-    this.fieldName = registerOutput<String>('fieldName');
-    this.httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>('httpDelivery');
-    this.kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>('kafkaDelivery');
-    this.ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
-    this.s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
-    this.siteId = registerOutput<String>('siteId');
-    this.slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
-    this.status = registerOutput<String>('status');
-    this.taskName = registerOutput<String>('taskName');
+         'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessType = registerOutput<String>('businessType');
+    dataCenter = registerOutput<String>('dataCenter');
+    deliveryType = registerOutput<String>('deliveryType');
+    discardRate = registerOutput<double?>('discardRate');
+    fieldName = registerOutput<String>('fieldName');
+    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
+      'httpDelivery',
+    );
+    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
+      'kafkaDelivery',
+    );
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
+    siteId = registerOutput<String>('siteId');
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
+    status = registerOutput<String>('status');
+    taskName = registerOutput<String>('taskName');
   }
 }

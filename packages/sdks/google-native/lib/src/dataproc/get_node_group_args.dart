@@ -35,11 +35,14 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      nodeGroupId: (map['nodeGroupId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      nodeGroupId: pulumi.Input.fromValue(map['nodeGroupId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

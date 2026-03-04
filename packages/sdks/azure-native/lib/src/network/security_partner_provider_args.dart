@@ -10,16 +10,22 @@ import 'sub_resource.dart';
 class SecurityPartnerProviderArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Security Partner Provider.
   final pulumi.Input<String>? securityPartnerProviderName;
+
   /// The security provider name.
   final pulumi.Input<String>? securityProviderName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The virtualHub to which the Security Partner Provider belongs.
   final pulumi.Input<SubResource>? virtualHub;
 
@@ -49,20 +55,53 @@ class SecurityPartnerProviderArgs {
       'securityPartnerProviderName': ?securityPartnerProviderName,
       'securityProviderName': ?securityProviderName,
       'tags': ?tags,
-      'virtualHub': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(virtualHub, (value) => value.toMap()),
+      'virtualHub':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(virtualHub, (value) => value.toMap()),
     };
   }
 
   factory SecurityPartnerProviderArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPartnerProviderArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPartnerProviderName: map['securityPartnerProviderName'] == null ? null : (map['securityPartnerProviderName']! as String).input(),
-      securityProviderName: map['securityProviderName'] == null ? null : (map['securityProviderName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityPartnerProviderName: (() {
+        final guardedValue = map['securityPartnerProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityProviderName: (() {
+        final guardedValue = map['securityProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualHub: (() {
+        final guardedValue = map['virtualHub'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

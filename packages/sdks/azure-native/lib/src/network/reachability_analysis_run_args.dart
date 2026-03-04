@@ -10,12 +10,16 @@ import 'reachability_analysis_run_properties.dart';
 class ReachabilityAnalysisRunArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// Represents the Reachability Analysis Run properties.
   final pulumi.Input<ReachabilityAnalysisRunProperties> properties;
+
   /// Reachability Analysis Run name.
   final pulumi.Input<String>? reachabilityAnalysisRunName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -36,7 +40,11 @@ class ReachabilityAnalysisRunArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkManagerName': networkManagerName,
-      'properties': pulumi.Input.mapInputValue<ReachabilityAnalysisRunProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ReachabilityAnalysisRunProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'reachabilityAnalysisRunName': ?reachabilityAnalysisRunName,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
@@ -45,12 +53,23 @@ class ReachabilityAnalysisRunArgs {
 
   factory ReachabilityAnalysisRunArgs.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunArgs(
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      properties: (ReachabilityAnalysisRunProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      reachabilityAnalysisRunName: map['reachabilityAnalysisRunName'] == null ? null : (map['reachabilityAnalysisRunName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      properties: pulumi.Input.fromValue(
+        ReachabilityAnalysisRunProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      reachabilityAnalysisRunName: (() {
+        final guardedValue = map['reachabilityAnalysisRunName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

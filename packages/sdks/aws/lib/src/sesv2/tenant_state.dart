@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TenantState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Current sending status of the tenant.
   final pulumi.Input<String>? sendingStatus;
+
   /// Map of tags to assign to the tenant.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the tenant, including provider default tags.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// ARN of the Tenant.
   final pulumi.Input<String>? tenantArn;
+
   /// ID of the Tenant.
   final pulumi.Input<String>? tenantId;
+
   /// Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
   ///
   /// The following arguments are optional:
@@ -53,14 +59,45 @@ class TenantState {
 
   factory TenantState.fromMap(Map<String, dynamic> map) {
     return TenantState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sendingStatus: map['sendingStatus'] == null ? null : ((map['sendingStatus'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      tenantArn: map['tenantArn'] == null ? null : ((map['tenantArn'] as String).input()).input(),
-      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
-      tenantName: map['tenantName'] == null ? null : ((map['tenantName'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendingStatus: (() {
+        final guardedValue = map['sendingStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tenantArn: (() {
+        final guardedValue = map['tenantArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantName: (() {
+        final guardedValue = map['tenantName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

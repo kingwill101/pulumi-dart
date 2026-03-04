@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlowsArgs {
   /// A list of Flow IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The number of resource queries.
   final pulumi.Input<int>? limit;
+
   /// A regex string to filter results by Flow name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -21,12 +24,7 @@ class GetFlowsArgs {
   /// [limit] The number of resource queries.
   /// [nameRegex] A regex string to filter results by Flow name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetFlowsArgs({
-    this.ids,
-    this.limit,
-    this.nameRegex,
-    this.outputFile,
-  });
+  GetFlowsArgs({this.ids, this.limit, this.nameRegex, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +37,26 @@ class GetFlowsArgs {
 
   factory GetFlowsArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      limit: (() {
+        final guardedValue = map['limit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

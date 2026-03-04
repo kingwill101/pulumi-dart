@@ -1,5 +1,3 @@
-library module_datastream;
-
 export 'datastream/backfill_all_strategy.dart';
 export 'datastream/backfill_all_strategy_datastream_v1alpha1.dart';
 export 'datastream/backfill_all_strategy_response.dart';

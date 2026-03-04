@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroup {
   /// The resource ID of the Action Group. This cannot be null or empty.
   final pulumi.Input<String> actionGroupId;
+
   /// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
   final pulumi.Input<Map<String, String>>? webhookProperties;
 
   /// Creates a new [ActionGroup].
   /// [actionGroupId] The resource ID of the Action Group. This cannot be null or empty.
   /// [webhookProperties] the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-  ActionGroup({
-    required this.actionGroupId,
-    this.webhookProperties,
-  });
+  ActionGroup({required this.actionGroupId, this.webhookProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class ActionGroup {
 
   factory ActionGroup.fromMap(Map<String, dynamic> map) {
     return ActionGroup(
-      actionGroupId: (map['actionGroupId'] as String).input(),
-      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties']! as Map).cast<String, String>()).input(),
+      actionGroupId: pulumi.Input.fromValue(map['actionGroupId'] as String),
+      webhookProperties: (() {
+        final guardedValue = map['webhookProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

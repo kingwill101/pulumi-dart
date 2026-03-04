@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton {
   /// Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
   final pulumi.Input<String> text;
+
   /// Value returned to Amazon Lex when the user chooses this button. This must be one of the slot values configured for the slot.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-      'value': value,
-    };
+    return <String, dynamic>{'text': text, 'value': value};
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton(
-      text: (map['text'] as String).input(),
-      value: (map['value'] as String).input(),
+      text: pulumi.Input.fromValue(map['text'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -9,16 +9,15 @@ enum BackendServiceSessionAffinity {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const BackendServiceSessionAffinity(this.value);
-  final String value;
+  const BackendServiceSessionAffinity(this.wireValue);
+  final String wireValue;
 
   static BackendServiceSessionAffinity fromValue(String value) {
     for (final item in BackendServiceSessionAffinity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendServiceSessionAffinity value: $value');
   }
 }
-

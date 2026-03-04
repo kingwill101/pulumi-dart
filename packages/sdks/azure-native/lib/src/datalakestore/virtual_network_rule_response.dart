@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The resource identifier for the subnet.
   final pulumi.Input<String> subnetId;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -36,11 +39,10 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

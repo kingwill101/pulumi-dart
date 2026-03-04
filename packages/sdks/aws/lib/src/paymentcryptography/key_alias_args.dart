@@ -11,8 +11,10 @@ class KeyAliasArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> aliasName;
+
   /// ARN of the key.
   final pulumi.Input<String>? keyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,11 +22,7 @@ class KeyAliasArgs {
   /// [aliasName] Name of the Key Alias.
   /// [keyArn] ARN of the key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyAliasArgs({
-    required this.aliasName,
-    this.keyArn,
-    this.region,
-  });
+  KeyAliasArgs({required this.aliasName, this.keyArn, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,17 @@ class KeyAliasArgs {
 
   factory KeyAliasArgs.fromMap(Map<String, dynamic> map) {
     return KeyAliasArgs(
-      aliasName: (map['aliasName'] as String).input(),
-      keyArn: map['keyArn'] == null ? null : ((map['keyArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      aliasName: pulumi.Input.fromValue(map['aliasName'] as String),
+      keyArn: (() {
+        final guardedValue = map['keyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

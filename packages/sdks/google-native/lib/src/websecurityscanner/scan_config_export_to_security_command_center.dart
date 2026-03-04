@@ -1,19 +1,22 @@
 /// Controls export of scan configurations and results to Security Command Center.
 enum ScanConfigExportToSecurityCommandCenter {
-  exportToSecurityCommandCenterUnspecified("EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"),
+  exportToSecurityCommandCenterUnspecified(
+    "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED",
+  ),
   enabled("ENABLED"),
   disabled("DISABLED");
 
-  const ScanConfigExportToSecurityCommandCenter(this.value);
-  final String value;
+  const ScanConfigExportToSecurityCommandCenter(this.wireValue);
+  final String wireValue;
 
   static ScanConfigExportToSecurityCommandCenter fromValue(String value) {
     for (final item in ScanConfigExportToSecurityCommandCenter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigExportToSecurityCommandCenter value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigExportToSecurityCommandCenter value: $value',
+    );
   }
 }
-

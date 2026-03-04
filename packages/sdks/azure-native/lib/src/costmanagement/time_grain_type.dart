@@ -28,16 +28,15 @@ enum TimeGrainType {
   last7Days("Last7Days"),
   last30Days("Last30Days");
 
-  const TimeGrainType(this.value);
-  final String value;
+  const TimeGrainType(this.wireValue);
+  final String wireValue;
 
   static TimeGrainType fromValue(String value) {
     for (final item in TimeGrainType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TimeGrainType value: $value');
   }
 }
-

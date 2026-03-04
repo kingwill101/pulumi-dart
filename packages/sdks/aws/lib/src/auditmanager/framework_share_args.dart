@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkShareArgs {
   /// Comment from the sender about the share request.
   final pulumi.Input<String>? comment;
+
   /// Amazon Web Services account of the recipient.
   final pulumi.Input<String> destinationAccount;
+
   /// Amazon Web Services region of the recipient.
   final pulumi.Input<String> destinationRegion;
+
   /// Unique identifier for the shared custom framework.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> frameworkId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -46,12 +50,23 @@ class FrameworkShareArgs {
 
   factory FrameworkShareArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkShareArgs(
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      destinationAccount: (map['destinationAccount'] as String).input(),
-      destinationRegion: (map['destinationRegion'] as String).input(),
-      frameworkId: (map['frameworkId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationAccount: pulumi.Input.fromValue(
+        map['destinationAccount'] as String,
+      ),
+      destinationRegion: pulumi.Input.fromValue(
+        map['destinationRegion'] as String,
+      ),
+      frameworkId: pulumi.Input.fromValue(map['frameworkId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

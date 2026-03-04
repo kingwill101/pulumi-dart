@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketplacePlanResponse {
   /// The identifying name of the Offer of the Marketplace Plan.
   final pulumi.Input<String> offerId;
+
   /// The identifying name of the Plan of the Marketplace Plan.
   final pulumi.Input<String> planId;
+
   /// The identifying name of the Publisher of the Marketplace Plan.
   final pulumi.Input<String> publisherId;
 
@@ -30,10 +32,9 @@ class MarketplacePlanResponse {
 
   factory MarketplacePlanResponse.fromMap(Map<String, dynamic> map) {
     return MarketplacePlanResponse(
-      offerId: (map['offerId'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      publisherId: (map['publisherId'] as String).input(),
+      offerId: pulumi.Input.fromValue(map['offerId'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      publisherId: pulumi.Input.fromValue(map['publisherId'] as String),
     );
   }
 }
-

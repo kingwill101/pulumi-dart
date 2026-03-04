@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1RevenueShareRange {
   /// Ending value of the range. Set to 0 or `null` for the last range of values.
   final pulumi.Input<String>? end;
+
   /// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
   final pulumi.Input<double>? sharePercentage;
+
   /// Starting value of the range. Set to 0 or `null` for the initial range of values.
   final pulumi.Input<String>? start;
 
@@ -29,12 +31,25 @@ class GoogleCloudApigeeV1RevenueShareRange {
     };
   }
 
-  factory GoogleCloudApigeeV1RevenueShareRange.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1RevenueShareRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1RevenueShareRange(
-      end: map['end'] == null ? null : (map['end']! as String).input(),
-      sharePercentage: map['sharePercentage'] == null ? null : (map['sharePercentage']! as double).input(),
-      start: map['start'] == null ? null : (map['start']! as String).input(),
+      end: (() {
+        final guardedValue = map['end'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharePercentage: (() {
+        final guardedValue = map['sharePercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      start: (() {
+        final guardedValue = map['start'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

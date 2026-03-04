@@ -12,20 +12,17 @@ class DefaultPatchBaselineArgs {
 
   /// Creates a new [DefaultPatchBaselineArgs].
   /// [patchBaselineName] The name of the patch baseline.
-  DefaultPatchBaselineArgs({
-    required this.patchBaselineName,
-  });
+  DefaultPatchBaselineArgs({required this.patchBaselineName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'patchBaselineName': patchBaselineName,
-    };
+    return <String, dynamic>{'patchBaselineName': patchBaselineName};
   }
 
   factory DefaultPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineArgs(
-      patchBaselineName: (map['patchBaselineName'] as String).input(),
+      patchBaselineName: pulumi.Input.fromValue(
+        map['patchBaselineName'] as String,
+      ),
     );
   }
 }
-

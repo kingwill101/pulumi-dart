@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationDestinationAuthCustomHeader {
   /// The notification property key.
   final pulumi.Input<String> key;
+
   /// The notification property value.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class NotificationDestinationAuthCustomHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory NotificationDestinationAuthCustomHeader.fromMap(Map<String, dynamic> map) {
+  factory NotificationDestinationAuthCustomHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NotificationDestinationAuthCustomHeader(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

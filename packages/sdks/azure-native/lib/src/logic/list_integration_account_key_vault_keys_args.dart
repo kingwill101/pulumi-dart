@@ -10,10 +10,13 @@ import 'key_vault_reference.dart';
 class ListIntegrationAccountKeyVaultKeysArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The key vault reference.
   final pulumi.Input<KeyVaultReference> keyVault;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The skip token.
   final pulumi.Input<String>? skipToken;
 
@@ -32,19 +35,36 @@ class ListIntegrationAccountKeyVaultKeysArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'integrationAccountName': integrationAccountName,
-      'keyVault': pulumi.Input.mapInputValue<KeyVaultReference, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
+      'keyVault':
+          pulumi.Input.mapInputValue<KeyVaultReference, Map<String, dynamic>>(
+            keyVault,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'skipToken': ?skipToken,
     };
   }
 
-  factory ListIntegrationAccountKeyVaultKeysArgs.fromMap(Map<String, dynamic> map) {
+  factory ListIntegrationAccountKeyVaultKeysArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIntegrationAccountKeyVaultKeysArgs(
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      keyVault: (KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      keyVault: pulumi.Input.fromValue(
+        KeyVaultReference.fromMap(
+          (map['keyVault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

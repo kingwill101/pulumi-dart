@@ -6,14 +6,18 @@ class EntryAspectAspect {
   /// (Output)
   /// The resource name of the type used to create this Aspect.
   final pulumi.Input<String>? aspectType;
+
   /// (Output)
   /// The time when the Aspect was created.
   final pulumi.Input<String>? createTime;
+
   /// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
   final pulumi.Input<String> data;
+
   /// (Output)
   /// The path in the entry under which the aspect is attached.
   final pulumi.Input<String>? path;
+
   /// (Output)
   /// The time when the Aspect was last modified.
   final pulumi.Input<String>? updateTime;
@@ -44,12 +48,27 @@ class EntryAspectAspect {
 
   factory EntryAspectAspect.fromMap(Map<String, dynamic> map) {
     return EntryAspectAspect(
-      aspectType: map['aspectType'] == null ? null : (map['aspectType']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      data: (map['data'] as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      aspectType: (() {
+        final guardedValue = map['aspectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

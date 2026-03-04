@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExplicitProxy {
   /// When set to true, explicit proxy mode is enabled.
   final pulumi.Input<bool>? enableExplicitProxy;
+
   /// When set to true, pac file port and url needs to be provided.
   final pulumi.Input<bool>? enablePacFile;
+
   /// Port number for explicit proxy http protocol, cannot be greater than 64000.
   final pulumi.Input<int>? httpPort;
+
   /// Port number for explicit proxy https protocol, cannot be greater than 64000.
   final pulumi.Input<int>? httpsPort;
+
   /// SAS URL for PAC file.
   final pulumi.Input<String>? pacFile;
+
   /// Port number for firewall to serve PAC file.
   final pulumi.Input<int>? pacFilePort;
 
@@ -46,13 +51,36 @@ class ExplicitProxy {
 
   factory ExplicitProxy.fromMap(Map<String, dynamic> map) {
     return ExplicitProxy(
-      enableExplicitProxy: map['enableExplicitProxy'] == null ? null : (map['enableExplicitProxy']! as bool).input(),
-      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile']! as bool).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
-      pacFile: map['pacFile'] == null ? null : (map['pacFile']! as String).input(),
-      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort']! as int).input(),
+      enableExplicitProxy: (() {
+        final guardedValue = map['enableExplicitProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePacFile: (() {
+        final guardedValue = map['enablePacFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      httpPort: (() {
+        final guardedValue = map['httpPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpsPort: (() {
+        final guardedValue = map['httpsPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pacFile: (() {
+        final guardedValue = map['pacFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pacFilePort: (() {
+        final guardedValue = map['pacFilePort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

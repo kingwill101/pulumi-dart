@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatadogApiKeyResponse {
   /// The time of creation of the API key.
   final pulumi.Input<String>? created;
+
   /// The user that created the API key.
   final pulumi.Input<String>? createdBy;
+
   /// The value of the API key.
   final pulumi.Input<String> key;
+
   /// The name of the API key.
   final pulumi.Input<String>? name;
 
@@ -35,11 +38,22 @@ class DatadogApiKeyResponse {
 
   factory DatadogApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatadogApiKeyResponse(
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
-      key: (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

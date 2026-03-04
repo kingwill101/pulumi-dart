@@ -5,19 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse {
   /// Migration end time
   final pulumi.Input<String> endedOn;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
   final pulumi.Input<String> resultType;
+
   /// Source server name
   final pulumi.Input<String> sourceServer;
+
   /// Source server version
   final pulumi.Input<String> sourceServerVersion;
+
   /// Migration start time
   final pulumi.Input<String> startedOn;
+
   /// Target server name
   final pulumi.Input<String> targetServer;
+
   /// Target server version
   final pulumi.Input<String> targetServerVersion;
 
@@ -54,17 +61,22 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse {
     };
   }
 
-  factory MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse(
-      endedOn: (map['endedOn'] as String).input(),
-      id: (map['id'] as String).input(),
-      resultType: (map['resultType'] as String).input(),
-      sourceServer: (map['sourceServer'] as String).input(),
-      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
-      startedOn: (map['startedOn'] as String).input(),
-      targetServer: (map['targetServer'] as String).input(),
-      targetServerVersion: (map['targetServerVersion'] as String).input(),
+      endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resultType: pulumi.Input.fromValue(map['resultType'] as String),
+      sourceServer: pulumi.Input.fromValue(map['sourceServer'] as String),
+      sourceServerVersion: pulumi.Input.fromValue(
+        map['sourceServerVersion'] as String,
+      ),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
+      targetServer: pulumi.Input.fromValue(map['targetServer'] as String),
+      targetServerVersion: pulumi.Input.fromValue(
+        map['targetServerVersion'] as String,
+      ),
     );
   }
 }
-

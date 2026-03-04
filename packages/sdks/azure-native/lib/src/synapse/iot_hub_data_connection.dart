@@ -145,31 +145,44 @@ import 'system_data_response.dart';
 class IotHubDataConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The iot hub consumer group.
   late final pulumi.Output<String> consumerGroup;
+
   /// The data format of the message. Optionally the data format can be added to each message.
   late final pulumi.Output<String?> dataFormat;
+
   /// System properties of the iot hub
   late final pulumi.Output<List<String>?> eventSystemProperties;
+
   /// The resource ID of the Iot hub to be used to create a data connection.
   late final pulumi.Output<String> iotHubResourceId;
+
   /// Kind of the endpoint for the data connection
   /// Expected value is 'IotHub'.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The name of the share access policy
   late final pulumi.Output<String> sharedAccessPolicyName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
   late final pulumi.Output<String?> tableName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,24 +195,26 @@ class IotHubDataConnection extends pulumi.CustomResource {
     IotHubDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:IotHubDataConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
-    this.iotHubResourceId = registerOutput<String>('iotHubResourceId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure-native:synapse:IotHubDataConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    eventSystemProperties = registerOutput<List<String>?>(
+      'eventSystemProperties',
+    );
+    iotHubResourceId = registerOutput<String>('iotHubResourceId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tableName = registerOutput<String?>('tableName');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
   }
 }

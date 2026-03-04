@@ -183,21 +183,30 @@ import 'system_data_response.dart';
 /// ```
 class ApiSource extends pulumi.CustomResource {
   /// API source configuration for Azure API Management.
-  late final pulumi.Output<AzureApiManagementSourceResponse?> azureApiManagementSource;
+  late final pulumi.Output<AzureApiManagementSourceResponse?>
+  azureApiManagementSource;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates if the specification should be imported along with metadata.
   late final pulumi.Output<String?> importSpecification;
+
   /// The state of the API source link
   late final pulumi.Output<LinkStateResponse> linkState;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The target environment resource ID.
   late final pulumi.Output<String?> targetEnvironmentId;
+
   /// The target lifecycle stage.
   late final pulumi.Output<String?> targetLifecycleStage;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -210,19 +219,22 @@ class ApiSource extends pulumi.CustomResource {
     ApiSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apicenter:ApiSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiManagementSource = registerOutput<AzureApiManagementSourceResponse?>('azureApiManagementSource');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.importSpecification = registerOutput<String?>('importSpecification');
-    this.linkState = registerOutput<LinkStateResponse>('linkState');
+         'azure-native:apicenter:ApiSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiManagementSource =
+        registerOutput<AzureApiManagementSourceResponse?>(
+          'azureApiManagementSource',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    importSpecification = registerOutput<String?>('importSpecification');
+    linkState = registerOutput<LinkStateResponse>('linkState');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetEnvironmentId = registerOutput<String?>('targetEnvironmentId');
-    this.targetLifecycleStage = registerOutput<String?>('targetLifecycleStage');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetEnvironmentId = registerOutput<String?>('targetEnvironmentId');
+    targetLifecycleStage = registerOutput<String?>('targetLifecycleStage');
+    type = registerOutput<String>('type');
   }
 }

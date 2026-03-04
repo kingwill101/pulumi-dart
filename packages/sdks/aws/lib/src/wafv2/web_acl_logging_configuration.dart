@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_logging_configuration_args.dart';
 import 'web_acl_logging_configuration_logging_filter.dart';
-import 'web_acl_logging_configuration_redacted_field.dart';
 import 'web_acl_logging_configuration_state.dart';
 
 /// This resource creates a WAFv2 Web ACL Logging Configuration.
 ///
-/// !> **WARNING:** When logging from a WAFv2 Web ACL to a CloudWatch Log Group, the WAFv2 service tries to create or update a generic Log Resource Policy named `AWSWAF-LOGS`. However, if there are a large number of Web ACLs or if the account frequently creates and deletes Web ACLs, this policy may exceed the maximum policy size. As a result, this resource type will fail to be created. More details about this issue can be found in this issue. To prevent this issue, you can manage a specific resource policy. Please refer to the example below for managing a CloudWatch Log Group with a managed CloudWatch Log Resource Policy.
+/// !&gt; **WARNING:** When logging from a WAFv2 Web ACL to a CloudWatch Log Group, the WAFv2 service tries to create or update a generic Log Resource Policy named `AWSWAF-LOGS`. However, if there are a large number of Web ACLs or if the account frequently creates and deletes Web ACLs, this policy may exceed the maximum policy size. As a result, this resource type will fail to be created. More details about this issue can be found in this issue. To prevent this issue, you can manage a specific resource policy. Please refer to the example below for managing a CloudWatch Log Group with a managed CloudWatch Log Resource Policy.
 ///
 /// ## Example Usage
 ///
@@ -441,12 +440,17 @@ import 'web_acl_logging_configuration_state.dart';
 class WebAclLoggingConfiguration extends pulumi.CustomResource {
   /// Configuration block that allows you to associate Amazon Kinesis Data Firehose, Cloudwatch Log log group, or S3 bucket Amazon Resource Names (ARNs) with the web ACL. **Note:** data firehose, log group, or bucket name **must** be prefixed with `aws-waf-logs-`, e.g. `aws-waf-logs-example-firehose`, `aws-waf-logs-example-log-group`, or `aws-waf-logs-example-bucket`.
   late final pulumi.Output<List<String>> logDestinationConfigs;
+
   /// Configuration block that specifies which web requests are kept in the logs and which are dropped. It allows filtering based on the rule action and the web request labels applied by matching rules during web ACL evaluation. For more details, refer to the Logging Filter section below.
-  late final pulumi.Output<WebAclLoggingConfigurationLoggingFilter?> loggingFilter;
+  late final pulumi.Output<WebAclLoggingConfigurationLoggingFilter?>
+  loggingFilter;
+
   /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported. See Redacted Fields below for more details.
-  late final pulumi.Output<List<WebAclLoggingConfigurationRedactedField>?> redactedFields;
+  late final pulumi.Output<List<Map<String, dynamic>>?> redactedFields;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
   late final pulumi.Output<String> resourceArn;
 
@@ -459,16 +463,22 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
     WebAclLoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs');
-    this.loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter');
-    this.redactedFields = registerOutput<List<WebAclLoggingConfigurationRedactedField>?>('redactedFields');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logDestinationConfigs = registerOutput<List<String>>(
+      'logDestinationConfigs',
+    );
+    loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>(
+      'loggingFilter',
+    );
+    redactedFields = registerOutput<List<Map<String, dynamic>>?>(
+      'redactedFields',
+    );
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 
   /// Gets an existing [WebAclLoggingConfiguration] resource's state with the given [name] and [id].
@@ -489,15 +499,21 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs');
-    this.loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter');
-    this.redactedFields = registerOutput<List<WebAclLoggingConfigurationRedactedField>?>('redactedFields');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logDestinationConfigs = registerOutput<List<String>>(
+      'logDestinationConfigs',
+    );
+    loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>(
+      'loggingFilter',
+    );
+    redactedFields = registerOutput<List<Map<String, dynamic>>?>(
+      'redactedFields',
+    );
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 }

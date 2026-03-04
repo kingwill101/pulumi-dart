@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationServiceInstanceResponse {
   /// Name of the Application Configuration Service instance
   final pulumi.Input<String> name;
+
   /// Status of the Application Configuration Service instance
   final pulumi.Input<String> status;
 
@@ -18,17 +19,15 @@ class ConfigurationServiceInstanceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'status': status,
-    };
+    return <String, dynamic>{'name': name, 'status': status};
   }
 
-  factory ConfigurationServiceInstanceResponse.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationServiceInstanceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationServiceInstanceResponse(
-      name: (map['name'] as String).input(),
-      status: (map['status'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

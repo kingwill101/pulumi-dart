@@ -7,14 +7,19 @@ import 'virtual_cluster_container_provider.dart';
 class VirtualClusterState {
   /// ARN of the cluster.
   final pulumi.Input<String>? arn;
+
   /// Configuration block for the container provider associated with your cluster.
   final pulumi.Input<VirtualClusterContainerProvider>? containerProvider;
+
   /// Name of the virtual cluster.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -37,7 +42,11 @@ class VirtualClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'containerProvider': ?pulumi.Input.mapOptionalInputValue<VirtualClusterContainerProvider, Map<String, dynamic>>(containerProvider, (value) => value.toMap()),
+      'containerProvider':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualClusterContainerProvider,
+            Map<String, dynamic>
+          >(containerProvider, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
@@ -47,13 +56,44 @@ class VirtualClusterState {
 
   factory VirtualClusterState.fromMap(Map<String, dynamic> map) {
     return VirtualClusterState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      containerProvider: map['containerProvider'] == null ? null : ((VirtualClusterContainerProvider.fromMap((map['containerProvider']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerProvider: (() {
+        final guardedValue = map['containerProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualClusterContainerProvider.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

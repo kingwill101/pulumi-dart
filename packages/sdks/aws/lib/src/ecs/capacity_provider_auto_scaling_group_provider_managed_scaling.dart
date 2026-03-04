@@ -7,12 +7,16 @@ class CapacityProviderAutoScalingGroupProviderManagedScaling {
   ///
   /// For more information on how the instance warmup period contributes to managed scale-out behavior, see [Control the instances Amazon ECS terminates](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/managed-termination-protection.html) in the _Amazon Elastic Container Service Developer Guide_.
   final pulumi.Input<int>? instanceWarmupPeriod;
+
   /// Maximum step adjustment size. A number between 1 and 10,000.
   final pulumi.Input<int>? maximumScalingStepSize;
+
   /// Minimum step adjustment size. A number between 1 and 10,000.
   final pulumi.Input<int>? minimumScalingStepSize;
+
   /// Whether auto scaling is managed by ECS. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? status;
+
   /// Target utilization for the capacity provider. A number between 1 and 100.
   final pulumi.Input<int>? targetCapacity;
 
@@ -40,14 +44,35 @@ class CapacityProviderAutoScalingGroupProviderManagedScaling {
     };
   }
 
-  factory CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderAutoScalingGroupProviderManagedScaling(
-      instanceWarmupPeriod: map['instanceWarmupPeriod'] == null ? null : ((map['instanceWarmupPeriod'] as int).input()).input(),
-      maximumScalingStepSize: map['maximumScalingStepSize'] == null ? null : ((map['maximumScalingStepSize'] as int).input()).input(),
-      minimumScalingStepSize: map['minimumScalingStepSize'] == null ? null : ((map['minimumScalingStepSize'] as int).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      targetCapacity: map['targetCapacity'] == null ? null : ((map['targetCapacity'] as int).input()).input(),
+      instanceWarmupPeriod: (() {
+        final guardedValue = map['instanceWarmupPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maximumScalingStepSize: (() {
+        final guardedValue = map['maximumScalingStepSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimumScalingStepSize: (() {
+        final guardedValue = map['minimumScalingStepSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetCapacity: (() {
+        final guardedValue = map['targetCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

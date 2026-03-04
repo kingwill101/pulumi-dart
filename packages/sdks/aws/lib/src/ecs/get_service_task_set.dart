@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTaskSet {
   /// ARN of the task set
   final pulumi.Input<String> arn;
+
   /// Time when task set was created (RFC3339 format)
   final pulumi.Input<String> createdAt;
+
   /// Task set ID
   final pulumi.Input<String> id;
+
   /// Number of pending tasks
   final pulumi.Input<int> pendingCount;
+
   /// Number of running tasks
   final pulumi.Input<int> runningCount;
+
   /// Stability status of the task set
   final pulumi.Input<String> stabilityStatus;
+
   /// Task set status
   final pulumi.Input<String> status;
+
   /// Task definition ARN
   final pulumi.Input<String> taskDefinition;
+
   /// Time when task set was last updated (RFC3339 format)
   final pulumi.Input<String> updatedAt;
 
@@ -60,16 +68,15 @@ class GetServiceTaskSet {
 
   factory GetServiceTaskSet.fromMap(Map<String, dynamic> map) {
     return GetServiceTaskSet(
-      arn: (map['arn'] as String).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      id: (map['id'] as String).input(),
-      pendingCount: (map['pendingCount'] as int).input(),
-      runningCount: (map['runningCount'] as int).input(),
-      stabilityStatus: (map['stabilityStatus'] as String).input(),
-      status: (map['status'] as String).input(),
-      taskDefinition: (map['taskDefinition'] as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pendingCount: pulumi.Input.fromValue(map['pendingCount'] as int),
+      runningCount: pulumi.Input.fromValue(map['runningCount'] as int),
+      stabilityStatus: pulumi.Input.fromValue(map['stabilityStatus'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      taskDefinition: pulumi.Input.fromValue(map['taskDefinition'] as String),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

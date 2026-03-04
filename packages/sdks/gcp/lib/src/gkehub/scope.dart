@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope_args.dart';
 import 'scope_gkehub_state.dart';
-import 'scope_state.dart';
 
 /// Scope represents a Scope in a Fleet.
 ///
@@ -191,36 +190,47 @@ import 'scope_state.dart';
 class Scope extends pulumi.CustomResource {
   /// Time the Scope was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Time the Scope was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Labels for this Scope.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The unique identifier of the scope
   late final pulumi.Output<String> name;
+
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
   /// labels (`namespace_labels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
   late final pulumi.Output<Map<String, String>?> namespaceLabels;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The client-provided identifier of the scope.
   late final pulumi.Output<String> scopeId;
+
   /// State of the scope resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<ScopeState>> states;
+  late final pulumi.Output<List<Map<String, dynamic>>> states;
+
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
+
   /// Time the Scope was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -228,28 +238,25 @@ class Scope extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Scope]. {@macro pulumi_gkehub_scope_scope_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Scope(
-    String name, {
-    ScopeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:gkehub/scope:Scope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteTime = registerOutput<String>('deleteTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+  Scope(String name, {ScopeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:gkehub/scope:Scope',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.namespaceLabels = registerOutput<Map<String, String>?>('namespaceLabels');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.scopeId = registerOutput<String>('scopeId');
-    this.states = registerOutput<List<ScopeState>>('states');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    namespaceLabels = registerOutput<Map<String, String>?>('namespaceLabels');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    scopeId = registerOutput<String>('scopeId');
+    states = registerOutput<List<Map<String, dynamic>>>('states');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Scope] resource's state with the given [name] and [id].
@@ -270,22 +277,22 @@ class Scope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:gkehub/scope:Scope',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteTime = registerOutput<String>('deleteTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:gkehub/scope:Scope',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.namespaceLabels = registerOutput<Map<String, String>?>('namespaceLabels');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.scopeId = registerOutput<String>('scopeId');
-    this.states = registerOutput<List<ScopeState>>('states');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    namespaceLabels = registerOutput<Map<String, String>?>('namespaceLabels');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    scopeId = registerOutput<String>('scopeId');
+    states = registerOutput<List<Map<String, dynamic>>>('states');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

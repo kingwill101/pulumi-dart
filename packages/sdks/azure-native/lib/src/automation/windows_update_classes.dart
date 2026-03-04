@@ -10,16 +10,15 @@ enum WindowsUpdateClasses {
   valueTools("Tools"),
   valueUpdates("Updates");
 
-  const WindowsUpdateClasses(this.value);
-  final String value;
+  const WindowsUpdateClasses(this.wireValue);
+  final String wireValue;
 
   static WindowsUpdateClasses fromValue(String value) {
     for (final item in WindowsUpdateClasses.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WindowsUpdateClasses value: $value');
   }
 }
-

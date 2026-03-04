@@ -9,27 +9,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetArgs {
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
   final pulumi.Input<List<String>>? ipv4Cidrs;
+
   /// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
   final pulumi.Input<List<String>>? ipv6Cidrs;
+
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
+
   /// The ID of the network to which this router belongs.
   /// Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
   final pulumi.Input<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A unique ID that identifies this subnet.
   final pulumi.Input<String> subnetId;
+
   /// VLAN ID for this subnetwork. If not specified, one is assigned automatically.
   final pulumi.Input<int>? vlanId;
+
   /// The name of the target Distributed Cloud Edge zone.
   final pulumi.Input<String> zone;
 
@@ -74,17 +83,42 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipv4Cidrs: map['ipv4Cidrs'] == null ? null : ((map['ipv4Cidrs']! as List).cast<String>()).input(),
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs']! as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
-      zone: (map['zone'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4Cidrs: (() {
+        final guardedValue = map['ipv4Cidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6Cidrs: (() {
+        final guardedValue = map['ipv6Cidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      vlanId: (() {
+        final guardedValue = map['vlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

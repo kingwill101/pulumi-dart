@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HPAScalingPolicyPatchAutoscalingV2beta2 {
   /// PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
   final pulumi.Input<int>? periodSeconds;
+
   /// Type is used to specify the scaling policy.
   final pulumi.Input<String>? type;
+
   /// Value contains the amount of change which is permitted by the policy. It must be greater than zero
   final pulumi.Input<int>? value;
 
@@ -29,12 +31,25 @@ class HPAScalingPolicyPatchAutoscalingV2beta2 {
     };
   }
 
-  factory HPAScalingPolicyPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory HPAScalingPolicyPatchAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HPAScalingPolicyPatchAutoscalingV2beta2(
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as int).input(),
+      periodSeconds: (() {
+        final guardedValue = map['periodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

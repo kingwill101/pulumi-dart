@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProviderArgs {
   /// The name of this Attestation Provider.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Attestation Provider exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetProviderArgs].
   /// [name] The name of this Attestation Provider.
   /// [resourceGroupName] The name of the Resource Group where the Attestation Provider exists.
-  GetProviderArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetProviderArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetProviderArgs {
 
   factory GetProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

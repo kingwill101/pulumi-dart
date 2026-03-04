@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'permission_response.dart';
 import 'system_data_response.dart';
 import 'table_resource_table_role_definition_args.dart';
 
@@ -218,16 +217,22 @@ import 'table_resource_table_role_definition_args.dart';
 class TableResourceTableRoleDefinition extends pulumi.CustomResource {
   /// A set of fully qualified Scopes at or below which Table Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
   late final pulumi.Output<List<String>?> assignableScopes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The set of operations allowed through this Role Definition.
-  late final pulumi.Output<List<PermissionResponse>?> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -240,17 +245,17 @@ class TableResourceTableRoleDefinition extends pulumi.CustomResource {
     TableResourceTableRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:TableResourceTableRoleDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignableScopes = registerOutput<List<String>?>('assignableScopes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cosmosdb:TableResourceTableRoleDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignableScopes = registerOutput<List<String>?>('assignableScopes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<PermissionResponse>?>('permissions');
-    this.roleName = registerOutput<String?>('roleName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    roleName = registerOutput<String?>('roleName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

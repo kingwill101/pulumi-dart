@@ -14,23 +14,40 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [region] Optional.
   /// [secrets] Required.
-  GetSecretArgs({
-    this.region,
-    required this.secrets,
-  });
+  GetSecretArgs({this.region, required this.secrets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      'secrets': pulumi.Input.mapInputValue<List<GetSecretSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secrets':
+          pulumi.Input.mapInputValue<
+            List<GetSecretSecret>,
+            List<Map<String, dynamic>>
+          >(
+            secrets,
+            (value) =>
+                pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secrets: (pulumi.Input.decodeList<GetSecretSecret>(map['secrets']!, (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secrets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetSecretSecret>(
+          map['secrets']!,
+          (value) =>
+              GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

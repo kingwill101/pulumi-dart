@@ -8,22 +8,28 @@ class FirewallInboundRule {
   /// or "1-65535" to open all ports for a protocol. Required for when protocol is
   /// `tcp` or `udp`.
   final pulumi.Input<String>? portRange;
+
   /// The type of traffic to be allowed.
   /// This may be one of "tcp", "udp", or "icmp".
   final pulumi.Input<String> protocol;
+
   /// An array of strings containing the IPv4
   /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
   /// inbound traffic will be accepted.
   final pulumi.Input<List<String>>? sourceAddresses;
+
   /// An array containing the IDs of
   /// the Droplets from which the inbound traffic will be accepted.
   final pulumi.Input<List<int>>? sourceDropletIds;
+
   /// An array containing the IDs of
   /// the Kubernetes clusters from which the inbound traffic will be accepted.
   final pulumi.Input<List<String>>? sourceKubernetesIds;
+
   /// An array containing the IDs
   /// of the Load Balancers from which the inbound traffic will be accepted.
   final pulumi.Input<List<String>>? sourceLoadBalancerUids;
+
   /// An array containing the names of Tags
   /// corresponding to groups of Droplets from which the inbound traffic
   /// will be accepted.
@@ -61,14 +67,37 @@ class FirewallInboundRule {
 
   factory FirewallInboundRule.fromMap(Map<String, dynamic> map) {
     return FirewallInboundRule(
-      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceDropletIds: map['sourceDropletIds'] == null ? null : ((map['sourceDropletIds']! as List).cast<int>()).input(),
-      sourceKubernetesIds: map['sourceKubernetesIds'] == null ? null : ((map['sourceKubernetesIds']! as List).cast<String>()).input(),
-      sourceLoadBalancerUids: map['sourceLoadBalancerUids'] == null ? null : ((map['sourceLoadBalancerUids']! as List).cast<String>()).input(),
-      sourceTags: map['sourceTags'] == null ? null : ((map['sourceTags']! as List).cast<String>()).input(),
+      portRange: (() {
+        final guardedValue = map['portRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceDropletIds: (() {
+        final guardedValue = map['sourceDropletIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      sourceKubernetesIds: (() {
+        final guardedValue = map['sourceKubernetesIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceLoadBalancerUids: (() {
+        final guardedValue = map['sourceLoadBalancerUids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceTags: (() {
+        final guardedValue = map['sourceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

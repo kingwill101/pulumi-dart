@@ -2,16 +2,15 @@ enum AutomaticClusterUpdateValue {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const AutomaticClusterUpdateValue(this.value);
-  final String value;
+  const AutomaticClusterUpdateValue(this.wireValue);
+  final String wireValue;
 
   static AutomaticClusterUpdateValue fromValue(String value) {
     for (final item in AutomaticClusterUpdateValue.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutomaticClusterUpdateValue value: $value');
   }
 }
-

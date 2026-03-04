@@ -9,20 +9,15 @@ class SuccessDetailResponse {
 
   /// Creates a new [SuccessDetailResponse].
   /// [otherNativeCrash] If a native process other than the app crashed.
-  SuccessDetailResponse({
-    required this.otherNativeCrash,
-  });
+  SuccessDetailResponse({required this.otherNativeCrash});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'otherNativeCrash': otherNativeCrash,
-    };
+    return <String, dynamic>{'otherNativeCrash': otherNativeCrash};
   }
 
   factory SuccessDetailResponse.fromMap(Map<String, dynamic> map) {
     return SuccessDetailResponse(
-      otherNativeCrash: (map['otherNativeCrash'] as bool).input(),
+      otherNativeCrash: pulumi.Input.fromValue(map['otherNativeCrash'] as bool),
     );
   }
 }
-

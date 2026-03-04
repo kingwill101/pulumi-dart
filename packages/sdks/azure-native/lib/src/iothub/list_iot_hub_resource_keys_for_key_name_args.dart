@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIotHubResourceKeysForKeyNameArgs {
   /// The name of the shared access policy.
   final pulumi.Input<String> keyName;
+
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the IoT hub.
   final pulumi.Input<String> resourceName;
 
@@ -32,12 +34,15 @@ class ListIotHubResourceKeysForKeyNameArgs {
     };
   }
 
-  factory ListIotHubResourceKeysForKeyNameArgs.fromMap(Map<String, dynamic> map) {
+  factory ListIotHubResourceKeysForKeyNameArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIotHubResourceKeysForKeyNameArgs(
-      keyName: (map['keyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

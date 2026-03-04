@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_group_args.dart';
-import 'app_group_attribute.dart';
 import 'app_group_state.dart';
 
 /// An `AppGroup` in Apigee.
@@ -847,26 +846,36 @@ import 'app_group_state.dart';
 class AppGroup extends pulumi.CustomResource {
   /// Internal identifier that cannot be edited
   late final pulumi.Output<String> appGroupId;
+
   /// A list of attributes
   /// Structure is documented below.
-  late final pulumi.Output<List<AppGroupAttribute>?> attributes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+
   /// Channel identifier identifies the owner maintaining this grouping.
   late final pulumi.Output<String?> channelId;
+
   /// A reference to the associated storefront/marketplace.
   late final pulumi.Output<String?> channelUri;
+
   /// Created time as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
+
   /// App group name displayed in the UI
   late final pulumi.Output<String?> displayName;
+
   /// Modified time as milliseconds since epoch.
   late final pulumi.Output<String> lastModifiedAt;
+
   /// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
   late final pulumi.Output<String> name;
+
   /// The Apigee Organization associated with the Apigee app group,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
+
   /// App group name displayed in the UI
   late final pulumi.Output<String> organization;
+
   /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   /// Possible values are: `active`, `inactive`.
   late final pulumi.Output<String?> status;
@@ -880,22 +889,22 @@ class AppGroup extends pulumi.CustomResource {
     AppGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/appGroup:AppGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appGroupId = registerOutput<String>('appGroupId');
-    this.attributes = registerOutput<List<AppGroupAttribute>?>('attributes');
-    this.channelId = registerOutput<String?>('channelId');
-    this.channelUri = registerOutput<String?>('channelUri');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.displayName = registerOutput<String?>('displayName');
-    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+         'gcp:apigee/appGroup:AppGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appGroupId = registerOutput<String>('appGroupId');
+    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    channelId = registerOutput<String?>('channelId');
+    channelUri = registerOutput<String?>('channelUri');
+    createdAt = registerOutput<String>('createdAt');
+    displayName = registerOutput<String?>('displayName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.organization = registerOutput<String>('organization');
-    this.status = registerOutput<String?>('status');
+    orgId = registerOutput<String>('orgId');
+    organization = registerOutput<String>('organization');
+    status = registerOutput<String?>('status');
   }
 
   /// Gets an existing [AppGroup] resource's state with the given [name] and [id].
@@ -916,21 +925,21 @@ class AppGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/appGroup:AppGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appGroupId = registerOutput<String>('appGroupId');
-    this.attributes = registerOutput<List<AppGroupAttribute>?>('attributes');
-    this.channelId = registerOutput<String?>('channelId');
-    this.channelUri = registerOutput<String?>('channelUri');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.displayName = registerOutput<String?>('displayName');
-    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+         'gcp:apigee/appGroup:AppGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appGroupId = registerOutput<String>('appGroupId');
+    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    channelId = registerOutput<String?>('channelId');
+    channelUri = registerOutput<String?>('channelUri');
+    createdAt = registerOutput<String>('createdAt');
+    displayName = registerOutput<String?>('displayName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.organization = registerOutput<String>('organization');
-    this.status = registerOutput<String?>('status');
+    orgId = registerOutput<String>('orgId');
+    organization = registerOutput<String>('organization');
+    status = registerOutput<String?>('status');
   }
 }

@@ -8,16 +8,15 @@ enum NsgProtocol {
   valueAh("ah"),
   valueEsp("esp");
 
-  const NsgProtocol(this.value);
-  final String value;
+  const NsgProtocol(this.wireValue);
+  final String wireValue;
 
   static NsgProtocol fromValue(String value) {
     for (final item in NsgProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NsgProtocol value: $value');
   }
 }
-

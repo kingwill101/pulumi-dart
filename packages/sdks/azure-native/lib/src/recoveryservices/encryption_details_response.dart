@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionDetailsResponse {
   /// The key encryption key certificate expiry date.
   final pulumi.Input<String>? kekCertExpiryDate;
+
   /// The key encryption key certificate thumbprint.
   final pulumi.Input<String>? kekCertThumbprint;
+
   /// The key encryption key state for the Vmm.
   final pulumi.Input<String>? kekState;
 
@@ -31,10 +33,21 @@ class EncryptionDetailsResponse {
 
   factory EncryptionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionDetailsResponse(
-      kekCertExpiryDate: map['kekCertExpiryDate'] == null ? null : (map['kekCertExpiryDate']! as String).input(),
-      kekCertThumbprint: map['kekCertThumbprint'] == null ? null : (map['kekCertThumbprint']! as String).input(),
-      kekState: map['kekState'] == null ? null : (map['kekState']! as String).input(),
+      kekCertExpiryDate: (() {
+        final guardedValue = map['kekCertExpiryDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kekCertThumbprint: (() {
+        final guardedValue = map['kekCertThumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kekState: (() {
+        final guardedValue = map['kekState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

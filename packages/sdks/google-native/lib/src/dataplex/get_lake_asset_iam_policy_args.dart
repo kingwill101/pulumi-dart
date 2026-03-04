@@ -43,13 +43,20 @@ class GetLakeAssetIamPolicyArgs {
 
   factory GetLakeAssetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeAssetIamPolicyArgs(
-      assetId: (map['assetId'] as String).input(),
-      lakeId: (map['lakeId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      assetId: pulumi.Input.fromValue(map['assetId'] as String),
+      lakeId: pulumi.Input.fromValue(map['lakeId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

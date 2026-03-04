@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpsecServersServerIkeConfig {
   /// The IKE authentication algorithm.
   final pulumi.Input<String> ikeAuthAlg;
+
   /// The IKE encryption algorithm.
   final pulumi.Input<String> ikeEncAlg;
+
   /// The IKE lifetime. Unit: seconds.
   final pulumi.Input<int> ikeLifetime;
+
   /// The IKE negotiation mode.
   final pulumi.Input<String> ikeMode;
+
   /// Diffie-Hellman key exchange algorithm.
   final pulumi.Input<String> ikePfs;
+
   /// The IKE version.
   final pulumi.Input<String> ikeVersion;
+
   /// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
   final pulumi.Input<String> localId;
+
   /// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
   final pulumi.Input<String> remoteId;
 
@@ -55,15 +62,14 @@ class GetIpsecServersServerIkeConfig {
 
   factory GetIpsecServersServerIkeConfig.fromMap(Map<String, dynamic> map) {
     return GetIpsecServersServerIkeConfig(
-      ikeAuthAlg: (map['ikeAuthAlg'] as String).input(),
-      ikeEncAlg: (map['ikeEncAlg'] as String).input(),
-      ikeLifetime: (map['ikeLifetime'] as int).input(),
-      ikeMode: (map['ikeMode'] as String).input(),
-      ikePfs: (map['ikePfs'] as String).input(),
-      ikeVersion: (map['ikeVersion'] as String).input(),
-      localId: (map['localId'] as String).input(),
-      remoteId: (map['remoteId'] as String).input(),
+      ikeAuthAlg: pulumi.Input.fromValue(map['ikeAuthAlg'] as String),
+      ikeEncAlg: pulumi.Input.fromValue(map['ikeEncAlg'] as String),
+      ikeLifetime: pulumi.Input.fromValue(map['ikeLifetime'] as int),
+      ikeMode: pulumi.Input.fromValue(map['ikeMode'] as String),
+      ikePfs: pulumi.Input.fromValue(map['ikePfs'] as String),
+      ikeVersion: pulumi.Input.fromValue(map['ikeVersion'] as String),
+      localId: pulumi.Input.fromValue(map['localId'] as String),
+      remoteId: pulumi.Input.fromValue(map['remoteId'] as String),
     );
   }
 }
-

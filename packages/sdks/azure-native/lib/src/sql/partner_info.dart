@@ -9,20 +9,13 @@ class PartnerInfo {
 
   /// Creates a new [PartnerInfo].
   /// [id] Resource identifier of the partner server.
-  PartnerInfo({
-    required this.id,
-  });
+  PartnerInfo({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory PartnerInfo.fromMap(Map<String, dynamic> map) {
-    return PartnerInfo(
-      id: (map['id'] as String).input(),
-    );
+    return PartnerInfo(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

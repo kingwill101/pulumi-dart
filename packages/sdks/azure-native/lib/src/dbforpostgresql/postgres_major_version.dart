@@ -9,16 +9,15 @@ enum PostgresMajorVersion {
   resource12("12"),
   resource11("11");
 
-  const PostgresMajorVersion(this.value);
-  final String value;
+  const PostgresMajorVersion(this.wireValue);
+  final String wireValue;
 
   static PostgresMajorVersion fromValue(String value) {
     for (final item in PostgresMajorVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PostgresMajorVersion value: $value');
   }
 }
-

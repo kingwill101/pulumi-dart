@@ -257,26 +257,37 @@ import 'system_data_response.dart';
 class Pipeline extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Detailed description of the Pipeline.
   late final pulumi.Output<String?> description;
+
   /// Flag indicating whether the pipeline should be running or not.
   late final pulumi.Output<bool> enabled;
+
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Information about where to pull input data from.
   late final pulumi.Output<PipelineInputResponse> input;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Map of stage ids to stage configurations for all pipeline processing and output stages.
   late final pulumi.Output<Map<String, PipelineStageResponse>> stages;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -289,22 +300,24 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsdataprocessor:Pipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.input = registerOutput<PipelineInputResponse>('input');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsdataprocessor:Pipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    input = registerOutput<PipelineInputResponse>('input');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.stages = registerOutput<Map<String, PipelineStageResponse>>('stages');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    stages = registerOutput<Map<String, PipelineStageResponse>>('stages');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -33,13 +33,22 @@ class GetMembershipIamPolicyGkehubV1betaArgs {
     };
   }
 
-  factory GetMembershipIamPolicyGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMembershipIamPolicyGkehubV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMembershipIamPolicyGkehubV1betaArgs(
-      location: (map['location'] as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

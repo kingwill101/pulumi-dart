@@ -11,22 +11,30 @@ class AppVersionSnapshotExampleMessageChunk {
   /// Represents an event indicating the transfer of a conversation to a different
   /// agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkAgentTransfer>>? agentTransfers;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkAgentTransfer>>?
+  agentTransfers;
+
   /// (Output)
   /// Represents an image input or output in the conversation.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkImage>>? images;
+
   /// (Output)
   /// Text for the agent to respond with.
   final pulumi.Input<String>? text;
+
   /// (Output)
   /// Request for the client or the agent to execute the specified tool.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCall>>? toolCalls;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCall>>?
+  toolCalls;
+
   /// (Output)
   /// The execution result of a specific tool from the client or the agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolResponse>>? toolResponses;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolResponse>>?
+  toolResponses;
+
   /// (Output)
   /// A struct represents variables that were updated in the conversation,
   /// keyed by variable names.
@@ -50,24 +58,128 @@ class AppVersionSnapshotExampleMessageChunk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentTransfers': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunkAgentTransfer>, List<Map<String, dynamic>>>(agentTransfers, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkAgentTransfer, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'images': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunkImage>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkImage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'agentTransfers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessageChunkAgentTransfer>,
+            List<Map<String, dynamic>>
+          >(
+            agentTransfers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessageChunkAgentTransfer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'images':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessageChunkImage>,
+            List<Map<String, dynamic>>
+          >(
+            images,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessageChunkImage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'text': ?text,
-      'toolCalls': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunkToolCall>, List<Map<String, dynamic>>>(toolCalls, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkToolCall, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'toolResponses': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunkToolResponse>, List<Map<String, dynamic>>>(toolResponses, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkToolResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'toolCalls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessageChunkToolCall>,
+            List<Map<String, dynamic>>
+          >(
+            toolCalls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessageChunkToolCall,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'toolResponses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessageChunkToolResponse>,
+            List<Map<String, dynamic>>
+          >(
+            toolResponses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessageChunkToolResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'updatedVariables': ?updatedVariables,
     };
   }
 
-  factory AppVersionSnapshotExampleMessageChunk.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotExampleMessageChunk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotExampleMessageChunk(
-      agentTransfers: map['agentTransfers'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkAgentTransfer>(map['agentTransfers']!, (value) => AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkImage>(map['images']!, (value) => AppVersionSnapshotExampleMessageChunkImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      text: map['text'] == null ? null : (map['text']! as String).input(),
-      toolCalls: map['toolCalls'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolCall>(map['toolCalls']!, (value) => AppVersionSnapshotExampleMessageChunkToolCall.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toolResponses: map['toolResponses'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponse>(map['toolResponses']!, (value) => AppVersionSnapshotExampleMessageChunkToolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updatedVariables: map['updatedVariables'] == null ? null : (map['updatedVariables']! as String).input(),
+      agentTransfers: (() {
+        final guardedValue = map['agentTransfers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotExampleMessageChunkAgentTransfer
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      images: (() {
+        final guardedValue = map['images'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkImage>(
+            guardedValue,
+            (value) => AppVersionSnapshotExampleMessageChunkImage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toolCalls: (() {
+        final guardedValue = map['toolCalls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<AppVersionSnapshotExampleMessageChunkToolCall>(
+            guardedValue,
+            (value) => AppVersionSnapshotExampleMessageChunkToolCall.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      toolResponses: (() {
+        final guardedValue = map['toolResponses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotExampleMessageChunkToolResponse
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotExampleMessageChunkToolResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      updatedVariables: (() {
+        final guardedValue = map['updatedVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

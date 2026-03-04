@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse {
   /// Timestamp of the cert expiration instance.
   final pulumi.Input<String> expiresAt;
+
   /// Self-signed public certificate.
   final pulumi.Input<String> x509Certificate;
 
@@ -24,11 +25,12 @@ class GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse(
-      expiresAt: (map['expiresAt'] as String).input(),
-      x509Certificate: (map['x509Certificate'] as String).input(),
+      expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
+      x509Certificate: pulumi.Input.fromValue(map['x509Certificate'] as String),
     );
   }
 }
-

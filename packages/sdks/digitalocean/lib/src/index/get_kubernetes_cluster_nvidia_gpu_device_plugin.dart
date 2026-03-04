@@ -7,20 +7,17 @@ class GetKubernetesClusterNvidiaGpuDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterNvidiaGpuDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterNvidiaGpuDevicePlugin({
-    required this.enabled,
-  });
+  GetKubernetesClusterNvidiaGpuDevicePlugin({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterNvidiaGpuDevicePlugin(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

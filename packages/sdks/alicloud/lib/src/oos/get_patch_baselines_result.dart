@@ -7,6 +7,7 @@ import 'get_patch_baselines_baseline.dart';
 class GetPatchBaselinesResult {
   final List<GetPatchBaselinesBaseline> baselines;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -40,7 +41,11 @@ class GetPatchBaselinesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baselines': pulumi.Input.encodeList<GetPatchBaselinesBaseline, Map<String, dynamic>>(baselines, (value) => value.toMap()),
+      'baselines':
+          pulumi.Input.encodeList<
+            GetPatchBaselinesBaseline,
+            Map<String, dynamic>
+          >(baselines, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -54,16 +59,40 @@ class GetPatchBaselinesResult {
 
   factory GetPatchBaselinesResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesResult(
-      baselines: pulumi.Input.decodeList<GetPatchBaselinesBaseline>(map['baselines'], (value) => GetPatchBaselinesBaseline.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      baselines: pulumi.Input.decodeList<GetPatchBaselinesBaseline>(
+        map['baselines']!,
+        (value) => GetPatchBaselinesBaseline.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      operationSystem: map['operationSystem'] == null ? null : map['operationSystem']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      shareType: map['shareType'] == null ? null : map['shareType']! as String,
+      operationSystem: (() {
+        final guardedValue = map['operationSystem'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      shareType: (() {
+        final guardedValue = map['shareType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

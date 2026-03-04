@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccount {
   /// The description of the account.
   final pulumi.Input<String> accountDescription;
+
   /// The name of the account.
   final pulumi.Input<String> accountName;
+
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The ID of the Account. Its value is same as Queue Name.
   final pulumi.Input<String> id;
+
   /// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
   final pulumi.Input<String> status;
 
@@ -40,12 +44,13 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountDescription: (map['accountDescription'] as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
+      accountDescription: pulumi.Input.fromValue(
+        map['accountDescription'] as String,
+      ),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

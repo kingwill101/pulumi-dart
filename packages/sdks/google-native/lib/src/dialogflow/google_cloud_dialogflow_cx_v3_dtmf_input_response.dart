@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3DtmfInputResponse {
   /// The dtmf digits.
   final pulumi.Input<String> digits;
+
   /// The finish digit (if any).
   final pulumi.Input<String> finishDigit;
 
@@ -18,17 +19,15 @@ class GoogleCloudDialogflowCxV3DtmfInputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digits': digits,
-      'finishDigit': finishDigit,
-    };
+    return <String, dynamic>{'digits': digits, 'finishDigit': finishDigit};
   }
 
-  factory GoogleCloudDialogflowCxV3DtmfInputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3DtmfInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3DtmfInputResponse(
-      digits: (map['digits'] as String).input(),
-      finishDigit: (map['finishDigit'] as String).input(),
+      digits: pulumi.Input.fromValue(map['digits'] as String),
+      finishDigit: pulumi.Input.fromValue(map['finishDigit'] as String),
     );
   }
 }
-

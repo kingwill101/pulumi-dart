@@ -9,16 +9,15 @@ enum HttpTargetHttpMethod {
   patch("PATCH"),
   options("OPTIONS");
 
-  const HttpTargetHttpMethod(this.value);
-  final String value;
+  const HttpTargetHttpMethod(this.wireValue);
+  final String wireValue;
 
   static HttpTargetHttpMethod fromValue(String value) {
     for (final item in HttpTargetHttpMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpTargetHttpMethod value: $value');
   }
 }
-

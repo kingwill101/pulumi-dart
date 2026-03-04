@@ -5,11 +5,11 @@ import 'user_password_state.dart';
 /// The `mysql.UserPassword` resource sets and manages a password for a given
 /// user on a MySQL server.
 ///
-/// > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+/// &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `password`
 /// argument for `mysql.User`. This resource uses PGP encryption to avoid
 /// storing unencrypted passwords in Terraform state.
 ///
-/// > **NOTE on How Passwords are Created:** This resource **automatically**
+/// &gt; **NOTE on How Passwords are Created:** This resource **automatically**
 /// generates a **random** password. The password will be a random UUID.
 ///
 /// ## Example Usage
@@ -138,12 +138,16 @@ import 'user_password_state.dart';
 class UserPassword extends pulumi.CustomResource {
   /// The encrypted password, base64 encoded.
   late final pulumi.Output<String> encryptedPassword;
+
   /// The source host of the user. Defaults to `localhost`.
   late final pulumi.Output<String?> host;
+
   /// The fingerprint of the PGP key used to encrypt the password
   late final pulumi.Output<String> keyFingerprint;
+
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   late final pulumi.Output<String> pgpKey;
+
   /// The IAM user to associate with this access key.
   late final pulumi.Output<String> user;
 
@@ -156,16 +160,16 @@ class UserPassword extends pulumi.CustomResource {
     UserPasswordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'mysql:index/userPassword:UserPassword',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptedPassword = registerOutput<String>('encryptedPassword');
-    this.host = registerOutput<String?>('host');
-    this.keyFingerprint = registerOutput<String>('keyFingerprint');
-    this.pgpKey = registerOutput<String>('pgpKey');
-    this.user = registerOutput<String>('user');
+         'mysql:index/userPassword:UserPassword',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptedPassword = registerOutput<String>('encryptedPassword');
+    host = registerOutput<String?>('host');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String>('pgpKey');
+    user = registerOutput<String>('user');
   }
 
   /// Gets an existing [UserPassword] resource's state with the given [name] and [id].
@@ -186,15 +190,15 @@ class UserPassword extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'mysql:index/userPassword:UserPassword',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptedPassword = registerOutput<String>('encryptedPassword');
-    this.host = registerOutput<String?>('host');
-    this.keyFingerprint = registerOutput<String>('keyFingerprint');
-    this.pgpKey = registerOutput<String>('pgpKey');
-    this.user = registerOutput<String>('user');
+         'mysql:index/userPassword:UserPassword',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptedPassword = registerOutput<String>('encryptedPassword');
+    host = registerOutput<String?>('host');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String>('pgpKey');
+    user = registerOutput<String>('user');
   }
 }

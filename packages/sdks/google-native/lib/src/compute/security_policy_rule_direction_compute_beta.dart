@@ -3,16 +3,17 @@ enum SecurityPolicyRuleDirectionComputeBeta {
   egress("EGRESS"),
   ingress("INGRESS");
 
-  const SecurityPolicyRuleDirectionComputeBeta(this.value);
-  final String value;
+  const SecurityPolicyRuleDirectionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyRuleDirectionComputeBeta fromValue(String value) {
     for (final item in SecurityPolicyRuleDirectionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyRuleDirectionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyRuleDirectionComputeBeta value: $value',
+    );
   }
 }
-

@@ -4,16 +4,17 @@ enum LoadBalancerRuleTransportProtocol {
   uDP("Udp"),
   all("All");
 
-  const LoadBalancerRuleTransportProtocol(this.value);
-  final String value;
+  const LoadBalancerRuleTransportProtocol(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerRuleTransportProtocol fromValue(String value) {
     for (final item in LoadBalancerRuleTransportProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoadBalancerRuleTransportProtocol value: $value');
+    throw ArgumentError(
+      'Unknown LoadBalancerRuleTransportProtocol value: $value',
+    );
   }
 }
-

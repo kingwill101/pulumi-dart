@@ -9,20 +9,19 @@ class EventGroupingSettingsResponse {
 
   /// Creates a new [EventGroupingSettingsResponse].
   /// [aggregationKind] The event grouping aggregation kinds
-  EventGroupingSettingsResponse({
-    this.aggregationKind,
-  });
+  EventGroupingSettingsResponse({this.aggregationKind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aggregationKind': ?aggregationKind,
-    };
+    return <String, dynamic>{'aggregationKind': ?aggregationKind};
   }
 
   factory EventGroupingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EventGroupingSettingsResponse(
-      aggregationKind: map['aggregationKind'] == null ? null : (map['aggregationKind']! as String).input(),
+      aggregationKind: (() {
+        final guardedValue = map['aggregationKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

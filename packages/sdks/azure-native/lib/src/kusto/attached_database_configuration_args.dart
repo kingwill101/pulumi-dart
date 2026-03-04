@@ -10,22 +10,31 @@ import 'table_level_sharing_properties.dart';
 class AttachedDatabaseConfigurationArgs {
   /// The name of the attached database configuration.
   final pulumi.Input<String>? attachedDatabaseConfigurationName;
+
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The resource id of the cluster where the databases you would like to attach reside.
   final pulumi.Input<String> clusterResourceId;
+
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   final pulumi.Input<String> databaseName;
+
   /// Overrides the original database name. Relevant only when attaching to a specific database.
   final pulumi.Input<String>? databaseNameOverride;
+
   /// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
   final pulumi.Input<String>? databaseNamePrefix;
+
   /// The default principals modification kind
   final pulumi.Input<String> defaultPrincipalsModificationKind;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Table level sharing specifications
   final pulumi.Input<TableLevelSharingProperties>? tableLevelSharingProperties;
 
@@ -64,23 +73,56 @@ class AttachedDatabaseConfigurationArgs {
       'defaultPrincipalsModificationKind': defaultPrincipalsModificationKind,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'tableLevelSharingProperties': ?pulumi.Input.mapOptionalInputValue<TableLevelSharingProperties, Map<String, dynamic>>(tableLevelSharingProperties, (value) => value.toMap()),
+      'tableLevelSharingProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            TableLevelSharingProperties,
+            Map<String, dynamic>
+          >(tableLevelSharingProperties, (value) => value.toMap()),
     };
   }
 
   factory AttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName']! as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      clusterResourceId: (map['clusterResourceId'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      databaseNameOverride: map['databaseNameOverride'] == null ? null : (map['databaseNameOverride']! as String).input(),
-      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : (map['databaseNamePrefix']! as String).input(),
-      defaultPrincipalsModificationKind: (map['defaultPrincipalsModificationKind'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>())).input(),
+      attachedDatabaseConfigurationName: (() {
+        final guardedValue = map['attachedDatabaseConfigurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      clusterResourceId: pulumi.Input.fromValue(
+        map['clusterResourceId'] as String,
+      ),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      databaseNameOverride: (() {
+        final guardedValue = map['databaseNameOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseNamePrefix: (() {
+        final guardedValue = map['databaseNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultPrincipalsModificationKind: pulumi.Input.fromValue(
+        map['defaultPrincipalsModificationKind'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tableLevelSharingProperties: (() {
+        final guardedValue = map['tableLevelSharingProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableLevelSharingProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

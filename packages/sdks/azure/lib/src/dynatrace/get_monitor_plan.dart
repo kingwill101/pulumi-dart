@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitorPlan {
   /// Different billing cycles.
   final pulumi.Input<String> billingCycle;
+
   /// Date when plan was applied.
   final pulumi.Input<String> effectiveDate;
+
   /// Plan id as published by Dynatrace.
   final pulumi.Input<String> plan;
+
   /// Different usage type.
   final pulumi.Input<String> usageType;
 
@@ -35,11 +38,10 @@ class GetMonitorPlan {
 
   factory GetMonitorPlan.fromMap(Map<String, dynamic> map) {
     return GetMonitorPlan(
-      billingCycle: (map['billingCycle'] as String).input(),
-      effectiveDate: (map['effectiveDate'] as String).input(),
-      plan: (map['plan'] as String).input(),
-      usageType: (map['usageType'] as String).input(),
+      billingCycle: pulumi.Input.fromValue(map['billingCycle'] as String),
+      effectiveDate: pulumi.Input.fromValue(map['effectiveDate'] as String),
+      plan: pulumi.Input.fromValue(map['plan'] as String),
+      usageType: pulumi.Input.fromValue(map['usageType'] as String),
     );
   }
 }
-

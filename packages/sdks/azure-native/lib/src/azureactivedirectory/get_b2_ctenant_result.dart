@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetB2CTenantResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The billing configuration for the tenant.
   final B2CTenantResourcePropertiesResponseBillingConfig? billingConfig;
+
   /// An identifier that represents the Azure AD B2C tenant resource.
   final String id;
+
   /// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
   final bool? isGoLocalTenant;
+
   /// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
   final String location;
+
   /// The name of the Azure AD B2C tenant resource.
   final String name;
+
   /// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
   final B2CResourceSKUResponse sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource Tags
   final Map<String, String>? tags;
+
   /// An identifier of the Azure AD B2C tenant.
   final String? tenantId;
+
   /// The type of the B2C tenant resource.
   final String type;
 
@@ -58,7 +68,7 @@ class GetB2CTenantResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'billingConfig': ?billingConfig == null ? null : billingConfig!.toMap(),
+      'billingConfig': ?billingConfig?.toMap(),
       'id': id,
       'isGoLocalTenant': ?isGoLocalTenant,
       'location': location,
@@ -74,17 +84,38 @@ class GetB2CTenantResult {
   factory GetB2CTenantResult.fromMap(Map<String, dynamic> map) {
     return GetB2CTenantResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      billingConfig: map['billingConfig'] == null ? null : B2CTenantResourcePropertiesResponseBillingConfig.fromMap((map['billingConfig']! as Map).cast<String, dynamic>()),
+      billingConfig: (() {
+        final guardedValue = map['billingConfig'];
+        if (guardedValue == null) return null;
+        return B2CTenantResourcePropertiesResponseBillingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : map['isGoLocalTenant']! as bool,
+      isGoLocalTenant: (() {
+        final guardedValue = map['isGoLocalTenant'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      sku: B2CResourceSKUResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      sku: B2CResourceSKUResponse.fromMap(
+        (map['sku']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

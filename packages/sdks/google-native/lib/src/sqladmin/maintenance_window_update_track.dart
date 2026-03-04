@@ -5,16 +5,15 @@ enum MaintenanceWindowUpdateTrack {
   stable("stable"),
   week5("week5");
 
-  const MaintenanceWindowUpdateTrack(this.value);
-  final String value;
+  const MaintenanceWindowUpdateTrack(this.wireValue);
+  final String wireValue;
 
   static MaintenanceWindowUpdateTrack fromValue(String value) {
     for (final item in MaintenanceWindowUpdateTrack.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MaintenanceWindowUpdateTrack value: $value');
   }
 }
-

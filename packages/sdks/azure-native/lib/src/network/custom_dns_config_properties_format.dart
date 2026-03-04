@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDnsConfigPropertiesFormat {
   /// Fqdn that resolves to private endpoint ip address.
   final pulumi.Input<String>? fqdn;
+
   /// A list of private ip addresses of the private endpoint.
   final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [CustomDnsConfigPropertiesFormat].
   /// [fqdn] Fqdn that resolves to private endpoint ip address.
   /// [ipAddresses] A list of private ip addresses of the private endpoint.
-  CustomDnsConfigPropertiesFormat({
-    this.fqdn,
-    this.ipAddresses,
-  });
+  CustomDnsConfigPropertiesFormat({this.fqdn, this.ipAddresses});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fqdn': ?fqdn,
-      'ipAddresses': ?ipAddresses,
-    };
+    return <String, dynamic>{'fqdn': ?fqdn, 'ipAddresses': ?ipAddresses};
   }
 
   factory CustomDnsConfigPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return CustomDnsConfigPropertiesFormat(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddresses: (() {
+        final guardedValue = map['ipAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

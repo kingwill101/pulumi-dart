@@ -7,10 +7,13 @@ class VpcIpamOrganizationAdminAccountState {
   /// The Organizations ARN for the delegate account.
   final pulumi.Input<String>? arn;
   final pulumi.Input<String>? delegatedAdminAccountId;
+
   /// The Organizations email for the delegate account.
   final pulumi.Input<String>? email;
+
   /// The Organizations name for the delegate account.
   final pulumi.Input<String>? name;
+
   /// The AWS service principal.
   final pulumi.Input<String>? servicePrincipal;
 
@@ -38,14 +41,35 @@ class VpcIpamOrganizationAdminAccountState {
     };
   }
 
-  factory VpcIpamOrganizationAdminAccountState.fromMap(Map<String, dynamic> map) {
+  factory VpcIpamOrganizationAdminAccountState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcIpamOrganizationAdminAccountState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : ((map['delegatedAdminAccountId'] as String).input()).input(),
-      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      delegatedAdminAccountId: (() {
+        final guardedValue = map['delegatedAdminAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipal: (() {
+        final guardedValue = map['servicePrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

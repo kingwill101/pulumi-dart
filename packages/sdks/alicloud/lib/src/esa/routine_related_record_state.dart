@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutineRelatedRecordState {
   /// The routine name.
   final pulumi.Input<String>? name;
+
   /// The record ID.
   final pulumi.Input<int>? recordId;
+
   /// The record name.
   final pulumi.Input<String>? recordName;
+
   /// The website ID.
   final pulumi.Input<String>? siteId;
 
@@ -36,11 +39,26 @@ class RoutineRelatedRecordState {
 
   factory RoutineRelatedRecordState.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recordId: map['recordId'] == null ? null : (map['recordId']! as int).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordId: (() {
+        final guardedValue = map['recordId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recordName: (() {
+        final guardedValue = map['recordName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

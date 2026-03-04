@@ -8,6 +8,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// (Optional)
   final pulumi.Input<String>? nodeIp;
 
@@ -20,17 +21,25 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-      'nodeIp': ?nodeIp,
-    };
+    return <String, dynamic>{'labels': ?labels, 'nodeIp': ?nodeIp};
   }
 
-  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      nodeIp: map['nodeIp'] == null ? null : (map['nodeIp']! as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      nodeIp: (() {
+        final guardedValue = map['nodeIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

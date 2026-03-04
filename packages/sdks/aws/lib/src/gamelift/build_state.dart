@@ -7,18 +7,25 @@ import 'build_storage_location.dart';
 class BuildState {
   /// GameLift Build ARN.
   final pulumi.Input<String>? arn;
+
   /// Name of the build
   final pulumi.Input<String>? name;
+
   /// Operating system that the game server binaries are built to run on. Valid values: `WINDOWS_2012`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `WINDOWS_2016`, `AMAZON_LINUX_2023`.
   final pulumi.Input<String>? operatingSystem;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Information indicating where your game build files are stored. See below.
   final pulumi.Input<BuildStorageLocation>? storageLocation;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Version that is associated with this build.
   final pulumi.Input<String>? version;
 
@@ -48,7 +55,11 @@ class BuildState {
       'name': ?name,
       'operatingSystem': ?operatingSystem,
       'region': ?region,
-      'storageLocation': ?pulumi.Input.mapOptionalInputValue<BuildStorageLocation, Map<String, dynamic>>(storageLocation, (value) => value.toMap()),
+      'storageLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildStorageLocation,
+            Map<String, dynamic>
+          >(storageLocation, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'version': ?version,
@@ -57,15 +68,54 @@ class BuildState {
 
   factory BuildState.fromMap(Map<String, dynamic> map) {
     return BuildState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : ((map['operatingSystem'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      storageLocation: map['storageLocation'] == null ? null : ((BuildStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingSystem: (() {
+        final guardedValue = map['operatingSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageLocation: (() {
+        final guardedValue = map['storageLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildStorageLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

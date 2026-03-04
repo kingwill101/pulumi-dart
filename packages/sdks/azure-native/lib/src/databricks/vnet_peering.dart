@@ -180,28 +180,46 @@ import 'vnet_peering_args.dart';
 class VNetPeering extends pulumi.CustomResource {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   late final pulumi.Output<bool?> allowForwardedTraffic;
+
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
   late final pulumi.Output<bool?> allowGatewayTransit;
+
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
   late final pulumi.Output<bool?> allowVirtualNetworkAccess;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The reference to the databricks virtual network address space.
   late final pulumi.Output<AddressSpaceResponse?> databricksAddressSpace;
+
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?> databricksVirtualNetwork;
+  late final pulumi.Output<
+    VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?
+  >
+  databricksVirtualNetwork;
+
   /// Name of the virtual network peering resource
   late final pulumi.Output<String> name;
+
   /// The status of the virtual network peering.
   late final pulumi.Output<String> peeringState;
+
   /// The provisioning state of the virtual network peering resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The reference to the remote virtual network address space.
   late final pulumi.Output<AddressSpaceResponse?> remoteAddressSpace;
+
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-  late final pulumi.Output<VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork> remoteVirtualNetwork;
+  late final pulumi.Output<
+    VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork
+  >
+  remoteVirtualNetwork;
+
   /// type of the virtual network peering resource
   late final pulumi.Output<String> type;
+
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   late final pulumi.Output<bool?> useRemoteGateways;
 
@@ -214,23 +232,35 @@ class VNetPeering extends pulumi.CustomResource {
     VNetPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databricks:VNetPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
-    this.allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    this.allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databricksAddressSpace = registerOutput<AddressSpaceResponse?>('databricksAddressSpace');
-    this.databricksVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?>('databricksVirtualNetwork');
+         'azure-native:databricks:VNetPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>(
+      'allowVirtualNetworkAccess',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databricksAddressSpace = registerOutput<AddressSpaceResponse?>(
+      'databricksAddressSpace',
+    );
+    databricksVirtualNetwork =
+        registerOutput<
+          VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?
+        >('databricksVirtualNetwork');
     this.name = registerOutput<String>('name');
-    this.peeringState = registerOutput<String>('peeringState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remoteAddressSpace = registerOutput<AddressSpaceResponse?>('remoteAddressSpace');
-    this.remoteVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork>('remoteVirtualNetwork');
-    this.type = registerOutput<String>('type');
-    this.useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+    peeringState = registerOutput<String>('peeringState');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteAddressSpace = registerOutput<AddressSpaceResponse?>(
+      'remoteAddressSpace',
+    );
+    remoteVirtualNetwork =
+        registerOutput<
+          VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork
+        >('remoteVirtualNetwork');
+    type = registerOutput<String>('type');
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
   }
 }

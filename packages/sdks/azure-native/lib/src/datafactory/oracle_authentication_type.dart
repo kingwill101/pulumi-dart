@@ -2,16 +2,15 @@
 enum OracleAuthenticationType {
   valueBasic("Basic");
 
-  const OracleAuthenticationType(this.value);
-  final String value;
+  const OracleAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static OracleAuthenticationType fromValue(String value) {
     for (final item in OracleAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OracleAuthenticationType value: $value');
   }
 }
-

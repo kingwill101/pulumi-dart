@@ -3,16 +3,15 @@ enum ContainerGroupNetworkProtocol {
   valueTCP("TCP"),
   valueUDP("UDP");
 
-  const ContainerGroupNetworkProtocol(this.value);
-  final String value;
+  const ContainerGroupNetworkProtocol(this.wireValue);
+  final String wireValue;
 
   static ContainerGroupNetworkProtocol fromValue(String value) {
     for (final item in ContainerGroupNetworkProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContainerGroupNetworkProtocol value: $value');
   }
 }
-

@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_cluster_args.dart';
-import 'db_cluster_db_cluster_access_white_list.dart';
-import 'db_cluster_multi_zone_vswitch_list.dart';
 import 'db_cluster_state.dart';
 
 /// Provides a Click House DBCluster resource.
 ///
 /// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/zh/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -333,59 +331,86 @@ import 'db_cluster_state.dart';
 class DbCluster extends pulumi.CustomResource {
   /// Whether to enable public connection. Value options: `true`, `false`.
   late final pulumi.Output<bool?> allocatePublicConnection;
+
   /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
   late final pulumi.Output<String> category;
+
   /// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
   late final pulumi.Output<String> coldStorage;
+
   /// (Available since v1.196.0) - The connection string of the cluster.
   late final pulumi.Output<String> connectionString;
+
   /// The db cluster access white list. See `db_cluster_access_white_list` below.
-  late final pulumi.Output<List<DbClusterDbClusterAccessWhiteList>?> dbClusterAccessWhiteLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  dbClusterAccessWhiteLists;
+
   /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
   /// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
   /// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
   late final pulumi.Output<String> dbClusterClass;
+
   /// The DBCluster description.
   late final pulumi.Output<String> dbClusterDescription;
+
   /// The DBCluster network type. Valid values: `vpc`.
   late final pulumi.Output<String> dbClusterNetworkType;
+
   /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
   late final pulumi.Output<String> dbClusterVersion;
+
   /// The db node group count. The number should between 1 and 48.
   late final pulumi.Output<int> dbNodeGroupCount;
+
   /// The db node storage.
   late final pulumi.Output<String> dbNodeStorage;
+
   /// Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
   late final pulumi.Output<String?> encryptionKey;
+
   /// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
   late final pulumi.Output<String?> encryptionType;
+
   /// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
   late final pulumi.Output<String> maintainTime;
+
   /// The zone IDs and
   /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
-  late final pulumi.Output<List<DbClusterMultiZoneVswitchList>?> multiZoneVswitchLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> multiZoneVswitchLists;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
   late final pulumi.Output<String?> period;
+
   /// (Available since v1.196.0) The connection port of the cluster.
   late final pulumi.Output<String> port;
+
   /// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
   late final pulumi.Output<String> publicConnectionString;
+
   /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
   late final pulumi.Output<String> renewalStatus;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
   late final pulumi.Output<String> status;
+
   /// Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
   late final pulumi.Output<String> storageType;
+
   /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
   late final pulumi.Output<String?> usedTime;
+
   /// The id of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The vswitch id of DBCluster.
   late final pulumi.Output<String?> vswitchId;
+
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -398,38 +423,44 @@ class DbCluster extends pulumi.CustomResource {
     DbClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouse/dbCluster:DbCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatePublicConnection = registerOutput<bool?>('allocatePublicConnection');
-    this.category = registerOutput<String>('category');
-    this.coldStorage = registerOutput<String>('coldStorage');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dbClusterAccessWhiteLists = registerOutput<List<DbClusterDbClusterAccessWhiteList>?>('dbClusterAccessWhiteLists');
-    this.dbClusterClass = registerOutput<String>('dbClusterClass');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterNetworkType = registerOutput<String>('dbClusterNetworkType');
-    this.dbClusterVersion = registerOutput<String>('dbClusterVersion');
-    this.dbNodeGroupCount = registerOutput<int>('dbNodeGroupCount');
-    this.dbNodeStorage = registerOutput<String>('dbNodeStorage');
-    this.encryptionKey = registerOutput<String?>('encryptionKey');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.maintainTime = registerOutput<String>('maintainTime');
-    this.multiZoneVswitchLists = registerOutput<List<DbClusterMultiZoneVswitchList>?>('multiZoneVswitchLists');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.port = registerOutput<String>('port');
-    this.publicConnectionString = registerOutput<String>('publicConnectionString');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.storageType = registerOutput<String>('storageType');
-    this.usedTime = registerOutput<String?>('usedTime');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:clickhouse/dbCluster:DbCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatePublicConnection = registerOutput<bool?>(
+      'allocatePublicConnection',
+    );
+    category = registerOutput<String>('category');
+    coldStorage = registerOutput<String>('coldStorage');
+    connectionString = registerOutput<String>('connectionString');
+    dbClusterAccessWhiteLists = registerOutput<List<Map<String, dynamic>>?>(
+      'dbClusterAccessWhiteLists',
+    );
+    dbClusterClass = registerOutput<String>('dbClusterClass');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterNetworkType = registerOutput<String>('dbClusterNetworkType');
+    dbClusterVersion = registerOutput<String>('dbClusterVersion');
+    dbNodeGroupCount = registerOutput<int>('dbNodeGroupCount');
+    dbNodeStorage = registerOutput<String>('dbNodeStorage');
+    encryptionKey = registerOutput<String?>('encryptionKey');
+    encryptionType = registerOutput<String?>('encryptionType');
+    maintainTime = registerOutput<String>('maintainTime');
+    multiZoneVswitchLists = registerOutput<List<Map<String, dynamic>>?>(
+      'multiZoneVswitchLists',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    port = registerOutput<String>('port');
+    publicConnectionString = registerOutput<String>('publicConnectionString');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    storageType = registerOutput<String>('storageType');
+    usedTime = registerOutput<String?>('usedTime');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DbCluster] resource's state with the given [name] and [id].
@@ -450,37 +481,43 @@ class DbCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouse/dbCluster:DbCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatePublicConnection = registerOutput<bool?>('allocatePublicConnection');
-    this.category = registerOutput<String>('category');
-    this.coldStorage = registerOutput<String>('coldStorage');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dbClusterAccessWhiteLists = registerOutput<List<DbClusterDbClusterAccessWhiteList>?>('dbClusterAccessWhiteLists');
-    this.dbClusterClass = registerOutput<String>('dbClusterClass');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterNetworkType = registerOutput<String>('dbClusterNetworkType');
-    this.dbClusterVersion = registerOutput<String>('dbClusterVersion');
-    this.dbNodeGroupCount = registerOutput<int>('dbNodeGroupCount');
-    this.dbNodeStorage = registerOutput<String>('dbNodeStorage');
-    this.encryptionKey = registerOutput<String?>('encryptionKey');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.maintainTime = registerOutput<String>('maintainTime');
-    this.multiZoneVswitchLists = registerOutput<List<DbClusterMultiZoneVswitchList>?>('multiZoneVswitchLists');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.port = registerOutput<String>('port');
-    this.publicConnectionString = registerOutput<String>('publicConnectionString');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.storageType = registerOutput<String>('storageType');
-    this.usedTime = registerOutput<String?>('usedTime');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:clickhouse/dbCluster:DbCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatePublicConnection = registerOutput<bool?>(
+      'allocatePublicConnection',
+    );
+    category = registerOutput<String>('category');
+    coldStorage = registerOutput<String>('coldStorage');
+    connectionString = registerOutput<String>('connectionString');
+    dbClusterAccessWhiteLists = registerOutput<List<Map<String, dynamic>>?>(
+      'dbClusterAccessWhiteLists',
+    );
+    dbClusterClass = registerOutput<String>('dbClusterClass');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterNetworkType = registerOutput<String>('dbClusterNetworkType');
+    dbClusterVersion = registerOutput<String>('dbClusterVersion');
+    dbNodeGroupCount = registerOutput<int>('dbNodeGroupCount');
+    dbNodeStorage = registerOutput<String>('dbNodeStorage');
+    encryptionKey = registerOutput<String?>('encryptionKey');
+    encryptionType = registerOutput<String?>('encryptionType');
+    maintainTime = registerOutput<String>('maintainTime');
+    multiZoneVswitchLists = registerOutput<List<Map<String, dynamic>>?>(
+      'multiZoneVswitchLists',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    port = registerOutput<String>('port');
+    publicConnectionString = registerOutput<String>('publicConnectionString');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    storageType = registerOutput<String>('storageType');
+    usedTime = registerOutput<String?>('usedTime');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

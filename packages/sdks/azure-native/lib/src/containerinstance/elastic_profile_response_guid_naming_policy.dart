@@ -8,20 +8,21 @@ class ElasticProfileResponseGuidNamingPolicy {
 
   /// Creates a new [ElasticProfileResponseGuidNamingPolicy].
   /// [prefix] The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
-  ElasticProfileResponseGuidNamingPolicy({
-    this.prefix,
-  });
+  ElasticProfileResponseGuidNamingPolicy({this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prefix': ?prefix,
-    };
+    return <String, dynamic>{'prefix': ?prefix};
   }
 
-  factory ElasticProfileResponseGuidNamingPolicy.fromMap(Map<String, dynamic> map) {
+  factory ElasticProfileResponseGuidNamingPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticProfileResponseGuidNamingPolicy(
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

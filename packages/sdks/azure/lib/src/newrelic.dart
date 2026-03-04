@@ -1,5 +1,3 @@
-library module_newrelic;
-
 export 'newrelic/monitor.dart';
 export 'newrelic/monitor_args.dart';
 export 'newrelic/monitor_identity.dart';

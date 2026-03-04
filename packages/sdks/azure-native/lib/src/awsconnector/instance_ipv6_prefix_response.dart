@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceIpv6Prefix
 class InstanceIpv6PrefixResponse {
-  /// <p>One or more IPv6 prefixes assigned to the network interface.</p>
+  /// &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;
   final pulumi.Input<String>? ipv6Prefix;
 
   /// Creates a new [InstanceIpv6PrefixResponse].
-  /// [ipv6Prefix] <p>One or more IPv6 prefixes assigned to the network interface.</p>
-  InstanceIpv6PrefixResponse({
-    this.ipv6Prefix,
-  });
+  /// [ipv6Prefix] &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;
+  InstanceIpv6PrefixResponse({this.ipv6Prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipv6Prefix': ?ipv6Prefix,
-    };
+    return <String, dynamic>{'ipv6Prefix': ?ipv6Prefix};
   }
 
   factory InstanceIpv6PrefixResponse.fromMap(Map<String, dynamic> map) {
     return InstanceIpv6PrefixResponse(
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix']! as String).input(),
+      ipv6Prefix: (() {
+        final guardedValue = map['ipv6Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

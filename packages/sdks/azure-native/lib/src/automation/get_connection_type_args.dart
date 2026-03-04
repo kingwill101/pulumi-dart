@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionTypeArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// The name of connection type.
   final pulumi.Input<String> connectionTypeName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetConnectionTypeArgs {
 
   factory GetConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionTypeArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      connectionTypeName: (map['connectionTypeName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      connectionTypeName: pulumi.Input.fromValue(
+        map['connectionTypeName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

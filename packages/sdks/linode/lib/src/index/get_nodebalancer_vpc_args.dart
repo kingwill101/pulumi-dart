@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodebalancerVpcArgs {
   /// The ID of the VPC configuration.
   final pulumi.Input<int> id;
+
   /// The ID of the parent NodeBalancer of the VPC configuration.
   final pulumi.Input<int> nodebalancerId;
 
   /// Creates a new [GetNodebalancerVpcArgs].
   /// [id] The ID of the VPC configuration.
   /// [nodebalancerId] The ID of the parent NodeBalancer of the VPC configuration.
-  GetNodebalancerVpcArgs({
-    required this.id,
-    required this.nodebalancerId,
-  });
+  GetNodebalancerVpcArgs({required this.id, required this.nodebalancerId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'nodebalancerId': nodebalancerId,
-    };
+    return <String, dynamic>{'id': id, 'nodebalancerId': nodebalancerId};
   }
 
   factory GetNodebalancerVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerVpcArgs(
-      id: (map['id'] as int).input(),
-      nodebalancerId: (map['nodebalancerId'] as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      nodebalancerId: pulumi.Input.fromValue(map['nodebalancerId'] as int),
     );
   }
 }
-

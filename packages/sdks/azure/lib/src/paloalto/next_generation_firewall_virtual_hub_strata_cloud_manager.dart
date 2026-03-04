@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_args.dart';
-import 'next_generation_firewall_virtual_hub_strata_cloud_manager_destination_nat.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_dns_settings.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_identity.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_network_profile.dart';
@@ -390,7 +389,7 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `PaloAltoNetworks.Cloudngfw` - 2025-05-23
@@ -402,27 +401,47 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// ```sh
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVNetStrataCloudManagerFW
 /// ```
-class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomResource {
+class NextGenerationFirewallVirtualHubStrataCloudManager
+    extends pulumi.CustomResource {
   /// One or more `destination_nat` blocks as defined below.
-  late final pulumi.Output<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?> destinationNats;
+  late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
+
   /// A `dns_settings` block as defined below.
-  late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?> dnsSettings;
+  late final pulumi.Output<
+    NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?
+  >
+  dnsSettings;
+
   /// A `identity` block as defined below.
-  late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?> identity;
+  late final pulumi.Output<
+    NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?
+  >
+  identity;
+
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the marketplace offer. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
+
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_profile` block as defined below.
-  late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile> networkProfile;
+  late final pulumi.Output<
+    NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile
+  >
+  networkProfile;
+
   /// The ID of the billing plan. Defaults to `panw-cngfw-payg`.
   late final pulumi.Output<String?> planId;
+
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
   late final pulumi.Output<String> strataCloudManagerTenantName;
+
   /// A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -435,22 +454,35 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
     NextGenerationFirewallVirtualHubStrataCloudManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?>('destinationNats');
-    this.dnsSettings = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?>('dnsSettings');
-    this.identity = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
+         'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
+      'destinationNats',
+    );
+    dnsSettings =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?
+        >('dnsSettings');
+    identity =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?
+        >('identity');
+    location = registerOutput<String>('location');
+    marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>('networkProfile');
-    this.planId = registerOutput<String?>('planId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkProfile =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile
+        >('networkProfile');
+    planId = registerOutput<String?>('planId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    strataCloudManagerTenantName = registerOutput<String>(
+      'strataCloudManagerTenantName',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [NextGenerationFirewallVirtualHubStrataCloudManager] resource's state with the given [name] and [id].
@@ -471,21 +503,34 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?>('destinationNats');
-    this.dnsSettings = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?>('dnsSettings');
-    this.identity = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
+         'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
+      'destinationNats',
+    );
+    dnsSettings =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?
+        >('dnsSettings');
+    identity =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?
+        >('identity');
+    location = registerOutput<String>('location');
+    marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>('networkProfile');
-    this.planId = registerOutput<String?>('planId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkProfile =
+        registerOutput<
+          NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile
+        >('networkProfile');
+    planId = registerOutput<String?>('planId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    strataCloudManagerTenantName = registerOutput<String>(
+      'strataCloudManagerTenantName',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

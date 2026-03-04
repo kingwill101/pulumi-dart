@@ -6,7 +6,7 @@ import 'ecs_deployment_set_state.dart';
 ///
 /// For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 ///
-/// > **NOTE:** Available since v1.140.0.
+/// &gt; **NOTE:** Available since v1.140.0.
 ///
 /// ## Example Usage
 ///
@@ -145,16 +145,21 @@ import 'ecs_deployment_set_state.dart';
 class EcsDeploymentSet extends pulumi.CustomResource {
   /// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> deploymentSetName;
+
   /// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// Field `domain` has been deprecated from provider version 1.243.0.
   late final pulumi.Output<String> domain;
+
   /// Field `granularity` has been deprecated from provider version 1.243.0.
   late final pulumi.Output<String> granularity;
+
   /// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
   /// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
   /// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
   late final pulumi.Output<String?> onUnableToRedeployFailedInstance;
+
   /// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
   late final pulumi.Output<String> strategy;
 
@@ -167,17 +172,19 @@ class EcsDeploymentSet extends pulumi.CustomResource {
     EcsDeploymentSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deploymentSetName = registerOutput<String?>('deploymentSetName');
-    this.description = registerOutput<String?>('description');
-    this.domain = registerOutput<String>('domain');
-    this.granularity = registerOutput<String>('granularity');
-    this.onUnableToRedeployFailedInstance = registerOutput<String?>('onUnableToRedeployFailedInstance');
-    this.strategy = registerOutput<String>('strategy');
+         'alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deploymentSetName = registerOutput<String?>('deploymentSetName');
+    description = registerOutput<String?>('description');
+    domain = registerOutput<String>('domain');
+    granularity = registerOutput<String>('granularity');
+    onUnableToRedeployFailedInstance = registerOutput<String?>(
+      'onUnableToRedeployFailedInstance',
+    );
+    strategy = registerOutput<String>('strategy');
   }
 
   /// Gets an existing [EcsDeploymentSet] resource's state with the given [name] and [id].
@@ -198,16 +205,18 @@ class EcsDeploymentSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deploymentSetName = registerOutput<String?>('deploymentSetName');
-    this.description = registerOutput<String?>('description');
-    this.domain = registerOutput<String>('domain');
-    this.granularity = registerOutput<String>('granularity');
-    this.onUnableToRedeployFailedInstance = registerOutput<String?>('onUnableToRedeployFailedInstance');
-    this.strategy = registerOutput<String>('strategy');
+         'alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deploymentSetName = registerOutput<String?>('deploymentSetName');
+    description = registerOutput<String?>('description');
+    domain = registerOutput<String>('domain');
+    granularity = registerOutput<String>('granularity');
+    onUnableToRedeployFailedInstance = registerOutput<String?>(
+      'onUnableToRedeployFailedInstance',
+    );
+    strategy = registerOutput<String>('strategy');
   }
 }

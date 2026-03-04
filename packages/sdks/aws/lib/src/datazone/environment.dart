@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
-import 'environment_last_deployment.dart';
-import 'environment_provisioned_resource.dart';
 import 'environment_state.dart';
 import 'environment_timeouts.dart';
-import 'environment_user_parameter.dart';
 
 /// Resource for managing an AWS DataZone Environment.
 ///
@@ -215,40 +212,54 @@ import 'environment_user_parameter.dart';
 class Environment extends pulumi.CustomResource {
   /// The ID of the Amazon Web Services account where the environment exists
   late final pulumi.Output<String> accountIdentifier;
+
   /// The Amazon Web Services region where the environment exists.
   late final pulumi.Output<String> accountRegion;
+
   /// The blueprint with which the environment is created.
   late final pulumi.Output<String> blueprintIdentifier;
+
   /// The time the environment was created.
   late final pulumi.Output<String> createdAt;
+
   /// The user who created the environment.
   late final pulumi.Output<String> createdBy;
+
   /// The description of the environment.
   late final pulumi.Output<String?> description;
+
   /// The ID of the domain where the environment exists.
   late final pulumi.Output<String> domainIdentifier;
+
   /// The business glossary terms that can be used in this environment.
   late final pulumi.Output<List<String>?> glossaryTerms;
+
   /// The details of the last deployment of the environment.
-  late final pulumi.Output<List<EnvironmentLastDeployment>> lastDeployments;
+  late final pulumi.Output<List<Map<String, dynamic>>> lastDeployments;
+
   /// The name of the environment.
   late final pulumi.Output<String> name;
+
   /// The ID of the profile with which the environment is created.
   late final pulumi.Output<String> profileIdentifier;
+
   /// The ID of the project where the environment exists.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> projectIdentifier;
+
   /// The provider of the environment.
   late final pulumi.Output<String> providerEnvironment;
-  late final pulumi.Output<List<EnvironmentProvisionedResource>> provisionedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>> provisionedResources;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EnvironmentTimeouts?> timeouts;
+
   /// The user parameters that are used in the environment.
   /// See User Parameters for more information.
   /// Changing these values recreates the resource.
-  late final pulumi.Output<List<EnvironmentUserParameter>?> userParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> userParameters;
 
   /// Creates a new [Environment].
   /// [name] The Pulumi resource name.
@@ -259,28 +270,34 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountIdentifier = registerOutput<String>('accountIdentifier');
-    this.accountRegion = registerOutput<String>('accountRegion');
-    this.blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.description = registerOutput<String?>('description');
-    this.domainIdentifier = registerOutput<String>('domainIdentifier');
-    this.glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    this.lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments');
+         'aws:datazone/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountIdentifier = registerOutput<String>('accountIdentifier');
+    accountRegion = registerOutput<String>('accountRegion');
+    blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
+    lastDeployments = registerOutput<List<Map<String, dynamic>>>(
+      'lastDeployments',
+    );
     this.name = registerOutput<String>('name');
-    this.profileIdentifier = registerOutput<String>('profileIdentifier');
-    this.projectIdentifier = registerOutput<String>('projectIdentifier');
-    this.providerEnvironment = registerOutput<String>('providerEnvironment');
-    this.provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
-    this.userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters');
+    profileIdentifier = registerOutput<String>('profileIdentifier');
+    projectIdentifier = registerOutput<String>('projectIdentifier');
+    providerEnvironment = registerOutput<String>('providerEnvironment');
+    provisionedResources = registerOutput<List<Map<String, dynamic>>>(
+      'provisionedResources',
+    );
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    userParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'userParameters',
+    );
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -301,27 +318,33 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountIdentifier = registerOutput<String>('accountIdentifier');
-    this.accountRegion = registerOutput<String>('accountRegion');
-    this.blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.description = registerOutput<String?>('description');
-    this.domainIdentifier = registerOutput<String>('domainIdentifier');
-    this.glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    this.lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments');
+         'aws:datazone/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountIdentifier = registerOutput<String>('accountIdentifier');
+    accountRegion = registerOutput<String>('accountRegion');
+    blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
+    lastDeployments = registerOutput<List<Map<String, dynamic>>>(
+      'lastDeployments',
+    );
     this.name = registerOutput<String>('name');
-    this.profileIdentifier = registerOutput<String>('profileIdentifier');
-    this.projectIdentifier = registerOutput<String>('projectIdentifier');
-    this.providerEnvironment = registerOutput<String>('providerEnvironment');
-    this.provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
-    this.userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters');
+    profileIdentifier = registerOutput<String>('profileIdentifier');
+    projectIdentifier = registerOutput<String>('projectIdentifier');
+    providerEnvironment = registerOutput<String>('providerEnvironment');
+    provisionedResources = registerOutput<List<Map<String, dynamic>>>(
+      'provisionedResources',
+    );
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    userParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'userParameters',
+    );
   }
 }

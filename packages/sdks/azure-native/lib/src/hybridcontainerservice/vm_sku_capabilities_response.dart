@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmSkuCapabilitiesResponse {
   /// Name of the VM SKU capability
   final pulumi.Input<String> name;
+
   /// Value of the VM SKU capability
   final pulumi.Input<String> value;
 
   /// Creates a new [VmSkuCapabilitiesResponse].
   /// [name] Name of the VM SKU capability
   /// [value] Value of the VM SKU capability
-  VmSkuCapabilitiesResponse({
-    required this.name,
-    required this.value,
-  });
+  VmSkuCapabilitiesResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory VmSkuCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return VmSkuCapabilitiesResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

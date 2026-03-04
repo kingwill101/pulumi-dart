@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_args.dart';
-import 'key_key_attribute.dart';
 import 'key_state.dart';
 import 'key_timeouts.dart';
 
@@ -193,26 +192,36 @@ class Key extends pulumi.CustomResource {
   /// ARN of the key.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<int> deletionWindowInDays;
+
   /// Whether to enable the key.
   late final pulumi.Output<bool> enabled;
+
   /// Whether the key is exportable from the service.
   late final pulumi.Output<bool> exportable;
+
   /// Role of the key, the algorithm it supports, and the cryptographic operations allowed with the key.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<KeyKeyAttribute>?> keyAttributes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> keyAttributes;
+
   /// Key check value (KCV) is used to check if all parties holding a given key have the same key or to detect that a key has changed.
   late final pulumi.Output<String> keyCheckValue;
+
   /// Algorithm that AWS Payment Cryptography uses to calculate the key check value (KCV).
   late final pulumi.Output<String> keyCheckValueAlgorithm;
+
   /// Source of the key material.
   late final pulumi.Output<String> keyOrigin;
+
   /// State of key that is being created or deleted.
   late final pulumi.Output<String> keyState;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<KeyTimeouts?> timeouts;
@@ -221,37 +230,32 @@ class Key extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Key]. {@macro pulumi_paymentcryptography_key_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Key(
-    String name, {
-    KeyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:paymentcryptography/key:Key',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
-    this.enabled = registerOutput<bool>('enabled');
-    this.exportable = registerOutput<bool>('exportable');
-    this.keyAttributes = registerOutput<List<KeyKeyAttribute>?>('keyAttributes');
-    this.keyCheckValue = registerOutput<String>('keyCheckValue');
-    this.keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
-    this.keyOrigin = registerOutput<String>('keyOrigin');
-    this.keyState = registerOutput<String>('keyState');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<KeyTimeouts?>('timeouts');
+  Key(String name, {KeyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:paymentcryptography/key:Key',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
+    enabled = registerOutput<bool>('enabled');
+    exportable = registerOutput<bool>('exportable');
+    keyAttributes = registerOutput<List<Map<String, dynamic>>?>(
+      'keyAttributes',
+    );
+    keyCheckValue = registerOutput<String>('keyCheckValue');
+    keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
+    keyOrigin = registerOutput<String>('keyOrigin');
+    keyState = registerOutput<String>('keyState');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<KeyTimeouts?>('timeouts');
   }
 
   /// Gets an existing [Key] resource's state with the given [name] and [id].
-  static Key get(
-    String name,
-    pulumi.Input<String> id, {
-    KeyState? state,
-  }) {
+  static Key get(String name, pulumi.Input<String> id, {KeyState? state}) {
     return Key._get(
       name,
       state: state?.toMap(),
@@ -264,23 +268,25 @@ class Key extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:paymentcryptography/key:Key',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
-    this.enabled = registerOutput<bool>('enabled');
-    this.exportable = registerOutput<bool>('exportable');
-    this.keyAttributes = registerOutput<List<KeyKeyAttribute>?>('keyAttributes');
-    this.keyCheckValue = registerOutput<String>('keyCheckValue');
-    this.keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
-    this.keyOrigin = registerOutput<String>('keyOrigin');
-    this.keyState = registerOutput<String>('keyState');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<KeyTimeouts?>('timeouts');
+         'aws:paymentcryptography/key:Key',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
+    enabled = registerOutput<bool>('enabled');
+    exportable = registerOutput<bool>('exportable');
+    keyAttributes = registerOutput<List<Map<String, dynamic>>?>(
+      'keyAttributes',
+    );
+    keyCheckValue = registerOutput<String>('keyCheckValue');
+    keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
+    keyOrigin = registerOutput<String>('keyOrigin');
+    keyState = registerOutput<String>('keyState');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<KeyTimeouts?>('timeouts');
   }
 }

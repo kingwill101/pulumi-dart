@@ -19,10 +19,13 @@ class ClusterNetworkPerformanceConfigResponseContainerV1beta1 {
     };
   }
 
-  factory ClusterNetworkPerformanceConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ClusterNetworkPerformanceConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNetworkPerformanceConfigResponseContainerV1beta1(
-      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(
+        map['totalEgressBandwidthTier'] as String,
+      ),
     );
   }
 }
-

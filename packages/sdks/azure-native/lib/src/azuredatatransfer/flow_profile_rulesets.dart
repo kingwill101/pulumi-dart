@@ -12,14 +12,19 @@ import 'xml_filter_ruleset.dart';
 class FlowProfileRulesets {
   /// Antivirus scanning rules for replicated data.
   final pulumi.Input<AntivirusRuleset>? antivirus;
+
   /// Rules for handling archive files during replication.
   final pulumi.Input<ArchiveRuleset>? archives;
+
   /// Rules that enforce minimum and maximum data size limits.
   final pulumi.Input<DataSizeRuleset>? dataSize;
+
   /// Rules for filtering files based on MIME types.
   final pulumi.Input<MimeFilterRuleset>? mimeFilters;
+
   /// Rules for detecting and blocking specific text patterns.
   final pulumi.Input<TextMatchingRuleset>? textMatching;
+
   /// Rules for filtering XML content using XSD schemas.
   final pulumi.Input<XmlFilterRuleset>? xmlFilters;
 
@@ -41,24 +46,93 @@ class FlowProfileRulesets {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'antivirus': ?pulumi.Input.mapOptionalInputValue<AntivirusRuleset, Map<String, dynamic>>(antivirus, (value) => value.toMap()),
-      'archives': ?pulumi.Input.mapOptionalInputValue<ArchiveRuleset, Map<String, dynamic>>(archives, (value) => value.toMap()),
-      'dataSize': ?pulumi.Input.mapOptionalInputValue<DataSizeRuleset, Map<String, dynamic>>(dataSize, (value) => value.toMap()),
-      'mimeFilters': ?pulumi.Input.mapOptionalInputValue<MimeFilterRuleset, Map<String, dynamic>>(mimeFilters, (value) => value.toMap()),
-      'textMatching': ?pulumi.Input.mapOptionalInputValue<TextMatchingRuleset, Map<String, dynamic>>(textMatching, (value) => value.toMap()),
-      'xmlFilters': ?pulumi.Input.mapOptionalInputValue<XmlFilterRuleset, Map<String, dynamic>>(xmlFilters, (value) => value.toMap()),
+      'antivirus':
+          ?pulumi.Input.mapOptionalInputValue<
+            AntivirusRuleset,
+            Map<String, dynamic>
+          >(antivirus, (value) => value.toMap()),
+      'archives':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArchiveRuleset,
+            Map<String, dynamic>
+          >(archives, (value) => value.toMap()),
+      'dataSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataSizeRuleset,
+            Map<String, dynamic>
+          >(dataSize, (value) => value.toMap()),
+      'mimeFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MimeFilterRuleset,
+            Map<String, dynamic>
+          >(mimeFilters, (value) => value.toMap()),
+      'textMatching':
+          ?pulumi.Input.mapOptionalInputValue<
+            TextMatchingRuleset,
+            Map<String, dynamic>
+          >(textMatching, (value) => value.toMap()),
+      'xmlFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            XmlFilterRuleset,
+            Map<String, dynamic>
+          >(xmlFilters, (value) => value.toMap()),
     };
   }
 
   factory FlowProfileRulesets.fromMap(Map<String, dynamic> map) {
     return FlowProfileRulesets(
-      antivirus: map['antivirus'] == null ? null : (AntivirusRuleset.fromMap((map['antivirus']! as Map).cast<String, dynamic>())).input(),
-      archives: map['archives'] == null ? null : (ArchiveRuleset.fromMap((map['archives']! as Map).cast<String, dynamic>())).input(),
-      dataSize: map['dataSize'] == null ? null : (DataSizeRuleset.fromMap((map['dataSize']! as Map).cast<String, dynamic>())).input(),
-      mimeFilters: map['mimeFilters'] == null ? null : (MimeFilterRuleset.fromMap((map['mimeFilters']! as Map).cast<String, dynamic>())).input(),
-      textMatching: map['textMatching'] == null ? null : (TextMatchingRuleset.fromMap((map['textMatching']! as Map).cast<String, dynamic>())).input(),
-      xmlFilters: map['xmlFilters'] == null ? null : (XmlFilterRuleset.fromMap((map['xmlFilters']! as Map).cast<String, dynamic>())).input(),
+      antivirus: (() {
+        final guardedValue = map['antivirus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AntivirusRuleset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      archives: (() {
+        final guardedValue = map['archives'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArchiveRuleset.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      dataSize: (() {
+        final guardedValue = map['dataSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataSizeRuleset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mimeFilters: (() {
+        final guardedValue = map['mimeFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MimeFilterRuleset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      textMatching: (() {
+        final guardedValue = map['textMatching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextMatchingRuleset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      xmlFilters: (() {
+        final guardedValue = map['xmlFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          XmlFilterRuleset.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

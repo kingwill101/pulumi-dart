@@ -6,16 +6,15 @@ enum InstructionDataType {
   text("TEXT"),
   generalData("GENERAL_DATA");
 
-  const InstructionDataType(this.value);
-  final String value;
+  const InstructionDataType(this.wireValue);
+  final String wireValue;
 
   static InstructionDataType fromValue(String value) {
     for (final item in InstructionDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstructionDataType value: $value');
   }
 }
-

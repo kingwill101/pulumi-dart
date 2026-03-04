@@ -31,10 +31,15 @@ class GetBackupScheduleArgs {
 
   factory GetBackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupScheduleArgs(
-      backupScheduleId: (map['backupScheduleId'] as String).input(),
-      databaseId: (map['databaseId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupScheduleId: pulumi.Input.fromValue(
+        map['backupScheduleId'] as String,
+      ),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

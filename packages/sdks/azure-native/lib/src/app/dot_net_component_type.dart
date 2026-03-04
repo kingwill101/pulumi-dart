@@ -2,16 +2,15 @@
 enum DotNetComponentType {
   valueAspireDashboard("AspireDashboard");
 
-  const DotNetComponentType(this.value);
-  final String value;
+  const DotNetComponentType(this.wireValue);
+  final String wireValue;
 
   static DotNetComponentType fromValue(String value) {
     for (final item in DotNetComponentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DotNetComponentType value: $value');
   }
 }
-

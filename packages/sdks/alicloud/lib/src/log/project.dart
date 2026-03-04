@@ -6,7 +6,7 @@ import 'project_state.dart';
 ///
 /// For information about SLS Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/sls/developer-reference/api-createproject).
 ///
-/// > **NOTE:** Available since v1.9.5.
+/// &gt; **NOTE:** Available since v1.9.5.
 ///
 /// ## Example Usage
 ///
@@ -445,22 +445,29 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// CreateTime.
   late final pulumi.Output<String> createTime;
+
   /// Description.
   late final pulumi.Output<String?> description;
+
   /// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
   late final pulumi.Output<String> name;
+
   /// Log project policy, used to set a policy for a project.
   late final pulumi.Output<String?> policy;
+
   /// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
   /// - The project name must be globally unique.
   /// - The name can contain only lowercase letters, digits, and hyphens (-).
   /// - It must start and end with a lowercase letter or number.
   /// - The value contains 3 to 63 characters.
   late final pulumi.Output<String> projectName;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Tag.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -475,19 +482,19 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:log/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.policy = registerOutput<String?>('policy');
-    this.projectName = registerOutput<String>('projectName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    policy = registerOutput<String?>('policy');
+    projectName = registerOutput<String>('projectName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -508,18 +515,18 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:log/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.policy = registerOutput<String?>('policy');
-    this.projectName = registerOutput<String>('projectName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    policy = registerOutput<String?>('policy');
+    projectName = registerOutput<String>('projectName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

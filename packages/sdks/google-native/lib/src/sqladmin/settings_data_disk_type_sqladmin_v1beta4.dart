@@ -5,16 +5,17 @@ enum SettingsDataDiskTypeSqladminV1beta4 {
   pdHdd("PD_HDD"),
   obsoleteLocalSsd("OBSOLETE_LOCAL_SSD");
 
-  const SettingsDataDiskTypeSqladminV1beta4(this.value);
-  final String value;
+  const SettingsDataDiskTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsDataDiskTypeSqladminV1beta4 fromValue(String value) {
     for (final item in SettingsDataDiskTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsDataDiskTypeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsDataDiskTypeSqladminV1beta4 value: $value',
+    );
   }
 }
-

@@ -5,16 +5,15 @@ enum ApplicationGatewaySslProtocol {
   valueTLSv12("TLSv1_2"),
   valueTLSv13("TLSv1_3");
 
-  const ApplicationGatewaySslProtocol(this.value);
-  final String value;
+  const ApplicationGatewaySslProtocol(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewaySslProtocol fromValue(String value) {
     for (final item in ApplicationGatewaySslProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationGatewaySslProtocol value: $value');
   }
 }
-

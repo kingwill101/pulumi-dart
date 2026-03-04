@@ -9,13 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceSerialPortArgs {
   /// The name of the Compute Instance to read output from.
   final pulumi.Input<String> instance;
+
   /// The number of the serial port to read output from. Possible values are 1-4.
   ///
   /// - - -
   final pulumi.Input<int> port;
+
   /// The project in which the Compute Instance exists. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The zone in which the Compute Instance exists.
   /// If it is not provided, the provider zone is used.
   final pulumi.Input<String>? zone;
@@ -43,11 +46,18 @@ class GetInstanceSerialPortArgs {
 
   factory GetInstanceSerialPortArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceSerialPortArgs(
-      instance: (map['instance'] as String).input(),
-      port: (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class ConnectToSourcePostgreSqlSyncTaskInput {
 
   /// Creates a new [ConnectToSourcePostgreSqlSyncTaskInput].
   /// [sourceConnectionInfo] Connection information for source PostgreSQL server
-  ConnectToSourcePostgreSqlSyncTaskInput({
-    required this.sourceConnectionInfo,
-  });
+  ConnectToSourcePostgreSqlSyncTaskInput({required this.sourceConnectionInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            PostgreSqlConnectionInfo,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToSourcePostgreSqlSyncTaskInput.fromMap(Map<String, dynamic> map) {
+  factory ConnectToSourcePostgreSqlSyncTaskInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToSourcePostgreSqlSyncTaskInput(
-      sourceConnectionInfo: (PostgreSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        PostgreSqlConnectionInfo.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

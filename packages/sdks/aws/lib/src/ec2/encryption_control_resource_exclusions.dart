@@ -12,19 +12,32 @@ import 'encryption_control_resource_exclusions_vpc_peering.dart';
 
 class EncryptionControlResourceExclusions {
   /// `state` and `state_message` describing encryption enforcement state for Egress-Only Internet Gateways.
-  final pulumi.Input<EncryptionControlResourceExclusionsEgressOnlyInternetGateway> egressOnlyInternetGateway;
+  final pulumi.Input<
+    EncryptionControlResourceExclusionsEgressOnlyInternetGateway
+  >
+  egressOnlyInternetGateway;
+
   /// `state` and `state_message` describing encryption enforcement state for Elastic File System (EFS).
-  final pulumi.Input<EncryptionControlResourceExclusionsElasticFileSystem> elasticFileSystem;
+  final pulumi.Input<EncryptionControlResourceExclusionsElasticFileSystem>
+  elasticFileSystem;
+
   /// `state` and `state_message` describing encryption enforcement state for Internet Gateways.
-  final pulumi.Input<EncryptionControlResourceExclusionsInternetGateway> internetGateway;
+  final pulumi.Input<EncryptionControlResourceExclusionsInternetGateway>
+  internetGateway;
+
   /// `state` and `state_message` describing encryption enforcement state for Lambda Functions.
   final pulumi.Input<EncryptionControlResourceExclusionsLambda> lambda;
+
   /// `state` and `state_message` describing encryption enforcement state for NAT Gateways.
   final pulumi.Input<EncryptionControlResourceExclusionsNatGateway> natGateway;
+
   /// `state` and `state_message` describing encryption enforcement state for Virtual Private Gateways.
-  final pulumi.Input<EncryptionControlResourceExclusionsVirtualPrivateGateway> virtualPrivateGateway;
+  final pulumi.Input<EncryptionControlResourceExclusionsVirtualPrivateGateway>
+  virtualPrivateGateway;
+
   /// `state` and `state_message` describing encryption enforcement state for VPC Lattice.
   final pulumi.Input<EncryptionControlResourceExclusionsVpcLattice> vpcLattice;
+
   /// `state` and `state_message` describing encryption enforcement state for peered VPCs.
   final pulumi.Input<EncryptionControlResourceExclusionsVpcPeering> vpcPeering;
 
@@ -50,28 +63,93 @@ class EncryptionControlResourceExclusions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressOnlyInternetGateway': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsEgressOnlyInternetGateway, Map<String, dynamic>>(egressOnlyInternetGateway, (value) => value.toMap()),
-      'elasticFileSystem': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsElasticFileSystem, Map<String, dynamic>>(elasticFileSystem, (value) => value.toMap()),
-      'internetGateway': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsInternetGateway, Map<String, dynamic>>(internetGateway, (value) => value.toMap()),
-      'lambda': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsLambda, Map<String, dynamic>>(lambda, (value) => value.toMap()),
-      'natGateway': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsNatGateway, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
-      'virtualPrivateGateway': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsVirtualPrivateGateway, Map<String, dynamic>>(virtualPrivateGateway, (value) => value.toMap()),
-      'vpcLattice': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsVpcLattice, Map<String, dynamic>>(vpcLattice, (value) => value.toMap()),
-      'vpcPeering': pulumi.Input.mapInputValue<EncryptionControlResourceExclusionsVpcPeering, Map<String, dynamic>>(vpcPeering, (value) => value.toMap()),
+      'egressOnlyInternetGateway':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsEgressOnlyInternetGateway,
+            Map<String, dynamic>
+          >(egressOnlyInternetGateway, (value) => value.toMap()),
+      'elasticFileSystem':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsElasticFileSystem,
+            Map<String, dynamic>
+          >(elasticFileSystem, (value) => value.toMap()),
+      'internetGateway':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsInternetGateway,
+            Map<String, dynamic>
+          >(internetGateway, (value) => value.toMap()),
+      'lambda':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsLambda,
+            Map<String, dynamic>
+          >(lambda, (value) => value.toMap()),
+      'natGateway':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsNatGateway,
+            Map<String, dynamic>
+          >(natGateway, (value) => value.toMap()),
+      'virtualPrivateGateway':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsVirtualPrivateGateway,
+            Map<String, dynamic>
+          >(virtualPrivateGateway, (value) => value.toMap()),
+      'vpcLattice':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsVpcLattice,
+            Map<String, dynamic>
+          >(vpcLattice, (value) => value.toMap()),
+      'vpcPeering':
+          pulumi.Input.mapInputValue<
+            EncryptionControlResourceExclusionsVpcPeering,
+            Map<String, dynamic>
+          >(vpcPeering, (value) => value.toMap()),
     };
   }
 
-  factory EncryptionControlResourceExclusions.fromMap(Map<String, dynamic> map) {
+  factory EncryptionControlResourceExclusions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EncryptionControlResourceExclusions(
-      egressOnlyInternetGateway: (EncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap((map['egressOnlyInternetGateway']! as Map).cast<String, dynamic>())).input(),
-      elasticFileSystem: (EncryptionControlResourceExclusionsElasticFileSystem.fromMap((map['elasticFileSystem']! as Map).cast<String, dynamic>())).input(),
-      internetGateway: (EncryptionControlResourceExclusionsInternetGateway.fromMap((map['internetGateway']! as Map).cast<String, dynamic>())).input(),
-      lambda: (EncryptionControlResourceExclusionsLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input(),
-      natGateway: (EncryptionControlResourceExclusionsNatGateway.fromMap((map['natGateway']! as Map).cast<String, dynamic>())).input(),
-      virtualPrivateGateway: (EncryptionControlResourceExclusionsVirtualPrivateGateway.fromMap((map['virtualPrivateGateway']! as Map).cast<String, dynamic>())).input(),
-      vpcLattice: (EncryptionControlResourceExclusionsVpcLattice.fromMap((map['vpcLattice']! as Map).cast<String, dynamic>())).input(),
-      vpcPeering: (EncryptionControlResourceExclusionsVpcPeering.fromMap((map['vpcPeering']! as Map).cast<String, dynamic>())).input(),
+      egressOnlyInternetGateway: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap(
+          (map['egressOnlyInternetGateway']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      elasticFileSystem: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsElasticFileSystem.fromMap(
+          (map['elasticFileSystem']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      internetGateway: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsInternetGateway.fromMap(
+          (map['internetGateway']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      lambda: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsLambda.fromMap(
+          (map['lambda']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      natGateway: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsNatGateway.fromMap(
+          (map['natGateway']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      virtualPrivateGateway: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsVirtualPrivateGateway.fromMap(
+          (map['virtualPrivateGateway']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vpcLattice: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsVpcLattice.fromMap(
+          (map['vpcLattice']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vpcPeering: pulumi.Input.fromValue(
+        EncryptionControlResourceExclusionsVpcPeering.fromMap(
+          (map['vpcPeering']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

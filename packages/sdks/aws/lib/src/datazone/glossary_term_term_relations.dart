@@ -10,23 +10,24 @@ class GlossaryTermTermRelations {
   /// Creates a new [GlossaryTermTermRelations].
   /// [classifies] String array that calssifies the term relations.
   /// [isAs] Optional.
-  GlossaryTermTermRelations({
-    this.classifies,
-    this.isAs,
-  });
+  GlossaryTermTermRelations({this.classifies, this.isAs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'classifies': ?classifies,
-      'isAs': ?isAs,
-    };
+    return <String, dynamic>{'classifies': ?classifies, 'isAs': ?isAs};
   }
 
   factory GlossaryTermTermRelations.fromMap(Map<String, dynamic> map) {
     return GlossaryTermTermRelations(
-      classifies: map['classifies'] == null ? null : (((map['classifies'] as List).cast<String>()).input()).input(),
-      isAs: map['isAs'] == null ? null : (((map['isAs'] as List).cast<String>()).input()).input(),
+      classifies: (() {
+        final guardedValue = map['classifies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isAs: (() {
+        final guardedValue = map['isAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

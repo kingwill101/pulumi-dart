@@ -8,20 +8,21 @@ class DataLakeConfigurationLifecycleConfigurationExpiration {
 
   /// Creates a new [DataLakeConfigurationLifecycleConfigurationExpiration].
   /// [days] Number of days before data transition to a different S3 Storage Class in the Amazon Security Lake object.
-  DataLakeConfigurationLifecycleConfigurationExpiration({
-    this.days,
-  });
+  DataLakeConfigurationLifecycleConfigurationExpiration({this.days});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'days': ?days,
-    };
+    return <String, dynamic>{'days': ?days};
   }
 
-  factory DataLakeConfigurationLifecycleConfigurationExpiration.fromMap(Map<String, dynamic> map) {
+  factory DataLakeConfigurationLifecycleConfigurationExpiration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataLakeConfigurationLifecycleConfigurationExpiration(
-      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
   /// Number of milliseconds for which to keep the storage for a partition.
   final pulumi.Input<String>? expirationMs;
+
   /// Type of partitioning.
   /// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
   final pulumi.Input<String> type;
@@ -18,17 +19,19 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expirationMs': ?expirationMs,
-      'type': type,
-    };
+    return <String, dynamic>{'expirationMs': ?expirationMs, 'type': type};
   }
 
-  factory FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap(Map<String, dynamic> map) {
+  factory FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig(
-      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs']! as String).input(),
-      type: (map['type'] as String).input(),
+      expirationMs: (() {
+        final guardedValue = map['expirationMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

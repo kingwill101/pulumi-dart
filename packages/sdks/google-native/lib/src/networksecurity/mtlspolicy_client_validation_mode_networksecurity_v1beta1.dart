@@ -4,16 +4,20 @@ enum MTLSPolicyClientValidationModeNetworksecurityV1beta1 {
   allowInvalidOrMissingClientCert("ALLOW_INVALID_OR_MISSING_CLIENT_CERT"),
   rejectInvalid("REJECT_INVALID");
 
-  const MTLSPolicyClientValidationModeNetworksecurityV1beta1(this.value);
-  final String value;
+  const MTLSPolicyClientValidationModeNetworksecurityV1beta1(this.wireValue);
+  final String wireValue;
 
-  static MTLSPolicyClientValidationModeNetworksecurityV1beta1 fromValue(String value) {
-    for (final item in MTLSPolicyClientValidationModeNetworksecurityV1beta1.values) {
-      if (item.value == value) {
+  static MTLSPolicyClientValidationModeNetworksecurityV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in MTLSPolicyClientValidationModeNetworksecurityV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MTLSPolicyClientValidationModeNetworksecurityV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown MTLSPolicyClientValidationModeNetworksecurityV1beta1 value: $value',
+    );
   }
 }
-

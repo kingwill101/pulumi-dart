@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadNetworkVMGroupArgs {
   /// Display name of the VM group.
   final pulumi.Input<String>? displayName;
+
   /// Virtual machine members of this group.
   final pulumi.Input<List<String>>? members;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// NSX revision number.
   final pulumi.Input<double>? revision;
+
   /// ID of the VM group.
   final pulumi.Input<String>? vmGroupId;
 
@@ -49,13 +54,32 @@ class WorkloadNetworkVMGroupArgs {
 
   factory WorkloadNetworkVMGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkVMGroupArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
-      vmGroupId: map['vmGroupId'] == null ? null : (map['vmGroupId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      vmGroupId: (() {
+        final guardedValue = map['vmGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

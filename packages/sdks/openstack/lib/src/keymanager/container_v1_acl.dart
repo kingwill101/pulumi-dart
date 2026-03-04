@@ -8,20 +8,29 @@ class ContainerV1Acl {
 
   /// Creates a new [ContainerV1Acl].
   /// [read] Optional.
-  ContainerV1Acl({
-    this.read,
-  });
+  ContainerV1Acl({this.read});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'read': ?pulumi.Input.mapOptionalInputValue<ContainerV1AclRead, Map<String, dynamic>>(read, (value) => value.toMap()),
+      'read':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerV1AclRead,
+            Map<String, dynamic>
+          >(read, (value) => value.toMap()),
     };
   }
 
   factory ContainerV1Acl.fromMap(Map<String, dynamic> map) {
     return ContainerV1Acl(
-      read: map['read'] == null ? null : (ContainerV1AclRead.fromMap((map['read']! as Map).cast<String, dynamic>())).input(),
+      read: (() {
+        final guardedValue = map['read'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerV1AclRead.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

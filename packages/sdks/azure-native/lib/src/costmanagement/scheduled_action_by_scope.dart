@@ -499,30 +499,43 @@ import 'system_data_response.dart';
 class ScheduledActionByScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Scheduled action name.
   late final pulumi.Output<String> displayName;
+
   /// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
   late final pulumi.Output<String> eTag;
+
   /// Destination format of the view data. This is optional.
   late final pulumi.Output<FileDestinationResponse?> fileDestination;
+
   /// Kind of the scheduled action.
   late final pulumi.Output<String?> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Notification properties based on scheduled action kind.
   late final pulumi.Output<NotificationPropertiesResponse> notification;
+
   /// Email address of the point of contact that should get the unsubscribe requests and notification emails.
   late final pulumi.Output<String?> notificationEmail;
+
   /// Schedule of the scheduled action.
   late final pulumi.Output<SchedulePropertiesResponse> schedule;
-  /// For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
+
+  /// For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   late final pulumi.Output<String?> scope;
+
   /// Status of the scheduled action.
   late final pulumi.Output<String> status;
+
   /// Kind of the scheduled action.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   late final pulumi.Output<String> viewId;
 
@@ -535,24 +548,28 @@ class ScheduledActionByScope extends pulumi.CustomResource {
     ScheduledActionByScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:costmanagement:ScheduledActionByScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String>('displayName');
-    this.eTag = registerOutput<String>('eTag');
-    this.fileDestination = registerOutput<FileDestinationResponse?>('fileDestination');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:costmanagement:ScheduledActionByScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String>('displayName');
+    eTag = registerOutput<String>('eTag');
+    fileDestination = registerOutput<FileDestinationResponse?>(
+      'fileDestination',
+    );
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.notification = registerOutput<NotificationPropertiesResponse>('notification');
-    this.notificationEmail = registerOutput<String?>('notificationEmail');
-    this.schedule = registerOutput<SchedulePropertiesResponse>('schedule');
-    this.scope = registerOutput<String?>('scope');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.viewId = registerOutput<String>('viewId');
+    notification = registerOutput<NotificationPropertiesResponse>(
+      'notification',
+    );
+    notificationEmail = registerOutput<String?>('notificationEmail');
+    schedule = registerOutput<SchedulePropertiesResponse>('schedule');
+    scope = registerOutput<String?>('scope');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    viewId = registerOutput<String>('viewId');
   }
 }

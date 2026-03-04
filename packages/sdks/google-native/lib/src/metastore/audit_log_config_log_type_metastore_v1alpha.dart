@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeMetastoreV1alpha {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeMetastoreV1alpha(this.value);
-  final String value;
+  const AuditLogConfigLogTypeMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeMetastoreV1alpha fromValue(String value) {
     for (final item in AuditLogConfigLogTypeMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeMetastoreV1alpha value: $value',
+    );
   }
 }
-

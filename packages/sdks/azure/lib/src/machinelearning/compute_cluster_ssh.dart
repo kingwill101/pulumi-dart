@@ -5,11 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeClusterSsh {
   /// Password of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
   final pulumi.Input<String>? adminPassword;
+
   /// Name of the administrator user account which can be used to SSH to nodes. Changing this forces a new Machine Learning Compute Cluster to be created.
   final pulumi.Input<String> adminUsername;
+
   /// SSH public key of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
   ///
-  /// > **Note:** At least one of `admin_password` and `key_value` shoud be specified.
+  /// &gt; **Note:** At least one of `admin_password` and `key_value` shoud be specified.
   final pulumi.Input<String>? keyValue;
 
   /// Creates a new [ComputeClusterSsh].
@@ -32,10 +34,17 @@ class ComputeClusterSsh {
 
   factory ComputeClusterSsh.fromMap(Map<String, dynamic> map) {
     return ComputeClusterSsh(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      adminUsername: (map['adminUsername'] as String).input(),
-      keyValue: map['keyValue'] == null ? null : (map['keyValue']! as String).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
+      keyValue: (() {
+        final guardedValue = map['keyValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class AzureNodePoolConfigSshConfig {
 
   /// Creates a new [AzureNodePoolConfigSshConfig].
   /// [authorizedKey] The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
-  AzureNodePoolConfigSshConfig({
-    required this.authorizedKey,
-  });
+  AzureNodePoolConfigSshConfig({required this.authorizedKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorizedKey': authorizedKey,
-    };
+    return <String, dynamic>{'authorizedKey': authorizedKey};
   }
 
   factory AzureNodePoolConfigSshConfig.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolConfigSshConfig(
-      authorizedKey: (map['authorizedKey'] as String).input(),
+      authorizedKey: pulumi.Input.fromValue(map['authorizedKey'] as String),
     );
   }
 }
-

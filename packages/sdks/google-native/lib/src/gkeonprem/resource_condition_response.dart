@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceConditionResponse {
   /// Last time the condition transit from one status to another.
   final pulumi.Input<String> lastTransitionTime;
+
   /// Human-readable message indicating details about last transition.
   final pulumi.Input<String> message;
+
   /// Machine-readable message indicating details about last transition.
   final pulumi.Input<String> reason;
+
   /// state of the condition.
   final pulumi.Input<String> state;
+
   /// Type of the condition. (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
   final pulumi.Input<String> type;
 
@@ -41,12 +45,13 @@ class ResourceConditionResponse {
 
   factory ResourceConditionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceConditionResponse(
-      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
-      message: (map['message'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      state: (map['state'] as String).input(),
-      type: (map['type'] as String).input(),
+      lastTransitionTime: pulumi.Input.fromValue(
+        map['lastTransitionTime'] as String,
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

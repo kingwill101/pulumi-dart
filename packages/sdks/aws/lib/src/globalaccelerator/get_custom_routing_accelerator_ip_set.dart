@@ -15,17 +15,15 @@ class GetCustomRoutingAcceleratorIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddresses': ipAddresses,
-      'ipFamily': ipFamily,
-    };
+    return <String, dynamic>{'ipAddresses': ipAddresses, 'ipFamily': ipFamily};
   }
 
   factory GetCustomRoutingAcceleratorIpSet.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorIpSet(
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipFamily: (map['ipFamily'] as String).input(),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
+      ipFamily: pulumi.Input.fromValue(map['ipFamily'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_synapse;
-
 export 'synapse/auto_pause_properties.dart';
 export 'synapse/auto_pause_properties_response.dart';
 export 'synapse/auto_scale_properties.dart';

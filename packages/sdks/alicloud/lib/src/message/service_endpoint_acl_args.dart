@@ -11,6 +11,7 @@ class ServiceEndpointAclArgs {
   /// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
   final pulumi.Input<String> aclStrategy;
   final pulumi.Input<String> cidr;
+
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   final pulumi.Input<String> endpointType;
@@ -35,10 +36,9 @@ class ServiceEndpointAclArgs {
 
   factory ServiceEndpointAclArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointAclArgs(
-      aclStrategy: (map['aclStrategy'] as String).input(),
-      cidr: (map['cidr'] as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
+      aclStrategy: pulumi.Input.fromValue(map['aclStrategy'] as String),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
     );
   }
 }
-

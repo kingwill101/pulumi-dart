@@ -6,7 +6,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// It can be used to attach a security group to any existing ENI, be it a
 /// secondary ENI or one attached as the primary interface on an instance.
 ///
-/// > **NOTE on instances, interfaces, and security groups:** This provider currently
+/// &gt; **NOTE on instances, interfaces, and security groups:** This provider currently
 /// provides the capability to assign security groups via the [`aws.ec2.Instance`][1]
 /// and the [`aws.ec2.NetworkInterface`][2] resources. Using this resource in
 /// conjunction with security groups provided in-line in those resources will cause
@@ -440,8 +440,10 @@ import 'network_interface_security_group_attachment_state.dart';
 class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
   /// The ID of the network interface to attach to.
   late final pulumi.Output<String> networkInterfaceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
 
@@ -454,14 +456,14 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
     NetworkInterfaceSecurityGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 
   /// Gets an existing [NetworkInterfaceSecurityGroupAttachment] resource's state with the given [name] and [id].
@@ -482,13 +484,13 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 }

@@ -9,9 +9,9 @@ import 'dicom_store_iam_member_state.dart';
 /// * `gcp.healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
 /// * `gcp.healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
 ///
-/// > **Note:** `gcp.healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DicomStoreIamBinding` and `gcp.healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DicomStoreIamBinding` and `gcp.healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.healthcare.DicomStoreIamPolicy
 ///
@@ -618,13 +618,16 @@ import 'dicom_store_iam_member_state.dart';
 /// ```
 class DicomStoreIamMember extends pulumi.CustomResource {
   late final pulumi.Output<DicomStoreIamMemberCondition?> condition;
+
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   late final pulumi.Output<String> dicomStoreId;
+
   /// (Computed) The etag of the DICOM store's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -634,6 +637,7 @@ class DicomStoreIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -648,16 +652,16 @@ class DicomStoreIamMember extends pulumi.CustomResource {
     DicomStoreIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
-    this.dicomStoreId = registerOutput<String>('dicomStoreId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
+    dicomStoreId = registerOutput<String>('dicomStoreId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [DicomStoreIamMember] resource's state with the given [name] and [id].
@@ -678,15 +682,15 @@ class DicomStoreIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
-    this.dicomStoreId = registerOutput<String>('dicomStoreId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
+    dicomStoreId = registerOutput<String>('dicomStoreId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

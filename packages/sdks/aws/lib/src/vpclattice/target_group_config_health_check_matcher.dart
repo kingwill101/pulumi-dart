@@ -8,20 +8,21 @@ class TargetGroupConfigHealthCheckMatcher {
 
   /// Creates a new [TargetGroupConfigHealthCheckMatcher].
   /// [value] The HTTP codes to use when checking for a successful response from a target.
-  TargetGroupConfigHealthCheckMatcher({
-    this.value,
-  });
+  TargetGroupConfigHealthCheckMatcher({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory TargetGroupConfigHealthCheckMatcher.fromMap(Map<String, dynamic> map) {
+  factory TargetGroupConfigHealthCheckMatcher.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TargetGroupConfigHealthCheckMatcher(
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

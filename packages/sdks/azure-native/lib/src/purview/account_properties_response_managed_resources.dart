@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPropertiesResponseManagedResources {
   /// Gets the managed event hub namespace resource identifier.
   final pulumi.Input<String> eventHubNamespace;
+
   /// Gets the managed resource group resource identifier. This resource group will host resource dependencies for the account.
   final pulumi.Input<String> resourceGroup;
+
   /// Gets the managed storage account resource identifier.
   final pulumi.Input<String> storageAccount;
 
@@ -29,12 +31,15 @@ class AccountPropertiesResponseManagedResources {
     };
   }
 
-  factory AccountPropertiesResponseManagedResources.fromMap(Map<String, dynamic> map) {
+  factory AccountPropertiesResponseManagedResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountPropertiesResponseManagedResources(
-      eventHubNamespace: (map['eventHubNamespace'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
-      storageAccount: (map['storageAccount'] as String).input(),
+      eventHubNamespace: pulumi.Input.fromValue(
+        map['eventHubNamespace'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
+      storageAccount: pulumi.Input.fromValue(map['storageAccount'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeManagementContainerV1beta1 {
   /// Whether the nodes will be automatically repaired.
   final pulumi.Input<bool>? autoRepair;
+
   /// Whether the nodes will be automatically upgraded.
   final pulumi.Input<bool>? autoUpgrade;
+
   /// Specifies the Auto Upgrade knobs for the node pool.
   final pulumi.Input<Map<String, dynamic>>? upgradeOptions;
 
@@ -31,10 +33,23 @@ class NodeManagementContainerV1beta1 {
 
   factory NodeManagementContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeManagementContainerV1beta1(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
-      upgradeOptions: map['upgradeOptions'] == null ? null : ((map['upgradeOptions']! as Map).cast<String, dynamic>()).input(),
+      autoRepair: (() {
+        final guardedValue = map['autoRepair'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoUpgrade: (() {
+        final guardedValue = map['autoUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      upgradeOptions: (() {
+        final guardedValue = map['upgradeOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

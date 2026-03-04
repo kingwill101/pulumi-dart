@@ -10,20 +10,27 @@ class AdhocBasedTaggingCriteria {
 
   /// Creates a new [AdhocBasedTaggingCriteria].
   /// [tagInfo] Retention tag information
-  AdhocBasedTaggingCriteria({
-    this.tagInfo,
-  });
+  AdhocBasedTaggingCriteria({this.tagInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tagInfo': ?pulumi.Input.mapOptionalInputValue<RetentionTag, Map<String, dynamic>>(tagInfo, (value) => value.toMap()),
+      'tagInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionTag,
+            Map<String, dynamic>
+          >(tagInfo, (value) => value.toMap()),
     };
   }
 
   factory AdhocBasedTaggingCriteria.fromMap(Map<String, dynamic> map) {
     return AdhocBasedTaggingCriteria(
-      tagInfo: map['tagInfo'] == null ? null : (RetentionTag.fromMap((map['tagInfo']! as Map).cast<String, dynamic>())).input(),
+      tagInfo: (() {
+        final guardedValue = map['tagInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetentionTag.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

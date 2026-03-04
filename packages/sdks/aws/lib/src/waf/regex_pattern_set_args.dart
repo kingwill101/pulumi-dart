@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegexPatternSetArgs {
   /// The name or description of the Regex Pattern Set.
   final pulumi.Input<String>? name;
+
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
   final pulumi.Input<List<String>>? regexPatternStrings;
 
   /// Creates a new [RegexPatternSetArgs].
   /// [name] The name or description of the Regex Pattern Set.
   /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  RegexPatternSetArgs({
-    this.name,
-    this.regexPatternStrings,
-  });
+  RegexPatternSetArgs({this.name, this.regexPatternStrings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class RegexPatternSetArgs {
 
   factory RegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      regexPatternStrings: map['regexPatternStrings'] == null ? null : (((map['regexPatternStrings'] as List).cast<String>()).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regexPatternStrings: (() {
+        final guardedValue = map['regexPatternStrings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledEntryResponse {
   /// Length of maintenance window range from 8 to 24 hours.
   final pulumi.Input<int> durationHours;
+
   /// Start hour after which managed environment maintenance can start from 0 to 23 hour.
   final pulumi.Input<int> startHourUtc;
+
   /// Day of the week when a managed environment can be patched.
   final pulumi.Input<String> weekDay;
 
@@ -31,10 +33,9 @@ class ScheduledEntryResponse {
 
   factory ScheduledEntryResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledEntryResponse(
-      durationHours: (map['durationHours'] as int).input(),
-      startHourUtc: (map['startHourUtc'] as int).input(),
-      weekDay: (map['weekDay'] as String).input(),
+      durationHours: pulumi.Input.fromValue(map['durationHours'] as int),
+      startHourUtc: pulumi.Input.fromValue(map['startHourUtc'] as int),
+      weekDay: pulumi.Input.fromValue(map['weekDay'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_edas;
-
 export 'edas/application.dart';
 export 'edas/application_args.dart';
 export 'edas/application_deployment.dart';

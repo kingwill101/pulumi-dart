@@ -11,20 +11,15 @@ class GetApplicationScope {
 
   /// Creates a new [GetApplicationScope].
   /// [type] Required. Scope Type.
-  GetApplicationScope({
-    required this.type,
-  });
+  GetApplicationScope({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory GetApplicationScope.fromMap(Map<String, dynamic> map) {
     return GetApplicationScope(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
   /// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
   final pulumi.Input<bool>? dropHandoffMessages;
+
   /// If set to true, all messages from ivr stage are dropped.
   final pulumi.Input<bool>? dropIvrMessages;
+
   /// If set to true, all messages from virtual agent are dropped.
   final pulumi.Input<bool>? dropVirtualAgentMessages;
 
@@ -29,12 +31,25 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings(
-      dropHandoffMessages: map['dropHandoffMessages'] == null ? null : (map['dropHandoffMessages']! as bool).input(),
-      dropIvrMessages: map['dropIvrMessages'] == null ? null : (map['dropIvrMessages']! as bool).input(),
-      dropVirtualAgentMessages: map['dropVirtualAgentMessages'] == null ? null : (map['dropVirtualAgentMessages']! as bool).input(),
+      dropHandoffMessages: (() {
+        final guardedValue = map['dropHandoffMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dropIvrMessages: (() {
+        final guardedValue = map['dropIvrMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dropVirtualAgentMessages: (() {
+        final guardedValue = map['dropVirtualAgentMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPoliciesPolicy {
   /// The supported cipher suites, which are determined by the TLS protocol version.
   final pulumi.Input<List<String>> ciphers;
+
   /// The id of the TLS security policy.
   final pulumi.Input<String> id;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The name of the TLS security policy.
   final pulumi.Input<String> securityPolicyName;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The TLS protocol versions that are supported.
   final pulumi.Input<List<String>> tlsVersions;
 
@@ -50,14 +56,17 @@ class GetSecurityPoliciesPolicy {
 
   factory GetSecurityPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesPolicy(
-      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      securityPolicyName: (map['securityPolicyName'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
+      ciphers: pulumi.Input.fromValue((map['ciphers'] as List).cast<String>()),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      securityPolicyName: pulumi.Input.fromValue(
+        map['securityPolicyName'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      tlsVersions: pulumi.Input.fromValue(
+        (map['tlsVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

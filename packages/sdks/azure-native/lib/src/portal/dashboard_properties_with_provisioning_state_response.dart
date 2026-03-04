@@ -7,8 +7,10 @@ import 'dashboard_lens_response.dart';
 class DashboardPropertiesWithProvisioningStateResponse {
   /// The dashboard lenses.
   final pulumi.Input<List<DashboardLensResponse>>? lenses;
+
   /// The dashboard metadata.
   final pulumi.Input<dynamic>? metadata;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -24,18 +26,47 @@ class DashboardPropertiesWithProvisioningStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lenses': ?pulumi.Input.mapOptionalInputValue<List<DashboardLensResponse>, List<Map<String, dynamic>>>(lenses, (value) => pulumi.Input.encodeList<DashboardLensResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lenses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DashboardLensResponse>,
+            List<Map<String, dynamic>>
+          >(
+            lenses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DashboardLensResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'metadata': ?metadata,
       'provisioningState': provisioningState,
     };
   }
 
-  factory DashboardPropertiesWithProvisioningStateResponse.fromMap(Map<String, dynamic> map) {
+  factory DashboardPropertiesWithProvisioningStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardPropertiesWithProvisioningStateResponse(
-      lenses: map['lenses'] == null ? null : (pulumi.Input.decodeList<DashboardLensResponse>(map['lenses']!, (value) => DashboardLensResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      lenses: (() {
+        final guardedValue = map['lenses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DashboardLensResponse>(
+            guardedValue,
+            (value) => DashboardLensResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

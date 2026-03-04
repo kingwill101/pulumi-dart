@@ -153,18 +153,25 @@ import 'system_data_response.dart';
 class CapacityPoolSubvolume extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// parent path to the subvolume
   late final pulumi.Output<String?> parentPath;
+
   /// Path to the subvolume
   late final pulumi.Output<String?> path;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Truncate subvolume to the provided size in bytes
   late final pulumi.Output<double?> size;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,18 +184,18 @@ class CapacityPoolSubvolume extends pulumi.CustomResource {
     CapacityPoolSubvolumeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPoolSubvolume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:netapp:CapacityPoolSubvolume',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.parentPath = registerOutput<String?>('parentPath');
-    this.path = registerOutput<String?>('path');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.size = registerOutput<double?>('size');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    parentPath = registerOutput<String?>('parentPath');
+    path = registerOutput<String?>('path');
+    provisioningState = registerOutput<String>('provisioningState');
+    size = registerOutput<double?>('size');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

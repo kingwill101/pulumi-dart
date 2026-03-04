@@ -1,5 +1,3 @@
-library module_opensearch;
-
 export 'opensearch/app_group.dart';
 export 'opensearch/app_group_args.dart';
 export 'opensearch/app_group_order.dart';

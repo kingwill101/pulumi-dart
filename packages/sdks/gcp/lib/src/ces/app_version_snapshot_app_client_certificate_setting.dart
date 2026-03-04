@@ -7,11 +7,13 @@ class AppVersionSnapshotAppClientCertificateSetting {
   /// The passphrase to decrypt the private key.
   /// Should be left unset if the private key is not encrypted.
   final pulumi.Input<String>? passphrase;
+
   /// (Output)
   /// The name of the SecretManager secret version resource
   /// storing the private key encoded in PEM format.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}
   final pulumi.Input<String>? privateKey;
+
   /// (Output)
   /// The TLS certificate encoded in PEM format.
   /// This string must include the begin header and end footer lines.
@@ -35,12 +37,25 @@ class AppVersionSnapshotAppClientCertificateSetting {
     };
   }
 
-  factory AppVersionSnapshotAppClientCertificateSetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppClientCertificateSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppClientCertificateSetting(
-      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      tlsCertificate: map['tlsCertificate'] == null ? null : (map['tlsCertificate']! as String).input(),
+      passphrase: (() {
+        final guardedValue = map['passphrase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsCertificate: (() {
+        final guardedValue = map['tlsCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

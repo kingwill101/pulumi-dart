@@ -12,12 +12,14 @@ import 'scaling_plan_host_pool_association_state.dart';
 /// $ pulumi import azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation example "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.DesktopVirtualization/scalingPlans/plan1|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup1/providers/Microsoft.DesktopVirtualization/hostPools/myhostpool"
 /// ```
 ///
-/// > **Note:** This ID is specific to Terraform - and is of the format `{virtualDesktopScalingPlanID}|{virtualDesktopHostPoolID}`.
+/// &gt; **Note:** This ID is specific to Terraform - and is of the format `{virtualDesktopScalingPlanID}|{virtualDesktopHostPoolID}`.
 class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
   /// Should the Scaling Plan be enabled on this Host Pool.
   late final pulumi.Output<bool> enabled;
+
   /// The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> hostPoolId;
+
   /// The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scalingPlanId;
 
@@ -30,14 +32,14 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
     ScalingPlanHostPoolAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.hostPoolId = registerOutput<String>('hostPoolId');
-    this.scalingPlanId = registerOutput<String>('scalingPlanId');
+         'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    hostPoolId = registerOutput<String>('hostPoolId');
+    scalingPlanId = registerOutput<String>('scalingPlanId');
   }
 
   /// Gets an existing [ScalingPlanHostPoolAssociation] resource's state with the given [name] and [id].
@@ -58,13 +60,13 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.hostPoolId = registerOutput<String>('hostPoolId');
-    this.scalingPlanId = registerOutput<String>('scalingPlanId');
+         'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    hostPoolId = registerOutput<String>('hostPoolId');
+    scalingPlanId = registerOutput<String>('scalingPlanId');
   }
 }

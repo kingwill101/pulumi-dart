@@ -8,20 +8,21 @@ class PacketMirroringMirroredResourceInfoInstanceInfo {
 
   /// Creates a new [PacketMirroringMirroredResourceInfoInstanceInfo].
   /// [url] Resource URL to the virtual machine instance which is being mirrored.
-  PacketMirroringMirroredResourceInfoInstanceInfo({
-    this.url,
-  });
+  PacketMirroringMirroredResourceInfoInstanceInfo({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
-  factory PacketMirroringMirroredResourceInfoInstanceInfo.fromMap(Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourceInfoInstanceInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PacketMirroringMirroredResourceInfoInstanceInfo(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

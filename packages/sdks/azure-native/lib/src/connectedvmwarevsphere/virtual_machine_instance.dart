@@ -5,7 +5,6 @@ import 'infrastructure_profile_response.dart';
 import 'network_profile_response.dart';
 import 'os_profile_for_vminstance_response.dart';
 import 'placement_profile_response.dart';
-import 'resource_status_response.dart';
 import 'security_profile_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
@@ -226,34 +225,50 @@ import 'virtual_machine_instance_args.dart';
 class VirtualMachineInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Hardware properties.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// Gets the infrastructure profile.
-  late final pulumi.Output<InfrastructureProfileResponse?> infrastructureProfile;
+  late final pulumi.Output<InfrastructureProfileResponse?>
+  infrastructureProfile;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network properties.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// OS properties.
   late final pulumi.Output<OsProfileForVMInstanceResponse?> osProfile;
+
   /// Placement properties.
   late final pulumi.Output<PlacementProfileResponse?> placementProfile;
+
   /// Gets the power state of the virtual machine.
   late final pulumi.Output<String> powerState;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Gets or sets a unique identifier for the vm resource.
   late final pulumi.Output<String> resourceUid;
+
   /// Gets the security profile.
   late final pulumi.Output<SecurityProfileResponse?> securityProfile;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// Storage properties.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -266,26 +281,36 @@ class VirtualMachineInstance extends pulumi.CustomResource {
     VirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:VirtualMachineInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.infrastructureProfile = registerOutput<InfrastructureProfileResponse?>('infrastructureProfile');
+         'azure-native:connectedvmwarevsphere:VirtualMachineInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    infrastructureProfile = registerOutput<InfrastructureProfileResponse?>(
+      'infrastructureProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OsProfileForVMInstanceResponse?>('osProfile');
-    this.placementProfile = registerOutput<PlacementProfileResponse?>('placementProfile');
-    this.powerState = registerOutput<String>('powerState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceUid = registerOutput<String>('resourceUid');
-    this.securityProfile = registerOutput<SecurityProfileResponse?>('securityProfile');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OsProfileForVMInstanceResponse?>('osProfile');
+    placementProfile = registerOutput<PlacementProfileResponse?>(
+      'placementProfile',
+    );
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceUid = registerOutput<String>('resourceUid');
+    securityProfile = registerOutput<SecurityProfileResponse?>(
+      'securityProfile',
+    );
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

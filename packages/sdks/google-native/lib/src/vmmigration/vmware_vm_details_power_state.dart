@@ -5,16 +5,15 @@ enum VmwareVmDetailsPowerState {
   off("OFF"),
   suspended("SUSPENDED");
 
-  const VmwareVmDetailsPowerState(this.value);
-  final String value;
+  const VmwareVmDetailsPowerState(this.wireValue);
+  final String wireValue;
 
   static VmwareVmDetailsPowerState fromValue(String value) {
     for (final item in VmwareVmDetailsPowerState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VmwareVmDetailsPowerState value: $value');
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'assignment_principal_response.dart';
 import 'resource_set_description_response.dart';
 import 'role_assignment_args.dart';
 
@@ -198,48 +197,70 @@ import 'role_assignment_args.dart';
 class RoleAssignment extends pulumi.CustomResource {
   /// The name of the metadata object.
   late final pulumi.Output<String> assignmentName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Widget types set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> conflationPolicies;
+
   /// Connectors set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> connectors;
+
   /// Localized description for the metadata.
   late final pulumi.Output<Map<String, String>?> description;
+
   /// Localized display names for the metadata.
   late final pulumi.Output<Map<String, String>?> displayName;
+
   /// Interactions set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> interactions;
+
   /// Kpis set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> kpis;
+
   /// Links set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> links;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The principals being assigned to.
-  late final pulumi.Output<List<AssignmentPrincipalResponse>> principals;
+  late final pulumi.Output<List<Map<String, dynamic>>> principals;
+
   /// Profiles set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> profiles;
+
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The Role assignments set for the relationship links.
   late final pulumi.Output<ResourceSetDescriptionResponse?> relationshipLinks;
+
   /// The Role assignments set for the relationships.
   late final pulumi.Output<ResourceSetDescriptionResponse?> relationships;
+
   /// Type of roles.
   late final pulumi.Output<String> role;
+
   /// The Role assignments set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> roleAssignments;
+
   /// Sas Policies set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> sasPolicies;
+
   /// The Role assignments set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> segments;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Views set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> views;
+
   /// Widget types set for the assignment.
   late final pulumi.Output<ResourceSetDescriptionResponse?> widgetTypes;
 
@@ -252,33 +273,47 @@ class RoleAssignment extends pulumi.CustomResource {
     RoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customerinsights:RoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignmentName = registerOutput<String>('assignmentName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.conflationPolicies = registerOutput<ResourceSetDescriptionResponse?>('conflationPolicies');
-    this.connectors = registerOutput<ResourceSetDescriptionResponse?>('connectors');
-    this.description = registerOutput<Map<String, String>?>('description');
-    this.displayName = registerOutput<Map<String, String>?>('displayName');
-    this.interactions = registerOutput<ResourceSetDescriptionResponse?>('interactions');
-    this.kpis = registerOutput<ResourceSetDescriptionResponse?>('kpis');
-    this.links = registerOutput<ResourceSetDescriptionResponse?>('links');
+         'azure-native:customerinsights:RoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignmentName = registerOutput<String>('assignmentName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conflationPolicies = registerOutput<ResourceSetDescriptionResponse?>(
+      'conflationPolicies',
+    );
+    connectors = registerOutput<ResourceSetDescriptionResponse?>('connectors');
+    description = registerOutput<Map<String, String>?>('description');
+    displayName = registerOutput<Map<String, String>?>('displayName');
+    interactions = registerOutput<ResourceSetDescriptionResponse?>(
+      'interactions',
+    );
+    kpis = registerOutput<ResourceSetDescriptionResponse?>('kpis');
+    links = registerOutput<ResourceSetDescriptionResponse?>('links');
     this.name = registerOutput<String>('name');
-    this.principals = registerOutput<List<AssignmentPrincipalResponse>>('principals');
-    this.profiles = registerOutput<ResourceSetDescriptionResponse?>('profiles');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.relationshipLinks = registerOutput<ResourceSetDescriptionResponse?>('relationshipLinks');
-    this.relationships = registerOutput<ResourceSetDescriptionResponse?>('relationships');
-    this.role = registerOutput<String>('role');
-    this.roleAssignments = registerOutput<ResourceSetDescriptionResponse?>('roleAssignments');
-    this.sasPolicies = registerOutput<ResourceSetDescriptionResponse?>('sasPolicies');
-    this.segments = registerOutput<ResourceSetDescriptionResponse?>('segments');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.views = registerOutput<ResourceSetDescriptionResponse?>('views');
-    this.widgetTypes = registerOutput<ResourceSetDescriptionResponse?>('widgetTypes');
+    principals = registerOutput<List<Map<String, dynamic>>>('principals');
+    profiles = registerOutput<ResourceSetDescriptionResponse?>('profiles');
+    provisioningState = registerOutput<String>('provisioningState');
+    relationshipLinks = registerOutput<ResourceSetDescriptionResponse?>(
+      'relationshipLinks',
+    );
+    relationships = registerOutput<ResourceSetDescriptionResponse?>(
+      'relationships',
+    );
+    role = registerOutput<String>('role');
+    roleAssignments = registerOutput<ResourceSetDescriptionResponse?>(
+      'roleAssignments',
+    );
+    sasPolicies = registerOutput<ResourceSetDescriptionResponse?>(
+      'sasPolicies',
+    );
+    segments = registerOutput<ResourceSetDescriptionResponse?>('segments');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    views = registerOutput<ResourceSetDescriptionResponse?>('views');
+    widgetTypes = registerOutput<ResourceSetDescriptionResponse?>(
+      'widgetTypes',
+    );
   }
 }

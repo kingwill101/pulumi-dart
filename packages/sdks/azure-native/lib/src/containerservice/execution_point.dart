@@ -4,16 +4,15 @@ enum ExecutionPoint {
   nodeImageBuildTime("NodeImageBuildTime"),
   nodeProvisionTime("NodeProvisionTime");
 
-  const ExecutionPoint(this.value);
-  final String value;
+  const ExecutionPoint(this.wireValue);
+  final String wireValue;
 
   static ExecutionPoint fromValue(String value) {
     for (final item in ExecutionPoint.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecutionPoint value: $value');
   }
 }
-

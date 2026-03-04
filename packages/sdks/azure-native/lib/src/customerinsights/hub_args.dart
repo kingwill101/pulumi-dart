@@ -10,14 +10,19 @@ import 'hub_billing_info_format.dart';
 class HubArgs {
   /// Billing settings of the hub.
   final pulumi.Input<HubBillingInfoFormat>? hubBillingInfo;
+
   /// The name of the Hub.
   final pulumi.Input<String>? hubName;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
   final pulumi.Input<int>? tenantFeatures;
 
@@ -39,7 +44,11 @@ class HubArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hubBillingInfo': ?pulumi.Input.mapOptionalInputValue<HubBillingInfoFormat, Map<String, dynamic>>(hubBillingInfo, (value) => value.toMap()),
+      'hubBillingInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            HubBillingInfoFormat,
+            Map<String, dynamic>
+          >(hubBillingInfo, (value) => value.toMap()),
       'hubName': ?hubName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -50,13 +59,40 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      hubBillingInfo: map['hubBillingInfo'] == null ? null : (HubBillingInfoFormat.fromMap((map['hubBillingInfo']! as Map).cast<String, dynamic>())).input(),
-      hubName: map['hubName'] == null ? null : (map['hubName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tenantFeatures: map['tenantFeatures'] == null ? null : (map['tenantFeatures']! as int).input(),
+      hubBillingInfo: (() {
+        final guardedValue = map['hubBillingInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HubBillingInfoFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hubName: (() {
+        final guardedValue = map['hubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tenantFeatures: (() {
+        final guardedValue = map['tenantFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

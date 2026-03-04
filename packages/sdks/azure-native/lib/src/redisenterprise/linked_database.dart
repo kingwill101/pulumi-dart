@@ -9,20 +9,19 @@ class LinkedDatabase {
 
   /// Creates a new [LinkedDatabase].
   /// [id] Resource ID of a database resource to link with this database.
-  LinkedDatabase({
-    this.id,
-  });
+  LinkedDatabase({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory LinkedDatabase.fromMap(Map<String, dynamic> map) {
     return LinkedDatabase(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

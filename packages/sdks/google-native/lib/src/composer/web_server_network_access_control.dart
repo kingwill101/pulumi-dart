@@ -10,20 +10,38 @@ class WebServerNetworkAccessControl {
 
   /// Creates a new [WebServerNetworkAccessControl].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  WebServerNetworkAccessControl({
-    this.allowedIpRanges,
-  });
+  WebServerNetworkAccessControl({this.allowedIpRanges});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedIpRanges': ?pulumi.Input.mapOptionalInputValue<List<AllowedIpRange>, List<Map<String, dynamic>>>(allowedIpRanges, (value) => pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allowedIpRanges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AllowedIpRange>,
+            List<Map<String, dynamic>>
+          >(
+            allowedIpRanges,
+            (value) =>
+                pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory WebServerNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControl(
-      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<AllowedIpRange>(map['allowedIpRanges']!, (value) => AllowedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedIpRanges: (() {
+        final guardedValue = map['allowedIpRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AllowedIpRange>(
+            guardedValue,
+            (value) =>
+                AllowedIpRange.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

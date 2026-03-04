@@ -42,78 +42,115 @@ import 'domain_features_capabilities_wake_alarm.dart';
 class DomainFeaturesCapabilities {
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesAuditControl>? auditControl;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesAuditWrite>? auditWrite;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesBlockSuspend>? blockSuspend;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesChown>? chown;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesDacOverride>? dacOverride;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesDacReadSearch>? dacReadSearch;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesFowner>? fowner;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesFsetId>? fsetId;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesIpcLock>? ipcLock;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesIpcOwner>? ipcOwner;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesKill>? kill;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesLease>? lease;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesLinuxImmutable>? linuxImmutable;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesMacAdmin>? macAdmin;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesMacOverride>? macOverride;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesMkNod>? mkNod;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesNetAdmin>? netAdmin;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesNetBindService>? netBindService;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesNetBroadcast>? netBroadcast;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesNetRaw>? netRaw;
+
   /// Specifies the security policy applied to the domain features.
   final pulumi.Input<String>? policy;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSetFCap>? setFCap;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSetGid>? setGid;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSetPCap>? setPCap;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSetUid>? setUid;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysAdmin>? sysAdmin;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysBoot>? sysBoot;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysChRoot>? sysChRoot;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysLog>? sysLog;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysModule>? sysModule;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysNice>? sysNice;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysPAcct>? sysPAcct;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysPTrace>? sysPTrace;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysRawIo>? sysRawIo;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysResource>? sysResource;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysTime>? sysTime;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesSysTtyCnofig>? sysTtyCnofig;
+
   /// Configures whether the domain can wake from an alarm.
   final pulumi.Input<DomainFeaturesCapabilitiesWakeAlarm>? wakeAlarm;
 
@@ -199,88 +236,535 @@ class DomainFeaturesCapabilities {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditControl': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesAuditControl, Map<String, dynamic>>(auditControl, (value) => value.toMap()),
-      'auditWrite': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesAuditWrite, Map<String, dynamic>>(auditWrite, (value) => value.toMap()),
-      'blockSuspend': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesBlockSuspend, Map<String, dynamic>>(blockSuspend, (value) => value.toMap()),
-      'chown': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesChown, Map<String, dynamic>>(chown, (value) => value.toMap()),
-      'dacOverride': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesDacOverride, Map<String, dynamic>>(dacOverride, (value) => value.toMap()),
-      'dacReadSearch': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesDacReadSearch, Map<String, dynamic>>(dacReadSearch, (value) => value.toMap()),
-      'fowner': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesFowner, Map<String, dynamic>>(fowner, (value) => value.toMap()),
-      'fsetId': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesFsetId, Map<String, dynamic>>(fsetId, (value) => value.toMap()),
-      'ipcLock': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesIpcLock, Map<String, dynamic>>(ipcLock, (value) => value.toMap()),
-      'ipcOwner': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesIpcOwner, Map<String, dynamic>>(ipcOwner, (value) => value.toMap()),
-      'kill': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesKill, Map<String, dynamic>>(kill, (value) => value.toMap()),
-      'lease': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesLease, Map<String, dynamic>>(lease, (value) => value.toMap()),
-      'linuxImmutable': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesLinuxImmutable, Map<String, dynamic>>(linuxImmutable, (value) => value.toMap()),
-      'macAdmin': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesMacAdmin, Map<String, dynamic>>(macAdmin, (value) => value.toMap()),
-      'macOverride': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesMacOverride, Map<String, dynamic>>(macOverride, (value) => value.toMap()),
-      'mkNod': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesMkNod, Map<String, dynamic>>(mkNod, (value) => value.toMap()),
-      'netAdmin': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesNetAdmin, Map<String, dynamic>>(netAdmin, (value) => value.toMap()),
-      'netBindService': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesNetBindService, Map<String, dynamic>>(netBindService, (value) => value.toMap()),
-      'netBroadcast': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesNetBroadcast, Map<String, dynamic>>(netBroadcast, (value) => value.toMap()),
-      'netRaw': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesNetRaw, Map<String, dynamic>>(netRaw, (value) => value.toMap()),
+      'auditControl':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesAuditControl,
+            Map<String, dynamic>
+          >(auditControl, (value) => value.toMap()),
+      'auditWrite':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesAuditWrite,
+            Map<String, dynamic>
+          >(auditWrite, (value) => value.toMap()),
+      'blockSuspend':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesBlockSuspend,
+            Map<String, dynamic>
+          >(blockSuspend, (value) => value.toMap()),
+      'chown':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesChown,
+            Map<String, dynamic>
+          >(chown, (value) => value.toMap()),
+      'dacOverride':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesDacOverride,
+            Map<String, dynamic>
+          >(dacOverride, (value) => value.toMap()),
+      'dacReadSearch':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesDacReadSearch,
+            Map<String, dynamic>
+          >(dacReadSearch, (value) => value.toMap()),
+      'fowner':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesFowner,
+            Map<String, dynamic>
+          >(fowner, (value) => value.toMap()),
+      'fsetId':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesFsetId,
+            Map<String, dynamic>
+          >(fsetId, (value) => value.toMap()),
+      'ipcLock':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesIpcLock,
+            Map<String, dynamic>
+          >(ipcLock, (value) => value.toMap()),
+      'ipcOwner':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesIpcOwner,
+            Map<String, dynamic>
+          >(ipcOwner, (value) => value.toMap()),
+      'kill':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesKill,
+            Map<String, dynamic>
+          >(kill, (value) => value.toMap()),
+      'lease':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesLease,
+            Map<String, dynamic>
+          >(lease, (value) => value.toMap()),
+      'linuxImmutable':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesLinuxImmutable,
+            Map<String, dynamic>
+          >(linuxImmutable, (value) => value.toMap()),
+      'macAdmin':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesMacAdmin,
+            Map<String, dynamic>
+          >(macAdmin, (value) => value.toMap()),
+      'macOverride':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesMacOverride,
+            Map<String, dynamic>
+          >(macOverride, (value) => value.toMap()),
+      'mkNod':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesMkNod,
+            Map<String, dynamic>
+          >(mkNod, (value) => value.toMap()),
+      'netAdmin':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesNetAdmin,
+            Map<String, dynamic>
+          >(netAdmin, (value) => value.toMap()),
+      'netBindService':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesNetBindService,
+            Map<String, dynamic>
+          >(netBindService, (value) => value.toMap()),
+      'netBroadcast':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesNetBroadcast,
+            Map<String, dynamic>
+          >(netBroadcast, (value) => value.toMap()),
+      'netRaw':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesNetRaw,
+            Map<String, dynamic>
+          >(netRaw, (value) => value.toMap()),
       'policy': ?policy,
-      'setFCap': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSetFCap, Map<String, dynamic>>(setFCap, (value) => value.toMap()),
-      'setGid': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSetGid, Map<String, dynamic>>(setGid, (value) => value.toMap()),
-      'setPCap': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSetPCap, Map<String, dynamic>>(setPCap, (value) => value.toMap()),
-      'setUid': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSetUid, Map<String, dynamic>>(setUid, (value) => value.toMap()),
-      'sysAdmin': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysAdmin, Map<String, dynamic>>(sysAdmin, (value) => value.toMap()),
-      'sysBoot': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysBoot, Map<String, dynamic>>(sysBoot, (value) => value.toMap()),
-      'sysChRoot': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysChRoot, Map<String, dynamic>>(sysChRoot, (value) => value.toMap()),
-      'sysLog': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysLog, Map<String, dynamic>>(sysLog, (value) => value.toMap()),
-      'sysModule': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysModule, Map<String, dynamic>>(sysModule, (value) => value.toMap()),
-      'sysNice': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysNice, Map<String, dynamic>>(sysNice, (value) => value.toMap()),
-      'sysPAcct': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysPAcct, Map<String, dynamic>>(sysPAcct, (value) => value.toMap()),
-      'sysPTrace': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysPTrace, Map<String, dynamic>>(sysPTrace, (value) => value.toMap()),
-      'sysRawIo': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysRawIo, Map<String, dynamic>>(sysRawIo, (value) => value.toMap()),
-      'sysResource': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysResource, Map<String, dynamic>>(sysResource, (value) => value.toMap()),
-      'sysTime': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysTime, Map<String, dynamic>>(sysTime, (value) => value.toMap()),
-      'sysTtyCnofig': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesSysTtyCnofig, Map<String, dynamic>>(sysTtyCnofig, (value) => value.toMap()),
-      'wakeAlarm': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilitiesWakeAlarm, Map<String, dynamic>>(wakeAlarm, (value) => value.toMap()),
+      'setFCap':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSetFCap,
+            Map<String, dynamic>
+          >(setFCap, (value) => value.toMap()),
+      'setGid':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSetGid,
+            Map<String, dynamic>
+          >(setGid, (value) => value.toMap()),
+      'setPCap':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSetPCap,
+            Map<String, dynamic>
+          >(setPCap, (value) => value.toMap()),
+      'setUid':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSetUid,
+            Map<String, dynamic>
+          >(setUid, (value) => value.toMap()),
+      'sysAdmin':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysAdmin,
+            Map<String, dynamic>
+          >(sysAdmin, (value) => value.toMap()),
+      'sysBoot':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysBoot,
+            Map<String, dynamic>
+          >(sysBoot, (value) => value.toMap()),
+      'sysChRoot':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysChRoot,
+            Map<String, dynamic>
+          >(sysChRoot, (value) => value.toMap()),
+      'sysLog':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysLog,
+            Map<String, dynamic>
+          >(sysLog, (value) => value.toMap()),
+      'sysModule':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysModule,
+            Map<String, dynamic>
+          >(sysModule, (value) => value.toMap()),
+      'sysNice':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysNice,
+            Map<String, dynamic>
+          >(sysNice, (value) => value.toMap()),
+      'sysPAcct':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysPAcct,
+            Map<String, dynamic>
+          >(sysPAcct, (value) => value.toMap()),
+      'sysPTrace':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysPTrace,
+            Map<String, dynamic>
+          >(sysPTrace, (value) => value.toMap()),
+      'sysRawIo':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysRawIo,
+            Map<String, dynamic>
+          >(sysRawIo, (value) => value.toMap()),
+      'sysResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysResource,
+            Map<String, dynamic>
+          >(sysResource, (value) => value.toMap()),
+      'sysTime':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysTime,
+            Map<String, dynamic>
+          >(sysTime, (value) => value.toMap()),
+      'sysTtyCnofig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesSysTtyCnofig,
+            Map<String, dynamic>
+          >(sysTtyCnofig, (value) => value.toMap()),
+      'wakeAlarm':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesCapabilitiesWakeAlarm,
+            Map<String, dynamic>
+          >(wakeAlarm, (value) => value.toMap()),
     };
   }
 
   factory DomainFeaturesCapabilities.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilities(
-      auditControl: map['auditControl'] == null ? null : (DomainFeaturesCapabilitiesAuditControl.fromMap((map['auditControl']! as Map).cast<String, dynamic>())).input(),
-      auditWrite: map['auditWrite'] == null ? null : (DomainFeaturesCapabilitiesAuditWrite.fromMap((map['auditWrite']! as Map).cast<String, dynamic>())).input(),
-      blockSuspend: map['blockSuspend'] == null ? null : (DomainFeaturesCapabilitiesBlockSuspend.fromMap((map['blockSuspend']! as Map).cast<String, dynamic>())).input(),
-      chown: map['chown'] == null ? null : (DomainFeaturesCapabilitiesChown.fromMap((map['chown']! as Map).cast<String, dynamic>())).input(),
-      dacOverride: map['dacOverride'] == null ? null : (DomainFeaturesCapabilitiesDacOverride.fromMap((map['dacOverride']! as Map).cast<String, dynamic>())).input(),
-      dacReadSearch: map['dacReadSearch'] == null ? null : (DomainFeaturesCapabilitiesDacReadSearch.fromMap((map['dacReadSearch']! as Map).cast<String, dynamic>())).input(),
-      fowner: map['fowner'] == null ? null : (DomainFeaturesCapabilitiesFowner.fromMap((map['fowner']! as Map).cast<String, dynamic>())).input(),
-      fsetId: map['fsetId'] == null ? null : (DomainFeaturesCapabilitiesFsetId.fromMap((map['fsetId']! as Map).cast<String, dynamic>())).input(),
-      ipcLock: map['ipcLock'] == null ? null : (DomainFeaturesCapabilitiesIpcLock.fromMap((map['ipcLock']! as Map).cast<String, dynamic>())).input(),
-      ipcOwner: map['ipcOwner'] == null ? null : (DomainFeaturesCapabilitiesIpcOwner.fromMap((map['ipcOwner']! as Map).cast<String, dynamic>())).input(),
-      kill: map['kill'] == null ? null : (DomainFeaturesCapabilitiesKill.fromMap((map['kill']! as Map).cast<String, dynamic>())).input(),
-      lease: map['lease'] == null ? null : (DomainFeaturesCapabilitiesLease.fromMap((map['lease']! as Map).cast<String, dynamic>())).input(),
-      linuxImmutable: map['linuxImmutable'] == null ? null : (DomainFeaturesCapabilitiesLinuxImmutable.fromMap((map['linuxImmutable']! as Map).cast<String, dynamic>())).input(),
-      macAdmin: map['macAdmin'] == null ? null : (DomainFeaturesCapabilitiesMacAdmin.fromMap((map['macAdmin']! as Map).cast<String, dynamic>())).input(),
-      macOverride: map['macOverride'] == null ? null : (DomainFeaturesCapabilitiesMacOverride.fromMap((map['macOverride']! as Map).cast<String, dynamic>())).input(),
-      mkNod: map['mkNod'] == null ? null : (DomainFeaturesCapabilitiesMkNod.fromMap((map['mkNod']! as Map).cast<String, dynamic>())).input(),
-      netAdmin: map['netAdmin'] == null ? null : (DomainFeaturesCapabilitiesNetAdmin.fromMap((map['netAdmin']! as Map).cast<String, dynamic>())).input(),
-      netBindService: map['netBindService'] == null ? null : (DomainFeaturesCapabilitiesNetBindService.fromMap((map['netBindService']! as Map).cast<String, dynamic>())).input(),
-      netBroadcast: map['netBroadcast'] == null ? null : (DomainFeaturesCapabilitiesNetBroadcast.fromMap((map['netBroadcast']! as Map).cast<String, dynamic>())).input(),
-      netRaw: map['netRaw'] == null ? null : (DomainFeaturesCapabilitiesNetRaw.fromMap((map['netRaw']! as Map).cast<String, dynamic>())).input(),
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
-      setFCap: map['setFCap'] == null ? null : (DomainFeaturesCapabilitiesSetFCap.fromMap((map['setFCap']! as Map).cast<String, dynamic>())).input(),
-      setGid: map['setGid'] == null ? null : (DomainFeaturesCapabilitiesSetGid.fromMap((map['setGid']! as Map).cast<String, dynamic>())).input(),
-      setPCap: map['setPCap'] == null ? null : (DomainFeaturesCapabilitiesSetPCap.fromMap((map['setPCap']! as Map).cast<String, dynamic>())).input(),
-      setUid: map['setUid'] == null ? null : (DomainFeaturesCapabilitiesSetUid.fromMap((map['setUid']! as Map).cast<String, dynamic>())).input(),
-      sysAdmin: map['sysAdmin'] == null ? null : (DomainFeaturesCapabilitiesSysAdmin.fromMap((map['sysAdmin']! as Map).cast<String, dynamic>())).input(),
-      sysBoot: map['sysBoot'] == null ? null : (DomainFeaturesCapabilitiesSysBoot.fromMap((map['sysBoot']! as Map).cast<String, dynamic>())).input(),
-      sysChRoot: map['sysChRoot'] == null ? null : (DomainFeaturesCapabilitiesSysChRoot.fromMap((map['sysChRoot']! as Map).cast<String, dynamic>())).input(),
-      sysLog: map['sysLog'] == null ? null : (DomainFeaturesCapabilitiesSysLog.fromMap((map['sysLog']! as Map).cast<String, dynamic>())).input(),
-      sysModule: map['sysModule'] == null ? null : (DomainFeaturesCapabilitiesSysModule.fromMap((map['sysModule']! as Map).cast<String, dynamic>())).input(),
-      sysNice: map['sysNice'] == null ? null : (DomainFeaturesCapabilitiesSysNice.fromMap((map['sysNice']! as Map).cast<String, dynamic>())).input(),
-      sysPAcct: map['sysPAcct'] == null ? null : (DomainFeaturesCapabilitiesSysPAcct.fromMap((map['sysPAcct']! as Map).cast<String, dynamic>())).input(),
-      sysPTrace: map['sysPTrace'] == null ? null : (DomainFeaturesCapabilitiesSysPTrace.fromMap((map['sysPTrace']! as Map).cast<String, dynamic>())).input(),
-      sysRawIo: map['sysRawIo'] == null ? null : (DomainFeaturesCapabilitiesSysRawIo.fromMap((map['sysRawIo']! as Map).cast<String, dynamic>())).input(),
-      sysResource: map['sysResource'] == null ? null : (DomainFeaturesCapabilitiesSysResource.fromMap((map['sysResource']! as Map).cast<String, dynamic>())).input(),
-      sysTime: map['sysTime'] == null ? null : (DomainFeaturesCapabilitiesSysTime.fromMap((map['sysTime']! as Map).cast<String, dynamic>())).input(),
-      sysTtyCnofig: map['sysTtyCnofig'] == null ? null : (DomainFeaturesCapabilitiesSysTtyCnofig.fromMap((map['sysTtyCnofig']! as Map).cast<String, dynamic>())).input(),
-      wakeAlarm: map['wakeAlarm'] == null ? null : (DomainFeaturesCapabilitiesWakeAlarm.fromMap((map['wakeAlarm']! as Map).cast<String, dynamic>())).input(),
+      auditControl: (() {
+        final guardedValue = map['auditControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesAuditControl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      auditWrite: (() {
+        final guardedValue = map['auditWrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesAuditWrite.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blockSuspend: (() {
+        final guardedValue = map['blockSuspend'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesBlockSuspend.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      chown: (() {
+        final guardedValue = map['chown'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesChown.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dacOverride: (() {
+        final guardedValue = map['dacOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesDacOverride.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dacReadSearch: (() {
+        final guardedValue = map['dacReadSearch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesDacReadSearch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fowner: (() {
+        final guardedValue = map['fowner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesFowner.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fsetId: (() {
+        final guardedValue = map['fsetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesFsetId.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipcLock: (() {
+        final guardedValue = map['ipcLock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesIpcLock.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipcOwner: (() {
+        final guardedValue = map['ipcOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesIpcOwner.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kill: (() {
+        final guardedValue = map['kill'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesKill.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lease: (() {
+        final guardedValue = map['lease'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesLease.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linuxImmutable: (() {
+        final guardedValue = map['linuxImmutable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesLinuxImmutable.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      macAdmin: (() {
+        final guardedValue = map['macAdmin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesMacAdmin.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      macOverride: (() {
+        final guardedValue = map['macOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesMacOverride.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mkNod: (() {
+        final guardedValue = map['mkNod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesMkNod.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      netAdmin: (() {
+        final guardedValue = map['netAdmin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesNetAdmin.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      netBindService: (() {
+        final guardedValue = map['netBindService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesNetBindService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      netBroadcast: (() {
+        final guardedValue = map['netBroadcast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesNetBroadcast.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      netRaw: (() {
+        final guardedValue = map['netRaw'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesNetRaw.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      setFCap: (() {
+        final guardedValue = map['setFCap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSetFCap.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      setGid: (() {
+        final guardedValue = map['setGid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSetGid.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      setPCap: (() {
+        final guardedValue = map['setPCap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSetPCap.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      setUid: (() {
+        final guardedValue = map['setUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSetUid.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysAdmin: (() {
+        final guardedValue = map['sysAdmin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysAdmin.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysBoot: (() {
+        final guardedValue = map['sysBoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysBoot.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysChRoot: (() {
+        final guardedValue = map['sysChRoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysChRoot.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysLog: (() {
+        final guardedValue = map['sysLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysLog.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysModule: (() {
+        final guardedValue = map['sysModule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysModule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysNice: (() {
+        final guardedValue = map['sysNice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysNice.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysPAcct: (() {
+        final guardedValue = map['sysPAcct'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysPAcct.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysPTrace: (() {
+        final guardedValue = map['sysPTrace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysPTrace.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysRawIo: (() {
+        final guardedValue = map['sysRawIo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysRawIo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysResource: (() {
+        final guardedValue = map['sysResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysTime: (() {
+        final guardedValue = map['sysTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysTime.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysTtyCnofig: (() {
+        final guardedValue = map['sysTtyCnofig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesSysTtyCnofig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      wakeAlarm: (() {
+        final guardedValue = map['wakeAlarm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesCapabilitiesWakeAlarm.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

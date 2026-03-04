@@ -4,16 +4,15 @@ enum InitialDownloadPolicy {
   namespaceThenModifiedFiles("NamespaceThenModifiedFiles"),
   avoidTieredFiles("AvoidTieredFiles");
 
-  const InitialDownloadPolicy(this.value);
-  final String value;
+  const InitialDownloadPolicy(this.wireValue);
+  final String wireValue;
 
   static InitialDownloadPolicy fromValue(String value) {
     for (final item in InitialDownloadPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InitialDownloadPolicy value: $value');
   }
 }
-

@@ -10,14 +10,25 @@ import 'dataflow_endpoint_authentication_x509_response.dart';
 class DataflowEndpointKafkaAuthenticationResponse {
   /// Mode of Authentication.
   final pulumi.Input<String> method;
+
   /// SASL authentication.
   final pulumi.Input<DataflowEndpointAuthenticationSaslResponse>? saslSettings;
+
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<
+    DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse
+  >?
+  systemAssignedManagedIdentitySettings;
+
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<
+    DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse
+  >?
+  userAssignedManagedIdentitySettings;
+
   /// X.509 certificate authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationX509Response>? x509CertificateSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationX509Response>?
+  x509CertificateSettings;
 
   /// Creates a new [DataflowEndpointKafkaAuthenticationResponse].
   /// [method] Mode of Authentication.
@@ -36,21 +47,70 @@ class DataflowEndpointKafkaAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'saslSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationSaslResponse, Map<String, dynamic>>(saslSettings, (value) => value.toMap()),
-      'systemAssignedManagedIdentitySettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
-      'userAssignedManagedIdentitySettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse, Map<String, dynamic>>(userAssignedManagedIdentitySettings, (value) => value.toMap()),
-      'x509CertificateSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationX509Response, Map<String, dynamic>>(x509CertificateSettings, (value) => value.toMap()),
+      'saslSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowEndpointAuthenticationSaslResponse,
+            Map<String, dynamic>
+          >(saslSettings, (value) => value.toMap()),
+      'systemAssignedManagedIdentitySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse,
+            Map<String, dynamic>
+          >(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
+      'userAssignedManagedIdentitySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse,
+            Map<String, dynamic>
+          >(userAssignedManagedIdentitySettings, (value) => value.toMap()),
+      'x509CertificateSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowEndpointAuthenticationX509Response,
+            Map<String, dynamic>
+          >(x509CertificateSettings, (value) => value.toMap()),
     };
   }
 
-  factory DataflowEndpointKafkaAuthenticationResponse.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointKafkaAuthenticationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointKafkaAuthenticationResponse(
-      method: (map['method'] as String).input(),
-      saslSettings: map['saslSettings'] == null ? null : (DataflowEndpointAuthenticationSaslResponse.fromMap((map['saslSettings']! as Map).cast<String, dynamic>())).input(),
-      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse.fromMap((map['systemAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
-      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse.fromMap((map['userAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
-      x509CertificateSettings: map['x509CertificateSettings'] == null ? null : (DataflowEndpointAuthenticationX509Response.fromMap((map['x509CertificateSettings']! as Map).cast<String, dynamic>())).input(),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      saslSettings: (() {
+        final guardedValue = map['saslSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowEndpointAuthenticationSaslResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemAssignedManagedIdentitySettings: (() {
+        final guardedValue = map['systemAssignedManagedIdentitySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userAssignedManagedIdentitySettings: (() {
+        final guardedValue = map['userAssignedManagedIdentitySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      x509CertificateSettings: (() {
+        final guardedValue = map['x509CertificateSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowEndpointAuthenticationX509Response.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

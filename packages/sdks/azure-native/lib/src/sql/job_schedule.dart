@@ -7,12 +7,16 @@ import 'job_schedule_type.dart';
 class JobSchedule {
   /// Whether or not the schedule is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Schedule end time.
   final pulumi.Input<String>? endTime;
+
   /// Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
   final pulumi.Input<String>? interval;
+
   /// Schedule start time.
   final pulumi.Input<String>? startTime;
+
   /// Schedule interval type
   final pulumi.Input<JobScheduleType>? type;
 
@@ -36,18 +40,42 @@ class JobSchedule {
       'endTime': ?endTime,
       'interval': ?interval,
       'startTime': ?startTime,
-      'type': ?pulumi.Input.mapOptionalInputValue<JobScheduleType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<JobScheduleType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory JobSchedule.fromMap(Map<String, dynamic> map) {
     return JobSchedule(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      type: map['type'] == null ? null : (JobScheduleType.fromValue(map['type']! as String)).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobScheduleType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

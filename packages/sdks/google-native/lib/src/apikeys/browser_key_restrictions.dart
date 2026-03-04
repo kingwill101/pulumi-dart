@@ -9,20 +9,19 @@ class BrowserKeyRestrictions {
 
   /// Creates a new [BrowserKeyRestrictions].
   /// [allowedReferrers] A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-  BrowserKeyRestrictions({
-    this.allowedReferrers,
-  });
+  BrowserKeyRestrictions({this.allowedReferrers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedReferrers': ?allowedReferrers,
-    };
+    return <String, dynamic>{'allowedReferrers': ?allowedReferrers};
   }
 
   factory BrowserKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return BrowserKeyRestrictions(
-      allowedReferrers: map['allowedReferrers'] == null ? null : ((map['allowedReferrers']! as List).cast<String>()).input(),
+      allowedReferrers: (() {
+        final guardedValue = map['allowedReferrers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

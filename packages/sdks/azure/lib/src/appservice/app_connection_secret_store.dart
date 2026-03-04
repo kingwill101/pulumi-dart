@@ -8,20 +8,15 @@ class AppConnectionSecretStore {
 
   /// Creates a new [AppConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
-  AppConnectionSecretStore({
-    required this.keyVaultId,
-  });
+  AppConnectionSecretStore({required this.keyVaultId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyVaultId': keyVaultId,
-    };
+    return <String, dynamic>{'keyVaultId': keyVaultId};
   }
 
   factory AppConnectionSecretStore.fromMap(Map<String, dynamic> map) {
     return AppConnectionSecretStore(
-      keyVaultId: (map['keyVaultId'] as String).input(),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
     );
   }
 }
-

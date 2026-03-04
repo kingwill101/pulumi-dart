@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrafanaSmtp {
   /// Whether to enable the smtp setting of the Grafana instance. Defaults to `false`.
   final pulumi.Input<bool>? enabled;
+
   /// Address used when sending emails.
   final pulumi.Input<String> fromAddress;
+
   /// Name used when sending emails. Defaults to `Azure Managed Grafana Notification`.
   final pulumi.Input<String>? fromName;
+
   /// SMTP server hostname with port, e.g. test.email.net:587
   final pulumi.Input<String> host;
+
   /// Password of SMTP authentication.
   final pulumi.Input<String> password;
+
   /// Whether to use TLS when connecting to SMTP server. Possible values are `OpportunisticStartTLS`, `NoStartTLS`, `MandatoryStartTLS`.
   final pulumi.Input<String> startTlsPolicy;
+
   /// User of SMTP authentication.
   final pulumi.Input<String> user;
+
   /// Whether verify SSL for SMTP server. Defaults to `false`.
   final pulumi.Input<bool>? verificationSkipEnabled;
 
@@ -55,15 +62,26 @@ class GrafanaSmtp {
 
   factory GrafanaSmtp.fromMap(Map<String, dynamic> map) {
     return GrafanaSmtp(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      fromAddress: (map['fromAddress'] as String).input(),
-      fromName: map['fromName'] == null ? null : (map['fromName']! as String).input(),
-      host: (map['host'] as String).input(),
-      password: (map['password'] as String).input(),
-      startTlsPolicy: (map['startTlsPolicy'] as String).input(),
-      user: (map['user'] as String).input(),
-      verificationSkipEnabled: map['verificationSkipEnabled'] == null ? null : (map['verificationSkipEnabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fromAddress: pulumi.Input.fromValue(map['fromAddress'] as String),
+      fromName: (() {
+        final guardedValue = map['fromName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      startTlsPolicy: pulumi.Input.fromValue(map['startTlsPolicy'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
+      verificationSkipEnabled: (() {
+        final guardedValue = map['verificationSkipEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

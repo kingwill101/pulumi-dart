@@ -6,116 +6,151 @@ import 'tag_response.dart';
 
 /// Definition of awsRdsDBSnapshot
 class AwsRdsDBSnapshotPropertiesResponse {
-  /// <p>Specifies the allocated storage size in gibibytes (GiB).</p>
+  /// &lt;p&gt;Specifies the allocated storage size in gibibytes (GiB).&lt;/p&gt;
   final pulumi.Input<int>? allocatedStorage;
-  /// <p>Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.</p>
+
+  /// &lt;p&gt;Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? availabilityZone;
-  /// <p>Specifies the DB instance identifier of the DB instance this DB snapshot was created from.</p>
+
+  /// &lt;p&gt;Specifies the DB instance identifier of the DB instance this DB snapshot was created from.&lt;/p&gt;
   final pulumi.Input<String>? dbInstanceIdentifier;
-  /// <p>The Amazon Resource Name (ARN) for the DB snapshot.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) for the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? dbSnapshotArn;
-  /// <p>Specifies the identifier for the DB snapshot.</p>
+
+  /// &lt;p&gt;Specifies the identifier for the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? dbSnapshotIdentifier;
-  /// <p>The Oracle system identifier (SID), which is the name of the Oracle database instance that manages your database files. The Oracle SID is also the name of your CDB.</p>
+
+  /// &lt;p&gt;The Oracle system identifier (SID), which is the name of the Oracle database instance that manages your database files. The Oracle SID is also the name of your CDB.&lt;/p&gt;
   final pulumi.Input<String>? dbSystemId;
-  /// <p>The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.</p>
+
+  /// &lt;p&gt;The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.&lt;/p&gt;
   final pulumi.Input<String>? dbiResourceId;
-  /// <p>Indicates whether the DB instance has a dedicated log volume (DLV) enabled.</p>
+
+  /// &lt;p&gt;Indicates whether the DB instance has a dedicated log volume (DLV) enabled.&lt;/p&gt;
   final pulumi.Input<bool>? dedicatedLogVolume;
-  /// <p>Indicates whether the DB snapshot is encrypted.</p>
+
+  /// &lt;p&gt;Indicates whether the DB snapshot is encrypted.&lt;/p&gt;
   final pulumi.Input<bool>? encrypted;
-  /// <p>Specifies the name of the database engine.</p>
+
+  /// &lt;p&gt;Specifies the name of the database engine.&lt;/p&gt;
   final pulumi.Input<String>? engine;
-  /// <p>Specifies the version of the database engine.</p>
+
+  /// &lt;p&gt;Specifies the version of the database engine.&lt;/p&gt;
   final pulumi.Input<String>? engineVersion;
-  /// <p>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</p>
+
+  /// &lt;p&gt;Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? iamDatabaseAuthenticationEnabled;
-  /// <p>Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot was taken, was created.</p>
+
+  /// &lt;p&gt;Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot was taken, was created.&lt;/p&gt;
   final pulumi.Input<String>? instanceCreateTime;
-  /// <p>Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.</p>
+
+  /// &lt;p&gt;Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.&lt;/p&gt;
   final pulumi.Input<int>? iops;
-  /// <p>If <code>Encrypted</code> is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot.</p> <p>The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</p>
+
+  /// &lt;p&gt;If &lt;code&gt;Encrypted&lt;/code&gt; is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot.&lt;/p&gt; &lt;p&gt;The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.&lt;/p&gt;
   final pulumi.Input<String>? kmsKeyId;
-  /// <p>License model information for the restored DB instance.</p>
+
+  /// &lt;p&gt;License model information for the restored DB instance.&lt;/p&gt;
   final pulumi.Input<String>? licenseModel;
-  /// <p>Provides the master username for the DB snapshot.</p>
+
+  /// &lt;p&gt;Provides the master username for the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? masterUsername;
-  /// <p>Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).</p>
+
+  /// &lt;p&gt;Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).&lt;/p&gt;
   final pulumi.Input<bool>? multiTenant;
-  /// <p>Provides the option group name for the DB snapshot.</p>
+
+  /// &lt;p&gt;Provides the option group name for the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? optionGroupName;
-  /// <p>Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't change when the snapshot is copied.</p>
+
+  /// &lt;p&gt;Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't change when the snapshot is copied.&lt;/p&gt;
   final pulumi.Input<String>? originalSnapshotCreateTime;
-  /// <p>The percentage of the estimated data that has been transferred.</p>
+
+  /// &lt;p&gt;The percentage of the estimated data that has been transferred.&lt;/p&gt;
   final pulumi.Input<int>? percentProgress;
-  /// <p>Specifies the port that the database engine was listening on at the time of the snapshot.</p>
+
+  /// &lt;p&gt;Specifies the port that the database engine was listening on at the time of the snapshot.&lt;/p&gt;
   final pulumi.Input<int>? port;
-  /// <p>The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.</p>
+
+  /// &lt;p&gt;The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.&lt;/p&gt;
   final pulumi.Input<List<ProcessorFeatureResponse>>? processorFeatures;
-  /// <p>Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when the snapshot is copied.</p>
+
+  /// &lt;p&gt;Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when the snapshot is copied.&lt;/p&gt;
   final pulumi.Input<String>? snapshotCreateTime;
-  /// <p>The timestamp of the most recent transaction applied to the database that you're backing up. Thus, if you restore a snapshot, SnapshotDatabaseTime is the most recent transaction in the restored DB instance. In contrast, originalSnapshotCreateTime specifies the system time that the snapshot completed.</p> <p>If you back up a read replica, you can determine the replica lag by comparing SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is two hours later than SnapshotDatabaseTime, then the replica lag is two hours.</p>
+
+  /// &lt;p&gt;The timestamp of the most recent transaction applied to the database that you're backing up. Thus, if you restore a snapshot, SnapshotDatabaseTime is the most recent transaction in the restored DB instance. In contrast, originalSnapshotCreateTime specifies the system time that the snapshot completed.&lt;/p&gt; &lt;p&gt;If you back up a read replica, you can determine the replica lag by comparing SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is two hours later than SnapshotDatabaseTime, then the replica lag is two hours.&lt;/p&gt;
   final pulumi.Input<String>? snapshotDatabaseTime;
-  /// <p>Specifies where manual snapshots are stored: Amazon Web Services Outposts or the Amazon Web Services Region.</p>
+
+  /// &lt;p&gt;Specifies where manual snapshots are stored: Amazon Web Services Outposts or the Amazon Web Services Region.&lt;/p&gt;
   final pulumi.Input<String>? snapshotTarget;
-  /// <p>Provides the type of the DB snapshot.</p>
+
+  /// &lt;p&gt;Provides the type of the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? snapshotType;
-  /// <p>The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value in the case of a cross-account or cross-Region copy.</p>
+
+  /// &lt;p&gt;The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value in the case of a cross-account or cross-Region copy.&lt;/p&gt;
   final pulumi.Input<String>? sourceDBSnapshotIdentifier;
-  /// <p>The Amazon Web Services Region that the DB snapshot was created in or copied from.</p>
+
+  /// &lt;p&gt;The Amazon Web Services Region that the DB snapshot was created in or copied from.&lt;/p&gt;
   final pulumi.Input<String>? sourceRegion;
-  /// <p>Specifies the status of this DB snapshot.</p>
+
+  /// &lt;p&gt;Specifies the status of this DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? status;
-  /// <p>Specifies the storage throughput for the DB snapshot.</p>
+
+  /// &lt;p&gt;Specifies the storage throughput for the DB snapshot.&lt;/p&gt;
   final pulumi.Input<int>? storageThroughput;
-  /// <p>Specifies the storage type associated with DB snapshot.</p>
+
+  /// &lt;p&gt;Specifies the storage type associated with DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? storageType;
+
   /// Property tagList
   final pulumi.Input<List<TagResponse>>? tagList;
-  /// <p>The ARN from the key store with which to associate the instance for TDE encryption.</p>
+
+  /// &lt;p&gt;The ARN from the key store with which to associate the instance for TDE encryption.&lt;/p&gt;
   final pulumi.Input<String>? tdeCredentialArn;
-  /// <p>The time zone of the DB snapshot. In most cases, the <code>Timezone</code> element is empty. <code>Timezone</code> content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.</p>
+
+  /// &lt;p&gt;The time zone of the DB snapshot. In most cases, the &lt;code&gt;Timezone&lt;/code&gt; element is empty. &lt;code&gt;Timezone&lt;/code&gt; content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.&lt;/p&gt;
   final pulumi.Input<String>? timezone;
-  /// <p>Provides the VPC ID associated with the DB snapshot.</p>
+
+  /// &lt;p&gt;Provides the VPC ID associated with the DB snapshot.&lt;/p&gt;
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsRdsDBSnapshotPropertiesResponse].
-  /// [allocatedStorage] <p>Specifies the allocated storage size in gibibytes (GiB).</p>
-  /// [availabilityZone] <p>Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.</p>
-  /// [dbInstanceIdentifier] <p>Specifies the DB instance identifier of the DB instance this DB snapshot was created from.</p>
-  /// [dbSnapshotArn] <p>The Amazon Resource Name (ARN) for the DB snapshot.</p>
-  /// [dbSnapshotIdentifier] <p>Specifies the identifier for the DB snapshot.</p>
-  /// [dbSystemId] <p>The Oracle system identifier (SID), which is the name of the Oracle database instance that manages your database files. The Oracle SID is also the name of your CDB.</p>
-  /// [dbiResourceId] <p>The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.</p>
-  /// [dedicatedLogVolume] <p>Indicates whether the DB instance has a dedicated log volume (DLV) enabled.</p>
-  /// [encrypted] <p>Indicates whether the DB snapshot is encrypted.</p>
-  /// [engine] <p>Specifies the name of the database engine.</p>
-  /// [engineVersion] <p>Specifies the version of the database engine.</p>
-  /// [iamDatabaseAuthenticationEnabled] <p>Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.</p>
-  /// [instanceCreateTime] <p>Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot was taken, was created.</p>
-  /// [iops] <p>Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.</p>
-  /// [kmsKeyId] <p>If <code>Encrypted</code> is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot.</p> <p>The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.</p>
-  /// [licenseModel] <p>License model information for the restored DB instance.</p>
-  /// [masterUsername] <p>Provides the master username for the DB snapshot.</p>
-  /// [multiTenant] <p>Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).</p>
-  /// [optionGroupName] <p>Provides the option group name for the DB snapshot.</p>
-  /// [originalSnapshotCreateTime] <p>Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't change when the snapshot is copied.</p>
-  /// [percentProgress] <p>The percentage of the estimated data that has been transferred.</p>
-  /// [port] <p>Specifies the port that the database engine was listening on at the time of the snapshot.</p>
-  /// [processorFeatures] <p>The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.</p>
-  /// [snapshotCreateTime] <p>Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when the snapshot is copied.</p>
-  /// [snapshotDatabaseTime] <p>The timestamp of the most recent transaction applied to the database that you're backing up. Thus, if you restore a snapshot, SnapshotDatabaseTime is the most recent transaction in the restored DB instance. In contrast, originalSnapshotCreateTime specifies the system time that the snapshot completed.</p> <p>If you back up a read replica, you can determine the replica lag by comparing SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is two hours later than SnapshotDatabaseTime, then the replica lag is two hours.</p>
-  /// [snapshotTarget] <p>Specifies where manual snapshots are stored: Amazon Web Services Outposts or the Amazon Web Services Region.</p>
-  /// [snapshotType] <p>Provides the type of the DB snapshot.</p>
-  /// [sourceDBSnapshotIdentifier] <p>The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value in the case of a cross-account or cross-Region copy.</p>
-  /// [sourceRegion] <p>The Amazon Web Services Region that the DB snapshot was created in or copied from.</p>
-  /// [status] <p>Specifies the status of this DB snapshot.</p>
-  /// [storageThroughput] <p>Specifies the storage throughput for the DB snapshot.</p>
-  /// [storageType] <p>Specifies the storage type associated with DB snapshot.</p>
+  /// [allocatedStorage] &lt;p&gt;Specifies the allocated storage size in gibibytes (GiB).&lt;/p&gt;
+  /// [availabilityZone] &lt;p&gt;Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.&lt;/p&gt;
+  /// [dbInstanceIdentifier] &lt;p&gt;Specifies the DB instance identifier of the DB instance this DB snapshot was created from.&lt;/p&gt;
+  /// [dbSnapshotArn] &lt;p&gt;The Amazon Resource Name (ARN) for the DB snapshot.&lt;/p&gt;
+  /// [dbSnapshotIdentifier] &lt;p&gt;Specifies the identifier for the DB snapshot.&lt;/p&gt;
+  /// [dbSystemId] &lt;p&gt;The Oracle system identifier (SID), which is the name of the Oracle database instance that manages your database files. The Oracle SID is also the name of your CDB.&lt;/p&gt;
+  /// [dbiResourceId] &lt;p&gt;The identifier for the source DB instance, which can't be changed and which is unique to an Amazon Web Services Region.&lt;/p&gt;
+  /// [dedicatedLogVolume] &lt;p&gt;Indicates whether the DB instance has a dedicated log volume (DLV) enabled.&lt;/p&gt;
+  /// [encrypted] &lt;p&gt;Indicates whether the DB snapshot is encrypted.&lt;/p&gt;
+  /// [engine] &lt;p&gt;Specifies the name of the database engine.&lt;/p&gt;
+  /// [engineVersion] &lt;p&gt;Specifies the version of the database engine.&lt;/p&gt;
+  /// [iamDatabaseAuthenticationEnabled] &lt;p&gt;Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.&lt;/p&gt;
+  /// [instanceCreateTime] &lt;p&gt;Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot was taken, was created.&lt;/p&gt;
+  /// [iops] &lt;p&gt;Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.&lt;/p&gt;
+  /// [kmsKeyId] &lt;p&gt;If &lt;code&gt;Encrypted&lt;/code&gt; is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot.&lt;/p&gt; &lt;p&gt;The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.&lt;/p&gt;
+  /// [licenseModel] &lt;p&gt;License model information for the restored DB instance.&lt;/p&gt;
+  /// [masterUsername] &lt;p&gt;Provides the master username for the DB snapshot.&lt;/p&gt;
+  /// [multiTenant] &lt;p&gt;Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or the single-tenant configuration (FALSE).&lt;/p&gt;
+  /// [optionGroupName] &lt;p&gt;Provides the option group name for the DB snapshot.&lt;/p&gt;
+  /// [originalSnapshotCreateTime] &lt;p&gt;Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't change when the snapshot is copied.&lt;/p&gt;
+  /// [percentProgress] &lt;p&gt;The percentage of the estimated data that has been transferred.&lt;/p&gt;
+  /// [port] &lt;p&gt;Specifies the port that the database engine was listening on at the time of the snapshot.&lt;/p&gt;
+  /// [processorFeatures] &lt;p&gt;The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.&lt;/p&gt;
+  /// [snapshotCreateTime] &lt;p&gt;Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when the snapshot is copied.&lt;/p&gt;
+  /// [snapshotDatabaseTime] &lt;p&gt;The timestamp of the most recent transaction applied to the database that you're backing up. Thus, if you restore a snapshot, SnapshotDatabaseTime is the most recent transaction in the restored DB instance. In contrast, originalSnapshotCreateTime specifies the system time that the snapshot completed.&lt;/p&gt; &lt;p&gt;If you back up a read replica, you can determine the replica lag by comparing SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is two hours later than SnapshotDatabaseTime, then the replica lag is two hours.&lt;/p&gt;
+  /// [snapshotTarget] &lt;p&gt;Specifies where manual snapshots are stored: Amazon Web Services Outposts or the Amazon Web Services Region.&lt;/p&gt;
+  /// [snapshotType] &lt;p&gt;Provides the type of the DB snapshot.&lt;/p&gt;
+  /// [sourceDBSnapshotIdentifier] &lt;p&gt;The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value in the case of a cross-account or cross-Region copy.&lt;/p&gt;
+  /// [sourceRegion] &lt;p&gt;The Amazon Web Services Region that the DB snapshot was created in or copied from.&lt;/p&gt;
+  /// [status] &lt;p&gt;Specifies the status of this DB snapshot.&lt;/p&gt;
+  /// [storageThroughput] &lt;p&gt;Specifies the storage throughput for the DB snapshot.&lt;/p&gt;
+  /// [storageType] &lt;p&gt;Specifies the storage type associated with DB snapshot.&lt;/p&gt;
   /// [tagList] Property tagList
-  /// [tdeCredentialArn] <p>The ARN from the key store with which to associate the instance for TDE encryption.</p>
-  /// [timezone] <p>The time zone of the DB snapshot. In most cases, the <code>Timezone</code> element is empty. <code>Timezone</code> content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.</p>
-  /// [vpcId] <p>Provides the VPC ID associated with the DB snapshot.</p>
+  /// [tdeCredentialArn] &lt;p&gt;The ARN from the key store with which to associate the instance for TDE encryption.&lt;/p&gt;
+  /// [timezone] &lt;p&gt;The time zone of the DB snapshot. In most cases, the &lt;code&gt;Timezone&lt;/code&gt; element is empty. &lt;code&gt;Timezone&lt;/code&gt; content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.&lt;/p&gt;
+  /// [vpcId] &lt;p&gt;Provides the VPC ID associated with the DB snapshot.&lt;/p&gt;
   AwsRdsDBSnapshotPropertiesResponse({
     this.allocatedStorage,
     this.availabilityZone,
@@ -179,7 +214,18 @@ class AwsRdsDBSnapshotPropertiesResponse {
       'originalSnapshotCreateTime': ?originalSnapshotCreateTime,
       'percentProgress': ?percentProgress,
       'port': ?port,
-      'processorFeatures': ?pulumi.Input.mapOptionalInputValue<List<ProcessorFeatureResponse>, List<Map<String, dynamic>>>(processorFeatures, (value) => pulumi.Input.encodeList<ProcessorFeatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'processorFeatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProcessorFeatureResponse>,
+            List<Map<String, dynamic>>
+          >(
+            processorFeatures,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProcessorFeatureResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'snapshotCreateTime': ?snapshotCreateTime,
       'snapshotDatabaseTime': ?snapshotDatabaseTime,
       'snapshotTarget': ?snapshotTarget,
@@ -189,7 +235,18 @@ class AwsRdsDBSnapshotPropertiesResponse {
       'status': ?status,
       'storageThroughput': ?storageThroughput,
       'storageType': ?storageType,
-      'tagList': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tagList, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tagList':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            tagList,
+            (value) =>
+                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tdeCredentialArn': ?tdeCredentialArn,
       'timezone': ?timezone,
       'vpcId': ?vpcId,
@@ -198,43 +255,199 @@ class AwsRdsDBSnapshotPropertiesResponse {
 
   factory AwsRdsDBSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsDBSnapshotPropertiesResponse(
-      allocatedStorage: map['allocatedStorage'] == null ? null : (map['allocatedStorage']! as int).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier']! as String).input(),
-      dbSnapshotArn: map['dbSnapshotArn'] == null ? null : (map['dbSnapshotArn']! as String).input(),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier']! as String).input(),
-      dbSystemId: map['dbSystemId'] == null ? null : (map['dbSystemId']! as String).input(),
-      dbiResourceId: map['dbiResourceId'] == null ? null : (map['dbiResourceId']! as String).input(),
-      dedicatedLogVolume: map['dedicatedLogVolume'] == null ? null : (map['dedicatedLogVolume']! as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
-      iamDatabaseAuthenticationEnabled: map['iamDatabaseAuthenticationEnabled'] == null ? null : (map['iamDatabaseAuthenticationEnabled']! as bool).input(),
-      instanceCreateTime: map['instanceCreateTime'] == null ? null : (map['instanceCreateTime']! as String).input(),
-      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      licenseModel: map['licenseModel'] == null ? null : (map['licenseModel']! as String).input(),
-      masterUsername: map['masterUsername'] == null ? null : (map['masterUsername']! as String).input(),
-      multiTenant: map['multiTenant'] == null ? null : (map['multiTenant']! as bool).input(),
-      optionGroupName: map['optionGroupName'] == null ? null : (map['optionGroupName']! as String).input(),
-      originalSnapshotCreateTime: map['originalSnapshotCreateTime'] == null ? null : (map['originalSnapshotCreateTime']! as String).input(),
-      percentProgress: map['percentProgress'] == null ? null : (map['percentProgress']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      processorFeatures: map['processorFeatures'] == null ? null : (pulumi.Input.decodeList<ProcessorFeatureResponse>(map['processorFeatures']!, (value) => ProcessorFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      snapshotCreateTime: map['snapshotCreateTime'] == null ? null : (map['snapshotCreateTime']! as String).input(),
-      snapshotDatabaseTime: map['snapshotDatabaseTime'] == null ? null : (map['snapshotDatabaseTime']! as String).input(),
-      snapshotTarget: map['snapshotTarget'] == null ? null : (map['snapshotTarget']! as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType']! as String).input(),
-      sourceDBSnapshotIdentifier: map['sourceDBSnapshotIdentifier'] == null ? null : (map['sourceDBSnapshotIdentifier']! as String).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      storageThroughput: map['storageThroughput'] == null ? null : (map['storageThroughput']! as int).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
-      tagList: map['tagList'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tagList']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tdeCredentialArn: map['tdeCredentialArn'] == null ? null : (map['tdeCredentialArn']! as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      allocatedStorage: (() {
+        final guardedValue = map['allocatedStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceIdentifier: (() {
+        final guardedValue = map['dbInstanceIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbSnapshotArn: (() {
+        final guardedValue = map['dbSnapshotArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbSnapshotIdentifier: (() {
+        final guardedValue = map['dbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbSystemId: (() {
+        final guardedValue = map['dbSystemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbiResourceId: (() {
+        final guardedValue = map['dbiResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dedicatedLogVolume: (() {
+        final guardedValue = map['dedicatedLogVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamDatabaseAuthenticationEnabled: (() {
+        final guardedValue = map['iamDatabaseAuthenticationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceCreateTime: (() {
+        final guardedValue = map['instanceCreateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterUsername: (() {
+        final guardedValue = map['masterUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiTenant: (() {
+        final guardedValue = map['multiTenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      optionGroupName: (() {
+        final guardedValue = map['optionGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originalSnapshotCreateTime: (() {
+        final guardedValue = map['originalSnapshotCreateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentProgress: (() {
+        final guardedValue = map['percentProgress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      processorFeatures: (() {
+        final guardedValue = map['processorFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProcessorFeatureResponse>(
+            guardedValue,
+            (value) => ProcessorFeatureResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      snapshotCreateTime: (() {
+        final guardedValue = map['snapshotCreateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotDatabaseTime: (() {
+        final guardedValue = map['snapshotDatabaseTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotTarget: (() {
+        final guardedValue = map['snapshotTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotType: (() {
+        final guardedValue = map['snapshotType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDBSnapshotIdentifier: (() {
+        final guardedValue = map['sourceDBSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegion: (() {
+        final guardedValue = map['sourceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageThroughput: (() {
+        final guardedValue = map['storageThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagList: (() {
+        final guardedValue = map['tagList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagResponse>(
+            guardedValue,
+            (value) =>
+                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tdeCredentialArn: (() {
+        final guardedValue = map['tdeCredentialArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum RefillPolicy {
   always("always");
 
-  const RefillPolicy(this.value);
-  final String value;
+  const RefillPolicy(this.wireValue);
+  final String wireValue;
 
   static RefillPolicy fromValue(String value) {
     for (final item in RefillPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RefillPolicy value: $value');
   }
 }
-

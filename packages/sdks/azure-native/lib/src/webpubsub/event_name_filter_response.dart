@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventNameFilterResponse {
   /// Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.
   final pulumi.Input<List<String>>? systemEvents;
+
   /// Expected value is 'EventName'.
   final pulumi.Input<String> type;
+
   /// Gets or sets a matching pattern for event names.
   /// There are 3 kinds of patterns supported:
   /// 1. "*", it matches any event name
@@ -35,10 +37,17 @@ class EventNameFilterResponse {
 
   factory EventNameFilterResponse.fromMap(Map<String, dynamic> map) {
     return EventNameFilterResponse(
-      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents']! as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
-      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern']! as String).input(),
+      systemEvents: (() {
+        final guardedValue = map['systemEvents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userEventPattern: (() {
+        final guardedValue = map['userEventPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

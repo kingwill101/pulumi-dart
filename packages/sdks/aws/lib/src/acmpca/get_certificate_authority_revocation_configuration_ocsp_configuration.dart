@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateAuthorityRevocationConfigurationOcspConfiguration {
   /// Boolean value that specifies whether a custom OCSP responder is enabled.
   final pulumi.Input<bool> enabled;
+
   /// A CNAME specifying a customized OCSP domain.
   final pulumi.Input<String> ocspCustomCname;
 
@@ -23,11 +24,12 @@ class GetCertificateAuthorityRevocationConfigurationOcspConfiguration {
     };
   }
 
-  factory GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateAuthorityRevocationConfigurationOcspConfiguration(
-      enabled: (map['enabled'] as bool).input(),
-      ocspCustomCname: (map['ocspCustomCname'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      ocspCustomCname: pulumi.Input.fromValue(map['ocspCustomCname'] as String),
     );
   }
 }
-

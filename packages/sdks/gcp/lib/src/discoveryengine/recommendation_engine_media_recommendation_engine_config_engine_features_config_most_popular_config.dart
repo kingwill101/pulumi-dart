@@ -16,15 +16,18 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'timeWindowDays': ?timeWindowDays,
-    };
+    return <String, dynamic>{'timeWindowDays': ?timeWindowDays};
   }
 
-  factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap(Map<String, dynamic> map) {
+  factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig(
-      timeWindowDays: map['timeWindowDays'] == null ? null : (map['timeWindowDays']! as int).input(),
+      timeWindowDays: (() {
+        final guardedValue = map['timeWindowDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

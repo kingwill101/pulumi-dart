@@ -7,16 +7,17 @@ enum SubscriptionNotificationOperation {
   billingCancellation("BillingCancellation"),
   undoSoftDelete("UndoSoftDelete");
 
-  const SubscriptionNotificationOperation(this.value);
-  final String value;
+  const SubscriptionNotificationOperation(this.wireValue);
+  final String wireValue;
 
   static SubscriptionNotificationOperation fromValue(String value) {
     for (final item in SubscriptionNotificationOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubscriptionNotificationOperation value: $value');
+    throw ArgumentError(
+      'Unknown SubscriptionNotificationOperation value: $value',
+    );
   }
 }
-

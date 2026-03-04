@@ -586,24 +586,33 @@ import 'glossary_term_timeouts.dart';
 class GlossaryTerm extends pulumi.CustomResource {
   /// Time of glossary term creation.
   late final pulumi.Output<String> createdAt;
+
   /// Creator of glossary term.
   late final pulumi.Output<String> createdBy;
+
   /// Identifier of domain.
   late final pulumi.Output<String?> domainIdentifier;
+
   /// Identifier of glossary.
   late final pulumi.Output<String> glossaryIdentifier;
+
   /// Long description of entry.
   late final pulumi.Output<String?> longDescription;
+
   /// Name of glossary term.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Short description of entry.
   late final pulumi.Output<String?> shortDescription;
+
   /// If glossary term is ENABLED or DISABLED.
   late final pulumi.Output<String?> status;
+
   /// Object classifying the term relations through the following attributes:
   late final pulumi.Output<GlossaryTermTermRelations?> termRelations;
   late final pulumi.Output<GlossaryTermTimeouts?> timeouts;
@@ -617,22 +626,22 @@ class GlossaryTerm extends pulumi.CustomResource {
     GlossaryTermArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/glossaryTerm:GlossaryTerm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.domainIdentifier = registerOutput<String?>('domainIdentifier');
-    this.glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
-    this.longDescription = registerOutput<String?>('longDescription');
+         'aws:datazone/glossaryTerm:GlossaryTerm',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    domainIdentifier = registerOutput<String?>('domainIdentifier');
+    glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
+    longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.shortDescription = registerOutput<String?>('shortDescription');
-    this.status = registerOutput<String?>('status');
-    this.termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
-    this.timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    shortDescription = registerOutput<String?>('shortDescription');
+    status = registerOutput<String?>('status');
+    termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
+    timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
   }
 
   /// Gets an existing [GlossaryTerm] resource's state with the given [name] and [id].
@@ -653,21 +662,21 @@ class GlossaryTerm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/glossaryTerm:GlossaryTerm',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.domainIdentifier = registerOutput<String?>('domainIdentifier');
-    this.glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
-    this.longDescription = registerOutput<String?>('longDescription');
+         'aws:datazone/glossaryTerm:GlossaryTerm',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    domainIdentifier = registerOutput<String?>('domainIdentifier');
+    glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
+    longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.shortDescription = registerOutput<String?>('shortDescription');
-    this.status = registerOutput<String?>('status');
-    this.termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
-    this.timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    shortDescription = registerOutput<String?>('shortDescription');
+    status = registerOutput<String?>('status');
+    termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
+    timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
   }
 }

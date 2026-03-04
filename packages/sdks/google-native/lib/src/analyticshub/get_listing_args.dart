@@ -35,11 +35,14 @@ class GetListingArgs {
 
   factory GetListingArgs.fromMap(Map<String, dynamic> map) {
     return GetListingArgs(
-      dataExchangeId: (map['dataExchangeId'] as String).input(),
-      listingId: (map['listingId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
+      listingId: pulumi.Input.fromValue(map['listingId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

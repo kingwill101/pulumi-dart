@@ -13,9 +13,10 @@ class GlobalSecurityIpGroupArgs {
   /// - The name must start with a letter and end with a letter or digit.
   /// - The name must be 2 to 120 characters in length.
   final pulumi.Input<String> globalIpGroupName;
+
   /// The IP address in the whitelist template.
   ///
-  /// > **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+  /// &gt; **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
   final pulumi.Input<String> globalIpList;
 
   /// Creates a new [GlobalSecurityIpGroupArgs].
@@ -35,9 +36,10 @@ class GlobalSecurityIpGroupArgs {
 
   factory GlobalSecurityIpGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupArgs(
-      globalIpGroupName: (map['globalIpGroupName'] as String).input(),
-      globalIpList: (map['globalIpList'] as String).input(),
+      globalIpGroupName: pulumi.Input.fromValue(
+        map['globalIpGroupName'] as String,
+      ),
+      globalIpList: pulumi.Input.fromValue(map['globalIpList'] as String),
     );
   }
 }
-

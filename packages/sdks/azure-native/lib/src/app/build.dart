@@ -537,24 +537,35 @@ import 'system_data_response.dart';
 class Build extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Status of the build once it has been provisioned.
   late final pulumi.Output<String> buildStatus;
+
   /// Configuration of the build.
   late final pulumi.Output<BuildConfigurationResponse?> configuration;
+
   /// Container registry that the final image will be uploaded to.
-  late final pulumi.Output<ContainerRegistryWithCustomImageResponse?> destinationContainerRegistry;
+  late final pulumi.Output<ContainerRegistryWithCustomImageResponse?>
+  destinationContainerRegistry;
+
   /// Endpoint from which the build logs can be streamed.
   late final pulumi.Output<String> logStreamEndpoint;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Build provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Endpoint to use to retrieve an authentication token for log streaming and uploading source code.
   late final pulumi.Output<String> tokenEndpoint;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Endpoint to which the source code should be uploaded.
   late final pulumi.Output<String> uploadEndpoint;
 
@@ -562,26 +573,28 @@ class Build extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Build]. {@macro pulumi_app_build_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Build(
-    String name, {
-    BuildArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:app:Build',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.buildStatus = registerOutput<String>('buildStatus');
-    this.configuration = registerOutput<BuildConfigurationResponse?>('configuration');
-    this.destinationContainerRegistry = registerOutput<ContainerRegistryWithCustomImageResponse?>('destinationContainerRegistry');
-    this.logStreamEndpoint = registerOutput<String>('logStreamEndpoint');
+  Build(String name, {BuildArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:app:Build',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    buildStatus = registerOutput<String>('buildStatus');
+    configuration = registerOutput<BuildConfigurationResponse?>(
+      'configuration',
+    );
+    destinationContainerRegistry =
+        registerOutput<ContainerRegistryWithCustomImageResponse?>(
+          'destinationContainerRegistry',
+        );
+    logStreamEndpoint = registerOutput<String>('logStreamEndpoint');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tokenEndpoint = registerOutput<String>('tokenEndpoint');
-    this.type = registerOutput<String>('type');
-    this.uploadEndpoint = registerOutput<String>('uploadEndpoint');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tokenEndpoint = registerOutput<String>('tokenEndpoint');
+    type = registerOutput<String>('type');
+    uploadEndpoint = registerOutput<String>('uploadEndpoint');
   }
 }

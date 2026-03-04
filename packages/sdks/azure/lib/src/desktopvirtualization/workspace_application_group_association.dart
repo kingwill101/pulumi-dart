@@ -273,7 +273,7 @@ import 'workspace_application_group_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DesktopVirtualization` - 2024-04-03
@@ -286,10 +286,11 @@ import 'workspace_application_group_association_state.dart';
 /// $ pulumi import azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation association1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup1/providers/Microsoft.DesktopVirtualization/workspaces/myworkspace|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup1/providers/Microsoft.DesktopVirtualization/applicationGroups/myapplicationgroup"
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{virtualDesktopWorkspaceID}|{virtualDesktopApplicationGroupID}`.
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{virtualDesktopWorkspaceID}|{virtualDesktopApplicationGroupID}`.
 class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
   /// The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationGroupId;
+
   /// The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -302,13 +303,13 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     WorkspaceApplicationGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGroupId = registerOutput<String>('applicationGroupId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceApplicationGroupAssociation] resource's state with the given [name] and [id].
@@ -329,12 +330,12 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGroupId = registerOutput<String>('applicationGroupId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

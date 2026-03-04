@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hci_deployment_setting_args.dart';
-import 'hci_deployment_setting_scale_unit.dart';
 import 'hci_deployment_setting_state.dart';
 
 /// Manages a Stack HCI Deployment Setting.
 ///
-/// > **Note:** Completion of the prerequisites of deploying the Azure Stack HCI in your environment is outside the scope of this document. For more details refer to the [Azure Stack HCI deployment sequence](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/deployment-introduction#deployment-sequence). If you encounter issues completing the prerequisites, we'd recommend opening a ticket with Microsoft Support.
+/// &gt; **Note:** Completion of the prerequisites of deploying the Azure Stack HCI in your environment is outside the scope of this document. For more details refer to the [Azure Stack HCI deployment sequence](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/deployment-introduction#deployment-sequence). If you encounter issues completing the prerequisites, we'd recommend opening a ticket with Microsoft Support.
 ///
-/// > **Note:** During the deployment process, the service will generate additional resources, including a new Arc Bridge Appliance and a Custom Location containing several Stack HCI Storage Paths. The provider will attempt to remove these resources on the deletion or recreation of `azure.stack.HciDeploymentSetting`.
+/// &gt; **Note:** During the deployment process, the service will generate additional resources, including a new Arc Bridge Appliance and a Custom Location containing several Stack HCI Storage Paths. The provider will attempt to remove these resources on the deletion or recreation of `azure.stack.HciDeploymentSetting`.
 ///
 /// ## Import
 ///
@@ -19,10 +18,13 @@ import 'hci_deployment_setting_state.dart';
 class HciDeploymentSetting extends pulumi.CustomResource {
   /// Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<String>> arcResourceIds;
+
   /// One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
-  late final pulumi.Output<List<HciDeploymentSettingScaleUnit>> scaleUnits;
+  late final pulumi.Output<List<Map<String, dynamic>>> scaleUnits;
+
   /// The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> stackHciClusterId;
+
   /// The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> version;
 
@@ -35,15 +37,15 @@ class HciDeploymentSetting extends pulumi.CustomResource {
     HciDeploymentSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcResourceIds = registerOutput<List<String>>('arcResourceIds');
-    this.scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits');
-    this.stackHciClusterId = registerOutput<String>('stackHciClusterId');
-    this.version = registerOutput<String>('version');
+         'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcResourceIds = registerOutput<List<String>>('arcResourceIds');
+    scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
+    stackHciClusterId = registerOutput<String>('stackHciClusterId');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [HciDeploymentSetting] resource's state with the given [name] and [id].
@@ -64,14 +66,14 @@ class HciDeploymentSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcResourceIds = registerOutput<List<String>>('arcResourceIds');
-    this.scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits');
-    this.stackHciClusterId = registerOutput<String>('stackHciClusterId');
-    this.version = registerOutput<String>('version');
+         'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcResourceIds = registerOutput<List<String>>('arcResourceIds');
+    scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
+    stackHciClusterId = registerOutput<String>('stackHciClusterId');
+    version = registerOutput<String>('version');
   }
 }

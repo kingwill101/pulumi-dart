@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse {
   /// The response of the scheduled run.
   final pulumi.Input<String> runResponse;
+
   /// The scheduled run time based on the user-specified schedule.
   final pulumi.Input<String> scheduledRunTime;
 
@@ -24,11 +25,14 @@ class GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse(
-      runResponse: (map['runResponse'] as String).input(),
-      scheduledRunTime: (map['scheduledRunTime'] as String).input(),
+      runResponse: pulumi.Input.fromValue(map['runResponse'] as String),
+      scheduledRunTime: pulumi.Input.fromValue(
+        map['scheduledRunTime'] as String,
+      ),
     );
   }
 }
-

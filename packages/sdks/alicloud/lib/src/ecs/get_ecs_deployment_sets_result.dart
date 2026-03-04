@@ -6,6 +6,7 @@ import 'get_ecs_deployment_sets_set.dart';
 /// Result data returned by getEcsDeploymentSets.
 class GetEcsDeploymentSetsResult {
   final String? deploymentSetName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,22 +44,46 @@ class GetEcsDeploymentSetsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'sets': pulumi.Input.encodeList<GetEcsDeploymentSetsSet, Map<String, dynamic>>(sets, (value) => value.toMap()),
+      'sets':
+          pulumi.Input.encodeList<
+            GetEcsDeploymentSetsSet,
+            Map<String, dynamic>
+          >(sets, (value) => value.toMap()),
       'strategy': ?strategy,
     };
   }
 
   factory GetEcsDeploymentSetsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsDeploymentSetsResult(
-      deploymentSetName: map['deploymentSetName'] == null ? null : map['deploymentSetName']! as String,
+      deploymentSetName: (() {
+        final guardedValue = map['deploymentSetName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      sets: pulumi.Input.decodeList<GetEcsDeploymentSetsSet>(map['sets'], (value) => GetEcsDeploymentSetsSet.fromMap((value as Map).cast<String, dynamic>())),
-      strategy: map['strategy'] == null ? null : map['strategy']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sets: pulumi.Input.decodeList<GetEcsDeploymentSetsSet>(
+        map['sets']!,
+        (value) => GetEcsDeploymentSetsSet.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      strategy: (() {
+        final guardedValue = map['strategy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

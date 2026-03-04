@@ -6,7 +6,7 @@ import 'nat_ip_state.dart';
 ///
 /// For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -352,20 +352,28 @@ import 'nat_ip_state.dart';
 class NatIp extends pulumi.CustomResource {
   /// Specifies whether to check the validity of the request without actually making the request.
   late final pulumi.Output<bool> dryRun;
+
   /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
   late final pulumi.Output<String> natGatewayId;
+
   /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
   late final pulumi.Output<String> natIp;
+
   /// NAT IP ADDRESS of the address segment.
   late final pulumi.Output<String?> natIpCidr;
+
   /// The ID of the CIDR block to which the NAT IP address belongs.
   late final pulumi.Output<String?> natIpCidrId;
+
   /// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
   late final pulumi.Output<String?> natIpDescription;
+
   /// Ihe ID of the Nat Ip.
   late final pulumi.Output<String> natIpId;
+
   /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
   late final pulumi.Output<String?> natIpName;
+
   /// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
   late final pulumi.Output<String> status;
 
@@ -373,33 +381,26 @@ class NatIp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [NatIp]. {@macro pulumi_vpc_nat_ip_nat_ip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  NatIp(
-    String name, {
-    NatIpArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:vpc/natIp:NatIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool>('dryRun');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natIp = registerOutput<String>('natIp');
-    this.natIpCidr = registerOutput<String?>('natIpCidr');
-    this.natIpCidrId = registerOutput<String?>('natIpCidrId');
-    this.natIpDescription = registerOutput<String?>('natIpDescription');
-    this.natIpId = registerOutput<String>('natIpId');
-    this.natIpName = registerOutput<String?>('natIpName');
-    this.status = registerOutput<String>('status');
+  NatIp(String name, {NatIpArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:vpc/natIp:NatIp',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    dryRun = registerOutput<bool>('dryRun');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natIp = registerOutput<String>('natIp');
+    natIpCidr = registerOutput<String?>('natIpCidr');
+    natIpCidrId = registerOutput<String?>('natIpCidrId');
+    natIpDescription = registerOutput<String?>('natIpDescription');
+    natIpId = registerOutput<String>('natIpId');
+    natIpName = registerOutput<String?>('natIpName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NatIp] resource's state with the given [name] and [id].
-  static NatIp get(
-    String name,
-    pulumi.Input<String> id, {
-    NatIpState? state,
-  }) {
+  static NatIp get(String name, pulumi.Input<String> id, {NatIpState? state}) {
     return NatIp._get(
       name,
       state: state?.toMap(),
@@ -412,19 +413,19 @@ class NatIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/natIp:NatIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool>('dryRun');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natIp = registerOutput<String>('natIp');
-    this.natIpCidr = registerOutput<String?>('natIpCidr');
-    this.natIpCidrId = registerOutput<String?>('natIpCidrId');
-    this.natIpDescription = registerOutput<String?>('natIpDescription');
-    this.natIpId = registerOutput<String>('natIpId');
-    this.natIpName = registerOutput<String?>('natIpName');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/natIp:NatIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool>('dryRun');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natIp = registerOutput<String>('natIp');
+    natIpCidr = registerOutput<String?>('natIpCidr');
+    natIpCidrId = registerOutput<String?>('natIpCidrId');
+    natIpDescription = registerOutput<String?>('natIpDescription');
+    natIpId = registerOutput<String>('natIpId');
+    natIpName = registerOutput<String?>('natIpName');
+    status = registerOutput<String>('status');
   }
 }

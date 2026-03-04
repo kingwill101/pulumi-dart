@@ -2,16 +2,15 @@
 enum OsDiskDeleteOption {
   valueDelete("Delete");
 
-  const OsDiskDeleteOption(this.value);
-  final String value;
+  const OsDiskDeleteOption(this.wireValue);
+  final String wireValue;
 
   static OsDiskDeleteOption fromValue(String value) {
     for (final item in OsDiskDeleteOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OsDiskDeleteOption value: $value');
   }
 }
-

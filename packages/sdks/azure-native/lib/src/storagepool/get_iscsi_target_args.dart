@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIscsiTargetArgs {
   /// The name of the Disk Pool.
   final pulumi.Input<String> diskPoolName;
+
   /// The name of the iSCSI Target.
   final pulumi.Input<String> iscsiTargetName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetIscsiTargetArgs {
 
   factory GetIscsiTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetIscsiTargetArgs(
-      diskPoolName: (map['diskPoolName'] as String).input(),
-      iscsiTargetName: (map['iscsiTargetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      diskPoolName: pulumi.Input.fromValue(map['diskPoolName'] as String),
+      iscsiTargetName: pulumi.Input.fromValue(map['iscsiTargetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

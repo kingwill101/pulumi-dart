@@ -14,15 +14,14 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse(
-      values: ((map['values'] as List).cast<String>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

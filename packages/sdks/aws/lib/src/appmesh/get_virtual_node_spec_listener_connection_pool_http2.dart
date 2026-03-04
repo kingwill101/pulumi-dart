@@ -7,20 +7,17 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp2 {
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolHttp2].
   /// [maxRequests] Required.
-  GetVirtualNodeSpecListenerConnectionPoolHttp2({
-    required this.maxRequests,
-  });
+  GetVirtualNodeSpecListenerConnectionPoolHttp2({required this.maxRequests});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRequests': maxRequests,
-    };
+    return <String, dynamic>{'maxRequests': maxRequests};
   }
 
-  factory GetVirtualNodeSpecListenerConnectionPoolHttp2.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerConnectionPoolHttp2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerConnectionPoolHttp2(
-      maxRequests: (map['maxRequests'] as int).input(),
+      maxRequests: pulumi.Input.fromValue(map['maxRequests'] as int),
     );
   }
 }
-

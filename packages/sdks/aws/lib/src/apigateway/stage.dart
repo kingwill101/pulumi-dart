@@ -195,43 +195,61 @@ import 'stage_state.dart';
 class Stage extends pulumi.CustomResource {
   /// Enables access logs for the API stage. See Access Log Settings below.
   late final pulumi.Output<StageAccessLogSettings?> accessLogSettings;
+
   /// ARN
   late final pulumi.Output<String> arn;
+
   /// Whether a cache cluster is enabled for the stage
   late final pulumi.Output<bool?> cacheClusterEnabled;
+
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   late final pulumi.Output<String?> cacheClusterSize;
+
   /// Configuration settings of a canary deployment. See Canary Settings below.
   late final pulumi.Output<StageCanarySettings?> canarySettings;
+
   /// Identifier of a client certificate for the stage.
   late final pulumi.Output<String?> clientCertificateId;
+
   /// ID of the deployment that the stage points to
   late final pulumi.Output<String> deployment;
+
   /// Description of the stage.
   late final pulumi.Output<String?> description;
+
   /// Version of the associated API documentation.
   late final pulumi.Output<String?> documentationVersion;
+
   /// Execution ARN to be used in `lambda_permission`'s `source_arn`
   /// when allowing API Gateway to invoke a Lambda function,
   /// e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
   late final pulumi.Output<String> executionArn;
+
   /// URL to invoke the API pointing to the stage,
   /// e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
   late final pulumi.Output<String> invokeUrl;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the associated REST API
   late final pulumi.Output<String> restApi;
+
   /// Name of the stage
   late final pulumi.Output<String> stageName;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Map that defines the stage variables.
   late final pulumi.Output<Map<String, String>?> variables;
+
   /// ARN of the WebAcl associated with the Stage.
   late final pulumi.Output<String> webAclArn;
+
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> xrayTracingEnabled;
 
@@ -239,43 +257,38 @@ class Stage extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Stage]. {@macro pulumi_apigateway_stage_stage_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Stage(
-    String name, {
-    StageArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:apigateway/stage:Stage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings');
-    this.arn = registerOutput<String>('arn');
-    this.cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
-    this.cacheClusterSize = registerOutput<String?>('cacheClusterSize');
-    this.canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
-    this.clientCertificateId = registerOutput<String?>('clientCertificateId');
-    this.deployment = registerOutput<String>('deployment');
-    this.description = registerOutput<String?>('description');
-    this.documentationVersion = registerOutput<String?>('documentationVersion');
-    this.executionArn = registerOutput<String>('executionArn');
-    this.invokeUrl = registerOutput<String>('invokeUrl');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.stageName = registerOutput<String>('stageName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.variables = registerOutput<Map<String, String>?>('variables');
-    this.webAclArn = registerOutput<String>('webAclArn');
-    this.xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
+  Stage(String name, {StageArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:apigateway/stage:Stage',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessLogSettings = registerOutput<StageAccessLogSettings?>(
+      'accessLogSettings',
+    );
+    arn = registerOutput<String>('arn');
+    cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
+    cacheClusterSize = registerOutput<String?>('cacheClusterSize');
+    canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
+    clientCertificateId = registerOutput<String?>('clientCertificateId');
+    deployment = registerOutput<String>('deployment');
+    description = registerOutput<String?>('description');
+    documentationVersion = registerOutput<String?>('documentationVersion');
+    executionArn = registerOutput<String>('executionArn');
+    invokeUrl = registerOutput<String>('invokeUrl');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    stageName = registerOutput<String>('stageName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    variables = registerOutput<Map<String, String>?>('variables');
+    webAclArn = registerOutput<String>('webAclArn');
+    xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
   }
 
   /// Gets an existing [Stage] resource's state with the given [name] and [id].
-  static Stage get(
-    String name,
-    pulumi.Input<String> id, {
-    StageState? state,
-  }) {
+  static Stage get(String name, pulumi.Input<String> id, {StageState? state}) {
     return Stage._get(
       name,
       state: state?.toMap(),
@@ -288,29 +301,31 @@ class Stage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/stage:Stage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings');
-    this.arn = registerOutput<String>('arn');
-    this.cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
-    this.cacheClusterSize = registerOutput<String?>('cacheClusterSize');
-    this.canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
-    this.clientCertificateId = registerOutput<String?>('clientCertificateId');
-    this.deployment = registerOutput<String>('deployment');
-    this.description = registerOutput<String?>('description');
-    this.documentationVersion = registerOutput<String?>('documentationVersion');
-    this.executionArn = registerOutput<String>('executionArn');
-    this.invokeUrl = registerOutput<String>('invokeUrl');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.stageName = registerOutput<String>('stageName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.variables = registerOutput<Map<String, String>?>('variables');
-    this.webAclArn = registerOutput<String>('webAclArn');
-    this.xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
+         'aws:apigateway/stage:Stage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLogSettings = registerOutput<StageAccessLogSettings?>(
+      'accessLogSettings',
+    );
+    arn = registerOutput<String>('arn');
+    cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
+    cacheClusterSize = registerOutput<String?>('cacheClusterSize');
+    canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
+    clientCertificateId = registerOutput<String?>('clientCertificateId');
+    deployment = registerOutput<String>('deployment');
+    description = registerOutput<String?>('description');
+    documentationVersion = registerOutput<String?>('documentationVersion');
+    executionArn = registerOutput<String>('executionArn');
+    invokeUrl = registerOutput<String>('invokeUrl');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    stageName = registerOutput<String>('stageName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    variables = registerOutput<Map<String, String>?>('variables');
+    webAclArn = registerOutput<String>('webAclArn');
+    xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
   }
 }

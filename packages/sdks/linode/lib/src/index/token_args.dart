@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenArgs {
   /// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
   final pulumi.Input<String>? expiry;
+
   /// A label for the Token.
   final pulumi.Input<String>? label;
+
   /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
   final pulumi.Input<String> scopes;
 
@@ -18,11 +20,7 @@ class TokenArgs {
   /// [expiry] When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
   /// [label] A label for the Token.
   /// [scopes] The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
-  TokenArgs({
-    this.expiry,
-    this.label,
-    required this.scopes,
-  });
+  TokenArgs({this.expiry, this.label, required this.scopes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      scopes: (map['scopes'] as String).input(),
+      expiry: (() {
+        final guardedValue = map['expiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: pulumi.Input.fromValue(map['scopes'] as String),
     );
   }
 }
-

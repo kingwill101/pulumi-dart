@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomainOwnershipIdentifier.
 class GetDomainOwnershipIdentifierResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Ownership Id.
   final String? ownershipId;
+
   /// Resource type.
   final String type;
 
@@ -47,11 +51,18 @@ class GetDomainOwnershipIdentifierResult {
     return GetDomainOwnershipIdentifierResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      ownershipId: map['ownershipId'] == null ? null : map['ownershipId']! as String,
+      ownershipId: (() {
+        final guardedValue = map['ownershipId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -6,6 +6,7 @@ class GetBackendServiceLocalityLbPolicyCustomPolicy {
   /// An optional, arbitrary JSON object with configuration data, understood
   /// by a locally installed custom policy implementation.
   final pulumi.Input<String> data;
+
   /// The name of the Backend Service.
   ///
   /// - - -
@@ -20,17 +21,15 @@ class GetBackendServiceLocalityLbPolicyCustomPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': data,
-      'name': name,
-    };
+    return <String, dynamic>{'data': data, 'name': name};
   }
 
-  factory GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackendServiceLocalityLbPolicyCustomPolicy(
-      data: (map['data'] as String).input(),
-      name: (map['name'] as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

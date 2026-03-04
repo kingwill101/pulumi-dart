@@ -102,16 +102,22 @@ import 'thing_type_state.dart';
 class ThingType extends pulumi.CustomResource {
   /// The ARN of the created AWS IoT Thing Type.
   late final pulumi.Output<String> arn;
+
   /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
   late final pulumi.Output<bool?> deprecated;
+
   /// The name of the thing type.
   late final pulumi.Output<String> name;
+
   /// , Configuration block that can contain the following properties of the thing type:
   late final pulumi.Output<ThingTypeProperties?> properties;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -124,18 +130,18 @@ class ThingType extends pulumi.CustomResource {
     ThingTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/thingType:ThingType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.deprecated = registerOutput<bool?>('deprecated');
+         'aws:iot/thingType:ThingType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    deprecated = registerOutput<bool?>('deprecated');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ThingTypeProperties?>('properties');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    properties = registerOutput<ThingTypeProperties?>('properties');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ThingType] resource's state with the given [name] and [id].
@@ -156,17 +162,17 @@ class ThingType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/thingType:ThingType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.deprecated = registerOutput<bool?>('deprecated');
+         'aws:iot/thingType:ThingType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    deprecated = registerOutput<bool?>('deprecated');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ThingTypeProperties?>('properties');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    properties = registerOutput<ThingTypeProperties?>('properties');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

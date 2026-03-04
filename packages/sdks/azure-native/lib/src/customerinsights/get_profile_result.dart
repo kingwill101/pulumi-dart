@@ -8,46 +8,67 @@ import 'strong_id_response.dart';
 class GetProfileResult {
   /// The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.
   final String? apiEntitySetName;
+
   /// The attributes for the Type.
   final Map<String, List<String>>? attributes;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Localized descriptions for the property.
   final Map<String, String>? description;
+
   /// Localized display names for the property.
   final Map<String, String>? displayName;
+
   /// Type of entity.
   final String? entityType;
+
   /// The properties of the Profile.
   final List<PropertyDefinitionResponse>? fields;
+
   /// Resource ID.
   final String id;
+
   /// The instance count.
   final int? instancesCount;
+
   /// Large Image associated with the Property or EntityType.
   final String? largeImage;
+
   /// The last changed time for the type definition.
   final String lastChangedUtc;
+
   /// Any custom localized attributes for the Type.
   final Map<String, Map<String, String>>? localizedAttributes;
+
   /// Medium Image associated with the Property or EntityType.
   final String? mediumImage;
+
   /// Resource name.
   final String name;
+
   /// Provisioning state.
   final String provisioningState;
+
   /// The schema org link. This helps ACI identify and suggest semantic models.
   final String? schemaItemTypeLink;
+
   /// Small Image associated with the Property or EntityType.
   final String? smallImage;
+
   /// The strong IDs.
   final List<StrongIdResponse>? strongIds;
+
   /// The hub name.
   final String tenantId;
+
   /// The timestamp property name. Represents the time when the interaction or profile update happened.
   final String? timestampFieldName;
+
   /// Resource type.
   final String type;
+
   /// The name of the entity.
   final String? typeName;
 
@@ -107,7 +128,14 @@ class GetProfileResult {
       'description': ?description,
       'displayName': ?displayName,
       'entityType': ?entityType,
-      'fields': ?fields == null ? null : pulumi.Input.encodeList<PropertyDefinitionResponse, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'fields': ?(() {
+        final guardedValue = fields;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PropertyDefinitionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'instancesCount': ?instancesCount,
       'largeImage': ?largeImage,
@@ -118,7 +146,14 @@ class GetProfileResult {
       'provisioningState': provisioningState,
       'schemaItemTypeLink': ?schemaItemTypeLink,
       'smallImage': ?smallImage,
-      'strongIds': ?strongIds == null ? null : pulumi.Input.encodeList<StrongIdResponse, Map<String, dynamic>>(strongIds!, (value) => value.toMap()),
+      'strongIds': ?(() {
+        final guardedValue = strongIds;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<StrongIdResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'tenantId': tenantId,
       'timestampFieldName': ?timestampFieldName,
       'type': type,
@@ -128,29 +163,97 @@ class GetProfileResult {
 
   factory GetProfileResult.fromMap(Map<String, dynamic> map) {
     return GetProfileResult(
-      apiEntitySetName: map['apiEntitySetName'] == null ? null : map['apiEntitySetName']! as String,
-      attributes: map['attributes'] == null ? null : (map['attributes']! as Map).cast<String, List<String>>(),
+      apiEntitySetName: (() {
+        final guardedValue = map['apiEntitySetName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, List<String>>();
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : (map['description']! as Map).cast<String, String>(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as Map).cast<String, String>(),
-      entityType: map['entityType'] == null ? null : map['entityType']! as String,
-      fields: map['fields'] == null ? null : pulumi.Input.decodeList<PropertyDefinitionResponse>(map['fields']!, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      entityType: (() {
+        final guardedValue = map['entityType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fields: (() {
+        final guardedValue = map['fields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PropertyDefinitionResponse>(
+          guardedValue,
+          (value) => PropertyDefinitionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      instancesCount: map['instancesCount'] == null ? null : map['instancesCount']! as int,
-      largeImage: map['largeImage'] == null ? null : map['largeImage']! as String,
+      instancesCount: (() {
+        final guardedValue = map['instancesCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      largeImage: (() {
+        final guardedValue = map['largeImage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       lastChangedUtc: map['lastChangedUtc'] as String,
-      localizedAttributes: map['localizedAttributes'] == null ? null : (map['localizedAttributes']! as Map).cast<String, Map<String, String>>(),
-      mediumImage: map['mediumImage'] == null ? null : map['mediumImage']! as String,
+      localizedAttributes: (() {
+        final guardedValue = map['localizedAttributes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, Map<String, String>>();
+      })(),
+      mediumImage: (() {
+        final guardedValue = map['mediumImage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      schemaItemTypeLink: map['schemaItemTypeLink'] == null ? null : map['schemaItemTypeLink']! as String,
-      smallImage: map['smallImage'] == null ? null : map['smallImage']! as String,
-      strongIds: map['strongIds'] == null ? null : pulumi.Input.decodeList<StrongIdResponse>(map['strongIds']!, (value) => StrongIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      schemaItemTypeLink: (() {
+        final guardedValue = map['schemaItemTypeLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      smallImage: (() {
+        final guardedValue = map['smallImage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      strongIds: (() {
+        final guardedValue = map['strongIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<StrongIdResponse>(
+          guardedValue,
+          (value) =>
+              StrongIdResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       tenantId: map['tenantId'] as String,
-      timestampFieldName: map['timestampFieldName'] == null ? null : map['timestampFieldName']! as String,
+      timestampFieldName: (() {
+        final guardedValue = map['timestampFieldName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
-      typeName: map['typeName'] == null ? null : map['typeName']! as String,
+      typeName: (() {
+        final guardedValue = map['typeName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

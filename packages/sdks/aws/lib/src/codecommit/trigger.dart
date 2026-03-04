@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_args.dart';
 import 'trigger_state.dart';
-import 'trigger_trigger.dart';
 
 /// Provides a CodeCommit Trigger Resource.
 ///
@@ -164,12 +163,15 @@ import 'trigger_trigger.dart';
 class Trigger extends pulumi.CustomResource {
   /// System-generated unique identifier.
   late final pulumi.Output<String> configurationId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The name for the repository. This needs to be less than 100 characters.
   late final pulumi.Output<String> repositoryName;
+
   /// The name of the trigger.
-  late final pulumi.Output<List<TriggerTrigger>> triggers;
+  late final pulumi.Output<List<Map<String, dynamic>>> triggers;
 
   /// Creates a new [Trigger].
   /// [name] The Pulumi resource name.
@@ -180,15 +182,15 @@ class Trigger extends pulumi.CustomResource {
     TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codecommit/trigger:Trigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationId = registerOutput<String>('configurationId');
-    this.region = registerOutput<String>('region');
-    this.repositoryName = registerOutput<String>('repositoryName');
-    this.triggers = registerOutput<List<TriggerTrigger>>('triggers');
+         'aws:codecommit/trigger:Trigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationId = registerOutput<String>('configurationId');
+    region = registerOutput<String>('region');
+    repositoryName = registerOutput<String>('repositoryName');
+    triggers = registerOutput<List<Map<String, dynamic>>>('triggers');
   }
 
   /// Gets an existing [Trigger] resource's state with the given [name] and [id].
@@ -209,14 +211,14 @@ class Trigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codecommit/trigger:Trigger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationId = registerOutput<String>('configurationId');
-    this.region = registerOutput<String>('region');
-    this.repositoryName = registerOutput<String>('repositoryName');
-    this.triggers = registerOutput<List<TriggerTrigger>>('triggers');
+         'aws:codecommit/trigger:Trigger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationId = registerOutput<String>('configurationId');
+    region = registerOutput<String>('region');
+    repositoryName = registerOutput<String>('repositoryName');
+    triggers = registerOutput<List<Map<String, dynamic>>>('triggers');
   }
 }

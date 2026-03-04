@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryCacheRuleArgs {
   /// The ID of the container registry where the cache rule should apply. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerRegistryId;
+
   /// Specifies the name of the Container Registry Cache Rule. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
 
@@ -29,9 +30,10 @@ class GetRegistryCacheRuleArgs {
 
   factory GetRegistryCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryCacheRuleArgs(
-      containerRegistryId: (map['containerRegistryId'] as String).input(),
-      name: (map['name'] as String).input(),
+      containerRegistryId: pulumi.Input.fromValue(
+        map['containerRegistryId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'get_restorable_database_accounts_account.dart';
 class GetRestorableDatabaseAccountsResult {
   /// One or more `accounts` blocks as defined below.
   final List<GetRestorableDatabaseAccountsAccount> accounts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The location of the regional Cosmos DB Restorable Database Account.
   final String location;
   final String name;
@@ -27,20 +29,30 @@ class GetRestorableDatabaseAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetRestorableDatabaseAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts':
+          pulumi.Input.encodeList<
+            GetRestorableDatabaseAccountsAccount,
+            Map<String, dynamic>
+          >(accounts, (value) => value.toMap()),
       'id': id,
       'location': location,
       'name': name,
     };
   }
 
-  factory GetRestorableDatabaseAccountsResult.fromMap(Map<String, dynamic> map) {
+  factory GetRestorableDatabaseAccountsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRestorableDatabaseAccountsResult(
-      accounts: pulumi.Input.decodeList<GetRestorableDatabaseAccountsAccount>(map['accounts'], (value) => GetRestorableDatabaseAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetRestorableDatabaseAccountsAccount>(
+        map['accounts']!,
+        (value) => GetRestorableDatabaseAccountsAccount.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
     );
   }
 }
-

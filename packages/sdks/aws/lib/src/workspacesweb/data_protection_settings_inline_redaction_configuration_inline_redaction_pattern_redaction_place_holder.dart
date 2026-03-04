@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder {
   /// The redaction placeholder text that will replace the redacted text in session for the custom text redaction placeholder type.
   final pulumi.Input<String>? redactionPlaceHolderText;
+
   /// The redaction placeholder type that will replace the redacted text in session. Currently, only `CustomText` is supported.
   final pulumi.Input<String> redactionPlaceHolderType;
 
@@ -23,11 +24,18 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRe
     };
   }
 
-  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap(Map<String, dynamic> map) {
+  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder(
-      redactionPlaceHolderText: map['redactionPlaceHolderText'] == null ? null : ((map['redactionPlaceHolderText'] as String).input()).input(),
-      redactionPlaceHolderType: (map['redactionPlaceHolderType'] as String).input(),
+      redactionPlaceHolderText: (() {
+        final guardedValue = map['redactionPlaceHolderText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      redactionPlaceHolderType: pulumi.Input.fromValue(
+        map['redactionPlaceHolderType'] as String,
+      ),
     );
   }
 }
-

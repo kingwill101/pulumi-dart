@@ -31,10 +31,9 @@ class GetOrganizationJobTriggerArgs {
 
   factory GetOrganizationJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationJobTriggerArgs(
-      jobTriggerId: (map['jobTriggerId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      jobTriggerId: pulumi.Input.fromValue(map['jobTriggerId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

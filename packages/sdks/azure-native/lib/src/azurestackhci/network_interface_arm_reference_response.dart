@@ -9,20 +9,21 @@ class NetworkInterfaceArmReferenceResponse {
 
   /// Creates a new [NetworkInterfaceArmReferenceResponse].
   /// [id] The Azure Resource ID for a Network Interface.
-  NetworkInterfaceArmReferenceResponse({
-    this.id,
-  });
+  NetworkInterfaceArmReferenceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory NetworkInterfaceArmReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceArmReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceArmReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

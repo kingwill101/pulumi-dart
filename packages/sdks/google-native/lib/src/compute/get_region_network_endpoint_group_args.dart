@@ -31,10 +31,15 @@ class GetRegionNetworkEndpointGroupArgs {
 
   factory GetRegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupArgs(
-      networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      networkEndpointGroup: pulumi.Input.fromValue(
+        map['networkEndpointGroup'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

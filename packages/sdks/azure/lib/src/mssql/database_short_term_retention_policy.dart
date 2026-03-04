@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseShortTermRetentionPolicy {
   /// The hours between each differential backup. This is only applicable to live databases but not dropped databases. Value has to be `12` or `24`. Defaults to `12` hours.
   final pulumi.Input<int>? backupIntervalInHours;
+
   /// Point In Time Restore configuration. Value has to be between `1` and `35`.
   final pulumi.Input<int> retentionDays;
 
@@ -25,9 +26,12 @@ class DatabaseShortTermRetentionPolicy {
 
   factory DatabaseShortTermRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseShortTermRetentionPolicy(
-      backupIntervalInHours: map['backupIntervalInHours'] == null ? null : (map['backupIntervalInHours']! as int).input(),
-      retentionDays: (map['retentionDays'] as int).input(),
+      backupIntervalInHours: (() {
+        final guardedValue = map['backupIntervalInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
     );
   }
 }
-

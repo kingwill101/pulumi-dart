@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DriverSchedulingConfigResponse {
   /// The amount of memory in MB the driver is requesting.
   final pulumi.Input<int> memoryMb;
+
   /// The number of vCPUs the driver is requesting.
   final pulumi.Input<int> vcores;
 
@@ -18,17 +19,13 @@ class DriverSchedulingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'memoryMb': memoryMb,
-      'vcores': vcores,
-    };
+    return <String, dynamic>{'memoryMb': memoryMb, 'vcores': vcores};
   }
 
   factory DriverSchedulingConfigResponse.fromMap(Map<String, dynamic> map) {
     return DriverSchedulingConfigResponse(
-      memoryMb: (map['memoryMb'] as int).input(),
-      vcores: (map['vcores'] as int).input(),
+      memoryMb: pulumi.Input.fromValue(map['memoryMb'] as int),
+      vcores: pulumi.Input.fromValue(map['vcores'] as int),
     );
   }
 }
-

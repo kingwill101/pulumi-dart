@@ -352,20 +352,29 @@ import 'linked_custom_service_state.dart';
 class LinkedCustomService extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// An `integration_runtime` block as defined below.
-  late final pulumi.Output<LinkedCustomServiceIntegrationRuntime?> integrationRuntime;
+  late final pulumi.Output<LinkedCustomServiceIntegrationRuntime?>
+  integrationRuntime;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The type of data stores that will be connected to Data Factory. For full list of supported data stores, please refer to [Azure Data Factory connector](https://docs.microsoft.com/azure/data-factory/connector-overview). Please refer to Microsoft.DataFactory factories/linkedservices for the type values syntax. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
+
   /// A JSON object that contains the properties of the Data Factory Linked Service. Refer to
   /// datafactory/models.go for the shape of the expected JSON. For example, the JSON object for `AzureBlobStorage`-typed Linked Service will be unmarshaled into `AzureBlobStorageLinkedServiceTypeProperties struct`.
   late final pulumi.Output<String> typePropertiesJson;
@@ -379,20 +388,24 @@ class LinkedCustomService extends pulumi.CustomResource {
     LinkedCustomServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedCustomService:LinkedCustomService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>('integrationRuntime');
+         'azure:datafactory/linkedCustomService:LinkedCustomService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>(
+      'integrationRuntime',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.type = registerOutput<String>('type');
-    this.typePropertiesJson = registerOutput<String>('typePropertiesJson');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }
 
   /// Gets an existing [LinkedCustomService] resource's state with the given [name] and [id].
@@ -413,19 +426,23 @@ class LinkedCustomService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedCustomService:LinkedCustomService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>('integrationRuntime');
+         'azure:datafactory/linkedCustomService:LinkedCustomService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>(
+      'integrationRuntime',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.type = registerOutput<String>('type');
-    this.typePropertiesJson = registerOutput<String>('typePropertiesJson');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }
 }

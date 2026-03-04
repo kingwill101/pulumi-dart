@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpGroupProperties {
   /// IP Address type.
   final pulumi.Input<String>? ipAddressType;
+
   /// List of IP Prefixes.
   final pulumi.Input<List<String>>? ipPrefixes;
+
   /// IP Group name.
   final pulumi.Input<String>? name;
 
@@ -15,11 +17,7 @@ class IpGroupProperties {
   /// [ipAddressType] IP Address type.
   /// [ipPrefixes] List of IP Prefixes.
   /// [name] IP Group name.
-  IpGroupProperties({
-    this.ipAddressType,
-    this.ipPrefixes,
-    this.name,
-  });
+  IpGroupProperties({this.ipAddressType, this.ipPrefixes, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class IpGroupProperties {
 
   factory IpGroupProperties.fromMap(Map<String, dynamic> map) {
     return IpGroupProperties(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
-      ipPrefixes: map['ipPrefixes'] == null ? null : ((map['ipPrefixes']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipPrefixes: (() {
+        final guardedValue = map['ipPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

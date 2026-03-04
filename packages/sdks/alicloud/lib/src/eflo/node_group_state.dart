@@ -8,36 +8,52 @@ import 'node_group_node.dart';
 class NodeGroupState {
   /// Az
   final pulumi.Input<String>? az;
+
   /// Cluster ID
   final pulumi.Input<String>? clusterId;
+
   /// Create time
   final pulumi.Input<String>? createTime;
+
   /// Whether to allow skipping failed nodes. Default value: False
   final pulumi.Input<bool>? ignoreFailedNodeTasks;
+
   /// Image ID. You can modify the image ID since v1.252.0.
   final pulumi.Input<String>? imageId;
+
   /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
   final pulumi.Input<List<NodeGroupIpAllocationPolicy>>? ipAllocationPolicies;
+
   /// key pair name
   final pulumi.Input<String>? keyPairName;
+
   /// Login Password
   final pulumi.Input<String>? loginPassword;
+
   /// Machine type
   final pulumi.Input<String>? machineType;
+
   /// NodeGroupDescription
   final pulumi.Input<String>? nodeGroupDescription;
+
   /// The first ID of the resource
   final pulumi.Input<String>? nodeGroupId;
+
   /// The name of the resource
   final pulumi.Input<String>? nodeGroupName;
+
   /// Node List See `nodes` below.
   final pulumi.Input<List<NodeGroupNode>>? nodes;
+
   /// Custom Data
   final pulumi.Input<String>? userData;
+
   /// Cluster subnet list
   final pulumi.Input<List<String>>? vpdSubnets;
+
   /// Zone ID of the switch
   final pulumi.Input<String>? vswitchZoneId;
+
   /// Zone ID
   final pulumi.Input<String>? zoneId;
 
@@ -86,14 +102,36 @@ class NodeGroupState {
       'createTime': ?createTime,
       'ignoreFailedNodeTasks': ?ignoreFailedNodeTasks,
       'imageId': ?imageId,
-      'ipAllocationPolicies': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupIpAllocationPolicy>, List<Map<String, dynamic>>>(ipAllocationPolicies, (value) => pulumi.Input.encodeList<NodeGroupIpAllocationPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipAllocationPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeGroupIpAllocationPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            ipAllocationPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodeGroupIpAllocationPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'keyPairName': ?keyPairName,
       'loginPassword': ?loginPassword,
       'machineType': ?machineType,
       'nodeGroupDescription': ?nodeGroupDescription,
       'nodeGroupId': ?nodeGroupId,
       'nodeGroupName': ?nodeGroupName,
-      'nodes': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<NodeGroupNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeGroupNode>,
+            List<Map<String, dynamic>>
+          >(
+            nodes,
+            (value) =>
+                pulumi.Input.encodeList<NodeGroupNode, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'userData': ?userData,
       'vpdSubnets': ?vpdSubnets,
       'vswitchZoneId': ?vswitchZoneId,
@@ -103,24 +141,104 @@ class NodeGroupState {
 
   factory NodeGroupState.fromMap(Map<String, dynamic> map) {
     return NodeGroupState(
-      az: map['az'] == null ? null : (map['az']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      ignoreFailedNodeTasks: map['ignoreFailedNodeTasks'] == null ? null : (map['ignoreFailedNodeTasks']! as bool).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      ipAllocationPolicies: map['ipAllocationPolicies'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicy>(map['ipAllocationPolicies']!, (value) => NodeGroupIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword']! as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
-      nodeGroupDescription: map['nodeGroupDescription'] == null ? null : (map['nodeGroupDescription']! as String).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<NodeGroupNode>(map['nodes']!, (value) => NodeGroupNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
-      vpdSubnets: map['vpdSubnets'] == null ? null : ((map['vpdSubnets']! as List).cast<String>()).input(),
-      vswitchZoneId: map['vswitchZoneId'] == null ? null : (map['vswitchZoneId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      az: (() {
+        final guardedValue = map['az'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ignoreFailedNodeTasks: (() {
+        final guardedValue = map['ignoreFailedNodeTasks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAllocationPolicies: (() {
+        final guardedValue = map['ipAllocationPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeGroupIpAllocationPolicy>(
+            guardedValue,
+            (value) => NodeGroupIpAllocationPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginPassword: (() {
+        final guardedValue = map['loginPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupDescription: (() {
+        final guardedValue = map['nodeGroupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupId: (() {
+        final guardedValue = map['nodeGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupName: (() {
+        final guardedValue = map['nodeGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodes: (() {
+        final guardedValue = map['nodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeGroupNode>(
+            guardedValue,
+            (value) =>
+                NodeGroupNode.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpdSubnets: (() {
+        final guardedValue = map['vpdSubnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vswitchZoneId: (() {
+        final guardedValue = map['vswitchZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

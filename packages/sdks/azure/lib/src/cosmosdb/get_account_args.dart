@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// Specifies the name of the CosmosDB Account.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group in which the CosmosDB Account resides.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [name] Specifies the name of the CosmosDB Account.
   /// [resourceGroupName] Specifies the name of the resource group in which the CosmosDB Account resides.
-  GetAccountArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetAccountArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -6,31 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Office365Source {
   /// The groups containing all the users. Type: array of strings (or Expression with resultType array of strings).
   final pulumi.Input<dynamic>? allowedGroups;
-  /// The Column to apply the <paramref name="StartTime"/> and <paramref name="EndTime"/>. Type: string (or Expression with resultType string).
+
+  /// The Column to apply the &lt;paramref name="StartTime"/&gt; and &lt;paramref name="EndTime"/&gt;. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? dateFilterColumn;
+
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
+
   /// End time of the requested range for this dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? endTime;
+
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
+
   /// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). itemType: OutputColumn. Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
   final pulumi.Input<dynamic>? outputColumns;
+
   /// Source retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sourceRetryCount;
+
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sourceRetryWait;
+
   /// Start time of the requested range for this dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? startTime;
+
   /// Copy source type.
   /// Expected value is 'Office365Source'.
   final pulumi.Input<String> type;
+
   /// The user scope uri. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userScopeFilterUri;
 
   /// Creates a new [Office365Source].
   /// [allowedGroups] The groups containing all the users. Type: array of strings (or Expression with resultType array of strings).
-  /// [dateFilterColumn] The Column to apply the <paramref name="StartTime"/> and <paramref name="EndTime"/>. Type: string (or Expression with resultType string).
+  /// [dateFilterColumn] The Column to apply the &lt;paramref name="StartTime"/&gt; and &lt;paramref name="EndTime"/&gt;. Type: string (or Expression with resultType string).
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   /// [endTime] End time of the requested range for this dataset. Type: string (or Expression with resultType string).
   /// [maxConcurrentConnections] The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -72,18 +82,57 @@ class Office365Source {
 
   factory Office365Source.fromMap(Map<String, dynamic> map) {
     return Office365Source(
-      allowedGroups: map['allowedGroups'] == null ? null : (map['allowedGroups']!).input(),
-      dateFilterColumn: map['dateFilterColumn'] == null ? null : (map['dateFilterColumn']!).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']!).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
-      outputColumns: map['outputColumns'] == null ? null : (map['outputColumns']!).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']!).input(),
-      type: (map['type'] as String).input(),
-      userScopeFilterUri: map['userScopeFilterUri'] == null ? null : (map['userScopeFilterUri']!).input(),
+      allowedGroups: (() {
+        final guardedValue = map['allowedGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      dateFilterColumn: (() {
+        final guardedValue = map['dateFilterColumn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      disableMetricsCollection: (() {
+        final guardedValue = map['disableMetricsCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      maxConcurrentConnections: (() {
+        final guardedValue = map['maxConcurrentConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      outputColumns: (() {
+        final guardedValue = map['outputColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      sourceRetryCount: (() {
+        final guardedValue = map['sourceRetryCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      sourceRetryWait: (() {
+        final guardedValue = map['sourceRetryWait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userScopeFilterUri: (() {
+        final guardedValue = map['userScopeFilterUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

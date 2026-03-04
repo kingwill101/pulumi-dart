@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesReferenceResponse {
   /// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
   final pulumi.Input<String>? apiGroup;
+
   /// Kind is the type of resource being referenced
   final pulumi.Input<String> kind;
+
   /// Name is the name of resource being referenced
   final pulumi.Input<String> name;
+
   /// Namespace is the namespace of the resource being referenced. This field is required when the resource has a namespace.
   final pulumi.Input<String>? namespace;
 
@@ -36,11 +39,18 @@ class KubernetesReferenceResponse {
 
   factory KubernetesReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesReferenceResponse(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      apiGroup: (() {
+        final guardedValue = map['apiGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

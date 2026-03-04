@@ -10,10 +10,13 @@ class GetAddressBooksArgs {
   /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
   /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
   final pulumi.Input<String>? groupType;
+
   /// A list of Address Book IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results Address Book name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -40,11 +43,26 @@ class GetAddressBooksArgs {
 
   factory GetAddressBooksArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressBooksArgs(
-      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      groupType: (() {
+        final guardedValue = map['groupType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

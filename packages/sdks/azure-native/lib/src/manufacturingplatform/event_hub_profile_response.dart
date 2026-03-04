@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubProfileResponse {
   /// Resource Id of Adx Instance
   final pulumi.Input<String> adxInstanceId;
+
   /// Host Name
   final pulumi.Input<String> hostName;
 
@@ -26,9 +27,8 @@ class EventHubProfileResponse {
 
   factory EventHubProfileResponse.fromMap(Map<String, dynamic> map) {
     return EventHubProfileResponse(
-      adxInstanceId: (map['adxInstanceId'] as String).input(),
-      hostName: (map['hostName'] as String).input(),
+      adxInstanceId: pulumi.Input.fromValue(map['adxInstanceId'] as String),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
     );
   }
 }
-

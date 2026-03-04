@@ -6,7 +6,7 @@ import 'mount_point_state.dart';
 ///
 /// For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 ///
-/// > **NOTE:** Available since v1.140.0.
+/// &gt; **NOTE:** Available since v1.140.0.
 ///
 /// ## Example Usage
 ///
@@ -350,24 +350,34 @@ import 'mount_point_state.dart';
 class MountPoint extends pulumi.CustomResource {
   /// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
   late final pulumi.Output<String> accessGroupId;
+
   /// The mount point alias prefix, which specifies the mount point alias prefix.
   late final pulumi.Output<String?> aliasPrefix;
+
   /// The creation time of the Mount point resource.
   late final pulumi.Output<String> createTime;
+
   /// The description of the Mount point.  No more than 32 characters in length.
   late final pulumi.Output<String?> description;
+
   /// Unique file system identifier, used to retrieve specified file system resources.
   late final pulumi.Output<String> fileSystemId;
+
   /// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
   late final pulumi.Output<String> mountPointId;
+
   /// The network type of the Mount point.  Only VPC (VPC) is supported.
   late final pulumi.Output<String> networkType;
+
   /// (Available since v1.242.0) The region ID of the Mount Point.
   late final pulumi.Output<String> regionId;
+
   /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
   late final pulumi.Output<String> vpcId;
+
   /// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
   late final pulumi.Output<String> vswitchId;
 
@@ -380,22 +390,22 @@ class MountPoint extends pulumi.CustomResource {
     MountPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dfs/mountPoint:MountPoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupId = registerOutput<String>('accessGroupId');
-    this.aliasPrefix = registerOutput<String?>('aliasPrefix');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountPointId = registerOutput<String>('mountPointId');
-    this.networkType = registerOutput<String>('networkType');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:dfs/mountPoint:MountPoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupId = registerOutput<String>('accessGroupId');
+    aliasPrefix = registerOutput<String?>('aliasPrefix');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountPointId = registerOutput<String>('mountPointId');
+    networkType = registerOutput<String>('networkType');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [MountPoint] resource's state with the given [name] and [id].
@@ -416,21 +426,21 @@ class MountPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dfs/mountPoint:MountPoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupId = registerOutput<String>('accessGroupId');
-    this.aliasPrefix = registerOutput<String?>('aliasPrefix');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountPointId = registerOutput<String>('mountPointId');
-    this.networkType = registerOutput<String>('networkType');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:dfs/mountPoint:MountPoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupId = registerOutput<String>('accessGroupId');
+    aliasPrefix = registerOutput<String?>('aliasPrefix');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountPointId = registerOutput<String>('mountPointId');
+    networkType = registerOutput<String>('networkType');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

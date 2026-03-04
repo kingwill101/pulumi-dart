@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScimServerCredentialArgs {
   /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
   final pulumi.Input<String>? credentialSecretFile;
+
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
+
   /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
   final pulumi.Input<String>? status;
 
@@ -34,10 +36,17 @@ class ScimServerCredentialArgs {
 
   factory ScimServerCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialArgs(
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile']! as String).input(),
-      directoryId: (map['directoryId'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      credentialSecretFile: (() {
+        final guardedValue = map['credentialSecretFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

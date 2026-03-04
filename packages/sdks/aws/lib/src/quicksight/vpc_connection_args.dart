@@ -10,23 +10,31 @@ import 'vpc_connection_timeouts.dart';
 class VpcConnectionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// A list of IP addresses of DNS resolver endpoints for the VPC connection.
   final pulumi.Input<List<String>>? dnsResolvers;
+
   /// The display name for the VPC connection.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IAM role to associate with the VPC connection.
   final pulumi.Input<String> roleArn;
+
   /// A list of security group IDs for the VPC connection.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// A list of subnet IDs for the VPC connection.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>> subnetIds;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcConnectionTimeouts>? timeouts;
+
   /// The ID of the VPC connection.
   final pulumi.Input<String> vpcConnectionId;
 
@@ -64,24 +72,61 @@ class VpcConnectionArgs {
       'securityGroupIds': securityGroupIds,
       'subnetIds': subnetIds,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<VpcConnectionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpcConnectionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcConnectionId': vpcConnectionId,
     };
   }
 
   factory VpcConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcConnectionArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      dnsResolvers: map['dnsResolvers'] == null ? null : (((map['dnsResolvers'] as List).cast<String>()).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((VpcConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcConnectionId: (map['vpcConnectionId'] as String).input(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsResolvers: (() {
+        final guardedValue = map['dnsResolvers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VpcConnectionTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcConnectionId: pulumi.Input.fromValue(map['vpcConnectionId'] as String),
     );
   }
 }
-

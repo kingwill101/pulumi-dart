@@ -3,16 +3,17 @@ enum RegionInstanceGroupManagerTargetSizeUnit {
   instance("INSTANCE"),
   vcpu("VCPU");
 
-  const RegionInstanceGroupManagerTargetSizeUnit(this.value);
-  final String value;
+  const RegionInstanceGroupManagerTargetSizeUnit(this.wireValue);
+  final String wireValue;
 
   static RegionInstanceGroupManagerTargetSizeUnit fromValue(String value) {
     for (final item in RegionInstanceGroupManagerTargetSizeUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionInstanceGroupManagerTargetSizeUnit value: $value');
+    throw ArgumentError(
+      'Unknown RegionInstanceGroupManagerTargetSizeUnit value: $value',
+    );
   }
 }
-

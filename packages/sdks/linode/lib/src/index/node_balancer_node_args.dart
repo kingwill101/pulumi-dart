@@ -11,16 +11,22 @@ class NodeBalancerNodeArgs {
   ///
   /// - - -
   final pulumi.Input<String> address;
+
   /// The ID of the NodeBalancerConfig to access.
   final pulumi.Input<int> configId;
+
   /// The label of the Linode NodeBalancer Node. This is for display purposes only.
   final pulumi.Input<String> label;
+
   /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
   final pulumi.Input<String>? mode;
+
   /// The ID of the NodeBalancer to access.
   final pulumi.Input<int> nodebalancerId;
+
   /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
   final pulumi.Input<int>? subnetId;
+
   /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
   final pulumi.Input<int>? weight;
 
@@ -56,14 +62,25 @@ class NodeBalancerNodeArgs {
 
   factory NodeBalancerNodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeBalancerNodeArgs(
-      address: (map['address'] as String).input(),
-      configId: (map['configId'] as int).input(),
-      label: (map['label'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      nodebalancerId: (map['nodebalancerId'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      configId: pulumi.Input.fromValue(map['configId'] as int),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodebalancerId: pulumi.Input.fromValue(map['nodebalancerId'] as int),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

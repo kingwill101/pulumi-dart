@@ -14,16 +14,15 @@ enum ClientType {
   valueJmsSpringBoot("jms-springBoot"),
   valueDapr("dapr");
 
-  const ClientType(this.value);
-  final String value;
+  const ClientType(this.wireValue);
+  final String wireValue;
 
   static ClientType fromValue(String value) {
     for (final item in ClientType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientType value: $value');
   }
 }
-

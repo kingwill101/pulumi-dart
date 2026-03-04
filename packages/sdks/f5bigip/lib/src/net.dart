@@ -1,5 +1,3 @@
-library module_net;
-
 export 'net/route.dart';
 export 'net/route_args.dart';
 export 'net/route_state.dart';

@@ -525,7 +525,7 @@ import 'active_role_assignment_ticket.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2020-10-01
@@ -538,20 +538,26 @@ import 'active_role_assignment_ticket.dart';
 /// $ pulumi import azure:pim/activeRoleAssignment:ActiveRoleAssignment example /subscriptions/00000000-0000-0000-0000-000000000000|/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000|00000000-0000-0000-0000-000000000000
 /// ```
 ///
-/// > **Note:** This ID is specific to Terraform - and is of the format `{scope}|{roleDefinitionId}|{principalId}`, where the first segment is the scope of the role assignment, the second segment is the role definition ID, and the last segment is the principal object ID.
+/// &gt; **Note:** This ID is specific to Terraform - and is of the format `{scope}|{roleDefinitionId}|{principalId}`, where the first segment is the scope of the role assignment, the second segment is the role definition ID, and the last segment is the principal object ID.
 class ActiveRoleAssignment extends pulumi.CustomResource {
   /// The justification for the role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> justification;
+
   /// Object ID of the principal for this role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
+
   /// Type of principal to which the role will be assigned.
   late final pulumi.Output<String> principalType;
+
   /// The role definition ID for this role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// A `schedule` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ActiveRoleAssignmentSchedule> schedule;
+
   /// The scope for this role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
+
   /// A `ticket` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ActiveRoleAssignmentTicket> ticket;
 
@@ -564,18 +570,18 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
     ActiveRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.justification = registerOutput<String>('justification');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
-    this.scope = registerOutput<String>('scope');
-    this.ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
+         'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    justification = registerOutput<String>('justification');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
+    scope = registerOutput<String>('scope');
+    ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
   }
 
   /// Gets an existing [ActiveRoleAssignment] resource's state with the given [name] and [id].
@@ -596,17 +602,17 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.justification = registerOutput<String>('justification');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
-    this.scope = registerOutput<String>('scope');
-    this.ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
+         'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    justification = registerOutput<String>('justification');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
+    scope = registerOutput<String>('scope');
+    ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
   }
 }

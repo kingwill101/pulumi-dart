@@ -14,15 +14,14 @@ class DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vmUri': vmUri,
-    };
+    return <String, dynamic>{'vmUri': vmUri};
   }
 
-  factory DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1(
-      vmUri: (map['vmUri'] as String).input(),
+      vmUri: pulumi.Input.fromValue(map['vmUri'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_composer;
-
 export 'composer/environment.dart';
 export 'composer/environment_args.dart';
 export 'composer/environment_config.dart';

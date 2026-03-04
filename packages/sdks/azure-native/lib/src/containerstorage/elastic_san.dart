@@ -7,29 +7,40 @@ import 'encryption.dart';
 class ElasticSan {
   /// Encryption specifies the encryption configuration for the Azure Disk pool
   final pulumi.Input<Encryption>? encryption;
+
   /// Sku name
   final pulumi.Input<String>? skuName;
 
   /// Creates a new [ElasticSan].
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
   /// [skuName] Sku name
-  ElasticSan({
-    this.encryption,
-    this.skuName,
-  });
+  ElasticSan({this.encryption, this.skuName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(
+            encryption,
+            (value) => value.toMap(),
+          ),
       'skuName': ?skuName,
     };
   }
 
   factory ElasticSan.fromMap(Map<String, dynamic> map) {
     return ElasticSan(
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Encryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_vmmigration;
-
 export 'vmmigration/access_key_credentials.dart';
 export 'vmmigration/access_key_credentials_response.dart';
 export 'vmmigration/access_key_credentials_response_vmmigration_v1alpha1.dart';

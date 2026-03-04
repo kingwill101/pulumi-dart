@@ -1,5 +1,3 @@
-library module_file;
-
 export 'file/backup.dart';
 export 'file/backup_args.dart';
 export 'file/backup_file_v1beta1.dart';

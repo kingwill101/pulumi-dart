@@ -9,20 +9,21 @@ class GoogleCloudDialogflowCxV3SpeechToTextSettings {
 
   /// Creates a new [GoogleCloudDialogflowCxV3SpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
-  GoogleCloudDialogflowCxV3SpeechToTextSettings({
-    this.enableSpeechAdaptation,
-  });
+  GoogleCloudDialogflowCxV3SpeechToTextSettings({this.enableSpeechAdaptation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableSpeechAdaptation': ?enableSpeechAdaptation,
-    };
+    return <String, dynamic>{'enableSpeechAdaptation': ?enableSpeechAdaptation};
   }
 
-  factory GoogleCloudDialogflowCxV3SpeechToTextSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3SpeechToTextSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3SpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation']! as bool).input(),
+      enableSpeechAdaptation: (() {
+        final guardedValue = map['enableSpeechAdaptation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

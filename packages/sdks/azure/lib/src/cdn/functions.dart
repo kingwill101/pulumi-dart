@@ -594,7 +594,7 @@ Future<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01
@@ -719,7 +719,7 @@ Future<GetFrontdoorProfileResult> getFrontdoorProfile(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01

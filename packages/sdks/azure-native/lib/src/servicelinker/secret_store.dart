@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretStore {
   /// The key vault id to store secret
   final pulumi.Input<String>? keyVaultId;
+
   /// The key vault secret name to store secret, only valid when storing one secret
   final pulumi.Input<String>? keyVaultSecretName;
 
   /// Creates a new [SecretStore].
   /// [keyVaultId] The key vault id to store secret
   /// [keyVaultSecretName] The key vault secret name to store secret, only valid when storing one secret
-  SecretStore({
-    this.keyVaultId,
-    this.keyVaultSecretName,
-  });
+  SecretStore({this.keyVaultId, this.keyVaultSecretName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SecretStore {
 
   factory SecretStore.fromMap(Map<String, dynamic> map) {
     return SecretStore(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretName: (() {
+        final guardedValue = map['keyVaultSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

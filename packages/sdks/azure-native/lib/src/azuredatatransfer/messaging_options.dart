@@ -9,20 +9,19 @@ class MessagingOptions {
 
   /// Creates a new [MessagingOptions].
   /// [billingTier] Billing tier for this messaging flow
-  MessagingOptions({
-    this.billingTier,
-  });
+  MessagingOptions({this.billingTier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'billingTier': ?billingTier,
-    };
+    return <String, dynamic>{'billingTier': ?billingTier};
   }
 
   factory MessagingOptions.fromMap(Map<String, dynamic> map) {
     return MessagingOptions(
-      billingTier: map['billingTier'] == null ? null : (map['billingTier']! as String).input(),
+      billingTier: (() {
+        final guardedValue = map['billingTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

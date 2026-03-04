@@ -8,20 +8,19 @@ class AccessStrategyLine {
 
   /// Creates a new [AccessStrategyLine].
   /// [lineCode] The line code of the source region.
-  AccessStrategyLine({
-    this.lineCode,
-  });
+  AccessStrategyLine({this.lineCode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lineCode': ?lineCode,
-    };
+    return <String, dynamic>{'lineCode': ?lineCode};
   }
 
   factory AccessStrategyLine.fromMap(Map<String, dynamic> map) {
     return AccessStrategyLine(
-      lineCode: map['lineCode'] == null ? null : (map['lineCode']! as String).input(),
+      lineCode: (() {
+        final guardedValue = map['lineCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

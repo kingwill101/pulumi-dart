@@ -3,16 +3,15 @@ enum ApplicationSharingPolicy {
   valuePersonal("Personal"),
   valueShared("Shared");
 
-  const ApplicationSharingPolicy(this.value);
-  final String value;
+  const ApplicationSharingPolicy(this.wireValue);
+  final String wireValue;
 
   static ApplicationSharingPolicy fromValue(String value) {
     for (final item in ApplicationSharingPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationSharingPolicy value: $value');
   }
 }
-

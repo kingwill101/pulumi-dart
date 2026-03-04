@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KxClusterCode {
   /// Unique name for the S3 bucket.
   final pulumi.Input<String> s3Bucket;
+
   /// Full S3 path (excluding bucket) to the .zip file that contains the code to be loaded onto the cluster when it’s started.
   final pulumi.Input<String> s3Key;
+
   /// Version of an S3 Object.
   final pulumi.Input<String>? s3ObjectVersion;
 
@@ -30,10 +32,13 @@ class KxClusterCode {
 
   factory KxClusterCode.fromMap(Map<String, dynamic> map) {
     return KxClusterCode(
-      s3Bucket: (map['s3Bucket'] as String).input(),
-      s3Key: (map['s3Key'] as String).input(),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : ((map['s3ObjectVersion'] as String).input()).input(),
+      s3Bucket: pulumi.Input.fromValue(map['s3Bucket'] as String),
+      s3Key: pulumi.Input.fromValue(map['s3Key'] as String),
+      s3ObjectVersion: (() {
+        final guardedValue = map['s3ObjectVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

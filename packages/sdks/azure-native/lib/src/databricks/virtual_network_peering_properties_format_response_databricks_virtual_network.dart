@@ -14,15 +14,18 @@ class VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

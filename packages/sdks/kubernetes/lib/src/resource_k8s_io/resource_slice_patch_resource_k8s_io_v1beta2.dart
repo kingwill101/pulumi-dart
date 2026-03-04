@@ -6,7 +6,7 @@ import 'resource_slice_spec_patch_resource_k8s_io_v1beta2.dart';
 
 /// ResourceSlice represents one or more resources in a pool of similar resources, managed by a common driver. A pool may span more than one ResourceSlice, and exactly how many ResourceSlices comprise a pool is determined by the driver.
 ///
-/// At the moment, the only supported resources are devices with attributes and capacities. Each device in a given pool, regardless of how many ResourceSlices, must have a unique name. The ResourceSlice in which a device gets published may change over time. The unique identifier for a device is the tuple <driver name>, <pool name>, <device name>.
+/// At the moment, the only supported resources are devices with attributes and capacities. Each device in a given pool, regardless of how many ResourceSlices, must have a unique name. The ResourceSlice in which a device gets published may change over time. The unique identifier for a device is the tuple &lt;driver name&gt;, &lt;pool name&gt;, &lt;device name&gt;.
 ///
 /// Whenever a driver needs to update a pool, it increments the pool.Spec.Pool.Generation number and updates all ResourceSlices with that new number and new resource definitions. A consumer must only use ResourceSlices with the highest generation number and ignore all others.
 ///
@@ -18,10 +18,13 @@ import 'resource_slice_spec_patch_resource_k8s_io_v1beta2.dart';
 class ResourceSlicePatchResourceK8sIoV1beta2 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
+
   /// Contains the information published by the driver.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
@@ -43,18 +46,51 @@ class ResourceSlicePatchResourceK8sIoV1beta2 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<ResourceSliceSpecPatchResourceK8sIoV1beta2, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectMetaPatch,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceSliceSpecPatchResourceK8sIoV1beta2,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
-  factory ResourceSlicePatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ResourceSlicePatchResourceK8sIoV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceSlicePatchResourceK8sIoV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ResourceSliceSpecPatchResourceK8sIoV1beta2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMetaPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceSliceSpecPatchResourceK8sIoV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

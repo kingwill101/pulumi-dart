@@ -2,27 +2,26 @@
 
 library pulumi_sample;
 
-import 'package:pulumi_sample/index.dart' as _index;
-import 'package:pulumi_sample/providers.dart' as _providers;
+import 'package:pulumi_sample/index.dart' as module_index;
+import 'package:pulumi_sample/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final GetWidgetDetailsArgs = _index.GetWidgetDetailsArgs.new;
-  final GetWidgetDetailsResult = _index.GetWidgetDetailsResult.new;
-  final GetWidgetDetailsResultArgs = _index.GetWidgetDetailsResult.new;
-  final Widget = _index.Widget.new;
-  final WidgetArgs = _index.WidgetArgs.new;
-  final WidgetMetadata = _index.WidgetMetadata.new;
-  final WidgetMetadataArgs = _index.WidgetMetadata.new;
-  final WidgetMode = _index.WidgetMode.values;
-  final getWidgetDetails = _index.getWidgetDetails;
+  final GetWidgetDetailsArgs = module_index.GetWidgetDetailsArgs.new;
+  final GetWidgetDetailsResult = module_index.GetWidgetDetailsResult.new;
+  final GetWidgetDetailsResultArgs = module_index.GetWidgetDetailsResult.new;
+  final Widget = module_index.Widget.new;
+  final WidgetArgs = module_index.WidgetArgs.new;
+  final WidgetMetadata = module_index.WidgetMetadata.new;
+  final WidgetMetadataArgs = module_index.WidgetMetadata.new;
+  final WidgetMode = module_index.WidgetMode.values;
+  final getWidgetDetails = module_index.getWidgetDetails;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Sample = _providers.ProviderProvider.new;
+  final Sample = module_providers.ProviderProvider.new;
 }
-

@@ -198,13 +198,16 @@ import 'directory_role_state.dart';
 class DirectoryRole extends pulumi.CustomResource {
   /// The description of the directory role.
   late final pulumi.Output<String> description;
+
   /// The display name of the directory role to activate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> displayName;
+
   /// The object ID of the directory role.
   late final pulumi.Output<String> objectId;
+
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
-  /// > Either `display_name` or `template_id` must be specified.
+  /// &gt; Either `display_name` or `template_id` must be specified.
   late final pulumi.Output<String> templateId;
 
   /// Creates a new [DirectoryRole].
@@ -216,15 +219,15 @@ class DirectoryRole extends pulumi.CustomResource {
     DirectoryRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRole:DirectoryRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.objectId = registerOutput<String>('objectId');
-    this.templateId = registerOutput<String>('templateId');
+         'azuread:index/directoryRole:DirectoryRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    objectId = registerOutput<String>('objectId');
+    templateId = registerOutput<String>('templateId');
   }
 
   /// Gets an existing [DirectoryRole] resource's state with the given [name] and [id].
@@ -245,14 +248,14 @@ class DirectoryRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRole:DirectoryRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.objectId = registerOutput<String>('objectId');
-    this.templateId = registerOutput<String>('templateId');
+         'azuread:index/directoryRole:DirectoryRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    objectId = registerOutput<String>('objectId');
+    templateId = registerOutput<String>('templateId');
   }
 }

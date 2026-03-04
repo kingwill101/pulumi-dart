@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsResolverPolicyArgs {
   /// The name of the DNS resolver policy.
   final pulumi.Input<String>? dnsResolverPolicyName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,26 @@ class DnsResolverPolicyArgs {
 
   factory DnsResolverPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DnsResolverPolicyArgs(
-      dnsResolverPolicyName: map['dnsResolverPolicyName'] == null ? null : (map['dnsResolverPolicyName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dnsResolverPolicyName: (() {
+        final guardedValue = map['dnsResolverPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

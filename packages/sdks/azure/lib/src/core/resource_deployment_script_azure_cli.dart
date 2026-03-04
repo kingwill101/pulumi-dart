@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_deployment_script_azure_cli_args.dart';
 import 'resource_deployment_script_azure_cli_container.dart';
-import 'resource_deployment_script_azure_cli_environment_variable.dart';
 import 'resource_deployment_script_azure_cli_identity.dart';
 import 'resource_deployment_script_azure_cli_state.dart';
 import 'resource_deployment_script_azure_cli_storage_account.dart';
@@ -278,7 +277,7 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Resources` - 2020-10-01
@@ -293,38 +292,57 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
   /// Specifies the cleanup preference when the script execution gets in a terminal state. Possible values are `Always`, `OnExpiration`, `OnSuccess`. Defaults to `Always`. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> cleanupPreference;
+
   /// Command line arguments to pass to the script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> commandLine;
+
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<ResourceDeploymentScriptAzureCliContainer?> container;
+  late final pulumi.Output<ResourceDeploymentScriptAzureCliContainer?>
+  container;
+
   /// An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<List<ResourceDeploymentScriptAzureCliEnvironmentVariable>?> environmentVariables;
+  late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
+
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// An `identity` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<ResourceDeploymentScriptAzureCliIdentity?> identity;
+
   /// Specifies the Azure Region where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Resource Deployment Script. The name length must be from 1 to 260 characters. The name can only contain alphanumeric, underscore, parentheses, hyphen and period, and it cannot end with a period. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> name;
+
   /// List of script outputs.
   late final pulumi.Output<String> outputs;
+
   /// Uri for the script. This is the entry point for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> primaryScriptUri;
+
   /// Specifies the name of the Resource Group where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. The time duration should be between `1` hour and `26` hours (inclusive) and should be specified in ISO 8601 format. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> retentionInterval;
+
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> scriptContent;
+
   /// A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<ResourceDeploymentScriptAzureCliStorageAccount?> storageAccount;
+  late final pulumi.Output<ResourceDeploymentScriptAzureCliStorageAccount?>
+  storageAccount;
+
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<String>?> supportingScriptUris;
+
   /// A mapping of tags which should be assigned to the Resource Deployment Script.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Maximum allowed script execution time specified in ISO 8601 format. Needs to be greater than 0 and smaller than 1 day. Defaults to `P1D`. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> timeout;
+
   /// Specifies the version of the Azure CLI that should be used in the format `X.Y.Z` (e.g. `2.30.0`). A canonical list of versions [is available from the Microsoft Container Registry API](https://mcr.microsoft.com/v2/azure-cli/tags/list). Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> version;
 
@@ -337,29 +355,40 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     ResourceDeploymentScriptAzureCliArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceDeploymentScriptAzureCli:ResourceDeploymentScriptAzureCli',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cleanupPreference = registerOutput<String?>('cleanupPreference');
-    this.commandLine = registerOutput<String?>('commandLine');
-    this.container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>('container');
-    this.environmentVariables = registerOutput<List<ResourceDeploymentScriptAzureCliEnvironmentVariable>?>('environmentVariables');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:core/resourceDeploymentScriptAzureCli:ResourceDeploymentScriptAzureCli',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cleanupPreference = registerOutput<String?>('cleanupPreference');
+    commandLine = registerOutput<String?>('commandLine');
+    container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>(
+      'container',
+    );
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'environmentVariables',
+    );
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<String>('outputs');
-    this.primaryScriptUri = registerOutput<String?>('primaryScriptUri');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionInterval = registerOutput<String>('retentionInterval');
-    this.scriptContent = registerOutput<String?>('scriptContent');
-    this.storageAccount = registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>('storageAccount');
-    this.supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<String?>('timeout');
-    this.version = registerOutput<String>('version');
+    outputs = registerOutput<String>('outputs');
+    primaryScriptUri = registerOutput<String?>('primaryScriptUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInterval = registerOutput<String>('retentionInterval');
+    scriptContent = registerOutput<String?>('scriptContent');
+    storageAccount =
+        registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>(
+          'storageAccount',
+        );
+    supportingScriptUris = registerOutput<List<String>?>(
+      'supportingScriptUris',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<String?>('timeout');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [ResourceDeploymentScriptAzureCli] resource's state with the given [name] and [id].
@@ -380,28 +409,39 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceDeploymentScriptAzureCli:ResourceDeploymentScriptAzureCli',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cleanupPreference = registerOutput<String?>('cleanupPreference');
-    this.commandLine = registerOutput<String?>('commandLine');
-    this.container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>('container');
-    this.environmentVariables = registerOutput<List<ResourceDeploymentScriptAzureCliEnvironmentVariable>?>('environmentVariables');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:core/resourceDeploymentScriptAzureCli:ResourceDeploymentScriptAzureCli',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cleanupPreference = registerOutput<String?>('cleanupPreference');
+    commandLine = registerOutput<String?>('commandLine');
+    container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>(
+      'container',
+    );
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'environmentVariables',
+    );
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<String>('outputs');
-    this.primaryScriptUri = registerOutput<String?>('primaryScriptUri');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionInterval = registerOutput<String>('retentionInterval');
-    this.scriptContent = registerOutput<String?>('scriptContent');
-    this.storageAccount = registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>('storageAccount');
-    this.supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<String?>('timeout');
-    this.version = registerOutput<String>('version');
+    outputs = registerOutput<String>('outputs');
+    primaryScriptUri = registerOutput<String?>('primaryScriptUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInterval = registerOutput<String>('retentionInterval');
+    scriptContent = registerOutput<String?>('scriptContent');
+    storageAccount =
+        registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>(
+          'storageAccount',
+        );
+    supportingScriptUris = registerOutput<List<String>?>(
+      'supportingScriptUris',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<String?>('timeout');
+    version = registerOutput<String>('version');
   }
 }

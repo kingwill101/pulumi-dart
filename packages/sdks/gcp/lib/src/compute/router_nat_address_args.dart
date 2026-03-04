@@ -10,16 +10,21 @@ class RouterNatAddressArgs {
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
   final pulumi.Input<List<String>>? drainNatIps;
+
   /// Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
   /// natIpAllocateOption is set to MANUAL_ONLY.
   final pulumi.Input<List<String>> natIps;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Region where the NAT service reside.
   final pulumi.Input<String>? region;
+
   /// The name of the Cloud Router in which the referenced NAT service is configured.
   final pulumi.Input<String> router;
+
   /// The name of the Nat service in which this address will be configured.
   final pulumi.Input<String> routerNat;
 
@@ -52,13 +57,24 @@ class RouterNatAddressArgs {
 
   factory RouterNatAddressArgs.fromMap(Map<String, dynamic> map) {
     return RouterNatAddressArgs(
-      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps']! as List).cast<String>()).input(),
-      natIps: ((map['natIps'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      router: (map['router'] as String).input(),
-      routerNat: (map['routerNat'] as String).input(),
+      drainNatIps: (() {
+        final guardedValue = map['drainNatIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      natIps: pulumi.Input.fromValue((map['natIps'] as List).cast<String>()),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      router: pulumi.Input.fromValue(map['router'] as String),
+      routerNat: pulumi.Input.fromValue(map['routerNat'] as String),
     );
   }
 }
-

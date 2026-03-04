@@ -35,11 +35,14 @@ class GetPolicyTagDatacatalogV1beta1Args {
 
   factory GetPolicyTagDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetPolicyTagDatacatalogV1beta1Args(
-      location: (map['location'] as String).input(),
-      policyTagId: (map['policyTagId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      taxonomyId: (map['taxonomyId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      policyTagId: pulumi.Input.fromValue(map['policyTagId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taxonomyId: pulumi.Input.fromValue(map['taxonomyId'] as String),
     );
   }
 }
-

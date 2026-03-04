@@ -3,16 +3,15 @@ enum CVSSUserInteraction {
   userInteractionNone("USER_INTERACTION_NONE"),
   userInteractionRequired("USER_INTERACTION_REQUIRED");
 
-  const CVSSUserInteraction(this.value);
-  final String value;
+  const CVSSUserInteraction(this.wireValue);
+  final String wireValue;
 
   static CVSSUserInteraction fromValue(String value) {
     for (final item in CVSSUserInteraction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSUserInteraction value: $value');
   }
 }
-

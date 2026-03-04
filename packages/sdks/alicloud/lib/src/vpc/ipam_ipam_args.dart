@@ -10,12 +10,16 @@ class IpamIpamArgs {
   /// The description of IPAM.
   /// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
   final pulumi.Input<String>? ipamDescription;
+
   /// The name of the resource.
   final pulumi.Input<String>? ipamName;
+
   /// List of IPAM effective regions.
   final pulumi.Input<List<String>> operatingRegionLists;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,12 +49,31 @@ class IpamIpamArgs {
 
   factory IpamIpamArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamArgs(
-      ipamDescription: map['ipamDescription'] == null ? null : (map['ipamDescription']! as String).input(),
-      ipamName: map['ipamName'] == null ? null : (map['ipamName']! as String).input(),
-      operatingRegionLists: ((map['operatingRegionLists'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ipamDescription: (() {
+        final guardedValue = map['ipamDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamName: (() {
+        final guardedValue = map['ipamName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingRegionLists: pulumi.Input.fromValue(
+        (map['operatingRegionLists'] as List).cast<String>(),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

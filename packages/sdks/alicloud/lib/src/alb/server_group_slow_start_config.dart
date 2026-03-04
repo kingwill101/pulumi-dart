@@ -9,16 +9,14 @@ class ServerGroupSlowStartConfig {
   ///
   /// Default value: 30.
   final pulumi.Input<int>? slowStartDuration;
+
   /// Indicates whether slow starts are enabled. Valid values:
   final pulumi.Input<bool>? slowStartEnabled;
 
   /// Creates a new [ServerGroupSlowStartConfig].
   /// [slowStartDuration] The duration of a slow start.
   /// [slowStartEnabled] Indicates whether slow starts are enabled. Valid values:
-  ServerGroupSlowStartConfig({
-    this.slowStartDuration,
-    this.slowStartEnabled,
-  });
+  ServerGroupSlowStartConfig({this.slowStartDuration, this.slowStartEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class ServerGroupSlowStartConfig {
 
   factory ServerGroupSlowStartConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupSlowStartConfig(
-      slowStartDuration: map['slowStartDuration'] == null ? null : (map['slowStartDuration']! as int).input(),
-      slowStartEnabled: map['slowStartEnabled'] == null ? null : (map['slowStartEnabled']! as bool).input(),
+      slowStartDuration: (() {
+        final guardedValue = map['slowStartDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      slowStartEnabled: (() {
+        final guardedValue = map['slowStartEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

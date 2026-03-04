@@ -10,7 +10,7 @@ import 'registry_credential_set_state.dart';
 ///
 /// ### Minimal)
 ///
-/// > **Note:** Be aware that you will need to permit the Identity that is created for the Container Registry to have `get` on secrets to the Key Vault, e.g. using the `azure.keyvault.AccessPolicy` resource.
+/// &gt; **Note:** Be aware that you will need to permit the Identity that is created for the Container Registry to have `get` on secrets to the Key Vault, e.g. using the `azure.keyvault.AccessPolicy` resource.
 ///
 ///
 /// ```typescript
@@ -747,7 +747,7 @@ import 'registry_credential_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2023-07-01
@@ -761,13 +761,18 @@ import 'registry_credential_set_state.dart';
 /// ```
 class RegistryCredentialSet extends pulumi.CustomResource {
   /// A `authentication_credentials` block as defined below.
-  late final pulumi.Output<RegistryCredentialSetAuthenticationCredentials> authenticationCredentials;
+  late final pulumi.Output<RegistryCredentialSetAuthenticationCredentials>
+  authenticationCredentials;
+
   /// The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   late final pulumi.Output<String> containerRegistryId;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<RegistryCredentialSetIdentity> identity;
+
   /// The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   late final pulumi.Output<String> loginServer;
+
   /// The name which should be used for this Container Registry Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   late final pulumi.Output<String> name;
 
@@ -780,15 +785,18 @@ class RegistryCredentialSet extends pulumi.CustomResource {
     RegistryCredentialSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.identity = registerOutput<RegistryCredentialSetIdentity>('identity');
-    this.loginServer = registerOutput<String>('loginServer');
+         'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationCredentials =
+        registerOutput<RegistryCredentialSetAuthenticationCredentials>(
+          'authenticationCredentials',
+        );
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    identity = registerOutput<RegistryCredentialSetIdentity>('identity');
+    loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
   }
 
@@ -810,15 +818,18 @@ class RegistryCredentialSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.identity = registerOutput<RegistryCredentialSetIdentity>('identity');
-    this.loginServer = registerOutput<String>('loginServer');
+         'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationCredentials =
+        registerOutput<RegistryCredentialSetAuthenticationCredentials>(
+          'authenticationCredentials',
+        );
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    identity = registerOutput<RegistryCredentialSetIdentity>('identity');
+    loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
   }
 }

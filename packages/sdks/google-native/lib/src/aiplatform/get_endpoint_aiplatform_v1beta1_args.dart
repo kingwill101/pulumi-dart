@@ -31,10 +31,13 @@ class GetEndpointAiplatformV1beta1Args {
 
   factory GetEndpointAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEndpointAiplatformV1beta1Args(
-      endpointId: (map['endpointId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

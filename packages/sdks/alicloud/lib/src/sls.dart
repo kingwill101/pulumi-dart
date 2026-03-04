@@ -1,5 +1,3 @@
-library module_sls;
-
 export 'sls/alert.dart';
 export 'sls/alert_args.dart';
 export 'sls/alert_configuration.dart';

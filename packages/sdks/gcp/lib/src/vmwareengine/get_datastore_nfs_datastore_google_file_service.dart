@@ -6,6 +6,7 @@ class GetDatastoreNfsDatastoreGoogleFileService {
   /// Google filestore instance resource name
   /// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
   final pulumi.Input<String> filestoreInstance;
+
   /// Google netapp volume resource name
   /// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
   final pulumi.Input<String> netappVolume;
@@ -25,11 +26,14 @@ class GetDatastoreNfsDatastoreGoogleFileService {
     };
   }
 
-  factory GetDatastoreNfsDatastoreGoogleFileService.fromMap(Map<String, dynamic> map) {
+  factory GetDatastoreNfsDatastoreGoogleFileService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatastoreNfsDatastoreGoogleFileService(
-      filestoreInstance: (map['filestoreInstance'] as String).input(),
-      netappVolume: (map['netappVolume'] as String).input(),
+      filestoreInstance: pulumi.Input.fromValue(
+        map['filestoreInstance'] as String,
+      ),
+      netappVolume: pulumi.Input.fromValue(map['netappVolume'] as String),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentArgs {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
   final pulumi.Input<String> collection;
+
   /// The Firestore database id. Defaults to `"(default)"`.
   final pulumi.Input<String>? database;
+
   /// The client-assigned document ID to use for this document during creation.
   final pulumi.Input<String> documentId;
+
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   final pulumi.Input<String> fields;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -45,12 +49,19 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      collection: (map['collection'] as String).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      documentId: (map['documentId'] as String).input(),
-      fields: (map['fields'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      collection: pulumi.Input.fromValue(map['collection'] as String),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentId: pulumi.Input.fromValue(map['documentId'] as String),
+      fields: pulumi.Input.fromValue(map['fields'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

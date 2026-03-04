@@ -1,5 +1,3 @@
-library module_verifiedpermissions;
-
 export 'verifiedpermissions/functions.dart';
 export 'verifiedpermissions/get_policy_store_args.dart';
 export 'verifiedpermissions/get_policy_store_result.dart';

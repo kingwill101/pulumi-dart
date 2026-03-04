@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedIdentityResponse {
   /// The client ID of the assigned identity.
   final pulumi.Input<String> clientId;
+
   /// The object ID of the user assigned identity.
   final pulumi.Input<String>? objectId;
+
   /// The principal ID of the assigned identity.
   final pulumi.Input<String> principalId;
+
   /// The resource ID of the user assigned identity.
   final pulumi.Input<String>? resourceId;
 
@@ -36,11 +39,18 @@ class UserAssignedIdentityResponse {
 
   factory UserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityResponse(
-      clientId: (map['clientId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

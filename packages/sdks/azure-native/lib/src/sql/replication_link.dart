@@ -146,32 +146,46 @@ import 'replication_link_args.dart';
 class ReplicationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Whether the user is currently allowed to terminate the link.
   late final pulumi.Output<bool> isTerminationAllowed;
+
   /// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   late final pulumi.Output<String?> linkType;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource partner database.
   late final pulumi.Output<String> partnerDatabase;
+
   /// Resource partner database Id.
   late final pulumi.Output<String> partnerDatabaseId;
+
   /// Resource partner location.
   late final pulumi.Output<String> partnerLocation;
+
   /// Partner replication role.
   late final pulumi.Output<String> partnerRole;
+
   /// Resource partner server.
   late final pulumi.Output<String> partnerServer;
+
   /// Seeding completion percentage for the link.
   late final pulumi.Output<int> percentComplete;
+
   /// Replication mode.
   late final pulumi.Output<String> replicationMode;
+
   /// Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED).
   late final pulumi.Output<String> replicationState;
+
   /// Local replication role.
   late final pulumi.Output<String> role;
+
   /// Time at which the link was created.
   late final pulumi.Output<String> startTime;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -184,25 +198,25 @@ class ReplicationLink extends pulumi.CustomResource {
     ReplicationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ReplicationLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.isTerminationAllowed = registerOutput<bool>('isTerminationAllowed');
-    this.linkType = registerOutput<String?>('linkType');
+         'azure-native:sql:ReplicationLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isTerminationAllowed = registerOutput<bool>('isTerminationAllowed');
+    linkType = registerOutput<String?>('linkType');
     this.name = registerOutput<String>('name');
-    this.partnerDatabase = registerOutput<String>('partnerDatabase');
-    this.partnerDatabaseId = registerOutput<String>('partnerDatabaseId');
-    this.partnerLocation = registerOutput<String>('partnerLocation');
-    this.partnerRole = registerOutput<String>('partnerRole');
-    this.partnerServer = registerOutput<String>('partnerServer');
-    this.percentComplete = registerOutput<int>('percentComplete');
-    this.replicationMode = registerOutput<String>('replicationMode');
-    this.replicationState = registerOutput<String>('replicationState');
-    this.role = registerOutput<String>('role');
-    this.startTime = registerOutput<String>('startTime');
-    this.type = registerOutput<String>('type');
+    partnerDatabase = registerOutput<String>('partnerDatabase');
+    partnerDatabaseId = registerOutput<String>('partnerDatabaseId');
+    partnerLocation = registerOutput<String>('partnerLocation');
+    partnerRole = registerOutput<String>('partnerRole');
+    partnerServer = registerOutput<String>('partnerServer');
+    percentComplete = registerOutput<int>('percentComplete');
+    replicationMode = registerOutput<String>('replicationMode');
+    replicationState = registerOutput<String>('replicationState');
+    role = registerOutput<String>('role');
+    startTime = registerOutput<String>('startTime');
+    type = registerOutput<String>('type');
   }
 }

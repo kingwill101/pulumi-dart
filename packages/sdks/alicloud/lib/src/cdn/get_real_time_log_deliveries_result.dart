@@ -7,6 +7,7 @@ import 'get_real_time_log_deliveries_delivery.dart';
 class GetRealTimeLogDeliveriesResult {
   final List<GetRealTimeLogDeliveriesDelivery> deliveries;
   final String domain;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -28,7 +29,11 @@ class GetRealTimeLogDeliveriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveries': pulumi.Input.encodeList<GetRealTimeLogDeliveriesDelivery, Map<String, dynamic>>(deliveries, (value) => value.toMap()),
+      'deliveries':
+          pulumi.Input.encodeList<
+            GetRealTimeLogDeliveriesDelivery,
+            Map<String, dynamic>
+          >(deliveries, (value) => value.toMap()),
       'domain': domain,
       'id': id,
       'outputFile': ?outputFile,
@@ -38,12 +43,24 @@ class GetRealTimeLogDeliveriesResult {
 
   factory GetRealTimeLogDeliveriesResult.fromMap(Map<String, dynamic> map) {
     return GetRealTimeLogDeliveriesResult(
-      deliveries: pulumi.Input.decodeList<GetRealTimeLogDeliveriesDelivery>(map['deliveries'], (value) => GetRealTimeLogDeliveriesDelivery.fromMap((value as Map).cast<String, dynamic>())),
+      deliveries: pulumi.Input.decodeList<GetRealTimeLogDeliveriesDelivery>(
+        map['deliveries']!,
+        (value) => GetRealTimeLogDeliveriesDelivery.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       domain: map['domain'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

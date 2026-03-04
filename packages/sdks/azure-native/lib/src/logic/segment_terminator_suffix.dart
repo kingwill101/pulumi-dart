@@ -6,16 +6,15 @@ enum SegmentTerminatorSuffix {
   valueLF("LF"),
   valueCRLF("CRLF");
 
-  const SegmentTerminatorSuffix(this.value);
-  final String value;
+  const SegmentTerminatorSuffix(this.wireValue);
+  final String wireValue;
 
   static SegmentTerminatorSuffix fromValue(String value) {
     for (final item in SegmentTerminatorSuffix.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SegmentTerminatorSuffix value: $value');
   }
 }
-

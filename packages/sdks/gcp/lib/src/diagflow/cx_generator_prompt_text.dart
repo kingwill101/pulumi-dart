@@ -8,20 +8,19 @@ class CxGeneratorPromptText {
 
   /// Creates a new [CxGeneratorPromptText].
   /// [text] Text input which can be used for prompt or banned phrases.
-  CxGeneratorPromptText({
-    this.text,
-  });
+  CxGeneratorPromptText({this.text});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': ?text,
-    };
+    return <String, dynamic>{'text': ?text};
   }
 
   factory CxGeneratorPromptText.fromMap(Map<String, dynamic> map) {
     return CxGeneratorPromptText(
-      text: map['text'] == null ? null : (map['text']! as String).input(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

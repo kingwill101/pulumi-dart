@@ -6,7 +6,7 @@ import 'account_public_access_block_state.dart';
 ///
 /// For information about OSS Account Public Access Block and how to use it, see [What is Account Public Access Block](https://www.alibabacloud.com/help/en/oss/developer-reference/putpublicaccessblock).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -140,12 +140,12 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
     AccountPublicAccessBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicAccess = registerOutput<bool>('blockPublicAccess');
+         'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicAccess = registerOutput<bool>('blockPublicAccess');
   }
 
   /// Gets an existing [AccountPublicAccessBlock] resource's state with the given [name] and [id].
@@ -166,11 +166,11 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicAccess = registerOutput<bool>('blockPublicAccess');
+         'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicAccess = registerOutput<bool>('blockPublicAccess');
   }
 }

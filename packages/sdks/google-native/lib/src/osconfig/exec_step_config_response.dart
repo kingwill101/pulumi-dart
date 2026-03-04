@@ -7,10 +7,13 @@ import 'gcs_object_response.dart';
 class ExecStepConfigResponse {
   /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
   final pulumi.Input<List<int>> allowedSuccessCodes;
+
   /// A Cloud Storage object containing the executable.
   final pulumi.Input<GcsObjectResponse> gcsObject;
+
   /// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   final pulumi.Input<String> interpreter;
+
   /// An absolute path to the executable on the VM.
   final pulumi.Input<String> localPath;
 
@@ -29,7 +32,11 @@ class ExecStepConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedSuccessCodes': allowedSuccessCodes,
-      'gcsObject': pulumi.Input.mapInputValue<GcsObjectResponse, Map<String, dynamic>>(gcsObject, (value) => value.toMap()),
+      'gcsObject':
+          pulumi.Input.mapInputValue<GcsObjectResponse, Map<String, dynamic>>(
+            gcsObject,
+            (value) => value.toMap(),
+          ),
       'interpreter': interpreter,
       'localPath': localPath,
     };
@@ -37,11 +44,16 @@ class ExecStepConfigResponse {
 
   factory ExecStepConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExecStepConfigResponse(
-      allowedSuccessCodes: ((map['allowedSuccessCodes'] as List).cast<int>()).input(),
-      gcsObject: (GcsObjectResponse.fromMap((map['gcsObject'] as Map).cast<String, dynamic>())).input(),
-      interpreter: (map['interpreter'] as String).input(),
-      localPath: (map['localPath'] as String).input(),
+      allowedSuccessCodes: pulumi.Input.fromValue(
+        (map['allowedSuccessCodes'] as List).cast<int>(),
+      ),
+      gcsObject: pulumi.Input.fromValue(
+        GcsObjectResponse.fromMap(
+          (map['gcsObject']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      interpreter: pulumi.Input.fromValue(map['interpreter'] as String),
+      localPath: pulumi.Input.fromValue(map['localPath'] as String),
     );
   }
 }
-

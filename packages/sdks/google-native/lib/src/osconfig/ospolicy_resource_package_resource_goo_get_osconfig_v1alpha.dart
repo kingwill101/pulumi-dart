@@ -9,20 +9,17 @@ class OSPolicyResourcePackageResourceGooGetOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGetOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceGooGetOsconfigV1alpha({
-    required this.name,
-  });
+  OSPolicyResourcePackageResourceGooGetOsconfigV1alpha({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceGooGetOsconfigV1alpha(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

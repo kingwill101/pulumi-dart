@@ -764,39 +764,50 @@ class Container extends pulumi.CustomResource {
   /// read the container (allows the GET method for all objects in the container).
   /// Changing this updates the access control list read access.
   late final pulumi.Output<String?> containerRead;
+
   /// The secret key for container
   /// synchronization. Changing this updates container synchronization.
   late final pulumi.Output<String?> containerSyncKey;
+
   /// The destination for container
   /// synchronization. Changing this updates container synchronization.
   late final pulumi.Output<String?> containerSyncTo;
+
   /// Sets an ACL that grants write access. Changing
   /// this updates the access control list write access.
   late final pulumi.Output<String?> containerWrite;
+
   /// The MIME type for the container. Changing this
   /// updates the MIME type.
   late final pulumi.Output<String?> contentType;
+
   /// A boolean that indicates all
   /// objects should be deleted from the container so that the container can be
   /// destroyed without error. These objects are not recoverable.
   late final pulumi.Output<bool?> forceDestroy;
+
   /// Custom key/value pairs to associate with the
   /// container. Changing this updates the existing container metadata.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// A unique name for the container. Changing this creates a
   /// new container.
   late final pulumi.Output<String> name;
+
   /// The region in which to create the container. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new container.
   late final pulumi.Output<String> region;
+
   /// The storage class to be used for the container.
   /// Changing this creates a new container. This option is only available in Ceph
   /// RGW Swift API implementation.
   late final pulumi.Output<String> storageClass;
+
   /// The storage policy to be used for the
   /// container. Changing this creates a new container.
   late final pulumi.Output<String> storagePolicy;
+
   /// A boolean that can enable or disable object
   /// versioning. The default value is `false`. To use this feature, your Swift
   /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
@@ -806,6 +817,7 @@ class Container extends pulumi.CustomResource {
   /// configuration option in Swift. If you cannot set this versioning type, you
   /// may want to consider using `versioning_legacy` instead.
   late final pulumi.Output<bool?> versioning;
+
   /// Enable legacy object versioning. The
   /// structure is described below.
   late final pulumi.Output<ContainerVersioningLegacy?> versioningLegacy;
@@ -819,24 +831,26 @@ class Container extends pulumi.CustomResource {
     ContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:objectstorage/container:Container',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRead = registerOutput<String?>('containerRead');
-    this.containerSyncKey = registerOutput<String?>('containerSyncKey');
-    this.containerSyncTo = registerOutput<String?>('containerSyncTo');
-    this.containerWrite = registerOutput<String?>('containerWrite');
-    this.contentType = registerOutput<String?>('contentType');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'openstack:objectstorage/container:Container',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRead = registerOutput<String?>('containerRead');
+    containerSyncKey = registerOutput<String?>('containerSyncKey');
+    containerSyncTo = registerOutput<String?>('containerSyncTo');
+    containerWrite = registerOutput<String?>('containerWrite');
+    contentType = registerOutput<String?>('contentType');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.storageClass = registerOutput<String>('storageClass');
-    this.storagePolicy = registerOutput<String>('storagePolicy');
-    this.versioning = registerOutput<bool?>('versioning');
-    this.versioningLegacy = registerOutput<ContainerVersioningLegacy?>('versioningLegacy');
+    region = registerOutput<String>('region');
+    storageClass = registerOutput<String>('storageClass');
+    storagePolicy = registerOutput<String>('storagePolicy');
+    versioning = registerOutput<bool?>('versioning');
+    versioningLegacy = registerOutput<ContainerVersioningLegacy?>(
+      'versioningLegacy',
+    );
   }
 
   /// Gets an existing [Container] resource's state with the given [name] and [id].
@@ -857,23 +871,25 @@ class Container extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:objectstorage/container:Container',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRead = registerOutput<String?>('containerRead');
-    this.containerSyncKey = registerOutput<String?>('containerSyncKey');
-    this.containerSyncTo = registerOutput<String?>('containerSyncTo');
-    this.containerWrite = registerOutput<String?>('containerWrite');
-    this.contentType = registerOutput<String?>('contentType');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'openstack:objectstorage/container:Container',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRead = registerOutput<String?>('containerRead');
+    containerSyncKey = registerOutput<String?>('containerSyncKey');
+    containerSyncTo = registerOutput<String?>('containerSyncTo');
+    containerWrite = registerOutput<String?>('containerWrite');
+    contentType = registerOutput<String?>('contentType');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.storageClass = registerOutput<String>('storageClass');
-    this.storagePolicy = registerOutput<String>('storagePolicy');
-    this.versioning = registerOutput<bool?>('versioning');
-    this.versioningLegacy = registerOutput<ContainerVersioningLegacy?>('versioningLegacy');
+    region = registerOutput<String>('region');
+    storageClass = registerOutput<String>('storageClass');
+    storagePolicy = registerOutput<String>('storagePolicy');
+    versioning = registerOutput<bool?>('versioning');
+    versioningLegacy = registerOutput<ContainerVersioningLegacy?>(
+      'versioningLegacy',
+    );
   }
 }

@@ -161,16 +161,22 @@ import 'system_data_response.dart';
 class SignalRCustomDomain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Reference to a resource.
   late final pulumi.Output<ResourceReferenceResponse> customCertificate;
+
   /// The custom domain name.
   late final pulumi.Output<String> domainName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -183,17 +189,19 @@ class SignalRCustomDomain extends pulumi.CustomResource {
     SignalRCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:signalrservice:SignalRCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customCertificate = registerOutput<ResourceReferenceResponse>('customCertificate');
-    this.domainName = registerOutput<String>('domainName');
+         'azure-native:signalrservice:SignalRCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customCertificate = registerOutput<ResourceReferenceResponse>(
+      'customCertificate',
+    );
+    domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

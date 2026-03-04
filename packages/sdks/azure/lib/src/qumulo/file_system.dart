@@ -346,7 +346,7 @@ import 'file_system_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Qumulo.Storage` - 2024-06-19
@@ -361,26 +361,37 @@ import 'file_system_state.dart';
 class FileSystem extends pulumi.CustomResource {
   /// The initial administrator password of the Azure Native Qumulo Scalable File System. Changing this forces a new resource to be created.
   late final pulumi.Output<String> adminPassword;
+
   /// The email address used for the Azure Native Qumulo Scalable File System. Changing this forces a new resource to be created.
   late final pulumi.Output<String> email;
+
   /// The Azure Region where the Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Azure Native Qumulo Scalable File System resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the marketplace offer ID. Defaults to `qumulo-saas-mpp`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> offerId;
+
   /// Specifies the marketplace plan ID. Defaults to `azure-native-qumulo-v3`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> planId;
+
   /// Specifies the marketplace publisher ID. Defaults to `qumulo1584033880660`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> publisherId;
+
   /// Specifies the name of the Resource Group within which this Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The storage Sku. Possible values are `Cold_LRS`, `Hot_LRS` and `Hot_ZRS`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageSku;
+
   /// The delegated subnet ID for Vnet injection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags which should be assigned to the File System.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zone;
 
@@ -393,23 +404,23 @@ class FileSystem extends pulumi.CustomResource {
     FileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:qumulo/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPassword = registerOutput<String>('adminPassword');
-    this.email = registerOutput<String>('email');
-    this.location = registerOutput<String>('location');
+         'azure:qumulo/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPassword = registerOutput<String>('adminPassword');
+    email = registerOutput<String>('email');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offerId = registerOutput<String?>('offerId');
-    this.planId = registerOutput<String?>('planId');
-    this.publisherId = registerOutput<String?>('publisherId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageSku = registerOutput<String>('storageSku');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String>('zone');
+    offerId = registerOutput<String?>('offerId');
+    planId = registerOutput<String?>('planId');
+    publisherId = registerOutput<String?>('publisherId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageSku = registerOutput<String>('storageSku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [FileSystem] resource's state with the given [name] and [id].
@@ -430,22 +441,22 @@ class FileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:qumulo/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPassword = registerOutput<String>('adminPassword');
-    this.email = registerOutput<String>('email');
-    this.location = registerOutput<String>('location');
+         'azure:qumulo/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPassword = registerOutput<String>('adminPassword');
+    email = registerOutput<String>('email');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offerId = registerOutput<String?>('offerId');
-    this.planId = registerOutput<String?>('planId');
-    this.publisherId = registerOutput<String?>('publisherId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageSku = registerOutput<String>('storageSku');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String>('zone');
+    offerId = registerOutput<String?>('offerId');
+    planId = registerOutput<String?>('planId');
+    publisherId = registerOutput<String?>('publisherId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageSku = registerOutput<String>('storageSku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String>('zone');
   }
 }

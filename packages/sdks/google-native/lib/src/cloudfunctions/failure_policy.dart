@@ -9,20 +9,21 @@ class FailurePolicy {
 
   /// Creates a new [FailurePolicy].
   /// [retry] If specified, then the function will be retried in case of a failure.
-  FailurePolicy({
-    this.retry,
-  });
+  FailurePolicy({this.retry});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'retry': ?retry,
-    };
+    return <String, dynamic>{'retry': ?retry};
   }
 
   factory FailurePolicy.fromMap(Map<String, dynamic> map) {
     return FailurePolicy(
-      retry: map['retry'] == null ? null : ((map['retry']! as Map).cast<String, dynamic>()).input(),
+      retry: (() {
+        final guardedValue = map['retry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

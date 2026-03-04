@@ -144,16 +144,22 @@ import 'secret_value_args.dart';
 class SecretValue extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
+
   /// The actual value of the secret.
   late final pulumi.Output<String?> value;
 
@@ -166,17 +172,17 @@ class SecretValue extends pulumi.CustomResource {
     SecretValueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabricmesh:SecretValue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:servicefabricmesh:SecretValue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

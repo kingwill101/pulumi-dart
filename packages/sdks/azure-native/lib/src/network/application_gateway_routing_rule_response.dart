@@ -7,22 +7,31 @@ import 'sub_resource_response.dart';
 class ApplicationGatewayRoutingRuleResponse {
   /// Backend address pool resource of the application gateway.
   final pulumi.Input<SubResourceResponse>? backendAddressPool;
+
   /// Backend settings resource of the application gateway.
   final pulumi.Input<SubResourceResponse>? backendSettings;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Listener resource of the application gateway.
   final pulumi.Input<SubResourceResponse>? listener;
+
   /// Name of the routing rule that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// Priority of the routing rule.
   final pulumi.Input<int> priority;
+
   /// The provisioning state of the request routing rule resource.
   final pulumi.Input<String> provisioningState;
+
   /// Rule type.
   final pulumi.Input<String>? ruleType;
+
   /// Type of the resource.
   final pulumi.Input<String> type;
 
@@ -52,11 +61,23 @@ class ApplicationGatewayRoutingRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
-      'backendSettings': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(backendSettings, (value) => value.toMap()),
+      'backendAddressPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(backendAddressPool, (value) => value.toMap()),
+      'backendSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(backendSettings, (value) => value.toMap()),
       'etag': etag,
       'id': ?id,
-      'listener': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(listener, (value) => value.toMap()),
+      'listener':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(listener, (value) => value.toMap()),
       'name': ?name,
       'priority': priority,
       'provisioningState': provisioningState,
@@ -65,19 +86,58 @@ class ApplicationGatewayRoutingRuleResponse {
     };
   }
 
-  factory ApplicationGatewayRoutingRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayRoutingRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayRoutingRuleResponse(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
-      backendSettings: map['backendSettings'] == null ? null : (SubResourceResponse.fromMap((map['backendSettings']! as Map).cast<String, dynamic>())).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      listener: map['listener'] == null ? null : (SubResourceResponse.fromMap((map['listener']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: (map['priority'] as int).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
-      type: (map['type'] as String).input(),
+      backendAddressPool: (() {
+        final guardedValue = map['backendAddressPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      backendSettings: (() {
+        final guardedValue = map['backendSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listener: (() {
+        final guardedValue = map['listener'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      ruleType: (() {
+        final guardedValue = map['ruleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

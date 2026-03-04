@@ -5,7 +5,7 @@ import 'key_ring_state.dart';
 /// A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
 ///
 ///
-/// > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
+/// &gt; **Note:** KeyRings cannot be deleted from Google Cloud Platform.
 /// Destroying a provider-managed KeyRing will remove it from state but
 /// *will not delete the resource from the project.*
 ///
@@ -142,8 +142,10 @@ class KeyRing extends pulumi.CustomResource {
   /// The location for the KeyRing.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   late final pulumi.Output<String> location;
+
   /// The resource name for the KeyRing.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -157,14 +159,14 @@ class KeyRing extends pulumi.CustomResource {
     KeyRingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/keyRing:KeyRing',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'gcp:kms/keyRing:KeyRing',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [KeyRing] resource's state with the given [name] and [id].
@@ -185,13 +187,13 @@ class KeyRing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/keyRing:KeyRing',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'gcp:kms/keyRing:KeyRing',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

@@ -5,18 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceEnhancedSecurityCompliance {
   /// Enables automatic cluster updates for this workspace. Defaults to `false`.
   final pulumi.Input<bool>? automaticClusterUpdateEnabled;
+
   /// Enables compliance security profile for this workspace. Defaults to `false`.
   ///
-  /// > **Note:** Changing the value of `compliance_security_profile_enabled` from `true` to `false` forces a replacement of the Databricks workspace.
+  /// &gt; **Note:** Changing the value of `compliance_security_profile_enabled` from `true` to `false` forces a replacement of the Databricks workspace.
   ///
-  /// > **Note:** The attributes `automatic_cluster_update_enabled` and `enhanced_security_monitoring_enabled` must be set to `true` in order to set `compliance_security_profile_enabled` to `true`.
+  /// &gt; **Note:** The attributes `automatic_cluster_update_enabled` and `enhanced_security_monitoring_enabled` must be set to `true` in order to set `compliance_security_profile_enabled` to `true`.
   final pulumi.Input<bool>? complianceSecurityProfileEnabled;
+
   /// A list of standards to enforce on this workspace. Possible values include `HIPAA` and `PCI_DSS`.
   ///
-  /// > **Note:** `compliance_security_profile_enabled` must be set to `true` in order to use `compliance_security_profile_standards`.
+  /// &gt; **Note:** `compliance_security_profile_enabled` must be set to `true` in order to use `compliance_security_profile_standards`.
   ///
-  /// > **Note:** Removing a standard from the `compliance_security_profile_standards` list forces a replacement of the Databricks workspace.
+  /// &gt; **Note:** Removing a standard from the `compliance_security_profile_standards` list forces a replacement of the Databricks workspace.
   final pulumi.Input<List<String>>? complianceSecurityProfileStandards;
+
   /// Enables enhanced security monitoring for this workspace. Defaults to `false`.
   final pulumi.Input<bool>? enhancedSecurityMonitoringEnabled;
 
@@ -41,13 +44,30 @@ class WorkspaceEnhancedSecurityCompliance {
     };
   }
 
-  factory WorkspaceEnhancedSecurityCompliance.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceEnhancedSecurityCompliance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceEnhancedSecurityCompliance(
-      automaticClusterUpdateEnabled: map['automaticClusterUpdateEnabled'] == null ? null : (map['automaticClusterUpdateEnabled']! as bool).input(),
-      complianceSecurityProfileEnabled: map['complianceSecurityProfileEnabled'] == null ? null : (map['complianceSecurityProfileEnabled']! as bool).input(),
-      complianceSecurityProfileStandards: map['complianceSecurityProfileStandards'] == null ? null : ((map['complianceSecurityProfileStandards']! as List).cast<String>()).input(),
-      enhancedSecurityMonitoringEnabled: map['enhancedSecurityMonitoringEnabled'] == null ? null : (map['enhancedSecurityMonitoringEnabled']! as bool).input(),
+      automaticClusterUpdateEnabled: (() {
+        final guardedValue = map['automaticClusterUpdateEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      complianceSecurityProfileEnabled: (() {
+        final guardedValue = map['complianceSecurityProfileEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      complianceSecurityProfileStandards: (() {
+        final guardedValue = map['complianceSecurityProfileStandards'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enhancedSecurityMonitoringEnabled: (() {
+        final guardedValue = map['enhancedSecurityMonitoringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -14,16 +14,15 @@ enum HostType {
   valueGCPVirtualMachine("GCP Virtual Machine"),
   valueOther("Other");
 
-  const HostType(this.value);
-  final String value;
+  const HostType(this.wireValue);
+  final String wireValue;
 
   static HostType fromValue(String value) {
     for (final item in HostType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostType value: $value');
   }
 }
-

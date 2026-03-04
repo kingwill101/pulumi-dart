@@ -3,16 +3,17 @@ enum SystemAssignedServiceIdentityType {
   valueNone("None"),
   valueSystemAssigned("SystemAssigned");
 
-  const SystemAssignedServiceIdentityType(this.value);
-  final String value;
+  const SystemAssignedServiceIdentityType(this.wireValue);
+  final String wireValue;
 
   static SystemAssignedServiceIdentityType fromValue(String value) {
     for (final item in SystemAssignedServiceIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SystemAssignedServiceIdentityType value: $value');
+    throw ArgumentError(
+      'Unknown SystemAssignedServiceIdentityType value: $value',
+    );
   }
 }
-

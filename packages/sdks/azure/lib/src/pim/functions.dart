@@ -142,7 +142,7 @@ import 'get_role_management_policy_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2022-04-01
@@ -479,7 +479,7 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2020-10-01

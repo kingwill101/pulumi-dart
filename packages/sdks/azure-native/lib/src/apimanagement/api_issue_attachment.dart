@@ -164,14 +164,19 @@ import 'api_issue_attachment_args.dart';
 class ApiIssueAttachment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An HTTP link or Base64-encoded binary data.
   late final pulumi.Output<String> content;
+
   /// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
   late final pulumi.Output<String> contentFormat;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Filename by which the binary data will be saved.
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -184,16 +189,16 @@ class ApiIssueAttachment extends pulumi.CustomResource {
     ApiIssueAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiIssueAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.content = registerOutput<String>('content');
-    this.contentFormat = registerOutput<String>('contentFormat');
+         'azure-native:apimanagement:ApiIssueAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String>('content');
+    contentFormat = registerOutput<String>('contentFormat');
     this.name = registerOutput<String>('name');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_inspector;
-
 export 'inspector/assessment_target.dart';
 export 'inspector/assessment_target_args.dart';
 export 'inspector/assessment_target_state.dart';

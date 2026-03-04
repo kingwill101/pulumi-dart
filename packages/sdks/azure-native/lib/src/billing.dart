@@ -1,5 +1,3 @@
-library module_billing;
-
 export 'billing/associated_tenant.dart';
 export 'billing/associated_tenant_args.dart';
 export 'billing/associated_tenant_properties.dart';

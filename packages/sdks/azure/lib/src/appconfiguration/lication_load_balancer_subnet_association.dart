@@ -339,7 +339,7 @@ import 'lication_load_balancer_subnet_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceNetworking` - 2025-01-01
@@ -354,12 +354,15 @@ import 'lication_load_balancer_subnet_association_state.dart';
 class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationLoadBalancerId;
+
   /// The name which should be used for this Application Gateway for Containers Association. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the subnet which the Application Gateway for Containers associated to.
   ///
-  /// > **Note:** The subnet to be used must have a delegation for  `Microsoft.ServiceNetworking/trafficControllers` as shown in the example above.
+  /// &gt; **Note:** The subnet to be used must have a delegation for  `Microsoft.ServiceNetworking/trafficControllers` as shown in the example above.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Association.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -372,15 +375,17 @@ class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
     LicationLoadBalancerSubnetAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+         'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationLoadBalancerId = registerOutput<String>(
+      'applicationLoadBalancerId',
+    );
     this.name = registerOutput<String>('name');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [LicationLoadBalancerSubnetAssociation] resource's state with the given [name] and [id].
@@ -401,14 +406,16 @@ class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+         'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationLoadBalancerId = registerOutput<String>(
+      'applicationLoadBalancerId',
+    );
     this.name = registerOutput<String>('name');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -4,16 +4,15 @@ enum ReadableSecondary {
   all("All"),
   readOnly("Read_Only");
 
-  const ReadableSecondary(this.value);
-  final String value;
+  const ReadableSecondary(this.wireValue);
+  final String wireValue;
 
   static ReadableSecondary fromValue(String value) {
     for (final item in ReadableSecondary.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReadableSecondary value: $value');
   }
 }
-

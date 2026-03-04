@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cross_account_attachment_args.dart';
-import 'cross_account_attachment_resource.dart';
 import 'cross_account_attachment_state.dart';
 
 /// Resource for managing an AWS Global Accelerator Cross Account Attachment.
@@ -243,20 +242,27 @@ import 'cross_account_attachment_state.dart';
 class CrossAccountAttachment extends pulumi.CustomResource {
   /// ARN of the Cross Account Attachment.
   late final pulumi.Output<String> arn;
+
   /// Creation Time when the Cross Account Attachment.
   late final pulumi.Output<String> createdTime;
+
   /// Last modified time of the Cross Account Attachment.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Name of the Cross Account Attachment.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
   late final pulumi.Output<List<String>?> principals;
+
   /// List of resources to be associated with the accelerator.
-  late final pulumi.Output<List<CrossAccountAttachmentResource>?> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -269,19 +275,19 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     CrossAccountAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.principals = registerOutput<List<String>?>('principals');
-    this.resources = registerOutput<List<CrossAccountAttachmentResource>?>('resources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    principals = registerOutput<List<String>?>('principals');
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [CrossAccountAttachment] resource's state with the given [name] and [id].
@@ -302,18 +308,18 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.principals = registerOutput<List<String>?>('principals');
-    this.resources = registerOutput<List<CrossAccountAttachmentResource>?>('resources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    principals = registerOutput<List<String>?>('principals');
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

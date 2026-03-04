@@ -6,20 +6,28 @@ import 'api_operation_response_header_example.dart';
 class ApiOperationResponseHeader {
   /// The default value for this Header.
   final pulumi.Input<String>? defaultValue;
+
   /// A description of this Header.
   final pulumi.Input<String>? description;
+
   /// One or more `example` blocks as defined above.
   final pulumi.Input<List<ApiOperationResponseHeaderExample>>? examples;
+
   /// The Name of this Header.
   final pulumi.Input<String> name;
+
   /// Is this Header Required?
   final pulumi.Input<bool> required;
+
   /// The name of the Schema.
   final pulumi.Input<String>? schemaId;
+
   /// The Type of this Header, such as a `string`.
   final pulumi.Input<String> type;
+
   /// The type name defined by the Schema.
   final pulumi.Input<String>? typeName;
+
   /// One or more acceptable values for this Header.
   final pulumi.Input<List<String>>? values;
 
@@ -49,7 +57,18 @@ class ApiOperationResponseHeader {
     return <String, dynamic>{
       'defaultValue': ?defaultValue,
       'description': ?description,
-      'examples': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationResponseHeaderExample>, List<Map<String, dynamic>>>(examples, (value) => pulumi.Input.encodeList<ApiOperationResponseHeaderExample, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'examples':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApiOperationResponseHeaderExample>,
+            List<Map<String, dynamic>>
+          >(
+            examples,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiOperationResponseHeaderExample,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'required': required,
       'schemaId': ?schemaId,
@@ -61,16 +80,46 @@ class ApiOperationResponseHeader {
 
   factory ApiOperationResponseHeader.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponseHeader(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeaderExample>(map['examples']!, (value) => ApiOperationResponseHeaderExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      required: (map['required'] as bool).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
-      type: (map['type'] as String).input(),
-      typeName: map['typeName'] == null ? null : (map['typeName']! as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      examples: (() {
+        final guardedValue = map['examples'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApiOperationResponseHeaderExample>(
+            guardedValue,
+            (value) => ApiOperationResponseHeaderExample.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      required: pulumi.Input.fromValue(map['required'] as bool),
+      schemaId: (() {
+        final guardedValue = map['schemaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      typeName: (() {
+        final guardedValue = map['typeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

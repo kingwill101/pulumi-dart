@@ -7,8 +7,10 @@ import 'azure_key_vault_secret_reference_response.dart';
 class SSISAccessCredentialResponse {
   /// Domain for windows authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> domain;
+
   /// Password for windows authentication.
   final pulumi.Input<AzureKeyVaultSecretReferenceResponse> password;
+
   /// UseName for windows authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> userName;
 
@@ -25,17 +27,24 @@ class SSISAccessCredentialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password':
+          pulumi.Input.mapInputValue<
+            AzureKeyVaultSecretReferenceResponse,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory SSISAccessCredentialResponse.fromMap(Map<String, dynamic> map) {
     return SSISAccessCredentialResponse(
-      domain: (map['domain']).input(),
-      password: (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      userName: (map['userName']).input(),
+      domain: pulumi.Input.fromValue(map['domain']),
+      password: pulumi.Input.fromValue(
+        AzureKeyVaultSecretReferenceResponse.fromMap(
+          (map['password']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      userName: pulumi.Input.fromValue(map['userName']),
     );
   }
 }
-

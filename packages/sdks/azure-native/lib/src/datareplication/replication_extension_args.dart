@@ -10,10 +10,13 @@ import 'replication_extension_model_properties.dart';
 class ReplicationExtensionArgs {
   /// Replication extension model properties.
   final pulumi.Input<ReplicationExtensionModelProperties> properties;
+
   /// The replication extension name.
   final pulumi.Input<String>? replicationExtensionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The vault name.
   final pulumi.Input<String> vaultName;
 
@@ -31,7 +34,11 @@ class ReplicationExtensionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<ReplicationExtensionModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ReplicationExtensionModelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'replicationExtensionName': ?replicationExtensionName,
       'resourceGroupName': resourceGroupName,
       'vaultName': vaultName,
@@ -40,11 +47,20 @@ class ReplicationExtensionArgs {
 
   factory ReplicationExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationExtensionArgs(
-      properties: (ReplicationExtensionModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      replicationExtensionName: map['replicationExtensionName'] == null ? null : (map['replicationExtensionName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      properties: pulumi.Input.fromValue(
+        ReplicationExtensionModelProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      replicationExtensionName: (() {
+        final guardedValue = map['replicationExtensionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

@@ -16,17 +16,15 @@ class EnterpriseCrmEventbusProtoCoordinateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x': x,
-      'y': y,
-    };
+    return <String, dynamic>{'x': x, 'y': y};
   }
 
-  factory EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCoordinateResponse(
-      x: (map['x'] as int).input(),
-      y: (map['y'] as int).input(),
+      x: pulumi.Input.fromValue(map['x'] as int),
+      y: pulumi.Input.fromValue(map['y'] as int),
     );
   }
 }
-

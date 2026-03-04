@@ -8,20 +8,41 @@ class ResponseHeadersPolicyRemoveHeadersConfig {
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfig].
   /// [items] Optional.
-  ResponseHeadersPolicyRemoveHeadersConfig({
-    this.items,
-  });
+  ResponseHeadersPolicyRemoveHeadersConfig({this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?pulumi.Input.mapOptionalInputValue<List<ResponseHeadersPolicyRemoveHeadersConfigItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ResponseHeadersPolicyRemoveHeadersConfigItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'items':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResponseHeadersPolicyRemoveHeadersConfigItem>,
+            List<Map<String, dynamic>>
+          >(
+            items,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResponseHeadersPolicyRemoveHeadersConfigItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ResponseHeadersPolicyRemoveHeadersConfig.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicyRemoveHeadersConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicyRemoveHeadersConfig(
-      items: map['items'] == null ? null : ((pulumi.Input.decodeList<ResponseHeadersPolicyRemoveHeadersConfigItem>(map['items']!, (value) => ResponseHeadersPolicyRemoveHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      items: (() {
+        final guardedValue = map['items'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResponseHeadersPolicyRemoveHeadersConfigItem>(
+            guardedValue,
+            (value) => ResponseHeadersPolicyRemoveHeadersConfigItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_macie2;
-
 export 'macie2/account.dart';
 export 'macie2/account_args.dart';
 export 'macie2/account_state.dart';

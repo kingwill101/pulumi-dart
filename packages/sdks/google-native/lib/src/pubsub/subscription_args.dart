@@ -15,36 +15,51 @@ import 'retry_policy.dart';
 class SubscriptionArgs {
   /// Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
   final pulumi.Input<int>? ackDeadlineSeconds;
+
   /// Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
   final pulumi.Input<BigQueryConfig>? bigqueryConfig;
+
   /// Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
   final pulumi.Input<CloudStorageConfig>? cloudStorageConfig;
+
   /// Optional. A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
   final pulumi.Input<DeadLetterPolicy>? deadLetterPolicy;
+
   /// Optional. Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
   final pulumi.Input<bool>? detached;
+
   /// Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
   final pulumi.Input<bool>? enableExactlyOnceDelivery;
+
   /// Optional. If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
   final pulumi.Input<bool>? enableMessageOrdering;
+
   /// Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
   final pulumi.Input<ExpirationPolicy>? expirationPolicy;
+
   /// Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
   final pulumi.Input<String>? filter;
+
   /// Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Optional. How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
   final pulumi.Input<String>? messageRetentionDuration;
+
   /// The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Optional. If push delivery is used with this subscription, this field is used to configure it.
   final pulumi.Input<PushConfig>? pushConfig;
+
   /// Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
   final pulumi.Input<bool>? retainAckedMessages;
+
   /// Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
   final pulumi.Input<RetryPolicy>? retryPolicy;
   final pulumi.Input<String> subscriptionId;
+
   /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
   final pulumi.Input<String> topic;
 
@@ -91,21 +106,45 @@ class SubscriptionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ackDeadlineSeconds': ?ackDeadlineSeconds,
-      'bigqueryConfig': ?pulumi.Input.mapOptionalInputValue<BigQueryConfig, Map<String, dynamic>>(bigqueryConfig, (value) => value.toMap()),
-      'cloudStorageConfig': ?pulumi.Input.mapOptionalInputValue<CloudStorageConfig, Map<String, dynamic>>(cloudStorageConfig, (value) => value.toMap()),
-      'deadLetterPolicy': ?pulumi.Input.mapOptionalInputValue<DeadLetterPolicy, Map<String, dynamic>>(deadLetterPolicy, (value) => value.toMap()),
+      'bigqueryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BigQueryConfig,
+            Map<String, dynamic>
+          >(bigqueryConfig, (value) => value.toMap()),
+      'cloudStorageConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudStorageConfig,
+            Map<String, dynamic>
+          >(cloudStorageConfig, (value) => value.toMap()),
+      'deadLetterPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeadLetterPolicy,
+            Map<String, dynamic>
+          >(deadLetterPolicy, (value) => value.toMap()),
       'detached': ?detached,
       'enableExactlyOnceDelivery': ?enableExactlyOnceDelivery,
       'enableMessageOrdering': ?enableMessageOrdering,
-      'expirationPolicy': ?pulumi.Input.mapOptionalInputValue<ExpirationPolicy, Map<String, dynamic>>(expirationPolicy, (value) => value.toMap()),
+      'expirationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExpirationPolicy,
+            Map<String, dynamic>
+          >(expirationPolicy, (value) => value.toMap()),
       'filter': ?filter,
       'labels': ?labels,
       'messageRetentionDuration': ?messageRetentionDuration,
       'name': ?name,
       'project': ?project,
-      'pushConfig': ?pulumi.Input.mapOptionalInputValue<PushConfig, Map<String, dynamic>>(pushConfig, (value) => value.toMap()),
+      'pushConfig':
+          ?pulumi.Input.mapOptionalInputValue<PushConfig, Map<String, dynamic>>(
+            pushConfig,
+            (value) => value.toMap(),
+          ),
       'retainAckedMessages': ?retainAckedMessages,
-      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'retryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetryPolicy,
+            Map<String, dynamic>
+          >(retryPolicy, (value) => value.toMap()),
       'subscriptionId': subscriptionId,
       'topic': topic,
     };
@@ -113,25 +152,108 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds']! as int).input(),
-      bigqueryConfig: map['bigqueryConfig'] == null ? null : (BigQueryConfig.fromMap((map['bigqueryConfig']! as Map).cast<String, dynamic>())).input(),
-      cloudStorageConfig: map['cloudStorageConfig'] == null ? null : (CloudStorageConfig.fromMap((map['cloudStorageConfig']! as Map).cast<String, dynamic>())).input(),
-      deadLetterPolicy: map['deadLetterPolicy'] == null ? null : (DeadLetterPolicy.fromMap((map['deadLetterPolicy']! as Map).cast<String, dynamic>())).input(),
-      detached: map['detached'] == null ? null : (map['detached']! as bool).input(),
-      enableExactlyOnceDelivery: map['enableExactlyOnceDelivery'] == null ? null : (map['enableExactlyOnceDelivery']! as bool).input(),
-      enableMessageOrdering: map['enableMessageOrdering'] == null ? null : (map['enableMessageOrdering']! as bool).input(),
-      expirationPolicy: map['expirationPolicy'] == null ? null : (ExpirationPolicy.fromMap((map['expirationPolicy']! as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : (map['messageRetentionDuration']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pushConfig: map['pushConfig'] == null ? null : (PushConfig.fromMap((map['pushConfig']! as Map).cast<String, dynamic>())).input(),
-      retainAckedMessages: map['retainAckedMessages'] == null ? null : (map['retainAckedMessages']! as bool).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      topic: (map['topic'] as String).input(),
+      ackDeadlineSeconds: (() {
+        final guardedValue = map['ackDeadlineSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bigqueryConfig: (() {
+        final guardedValue = map['bigqueryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BigQueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      cloudStorageConfig: (() {
+        final guardedValue = map['cloudStorageConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudStorageConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deadLetterPolicy: (() {
+        final guardedValue = map['deadLetterPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeadLetterPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      detached: (() {
+        final guardedValue = map['detached'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableExactlyOnceDelivery: (() {
+        final guardedValue = map['enableExactlyOnceDelivery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableMessageOrdering: (() {
+        final guardedValue = map['enableMessageOrdering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expirationPolicy: (() {
+        final guardedValue = map['expirationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExpirationPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      messageRetentionDuration: (() {
+        final guardedValue = map['messageRetentionDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pushConfig: (() {
+        final guardedValue = map['pushConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PushConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      retainAckedMessages: (() {
+        final guardedValue = map['retainAckedMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      retryPolicy: (() {
+        final guardedValue = map['retryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

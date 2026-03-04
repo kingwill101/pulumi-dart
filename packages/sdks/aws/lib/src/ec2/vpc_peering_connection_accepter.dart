@@ -9,9 +9,7 @@ class VpcPeeringConnectionAccepter {
 
   /// Creates a new [VpcPeeringConnectionAccepter].
   /// [allowRemoteVpcDnsResolution] Allow a local VPC to resolve public DNS hostnames to
-  VpcPeeringConnectionAccepter({
-    this.allowRemoteVpcDnsResolution,
-  });
+  VpcPeeringConnectionAccepter({this.allowRemoteVpcDnsResolution});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class VpcPeeringConnectionAccepter {
 
   factory VpcPeeringConnectionAccepter.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepter(
-      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : ((map['allowRemoteVpcDnsResolution'] as bool).input()).input(),
+      allowRemoteVpcDnsResolution: (() {
+        final guardedValue = map['allowRemoteVpcDnsResolution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

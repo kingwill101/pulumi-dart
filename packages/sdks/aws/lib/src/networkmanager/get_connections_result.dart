@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConnections.
 class GetConnectionsResult {
   final String? deviceId;
   final String globalNetworkId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IDs of the connections.
   final List<String> ids;
   final Map<String, String>? tags;
@@ -37,12 +38,19 @@ class GetConnectionsResult {
 
   factory GetConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionsResult(
-      deviceId: map['deviceId'] == null ? null : map['deviceId'] as String,
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

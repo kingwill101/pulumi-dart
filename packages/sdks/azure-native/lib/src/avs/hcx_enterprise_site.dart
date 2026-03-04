@@ -135,16 +135,22 @@ import 'system_data_response.dart';
 class HcxEnterpriseSite extends pulumi.CustomResource {
   /// The activation key
   late final pulumi.Output<String> activationKey;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The status of the HCX Enterprise Site
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -157,17 +163,17 @@ class HcxEnterpriseSite extends pulumi.CustomResource {
     HcxEnterpriseSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:HcxEnterpriseSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activationKey = registerOutput<String>('activationKey');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:avs:HcxEnterpriseSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activationKey = registerOutput<String>('activationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

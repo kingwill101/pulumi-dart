@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopingAnswer {
   /// Question answer value list.
   final pulumi.Input<List<String>> answers;
+
   /// Question id.
   final pulumi.Input<String> questionId;
 
   /// Creates a new [ScopingAnswer].
   /// [answers] Question answer value list.
   /// [questionId] Question id.
-  ScopingAnswer({
-    required this.answers,
-    required this.questionId,
-  });
+  ScopingAnswer({required this.answers, required this.questionId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'answers': answers,
-      'questionId': questionId,
-    };
+    return <String, dynamic>{'answers': answers, 'questionId': questionId};
   }
 
   factory ScopingAnswer.fromMap(Map<String, dynamic> map) {
     return ScopingAnswer(
-      answers: ((map['answers'] as List).cast<String>()).input(),
-      questionId: (map['questionId'] as String).input(),
+      answers: pulumi.Input.fromValue((map['answers'] as List).cast<String>()),
+      questionId: pulumi.Input.fromValue(map['questionId'] as String),
     );
   }
 }
-

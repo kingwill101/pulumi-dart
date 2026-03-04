@@ -8,18 +8,25 @@ import 'alert_processing_rule_suppression_schedule.dart';
 class AlertProcessingRuleSuppressionState {
   /// A `condition` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionCondition>? condition;
+
   /// Specifies a description for the Alert Processing Rule.
   final pulumi.Input<String>? description;
+
   /// Should the Alert Processing Rule be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The name which should be used for this Alert Processing Rule. Changing this forces a new Alert Processing Rule to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Alert Processing Rule should exist. Changing this forces a new Alert Processing Rule to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `schedule` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionSchedule>? schedule;
+
   /// A list of resource IDs which will be the target of Alert Processing Rule.
   final pulumi.Input<List<String>>? scopes;
+
   /// A mapping of tags which should be assigned to the Alert Processing Rule.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,28 +52,79 @@ class AlertProcessingRuleSuppressionState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<AlertProcessingRuleSuppressionCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertProcessingRuleSuppressionCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'description': ?description,
       'enabled': ?enabled,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<AlertProcessingRuleSuppressionSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertProcessingRuleSuppressionSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'scopes': ?scopes,
       'tags': ?tags,
     };
   }
 
-  factory AlertProcessingRuleSuppressionState.fromMap(Map<String, dynamic> map) {
+  factory AlertProcessingRuleSuppressionState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertProcessingRuleSuppressionState(
-      condition: map['condition'] == null ? null : (AlertProcessingRuleSuppressionCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      schedule: map['schedule'] == null ? null : (AlertProcessingRuleSuppressionSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertProcessingRuleSuppressionCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertProcessingRuleSuppressionSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -7,22 +7,31 @@ import 'custom_plugin_location.dart';
 class CustomPluginState {
   /// the Amazon Resource Name (ARN) of the custom plugin.
   final pulumi.Input<String>? arn;
+
   /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
   final pulumi.Input<String>? contentType;
+
   /// A summary description of the custom plugin.
   final pulumi.Input<String>? description;
+
   /// an ID of the latest successfully created revision of the custom plugin.
   final pulumi.Input<int>? latestRevision;
+
   /// Information about the location of a custom plugin. See `location` Block for details.
   final pulumi.Input<CustomPluginLocation>? location;
+
   /// The name of the custom plugin..
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// the state of the custom plugin.
   final pulumi.Input<String>? state;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -56,7 +65,11 @@ class CustomPluginState {
       'contentType': ?contentType,
       'description': ?description,
       'latestRevision': ?latestRevision,
-      'location': ?pulumi.Input.mapOptionalInputValue<CustomPluginLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'location':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomPluginLocation,
+            Map<String, dynamic>
+          >(location, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
       'state': ?state,
@@ -67,17 +80,64 @@ class CustomPluginState {
 
   factory CustomPluginState.fromMap(Map<String, dynamic> map) {
     return CustomPluginState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      latestRevision: map['latestRevision'] == null ? null : ((map['latestRevision'] as int).input()).input(),
-      location: map['location'] == null ? null : ((CustomPluginLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latestRevision: (() {
+        final guardedValue = map['latestRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomPluginLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

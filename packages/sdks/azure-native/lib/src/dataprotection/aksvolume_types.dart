@@ -2,16 +2,15 @@ enum AKSVolumeTypes {
   valueAzureDisk("AzureDisk"),
   valueAzureFileShareSMB("AzureFileShareSMB");
 
-  const AKSVolumeTypes(this.value);
-  final String value;
+  const AKSVolumeTypes(this.wireValue);
+  final String wireValue;
 
   static AKSVolumeTypes fromValue(String value) {
     for (final item in AKSVolumeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AKSVolumeTypes value: $value');
   }
 }
-

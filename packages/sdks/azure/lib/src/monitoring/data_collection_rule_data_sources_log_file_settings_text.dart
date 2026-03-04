@@ -18,10 +18,13 @@ class DataCollectionRuleDataSourcesLogFileSettingsText {
     };
   }
 
-  factory DataCollectionRuleDataSourcesLogFileSettingsText.fromMap(Map<String, dynamic> map) {
+  factory DataCollectionRuleDataSourcesLogFileSettingsText.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataCollectionRuleDataSourcesLogFileSettingsText(
-      recordStartTimestampFormat: (map['recordStartTimestampFormat'] as String).input(),
+      recordStartTimestampFormat: pulumi.Input.fromValue(
+        map['recordStartTimestampFormat'] as String,
+      ),
     );
   }
 }
-

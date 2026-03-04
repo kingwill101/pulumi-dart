@@ -7,18 +7,25 @@ import 'vault_properties_response.dart';
 class GetVaultResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified identifier of the key vault resource.
   final String id;
+
   /// Azure location of the key vault resource.
   final String? location;
+
   /// Name of the key vault resource.
   final String name;
+
   /// Properties of the vault
   final VaultPropertiesResponse properties;
+
   /// System metadata for the key vault.
   final SystemDataResponse systemData;
+
   /// Tags assigned to the key vault resource.
   final Map<String, String>? tags;
+
   /// Resource type of the key vault resource.
   final String type;
 
@@ -59,13 +66,24 @@ class GetVaultResult {
     return GetVaultResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: VaultPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: VaultPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

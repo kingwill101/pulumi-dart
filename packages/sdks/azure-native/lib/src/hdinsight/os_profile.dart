@@ -10,20 +10,29 @@ class OsProfile {
 
   /// Creates a new [OsProfile].
   /// [linuxOperatingSystemProfile] The Linux OS profile.
-  OsProfile({
-    this.linuxOperatingSystemProfile,
-  });
+  OsProfile({this.linuxOperatingSystemProfile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxOperatingSystemProfile': ?pulumi.Input.mapOptionalInputValue<LinuxOperatingSystemProfile, Map<String, dynamic>>(linuxOperatingSystemProfile, (value) => value.toMap()),
+      'linuxOperatingSystemProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinuxOperatingSystemProfile,
+            Map<String, dynamic>
+          >(linuxOperatingSystemProfile, (value) => value.toMap()),
     };
   }
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      linuxOperatingSystemProfile: map['linuxOperatingSystemProfile'] == null ? null : (LinuxOperatingSystemProfile.fromMap((map['linuxOperatingSystemProfile']! as Map).cast<String, dynamic>())).input(),
+      linuxOperatingSystemProfile: (() {
+        final guardedValue = map['linuxOperatingSystemProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinuxOperatingSystemProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

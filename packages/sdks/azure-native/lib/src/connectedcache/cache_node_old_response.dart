@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheNodeOldResponse {
   /// statusCode used to get code details of Mcc response object
   final pulumi.Input<String>? statusCode;
+
   /// statusDetails used to get inner details of Mcc response object
   final pulumi.Input<String>? statusDetails;
+
   /// statusText used to get status details in string format of Mcc response object
   final pulumi.Input<String>? statusText;
 
@@ -15,11 +17,7 @@ class CacheNodeOldResponse {
   /// [statusCode] statusCode used to get code details of Mcc response object
   /// [statusDetails] statusDetails used to get inner details of Mcc response object
   /// [statusText] statusText used to get status details in string format of Mcc response object
-  CacheNodeOldResponse({
-    this.statusCode,
-    this.statusDetails,
-    this.statusText,
-  });
+  CacheNodeOldResponse({this.statusCode, this.statusDetails, this.statusText});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class CacheNodeOldResponse {
 
   factory CacheNodeOldResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeOldResponse(
-      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
-      statusText: map['statusText'] == null ? null : (map['statusText']! as String).input(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusDetails: (() {
+        final guardedValue = map['statusDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusText: (() {
+        final guardedValue = map['statusText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

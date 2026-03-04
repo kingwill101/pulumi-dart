@@ -9,16 +9,17 @@ enum VersionInboundServicesItemAppengineV1beta {
   inboundServiceChannelPresence("INBOUND_SERVICE_CHANNEL_PRESENCE"),
   inboundServiceWarmup("INBOUND_SERVICE_WARMUP");
 
-  const VersionInboundServicesItemAppengineV1beta(this.value);
-  final String value;
+  const VersionInboundServicesItemAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static VersionInboundServicesItemAppengineV1beta fromValue(String value) {
     for (final item in VersionInboundServicesItemAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VersionInboundServicesItemAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VersionInboundServicesItemAppengineV1beta value: $value',
+    );
   }
 }
-

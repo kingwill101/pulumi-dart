@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// Pool Object
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Volume Snapshot Resource
   final pulumi.Input<String>? snapshotName;
+
   /// Reference to the source volume
   final pulumi.Input<String> source;
 
@@ -39,11 +42,16 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
-      source: (map['source'] as String).input(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      snapshotName: (() {
+        final guardedValue = map['snapshotName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

@@ -8,22 +8,31 @@ import 'method_settings_response.dart';
 class PublishingResponse {
   /// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
   final pulumi.Input<String> apiShortName;
+
   /// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
   final pulumi.Input<List<String>> codeownerGithubTeams;
+
   /// A prefix used in sample code when demarking regions to be included in documentation.
   final pulumi.Input<String> docTagPrefix;
+
   /// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
   final pulumi.Input<String> documentationUri;
+
   /// GitHub label to apply to issues and pull requests opened for this API.
   final pulumi.Input<String> githubLabel;
+
   /// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
   final pulumi.Input<List<ClientLibrarySettingsResponse>> librarySettings;
+
   /// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
   final pulumi.Input<List<MethodSettingsResponse>> methodSettings;
+
   /// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
   final pulumi.Input<String> newIssueUri;
+
   /// For whom the client library is being published.
   final pulumi.Input<String> organization;
+
   /// Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
   final pulumi.Input<String> protoReferenceDocumentationUri;
 
@@ -58,8 +67,30 @@ class PublishingResponse {
       'docTagPrefix': docTagPrefix,
       'documentationUri': documentationUri,
       'githubLabel': githubLabel,
-      'librarySettings': pulumi.Input.mapInputValue<List<ClientLibrarySettingsResponse>, List<Map<String, dynamic>>>(librarySettings, (value) => pulumi.Input.encodeList<ClientLibrarySettingsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'methodSettings': pulumi.Input.mapInputValue<List<MethodSettingsResponse>, List<Map<String, dynamic>>>(methodSettings, (value) => pulumi.Input.encodeList<MethodSettingsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'librarySettings':
+          pulumi.Input.mapInputValue<
+            List<ClientLibrarySettingsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            librarySettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClientLibrarySettingsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'methodSettings':
+          pulumi.Input.mapInputValue<
+            List<MethodSettingsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            methodSettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MethodSettingsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'newIssueUri': newIssueUri,
       'organization': organization,
       'protoReferenceDocumentationUri': protoReferenceDocumentationUri,
@@ -68,17 +99,36 @@ class PublishingResponse {
 
   factory PublishingResponse.fromMap(Map<String, dynamic> map) {
     return PublishingResponse(
-      apiShortName: (map['apiShortName'] as String).input(),
-      codeownerGithubTeams: ((map['codeownerGithubTeams'] as List).cast<String>()).input(),
-      docTagPrefix: (map['docTagPrefix'] as String).input(),
-      documentationUri: (map['documentationUri'] as String).input(),
-      githubLabel: (map['githubLabel'] as String).input(),
-      librarySettings: (pulumi.Input.decodeList<ClientLibrarySettingsResponse>(map['librarySettings'], (value) => ClientLibrarySettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methodSettings: (pulumi.Input.decodeList<MethodSettingsResponse>(map['methodSettings'], (value) => MethodSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      newIssueUri: (map['newIssueUri'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      protoReferenceDocumentationUri: (map['protoReferenceDocumentationUri'] as String).input(),
+      apiShortName: pulumi.Input.fromValue(map['apiShortName'] as String),
+      codeownerGithubTeams: pulumi.Input.fromValue(
+        (map['codeownerGithubTeams'] as List).cast<String>(),
+      ),
+      docTagPrefix: pulumi.Input.fromValue(map['docTagPrefix'] as String),
+      documentationUri: pulumi.Input.fromValue(
+        map['documentationUri'] as String,
+      ),
+      githubLabel: pulumi.Input.fromValue(map['githubLabel'] as String),
+      librarySettings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ClientLibrarySettingsResponse>(
+          map['librarySettings']!,
+          (value) => ClientLibrarySettingsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      methodSettings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MethodSettingsResponse>(
+          map['methodSettings']!,
+          (value) => MethodSettingsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      newIssueUri: pulumi.Input.fromValue(map['newIssueUri'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      protoReferenceDocumentationUri: pulumi.Input.fromValue(
+        map['protoReferenceDocumentationUri'] as String,
+      ),
     );
   }
 }
-

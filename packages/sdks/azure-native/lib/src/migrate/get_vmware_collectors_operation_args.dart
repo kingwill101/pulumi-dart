@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVmwareCollectorsOperationArgs {
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// VMware collector ARM name
   final pulumi.Input<String> vmWareCollectorName;
 
@@ -34,10 +36,13 @@ class GetVmwareCollectorsOperationArgs {
 
   factory GetVmwareCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareCollectorsOperationArgs(
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmWareCollectorName: (map['vmWareCollectorName'] as String).input(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmWareCollectorName: pulumi.Input.fromValue(
+        map['vmWareCollectorName'] as String,
+      ),
     );
   }
 }
-

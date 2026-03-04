@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerCommonBandwidthPackageAttachmentState {
   /// The ID of the bound shared bandwidth package.
   final pulumi.Input<String>? bandwidthPackageId;
+
   /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the applied server load balancer instance.
   final pulumi.Input<String>? loadBalancerId;
+
   /// The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
   final pulumi.Input<String>? status;
 
@@ -34,13 +37,30 @@ class LoadBalancerCommonBandwidthPackageAttachmentState {
     };
   }
 
-  factory LoadBalancerCommonBandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerCommonBandwidthPackageAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerCommonBandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bandwidthPackageId: (() {
+        final guardedValue = map['bandwidthPackageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

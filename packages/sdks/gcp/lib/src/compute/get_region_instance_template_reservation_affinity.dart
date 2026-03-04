@@ -5,7 +5,11 @@ import 'get_region_instance_template_reservation_affinity_specific_reservation.d
 
 class GetRegionInstanceTemplateReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final pulumi.Input<List<GetRegionInstanceTemplateReservationAffinitySpecificReservation>> specificReservations;
+  final pulumi.Input<
+    List<GetRegionInstanceTemplateReservationAffinitySpecificReservation>
+  >
+  specificReservations;
+
   /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   final pulumi.Input<String> type;
 
@@ -19,16 +23,40 @@ class GetRegionInstanceTemplateReservationAffinity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificReservations': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateReservationAffinitySpecificReservation>, List<Map<String, dynamic>>>(specificReservations, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateReservationAffinitySpecificReservation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'specificReservations':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceTemplateReservationAffinitySpecificReservation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            specificReservations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceTemplateReservationAffinitySpecificReservation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
-  factory GetRegionInstanceTemplateReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory GetRegionInstanceTemplateReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionInstanceTemplateReservationAffinity(
-      specificReservations: (pulumi.Input.decodeList<GetRegionInstanceTemplateReservationAffinitySpecificReservation>(map['specificReservations'], (value) => GetRegionInstanceTemplateReservationAffinitySpecificReservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      specificReservations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceTemplateReservationAffinitySpecificReservation
+        >(
+          map['specificReservations']!,
+          (value) =>
+              GetRegionInstanceTemplateReservationAffinitySpecificReservation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

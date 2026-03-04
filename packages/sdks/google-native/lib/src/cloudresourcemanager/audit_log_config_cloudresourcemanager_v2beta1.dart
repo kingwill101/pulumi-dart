@@ -7,6 +7,7 @@ import 'audit_log_config_log_type_cloudresourcemanager_v2beta1.dart';
 class AuditLogConfigCloudresourcemanagerV2beta1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>>? exemptedMembers;
+
   /// The log type that this config enables.
   final pulumi.Input<AuditLogConfigLogTypeCloudresourcemanagerV2beta1>? logType;
 
@@ -21,15 +22,32 @@ class AuditLogConfigCloudresourcemanagerV2beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType': ?pulumi.Input.mapOptionalInputValue<AuditLogConfigLogTypeCloudresourcemanagerV2beta1, String>(logType, (value) => value.value),
+      'logType':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuditLogConfigLogTypeCloudresourcemanagerV2beta1,
+            String
+          >(logType, (value) => value.wireValue),
     };
   }
 
-  factory AuditLogConfigCloudresourcemanagerV2beta1.fromMap(Map<String, dynamic> map) {
+  factory AuditLogConfigCloudresourcemanagerV2beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditLogConfigCloudresourcemanagerV2beta1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeCloudresourcemanagerV2beta1.fromValue(map['logType']! as String)).input(),
+      exemptedMembers: (() {
+        final guardedValue = map['exemptedMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logType: (() {
+        final guardedValue = map['logType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuditLogConfigLogTypeCloudresourcemanagerV2beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

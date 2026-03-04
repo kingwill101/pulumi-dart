@@ -163,27 +163,38 @@ import 'system_data_response.dart';
 class ScheduledTrigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time at which the trigger was created.
   late final pulumi.Output<String> createdAt;
+
   /// Kind of synchronization on trigger.
   /// Expected value is 'ScheduleBased'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Gets the provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Recurrence Interval
   late final pulumi.Output<String> recurrenceInterval;
+
   /// Synchronization mode
   late final pulumi.Output<String?> synchronizationMode;
+
   /// Synchronization time
   late final pulumi.Output<String> synchronizationTime;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets the trigger state
   late final pulumi.Output<String> triggerStatus;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
+
   /// Name of the user who created the trigger.
   late final pulumi.Output<String> userName;
 
@@ -196,22 +207,22 @@ class ScheduledTrigger extends pulumi.CustomResource {
     ScheduledTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:ScheduledTrigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:ScheduledTrigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.recurrenceInterval = registerOutput<String>('recurrenceInterval');
-    this.synchronizationMode = registerOutput<String?>('synchronizationMode');
-    this.synchronizationTime = registerOutput<String>('synchronizationTime');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.triggerStatus = registerOutput<String>('triggerStatus');
-    this.type = registerOutput<String>('type');
-    this.userName = registerOutput<String>('userName');
+    provisioningState = registerOutput<String>('provisioningState');
+    recurrenceInterval = registerOutput<String>('recurrenceInterval');
+    synchronizationMode = registerOutput<String?>('synchronizationMode');
+    synchronizationTime = registerOutput<String>('synchronizationTime');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    triggerStatus = registerOutput<String>('triggerStatus');
+    type = registerOutput<String>('type');
+    userName = registerOutput<String>('userName');
   }
 }

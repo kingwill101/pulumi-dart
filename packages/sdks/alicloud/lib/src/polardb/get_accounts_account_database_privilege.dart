@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccountDatabasePrivilege {
   /// Account privilege of database
   final pulumi.Input<String> accountPrivilege;
+
   /// The account owned database name
   final pulumi.Input<String> dbName;
 
@@ -23,11 +24,14 @@ class GetAccountsAccountDatabasePrivilege {
     };
   }
 
-  factory GetAccountsAccountDatabasePrivilege.fromMap(Map<String, dynamic> map) {
+  factory GetAccountsAccountDatabasePrivilege.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccountsAccountDatabasePrivilege(
-      accountPrivilege: (map['accountPrivilege'] as String).input(),
-      dbName: (map['dbName'] as String).input(),
+      accountPrivilege: pulumi.Input.fromValue(
+        map['accountPrivilege'] as String,
+      ),
+      dbName: pulumi.Input.fromValue(map['dbName'] as String),
     );
   }
 }
-

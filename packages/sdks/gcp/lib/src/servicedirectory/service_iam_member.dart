@@ -13,9 +13,9 @@ import 'service_iam_member_state.dart';
 ///
 /// * `gcp.servicedirectory.ServiceIamPolicy`: Retrieves the IAM policy for the service
 ///
-/// > **Note:** `gcp.servicedirectory.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.ServiceIamBinding` and `gcp.servicedirectory.ServiceIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.servicedirectory.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.ServiceIamBinding` and `gcp.servicedirectory.ServiceIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
@@ -383,7 +383,7 @@ import 'service_iam_member_state.dart';
 ///
 ///
 ///
-/// ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// ## &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 /// -
@@ -400,9 +400,9 @@ import 'service_iam_member_state.dart';
 ///
 /// * `gcp.servicedirectory.ServiceIamPolicy`: Retrieves the IAM policy for the service
 ///
-/// > **Note:** `gcp.servicedirectory.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.ServiceIamBinding` and `gcp.servicedirectory.ServiceIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.servicedirectory.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.ServiceIamBinding` and `gcp.servicedirectory.ServiceIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
@@ -801,13 +801,15 @@ import 'service_iam_member_state.dart';
 /// $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ServiceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<ServiceIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -821,8 +823,10 @@ class ServiceIamMember extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<String> member;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> name;
+
   /// The role that should be applied. Only one
   /// `gcp.servicedirectory.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -837,16 +841,16 @@ class ServiceIamMember extends pulumi.CustomResource {
     ServiceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:servicedirectory/serviceIamMember:ServiceIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<ServiceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
+         'gcp:servicedirectory/serviceIamMember:ServiceIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<ServiceIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');
-    this.role = registerOutput<String>('role');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [ServiceIamMember] resource's state with the given [name] and [id].
@@ -867,15 +871,15 @@ class ServiceIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:servicedirectory/serviceIamMember:ServiceIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<ServiceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
+         'gcp:servicedirectory/serviceIamMember:ServiceIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<ServiceIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');
-    this.role = registerOutput<String>('role');
+    role = registerOutput<String>('role');
   }
 }

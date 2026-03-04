@@ -173,12 +173,16 @@ import 'user_stack_association_state.dart';
 class UserStackAssociation extends pulumi.CustomResource {
   /// Authentication type for the user.
   late final pulumi.Output<String> authenticationType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Whether a welcome email is sent to a user after the user is created in the user pool.
   late final pulumi.Output<bool?> sendEmailNotification;
+
   /// Name of the stack that is associated with the user.
   late final pulumi.Output<String> stackName;
+
   /// Email address of the user who is associated with the stack.
   ///
   /// The following arguments are optional:
@@ -193,16 +197,16 @@ class UserStackAssociation extends pulumi.CustomResource {
     UserStackAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appstream/userStackAssociation:UserStackAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.region = registerOutput<String>('region');
-    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
-    this.stackName = registerOutput<String>('stackName');
-    this.userName = registerOutput<String>('userName');
+         'aws:appstream/userStackAssociation:UserStackAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String>('authenticationType');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    stackName = registerOutput<String>('stackName');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [UserStackAssociation] resource's state with the given [name] and [id].
@@ -223,15 +227,15 @@ class UserStackAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appstream/userStackAssociation:UserStackAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.region = registerOutput<String>('region');
-    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
-    this.stackName = registerOutput<String>('stackName');
-    this.userName = registerOutput<String>('userName');
+         'aws:appstream/userStackAssociation:UserStackAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String>('authenticationType');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    stackName = registerOutput<String>('stackName');
+    userName = registerOutput<String>('userName');
   }
 }

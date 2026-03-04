@@ -1,5 +1,3 @@
-library module_waf;
-
 export 'waf/byte_match_set.dart';
 export 'waf/byte_match_set_args.dart';
 export 'waf/byte_match_set_byte_match_tuple.dart';

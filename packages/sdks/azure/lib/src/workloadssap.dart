@@ -1,5 +1,3 @@
-library module_workloadssap;
-
 export 'workloadssap/discovery_virtual_instance.dart';
 export 'workloadssap/discovery_virtual_instance_args.dart';
 export 'workloadssap/discovery_virtual_instance_identity.dart';

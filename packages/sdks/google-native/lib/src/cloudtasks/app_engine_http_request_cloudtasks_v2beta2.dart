@@ -8,12 +8,17 @@ import 'app_engine_routing_cloudtasks_v2beta2.dart';
 class AppEngineHttpRequestCloudtasksV2beta2 {
   /// Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
   final pulumi.Input<AppEngineRoutingCloudtasksV2beta2>? appEngineRouting;
+
   /// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a payload, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
   final pulumi.Input<Map<String, String>>? headers;
+
   /// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-  final pulumi.Input<AppEngineHttpRequestHttpMethodCloudtasksV2beta2>? httpMethod;
+  final pulumi.Input<AppEngineHttpRequestHttpMethodCloudtasksV2beta2>?
+  httpMethod;
+
   /// Payload. The payload will be sent as the HTTP message body. A message body, and thus a payload, is allowed only if the HTTP method is POST or PUT. It is an error to set a data payload on a task with an incompatible HttpMethod.
   final pulumi.Input<String>? payload;
+
   /// The relative URL. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path and query string arguments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
   final pulumi.Input<String>? relativeUrl;
 
@@ -33,22 +38,61 @@ class AppEngineHttpRequestCloudtasksV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appEngineRouting': ?pulumi.Input.mapOptionalInputValue<AppEngineRoutingCloudtasksV2beta2, Map<String, dynamic>>(appEngineRouting, (value) => value.toMap()),
+      'appEngineRouting':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppEngineRoutingCloudtasksV2beta2,
+            Map<String, dynamic>
+          >(appEngineRouting, (value) => value.toMap()),
       'headers': ?headers,
-      'httpMethod': ?pulumi.Input.mapOptionalInputValue<AppEngineHttpRequestHttpMethodCloudtasksV2beta2, String>(httpMethod, (value) => value.value),
+      'httpMethod':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppEngineHttpRequestHttpMethodCloudtasksV2beta2,
+            String
+          >(httpMethod, (value) => value.wireValue),
       'payload': ?payload,
       'relativeUrl': ?relativeUrl,
     };
   }
 
-  factory AppEngineHttpRequestCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
+  factory AppEngineHttpRequestCloudtasksV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppEngineHttpRequestCloudtasksV2beta2(
-      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRouting']! as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpRequestHttpMethodCloudtasksV2beta2.fromValue(map['httpMethod']! as String)).input(),
-      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']! as String).input(),
+      appEngineRouting: (() {
+        final guardedValue = map['appEngineRouting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppEngineRoutingCloudtasksV2beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      httpMethod: (() {
+        final guardedValue = map['httpMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppEngineHttpRequestHttpMethodCloudtasksV2beta2.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relativeUrl: (() {
+        final guardedValue = map['relativeUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

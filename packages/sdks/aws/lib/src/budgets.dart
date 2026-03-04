@@ -1,5 +1,3 @@
-library module_budgets;
-
 export 'budgets/budget.dart';
 export 'budgets/budget_action.dart';
 export 'budgets/budget_action_action_threshold.dart';

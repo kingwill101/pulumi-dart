@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadNetworkDnsZoneArgs {
   /// ID of the DNS zone.
   final pulumi.Input<String> dnsZoneId;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetWorkloadNetworkDnsZoneArgs {
 
   factory GetWorkloadNetworkDnsZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkDnsZoneArgs(
-      dnsZoneId: (map['dnsZoneId'] as String).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dnsZoneId: pulumi.Input.fromValue(map['dnsZoneId'] as String),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

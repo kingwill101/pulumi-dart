@@ -7,9 +7,9 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///
 /// With access points for directory buckets, you can use the access point scope to restrict access to specific prefixes, API actions, or a combination of both. You can specify any amount of prefixes, but the total length of characters of all prefixes must be less than 256 bytes. For more information, see [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets-manage-scope.html).
 ///
-/// > For all the services in AWS Local Zones, including Amazon S3, your accountID must be enabled before you can create or access any resource in the Local Zone. You can use the `DescribeAvailabilityZones` API operation to confirm your accountID access to a Local Zone. For more information, see [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/opt-in-directory-bucket-lz.html)
+/// &gt; For all the services in AWS Local Zones, including Amazon S3, your accountID must be enabled before you can create or access any resource in the Local Zone. You can use the `DescribeAvailabilityZones` API operation to confirm your accountID access to a Local Zone. For more information, see [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/opt-in-directory-bucket-lz.html)
 ///
-/// > Terraform provides two ways to manage access point scopes. You can use a standalone resource `aws_s3control_directory_access_point_scope` or, an in-line scope with the  `aws_s3_directory_access_point` resource. You cannot use a standalone resource at the same time as in-line, which will cause an overwrite of each other. You must use one or the other.
+/// &gt; Terraform provides two ways to manage access point scopes. You can use a standalone resource `aws_s3control_directory_access_point_scope` or, an in-line scope with the  `aws_s3_directory_access_point` resource. You cannot use a standalone resource at the same time as in-line, which will cause an overwrite of each other. You must use one or the other.
 ///
 /// ## Example Usage
 ///
@@ -286,10 +286,13 @@ import 'directory_bucket_access_point_scope_state.dart';
 class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
   /// The AWS account ID that owns the specified access point.
   late final pulumi.Output<String> accountId;
+
   /// The name of the access point that you want to apply the scope to.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
   late final pulumi.Output<DirectoryBucketAccessPointScopeScope> scope;
 
@@ -302,15 +305,15 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     DirectoryBucketAccessPointScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
+    region = registerOutput<String>('region');
+    scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
   }
 
   /// Gets an existing [DirectoryBucketAccessPointScope] resource's state with the given [name] and [id].
@@ -331,14 +334,14 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
+    region = registerOutput<String>('region');
+    scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
   }
 }

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// Confluent kafka or schema registry cluster id
   final pulumi.Input<String> clusterId;
+
   /// Confluent connector name
   final pulumi.Input<String> connectorName;
+
   /// Confluent environment id
   final pulumi.Input<String> environmentId;
+
   /// Organization resource name
   final pulumi.Input<String> organizationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,15 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      connectorName: (map['connectorName'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum SftpAuthenticationType {
   valueSshPublicKey("SshPublicKey"),
   valueMultiFactor("MultiFactor");
 
-  const SftpAuthenticationType(this.value);
-  final String value;
+  const SftpAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SftpAuthenticationType fromValue(String value) {
     for (final item in SftpAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SftpAuthenticationType value: $value');
   }
 }
-

@@ -8,8 +8,10 @@ import 'kubernetes_software_config.dart';
 class KubernetesClusterConfig {
   /// The configuration for running the Dataproc cluster on GKE.
   final pulumi.Input<GkeClusterConfig> gkeClusterConfig;
+
   /// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
   final pulumi.Input<String>? kubernetesNamespace;
+
   /// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
   final pulumi.Input<KubernetesSoftwareConfig>? kubernetesSoftwareConfig;
 
@@ -25,18 +27,41 @@ class KubernetesClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gkeClusterConfig': pulumi.Input.mapInputValue<GkeClusterConfig, Map<String, dynamic>>(gkeClusterConfig, (value) => value.toMap()),
+      'gkeClusterConfig':
+          pulumi.Input.mapInputValue<GkeClusterConfig, Map<String, dynamic>>(
+            gkeClusterConfig,
+            (value) => value.toMap(),
+          ),
       'kubernetesNamespace': ?kubernetesNamespace,
-      'kubernetesSoftwareConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesSoftwareConfig, Map<String, dynamic>>(kubernetesSoftwareConfig, (value) => value.toMap()),
+      'kubernetesSoftwareConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesSoftwareConfig,
+            Map<String, dynamic>
+          >(kubernetesSoftwareConfig, (value) => value.toMap()),
     };
   }
 
   factory KubernetesClusterConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterConfig(
-      gkeClusterConfig: (GkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace']! as String).input(),
-      kubernetesSoftwareConfig: map['kubernetesSoftwareConfig'] == null ? null : (KubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig']! as Map).cast<String, dynamic>())).input(),
+      gkeClusterConfig: pulumi.Input.fromValue(
+        GkeClusterConfig.fromMap(
+          (map['gkeClusterConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kubernetesNamespace: (() {
+        final guardedValue = map['kubernetesNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kubernetesSoftwareConfig: (() {
+        final guardedValue = map['kubernetesSoftwareConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesSoftwareConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

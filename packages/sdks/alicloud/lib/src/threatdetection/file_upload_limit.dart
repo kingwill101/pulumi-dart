@@ -22,12 +22,12 @@ class FileUploadLimit extends pulumi.CustomResource {
     FileUploadLimitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/fileUploadLimit:FileUploadLimit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.limit = registerOutput<int>('limit');
+         'alicloud:threatdetection/fileUploadLimit:FileUploadLimit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    limit = registerOutput<int>('limit');
   }
 
   /// Gets an existing [FileUploadLimit] resource's state with the given [name] and [id].
@@ -48,11 +48,11 @@ class FileUploadLimit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/fileUploadLimit:FileUploadLimit',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.limit = registerOutput<int>('limit');
+         'alicloud:threatdetection/fileUploadLimit:FileUploadLimit',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    limit = registerOutput<int>('limit');
   }
 }

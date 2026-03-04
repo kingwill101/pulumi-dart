@@ -10,10 +10,12 @@ class GlobalSecurityIpGroupState {
   /// - The name must start with a letter and end with a letter or digit.
   /// - The name must be 2 to 120 characters in length.
   final pulumi.Input<String>? globalIpGroupName;
+
   /// The IP address in the whitelist template.
   ///
-  /// > **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+  /// &gt; **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
   final pulumi.Input<String>? globalIpList;
+
   /// The region ID of the IP whitelist template.
   final pulumi.Input<String>? regionId;
 
@@ -37,10 +39,21 @@ class GlobalSecurityIpGroupState {
 
   factory GlobalSecurityIpGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupState(
-      globalIpGroupName: map['globalIpGroupName'] == null ? null : (map['globalIpGroupName']! as String).input(),
-      globalIpList: map['globalIpList'] == null ? null : (map['globalIpList']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      globalIpGroupName: (() {
+        final guardedValue = map['globalIpGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalIpList: (() {
+        final guardedValue = map['globalIpList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

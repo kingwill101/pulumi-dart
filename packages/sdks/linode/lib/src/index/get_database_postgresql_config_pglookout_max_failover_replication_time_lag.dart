@@ -33,14 +33,15 @@ class GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag {
     };
   }
 
-  factory GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag.fromMap(Map<String, dynamic> map) {
+  factory GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag(
-      description: (map['description'] as String).input(),
-      maximum: (map['maximum'] as int).input(),
-      minimum: (map['minimum'] as int).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      maximum: pulumi.Input.fromValue(map['maximum'] as int),
+      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

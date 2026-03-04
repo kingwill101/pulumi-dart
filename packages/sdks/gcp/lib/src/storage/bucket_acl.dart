@@ -11,7 +11,7 @@ import 'bucket_aclstate.dart';
 ///
 /// Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
 ///
-/// **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
+/// **NOTE** This resource will not remove the `project-owners-&lt;project_id&gt;` entity from the `OWNER` role.
 ///
 /// ## Example Usage
 ///
@@ -168,10 +168,13 @@ class BucketACL extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucket;
+
   /// Configure this ACL to be the default ACL.
   late final pulumi.Output<String?> defaultAcl;
+
   /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
   late final pulumi.Output<String?> predefinedAcl;
+
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
   late final pulumi.Output<List<String>> roleEntities;
 
@@ -184,15 +187,15 @@ class BucketACL extends pulumi.CustomResource {
     BucketACLArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/bucketACL:BucketACL',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.defaultAcl = registerOutput<String?>('defaultAcl');
-    this.predefinedAcl = registerOutput<String?>('predefinedAcl');
-    this.roleEntities = registerOutput<List<String>>('roleEntities');
+         'gcp:storage/bucketACL:BucketACL',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    defaultAcl = registerOutput<String?>('defaultAcl');
+    predefinedAcl = registerOutput<String?>('predefinedAcl');
+    roleEntities = registerOutput<List<String>>('roleEntities');
   }
 
   /// Gets an existing [BucketACL] resource's state with the given [name] and [id].
@@ -213,14 +216,14 @@ class BucketACL extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/bucketACL:BucketACL',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.defaultAcl = registerOutput<String?>('defaultAcl');
-    this.predefinedAcl = registerOutput<String?>('predefinedAcl');
-    this.roleEntities = registerOutput<List<String>>('roleEntities');
+         'gcp:storage/bucketACL:BucketACL',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    defaultAcl = registerOutput<String?>('defaultAcl');
+    predefinedAcl = registerOutput<String?>('predefinedAcl');
+    roleEntities = registerOutput<List<String>>('roleEntities');
   }
 }

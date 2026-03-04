@@ -9,7 +9,7 @@ import 'v3_trigger_state.dart';
 ///
 /// For information about FCV3 Trigger and how to use it, see [What is Trigger](https://www.alibabacloud.com/help/en/functioncompute/api-fc-2023-03-30-createtrigger).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -718,30 +718,43 @@ import 'v3_trigger_state.dart';
 class V3Trigger extends pulumi.CustomResource {
   /// Creation time
   late final pulumi.Output<String> createTime;
+
   /// Description of the trigger
   late final pulumi.Output<String?> description;
+
   /// Function Name
   late final pulumi.Output<String> functionName;
+
   /// (Available since v1.234.0) HTTP trigger information
   late final pulumi.Output<V3TriggerHttpTrigger> httpTrigger;
+
   /// The role required by the event source (such as OSS) to call the function.
   late final pulumi.Output<String?> invocationRole;
+
   /// (Available since v1.234.0) The last modified time of the trigger
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The version or alias of the function
   late final pulumi.Output<String> qualifier;
+
   /// Trigger Event source ARN
   late final pulumi.Output<String> sourceArn;
+
   /// The state of the trigger
   late final pulumi.Output<String> status;
+
   /// (Available since v1.234.0) Resource identity of the function
   late final pulumi.Output<String> targetArn;
+
   /// Trigger configuration. The configuration varies for different types of triggers.
   late final pulumi.Output<String?> triggerConfig;
+
   /// (Available since v1.234.0) Trigger ID
   late final pulumi.Output<String> triggerId;
+
   /// Trigger Name
   late final pulumi.Output<String> triggerName;
+
   /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
   late final pulumi.Output<String> triggerType;
 
@@ -754,25 +767,25 @@ class V3Trigger extends pulumi.CustomResource {
     V3TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3Trigger:V3Trigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.functionName = registerOutput<String>('functionName');
-    this.httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
-    this.invocationRole = registerOutput<String?>('invocationRole');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.qualifier = registerOutput<String>('qualifier');
-    this.sourceArn = registerOutput<String>('sourceArn');
-    this.status = registerOutput<String>('status');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.triggerConfig = registerOutput<String?>('triggerConfig');
-    this.triggerId = registerOutput<String>('triggerId');
-    this.triggerName = registerOutput<String>('triggerName');
-    this.triggerType = registerOutput<String>('triggerType');
+         'alicloud:fc/v3Trigger:V3Trigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    functionName = registerOutput<String>('functionName');
+    httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
+    invocationRole = registerOutput<String?>('invocationRole');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    qualifier = registerOutput<String>('qualifier');
+    sourceArn = registerOutput<String>('sourceArn');
+    status = registerOutput<String>('status');
+    targetArn = registerOutput<String>('targetArn');
+    triggerConfig = registerOutput<String?>('triggerConfig');
+    triggerId = registerOutput<String>('triggerId');
+    triggerName = registerOutput<String>('triggerName');
+    triggerType = registerOutput<String>('triggerType');
   }
 
   /// Gets an existing [V3Trigger] resource's state with the given [name] and [id].
@@ -793,24 +806,24 @@ class V3Trigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3Trigger:V3Trigger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.functionName = registerOutput<String>('functionName');
-    this.httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
-    this.invocationRole = registerOutput<String?>('invocationRole');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.qualifier = registerOutput<String>('qualifier');
-    this.sourceArn = registerOutput<String>('sourceArn');
-    this.status = registerOutput<String>('status');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.triggerConfig = registerOutput<String?>('triggerConfig');
-    this.triggerId = registerOutput<String>('triggerId');
-    this.triggerName = registerOutput<String>('triggerName');
-    this.triggerType = registerOutput<String>('triggerType');
+         'alicloud:fc/v3Trigger:V3Trigger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    functionName = registerOutput<String>('functionName');
+    httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
+    invocationRole = registerOutput<String?>('invocationRole');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    qualifier = registerOutput<String>('qualifier');
+    sourceArn = registerOutput<String>('sourceArn');
+    status = registerOutput<String>('status');
+    targetArn = registerOutput<String>('targetArn');
+    triggerConfig = registerOutput<String?>('triggerConfig');
+    triggerId = registerOutput<String>('triggerId');
+    triggerName = registerOutput<String>('triggerName');
+    triggerType = registerOutput<String>('triggerType');
   }
 }

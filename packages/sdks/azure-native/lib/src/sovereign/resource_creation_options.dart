@@ -4,16 +4,15 @@ enum ResourceCreationOptions {
   no("No"),
   useExisting("UseExisting");
 
-  const ResourceCreationOptions(this.value);
-  final String value;
+  const ResourceCreationOptions(this.wireValue);
+  final String wireValue;
 
   static ResourceCreationOptions fromValue(String value) {
     for (final item in ResourceCreationOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceCreationOptions value: $value');
   }
 }
-

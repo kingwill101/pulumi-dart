@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LegacyCustomOrigin {
   /// Property dnsName
   final pulumi.Input<String>? dnsName;
+
   /// Property httpPort
   final pulumi.Input<int>? httpPort;
+
   /// Property httpsPort
   final pulumi.Input<int>? httpsPort;
+
   /// Property originProtocolPolicy
   final pulumi.Input<String>? originProtocolPolicy;
+
   /// Property originSSLProtocols
   final pulumi.Input<List<String>>? originSSLProtocols;
 
@@ -41,12 +45,31 @@ class LegacyCustomOrigin {
 
   factory LegacyCustomOrigin.fromMap(Map<String, dynamic> map) {
     return LegacyCustomOrigin(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
-      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy']! as String).input(),
-      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols']! as List).cast<String>()).input(),
+      dnsName: (() {
+        final guardedValue = map['dnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpPort: (() {
+        final guardedValue = map['httpPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpsPort: (() {
+        final guardedValue = map['httpsPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      originProtocolPolicy: (() {
+        final guardedValue = map['originProtocolPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originSSLProtocols: (() {
+        final guardedValue = map['originSSLProtocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

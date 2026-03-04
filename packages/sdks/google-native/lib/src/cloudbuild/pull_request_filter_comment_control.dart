@@ -2,18 +2,21 @@
 enum PullRequestFilterCommentControl {
   commentsDisabled("COMMENTS_DISABLED"),
   commentsEnabled("COMMENTS_ENABLED"),
-  commentsEnabledForExternalContributorsOnly("COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY");
+  commentsEnabledForExternalContributorsOnly(
+    "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY",
+  );
 
-  const PullRequestFilterCommentControl(this.value);
-  final String value;
+  const PullRequestFilterCommentControl(this.wireValue);
+  final String wireValue;
 
   static PullRequestFilterCommentControl fromValue(String value) {
     for (final item in PullRequestFilterCommentControl.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PullRequestFilterCommentControl value: $value');
+    throw ArgumentError(
+      'Unknown PullRequestFilterCommentControl value: $value',
+    );
   }
 }
-

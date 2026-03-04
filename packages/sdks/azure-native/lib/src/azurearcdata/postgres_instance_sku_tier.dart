@@ -2,16 +2,15 @@
 enum PostgresInstanceSkuTier {
   valueHyperscale("Hyperscale");
 
-  const PostgresInstanceSkuTier(this.value);
-  final String value;
+  const PostgresInstanceSkuTier(this.wireValue);
+  final String wireValue;
 
   static PostgresInstanceSkuTier fromValue(String value) {
     for (final item in PostgresInstanceSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PostgresInstanceSkuTier value: $value');
   }
 }
-

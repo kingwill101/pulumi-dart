@@ -4,16 +4,17 @@ enum IntegrationServiceEnvironmentSkuName {
   valuePremium("Premium"),
   valueDeveloper("Developer");
 
-  const IntegrationServiceEnvironmentSkuName(this.value);
-  final String value;
+  const IntegrationServiceEnvironmentSkuName(this.wireValue);
+  final String wireValue;
 
   static IntegrationServiceEnvironmentSkuName fromValue(String value) {
     for (final item in IntegrationServiceEnvironmentSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntegrationServiceEnvironmentSkuName value: $value');
+    throw ArgumentError(
+      'Unknown IntegrationServiceEnvironmentSkuName value: $value',
+    );
   }
 }
-

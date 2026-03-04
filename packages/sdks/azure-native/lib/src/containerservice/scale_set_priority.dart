@@ -3,16 +3,15 @@ enum ScaleSetPriority {
   valueSpot("Spot"),
   valueRegular("Regular");
 
-  const ScaleSetPriority(this.value);
-  final String value;
+  const ScaleSetPriority(this.wireValue);
+  final String wireValue;
 
   static ScaleSetPriority fromValue(String value) {
     for (final item in ScaleSetPriority.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScaleSetPriority value: $value');
   }
 }
-

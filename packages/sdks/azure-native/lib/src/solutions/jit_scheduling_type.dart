@@ -4,16 +4,15 @@ enum JitSchedulingType {
   valueOnce("Once"),
   valueRecurring("Recurring");
 
-  const JitSchedulingType(this.value);
-  final String value;
+  const JitSchedulingType(this.wireValue);
+  final String wireValue;
 
   static JitSchedulingType fromValue(String value) {
     for (final item in JitSchedulingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JitSchedulingType value: $value');
   }
 }
-

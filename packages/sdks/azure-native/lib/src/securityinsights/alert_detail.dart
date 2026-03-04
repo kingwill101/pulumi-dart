@@ -3,16 +3,15 @@ enum AlertDetail {
   valueDisplayName("DisplayName"),
   valueSeverity("Severity");
 
-  const AlertDetail(this.value);
-  final String value;
+  const AlertDetail(this.wireValue);
+  final String wireValue;
 
   static AlertDetail fromValue(String value) {
     for (final item in AlertDetail.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertDetail value: $value');
   }
 }
-

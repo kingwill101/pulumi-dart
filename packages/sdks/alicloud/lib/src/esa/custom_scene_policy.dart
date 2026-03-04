@@ -8,7 +8,7 @@ import 'custom_scene_policy_state.dart';
 ///
 /// For information about ESA Custom Scene Policy and how to use it, see [What is Custom Scene Policy](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateCustomScenePolicy).
 ///
-/// > **NOTE:** Available since v1.253.0.
+/// &gt; **NOTE:** Available since v1.253.0.
 ///
 /// ## Example Usage
 ///
@@ -239,15 +239,20 @@ class CustomScenePolicy extends pulumi.CustomResource {
   /// The time when the policy takes effect.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// The policy name.
   late final pulumi.Output<String> customScenePolicyName;
+
   /// The time when the policy expires.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> endTime;
+
   /// The IDs of websites associated.
   late final pulumi.Output<String> siteIds;
+
   /// Policy effective status. Valid values: `Disabled`, `Running`.
   late final pulumi.Output<String> status;
+
   /// The name of the policy template. Valid value:
   late final pulumi.Output<String> template;
 
@@ -260,17 +265,17 @@ class CustomScenePolicy extends pulumi.CustomResource {
     CustomScenePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/customScenePolicy:CustomScenePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.customScenePolicyName = registerOutput<String>('customScenePolicyName');
-    this.endTime = registerOutput<String>('endTime');
-    this.siteIds = registerOutput<String>('siteIds');
-    this.status = registerOutput<String>('status');
-    this.template = registerOutput<String>('template');
+         'alicloud:esa/customScenePolicy:CustomScenePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    customScenePolicyName = registerOutput<String>('customScenePolicyName');
+    endTime = registerOutput<String>('endTime');
+    siteIds = registerOutput<String>('siteIds');
+    status = registerOutput<String>('status');
+    template = registerOutput<String>('template');
   }
 
   /// Gets an existing [CustomScenePolicy] resource's state with the given [name] and [id].
@@ -291,16 +296,16 @@ class CustomScenePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/customScenePolicy:CustomScenePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.customScenePolicyName = registerOutput<String>('customScenePolicyName');
-    this.endTime = registerOutput<String>('endTime');
-    this.siteIds = registerOutput<String>('siteIds');
-    this.status = registerOutput<String>('status');
-    this.template = registerOutput<String>('template');
+         'alicloud:esa/customScenePolicy:CustomScenePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    customScenePolicyName = registerOutput<String>('customScenePolicyName');
+    endTime = registerOutput<String>('endTime');
+    siteIds = registerOutput<String>('siteIds');
+    status = registerOutput<String>('status');
+    template = registerOutput<String>('template');
   }
 }

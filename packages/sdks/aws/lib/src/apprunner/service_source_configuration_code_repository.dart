@@ -6,11 +6,16 @@ import 'service_source_configuration_code_repository_source_code_version.dart';
 
 class ServiceSourceConfigurationCodeRepository {
   /// Configuration for building and running the service from a source code repository. See Code Configuration below for more details.
-  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfiguration>? codeConfiguration;
+  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfiguration>?
+  codeConfiguration;
+
   /// Location of the repository that contains the source code.
   final pulumi.Input<String> repositoryUrl;
+
   /// Version that should be used within the source code repository. See Source Code Version below for more details.
-  final pulumi.Input<ServiceSourceConfigurationCodeRepositorySourceCodeVersion> sourceCodeVersion;
+  final pulumi.Input<ServiceSourceConfigurationCodeRepositorySourceCodeVersion>
+  sourceCodeVersion;
+
   /// The path of the directory that stores source code and configuration files. The build and start commands also execute from here. The path is absolute from root and, if not specified, defaults to the repository root.
   final pulumi.Input<String>? sourceDirectory;
 
@@ -28,20 +33,45 @@ class ServiceSourceConfigurationCodeRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceSourceConfigurationCodeRepositoryCodeConfiguration, Map<String, dynamic>>(codeConfiguration, (value) => value.toMap()),
+      'codeConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceSourceConfigurationCodeRepositoryCodeConfiguration,
+            Map<String, dynamic>
+          >(codeConfiguration, (value) => value.toMap()),
       'repositoryUrl': repositoryUrl,
-      'sourceCodeVersion': pulumi.Input.mapInputValue<ServiceSourceConfigurationCodeRepositorySourceCodeVersion, Map<String, dynamic>>(sourceCodeVersion, (value) => value.toMap()),
+      'sourceCodeVersion':
+          pulumi.Input.mapInputValue<
+            ServiceSourceConfigurationCodeRepositorySourceCodeVersion,
+            Map<String, dynamic>
+          >(sourceCodeVersion, (value) => value.toMap()),
       'sourceDirectory': ?sourceDirectory,
     };
   }
 
-  factory ServiceSourceConfigurationCodeRepository.fromMap(Map<String, dynamic> map) {
+  factory ServiceSourceConfigurationCodeRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceSourceConfigurationCodeRepository(
-      codeConfiguration: map['codeConfiguration'] == null ? null : ((ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      repositoryUrl: (map['repositoryUrl'] as String).input(),
-      sourceCodeVersion: (ServiceSourceConfigurationCodeRepositorySourceCodeVersion.fromMap((map['sourceCodeVersion']! as Map).cast<String, dynamic>())).input(),
-      sourceDirectory: map['sourceDirectory'] == null ? null : ((map['sourceDirectory'] as String).input()).input(),
+      codeConfiguration: (() {
+        final guardedValue = map['codeConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
+      sourceCodeVersion: pulumi.Input.fromValue(
+        ServiceSourceConfigurationCodeRepositorySourceCodeVersion.fromMap(
+          (map['sourceCodeVersion']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sourceDirectory: (() {
+        final guardedValue = map['sourceDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

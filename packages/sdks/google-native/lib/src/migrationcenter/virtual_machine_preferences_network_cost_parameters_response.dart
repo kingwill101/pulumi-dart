@@ -19,10 +19,13 @@ class VirtualMachinePreferencesNetworkCostParametersResponse {
     };
   }
 
-  factory VirtualMachinePreferencesNetworkCostParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePreferencesNetworkCostParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePreferencesNetworkCostParametersResponse(
-      estimatedEgressTrafficPercentage: (map['estimatedEgressTrafficPercentage'] as int).input(),
+      estimatedEgressTrafficPercentage: pulumi.Input.fromValue(
+        map['estimatedEgressTrafficPercentage'] as int,
+      ),
     );
   }
 }
-

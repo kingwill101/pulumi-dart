@@ -1,5 +1,3 @@
-library module_vmwareengine;
-
 export 'vmwareengine/cluster.dart';
 export 'vmwareengine/cluster_args.dart';
 export 'vmwareengine/cluster_autoscaling_settings.dart';

@@ -29,12 +29,17 @@ class GetGroupMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetGroupMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMigrationcenterV1alpha1Args(
-      groupId: (map['groupId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

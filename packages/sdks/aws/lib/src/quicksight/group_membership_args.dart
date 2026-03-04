@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMembershipArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// The name of the group in which the member will be added.
   final pulumi.Input<String> groupName;
+
   /// The name of the member to add to the group.
   final pulumi.Input<String> memberName;
+
   /// The namespace that you want the user to be a part of. Defaults to `default`.
   final pulumi.Input<String>? namespace;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,12 +48,23 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      groupName: (map['groupName'] as String).input(),
-      memberName: (map['memberName'] as String).input(),
-      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      memberName: pulumi.Input.fromValue(map['memberName'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

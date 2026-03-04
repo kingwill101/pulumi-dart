@@ -1,5 +1,3 @@
-library module_customproviders;
-
 export 'customproviders/action_routing.dart';
 export 'customproviders/association.dart';
 export 'customproviders/association_args.dart';

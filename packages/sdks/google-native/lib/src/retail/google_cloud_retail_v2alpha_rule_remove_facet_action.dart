@@ -9,20 +9,21 @@ class GoogleCloudRetailV2alphaRuleRemoveFacetAction {
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleRemoveFacetAction].
   /// [attributeNames] The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
-  GoogleCloudRetailV2alphaRuleRemoveFacetAction({
-    this.attributeNames,
-  });
+  GoogleCloudRetailV2alphaRuleRemoveFacetAction({this.attributeNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attributeNames': ?attributeNames,
-    };
+    return <String, dynamic>{'attributeNames': ?attributeNames};
   }
 
-  factory GoogleCloudRetailV2alphaRuleRemoveFacetAction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaRuleRemoveFacetAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaRuleRemoveFacetAction(
-      attributeNames: map['attributeNames'] == null ? null : ((map['attributeNames']! as List).cast<String>()).input(),
+      attributeNames: (() {
+        final guardedValue = map['attributeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

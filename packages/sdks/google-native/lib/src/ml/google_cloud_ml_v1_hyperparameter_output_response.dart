@@ -7,23 +7,39 @@ import 'google_cloud_ml_v1_hyperparameter_output_hyperparameter_metric_response.
 /// Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
 class GoogleCloudMlV1HyperparameterOutputResponse {
   /// All recorded object metrics for this trial. This field is not currently populated.
-  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse>> allMetrics;
+  final pulumi.Input<
+    List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse>
+  >
+  allMetrics;
+
   /// Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
-  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutputResponse> builtInAlgorithmOutput;
+  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutputResponse>
+  builtInAlgorithmOutput;
+
   /// End time for the trial.
   final pulumi.Input<String> endTime;
+
   /// The final objective metric seen for this trial.
-  final pulumi.Input<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse> finalMetric;
+  final pulumi.Input<
+    GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse
+  >
+  finalMetric;
+
   /// The hyperparameters given to this trial.
   final pulumi.Input<Map<String, String>> hyperparameters;
+
   /// True if the trial is stopped early.
   final pulumi.Input<bool> isTrialStoppedEarly;
+
   /// Start time for the trial.
   final pulumi.Input<String> startTime;
+
   /// The detailed state of the trial.
   final pulumi.Input<String> state;
+
   /// The trial id for these results.
   final pulumi.Input<String> trialId;
+
   /// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
   final pulumi.Input<Map<String, String>> webAccessUris;
 
@@ -53,10 +69,31 @@ class GoogleCloudMlV1HyperparameterOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allMetrics': pulumi.Input.mapInputValue<List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse>, List<Map<String, dynamic>>>(allMetrics, (value) => pulumi.Input.encodeList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'builtInAlgorithmOutput': pulumi.Input.mapInputValue<GoogleCloudMlV1BuiltInAlgorithmOutputResponse, Map<String, dynamic>>(builtInAlgorithmOutput, (value) => value.toMap()),
+      'allMetrics':
+          pulumi.Input.mapInputValue<
+            List<
+              GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse
+            >,
+            List<Map<String, dynamic>>
+          >(
+            allMetrics,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'builtInAlgorithmOutput':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1BuiltInAlgorithmOutputResponse,
+            Map<String, dynamic>
+          >(builtInAlgorithmOutput, (value) => value.toMap()),
       'endTime': endTime,
-      'finalMetric': pulumi.Input.mapInputValue<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse, Map<String, dynamic>>(finalMetric, (value) => value.toMap()),
+      'finalMetric':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse,
+            Map<String, dynamic>
+          >(finalMetric, (value) => value.toMap()),
       'hyperparameters': hyperparameters,
       'isTrialStoppedEarly': isTrialStoppedEarly,
       'startTime': startTime,
@@ -66,19 +103,44 @@ class GoogleCloudMlV1HyperparameterOutputResponse {
     };
   }
 
-  factory GoogleCloudMlV1HyperparameterOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1HyperparameterOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1HyperparameterOutputResponse(
-      allMetrics: (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse>(map['allMetrics'], (value) => GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      builtInAlgorithmOutput: (GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap((map['builtInAlgorithmOutput'] as Map).cast<String, dynamic>())).input(),
-      endTime: (map['endTime'] as String).input(),
-      finalMetric: (GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap((map['finalMetric'] as Map).cast<String, dynamic>())).input(),
-      hyperparameters: ((map['hyperparameters'] as Map).cast<String, String>()).input(),
-      isTrialStoppedEarly: (map['isTrialStoppedEarly'] as bool).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
-      trialId: (map['trialId'] as String).input(),
-      webAccessUris: ((map['webAccessUris'] as Map).cast<String, String>()).input(),
+      allMetrics: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse
+        >(
+          map['allMetrics']!,
+          (value) =>
+              GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      builtInAlgorithmOutput: pulumi.Input.fromValue(
+        GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap(
+          (map['builtInAlgorithmOutput']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      finalMetric: pulumi.Input.fromValue(
+        GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap(
+          (map['finalMetric']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      hyperparameters: pulumi.Input.fromValue(
+        (map['hyperparameters'] as Map).cast<String, String>(),
+      ),
+      isTrialStoppedEarly: pulumi.Input.fromValue(
+        map['isTrialStoppedEarly'] as bool,
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      trialId: pulumi.Input.fromValue(map['trialId'] as String),
+      webAccessUris: pulumi.Input.fromValue(
+        (map['webAccessUris'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

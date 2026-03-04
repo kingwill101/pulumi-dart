@@ -15,16 +15,15 @@ enum ScmType {
   valueVSO("VSO"),
   valueVSTSRM("VSTSRM");
 
-  const ScmType(this.value);
-  final String value;
+  const ScmType(this.wireValue);
+  final String wireValue;
 
   static ScmType fromValue(String value) {
     for (final item in ScmType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScmType value: $value');
   }
 }
-

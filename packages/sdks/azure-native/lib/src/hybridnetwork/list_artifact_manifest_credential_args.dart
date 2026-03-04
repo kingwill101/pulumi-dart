@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListArtifactManifestCredentialArgs {
   /// The name of the artifact manifest.
   final pulumi.Input<String> artifactManifestName;
+
   /// The name of the artifact store.
   final pulumi.Input<String> artifactStoreName;
+
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,16 @@ class ListArtifactManifestCredentialArgs {
 
   factory ListArtifactManifestCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ListArtifactManifestCredentialArgs(
-      artifactManifestName: (map['artifactManifestName'] as String).input(),
-      artifactStoreName: (map['artifactStoreName'] as String).input(),
-      publisherName: (map['publisherName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      artifactManifestName: pulumi.Input.fromValue(
+        map['artifactManifestName'] as String,
+      ),
+      artifactStoreName: pulumi.Input.fromValue(
+        map['artifactStoreName'] as String,
+      ),
+      publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

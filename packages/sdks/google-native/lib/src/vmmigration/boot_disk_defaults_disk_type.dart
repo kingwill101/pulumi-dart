@@ -5,16 +5,15 @@ enum BootDiskDefaultsDiskType {
   computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
   computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
 
-  const BootDiskDefaultsDiskType(this.value);
-  final String value;
+  const BootDiskDefaultsDiskType(this.wireValue);
+  final String wireValue;
 
   static BootDiskDefaultsDiskType fromValue(String value) {
     for (final item in BootDiskDefaultsDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BootDiskDefaultsDiskType value: $value');
   }
 }
-

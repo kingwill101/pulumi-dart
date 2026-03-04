@@ -4,16 +4,15 @@ enum HyperVLicenseType {
   datacentre("Datacentre"),
   standard("Standard");
 
-  const HyperVLicenseType(this.value);
-  final String value;
+  const HyperVLicenseType(this.wireValue);
+  final String wireValue;
 
   static HyperVLicenseType fromValue(String value) {
     for (final item in HyperVLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HyperVLicenseType value: $value');
   }
 }
-

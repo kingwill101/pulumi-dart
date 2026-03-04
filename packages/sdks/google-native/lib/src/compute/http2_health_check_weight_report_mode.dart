@@ -4,16 +4,17 @@ enum HTTP2HealthCheckWeightReportMode {
   dryRun("DRY_RUN"),
   enable("ENABLE");
 
-  const HTTP2HealthCheckWeightReportMode(this.value);
-  final String value;
+  const HTTP2HealthCheckWeightReportMode(this.wireValue);
+  final String wireValue;
 
   static HTTP2HealthCheckWeightReportMode fromValue(String value) {
     for (final item in HTTP2HealthCheckWeightReportMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTP2HealthCheckWeightReportMode value: $value');
+    throw ArgumentError(
+      'Unknown HTTP2HealthCheckWeightReportMode value: $value',
+    );
   }
 }
-

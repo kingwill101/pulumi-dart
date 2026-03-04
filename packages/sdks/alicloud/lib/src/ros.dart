@@ -1,5 +1,3 @@
-library module_ros;
-
 export 'ros/change_set.dart';
 export 'ros/change_set_args.dart';
 export 'ros/change_set_parameter.dart';

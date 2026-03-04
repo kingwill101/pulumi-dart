@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAccountCredentials {
   /// Name of the administrator user account which can be used to SSH to nodes.
   final pulumi.Input<String> adminUserName;
+
   /// Password of the administrator user account.
   final pulumi.Input<String>? adminUserPassword;
+
   /// SSH public key of the administrator user account.
   final pulumi.Input<String>? adminUserSshPublicKey;
 
@@ -31,10 +33,17 @@ class UserAccountCredentials {
 
   factory UserAccountCredentials.fromMap(Map<String, dynamic> map) {
     return UserAccountCredentials(
-      adminUserName: (map['adminUserName'] as String).input(),
-      adminUserPassword: map['adminUserPassword'] == null ? null : (map['adminUserPassword']! as String).input(),
-      adminUserSshPublicKey: map['adminUserSshPublicKey'] == null ? null : (map['adminUserSshPublicKey']! as String).input(),
+      adminUserName: pulumi.Input.fromValue(map['adminUserName'] as String),
+      adminUserPassword: (() {
+        final guardedValue = map['adminUserPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminUserSshPublicKey: (() {
+        final guardedValue = map['adminUserSshPublicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

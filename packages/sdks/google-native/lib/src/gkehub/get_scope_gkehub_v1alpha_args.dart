@@ -31,10 +31,13 @@ class GetScopeGkehubV1alphaArgs {
 
   factory GetScopeGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeGkehubV1alphaArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
-

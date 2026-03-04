@@ -2,16 +2,15 @@
 enum LinkedServiceLinkType {
   valueSynapse("Synapse");
 
-  const LinkedServiceLinkType(this.value);
-  final String value;
+  const LinkedServiceLinkType(this.wireValue);
+  final String wireValue;
 
   static LinkedServiceLinkType fromValue(String value) {
     for (final item in LinkedServiceLinkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinkedServiceLinkType value: $value');
   }
 }
-

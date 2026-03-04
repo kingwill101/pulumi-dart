@@ -8,8 +8,11 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 class NodeGroupData {
   /// The AutoScalingGroup for the node group.
   final pulumi.Input<pulumi_aws_autoscaling.Group> autoScalingGroup;
+
   /// The additional security groups for the node group that captures user-specific rules.
-  final pulumi.Input<List<pulumi_aws_ec2.SecurityGroup>> extraNodeSecurityGroups;
+  final pulumi.Input<List<pulumi_aws_ec2.SecurityGroup>>
+  extraNodeSecurityGroups;
+
   /// The security group for the node group to communicate with the cluster.
   final pulumi.Input<pulumi_aws_ec2.SecurityGroup> nodeSecurityGroup;
 
@@ -33,10 +36,16 @@ class NodeGroupData {
 
   factory NodeGroupData.fromMap(Map<String, dynamic> map) {
     return NodeGroupData(
-      autoScalingGroup: (map['autoScalingGroup'] as pulumi_aws_autoscaling.Group).input(),
-      extraNodeSecurityGroups: ((map['extraNodeSecurityGroups'] as List).cast<pulumi_aws_ec2.SecurityGroup>()).input(),
-      nodeSecurityGroup: (map['nodeSecurityGroup'] as pulumi_aws_ec2.SecurityGroup).input(),
+      autoScalingGroup: pulumi.Input.fromValue(
+        map['autoScalingGroup'] as pulumi_aws_autoscaling.Group,
+      ),
+      extraNodeSecurityGroups: pulumi.Input.fromValue(
+        (map['extraNodeSecurityGroups'] as List)
+            .cast<pulumi_aws_ec2.SecurityGroup>(),
+      ),
+      nodeSecurityGroup: pulumi.Input.fromValue(
+        map['nodeSecurityGroup'] as pulumi_aws_ec2.SecurityGroup,
+      ),
     );
   }
 }
-

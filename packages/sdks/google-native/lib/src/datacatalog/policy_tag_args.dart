@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTagArgs {
   /// Description of this policy tag. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns and page breaks, and be at most 2000 bytes long when encoded in UTF-8.
   final pulumi.Input<String>? description;
+
   /// User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
+
   /// Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
   final pulumi.Input<String>? parentPolicyTag;
   final pulumi.Input<String>? project;
@@ -46,13 +48,28 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      taxonomyId: (map['taxonomyId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentPolicyTag: (() {
+        final guardedValue = map['parentPolicyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taxonomyId: pulumi.Input.fromValue(map['taxonomyId'] as String),
     );
   }
 }
-

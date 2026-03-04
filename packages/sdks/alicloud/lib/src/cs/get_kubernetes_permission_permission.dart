@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesPermissionPermission {
   /// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
   final pulumi.Input<bool> isOwner;
+
   /// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
   final pulumi.Input<bool> isRamRole;
+
   /// The permission settings to manage ACK clusters.
   final pulumi.Input<String> resourceId;
+
   /// The authorization type. Valid values `cluster`, `namespace` and `console`.
   final pulumi.Input<String> resourceType;
+
   /// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
   final pulumi.Input<String> roleName;
+
   /// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
   final pulumi.Input<String> roleType;
 
@@ -45,13 +50,12 @@ class GetKubernetesPermissionPermission {
 
   factory GetKubernetesPermissionPermission.fromMap(Map<String, dynamic> map) {
     return GetKubernetesPermissionPermission(
-      isOwner: (map['isOwner'] as bool).input(),
-      isRamRole: (map['isRamRole'] as bool).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      roleName: (map['roleName'] as String).input(),
-      roleType: (map['roleType'] as String).input(),
+      isOwner: pulumi.Input.fromValue(map['isOwner'] as bool),
+      isRamRole: pulumi.Input.fromValue(map['isRamRole'] as bool),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      roleName: pulumi.Input.fromValue(map['roleName'] as String),
+      roleType: pulumi.Input.fromValue(map['roleType'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class MaxPodsConstraintContainerV1beta1 {
 
   /// Creates a new [MaxPodsConstraintContainerV1beta1].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.
-  MaxPodsConstraintContainerV1beta1({
-    this.maxPodsPerNode,
-  });
+  MaxPodsConstraintContainerV1beta1({this.maxPodsPerNode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxPodsPerNode': ?maxPodsPerNode,
-    };
+    return <String, dynamic>{'maxPodsPerNode': ?maxPodsPerNode};
   }
 
   factory MaxPodsConstraintContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaxPodsConstraintContainerV1beta1(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as String).input(),
+      maxPodsPerNode: (() {
+        final guardedValue = map['maxPodsPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

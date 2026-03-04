@@ -304,7 +304,7 @@ Future<GetLbsResult> getLbs(
   return GetLbsResult.fromMap(result);
 }
 
-/// > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Listener.
 ///
@@ -727,7 +727,7 @@ Future<GetListenerRuleResult> getListenerRule(
   return GetListenerRuleResult.fromMap(result);
 }
 
-/// > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer.
 ///
@@ -877,7 +877,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
-/// > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Target Group.
 ///
@@ -1027,7 +1027,7 @@ Future<GetTargetGroupResult> getTargetGroup(
   return GetTargetGroupResult.fromMap(result);
 }
 
-/// > **Note:** `aws_alb_trust_store` is known as `aws.lb.TrustStore`. The functionality is identical.
+/// &gt; **Note:** `aws_alb_trust_store` is known as `aws.lb.TrustStore`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Trust Store.
 ///

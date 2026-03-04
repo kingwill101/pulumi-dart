@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class APIServerProfileResponse {
   /// The IP of the cluster API server.
   final pulumi.Input<String> ip;
+
   /// The URL to access the cluster API server.
   final pulumi.Input<String> url;
+
   /// API server visibility.
   final pulumi.Input<String>? visibility;
 
@@ -22,19 +24,18 @@ class APIServerProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ip,
-      'url': url,
-      'visibility': ?visibility,
-    };
+    return <String, dynamic>{'ip': ip, 'url': url, 'visibility': ?visibility};
   }
 
   factory APIServerProfileResponse.fromMap(Map<String, dynamic> map) {
     return APIServerProfileResponse(
-      ip: (map['ip'] as String).input(),
-      url: (map['url'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

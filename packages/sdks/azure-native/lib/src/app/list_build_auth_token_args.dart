@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListBuildAuthTokenArgs {
   /// The name of a build.
   final pulumi.Input<String> buildName;
+
   /// The name of the builder.
   final pulumi.Input<String> builderName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class ListBuildAuthTokenArgs {
 
   factory ListBuildAuthTokenArgs.fromMap(Map<String, dynamic> map) {
     return ListBuildAuthTokenArgs(
-      buildName: (map['buildName'] as String).input(),
-      builderName: (map['builderName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      buildName: pulumi.Input.fromValue(map['buildName'] as String),
+      builderName: pulumi.Input.fromValue(map['builderName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

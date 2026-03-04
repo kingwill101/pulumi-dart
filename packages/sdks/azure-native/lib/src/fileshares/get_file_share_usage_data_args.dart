@@ -12,20 +12,15 @@ class GetFileShareUsageDataArgs {
 
   /// Creates a new [GetFileShareUsageDataArgs].
   /// [location] The name of the Azure region.
-  GetFileShareUsageDataArgs({
-    required this.location,
-  });
+  GetFileShareUsageDataArgs({required this.location});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-    };
+    return <String, dynamic>{'location': location};
   }
 
   factory GetFileShareUsageDataArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareUsageDataArgs(
-      location: (map['location'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

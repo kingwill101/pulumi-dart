@@ -1,5 +1,3 @@
-library module_dataexchange;
-
 export 'dataexchange/data_set.dart';
 export 'dataexchange/data_set_args.dart';
 export 'dataexchange/data_set_state.dart';

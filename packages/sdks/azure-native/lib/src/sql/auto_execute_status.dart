@@ -4,16 +4,15 @@ enum AutoExecuteStatus {
   valueDisabled("Disabled"),
   valueDefault("Default");
 
-  const AutoExecuteStatus(this.value);
-  final String value;
+  const AutoExecuteStatus(this.wireValue);
+  final String wireValue;
 
   static AutoExecuteStatus fromValue(String value) {
     for (final item in AutoExecuteStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoExecuteStatus value: $value');
   }
 }
-

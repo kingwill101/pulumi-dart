@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityActionHttpHeaderResponse {
   /// The header name to be sent to the target.
   final pulumi.Input<String> name;
+
   /// The header value to be sent to the target.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class GoogleCloudApigeeV1SecurityActionHttpHeaderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityActionHttpHeaderResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

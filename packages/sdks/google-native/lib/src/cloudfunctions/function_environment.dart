@@ -4,16 +4,15 @@ enum FunctionEnvironment {
   gen1("GEN_1"),
   gen2("GEN_2");
 
-  const FunctionEnvironment(this.value);
-  final String value;
+  const FunctionEnvironment(this.wireValue);
+  final String wireValue;
 
   static FunctionEnvironment fromValue(String value) {
     for (final item in FunctionEnvironment.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FunctionEnvironment value: $value');
   }
 }
-

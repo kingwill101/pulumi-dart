@@ -7,12 +7,19 @@ import 'network_insights_path_filter_at_destination_source_port_range.dart';
 class NetworkInsightsPathFilterAtDestination {
   /// The destination IPv4 address.
   final pulumi.Input<String>? destinationAddress;
+
   /// The destination port range. See below for details.
-  final pulumi.Input<NetworkInsightsPathFilterAtDestinationDestinationPortRange>? destinationPortRange;
+  final pulumi.Input<
+    NetworkInsightsPathFilterAtDestinationDestinationPortRange
+  >?
+  destinationPortRange;
+
   /// IP address of the source resource.
   final pulumi.Input<String>? sourceAddress;
+
   /// The source port range. See below for details.
-  final pulumi.Input<NetworkInsightsPathFilterAtDestinationSourcePortRange>? sourcePortRange;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestinationSourcePortRange>?
+  sourcePortRange;
 
   /// Creates a new [NetworkInsightsPathFilterAtDestination].
   /// [destinationAddress] The destination IPv4 address.
@@ -29,19 +36,52 @@ class NetworkInsightsPathFilterAtDestination {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddress': ?destinationAddress,
-      'destinationPortRange': ?pulumi.Input.mapOptionalInputValue<NetworkInsightsPathFilterAtDestinationDestinationPortRange, Map<String, dynamic>>(destinationPortRange, (value) => value.toMap()),
+      'destinationPortRange':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkInsightsPathFilterAtDestinationDestinationPortRange,
+            Map<String, dynamic>
+          >(destinationPortRange, (value) => value.toMap()),
       'sourceAddress': ?sourceAddress,
-      'sourcePortRange': ?pulumi.Input.mapOptionalInputValue<NetworkInsightsPathFilterAtDestinationSourcePortRange, Map<String, dynamic>>(sourcePortRange, (value) => value.toMap()),
+      'sourcePortRange':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkInsightsPathFilterAtDestinationSourcePortRange,
+            Map<String, dynamic>
+          >(sourcePortRange, (value) => value.toMap()),
     };
   }
 
-  factory NetworkInsightsPathFilterAtDestination.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsPathFilterAtDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsPathFilterAtDestination(
-      destinationAddress: map['destinationAddress'] == null ? null : ((map['destinationAddress'] as String).input()).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : ((NetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap((map['destinationPortRange']! as Map).cast<String, dynamic>())).input()).input(),
-      sourceAddress: map['sourceAddress'] == null ? null : ((map['sourceAddress'] as String).input()).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : ((NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap((map['sourcePortRange']! as Map).cast<String, dynamic>())).input()).input(),
+      destinationAddress: (() {
+        final guardedValue = map['destinationAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationPortRange: (() {
+        final guardedValue = map['destinationPortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceAddress: (() {
+        final guardedValue = map['sourceAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourcePortRange: (() {
+        final guardedValue = map['sourcePortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

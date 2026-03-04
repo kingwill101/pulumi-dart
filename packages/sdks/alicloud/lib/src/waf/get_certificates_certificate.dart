@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesCertificate {
   /// Certificate recording ID.
   final pulumi.Input<String> certificateId;
+
   /// Your certificate name.
   final pulumi.Input<String> certificateName;
+
   /// Certificate bound to the domain name.
   final pulumi.Input<String> commonName;
+
   /// WAF domain name.
   final pulumi.Input<String> domain;
+
   /// The ID of the Certificate.
   final pulumi.Input<String> id;
+
   /// WAF instance ID.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<bool> isUsing;
@@ -53,15 +58,14 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      certificateId: (map['certificateId'] as String).input(),
-      certificateName: (map['certificateName'] as String).input(),
-      commonName: (map['commonName'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      isUsing: (map['isUsing'] as bool).input(),
-      sans: ((map['sans'] as List).cast<String>()).input(),
+      certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      commonName: pulumi.Input.fromValue(map['commonName'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      isUsing: pulumi.Input.fromValue(map['isUsing'] as bool),
+      sans: pulumi.Input.fromValue((map['sans'] as List).cast<String>()),
     );
   }
 }
-

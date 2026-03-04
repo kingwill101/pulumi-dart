@@ -1,5 +1,3 @@
-library module_cloudsearch;
-
 export 'cloudsearch/composite_filter.dart';
 export 'cloudsearch/composite_filter_logic_operator.dart';
 export 'cloudsearch/composite_filter_response.dart';

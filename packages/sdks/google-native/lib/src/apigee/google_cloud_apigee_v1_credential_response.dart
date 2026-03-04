@@ -6,19 +6,27 @@ import 'google_cloud_apigee_v1_attribute_response.dart';
 
 class GoogleCloudApigeeV1CredentialResponse {
   /// List of API products this credential can be used for.
-  final pulumi.Input<List<GoogleCloudApigeeV1ApiProductRefResponse>> apiProducts;
+  final pulumi.Input<List<GoogleCloudApigeeV1ApiProductRefResponse>>
+  apiProducts;
+
   /// List of attributes associated with this credential.
   final pulumi.Input<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
+
   /// Consumer key.
   final pulumi.Input<String> consumerKey;
+
   /// Secret key.
   final pulumi.Input<String> consumerSecret;
+
   /// Time the credential will expire in milliseconds since epoch.
   final pulumi.Input<String> expiresAt;
+
   /// Time the credential was issued in milliseconds since epoch.
   final pulumi.Input<String> issuedAt;
+
   /// List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
   final pulumi.Input<List<String>> scopes;
+
   /// Status of the credential. Valid values include `approved` or `revoked`.
   final pulumi.Input<String> status;
 
@@ -44,8 +52,30 @@ class GoogleCloudApigeeV1CredentialResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiProducts': pulumi.Input.mapInputValue<List<GoogleCloudApigeeV1ApiProductRefResponse>, List<Map<String, dynamic>>>(apiProducts, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1ApiProductRefResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'attributes': pulumi.Input.mapInputValue<List<GoogleCloudApigeeV1AttributeResponse>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1AttributeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiProducts':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudApigeeV1ApiProductRefResponse>,
+            List<Map<String, dynamic>>
+          >(
+            apiProducts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudApigeeV1ApiProductRefResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'attributes':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudApigeeV1AttributeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            attributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudApigeeV1AttributeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'consumerKey': consumerKey,
       'consumerSecret': consumerSecret,
       'expiresAt': expiresAt,
@@ -55,17 +85,32 @@ class GoogleCloudApigeeV1CredentialResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1CredentialResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CredentialResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1CredentialResponse(
-      apiProducts: (pulumi.Input.decodeList<GoogleCloudApigeeV1ApiProductRefResponse>(map['apiProducts'], (value) => GoogleCloudApigeeV1ApiProductRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      attributes: (pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(map['attributes'], (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: (map['consumerSecret'] as String).input(),
-      expiresAt: (map['expiresAt'] as String).input(),
-      issuedAt: (map['issuedAt'] as String).input(),
-      scopes: ((map['scopes'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
+      apiProducts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudApigeeV1ApiProductRefResponse>(
+          map['apiProducts']!,
+          (value) => GoogleCloudApigeeV1ApiProductRefResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      attributes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+          map['attributes']!,
+          (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      consumerKey: pulumi.Input.fromValue(map['consumerKey'] as String),
+      consumerSecret: pulumi.Input.fromValue(map['consumerSecret'] as String),
+      expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
+      issuedAt: pulumi.Input.fromValue(map['issuedAt'] as String),
+      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

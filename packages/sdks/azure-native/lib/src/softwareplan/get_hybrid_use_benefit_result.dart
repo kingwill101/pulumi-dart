@@ -6,20 +6,28 @@ import 'sku_response.dart';
 class GetHybridUseBenefitResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Created date
   final String createdDate;
+
   /// Indicates the revision of the hybrid use benefit
   final int etag;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Last updated date
   final String lastUpdatedDate;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state
   final String provisioningState;
+
   /// Hybrid use benefit SKU
   final SkuResponse sku;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,9 +76,8 @@ class GetHybridUseBenefitResult {
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

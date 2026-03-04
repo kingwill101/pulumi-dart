@@ -6,21 +6,29 @@ import 'app_flex_consumption_site_config_scm_ip_restriction_headers.dart';
 class AppFlexConsumptionSiteConfigScmIpRestriction {
   /// The action to take. Possible values are `Allow` or `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? action;
+
   /// The Description of this IP Restriction.
   final pulumi.Input<String>? description;
+
   /// A `headers` block as defined above.
-  final pulumi.Input<AppFlexConsumptionSiteConfigScmIpRestrictionHeaders>? headers;
+  final pulumi.Input<AppFlexConsumptionSiteConfigScmIpRestrictionHeaders>?
+  headers;
+
   /// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24` or `192.168.10.1/32`
   final pulumi.Input<String>? ipAddress;
+
   /// The name which should be used for this `ip_restriction`.
   final pulumi.Input<String>? name;
+
   /// The priority value of this `ip_restriction`. Defaults to `65000`.
   final pulumi.Input<int>? priority;
+
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String>? serviceTag;
+
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
-  /// > **Note:** One and only one of `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified.
+  /// &gt; **Note:** One and only one of `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified.
   final pulumi.Input<String>? virtualNetworkSubnetId;
 
   /// Creates a new [AppFlexConsumptionSiteConfigScmIpRestriction].
@@ -47,7 +55,11 @@ class AppFlexConsumptionSiteConfigScmIpRestriction {
     return <String, dynamic>{
       'action': ?action,
       'description': ?description,
-      'headers': ?pulumi.Input.mapOptionalInputValue<AppFlexConsumptionSiteConfigScmIpRestrictionHeaders, Map<String, dynamic>>(headers, (value) => value.toMap()),
+      'headers':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppFlexConsumptionSiteConfigScmIpRestrictionHeaders,
+            Map<String, dynamic>
+          >(headers, (value) => value.toMap()),
       'ipAddress': ?ipAddress,
       'name': ?name,
       'priority': ?priority,
@@ -56,17 +68,54 @@ class AppFlexConsumptionSiteConfigScmIpRestriction {
     };
   }
 
-  factory AppFlexConsumptionSiteConfigScmIpRestriction.fromMap(Map<String, dynamic> map) {
+  factory AppFlexConsumptionSiteConfigScmIpRestriction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppFlexConsumptionSiteConfigScmIpRestriction(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      headers: map['headers'] == null ? null : (AppFlexConsumptionSiteConfigScmIpRestrictionHeaders.fromMap((map['headers']! as Map).cast<String, dynamic>())).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag']! as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppFlexConsumptionSiteConfigScmIpRestrictionHeaders.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serviceTag: (() {
+        final guardedValue = map['serviceTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkSubnetId: (() {
+        final guardedValue = map['virtualNetworkSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

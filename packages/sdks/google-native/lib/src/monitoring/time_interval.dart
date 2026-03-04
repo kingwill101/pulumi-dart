@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeInterval {
   /// The end of the time interval.
   final pulumi.Input<String> endTime;
+
   /// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
   final pulumi.Input<String>? startTime;
 
   /// Creates a new [TimeInterval].
   /// [endTime] The end of the time interval.
   /// [startTime] Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
-  TimeInterval({
-    required this.endTime,
-    this.startTime,
-  });
+  TimeInterval({required this.endTime, this.startTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endTime': endTime,
-      'startTime': ?startTime,
-    };
+    return <String, dynamic>{'endTime': endTime, 'startTime': ?startTime};
   }
 
   factory TimeInterval.fromMap(Map<String, dynamic> map) {
     return TimeInterval(
-      endTime: (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

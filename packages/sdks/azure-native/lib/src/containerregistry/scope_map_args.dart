@@ -11,12 +11,16 @@ class ScopeMapArgs {
   /// E.g. repositories/repository-name/content/read,
   /// repositories/repository-name/metadata/write
   final pulumi.Input<List<String>> actions;
+
   /// The user friendly description of the scope map.
   final pulumi.Input<String>? description;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the scope map.
   final pulumi.Input<String>? scopeMapName;
 
@@ -46,12 +50,21 @@ class ScopeMapArgs {
 
   factory ScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return ScopeMapArgs(
-      actions: ((map['actions'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeMapName: map['scopeMapName'] == null ? null : (map['scopeMapName']! as String).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scopeMapName: (() {
+        final guardedValue = map['scopeMapName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

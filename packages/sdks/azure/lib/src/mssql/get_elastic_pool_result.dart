@@ -7,28 +7,39 @@ import 'get_elastic_pool_skus.dart';
 class GetElasticPoolResult {
   /// The type of enclave being used by the elastic pool.
   final String enclaveType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The license type to apply for this elastic pool.
   final String licenseType;
+
   /// Specifies the supported Azure location where the resource exists.
   final String location;
+
   /// The max data size of the elastic pool in bytes.
   final int maxSizeBytes;
+
   /// The max data size of the elastic pool in gigabytes.
   final double maxSizeGb;
+
   /// Specifies the SKU Name for this Elasticpool.
   final String name;
+
   /// The maximum capacity any one database can consume.
   final int perDbMaxCapacity;
+
   /// The minimum capacity all databases are guaranteed.
   final int perDbMinCapacity;
   final String resourceGroupName;
   final String serverName;
+
   /// A `sku` block as defined below.
   final List<GetElasticPoolSkus> skus;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
+
   /// Whether or not this elastic pool is zone redundant.
   final bool zoneRedundant;
 
@@ -77,7 +88,10 @@ class GetElasticPoolResult {
       'perDbMinCapacity': perDbMinCapacity,
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
-      'skus': pulumi.Input.encodeList<GetElasticPoolSkus, Map<String, dynamic>>(skus, (value) => value.toMap()),
+      'skus': pulumi.Input.encodeList<GetElasticPoolSkus, Map<String, dynamic>>(
+        skus,
+        (value) => value.toMap(),
+      ),
       'tags': tags,
       'zoneRedundant': zoneRedundant,
     };
@@ -96,10 +110,13 @@ class GetElasticPoolResult {
       perDbMinCapacity: map['perDbMinCapacity'] as int,
       resourceGroupName: map['resourceGroupName'] as String,
       serverName: map['serverName'] as String,
-      skus: pulumi.Input.decodeList<GetElasticPoolSkus>(map['skus'], (value) => GetElasticPoolSkus.fromMap((value as Map).cast<String, dynamic>())),
+      skus: pulumi.Input.decodeList<GetElasticPoolSkus>(
+        map['skus']!,
+        (value) =>
+            GetElasticPoolSkus.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
       zoneRedundant: map['zoneRedundant'] as bool,
     );
   }
 }
-

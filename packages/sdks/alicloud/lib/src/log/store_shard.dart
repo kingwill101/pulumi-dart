@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StoreShard {
   /// The begin value of the shard range(MD5), included in the shard range.
   final pulumi.Input<String>? beginKey;
+
   /// The end value of the shard range(MD5), not included in shard range.
   final pulumi.Input<String>? endKey;
+
   /// The ID of the shard.
   final pulumi.Input<int>? id;
+
   /// Shard status, only two status of `readwrite` and `readonly`.
   final pulumi.Input<String>? status;
 
@@ -17,12 +20,7 @@ class StoreShard {
   /// [endKey] The end value of the shard range(MD5), not included in shard range.
   /// [id] The ID of the shard.
   /// [status] Shard status, only two status of `readwrite` and `readonly`.
-  StoreShard({
-    this.beginKey,
-    this.endKey,
-    this.id,
-    this.status,
-  });
+  StoreShard({this.beginKey, this.endKey, this.id, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,11 +33,26 @@ class StoreShard {
 
   factory StoreShard.fromMap(Map<String, dynamic> map) {
     return StoreShard(
-      beginKey: map['beginKey'] == null ? null : (map['beginKey']! as String).input(),
-      endKey: map['endKey'] == null ? null : (map['endKey']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      beginKey: (() {
+        final guardedValue = map['beginKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endKey: (() {
+        final guardedValue = map['endKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

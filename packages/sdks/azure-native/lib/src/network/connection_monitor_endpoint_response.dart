@@ -9,20 +9,29 @@ import 'connection_monitor_endpoint_scope_response.dart';
 class ConnectionMonitorEndpointResponse {
   /// Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
   final pulumi.Input<String>? address;
+
   /// Test coverage for the endpoint.
   final pulumi.Input<String>? coverageLevel;
+
   /// Filter field is getting deprecated and should not be used. Instead use Include/Exclude scope fields for it.
   final pulumi.Input<ConnectionMonitorEndpointFilterResponse>? filter;
+
   /// Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details.
-  final pulumi.Input<ConnectionMonitorEndpointLocationDetailsResponse>? locationDetails;
+  final pulumi.Input<ConnectionMonitorEndpointLocationDetailsResponse>?
+  locationDetails;
+
   /// The name of the connection monitor endpoint.
   final pulumi.Input<String> name;
+
   /// Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type.
   final pulumi.Input<String>? resourceId;
+
   /// Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork.
   final pulumi.Input<ConnectionMonitorEndpointScopeResponse>? scope;
+
   /// Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint.
   final pulumi.Input<String>? subscriptionId;
+
   /// The endpoint type.
   final pulumi.Input<String>? type;
 
@@ -52,11 +61,23 @@ class ConnectionMonitorEndpointResponse {
     return <String, dynamic>{
       'address': ?address,
       'coverageLevel': ?coverageLevel,
-      'filter': ?pulumi.Input.mapOptionalInputValue<ConnectionMonitorEndpointFilterResponse, Map<String, dynamic>>(filter, (value) => value.toMap()),
-      'locationDetails': ?pulumi.Input.mapOptionalInputValue<ConnectionMonitorEndpointLocationDetailsResponse, Map<String, dynamic>>(locationDetails, (value) => value.toMap()),
+      'filter':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionMonitorEndpointFilterResponse,
+            Map<String, dynamic>
+          >(filter, (value) => value.toMap()),
+      'locationDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionMonitorEndpointLocationDetailsResponse,
+            Map<String, dynamic>
+          >(locationDetails, (value) => value.toMap()),
       'name': name,
       'resourceId': ?resourceId,
-      'scope': ?pulumi.Input.mapOptionalInputValue<ConnectionMonitorEndpointScopeResponse, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'scope':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionMonitorEndpointScopeResponse,
+            Map<String, dynamic>
+          >(scope, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
       'type': ?type,
     };
@@ -64,16 +85,59 @@ class ConnectionMonitorEndpointResponse {
 
   factory ConnectionMonitorEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointResponse(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      coverageLevel: map['coverageLevel'] == null ? null : (map['coverageLevel']! as String).input(),
-      filter: map['filter'] == null ? null : (ConnectionMonitorEndpointFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
-      locationDetails: map['locationDetails'] == null ? null : (ConnectionMonitorEndpointLocationDetailsResponse.fromMap((map['locationDetails']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      scope: map['scope'] == null ? null : (ConnectionMonitorEndpointScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coverageLevel: (() {
+        final guardedValue = map['coverageLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionMonitorEndpointFilterResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      locationDetails: (() {
+        final guardedValue = map['locationDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionMonitorEndpointLocationDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionMonitorEndpointScopeResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

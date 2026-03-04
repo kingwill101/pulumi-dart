@@ -3,16 +3,15 @@ enum ProbeNoHealthyBackendsBehavior {
   valueAllProbedDown("AllProbedDown"),
   valueAllProbedUp("AllProbedUp");
 
-  const ProbeNoHealthyBackendsBehavior(this.value);
-  final String value;
+  const ProbeNoHealthyBackendsBehavior(this.wireValue);
+  final String wireValue;
 
   static ProbeNoHealthyBackendsBehavior fromValue(String value) {
     for (final item in ProbeNoHealthyBackendsBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProbeNoHealthyBackendsBehavior value: $value');
   }
 }
-

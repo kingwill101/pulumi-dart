@@ -2,16 +2,15 @@
 enum CloudHsmClusterSkuFamily {
   valueB("B");
 
-  const CloudHsmClusterSkuFamily(this.value);
-  final String value;
+  const CloudHsmClusterSkuFamily(this.wireValue);
+  final String wireValue;
 
   static CloudHsmClusterSkuFamily fromValue(String value) {
     for (final item in CloudHsmClusterSkuFamily.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudHsmClusterSkuFamily value: $value');
   }
 }
-

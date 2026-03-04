@@ -7,12 +7,16 @@ import 'error_additional_info_response.dart';
 class DeploymentStacksDiagnosticResponse {
   /// Additional error information.
   final pulumi.Input<List<ErrorAdditionalInfoResponse>>? additionalInfo;
+
   /// The error code.
   final pulumi.Input<String> code;
+
   /// Denotes the additional response level.
   final pulumi.Input<String> level;
+
   /// The error message.
   final pulumi.Input<String> message;
+
   /// The error target.
   final pulumi.Input<String>? target;
 
@@ -32,7 +36,18 @@ class DeploymentStacksDiagnosticResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalInfo': ?pulumi.Input.mapOptionalInputValue<List<ErrorAdditionalInfoResponse>, List<Map<String, dynamic>>>(additionalInfo, (value) => pulumi.Input.encodeList<ErrorAdditionalInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ErrorAdditionalInfoResponse>,
+            List<Map<String, dynamic>>
+          >(
+            additionalInfo,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ErrorAdditionalInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'code': code,
       'level': level,
       'message': message,
@@ -42,12 +57,26 @@ class DeploymentStacksDiagnosticResponse {
 
   factory DeploymentStacksDiagnosticResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksDiagnosticResponse(
-      additionalInfo: map['additionalInfo'] == null ? null : (pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo']!, (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      code: (map['code'] as String).input(),
-      level: (map['level'] as String).input(),
-      message: (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      additionalInfo: (() {
+        final guardedValue = map['additionalInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(
+            guardedValue,
+            (value) => ErrorAdditionalInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

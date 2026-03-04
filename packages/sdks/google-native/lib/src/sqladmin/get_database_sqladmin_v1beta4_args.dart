@@ -31,10 +31,13 @@ class GetDatabaseSqladminV1beta4Args {
 
   factory GetDatabaseSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSqladminV1beta4Args(
-      database: (map['database'] as String).input(),
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

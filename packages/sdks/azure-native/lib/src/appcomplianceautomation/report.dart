@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cert_sync_record_response.dart';
 import 'report_args.dart';
 import 'report_compliance_status_response.dart';
-import 'resource_metadata_response.dart';
 import 'storage_info_response.dart';
 import 'system_data_response.dart';
 
@@ -218,39 +216,56 @@ import 'system_data_response.dart';
 class Report extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of synchronized certification records.
-  late final pulumi.Output<List<CertSyncRecordResponse>> certRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>> certRecords;
+
   /// Report compliance status.
   late final pulumi.Output<ReportComplianceStatusResponse> complianceStatus;
+
   /// List of report error codes.
   late final pulumi.Output<List<String>> errors;
+
   /// Report last collection trigger time.
   late final pulumi.Output<String> lastTriggerTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Report next collection trigger time.
   late final pulumi.Output<String> nextTriggerTime;
+
   /// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
   late final pulumi.Output<String?> offerGuid;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// List of resource data.
-  late final pulumi.Output<List<ResourceMetadataResponse>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// Report status.
   late final pulumi.Output<String> status;
+
   /// The information of 'bring your own storage' binding to the report
   late final pulumi.Output<StorageInfoResponse?> storageInfo;
+
   /// List of subscription Ids.
   late final pulumi.Output<List<String>> subscriptions;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Report's tenant id.
   late final pulumi.Output<String> tenantId;
+
   /// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time".
   late final pulumi.Output<String> timeZone;
+
   /// Report collection trigger time.
   late final pulumi.Output<String> triggerTime;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -258,33 +273,32 @@ class Report extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Report]. {@macro pulumi_appcomplianceautomation_report_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Report(
-    String name, {
-    ReportArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:appcomplianceautomation:Report',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certRecords = registerOutput<List<CertSyncRecordResponse>>('certRecords');
-    this.complianceStatus = registerOutput<ReportComplianceStatusResponse>('complianceStatus');
-    this.errors = registerOutput<List<String>>('errors');
-    this.lastTriggerTime = registerOutput<String>('lastTriggerTime');
+  Report(String name, {ReportArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:appcomplianceautomation:Report',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certRecords = registerOutput<List<Map<String, dynamic>>>('certRecords');
+    complianceStatus = registerOutput<ReportComplianceStatusResponse>(
+      'complianceStatus',
+    );
+    errors = registerOutput<List<String>>('errors');
+    lastTriggerTime = registerOutput<String>('lastTriggerTime');
     this.name = registerOutput<String>('name');
-    this.nextTriggerTime = registerOutput<String>('nextTriggerTime');
-    this.offerGuid = registerOutput<String?>('offerGuid');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resources = registerOutput<List<ResourceMetadataResponse>>('resources');
-    this.status = registerOutput<String>('status');
-    this.storageInfo = registerOutput<StorageInfoResponse?>('storageInfo');
-    this.subscriptions = registerOutput<List<String>>('subscriptions');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.timeZone = registerOutput<String>('timeZone');
-    this.triggerTime = registerOutput<String>('triggerTime');
-    this.type = registerOutput<String>('type');
+    nextTriggerTime = registerOutput<String>('nextTriggerTime');
+    offerGuid = registerOutput<String?>('offerGuid');
+    provisioningState = registerOutput<String>('provisioningState');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    status = registerOutput<String>('status');
+    storageInfo = registerOutput<StorageInfoResponse?>('storageInfo');
+    subscriptions = registerOutput<List<String>>('subscriptions');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String>('tenantId');
+    timeZone = registerOutput<String>('timeZone');
+    triggerTime = registerOutput<String>('triggerTime');
+    type = registerOutput<String>('type');
   }
 }

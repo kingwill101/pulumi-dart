@@ -147,7 +147,7 @@ import 'cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -162,12 +162,16 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the EventHub Cluster resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the EventHub Cluster exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SKU name of the EventHub Cluster. The only supported value at this time is `Dedicated_1`.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -180,16 +184,16 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:eventhub/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -210,15 +214,15 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:eventhub/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

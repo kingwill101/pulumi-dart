@@ -9,37 +9,52 @@ import 'system_data_response.dart';
 class GetPartnerNamespaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
   final bool? disableLocalAuth;
+
   /// Endpoint for the partner namespace.
   final String endpoint;
+
   /// Fully qualified identifier of the resource.
   final String id;
+
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
   final List<InboundIpRuleResponse>? inboundIpRules;
+
   /// Location of the resource.
   final String location;
+
   /// Minimum TLS version of the publisher allowed to publish to this partner namespace
   final String? minimumTlsVersionAllowed;
+
   /// Name of the resource.
   final String name;
+
   /// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
   final String? partnerRegistrationFullyQualifiedId;
+
   /// This determines if events published to this partner namespace should use the source attribute in the event payload
   /// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
   final String? partnerTopicRoutingMode;
+
   /// List of private endpoint connections.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+
   /// Provisioning state of the partner namespace.
   final String provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
-  /// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
+  /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /&gt;
   final String? publicNetworkAccess;
+
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
+
   /// Tags of the resource.
   final Map<String, String>? tags;
+
   /// Type of the resource.
   final String type;
 
@@ -85,13 +100,25 @@ class GetPartnerNamespaceResult {
       'disableLocalAuth': ?disableLocalAuth,
       'endpoint': endpoint,
       'id': id,
-      'inboundIpRules': ?inboundIpRules == null ? null : pulumi.Input.encodeList<InboundIpRuleResponse, Map<String, dynamic>>(inboundIpRules!, (value) => value.toMap()),
+      'inboundIpRules': ?(() {
+        final guardedValue = inboundIpRules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          InboundIpRuleResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'location': location,
       'minimumTlsVersionAllowed': ?minimumTlsVersionAllowed,
       'name': name,
-      'partnerRegistrationFullyQualifiedId': ?partnerRegistrationFullyQualifiedId,
+      'partnerRegistrationFullyQualifiedId':
+          ?partnerRegistrationFullyQualifiedId,
       'partnerTopicRoutingMode': ?partnerTopicRoutingMode,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections':
+          pulumi.Input.encodeList<
+            PrivateEndpointConnectionResponse,
+            Map<String, dynamic>
+          >(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'systemData': systemData.toMap(),
@@ -103,22 +130,62 @@ class GetPartnerNamespaceResult {
   factory GetPartnerNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerNamespaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth']! as bool,
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Input.decodeList<InboundIpRuleResponse>(map['inboundIpRules']!, (value) => InboundIpRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      inboundIpRules: (() {
+        final guardedValue = map['inboundIpRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<InboundIpRuleResponse>(
+          guardedValue,
+          (value) => InboundIpRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       location: map['location'] as String,
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : map['minimumTlsVersionAllowed']! as String,
+      minimumTlsVersionAllowed: (() {
+        final guardedValue = map['minimumTlsVersionAllowed'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : map['partnerRegistrationFullyQualifiedId']! as String,
-      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : map['partnerTopicRoutingMode']! as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      partnerRegistrationFullyQualifiedId: (() {
+        final guardedValue = map['partnerRegistrationFullyQualifiedId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      partnerTopicRoutingMode: (() {
+        final guardedValue = map['partnerTopicRoutingMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      privateEndpointConnections:
+          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+            map['privateEndpointConnections']!,
+            (value) => PrivateEndpointConnectionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

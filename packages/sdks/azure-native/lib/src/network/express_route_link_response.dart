@@ -7,26 +7,37 @@ import 'express_route_link_mac_sec_config_response.dart';
 class ExpressRouteLinkResponse {
   /// Administrative state of the physical port.
   final pulumi.Input<String>? adminState;
+
   /// Cololocation for ExpressRoute Hybrid Direct.
   final pulumi.Input<String> coloLocation;
+
   /// Physical fiber port type.
   final pulumi.Input<String> connectorType;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Name of Azure router interface.
   final pulumi.Input<String> interfaceName;
+
   /// MacSec configuration.
   final pulumi.Input<ExpressRouteLinkMacSecConfigResponse>? macSecConfig;
+
   /// Name of child port resource that is unique among child port resources of the parent.
   final pulumi.Input<String>? name;
+
   /// Mapping between physical port to patch panel port.
   final pulumi.Input<String> patchPanelId;
+
   /// The provisioning state of the express route link resource.
   final pulumi.Input<String> provisioningState;
+
   /// Mapping of physical patch panel to rack.
   final pulumi.Input<String> rackId;
+
   /// Name of Azure router associated with physical port.
   final pulumi.Input<String> routerName;
 
@@ -66,7 +77,11 @@ class ExpressRouteLinkResponse {
       'etag': etag,
       'id': ?id,
       'interfaceName': interfaceName,
-      'macSecConfig': ?pulumi.Input.mapOptionalInputValue<ExpressRouteLinkMacSecConfigResponse, Map<String, dynamic>>(macSecConfig, (value) => value.toMap()),
+      'macSecConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExpressRouteLinkMacSecConfigResponse,
+            Map<String, dynamic>
+          >(macSecConfig, (value) => value.toMap()),
       'name': ?name,
       'patchPanelId': patchPanelId,
       'provisioningState': provisioningState,
@@ -77,19 +92,40 @@ class ExpressRouteLinkResponse {
 
   factory ExpressRouteLinkResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteLinkResponse(
-      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
-      coloLocation: (map['coloLocation'] as String).input(),
-      connectorType: (map['connectorType'] as String).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      interfaceName: (map['interfaceName'] as String).input(),
-      macSecConfig: map['macSecConfig'] == null ? null : (ExpressRouteLinkMacSecConfigResponse.fromMap((map['macSecConfig']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      patchPanelId: (map['patchPanelId'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      rackId: (map['rackId'] as String).input(),
-      routerName: (map['routerName'] as String).input(),
+      adminState: (() {
+        final guardedValue = map['adminState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coloLocation: pulumi.Input.fromValue(map['coloLocation'] as String),
+      connectorType: pulumi.Input.fromValue(map['connectorType'] as String),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interfaceName: pulumi.Input.fromValue(map['interfaceName'] as String),
+      macSecConfig: (() {
+        final guardedValue = map['macSecConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExpressRouteLinkMacSecConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patchPanelId: pulumi.Input.fromValue(map['patchPanelId'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      rackId: pulumi.Input.fromValue(map['rackId'] as String),
+      routerName: pulumi.Input.fromValue(map['routerName'] as String),
     );
   }
 }
-

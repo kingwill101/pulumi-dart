@@ -1,5 +1,3 @@
-library module_jobs;
-
 export 'jobs/application_info.dart';
 export 'jobs/application_info_jobs_v4.dart';
 export 'jobs/application_info_response.dart';

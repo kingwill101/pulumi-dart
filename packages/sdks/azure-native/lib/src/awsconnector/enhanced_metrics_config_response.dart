@@ -7,17 +7,22 @@ import 'resolver_level_metrics_behavior_enum_value_response.dart';
 
 /// Definition of EnhancedMetricsConfig
 class EnhancedMetricsConfigResponse {
-  /// <p>Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:</p> <ul> <li> <p>Requests: The number of invocations that occured during a request.</p> </li> <li> <p>Latency: The time to complete a data source invocation.</p> </li> <li> <p>Errors: The number of errors that occurred during a data source invocation.</p> </li> </ul> <p>These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. <code>dataSourceLevelMetricsBehavior</code> accepts one of these values at a time:</p> <ul> <li> <p> <code>FULL_REQUEST_DATA_SOURCE_METRICS</code>: Records and emits metric data for all data sources in the request.</p> </li> <li> <p> <code>PER_DATA_SOURCE_METRICS</code>: Records and emits metric data for data sources that have the <code>metricsConfig</code> value set to <code>ENABLED</code>.</p> </li> </ul>
-  final pulumi.Input<DataSourceLevelMetricsBehaviorEnumValueResponse>? dataSourceLevelMetricsBehavior;
-  /// <p> Controls how operation metrics will be emitted to CloudWatch. Operation metrics include:</p> <ul> <li> <p>Requests: The number of times a specified GraphQL operation was called.</p> </li> <li> <p>GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation.</p> </li> </ul> <p>Metrics will be recorded by API ID and operation name. You can set the value to <code>ENABLED</code> or <code>DISABLED</code>.</p>
-  final pulumi.Input<OperationLevelMetricsConfigEnumValueResponse>? operationLevelMetricsConfig;
-  /// <p>Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include:</p> <ul> <li> <p>GraphQL errors: The number of GraphQL errors that occurred.</p> </li> <li> <p>Requests: The number of invocations that occurred during a request. </p> </li> <li> <p>Latency: The time to complete a resolver invocation.</p> </li> <li> <p>Cache hits: The number of cache hits during a request.</p> </li> <li> <p>Cache misses: The number of cache misses during a request.</p> </li> </ul> <p>These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. <code>resolverLevelMetricsBehavior</code> accepts one of these values at a time:</p> <ul> <li> <p> <code>FULL_REQUEST_RESOLVER_METRICS</code>: Records and emits metric data for all resolvers in the request.</p> </li> <li> <p> <code>PER_RESOLVER_METRICS</code>: Records and emits metric data for resolvers that have the <code>metricsConfig</code> value set to <code>ENABLED</code>.</p> </li> </ul>
-  final pulumi.Input<ResolverLevelMetricsBehaviorEnumValueResponse>? resolverLevelMetricsBehavior;
+  /// &lt;p&gt;Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occured during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Errors: The number of errors that occurred during a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. &lt;code&gt;dataSourceLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for all data sources in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for data sources that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  final pulumi.Input<DataSourceLevelMetricsBehaviorEnumValueResponse>?
+  dataSourceLevelMetricsBehavior;
+
+  /// &lt;p&gt; Controls how operation metrics will be emitted to CloudWatch. Operation metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of times a specified GraphQL operation was called.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Metrics will be recorded by API ID and operation name. You can set the value to &lt;code&gt;ENABLED&lt;/code&gt; or &lt;code&gt;DISABLED&lt;/code&gt;.&lt;/p&gt;
+  final pulumi.Input<OperationLevelMetricsConfigEnumValueResponse>?
+  operationLevelMetricsConfig;
+
+  /// &lt;p&gt;Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occurred during a request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a resolver invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache hits: The number of cache hits during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache misses: The number of cache misses during a request.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. &lt;code&gt;resolverLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for all resolvers in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for resolvers that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  final pulumi.Input<ResolverLevelMetricsBehaviorEnumValueResponse>?
+  resolverLevelMetricsBehavior;
 
   /// Creates a new [EnhancedMetricsConfigResponse].
-  /// [dataSourceLevelMetricsBehavior] <p>Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:</p> <ul> <li> <p>Requests: The number of invocations that occured during a request.</p> </li> <li> <p>Latency: The time to complete a data source invocation.</p> </li> <li> <p>Errors: The number of errors that occurred during a data source invocation.</p> </li> </ul> <p>These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. <code>dataSourceLevelMetricsBehavior</code> accepts one of these values at a time:</p> <ul> <li> <p> <code>FULL_REQUEST_DATA_SOURCE_METRICS</code>: Records and emits metric data for all data sources in the request.</p> </li> <li> <p> <code>PER_DATA_SOURCE_METRICS</code>: Records and emits metric data for data sources that have the <code>metricsConfig</code> value set to <code>ENABLED</code>.</p> </li> </ul>
-  /// [operationLevelMetricsConfig] <p> Controls how operation metrics will be emitted to CloudWatch. Operation metrics include:</p> <ul> <li> <p>Requests: The number of times a specified GraphQL operation was called.</p> </li> <li> <p>GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation.</p> </li> </ul> <p>Metrics will be recorded by API ID and operation name. You can set the value to <code>ENABLED</code> or <code>DISABLED</code>.</p>
-  /// [resolverLevelMetricsBehavior] <p>Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include:</p> <ul> <li> <p>GraphQL errors: The number of GraphQL errors that occurred.</p> </li> <li> <p>Requests: The number of invocations that occurred during a request. </p> </li> <li> <p>Latency: The time to complete a resolver invocation.</p> </li> <li> <p>Cache hits: The number of cache hits during a request.</p> </li> <li> <p>Cache misses: The number of cache misses during a request.</p> </li> </ul> <p>These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. <code>resolverLevelMetricsBehavior</code> accepts one of these values at a time:</p> <ul> <li> <p> <code>FULL_REQUEST_RESOLVER_METRICS</code>: Records and emits metric data for all resolvers in the request.</p> </li> <li> <p> <code>PER_RESOLVER_METRICS</code>: Records and emits metric data for resolvers that have the <code>metricsConfig</code> value set to <code>ENABLED</code>.</p> </li> </ul>
+  /// [dataSourceLevelMetricsBehavior] &lt;p&gt;Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occured during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Errors: The number of errors that occurred during a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. &lt;code&gt;dataSourceLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for all data sources in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for data sources that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [operationLevelMetricsConfig] &lt;p&gt; Controls how operation metrics will be emitted to CloudWatch. Operation metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of times a specified GraphQL operation was called.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Metrics will be recorded by API ID and operation name. You can set the value to &lt;code&gt;ENABLED&lt;/code&gt; or &lt;code&gt;DISABLED&lt;/code&gt;.&lt;/p&gt;
+  /// [resolverLevelMetricsBehavior] &lt;p&gt;Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occurred during a request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a resolver invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache hits: The number of cache hits during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache misses: The number of cache misses during a request.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. &lt;code&gt;resolverLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for all resolvers in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for resolvers that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   EnhancedMetricsConfigResponse({
     this.dataSourceLevelMetricsBehavior,
     this.operationLevelMetricsConfig,
@@ -26,18 +31,53 @@ class EnhancedMetricsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSourceLevelMetricsBehavior': ?pulumi.Input.mapOptionalInputValue<DataSourceLevelMetricsBehaviorEnumValueResponse, Map<String, dynamic>>(dataSourceLevelMetricsBehavior, (value) => value.toMap()),
-      'operationLevelMetricsConfig': ?pulumi.Input.mapOptionalInputValue<OperationLevelMetricsConfigEnumValueResponse, Map<String, dynamic>>(operationLevelMetricsConfig, (value) => value.toMap()),
-      'resolverLevelMetricsBehavior': ?pulumi.Input.mapOptionalInputValue<ResolverLevelMetricsBehaviorEnumValueResponse, Map<String, dynamic>>(resolverLevelMetricsBehavior, (value) => value.toMap()),
+      'dataSourceLevelMetricsBehavior':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataSourceLevelMetricsBehaviorEnumValueResponse,
+            Map<String, dynamic>
+          >(dataSourceLevelMetricsBehavior, (value) => value.toMap()),
+      'operationLevelMetricsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            OperationLevelMetricsConfigEnumValueResponse,
+            Map<String, dynamic>
+          >(operationLevelMetricsConfig, (value) => value.toMap()),
+      'resolverLevelMetricsBehavior':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResolverLevelMetricsBehaviorEnumValueResponse,
+            Map<String, dynamic>
+          >(resolverLevelMetricsBehavior, (value) => value.toMap()),
     };
   }
 
   factory EnhancedMetricsConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnhancedMetricsConfigResponse(
-      dataSourceLevelMetricsBehavior: map['dataSourceLevelMetricsBehavior'] == null ? null : (DataSourceLevelMetricsBehaviorEnumValueResponse.fromMap((map['dataSourceLevelMetricsBehavior']! as Map).cast<String, dynamic>())).input(),
-      operationLevelMetricsConfig: map['operationLevelMetricsConfig'] == null ? null : (OperationLevelMetricsConfigEnumValueResponse.fromMap((map['operationLevelMetricsConfig']! as Map).cast<String, dynamic>())).input(),
-      resolverLevelMetricsBehavior: map['resolverLevelMetricsBehavior'] == null ? null : (ResolverLevelMetricsBehaviorEnumValueResponse.fromMap((map['resolverLevelMetricsBehavior']! as Map).cast<String, dynamic>())).input(),
+      dataSourceLevelMetricsBehavior: (() {
+        final guardedValue = map['dataSourceLevelMetricsBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataSourceLevelMetricsBehaviorEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      operationLevelMetricsConfig: (() {
+        final guardedValue = map['operationLevelMetricsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OperationLevelMetricsConfigEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resolverLevelMetricsBehavior: (() {
+        final guardedValue = map['resolverLevelMetricsBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResolverLevelMetricsBehaviorEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

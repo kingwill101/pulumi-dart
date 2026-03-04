@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketV2ReplicationConfigurationRuleDestinationMetric {
   /// Threshold within which objects are to be replicated. The only valid value is `15`.
   final pulumi.Input<int>? minutes;
+
   /// Status of replication metrics. Either `Enabled` or `Disabled`.
   final pulumi.Input<String>? status;
 
@@ -17,17 +18,23 @@ class BucketV2ReplicationConfigurationRuleDestinationMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minutes': ?minutes,
-      'status': ?status,
-    };
+    return <String, dynamic>{'minutes': ?minutes, 'status': ?status};
   }
 
-  factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
+  factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketV2ReplicationConfigurationRuleDestinationMetric(
-      minutes: map['minutes'] == null ? null : ((map['minutes'] as int).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      minutes: (() {
+        final guardedValue = map['minutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

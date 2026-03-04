@@ -1,5 +1,3 @@
-library module_cr;
-
 export 'cr/chain.dart';
 export 'cr/chain_args.dart';
 export 'cr/chain_chain_config.dart';

@@ -14,15 +14,16 @@ class GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskUtilizationBytes': diskUtilizationBytes,
-    };
+    return <String, dynamic>{'diskUtilizationBytes': diskUtilizationBytes};
   }
 
-  factory GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse(
-      diskUtilizationBytes: (map['diskUtilizationBytes'] as String).input(),
+      diskUtilizationBytes: pulumi.Input.fromValue(
+        map['diskUtilizationBytes'] as String,
+      ),
     );
   }
 }
-

@@ -11,20 +11,28 @@ import 'app_group_quota.dart';
 class AppGroupArgs {
   /// Application Group Name.
   final pulumi.Input<String> appGroupName;
+
   /// Billing model. Valid values:`compute_resource` and `qps`.
   final pulumi.Input<String>? chargeWay;
+
   /// The version of Application Group Name.
   final pulumi.Input<String>? currentVersion;
+
   /// The description of the resource.
   final pulumi.Input<String>? description;
+
   /// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
   final pulumi.Input<String>? orderType;
+
   /// Order cycle information. The details see Block order.
   final pulumi.Input<List<AppGroupOrder>>? orders;
+
   /// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
   final pulumi.Input<String> paymentType;
+
   /// Quota information.  The details see Block quota.
   final pulumi.Input<AppGroupQuota> quota;
+
   /// Application type. Valid Values: `standard`, `enhanced`.
   final pulumi.Input<String> type;
 
@@ -57,25 +65,66 @@ class AppGroupArgs {
       'currentVersion': ?currentVersion,
       'description': ?description,
       'orderType': ?orderType,
-      'orders': ?pulumi.Input.mapOptionalInputValue<List<AppGroupOrder>, List<Map<String, dynamic>>>(orders, (value) => pulumi.Input.encodeList<AppGroupOrder, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'orders':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppGroupOrder>,
+            List<Map<String, dynamic>>
+          >(
+            orders,
+            (value) =>
+                pulumi.Input.encodeList<AppGroupOrder, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'paymentType': paymentType,
-      'quota': pulumi.Input.mapInputValue<AppGroupQuota, Map<String, dynamic>>(quota, (value) => value.toMap()),
+      'quota': pulumi.Input.mapInputValue<AppGroupQuota, Map<String, dynamic>>(
+        quota,
+        (value) => value.toMap(),
+      ),
       'type': type,
     };
   }
 
   factory AppGroupArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupArgs(
-      appGroupName: (map['appGroupName'] as String).input(),
-      chargeWay: map['chargeWay'] == null ? null : (map['chargeWay']! as String).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
-      orders: map['orders'] == null ? null : (pulumi.Input.decodeList<AppGroupOrder>(map['orders']!, (value) => AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      quota: (AppGroupQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      appGroupName: pulumi.Input.fromValue(map['appGroupName'] as String),
+      chargeWay: (() {
+        final guardedValue = map['chargeWay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentVersion: (() {
+        final guardedValue = map['currentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orders: (() {
+        final guardedValue = map['orders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppGroupOrder>(
+            guardedValue,
+            (value) =>
+                AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      quota: pulumi.Input.fromValue(
+        AppGroupQuota.fromMap((map['quota']! as Map).cast<String, dynamic>()),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

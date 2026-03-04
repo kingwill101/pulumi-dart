@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayArgs {
   /// The name of the application gateway.
   final pulumi.Input<String> applicationGatewayName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetApplicationGatewayArgs {
 
   factory GetApplicationGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayArgs(
-      applicationGatewayName: (map['applicationGatewayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      applicationGatewayName: pulumi.Input.fromValue(
+        map['applicationGatewayName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

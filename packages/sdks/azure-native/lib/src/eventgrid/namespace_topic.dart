@@ -153,19 +153,26 @@ import 'system_data_response.dart';
 class NamespaceTopic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Event retention for the namespace topic expressed in days. The property default value is 1 day.
   /// Min event retention duration value is 1 day and max event retention duration value is 1 day.
   late final pulumi.Output<int?> eventRetentionInDays;
+
   /// This determines the format that is expected for incoming events published to the topic.
   late final pulumi.Output<String?> inputSchema;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the namespace topic.
   late final pulumi.Output<String> provisioningState;
+
   /// Publisher type of the namespace topic.
   late final pulumi.Output<String?> publisherType;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -178,18 +185,18 @@ class NamespaceTopic extends pulumi.CustomResource {
     NamespaceTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:NamespaceTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eventRetentionInDays = registerOutput<int?>('eventRetentionInDays');
-    this.inputSchema = registerOutput<String?>('inputSchema');
+         'azure-native:eventgrid:NamespaceTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventRetentionInDays = registerOutput<int?>('eventRetentionInDays');
+    inputSchema = registerOutput<String?>('inputSchema');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publisherType = registerOutput<String?>('publisherType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisherType = registerOutput<String?>('publisherType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

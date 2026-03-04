@@ -4,16 +4,17 @@ enum GceRegionalPersistentDiskReclaimPolicy {
   delete("DELETE"),
   retain("RETAIN");
 
-  const GceRegionalPersistentDiskReclaimPolicy(this.value);
-  final String value;
+  const GceRegionalPersistentDiskReclaimPolicy(this.wireValue);
+  final String wireValue;
 
   static GceRegionalPersistentDiskReclaimPolicy fromValue(String value) {
     for (final item in GceRegionalPersistentDiskReclaimPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GceRegionalPersistentDiskReclaimPolicy value: $value');
+    throw ArgumentError(
+      'Unknown GceRegionalPersistentDiskReclaimPolicy value: $value',
+    );
   }
 }
-

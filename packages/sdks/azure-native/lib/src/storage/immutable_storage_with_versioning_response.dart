@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImmutableStorageWithVersioningResponse {
   /// This is an immutable property, when set to true it enables object level immutability at the container level.
   final pulumi.Input<bool>? enabled;
+
   /// This property denotes the container level immutability to object level immutability migration state.
   final pulumi.Input<String> migrationState;
+
   /// Returns the date and time the object level immutability was enabled.
   final pulumi.Input<String> timeStamp;
 
@@ -29,12 +31,17 @@ class ImmutableStorageWithVersioningResponse {
     };
   }
 
-  factory ImmutableStorageWithVersioningResponse.fromMap(Map<String, dynamic> map) {
+  factory ImmutableStorageWithVersioningResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImmutableStorageWithVersioningResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      migrationState: (map['migrationState'] as String).input(),
-      timeStamp: (map['timeStamp'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      migrationState: pulumi.Input.fromValue(map['migrationState'] as String),
+      timeStamp: pulumi.Input.fromValue(map['timeStamp'] as String),
     );
   }
 }
-

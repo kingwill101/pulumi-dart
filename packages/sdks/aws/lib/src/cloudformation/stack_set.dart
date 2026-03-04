@@ -7,11 +7,11 @@ import 'stack_set_state.dart';
 
 /// Manages a CloudFormation StackSet. StackSets allow CloudFormation templates to be easily deployed across multiple accounts and regions via StackSet Instances (`aws.cloudformation.StackSetInstance` resource). Additional information about StackSets can be found in the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html).
 ///
-/// > **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignore_changes` argument.
+/// &gt; **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignore_changes` argument.
 ///
-/// > **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
+/// &gt; **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
 ///
-/// > **NOTE:** When using a delegated administrator account, ensure that your IAM User or Role has the `organizations:ListDelegatedAdministrators` permission. Otherwise, you may get an error like `ValidationError: Account used is not a delegated administrator`.
+/// &gt; **NOTE:** When using a delegated administrator account, ensure that your IAM User or Role has the `organizations:ListDelegatedAdministrators` permission. Otherwise, you may get an error like `ValidationError: Account used is not a delegated administrator`.
 ///
 /// ## Example Usage
 ///
@@ -530,38 +530,55 @@ import 'stack_set_state.dart';
 class StackSet extends pulumi.CustomResource {
   /// Amazon Resource Number (ARN) of the IAM Role in the administrator account. This must be defined when using the `SELF_MANAGED` permission model.
   late final pulumi.Output<String?> administrationRoleArn;
+
   /// Amazon Resource Name (ARN) of the StackSet.
   late final pulumi.Output<String> arn;
+
   /// Configuration block containing the auto-deployment model for your StackSet. This can only be defined when using the `SERVICE_MANAGED` permission model.
   late final pulumi.Output<StackSetAutoDeployment?> autoDeployment;
+
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
   late final pulumi.Output<String?> callAs;
+
   /// A list of capabilities. Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_AUTO_EXPAND`.
   late final pulumi.Output<List<String>?> capabilities;
+
   /// Description of the StackSet.
   late final pulumi.Output<String?> description;
+
   /// Name of the IAM Role in all target accounts for StackSet operations. Defaults to `AWSCloudFormationStackSetExecutionRole` when using the `SELF_MANAGED` permission model. This should not be defined when using the `SERVICE_MANAGED` permission model.
   late final pulumi.Output<String> executionRoleName;
+
   /// Configuration block to allow StackSets to perform non-conflicting operations concurrently and queues conflicting operations.
   late final pulumi.Output<StackSetManagedExecution?> managedExecution;
+
   /// Name of the StackSet. The name must be unique in the region where you create your StackSet. The name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.
   late final pulumi.Output<String> name;
+
   /// Preferences for how AWS CloudFormation performs a stack set update.
   late final pulumi.Output<StackSetOperationPreferences?> operationPreferences;
+
   /// Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignore_changes` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Describes how the IAM roles required for your StackSet are created. Valid values: `SELF_MANAGED` (default), `SERVICE_MANAGED`.
   late final pulumi.Output<String?> permissionModel;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Unique identifier of the StackSet.
   late final pulumi.Output<String> stackSetId;
+
   /// Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `template_url`.
   late final pulumi.Output<String> templateBody;
+
   /// String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `template_body`.
   late final pulumi.Output<String?> templateUrl;
 
@@ -574,29 +591,33 @@ class StackSet extends pulumi.CustomResource {
     StackSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudformation/stackSet:StackSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrationRoleArn = registerOutput<String?>('administrationRoleArn');
-    this.arn = registerOutput<String>('arn');
-    this.autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
-    this.callAs = registerOutput<String?>('callAs');
-    this.capabilities = registerOutput<List<String>?>('capabilities');
-    this.description = registerOutput<String?>('description');
-    this.executionRoleName = registerOutput<String>('executionRoleName');
-    this.managedExecution = registerOutput<StackSetManagedExecution?>('managedExecution');
+         'aws:cloudformation/stackSet:StackSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrationRoleArn = registerOutput<String?>('administrationRoleArn');
+    arn = registerOutput<String>('arn');
+    autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
+    callAs = registerOutput<String?>('callAs');
+    capabilities = registerOutput<List<String>?>('capabilities');
+    description = registerOutput<String?>('description');
+    executionRoleName = registerOutput<String>('executionRoleName');
+    managedExecution = registerOutput<StackSetManagedExecution?>(
+      'managedExecution',
+    );
     this.name = registerOutput<String>('name');
-    this.operationPreferences = registerOutput<StackSetOperationPreferences?>('operationPreferences');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.permissionModel = registerOutput<String?>('permissionModel');
-    this.region = registerOutput<String>('region');
-    this.stackSetId = registerOutput<String>('stackSetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.templateBody = registerOutput<String>('templateBody');
-    this.templateUrl = registerOutput<String?>('templateUrl');
+    operationPreferences = registerOutput<StackSetOperationPreferences?>(
+      'operationPreferences',
+    );
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    permissionModel = registerOutput<String?>('permissionModel');
+    region = registerOutput<String>('region');
+    stackSetId = registerOutput<String>('stackSetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    templateBody = registerOutput<String>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
   }
 
   /// Gets an existing [StackSet] resource's state with the given [name] and [id].
@@ -617,28 +638,32 @@ class StackSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudformation/stackSet:StackSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrationRoleArn = registerOutput<String?>('administrationRoleArn');
-    this.arn = registerOutput<String>('arn');
-    this.autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
-    this.callAs = registerOutput<String?>('callAs');
-    this.capabilities = registerOutput<List<String>?>('capabilities');
-    this.description = registerOutput<String?>('description');
-    this.executionRoleName = registerOutput<String>('executionRoleName');
-    this.managedExecution = registerOutput<StackSetManagedExecution?>('managedExecution');
+         'aws:cloudformation/stackSet:StackSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrationRoleArn = registerOutput<String?>('administrationRoleArn');
+    arn = registerOutput<String>('arn');
+    autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
+    callAs = registerOutput<String?>('callAs');
+    capabilities = registerOutput<List<String>?>('capabilities');
+    description = registerOutput<String?>('description');
+    executionRoleName = registerOutput<String>('executionRoleName');
+    managedExecution = registerOutput<StackSetManagedExecution?>(
+      'managedExecution',
+    );
     this.name = registerOutput<String>('name');
-    this.operationPreferences = registerOutput<StackSetOperationPreferences?>('operationPreferences');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.permissionModel = registerOutput<String?>('permissionModel');
-    this.region = registerOutput<String>('region');
-    this.stackSetId = registerOutput<String>('stackSetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.templateBody = registerOutput<String>('templateBody');
-    this.templateUrl = registerOutput<String?>('templateUrl');
+    operationPreferences = registerOutput<StackSetOperationPreferences?>(
+      'operationPreferences',
+    );
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    permissionModel = registerOutput<String?>('permissionModel');
+    region = registerOutput<String>('region');
+    stackSetId = registerOutput<String>('stackSetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    templateBody = registerOutput<String>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
   }
 }

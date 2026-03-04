@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionStateResponse {
   /// Actions required (if any).
   final pulumi.Input<String>? actionsRequired;
+
   /// Description of the connection state.
   final pulumi.Input<String>? description;
+
   /// Status of the connection.
   final pulumi.Input<String>? status;
 
@@ -31,10 +33,21 @@ class ConnectionStateResponse {
 
   factory ConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionStateResponse(
-      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      actionsRequired: (() {
+        final guardedValue = map['actionsRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

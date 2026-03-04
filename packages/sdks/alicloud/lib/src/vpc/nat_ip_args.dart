@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatIpArgs {
   /// Specifies whether to check the validity of the request without actually making the request.
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
   final pulumi.Input<String> natGatewayId;
+
   /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
   final pulumi.Input<String>? natIp;
+
   /// NAT IP ADDRESS of the address segment.
   final pulumi.Input<String>? natIpCidr;
+
   /// The ID of the CIDR block to which the NAT IP address belongs.
   final pulumi.Input<String>? natIpCidrId;
+
   /// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
   final pulumi.Input<String>? natIpDescription;
+
   /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
   final pulumi.Input<String>? natIpName;
 
@@ -54,14 +60,37 @@ class NatIpArgs {
 
   factory NatIpArgs.fromMap(Map<String, dynamic> map) {
     return NatIpArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      natGatewayId: (map['natGatewayId'] as String).input(),
-      natIp: map['natIp'] == null ? null : (map['natIp']! as String).input(),
-      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr']! as String).input(),
-      natIpCidrId: map['natIpCidrId'] == null ? null : (map['natIpCidrId']! as String).input(),
-      natIpDescription: map['natIpDescription'] == null ? null : (map['natIpDescription']! as String).input(),
-      natIpName: map['natIpName'] == null ? null : (map['natIpName']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
+      natIp: (() {
+        final guardedValue = map['natIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIpCidr: (() {
+        final guardedValue = map['natIpCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIpCidrId: (() {
+        final guardedValue = map['natIpCidrId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIpDescription: (() {
+        final guardedValue = map['natIpDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIpName: (() {
+        final guardedValue = map['natIpName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

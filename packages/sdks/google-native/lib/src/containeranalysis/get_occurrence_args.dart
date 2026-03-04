@@ -13,23 +13,20 @@ class GetOccurrenceArgs {
   /// Creates a new [GetOccurrenceArgs].
   /// [occurrenceId] Required.
   /// [project] Optional.
-  GetOccurrenceArgs({
-    required this.occurrenceId,
-    this.project,
-  });
+  GetOccurrenceArgs({required this.occurrenceId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'occurrenceId': occurrenceId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'occurrenceId': occurrenceId, 'project': ?project};
   }
 
   factory GetOccurrenceArgs.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceArgs(
-      occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      occurrenceId: pulumi.Input.fromValue(map['occurrenceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

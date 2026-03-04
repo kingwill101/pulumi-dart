@@ -9,20 +9,19 @@ class PosixFilesystem {
 
   /// Creates a new [PosixFilesystem].
   /// [rootDirectory] Root directory path to the filesystem.
-  PosixFilesystem({
-    this.rootDirectory,
-  });
+  PosixFilesystem({this.rootDirectory});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'rootDirectory': ?rootDirectory,
-    };
+    return <String, dynamic>{'rootDirectory': ?rootDirectory};
   }
 
   factory PosixFilesystem.fromMap(Map<String, dynamic> map) {
     return PosixFilesystem(
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory']! as String).input(),
+      rootDirectory: (() {
+        final guardedValue = map['rootDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

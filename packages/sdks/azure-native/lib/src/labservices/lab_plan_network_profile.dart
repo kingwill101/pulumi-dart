@@ -9,20 +9,19 @@ class LabPlanNetworkProfile {
 
   /// Creates a new [LabPlanNetworkProfile].
   /// [subnetId] The external subnet resource id
-  LabPlanNetworkProfile({
-    this.subnetId,
-  });
+  LabPlanNetworkProfile({this.subnetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': ?subnetId,
-    };
+    return <String, dynamic>{'subnetId': ?subnetId};
   }
 
   factory LabPlanNetworkProfile.fromMap(Map<String, dynamic> map) {
     return LabPlanNetworkProfile(
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

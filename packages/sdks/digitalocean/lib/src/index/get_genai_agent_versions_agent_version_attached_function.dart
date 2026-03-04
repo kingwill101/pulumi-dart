@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentVersionsAgentVersionAttachedFunction {
   /// Description of the function
   final pulumi.Input<String> description;
+
   /// FaaS name of the function
   final pulumi.Input<String> faasName;
+
   /// FaaS namespace of the function
   final pulumi.Input<String> faasNamespace;
+
   /// Function is deleted
   final pulumi.Input<bool> isDeleted;
+
   /// Name of the function
   final pulumi.Input<String> name;
 
@@ -38,14 +42,15 @@ class GetGenaiAgentVersionsAgentVersionAttachedFunction {
     };
   }
 
-  factory GetGenaiAgentVersionsAgentVersionAttachedFunction.fromMap(Map<String, dynamic> map) {
+  factory GetGenaiAgentVersionsAgentVersionAttachedFunction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGenaiAgentVersionsAgentVersionAttachedFunction(
-      description: (map['description'] as String).input(),
-      faasName: (map['faasName'] as String).input(),
-      faasNamespace: (map['faasNamespace'] as String).input(),
-      isDeleted: (map['isDeleted'] as bool).input(),
-      name: (map['name'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      faasName: pulumi.Input.fromValue(map['faasName'] as String),
+      faasNamespace: pulumi.Input.fromValue(map['faasNamespace'] as String),
+      isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

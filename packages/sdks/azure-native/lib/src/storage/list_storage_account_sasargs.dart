@@ -10,22 +10,31 @@ import 'http_protocol.dart';
 class ListStorageAccountSASArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
+
   /// An IP address or a range of IP addresses from which to accept requests.
   final pulumi.Input<String>? iPAddressOrRange;
+
   /// The key to sign the account SAS token with.
   final pulumi.Input<String>? keyToSign;
+
   /// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
   final pulumi.Input<String> permissions;
+
   /// The protocol permitted for a request made with the account SAS.
   final pulumi.Input<HttpProtocol>? protocols;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
   final pulumi.Input<String> resourceTypes;
+
   /// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
   final pulumi.Input<String> services;
+
   /// The time at which the shared access signature becomes invalid.
   final pulumi.Input<String> sharedAccessExpiryTime;
+
   /// The time at which the SAS becomes valid.
   final pulumi.Input<String>? sharedAccessStartTime;
 
@@ -59,7 +68,10 @@ class ListStorageAccountSASArgs {
       'iPAddressOrRange': ?iPAddressOrRange,
       'keyToSign': ?keyToSign,
       'permissions': permissions,
-      'protocols': ?pulumi.Input.mapOptionalInputValue<HttpProtocol, String>(protocols, (value) => value.value),
+      'protocols': ?pulumi.Input.mapOptionalInputValue<HttpProtocol, String>(
+        protocols,
+        (value) => value.wireValue,
+      ),
       'resourceGroupName': resourceGroupName,
       'resourceTypes': resourceTypes,
       'services': services,
@@ -70,17 +82,38 @@ class ListStorageAccountSASArgs {
 
   factory ListStorageAccountSASArgs.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountSASArgs(
-      accountName: (map['accountName'] as String).input(),
-      iPAddressOrRange: map['iPAddressOrRange'] == null ? null : (map['iPAddressOrRange']! as String).input(),
-      keyToSign: map['keyToSign'] == null ? null : (map['keyToSign']! as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      protocols: map['protocols'] == null ? null : (HttpProtocol.fromValue(map['protocols']! as String)).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceTypes: (map['resourceTypes'] as String).input(),
-      services: (map['services'] as String).input(),
-      sharedAccessExpiryTime: (map['sharedAccessExpiryTime'] as String).input(),
-      sharedAccessStartTime: map['sharedAccessStartTime'] == null ? null : (map['sharedAccessStartTime']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      iPAddressOrRange: (() {
+        final guardedValue = map['iPAddressOrRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyToSign: (() {
+        final guardedValue = map['keyToSign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpProtocol.fromValue(guardedValue as String),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceTypes: pulumi.Input.fromValue(map['resourceTypes'] as String),
+      services: pulumi.Input.fromValue(map['services'] as String),
+      sharedAccessExpiryTime: pulumi.Input.fromValue(
+        map['sharedAccessExpiryTime'] as String,
+      ),
+      sharedAccessStartTime: (() {
+        final guardedValue = map['sharedAccessStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

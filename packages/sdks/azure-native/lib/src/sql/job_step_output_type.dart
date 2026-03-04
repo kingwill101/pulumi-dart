@@ -2,16 +2,15 @@
 enum JobStepOutputType {
   valueSqlDatabase("SqlDatabase");
 
-  const JobStepOutputType(this.value);
-  final String value;
+  const JobStepOutputType(this.wireValue);
+  final String wireValue;
 
   static JobStepOutputType fromValue(String value) {
     for (final item in JobStepOutputType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobStepOutputType value: $value');
   }
 }
-

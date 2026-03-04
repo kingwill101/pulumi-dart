@@ -8,16 +8,22 @@ import 'trigger_pipeline_reference_response.dart';
 class ChainingTriggerResponse {
   /// List of tags that can be used for describing the trigger.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// Upstream Pipelines.
   final pulumi.Input<List<PipelineReferenceResponse>> dependsOn;
+
   /// Trigger description.
   final pulumi.Input<String>? description;
+
   /// Pipeline for which runs are created when all upstream pipelines complete successfully.
   final pulumi.Input<TriggerPipelineReferenceResponse> pipeline;
+
   /// Run Dimension property that needs to be emitted by upstream pipelines.
   final pulumi.Input<String> runDimension;
+
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   final pulumi.Input<String> runtimeState;
+
   /// Trigger type.
   /// Expected value is 'ChainingTrigger'.
   final pulumi.Input<String> type;
@@ -43,9 +49,24 @@ class ChainingTriggerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'dependsOn': pulumi.Input.mapInputValue<List<PipelineReferenceResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<PipelineReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          pulumi.Input.mapInputValue<
+            List<PipelineReferenceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipelineReferenceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
-      'pipeline': pulumi.Input.mapInputValue<TriggerPipelineReferenceResponse, Map<String, dynamic>>(pipeline, (value) => value.toMap()),
+      'pipeline':
+          pulumi.Input.mapInputValue<
+            TriggerPipelineReferenceResponse,
+            Map<String, dynamic>
+          >(pipeline, (value) => value.toMap()),
       'runDimension': runDimension,
       'runtimeState': runtimeState,
       'type': type,
@@ -54,14 +75,32 @@ class ChainingTriggerResponse {
 
   factory ChainingTriggerResponse.fromMap(Map<String, dynamic> map) {
     return ChainingTriggerResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      dependsOn: (pulumi.Input.decodeList<PipelineReferenceResponse>(map['dependsOn'], (value) => PipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      pipeline: (TriggerPipelineReferenceResponse.fromMap((map['pipeline'] as Map).cast<String, dynamic>())).input(),
-      runDimension: (map['runDimension'] as String).input(),
-      runtimeState: (map['runtimeState'] as String).input(),
-      type: (map['type'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      dependsOn: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PipelineReferenceResponse>(
+          map['dependsOn']!,
+          (value) => PipelineReferenceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipeline: pulumi.Input.fromValue(
+        TriggerPipelineReferenceResponse.fromMap(
+          (map['pipeline']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      runDimension: pulumi.Input.fromValue(map['runDimension'] as String),
+      runtimeState: pulumi.Input.fromValue(map['runtimeState'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

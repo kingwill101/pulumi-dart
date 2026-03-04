@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticLoadBalancingv2TargetHealthDescriptionArgs {
   /// Name of ElasticLoadBalancingv2TargetHealthDescription
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetElasticLoadBalancingv2TargetHealthDescriptionArgs {
     };
   }
 
-  factory GetElasticLoadBalancingv2TargetHealthDescriptionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetElasticLoadBalancingv2TargetHealthDescriptionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetElasticLoadBalancingv2TargetHealthDescriptionArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

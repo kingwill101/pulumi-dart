@@ -1,5 +1,3 @@
-library module_memorystore;
-
 export 'memorystore/functions.dart';
 export 'memorystore/get_instance_args.dart';
 export 'memorystore/get_instance_automated_backup_config.dart';

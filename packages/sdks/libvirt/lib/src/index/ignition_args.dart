@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IgnitionArgs {
   /// Ignition configuration content (JSON)
   final pulumi.Input<String> content;
+
   /// Name for this ignition resource
   final pulumi.Input<String>? name;
 
   /// Creates a new [IgnitionArgs].
   /// [content] Ignition configuration content (JSON)
   /// [name] Name for this ignition resource
-  IgnitionArgs({
-    required this.content,
-    this.name,
-  });
+  IgnitionArgs({required this.content, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-      'name': ?name,
-    };
+    return <String, dynamic>{'content': content, 'name': ?name};
   }
 
   factory IgnitionArgs.fromMap(Map<String, dynamic> map) {
     return IgnitionArgs(
-      content: (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

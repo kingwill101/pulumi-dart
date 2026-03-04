@@ -3,16 +3,15 @@ enum AccessPolicyRole {
   valueReader("Reader"),
   valueContributor("Contributor");
 
-  const AccessPolicyRole(this.value);
-  final String value;
+  const AccessPolicyRole(this.wireValue);
+  final String wireValue;
 
   static AccessPolicyRole fromValue(String value) {
     for (final item in AccessPolicyRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessPolicyRole value: $value');
   }
 }
-

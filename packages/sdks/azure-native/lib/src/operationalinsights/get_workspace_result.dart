@@ -12,46 +12,67 @@ import 'workspace_sku_response.dart';
 class GetWorkspaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Workspace creation date.
   final String createdDate;
+
   /// This is a read-only property. Represents the ID associated with the workspace.
   final String customerId;
+
   /// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
   final String? defaultDataCollectionRuleResourceId;
+
   /// The etag of the workspace.
   final String? etag;
+
   /// Workspace features.
   final WorkspaceFeaturesResponse? features;
+
   /// Indicates whether customer managed storage is mandatory for query management.
   final bool? forceCmkForQuery;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The identity of the resource.
   final IdentityResponse? identity;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Workspace modification date.
   final String modifiedDate;
+
   /// The name of the resource
   final String name;
+
   /// List of linked private link scope resources.
   final List<PrivateLinkScopedResourceResponse> privateLinkScopedResources;
+
   /// The provisioning state of the workspace.
   final String provisioningState;
+
   /// The network access type for accessing Log Analytics ingestion.
   final String? publicNetworkAccessForIngestion;
+
   /// The network access type for accessing Log Analytics query.
   final String? publicNetworkAccessForQuery;
+
   /// The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.
   final int? retentionInDays;
+
   /// The SKU of the workspace.
   final WorkspaceSkuResponse? sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The daily volume cap for ingestion.
   final WorkspaceCappingResponse? workspaceCapping;
 
@@ -108,25 +129,30 @@ class GetWorkspaceResult {
       'azureApiVersion': azureApiVersion,
       'createdDate': createdDate,
       'customerId': customerId,
-      'defaultDataCollectionRuleResourceId': ?defaultDataCollectionRuleResourceId,
+      'defaultDataCollectionRuleResourceId':
+          ?defaultDataCollectionRuleResourceId,
       'etag': ?etag,
-      'features': ?features == null ? null : features!.toMap(),
+      'features': ?features?.toMap(),
       'forceCmkForQuery': ?forceCmkForQuery,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'modifiedDate': modifiedDate,
       'name': name,
-      'privateLinkScopedResources': pulumi.Input.encodeList<PrivateLinkScopedResourceResponse, Map<String, dynamic>>(privateLinkScopedResources, (value) => value.toMap()),
+      'privateLinkScopedResources':
+          pulumi.Input.encodeList<
+            PrivateLinkScopedResourceResponse,
+            Map<String, dynamic>
+          >(privateLinkScopedResources, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccessForIngestion': ?publicNetworkAccessForIngestion,
       'publicNetworkAccessForQuery': ?publicNetworkAccessForQuery,
       'retentionInDays': ?retentionInDays,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'workspaceCapping': ?workspaceCapping == null ? null : workspaceCapping!.toMap(),
+      'workspaceCapping': ?workspaceCapping?.toMap(),
     };
   }
 
@@ -135,26 +161,85 @@ class GetWorkspaceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
       customerId: map['customerId'] as String,
-      defaultDataCollectionRuleResourceId: map['defaultDataCollectionRuleResourceId'] == null ? null : map['defaultDataCollectionRuleResourceId']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
-      features: map['features'] == null ? null : WorkspaceFeaturesResponse.fromMap((map['features']! as Map).cast<String, dynamic>()),
-      forceCmkForQuery: map['forceCmkForQuery'] == null ? null : map['forceCmkForQuery']! as bool,
+      defaultDataCollectionRuleResourceId: (() {
+        final guardedValue = map['defaultDataCollectionRuleResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return WorkspaceFeaturesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      forceCmkForQuery: (() {
+        final guardedValue = map['forceCmkForQuery'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       modifiedDate: map['modifiedDate'] as String,
       name: map['name'] as String,
-      privateLinkScopedResources: pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(map['privateLinkScopedResources'], (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateLinkScopedResources:
+          pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(
+            map['privateLinkScopedResources']!,
+            (value) => PrivateLinkScopedResourceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccessForIngestion: map['publicNetworkAccessForIngestion'] == null ? null : map['publicNetworkAccessForIngestion']! as String,
-      publicNetworkAccessForQuery: map['publicNetworkAccessForQuery'] == null ? null : map['publicNetworkAccessForQuery']! as String,
-      retentionInDays: map['retentionInDays'] == null ? null : map['retentionInDays']! as int,
-      sku: map['sku'] == null ? null : WorkspaceSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      publicNetworkAccessForIngestion: (() {
+        final guardedValue = map['publicNetworkAccessForIngestion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      publicNetworkAccessForQuery: (() {
+        final guardedValue = map['publicNetworkAccessForQuery'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      retentionInDays: (() {
+        final guardedValue = map['retentionInDays'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return WorkspaceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      workspaceCapping: map['workspaceCapping'] == null ? null : WorkspaceCappingResponse.fromMap((map['workspaceCapping']! as Map).cast<String, dynamic>()),
+      workspaceCapping: (() {
+        final guardedValue = map['workspaceCapping'];
+        if (guardedValue == null) return null;
+        return WorkspaceCappingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

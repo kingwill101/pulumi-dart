@@ -13,21 +13,29 @@ class InsightsReportConfigArgs {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
   final pulumi.Input<InsightsReportConfigCsvOptions>? csvOptions;
+
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   final pulumi.Input<String>? displayName;
+
   /// If set, all the inventory report details associated with this report configuration are deleted.
   final pulumi.Input<bool>? forceDestroy;
+
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
   final pulumi.Input<InsightsReportConfigFrequencyOptions>? frequencyOptions;
+
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
   final pulumi.Input<String> location;
+
   /// Options for including metadata in an inventory report.
   /// Structure is documented below.
-  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptions>? objectMetadataReportOptions;
+  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptions>?
+  objectMetadataReportOptions;
+
   /// An option for outputting inventory reports as parquet files.
   final pulumi.Input<Map<String, dynamic>>? parquetOptions;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -54,12 +62,24 @@ class InsightsReportConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csvOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigCsvOptions, Map<String, dynamic>>(csvOptions, (value) => value.toMap()),
+      'csvOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsReportConfigCsvOptions,
+            Map<String, dynamic>
+          >(csvOptions, (value) => value.toMap()),
       'displayName': ?displayName,
       'forceDestroy': ?forceDestroy,
-      'frequencyOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigFrequencyOptions, Map<String, dynamic>>(frequencyOptions, (value) => value.toMap()),
+      'frequencyOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsReportConfigFrequencyOptions,
+            Map<String, dynamic>
+          >(frequencyOptions, (value) => value.toMap()),
       'location': location,
-      'objectMetadataReportOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigObjectMetadataReportOptions, Map<String, dynamic>>(objectMetadataReportOptions, (value) => value.toMap()),
+      'objectMetadataReportOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsReportConfigObjectMetadataReportOptions,
+            Map<String, dynamic>
+          >(objectMetadataReportOptions, (value) => value.toMap()),
       'parquetOptions': ?parquetOptions,
       'project': ?project,
     };
@@ -67,15 +87,56 @@ class InsightsReportConfigArgs {
 
   factory InsightsReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigArgs(
-      csvOptions: map['csvOptions'] == null ? null : (InsightsReportConfigCsvOptions.fromMap((map['csvOptions']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      frequencyOptions: map['frequencyOptions'] == null ? null : (InsightsReportConfigFrequencyOptions.fromMap((map['frequencyOptions']! as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      objectMetadataReportOptions: map['objectMetadataReportOptions'] == null ? null : (InsightsReportConfigObjectMetadataReportOptions.fromMap((map['objectMetadataReportOptions']! as Map).cast<String, dynamic>())).input(),
-      parquetOptions: map['parquetOptions'] == null ? null : ((map['parquetOptions']! as Map).cast<String, dynamic>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      csvOptions: (() {
+        final guardedValue = map['csvOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsReportConfigCsvOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frequencyOptions: (() {
+        final guardedValue = map['frequencyOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsReportConfigFrequencyOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      objectMetadataReportOptions: (() {
+        final guardedValue = map['objectMetadataReportOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsReportConfigObjectMetadataReportOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      parquetOptions: (() {
+        final guardedValue = map['parquetOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -160,12 +160,16 @@ import 'resource_location_data_contract_response.dart';
 class Gateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gateway description
   late final pulumi.Output<String?> description;
+
   /// Gateway location.
   late final pulumi.Output<ResourceLocationDataContractResponse?> locationData;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,15 +182,17 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.locationData = registerOutput<ResourceLocationDataContractResponse?>('locationData');
+         'azure-native:apimanagement:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    locationData = registerOutput<ResourceLocationDataContractResponse?>(
+      'locationData',
+    );
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,20 +9,19 @@ class DistributionGroupListReceiverValue {
 
   /// Creates a new [DistributionGroupListReceiverValue].
   /// [distributionGroups] The list of distribution groups.
-  DistributionGroupListReceiverValue({
-    this.distributionGroups,
-  });
+  DistributionGroupListReceiverValue({this.distributionGroups});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'distributionGroups': ?distributionGroups,
-    };
+    return <String, dynamic>{'distributionGroups': ?distributionGroups};
   }
 
   factory DistributionGroupListReceiverValue.fromMap(Map<String, dynamic> map) {
     return DistributionGroupListReceiverValue(
-      distributionGroups: map['distributionGroups'] == null ? null : ((map['distributionGroups']! as List).cast<String>()).input(),
+      distributionGroups: (() {
+        final guardedValue = map['distributionGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

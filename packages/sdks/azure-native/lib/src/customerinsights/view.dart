@@ -160,22 +160,31 @@ import 'view_args.dart';
 class View extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Date time when view was last modified.
   late final pulumi.Output<String> changed;
+
   /// Date time when view was created.
   late final pulumi.Output<String> created;
+
   /// View definition.
   late final pulumi.Output<String> definition;
+
   /// Localized display name for the view.
   late final pulumi.Output<Map<String, String>?> displayName;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// the hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// the user ID.
   late final pulumi.Output<String?> userId;
+
   /// Name of the view.
   late final pulumi.Output<String> viewName;
 
@@ -183,25 +192,22 @@ class View extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [View]. {@macro pulumi_customerinsights_view_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  View(
-    String name, {
-    ViewArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:customerinsights:View',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changed = registerOutput<String>('changed');
-    this.created = registerOutput<String>('created');
-    this.definition = registerOutput<String>('definition');
-    this.displayName = registerOutput<Map<String, String>?>('displayName');
+  View(String name, {ViewArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:customerinsights:View',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changed = registerOutput<String>('changed');
+    created = registerOutput<String>('created');
+    definition = registerOutput<String>('definition');
+    displayName = registerOutput<Map<String, String>?>('displayName');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.userId = registerOutput<String?>('userId');
-    this.viewName = registerOutput<String>('viewName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String?>('userId');
+    viewName = registerOutput<String>('viewName');
   }
 }

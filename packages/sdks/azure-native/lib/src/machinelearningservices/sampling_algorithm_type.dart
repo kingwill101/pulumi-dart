@@ -4,16 +4,15 @@ enum SamplingAlgorithmType {
   valueRandom("Random"),
   valueBayesian("Bayesian");
 
-  const SamplingAlgorithmType(this.value);
-  final String value;
+  const SamplingAlgorithmType(this.wireValue);
+  final String wireValue;
 
   static SamplingAlgorithmType fromValue(String value) {
     for (final item in SamplingAlgorithmType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SamplingAlgorithmType value: $value');
   }
 }
-

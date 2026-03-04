@@ -7,8 +7,10 @@ class V2QueuedResourceTpuNodeSpec {
   /// The node.
   /// Structure is documented below.
   final pulumi.Input<V2QueuedResourceTpuNodeSpecNode> node;
+
   /// Unqualified node identifier used to identify the node in the project once provisioned.
   final pulumi.Input<String>? nodeId;
+
   /// The parent resource name.
   final pulumi.Input<String> parent;
 
@@ -24,7 +26,11 @@ class V2QueuedResourceTpuNodeSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'node': pulumi.Input.mapInputValue<V2QueuedResourceTpuNodeSpecNode, Map<String, dynamic>>(node, (value) => value.toMap()),
+      'node':
+          pulumi.Input.mapInputValue<
+            V2QueuedResourceTpuNodeSpecNode,
+            Map<String, dynamic>
+          >(node, (value) => value.toMap()),
       'nodeId': ?nodeId,
       'parent': parent,
     };
@@ -32,10 +38,17 @@ class V2QueuedResourceTpuNodeSpec {
 
   factory V2QueuedResourceTpuNodeSpec.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpec(
-      node: (V2QueuedResourceTpuNodeSpecNode.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
-      parent: (map['parent'] as String).input(),
+      node: pulumi.Input.fromValue(
+        V2QueuedResourceTpuNodeSpecNode.fromMap(
+          (map['node']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

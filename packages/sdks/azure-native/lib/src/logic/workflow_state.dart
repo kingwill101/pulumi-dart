@@ -7,16 +7,15 @@ enum WorkflowState {
   valueDeleted("Deleted"),
   valueSuspended("Suspended");
 
-  const WorkflowState(this.value);
-  final String value;
+  const WorkflowState(this.wireValue);
+  final String wireValue;
 
   static WorkflowState fromValue(String value) {
     for (final item in WorkflowState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkflowState value: $value');
   }
 }
-

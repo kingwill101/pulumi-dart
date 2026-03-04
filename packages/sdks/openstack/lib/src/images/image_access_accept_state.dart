@@ -6,21 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageAccessAcceptState {
   /// The date the image membership was created.
   final pulumi.Input<String>? createdAt;
+
   /// The proposed image ID.
   final pulumi.Input<String>? imageId;
+
   /// The member ID, e.g. the target project ID. Optional
   /// for admin accounts. Defaults to the current scope project ID.
   final pulumi.Input<String>? memberId;
+
   /// The region in which to obtain the V2 Glance client.
   /// A Glance client is needed to manage Image memberships. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// membership.
   final pulumi.Input<String>? region;
+
   /// The membership schema.
   final pulumi.Input<String>? schema;
+
   /// The membership proposal status. Can either be
   /// `accepted`, `rejected` or `pending`.
   final pulumi.Input<String>? status;
+
   /// The date the image membership was last updated.
   final pulumi.Input<String>? updatedAt;
 
@@ -56,14 +62,41 @@ class ImageAccessAcceptState {
 
   factory ImageAccessAcceptState.fromMap(Map<String, dynamic> map) {
     return ImageAccessAcceptState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberId: (() {
+        final guardedValue = map['memberId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

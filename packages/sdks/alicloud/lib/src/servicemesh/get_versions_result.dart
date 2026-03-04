@@ -6,6 +6,7 @@ import 'get_versions_version.dart';
 /// Result data returned by getVersions.
 class GetVersionsResult {
   final String? edition;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,18 +33,33 @@ class GetVersionsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'versions': pulumi.Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions':
+          pulumi.Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(
+            versions,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetVersionsResult(
-      edition: map['edition'] == null ? null : map['edition']! as String,
+      edition: (() {
+        final guardedValue = map['edition'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      versions: pulumi.Input.decodeList<GetVersionsVersion>(map['versions'], (value) => GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      versions: pulumi.Input.decodeList<GetVersionsVersion>(
+        map['versions']!,
+        (value) =>
+            GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

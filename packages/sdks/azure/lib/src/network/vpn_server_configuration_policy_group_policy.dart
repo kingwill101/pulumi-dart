@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationPolicyGroupPolicy {
   /// The name of the VPN Server Configuration Policy member.
   final pulumi.Input<String> name;
+
   /// The attribute type of the VPN Server Configuration Policy member. Possible values are `AADGroupId`, `CertificateGroupId` and `RadiusAzureGroupId`.
   final pulumi.Input<String> type;
+
   /// The value of the attribute that is used for the VPN Server Configuration Policy member.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,16 @@ class VpnServerConfigurationPolicyGroupPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'type': type, 'value': value};
   }
 
-  factory VpnServerConfigurationPolicyGroupPolicy.fromMap(Map<String, dynamic> map) {
+  factory VpnServerConfigurationPolicyGroupPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnServerConfigurationPolicyGroupPolicy(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -8,8 +8,10 @@ class CloudControlRule {
   /// expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
   /// Structure is documented below.
   final pulumi.Input<CloudControlRuleCelExpression>? celExpression;
+
   /// Description of the Rule. The maximum length is 2000 characters.
   final pulumi.Input<String>? description;
+
   /// The functionality enabled by the Rule.
   final pulumi.Input<List<String>> ruleActionTypes;
 
@@ -25,7 +27,11 @@ class CloudControlRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'celExpression': ?pulumi.Input.mapOptionalInputValue<CloudControlRuleCelExpression, Map<String, dynamic>>(celExpression, (value) => value.toMap()),
+      'celExpression':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudControlRuleCelExpression,
+            Map<String, dynamic>
+          >(celExpression, (value) => value.toMap()),
       'description': ?description,
       'ruleActionTypes': ruleActionTypes,
     };
@@ -33,10 +39,23 @@ class CloudControlRule {
 
   factory CloudControlRule.fromMap(Map<String, dynamic> map) {
     return CloudControlRule(
-      celExpression: map['celExpression'] == null ? null : (CloudControlRuleCelExpression.fromMap((map['celExpression']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ruleActionTypes: ((map['ruleActionTypes'] as List).cast<String>()).input(),
+      celExpression: (() {
+        final guardedValue = map['celExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudControlRuleCelExpression.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleActionTypes: pulumi.Input.fromValue(
+        (map['ruleActionTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

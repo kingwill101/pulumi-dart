@@ -13,15 +13,16 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResou
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': resourceTypes};
   }
 
-  factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap(Map<String, dynamic> map) {
+  factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector(
-      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: pulumi.Input.fromValue(
+        (map['resourceTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

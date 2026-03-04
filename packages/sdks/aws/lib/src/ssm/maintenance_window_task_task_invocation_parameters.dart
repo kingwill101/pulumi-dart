@@ -8,13 +8,28 @@ import 'maintenance_window_task_task_invocation_parameters_step_functions_parame
 
 class MaintenanceWindowTaskTaskInvocationParameters {
   /// The parameters for an AUTOMATION task type. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersAutomationParameters>? automationParameters;
+  final pulumi.Input<
+    MaintenanceWindowTaskTaskInvocationParametersAutomationParameters
+  >?
+  automationParameters;
+
   /// The parameters for a LAMBDA task type. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersLambdaParameters>? lambdaParameters;
+  final pulumi.Input<
+    MaintenanceWindowTaskTaskInvocationParametersLambdaParameters
+  >?
+  lambdaParameters;
+
   /// The parameters for a RUN_COMMAND task type. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters>? runCommandParameters;
+  final pulumi.Input<
+    MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters
+  >?
+  runCommandParameters;
+
   /// The parameters for a STEP_FUNCTIONS task type. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters>? stepFunctionsParameters;
+  final pulumi.Input<
+    MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters
+  >?
+  stepFunctionsParameters;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParameters].
   /// [automationParameters] The parameters for an AUTOMATION task type. Documented below.
@@ -30,20 +45,69 @@ class MaintenanceWindowTaskTaskInvocationParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automationParameters': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowTaskTaskInvocationParametersAutomationParameters, Map<String, dynamic>>(automationParameters, (value) => value.toMap()),
-      'lambdaParameters': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowTaskTaskInvocationParametersLambdaParameters, Map<String, dynamic>>(lambdaParameters, (value) => value.toMap()),
-      'runCommandParameters': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters, Map<String, dynamic>>(runCommandParameters, (value) => value.toMap()),
-      'stepFunctionsParameters': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters, Map<String, dynamic>>(stepFunctionsParameters, (value) => value.toMap()),
+      'automationParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindowTaskTaskInvocationParametersAutomationParameters,
+            Map<String, dynamic>
+          >(automationParameters, (value) => value.toMap()),
+      'lambdaParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindowTaskTaskInvocationParametersLambdaParameters,
+            Map<String, dynamic>
+          >(lambdaParameters, (value) => value.toMap()),
+      'runCommandParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters,
+            Map<String, dynamic>
+          >(runCommandParameters, (value) => value.toMap()),
+      'stepFunctionsParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters,
+            Map<String, dynamic>
+          >(stepFunctionsParameters, (value) => value.toMap()),
     };
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParameters.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceWindowTaskTaskInvocationParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceWindowTaskTaskInvocationParameters(
-      automationParameters: map['automationParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersAutomationParameters.fromMap((map['automationParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      lambdaParameters: map['lambdaParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap((map['lambdaParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      runCommandParameters: map['runCommandParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters.fromMap((map['runCommandParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      stepFunctionsParameters: map['stepFunctionsParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap((map['stepFunctionsParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      automationParameters: (() {
+        final guardedValue = map['automationParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindowTaskTaskInvocationParametersAutomationParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lambdaParameters: (() {
+        final guardedValue = map['lambdaParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      runCommandParameters: (() {
+        final guardedValue = map['runCommandParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stepFunctionsParameters: (() {
+        final guardedValue = map['stepFunctionsParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

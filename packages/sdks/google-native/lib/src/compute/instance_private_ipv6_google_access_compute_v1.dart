@@ -4,16 +4,17 @@ enum InstancePrivateIpv6GoogleAccessComputeV1 {
   enableOutboundVmAccessToGoogle("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"),
   inheritFromSubnetwork("INHERIT_FROM_SUBNETWORK");
 
-  const InstancePrivateIpv6GoogleAccessComputeV1(this.value);
-  final String value;
+  const InstancePrivateIpv6GoogleAccessComputeV1(this.wireValue);
+  final String wireValue;
 
   static InstancePrivateIpv6GoogleAccessComputeV1 fromValue(String value) {
     for (final item in InstancePrivateIpv6GoogleAccessComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePrivateIpv6GoogleAccessComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InstancePrivateIpv6GoogleAccessComputeV1 value: $value',
+    );
   }
 }
-

@@ -9,23 +9,24 @@ class TaskDefinitionSystemControl {
   /// Creates a new [TaskDefinitionSystemControl].
   /// [namespace] Optional.
   /// [value] Optional.
-  TaskDefinitionSystemControl({
-    this.namespace,
-    this.value,
-  });
+  TaskDefinitionSystemControl({this.namespace, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': ?namespace,
-      'value': ?value,
-    };
+    return <String, dynamic>{'namespace': ?namespace, 'value': ?value};
   }
 
   factory TaskDefinitionSystemControl.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionSystemControl(
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_cloudsearch;
-
 export 'cloudsearch/domain.dart';
 export 'cloudsearch/domain_args.dart';
 export 'cloudsearch/domain_endpoint_options.dart';

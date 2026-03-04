@@ -3,16 +3,15 @@ enum SecurityRuleDirection {
   valueInbound("Inbound"),
   valueOutbound("Outbound");
 
-  const SecurityRuleDirection(this.value);
-  final String value;
+  const SecurityRuleDirection(this.wireValue);
+  final String wireValue;
 
   static SecurityRuleDirection fromValue(String value) {
     for (final item in SecurityRuleDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityRuleDirection value: $value');
   }
 }
-

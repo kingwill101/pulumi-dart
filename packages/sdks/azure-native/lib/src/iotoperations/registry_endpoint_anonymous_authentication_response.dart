@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEndpointAnonymousAuthenticationResponse {
   /// Anonymous authentication properties
   final pulumi.Input<dynamic> anonymousSettings;
+
   /// The authentication method.
   /// Expected value is 'Anonymous'.
   final pulumi.Input<String> method;
@@ -25,11 +26,12 @@ class RegistryEndpointAnonymousAuthenticationResponse {
     };
   }
 
-  factory RegistryEndpointAnonymousAuthenticationResponse.fromMap(Map<String, dynamic> map) {
+  factory RegistryEndpointAnonymousAuthenticationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryEndpointAnonymousAuthenticationResponse(
-      anonymousSettings: (map['anonymousSettings']).input(),
-      method: (map['method'] as String).input(),
+      anonymousSettings: pulumi.Input.fromValue(map['anonymousSettings']),
+      method: pulumi.Input.fromValue(map['method'] as String),
     );
   }
 }
-

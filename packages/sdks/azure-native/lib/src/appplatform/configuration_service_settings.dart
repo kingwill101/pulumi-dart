@@ -7,6 +7,7 @@ import 'configuration_service_git_property.dart';
 class ConfigurationServiceSettings {
   /// Property of git environment.
   final pulumi.Input<ConfigurationServiceGitProperty>? gitProperty;
+
   /// How often (in seconds) to check repository updates. Minimum value is 0.
   final pulumi.Input<int>? refreshIntervalInSeconds;
 
@@ -20,16 +21,31 @@ class ConfigurationServiceSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gitProperty': ?pulumi.Input.mapOptionalInputValue<ConfigurationServiceGitProperty, Map<String, dynamic>>(gitProperty, (value) => value.toMap()),
+      'gitProperty':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationServiceGitProperty,
+            Map<String, dynamic>
+          >(gitProperty, (value) => value.toMap()),
       'refreshIntervalInSeconds': ?refreshIntervalInSeconds,
     };
   }
 
   factory ConfigurationServiceSettings.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceSettings(
-      gitProperty: map['gitProperty'] == null ? null : (ConfigurationServiceGitProperty.fromMap((map['gitProperty']! as Map).cast<String, dynamic>())).input(),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds']! as int).input(),
+      gitProperty: (() {
+        final guardedValue = map['gitProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationServiceGitProperty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      refreshIntervalInSeconds: (() {
+        final guardedValue = map['refreshIntervalInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

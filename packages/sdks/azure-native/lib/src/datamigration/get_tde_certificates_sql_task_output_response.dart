@@ -7,6 +7,7 @@ import 'reportable_exception_response.dart';
 class GetTdeCertificatesSqlTaskOutputResponse {
   /// Mapping from certificate name to base 64 encoded format.
   final pulumi.Input<Map<String, List<String>>> base64EncodedCertificates;
+
   /// Validation errors
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -21,15 +22,36 @@ class GetTdeCertificatesSqlTaskOutputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'base64EncodedCertificates': base64EncodedCertificates,
-      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            validationErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetTdeCertificatesSqlTaskOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory GetTdeCertificatesSqlTaskOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTdeCertificatesSqlTaskOutputResponse(
-      base64EncodedCertificates: ((map['base64EncodedCertificates'] as Map).cast<String, List<String>>()).input(),
-      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      base64EncodedCertificates: pulumi.Input.fromValue(
+        (map['base64EncodedCertificates'] as Map).cast<String, List<String>>(),
+      ),
+      validationErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['validationErrors']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

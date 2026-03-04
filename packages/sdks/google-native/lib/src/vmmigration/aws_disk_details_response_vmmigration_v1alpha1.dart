@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsDiskDetailsResponseVmmigrationV1alpha1 {
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
+
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
+
   /// AWS volume ID.
   final pulumi.Input<String> volumeId;
 
@@ -29,12 +31,13 @@ class AwsDiskDetailsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory AwsDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AwsDiskDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsDiskDetailsResponseVmmigrationV1alpha1(
-      diskNumber: (map['diskNumber'] as int).input(),
-      sizeGb: (map['sizeGb'] as String).input(),
-      volumeId: (map['volumeId'] as String).input(),
+      diskNumber: pulumi.Input.fromValue(map['diskNumber'] as int),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as String),
+      volumeId: pulumi.Input.fromValue(map['volumeId'] as String),
     );
   }
 }
-

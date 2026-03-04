@@ -9,26 +9,39 @@ import 'stack_set_instance_stack_instance_summary.dart';
 class StackSetInstanceState {
   /// Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
   final pulumi.Input<String>? accountId;
+
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
   final pulumi.Input<String>? callAs;
+
   /// AWS Organizations accounts to which StackSets deploys. StackSets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for this argument. See deployment_targets below.
   final pulumi.Input<StackSetInstanceDeploymentTargets>? deploymentTargets;
+
   /// Preferences for how AWS CloudFormation performs a stack set operation.
-  final pulumi.Input<StackSetInstanceOperationPreferences>? operationPreferences;
+  final pulumi.Input<StackSetInstanceOperationPreferences>?
+  operationPreferences;
+
   /// Organizational unit ID in which the stack is deployed.
   final pulumi.Input<String>? organizationalUnitId;
+
   /// Key-value map of input parameters to override from the StackSet for this Instance.
   final pulumi.Input<Map<String, String>>? parameterOverrides;
+
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region. Use `stack_set_instance_region` instead.
   final pulumi.Input<String>? region;
+
   /// During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
   final pulumi.Input<bool>? retainStack;
+
   /// Stack identifier.
   final pulumi.Input<String>? stackId;
+
   /// List of stack instances created from an organizational unit deployment target. This will only be populated when `deployment_targets` is set. See `stack_instance_summaries`.
-  final pulumi.Input<List<StackSetInstanceStackInstanceSummary>>? stackInstanceSummaries;
+  final pulumi.Input<List<StackSetInstanceStackInstanceSummary>>?
+  stackInstanceSummaries;
+
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
   final pulumi.Input<String>? stackSetInstanceRegion;
+
   /// Name of the StackSet.
   final pulumi.Input<String>? stackSetName;
 
@@ -64,14 +77,33 @@ class StackSetInstanceState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'callAs': ?callAs,
-      'deploymentTargets': ?pulumi.Input.mapOptionalInputValue<StackSetInstanceDeploymentTargets, Map<String, dynamic>>(deploymentTargets, (value) => value.toMap()),
-      'operationPreferences': ?pulumi.Input.mapOptionalInputValue<StackSetInstanceOperationPreferences, Map<String, dynamic>>(operationPreferences, (value) => value.toMap()),
+      'deploymentTargets':
+          ?pulumi.Input.mapOptionalInputValue<
+            StackSetInstanceDeploymentTargets,
+            Map<String, dynamic>
+          >(deploymentTargets, (value) => value.toMap()),
+      'operationPreferences':
+          ?pulumi.Input.mapOptionalInputValue<
+            StackSetInstanceOperationPreferences,
+            Map<String, dynamic>
+          >(operationPreferences, (value) => value.toMap()),
       'organizationalUnitId': ?organizationalUnitId,
       'parameterOverrides': ?parameterOverrides,
       'region': ?region,
       'retainStack': ?retainStack,
       'stackId': ?stackId,
-      'stackInstanceSummaries': ?pulumi.Input.mapOptionalInputValue<List<StackSetInstanceStackInstanceSummary>, List<Map<String, dynamic>>>(stackInstanceSummaries, (value) => pulumi.Input.encodeList<StackSetInstanceStackInstanceSummary, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stackInstanceSummaries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StackSetInstanceStackInstanceSummary>,
+            List<Map<String, dynamic>>
+          >(
+            stackInstanceSummaries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StackSetInstanceStackInstanceSummary,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'stackSetInstanceRegion': ?stackSetInstanceRegion,
       'stackSetName': ?stackSetName,
     };
@@ -79,19 +111,83 @@ class StackSetInstanceState {
 
   factory StackSetInstanceState.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceState(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      callAs: map['callAs'] == null ? null : ((map['callAs'] as String).input()).input(),
-      deploymentTargets: map['deploymentTargets'] == null ? null : ((StackSetInstanceDeploymentTargets.fromMap((map['deploymentTargets']! as Map).cast<String, dynamic>())).input()).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : ((StackSetInstanceOperationPreferences.fromMap((map['operationPreferences']! as Map).cast<String, dynamic>())).input()).input(),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : ((map['organizationalUnitId'] as String).input()).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : (((map['parameterOverrides'] as Map).cast<String, String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      retainStack: map['retainStack'] == null ? null : ((map['retainStack'] as bool).input()).input(),
-      stackId: map['stackId'] == null ? null : ((map['stackId'] as String).input()).input(),
-      stackInstanceSummaries: map['stackInstanceSummaries'] == null ? null : ((pulumi.Input.decodeList<StackSetInstanceStackInstanceSummary>(map['stackInstanceSummaries']!, (value) => StackSetInstanceStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      stackSetInstanceRegion: map['stackSetInstanceRegion'] == null ? null : ((map['stackSetInstanceRegion'] as String).input()).input(),
-      stackSetName: map['stackSetName'] == null ? null : ((map['stackSetName'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      callAs: (() {
+        final guardedValue = map['callAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentTargets: (() {
+        final guardedValue = map['deploymentTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StackSetInstanceDeploymentTargets.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      operationPreferences: (() {
+        final guardedValue = map['operationPreferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StackSetInstanceOperationPreferences.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      organizationalUnitId: (() {
+        final guardedValue = map['organizationalUnitId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterOverrides: (() {
+        final guardedValue = map['parameterOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retainStack: (() {
+        final guardedValue = map['retainStack'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      stackId: (() {
+        final guardedValue = map['stackId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackInstanceSummaries: (() {
+        final guardedValue = map['stackInstanceSummaries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StackSetInstanceStackInstanceSummary>(
+            guardedValue,
+            (value) => StackSetInstanceStackInstanceSummary.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      stackSetInstanceRegion: (() {
+        final guardedValue = map['stackSetInstanceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackSetName: (() {
+        final guardedValue = map['stackSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

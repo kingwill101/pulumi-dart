@@ -4,16 +4,15 @@ enum AuthMetadataLookupModes {
   valuePaired("Paired"),
   valueWindows("Windows");
 
-  const AuthMetadataLookupModes(this.value);
-  final String value;
+  const AuthMetadataLookupModes(this.wireValue);
+  final String wireValue;
 
   static AuthMetadataLookupModes fromValue(String value) {
     for (final item in AuthMetadataLookupModes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthMetadataLookupModes value: $value');
   }
 }
-

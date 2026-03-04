@@ -8,12 +8,16 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The connection properties.
   final pulumi.Input<ConnectionPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the private endpoint connection.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -35,20 +39,35 @@ class PrivateEndpointConnectionResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'properties': pulumi.Input.mapInputValue<ConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ConnectionPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: (ConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        ConnectionPropertiesResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

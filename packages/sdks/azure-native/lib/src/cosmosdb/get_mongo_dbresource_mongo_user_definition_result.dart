@@ -7,22 +7,31 @@ import 'role_response.dart';
 class GetMongoDBResourceMongoUserDefinitionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A custom definition for the USer Definition.
   final String? customData;
+
   /// The database name for which access is being granted for this User Definition.
   final String? databaseName;
+
   /// The unique resource identifier of the database account.
   final String id;
+
   /// The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
   final String? mechanisms;
+
   /// The name of the database account.
   final String name;
+
   /// The password for User Definition. Response does not contain user password.
   final String? password;
+
   /// The set of roles inherited by the User Definition.
   final List<RoleResponse>? roles;
+
   /// The type of Azure resource.
   final String type;
+
   /// The user name for User Definition.
   final String? userName;
 
@@ -59,25 +68,61 @@ class GetMongoDBResourceMongoUserDefinitionResult {
       'mechanisms': ?mechanisms,
       'name': name,
       'password': ?password,
-      'roles': ?roles == null ? null : pulumi.Input.encodeList<RoleResponse, Map<String, dynamic>>(roles!, (value) => value.toMap()),
+      'roles': ?(() {
+        final guardedValue = roles;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<RoleResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'type': type,
       'userName': ?userName,
     };
   }
 
-  factory GetMongoDBResourceMongoUserDefinitionResult.fromMap(Map<String, dynamic> map) {
+  factory GetMongoDBResourceMongoUserDefinitionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMongoDBResourceMongoUserDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customData: map['customData'] == null ? null : map['customData']! as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
+      customData: (() {
+        final guardedValue = map['customData'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      mechanisms: map['mechanisms'] == null ? null : map['mechanisms']! as String,
+      mechanisms: (() {
+        final guardedValue = map['mechanisms'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      password: map['password'] == null ? null : map['password']! as String,
-      roles: map['roles'] == null ? null : pulumi.Input.decodeList<RoleResponse>(map['roles']!, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<RoleResponse>(
+          guardedValue,
+          (value) =>
+              RoleResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName']! as String,
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

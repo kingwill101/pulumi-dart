@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrowserCredential {
   /// Gets or sets web push subject.
   final pulumi.Input<String> subject;
+
   /// Gets or sets VAPID private key.
   final pulumi.Input<String> vapidPrivateKey;
+
   /// Gets or sets VAPID public key.
   final pulumi.Input<String> vapidPublicKey;
 
@@ -31,10 +33,9 @@ class BrowserCredential {
 
   factory BrowserCredential.fromMap(Map<String, dynamic> map) {
     return BrowserCredential(
-      subject: (map['subject'] as String).input(),
-      vapidPrivateKey: (map['vapidPrivateKey'] as String).input(),
-      vapidPublicKey: (map['vapidPublicKey'] as String).input(),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      vapidPrivateKey: pulumi.Input.fromValue(map['vapidPrivateKey'] as String),
+      vapidPublicKey: pulumi.Input.fromValue(map['vapidPublicKey'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobConfigEditList {
   /// List of values identifying files that should be used in this atom.
   final pulumi.Input<List<String>>? inputs;
+
   /// A unique key for this atom.
   final pulumi.Input<String>? key;
+
   /// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
   final pulumi.Input<String>? startTimeOffset;
 
@@ -14,11 +16,7 @@ class JobConfigEditList {
   /// [inputs] List of values identifying files that should be used in this atom.
   /// [key] A unique key for this atom.
   /// [startTimeOffset] Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-  JobConfigEditList({
-    this.inputs,
-    this.key,
-    this.startTimeOffset,
-  });
+  JobConfigEditList({this.inputs, this.key, this.startTimeOffset});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class JobConfigEditList {
 
   factory JobConfigEditList.fromMap(Map<String, dynamic> map) {
     return JobConfigEditList(
-      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<String>()).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      inputs: (() {
+        final guardedValue = map['inputs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTimeOffset: (() {
+        final guardedValue = map['startTimeOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

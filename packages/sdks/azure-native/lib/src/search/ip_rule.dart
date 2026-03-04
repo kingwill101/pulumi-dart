@@ -9,20 +9,19 @@ class IpRule {
 
   /// Creates a new [IpRule].
   /// [value] Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
-  IpRule({
-    this.value,
-  });
+  IpRule({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory IpRule.fromMap(Map<String, dynamic> map) {
     return IpRule(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,15 +15,20 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-    };
+    return <String, dynamic>{'labels': ?labels};
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

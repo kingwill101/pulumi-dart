@@ -274,22 +274,31 @@ import 'system_data_response.dart';
 class Account extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Get or Set Kind property.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The map account properties.
   late final pulumi.Output<MapsAccountPropertiesResponse> properties;
+
   /// The SKU of this account.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -302,20 +311,20 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:maps:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:maps:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MapsAccountPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MapsAccountPropertiesResponse>('properties');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

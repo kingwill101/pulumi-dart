@@ -9,20 +9,15 @@ class ManagedComponentReferenceResponse {
 
   /// Creates a new [ManagedComponentReferenceResponse].
   /// [resourceId] Resource Id of the managed component
-  ManagedComponentReferenceResponse({
-    required this.resourceId,
-  });
+  ManagedComponentReferenceResponse({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
   factory ManagedComponentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ManagedComponentReferenceResponse(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

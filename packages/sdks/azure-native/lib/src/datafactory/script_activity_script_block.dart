@@ -7,8 +7,10 @@ import 'script_activity_parameter.dart';
 class ScriptActivityScriptBlock {
   /// Array of script parameters. Type: array.
   final pulumi.Input<List<ScriptActivityParameter>>? parameters;
+
   /// The query text. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> text;
+
   /// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> type;
 
@@ -24,7 +26,18 @@ class ScriptActivityScriptBlock {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ScriptActivityParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ScriptActivityParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ScriptActivityParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ScriptActivityParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'text': text,
       'type': type,
     };
@@ -32,10 +45,20 @@ class ScriptActivityScriptBlock {
 
   factory ScriptActivityScriptBlock.fromMap(Map<String, dynamic> map) {
     return ScriptActivityScriptBlock(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ScriptActivityParameter>(map['parameters']!, (value) => ScriptActivityParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      text: (map['text']).input(),
-      type: (map['type']).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ScriptActivityParameter>(
+            guardedValue,
+            (value) => ScriptActivityParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      text: pulumi.Input.fromValue(map['text']),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }
-

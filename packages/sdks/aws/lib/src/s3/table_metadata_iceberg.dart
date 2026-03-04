@@ -10,20 +10,25 @@ class TableMetadataIceberg {
 
   /// Creates a new [TableMetadataIceberg].
   /// [schema] Schema configuration for the Iceberg table.
-  TableMetadataIceberg({
-    required this.schema,
-  });
+  TableMetadataIceberg({required this.schema});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schema': pulumi.Input.mapInputValue<TableMetadataIcebergSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'schema':
+          pulumi.Input.mapInputValue<
+            TableMetadataIcebergSchema,
+            Map<String, dynamic>
+          >(schema, (value) => value.toMap()),
     };
   }
 
   factory TableMetadataIceberg.fromMap(Map<String, dynamic> map) {
     return TableMetadataIceberg(
-      schema: (TableMetadataIcebergSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      schema: pulumi.Input.fromValue(
+        TableMetadataIcebergSchema.fromMap(
+          (map['schema']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

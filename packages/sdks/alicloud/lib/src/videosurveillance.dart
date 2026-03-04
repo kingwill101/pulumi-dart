@@ -1,5 +1,3 @@
-library module_videosurveillance;
-
 export 'videosurveillance/functions.dart';
 export 'videosurveillance/get_service_args.dart';
 export 'videosurveillance/get_service_result.dart';

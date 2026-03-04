@@ -7,10 +7,13 @@ import 'envelope_signature_response_containeranalysis_v1alpha1.dart';
 class EnvelopeResponseContaineranalysisV1alpha1 {
   /// The bytes being signed
   final pulumi.Input<String> payload;
+
   /// The type of payload being signed
   final pulumi.Input<String> payloadType;
+
   /// The signatures over the payload
-  final pulumi.Input<List<EnvelopeSignatureResponseContaineranalysisV1alpha1>> signatures;
+  final pulumi.Input<List<EnvelopeSignatureResponseContaineranalysisV1alpha1>>
+  signatures;
 
   /// Creates a new [EnvelopeResponseContaineranalysisV1alpha1].
   /// [payload] The bytes being signed
@@ -26,16 +29,37 @@ class EnvelopeResponseContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'payload': payload,
       'payloadType': payloadType,
-      'signatures': pulumi.Input.mapInputValue<List<EnvelopeSignatureResponseContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'signatures':
+          pulumi.Input.mapInputValue<
+            List<EnvelopeSignatureResponseContaineranalysisV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            signatures,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvelopeSignatureResponseContaineranalysisV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory EnvelopeResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory EnvelopeResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvelopeResponseContaineranalysisV1alpha1(
-      payload: (map['payload'] as String).input(),
-      payloadType: (map['payloadType'] as String).input(),
-      signatures: (pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: pulumi.Input.fromValue(map['payload'] as String),
+      payloadType: pulumi.Input.fromValue(map['payloadType'] as String),
+      signatures: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          EnvelopeSignatureResponseContaineranalysisV1alpha1
+        >(
+          map['signatures']!,
+          (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LogPublishingOption
 class LogPublishingOptionResponse {
-  /// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.&lt;/p&gt;
   final pulumi.Input<String>? cloudWatchLogsLogGroupArn;
-  /// <p>Whether the log should be published.</p>
+
+  /// &lt;p&gt;Whether the log should be published.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [LogPublishingOptionResponse].
-  /// [cloudWatchLogsLogGroupArn] <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-  /// [enabled] <p>Whether the log should be published.</p>
-  LogPublishingOptionResponse({
-    this.cloudWatchLogsLogGroupArn,
-    this.enabled,
-  });
+  /// [cloudWatchLogsLogGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.&lt;/p&gt;
+  /// [enabled] &lt;p&gt;Whether the log should be published.&lt;/p&gt;
+  LogPublishingOptionResponse({this.cloudWatchLogsLogGroupArn, this.enabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class LogPublishingOptionResponse {
 
   factory LogPublishingOptionResponse.fromMap(Map<String, dynamic> map) {
     return LogPublishingOptionResponse(
-      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      cloudWatchLogsLogGroupArn: (() {
+        final guardedValue = map['cloudWatchLogsLogGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

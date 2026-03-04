@@ -546,34 +546,45 @@ import 'config_state.dart';
 class Config extends pulumi.CustomResource {
   /// List of domains authorized for OAuth redirects.
   late final pulumi.Output<List<String>> authorizedDomains;
+
   /// Whether anonymous users will be auto-deleted after a period of 30 days
   late final pulumi.Output<bool?> autodeleteAnonymousUsers;
+
   /// Configuration related to blocking functions.
   /// Structure is documented below.
   late final pulumi.Output<ConfigBlockingFunctions?> blockingFunctions;
+
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
   late final pulumi.Output<ConfigClient> client;
+
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMfa> mfa;
+
   /// Configuration related to monitoring project activity.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMonitoring> monitoring;
+
   /// Configuration related to multi-tenant functionality.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMultiTenant?> multiTenant;
+
   /// The name of the Config resource
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Configuration related to quotas.
   /// Structure is documented below.
   late final pulumi.Output<ConfigQuota?> quota;
+
   /// Configuration related to local sign in methods.
   /// Structure is documented below.
   late final pulumi.Output<ConfigSignIn> signIn;
+
   /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
   /// Structure is documented below.
   late final pulumi.Output<ConfigSmsRegionConfig> smsRegionConfig;
@@ -582,28 +593,29 @@ class Config extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Config]. {@macro pulumi_identityplatform_config_config_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Config(
-    String name, {
-    ConfigArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:identityplatform/config:Config',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizedDomains = registerOutput<List<String>>('authorizedDomains');
-    this.autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
-    this.blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions');
-    this.client = registerOutput<ConfigClient>('client');
-    this.mfa = registerOutput<ConfigMfa>('mfa');
-    this.monitoring = registerOutput<ConfigMonitoring>('monitoring');
-    this.multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
+  Config(String name, {ConfigArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:identityplatform/config:Config',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authorizedDomains = registerOutput<List<String>>('authorizedDomains');
+    autodeleteAnonymousUsers = registerOutput<bool?>(
+      'autodeleteAnonymousUsers',
+    );
+    blockingFunctions = registerOutput<ConfigBlockingFunctions?>(
+      'blockingFunctions',
+    );
+    client = registerOutput<ConfigClient>('client');
+    mfa = registerOutput<ConfigMfa>('mfa');
+    monitoring = registerOutput<ConfigMonitoring>('monitoring');
+    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.quota = registerOutput<ConfigQuota?>('quota');
-    this.signIn = registerOutput<ConfigSignIn>('signIn');
-    this.smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
+    project = registerOutput<String>('project');
+    quota = registerOutput<ConfigQuota?>('quota');
+    signIn = registerOutput<ConfigSignIn>('signIn');
+    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
   }
 
   /// Gets an existing [Config] resource's state with the given [name] and [id].
@@ -624,22 +636,26 @@ class Config extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:identityplatform/config:Config',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizedDomains = registerOutput<List<String>>('authorizedDomains');
-    this.autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
-    this.blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions');
-    this.client = registerOutput<ConfigClient>('client');
-    this.mfa = registerOutput<ConfigMfa>('mfa');
-    this.monitoring = registerOutput<ConfigMonitoring>('monitoring');
-    this.multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
+         'gcp:identityplatform/config:Config',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizedDomains = registerOutput<List<String>>('authorizedDomains');
+    autodeleteAnonymousUsers = registerOutput<bool?>(
+      'autodeleteAnonymousUsers',
+    );
+    blockingFunctions = registerOutput<ConfigBlockingFunctions?>(
+      'blockingFunctions',
+    );
+    client = registerOutput<ConfigClient>('client');
+    mfa = registerOutput<ConfigMfa>('mfa');
+    monitoring = registerOutput<ConfigMonitoring>('monitoring');
+    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.quota = registerOutput<ConfigQuota?>('quota');
-    this.signIn = registerOutput<ConfigSignIn>('signIn');
-    this.smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
+    project = registerOutput<String>('project');
+    quota = registerOutput<ConfigQuota?>('quota');
+    signIn = registerOutput<ConfigSignIn>('signIn');
+    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
   }
 }

@@ -8,29 +8,42 @@ import 'http_update_response.dart';
 class CertVerificationResponse {
   /// A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
   final pulumi.Input<DnsUpdatesResponse> dns;
+
   /// A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
   final pulumi.Input<HttpUpdateResponse> http;
 
   /// Creates a new [CertVerificationResponse].
   /// [dns] A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
   /// [http] A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
-  CertVerificationResponse({
-    required this.dns,
-    required this.http,
-  });
+  CertVerificationResponse({required this.dns, required this.http});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dns': pulumi.Input.mapInputValue<DnsUpdatesResponse, Map<String, dynamic>>(dns, (value) => value.toMap()),
-      'http': pulumi.Input.mapInputValue<HttpUpdateResponse, Map<String, dynamic>>(http, (value) => value.toMap()),
+      'dns':
+          pulumi.Input.mapInputValue<DnsUpdatesResponse, Map<String, dynamic>>(
+            dns,
+            (value) => value.toMap(),
+          ),
+      'http':
+          pulumi.Input.mapInputValue<HttpUpdateResponse, Map<String, dynamic>>(
+            http,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CertVerificationResponse.fromMap(Map<String, dynamic> map) {
     return CertVerificationResponse(
-      dns: (DnsUpdatesResponse.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
-      http: (HttpUpdateResponse.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      dns: pulumi.Input.fromValue(
+        DnsUpdatesResponse.fromMap(
+          (map['dns']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      http: pulumi.Input.fromValue(
+        HttpUpdateResponse.fromMap(
+          (map['http']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

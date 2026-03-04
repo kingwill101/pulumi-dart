@@ -15,38 +15,55 @@ import 'txt_record_response.dart';
 class GetPrivateRecordSetResult {
   /// The list of A records in the record set.
   final List<ARecordResponse>? aRecords;
+
   /// The list of AAAA records in the record set.
   final List<AaaaRecordResponse>? aaaaRecords;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The CNAME record in the record set.
   final CnameRecordResponse? cnameRecord;
+
   /// The ETag of the record set.
   final String? etag;
+
   /// Fully qualified domain name of the record set.
   final String fqdn;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Is the record set auto-registered in the Private DNS zone through a virtual network link?
   final bool isAutoRegistered;
+
   /// The metadata attached to the record set.
   final Map<String, String>? metadata;
+
   /// The list of MX records in the record set.
   final List<MxRecordResponse>? mxRecords;
+
   /// The name of the resource
   final String name;
+
   /// The list of PTR records in the record set.
   final List<PtrRecordResponse>? ptrRecords;
+
   /// The SOA record in the record set.
   final SoaRecordResponse? soaRecord;
+
   /// The list of SRV records in the record set.
   final List<SrvRecordResponse>? srvRecords;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The TTL (time-to-live) of the records in the record set.
   final double? ttl;
+
   /// The list of TXT records in the record set.
   final List<TxtRecordResponse>? txtRecords;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -92,48 +109,164 @@ class GetPrivateRecordSetResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aRecords': ?aRecords == null ? null : pulumi.Input.encodeList<ARecordResponse, Map<String, dynamic>>(aRecords!, (value) => value.toMap()),
-      'aaaaRecords': ?aaaaRecords == null ? null : pulumi.Input.encodeList<AaaaRecordResponse, Map<String, dynamic>>(aaaaRecords!, (value) => value.toMap()),
+      'aRecords': ?(() {
+        final guardedValue = aRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<ARecordResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
+      'aaaaRecords': ?(() {
+        final guardedValue = aaaaRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AaaaRecordResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
-      'cnameRecord': ?cnameRecord == null ? null : cnameRecord!.toMap(),
+      'cnameRecord': ?cnameRecord?.toMap(),
       'etag': ?etag,
       'fqdn': fqdn,
       'id': id,
       'isAutoRegistered': isAutoRegistered,
       'metadata': ?metadata,
-      'mxRecords': ?mxRecords == null ? null : pulumi.Input.encodeList<MxRecordResponse, Map<String, dynamic>>(mxRecords!, (value) => value.toMap()),
+      'mxRecords': ?(() {
+        final guardedValue = mxRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<MxRecordResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'name': name,
-      'ptrRecords': ?ptrRecords == null ? null : pulumi.Input.encodeList<PtrRecordResponse, Map<String, dynamic>>(ptrRecords!, (value) => value.toMap()),
-      'soaRecord': ?soaRecord == null ? null : soaRecord!.toMap(),
-      'srvRecords': ?srvRecords == null ? null : pulumi.Input.encodeList<SrvRecordResponse, Map<String, dynamic>>(srvRecords!, (value) => value.toMap()),
+      'ptrRecords': ?(() {
+        final guardedValue = ptrRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<PtrRecordResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
+      'soaRecord': ?soaRecord?.toMap(),
+      'srvRecords': ?(() {
+        final guardedValue = srvRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<SrvRecordResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'systemData': systemData.toMap(),
       'ttl': ?ttl,
-      'txtRecords': ?txtRecords == null ? null : pulumi.Input.encodeList<TxtRecordResponse, Map<String, dynamic>>(txtRecords!, (value) => value.toMap()),
+      'txtRecords': ?(() {
+        final guardedValue = txtRecords;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<TxtRecordResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'type': type,
     };
   }
 
   factory GetPrivateRecordSetResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateRecordSetResult(
-      aRecords: map['aRecords'] == null ? null : pulumi.Input.decodeList<ARecordResponse>(map['aRecords']!, (value) => ARecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      aaaaRecords: map['aaaaRecords'] == null ? null : pulumi.Input.decodeList<AaaaRecordResponse>(map['aaaaRecords']!, (value) => AaaaRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      aRecords: (() {
+        final guardedValue = map['aRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ARecordResponse>(
+          guardedValue,
+          (value) =>
+              ARecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      aaaaRecords: (() {
+        final guardedValue = map['aaaaRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AaaaRecordResponse>(
+          guardedValue,
+          (value) => AaaaRecordResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      cnameRecord: map['cnameRecord'] == null ? null : CnameRecordResponse.fromMap((map['cnameRecord']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      cnameRecord: (() {
+        final guardedValue = map['cnameRecord'];
+        if (guardedValue == null) return null;
+        return CnameRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       fqdn: map['fqdn'] as String,
       id: map['id'] as String,
       isAutoRegistered: map['isAutoRegistered'] as bool,
-      metadata: map['metadata'] == null ? null : (map['metadata']! as Map).cast<String, String>(),
-      mxRecords: map['mxRecords'] == null ? null : pulumi.Input.decodeList<MxRecordResponse>(map['mxRecords']!, (value) => MxRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      mxRecords: (() {
+        final guardedValue = map['mxRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<MxRecordResponse>(
+          guardedValue,
+          (value) =>
+              MxRecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       name: map['name'] as String,
-      ptrRecords: map['ptrRecords'] == null ? null : pulumi.Input.decodeList<PtrRecordResponse>(map['ptrRecords']!, (value) => PtrRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      soaRecord: map['soaRecord'] == null ? null : SoaRecordResponse.fromMap((map['soaRecord']! as Map).cast<String, dynamic>()),
-      srvRecords: map['srvRecords'] == null ? null : pulumi.Input.decodeList<SrvRecordResponse>(map['srvRecords']!, (value) => SrvRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      ttl: map['ttl'] == null ? null : map['ttl']! as double,
-      txtRecords: map['txtRecords'] == null ? null : pulumi.Input.decodeList<TxtRecordResponse>(map['txtRecords']!, (value) => TxtRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ptrRecords: (() {
+        final guardedValue = map['ptrRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PtrRecordResponse>(
+          guardedValue,
+          (value) =>
+              PtrRecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      soaRecord: (() {
+        final guardedValue = map['soaRecord'];
+        if (guardedValue == null) return null;
+        return SoaRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      srvRecords: (() {
+        final guardedValue = map['srvRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SrvRecordResponse>(
+          guardedValue,
+          (value) =>
+              SrvRecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      txtRecords: (() {
+        final guardedValue = map['txtRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<TxtRecordResponse>(
+          guardedValue,
+          (value) =>
+              TxtRecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

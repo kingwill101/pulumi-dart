@@ -3,16 +3,15 @@ enum AttachedDiskSavedState {
   diskSavedStateUnspecified("DISK_SAVED_STATE_UNSPECIFIED"),
   preserved("PRESERVED");
 
-  const AttachedDiskSavedState(this.value);
-  final String value;
+  const AttachedDiskSavedState(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskSavedState fromValue(String value) {
     for (final item in AttachedDiskSavedState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachedDiskSavedState value: $value');
   }
 }
-

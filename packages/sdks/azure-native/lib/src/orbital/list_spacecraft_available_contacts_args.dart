@@ -10,14 +10,19 @@ import 'contact_parameters_contact_profile.dart';
 class ListSpacecraftAvailableContactsArgs {
   /// The reference to the contact profile resource.
   final pulumi.Input<ContactParametersContactProfile> contactProfile;
+
   /// End time of a contact (ISO 8601 UTC standard).
   final pulumi.Input<String> endTime;
+
   /// Name of Azure Ground Station.
   final pulumi.Input<String> groundStationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Spacecraft ID.
   final pulumi.Input<String> spacecraftName;
+
   /// Start time of a contact (ISO 8601 UTC standard).
   final pulumi.Input<String> startTime;
 
@@ -39,7 +44,11 @@ class ListSpacecraftAvailableContactsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contactProfile': pulumi.Input.mapInputValue<ContactParametersContactProfile, Map<String, dynamic>>(contactProfile, (value) => value.toMap()),
+      'contactProfile':
+          pulumi.Input.mapInputValue<
+            ContactParametersContactProfile,
+            Map<String, dynamic>
+          >(contactProfile, (value) => value.toMap()),
       'endTime': endTime,
       'groundStationName': groundStationName,
       'resourceGroupName': resourceGroupName,
@@ -48,15 +57,24 @@ class ListSpacecraftAvailableContactsArgs {
     };
   }
 
-  factory ListSpacecraftAvailableContactsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListSpacecraftAvailableContactsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListSpacecraftAvailableContactsArgs(
-      contactProfile: (ContactParametersContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())).input(),
-      endTime: (map['endTime'] as String).input(),
-      groundStationName: (map['groundStationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spacecraftName: (map['spacecraftName'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      contactProfile: pulumi.Input.fromValue(
+        ContactParametersContactProfile.fromMap(
+          (map['contactProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      groundStationName: pulumi.Input.fromValue(
+        map['groundStationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      spacecraftName: pulumi.Input.fromValue(map['spacecraftName'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

@@ -1,26 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccessEntry.
 class GetAccessEntryResult {
   /// Amazon Resource Name (ARN) of the Access Entry.
   final String accessEntryArn;
   final String clusterName;
+
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
   final String createdAt;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of string which can optionally specify the Kubernetes groups the user would belong to when creating an access entry.
   final List<String> kubernetesGroups;
+
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
   final String modifiedAt;
   final String principalArn;
   final String region;
   final Map<String, String>? tags;
+
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   final Map<String, String> tagsAll;
+
   /// Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   final String type;
+
   /// Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
   final String userName;
 
@@ -79,11 +85,14 @@ class GetAccessEntryResult {
       modifiedAt: map['modifiedAt'] as String,
       principalArn: map['principalArn'] as String,
       region: map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       tagsAll: (map['tagsAll'] as Map).cast<String, String>(),
       type: map['type'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

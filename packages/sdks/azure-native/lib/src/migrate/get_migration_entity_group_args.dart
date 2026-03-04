@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMigrationEntityGroupArgs {
   /// Migration Entity Group ARM name
   final pulumi.Input<String> migrationEntityGroupName;
+
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetMigrationEntityGroupArgs {
 
   factory GetMigrationEntityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrationEntityGroupArgs(
-      migrationEntityGroupName: (map['migrationEntityGroupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      migrationEntityGroupName: pulumi.Input.fromValue(
+        map['migrationEntityGroupName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

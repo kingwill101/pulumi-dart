@@ -6,7 +6,7 @@ import 'hpc_cluster_state.dart';
 ///
 /// For information about ECS Hpc Cluster and how to use it, see [What is Hpc Cluster](https://www.alibabacloud.com/help/en/doc-detail/109138.htm).
 ///
-/// > **NOTE:** Available in v1.116.0+.
+/// &gt; **NOTE:** Available in v1.116.0+.
 ///
 /// ## Example Usage
 ///
@@ -119,6 +119,7 @@ import 'hpc_cluster_state.dart';
 class HpcCluster extends pulumi.CustomResource {
   /// The description of ECS Hpc Cluster.
   late final pulumi.Output<String?> description;
+
   /// The name of ECS Hpc Cluster.
   late final pulumi.Output<String> name;
 
@@ -131,12 +132,12 @@ class HpcCluster extends pulumi.CustomResource {
     HpcClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/hpcCluster:HpcCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'alicloud:ecs/hpcCluster:HpcCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
   }
 
@@ -158,12 +159,12 @@ class HpcCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/hpcCluster:HpcCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'alicloud:ecs/hpcCluster:HpcCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
   }
 }

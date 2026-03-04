@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern {
   /// The keyword regex for the customer pattern.
   final pulumi.Input<String>? keywordRegex;
+
   /// The pattern description for the customer pattern.
   final pulumi.Input<String>? patternDescription;
+
   /// The pattern name for the custom pattern.
   final pulumi.Input<String> patternName;
+
   /// The pattern regex for the customer pattern. The format must follow JavaScript regex format.
   final pulumi.Input<String> patternRegex;
 
@@ -33,13 +36,22 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCu
     };
   }
 
-  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(Map<String, dynamic> map) {
+  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern(
-      keywordRegex: map['keywordRegex'] == null ? null : ((map['keywordRegex'] as String).input()).input(),
-      patternDescription: map['patternDescription'] == null ? null : ((map['patternDescription'] as String).input()).input(),
-      patternName: (map['patternName'] as String).input(),
-      patternRegex: (map['patternRegex'] as String).input(),
+      keywordRegex: (() {
+        final guardedValue = map['keywordRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patternDescription: (() {
+        final guardedValue = map['patternDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patternName: pulumi.Input.fromValue(map['patternName'] as String),
+      patternRegex: pulumi.Input.fromValue(map['patternRegex'] as String),
     );
   }
 }
-

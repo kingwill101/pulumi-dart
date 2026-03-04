@@ -37,14 +37,23 @@ class GetReportMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetReportMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetReportMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReportMigrationcenterV1alpha1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reportConfigId: (map['reportConfigId'] as String).input(),
-      reportId: (map['reportId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reportConfigId: pulumi.Input.fromValue(map['reportConfigId'] as String),
+      reportId: pulumi.Input.fromValue(map['reportId'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

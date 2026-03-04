@@ -9,12 +9,16 @@ import 'upcoming_maintenance_response.dart';
 /// Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
 class ResourceStatusResponse {
   /// Contains last termination details why the instance was terminated.
-  final pulumi.Input<ResourceStatusLastInstanceTerminationDetailsResponse> lastInstanceTerminationDetails;
+  final pulumi.Input<ResourceStatusLastInstanceTerminationDetailsResponse>
+  lastInstanceTerminationDetails;
+
   /// An opaque ID of the host on which the VM is running.
   final pulumi.Input<String> physicalHost;
   final pulumi.Input<ResourceStatusSchedulingResponse> scheduling;
+
   /// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
   final pulumi.Input<Map<String, String>> serviceIntegrationStatuses;
+
   /// Details about stopping state of instance
   final pulumi.Input<ResourceStatusShutdownDetailsResponse> shutdownDetails;
   final pulumi.Input<UpcomingMaintenanceResponse> upcomingMaintenance;
@@ -37,24 +41,58 @@ class ResourceStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastInstanceTerminationDetails': pulumi.Input.mapInputValue<ResourceStatusLastInstanceTerminationDetailsResponse, Map<String, dynamic>>(lastInstanceTerminationDetails, (value) => value.toMap()),
+      'lastInstanceTerminationDetails':
+          pulumi.Input.mapInputValue<
+            ResourceStatusLastInstanceTerminationDetailsResponse,
+            Map<String, dynamic>
+          >(lastInstanceTerminationDetails, (value) => value.toMap()),
       'physicalHost': physicalHost,
-      'scheduling': pulumi.Input.mapInputValue<ResourceStatusSchedulingResponse, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'scheduling':
+          pulumi.Input.mapInputValue<
+            ResourceStatusSchedulingResponse,
+            Map<String, dynamic>
+          >(scheduling, (value) => value.toMap()),
       'serviceIntegrationStatuses': serviceIntegrationStatuses,
-      'shutdownDetails': pulumi.Input.mapInputValue<ResourceStatusShutdownDetailsResponse, Map<String, dynamic>>(shutdownDetails, (value) => value.toMap()),
-      'upcomingMaintenance': pulumi.Input.mapInputValue<UpcomingMaintenanceResponse, Map<String, dynamic>>(upcomingMaintenance, (value) => value.toMap()),
+      'shutdownDetails':
+          pulumi.Input.mapInputValue<
+            ResourceStatusShutdownDetailsResponse,
+            Map<String, dynamic>
+          >(shutdownDetails, (value) => value.toMap()),
+      'upcomingMaintenance':
+          pulumi.Input.mapInputValue<
+            UpcomingMaintenanceResponse,
+            Map<String, dynamic>
+          >(upcomingMaintenance, (value) => value.toMap()),
     };
   }
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      lastInstanceTerminationDetails: (ResourceStatusLastInstanceTerminationDetailsResponse.fromMap((map['lastInstanceTerminationDetails'] as Map).cast<String, dynamic>())).input(),
-      physicalHost: (map['physicalHost'] as String).input(),
-      scheduling: (ResourceStatusSchedulingResponse.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      serviceIntegrationStatuses: ((map['serviceIntegrationStatuses'] as Map).cast<String, String>()).input(),
-      shutdownDetails: (ResourceStatusShutdownDetailsResponse.fromMap((map['shutdownDetails'] as Map).cast<String, dynamic>())).input(),
-      upcomingMaintenance: (UpcomingMaintenanceResponse.fromMap((map['upcomingMaintenance'] as Map).cast<String, dynamic>())).input(),
+      lastInstanceTerminationDetails: pulumi.Input.fromValue(
+        ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(
+          (map['lastInstanceTerminationDetails']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      physicalHost: pulumi.Input.fromValue(map['physicalHost'] as String),
+      scheduling: pulumi.Input.fromValue(
+        ResourceStatusSchedulingResponse.fromMap(
+          (map['scheduling']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      serviceIntegrationStatuses: pulumi.Input.fromValue(
+        (map['serviceIntegrationStatuses'] as Map).cast<String, String>(),
+      ),
+      shutdownDetails: pulumi.Input.fromValue(
+        ResourceStatusShutdownDetailsResponse.fromMap(
+          (map['shutdownDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      upcomingMaintenance: pulumi.Input.fromValue(
+        UpcomingMaintenanceResponse.fromMap(
+          (map['upcomingMaintenance']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

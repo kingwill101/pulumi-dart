@@ -6,8 +6,10 @@ import 'domain_os_nv_ram_source_vhost_user_file_sec_label.dart';
 class DomainOsNvRamSourceVhostUserFile {
   /// Specifies if data should be appended to the file used as a source.
   final pulumi.Input<String>? append;
+
   /// Sets the file path for the RNG source in the EGD backend.
   final pulumi.Input<String> path;
+
   /// Configures security label settings for the file source in the EGD backend.
   final pulumi.Input<List<DomainOsNvRamSourceVhostUserFileSecLabel>>? secLabels;
 
@@ -25,16 +27,41 @@ class DomainOsNvRamSourceVhostUserFile {
     return <String, dynamic>{
       'append': ?append,
       'path': path,
-      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceVhostUserFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceVhostUserFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secLabels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainOsNvRamSourceVhostUserFileSecLabel>,
+            List<Map<String, dynamic>>
+          >(
+            secLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainOsNvRamSourceVhostUserFileSecLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainOsNvRamSourceVhostUserFile.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserFile(
-      append: map['append'] == null ? null : (map['append']! as String).input(),
-      path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserFileSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceVhostUserFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      append: (() {
+        final guardedValue = map['append'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      secLabels: (() {
+        final guardedValue = map['secLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserFileSecLabel>(
+            guardedValue,
+            (value) => DomainOsNvRamSourceVhostUserFileSecLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

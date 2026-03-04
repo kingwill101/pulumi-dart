@@ -4,16 +4,15 @@ enum QuotaPolicy {
   none("None"),
   restricted("Restricted");
 
-  const QuotaPolicy(this.value);
-  final String value;
+  const QuotaPolicy(this.wireValue);
+  final String wireValue;
 
   static QuotaPolicy fromValue(String value) {
     for (final item in QuotaPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QuotaPolicy value: $value');
   }
 }
-

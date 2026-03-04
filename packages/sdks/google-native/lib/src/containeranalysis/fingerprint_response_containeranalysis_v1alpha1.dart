@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FingerprintResponseContaineranalysisV1alpha1 {
   /// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
   final pulumi.Input<String> v1Name;
+
   /// The ordered list of v2 blobs that represent a given image.
   final pulumi.Input<List<String>> v2Blob;
+
   /// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
   final pulumi.Input<String> v2Name;
 
@@ -29,12 +31,13 @@ class FingerprintResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory FingerprintResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory FingerprintResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FingerprintResponseContaineranalysisV1alpha1(
-      v1Name: (map['v1Name'] as String).input(),
-      v2Blob: ((map['v2Blob'] as List).cast<String>()).input(),
-      v2Name: (map['v2Name'] as String).input(),
+      v1Name: pulumi.Input.fromValue(map['v1Name'] as String),
+      v2Blob: pulumi.Input.fromValue((map['v2Blob'] as List).cast<String>()),
+      v2Name: pulumi.Input.fromValue(map['v2Name'] as String),
     );
   }
 }
-

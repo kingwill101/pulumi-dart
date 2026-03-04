@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVReplicationPolicyState {
   /// Specifies the frequency at which to create application consistent recovery points.
   final pulumi.Input<int>? applicationConsistentSnapshotFrequencyInHours;
+
   /// The name of the replication policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The duration in hours for which the recovery points need to be stored.
   final pulumi.Input<int>? recoveryPointRetentionInHours;
+
   /// The id of the vault that should be updated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? recoveryVaultId;
+
   /// Specifies how frequently data should be synchronized between source and target locations. Possible values are `30` and `300`.
   final pulumi.Input<int>? replicationIntervalInSeconds;
 
@@ -31,7 +35,8 @@ class HyperVReplicationPolicyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationConsistentSnapshotFrequencyInHours': ?applicationConsistentSnapshotFrequencyInHours,
+      'applicationConsistentSnapshotFrequencyInHours':
+          ?applicationConsistentSnapshotFrequencyInHours,
       'name': ?name,
       'recoveryPointRetentionInHours': ?recoveryPointRetentionInHours,
       'recoveryVaultId': ?recoveryVaultId,
@@ -41,12 +46,32 @@ class HyperVReplicationPolicyState {
 
   factory HyperVReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recoveryPointRetentionInHours: map['recoveryPointRetentionInHours'] == null ? null : (map['recoveryPointRetentionInHours']! as int).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
-      replicationIntervalInSeconds: map['replicationIntervalInSeconds'] == null ? null : (map['replicationIntervalInSeconds']! as int).input(),
+      applicationConsistentSnapshotFrequencyInHours: (() {
+        final guardedValue =
+            map['applicationConsistentSnapshotFrequencyInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryPointRetentionInHours: (() {
+        final guardedValue = map['recoveryPointRetentionInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recoveryVaultId: (() {
+        final guardedValue = map['recoveryVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationIntervalInSeconds: (() {
+        final guardedValue = map['replicationIntervalInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

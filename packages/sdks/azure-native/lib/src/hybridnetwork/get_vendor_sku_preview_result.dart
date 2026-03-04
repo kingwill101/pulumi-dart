@@ -6,14 +6,19 @@ import 'system_data_response.dart';
 class GetVendorSkuPreviewResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The ARM ID of the resource.
   final String id;
+
   /// The preview subscription ID.
   final String name;
+
   /// The provisioning state of the PreviewSubscription resource.
   final String provisioningState;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// The type of the resource.
   final String type;
 
@@ -50,9 +55,10 @@ class GetVendorSkuPreviewResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

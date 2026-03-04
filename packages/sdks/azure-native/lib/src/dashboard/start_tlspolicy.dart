@@ -5,16 +5,15 @@ enum StartTLSPolicy {
   valueMandatoryStartTLS("MandatoryStartTLS"),
   valueNoStartTLS("NoStartTLS");
 
-  const StartTLSPolicy(this.value);
-  final String value;
+  const StartTLSPolicy(this.wireValue);
+  final String wireValue;
 
   static StartTLSPolicy fromValue(String value) {
     for (final item in StartTLSPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StartTLSPolicy value: $value');
   }
 }
-

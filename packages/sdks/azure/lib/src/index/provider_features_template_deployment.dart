@@ -19,8 +19,9 @@ class ProviderFeaturesTemplateDeployment {
 
   factory ProviderFeaturesTemplateDeployment.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesTemplateDeployment(
-      deleteNestedItemsDuringDeletion: (map['deleteNestedItemsDuringDeletion'] as bool).input(),
+      deleteNestedItemsDuringDeletion: pulumi.Input.fromValue(
+        map['deleteNestedItemsDuringDeletion'] as bool,
+      ),
     );
   }
 }
-

@@ -9,17 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadIdentityPoolNamespaceArgs {
   /// A description of the namespace. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
+
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
   final pulumi.Input<bool>? disabled;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   final pulumi.Input<String> workloadIdentityPoolId;
+
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -55,12 +59,27 @@ class WorkloadIdentityPoolNamespaceArgs {
 
   factory WorkloadIdentityPoolNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
-      workloadIdentityPoolNamespaceId: (map['workloadIdentityPoolNamespaceId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolId'] as String,
+      ),
+      workloadIdentityPoolNamespaceId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolNamespaceId'] as String,
+      ),
     );
   }
 }
-

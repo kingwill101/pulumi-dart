@@ -16,17 +16,15 @@ class BasicAuthResponseDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'user': user,
-    };
+    return <String, dynamic>{'password': password, 'user': user};
   }
 
-  factory BasicAuthResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory BasicAuthResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BasicAuthResponseDeploymentmanagerV2beta(
-      password: (map['password'] as String).input(),
-      user: (map['user'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

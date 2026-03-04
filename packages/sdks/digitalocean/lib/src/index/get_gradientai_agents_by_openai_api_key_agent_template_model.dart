@@ -6,31 +6,49 @@ import 'get_gradientai_agents_by_openai_api_key_agent_template_model_version.dar
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel {
   /// Agreement information for the model
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement>>? agreements;
+  final pulumi.Input<
+    List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement>
+  >?
+  agreements;
+
   /// Created At timestamp for the Knowledge Base
   final pulumi.Input<String> createdAt;
+
   /// Inference name of the model
   final pulumi.Input<String>? inferenceName;
+
   /// Infernce version of the model
   final pulumi.Input<String>? inferenceVersion;
+
   /// Indicates if the Model Base is foundational
   final pulumi.Input<bool>? isFoundational;
+
   /// Name of the Knowledge Base
   final pulumi.Input<String>? name;
+
   /// Parent UUID of the Model
   final pulumi.Input<String>? parentUuid;
+
   /// Provider of the Model
   final pulumi.Input<String>? provider;
+
   /// Timestamp when the Knowledge Base was updated
   final pulumi.Input<String> updatedAt;
+
   /// Indicates if the Model upload is complete
   final pulumi.Input<bool>? uploadComplete;
+
   /// URL of the Model
   final pulumi.Input<String>? url;
+
   /// List of Usecases for the Model
   final pulumi.Input<List<String>>? usecases;
+
   /// URL of the Model
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion>>? versions;
+  final pulumi.Input<
+    List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion>
+  >?
+  versions;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel].
   /// [agreements] Agreement information for the model
@@ -64,7 +82,18 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agreements': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement>, List<Map<String, dynamic>>>(agreements, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'agreements':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement>,
+            List<Map<String, dynamic>>
+          >(
+            agreements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createdAt': createdAt,
       'inferenceName': ?inferenceName,
       'inferenceVersion': ?inferenceVersion,
@@ -76,26 +105,102 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel {
       'uploadComplete': ?uploadComplete,
       'url': ?url,
       'usecases': ?usecases,
-      'versions': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion>, List<Map<String, dynamic>>>(versions, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'versions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion>,
+            List<Map<String, dynamic>>
+          >(
+            versions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel(
-      agreements: map['agreements'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement>(map['agreements']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      inferenceName: map['inferenceName'] == null ? null : (map['inferenceName']! as String).input(),
-      inferenceVersion: map['inferenceVersion'] == null ? null : (map['inferenceVersion']! as String).input(),
-      isFoundational: map['isFoundational'] == null ? null : (map['isFoundational']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid']! as String).input(),
-      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      uploadComplete: map['uploadComplete'] == null ? null : (map['uploadComplete']! as bool).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      usecases: map['usecases'] == null ? null : ((map['usecases']! as List).cast<String>()).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion>(map['versions']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agreements: (() {
+        final guardedValue = map['agreements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      inferenceName: (() {
+        final guardedValue = map['inferenceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inferenceVersion: (() {
+        final guardedValue = map['inferenceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isFoundational: (() {
+        final guardedValue = map['isFoundational'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentUuid: (() {
+        final guardedValue = map['parentUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provider: (() {
+        final guardedValue = map['provider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      uploadComplete: (() {
+        final guardedValue = map['uploadComplete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usecases: (() {
+        final guardedValue = map['usecases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      versions: (() {
+        final guardedValue = map['versions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

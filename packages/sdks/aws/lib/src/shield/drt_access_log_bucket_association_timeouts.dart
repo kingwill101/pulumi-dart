@@ -5,29 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DrtAccessLogBucketAssociationTimeouts {
   /// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
   final pulumi.Input<String>? create;
+
   /// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
   final pulumi.Input<String>? delete;
 
   /// Creates a new [DrtAccessLogBucketAssociationTimeouts].
   /// [create] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
   /// [delete] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-  DrtAccessLogBucketAssociationTimeouts({
-    this.create,
-    this.delete,
-  });
+  DrtAccessLogBucketAssociationTimeouts({this.create, this.delete});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'create': ?create,
-      'delete': ?delete,
-    };
+    return <String, dynamic>{'create': ?create, 'delete': ?delete};
   }
 
-  factory DrtAccessLogBucketAssociationTimeouts.fromMap(Map<String, dynamic> map) {
+  factory DrtAccessLogBucketAssociationTimeouts.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DrtAccessLogBucketAssociationTimeouts(
-      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
-      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
+      create: (() {
+        final guardedValue = map['create'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      delete: (() {
+        final guardedValue = map['delete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SearchBypass {
   none("None"),
   azureServices("AzureServices");
 
-  const SearchBypass(this.value);
-  final String value;
+  const SearchBypass(this.wireValue);
+  final String wireValue;
 
   static SearchBypass fromValue(String value) {
     for (final item in SearchBypass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SearchBypass value: $value');
   }
 }
-

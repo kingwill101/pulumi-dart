@@ -8,20 +8,15 @@ class DomainDevicesChannelAlias {
 
   /// Creates a new [DomainDevicesChannelAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesChannelAlias({
-    required this.name,
-  });
+  DomainDevicesChannelAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesChannelAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

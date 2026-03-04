@@ -10,24 +10,34 @@ import 'discovery_virtual_instance_identity.dart';
 class DiscoveryVirtualInstanceArgs {
   /// The ID of the Virtual Machine of the Central Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> centralServerVirtualMachineId;
+
   /// The environment type for the SAP Discovery Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   final pulumi.Input<String> environment;
+
   /// An `identity` block as defined below.
   final pulumi.Input<DiscoveryVirtualInstanceIdentity>? identity;
+
   /// The Azure Region where the SAP Discovery Virtual Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the managed Resource Group for the SAP Discovery Virtual Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedResourceGroupName;
+
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   final pulumi.Input<String>? managedResourcesNetworkAccessType;
+
   /// The name of the custom Storage Account created by the service in the managed Resource Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedStorageAccountName;
+
   /// Specifies the name of the SAP Discovery Virtual Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the SAP Discovery Virtual Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The SAP Product type for the SAP Discovery Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sapProduct;
+
   /// A mapping of tags which should be assigned to the SAP Discovery Virtual Instance.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -61,7 +71,11 @@ class DiscoveryVirtualInstanceArgs {
     return <String, dynamic>{
       'centralServerVirtualMachineId': centralServerVirtualMachineId,
       'environment': environment,
-      'identity': ?pulumi.Input.mapOptionalInputValue<DiscoveryVirtualInstanceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiscoveryVirtualInstanceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'managedResourceGroupName': ?managedResourceGroupName,
       'managedResourcesNetworkAccessType': ?managedResourcesNetworkAccessType,
@@ -75,18 +89,55 @@ class DiscoveryVirtualInstanceArgs {
 
   factory DiscoveryVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryVirtualInstanceArgs(
-      centralServerVirtualMachineId: (map['centralServerVirtualMachineId'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      identity: map['identity'] == null ? null : (DiscoveryVirtualInstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType']! as String).input(),
-      managedStorageAccountName: map['managedStorageAccountName'] == null ? null : (map['managedStorageAccountName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sapProduct: (map['sapProduct'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      centralServerVirtualMachineId: pulumi.Input.fromValue(
+        map['centralServerVirtualMachineId'] as String,
+      ),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiscoveryVirtualInstanceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedResourceGroupName: (() {
+        final guardedValue = map['managedResourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedResourcesNetworkAccessType: (() {
+        final guardedValue = map['managedResourcesNetworkAccessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedStorageAccountName: (() {
+        final guardedValue = map['managedStorageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sapProduct: pulumi.Input.fromValue(map['sapProduct'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceDeployment {
   /// Time when task set was created (RFC3339 format)
   final pulumi.Input<String> createdAt;
+
   /// Desired number of tasks
   final pulumi.Input<int> desiredCount;
+
   /// Task set ID
   final pulumi.Input<String> id;
+
   /// Number of pending tasks
   final pulumi.Input<int> pendingCount;
+
   /// Number of running tasks
   final pulumi.Input<int> runningCount;
+
   /// Task set status
   final pulumi.Input<String> status;
+
   /// Task definition ARN
   final pulumi.Input<String> taskDefinition;
+
   /// Time when task set was last updated (RFC3339 format)
   final pulumi.Input<String> updatedAt;
 
@@ -55,15 +62,14 @@ class GetServiceDeployment {
 
   factory GetServiceDeployment.fromMap(Map<String, dynamic> map) {
     return GetServiceDeployment(
-      createdAt: (map['createdAt'] as String).input(),
-      desiredCount: (map['desiredCount'] as int).input(),
-      id: (map['id'] as String).input(),
-      pendingCount: (map['pendingCount'] as int).input(),
-      runningCount: (map['runningCount'] as int).input(),
-      status: (map['status'] as String).input(),
-      taskDefinition: (map['taskDefinition'] as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      desiredCount: pulumi.Input.fromValue(map['desiredCount'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pendingCount: pulumi.Input.fromValue(map['pendingCount'] as int),
+      runningCount: pulumi.Input.fromValue(map['runningCount'] as int),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      taskDefinition: pulumi.Input.fromValue(map['taskDefinition'] as String),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

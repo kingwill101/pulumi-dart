@@ -7,6 +7,7 @@ import 'actionable_remediation_response.dart';
 class AzureDevOpsOrgPropertiesResponse {
   /// Configuration payload for PR Annotations.
   final pulumi.Input<ActionableRemediationResponse>? actionableRemediation;
+
   /// Details about resource onboarding status across all connectors.
   ///
   /// OnboardedByOtherConnector - this resource has already been onboarded to another connector. This is only applicable to top-level resources.
@@ -14,6 +15,7 @@ class AzureDevOpsOrgPropertiesResponse {
   /// NotOnboarded - this resource has not been onboarded to any connector.
   /// NotApplicable - the onboarding state is not applicable to the current endpoint.
   final pulumi.Input<String>? onboardingState;
+
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -24,8 +26,10 @@ class AzureDevOpsOrgPropertiesResponse {
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
   final pulumi.Input<String>? provisioningState;
+
   /// Gets or sets resource status message.
   final pulumi.Input<String> provisioningStatusMessage;
+
   /// Gets or sets time when resource was last checked.
   final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
 
@@ -45,7 +49,11 @@ class AzureDevOpsOrgPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionableRemediation': ?pulumi.Input.mapOptionalInputValue<ActionableRemediationResponse, Map<String, dynamic>>(actionableRemediation, (value) => value.toMap()),
+      'actionableRemediation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActionableRemediationResponse,
+            Map<String, dynamic>
+          >(actionableRemediation, (value) => value.toMap()),
       'onboardingState': ?onboardingState,
       'provisioningState': ?provisioningState,
       'provisioningStatusMessage': provisioningStatusMessage,
@@ -55,12 +63,31 @@ class AzureDevOpsOrgPropertiesResponse {
 
   factory AzureDevOpsOrgPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsOrgPropertiesResponse(
-      actionableRemediation: map['actionableRemediation'] == null ? null : (ActionableRemediationResponse.fromMap((map['actionableRemediation']! as Map).cast<String, dynamic>())).input(),
-      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState']! as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
-      provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
+      actionableRemediation: (() {
+        final guardedValue = map['actionableRemediation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActionableRemediationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      onboardingState: (() {
+        final guardedValue = map['onboardingState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatusMessage: pulumi.Input.fromValue(
+        map['provisioningStatusMessage'] as String,
+      ),
+      provisioningStatusUpdateTimeUtc: pulumi.Input.fromValue(
+        map['provisioningStatusUpdateTimeUtc'] as String,
+      ),
     );
   }
 }
-

@@ -13,15 +13,18 @@ class DashboardDashboardPublishOptionsVisualAxisSortOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityStatus': ?availabilityStatus,
-    };
+    return <String, dynamic>{'availabilityStatus': ?availabilityStatus};
   }
 
-  factory DashboardDashboardPublishOptionsVisualAxisSortOption.fromMap(Map<String, dynamic> map) {
+  factory DashboardDashboardPublishOptionsVisualAxisSortOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardDashboardPublishOptionsVisualAxisSortOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
+      availabilityStatus: (() {
+        final guardedValue = map['availabilityStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

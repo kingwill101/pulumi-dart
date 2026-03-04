@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceS3Import {
   /// The bucket name where your backup is stored
   final pulumi.Input<String> bucketName;
+
   /// Can be blank, but is the path to your backup
   final pulumi.Input<String>? bucketPrefix;
+
   /// Role applied to load the data.
   final pulumi.Input<String> ingestionRole;
+
   /// Source engine for the backup
   final pulumi.Input<String> sourceEngine;
+
   /// Version of the source engine used to make the backup
   ///
   /// This will not recreate the resource if the S3 object changes in some way.  It's only used to initialize the database.
@@ -42,12 +46,17 @@ class InstanceS3Import {
 
   factory InstanceS3Import.fromMap(Map<String, dynamic> map) {
     return InstanceS3Import(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      ingestionRole: (map['ingestionRole'] as String).input(),
-      sourceEngine: (map['sourceEngine'] as String).input(),
-      sourceEngineVersion: (map['sourceEngineVersion'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingestionRole: pulumi.Input.fromValue(map['ingestionRole'] as String),
+      sourceEngine: pulumi.Input.fromValue(map['sourceEngine'] as String),
+      sourceEngineVersion: pulumi.Input.fromValue(
+        map['sourceEngineVersion'] as String,
+      ),
     );
   }
 }
-

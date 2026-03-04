@@ -1,16 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_gateway_ipconfiguration_response.dart';
-import 'delegation_response.dart';
-import 'ipam_pool_prefix_allocation_response.dart';
-import 'ipconfiguration_profile_response.dart';
-import 'ipconfiguration_response.dart';
 import 'network_security_group_response.dart';
-import 'private_endpoint_response.dart';
-import 'resource_navigation_link_response.dart';
 import 'route_table_response.dart';
-import 'service_association_link_response.dart';
-import 'service_endpoint_policy_response.dart';
-import 'service_endpoint_properties_format_response.dart';
 import 'sub_resource_response.dart';
 import 'subnet_args.dart';
 
@@ -696,54 +686,81 @@ import 'subnet_args.dart';
 class SubnetNetwork extends pulumi.CustomResource {
   /// The address prefix for the subnet.
   late final pulumi.Output<String?> addressPrefix;
+
   /// List of address prefixes for the subnet.
   late final pulumi.Output<List<String>?> addressPrefixes;
+
   /// Application gateway IP configurations of virtual network resource.
-  late final pulumi.Output<List<ApplicationGatewayIPConfigurationResponse>?> applicationGatewayIPConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  applicationGatewayIPConfigurations;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
   late final pulumi.Output<bool?> defaultOutboundAccess;
+
   /// An array of references to the delegations on the subnet.
-  late final pulumi.Output<List<DelegationResponse>?> delegations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> delegations;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Array of IpAllocation which reference this subnet.
-  late final pulumi.Output<List<SubResourceResponse>?> ipAllocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipAllocations;
+
   /// Array of IP configuration profiles which reference this subnet.
-  late final pulumi.Output<List<IPConfigurationProfileResponse>> ipConfigurationProfiles;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurationProfiles;
+
   /// An array of references to the network interface IP configurations using subnet.
-  late final pulumi.Output<List<IPConfigurationResponse>> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+
   /// A list of IPAM Pools for allocating IP address prefixes.
-  late final pulumi.Output<List<IpamPoolPrefixAllocationResponse>?> ipamPoolPrefixAllocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  ipamPoolPrefixAllocations;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// Nat gateway associated with this subnet.
   late final pulumi.Output<SubResourceResponse?> natGateway;
+
   /// The reference to the NetworkSecurityGroup resource.
   late final pulumi.Output<NetworkSecurityGroupResponse?> networkSecurityGroup;
+
   /// Enable or Disable apply network policies on private end point in the subnet.
   late final pulumi.Output<String?> privateEndpointNetworkPolicies;
+
   /// An array of references to private endpoints.
-  late final pulumi.Output<List<PrivateEndpointResponse>> privateEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpoints;
+
   /// Enable or Disable apply network policies on private link service in the subnet.
   late final pulumi.Output<String?> privateLinkServiceNetworkPolicies;
+
   /// The provisioning state of the subnet resource.
   late final pulumi.Output<String> provisioningState;
+
   /// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
   late final pulumi.Output<String> purpose;
+
   /// An array of references to the external resources using subnet.
-  late final pulumi.Output<List<ResourceNavigationLinkResponse>> resourceNavigationLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> resourceNavigationLinks;
+
   /// The reference to the RouteTable resource.
   late final pulumi.Output<RouteTableResponse?> routeTable;
+
   /// An array of references to services injecting into this subnet.
-  late final pulumi.Output<List<ServiceAssociationLinkResponse>> serviceAssociationLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> serviceAssociationLinks;
+
   /// An array of service endpoint policies.
-  late final pulumi.Output<List<ServiceEndpointPolicyResponse>?> serviceEndpointPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> serviceEndpointPolicies;
+
   /// An array of service endpoints.
-  late final pulumi.Output<List<ServiceEndpointPropertiesFormatResponse>?> serviceEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> serviceEndpoints;
+
   /// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
   late final pulumi.Output<String?> sharingScope;
+
   /// Resource type.
   late final pulumi.Output<String?> type;
 
@@ -756,36 +773,63 @@ class SubnetNetwork extends pulumi.CustomResource {
     SubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:Subnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.applicationGatewayIPConfigurations = registerOutput<List<ApplicationGatewayIPConfigurationResponse>?>('applicationGatewayIPConfigurations');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultOutboundAccess = registerOutput<bool?>('defaultOutboundAccess');
-    this.delegations = registerOutput<List<DelegationResponse>?>('delegations');
-    this.etag = registerOutput<String>('etag');
-    this.ipAllocations = registerOutput<List<SubResourceResponse>?>('ipAllocations');
-    this.ipConfigurationProfiles = registerOutput<List<IPConfigurationProfileResponse>>('ipConfigurationProfiles');
-    this.ipConfigurations = registerOutput<List<IPConfigurationResponse>>('ipConfigurations');
-    this.ipamPoolPrefixAllocations = registerOutput<List<IpamPoolPrefixAllocationResponse>?>('ipamPoolPrefixAllocations');
+         'azure-native:network:Subnet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    applicationGatewayIPConfigurations =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'applicationGatewayIPConfigurations',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultOutboundAccess = registerOutput<bool?>('defaultOutboundAccess');
+    delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
+    etag = registerOutput<String>('etag');
+    ipAllocations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipAllocations',
+    );
+    ipConfigurationProfiles = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurationProfiles',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurations',
+    );
+    ipamPoolPrefixAllocations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipamPoolPrefixAllocations',
+    );
     this.name = registerOutput<String?>('name');
-    this.natGateway = registerOutput<SubResourceResponse?>('natGateway');
-    this.networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>('networkSecurityGroup');
-    this.privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
-    this.privateEndpoints = registerOutput<List<PrivateEndpointResponse>>('privateEndpoints');
-    this.privateLinkServiceNetworkPolicies = registerOutput<String?>('privateLinkServiceNetworkPolicies');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.purpose = registerOutput<String>('purpose');
-    this.resourceNavigationLinks = registerOutput<List<ResourceNavigationLinkResponse>>('resourceNavigationLinks');
-    this.routeTable = registerOutput<RouteTableResponse?>('routeTable');
-    this.serviceAssociationLinks = registerOutput<List<ServiceAssociationLinkResponse>>('serviceAssociationLinks');
-    this.serviceEndpointPolicies = registerOutput<List<ServiceEndpointPolicyResponse>?>('serviceEndpointPolicies');
-    this.serviceEndpoints = registerOutput<List<ServiceEndpointPropertiesFormatResponse>?>('serviceEndpoints');
-    this.sharingScope = registerOutput<String?>('sharingScope');
-    this.type = registerOutput<String?>('type');
+    natGateway = registerOutput<SubResourceResponse?>('natGateway');
+    networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>(
+      'networkSecurityGroup',
+    );
+    privateEndpointNetworkPolicies = registerOutput<String?>(
+      'privateEndpointNetworkPolicies',
+    );
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpoints',
+    );
+    privateLinkServiceNetworkPolicies = registerOutput<String?>(
+      'privateLinkServiceNetworkPolicies',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    purpose = registerOutput<String>('purpose');
+    resourceNavigationLinks = registerOutput<List<Map<String, dynamic>>>(
+      'resourceNavigationLinks',
+    );
+    routeTable = registerOutput<RouteTableResponse?>('routeTable');
+    serviceAssociationLinks = registerOutput<List<Map<String, dynamic>>>(
+      'serviceAssociationLinks',
+    );
+    serviceEndpointPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'serviceEndpointPolicies',
+    );
+    serviceEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'serviceEndpoints',
+    );
+    sharingScope = registerOutput<String?>('sharingScope');
+    type = registerOutput<String?>('type');
   }
 }

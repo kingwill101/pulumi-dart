@@ -6,44 +6,64 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StoredIscsiVolumeState {
   /// Volume Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
   final pulumi.Input<String>? arn;
+
   /// Whether mutual CHAP is enabled for the iSCSI target.
   final pulumi.Input<bool>? chapEnabled;
+
   /// The unique identifier for the gateway local disk that is configured as a stored volume.
   final pulumi.Input<String>? diskId;
+
   /// The Amazon Resource Name (ARN) of the gateway.
   final pulumi.Input<String>? gatewayArn;
+
   /// `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Optional.
   final pulumi.Input<bool>? kmsEncrypted;
+
   /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is `true`.
   final pulumi.Input<String>? kmsKey;
+
   /// Logical disk number.
   final pulumi.Input<int>? lunNumber;
+
   /// The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// The port used to communicate with iSCSI targets.
   final pulumi.Input<int>? networkInterfacePort;
+
   /// Specify this field as `true` if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.
   final pulumi.Input<bool>? preserveExistingData;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The snapshot ID of the snapshot to restore as the new stored volumeE.g., `snap-1122aabb`.
   final pulumi.Input<String>? snapshotId;
+
   /// Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Target Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
   final pulumi.Input<String>? targetArn;
+
   /// The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
   final pulumi.Input<String>? targetName;
+
   /// A value that indicates whether a storage volume is attached to, detached from, or is in the process of detaching from a gateway.
   final pulumi.Input<String>? volumeAttachmentStatus;
+
   /// Volume ID, e.g., `vol-12345678`.
   final pulumi.Input<String>? volumeId;
+
   /// The size of the data stored on the volume in bytes.
   final pulumi.Input<int>? volumeSizeInBytes;
+
   /// indicates the state of the storage volume.
   final pulumi.Input<String>? volumeStatus;
+
   /// indicates the type of the volume.
   final pulumi.Input<String>? volumeType;
 
@@ -121,28 +141,115 @@ class StoredIscsiVolumeState {
 
   factory StoredIscsiVolumeState.fromMap(Map<String, dynamic> map) {
     return StoredIscsiVolumeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      chapEnabled: map['chapEnabled'] == null ? null : ((map['chapEnabled'] as bool).input()).input(),
-      diskId: map['diskId'] == null ? null : ((map['diskId'] as String).input()).input(),
-      gatewayArn: map['gatewayArn'] == null ? null : ((map['gatewayArn'] as String).input()).input(),
-      kmsEncrypted: map['kmsEncrypted'] == null ? null : ((map['kmsEncrypted'] as bool).input()).input(),
-      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
-      lunNumber: map['lunNumber'] == null ? null : ((map['lunNumber'] as int).input()).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
-      networkInterfacePort: map['networkInterfacePort'] == null ? null : ((map['networkInterfacePort'] as int).input()).input(),
-      preserveExistingData: map['preserveExistingData'] == null ? null : ((map['preserveExistingData'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      targetArn: map['targetArn'] == null ? null : ((map['targetArn'] as String).input()).input(),
-      targetName: map['targetName'] == null ? null : ((map['targetName'] as String).input()).input(),
-      volumeAttachmentStatus: map['volumeAttachmentStatus'] == null ? null : ((map['volumeAttachmentStatus'] as String).input()).input(),
-      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
-      volumeSizeInBytes: map['volumeSizeInBytes'] == null ? null : ((map['volumeSizeInBytes'] as int).input()).input(),
-      volumeStatus: map['volumeStatus'] == null ? null : ((map['volumeStatus'] as String).input()).input(),
-      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chapEnabled: (() {
+        final guardedValue = map['chapEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayArn: (() {
+        final guardedValue = map['gatewayArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncrypted: (() {
+        final guardedValue = map['kmsEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lunNumber: (() {
+        final guardedValue = map['lunNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfacePort: (() {
+        final guardedValue = map['networkInterfacePort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      preserveExistingData: (() {
+        final guardedValue = map['preserveExistingData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetArn: (() {
+        final guardedValue = map['targetArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetName: (() {
+        final guardedValue = map['targetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeAttachmentStatus: (() {
+        final guardedValue = map['volumeAttachmentStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeSizeInBytes: (() {
+        final guardedValue = map['volumeSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeStatus: (() {
+        final guardedValue = map['volumeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeType: (() {
+        final guardedValue = map['volumeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

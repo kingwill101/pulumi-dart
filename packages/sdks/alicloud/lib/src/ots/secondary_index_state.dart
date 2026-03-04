@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecondaryIndexState {
   /// A list of defined column for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>>? definedColumns;
+
   /// whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
   final pulumi.Input<bool>? includeBaseData;
+
   /// The index name of the OTS Table. If changed, a new index would be created.
   final pulumi.Input<String>? indexName;
+
   /// The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
   final pulumi.Input<String>? indexType;
+
   /// The name of the OTS instance in which table will located.
   final pulumi.Input<String>? instanceName;
+
   /// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>>? primaryKeys;
+
   /// The name of the OTS table. If changed, a new table would be created.
   final pulumi.Input<String>? tableName;
 
@@ -51,14 +57,41 @@ class SecondaryIndexState {
 
   factory SecondaryIndexState.fromMap(Map<String, dynamic> map) {
     return SecondaryIndexState(
-      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns']! as List).cast<String>()).input(),
-      includeBaseData: map['includeBaseData'] == null ? null : (map['includeBaseData']! as bool).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
-      indexType: map['indexType'] == null ? null : (map['indexType']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      primaryKeys: map['primaryKeys'] == null ? null : ((map['primaryKeys']! as List).cast<String>()).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      definedColumns: (() {
+        final guardedValue = map['definedColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeBaseData: (() {
+        final guardedValue = map['includeBaseData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      indexName: (() {
+        final guardedValue = map['indexName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexType: (() {
+        final guardedValue = map['indexType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKeys: (() {
+        final guardedValue = map['primaryKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

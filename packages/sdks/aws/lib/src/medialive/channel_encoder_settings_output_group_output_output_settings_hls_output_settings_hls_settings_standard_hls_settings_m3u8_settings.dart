@@ -15,6 +15,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   final pulumi.Input<String>? pmtPid;
   final pulumi.Input<int>? programNum;
   final pulumi.Input<String>? scte35Behavior;
+
   /// PID from which to read SCTE-35 messages.
   final pulumi.Input<String>? scte35Pid;
   final pulumi.Input<String>? timedMetadataBehavior;
@@ -82,26 +83,95 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings(
-      audioFramesPerPes: map['audioFramesPerPes'] == null ? null : ((map['audioFramesPerPes'] as int).input()).input(),
-      audioPids: map['audioPids'] == null ? null : ((map['audioPids'] as String).input()).input(),
-      ecmPid: map['ecmPid'] == null ? null : ((map['ecmPid'] as String).input()).input(),
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : ((map['nielsenId3Behavior'] as String).input()).input(),
-      patInterval: map['patInterval'] == null ? null : ((map['patInterval'] as int).input()).input(),
-      pcrControl: map['pcrControl'] == null ? null : ((map['pcrControl'] as String).input()).input(),
-      pcrPeriod: map['pcrPeriod'] == null ? null : ((map['pcrPeriod'] as int).input()).input(),
-      pcrPid: map['pcrPid'] == null ? null : ((map['pcrPid'] as String).input()).input(),
-      pmtInterval: map['pmtInterval'] == null ? null : ((map['pmtInterval'] as int).input()).input(),
-      pmtPid: map['pmtPid'] == null ? null : ((map['pmtPid'] as String).input()).input(),
-      programNum: map['programNum'] == null ? null : ((map['programNum'] as int).input()).input(),
-      scte35Behavior: map['scte35Behavior'] == null ? null : ((map['scte35Behavior'] as String).input()).input(),
-      scte35Pid: map['scte35Pid'] == null ? null : ((map['scte35Pid'] as String).input()).input(),
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : ((map['timedMetadataBehavior'] as String).input()).input(),
-      timedMetadataPid: map['timedMetadataPid'] == null ? null : ((map['timedMetadataPid'] as String).input()).input(),
-      transportStreamId: map['transportStreamId'] == null ? null : ((map['transportStreamId'] as int).input()).input(),
-      videoPid: map['videoPid'] == null ? null : ((map['videoPid'] as String).input()).input(),
+      audioFramesPerPes: (() {
+        final guardedValue = map['audioFramesPerPes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      audioPids: (() {
+        final guardedValue = map['audioPids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecmPid: (() {
+        final guardedValue = map['ecmPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nielsenId3Behavior: (() {
+        final guardedValue = map['nielsenId3Behavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patInterval: (() {
+        final guardedValue = map['patInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pcrControl: (() {
+        final guardedValue = map['pcrControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pcrPeriod: (() {
+        final guardedValue = map['pcrPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pcrPid: (() {
+        final guardedValue = map['pcrPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pmtInterval: (() {
+        final guardedValue = map['pmtInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pmtPid: (() {
+        final guardedValue = map['pmtPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      programNum: (() {
+        final guardedValue = map['programNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scte35Behavior: (() {
+        final guardedValue = map['scte35Behavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scte35Pid: (() {
+        final guardedValue = map['scte35Pid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataBehavior: (() {
+        final guardedValue = map['timedMetadataBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataPid: (() {
+        final guardedValue = map['timedMetadataPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transportStreamId: (() {
+        final guardedValue = map['transportStreamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      videoPid: (() {
+        final guardedValue = map['videoPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

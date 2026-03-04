@@ -6,7 +6,7 @@ import 'custom_image_state.dart';
 ///
 /// For information about Simple Application Server Custom Image and how to use it, see [What is Custom Image](https://www.alibabacloud.com/help/en/doc-detail/333535.htm).
 ///
-/// > **NOTE:** Available since v1.143.0.
+/// &gt; **NOTE:** Available since v1.143.0.
 ///
 /// ## Example Usage
 ///
@@ -306,14 +306,18 @@ import 'custom_image_state.dart';
 class CustomImage extends pulumi.CustomResource {
   /// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
   late final pulumi.Output<String> customImageName;
+
   /// The description of the Custom Image.
   late final pulumi.Output<String?> description;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   ///
   /// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
   late final pulumi.Output<String?> status;
+
   /// The ID of the system snapshot.
   late final pulumi.Output<String> systemSnapshotId;
 
@@ -326,16 +330,16 @@ class CustomImage extends pulumi.CustomResource {
     CustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/customImage:CustomImage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customImageName = registerOutput<String>('customImageName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String?>('status');
-    this.systemSnapshotId = registerOutput<String>('systemSnapshotId');
+         'alicloud:simpleapplicationserver/customImage:CustomImage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customImageName = registerOutput<String>('customImageName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String?>('status');
+    systemSnapshotId = registerOutput<String>('systemSnapshotId');
   }
 
   /// Gets an existing [CustomImage] resource's state with the given [name] and [id].
@@ -356,15 +360,15 @@ class CustomImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/customImage:CustomImage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customImageName = registerOutput<String>('customImageName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String?>('status');
-    this.systemSnapshotId = registerOutput<String>('systemSnapshotId');
+         'alicloud:simpleapplicationserver/customImage:CustomImage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customImageName = registerOutput<String>('customImageName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String?>('status');
+    systemSnapshotId = registerOutput<String>('systemSnapshotId');
   }
 }

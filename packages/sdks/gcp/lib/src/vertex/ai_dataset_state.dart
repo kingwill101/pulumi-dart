@@ -7,30 +7,40 @@ import 'ai_dataset_encryption_spec.dart';
 class AiDatasetState {
   /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
+
   /// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
   final pulumi.Input<String>? displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiDatasetEncryptionSpec>? encryptionSpec;
+
   /// A set of key/value label pairs to assign to this Workflow.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
   final pulumi.Input<String>? metadataSchemaUri;
+
   /// The resource name of the Dataset. This value is set by Google.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The region of the dataset. eg us-central1
   final pulumi.Input<String>? region;
+
   /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? updateTime;
 
@@ -65,7 +75,11 @@ class AiDatasetState {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiDatasetEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiDatasetEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'metadataSchemaUri': ?metadataSchemaUri,
       'name': ?name,
@@ -78,18 +92,71 @@ class AiDatasetState {
 
   factory AiDatasetState.fromMap(Map<String, dynamic> map) {
     return AiDatasetState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiDatasetEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : (map['metadataSchemaUri']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      encryptionSpec: (() {
+        final guardedValue = map['encryptionSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiDatasetEncryptionSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      metadataSchemaUri: (() {
+        final guardedValue = map['metadataSchemaUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

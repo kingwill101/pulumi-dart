@@ -9,20 +9,15 @@ class MembershipRbacRoleBindingRole {
 
   /// Creates a new [MembershipRbacRoleBindingRole].
   /// [predefinedRole] PredefinedRole is an ENUM representation of the default Kubernetes Roles
-  MembershipRbacRoleBindingRole({
-    required this.predefinedRole,
-  });
+  MembershipRbacRoleBindingRole({required this.predefinedRole});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'predefinedRole': predefinedRole,
-    };
+    return <String, dynamic>{'predefinedRole': predefinedRole};
   }
 
   factory MembershipRbacRoleBindingRole.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingRole(
-      predefinedRole: (map['predefinedRole'] as String).input(),
+      predefinedRole: pulumi.Input.fromValue(map['predefinedRole'] as String),
     );
   }
 }
-

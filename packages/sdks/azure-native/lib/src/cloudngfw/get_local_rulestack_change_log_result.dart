@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLocalRulestackChangeLog.
 class GetLocalRulestackChangeLogResult {
   /// list of changes
   final List<String> changes;
+
   /// lastCommitted timestamp
   final String? lastCommitted;
+
   /// lastModified timestamp
   final String? lastModified;
 
@@ -31,9 +32,16 @@ class GetLocalRulestackChangeLogResult {
   factory GetLocalRulestackChangeLogResult.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackChangeLogResult(
       changes: (map['changes'] as List).cast<String>(),
-      lastCommitted: map['lastCommitted'] == null ? null : map['lastCommitted']! as String,
-      lastModified: map['lastModified'] == null ? null : map['lastModified']! as String,
+      lastCommitted: (() {
+        final guardedValue = map['lastCommitted'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastModified: (() {
+        final guardedValue = map['lastModified'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hours': hours,
-    };
+    return <String, dynamic>{'hours': hours};
   }
 
-  factory ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(Map<String, dynamic> map) {
+  factory ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime(
-      hours: (map['hours'] as int).input(),
+      hours: pulumi.Input.fromValue(map['hours'] as int),
     );
   }
 }
-

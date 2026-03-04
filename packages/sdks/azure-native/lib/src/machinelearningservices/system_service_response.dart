@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemServiceResponse {
   /// Public IP address
   final pulumi.Input<String> publicIpAddress;
+
   /// The type of this system service.
   final pulumi.Input<String> systemServiceType;
+
   /// The version for this type.
   final pulumi.Input<String> version;
 
@@ -31,10 +33,11 @@ class SystemServiceResponse {
 
   factory SystemServiceResponse.fromMap(Map<String, dynamic> map) {
     return SystemServiceResponse(
-      publicIpAddress: (map['publicIpAddress'] as String).input(),
-      systemServiceType: (map['systemServiceType'] as String).input(),
-      version: (map['version'] as String).input(),
+      publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
+      systemServiceType: pulumi.Input.fromValue(
+        map['systemServiceType'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

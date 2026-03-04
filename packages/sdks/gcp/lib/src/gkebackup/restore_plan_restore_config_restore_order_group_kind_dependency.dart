@@ -8,11 +8,18 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
   /// The requiring group kind requires that the satisfying
   /// group kind be restored first.
   /// Structure is documented below.
-  final pulumi.Input<RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring> requiring;
+  final pulumi.Input<
+    RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring
+  >
+  requiring;
+
   /// The satisfying group kind must be restored first
   /// in order to satisfy the dependency.
   /// Structure is documented below.
-  final pulumi.Input<RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying> satisfying;
+  final pulumi.Input<
+    RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying
+  >
+  satisfying;
 
   /// Creates a new [RestorePlanRestoreConfigRestoreOrderGroupKindDependency].
   /// [requiring] The requiring group kind requires that the satisfying
@@ -24,16 +31,33 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requiring': pulumi.Input.mapInputValue<RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring, Map<String, dynamic>>(requiring, (value) => value.toMap()),
-      'satisfying': pulumi.Input.mapInputValue<RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying, Map<String, dynamic>>(satisfying, (value) => value.toMap()),
+      'requiring':
+          pulumi.Input.mapInputValue<
+            RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring,
+            Map<String, dynamic>
+          >(requiring, (value) => value.toMap()),
+      'satisfying':
+          pulumi.Input.mapInputValue<
+            RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying,
+            Map<String, dynamic>
+          >(satisfying, (value) => value.toMap()),
     };
   }
 
-  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap(Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestorePlanRestoreConfigRestoreOrderGroupKindDependency(
-      requiring: (RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap((map['requiring'] as Map).cast<String, dynamic>())).input(),
-      satisfying: (RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying.fromMap((map['satisfying'] as Map).cast<String, dynamic>())).input(),
+      requiring: pulumi.Input.fromValue(
+        RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap(
+          (map['requiring']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      satisfying: pulumi.Input.fromValue(
+        RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying.fromMap(
+          (map['satisfying']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

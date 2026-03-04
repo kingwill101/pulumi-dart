@@ -10,20 +10,25 @@ class ToolExecutionStepResponse {
 
   /// Creates a new [ToolExecutionStepResponse].
   /// [toolExecution] A Tool execution. - In response: present if set by create/update request - In create/update request: optional
-  ToolExecutionStepResponse({
-    required this.toolExecution,
-  });
+  ToolExecutionStepResponse({required this.toolExecution});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'toolExecution': pulumi.Input.mapInputValue<ToolExecutionResponse, Map<String, dynamic>>(toolExecution, (value) => value.toMap()),
+      'toolExecution':
+          pulumi.Input.mapInputValue<
+            ToolExecutionResponse,
+            Map<String, dynamic>
+          >(toolExecution, (value) => value.toMap()),
     };
   }
 
   factory ToolExecutionStepResponse.fromMap(Map<String, dynamic> map) {
     return ToolExecutionStepResponse(
-      toolExecution: (ToolExecutionResponse.fromMap((map['toolExecution'] as Map).cast<String, dynamic>())).input(),
+      toolExecution: pulumi.Input.fromValue(
+        ToolExecutionResponse.fromMap(
+          (map['toolExecution']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

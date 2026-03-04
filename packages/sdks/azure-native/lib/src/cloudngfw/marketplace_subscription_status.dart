@@ -7,16 +7,15 @@ enum MarketplaceSubscriptionStatus {
   valueNotStarted("NotStarted"),
   valueFulfillmentRequested("FulfillmentRequested");
 
-  const MarketplaceSubscriptionStatus(this.value);
-  final String value;
+  const MarketplaceSubscriptionStatus(this.wireValue);
+  final String wireValue;
 
   static MarketplaceSubscriptionStatus fromValue(String value) {
     for (final item in MarketplaceSubscriptionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MarketplaceSubscriptionStatus value: $value');
   }
 }
-

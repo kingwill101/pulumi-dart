@@ -12,6 +12,7 @@ class SloRequestBasedSliGoodTotalRatio {
   /// Must have ValueType = DOUBLE or ValueType = INT64 and
   /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String>? badServiceFilter;
+
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// quantifying good service provided. Exactly two of
   /// good, bad, or total service filter must be defined (where
@@ -19,6 +20,7 @@ class SloRequestBasedSliGoodTotalRatio {
   /// Must have ValueType = DOUBLE or ValueType = INT64 and
   /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String>? goodServiceFilter;
+
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// quantifying total demanded service. Exactly two of
   /// good, bad, or total service filter must be defined (where
@@ -47,10 +49,21 @@ class SloRequestBasedSliGoodTotalRatio {
 
   factory SloRequestBasedSliGoodTotalRatio.fromMap(Map<String, dynamic> map) {
     return SloRequestBasedSliGoodTotalRatio(
-      badServiceFilter: map['badServiceFilter'] == null ? null : (map['badServiceFilter']! as String).input(),
-      goodServiceFilter: map['goodServiceFilter'] == null ? null : (map['goodServiceFilter']! as String).input(),
-      totalServiceFilter: map['totalServiceFilter'] == null ? null : (map['totalServiceFilter']! as String).input(),
+      badServiceFilter: (() {
+        final guardedValue = map['badServiceFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      goodServiceFilter: (() {
+        final guardedValue = map['goodServiceFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalServiceFilter: (() {
+        final guardedValue = map['totalServiceFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

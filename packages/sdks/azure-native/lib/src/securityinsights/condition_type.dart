@@ -5,16 +5,15 @@ enum ConditionType {
   valuePropertyArrayChanged("PropertyArrayChanged"),
   valueBoolean("Boolean");
 
-  const ConditionType(this.value);
-  final String value;
+  const ConditionType(this.wireValue);
+  final String wireValue;
 
   static ConditionType fromValue(String value) {
     for (final item in ConditionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionType value: $value');
   }
 }
-

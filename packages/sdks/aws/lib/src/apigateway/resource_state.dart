@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceState {
   /// ID of the parent API resource
   final pulumi.Input<String>? parentId;
+
   /// Complete path for this API resource, including all parent paths.
   final pulumi.Input<String>? path;
+
   /// Last path segment of this API resource.
   final pulumi.Input<String>? pathPart;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated REST API
   final pulumi.Input<String>? restApi;
 
@@ -41,12 +45,31 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      parentId: map['parentId'] == null ? null : ((map['parentId'] as String).input()).input(),
-      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
-      pathPart: map['pathPart'] == null ? null : ((map['pathPart'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      parentId: (() {
+        final guardedValue = map['parentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathPart: (() {
+        final guardedValue = map['pathPart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApi: (() {
+        final guardedValue = map['restApi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

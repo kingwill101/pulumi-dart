@@ -8,7 +8,7 @@ import 'rate_plan_instance_state.dart';
 ///
 /// For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/product-overview/query-package-information).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -170,32 +170,41 @@ import 'rate_plan_instance_state.dart';
 /// ```
 class RatePlanInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool?> autoPay;
+
   /// Auto-renewal:
   late final pulumi.Output<bool?> autoRenew;
+
   /// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
   late final pulumi.Output<String?> coverage;
+
   /// The time when the plan was purchased.
   late final pulumi.Output<String> createTime;
+
   /// The instance status.
   late final pulumi.Output<String> instanceStatus;
+
   /// The billing method. Valid values:
   /// - `Subscription`: subscription.
   late final pulumi.Output<String> paymentType;
+
   /// Subscription period (in months).
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> period;
+
   /// Package name.
   ///
   /// Chinese website account:
   late final pulumi.Output<String?> planName;
+
   /// The plan status. , the plan is unavailable.
   late final pulumi.Output<String> status;
+
   /// The DNS setup option for the website. Valid values:
   /// - `NS`
   /// - `CNAME`
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> type;
 
   /// Creates a new [RatePlanInstance].
@@ -207,21 +216,21 @@ class RatePlanInstance extends pulumi.CustomResource {
     RatePlanInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/ratePlanInstance:RatePlanInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.coverage = registerOutput<String?>('coverage');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceStatus = registerOutput<String>('instanceStatus');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.planName = registerOutput<String?>('planName');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String?>('type');
+         'alicloud:esa/ratePlanInstance:RatePlanInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    coverage = registerOutput<String?>('coverage');
+    createTime = registerOutput<String>('createTime');
+    instanceStatus = registerOutput<String>('instanceStatus');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    planName = registerOutput<String?>('planName');
+    status = registerOutput<String>('status');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [RatePlanInstance] resource's state with the given [name] and [id].
@@ -242,20 +251,20 @@ class RatePlanInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/ratePlanInstance:RatePlanInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.coverage = registerOutput<String?>('coverage');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceStatus = registerOutput<String>('instanceStatus');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.planName = registerOutput<String?>('planName');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String?>('type');
+         'alicloud:esa/ratePlanInstance:RatePlanInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    coverage = registerOutput<String?>('coverage');
+    createTime = registerOutput<String>('createTime');
+    instanceStatus = registerOutput<String>('instanceStatus');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    planName = registerOutput<String?>('planName');
+    status = registerOutput<String>('status');
+    type = registerOutput<String?>('type');
   }
 }

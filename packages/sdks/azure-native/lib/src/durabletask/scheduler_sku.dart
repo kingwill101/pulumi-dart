@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerSku {
   /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
   final pulumi.Input<int>? capacity;
+
   /// The name of the SKU
   final pulumi.Input<String> name;
 
   /// Creates a new [SchedulerSku].
   /// [capacity] The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
   /// [name] The name of the SKU
-  SchedulerSku({
-    this.capacity,
-    required this.name,
-  });
+  SchedulerSku({this.capacity, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'capacity': ?capacity,
-      'name': name,
-    };
+    return <String, dynamic>{'capacity': ?capacity, 'name': name};
   }
 
   factory SchedulerSku.fromMap(Map<String, dynamic> map) {
     return SchedulerSku(
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      name: (map['name'] as String).input(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

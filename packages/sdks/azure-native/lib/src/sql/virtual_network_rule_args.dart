@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleArgs {
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name of the virtual network rule.
   final pulumi.Input<String>? virtualNetworkRuleName;
+
   /// The ARM resource id of the virtual network subnet.
   final pulumi.Input<String> virtualNetworkSubnetId;
 
@@ -44,12 +48,23 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
-      virtualNetworkSubnetId: (map['virtualNetworkSubnetId'] as String).input(),
+      ignoreMissingVnetServiceEndpoint: (() {
+        final guardedValue = map['ignoreMissingVnetServiceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      virtualNetworkRuleName: (() {
+        final guardedValue = map['virtualNetworkRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkSubnetId: pulumi.Input.fromValue(
+        map['virtualNetworkSubnetId'] as String,
+      ),
     );
   }
 }
-

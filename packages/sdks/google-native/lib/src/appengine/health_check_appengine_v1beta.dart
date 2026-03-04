@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthCheckAppengineV1beta {
   /// Interval between health checks.
   final pulumi.Input<String>? checkInterval;
+
   /// Whether to explicitly disable health checks for this instance.
   final pulumi.Input<bool>? disableHealthCheck;
+
   /// Number of consecutive successful health checks required before receiving traffic.
   final pulumi.Input<int>? healthyThreshold;
+
   /// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
   final pulumi.Input<String>? host;
+
   /// Number of consecutive failed health checks required before an instance is restarted.
   final pulumi.Input<int>? restartThreshold;
+
   /// Time before the health check is considered failed.
   final pulumi.Input<String>? timeout;
+
   /// Number of consecutive failed health checks required before removing traffic.
   final pulumi.Input<int>? unhealthyThreshold;
 
@@ -51,14 +57,41 @@ class HealthCheckAppengineV1beta {
 
   factory HealthCheckAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return HealthCheckAppengineV1beta(
-      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval']! as String).input(),
-      disableHealthCheck: map['disableHealthCheck'] == null ? null : (map['disableHealthCheck']! as bool).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      restartThreshold: map['restartThreshold'] == null ? null : (map['restartThreshold']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
+      checkInterval: (() {
+        final guardedValue = map['checkInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableHealthCheck: (() {
+        final guardedValue = map['disableHealthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthyThreshold: (() {
+        final guardedValue = map['healthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restartThreshold: (() {
+        final guardedValue = map['restartThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      unhealthyThreshold: (() {
+        final guardedValue = map['unhealthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

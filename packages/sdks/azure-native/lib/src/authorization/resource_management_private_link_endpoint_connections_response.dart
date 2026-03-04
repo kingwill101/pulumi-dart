@@ -18,10 +18,15 @@ class ResourceManagementPrivateLinkEndpointConnectionsResponse {
     };
   }
 
-  factory ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceManagementPrivateLinkEndpointConnectionsResponse(
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<String>()).input(),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

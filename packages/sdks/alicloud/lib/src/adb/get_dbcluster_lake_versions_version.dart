@@ -5,44 +5,64 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDBClusterLakeVersionsVersion {
   /// The name of the service.
   final pulumi.Input<String> commodityCode;
+
   /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
   final pulumi.Input<String> computeResource;
+
   /// The endpoint of the cluster.
   final pulumi.Input<String> connectionString;
+
   /// The CreateTime of the ADB cluster.
   final pulumi.Input<String> createTime;
+
   /// The ID of the DBCluster.
   final pulumi.Input<String> dbClusterId;
+
   /// The db cluster version.
   final pulumi.Input<String> dbClusterVersion;
+
   /// The engine of the database.
   final pulumi.Input<String> engine;
+
   /// The engine version of the database.
   final pulumi.Input<String> engineVersion;
+
   /// The time when the cluster expires.
   final pulumi.Input<String> expireTime;
+
   /// Indicates whether the cluster has expired.
   final pulumi.Input<String> expired;
+
   /// The ID of the DBCluster.
   final pulumi.Input<String> id;
+
   /// The lock mode of the cluster.
   final pulumi.Input<String> lockMode;
+
   /// The reason why the cluster is locked.
   final pulumi.Input<String> lockReason;
+
   /// The payment type of the resource.
   final pulumi.Input<String> paymentType;
+
   /// The port that is used to access the cluster.
   final pulumi.Input<String> port;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
   final pulumi.Input<String> status;
+
   /// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
   final pulumi.Input<String> storageResource;
+
   /// The vpc id.
   final pulumi.Input<String> vpcId;
+
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
+
   /// The zone ID  of the resource.
   final pulumi.Input<String> zoneId;
 
@@ -120,28 +140,31 @@ class GetDBClusterLakeVersionsVersion {
 
   factory GetDBClusterLakeVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetDBClusterLakeVersionsVersion(
-      commodityCode: (map['commodityCode'] as String).input(),
-      computeResource: (map['computeResource'] as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      dbClusterVersion: (map['dbClusterVersion'] as String).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      expired: (map['expired'] as String).input(),
-      id: (map['id'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      lockReason: (map['lockReason'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      port: (map['port'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      status: (map['status'] as String).input(),
-      storageResource: (map['storageResource'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
+      computeResource: pulumi.Input.fromValue(map['computeResource'] as String),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      dbClusterVersion: pulumi.Input.fromValue(
+        map['dbClusterVersion'] as String,
+      ),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      expired: pulumi.Input.fromValue(map['expired'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      lockReason: pulumi.Input.fromValue(map['lockReason'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageResource: pulumi.Input.fromValue(map['storageResource'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

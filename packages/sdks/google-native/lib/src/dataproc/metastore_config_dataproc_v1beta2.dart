@@ -9,9 +9,7 @@ class MetastoreConfigDataprocV1beta2 {
 
   /// Creates a new [MetastoreConfigDataprocV1beta2].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-  MetastoreConfigDataprocV1beta2({
-    required this.dataprocMetastoreService,
-  });
+  MetastoreConfigDataprocV1beta2({required this.dataprocMetastoreService});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class MetastoreConfigDataprocV1beta2 {
 
   factory MetastoreConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return MetastoreConfigDataprocV1beta2(
-      dataprocMetastoreService: (map['dataprocMetastoreService'] as String).input(),
+      dataprocMetastoreService: pulumi.Input.fromValue(
+        map['dataprocMetastoreService'] as String,
+      ),
     );
   }
 }
-

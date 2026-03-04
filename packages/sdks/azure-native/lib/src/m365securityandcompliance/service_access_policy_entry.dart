@@ -9,20 +9,15 @@ class ServiceAccessPolicyEntry {
 
   /// Creates a new [ServiceAccessPolicyEntry].
   /// [objectId] An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
-  ServiceAccessPolicyEntry({
-    required this.objectId,
-  });
+  ServiceAccessPolicyEntry({required this.objectId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectId': objectId,
-    };
+    return <String, dynamic>{'objectId': objectId};
   }
 
   factory ServiceAccessPolicyEntry.fromMap(Map<String, dynamic> map) {
     return ServiceAccessPolicyEntry(
-      objectId: (map['objectId'] as String).input(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
     );
   }
 }
-

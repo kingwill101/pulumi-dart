@@ -6,21 +6,27 @@ import 'get_snapshot_encryption_setting.dart';
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   final String creationOption;
+
   /// The size of the Snapshotted Disk in GB.
   final int diskSizeGb;
   final List<GetSnapshotEncryptionSetting> encryptionSettings;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String osType;
   final String resourceGroupName;
+
   /// The reference to an existing snapshot.
   final String sourceResourceId;
+
   /// The URI to a Managed or Unmanaged Disk.
   final String sourceUri;
+
   /// The ID of an storage account.
   final String storageAccountId;
   final String timeCreated;
+
   /// Whether Trusted Launch is enabled for the Snapshot.
   final bool trustedLaunchEnabled;
 
@@ -56,7 +62,11 @@ class GetSnapshotResult {
     return <String, dynamic>{
       'creationOption': creationOption,
       'diskSizeGb': diskSizeGb,
-      'encryptionSettings': pulumi.Input.encodeList<GetSnapshotEncryptionSetting, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
+      'encryptionSettings':
+          pulumi.Input.encodeList<
+            GetSnapshotEncryptionSetting,
+            Map<String, dynamic>
+          >(encryptionSettings, (value) => value.toMap()),
       'id': id,
       'name': name,
       'osType': osType,
@@ -73,7 +83,12 @@ class GetSnapshotResult {
     return GetSnapshotResult(
       creationOption: map['creationOption'] as String,
       diskSizeGb: map['diskSizeGb'] as int,
-      encryptionSettings: pulumi.Input.decodeList<GetSnapshotEncryptionSetting>(map['encryptionSettings'], (value) => GetSnapshotEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())),
+      encryptionSettings: pulumi.Input.decodeList<GetSnapshotEncryptionSetting>(
+        map['encryptionSettings']!,
+        (value) => GetSnapshotEncryptionSetting.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       osType: map['osType'] as String,
@@ -86,4 +101,3 @@ class GetSnapshotResult {
     );
   }
 }
-

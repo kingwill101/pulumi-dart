@@ -8,15 +8,39 @@ import 'tls_inspection_configuration_tls_inspection_configuration_server_certifi
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope {
   /// Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Ports below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>>? destinationPorts;
+  final pulumi.Input<
+    List<
+      TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort
+    >
+  >?
+  destinationPorts;
+
   /// Set of configuration blocks describing the destination IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any destination address. See Destination below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>> destinations;
+  final pulumi.Input<
+    List<
+      TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination
+    >
+  >
+  destinations;
+
   /// Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
   final pulumi.Input<List<int>> protocols;
+
   /// Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Ports below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>>? sourcePorts;
+  final pulumi.Input<
+    List<
+      TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort
+    >
+  >?
+  sourcePorts;
+
   /// Set of configuration blocks describing the source IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any source address. See Source below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>>? sources;
+  final pulumi.Input<
+    List<
+      TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource
+    >
+  >?
+  sources;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope].
   /// [destinationPorts] Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Ports below for details.
@@ -34,22 +58,127 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationPorts': ?pulumi.Input.mapOptionalInputValue<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>, List<Map<String, dynamic>>>(destinationPorts, (value) => pulumi.Input.encodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'destinations': pulumi.Input.mapInputValue<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinationPorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort
+            >,
+            List<Map<String, dynamic>>
+          >(
+            destinationPorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'destinations':
+          pulumi.Input.mapInputValue<
+            List<
+              TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination
+            >,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'protocols': protocols,
-      'sourcePorts': ?pulumi.Input.mapOptionalInputValue<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>, List<Map<String, dynamic>>>(sourcePorts, (value) => pulumi.Input.encodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourcePorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sourcePorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope.fromMap(Map<String, dynamic> map) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope(
-      destinationPorts: map['destinationPorts'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>(map['destinationPorts']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      destinations: (pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>(map['destinations']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocols: ((map['protocols'] as List).cast<int>()).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>(map['sourcePorts']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>(map['sources']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      destinationPorts: (() {
+        final guardedValue = map['destinationPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort
+          >(
+            guardedValue,
+            (value) =>
+                TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      destinations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination
+        >(
+          map['destinations']!,
+          (value) =>
+              TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<int>()),
+      sourcePorts: (() {
+        final guardedValue = map['sourcePorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort
+          >(
+            guardedValue,
+            (value) =>
+                TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource
+          >(
+            guardedValue,
+            (value) =>
+                TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

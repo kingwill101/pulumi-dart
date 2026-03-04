@@ -9,9 +9,7 @@ class ElasticVolumeSnapshotProperties {
 
   /// Creates a new [ElasticVolumeSnapshotProperties].
   /// [snapshotPolicyResourceId] Snapshot Policy ResourceId
-  ElasticVolumeSnapshotProperties({
-    this.snapshotPolicyResourceId,
-  });
+  ElasticVolumeSnapshotProperties({this.snapshotPolicyResourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class ElasticVolumeSnapshotProperties {
 
   factory ElasticVolumeSnapshotProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeSnapshotProperties(
-      snapshotPolicyResourceId: map['snapshotPolicyResourceId'] == null ? null : (map['snapshotPolicyResourceId']! as String).input(),
+      snapshotPolicyResourceId: (() {
+        final guardedValue = map['snapshotPolicyResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

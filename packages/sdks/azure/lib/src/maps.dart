@@ -1,5 +1,3 @@
-library module_maps;
-
 export 'maps/account.dart';
 export 'maps/account_args.dart';
 export 'maps/account_cors.dart';

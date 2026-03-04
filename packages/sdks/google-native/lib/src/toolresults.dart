@@ -1,5 +1,3 @@
-library module_toolresults;
-
 export 'toolresults/android_app_info.dart';
 export 'toolresults/android_app_info_response.dart';
 export 'toolresults/android_instrumentation_test.dart';

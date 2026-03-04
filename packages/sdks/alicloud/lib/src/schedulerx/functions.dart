@@ -4,7 +4,7 @@ import 'get_namespaces_result.dart';
 
 /// This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.173.0+.
+/// &gt; **NOTE:** Available in v1.173.0+.
 ///
 /// ## Example Usage
 ///

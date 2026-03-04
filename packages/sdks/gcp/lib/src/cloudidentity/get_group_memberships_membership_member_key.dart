@@ -7,6 +7,7 @@ class GetGroupMembershipsMembershipMemberKey {
   /// group or user. For external-identity-mapped entities, the id is a string conforming
   /// to the Identity Source's requirements.
   final pulumi.Input<String> id;
+
   /// The namespace in which the entity exists.
   /// If not populated, the EntityKey represents a Google-managed entity
   /// such as a Google user or a Google Group.
@@ -22,17 +23,15 @@ class GetGroupMembershipsMembershipMemberKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'namespace': namespace,
-    };
+    return <String, dynamic>{'id': id, 'namespace': namespace};
   }
 
-  factory GetGroupMembershipsMembershipMemberKey.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMembershipsMembershipMemberKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMembershipsMembershipMemberKey(
-      id: (map['id'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
-

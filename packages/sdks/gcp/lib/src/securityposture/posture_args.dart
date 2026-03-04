@@ -10,15 +10,20 @@ import 'posture_policy_set.dart';
 class PostureArgs {
   /// Description of the posture.
   final pulumi.Input<String>? description;
+
   /// Location of the resource, eg: global.
   final pulumi.Input<String> location;
+
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   final pulumi.Input<String> parent;
+
   /// List of policy sets for the posture.
   /// Structure is documented below.
   final pulumi.Input<List<PosturePolicySet>> policySets;
+
   /// Id of the posture. It is an immutable field.
   final pulumi.Input<String> postureId;
+
   /// State of the posture. Update to state field should not be triggered along with
   /// with other field updates.
   /// Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
@@ -45,7 +50,18 @@ class PostureArgs {
       'description': ?description,
       'location': location,
       'parent': parent,
-      'policySets': pulumi.Input.mapInputValue<List<PosturePolicySet>, List<Map<String, dynamic>>>(policySets, (value) => pulumi.Input.encodeList<PosturePolicySet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policySets':
+          pulumi.Input.mapInputValue<
+            List<PosturePolicySet>,
+            List<Map<String, dynamic>>
+          >(
+            policySets,
+            (value) =>
+                pulumi.Input.encodeList<PosturePolicySet, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'postureId': postureId,
       'state': state,
     };
@@ -53,13 +69,22 @@ class PostureArgs {
 
   factory PostureArgs.fromMap(Map<String, dynamic> map) {
     return PostureArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: (map['location'] as String).input(),
-      parent: (map['parent'] as String).input(),
-      policySets: (pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      postureId: (map['postureId'] as String).input(),
-      state: (map['state'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      policySets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PosturePolicySet>(
+          map['policySets']!,
+          (value) =>
+              PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      postureId: pulumi.Input.fromValue(map['postureId'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

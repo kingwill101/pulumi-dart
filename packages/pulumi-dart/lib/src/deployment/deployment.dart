@@ -430,9 +430,16 @@ class DeploymentImpl extends Deployment
       final serializedProps = <String, dynamic>{};
       final propertyDependencies =
           <String, RegisterResourceRequest_PropertyDependencies>{};
+      final dependencyUrns = <String>{};
+
+      if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+        dependencyUrns.addAll(
+          await _expandDependencies(opts.dependsOn!, fromResource: resource),
+        );
+      }
 
       for (final entry in args.entries) {
-        final serializer = Serializer();
+        final serializer = Serializer(collapseUnknownCollections: !remote);
         final serialized = await serializer.serializeAsync(
           'resource:${resource.getResourceName()}.${entry.key}',
           entry.value,
@@ -456,7 +463,10 @@ class DeploymentImpl extends Deployment
         }
       }
 
-      final serializedStruct = await StructConverter.toStruct(serializedProps);
+      final serializedStruct = await StructConverter.toStruct(
+        serializedProps,
+        collapseUnknownCollections: !remote,
+      );
       final request = RegisterResourceRequest()
         ..type = resource.getResourceType()
         ..name = resource.getResourceName()
@@ -481,11 +491,7 @@ class DeploymentImpl extends Deployment
       }
 
       if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
-        final deps = await _expandDependencies(
-          opts.dependsOn!,
-          fromResource: resource,
-        );
-        request.dependencies.addAll(deps.toList()..sort());
+        request.dependencies.addAll(dependencyUrns.toList()..sort());
       }
 
       final typeComponents = resource.getResourceType().split(':');
@@ -577,7 +583,7 @@ class DeploymentImpl extends Deployment
       }
       final replacementTrigger = opts.effectiveReplacementTrigger;
       if (replacementTrigger != null) {
-        final serializer = Serializer();
+        final serializer = Serializer(collapseUnknownCollections: !remote);
         final serialized = await serializer.serializeAsync(
           'resource:${resource.getResourceName()}.replacementTrigger',
           replacementTrigger,
@@ -640,6 +646,12 @@ class DeploymentImpl extends Deployment
     final serializedProps = <String, dynamic>{};
     final dependencyUrns = <String>{};
 
+    if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+      dependencyUrns.addAll(
+        await _expandDependencies(opts.dependsOn!, fromResource: resource),
+      );
+    }
+
     for (final entry in args.entries) {
       final serializer = Serializer();
       final serialized = await serializer.serializeAsync(
@@ -658,12 +670,6 @@ class DeploymentImpl extends Deployment
         fromResource: resource,
       );
       dependencyUrns.addAll(urns);
-    }
-
-    if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
-      dependencyUrns.addAll(
-        await _expandDependencies(opts.dependsOn!, fromResource: resource),
-      );
     }
 
     if (opts.id == null && opts.urn == null) {
@@ -1015,12 +1021,15 @@ class DeploymentImpl extends Deployment
     for (var entry in outputsMap.entries) {
       var outputData = await entry.value.getData();
       if (!outputData.isKnown) {
-        if (resource.getResourceType() == Stack.rootPulumiStackTypeName) {
+        if (resource.getResourceType() != Stack.rootPulumiStackTypeName) {
+          continue;
+        }
+        if (!isDryRun) {
           await _logger.warn(
             'Undefined value (${entry.key}) will not show as a stack output.',
           );
+          continue;
         }
-        continue;
       }
       var serializedValue = await _stack!.serializeOutputValue(outputData);
       serializedOutputs[entry.key] = serializedValue;

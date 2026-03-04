@@ -3,16 +3,15 @@ enum DataCollectionMode {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const DataCollectionMode(this.value);
-  final String value;
+  const DataCollectionMode(this.wireValue);
+  final String wireValue;
 
   static DataCollectionMode fromValue(String value) {
     for (final item in DataCollectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataCollectionMode value: $value');
   }
 }
-

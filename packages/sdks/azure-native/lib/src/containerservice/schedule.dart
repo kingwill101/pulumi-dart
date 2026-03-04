@@ -10,10 +10,13 @@ import 'weekly_schedule.dart';
 class Schedule {
   /// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
   final pulumi.Input<AbsoluteMonthlySchedule>? absoluteMonthly;
+
   /// For schedules like: 'recur every day' or 'recur every 3 days'.
   final pulumi.Input<DailySchedule>? daily;
+
   /// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
   final pulumi.Input<RelativeMonthlySchedule>? relativeMonthly;
+
   /// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
   final pulumi.Input<WeeklySchedule>? weekly;
 
@@ -31,20 +34,63 @@ class Schedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'absoluteMonthly': ?pulumi.Input.mapOptionalInputValue<AbsoluteMonthlySchedule, Map<String, dynamic>>(absoluteMonthly, (value) => value.toMap()),
-      'daily': ?pulumi.Input.mapOptionalInputValue<DailySchedule, Map<String, dynamic>>(daily, (value) => value.toMap()),
-      'relativeMonthly': ?pulumi.Input.mapOptionalInputValue<RelativeMonthlySchedule, Map<String, dynamic>>(relativeMonthly, (value) => value.toMap()),
-      'weekly': ?pulumi.Input.mapOptionalInputValue<WeeklySchedule, Map<String, dynamic>>(weekly, (value) => value.toMap()),
+      'absoluteMonthly':
+          ?pulumi.Input.mapOptionalInputValue<
+            AbsoluteMonthlySchedule,
+            Map<String, dynamic>
+          >(absoluteMonthly, (value) => value.toMap()),
+      'daily':
+          ?pulumi.Input.mapOptionalInputValue<
+            DailySchedule,
+            Map<String, dynamic>
+          >(daily, (value) => value.toMap()),
+      'relativeMonthly':
+          ?pulumi.Input.mapOptionalInputValue<
+            RelativeMonthlySchedule,
+            Map<String, dynamic>
+          >(relativeMonthly, (value) => value.toMap()),
+      'weekly':
+          ?pulumi.Input.mapOptionalInputValue<
+            WeeklySchedule,
+            Map<String, dynamic>
+          >(weekly, (value) => value.toMap()),
     };
   }
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      absoluteMonthly: map['absoluteMonthly'] == null ? null : (AbsoluteMonthlySchedule.fromMap((map['absoluteMonthly']! as Map).cast<String, dynamic>())).input(),
-      daily: map['daily'] == null ? null : (DailySchedule.fromMap((map['daily']! as Map).cast<String, dynamic>())).input(),
-      relativeMonthly: map['relativeMonthly'] == null ? null : (RelativeMonthlySchedule.fromMap((map['relativeMonthly']! as Map).cast<String, dynamic>())).input(),
-      weekly: map['weekly'] == null ? null : (WeeklySchedule.fromMap((map['weekly']! as Map).cast<String, dynamic>())).input(),
+      absoluteMonthly: (() {
+        final guardedValue = map['absoluteMonthly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AbsoluteMonthlySchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      daily: (() {
+        final guardedValue = map['daily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DailySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      relativeMonthly: (() {
+        final guardedValue = map['relativeMonthly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RelativeMonthlySchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      weekly: (() {
+        final guardedValue = map['weekly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WeeklySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SetStartVMOnConnect {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const SetStartVMOnConnect(this.value);
-  final String value;
+  const SetStartVMOnConnect(this.wireValue);
+  final String wireValue;
 
   static SetStartVMOnConnect fromValue(String value) {
     for (final item in SetStartVMOnConnect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SetStartVMOnConnect value: $value');
   }
 }
-

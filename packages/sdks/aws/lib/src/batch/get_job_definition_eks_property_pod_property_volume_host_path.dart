@@ -8,20 +8,17 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeHostPath {
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeHostPath].
   /// [path] The path of the file or directory on the host to mount into containers on the pod.
-  GetJobDefinitionEksPropertyPodPropertyVolumeHostPath({
-    required this.path,
-  });
+  GetJobDefinitionEksPropertyPodPropertyVolumeHostPath({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionEksPropertyPodPropertyVolumeHostPath(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

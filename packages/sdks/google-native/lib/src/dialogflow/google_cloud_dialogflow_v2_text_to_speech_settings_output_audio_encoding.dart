@@ -7,16 +7,22 @@ enum GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
   outputAudioEncodingOggOpus("OUTPUT_AUDIO_ENCODING_OGG_OPUS"),
   outputAudioEncodingMulaw("OUTPUT_AUDIO_ENCODING_MULAW");
 
-  const GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding value: $value',
+    );
   }
 }
-

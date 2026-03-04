@@ -9,32 +9,45 @@ class GetMasterSitesControllerResult {
   /// Gets or sets a value indicating whether multiple sites per site type are
   /// allowed.
   final bool? allowMultipleSites;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets a value for customer storage account ARM id.
   final String? customerStorageAccountArmId;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Gets the nested sites under Master Site.
   final List<String> nestedSites;
+
   /// Gets the private endpoint connections.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+
   /// provisioning state enum
   final String provisioningState;
+
   /// Gets or sets the state of public network access.
   final String? publicNetworkAccess;
+
   /// Gets or sets the sites that are a part of Master Site.
   /// The key
   /// should contain the Site ARM name.
   final List<String>? sites;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -79,7 +92,11 @@ class GetMasterSitesControllerResult {
       'location': location,
       'name': name,
       'nestedSites': nestedSites,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections':
+          pulumi.Input.encodeList<
+            PrivateEndpointConnectionResponse,
+            Map<String, dynamic>
+          >(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'sites': ?sites,
@@ -91,21 +108,48 @@ class GetMasterSitesControllerResult {
 
   factory GetMasterSitesControllerResult.fromMap(Map<String, dynamic> map) {
     return GetMasterSitesControllerResult(
-      allowMultipleSites: map['allowMultipleSites'] == null ? null : map['allowMultipleSites']! as bool,
+      allowMultipleSites: (() {
+        final guardedValue = map['allowMultipleSites'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : map['customerStorageAccountArmId']! as String,
+      customerStorageAccountArmId: (() {
+        final guardedValue = map['customerStorageAccountArmId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       nestedSites: (map['nestedSites'] as List).cast<String>(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections:
+          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+            map['privateEndpointConnections']!,
+            (value) => PrivateEndpointConnectionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
-      sites: map['sites'] == null ? null : (map['sites']! as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sites: (() {
+        final guardedValue = map['sites'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

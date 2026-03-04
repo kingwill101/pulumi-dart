@@ -146,16 +146,22 @@ import 'geo_backup_policy_args.dart';
 class GeoBackupPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of geo backup policy.  This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
+
   /// Backup policy location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The state of the geo backup policy.
   late final pulumi.Output<String> state;
+
   /// The storage type of the geo backup policy.
   late final pulumi.Output<String> storageType;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -168,17 +174,17 @@ class GeoBackupPolicy extends pulumi.CustomResource {
     GeoBackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:GeoBackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:GeoBackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.state = registerOutput<String>('state');
-    this.storageType = registerOutput<String>('storageType');
-    this.type = registerOutput<String>('type');
+    state = registerOutput<String>('state');
+    storageType = registerOutput<String>('storageType');
+    type = registerOutput<String>('type');
   }
 }

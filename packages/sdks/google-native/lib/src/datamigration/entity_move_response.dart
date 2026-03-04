@@ -9,20 +9,15 @@ class EntityMoveResponse {
 
   /// Creates a new [EntityMoveResponse].
   /// [newSchema] The new schema
-  EntityMoveResponse({
-    required this.newSchema,
-  });
+  EntityMoveResponse({required this.newSchema});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'newSchema': newSchema,
-    };
+    return <String, dynamic>{'newSchema': newSchema};
   }
 
   factory EntityMoveResponse.fromMap(Map<String, dynamic> map) {
     return EntityMoveResponse(
-      newSchema: (map['newSchema'] as String).input(),
+      newSchema: pulumi.Input.fromValue(map['newSchema'] as String),
     );
   }
 }
-

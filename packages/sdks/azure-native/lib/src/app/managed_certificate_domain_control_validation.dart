@@ -4,16 +4,17 @@ enum ManagedCertificateDomainControlValidation {
   valueHTTP("HTTP"),
   valueTXT("TXT");
 
-  const ManagedCertificateDomainControlValidation(this.value);
-  final String value;
+  const ManagedCertificateDomainControlValidation(this.wireValue);
+  final String wireValue;
 
   static ManagedCertificateDomainControlValidation fromValue(String value) {
     for (final item in ManagedCertificateDomainControlValidation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedCertificateDomainControlValidation value: $value');
+    throw ArgumentError(
+      'Unknown ManagedCertificateDomainControlValidation value: $value',
+    );
   }
 }
-

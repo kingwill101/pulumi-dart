@@ -6,7 +6,7 @@ import 'additional_certificate_state.dart';
 ///
 /// For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateadditionalcertificateswithlistener).
 ///
-/// > **NOTE:** Available since v1.150.0.
+/// &gt; **NOTE:** Available since v1.150.0.
 ///
 /// ## Example Usage
 ///
@@ -894,10 +894,13 @@ import 'additional_certificate_state.dart';
 class AdditionalCertificate extends pulumi.CustomResource {
   /// The ID of the GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
   late final pulumi.Output<String> certificateId;
+
   /// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
   late final pulumi.Output<String> domain;
+
   /// The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
   late final pulumi.Output<String> listenerId;
 
@@ -910,15 +913,15 @@ class AdditionalCertificate extends pulumi.CustomResource {
     AdditionalCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/additionalCertificate:AdditionalCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.domain = registerOutput<String>('domain');
-    this.listenerId = registerOutput<String>('listenerId');
+         'alicloud:ga/additionalCertificate:AdditionalCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    certificateId = registerOutput<String>('certificateId');
+    domain = registerOutput<String>('domain');
+    listenerId = registerOutput<String>('listenerId');
   }
 
   /// Gets an existing [AdditionalCertificate] resource's state with the given [name] and [id].
@@ -939,14 +942,14 @@ class AdditionalCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/additionalCertificate:AdditionalCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.domain = registerOutput<String>('domain');
-    this.listenerId = registerOutput<String>('listenerId');
+         'alicloud:ga/additionalCertificate:AdditionalCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    certificateId = registerOutput<String>('certificateId');
+    domain = registerOutput<String>('domain');
+    listenerId = registerOutput<String>('listenerId');
   }
 }

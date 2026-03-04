@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fast_http_app_args.dart';
 import 'fast_http_app_monitor.dart';
-import 'fast_http_app_pool_member.dart';
 import 'fast_http_app_state.dart';
 import 'fast_http_app_virtual_server.dart';
 import 'fast_http_app_waf_security_policy.dart';
@@ -415,45 +414,64 @@ import 'fast_http_app_waf_security_policy.dart';
 class FastHttpApp extends pulumi.CustomResource {
   /// Name of the FAST HTTPS application.
   late final pulumi.Output<String> application;
+
   /// List of LTM Policies to be applied FAST HTTP Application.
   late final pulumi.Output<List<String>?> endpointLtmPolicies;
+
   /// Name of an existing BIG-IP HTTPS pool monitor. Monitors are used to determine the health of the application on each server.
   late final pulumi.Output<String?> existingMonitor;
+
   /// Select an existing BIG-IP Pool
   late final pulumi.Output<String?> existingPool;
+
   /// Name of an existing BIG-IP SNAT pool.
   late final pulumi.Output<String?> existingSnatPool;
+
   /// Name of an existing WAF Security policy.
   late final pulumi.Output<String?> existingWafSecurityPolicy;
+
   /// Type of fallback persistence record to be created for each new client connection.
   late final pulumi.Output<String?> fallbackPersistence;
+
   /// Json payload for FAST HTTP application.
   late final pulumi.Output<String> fastHttpJson;
+
   /// A `load balancing method` is an algorithm that the BIG-IP system uses to select a pool member for processing a request. F5 recommends the Least Connections load balancing method
   late final pulumi.Output<String?> loadBalancingMode;
+
   /// `monitor` block takes input for FAST-Generated Pool Monitor.
   /// See Pool Monitor below for more details.
   late final pulumi.Output<FastHttpAppMonitor?> monitor;
+
   /// Name of an existing BIG-IP persistence profile to be used.
   late final pulumi.Output<String?> persistenceProfile;
+
   /// Type of persistence profile to be created. Using this option will enable use of FAST generated persistence profiles.
   late final pulumi.Output<String?> persistenceType;
+
   /// `pool_members` block takes input for FAST-Generated Pool.
   /// See Pool Members below for more details.
-  late final pulumi.Output<List<FastHttpAppPoolMember>> poolMembers;
+  late final pulumi.Output<List<Map<String, dynamic>>> poolMembers;
+
   /// List of security log profiles to be used for FAST application
   late final pulumi.Output<List<String>?> securityLogProfiles;
+
   /// List of different cloud service discovery config provided as string, provided `service_discovery` block to Automatically Discover Pool Members with Service Discovery on different clouds.
   late final pulumi.Output<List<String>?> serviceDiscoveries;
+
   /// Slow ramp temporarily throttles the number of connections to a new pool member. The recommended value is 300 seconds
   late final pulumi.Output<int?> slowRampTime;
+
   /// List of address to be used for FAST-Generated SNAT Pool.
   late final pulumi.Output<List<String>?> snatPoolAddresses;
+
   /// Name of the FAST HTTPS application tenant.
   late final pulumi.Output<String> tenant;
+
   /// `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// See virtual server below for more details.
   late final pulumi.Output<FastHttpAppVirtualServer?> virtualServer;
+
   /// `waf_security_policy` block takes input for FAST-Generated WAF Security Policy.
   /// See WAF Security Policy below for more details.
   late final pulumi.Output<FastHttpAppWafSecurityPolicy?> wafSecurityPolicy;
@@ -467,31 +485,35 @@ class FastHttpApp extends pulumi.CustomResource {
     FastHttpAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastHttpApp:FastHttpApp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.application = registerOutput<String>('application');
-    this.endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
-    this.existingMonitor = registerOutput<String?>('existingMonitor');
-    this.existingPool = registerOutput<String?>('existingPool');
-    this.existingSnatPool = registerOutput<String?>('existingSnatPool');
-    this.existingWafSecurityPolicy = registerOutput<String?>('existingWafSecurityPolicy');
-    this.fallbackPersistence = registerOutput<String?>('fallbackPersistence');
-    this.fastHttpJson = registerOutput<String>('fastHttpJson');
-    this.loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    this.monitor = registerOutput<FastHttpAppMonitor?>('monitor');
-    this.persistenceProfile = registerOutput<String?>('persistenceProfile');
-    this.persistenceType = registerOutput<String?>('persistenceType');
-    this.poolMembers = registerOutput<List<FastHttpAppPoolMember>>('poolMembers');
-    this.securityLogProfiles = registerOutput<List<String>?>('securityLogProfiles');
-    this.serviceDiscoveries = registerOutput<List<String>?>('serviceDiscoveries');
-    this.slowRampTime = registerOutput<int?>('slowRampTime');
-    this.snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
-    this.tenant = registerOutput<String>('tenant');
-    this.virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer');
-    this.wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>('wafSecurityPolicy');
+         'f5bigip:index/fastHttpApp:FastHttpApp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    application = registerOutput<String>('application');
+    endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
+    existingMonitor = registerOutput<String?>('existingMonitor');
+    existingPool = registerOutput<String?>('existingPool');
+    existingSnatPool = registerOutput<String?>('existingSnatPool');
+    existingWafSecurityPolicy = registerOutput<String?>(
+      'existingWafSecurityPolicy',
+    );
+    fallbackPersistence = registerOutput<String?>('fallbackPersistence');
+    fastHttpJson = registerOutput<String>('fastHttpJson');
+    loadBalancingMode = registerOutput<String?>('loadBalancingMode');
+    monitor = registerOutput<FastHttpAppMonitor?>('monitor');
+    persistenceProfile = registerOutput<String?>('persistenceProfile');
+    persistenceType = registerOutput<String?>('persistenceType');
+    poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
+    securityLogProfiles = registerOutput<List<String>?>('securityLogProfiles');
+    serviceDiscoveries = registerOutput<List<String>?>('serviceDiscoveries');
+    slowRampTime = registerOutput<int?>('slowRampTime');
+    snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
+    tenant = registerOutput<String>('tenant');
+    virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer');
+    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>(
+      'wafSecurityPolicy',
+    );
   }
 
   /// Gets an existing [FastHttpApp] resource's state with the given [name] and [id].
@@ -512,30 +534,34 @@ class FastHttpApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastHttpApp:FastHttpApp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.application = registerOutput<String>('application');
-    this.endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
-    this.existingMonitor = registerOutput<String?>('existingMonitor');
-    this.existingPool = registerOutput<String?>('existingPool');
-    this.existingSnatPool = registerOutput<String?>('existingSnatPool');
-    this.existingWafSecurityPolicy = registerOutput<String?>('existingWafSecurityPolicy');
-    this.fallbackPersistence = registerOutput<String?>('fallbackPersistence');
-    this.fastHttpJson = registerOutput<String>('fastHttpJson');
-    this.loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    this.monitor = registerOutput<FastHttpAppMonitor?>('monitor');
-    this.persistenceProfile = registerOutput<String?>('persistenceProfile');
-    this.persistenceType = registerOutput<String?>('persistenceType');
-    this.poolMembers = registerOutput<List<FastHttpAppPoolMember>>('poolMembers');
-    this.securityLogProfiles = registerOutput<List<String>?>('securityLogProfiles');
-    this.serviceDiscoveries = registerOutput<List<String>?>('serviceDiscoveries');
-    this.slowRampTime = registerOutput<int?>('slowRampTime');
-    this.snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
-    this.tenant = registerOutput<String>('tenant');
-    this.virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer');
-    this.wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>('wafSecurityPolicy');
+         'f5bigip:index/fastHttpApp:FastHttpApp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    application = registerOutput<String>('application');
+    endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
+    existingMonitor = registerOutput<String?>('existingMonitor');
+    existingPool = registerOutput<String?>('existingPool');
+    existingSnatPool = registerOutput<String?>('existingSnatPool');
+    existingWafSecurityPolicy = registerOutput<String?>(
+      'existingWafSecurityPolicy',
+    );
+    fallbackPersistence = registerOutput<String?>('fallbackPersistence');
+    fastHttpJson = registerOutput<String>('fastHttpJson');
+    loadBalancingMode = registerOutput<String?>('loadBalancingMode');
+    monitor = registerOutput<FastHttpAppMonitor?>('monitor');
+    persistenceProfile = registerOutput<String?>('persistenceProfile');
+    persistenceType = registerOutput<String?>('persistenceType');
+    poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
+    securityLogProfiles = registerOutput<List<String>?>('securityLogProfiles');
+    serviceDiscoveries = registerOutput<List<String>?>('serviceDiscoveries');
+    slowRampTime = registerOutput<int?>('slowRampTime');
+    snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
+    tenant = registerOutput<String>('tenant');
+    virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer');
+    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>(
+      'wafSecurityPolicy',
+    );
   }
 }

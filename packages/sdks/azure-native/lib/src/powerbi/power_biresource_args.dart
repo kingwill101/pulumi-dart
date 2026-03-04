@@ -10,15 +10,21 @@ import 'private_endpoint_connection_powerbi.dart';
 class PowerBIResourceArgs {
   /// The name of the Azure resource.
   final pulumi.Input<String>? azureResourceName;
+
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
+
   /// Specifies the private endpoint connections of the resource.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionPowerbi>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionPowerbi>>?
+  privateEndpointConnections;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the tenant id of the resource.
   final pulumi.Input<String>? tenantId;
 
@@ -51,13 +57,38 @@ class PowerBIResourceArgs {
 
   factory PowerBIResourceArgs.fromMap(Map<String, dynamic> map) {
     return PowerBIResourceArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<PrivateEndpointConnectionPowerbi>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      azureResourceName: (() {
+        final guardedValue = map['azureResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<PrivateEndpointConnectionPowerbi>(),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

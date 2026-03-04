@@ -29,13 +29,30 @@ class GetTrafficPolicyDocumentRuleSecondary {
     };
   }
 
-  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(Map<String, dynamic> map) {
+  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrafficPolicyDocumentRuleSecondary(
-      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
-      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
-      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
+      endpointReference: (() {
+        final guardedValue = map['endpointReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluateTargetHealth: (() {
+        final guardedValue = map['evaluateTargetHealth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleReference: (() {
+        final guardedValue = map['ruleReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

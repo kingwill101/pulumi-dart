@@ -7,29 +7,49 @@ import 'http_rule.dart';
 class Http {
   /// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
   final pulumi.Input<bool>? fullyDecodeReservedExpansion;
+
   /// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
   final pulumi.Input<List<HttpRule>>? rules;
 
   /// Creates a new [Http].
   /// [fullyDecodeReservedExpansion] When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
   /// [rules] A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Http({
-    this.fullyDecodeReservedExpansion,
-    this.rules,
-  });
+  Http({this.fullyDecodeReservedExpansion, this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fullyDecodeReservedExpansion': ?fullyDecodeReservedExpansion,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<HttpRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<HttpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HttpRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) => pulumi.Input.encodeList<HttpRule, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory Http.fromMap(Map<String, dynamic> map) {
     return Http(
-      fullyDecodeReservedExpansion: map['fullyDecodeReservedExpansion'] == null ? null : (map['fullyDecodeReservedExpansion']! as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRule>(map['rules']!, (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullyDecodeReservedExpansion: (() {
+        final guardedValue = map['fullyDecodeReservedExpansion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HttpRule>(
+            guardedValue,
+            (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_workbench;
-
 export 'workbench/functions.dart';
 export 'workbench/get_instance_iam_policy_args.dart';
 export 'workbench/get_instance_iam_policy_result.dart';

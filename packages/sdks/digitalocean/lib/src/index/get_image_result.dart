@@ -1,38 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getImage.
 class GetImageResult {
   /// When the image was created
   final String created;
   final String description;
+
   /// The name of the distribution of the OS of the image.
   final String distribution;
+
   /// Any applicable error message pertaining to the image
   final String errorMessage;
+
   /// The ID of the image.
   final int id;
+
   /// The id of the image (legacy parameter).
   final String image;
+
   /// The minimum 'disk' required for the image.
   final int minDiskSize;
+
   /// The name of the image.
   final String name;
+
   /// Is image a public image or not. Public images represent
   /// Linux distributions or One-Click Applications, while non-public images represent
   /// snapshots and backups and are only available within your account.
   final bool private;
+
   /// A set of the regions that the image is available in.
   final List<String> regions;
+
   /// The size of the image in GB.
   final double sizeGigabytes;
+
   /// Unique text identifier of the image.
   final String slug;
   final String? source;
+
   /// Current status of the image
   final String status;
+
   /// A set of tags applied to the image
   final List<String> tags;
+
   /// Type of the image.
   final String type;
 
@@ -107,11 +119,14 @@ class GetImageResult {
       regions: (map['regions'] as List).cast<String>(),
       sizeGigabytes: map['sizeGigabytes'] as double,
       slug: map['slug'] as String,
-      source: map['source'] == null ? null : map['source']! as String,
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       status: map['status'] as String,
       tags: (map['tags'] as List).cast<String>(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -12,20 +12,19 @@ class OperationByProviderRegistrationArgs {
 
   /// Creates a new [OperationByProviderRegistrationArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  OperationByProviderRegistrationArgs({
-    required this.providerNamespace,
-  });
+  OperationByProviderRegistrationArgs({required this.providerNamespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'providerNamespace': providerNamespace,
-    };
+    return <String, dynamic>{'providerNamespace': providerNamespace};
   }
 
-  factory OperationByProviderRegistrationArgs.fromMap(Map<String, dynamic> map) {
+  factory OperationByProviderRegistrationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OperationByProviderRegistrationArgs(
-      providerNamespace: (map['providerNamespace'] as String).input(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
     );
   }
 }
-

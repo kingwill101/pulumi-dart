@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyState {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+
   /// The policy document. This is a JSON formatted string.
   final pulumi.Input<String>? policy;
+
   /// IAM user to which to attach this policy.
   final pulumi.Input<String>? user;
 
@@ -18,12 +21,7 @@ class UserPolicyState {
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [policy] The policy document. This is a JSON formatted string.
   /// [user] IAM user to which to attach this policy.
-  UserPolicyState({
-    this.name,
-    this.namePrefix,
-    this.policy,
-    this.user,
-  });
+  UserPolicyState({this.name, this.namePrefix, this.policy, this.user});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class UserPolicyState {
 
   factory UserPolicyState.fromMap(Map<String, dynamic> map) {
     return UserPolicyState(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

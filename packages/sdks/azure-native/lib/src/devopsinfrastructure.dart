@@ -1,5 +1,3 @@
-library module_devopsinfrastructure;
-
 export 'devopsinfrastructure/automatic_resource_predictions_profile.dart';
 export 'devopsinfrastructure/automatic_resource_predictions_profile_response.dart';
 export 'devopsinfrastructure/azure_dev_ops_organization_profile.dart';

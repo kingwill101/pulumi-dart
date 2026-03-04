@@ -6,20 +6,20 @@ import 'rule_state.dart';
 ///
 /// For information about Load Balancer Forwarding Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-dir-forwarding-rules).
 ///
-/// > **NOTE:** Available since v1.6.0.
+/// &gt; **NOTE:** Available since v1.6.0.
 ///
 /// A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
 /// You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
 ///
-/// > **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
+/// &gt; **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
 ///
-/// > **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
+/// &gt; **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
 ///
-/// > **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
+/// &gt; **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
 ///
-/// > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
+/// &gt; **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
 ///
-/// > **NOTE:** Only rule's virtual server group can be modified.
+/// &gt; **NOTE:** Only rule's virtual server group can be modified.
 ///
 /// ## Example Usage
 ///
@@ -593,49 +593,70 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
   late final pulumi.Output<String?> cookie;
+
   /// Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
   late final pulumi.Output<int?> cookieTimeout;
+
   /// Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
   late final pulumi.Output<bool?> deleteProtectionValidation;
+
   /// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
   /// and wildcard characters. The following two domain name formats are supported:
   /// - Standard domain name: www.test.com
   /// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
   late final pulumi.Output<String?> domain;
+
   /// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
   late final pulumi.Output<int> frontendPort;
+
   /// Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
   late final pulumi.Output<String?> healthCheck;
+
   /// Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
   late final pulumi.Output<int> healthCheckConnectPort;
+
   /// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
   late final pulumi.Output<String?> healthCheckDomain;
+
   /// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
   late final pulumi.Output<String?> healthCheckHttpCode;
+
   /// Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
   late final pulumi.Output<int?> healthCheckInterval;
-  /// Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+
+  /// Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
   late final pulumi.Output<int?> healthCheckTimeout;
+
   /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
   late final pulumi.Output<String?> healthCheckUri;
+
   /// Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
   late final pulumi.Output<int?> healthyThreshold;
+
   /// Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
   late final pulumi.Output<String?> listenerSync;
+
   /// The Load Balancer ID which is used to launch the new forwarding rule.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
   late final pulumi.Output<String> name;
+
   /// Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
   late final pulumi.Output<String?> scheduler;
+
   /// ID of a virtual server group that will be forwarded.
   late final pulumi.Output<String> serverGroupId;
+
   /// Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
   late final pulumi.Output<String?> stickySession;
+
   /// Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
   late final pulumi.Output<String?> stickySessionType;
+
   /// Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
   late final pulumi.Output<int?> unhealthyThreshold;
+
   /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
   late final pulumi.Output<String?> url;
 
@@ -643,46 +664,41 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_slb_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:slb/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookie = registerOutput<String?>('cookie');
-    this.cookieTimeout = registerOutput<int?>('cookieTimeout');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.domain = registerOutput<String?>('domain');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.healthCheck = registerOutput<String?>('healthCheck');
-    this.healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
-    this.healthCheckDomain = registerOutput<String?>('healthCheckDomain');
-    this.healthCheckHttpCode = registerOutput<String?>('healthCheckHttpCode');
-    this.healthCheckInterval = registerOutput<int?>('healthCheckInterval');
-    this.healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
-    this.healthCheckUri = registerOutput<String?>('healthCheckUri');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.listenerSync = registerOutput<String?>('listenerSync');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:slb/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cookie = registerOutput<String?>('cookie');
+    cookieTimeout = registerOutput<int?>('cookieTimeout');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    domain = registerOutput<String?>('domain');
+    frontendPort = registerOutput<int>('frontendPort');
+    healthCheck = registerOutput<String?>('healthCheck');
+    healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
+    healthCheckDomain = registerOutput<String?>('healthCheckDomain');
+    healthCheckHttpCode = registerOutput<String?>('healthCheckHttpCode');
+    healthCheckInterval = registerOutput<int?>('healthCheckInterval');
+    healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
+    healthCheckUri = registerOutput<String?>('healthCheckUri');
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    listenerSync = registerOutput<String?>('listenerSync');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.scheduler = registerOutput<String?>('scheduler');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.stickySession = registerOutput<String?>('stickySession');
-    this.stickySessionType = registerOutput<String?>('stickySessionType');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    this.url = registerOutput<String?>('url');
+    scheduler = registerOutput<String?>('scheduler');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    stickySession = registerOutput<String?>('stickySession');
+    stickySessionType = registerOutput<String?>('stickySessionType');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    url = registerOutput<String?>('url');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(
-    String name,
-    pulumi.Input<String> id, {
-    RuleState? state,
-  }) {
+  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -695,32 +711,34 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookie = registerOutput<String?>('cookie');
-    this.cookieTimeout = registerOutput<int?>('cookieTimeout');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.domain = registerOutput<String?>('domain');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.healthCheck = registerOutput<String?>('healthCheck');
-    this.healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
-    this.healthCheckDomain = registerOutput<String?>('healthCheckDomain');
-    this.healthCheckHttpCode = registerOutput<String?>('healthCheckHttpCode');
-    this.healthCheckInterval = registerOutput<int?>('healthCheckInterval');
-    this.healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
-    this.healthCheckUri = registerOutput<String?>('healthCheckUri');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.listenerSync = registerOutput<String?>('listenerSync');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+         'alicloud:slb/rule:Rule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookie = registerOutput<String?>('cookie');
+    cookieTimeout = registerOutput<int?>('cookieTimeout');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    domain = registerOutput<String?>('domain');
+    frontendPort = registerOutput<int>('frontendPort');
+    healthCheck = registerOutput<String?>('healthCheck');
+    healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
+    healthCheckDomain = registerOutput<String?>('healthCheckDomain');
+    healthCheckHttpCode = registerOutput<String?>('healthCheckHttpCode');
+    healthCheckInterval = registerOutput<int?>('healthCheckInterval');
+    healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
+    healthCheckUri = registerOutput<String?>('healthCheckUri');
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    listenerSync = registerOutput<String?>('listenerSync');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.scheduler = registerOutput<String?>('scheduler');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.stickySession = registerOutput<String?>('stickySession');
-    this.stickySessionType = registerOutput<String?>('stickySessionType');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    this.url = registerOutput<String?>('url');
+    scheduler = registerOutput<String?>('scheduler');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    stickySession = registerOutput<String?>('stickySession');
+    stickySessionType = registerOutput<String?>('stickySessionType');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    url = registerOutput<String?>('url');
   }
 }

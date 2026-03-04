@@ -4,16 +4,17 @@ enum CallCredentialsCallCredentialType {
   gceVm("GCE_VM"),
   invalid("INVALID");
 
-  const CallCredentialsCallCredentialType(this.value);
-  final String value;
+  const CallCredentialsCallCredentialType(this.wireValue);
+  final String wireValue;
 
   static CallCredentialsCallCredentialType fromValue(String value) {
     for (final item in CallCredentialsCallCredentialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CallCredentialsCallCredentialType value: $value');
+    throw ArgumentError(
+      'Unknown CallCredentialsCallCredentialType value: $value',
+    );
   }
 }
-

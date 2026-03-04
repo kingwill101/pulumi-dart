@@ -8,16 +8,15 @@ enum InlinePayloadInfoFormat {
   importJobFormatExportedAzureCsv("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"),
   importJobFormatManualCsv("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
-  const InlinePayloadInfoFormat(this.value);
-  final String value;
+  const InlinePayloadInfoFormat(this.wireValue);
+  final String wireValue;
 
   static InlinePayloadInfoFormat fromValue(String value) {
     for (final item in InlinePayloadInfoFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InlinePayloadInfoFormat value: $value');
   }
 }
-

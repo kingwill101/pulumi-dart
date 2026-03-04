@@ -8,8 +8,10 @@ import 'timeline_error_response.dart';
 class TimelineResultsMetadataResponse {
   /// timeline aggregation per kind
   final pulumi.Input<List<TimelineAggregationResponse>> aggregations;
+
   /// information about the failure queries
   final pulumi.Input<List<TimelineErrorResponse>>? errors;
+
   /// the total items found for the timeline request
   final pulumi.Input<int> totalCount;
 
@@ -25,18 +27,57 @@ class TimelineResultsMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregations': pulumi.Input.mapInputValue<List<TimelineAggregationResponse>, List<Map<String, dynamic>>>(aggregations, (value) => pulumi.Input.encodeList<TimelineAggregationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'errors': ?pulumi.Input.mapOptionalInputValue<List<TimelineErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<TimelineErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aggregations':
+          pulumi.Input.mapInputValue<
+            List<TimelineAggregationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            aggregations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TimelineAggregationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'errors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TimelineErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TimelineErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'totalCount': totalCount,
     };
   }
 
   factory TimelineResultsMetadataResponse.fromMap(Map<String, dynamic> map) {
     return TimelineResultsMetadataResponse(
-      aggregations: (pulumi.Input.decodeList<TimelineAggregationResponse>(map['aggregations'], (value) => TimelineAggregationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<TimelineErrorResponse>(map['errors']!, (value) => TimelineErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      totalCount: (map['totalCount'] as int).input(),
+      aggregations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TimelineAggregationResponse>(
+          map['aggregations']!,
+          (value) => TimelineAggregationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      errors: (() {
+        final guardedValue = map['errors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TimelineErrorResponse>(
+            guardedValue,
+            (value) => TimelineErrorResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      totalCount: pulumi.Input.fromValue(map['totalCount'] as int),
     );
   }
 }
-

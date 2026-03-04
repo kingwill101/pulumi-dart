@@ -7,29 +7,41 @@ import 'get_stack_script_user_defined_field.dart';
 class GetStackScriptResult {
   /// The date this StackScript was created.
   final String created;
+
   /// Count of currently active, deployed Linodes created from this StackScript.
   final int deploymentsActive;
+
   /// The total number of times this StackScript has been deployed.
   final int deploymentsTotal;
+
   /// A description for the StackScript.
   final String description;
   final String id;
+
   /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
   final List<String> images;
+
   /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
   final bool isPublic;
+
   /// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
   final String label;
+
   /// This field allows you to add notes for the set of revisions made to this StackScript.
   final String revNote;
+
   /// The script to execute when provisioning a new Linode with this StackScript.
   final String script;
+
   /// The date this StackScript was updated.
   final String updated;
+
   /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
   final List<GetStackScriptUserDefinedField> userDefinedFields;
+
   /// The Gravatar ID for the User who created the StackScript.
   final String userGravatarId;
+
   /// The User who created the StackScript.
   final String username;
 
@@ -78,7 +90,11 @@ class GetStackScriptResult {
       'revNote': revNote,
       'script': script,
       'updated': updated,
-      'userDefinedFields': pulumi.Input.encodeList<GetStackScriptUserDefinedField, Map<String, dynamic>>(userDefinedFields, (value) => value.toMap()),
+      'userDefinedFields':
+          pulumi.Input.encodeList<
+            GetStackScriptUserDefinedField,
+            Map<String, dynamic>
+          >(userDefinedFields, (value) => value.toMap()),
       'userGravatarId': userGravatarId,
       'username': username,
     };
@@ -97,10 +113,15 @@ class GetStackScriptResult {
       revNote: map['revNote'] as String,
       script: map['script'] as String,
       updated: map['updated'] as String,
-      userDefinedFields: pulumi.Input.decodeList<GetStackScriptUserDefinedField>(map['userDefinedFields'], (value) => GetStackScriptUserDefinedField.fromMap((value as Map).cast<String, dynamic>())),
+      userDefinedFields:
+          pulumi.Input.decodeList<GetStackScriptUserDefinedField>(
+            map['userDefinedFields']!,
+            (value) => GetStackScriptUserDefinedField.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       userGravatarId: map['userGravatarId'] as String,
       username: map['username'] as String,
     );
   }
 }
-

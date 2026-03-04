@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
-import 'endpoint_authentication_option.dart';
 import 'endpoint_client_connect_options.dart';
 import 'endpoint_client_login_banner_options.dart';
 import 'endpoint_client_route_enforcement_options.dart';
@@ -183,52 +182,78 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// The ARN of the Client VPN endpoint.
   late final pulumi.Output<String> arn;
+
   /// Information about the authentication method to be used to authenticate clients.
-  late final pulumi.Output<List<EndpointAuthenticationOption>> authenticationOptions;
+  late final pulumi.Output<List<Map<String, dynamic>>> authenticationOptions;
+
   /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `traffic_ip_address_type` is set to `ipv6`, it must not be specified. Otherwise, it is required.
   late final pulumi.Output<String?> clientCidrBlock;
+
   /// The options for managing connection authorization for new client connections.
   late final pulumi.Output<EndpointClientConnectOptions> clientConnectOptions;
+
   /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
-  late final pulumi.Output<EndpointClientLoginBannerOptions> clientLoginBannerOptions;
+  late final pulumi.Output<EndpointClientLoginBannerOptions>
+  clientLoginBannerOptions;
+
   /// Options for enforce administrator defined routes on devices connected through the VPN.
-  late final pulumi.Output<EndpointClientRouteEnforcementOptions> clientRouteEnforcementOptions;
+  late final pulumi.Output<EndpointClientRouteEnforcementOptions>
+  clientRouteEnforcementOptions;
+
   /// Information about the client connection logging options.
   late final pulumi.Output<EndpointConnectionLogOptions> connectionLogOptions;
+
   /// A brief description of the Client VPN endpoint.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether the client VPN session is disconnected after the maximum `session_timeout_hours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
   late final pulumi.Output<bool> disconnectOnSessionTimeout;
+
   /// The DNS name to be used by clients when establishing their VPN session.
   late final pulumi.Output<String> dnsName;
+
   /// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the connecting device is used.
   late final pulumi.Output<List<String>?> dnsServers;
+
   /// IP address type for the Client VPN endpoint. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`.
   late final pulumi.Output<String> endpointIpAddressType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
   late final pulumi.Output<List<String>> securityGroupIds;
+
   /// Specify whether to enable the self-service portal for the Client VPN endpoint. Values can be `enabled` or `disabled`. Default value is `disabled`.
   late final pulumi.Output<String?> selfServicePortal;
+
   /// The URL of the self-service portal.
   late final pulumi.Output<String> selfServicePortalUrl;
+
   /// The ARN of the ACM server certificate.
   late final pulumi.Output<String> serverCertificateArn;
+
   /// The maximum session duration is a trigger by which end-users are required to re-authenticate prior to establishing a VPN session. Default value is `24` - Valid values: `8 | 10 | 12 | 24`
   late final pulumi.Output<int?> sessionTimeoutHours;
+
   /// Indicates whether split-tunnel is enabled on VPN endpoint. Default value is `false`.
   late final pulumi.Output<bool?> splitTunnel;
+
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `client_cidr_block` must not be specified.
   late final pulumi.Output<String> trafficIpAddressType;
+
   /// The transport protocol to be used by the VPN session. Default value is `udp`.
   late final pulumi.Output<String?> transportProtocol;
+
   /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
   late final pulumi.Output<String> vpcId;
+
   /// The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
   late final pulumi.Output<int?> vpnPort;
 
@@ -241,36 +266,49 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2clientvpn/endpoint:Endpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions');
-    this.clientCidrBlock = registerOutput<String?>('clientCidrBlock');
-    this.clientConnectOptions = registerOutput<EndpointClientConnectOptions>('clientConnectOptions');
-    this.clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>('clientLoginBannerOptions');
-    this.clientRouteEnforcementOptions = registerOutput<EndpointClientRouteEnforcementOptions>('clientRouteEnforcementOptions');
-    this.connectionLogOptions = registerOutput<EndpointConnectionLogOptions>('connectionLogOptions');
-    this.description = registerOutput<String?>('description');
-    this.disconnectOnSessionTimeout = registerOutput<bool>('disconnectOnSessionTimeout');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.selfServicePortal = registerOutput<String?>('selfServicePortal');
-    this.selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
-    this.serverCertificateArn = registerOutput<String>('serverCertificateArn');
-    this.sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
-    this.splitTunnel = registerOutput<bool?>('splitTunnel');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
-    this.transportProtocol = registerOutput<String?>('transportProtocol');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpnPort = registerOutput<int?>('vpnPort');
+         'aws:ec2clientvpn/endpoint:Endpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authenticationOptions = registerOutput<List<Map<String, dynamic>>>(
+      'authenticationOptions',
+    );
+    clientCidrBlock = registerOutput<String?>('clientCidrBlock');
+    clientConnectOptions = registerOutput<EndpointClientConnectOptions>(
+      'clientConnectOptions',
+    );
+    clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>(
+      'clientLoginBannerOptions',
+    );
+    clientRouteEnforcementOptions =
+        registerOutput<EndpointClientRouteEnforcementOptions>(
+          'clientRouteEnforcementOptions',
+        );
+    connectionLogOptions = registerOutput<EndpointConnectionLogOptions>(
+      'connectionLogOptions',
+    );
+    description = registerOutput<String?>('description');
+    disconnectOnSessionTimeout = registerOutput<bool>(
+      'disconnectOnSessionTimeout',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    selfServicePortal = registerOutput<String?>('selfServicePortal');
+    selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
+    serverCertificateArn = registerOutput<String>('serverCertificateArn');
+    sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
+    splitTunnel = registerOutput<bool?>('splitTunnel');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    transportProtocol = registerOutput<String?>('transportProtocol');
+    vpcId = registerOutput<String>('vpcId');
+    vpnPort = registerOutput<int?>('vpnPort');
   }
 
   /// Gets an existing [Endpoint] resource's state with the given [name] and [id].
@@ -291,35 +329,48 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2clientvpn/endpoint:Endpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions');
-    this.clientCidrBlock = registerOutput<String?>('clientCidrBlock');
-    this.clientConnectOptions = registerOutput<EndpointClientConnectOptions>('clientConnectOptions');
-    this.clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>('clientLoginBannerOptions');
-    this.clientRouteEnforcementOptions = registerOutput<EndpointClientRouteEnforcementOptions>('clientRouteEnforcementOptions');
-    this.connectionLogOptions = registerOutput<EndpointConnectionLogOptions>('connectionLogOptions');
-    this.description = registerOutput<String?>('description');
-    this.disconnectOnSessionTimeout = registerOutput<bool>('disconnectOnSessionTimeout');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.selfServicePortal = registerOutput<String?>('selfServicePortal');
-    this.selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
-    this.serverCertificateArn = registerOutput<String>('serverCertificateArn');
-    this.sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
-    this.splitTunnel = registerOutput<bool?>('splitTunnel');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
-    this.transportProtocol = registerOutput<String?>('transportProtocol');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpnPort = registerOutput<int?>('vpnPort');
+         'aws:ec2clientvpn/endpoint:Endpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authenticationOptions = registerOutput<List<Map<String, dynamic>>>(
+      'authenticationOptions',
+    );
+    clientCidrBlock = registerOutput<String?>('clientCidrBlock');
+    clientConnectOptions = registerOutput<EndpointClientConnectOptions>(
+      'clientConnectOptions',
+    );
+    clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>(
+      'clientLoginBannerOptions',
+    );
+    clientRouteEnforcementOptions =
+        registerOutput<EndpointClientRouteEnforcementOptions>(
+          'clientRouteEnforcementOptions',
+        );
+    connectionLogOptions = registerOutput<EndpointConnectionLogOptions>(
+      'connectionLogOptions',
+    );
+    description = registerOutput<String?>('description');
+    disconnectOnSessionTimeout = registerOutput<bool>(
+      'disconnectOnSessionTimeout',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    selfServicePortal = registerOutput<String?>('selfServicePortal');
+    selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
+    serverCertificateArn = registerOutput<String>('serverCertificateArn');
+    sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
+    splitTunnel = registerOutput<bool?>('splitTunnel');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    transportProtocol = registerOutput<String?>('transportProtocol');
+    vpcId = registerOutput<String>('vpcId');
+    vpnPort = registerOutput<int?>('vpnPort');
   }
 }

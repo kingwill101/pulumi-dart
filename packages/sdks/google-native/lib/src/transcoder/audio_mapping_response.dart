@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AudioMappingResponse {
   /// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
   final pulumi.Input<String> atomKey;
+
   /// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
   final pulumi.Input<double> gainDb;
+
   /// The zero-based index of the channel in the input audio stream.
   final pulumi.Input<int> inputChannel;
+
   /// The Input.key that identifies the input file.
   final pulumi.Input<String> inputKey;
+
   /// The zero-based index of the track in the input file.
   final pulumi.Input<int> inputTrack;
+
   /// The zero-based index of the channel in the output audio stream.
   final pulumi.Input<int> outputChannel;
 
@@ -46,13 +51,12 @@ class AudioMappingResponse {
 
   factory AudioMappingResponse.fromMap(Map<String, dynamic> map) {
     return AudioMappingResponse(
-      atomKey: (map['atomKey'] as String).input(),
-      gainDb: (map['gainDb'] as double).input(),
-      inputChannel: (map['inputChannel'] as int).input(),
-      inputKey: (map['inputKey'] as String).input(),
-      inputTrack: (map['inputTrack'] as int).input(),
-      outputChannel: (map['outputChannel'] as int).input(),
+      atomKey: pulumi.Input.fromValue(map['atomKey'] as String),
+      gainDb: pulumi.Input.fromValue(map['gainDb'] as double),
+      inputChannel: pulumi.Input.fromValue(map['inputChannel'] as int),
+      inputKey: pulumi.Input.fromValue(map['inputKey'] as String),
+      inputTrack: pulumi.Input.fromValue(map['inputTrack'] as int),
+      outputChannel: pulumi.Input.fromValue(map['outputChannel'] as int),
     );
   }
 }
-

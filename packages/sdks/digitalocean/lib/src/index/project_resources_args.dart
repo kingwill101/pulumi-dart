@@ -9,29 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectResourcesArgs {
   /// the ID of the project
   final pulumi.Input<String> project;
+
   /// a list of uniform resource names (URNs) for the resources associated with the project
   final pulumi.Input<List<String>> resources;
 
   /// Creates a new [ProjectResourcesArgs].
   /// [project] the ID of the project
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
-  ProjectResourcesArgs({
-    required this.project,
-    required this.resources,
-  });
+  ProjectResourcesArgs({required this.project, required this.resources});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'resources': resources,
-    };
+    return <String, dynamic>{'project': project, 'resources': resources};
   }
 
   factory ProjectResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ProjectResourcesArgs(
-      project: (map['project'] as String).input(),
-      resources: ((map['resources'] as List).cast<String>()).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      resources: pulumi.Input.fromValue(
+        (map['resources'] as List).cast<String>(),
+      ),
     );
   }
 }
-

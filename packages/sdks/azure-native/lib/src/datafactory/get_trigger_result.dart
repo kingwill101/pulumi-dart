@@ -6,14 +6,19 @@ import 'blob_events_trigger_response.dart';
 class GetTriggerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Properties of the trigger.
   final BlobEventsTriggerResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetTriggerResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: BlobEventsTriggerResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: BlobEventsTriggerResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

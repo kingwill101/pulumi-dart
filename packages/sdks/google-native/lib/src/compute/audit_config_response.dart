@@ -7,8 +7,10 @@ import 'audit_log_config_response.dart';
 class AuditConfigResponse {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigResponse>> auditLogConfigs;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>> exemptedMembers;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String> service;
 
@@ -24,7 +26,18 @@ class AuditConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.mapInputValue<List<AuditLogConfigResponse>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          pulumi.Input.mapInputValue<
+            List<AuditLogConfigResponse>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuditLogConfigResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'exemptedMembers': exemptedMembers,
       'service': service,
     };
@@ -32,10 +45,18 @@ class AuditConfigResponse {
 
   factory AuditConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponse(
-      auditLogConfigs: (pulumi.Input.decodeList<AuditLogConfigResponse>(map['auditLogConfigs'], (value) => AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
-      service: (map['service'] as String).input(),
+      auditLogConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AuditLogConfigResponse>(
+          map['auditLogConfigs']!,
+          (value) => AuditLogConfigResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      exemptedMembers: pulumi.Input.fromValue(
+        (map['exemptedMembers'] as List).cast<String>(),
+      ),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

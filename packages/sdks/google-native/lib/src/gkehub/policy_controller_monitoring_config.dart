@@ -6,24 +6,44 @@ import 'policy_controller_monitoring_config_backends_item.dart';
 /// MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 class PolicyControllerMonitoringConfig {
   /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  final pulumi.Input<List<PolicyControllerMonitoringConfigBackendsItem>>? backends;
+  final pulumi.Input<List<PolicyControllerMonitoringConfigBackendsItem>>?
+  backends;
 
   /// Creates a new [PolicyControllerMonitoringConfig].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  PolicyControllerMonitoringConfig({
-    this.backends,
-  });
+  PolicyControllerMonitoringConfig({this.backends});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': ?pulumi.Input.mapOptionalInputValue<List<PolicyControllerMonitoringConfigBackendsItem>, List<String>>(backends, (value) => pulumi.Input.encodeList<PolicyControllerMonitoringConfigBackendsItem, String>(value, (value) => value.value)),
+      'backends':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PolicyControllerMonitoringConfigBackendsItem>,
+            List<String>
+          >(
+            backends,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PolicyControllerMonitoringConfigBackendsItem,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
     };
   }
 
   factory PolicyControllerMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMonitoringConfig(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<PolicyControllerMonitoringConfigBackendsItem>(map['backends']!, (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(value as String))).input(),
+      backends: (() {
+        final guardedValue = map['backends'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PolicyControllerMonitoringConfigBackendsItem>(
+            guardedValue,
+            (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(
+              value as String,
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

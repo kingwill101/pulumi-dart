@@ -175,26 +175,37 @@ import 'system_data_response.dart';
 class InternetGateway extends pulumi.CustomResource {
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ARM Resource ID of the Internet Gateway Rule.
   late final pulumi.Output<String?> internetGatewayRuleId;
+
   /// IPv4 Address of Internet Gateway.
   late final pulumi.Output<String> ipv4Address;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ARM Resource ID of the Network Fabric Controller.
   late final pulumi.Output<String> networkFabricControllerId;
+
   /// Port number of Internet Gateway.
   late final pulumi.Output<int> port;
+
   /// Provisioning state of resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -207,22 +218,24 @@ class InternetGateway extends pulumi.CustomResource {
     InternetGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:InternetGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.internetGatewayRuleId = registerOutput<String?>('internetGatewayRuleId');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:InternetGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    internetGatewayRuleId = registerOutput<String?>('internetGatewayRuleId');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkFabricControllerId = registerOutput<String>('networkFabricControllerId');
-    this.port = registerOutput<int>('port');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkFabricControllerId = registerOutput<String>(
+      'networkFabricControllerId',
+    );
+    port = registerOutput<int>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

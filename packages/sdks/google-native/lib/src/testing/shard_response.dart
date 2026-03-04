@@ -7,10 +7,13 @@ import 'test_targets_for_shard_response.dart';
 class ShardResponse {
   /// The estimated shard duration based on previous test case timing records, if available.
   final pulumi.Input<String> estimatedShardDuration;
+
   /// The total number of shards.
   final pulumi.Input<int> numShards;
+
   /// The index of the shard among all the shards.
   final pulumi.Input<int> shardIndex;
+
   /// Test targets for each shard. Only set for manual sharding.
   final pulumi.Input<TestTargetsForShardResponse> testTargetsForShard;
 
@@ -31,17 +34,26 @@ class ShardResponse {
       'estimatedShardDuration': estimatedShardDuration,
       'numShards': numShards,
       'shardIndex': shardIndex,
-      'testTargetsForShard': pulumi.Input.mapInputValue<TestTargetsForShardResponse, Map<String, dynamic>>(testTargetsForShard, (value) => value.toMap()),
+      'testTargetsForShard':
+          pulumi.Input.mapInputValue<
+            TestTargetsForShardResponse,
+            Map<String, dynamic>
+          >(testTargetsForShard, (value) => value.toMap()),
     };
   }
 
   factory ShardResponse.fromMap(Map<String, dynamic> map) {
     return ShardResponse(
-      estimatedShardDuration: (map['estimatedShardDuration'] as String).input(),
-      numShards: (map['numShards'] as int).input(),
-      shardIndex: (map['shardIndex'] as int).input(),
-      testTargetsForShard: (TestTargetsForShardResponse.fromMap((map['testTargetsForShard'] as Map).cast<String, dynamic>())).input(),
+      estimatedShardDuration: pulumi.Input.fromValue(
+        map['estimatedShardDuration'] as String,
+      ),
+      numShards: pulumi.Input.fromValue(map['numShards'] as int),
+      shardIndex: pulumi.Input.fromValue(map['shardIndex'] as int),
+      testTargetsForShard: pulumi.Input.fromValue(
+        TestTargetsForShardResponse.fromMap(
+          (map['testTargetsForShard']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

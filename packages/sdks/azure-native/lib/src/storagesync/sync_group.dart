@@ -135,14 +135,19 @@ import 'system_data_response.dart';
 class SyncGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Sync group status
   late final pulumi.Output<String> syncGroupStatus;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Unique Id
   late final pulumi.Output<String> uniqueId;
 
@@ -155,16 +160,16 @@ class SyncGroup extends pulumi.CustomResource {
     SyncGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagesync:SyncGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:storagesync:SyncGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.syncGroupStatus = registerOutput<String>('syncGroupStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.uniqueId = registerOutput<String>('uniqueId');
+    syncGroupStatus = registerOutput<String>('syncGroupStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
   }
 }

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineImageTemplateArgs {
   /// The name of the image Template
   final pulumi.Input<String> imageTemplateName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetVirtualMachineImageTemplateArgs {
 
   factory GetVirtualMachineImageTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineImageTemplateArgs(
-      imageTemplateName: (map['imageTemplateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      imageTemplateName: pulumi.Input.fromValue(
+        map['imageTemplateName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

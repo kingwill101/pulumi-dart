@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Trigger {
   /// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
   final pulumi.Input<String>? timeAfterCreate;
+
   /// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
   final pulumi.Input<String>? timeBeforeExpiry;
 
   /// Creates a new [Trigger].
   /// [timeAfterCreate] The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
   /// [timeBeforeExpiry] The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
-  Trigger({
-    this.timeAfterCreate,
-    this.timeBeforeExpiry,
-  });
+  Trigger({this.timeAfterCreate, this.timeBeforeExpiry});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class Trigger {
 
   factory Trigger.fromMap(Map<String, dynamic> map) {
     return Trigger(
-      timeAfterCreate: map['timeAfterCreate'] == null ? null : (map['timeAfterCreate']! as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
+      timeAfterCreate: (() {
+        final guardedValue = map['timeAfterCreate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeBeforeExpiry: (() {
+        final guardedValue = map['timeBeforeExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class HighAvailabilityConfigurationResponse {
 
   /// Creates a new [HighAvailabilityConfigurationResponse].
   /// [highAvailabilityType] The high availability type.
-  HighAvailabilityConfigurationResponse({
-    required this.highAvailabilityType,
-  });
+  HighAvailabilityConfigurationResponse({required this.highAvailabilityType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'highAvailabilityType': highAvailabilityType,
-    };
+    return <String, dynamic>{'highAvailabilityType': highAvailabilityType};
   }
 
-  factory HighAvailabilityConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory HighAvailabilityConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HighAvailabilityConfigurationResponse(
-      highAvailabilityType: (map['highAvailabilityType'] as String).input(),
+      highAvailabilityType: pulumi.Input.fromValue(
+        map['highAvailabilityType'] as String,
+      ),
     );
   }
 }
-

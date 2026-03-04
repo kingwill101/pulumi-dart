@@ -10,16 +10,16 @@ import 'iammember_state.dart';
 /// * `gcp.projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
 /// * `gcp.projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
-/// > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+/// &gt; **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 /// IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 ///
 /// ## gcp.projects.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your project
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your project
 /// using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
 /// from anyone without organization-level access to the project. Proceed with caution.
 /// It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -999,7 +999,7 @@ import 'iammember_state.dart';
 ///
 /// ## gcp.projects.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your project
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your project
 /// using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
 /// from anyone without organization-level access to the project. Proceed with caution.
 /// It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -2006,8 +2006,10 @@ class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<IAMMemberCondition?> condition;
+
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -2015,9 +2017,11 @@ class IAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -2032,16 +2036,16 @@ class IAMMember extends pulumi.CustomResource {
     IAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:projects/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [IAMMember] resource's state with the given [name] and [id].
@@ -2062,15 +2066,15 @@ class IAMMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:projects/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

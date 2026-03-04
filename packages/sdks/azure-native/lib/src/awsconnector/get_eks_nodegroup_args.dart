@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEksNodegroupArgs {
   /// Name of EksNodegroup
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEksNodegroupArgs].
   /// [name] Name of EksNodegroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEksNodegroupArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetEksNodegroupArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetEksNodegroupArgs {
 
   factory GetEksNodegroupArgs.fromMap(Map<String, dynamic> map) {
     return GetEksNodegroupArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

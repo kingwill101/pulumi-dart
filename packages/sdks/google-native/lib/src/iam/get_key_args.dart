@@ -35,11 +35,20 @@ class GetKeyArgs {
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
-      keyId: (map['keyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType']! as String).input(),
-      serviceAccountId: (map['serviceAccountId'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKeyType: (() {
+        final guardedValue = map['publicKeyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountId: pulumi.Input.fromValue(
+        map['serviceAccountId'] as String,
+      ),
     );
   }
 }
-

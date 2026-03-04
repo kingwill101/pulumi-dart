@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesSerialSourceFileSecLabel {
   /// Configures the label for the security attributes of the UNIX domain socket.
   final pulumi.Input<String>? label;
+
   /// Determines whether to skip the label check for the security label in the UNIX socket.
   final pulumi.Input<String>? labelSkip;
+
   /// Sets the model type for the security label in the UNIX domain socket configuration.
   final pulumi.Input<String>? model;
+
   /// Enables or disables relabeling for the security label in the UNIX domain socket.
   final pulumi.Input<String>? relabel;
 
@@ -33,13 +36,30 @@ class DomainDevicesSerialSourceFileSecLabel {
     };
   }
 
-  factory DomainDevicesSerialSourceFileSecLabel.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesSerialSourceFileSecLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesSerialSourceFileSecLabel(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      labelSkip: map['labelSkip'] == null ? null : (map['labelSkip']! as String).input(),
-      model: map['model'] == null ? null : (map['model']! as String).input(),
-      relabel: map['relabel'] == null ? null : (map['relabel']! as String).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labelSkip: (() {
+        final guardedValue = map['labelSkip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relabel: (() {
+        final guardedValue = map['relabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

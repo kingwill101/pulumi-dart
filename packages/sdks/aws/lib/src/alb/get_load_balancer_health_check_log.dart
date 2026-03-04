@@ -27,10 +27,9 @@ class GetLoadBalancerHealthCheckLog {
 
   factory GetLoadBalancerHealthCheckLog.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerHealthCheckLog(
-      bucket: (map['bucket'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      prefix: (map['prefix'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

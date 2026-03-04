@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentArgs {
   /// Description of the resource.
   final pulumi.Input<String>? description;
+
   /// Enable global access for endpoint attachment.
   final pulumi.Input<bool>? endpointGlobalAccess;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Location in which Endpoint Attachment needs to be created.
   final pulumi.Input<String> location;
+
   /// Name of Endpoint Attachment needs to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The path of the service attachment.
   final pulumi.Input<String> serviceAttachment;
 
@@ -58,14 +64,37 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointGlobalAccess: map['endpointGlobalAccess'] == null ? null : (map['endpointGlobalAccess']! as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointGlobalAccess: (() {
+        final guardedValue = map['endpointGlobalAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

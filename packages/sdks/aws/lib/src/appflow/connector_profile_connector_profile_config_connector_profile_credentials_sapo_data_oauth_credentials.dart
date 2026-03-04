@@ -7,7 +7,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   final pulumi.Input<String>? accessToken;
   final pulumi.Input<String> clientId;
   final pulumi.Input<String> clientSecret;
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest>? oauthRequest;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest
+  >?
+  oauthRequest;
   final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials].
@@ -29,19 +32,40 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
       'accessToken': ?accessToken,
       'clientId': clientId,
       'clientSecret': clientSecret,
-      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
+      'oauthRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest,
+            Map<String, dynamic>
+          >(oauthRequest, (value) => value.toMap()),
       'refreshToken': ?refreshToken,
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials(
-      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
-      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      oauthRequest: (() {
+        final guardedValue = map['oauthRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeAffinityResponse {
   /// Key for NodeAffinity.
   final pulumi.Input<String> key;
+
   /// Operator for NodeAffinity.
   final pulumi.Input<String> operator;
+
   /// Values for NodeAffinity.
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,9 @@ class NodeAffinityResponse {
 
   factory NodeAffinityResponse.fromMap(Map<String, dynamic> map) {
     return NodeAffinityResponse(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

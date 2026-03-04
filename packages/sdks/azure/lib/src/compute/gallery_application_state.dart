@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryApplicationState {
   /// A description of the Gallery Application.
   final pulumi.Input<String>? description;
+
   /// The end of life date in RFC3339 format of the Gallery Application.
   final pulumi.Input<String>? endOfLifeDate;
+
   /// The End User Licence Agreement of the Gallery Application.
   final pulumi.Input<String>? eula;
+
   /// The ID of the Shared Image Gallery. Changing this forces a new resource to be created.
   final pulumi.Input<String>? galleryId;
+
   /// The Azure Region where the Gallery Application exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the Gallery Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The URI containing the Privacy Statement associated with the Gallery Application.
   final pulumi.Input<String>? privacyStatementUri;
+
   /// The URI containing the Release Notes associated with the Gallery Application.
   final pulumi.Input<String>? releaseNoteUri;
+
   /// The type of the Operating System supported for the Gallery Application. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? supportedOsType;
+
   /// A mapping of tags to assign to the Gallery Application.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,17 +75,58 @@ class GalleryApplicationState {
 
   factory GalleryApplicationState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
-      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
-      galleryId: map['galleryId'] == null ? null : (map['galleryId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
-      supportedOsType: map['supportedOsType'] == null ? null : (map['supportedOsType']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endOfLifeDate: (() {
+        final guardedValue = map['endOfLifeDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eula: (() {
+        final guardedValue = map['eula'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      galleryId: (() {
+        final guardedValue = map['galleryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privacyStatementUri: (() {
+        final guardedValue = map['privacyStatementUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseNoteUri: (() {
+        final guardedValue = map['releaseNoteUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportedOsType: (() {
+        final guardedValue = map['supportedOsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

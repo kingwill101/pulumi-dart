@@ -9,20 +9,17 @@ class HorizontalPodAutoscalingResponseContainerV1beta1 {
 
   /// Creates a new [HorizontalPodAutoscalingResponseContainerV1beta1].
   /// [disabled] Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
-  HorizontalPodAutoscalingResponseContainerV1beta1({
-    required this.disabled,
-  });
+  HorizontalPodAutoscalingResponseContainerV1beta1({required this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': disabled,
-    };
+    return <String, dynamic>{'disabled': disabled};
   }
 
-  factory HorizontalPodAutoscalingResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HorizontalPodAutoscalingResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HorizontalPodAutoscalingResponseContainerV1beta1(
-      disabled: (map['disabled'] as bool).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
-

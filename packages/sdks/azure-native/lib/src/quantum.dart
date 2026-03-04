@@ -1,5 +1,3 @@
-library module_quantum;
-
 export 'quantum/api_key_response.dart';
 export 'quantum/functions.dart';
 export 'quantum/get_workspace_args.dart';

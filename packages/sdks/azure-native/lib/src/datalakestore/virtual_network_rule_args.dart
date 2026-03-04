@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleArgs {
   /// The name of the Data Lake Store account.
   final pulumi.Input<String> accountName;
+
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource identifier for the subnet.
   final pulumi.Input<String> subnetId;
+
   /// The name of the virtual network rule to create or update.
   final pulumi.Input<String>? virtualNetworkRuleName;
 
@@ -39,11 +42,16 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      virtualNetworkRuleName: (() {
+        final guardedValue = map['virtualNetworkRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

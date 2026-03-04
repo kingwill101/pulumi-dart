@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DestinationResponse {
   /// For publicly routable host.
   final pulumi.Input<String> host;
+
   /// The port is the target port number that is accepted by the destination.
   final pulumi.Input<int> port;
+
   /// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
   final pulumi.Input<String> serviceAttachment;
 
@@ -30,10 +32,11 @@ class DestinationResponse {
 
   factory DestinationResponse.fromMap(Map<String, dynamic> map) {
     return DestinationResponse(
-      host: (map['host'] as String).input(),
-      port: (map['port'] as int).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeGkehubV1alpha {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeGkehubV1alpha(this.value);
-  final String value;
+  const AuditLogConfigLogTypeGkehubV1alpha(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeGkehubV1alpha fromValue(String value) {
     for (final item in AuditLogConfigLogTypeGkehubV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeGkehubV1alpha value: $value',
+    );
   }
 }
-

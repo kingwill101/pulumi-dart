@@ -8,7 +8,7 @@ import 'v3_vpc_binding_state.dart';
 ///
 /// For information about FCV3 Vpc Binding and how to use it, see [What is Vpc Binding](https://www.alibabacloud.com/help/en/functioncompute/fc-3-0/developer-reference/api-fc-2023-03-30-createvpcbinding).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -268,6 +268,7 @@ import 'v3_vpc_binding_state.dart';
 class V3VpcBinding extends pulumi.CustomResource {
   /// Function Name
   late final pulumi.Output<String> functionName;
+
   /// VPC instance ID
   late final pulumi.Output<String> vpcId;
 
@@ -280,13 +281,13 @@ class V3VpcBinding extends pulumi.CustomResource {
     V3VpcBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3VpcBinding:V3VpcBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionName = registerOutput<String>('functionName');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:fc/v3VpcBinding:V3VpcBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionName = registerOutput<String>('functionName');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [V3VpcBinding] resource's state with the given [name] and [id].
@@ -307,12 +308,12 @@ class V3VpcBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3VpcBinding:V3VpcBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionName = registerOutput<String>('functionName');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:fc/v3VpcBinding:V3VpcBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionName = registerOutput<String>('functionName');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

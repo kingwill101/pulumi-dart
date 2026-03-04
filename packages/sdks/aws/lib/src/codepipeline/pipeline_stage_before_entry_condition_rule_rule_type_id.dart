@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineStageBeforeEntryConditionRuleRuleTypeId {
   /// A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.
   final pulumi.Input<String> category;
+
   /// The creator of the rule being called. The valid value for the Owner field in the rule category is `AWS`.
   final pulumi.Input<String>? owner;
+
   /// The rule provider, such as the DeploymentWindow rule. For a list of rule provider names, see the rules listed in the [AWS CodePipeline rule reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
   final pulumi.Input<String> provider;
+
   /// A string that describes the rule version.
   final pulumi.Input<String>? version;
 
@@ -33,13 +36,22 @@ class PipelineStageBeforeEntryConditionRuleRuleTypeId {
     };
   }
 
-  factory PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap(Map<String, dynamic> map) {
+  factory PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineStageBeforeEntryConditionRuleRuleTypeId(
-      category: (map['category'] as String).input(),
-      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
-      provider: (map['provider'] as String).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provider: pulumi.Input.fromValue(map['provider'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,13 +6,17 @@ import 'registration_contact_settings_technical_contact_postal_address.dart';
 class RegistrationContactSettingsTechnicalContact {
   /// Required. Email address of the contact.
   final pulumi.Input<String> email;
+
   /// Fax number of the contact in international format. For example, "+1-800-555-0123".
   final pulumi.Input<String>? faxNumber;
+
   /// Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
   final pulumi.Input<String> phoneNumber;
+
   /// Required. Postal address of the contact.
   /// Structure is documented below.
-  final pulumi.Input<RegistrationContactSettingsTechnicalContactPostalAddress> postalAddress;
+  final pulumi.Input<RegistrationContactSettingsTechnicalContactPostalAddress>
+  postalAddress;
 
   /// Creates a new [RegistrationContactSettingsTechnicalContact].
   /// [email] Required. Email address of the contact.
@@ -31,17 +35,30 @@ class RegistrationContactSettingsTechnicalContact {
       'email': email,
       'faxNumber': ?faxNumber,
       'phoneNumber': phoneNumber,
-      'postalAddress': pulumi.Input.mapInputValue<RegistrationContactSettingsTechnicalContactPostalAddress, Map<String, dynamic>>(postalAddress, (value) => value.toMap()),
+      'postalAddress':
+          pulumi.Input.mapInputValue<
+            RegistrationContactSettingsTechnicalContactPostalAddress,
+            Map<String, dynamic>
+          >(postalAddress, (value) => value.toMap()),
     };
   }
 
-  factory RegistrationContactSettingsTechnicalContact.fromMap(Map<String, dynamic> map) {
+  factory RegistrationContactSettingsTechnicalContact.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistrationContactSettingsTechnicalContact(
-      email: (map['email'] as String).input(),
-      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber']! as String).input(),
-      phoneNumber: (map['phoneNumber'] as String).input(),
-      postalAddress: (RegistrationContactSettingsTechnicalContactPostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>())).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      faxNumber: (() {
+        final guardedValue = map['faxNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
+      postalAddress: pulumi.Input.fromValue(
+        RegistrationContactSettingsTechnicalContactPostalAddress.fromMap(
+          (map['postalAddress']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

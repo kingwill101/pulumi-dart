@@ -5,7 +5,9 @@ import 'cluster_reverse_proxy_certificate_common_names_common_name.dart';
 
 class ClusterReverseProxyCertificateCommonNames {
   /// A `common_names` block as defined below.
-  final pulumi.Input<List<ClusterReverseProxyCertificateCommonNamesCommonName>> commonNames;
+  final pulumi.Input<List<ClusterReverseProxyCertificateCommonNamesCommonName>>
+  commonNames;
+
   /// The X509 Store where the Certificate Exists, such as `My`.
   final pulumi.Input<String> x509StoreName;
 
@@ -19,16 +21,38 @@ class ClusterReverseProxyCertificateCommonNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commonNames': pulumi.Input.mapInputValue<List<ClusterReverseProxyCertificateCommonNamesCommonName>, List<Map<String, dynamic>>>(commonNames, (value) => pulumi.Input.encodeList<ClusterReverseProxyCertificateCommonNamesCommonName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'commonNames':
+          pulumi.Input.mapInputValue<
+            List<ClusterReverseProxyCertificateCommonNamesCommonName>,
+            List<Map<String, dynamic>>
+          >(
+            commonNames,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterReverseProxyCertificateCommonNamesCommonName,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'x509StoreName': x509StoreName,
     };
   }
 
-  factory ClusterReverseProxyCertificateCommonNames.fromMap(Map<String, dynamic> map) {
+  factory ClusterReverseProxyCertificateCommonNames.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterReverseProxyCertificateCommonNames(
-      commonNames: (pulumi.Input.decodeList<ClusterReverseProxyCertificateCommonNamesCommonName>(map['commonNames'], (value) => ClusterReverseProxyCertificateCommonNamesCommonName.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      x509StoreName: (map['x509StoreName'] as String).input(),
+      commonNames: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          ClusterReverseProxyCertificateCommonNamesCommonName
+        >(
+          map['commonNames']!,
+          (value) =>
+              ClusterReverseProxyCertificateCommonNamesCommonName.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      x509StoreName: pulumi.Input.fromValue(map['x509StoreName'] as String),
     );
   }
 }
-

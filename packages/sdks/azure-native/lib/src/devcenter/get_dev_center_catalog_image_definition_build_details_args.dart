@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDevCenterCatalogImageDefinitionBuildDetailsArgs {
   /// The ID of the Image Definition Build.
   final pulumi.Input<String> buildName;
+
   /// The name of the Catalog.
   final pulumi.Input<String> catalogName;
+
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// The name of the Image Definition.
   final pulumi.Input<String> imageDefinitionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +46,19 @@ class GetDevCenterCatalogImageDefinitionBuildDetailsArgs {
     };
   }
 
-  factory GetDevCenterCatalogImageDefinitionBuildDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDevCenterCatalogImageDefinitionBuildDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDevCenterCatalogImageDefinitionBuildDetailsArgs(
-      buildName: (map['buildName'] as String).input(),
-      catalogName: (map['catalogName'] as String).input(),
-      devCenterName: (map['devCenterName'] as String).input(),
-      imageDefinitionName: (map['imageDefinitionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      buildName: pulumi.Input.fromValue(map['buildName'] as String),
+      catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      imageDefinitionName: pulumi.Input.fromValue(
+        map['imageDefinitionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

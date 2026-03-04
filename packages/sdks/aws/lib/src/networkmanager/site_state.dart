@@ -7,16 +7,21 @@ import 'site_location.dart';
 class SiteState {
   /// Site ARN.
   final pulumi.Input<String>? arn;
+
   /// Description of the Site.
   final pulumi.Input<String>? description;
+
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? globalNetworkId;
+
   /// Site location. See below.
   final pulumi.Input<SiteLocation>? location;
+
   /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -41,7 +46,11 @@ class SiteState {
       'arn': ?arn,
       'description': ?description,
       'globalNetworkId': ?globalNetworkId,
-      'location': ?pulumi.Input.mapOptionalInputValue<SiteLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'location':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteLocation,
+            Map<String, dynamic>
+          >(location, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
     };
@@ -49,13 +58,42 @@ class SiteState {
 
   factory SiteState.fromMap(Map<String, dynamic> map) {
     return SiteState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
-      location: map['location'] == null ? null : ((SiteLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalNetworkId: (() {
+        final guardedValue = map['globalNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

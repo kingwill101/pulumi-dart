@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainIdentityVerificationArgs {
   /// The domain name of the SES domain identity to verify.
   final pulumi.Input<String> domain;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [DomainIdentityVerificationArgs].
   /// [domain] The domain name of the SES domain identity to verify.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainIdentityVerificationArgs({
-    required this.domain,
-    this.region,
-  });
+  DomainIdentityVerificationArgs({required this.domain, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-      'region': ?region,
-    };
+    return <String, dynamic>{'domain': domain, 'region': ?region};
   }
 
   factory DomainIdentityVerificationArgs.fromMap(Map<String, dynamic> map) {
     return DomainIdentityVerificationArgs(
-      domain: (map['domain'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum MongoDbReplication {
   valueOneTime("OneTime"),
   valueContinuous("Continuous");
 
-  const MongoDbReplication(this.value);
-  final String value;
+  const MongoDbReplication(this.wireValue);
+  final String wireValue;
 
   static MongoDbReplication fromValue(String value) {
     for (final item in MongoDbReplication.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MongoDbReplication value: $value');
   }
 }
-

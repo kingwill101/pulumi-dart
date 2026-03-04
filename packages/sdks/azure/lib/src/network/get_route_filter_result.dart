@@ -7,13 +7,17 @@ import 'get_route_filter_rule.dart';
 class GetRouteFilterResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Route Filter exists.
   final String location;
+
   /// The Name of Route Filter Rule
   final String name;
   final String resourceGroupName;
+
   /// A `rule` block as defined below.
   final List<GetRouteFilterRule> rules;
+
   /// A mapping of tags assigned to the Route Filter.
   final Map<String, String> tags;
 
@@ -39,7 +43,11 @@ class GetRouteFilterResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'rules': pulumi.Input.encodeList<GetRouteFilterRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<GetRouteFilterRule, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
       'tags': tags,
     };
   }
@@ -50,9 +58,12 @@ class GetRouteFilterResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      rules: pulumi.Input.decodeList<GetRouteFilterRule>(map['rules'], (value) => GetRouteFilterRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetRouteFilterRule>(
+        map['rules']!,
+        (value) =>
+            GetRouteFilterRule.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

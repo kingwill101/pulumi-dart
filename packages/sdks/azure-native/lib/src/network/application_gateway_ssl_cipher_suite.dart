@@ -14,10 +14,18 @@ enum ApplicationGatewaySslCipherSuite {
   valueTLSRSAWITHAES128CBCSHA256("TLS_RSA_WITH_AES_128_CBC_SHA256"),
   valueTLSRSAWITHAES256CBCSHA("TLS_RSA_WITH_AES_256_CBC_SHA"),
   valueTLSRSAWITHAES128CBCSHA("TLS_RSA_WITH_AES_128_CBC_SHA"),
-  valueTLSECDHEECDSAWITHAES256GCMSHA384("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
-  valueTLSECDHEECDSAWITHAES128GCMSHA256("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"),
-  valueTLSECDHEECDSAWITHAES256CBCSHA384("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384"),
-  valueTLSECDHEECDSAWITHAES128CBCSHA256("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"),
+  valueTLSECDHEECDSAWITHAES256GCMSHA384(
+    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+  ),
+  valueTLSECDHEECDSAWITHAES128GCMSHA256(
+    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+  ),
+  valueTLSECDHEECDSAWITHAES256CBCSHA384(
+    "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384",
+  ),
+  valueTLSECDHEECDSAWITHAES128CBCSHA256(
+    "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+  ),
   valueTLSECDHEECDSAWITHAES256CBCSHA("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA"),
   valueTLSECDHEECDSAWITHAES128CBCSHA("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"),
   valueTLSDHEDSSWITHAES256CBCSHA256("TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"),
@@ -29,16 +37,17 @@ enum ApplicationGatewaySslCipherSuite {
   valueTLSECDHERSAWITHAES128GCMSHA256("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"),
   valueTLSECDHERSAWITHAES256GCMSHA384("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
 
-  const ApplicationGatewaySslCipherSuite(this.value);
-  final String value;
+  const ApplicationGatewaySslCipherSuite(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewaySslCipherSuite fromValue(String value) {
     for (final item in ApplicationGatewaySslCipherSuite.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewaySslCipherSuite value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewaySslCipherSuite value: $value',
+    );
   }
 }
-

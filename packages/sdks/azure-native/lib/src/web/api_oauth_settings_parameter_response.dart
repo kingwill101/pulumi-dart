@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiOAuthSettingsParameterResponse {
   /// Options available to this parameter
   final pulumi.Input<dynamic>? options;
+
   /// UI definitions per culture as caller can specify the culture
   final pulumi.Input<dynamic>? uiDefinition;
+
   /// Value of the setting
   final pulumi.Input<String>? value;
 
@@ -31,10 +33,21 @@ class ApiOAuthSettingsParameterResponse {
 
   factory ApiOAuthSettingsParameterResponse.fromMap(Map<String, dynamic> map) {
     return ApiOAuthSettingsParameterResponse(
-      options: map['options'] == null ? null : (map['options']!).input(),
-      uiDefinition: map['uiDefinition'] == null ? null : (map['uiDefinition']!).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      uiDefinition: (() {
+        final guardedValue = map['uiDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

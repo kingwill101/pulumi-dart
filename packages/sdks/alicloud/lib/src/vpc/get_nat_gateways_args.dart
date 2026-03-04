@@ -9,30 +9,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatGatewaysArgs {
   /// Specifies whether to only precheck the request.
   final pulumi.Input<bool>? dryRun;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of NAT gateways IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter nat gateways by name.
   final pulumi.Input<String>? nameRegex;
+
   /// The name of NAT gateway.
   final pulumi.Input<String>? natGatewayName;
+
   /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
   final pulumi.Input<String>? natType;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
+
   /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
   final pulumi.Input<String>? paymentType;
+
   /// The resource group id of NAT gateway.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
   final pulumi.Input<String>? specification;
+
   /// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
   final pulumi.Input<String>? status;
+
   /// The tags of NAT gateway.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -92,22 +104,83 @@ class GetNatGatewaysArgs {
 
   factory GetNatGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewaysArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      natGatewayName: map['natGatewayName'] == null ? null : (map['natGatewayName']! as String).input(),
-      natType: map['natType'] == null ? null : (map['natType']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natGatewayName: (() {
+        final guardedValue = map['natGatewayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natType: (() {
+        final guardedValue = map['natType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      specification: (() {
+        final guardedValue = map['specification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

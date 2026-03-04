@@ -3,16 +3,15 @@ enum HostingMode {
   default_("Default"),
   highDensity("HighDensity");
 
-  const HostingMode(this.value);
-  final String value;
+  const HostingMode(this.wireValue);
+  final String wireValue;
 
   static HostingMode fromValue(String value) {
     for (final item in HostingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostingMode value: $value');
   }
 }
-

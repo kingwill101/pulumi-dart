@@ -6,7 +6,7 @@ import 'user_state.dart';
 ///
 /// For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/bastion-host/latest/api-yundun-bastionhost-2019-12-09-createuser).
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -474,14 +474,19 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
   late final pulumi.Output<String?> comment;
+
   /// Specify the New Created the User's Display Name. Supports up to 128 Characters.
   late final pulumi.Output<String> displayName;
+
   /// Specify the New User's Mailbox.
   late final pulumi.Output<String?> email;
+
   /// You Want to Query the User the Bastion Host ID of.
   late final pulumi.Output<String> instanceId;
+
   /// Specify the New of the User That Created a Different Mobile Phone Number from Your.
   late final pulumi.Output<String?> mobile;
+
   /// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
   /// * CN: Mainland China (+86)
   /// * HK: hong Kong, China (+852)
@@ -503,21 +508,27 @@ class User extends pulumi.CustomResource {
   /// * CH: Switzerland (+41)
   /// * SE: Sweden (+46)
   late final pulumi.Output<String> mobileCountryCode;
+
   /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
   late final pulumi.Output<String?> password;
+
   /// Specify the New of the User That Created the Source. Valid Values:
   /// * Local: Local User
   /// * Ram: Ram User
   /// * AD: AD-authenticated User
   /// * LDAP: LDAP-authenticated User
-  /// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+  /// &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
   late final pulumi.Output<String> source;
+
   /// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
   late final pulumi.Output<String?> sourceUserId;
+
   /// The status of the resource. Valid values: `Frozen`, `Normal`.
   late final pulumi.Output<String> status;
+
   /// The User ID.
   late final pulumi.Output<String> userId;
+
   /// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
   late final pulumi.Output<String> userName;
 
@@ -525,36 +536,29 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_bastionhost_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:bastionhost/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.displayName = registerOutput<String>('displayName');
-    this.email = registerOutput<String?>('email');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.mobile = registerOutput<String?>('mobile');
-    this.mobileCountryCode = registerOutput<String>('mobileCountryCode');
-    this.password = registerOutput<String?>('password');
-    this.source = registerOutput<String>('source');
-    this.sourceUserId = registerOutput<String?>('sourceUserId');
-    this.status = registerOutput<String>('status');
-    this.userId = registerOutput<String>('userId');
-    this.userName = registerOutput<String>('userName');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:bastionhost/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    comment = registerOutput<String?>('comment');
+    displayName = registerOutput<String>('displayName');
+    email = registerOutput<String?>('email');
+    instanceId = registerOutput<String>('instanceId');
+    mobile = registerOutput<String?>('mobile');
+    mobileCountryCode = registerOutput<String>('mobileCountryCode');
+    password = registerOutput<String?>('password');
+    source = registerOutput<String>('source');
+    sourceUserId = registerOutput<String?>('sourceUserId');
+    status = registerOutput<String>('status');
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -567,22 +571,22 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.displayName = registerOutput<String>('displayName');
-    this.email = registerOutput<String?>('email');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.mobile = registerOutput<String?>('mobile');
-    this.mobileCountryCode = registerOutput<String>('mobileCountryCode');
-    this.password = registerOutput<String?>('password');
-    this.source = registerOutput<String>('source');
-    this.sourceUserId = registerOutput<String?>('sourceUserId');
-    this.status = registerOutput<String>('status');
-    this.userId = registerOutput<String>('userId');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:bastionhost/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String?>('comment');
+    displayName = registerOutput<String>('displayName');
+    email = registerOutput<String?>('email');
+    instanceId = registerOutput<String>('instanceId');
+    mobile = registerOutput<String?>('mobile');
+    mobileCountryCode = registerOutput<String>('mobileCountryCode');
+    password = registerOutput<String?>('password');
+    source = registerOutput<String>('source');
+    sourceUserId = registerOutput<String?>('sourceUserId');
+    status = registerOutput<String>('status');
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
   }
 }

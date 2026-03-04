@@ -118,22 +118,30 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// ARN of the connection.
   late final pulumi.Output<String> arn;
+
   /// ID of the second device in the connection.
   late final pulumi.Output<String> connectedDeviceId;
+
   /// ID of the link for the second device.
   late final pulumi.Output<String?> connectedLinkId;
+
   /// Description of the connection.
   late final pulumi.Output<String?> description;
+
   /// ID of the first device in the connection.
   late final pulumi.Output<String> deviceId;
+
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
+
   /// ID of the link for the first device.
   late final pulumi.Output<String?> linkId;
+
   /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -146,20 +154,20 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectedDeviceId = registerOutput<String>('connectedDeviceId');
-    this.connectedLinkId = registerOutput<String?>('connectedLinkId');
-    this.description = registerOutput<String?>('description');
-    this.deviceId = registerOutput<String>('deviceId');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.linkId = registerOutput<String?>('linkId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:networkmanager/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectedDeviceId = registerOutput<String>('connectedDeviceId');
+    connectedLinkId = registerOutput<String?>('connectedLinkId');
+    description = registerOutput<String?>('description');
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -180,19 +188,19 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectedDeviceId = registerOutput<String>('connectedDeviceId');
-    this.connectedLinkId = registerOutput<String?>('connectedLinkId');
-    this.description = registerOutput<String?>('description');
-    this.deviceId = registerOutput<String>('deviceId');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.linkId = registerOutput<String?>('linkId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:networkmanager/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectedDeviceId = registerOutput<String>('connectedDeviceId');
+    connectedLinkId = registerOutput<String?>('connectedLinkId');
+    description = registerOutput<String?>('description');
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

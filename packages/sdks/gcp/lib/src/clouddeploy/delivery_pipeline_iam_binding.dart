@@ -21,18 +21,20 @@ class DeliveryPipelineIamBinding extends pulumi.CustomResource {
     DeliveryPipelineIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DeliveryPipelineIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DeliveryPipelineIamBindingCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [DeliveryPipelineIamBinding] resource's state with the given [name] and [id].
@@ -53,17 +55,19 @@ class DeliveryPipelineIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DeliveryPipelineIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DeliveryPipelineIamBindingCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

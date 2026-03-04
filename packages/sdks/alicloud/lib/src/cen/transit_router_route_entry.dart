@@ -4,7 +4,7 @@ import 'transit_router_route_entry_state.dart';
 
 /// Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -449,23 +449,31 @@ import 'transit_router_route_entry_state.dart';
 class TransitRouterRouteEntry extends pulumi.CustomResource {
   /// The dry run.
   ///
-  /// > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+  /// &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
   /// If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
   late final pulumi.Output<bool?> dryRun;
+
   /// The associating status of the Transit Router.
   late final pulumi.Output<String> status;
+
   /// The description of the transit router route entry.
   late final pulumi.Output<String?> transitRouterRouteEntryDescription;
+
   /// The CIDR of the transit router route entry.
   late final pulumi.Output<String> transitRouterRouteEntryDestinationCidrBlock;
+
   /// The ID of the route entry.
   late final pulumi.Output<String> transitRouterRouteEntryId;
+
   /// The name of the transit router route entry.
   late final pulumi.Output<String?> transitRouterRouteEntryName;
+
   /// The ID of the transit router route entry next hop.
   late final pulumi.Output<String?> transitRouterRouteEntryNextHopId;
+
   /// The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
   late final pulumi.Output<String> transitRouterRouteEntryNextHopType;
+
   /// The ID of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableId;
 
@@ -478,20 +486,34 @@ class TransitRouterRouteEntry extends pulumi.CustomResource {
     TransitRouterRouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.transitRouterRouteEntryDescription = registerOutput<String?>('transitRouterRouteEntryDescription');
-    this.transitRouterRouteEntryDestinationCidrBlock = registerOutput<String>('transitRouterRouteEntryDestinationCidrBlock');
-    this.transitRouterRouteEntryId = registerOutput<String>('transitRouterRouteEntryId');
-    this.transitRouterRouteEntryName = registerOutput<String?>('transitRouterRouteEntryName');
-    this.transitRouterRouteEntryNextHopId = registerOutput<String?>('transitRouterRouteEntryNextHopId');
-    this.transitRouterRouteEntryNextHopType = registerOutput<String>('transitRouterRouteEntryNextHopType');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
+         'alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    transitRouterRouteEntryDescription = registerOutput<String?>(
+      'transitRouterRouteEntryDescription',
+    );
+    transitRouterRouteEntryDestinationCidrBlock = registerOutput<String>(
+      'transitRouterRouteEntryDestinationCidrBlock',
+    );
+    transitRouterRouteEntryId = registerOutput<String>(
+      'transitRouterRouteEntryId',
+    );
+    transitRouterRouteEntryName = registerOutput<String?>(
+      'transitRouterRouteEntryName',
+    );
+    transitRouterRouteEntryNextHopId = registerOutput<String?>(
+      'transitRouterRouteEntryNextHopId',
+    );
+    transitRouterRouteEntryNextHopType = registerOutput<String>(
+      'transitRouterRouteEntryNextHopType',
+    );
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
   }
 
   /// Gets an existing [TransitRouterRouteEntry] resource's state with the given [name] and [id].
@@ -512,19 +534,33 @@ class TransitRouterRouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.transitRouterRouteEntryDescription = registerOutput<String?>('transitRouterRouteEntryDescription');
-    this.transitRouterRouteEntryDestinationCidrBlock = registerOutput<String>('transitRouterRouteEntryDestinationCidrBlock');
-    this.transitRouterRouteEntryId = registerOutput<String>('transitRouterRouteEntryId');
-    this.transitRouterRouteEntryName = registerOutput<String?>('transitRouterRouteEntryName');
-    this.transitRouterRouteEntryNextHopId = registerOutput<String?>('transitRouterRouteEntryNextHopId');
-    this.transitRouterRouteEntryNextHopType = registerOutput<String>('transitRouterRouteEntryNextHopType');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
+         'alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    transitRouterRouteEntryDescription = registerOutput<String?>(
+      'transitRouterRouteEntryDescription',
+    );
+    transitRouterRouteEntryDestinationCidrBlock = registerOutput<String>(
+      'transitRouterRouteEntryDestinationCidrBlock',
+    );
+    transitRouterRouteEntryId = registerOutput<String>(
+      'transitRouterRouteEntryId',
+    );
+    transitRouterRouteEntryName = registerOutput<String?>(
+      'transitRouterRouteEntryName',
+    );
+    transitRouterRouteEntryNextHopId = registerOutput<String?>(
+      'transitRouterRouteEntryNextHopId',
+    );
+    transitRouterRouteEntryNextHopType = registerOutput<String>(
+      'transitRouterRouteEntryNextHopType',
+    );
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
   }
 }

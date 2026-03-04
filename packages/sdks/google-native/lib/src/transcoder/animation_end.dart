@@ -9,20 +9,19 @@ class AnimationEnd {
 
   /// Creates a new [AnimationEnd].
   /// [startTimeOffset] The time to end overlay object, in seconds. Default: 0
-  AnimationEnd({
-    this.startTimeOffset,
-  });
+  AnimationEnd({this.startTimeOffset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeOffset': ?startTimeOffset,
-    };
+    return <String, dynamic>{'startTimeOffset': ?startTimeOffset};
   }
 
   factory AnimationEnd.fromMap(Map<String, dynamic> map) {
     return AnimationEnd(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      startTimeOffset: (() {
+        final guardedValue = map['startTimeOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

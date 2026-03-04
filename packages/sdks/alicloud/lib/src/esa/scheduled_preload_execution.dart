@@ -8,7 +8,7 @@ import 'scheduled_preload_execution_state.dart';
 ///
 /// For information about ESA Scheduled Preload Execution and how to use it, see [What is Scheduled Preload Execution](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateScheduledPreloadExecutions).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -257,16 +257,22 @@ import 'scheduled_preload_execution_state.dart';
 class ScheduledPreloadExecution extends pulumi.CustomResource {
   /// The end time of the prefetch plan.
   late final pulumi.Output<String?> endTime;
+
   /// The time interval between each batch execution. Unit: seconds.
   late final pulumi.Output<int> interval;
+
   /// The ID of the prefetch plan.
   late final pulumi.Output<String> scheduledPreloadExecutionId;
+
   /// The ID of the prefetch task.
   late final pulumi.Output<String> scheduledPreloadJobId;
+
   /// The number of URLs prefetched in each batch.
   late final pulumi.Output<int> sliceLen;
+
   /// The start time of the prefetch plan.
   late final pulumi.Output<String?> startTime;
+
   /// The status of the prefetch plan, including the following statuses.
   late final pulumi.Output<String> status;
 
@@ -279,18 +285,20 @@ class ScheduledPreloadExecution extends pulumi.CustomResource {
     ScheduledPreloadExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endTime = registerOutput<String?>('endTime');
-    this.interval = registerOutput<int>('interval');
-    this.scheduledPreloadExecutionId = registerOutput<String>('scheduledPreloadExecutionId');
-    this.scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
-    this.sliceLen = registerOutput<int>('sliceLen');
-    this.startTime = registerOutput<String?>('startTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endTime = registerOutput<String?>('endTime');
+    interval = registerOutput<int>('interval');
+    scheduledPreloadExecutionId = registerOutput<String>(
+      'scheduledPreloadExecutionId',
+    );
+    scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
+    sliceLen = registerOutput<int>('sliceLen');
+    startTime = registerOutput<String?>('startTime');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ScheduledPreloadExecution] resource's state with the given [name] and [id].
@@ -311,17 +319,19 @@ class ScheduledPreloadExecution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endTime = registerOutput<String?>('endTime');
-    this.interval = registerOutput<int>('interval');
-    this.scheduledPreloadExecutionId = registerOutput<String>('scheduledPreloadExecutionId');
-    this.scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
-    this.sliceLen = registerOutput<int>('sliceLen');
-    this.startTime = registerOutput<String?>('startTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endTime = registerOutput<String?>('endTime');
+    interval = registerOutput<int>('interval');
+    scheduledPreloadExecutionId = registerOutput<String>(
+      'scheduledPreloadExecutionId',
+    );
+    scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
+    sliceLen = registerOutput<int>('sliceLen');
+    startTime = registerOutput<String?>('startTime');
+    status = registerOutput<String>('status');
   }
 }

@@ -11,20 +11,28 @@ import 'extended_location_property.dart';
 class DataLakeConnectorTopicMapArgs {
   /// Name of MQ dataLakeConnector resource
   final pulumi.Input<String> dataLakeConnectorName;
+
   /// DataLake Connector CRD to use.
   final pulumi.Input<String> dataLakeConnectorRef;
+
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// TopicMap for DataLake connector.
   final pulumi.Input<DataLakeConnectorMap> mapping;
+
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of MQ dataLakeConnector/topicMap resource
   final pulumi.Input<String>? topicMapName;
 
@@ -54,9 +62,17 @@ class DataLakeConnectorTopicMapArgs {
     return <String, dynamic>{
       'dataLakeConnectorName': dataLakeConnectorName,
       'dataLakeConnectorRef': dataLakeConnectorRef,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocationProperty, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<
+            ExtendedLocationProperty,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
-      'mapping': pulumi.Input.mapInputValue<DataLakeConnectorMap, Map<String, dynamic>>(mapping, (value) => value.toMap()),
+      'mapping':
+          pulumi.Input.mapInputValue<
+            DataLakeConnectorMap,
+            Map<String, dynamic>
+          >(mapping, (value) => value.toMap()),
       'mqName': mqName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -66,16 +82,43 @@ class DataLakeConnectorTopicMapArgs {
 
   factory DataLakeConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorTopicMapArgs(
-      dataLakeConnectorName: (map['dataLakeConnectorName'] as String).input(),
-      dataLakeConnectorRef: (map['dataLakeConnectorRef'] as String).input(),
-      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mapping: (DataLakeConnectorMap.fromMap((map['mapping'] as Map).cast<String, dynamic>())).input(),
-      mqName: (map['mqName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName']! as String).input(),
+      dataLakeConnectorName: pulumi.Input.fromValue(
+        map['dataLakeConnectorName'] as String,
+      ),
+      dataLakeConnectorRef: pulumi.Input.fromValue(
+        map['dataLakeConnectorRef'] as String,
+      ),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocationProperty.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mapping: pulumi.Input.fromValue(
+        DataLakeConnectorMap.fromMap(
+          (map['mapping']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topicMapName: (() {
+        final guardedValue = map['topicMapName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

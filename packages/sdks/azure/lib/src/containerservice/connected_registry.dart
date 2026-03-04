@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connected_registry_args.dart';
-import 'connected_registry_notification.dart';
 import 'connected_registry_state.dart';
 
 /// Manages a Container Connected Registry.
@@ -343,7 +342,7 @@ import 'connected_registry_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01
@@ -358,28 +357,39 @@ import 'connected_registry_state.dart';
 class ConnectedRegistry extends pulumi.CustomResource {
   /// Should the log auditing be enabled?
   late final pulumi.Output<bool?> auditLogEnabled;
+
   /// Specifies a list of IDs of Container Registry Tokens, which are meant to be used by the clients to connect to the Connected Registry.
   late final pulumi.Output<List<String>?> clientTokenIds;
+
   /// The ID of the Container Registry that this Connected Registry will reside in. Changing this forces a new Container Connected Registry to be created.
   ///
-  /// > **Note:** If `parent_registry_id` is not specified, the Connected Registry will be connected to the Container Registry identified by `container_registry_id`.
+  /// &gt; **Note:** If `parent_registry_id` is not specified, the Connected Registry will be connected to the Container Registry identified by `container_registry_id`.
   late final pulumi.Output<String> containerRegistryId;
+
   /// The verbosity of the logs. Possible values are `None`, `Debug`, `Information`, `Warning` and `Error`. Defaults to `None`.
   late final pulumi.Output<String?> logLevel;
+
   /// The mode of the Connected Registry. Possible values are `Mirror`, `ReadOnly`, `ReadWrite` and `Registry`. Changing this forces a new Container Connected Registry to be created. Defaults to `ReadWrite`.
   late final pulumi.Output<String?> mode;
+
   /// The name which should be used for this Container Connected Registry. Changing this forces a new Container Connected Registry to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `notification` blocks as defined below.
-  late final pulumi.Output<List<ConnectedRegistryNotification>?> notifications;
+  late final pulumi.Output<List<Map<String, dynamic>>?> notifications;
+
   /// The ID of the parent registry. This can be either a Container Registry ID or a Connected Registry ID. Changing this forces a new Container Connected Registry to be created.
   late final pulumi.Output<String?> parentRegistryId;
+
   /// The period of time (in form of ISO8601) for which a message is available to sync before it is expired. Allowed range is from `P1D` to `P90D`. Defaults to `P1D`.
   late final pulumi.Output<String?> syncMessageTtl;
+
   /// The cron expression indicating the schedule that the Connected Registry will sync with its parent. Defaults to `* * * * *`.
   late final pulumi.Output<String?> syncSchedule;
+
   /// The ID of the Container Registry Token which is used for synchronizing the Connected Registry. Changing this forces a new Container Connected Registry to be created.
   late final pulumi.Output<String> syncTokenId;
+
   /// The time window (in form of ISO8601) during which sync is enabled for each schedule occurrence. Allowed range is from `PT3H` to `P7D`.
   late final pulumi.Output<String?> syncWindow;
 
@@ -392,23 +402,25 @@ class ConnectedRegistry extends pulumi.CustomResource {
     ConnectedRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/connectedRegistry:ConnectedRegistry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
-    this.clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.logLevel = registerOutput<String?>('logLevel');
-    this.mode = registerOutput<String?>('mode');
+         'azure:containerservice/connectedRegistry:ConnectedRegistry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    logLevel = registerOutput<String?>('logLevel');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<List<ConnectedRegistryNotification>?>('notifications');
-    this.parentRegistryId = registerOutput<String?>('parentRegistryId');
-    this.syncMessageTtl = registerOutput<String?>('syncMessageTtl');
-    this.syncSchedule = registerOutput<String?>('syncSchedule');
-    this.syncTokenId = registerOutput<String>('syncTokenId');
-    this.syncWindow = registerOutput<String?>('syncWindow');
+    notifications = registerOutput<List<Map<String, dynamic>>?>(
+      'notifications',
+    );
+    parentRegistryId = registerOutput<String?>('parentRegistryId');
+    syncMessageTtl = registerOutput<String?>('syncMessageTtl');
+    syncSchedule = registerOutput<String?>('syncSchedule');
+    syncTokenId = registerOutput<String>('syncTokenId');
+    syncWindow = registerOutput<String?>('syncWindow');
   }
 
   /// Gets an existing [ConnectedRegistry] resource's state with the given [name] and [id].
@@ -429,22 +441,24 @@ class ConnectedRegistry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/connectedRegistry:ConnectedRegistry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
-    this.clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.logLevel = registerOutput<String?>('logLevel');
-    this.mode = registerOutput<String?>('mode');
+         'azure:containerservice/connectedRegistry:ConnectedRegistry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    logLevel = registerOutput<String?>('logLevel');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<List<ConnectedRegistryNotification>?>('notifications');
-    this.parentRegistryId = registerOutput<String?>('parentRegistryId');
-    this.syncMessageTtl = registerOutput<String?>('syncMessageTtl');
-    this.syncSchedule = registerOutput<String?>('syncSchedule');
-    this.syncTokenId = registerOutput<String>('syncTokenId');
-    this.syncWindow = registerOutput<String?>('syncWindow');
+    notifications = registerOutput<List<Map<String, dynamic>>?>(
+      'notifications',
+    );
+    parentRegistryId = registerOutput<String?>('parentRegistryId');
+    syncMessageTtl = registerOutput<String?>('syncMessageTtl');
+    syncSchedule = registerOutput<String?>('syncSchedule');
+    syncTokenId = registerOutput<String>('syncTokenId');
+    syncWindow = registerOutput<String?>('syncWindow');
   }
 }

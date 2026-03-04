@@ -10,18 +10,25 @@ import 'storage_account.dart';
 class StorageInsightConfigArgs {
   /// The names of the blob containers that the workspace should read
   final pulumi.Input<List<String>>? containers;
+
   /// The ETag of the storage insight.
   final pulumi.Input<String>? eTag;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The storage account connection details
   final pulumi.Input<StorageAccount> storageAccount;
+
   /// Name of the storageInsightsConfigs resource
   final pulumi.Input<String>? storageInsightName;
+
   /// The names of the Azure tables that the workspace should read
   final pulumi.Input<List<String>>? tables;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -50,7 +57,11 @@ class StorageInsightConfigArgs {
       'containers': ?containers,
       'eTag': ?eTag,
       'resourceGroupName': resourceGroupName,
-      'storageAccount': pulumi.Input.mapInputValue<StorageAccount, Map<String, dynamic>>(storageAccount, (value) => value.toMap()),
+      'storageAccount':
+          pulumi.Input.mapInputValue<StorageAccount, Map<String, dynamic>>(
+            storageAccount,
+            (value) => value.toMap(),
+          ),
       'storageInsightName': ?storageInsightName,
       'tables': ?tables,
       'tags': ?tags,
@@ -60,15 +71,42 @@ class StorageInsightConfigArgs {
 
   factory StorageInsightConfigArgs.fromMap(Map<String, dynamic> map) {
     return StorageInsightConfigArgs(
-      containers: map['containers'] == null ? null : ((map['containers']! as List).cast<String>()).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccount: (StorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
-      storageInsightName: map['storageInsightName'] == null ? null : (map['storageInsightName']! as String).input(),
-      tables: map['tables'] == null ? null : ((map['tables']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      containers: (() {
+        final guardedValue = map['containers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageAccount: pulumi.Input.fromValue(
+        StorageAccount.fromMap(
+          (map['storageAccount']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      storageInsightName: (() {
+        final guardedValue = map['storageInsightName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tables: (() {
+        final guardedValue = map['tables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

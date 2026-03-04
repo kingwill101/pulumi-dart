@@ -500,7 +500,7 @@ import 'configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AutoManage` - 2022-05-04
@@ -515,26 +515,38 @@ import 'configuration_state.dart';
 class Configuration extends pulumi.CustomResource {
   /// A `antimalware` block as defined below.
   late final pulumi.Output<ConfigurationAntimalware?> antimalware;
+
   /// Whether the automation account is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> automationAccountEnabled;
+
   /// A `azure_security_baseline` block as defined below.
-  late final pulumi.Output<ConfigurationAzureSecurityBaseline?> azureSecurityBaseline;
+  late final pulumi.Output<ConfigurationAzureSecurityBaseline?>
+  azureSecurityBaseline;
+
   /// A `backup` block as defined below.
   late final pulumi.Output<ConfigurationBackup?> backup;
+
   /// Whether the boot diagnostics are enabled. Defaults to `false`.
   late final pulumi.Output<bool?> bootDiagnosticsEnabled;
+
   /// Whether the defender for cloud is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> defenderForCloudEnabled;
+
   /// Whether the guest configuration is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> guestConfigurationEnabled;
+
   /// The Azure Region where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
   late final pulumi.Output<String> location;
+
   /// Whether log analytics are enabled. Defaults to `false`.
   late final pulumi.Output<bool?> logAnalyticsEnabled;
+
   /// The name which should be used for this Automanage Configuration. Changing this forces a new Automanage Configuration to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Whether the status change alert is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> statusChangeAlertEnabled;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -548,24 +560,32 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automanage/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
-    this.automationAccountEnabled = registerOutput<bool?>('automationAccountEnabled');
-    this.azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>('azureSecurityBaseline');
-    this.backup = registerOutput<ConfigurationBackup?>('backup');
-    this.bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
-    this.defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
-    this.guestConfigurationEnabled = registerOutput<bool?>('guestConfigurationEnabled');
-    this.location = registerOutput<String>('location');
-    this.logAnalyticsEnabled = registerOutput<bool?>('logAnalyticsEnabled');
+         'azure:automanage/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
+    automationAccountEnabled = registerOutput<bool?>(
+      'automationAccountEnabled',
+    );
+    azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>(
+      'azureSecurityBaseline',
+    );
+    backup = registerOutput<ConfigurationBackup?>('backup');
+    bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
+    defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
+    guestConfigurationEnabled = registerOutput<bool?>(
+      'guestConfigurationEnabled',
+    );
+    location = registerOutput<String>('location');
+    logAnalyticsEnabled = registerOutput<bool?>('logAnalyticsEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.statusChangeAlertEnabled = registerOutput<bool?>('statusChangeAlertEnabled');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    statusChangeAlertEnabled = registerOutput<bool?>(
+      'statusChangeAlertEnabled',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Configuration] resource's state with the given [name] and [id].
@@ -586,23 +606,31 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automanage/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
-    this.automationAccountEnabled = registerOutput<bool?>('automationAccountEnabled');
-    this.azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>('azureSecurityBaseline');
-    this.backup = registerOutput<ConfigurationBackup?>('backup');
-    this.bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
-    this.defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
-    this.guestConfigurationEnabled = registerOutput<bool?>('guestConfigurationEnabled');
-    this.location = registerOutput<String>('location');
-    this.logAnalyticsEnabled = registerOutput<bool?>('logAnalyticsEnabled');
+         'azure:automanage/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
+    automationAccountEnabled = registerOutput<bool?>(
+      'automationAccountEnabled',
+    );
+    azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>(
+      'azureSecurityBaseline',
+    );
+    backup = registerOutput<ConfigurationBackup?>('backup');
+    bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
+    defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
+    guestConfigurationEnabled = registerOutput<bool?>(
+      'guestConfigurationEnabled',
+    );
+    location = registerOutput<String>('location');
+    logAnalyticsEnabled = registerOutput<bool?>('logAnalyticsEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.statusChangeAlertEnabled = registerOutput<bool?>('statusChangeAlertEnabled');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    statusChangeAlertEnabled = registerOutput<bool?>(
+      'statusChangeAlertEnabled',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

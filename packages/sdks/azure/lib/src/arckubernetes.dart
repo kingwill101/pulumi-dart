@@ -1,5 +1,3 @@
-library module_arckubernetes;
-
 export 'arckubernetes/cluster.dart';
 export 'arckubernetes/cluster_args.dart';
 export 'arckubernetes/cluster_extension.dart';

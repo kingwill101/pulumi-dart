@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesSlbRule {
   /// Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
   final pulumi.Input<String> domain;
+
   /// Rule ID.
   final pulumi.Input<String> id;
+
   /// Rule name.
   final pulumi.Input<String> name;
+
   /// ID of the linked VServer group.
   final pulumi.Input<String> serverGroupId;
+
   /// Path in the HTTP request where the rule applies (e.g. "/image").
   final pulumi.Input<String> url;
 
@@ -40,12 +44,11 @@ class GetRulesSlbRule {
 
   factory GetRulesSlbRule.fromMap(Map<String, dynamic> map) {
     return GetRulesSlbRule(
-      domain: (map['domain'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      serverGroupId: (map['serverGroupId'] as String).input(),
-      url: (map['url'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

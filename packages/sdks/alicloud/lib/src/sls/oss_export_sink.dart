@@ -9,7 +9,7 @@ import 'oss_export_sink_state.dart';
 ///
 /// For information about Log Service (SLS) Oss Export Sink and how to use it, see [What is Oss Export Sink](https://www.alibabacloud.com/help/en/sls/developer-reference/api-sls-2020-12-30-createossexport).
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -558,16 +558,22 @@ import 'oss_export_sink_state.dart';
 class OssExportSink extends pulumi.CustomResource {
   /// OSSExportConfiguration See `configuration` below.
   late final pulumi.Output<OssExportSinkConfiguration> configuration;
+
   /// Creation time. Example value: 1718787534
   late final pulumi.Output<int> createTime;
+
   /// The description of the job.
   late final pulumi.Output<String?> description;
+
   /// The display name of the job.
   late final pulumi.Output<String> displayName;
+
   /// The unique identifier of the OSS data shipping job.
   late final pulumi.Output<String> jobName;
+
   /// The name of the project.
   late final pulumi.Output<String> project;
+
   /// The status of the post task. Example value: RUNNING
   late final pulumi.Output<String> status;
 
@@ -580,18 +586,18 @@ class OssExportSink extends pulumi.CustomResource {
     OssExportSinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/ossExportSink:OssExportSink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configuration = registerOutput<OssExportSinkConfiguration>('configuration');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.jobName = registerOutput<String>('jobName');
-    this.project = registerOutput<String>('project');
-    this.status = registerOutput<String>('status');
+         'alicloud:sls/ossExportSink:OssExportSink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configuration = registerOutput<OssExportSinkConfiguration>('configuration');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    jobName = registerOutput<String>('jobName');
+    project = registerOutput<String>('project');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [OssExportSink] resource's state with the given [name] and [id].
@@ -612,17 +618,17 @@ class OssExportSink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/ossExportSink:OssExportSink',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configuration = registerOutput<OssExportSinkConfiguration>('configuration');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.jobName = registerOutput<String>('jobName');
-    this.project = registerOutput<String>('project');
-    this.status = registerOutput<String>('status');
+         'alicloud:sls/ossExportSink:OssExportSink',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configuration = registerOutput<OssExportSinkConfiguration>('configuration');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    jobName = registerOutput<String>('jobName');
+    project = registerOutput<String>('project');
+    status = registerOutput<String>('status');
   }
 }

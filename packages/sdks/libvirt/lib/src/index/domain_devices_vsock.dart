@@ -9,14 +9,19 @@ import 'domain_devices_vsock_driver.dart';
 class DomainDevicesVsock {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
   final pulumi.Input<DomainDevicesVsockAcpi>? acpi;
+
   /// Specifies the memory address for the persistent storage device in the guest's address space.
   final pulumi.Input<Map<String, dynamic>>? address;
+
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   final pulumi.Input<DomainDevicesVsockAlias>? alias;
+
   /// Configures the connection identifier (CID) for the vsock device.
   final pulumi.Input<DomainDevicesVsockCid>? cid;
+
   /// Configures driver options for the vsock device.
   final pulumi.Input<DomainDevicesVsockDriver>? driver;
+
   /// Defines the model of the vsock device for the domain.
   final pulumi.Input<String>? model;
 
@@ -38,24 +43,81 @@ class DomainDevicesVsock {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVsockAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
+      'acpi':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVsockAcpi,
+            Map<String, dynamic>
+          >(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVsockAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
-      'cid': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVsockCid, Map<String, dynamic>>(cid, (value) => value.toMap()),
-      'driver': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVsockDriver, Map<String, dynamic>>(driver, (value) => value.toMap()),
+      'alias':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVsockAlias,
+            Map<String, dynamic>
+          >(alias, (value) => value.toMap()),
+      'cid':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVsockCid,
+            Map<String, dynamic>
+          >(cid, (value) => value.toMap()),
+      'driver':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVsockDriver,
+            Map<String, dynamic>
+          >(driver, (value) => value.toMap()),
       'model': ?model,
     };
   }
 
   factory DomainDevicesVsock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVsock(
-      acpi: map['acpi'] == null ? null : (DomainDevicesVsockAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesVsockAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
-      cid: map['cid'] == null ? null : (DomainDevicesVsockCid.fromMap((map['cid']! as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesVsockDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model']! as String).input(),
+      acpi: (() {
+        final guardedValue = map['acpi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVsockAcpi.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVsockAlias.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cid: (() {
+        final guardedValue = map['cid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVsockCid.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      driver: (() {
+        final guardedValue = map['driver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVsockDriver.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

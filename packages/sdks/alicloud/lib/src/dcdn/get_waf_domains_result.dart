@@ -8,6 +8,7 @@ class GetWafDomainsResult {
   /// A list of Dcdn Waf Domains. Each element contains the following attributes:
   final List<GetWafDomainsDomain> domains;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,7 +33,11 @@ class GetWafDomainsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domains': pulumi.Input.encodeList<GetWafDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
+      'domains':
+          pulumi.Input.encodeList<GetWafDomainsDomain, Map<String, dynamic>>(
+            domains,
+            (value) => value.toMap(),
+          ),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -43,13 +48,28 @@ class GetWafDomainsResult {
 
   factory GetWafDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsResult(
-      domains: pulumi.Input.decodeList<GetWafDomainsDomain>(map['domains'], (value) => GetWafDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      domains: pulumi.Input.decodeList<GetWafDomainsDomain>(
+        map['domains']!,
+        (value) =>
+            GetWafDomainsDomain.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      queryArgs: map['queryArgs'] == null ? null : map['queryArgs']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      queryArgs: (() {
+        final guardedValue = map['queryArgs'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

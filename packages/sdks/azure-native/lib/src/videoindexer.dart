@@ -1,5 +1,3 @@
-library module_videoindexer;
-
 export 'videoindexer/account.dart';
 export 'videoindexer/account_args.dart';
 export 'videoindexer/functions.dart';

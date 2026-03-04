@@ -88,7 +88,7 @@ import 'get_vpc_flow_logs_result.dart';
 
 /// This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -243,7 +243,7 @@ Future<GetBgpGroupsResult> getBgpGroups(
 
 /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -428,7 +428,7 @@ Future<GetBgpNetworksResult> getBgpNetworks(
 
 /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -654,7 +654,7 @@ Future<GetBgpPeersResult> getBgpPeers(
 
 /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available in 1.36.0+.
+/// &gt; **NOTE:** Available in 1.36.0+.
 ///
 /// ## Example Usage
 ///
@@ -819,7 +819,7 @@ Future<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(
 
 /// This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -1088,7 +1088,7 @@ Future<GetDhcpOptionsSetsResult> getDhcpOptionsSets(
 
 /// This data source provides a list of available zones by the enhanced Nat Gateway.
 ///
-/// > **NOTE:** Available since v1.102.0.
+/// &gt; **NOTE:** Available since v1.102.0.
 ///
 /// ## Example Usage
 ///
@@ -1198,7 +1198,7 @@ Future<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZones(
 ///
 /// For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
 ///
-/// > **NOTE:** Available since v1.209.0.
+/// &gt; **NOTE:** Available since v1.209.0.
 ///
 /// ## Example Usage
 ///
@@ -1307,7 +1307,7 @@ Future<GetFlowLogServiceResult> getFlowLogService(
 
 /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available since v1.37.0.
+/// &gt; **NOTE:** Available since v1.37.0.
 ///
 /// ## Example Usage
 ///
@@ -1703,7 +1703,7 @@ Future<GetForwardEntriesResult> getForwardEntries(
 
 /// This data source provides the Havips of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.120.0+.
+/// &gt; **NOTE:** Available in v1.120.0+.
 ///
 /// ## Example Usage
 ///
@@ -1834,7 +1834,7 @@ Future<GetHavipsResult> getHavips(
 
 /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -2133,7 +2133,7 @@ Future<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocations(
 
 /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -2375,7 +2375,7 @@ Future<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrs(
 
 /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -2647,7 +2647,7 @@ Future<GetIpamIpamPoolsResult> getIpamIpamPools(
 
 /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -2903,7 +2903,7 @@ Future<GetIpamIpamScopesResult> getIpamIpamScopes(
 
 /// This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -3133,7 +3133,7 @@ Future<GetIpamIpamsResult> getIpamIpams(
 
 /// This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.161.0+.
+/// &gt; **NOTE:** Available since v1.161.0+.
 ///
 /// ## Example Usage
 ///
@@ -3288,7 +3288,7 @@ Future<GetIpsecServersResult> getIpsecServers(
 
 /// This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.181.0+.
+/// &gt; **NOTE:** Available in v1.181.0+.
 ///
 /// ## Example Usage
 ///
@@ -3428,7 +3428,7 @@ Future<GetIpv4GatewaysResult> getIpv4Gateways(
 
 /// This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -3637,7 +3637,7 @@ Future<GetIpv6AddressesResult> getIpv6Addresses(
 
 /// This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -3887,7 +3887,7 @@ Future<GetIpv6EgressRulesResult> getIpv6EgressRules(
 
 /// This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -4126,7 +4126,7 @@ Future<GetIpv6GatewaysResult> getIpv6Gateways(
 
 /// This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -4341,7 +4341,7 @@ Future<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths(
 
 /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available since v1.37.0.
+/// &gt; **NOTE:** Available since v1.37.0.
 ///
 /// ## Example Usage
 ///
@@ -4583,7 +4583,7 @@ Future<GetNatGatewaysResult> getNatGateways(
 
 /// This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -4893,7 +4893,7 @@ Future<GetNatIpCidrsResult> getNatIpCidrs(
 
 /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -5269,7 +5269,7 @@ Future<GetNatIpsResult> getNatIps(
 
 /// This data source provides the Network Acls of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.122.0+.
+/// &gt; **NOTE:** Available in v1.122.0+.
 ///
 /// ## Example Usage
 ///
@@ -5525,7 +5525,7 @@ Future<GetNetworksResult> getNetworks(
   return GetNetworksResult.fromMap(result);
 }
 
-/// > **NOTE:** Available in v1.162.0+.
+/// &gt; **NOTE:** Available in v1.162.0+.
 ///
 /// The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
 ///
@@ -5656,7 +5656,7 @@ Future<GetPbrRouteEntriesResult> getPbrRouteEntries(
 
 /// This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.186.0.
+/// &gt; **NOTE:** Available since v1.186.0.
 ///
 /// ## Example Usage
 ///
@@ -5796,7 +5796,7 @@ Future<GetPeerConnectionsResult> getPeerConnections(
 
 /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.182.0.
+/// &gt; **NOTE:** Available since v1.182.0.
 ///
 /// ## Example Usage
 ///
@@ -5936,9 +5936,9 @@ Future<GetPrefixListsResult> getPrefixLists(
 
 /// This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.189.0+.
+/// &gt; **NOTE:** Available in v1.189.0+.
 ///
-/// > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+/// &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 ///
 /// ## Example Usage
 ///
@@ -6105,7 +6105,7 @@ Future<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocks(
 
 /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.186.0+.
+/// &gt; **NOTE:** Available in v1.186.0+.
 ///
 /// ## Example Usage
 ///
@@ -6260,7 +6260,7 @@ Future<GetPublicIpAddressPoolsResult> getPublicIpAddressPools(
 
 /// This data source provides a list of Route Entries owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available in 1.37.0+.
+/// &gt; **NOTE:** Available in 1.37.0+.
 ///
 /// ## Example Usage
 ///
@@ -6805,7 +6805,7 @@ Future<GetRouteEntriesResult> getRouteEntries(
 
 /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available since v1.36.0.
+/// &gt; **NOTE:** Available since v1.36.0.
 ///
 /// ## Example Usage
 ///
@@ -7026,7 +7026,7 @@ Future<GetRouteTablesResult> getRouteTables(
 /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 /// that connect VPCs together.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
 ///
 /// ## Example Usage
 ///
@@ -7149,7 +7149,7 @@ Future<GetRouterInterfacesResult> getRouterInterfaces(
 
 /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available since 1.37.0+.
+/// &gt; **NOTE:** Available since 1.37.0+.
 ///
 /// ## Example Usage
 ///
@@ -7990,7 +7990,7 @@ Future<GetSwitchesResult> getSwitches(
 
 /// This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -8154,7 +8154,8 @@ Future<GetSwitchesResult> getSwitches(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpc_get_traffic_mirror_filter_egress_rules_get_traffic_mirror_filter_egress_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(
+Future<GetTrafficMirrorFilterEgressRulesResult>
+getTrafficMirrorFilterEgressRules(
   GetTrafficMirrorFilterEgressRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -8169,7 +8170,7 @@ Future<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRule
 
 /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.141.0+.
+/// &gt; **NOTE:** Available in v1.141.0+.
 ///
 /// ## Example Usage
 ///
@@ -8333,7 +8334,8 @@ Future<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRule
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpc_get_traffic_mirror_filter_ingress_rules_get_traffic_mirror_filter_ingress_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(
+Future<GetTrafficMirrorFilterIngressRulesResult>
+getTrafficMirrorFilterIngressRules(
   GetTrafficMirrorFilterIngressRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -8348,7 +8350,7 @@ Future<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRu
 
 /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.140.0.
+/// &gt; **NOTE:** Available since v1.140.0.
 ///
 /// ## Example Usage
 ///
@@ -8565,7 +8567,7 @@ Future<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters(
 ///
 /// For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
 ///
-/// > **NOTE:** Available since v1.141.0.
+/// &gt; **NOTE:** Available since v1.141.0.
 ///
 /// ## Example Usage
 ///
@@ -8674,7 +8676,7 @@ Future<GetTrafficMirrorServiceResult> getTrafficMirrorService(
 
 /// This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -9123,7 +9125,7 @@ Future<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions(
 
 /// This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.122.0+.
+/// &gt; **NOTE:** Available in v1.122.0+.
 ///
 /// ## Example Usage
 ///

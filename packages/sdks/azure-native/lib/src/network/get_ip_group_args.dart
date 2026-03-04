@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpGroupArgs {
   /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back referenced by the IpGroups resource.
   final pulumi.Input<String>? expand;
+
   /// The name of the ipGroups.
   final pulumi.Input<String> ipGroupsName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetIpGroupArgs {
 
   factory GetIpGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetIpGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      ipGroupsName: (map['ipGroupsName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipGroupsName: pulumi.Input.fromValue(map['ipGroupsName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -138,36 +138,54 @@ import 'system_data_response.dart';
 class RemediationAtResourceGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
   late final pulumi.Output<String> correlationId;
+
   /// The time at which the remediation was created.
   late final pulumi.Output<String> createdOn;
+
   /// The deployment status summary for all deployments created by the remediation.
-  late final pulumi.Output<RemediationDeploymentSummaryResponse> deploymentStatus;
+  late final pulumi.Output<RemediationDeploymentSummaryResponse>
+  deploymentStatus;
+
   /// The remediation failure threshold settings
-  late final pulumi.Output<RemediationPropertiesResponseFailureThreshold?> failureThreshold;
+  late final pulumi.Output<RemediationPropertiesResponseFailureThreshold?>
+  failureThreshold;
+
   /// The filters that will be applied to determine which resources to remediate.
   late final pulumi.Output<RemediationFiltersResponse?> filters;
+
   /// The time at which the remediation was last updated.
   late final pulumi.Output<String> lastUpdatedOn;
+
   /// The name of the remediation.
   late final pulumi.Output<String> name;
+
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   late final pulumi.Output<int?> parallelDeployments;
+
   /// The resource ID of the policy assignment that should be remediated.
   late final pulumi.Output<String?> policyAssignmentId;
+
   /// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   late final pulumi.Output<String?> policyDefinitionReferenceId;
+
   /// The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded.
   late final pulumi.Output<String> provisioningState;
+
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   late final pulumi.Output<int?> resourceCount;
+
   /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   late final pulumi.Output<String?> resourceDiscoveryMode;
+
   /// The remediation status message. Provides additional details regarding the state of the remediation.
   late final pulumi.Output<String> statusMessage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the remediation.
   late final pulumi.Output<String> type;
 
@@ -180,27 +198,34 @@ class RemediationAtResourceGroup extends pulumi.CustomResource {
     RemediationAtResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:policyinsights:RemediationAtResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.correlationId = registerOutput<String>('correlationId');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.deploymentStatus = registerOutput<RemediationDeploymentSummaryResponse>('deploymentStatus');
-    this.failureThreshold = registerOutput<RemediationPropertiesResponseFailureThreshold?>('failureThreshold');
-    this.filters = registerOutput<RemediationFiltersResponse?>('filters');
-    this.lastUpdatedOn = registerOutput<String>('lastUpdatedOn');
+         'azure-native:policyinsights:RemediationAtResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    correlationId = registerOutput<String>('correlationId');
+    createdOn = registerOutput<String>('createdOn');
+    deploymentStatus = registerOutput<RemediationDeploymentSummaryResponse>(
+      'deploymentStatus',
+    );
+    failureThreshold =
+        registerOutput<RemediationPropertiesResponseFailureThreshold?>(
+          'failureThreshold',
+        );
+    filters = registerOutput<RemediationFiltersResponse?>('filters');
+    lastUpdatedOn = registerOutput<String>('lastUpdatedOn');
     this.name = registerOutput<String>('name');
-    this.parallelDeployments = registerOutput<int?>('parallelDeployments');
-    this.policyAssignmentId = registerOutput<String?>('policyAssignmentId');
-    this.policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceCount = registerOutput<int?>('resourceCount');
-    this.resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String?>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>(
+      'policyDefinitionReferenceId',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCount = registerOutput<int?>('resourceCount');
+    resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

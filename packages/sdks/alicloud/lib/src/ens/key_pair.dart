@@ -6,7 +6,7 @@ import 'key_pair_state.dart';
 ///
 /// For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -139,6 +139,7 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   /// The name of the key pair.
   late final pulumi.Output<String> keyPairName;
+
   /// The version number.
   late final pulumi.Output<String> version;
 
@@ -151,13 +152,13 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.version = registerOutput<String>('version');
+         'alicloud:ens/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyPairName = registerOutput<String>('keyPairName');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [KeyPair] resource's state with the given [name] and [id].
@@ -178,12 +179,12 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.version = registerOutput<String>('version');
+         'alicloud:ens/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyPairName = registerOutput<String>('keyPairName');
+    version = registerOutput<String>('version');
   }
 }

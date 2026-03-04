@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerEncryptionOptions {
   /// ARN of KMS CMK to use for encryption at rest. Requires setting `use_aws_owned_key` to `false`. To perform drift detection when AWS-managed CMKs or customer-managed CMKs are in use, this value must be configured.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Whether to enable an AWS-owned KMS CMK not in your account. Defaults to `true`. Setting to `false` without configuring `kms_key_id` creates an AWS-managed CMK aliased to `aws/mq` in your account.
   final pulumi.Input<bool>? useAwsOwnedKey;
 
   /// Creates a new [BrokerEncryptionOptions].
   /// [kmsKeyId] ARN of KMS CMK to use for encryption at rest. Requires setting `use_aws_owned_key` to `false`. To perform drift detection when AWS-managed CMKs or customer-managed CMKs are in use, this value must be configured.
   /// [useAwsOwnedKey] Whether to enable an AWS-owned KMS CMK not in your account. Defaults to `true`. Setting to `false` without configuring `kms_key_id` creates an AWS-managed CMK aliased to `aws/mq` in your account.
-  BrokerEncryptionOptions({
-    this.kmsKeyId,
-    this.useAwsOwnedKey,
-  });
+  BrokerEncryptionOptions({this.kmsKeyId, this.useAwsOwnedKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class BrokerEncryptionOptions {
 
   factory BrokerEncryptionOptions.fromMap(Map<String, dynamic> map) {
     return BrokerEncryptionOptions(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      useAwsOwnedKey: map['useAwsOwnedKey'] == null ? null : ((map['useAwsOwnedKey'] as bool).input()).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useAwsOwnedKey: (() {
+        final guardedValue = map['useAwsOwnedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

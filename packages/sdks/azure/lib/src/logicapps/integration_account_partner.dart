@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_account_partner_args.dart';
-import 'integration_account_partner_business_identity.dart';
 import 'integration_account_partner_state.dart';
 
 /// Manages a Logic App Integration Account Partner.
@@ -218,7 +217,7 @@ import 'integration_account_partner_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -232,13 +231,17 @@ import 'integration_account_partner_state.dart';
 /// ```
 class IntegrationAccountPartner extends pulumi.CustomResource {
   /// A `business_identity` block as documented below.
-  late final pulumi.Output<List<IntegrationAccountPartnerBusinessIdentity>> businessIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>> businessIdentities;
+
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// A JSON mapping of any Metadata for this Logic App Integration Account Partner.
   late final pulumi.Output<String?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Logic App Integration Account Partner should exist. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -251,16 +254,18 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     IntegrationAccountPartnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessIdentities = registerOutput<List<IntegrationAccountPartnerBusinessIdentity>>('businessIdentities');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<String?>('metadata');
+         'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'businessIdentities',
+    );
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountPartner] resource's state with the given [name] and [id].
@@ -281,15 +286,17 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessIdentities = registerOutput<List<IntegrationAccountPartnerBusinessIdentity>>('businessIdentities');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<String?>('metadata');
+         'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'businessIdentities',
+    );
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

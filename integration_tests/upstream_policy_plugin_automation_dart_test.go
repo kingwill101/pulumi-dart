@@ -31,16 +31,16 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func rewritePolicyDependencies(projectDir string) error {
+func rewritePolicyDependencies(projectDir string) (bool, error) {
 	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
 	data, err := os.ReadFile(pubspecPath)
 	if err != nil {
-		return fmt.Errorf("read pubspec.yaml: %w", err)
+		return false, fmt.Errorf("read pubspec.yaml: %w", err)
 	}
 
 	var pubspec map[string]interface{}
 	if err := yaml.Unmarshal(data, &pubspec); err != nil {
-		return fmt.Errorf("unmarshal pubspec.yaml: %w", err)
+		return false, fmt.Errorf("unmarshal pubspec.yaml: %w", err)
 	}
 
 	dependencies, ok := pubspec["dependencies"].(map[string]interface{})
@@ -63,11 +63,12 @@ func rewritePolicyDependencies(projectDir string) error {
 
 	pulumiSdkPath, err := pulumiSDKPath()
 	if err != nil {
-		return fmt.Errorf("resolve pulumi-dart path: %w", err)
+		return false, fmt.Errorf("resolve pulumi-dart path: %w", err)
 	}
 	dependencies["pulumi"] = "^1.0.0"
 	dependencyOverrides["pulumi"] = map[string]string{"path": pulumiSdkPath}
 	dependencies["pulumi_policy"] = "^1.0.0"
+	foundPolicySDK := false
 
 	candidates := []string{
 		"../packages/policy",
@@ -85,17 +86,18 @@ func rewritePolicyDependencies(projectDir string) error {
 		}
 		dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
 		dependencyOverrides["pulumi_policy"] = map[string]string{"path": policySdkPath}
+		foundPolicySDK = true
 		break
 	}
 
 	updated, err := yaml.Marshal(pubspec)
 	if err != nil {
-		return fmt.Errorf("marshal updated pubspec.yaml: %w", err)
+		return false, fmt.Errorf("marshal updated pubspec.yaml: %w", err)
 	}
 	if err := os.WriteFile(pubspecPath, updated, 0o600); err != nil {
-		return fmt.Errorf("write updated pubspec.yaml: %w", err)
+		return false, fmt.Errorf("write updated pubspec.yaml: %w", err)
 	}
-	return nil
+	return foundPolicySDK, nil
 }
 
 func rewritePubspecVersion(projectDir string, version string) error {
@@ -142,7 +144,11 @@ func configurePolicyDartProject(t *testing.T, e *ptesting.Environment, policyPac
 
 	for _, pack := range policyPacks {
 		packDir := filepath.Join(e.CWD, pack)
-		require.NoError(t, rewritePolicyDependencies(packDir))
+		foundPolicySDK, err := rewritePolicyDependencies(packDir)
+		require.NoError(t, err)
+		if !foundPolicySDK {
+			t.Skip("skipping policy integration tests: local pulumi_policy SDK is unavailable")
+		}
 		_, _, err = e.GetCommandResultsIn(packDir, "dart", "pub", "get")
 		require.NoError(t, err)
 	}
@@ -174,7 +180,11 @@ func configurePolicyDartProjectService(
 
 	for _, pack := range policyPacks {
 		packDir := filepath.Join(e.CWD, pack)
-		require.NoError(t, rewritePolicyDependencies(packDir))
+		foundPolicySDK, err := rewritePolicyDependencies(packDir)
+		require.NoError(t, err)
+		if !foundPolicySDK {
+			t.Skip("skipping policy integration tests: local pulumi_policy SDK is unavailable")
+		}
 		_, _, err = e.GetCommandResultsIn(packDir, "dart", "pub", "get")
 		require.NoError(t, err)
 	}

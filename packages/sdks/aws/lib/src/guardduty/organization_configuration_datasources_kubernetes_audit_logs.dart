@@ -14,15 +14,14 @@ class OrganizationConfigurationDatasourcesKubernetesAuditLogs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-    };
+    return <String, dynamic>{'enable': enable};
   }
 
-  factory OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(Map<String, dynamic> map) {
+  factory OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationConfigurationDatasourcesKubernetesAuditLogs(
-      enable: (map['enable'] as bool).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
     );
   }
 }
-

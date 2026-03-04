@@ -7,8 +7,10 @@ import 'azure_arc_management_settings_response.dart';
 class AzureArcSettingsResponse {
   /// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
   final pulumi.Input<String> azureArcState;
+
   /// Gets Azure arc labour cost percentage.
   final pulumi.Input<double>? laborCostPercentage;
+
   /// Management settings.
   final pulumi.Input<AzureArcManagementSettingsResponse>? managementSettings;
 
@@ -26,16 +28,31 @@ class AzureArcSettingsResponse {
     return <String, dynamic>{
       'azureArcState': azureArcState,
       'laborCostPercentage': ?laborCostPercentage,
-      'managementSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcManagementSettingsResponse, Map<String, dynamic>>(managementSettings, (value) => value.toMap()),
+      'managementSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureArcManagementSettingsResponse,
+            Map<String, dynamic>
+          >(managementSettings, (value) => value.toMap()),
     };
   }
 
   factory AzureArcSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcSettingsResponse(
-      azureArcState: (map['azureArcState'] as String).input(),
-      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage']! as double).input(),
-      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettingsResponse.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
+      azureArcState: pulumi.Input.fromValue(map['azureArcState'] as String),
+      laborCostPercentage: (() {
+        final guardedValue = map['laborCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      managementSettings: (() {
+        final guardedValue = map['managementSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureArcManagementSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

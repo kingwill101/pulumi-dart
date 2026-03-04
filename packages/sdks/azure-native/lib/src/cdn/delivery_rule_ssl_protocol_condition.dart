@@ -8,6 +8,7 @@ class DeliveryRuleSslProtocolCondition {
   /// Request variable to compare with.
   /// Expected value is 'SslProtocol'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<SslProtocolMatchConditionParameters> parameters;
 
@@ -22,15 +23,22 @@ class DeliveryRuleSslProtocolCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<SslProtocolMatchConditionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            SslProtocolMatchConditionParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleSslProtocolCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleSslProtocolCondition(
-      name: (map['name'] as String).input(),
-      parameters: (SslProtocolMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        SslProtocolMatchConditionParameters.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

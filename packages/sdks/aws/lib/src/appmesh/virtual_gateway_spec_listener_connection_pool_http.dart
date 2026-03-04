@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualGatewaySpecListenerConnectionPoolHttp {
   /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster. Minimum value of `1`.
   final pulumi.Input<int> maxConnections;
+
   /// Number of overflowing requests after `max_connections` Envoy will queue to upstream cluster. Minimum value of `1`.
   final pulumi.Input<int>? maxPendingRequests;
 
@@ -23,11 +24,16 @@ class VirtualGatewaySpecListenerConnectionPoolHttp {
     };
   }
 
-  factory VirtualGatewaySpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerConnectionPoolHttp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecListenerConnectionPoolHttp(
-      maxConnections: (map['maxConnections'] as int).input(),
-      maxPendingRequests: map['maxPendingRequests'] == null ? null : ((map['maxPendingRequests'] as int).input()).input(),
+      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
+      maxPendingRequests: (() {
+        final guardedValue = map['maxPendingRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

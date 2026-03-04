@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserHierarchyStructureHierarchyStructureLevelThree {
   /// ARN of the hierarchy level.
   final pulumi.Input<String> arn;
+
   /// The identifier of the hierarchy level.
   final pulumi.Input<String> id;
+
   /// Name of the user hierarchy level. Must not be more than 50 characters.
   final pulumi.Input<String> name;
 
@@ -21,19 +23,16 @@ class GetUserHierarchyStructureHierarchyStructureLevelThree {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'arn': arn, 'id': id, 'name': name};
   }
 
-  factory GetUserHierarchyStructureHierarchyStructureLevelThree.fromMap(Map<String, dynamic> map) {
+  factory GetUserHierarchyStructureHierarchyStructureLevelThree.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserHierarchyStructureHierarchyStructureLevelThree(
-      arn: (map['arn'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

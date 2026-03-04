@@ -616,7 +616,7 @@ import 'volume_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ElasticSan` - 2023-01-01
@@ -631,20 +631,27 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// A `create_source` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VolumeCreateSource?> createSource;
+
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
-  /// > **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
+  /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
   late final pulumi.Output<int> sizeInGib;
+
   /// The iSCSI Target IQN of the Elastic SAN Volume.
   late final pulumi.Output<String> targetIqn;
+
   /// The iSCSI Target Portal Host Name of the Elastic SAN Volume.
   late final pulumi.Output<String> targetPortalHostname;
+
   /// The iSCSI Target Portal Port of the Elastic SAN Volume.
   late final pulumi.Output<int> targetPortalPort;
+
   /// Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> volumeGroupId;
+
   /// The UUID of the Elastic SAN Volume.
   late final pulumi.Output<String> volumeId;
 
@@ -652,24 +659,21 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_elasticsan_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:elasticsan/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createSource = registerOutput<VolumeCreateSource?>('createSource');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:elasticsan/volume:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createSource = registerOutput<VolumeCreateSource?>('createSource');
     this.name = registerOutput<String>('name');
-    this.sizeInGib = registerOutput<int>('sizeInGib');
-    this.targetIqn = registerOutput<String>('targetIqn');
-    this.targetPortalHostname = registerOutput<String>('targetPortalHostname');
-    this.targetPortalPort = registerOutput<int>('targetPortalPort');
-    this.volumeGroupId = registerOutput<String>('volumeGroupId');
-    this.volumeId = registerOutput<String>('volumeId');
+    sizeInGib = registerOutput<int>('sizeInGib');
+    targetIqn = registerOutput<String>('targetIqn');
+    targetPortalHostname = registerOutput<String>('targetPortalHostname');
+    targetPortalPort = registerOutput<int>('targetPortalPort');
+    volumeGroupId = registerOutput<String>('volumeGroupId');
+    volumeId = registerOutput<String>('volumeId');
   }
 
   /// Gets an existing [Volume] resource's state with the given [name] and [id].
@@ -690,18 +694,18 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:elasticsan/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createSource = registerOutput<VolumeCreateSource?>('createSource');
+         'azure:elasticsan/volume:Volume',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createSource = registerOutput<VolumeCreateSource?>('createSource');
     this.name = registerOutput<String>('name');
-    this.sizeInGib = registerOutput<int>('sizeInGib');
-    this.targetIqn = registerOutput<String>('targetIqn');
-    this.targetPortalHostname = registerOutput<String>('targetPortalHostname');
-    this.targetPortalPort = registerOutput<int>('targetPortalPort');
-    this.volumeGroupId = registerOutput<String>('volumeGroupId');
-    this.volumeId = registerOutput<String>('volumeId');
+    sizeInGib = registerOutput<int>('sizeInGib');
+    targetIqn = registerOutput<String>('targetIqn');
+    targetPortalHostname = registerOutput<String>('targetPortalHostname');
+    targetPortalPort = registerOutput<int>('targetPortalPort');
+    volumeGroupId = registerOutput<String>('volumeGroupId');
+    volumeId = registerOutput<String>('volumeId');
   }
 }

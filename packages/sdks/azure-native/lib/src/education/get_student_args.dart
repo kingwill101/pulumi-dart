@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStudentArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
+
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileName;
+
   /// The ID that uniquely identifies an invoice section.
   final pulumi.Input<String> invoiceSectionName;
+
   /// Student alias.
   final pulumi.Input<String> studentAlias;
 
@@ -39,11 +42,16 @@ class GetStudentArgs {
 
   factory GetStudentArgs.fromMap(Map<String, dynamic> map) {
     return GetStudentArgs(
-      billingAccountName: (map['billingAccountName'] as String).input(),
-      billingProfileName: (map['billingProfileName'] as String).input(),
-      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
-      studentAlias: (map['studentAlias'] as String).input(),
+      billingAccountName: pulumi.Input.fromValue(
+        map['billingAccountName'] as String,
+      ),
+      billingProfileName: pulumi.Input.fromValue(
+        map['billingProfileName'] as String,
+      ),
+      invoiceSectionName: pulumi.Input.fromValue(
+        map['invoiceSectionName'] as String,
+      ),
+      studentAlias: pulumi.Input.fromValue(map['studentAlias'] as String),
     );
   }
 }
-

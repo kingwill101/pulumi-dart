@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cache_access_policy_access_rule.dart';
 import 'cache_access_policy_args.dart';
 import 'cache_access_policy_state.dart';
 
 /// Manages a HPC Cache Access Policy.
 ///
-/// !> **Note:** The `azure.hpc.CacheAccessPolicy` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
+/// !&gt; **Note:** The `azure.hpc.CacheAccessPolicy` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -329,7 +328,7 @@ import 'cache_access_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageCache` - 2023-05-01
@@ -343,9 +342,11 @@ import 'cache_access_policy_state.dart';
 /// ```
 class CacheAccessPolicy extends pulumi.CustomResource {
   /// One or more `access_rule` blocks (up to three) as defined below.
-  late final pulumi.Output<List<CacheAccessPolicyAccessRule>> accessRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> accessRules;
+
   /// The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   late final pulumi.Output<String> hpcCacheId;
+
   /// The name which should be used for this HPC Cache Access Policy. Changing this forces a new HPC Cache Access Policy to be created.
   late final pulumi.Output<String> name;
 
@@ -358,13 +359,13 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     CacheAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessRules = registerOutput<List<CacheAccessPolicyAccessRule>>('accessRules');
-    this.hpcCacheId = registerOutput<String>('hpcCacheId');
+         'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessRules = registerOutput<List<Map<String, dynamic>>>('accessRules');
+    hpcCacheId = registerOutput<String>('hpcCacheId');
     this.name = registerOutput<String>('name');
   }
 
@@ -386,13 +387,13 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessRules = registerOutput<List<CacheAccessPolicyAccessRule>>('accessRules');
-    this.hpcCacheId = registerOutput<String>('hpcCacheId');
+         'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessRules = registerOutput<List<Map<String, dynamic>>>('accessRules');
+    hpcCacheId = registerOutput<String>('hpcCacheId');
     this.name = registerOutput<String>('name');
   }
 }

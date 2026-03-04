@@ -4,16 +4,15 @@ enum ExportType {
   valueActualCost("ActualCost"),
   valueAmortizedCost("AmortizedCost");
 
-  const ExportType(this.value);
-  final String value;
+  const ExportType(this.wireValue);
+  final String wireValue;
 
   static ExportType fromValue(String value) {
     for (final item in ExportType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExportType value: $value');
   }
 }
-

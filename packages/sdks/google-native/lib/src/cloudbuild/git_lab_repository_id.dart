@@ -9,20 +9,13 @@ class GitLabRepositoryId {
 
   /// Creates a new [GitLabRepositoryId].
   /// [id] Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
-  GitLabRepositoryId({
-    required this.id,
-  });
+  GitLabRepositoryId({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GitLabRepositoryId.fromMap(Map<String, dynamic> map) {
-    return GitLabRepositoryId(
-      id: (map['id'] as String).input(),
-    );
+    return GitLabRepositoryId(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

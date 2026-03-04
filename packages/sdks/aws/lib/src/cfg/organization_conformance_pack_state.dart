@@ -7,20 +7,29 @@ import 'organization_conformance_pack_input_parameter.dart';
 class OrganizationConformancePackState {
   /// Amazon Resource Name (ARN) of the organization conformance pack.
   final pulumi.Input<String>? arn;
+
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Delivery bucket must begin with `awsconfigconforms` prefix. Maximum length of 63.
   final pulumi.Input<String>? deliveryS3Bucket;
+
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
   final pulumi.Input<String>? deliveryS3KeyPrefix;
+
   /// Set of AWS accounts to be excluded from an organization conformance pack while deploying a conformance pack. Maximum of 1000 accounts.
   final pulumi.Input<List<String>>? excludedAccounts;
+
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
-  final pulumi.Input<List<OrganizationConformancePackInputParameter>>? inputParameters;
+  final pulumi.Input<List<OrganizationConformancePackInputParameter>>?
+  inputParameters;
+
   /// The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
   final pulumi.Input<String>? templateBody;
+
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   final pulumi.Input<String>? templateS3Uri;
 
@@ -52,7 +61,18 @@ class OrganizationConformancePackState {
       'deliveryS3Bucket': ?deliveryS3Bucket,
       'deliveryS3KeyPrefix': ?deliveryS3KeyPrefix,
       'excludedAccounts': ?excludedAccounts,
-      'inputParameters': ?pulumi.Input.mapOptionalInputValue<List<OrganizationConformancePackInputParameter>, List<Map<String, dynamic>>>(inputParameters, (value) => pulumi.Input.encodeList<OrganizationConformancePackInputParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OrganizationConformancePackInputParameter>,
+            List<Map<String, dynamic>>
+          >(
+            inputParameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OrganizationConformancePackInputParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'region': ?region,
       'templateBody': ?templateBody,
@@ -62,16 +82,58 @@ class OrganizationConformancePackState {
 
   factory OrganizationConformancePackState.fromMap(Map<String, dynamic> map) {
     return OrganizationConformancePackState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      deliveryS3Bucket: map['deliveryS3Bucket'] == null ? null : ((map['deliveryS3Bucket'] as String).input()).input(),
-      deliveryS3KeyPrefix: map['deliveryS3KeyPrefix'] == null ? null : ((map['deliveryS3KeyPrefix'] as String).input()).input(),
-      excludedAccounts: map['excludedAccounts'] == null ? null : (((map['excludedAccounts'] as List).cast<String>()).input()).input(),
-      inputParameters: map['inputParameters'] == null ? null : ((pulumi.Input.decodeList<OrganizationConformancePackInputParameter>(map['inputParameters']!, (value) => OrganizationConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      templateBody: map['templateBody'] == null ? null : ((map['templateBody'] as String).input()).input(),
-      templateS3Uri: map['templateS3Uri'] == null ? null : ((map['templateS3Uri'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deliveryS3Bucket: (() {
+        final guardedValue = map['deliveryS3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deliveryS3KeyPrefix: (() {
+        final guardedValue = map['deliveryS3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      excludedAccounts: (() {
+        final guardedValue = map['excludedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      inputParameters: (() {
+        final guardedValue = map['inputParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<OrganizationConformancePackInputParameter>(
+            guardedValue,
+            (value) => OrganizationConformancePackInputParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateBody: (() {
+        final guardedValue = map['templateBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateS3Uri: (() {
+        final guardedValue = map['templateS3Uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

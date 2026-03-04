@@ -3,16 +3,15 @@ enum IPVersions {
   iPv4("IPv4"),
   iPv6("IPv6");
 
-  const IPVersions(this.value);
-  final String value;
+  const IPVersions(this.wireValue);
+  final String wireValue;
 
   static IPVersions fromValue(String value) {
     for (final item in IPVersions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPVersions value: $value');
   }
 }
-

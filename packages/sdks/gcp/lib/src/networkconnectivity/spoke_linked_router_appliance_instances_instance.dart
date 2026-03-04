@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeLinkedRouterApplianceInstancesInstance {
   /// The IP address on the VM to use for peering.
   final pulumi.Input<String> ipAddress;
+
   /// The URI of the virtual machine resource
   final pulumi.Input<String> virtualMachine;
 
@@ -23,11 +24,12 @@ class SpokeLinkedRouterApplianceInstancesInstance {
     };
   }
 
-  factory SpokeLinkedRouterApplianceInstancesInstance.fromMap(Map<String, dynamic> map) {
+  factory SpokeLinkedRouterApplianceInstancesInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpokeLinkedRouterApplianceInstancesInstance(
-      ipAddress: (map['ipAddress'] as String).input(),
-      virtualMachine: (map['virtualMachine'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      virtualMachine: pulumi.Input.fromValue(map['virtualMachine'] as String),
     );
   }
 }
-

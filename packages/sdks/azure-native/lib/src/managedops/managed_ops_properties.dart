@@ -10,20 +10,25 @@ class ManagedOpsProperties {
 
   /// Creates a new [ManagedOpsProperties].
   /// [desiredConfiguration] Desired configuration input by the user.
-  ManagedOpsProperties({
-    required this.desiredConfiguration,
-  });
+  ManagedOpsProperties({required this.desiredConfiguration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desiredConfiguration': pulumi.Input.mapInputValue<DesiredConfiguration, Map<String, dynamic>>(desiredConfiguration, (value) => value.toMap()),
+      'desiredConfiguration':
+          pulumi.Input.mapInputValue<
+            DesiredConfiguration,
+            Map<String, dynamic>
+          >(desiredConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ManagedOpsProperties.fromMap(Map<String, dynamic> map) {
     return ManagedOpsProperties(
-      desiredConfiguration: (DesiredConfiguration.fromMap((map['desiredConfiguration'] as Map).cast<String, dynamic>())).input(),
+      desiredConfiguration: pulumi.Input.fromValue(
+        DesiredConfiguration.fromMap(
+          (map['desiredConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -35,12 +35,15 @@ class GetLoadBalancerListener {
 
   factory GetLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerListener(
-      instancePort: (map['instancePort'] as int).input(),
-      instanceProtocol: (map['instanceProtocol'] as String).input(),
-      lbPort: (map['lbPort'] as int).input(),
-      lbProtocol: (map['lbProtocol'] as String).input(),
-      sslCertificateId: (map['sslCertificateId'] as String).input(),
+      instancePort: pulumi.Input.fromValue(map['instancePort'] as int),
+      instanceProtocol: pulumi.Input.fromValue(
+        map['instanceProtocol'] as String,
+      ),
+      lbPort: pulumi.Input.fromValue(map['lbPort'] as int),
+      lbProtocol: pulumi.Input.fromValue(map['lbProtocol'] as String),
+      sslCertificateId: pulumi.Input.fromValue(
+        map['sslCertificateId'] as String,
+      ),
     );
   }
 }
-

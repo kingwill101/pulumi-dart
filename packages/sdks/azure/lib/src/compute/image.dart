@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_args.dart';
-import 'image_data_disk.dart';
 import 'image_os_disk.dart';
 import 'image_state.dart';
 
@@ -8,7 +7,7 @@ import 'image_state.dart';
 ///
 /// ## Example Usage
 ///
-/// > **Note:** For a more complete example, see the `examples/image` directory within the GitHub Repository.
+/// &gt; **Note:** For a more complete example, see the `examples/image` directory within the GitHub Repository.
 ///
 ///
 /// ```typescript
@@ -152,7 +151,7 @@ import 'image_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-01
@@ -167,62 +166,63 @@ import 'image_state.dart';
 class Image extends pulumi.CustomResource {
   /// One or more `data_disk` blocks as defined below.
   ///
-  /// > **Note:** `data_disk` cannot be set together with `source_virtual_machine_id`.
-  late final pulumi.Output<List<ImageDataDisk>?> dataDisks;
+  /// &gt; **Note:** `data_disk` cannot be set together with `source_virtual_machine_id`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hyperVGeneration;
+
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `os_disk` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `os_disk` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `os_disk` cannot be set together with `source_virtual_machine_id`.
   late final pulumi.Output<ImageOsDisk?> osDisk;
+
   /// The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Virtual Machine ID from which to create the image.
   late final pulumi.Output<String?> sourceVirtualMachineId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `zone_resilient` can only be set to `true` if the image is stored in a region that supports availability zones.
+  /// &gt; **Note:** `zone_resilient` can only be set to `true` if the image is stored in a region that supports availability zones.
   ///
-  /// > **Note:** `zone_resilient` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `zone_resilient` cannot be set together with `source_virtual_machine_id`.
   late final pulumi.Output<bool?> zoneResilient;
 
   /// Creates a new [Image].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_compute_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(
-    String name, {
-    ImageArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:compute/image:Image',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks');
-    this.hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    this.location = registerOutput<String>('location');
+  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:compute/image:Image',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osDisk = registerOutput<ImageOsDisk?>('osDisk');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zoneResilient = registerOutput<bool?>('zoneResilient');
+    osDisk = registerOutput<ImageOsDisk?>('osDisk');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zoneResilient = registerOutput<bool?>('zoneResilient');
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(
-    String name,
-    pulumi.Input<String> id, {
-    ImageState? state,
-  }) {
+  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -235,19 +235,19 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/image:Image',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks');
-    this.hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    this.location = registerOutput<String>('location');
+         'azure:compute/image:Image',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osDisk = registerOutput<ImageOsDisk?>('osDisk');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zoneResilient = registerOutput<bool?>('zoneResilient');
+    osDisk = registerOutput<ImageOsDisk?>('osDisk');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zoneResilient = registerOutput<bool?>('zoneResilient');
   }
 }

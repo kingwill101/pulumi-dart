@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheusMonitoringsArgs {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
+
   /// A list of Prometheus Monitoring IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Prometheus Monitoring name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the monitoring configuration. Valid values: `run`, `stop`.
   final pulumi.Input<String>? status;
+
   /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   final pulumi.Input<String>? type;
 
@@ -49,13 +54,32 @@ class GetPrometheusMonitoringsArgs {
 
   factory GetPrometheusMonitoringsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrometheusMonitoringsArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

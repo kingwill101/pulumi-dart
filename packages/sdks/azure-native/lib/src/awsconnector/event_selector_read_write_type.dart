@@ -4,16 +4,15 @@ enum EventSelectorReadWriteType {
   readOnly("ReadOnly"),
   writeOnly("WriteOnly");
 
-  const EventSelectorReadWriteType(this.value);
-  final String value;
+  const EventSelectorReadWriteType(this.wireValue);
+  final String wireValue;
 
   static EventSelectorReadWriteType fromValue(String value) {
     for (final item in EventSelectorReadWriteType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventSelectorReadWriteType value: $value');
   }
 }
-

@@ -9,20 +9,29 @@ class ClusterStorageConfig {
 
   /// Creates a new [ClusterStorageConfig].
   /// [blockStorage] Configuration block with block storage configuration for the cluster. Detailed below.
-  ClusterStorageConfig({
-    this.blockStorage,
-  });
+  ClusterStorageConfig({this.blockStorage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blockStorage': ?pulumi.Input.mapOptionalInputValue<ClusterStorageConfigBlockStorage, Map<String, dynamic>>(blockStorage, (value) => value.toMap()),
+      'blockStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterStorageConfigBlockStorage,
+            Map<String, dynamic>
+          >(blockStorage, (value) => value.toMap()),
     };
   }
 
   factory ClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterStorageConfig(
-      blockStorage: map['blockStorage'] == null ? null : ((ClusterStorageConfigBlockStorage.fromMap((map['blockStorage']! as Map).cast<String, dynamic>())).input()).input(),
+      blockStorage: (() {
+        final guardedValue = map['blockStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterStorageConfigBlockStorage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

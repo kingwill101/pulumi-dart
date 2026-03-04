@@ -8,16 +8,15 @@ enum TransformationRuleActionOp {
   test("TEST"),
   replace("REPLACE");
 
-  const TransformationRuleActionOp(this.value);
-  final String value;
+  const TransformationRuleActionOp(this.wireValue);
+  final String wireValue;
 
   static TransformationRuleActionOp fromValue(String value) {
     for (final item in TransformationRuleActionOp.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransformationRuleActionOp value: $value');
   }
 }
-

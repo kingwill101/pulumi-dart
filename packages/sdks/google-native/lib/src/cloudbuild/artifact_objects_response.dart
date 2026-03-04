@@ -7,8 +7,10 @@ import 'time_span_response.dart';
 class ArtifactObjectsResponse {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   final pulumi.Input<String> location;
+
   /// Path globs used to match files in the build's workspace.
   final pulumi.Input<List<String>> paths;
+
   /// Stores timing information for pushing all artifact objects.
   final pulumi.Input<TimeSpanResponse> timing;
 
@@ -26,16 +28,23 @@ class ArtifactObjectsResponse {
     return <String, dynamic>{
       'location': location,
       'paths': paths,
-      'timing': pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(timing, (value) => value.toMap()),
+      'timing':
+          pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(
+            timing,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ArtifactObjectsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactObjectsResponse(
-      location: (map['location'] as String).input(),
-      paths: ((map['paths'] as List).cast<String>()).input(),
-      timing: (TimeSpanResponse.fromMap((map['timing'] as Map).cast<String, dynamic>())).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
+      timing: pulumi.Input.fromValue(
+        TimeSpanResponse.fromMap(
+          (map['timing']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -107,25 +107,33 @@ import 'room_state.dart';
 class Room extends pulumi.CustomResource {
   /// ARN of the Room.
   late final pulumi.Output<String> arn;
+
   /// List of Logging Configuration
   /// ARNs to attach to the room.
   late final pulumi.Output<List<String>?> loggingConfigurationIdentifiers;
+
   /// Maximum number of characters in a single
   /// message. Messages are expected to be UTF-8 encoded and this limit applies
   /// specifically to rune/code-point count, not number of bytes.
   late final pulumi.Output<int> maximumMessageLength;
+
   /// Maximum number of messages per
   /// second that can be sent to the room (by all clients).
   late final pulumi.Output<int> maximumMessageRatePerSecond;
+
   /// Configuration information for optional
   /// review of messages.
   late final pulumi.Output<RoomMessageReviewHandler?> messageReviewHandler;
+
   /// Room name.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -133,33 +141,32 @@ class Room extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Room]. {@macro pulumi_ivschat_room_room_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Room(
-    String name, {
-    RoomArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:ivschat/room:Room',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers');
-    this.maximumMessageLength = registerOutput<int>('maximumMessageLength');
-    this.maximumMessageRatePerSecond = registerOutput<int>('maximumMessageRatePerSecond');
-    this.messageReviewHandler = registerOutput<RoomMessageReviewHandler?>('messageReviewHandler');
+  Room(String name, {RoomArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:ivschat/room:Room',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    loggingConfigurationIdentifiers = registerOutput<List<String>?>(
+      'loggingConfigurationIdentifiers',
+    );
+    maximumMessageLength = registerOutput<int>('maximumMessageLength');
+    maximumMessageRatePerSecond = registerOutput<int>(
+      'maximumMessageRatePerSecond',
+    );
+    messageReviewHandler = registerOutput<RoomMessageReviewHandler?>(
+      'messageReviewHandler',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Room] resource's state with the given [name] and [id].
-  static Room get(
-    String name,
-    pulumi.Input<String> id, {
-    RoomState? state,
-  }) {
+  static Room get(String name, pulumi.Input<String> id, {RoomState? state}) {
     return Room._get(
       name,
       state: state?.toMap(),
@@ -172,19 +179,25 @@ class Room extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivschat/room:Room',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers');
-    this.maximumMessageLength = registerOutput<int>('maximumMessageLength');
-    this.maximumMessageRatePerSecond = registerOutput<int>('maximumMessageRatePerSecond');
-    this.messageReviewHandler = registerOutput<RoomMessageReviewHandler?>('messageReviewHandler');
+         'aws:ivschat/room:Room',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    loggingConfigurationIdentifiers = registerOutput<List<String>?>(
+      'loggingConfigurationIdentifiers',
+    );
+    maximumMessageLength = registerOutput<int>('maximumMessageLength');
+    maximumMessageRatePerSecond = registerOutput<int>(
+      'maximumMessageRatePerSecond',
+    );
+    messageReviewHandler = registerOutput<RoomMessageReviewHandler?>(
+      'messageReviewHandler',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

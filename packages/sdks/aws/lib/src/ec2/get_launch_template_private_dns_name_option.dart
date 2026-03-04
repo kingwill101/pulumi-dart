@@ -25,12 +25,17 @@ class GetLaunchTemplatePrivateDnsNameOption {
     };
   }
 
-  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplatePrivateDnsNameOption(
-      enableResourceNameDnsARecord: (map['enableResourceNameDnsARecord'] as bool).input(),
-      enableResourceNameDnsAaaaRecord: (map['enableResourceNameDnsAaaaRecord'] as bool).input(),
-      hostnameType: (map['hostnameType'] as String).input(),
+      enableResourceNameDnsARecord: pulumi.Input.fromValue(
+        map['enableResourceNameDnsARecord'] as bool,
+      ),
+      enableResourceNameDnsAaaaRecord: pulumi.Input.fromValue(
+        map['enableResourceNameDnsAaaaRecord'] as bool,
+      ),
+      hostnameType: pulumi.Input.fromValue(map['hostnameType'] as String),
     );
   }
 }
-

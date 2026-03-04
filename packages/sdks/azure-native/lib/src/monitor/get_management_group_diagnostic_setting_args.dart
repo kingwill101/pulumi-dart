@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementGroupDiagnosticSettingArgs {
   /// The management group id.
   final pulumi.Input<String> managementGroupId;
+
   /// The name of the diagnostic setting.
   final pulumi.Input<String> name;
 
@@ -27,11 +28,14 @@ class GetManagementGroupDiagnosticSettingArgs {
     };
   }
 
-  factory GetManagementGroupDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagementGroupDiagnosticSettingArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagementGroupDiagnosticSettingArgs(
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      name: (map['name'] as String).input(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

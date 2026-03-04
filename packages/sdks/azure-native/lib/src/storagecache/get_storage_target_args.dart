@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageTargetArgs {
   /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   final pulumi.Input<String> cacheName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Storage Target.
   final pulumi.Input<String> storageTargetName;
 
@@ -34,10 +36,13 @@ class GetStorageTargetArgs {
 
   factory GetStorageTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageTargetArgs(
-      cacheName: (map['cacheName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageTargetName: (map['storageTargetName'] as String).input(),
+      cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageTargetName: pulumi.Input.fromValue(
+        map['storageTargetName'] as String,
+      ),
     );
   }
 }
-

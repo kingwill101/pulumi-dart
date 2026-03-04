@@ -10,10 +10,13 @@ import 'get_snapshot_ids_filter.dart';
 class GetSnapshotIdsArgs {
   /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-volumes in the AWS CLI reference][1].
   final pulumi.Input<List<GetSnapshotIdsFilter>>? filters;
+
   /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
   final pulumi.Input<List<String>>? owners;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// One or more AWS accounts IDs that can create volumes from the snapshot.
   final pulumi.Input<List<String>>? restorableByUserIds;
 
@@ -31,7 +34,18 @@ class GetSnapshotIdsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetSnapshotIdsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetSnapshotIdsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetSnapshotIdsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSnapshotIdsFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'owners': ?owners,
       'region': ?region,
       'restorableByUserIds': ?restorableByUserIds,
@@ -40,11 +54,33 @@ class GetSnapshotIdsArgs {
 
   factory GetSnapshotIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotIdsArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters']!, (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restorableByUserIds: map['restorableByUserIds'] == null ? null : (((map['restorableByUserIds'] as List).cast<String>()).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetSnapshotIdsFilter>(
+            guardedValue,
+            (value) => GetSnapshotIdsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      owners: (() {
+        final guardedValue = map['owners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restorableByUserIds: (() {
+        final guardedValue = map['restorableByUserIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'application_state.dart';
 
 /// Creates an EDAS ecs application on EDAS, see [What is EDAS Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertapplication). The application will be deployed when `group_id` and `war_url` are given.
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -296,24 +296,34 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
   late final pulumi.Output<String> applicationName;
+
   /// The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
   late final pulumi.Output<int?> buildPackId;
+
   /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
   late final pulumi.Output<String> clusterId;
+
   /// The description of the application that you want to create.
   late final pulumi.Output<String?> descriotion;
+
   /// The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   late final pulumi.Output<List<String>?> ecuInfos;
+
   /// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
   late final pulumi.Output<String?> groupId;
+
   /// The URL for health checking of the application.
   late final pulumi.Output<String?> healthCheckUrl;
+
   /// The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
   late final pulumi.Output<String?> logicalRegionId;
+
   /// The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
   late final pulumi.Output<String> packageType;
+
   /// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   late final pulumi.Output<String?> packageVersion;
+
   /// The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
   late final pulumi.Output<String?> warUrl;
 
@@ -326,22 +336,22 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.buildPackId = registerOutput<int?>('buildPackId');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.descriotion = registerOutput<String?>('descriotion');
-    this.ecuInfos = registerOutput<List<String>?>('ecuInfos');
-    this.groupId = registerOutput<String?>('groupId');
-    this.healthCheckUrl = registerOutput<String?>('healthCheckUrl');
-    this.logicalRegionId = registerOutput<String?>('logicalRegionId');
-    this.packageType = registerOutput<String>('packageType');
-    this.packageVersion = registerOutput<String?>('packageVersion');
-    this.warUrl = registerOutput<String?>('warUrl');
+         'alicloud:edas/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    buildPackId = registerOutput<int?>('buildPackId');
+    clusterId = registerOutput<String>('clusterId');
+    descriotion = registerOutput<String?>('descriotion');
+    ecuInfos = registerOutput<List<String>?>('ecuInfos');
+    groupId = registerOutput<String?>('groupId');
+    healthCheckUrl = registerOutput<String?>('healthCheckUrl');
+    logicalRegionId = registerOutput<String?>('logicalRegionId');
+    packageType = registerOutput<String>('packageType');
+    packageVersion = registerOutput<String?>('packageVersion');
+    warUrl = registerOutput<String?>('warUrl');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -362,21 +372,21 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.buildPackId = registerOutput<int?>('buildPackId');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.descriotion = registerOutput<String?>('descriotion');
-    this.ecuInfos = registerOutput<List<String>?>('ecuInfos');
-    this.groupId = registerOutput<String?>('groupId');
-    this.healthCheckUrl = registerOutput<String?>('healthCheckUrl');
-    this.logicalRegionId = registerOutput<String?>('logicalRegionId');
-    this.packageType = registerOutput<String>('packageType');
-    this.packageVersion = registerOutput<String?>('packageVersion');
-    this.warUrl = registerOutput<String?>('warUrl');
+         'alicloud:edas/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    buildPackId = registerOutput<int?>('buildPackId');
+    clusterId = registerOutput<String>('clusterId');
+    descriotion = registerOutput<String?>('descriotion');
+    ecuInfos = registerOutput<List<String>?>('ecuInfos');
+    groupId = registerOutput<String?>('groupId');
+    healthCheckUrl = registerOutput<String?>('healthCheckUrl');
+    logicalRegionId = registerOutput<String?>('logicalRegionId');
+    packageType = registerOutput<String>('packageType');
+    packageVersion = registerOutput<String?>('packageVersion');
+    warUrl = registerOutput<String?>('warUrl');
   }
 }

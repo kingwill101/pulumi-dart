@@ -12,6 +12,7 @@ import 'bucket_archive_direct_read_state.dart';
 class BucketArchiveDirectRead extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
+
   /// Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
   late final pulumi.Output<bool> enabled;
 
@@ -24,13 +25,13 @@ class BucketArchiveDirectRead extends pulumi.CustomResource {
     BucketArchiveDirectReadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.enabled = registerOutput<bool>('enabled');
+         'alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    enabled = registerOutput<bool>('enabled');
   }
 
   /// Gets an existing [BucketArchiveDirectRead] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class BucketArchiveDirectRead extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.enabled = registerOutput<bool>('enabled');
+         'alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    enabled = registerOutput<bool>('enabled');
   }
 }

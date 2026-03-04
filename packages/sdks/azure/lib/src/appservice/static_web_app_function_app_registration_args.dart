@@ -9,10 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticWebAppFunctionAppRegistrationArgs {
   /// The ID of a Linux or Windows Function App to connect to the Static Web App as a Backend. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one Function App can be connected to a Static Web App. Multiple Function Apps are not currently supported.
+  /// &gt; **Note:** Only one Function App can be connected to a Static Web App. Multiple Function Apps are not currently supported.
   ///
-  /// > **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
+  /// &gt; **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
   final pulumi.Input<String> functionAppId;
+
   /// The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
   final pulumi.Input<String> staticWebAppId;
 
@@ -31,11 +32,12 @@ class StaticWebAppFunctionAppRegistrationArgs {
     };
   }
 
-  factory StaticWebAppFunctionAppRegistrationArgs.fromMap(Map<String, dynamic> map) {
+  factory StaticWebAppFunctionAppRegistrationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StaticWebAppFunctionAppRegistrationArgs(
-      functionAppId: (map['functionAppId'] as String).input(),
-      staticWebAppId: (map['staticWebAppId'] as String).input(),
+      functionAppId: pulumi.Input.fromValue(map['functionAppId'] as String),
+      staticWebAppId: pulumi.Input.fromValue(map['staticWebAppId'] as String),
     );
   }
 }
-

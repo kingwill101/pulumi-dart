@@ -161,16 +161,22 @@ import 'rule_group_namespace_state.dart';
 class RuleGroupNamespace extends pulumi.CustomResource {
   /// The ARN of the rule group namespace.
   late final pulumi.Output<String> arn;
+
   /// the rule group namespace data that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-Ruler.html).
   late final pulumi.Output<String> data;
+
   /// The name of the rule group namespace.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// ID of the prometheus workspace the rule group namespace should be linked to.
   late final pulumi.Output<String> workspaceId;
 
@@ -183,18 +189,18 @@ class RuleGroupNamespace extends pulumi.CustomResource {
     RuleGroupNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.data = registerOutput<String>('data');
+         'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [RuleGroupNamespace] resource's state with the given [name] and [id].
@@ -215,17 +221,17 @@ class RuleGroupNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.data = registerOutput<String>('data');
+         'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

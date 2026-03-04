@@ -4,7 +4,7 @@ import 'bucket_policy_s3_control_state.dart';
 
 /// Provides a resource to manage an S3 Control Bucket Policy.
 ///
-/// > This functionality is for managing [S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html). To manage S3 Bucket Policies in an AWS Partition, see the `aws.s3.BucketPolicy` resource.
+/// &gt; This functionality is for managing [S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html). To manage S3 Bucket Policies in an AWS Partition, see the `aws.s3.BucketPolicy` resource.
 ///
 /// ## Example Usage
 ///
@@ -201,8 +201,10 @@ import 'bucket_policy_s3_control_state.dart';
 class BucketPolicyS3Control extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// JSON string of the resource policy.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -215,14 +217,14 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
     BucketPolicyS3ControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3control/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BucketPolicyS3Control] resource's state with the given [name] and [id].
@@ -243,13 +245,13 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3control/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

@@ -8,20 +8,19 @@ class BillingGroupProperties {
 
   /// Creates a new [BillingGroupProperties].
   /// [description] A description of the Billing Group.
-  BillingGroupProperties({
-    this.description,
-  });
+  BillingGroupProperties({this.description});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-    };
+    return <String, dynamic>{'description': ?description};
   }
 
   factory BillingGroupProperties.fromMap(Map<String, dynamic> map) {
     return BillingGroupProperties(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

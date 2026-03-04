@@ -133,16 +133,22 @@ import 'system_data_response.dart';
 class LabelByWorkspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Label color.
   late final pulumi.Output<String?> color;
+
   /// Label display name.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Resource provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -155,17 +161,17 @@ class LabelByWorkspace extends pulumi.CustomResource {
     LabelByWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:easm:LabelByWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.color = registerOutput<String?>('color');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:easm:LabelByWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    color = registerOutput<String?>('color');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -118,7 +118,7 @@ import 'get_deployment_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview
@@ -247,7 +247,7 @@ Future<GetApiKeyResult> getApiKey(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview
@@ -370,7 +370,7 @@ Future<GetCertificateResult> getCertificate(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview
@@ -499,7 +499,7 @@ Future<GetConfigurationResult> getConfiguration(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview

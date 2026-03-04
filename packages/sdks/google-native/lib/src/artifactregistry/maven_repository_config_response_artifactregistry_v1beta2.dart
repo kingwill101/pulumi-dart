@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MavenRepositoryConfigResponseArtifactregistryV1beta2 {
   /// The repository with this flag will allow publishing the same snapshot versions.
   final pulumi.Input<bool> allowSnapshotOverwrites;
+
   /// Version policy defines the versions that the registry will accept.
   final pulumi.Input<String> versionPolicy;
 
@@ -24,11 +25,14 @@ class MavenRepositoryConfigResponseArtifactregistryV1beta2 {
     };
   }
 
-  factory MavenRepositoryConfigResponseArtifactregistryV1beta2.fromMap(Map<String, dynamic> map) {
+  factory MavenRepositoryConfigResponseArtifactregistryV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MavenRepositoryConfigResponseArtifactregistryV1beta2(
-      allowSnapshotOverwrites: (map['allowSnapshotOverwrites'] as bool).input(),
-      versionPolicy: (map['versionPolicy'] as String).input(),
+      allowSnapshotOverwrites: pulumi.Input.fromValue(
+        map['allowSnapshotOverwrites'] as bool,
+      ),
+      versionPolicy: pulumi.Input.fromValue(map['versionPolicy'] as String),
     );
   }
 }
-

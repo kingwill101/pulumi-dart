@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
+
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
   final pulumi.Input<String>? image;
+
   /// Image ID
   final pulumi.Input<String>? imageId;
+
   /// Image name. Use an image GUID for GA versions of the API.
   final pulumi.Input<String>? imageName;
+
   /// Regional data boundary for an image
   final pulumi.Input<String>? regionalDataBoundary;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,30 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      catalogName: (map['catalogName'] as String).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionalDataBoundary: (() {
+        final guardedValue = map['regionalDataBoundary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

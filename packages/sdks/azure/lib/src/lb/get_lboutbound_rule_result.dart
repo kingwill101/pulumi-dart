@@ -7,20 +7,27 @@ import 'get_lboutbound_rule_frontend_ip_configuration.dart';
 class GetLBOutboundRuleResult {
   /// The number of outbound ports used for NAT.
   final int allocatedOutboundPorts;
+
   /// The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   final String backendAddressPoolId;
   final bool enableTcpReset;
+
   /// A `frontend_ip_configuration` block as defined below.
   final List<GetLBOutboundRuleFrontendIpConfiguration> frontendIpConfigurations;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The timeout for the TCP idle connection.
   final int idleTimeoutInMinutes;
   final String loadbalancerId;
+
   /// The name of the Frontend IP Configuration.
   final String name;
+
   /// The transport protocol for the external endpoint.
   final String protocol;
+
   /// Is the bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination enabled? This value is useful when the protocol is set to TCP.
   final bool tcpResetEnabled;
 
@@ -53,7 +60,11 @@ class GetLBOutboundRuleResult {
       'allocatedOutboundPorts': allocatedOutboundPorts,
       'backendAddressPoolId': backendAddressPoolId,
       'enableTcpReset': enableTcpReset,
-      'frontendIpConfigurations': pulumi.Input.encodeList<GetLBOutboundRuleFrontendIpConfiguration, Map<String, dynamic>>(frontendIpConfigurations, (value) => value.toMap()),
+      'frontendIpConfigurations':
+          pulumi.Input.encodeList<
+            GetLBOutboundRuleFrontendIpConfiguration,
+            Map<String, dynamic>
+          >(frontendIpConfigurations, (value) => value.toMap()),
       'id': id,
       'idleTimeoutInMinutes': idleTimeoutInMinutes,
       'loadbalancerId': loadbalancerId,
@@ -68,7 +79,13 @@ class GetLBOutboundRuleResult {
       allocatedOutboundPorts: map['allocatedOutboundPorts'] as int,
       backendAddressPoolId: map['backendAddressPoolId'] as String,
       enableTcpReset: map['enableTcpReset'] as bool,
-      frontendIpConfigurations: pulumi.Input.decodeList<GetLBOutboundRuleFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => GetLBOutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      frontendIpConfigurations:
+          pulumi.Input.decodeList<GetLBOutboundRuleFrontendIpConfiguration>(
+            map['frontendIpConfigurations']!,
+            (value) => GetLBOutboundRuleFrontendIpConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       id: map['id'] as String,
       idleTimeoutInMinutes: map['idleTimeoutInMinutes'] as int,
       loadbalancerId: map['loadbalancerId'] as String,
@@ -78,4 +95,3 @@ class GetLBOutboundRuleResult {
     );
   }
 }
-

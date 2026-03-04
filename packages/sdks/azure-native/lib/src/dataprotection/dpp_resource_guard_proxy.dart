@@ -155,12 +155,16 @@ import 'system_data_response.dart';
 class DppResourceGuardProxy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
+
   /// ResourceGuardProxyBaseResource properties
   late final pulumi.Output<ResourceGuardProxyBaseResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -173,15 +177,15 @@ class DppResourceGuardProxy extends pulumi.CustomResource {
     DppResourceGuardProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dataprotection:DppResourceGuardProxy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:dataprotection:DppResourceGuardProxy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ResourceGuardProxyBaseResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ResourceGuardProxyBaseResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

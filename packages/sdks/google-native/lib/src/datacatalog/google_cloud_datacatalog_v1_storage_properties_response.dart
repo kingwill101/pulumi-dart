@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1StoragePropertiesResponse {
   /// Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
   final pulumi.Input<List<String>> filePattern;
+
   /// File type in MIME format, for example, `text/plain`.
   final pulumi.Input<String> fileType;
 
@@ -18,17 +19,17 @@ class GoogleCloudDatacatalogV1StoragePropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filePattern': filePattern,
-      'fileType': fileType,
-    };
+    return <String, dynamic>{'filePattern': filePattern, 'fileType': fileType};
   }
 
-  factory GoogleCloudDatacatalogV1StoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1StoragePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1StoragePropertiesResponse(
-      filePattern: ((map['filePattern'] as List).cast<String>()).input(),
-      fileType: (map['fileType'] as String).input(),
+      filePattern: pulumi.Input.fromValue(
+        (map['filePattern'] as List).cast<String>(),
+      ),
+      fileType: pulumi.Input.fromValue(map['fileType'] as String),
     );
   }
 }
-

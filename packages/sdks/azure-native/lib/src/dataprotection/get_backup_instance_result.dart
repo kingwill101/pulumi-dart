@@ -7,16 +7,22 @@ import 'system_data_response.dart';
 class GetBackupInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Proxy Resource Id represents the complete path to the resource.
   final String id;
+
   /// Proxy Resource name associated with the resource.
   final String name;
+
   /// BackupInstanceResource properties
   final BackupInstanceResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Proxy Resource tags.
   final Map<String, String>? tags;
+
   /// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -55,11 +61,18 @@ class GetBackupInstanceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: BackupInstanceResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: BackupInstanceResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

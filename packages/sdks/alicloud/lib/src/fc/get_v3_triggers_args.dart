@@ -9,16 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3TriggersArgs {
   /// Function Name
   final pulumi.Input<String> functionName;
-  /// A list of Trigger IDs. The value is formulated as `<function_name>:<trigger_name>`.
+
+  /// A list of Trigger IDs. The value is formulated as `&lt;function_name&gt;:&lt;trigger_name&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetV3TriggersArgs].
   /// [functionName] Function Name
-  /// [ids] A list of Trigger IDs. The value is formulated as `<function_name>:<trigger_name>`.
+  /// [ids] A list of Trigger IDs. The value is formulated as `&lt;function_name&gt;:&lt;trigger_name&gt;`.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetV3TriggersArgs({
@@ -39,11 +42,22 @@ class GetV3TriggersArgs {
 
   factory GetV3TriggersArgs.fromMap(Map<String, dynamic> map) {
     return GetV3TriggersArgs(
-      functionName: (map['functionName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

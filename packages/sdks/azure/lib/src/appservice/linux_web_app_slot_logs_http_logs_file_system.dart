@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSlotLogsHttpLogsFileSystem {
   /// The retention period in days. A values of `0` means no retention.
   final pulumi.Input<int> retentionInDays;
+
   /// The maximum size in megabytes that log files can use.
   final pulumi.Input<int> retentionInMb;
 
@@ -23,11 +24,12 @@ class LinuxWebAppSlotLogsHttpLogsFileSystem {
     };
   }
 
-  factory LinuxWebAppSlotLogsHttpLogsFileSystem.fromMap(Map<String, dynamic> map) {
+  factory LinuxWebAppSlotLogsHttpLogsFileSystem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxWebAppSlotLogsHttpLogsFileSystem(
-      retentionInDays: (map['retentionInDays'] as int).input(),
-      retentionInMb: (map['retentionInMb'] as int).input(),
+      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      retentionInMb: pulumi.Input.fromValue(map['retentionInMb'] as int),
     );
   }
 }
-

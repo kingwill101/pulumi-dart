@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateSpecContainerReadinessProbeHttpGet {
   /// Path to access on the HTTP server. If set, it should not be empty string.
   final pulumi.Input<String> path;
+
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
   final pulumi.Input<int> port;
@@ -18,17 +19,15 @@ class GetServiceTemplateSpecContainerReadinessProbeHttpGet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'port': port,
-    };
+    return <String, dynamic>{'path': path, 'port': port};
   }
 
-  factory GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerReadinessProbeHttpGet(
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

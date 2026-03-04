@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsoleWithLocationArgs {
   /// The name of the console
   final pulumi.Input<String> consoleName;
+
   /// The provider location
   final pulumi.Input<String> location;
 
@@ -21,17 +22,13 @@ class GetConsoleWithLocationArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'consoleName': consoleName,
-      'location': location,
-    };
+    return <String, dynamic>{'consoleName': consoleName, 'location': location};
   }
 
   factory GetConsoleWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetConsoleWithLocationArgs(
-      consoleName: (map['consoleName'] as String).input(),
-      location: (map['location'] as String).input(),
+      consoleName: pulumi.Input.fromValue(map['consoleName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

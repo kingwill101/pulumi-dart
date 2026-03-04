@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'network_manager_connectivity_configuration_applies_to_group.dart';
 import 'network_manager_connectivity_configuration_args.dart';
 import 'network_manager_connectivity_configuration_hub.dart';
 import 'network_manager_connectivity_configuration_state.dart';
 
 /// Manages a Network Manager Connectivity Configuration.
 ///
-/// > **Note:** The `azure.network.NetworkManagerConnectivityConfiguration` deployment may modify or delete existing Network Peering resource.
+/// &gt; **Note:** The `azure.network.NetworkManagerConnectivityConfiguration` deployment may modify or delete existing Network Peering resource.
 ///
 /// ## Example Usage
 ///
@@ -460,7 +459,7 @@ import 'network_manager_connectivity_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -474,19 +473,26 @@ import 'network_manager_connectivity_configuration_state.dart';
 /// ```
 class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
   /// One or more `applies_to_group` blocks as defined below.
-  late final pulumi.Output<List<NetworkManagerConnectivityConfigurationAppliesToGroup>> appliesToGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+
   /// Specifies the connectivity topology type. Possible values are `HubAndSpoke` and `Mesh`.
   late final pulumi.Output<String> connectivityTopology;
+
   /// Indicates whether to remove current existing Virtual Network Peering in the Connectivity Configuration affected scope. Possible values are `true` and `false`.
   late final pulumi.Output<bool?> deleteExistingPeeringEnabled;
+
   /// A description of the Connectivity Configuration.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether to global mesh is supported. Possible values are `true` and `false`.
   late final pulumi.Output<bool?> globalMeshEnabled;
+
   /// A `hub` block as defined below.
   late final pulumi.Output<NetworkManagerConnectivityConfigurationHub?> hub;
+
   /// Specifies the name which should be used for this Network Manager Connectivity Configuration. Changing this forces a new Network Manager Connectivity Configuration to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
   late final pulumi.Output<String> networkManagerId;
 
@@ -499,19 +505,23 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     NetworkManagerConnectivityConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliesToGroups = registerOutput<List<NetworkManagerConnectivityConfigurationAppliesToGroup>>('appliesToGroups');
-    this.connectivityTopology = registerOutput<String>('connectivityTopology');
-    this.deleteExistingPeeringEnabled = registerOutput<bool?>('deleteExistingPeeringEnabled');
-    this.description = registerOutput<String?>('description');
-    this.globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
-    this.hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
+         'azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliesToGroups = registerOutput<List<Map<String, dynamic>>>(
+      'appliesToGroups',
+    );
+    connectivityTopology = registerOutput<String>('connectivityTopology');
+    deleteExistingPeeringEnabled = registerOutput<bool?>(
+      'deleteExistingPeeringEnabled',
+    );
+    description = registerOutput<String?>('description');
+    globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
+    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
+    networkManagerId = registerOutput<String>('networkManagerId');
   }
 
   /// Gets an existing [NetworkManagerConnectivityConfiguration] resource's state with the given [name] and [id].
@@ -532,18 +542,22 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliesToGroups = registerOutput<List<NetworkManagerConnectivityConfigurationAppliesToGroup>>('appliesToGroups');
-    this.connectivityTopology = registerOutput<String>('connectivityTopology');
-    this.deleteExistingPeeringEnabled = registerOutput<bool?>('deleteExistingPeeringEnabled');
-    this.description = registerOutput<String?>('description');
-    this.globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
-    this.hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
+         'azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliesToGroups = registerOutput<List<Map<String, dynamic>>>(
+      'appliesToGroups',
+    );
+    connectivityTopology = registerOutput<String>('connectivityTopology');
+    deleteExistingPeeringEnabled = registerOutput<bool?>(
+      'deleteExistingPeeringEnabled',
+    );
+    description = registerOutput<String?>('description');
+    globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
+    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
+    networkManagerId = registerOutput<String>('networkManagerId');
   }
 }

@@ -3,16 +3,15 @@ enum ReadReplicaPromoteMode {
   standalone("Standalone"),
   switchover("Switchover");
 
-  const ReadReplicaPromoteMode(this.value);
-  final String value;
+  const ReadReplicaPromoteMode(this.wireValue);
+  final String wireValue;
 
   static ReadReplicaPromoteMode fromValue(String value) {
     for (final item in ReadReplicaPromoteMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReadReplicaPromoteMode value: $value');
   }
 }
-

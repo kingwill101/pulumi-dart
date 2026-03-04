@@ -6,16 +6,15 @@ enum ClassificationPrimaryMetrics {
   valueAveragePrecisionScoreWeighted("AveragePrecisionScoreWeighted"),
   valuePrecisionScoreWeighted("PrecisionScoreWeighted");
 
-  const ClassificationPrimaryMetrics(this.value);
-  final String value;
+  const ClassificationPrimaryMetrics(this.wireValue);
+  final String wireValue;
 
   static ClassificationPrimaryMetrics fromValue(String value) {
     for (final item in ClassificationPrimaryMetrics.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClassificationPrimaryMetrics value: $value');
   }
 }
-

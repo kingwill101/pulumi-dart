@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DropInfoResponse {
   /// Cause that the packet is dropped.
   final pulumi.Input<String> cause;
+
   /// URI of the resource that caused the drop.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [DropInfoResponse].
   /// [cause] Cause that the packet is dropped.
   /// [resourceUri] URI of the resource that caused the drop.
-  DropInfoResponse({
-    required this.cause,
-    required this.resourceUri,
-  });
+  DropInfoResponse({required this.cause, required this.resourceUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cause': cause,
-      'resourceUri': resourceUri,
-    };
+    return <String, dynamic>{'cause': cause, 'resourceUri': resourceUri};
   }
 
   factory DropInfoResponse.fromMap(Map<String, dynamic> map) {
     return DropInfoResponse(
-      cause: (map['cause'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      cause: pulumi.Input.fromValue(map['cause'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

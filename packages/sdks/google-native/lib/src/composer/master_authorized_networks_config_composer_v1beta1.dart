@@ -7,6 +7,7 @@ import 'cidr_block_composer_v1beta1.dart';
 class MasterAuthorizedNetworksConfigComposerV1beta1 {
   /// Up to 50 external networks that could access Kubernetes master through HTTPS.
   final pulumi.Input<List<CidrBlockComposerV1beta1>>? cidrBlocks;
+
   /// Whether or not master authorized networks feature is enabled.
   final pulumi.Input<bool>? enabled;
 
@@ -20,16 +21,43 @@ class MasterAuthorizedNetworksConfigComposerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': ?pulumi.Input.mapOptionalInputValue<List<CidrBlockComposerV1beta1>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<CidrBlockComposerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cidrBlocks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CidrBlockComposerV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            cidrBlocks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CidrBlockComposerV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': ?enabled,
     };
   }
 
-  factory MasterAuthorizedNetworksConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MasterAuthorizedNetworksConfigComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MasterAuthorizedNetworksConfigComposerV1beta1(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<CidrBlockComposerV1beta1>(map['cidrBlocks']!, (value) => CidrBlockComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      cidrBlocks: (() {
+        final guardedValue = map['cidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CidrBlockComposerV1beta1>(
+            guardedValue,
+            (value) => CidrBlockComposerV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

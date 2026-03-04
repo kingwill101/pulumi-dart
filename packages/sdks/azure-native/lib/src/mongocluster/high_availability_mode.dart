@@ -4,16 +4,15 @@ enum HighAvailabilityMode {
   sameZone("SameZone"),
   zoneRedundantPreferred("ZoneRedundantPreferred");
 
-  const HighAvailabilityMode(this.value);
-  final String value;
+  const HighAvailabilityMode(this.wireValue);
+  final String wireValue;
 
   static HighAvailabilityMode fromValue(String value) {
     for (final item in HighAvailabilityMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HighAvailabilityMode value: $value');
   }
 }
-

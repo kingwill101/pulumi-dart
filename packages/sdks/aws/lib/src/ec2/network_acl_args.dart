@@ -11,14 +11,19 @@ import 'network_acl_ingress.dart';
 class NetworkAclArgs {
   /// Specifies an egress rule. Parameters defined below.
   final pulumi.Input<List<NetworkAclEgress>>? egress;
+
   /// Specifies an ingress rule. Parameters defined below.
   final pulumi.Input<List<NetworkAclIngress>>? ingress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A list of Subnet IDs to apply the ACL to
   final pulumi.Input<List<String>>? subnetIds;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the associated VPC.
   final pulumi.Input<String> vpcId;
 
@@ -40,8 +45,30 @@ class NetworkAclArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egress': ?pulumi.Input.mapOptionalInputValue<List<NetworkAclEgress>, List<Map<String, dynamic>>>(egress, (value) => pulumi.Input.encodeList<NetworkAclEgress, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ingress': ?pulumi.Input.mapOptionalInputValue<List<NetworkAclIngress>, List<Map<String, dynamic>>>(ingress, (value) => pulumi.Input.encodeList<NetworkAclIngress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'egress':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkAclEgress>,
+            List<Map<String, dynamic>>
+          >(
+            egress,
+            (value) =>
+                pulumi.Input.encodeList<NetworkAclEgress, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'ingress':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkAclIngress>,
+            List<Map<String, dynamic>>
+          >(
+            ingress,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkAclIngress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'subnetIds': ?subnetIds,
       'tags': ?tags,
@@ -51,13 +78,48 @@ class NetworkAclArgs {
 
   factory NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclArgs(
-      egress: map['egress'] == null ? null : ((pulumi.Input.decodeList<NetworkAclEgress>(map['egress']!, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      ingress: map['ingress'] == null ? null : ((pulumi.Input.decodeList<NetworkAclIngress>(map['ingress']!, (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      egress: (() {
+        final guardedValue = map['egress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkAclEgress>(
+            guardedValue,
+            (value) => NetworkAclEgress.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ingress: (() {
+        final guardedValue = map['ingress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkAclIngress>(
+            guardedValue,
+            (value) => NetworkAclIngress.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

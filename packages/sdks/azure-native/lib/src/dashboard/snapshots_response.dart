@@ -9,20 +9,19 @@ class SnapshotsResponse {
 
   /// Creates a new [SnapshotsResponse].
   /// [externalEnabled] Set to false to disable external snapshot publish endpoint
-  SnapshotsResponse({
-    this.externalEnabled,
-  });
+  SnapshotsResponse({this.externalEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalEnabled': ?externalEnabled,
-    };
+    return <String, dynamic>{'externalEnabled': ?externalEnabled};
   }
 
   factory SnapshotsResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotsResponse(
-      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled']! as bool).input(),
+      externalEnabled: (() {
+        final guardedValue = map['externalEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

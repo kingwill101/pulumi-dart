@@ -6,22 +6,36 @@ import 'get_custom_routing_port_mappings_custom_routing_port_mapping_destination
 class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
   /// The ID of the GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The acceleration port.
   final pulumi.Input<int> acceleratorPort;
+
   /// The service IP address and port of the backend instance.
-  final pulumi.Input<List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress>> destinationSocketAddresses;
+  final pulumi.Input<
+    List<
+      GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress
+    >
+  >
+  destinationSocketAddresses;
+
   /// The ID of the endpoint group.
   final pulumi.Input<String> endpointGroupId;
+
   /// The ID of the region in which the endpoint group resides.
   final pulumi.Input<String> endpointGroupRegion;
+
   /// The ID of the endpoint.
   final pulumi.Input<String> endpointId;
+
   /// The ID of the listener.
   final pulumi.Input<String> listenerId;
+
   /// The protocol of the backend service.
   final pulumi.Input<List<String>> protocols;
+
   /// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
   final pulumi.Input<String> status;
+
   /// The ID of the endpoint (vSwitch).
   final pulumi.Input<String> vswitch;
 
@@ -53,7 +67,20 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
     return <String, dynamic>{
       'acceleratorId': acceleratorId,
       'acceleratorPort': acceleratorPort,
-      'destinationSocketAddresses': pulumi.Input.mapInputValue<List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress>, List<Map<String, dynamic>>>(destinationSocketAddresses, (value) => pulumi.Input.encodeList<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinationSocketAddresses':
+          pulumi.Input.mapInputValue<
+            List<
+              GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress
+            >,
+            List<Map<String, dynamic>>
+          >(
+            destinationSocketAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'endpointGroupId': endpointGroupId,
       'endpointGroupRegion': endpointGroupRegion,
       'endpointId': endpointId,
@@ -64,19 +91,34 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
     };
   }
 
-  factory GetCustomRoutingPortMappingsCustomRoutingPortMapping.fromMap(Map<String, dynamic> map) {
+  factory GetCustomRoutingPortMappingsCustomRoutingPortMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomRoutingPortMappingsCustomRoutingPortMapping(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      acceleratorPort: (map['acceleratorPort'] as int).input(),
-      destinationSocketAddresses: (pulumi.Input.decodeList<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress>(map['destinationSocketAddresses'], (value) => GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointGroupId: (map['endpointGroupId'] as String).input(),
-      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
-      endpointId: (map['endpointId'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
-      protocols: ((map['protocols'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      vswitch: (map['vswitch'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      acceleratorPort: pulumi.Input.fromValue(map['acceleratorPort'] as int),
+      destinationSocketAddresses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress
+        >(
+          map['destinationSocketAddresses']!,
+          (value) =>
+              GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
+      endpointGroupRegion: pulumi.Input.fromValue(
+        map['endpointGroupRegion'] as String,
+      ),
+      endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
+      protocols: pulumi.Input.fromValue(
+        (map['protocols'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vswitch: pulumi.Input.fromValue(map['vswitch'] as String),
     );
   }
 }
-

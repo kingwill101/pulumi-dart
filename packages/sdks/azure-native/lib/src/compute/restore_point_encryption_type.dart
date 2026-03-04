@@ -2,18 +2,19 @@
 enum RestorePointEncryptionType {
   encryptionAtRestWithPlatformKey("EncryptionAtRestWithPlatformKey"),
   encryptionAtRestWithCustomerKey("EncryptionAtRestWithCustomerKey"),
-  encryptionAtRestWithPlatformAndCustomerKeys("EncryptionAtRestWithPlatformAndCustomerKeys");
+  encryptionAtRestWithPlatformAndCustomerKeys(
+    "EncryptionAtRestWithPlatformAndCustomerKeys",
+  );
 
-  const RestorePointEncryptionType(this.value);
-  final String value;
+  const RestorePointEncryptionType(this.wireValue);
+  final String wireValue;
 
   static RestorePointEncryptionType fromValue(String value) {
     for (final item in RestorePointEncryptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RestorePointEncryptionType value: $value');
   }
 }
-

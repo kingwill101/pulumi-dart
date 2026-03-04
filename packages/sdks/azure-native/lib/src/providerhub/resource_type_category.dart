@@ -5,16 +5,15 @@ enum ResourceTypeCategory {
   internal("Internal"),
   pureProxy("PureProxy");
 
-  const ResourceTypeCategory(this.value);
-  final String value;
+  const ResourceTypeCategory(this.wireValue);
+  final String wireValue;
 
   static ResourceTypeCategory fromValue(String value) {
     for (final item in ResourceTypeCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceTypeCategory value: $value');
   }
 }
-

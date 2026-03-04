@@ -361,23 +361,33 @@ import 'cx_generative_settings_state.dart';
 class CxGenerativeSettings extends pulumi.CustomResource {
   /// Settings for Generative Fallback.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsFallbackSettings?> fallbackSettings;
+  late final pulumi.Output<CxGenerativeSettingsFallbackSettings?>
+  fallbackSettings;
+
   /// Settings for Generative Safety.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsGenerativeSafetySettings?> generativeSafetySettings;
+  late final pulumi.Output<CxGenerativeSettingsGenerativeSafetySettings?>
+  generativeSafetySettings;
+
   /// Settings for knowledge connector.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsKnowledgeConnectorSettings?> knowledgeConnectorSettings;
+  late final pulumi.Output<CxGenerativeSettingsKnowledgeConnectorSettings?>
+  knowledgeConnectorSettings;
+
   /// Language for this settings.
   late final pulumi.Output<String> languageCode;
+
   /// LLM model settings.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsLlmModelSettings?> llmModelSettings;
+  late final pulumi.Output<CxGenerativeSettingsLlmModelSettings?>
+  llmModelSettings;
+
   /// The unique identifier of the generativeSettings.
-  /// Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
+  /// Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/generativeSettings.
   late final pulumi.Output<String> name;
+
   /// The agent to create a flow for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
 
   /// Creates a new [CxGenerativeSettings].
@@ -389,18 +399,28 @@ class CxGenerativeSettings extends pulumi.CustomResource {
     CxGenerativeSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings');
-    this.generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings');
-    this.knowledgeConnectorSettings = registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>('knowledgeConnectorSettings');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>('llmModelSettings');
+         'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
+      'fallbackSettings',
+    );
+    generativeSafetySettings =
+        registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
+          'generativeSafetySettings',
+        );
+    knowledgeConnectorSettings =
+        registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
+          'knowledgeConnectorSettings',
+        );
+    languageCode = registerOutput<String>('languageCode');
+    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
+      'llmModelSettings',
+    );
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
+    parent = registerOutput<String?>('parent');
   }
 
   /// Gets an existing [CxGenerativeSettings] resource's state with the given [name] and [id].
@@ -421,17 +441,27 @@ class CxGenerativeSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings');
-    this.generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings');
-    this.knowledgeConnectorSettings = registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>('knowledgeConnectorSettings');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>('llmModelSettings');
+         'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
+      'fallbackSettings',
+    );
+    generativeSafetySettings =
+        registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
+          'generativeSafetySettings',
+        );
+    knowledgeConnectorSettings =
+        registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
+          'knowledgeConnectorSettings',
+        );
+    languageCode = registerOutput<String>('languageCode');
+    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
+      'llmModelSettings',
+    );
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
+    parent = registerOutput<String?>('parent');
   }
 }

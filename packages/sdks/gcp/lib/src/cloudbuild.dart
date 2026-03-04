@@ -1,5 +1,3 @@
-library module_cloudbuild;
-
 export 'cloudbuild/bitbucket_server_config.dart';
 export 'cloudbuild/bitbucket_server_config_args.dart';
 export 'cloudbuild/bitbucket_server_config_connected_repository.dart';

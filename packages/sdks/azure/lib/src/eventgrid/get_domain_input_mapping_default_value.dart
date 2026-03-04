@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainInputMappingDefaultValue {
   /// Specifies the default data version of the EventGrid Event associated with the domain.
   final pulumi.Input<String> dataVersion;
+
   /// Specifies the default event type of the EventGrid Event associated with the domain.
   final pulumi.Input<String> eventType;
+
   /// Specifies the default subject of the EventGrid Event associated with the domain.
   final pulumi.Input<String> subject;
 
@@ -30,10 +32,9 @@ class GetDomainInputMappingDefaultValue {
 
   factory GetDomainInputMappingDefaultValue.fromMap(Map<String, dynamic> map) {
     return GetDomainInputMappingDefaultValue(
-      dataVersion: (map['dataVersion'] as String).input(),
-      eventType: (map['eventType'] as String).input(),
-      subject: (map['subject'] as String).input(),
+      dataVersion: pulumi.Input.fromValue(map['dataVersion'] as String),
+      eventType: pulumi.Input.fromValue(map['eventType'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
     );
   }
 }
-

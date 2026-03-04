@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomerGatewaysGateway {
   /// The autonomous system number of the local data center gateway device of the VPN customer gateway.
   final pulumi.Input<int> asn;
+
   /// The creation time of the VPN customer gateway.
   final pulumi.Input<String> createTime;
+
   /// The description of the VPN customer gateway.
   final pulumi.Input<String> description;
+
   /// ID of the VPN customer gateway .
   final pulumi.Input<String> id;
+
   /// The ip address of the VPN customer gateway.
   final pulumi.Input<String> ipAddress;
+
   /// The name of the VPN customer gateway.
   final pulumi.Input<String> name;
 
@@ -45,13 +50,12 @@ class GetCustomerGatewaysGateway {
 
   factory GetCustomerGatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetCustomerGatewaysGateway(
-      asn: (map['asn'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      name: (map['name'] as String).input(),
+      asn: pulumi.Input.fromValue(map['asn'] as int),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

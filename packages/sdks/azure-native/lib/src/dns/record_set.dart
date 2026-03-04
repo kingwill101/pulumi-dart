@@ -1,20 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aaaa_record_response.dart';
-import 'arecord_response.dart';
-import 'caa_record_response.dart';
 import 'cname_record_response.dart';
-import 'ds_record_response.dart';
-import 'mx_record_response.dart';
-import 'naptr_record_response.dart';
-import 'ns_record_response.dart';
-import 'ptr_record_response.dart';
 import 'record_set_args.dart';
 import 'soa_record_response.dart';
-import 'srv_record_response.dart';
 import 'sub_resource_response.dart';
 import 'system_data_response.dart';
-import 'tlsa_record_response.dart';
-import 'txt_record_response.dart';
 
 /// Describes a DNS record set (a collection of DNS records with the same name and type).
 ///
@@ -2658,51 +2647,74 @@ import 'txt_record_response.dart';
 /// ```
 class RecordSet extends pulumi.CustomResource {
   /// The list of A records in the record set.
-  late final pulumi.Output<List<ARecordResponse>?> aRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> aRecords;
+
   /// The list of AAAA records in the record set.
-  late final pulumi.Output<List<AaaaRecordResponse>?> aaaaRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> aaaaRecords;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The list of CAA records in the record set.
-  late final pulumi.Output<List<CaaRecordResponse>?> caaRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> caaRecords;
+
   /// The CNAME record in the  record set.
   late final pulumi.Output<CnameRecordResponse?> cnameRecord;
+
   /// The list of DS records in the record set.
-  late final pulumi.Output<List<DsRecordResponse>?> dsRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dsRecords;
+
   /// The etag of the record set.
   late final pulumi.Output<String?> etag;
+
   /// Fully qualified domain name of the record set.
   late final pulumi.Output<String> fqdn;
+
   /// The metadata attached to the record set.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The list of MX records in the record set.
-  late final pulumi.Output<List<MxRecordResponse>?> mxRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mxRecords;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The list of NAPTR records in the record set.
-  late final pulumi.Output<List<NaptrRecordResponse>?> naptrRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> naptrRecords;
+
   /// The list of NS records in the record set.
-  late final pulumi.Output<List<NsRecordResponse>?> nsRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> nsRecords;
+
   /// provisioning State of the record set.
   late final pulumi.Output<String> provisioningState;
+
   /// The list of PTR records in the record set.
-  late final pulumi.Output<List<PtrRecordResponse>?> ptrRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ptrRecords;
+
   /// The SOA record in the record set.
   late final pulumi.Output<SoaRecordResponse?> soaRecord;
+
   /// The list of SRV records in the record set.
-  late final pulumi.Output<List<SrvRecordResponse>?> srvRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> srvRecords;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// A reference to an azure resource from where the dns resource value is taken.
   late final pulumi.Output<SubResourceResponse?> targetResource;
+
   /// The list of TLSA records in the record set.
-  late final pulumi.Output<List<TlsaRecordResponse>?> tlsaRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tlsaRecords;
+
   /// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
   late final pulumi.Output<SubResourceResponse?> trafficManagementProfile;
+
   /// The TTL (time-to-live) of the records in the record set.
   late final pulumi.Output<double?> ttl;
+
   /// The list of TXT records in the record set.
-  late final pulumi.Output<List<TxtRecordResponse>?> txtRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> txtRecords;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -2715,34 +2727,36 @@ class RecordSet extends pulumi.CustomResource {
     RecordSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dns:RecordSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aRecords = registerOutput<List<ARecordResponse>?>('aRecords');
-    this.aaaaRecords = registerOutput<List<AaaaRecordResponse>?>('aaaaRecords');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.caaRecords = registerOutput<List<CaaRecordResponse>?>('caaRecords');
-    this.cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
-    this.dsRecords = registerOutput<List<DsRecordResponse>?>('dsRecords');
-    this.etag = registerOutput<String?>('etag');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mxRecords = registerOutput<List<MxRecordResponse>?>('mxRecords');
+         'azure-native:dns:RecordSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aRecords = registerOutput<List<Map<String, dynamic>>?>('aRecords');
+    aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    caaRecords = registerOutput<List<Map<String, dynamic>>?>('caaRecords');
+    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
+    dsRecords = registerOutput<List<Map<String, dynamic>>?>('dsRecords');
+    etag = registerOutput<String?>('etag');
+    fqdn = registerOutput<String>('fqdn');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mxRecords = registerOutput<List<Map<String, dynamic>>?>('mxRecords');
     this.name = registerOutput<String>('name');
-    this.naptrRecords = registerOutput<List<NaptrRecordResponse>?>('naptrRecords');
-    this.nsRecords = registerOutput<List<NsRecordResponse>?>('nsRecords');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ptrRecords = registerOutput<List<PtrRecordResponse>?>('ptrRecords');
-    this.soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
-    this.srvRecords = registerOutput<List<SrvRecordResponse>?>('srvRecords');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetResource = registerOutput<SubResourceResponse?>('targetResource');
-    this.tlsaRecords = registerOutput<List<TlsaRecordResponse>?>('tlsaRecords');
-    this.trafficManagementProfile = registerOutput<SubResourceResponse?>('trafficManagementProfile');
-    this.ttl = registerOutput<double?>('ttl');
-    this.txtRecords = registerOutput<List<TxtRecordResponse>?>('txtRecords');
-    this.type = registerOutput<String>('type');
+    naptrRecords = registerOutput<List<Map<String, dynamic>>?>('naptrRecords');
+    nsRecords = registerOutput<List<Map<String, dynamic>>?>('nsRecords');
+    provisioningState = registerOutput<String>('provisioningState');
+    ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
+    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
+    srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetResource = registerOutput<SubResourceResponse?>('targetResource');
+    tlsaRecords = registerOutput<List<Map<String, dynamic>>?>('tlsaRecords');
+    trafficManagementProfile = registerOutput<SubResourceResponse?>(
+      'trafficManagementProfile',
+    );
+    ttl = registerOutput<double?>('ttl');
+    txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');
+    type = registerOutput<String>('type');
   }
 }

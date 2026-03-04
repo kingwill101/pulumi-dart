@@ -7,20 +7,15 @@ class DistributionOriginGroupMember {
 
   /// Creates a new [DistributionOriginGroupMember].
   /// [originId] Required.
-  DistributionOriginGroupMember({
-    required this.originId,
-  });
+  DistributionOriginGroupMember({required this.originId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'originId': originId,
-    };
+    return <String, dynamic>{'originId': originId};
   }
 
   factory DistributionOriginGroupMember.fromMap(Map<String, dynamic> map) {
     return DistributionOriginGroupMember(
-      originId: (map['originId'] as String).input(),
+      originId: pulumi.Input.fromValue(map['originId'] as String),
     );
   }
 }
-

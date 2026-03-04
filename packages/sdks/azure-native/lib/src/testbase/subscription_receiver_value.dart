@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionReceiverValue {
   /// The role of the notification receiver.
   final pulumi.Input<String>? role;
+
   /// The subscription id of the notification receiver.
   final pulumi.Input<String>? subscriptionId;
+
   /// The subscription name of the notification receiver.
   final pulumi.Input<String>? subscriptionName;
 
@@ -31,10 +33,21 @@ class SubscriptionReceiverValue {
 
   factory SubscriptionReceiverValue.fromMap(Map<String, dynamic> map) {
     return SubscriptionReceiverValue(
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionName: (() {
+        final guardedValue = map['subscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

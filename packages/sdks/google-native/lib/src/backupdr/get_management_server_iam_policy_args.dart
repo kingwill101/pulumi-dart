@@ -35,11 +35,20 @@ class GetManagementServerIamPolicyArgs {
 
   factory GetManagementServerIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      managementServerId: (map['managementServerId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      managementServerId: pulumi.Input.fromValue(
+        map['managementServerId'] as String,
+      ),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

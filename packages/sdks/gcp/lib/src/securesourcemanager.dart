@@ -1,5 +1,3 @@
-library module_securesourcemanager;
-
 export 'securesourcemanager/branch_rule.dart';
 export 'securesourcemanager/branch_rule_args.dart';
 export 'securesourcemanager/branch_rule_state.dart';

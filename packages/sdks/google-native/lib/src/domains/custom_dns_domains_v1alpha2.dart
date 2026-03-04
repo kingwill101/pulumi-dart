@@ -7,29 +7,50 @@ import 'ds_record_domains_v1alpha2.dart';
 class CustomDnsDomainsV1alpha2 {
   /// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
   final pulumi.Input<List<DsRecordDomainsV1alpha2>>? dsRecords;
+
   /// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
   final pulumi.Input<List<String>> nameServers;
 
   /// Creates a new [CustomDnsDomainsV1alpha2].
   /// [dsRecords] The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
   /// [nameServers] A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
-  CustomDnsDomainsV1alpha2({
-    this.dsRecords,
-    required this.nameServers,
-  });
+  CustomDnsDomainsV1alpha2({this.dsRecords, required this.nameServers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dsRecords': ?pulumi.Input.mapOptionalInputValue<List<DsRecordDomainsV1alpha2>, List<Map<String, dynamic>>>(dsRecords, (value) => pulumi.Input.encodeList<DsRecordDomainsV1alpha2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dsRecords':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DsRecordDomainsV1alpha2>,
+            List<Map<String, dynamic>>
+          >(
+            dsRecords,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DsRecordDomainsV1alpha2,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nameServers': nameServers,
     };
   }
 
   factory CustomDnsDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return CustomDnsDomainsV1alpha2(
-      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<DsRecordDomainsV1alpha2>(map['dsRecords']!, (value) => DsRecordDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
+      dsRecords: (() {
+        final guardedValue = map['dsRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DsRecordDomainsV1alpha2>(
+            guardedValue,
+            (value) => DsRecordDomainsV1alpha2.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nameServers: pulumi.Input.fromValue(
+        (map['nameServers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

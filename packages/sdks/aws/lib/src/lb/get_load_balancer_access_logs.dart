@@ -27,10 +27,9 @@ class GetLoadBalancerAccessLogs {
 
   factory GetLoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerAccessLogs(
-      bucket: (map['bucket'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      prefix: (map['prefix'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

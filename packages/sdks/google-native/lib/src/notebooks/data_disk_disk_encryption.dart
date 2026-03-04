@@ -4,16 +4,15 @@ enum DataDiskDiskEncryption {
   gmek("GMEK"),
   cmek("CMEK");
 
-  const DataDiskDiskEncryption(this.value);
-  final String value;
+  const DataDiskDiskEncryption(this.wireValue);
+  final String wireValue;
 
   static DataDiskDiskEncryption fromValue(String value) {
     for (final item in DataDiskDiskEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataDiskDiskEncryption value: $value');
   }
 }
-

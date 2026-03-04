@@ -13,16 +13,15 @@ enum MetricUnit {
   seconds("Seconds"),
   other("Other");
 
-  const MetricUnit(this.value);
-  final String value;
+  const MetricUnit(this.wireValue);
+  final String wireValue;
 
   static MetricUnit fromValue(String value) {
     for (final item in MetricUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricUnit value: $value');
   }
 }
-

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUdmSnapshotsSnapshot {
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
   final pulumi.Input<String> diskId;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// ECS instance ID
   final pulumi.Input<String> instanceId;
+
   /// The ID of the backup job that creates the snapshot.
   final pulumi.Input<String> jobId;
+
   /// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   final pulumi.Input<String> sourceType;
+
   /// Start Time
   final pulumi.Input<int> startTime;
+
   /// The first ID of the resource
   final pulumi.Input<String> udmSnapshotId;
 
@@ -55,15 +62,14 @@ class GetUdmSnapshotsSnapshot {
 
   factory GetUdmSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetUdmSnapshotsSnapshot(
-      createTime: (map['createTime'] as String).input(),
-      diskId: (map['diskId'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      jobId: (map['jobId'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      startTime: (map['startTime'] as int).input(),
-      udmSnapshotId: (map['udmSnapshotId'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as int),
+      udmSnapshotId: pulumi.Input.fromValue(map['udmSnapshotId'] as String),
     );
   }
 }
-

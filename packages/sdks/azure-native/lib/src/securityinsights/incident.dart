@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'incident_additional_data_response.dart';
 import 'incident_args.dart';
-import 'incident_label_response.dart';
 import 'incident_owner_info_response.dart';
 import 'system_data_response.dart';
 
@@ -211,50 +210,73 @@ import 'system_data_response.dart';
 class Incident extends pulumi.CustomResource {
   /// Additional data on the incident
   late final pulumi.Output<IncidentAdditionalDataResponse> additionalData;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The reason the incident was closed
   late final pulumi.Output<String?> classification;
+
   /// Describes the reason the incident was closed
   late final pulumi.Output<String?> classificationComment;
+
   /// The classification reason the incident was closed with
   late final pulumi.Output<String?> classificationReason;
+
   /// The time the incident was created
   late final pulumi.Output<String> createdTimeUtc;
+
   /// The description of the incident
   late final pulumi.Output<String?> description;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The time of the first activity in the incident
   late final pulumi.Output<String?> firstActivityTimeUtc;
+
   /// A sequential number
   late final pulumi.Output<int> incidentNumber;
+
   /// The deep-link url to the incident in Azure portal
   late final pulumi.Output<String> incidentUrl;
+
   /// List of labels relevant to this incident
-  late final pulumi.Output<List<IncidentLabelResponse>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The time of the last activity in the incident
   late final pulumi.Output<String?> lastActivityTimeUtc;
+
   /// The last time the incident was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Describes a user that the incident is assigned to
   late final pulumi.Output<IncidentOwnerInfoResponse?> owner;
+
   /// The incident ID assigned by the incident provider
   late final pulumi.Output<String> providerIncidentId;
+
   /// The name of the source provider that generated the incident
   late final pulumi.Output<String> providerName;
+
   /// List of resource ids of Analytic rules related to the incident
   late final pulumi.Output<List<String>> relatedAnalyticRuleIds;
+
   /// The severity of the incident
   late final pulumi.Output<String> severity;
+
   /// The status of the incident
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The title of the incident
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -267,34 +289,38 @@ class Incident extends pulumi.CustomResource {
     IncidentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:Incident',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<IncidentAdditionalDataResponse>('additionalData');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.classification = registerOutput<String?>('classification');
-    this.classificationComment = registerOutput<String?>('classificationComment');
-    this.classificationReason = registerOutput<String?>('classificationReason');
-    this.createdTimeUtc = registerOutput<String>('createdTimeUtc');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.firstActivityTimeUtc = registerOutput<String?>('firstActivityTimeUtc');
-    this.incidentNumber = registerOutput<int>('incidentNumber');
-    this.incidentUrl = registerOutput<String>('incidentUrl');
-    this.labels = registerOutput<List<IncidentLabelResponse>?>('labels');
-    this.lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
-    this.lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+         'azure-native:securityinsights:Incident',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData = registerOutput<IncidentAdditionalDataResponse>(
+      'additionalData',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    classification = registerOutput<String?>('classification');
+    classificationComment = registerOutput<String?>('classificationComment');
+    classificationReason = registerOutput<String?>('classificationReason');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    firstActivityTimeUtc = registerOutput<String?>('firstActivityTimeUtc');
+    incidentNumber = registerOutput<int>('incidentNumber');
+    incidentUrl = registerOutput<String>('incidentUrl');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
-    this.owner = registerOutput<IncidentOwnerInfoResponse?>('owner');
-    this.providerIncidentId = registerOutput<String>('providerIncidentId');
-    this.providerName = registerOutput<String>('providerName');
-    this.relatedAnalyticRuleIds = registerOutput<List<String>>('relatedAnalyticRuleIds');
-    this.severity = registerOutput<String>('severity');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    owner = registerOutput<IncidentOwnerInfoResponse?>('owner');
+    providerIncidentId = registerOutput<String>('providerIncidentId');
+    providerName = registerOutput<String>('providerName');
+    relatedAnalyticRuleIds = registerOutput<List<String>>(
+      'relatedAnalyticRuleIds',
+    );
+    severity = registerOutput<String>('severity');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

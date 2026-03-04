@@ -5,16 +5,20 @@ enum ServiceConfigIngressSettingsCloudfunctionsV2beta {
   allowInternalOnly("ALLOW_INTERNAL_ONLY"),
   allowInternalAndGclb("ALLOW_INTERNAL_AND_GCLB");
 
-  const ServiceConfigIngressSettingsCloudfunctionsV2beta(this.value);
-  final String value;
+  const ServiceConfigIngressSettingsCloudfunctionsV2beta(this.wireValue);
+  final String wireValue;
 
-  static ServiceConfigIngressSettingsCloudfunctionsV2beta fromValue(String value) {
-    for (final item in ServiceConfigIngressSettingsCloudfunctionsV2beta.values) {
-      if (item.value == value) {
+  static ServiceConfigIngressSettingsCloudfunctionsV2beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ServiceConfigIngressSettingsCloudfunctionsV2beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceConfigIngressSettingsCloudfunctionsV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ServiceConfigIngressSettingsCloudfunctionsV2beta value: $value',
+    );
   }
 }
-

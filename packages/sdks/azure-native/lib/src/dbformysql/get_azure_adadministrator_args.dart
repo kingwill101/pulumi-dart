@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureADAdministratorArgs {
   /// The name of the Azure AD Administrator.
   final pulumi.Input<String> administratorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -34,10 +36,13 @@ class GetAzureADAdministratorArgs {
 
   factory GetAzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureADAdministratorArgs(
-      administratorName: (map['administratorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      administratorName: pulumi.Input.fromValue(
+        map['administratorName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

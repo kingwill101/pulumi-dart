@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayConfigResponse {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
   final pulumi.Input<String> gatewayAuthMethod;
+
   /// Indicates whether the device is a gateway.
   final pulumi.Input<String> gatewayType;
+
   /// [Output only] The ID of the gateway the device accessed most recently.
   final pulumi.Input<String> lastAccessedGatewayId;
+
   /// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
   final pulumi.Input<String> lastAccessedGatewayTime;
 
@@ -36,11 +39,16 @@ class GatewayConfigResponse {
 
   factory GatewayConfigResponse.fromMap(Map<String, dynamic> map) {
     return GatewayConfigResponse(
-      gatewayAuthMethod: (map['gatewayAuthMethod'] as String).input(),
-      gatewayType: (map['gatewayType'] as String).input(),
-      lastAccessedGatewayId: (map['lastAccessedGatewayId'] as String).input(),
-      lastAccessedGatewayTime: (map['lastAccessedGatewayTime'] as String).input(),
+      gatewayAuthMethod: pulumi.Input.fromValue(
+        map['gatewayAuthMethod'] as String,
+      ),
+      gatewayType: pulumi.Input.fromValue(map['gatewayType'] as String),
+      lastAccessedGatewayId: pulumi.Input.fromValue(
+        map['lastAccessedGatewayId'] as String,
+      ),
+      lastAccessedGatewayTime: pulumi.Input.fromValue(
+        map['lastAccessedGatewayTime'] as String,
+      ),
     );
   }
 }
-

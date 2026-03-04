@@ -10,20 +10,26 @@ class EnterprisePolicyIdentity {
 
   /// Creates a new [EnterprisePolicyIdentity].
   /// [type] The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-  EnterprisePolicyIdentity({
-    this.type,
-  });
+  EnterprisePolicyIdentity({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory EnterprisePolicyIdentity.fromMap(Map<String, dynamic> map) {
     return EnterprisePolicyIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

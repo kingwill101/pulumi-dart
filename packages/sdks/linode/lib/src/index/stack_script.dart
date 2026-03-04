@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stack_script_args.dart';
 import 'stack_script_state.dart';
-import 'stack_script_user_defined_field.dart';
 
 /// Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
 ///
@@ -9,7 +8,7 @@ import 'stack_script_user_defined_field.dart';
 ///
 /// ## Example Usage
 ///
-/// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
+/// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
 ///
 ///
 /// ```typescript
@@ -251,30 +250,42 @@ import 'stack_script_user_defined_field.dart';
 class StackScript extends pulumi.CustomResource {
   /// The date this StackScript was created.
   late final pulumi.Output<String> created;
+
   /// Count of currently active, deployed Linodes created from this StackScript.
   late final pulumi.Output<int> deploymentsActive;
+
   /// The total number of times this StackScript has been deployed.
   late final pulumi.Output<int> deploymentsTotal;
+
   /// A description for the StackScript.
   late final pulumi.Output<String> description;
+
   /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
   ///
   /// - - -
   late final pulumi.Output<List<String>> images;
+
   /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
   late final pulumi.Output<bool> isPublic;
+
   /// The StackScript's label is for display purposes only.
   late final pulumi.Output<String> label;
+
   /// This field allows you to add notes for the set of revisions made to this StackScript.
   late final pulumi.Output<String> revNote;
+
   /// The script to execute when provisioning a new Linode with this StackScript.
   late final pulumi.Output<String> script;
+
   /// The date this StackScript was updated.
   late final pulumi.Output<String> updated;
+
   /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-  late final pulumi.Output<List<StackScriptUserDefinedField>> userDefinedFields;
+  late final pulumi.Output<List<Map<String, dynamic>>> userDefinedFields;
+
   /// The Gravatar ID for the User who created the StackScript.
   late final pulumi.Output<String> userGravatarId;
+
   /// The User who created the StackScript.
   late final pulumi.Output<String> username;
 
@@ -287,24 +298,26 @@ class StackScript extends pulumi.CustomResource {
     StackScriptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/stackScript:StackScript',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.deploymentsActive = registerOutput<int>('deploymentsActive');
-    this.deploymentsTotal = registerOutput<int>('deploymentsTotal');
-    this.description = registerOutput<String>('description');
-    this.images = registerOutput<List<String>>('images');
-    this.isPublic = registerOutput<bool>('isPublic');
-    this.label = registerOutput<String>('label');
-    this.revNote = registerOutput<String>('revNote');
-    this.script = registerOutput<String>('script');
-    this.updated = registerOutput<String>('updated');
-    this.userDefinedFields = registerOutput<List<StackScriptUserDefinedField>>('userDefinedFields');
-    this.userGravatarId = registerOutput<String>('userGravatarId');
-    this.username = registerOutput<String>('username');
+         'linode:index/stackScript:StackScript',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    deploymentsActive = registerOutput<int>('deploymentsActive');
+    deploymentsTotal = registerOutput<int>('deploymentsTotal');
+    description = registerOutput<String>('description');
+    images = registerOutput<List<String>>('images');
+    isPublic = registerOutput<bool>('isPublic');
+    label = registerOutput<String>('label');
+    revNote = registerOutput<String>('revNote');
+    script = registerOutput<String>('script');
+    updated = registerOutput<String>('updated');
+    userDefinedFields = registerOutput<List<Map<String, dynamic>>>(
+      'userDefinedFields',
+    );
+    userGravatarId = registerOutput<String>('userGravatarId');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [StackScript] resource's state with the given [name] and [id].
@@ -325,23 +338,25 @@ class StackScript extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/stackScript:StackScript',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.deploymentsActive = registerOutput<int>('deploymentsActive');
-    this.deploymentsTotal = registerOutput<int>('deploymentsTotal');
-    this.description = registerOutput<String>('description');
-    this.images = registerOutput<List<String>>('images');
-    this.isPublic = registerOutput<bool>('isPublic');
-    this.label = registerOutput<String>('label');
-    this.revNote = registerOutput<String>('revNote');
-    this.script = registerOutput<String>('script');
-    this.updated = registerOutput<String>('updated');
-    this.userDefinedFields = registerOutput<List<StackScriptUserDefinedField>>('userDefinedFields');
-    this.userGravatarId = registerOutput<String>('userGravatarId');
-    this.username = registerOutput<String>('username');
+         'linode:index/stackScript:StackScript',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    deploymentsActive = registerOutput<int>('deploymentsActive');
+    deploymentsTotal = registerOutput<int>('deploymentsTotal');
+    description = registerOutput<String>('description');
+    images = registerOutput<List<String>>('images');
+    isPublic = registerOutput<bool>('isPublic');
+    label = registerOutput<String>('label');
+    revNote = registerOutput<String>('revNote');
+    script = registerOutput<String>('script');
+    updated = registerOutput<String>('updated');
+    userDefinedFields = registerOutput<List<Map<String, dynamic>>>(
+      'userDefinedFields',
+    );
+    userGravatarId = registerOutput<String>('userGravatarId');
+    username = registerOutput<String>('username');
   }
 }

@@ -6,6 +6,7 @@ import 'get_exchanges_exchange.dart';
 /// Result data returned by getExchanges.
 class GetExchangesResult {
   final List<GetExchangesExchange> exchanges;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -37,7 +38,11 @@ class GetExchangesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exchanges': pulumi.Input.encodeList<GetExchangesExchange, Map<String, dynamic>>(exchanges, (value) => value.toMap()),
+      'exchanges':
+          pulumi.Input.encodeList<GetExchangesExchange, Map<String, dynamic>>(
+            exchanges,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -50,15 +55,27 @@ class GetExchangesResult {
 
   factory GetExchangesResult.fromMap(Map<String, dynamic> map) {
     return GetExchangesResult(
-      exchanges: pulumi.Input.decodeList<GetExchangesExchange>(map['exchanges'], (value) => GetExchangesExchange.fromMap((value as Map).cast<String, dynamic>())),
+      exchanges: pulumi.Input.decodeList<GetExchangesExchange>(
+        map['exchanges']!,
+        (value) => GetExchangesExchange.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       virtualHostName: map['virtualHostName'] as String,
     );
   }
 }
-

@@ -6,58 +6,85 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class A2AProtectedManagedDiskDetails {
   /// The disk level operations list.
   final pulumi.Input<List<String>>? allowedDiskLevelOperation;
+
   /// The data pending at source virtual machine in MB.
   final pulumi.Input<double>? dataPendingAtSourceAgentInMB;
+
   /// The data pending for replication in MB at staging account.
   final pulumi.Input<double>? dataPendingInStagingStorageAccountInMB;
+
   /// The KeyVault resource id for secret (BEK).
   final pulumi.Input<String>? dekKeyVaultArmId;
+
   /// The disk capacity in bytes.
   final pulumi.Input<double>? diskCapacityInBytes;
+
   /// The managed disk Arm id.
   final pulumi.Input<String>? diskId;
+
   /// The disk name.
   final pulumi.Input<String>? diskName;
+
   /// The disk state.
   final pulumi.Input<String>? diskState;
+
   /// The type of disk.
   final pulumi.Input<String>? diskType;
+
   /// The failover name for the managed disk.
   final pulumi.Input<String>? failoverDiskName;
+
   /// A value indicating whether vm has encrypted os disk or not.
   final pulumi.Input<bool>? isDiskEncrypted;
+
   /// A value indicating whether disk key got encrypted or not.
   final pulumi.Input<bool>? isDiskKeyEncrypted;
+
   /// The KeyVault resource id for key (KEK).
   final pulumi.Input<String>? kekKeyVaultArmId;
+
   /// The key URL / identifier (KEK).
   final pulumi.Input<String>? keyIdentifier;
+
   /// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
   final pulumi.Input<String>? monitoringJobType;
+
   /// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
   final pulumi.Input<int>? monitoringPercentageCompletion;
+
   /// The primary disk encryption set Id.
   final pulumi.Input<String>? primaryDiskEncryptionSetId;
+
   /// The primary staging storage account.
   final pulumi.Input<String>? primaryStagingAzureStorageAccountId;
+
   /// The recovery disk encryption set Id.
   final pulumi.Input<String>? recoveryDiskEncryptionSetId;
+
   /// Recovery original target disk Arm Id.
   final pulumi.Input<String>? recoveryOrignalTargetDiskId;
+
   /// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
   final pulumi.Input<String>? recoveryReplicaDiskAccountType;
+
   /// Recovery replica disk Arm Id.
   final pulumi.Input<String>? recoveryReplicaDiskId;
+
   /// The recovery disk resource group Arm Id.
   final pulumi.Input<String>? recoveryResourceGroupId;
+
   /// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
   final pulumi.Input<String>? recoveryTargetDiskAccountType;
+
   /// Recovery target disk Arm Id.
   final pulumi.Input<String>? recoveryTargetDiskId;
+
   /// A value indicating whether resync is required for this disk.
   final pulumi.Input<bool>? resyncRequired;
+
   /// The secret URL / identifier (BEK).
   final pulumi.Input<String>? secretIdentifier;
+
   /// The test failover name for the managed disk.
   final pulumi.Input<String>? tfoDiskName;
 
@@ -125,7 +152,8 @@ class A2AProtectedManagedDiskDetails {
     return <String, dynamic>{
       'allowedDiskLevelOperation': ?allowedDiskLevelOperation,
       'dataPendingAtSourceAgentInMB': ?dataPendingAtSourceAgentInMB,
-      'dataPendingInStagingStorageAccountInMB': ?dataPendingInStagingStorageAccountInMB,
+      'dataPendingInStagingStorageAccountInMB':
+          ?dataPendingInStagingStorageAccountInMB,
       'dekKeyVaultArmId': ?dekKeyVaultArmId,
       'diskCapacityInBytes': ?diskCapacityInBytes,
       'diskId': ?diskId,
@@ -140,7 +168,8 @@ class A2AProtectedManagedDiskDetails {
       'monitoringJobType': ?monitoringJobType,
       'monitoringPercentageCompletion': ?monitoringPercentageCompletion,
       'primaryDiskEncryptionSetId': ?primaryDiskEncryptionSetId,
-      'primaryStagingAzureStorageAccountId': ?primaryStagingAzureStorageAccountId,
+      'primaryStagingAzureStorageAccountId':
+          ?primaryStagingAzureStorageAccountId,
       'recoveryDiskEncryptionSetId': ?recoveryDiskEncryptionSetId,
       'recoveryOrignalTargetDiskId': ?recoveryOrignalTargetDiskId,
       'recoveryReplicaDiskAccountType': ?recoveryReplicaDiskAccountType,
@@ -156,35 +185,146 @@ class A2AProtectedManagedDiskDetails {
 
   factory A2AProtectedManagedDiskDetails.fromMap(Map<String, dynamic> map) {
     return A2AProtectedManagedDiskDetails(
-      allowedDiskLevelOperation: map['allowedDiskLevelOperation'] == null ? null : ((map['allowedDiskLevelOperation']! as List).cast<String>()).input(),
-      dataPendingAtSourceAgentInMB: map['dataPendingAtSourceAgentInMB'] == null ? null : (map['dataPendingAtSourceAgentInMB']! as double).input(),
-      dataPendingInStagingStorageAccountInMB: map['dataPendingInStagingStorageAccountInMB'] == null ? null : (map['dataPendingInStagingStorageAccountInMB']! as double).input(),
-      dekKeyVaultArmId: map['dekKeyVaultArmId'] == null ? null : (map['dekKeyVaultArmId']! as String).input(),
-      diskCapacityInBytes: map['diskCapacityInBytes'] == null ? null : (map['diskCapacityInBytes']! as double).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
-      diskState: map['diskState'] == null ? null : (map['diskState']! as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      failoverDiskName: map['failoverDiskName'] == null ? null : (map['failoverDiskName']! as String).input(),
-      isDiskEncrypted: map['isDiskEncrypted'] == null ? null : (map['isDiskEncrypted']! as bool).input(),
-      isDiskKeyEncrypted: map['isDiskKeyEncrypted'] == null ? null : (map['isDiskKeyEncrypted']! as bool).input(),
-      kekKeyVaultArmId: map['kekKeyVaultArmId'] == null ? null : (map['kekKeyVaultArmId']! as String).input(),
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
-      monitoringJobType: map['monitoringJobType'] == null ? null : (map['monitoringJobType']! as String).input(),
-      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : (map['monitoringPercentageCompletion']! as int).input(),
-      primaryDiskEncryptionSetId: map['primaryDiskEncryptionSetId'] == null ? null : (map['primaryDiskEncryptionSetId']! as String).input(),
-      primaryStagingAzureStorageAccountId: map['primaryStagingAzureStorageAccountId'] == null ? null : (map['primaryStagingAzureStorageAccountId']! as String).input(),
-      recoveryDiskEncryptionSetId: map['recoveryDiskEncryptionSetId'] == null ? null : (map['recoveryDiskEncryptionSetId']! as String).input(),
-      recoveryOrignalTargetDiskId: map['recoveryOrignalTargetDiskId'] == null ? null : (map['recoveryOrignalTargetDiskId']! as String).input(),
-      recoveryReplicaDiskAccountType: map['recoveryReplicaDiskAccountType'] == null ? null : (map['recoveryReplicaDiskAccountType']! as String).input(),
-      recoveryReplicaDiskId: map['recoveryReplicaDiskId'] == null ? null : (map['recoveryReplicaDiskId']! as String).input(),
-      recoveryResourceGroupId: map['recoveryResourceGroupId'] == null ? null : (map['recoveryResourceGroupId']! as String).input(),
-      recoveryTargetDiskAccountType: map['recoveryTargetDiskAccountType'] == null ? null : (map['recoveryTargetDiskAccountType']! as String).input(),
-      recoveryTargetDiskId: map['recoveryTargetDiskId'] == null ? null : (map['recoveryTargetDiskId']! as String).input(),
-      resyncRequired: map['resyncRequired'] == null ? null : (map['resyncRequired']! as bool).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
-      tfoDiskName: map['tfoDiskName'] == null ? null : (map['tfoDiskName']! as String).input(),
+      allowedDiskLevelOperation: (() {
+        final guardedValue = map['allowedDiskLevelOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataPendingAtSourceAgentInMB: (() {
+        final guardedValue = map['dataPendingAtSourceAgentInMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      dataPendingInStagingStorageAccountInMB: (() {
+        final guardedValue = map['dataPendingInStagingStorageAccountInMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      dekKeyVaultArmId: (() {
+        final guardedValue = map['dekKeyVaultArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskCapacityInBytes: (() {
+        final guardedValue = map['diskCapacityInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskName: (() {
+        final guardedValue = map['diskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskState: (() {
+        final guardedValue = map['diskState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failoverDiskName: (() {
+        final guardedValue = map['failoverDiskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDiskEncrypted: (() {
+        final guardedValue = map['isDiskEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isDiskKeyEncrypted: (() {
+        final guardedValue = map['isDiskKeyEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kekKeyVaultArmId: (() {
+        final guardedValue = map['kekKeyVaultArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyIdentifier: (() {
+        final guardedValue = map['keyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoringJobType: (() {
+        final guardedValue = map['monitoringJobType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoringPercentageCompletion: (() {
+        final guardedValue = map['monitoringPercentageCompletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      primaryDiskEncryptionSetId: (() {
+        final guardedValue = map['primaryDiskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryStagingAzureStorageAccountId: (() {
+        final guardedValue = map['primaryStagingAzureStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryDiskEncryptionSetId: (() {
+        final guardedValue = map['recoveryDiskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryOrignalTargetDiskId: (() {
+        final guardedValue = map['recoveryOrignalTargetDiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryReplicaDiskAccountType: (() {
+        final guardedValue = map['recoveryReplicaDiskAccountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryReplicaDiskId: (() {
+        final guardedValue = map['recoveryReplicaDiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryResourceGroupId: (() {
+        final guardedValue = map['recoveryResourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryTargetDiskAccountType: (() {
+        final guardedValue = map['recoveryTargetDiskAccountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryTargetDiskId: (() {
+        final guardedValue = map['recoveryTargetDiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resyncRequired: (() {
+        final guardedValue = map['resyncRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secretIdentifier: (() {
+        final guardedValue = map['secretIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tfoDiskName: (() {
+        final guardedValue = map['tfoDiskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

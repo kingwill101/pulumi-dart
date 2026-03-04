@@ -1,0 +1,6 @@
+name: awsx-dart-ecs-parallel-step2
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ECS parallel update step in Dart.

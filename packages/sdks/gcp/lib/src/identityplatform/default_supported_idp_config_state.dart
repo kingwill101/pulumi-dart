@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultSupportedIdpConfigState {
   /// OAuth client ID
   final pulumi.Input<String>? clientId;
+
   /// OAuth client secret
   final pulumi.Input<String>? clientSecret;
+
   /// If this IDP allows the user to sign in
   final pulumi.Input<bool>? enabled;
+
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
   /// * `facebook.com`
@@ -22,8 +25,10 @@ class DefaultSupportedIdpConfigState {
   /// * `twitter.com`
   /// * `yahoo.com`
   final pulumi.Input<String>? idpId;
+
   /// The name of the DefaultSupportedIdpConfig resource
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -57,13 +62,36 @@ class DefaultSupportedIdpConfigState {
 
   factory DefaultSupportedIdpConfigState.fromMap(Map<String, dynamic> map) {
     return DefaultSupportedIdpConfigState(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      idpId: map['idpId'] == null ? null : (map['idpId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idpId: (() {
+        final guardedValue = map['idpId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

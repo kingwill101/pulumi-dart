@@ -14,15 +14,14 @@ class GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetUri': targetUri,
-    };
+    return <String, dynamic>{'targetUri': targetUri};
   }
 
-  factory GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse(
-      targetUri: (map['targetUri'] as String).input(),
+      targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }
 }
-

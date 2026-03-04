@@ -1,5 +1,3 @@
-library module_settings_k8s_io;
-
 export 'settings_k8s_io/pod_preset.dart';
 export 'settings_k8s_io/pod_preset_args.dart';
 export 'settings_k8s_io/pod_preset_list.dart';

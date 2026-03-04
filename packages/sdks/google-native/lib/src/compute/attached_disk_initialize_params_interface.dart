@@ -4,16 +4,17 @@ enum AttachedDiskInitializeParamsInterface {
   scsi("SCSI"),
   unspecified("UNSPECIFIED");
 
-  const AttachedDiskInitializeParamsInterface(this.value);
-  final String value;
+  const AttachedDiskInitializeParamsInterface(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskInitializeParamsInterface fromValue(String value) {
     for (final item in AttachedDiskInitializeParamsInterface.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskInitializeParamsInterface value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskInitializeParamsInterface value: $value',
+    );
   }
 }
-

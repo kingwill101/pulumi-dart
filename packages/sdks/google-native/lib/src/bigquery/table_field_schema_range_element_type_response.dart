@@ -9,20 +9,17 @@ class TableFieldSchemaRangeElementTypeResponse {
 
   /// Creates a new [TableFieldSchemaRangeElementTypeResponse].
   /// [type] The field element type of a RANGE
-  TableFieldSchemaRangeElementTypeResponse({
-    required this.type,
-  });
+  TableFieldSchemaRangeElementTypeResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory TableFieldSchemaRangeElementTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory TableFieldSchemaRangeElementTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableFieldSchemaRangeElementTypeResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,7 +6,8 @@ import 'virtual_machine_properties_response_uefi_settings.dart';
 /// SecurityProfile - Specifies the security settings for the virtual machine.
 class VirtualMachinePropertiesResponseSecurityProfile {
   final pulumi.Input<bool>? enableTPM;
-  final pulumi.Input<VirtualMachinePropertiesResponseUefiSettings>? uefiSettings;
+  final pulumi.Input<VirtualMachinePropertiesResponseUefiSettings>?
+  uefiSettings;
 
   /// Creates a new [VirtualMachinePropertiesResponseSecurityProfile].
   /// [enableTPM] Optional.
@@ -19,15 +20,32 @@ class VirtualMachinePropertiesResponseSecurityProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableTPM': ?enableTPM,
-      'uefiSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesResponseUefiSettings, Map<String, dynamic>>(uefiSettings, (value) => value.toMap()),
+      'uefiSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachinePropertiesResponseUefiSettings,
+            Map<String, dynamic>
+          >(uefiSettings, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachinePropertiesResponseSecurityProfile.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesResponseSecurityProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesResponseSecurityProfile(
-      enableTPM: map['enableTPM'] == null ? null : (map['enableTPM']! as bool).input(),
-      uefiSettings: map['uefiSettings'] == null ? null : (VirtualMachinePropertiesResponseUefiSettings.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
+      enableTPM: (() {
+        final guardedValue = map['enableTPM'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      uefiSettings: (() {
+        final guardedValue = map['uefiSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachinePropertiesResponseUefiSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

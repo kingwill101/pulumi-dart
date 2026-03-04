@@ -6,8 +6,10 @@ import 'confluent_list_metadata_response.dart';
 class ListAccessRoleBindingNameResult {
   /// List of role binding names
   final List<String>? data;
+
   /// Type of response
   final String? kind;
+
   /// Metadata of the list
   final ConfluentListMetadataResponse? metadata;
 
@@ -15,26 +17,35 @@ class ListAccessRoleBindingNameResult {
   /// [data] List of role binding names
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessRoleBindingNameResult({
-    this.data,
-    this.kind,
-    this.metadata,
-  });
+  ListAccessRoleBindingNameResult({this.data, this.kind, this.metadata});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'data': ?data,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?metadata?.toMap(),
     };
   }
 
   factory ListAccessRoleBindingNameResult.fromMap(Map<String, dynamic> map) {
     return ListAccessRoleBindingNameResult(
-      data: map['data'] == null ? null : (map['data']! as List).cast<String>(),
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return ConfluentListMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

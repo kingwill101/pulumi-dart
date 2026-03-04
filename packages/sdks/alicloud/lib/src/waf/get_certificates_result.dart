@@ -7,14 +7,18 @@ import 'get_certificates_certificate.dart';
 class GetCertificatesResult {
   /// A list of Waf Certificates. Each element contains the following attributes:
   final List<GetCertificatesCertificate> certificates;
+
   /// The domain that you want to add to WAF.
   final String? domain;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// WAF instance ID.
   final String instanceId;
   final String? nameRegex;
+
   /// A list of Certificate names.
   final List<String> names;
   final String? outputFile;
@@ -41,7 +45,11 @@ class GetCertificatesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<GetCertificatesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates':
+          pulumi.Input.encodeList<
+            GetCertificatesCertificate,
+            Map<String, dynamic>
+          >(certificates, (value) => value.toMap()),
       'domain': ?domain,
       'id': id,
       'ids': ids,
@@ -54,15 +62,31 @@ class GetCertificatesResult {
 
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
-      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      domain: map['domain'] == null ? null : map['domain']! as String,
+      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(
+        map['certificates']!,
+        (value) => GetCertificatesCertificate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

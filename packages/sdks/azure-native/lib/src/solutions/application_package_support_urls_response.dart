@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPackageSupportUrlsResponse {
   /// The government cloud support URL.
   final pulumi.Input<String>? governmentCloud;
+
   /// The public azure support URL.
   final pulumi.Input<String>? publicAzure;
 
@@ -24,11 +25,20 @@ class ApplicationPackageSupportUrlsResponse {
     };
   }
 
-  factory ApplicationPackageSupportUrlsResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationPackageSupportUrlsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationPackageSupportUrlsResponse(
-      governmentCloud: map['governmentCloud'] == null ? null : (map['governmentCloud']! as String).input(),
-      publicAzure: map['publicAzure'] == null ? null : (map['publicAzure']! as String).input(),
+      governmentCloud: (() {
+        final guardedValue = map['governmentCloud'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicAzure: (() {
+        final guardedValue = map['publicAzure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

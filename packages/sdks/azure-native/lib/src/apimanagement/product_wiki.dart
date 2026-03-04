@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'product_wiki_args.dart';
-import 'wiki_documentation_contract_response.dart';
 
 /// Wiki properties
 ///
@@ -181,10 +180,13 @@ import 'wiki_documentation_contract_response.dart';
 class ProductWiki extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collection wiki documents included into this wiki.
-  late final pulumi.Output<List<WikiDocumentationContractResponse>?> documents;
+  late final pulumi.Output<List<Map<String, dynamic>>?> documents;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -197,14 +199,14 @@ class ProductWiki extends pulumi.CustomResource {
     ProductWikiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ProductWiki',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.documents = registerOutput<List<WikiDocumentationContractResponse>?>('documents');
+         'azure-native:apimanagement:ProductWiki',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    documents = registerOutput<List<Map<String, dynamic>>?>('documents');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

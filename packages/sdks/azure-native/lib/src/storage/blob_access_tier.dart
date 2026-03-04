@@ -4,16 +4,15 @@ enum BlobAccessTier {
   valueCool("Cool"),
   valueArchive("Archive");
 
-  const BlobAccessTier(this.value);
-  final String value;
+  const BlobAccessTier(this.wireValue);
+  final String wireValue;
 
   static BlobAccessTier fromValue(String value) {
     for (final item in BlobAccessTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlobAccessTier value: $value');
   }
 }
-

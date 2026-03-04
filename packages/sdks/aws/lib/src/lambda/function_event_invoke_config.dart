@@ -11,7 +11,7 @@ import 'function_event_invoke_config_state.dart';
 ///
 /// ### Complete Error Handling and Destinations
 ///
-/// > **Note:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
+/// &gt; **Note:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
 ///
 ///
 /// ```typescript
@@ -1111,17 +1111,23 @@ import 'function_event_invoke_config_state.dart';
 /// ```
 class FunctionEventInvokeConfig extends pulumi.CustomResource {
   /// Configuration block with destination configuration. See below.
-  late final pulumi.Output<FunctionEventInvokeConfigDestinationConfig?> destinationConfig;
+  late final pulumi.Output<FunctionEventInvokeConfigDestinationConfig?>
+  destinationConfig;
+
   /// Name or ARN of the Lambda Function, omitting any version or alias qualifier.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> functionName;
+
   /// Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
   late final pulumi.Output<int?> maximumEventAgeInSeconds;
+
   /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
   late final pulumi.Output<int?> maximumRetryAttempts;
+
   /// Lambda Function published version, `$LATEST`, or Lambda Alias name.
   late final pulumi.Output<String?> qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -1134,17 +1140,20 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
     FunctionEventInvokeConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig');
-    this.functionName = registerOutput<String>('functionName');
-    this.maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
-    this.maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.region = registerOutput<String>('region');
+         'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationConfig =
+        registerOutput<FunctionEventInvokeConfigDestinationConfig?>(
+          'destinationConfig',
+        );
+    functionName = registerOutput<String>('functionName');
+    maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
+    maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [FunctionEventInvokeConfig] resource's state with the given [name] and [id].
@@ -1165,16 +1174,19 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig');
-    this.functionName = registerOutput<String>('functionName');
-    this.maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
-    this.maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.region = registerOutput<String>('region');
+         'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationConfig =
+        registerOutput<FunctionEventInvokeConfigDestinationConfig?>(
+          'destinationConfig',
+        );
+    functionName = registerOutput<String>('functionName');
+    maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
+    maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
   }
 }

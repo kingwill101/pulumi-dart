@@ -634,7 +634,11 @@ class ProviderArgs {
       'artifactRegistryCustomEndpoint': ?artifactRegistryCustomEndpoint,
       'assuredWorkloadsCustomEndpoint': ?assuredWorkloadsCustomEndpoint,
       'backupDrCustomEndpoint': ?backupDrCustomEndpoint,
-      'batching': ?pulumi.Input.mapOptionalInputValue<ProviderBatching, Map<String, dynamic>>(batching, (value) => value.toMap()),
+      'batching':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderBatching,
+            Map<String, dynamic>
+          >(batching, (value) => value.toMap()),
       'beyondcorpCustomEndpoint': ?beyondcorpCustomEndpoint,
       'bigQueryCustomEndpoint': ?bigQueryCustomEndpoint,
       'biglakeCustomEndpoint': ?biglakeCustomEndpoint,
@@ -664,7 +668,8 @@ class ProviderArgs {
       'cloudRunCustomEndpoint': ?cloudRunCustomEndpoint,
       'cloudRunV2CustomEndpoint': ?cloudRunV2CustomEndpoint,
       'cloudSchedulerCustomEndpoint': ?cloudSchedulerCustomEndpoint,
-      'cloudSecurityComplianceCustomEndpoint': ?cloudSecurityComplianceCustomEndpoint,
+      'cloudSecurityComplianceCustomEndpoint':
+          ?cloudSecurityComplianceCustomEndpoint,
       'cloudTasksCustomEndpoint': ?cloudTasksCustomEndpoint,
       'cloudbuildv2CustomEndpoint': ?cloudbuildv2CustomEndpoint,
       'clouddeployCustomEndpoint': ?clouddeployCustomEndpoint,
@@ -673,7 +678,8 @@ class ProviderArgs {
       'colabCustomEndpoint': ?colabCustomEndpoint,
       'composerCustomEndpoint': ?composerCustomEndpoint,
       'computeCustomEndpoint': ?computeCustomEndpoint,
-      'contactCenterInsightsCustomEndpoint': ?contactCenterInsightsCustomEndpoint,
+      'contactCenterInsightsCustomEndpoint':
+          ?contactCenterInsightsCustomEndpoint,
       'containerAnalysisCustomEndpoint': ?containerAnalysisCustomEndpoint,
       'containerAttachedCustomEndpoint': ?containerAttachedCustomEndpoint,
       'containerAwsCustomEndpoint': ?containerAwsCustomEndpoint,
@@ -685,7 +691,8 @@ class ProviderArgs {
       'dataFusionCustomEndpoint': ?dataFusionCustomEndpoint,
       'dataLossPreventionCustomEndpoint': ?dataLossPreventionCustomEndpoint,
       'dataPipelineCustomEndpoint': ?dataPipelineCustomEndpoint,
-      'databaseMigrationServiceCustomEndpoint': ?databaseMigrationServiceCustomEndpoint,
+      'databaseMigrationServiceCustomEndpoint':
+          ?databaseMigrationServiceCustomEndpoint,
       'dataflowCustomEndpoint': ?dataflowCustomEndpoint,
       'dataformCustomEndpoint': ?dataformCustomEndpoint,
       'dataplexCustomEndpoint': ?dataplexCustomEndpoint,
@@ -707,7 +714,11 @@ class ProviderArgs {
       'edgenetworkCustomEndpoint': ?edgenetworkCustomEndpoint,
       'essentialContactsCustomEndpoint': ?essentialContactsCustomEndpoint,
       'eventarcCustomEndpoint': ?eventarcCustomEndpoint,
-      'externalCredentials': ?pulumi.Input.mapOptionalInputValue<ProviderExternalCredentials, Map<String, dynamic>>(externalCredentials, (value) => value.toMap()),
+      'externalCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderExternalCredentials,
+            Map<String, dynamic>
+          >(externalCredentials, (value) => value.toMap()),
       'filestoreCustomEndpoint': ?filestoreCustomEndpoint,
       'firebaseAiLogicCustomEndpoint': ?firebaseAiLogicCustomEndpoint,
       'firebaseAppCheckCustomEndpoint': ?firebaseAppCheckCustomEndpoint,
@@ -737,7 +748,8 @@ class ProviderArgs {
       'identityPlatformCustomEndpoint': ?identityPlatformCustomEndpoint,
       'impersonateServiceAccount': ?impersonateServiceAccount,
       'impersonateServiceAccountDelegates': ?impersonateServiceAccountDelegates,
-      'integrationConnectorsCustomEndpoint': ?integrationConnectorsCustomEndpoint,
+      'integrationConnectorsCustomEndpoint':
+          ?integrationConnectorsCustomEndpoint,
       'integrationsCustomEndpoint': ?integrationsCustomEndpoint,
       'kmsCustomEndpoint': ?kmsCustomEndpoint,
       'loggingCustomEndpoint': ?loggingCustomEndpoint,
@@ -753,7 +765,8 @@ class ProviderArgs {
       'monitoringCustomEndpoint': ?monitoringCustomEndpoint,
       'netappCustomEndpoint': ?netappCustomEndpoint,
       'networkConnectivityCustomEndpoint': ?networkConnectivityCustomEndpoint,
-      'networkConnectivityv1CustomEndpoint': ?networkConnectivityv1CustomEndpoint,
+      'networkConnectivityv1CustomEndpoint':
+          ?networkConnectivityv1CustomEndpoint,
       'networkManagementCustomEndpoint': ?networkManagementCustomEndpoint,
       'networkSecurityCustomEndpoint': ?networkSecurityCustomEndpoint,
       'networkServicesCustomEndpoint': ?networkServicesCustomEndpoint,
@@ -766,14 +779,17 @@ class ProviderArgs {
       'osLoginCustomEndpoint': ?osLoginCustomEndpoint,
       'parallelstoreCustomEndpoint': ?parallelstoreCustomEndpoint,
       'parameterManagerCustomEndpoint': ?parameterManagerCustomEndpoint,
-      'parameterManagerRegionalCustomEndpoint': ?parameterManagerRegionalCustomEndpoint,
+      'parameterManagerRegionalCustomEndpoint':
+          ?parameterManagerRegionalCustomEndpoint,
       'privatecaCustomEndpoint': ?privatecaCustomEndpoint,
-      'privilegedAccessManagerCustomEndpoint': ?privilegedAccessManagerCustomEndpoint,
+      'privilegedAccessManagerCustomEndpoint':
+          ?privilegedAccessManagerCustomEndpoint,
       'project': ?project,
       'publicCaCustomEndpoint': ?publicCaCustomEndpoint,
       'pubsubCustomEndpoint': ?pubsubCustomEndpoint,
       'pubsubLiteCustomEndpoint': ?pubsubLiteCustomEndpoint,
-      'pulumiAttributionLabelAdditionStrategy': ?pulumiAttributionLabelAdditionStrategy,
+      'pulumiAttributionLabelAdditionStrategy':
+          ?pulumiAttributionLabelAdditionStrategy,
       'recaptchaEnterpriseCustomEndpoint': ?recaptchaEnterpriseCustomEndpoint,
       'redisCustomEndpoint': ?redisCustomEndpoint,
       'region': ?region,
@@ -787,10 +803,12 @@ class ProviderArgs {
       'saasRuntimeCustomEndpoint': ?saasRuntimeCustomEndpoint,
       'scopes': ?scopes,
       'secretManagerCustomEndpoint': ?secretManagerCustomEndpoint,
-      'secretManagerRegionalCustomEndpoint': ?secretManagerRegionalCustomEndpoint,
+      'secretManagerRegionalCustomEndpoint':
+          ?secretManagerRegionalCustomEndpoint,
       'secureSourceManagerCustomEndpoint': ?secureSourceManagerCustomEndpoint,
       'securityCenterCustomEndpoint': ?securityCenterCustomEndpoint,
-      'securityCenterManagementCustomEndpoint': ?securityCenterManagementCustomEndpoint,
+      'securityCenterManagementCustomEndpoint':
+          ?securityCenterManagementCustomEndpoint,
       'securityCenterV2CustomEndpoint': ?securityCenterV2CustomEndpoint,
       'securityScannerCustomEndpoint': ?securityScannerCustomEndpoint,
       'securitypostureCustomEndpoint': ?securitypostureCustomEndpoint,
@@ -802,7 +820,8 @@ class ProviderArgs {
       'sourceRepoCustomEndpoint': ?sourceRepoCustomEndpoint,
       'spannerCustomEndpoint': ?spannerCustomEndpoint,
       'sqlCustomEndpoint': ?sqlCustomEndpoint,
-      'storageBatchOperationsCustomEndpoint': ?storageBatchOperationsCustomEndpoint,
+      'storageBatchOperationsCustomEndpoint':
+          ?storageBatchOperationsCustomEndpoint,
       'storageControlCustomEndpoint': ?storageControlCustomEndpoint,
       'storageCustomEndpoint': ?storageCustomEndpoint,
       'storageInsightsCustomEndpoint': ?storageInsightsCustomEndpoint,
@@ -825,208 +844,1021 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accessApprovalCustomEndpoint: map['accessApprovalCustomEndpoint'] == null ? null : (map['accessApprovalCustomEndpoint']! as String).input(),
-      accessContextManagerCustomEndpoint: map['accessContextManagerCustomEndpoint'] == null ? null : (map['accessContextManagerCustomEndpoint']! as String).input(),
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      activeDirectoryCustomEndpoint: map['activeDirectoryCustomEndpoint'] == null ? null : (map['activeDirectoryCustomEndpoint']! as String).input(),
-      addPulumiAttributionLabel: map['addPulumiAttributionLabel'] == null ? null : (map['addPulumiAttributionLabel']! as bool).input(),
-      alloydbCustomEndpoint: map['alloydbCustomEndpoint'] == null ? null : (map['alloydbCustomEndpoint']! as String).input(),
-      apiGatewayCustomEndpoint: map['apiGatewayCustomEndpoint'] == null ? null : (map['apiGatewayCustomEndpoint']! as String).input(),
-      apigeeCustomEndpoint: map['apigeeCustomEndpoint'] == null ? null : (map['apigeeCustomEndpoint']! as String).input(),
-      apihubCustomEndpoint: map['apihubCustomEndpoint'] == null ? null : (map['apihubCustomEndpoint']! as String).input(),
-      apikeysCustomEndpoint: map['apikeysCustomEndpoint'] == null ? null : (map['apikeysCustomEndpoint']! as String).input(),
-      appEngineCustomEndpoint: map['appEngineCustomEndpoint'] == null ? null : (map['appEngineCustomEndpoint']! as String).input(),
-      apphubCustomEndpoint: map['apphubCustomEndpoint'] == null ? null : (map['apphubCustomEndpoint']! as String).input(),
-      artifactRegistryCustomEndpoint: map['artifactRegistryCustomEndpoint'] == null ? null : (map['artifactRegistryCustomEndpoint']! as String).input(),
-      assuredWorkloadsCustomEndpoint: map['assuredWorkloadsCustomEndpoint'] == null ? null : (map['assuredWorkloadsCustomEndpoint']! as String).input(),
-      backupDrCustomEndpoint: map['backupDrCustomEndpoint'] == null ? null : (map['backupDrCustomEndpoint']! as String).input(),
-      batching: map['batching'] == null ? null : (ProviderBatching.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
-      beyondcorpCustomEndpoint: map['beyondcorpCustomEndpoint'] == null ? null : (map['beyondcorpCustomEndpoint']! as String).input(),
-      bigQueryCustomEndpoint: map['bigQueryCustomEndpoint'] == null ? null : (map['bigQueryCustomEndpoint']! as String).input(),
-      biglakeCustomEndpoint: map['biglakeCustomEndpoint'] == null ? null : (map['biglakeCustomEndpoint']! as String).input(),
-      biglakeIcebergCustomEndpoint: map['biglakeIcebergCustomEndpoint'] == null ? null : (map['biglakeIcebergCustomEndpoint']! as String).input(),
-      bigqueryAnalyticsHubCustomEndpoint: map['bigqueryAnalyticsHubCustomEndpoint'] == null ? null : (map['bigqueryAnalyticsHubCustomEndpoint']! as String).input(),
-      bigqueryConnectionCustomEndpoint: map['bigqueryConnectionCustomEndpoint'] == null ? null : (map['bigqueryConnectionCustomEndpoint']! as String).input(),
-      bigqueryDataTransferCustomEndpoint: map['bigqueryDataTransferCustomEndpoint'] == null ? null : (map['bigqueryDataTransferCustomEndpoint']! as String).input(),
-      bigqueryDatapolicyCustomEndpoint: map['bigqueryDatapolicyCustomEndpoint'] == null ? null : (map['bigqueryDatapolicyCustomEndpoint']! as String).input(),
-      bigqueryDatapolicyv2CustomEndpoint: map['bigqueryDatapolicyv2CustomEndpoint'] == null ? null : (map['bigqueryDatapolicyv2CustomEndpoint']! as String).input(),
-      bigqueryReservationCustomEndpoint: map['bigqueryReservationCustomEndpoint'] == null ? null : (map['bigqueryReservationCustomEndpoint']! as String).input(),
-      bigtableCustomEndpoint: map['bigtableCustomEndpoint'] == null ? null : (map['bigtableCustomEndpoint']! as String).input(),
-      billingCustomEndpoint: map['billingCustomEndpoint'] == null ? null : (map['billingCustomEndpoint']! as String).input(),
-      billingProject: map['billingProject'] == null ? null : (map['billingProject']! as String).input(),
-      binaryAuthorizationCustomEndpoint: map['binaryAuthorizationCustomEndpoint'] == null ? null : (map['binaryAuthorizationCustomEndpoint']! as String).input(),
-      blockchainNodeEngineCustomEndpoint: map['blockchainNodeEngineCustomEndpoint'] == null ? null : (map['blockchainNodeEngineCustomEndpoint']! as String).input(),
-      certificateManagerCustomEndpoint: map['certificateManagerCustomEndpoint'] == null ? null : (map['certificateManagerCustomEndpoint']! as String).input(),
-      cesCustomEndpoint: map['cesCustomEndpoint'] == null ? null : (map['cesCustomEndpoint']! as String).input(),
-      chronicleCustomEndpoint: map['chronicleCustomEndpoint'] == null ? null : (map['chronicleCustomEndpoint']! as String).input(),
-      cloudAssetCustomEndpoint: map['cloudAssetCustomEndpoint'] == null ? null : (map['cloudAssetCustomEndpoint']! as String).input(),
-      cloudBillingCustomEndpoint: map['cloudBillingCustomEndpoint'] == null ? null : (map['cloudBillingCustomEndpoint']! as String).input(),
-      cloudBuildCustomEndpoint: map['cloudBuildCustomEndpoint'] == null ? null : (map['cloudBuildCustomEndpoint']! as String).input(),
-      cloudFunctionsCustomEndpoint: map['cloudFunctionsCustomEndpoint'] == null ? null : (map['cloudFunctionsCustomEndpoint']! as String).input(),
-      cloudIdentityCustomEndpoint: map['cloudIdentityCustomEndpoint'] == null ? null : (map['cloudIdentityCustomEndpoint']! as String).input(),
-      cloudIdsCustomEndpoint: map['cloudIdsCustomEndpoint'] == null ? null : (map['cloudIdsCustomEndpoint']! as String).input(),
-      cloudQuotasCustomEndpoint: map['cloudQuotasCustomEndpoint'] == null ? null : (map['cloudQuotasCustomEndpoint']! as String).input(),
-      cloudResourceManagerCustomEndpoint: map['cloudResourceManagerCustomEndpoint'] == null ? null : (map['cloudResourceManagerCustomEndpoint']! as String).input(),
-      cloudRunCustomEndpoint: map['cloudRunCustomEndpoint'] == null ? null : (map['cloudRunCustomEndpoint']! as String).input(),
-      cloudRunV2CustomEndpoint: map['cloudRunV2CustomEndpoint'] == null ? null : (map['cloudRunV2CustomEndpoint']! as String).input(),
-      cloudSchedulerCustomEndpoint: map['cloudSchedulerCustomEndpoint'] == null ? null : (map['cloudSchedulerCustomEndpoint']! as String).input(),
-      cloudSecurityComplianceCustomEndpoint: map['cloudSecurityComplianceCustomEndpoint'] == null ? null : (map['cloudSecurityComplianceCustomEndpoint']! as String).input(),
-      cloudTasksCustomEndpoint: map['cloudTasksCustomEndpoint'] == null ? null : (map['cloudTasksCustomEndpoint']! as String).input(),
-      cloudbuildv2CustomEndpoint: map['cloudbuildv2CustomEndpoint'] == null ? null : (map['cloudbuildv2CustomEndpoint']! as String).input(),
-      clouddeployCustomEndpoint: map['clouddeployCustomEndpoint'] == null ? null : (map['clouddeployCustomEndpoint']! as String).input(),
-      clouddomainsCustomEndpoint: map['clouddomainsCustomEndpoint'] == null ? null : (map['clouddomainsCustomEndpoint']! as String).input(),
-      cloudfunctions2CustomEndpoint: map['cloudfunctions2CustomEndpoint'] == null ? null : (map['cloudfunctions2CustomEndpoint']! as String).input(),
-      colabCustomEndpoint: map['colabCustomEndpoint'] == null ? null : (map['colabCustomEndpoint']! as String).input(),
-      composerCustomEndpoint: map['composerCustomEndpoint'] == null ? null : (map['composerCustomEndpoint']! as String).input(),
-      computeCustomEndpoint: map['computeCustomEndpoint'] == null ? null : (map['computeCustomEndpoint']! as String).input(),
-      contactCenterInsightsCustomEndpoint: map['contactCenterInsightsCustomEndpoint'] == null ? null : (map['contactCenterInsightsCustomEndpoint']! as String).input(),
-      containerAnalysisCustomEndpoint: map['containerAnalysisCustomEndpoint'] == null ? null : (map['containerAnalysisCustomEndpoint']! as String).input(),
-      containerAttachedCustomEndpoint: map['containerAttachedCustomEndpoint'] == null ? null : (map['containerAttachedCustomEndpoint']! as String).input(),
-      containerAwsCustomEndpoint: map['containerAwsCustomEndpoint'] == null ? null : (map['containerAwsCustomEndpoint']! as String).input(),
-      containerAzureCustomEndpoint: map['containerAzureCustomEndpoint'] == null ? null : (map['containerAzureCustomEndpoint']! as String).input(),
-      containerCustomEndpoint: map['containerCustomEndpoint'] == null ? null : (map['containerCustomEndpoint']! as String).input(),
-      coreBillingCustomEndpoint: map['coreBillingCustomEndpoint'] == null ? null : (map['coreBillingCustomEndpoint']! as String).input(),
-      credentials: map['credentials'] == null ? null : (map['credentials']! as String).input(),
-      dataCatalogCustomEndpoint: map['dataCatalogCustomEndpoint'] == null ? null : (map['dataCatalogCustomEndpoint']! as String).input(),
-      dataFusionCustomEndpoint: map['dataFusionCustomEndpoint'] == null ? null : (map['dataFusionCustomEndpoint']! as String).input(),
-      dataLossPreventionCustomEndpoint: map['dataLossPreventionCustomEndpoint'] == null ? null : (map['dataLossPreventionCustomEndpoint']! as String).input(),
-      dataPipelineCustomEndpoint: map['dataPipelineCustomEndpoint'] == null ? null : (map['dataPipelineCustomEndpoint']! as String).input(),
-      databaseMigrationServiceCustomEndpoint: map['databaseMigrationServiceCustomEndpoint'] == null ? null : (map['databaseMigrationServiceCustomEndpoint']! as String).input(),
-      dataflowCustomEndpoint: map['dataflowCustomEndpoint'] == null ? null : (map['dataflowCustomEndpoint']! as String).input(),
-      dataformCustomEndpoint: map['dataformCustomEndpoint'] == null ? null : (map['dataformCustomEndpoint']! as String).input(),
-      dataplexCustomEndpoint: map['dataplexCustomEndpoint'] == null ? null : (map['dataplexCustomEndpoint']! as String).input(),
-      dataprocCustomEndpoint: map['dataprocCustomEndpoint'] == null ? null : (map['dataprocCustomEndpoint']! as String).input(),
-      dataprocGdcCustomEndpoint: map['dataprocGdcCustomEndpoint'] == null ? null : (map['dataprocGdcCustomEndpoint']! as String).input(),
-      dataprocMetastoreCustomEndpoint: map['dataprocMetastoreCustomEndpoint'] == null ? null : (map['dataprocMetastoreCustomEndpoint']! as String).input(),
-      datastreamCustomEndpoint: map['datastreamCustomEndpoint'] == null ? null : (map['datastreamCustomEndpoint']! as String).input(),
-      defaultLabels: map['defaultLabels'] == null ? null : ((map['defaultLabels']! as Map).cast<String, String>()).input(),
-      deploymentManagerCustomEndpoint: map['deploymentManagerCustomEndpoint'] == null ? null : (map['deploymentManagerCustomEndpoint']! as String).input(),
-      developerConnectCustomEndpoint: map['developerConnectCustomEndpoint'] == null ? null : (map['developerConnectCustomEndpoint']! as String).input(),
-      dialogflowCustomEndpoint: map['dialogflowCustomEndpoint'] == null ? null : (map['dialogflowCustomEndpoint']! as String).input(),
-      dialogflowCxCustomEndpoint: map['dialogflowCxCustomEndpoint'] == null ? null : (map['dialogflowCxCustomEndpoint']! as String).input(),
-      disableGooglePartnerName: map['disableGooglePartnerName'] == null ? null : (map['disableGooglePartnerName']! as bool).input(),
-      discoveryEngineCustomEndpoint: map['discoveryEngineCustomEndpoint'] == null ? null : (map['discoveryEngineCustomEndpoint']! as String).input(),
-      dnsCustomEndpoint: map['dnsCustomEndpoint'] == null ? null : (map['dnsCustomEndpoint']! as String).input(),
-      documentAiCustomEndpoint: map['documentAiCustomEndpoint'] == null ? null : (map['documentAiCustomEndpoint']! as String).input(),
-      documentAiWarehouseCustomEndpoint: map['documentAiWarehouseCustomEndpoint'] == null ? null : (map['documentAiWarehouseCustomEndpoint']! as String).input(),
-      edgecontainerCustomEndpoint: map['edgecontainerCustomEndpoint'] == null ? null : (map['edgecontainerCustomEndpoint']! as String).input(),
-      edgenetworkCustomEndpoint: map['edgenetworkCustomEndpoint'] == null ? null : (map['edgenetworkCustomEndpoint']! as String).input(),
-      essentialContactsCustomEndpoint: map['essentialContactsCustomEndpoint'] == null ? null : (map['essentialContactsCustomEndpoint']! as String).input(),
-      eventarcCustomEndpoint: map['eventarcCustomEndpoint'] == null ? null : (map['eventarcCustomEndpoint']! as String).input(),
-      externalCredentials: map['externalCredentials'] == null ? null : (ProviderExternalCredentials.fromMap((map['externalCredentials']! as Map).cast<String, dynamic>())).input(),
-      filestoreCustomEndpoint: map['filestoreCustomEndpoint'] == null ? null : (map['filestoreCustomEndpoint']! as String).input(),
-      firebaseAiLogicCustomEndpoint: map['firebaseAiLogicCustomEndpoint'] == null ? null : (map['firebaseAiLogicCustomEndpoint']! as String).input(),
-      firebaseAppCheckCustomEndpoint: map['firebaseAppCheckCustomEndpoint'] == null ? null : (map['firebaseAppCheckCustomEndpoint']! as String).input(),
-      firebaseAppHostingCustomEndpoint: map['firebaseAppHostingCustomEndpoint'] == null ? null : (map['firebaseAppHostingCustomEndpoint']! as String).input(),
-      firebaseCustomEndpoint: map['firebaseCustomEndpoint'] == null ? null : (map['firebaseCustomEndpoint']! as String).input(),
-      firebaseDataConnectCustomEndpoint: map['firebaseDataConnectCustomEndpoint'] == null ? null : (map['firebaseDataConnectCustomEndpoint']! as String).input(),
-      firebaseDatabaseCustomEndpoint: map['firebaseDatabaseCustomEndpoint'] == null ? null : (map['firebaseDatabaseCustomEndpoint']! as String).input(),
-      firebaseExtensionsCustomEndpoint: map['firebaseExtensionsCustomEndpoint'] == null ? null : (map['firebaseExtensionsCustomEndpoint']! as String).input(),
-      firebaseHostingCustomEndpoint: map['firebaseHostingCustomEndpoint'] == null ? null : (map['firebaseHostingCustomEndpoint']! as String).input(),
-      firebaseStorageCustomEndpoint: map['firebaseStorageCustomEndpoint'] == null ? null : (map['firebaseStorageCustomEndpoint']! as String).input(),
-      firebaserulesCustomEndpoint: map['firebaserulesCustomEndpoint'] == null ? null : (map['firebaserulesCustomEndpoint']! as String).input(),
-      firestoreCustomEndpoint: map['firestoreCustomEndpoint'] == null ? null : (map['firestoreCustomEndpoint']! as String).input(),
-      geminiCustomEndpoint: map['geminiCustomEndpoint'] == null ? null : (map['geminiCustomEndpoint']! as String).input(),
-      gkeBackupCustomEndpoint: map['gkeBackupCustomEndpoint'] == null ? null : (map['gkeBackupCustomEndpoint']! as String).input(),
-      gkeHub2CustomEndpoint: map['gkeHub2CustomEndpoint'] == null ? null : (map['gkeHub2CustomEndpoint']! as String).input(),
-      gkeHubCustomEndpoint: map['gkeHubCustomEndpoint'] == null ? null : (map['gkeHubCustomEndpoint']! as String).input(),
-      gkeonpremCustomEndpoint: map['gkeonpremCustomEndpoint'] == null ? null : (map['gkeonpremCustomEndpoint']! as String).input(),
-      googlePartnerName: map['googlePartnerName'] == null ? null : (map['googlePartnerName']! as String).input(),
-      healthcareCustomEndpoint: map['healthcareCustomEndpoint'] == null ? null : (map['healthcareCustomEndpoint']! as String).input(),
-      iam2CustomEndpoint: map['iam2CustomEndpoint'] == null ? null : (map['iam2CustomEndpoint']! as String).input(),
-      iam3CustomEndpoint: map['iam3CustomEndpoint'] == null ? null : (map['iam3CustomEndpoint']! as String).input(),
-      iamBetaCustomEndpoint: map['iamBetaCustomEndpoint'] == null ? null : (map['iamBetaCustomEndpoint']! as String).input(),
-      iamCredentialsCustomEndpoint: map['iamCredentialsCustomEndpoint'] == null ? null : (map['iamCredentialsCustomEndpoint']! as String).input(),
-      iamCustomEndpoint: map['iamCustomEndpoint'] == null ? null : (map['iamCustomEndpoint']! as String).input(),
-      iamWorkforcePoolCustomEndpoint: map['iamWorkforcePoolCustomEndpoint'] == null ? null : (map['iamWorkforcePoolCustomEndpoint']! as String).input(),
-      iapCustomEndpoint: map['iapCustomEndpoint'] == null ? null : (map['iapCustomEndpoint']! as String).input(),
-      identityPlatformCustomEndpoint: map['identityPlatformCustomEndpoint'] == null ? null : (map['identityPlatformCustomEndpoint']! as String).input(),
-      impersonateServiceAccount: map['impersonateServiceAccount'] == null ? null : (map['impersonateServiceAccount']! as String).input(),
-      impersonateServiceAccountDelegates: map['impersonateServiceAccountDelegates'] == null ? null : ((map['impersonateServiceAccountDelegates']! as List).cast<String>()).input(),
-      integrationConnectorsCustomEndpoint: map['integrationConnectorsCustomEndpoint'] == null ? null : (map['integrationConnectorsCustomEndpoint']! as String).input(),
-      integrationsCustomEndpoint: map['integrationsCustomEndpoint'] == null ? null : (map['integrationsCustomEndpoint']! as String).input(),
-      kmsCustomEndpoint: map['kmsCustomEndpoint'] == null ? null : (map['kmsCustomEndpoint']! as String).input(),
-      loggingCustomEndpoint: map['loggingCustomEndpoint'] == null ? null : (map['loggingCustomEndpoint']! as String).input(),
-      lookerCustomEndpoint: map['lookerCustomEndpoint'] == null ? null : (map['lookerCustomEndpoint']! as String).input(),
-      lustreCustomEndpoint: map['lustreCustomEndpoint'] == null ? null : (map['lustreCustomEndpoint']! as String).input(),
-      managedKafkaCustomEndpoint: map['managedKafkaCustomEndpoint'] == null ? null : (map['managedKafkaCustomEndpoint']! as String).input(),
-      memcacheCustomEndpoint: map['memcacheCustomEndpoint'] == null ? null : (map['memcacheCustomEndpoint']! as String).input(),
-      memorystoreCustomEndpoint: map['memorystoreCustomEndpoint'] == null ? null : (map['memorystoreCustomEndpoint']! as String).input(),
-      migrationCenterCustomEndpoint: map['migrationCenterCustomEndpoint'] == null ? null : (map['migrationCenterCustomEndpoint']! as String).input(),
-      mlEngineCustomEndpoint: map['mlEngineCustomEndpoint'] == null ? null : (map['mlEngineCustomEndpoint']! as String).input(),
-      modelArmorCustomEndpoint: map['modelArmorCustomEndpoint'] == null ? null : (map['modelArmorCustomEndpoint']! as String).input(),
-      modelArmorGlobalCustomEndpoint: map['modelArmorGlobalCustomEndpoint'] == null ? null : (map['modelArmorGlobalCustomEndpoint']! as String).input(),
-      monitoringCustomEndpoint: map['monitoringCustomEndpoint'] == null ? null : (map['monitoringCustomEndpoint']! as String).input(),
-      netappCustomEndpoint: map['netappCustomEndpoint'] == null ? null : (map['netappCustomEndpoint']! as String).input(),
-      networkConnectivityCustomEndpoint: map['networkConnectivityCustomEndpoint'] == null ? null : (map['networkConnectivityCustomEndpoint']! as String).input(),
-      networkConnectivityv1CustomEndpoint: map['networkConnectivityv1CustomEndpoint'] == null ? null : (map['networkConnectivityv1CustomEndpoint']! as String).input(),
-      networkManagementCustomEndpoint: map['networkManagementCustomEndpoint'] == null ? null : (map['networkManagementCustomEndpoint']! as String).input(),
-      networkSecurityCustomEndpoint: map['networkSecurityCustomEndpoint'] == null ? null : (map['networkSecurityCustomEndpoint']! as String).input(),
-      networkServicesCustomEndpoint: map['networkServicesCustomEndpoint'] == null ? null : (map['networkServicesCustomEndpoint']! as String).input(),
-      notebooksCustomEndpoint: map['notebooksCustomEndpoint'] == null ? null : (map['notebooksCustomEndpoint']! as String).input(),
-      observabilityCustomEndpoint: map['observabilityCustomEndpoint'] == null ? null : (map['observabilityCustomEndpoint']! as String).input(),
-      oracleDatabaseCustomEndpoint: map['oracleDatabaseCustomEndpoint'] == null ? null : (map['oracleDatabaseCustomEndpoint']! as String).input(),
-      orgPolicyCustomEndpoint: map['orgPolicyCustomEndpoint'] == null ? null : (map['orgPolicyCustomEndpoint']! as String).input(),
-      osConfigCustomEndpoint: map['osConfigCustomEndpoint'] == null ? null : (map['osConfigCustomEndpoint']! as String).input(),
-      osConfigV2CustomEndpoint: map['osConfigV2CustomEndpoint'] == null ? null : (map['osConfigV2CustomEndpoint']! as String).input(),
-      osLoginCustomEndpoint: map['osLoginCustomEndpoint'] == null ? null : (map['osLoginCustomEndpoint']! as String).input(),
-      parallelstoreCustomEndpoint: map['parallelstoreCustomEndpoint'] == null ? null : (map['parallelstoreCustomEndpoint']! as String).input(),
-      parameterManagerCustomEndpoint: map['parameterManagerCustomEndpoint'] == null ? null : (map['parameterManagerCustomEndpoint']! as String).input(),
-      parameterManagerRegionalCustomEndpoint: map['parameterManagerRegionalCustomEndpoint'] == null ? null : (map['parameterManagerRegionalCustomEndpoint']! as String).input(),
-      privatecaCustomEndpoint: map['privatecaCustomEndpoint'] == null ? null : (map['privatecaCustomEndpoint']! as String).input(),
-      privilegedAccessManagerCustomEndpoint: map['privilegedAccessManagerCustomEndpoint'] == null ? null : (map['privilegedAccessManagerCustomEndpoint']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicCaCustomEndpoint: map['publicCaCustomEndpoint'] == null ? null : (map['publicCaCustomEndpoint']! as String).input(),
-      pubsubCustomEndpoint: map['pubsubCustomEndpoint'] == null ? null : (map['pubsubCustomEndpoint']! as String).input(),
-      pubsubLiteCustomEndpoint: map['pubsubLiteCustomEndpoint'] == null ? null : (map['pubsubLiteCustomEndpoint']! as String).input(),
-      pulumiAttributionLabelAdditionStrategy: map['pulumiAttributionLabelAdditionStrategy'] == null ? null : (map['pulumiAttributionLabelAdditionStrategy']! as String).input(),
-      recaptchaEnterpriseCustomEndpoint: map['recaptchaEnterpriseCustomEndpoint'] == null ? null : (map['recaptchaEnterpriseCustomEndpoint']! as String).input(),
-      redisCustomEndpoint: map['redisCustomEndpoint'] == null ? null : (map['redisCustomEndpoint']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      requestReason: map['requestReason'] == null ? null : (map['requestReason']! as String).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as String).input(),
-      resourceManager3CustomEndpoint: map['resourceManager3CustomEndpoint'] == null ? null : (map['resourceManager3CustomEndpoint']! as String).input(),
-      resourceManagerCustomEndpoint: map['resourceManagerCustomEndpoint'] == null ? null : (map['resourceManagerCustomEndpoint']! as String).input(),
-      resourceManagerV3CustomEndpoint: map['resourceManagerV3CustomEndpoint'] == null ? null : (map['resourceManagerV3CustomEndpoint']! as String).input(),
-      runtimeConfigCustomEndpoint: map['runtimeConfigCustomEndpoint'] == null ? null : (map['runtimeConfigCustomEndpoint']! as String).input(),
-      runtimeconfigCustomEndpoint: map['runtimeconfigCustomEndpoint'] == null ? null : (map['runtimeconfigCustomEndpoint']! as String).input(),
-      saasRuntimeCustomEndpoint: map['saasRuntimeCustomEndpoint'] == null ? null : (map['saasRuntimeCustomEndpoint']! as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      secretManagerCustomEndpoint: map['secretManagerCustomEndpoint'] == null ? null : (map['secretManagerCustomEndpoint']! as String).input(),
-      secretManagerRegionalCustomEndpoint: map['secretManagerRegionalCustomEndpoint'] == null ? null : (map['secretManagerRegionalCustomEndpoint']! as String).input(),
-      secureSourceManagerCustomEndpoint: map['secureSourceManagerCustomEndpoint'] == null ? null : (map['secureSourceManagerCustomEndpoint']! as String).input(),
-      securityCenterCustomEndpoint: map['securityCenterCustomEndpoint'] == null ? null : (map['securityCenterCustomEndpoint']! as String).input(),
-      securityCenterManagementCustomEndpoint: map['securityCenterManagementCustomEndpoint'] == null ? null : (map['securityCenterManagementCustomEndpoint']! as String).input(),
-      securityCenterV2CustomEndpoint: map['securityCenterV2CustomEndpoint'] == null ? null : (map['securityCenterV2CustomEndpoint']! as String).input(),
-      securityScannerCustomEndpoint: map['securityScannerCustomEndpoint'] == null ? null : (map['securityScannerCustomEndpoint']! as String).input(),
-      securitypostureCustomEndpoint: map['securitypostureCustomEndpoint'] == null ? null : (map['securitypostureCustomEndpoint']! as String).input(),
-      serviceDirectoryCustomEndpoint: map['serviceDirectoryCustomEndpoint'] == null ? null : (map['serviceDirectoryCustomEndpoint']! as String).input(),
-      serviceManagementCustomEndpoint: map['serviceManagementCustomEndpoint'] == null ? null : (map['serviceManagementCustomEndpoint']! as String).input(),
-      serviceNetworkingCustomEndpoint: map['serviceNetworkingCustomEndpoint'] == null ? null : (map['serviceNetworkingCustomEndpoint']! as String).input(),
-      serviceUsageCustomEndpoint: map['serviceUsageCustomEndpoint'] == null ? null : (map['serviceUsageCustomEndpoint']! as String).input(),
-      siteVerificationCustomEndpoint: map['siteVerificationCustomEndpoint'] == null ? null : (map['siteVerificationCustomEndpoint']! as String).input(),
-      sourceRepoCustomEndpoint: map['sourceRepoCustomEndpoint'] == null ? null : (map['sourceRepoCustomEndpoint']! as String).input(),
-      spannerCustomEndpoint: map['spannerCustomEndpoint'] == null ? null : (map['spannerCustomEndpoint']! as String).input(),
-      sqlCustomEndpoint: map['sqlCustomEndpoint'] == null ? null : (map['sqlCustomEndpoint']! as String).input(),
-      storageBatchOperationsCustomEndpoint: map['storageBatchOperationsCustomEndpoint'] == null ? null : (map['storageBatchOperationsCustomEndpoint']! as String).input(),
-      storageControlCustomEndpoint: map['storageControlCustomEndpoint'] == null ? null : (map['storageControlCustomEndpoint']! as String).input(),
-      storageCustomEndpoint: map['storageCustomEndpoint'] == null ? null : (map['storageCustomEndpoint']! as String).input(),
-      storageInsightsCustomEndpoint: map['storageInsightsCustomEndpoint'] == null ? null : (map['storageInsightsCustomEndpoint']! as String).input(),
-      storageTransferCustomEndpoint: map['storageTransferCustomEndpoint'] == null ? null : (map['storageTransferCustomEndpoint']! as String).input(),
-      tagsCustomEndpoint: map['tagsCustomEndpoint'] == null ? null : (map['tagsCustomEndpoint']! as String).input(),
-      tagsLocationCustomEndpoint: map['tagsLocationCustomEndpoint'] == null ? null : (map['tagsLocationCustomEndpoint']! as String).input(),
-      tpuV2CustomEndpoint: map['tpuV2CustomEndpoint'] == null ? null : (map['tpuV2CustomEndpoint']! as String).input(),
-      transcoderCustomEndpoint: map['transcoderCustomEndpoint'] == null ? null : (map['transcoderCustomEndpoint']! as String).input(),
-      universeDomain: map['universeDomain'] == null ? null : (map['universeDomain']! as String).input(),
-      userProjectOverride: map['userProjectOverride'] == null ? null : (map['userProjectOverride']! as bool).input(),
-      vertexAiCustomEndpoint: map['vertexAiCustomEndpoint'] == null ? null : (map['vertexAiCustomEndpoint']! as String).input(),
-      vmwareengineCustomEndpoint: map['vmwareengineCustomEndpoint'] == null ? null : (map['vmwareengineCustomEndpoint']! as String).input(),
-      vpcAccessCustomEndpoint: map['vpcAccessCustomEndpoint'] == null ? null : (map['vpcAccessCustomEndpoint']! as String).input(),
-      workbenchCustomEndpoint: map['workbenchCustomEndpoint'] == null ? null : (map['workbenchCustomEndpoint']! as String).input(),
-      workflowsCustomEndpoint: map['workflowsCustomEndpoint'] == null ? null : (map['workflowsCustomEndpoint']! as String).input(),
-      workstationsCustomEndpoint: map['workstationsCustomEndpoint'] == null ? null : (map['workstationsCustomEndpoint']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      accessApprovalCustomEndpoint: (() {
+        final guardedValue = map['accessApprovalCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessContextManagerCustomEndpoint: (() {
+        final guardedValue = map['accessContextManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      activeDirectoryCustomEndpoint: (() {
+        final guardedValue = map['activeDirectoryCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addPulumiAttributionLabel: (() {
+        final guardedValue = map['addPulumiAttributionLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      alloydbCustomEndpoint: (() {
+        final guardedValue = map['alloydbCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiGatewayCustomEndpoint: (() {
+        final guardedValue = map['apiGatewayCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apigeeCustomEndpoint: (() {
+        final guardedValue = map['apigeeCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apihubCustomEndpoint: (() {
+        final guardedValue = map['apihubCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apikeysCustomEndpoint: (() {
+        final guardedValue = map['apikeysCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appEngineCustomEndpoint: (() {
+        final guardedValue = map['appEngineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apphubCustomEndpoint: (() {
+        final guardedValue = map['apphubCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactRegistryCustomEndpoint: (() {
+        final guardedValue = map['artifactRegistryCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assuredWorkloadsCustomEndpoint: (() {
+        final guardedValue = map['assuredWorkloadsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupDrCustomEndpoint: (() {
+        final guardedValue = map['backupDrCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      batching: (() {
+        final guardedValue = map['batching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderBatching.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      beyondcorpCustomEndpoint: (() {
+        final guardedValue = map['beyondcorpCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigQueryCustomEndpoint: (() {
+        final guardedValue = map['bigQueryCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      biglakeCustomEndpoint: (() {
+        final guardedValue = map['biglakeCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      biglakeIcebergCustomEndpoint: (() {
+        final guardedValue = map['biglakeIcebergCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryAnalyticsHubCustomEndpoint: (() {
+        final guardedValue = map['bigqueryAnalyticsHubCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryConnectionCustomEndpoint: (() {
+        final guardedValue = map['bigqueryConnectionCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryDataTransferCustomEndpoint: (() {
+        final guardedValue = map['bigqueryDataTransferCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryDatapolicyCustomEndpoint: (() {
+        final guardedValue = map['bigqueryDatapolicyCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryDatapolicyv2CustomEndpoint: (() {
+        final guardedValue = map['bigqueryDatapolicyv2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigqueryReservationCustomEndpoint: (() {
+        final guardedValue = map['bigqueryReservationCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigtableCustomEndpoint: (() {
+        final guardedValue = map['bigtableCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      billingCustomEndpoint: (() {
+        final guardedValue = map['billingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      billingProject: (() {
+        final guardedValue = map['billingProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      binaryAuthorizationCustomEndpoint: (() {
+        final guardedValue = map['binaryAuthorizationCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      blockchainNodeEngineCustomEndpoint: (() {
+        final guardedValue = map['blockchainNodeEngineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateManagerCustomEndpoint: (() {
+        final guardedValue = map['certificateManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cesCustomEndpoint: (() {
+        final guardedValue = map['cesCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chronicleCustomEndpoint: (() {
+        final guardedValue = map['chronicleCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudAssetCustomEndpoint: (() {
+        final guardedValue = map['cloudAssetCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudBillingCustomEndpoint: (() {
+        final guardedValue = map['cloudBillingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudBuildCustomEndpoint: (() {
+        final guardedValue = map['cloudBuildCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudFunctionsCustomEndpoint: (() {
+        final guardedValue = map['cloudFunctionsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudIdentityCustomEndpoint: (() {
+        final guardedValue = map['cloudIdentityCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudIdsCustomEndpoint: (() {
+        final guardedValue = map['cloudIdsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudQuotasCustomEndpoint: (() {
+        final guardedValue = map['cloudQuotasCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudResourceManagerCustomEndpoint: (() {
+        final guardedValue = map['cloudResourceManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudRunCustomEndpoint: (() {
+        final guardedValue = map['cloudRunCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudRunV2CustomEndpoint: (() {
+        final guardedValue = map['cloudRunV2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudSchedulerCustomEndpoint: (() {
+        final guardedValue = map['cloudSchedulerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudSecurityComplianceCustomEndpoint: (() {
+        final guardedValue = map['cloudSecurityComplianceCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudTasksCustomEndpoint: (() {
+        final guardedValue = map['cloudTasksCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudbuildv2CustomEndpoint: (() {
+        final guardedValue = map['cloudbuildv2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clouddeployCustomEndpoint: (() {
+        final guardedValue = map['clouddeployCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clouddomainsCustomEndpoint: (() {
+        final guardedValue = map['clouddomainsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudfunctions2CustomEndpoint: (() {
+        final guardedValue = map['cloudfunctions2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      colabCustomEndpoint: (() {
+        final guardedValue = map['colabCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      composerCustomEndpoint: (() {
+        final guardedValue = map['composerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computeCustomEndpoint: (() {
+        final guardedValue = map['computeCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contactCenterInsightsCustomEndpoint: (() {
+        final guardedValue = map['contactCenterInsightsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAnalysisCustomEndpoint: (() {
+        final guardedValue = map['containerAnalysisCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAttachedCustomEndpoint: (() {
+        final guardedValue = map['containerAttachedCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAwsCustomEndpoint: (() {
+        final guardedValue = map['containerAwsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAzureCustomEndpoint: (() {
+        final guardedValue = map['containerAzureCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerCustomEndpoint: (() {
+        final guardedValue = map['containerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreBillingCustomEndpoint: (() {
+        final guardedValue = map['coreBillingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataCatalogCustomEndpoint: (() {
+        final guardedValue = map['dataCatalogCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataFusionCustomEndpoint: (() {
+        final guardedValue = map['dataFusionCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLossPreventionCustomEndpoint: (() {
+        final guardedValue = map['dataLossPreventionCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataPipelineCustomEndpoint: (() {
+        final guardedValue = map['dataPipelineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseMigrationServiceCustomEndpoint: (() {
+        final guardedValue = map['databaseMigrationServiceCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataflowCustomEndpoint: (() {
+        final guardedValue = map['dataflowCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataformCustomEndpoint: (() {
+        final guardedValue = map['dataformCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataplexCustomEndpoint: (() {
+        final guardedValue = map['dataplexCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataprocCustomEndpoint: (() {
+        final guardedValue = map['dataprocCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataprocGdcCustomEndpoint: (() {
+        final guardedValue = map['dataprocGdcCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataprocMetastoreCustomEndpoint: (() {
+        final guardedValue = map['dataprocMetastoreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datastreamCustomEndpoint: (() {
+        final guardedValue = map['datastreamCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultLabels: (() {
+        final guardedValue = map['defaultLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      deploymentManagerCustomEndpoint: (() {
+        final guardedValue = map['deploymentManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      developerConnectCustomEndpoint: (() {
+        final guardedValue = map['developerConnectCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dialogflowCustomEndpoint: (() {
+        final guardedValue = map['dialogflowCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dialogflowCxCustomEndpoint: (() {
+        final guardedValue = map['dialogflowCxCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableGooglePartnerName: (() {
+        final guardedValue = map['disableGooglePartnerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      discoveryEngineCustomEndpoint: (() {
+        final guardedValue = map['discoveryEngineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsCustomEndpoint: (() {
+        final guardedValue = map['dnsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentAiCustomEndpoint: (() {
+        final guardedValue = map['documentAiCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentAiWarehouseCustomEndpoint: (() {
+        final guardedValue = map['documentAiWarehouseCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edgecontainerCustomEndpoint: (() {
+        final guardedValue = map['edgecontainerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edgenetworkCustomEndpoint: (() {
+        final guardedValue = map['edgenetworkCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      essentialContactsCustomEndpoint: (() {
+        final guardedValue = map['essentialContactsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventarcCustomEndpoint: (() {
+        final guardedValue = map['eventarcCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalCredentials: (() {
+        final guardedValue = map['externalCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderExternalCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      filestoreCustomEndpoint: (() {
+        final guardedValue = map['filestoreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseAiLogicCustomEndpoint: (() {
+        final guardedValue = map['firebaseAiLogicCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseAppCheckCustomEndpoint: (() {
+        final guardedValue = map['firebaseAppCheckCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseAppHostingCustomEndpoint: (() {
+        final guardedValue = map['firebaseAppHostingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseCustomEndpoint: (() {
+        final guardedValue = map['firebaseCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseDataConnectCustomEndpoint: (() {
+        final guardedValue = map['firebaseDataConnectCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseDatabaseCustomEndpoint: (() {
+        final guardedValue = map['firebaseDatabaseCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseExtensionsCustomEndpoint: (() {
+        final guardedValue = map['firebaseExtensionsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseHostingCustomEndpoint: (() {
+        final guardedValue = map['firebaseHostingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaseStorageCustomEndpoint: (() {
+        final guardedValue = map['firebaseStorageCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firebaserulesCustomEndpoint: (() {
+        final guardedValue = map['firebaserulesCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firestoreCustomEndpoint: (() {
+        final guardedValue = map['firestoreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      geminiCustomEndpoint: (() {
+        final guardedValue = map['geminiCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gkeBackupCustomEndpoint: (() {
+        final guardedValue = map['gkeBackupCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gkeHub2CustomEndpoint: (() {
+        final guardedValue = map['gkeHub2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gkeHubCustomEndpoint: (() {
+        final guardedValue = map['gkeHubCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gkeonpremCustomEndpoint: (() {
+        final guardedValue = map['gkeonpremCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      googlePartnerName: (() {
+        final guardedValue = map['googlePartnerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthcareCustomEndpoint: (() {
+        final guardedValue = map['healthcareCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iam2CustomEndpoint: (() {
+        final guardedValue = map['iam2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iam3CustomEndpoint: (() {
+        final guardedValue = map['iam3CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamBetaCustomEndpoint: (() {
+        final guardedValue = map['iamBetaCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamCredentialsCustomEndpoint: (() {
+        final guardedValue = map['iamCredentialsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamCustomEndpoint: (() {
+        final guardedValue = map['iamCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamWorkforcePoolCustomEndpoint: (() {
+        final guardedValue = map['iamWorkforcePoolCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iapCustomEndpoint: (() {
+        final guardedValue = map['iapCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityPlatformCustomEndpoint: (() {
+        final guardedValue = map['identityPlatformCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      impersonateServiceAccount: (() {
+        final guardedValue = map['impersonateServiceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      impersonateServiceAccountDelegates: (() {
+        final guardedValue = map['impersonateServiceAccountDelegates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      integrationConnectorsCustomEndpoint: (() {
+        final guardedValue = map['integrationConnectorsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationsCustomEndpoint: (() {
+        final guardedValue = map['integrationsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsCustomEndpoint: (() {
+        final guardedValue = map['kmsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggingCustomEndpoint: (() {
+        final guardedValue = map['loggingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lookerCustomEndpoint: (() {
+        final guardedValue = map['lookerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lustreCustomEndpoint: (() {
+        final guardedValue = map['lustreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedKafkaCustomEndpoint: (() {
+        final guardedValue = map['managedKafkaCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memcacheCustomEndpoint: (() {
+        final guardedValue = map['memcacheCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memorystoreCustomEndpoint: (() {
+        final guardedValue = map['memorystoreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrationCenterCustomEndpoint: (() {
+        final guardedValue = map['migrationCenterCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mlEngineCustomEndpoint: (() {
+        final guardedValue = map['mlEngineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelArmorCustomEndpoint: (() {
+        final guardedValue = map['modelArmorCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelArmorGlobalCustomEndpoint: (() {
+        final guardedValue = map['modelArmorGlobalCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoringCustomEndpoint: (() {
+        final guardedValue = map['monitoringCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      netappCustomEndpoint: (() {
+        final guardedValue = map['netappCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConnectivityCustomEndpoint: (() {
+        final guardedValue = map['networkConnectivityCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConnectivityv1CustomEndpoint: (() {
+        final guardedValue = map['networkConnectivityv1CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagementCustomEndpoint: (() {
+        final guardedValue = map['networkManagementCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityCustomEndpoint: (() {
+        final guardedValue = map['networkSecurityCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkServicesCustomEndpoint: (() {
+        final guardedValue = map['networkServicesCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notebooksCustomEndpoint: (() {
+        final guardedValue = map['notebooksCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observabilityCustomEndpoint: (() {
+        final guardedValue = map['observabilityCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oracleDatabaseCustomEndpoint: (() {
+        final guardedValue = map['oracleDatabaseCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgPolicyCustomEndpoint: (() {
+        final guardedValue = map['orgPolicyCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osConfigCustomEndpoint: (() {
+        final guardedValue = map['osConfigCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osConfigV2CustomEndpoint: (() {
+        final guardedValue = map['osConfigV2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osLoginCustomEndpoint: (() {
+        final guardedValue = map['osLoginCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parallelstoreCustomEndpoint: (() {
+        final guardedValue = map['parallelstoreCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterManagerCustomEndpoint: (() {
+        final guardedValue = map['parameterManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterManagerRegionalCustomEndpoint: (() {
+        final guardedValue = map['parameterManagerRegionalCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privatecaCustomEndpoint: (() {
+        final guardedValue = map['privatecaCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privilegedAccessManagerCustomEndpoint: (() {
+        final guardedValue = map['privilegedAccessManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicCaCustomEndpoint: (() {
+        final guardedValue = map['publicCaCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubCustomEndpoint: (() {
+        final guardedValue = map['pubsubCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubLiteCustomEndpoint: (() {
+        final guardedValue = map['pubsubLiteCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiAttributionLabelAdditionStrategy: (() {
+        final guardedValue = map['pulumiAttributionLabelAdditionStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recaptchaEnterpriseCustomEndpoint: (() {
+        final guardedValue = map['recaptchaEnterpriseCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      redisCustomEndpoint: (() {
+        final guardedValue = map['redisCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestReason: (() {
+        final guardedValue = map['requestReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestTimeout: (() {
+        final guardedValue = map['requestTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManager3CustomEndpoint: (() {
+        final guardedValue = map['resourceManager3CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManagerCustomEndpoint: (() {
+        final guardedValue = map['resourceManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManagerV3CustomEndpoint: (() {
+        final guardedValue = map['resourceManagerV3CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeConfigCustomEndpoint: (() {
+        final guardedValue = map['runtimeConfigCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeconfigCustomEndpoint: (() {
+        final guardedValue = map['runtimeconfigCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      saasRuntimeCustomEndpoint: (() {
+        final guardedValue = map['saasRuntimeCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secretManagerCustomEndpoint: (() {
+        final guardedValue = map['secretManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretManagerRegionalCustomEndpoint: (() {
+        final guardedValue = map['secretManagerRegionalCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secureSourceManagerCustomEndpoint: (() {
+        final guardedValue = map['secureSourceManagerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityCenterCustomEndpoint: (() {
+        final guardedValue = map['securityCenterCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityCenterManagementCustomEndpoint: (() {
+        final guardedValue = map['securityCenterManagementCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityCenterV2CustomEndpoint: (() {
+        final guardedValue = map['securityCenterV2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityScannerCustomEndpoint: (() {
+        final guardedValue = map['securityScannerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securitypostureCustomEndpoint: (() {
+        final guardedValue = map['securitypostureCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDirectoryCustomEndpoint: (() {
+        final guardedValue = map['serviceDirectoryCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceManagementCustomEndpoint: (() {
+        final guardedValue = map['serviceManagementCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceNetworkingCustomEndpoint: (() {
+        final guardedValue = map['serviceNetworkingCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceUsageCustomEndpoint: (() {
+        final guardedValue = map['serviceUsageCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteVerificationCustomEndpoint: (() {
+        final guardedValue = map['siteVerificationCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRepoCustomEndpoint: (() {
+        final guardedValue = map['sourceRepoCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spannerCustomEndpoint: (() {
+        final guardedValue = map['spannerCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlCustomEndpoint: (() {
+        final guardedValue = map['sqlCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageBatchOperationsCustomEndpoint: (() {
+        final guardedValue = map['storageBatchOperationsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageControlCustomEndpoint: (() {
+        final guardedValue = map['storageControlCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageCustomEndpoint: (() {
+        final guardedValue = map['storageCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageInsightsCustomEndpoint: (() {
+        final guardedValue = map['storageInsightsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageTransferCustomEndpoint: (() {
+        final guardedValue = map['storageTransferCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagsCustomEndpoint: (() {
+        final guardedValue = map['tagsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagsLocationCustomEndpoint: (() {
+        final guardedValue = map['tagsLocationCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tpuV2CustomEndpoint: (() {
+        final guardedValue = map['tpuV2CustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transcoderCustomEndpoint: (() {
+        final guardedValue = map['transcoderCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      universeDomain: (() {
+        final guardedValue = map['universeDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userProjectOverride: (() {
+        final guardedValue = map['userProjectOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vertexAiCustomEndpoint: (() {
+        final guardedValue = map['vertexAiCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareengineCustomEndpoint: (() {
+        final guardedValue = map['vmwareengineCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcAccessCustomEndpoint: (() {
+        final guardedValue = map['vpcAccessCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workbenchCustomEndpoint: (() {
+        final guardedValue = map['workbenchCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowsCustomEndpoint: (() {
+        final guardedValue = map['workflowsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workstationsCustomEndpoint: (() {
+        final guardedValue = map['workstationsCustomEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

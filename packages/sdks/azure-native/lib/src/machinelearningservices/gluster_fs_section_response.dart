@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlusterFsSectionResponse {
   /// The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
   final pulumi.Input<String> serverAddress;
+
   /// The name of the created GlusterFS volume.
   final pulumi.Input<String> volumeName;
 
@@ -26,9 +27,8 @@ class GlusterFsSectionResponse {
 
   factory GlusterFsSectionResponse.fromMap(Map<String, dynamic> map) {
     return GlusterFsSectionResponse(
-      serverAddress: (map['serverAddress'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      serverAddress: pulumi.Input.fromValue(map['serverAddress'] as String),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

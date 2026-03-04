@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DetectorParameterDefinitionResponse {
   /// The detector parameter description.
   final pulumi.Input<String>? description;
+
   /// The detector parameter display name.
   final pulumi.Input<String>? displayName;
+
   /// A value indicating whether this detector parameter is mandatory.
   final pulumi.Input<bool>? isMandatory;
+
   /// The detector parameter name.
   final pulumi.Input<String>? name;
+
   /// The detector parameter type.
   final pulumi.Input<String>? type;
 
@@ -39,14 +43,35 @@ class DetectorParameterDefinitionResponse {
     };
   }
 
-  factory DetectorParameterDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory DetectorParameterDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DetectorParameterDefinitionResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      isMandatory: map['isMandatory'] == null ? null : (map['isMandatory']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isMandatory: (() {
+        final guardedValue = map['isMandatory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,11 +15,7 @@ class GetTargetArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [targetId] Required.
-  GetTargetArgs({
-    required this.location,
-    this.project,
-    required this.targetId,
-  });
+  GetTargetArgs({required this.location, this.project, required this.targetId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetTargetArgs {
 
   factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetId: (map['targetId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

@@ -385,7 +385,7 @@ import 'network_manager_management_group_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Management` - 2025-01-01
@@ -400,12 +400,16 @@ import 'network_manager_management_group_connection_state.dart';
 class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
   /// The Connection state of the Network Manager Management Group Connection.
   late final pulumi.Output<String> connectionState;
+
   /// A description of the Network Manager Management Group Connection.
   late final pulumi.Output<String?> description;
+
   /// Specifies the ID of the target Management Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
+
   /// Specifies the name which should be used for this Network Manager Management Group Connection. Changing this forces a new Network Manager Management Group Connection to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Network Manager which the Management Group is connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkManagerId;
 
@@ -418,16 +422,16 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
     NetworkManagerManagementGroupConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.description = registerOutput<String?>('description');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
+    networkManagerId = registerOutput<String>('networkManagerId');
   }
 
   /// Gets an existing [NetworkManagerManagementGroupConnection] resource's state with the given [name] and [id].
@@ -448,15 +452,15 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.description = registerOutput<String?>('description');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
+    networkManagerId = registerOutput<String>('networkManagerId');
   }
 }

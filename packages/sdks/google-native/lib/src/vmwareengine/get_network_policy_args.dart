@@ -31,10 +31,13 @@ class GetNetworkPolicyArgs {
 
   factory GetNetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPolicyArgs(
-      location: (map['location'] as String).input(),
-      networkPolicyId: (map['networkPolicyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      networkPolicyId: pulumi.Input.fromValue(map['networkPolicyId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

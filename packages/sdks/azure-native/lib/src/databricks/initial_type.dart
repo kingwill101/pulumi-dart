@@ -3,16 +3,15 @@ enum InitialType {
   valueHiveMetastore("HiveMetastore"),
   valueUnityCatalog("UnityCatalog");
 
-  const InitialType(this.value);
-  final String value;
+  const InitialType(this.wireValue);
+  final String wireValue;
 
   static InitialType fromValue(String value) {
     for (final item in InitialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InitialType value: $value');
   }
 }
-

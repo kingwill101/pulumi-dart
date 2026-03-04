@@ -9,23 +9,16 @@ class InsightFiltersProcessName {
   /// Creates a new [InsightFiltersProcessName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersProcessName({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersProcessName({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersProcessName.fromMap(Map<String, dynamic> map) {
     return InsightFiltersProcessName(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

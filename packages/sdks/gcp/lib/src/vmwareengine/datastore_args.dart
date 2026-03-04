@@ -10,8 +10,10 @@ import 'datastore_nfs_datastore.dart';
 class DatastoreArgs {
   /// User-provided description for this datastore
   final pulumi.Input<String>? description;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The user-provided identifier of the datastore to be created.
   /// This identifier must be unique among each `Datastore` within the parent
   /// and becomes the final token in the name URI.
@@ -23,9 +25,11 @@ class DatastoreArgs {
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
   final pulumi.Input<String>? name;
+
   /// The NFS datastore configuration.
   /// Structure is documented below.
   final pulumi.Input<DatastoreNfsDatastore> nfsDatastore;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -49,19 +53,38 @@ class DatastoreArgs {
       'description': ?description,
       'location': location,
       'name': ?name,
-      'nfsDatastore': pulumi.Input.mapInputValue<DatastoreNfsDatastore, Map<String, dynamic>>(nfsDatastore, (value) => value.toMap()),
+      'nfsDatastore':
+          pulumi.Input.mapInputValue<
+            DatastoreNfsDatastore,
+            Map<String, dynamic>
+          >(nfsDatastore, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nfsDatastore: (DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfsDatastore: pulumi.Input.fromValue(
+        DatastoreNfsDatastore.fromMap(
+          (map['nfsDatastore']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

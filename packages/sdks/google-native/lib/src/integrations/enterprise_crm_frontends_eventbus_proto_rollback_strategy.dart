@@ -6,9 +6,12 @@ import 'enterprise_crm_frontends_eventbus_proto_event_parameters.dart';
 /// Next available id: 4
 class EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   /// Optional. The customized parameters the user can pass to this task.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoEventParameters>? parameters;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoEventParameters>?
+  parameters;
+
   /// This is the name of the task that needs to be executed upon rollback of this task.
   final pulumi.Input<String> rollbackTaskImplementationClassName;
+
   /// These are the tasks numbers of the tasks whose `rollback_strategy.rollback_task_implementation_class_name` needs to be executed upon failure of this task.
   final pulumi.Input<List<String>> taskNumbersToRollback;
 
@@ -24,18 +27,36 @@ class EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmFrontendsEventbusProtoEventParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
-      'rollbackTaskImplementationClassName': rollbackTaskImplementationClassName,
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseCrmFrontendsEventbusProtoEventParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
+      'rollbackTaskImplementationClassName':
+          rollbackTaskImplementationClassName,
       'taskNumbersToRollback': taskNumbersToRollback,
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoRollbackStrategy.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoRollbackStrategy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoRollbackStrategy(
-      parameters: map['parameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
-      rollbackTaskImplementationClassName: (map['rollbackTaskImplementationClassName'] as String).input(),
-      taskNumbersToRollback: ((map['taskNumbersToRollback'] as List).cast<String>()).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rollbackTaskImplementationClassName: pulumi.Input.fromValue(
+        map['rollbackTaskImplementationClassName'] as String,
+      ),
+      taskNumbersToRollback: pulumi.Input.fromValue(
+        (map['taskNumbersToRollback'] as List).cast<String>(),
+      ),
     );
   }
 }
-

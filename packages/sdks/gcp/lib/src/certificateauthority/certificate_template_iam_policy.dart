@@ -12,11 +12,11 @@ import 'certificate_template_iam_policy_state.dart';
 ///
 /// * `gcp.certificateauthority.CertificateTemplateIamPolicy`: Retrieves the IAM policy for the certificatetemplate
 ///
-/// > **Note:** `gcp.certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CertificateTemplateIamBinding` and `gcp.certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CertificateTemplateIamBinding` and `gcp.certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.certificateauthority.CertificateTemplateIamPolicy
@@ -851,11 +851,11 @@ import 'certificate_template_iam_policy_state.dart';
 ///
 /// * `gcp.certificateauthority.CertificateTemplateIamPolicy`: Retrieves the IAM policy for the certificatetemplate
 ///
-/// > **Note:** `gcp.certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CertificateTemplateIamBinding` and `gcp.certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CertificateTemplateIamBinding` and `gcp.certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.certificateauthority.CertificateTemplateIamPolicy
@@ -1706,21 +1706,25 @@ import 'certificate_template_iam_policy_state.dart';
 /// $ pulumi import gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy editor projects/{{project}}/locations/{{location}}/certificateTemplates/{{certificate_template}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class CertificateTemplateIamPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> certificateTemplate;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   late final pulumi.Output<String> location;
+
   /// The policy data generated by
   /// a `gcp.organizations.getIAMPolicy` data source.
   late final pulumi.Output<String> policyData;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1734,16 +1738,16 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
     CertificateTemplateIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateTemplate = registerOutput<String>('certificateTemplate');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateTemplate = registerOutput<String>('certificateTemplate');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [CertificateTemplateIamPolicy] resource's state with the given [name] and [id].
@@ -1764,15 +1768,15 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateTemplate = registerOutput<String>('certificateTemplate');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateTemplate = registerOutput<String>('certificateTemplate');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 }

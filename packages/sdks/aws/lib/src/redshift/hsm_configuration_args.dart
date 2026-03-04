@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HsmConfigurationArgs {
   /// A text description of the HSM configuration to be created.
   final pulumi.Input<String> description;
+
   /// The identifier to be assigned to the new Amazon Redshift HSM configuration.
   final pulumi.Input<String> hsmConfigurationIdentifier;
+
   /// The IP address that the Amazon Redshift cluster must use to access the HSM.
   final pulumi.Input<String> hsmIpAddress;
+
   /// The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.
   final pulumi.Input<String> hsmPartitionName;
+
   /// The password required to access the HSM partition.
   final pulumi.Input<String> hsmPartitionPassword;
+
   /// The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.
   final pulumi.Input<String> hsmServerPublicCertificate;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,15 +66,32 @@ class HsmConfigurationArgs {
 
   factory HsmConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return HsmConfigurationArgs(
-      description: (map['description'] as String).input(),
-      hsmConfigurationIdentifier: (map['hsmConfigurationIdentifier'] as String).input(),
-      hsmIpAddress: (map['hsmIpAddress'] as String).input(),
-      hsmPartitionName: (map['hsmPartitionName'] as String).input(),
-      hsmPartitionPassword: (map['hsmPartitionPassword'] as String).input(),
-      hsmServerPublicCertificate: (map['hsmServerPublicCertificate'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      hsmConfigurationIdentifier: pulumi.Input.fromValue(
+        map['hsmConfigurationIdentifier'] as String,
+      ),
+      hsmIpAddress: pulumi.Input.fromValue(map['hsmIpAddress'] as String),
+      hsmPartitionName: pulumi.Input.fromValue(
+        map['hsmPartitionName'] as String,
+      ),
+      hsmPartitionPassword: pulumi.Input.fromValue(
+        map['hsmPartitionPassword'] as String,
+      ),
+      hsmServerPublicCertificate: pulumi.Input.fromValue(
+        map['hsmServerPublicCertificate'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum LoggingConfigProtocol {
   lambda("lambda"),
   sqs("sqs");
 
-  const LoggingConfigProtocol(this.value);
-  final String value;
+  const LoggingConfigProtocol(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigProtocol fromValue(String value) {
     for (final item in LoggingConfigProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingConfigProtocol value: $value');
   }
 }
-

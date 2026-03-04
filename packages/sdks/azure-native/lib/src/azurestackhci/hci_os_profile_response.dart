@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciOsProfileResponse {
   /// Version of assembly present on device
   final pulumi.Input<String> assemblyVersion;
+
   /// The boot type of the device. e.g. UEFI, Legacy etc
   final pulumi.Input<String> bootType;
 
   /// Creates a new [HciOsProfileResponse].
   /// [assemblyVersion] Version of assembly present on device
   /// [bootType] The boot type of the device. e.g. UEFI, Legacy etc
-  HciOsProfileResponse({
-    required this.assemblyVersion,
-    required this.bootType,
-  });
+  HciOsProfileResponse({required this.assemblyVersion, required this.bootType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class HciOsProfileResponse {
 
   factory HciOsProfileResponse.fromMap(Map<String, dynamic> map) {
     return HciOsProfileResponse(
-      assemblyVersion: (map['assemblyVersion'] as String).input(),
-      bootType: (map['bootType'] as String).input(),
+      assemblyVersion: pulumi.Input.fromValue(map['assemblyVersion'] as String),
+      bootType: pulumi.Input.fromValue(map['bootType'] as String),
     );
   }
 }
-

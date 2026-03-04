@@ -373,18 +373,25 @@ import 'system_data_response.dart';
 class PipelineRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of a pipeline run.
   late final pulumi.Output<String> provisioningState;
+
   /// The request parameters for a pipeline run.
   late final pulumi.Output<PipelineRunRequestResponse?> request;
+
   /// The response of a pipeline run.
   late final pulumi.Output<PipelineRunResponseResponse> response;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -397,18 +404,18 @@ class PipelineRun extends pulumi.CustomResource {
     PipelineRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:PipelineRun',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+         'azure-native:containerregistry:PipelineRun',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.request = registerOutput<PipelineRunRequestResponse?>('request');
-    this.response = registerOutput<PipelineRunResponseResponse>('response');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    request = registerOutput<PipelineRunRequestResponse?>('request');
+    response = registerOutput<PipelineRunResponseResponse>('response');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

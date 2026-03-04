@@ -10,14 +10,19 @@ import '../internal/package_registration.dart' as package_registration;
 class CloudinitDisk extends pulumi.CustomResource {
   /// Cloud-init meta-data content (usually YAML)
   late final pulumi.Output<String> metaData;
+
   /// Name for this cloud-init disk resource
   late final pulumi.Output<String> name;
+
   /// Cloud-init network configuration (optional, usually YAML)
   late final pulumi.Output<String?> networkConfig;
+
   /// Full path to the generated ISO file
   late final pulumi.Output<String> path;
+
   /// Size of the ISO file in bytes
   late final pulumi.Output<double> size;
+
   /// Cloud-init user-data content (usually YAML)
   late final pulumi.Output<String> userData;
 
@@ -30,18 +35,18 @@ class CloudinitDisk extends pulumi.CustomResource {
     CloudinitDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt:index/cloudinitDisk:CloudinitDisk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-          registerPackageRequest: package_registration.registerPackageRequest,
-        ) {
-    this.metaData = registerOutput<String>('metaData');
+         'libvirt:index/cloudinitDisk:CloudinitDisk',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+         registerPackageRequest: package_registration.registerPackageRequest,
+       ) {
+    metaData = registerOutput<String>('metaData');
     this.name = registerOutput<String>('name');
-    this.networkConfig = registerOutput<String?>('networkConfig');
-    this.path = registerOutput<String>('path');
-    this.size = registerOutput<double>('size');
-    this.userData = registerOutput<String>('userData');
+    networkConfig = registerOutput<String?>('networkConfig');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
+    userData = registerOutput<String>('userData');
   }
 
   /// Gets an existing [CloudinitDisk] resource's state with the given [name] and [id].
@@ -62,16 +67,16 @@ class CloudinitDisk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt:index/cloudinitDisk:CloudinitDisk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.metaData = registerOutput<String>('metaData');
+         'libvirt:index/cloudinitDisk:CloudinitDisk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    metaData = registerOutput<String>('metaData');
     this.name = registerOutput<String>('name');
-    this.networkConfig = registerOutput<String?>('networkConfig');
-    this.path = registerOutput<String>('path');
-    this.size = registerOutput<double>('size');
-    this.userData = registerOutput<String>('userData');
+    networkConfig = registerOutput<String?>('networkConfig');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
+    userData = registerOutput<String>('userData');
   }
 }

@@ -9,20 +9,19 @@ class ConfidentialComputeProperties {
 
   /// Creates a new [ConfidentialComputeProperties].
   /// [ccePolicy] The base64 encoded confidential compute enforcement policy
-  ConfidentialComputeProperties({
-    this.ccePolicy,
-  });
+  ConfidentialComputeProperties({this.ccePolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ccePolicy': ?ccePolicy,
-    };
+    return <String, dynamic>{'ccePolicy': ?ccePolicy};
   }
 
   factory ConfidentialComputeProperties.fromMap(Map<String, dynamic> map) {
     return ConfidentialComputeProperties(
-      ccePolicy: map['ccePolicy'] == null ? null : (map['ccePolicy']! as String).input(),
+      ccePolicy: (() {
+        final guardedValue = map['ccePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

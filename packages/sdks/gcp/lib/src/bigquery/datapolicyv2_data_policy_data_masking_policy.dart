@@ -14,6 +14,7 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// DATE_YEAR_MASK
   /// RANDOM_HASH
   final pulumi.Input<String>? predefinedExpression;
+
   /// The name of the BigQuery routine that contains the custom masking
   /// routine, in the format of
   /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
@@ -34,11 +35,20 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
     };
   }
 
-  factory Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(Map<String, dynamic> map) {
+  factory Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Datapolicyv2DataPolicyDataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null ? null : (map['predefinedExpression']! as String).input(),
-      routine: map['routine'] == null ? null : (map['routine']! as String).input(),
+      predefinedExpression: (() {
+        final guardedValue = map['predefinedExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routine: (() {
+        final guardedValue = map['routine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

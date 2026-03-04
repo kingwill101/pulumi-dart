@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String> transitGatewayAttachmentId;
+
   /// Identifier of EC2 Transit Gateway Policy Table.
   final pulumi.Input<String> transitGatewayPolicyTableId;
 
@@ -34,10 +36,17 @@ class PolicyTableAssociationArgs {
 
   factory PolicyTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTableAssociationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayPolicyTableId: (map['transitGatewayPolicyTableId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayAttachmentId: pulumi.Input.fromValue(
+        map['transitGatewayAttachmentId'] as String,
+      ),
+      transitGatewayPolicyTableId: pulumi.Input.fromValue(
+        map['transitGatewayPolicyTableId'] as String,
+      ),
     );
   }
 }
-

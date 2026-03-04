@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureMembershipConfigmanagementConfigSyncOci {
   /// The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
   final pulumi.Input<String>? gcpServiceAccountEmail;
+
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
   final pulumi.Input<String>? policyDir;
+
   /// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
   final pulumi.Input<String>? secretType;
+
   /// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
   final pulumi.Input<String>? syncRepo;
+
   /// Period in seconds(int64 format) between consecutive syncs. Default: 15.
   final pulumi.Input<String>? syncWaitSecs;
 
@@ -38,14 +42,35 @@ class FeatureMembershipConfigmanagementConfigSyncOci {
     };
   }
 
-  factory FeatureMembershipConfigmanagementConfigSyncOci.fromMap(Map<String, dynamic> map) {
+  factory FeatureMembershipConfigmanagementConfigSyncOci.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureMembershipConfigmanagementConfigSyncOci(
-      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : (map['gcpServiceAccountEmail']! as String).input(),
-      policyDir: map['policyDir'] == null ? null : (map['policyDir']! as String).input(),
-      secretType: map['secretType'] == null ? null : (map['secretType']! as String).input(),
-      syncRepo: map['syncRepo'] == null ? null : (map['syncRepo']! as String).input(),
-      syncWaitSecs: map['syncWaitSecs'] == null ? null : (map['syncWaitSecs']! as String).input(),
+      gcpServiceAccountEmail: (() {
+        final guardedValue = map['gcpServiceAccountEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDir: (() {
+        final guardedValue = map['policyDir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretType: (() {
+        final guardedValue = map['secretType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncRepo: (() {
+        final guardedValue = map['syncRepo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncWaitSecs: (() {
+        final guardedValue = map['syncWaitSecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

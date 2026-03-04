@@ -30,7 +30,7 @@ import 'get_windows_web_app_result.dart';
 
 /// Use this data source to access information about an existing App Service.
 ///
-/// !> **Note:** The `azure.appservice.AppService` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` data sources instead.
+/// !&gt; **Note:** The `azure.appservice.AppService` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` data sources instead.
 ///
 /// ## Example Usage
 ///
@@ -153,7 +153,7 @@ Future<GetAppServiceResult> getAppService(
 
 /// Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 ///
-/// !> **Note:** The `azure.appservice.Plan` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.ServicePlan` data source instead.
+/// !&gt; **Note:** The `azure.appservice.Plan` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.ServicePlan` data source instead.
 ///
 /// ## Example Usage
 ///
@@ -626,7 +626,7 @@ Future<GetCertificateOrderResult> getCertificateOrder(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-01-01
@@ -647,7 +647,7 @@ Future<GetEnvironmentV3Result> getEnvironmentV3(
 
 /// Use this data source to access information about a Function App.
 ///
-/// !> **Note:** The `azure.appservice.FunctionApp` data source is deprecated in version 5.0 of the AzureRM provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` data sources instead.
+/// !&gt; **Note:** The `azure.appservice.FunctionApp` data source is deprecated in version 5.0 of the AzureRM provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` data sources instead.
 ///
 /// ## Example Usage
 ///
@@ -979,7 +979,7 @@ Future<GetFunctionAppHostKeysResult> getFunctionAppHostKeys(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -1108,7 +1108,7 @@ Future<GetLinuxFunctionAppResult> getLinuxFunctionApp(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -1237,7 +1237,7 @@ Future<GetLinuxWebAppResult> getLinuxWebApp(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -1258,7 +1258,7 @@ Future<GetServicePlanResult> getServicePlan(
 
 /// Use this data source to access information about an existing App Service Source Control Token.
 ///
-/// > **Note:** This value can only be queried for the user or service principal that is executing Terraform. It is not possible to retrieve for another user.
+/// &gt; **Note:** This value can only be queried for the user or service principal that is executing Terraform. It is not possible to retrieve for another user.
 ///
 /// ## Example Usage
 ///
@@ -1362,7 +1362,7 @@ Future<GetServicePlanResult> getServicePlan(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-01-01
@@ -1481,7 +1481,7 @@ Future<GetSourceControlTokenResult> getSourceControlToken(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-01-01
@@ -1610,7 +1610,7 @@ Future<GetStaticWebAppResult> getStaticWebApp(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -1739,7 +1739,7 @@ Future<GetWindowsFunctionAppResult> getWindowsFunctionApp(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01

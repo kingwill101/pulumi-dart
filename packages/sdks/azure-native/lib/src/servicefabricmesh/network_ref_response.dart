@@ -7,29 +7,52 @@ import 'endpoint_ref_response.dart';
 class NetworkRefResponse {
   /// A list of endpoints that are exposed on this network.
   final pulumi.Input<List<EndpointRefResponse>>? endpointRefs;
+
   /// Name of the network
   final pulumi.Input<String>? name;
 
   /// Creates a new [NetworkRefResponse].
   /// [endpointRefs] A list of endpoints that are exposed on this network.
   /// [name] Name of the network
-  NetworkRefResponse({
-    this.endpointRefs,
-    this.name,
-  });
+  NetworkRefResponse({this.endpointRefs, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointRefs': ?pulumi.Input.mapOptionalInputValue<List<EndpointRefResponse>, List<Map<String, dynamic>>>(endpointRefs, (value) => pulumi.Input.encodeList<EndpointRefResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpointRefs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EndpointRefResponse>,
+            List<Map<String, dynamic>>
+          >(
+            endpointRefs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EndpointRefResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
     };
   }
 
   factory NetworkRefResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRefResponse(
-      endpointRefs: map['endpointRefs'] == null ? null : (pulumi.Input.decodeList<EndpointRefResponse>(map['endpointRefs']!, (value) => EndpointRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      endpointRefs: (() {
+        final guardedValue = map['endpointRefs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EndpointRefResponse>(
+            guardedValue,
+            (value) => EndpointRefResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

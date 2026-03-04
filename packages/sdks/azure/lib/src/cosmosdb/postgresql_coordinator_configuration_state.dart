@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlCoordinatorConfigurationState {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster where we want to change configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? clusterId;
+
   /// The name of the Coordinator Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The value of the Coordinator Configuration on Azure Cosmos DB for PostgreSQL Cluster.
   final pulumi.Input<String>? value;
 
@@ -29,12 +31,25 @@ class PostgresqlCoordinatorConfigurationState {
     };
   }
 
-  factory PostgresqlCoordinatorConfigurationState.fromMap(Map<String, dynamic> map) {
+  factory PostgresqlCoordinatorConfigurationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PostgresqlCoordinatorConfigurationState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

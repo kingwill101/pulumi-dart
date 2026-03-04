@@ -7,26 +7,36 @@ import 'get_router_interfaces_interface.dart';
 class GetRouterInterfacesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of router interface IDs.
   final List<String> ids;
+
   /// A list of router interfaces. Each element contains the following attributes:
   final List<GetRouterInterfacesInterface> interfaces;
   final String? nameRegex;
+
   /// A list of router interface names.
   final List<String> names;
+
   /// Peer router interface ID.
   final String? oppositeInterfaceId;
+
   /// Account ID of the owner of the peer router interface.
   final String? oppositeInterfaceOwnerId;
   final String? outputFile;
+
   /// Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
   final String? role;
+
   /// ID of the VRouter located in the local region.
   final String? routerId;
+
   /// Router type in the local region. Possible values: `VRouter` and `VBR`.
   final String? routerType;
+
   /// Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
   final String? specification;
+
   /// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
   final String? status;
 
@@ -64,7 +74,11 @@ class GetRouterInterfacesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'interfaces': pulumi.Input.encodeList<GetRouterInterfacesInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
+      'interfaces':
+          pulumi.Input.encodeList<
+            GetRouterInterfacesInterface,
+            Map<String, dynamic>
+          >(interfaces, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'oppositeInterfaceId': ?oppositeInterfaceId,
@@ -82,18 +96,58 @@ class GetRouterInterfacesResult {
     return GetRouterInterfacesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      interfaces: pulumi.Input.decodeList<GetRouterInterfacesInterface>(map['interfaces'], (value) => GetRouterInterfacesInterface.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      interfaces: pulumi.Input.decodeList<GetRouterInterfacesInterface>(
+        map['interfaces']!,
+        (value) => GetRouterInterfacesInterface.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : map['oppositeInterfaceId']! as String,
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : map['oppositeInterfaceOwnerId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      role: map['role'] == null ? null : map['role']! as String,
-      routerId: map['routerId'] == null ? null : map['routerId']! as String,
-      routerType: map['routerType'] == null ? null : map['routerType']! as String,
-      specification: map['specification'] == null ? null : map['specification']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      oppositeInterfaceId: (() {
+        final guardedValue = map['oppositeInterfaceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      oppositeInterfaceOwnerId: (() {
+        final guardedValue = map['oppositeInterfaceOwnerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerType: (() {
+        final guardedValue = map['routerType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      specification: (() {
+        final guardedValue = map['specification'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

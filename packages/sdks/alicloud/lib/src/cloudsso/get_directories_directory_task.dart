@@ -5,32 +5,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoriesDirectoryTask {
   /// The ID of Access Configuration.
   final pulumi.Input<String> accessConfigurationId;
+
   /// The Name of Access Configuration.
   final pulumi.Input<String> accessConfigurationName;
+
   /// The End Time of Task.
   final pulumi.Input<String> endTime;
+
   /// the Reason for the Failure of  the task.
   final pulumi.Input<String> failureReason;
+
   /// The ID of Cloud SSO Identity.
   final pulumi.Input<String> principalId;
+
   /// The Name of Cloud SSO Identity.
   final pulumi.Input<String> principalName;
+
   /// The Type of Cloud SSO Identity.
   final pulumi.Input<String> principalType;
+
   /// The Start Time of Task.
   final pulumi.Input<String> startTime;
+
   /// The Task Status.
   final pulumi.Input<String> status;
+
   /// The Id of deploy target.
   final pulumi.Input<String> targetId;
+
   /// The Name of Deploy Target.
   final pulumi.Input<String> targetName;
+
   /// The Path in RD of Deploy Target.
   final pulumi.Input<String> targetPath;
+
   /// The Type of Deploy Target.
   final pulumi.Input<String> targetType;
+
   /// The ID of the Task.
   final pulumi.Input<String> taskId;
+
   /// The Type of the Task.
   final pulumi.Input<String> taskType;
 
@@ -90,22 +104,25 @@ class GetDirectoriesDirectoryTask {
 
   factory GetDirectoriesDirectoryTask.fromMap(Map<String, dynamic> map) {
     return GetDirectoriesDirectoryTask(
-      accessConfigurationId: (map['accessConfigurationId'] as String).input(),
-      accessConfigurationName: (map['accessConfigurationName'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      failureReason: (map['failureReason'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalName: (map['principalName'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
-      targetName: (map['targetName'] as String).input(),
-      targetPath: (map['targetPath'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
-      taskId: (map['taskId'] as String).input(),
-      taskType: (map['taskType'] as String).input(),
+      accessConfigurationId: pulumi.Input.fromValue(
+        map['accessConfigurationId'] as String,
+      ),
+      accessConfigurationName: pulumi.Input.fromValue(
+        map['accessConfigurationName'] as String,
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      failureReason: pulumi.Input.fromValue(map['failureReason'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalName: pulumi.Input.fromValue(map['principalName'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
+      targetName: pulumi.Input.fromValue(map['targetName'] as String),
+      targetPath: pulumi.Input.fromValue(map['targetPath'] as String),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
+      taskId: pulumi.Input.fromValue(map['taskId'] as String),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class DistributionTenantCustomizationsCertificate {
 
   /// Creates a new [DistributionTenantCustomizationsCertificate].
   /// [arn] ARN of the distribution tenant.
-  DistributionTenantCustomizationsCertificate({
-    this.arn,
-  });
+  DistributionTenantCustomizationsCertificate({this.arn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': ?arn,
-    };
+    return <String, dynamic>{'arn': ?arn};
   }
 
-  factory DistributionTenantCustomizationsCertificate.fromMap(Map<String, dynamic> map) {
+  factory DistributionTenantCustomizationsCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionTenantCustomizationsCertificate(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

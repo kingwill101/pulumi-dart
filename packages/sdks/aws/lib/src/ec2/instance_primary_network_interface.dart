@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstancePrimaryNetworkInterface {
   /// Whether the network interface will be deleted when the instance terminates.
   final pulumi.Input<bool>? deleteOnTermination;
+
   /// ID of the network interface to attach.
   final pulumi.Input<String> networkInterfaceId;
 
@@ -25,9 +26,14 @@ class InstancePrimaryNetworkInterface {
 
   factory InstancePrimaryNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstancePrimaryNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      deleteOnTermination: (() {
+        final guardedValue = map['deleteOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
     );
   }
 }
-

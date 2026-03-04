@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Port {
   /// The port number.
   final pulumi.Input<int> port;
+
   /// The protocol associated with the port.
   final pulumi.Input<String>? protocol;
 
   /// Creates a new [Port].
   /// [port] The port number.
   /// [protocol] The protocol associated with the port.
-  Port({
-    required this.port,
-    this.protocol,
-  });
+  Port({required this.port, this.protocol});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-      'protocol': ?protocol,
-    };
+    return <String, dynamic>{'port': port, 'protocol': ?protocol};
   }
 
   factory Port.fromMap(Map<String, dynamic> map) {
     return Port(
-      port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

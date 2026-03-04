@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_args.dart';
 import 'volume_group_encryption.dart';
 import 'volume_group_identity.dart';
-import 'volume_group_network_rule.dart';
 import 'volume_group_state.dart';
 
 /// Manages an Elastic SAN Volume Group resource.
@@ -878,7 +877,7 @@ import 'volume_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ElasticSan` - 2023-01-01
@@ -893,18 +892,24 @@ import 'volume_group_state.dart';
 class VolumeGroup extends pulumi.CustomResource {
   /// Specifies the Elastic SAN ID within which this Elastic SAN Volume Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> elasticSanId;
+
   /// An `encryption` block as defined below.
   ///
-  /// > **Note:** The `encryption` block can only be set when `encryption_type` is set to `EncryptionAtRestWithCustomerManagedKey`.
+  /// &gt; **Note:** The `encryption` block can only be set when `encryption_type` is set to `EncryptionAtRestWithCustomerManagedKey`.
   late final pulumi.Output<VolumeGroupEncryption?> encryption;
+
   /// Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
   late final pulumi.Output<String?> encryptionType;
+
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Elastic SAN Volume Group.
   late final pulumi.Output<VolumeGroupIdentity?> identity;
+
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `network_rule` blocks as defined below.
-  late final pulumi.Output<List<VolumeGroupNetworkRule>?> networkRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkRules;
+
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   late final pulumi.Output<String?> protocolType;
 
@@ -917,18 +922,18 @@ class VolumeGroup extends pulumi.CustomResource {
     VolumeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:elasticsan/volumeGroup:VolumeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.elasticSanId = registerOutput<String>('elasticSanId');
-    this.encryption = registerOutput<VolumeGroupEncryption?>('encryption');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.identity = registerOutput<VolumeGroupIdentity?>('identity');
+         'azure:elasticsan/volumeGroup:VolumeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    elasticSanId = registerOutput<String>('elasticSanId');
+    encryption = registerOutput<VolumeGroupEncryption?>('encryption');
+    encryptionType = registerOutput<String?>('encryptionType');
+    identity = registerOutput<VolumeGroupIdentity?>('identity');
     this.name = registerOutput<String>('name');
-    this.networkRules = registerOutput<List<VolumeGroupNetworkRule>?>('networkRules');
-    this.protocolType = registerOutput<String?>('protocolType');
+    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    protocolType = registerOutput<String?>('protocolType');
   }
 
   /// Gets an existing [VolumeGroup] resource's state with the given [name] and [id].
@@ -949,17 +954,17 @@ class VolumeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:elasticsan/volumeGroup:VolumeGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.elasticSanId = registerOutput<String>('elasticSanId');
-    this.encryption = registerOutput<VolumeGroupEncryption?>('encryption');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.identity = registerOutput<VolumeGroupIdentity?>('identity');
+         'azure:elasticsan/volumeGroup:VolumeGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    elasticSanId = registerOutput<String>('elasticSanId');
+    encryption = registerOutput<VolumeGroupEncryption?>('encryption');
+    encryptionType = registerOutput<String?>('encryptionType');
+    identity = registerOutput<VolumeGroupIdentity?>('identity');
     this.name = registerOutput<String>('name');
-    this.networkRules = registerOutput<List<VolumeGroupNetworkRule>?>('networkRules');
-    this.protocolType = registerOutput<String?>('protocolType');
+    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    protocolType = registerOutput<String?>('protocolType');
   }
 }

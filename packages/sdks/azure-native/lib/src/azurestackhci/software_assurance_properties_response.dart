@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoftwareAssurancePropertiesResponse {
   /// TimeStamp denoting the latest SA benefit applicability is validated.
   final pulumi.Input<String> lastUpdated;
+
   /// Customer Intent for Software Assurance Benefit.
   final pulumi.Input<String>? softwareAssuranceIntent;
+
   /// Status of the Software Assurance for the cluster.
   final pulumi.Input<String> softwareAssuranceStatus;
 
@@ -29,12 +31,19 @@ class SoftwareAssurancePropertiesResponse {
     };
   }
 
-  factory SoftwareAssurancePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory SoftwareAssurancePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SoftwareAssurancePropertiesResponse(
-      lastUpdated: (map['lastUpdated'] as String).input(),
-      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent']! as String).input(),
-      softwareAssuranceStatus: (map['softwareAssuranceStatus'] as String).input(),
+      lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
+      softwareAssuranceIntent: (() {
+        final guardedValue = map['softwareAssuranceIntent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softwareAssuranceStatus: pulumi.Input.fromValue(
+        map['softwareAssuranceStatus'] as String,
+      ),
     );
   }
 }
-

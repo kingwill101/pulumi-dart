@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'network_manager_routing_group_item_response.dart';
 import 'routing_rule_collection_args.dart';
 import 'system_data_response.dart';
 
@@ -171,23 +170,32 @@ import 'system_data_response.dart';
 /// ```
 class RoutingRuleCollection extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<NetworkManagerRoutingGroupItemResponse>> appliesTo;
+  late final pulumi.Output<List<Map<String, dynamic>>> appliesTo;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description of the routing rule collection.
   late final pulumi.Output<String?> description;
+
   /// Determines whether BGP route propagation is enabled. Defaults to true.
   late final pulumi.Output<String?> disableBgpRoutePropagation;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -200,20 +208,22 @@ class RoutingRuleCollection extends pulumi.CustomResource {
     RoutingRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:RoutingRuleCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliesTo = registerOutput<List<NetworkManagerRoutingGroupItemResponse>>('appliesTo');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.disableBgpRoutePropagation = registerOutput<String?>('disableBgpRoutePropagation');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:RoutingRuleCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliesTo = registerOutput<List<Map<String, dynamic>>>('appliesTo');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    disableBgpRoutePropagation = registerOutput<String?>(
+      'disableBgpRoutePropagation',
+    );
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

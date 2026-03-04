@@ -10,16 +10,21 @@ import 'role_definition_permission.dart';
 class RoleDefinitionArgs {
   /// One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333` , or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
   ///
-  /// > **NOTE:** The value for `scope` is automatically included in this list if no other values supplied.
+  /// &gt; **NOTE:** The value for `scope` is automatically included in this list if no other values supplied.
   final pulumi.Input<List<String>>? assignableScopes;
+
   /// A description of the Role Definition.
   final pulumi.Input<String>? description;
+
   /// The name of the Role Definition.
   final pulumi.Input<String>? name;
+
   /// A `permissions` block as defined below.
   final pulumi.Input<List<RoleDefinitionPermission>>? permissions;
+
   /// A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? roleDefinitionId;
+
   /// The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
   final pulumi.Input<String> scope;
 
@@ -44,7 +49,18 @@ class RoleDefinitionArgs {
       'assignableScopes': ?assignableScopes,
       'description': ?description,
       'name': ?name,
-      'permissions': ?pulumi.Input.mapOptionalInputValue<List<RoleDefinitionPermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<RoleDefinitionPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'permissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RoleDefinitionPermission>,
+            List<Map<String, dynamic>>
+          >(
+            permissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RoleDefinitionPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'roleDefinitionId': ?roleDefinitionId,
       'scope': scope,
     };
@@ -52,13 +68,39 @@ class RoleDefinitionArgs {
 
   factory RoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return RoleDefinitionArgs(
-      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<RoleDefinitionPermission>(map['permissions']!, (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
-      scope: (map['scope'] as String).input(),
+      assignableScopes: (() {
+        final guardedValue = map['assignableScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RoleDefinitionPermission>(
+            guardedValue,
+            (value) => RoleDefinitionPermission.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      roleDefinitionId: (() {
+        final guardedValue = map['roleDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshPublicKeyOsloginV1alphaArgs {
   /// An expiration time in microseconds since epoch.
   final pulumi.Input<String>? expirationTimeUsec;
+
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final pulumi.Input<String>? key;
   final pulumi.Input<String> userId;
@@ -33,10 +34,17 @@ class SshPublicKeyOsloginV1alphaArgs {
 
   factory SshPublicKeyOsloginV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyOsloginV1alphaArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      userId: (map['userId'] as String).input(),
+      expirationTimeUsec: (() {
+        final guardedValue = map['expirationTimeUsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

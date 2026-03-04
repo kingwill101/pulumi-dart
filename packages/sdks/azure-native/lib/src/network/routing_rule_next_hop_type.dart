@@ -6,16 +6,15 @@ enum RoutingRuleNextHopType {
   valueVirtualNetworkGateway("VirtualNetworkGateway"),
   valueVnetLocal("VnetLocal");
 
-  const RoutingRuleNextHopType(this.value);
-  final String value;
+  const RoutingRuleNextHopType(this.wireValue);
+  final String wireValue;
 
   static RoutingRuleNextHopType fromValue(String value) {
     for (final item in RoutingRuleNextHopType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingRuleNextHopType value: $value');
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudinitDiskState {
   /// Cloud-init meta-data content (usually YAML)
   final pulumi.Input<String>? metaData;
+
   /// Name for this cloud-init disk resource
   final pulumi.Input<String>? name;
+
   /// Cloud-init network configuration (optional, usually YAML)
   final pulumi.Input<String>? networkConfig;
+
   /// Full path to the generated ISO file
   final pulumi.Input<String>? path;
+
   /// Size of the ISO file in bytes
   final pulumi.Input<double>? size;
+
   /// Cloud-init user-data content (usually YAML)
   final pulumi.Input<String>? userData;
 
@@ -46,13 +51,36 @@ class CloudinitDiskState {
 
   factory CloudinitDiskState.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskState(
-      metaData: map['metaData'] == null ? null : (map['metaData']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as double).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
+      metaData: (() {
+        final guardedValue = map['metaData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConfig: (() {
+        final guardedValue = map['networkConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

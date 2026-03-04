@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorRuleConditionsRequestMethodCondition {
   /// A list of one or more HTTP methods. Possible values include `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS` or `TRACE`. If multiple values are specified, they're evaluated using `OR` logic.
   final pulumi.Input<List<String>> matchValues;
+
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   final pulumi.Input<bool>? negateCondition;
+
   /// Possible value `Equal`. Defaults to `Equal`.
   final pulumi.Input<String>? operator;
 
@@ -28,12 +30,23 @@ class FrontdoorRuleConditionsRequestMethodCondition {
     };
   }
 
-  factory FrontdoorRuleConditionsRequestMethodCondition.fromMap(Map<String, dynamic> map) {
+  factory FrontdoorRuleConditionsRequestMethodCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontdoorRuleConditionsRequestMethodCondition(
-      matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      matchValues: pulumi.Input.fromValue(
+        (map['matchValues'] as List).cast<String>(),
+      ),
+      negateCondition: (() {
+        final guardedValue = map['negateCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

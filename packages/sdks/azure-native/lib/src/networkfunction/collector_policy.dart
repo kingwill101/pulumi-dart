@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_policy_args.dart';
-import 'emission_policies_properties_format_response.dart';
 import 'ingestion_policy_properties_format_response.dart';
 import 'tracked_resource_response_system_data.dart';
 
@@ -236,22 +235,32 @@ import 'tracked_resource_response_system_data.dart';
 class CollectorPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Emission policies.
-  late final pulumi.Output<List<EmissionPoliciesPropertiesFormatResponse>?> emissionPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> emissionPolicies;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Ingestion policies.
-  late final pulumi.Output<IngestionPolicyPropertiesFormatResponse?> ingestionPolicy;
+  late final pulumi.Output<IngestionPolicyPropertiesFormatResponse?>
+  ingestionPolicy;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<TrackedResourceResponseSystemData> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -264,20 +273,26 @@ class CollectorPolicy extends pulumi.CustomResource {
     CollectorPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkfunction:CollectorPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.emissionPolicies = registerOutput<List<EmissionPoliciesPropertiesFormatResponse>?>('emissionPolicies');
-    this.etag = registerOutput<String>('etag');
-    this.ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>('ingestionPolicy');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkfunction:CollectorPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    emissionPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'emissionPolicies',
+    );
+    etag = registerOutput<String>('etag');
+    ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>(
+      'ingestionPolicy',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<TrackedResourceResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<TrackedResourceResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

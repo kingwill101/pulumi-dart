@@ -352,22 +352,30 @@ class ExternalAddress extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// User-provided description for this resource.
   late final pulumi.Output<String?> description;
+
   /// The external IP address of a workload VM.
   late final pulumi.Output<String> externalIp;
+
   /// The internal IP address of a workload VM.
   late final pulumi.Output<String> internalIp;
+
   /// The ID of the external IP Address.
   late final pulumi.Output<String> name;
+
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
   late final pulumi.Output<String> parent;
+
   /// State of the resource.
   late final pulumi.Output<String> state;
+
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
+
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -382,20 +390,20 @@ class ExternalAddress extends pulumi.CustomResource {
     ExternalAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/externalAddress:ExternalAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.externalIp = registerOutput<String>('externalIp');
-    this.internalIp = registerOutput<String>('internalIp');
+         'gcp:vmwareengine/externalAddress:ExternalAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    externalIp = registerOutput<String>('externalIp');
+    internalIp = registerOutput<String>('internalIp');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [ExternalAddress] resource's state with the given [name] and [id].
@@ -416,19 +424,19 @@ class ExternalAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/externalAddress:ExternalAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.externalIp = registerOutput<String>('externalIp');
-    this.internalIp = registerOutput<String>('internalIp');
+         'gcp:vmwareengine/externalAddress:ExternalAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    externalIp = registerOutput<String>('externalIp');
+    internalIp = registerOutput<String>('internalIp');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
+    parent = registerOutput<String>('parent');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

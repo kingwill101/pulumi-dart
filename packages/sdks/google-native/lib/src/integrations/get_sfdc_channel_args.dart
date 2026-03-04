@@ -39,12 +39,15 @@ class GetSfdcChannelArgs {
 
   factory GetSfdcChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetSfdcChannelArgs(
-      location: (map['location'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sfdcChannelId: (map['sfdcChannelId'] as String).input(),
-      sfdcInstanceId: (map['sfdcInstanceId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sfdcChannelId: pulumi.Input.fromValue(map['sfdcChannelId'] as String),
+      sfdcInstanceId: pulumi.Input.fromValue(map['sfdcInstanceId'] as String),
     );
   }
 }
-

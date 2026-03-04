@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupUserArgs {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
+
   /// The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> groupName;
+
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the API Management User which should be assigned to this API Management Group. Changing this forces a new resource to be created.
   final pulumi.Input<String> userId;
 
@@ -39,11 +42,14 @@ class GroupUserArgs {
 
   factory GroupUserArgs.fromMap(Map<String, dynamic> map) {
     return GroupUserArgs(
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'data_catalog_state.dart';
 ///
 /// More information about Athena and Athena data catalogs can be found in the [Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/what-is.html).
 ///
-/// > **Tip:** for a more detailed explanation on the usage of `parameters`, see the [DataCatalog API documentation](https://docs.aws.amazon.com/athena/latest/APIReference/API_DataCatalog.html)
+/// &gt; **Tip:** for a more detailed explanation on the usage of `parameters`, see the [DataCatalog API documentation](https://docs.aws.amazon.com/athena/latest/APIReference/API_DataCatalog.html)
 ///
 /// ## Example Usage
 ///
@@ -514,18 +514,25 @@ import 'data_catalog_state.dart';
 class DataCatalog extends pulumi.CustomResource {
   /// ARN of the data catalog.
   late final pulumi.Output<String> arn;
+
   /// Description of the data catalog.
   late final pulumi.Output<String> description;
+
   /// Name of the data catalog. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
   late final pulumi.Output<String> name;
+
   /// Key value pairs that specifies the Lambda function or functions to use for the data catalog. The mapping used depends on the catalog type.
   late final pulumi.Output<Map<String, String>> parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Type of data catalog: `LAMBDA` for a federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
   late final pulumi.Output<String> type;
 
@@ -538,19 +545,19 @@ class DataCatalog extends pulumi.CustomResource {
     DataCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:athena/dataCatalog:DataCatalog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
+         'aws:athena/dataCatalog:DataCatalog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>>('parameters');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    parameters = registerOutput<Map<String, String>>('parameters');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [DataCatalog] resource's state with the given [name] and [id].
@@ -571,18 +578,18 @@ class DataCatalog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:athena/dataCatalog:DataCatalog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
+         'aws:athena/dataCatalog:DataCatalog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>>('parameters');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    parameters = registerOutput<Map<String, String>>('parameters');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,14 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
   /// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
   final pulumi.Input<bool>? enabled;
+
   /// Endpoint timeout setting for matching dtmf input to regex.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
   final pulumi.Input<String>? endpointingTimeoutDuration;
+
   /// The digit that terminates a DTMF digit sequence.
   final pulumi.Input<String>? finishDigit;
+
   /// Interdigit timeout setting for matching dtmf input to regex.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
   final pulumi.Input<String>? interdigitTimeoutDuration;
+
   /// Max length of DTMF digits.
   final pulumi.Input<int>? maxDigits;
 
@@ -40,14 +44,35 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSett
     };
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endpointingTimeoutDuration: map['endpointingTimeoutDuration'] == null ? null : (map['endpointingTimeoutDuration']! as String).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
-      interdigitTimeoutDuration: map['interdigitTimeoutDuration'] == null ? null : (map['interdigitTimeoutDuration']! as String).input(),
-      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpointingTimeoutDuration: (() {
+        final guardedValue = map['endpointingTimeoutDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      finishDigit: (() {
+        final guardedValue = map['finishDigit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interdigitTimeoutDuration: (() {
+        final guardedValue = map['interdigitTimeoutDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxDigits: (() {
+        final guardedValue = map['maxDigits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

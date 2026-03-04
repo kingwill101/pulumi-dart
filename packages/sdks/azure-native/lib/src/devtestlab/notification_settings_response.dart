@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationSettingsResponse {
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
   final pulumi.Input<String>? emailRecipient;
+
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
   final pulumi.Input<String>? notificationLocale;
+
   /// If notifications are enabled for this schedule (i.e. Enabled, Disabled).
   final pulumi.Input<String>? status;
+
   /// Time in minutes before event at which notification will be sent.
   final pulumi.Input<int>? timeInMinutes;
+
   /// The webhook URL to which the notification will be sent.
   final pulumi.Input<String>? webhookUrl;
 
@@ -41,12 +45,31 @@ class NotificationSettingsResponse {
 
   factory NotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NotificationSettingsResponse(
-      emailRecipient: map['emailRecipient'] == null ? null : (map['emailRecipient']! as String).input(),
-      notificationLocale: map['notificationLocale'] == null ? null : (map['notificationLocale']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      timeInMinutes: map['timeInMinutes'] == null ? null : (map['timeInMinutes']! as int).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
+      emailRecipient: (() {
+        final guardedValue = map['emailRecipient'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationLocale: (() {
+        final guardedValue = map['notificationLocale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeInMinutes: (() {
+        final guardedValue = map['timeInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webhookUrl: (() {
+        final guardedValue = map['webhookUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

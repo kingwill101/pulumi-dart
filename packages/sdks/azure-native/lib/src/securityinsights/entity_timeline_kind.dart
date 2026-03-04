@@ -5,16 +5,15 @@ enum EntityTimelineKind {
   valueSecurityAlert("SecurityAlert"),
   valueAnomaly("Anomaly");
 
-  const EntityTimelineKind(this.value);
-  final String value;
+  const EntityTimelineKind(this.wireValue);
+  final String wireValue;
 
   static EntityTimelineKind fromValue(String value) {
     for (final item in EntityTimelineKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityTimelineKind value: $value');
   }
 }
-

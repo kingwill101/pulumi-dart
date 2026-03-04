@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedSubscriptionArgs {
   /// The identifier associated with the device subscription.
   final pulumi.Input<String> linkedSubscriptionId;
+
   /// Name of the Linked Subscription resource.
   final pulumi.Input<String>? linkedSubscriptionName;
+
   /// Location of the resource.
   final pulumi.Input<String>? location;
+
   /// The identifier associated with the device registration.
   final pulumi.Input<String> registrationResourceId;
+
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -44,12 +48,23 @@ class LinkedSubscriptionArgs {
 
   factory LinkedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LinkedSubscriptionArgs(
-      linkedSubscriptionId: (map['linkedSubscriptionId'] as String).input(),
-      linkedSubscriptionName: map['linkedSubscriptionName'] == null ? null : (map['linkedSubscriptionName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      registrationResourceId: (map['registrationResourceId'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
+      linkedSubscriptionId: pulumi.Input.fromValue(
+        map['linkedSubscriptionId'] as String,
+      ),
+      linkedSubscriptionName: (() {
+        final guardedValue = map['linkedSubscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationResourceId: pulumi.Input.fromValue(
+        map['registrationResourceId'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
-

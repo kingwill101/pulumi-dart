@@ -8,6 +8,7 @@ import 'google_privacy_dlp_v2_hotword_rule_response.dart';
 class GooglePrivacyDlpV2InspectionRuleResponse {
   /// Exclusion rule.
   final pulumi.Input<GooglePrivacyDlpV2ExclusionRuleResponse> exclusionRule;
+
   /// Hotword-based detection rule.
   final pulumi.Input<GooglePrivacyDlpV2HotwordRuleResponse> hotwordRule;
 
@@ -21,16 +22,33 @@ class GooglePrivacyDlpV2InspectionRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusionRule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ExclusionRuleResponse, Map<String, dynamic>>(exclusionRule, (value) => value.toMap()),
-      'hotwordRule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2HotwordRuleResponse, Map<String, dynamic>>(hotwordRule, (value) => value.toMap()),
+      'exclusionRule':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2ExclusionRuleResponse,
+            Map<String, dynamic>
+          >(exclusionRule, (value) => value.toMap()),
+      'hotwordRule':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2HotwordRuleResponse,
+            Map<String, dynamic>
+          >(hotwordRule, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2InspectionRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectionRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InspectionRuleResponse(
-      exclusionRule: (GooglePrivacyDlpV2ExclusionRuleResponse.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>())).input(),
-      hotwordRule: (GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>())).input(),
+      exclusionRule: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2ExclusionRuleResponse.fromMap(
+          (map['exclusionRule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      hotwordRule: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
+          (map['hotwordRule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

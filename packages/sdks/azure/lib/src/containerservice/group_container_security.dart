@@ -5,25 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupContainerSecurity {
   /// Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Currently, this only applies when the `os_type` is `Linux` and the `sku` is `Confidential`.
+  /// &gt; **Note:** Currently, this only applies when the `os_type` is `Linux` and the `sku` is `Confidential`.
   final pulumi.Input<bool> privilegeEnabled;
 
   /// Creates a new [GroupContainerSecurity].
   /// [privilegeEnabled] Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
-  GroupContainerSecurity({
-    required this.privilegeEnabled,
-  });
+  GroupContainerSecurity({required this.privilegeEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'privilegeEnabled': privilegeEnabled,
-    };
+    return <String, dynamic>{'privilegeEnabled': privilegeEnabled};
   }
 
   factory GroupContainerSecurity.fromMap(Map<String, dynamic> map) {
     return GroupContainerSecurity(
-      privilegeEnabled: (map['privilegeEnabled'] as bool).input(),
+      privilegeEnabled: pulumi.Input.fromValue(map['privilegeEnabled'] as bool),
     );
   }
 }
-

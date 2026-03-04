@@ -34,7 +34,7 @@ import 'get_sls_groups_result.dart';
 
 /// This data source provides the CMS Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.101.0+.
+/// &gt; **NOTE:** Available in v1.101.0+.
 ///
 /// ## Example Usage
 ///
@@ -143,7 +143,7 @@ Future<GetAlarmContactGroupsResult> getAlarmContactGroups(
 
 /// Provides a list of alarm contact owned by an Alibaba Cloud account.
 ///
-/// > **NOTE:** Available in v1.99.0+.
+/// &gt; **NOTE:** Available in v1.99.0+.
 ///
 /// ## Example Usage
 ///
@@ -272,7 +272,7 @@ Future<GetAlarmContactsResult> getAlarmContacts(
 
 /// This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -524,7 +524,7 @@ Future<GetDynamicTagGroupsResult> getDynamicTagGroups(
 
 /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.182.0+.
+/// &gt; **NOTE:** Available in v1.182.0+.
 ///
 /// ## Example Usage
 ///
@@ -679,7 +679,7 @@ Future<GetEventRulesResult> getEventRules(
 
 /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.104.0+.
+/// &gt; **NOTE:** Available in v1.104.0+.
 ///
 /// ## Example Usage
 ///
@@ -810,7 +810,7 @@ Future<GetGroupMetricRulesResult> getGroupMetricRules(
 
 /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.177.0+.
+/// &gt; **NOTE:** Available in v1.177.0+.
 ///
 /// ## Example Usage
 ///
@@ -947,7 +947,7 @@ Future<GetHybridMonitorDatasResult> getHybridMonitorDatas(
 
 /// This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.179.0+.
+/// &gt; **NOTE:** Available in v1.179.0+.
 ///
 /// ## Example Usage
 ///
@@ -1072,7 +1072,7 @@ Future<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasks(
 
 /// This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.179.0+.
+/// &gt; **NOTE:** Available in v1.179.0+.
 ///
 /// ## Example Usage
 ///
@@ -1197,7 +1197,7 @@ Future<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasks(
 
 /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 ///
-/// > **NOTE:** Available in 1.194.0+
+/// &gt; **NOTE:** Available in 1.194.0+
 ///
 /// ## Example Usage
 ///
@@ -1331,7 +1331,7 @@ Future<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(
 
 /// This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -1561,7 +1561,7 @@ Future<GetMonitorGroupInstancesResult> getMonitorGroupInstances(
 
 /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.113.0+.
+/// &gt; **NOTE:** Available in v1.113.0+.
 ///
 /// ## Example Usage
 ///
@@ -1692,7 +1692,7 @@ Future<GetMonitorGroupsResult> getMonitorGroups(
 
 /// This data source provides the Cms Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.171.0+.
+/// &gt; **NOTE:** Available in v1.171.0+.
 ///
 /// ## Example Usage
 ///
@@ -1819,9 +1819,9 @@ Future<GetNamespacesResult> getNamespaces(
 ///
 /// For information about CMS and how to use it, see [What is CMS](https://help.aliyun.com/product/28572.html).
 ///
-/// > **NOTE:** Available in v1.111.0+
+/// &gt; **NOTE:** Available in v1.111.0+
 ///
-/// > **DEPRECATED:**  This data source has been deprecated from version `1.219.0`. The Cloud Monitor Service is no longer needed to open in the product dimension and the OpenAPI has been taken [offline](https://api.alibabacloud.com/api/Cms/2019-01-01/OpenCmsService).
+/// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.219.0`. The Cloud Monitor Service is no longer needed to open in the product dimension and the OpenAPI has been taken [offline](https://api.alibabacloud.com/api/Cms/2019-01-01/OpenCmsService).
 ///
 /// ## Example Usage
 ///
@@ -1928,7 +1928,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -2287,7 +2287,7 @@ Future<GetSiteMonitorsResult> getSiteMonitors(
 
 /// This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.171.0+.
+/// &gt; **NOTE:** Available in v1.171.0+.
 ///
 /// ## Example Usage
 ///

@@ -135,16 +135,22 @@ import 'system_data_response.dart';
 class BackupsAutomaticAndOnDemand extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of backup.
   late final pulumi.Output<String?> backupType;
+
   /// Time(ISO8601 format) at which the backup was completed.
   late final pulumi.Output<String?> completedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Source of the backup.
   late final pulumi.Output<String?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -157,17 +163,17 @@ class BackupsAutomaticAndOnDemand extends pulumi.CustomResource {
     BackupsAutomaticAndOnDemandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:BackupsAutomaticAndOnDemand',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupType = registerOutput<String?>('backupType');
-    this.completedTime = registerOutput<String?>('completedTime');
+         'azure-native:dbforpostgresql:BackupsAutomaticAndOnDemand',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupType = registerOutput<String?>('backupType');
+    completedTime = registerOutput<String?>('completedTime');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

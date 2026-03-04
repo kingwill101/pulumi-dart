@@ -1,5 +1,3 @@
-library module_notifications;
-
 export 'notifications/channel_association.dart';
 export 'notifications/channel_association_args.dart';
 export 'notifications/channel_association_state.dart';

@@ -159,22 +159,31 @@ import 'system_data_response.dart';
 class SuppressionListAddress extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
   late final pulumi.Output<String> dataLocation;
+
   /// Email address of the recipient.
   late final pulumi.Output<String> email;
+
   /// The first name of the email recipient.
   late final pulumi.Output<String?> firstName;
+
   /// The date the address was last updated in a suppression list.
   late final pulumi.Output<String> lastModified;
+
   /// The last name of the email recipient.
   late final pulumi.Output<String?> lastName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// An optional property to provide contextual notes or a description for an address.
   late final pulumi.Output<String?> notes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,20 +196,20 @@ class SuppressionListAddress extends pulumi.CustomResource {
     SuppressionListAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:communication:SuppressionListAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataLocation = registerOutput<String>('dataLocation');
-    this.email = registerOutput<String>('email');
-    this.firstName = registerOutput<String?>('firstName');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.lastName = registerOutput<String?>('lastName');
+         'azure-native:communication:SuppressionListAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataLocation = registerOutput<String>('dataLocation');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String?>('firstName');
+    lastModified = registerOutput<String>('lastModified');
+    lastName = registerOutput<String?>('lastName');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    notes = registerOutput<String?>('notes');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -8,20 +8,17 @@ class AiFeatureGroupBigQueryBigQuerySource {
 
   /// Creates a new [AiFeatureGroupBigQueryBigQuerySource].
   /// [inputUri] BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
-  AiFeatureGroupBigQueryBigQuerySource({
-    required this.inputUri,
-  });
+  AiFeatureGroupBigQueryBigQuerySource({required this.inputUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inputUri': inputUri,
-    };
+    return <String, dynamic>{'inputUri': inputUri};
   }
 
-  factory AiFeatureGroupBigQueryBigQuerySource.fromMap(Map<String, dynamic> map) {
+  factory AiFeatureGroupBigQueryBigQuerySource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiFeatureGroupBigQueryBigQuerySource(
-      inputUri: (map['inputUri'] as String).input(),
+      inputUri: pulumi.Input.fromValue(map['inputUri'] as String),
     );
   }
 }
-

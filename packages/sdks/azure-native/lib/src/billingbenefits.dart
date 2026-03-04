@@ -1,5 +1,3 @@
-library module_billingbenefits;
-
 export 'billingbenefits/apply_discount_on.dart';
 export 'billingbenefits/automatic_shortfall_suppress_reason.dart';
 export 'billingbenefits/automatic_shortfall_suppress_reason_response.dart';

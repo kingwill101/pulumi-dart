@@ -6,17 +6,23 @@ import 'get_volume_group_oracle_volume.dart';
 /// Result data returned by getVolumeGroupOracle.
 class GetVolumeGroupOracleResult {
   final String accountName;
+
   /// The application identifier.
   final String applicationIdentifier;
+
   /// Volume group description.
   final String groupDescription;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Application Volume Group exists.
   final String location;
+
   /// The name of this volume.
   final String name;
   final String resourceGroupName;
+
   /// A `volume` block as defined below.
   final List<GetVolumeGroupOracleVolume> volumes;
 
@@ -49,7 +55,11 @@ class GetVolumeGroupOracleResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'volumes': pulumi.Input.encodeList<GetVolumeGroupOracleVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes':
+          pulumi.Input.encodeList<
+            GetVolumeGroupOracleVolume,
+            Map<String, dynamic>
+          >(volumes, (value) => value.toMap()),
     };
   }
 
@@ -62,8 +72,12 @@ class GetVolumeGroupOracleResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      volumes: pulumi.Input.decodeList<GetVolumeGroupOracleVolume>(map['volumes'], (value) => GetVolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())),
+      volumes: pulumi.Input.decodeList<GetVolumeGroupOracleVolume>(
+        map['volumes']!,
+        (value) => GetVolumeGroupOracleVolume.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

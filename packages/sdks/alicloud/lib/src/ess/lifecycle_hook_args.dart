@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LifecycleHookArgs {
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
   final pulumi.Input<String>? defaultResult;
+
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
   final pulumi.Input<int>? heartbeatTimeout;
+
   /// Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
   final pulumi.Input<String> lifecycleTransition;
+
   /// The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
   final pulumi.Input<String>? name;
+
   /// The Arn of notification target.
   final pulumi.Input<String>? notificationArn;
+
   /// Additional information that you want to include when Auto Scaling sends a message to the notification target.
   final pulumi.Input<String>? notificationMetadata;
+
   /// The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
   final pulumi.Input<String> scalingGroupId;
 
@@ -54,14 +60,35 @@ class LifecycleHookArgs {
 
   factory LifecycleHookArgs.fromMap(Map<String, dynamic> map) {
     return LifecycleHookArgs(
-      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult']! as String).input(),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout']! as int).input(),
-      lifecycleTransition: (map['lifecycleTransition'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn']! as String).input(),
-      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata']! as String).input(),
-      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      defaultResult: (() {
+        final guardedValue = map['defaultResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      heartbeatTimeout: (() {
+        final guardedValue = map['heartbeatTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lifecycleTransition: pulumi.Input.fromValue(
+        map['lifecycleTransition'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationArn: (() {
+        final guardedValue = map['notificationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationMetadata: (() {
+        final guardedValue = map['notificationMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
     );
   }
 }
-

@@ -114,8 +114,10 @@ import 'default_credit_specification_timeouts.dart';
 class DefaultCreditSpecification extends pulumi.CustomResource {
   /// Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.
   late final pulumi.Output<String> cpuCredits;
+
   /// Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
   late final pulumi.Output<String> instanceFamily;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<DefaultCreditSpecificationTimeouts?> timeouts;
@@ -129,15 +131,15 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
     DefaultCreditSpecificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cpuCredits = registerOutput<String>('cpuCredits');
-    this.instanceFamily = registerOutput<String>('instanceFamily');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
+         'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cpuCredits = registerOutput<String>('cpuCredits');
+    instanceFamily = registerOutput<String>('instanceFamily');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
   }
 
   /// Gets an existing [DefaultCreditSpecification] resource's state with the given [name] and [id].
@@ -158,14 +160,14 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cpuCredits = registerOutput<String>('cpuCredits');
-    this.instanceFamily = registerOutput<String>('instanceFamily');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
+         'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cpuCredits = registerOutput<String>('cpuCredits');
+    instanceFamily = registerOutput<String>('instanceFamily');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
   }
 }

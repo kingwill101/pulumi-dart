@@ -9,20 +9,19 @@ class IotMappingPropertiesResponse {
 
   /// Creates a new [IotMappingPropertiesResponse].
   /// [content] The mapping.
-  IotMappingPropertiesResponse({
-    this.content,
-  });
+  IotMappingPropertiesResponse({this.content});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': ?content,
-    };
+    return <String, dynamic>{'content': ?content};
   }
 
   factory IotMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IotMappingPropertiesResponse(
-      content: map['content'] == null ? null : (map['content']!).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

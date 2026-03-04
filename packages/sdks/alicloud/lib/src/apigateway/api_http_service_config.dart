@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiHttpServiceConfig {
   /// The address of backend service.
   final pulumi.Input<String> address;
+
   /// The name of aone.
   final pulumi.Input<String>? aoneName;
+
   /// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
   final pulumi.Input<String>? contentTypeCategory;
+
   /// The content type value of backend service.
   final pulumi.Input<String>? contentTypeValue;
+
   /// The http method of backend service.
   final pulumi.Input<String> method;
+
   /// The path of backend service.
   final pulumi.Input<String> path;
+
   /// Backend service time-out time; unit: millisecond.
   final pulumi.Input<int> timeout;
 
@@ -50,14 +56,25 @@ class ApiHttpServiceConfig {
 
   factory ApiHttpServiceConfig.fromMap(Map<String, dynamic> map) {
     return ApiHttpServiceConfig(
-      address: (map['address'] as String).input(),
-      aoneName: map['aoneName'] == null ? null : (map['aoneName']! as String).input(),
-      contentTypeCategory: map['contentTypeCategory'] == null ? null : (map['contentTypeCategory']! as String).input(),
-      contentTypeValue: map['contentTypeValue'] == null ? null : (map['contentTypeValue']! as String).input(),
-      method: (map['method'] as String).input(),
-      path: (map['path'] as String).input(),
-      timeout: (map['timeout'] as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      aoneName: (() {
+        final guardedValue = map['aoneName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentTypeCategory: (() {
+        final guardedValue = map['contentTypeCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentTypeValue: (() {
+        final guardedValue = map['contentTypeValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      timeout: pulumi.Input.fromValue(map['timeout'] as int),
     );
   }
 }
-

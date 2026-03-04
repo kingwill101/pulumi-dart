@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BanditPolicy {
   /// Number of intervals by which to delay the first evaluation.
   final pulumi.Input<int>? delayEvaluation;
+
   /// Interval (number of runs) between policy evaluations.
   final pulumi.Input<int>? evaluationInterval;
+
   /// Expected value is 'Bandit'.
   final pulumi.Input<String> policyType;
+
   /// Absolute distance allowed from the best performing run.
   final pulumi.Input<double>? slackAmount;
+
   /// Ratio of the allowed distance from the best performing run.
   final pulumi.Input<double>? slackFactor;
 
@@ -41,12 +45,27 @@ class BanditPolicy {
 
   factory BanditPolicy.fromMap(Map<String, dynamic> map) {
     return BanditPolicy(
-      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation']! as int).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as int).input(),
-      policyType: (map['policyType'] as String).input(),
-      slackAmount: map['slackAmount'] == null ? null : (map['slackAmount']! as double).input(),
-      slackFactor: map['slackFactor'] == null ? null : (map['slackFactor']! as double).input(),
+      delayEvaluation: (() {
+        final guardedValue = map['delayEvaluation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      evaluationInterval: (() {
+        final guardedValue = map['evaluationInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
+      slackAmount: (() {
+        final guardedValue = map['slackAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      slackFactor: (() {
+        final guardedValue = map['slackFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

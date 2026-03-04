@@ -7,10 +7,13 @@ import 'schema_map_response.dart';
 class AzureMonitorWorkspaceLogsApiConfigResponse {
   /// Data collection endpoint ingestion url.
   final pulumi.Input<String> dataCollectionEndpointUrl;
+
   /// Data Collection Rule (DCR) immutable id.
   final pulumi.Input<String> dataCollectionRule;
+
   /// The schema mapping for incoming data.
   final pulumi.Input<SchemaMapResponse> schema;
+
   /// Stream name in destination. Azure Monitor stream is related to the destination table.
   final pulumi.Input<String> stream;
 
@@ -30,18 +33,31 @@ class AzureMonitorWorkspaceLogsApiConfigResponse {
     return <String, dynamic>{
       'dataCollectionEndpointUrl': dataCollectionEndpointUrl,
       'dataCollectionRule': dataCollectionRule,
-      'schema': pulumi.Input.mapInputValue<SchemaMapResponse, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'schema':
+          pulumi.Input.mapInputValue<SchemaMapResponse, Map<String, dynamic>>(
+            schema,
+            (value) => value.toMap(),
+          ),
       'stream': stream,
     };
   }
 
-  factory AzureMonitorWorkspaceLogsApiConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureMonitorWorkspaceLogsApiConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureMonitorWorkspaceLogsApiConfigResponse(
-      dataCollectionEndpointUrl: (map['dataCollectionEndpointUrl'] as String).input(),
-      dataCollectionRule: (map['dataCollectionRule'] as String).input(),
-      schema: (SchemaMapResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      stream: (map['stream'] as String).input(),
+      dataCollectionEndpointUrl: pulumi.Input.fromValue(
+        map['dataCollectionEndpointUrl'] as String,
+      ),
+      dataCollectionRule: pulumi.Input.fromValue(
+        map['dataCollectionRule'] as String,
+      ),
+      schema: pulumi.Input.fromValue(
+        SchemaMapResponse.fromMap(
+          (map['schema']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      stream: pulumi.Input.fromValue(map['stream'] as String),
     );
   }
 }
-

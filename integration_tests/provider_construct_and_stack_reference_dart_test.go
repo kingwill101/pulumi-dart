@@ -22,6 +22,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// Legacy fixture directory name retained for parity with upstream layout.
+const providerProgramDir = "dart"
+
 func dartAuthoredProviderPath(t *testing.T) string {
 	t.Helper()
 
@@ -36,6 +39,12 @@ func providerAuthoringDependency(t *testing.T) integration.LocalDependency {
 	return integration.LocalDependency{
 		Package: "testprovider",
 		Path:    dartAuthoredProviderPath(t),
+	}
+}
+
+func providerAuthoringConfig() map[string]string {
+	return map[string]string{
+		"testprovider:region": "us-east-1",
 	}
 }
 
@@ -55,7 +64,7 @@ func TestProviderCallDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:   filepath.Join(testDir, "dotnet"),
+		Dir:   filepath.Join(testDir, providerProgramDir),
 		Env:   []string{"TEST_VALUE=HelloWorld"},
 		Quick: true,
 	})
@@ -70,7 +79,7 @@ func TestProviderCallInvalidArgumentDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:           filepath.Join(testDir, "dotnet"),
+		Dir:           filepath.Join(testDir, providerProgramDir),
 		Env:           []string{"TEST_VALUE="},
 		ExpectFailure: true,
 		Quick:         true,
@@ -100,7 +109,7 @@ func TestProviderConstructDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:   filepath.Join(testDir, "dotnet"),
+		Dir:   filepath.Join(testDir, providerProgramDir),
 		Quick: true,
 	})
 }
@@ -114,7 +123,7 @@ func TestProviderConstructDependenciesDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:   filepath.Join(testDir, "dotnet"),
+		Dir:   filepath.Join(testDir, providerProgramDir),
 		Quick: true,
 	})
 }
@@ -128,7 +137,7 @@ func TestProviderConstructUnknownDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:   filepath.Join(testDir, "dotnet"),
+		Dir:   filepath.Join(testDir, providerProgramDir),
 		Quick: true,
 	})
 }
@@ -142,7 +151,7 @@ func TestProviderConstructResourceRefDart(t *testing.T) {
 				Path:    testProviderPath(),
 			},
 		},
-		Dir:   filepath.Join(testDir, "dotnet"),
+		Dir:   filepath.Join(testDir, providerProgramDir),
 		Quick: true,
 	})
 }
@@ -151,7 +160,8 @@ func TestProviderCallDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_call"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Env:            []string{"TEST_VALUE=HelloWorld"},
 		Quick:          true,
 	})
@@ -161,7 +171,8 @@ func TestProviderCallInvalidArgumentDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_call"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Env:            []string{"TEST_VALUE="},
 		ExpectFailure:  true,
 		Quick:          true,
@@ -173,6 +184,7 @@ func TestProviderComponentHostDartAuthoredProvider(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
 		Dir:            filepath.Join(testDir, "example"),
+		Config:         providerAuthoringConfig(),
 		Quick:          true,
 	})
 }
@@ -181,7 +193,8 @@ func TestProviderConstructDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_construct"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Quick:          true,
 	})
 }
@@ -190,7 +203,8 @@ func TestProviderConstructDependenciesDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_construct_dependencies"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Quick:          true,
 	})
 }
@@ -199,7 +213,8 @@ func TestProviderConstructUnknownDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_construct_unknown"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Quick:          true,
 	})
 }
@@ -208,7 +223,8 @@ func TestProviderConstructResourceRefDartAuthoredProvider(t *testing.T) {
 	const testDir = "provider_construct_resource_ref"
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
-		Dir:            filepath.Join(testDir, "dotnet"),
+		Dir:            filepath.Join(testDir, providerProgramDir),
+		Config:         providerAuthoringConfig(),
 		Quick:          true,
 	})
 }

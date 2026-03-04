@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkFirewallFirewallArgs {
   /// Name of NetworkFirewallFirewall
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetNetworkFirewallFirewallArgs {
 
   factory GetNetworkFirewallFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFirewallFirewallArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

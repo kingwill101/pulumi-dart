@@ -7,6 +7,7 @@ import 'get_servers_server.dart';
 class GetServersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (list) List of all matching servers. See `data.hcloud_server` for schema.
   final List<GetServersServer> servers;
   final String? withSelector;
@@ -27,7 +28,11 @@ class GetServersResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'servers': pulumi.Input.encodeList<GetServersServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+      'servers':
+          pulumi.Input.encodeList<GetServersServer, Map<String, dynamic>>(
+            servers,
+            (value) => value.toMap(),
+          ),
       'withSelector': ?withSelector,
       'withStatuses': ?withStatuses,
     };
@@ -36,10 +41,21 @@ class GetServersResult {
   factory GetServersResult.fromMap(Map<String, dynamic> map) {
     return GetServersResult(
       id: map['id'] as String,
-      servers: pulumi.Input.decodeList<GetServersServer>(map['servers'], (value) => GetServersServer.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
+      servers: pulumi.Input.decodeList<GetServersServer>(
+        map['servers']!,
+        (value) =>
+            GetServersServer.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      withStatuses: (() {
+        final guardedValue = map['withStatuses'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

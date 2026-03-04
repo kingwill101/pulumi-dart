@@ -7,16 +7,17 @@ enum ClassificationMultilabelPrimaryMetrics {
   valuePrecisionScoreWeighted("PrecisionScoreWeighted"),
   valueIOU("IOU");
 
-  const ClassificationMultilabelPrimaryMetrics(this.value);
-  final String value;
+  const ClassificationMultilabelPrimaryMetrics(this.wireValue);
+  final String wireValue;
 
   static ClassificationMultilabelPrimaryMetrics fromValue(String value) {
     for (final item in ClassificationMultilabelPrimaryMetrics.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClassificationMultilabelPrimaryMetrics value: $value');
+    throw ArgumentError(
+      'Unknown ClassificationMultilabelPrimaryMetrics value: $value',
+    );
   }
 }
-

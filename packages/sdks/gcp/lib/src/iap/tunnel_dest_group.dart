@@ -178,15 +178,20 @@ import 'tunnel_dest_group_state.dart';
 class TunnelDestGroup extends pulumi.CustomResource {
   /// List of CIDRs that this group applies to.
   late final pulumi.Output<List<String>?> cidrs;
+
   /// List of FQDNs that this group applies to.
   late final pulumi.Output<List<String>?> fqdns;
+
   /// Unique tunnel destination group name.
   late final pulumi.Output<String> groupName;
+
   /// Full resource name.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the tunnel group. Must be the same as the network resources in the group.
   late final pulumi.Output<String> region;
 
@@ -199,17 +204,17 @@ class TunnelDestGroup extends pulumi.CustomResource {
     TunnelDestGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iap/tunnelDestGroup:TunnelDestGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrs = registerOutput<List<String>?>('cidrs');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.groupName = registerOutput<String>('groupName');
+         'gcp:iap/tunnelDestGroup:TunnelDestGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrs = registerOutput<List<String>?>('cidrs');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [TunnelDestGroup] resource's state with the given [name] and [id].
@@ -230,16 +235,16 @@ class TunnelDestGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iap/tunnelDestGroup:TunnelDestGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrs = registerOutput<List<String>?>('cidrs');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.groupName = registerOutput<String>('groupName');
+         'gcp:iap/tunnelDestGroup:TunnelDestGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrs = registerOutput<List<String>?>('cidrs');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 }

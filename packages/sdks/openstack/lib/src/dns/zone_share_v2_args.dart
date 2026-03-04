@@ -11,13 +11,16 @@ class ZoneShareV2Args {
   /// `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
   /// project).
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 DNS client. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new DNS zone share.
   final pulumi.Input<String>? region;
+
   /// The ID of the target project with which the
   /// DNS zone will be shared.
   final pulumi.Input<String> targetProjectId;
+
   /// The ID of the DNS zone to be shared.
   final pulumi.Input<String> zoneId;
 
@@ -44,11 +47,18 @@ class ZoneShareV2Args {
 
   factory ZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return ZoneShareV2Args(
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      targetProjectId: (map['targetProjectId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetProjectId: pulumi.Input.fromValue(map['targetProjectId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

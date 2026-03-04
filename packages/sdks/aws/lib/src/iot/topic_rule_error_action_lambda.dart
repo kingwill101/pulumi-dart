@@ -8,20 +8,15 @@ class TopicRuleErrorActionLambda {
 
   /// Creates a new [TopicRuleErrorActionLambda].
   /// [functionArn] The ARN of the Lambda function.
-  TopicRuleErrorActionLambda({
-    required this.functionArn,
-  });
+  TopicRuleErrorActionLambda({required this.functionArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'functionArn': functionArn,
-    };
+    return <String, dynamic>{'functionArn': functionArn};
   }
 
   factory TopicRuleErrorActionLambda.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionLambda(
-      functionArn: (map['functionArn'] as String).input(),
+      functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
     );
   }
 }
-

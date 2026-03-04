@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationAffinityResponse {
   /// Optional. Type of reservation to consume
   final pulumi.Input<String> consumeReservationType;
+
   /// Optional. Corresponds to the label key of reservation resource.
   final pulumi.Input<String> key;
+
   /// Optional. Corresponds to the label values of reservation resource.
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,11 @@ class ReservationAffinityResponse {
 
   factory ReservationAffinityResponse.fromMap(Map<String, dynamic> map) {
     return ReservationAffinityResponse(
-      consumeReservationType: (map['consumeReservationType'] as String).input(),
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      consumeReservationType: pulumi.Input.fromValue(
+        map['consumeReservationType'] as String,
+      ),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

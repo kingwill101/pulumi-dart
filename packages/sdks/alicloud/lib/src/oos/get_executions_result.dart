@@ -9,10 +9,13 @@ class GetExecutionsResult {
   final String? endDate;
   final String? endDateAfter;
   final String? executedBy;
+
   /// A list of OOS Executions. Each element contains the following attributes:
   final List<GetExecutionsExecution> executions;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of OOS Execution ids.
   final List<String> ids;
   final bool? includeChildExecution;
@@ -76,7 +79,11 @@ class GetExecutionsResult {
       'endDate': ?endDate,
       'endDateAfter': ?endDateAfter,
       'executedBy': ?executedBy,
-      'executions': pulumi.Input.encodeList<GetExecutionsExecution, Map<String, dynamic>>(executions, (value) => value.toMap()),
+      'executions':
+          pulumi.Input.encodeList<GetExecutionsExecution, Map<String, dynamic>>(
+            executions,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'includeChildExecution': ?includeChildExecution,
@@ -96,26 +103,94 @@ class GetExecutionsResult {
 
   factory GetExecutionsResult.fromMap(Map<String, dynamic> map) {
     return GetExecutionsResult(
-      category: map['category'] == null ? null : map['category']! as String,
-      endDate: map['endDate'] == null ? null : map['endDate']! as String,
-      endDateAfter: map['endDateAfter'] == null ? null : map['endDateAfter']! as String,
-      executedBy: map['executedBy'] == null ? null : map['executedBy']! as String,
-      executions: pulumi.Input.decodeList<GetExecutionsExecution>(map['executions'], (value) => GetExecutionsExecution.fromMap((value as Map).cast<String, dynamic>())),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      endDate: (() {
+        final guardedValue = map['endDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      endDateAfter: (() {
+        final guardedValue = map['endDateAfter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      executedBy: (() {
+        final guardedValue = map['executedBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      executions: pulumi.Input.decodeList<GetExecutionsExecution>(
+        map['executions']!,
+        (value) => GetExecutionsExecution.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeChildExecution: map['includeChildExecution'] == null ? null : map['includeChildExecution']! as bool,
-      mode: map['mode'] == null ? null : map['mode']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      parentExecutionId: map['parentExecutionId'] == null ? null : map['parentExecutionId']! as String,
-      ramRole: map['ramRole'] == null ? null : map['ramRole']! as String,
-      sortField: map['sortField'] == null ? null : map['sortField']! as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
-      startDateAfter: map['startDateAfter'] == null ? null : map['startDateAfter']! as String,
-      startDateBefore: map['startDateBefore'] == null ? null : map['startDateBefore']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      templateName: map['templateName'] == null ? null : map['templateName']! as String,
+      includeChildExecution: (() {
+        final guardedValue = map['includeChildExecution'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      parentExecutionId: (() {
+        final guardedValue = map['parentExecutionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ramRole: (() {
+        final guardedValue = map['ramRole'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortField: (() {
+        final guardedValue = map['sortField'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortOrder: (() {
+        final guardedValue = map['sortOrder'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      startDateAfter: (() {
+        final guardedValue = map['startDateAfter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      startDateBefore: (() {
+        final guardedValue = map['startDateBefore'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      templateName: (() {
+        final guardedValue = map['templateName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

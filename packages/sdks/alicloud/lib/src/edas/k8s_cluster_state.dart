@@ -10,16 +10,22 @@ class K8sClusterState {
   /// `3`: importing.
   /// `4`: deleted.
   final pulumi.Input<int>? clusterImportStatus;
+
   /// The name of the cluster that you want to create.
   final pulumi.Input<String>? clusterName;
+
   /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
   final pulumi.Input<int>? clusterType;
+
   /// The ID of the alicloud container service kubernetes cluster that you want to import.
   final pulumi.Input<String>? csClusterId;
+
   /// The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
   final pulumi.Input<String>? namespaceId;
+
   /// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   final pulumi.Input<int>? networkMode;
+
   /// The ID of the Virtual Private Cloud (VPC) for the cluster.
   final pulumi.Input<String>? vpcId;
 
@@ -55,14 +61,41 @@ class K8sClusterState {
 
   factory K8sClusterState.fromMap(Map<String, dynamic> map) {
     return K8sClusterState(
-      clusterImportStatus: map['clusterImportStatus'] == null ? null : (map['clusterImportStatus']! as int).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType']! as int).input(),
-      csClusterId: map['csClusterId'] == null ? null : (map['csClusterId']! as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      clusterImportStatus: (() {
+        final guardedValue = map['clusterImportStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterType: (() {
+        final guardedValue = map['clusterType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      csClusterId: (() {
+        final guardedValue = map['csClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkMode: (() {
+        final guardedValue = map['networkMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

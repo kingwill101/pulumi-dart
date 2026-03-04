@@ -6,16 +6,15 @@ enum CVSSIntegrityImpact {
   impactPartial("IMPACT_PARTIAL"),
   impactComplete("IMPACT_COMPLETE");
 
-  const CVSSIntegrityImpact(this.value);
-  final String value;
+  const CVSSIntegrityImpact(this.wireValue);
+  final String wireValue;
 
   static CVSSIntegrityImpact fromValue(String value) {
     for (final item in CVSSIntegrityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSIntegrityImpact value: $value');
   }
 }
-

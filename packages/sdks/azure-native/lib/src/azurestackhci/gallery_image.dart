@@ -182,36 +182,52 @@ import 'system_data_response.dart';
 class GalleryImage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
   late final pulumi.Output<String?> cloudInitDataSource;
+
   /// Storage ContainerID of the storage container to be used for gallery image
   late final pulumi.Output<String?> containerId;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The hypervisor generation of the Virtual Machine [V1, V2]
   late final pulumi.Output<String?> hyperVGeneration;
+
   /// This is the gallery image definition identifier.
   late final pulumi.Output<GalleryImageIdentifierResponse?> identifier;
+
   /// location of the image the gallery image should be created from
   late final pulumi.Output<String?> imagePath;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Operating system type that the gallery image uses [Windows, Linux]
   late final pulumi.Output<String> osType;
+
   /// Provisioning state of the gallery image.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource ID of the source virtual machine from whose OS disk the gallery image is created.
   late final pulumi.Output<String?> sourceVirtualMachineId;
+
   /// The observed state of gallery images
   late final pulumi.Output<GalleryImageStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Specifies information about the gallery image version that you want to create or update.
   late final pulumi.Output<GalleryImageVersionResponse?> version;
 
@@ -224,27 +240,29 @@ class GalleryImage extends pulumi.CustomResource {
     GalleryImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:GalleryImage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cloudInitDataSource = registerOutput<String?>('cloudInitDataSource');
-    this.containerId = registerOutput<String?>('containerId');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    this.identifier = registerOutput<GalleryImageIdentifierResponse?>('identifier');
-    this.imagePath = registerOutput<String?>('imagePath');
-    this.location = registerOutput<String>('location');
+         'azure-native:azurestackhci:GalleryImage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudInitDataSource = registerOutput<String?>('cloudInitDataSource');
+    containerId = registerOutput<String?>('containerId');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    identifier = registerOutput<GalleryImageIdentifierResponse?>('identifier');
+    imagePath = registerOutput<String?>('imagePath');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String>('osType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    this.status = registerOutput<GalleryImageStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<GalleryImageVersionResponse?>('version');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
+    status = registerOutput<GalleryImageStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<GalleryImageVersionResponse?>('version');
   }
 }

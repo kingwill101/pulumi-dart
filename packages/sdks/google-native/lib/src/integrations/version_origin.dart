@@ -7,16 +7,15 @@ enum VersionOrigin {
   applicationIpProvisioning("APPLICATION_IP_PROVISIONING"),
   testCase("TEST_CASE");
 
-  const VersionOrigin(this.value);
-  final String value;
+  const VersionOrigin(this.wireValue);
+  final String wireValue;
 
   static VersionOrigin fromValue(String value) {
     for (final item in VersionOrigin.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionOrigin value: $value');
   }
 }
-

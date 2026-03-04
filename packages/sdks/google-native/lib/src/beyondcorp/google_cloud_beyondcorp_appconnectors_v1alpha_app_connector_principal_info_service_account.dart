@@ -14,15 +14,18 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceA
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': ?email,
-    };
+    return <String, dynamic>{'email': ?email};
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

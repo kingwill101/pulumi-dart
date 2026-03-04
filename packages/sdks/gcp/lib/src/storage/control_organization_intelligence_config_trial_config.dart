@@ -9,20 +9,21 @@ class ControlOrganizationIntelligenceConfigTrialConfig {
 
   /// Creates a new [ControlOrganizationIntelligenceConfigTrialConfig].
   /// [expireTime] (Output)
-  ControlOrganizationIntelligenceConfigTrialConfig({
-    this.expireTime,
-  });
+  ControlOrganizationIntelligenceConfigTrialConfig({this.expireTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expireTime': ?expireTime,
-    };
+    return <String, dynamic>{'expireTime': ?expireTime};
   }
 
-  factory ControlOrganizationIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
+  factory ControlOrganizationIntelligenceConfigTrialConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ControlOrganizationIntelligenceConfigTrialConfig(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

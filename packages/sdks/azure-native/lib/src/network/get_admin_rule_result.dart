@@ -8,39 +8,56 @@ import 'system_data_response.dart';
 class GetAdminRuleResult {
   /// Indicates the access allowed for this particular rule
   final String access;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A description for this rule. Restricted to 140 chars.
   final String? description;
+
   /// The destination port ranges.
   final List<String>? destinationPortRanges;
+
   /// The destination address prefixes. CIDR or destination IP ranges.
   final List<AddressPrefixItemResponse>? destinations;
+
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final String direction;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String id;
+
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final String kind;
+
   /// Resource name.
   final String name;
+
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   final int priority;
+
   /// Network protocol this rule applies to.
   final String protocol;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Unique identifier for this resource.
   final String resourceGuid;
+
   /// The source port ranges.
   final List<String>? sourcePortRanges;
+
   /// The CIDR or source IP ranges.
   final List<AddressPrefixItemResponse>? sources;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -90,7 +107,14 @@ class GetAdminRuleResult {
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'destinationPortRanges': ?destinationPortRanges,
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?(() {
+        final guardedValue = destinations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AddressPrefixItemResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'direction': direction,
       'etag': etag,
       'id': id,
@@ -101,7 +125,14 @@ class GetAdminRuleResult {
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
       'sourcePortRanges': ?sourcePortRanges,
-      'sources': ?sources == null ? null : pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+      'sources': ?(() {
+        final guardedValue = sources;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AddressPrefixItemResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -111,9 +142,26 @@ class GetAdminRuleResult {
     return GetAdminRuleResult(
       access: map['access'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : (map['destinationPortRanges']! as List).cast<String>(),
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      destinationPortRanges: (() {
+        final guardedValue = map['destinationPortRanges'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AddressPrefixItemResponse>(
+          guardedValue,
+          (value) => AddressPrefixItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       direction: map['direction'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
@@ -123,11 +171,25 @@ class GetAdminRuleResult {
       protocol: map['protocol'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges']! as List).cast<String>(),
-      sources: map['sources'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      sourcePortRanges: (() {
+        final guardedValue = map['sourcePortRanges'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AddressPrefixItemResponse>(
+          guardedValue,
+          (value) => AddressPrefixItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

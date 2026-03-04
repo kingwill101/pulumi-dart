@@ -201,12 +201,12 @@ class SharedVPCHostProject extends pulumi.CustomResource {
     SharedVPCHostProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.project = registerOutput<String>('project');
+         'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [SharedVPCHostProject] resource's state with the given [name] and [id].
@@ -227,11 +227,11 @@ class SharedVPCHostProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.project = registerOutput<String>('project');
+         'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    project = registerOutput<String>('project');
   }
 }

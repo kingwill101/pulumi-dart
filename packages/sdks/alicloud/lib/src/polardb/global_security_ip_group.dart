@@ -8,7 +8,7 @@ import 'global_security_ip_group_state.dart';
 ///
 /// For information about Polardb Global Security Ip Group and how to use it, see [What is Global Security Ip Group](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateGlobalSecurityIPGroup).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -146,10 +146,12 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
   /// - The name must start with a letter and end with a letter or digit.
   /// - The name must be 2 to 120 characters in length.
   late final pulumi.Output<String> globalIpGroupName;
+
   /// The IP address in the whitelist template.
   ///
-  /// > **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+  /// &gt; **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
   late final pulumi.Output<String> globalIpList;
+
   /// The region ID of the IP whitelist template.
   late final pulumi.Output<String> regionId;
 
@@ -162,14 +164,14 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     GlobalSecurityIpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalIpGroupName = registerOutput<String>('globalIpGroupName');
-    this.globalIpList = registerOutput<String>('globalIpList');
-    this.regionId = registerOutput<String>('regionId');
+         'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalIpGroupName = registerOutput<String>('globalIpGroupName');
+    globalIpList = registerOutput<String>('globalIpList');
+    regionId = registerOutput<String>('regionId');
   }
 
   /// Gets an existing [GlobalSecurityIpGroup] resource's state with the given [name] and [id].
@@ -190,13 +192,13 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalIpGroupName = registerOutput<String>('globalIpGroupName');
-    this.globalIpList = registerOutput<String>('globalIpList');
-    this.regionId = registerOutput<String>('regionId');
+         'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalIpGroupName = registerOutput<String>('globalIpGroupName');
+    globalIpList = registerOutput<String>('globalIpList');
+    regionId = registerOutput<String>('regionId');
   }
 }

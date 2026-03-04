@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNGroupArgs {
   /// The NGroups name.
   final pulumi.Input<String> ngroupsName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetNGroupArgs].
   /// [ngroupsName] The NGroups name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNGroupArgs({
-    required this.ngroupsName,
-    required this.resourceGroupName,
-  });
+  GetNGroupArgs({required this.ngroupsName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetNGroupArgs {
 
   factory GetNGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNGroupArgs(
-      ngroupsName: (map['ngroupsName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ngroupsName: pulumi.Input.fromValue(map['ngroupsName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

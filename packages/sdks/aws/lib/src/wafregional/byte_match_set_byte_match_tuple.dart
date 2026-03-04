@@ -6,10 +6,13 @@ import 'byte_match_set_byte_match_tuple_field_to_match.dart';
 class ByteMatchSetByteMatchTuple {
   /// Settings for the ByteMatchTuple. FieldToMatch documented below.
   final pulumi.Input<ByteMatchSetByteMatchTupleFieldToMatch> fieldToMatch;
+
   /// Within the portion of a web request that you want to search.
   final pulumi.Input<String> positionalConstraint;
+
   /// The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
   final pulumi.Input<String>? targetString;
+
   /// The formatting way for web request.
   ///
   /// FieldToMatch(field_to_match) support following:
@@ -29,7 +32,11 @@ class ByteMatchSetByteMatchTuple {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldToMatch': pulumi.Input.mapInputValue<ByteMatchSetByteMatchTupleFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
+      'fieldToMatch':
+          pulumi.Input.mapInputValue<
+            ByteMatchSetByteMatchTupleFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
       'positionalConstraint': positionalConstraint,
       'targetString': ?targetString,
       'textTransformation': textTransformation,
@@ -38,11 +45,22 @@ class ByteMatchSetByteMatchTuple {
 
   factory ByteMatchSetByteMatchTuple.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetByteMatchTuple(
-      fieldToMatch: (ByteMatchSetByteMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
-      positionalConstraint: (map['positionalConstraint'] as String).input(),
-      targetString: map['targetString'] == null ? null : ((map['targetString'] as String).input()).input(),
-      textTransformation: (map['textTransformation'] as String).input(),
+      fieldToMatch: pulumi.Input.fromValue(
+        ByteMatchSetByteMatchTupleFieldToMatch.fromMap(
+          (map['fieldToMatch']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      positionalConstraint: pulumi.Input.fromValue(
+        map['positionalConstraint'] as String,
+      ),
+      targetString: (() {
+        final guardedValue = map['targetString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      textTransformation: pulumi.Input.fromValue(
+        map['textTransformation'] as String,
+      ),
     );
   }
 }
-

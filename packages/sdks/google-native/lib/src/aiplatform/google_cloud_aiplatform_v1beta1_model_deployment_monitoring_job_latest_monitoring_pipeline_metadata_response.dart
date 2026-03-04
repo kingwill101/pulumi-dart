@@ -7,6 +7,7 @@ import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse {
   /// The time that most recent monitoring pipelines that is related to this run.
   final pulumi.Input<String> runTime;
+
   /// The status of the most recent monitoring pipeline.
   final pulumi.Input<GoogleRpcStatusResponseAiplatformV1beta1> status;
 
@@ -21,15 +22,24 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPi
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'runTime': runTime,
-      'status': pulumi.Input.mapInputValue<GoogleRpcStatusResponseAiplatformV1beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            GoogleRpcStatusResponseAiplatformV1beta1,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse(
-      runTime: (map['runTime'] as String).input(),
-      status: (GoogleRpcStatusResponseAiplatformV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      runTime: pulumi.Input.fromValue(map['runTime'] as String),
+      status: pulumi.Input.fromValue(
+        GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'enterprise_user_state.dart';
 
 /// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
 ///
-/// > **NOTE:** Available since v1.90.0.
+/// &gt; **NOTE:** Available since v1.90.0.
 ///
 /// ## Example Usage
 ///
@@ -205,20 +205,28 @@ import 'enterprise_user_state.dart';
 class EnterpriseUser extends pulumi.CustomResource {
   /// Maximum number of inquiries on the day.
   late final pulumi.Output<int?> maxExecuteCount;
+
   /// Query the maximum number of rows on the day.
   late final pulumi.Output<int?> maxResultCount;
+
   /// The DingTalk number or mobile number of the user.
   late final pulumi.Output<String?> mobile;
+
   /// It has been deprecated from 1.100.0 and use `user_name` instead.
   late final pulumi.Output<String> nickName;
+
   /// The roles that the user plays.
   late final pulumi.Output<List<String>?> roleNames;
+
   /// The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
   late final pulumi.Output<String?> status;
+
   /// The tenant ID.
   late final pulumi.Output<int?> tid;
+
   /// The Alibaba Cloud unique ID (UID) of the user to add.
   late final pulumi.Output<String> uid;
+
   /// The nickname of the user.
   late final pulumi.Output<String> userName;
 
@@ -231,20 +239,20 @@ class EnterpriseUser extends pulumi.CustomResource {
     EnterpriseUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseUser:EnterpriseUser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.maxExecuteCount = registerOutput<int?>('maxExecuteCount');
-    this.maxResultCount = registerOutput<int?>('maxResultCount');
-    this.mobile = registerOutput<String?>('mobile');
-    this.nickName = registerOutput<String>('nickName');
-    this.roleNames = registerOutput<List<String>?>('roleNames');
-    this.status = registerOutput<String?>('status');
-    this.tid = registerOutput<int?>('tid');
-    this.uid = registerOutput<String>('uid');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:dms/enterpriseUser:EnterpriseUser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    maxExecuteCount = registerOutput<int?>('maxExecuteCount');
+    maxResultCount = registerOutput<int?>('maxResultCount');
+    mobile = registerOutput<String?>('mobile');
+    nickName = registerOutput<String>('nickName');
+    roleNames = registerOutput<List<String>?>('roleNames');
+    status = registerOutput<String?>('status');
+    tid = registerOutput<int?>('tid');
+    uid = registerOutput<String>('uid');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [EnterpriseUser] resource's state with the given [name] and [id].
@@ -265,19 +273,19 @@ class EnterpriseUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseUser:EnterpriseUser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.maxExecuteCount = registerOutput<int?>('maxExecuteCount');
-    this.maxResultCount = registerOutput<int?>('maxResultCount');
-    this.mobile = registerOutput<String?>('mobile');
-    this.nickName = registerOutput<String>('nickName');
-    this.roleNames = registerOutput<List<String>?>('roleNames');
-    this.status = registerOutput<String?>('status');
-    this.tid = registerOutput<int?>('tid');
-    this.uid = registerOutput<String>('uid');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:dms/enterpriseUser:EnterpriseUser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    maxExecuteCount = registerOutput<int?>('maxExecuteCount');
+    maxResultCount = registerOutput<int?>('maxResultCount');
+    mobile = registerOutput<String?>('mobile');
+    nickName = registerOutput<String>('nickName');
+    roleNames = registerOutput<List<String>?>('roleNames');
+    status = registerOutput<String?>('status');
+    tid = registerOutput<int?>('tid');
+    uid = registerOutput<String>('uid');
+    userName = registerOutput<String>('userName');
   }
 }

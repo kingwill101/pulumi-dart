@@ -3,16 +3,15 @@ enum ServicePerimeterPerimeterType {
   perimeterTypeRegular("PERIMETER_TYPE_REGULAR"),
   perimeterTypeBridge("PERIMETER_TYPE_BRIDGE");
 
-  const ServicePerimeterPerimeterType(this.value);
-  final String value;
+  const ServicePerimeterPerimeterType(this.wireValue);
+  final String wireValue;
 
   static ServicePerimeterPerimeterType fromValue(String value) {
     for (final item in ServicePerimeterPerimeterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServicePerimeterPerimeterType value: $value');
   }
 }
-

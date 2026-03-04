@@ -8,29 +8,51 @@ import 'security_posture_config_vulnerability_mode_gkehub_v1beta.dart';
 class SecurityPostureConfigGkehubV1beta {
   /// Sets which mode to use for Security Posture features.
   final pulumi.Input<SecurityPostureConfigModeGkehubV1beta>? mode;
+
   /// Sets which mode to use for vulnerability scanning.
-  final pulumi.Input<SecurityPostureConfigVulnerabilityModeGkehubV1beta>? vulnerabilityMode;
+  final pulumi.Input<SecurityPostureConfigVulnerabilityModeGkehubV1beta>?
+  vulnerabilityMode;
 
   /// Creates a new [SecurityPostureConfigGkehubV1beta].
   /// [mode] Sets which mode to use for Security Posture features.
   /// [vulnerabilityMode] Sets which mode to use for vulnerability scanning.
-  SecurityPostureConfigGkehubV1beta({
-    this.mode,
-    this.vulnerabilityMode,
-  });
+  SecurityPostureConfigGkehubV1beta({this.mode, this.vulnerabilityMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode': ?pulumi.Input.mapOptionalInputValue<SecurityPostureConfigModeGkehubV1beta, String>(mode, (value) => value.value),
-      'vulnerabilityMode': ?pulumi.Input.mapOptionalInputValue<SecurityPostureConfigVulnerabilityModeGkehubV1beta, String>(vulnerabilityMode, (value) => value.value),
+      'mode':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPostureConfigModeGkehubV1beta,
+            String
+          >(mode, (value) => value.wireValue),
+      'vulnerabilityMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPostureConfigVulnerabilityModeGkehubV1beta,
+            String
+          >(vulnerabilityMode, (value) => value.wireValue),
     };
   }
 
   factory SecurityPostureConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigGkehubV1beta(
-      mode: map['mode'] == null ? null : (SecurityPostureConfigModeGkehubV1beta.fromValue(map['mode']! as String)).input(),
-      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(map['vulnerabilityMode']! as String)).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPostureConfigModeGkehubV1beta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      vulnerabilityMode: (() {
+        final guardedValue = map['vulnerabilityMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

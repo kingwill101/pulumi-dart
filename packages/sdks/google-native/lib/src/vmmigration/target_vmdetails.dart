@@ -10,38 +10,56 @@ import 'target_vmdetails_license_type.dart';
 class TargetVMDetails {
   /// Compute instance scheduling information (if empty default is used).
   final pulumi.Input<ComputeSchedulingVmmigrationV1alpha1>? computeScheduling;
+
   /// The disk type to use in the VM.
   final pulumi.Input<TargetVMDetailsDiskType>? diskType;
+
   /// The external IP to define in the VM.
   final pulumi.Input<String>? externalIp;
+
   /// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final pulumi.Input<String>? internalIp;
+
   /// A map of labels to associate with the VM.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The license type to use in OS adaptation.
   final pulumi.Input<TargetVMDetailsLicenseType>? licenseType;
+
   /// The machine type to create the VM with.
   final pulumi.Input<String>? machineType;
+
   /// The machine type series to create the VM with.
   final pulumi.Input<String>? machineTypeSeries;
+
   /// The metadata key/value pairs to assign to the VM.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The name of the VM to create.
   final pulumi.Input<String>? name;
+
   /// The network to connect the VM to.
   final pulumi.Input<String>? network;
+
   /// List of NICs connected to this VM.
-  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>>?
+  networkInterfaces;
+
   /// A list of network tags to associate with the VM.
   final pulumi.Input<List<String>>? networkTags;
+
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
   final pulumi.Input<bool>? secureBoot;
+
   /// The service account to associate the VM with.
   final pulumi.Input<String>? serviceAccount;
+
   /// The subnetwork to connect the VM to.
   final pulumi.Input<String>? subnetwork;
+
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   final pulumi.Input<String>? targetProject;
+
   /// The zone in which to create the VM.
   final pulumi.Input<String>? zone;
 
@@ -87,18 +105,41 @@ class TargetVMDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeScheduling': ?pulumi.Input.mapOptionalInputValue<ComputeSchedulingVmmigrationV1alpha1, Map<String, dynamic>>(computeScheduling, (value) => value.toMap()),
-      'diskType': ?pulumi.Input.mapOptionalInputValue<TargetVMDetailsDiskType, String>(diskType, (value) => value.value),
+      'computeScheduling':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeSchedulingVmmigrationV1alpha1,
+            Map<String, dynamic>
+          >(computeScheduling, (value) => value.toMap()),
+      'diskType':
+          ?pulumi.Input.mapOptionalInputValue<TargetVMDetailsDiskType, String>(
+            diskType,
+            (value) => value.wireValue,
+          ),
       'externalIp': ?externalIp,
       'internalIp': ?internalIp,
       'labels': ?labels,
-      'licenseType': ?pulumi.Input.mapOptionalInputValue<TargetVMDetailsLicenseType, String>(licenseType, (value) => value.value),
+      'licenseType':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetVMDetailsLicenseType,
+            String
+          >(licenseType, (value) => value.wireValue),
       'machineType': ?machineType,
       'machineTypeSeries': ?machineTypeSeries,
       'metadata': ?metadata,
       'name': ?name,
       'network': ?network,
-      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceVmmigrationV1alpha1>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkInterfaceVmmigrationV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkInterfaceVmmigrationV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'networkTags': ?networkTags,
       'secureBoot': ?secureBoot,
       'serviceAccount': ?serviceAccount,
@@ -110,25 +151,115 @@ class TargetVMDetails {
 
   factory TargetVMDetails.fromMap(Map<String, dynamic> map) {
     return TargetVMDetails(
-      computeScheduling: map['computeScheduling'] == null ? null : (ComputeSchedulingVmmigrationV1alpha1.fromMap((map['computeScheduling']! as Map).cast<String, dynamic>())).input(),
-      diskType: map['diskType'] == null ? null : (TargetVMDetailsDiskType.fromValue(map['diskType']! as String)).input(),
-      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      licenseType: map['licenseType'] == null ? null : (TargetVMDetailsLicenseType.fromValue(map['licenseType']! as String)).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
-      machineTypeSeries: map['machineTypeSeries'] == null ? null : (map['machineTypeSeries']! as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceVmmigrationV1alpha1>(map['networkInterfaces']!, (value) => NetworkInterfaceVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkTags: map['networkTags'] == null ? null : ((map['networkTags']! as List).cast<String>()).input(),
-      secureBoot: map['secureBoot'] == null ? null : (map['secureBoot']! as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
-      targetProject: map['targetProject'] == null ? null : (map['targetProject']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      computeScheduling: (() {
+        final guardedValue = map['computeScheduling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeSchedulingVmmigrationV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetVMDetailsDiskType.fromValue(guardedValue as String),
+        );
+      })(),
+      externalIp: (() {
+        final guardedValue = map['externalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalIp: (() {
+        final guardedValue = map['internalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      licenseType: (() {
+        final guardedValue = map['licenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetVMDetailsLicenseType.fromValue(guardedValue as String),
+        );
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineTypeSeries: (() {
+        final guardedValue = map['machineTypeSeries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaces: (() {
+        final guardedValue = map['networkInterfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkInterfaceVmmigrationV1alpha1>(
+            guardedValue,
+            (value) => NetworkInterfaceVmmigrationV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      networkTags: (() {
+        final guardedValue = map['networkTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secureBoot: (() {
+        final guardedValue = map['secureBoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetProject: (() {
+        final guardedValue = map['targetProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

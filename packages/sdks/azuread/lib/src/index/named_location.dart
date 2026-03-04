@@ -6,7 +6,7 @@ import 'named_location_state.dart';
 
 /// Manages a Named Location within Azure Active Directory.
 ///
-/// > **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
+/// &gt; **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
 ///
 /// ## API Permissions
 ///
@@ -224,12 +224,15 @@ import 'named_location_state.dart';
 class NamedLocation extends pulumi.CustomResource {
   /// A `country` block as documented below, which configures a country-based named location.
   late final pulumi.Output<NamedLocationCountry?> country;
+
   /// The friendly name for this named location.
   late final pulumi.Output<String> displayName;
+
   /// An `ip` block as documented below, which configures an IP-based named location.
   ///
-  /// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+  /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
   late final pulumi.Output<NamedLocationIp?> ip;
+
   /// The object ID of the named location.
   late final pulumi.Output<String> objectId;
 
@@ -242,15 +245,15 @@ class NamedLocation extends pulumi.CustomResource {
     NamedLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/namedLocation:NamedLocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.country = registerOutput<NamedLocationCountry?>('country');
-    this.displayName = registerOutput<String>('displayName');
-    this.ip = registerOutput<NamedLocationIp?>('ip');
-    this.objectId = registerOutput<String>('objectId');
+         'azuread:index/namedLocation:NamedLocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    country = registerOutput<NamedLocationCountry?>('country');
+    displayName = registerOutput<String>('displayName');
+    ip = registerOutput<NamedLocationIp?>('ip');
+    objectId = registerOutput<String>('objectId');
   }
 
   /// Gets an existing [NamedLocation] resource's state with the given [name] and [id].
@@ -271,14 +274,14 @@ class NamedLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/namedLocation:NamedLocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.country = registerOutput<NamedLocationCountry?>('country');
-    this.displayName = registerOutput<String>('displayName');
-    this.ip = registerOutput<NamedLocationIp?>('ip');
-    this.objectId = registerOutput<String>('objectId');
+         'azuread:index/namedLocation:NamedLocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    country = registerOutput<NamedLocationCountry?>('country');
+    displayName = registerOutput<String>('displayName');
+    ip = registerOutput<NamedLocationIp?>('ip');
+    objectId = registerOutput<String>('objectId');
   }
 }

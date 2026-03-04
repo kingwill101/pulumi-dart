@@ -31,11 +31,10 @@ class GetTargetGroupStickiness {
 
   factory GetTargetGroupStickiness.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupStickiness(
-      cookieDuration: (map['cookieDuration'] as int).input(),
-      cookieName: (map['cookieName'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      type: (map['type'] as String).input(),
+      cookieDuration: pulumi.Input.fromValue(map['cookieDuration'] as int),
+      cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

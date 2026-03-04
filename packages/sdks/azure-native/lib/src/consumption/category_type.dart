@@ -2,16 +2,15 @@
 enum CategoryType {
   cost("Cost");
 
-  const CategoryType(this.value);
-  final String value;
+  const CategoryType(this.wireValue);
+  final String wireValue;
 
   static CategoryType fromValue(String value) {
     for (final item in CategoryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CategoryType value: $value');
   }
 }
-

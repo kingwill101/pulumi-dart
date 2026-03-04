@@ -7,8 +7,11 @@ import 'key_vault_last_access_status_contract_properties_response.dart';
 class KeyVaultContractPropertiesResponse {
   /// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
   final pulumi.Input<String>? identityClientId;
+
   /// Last time sync and refresh status of secret from key vault.
-  final pulumi.Input<KeyVaultLastAccessStatusContractPropertiesResponse>? lastStatus;
+  final pulumi.Input<KeyVaultLastAccessStatusContractPropertiesResponse>?
+  lastStatus;
+
   /// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
   final pulumi.Input<String>? secretIdentifier;
 
@@ -25,17 +28,36 @@ class KeyVaultContractPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'identityClientId': ?identityClientId,
-      'lastStatus': ?pulumi.Input.mapOptionalInputValue<KeyVaultLastAccessStatusContractPropertiesResponse, Map<String, dynamic>>(lastStatus, (value) => value.toMap()),
+      'lastStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultLastAccessStatusContractPropertiesResponse,
+            Map<String, dynamic>
+          >(lastStatus, (value) => value.toMap()),
       'secretIdentifier': ?secretIdentifier,
     };
   }
 
   factory KeyVaultContractPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultContractPropertiesResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
-      lastStatus: map['lastStatus'] == null ? null : (KeyVaultLastAccessStatusContractPropertiesResponse.fromMap((map['lastStatus']! as Map).cast<String, dynamic>())).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
+      identityClientId: (() {
+        final guardedValue = map['identityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastStatus: (() {
+        final guardedValue = map['lastStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultLastAccessStatusContractPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secretIdentifier: (() {
+        final guardedValue = map['secretIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

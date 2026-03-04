@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlbAttachmentArgs {
   /// The ID of the application to which you want to bind an SLB instance.
   final pulumi.Input<String> appId;
+
   /// The listening port for the bound SLB instance.
   final pulumi.Input<int>? listenerPort;
+
   /// The ID of the SLB instance that is going to be bound.
   final pulumi.Input<String> slbId;
+
   /// The IP address that is allocated to the bound SLB instance.
   final pulumi.Input<String> slbIp;
+
   /// The type of the bound SLB instance.
   final pulumi.Input<String> type;
+
   /// The ID of the virtual server (VServer) group associated with the intranet SLB instance.
   final pulumi.Input<String>? vserverGroupId;
 
@@ -49,13 +54,20 @@ class SlbAttachmentArgs {
 
   factory SlbAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SlbAttachmentArgs(
-      appId: (map['appId'] as String).input(),
-      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort']! as int).input(),
-      slbId: (map['slbId'] as String).input(),
-      slbIp: (map['slbIp'] as String).input(),
-      type: (map['type'] as String).input(),
-      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      listenerPort: (() {
+        final guardedValue = map['listenerPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      slbId: pulumi.Input.fromValue(map['slbId'] as String),
+      slbIp: pulumi.Input.fromValue(map['slbIp'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vserverGroupId: (() {
+        final guardedValue = map['vserverGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

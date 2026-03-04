@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpsecPolicy {
   /// The DH Group used in IKE Phase 1 for initial SA.
   final pulumi.Input<String> dhGroup;
+
   /// The IKE encryption algorithm (IKE phase 2).
   final pulumi.Input<String> ikeEncryption;
+
   /// The IKE integrity algorithm (IKE phase 2).
   final pulumi.Input<String> ikeIntegrity;
+
   /// The IPSec encryption algorithm (IKE phase 1).
   final pulumi.Input<String> ipsecEncryption;
+
   /// The IPSec integrity algorithm (IKE phase 1).
   final pulumi.Input<String> ipsecIntegrity;
+
   /// The Pfs Group used in IKE Phase 2 for new child SA.
   final pulumi.Input<String> pfsGroup;
+
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   final pulumi.Input<int> saDataSizeKilobytes;
+
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
   final pulumi.Input<int> saLifeTimeSeconds;
 
@@ -56,15 +63,18 @@ class IpsecPolicy {
 
   factory IpsecPolicy.fromMap(Map<String, dynamic> map) {
     return IpsecPolicy(
-      dhGroup: (map['dhGroup'] as String).input(),
-      ikeEncryption: (map['ikeEncryption'] as String).input(),
-      ikeIntegrity: (map['ikeIntegrity'] as String).input(),
-      ipsecEncryption: (map['ipsecEncryption'] as String).input(),
-      ipsecIntegrity: (map['ipsecIntegrity'] as String).input(),
-      pfsGroup: (map['pfsGroup'] as String).input(),
-      saDataSizeKilobytes: (map['saDataSizeKilobytes'] as int).input(),
-      saLifeTimeSeconds: (map['saLifeTimeSeconds'] as int).input(),
+      dhGroup: pulumi.Input.fromValue(map['dhGroup'] as String),
+      ikeEncryption: pulumi.Input.fromValue(map['ikeEncryption'] as String),
+      ikeIntegrity: pulumi.Input.fromValue(map['ikeIntegrity'] as String),
+      ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
+      ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
+      pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
+      saDataSizeKilobytes: pulumi.Input.fromValue(
+        map['saDataSizeKilobytes'] as int,
+      ),
+      saLifeTimeSeconds: pulumi.Input.fromValue(
+        map['saLifeTimeSeconds'] as int,
+      ),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupConnectivityInformationResponse {
   /// List of customer visible FQDNs.
   final pulumi.Input<List<String>>? customerVisibleFqdns;
+
   /// Group ID.
   final pulumi.Input<String> groupId;
+
   /// Internal FQDN.
   final pulumi.Input<String> internalFqdn;
+
   /// Member name.
   final pulumi.Input<String> memberName;
+
   /// PrivateLinkService ARM region.
   final pulumi.Input<String>? privateLinkServiceArmRegion;
+
   /// Redirect map ID.
   final pulumi.Input<String>? redirectMapId;
 
@@ -44,15 +49,28 @@ class GroupConnectivityInformationResponse {
     };
   }
 
-  factory GroupConnectivityInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory GroupConnectivityInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupConnectivityInformationResponse(
-      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns']! as List).cast<String>()).input(),
-      groupId: (map['groupId'] as String).input(),
-      internalFqdn: (map['internalFqdn'] as String).input(),
-      memberName: (map['memberName'] as String).input(),
-      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion']! as String).input(),
-      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId']! as String).input(),
+      customerVisibleFqdns: (() {
+        final guardedValue = map['customerVisibleFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      internalFqdn: pulumi.Input.fromValue(map['internalFqdn'] as String),
+      memberName: pulumi.Input.fromValue(map['memberName'] as String),
+      privateLinkServiceArmRegion: (() {
+        final guardedValue = map['privateLinkServiceArmRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      redirectMapId: (() {
+        final guardedValue = map['redirectMapId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

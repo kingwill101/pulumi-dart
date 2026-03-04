@@ -150,13 +150,18 @@ import 'system_data_response.dart';
 class KubernetesVersions extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Extended location pointing to the underlying infrastructure
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
-  late final pulumi.Output<KubernetesVersionProfileResponseProperties> properties;
+  late final pulumi.Output<KubernetesVersionProfileResponseProperties>
+  properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -169,16 +174,20 @@ class KubernetesVersions extends pulumi.CustomResource {
     KubernetesVersionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcontainerservice:KubernetesVersions',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
+         'azure-native:hybridcontainerservice:KubernetesVersions',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<KubernetesVersionProfileResponseProperties>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<KubernetesVersionProfileResponseProperties>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

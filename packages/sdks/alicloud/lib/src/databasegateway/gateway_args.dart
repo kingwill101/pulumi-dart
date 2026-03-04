@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayArgs {
   /// The description of Gateway.
   final pulumi.Input<String>? gatewayDesc;
+
   /// The name of the Gateway.
   final pulumi.Input<String> gatewayName;
 
   /// Creates a new [GatewayArgs].
   /// [gatewayDesc] The description of Gateway.
   /// [gatewayName] The name of the Gateway.
-  GatewayArgs({
-    this.gatewayDesc,
-    required this.gatewayName,
-  });
+  GatewayArgs({this.gatewayDesc, required this.gatewayName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc']! as String).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
+      gatewayDesc: (() {
+        final guardedValue = map['gatewayDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
     );
   }
 }
-

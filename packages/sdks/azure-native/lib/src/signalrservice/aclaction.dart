@@ -3,16 +3,15 @@ enum ACLAction {
   valueAllow("Allow"),
   valueDeny("Deny");
 
-  const ACLAction(this.value);
-  final String value;
+  const ACLAction(this.wireValue);
+  final String wireValue;
 
   static ACLAction fromValue(String value) {
     for (final item in ACLAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ACLAction value: $value');
   }
 }
-

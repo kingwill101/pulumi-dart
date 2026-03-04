@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleTemplateSecurityIncidentTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> description;
+
   /// The Microsoft Security Service from where the alert will be generated.
   final pulumi.Input<String> productFilter;
 
@@ -23,11 +24,12 @@ class GetAlertRuleTemplateSecurityIncidentTemplate {
     };
   }
 
-  factory GetAlertRuleTemplateSecurityIncidentTemplate.fromMap(Map<String, dynamic> map) {
+  factory GetAlertRuleTemplateSecurityIncidentTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAlertRuleTemplateSecurityIncidentTemplate(
-      description: (map['description'] as String).input(),
-      productFilter: (map['productFilter'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      productFilter: pulumi.Input.fromValue(map['productFilter'] as String),
     );
   }
 }
-

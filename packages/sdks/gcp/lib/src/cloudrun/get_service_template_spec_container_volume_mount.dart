@@ -6,8 +6,10 @@ class GetServiceTemplateSpecContainerVolumeMount {
   /// Path within the container at which the volume should be mounted.  Must
   /// not contain ':'.
   final pulumi.Input<String> mountPath;
+
   /// The name of the Cloud Run Service.
   final pulumi.Input<String> name;
+
   /// Path within the volume from which the container's volume should be mounted.
   final pulumi.Input<String> subPath;
 
@@ -29,12 +31,13 @@ class GetServiceTemplateSpecContainerVolumeMount {
     };
   }
 
-  factory GetServiceTemplateSpecContainerVolumeMount.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerVolumeMount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerVolumeMount(
-      mountPath: (map['mountPath'] as String).input(),
-      name: (map['name'] as String).input(),
-      subPath: (map['subPath'] as String).input(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      subPath: pulumi.Input.fromValue(map['subPath'] as String),
     );
   }
 }
-

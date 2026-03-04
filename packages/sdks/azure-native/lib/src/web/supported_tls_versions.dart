@@ -5,16 +5,15 @@ enum SupportedTlsVersions {
   value12("1.2"),
   value13("1.3");
 
-  const SupportedTlsVersions(this.value);
-  final String value;
+  const SupportedTlsVersions(this.wireValue);
+  final String wireValue;
 
   static SupportedTlsVersions fromValue(String value) {
     for (final item in SupportedTlsVersions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SupportedTlsVersions value: $value');
   }
 }
-

@@ -10,12 +10,16 @@ import 'search_index_schema.dart';
 class SearchIndexArgs {
   /// The index name of the OTS Table. If changed, a new index would be created.
   final pulumi.Input<String> indexName;
+
   /// The name of the OTS instance in which table will located.
   final pulumi.Input<String> instanceName;
+
   /// The schema of the search index. If changed, a new index would be created. See `schema` below.
   final pulumi.Input<List<SearchIndexSchema>> schemas;
+
   /// The name of the OTS table. If changed, a new table would be created.
   final pulumi.Input<String> tableName;
+
   /// The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
   /// If the retention period exceeds the TTL value, OTS automatically deletes expired data.
   final pulumi.Input<int>? timeToLive;
@@ -38,7 +42,18 @@ class SearchIndexArgs {
     return <String, dynamic>{
       'indexName': indexName,
       'instanceName': instanceName,
-      'schemas': pulumi.Input.mapInputValue<List<SearchIndexSchema>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<SearchIndexSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schemas':
+          pulumi.Input.mapInputValue<
+            List<SearchIndexSchema>,
+            List<Map<String, dynamic>>
+          >(
+            schemas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SearchIndexSchema,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tableName': tableName,
       'timeToLive': ?timeToLive,
     };
@@ -46,12 +61,21 @@ class SearchIndexArgs {
 
   factory SearchIndexArgs.fromMap(Map<String, dynamic> map) {
     return SearchIndexArgs(
-      indexName: (map['indexName'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      schemas: (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tableName: (map['tableName'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
+      indexName: pulumi.Input.fromValue(map['indexName'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      schemas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SearchIndexSchema>(
+          map['schemas']!,
+          (value) =>
+              SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
+      timeToLive: (() {
+        final guardedValue = map['timeToLive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

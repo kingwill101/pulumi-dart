@@ -3,16 +3,15 @@ enum LogGroupClass {
   iNFREQUENTACCESS("INFREQUENT_ACCESS"),
   sTANDARD("STANDARD");
 
-  const LogGroupClass(this.value);
-  final String value;
+  const LogGroupClass(this.wireValue);
+  final String wireValue;
 
   static LogGroupClass fromValue(String value) {
     for (final item in LogGroupClass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogGroupClass value: $value');
   }
 }
-

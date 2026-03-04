@@ -256,7 +256,7 @@ import 'linked_service_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2020-08-01
@@ -274,17 +274,21 @@ import 'linked_service_state.dart';
 /// $ pulumi import azure:loganalytics/linkedService:LinkedService example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.OperationalInsights/workspaces/workspace1/linkedServices/Cluster
 /// ```
 class LinkedService extends pulumi.CustomResource {
-  /// The generated name of the Linked Service. The format for this attribute is always `<workspace name>/<linked service type>`(e.g. `workspace1/Automation` or `workspace1/Cluster`)
+  /// The generated name of the Linked Service. The format for this attribute is always `&lt;workspace name&gt;/&lt;linked service type&gt;`(e.g. `workspace1/Automation` or `workspace1/Cluster`)
   late final pulumi.Output<String> name;
+
   /// The ID of the readable Resource that will be linked to the workspace. This should be used for linking to an Automation Account resource.
   late final pulumi.Output<String> readAccessId;
+
   /// The name of the resource group in which the Log Analytics Linked Service is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Log Analytics Workspace that will contain the Log Analytics Linked Service resource.
   late final pulumi.Output<String> workspaceId;
+
   /// The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   ///
-  /// > **Note:** You must define at least one of the above access resource id attributes (e.g. `read_access_id` or `write_access_id`).
+  /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `read_access_id` or `write_access_id`).
   late final pulumi.Output<String?> writeAccessId;
 
   /// Creates a new [LinkedService].
@@ -296,16 +300,16 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/linkedService:LinkedService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:loganalytics/linkedService:LinkedService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.readAccessId = registerOutput<String>('readAccessId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.writeAccessId = registerOutput<String?>('writeAccessId');
+    readAccessId = registerOutput<String>('readAccessId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    workspaceId = registerOutput<String>('workspaceId');
+    writeAccessId = registerOutput<String?>('writeAccessId');
   }
 
   /// Gets an existing [LinkedService] resource's state with the given [name] and [id].
@@ -326,15 +330,15 @@ class LinkedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/linkedService:LinkedService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:loganalytics/linkedService:LinkedService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.readAccessId = registerOutput<String>('readAccessId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.writeAccessId = registerOutput<String?>('writeAccessId');
+    readAccessId = registerOutput<String>('readAccessId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    workspaceId = registerOutput<String>('workspaceId');
+    writeAccessId = registerOutput<String?>('writeAccessId');
   }
 }

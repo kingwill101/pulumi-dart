@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateSpecVersionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Template Spec.
   final pulumi.Input<String> templateSpecName;
+
   /// The version of the Template Spec.
   final pulumi.Input<String> templateSpecVersion;
 
@@ -34,10 +36,15 @@ class GetTemplateSpecVersionArgs {
 
   factory GetTemplateSpecVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecVersionArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      templateSpecName: (map['templateSpecName'] as String).input(),
-      templateSpecVersion: (map['templateSpecVersion'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      templateSpecName: pulumi.Input.fromValue(
+        map['templateSpecName'] as String,
+      ),
+      templateSpecVersion: pulumi.Input.fromValue(
+        map['templateSpecVersion'] as String,
+      ),
     );
   }
 }
-

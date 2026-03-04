@@ -1,5 +1,3 @@
-library module_networkmanagement;
-
 export 'networkmanagement/connectivity_test.dart';
 export 'networkmanagement/connectivity_test_args.dart';
 export 'networkmanagement/connectivity_test_destination.dart';

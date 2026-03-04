@@ -41,16 +41,25 @@ class GetLaunchTemplateSecondaryInterface {
     };
   }
 
-  factory GetLaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateSecondaryInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateSecondaryInterface(
-      deleteOnTermination: (map['deleteOnTermination'] as bool).input(),
-      deviceIndex: (map['deviceIndex'] as int).input(),
-      interfaceType: (map['interfaceType'] as String).input(),
-      networkCardIndex: (map['networkCardIndex'] as int).input(),
-      privateIpAddressCount: (map['privateIpAddressCount'] as int).input(),
-      privateIpAddresses: ((map['privateIpAddresses'] as List).cast<String>()).input(),
-      secondarySubnetId: (map['secondarySubnetId'] as String).input(),
+      deleteOnTermination: pulumi.Input.fromValue(
+        map['deleteOnTermination'] as bool,
+      ),
+      deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
+      interfaceType: pulumi.Input.fromValue(map['interfaceType'] as String),
+      networkCardIndex: pulumi.Input.fromValue(map['networkCardIndex'] as int),
+      privateIpAddressCount: pulumi.Input.fromValue(
+        map['privateIpAddressCount'] as int,
+      ),
+      privateIpAddresses: pulumi.Input.fromValue(
+        (map['privateIpAddresses'] as List).cast<String>(),
+      ),
+      secondarySubnetId: pulumi.Input.fromValue(
+        map['secondarySubnetId'] as String,
+      ),
     );
   }
 }
-

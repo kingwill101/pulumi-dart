@@ -1,5 +1,3 @@
-library module_hpc;
-
 export 'hpc/cache.dart';
 export 'hpc/cache_access_policy.dart';
 export 'hpc/cache_access_policy_access_rule.dart';

@@ -8,22 +8,31 @@ import 'system_data_response.dart';
 class GetAzureBareMetalStorageInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Specifies the AzureBareMetaStorageInstance unique ID.
   final String? azureBareMetalStorageInstanceUniqueIdentifier;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The identity of Azure Bare Metal Storage Instance, if configured.
   final AzureBareMetalStorageInstanceIdentityResponse? identity;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Specifies the storage properties for the AzureBareMetalStorage instance.
   final StoragePropertiesResponse? storageProperties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -54,31 +63,56 @@ class GetAzureBareMetalStorageInstanceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'azureBareMetalStorageInstanceUniqueIdentifier': ?azureBareMetalStorageInstanceUniqueIdentifier,
+      'azureBareMetalStorageInstanceUniqueIdentifier':
+          ?azureBareMetalStorageInstanceUniqueIdentifier,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
-      'storageProperties': ?storageProperties == null ? null : storageProperties!.toMap(),
+      'storageProperties': ?storageProperties?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
     };
   }
 
-  factory GetAzureBareMetalStorageInstanceResult.fromMap(Map<String, dynamic> map) {
+  factory GetAzureBareMetalStorageInstanceResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAzureBareMetalStorageInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureBareMetalStorageInstanceUniqueIdentifier: map['azureBareMetalStorageInstanceUniqueIdentifier'] == null ? null : map['azureBareMetalStorageInstanceUniqueIdentifier']! as String,
+      azureBareMetalStorageInstanceUniqueIdentifier: (() {
+        final guardedValue =
+            map['azureBareMetalStorageInstanceUniqueIdentifier'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : AzureBareMetalStorageInstanceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return AzureBareMetalStorageInstanceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      storageProperties: map['storageProperties'] == null ? null : StoragePropertiesResponse.fromMap((map['storageProperties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      storageProperties: (() {
+        final guardedValue = map['storageProperties'];
+        if (guardedValue == null) return null;
+        return StoragePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

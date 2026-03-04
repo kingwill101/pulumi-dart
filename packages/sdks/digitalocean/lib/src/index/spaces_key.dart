@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_key_args.dart';
-import 'spaces_key_grant.dart';
 import 'spaces_key_state.dart';
 
 /// Provides a key resource for Spaces, DigitalOcean's object storage product.
@@ -347,12 +346,16 @@ import 'spaces_key_state.dart';
 class SpacesKey extends pulumi.CustomResource {
   /// The access key ID of the key
   late final pulumi.Output<String> accessKey;
+
   /// The creation time of the key
   late final pulumi.Output<String> createdAt;
+
   /// A grant for the key (documented below).
-  late final pulumi.Output<List<SpacesKeyGrant>?> grants;
+  late final pulumi.Output<List<Map<String, dynamic>>?> grants;
+
   /// The name of the key
   late final pulumi.Output<String> name;
+
   /// The access key secret of the key
   late final pulumi.Output<String> secretKey;
 
@@ -365,16 +368,16 @@ class SpacesKey extends pulumi.CustomResource {
     SpacesKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesKey:SpacesKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.grants = registerOutput<List<SpacesKeyGrant>?>('grants');
+         'digitalocean:index/spacesKey:SpacesKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    createdAt = registerOutput<String>('createdAt');
+    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
     this.name = registerOutput<String>('name');
-    this.secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey');
   }
 
   /// Gets an existing [SpacesKey] resource's state with the given [name] and [id].
@@ -395,15 +398,15 @@ class SpacesKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesKey:SpacesKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.grants = registerOutput<List<SpacesKeyGrant>?>('grants');
+         'digitalocean:index/spacesKey:SpacesKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    createdAt = registerOutput<String>('createdAt');
+    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
     this.name = registerOutput<String>('name');
-    this.secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey');
   }
 }

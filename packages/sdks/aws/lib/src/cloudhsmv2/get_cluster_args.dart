@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// ID of Cloud HSM v2 cluster.
   final pulumi.Input<String> clusterId;
+
   /// State of the cluster to be found.
   final pulumi.Input<String>? clusterState;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,11 +20,7 @@ class GetClusterArgs {
   /// [clusterId] ID of Cloud HSM v2 cluster.
   /// [clusterState] State of the cluster to be found.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetClusterArgs({
-    required this.clusterId,
-    this.clusterState,
-    this.region,
-  });
+  GetClusterArgs({required this.clusterId, this.clusterState, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      clusterState: map['clusterState'] == null ? null : ((map['clusterState'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      clusterState: (() {
+        final guardedValue = map['clusterState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

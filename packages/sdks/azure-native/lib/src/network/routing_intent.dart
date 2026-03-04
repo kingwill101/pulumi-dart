@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_intent_args.dart';
-import 'routing_policy_response.dart';
 
 /// The routing intent child resource of a Virtual hub.
 ///
@@ -217,14 +216,19 @@ import 'routing_policy_response.dart';
 class RoutingIntent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the RoutingIntent resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of routing policies.
-  late final pulumi.Output<List<RoutingPolicyResponse>?> routingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routingPolicies;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -237,16 +241,18 @@ class RoutingIntent extends pulumi.CustomResource {
     RoutingIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:RoutingIntent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:RoutingIntent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routingPolicies = registerOutput<List<RoutingPolicyResponse>?>('routingPolicies');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    routingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'routingPolicies',
+    );
+    type = registerOutput<String>('type');
   }
 }

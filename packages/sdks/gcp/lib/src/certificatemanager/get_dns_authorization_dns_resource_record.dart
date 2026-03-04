@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsAuthorizationDnsResourceRecord {
   /// Data of the DNS Resource Record.
   final pulumi.Input<String> data;
+
   /// The name of the DNS Authorization.
   final pulumi.Input<String> name;
+
   /// Type of the DNS Resource Record.
   final pulumi.Input<String> type;
 
@@ -21,19 +23,16 @@ class GetDnsAuthorizationDnsResourceRecord {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': data,
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'data': data, 'name': name, 'type': type};
   }
 
-  factory GetDnsAuthorizationDnsResourceRecord.fromMap(Map<String, dynamic> map) {
+  factory GetDnsAuthorizationDnsResourceRecord.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDnsAuthorizationDnsResourceRecord(
-      data: (map['data'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum AzureConnectionType {
   valueNone("None"),
   valueVPN("VPN");
 
-  const AzureConnectionType(this.value);
-  final String value;
+  const AzureConnectionType(this.wireValue);
+  final String wireValue;
 
   static AzureConnectionType fromValue(String value) {
     for (final item in AzureConnectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureConnectionType value: $value');
   }
 }
-

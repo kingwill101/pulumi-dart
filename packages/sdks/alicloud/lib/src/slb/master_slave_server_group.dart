@@ -1,23 +1,22 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'master_slave_server_group_args.dart';
-import 'master_slave_server_group_server.dart';
 import 'master_slave_server_group_state.dart';
 
 /// A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
 ///
-/// > **NOTE:** One ECS instance can be added into multiple master slave server groups.
+/// &gt; **NOTE:** One ECS instance can be added into multiple master slave server groups.
 ///
-/// > **NOTE:** One master slave server group can only add two ECS instances, which are master server and slave server.
+/// &gt; **NOTE:** One master slave server group can only add two ECS instances, which are master server and slave server.
 ///
-/// > **NOTE:** One master slave server group can be attached with tcp/udp listeners in one load balancer.
+/// &gt; **NOTE:** One master slave server group can be attached with tcp/udp listeners in one load balancer.
 ///
-/// > **NOTE:** One Classic and Internet load balancer, its master slave server group can add Classic and VPC ECS instances.
+/// &gt; **NOTE:** One Classic and Internet load balancer, its master slave server group can add Classic and VPC ECS instances.
 ///
-/// > **NOTE:** One Classic and Intranet load balancer, its master slave server group can only add Classic ECS instances.
+/// &gt; **NOTE:** One Classic and Intranet load balancer, its master slave server group can only add Classic ECS instances.
 ///
-/// > **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
+/// &gt; **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
 ///
-/// > **NOTE:** Available since v1.54.0+
+/// &gt; **NOTE:** Available since v1.54.0+
 ///
 /// ## Example Usage
 ///
@@ -791,12 +790,15 @@ import 'master_slave_server_group_state.dart';
 class MasterSlaveServerGroup extends pulumi.CustomResource {
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
+
   /// The Load Balancer ID which is used to launch a new master slave server group.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Name of the master slave server group.
   late final pulumi.Output<String> name;
+
   /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
-  late final pulumi.Output<List<MasterSlaveServerGroupServer>?> servers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> servers;
 
   /// Creates a new [MasterSlaveServerGroup].
   /// [name] The Pulumi resource name.
@@ -807,15 +809,17 @@ class MasterSlaveServerGroup extends pulumi.CustomResource {
     MasterSlaveServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+         'alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<MasterSlaveServerGroupServer>?>('servers');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
   }
 
   /// Gets an existing [MasterSlaveServerGroup] resource's state with the given [name] and [id].
@@ -836,14 +840,16 @@ class MasterSlaveServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+         'alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<MasterSlaveServerGroupServer>?>('servers');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
   }
 }

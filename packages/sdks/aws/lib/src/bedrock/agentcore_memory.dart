@@ -416,22 +416,30 @@ import 'agentcore_memory_timeouts.dart';
 class AgentcoreMemory extends pulumi.CustomResource {
   /// ARN of the Memory.
   late final pulumi.Output<String> arn;
+
   /// Description of the memory.
   late final pulumi.Output<String?> description;
+
   /// ARN of the KMS key used to encrypt the memory. If not provided, AWS managed encryption is used.
   late final pulumi.Output<String?> encryptionKeyArn;
+
   /// Number of days after which memory events expire. Must be a positive integer in the range of 7 to 365.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> eventExpiryDuration;
+
   /// ARN of the IAM role that the memory service assumes to perform operations. Required when using custom memory strategies with model processing.
   late final pulumi.Output<String?> memoryExecutionRoleArn;
+
   /// Name of the memory.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreMemoryTimeouts?> timeouts;
@@ -445,21 +453,21 @@ class AgentcoreMemory extends pulumi.CustomResource {
     AgentcoreMemoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreMemory:AgentcoreMemory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
-    this.eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
-    this.memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
+         'aws:bedrock/agentcoreMemory:AgentcoreMemory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts');
   }
 
   /// Gets an existing [AgentcoreMemory] resource's state with the given [name] and [id].
@@ -480,20 +488,20 @@ class AgentcoreMemory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreMemory:AgentcoreMemory',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
-    this.eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
-    this.memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
+         'aws:bedrock/agentcoreMemory:AgentcoreMemory',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts');
   }
 }

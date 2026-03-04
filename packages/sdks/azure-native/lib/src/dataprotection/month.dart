@@ -12,16 +12,15 @@ enum Month {
   valueOctober("October"),
   valueSeptember("September");
 
-  const Month(this.value);
-  final String value;
+  const Month(this.wireValue);
+  final String wireValue;
 
   static Month fromValue(String value) {
     for (final item in Month.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Month value: $value');
   }
 }
-

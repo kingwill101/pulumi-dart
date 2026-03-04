@@ -5,14 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPlan {
   /// Specifies the name of the plan from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
+
   /// Specifies the product of the plan from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
+
   /// Specifies the promotion code to use with the plan. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When `plan` is specified, legal terms must be accepted for this item on this subscription before creating the Managed Application. The `azure.marketplace.Agreement` resource or AZ CLI tool can be used to do this.
+  /// &gt; **Note:** When `plan` is specified, legal terms must be accepted for this item on this subscription before creating the Managed Application. The `azure.marketplace.Agreement` resource or AZ CLI tool can be used to do this.
   final pulumi.Input<String>? promotionCode;
+
   /// Specifies the publisher of the plan. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
+
   /// Specifies the version of the plan from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 
@@ -42,12 +46,15 @@ class ApplicationPlan {
 
   factory ApplicationPlan.fromMap(Map<String, dynamic> map) {
     return ApplicationPlan(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode']! as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      version: (map['version'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      promotionCode: (() {
+        final guardedValue = map['promotionCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

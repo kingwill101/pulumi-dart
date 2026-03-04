@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_device_group_allow_rule.dart';
 import 'security_device_group_args.dart';
-import 'security_device_group_range_rule.dart';
 import 'security_device_group_state.dart';
 
 /// Manages a Iot Security Device Group.
@@ -351,12 +350,15 @@ import 'security_device_group_state.dart';
 class SecurityDeviceGroup extends pulumi.CustomResource {
   /// an `allow_rule` blocks as defined below.
   late final pulumi.Output<SecurityDeviceGroupAllowRule?> allowRule;
+
   /// The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
+
   /// Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `range_rule` blocks as defined below.
-  late final pulumi.Output<List<SecurityDeviceGroupRangeRule>?> rangeRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rangeRules;
 
   /// Creates a new [SecurityDeviceGroup].
   /// [name] The Pulumi resource name.
@@ -367,15 +369,15 @@ class SecurityDeviceGroup extends pulumi.CustomResource {
     SecurityDeviceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.rangeRules = registerOutput<List<SecurityDeviceGroupRangeRule>?>('rangeRules');
+    rangeRules = registerOutput<List<Map<String, dynamic>>?>('rangeRules');
   }
 
   /// Gets an existing [SecurityDeviceGroup] resource's state with the given [name] and [id].
@@ -396,14 +398,14 @@ class SecurityDeviceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.rangeRules = registerOutput<List<SecurityDeviceGroupRangeRule>?>('rangeRules');
+    rangeRules = registerOutput<List<Map<String, dynamic>>?>('rangeRules');
   }
 }

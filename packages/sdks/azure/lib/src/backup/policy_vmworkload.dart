@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_vmworkload_args.dart';
-import 'policy_vmworkload_protection_policy.dart';
 import 'policy_vmworkload_settings.dart';
 import 'policy_vmworkload_state.dart';
 
@@ -362,14 +361,19 @@ import 'policy_vmworkload_state.dart';
 class PolicyVMWorkload extends pulumi.CustomResource {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `protection_policy` blocks as defined below.
-  late final pulumi.Output<List<PolicyVMWorkloadProtectionPolicy>> protectionPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> protectionPolicies;
+
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// The name of the resource group in which to create the VM Workload Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `settings` block as defined below.
   late final pulumi.Output<PolicyVMWorkloadSettings> settings;
+
   /// The VM Workload type for the Backup Policy. Possible values are `SQLDataBase` and `SAPHanaDatabase`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workloadType;
 
@@ -382,17 +386,19 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     PolicyVMWorkloadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/policyVMWorkload:PolicyVMWorkload',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:backup/policyVMWorkload:PolicyVMWorkload',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.protectionPolicies = registerOutput<List<PolicyVMWorkloadProtectionPolicy>>('protectionPolicies');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.settings = registerOutput<PolicyVMWorkloadSettings>('settings');
-    this.workloadType = registerOutput<String>('workloadType');
+    protectionPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'protectionPolicies',
+    );
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    settings = registerOutput<PolicyVMWorkloadSettings>('settings');
+    workloadType = registerOutput<String>('workloadType');
   }
 
   /// Gets an existing [PolicyVMWorkload] resource's state with the given [name] and [id].
@@ -413,16 +419,18 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/policyVMWorkload:PolicyVMWorkload',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:backup/policyVMWorkload:PolicyVMWorkload',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.protectionPolicies = registerOutput<List<PolicyVMWorkloadProtectionPolicy>>('protectionPolicies');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.settings = registerOutput<PolicyVMWorkloadSettings>('settings');
-    this.workloadType = registerOutput<String>('workloadType');
+    protectionPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'protectionPolicies',
+    );
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    settings = registerOutput<PolicyVMWorkloadSettings>('settings');
+    workloadType = registerOutput<String>('workloadType');
   }
 }

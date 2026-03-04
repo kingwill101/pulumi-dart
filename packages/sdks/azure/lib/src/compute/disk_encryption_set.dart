@@ -5,7 +5,7 @@ import 'disk_encryption_set_state.dart';
 
 /// Manages a Disk Encryption Set.
 ///
-/// > **NOTE:** At this time the Key Vault used to store the Active Key for this Disk Encryption Set must have both Soft Delete & Purge Protection enabled - which are not yet supported by this provider.
+/// &gt; **NOTE:** At this time the Key Vault used to store the Active Key for this Disk Encryption Set must have both Soft Delete & Purge Protection enabled - which are not yet supported by this provider.
 ///
 /// ## Example Usage
 ///
@@ -1228,7 +1228,7 @@ import 'disk_encryption_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -1243,35 +1243,45 @@ import 'disk_encryption_set_state.dart';
 class DiskEncryptionSet extends pulumi.CustomResource {
   /// Boolean flag to specify whether Azure Disk Encryption Set automatically rotates the encryption Key to latest version or not. Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// > **Note:** When `auto_key_rotation_enabled` is set to `true` the `key_vault_key_id` or `managed_hsm_key_id` must use the `versionless_id`.
+  /// &gt; **Note:** When `auto_key_rotation_enabled` is set to `true` the `key_vault_key_id` or `managed_hsm_key_id` must use the `versionless_id`.
   ///
-  /// > **Note:** To validate which Key Vault Key version is currently being used by the service it is recommended that you use the `azure.compute.DiskEncryptionSet` data source or run a `terraform refresh` command and check the value of the exported `key_vault_key_url` or `managed_hsm_key_id` field.
+  /// &gt; **Note:** To validate which Key Vault Key version is currently being used by the service it is recommended that you use the `azure.compute.DiskEncryptionSet` data source or run a `terraform refresh` command and check the value of the exported `key_vault_key_url` or `managed_hsm_key_id` field.
   ///
-  /// > **Note:** It may take between 10 to 20 minutes for the service to update the Key Vault Key URL once the keys have been rotated.
+  /// &gt; **Note:** It may take between 10 to 20 minutes for the service to update the Key Vault Key URL once the keys have been rotated.
   late final pulumi.Output<bool?> autoKeyRotationEnabled;
+
   /// The type of key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerKey`, `EncryptionAtRestWithPlatformAndCustomerKeys` and `ConfidentialVmEncryptedWithCustomerKey`. Defaults to `EncryptionAtRestWithCustomerKey`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> encryptionType;
+
   /// Multi-tenant application client id to access key vault in a different tenant.
   late final pulumi.Output<String?> federatedClientId;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<DiskEncryptionSetIdentity> identity;
+
   /// Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret). Exactly one of `managed_hsm_key_id`, `key_vault_key_id` must be specified.
   ///
-  /// > **Note:** Access to the KeyVault must be granted for this Disk Encryption Set, if you want to further use this Disk Encryption Set in a Managed Disk or Virtual Machine, or Virtual Machine Scale Set. For instructions, please refer to the doc of [Server side encryption of Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption).
+  /// &gt; **Note:** Access to the KeyVault must be granted for this Disk Encryption Set, if you want to further use this Disk Encryption Set in a Managed Disk or Virtual Machine, or Virtual Machine Scale Set. For instructions, please refer to the doc of [Server side encryption of Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption).
   ///
-  /// > **Note:** A KeyVault or Managed HSM using enable_rbac_authorization requires to use `azure.authorization.Assignment` to assign the role `Key Vault Crypto Service Encryption User` to this Disk Encryption Set.
+  /// &gt; **Note:** A KeyVault or Managed HSM using enable_rbac_authorization requires to use `azure.authorization.Assignment` to assign the role `Key Vault Crypto Service Encryption User` to this Disk Encryption Set.
   /// In this case, `azure.keyvault.AccessPolicy` is not needed.
   late final pulumi.Output<String?> keyVaultKeyId;
+
   /// The URL for the Key Vault Key or Key Vault Secret that is currently being used by the service.
   late final pulumi.Output<String> keyVaultKeyUrl;
+
   /// Specifies the Azure Region where the Disk Encryption Set exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Key ID of a key in a managed HSM. Exactly one of `managed_hsm_key_id`, `key_vault_key_id` must be specified.
   late final pulumi.Output<String?> managedHsmKeyId;
+
   /// The name of the Disk Encryption Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Disk Encryption Set.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1284,22 +1294,22 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     DiskEncryptionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/diskEncryptionSet:DiskEncryptionSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.identity = registerOutput<DiskEncryptionSetIdentity>('identity');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    this.keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
-    this.location = registerOutput<String>('location');
-    this.managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+         'azure:compute/diskEncryptionSet:DiskEncryptionSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
+    encryptionType = registerOutput<String?>('encryptionType');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    identity = registerOutput<DiskEncryptionSetIdentity>('identity');
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DiskEncryptionSet] resource's state with the given [name] and [id].
@@ -1320,21 +1330,21 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/diskEncryptionSet:DiskEncryptionSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.identity = registerOutput<DiskEncryptionSetIdentity>('identity');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    this.keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
-    this.location = registerOutput<String>('location');
-    this.managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+         'azure:compute/diskEncryptionSet:DiskEncryptionSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
+    encryptionType = registerOutput<String?>('encryptionType');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    identity = registerOutput<DiskEncryptionSetIdentity>('identity');
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

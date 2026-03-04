@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3ProvisionConfigScheduledAction {
   /// Policy expiration time
   final pulumi.Input<String>? endTime;
+
   /// Policy Name
   final pulumi.Input<String>? name;
+
   /// Timing Configuration
   final pulumi.Input<String>? scheduleExpression;
+
   /// Policy effective time
   final pulumi.Input<String>? startTime;
+
   /// Number of reserved target resources
   final pulumi.Input<int>? target;
+
   /// Time zone.
   final pulumi.Input<String>? timeZone;
 
@@ -45,13 +50,36 @@ class V3ProvisionConfigScheduledAction {
 
   factory V3ProvisionConfigScheduledAction.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigScheduledAction(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as int).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleExpression: (() {
+        final guardedValue = map['scheduleExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

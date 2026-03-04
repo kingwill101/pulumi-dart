@@ -15,23 +15,63 @@ class GetGradientaiKnowledgeBasesArgs {
   /// Creates a new [GetGradientaiKnowledgeBasesArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiKnowledgeBasesArgs({
-    this.filters,
-    this.sorts,
-  });
+  GetGradientaiKnowledgeBasesArgs({this.filters, this.sorts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiKnowledgeBasesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetGradientaiKnowledgeBasesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sorts': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiKnowledgeBasesSort>, List<Map<String, dynamic>>>(sorts, (value) => pulumi.Input.encodeList<GetGradientaiKnowledgeBasesSort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiKnowledgeBasesFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiKnowledgeBasesFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiKnowledgeBasesSort>,
+            List<Map<String, dynamic>>
+          >(
+            sorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiKnowledgeBasesSort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetGradientaiKnowledgeBasesArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBasesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesFilter>(map['filters']!, (value) => GetGradientaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesSort>(map['sorts']!, (value) => GetGradientaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGradientaiKnowledgeBasesFilter>(
+            guardedValue,
+            (value) => GetGradientaiKnowledgeBasesFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGradientaiKnowledgeBasesSort>(
+            guardedValue,
+            (value) => GetGradientaiKnowledgeBasesSort.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

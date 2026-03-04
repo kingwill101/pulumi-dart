@@ -6,12 +6,16 @@ import 'data_collection_rule_data_sources_log_file_settings.dart';
 class DataCollectionRuleDataSourcesLogFile {
   /// Specifies a list of file patterns where the log files are located. For example, `C:\\JavaLogs\\*.log`.
   final pulumi.Input<List<String>> filePatterns;
+
   /// The data format of the log files. Possible values are `text` and `json`.
   final pulumi.Input<String> format;
+
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// A `settings` block as defined below.
   final pulumi.Input<DataCollectionRuleDataSourcesLogFileSettings>? settings;
+
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to. Possible value should be custom stream names.
   final pulumi.Input<List<String>> streams;
 
@@ -34,19 +38,34 @@ class DataCollectionRuleDataSourcesLogFile {
       'filePatterns': filePatterns,
       'format': format,
       'name': name,
-      'settings': ?pulumi.Input.mapOptionalInputValue<DataCollectionRuleDataSourcesLogFileSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCollectionRuleDataSourcesLogFileSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
       'streams': streams,
     };
   }
 
-  factory DataCollectionRuleDataSourcesLogFile.fromMap(Map<String, dynamic> map) {
+  factory DataCollectionRuleDataSourcesLogFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataCollectionRuleDataSourcesLogFile(
-      filePatterns: ((map['filePatterns'] as List).cast<String>()).input(),
-      format: (map['format'] as String).input(),
-      name: (map['name'] as String).input(),
-      settings: map['settings'] == null ? null : (DataCollectionRuleDataSourcesLogFileSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
+      filePatterns: pulumi.Input.fromValue(
+        (map['filePatterns'] as List).cast<String>(),
+      ),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCollectionRuleDataSourcesLogFileSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
-

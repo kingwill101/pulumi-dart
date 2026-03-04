@@ -12,6 +12,7 @@ import 'bucket_transfer_acceleration_state.dart';
 class BucketTransferAccelerationOss extends pulumi.CustomResource {
   /// The name of the Bucket.
   late final pulumi.Output<String> bucket;
+
   /// Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
   late final pulumi.Output<bool?> enabled;
 
@@ -24,13 +25,13 @@ class BucketTransferAccelerationOss extends pulumi.CustomResource {
     BucketTransferAccelerationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.enabled = registerOutput<bool?>('enabled');
+         'alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    enabled = registerOutput<bool?>('enabled');
   }
 
   /// Gets an existing [BucketTransferAccelerationOss] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class BucketTransferAccelerationOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.enabled = registerOutput<bool?>('enabled');
+         'alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    enabled = registerOutput<bool?>('enabled');
   }
 }

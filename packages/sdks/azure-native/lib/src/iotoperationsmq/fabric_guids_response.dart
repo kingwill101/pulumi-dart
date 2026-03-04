@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricGuidsResponse {
   /// Fabric one lake house guid.
   final pulumi.Input<String> lakehouseGuid;
+
   /// Fabric one lake workspace guid.
   final pulumi.Input<String> workspaceGuid;
 
@@ -26,9 +27,8 @@ class FabricGuidsResponse {
 
   factory FabricGuidsResponse.fromMap(Map<String, dynamic> map) {
     return FabricGuidsResponse(
-      lakehouseGuid: (map['lakehouseGuid'] as String).input(),
-      workspaceGuid: (map['workspaceGuid'] as String).input(),
+      lakehouseGuid: pulumi.Input.fromValue(map['lakehouseGuid'] as String),
+      workspaceGuid: pulumi.Input.fromValue(map['workspaceGuid'] as String),
     );
   }
 }
-

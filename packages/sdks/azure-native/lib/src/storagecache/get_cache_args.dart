@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCacheArgs {
   /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   final pulumi.Input<String> cacheName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCacheArgs].
   /// [cacheName] Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCacheArgs({
-    required this.cacheName,
-    required this.resourceGroupName,
-  });
+  GetCacheArgs({required this.cacheName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetCacheArgs {
 
   factory GetCacheArgs.fromMap(Map<String, dynamic> map) {
     return GetCacheArgs(
-      cacheName: (map['cacheName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

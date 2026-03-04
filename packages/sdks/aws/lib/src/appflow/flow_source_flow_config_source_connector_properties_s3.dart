@@ -6,8 +6,12 @@ import 'flow_source_flow_config_source_connector_properties_s3_s3_input_format_c
 class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String> bucketPrefix;
+
   /// When you use Amazon S3 as the source, the configuration format that you provide the flow input data. See S3 Input Format Config for details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig>? s3InputFormatConfig;
+  final pulumi.Input<
+    FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig
+  >?
+  s3InputFormatConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3].
   /// [bucketName] Required.
@@ -23,16 +27,29 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
     return <String, dynamic>{
       'bucketName': bucketName,
       'bucketPrefix': bucketPrefix,
-      's3InputFormatConfig': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig, Map<String, dynamic>>(s3InputFormatConfig, (value) => value.toMap()),
+      's3InputFormatConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig,
+            Map<String, dynamic>
+          >(s3InputFormatConfig, (value) => value.toMap()),
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesS3(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: (map['bucketPrefix'] as String).input(),
-      s3InputFormatConfig: map['s3InputFormatConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap((map['s3InputFormatConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: pulumi.Input.fromValue(map['bucketPrefix'] as String),
+      s3InputFormatConfig: (() {
+        final guardedValue = map['s3InputFormatConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

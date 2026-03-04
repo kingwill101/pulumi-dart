@@ -8,32 +8,46 @@ import 'sampling_settings_response.dart';
 class GetWorkspaceDiagnosticResult {
   /// Specifies for what type of messages sampling settings should not apply.
   final String? alwaysLog;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
   final PipelineDiagnosticSettingsResponse? backend;
+
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
   final PipelineDiagnosticSettingsResponse? frontend;
+
   /// Sets correlation protocol to use for Application Insights diagnostics.
   final String? httpCorrelationProtocol;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Large Language Models diagnostic settings
   final LLMDiagnosticSettingsResponse? largeLanguageModel;
+
   /// Log the ClientIP. Default is false.
   final bool? logClientIp;
+
   /// Resource Id of a target logger.
   final String loggerId;
+
   /// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
   final bool? metrics;
+
   /// The name of the resource
   final String name;
+
   /// The format of the Operation Name for Application Insights telemetries. Default is Name.
   final String? operationNameFormat;
+
   /// Sampling settings for Diagnostic.
   final SamplingSettingsResponse? sampling;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The verbosity level applied to traces emitted by trace policies.
   final String? verbosity;
 
@@ -75,17 +89,17 @@ class GetWorkspaceDiagnosticResult {
     return <String, dynamic>{
       'alwaysLog': ?alwaysLog,
       'azureApiVersion': azureApiVersion,
-      'backend': ?backend == null ? null : backend!.toMap(),
-      'frontend': ?frontend == null ? null : frontend!.toMap(),
+      'backend': ?backend?.toMap(),
+      'frontend': ?frontend?.toMap(),
       'httpCorrelationProtocol': ?httpCorrelationProtocol,
       'id': id,
-      'largeLanguageModel': ?largeLanguageModel == null ? null : largeLanguageModel!.toMap(),
+      'largeLanguageModel': ?largeLanguageModel?.toMap(),
       'logClientIp': ?logClientIp,
       'loggerId': loggerId,
       'metrics': ?metrics,
       'name': name,
       'operationNameFormat': ?operationNameFormat,
-      'sampling': ?sampling == null ? null : sampling!.toMap(),
+      'sampling': ?sampling?.toMap(),
       'type': type,
       'verbosity': ?verbosity,
     };
@@ -93,22 +107,69 @@ class GetWorkspaceDiagnosticResult {
 
   factory GetWorkspaceDiagnosticResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceDiagnosticResult(
-      alwaysLog: map['alwaysLog'] == null ? null : map['alwaysLog']! as String,
+      alwaysLog: (() {
+        final guardedValue = map['alwaysLog'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      backend: map['backend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['backend']! as Map).cast<String, dynamic>()),
-      frontend: map['frontend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['frontend']! as Map).cast<String, dynamic>()),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : map['httpCorrelationProtocol']! as String,
+      backend: (() {
+        final guardedValue = map['backend'];
+        if (guardedValue == null) return null;
+        return PipelineDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      frontend: (() {
+        final guardedValue = map['frontend'];
+        if (guardedValue == null) return null;
+        return PipelineDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      httpCorrelationProtocol: (() {
+        final guardedValue = map['httpCorrelationProtocol'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      largeLanguageModel: map['largeLanguageModel'] == null ? null : LLMDiagnosticSettingsResponse.fromMap((map['largeLanguageModel']! as Map).cast<String, dynamic>()),
-      logClientIp: map['logClientIp'] == null ? null : map['logClientIp']! as bool,
+      largeLanguageModel: (() {
+        final guardedValue = map['largeLanguageModel'];
+        if (guardedValue == null) return null;
+        return LLMDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      logClientIp: (() {
+        final guardedValue = map['logClientIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       loggerId: map['loggerId'] as String,
-      metrics: map['metrics'] == null ? null : map['metrics']! as bool,
+      metrics: (() {
+        final guardedValue = map['metrics'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
-      operationNameFormat: map['operationNameFormat'] == null ? null : map['operationNameFormat']! as String,
-      sampling: map['sampling'] == null ? null : SamplingSettingsResponse.fromMap((map['sampling']! as Map).cast<String, dynamic>()),
+      operationNameFormat: (() {
+        final guardedValue = map['operationNameFormat'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sampling: (() {
+        final guardedValue = map['sampling'];
+        if (guardedValue == null) return null;
+        return SamplingSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
-      verbosity: map['verbosity'] == null ? null : map['verbosity']! as String,
+      verbosity: (() {
+        final guardedValue = map['verbosity'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -1,6 +1,9 @@
 name: gcr-build-image
-runtime: dart
 description: Build and push a Docker image to Google Container Registry.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
 
 template:
   config:

@@ -16,16 +16,22 @@ import 'web_app_slot_configuration_names_args.dart';
 class WebAppSlotConfigurationNames extends pulumi.CustomResource {
   /// List of application settings names.
   late final pulumi.Output<List<String>?> appSettingNames;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of external Azure storage account identifiers.
   late final pulumi.Output<List<String>?> azureStorageConfigNames;
+
   /// List of connection string names.
   late final pulumi.Output<List<String>?> connectionStringNames;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -38,17 +44,21 @@ class WebAppSlotConfigurationNames extends pulumi.CustomResource {
     WebAppSlotConfigurationNamesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppSlotConfigurationNames',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appSettingNames = registerOutput<List<String>?>('appSettingNames');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureStorageConfigNames = registerOutput<List<String>?>('azureStorageConfigNames');
-    this.connectionStringNames = registerOutput<List<String>?>('connectionStringNames');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppSlotConfigurationNames',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appSettingNames = registerOutput<List<String>?>('appSettingNames');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureStorageConfigNames = registerOutput<List<String>?>(
+      'azureStorageConfigNames',
+    );
+    connectionStringNames = registerOutput<List<String>?>(
+      'connectionStringNames',
+    );
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

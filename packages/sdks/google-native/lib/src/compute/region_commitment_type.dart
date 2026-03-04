@@ -17,16 +17,15 @@ enum RegionCommitmentType {
   memoryOptimizedM3("MEMORY_OPTIMIZED_M3"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
-  const RegionCommitmentType(this.value);
-  final String value;
+  const RegionCommitmentType(this.wireValue);
+  final String wireValue;
 
   static RegionCommitmentType fromValue(String value) {
     for (final item in RegionCommitmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionCommitmentType value: $value');
   }
 }
-

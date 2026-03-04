@@ -3,16 +3,17 @@ enum RegularPriorityAllocationStrategy {
   lowestPrice("LowestPrice"),
   prioritized("Prioritized");
 
-  const RegularPriorityAllocationStrategy(this.value);
-  final String value;
+  const RegularPriorityAllocationStrategy(this.wireValue);
+  final String wireValue;
 
   static RegularPriorityAllocationStrategy fromValue(String value) {
     for (final item in RegularPriorityAllocationStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegularPriorityAllocationStrategy value: $value');
+    throw ArgumentError(
+      'Unknown RegularPriorityAllocationStrategy value: $value',
+    );
   }
 }
-

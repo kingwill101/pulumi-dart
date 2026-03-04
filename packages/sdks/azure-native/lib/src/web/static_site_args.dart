@@ -12,43 +12,59 @@ import 'static_site_template_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_web_static_site_args_doc}
 class StaticSiteArgs {
-  /// <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
+  /// &lt;code&gt;false&lt;/code&gt; if config file is locked for this static web app; otherwise, &lt;code&gt;true&lt;/code&gt;.
   final pulumi.Input<bool>? allowConfigFileUpdates;
+
   /// The target branch in the repository.
   final pulumi.Input<String>? branch;
+
   /// Build properties to configure on the repository.
   final pulumi.Input<StaticSiteBuildProperties>? buildProperties;
+
   /// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
   final pulumi.Input<String>? enterpriseGradeCdnStatus;
+
   /// Managed service identity.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final pulumi.Input<String>? kind;
+
   /// Resource Location.
   final pulumi.Input<String>? location;
+
   /// Name of the static site to create or update.
   final pulumi.Input<String>? name;
+
   /// The provider that submitted the last deployment to the primary environment of the static site.
   final pulumi.Input<String>? provider;
+
   /// State indicating whether public traffic are allowed or not for a static web app. Allowed Values: 'Enabled', 'Disabled' or an empty string.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.
   final pulumi.Input<String>? repositoryToken;
+
   /// URL for the repository of the static site.
   final pulumi.Input<String>? repositoryUrl;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Description of a SKU for a scalable resource.
   final pulumi.Input<SkuDescription>? sku;
+
   /// State indicating whether staging environments are allowed or not allowed for a static web app.
   final pulumi.Input<StagingEnvironmentPolicy>? stagingEnvironmentPolicy;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Template options for generating a new repository.
   final pulumi.Input<StaticSiteTemplateOptions>? templateProperties;
 
   /// Creates a new [StaticSiteArgs].
-  /// [allowConfigFileUpdates] <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
+  /// [allowConfigFileUpdates] &lt;code&gt;false&lt;/code&gt; if config file is locked for this static web app; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [branch] The target branch in the repository.
   /// [buildProperties] Build properties to configure on the repository.
   /// [enterpriseGradeCdnStatus] State indicating the status of the enterprise grade CDN serving traffic to the static web app.
@@ -89,9 +105,17 @@ class StaticSiteArgs {
     return <String, dynamic>{
       'allowConfigFileUpdates': ?allowConfigFileUpdates,
       'branch': ?branch,
-      'buildProperties': ?pulumi.Input.mapOptionalInputValue<StaticSiteBuildProperties, Map<String, dynamic>>(buildProperties, (value) => value.toMap()),
+      'buildProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            StaticSiteBuildProperties,
+            Map<String, dynamic>
+          >(buildProperties, (value) => value.toMap()),
       'enterpriseGradeCdnStatus': ?enterpriseGradeCdnStatus,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'name': ?name,
@@ -100,33 +124,128 @@ class StaticSiteArgs {
       'repositoryToken': ?repositoryToken,
       'repositoryUrl': ?repositoryUrl,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<SkuDescription, Map<String, dynamic>>(sku, (value) => value.toMap()),
-      'stagingEnvironmentPolicy': ?pulumi.Input.mapOptionalInputValue<StagingEnvironmentPolicy, String>(stagingEnvironmentPolicy, (value) => value.value),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            SkuDescription,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
+      'stagingEnvironmentPolicy':
+          ?pulumi.Input.mapOptionalInputValue<StagingEnvironmentPolicy, String>(
+            stagingEnvironmentPolicy,
+            (value) => value.wireValue,
+          ),
       'tags': ?tags,
-      'templateProperties': ?pulumi.Input.mapOptionalInputValue<StaticSiteTemplateOptions, Map<String, dynamic>>(templateProperties, (value) => value.toMap()),
+      'templateProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            StaticSiteTemplateOptions,
+            Map<String, dynamic>
+          >(templateProperties, (value) => value.toMap()),
     };
   }
 
   factory StaticSiteArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteArgs(
-      allowConfigFileUpdates: map['allowConfigFileUpdates'] == null ? null : (map['allowConfigFileUpdates']! as bool).input(),
-      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
-      buildProperties: map['buildProperties'] == null ? null : (StaticSiteBuildProperties.fromMap((map['buildProperties']! as Map).cast<String, dynamic>())).input(),
-      enterpriseGradeCdnStatus: map['enterpriseGradeCdnStatus'] == null ? null : (map['enterpriseGradeCdnStatus']! as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      repositoryToken: map['repositoryToken'] == null ? null : (map['repositoryToken']! as String).input(),
-      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (SkuDescription.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      stagingEnvironmentPolicy: map['stagingEnvironmentPolicy'] == null ? null : (StagingEnvironmentPolicy.fromValue(map['stagingEnvironmentPolicy']! as String)).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      templateProperties: map['templateProperties'] == null ? null : (StaticSiteTemplateOptions.fromMap((map['templateProperties']! as Map).cast<String, dynamic>())).input(),
+      allowConfigFileUpdates: (() {
+        final guardedValue = map['allowConfigFileUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      buildProperties: (() {
+        final guardedValue = map['buildProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StaticSiteBuildProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enterpriseGradeCdnStatus: (() {
+        final guardedValue = map['enterpriseGradeCdnStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provider: (() {
+        final guardedValue = map['provider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryToken: (() {
+        final guardedValue = map['repositoryToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryUrl: (() {
+        final guardedValue = map['repositoryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SkuDescription.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      stagingEnvironmentPolicy: (() {
+        final guardedValue = map['stagingEnvironmentPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StagingEnvironmentPolicy.fromValue(guardedValue as String),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateProperties: (() {
+        final guardedValue = map['templateProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StaticSiteTemplateOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

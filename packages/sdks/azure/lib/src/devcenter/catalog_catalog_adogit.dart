@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogCatalogAdogit {
   /// The Git branch of the Dev Center Catalog.
   final pulumi.Input<String> branch;
+
   /// A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
   final pulumi.Input<String> keyVaultKeyUrl;
+
   /// The folder where the catalog items can be found inside the repository.
   final pulumi.Input<String> path;
+
   /// The Git URI of the Dev Center Catalog.
   final pulumi.Input<String> uri;
 
@@ -35,11 +38,10 @@ class CatalogCatalogAdogit {
 
   factory CatalogCatalogAdogit.fromMap(Map<String, dynamic> map) {
     return CatalogCatalogAdogit(
-      branch: (map['branch'] as String).input(),
-      keyVaultKeyUrl: (map['keyVaultKeyUrl'] as String).input(),
-      path: (map['path'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      branch: pulumi.Input.fromValue(map['branch'] as String),
+      keyVaultKeyUrl: pulumi.Input.fromValue(map['keyVaultKeyUrl'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -10,7 +10,7 @@ import 'get_tags_result.dart';
 
 /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -178,7 +178,7 @@ Future<GetDomainsResult> getDomains(
 
 /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -303,7 +303,7 @@ Future<GetMailAddressesResult> getMailAddresses(
 
 /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.125.0+.
+/// &gt; **NOTE:** Available in v1.125.0+.
 ///
 /// ## Example Usage
 ///
@@ -434,7 +434,7 @@ Future<GetReceiversResult> getReceivers(
 
 /// This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///

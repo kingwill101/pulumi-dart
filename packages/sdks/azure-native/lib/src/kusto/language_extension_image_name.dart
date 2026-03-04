@@ -8,16 +8,15 @@ enum LanguageExtensionImageName {
   valuePython3117("Python3_11_7"),
   valuePython3117DL("Python3_11_7_DL");
 
-  const LanguageExtensionImageName(this.value);
-  final String value;
+  const LanguageExtensionImageName(this.wireValue);
+  final String wireValue;
 
   static LanguageExtensionImageName fromValue(String value) {
     for (final item in LanguageExtensionImageName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LanguageExtensionImageName value: $value');
   }
 }
-

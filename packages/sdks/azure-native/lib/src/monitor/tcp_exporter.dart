@@ -9,20 +9,13 @@ class TcpExporter {
 
   /// Creates a new [TcpExporter].
   /// [url] TCP url to export.
-  TcpExporter({
-    required this.url,
-  });
+  TcpExporter({required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-    };
+    return <String, dynamic>{'url': url};
   }
 
   factory TcpExporter.fromMap(Map<String, dynamic> map) {
-    return TcpExporter(
-      url: (map['url'] as String).input(),
-    );
+    return TcpExporter(url: pulumi.Input.fromValue(map['url'] as String));
   }
 }
-

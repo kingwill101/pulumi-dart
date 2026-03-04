@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StageDetailsResponse {
   /// Display name of the resource stage.
   final pulumi.Input<String> displayName;
+
   /// Stage name.
   final pulumi.Input<String> stageName;
+
   /// Stage status.
   final pulumi.Input<String> stageStatus;
+
   /// Stage start time.
   final pulumi.Input<String> startTime;
 
@@ -36,11 +39,10 @@ class StageDetailsResponse {
 
   factory StageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return StageDetailsResponse(
-      displayName: (map['displayName'] as String).input(),
-      stageName: (map['stageName'] as String).input(),
-      stageStatus: (map['stageStatus'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      stageName: pulumi.Input.fromValue(map['stageName'] as String),
+      stageStatus: pulumi.Input.fromValue(map['stageStatus'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

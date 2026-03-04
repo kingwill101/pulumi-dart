@@ -8,20 +8,19 @@ class VpnConnectionDetailCloudRouter {
 
   /// Creates a new [VpnConnectionDetailCloudRouter].
   /// [name] The resource name of VPN connection
-  VpnConnectionDetailCloudRouter({
-    this.name,
-  });
+  VpnConnectionDetailCloudRouter({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory VpnConnectionDetailCloudRouter.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetailCloudRouter(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

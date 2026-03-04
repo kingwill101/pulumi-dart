@@ -4,16 +4,15 @@ enum AddressAddressTypeComputeV1 {
   internal("INTERNAL"),
   unspecifiedType("UNSPECIFIED_TYPE");
 
-  const AddressAddressTypeComputeV1(this.value);
-  final String value;
+  const AddressAddressTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static AddressAddressTypeComputeV1 fromValue(String value) {
     for (final item in AddressAddressTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressAddressTypeComputeV1 value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum DataConnectionKind {
   valueIotHub("IotHub"),
   valueCosmosDb("CosmosDb");
 
-  const DataConnectionKind(this.value);
-  final String value;
+  const DataConnectionKind(this.wireValue);
+  final String wireValue;
 
   static DataConnectionKind fromValue(String value) {
     for (final item in DataConnectionKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataConnectionKind value: $value');
   }
 }
-

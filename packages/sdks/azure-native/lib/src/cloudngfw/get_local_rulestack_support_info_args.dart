@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocalRulestackSupportInfoArgs {
   /// email address on behalf of which this API called
   final pulumi.Input<String>? email;
+
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetLocalRulestackSupportInfoArgs {
 
   factory GetLocalRulestackSupportInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackSupportInfoArgs(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      localRulestackName: (map['localRulestackName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localRulestackName: pulumi.Input.fromValue(
+        map['localRulestackName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

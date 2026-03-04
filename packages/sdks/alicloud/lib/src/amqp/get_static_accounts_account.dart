@@ -5,23 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticAccountsAccount {
   /// Access key.
   final pulumi.Input<String> accessKey;
+
   /// Create time stamp. Unix timestamp, to millisecond level.
   final pulumi.Input<String> createTime;
-  /// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+
+  /// The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
   final pulumi.Input<String> id;
+
   /// InstanceId
   final pulumi.Input<String> instanceId;
+
   /// The ID of the user's primary account.
   final pulumi.Input<String> masterUid;
+
   /// Static password.
   final pulumi.Input<String> password;
+
   /// Static username.
   final pulumi.Input<String> userName;
 
   /// Creates a new [GetStaticAccountsAccount].
   /// [accessKey] Access key.
   /// [createTime] Create time stamp. Unix timestamp, to millisecond level.
-  /// [id] The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+  /// [id] The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
   /// [instanceId] InstanceId
   /// [masterUid] The ID of the user's primary account.
   /// [password] Static password.
@@ -50,14 +56,13 @@ class GetStaticAccountsAccount {
 
   factory GetStaticAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetStaticAccountsAccount(
-      accessKey: (map['accessKey'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      masterUid: (map['masterUid'] as String).input(),
-      password: (map['password'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      accessKey: pulumi.Input.fromValue(map['accessKey'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      masterUid: pulumi.Input.fromValue(map['masterUid'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

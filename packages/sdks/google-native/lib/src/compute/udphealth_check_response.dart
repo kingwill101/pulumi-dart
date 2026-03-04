@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UDPHealthCheckResponse {
   /// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
   final pulumi.Input<int> port;
+
   /// Not supported.
   final pulumi.Input<String> portName;
+
   /// Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
   final pulumi.Input<String> request;
+
   /// The bytes to match against the beginning of the response data. It is an error if this is empty. The response data can only be ASCII.
   final pulumi.Input<String> response;
 
@@ -35,11 +38,10 @@ class UDPHealthCheckResponse {
 
   factory UDPHealthCheckResponse.fromMap(Map<String, dynamic> map) {
     return UDPHealthCheckResponse(
-      port: (map['port'] as int).input(),
-      portName: (map['portName'] as String).input(),
-      request: (map['request'] as String).input(),
-      response: (map['response'] as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      portName: pulumi.Input.fromValue(map['portName'] as String),
+      request: pulumi.Input.fromValue(map['request'] as String),
+      response: pulumi.Input.fromValue(map['response'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'service_template_spec_container_env_value_from.dart';
 class ServiceTemplateSpecContainerEnv {
   /// Name of the environment variable.
   final pulumi.Input<String>? name;
+
   /// Defaults to "".
   final pulumi.Input<String>? value;
+
   /// Source for the environment variable's value. Only supports secret_key_ref.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateSpecContainerEnvValueFrom>? valueFrom;
@@ -16,26 +18,41 @@ class ServiceTemplateSpecContainerEnv {
   /// [name] Name of the environment variable.
   /// [value] Defaults to "".
   /// [valueFrom] Source for the environment variable's value. Only supports secret_key_ref.
-  ServiceTemplateSpecContainerEnv({
-    this.name,
-    this.value,
-    this.valueFrom,
-  });
+  ServiceTemplateSpecContainerEnv({this.name, this.value, this.valueFrom});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'value': ?value,
-      'valueFrom': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerEnvValueFrom, Map<String, dynamic>>(valueFrom, (value) => value.toMap()),
+      'valueFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTemplateSpecContainerEnvValueFrom,
+            Map<String, dynamic>
+          >(valueFrom, (value) => value.toMap()),
     };
   }
 
   factory ServiceTemplateSpecContainerEnv.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnv(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      valueFrom: map['valueFrom'] == null ? null : (ServiceTemplateSpecContainerEnvValueFrom.fromMap((map['valueFrom']! as Map).cast<String, dynamic>())).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueFrom: (() {
+        final guardedValue = map['valueFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTemplateSpecContainerEnvValueFrom.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

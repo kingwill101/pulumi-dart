@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_resource_manager_common_types_extended_location_response.dart';
-import 'kubernetes_secret_object_mapping_response.dart';
 import 'secret_sync_args.dart';
 import 'secret_sync_status_response.dart';
 import 'system_data_response.dart';
@@ -225,30 +224,46 @@ import 'system_data_response.dart';
 class SecretSync extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The complex type of the extended location.
-  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
+  late final pulumi.Output<
+    AzureResourceManagerCommonTypesExtendedLocationResponse?
+  >
+  extendedLocation;
+
   /// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
   late final pulumi.Output<String?> forceSynchronization;
+
   /// Type specifies the type of the Kubernetes secret object, e.g. "Opaque" or"kubernetes.io/tls". The controller must have permission to create secrets of the specified type.
   late final pulumi.Output<String> kubernetesSecretType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// An array of SecretObjectData that maps secret data from the external secret provider to the Kubernetes secret. Each entry specifies the source secret in the external provider and the corresponding key in the Kubernetes secret.
-  late final pulumi.Output<List<KubernetesSecretObjectMappingResponse>> objectSecretMapping;
+  late final pulumi.Output<List<Map<String, dynamic>>> objectSecretMapping;
+
   /// Provisioning state of the SecretSync instance.
   late final pulumi.Output<String> provisioningState;
+
   /// SecretProviderClassName specifies the name of the SecretProviderClass resource, which contains the information needed to access the cloud provider secret store.
   late final pulumi.Output<String> secretProviderClassName;
+
   /// ServiceAccountName specifies the name of the service account used to access the cloud provider secret store. The audience field in the service account token must be passed as parameter in the controller configuration. The audience is used when requesting a token from the API server for the service account; the supported audiences are defined by each provider.
   late final pulumi.Output<String> serviceAccountName;
+
   /// SecretSyncStatus defines the observed state of the secret synchronization process.
   late final pulumi.Output<SecretSyncStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -261,24 +276,29 @@ class SecretSync extends pulumi.CustomResource {
     SecretSyncArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:secretsynccontroller:SecretSync',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation');
-    this.forceSynchronization = registerOutput<String?>('forceSynchronization');
-    this.kubernetesSecretType = registerOutput<String>('kubernetesSecretType');
-    this.location = registerOutput<String>('location');
+         'azure-native:secretsynccontroller:SecretSync',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation =
+        registerOutput<
+          AzureResourceManagerCommonTypesExtendedLocationResponse?
+        >('extendedLocation');
+    forceSynchronization = registerOutput<String?>('forceSynchronization');
+    kubernetesSecretType = registerOutput<String>('kubernetesSecretType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.objectSecretMapping = registerOutput<List<KubernetesSecretObjectMappingResponse>>('objectSecretMapping');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.secretProviderClassName = registerOutput<String>('secretProviderClassName');
-    this.serviceAccountName = registerOutput<String>('serviceAccountName');
-    this.status = registerOutput<SecretSyncStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    objectSecretMapping = registerOutput<List<Map<String, dynamic>>>(
+      'objectSecretMapping',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    secretProviderClassName = registerOutput<String>('secretProviderClassName');
+    serviceAccountName = registerOutput<String>('serviceAccountName');
+    status = registerOutput<SecretSyncStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

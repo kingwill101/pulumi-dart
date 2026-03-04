@@ -15,11 +15,7 @@ class GetSpokeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [spokeId] Required.
-  GetSpokeArgs({
-    required this.location,
-    this.project,
-    required this.spokeId,
-  });
+  GetSpokeArgs({required this.location, this.project, required this.spokeId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetSpokeArgs {
 
   factory GetSpokeArgs.fromMap(Map<String, dynamic> map) {
     return GetSpokeArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      spokeId: (map['spokeId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spokeId: pulumi.Input.fromValue(map['spokeId'] as String),
     );
   }
 }
-

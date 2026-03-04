@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRouteFilterRule.
 class GetRouteFilterRuleResult {
   /// The access type of the rule.
   final String access;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
   final List<String> communities;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
+
   /// The provisioning state of the route filter rule resource.
   final String provisioningState;
+
   /// The rule type of the rule.
   final String routeFilterRuleType;
 
@@ -64,12 +71,23 @@ class GetRouteFilterRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       communities: (map['communities'] as List).cast<String>(),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
       routeFilterRuleType: map['routeFilterRuleType'] as String,
     );
   }
 }
-

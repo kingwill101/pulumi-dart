@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerArgs {
   /// ID or Amazon Resource Name (ARN) of the listener
   final pulumi.Input<String> listenerIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID or Amazon Resource Name (ARN) of the service network
   final pulumi.Input<String> serviceIdentifier;
+
   /// List of tags associated with the listener.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,24 @@ class GetListenerArgs {
 
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerArgs(
-      listenerIdentifier: (map['listenerIdentifier'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serviceIdentifier: (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      listenerIdentifier: pulumi.Input.fromValue(
+        map['listenerIdentifier'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceIdentifier: pulumi.Input.fromValue(
+        map['serviceIdentifier'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

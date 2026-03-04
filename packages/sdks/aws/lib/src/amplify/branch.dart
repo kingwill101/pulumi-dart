@@ -926,52 +926,76 @@ import 'branch_state.dart';
 class Branch extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
+
   /// ARN for the branch.
   late final pulumi.Output<String> arn;
+
   /// A list of custom resources that are linked to this branch.
   late final pulumi.Output<List<String>> associatedResources;
+
   /// ARN for a backend environment that is part of an Amplify app.
   late final pulumi.Output<String?> backendEnvironmentArn;
+
   /// Basic authorization credentials for the branch.
   late final pulumi.Output<String?> basicAuthCredentials;
+
   /// Name for the branch.
   late final pulumi.Output<String> branchName;
+
   /// Custom domains for the branch.
   late final pulumi.Output<List<String>> customDomains;
+
   /// Description for the branch.
   late final pulumi.Output<String?> description;
+
   /// Destination branch if the branch is a pull request branch.
   late final pulumi.Output<String> destinationBranch;
+
   /// Display name for a branch. This is used as the default domain prefix.
   late final pulumi.Output<String> displayName;
+
   /// Enables auto building for the branch.
   late final pulumi.Output<bool?> enableAutoBuild;
+
   /// Enables basic authorization for the branch.
   late final pulumi.Output<bool?> enableBasicAuth;
+
   /// Enables notifications for the branch.
   late final pulumi.Output<bool?> enableNotification;
+
   /// Enables performance mode for the branch.
   late final pulumi.Output<bool?> enablePerformanceMode;
+
   /// Enables pull request previews for this branch.
   late final pulumi.Output<bool?> enablePullRequestPreview;
+
   /// Enables skew protection for the branch.
   late final pulumi.Output<bool?> enableSkewProtection;
+
   /// Environment variables for the branch.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
+
   /// Framework for the branch.
   late final pulumi.Output<String?> framework;
+
   /// Amplify environment name for the pull request.
   late final pulumi.Output<String?> pullRequestEnvironmentName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Source branch if the branch is a pull request branch.
   late final pulumi.Output<String> sourceBranch;
+
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
   late final pulumi.Output<String?> stage;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Content Time To Live (TTL) for the website in seconds.
   late final pulumi.Output<String?> ttl;
 
@@ -979,41 +1003,44 @@ class Branch extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Branch]. {@macro pulumi_amplify_branch_branch_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Branch(
-    String name, {
-    BranchArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:amplify/branch:Branch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.arn = registerOutput<String>('arn');
-    this.associatedResources = registerOutput<List<String>>('associatedResources');
-    this.backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
-    this.basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
-    this.branchName = registerOutput<String>('branchName');
-    this.customDomains = registerOutput<List<String>>('customDomains');
-    this.description = registerOutput<String?>('description');
-    this.destinationBranch = registerOutput<String>('destinationBranch');
-    this.displayName = registerOutput<String>('displayName');
-    this.enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
-    this.enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
-    this.enableNotification = registerOutput<bool?>('enableNotification');
-    this.enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
-    this.enablePullRequestPreview = registerOutput<bool?>('enablePullRequestPreview');
-    this.enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.framework = registerOutput<String?>('framework');
-    this.pullRequestEnvironmentName = registerOutput<String?>('pullRequestEnvironmentName');
-    this.region = registerOutput<String>('region');
-    this.sourceBranch = registerOutput<String>('sourceBranch');
-    this.stage = registerOutput<String?>('stage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<String?>('ttl');
+  Branch(String name, {BranchArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:amplify/branch:Branch',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    associatedResources = registerOutput<List<String>>('associatedResources');
+    backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    branchName = registerOutput<String>('branchName');
+    customDomains = registerOutput<List<String>>('customDomains');
+    description = registerOutput<String?>('description');
+    destinationBranch = registerOutput<String>('destinationBranch');
+    displayName = registerOutput<String>('displayName');
+    enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
+    enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    enableNotification = registerOutput<bool?>('enableNotification');
+    enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
+    enablePullRequestPreview = registerOutput<bool?>(
+      'enablePullRequestPreview',
+    );
+    enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    framework = registerOutput<String?>('framework');
+    pullRequestEnvironmentName = registerOutput<String?>(
+      'pullRequestEnvironmentName',
+    );
+    region = registerOutput<String>('region');
+    sourceBranch = registerOutput<String>('sourceBranch');
+    stage = registerOutput<String?>('stage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<String?>('ttl');
   }
 
   /// Gets an existing [Branch] resource's state with the given [name] and [id].
@@ -1034,35 +1061,41 @@ class Branch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amplify/branch:Branch',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.arn = registerOutput<String>('arn');
-    this.associatedResources = registerOutput<List<String>>('associatedResources');
-    this.backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
-    this.basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
-    this.branchName = registerOutput<String>('branchName');
-    this.customDomains = registerOutput<List<String>>('customDomains');
-    this.description = registerOutput<String?>('description');
-    this.destinationBranch = registerOutput<String>('destinationBranch');
-    this.displayName = registerOutput<String>('displayName');
-    this.enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
-    this.enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
-    this.enableNotification = registerOutput<bool?>('enableNotification');
-    this.enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
-    this.enablePullRequestPreview = registerOutput<bool?>('enablePullRequestPreview');
-    this.enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.framework = registerOutput<String?>('framework');
-    this.pullRequestEnvironmentName = registerOutput<String?>('pullRequestEnvironmentName');
-    this.region = registerOutput<String>('region');
-    this.sourceBranch = registerOutput<String>('sourceBranch');
-    this.stage = registerOutput<String?>('stage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<String?>('ttl');
+         'aws:amplify/branch:Branch',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    associatedResources = registerOutput<List<String>>('associatedResources');
+    backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    branchName = registerOutput<String>('branchName');
+    customDomains = registerOutput<List<String>>('customDomains');
+    description = registerOutput<String?>('description');
+    destinationBranch = registerOutput<String>('destinationBranch');
+    displayName = registerOutput<String>('displayName');
+    enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
+    enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    enableNotification = registerOutput<bool?>('enableNotification');
+    enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
+    enablePullRequestPreview = registerOutput<bool?>(
+      'enablePullRequestPreview',
+    );
+    enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    framework = registerOutput<String?>('framework');
+    pullRequestEnvironmentName = registerOutput<String?>(
+      'pullRequestEnvironmentName',
+    );
+    region = registerOutput<String>('region');
+    sourceBranch = registerOutput<String>('sourceBranch');
+    stage = registerOutput<String?>('stage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<String?>('ttl');
   }
 }

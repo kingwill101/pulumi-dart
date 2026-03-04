@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'outbound_rule_args.dart';
-import 'outbound_rule_frontend_ip_configuration.dart';
 import 'outbound_rule_state.dart';
 
 /// Manages a Load Balancer Outbound Rule.
 ///
-/// > **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration and a Backend Address Pool Attached.
+/// &gt; **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration and a Backend Address Pool Attached.
 ///
 /// ## Example Usage
 ///
@@ -323,7 +322,7 @@ import 'outbound_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2023-09-01
@@ -338,19 +337,27 @@ import 'outbound_rule_state.dart';
 class OutboundRule extends pulumi.CustomResource {
   /// The number of outbound ports to be used for NAT. Defaults to `1024`.
   late final pulumi.Output<int?> allocatedOutboundPorts;
+
   /// The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   late final pulumi.Output<String> backendAddressPoolId;
   late final pulumi.Output<bool> enableTcpReset;
+
   /// One or more `frontend_ip_configuration` blocks as defined below.
-  late final pulumi.Output<List<OutboundRuleFrontendIpConfiguration>?> frontendIpConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  frontendIpConfigurations;
+
   /// The timeout for the TCP idle connection Defaults to `4`.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
+
   /// The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> loadbalancerId;
+
   /// Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
   late final pulumi.Output<String> protocol;
+
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   late final pulumi.Output<bool> tcpResetEnabled;
 
@@ -363,20 +370,22 @@ class OutboundRule extends pulumi.CustomResource {
     OutboundRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/outboundRule:OutboundRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
-    this.backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    this.enableTcpReset = registerOutput<bool>('enableTcpReset');
-    this.frontendIpConfigurations = registerOutput<List<OutboundRuleFrontendIpConfiguration>?>('frontendIpConfigurations');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/outboundRule:OutboundRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendIpConfigurations',
+    );
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
   }
 
   /// Gets an existing [OutboundRule] resource's state with the given [name] and [id].
@@ -397,19 +406,21 @@ class OutboundRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/outboundRule:OutboundRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
-    this.backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    this.enableTcpReset = registerOutput<bool>('enableTcpReset');
-    this.frontendIpConfigurations = registerOutput<List<OutboundRuleFrontendIpConfiguration>?>('frontendIpConfigurations');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/outboundRule:OutboundRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendIpConfigurations',
+    );
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
   }
 }

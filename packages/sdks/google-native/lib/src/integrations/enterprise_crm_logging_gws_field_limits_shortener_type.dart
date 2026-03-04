@@ -7,16 +7,19 @@ enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType {
   shortenEmailWithHash("SHORTEN_EMAIL_WITH_HASH"),
   shortenDomain("SHORTEN_DOMAIN");
 
-  const EnterpriseCrmLoggingGwsFieldLimitsShortenerType(this.value);
-  final String value;
+  const EnterpriseCrmLoggingGwsFieldLimitsShortenerType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmLoggingGwsFieldLimitsShortenerType fromValue(String value) {
+  static EnterpriseCrmLoggingGwsFieldLimitsShortenerType fromValue(
+    String value,
+  ) {
     for (final item in EnterpriseCrmLoggingGwsFieldLimitsShortenerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsShortenerType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsFieldLimitsShortenerType value: $value',
+    );
   }
 }
-

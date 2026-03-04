@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDefaultSpaceSettingsCustomPosixUserConfig {
   /// The POSIX group ID.
   final pulumi.Input<int> gid;
+
   /// The POSIX user ID.
   final pulumi.Input<int> uid;
 
@@ -17,17 +18,15 @@ class DomainDefaultSpaceSettingsCustomPosixUserConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gid': gid,
-      'uid': uid,
-    };
+    return <String, dynamic>{'gid': gid, 'uid': uid};
   }
 
-  factory DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultSpaceSettingsCustomPosixUserConfig(
-      gid: (map['gid'] as int).input(),
-      uid: (map['uid'] as int).input(),
+      gid: pulumi.Input.fromValue(map['gid'] as int),
+      uid: pulumi.Input.fromValue(map['uid'] as int),
     );
   }
 }
-

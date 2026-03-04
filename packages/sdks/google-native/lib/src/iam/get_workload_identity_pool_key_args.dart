@@ -39,12 +39,17 @@ class GetWorkloadIdentityPoolKeyArgs {
 
   factory GetWorkloadIdentityPoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolKeyArgs(
-      keyId: (map['keyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      providerId: (map['providerId'] as String).input(),
-      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerId: pulumi.Input.fromValue(map['providerId'] as String),
+      workloadIdentityPoolId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolId'] as String,
+      ),
     );
   }
 }
-

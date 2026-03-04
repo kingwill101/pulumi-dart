@@ -502,7 +502,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2022-10-01
@@ -517,6 +517,7 @@ import 'cluster_customer_managed_key_state.dart';
 class ClusterCustomerManagedKey extends pulumi.CustomResource {
   /// The ID of the Key Vault Key to use for encryption.
   late final pulumi.Output<String> keyVaultKeyId;
+
   /// The ID of the Log Analytics Cluster. Changing this forces a new Log Analytics Cluster Customer Managed Key to be created.
   late final pulumi.Output<String> logAnalyticsClusterId;
 
@@ -529,13 +530,13 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
     ClusterCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
+         'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
   }
 
   /// Gets an existing [ClusterCustomerManagedKey] resource's state with the given [name] and [id].
@@ -556,12 +557,12 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
+         'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
   }
 }

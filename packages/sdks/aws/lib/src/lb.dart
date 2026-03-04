@@ -1,5 +1,3 @@
-library module_lb;
-
 export 'lb/functions.dart';
 export 'lb/get_hosted_zone_id_args.dart';
 export 'lb/get_hosted_zone_id_result.dart';

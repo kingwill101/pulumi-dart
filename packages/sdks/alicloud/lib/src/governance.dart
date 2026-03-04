@@ -1,5 +1,3 @@
-library module_governance;
-
 export 'governance/account.dart';
 export 'governance/account_account_tag.dart';
 export 'governance/account_args.dart';

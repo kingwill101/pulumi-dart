@@ -15,15 +15,14 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caPool': caPool,
-    };
+    return <String, dynamic>{'caPool': caPool};
   }
 
-  factory CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap(Map<String, dynamic> map) {
+  factory CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig(
-      caPool: (map['caPool'] as String).input(),
+      caPool: pulumi.Input.fromValue(map['caPool'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlVirtualMachineArgs {
   /// The child resources to include in the response.
   final pulumi.Input<String>? expand;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the SQL virtual machine.
   final pulumi.Input<String> sqlVirtualMachineName;
 
@@ -34,10 +36,17 @@ class GetSqlVirtualMachineArgs {
 
   factory GetSqlVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlVirtualMachineArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlVirtualMachineName: (map['sqlVirtualMachineName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlVirtualMachineName: pulumi.Input.fromValue(
+        map['sqlVirtualMachineName'] as String,
+      ),
     );
   }
 }
-

@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_network_gateway_nat_rule_args.dart';
-import 'virtual_network_gateway_nat_rule_external_mapping.dart';
-import 'virtual_network_gateway_nat_rule_internal_mapping.dart';
 import 'virtual_network_gateway_nat_rule_state.dart';
 
 /// Manages a Virtual Network Gateway Nat Rule.
@@ -497,7 +495,7 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -511,19 +509,26 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// ```
 class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
   /// One or more `external_mapping` blocks as documented below.
-  late final pulumi.Output<List<VirtualNetworkGatewayNatRuleExternalMapping>> externalMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> externalMappings;
+
   /// One or more `internal_mapping` blocks as documented below.
-  late final pulumi.Output<List<VirtualNetworkGatewayNatRuleInternalMapping>> internalMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> internalMappings;
+
   /// The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;
+
   /// The source Nat direction of the Virtual Network Gateway Nat. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> mode;
+
   /// The name which should be used for this Virtual Network Gateway Nat Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Name of the Resource Group in which this Virtual Network Gateway Nat Rule should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The type of the Virtual Network Gateway Nat Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> type;
+
   /// The ID of the Virtual Network Gateway that this Virtual Network Gateway Nat Rule belongs to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkGatewayId;
 
@@ -536,19 +541,23 @@ class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     VirtualNetworkGatewayNatRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleExternalMapping>>('externalMappings');
-    this.internalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleInternalMapping>>('internalMappings');
-    this.ipConfigurationId = registerOutput<String?>('ipConfigurationId');
-    this.mode = registerOutput<String?>('mode');
+         'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalMappings = registerOutput<List<Map<String, dynamic>>>(
+      'externalMappings',
+    );
+    internalMappings = registerOutput<List<Map<String, dynamic>>>(
+      'internalMappings',
+    );
+    ipConfigurationId = registerOutput<String?>('ipConfigurationId');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.type = registerOutput<String?>('type');
-    this.virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    type = registerOutput<String?>('type');
+    virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
   }
 
   /// Gets an existing [VirtualNetworkGatewayNatRule] resource's state with the given [name] and [id].
@@ -569,18 +578,22 @@ class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleExternalMapping>>('externalMappings');
-    this.internalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleInternalMapping>>('internalMappings');
-    this.ipConfigurationId = registerOutput<String?>('ipConfigurationId');
-    this.mode = registerOutput<String?>('mode');
+         'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalMappings = registerOutput<List<Map<String, dynamic>>>(
+      'externalMappings',
+    );
+    internalMappings = registerOutput<List<Map<String, dynamic>>>(
+      'internalMappings',
+    );
+    ipConfigurationId = registerOutput<String?>('ipConfigurationId');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.type = registerOutput<String?>('type');
-    this.virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    type = registerOutput<String?>('type');
+    virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
   }
 }

@@ -9,8 +9,10 @@ import 'x509_parameters.dart';
 class CertificateConfig {
   /// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
   final pulumi.Input<PublicKey>? publicKey;
+
   /// Specifies some of the values in a certificate that are related to the subject.
   final pulumi.Input<SubjectConfig> subjectConfig;
+
   /// Describes how some of the technical X.509 fields in a certificate should be populated.
   final pulumi.Input<X509Parameters> x509Config;
 
@@ -26,18 +28,43 @@ class CertificateConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKey': ?pulumi.Input.mapOptionalInputValue<PublicKey, Map<String, dynamic>>(publicKey, (value) => value.toMap()),
-      'subjectConfig': pulumi.Input.mapInputValue<SubjectConfig, Map<String, dynamic>>(subjectConfig, (value) => value.toMap()),
-      'x509Config': pulumi.Input.mapInputValue<X509Parameters, Map<String, dynamic>>(x509Config, (value) => value.toMap()),
+      'publicKey':
+          ?pulumi.Input.mapOptionalInputValue<PublicKey, Map<String, dynamic>>(
+            publicKey,
+            (value) => value.toMap(),
+          ),
+      'subjectConfig':
+          pulumi.Input.mapInputValue<SubjectConfig, Map<String, dynamic>>(
+            subjectConfig,
+            (value) => value.toMap(),
+          ),
+      'x509Config':
+          pulumi.Input.mapInputValue<X509Parameters, Map<String, dynamic>>(
+            x509Config,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CertificateConfig.fromMap(Map<String, dynamic> map) {
     return CertificateConfig(
-      publicKey: map['publicKey'] == null ? null : (PublicKey.fromMap((map['publicKey']! as Map).cast<String, dynamic>())).input(),
-      subjectConfig: (SubjectConfig.fromMap((map['subjectConfig'] as Map).cast<String, dynamic>())).input(),
-      x509Config: (X509Parameters.fromMap((map['x509Config'] as Map).cast<String, dynamic>())).input(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublicKey.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      subjectConfig: pulumi.Input.fromValue(
+        SubjectConfig.fromMap(
+          (map['subjectConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      x509Config: pulumi.Input.fromValue(
+        X509Parameters.fromMap(
+          (map['x509Config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

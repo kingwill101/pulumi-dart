@@ -13,15 +13,14 @@ class DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

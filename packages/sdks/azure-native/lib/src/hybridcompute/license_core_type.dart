@@ -3,16 +3,15 @@ enum LicenseCoreType {
   valuePCore("pCore"),
   valueVCore("vCore");
 
-  const LicenseCoreType(this.value);
-  final String value;
+  const LicenseCoreType(this.wireValue);
+  final String wireValue;
 
   static LicenseCoreType fromValue(String value) {
     for (final item in LicenseCoreType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicenseCoreType value: $value');
   }
 }
-

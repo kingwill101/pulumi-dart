@@ -8,20 +8,25 @@ import 'domain_mapping_ssl_settings.dart';
 class DomainMappingState {
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String>? domainName;
+
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   final pulumi.Input<String>? name;
+
   /// Whether the domain creation should override any existing mappings for this domain.
   /// By default, overrides are rejected.
   /// Default value is `STRICT`.
   /// Possible values are: `STRICT`, `OVERRIDE`.
   final pulumi.Input<String>? overrideStrategy;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// configuration in order to serve the application via this domain mapping.
   /// Structure is documented below.
   final pulumi.Input<List<DomainMappingResourceRecord>>? resourceRecords;
+
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   /// Structure is documented below.
   final pulumi.Input<DomainMappingSslSettings>? sslSettings;
@@ -48,20 +53,69 @@ class DomainMappingState {
       'name': ?name,
       'overrideStrategy': ?overrideStrategy,
       'project': ?project,
-      'resourceRecords': ?pulumi.Input.mapOptionalInputValue<List<DomainMappingResourceRecord>, List<Map<String, dynamic>>>(resourceRecords, (value) => pulumi.Input.encodeList<DomainMappingResourceRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sslSettings': ?pulumi.Input.mapOptionalInputValue<DomainMappingSslSettings, Map<String, dynamic>>(sslSettings, (value) => value.toMap()),
+      'resourceRecords':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainMappingResourceRecord>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRecords,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainMappingResourceRecord,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sslSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainMappingSslSettings,
+            Map<String, dynamic>
+          >(sslSettings, (value) => value.toMap()),
     };
   }
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingResourceRecord>(map['resourceRecords']!, (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sslSettings: map['sslSettings'] == null ? null : (DomainMappingSslSettings.fromMap((map['sslSettings']! as Map).cast<String, dynamic>())).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overrideStrategy: (() {
+        final guardedValue = map['overrideStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRecords: (() {
+        final guardedValue = map['resourceRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainMappingResourceRecord>(
+            guardedValue,
+            (value) => DomainMappingResourceRecord.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sslSettings: (() {
+        final guardedValue = map['sslSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainMappingSslSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

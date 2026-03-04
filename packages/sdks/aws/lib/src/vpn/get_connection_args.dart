@@ -10,8 +10,10 @@ import 'get_connection_filter.dart';
 class GetConnectionArgs {
   /// Configuration block(s) for filtering. Detailed below.
   final pulumi.Input<List<GetConnectionFilter>>? filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the EC2 VPN Connection.
   final pulumi.Input<String>? vpnConnectionId;
 
@@ -19,15 +21,22 @@ class GetConnectionArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpnConnectionId] Identifier of the EC2 VPN Connection.
-  GetConnectionArgs({
-    this.filters,
-    this.region,
-    this.vpnConnectionId,
-  });
+  GetConnectionArgs({this.filters, this.region, this.vpnConnectionId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetConnectionFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetConnectionFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetConnectionFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetConnectionFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'vpnConnectionId': ?vpnConnectionId,
     };
@@ -35,10 +44,28 @@ class GetConnectionArgs {
 
   factory GetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetConnectionFilter>(map['filters']!, (value) => GetConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : ((map['vpnConnectionId'] as String).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetConnectionFilter>(
+            guardedValue,
+            (value) => GetConnectionFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpnConnectionId: (() {
+        final guardedValue = map['vpnConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

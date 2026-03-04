@@ -10,31 +10,40 @@ import 'developer_app_attribute.dart';
 class DeveloperAppArgs {
   /// List of API products associated with the developer app.
   final pulumi.Input<List<String>>? apiProducts;
+
   /// Developer app family.
   final pulumi.Input<String>? appFamily;
+
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
   final pulumi.Input<List<DeveloperAppAttribute>>? attributes;
+
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
   final pulumi.Input<String> callbackUrl;
+
   /// Email address of the developer.
   /// This value is used to uniquely identify the developer in Apigee hybrid.
   /// Note that the email address has to be in lowercase only.
   final pulumi.Input<String> developerEmail;
+
   /// Expiration time, in milliseconds, for the consumer key that is generated
   /// for the developer app. If not set or left to the default value of -1,
   /// the API key never expires. The expiration time can't be updated after it is set.
   final pulumi.Input<String>? keyExpiresIn;
+
   /// Name of the developer app.
   final pulumi.Input<String>? name;
+
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
+
   /// Scopes to apply to the developer app.
   /// The specified scopes must already exist for the API product that
   /// you associate with the developer app.
   final pulumi.Input<List<String>>? scopes;
+
   /// Status of the credential. Valid values include approved or revoked.
   final pulumi.Input<String>? status;
 
@@ -66,7 +75,18 @@ class DeveloperAppArgs {
     return <String, dynamic>{
       'apiProducts': ?apiProducts,
       'appFamily': ?appFamily,
-      'attributes': ?pulumi.Input.mapOptionalInputValue<List<DeveloperAppAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<DeveloperAppAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeveloperAppAttribute>,
+            List<Map<String, dynamic>>
+          >(
+            attributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeveloperAppAttribute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'callbackUrl': callbackUrl,
       'developerEmail': developerEmail,
       'keyExpiresIn': ?keyExpiresIn,
@@ -79,17 +99,51 @@ class DeveloperAppArgs {
 
   factory DeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperAppArgs(
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
-      appFamily: map['appFamily'] == null ? null : (map['appFamily']! as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes']!, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      callbackUrl: (map['callbackUrl'] as String).input(),
-      developerEmail: (map['developerEmail'] as String).input(),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: (map['orgId'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      apiProducts: (() {
+        final guardedValue = map['apiProducts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      appFamily: (() {
+        final guardedValue = map['appFamily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeveloperAppAttribute>(
+            guardedValue,
+            (value) => DeveloperAppAttribute.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      callbackUrl: pulumi.Input.fromValue(map['callbackUrl'] as String),
+      developerEmail: pulumi.Input.fromValue(map['developerEmail'] as String),
+      keyExpiresIn: (() {
+        final guardedValue = map['keyExpiresIn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

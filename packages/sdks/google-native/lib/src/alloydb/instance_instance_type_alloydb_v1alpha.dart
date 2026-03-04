@@ -5,16 +5,17 @@ enum InstanceInstanceTypeAlloydbV1alpha {
   readPool("READ_POOL"),
   secondary("SECONDARY");
 
-  const InstanceInstanceTypeAlloydbV1alpha(this.value);
-  final String value;
+  const InstanceInstanceTypeAlloydbV1alpha(this.wireValue);
+  final String wireValue;
 
   static InstanceInstanceTypeAlloydbV1alpha fromValue(String value) {
     for (final item in InstanceInstanceTypeAlloydbV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceInstanceTypeAlloydbV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown InstanceInstanceTypeAlloydbV1alpha value: $value',
+    );
   }
 }
-

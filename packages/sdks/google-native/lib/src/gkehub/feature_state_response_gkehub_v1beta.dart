@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureStateResponseGkehubV1beta {
   /// The high-level, machine-readable status of this Feature.
   final pulumi.Input<String> code;
+
   /// A human-readable description of the current status.
   final pulumi.Input<String> description;
+
   /// The time this status and any related Feature-specific details were updated.
   final pulumi.Input<String> updateTime;
 
@@ -31,10 +33,9 @@ class FeatureStateResponseGkehubV1beta {
 
   factory FeatureStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FeatureStateResponseGkehubV1beta(
-      code: (map['code'] as String).input(),
-      description: (map['description'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

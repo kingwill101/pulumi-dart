@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_provisioning_group_args.dart';
-import 'auto_provisioning_group_launch_template_config.dart';
 import 'auto_provisioning_group_state.dart';
 
 /// Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
 ///
-/// > **NOTE:** Available in 1.79.0+
+/// &gt; **NOTE:** Available in 1.79.0+
 ///
 ///
 /// ## Example Usage
@@ -421,42 +420,61 @@ import 'auto_provisioning_group_state.dart';
 class AutoProvisioningGroup extends pulumi.CustomResource {
   /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
   late final pulumi.Output<String> autoProvisioningGroupName;
+
   /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
   late final pulumi.Output<String?> autoProvisioningGroupType;
+
   /// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
   late final pulumi.Output<String?> defaultTargetCapacityType;
+
   /// The description of the auto provisioning group.
   late final pulumi.Output<String?> description;
+
   /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
   late final pulumi.Output<String?> excessCapacityTerminationPolicy;
+
   /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
-  late final pulumi.Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> launchTemplateConfigs;
+
   /// The ID of the instance launch template associated with the auto provisioning group.
   late final pulumi.Output<String> launchTemplateId;
+
   /// The version of the instance launch template associated with the auto provisioning group.
   late final pulumi.Output<String> launchTemplateVersion;
+
   /// The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
   late final pulumi.Output<double> maxSpotPrice;
+
   /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
   late final pulumi.Output<String?> payAsYouGoAllocationStrategy;
+
   /// The target capacity of pay-as-you-go instances in the auto provisioning group.
   late final pulumi.Output<String?> payAsYouGoTargetCapacity;
+
   /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
   late final pulumi.Output<String?> spotAllocationStrategy;
+
   /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
   late final pulumi.Output<String?> spotInstanceInterruptionBehavior;
+
   /// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
   late final pulumi.Output<int> spotInstancePoolsToUseCount;
+
   /// The target capacity of preemptible instances in the auto provisioning group.
   late final pulumi.Output<String?> spotTargetCapacity;
+
   /// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
   late final pulumi.Output<bool?> terminateInstances;
+
   /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
   late final pulumi.Output<bool?> terminateInstancesWithExpiration;
+
   /// The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
   late final pulumi.Output<String> totalTargetCapacity;
+
   /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
   late final pulumi.Output<String> validFrom;
+
   /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
   late final pulumi.Output<String> validUntil;
 
@@ -469,31 +487,51 @@ class AutoProvisioningGroup extends pulumi.CustomResource {
     AutoProvisioningGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoProvisioningGroupName = registerOutput<String>('autoProvisioningGroupName');
-    this.autoProvisioningGroupType = registerOutput<String?>('autoProvisioningGroupType');
-    this.defaultTargetCapacityType = registerOutput<String?>('defaultTargetCapacityType');
-    this.description = registerOutput<String?>('description');
-    this.excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
-    this.launchTemplateConfigs = registerOutput<List<AutoProvisioningGroupLaunchTemplateConfig>>('launchTemplateConfigs');
-    this.launchTemplateId = registerOutput<String>('launchTemplateId');
-    this.launchTemplateVersion = registerOutput<String>('launchTemplateVersion');
-    this.maxSpotPrice = registerOutput<double>('maxSpotPrice');
-    this.payAsYouGoAllocationStrategy = registerOutput<String?>('payAsYouGoAllocationStrategy');
-    this.payAsYouGoTargetCapacity = registerOutput<String?>('payAsYouGoTargetCapacity');
-    this.spotAllocationStrategy = registerOutput<String?>('spotAllocationStrategy');
-    this.spotInstanceInterruptionBehavior = registerOutput<String?>('spotInstanceInterruptionBehavior');
-    this.spotInstancePoolsToUseCount = registerOutput<int>('spotInstancePoolsToUseCount');
-    this.spotTargetCapacity = registerOutput<String?>('spotTargetCapacity');
-    this.terminateInstances = registerOutput<bool?>('terminateInstances');
-    this.terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
-    this.totalTargetCapacity = registerOutput<String>('totalTargetCapacity');
-    this.validFrom = registerOutput<String>('validFrom');
-    this.validUntil = registerOutput<String>('validUntil');
+         'alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoProvisioningGroupName = registerOutput<String>(
+      'autoProvisioningGroupName',
+    );
+    autoProvisioningGroupType = registerOutput<String?>(
+      'autoProvisioningGroupType',
+    );
+    defaultTargetCapacityType = registerOutput<String?>(
+      'defaultTargetCapacityType',
+    );
+    description = registerOutput<String?>('description');
+    excessCapacityTerminationPolicy = registerOutput<String?>(
+      'excessCapacityTerminationPolicy',
+    );
+    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'launchTemplateConfigs',
+    );
+    launchTemplateId = registerOutput<String>('launchTemplateId');
+    launchTemplateVersion = registerOutput<String>('launchTemplateVersion');
+    maxSpotPrice = registerOutput<double>('maxSpotPrice');
+    payAsYouGoAllocationStrategy = registerOutput<String?>(
+      'payAsYouGoAllocationStrategy',
+    );
+    payAsYouGoTargetCapacity = registerOutput<String?>(
+      'payAsYouGoTargetCapacity',
+    );
+    spotAllocationStrategy = registerOutput<String?>('spotAllocationStrategy');
+    spotInstanceInterruptionBehavior = registerOutput<String?>(
+      'spotInstanceInterruptionBehavior',
+    );
+    spotInstancePoolsToUseCount = registerOutput<int>(
+      'spotInstancePoolsToUseCount',
+    );
+    spotTargetCapacity = registerOutput<String?>('spotTargetCapacity');
+    terminateInstances = registerOutput<bool?>('terminateInstances');
+    terminateInstancesWithExpiration = registerOutput<bool?>(
+      'terminateInstancesWithExpiration',
+    );
+    totalTargetCapacity = registerOutput<String>('totalTargetCapacity');
+    validFrom = registerOutput<String>('validFrom');
+    validUntil = registerOutput<String>('validUntil');
   }
 
   /// Gets an existing [AutoProvisioningGroup] resource's state with the given [name] and [id].
@@ -514,30 +552,50 @@ class AutoProvisioningGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoProvisioningGroupName = registerOutput<String>('autoProvisioningGroupName');
-    this.autoProvisioningGroupType = registerOutput<String?>('autoProvisioningGroupType');
-    this.defaultTargetCapacityType = registerOutput<String?>('defaultTargetCapacityType');
-    this.description = registerOutput<String?>('description');
-    this.excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
-    this.launchTemplateConfigs = registerOutput<List<AutoProvisioningGroupLaunchTemplateConfig>>('launchTemplateConfigs');
-    this.launchTemplateId = registerOutput<String>('launchTemplateId');
-    this.launchTemplateVersion = registerOutput<String>('launchTemplateVersion');
-    this.maxSpotPrice = registerOutput<double>('maxSpotPrice');
-    this.payAsYouGoAllocationStrategy = registerOutput<String?>('payAsYouGoAllocationStrategy');
-    this.payAsYouGoTargetCapacity = registerOutput<String?>('payAsYouGoTargetCapacity');
-    this.spotAllocationStrategy = registerOutput<String?>('spotAllocationStrategy');
-    this.spotInstanceInterruptionBehavior = registerOutput<String?>('spotInstanceInterruptionBehavior');
-    this.spotInstancePoolsToUseCount = registerOutput<int>('spotInstancePoolsToUseCount');
-    this.spotTargetCapacity = registerOutput<String?>('spotTargetCapacity');
-    this.terminateInstances = registerOutput<bool?>('terminateInstances');
-    this.terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
-    this.totalTargetCapacity = registerOutput<String>('totalTargetCapacity');
-    this.validFrom = registerOutput<String>('validFrom');
-    this.validUntil = registerOutput<String>('validUntil');
+         'alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoProvisioningGroupName = registerOutput<String>(
+      'autoProvisioningGroupName',
+    );
+    autoProvisioningGroupType = registerOutput<String?>(
+      'autoProvisioningGroupType',
+    );
+    defaultTargetCapacityType = registerOutput<String?>(
+      'defaultTargetCapacityType',
+    );
+    description = registerOutput<String?>('description');
+    excessCapacityTerminationPolicy = registerOutput<String?>(
+      'excessCapacityTerminationPolicy',
+    );
+    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'launchTemplateConfigs',
+    );
+    launchTemplateId = registerOutput<String>('launchTemplateId');
+    launchTemplateVersion = registerOutput<String>('launchTemplateVersion');
+    maxSpotPrice = registerOutput<double>('maxSpotPrice');
+    payAsYouGoAllocationStrategy = registerOutput<String?>(
+      'payAsYouGoAllocationStrategy',
+    );
+    payAsYouGoTargetCapacity = registerOutput<String?>(
+      'payAsYouGoTargetCapacity',
+    );
+    spotAllocationStrategy = registerOutput<String?>('spotAllocationStrategy');
+    spotInstanceInterruptionBehavior = registerOutput<String?>(
+      'spotInstanceInterruptionBehavior',
+    );
+    spotInstancePoolsToUseCount = registerOutput<int>(
+      'spotInstancePoolsToUseCount',
+    );
+    spotTargetCapacity = registerOutput<String?>('spotTargetCapacity');
+    terminateInstances = registerOutput<bool?>('terminateInstances');
+    terminateInstancesWithExpiration = registerOutput<bool?>(
+      'terminateInstancesWithExpiration',
+    );
+    totalTargetCapacity = registerOutput<String>('totalTargetCapacity');
+    validFrom = registerOutput<String>('validFrom');
+    validUntil = registerOutput<String>('validUntil');
   }
 }

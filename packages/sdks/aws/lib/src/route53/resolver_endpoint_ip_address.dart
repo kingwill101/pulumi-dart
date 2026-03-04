@@ -6,8 +6,10 @@ class ResolverEndpointIpAddress {
   /// IPv4 address in the subnet that you want to use for DNS queries.
   final pulumi.Input<String>? ip;
   final pulumi.Input<String>? ipId;
+
   /// IPv6 address in the subnet that you want to use for DNS queries.
   final pulumi.Input<String>? ipv6;
+
   /// ID of the subnet that contains the IP address.
   final pulumi.Input<String> subnetId;
 
@@ -34,11 +36,22 @@ class ResolverEndpointIpAddress {
 
   factory ResolverEndpointIpAddress.fromMap(Map<String, dynamic> map) {
     return ResolverEndpointIpAddress(
-      ip: map['ip'] == null ? null : ((map['ip'] as String).input()).input(),
-      ipId: map['ipId'] == null ? null : ((map['ipId'] as String).input()).input(),
-      ipv6: map['ipv6'] == null ? null : ((map['ipv6'] as String).input()).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipId: (() {
+        final guardedValue = map['ipId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6: (() {
+        final guardedValue = map['ipv6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

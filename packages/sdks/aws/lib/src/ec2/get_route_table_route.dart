@@ -5,30 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteTableRoute {
   /// ID of the Carrier Gateway.
   final pulumi.Input<String> carrierGatewayId;
+
   /// CIDR block of the route.
   final pulumi.Input<String> cidrBlock;
+
   /// ARN of the core network.
   final pulumi.Input<String> coreNetworkArn;
+
   /// The ID of a managed prefix list destination of the route.
   final pulumi.Input<String> destinationPrefixListId;
+
   /// ID of the Egress Only Internet Gateway.
   final pulumi.Input<String> egressOnlyGatewayId;
+
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
   final pulumi.Input<String> gatewayId;
+
   /// EC2 instance ID.
   final pulumi.Input<String> instanceId;
+
   /// IPv6 CIDR block of the route.
   final pulumi.Input<String> ipv6CidrBlock;
+
   /// Local Gateway ID.
   final pulumi.Input<String> localGatewayId;
+
   /// NAT Gateway ID.
   final pulumi.Input<String> natGatewayId;
+
   /// ID of the elastic network interface (eni) to use.
   final pulumi.Input<String> networkInterfaceId;
+
   /// EC2 Transit Gateway ID.
   final pulumi.Input<String> transitGatewayId;
+
   /// VPC Endpoint ID.
   final pulumi.Input<String> vpcEndpointId;
+
   /// VPC Peering ID.
   final pulumi.Input<String> vpcPeeringConnectionId;
 
@@ -85,21 +98,32 @@ class GetRouteTableRoute {
 
   factory GetRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoute(
-      carrierGatewayId: (map['carrierGatewayId'] as String).input(),
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      coreNetworkArn: (map['coreNetworkArn'] as String).input(),
-      destinationPrefixListId: (map['destinationPrefixListId'] as String).input(),
-      egressOnlyGatewayId: (map['egressOnlyGatewayId'] as String).input(),
-      gatewayId: (map['gatewayId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      ipv6CidrBlock: (map['ipv6CidrBlock'] as String).input(),
-      localGatewayId: (map['localGatewayId'] as String).input(),
-      natGatewayId: (map['natGatewayId'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      transitGatewayId: (map['transitGatewayId'] as String).input(),
-      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
-      vpcPeeringConnectionId: (map['vpcPeeringConnectionId'] as String).input(),
+      carrierGatewayId: pulumi.Input.fromValue(
+        map['carrierGatewayId'] as String,
+      ),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      coreNetworkArn: pulumi.Input.fromValue(map['coreNetworkArn'] as String),
+      destinationPrefixListId: pulumi.Input.fromValue(
+        map['destinationPrefixListId'] as String,
+      ),
+      egressOnlyGatewayId: pulumi.Input.fromValue(
+        map['egressOnlyGatewayId'] as String,
+      ),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      ipv6CidrBlock: pulumi.Input.fromValue(map['ipv6CidrBlock'] as String),
+      localGatewayId: pulumi.Input.fromValue(map['localGatewayId'] as String),
+      natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      transitGatewayId: pulumi.Input.fromValue(
+        map['transitGatewayId'] as String,
+      ),
+      vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
+      vpcPeeringConnectionId: pulumi.Input.fromValue(
+        map['vpcPeeringConnectionId'] as String,
+      ),
     );
   }
 }
-

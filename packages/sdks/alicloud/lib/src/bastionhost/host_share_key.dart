@@ -6,7 +6,7 @@ import 'host_share_key_state.dart';
 ///
 /// For information about Bastion Host Host Share Key and how to use it, see [What is Host Share Key](https://www.alibabacloud.com/help/en/bastion-host/latest/createhostsharekey).
 ///
-/// > **NOTE:** Available since v1.165.0.
+/// &gt; **NOTE:** Available since v1.165.0.
 ///
 /// ## Example Usage
 ///
@@ -410,14 +410,19 @@ import 'host_share_key_state.dart';
 class HostShareKey extends pulumi.CustomResource {
   /// The first ID of the resource.
   late final pulumi.Output<String> hostShareKeyId;
+
   /// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
   late final pulumi.Output<String> hostShareKeyName;
+
   /// The ID of the Bastion instance.
   late final pulumi.Output<String> instanceId;
+
   /// The password of the private key. The value is a Base64-encoded string.
   late final pulumi.Output<String?> passPhrase;
+
   /// The private key. The value is a Base64-encoded string.
   late final pulumi.Output<String> privateKey;
+
   /// The fingerprint of the private key.
   late final pulumi.Output<String> privateKeyFingerPrint;
 
@@ -430,17 +435,17 @@ class HostShareKey extends pulumi.CustomResource {
     HostShareKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostShareKey:HostShareKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostShareKeyId = registerOutput<String>('hostShareKeyId');
-    this.hostShareKeyName = registerOutput<String>('hostShareKeyName');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.passPhrase = registerOutput<String?>('passPhrase');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.privateKeyFingerPrint = registerOutput<String>('privateKeyFingerPrint');
+         'alicloud:bastionhost/hostShareKey:HostShareKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostShareKeyId = registerOutput<String>('hostShareKeyId');
+    hostShareKeyName = registerOutput<String>('hostShareKeyName');
+    instanceId = registerOutput<String>('instanceId');
+    passPhrase = registerOutput<String?>('passPhrase');
+    privateKey = registerOutput<String>('privateKey');
+    privateKeyFingerPrint = registerOutput<String>('privateKeyFingerPrint');
   }
 
   /// Gets an existing [HostShareKey] resource's state with the given [name] and [id].
@@ -461,16 +466,16 @@ class HostShareKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostShareKey:HostShareKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostShareKeyId = registerOutput<String>('hostShareKeyId');
-    this.hostShareKeyName = registerOutput<String>('hostShareKeyName');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.passPhrase = registerOutput<String?>('passPhrase');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.privateKeyFingerPrint = registerOutput<String>('privateKeyFingerPrint');
+         'alicloud:bastionhost/hostShareKey:HostShareKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostShareKeyId = registerOutput<String>('hostShareKeyId');
+    hostShareKeyName = registerOutput<String>('hostShareKeyName');
+    instanceId = registerOutput<String>('instanceId');
+    passPhrase = registerOutput<String?>('passPhrase');
+    privateKey = registerOutput<String>('privateKey');
+    privateKeyFingerPrint = registerOutput<String>('privateKeyFingerPrint');
   }
 }

@@ -4,16 +4,17 @@ enum CVSSUserInteractionContaineranalysisV1alpha1 {
   userInteractionNone("USER_INTERACTION_NONE"),
   userInteractionRequired("USER_INTERACTION_REQUIRED");
 
-  const CVSSUserInteractionContaineranalysisV1alpha1(this.value);
-  final String value;
+  const CVSSUserInteractionContaineranalysisV1alpha1(this.wireValue);
+  final String wireValue;
 
   static CVSSUserInteractionContaineranalysisV1alpha1 fromValue(String value) {
     for (final item in CVSSUserInteractionContaineranalysisV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSUserInteractionContaineranalysisV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSUserInteractionContaineranalysisV1alpha1 value: $value',
+    );
   }
 }
-

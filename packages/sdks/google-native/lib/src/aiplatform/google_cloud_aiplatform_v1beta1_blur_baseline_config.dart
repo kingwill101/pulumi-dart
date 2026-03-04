@@ -9,20 +9,21 @@ class GoogleCloudAiplatformV1beta1BlurBaselineConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1BlurBaselineConfig].
   /// [maxBlurSigma] The standard deviation of the blur kernel for the blurred baseline. The same blurring parameter is used for both the height and the width dimension. If not set, the method defaults to the zero (i.e. black for images) baseline.
-  GoogleCloudAiplatformV1beta1BlurBaselineConfig({
-    this.maxBlurSigma,
-  });
+  GoogleCloudAiplatformV1beta1BlurBaselineConfig({this.maxBlurSigma});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxBlurSigma': ?maxBlurSigma,
-    };
+    return <String, dynamic>{'maxBlurSigma': ?maxBlurSigma};
   }
 
-  factory GoogleCloudAiplatformV1beta1BlurBaselineConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1BlurBaselineConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1BlurBaselineConfig(
-      maxBlurSigma: map['maxBlurSigma'] == null ? null : (map['maxBlurSigma']! as double).input(),
+      maxBlurSigma: (() {
+        final guardedValue = map['maxBlurSigma'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

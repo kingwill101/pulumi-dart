@@ -13,15 +13,16 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'forceUpdateOnRepair': forceUpdateOnRepair,
-    };
+    return <String, dynamic>{'forceUpdateOnRepair': forceUpdateOnRepair};
   }
 
-  factory InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1(
-      forceUpdateOnRepair: (map['forceUpdateOnRepair'] as String).input(),
+      forceUpdateOnRepair: pulumi.Input.fromValue(
+        map['forceUpdateOnRepair'] as String,
+      ),
     );
   }
 }
-

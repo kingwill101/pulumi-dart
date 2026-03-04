@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessLifecyclePolicyArgs {
   /// Description of the policy.
   final pulumi.Input<String>? description;
+
   /// Name of the policy.
   final pulumi.Input<String>? name;
+
   /// JSON policy document to use as the content for the new policy.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of lifecycle policy. Must be `retention`.
   ///
   /// The following arguments are optional:
@@ -46,12 +50,23 @@ class ServerlessLifecyclePolicyArgs {
 
   factory ServerlessLifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessLifecyclePolicyArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

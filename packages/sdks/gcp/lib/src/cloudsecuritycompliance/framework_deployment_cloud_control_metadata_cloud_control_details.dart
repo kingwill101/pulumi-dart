@@ -6,15 +6,20 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
   /// Major revision of cloudcontrol
   final pulumi.Input<String> majorRevisionId;
+
   /// The name of the CloudControl in the format:
   /// “organizations/{organization}/locations/{location}/
   /// cloudControls/{cloud-control}”
   final pulumi.Input<String> name;
+
   /// Parameters is a key-value pair that is required by the CloudControl. The
   /// specification of these parameters will be present in cloudcontrol.Eg: {
   /// "name": "location","value": "us-west-1"}.
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>>? parameters;
+  final pulumi.Input<
+    List<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>
+  >?
+  parameters;
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetails].
   /// [majorRevisionId] Major revision of cloudcontrol
@@ -30,16 +35,44 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
     return <String, dynamic>{
       'majorRevisionId': majorRevisionId,
       'name': name,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter
+            >,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory FrameworkDeploymentCloudControlMetadataCloudControlDetails.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentCloudControlMetadataCloudControlDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetails(
-      majorRevisionId: (map['majorRevisionId'] as String).input(),
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>(map['parameters']!, (value) => FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      majorRevisionId: pulumi.Input.fromValue(map['majorRevisionId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter
+          >(
+            guardedValue,
+            (value) =>
+                FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

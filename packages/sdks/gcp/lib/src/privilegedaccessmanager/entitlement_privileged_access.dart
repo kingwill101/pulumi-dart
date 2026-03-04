@@ -10,20 +10,25 @@ class EntitlementPrivilegedAccess {
 
   /// Creates a new [EntitlementPrivilegedAccess].
   /// [gcpIamAccess] GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-  EntitlementPrivilegedAccess({
-    required this.gcpIamAccess,
-  });
+  EntitlementPrivilegedAccess({required this.gcpIamAccess});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gcpIamAccess': pulumi.Input.mapInputValue<EntitlementPrivilegedAccessGcpIamAccess, Map<String, dynamic>>(gcpIamAccess, (value) => value.toMap()),
+      'gcpIamAccess':
+          pulumi.Input.mapInputValue<
+            EntitlementPrivilegedAccessGcpIamAccess,
+            Map<String, dynamic>
+          >(gcpIamAccess, (value) => value.toMap()),
     };
   }
 
   factory EntitlementPrivilegedAccess.fromMap(Map<String, dynamic> map) {
     return EntitlementPrivilegedAccess(
-      gcpIamAccess: (EntitlementPrivilegedAccessGcpIamAccess.fromMap((map['gcpIamAccess'] as Map).cast<String, dynamic>())).input(),
+      gcpIamAccess: pulumi.Input.fromValue(
+        EntitlementPrivilegedAccessGcpIamAccess.fromMap(
+          (map['gcpIamAccess']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

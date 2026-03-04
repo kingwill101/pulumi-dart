@@ -12,20 +12,17 @@ class InstanceGceSetupNetworkInterfaceAccessConfig {
 
   /// Creates a new [InstanceGceSetupNetworkInterfaceAccessConfig].
   /// [externalIp] An external IP address associated with this instance. Specify an unused
-  InstanceGceSetupNetworkInterfaceAccessConfig({
-    required this.externalIp,
-  });
+  InstanceGceSetupNetworkInterfaceAccessConfig({required this.externalIp});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalIp': externalIp,
-    };
+    return <String, dynamic>{'externalIp': externalIp};
   }
 
-  factory InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGceSetupNetworkInterfaceAccessConfig(
-      externalIp: (map['externalIp'] as String).input(),
+      externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
     );
   }
 }
-

@@ -29,13 +29,14 @@ class GetFirewallSettingsDefaultFirewallIds {
     };
   }
 
-  factory GetFirewallSettingsDefaultFirewallIds.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallSettingsDefaultFirewallIds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallSettingsDefaultFirewallIds(
-      linode: (map['linode'] as int).input(),
-      nodebalancer: (map['nodebalancer'] as int).input(),
-      publicInterface: (map['publicInterface'] as int).input(),
-      vpcInterface: (map['vpcInterface'] as int).input(),
+      linode: pulumi.Input.fromValue(map['linode'] as int),
+      nodebalancer: pulumi.Input.fromValue(map['nodebalancer'] as int),
+      publicInterface: pulumi.Input.fromValue(map['publicInterface'] as int),
+      vpcInterface: pulumi.Input.fromValue(map['vpcInterface'] as int),
     );
   }
 }
-

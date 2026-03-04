@@ -133,12 +133,17 @@ import 'management_configuration_properties_response.dart';
 class ManagementConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
-  late final pulumi.Output<ManagementConfigurationPropertiesResponse> properties;
+  late final pulumi.Output<ManagementConfigurationPropertiesResponse>
+  properties;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -151,15 +156,17 @@ class ManagementConfiguration extends pulumi.CustomResource {
     ManagementConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationsmanagement:ManagementConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:operationsmanagement:ManagementConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ManagementConfigurationPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ManagementConfigurationPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

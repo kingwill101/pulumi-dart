@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListLinkerConfigurationsArgs {
   /// The name Linker resource.
   final pulumi.Input<String> linkerName;
+
   /// The fully qualified Azure Resource manager identifier of the resource to be connected.
   final pulumi.Input<String> resourceUri;
 
@@ -29,9 +30,8 @@ class ListLinkerConfigurationsArgs {
 
   factory ListLinkerConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return ListLinkerConfigurationsArgs(
-      linkerName: (map['linkerName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      linkerName: pulumi.Input.fromValue(map['linkerName'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

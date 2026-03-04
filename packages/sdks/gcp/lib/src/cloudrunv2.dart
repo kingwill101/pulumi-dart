@@ -1,5 +1,3 @@
-library module_cloudrunv2;
-
 export 'cloudrunv2/functions.dart';
 export 'cloudrunv2/get_job_args.dart';
 export 'cloudrunv2/get_job_binary_authorization.dart';

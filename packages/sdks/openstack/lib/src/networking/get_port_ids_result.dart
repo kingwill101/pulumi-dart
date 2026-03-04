@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPortIds.
 class GetPortIdsResult {
   final bool? adminStateUp;
@@ -9,6 +8,7 @@ class GetPortIdsResult {
   final String? deviceOwner;
   final String? dnsName;
   final String? fixedIp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -92,26 +92,93 @@ class GetPortIdsResult {
 
   factory GetPortIdsResult.fromMap(Map<String, dynamic> map) {
     return GetPortIdsResult(
-      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp']! as bool,
-      description: map['description'] == null ? null : map['description']! as String,
-      deviceId: map['deviceId'] == null ? null : map['deviceId']! as String,
-      deviceOwner: map['deviceOwner'] == null ? null : map['deviceOwner']! as String,
-      dnsName: map['dnsName'] == null ? null : map['dnsName']! as String,
-      fixedIp: map['fixedIp'] == null ? null : map['fixedIp']! as String,
+      adminStateUp: (() {
+        final guardedValue = map['adminStateUp'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      deviceOwner: (() {
+        final guardedValue = map['deviceOwner'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dnsName: (() {
+        final guardedValue = map['dnsName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fixedIp: (() {
+        final guardedValue = map['fixedIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      macAddress: map['macAddress'] == null ? null : map['macAddress']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      networkId: map['networkId'] == null ? null : map['networkId']! as String,
-      projectId: map['projectId'] == null ? null : map['projectId']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds']! as List).cast<String>(),
-      sortDirection: map['sortDirection'] == null ? null : map['sortDirection']! as String,
-      sortKey: map['sortKey'] == null ? null : map['sortKey']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      macAddress: (() {
+        final guardedValue = map['macAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      sortDirection: (() {
+        final guardedValue = map['sortDirection'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortKey: (() {
+        final guardedValue = map['sortKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

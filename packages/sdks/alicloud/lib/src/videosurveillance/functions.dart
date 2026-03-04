@@ -8,9 +8,9 @@ import 'get_system_groups_result.dart';
 ///
 /// For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
 ///
-/// > **NOTE:** Available in v1.116.0+
+/// &gt; **NOTE:** Available in v1.116.0+
 ///
-/// > **NOTE:** The Video Surveillance System service is not support in the international site.
+/// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
 ///
 /// ## Example Usage
 ///
@@ -117,7 +117,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///

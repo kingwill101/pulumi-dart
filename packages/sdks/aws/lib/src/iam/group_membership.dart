@@ -2,13 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_membership_args.dart';
 import 'group_membership_state.dart';
 
-/// > **WARNING:** Multiple aws.iam.GroupMembership resources with the same group name will produce inconsistent behavior!
+/// &gt; **WARNING:** Multiple aws.iam.GroupMembership resources with the same group name will produce inconsistent behavior!
 ///
 /// Provides a top level resource to manage IAM Group membership for IAM Users. For
 /// more information on managing IAM Groups or IAM Users, see IAM Groups or
 /// IAM Users
 ///
-/// > **Note:** `aws.iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
+/// &gt; **Note:** `aws.iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
 /// `aws.iam.UserGroupMembership` resource.
 ///
 /// ## Example Usage
@@ -200,8 +200,10 @@ import 'group_membership_state.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The IAM Group name to attach the list of `users` to
   late final pulumi.Output<String> group;
+
   /// The name to identify the Group Membership
   late final pulumi.Output<String> name;
+
   /// A list of IAM User names to associate with the Group
   late final pulumi.Output<List<String>> users;
 
@@ -214,14 +216,14 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupMembership:GroupMembership',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
+         'aws:iam/groupMembership:GroupMembership',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users');
   }
 
   /// Gets an existing [GroupMembership] resource's state with the given [name] and [id].
@@ -242,13 +244,13 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupMembership:GroupMembership',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
+         'aws:iam/groupMembership:GroupMembership',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users');
   }
 }

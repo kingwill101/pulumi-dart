@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
   /// The listener port.
   final pulumi.Input<int> listenerPort;
+
   /// The listener protoal.
   final pulumi.Input<String> listenerProtocal;
 
@@ -23,11 +24,14 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
     };
   }
 
-  factory GetApplicationLoadBalancersBalancerListenerPortsAndProtocal.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationLoadBalancersBalancerListenerPortsAndProtocal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationLoadBalancersBalancerListenerPortsAndProtocal(
-      listenerPort: (map['listenerPort'] as int).input(),
-      listenerProtocal: (map['listenerProtocal'] as String).input(),
+      listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
+      listenerProtocal: pulumi.Input.fromValue(
+        map['listenerProtocal'] as String,
+      ),
     );
   }
 }
-

@@ -280,7 +280,7 @@ import 'profile_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-04-01
@@ -295,22 +295,30 @@ import 'profile_state.dart';
 class Profile extends pulumi.CustomResource {
   /// This block specifies the DNS configuration of the Profile. One `dns_config` block as defined below.
   late final pulumi.Output<ProfileDnsConfig> dnsConfig;
+
   /// The FQDN of the created Profile.
   late final pulumi.Output<String> fqdn;
+
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
-  /// > **Note:** `max_return` must be set when the `traffic_routing_method` is `MultiValue`.
+  /// &gt; **Note:** `max_return` must be set when the `traffic_routing_method` is `MultiValue`.
   late final pulumi.Output<int?> maxReturn;
+
   /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitor_config` block as defined below.
   late final pulumi.Output<ProfileMonitorConfig> monitorConfig;
+
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The status of the profile, can be set to either `Enabled` or `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> profileStatus;
+
   /// The name of the resource group in which to create the Traffic Manager profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// * `Geographic` - Traffic is routed based on Geographic regions specified in the Endpoint.
   /// * `MultiValue` - All healthy Endpoints are returned.  MultiValue routing method works only if all the endpoints of type `External` and are specified as IPv4 or IPv6 addresses.
@@ -319,6 +327,7 @@ class Profile extends pulumi.CustomResource {
   /// * `Subnet` - Traffic is routed based on a mapping of sets of end-user IP address ranges to a specific Endpoint within a Traffic Manager profile.
   /// * `Weighted` - Traffic is spread across Endpoints proportional to their `weight` value.
   late final pulumi.Output<String> trafficRoutingMethod;
+
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
   late final pulumi.Output<bool?> trafficViewEnabled;
 
@@ -331,21 +340,21 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:trafficmanager/profile:Profile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.maxReturn = registerOutput<int?>('maxReturn');
-    this.monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
+         'azure:trafficmanager/profile:Profile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
+    fqdn = registerOutput<String>('fqdn');
+    maxReturn = registerOutput<int?>('maxReturn');
+    monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
     this.name = registerOutput<String>('name');
-    this.profileStatus = registerOutput<String?>('profileStatus');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
-    this.trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
+    profileStatus = registerOutput<String?>('profileStatus');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
+    trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }
 
   /// Gets an existing [Profile] resource's state with the given [name] and [id].
@@ -366,20 +375,20 @@ class Profile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:trafficmanager/profile:Profile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.maxReturn = registerOutput<int?>('maxReturn');
-    this.monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
+         'azure:trafficmanager/profile:Profile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
+    fqdn = registerOutput<String>('fqdn');
+    maxReturn = registerOutput<int?>('maxReturn');
+    monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
     this.name = registerOutput<String>('name');
-    this.profileStatus = registerOutput<String?>('profileStatus');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
-    this.trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
+    profileStatus = registerOutput<String?>('profileStatus');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
+    trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }
 }

@@ -8,7 +8,7 @@ import 'instance_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Cen Instance and how to use it, see [What is Cen Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 ///
-/// > **NOTE:** Available since v1.15.0.
+/// &gt; **NOTE:** Available since v1.15.0.
 ///
 /// ## Example Usage
 ///
@@ -141,18 +141,25 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The name of the CEN instance.
   late final pulumi.Output<String> cenInstanceName;
+
   /// The time when the CEN instance was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of the CEN instance.
   late final pulumi.Output<String?> description;
+
   /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
   late final pulumi.Output<String> name;
+
   /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
   late final pulumi.Output<String> protectionLevel;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
   late final pulumi.Output<String> status;
+
   /// The tags of the CEN instance.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -167,19 +174,19 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenInstanceName = registerOutput<String>('cenInstanceName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:cen/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenInstanceName = registerOutput<String>('cenInstanceName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.protectionLevel = registerOutput<String>('protectionLevel');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -200,18 +207,18 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenInstanceName = registerOutput<String>('cenInstanceName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:cen/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenInstanceName = registerOutput<String>('cenInstanceName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.protectionLevel = registerOutput<String>('protectionLevel');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

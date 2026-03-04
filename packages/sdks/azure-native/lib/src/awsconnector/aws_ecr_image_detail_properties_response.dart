@@ -6,41 +6,52 @@ import 'image_scan_status_response.dart';
 
 /// Definition of awsEcrImageDetail
 class AwsEcrImageDetailPropertiesResponse {
-  /// <p>The artifact media type of the image.</p>
+  /// &lt;p&gt;The artifact media type of the image.&lt;/p&gt;
   final pulumi.Input<String>? artifactMediaType;
-  /// <p>The <code>sha256</code> digest of the image manifest.</p>
+
+  /// &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image manifest.&lt;/p&gt;
   final pulumi.Input<String>? imageDigest;
-  /// <p>The media type of the image manifest.</p>
+
+  /// &lt;p&gt;The media type of the image manifest.&lt;/p&gt;
   final pulumi.Input<String>? imageManifestMediaType;
-  /// <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
+
+  /// &lt;p&gt;The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. &lt;/p&gt;
   final pulumi.Input<String>? imagePushedAt;
-  /// <p>A summary of the last completed image scan.</p>
-  final pulumi.Input<ImageScanFindingsSummaryResponse>? imageScanFindingsSummary;
-  /// <p>The current state of the scan.</p>
+
+  /// &lt;p&gt;A summary of the last completed image scan.&lt;/p&gt;
+  final pulumi.Input<ImageScanFindingsSummaryResponse>?
+  imageScanFindingsSummary;
+
+  /// &lt;p&gt;The current state of the scan.&lt;/p&gt;
   final pulumi.Input<ImageScanStatusResponse>? imageScanStatus;
-  /// <p>The size, in bytes, of the image in the repository.</p> <p>If the image is a manifest list, this will be the max size of all manifests in the list.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
+
+  /// &lt;p&gt;The size, in bytes, of the image in the repository.&lt;/p&gt; &lt;p&gt;If the image is a manifest list, this will be the max size of all manifests in the list.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the &lt;code&gt;docker images&lt;/code&gt; command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by &lt;a&gt;DescribeImages&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<double>? imageSizeInBytes;
-  /// <p>The list of tags associated with this image.</p>
+
+  /// &lt;p&gt;The list of tags associated with this image.&lt;/p&gt;
   final pulumi.Input<List<String>>? imageTags;
-  /// <p>The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull.</p> <note> <p>Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the <code>lastRecordedPullTime</code> timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the <code>lastRecordedPullTime</code> timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.</p> </note>
+
+  /// &lt;p&gt;The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<String>? lastRecordedPullTime;
-  /// <p>The Amazon Web Services account ID associated with the registry to which this image belongs.</p>
+
+  /// &lt;p&gt;The Amazon Web Services account ID associated with the registry to which this image belongs.&lt;/p&gt;
   final pulumi.Input<String>? registryId;
-  /// <p>The name of the repository to which this image belongs.</p>
+
+  /// &lt;p&gt;The name of the repository to which this image belongs.&lt;/p&gt;
   final pulumi.Input<String>? repositoryName;
 
   /// Creates a new [AwsEcrImageDetailPropertiesResponse].
-  /// [artifactMediaType] <p>The artifact media type of the image.</p>
-  /// [imageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
-  /// [imageManifestMediaType] <p>The media type of the image manifest.</p>
-  /// [imagePushedAt] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
-  /// [imageScanFindingsSummary] <p>A summary of the last completed image scan.</p>
-  /// [imageScanStatus] <p>The current state of the scan.</p>
-  /// [imageSizeInBytes] <p>The size, in bytes, of the image in the repository.</p> <p>If the image is a manifest list, this will be the max size of all manifests in the list.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
-  /// [imageTags] <p>The list of tags associated with this image.</p>
-  /// [lastRecordedPullTime] <p>The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull.</p> <note> <p>Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the <code>lastRecordedPullTime</code> timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the <code>lastRecordedPullTime</code> timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.</p> </note>
-  /// [registryId] <p>The Amazon Web Services account ID associated with the registry to which this image belongs.</p>
-  /// [repositoryName] <p>The name of the repository to which this image belongs.</p>
+  /// [artifactMediaType] &lt;p&gt;The artifact media type of the image.&lt;/p&gt;
+  /// [imageDigest] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image manifest.&lt;/p&gt;
+  /// [imageManifestMediaType] &lt;p&gt;The media type of the image manifest.&lt;/p&gt;
+  /// [imagePushedAt] &lt;p&gt;The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. &lt;/p&gt;
+  /// [imageScanFindingsSummary] &lt;p&gt;A summary of the last completed image scan.&lt;/p&gt;
+  /// [imageScanStatus] &lt;p&gt;The current state of the scan.&lt;/p&gt;
+  /// [imageSizeInBytes] &lt;p&gt;The size, in bytes, of the image in the repository.&lt;/p&gt; &lt;p&gt;If the image is a manifest list, this will be the max size of all manifests in the list.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the &lt;code&gt;docker images&lt;/code&gt; command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by &lt;a&gt;DescribeImages&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
+  /// [imageTags] &lt;p&gt;The list of tags associated with this image.&lt;/p&gt;
+  /// [lastRecordedPullTime] &lt;p&gt;The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.&lt;/p&gt; &lt;/note&gt;
+  /// [registryId] &lt;p&gt;The Amazon Web Services account ID associated with the registry to which this image belongs.&lt;/p&gt;
+  /// [repositoryName] &lt;p&gt;The name of the repository to which this image belongs.&lt;/p&gt;
   AwsEcrImageDetailPropertiesResponse({
     this.artifactMediaType,
     this.imageDigest,
@@ -61,8 +72,16 @@ class AwsEcrImageDetailPropertiesResponse {
       'imageDigest': ?imageDigest,
       'imageManifestMediaType': ?imageManifestMediaType,
       'imagePushedAt': ?imagePushedAt,
-      'imageScanFindingsSummary': ?pulumi.Input.mapOptionalInputValue<ImageScanFindingsSummaryResponse, Map<String, dynamic>>(imageScanFindingsSummary, (value) => value.toMap()),
-      'imageScanStatus': ?pulumi.Input.mapOptionalInputValue<ImageScanStatusResponse, Map<String, dynamic>>(imageScanStatus, (value) => value.toMap()),
+      'imageScanFindingsSummary':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageScanFindingsSummaryResponse,
+            Map<String, dynamic>
+          >(imageScanFindingsSummary, (value) => value.toMap()),
+      'imageScanStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageScanStatusResponse,
+            Map<String, dynamic>
+          >(imageScanStatus, (value) => value.toMap()),
       'imageSizeInBytes': ?imageSizeInBytes,
       'imageTags': ?imageTags,
       'lastRecordedPullTime': ?lastRecordedPullTime,
@@ -71,20 +90,73 @@ class AwsEcrImageDetailPropertiesResponse {
     };
   }
 
-  factory AwsEcrImageDetailPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsEcrImageDetailPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsEcrImageDetailPropertiesResponse(
-      artifactMediaType: map['artifactMediaType'] == null ? null : (map['artifactMediaType']! as String).input(),
-      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest']! as String).input(),
-      imageManifestMediaType: map['imageManifestMediaType'] == null ? null : (map['imageManifestMediaType']! as String).input(),
-      imagePushedAt: map['imagePushedAt'] == null ? null : (map['imagePushedAt']! as String).input(),
-      imageScanFindingsSummary: map['imageScanFindingsSummary'] == null ? null : (ImageScanFindingsSummaryResponse.fromMap((map['imageScanFindingsSummary']! as Map).cast<String, dynamic>())).input(),
-      imageScanStatus: map['imageScanStatus'] == null ? null : (ImageScanStatusResponse.fromMap((map['imageScanStatus']! as Map).cast<String, dynamic>())).input(),
-      imageSizeInBytes: map['imageSizeInBytes'] == null ? null : (map['imageSizeInBytes']! as double).input(),
-      imageTags: map['imageTags'] == null ? null : ((map['imageTags']! as List).cast<String>()).input(),
-      lastRecordedPullTime: map['lastRecordedPullTime'] == null ? null : (map['lastRecordedPullTime']! as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId']! as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
+      artifactMediaType: (() {
+        final guardedValue = map['artifactMediaType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageDigest: (() {
+        final guardedValue = map['imageDigest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageManifestMediaType: (() {
+        final guardedValue = map['imageManifestMediaType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imagePushedAt: (() {
+        final guardedValue = map['imagePushedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageScanFindingsSummary: (() {
+        final guardedValue = map['imageScanFindingsSummary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageScanFindingsSummaryResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageScanStatus: (() {
+        final guardedValue = map['imageScanStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageScanStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageSizeInBytes: (() {
+        final guardedValue = map['imageSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      imageTags: (() {
+        final guardedValue = map['imageTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lastRecordedPullTime: (() {
+        final guardedValue = map['lastRecordedPullTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryId: (() {
+        final guardedValue = map['registryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: (() {
+        final guardedValue = map['repositoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

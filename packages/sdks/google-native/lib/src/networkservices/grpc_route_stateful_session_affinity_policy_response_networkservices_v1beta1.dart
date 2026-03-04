@@ -14,15 +14,14 @@ class GrpcRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cookieTtl': cookieTtl,
-    };
+    return <String, dynamic>{'cookieTtl': cookieTtl};
   }
 
-  factory GrpcRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GrpcRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrpcRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1(
-      cookieTtl: (map['cookieTtl'] as String).input(),
+      cookieTtl: pulumi.Input.fromValue(map['cookieTtl'] as String),
     );
   }
 }
-

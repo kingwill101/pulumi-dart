@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetSenderUsernameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The location where the SenderUsername resource data is stored at rest.
   final String dataLocation;
+
   /// The display name for the senderUsername.
   final String? displayName;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state of the resource. Unknown is the default state for Communication Services.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// A sender senderUsername to be used when sending emails.
   final String username;
 
@@ -63,14 +71,19 @@ class GetSenderUsernameResult {
     return GetSenderUsernameResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataLocation: map['dataLocation'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       username: map['username'] as String,
     );
   }
 }
-

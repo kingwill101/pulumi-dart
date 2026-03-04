@@ -4,16 +4,17 @@ enum ServiceDatabaseTypeMetastoreV1alpha {
   mysql("MYSQL"),
   spanner("SPANNER");
 
-  const ServiceDatabaseTypeMetastoreV1alpha(this.value);
-  final String value;
+  const ServiceDatabaseTypeMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static ServiceDatabaseTypeMetastoreV1alpha fromValue(String value) {
     for (final item in ServiceDatabaseTypeMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceDatabaseTypeMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown ServiceDatabaseTypeMetastoreV1alpha value: $value',
+    );
   }
 }
-

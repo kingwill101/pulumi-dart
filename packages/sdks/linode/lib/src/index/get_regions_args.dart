@@ -12,20 +12,39 @@ class GetRegionsArgs {
 
   /// Creates a new [GetRegionsArgs].
   /// [filters] Optional.
-  GetRegionsArgs({
-    this.filters,
-  });
+  GetRegionsArgs({this.filters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetRegionsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetRegionsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters']!, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetRegionsFilter>(
+            guardedValue,
+            (value) => GetRegionsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

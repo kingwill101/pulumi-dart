@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AmazonRdsForOraclePartitionSettingsResponse {
   /// The name of the column in integer type that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionColumnName;
+
   /// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionLowerBound;
+
   /// Names of the physical partitions of AmazonRdsForOracle table.
   final pulumi.Input<List<dynamic>>? partitionNames;
+
   /// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionUpperBound;
 
@@ -34,13 +37,30 @@ class AmazonRdsForOraclePartitionSettingsResponse {
     };
   }
 
-  factory AmazonRdsForOraclePartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory AmazonRdsForOraclePartitionSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AmazonRdsForOraclePartitionSettingsResponse(
-      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']!).input(),
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']!).input(),
-      partitionNames: map['partitionNames'] == null ? null : ((map['partitionNames']! as List).cast<dynamic>()).input(),
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']!).input(),
+      partitionColumnName: (() {
+        final guardedValue = map['partitionColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      partitionLowerBound: (() {
+        final guardedValue = map['partitionLowerBound'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      partitionNames: (() {
+        final guardedValue = map['partitionNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      partitionUpperBound: (() {
+        final guardedValue = map['partitionUpperBound'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

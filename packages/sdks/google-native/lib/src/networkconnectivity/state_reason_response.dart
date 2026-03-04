@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StateReasonResponse {
   /// The code associated with this reason.
   final pulumi.Input<String> code;
+
   /// Human-readable details about this reason.
   final pulumi.Input<String> message;
+
   /// Additional information provided by the user in the RejectSpoke call.
   final pulumi.Input<String> userDetails;
 
@@ -31,10 +33,9 @@ class StateReasonResponse {
 
   factory StateReasonResponse.fromMap(Map<String, dynamic> map) {
     return StateReasonResponse(
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
-      userDetails: (map['userDetails'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      userDetails: pulumi.Input.fromValue(map['userDetails'] as String),
     );
   }
 }
-

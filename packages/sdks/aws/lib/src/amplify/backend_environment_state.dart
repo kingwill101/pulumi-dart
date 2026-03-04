@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendEnvironmentState {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String>? appId;
+
   /// ARN for a backend environment that is part of an Amplify app.
   final pulumi.Input<String>? arn;
+
   /// Name of deployment artifacts.
   final pulumi.Input<String>? deploymentArtifacts;
+
   /// Name for the backend environment.
   final pulumi.Input<String>? environmentName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// AWS CloudFormation stack name of a backend environment.
   final pulumi.Input<String>? stackName;
 
@@ -46,13 +51,36 @@ class BackendEnvironmentState {
 
   factory BackendEnvironmentState.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentState(
-      appId: map['appId'] == null ? null : ((map['appId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : ((map['deploymentArtifacts'] as String).input()).input(),
-      environmentName: map['environmentName'] == null ? null : ((map['environmentName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      stackName: map['stackName'] == null ? null : ((map['stackName'] as String).input()).input(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentArtifacts: (() {
+        final guardedValue = map['deploymentArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: (() {
+        final guardedValue = map['environmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackName: (() {
+        final guardedValue = map['stackName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

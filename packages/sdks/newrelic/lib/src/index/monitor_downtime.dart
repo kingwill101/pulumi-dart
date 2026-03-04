@@ -1066,22 +1066,31 @@ import 'monitor_downtime_state.dart';
 class MonitorDowntime extends pulumi.CustomResource {
   /// The ID of the New Relic account in which the Monitor Downtime shall be created. Defaults to the `account_id` in the provider{} configuration if not specified.
   late final pulumi.Output<String> accountId;
+
   /// A specification of when the Monitor Downtime should end its repeat cycle, by number of occurrences or date.
   late final pulumi.Output<MonitorDowntimeEndRepeat?> endRepeat;
+
   /// A datetime stamp signifying the end of the Monitor Downtime.
   late final pulumi.Output<String> endTime;
+
   /// Configuration options for which days of the month a monitor downtime will occur
   late final pulumi.Output<MonitorDowntimeFrequency?> frequency;
+
   /// A list of maintenance days to be included with the created weekly Monitor Downtime.
   late final pulumi.Output<List<String>?> maintenanceDays;
+
   /// An identifier of the type of Monitor Downtime to be created.
   late final pulumi.Output<String> mode;
+
   /// A list of GUIDs of monitors, to which the created Monitor Downtime shall be applied.
   late final pulumi.Output<List<String>?> monitorGuids;
+
   /// A name to identify the Monitor Downtime to be created.
   late final pulumi.Output<String> name;
+
   /// A datetime stamp signifying the start of the Monitor Downtime.
   late final pulumi.Output<String> startTime;
+
   /// The timezone that applies to the Monitor Downtime schedule.
   late final pulumi.Output<String> timeZone;
 
@@ -1094,21 +1103,21 @@ class MonitorDowntime extends pulumi.CustomResource {
     MonitorDowntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/monitorDowntime:MonitorDowntime',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
-    this.endTime = registerOutput<String>('endTime');
-    this.frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
-    this.maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
-    this.mode = registerOutput<String>('mode');
-    this.monitorGuids = registerOutput<List<String>?>('monitorGuids');
+         'newrelic:index/monitorDowntime:MonitorDowntime',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
+    endTime = registerOutput<String>('endTime');
+    frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
+    maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
+    mode = registerOutput<String>('mode');
+    monitorGuids = registerOutput<List<String>?>('monitorGuids');
     this.name = registerOutput<String>('name');
-    this.startTime = registerOutput<String>('startTime');
-    this.timeZone = registerOutput<String>('timeZone');
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String>('timeZone');
   }
 
   /// Gets an existing [MonitorDowntime] resource's state with the given [name] and [id].
@@ -1129,20 +1138,20 @@ class MonitorDowntime extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/monitorDowntime:MonitorDowntime',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
-    this.endTime = registerOutput<String>('endTime');
-    this.frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
-    this.maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
-    this.mode = registerOutput<String>('mode');
-    this.monitorGuids = registerOutput<List<String>?>('monitorGuids');
+         'newrelic:index/monitorDowntime:MonitorDowntime',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
+    endTime = registerOutput<String>('endTime');
+    frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
+    maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
+    mode = registerOutput<String>('mode');
+    monitorGuids = registerOutput<List<String>?>('monitorGuids');
     this.name = registerOutput<String>('name');
-    this.startTime = registerOutput<String>('startTime');
-    this.timeZone = registerOutput<String>('timeZone');
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String>('timeZone');
   }
 }

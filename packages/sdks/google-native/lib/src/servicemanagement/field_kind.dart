@@ -20,16 +20,15 @@ enum FieldKind {
   typeSint32("TYPE_SINT32"),
   typeSint64("TYPE_SINT64");
 
-  const FieldKind(this.value);
-  final String value;
+  const FieldKind(this.wireValue);
+  final String wireValue;
 
   static FieldKind fromValue(String value) {
     for (final item in FieldKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FieldKind value: $value');
   }
 }
-

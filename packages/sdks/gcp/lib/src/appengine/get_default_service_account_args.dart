@@ -12,20 +12,19 @@ class GetDefaultServiceAccountArgs {
 
   /// Creates a new [GetDefaultServiceAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.
-  GetDefaultServiceAccountArgs({
-    this.project,
-  });
+  GetDefaultServiceAccountArgs({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory GetDefaultServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultServiceAccountArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

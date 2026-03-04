@@ -8,12 +8,17 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
   /// request to backendService, the loadbalancer applies any relevant headerActions
   /// specified as part of this backendServiceWeight.
   final pulumi.Input<String> backendService;
+
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService.
   /// headerAction specified here take effect before headerAction in the enclosing
   /// HttpRouteRule, PathMatcher and UrlMap.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>? headerAction;
+  final pulumi.Input<
+    URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction
+  >?
+  headerAction;
+
   /// Specifies the fraction of traffic sent to backendService, computed as
   /// weight / (sum of all weightedBackendService weights in routeAction) .
   /// The selection of a backend service is determined only for new traffic. Once a user's request
@@ -35,17 +40,30 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendService': backendService,
-      'headerAction': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
+      'headerAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction,
+            Map<String, dynamic>
+          >(headerAction, (value) => value.toMap()),
       'weight': weight,
     };
   }
 
-  factory URLMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
+  factory URLMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapPathMatcherPathRuleRouteActionWeightedBackendService(
-      backendService: (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
-      weight: (map['weight'] as int).input(),
+      backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      headerAction: (() {
+        final guardedValue = map['headerAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class AwsIntegrationsTrustedAdvisor {
 
   /// Creates a new [AwsIntegrationsTrustedAdvisor].
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsTrustedAdvisor({
-    this.metricsPollingInterval,
-  });
+  AwsIntegrationsTrustedAdvisor({this.metricsPollingInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metricsPollingInterval': ?metricsPollingInterval,
-    };
+    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
   }
 
   factory AwsIntegrationsTrustedAdvisor.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsTrustedAdvisor(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

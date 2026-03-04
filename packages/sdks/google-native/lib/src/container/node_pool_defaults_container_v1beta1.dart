@@ -10,20 +10,29 @@ class NodePoolDefaultsContainerV1beta1 {
 
   /// Creates a new [NodePoolDefaultsContainerV1beta1].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaultsContainerV1beta1({
-    this.nodeConfigDefaults,
-  });
+  NodePoolDefaultsContainerV1beta1({this.nodeConfigDefaults});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigDefaults': ?pulumi.Input.mapOptionalInputValue<NodeConfigDefaultsContainerV1beta1, Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap()),
+      'nodeConfigDefaults':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodeConfigDefaultsContainerV1beta1,
+            Map<String, dynamic>
+          >(nodeConfigDefaults, (value) => value.toMap()),
     };
   }
 
   factory NodePoolDefaultsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolDefaultsContainerV1beta1(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (NodeConfigDefaultsContainerV1beta1.fromMap((map['nodeConfigDefaults']! as Map).cast<String, dynamic>())).input(),
+      nodeConfigDefaults: (() {
+        final guardedValue = map['nodeConfigDefaults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeConfigDefaultsContainerV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

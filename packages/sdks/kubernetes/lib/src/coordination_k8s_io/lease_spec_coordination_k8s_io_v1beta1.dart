@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LeaseSpecCoordinationK8sIoV1beta1 {
   /// acquireTime is a time when the current lease was acquired.
   final pulumi.Input<String>? acquireTime;
+
   /// holderIdentity contains the identity of the holder of a current lease.
   final pulumi.Input<String>? holderIdentity;
+
   /// leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.
   final pulumi.Input<int>? leaseDurationSeconds;
+
   /// leaseTransitions is the number of transitions of a lease between holders.
   final pulumi.Input<int>? leaseTransitions;
+
   /// renewTime is a time when the current holder of a lease has last updated the lease.
   final pulumi.Input<String>? renewTime;
 
@@ -41,12 +45,31 @@ class LeaseSpecCoordinationK8sIoV1beta1 {
 
   factory LeaseSpecCoordinationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return LeaseSpecCoordinationK8sIoV1beta1(
-      acquireTime: map['acquireTime'] == null ? null : (map['acquireTime']! as String).input(),
-      holderIdentity: map['holderIdentity'] == null ? null : (map['holderIdentity']! as String).input(),
-      leaseDurationSeconds: map['leaseDurationSeconds'] == null ? null : (map['leaseDurationSeconds']! as int).input(),
-      leaseTransitions: map['leaseTransitions'] == null ? null : (map['leaseTransitions']! as int).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
+      acquireTime: (() {
+        final guardedValue = map['acquireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      holderIdentity: (() {
+        final guardedValue = map['holderIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      leaseDurationSeconds: (() {
+        final guardedValue = map['leaseDurationSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      leaseTransitions: (() {
+        final guardedValue = map['leaseTransitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewTime: (() {
+        final guardedValue = map['renewTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

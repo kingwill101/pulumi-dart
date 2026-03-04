@@ -35,11 +35,18 @@ class GetDataTaxonomyIamPolicyArgs {
 
   factory GetDataTaxonomyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataTaxonomyIamPolicyArgs(
-      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dataTaxonomyId: pulumi.Input.fromValue(map['dataTaxonomyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

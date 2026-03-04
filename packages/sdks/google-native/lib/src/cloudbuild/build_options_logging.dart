@@ -7,16 +7,15 @@ enum BuildOptionsLogging {
   cloudLoggingOnly("CLOUD_LOGGING_ONLY"),
   none("NONE");
 
-  const BuildOptionsLogging(this.value);
-  final String value;
+  const BuildOptionsLogging(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsLogging fromValue(String value) {
     for (final item in BuildOptionsLogging.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildOptionsLogging value: $value');
   }
 }
-

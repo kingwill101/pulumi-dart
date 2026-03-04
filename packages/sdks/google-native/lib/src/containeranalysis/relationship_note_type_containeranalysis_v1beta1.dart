@@ -45,16 +45,17 @@ enum RelationshipNoteTypeContaineranalysisV1beta1 {
   hasPrerequisite("HAS_PREREQUISITE"),
   other("OTHER");
 
-  const RelationshipNoteTypeContaineranalysisV1beta1(this.value);
-  final String value;
+  const RelationshipNoteTypeContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static RelationshipNoteTypeContaineranalysisV1beta1 fromValue(String value) {
     for (final item in RelationshipNoteTypeContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RelationshipNoteTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown RelationshipNoteTypeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

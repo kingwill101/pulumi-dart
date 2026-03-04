@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transit_router_vpn_attachment_args.dart';
 import 'transit_router_vpn_attachment_state.dart';
-import 'transit_router_vpn_attachment_zone.dart';
 
 /// Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
 ///
@@ -9,7 +8,7 @@ import 'transit_router_vpn_attachment_zone.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpnattachment).
 ///
-/// > **NOTE:** Available since v1.183.0.
+/// &gt; **NOTE:** Available since v1.183.0.
 ///
 /// ## Example Usage
 ///
@@ -1290,38 +1289,50 @@ import 'transit_router_vpn_attachment_zone.dart';
 class TransitRouterVpnAttachment extends pulumi.CustomResource {
   /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
   late final pulumi.Output<bool?> autoPublishRouteEnabled;
+
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String> cenId;
+
   /// The billing method.
   /// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
   late final pulumi.Output<String> chargeType;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The ID of the region where the transit router is deployed.
   late final pulumi.Output<String> regionId;
+
   /// Status
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The new description of the VPN attachment.
   /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
+
   /// The name of the VPN attachment.
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> transitRouterAttachmentName;
+
   /// The ID of the transit router.
   late final pulumi.Output<String?> transitRouterId;
+
   /// The ID of the IPsec-VPN attachment.
   late final pulumi.Output<String> vpnId;
+
   /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
   ///
   /// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
   /// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
   late final pulumi.Output<String> vpnOwnerId;
+
   /// The Zone ID in the current region.
   /// System will create resources under the Zone that you specify.
   /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
-  late final pulumi.Output<List<TransitRouterVpnAttachmentZone>?> zones;
+  late final pulumi.Output<List<Map<String, dynamic>>?> zones;
 
   /// Creates a new [TransitRouterVpnAttachment].
   /// [name] The Pulumi resource name.
@@ -1332,24 +1343,28 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     TransitRouterVpnAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
-    this.cenId = registerOutput<String>('cenId');
-    this.chargeType = registerOutput<String>('chargeType');
-    this.createTime = registerOutput<String>('createTime');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
-    this.transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
-    this.vpnId = registerOutput<String>('vpnId');
-    this.vpnOwnerId = registerOutput<String>('vpnOwnerId');
-    this.zones = registerOutput<List<TransitRouterVpnAttachmentZone>?>('zones');
+         'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
+    cenId = registerOutput<String>('cenId');
+    chargeType = registerOutput<String>('chargeType');
+    createTime = registerOutput<String>('createTime');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentDescription = registerOutput<String?>(
+      'transitRouterAttachmentDescription',
+    );
+    transitRouterAttachmentName = registerOutput<String?>(
+      'transitRouterAttachmentName',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
+    vpnId = registerOutput<String>('vpnId');
+    vpnOwnerId = registerOutput<String>('vpnOwnerId');
+    zones = registerOutput<List<Map<String, dynamic>>?>('zones');
   }
 
   /// Gets an existing [TransitRouterVpnAttachment] resource's state with the given [name] and [id].
@@ -1370,23 +1385,27 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
-    this.cenId = registerOutput<String>('cenId');
-    this.chargeType = registerOutput<String>('chargeType');
-    this.createTime = registerOutput<String>('createTime');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
-    this.transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
-    this.vpnId = registerOutput<String>('vpnId');
-    this.vpnOwnerId = registerOutput<String>('vpnOwnerId');
-    this.zones = registerOutput<List<TransitRouterVpnAttachmentZone>?>('zones');
+         'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
+    cenId = registerOutput<String>('cenId');
+    chargeType = registerOutput<String>('chargeType');
+    createTime = registerOutput<String>('createTime');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentDescription = registerOutput<String?>(
+      'transitRouterAttachmentDescription',
+    );
+    transitRouterAttachmentName = registerOutput<String?>(
+      'transitRouterAttachmentName',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
+    vpnId = registerOutput<String>('vpnId');
+    vpnOwnerId = registerOutput<String>('vpnOwnerId');
+    zones = registerOutput<List<Map<String, dynamic>>?>('zones');
   }
 }

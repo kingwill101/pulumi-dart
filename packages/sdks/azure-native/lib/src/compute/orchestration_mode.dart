@@ -3,16 +3,15 @@ enum OrchestrationMode {
   uniform("Uniform"),
   flexible("Flexible");
 
-  const OrchestrationMode(this.value);
-  final String value;
+  const OrchestrationMode(this.wireValue);
+  final String wireValue;
 
   static OrchestrationMode fromValue(String value) {
     for (final item in OrchestrationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrchestrationMode value: $value');
   }
 }
-

@@ -9,27 +9,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesArgs {
   /// Instance availability zone.
   final pulumi.Input<String>? availabilityZone;
+
   /// The db instance categories.
   final pulumi.Input<String>? dbInstanceCategories;
+
   /// The db instance modes.
   final pulumi.Input<String>? dbInstanceModes;
+
   /// The description of the instance.
   final pulumi.Input<String>? description;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// The ids list of AnalyticDB for PostgreSQL instances.
   final pulumi.Input<List<String>>? ids;
+
   /// The network type of the instance.
   final pulumi.Input<String>? instanceNetworkType;
+
   /// A regex string to apply to the instance name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the enterprise resource group to which the instance belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Used to retrieve instances belong to specified `vswitch` resources.
   final pulumi.Input<String>? vswitchId;
 
@@ -83,20 +94,73 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      dbInstanceCategories: map['dbInstanceCategories'] == null ? null : (map['dbInstanceCategories']! as String).input(),
-      dbInstanceModes: map['dbInstanceModes'] == null ? null : (map['dbInstanceModes']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceNetworkType: map['instanceNetworkType'] == null ? null : (map['instanceNetworkType']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceCategories: (() {
+        final guardedValue = map['dbInstanceCategories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceModes: (() {
+        final guardedValue = map['dbInstanceModes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceNetworkType: (() {
+        final guardedValue = map['instanceNetworkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

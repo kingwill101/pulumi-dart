@@ -303,23 +303,32 @@ import 'certificate_validity.dart';
 class Certificate extends pulumi.CustomResource {
   /// Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates
   late final pulumi.Output<String?> apiPassthrough;
+
   /// ARN of the certificate.
   late final pulumi.Output<String> arn;
+
   /// PEM-encoded certificate value.
   late final pulumi.Output<String> certificate;
+
   /// ARN of the certificate authority.
   late final pulumi.Output<String> certificateAuthorityArn;
+
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA.
   late final pulumi.Output<String> certificateChain;
+
   /// Certificate Signing Request in PEM format.
   late final pulumi.Output<String> certificateSigningRequest;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
   late final pulumi.Output<String> signingAlgorithm;
+
   /// Template to use when issuing a certificate.
   /// See [ACM PCA Documentation](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html) for more information.
   late final pulumi.Output<String?> templateArn;
+
   /// Configures end of the validity period for the certificate. See validity block below.
   late final pulumi.Output<CertificateValidity> validity;
 
@@ -332,21 +341,23 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acmpca/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiPassthrough = registerOutput<String?>('apiPassthrough');
-    this.arn = registerOutput<String>('arn');
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
-    this.certificateChain = registerOutput<String>('certificateChain');
-    this.certificateSigningRequest = registerOutput<String>('certificateSigningRequest');
-    this.region = registerOutput<String>('region');
-    this.signingAlgorithm = registerOutput<String>('signingAlgorithm');
-    this.templateArn = registerOutput<String?>('templateArn');
-    this.validity = registerOutput<CertificateValidity>('validity');
+         'aws:acmpca/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiPassthrough = registerOutput<String?>('apiPassthrough');
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String>('certificateChain');
+    certificateSigningRequest = registerOutput<String>(
+      'certificateSigningRequest',
+    );
+    region = registerOutput<String>('region');
+    signingAlgorithm = registerOutput<String>('signingAlgorithm');
+    templateArn = registerOutput<String?>('templateArn');
+    validity = registerOutput<CertificateValidity>('validity');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -367,20 +378,22 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acmpca/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiPassthrough = registerOutput<String?>('apiPassthrough');
-    this.arn = registerOutput<String>('arn');
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
-    this.certificateChain = registerOutput<String>('certificateChain');
-    this.certificateSigningRequest = registerOutput<String>('certificateSigningRequest');
-    this.region = registerOutput<String>('region');
-    this.signingAlgorithm = registerOutput<String>('signingAlgorithm');
-    this.templateArn = registerOutput<String?>('templateArn');
-    this.validity = registerOutput<CertificateValidity>('validity');
+         'aws:acmpca/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiPassthrough = registerOutput<String?>('apiPassthrough');
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String>('certificateChain');
+    certificateSigningRequest = registerOutput<String>(
+      'certificateSigningRequest',
+    );
+    region = registerOutput<String>('region');
+    signingAlgorithm = registerOutput<String>('signingAlgorithm');
+    templateArn = registerOutput<String?>('templateArn');
+    validity = registerOutput<CertificateValidity>('validity');
   }
 }

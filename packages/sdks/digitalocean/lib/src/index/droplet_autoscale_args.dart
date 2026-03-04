@@ -12,9 +12,11 @@ class DropletAutoscaleArgs {
   /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
   /// documented below.
   final pulumi.Input<DropletAutoscaleConfig> config;
+
   /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// are documented below.
   final pulumi.Input<DropletAutoscaleDropletTemplate> dropletTemplate;
+
   /// The name of the Droplet Autoscale pool.
   final pulumi.Input<String>? name;
 
@@ -30,18 +32,37 @@ class DropletAutoscaleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<DropletAutoscaleConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
-      'dropletTemplate': pulumi.Input.mapInputValue<DropletAutoscaleDropletTemplate, Map<String, dynamic>>(dropletTemplate, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<
+            DropletAutoscaleConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
+      'dropletTemplate':
+          pulumi.Input.mapInputValue<
+            DropletAutoscaleDropletTemplate,
+            Map<String, dynamic>
+          >(dropletTemplate, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory DropletAutoscaleArgs.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleArgs(
-      config: (DropletAutoscaleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      dropletTemplate: (DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      config: pulumi.Input.fromValue(
+        DropletAutoscaleConfig.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dropletTemplate: pulumi.Input.fromValue(
+        DropletAutoscaleDropletTemplate.fromMap(
+          (map['dropletTemplate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

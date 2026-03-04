@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserIdentityResponse {
   /// The client ID of the user-assigned identity.
   final pulumi.Input<String> clientId;
+
   /// The principal ID of the user-assigned identity.
   final pulumi.Input<String> principalId;
 
   /// Creates a new [UserIdentityResponse].
   /// [clientId] The client ID of the user-assigned identity.
   /// [principalId] The principal ID of the user-assigned identity.
-  UserIdentityResponse({
-    required this.clientId,
-    required this.principalId,
-  });
+  UserIdentityResponse({required this.clientId, required this.principalId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': clientId,
-      'principalId': principalId,
-    };
+    return <String, dynamic>{'clientId': clientId, 'principalId': principalId};
   }
 
   factory UserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityResponse(
-      clientId: (map['clientId'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
-

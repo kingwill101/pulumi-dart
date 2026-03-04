@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerTopicArgs {
   /// Name of the partner topic.
   final pulumi.Input<String> partnerTopicName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetPartnerTopicArgs {
 
   factory GetPartnerTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicArgs(
-      partnerTopicName: (map['partnerTopicName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      partnerTopicName: pulumi.Input.fromValue(
+        map['partnerTopicName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

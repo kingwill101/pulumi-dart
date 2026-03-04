@@ -4,16 +4,17 @@ enum FileContentBufferFileTypeComputeV1 {
   undefined("UNDEFINED"),
   x509("X509");
 
-  const FileContentBufferFileTypeComputeV1(this.value);
-  final String value;
+  const FileContentBufferFileTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static FileContentBufferFileTypeComputeV1 fromValue(String value) {
     for (final item in FileContentBufferFileTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FileContentBufferFileTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown FileContentBufferFileTypeComputeV1 value: $value',
+    );
   }
 }
-

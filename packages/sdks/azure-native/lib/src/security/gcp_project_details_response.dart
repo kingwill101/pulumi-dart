@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcpProjectDetailsResponse {
   /// The GCP Project id
   final pulumi.Input<String>? projectId;
+
   /// GCP project name
   final pulumi.Input<String> projectName;
+
   /// The unique GCP Project number
   final pulumi.Input<String>? projectNumber;
+
   /// The GCP workload identity federation pool id
   final pulumi.Input<String> workloadIdentityPoolId;
 
@@ -36,11 +39,20 @@ class GcpProjectDetailsResponse {
 
   factory GcpProjectDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GcpProjectDetailsResponse(
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
-      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      projectNumber: (() {
+        final guardedValue = map['projectNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolId'] as String,
+      ),
     );
   }
 }
-

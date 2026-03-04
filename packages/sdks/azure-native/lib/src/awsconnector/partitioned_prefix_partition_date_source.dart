@@ -3,16 +3,17 @@ enum PartitionedPrefixPartitionDateSource {
   deliveryTime("DeliveryTime"),
   eventTime("EventTime");
 
-  const PartitionedPrefixPartitionDateSource(this.value);
-  final String value;
+  const PartitionedPrefixPartitionDateSource(this.wireValue);
+  final String wireValue;
 
   static PartitionedPrefixPartitionDateSource fromValue(String value) {
     for (final item in PartitionedPrefixPartitionDateSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PartitionedPrefixPartitionDateSource value: $value');
+    throw ArgumentError(
+      'Unknown PartitionedPrefixPartitionDateSource value: $value',
+    );
   }
 }
-

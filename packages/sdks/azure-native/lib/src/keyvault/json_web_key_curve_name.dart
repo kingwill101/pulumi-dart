@@ -5,16 +5,15 @@ enum JsonWebKeyCurveName {
   valueP521("P-521"),
   valueP256K("P-256K");
 
-  const JsonWebKeyCurveName(this.value);
-  final String value;
+  const JsonWebKeyCurveName(this.wireValue);
+  final String wireValue;
 
   static JsonWebKeyCurveName fromValue(String value) {
     for (final item in JsonWebKeyCurveName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JsonWebKeyCurveName value: $value');
   }
 }
-

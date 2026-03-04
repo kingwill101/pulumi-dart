@@ -4,16 +4,15 @@ enum HiveThriftTransportProtocol {
   valueSASL("SASL"),
   valueHTTP("HTTP ");
 
-  const HiveThriftTransportProtocol(this.value);
-  final String value;
+  const HiveThriftTransportProtocol(this.wireValue);
+  final String wireValue;
 
   static HiveThriftTransportProtocol fromValue(String value) {
     for (final item in HiveThriftTransportProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HiveThriftTransportProtocol value: $value');
   }
 }
-

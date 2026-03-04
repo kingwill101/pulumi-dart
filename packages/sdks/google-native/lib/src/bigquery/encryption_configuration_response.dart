@@ -8,20 +8,15 @@ class EncryptionConfigurationResponse {
 
   /// Creates a new [EncryptionConfigurationResponse].
   /// [kmsKeyName] Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
-  EncryptionConfigurationResponse({
-    required this.kmsKeyName,
-  });
+  EncryptionConfigurationResponse({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
   factory EncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigurationResponse(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

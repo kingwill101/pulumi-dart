@@ -1,5 +1,3 @@
-library module_batch;
-
 export 'batch/cron_job.dart';
 export 'batch/cron_job_args.dart';
 export 'batch/cron_job_batch_v1.dart';

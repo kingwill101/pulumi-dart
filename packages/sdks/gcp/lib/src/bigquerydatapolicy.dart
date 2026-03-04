@@ -1,5 +1,3 @@
-library module_bigquerydatapolicy;
-
 export 'bigquerydatapolicy/data_policy.dart';
 export 'bigquerydatapolicy/data_policy_args.dart';
 export 'bigquerydatapolicy/data_policy_data_masking_policy.dart';

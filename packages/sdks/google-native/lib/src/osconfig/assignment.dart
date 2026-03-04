@@ -8,12 +8,16 @@ import 'assignment_os_type.dart';
 class Assignment {
   /// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
   final pulumi.Input<List<AssignmentGroupLabel>>? groupLabels;
+
   /// Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies.
   final pulumi.Input<List<String>>? instanceNamePrefixes;
+
   /// Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
   final pulumi.Input<List<String>>? instances;
+
   /// Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
   final pulumi.Input<List<AssignmentOsType>>? osTypes;
+
   /// Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
   final pulumi.Input<List<String>>? zones;
 
@@ -33,22 +37,77 @@ class Assignment {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupLabels': ?pulumi.Input.mapOptionalInputValue<List<AssignmentGroupLabel>, List<Map<String, dynamic>>>(groupLabels, (value) => pulumi.Input.encodeList<AssignmentGroupLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupLabels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AssignmentGroupLabel>,
+            List<Map<String, dynamic>>
+          >(
+            groupLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AssignmentGroupLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceNamePrefixes': ?instanceNamePrefixes,
       'instances': ?instances,
-      'osTypes': ?pulumi.Input.mapOptionalInputValue<List<AssignmentOsType>, List<Map<String, dynamic>>>(osTypes, (value) => pulumi.Input.encodeList<AssignmentOsType, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'osTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AssignmentOsType>,
+            List<Map<String, dynamic>>
+          >(
+            osTypes,
+            (value) =>
+                pulumi.Input.encodeList<AssignmentOsType, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'zones': ?zones,
     };
   }
 
   factory Assignment.fromMap(Map<String, dynamic> map) {
     return Assignment(
-      groupLabels: map['groupLabels'] == null ? null : (pulumi.Input.decodeList<AssignmentGroupLabel>(map['groupLabels']!, (value) => AssignmentGroupLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceNamePrefixes: map['instanceNamePrefixes'] == null ? null : ((map['instanceNamePrefixes']! as List).cast<String>()).input(),
-      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
-      osTypes: map['osTypes'] == null ? null : (pulumi.Input.decodeList<AssignmentOsType>(map['osTypes']!, (value) => AssignmentOsType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      groupLabels: (() {
+        final guardedValue = map['groupLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AssignmentGroupLabel>(
+            guardedValue,
+            (value) => AssignmentGroupLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      instanceNamePrefixes: (() {
+        final guardedValue = map['instanceNamePrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instances: (() {
+        final guardedValue = map['instances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      osTypes: (() {
+        final guardedValue = map['osTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AssignmentOsType>(
+            guardedValue,
+            (value) => AssignmentOsType.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_biglake;
-
 export 'biglake/catalog.dart';
 export 'biglake/catalog_args.dart';
 export 'biglake/database.dart';

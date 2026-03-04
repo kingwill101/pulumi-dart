@@ -19,42 +19,61 @@ import 'yarn_application_response_dataproc_v1beta2.dart';
 class GetJobDataprocV1beta2Result {
   /// Indicates whether the job is completed. If the value is false, the job is still in progress. If true, the job is completed, and status.state field will indicate if it was successful, failed, or cancelled.
   final bool done;
+
   /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
   final String driverControlFilesUri;
+
   /// A URI pointing to the location of the stdout of the job's driver program.
   final String driverOutputResourceUri;
+
   /// Optional. Job is a Hadoop job.
   final HadoopJobResponseDataprocV1beta2 hadoopJob;
+
   /// Optional. Job is a Hive job.
   final HiveJobResponseDataprocV1beta2 hiveJob;
+
   /// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
   final String jobUuid;
+
   /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
   final Map<String, String> labels;
+
   /// Optional. Job is a Pig job.
   final PigJobResponseDataprocV1beta2 pigJob;
+
   /// Job information, including how, when, and where to run the job.
   final JobPlacementResponseDataprocV1beta2 placement;
+
   /// Optional. Job is a Presto job.
   final PrestoJobResponseDataprocV1beta2 prestoJob;
+
   /// Optional. Job is a PySpark job.
   final PySparkJobResponseDataprocV1beta2 pysparkJob;
+
   /// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
   final JobReferenceResponseDataprocV1beta2 reference;
+
   /// Optional. Job scheduling configuration.
   final JobSchedulingResponseDataprocV1beta2 scheduling;
+
   /// Optional. Job is a Spark job.
   final SparkJobResponseDataprocV1beta2 sparkJob;
+
   /// Optional. Job is a SparkR job.
   final SparkRJobResponseDataprocV1beta2 sparkRJob;
+
   /// Optional. Job is a SparkSql job.
   final SparkSqlJobResponseDataprocV1beta2 sparkSqlJob;
+
   /// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
   final JobStatusResponseDataprocV1beta2 status;
+
   /// The previous job status.
   final List<JobStatusResponseDataprocV1beta2> statusHistory;
+
   /// The email address of the user submitting the job. For jobs submitted on the cluster, the address is username@hostname.
   final String submittedBy;
+
   /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
   final List<YarnApplicationResponseDataprocV1beta2> yarnApplications;
 
@@ -121,9 +140,17 @@ class GetJobDataprocV1beta2Result {
       'sparkRJob': sparkRJob.toMap(),
       'sparkSqlJob': sparkSqlJob.toMap(),
       'status': status.toMap(),
-      'statusHistory': pulumi.Input.encodeList<JobStatusResponseDataprocV1beta2, Map<String, dynamic>>(statusHistory, (value) => value.toMap()),
+      'statusHistory':
+          pulumi.Input.encodeList<
+            JobStatusResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(statusHistory, (value) => value.toMap()),
       'submittedBy': submittedBy,
-      'yarnApplications': pulumi.Input.encodeList<YarnApplicationResponseDataprocV1beta2, Map<String, dynamic>>(yarnApplications, (value) => value.toMap()),
+      'yarnApplications':
+          pulumi.Input.encodeList<
+            YarnApplicationResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(yarnApplications, (value) => value.toMap()),
     };
   }
 
@@ -132,24 +159,58 @@ class GetJobDataprocV1beta2Result {
       done: map['done'] as bool,
       driverControlFilesUri: map['driverControlFilesUri'] as String,
       driverOutputResourceUri: map['driverOutputResourceUri'] as String,
-      hadoopJob: HadoopJobResponseDataprocV1beta2.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>()),
-      hiveJob: HiveJobResponseDataprocV1beta2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>()),
+      hadoopJob: HadoopJobResponseDataprocV1beta2.fromMap(
+        (map['hadoopJob']! as Map).cast<String, dynamic>(),
+      ),
+      hiveJob: HiveJobResponseDataprocV1beta2.fromMap(
+        (map['hiveJob']! as Map).cast<String, dynamic>(),
+      ),
       jobUuid: map['jobUuid'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      pigJob: PigJobResponseDataprocV1beta2.fromMap((map['pigJob'] as Map).cast<String, dynamic>()),
-      placement: JobPlacementResponseDataprocV1beta2.fromMap((map['placement'] as Map).cast<String, dynamic>()),
-      prestoJob: PrestoJobResponseDataprocV1beta2.fromMap((map['prestoJob'] as Map).cast<String, dynamic>()),
-      pysparkJob: PySparkJobResponseDataprocV1beta2.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>()),
-      reference: JobReferenceResponseDataprocV1beta2.fromMap((map['reference'] as Map).cast<String, dynamic>()),
-      scheduling: JobSchedulingResponseDataprocV1beta2.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
-      sparkJob: SparkJobResponseDataprocV1beta2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>()),
-      sparkRJob: SparkRJobResponseDataprocV1beta2.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>()),
-      sparkSqlJob: SparkSqlJobResponseDataprocV1beta2.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>()),
-      status: JobStatusResponseDataprocV1beta2.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      statusHistory: pulumi.Input.decodeList<JobStatusResponseDataprocV1beta2>(map['statusHistory'], (value) => JobStatusResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      pigJob: PigJobResponseDataprocV1beta2.fromMap(
+        (map['pigJob']! as Map).cast<String, dynamic>(),
+      ),
+      placement: JobPlacementResponseDataprocV1beta2.fromMap(
+        (map['placement']! as Map).cast<String, dynamic>(),
+      ),
+      prestoJob: PrestoJobResponseDataprocV1beta2.fromMap(
+        (map['prestoJob']! as Map).cast<String, dynamic>(),
+      ),
+      pysparkJob: PySparkJobResponseDataprocV1beta2.fromMap(
+        (map['pysparkJob']! as Map).cast<String, dynamic>(),
+      ),
+      reference: JobReferenceResponseDataprocV1beta2.fromMap(
+        (map['reference']! as Map).cast<String, dynamic>(),
+      ),
+      scheduling: JobSchedulingResponseDataprocV1beta2.fromMap(
+        (map['scheduling']! as Map).cast<String, dynamic>(),
+      ),
+      sparkJob: SparkJobResponseDataprocV1beta2.fromMap(
+        (map['sparkJob']! as Map).cast<String, dynamic>(),
+      ),
+      sparkRJob: SparkRJobResponseDataprocV1beta2.fromMap(
+        (map['sparkRJob']! as Map).cast<String, dynamic>(),
+      ),
+      sparkSqlJob: SparkSqlJobResponseDataprocV1beta2.fromMap(
+        (map['sparkSqlJob']! as Map).cast<String, dynamic>(),
+      ),
+      status: JobStatusResponseDataprocV1beta2.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
+      statusHistory: pulumi.Input.decodeList<JobStatusResponseDataprocV1beta2>(
+        map['statusHistory']!,
+        (value) => JobStatusResponseDataprocV1beta2.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       submittedBy: map['submittedBy'] as String,
-      yarnApplications: pulumi.Input.decodeList<YarnApplicationResponseDataprocV1beta2>(map['yarnApplications'], (value) => YarnApplicationResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      yarnApplications:
+          pulumi.Input.decodeList<YarnApplicationResponseDataprocV1beta2>(
+            map['yarnApplications']!,
+            (value) => YarnApplicationResponseDataprocV1beta2.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

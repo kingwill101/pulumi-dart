@@ -6,14 +6,19 @@ import 'get_cluster_credential_certificate_authority.dart';
 class GetClusterCredentialResult {
   /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
   final GetClusterCredentialCertificateAuthority certificateAuthority;
+
   /// The id of target cluster.
   final String clusterId;
+
   /// The name of target cluster.
   final String clusterName;
+
   /// Expiration time of kube config. Format: UTC time in rfc3339.
   final String expiration;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Sensitive) The kube config to use to authenticate with the cluster.
   final String kubeConfig;
   final String? outputFile;
@@ -54,15 +59,24 @@ class GetClusterCredentialResult {
 
   factory GetClusterCredentialResult.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialResult(
-      certificateAuthority: GetClusterCredentialCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>()),
+      certificateAuthority: GetClusterCredentialCertificateAuthority.fromMap(
+        (map['certificateAuthority']! as Map).cast<String, dynamic>(),
+      ),
       clusterId: map['clusterId'] as String,
       clusterName: map['clusterName'] as String,
       expiration: map['expiration'] as String,
       id: map['id'] as String,
       kubeConfig: map['kubeConfig'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : map['temporaryDurationMinutes']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      temporaryDurationMinutes: (() {
+        final guardedValue = map['temporaryDurationMinutes'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

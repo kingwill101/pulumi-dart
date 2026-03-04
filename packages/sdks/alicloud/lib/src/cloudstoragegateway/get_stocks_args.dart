@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStocksArgs {
   /// The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
   final pulumi.Input<String>? gatewayClass;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetStocksArgs].
   /// [gatewayClass] The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetStocksArgs({
-    this.gatewayClass,
-    this.outputFile,
-  });
+  GetStocksArgs({this.gatewayClass, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class GetStocksArgs {
 
   factory GetStocksArgs.fromMap(Map<String, dynamic> map) {
     return GetStocksArgs(
-      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      gatewayClass: (() {
+        final guardedValue = map['gatewayClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

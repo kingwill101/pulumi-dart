@@ -119,10 +119,13 @@ import 'access_package_catalog_state.dart';
 class AccessPackageCatalog extends pulumi.CustomResource {
   /// The description of the access package catalog.
   late final pulumi.Output<String> description;
+
   /// The display name of the access package catalog.
   late final pulumi.Output<String> displayName;
+
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
   late final pulumi.Output<bool?> externallyVisible;
+
   /// Whether the access packages in this catalog are available for management.
   late final pulumi.Output<bool?> published;
 
@@ -135,15 +138,15 @@ class AccessPackageCatalog extends pulumi.CustomResource {
     AccessPackageCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageCatalog:AccessPackageCatalog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.externallyVisible = registerOutput<bool?>('externallyVisible');
-    this.published = registerOutput<bool?>('published');
+         'azuread:index/accessPackageCatalog:AccessPackageCatalog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    externallyVisible = registerOutput<bool?>('externallyVisible');
+    published = registerOutput<bool?>('published');
   }
 
   /// Gets an existing [AccessPackageCatalog] resource's state with the given [name] and [id].
@@ -164,14 +167,14 @@ class AccessPackageCatalog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageCatalog:AccessPackageCatalog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.externallyVisible = registerOutput<bool?>('externallyVisible');
-    this.published = registerOutput<bool?>('published');
+         'azuread:index/accessPackageCatalog:AccessPackageCatalog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    externallyVisible = registerOutput<bool?>('externallyVisible');
+    published = registerOutput<bool?>('published');
   }
 }

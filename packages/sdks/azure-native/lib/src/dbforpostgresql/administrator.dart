@@ -153,18 +153,25 @@ import 'system_data_response.dart';
 class Administrator extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Object identifier of the Microsoft Entra principal.
   late final pulumi.Output<String?> objectId;
+
   /// Name of the Microsoft Entra principal.
   late final pulumi.Output<String?> principalName;
+
   /// Type of Microsoft Entra principal to which the server administrator is associated.
   late final pulumi.Output<String?> principalType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Identifier of the tenant in which the Microsoft Entra principal exists.
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,18 +184,18 @@ class Administrator extends pulumi.CustomResource {
     AdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:Administrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:dbforpostgresql:Administrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String?>('objectId');
-    this.principalName = registerOutput<String?>('principalName');
-    this.principalType = registerOutput<String?>('principalType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    objectId = registerOutput<String?>('objectId');
+    principalName = registerOutput<String?>('principalName');
+    principalType = registerOutput<String?>('principalType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

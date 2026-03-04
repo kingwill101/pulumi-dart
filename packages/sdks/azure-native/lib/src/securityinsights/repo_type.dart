@@ -3,16 +3,15 @@ enum RepoType {
   valueGithub("Github"),
   valueDevOps("DevOps");
 
-  const RepoType(this.value);
-  final String value;
+  const RepoType(this.wireValue);
+  final String wireValue;
 
   static RepoType fromValue(String value) {
     for (final item in RepoType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RepoType value: $value');
   }
 }
-

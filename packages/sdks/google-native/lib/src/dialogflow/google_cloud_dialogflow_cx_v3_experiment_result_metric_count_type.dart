@@ -5,16 +5,22 @@ enum GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
   totalTurnCount("TOTAL_TURN_COUNT"),
   averageTurnCount("AVERAGE_TURN_COUNT");
 
-  const GoogleCloudDialogflowCxV3ExperimentResultMetricCountType(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3ExperimentResultMetricCountType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowCxV3ExperimentResultMetricCountType fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowCxV3ExperimentResultMetricCountType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricCountType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricCountType value: $value',
+    );
   }
 }
-

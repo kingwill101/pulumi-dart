@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketServerSideEncryptionArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
   final pulumi.Input<String>? kmsDataEncryption;
+
   /// The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
   final pulumi.Input<String>? kmsMasterKeyId;
+
   /// The server-side encryption method. Valid Values: KMS, AES256.
   final pulumi.Input<String> sseAlgorithm;
 
@@ -39,11 +42,18 @@ class BucketServerSideEncryptionArgs {
 
   factory BucketServerSideEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionArgs(
-      bucket: (map['bucket'] as String).input(),
-      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption']! as String).input(),
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId']! as String).input(),
-      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      kmsDataEncryption: (() {
+        final guardedValue = map['kmsDataEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsMasterKeyId: (() {
+        final guardedValue = map['kmsMasterKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sseAlgorithm: pulumi.Input.fromValue(map['sseAlgorithm'] as String),
     );
   }
 }
-

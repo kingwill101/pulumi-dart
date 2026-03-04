@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:mockito/mockito.dart';
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
@@ -38,6 +40,34 @@ void main() {
   });
 
   group('Serializer Tests', () {
+    test('Serialize detects recursive Output/Input graph', () async {
+      final seenCompleter = Completer<OutputData<dynamic>>();
+      final recursive = Output<dynamic>(seenCompleter.future);
+      final cycle = Input.fromOutput(recursive);
+
+      seenCompleter.complete(
+        OutputData<dynamic>(
+          value: cycle,
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      await expectLater(
+        serializer.serializeAsync('cycle', recursive, false),
+        throwsA(
+          predicate(
+            (error) =>
+                error is StateError &&
+                error.toString().contains(
+                  'Detected recursive Output/Input graph while serializing value',
+                ),
+          ),
+        ),
+      );
+    });
+
     test('Serialize primitive values', () async {
       expect(await serializer.serializeAsync('test', null, false), isNull);
       expect(await serializer.serializeAsync('test', true, false), isTrue);
@@ -293,6 +323,152 @@ void main() {
     );
 
     test(
+      'Upstream parity (nodejs props.spec.ts): marshals resource references correctly during preview',
+      () async {
+        // Source:
+        // pulumi/sdk/nodejs/tests/runtime/props.spec.ts
+        // "marshals resource references correctly during preview"
+        final component = MockComponentResource();
+        when(component.getResourceType()).thenReturn('test:index:Component');
+        when(component.getResourceName()).thenReturn('component');
+        when(component.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Component::component',
+          ),
+        );
+
+        final custom = MockCustomResource();
+        when(custom.getResourceType()).thenReturn('test:index:Custom');
+        when(custom.getResourceName()).thenReturn('custom');
+        when(custom.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Custom::custom'),
+        );
+        when(custom.id).thenReturn(
+          Output<String>(
+            Future.value(
+              const OutputData<String>(
+                value: null,
+                isKnown: false,
+                isSecret: false,
+                resources: {},
+              ),
+            ),
+          ),
+        );
+
+        final inputs = <String, dynamic>{
+          'component': component,
+          'custom': custom,
+        };
+
+        final paritySerializer = Serializer(collapseUnknownCollections: false);
+
+        final serializedWithRefs = await paritySerializer.serializeAsync(
+          'test',
+          inputs,
+          true,
+        );
+        expect(
+          serializedWithRefs,
+          equals({
+            'component': {
+              Constants.specialSigKey: Constants.specialResourceSig,
+              Constants.resourceUrnName:
+                  'urn:pulumi:stack::project::test:index:Component::component',
+            },
+            'custom': {
+              Constants.specialSigKey: Constants.specialResourceSig,
+              Constants.resourceUrnName:
+                  'urn:pulumi:stack::project::test:index:Custom::custom',
+              // Unknown custom ID is encoded as empty string in a resource ref.
+              Constants.resourceIdName: '',
+            },
+          }),
+        );
+
+        final serializedLegacy = await paritySerializer.serializeAsync(
+          'test',
+          inputs,
+          false,
+        );
+        expect(
+          serializedLegacy,
+          equals({
+            'component':
+                'urn:pulumi:stack::project::test:index:Component::component',
+            'custom': Constants.unknownValue,
+          }),
+        );
+      },
+    );
+
+    test(
+      'Upstream parity (nodejs props.spec.ts): marshals resource references correctly during update',
+      () async {
+        // Source:
+        // pulumi/sdk/nodejs/tests/runtime/props.spec.ts
+        // "marshals resource references correctly during update"
+        final component = MockComponentResource();
+        when(component.getResourceType()).thenReturn('test:index:Component');
+        when(component.getResourceName()).thenReturn('component');
+        when(component.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Component::component',
+          ),
+        );
+
+        final custom = MockCustomResource();
+        when(custom.getResourceType()).thenReturn('test:index:Custom');
+        when(custom.getResourceName()).thenReturn('custom');
+        when(custom.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Custom::custom'),
+        );
+        when(custom.id).thenReturn(Output.create('custom-id'));
+
+        final inputs = <String, dynamic>{
+          'component': component,
+          'custom': custom,
+        };
+
+        final serializedWithRefs = await serializer.serializeAsync(
+          'test',
+          inputs,
+          true,
+        );
+        expect(
+          serializedWithRefs,
+          equals({
+            'component': {
+              Constants.specialSigKey: Constants.specialResourceSig,
+              Constants.resourceUrnName:
+                  'urn:pulumi:stack::project::test:index:Component::component',
+            },
+            'custom': {
+              Constants.specialSigKey: Constants.specialResourceSig,
+              Constants.resourceUrnName:
+                  'urn:pulumi:stack::project::test:index:Custom::custom',
+              Constants.resourceIdName: 'custom-id',
+            },
+          }),
+        );
+
+        final serializedLegacy = await serializer.serializeAsync(
+          'test',
+          inputs,
+          false,
+        );
+        expect(
+          serializedLegacy,
+          equals({
+            'component':
+                'urn:pulumi:stack::project::test:index:Component::component',
+            'custom': 'custom-id',
+          }),
+        );
+      },
+    );
+
+    test(
       'Serialize ComponentResource without resource references uses URN',
       () async {
         final mockResource = MockComponentResource();
@@ -419,6 +595,54 @@ void main() {
         expect(serializer.dependentResources, hasLength(2));
         expect(serializer.dependentResources, contains(custom1));
         expect(serializer.dependentResources, contains(custom2));
+      },
+    );
+
+    test(
+      'Upstream parity (nodejs props.spec.ts): default dependency tracking includes resource references',
+      () async {
+        // Source:
+        // pulumi/sdk/nodejs/tests/runtime/props.spec.ts
+        // "determines resource reference dependencies correctly"
+        //
+        // Dart currently exposes the default behavior equivalent to
+        // excludeResourceReferencesFromDependencies=false.
+        final custom1 = MockCustomResource();
+        final custom2 = MockCustomResource();
+
+        when(custom1.getResourceType()).thenReturn('test:index:Custom');
+        when(custom1.getResourceName()).thenReturn('custom1');
+        when(custom1.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Custom::custom1',
+          ),
+        );
+        when(custom1.id).thenReturn(Output.create('custom1-id'));
+
+        when(custom2.getResourceType()).thenReturn('test:index:Custom');
+        when(custom2.getResourceName()).thenReturn('custom2');
+        when(custom2.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Custom::custom2',
+          ),
+        );
+        when(custom2.id).thenReturn(Output.create('custom2-id'));
+
+        final withRefsSerializer = Serializer();
+        await withRefsSerializer.serializeAsync('test', {
+          'resources': [custom1, custom2],
+        }, true);
+        expect(withRefsSerializer.dependentResources, hasLength(2));
+        expect(withRefsSerializer.dependentResources, contains(custom1));
+        expect(withRefsSerializer.dependentResources, contains(custom2));
+
+        final legacySerializer = Serializer();
+        await legacySerializer.serializeAsync('test', {
+          'resources': [custom1, custom2],
+        }, false);
+        expect(legacySerializer.dependentResources, hasLength(2));
+        expect(legacySerializer.dependentResources, contains(custom1));
+        expect(legacySerializer.dependentResources, contains(custom2));
       },
     );
 

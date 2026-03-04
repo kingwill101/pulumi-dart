@@ -1,5 +1,3 @@
-library module_edgeorder;
-
 export 'edgeorder/additional_configuration.dart';
 export 'edgeorder/additional_configuration_response.dart';
 export 'edgeorder/address.dart';

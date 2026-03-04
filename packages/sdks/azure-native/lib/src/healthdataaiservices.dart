@@ -1,5 +1,3 @@
-library module_healthdataaiservices;
-
 export 'healthdataaiservices/deid_service.dart';
 export 'healthdataaiservices/deid_service_args.dart';
 export 'healthdataaiservices/deid_service_properties.dart';

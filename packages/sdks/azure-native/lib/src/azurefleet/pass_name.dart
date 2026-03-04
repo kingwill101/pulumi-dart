@@ -2,16 +2,15 @@
 enum PassName {
   valueOobeSystem("OobeSystem");
 
-  const PassName(this.value);
-  final String value;
+  const PassName(this.wireValue);
+  final String wireValue;
 
   static PassName fromValue(String value) {
     for (final item in PassName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PassName value: $value');
   }
 }
-

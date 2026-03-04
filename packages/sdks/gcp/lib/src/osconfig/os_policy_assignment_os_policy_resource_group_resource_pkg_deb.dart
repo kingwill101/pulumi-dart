@@ -8,9 +8,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   /// install when false: `dpkg -i package` - install when true: `apt-get update
   /// && apt-get -y install package.deb`
   final pulumi.Input<bool>? pullDeps;
+
   /// A deb package. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource> source;
+  final pulumi.Input<
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource
+  >
+  source;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb].
   /// [pullDeps] Whether dependencies should also be installed. -
@@ -23,15 +27,28 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': ?pullDeps,
-      'source': pulumi.Input.mapInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
-      source: (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      pullDeps: (() {
+        final guardedValue = map['pullDeps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      source: pulumi.Input.fromValue(
+        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

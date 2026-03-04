@@ -367,7 +367,7 @@ import 'pipeline_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataFactory` - 2018-06-01
@@ -382,22 +382,31 @@ import 'pipeline_state.dart';
 class Pipeline extends pulumi.CustomResource {
   /// A JSON object that contains the activities that will be associated with the Data Factory Pipeline.
   late final pulumi.Output<String?> activitiesJson;
+
   /// List of tags that can be used for describing the Data Factory Pipeline.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The max number of concurrent runs for the Data Factory Pipeline. Must be between `1` and `50`.
   late final pulumi.Output<int?> concurrency;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Pipeline.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Pipeline is in. If not specified, the Pipeline will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// The TimeSpan value after which an Azure Monitoring Metric is fired.
   late final pulumi.Output<String?> moniterMetricsAfterDuration;
+
   /// Specifies the name of the Data Factory Pipeline. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Pipeline.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A map of variables to associate with the Data Factory Pipeline.
   late final pulumi.Output<Map<String, String>?> variables;
 
@@ -410,21 +419,23 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/pipeline:Pipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activitiesJson = registerOutput<String?>('activitiesJson');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.concurrency = registerOutput<int?>('concurrency');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.moniterMetricsAfterDuration = registerOutput<String?>('moniterMetricsAfterDuration');
+         'azure:datafactory/pipeline:Pipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activitiesJson = registerOutput<String?>('activitiesJson');
+    annotations = registerOutput<List<String>?>('annotations');
+    concurrency = registerOutput<int?>('concurrency');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    moniterMetricsAfterDuration = registerOutput<String?>(
+      'moniterMetricsAfterDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -445,20 +456,22 @@ class Pipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/pipeline:Pipeline',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activitiesJson = registerOutput<String?>('activitiesJson');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.concurrency = registerOutput<int?>('concurrency');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.moniterMetricsAfterDuration = registerOutput<String?>('moniterMetricsAfterDuration');
+         'azure:datafactory/pipeline:Pipeline',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activitiesJson = registerOutput<String?>('activitiesJson');
+    annotations = registerOutput<List<String>?>('annotations');
+    concurrency = registerOutput<int?>('concurrency');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    moniterMetricsAfterDuration = registerOutput<String?>(
+      'moniterMetricsAfterDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 }

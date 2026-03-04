@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tunnel_args.dart';
-import 'tunnel_channel.dart';
 import 'tunnel_state.dart';
 
 /// Provides an OTS tunnel resource.
 ///
 /// For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 ///
-/// > **NOTE:** Available since v1.172.0.
+/// &gt; **NOTE:** Available since v1.172.0.
 ///
 /// ## Example Usage
 ///
@@ -389,23 +388,32 @@ import 'tunnel_state.dart';
 /// ```
 class Tunnel extends pulumi.CustomResource {
   /// The channels of OTS tunnel. Each element contains the following attributes:
-  late final pulumi.Output<List<TunnelChannel>> channels;
+  late final pulumi.Output<List<Map<String, dynamic>>> channels;
+
   /// The creation time of the Tunnel.
   late final pulumi.Output<int> createTime;
+
   /// Whether the tunnel has expired.
   late final pulumi.Output<bool> expired;
+
   /// The name of the OTS instance in which table will located.
   late final pulumi.Output<String> instanceName;
+
   /// The name of the OTS table. If changed, a new table would be created.
   late final pulumi.Output<String> tableName;
+
   /// The tunnel id of the OTS which could not be changed.
   late final pulumi.Output<String> tunnelId;
+
   /// The name of the OTS tunnel. If changed, a new tunnel would be created.
   late final pulumi.Output<String> tunnelName;
+
   /// The latest consumption time of the tunnel, unix time in nanosecond.
   late final pulumi.Output<int> tunnelRpo;
+
   /// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
   late final pulumi.Output<String> tunnelStage;
+
   /// The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
   late final pulumi.Output<String> tunnelType;
 
@@ -413,26 +421,23 @@ class Tunnel extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tunnel]. {@macro pulumi_ots_tunnel_tunnel_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tunnel(
-    String name, {
-    TunnelArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ots/tunnel:Tunnel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.channels = registerOutput<List<TunnelChannel>>('channels');
-    this.createTime = registerOutput<int>('createTime');
-    this.expired = registerOutput<bool>('expired');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.tableName = registerOutput<String>('tableName');
-    this.tunnelId = registerOutput<String>('tunnelId');
-    this.tunnelName = registerOutput<String>('tunnelName');
-    this.tunnelRpo = registerOutput<int>('tunnelRpo');
-    this.tunnelStage = registerOutput<String>('tunnelStage');
-    this.tunnelType = registerOutput<String>('tunnelType');
+  Tunnel(String name, {TunnelArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ots/tunnel:Tunnel',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    channels = registerOutput<List<Map<String, dynamic>>>('channels');
+    createTime = registerOutput<int>('createTime');
+    expired = registerOutput<bool>('expired');
+    instanceName = registerOutput<String>('instanceName');
+    tableName = registerOutput<String>('tableName');
+    tunnelId = registerOutput<String>('tunnelId');
+    tunnelName = registerOutput<String>('tunnelName');
+    tunnelRpo = registerOutput<int>('tunnelRpo');
+    tunnelStage = registerOutput<String>('tunnelStage');
+    tunnelType = registerOutput<String>('tunnelType');
   }
 
   /// Gets an existing [Tunnel] resource's state with the given [name] and [id].
@@ -453,20 +458,20 @@ class Tunnel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ots/tunnel:Tunnel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.channels = registerOutput<List<TunnelChannel>>('channels');
-    this.createTime = registerOutput<int>('createTime');
-    this.expired = registerOutput<bool>('expired');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.tableName = registerOutput<String>('tableName');
-    this.tunnelId = registerOutput<String>('tunnelId');
-    this.tunnelName = registerOutput<String>('tunnelName');
-    this.tunnelRpo = registerOutput<int>('tunnelRpo');
-    this.tunnelStage = registerOutput<String>('tunnelStage');
-    this.tunnelType = registerOutput<String>('tunnelType');
+         'alicloud:ots/tunnel:Tunnel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    channels = registerOutput<List<Map<String, dynamic>>>('channels');
+    createTime = registerOutput<int>('createTime');
+    expired = registerOutput<bool>('expired');
+    instanceName = registerOutput<String>('instanceName');
+    tableName = registerOutput<String>('tableName');
+    tunnelId = registerOutput<String>('tunnelId');
+    tunnelName = registerOutput<String>('tunnelName');
+    tunnelRpo = registerOutput<int>('tunnelRpo');
+    tunnelStage = registerOutput<String>('tunnelStage');
+    tunnelType = registerOutput<String>('tunnelType');
   }
 }

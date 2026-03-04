@@ -10,7 +10,7 @@ import 'access_point_state.dart';
 ///
 /// For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -463,28 +463,40 @@ import 'access_point_state.dart';
 class AccessPoint extends pulumi.CustomResource {
   /// The name of the permission group.
   late final pulumi.Output<String> accessGroup;
+
   /// The ID of the access point.
   late final pulumi.Output<String> accessPointId;
+
   /// The name of the access point.
   late final pulumi.Output<String?> accessPointName;
+
   /// The time when the access point was created.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> enabledRam;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The Posix user. See `posix_user` below.
   late final pulumi.Output<AccessPointPosixUser> posixUser;
+
   /// (Available since v1.254.0) The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The root directory of the access point.
   late final pulumi.Output<String> rootPath;
+
   /// Root permissions. See `root_path_permission` below.
   late final pulumi.Output<AccessPointRootPathPermission> rootPathPermission;
+
   /// The status of the access point.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
 
@@ -497,24 +509,26 @@ class AccessPoint extends pulumi.CustomResource {
     AccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessPoint:AccessPoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroup = registerOutput<String>('accessGroup');
-    this.accessPointId = registerOutput<String>('accessPointId');
-    this.accessPointName = registerOutput<String?>('accessPointName');
-    this.createTime = registerOutput<String>('createTime');
-    this.enabledRam = registerOutput<bool?>('enabledRam');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.posixUser = registerOutput<AccessPointPosixUser>('posixUser');
-    this.regionId = registerOutput<String>('regionId');
-    this.rootPath = registerOutput<String>('rootPath');
-    this.rootPathPermission = registerOutput<AccessPointRootPathPermission>('rootPathPermission');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:nas/accessPoint:AccessPoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroup = registerOutput<String>('accessGroup');
+    accessPointId = registerOutput<String>('accessPointId');
+    accessPointName = registerOutput<String?>('accessPointName');
+    createTime = registerOutput<String>('createTime');
+    enabledRam = registerOutput<bool?>('enabledRam');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    posixUser = registerOutput<AccessPointPosixUser>('posixUser');
+    regionId = registerOutput<String>('regionId');
+    rootPath = registerOutput<String>('rootPath');
+    rootPathPermission = registerOutput<AccessPointRootPathPermission>(
+      'rootPathPermission',
+    );
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [AccessPoint] resource's state with the given [name] and [id].
@@ -535,23 +549,25 @@ class AccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessPoint:AccessPoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroup = registerOutput<String>('accessGroup');
-    this.accessPointId = registerOutput<String>('accessPointId');
-    this.accessPointName = registerOutput<String?>('accessPointName');
-    this.createTime = registerOutput<String>('createTime');
-    this.enabledRam = registerOutput<bool?>('enabledRam');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.posixUser = registerOutput<AccessPointPosixUser>('posixUser');
-    this.regionId = registerOutput<String>('regionId');
-    this.rootPath = registerOutput<String>('rootPath');
-    this.rootPathPermission = registerOutput<AccessPointRootPathPermission>('rootPathPermission');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:nas/accessPoint:AccessPoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroup = registerOutput<String>('accessGroup');
+    accessPointId = registerOutput<String>('accessPointId');
+    accessPointName = registerOutput<String?>('accessPointName');
+    createTime = registerOutput<String>('createTime');
+    enabledRam = registerOutput<bool?>('enabledRam');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    posixUser = registerOutput<AccessPointPosixUser>('posixUser');
+    regionId = registerOutput<String>('regionId');
+    rootPath = registerOutput<String>('rootPath');
+    rootPathPermission = registerOutput<AccessPointRootPathPermission>(
+      'rootPathPermission',
+    );
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

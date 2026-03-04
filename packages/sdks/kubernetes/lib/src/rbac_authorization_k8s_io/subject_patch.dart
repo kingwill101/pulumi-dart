@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubjectPatch {
   /// APIGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and Group subjects.
   final pulumi.Input<String>? apiGroup;
+
   /// Kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error.
   final pulumi.Input<String>? kind;
+
   /// Name of the object being referenced.
   final pulumi.Input<String>? name;
+
   /// Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error.
   final pulumi.Input<String>? namespace;
 
@@ -18,12 +21,7 @@ class SubjectPatch {
   /// [kind] Kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error.
   /// [name] Name of the object being referenced.
   /// [namespace] Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error.
-  SubjectPatch({
-    this.apiGroup,
-    this.kind,
-    this.name,
-    this.namespace,
-  });
+  SubjectPatch({this.apiGroup, this.kind, this.name, this.namespace});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class SubjectPatch {
 
   factory SubjectPatch.fromMap(Map<String, dynamic> map) {
     return SubjectPatch(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      apiGroup: (() {
+        final guardedValue = map['apiGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

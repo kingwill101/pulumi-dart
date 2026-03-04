@@ -13,46 +13,64 @@ import 'deployment_web_application_firewall.dart';
 class DeploymentState {
   /// An `auto_scale_profile` block as defined below.
   final pulumi.Input<List<DeploymentAutoScaleProfile>>? autoScaleProfiles;
+
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   final pulumi.Input<String>? automaticUpgradeChannel;
+
   /// Specify the number of NGINX capacity units for this NGINX deployment.
   ///
-  /// > **Note:** For more information on NGINX capacity units, please refer to the [NGINX scaling guidance documentation](https://docs.nginx.com/nginxaas/azure/quickstart/scaling/)
+  /// &gt; **Note:** For more information on NGINX capacity units, please refer to the [NGINX scaling guidance documentation](https://docs.nginx.com/nginxaas/azure/quickstart/scaling/)
   final pulumi.Input<int>? capacity;
+
   /// The dataplane API endpoint of the NGINX Deployment.
   final pulumi.Input<String>? dataplaneApiEndpoint;
+
   /// Should the metrics be exported to Azure Monitor?
   final pulumi.Input<bool>? diagnoseSupportEnabled;
+
   /// Specify the preferred support contact email address for receiving alerts and notifications.
   final pulumi.Input<String>? email;
+
   /// One or more `frontend_private` blocks as defined below.
   final pulumi.Input<List<DeploymentFrontendPrivate>>? frontendPrivates;
+
   /// A `frontend_public` block as defined below.
   final pulumi.Input<DeploymentFrontendPublic>? frontendPublic;
+
   /// An `identity` block as defined below.
   final pulumi.Input<DeploymentIdentity>? identity;
+
   /// The IP address of the NGINX Deployment.
   final pulumi.Input<String>? ipAddress;
+
   /// The Azure Region where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   final pulumi.Input<String>? location;
-  final pulumi.Input<List<DeploymentLoggingStorageAccount>>? loggingStorageAccounts;
+  final pulumi.Input<List<DeploymentLoggingStorageAccount>>?
+  loggingStorageAccounts;
   final pulumi.Input<String>? managedResourceGroup;
+
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
   final pulumi.Input<String>? name;
+
   /// One or more `network_interface` blocks as defined below.
   final pulumi.Input<List<DeploymentNetworkInterface>>? networkInterfaces;
+
   /// The version of the NGINX Deployment.
   final pulumi.Input<String>? nginxVersion;
+
   /// The name of the Resource Group where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Specifies the NGINX Deployment SKU.
   ///
-  /// > **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
+  /// &gt; **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
   ///
-  /// > **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
+  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
   final pulumi.Input<String>? sku;
+
   /// A mapping of tags which should be assigned to the NGINX Deployment.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A `web_application_firewall` blocks as defined below.
   final pulumi.Input<DeploymentWebApplicationFirewall>? webApplicationFirewall;
 
@@ -102,52 +120,229 @@ class DeploymentState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoScaleProfiles': ?pulumi.Input.mapOptionalInputValue<List<DeploymentAutoScaleProfile>, List<Map<String, dynamic>>>(autoScaleProfiles, (value) => pulumi.Input.encodeList<DeploymentAutoScaleProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'autoScaleProfiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentAutoScaleProfile>,
+            List<Map<String, dynamic>>
+          >(
+            autoScaleProfiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentAutoScaleProfile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'automaticUpgradeChannel': ?automaticUpgradeChannel,
       'capacity': ?capacity,
       'dataplaneApiEndpoint': ?dataplaneApiEndpoint,
       'diagnoseSupportEnabled': ?diagnoseSupportEnabled,
       'email': ?email,
-      'frontendPrivates': ?pulumi.Input.mapOptionalInputValue<List<DeploymentFrontendPrivate>, List<Map<String, dynamic>>>(frontendPrivates, (value) => pulumi.Input.encodeList<DeploymentFrontendPrivate, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'frontendPublic': ?pulumi.Input.mapOptionalInputValue<DeploymentFrontendPublic, Map<String, dynamic>>(frontendPublic, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<DeploymentIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'frontendPrivates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentFrontendPrivate>,
+            List<Map<String, dynamic>>
+          >(
+            frontendPrivates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentFrontendPrivate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'frontendPublic':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentFrontendPublic,
+            Map<String, dynamic>
+          >(frontendPublic, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'ipAddress': ?ipAddress,
       'location': ?location,
-      'loggingStorageAccounts': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLoggingStorageAccount>, List<Map<String, dynamic>>>(loggingStorageAccounts, (value) => pulumi.Input.encodeList<DeploymentLoggingStorageAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loggingStorageAccounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentLoggingStorageAccount>,
+            List<Map<String, dynamic>>
+          >(
+            loggingStorageAccounts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentLoggingStorageAccount,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'managedResourceGroup': ?managedResourceGroup,
       'name': ?name,
-      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<DeploymentNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<DeploymentNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentNetworkInterface>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentNetworkInterface,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nginxVersion': ?nginxVersion,
       'resourceGroupName': ?resourceGroupName,
       'sku': ?sku,
       'tags': ?tags,
-      'webApplicationFirewall': ?pulumi.Input.mapOptionalInputValue<DeploymentWebApplicationFirewall, Map<String, dynamic>>(webApplicationFirewall, (value) => value.toMap()),
+      'webApplicationFirewall':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentWebApplicationFirewall,
+            Map<String, dynamic>
+          >(webApplicationFirewall, (value) => value.toMap()),
     };
   }
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      autoScaleProfiles: map['autoScaleProfiles'] == null ? null : (pulumi.Input.decodeList<DeploymentAutoScaleProfile>(map['autoScaleProfiles']!, (value) => DeploymentAutoScaleProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      automaticUpgradeChannel: map['automaticUpgradeChannel'] == null ? null : (map['automaticUpgradeChannel']! as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      dataplaneApiEndpoint: map['dataplaneApiEndpoint'] == null ? null : (map['dataplaneApiEndpoint']! as String).input(),
-      diagnoseSupportEnabled: map['diagnoseSupportEnabled'] == null ? null : (map['diagnoseSupportEnabled']! as bool).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      frontendPrivates: map['frontendPrivates'] == null ? null : (pulumi.Input.decodeList<DeploymentFrontendPrivate>(map['frontendPrivates']!, (value) => DeploymentFrontendPrivate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      frontendPublic: map['frontendPublic'] == null ? null : (DeploymentFrontendPublic.fromMap((map['frontendPublic']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (DeploymentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      loggingStorageAccounts: map['loggingStorageAccounts'] == null ? null : (pulumi.Input.decodeList<DeploymentLoggingStorageAccount>(map['loggingStorageAccounts']!, (value) => DeploymentLoggingStorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedResourceGroup: map['managedResourceGroup'] == null ? null : (map['managedResourceGroup']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<DeploymentNetworkInterface>(map['networkInterfaces']!, (value) => DeploymentNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nginxVersion: map['nginxVersion'] == null ? null : (map['nginxVersion']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      webApplicationFirewall: map['webApplicationFirewall'] == null ? null : (DeploymentWebApplicationFirewall.fromMap((map['webApplicationFirewall']! as Map).cast<String, dynamic>())).input(),
+      autoScaleProfiles: (() {
+        final guardedValue = map['autoScaleProfiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentAutoScaleProfile>(
+            guardedValue,
+            (value) => DeploymentAutoScaleProfile.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      automaticUpgradeChannel: (() {
+        final guardedValue = map['automaticUpgradeChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataplaneApiEndpoint: (() {
+        final guardedValue = map['dataplaneApiEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diagnoseSupportEnabled: (() {
+        final guardedValue = map['diagnoseSupportEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frontendPrivates: (() {
+        final guardedValue = map['frontendPrivates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentFrontendPrivate>(
+            guardedValue,
+            (value) => DeploymentFrontendPrivate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      frontendPublic: (() {
+        final guardedValue = map['frontendPublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentFrontendPublic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggingStorageAccounts: (() {
+        final guardedValue = map['loggingStorageAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentLoggingStorageAccount>(
+            guardedValue,
+            (value) => DeploymentLoggingStorageAccount.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      managedResourceGroup: (() {
+        final guardedValue = map['managedResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaces: (() {
+        final guardedValue = map['networkInterfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentNetworkInterface>(
+            guardedValue,
+            (value) => DeploymentNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nginxVersion: (() {
+        final guardedValue = map['nginxVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      webApplicationFirewall: (() {
+        final guardedValue = map['webApplicationFirewall'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentWebApplicationFirewall.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

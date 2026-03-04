@@ -13,15 +13,14 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTup
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpointGroupId': endpointGroupId,
-    };
+    return <String, dynamic>{'endpointGroupId': endpointGroupId};
   }
 
-  factory GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
+  factory GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(
-      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
     );
   }
 }
-

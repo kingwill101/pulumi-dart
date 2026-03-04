@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabasePostgresqlUpdates {
   /// The day to perform maintenance.
   final pulumi.Input<String> dayOfWeek;
+
   /// The maximum maintenance window time in hours.
   final pulumi.Input<int> duration;
+
   /// Whether maintenance occurs on a weekly or monthly basis.
   final pulumi.Input<String> frequency;
+
   /// The hour to begin maintenance based in UTC time.
   final pulumi.Input<int> hourOfDay;
+
   /// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
   final pulumi.Input<int>? weekOfMonth;
 
@@ -40,12 +44,15 @@ class DatabasePostgresqlUpdates {
 
   factory DatabasePostgresqlUpdates.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlUpdates(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      duration: (map['duration'] as int).input(),
-      frequency: (map['frequency'] as String).input(),
-      hourOfDay: (map['hourOfDay'] as int).input(),
-      weekOfMonth: map['weekOfMonth'] == null ? null : (map['weekOfMonth']! as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as int),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
+      weekOfMonth: (() {
+        final guardedValue = map['weekOfMonth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

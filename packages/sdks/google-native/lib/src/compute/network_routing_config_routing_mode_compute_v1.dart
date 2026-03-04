@@ -3,16 +3,17 @@ enum NetworkRoutingConfigRoutingModeComputeV1 {
   global("GLOBAL"),
   regional("REGIONAL");
 
-  const NetworkRoutingConfigRoutingModeComputeV1(this.value);
-  final String value;
+  const NetworkRoutingConfigRoutingModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static NetworkRoutingConfigRoutingModeComputeV1 fromValue(String value) {
     for (final item in NetworkRoutingConfigRoutingModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigRoutingModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigRoutingModeComputeV1 value: $value',
+    );
   }
 }
-

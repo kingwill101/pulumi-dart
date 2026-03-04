@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'assignment_response.dart';
 import 'pool_args.dart';
 import 'pool_type_response.dart';
 import 'resource_operational_status_response.dart';
@@ -275,29 +274,41 @@ import 'system_data_response.dart';
 /// ```
 class Pool extends pulumi.CustomResource {
   /// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
-  late final pulumi.Output<List<AssignmentResponse>?> assignments;
+  late final pulumi.Output<List<Map<String, dynamic>>?> assignments;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
   late final pulumi.Output<PoolTypeResponse> poolType;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
   late final pulumi.Output<String?> reclaimPolicy;
+
   /// Resources represent the resources the pool should have.
   late final pulumi.Output<ResourcesResponse?> resources;
+
   /// The operational status of the resource
   late final pulumi.Output<ResourceOperationalStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// List of availability zones that resources can be created in.
   late final pulumi.Output<List<String>?> zones;
 
@@ -305,28 +316,25 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_containerstorage_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:containerstorage:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignments = registerOutput<List<AssignmentResponse>?>('assignments');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:containerstorage:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    assignments = registerOutput<List<Map<String, dynamic>>?>('assignments');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.poolType = registerOutput<PoolTypeResponse>('poolType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reclaimPolicy = registerOutput<String?>('reclaimPolicy');
-    this.resources = registerOutput<ResourcesResponse?>('resources');
-    this.status = registerOutput<ResourceOperationalStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    poolType = registerOutput<PoolTypeResponse>('poolType');
+    provisioningState = registerOutput<String>('provisioningState');
+    reclaimPolicy = registerOutput<String?>('reclaimPolicy');
+    resources = registerOutput<ResourcesResponse?>('resources');
+    status = registerOutput<ResourceOperationalStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

@@ -6,17 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureWorkloadSQLAutoProtectionIntentResponse {
   /// Type of backup management for the backed up item.
   final pulumi.Input<String>? backupManagementType;
+
   /// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
   final pulumi.Input<String>? itemId;
+
   /// ID of the backup policy with which this item is backed up.
   final pulumi.Input<String>? policyId;
+
   /// backup protectionIntent type.
   /// Expected value is 'AzureWorkloadSQLAutoProtectionIntent'.
   final pulumi.Input<String> protectionIntentItemType;
+
   /// Backup state of this backup item.
   final pulumi.Input<String>? protectionState;
+
   /// ARM ID of the resource to be backed up.
   final pulumi.Input<String>? sourceResourceId;
+
   /// Workload item type of the item for which intent is to be set
   final pulumi.Input<String>? workloadItemType;
 
@@ -50,16 +56,43 @@ class AzureWorkloadSQLAutoProtectionIntentResponse {
     };
   }
 
-  factory AzureWorkloadSQLAutoProtectionIntentResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureWorkloadSQLAutoProtectionIntentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureWorkloadSQLAutoProtectionIntentResponse(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
-      itemId: map['itemId'] == null ? null : (map['itemId']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      protectionIntentItemType: (map['protectionIntentItemType'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
-      workloadItemType: map['workloadItemType'] == null ? null : (map['workloadItemType']! as String).input(),
+      backupManagementType: (() {
+        final guardedValue = map['backupManagementType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      itemId: (() {
+        final guardedValue = map['itemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionIntentItemType: pulumi.Input.fromValue(
+        map['protectionIntentItemType'] as String,
+      ),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceResourceId: (() {
+        final guardedValue = map['sourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadItemType: (() {
+        final guardedValue = map['workloadItemType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum DataSetPlotType {
   stackedBar("STACKED_BAR"),
   heatmap("HEATMAP");
 
-  const DataSetPlotType(this.value);
-  final String value;
+  const DataSetPlotType(this.wireValue);
+  final String wireValue;
 
   static DataSetPlotType fromValue(String value) {
     for (final item in DataSetPlotType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataSetPlotType value: $value');
   }
 }
-

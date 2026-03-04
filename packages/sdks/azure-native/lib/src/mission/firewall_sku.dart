@@ -4,16 +4,15 @@ enum FirewallSKU {
   standard("Standard"),
   premium("Premium");
 
-  const FirewallSKU(this.value);
-  final String value;
+  const FirewallSKU(this.wireValue);
+  final String wireValue;
 
   static FirewallSKU fromValue(String value) {
     for (final item in FirewallSKU.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallSKU value: $value');
   }
 }
-

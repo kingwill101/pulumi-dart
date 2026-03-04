@@ -12,22 +12,31 @@ import 'iot_hub_dps_sku.dart';
 class IotHubDpsArgs {
   /// The allocation policy of the IoT Device Provisioning Service (`Hashed`, `GeoLatency` or `Static`). Defaults to `Hashed`.
   final pulumi.Input<String>? allocationPolicy;
+
   /// Specifies if the IoT Device Provisioning Service has data residency enabled, removing the cross geo-pair disaster recovery. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? dataResidencyEnabled;
+
   /// An `ip_filter_rule` block as defined below.
   final pulumi.Input<List<IotHubDpsIpFilterRule>>? ipFilterRules;
+
   /// A `linked_hub` block as defined below.
   final pulumi.Input<List<IotHubDpsLinkedHub>>? linkedHubs;
+
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Whether requests from Public Network are allowed. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A `sku` block as defined below.
   final pulumi.Input<IotHubDpsSku> sku;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,30 +68,106 @@ class IotHubDpsArgs {
     return <String, dynamic>{
       'allocationPolicy': ?allocationPolicy,
       'dataResidencyEnabled': ?dataResidencyEnabled,
-      'ipFilterRules': ?pulumi.Input.mapOptionalInputValue<List<IotHubDpsIpFilterRule>, List<Map<String, dynamic>>>(ipFilterRules, (value) => pulumi.Input.encodeList<IotHubDpsIpFilterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'linkedHubs': ?pulumi.Input.mapOptionalInputValue<List<IotHubDpsLinkedHub>, List<Map<String, dynamic>>>(linkedHubs, (value) => pulumi.Input.encodeList<IotHubDpsLinkedHub, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipFilterRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IotHubDpsIpFilterRule>,
+            List<Map<String, dynamic>>
+          >(
+            ipFilterRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IotHubDpsIpFilterRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'linkedHubs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IotHubDpsLinkedHub>,
+            List<Map<String, dynamic>>
+          >(
+            linkedHubs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IotHubDpsLinkedHub,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'location': ?location,
       'name': ?name,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<IotHubDpsSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<IotHubDpsSku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory IotHubDpsArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDpsArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
-      dataResidencyEnabled: map['dataResidencyEnabled'] == null ? null : (map['dataResidencyEnabled']! as bool).input(),
-      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IotHubDpsIpFilterRule>(map['ipFilterRules']!, (value) => IotHubDpsIpFilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linkedHubs: map['linkedHubs'] == null ? null : (pulumi.Input.decodeList<IotHubDpsLinkedHub>(map['linkedHubs']!, (value) => IotHubDpsLinkedHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: (IotHubDpsSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      allocationPolicy: (() {
+        final guardedValue = map['allocationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataResidencyEnabled: (() {
+        final guardedValue = map['dataResidencyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipFilterRules: (() {
+        final guardedValue = map['ipFilterRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IotHubDpsIpFilterRule>(
+            guardedValue,
+            (value) => IotHubDpsIpFilterRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      linkedHubs: (() {
+        final guardedValue = map['linkedHubs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IotHubDpsLinkedHub>(
+            guardedValue,
+            (value) => IotHubDpsLinkedHub.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: pulumi.Input.fromValue(
+        IotHubDpsSku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

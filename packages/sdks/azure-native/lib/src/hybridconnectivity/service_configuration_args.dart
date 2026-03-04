@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceConfigurationArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
+
   /// The port on which service is enabled.
   final pulumi.Input<double>? port;
+
   /// The resource Id of the connectivity endpoint (optional).
   final pulumi.Input<String>? resourceId;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The service name.
   final pulumi.Input<String>? serviceConfigurationName;
+
   /// Name of the service.
   final pulumi.Input<String> serviceName;
 
@@ -49,13 +54,24 @@ class ServiceConfigurationArgs {
 
   factory ServiceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigurationArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as double).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      serviceConfigurationName: map['serviceConfigurationName'] == null ? null : (map['serviceConfigurationName']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      serviceConfigurationName: (() {
+        final guardedValue = map['serviceConfigurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

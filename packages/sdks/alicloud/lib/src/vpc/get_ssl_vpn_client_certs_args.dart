@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSslVpnClientCertsArgs {
   /// IDs of the SSL-VPN client certificates.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string of SSL-VPN client certificate name.
   final pulumi.Input<String>? nameRegex;
+
   /// Save the result to the file.
   final pulumi.Input<String>? outputFile;
+
   /// Use the SSL-VPN server ID as the search key.
   final pulumi.Input<String>? sslVpnServerId;
 
@@ -39,11 +42,26 @@ class GetSslVpnClientCertsArgs {
 
   factory GetSslVpnClientCertsArgs.fromMap(Map<String, dynamic> map) {
     return GetSslVpnClientCertsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      sslVpnServerId: map['sslVpnServerId'] == null ? null : (map['sslVpnServerId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslVpnServerId: (() {
+        final guardedValue = map['sslVpnServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

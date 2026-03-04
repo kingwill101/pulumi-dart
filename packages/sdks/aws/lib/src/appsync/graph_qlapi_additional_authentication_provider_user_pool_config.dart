@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GraphQLApiAdditionalAuthenticationProviderUserPoolConfig {
   /// Regular expression for validating the incoming Amazon Cognito User Pool app client ID.
   final pulumi.Input<String>? appIdClientRegex;
+
   /// AWS region in which the user pool was created.
   final pulumi.Input<String>? awsRegion;
+
   /// User pool ID.
   final pulumi.Input<String> userPoolId;
 
@@ -28,12 +30,21 @@ class GraphQLApiAdditionalAuthenticationProviderUserPoolConfig {
     };
   }
 
-  factory GraphQLApiAdditionalAuthenticationProviderUserPoolConfig.fromMap(Map<String, dynamic> map) {
+  factory GraphQLApiAdditionalAuthenticationProviderUserPoolConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GraphQLApiAdditionalAuthenticationProviderUserPoolConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : ((map['appIdClientRegex'] as String).input()).input(),
-      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      appIdClientRegex: (() {
+        final guardedValue = map['appIdClientRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

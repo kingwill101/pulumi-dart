@@ -49,18 +49,23 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     };
   }
 
-  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateBlockDeviceMappingEb(
-      deleteOnTermination: (map['deleteOnTermination'] as String).input(),
-      encrypted: (map['encrypted'] as String).input(),
-      iops: (map['iops'] as int).input(),
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      throughput: (map['throughput'] as int).input(),
-      volumeInitializationRate: (map['volumeInitializationRate'] as int).input(),
-      volumeSize: (map['volumeSize'] as int).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      deleteOnTermination: pulumi.Input.fromValue(
+        map['deleteOnTermination'] as String,
+      ),
+      encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      throughput: pulumi.Input.fromValue(map['throughput'] as int),
+      volumeInitializationRate: pulumi.Input.fromValue(
+        map['volumeInitializationRate'] as int,
+      ),
+      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

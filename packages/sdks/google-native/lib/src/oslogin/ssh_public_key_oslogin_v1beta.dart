@@ -6,10 +6,13 @@ import 'ssh_public_key_oslogin_v1beta_args.dart';
 class SshPublicKeyOsloginV1beta extends pulumi.CustomResource {
   /// An expiration time in microseconds since epoch.
   late final pulumi.Output<String> expirationTimeUsec;
+
   /// The SHA-256 fingerprint of the SSH public key.
   late final pulumi.Output<String> fingerprint;
+
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   late final pulumi.Output<String> key;
+
   /// The canonical resource name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> userId;
@@ -23,15 +26,15 @@ class SshPublicKeyOsloginV1beta extends pulumi.CustomResource {
     SshPublicKeyOsloginV1betaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:oslogin/v1beta:SshPublicKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.expirationTimeUsec = registerOutput<String>('expirationTimeUsec');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.key = registerOutput<String>('key');
+         'google-native:oslogin/v1beta:SshPublicKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    expirationTimeUsec = registerOutput<String>('expirationTimeUsec');
+    fingerprint = registerOutput<String>('fingerprint');
+    key = registerOutput<String>('key');
     this.name = registerOutput<String>('name');
-    this.userId = registerOutput<String>('userId');
+    userId = registerOutput<String>('userId');
   }
 }

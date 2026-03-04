@@ -6,15 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupState {
   /// The Group comment information. The maximum length is 128 characters.
   final pulumi.Input<String>? comments;
+
   /// (Available since v1.245.0) The create time of the group.
   final pulumi.Input<String>? createTime;
+
   /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
   final pulumi.Input<bool>? force;
+
   /// The group name. You must specify at least one of the `group_name` and `name`.
   /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   final pulumi.Input<String>? groupName;
+
   /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
   final pulumi.Input<String>? name;
 
@@ -44,12 +48,31 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      comments: (() {
+        final guardedValue = map['comments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

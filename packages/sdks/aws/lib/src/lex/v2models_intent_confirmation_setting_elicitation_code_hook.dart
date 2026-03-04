@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentConfirmationSettingElicitationCodeHook {
   /// Whether a Lambda function should be invoked for the dialog.
   final pulumi.Input<bool>? enableCodeHookInvocation;
+
   /// Label that indicates the dialog step from which the dialog code hook is happening.
   final pulumi.Input<String>? invocationLabel;
 
@@ -23,11 +24,20 @@ class V2modelsIntentConfirmationSettingElicitationCodeHook {
     };
   }
 
-  factory V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingElicitationCodeHook(
-      enableCodeHookInvocation: map['enableCodeHookInvocation'] == null ? null : ((map['enableCodeHookInvocation'] as bool).input()).input(),
-      invocationLabel: map['invocationLabel'] == null ? null : ((map['invocationLabel'] as String).input()).input(),
+      enableCodeHookInvocation: (() {
+        final guardedValue = map['enableCodeHookInvocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      invocationLabel: (() {
+        final guardedValue = map['invocationLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

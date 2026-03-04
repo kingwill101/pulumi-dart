@@ -22,11 +22,14 @@ class GetAppTemplateHttpScaleRuleAuthentication {
     };
   }
 
-  factory GetAppTemplateHttpScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
+  factory GetAppTemplateHttpScaleRuleAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppTemplateHttpScaleRuleAuthentication(
-      secretName: (map['secretName'] as String).input(),
-      triggerParameter: (map['triggerParameter'] as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      triggerParameter: pulumi.Input.fromValue(
+        map['triggerParameter'] as String,
+      ),
     );
   }
 }
-

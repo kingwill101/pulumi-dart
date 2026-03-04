@@ -1,5 +1,3 @@
-library module_providerhub;
-
 export 'providerhub/additional_authorization.dart';
 export 'providerhub/additional_authorization_response.dart';
 export 'providerhub/additional_options_async_operation.dart';

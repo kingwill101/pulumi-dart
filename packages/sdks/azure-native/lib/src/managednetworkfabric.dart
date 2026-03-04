@@ -1,5 +1,3 @@
-library module_managednetworkfabric;
-
 export 'managednetworkfabric/access_control_list.dart';
 export 'managednetworkfabric/access_control_list_action.dart';
 export 'managednetworkfabric/access_control_list_action_response.dart';

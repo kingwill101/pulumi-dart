@@ -1,5 +1,3 @@
-library module_cloudscheduler;
-
 export 'cloudscheduler/app_engine_http_target.dart';
 export 'cloudscheduler/app_engine_http_target_cloudscheduler_v1beta1.dart';
 export 'cloudscheduler/app_engine_http_target_http_method.dart';

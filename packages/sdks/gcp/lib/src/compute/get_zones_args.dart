@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesArgs {
   /// Project from which to list available zones. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
+
   /// Region from which to list available zones. Defaults to region declared in the provider.
   final pulumi.Input<String>? region;
+
   /// Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available zones - both `UP` and `DOWN`).
   final pulumi.Input<String>? status;
@@ -19,11 +21,7 @@ class GetZonesArgs {
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.
   /// [region] Region from which to list available zones. Defaults to region declared in the provider.
   /// [status] Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
-  GetZonesArgs({
-    this.project,
-    this.region,
-    this.status,
-  });
+  GetZonesArgs({this.project, this.region, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +33,21 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

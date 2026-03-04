@@ -4,16 +4,17 @@ enum NfsExportOptionsAccessModeFileV1beta1 {
   readOnly("READ_ONLY"),
   readWrite("READ_WRITE");
 
-  const NfsExportOptionsAccessModeFileV1beta1(this.value);
-  final String value;
+  const NfsExportOptionsAccessModeFileV1beta1(this.wireValue);
+  final String wireValue;
 
   static NfsExportOptionsAccessModeFileV1beta1 fromValue(String value) {
     for (final item in NfsExportOptionsAccessModeFileV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NfsExportOptionsAccessModeFileV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown NfsExportOptionsAccessModeFileV1beta1 value: $value',
+    );
   }
 }
-

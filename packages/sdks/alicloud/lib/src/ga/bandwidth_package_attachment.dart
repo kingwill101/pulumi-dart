@@ -6,7 +6,7 @@ import 'bandwidth_package_attachment_state.dart';
 ///
 /// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-bandwidthpackageaddaccelerator).
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
 /// ## Example Usage
 ///
@@ -215,10 +215,13 @@ import 'bandwidth_package_attachment_state.dart';
 class BandwidthPackageAttachment extends pulumi.CustomResource {
   /// The ID of the Global Accelerator instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// Accelerators bound with current Bandwidth Package.
   late final pulumi.Output<List<String>> accelerators;
+
   /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
   late final pulumi.Output<String> bandwidthPackageId;
+
   /// State of Bandwidth Package.
   late final pulumi.Output<String> status;
 
@@ -231,15 +234,15 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     BandwidthPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.accelerators = registerOutput<List<String>>('accelerators');
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    accelerators = registerOutput<List<String>>('accelerators');
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BandwidthPackageAttachment] resource's state with the given [name] and [id].
@@ -260,14 +263,14 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.accelerators = registerOutput<List<String>>('accelerators');
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    accelerators = registerOutput<List<String>>('accelerators');
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    status = registerOutput<String>('status');
   }
 }

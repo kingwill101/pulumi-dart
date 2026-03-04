@@ -6,6 +6,7 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
   /// The token size limit for each chunk.
   /// Supported values: 100-500 (inclusive). Default value: 500.
   final pulumi.Input<int>? chunkSize;
+
   /// Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
   /// Default value: False.
   final pulumi.Input<bool>? includeAncestorHeadings;
@@ -25,11 +26,20 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
     };
   }
 
-  factory DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(Map<String, dynamic> map) {
+  factory DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(
-      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize']! as int).input(),
-      includeAncestorHeadings: map['includeAncestorHeadings'] == null ? null : (map['includeAncestorHeadings']! as bool).input(),
+      chunkSize: (() {
+        final guardedValue = map['chunkSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      includeAncestorHeadings: (() {
+        final guardedValue = map['includeAncestorHeadings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

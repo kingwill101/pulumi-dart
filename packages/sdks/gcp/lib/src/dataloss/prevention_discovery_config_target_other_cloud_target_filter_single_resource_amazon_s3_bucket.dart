@@ -5,7 +5,11 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_single_reso
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket {
   /// The AWS account.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount>? awsAccount;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount
+  >?
+  awsAccount;
+
   /// The bucket name.
   final pulumi.Input<String>? bucketName;
 
@@ -19,16 +23,33 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsAccount': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount, Map<String, dynamic>>(awsAccount, (value) => value.toMap()),
+      'awsAccount':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount,
+            Map<String, dynamic>
+          >(awsAccount, (value) => value.toMap()),
       'bucketName': ?bucketName,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket(
-      awsAccount: map['awsAccount'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap((map['awsAccount']! as Map).cast<String, dynamic>())).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      awsAccount: (() {
+        final guardedValue = map['awsAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

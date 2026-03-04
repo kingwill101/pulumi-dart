@@ -11,20 +11,39 @@ class FeatureState {
 
   /// Creates a new [FeatureState].
   /// [states] (Output)
-  FeatureState({
-    this.states,
-  });
+  FeatureState({this.states});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': ?pulumi.Input.mapOptionalInputValue<List<FeatureStateState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<FeatureStateState, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'states':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FeatureStateState>,
+            List<Map<String, dynamic>>
+          >(
+            states,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FeatureStateState,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory FeatureState.fromMap(Map<String, dynamic> map) {
     return FeatureState(
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureStateState>(map['states']!, (value) => FeatureStateState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      states: (() {
+        final guardedValue = map['states'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FeatureStateState>(
+            guardedValue,
+            (value) => FeatureStateState.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

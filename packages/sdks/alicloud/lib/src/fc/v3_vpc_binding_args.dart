@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3VpcBindingArgs {
   /// Function Name
   final pulumi.Input<String> functionName;
+
   /// VPC instance ID
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [V3VpcBindingArgs].
   /// [functionName] Function Name
   /// [vpcId] VPC instance ID
-  V3VpcBindingArgs({
-    required this.functionName,
-    this.vpcId,
-  });
+  V3VpcBindingArgs({required this.functionName, this.vpcId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'functionName': functionName,
-      'vpcId': ?vpcId,
-    };
+    return <String, dynamic>{'functionName': functionName, 'vpcId': ?vpcId};
   }
 
   factory V3VpcBindingArgs.fromMap(Map<String, dynamic> map) {
     return V3VpcBindingArgs(
-      functionName: (map['functionName'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

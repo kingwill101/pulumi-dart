@@ -13,23 +13,20 @@ class GetSslPolicyComputeBetaArgs {
   /// Creates a new [GetSslPolicyComputeBetaArgs].
   /// [project] Optional.
   /// [sslPolicy] Required.
-  GetSslPolicyComputeBetaArgs({
-    this.project,
-    required this.sslPolicy,
-  });
+  GetSslPolicyComputeBetaArgs({this.project, required this.sslPolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'sslPolicy': sslPolicy,
-    };
+    return <String, dynamic>{'project': ?project, 'sslPolicy': sslPolicy};
   }
 
   factory GetSslPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetSslPolicyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sslPolicy: (map['sslPolicy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslPolicy: pulumi.Input.fromValue(map['sslPolicy'] as String),
     );
   }
 }
-

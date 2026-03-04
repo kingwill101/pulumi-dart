@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSoaRecordArgs {
   /// The name of the Private DNS SOA Record.
   final pulumi.Input<String>? name;
+
   /// Specifies the resource group where the Private DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the Private DNS Zone where the resource exists.
   final pulumi.Input<String> zoneName;
 
@@ -34,10 +36,15 @@ class GetSoaRecordArgs {
 
   factory GetSoaRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetSoaRecordArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      zoneName: (map['zoneName'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
-

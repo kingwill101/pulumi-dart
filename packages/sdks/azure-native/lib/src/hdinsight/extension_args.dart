@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the cluster extension.
   final pulumi.Input<String>? extensionName;
+
   /// The certificate for the cluster monitoring extensions.
   final pulumi.Input<String>? primaryKey;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workspace ID for the cluster monitoring extension.
   final pulumi.Input<String>? workspaceId;
 
@@ -44,12 +48,25 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      extensionName: (() {
+        final guardedValue = map['extensionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

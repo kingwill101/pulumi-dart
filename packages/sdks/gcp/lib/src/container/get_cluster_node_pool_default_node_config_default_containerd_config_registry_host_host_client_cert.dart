@@ -18,10 +18,13 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
     };
   }
 
-  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert(
-      gcpSecretManagerSecretUri: (map['gcpSecretManagerSecretUri'] as String).input(),
+      gcpSecretManagerSecretUri: pulumi.Input.fromValue(
+        map['gcpSecretManagerSecretUri'] as String,
+      ),
     );
   }
 }
-

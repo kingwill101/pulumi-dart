@@ -4,16 +4,15 @@ enum LocalDNSForwardPolicy {
   valueRoundRobin("RoundRobin"),
   valueRandom("Random");
 
-  const LocalDNSForwardPolicy(this.value);
-  final String value;
+  const LocalDNSForwardPolicy(this.wireValue);
+  final String wireValue;
 
   static LocalDNSForwardPolicy fromValue(String value) {
     for (final item in LocalDNSForwardPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalDNSForwardPolicy value: $value');
   }
 }
-

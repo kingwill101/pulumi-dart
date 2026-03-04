@@ -209,15 +209,20 @@ class EventAction extends pulumi.CustomResource {
   /// Describes the action to take.
   /// Described in `action` Configuration Block below.
   late final pulumi.Output<EventActionAction> action;
+
   /// Amazon Resource Name (ARN) of the event action.
   late final pulumi.Output<String> arn;
+
   /// Date and time when the resource was created.
   late final pulumi.Output<String> createdAt;
+
   /// Describes the event that triggers the `action`.
   /// Described in `event` Configuration Block below.
   late final pulumi.Output<EventActionEvent> event;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Data and time when the resource was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -230,17 +235,17 @@ class EventAction extends pulumi.CustomResource {
     EventActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dataexchange/eventAction:EventAction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<EventActionAction>('action');
-    this.arn = registerOutput<String>('arn');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.event = registerOutput<EventActionEvent>('event');
-    this.region = registerOutput<String>('region');
-    this.updatedAt = registerOutput<String>('updatedAt');
+         'aws:dataexchange/eventAction:EventAction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<EventActionAction>('action');
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    event = registerOutput<EventActionEvent>('event');
+    region = registerOutput<String>('region');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [EventAction] resource's state with the given [name] and [id].
@@ -261,16 +266,16 @@ class EventAction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dataexchange/eventAction:EventAction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<EventActionAction>('action');
-    this.arn = registerOutput<String>('arn');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.event = registerOutput<EventActionEvent>('event');
-    this.region = registerOutput<String>('region');
-    this.updatedAt = registerOutput<String>('updatedAt');
+         'aws:dataexchange/eventAction:EventAction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<EventActionAction>('action');
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    event = registerOutput<EventActionEvent>('event');
+    region = registerOutput<String>('region');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

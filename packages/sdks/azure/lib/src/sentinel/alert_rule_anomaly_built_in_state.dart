@@ -11,40 +11,63 @@ import 'alert_rule_anomaly_built_in_threshold_observation.dart';
 class AlertRuleAnomalyBuiltInState {
   /// The version of the Anomaly Security ML Analytics Settings.
   final pulumi.Input<int>? anomalySettingsVersion;
+
   /// The anomaly version of the Anomaly Alert Rule.
   final pulumi.Input<String>? anomalyVersion;
+
   /// The description of the threshold observation.
   final pulumi.Input<String>? description;
+
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
-  /// > **Note:** One of `name` or `display_name` block must be specified.
+  /// &gt; **Note:** One of `name` or `display_name` block must be specified.
   final pulumi.Input<String>? displayName;
+
   /// Should the Built-in Anomaly Alert Rule be enabled?
   final pulumi.Input<bool>? enabled;
+
   /// The frequency the Anomaly Alert Rule will be run.
   final pulumi.Input<String>? frequency;
+
   /// The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
+
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String>? mode;
+
   /// A list of `multi_select_observation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>? multiSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>?
+  multiSelectObservations;
+
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
+
   /// A list of `prioritized_exclude_observation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>? prioritizedExcludeObservations;
+  final pulumi.Input<
+    List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>
+  >?
+  prioritizedExcludeObservations;
+
   /// A `required_data_connector` block as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>? requiredDataConnectors;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>?
+  requiredDataConnectors;
+
   /// The ID of the anomaly settings definition Id.
   final pulumi.Input<String>? settingsDefinitionId;
+
   /// A list of `single_select_observation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>? singleSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>?
+  singleSelectObservations;
+
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? tactics;
+
   /// A list of techniques of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? techniques;
+
   /// A list of `threshold_observation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInThresholdObservation>>? thresholdObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInThresholdObservation>>?
+  thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyBuiltInState].
   /// [anomalySettingsVersion] The version of the Anomaly Security ML Analytics Settings.
@@ -94,38 +117,200 @@ class AlertRuleAnomalyBuiltInState {
       'frequency': ?frequency,
       'logAnalyticsWorkspaceId': ?logAnalyticsWorkspaceId,
       'mode': ?mode,
-      'multiSelectObservations': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleAnomalyBuiltInMultiSelectObservation>, List<Map<String, dynamic>>>(multiSelectObservations, (value) => pulumi.Input.encodeList<AlertRuleAnomalyBuiltInMultiSelectObservation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'multiSelectObservations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleAnomalyBuiltInMultiSelectObservation>,
+            List<Map<String, dynamic>>
+          >(
+            multiSelectObservations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleAnomalyBuiltInMultiSelectObservation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
-      'prioritizedExcludeObservations': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>, List<Map<String, dynamic>>>(prioritizedExcludeObservations, (value) => pulumi.Input.encodeList<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'requiredDataConnectors': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleAnomalyBuiltInRequiredDataConnector>, List<Map<String, dynamic>>>(requiredDataConnectors, (value) => pulumi.Input.encodeList<AlertRuleAnomalyBuiltInRequiredDataConnector, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'prioritizedExcludeObservations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>,
+            List<Map<String, dynamic>>
+          >(
+            prioritizedExcludeObservations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleAnomalyBuiltInPrioritizedExcludeObservation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'requiredDataConnectors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleAnomalyBuiltInRequiredDataConnector>,
+            List<Map<String, dynamic>>
+          >(
+            requiredDataConnectors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleAnomalyBuiltInRequiredDataConnector,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'settingsDefinitionId': ?settingsDefinitionId,
-      'singleSelectObservations': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleAnomalyBuiltInSingleSelectObservation>, List<Map<String, dynamic>>>(singleSelectObservations, (value) => pulumi.Input.encodeList<AlertRuleAnomalyBuiltInSingleSelectObservation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'singleSelectObservations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleAnomalyBuiltInSingleSelectObservation>,
+            List<Map<String, dynamic>>
+          >(
+            singleSelectObservations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleAnomalyBuiltInSingleSelectObservation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tactics': ?tactics,
       'techniques': ?techniques,
-      'thresholdObservations': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleAnomalyBuiltInThresholdObservation>, List<Map<String, dynamic>>>(thresholdObservations, (value) => pulumi.Input.encodeList<AlertRuleAnomalyBuiltInThresholdObservation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'thresholdObservations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleAnomalyBuiltInThresholdObservation>,
+            List<Map<String, dynamic>>
+          >(
+            thresholdObservations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleAnomalyBuiltInThresholdObservation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AlertRuleAnomalyBuiltInState.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInState(
-      anomalySettingsVersion: map['anomalySettingsVersion'] == null ? null : (map['anomalySettingsVersion']! as int).input(),
-      anomalyVersion: map['anomalyVersion'] == null ? null : (map['anomalyVersion']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      multiSelectObservations: map['multiSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyBuiltInMultiSelectObservation>(map['multiSelectObservations']!, (value) => AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      prioritizedExcludeObservations: map['prioritizedExcludeObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>(map['prioritizedExcludeObservations']!, (value) => AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requiredDataConnectors: map['requiredDataConnectors'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyBuiltInRequiredDataConnector>(map['requiredDataConnectors']!, (value) => AlertRuleAnomalyBuiltInRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      settingsDefinitionId: map['settingsDefinitionId'] == null ? null : (map['settingsDefinitionId']! as String).input(),
-      singleSelectObservations: map['singleSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyBuiltInSingleSelectObservation>(map['singleSelectObservations']!, (value) => AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tactics: map['tactics'] == null ? null : ((map['tactics']! as List).cast<String>()).input(),
-      techniques: map['techniques'] == null ? null : ((map['techniques']! as List).cast<String>()).input(),
-      thresholdObservations: map['thresholdObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyBuiltInThresholdObservation>(map['thresholdObservations']!, (value) => AlertRuleAnomalyBuiltInThresholdObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      anomalySettingsVersion: (() {
+        final guardedValue = map['anomalySettingsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      anomalyVersion: (() {
+        final guardedValue = map['anomalyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logAnalyticsWorkspaceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiSelectObservations: (() {
+        final guardedValue = map['multiSelectObservations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<AlertRuleAnomalyBuiltInMultiSelectObservation>(
+            guardedValue,
+            (value) => AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prioritizedExcludeObservations: (() {
+        final guardedValue = map['prioritizedExcludeObservations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AlertRuleAnomalyBuiltInPrioritizedExcludeObservation
+          >(
+            guardedValue,
+            (value) =>
+                AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      requiredDataConnectors: (() {
+        final guardedValue = map['requiredDataConnectors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlertRuleAnomalyBuiltInRequiredDataConnector>(
+            guardedValue,
+            (value) => AlertRuleAnomalyBuiltInRequiredDataConnector.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      settingsDefinitionId: (() {
+        final guardedValue = map['settingsDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      singleSelectObservations: (() {
+        final guardedValue = map['singleSelectObservations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<AlertRuleAnomalyBuiltInSingleSelectObservation>(
+            guardedValue,
+            (value) => AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tactics: (() {
+        final guardedValue = map['tactics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      techniques: (() {
+        final guardedValue = map['techniques'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      thresholdObservations: (() {
+        final guardedValue = map['thresholdObservations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlertRuleAnomalyBuiltInThresholdObservation>(
+            guardedValue,
+            (value) => AlertRuleAnomalyBuiltInThresholdObservation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineAssessmentSchedule {
   /// What day of the week the assessment will be run. Possible values are `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday` and `Wednesday`.
   final pulumi.Input<String> dayOfWeek;
+
   /// How many months between assessment runs. Valid values are between `1` and `5`.
   ///
-  /// > **Note:** Either one of `weekly_interval` or `monthly_occurrence` must be specified.
+  /// &gt; **Note:** Either one of `weekly_interval` or `monthly_occurrence` must be specified.
   final pulumi.Input<int>? monthlyOccurrence;
+
   /// What time the assessment will be run. Must be in the format `HH:mm`.
   final pulumi.Input<String> startTime;
+
   /// How many weeks between assessment runs. Valid values are between `1` and `6`.
   final pulumi.Input<int>? weeklyInterval;
 
@@ -37,11 +40,18 @@ class VirtualMachineAssessmentSchedule {
 
   factory VirtualMachineAssessmentSchedule.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAssessmentSchedule(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (map['monthlyOccurrence']! as int).input(),
-      startTime: (map['startTime'] as String).input(),
-      weeklyInterval: map['weeklyInterval'] == null ? null : (map['weeklyInterval']! as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      monthlyOccurrence: (() {
+        final guardedValue = map['monthlyOccurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      weeklyInterval: (() {
+        final guardedValue = map['weeklyInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayOperatorResourceRequestsResponse {
   /// Cpu allocated to each Spring Cloud Gateway Operator instance.
   final pulumi.Input<String> cpu;
+
   /// Instance count of the Spring Cloud Gateway Operator.
   final pulumi.Input<int> instanceCount;
+
   /// Memory allocated to each Spring Cloud Gateway Operator instance.
   final pulumi.Input<String> memory;
 
@@ -29,12 +31,13 @@ class GatewayOperatorResourceRequestsResponse {
     };
   }
 
-  factory GatewayOperatorResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
+  factory GatewayOperatorResourceRequestsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayOperatorResourceRequestsResponse(
-      cpu: (map['cpu'] as String).input(),
-      instanceCount: (map['instanceCount'] as int).input(),
-      memory: (map['memory'] as String).input(),
+      cpu: pulumi.Input.fromValue(map['cpu'] as String),
+      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      memory: pulumi.Input.fromValue(map['memory'] as String),
     );
   }
 }
-

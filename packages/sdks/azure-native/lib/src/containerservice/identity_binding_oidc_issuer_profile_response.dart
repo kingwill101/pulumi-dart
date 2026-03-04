@@ -9,20 +9,17 @@ class IdentityBindingOidcIssuerProfileResponse {
 
   /// Creates a new [IdentityBindingOidcIssuerProfileResponse].
   /// [oidcIssuerUrl] The OIDC issuer URL of the IdentityBinding.
-  IdentityBindingOidcIssuerProfileResponse({
-    required this.oidcIssuerUrl,
-  });
+  IdentityBindingOidcIssuerProfileResponse({required this.oidcIssuerUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oidcIssuerUrl': oidcIssuerUrl,
-    };
+    return <String, dynamic>{'oidcIssuerUrl': oidcIssuerUrl};
   }
 
-  factory IdentityBindingOidcIssuerProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory IdentityBindingOidcIssuerProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityBindingOidcIssuerProfileResponse(
-      oidcIssuerUrl: (map['oidcIssuerUrl'] as String).input(),
+      oidcIssuerUrl: pulumi.Input.fromValue(map['oidcIssuerUrl'] as String),
     );
   }
 }
-

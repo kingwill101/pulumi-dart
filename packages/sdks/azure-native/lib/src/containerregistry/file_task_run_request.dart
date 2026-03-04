@@ -10,28 +10,39 @@ import 'set_value.dart';
 class FileTaskRunRequest {
   /// The machine configuration of the run agent.
   final pulumi.Input<AgentProperties>? agentConfiguration;
+
   /// The dedicated agent pool for the run.
   final pulumi.Input<String>? agentPoolName;
+
   /// The properties that describes a set of credentials that will be used when this run is invoked.
   final pulumi.Input<Credentials>? credentials;
+
   /// The value that indicates whether archiving is enabled for the run or not.
   final pulumi.Input<bool>? isArchiveEnabled;
+
   /// The template that describes the repository and tag information for run log artifact.
   final pulumi.Input<String>? logTemplate;
+
   /// The platform properties against which the run has to happen.
   final pulumi.Input<PlatformProperties> platform;
+
   /// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
   /// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
   final pulumi.Input<String>? sourceLocation;
+
   /// The template/definition file path relative to the source.
   final pulumi.Input<String> taskFilePath;
+
   /// Run timeout in seconds.
   final pulumi.Input<int>? timeout;
+
   /// The type of the run request.
   /// Expected value is 'FileTaskRunRequest'.
   final pulumi.Input<String> type;
+
   /// The collection of overridable values that can be passed when running a task.
   final pulumi.Input<List<SetValue>>? values;
+
   /// The values/parameters file path relative to the source.
   final pulumi.Input<String>? valuesFilePath;
 
@@ -65,36 +76,108 @@ class FileTaskRunRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentProperties, Map<String, dynamic>>(agentConfiguration, (value) => value.toMap()),
+      'agentConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentProperties,
+            Map<String, dynamic>
+          >(agentConfiguration, (value) => value.toMap()),
       'agentPoolName': ?agentPoolName,
-      'credentials': ?pulumi.Input.mapOptionalInputValue<Credentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
+      'credentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            Credentials,
+            Map<String, dynamic>
+          >(credentials, (value) => value.toMap()),
       'isArchiveEnabled': ?isArchiveEnabled,
       'logTemplate': ?logTemplate,
-      'platform': pulumi.Input.mapInputValue<PlatformProperties, Map<String, dynamic>>(platform, (value) => value.toMap()),
+      'platform':
+          pulumi.Input.mapInputValue<PlatformProperties, Map<String, dynamic>>(
+            platform,
+            (value) => value.toMap(),
+          ),
       'sourceLocation': ?sourceLocation,
       'taskFilePath': taskFilePath,
       'timeout': ?timeout,
       'type': type,
-      'values': ?pulumi.Input.mapOptionalInputValue<List<SetValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'values':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SetValue>,
+            List<Map<String, dynamic>>
+          >(
+            values,
+            (value) => pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'valuesFilePath': ?valuesFilePath,
     };
   }
 
   factory FileTaskRunRequest.fromMap(Map<String, dynamic> map) {
     return FileTaskRunRequest(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
-      platform: (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
-      taskFilePath: (map['taskFilePath'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values']!, (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath']! as String).input(),
+      agentConfiguration: (() {
+        final guardedValue = map['agentConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      agentPoolName: (() {
+        final guardedValue = map['agentPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Credentials.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      isArchiveEnabled: (() {
+        final guardedValue = map['isArchiveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logTemplate: (() {
+        final guardedValue = map['logTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platform: pulumi.Input.fromValue(
+        PlatformProperties.fromMap(
+          (map['platform']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sourceLocation: (() {
+        final guardedValue = map['sourceLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskFilePath: pulumi.Input.fromValue(map['taskFilePath'] as String),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SetValue>(
+            guardedValue,
+            (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      valuesFilePath: (() {
+        final guardedValue = map['valuesFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

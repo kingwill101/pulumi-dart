@@ -3,16 +3,15 @@ enum OutboundAccess {
   valueAllow("Allow"),
   valueDeny("Deny");
 
-  const OutboundAccess(this.value);
-  final String value;
+  const OutboundAccess(this.wireValue);
+  final String wireValue;
 
   static OutboundAccess fromValue(String value) {
     for (final item in OutboundAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutboundAccess value: $value');
   }
 }
-

@@ -7,8 +7,10 @@ import 'managed_cluster_managed_outbound_ipprofile.dart';
 class ManagedClusterNATGatewayProfile {
   /// Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
   final pulumi.Input<int>? idleTimeoutInMinutes;
+
   /// Profile of the managed outbound IP resources of the cluster NAT gateway.
-  final pulumi.Input<ManagedClusterManagedOutboundIPProfile>? managedOutboundIPProfile;
+  final pulumi.Input<ManagedClusterManagedOutboundIPProfile>?
+  managedOutboundIPProfile;
 
   /// Creates a new [ManagedClusterNATGatewayProfile].
   /// [idleTimeoutInMinutes] Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
@@ -21,15 +23,30 @@ class ManagedClusterNATGatewayProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'managedOutboundIPProfile': ?pulumi.Input.mapOptionalInputValue<ManagedClusterManagedOutboundIPProfile, Map<String, dynamic>>(managedOutboundIPProfile, (value) => value.toMap()),
+      'managedOutboundIPProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterManagedOutboundIPProfile,
+            Map<String, dynamic>
+          >(managedOutboundIPProfile, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterNATGatewayProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterNATGatewayProfile(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
-      managedOutboundIPProfile: map['managedOutboundIPProfile'] == null ? null : (ManagedClusterManagedOutboundIPProfile.fromMap((map['managedOutboundIPProfile']! as Map).cast<String, dynamic>())).input(),
+      idleTimeoutInMinutes: (() {
+        final guardedValue = map['idleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      managedOutboundIPProfile: (() {
+        final guardedValue = map['managedOutboundIPProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterManagedOutboundIPProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

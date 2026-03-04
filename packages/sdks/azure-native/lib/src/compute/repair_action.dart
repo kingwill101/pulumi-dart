@@ -4,16 +4,15 @@ enum RepairAction {
   restart("Restart"),
   reimage("Reimage");
 
-  const RepairAction(this.value);
-  final String value;
+  const RepairAction(this.wireValue);
+  final String wireValue;
 
   static RepairAction fromValue(String value) {
     for (final item in RepairAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RepairAction value: $value');
   }
 }
-

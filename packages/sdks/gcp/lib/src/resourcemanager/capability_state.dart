@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityState {
   /// Capability name that should be updated on the folder.
   final pulumi.Input<String>? capabilityName;
+
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
   final pulumi.Input<String>? parent;
+
   /// Capability Value.
   final pulumi.Input<bool>? value;
 
@@ -15,11 +17,7 @@ class CapabilityState {
   /// [capabilityName] Capability name that should be updated on the folder.
   /// [parent] Folder on which Capability needs to be updated in the format folders/folder_id.
   /// [value] Capability Value.
-  CapabilityState({
-    this.capabilityName,
-    this.parent,
-    this.value,
-  });
+  CapabilityState({this.capabilityName, this.parent, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      capabilityName: map['capabilityName'] == null ? null : (map['capabilityName']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as bool).input(),
+      capabilityName: (() {
+        final guardedValue = map['capabilityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,17 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledPreloadJobArgs {
   /// The method to submit the URLs to be prefetched.
   final pulumi.Input<String> insertWay;
+
   /// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? ossUrl;
+
   /// The task name.
   final pulumi.Input<String> scheduledPreloadJobName;
+
   /// The site ID.
   final pulumi.Input<String> siteId;
+
   /// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? urlList;
 
   /// Creates a new [ScheduledPreloadJobArgs].
@@ -48,12 +52,21 @@ class ScheduledPreloadJobArgs {
 
   factory ScheduledPreloadJobArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadJobArgs(
-      insertWay: (map['insertWay'] as String).input(),
-      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl']! as String).input(),
-      scheduledPreloadJobName: (map['scheduledPreloadJobName'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      urlList: map['urlList'] == null ? null : (map['urlList']! as String).input(),
+      insertWay: pulumi.Input.fromValue(map['insertWay'] as String),
+      ossUrl: (() {
+        final guardedValue = map['ossUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduledPreloadJobName: pulumi.Input.fromValue(
+        map['scheduledPreloadJobName'] as String,
+      ),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      urlList: (() {
+        final guardedValue = map['urlList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

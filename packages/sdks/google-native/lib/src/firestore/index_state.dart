@@ -5,16 +5,15 @@ enum IndexState {
   ready("READY"),
   error("ERROR");
 
-  const IndexState(this.value);
-  final String value;
+  const IndexState(this.wireValue);
+  final String wireValue;
 
   static IndexState fromValue(String value) {
     for (final item in IndexState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexState value: $value');
   }
 }
-

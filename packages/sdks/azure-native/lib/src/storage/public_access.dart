@@ -4,16 +4,15 @@ enum PublicAccess {
   valueBlob("Blob"),
   valueNone("None");
 
-  const PublicAccess(this.value);
-  final String value;
+  const PublicAccess(this.wireValue);
+  final String wireValue;
 
   static PublicAccess fromValue(String value) {
     for (final item in PublicAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicAccess value: $value');
   }
 }
-

@@ -184,32 +184,46 @@ import 'table_ttl.dart';
 class Table extends pulumi.CustomResource {
   /// The ARN of the table.
   late final pulumi.Output<String> arn;
+
   /// Specifies the read/write throughput capacity mode for the table.
   late final pulumi.Output<TableCapacitySpecification> capacitySpecification;
+
   /// Enables client-side timestamps for the table. By default, the setting is disabled.
   late final pulumi.Output<TableClientSideTimestamps?> clientSideTimestamps;
+
   /// A description of the table.
   late final pulumi.Output<TableComment> comment;
+
   /// The default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
   late final pulumi.Output<int?> defaultTimeToLive;
+
   /// Specifies how the encryption key for encryption at rest is managed for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html).
-  late final pulumi.Output<TableEncryptionSpecification> encryptionSpecification;
+  late final pulumi.Output<TableEncryptionSpecification>
+  encryptionSpecification;
+
   /// The name of the keyspace that the table is going to be created in.
   late final pulumi.Output<String> keyspaceName;
+
   /// Specifies if point-in-time recovery is enabled or disabled for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html).
   late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Describes the schema of the table.
   late final pulumi.Output<TableSchemaDefinition> schemaDefinition;
+
   /// The name of the table.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> tableName;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
   late final pulumi.Output<TableTtl?> ttl;
 
@@ -217,38 +231,41 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_keyspaces_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:keyspaces/table:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification');
-    this.clientSideTimestamps = registerOutput<TableClientSideTimestamps?>('clientSideTimestamps');
-    this.comment = registerOutput<TableComment>('comment');
-    this.defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
-    this.encryptionSpecification = registerOutput<TableEncryptionSpecification>('encryptionSpecification');
-    this.keyspaceName = registerOutput<String>('keyspaceName');
-    this.pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
-    this.region = registerOutput<String>('region');
-    this.schemaDefinition = registerOutput<TableSchemaDefinition>('schemaDefinition');
-    this.tableName = registerOutput<String>('tableName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<TableTtl?>('ttl');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:keyspaces/table:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    capacitySpecification = registerOutput<TableCapacitySpecification>(
+      'capacitySpecification',
+    );
+    clientSideTimestamps = registerOutput<TableClientSideTimestamps?>(
+      'clientSideTimestamps',
+    );
+    comment = registerOutput<TableComment>('comment');
+    defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
+    encryptionSpecification = registerOutput<TableEncryptionSpecification>(
+      'encryptionSpecification',
+    );
+    keyspaceName = registerOutput<String>('keyspaceName');
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
+      'pointInTimeRecovery',
+    );
+    region = registerOutput<String>('region');
+    schemaDefinition = registerOutput<TableSchemaDefinition>(
+      'schemaDefinition',
+    );
+    tableName = registerOutput<String>('tableName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<TableTtl?>('ttl');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(
-    String name,
-    pulumi.Input<String> id, {
-    TableState? state,
-  }) {
+  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -261,24 +278,34 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:keyspaces/table:Table',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification');
-    this.clientSideTimestamps = registerOutput<TableClientSideTimestamps?>('clientSideTimestamps');
-    this.comment = registerOutput<TableComment>('comment');
-    this.defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
-    this.encryptionSpecification = registerOutput<TableEncryptionSpecification>('encryptionSpecification');
-    this.keyspaceName = registerOutput<String>('keyspaceName');
-    this.pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
-    this.region = registerOutput<String>('region');
-    this.schemaDefinition = registerOutput<TableSchemaDefinition>('schemaDefinition');
-    this.tableName = registerOutput<String>('tableName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<TableTtl?>('ttl');
+         'aws:keyspaces/table:Table',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    capacitySpecification = registerOutput<TableCapacitySpecification>(
+      'capacitySpecification',
+    );
+    clientSideTimestamps = registerOutput<TableClientSideTimestamps?>(
+      'clientSideTimestamps',
+    );
+    comment = registerOutput<TableComment>('comment');
+    defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
+    encryptionSpecification = registerOutput<TableEncryptionSpecification>(
+      'encryptionSpecification',
+    );
+    keyspaceName = registerOutput<String>('keyspaceName');
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
+      'pointInTimeRecovery',
+    );
+    region = registerOutput<String>('region');
+    schemaDefinition = registerOutput<TableSchemaDefinition>(
+      'schemaDefinition',
+    );
+    tableName = registerOutput<String>('tableName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<TableTtl?>('ttl');
   }
 }

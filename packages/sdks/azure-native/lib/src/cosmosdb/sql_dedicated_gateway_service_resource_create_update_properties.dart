@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
   /// DedicatedGatewayType for the service.
   final pulumi.Input<String>? dedicatedGatewayType;
+
   /// Instance count for the service.
   final pulumi.Input<int>? instanceCount;
+
   /// Instance type for the service.
   final pulumi.Input<String>? instanceSize;
+
   /// ServiceType for the service.
   /// Expected value is 'SqlDedicatedGateway'.
   final pulumi.Input<String> serviceType;
@@ -35,13 +38,26 @@ class SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
     };
   }
 
-  factory SqlDedicatedGatewayServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
+  factory SqlDedicatedGatewayServiceResourceCreateUpdateProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlDedicatedGatewayServiceResourceCreateUpdateProperties(
-      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : (map['dedicatedGatewayType']! as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
-      serviceType: (map['serviceType'] as String).input(),
+      dedicatedGatewayType: (() {
+        final guardedValue = map['dedicatedGatewayType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
     );
   }
 }
-

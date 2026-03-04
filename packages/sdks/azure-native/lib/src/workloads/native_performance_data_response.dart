@@ -10,20 +10,15 @@ class NativePerformanceDataResponse {
 
   /// Creates a new [NativePerformanceDataResponse].
   /// [dataSource] The data source for this resource.
-  NativePerformanceDataResponse({
-    required this.dataSource,
-  });
+  NativePerformanceDataResponse({required this.dataSource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataSource': dataSource,
-    };
+    return <String, dynamic>{'dataSource': dataSource};
   }
 
   factory NativePerformanceDataResponse.fromMap(Map<String, dynamic> map) {
     return NativePerformanceDataResponse(
-      dataSource: (map['dataSource'] as String).input(),
+      dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
     );
   }
 }
-

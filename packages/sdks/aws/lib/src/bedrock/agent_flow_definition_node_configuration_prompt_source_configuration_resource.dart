@@ -13,15 +13,14 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'promptArn': promptArn,
-    };
+    return <String, dynamic>{'promptArn': promptArn};
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource(
-      promptArn: (map['promptArn'] as String).input(),
+      promptArn: pulumi.Input.fromValue(map['promptArn'] as String),
     );
   }
 }
-

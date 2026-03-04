@@ -4,16 +4,15 @@ enum BootDiskDiskEncryption {
   gmek("GMEK"),
   cmek("CMEK");
 
-  const BootDiskDiskEncryption(this.value);
-  final String value;
+  const BootDiskDiskEncryption(this.wireValue);
+  final String wireValue;
 
   static BootDiskDiskEncryption fromValue(String value) {
     for (final item in BootDiskDiskEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BootDiskDiskEncryption value: $value');
   }
 }
-

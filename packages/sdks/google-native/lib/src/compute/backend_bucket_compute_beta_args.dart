@@ -11,21 +11,29 @@ import 'backend_bucket_compression_mode_compute_beta.dart';
 class BackendBucketComputeBetaArgs {
   /// Cloud Storage bucket name.
   final pulumi.Input<String>? bucketName;
+
   /// Cloud CDN configuration for this BackendBucket.
   final pulumi.Input<BackendBucketCdnPolicyComputeBeta>? cdnPolicy;
+
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   final pulumi.Input<BackendBucketCompressionModeComputeBeta>? compressionMode;
+
   /// Headers that the Application Load Balancer should add to proxied responses.
   final pulumi.Input<List<String>>? customResponseHeaders;
+
   /// An optional textual description of the resource; provided by the client when the resource is created.
   final pulumi.Input<String>? description;
+
   /// If true, enable Cloud CDN for this BackendBucket.
   final pulumi.Input<bool>? enableCdn;
+
   /// Type of the resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -56,8 +64,16 @@ class BackendBucketComputeBetaArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketName': ?bucketName,
-      'cdnPolicy': ?pulumi.Input.mapOptionalInputValue<BackendBucketCdnPolicyComputeBeta, Map<String, dynamic>>(cdnPolicy, (value) => value.toMap()),
-      'compressionMode': ?pulumi.Input.mapOptionalInputValue<BackendBucketCompressionModeComputeBeta, String>(compressionMode, (value) => value.value),
+      'cdnPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendBucketCdnPolicyComputeBeta,
+            Map<String, dynamic>
+          >(cdnPolicy, (value) => value.toMap()),
+      'compressionMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendBucketCompressionModeComputeBeta,
+            String
+          >(compressionMode, (value) => value.wireValue),
       'customResponseHeaders': ?customResponseHeaders,
       'description': ?description,
       'enableCdn': ?enableCdn,
@@ -70,17 +86,64 @@ class BackendBucketComputeBetaArgs {
 
   factory BackendBucketComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return BackendBucketComputeBetaArgs(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
-      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicyComputeBeta.fromMap((map['cdnPolicy']! as Map).cast<String, dynamic>())).input(),
-      compressionMode: map['compressionMode'] == null ? null : (BackendBucketCompressionModeComputeBeta.fromValue(map['compressionMode']! as String)).input(),
-      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cdnPolicy: (() {
+        final guardedValue = map['cdnPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendBucketCdnPolicyComputeBeta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      compressionMode: (() {
+        final guardedValue = map['compressionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendBucketCompressionModeComputeBeta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      customResponseHeaders: (() {
+        final guardedValue = map['customResponseHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableCdn: (() {
+        final guardedValue = map['enableCdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

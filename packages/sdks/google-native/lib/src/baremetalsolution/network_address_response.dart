@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkAddressResponse {
   /// IPv4 address to be assigned to the server.
   final pulumi.Input<String> address;
+
   /// Name of the existing network to use.
   final pulumi.Input<String> existingNetworkId;
+
   /// Id of the network to use, within the same ProvisioningConfig request.
   final pulumi.Input<String> networkId;
 
@@ -31,10 +33,11 @@ class NetworkAddressResponse {
 
   factory NetworkAddressResponse.fromMap(Map<String, dynamic> map) {
     return NetworkAddressResponse(
-      address: (map['address'] as String).input(),
-      existingNetworkId: (map['existingNetworkId'] as String).input(),
-      networkId: (map['networkId'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      existingNetworkId: pulumi.Input.fromValue(
+        map['existingNetworkId'] as String,
+      ),
+      networkId: pulumi.Input.fromValue(map['networkId'] as String),
     );
   }
 }
-

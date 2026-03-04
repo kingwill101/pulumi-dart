@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_assignment_properties_response.dart';
-import 'role_management_policy_approval_rule_response.dart';
 import 'role_management_policy_assignment_args.dart';
 
 /// Role management policy
@@ -142,18 +141,26 @@ import 'role_management_policy_assignment_args.dart';
 class RoleManagementPolicyAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The readonly computed rule applied to the policy.
-  late final pulumi.Output<List<RoleManagementPolicyApprovalRuleResponse>> effectiveRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
+
   /// The role management policy name.
   late final pulumi.Output<String> name;
+
   /// Additional properties of scope, role definition and policy
-  late final pulumi.Output<PolicyAssignmentPropertiesResponse> policyAssignmentProperties;
+  late final pulumi.Output<PolicyAssignmentPropertiesResponse>
+  policyAssignmentProperties;
+
   /// The policy id role management policy assignment.
   late final pulumi.Output<String?> policyId;
+
   /// The role definition of management policy assignment.
   late final pulumi.Output<String?> roleDefinitionId;
+
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
+
   /// The role management policy type.
   late final pulumi.Output<String> type;
 
@@ -166,18 +173,23 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     RoleManagementPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:RoleManagementPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.effectiveRules = registerOutput<List<RoleManagementPolicyApprovalRuleResponse>>('effectiveRules');
+         'azure-native:authorization:RoleManagementPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    effectiveRules = registerOutput<List<Map<String, dynamic>>>(
+      'effectiveRules',
+    );
     this.name = registerOutput<String>('name');
-    this.policyAssignmentProperties = registerOutput<PolicyAssignmentPropertiesResponse>('policyAssignmentProperties');
-    this.policyId = registerOutput<String?>('policyId');
-    this.roleDefinitionId = registerOutput<String?>('roleDefinitionId');
-    this.scope = registerOutput<String?>('scope');
-    this.type = registerOutput<String>('type');
+    policyAssignmentProperties =
+        registerOutput<PolicyAssignmentPropertiesResponse>(
+          'policyAssignmentProperties',
+        );
+    policyId = registerOutput<String?>('policyId');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    scope = registerOutput<String?>('scope');
+    type = registerOutput<String>('type');
   }
 }

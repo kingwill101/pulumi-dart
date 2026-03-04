@@ -361,26 +361,39 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 class StandardAssignment extends pulumi.CustomResource {
   /// Standard item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedStandardItemResponse?> assignedStandard;
+
   /// Additional data about assignment that has Attest effect
-  late final pulumi.Output<StandardAssignmentPropertiesResponseAttestationData?> attestationData;
+  late final pulumi.Output<StandardAssignmentPropertiesResponseAttestationData?>
+  attestationData;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the standardAssignment
   late final pulumi.Output<String?> description;
+
   /// Display name of the standardAssignment
   late final pulumi.Output<String?> displayName;
+
   /// Expected effect of this assignment (Audit/Exempt/Attest)
   late final pulumi.Output<String?> effect;
+
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   late final pulumi.Output<List<String>?> excludedScopes;
+
   /// Additional data about assignment that has Exempt effect
-  late final pulumi.Output<StandardAssignmentPropertiesResponseExemptionData?> exemptionData;
+  late final pulumi.Output<StandardAssignmentPropertiesResponseExemptionData?>
+  exemptionData;
+
   /// Expiration date of this assignment as a full ISO date
   late final pulumi.Output<String?> expiresOn;
+
   /// The standard assignment metadata.
   late final pulumi.Output<StandardAssignmentMetadataResponse?> metadata;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -393,22 +406,30 @@ class StandardAssignment extends pulumi.CustomResource {
     StandardAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:StandardAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard');
-    this.attestationData = registerOutput<StandardAssignmentPropertiesResponseAttestationData?>('attestationData');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effect = registerOutput<String?>('effect');
-    this.excludedScopes = registerOutput<List<String>?>('excludedScopes');
-    this.exemptionData = registerOutput<StandardAssignmentPropertiesResponseExemptionData?>('exemptionData');
-    this.expiresOn = registerOutput<String?>('expiresOn');
-    this.metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata');
+         'azure-native:security:StandardAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignedStandard = registerOutput<AssignedStandardItemResponse?>(
+      'assignedStandard',
+    );
+    attestationData =
+        registerOutput<StandardAssignmentPropertiesResponseAttestationData?>(
+          'attestationData',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effect = registerOutput<String?>('effect');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes');
+    exemptionData =
+        registerOutput<StandardAssignmentPropertiesResponseExemptionData?>(
+          'exemptionData',
+        );
+    expiresOn = registerOutput<String?>('expiresOn');
+    metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

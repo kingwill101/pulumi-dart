@@ -6,24 +6,34 @@ import 'get_tunnels_tunnel_channel.dart';
 class GetTunnelsTunnel {
   /// The channels of OTS tunnel. Each element contains the following attributes:
   final pulumi.Input<List<GetTunnelsTunnelChannel>> channels;
+
   /// The creation time of the Tunnel.
   final pulumi.Input<int> createTime;
+
   /// Whether the tunnel has expired.
   final pulumi.Input<bool> expired;
-  /// The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+
+  /// The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;`.
   final pulumi.Input<String> id;
+
   /// The name of OTS instance.
   final pulumi.Input<String> instanceName;
+
   /// The name of OTS table.
   final pulumi.Input<String> tableName;
+
   /// The tunnel id of the OTS which could not be changed.
   final pulumi.Input<String> tunnelId;
+
   /// The tunnel name of the OTS which could not be changed.
   final pulumi.Input<String> tunnelName;
+
   /// The latest consumption time of the tunnel, unix time in nanosecond.
   final pulumi.Input<int> tunnelRpo;
+
   /// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
   final pulumi.Input<String> tunnelStage;
+
   /// The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
   final pulumi.Input<String> tunnelType;
 
@@ -31,7 +41,7 @@ class GetTunnelsTunnel {
   /// [channels] The channels of OTS tunnel. Each element contains the following attributes:
   /// [createTime] The creation time of the Tunnel.
   /// [expired] Whether the tunnel has expired.
-  /// [id] The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+  /// [id] The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;`.
   /// [instanceName] The name of OTS instance.
   /// [tableName] The name of OTS table.
   /// [tunnelId] The tunnel id of the OTS which could not be changed.
@@ -55,7 +65,18 @@ class GetTunnelsTunnel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.mapInputValue<List<GetTunnelsTunnelChannel>, List<Map<String, dynamic>>>(channels, (value) => pulumi.Input.encodeList<GetTunnelsTunnelChannel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'channels':
+          pulumi.Input.mapInputValue<
+            List<GetTunnelsTunnelChannel>,
+            List<Map<String, dynamic>>
+          >(
+            channels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTunnelsTunnelChannel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createTime': createTime,
       'expired': expired,
       'id': id,
@@ -71,18 +92,24 @@ class GetTunnelsTunnel {
 
   factory GetTunnelsTunnel.fromMap(Map<String, dynamic> map) {
     return GetTunnelsTunnel(
-      channels: (pulumi.Input.decodeList<GetTunnelsTunnelChannel>(map['channels'], (value) => GetTunnelsTunnelChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: (map['createTime'] as int).input(),
-      expired: (map['expired'] as bool).input(),
-      id: (map['id'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
-      tunnelId: (map['tunnelId'] as String).input(),
-      tunnelName: (map['tunnelName'] as String).input(),
-      tunnelRpo: (map['tunnelRpo'] as int).input(),
-      tunnelStage: (map['tunnelStage'] as String).input(),
-      tunnelType: (map['tunnelType'] as String).input(),
+      channels: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTunnelsTunnelChannel>(
+          map['channels']!,
+          (value) => GetTunnelsTunnelChannel.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as int),
+      expired: pulumi.Input.fromValue(map['expired'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
+      tunnelId: pulumi.Input.fromValue(map['tunnelId'] as String),
+      tunnelName: pulumi.Input.fromValue(map['tunnelName'] as String),
+      tunnelRpo: pulumi.Input.fromValue(map['tunnelRpo'] as int),
+      tunnelStage: pulumi.Input.fromValue(map['tunnelStage'] as String),
+      tunnelType: pulumi.Input.fromValue(map['tunnelType'] as String),
     );
   }
 }
-

@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetResponse {
   /// The digest of the content, as defined by the Registry V2 HTTP API Specification.
   final pulumi.Input<String>? digest;
+
   /// The number of bytes of the content. Same as Size field.
   final pulumi.Input<double>? length;
+
   /// The MIME type of the referenced object.
   final pulumi.Input<String>? mediaType;
+
   /// The name of the artifact.
   final pulumi.Input<String>? name;
+
   /// The repository name.
   final pulumi.Input<String>? repository;
+
   /// The number of bytes of the content. Same as Length field.
   final pulumi.Input<double>? size;
+
   /// The tag name.
   final pulumi.Input<String>? tag;
+
   /// The direct URL to the content.
   final pulumi.Input<String>? url;
+
   /// The version of the artifact.
   final pulumi.Input<String>? version;
 
@@ -61,16 +69,51 @@ class TargetResponse {
 
   factory TargetResponse.fromMap(Map<String, dynamic> map) {
     return TargetResponse(
-      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
-      length: map['length'] == null ? null : (map['length']! as double).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as double).input(),
-      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      length: (() {
+        final guardedValue = map['length'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      mediaType: (() {
+        final guardedValue = map['mediaType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repository: (() {
+        final guardedValue = map['repository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      tag: (() {
+        final guardedValue = map['tag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

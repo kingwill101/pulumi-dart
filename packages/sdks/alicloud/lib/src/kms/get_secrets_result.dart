@@ -8,16 +8,21 @@ class GetSecretsResult {
   final bool? enableDetails;
   final bool? fetchTags;
   final String? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Kms Secret ids. The value is same as KMS secret_name.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of KMS Secret names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of KMS Secrets. Each element contains the following attributes:
   final List<GetSecretsSecret> secrets;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String>? tags;
 
@@ -55,24 +60,55 @@ class GetSecretsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'secrets': pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(
+            secrets,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
     };
   }
 
   factory GetSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      fetchTags: map['fetchTags'] == null ? null : map['fetchTags']! as bool,
-      filters: map['filters'] == null ? null : map['filters']! as String,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      fetchTags: (() {
+        final guardedValue = map['fetchTags'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(
+        map['secrets']!,
+        (value) =>
+            GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

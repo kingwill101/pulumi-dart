@@ -4,16 +4,15 @@ enum ExceptionEntryMatchVariable {
   valueRemoteAddr("RemoteAddr"),
   valueRequestHeader("RequestHeader");
 
-  const ExceptionEntryMatchVariable(this.value);
-  final String value;
+  const ExceptionEntryMatchVariable(this.wireValue);
+  final String wireValue;
 
   static ExceptionEntryMatchVariable fromValue(String value) {
     for (final item in ExceptionEntryMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExceptionEntryMatchVariable value: $value');
   }
 }
-

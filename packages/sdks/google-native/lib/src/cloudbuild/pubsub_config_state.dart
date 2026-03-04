@@ -6,16 +6,15 @@ enum PubsubConfigState {
   topicDeleted("TOPIC_DELETED"),
   subscriptionMisconfigured("SUBSCRIPTION_MISCONFIGURED");
 
-  const PubsubConfigState(this.value);
-  final String value;
+  const PubsubConfigState(this.wireValue);
+  final String wireValue;
 
   static PubsubConfigState fromValue(String value) {
     for (final item in PubsubConfigState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PubsubConfigState value: $value');
   }
 }
-

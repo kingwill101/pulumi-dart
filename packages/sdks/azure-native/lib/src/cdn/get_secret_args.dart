@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretArgs {
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Secret under the profile.
   final pulumi.Input<String> secretName;
 
@@ -34,10 +36,11 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

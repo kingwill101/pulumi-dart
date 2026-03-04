@@ -5,16 +5,15 @@ enum VirtualNetworkPeeringLevel {
   valueLocalNotInSync("LocalNotInSync"),
   valueLocalAndRemoteNotInSync("LocalAndRemoteNotInSync");
 
-  const VirtualNetworkPeeringLevel(this.value);
-  final String value;
+  const VirtualNetworkPeeringLevel(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkPeeringLevel fromValue(String value) {
     for (final item in VirtualNetworkPeeringLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualNetworkPeeringLevel value: $value');
   }
 }
-

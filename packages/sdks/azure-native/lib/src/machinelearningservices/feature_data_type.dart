@@ -9,16 +9,15 @@ enum FeatureDataType {
   valueDatetime("Datetime"),
   valueBoolean("Boolean");
 
-  const FeatureDataType(this.value);
-  final String value;
+  const FeatureDataType(this.wireValue);
+  final String wireValue;
 
   static FeatureDataType fromValue(String value) {
     for (final item in FeatureDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureDataType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_orbital;
-
 export 'orbital/contact.dart';
 export 'orbital/contact_args.dart';
 export 'orbital/contact_profile.dart';

@@ -2,9 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_args.dart';
 import 'workspace_custom_parameters.dart';
 import 'workspace_enhanced_security_compliance.dart';
-import 'workspace_managed_disk_identity.dart';
 import 'workspace_state.dart';
-import 'workspace_storage_account_identity.dart';
 
 /// Manages a Databricks Workspace
 ///
@@ -166,7 +164,7 @@ import 'workspace_storage_account_identity.dart';
 /// ```
 ///
 ///
-/// > **Note:** You can use the Databricks Terraform Provider to manage resources within the Databricks Workspace.
+/// &gt; **Note:** You can use the Databricks Terraform Provider to manage resources within the Databricks Workspace.
 ///
 /// ## Example HCL Configurations
 ///
@@ -181,7 +179,7 @@ import 'workspace_storage_account_identity.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2024-05-01, 2022-10-01-preview
@@ -198,68 +196,94 @@ import 'workspace_storage_account_identity.dart';
 class Workspace extends pulumi.CustomResource {
   /// Access Connector ID to use when default storage account firewall is enabled.
   ///
-  /// > **Note:** The `access_connector_id` field is only required if `default_storage_firewall_enabled` is set to `true`.
+  /// &gt; **Note:** The `access_connector_id` field is only required if `default_storage_firewall_enabled` is set to `true`.
   late final pulumi.Output<String?> accessConnectorId;
+
   /// A `custom_parameters` block as documented below.
   late final pulumi.Output<WorkspaceCustomParameters> customParameters;
+
   /// Is the workspace enabled for customer managed key encryption? If `true` this enables the Managed Identity for the managed storage account. Possible values are `true` or `false`. Defaults to `false`. This field is only valid if the Databricks Workspace `sku` is set to `premium`.
   late final pulumi.Output<bool?> customerManagedKeyEnabled;
+
   /// Disallow public access to default storage account. Defaults to `false`.
   late final pulumi.Output<bool?> defaultStorageFirewallEnabled;
+
   /// The ID of Managed Disk Encryption Set created by the Databricks Workspace.
   late final pulumi.Output<String> diskEncryptionSetId;
+
   /// An `enhanced_security_compliance` block as documented below. This feature is only valid if `sku` is set to `premium`.
-  late final pulumi.Output<WorkspaceEnhancedSecurityCompliance?> enhancedSecurityCompliance;
+  late final pulumi.Output<WorkspaceEnhancedSecurityCompliance?>
+  enhancedSecurityCompliance;
+
   /// Is the Databricks File System root file system enabled with a secondary layer of encryption with platform managed keys? Possible values are `true` or `false`. Defaults to `false`. This field is only valid if the Databricks Workspace `sku` is set to `premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
+
   /// Resource ID of the Outbound Load balancer Backend Address Pool for Secure Cluster Connectivity (No Public IP) workspace with managed virtual network. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> loadBalancerBackendAddressPoolId;
+
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Resource ID of the Key Vault which contains the `managed_disk_cmk_key_vault_key_id` key.
   ///
-  /// > **Note:** The `managed_disk_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_disk_cmk_key_vault_id` field is not specified it is assumed that the `managed_disk_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
+  /// &gt; **Note:** The `managed_disk_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_disk_cmk_key_vault_id` field is not specified it is assumed that the `managed_disk_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
   ///
-  /// > **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
+  /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> managedDiskCmkKeyVaultId;
+
   /// Customer managed encryption properties for the Databricks Workspace managed disks.
   late final pulumi.Output<String?> managedDiskCmkKeyVaultKeyId;
+
   /// Whether customer managed keys for disk encryption will automatically be rotated to the latest version.
   late final pulumi.Output<bool?> managedDiskCmkRotationToLatestVersionEnabled;
+
   /// A `managed_disk_identity` block as documented below.
-  late final pulumi.Output<List<WorkspaceManagedDiskIdentity>> managedDiskIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>> managedDiskIdentities;
+
   /// The ID of the Managed Resource Group created by the Databricks Workspace.
   late final pulumi.Output<String> managedResourceGroupId;
+
   /// The name of the resource group where Azure should place the managed Databricks resources. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Make sure that this field is unique if you have multiple Databrick Workspaces deployed in your subscription and choose to not have the `managed_resource_group_name` auto generated by the Azure Resource Provider. Having multiple Databrick Workspaces deployed in the same subscription with the same `manage_resource_group_name` may result in some resources that cannot be deleted.
+  /// &gt; **Note:** Make sure that this field is unique if you have multiple Databrick Workspaces deployed in your subscription and choose to not have the `managed_resource_group_name` auto generated by the Azure Resource Provider. Having multiple Databrick Workspaces deployed in the same subscription with the same `manage_resource_group_name` may result in some resources that cannot be deleted.
   late final pulumi.Output<String> managedResourceGroupName;
+
   /// Resource ID of the Key Vault which contains the `managed_services_cmk_key_vault_key_id` key.
   ///
-  /// > **Note:** The `managed_services_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_services_cmk_key_vault_id` field is not specified it is assumed that the `managed_services_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
+  /// &gt; **Note:** The `managed_services_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_services_cmk_key_vault_id` field is not specified it is assumed that the `managed_services_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
   ///
-  /// > **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
+  /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> managedServicesCmkKeyVaultId;
+
   /// Customer managed encryption properties for the Databricks Workspace managed resources(e.g. Notebooks and Artifacts).
   late final pulumi.Output<String?> managedServicesCmkKeyVaultKeyId;
+
   /// Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values `AllRules`, `NoAzureDatabricksRules` or `NoAzureServiceRules`. Required when `public_network_access_enabled` is set to `false`.
   late final pulumi.Output<String?> networkSecurityGroupRulesRequired;
+
   /// Allow public access for accessing workspace. Set value to `false` to access workspace only via private link endpoint. Possible values include `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the Resource Group in which the Databricks Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The `sku` to use for the Databricks Workspace. Possible values are `standard`, `premium`, or `trial`.
   ///
-  /// > **Note:** Downgrading to a `trial sku` from a `standard` or `premium sku` will force a new resource to be created.
+  /// &gt; **Note:** Downgrading to a `trial sku` from a `standard` or `premium sku` will force a new resource to be created.
   late final pulumi.Output<String> sku;
+
   /// A `storage_account_identity` block as documented below.
-  late final pulumi.Output<List<WorkspaceStorageAccountIdentity>> storageAccountIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>> storageAccountIdentities;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The unique identifier of the databricks workspace in Databricks control plane.
   late final pulumi.Output<String> workspaceId;
+
   /// The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
   late final pulumi.Output<String> workspaceUrl;
 
@@ -272,37 +296,70 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessConnectorId = registerOutput<String?>('accessConnectorId');
-    this.customParameters = registerOutput<WorkspaceCustomParameters>('customParameters');
-    this.customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
-    this.defaultStorageFirewallEnabled = registerOutput<bool?>('defaultStorageFirewallEnabled');
-    this.diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
-    this.enhancedSecurityCompliance = registerOutput<WorkspaceEnhancedSecurityCompliance?>('enhancedSecurityCompliance');
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.loadBalancerBackendAddressPoolId = registerOutput<String?>('loadBalancerBackendAddressPoolId');
-    this.location = registerOutput<String>('location');
-    this.managedDiskCmkKeyVaultId = registerOutput<String?>('managedDiskCmkKeyVaultId');
-    this.managedDiskCmkKeyVaultKeyId = registerOutput<String?>('managedDiskCmkKeyVaultKeyId');
-    this.managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>('managedDiskCmkRotationToLatestVersionEnabled');
-    this.managedDiskIdentities = registerOutput<List<WorkspaceManagedDiskIdentity>>('managedDiskIdentities');
-    this.managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedServicesCmkKeyVaultId = registerOutput<String?>('managedServicesCmkKeyVaultId');
-    this.managedServicesCmkKeyVaultKeyId = registerOutput<String?>('managedServicesCmkKeyVaultKeyId');
+         'azure:databricks/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessConnectorId = registerOutput<String?>('accessConnectorId');
+    customParameters = registerOutput<WorkspaceCustomParameters>(
+      'customParameters',
+    );
+    customerManagedKeyEnabled = registerOutput<bool?>(
+      'customerManagedKeyEnabled',
+    );
+    defaultStorageFirewallEnabled = registerOutput<bool?>(
+      'defaultStorageFirewallEnabled',
+    );
+    diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
+    enhancedSecurityCompliance =
+        registerOutput<WorkspaceEnhancedSecurityCompliance?>(
+          'enhancedSecurityCompliance',
+        );
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    loadBalancerBackendAddressPoolId = registerOutput<String?>(
+      'loadBalancerBackendAddressPoolId',
+    );
+    location = registerOutput<String>('location');
+    managedDiskCmkKeyVaultId = registerOutput<String?>(
+      'managedDiskCmkKeyVaultId',
+    );
+    managedDiskCmkKeyVaultKeyId = registerOutput<String?>(
+      'managedDiskCmkKeyVaultKeyId',
+    );
+    managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>(
+      'managedDiskCmkRotationToLatestVersionEnabled',
+    );
+    managedDiskIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'managedDiskIdentities',
+    );
+    managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedServicesCmkKeyVaultId = registerOutput<String?>(
+      'managedServicesCmkKeyVaultId',
+    );
+    managedServicesCmkKeyVaultKeyId = registerOutput<String?>(
+      'managedServicesCmkKeyVaultKeyId',
+    );
     this.name = registerOutput<String>('name');
-    this.networkSecurityGroupRulesRequired = registerOutput<String?>('networkSecurityGroupRulesRequired');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.storageAccountIdentities = registerOutput<List<WorkspaceStorageAccountIdentity>>('storageAccountIdentities');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceUrl = registerOutput<String>('workspaceUrl');
+    networkSecurityGroupRulesRequired = registerOutput<String?>(
+      'networkSecurityGroupRulesRequired',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    storageAccountIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccountIdentities',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceUrl = registerOutput<String>('workspaceUrl');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -323,36 +380,69 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessConnectorId = registerOutput<String?>('accessConnectorId');
-    this.customParameters = registerOutput<WorkspaceCustomParameters>('customParameters');
-    this.customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
-    this.defaultStorageFirewallEnabled = registerOutput<bool?>('defaultStorageFirewallEnabled');
-    this.diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
-    this.enhancedSecurityCompliance = registerOutput<WorkspaceEnhancedSecurityCompliance?>('enhancedSecurityCompliance');
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.loadBalancerBackendAddressPoolId = registerOutput<String?>('loadBalancerBackendAddressPoolId');
-    this.location = registerOutput<String>('location');
-    this.managedDiskCmkKeyVaultId = registerOutput<String?>('managedDiskCmkKeyVaultId');
-    this.managedDiskCmkKeyVaultKeyId = registerOutput<String?>('managedDiskCmkKeyVaultKeyId');
-    this.managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>('managedDiskCmkRotationToLatestVersionEnabled');
-    this.managedDiskIdentities = registerOutput<List<WorkspaceManagedDiskIdentity>>('managedDiskIdentities');
-    this.managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedServicesCmkKeyVaultId = registerOutput<String?>('managedServicesCmkKeyVaultId');
-    this.managedServicesCmkKeyVaultKeyId = registerOutput<String?>('managedServicesCmkKeyVaultKeyId');
+         'azure:databricks/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessConnectorId = registerOutput<String?>('accessConnectorId');
+    customParameters = registerOutput<WorkspaceCustomParameters>(
+      'customParameters',
+    );
+    customerManagedKeyEnabled = registerOutput<bool?>(
+      'customerManagedKeyEnabled',
+    );
+    defaultStorageFirewallEnabled = registerOutput<bool?>(
+      'defaultStorageFirewallEnabled',
+    );
+    diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
+    enhancedSecurityCompliance =
+        registerOutput<WorkspaceEnhancedSecurityCompliance?>(
+          'enhancedSecurityCompliance',
+        );
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    loadBalancerBackendAddressPoolId = registerOutput<String?>(
+      'loadBalancerBackendAddressPoolId',
+    );
+    location = registerOutput<String>('location');
+    managedDiskCmkKeyVaultId = registerOutput<String?>(
+      'managedDiskCmkKeyVaultId',
+    );
+    managedDiskCmkKeyVaultKeyId = registerOutput<String?>(
+      'managedDiskCmkKeyVaultKeyId',
+    );
+    managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>(
+      'managedDiskCmkRotationToLatestVersionEnabled',
+    );
+    managedDiskIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'managedDiskIdentities',
+    );
+    managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedServicesCmkKeyVaultId = registerOutput<String?>(
+      'managedServicesCmkKeyVaultId',
+    );
+    managedServicesCmkKeyVaultKeyId = registerOutput<String?>(
+      'managedServicesCmkKeyVaultKeyId',
+    );
     this.name = registerOutput<String>('name');
-    this.networkSecurityGroupRulesRequired = registerOutput<String?>('networkSecurityGroupRulesRequired');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.storageAccountIdentities = registerOutput<List<WorkspaceStorageAccountIdentity>>('storageAccountIdentities');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceUrl = registerOutput<String>('workspaceUrl');
+    networkSecurityGroupRulesRequired = registerOutput<String?>(
+      'networkSecurityGroupRulesRequired',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    storageAccountIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccountIdentities',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceUrl = registerOutput<String>('workspaceUrl');
   }
 }

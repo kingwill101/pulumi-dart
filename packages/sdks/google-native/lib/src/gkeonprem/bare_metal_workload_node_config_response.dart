@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalWorkloadNodeConfigResponse {
   /// Specifies which container runtime will be used.
   final pulumi.Input<String> containerRuntime;
+
   /// The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
   final pulumi.Input<String> maxPodsPerNode;
 
@@ -24,11 +25,14 @@ class BareMetalWorkloadNodeConfigResponse {
     };
   }
 
-  factory BareMetalWorkloadNodeConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalWorkloadNodeConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalWorkloadNodeConfigResponse(
-      containerRuntime: (map['containerRuntime'] as String).input(),
-      maxPodsPerNode: (map['maxPodsPerNode'] as String).input(),
+      containerRuntime: pulumi.Input.fromValue(
+        map['containerRuntime'] as String,
+      ),
+      maxPodsPerNode: pulumi.Input.fromValue(map['maxPodsPerNode'] as String),
     );
   }
 }
-

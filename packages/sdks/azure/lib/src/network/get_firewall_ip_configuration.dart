@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallIpConfiguration {
   /// The name of the Azure Firewall.
   final pulumi.Input<String> name;
+
   /// The private IP address associated with the Azure Firewall.
   final pulumi.Input<String> privateIpAddress;
+
   /// The ID of the Public IP address of the Azure Firewall.
   final pulumi.Input<String> publicIpAddressId;
+
   /// The ID of the Subnet where the Azure Firewall is deployed.
   final pulumi.Input<String> subnetId;
 
@@ -35,11 +38,14 @@ class GetFirewallIpConfiguration {
 
   factory GetFirewallIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFirewallIpConfiguration(
-      name: (map['name'] as String).input(),
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      publicIpAddressId: pulumi.Input.fromValue(
+        map['publicIpAddressId'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -14,14 +14,18 @@ import 'device_taint_rule_status_patch.dart';
 class DeviceTaintRulePatchResourceK8sIoV1alpha3 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Spec specifies the selector and one taint.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
   late final pulumi.Output<DeviceTaintRuleSpecPatch?> spec;
+
   /// Status provides information about what was requested in the spec.
   late final pulumi.Output<DeviceTaintRuleStatusPatch?> status;
 
@@ -34,15 +38,15 @@ class DeviceTaintRulePatchResourceK8sIoV1alpha3 extends pulumi.CustomResource {
     DeviceTaintRulePatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:resource.k8s.io/v1alpha3:DeviceTaintRulePatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<DeviceTaintRuleSpecPatch?>('spec');
-    this.status = registerOutput<DeviceTaintRuleStatusPatch?>('status');
+         'kubernetes:resource.k8s.io/v1alpha3:DeviceTaintRulePatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<DeviceTaintRuleSpecPatch?>('spec');
+    status = registerOutput<DeviceTaintRuleStatusPatch?>('status');
   }
 }

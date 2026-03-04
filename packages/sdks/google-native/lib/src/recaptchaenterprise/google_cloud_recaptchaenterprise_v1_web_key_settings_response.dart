@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
   /// Optional. If set to true, it means allowed_domains will not be enforced.
   final pulumi.Input<bool> allowAllDomains;
+
   /// Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
   final pulumi.Input<bool> allowAmpTraffic;
+
   /// Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
   final pulumi.Input<List<String>> allowedDomains;
+
   /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
   final pulumi.Input<String> challengeSecurityPreference;
+
   /// Describes how this key is integrated with the website.
   final pulumi.Input<String> integrationType;
 
@@ -39,14 +43,19 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
     };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(
-      allowAllDomains: (map['allowAllDomains'] as bool).input(),
-      allowAmpTraffic: (map['allowAmpTraffic'] as bool).input(),
-      allowedDomains: ((map['allowedDomains'] as List).cast<String>()).input(),
-      challengeSecurityPreference: (map['challengeSecurityPreference'] as String).input(),
-      integrationType: (map['integrationType'] as String).input(),
+      allowAllDomains: pulumi.Input.fromValue(map['allowAllDomains'] as bool),
+      allowAmpTraffic: pulumi.Input.fromValue(map['allowAmpTraffic'] as bool),
+      allowedDomains: pulumi.Input.fromValue(
+        (map['allowedDomains'] as List).cast<String>(),
+      ),
+      challengeSecurityPreference: pulumi.Input.fromValue(
+        map['challengeSecurityPreference'] as String,
+      ),
+      integrationType: pulumi.Input.fromValue(map['integrationType'] as String),
     );
   }
 }
-

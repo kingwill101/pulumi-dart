@@ -8,21 +8,29 @@ import 'lake_house_artifact.dart';
 class OneLakeDatastore {
   /// [Required] OneLake artifact backing the datastore.
   final pulumi.Input<LakeHouseArtifact> artifact;
+
   /// [Required] Account credentials.
   final pulumi.Input<AccountKeyDatastoreCredentials> credentials;
+
   /// Enum to determine the datastore contents type.
   /// Expected value is 'OneLake'.
   final pulumi.Input<String> datastoreType;
+
   /// The asset description text.
   final pulumi.Input<String>? description;
+
   /// OneLake endpoint to use for the datastore.
   final pulumi.Input<String>? endpoint;
+
   /// [Required] OneLake workspace name.
   final pulumi.Input<String> oneLakeWorkspaceName;
+
   /// The asset property dictionary.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Indicates which identity to use to authenticate service data access to customer's storage.
   final pulumi.Input<String>? serviceDataAccessAuthIdentity;
+
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,8 +58,16 @@ class OneLakeDatastore {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifact': pulumi.Input.mapInputValue<LakeHouseArtifact, Map<String, dynamic>>(artifact, (value) => value.toMap()),
-      'credentials': pulumi.Input.mapInputValue<AccountKeyDatastoreCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
+      'artifact':
+          pulumi.Input.mapInputValue<LakeHouseArtifact, Map<String, dynamic>>(
+            artifact,
+            (value) => value.toMap(),
+          ),
+      'credentials':
+          pulumi.Input.mapInputValue<
+            AccountKeyDatastoreCredentials,
+            Map<String, dynamic>
+          >(credentials, (value) => value.toMap()),
       'datastoreType': datastoreType,
       'description': ?description,
       'endpoint': ?endpoint,
@@ -64,16 +80,49 @@ class OneLakeDatastore {
 
   factory OneLakeDatastore.fromMap(Map<String, dynamic> map) {
     return OneLakeDatastore(
-      artifact: (LakeHouseArtifact.fromMap((map['artifact'] as Map).cast<String, dynamic>())).input(),
-      credentials: (AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      datastoreType: (map['datastoreType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      oneLakeWorkspaceName: (map['oneLakeWorkspaceName'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      artifact: pulumi.Input.fromValue(
+        LakeHouseArtifact.fromMap(
+          (map['artifact']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      credentials: pulumi.Input.fromValue(
+        AccountKeyDatastoreCredentials.fromMap(
+          (map['credentials']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      datastoreType: pulumi.Input.fromValue(map['datastoreType'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oneLakeWorkspaceName: pulumi.Input.fromValue(
+        map['oneLakeWorkspaceName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serviceDataAccessAuthIdentity: (() {
+        final guardedValue = map['serviceDataAccessAuthIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

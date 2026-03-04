@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMscSubContactVerificationMessageArgs {
   /// The ID of the Contact.
   final pulumi.Input<String> contactId;
+
   /// How a user receives verification messages. Valid values : `1`, `2`.
   final pulumi.Input<int> type;
 
@@ -21,17 +22,15 @@ class GetMscSubContactVerificationMessageArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contactId': contactId,
-      'type': type,
-    };
+    return <String, dynamic>{'contactId': contactId, 'type': type};
   }
 
-  factory GetMscSubContactVerificationMessageArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMscSubContactVerificationMessageArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMscSubContactVerificationMessageArgs(
-      contactId: (map['contactId'] as String).input(),
-      type: (map['type'] as int).input(),
+      contactId: pulumi.Input.fromValue(map['contactId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as int),
     );
   }
 }
-

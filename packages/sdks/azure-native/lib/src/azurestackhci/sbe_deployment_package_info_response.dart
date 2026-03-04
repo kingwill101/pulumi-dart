@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SbeDeploymentPackageInfoResponse {
   /// SBE deployment validation code.
   final pulumi.Input<String> code;
+
   /// A detailed message that explains the SBE package validation result.
   final pulumi.Input<String> message;
+
   /// This represents discovered update results for matching updates and store it as SBE manifest.
   final pulumi.Input<String> sbeManifest;
 
@@ -31,10 +33,9 @@ class SbeDeploymentPackageInfoResponse {
 
   factory SbeDeploymentPackageInfoResponse.fromMap(Map<String, dynamic> map) {
     return SbeDeploymentPackageInfoResponse(
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
-      sbeManifest: (map['sbeManifest'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      sbeManifest: pulumi.Input.fromValue(map['sbeManifest'] as String),
     );
   }
 }
-

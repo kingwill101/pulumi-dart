@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingPropertiesResponse {
   /// Indicates whether audit logs are enabled on the connected registry.
   final pulumi.Input<String>? auditLogStatus;
+
   /// The verbosity of logs persisted on the connected registry.
   final pulumi.Input<String>? logLevel;
 
   /// Creates a new [LoggingPropertiesResponse].
   /// [auditLogStatus] Indicates whether audit logs are enabled on the connected registry.
   /// [logLevel] The verbosity of logs persisted on the connected registry.
-  LoggingPropertiesResponse({
-    this.auditLogStatus,
-    this.logLevel,
-  });
+  LoggingPropertiesResponse({this.auditLogStatus, this.logLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class LoggingPropertiesResponse {
 
   factory LoggingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoggingPropertiesResponse(
-      auditLogStatus: map['auditLogStatus'] == null ? null : (map['auditLogStatus']! as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      auditLogStatus: (() {
+        final guardedValue = map['auditLogStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

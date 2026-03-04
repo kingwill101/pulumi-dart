@@ -10,20 +10,29 @@ class Automatic {
 
   /// Creates a new [Automatic].
   /// [customerManagedEncryption] Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
-  Automatic({
-    this.customerManagedEncryption,
-  });
+  Automatic({this.customerManagedEncryption});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedEncryption': ?pulumi.Input.mapOptionalInputValue<CustomerManagedEncryption, Map<String, dynamic>>(customerManagedEncryption, (value) => value.toMap()),
+      'customerManagedEncryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerManagedEncryption,
+            Map<String, dynamic>
+          >(customerManagedEncryption, (value) => value.toMap()),
     };
   }
 
   factory Automatic.fromMap(Map<String, dynamic> map) {
     return Automatic(
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (CustomerManagedEncryption.fromMap((map['customerManagedEncryption']! as Map).cast<String, dynamic>())).input(),
+      customerManagedEncryption: (() {
+        final guardedValue = map['customerManagedEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerManagedEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerAppProbeResponseHttpHeaders {
   /// The header field name
   final pulumi.Input<String> name;
+
   /// The header field value
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class ContainerAppProbeResponseHttpHeaders {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory ContainerAppProbeResponseHttpHeaders.fromMap(Map<String, dynamic> map) {
+  factory ContainerAppProbeResponseHttpHeaders.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerAppProbeResponseHttpHeaders(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccessPolicy.
 class GetAccessPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// An description of the access policy.
   final String? description;
+
   /// Resource Id
   final String id;
+
   /// Resource name
   final String name;
+
   /// The objectId of the principal in Azure Active Directory.
   final String? principalObjectId;
+
   /// The list of roles the principal is assigned on the environment.
   final List<String>? roles;
+
   /// Resource type
   final String type;
 
@@ -51,13 +56,24 @@ class GetAccessPolicyResult {
   factory GetAccessPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      principalObjectId: map['principalObjectId'] == null ? null : map['principalObjectId']! as String,
-      roles: map['roles'] == null ? null : (map['roles']! as List).cast<String>(),
+      principalObjectId: (() {
+        final guardedValue = map['principalObjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

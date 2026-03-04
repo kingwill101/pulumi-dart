@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KpiThresholdsResponse {
   /// Whether or not the KPI is an increasing KPI.
   final pulumi.Input<bool> increasingKpi;
+
   /// The lower threshold limit.
   final pulumi.Input<double> lowerLimit;
+
   /// The upper threshold limit.
   final pulumi.Input<double> upperLimit;
 
@@ -31,10 +33,9 @@ class KpiThresholdsResponse {
 
   factory KpiThresholdsResponse.fromMap(Map<String, dynamic> map) {
     return KpiThresholdsResponse(
-      increasingKpi: (map['increasingKpi'] as bool).input(),
-      lowerLimit: (map['lowerLimit'] as double).input(),
-      upperLimit: (map['upperLimit'] as double).input(),
+      increasingKpi: pulumi.Input.fromValue(map['increasingKpi'] as bool),
+      lowerLimit: pulumi.Input.fromValue(map['lowerLimit'] as double),
+      upperLimit: pulumi.Input.fromValue(map['upperLimit'] as double),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class VirtualMachineAdditionalCapabilitiesResponse {
 
   /// Creates a new [VirtualMachineAdditionalCapabilitiesResponse].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
-  VirtualMachineAdditionalCapabilitiesResponse({
-    this.installGpuDrivers,
-  });
+  VirtualMachineAdditionalCapabilitiesResponse({this.installGpuDrivers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'installGpuDrivers': ?installGpuDrivers,
-    };
+    return <String, dynamic>{'installGpuDrivers': ?installGpuDrivers};
   }
 
-  factory VirtualMachineAdditionalCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineAdditionalCapabilitiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineAdditionalCapabilitiesResponse(
-      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers']! as String).input(),
+      installGpuDrivers: (() {
+        final guardedValue = map['installGpuDrivers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

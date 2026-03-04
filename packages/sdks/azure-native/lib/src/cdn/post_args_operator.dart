@@ -11,16 +11,15 @@ enum PostArgsOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const PostArgsOperator(this.value);
-  final String value;
+  const PostArgsOperator(this.wireValue);
+  final String wireValue;
 
   static PostArgsOperator fromValue(String value) {
     for (final item in PostArgsOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PostArgsOperator value: $value');
   }
 }
-

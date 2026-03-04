@@ -7,24 +7,34 @@ import 'dataset_snowflake_schema_column.dart';
 class DatasetSnowflakeState {
   /// A map of additional properties to associate with the Data Factory Dataset Snowflake.
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset Snowflake.
   final pulumi.Input<List<String>>? annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
+
   /// The description for the Data Factory Dataset Snowflake.
   final pulumi.Input<String>? description;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
+
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String>? linkedServiceName;
+
   /// Specifies the name of the Data Factory Dataset Snowflake. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Data Factory Dataset Snowflake.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// A `schema_column` block as defined below.
   final pulumi.Input<List<DatasetSnowflakeSchemaColumn>>? schemaColumns;
+
   /// The schema name of the Data Factory Dataset Snowflake.
   final pulumi.Input<String>? schemaName;
+
   /// The table name of the Data Factory Dataset Snowflake.
   final pulumi.Input<String>? tableName;
 
@@ -64,7 +74,18 @@ class DatasetSnowflakeState {
       'linkedServiceName': ?linkedServiceName,
       'name': ?name,
       'parameters': ?parameters,
-      'schemaColumns': ?pulumi.Input.mapOptionalInputValue<List<DatasetSnowflakeSchemaColumn>, List<Map<String, dynamic>>>(schemaColumns, (value) => pulumi.Input.encodeList<DatasetSnowflakeSchemaColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schemaColumns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatasetSnowflakeSchemaColumn>,
+            List<Map<String, dynamic>>
+          >(
+            schemaColumns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatasetSnowflakeSchemaColumn,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schemaName': ?schemaName,
       'tableName': ?tableName,
     };
@@ -72,18 +93,72 @@ class DatasetSnowflakeState {
 
   factory DatasetSnowflakeState.fromMap(Map<String, dynamic> map) {
     return DatasetSnowflakeState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(map['schemaColumns']!, (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      schemaColumns: (() {
+        final guardedValue = map['schemaColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(
+            guardedValue,
+            (value) => DatasetSnowflakeSchemaColumn.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      schemaName: (() {
+        final guardedValue = map['schemaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

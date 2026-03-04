@@ -9,26 +9,37 @@ import 'response_contract_response.dart';
 class GetApiOperationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description of the operation. May include HTML formatting tags.
   final String? description;
+
   /// Operation Name.
   final String displayName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
   final String method;
+
   /// The name of the resource
   final String name;
+
   /// Operation Policies
   final String? policies;
+
   /// An entity containing request details.
   final RequestContractResponse? request;
+
   /// Array of Operation responses.
   final List<ResponseContractResponse>? responses;
+
   /// Collection of URL template parameters.
   final List<ParameterContractResponse>? templateParameters;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   final String urlTemplate;
 
@@ -69,9 +80,23 @@ class GetApiOperationResult {
       'method': method,
       'name': name,
       'policies': ?policies,
-      'request': ?request == null ? null : request!.toMap(),
-      'responses': ?responses == null ? null : pulumi.Input.encodeList<ResponseContractResponse, Map<String, dynamic>>(responses!, (value) => value.toMap()),
-      'templateParameters': ?templateParameters == null ? null : pulumi.Input.encodeList<ParameterContractResponse, Map<String, dynamic>>(templateParameters!, (value) => value.toMap()),
+      'request': ?request?.toMap(),
+      'responses': ?(() {
+        final guardedValue = responses;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ResponseContractResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'templateParameters': ?(() {
+        final guardedValue = templateParameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ParameterContractResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'type': type,
       'urlTemplate': urlTemplate,
     };
@@ -80,18 +105,49 @@ class GetApiOperationResult {
   factory GetApiOperationResult.fromMap(Map<String, dynamic> map) {
     return GetApiOperationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       method: map['method'] as String,
       name: map['name'] as String,
-      policies: map['policies'] == null ? null : map['policies']! as String,
-      request: map['request'] == null ? null : RequestContractResponse.fromMap((map['request']! as Map).cast<String, dynamic>()),
-      responses: map['responses'] == null ? null : pulumi.Input.decodeList<ResponseContractResponse>(map['responses']!, (value) => ResponseContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      templateParameters: map['templateParameters'] == null ? null : pulumi.Input.decodeList<ParameterContractResponse>(map['templateParameters']!, (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return RequestContractResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      responses: (() {
+        final guardedValue = map['responses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ResponseContractResponse>(
+          guardedValue,
+          (value) => ResponseContractResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      templateParameters: (() {
+        final guardedValue = map['templateParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ParameterContractResponse>(
+          guardedValue,
+          (value) => ParameterContractResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       type: map['type'] as String,
       urlTemplate: map['urlTemplate'] as String,
     );
   }
 }
-

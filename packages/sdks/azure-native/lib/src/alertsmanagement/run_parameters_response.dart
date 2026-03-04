@@ -7,8 +7,10 @@ import 'investigation_scope_response.dart';
 class RunParametersResponse {
   /// The alerts used to run the investigation
   final pulumi.Input<List<InvestigationScopeResponse>> alerts;
+
   /// The impact time to investigate (in UTC)
   final pulumi.Input<String> impactTime;
+
   /// The resources used to run the investigation
   final pulumi.Input<List<InvestigationScopeResponse>> resources;
 
@@ -24,18 +26,53 @@ class RunParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': pulumi.Input.mapInputValue<List<InvestigationScopeResponse>, List<Map<String, dynamic>>>(alerts, (value) => pulumi.Input.encodeList<InvestigationScopeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'alerts':
+          pulumi.Input.mapInputValue<
+            List<InvestigationScopeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            alerts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InvestigationScopeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'impactTime': impactTime,
-      'resources': pulumi.Input.mapInputValue<List<InvestigationScopeResponse>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<InvestigationScopeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources':
+          pulumi.Input.mapInputValue<
+            List<InvestigationScopeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InvestigationScopeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RunParametersResponse.fromMap(Map<String, dynamic> map) {
     return RunParametersResponse(
-      alerts: (pulumi.Input.decodeList<InvestigationScopeResponse>(map['alerts'], (value) => InvestigationScopeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      impactTime: (map['impactTime'] as String).input(),
-      resources: (pulumi.Input.decodeList<InvestigationScopeResponse>(map['resources'], (value) => InvestigationScopeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alerts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<InvestigationScopeResponse>(
+          map['alerts']!,
+          (value) => InvestigationScopeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      impactTime: pulumi.Input.fromValue(map['impactTime'] as String),
+      resources: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<InvestigationScopeResponse>(
+          map['resources']!,
+          (value) => InvestigationScopeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

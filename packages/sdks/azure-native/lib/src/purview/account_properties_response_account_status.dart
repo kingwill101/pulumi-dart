@@ -7,6 +7,7 @@ import 'account_status_response_error_details.dart';
 class AccountPropertiesResponseAccountStatus {
   /// Gets the account status code.
   final pulumi.Input<String> accountProvisioningState;
+
   /// Gets the account error details.
   final pulumi.Input<AccountStatusResponseErrorDetails> errorDetails;
 
@@ -21,15 +22,26 @@ class AccountPropertiesResponseAccountStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountProvisioningState': accountProvisioningState,
-      'errorDetails': pulumi.Input.mapInputValue<AccountStatusResponseErrorDetails, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
+      'errorDetails':
+          pulumi.Input.mapInputValue<
+            AccountStatusResponseErrorDetails,
+            Map<String, dynamic>
+          >(errorDetails, (value) => value.toMap()),
     };
   }
 
-  factory AccountPropertiesResponseAccountStatus.fromMap(Map<String, dynamic> map) {
+  factory AccountPropertiesResponseAccountStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountPropertiesResponseAccountStatus(
-      accountProvisioningState: (map['accountProvisioningState'] as String).input(),
-      errorDetails: (AccountStatusResponseErrorDetails.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
+      accountProvisioningState: pulumi.Input.fromValue(
+        map['accountProvisioningState'] as String,
+      ),
+      errorDetails: pulumi.Input.fromValue(
+        AccountStatusResponseErrorDetails.fromMap(
+          (map['errorDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

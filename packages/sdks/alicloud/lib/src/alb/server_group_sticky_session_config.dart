@@ -7,18 +7,21 @@ class ServerGroupStickySessionConfig {
   ///
   /// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
   ///
-  /// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
+  /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
   final pulumi.Input<String>? cookie;
+
   /// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
   ///
   /// Valid values: `1` to `86400`.
   ///
   /// Default value: `1000`.
   ///
-  /// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
+  /// &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
   final pulumi.Input<int>? cookieTimeout;
+
   /// Specifies whether to enable session persistence. Valid values:
   final pulumi.Input<bool>? stickySessionEnabled;
+
   /// The method that is used to handle a cookie. Valid values:
   ///
   /// *   `Insert`: inserts a cookie.
@@ -29,7 +32,7 @@ class ServerGroupStickySessionConfig {
   ///
   /// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
   ///
-  /// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
+  /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
   final pulumi.Input<String>? stickySessionType;
 
   /// Creates a new [ServerGroupStickySessionConfig].
@@ -55,11 +58,26 @@ class ServerGroupStickySessionConfig {
 
   factory ServerGroupStickySessionConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupStickySessionConfig(
-      cookie: map['cookie'] == null ? null : (map['cookie']! as String).input(),
-      cookieTimeout: map['cookieTimeout'] == null ? null : (map['cookieTimeout']! as int).input(),
-      stickySessionEnabled: map['stickySessionEnabled'] == null ? null : (map['stickySessionEnabled']! as bool).input(),
-      stickySessionType: map['stickySessionType'] == null ? null : (map['stickySessionType']! as String).input(),
+      cookie: (() {
+        final guardedValue = map['cookie'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cookieTimeout: (() {
+        final guardedValue = map['cookieTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stickySessionEnabled: (() {
+        final guardedValue = map['stickySessionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      stickySessionType: (() {
+        final guardedValue = map['stickySessionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

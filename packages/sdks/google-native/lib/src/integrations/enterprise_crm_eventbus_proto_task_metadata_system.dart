@@ -11,16 +11,17 @@ enum EnterpriseCrmEventbusProtoTaskMetadataSystem {
   spanner("SPANNER"),
   dataBridge("DATA_BRIDGE");
 
-  const EnterpriseCrmEventbusProtoTaskMetadataSystem(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskMetadataSystem(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataSystem fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoTaskMetadataSystem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataSystem value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskMetadataSystem value: $value',
+    );
   }
 }
-

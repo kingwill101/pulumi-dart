@@ -6,12 +6,19 @@ import 'policy_predictive_scaling_configuration_metric_specification_customized_
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery {
   /// Math expression used on the returned metric. You must specify either `expression` or `metric_stat`, but not both.
   final pulumi.Input<String>? expression;
+
   /// Short name for the metric used in predictive scaling policy.
   final pulumi.Input<String> id;
+
   /// Human-readable label for this metric or expression.
   final pulumi.Input<String>? label;
+
   /// Structure that defines CloudWatch metric to be used in predictive scaling policy. You must specify either `expression` or `metric_stat`, but not both.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat>? metricStat;
+  final pulumi.Input<
+    PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat
+  >?
+  metricStat;
+
   /// Boolean that indicates whether to return the timestamps and raw data values of this metric, the default is true
   final pulumi.Input<bool>? returnData;
 
@@ -34,19 +41,44 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetri
       'expression': ?expression,
       'id': id,
       'label': ?label,
-      'metricStat': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat, Map<String, dynamic>>(metricStat, (value) => value.toMap()),
+      'metricStat':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat,
+            Map<String, dynamic>
+          >(metricStat, (value) => value.toMap()),
       'returnData': ?returnData,
     };
   }
 
-  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
-      id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
-      metricStat: map['metricStat'] == null ? null : ((PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat']! as Map).cast<String, dynamic>())).input()).input(),
-      returnData: map['returnData'] == null ? null : ((map['returnData'] as bool).input()).input(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricStat: (() {
+        final guardedValue = map['metricStat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      returnData: (() {
+        final guardedValue = map['returnData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum PolicyAction {
   valueEnforce("Enforce"),
   valueNone("None");
 
-  const PolicyAction(this.value);
-  final String value;
+  const PolicyAction(this.wireValue);
+  final String wireValue;
 
   static PolicyAction fromValue(String value) {
     for (final item in PolicyAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyAction value: $value');
   }
 }
-

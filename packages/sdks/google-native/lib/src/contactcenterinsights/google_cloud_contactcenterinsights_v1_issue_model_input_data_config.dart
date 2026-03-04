@@ -7,8 +7,12 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_input_data_config_medi
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// A filter to reduce the conversations used for training the model to a specific subset.
   final pulumi.Input<String>? filter;
+
   /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium>? medium;
+  final pulumi.Input<
+    GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium
+  >?
+  medium;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig].
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.
@@ -21,15 +25,32 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'medium': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium, String>(medium, (value) => value.value),
+      'medium':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium,
+            String
+          >(medium, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      medium: map['medium'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(map['medium']! as String)).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      medium: (() {
+        final guardedValue = map['medium'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

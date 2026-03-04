@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tunnel_quota_timer_args.dart';
-import 'tunnel_quota_timer_quota_timer.dart';
 import 'tunnel_quota_timer_state.dart';
 
 /// ## Import
@@ -13,11 +12,13 @@ import 'tunnel_quota_timer_state.dart';
 class TunnelQuotaTimer extends pulumi.CustomResource {
   /// The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
   late final pulumi.Output<String> nickname;
+
   /// Time-Sharing configuration
   ///
-  /// > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
+  /// &gt; **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
   /// See `quota_timer` below.
-  late final pulumi.Output<List<TunnelQuotaTimerQuotaTimer>?> quotaTimers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> quotaTimers;
+
   /// Time zone, reference: Asia/Shanghai
   /// In general, the system will automatically generate the time zone according to the region without configuration.
   late final pulumi.Output<String?> timeZone;
@@ -31,14 +32,14 @@ class TunnelQuotaTimer extends pulumi.CustomResource {
     TunnelQuotaTimerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nickname = registerOutput<String>('nickname');
-    this.quotaTimers = registerOutput<List<TunnelQuotaTimerQuotaTimer>?>('quotaTimers');
-    this.timeZone = registerOutput<String?>('timeZone');
+         'alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nickname = registerOutput<String>('nickname');
+    quotaTimers = registerOutput<List<Map<String, dynamic>>?>('quotaTimers');
+    timeZone = registerOutput<String?>('timeZone');
   }
 
   /// Gets an existing [TunnelQuotaTimer] resource's state with the given [name] and [id].
@@ -59,13 +60,13 @@ class TunnelQuotaTimer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nickname = registerOutput<String>('nickname');
-    this.quotaTimers = registerOutput<List<TunnelQuotaTimerQuotaTimer>?>('quotaTimers');
-    this.timeZone = registerOutput<String?>('timeZone');
+         'alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nickname = registerOutput<String>('nickname');
+    quotaTimers = registerOutput<List<Map<String, dynamic>>?>('quotaTimers');
+    timeZone = registerOutput<String?>('timeZone');
   }
 }

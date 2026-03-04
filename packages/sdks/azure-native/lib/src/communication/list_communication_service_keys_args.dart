@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListCommunicationServiceKeysArgs {
   /// The name of the CommunicationService resource.
   final pulumi.Input<String> communicationServiceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class ListCommunicationServiceKeysArgs {
 
   factory ListCommunicationServiceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListCommunicationServiceKeysArgs(
-      communicationServiceName: (map['communicationServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      communicationServiceName: pulumi.Input.fromValue(
+        map['communicationServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

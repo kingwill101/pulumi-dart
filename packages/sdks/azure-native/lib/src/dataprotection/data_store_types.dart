@@ -4,16 +4,15 @@ enum DataStoreTypes {
   valueVaultStore("VaultStore"),
   valueArchiveStore("ArchiveStore");
 
-  const DataStoreTypes(this.value);
-  final String value;
+  const DataStoreTypes(this.wireValue);
+  final String wireValue;
 
   static DataStoreTypes fromValue(String value) {
     for (final item in DataStoreTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataStoreTypes value: $value');
   }
 }
-

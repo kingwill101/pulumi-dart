@@ -208,10 +208,13 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// AWS VPC Endpoint ID.
   late final pulumi.Output<String> vpcEndpointId;
+
   /// AWS VPC Endpoint Service ID.
   late final pulumi.Output<String> vpcEndpointServiceId;
+
   /// State of the VPC Endpoint.
   late final pulumi.Output<String> vpcEndpointState;
 
@@ -224,15 +227,15 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
     VpcEndpointConnectionAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
-    this.vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
-    this.vpcEndpointState = registerOutput<String>('vpcEndpointState');
+         'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+    vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
+    vpcEndpointState = registerOutput<String>('vpcEndpointState');
   }
 
   /// Gets an existing [VpcEndpointConnectionAccepter] resource's state with the given [name] and [id].
@@ -253,14 +256,14 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
-    this.vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
-    this.vpcEndpointState = registerOutput<String>('vpcEndpointState');
+         'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+    vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
+    vpcEndpointState = registerOutput<String>('vpcEndpointState');
   }
 }

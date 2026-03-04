@@ -1,5 +1,3 @@
-library module_eds;
-
 export 'eds/ad_connector_directory.dart';
 export 'eds/ad_connector_directory_args.dart';
 export 'eds/ad_connector_directory_state.dart';

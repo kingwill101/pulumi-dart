@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// The name of the Glue table catalog.
   final pulumi.Input<String>? catalog;
+
   /// The name of the Glue table database.
   final pulumi.Input<String>? database;
+
   /// The name of the Glue table.
   final pulumi.Input<String>? tableName;
 
@@ -28,12 +30,25 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
     };
   }
 
-  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(Map<String, dynamic> map) {
+  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureGroupOfflineStoreConfigDataCatalogConfig(
-      catalog: map['catalog'] == null ? null : ((map['catalog'] as String).input()).input(),
-      database: map['database'] == null ? null : ((map['database'] as String).input()).input(),
-      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      catalog: (() {
+        final guardedValue = map['catalog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

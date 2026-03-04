@@ -8,20 +8,17 @@ class ServerTlsPolicyServerCertificateGrpcEndpoint {
 
   /// Creates a new [ServerTlsPolicyServerCertificateGrpcEndpoint].
   /// [targetUri] The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-  ServerTlsPolicyServerCertificateGrpcEndpoint({
-    required this.targetUri,
-  });
+  ServerTlsPolicyServerCertificateGrpcEndpoint({required this.targetUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetUri': targetUri,
-    };
+    return <String, dynamic>{'targetUri': targetUri};
   }
 
-  factory ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap(Map<String, dynamic> map) {
+  factory ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerTlsPolicyServerCertificateGrpcEndpoint(
-      targetUri: (map['targetUri'] as String).input(),
+      targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }
 }
-

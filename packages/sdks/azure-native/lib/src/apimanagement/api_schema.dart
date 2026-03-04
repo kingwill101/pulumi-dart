@@ -693,16 +693,22 @@ import 'api_schema_args.dart';
 class ApiSchema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.
   late final pulumi.Output<dynamic> components;
-  /// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+
+  /// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). &lt;/br&gt; - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` &lt;/br&gt; - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` &lt;/br&gt; - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` &lt;/br&gt; - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
   late final pulumi.Output<String> contentType;
+
   /// Types definitions. Used for Swagger/OpenAPI v1 schemas only, null otherwise.
   late final pulumi.Output<dynamic> definitions;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
   late final pulumi.Output<String?> value;
 
@@ -715,17 +721,17 @@ class ApiSchema extends pulumi.CustomResource {
     ApiSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiSchema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.components = registerOutput<dynamic>('components');
-    this.contentType = registerOutput<String>('contentType');
-    this.definitions = registerOutput<dynamic>('definitions');
+         'azure-native:apimanagement:ApiSchema',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    components = registerOutput<dynamic>('components');
+    contentType = registerOutput<String>('contentType');
+    definitions = registerOutput<dynamic>('definitions');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

@@ -7,6 +7,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
   /// the Developer Connect connection. Format:
   /// `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> userTokenSecretVersion;
+
   /// (Output)
   /// Output only. The username associated with this token.
   final pulumi.Input<String>? username;
@@ -26,11 +27,18 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
     };
   }
 
-  factory ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.fromMap(Map<String, dynamic> map) {
+  factory ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionBitbucketDataCenterConfigReadAuthorizerCredential(
-      userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      userTokenSecretVersion: pulumi.Input.fromValue(
+        map['userTokenSecretVersion'] as String,
+      ),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

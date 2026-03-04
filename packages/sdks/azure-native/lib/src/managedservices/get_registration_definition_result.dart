@@ -8,16 +8,22 @@ import 'system_data_response.dart';
 class GetRegistrationDefinitionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The fully qualified path of the registration definition.
   final String id;
+
   /// The name of the registration definition.
   final String name;
+
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
   final PlanResponse? plan;
+
   /// The properties of a registration definition.
   final RegistrationDefinitionPropertiesResponse properties;
+
   /// The metadata for the registration assignment resource.
   final SystemDataResponse systemData;
+
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
   final String type;
 
@@ -44,7 +50,7 @@ class GetRegistrationDefinitionResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'plan': ?plan == null ? null : plan!.toMap(),
+      'plan': ?plan?.toMap(),
       'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
@@ -56,11 +62,20 @@ class GetRegistrationDefinitionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      plan: map['plan'] == null ? null : PlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>()),
-      properties: RegistrationDefinitionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return PlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      properties: RegistrationDefinitionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

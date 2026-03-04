@@ -583,24 +583,34 @@ import 'connection_function_state.dart';
 class ConnectionFunction extends pulumi.CustomResource {
   /// ARN of the connection function.
   late final pulumi.Output<String> connectionFunctionArn;
+
   /// Code for the connection function. Maximum length is 40960 characters.
   late final pulumi.Output<String> connectionFunctionCode;
+
   /// Configuration information for the connection function. See `connection_function_config` below.
-  late final pulumi.Output<ConnectionFunctionConnectionFunctionConfig> connectionFunctionConfig;
+  late final pulumi.Output<ConnectionFunctionConnectionFunctionConfig>
+  connectionFunctionConfig;
+
   /// ETag of the connection function.
   late final pulumi.Output<String> etag;
+
   /// ETag of the function's LIVE stage. Will be empty if the function has not been published.
   late final pulumi.Output<String> liveStageEtag;
+
   /// Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   late final pulumi.Output<bool> publish;
+
   /// Status of the connection function.
   late final pulumi.Output<String> status;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -613,21 +623,24 @@ class ConnectionFunction extends pulumi.CustomResource {
     ConnectionFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/connectionFunction:ConnectionFunction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
-    this.connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
-    this.connectionFunctionConfig = registerOutput<ConnectionFunctionConnectionFunctionConfig>('connectionFunctionConfig');
-    this.etag = registerOutput<String>('etag');
-    this.liveStageEtag = registerOutput<String>('liveStageEtag');
+         'aws:cloudfront/connectionFunction:ConnectionFunction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
+    connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
+    connectionFunctionConfig =
+        registerOutput<ConnectionFunctionConnectionFunctionConfig>(
+          'connectionFunctionConfig',
+        );
+    etag = registerOutput<String>('etag');
+    liveStageEtag = registerOutput<String>('liveStageEtag');
     this.name = registerOutput<String>('name');
-    this.publish = registerOutput<bool>('publish');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    publish = registerOutput<bool>('publish');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ConnectionFunction] resource's state with the given [name] and [id].
@@ -648,20 +661,23 @@ class ConnectionFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/connectionFunction:ConnectionFunction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
-    this.connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
-    this.connectionFunctionConfig = registerOutput<ConnectionFunctionConnectionFunctionConfig>('connectionFunctionConfig');
-    this.etag = registerOutput<String>('etag');
-    this.liveStageEtag = registerOutput<String>('liveStageEtag');
+         'aws:cloudfront/connectionFunction:ConnectionFunction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
+    connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
+    connectionFunctionConfig =
+        registerOutput<ConnectionFunctionConnectionFunctionConfig>(
+          'connectionFunctionConfig',
+        );
+    etag = registerOutput<String>('etag');
+    liveStageEtag = registerOutput<String>('liveStageEtag');
     this.name = registerOutput<String>('name');
-    this.publish = registerOutput<bool>('publish');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    publish = registerOutput<bool>('publish');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

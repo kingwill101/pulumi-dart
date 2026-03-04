@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_properties_response.dart';
 import 'principal_response.dart';
-import 'role_management_policy_approval_rule_response.dart';
 import 'role_management_policy_args.dart';
 
 /// Role management policy
@@ -2516,26 +2515,37 @@ import 'role_management_policy_args.dart';
 class RoleManagementPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The role management policy description.
   late final pulumi.Output<String?> description;
+
   /// The role management policy display name.
   late final pulumi.Output<String?> displayName;
+
   /// The readonly computed rule applied to the policy.
-  late final pulumi.Output<List<RoleManagementPolicyApprovalRuleResponse>> effectiveRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
+
   /// The role management policy is default policy.
   late final pulumi.Output<bool?> isOrganizationDefault;
+
   /// The name of the entity last modified it
   late final pulumi.Output<PrincipalResponse> lastModifiedBy;
+
   /// The last modified date time.
   late final pulumi.Output<String> lastModifiedDateTime;
+
   /// The role management policy name.
   late final pulumi.Output<String> name;
+
   /// Additional properties of scope
   late final pulumi.Output<PolicyPropertiesResponse> policyProperties;
+
   /// The rule applied to the policy.
-  late final pulumi.Output<List<RoleManagementPolicyApprovalRuleResponse>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
+
   /// The role management policy type.
   late final pulumi.Output<String> type;
 
@@ -2548,22 +2558,26 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     RoleManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:RoleManagementPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveRules = registerOutput<List<RoleManagementPolicyApprovalRuleResponse>>('effectiveRules');
-    this.isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
-    this.lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy');
-    this.lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
+         'azure-native:authorization:RoleManagementPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveRules = registerOutput<List<Map<String, dynamic>>>(
+      'effectiveRules',
+    );
+    isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
+    lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy');
+    lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
     this.name = registerOutput<String>('name');
-    this.policyProperties = registerOutput<PolicyPropertiesResponse>('policyProperties');
-    this.rules = registerOutput<List<RoleManagementPolicyApprovalRuleResponse>?>('rules');
-    this.scope = registerOutput<String?>('scope');
-    this.type = registerOutput<String>('type');
+    policyProperties = registerOutput<PolicyPropertiesResponse>(
+      'policyProperties',
+    );
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    scope = registerOutput<String?>('scope');
+    type = registerOutput<String>('type');
   }
 }

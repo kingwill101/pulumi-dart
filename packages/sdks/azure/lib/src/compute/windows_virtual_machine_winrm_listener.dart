@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineWinrmListener {
   /// The Secret URL of a Key Vault Certificate, which must be specified when `protocol` is set to `Https`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? certificateUrl;
+
   /// Specifies the protocol of listener. Possible values are `Http` or `Https`. Changing this forces a new resource to be created.
   final pulumi.Input<String> protocol;
 
@@ -25,9 +26,12 @@ class WindowsVirtualMachineWinrmListener {
 
   factory WindowsVirtualMachineWinrmListener.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineWinrmListener(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      certificateUrl: (() {
+        final guardedValue = map['certificateUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

@@ -9,20 +9,35 @@ class ListPrivateStoreNewPlansNotificationsResult {
 
   /// Creates a new [ListPrivateStoreNewPlansNotificationsResult].
   /// [newPlansNotifications] Optional.
-  ListPrivateStoreNewPlansNotificationsResult({
-    this.newPlansNotifications,
-  });
+  ListPrivateStoreNewPlansNotificationsResult({this.newPlansNotifications});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'newPlansNotifications': ?newPlansNotifications == null ? null : pulumi.Input.encodeList<NewNotificationsResponse, Map<String, dynamic>>(newPlansNotifications!, (value) => value.toMap()),
+      'newPlansNotifications': ?(() {
+        final guardedValue = newPlansNotifications;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          NewNotificationsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListPrivateStoreNewPlansNotificationsResult.fromMap(Map<String, dynamic> map) {
+  factory ListPrivateStoreNewPlansNotificationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListPrivateStoreNewPlansNotificationsResult(
-      newPlansNotifications: map['newPlansNotifications'] == null ? null : pulumi.Input.decodeList<NewNotificationsResponse>(map['newPlansNotifications']!, (value) => NewNotificationsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      newPlansNotifications: (() {
+        final guardedValue = map['newPlansNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<NewNotificationsResponse>(
+          guardedValue,
+          (value) => NewNotificationsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

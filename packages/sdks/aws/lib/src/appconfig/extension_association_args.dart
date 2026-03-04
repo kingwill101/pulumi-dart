@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionAssociationArgs {
   /// The ARN of the extension defined in the association.
   final pulumi.Input<String> extensionArn;
+
   /// The parameter names and values defined for the association.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the application, configuration profile, or environment to associate with the extension.
   final pulumi.Input<String> resourceArn;
 
@@ -39,11 +42,20 @@ class ExtensionAssociationArgs {
 
   factory ExtensionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionAssociationArgs(
-      extensionArn: (map['extensionArn'] as String).input(),
-      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
+      extensionArn: pulumi.Input.fromValue(map['extensionArn'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }
 }
-

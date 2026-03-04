@@ -35,12 +35,17 @@ class GetEndpointAuthenticationOption {
 
   factory GetEndpointAuthenticationOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointAuthenticationOption(
-      activeDirectoryId: (map['activeDirectoryId'] as String).input(),
-      rootCertificateChainArn: (map['rootCertificateChainArn'] as String).input(),
-      samlProviderArn: (map['samlProviderArn'] as String).input(),
-      selfServiceSamlProviderArn: (map['selfServiceSamlProviderArn'] as String).input(),
-      type: (map['type'] as String).input(),
+      activeDirectoryId: pulumi.Input.fromValue(
+        map['activeDirectoryId'] as String,
+      ),
+      rootCertificateChainArn: pulumi.Input.fromValue(
+        map['rootCertificateChainArn'] as String,
+      ),
+      samlProviderArn: pulumi.Input.fromValue(map['samlProviderArn'] as String),
+      selfServiceSamlProviderArn: pulumi.Input.fromValue(
+        map['selfServiceSamlProviderArn'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -8,9 +8,11 @@ import 'get_crypto_key_versions_version.dart';
 class GetCryptoKeyVersionsResult {
   final String cryptoKey;
   final String? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetCryptoKeyVersionsPublicKey> publicKeys;
+
   /// A list of all the retrieved crypto key versions from the provided crypto key. This list is influenced by the provided filter argument.
   final List<GetCryptoKeyVersionsVersion> versions;
 
@@ -33,19 +35,40 @@ class GetCryptoKeyVersionsResult {
       'cryptoKey': cryptoKey,
       'filter': ?filter,
       'id': id,
-      'publicKeys': pulumi.Input.encodeList<GetCryptoKeyVersionsPublicKey, Map<String, dynamic>>(publicKeys, (value) => value.toMap()),
-      'versions': pulumi.Input.encodeList<GetCryptoKeyVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'publicKeys':
+          pulumi.Input.encodeList<
+            GetCryptoKeyVersionsPublicKey,
+            Map<String, dynamic>
+          >(publicKeys, (value) => value.toMap()),
+      'versions':
+          pulumi.Input.encodeList<
+            GetCryptoKeyVersionsVersion,
+            Map<String, dynamic>
+          >(versions, (value) => value.toMap()),
     };
   }
 
   factory GetCryptoKeyVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionsResult(
       cryptoKey: map['cryptoKey'] as String,
-      filter: map['filter'] == null ? null : map['filter']! as String,
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsPublicKey>(map['publicKeys'], (value) => GetCryptoKeyVersionsPublicKey.fromMap((value as Map).cast<String, dynamic>())),
-      versions: pulumi.Input.decodeList<GetCryptoKeyVersionsVersion>(map['versions'], (value) => GetCryptoKeyVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
+      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsPublicKey>(
+        map['publicKeys']!,
+        (value) => GetCryptoKeyVersionsPublicKey.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      versions: pulumi.Input.decodeList<GetCryptoKeyVersionsVersion>(
+        map['versions']!,
+        (value) => GetCryptoKeyVersionsVersion.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicThresholdFailingPeriodsResponse {
   /// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
   final pulumi.Input<double> minFailingPeriodsToAlert;
+
   /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points.
   final pulumi.Input<double> numberOfEvaluationPeriods;
 
@@ -24,11 +25,16 @@ class DynamicThresholdFailingPeriodsResponse {
     };
   }
 
-  factory DynamicThresholdFailingPeriodsResponse.fromMap(Map<String, dynamic> map) {
+  factory DynamicThresholdFailingPeriodsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DynamicThresholdFailingPeriodsResponse(
-      minFailingPeriodsToAlert: (map['minFailingPeriodsToAlert'] as double).input(),
-      numberOfEvaluationPeriods: (map['numberOfEvaluationPeriods'] as double).input(),
+      minFailingPeriodsToAlert: pulumi.Input.fromValue(
+        map['minFailingPeriodsToAlert'] as double,
+      ),
+      numberOfEvaluationPeriods: pulumi.Input.fromValue(
+        map['numberOfEvaluationPeriods'] as double,
+      ),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum UrlMapLoginAppengineV1beta {
   loginAdmin("LOGIN_ADMIN"),
   loginRequired("LOGIN_REQUIRED");
 
-  const UrlMapLoginAppengineV1beta(this.value);
-  final String value;
+  const UrlMapLoginAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static UrlMapLoginAppengineV1beta fromValue(String value) {
     for (final item in UrlMapLoginAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UrlMapLoginAppengineV1beta value: $value');
   }
 }
-

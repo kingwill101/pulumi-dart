@@ -9,20 +9,19 @@ class Mtls {
 
   /// Creates a new [Mtls].
   /// [enabled] Boolean indicating whether the mutual TLS authentication is enabled
-  Mtls({
-    this.enabled,
-  });
+  Mtls({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory Mtls.fromMap(Map<String, dynamic> map) {
     return Mtls(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -2996,12 +2996,16 @@ import 'management_policy_schema_response.dart';
 class ManagementPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Returns the date and time the ManagementPolicies was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   late final pulumi.Output<ManagementPolicySchemaResponse> policy;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -3014,15 +3018,15 @@ class ManagementPolicy extends pulumi.CustomResource {
     ManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:ManagementPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:storage:ManagementPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.policy = registerOutput<ManagementPolicySchemaResponse>('policy');
-    this.type = registerOutput<String>('type');
+    policy = registerOutput<ManagementPolicySchemaResponse>('policy');
+    type = registerOutput<String>('type');
   }
 }

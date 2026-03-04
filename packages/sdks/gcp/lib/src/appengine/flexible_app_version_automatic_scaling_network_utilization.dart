@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleAppVersionAutomaticScalingNetworkUtilization {
   /// Target bytes received per second.
   final pulumi.Input<int>? targetReceivedBytesPerSecond;
+
   /// Target packets received per second.
   final pulumi.Input<int>? targetReceivedPacketsPerSecond;
+
   /// Target bytes sent per second.
   final pulumi.Input<int>? targetSentBytesPerSecond;
+
   /// Target packets sent per second.
   final pulumi.Input<int>? targetSentPacketsPerSecond;
 
@@ -33,13 +36,30 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization {
     };
   }
 
-  factory FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap(Map<String, dynamic> map) {
+  factory FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleAppVersionAutomaticScalingNetworkUtilization(
-      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null ? null : (map['targetReceivedBytesPerSecond']! as int).input(),
-      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] == null ? null : (map['targetReceivedPacketsPerSecond']! as int).input(),
-      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null ? null : (map['targetSentBytesPerSecond']! as int).input(),
-      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null ? null : (map['targetSentPacketsPerSecond']! as int).input(),
+      targetReceivedBytesPerSecond: (() {
+        final guardedValue = map['targetReceivedBytesPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetReceivedPacketsPerSecond: (() {
+        final guardedValue = map['targetReceivedPacketsPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetSentBytesPerSecond: (() {
+        final guardedValue = map['targetSentBytesPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetSentPacketsPerSecond: (() {
+        final guardedValue = map['targetSentPacketsPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

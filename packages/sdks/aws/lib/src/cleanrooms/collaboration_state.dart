@@ -8,31 +8,44 @@ import 'collaboration_member.dart';
 class CollaborationState {
   /// Analytics engine used by the collaboration. Valid values are `CLEAN_ROOMS_SQL` (deprecated) and `SPARK`.
   final pulumi.Input<String>? analyticsEngine;
+
   /// ARN of the collaboration.
   final pulumi.Input<String>? arn;
+
   /// Date and time the collaboration was created.
   final pulumi.Input<String>? createTime;
+
   /// Name for the member record for the collaboration creator.
   final pulumi.Input<String>? creatorDisplayName;
+
   /// List of member abilities for the creator of the collaboration. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-creatorMemberAbilities).
   final pulumi.Input<List<String>>? creatorMemberAbilities;
+
   /// Collection of settings which determine how the [c3r client](https://docs.aws.amazon.com/clean-rooms/latest/userguide/crypto-computing.html) will encrypt data for use within this collaboration. See below.
-  final pulumi.Input<CollaborationDataEncryptionMetadata>? dataEncryptionMetadata;
+  final pulumi.Input<CollaborationDataEncryptionMetadata>?
+  dataEncryptionMetadata;
+
   /// Description for a collaboration.
   final pulumi.Input<String>? description;
+
   /// Additional members of the collaboration which will be invited to join the collaboration. See below.
   final pulumi.Input<List<CollaborationMember>>? members;
+
   /// Name of the collaboration.  Collaboration names do not need to be unique.
   final pulumi.Input<String>? name;
+
   /// Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? queryLogStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key value pairs which tag the collaboration.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Date and time the collaboration was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -75,9 +88,24 @@ class CollaborationState {
       'createTime': ?createTime,
       'creatorDisplayName': ?creatorDisplayName,
       'creatorMemberAbilities': ?creatorMemberAbilities,
-      'dataEncryptionMetadata': ?pulumi.Input.mapOptionalInputValue<CollaborationDataEncryptionMetadata, Map<String, dynamic>>(dataEncryptionMetadata, (value) => value.toMap()),
+      'dataEncryptionMetadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            CollaborationDataEncryptionMetadata,
+            Map<String, dynamic>
+          >(dataEncryptionMetadata, (value) => value.toMap()),
       'description': ?description,
-      'members': ?pulumi.Input.mapOptionalInputValue<List<CollaborationMember>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<CollaborationMember, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'members':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CollaborationMember>,
+            List<Map<String, dynamic>>
+          >(
+            members,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CollaborationMember,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'queryLogStatus': ?queryLogStatus,
       'region': ?region,
@@ -89,21 +117,91 @@ class CollaborationState {
 
   factory CollaborationState.fromMap(Map<String, dynamic> map) {
     return CollaborationState(
-      analyticsEngine: map['analyticsEngine'] == null ? null : ((map['analyticsEngine'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
-      creatorDisplayName: map['creatorDisplayName'] == null ? null : ((map['creatorDisplayName'] as String).input()).input(),
-      creatorMemberAbilities: map['creatorMemberAbilities'] == null ? null : (((map['creatorMemberAbilities'] as List).cast<String>()).input()).input(),
-      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : ((CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      members: map['members'] == null ? null : ((pulumi.Input.decodeList<CollaborationMember>(map['members']!, (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      queryLogStatus: map['queryLogStatus'] == null ? null : ((map['queryLogStatus'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
+      analyticsEngine: (() {
+        final guardedValue = map['analyticsEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creatorDisplayName: (() {
+        final guardedValue = map['creatorDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creatorMemberAbilities: (() {
+        final guardedValue = map['creatorMemberAbilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataEncryptionMetadata: (() {
+        final guardedValue = map['dataEncryptionMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CollaborationDataEncryptionMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CollaborationMember>(
+            guardedValue,
+            (value) => CollaborationMember.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryLogStatus: (() {
+        final guardedValue = map['queryLogStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

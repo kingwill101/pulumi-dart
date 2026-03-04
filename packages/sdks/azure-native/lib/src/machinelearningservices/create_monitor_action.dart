@@ -6,6 +6,7 @@ import 'monitor_definition.dart';
 class CreateMonitorAction {
   /// Expected value is 'CreateMonitor'.
   final pulumi.Input<String> actionType;
+
   /// [Required] Defines the monitor.
   final pulumi.Input<MonitorDefinition> monitorDefinition;
 
@@ -20,15 +21,22 @@ class CreateMonitorAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'monitorDefinition': pulumi.Input.mapInputValue<MonitorDefinition, Map<String, dynamic>>(monitorDefinition, (value) => value.toMap()),
+      'monitorDefinition':
+          pulumi.Input.mapInputValue<MonitorDefinition, Map<String, dynamic>>(
+            monitorDefinition,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CreateMonitorAction.fromMap(Map<String, dynamic> map) {
     return CreateMonitorAction(
-      actionType: (map['actionType'] as String).input(),
-      monitorDefinition: (MonitorDefinition.fromMap((map['monitorDefinition'] as Map).cast<String, dynamic>())).input(),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      monitorDefinition: pulumi.Input.fromValue(
+        MonitorDefinition.fromMap(
+          (map['monitorDefinition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

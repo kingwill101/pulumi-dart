@@ -3,16 +3,22 @@ enum ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2 {
   default_("default"),
   private("private");
 
-  const ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2(this.value);
-  final String value;
+  const ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2 fromValue(String value) {
-    for (final item in ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2.values) {
-      if (item.value == value) {
+  static ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2
+  fromValue(String value) {
+    for (final item
+        in ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2 value: $value',
+    );
   }
 }
-

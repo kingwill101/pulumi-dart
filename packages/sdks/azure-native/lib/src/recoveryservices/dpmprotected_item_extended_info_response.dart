@@ -6,30 +6,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DPMProtectedItemExtendedInfoResponse {
   /// Used Disk storage in bytes.
   final pulumi.Input<String>? diskStorageUsedInBytes;
+
   /// To check if backup item is collocated.
   final pulumi.Input<bool>? isCollocated;
+
   /// To check if backup item is cloud protected.
   final pulumi.Input<bool>? isPresentOnCloud;
+
   /// Last backup status information on backup item.
   final pulumi.Input<String>? lastBackupStatus;
+
   /// Last refresh time on backup item.
   final pulumi.Input<String>? lastRefreshedAt;
+
   /// Oldest cloud recovery point time.
   final pulumi.Input<String>? oldestRecoveryPoint;
+
   /// latest disk recovery point time.
   final pulumi.Input<String>? onPremiseLatestRecoveryPoint;
+
   /// Oldest disk recovery point time.
   final pulumi.Input<String>? onPremiseOldestRecoveryPoint;
+
   /// disk recovery point count.
   final pulumi.Input<int>? onPremiseRecoveryPointCount;
+
   /// Attribute to provide information on various DBs.
   final pulumi.Input<Map<String, String>>? protectableObjectLoadPath;
+
   /// To check if backup item is disk protected.
   final pulumi.Input<bool>? protected;
+
   /// Protection group name of the backup item.
   final pulumi.Input<String>? protectionGroupName;
+
   /// cloud recovery point count.
   final pulumi.Input<int>? recoveryPointCount;
+
   /// total Disk storage in bytes.
   final pulumi.Input<String>? totalDiskStorageSizeInBytes;
 
@@ -84,23 +97,82 @@ class DPMProtectedItemExtendedInfoResponse {
     };
   }
 
-  factory DPMProtectedItemExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory DPMProtectedItemExtendedInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DPMProtectedItemExtendedInfoResponse(
-      diskStorageUsedInBytes: map['diskStorageUsedInBytes'] == null ? null : (map['diskStorageUsedInBytes']! as String).input(),
-      isCollocated: map['isCollocated'] == null ? null : (map['isCollocated']! as bool).input(),
-      isPresentOnCloud: map['isPresentOnCloud'] == null ? null : (map['isPresentOnCloud']! as bool).input(),
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus']! as String).input(),
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
-      onPremiseLatestRecoveryPoint: map['onPremiseLatestRecoveryPoint'] == null ? null : (map['onPremiseLatestRecoveryPoint']! as String).input(),
-      onPremiseOldestRecoveryPoint: map['onPremiseOldestRecoveryPoint'] == null ? null : (map['onPremiseOldestRecoveryPoint']! as String).input(),
-      onPremiseRecoveryPointCount: map['onPremiseRecoveryPointCount'] == null ? null : (map['onPremiseRecoveryPointCount']! as int).input(),
-      protectableObjectLoadPath: map['protectableObjectLoadPath'] == null ? null : ((map['protectableObjectLoadPath']! as Map).cast<String, String>()).input(),
-      protected: map['protected'] == null ? null : (map['protected']! as bool).input(),
-      protectionGroupName: map['protectionGroupName'] == null ? null : (map['protectionGroupName']! as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
-      totalDiskStorageSizeInBytes: map['totalDiskStorageSizeInBytes'] == null ? null : (map['totalDiskStorageSizeInBytes']! as String).input(),
+      diskStorageUsedInBytes: (() {
+        final guardedValue = map['diskStorageUsedInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isCollocated: (() {
+        final guardedValue = map['isCollocated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isPresentOnCloud: (() {
+        final guardedValue = map['isPresentOnCloud'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastBackupStatus: (() {
+        final guardedValue = map['lastBackupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastRefreshedAt: (() {
+        final guardedValue = map['lastRefreshedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oldestRecoveryPoint: (() {
+        final guardedValue = map['oldestRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onPremiseLatestRecoveryPoint: (() {
+        final guardedValue = map['onPremiseLatestRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onPremiseOldestRecoveryPoint: (() {
+        final guardedValue = map['onPremiseOldestRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onPremiseRecoveryPointCount: (() {
+        final guardedValue = map['onPremiseRecoveryPointCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protectableObjectLoadPath: (() {
+        final guardedValue = map['protectableObjectLoadPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      protected: (() {
+        final guardedValue = map['protected'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      protectionGroupName: (() {
+        final guardedValue = map['protectionGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryPointCount: (() {
+        final guardedValue = map['recoveryPointCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalDiskStorageSizeInBytes: (() {
+        final guardedValue = map['totalDiskStorageSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

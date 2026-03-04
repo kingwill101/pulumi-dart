@@ -5,16 +5,15 @@ enum IdentitySettingsLifeCycle {
   valueNone("None"),
   valueAll("All");
 
-  const IdentitySettingsLifeCycle(this.value);
-  final String value;
+  const IdentitySettingsLifeCycle(this.wireValue);
+  final String wireValue;
 
   static IdentitySettingsLifeCycle fromValue(String value) {
     for (final item in IdentitySettingsLifeCycle.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentitySettingsLifeCycle value: $value');
   }
 }
-

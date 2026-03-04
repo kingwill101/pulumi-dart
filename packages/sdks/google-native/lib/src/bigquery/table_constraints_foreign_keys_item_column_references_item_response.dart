@@ -21,11 +21,16 @@ class TableConstraintsForeignKeysItemColumnReferencesItemResponse {
     };
   }
 
-  factory TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap(Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableConstraintsForeignKeysItemColumnReferencesItemResponse(
-      referencedColumn: (map['referencedColumn'] as String).input(),
-      referencingColumn: (map['referencingColumn'] as String).input(),
+      referencedColumn: pulumi.Input.fromValue(
+        map['referencedColumn'] as String,
+      ),
+      referencingColumn: pulumi.Input.fromValue(
+        map['referencingColumn'] as String,
+      ),
     );
   }
 }
-

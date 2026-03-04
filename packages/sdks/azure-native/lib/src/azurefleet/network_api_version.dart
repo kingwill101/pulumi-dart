@@ -4,16 +4,15 @@
 enum NetworkApiVersion {
   v20201101("2020-11-01");
 
-  const NetworkApiVersion(this.value);
-  final String value;
+  const NetworkApiVersion(this.wireValue);
+  final String wireValue;
 
   static NetworkApiVersion fromValue(String value) {
     for (final item in NetworkApiVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkApiVersion value: $value');
   }
 }
-

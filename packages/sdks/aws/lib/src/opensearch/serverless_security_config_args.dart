@@ -10,12 +10,16 @@ import 'serverless_security_config_saml_options.dart';
 class ServerlessSecurityConfigArgs {
   /// Description of the security configuration.
   final pulumi.Input<String>? description;
+
   /// Name of the policy.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block for SAML options.
   final pulumi.Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
+
   /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
@@ -40,19 +44,42 @@ class ServerlessSecurityConfigArgs {
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'samlOptions': ?pulumi.Input.mapOptionalInputValue<ServerlessSecurityConfigSamlOptions, Map<String, dynamic>>(samlOptions, (value) => value.toMap()),
+      'samlOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerlessSecurityConfigSamlOptions,
+            Map<String, dynamic>
+          >(samlOptions, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      samlOptions: map['samlOptions'] == null ? null : ((ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      samlOptions: (() {
+        final guardedValue = map['samlOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerlessSecurityConfigSamlOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

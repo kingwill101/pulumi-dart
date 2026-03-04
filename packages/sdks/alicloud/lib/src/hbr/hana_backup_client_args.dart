@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HanaBackupClientArgs {
   /// The alert settings. Valid value: `INHERITED`.
   final pulumi.Input<String>? alertSetting;
+
   /// The installation information of the HBR clients.
   final pulumi.Input<String>? clientInfo;
+
   /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   final pulumi.Input<bool>? useHttps;
+
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -39,11 +42,22 @@ class HanaBackupClientArgs {
 
   factory HanaBackupClientArgs.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientArgs(
-      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting']! as String).input(),
-      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo']! as String).input(),
-      useHttps: map['useHttps'] == null ? null : (map['useHttps']! as bool).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      alertSetting: (() {
+        final guardedValue = map['alertSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientInfo: (() {
+        final guardedValue = map['clientInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useHttps: (() {
+        final guardedValue = map['useHttps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

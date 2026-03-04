@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterApplianceInstanceResponse {
   /// The IP address on the VM to use for peering.
   final pulumi.Input<String> ipAddress;
+
   /// The URI of the VM.
   final pulumi.Input<String> virtualMachine;
 
@@ -26,9 +27,8 @@ class RouterApplianceInstanceResponse {
 
   factory RouterApplianceInstanceResponse.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstanceResponse(
-      ipAddress: (map['ipAddress'] as String).input(),
-      virtualMachine: (map['virtualMachine'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      virtualMachine: pulumi.Input.fromValue(map['virtualMachine'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'simple_office_site_state.dart';
 ///
 /// For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
 ///
-/// > **NOTE:** Available since v1.140.0.
+/// &gt; **NOTE:** Available since v1.140.0.
 ///
 /// ## Example Usage
 ///
@@ -170,26 +170,37 @@ import 'simple_office_site_state.dart';
 class SimpleOfficeSite extends pulumi.CustomResource {
   /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
   late final pulumi.Output<int> bandwidth;
+
   /// Cloud Enterprise Network Instance ID.
   late final pulumi.Output<String?> cenId;
+
   /// The cen owner id.
   late final pulumi.Output<String?> cenOwnerId;
+
   /// Workspace Corresponds to the Security Office Network of IPv4 Segment.
   late final pulumi.Output<String> cidrBlock;
+
   /// Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
   late final pulumi.Output<String> desktopAccessType;
+
   /// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
   late final pulumi.Output<bool> enableAdminAccess;
+
   /// Enable Cross-Desktop Access.
   late final pulumi.Output<bool> enableCrossDesktopAccess;
+
   /// Whether the Open Internet Access Function.
   late final pulumi.Output<bool> enableInternetAccess;
+
   /// Whether to Enable Multi-Factor Authentication MFA.
   late final pulumi.Output<bool> mfaEnabled;
+
   /// The office site name.
   late final pulumi.Output<String?> officeSiteName;
+
   /// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
   late final pulumi.Output<bool> ssoEnabled;
+
   /// Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
   late final pulumi.Output<String> status;
 
@@ -202,23 +213,23 @@ class SimpleOfficeSite extends pulumi.CustomResource {
     SimpleOfficeSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/simpleOfficeSite:SimpleOfficeSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.cenId = registerOutput<String?>('cenId');
-    this.cenOwnerId = registerOutput<String?>('cenOwnerId');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableCrossDesktopAccess = registerOutput<bool>('enableCrossDesktopAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.mfaEnabled = registerOutput<bool>('mfaEnabled');
-    this.officeSiteName = registerOutput<String?>('officeSiteName');
-    this.ssoEnabled = registerOutput<bool>('ssoEnabled');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/simpleOfficeSite:SimpleOfficeSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    cenId = registerOutput<String?>('cenId');
+    cenOwnerId = registerOutput<String?>('cenOwnerId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableCrossDesktopAccess = registerOutput<bool>('enableCrossDesktopAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    mfaEnabled = registerOutput<bool>('mfaEnabled');
+    officeSiteName = registerOutput<String?>('officeSiteName');
+    ssoEnabled = registerOutput<bool>('ssoEnabled');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [SimpleOfficeSite] resource's state with the given [name] and [id].
@@ -239,22 +250,22 @@ class SimpleOfficeSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/simpleOfficeSite:SimpleOfficeSite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.cenId = registerOutput<String?>('cenId');
-    this.cenOwnerId = registerOutput<String?>('cenOwnerId');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableCrossDesktopAccess = registerOutput<bool>('enableCrossDesktopAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.mfaEnabled = registerOutput<bool>('mfaEnabled');
-    this.officeSiteName = registerOutput<String?>('officeSiteName');
-    this.ssoEnabled = registerOutput<bool>('ssoEnabled');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/simpleOfficeSite:SimpleOfficeSite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    cenId = registerOutput<String?>('cenId');
+    cenOwnerId = registerOutput<String?>('cenOwnerId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableCrossDesktopAccess = registerOutput<bool>('enableCrossDesktopAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    mfaEnabled = registerOutput<bool>('mfaEnabled');
+    officeSiteName = registerOutput<String?>('officeSiteName');
+    ssoEnabled = registerOutput<bool>('ssoEnabled');
+    status = registerOutput<String>('status');
   }
 }

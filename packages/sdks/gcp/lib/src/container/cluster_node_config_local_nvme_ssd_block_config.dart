@@ -4,25 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigLocalNvmeSsdBlockConfig {
   /// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
-  /// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+  /// &gt; Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
   final pulumi.Input<int> localSsdCount;
 
   /// Creates a new [ClusterNodeConfigLocalNvmeSsdBlockConfig].
   /// [localSsdCount] Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
-  ClusterNodeConfigLocalNvmeSsdBlockConfig({
-    required this.localSsdCount,
-  });
+  ClusterNodeConfigLocalNvmeSsdBlockConfig({required this.localSsdCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'localSsdCount': localSsdCount,
-    };
+    return <String, dynamic>{'localSsdCount': localSsdCount};
   }
 
-  factory ClusterNodeConfigLocalNvmeSsdBlockConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigLocalNvmeSsdBlockConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigLocalNvmeSsdBlockConfig(
-      localSsdCount: (map['localSsdCount'] as int).input(),
+      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
-

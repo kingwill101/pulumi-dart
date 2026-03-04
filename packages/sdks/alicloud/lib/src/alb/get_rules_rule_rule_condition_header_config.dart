@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleRuleConditionHeaderConfig {
   /// The key of the query string.
   final pulumi.Input<String> key;
+
   /// Add one or more IP addresses or IP address segments.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class GetRulesRuleRuleConditionHeaderConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory GetRulesRuleRuleConditionHeaderConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRulesRuleRuleConditionHeaderConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRulesRuleRuleConditionHeaderConfig(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

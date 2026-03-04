@@ -8,16 +8,17 @@ enum DiscoveryOccurrenceAnalysisStatus {
   finishedFailed("FINISHED_FAILED"),
   finishedUnsupported("FINISHED_UNSUPPORTED");
 
-  const DiscoveryOccurrenceAnalysisStatus(this.value);
-  final String value;
+  const DiscoveryOccurrenceAnalysisStatus(this.wireValue);
+  final String wireValue;
 
   static DiscoveryOccurrenceAnalysisStatus fromValue(String value) {
     for (final item in DiscoveryOccurrenceAnalysisStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryOccurrenceAnalysisStatus value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryOccurrenceAnalysisStatus value: $value',
+    );
   }
 }
-

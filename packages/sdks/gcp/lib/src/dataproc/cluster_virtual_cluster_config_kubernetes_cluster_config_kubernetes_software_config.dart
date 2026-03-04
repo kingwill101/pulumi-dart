@@ -7,6 +7,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
   /// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
   /// * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
   final pulumi.Input<Map<String, String>> componentVersion;
+
   /// The properties to set on daemon config files. Property keys are specified in prefix:property format,
   /// for example spark:spark.kubernetes.container.image.
   final pulumi.Input<Map<String, String>>? properties;
@@ -26,11 +27,20 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig(
-      componentVersion: ((map['componentVersion'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      componentVersion: pulumi.Input.fromValue(
+        (map['componentVersion'] as Map).cast<String, String>(),
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

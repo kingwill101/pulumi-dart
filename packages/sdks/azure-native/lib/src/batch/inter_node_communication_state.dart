@@ -3,16 +3,15 @@ enum InterNodeCommunicationState {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const InterNodeCommunicationState(this.value);
-  final String value;
+  const InterNodeCommunicationState(this.wireValue);
+  final String wireValue;
 
   static InterNodeCommunicationState fromValue(String value) {
     for (final item in InterNodeCommunicationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InterNodeCommunicationState value: $value');
   }
 }
-

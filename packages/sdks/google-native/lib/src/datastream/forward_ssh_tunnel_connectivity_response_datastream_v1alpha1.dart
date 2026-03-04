@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
   /// Hostname for the SSH tunnel.
   final pulumi.Input<String> hostname;
+
   /// Input only. SSH password.
   final pulumi.Input<String> password;
+
   /// Port for the SSH tunnel, default value is 22.
   final pulumi.Input<int> port;
+
   /// Input only. SSH private key.
   final pulumi.Input<String> privateKey;
+
   /// Username for the SSH tunnel.
   final pulumi.Input<String> username;
 
@@ -39,14 +43,15 @@ class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
     };
   }
 
-  factory ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ForwardSshTunnelConnectivityResponseDatastreamV1alpha1(
-      hostname: (map['hostname'] as String).input(),
-      password: (map['password'] as String).input(),
-      port: (map['port'] as int).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      username: (map['username'] as String).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

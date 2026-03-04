@@ -11,8 +11,10 @@ class GetPrivateCloudArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
+
   /// Name of the resource.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -37,10 +39,13 @@ class GetPrivateCloudArgs {
 
   factory GetPrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

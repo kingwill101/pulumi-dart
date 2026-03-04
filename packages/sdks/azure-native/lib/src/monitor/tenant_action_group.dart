@@ -1,10 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_app_push_receiver_response.dart';
-import 'email_receiver_response.dart';
-import 'sms_receiver_response.dart';
 import 'tenant_action_group_args.dart';
-import 'voice_receiver_response.dart';
-import 'webhook_receiver_response.dart';
 
 /// A tenant action group resource.
 ///
@@ -456,28 +451,39 @@ import 'webhook_receiver_response.dart';
 class TenantActionGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The list of AzureAppPush receivers that are part of this tenant action group.
-  late final pulumi.Output<List<AzureAppPushReceiverResponse>?> azureAppPushReceivers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> azureAppPushReceivers;
+
   /// The list of email receivers that are part of this tenant action group.
-  late final pulumi.Output<List<EmailReceiverResponse>?> emailReceivers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> emailReceivers;
+
   /// Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
   late final pulumi.Output<bool> enabled;
+
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> groupShortName;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Azure resource name
   late final pulumi.Output<String> name;
+
   /// The list of SMS receivers that are part of this tenant action group.
-  late final pulumi.Output<List<SmsReceiverResponse>?> smsReceivers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
+
   /// The list of voice receivers that are part of this tenant action group.
-  late final pulumi.Output<List<VoiceReceiverResponse>?> voiceReceivers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
+
   /// The list of webhook receivers that are part of this tenant action group.
-  late final pulumi.Output<List<WebhookReceiverResponse>?> webhookReceivers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> webhookReceivers;
 
   /// Creates a new [TenantActionGroup].
   /// [name] The Pulumi resource name.
@@ -488,22 +494,30 @@ class TenantActionGroup extends pulumi.CustomResource {
     TenantActionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:TenantActionGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureAppPushReceivers = registerOutput<List<AzureAppPushReceiverResponse>?>('azureAppPushReceivers');
-    this.emailReceivers = registerOutput<List<EmailReceiverResponse>?>('emailReceivers');
-    this.enabled = registerOutput<bool>('enabled');
-    this.groupShortName = registerOutput<String>('groupShortName');
-    this.location = registerOutput<String>('location');
+         'azure-native:monitor:TenantActionGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>(
+      'azureAppPushReceivers',
+    );
+    emailReceivers = registerOutput<List<Map<String, dynamic>>?>(
+      'emailReceivers',
+    );
+    enabled = registerOutput<bool>('enabled');
+    groupShortName = registerOutput<String>('groupShortName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.smsReceivers = registerOutput<List<SmsReceiverResponse>?>('smsReceivers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.voiceReceivers = registerOutput<List<VoiceReceiverResponse>?>('voiceReceivers');
-    this.webhookReceivers = registerOutput<List<WebhookReceiverResponse>?>('webhookReceivers');
+    smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>(
+      'voiceReceivers',
+    );
+    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>(
+      'webhookReceivers',
+    );
   }
 }

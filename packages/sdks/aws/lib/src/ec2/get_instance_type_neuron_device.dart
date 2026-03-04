@@ -6,6 +6,7 @@ class GetInstanceTypeNeuronDevice {
   final pulumi.Input<int> coreCount;
   final pulumi.Input<int> coreVersion;
   final pulumi.Input<int> count;
+
   /// Size of the instance memory, in MiB.
   final pulumi.Input<int> memorySize;
   final pulumi.Input<String> name;
@@ -36,12 +37,11 @@ class GetInstanceTypeNeuronDevice {
 
   factory GetInstanceTypeNeuronDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeNeuronDevice(
-      coreCount: (map['coreCount'] as int).input(),
-      coreVersion: (map['coreVersion'] as int).input(),
-      count: (map['count'] as int).input(),
-      memorySize: (map['memorySize'] as int).input(),
-      name: (map['name'] as String).input(),
+      coreCount: pulumi.Input.fromValue(map['coreCount'] as int),
+      coreVersion: pulumi.Input.fromValue(map['coreVersion'] as int),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      memorySize: pulumi.Input.fromValue(map['memorySize'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

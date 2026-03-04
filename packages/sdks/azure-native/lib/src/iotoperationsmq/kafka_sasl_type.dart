@@ -4,16 +4,15 @@ enum KafkaSaslType {
   scramSha256("scramSha256"),
   scramSha512("scramSha512");
 
-  const KafkaSaslType(this.value);
-  final String value;
+  const KafkaSaslType(this.wireValue);
+  final String wireValue;
 
   static KafkaSaslType fromValue(String value) {
     for (final item in KafkaSaslType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KafkaSaslType value: $value');
   }
 }
-

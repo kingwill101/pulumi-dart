@@ -6,8 +6,13 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 class ConfigurationPolicyConfigurationPolicy {
   /// A list that defines which security standards are enabled in the configuration policy. It must be defined if `service_enabled` is set to true.
   final pulumi.Input<List<String>>? enabledStandardArns;
+
   /// Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration>? securityControlsConfiguration;
+  final pulumi.Input<
+    ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration
+  >?
+  securityControlsConfiguration;
+
   /// Indicates whether Security Hub is enabled in the policy.
   final pulumi.Input<bool> serviceEnabled;
 
@@ -24,17 +29,34 @@ class ConfigurationPolicyConfigurationPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabledStandardArns': ?enabledStandardArns,
-      'securityControlsConfiguration': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration, Map<String, dynamic>>(securityControlsConfiguration, (value) => value.toMap()),
+      'securityControlsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration,
+            Map<String, dynamic>
+          >(securityControlsConfiguration, (value) => value.toMap()),
       'serviceEnabled': serviceEnabled,
     };
   }
 
-  factory ConfigurationPolicyConfigurationPolicy.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationPolicyConfigurationPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationPolicyConfigurationPolicy(
-      enabledStandardArns: map['enabledStandardArns'] == null ? null : (((map['enabledStandardArns'] as List).cast<String>()).input()).input(),
-      securityControlsConfiguration: map['securityControlsConfiguration'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap((map['securityControlsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      serviceEnabled: (map['serviceEnabled'] as bool).input(),
+      enabledStandardArns: (() {
+        final guardedValue = map['enabledStandardArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityControlsConfiguration: (() {
+        final guardedValue = map['securityControlsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceEnabled: pulumi.Input.fromValue(map['serviceEnabled'] as bool),
     );
   }
 }
-

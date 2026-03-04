@@ -6,9 +6,9 @@ import 'module_state.dart';
 
 /// Manages a Dedicated Hardware Security Module.
 ///
-/// > **Note:** Before using this resource, it's required to submit the request of registering the providers and features with Azure CLI `az provider register --namespace Microsoft.HardwareSecurityModules && az feature register --namespace Microsoft.HardwareSecurityModules --name AzureDedicatedHSM && az provider register --namespace Microsoft.Network && az feature register --namespace Microsoft.Network --name AllowBaremetalServers` and ask service team (hsmrequest@microsoft.com) to approve. See more details from <https://docs.microsoft.com/azure/dedicated-hsm/tutorial-deploy-hsm-cli#prerequisites>.
+/// &gt; **Note:** Before using this resource, it's required to submit the request of registering the providers and features with Azure CLI `az provider register --namespace Microsoft.HardwareSecurityModules && az feature register --namespace Microsoft.HardwareSecurityModules --name AzureDedicatedHSM && az provider register --namespace Microsoft.Network && az feature register --namespace Microsoft.Network --name AllowBaremetalServers` and ask service team (hsmrequest@microsoft.com) to approve. See more details from &lt;https://docs.microsoft.com/azure/dedicated-hsm/tutorial-deploy-hsm-cli#prerequisites&gt;.
 ///
-/// > **Note:** If the quota is not enough in some region, please submit the quota request to service team.
+/// &gt; **Note:** If the quota is not enough in some region, please submit the quota request to service team.
 ///
 /// ## Example Usage
 ///
@@ -658,7 +658,7 @@ import 'module_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HardwareSecurityModules` - 2021-11-30
@@ -673,22 +673,31 @@ import 'module_state.dart';
 class Module extends pulumi.CustomResource {
   /// The Azure Region where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> location;
+
   /// A `management_network_profile` block as defined below.
   ///
-  /// > **Note:** The `management_network_profile` should not be specified when `sku_name` is `SafeNet Luna Network HSM A790`.
-  late final pulumi.Output<ModuleManagementNetworkProfile?> managementNetworkProfile;
+  /// &gt; **Note:** The `management_network_profile` should not be specified when `sku_name` is `SafeNet Luna Network HSM A790`.
+  late final pulumi.Output<ModuleManagementNetworkProfile?>
+  managementNetworkProfile;
+
   /// The name which should be used for this Dedicated Hardware Security Module. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_profile` block as defined below.
   late final pulumi.Output<ModuleNetworkProfile> networkProfile;
+
   /// The name of the Resource Group where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SKU name of the dedicated hardware security module. Possible values are `payShield10K_LMK1_CPS60`,`payShield10K_LMK1_CPS250`,`payShield10K_LMK1_CPS2500`,`payShield10K_LMK2_CPS60`,`payShield10K_LMK2_CPS250`,`payShield10K_LMK2_CPS2500` and `SafeNet Luna Network HSM A790`. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> skuName;
+
   /// The ID of the stamp. Possible values are `stamp1` or `stamp2`. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String?> stampId;
+
   /// A mapping of tags which should be assigned to the Dedicated Hardware Security Module.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies a list of Availability Zones in which this Dedicated Hardware Security Module should be located. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -696,25 +705,24 @@ class Module extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Module]. {@macro pulumi_hsm_module_module_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Module(
-    String name, {
-    ModuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:hsm/module:Module',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile');
+  Module(String name, {ModuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:hsm/module:Module',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    location = registerOutput<String>('location');
+    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
+      'managementNetworkProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.stampId = registerOutput<String?>('stampId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    stampId = registerOutput<String?>('stampId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [Module] resource's state with the given [name] and [id].
@@ -735,19 +743,21 @@ class Module extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hsm/module:Module',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile');
+         'azure:hsm/module:Module',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
+      'managementNetworkProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.stampId = registerOutput<String?>('stampId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    stampId = registerOutput<String?>('stampId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

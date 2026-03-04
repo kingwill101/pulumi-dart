@@ -1,5 +1,3 @@
-library module_maintenance;
-
 export 'maintenance/configuration_assignment.dart';
 export 'maintenance/configuration_assignment_args.dart';
 export 'maintenance/configuration_assignment_filter_properties.dart';

@@ -1,5 +1,3 @@
-library module_blockstorage;
-
 export 'blockstorage/functions.dart';
 export 'blockstorage/get_availability_zones_v3_args.dart';
 export 'blockstorage/get_availability_zones_v3_result.dart';

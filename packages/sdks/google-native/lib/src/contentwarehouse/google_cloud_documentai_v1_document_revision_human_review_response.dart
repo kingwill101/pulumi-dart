@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse {
   /// Human review state. e.g. `requested`, `succeeded`, `rejected`.
   final pulumi.Input<String> state;
+
   /// A message providing more details about the current state of processing. For example, the rejection reason when the state is `rejected`.
   final pulumi.Input<String> stateMessage;
 
@@ -18,17 +19,15 @@ class GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-      'stateMessage': stateMessage,
-    };
+    return <String, dynamic>{'state': state, 'stateMessage': stateMessage};
   }
 
-  factory GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse(
-      state: (map['state'] as String).input(),
-      stateMessage: (map['stateMessage'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
     );
   }
 }
-

@@ -6,12 +6,17 @@ import 'alarm_composite_expression_expression_list.dart';
 class AlarmCompositeExpression {
   /// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
   final pulumi.Input<String>? expressionListJoin;
+
   /// The trigger conditions that are created in standard mode. See `expression_list` below.
-  final pulumi.Input<List<AlarmCompositeExpressionExpressionList>>? expressionLists;
+  final pulumi.Input<List<AlarmCompositeExpressionExpressionList>>?
+  expressionLists;
+
   /// The trigger conditions that are created by using expressions.
   final pulumi.Input<String>? expressionRaw;
+
   /// The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
   final pulumi.Input<String>? level;
+
   /// The number of consecutive triggers.
   final pulumi.Input<int>? times;
 
@@ -32,7 +37,18 @@ class AlarmCompositeExpression {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expressionListJoin': ?expressionListJoin,
-      'expressionLists': ?pulumi.Input.mapOptionalInputValue<List<AlarmCompositeExpressionExpressionList>, List<Map<String, dynamic>>>(expressionLists, (value) => pulumi.Input.encodeList<AlarmCompositeExpressionExpressionList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressionLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlarmCompositeExpressionExpressionList>,
+            List<Map<String, dynamic>>
+          >(
+            expressionLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlarmCompositeExpressionExpressionList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'expressionRaw': ?expressionRaw,
       'level': ?level,
       'times': ?times,
@@ -41,12 +57,38 @@ class AlarmCompositeExpression {
 
   factory AlarmCompositeExpression.fromMap(Map<String, dynamic> map) {
     return AlarmCompositeExpression(
-      expressionListJoin: map['expressionListJoin'] == null ? null : (map['expressionListJoin']! as String).input(),
-      expressionLists: map['expressionLists'] == null ? null : (pulumi.Input.decodeList<AlarmCompositeExpressionExpressionList>(map['expressionLists']!, (value) => AlarmCompositeExpressionExpressionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expressionRaw: map['expressionRaw'] == null ? null : (map['expressionRaw']! as String).input(),
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      times: map['times'] == null ? null : (map['times']! as int).input(),
+      expressionListJoin: (() {
+        final guardedValue = map['expressionListJoin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expressionLists: (() {
+        final guardedValue = map['expressionLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlarmCompositeExpressionExpressionList>(
+            guardedValue,
+            (value) => AlarmCompositeExpressionExpressionList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      expressionRaw: (() {
+        final guardedValue = map['expressionRaw'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      times: (() {
+        final guardedValue = map['times'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

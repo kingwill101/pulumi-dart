@@ -11,30 +11,40 @@ import 'replication_group_node_group_configuration.dart';
 class ReplicationGroupArgs {
   /// Specifies whether any modifications are applied immediately, or during the next maintenance window. Default is `false`.
   final pulumi.Input<bool>? applyImmediately;
+
   /// Whether to enable encryption at rest.
   /// When `engine` is `redis`, default is `false`.
   /// When `engine` is `valkey`, default is `true`.
   final pulumi.Input<bool>? atRestEncryptionEnabled;
+
   /// Password used to access a password protected server. Can be specified only if `transit_encryption_enabled = true`.
   final pulumi.Input<String>? authToken;
+
   /// Strategy used when modifying `auth_token` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `auth_token` must be omitted.
   final pulumi.Input<String>? authTokenUpdateStrategy;
+
   /// Specifies whether minor version engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window.
   /// Only supported for engine types `"redis"` and `"valkey"` and if the engine version is 6 or higher.
   /// Defaults to `true`.
   final pulumi.Input<bool>? autoMinorVersionUpgrade;
+
   /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, `num_cache_clusters` must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to `false`.
   final pulumi.Input<bool>? automaticFailoverEnabled;
+
   /// Specifies whether cluster mode is enabled or disabled. Valid values are `enabled` or `disabled` or `compatible`
   final pulumi.Input<String>? clusterMode;
+
   /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to `true` when using r6gd nodes.
   final pulumi.Input<bool>? dataTieringEnabled;
+
   /// User-created description for the replication group. Must not be empty.
   final pulumi.Input<String> description;
+
   /// Name of the cache engine to be used for the clusters in this replication group.
   /// Valid values are `redis` or `valkey`.
   /// Default is `redis`.
   final pulumi.Input<String>? engine;
+
   /// Version number of the cache engine to be used for the cache clusters in this replication group.
   /// If the version is 7 or higher, the major and minor version should be set, e.g., `7.2`.
   /// If the version is 6, the major and minor version can be set, e.g., `6.2`,
@@ -42,86 +52,118 @@ class ReplicationGroupArgs {
   /// Otherwise, specify the full version desired, e.g., `5.0.6`.
   /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
   final pulumi.Input<String>? engineVersion;
+
   /// The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made.
   final pulumi.Input<String>? finalSnapshotIdentifier;
+
   /// The ID of the global replication group to which this replication group should belong. If this parameter is specified, the replication group is added to the specified global replication group as a secondary replication group; otherwise, the replication group is not part of any global replication group. If `global_replication_group_id` is set, the `num_node_groups` parameter cannot be set.
   final pulumi.Input<String>? globalReplicationGroupId;
+
   /// The IP version to advertise in the discovery protocol. Valid values are `ipv4` or `ipv6`.
   final pulumi.Input<String>? ipDiscovery;
+
   /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true`.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Specifies the destination and format of Redis OSS/Valkey [SLOWLOG](https://redis.io/commands/slowlog) or Redis OSS/Valkey [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See the documentation on [Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See Log Delivery Configuration below for more details.
-  final pulumi.Input<List<ReplicationGroupLogDeliveryConfiguration>>? logDeliveryConfigurations;
+  final pulumi.Input<List<ReplicationGroupLogDeliveryConfiguration>>?
+  logDeliveryConfigurations;
+
   /// Specifies the weekly time range for when maintenance on the cache cluster is performed. The format is `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:05:00-sun:09:00`
   final pulumi.Input<String>? maintenanceWindow;
+
   /// Specifies whether to enable Multi-AZ Support for the replication group.
   /// If `true`, `automatic_failover_enabled` must also be enabled.
   /// Defaults to `false`.
   final pulumi.Input<bool>? multiAzEnabled;
+
   /// The IP versions for cache cluster connections. Valid values are `ipv4`, `ipv6` or `dual_stack`.
   final pulumi.Input<String>? networkType;
+
   /// Configuration block for node groups (shards). Can be specified only if `num_node_groups` is set. Conflicts with `preferred_cache_cluster_azs`. See Node Group Configuration below for more details.
-  final pulumi.Input<List<ReplicationGroupNodeGroupConfiguration>>? nodeGroupConfigurations;
+  final pulumi.Input<List<ReplicationGroupNodeGroupConfiguration>>?
+  nodeGroupConfigurations;
+
   /// Instance class to be used.
   /// See AWS documentation for information on [supported node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html) and [guidance on selecting node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes-select-size.html).
   /// Required unless `global_replication_group_id` is set.
   /// Cannot be set if `global_replication_group_id` is set.
   final pulumi.Input<String>? nodeType;
+
   /// ARN of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
   final pulumi.Input<String>? notificationTopicArn;
+
   /// Number of cache clusters (primary and replicas) this replication group will have.
   /// If `automatic_failover_enabled` or `multi_az_enabled` are `true`, must be at least 2.
   /// Updates will occur before other modifications.
   /// Conflicts with `num_node_groups` and `replicas_per_node_group`.
   /// Defaults to `1`.
   final pulumi.Input<int>? numCacheClusters;
+
   /// Number of node groups (shards) for this Redis replication group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
   /// Conflicts with `num_cache_clusters`.
   final pulumi.Input<int>? numNodeGroups;
+
   /// Name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used. To enable "cluster mode", i.e., data sharding, use a parameter group that has the parameter `cluster-enabled` set to true.
   final pulumi.Input<String>? parameterGroupName;
+
   /// Port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
   final pulumi.Input<int>? port;
+
   /// List of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is considered. The first item in the list will be the primary node. Ignored when updating.
   final pulumi.Input<List<String>>? preferredCacheClusterAzs;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Number of replica nodes in each node group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
   /// Valid values are 0 to 5.
   /// Conflicts with `num_cache_clusters`.
   /// Can only be set if `num_node_groups` is set.
   final pulumi.Input<int>? replicasPerNodeGroup;
+
   /// Replication group identifier. This parameter is stored as a lowercase string.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? replicationGroupId;
+
   /// IDs of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// Names of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud.
   final pulumi.Input<List<String>>? securityGroupNames;
+
   /// List of ARNs that identify Redis RDB snapshot files stored in Amazon S3. The names object names cannot contain any commas.
   final pulumi.Input<List<String>>? snapshotArns;
+
   /// Name of a snapshot from which to restore data into the new node group. Changing the `snapshot_name` forces a new resource.
   final pulumi.Input<String>? snapshotName;
+
   /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of `snapshot_retention_limit` is set to zero (0), backups are turned off. Please note that setting a `snapshot_retention_limit` is not supported on cache.t1.micro cache nodes
   final pulumi.Input<int>? snapshotRetentionLimit;
+
   /// Daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your cache cluster. The minimum snapshot window is a 60 minute period. Example: `05:00-09:00`
   final pulumi.Input<String>? snapshotWindow;
+
   /// Name of the cache subnet group to be used for the replication group.
   final pulumi.Input<String>? subnetGroupName;
+
   /// Map of tags to assign to the resource. Adding tags to this resource will add or overwrite any existing tags on the clusters in the replication group and not to the group itself. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Whether to enable encryption in transit.
-  /// Changing this argument with an `engine_version` < `7.0.5` will force a replacement.
+  /// Changing this argument with an `engine_version` &lt; `7.0.5` will force a replacement.
   /// Engine versions prior to `7.0.5` only allow this transit encryption to be configured during creation of the replication group.
   final pulumi.Input<bool>? transitEncryptionEnabled;
+
   /// A setting that enables clients to migrate to in-transit encryption with no downtime.
   /// Valid values are `preferred` and `required`.
   /// When enabling encryption on an existing replication group, this must first be set to `preferred` before setting it to `required` in a subsequent apply.
   /// See the `TransitEncryptionMode` field in the [`CreateReplicationGroup` API documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateReplicationGroup.html) for additional details.
   final pulumi.Input<String>? transitEncryptionMode;
+
   /// User Group ID to associate with the replication group. Only a maximum of one (1) user group ID is valid. **NOTE:** This argument _is_ a set because the AWS specification allows for multiple IDs. However, in practice, AWS only allows a maximum size of one.
   final pulumi.Input<List<String>>? userGroupIds;
 
@@ -228,11 +270,33 @@ class ReplicationGroupArgs {
       'globalReplicationGroupId': ?globalReplicationGroupId,
       'ipDiscovery': ?ipDiscovery,
       'kmsKeyId': ?kmsKeyId,
-      'logDeliveryConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ReplicationGroupLogDeliveryConfiguration>, List<Map<String, dynamic>>>(logDeliveryConfigurations, (value) => pulumi.Input.encodeList<ReplicationGroupLogDeliveryConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'logDeliveryConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReplicationGroupLogDeliveryConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            logDeliveryConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReplicationGroupLogDeliveryConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'maintenanceWindow': ?maintenanceWindow,
       'multiAzEnabled': ?multiAzEnabled,
       'networkType': ?networkType,
-      'nodeGroupConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ReplicationGroupNodeGroupConfiguration>, List<Map<String, dynamic>>>(nodeGroupConfigurations, (value) => pulumi.Input.encodeList<ReplicationGroupNodeGroupConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeGroupConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReplicationGroupNodeGroupConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            nodeGroupConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReplicationGroupNodeGroupConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nodeType': ?nodeType,
       'notificationTopicArn': ?notificationTopicArn,
       'numCacheClusters': ?numCacheClusters,
@@ -259,48 +323,223 @@ class ReplicationGroupArgs {
 
   factory ReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationGroupArgs(
-      applyImmediately: map['applyImmediately'] == null ? null : ((map['applyImmediately'] as bool).input()).input(),
-      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : ((map['atRestEncryptionEnabled'] as bool).input()).input(),
-      authToken: map['authToken'] == null ? null : ((map['authToken'] as String).input()).input(),
-      authTokenUpdateStrategy: map['authTokenUpdateStrategy'] == null ? null : ((map['authTokenUpdateStrategy'] as String).input()).input(),
-      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] == null ? null : ((map['autoMinorVersionUpgrade'] as bool).input()).input(),
-      automaticFailoverEnabled: map['automaticFailoverEnabled'] == null ? null : ((map['automaticFailoverEnabled'] as bool).input()).input(),
-      clusterMode: map['clusterMode'] == null ? null : ((map['clusterMode'] as String).input()).input(),
-      dataTieringEnabled: map['dataTieringEnabled'] == null ? null : ((map['dataTieringEnabled'] as bool).input()).input(),
-      description: (map['description'] as String).input(),
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      finalSnapshotIdentifier: map['finalSnapshotIdentifier'] == null ? null : ((map['finalSnapshotIdentifier'] as String).input()).input(),
-      globalReplicationGroupId: map['globalReplicationGroupId'] == null ? null : ((map['globalReplicationGroupId'] as String).input()).input(),
-      ipDiscovery: map['ipDiscovery'] == null ? null : ((map['ipDiscovery'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      logDeliveryConfigurations: map['logDeliveryConfigurations'] == null ? null : ((pulumi.Input.decodeList<ReplicationGroupLogDeliveryConfiguration>(map['logDeliveryConfigurations']!, (value) => ReplicationGroupLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : ((map['maintenanceWindow'] as String).input()).input(),
-      multiAzEnabled: map['multiAzEnabled'] == null ? null : ((map['multiAzEnabled'] as bool).input()).input(),
-      networkType: map['networkType'] == null ? null : ((map['networkType'] as String).input()).input(),
-      nodeGroupConfigurations: map['nodeGroupConfigurations'] == null ? null : ((pulumi.Input.decodeList<ReplicationGroupNodeGroupConfiguration>(map['nodeGroupConfigurations']!, (value) => ReplicationGroupNodeGroupConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
-      notificationTopicArn: map['notificationTopicArn'] == null ? null : ((map['notificationTopicArn'] as String).input()).input(),
-      numCacheClusters: map['numCacheClusters'] == null ? null : ((map['numCacheClusters'] as int).input()).input(),
-      numNodeGroups: map['numNodeGroups'] == null ? null : ((map['numNodeGroups'] as int).input()).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : ((map['parameterGroupName'] as String).input()).input(),
-      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
-      preferredCacheClusterAzs: map['preferredCacheClusterAzs'] == null ? null : (((map['preferredCacheClusterAzs'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      replicasPerNodeGroup: map['replicasPerNodeGroup'] == null ? null : ((map['replicasPerNodeGroup'] as int).input()).input(),
-      replicationGroupId: map['replicationGroupId'] == null ? null : ((map['replicationGroupId'] as String).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      securityGroupNames: map['securityGroupNames'] == null ? null : (((map['securityGroupNames'] as List).cast<String>()).input()).input(),
-      snapshotArns: map['snapshotArns'] == null ? null : (((map['snapshotArns'] as List).cast<String>()).input()).input(),
-      snapshotName: map['snapshotName'] == null ? null : ((map['snapshotName'] as String).input()).input(),
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : ((map['snapshotRetentionLimit'] as int).input()).input(),
-      snapshotWindow: map['snapshotWindow'] == null ? null : ((map['snapshotWindow'] as String).input()).input(),
-      subnetGroupName: map['subnetGroupName'] == null ? null : ((map['subnetGroupName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : ((map['transitEncryptionEnabled'] as bool).input()).input(),
-      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : ((map['transitEncryptionMode'] as String).input()).input(),
-      userGroupIds: map['userGroupIds'] == null ? null : (((map['userGroupIds'] as List).cast<String>()).input()).input(),
+      applyImmediately: (() {
+        final guardedValue = map['applyImmediately'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      atRestEncryptionEnabled: (() {
+        final guardedValue = map['atRestEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      authToken: (() {
+        final guardedValue = map['authToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authTokenUpdateStrategy: (() {
+        final guardedValue = map['authTokenUpdateStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoMinorVersionUpgrade: (() {
+        final guardedValue = map['autoMinorVersionUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      automaticFailoverEnabled: (() {
+        final guardedValue = map['automaticFailoverEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterMode: (() {
+        final guardedValue = map['clusterMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataTieringEnabled: (() {
+        final guardedValue = map['dataTieringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      finalSnapshotIdentifier: (() {
+        final guardedValue = map['finalSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalReplicationGroupId: (() {
+        final guardedValue = map['globalReplicationGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipDiscovery: (() {
+        final guardedValue = map['ipDiscovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logDeliveryConfigurations: (() {
+        final guardedValue = map['logDeliveryConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReplicationGroupLogDeliveryConfiguration>(
+            guardedValue,
+            (value) => ReplicationGroupLogDeliveryConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      maintenanceWindow: (() {
+        final guardedValue = map['maintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiAzEnabled: (() {
+        final guardedValue = map['multiAzEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupConfigurations: (() {
+        final guardedValue = map['nodeGroupConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReplicationGroupNodeGroupConfiguration>(
+            guardedValue,
+            (value) => ReplicationGroupNodeGroupConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nodeType: (() {
+        final guardedValue = map['nodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationTopicArn: (() {
+        final guardedValue = map['notificationTopicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numCacheClusters: (() {
+        final guardedValue = map['numCacheClusters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      numNodeGroups: (() {
+        final guardedValue = map['numNodeGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      parameterGroupName: (() {
+        final guardedValue = map['parameterGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      preferredCacheClusterAzs: (() {
+        final guardedValue = map['preferredCacheClusterAzs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicasPerNodeGroup: (() {
+        final guardedValue = map['replicasPerNodeGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicationGroupId: (() {
+        final guardedValue = map['replicationGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroupNames: (() {
+        final guardedValue = map['securityGroupNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      snapshotArns: (() {
+        final guardedValue = map['snapshotArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      snapshotName: (() {
+        final guardedValue = map['snapshotName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotRetentionLimit: (() {
+        final guardedValue = map['snapshotRetentionLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotWindow: (() {
+        final guardedValue = map['snapshotWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetGroupName: (() {
+        final guardedValue = map['subnetGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitEncryptionEnabled: (() {
+        final guardedValue = map['transitEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transitEncryptionMode: (() {
+        final guardedValue = map['transitEncryptionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userGroupIds: (() {
+        final guardedValue = map['userGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

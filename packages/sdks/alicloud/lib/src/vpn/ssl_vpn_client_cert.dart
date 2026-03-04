@@ -430,16 +430,22 @@ import 'ssl_vpn_client_cert_state.dart';
 class SslVpnClientCert extends pulumi.CustomResource {
   /// The client ca cert.
   late final pulumi.Output<String> caCert;
+
   /// The client cert.
   late final pulumi.Output<String> clientCert;
+
   /// The vpn client config.
   late final pulumi.Output<String> clientConfig;
+
   /// The client key.
   late final pulumi.Output<String> clientKey;
+
   /// The name of the client certificate.
   late final pulumi.Output<String> name;
+
   /// The ID of the SSL-VPN server.
   late final pulumi.Output<String> sslVpnServerId;
+
   /// The status of the client certificate.
   late final pulumi.Output<String> status;
 
@@ -452,18 +458,18 @@ class SslVpnClientCert extends pulumi.CustomResource {
     SslVpnClientCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caCert = registerOutput<String>('caCert');
-    this.clientCert = registerOutput<String>('clientCert');
-    this.clientConfig = registerOutput<String>('clientConfig');
-    this.clientKey = registerOutput<String>('clientKey');
+         'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caCert = registerOutput<String>('caCert');
+    clientCert = registerOutput<String>('clientCert');
+    clientConfig = registerOutput<String>('clientConfig');
+    clientKey = registerOutput<String>('clientKey');
     this.name = registerOutput<String>('name');
-    this.sslVpnServerId = registerOutput<String>('sslVpnServerId');
-    this.status = registerOutput<String>('status');
+    sslVpnServerId = registerOutput<String>('sslVpnServerId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [SslVpnClientCert] resource's state with the given [name] and [id].
@@ -484,17 +490,17 @@ class SslVpnClientCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caCert = registerOutput<String>('caCert');
-    this.clientCert = registerOutput<String>('clientCert');
-    this.clientConfig = registerOutput<String>('clientConfig');
-    this.clientKey = registerOutput<String>('clientKey');
+         'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caCert = registerOutput<String>('caCert');
+    clientCert = registerOutput<String>('clientCert');
+    clientConfig = registerOutput<String>('clientConfig');
+    clientKey = registerOutput<String>('clientKey');
     this.name = registerOutput<String>('name');
-    this.sslVpnServerId = registerOutput<String>('sslVpnServerId');
-    this.status = registerOutput<String>('status');
+    sslVpnServerId = registerOutput<String>('sslVpnServerId');
+    status = registerOutput<String>('status');
   }
 }

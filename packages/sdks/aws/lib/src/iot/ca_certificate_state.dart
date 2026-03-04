@@ -8,28 +8,40 @@ import 'ca_certificate_validity.dart';
 class CaCertificateState {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
   final pulumi.Input<bool>? active;
+
   /// Boolean flag to indicate if the certificate should be active for device regisration.
   final pulumi.Input<bool>? allowAutoRegistration;
+
   /// The ARN of the created CA certificate.
   final pulumi.Input<String>? arn;
+
   /// PEM encoded CA certificate.
   final pulumi.Input<String>? caCertificatePem;
+
   /// The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
   final pulumi.Input<String>? certificateMode;
+
   /// The customer version of the CA certificate.
   final pulumi.Input<int>? customerVersion;
+
   /// The generation ID of the CA certificate.
   final pulumi.Input<String>? generationId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Information about the registration configuration. See below.
   final pulumi.Input<CaCertificateRegistrationConfig>? registrationConfig;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// When the CA certificate is valid.
   final pulumi.Input<List<CaCertificateValidity>>? validities;
+
   /// PEM encoded verification certificate containing the common name of a registration code. Review
   /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificate_mode` is `DEFAULT`.
   final pulumi.Input<String>? verificationCertificatePem;
@@ -74,30 +86,111 @@ class CaCertificateState {
       'customerVersion': ?customerVersion,
       'generationId': ?generationId,
       'region': ?region,
-      'registrationConfig': ?pulumi.Input.mapOptionalInputValue<CaCertificateRegistrationConfig, Map<String, dynamic>>(registrationConfig, (value) => value.toMap()),
+      'registrationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CaCertificateRegistrationConfig,
+            Map<String, dynamic>
+          >(registrationConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'validities': ?pulumi.Input.mapOptionalInputValue<List<CaCertificateValidity>, List<Map<String, dynamic>>>(validities, (value) => pulumi.Input.encodeList<CaCertificateValidity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validities':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CaCertificateValidity>,
+            List<Map<String, dynamic>>
+          >(
+            validities,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CaCertificateValidity,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'verificationCertificatePem': ?verificationCertificatePem,
     };
   }
 
   factory CaCertificateState.fromMap(Map<String, dynamic> map) {
     return CaCertificateState(
-      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
-      allowAutoRegistration: map['allowAutoRegistration'] == null ? null : ((map['allowAutoRegistration'] as bool).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      caCertificatePem: map['caCertificatePem'] == null ? null : ((map['caCertificatePem'] as String).input()).input(),
-      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
-      customerVersion: map['customerVersion'] == null ? null : ((map['customerVersion'] as int).input()).input(),
-      generationId: map['generationId'] == null ? null : ((map['generationId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      registrationConfig: map['registrationConfig'] == null ? null : ((CaCertificateRegistrationConfig.fromMap((map['registrationConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      validities: map['validities'] == null ? null : ((pulumi.Input.decodeList<CaCertificateValidity>(map['validities']!, (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : ((map['verificationCertificatePem'] as String).input()).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowAutoRegistration: (() {
+        final guardedValue = map['allowAutoRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      caCertificatePem: (() {
+        final guardedValue = map['caCertificatePem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateMode: (() {
+        final guardedValue = map['certificateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerVersion: (() {
+        final guardedValue = map['customerVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      generationId: (() {
+        final guardedValue = map['generationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationConfig: (() {
+        final guardedValue = map['registrationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CaCertificateRegistrationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      validities: (() {
+        final guardedValue = map['validities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CaCertificateValidity>(
+            guardedValue,
+            (value) => CaCertificateValidity.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      verificationCertificatePem: (() {
+        final guardedValue = map['verificationCertificatePem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDicomServiceCor {
   /// Whether to allow credentials in CORS.
   final pulumi.Input<bool> allowCredentials;
+
   /// A list of allowed headers for CORS.
   final pulumi.Input<List<String>> allowedHeaders;
+
   /// A list of allowed methods for CORS.
   final pulumi.Input<List<String>> allowedMethods;
+
   /// A list of allowed origins for CORS.
   final pulumi.Input<List<String>> allowedOrigins;
+
   /// The maximum age in seconds for the CORS configuration.
   final pulumi.Input<int> maxAgeInSeconds;
 
@@ -40,12 +44,17 @@ class GetDicomServiceCor {
 
   factory GetDicomServiceCor.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceCor(
-      allowCredentials: (map['allowCredentials'] as bool).input(),
-      allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
-      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      maxAgeInSeconds: (map['maxAgeInSeconds'] as int).input(),
+      allowCredentials: pulumi.Input.fromValue(map['allowCredentials'] as bool),
+      allowedHeaders: pulumi.Input.fromValue(
+        (map['allowedHeaders'] as List).cast<String>(),
+      ),
+      allowedMethods: pulumi.Input.fromValue(
+        (map['allowedMethods'] as List).cast<String>(),
+      ),
+      allowedOrigins: pulumi.Input.fromValue(
+        (map['allowedOrigins'] as List).cast<String>(),
+      ),
+      maxAgeInSeconds: pulumi.Input.fromValue(map['maxAgeInSeconds'] as int),
     );
   }
 }
-

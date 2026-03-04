@@ -19,18 +19,25 @@ import 'web_app_diagnostic_logs_configuration_args.dart';
 class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
   /// Application logs configuration.
   late final pulumi.Output<ApplicationLogsConfigResponse?> applicationLogs;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Detailed error messages configuration.
   late final pulumi.Output<EnabledConfigResponse?> detailedErrorMessages;
+
   /// Failed requests tracing configuration.
   late final pulumi.Output<EnabledConfigResponse?> failedRequestsTracing;
+
   /// HTTP logs configuration.
   late final pulumi.Output<HttpLogsConfigResponse?> httpLogs;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -43,18 +50,24 @@ class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
     WebAppDiagnosticLogsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppDiagnosticLogsConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationLogs = registerOutput<ApplicationLogsConfigResponse?>('applicationLogs');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.detailedErrorMessages = registerOutput<EnabledConfigResponse?>('detailedErrorMessages');
-    this.failedRequestsTracing = registerOutput<EnabledConfigResponse?>('failedRequestsTracing');
-    this.httpLogs = registerOutput<HttpLogsConfigResponse?>('httpLogs');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppDiagnosticLogsConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationLogs = registerOutput<ApplicationLogsConfigResponse?>(
+      'applicationLogs',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    detailedErrorMessages = registerOutput<EnabledConfigResponse?>(
+      'detailedErrorMessages',
+    );
+    failedRequestsTracing = registerOutput<EnabledConfigResponse?>(
+      'failedRequestsTracing',
+    );
+    httpLogs = registerOutput<HttpLogsConfigResponse?>('httpLogs');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

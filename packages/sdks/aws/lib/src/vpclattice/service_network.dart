@@ -112,16 +112,21 @@ import 'service_network_state.dart';
 class ServiceNetwork extends pulumi.CustomResource {
   /// ARN of the Service Network.
   late final pulumi.Output<String> arn;
+
   /// Type of IAM policy. Either `NONE` or `AWS_IAM`.
   late final pulumi.Output<String> authType;
+
   /// Name of the service network
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -134,17 +139,17 @@ class ServiceNetwork extends pulumi.CustomResource {
     ServiceNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpclattice/serviceNetwork:ServiceNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authType = registerOutput<String>('authType');
+         'aws:vpclattice/serviceNetwork:ServiceNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ServiceNetwork] resource's state with the given [name] and [id].
@@ -165,16 +170,16 @@ class ServiceNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpclattice/serviceNetwork:ServiceNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authType = registerOutput<String>('authType');
+         'aws:vpclattice/serviceNetwork:ServiceNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

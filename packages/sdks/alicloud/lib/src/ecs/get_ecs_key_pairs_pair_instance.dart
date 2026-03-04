@@ -5,26 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsKeyPairsPairInstance {
   /// The zone ID of the instance.
   final pulumi.Input<String> availabilityZone;
+
   /// The description of the ECS instance.
   final pulumi.Input<String> description;
+
   /// The image ID of the instance.
   final pulumi.Input<String> imageId;
+
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the ECS instance.
   final pulumi.Input<String> instanceName;
+
   /// The instance type of the instance.
   final pulumi.Input<String> instanceType;
+
   /// The name of the key pair.
   final pulumi.Input<String> keyName;
+
   /// The private IP address of the ECS instance.
   final pulumi.Input<String> privateIp;
+
   /// The public IP address or EIP of the ECS instance.
   final pulumi.Input<String> publicIp;
+
   /// The region ID of the instance.
   final pulumi.Input<String> regionId;
+
   /// The status of the instance.
   final pulumi.Input<String> status;
+
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -75,19 +86,20 @@ class GetEcsKeyPairsPairInstance {
 
   factory GetEcsKeyPairsPairInstance.fromMap(Map<String, dynamic> map) {
     return GetEcsKeyPairsPairInstance(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      description: (map['description'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      keyName: (map['keyName'] as String).input(),
-      privateIp: (map['privateIp'] as String).input(),
-      publicIp: (map['publicIp'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      status: (map['status'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      privateIp: pulumi.Input.fromValue(map['privateIp'] as String),
+      publicIp: pulumi.Input.fromValue(map['publicIp'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'weekly_maintenance_window_day.dart';
 class WeeklyMaintenanceWindow {
   /// Allows to define schedule that runs specified day of the week.
   final pulumi.Input<WeeklyMaintenanceWindowDay> day;
+
   /// Duration of the time window.
   final pulumi.Input<String> duration;
+
   /// Start time of the window in UTC.
   final pulumi.Input<TimeOfDay> startTime;
 
@@ -25,18 +27,27 @@ class WeeklyMaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'day': pulumi.Input.mapInputValue<WeeklyMaintenanceWindowDay, String>(day, (value) => value.value),
+      'day': pulumi.Input.mapInputValue<WeeklyMaintenanceWindowDay, String>(
+        day,
+        (value) => value.wireValue,
+      ),
       'duration': duration,
-      'startTime': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(
+        startTime,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory WeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindow(
-      day: (WeeklyMaintenanceWindowDay.fromValue(map['day'] as String)).input(),
-      duration: (map['duration'] as String).input(),
-      startTime: (TimeOfDay.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      day: pulumi.Input.fromValue(
+        WeeklyMaintenanceWindowDay.fromValue(map['day']! as String),
+      ),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      startTime: pulumi.Input.fromValue(
+        TimeOfDay.fromMap((map['startTime']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

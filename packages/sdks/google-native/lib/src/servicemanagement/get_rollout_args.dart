@@ -13,10 +13,7 @@ class GetRolloutArgs {
   /// Creates a new [GetRolloutArgs].
   /// [rolloutId] Required.
   /// [serviceName] Required.
-  GetRolloutArgs({
-    required this.rolloutId,
-    required this.serviceName,
-  });
+  GetRolloutArgs({required this.rolloutId, required this.serviceName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetRolloutArgs {
 
   factory GetRolloutArgs.fromMap(Map<String, dynamic> map) {
     return GetRolloutArgs(
-      rolloutId: (map['rolloutId'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      rolloutId: pulumi.Input.fromValue(map['rolloutId'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

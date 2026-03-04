@@ -21,11 +21,16 @@ class GetDataSetDataSetUsageConfiguration {
     };
   }
 
-  factory GetDataSetDataSetUsageConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetDataSetUsageConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetDataSetUsageConfiguration(
-      disableUseAsDirectQuerySource: (map['disableUseAsDirectQuerySource'] as bool).input(),
-      disableUseAsImportedSource: (map['disableUseAsImportedSource'] as bool).input(),
+      disableUseAsDirectQuerySource: pulumi.Input.fromValue(
+        map['disableUseAsDirectQuerySource'] as bool,
+      ),
+      disableUseAsImportedSource: pulumi.Input.fromValue(
+        map['disableUseAsImportedSource'] as bool,
+      ),
     );
   }
 }
-

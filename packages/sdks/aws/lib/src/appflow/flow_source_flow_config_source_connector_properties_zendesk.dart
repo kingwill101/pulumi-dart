@@ -3,24 +3,21 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesZendesk].
-  /// [object] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesZendesk({
-    required this.object,
-  });
+  /// [object_] Required.
+  FlowSourceFlowConfigSourceConnectorPropertiesZendesk({required this.object_});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'object': object,
-    };
+    return <String, dynamic>{'object': object_};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesZendesk(
-      object: (map['object'] as String).input(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

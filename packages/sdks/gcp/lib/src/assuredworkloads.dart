@@ -1,5 +1,3 @@
-library module_assuredworkloads;
-
 export 'assuredworkloads/workload.dart';
 export 'assuredworkloads/workload_args.dart';
 export 'assuredworkloads/workload_compliance_status.dart';

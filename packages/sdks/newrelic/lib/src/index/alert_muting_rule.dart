@@ -6,8 +6,8 @@ import 'alert_muting_rule_state.dart';
 
 /// Use this resource to create a muting rule for New Relic Alerts incidents.
 ///
-/// > **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
-/// <br><br>
+/// &gt; **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
+/// &lt;br&gt;&lt;br&gt;
 /// Before upgrading to version 2.0.0 or later, it is recommended to upgrade to the most recent 1.x version of the provider and ensure that your environment successfully runs `pulumi preview` without unexpected changes.
 ///
 /// ## Example Usage
@@ -292,7 +292,7 @@ import 'alert_muting_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Alert Muting Rules can be imported using a composite ID of `<account_id>:<muting_rule_id>`, e.g.
+/// Alert Muting Rules can be imported using a composite ID of `&lt;account_id&gt;:&lt;muting_rule_id&gt;`, e.g.
 ///
 /// ```sh
 /// $ pulumi import newrelic:index/alertMutingRule:AlertMutingRule foo 538291:6789035
@@ -301,16 +301,22 @@ import 'alert_muting_rule_state.dart';
 class AlertMutingRule extends pulumi.CustomResource {
   /// The account id of the MutingRule.
   late final pulumi.Output<String> accountId;
+
   /// The action when the muting rule window is ended or disabled. Valid values are `CLOSE_ISSUES_ON_INACTIVE`, `DO_NOTHING`.
   late final pulumi.Output<String> actionOnMutingRuleWindowEnded;
+
   /// The condition that defines which incidents to target. See Nested condition blocks below for details.
   late final pulumi.Output<AlertMutingRuleCondition> condition;
+
   /// The description of the MutingRule.
   late final pulumi.Output<String?> description;
+
   /// Whether the MutingRule is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// The name of the MutingRule.
   late final pulumi.Output<String> name;
+
   /// Specify a schedule for enabling the MutingRule. See Schedule below for details
   late final pulumi.Output<AlertMutingRuleSchedule?> schedule;
 
@@ -323,18 +329,20 @@ class AlertMutingRule extends pulumi.CustomResource {
     AlertMutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertMutingRule:AlertMutingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.actionOnMutingRuleWindowEnded = registerOutput<String>('actionOnMutingRuleWindowEnded');
-    this.condition = registerOutput<AlertMutingRuleCondition>('condition');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
+         'newrelic:index/alertMutingRule:AlertMutingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    actionOnMutingRuleWindowEnded = registerOutput<String>(
+      'actionOnMutingRuleWindowEnded',
+    );
+    condition = registerOutput<AlertMutingRuleCondition>('condition');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    this.schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
+    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
   }
 
   /// Gets an existing [AlertMutingRule] resource's state with the given [name] and [id].
@@ -355,17 +363,19 @@ class AlertMutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertMutingRule:AlertMutingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.actionOnMutingRuleWindowEnded = registerOutput<String>('actionOnMutingRuleWindowEnded');
-    this.condition = registerOutput<AlertMutingRuleCondition>('condition');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
+         'newrelic:index/alertMutingRule:AlertMutingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    actionOnMutingRuleWindowEnded = registerOutput<String>(
+      'actionOnMutingRuleWindowEnded',
+    );
+    condition = registerOutput<AlertMutingRuleCondition>('condition');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    this.schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
+    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
   }
 }

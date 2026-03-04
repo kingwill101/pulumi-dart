@@ -9,9 +9,12 @@ import 'get_pipeline_definition_parameter_value.dart';
 /// {@macro pulumi_datapipeline_get_pipeline_definition_get_pipeline_definition_args_doc}
 class GetPipelineDefinitionArgs {
   /// Parameter values used in the pipeline definition. See below
-  final pulumi.Input<List<GetPipelineDefinitionParameterValue>>? parameterValues;
+  final pulumi.Input<List<GetPipelineDefinitionParameterValue>>?
+  parameterValues;
+
   /// ID of the pipeline.
   final pulumi.Input<String> pipelineId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -27,7 +30,18 @@ class GetPipelineDefinitionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameterValues': ?pulumi.Input.mapOptionalInputValue<List<GetPipelineDefinitionParameterValue>, List<Map<String, dynamic>>>(parameterValues, (value) => pulumi.Input.encodeList<GetPipelineDefinitionParameterValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameterValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetPipelineDefinitionParameterValue>,
+            List<Map<String, dynamic>>
+          >(
+            parameterValues,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPipelineDefinitionParameterValue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'pipelineId': pipelineId,
       'region': ?region,
     };
@@ -35,10 +49,24 @@ class GetPipelineDefinitionArgs {
 
   factory GetPipelineDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionArgs(
-      parameterValues: map['parameterValues'] == null ? null : ((pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(map['parameterValues']!, (value) => GetPipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      pipelineId: (map['pipelineId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      parameterValues: (() {
+        final guardedValue = map['parameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(
+            guardedValue,
+            (value) => GetPipelineDefinitionParameterValue.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      pipelineId: pulumi.Input.fromValue(map['pipelineId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

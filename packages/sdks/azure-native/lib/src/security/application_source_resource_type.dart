@@ -2,16 +2,15 @@
 enum ApplicationSourceResourceType {
   valueAssessments("Assessments");
 
-  const ApplicationSourceResourceType(this.value);
-  final String value;
+  const ApplicationSourceResourceType(this.wireValue);
+  final String wireValue;
 
   static ApplicationSourceResourceType fromValue(String value) {
     for (final item in ApplicationSourceResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationSourceResourceType value: $value');
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccelerateConfigurationV2State {
   /// Name of the bucket.
   final pulumi.Input<String>? bucket;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
   final pulumi.Input<String>? status;
 
@@ -34,13 +37,30 @@ class BucketAccelerateConfigurationV2State {
     };
   }
 
-  factory BucketAccelerateConfigurationV2State.fromMap(Map<String, dynamic> map) {
+  factory BucketAccelerateConfigurationV2State.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketAccelerateConfigurationV2State(
-      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expectedBucketOwner: (() {
+        final guardedValue = map['expectedBucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

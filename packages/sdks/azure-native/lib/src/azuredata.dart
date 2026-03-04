@@ -1,5 +1,3 @@
-library module_azuredata;
-
 export 'azuredata/functions.dart';
 export 'azuredata/get_sql_server_args.dart';
 export 'azuredata/get_sql_server_registration_args.dart';

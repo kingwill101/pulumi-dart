@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
   /// The SQL file to be executed.
   final pulumi.Input<String>? entryPoint;
+
   /// The Spark parameters to be included in the Spark SQL command.
   final pulumi.Input<String>? sparkSqlParameters;
 
@@ -23,11 +24,20 @@ class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
     };
   }
 
-  factory JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver(
-      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint'] as String).input()).input(),
-      sparkSqlParameters: map['sparkSqlParameters'] == null ? null : ((map['sparkSqlParameters'] as String).input()).input(),
+      entryPoint: (() {
+        final guardedValue = map['entryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sparkSqlParameters: (() {
+        final guardedValue = map['sparkSqlParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

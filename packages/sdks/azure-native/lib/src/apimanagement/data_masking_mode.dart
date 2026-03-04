@@ -3,16 +3,15 @@ enum DataMaskingMode {
   valueMask("Mask"),
   valueHide("Hide");
 
-  const DataMaskingMode(this.value);
-  final String value;
+  const DataMaskingMode(this.wireValue);
+  final String wireValue;
 
   static DataMaskingMode fromValue(String value) {
     for (final item in DataMaskingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataMaskingMode value: $value');
   }
 }
-

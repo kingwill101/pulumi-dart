@@ -789,13 +789,13 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 ///
 /// * `db_nodes` - List of dbNodes. Structure is documented below.
 ///
-/// <a name="nested_dbnodes"></a> The `db_nodes` block supports:
+/// &lt;a name="nested_dbnodes"&gt;&lt;/a&gt; The `db_nodes` block supports:
 ///
 /// * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
 ///
 /// * `properties` - Various properties of the database node. Structure is documented below.
 ///
-/// <a name="nested_properties"></a> The `properties` block supports:
+/// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
 ///
 /// * `ocid`- OCID of database node.
 ///
@@ -810,16 +810,16 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// * `hostname` - The host name for the database node.
 ///
 /// * `state` - State of the database node.
-/// <a name="nested_states"></a>Possible values for `state` are:<br>
-/// `PROVISIONING` - Indicates that the resource is being provisioned.<br>
-/// `AVAILABLE` - Indicates that the resource is available.<br>
-/// `UPDATING` - Indicates that the resource is being updated.<br>
-/// `STOPPING` - Indicates that the resource is being stopped.<br>
-/// `STOPPED` - Indicates that the resource is stopped.<br>
-/// `STARTING` - Indicates that the resource is being started.<br>
-/// `TERMINATING` - Indicates that the resource is being terminated.<br>
-/// `TERMINATED` - Indicates that the resource is terminated.<br>
-/// `FAILED` - Indicates that the resource has failed.<br>
+/// &lt;a name="nested_states"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+/// `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
+/// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
+/// `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
+/// `STOPPING` - Indicates that the resource is being stopped.&lt;br&gt;
+/// `STOPPED` - Indicates that the resource is stopped.&lt;br&gt;
+/// `STARTING` - Indicates that the resource is being started.&lt;br&gt;
+/// `TERMINATING` - Indicates that the resource is being terminated.&lt;br&gt;
+/// `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
+/// `FAILED` - Indicates that the resource has failed.&lt;br&gt;
 ///
 /// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_db_nodes_get_db_nodes_args_doc}
@@ -944,13 +944,13 @@ Future<GetDbNodesResult> getDbNodes(
 ///
 /// * `db_servers` - List of dbServers. Structure is documented below.
 ///
-/// <a name="nested_dbservers"></a> The `db_servers` block supports:
+/// &lt;a name="nested_dbservers"&gt;&lt;/a&gt; The `db_servers` block supports:
 ///
 /// * `display_name` - User friendly name for the resource.
 ///
 /// * `properties` - Various properties of the databse server. Structure is documented below.
 ///
-/// <a name="nested_properties"></a> The `properties` block supports:
+/// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
 ///
 /// * `ocid` - The OCID of database server.
 ///
@@ -969,12 +969,12 @@ Future<GetDbNodesResult> getDbNodes(
 /// * `vm_count` - The VM count per database.
 ///
 /// * `state` - The current state of the database server.
-/// <a name="nested_states"></a>Allowed values for `state` are:<br>
-/// `CREATING` - Indicates that the resource is being created.<br>
-/// `AVAILABLE` - Indicates that the resource is available.<br>
-/// `UNAVAILABLE` - Indicates that the resource is unavailable.<br>
-/// `DELETING` - Indicates that the resource is being deleted.<br>
-/// `DELETED` - Indicates that the resource has been deleted.<br>
+/// &lt;a name="nested_states"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+/// `CREATING` - Indicates that the resource is being created.&lt;br&gt;
+/// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
+/// `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
+/// `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
+/// `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
 ///
 /// * `db_node_ids` - The OCID of database nodes associated with the database server.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_db_servers_get_db_servers_args_doc}

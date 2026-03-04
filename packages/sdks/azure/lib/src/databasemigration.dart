@@ -1,5 +1,3 @@
-library module_databasemigration;
-
 export 'databasemigration/functions.dart';
 export 'databasemigration/get_project_args.dart';
 export 'databasemigration/get_project_result.dart';

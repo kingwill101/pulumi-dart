@@ -9,10 +9,13 @@ class BucketAbacState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<BucketAbacAbacStatus>? abacStatus;
+
   /// General purpose bucket that you want to create the metadata configuration for.
   final pulumi.Input<String>? bucket;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,7 +33,11 @@ class BucketAbacState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abacStatus': ?pulumi.Input.mapOptionalInputValue<BucketAbacAbacStatus, Map<String, dynamic>>(abacStatus, (value) => value.toMap()),
+      'abacStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketAbacAbacStatus,
+            Map<String, dynamic>
+          >(abacStatus, (value) => value.toMap()),
       'bucket': ?bucket,
       'expectedBucketOwner': ?expectedBucketOwner,
       'region': ?region,
@@ -39,11 +46,30 @@ class BucketAbacState {
 
   factory BucketAbacState.fromMap(Map<String, dynamic> map) {
     return BucketAbacState(
-      abacStatus: map['abacStatus'] == null ? null : ((BucketAbacAbacStatus.fromMap((map['abacStatus']! as Map).cast<String, dynamic>())).input()).input(),
-      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      abacStatus: (() {
+        final guardedValue = map['abacStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BucketAbacAbacStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expectedBucketOwner: (() {
+        final guardedValue = map['expectedBucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TeradataImportCommandResponse {
   /// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
   final pulumi.Input<dynamic>? additionalFormatOptions;
+
   /// The import setting type.
   /// Expected value is 'TeradataImportCommand'.
   final pulumi.Input<String> type;
@@ -27,9 +28,12 @@ class TeradataImportCommandResponse {
 
   factory TeradataImportCommandResponse.fromMap(Map<String, dynamic> map) {
     return TeradataImportCommandResponse(
-      additionalFormatOptions: map['additionalFormatOptions'] == null ? null : (map['additionalFormatOptions']!).input(),
-      type: (map['type'] as String).input(),
+      additionalFormatOptions: (() {
+        final guardedValue = map['additionalFormatOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

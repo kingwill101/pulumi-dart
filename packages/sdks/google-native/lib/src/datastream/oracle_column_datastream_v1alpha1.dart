@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleColumnDatastreamV1alpha1 {
   /// Column name.
   final pulumi.Input<String>? columnName;
+
   /// The Oracle data type.
   final pulumi.Input<String>? dataType;
+
   /// Column encoding.
   final pulumi.Input<String>? encoding;
+
   /// Column length.
   final pulumi.Input<int>? length;
+
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool>? nullable;
+
   /// The ordinal position of the column in the table.
   final pulumi.Input<int>? ordinalPosition;
+
   /// Column precision.
   final pulumi.Input<int>? precision;
+
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool>? primaryKey;
+
   /// Column scale.
   final pulumi.Input<int>? scale;
 
@@ -61,16 +69,51 @@ class OracleColumnDatastreamV1alpha1 {
 
   factory OracleColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleColumnDatastreamV1alpha1(
-      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      length: map['length'] == null ? null : (map['length']! as int).input(),
-      nullable: map['nullable'] == null ? null : (map['nullable']! as bool).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
-      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as bool).input(),
-      scale: map['scale'] == null ? null : (map['scale']! as int).input(),
+      columnName: (() {
+        final guardedValue = map['columnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      length: (() {
+        final guardedValue = map['length'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nullable: (() {
+        final guardedValue = map['nullable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ordinalPosition: (() {
+        final guardedValue = map['ordinalPosition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      precision: (() {
+        final guardedValue = map['precision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scale: (() {
+        final guardedValue = map['scale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

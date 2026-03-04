@@ -25,7 +25,11 @@ class FileShareResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<FileShareResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileShareResponseProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': ?resourceGroupName,
       'storageAccountName': ?storageAccountName,
     };
@@ -33,11 +37,30 @@ class FileShareResponse {
 
   factory FileShareResponse.fromMap(Map<String, dynamic> map) {
     return FileShareResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (FileShareResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileShareResponseProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

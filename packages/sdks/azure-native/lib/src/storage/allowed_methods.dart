@@ -10,16 +10,15 @@ enum AllowedMethods {
   valueCONNECT("CONNECT"),
   valueTRACE("TRACE");
 
-  const AllowedMethods(this.value);
-  final String value;
+  const AllowedMethods(this.wireValue);
+  final String wireValue;
 
   static AllowedMethods fromValue(String value) {
     for (final item in AllowedMethods.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllowedMethods value: $value');
   }
 }
-

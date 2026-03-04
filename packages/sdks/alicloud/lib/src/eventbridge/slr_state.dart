@@ -8,20 +8,19 @@ class SlrState {
 
   /// Creates a new [SlrState].
   /// [productName] Optional.
-  SlrState({
-    this.productName,
-  });
+  SlrState({this.productName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'productName': ?productName,
-    };
+    return <String, dynamic>{'productName': ?productName};
   }
 
   factory SlrState.fromMap(Map<String, dynamic> map) {
     return SlrState(
-      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
+      productName: (() {
+        final guardedValue = map['productName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

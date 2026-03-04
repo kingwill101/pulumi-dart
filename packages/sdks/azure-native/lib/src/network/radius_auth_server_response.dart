@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RadiusAuthServerResponse {
   /// Radius server IPAddress
   final pulumi.Input<String>? radiusServerAddress;
+
   /// Radius server secret
   final pulumi.Input<String>? radiusServerSecret;
 
   /// Creates a new [RadiusAuthServerResponse].
   /// [radiusServerAddress] Radius server IPAddress
   /// [radiusServerSecret] Radius server secret
-  RadiusAuthServerResponse({
-    this.radiusServerAddress,
-    this.radiusServerSecret,
-  });
+  RadiusAuthServerResponse({this.radiusServerAddress, this.radiusServerSecret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RadiusAuthServerResponse {
 
   factory RadiusAuthServerResponse.fromMap(Map<String, dynamic> map) {
     return RadiusAuthServerResponse(
-      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress']! as String).input(),
-      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret']! as String).input(),
+      radiusServerAddress: (() {
+        final guardedValue = map['radiusServerAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      radiusServerSecret: (() {
+        final guardedValue = map['radiusServerSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

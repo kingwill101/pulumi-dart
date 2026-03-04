@@ -8,18 +8,25 @@ import 'volume_group_volume_properties_response.dart';
 class GetVolumeGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Volume group details
   final VolumeGroupMetaDataResponse? groupMetaData;
+
   /// Resource Id
   final String id;
+
   /// Resource location
   final String? location;
+
   /// Resource name
   final String name;
+
   /// Azure lifecycle management
   final String provisioningState;
+
   /// Resource type
   final String type;
+
   /// List of volumes from group
   final List<VolumeGroupVolumePropertiesResponse>? volumes;
 
@@ -46,27 +53,52 @@ class GetVolumeGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'groupMetaData': ?groupMetaData == null ? null : groupMetaData!.toMap(),
+      'groupMetaData': ?groupMetaData?.toMap(),
       'id': id,
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
       'type': type,
-      'volumes': ?volumes == null ? null : pulumi.Input.encodeList<VolumeGroupVolumePropertiesResponse, Map<String, dynamic>>(volumes!, (value) => value.toMap()),
+      'volumes': ?(() {
+        final guardedValue = volumes;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          VolumeGroupVolumePropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetVolumeGroupResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      groupMetaData: map['groupMetaData'] == null ? null : VolumeGroupMetaDataResponse.fromMap((map['groupMetaData']! as Map).cast<String, dynamic>()),
+      groupMetaData: (() {
+        final guardedValue = map['groupMetaData'];
+        if (guardedValue == null) return null;
+        return VolumeGroupMetaDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(map['volumes']!, (value) => VolumeGroupVolumePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      volumes: (() {
+        final guardedValue = map['volumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(
+          guardedValue,
+          (value) => VolumeGroupVolumePropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

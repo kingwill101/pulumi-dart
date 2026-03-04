@@ -9,8 +9,10 @@ import 'postgresql_rdbms.dart';
 class BackfillAllStrategy {
   /// MySQL data source objects to avoid backfilling.
   final pulumi.Input<MysqlRdbms>? mysqlExcludedObjects;
+
   /// Oracle data source objects to avoid backfilling.
   final pulumi.Input<OracleRdbms>? oracleExcludedObjects;
+
   /// PostgreSQL data source objects to avoid backfilling.
   final pulumi.Input<PostgresqlRdbms>? postgresqlExcludedObjects;
 
@@ -26,18 +28,49 @@ class BackfillAllStrategy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlExcludedObjects': ?pulumi.Input.mapOptionalInputValue<MysqlRdbms, Map<String, dynamic>>(mysqlExcludedObjects, (value) => value.toMap()),
-      'oracleExcludedObjects': ?pulumi.Input.mapOptionalInputValue<OracleRdbms, Map<String, dynamic>>(oracleExcludedObjects, (value) => value.toMap()),
-      'postgresqlExcludedObjects': ?pulumi.Input.mapOptionalInputValue<PostgresqlRdbms, Map<String, dynamic>>(postgresqlExcludedObjects, (value) => value.toMap()),
+      'mysqlExcludedObjects':
+          ?pulumi.Input.mapOptionalInputValue<MysqlRdbms, Map<String, dynamic>>(
+            mysqlExcludedObjects,
+            (value) => value.toMap(),
+          ),
+      'oracleExcludedObjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            OracleRdbms,
+            Map<String, dynamic>
+          >(oracleExcludedObjects, (value) => value.toMap()),
+      'postgresqlExcludedObjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            PostgresqlRdbms,
+            Map<String, dynamic>
+          >(postgresqlExcludedObjects, (value) => value.toMap()),
     };
   }
 
   factory BackfillAllStrategy.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategy(
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (MysqlRdbms.fromMap((map['mysqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (OracleRdbms.fromMap((map['oracleExcludedObjects']! as Map).cast<String, dynamic>())).input(),
-      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['postgresqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      mysqlExcludedObjects: (() {
+        final guardedValue = map['mysqlExcludedObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MysqlRdbms.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      oracleExcludedObjects: (() {
+        final guardedValue = map['oracleExcludedObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OracleRdbms.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      postgresqlExcludedObjects: (() {
+        final guardedValue = map['postgresqlExcludedObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PostgresqlRdbms.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

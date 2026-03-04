@@ -1204,6 +1204,7 @@ class Job extends pulumi.CustomResource {
   /// send a request to the service instance
   /// Structure is documented below.
   late final pulumi.Output<JobAppEngineHttpTarget?> appEngineHttpTarget;
+
   /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
   /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
   /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -1213,37 +1214,48 @@ class Job extends pulumi.CustomResource {
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   late final pulumi.Output<String?> attemptDeadline;
+
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
   late final pulumi.Output<String?> description;
+
   /// HTTP target.
   /// If the job providers a http_target the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   late final pulumi.Output<JobHttpTarget?> httpTarget;
+
   /// The name of the job.
   late final pulumi.Output<String> name;
+
   /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
   late final pulumi.Output<bool> paused;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Pub/Sub target
   /// If the job providers a Pub/Sub target the cron will publish
   /// a message to the provided topic
   /// Structure is documented below.
   late final pulumi.Output<JobPubsubTarget?> pubsubTarget;
+
   /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
   late final pulumi.Output<String> region;
+
   /// By default, if a job does not complete successfully,
   /// meaning that an acknowledgement is not received from the handler,
   /// then it will be retried with exponential backoff according to the settings
   /// Structure is documented below.
   late final pulumi.Output<JobRetryConfig?> retryConfig;
+
   /// Describes the schedule on which the job will be executed.
   late final pulumi.Output<String?> schedule;
+
   /// State of the job.
   late final pulumi.Output<String> state;
+
   /// Specifies the time zone to be used in interpreting schedule.
   /// The value of this field must be a time zone name from the tz database.
   late final pulumi.Output<String?> timeZone;
@@ -1252,37 +1264,32 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_cloudscheduler_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:cloudscheduler/job:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget');
-    this.attemptDeadline = registerOutput<String?>('attemptDeadline');
-    this.description = registerOutput<String?>('description');
-    this.httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:cloudscheduler/job:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>(
+      'appEngineHttpTarget',
+    );
+    attemptDeadline = registerOutput<String?>('attemptDeadline');
+    description = registerOutput<String?>('description');
+    httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
     this.name = registerOutput<String>('name');
-    this.paused = registerOutput<bool>('paused');
-    this.project = registerOutput<String>('project');
-    this.pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
-    this.region = registerOutput<String>('region');
-    this.retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
-    this.schedule = registerOutput<String?>('schedule');
-    this.state = registerOutput<String>('state');
-    this.timeZone = registerOutput<String?>('timeZone');
+    paused = registerOutput<bool>('paused');
+    project = registerOutput<String>('project');
+    pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
+    region = registerOutput<String>('region');
+    retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
+    schedule = registerOutput<String?>('schedule');
+    state = registerOutput<String>('state');
+    timeZone = registerOutput<String?>('timeZone');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(
-    String name,
-    pulumi.Input<String> id, {
-    JobState? state,
-  }) {
+  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -1295,23 +1302,25 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudscheduler/job:Job',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget');
-    this.attemptDeadline = registerOutput<String?>('attemptDeadline');
-    this.description = registerOutput<String?>('description');
-    this.httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
+         'gcp:cloudscheduler/job:Job',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>(
+      'appEngineHttpTarget',
+    );
+    attemptDeadline = registerOutput<String?>('attemptDeadline');
+    description = registerOutput<String?>('description');
+    httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
     this.name = registerOutput<String>('name');
-    this.paused = registerOutput<bool>('paused');
-    this.project = registerOutput<String>('project');
-    this.pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
-    this.region = registerOutput<String>('region');
-    this.retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
-    this.schedule = registerOutput<String?>('schedule');
+    paused = registerOutput<bool>('paused');
+    project = registerOutput<String>('project');
+    pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
+    region = registerOutput<String>('region');
+    retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
+    schedule = registerOutput<String?>('schedule');
     this.state = registerOutput<String>('state');
-    this.timeZone = registerOutput<String?>('timeZone');
+    timeZone = registerOutput<String?>('timeZone');
   }
 }

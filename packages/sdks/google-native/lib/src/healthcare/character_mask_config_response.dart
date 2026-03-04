@@ -9,20 +9,17 @@ class CharacterMaskConfigResponse {
 
   /// Creates a new [CharacterMaskConfigResponse].
   /// [maskingCharacter] Character to mask the sensitive values. If not supplied, defaults to "*".
-  CharacterMaskConfigResponse({
-    required this.maskingCharacter,
-  });
+  CharacterMaskConfigResponse({required this.maskingCharacter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maskingCharacter': maskingCharacter,
-    };
+    return <String, dynamic>{'maskingCharacter': maskingCharacter};
   }
 
   factory CharacterMaskConfigResponse.fromMap(Map<String, dynamic> map) {
     return CharacterMaskConfigResponse(
-      maskingCharacter: (map['maskingCharacter'] as String).input(),
+      maskingCharacter: pulumi.Input.fromValue(
+        map['maskingCharacter'] as String,
+      ),
     );
   }
 }
-

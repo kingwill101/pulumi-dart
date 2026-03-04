@@ -10,10 +10,13 @@ import 'get_endpoint_filter.dart';
 class GetEndpointArgs {
   /// ID of the Client VPN endpoint.
   final pulumi.Input<String>? clientVpnEndpointId;
+
   /// One or more configuration blocks containing name-values filters. Detailed below.
   final pulumi.Input<List<GetEndpointFilter>>? filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags, each pair of which must exactly match a pair on the desired endpoint.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,7 +35,18 @@ class GetEndpointArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientVpnEndpointId': ?clientVpnEndpointId,
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetEndpointFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetEndpointFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetEndpointFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetEndpointFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'tags': ?tags,
     };
@@ -40,11 +54,35 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetEndpointFilter>(map['filters']!, (value) => GetEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      clientVpnEndpointId: (() {
+        final guardedValue = map['clientVpnEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetEndpointFilter>(
+            guardedValue,
+            (value) => GetEndpointFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'private_link_association_properties_expanded_response.dart';
 class GetPrivateLinkAssociationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The plaResourceID.
   final String id;
+
   /// The pla name.
   final String name;
+
   /// The private link association properties.
   final PrivateLinkAssociationPropertiesExpandedResponse properties;
+
   /// The operation type.
   final String type;
 
@@ -44,9 +48,10 @@ class GetPrivateLinkAssociationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PrivateLinkAssociationPropertiesExpandedResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: PrivateLinkAssociationPropertiesExpandedResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

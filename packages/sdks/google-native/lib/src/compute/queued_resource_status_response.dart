@@ -8,8 +8,10 @@ import 'queuing_policy_response.dart';
 class QueuedResourceStatusResponse {
   /// Additional status detail for the FAILED state.
   final pulumi.Input<QueuedResourceStatusFailedDataResponse> failedData;
+
   /// [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
   final pulumi.Input<List<String>> provisioningOperations;
+
   /// Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
   final pulumi.Input<QueuingPolicyResponse> queuingPolicy;
 
@@ -25,18 +27,35 @@ class QueuedResourceStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failedData': pulumi.Input.mapInputValue<QueuedResourceStatusFailedDataResponse, Map<String, dynamic>>(failedData, (value) => value.toMap()),
+      'failedData':
+          pulumi.Input.mapInputValue<
+            QueuedResourceStatusFailedDataResponse,
+            Map<String, dynamic>
+          >(failedData, (value) => value.toMap()),
       'provisioningOperations': provisioningOperations,
-      'queuingPolicy': pulumi.Input.mapInputValue<QueuingPolicyResponse, Map<String, dynamic>>(queuingPolicy, (value) => value.toMap()),
+      'queuingPolicy':
+          pulumi.Input.mapInputValue<
+            QueuingPolicyResponse,
+            Map<String, dynamic>
+          >(queuingPolicy, (value) => value.toMap()),
     };
   }
 
   factory QueuedResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStatusResponse(
-      failedData: (QueuedResourceStatusFailedDataResponse.fromMap((map['failedData'] as Map).cast<String, dynamic>())).input(),
-      provisioningOperations: ((map['provisioningOperations'] as List).cast<String>()).input(),
-      queuingPolicy: (QueuingPolicyResponse.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())).input(),
+      failedData: pulumi.Input.fromValue(
+        QueuedResourceStatusFailedDataResponse.fromMap(
+          (map['failedData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningOperations: pulumi.Input.fromValue(
+        (map['provisioningOperations'] as List).cast<String>(),
+      ),
+      queuingPolicy: pulumi.Input.fromValue(
+        QueuingPolicyResponse.fromMap(
+          (map['queuingPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

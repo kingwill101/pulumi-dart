@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFrontendConfig {
   /// The port on which traffic will be received.
   final pulumi.Input<int> port;
+
   /// The ID of the Public IP Address resource the traffic will be received on.
   final pulumi.Input<String> publicIpAddressId;
 
@@ -23,11 +24,14 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFronte
     };
   }
 
-  factory NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFrontendConfig.fromMap(Map<String, dynamic> map) {
+  factory NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFrontendConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFrontendConfig(
-      port: (map['port'] as int).input(),
-      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      publicIpAddressId: pulumi.Input.fromValue(
+        map['publicIpAddressId'] as String,
+      ),
     );
   }
 }
-

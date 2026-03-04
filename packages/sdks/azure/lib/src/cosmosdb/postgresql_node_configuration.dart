@@ -217,7 +217,7 @@ import 'postgresql_node_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2022-11-08
@@ -232,8 +232,10 @@ import 'postgresql_node_configuration_state.dart';
 class PostgresqlNodeConfiguration extends pulumi.CustomResource {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster where we want to change configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterId;
+
   /// The name of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The value of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster.
   late final pulumi.Output<String> value;
 
@@ -246,14 +248,14 @@ class PostgresqlNodeConfiguration extends pulumi.CustomResource {
     PostgresqlNodeConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
+         'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
-    this.value = registerOutput<String>('value');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [PostgresqlNodeConfiguration] resource's state with the given [name] and [id].
@@ -274,13 +276,13 @@ class PostgresqlNodeConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
+         'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
-    this.value = registerOutput<String>('value');
+    value = registerOutput<String>('value');
   }
 }

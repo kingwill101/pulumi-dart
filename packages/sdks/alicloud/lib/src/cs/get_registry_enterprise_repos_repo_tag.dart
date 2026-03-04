@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryEnterpriseReposRepoTag {
   /// The digest of the image.
   final pulumi.Input<String> digest;
+
   /// The time when the image was created.
   final pulumi.Input<String> imageCreate;
+
   /// The ID of the image.
   final pulumi.Input<String> imageId;
+
   /// The size of the image.
   final pulumi.Input<int> imageSize;
+
   /// The time when the image was last updated.
   final pulumi.Input<String> imageUpdate;
+
   /// The status of the image.
   final pulumi.Input<String> status;
+
   /// The tag of the image.
   final pulumi.Input<String> tag;
 
@@ -50,14 +56,13 @@ class GetRegistryEnterpriseReposRepoTag {
 
   factory GetRegistryEnterpriseReposRepoTag.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseReposRepoTag(
-      digest: (map['digest'] as String).input(),
-      imageCreate: (map['imageCreate'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
-      imageSize: (map['imageSize'] as int).input(),
-      imageUpdate: (map['imageUpdate'] as String).input(),
-      status: (map['status'] as String).input(),
-      tag: (map['tag'] as String).input(),
+      digest: pulumi.Input.fromValue(map['digest'] as String),
+      imageCreate: pulumi.Input.fromValue(map['imageCreate'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      imageSize: pulumi.Input.fromValue(map['imageSize'] as int),
+      imageUpdate: pulumi.Input.fromValue(map['imageUpdate'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
-

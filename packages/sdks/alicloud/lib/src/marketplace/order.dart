@@ -143,18 +143,25 @@ import 'order_state.dart';
 class Order extends pulumi.CustomResource {
   /// Service providers customize additional components.
   late final pulumi.Output<Map<String, String>?> components;
+
   /// The coupon id of the market product.
   late final pulumi.Output<String?> couponId;
+
   /// The number of purchase cycles.
   late final pulumi.Output<int?> duration;
+
   /// The package version of the market product.
   late final pulumi.Output<String> packageVersion;
+
   /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
   late final pulumi.Output<String?> payType;
+
   /// The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
   late final pulumi.Output<String> pricingCycle;
+
   /// The product_code of market place product.
   late final pulumi.Output<String> productCode;
+
   /// The quantity of the market product will be purchased.
   late final pulumi.Output<int?> quantity;
 
@@ -162,32 +169,25 @@ class Order extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Order]. {@macro pulumi_marketplace_order_order_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Order(
-    String name, {
-    OrderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:marketplace/order:Order',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.components = registerOutput<Map<String, String>?>('components');
-    this.couponId = registerOutput<String?>('couponId');
-    this.duration = registerOutput<int?>('duration');
-    this.packageVersion = registerOutput<String>('packageVersion');
-    this.payType = registerOutput<String?>('payType');
-    this.pricingCycle = registerOutput<String>('pricingCycle');
-    this.productCode = registerOutput<String>('productCode');
-    this.quantity = registerOutput<int?>('quantity');
+  Order(String name, {OrderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:marketplace/order:Order',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    components = registerOutput<Map<String, String>?>('components');
+    couponId = registerOutput<String?>('couponId');
+    duration = registerOutput<int?>('duration');
+    packageVersion = registerOutput<String>('packageVersion');
+    payType = registerOutput<String?>('payType');
+    pricingCycle = registerOutput<String>('pricingCycle');
+    productCode = registerOutput<String>('productCode');
+    quantity = registerOutput<int?>('quantity');
   }
 
   /// Gets an existing [Order] resource's state with the given [name] and [id].
-  static Order get(
-    String name,
-    pulumi.Input<String> id, {
-    OrderState? state,
-  }) {
+  static Order get(String name, pulumi.Input<String> id, {OrderState? state}) {
     return Order._get(
       name,
       state: state?.toMap(),
@@ -200,18 +200,18 @@ class Order extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:marketplace/order:Order',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.components = registerOutput<Map<String, String>?>('components');
-    this.couponId = registerOutput<String?>('couponId');
-    this.duration = registerOutput<int?>('duration');
-    this.packageVersion = registerOutput<String>('packageVersion');
-    this.payType = registerOutput<String?>('payType');
-    this.pricingCycle = registerOutput<String>('pricingCycle');
-    this.productCode = registerOutput<String>('productCode');
-    this.quantity = registerOutput<int?>('quantity');
+         'alicloud:marketplace/order:Order',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    components = registerOutput<Map<String, String>?>('components');
+    couponId = registerOutput<String?>('couponId');
+    duration = registerOutput<int?>('duration');
+    packageVersion = registerOutput<String>('packageVersion');
+    payType = registerOutput<String?>('payType');
+    pricingCycle = registerOutput<String>('pricingCycle');
+    productCode = registerOutput<String>('productCode');
+    quantity = registerOutput<int?>('quantity');
   }
 }

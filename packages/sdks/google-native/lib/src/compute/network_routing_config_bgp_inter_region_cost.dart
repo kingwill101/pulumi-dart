@@ -3,16 +3,17 @@ enum NetworkRoutingConfigBgpInterRegionCost {
   addCostToMed("ADD_COST_TO_MED"),
   default_("DEFAULT");
 
-  const NetworkRoutingConfigBgpInterRegionCost(this.value);
-  final String value;
+  const NetworkRoutingConfigBgpInterRegionCost(this.wireValue);
+  final String wireValue;
 
   static NetworkRoutingConfigBgpInterRegionCost fromValue(String value) {
     for (final item in NetworkRoutingConfigBgpInterRegionCost.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigBgpInterRegionCost value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigBgpInterRegionCost value: $value',
+    );
   }
 }
-

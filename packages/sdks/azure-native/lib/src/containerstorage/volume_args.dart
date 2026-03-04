@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeArgs {
   /// Requested capacity in GiB
   final pulumi.Input<double> capacityGiB;
+
   /// String KV pairs indicating labels
   final pulumi.Input<Map<String, String>> labels;
+
   /// Pool Object
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Volume Resource
   final pulumi.Input<String>? volumeName;
 
@@ -44,12 +48,19 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      capacityGiB: (map['capacityGiB'] as double).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
+      capacityGiB: pulumi.Input.fromValue(map['capacityGiB'] as double),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      volumeName: (() {
+        final guardedValue = map['volumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

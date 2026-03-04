@@ -3,16 +3,15 @@ enum OnBuildError {
   valueCleanup("cleanup"),
   valueAbort("abort");
 
-  const OnBuildError(this.value);
-  final String value;
+  const OnBuildError(this.wireValue);
+  final String wireValue;
 
   static OnBuildError fromValue(String value) {
     for (final item in OnBuildError.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OnBuildError value: $value');
   }
 }
-

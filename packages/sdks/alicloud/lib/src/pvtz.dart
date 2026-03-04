@@ -1,5 +1,3 @@
-library module_pvtz;
-
 export 'pvtz/endpoint.dart';
 export 'pvtz/endpoint_args.dart';
 export 'pvtz/endpoint_ip_config.dart';

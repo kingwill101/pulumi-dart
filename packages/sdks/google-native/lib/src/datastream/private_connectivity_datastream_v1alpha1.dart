@@ -8,20 +8,21 @@ class PrivateConnectivityDatastreamV1alpha1 {
 
   /// Creates a new [PrivateConnectivityDatastreamV1alpha1].
   /// [privateConnectionName] Optional.
-  PrivateConnectivityDatastreamV1alpha1({
-    this.privateConnectionName,
-  });
+  PrivateConnectivityDatastreamV1alpha1({this.privateConnectionName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'privateConnectionName': ?privateConnectionName,
-    };
+    return <String, dynamic>{'privateConnectionName': ?privateConnectionName};
   }
 
-  factory PrivateConnectivityDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory PrivateConnectivityDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateConnectivityDatastreamV1alpha1(
-      privateConnectionName: map['privateConnectionName'] == null ? null : (map['privateConnectionName']! as String).input(),
+      privateConnectionName: (() {
+        final guardedValue = map['privateConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

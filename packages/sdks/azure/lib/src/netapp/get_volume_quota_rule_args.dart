@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeQuotaRuleArgs {
   /// The name of this Volume Quota Rule.
   final pulumi.Input<String> name;
+
   /// The NetApp volume ID where the Volume Quota Rule is assigned to.
   final pulumi.Input<String> volumeId;
 
   /// Creates a new [GetVolumeQuotaRuleArgs].
   /// [name] The name of this Volume Quota Rule.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to.
-  GetVolumeQuotaRuleArgs({
-    required this.name,
-    required this.volumeId,
-  });
+  GetVolumeQuotaRuleArgs({required this.name, required this.volumeId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'volumeId': volumeId,
-    };
+    return <String, dynamic>{'name': name, 'volumeId': volumeId};
   }
 
   factory GetVolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeQuotaRuleArgs(
-      name: (map['name'] as String).input(),
-      volumeId: (map['volumeId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      volumeId: pulumi.Input.fromValue(map['volumeId'] as String),
     );
   }
 }
-

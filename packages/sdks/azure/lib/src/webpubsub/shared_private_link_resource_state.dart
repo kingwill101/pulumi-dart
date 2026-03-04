@@ -6,18 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedPrivateLinkResourceState {
   /// Specify the name of the Web Pubsub Shared Private Link Resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specify the request message for requesting approval of the Shared Private Link Enabled Remote Resource.
   final pulumi.Input<String>? requestMessage;
+
   /// The status of a private endpoint connection. Possible values are Pending, Approved, Rejected or Disconnected.
   final pulumi.Input<String>? status;
+
   /// Specify the sub resource name which the Web Pubsub Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The available sub resource can be retrieved by using `azure.webpubsub.getPrivateLinkResource` data source.
+  /// &gt; **Note:** The available sub resource can be retrieved by using `azure.webpubsub.getPrivateLinkResource` data source.
   final pulumi.Input<String>? subresourceName;
+
   /// Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The sub resource name should match with the type of the target resource id that's being specified.
+  /// &gt; **Note:** The sub resource name should match with the type of the target resource id that's being specified.
   final pulumi.Input<String>? targetResourceId;
+
   /// Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
   final pulumi.Input<String>? webPubsubId;
 
@@ -50,13 +55,36 @@ class SharedPrivateLinkResourceState {
 
   factory SharedPrivateLinkResourceState.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
-      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestMessage: (() {
+        final guardedValue = map['requestMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subresourceName: (() {
+        final guardedValue = map['subresourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceId: (() {
+        final guardedValue = map['targetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webPubsubId: (() {
+        final guardedValue = map['webPubsubId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

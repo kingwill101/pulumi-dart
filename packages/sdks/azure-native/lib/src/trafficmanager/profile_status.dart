@@ -3,16 +3,15 @@ enum ProfileStatus {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ProfileStatus(this.value);
-  final String value;
+  const ProfileStatus(this.wireValue);
+  final String wireValue;
 
   static ProfileStatus fromValue(String value) {
     for (final item in ProfileStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProfileStatus value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   final pulumi.Input<bool> enableIntegrityMonitoring;
+
   /// Defines whether the instance has Secure Boot enabled.
   final pulumi.Input<bool> enableSecureBoot;
 
@@ -23,11 +24,14 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig 
     };
   }
 
-  factory GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig(
-      enableIntegrityMonitoring: (map['enableIntegrityMonitoring'] as bool).input(),
-      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
+      enableIntegrityMonitoring: pulumi.Input.fromValue(
+        map['enableIntegrityMonitoring'] as bool,
+      ),
+      enableSecureBoot: pulumi.Input.fromValue(map['enableSecureBoot'] as bool),
     );
   }
 }
-

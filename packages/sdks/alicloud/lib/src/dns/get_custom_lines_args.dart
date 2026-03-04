@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomLinesArgs {
   /// The Domain name.
   final pulumi.Input<String> domainName;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Custom Line IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The lang.
   final pulumi.Input<String>? lang;
+
   /// A regex string to filter results by Custom Line name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -49,13 +54,32 @@ class GetCustomLinesArgs {
 
   factory GetCustomLinesArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomLinesArgs(
-      domainName: (map['domainName'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum EventStreamingState {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const EventStreamingState(this.value);
-  final String value;
+  const EventStreamingState(this.wireValue);
+  final String wireValue;
 
   static EventStreamingState fromValue(String value) {
     for (final item in EventStreamingState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventStreamingState value: $value');
   }
 }
-

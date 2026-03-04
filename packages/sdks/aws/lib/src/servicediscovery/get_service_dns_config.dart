@@ -6,8 +6,10 @@ import 'get_service_dns_config_dns_record.dart';
 class GetServiceDnsConfig {
   /// An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   final pulumi.Input<List<GetServiceDnsConfigDnsRecord>> dnsRecords;
+
   /// ID of the namespace that the service belongs to.
   final pulumi.Input<String> namespaceId;
+
   /// Routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
   final pulumi.Input<String> routingPolicy;
 
@@ -23,7 +25,18 @@ class GetServiceDnsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsRecords': pulumi.Input.mapInputValue<List<GetServiceDnsConfigDnsRecord>, List<Map<String, dynamic>>>(dnsRecords, (value) => pulumi.Input.encodeList<GetServiceDnsConfigDnsRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dnsRecords':
+          pulumi.Input.mapInputValue<
+            List<GetServiceDnsConfigDnsRecord>,
+            List<Map<String, dynamic>>
+          >(
+            dnsRecords,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceDnsConfigDnsRecord,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'namespaceId': namespaceId,
       'routingPolicy': routingPolicy,
     };
@@ -31,10 +44,16 @@ class GetServiceDnsConfig {
 
   factory GetServiceDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceDnsConfig(
-      dnsRecords: (pulumi.Input.decodeList<GetServiceDnsConfigDnsRecord>(map['dnsRecords']!, (value) => GetServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      routingPolicy: (map['routingPolicy'] as String).input(),
+      dnsRecords: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceDnsConfigDnsRecord>(
+          map['dnsRecords']!,
+          (value) => GetServiceDnsConfigDnsRecord.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      routingPolicy: pulumi.Input.fromValue(map['routingPolicy'] as String),
     );
   }
 }
-

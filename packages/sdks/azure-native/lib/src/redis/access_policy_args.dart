@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyArgs {
   /// The name of the access policy that is being added to the Redis cache.
   final pulumi.Input<String>? accessPolicyName;
+
   /// The name of the Redis cache.
   final pulumi.Input<String> cacheName;
+
   /// Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites
   final pulumi.Input<String> permissions;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,16 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
-      cacheName: (map['cacheName'] as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accessPolicyName: (() {
+        final guardedValue = map['accessPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

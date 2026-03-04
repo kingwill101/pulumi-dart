@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1GcsSource {
   /// Cloud Storage URI that points to a file that contains the conversation audio.
   final pulumi.Input<String>? audioUri;
+
   /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
   final pulumi.Input<String>? transcriptUri;
 
@@ -24,11 +25,20 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1GcsSource.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1GcsSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1GcsSource(
-      audioUri: map['audioUri'] == null ? null : (map['audioUri']! as String).input(),
-      transcriptUri: map['transcriptUri'] == null ? null : (map['transcriptUri']! as String).input(),
+      audioUri: (() {
+        final guardedValue = map['audioUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transcriptUri: (() {
+        final guardedValue = map['transcriptUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_ess;
-
 export 'ess/alarm.dart';
 export 'ess/alarm_args.dart';
 export 'ess/alarm_expression.dart';

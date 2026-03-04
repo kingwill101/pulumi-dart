@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalPasswordArgs {
   /// A display name for the password.
   final pulumi.Input<String>? displayName;
+
   /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   final pulumi.Input<String>? endDate;
+
   /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
   final pulumi.Input<String>? endDateRelative;
+
   /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
   final pulumi.Input<Map<String, String>>? rotateWhenChanged;
+
   /// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
+
   /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
   final pulumi.Input<String>? startDate;
 
@@ -49,13 +54,36 @@ class ServicePrincipalPasswordArgs {
 
   factory ServicePrincipalPasswordArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalPasswordArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
-      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative']! as String).input(),
-      rotateWhenChanged: map['rotateWhenChanged'] == null ? null : ((map['rotateWhenChanged']! as Map).cast<String, String>()).input(),
-      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endDate: (() {
+        final guardedValue = map['endDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endDateRelative: (() {
+        final guardedValue = map['endDateRelative'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rotateWhenChanged: (() {
+        final guardedValue = map['rotateWhenChanged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      servicePrincipalId: pulumi.Input.fromValue(
+        map['servicePrincipalId'] as String,
+      ),
+      startDate: (() {
+        final guardedValue = map['startDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

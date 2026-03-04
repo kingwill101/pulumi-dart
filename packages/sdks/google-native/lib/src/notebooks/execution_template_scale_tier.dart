@@ -8,16 +8,15 @@ enum ExecutionTemplateScaleTier {
   basicTpu("BASIC_TPU"),
   custom("CUSTOM");
 
-  const ExecutionTemplateScaleTier(this.value);
-  final String value;
+  const ExecutionTemplateScaleTier(this.wireValue);
+  final String wireValue;
 
   static ExecutionTemplateScaleTier fromValue(String value) {
     for (final item in ExecutionTemplateScaleTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecutionTemplateScaleTier value: $value');
   }
 }
-

@@ -41,16 +41,17 @@ class GetFirewallTemplatesFirewallTemplateOutbound {
     };
   }
 
-  factory GetFirewallTemplatesFirewallTemplateOutbound.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallTemplatesFirewallTemplateOutbound.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallTemplatesFirewallTemplateOutbound(
-      action: (map['action'] as String).input(),
-      description: (map['description'] as String).input(),
-      ipv4s: ((map['ipv4s'] as List).cast<String>()).input(),
-      ipv6s: ((map['ipv6s'] as List).cast<String>()).input(),
-      label: (map['label'] as String).input(),
-      ports: (map['ports'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      ipv4s: pulumi.Input.fromValue((map['ipv4s'] as List).cast<String>()),
+      ipv6s: pulumi.Input.fromValue((map['ipv6s'] as List).cast<String>()),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      ports: pulumi.Input.fromValue(map['ports'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

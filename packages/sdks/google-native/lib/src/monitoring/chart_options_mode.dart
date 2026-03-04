@@ -5,16 +5,15 @@ enum ChartOptionsMode {
   xRay("X_RAY"),
   stats("STATS");
 
-  const ChartOptionsMode(this.value);
-  final String value;
+  const ChartOptionsMode(this.wireValue);
+  final String wireValue;
 
   static ChartOptionsMode fromValue(String value) {
     for (final item in ChartOptionsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChartOptionsMode value: $value');
   }
 }
-

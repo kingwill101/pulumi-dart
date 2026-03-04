@@ -5,16 +5,15 @@ enum IntervalInMins {
   valueThirtyMins("ThirtyMins"),
   valueSixtyMins("SixtyMins");
 
-  const IntervalInMins(this.value);
-  final String value;
+  const IntervalInMins(this.wireValue);
+  final String wireValue;
 
   static IntervalInMins fromValue(String value) {
     for (final item in IntervalInMins.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntervalInMins value: $value');
   }
 }
-

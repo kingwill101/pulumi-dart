@@ -29,12 +29,17 @@ class GetConversationDialogflowV2beta1Args {
     };
   }
 
-  factory GetConversationDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConversationDialogflowV2beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConversationDialogflowV2beta1Args(
-      conversationId: (map['conversationId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

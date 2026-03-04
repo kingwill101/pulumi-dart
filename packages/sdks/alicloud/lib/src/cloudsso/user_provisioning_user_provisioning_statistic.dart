@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProvisioningUserProvisioningStatistic {
   /// Number of failed events
   final pulumi.Input<int>? failedEventCount;
+
   /// Last Provisioning time
   final pulumi.Input<String>? gmtLatestSync;
 
@@ -23,11 +24,20 @@ class UserProvisioningUserProvisioningStatistic {
     };
   }
 
-  factory UserProvisioningUserProvisioningStatistic.fromMap(Map<String, dynamic> map) {
+  factory UserProvisioningUserProvisioningStatistic.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserProvisioningUserProvisioningStatistic(
-      failedEventCount: map['failedEventCount'] == null ? null : (map['failedEventCount']! as int).input(),
-      gmtLatestSync: map['gmtLatestSync'] == null ? null : (map['gmtLatestSync']! as String).input(),
+      failedEventCount: (() {
+        final guardedValue = map['failedEventCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gmtLatestSync: (() {
+        final guardedValue = map['gmtLatestSync'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

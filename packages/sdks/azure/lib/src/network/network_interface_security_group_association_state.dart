@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceSecurityGroupAssociationState {
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String>? networkSecurityGroupId;
 
@@ -24,11 +25,20 @@ class NetworkInterfaceSecurityGroupAssociationState {
     };
   }
 
-  factory NetworkInterfaceSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceSecurityGroupAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceSecurityGroupAssociationState(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityGroupId: (() {
+        final guardedValue = map['networkSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

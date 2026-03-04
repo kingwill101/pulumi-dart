@@ -7,20 +7,28 @@ import 'resource_reference_response.dart';
 class GetIntegrationAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource id.
   final String id;
+
   /// The integration service environment.
   final ResourceReferenceResponse? integrationServiceEnvironment;
+
   /// The resource location.
   final String? location;
+
   /// Gets the resource name.
   final String name;
+
   /// The sku.
   final IntegrationAccountSkuResponse? sku;
+
   /// The workflow state.
   final String? state;
+
   /// The resource tags.
   final Map<String, String>? tags;
+
   /// Gets the resource type.
   final String type;
 
@@ -50,10 +58,10 @@ class GetIntegrationAccountResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'integrationServiceEnvironment': ?integrationServiceEnvironment == null ? null : integrationServiceEnvironment!.toMap(),
+      'integrationServiceEnvironment': ?integrationServiceEnvironment?.toMap(),
       'location': ?location,
       'name': name,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'state': ?state,
       'tags': ?tags,
       'type': type,
@@ -64,14 +72,37 @@ class GetIntegrationAccountResult {
     return GetIntegrationAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : ResourceReferenceResponse.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      integrationServiceEnvironment: (() {
+        final guardedValue = map['integrationServiceEnvironment'];
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      sku: map['sku'] == null ? null : IntegrationAccountSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return IntegrationAccountSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

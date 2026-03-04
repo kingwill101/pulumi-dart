@@ -6,16 +6,17 @@ enum InputMappingLocationDeploymentmanagerV2beta {
   body("BODY"),
   header("HEADER");
 
-  const InputMappingLocationDeploymentmanagerV2beta(this.value);
-  final String value;
+  const InputMappingLocationDeploymentmanagerV2beta(this.wireValue);
+  final String wireValue;
 
   static InputMappingLocationDeploymentmanagerV2beta fromValue(String value) {
     for (final item in InputMappingLocationDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InputMappingLocationDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown InputMappingLocationDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

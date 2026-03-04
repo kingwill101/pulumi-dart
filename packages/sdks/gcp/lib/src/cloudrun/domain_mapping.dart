@@ -3,7 +3,6 @@ import 'domain_mapping_args.dart';
 import 'domain_mapping_metadata.dart';
 import 'domain_mapping_spec.dart';
 import 'domain_mapping_state.dart';
-import 'domain_mapping_status.dart';
 
 /// Resource to hold the state and status of a user's domain mapping.
 ///
@@ -278,20 +277,25 @@ import 'domain_mapping_status.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
+
   /// Metadata associated with this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingMetadata> metadata;
+
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The spec for this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSpec> spec;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  late final pulumi.Output<List<DomainMappingStatus>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
 
   /// Creates a new [DomainMapping].
   /// [name] The Pulumi resource name.
@@ -302,17 +306,17 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudrun/domainMapping:DomainMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<DomainMappingMetadata>('metadata');
+         'gcp:cloudrun/domainMapping:DomainMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    metadata = registerOutput<DomainMappingMetadata>('metadata');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.spec = registerOutput<DomainMappingSpec>('spec');
-    this.statuses = registerOutput<List<DomainMappingStatus>>('statuses');
+    project = registerOutput<String>('project');
+    spec = registerOutput<DomainMappingSpec>('spec');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 
   /// Gets an existing [DomainMapping] resource's state with the given [name] and [id].
@@ -333,16 +337,16 @@ class DomainMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudrun/domainMapping:DomainMapping',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<DomainMappingMetadata>('metadata');
+         'gcp:cloudrun/domainMapping:DomainMapping',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    metadata = registerOutput<DomainMappingMetadata>('metadata');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.spec = registerOutput<DomainMappingSpec>('spec');
-    this.statuses = registerOutput<List<DomainMappingStatus>>('statuses');
+    project = registerOutput<String>('project');
+    spec = registerOutput<DomainMappingSpec>('spec');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 }

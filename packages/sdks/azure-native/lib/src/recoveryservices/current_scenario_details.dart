@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CurrentScenarioDetails {
   /// ARM Id of the job being executed.
   final pulumi.Input<String>? jobId;
+
   /// Scenario name.
   final pulumi.Input<String>? scenarioName;
+
   /// Start time of the workflow.
   final pulumi.Input<String>? startTime;
 
@@ -15,11 +17,7 @@ class CurrentScenarioDetails {
   /// [jobId] ARM Id of the job being executed.
   /// [scenarioName] Scenario name.
   /// [startTime] Start time of the workflow.
-  CurrentScenarioDetails({
-    this.jobId,
-    this.scenarioName,
-    this.startTime,
-  });
+  CurrentScenarioDetails({this.jobId, this.scenarioName, this.startTime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class CurrentScenarioDetails {
 
   factory CurrentScenarioDetails.fromMap(Map<String, dynamic> map) {
     return CurrentScenarioDetails(
-      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
-      scenarioName: map['scenarioName'] == null ? null : (map['scenarioName']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      jobId: (() {
+        final guardedValue = map['jobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scenarioName: (() {
+        final guardedValue = map['scenarioName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

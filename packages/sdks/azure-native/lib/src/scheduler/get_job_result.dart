@@ -6,12 +6,16 @@ import 'job_properties_response.dart';
 class GetJobResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets the job resource identifier.
   final String id;
+
   /// Gets the job resource name.
   final String name;
+
   /// Gets or sets the job properties.
   final JobPropertiesResponse properties;
+
   /// Gets the job resource type.
   final String type;
 
@@ -44,9 +48,10 @@ class GetJobResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: JobPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: JobPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

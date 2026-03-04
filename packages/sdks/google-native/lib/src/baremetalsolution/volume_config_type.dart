@@ -4,16 +4,15 @@ enum VolumeConfigType {
   flash("FLASH"),
   disk("DISK");
 
-  const VolumeConfigType(this.value);
-  final String value;
+  const VolumeConfigType(this.wireValue);
+  final String wireValue;
 
   static VolumeConfigType fromValue(String value) {
     for (final item in VolumeConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeConfigType value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceClaimSchedulingStatus {
   /// Name matches the pod.spec.resourceClaims[*].Name field.
   final pulumi.Input<String>? name;
+
   /// UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.
   ///
   /// The size of this field is limited to 128, the same as for PodSchedulingSpec.PotentialNodes. This may get increased in the future, but not reduced.
@@ -14,10 +15,7 @@ class ResourceClaimSchedulingStatus {
   /// Creates a new [ResourceClaimSchedulingStatus].
   /// [name] Name matches the pod.spec.resourceClaims[*].Name field.
   /// [unsuitableNodes] UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.
-  ResourceClaimSchedulingStatus({
-    this.name,
-    this.unsuitableNodes,
-  });
+  ResourceClaimSchedulingStatus({this.name, this.unsuitableNodes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +26,16 @@ class ResourceClaimSchedulingStatus {
 
   factory ResourceClaimSchedulingStatus.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSchedulingStatus(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      unsuitableNodes: map['unsuitableNodes'] == null ? null : ((map['unsuitableNodes']! as List).cast<String>()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      unsuitableNodes: (() {
+        final guardedValue = map['unsuitableNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

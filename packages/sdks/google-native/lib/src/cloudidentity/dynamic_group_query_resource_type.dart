@@ -3,16 +3,15 @@ enum DynamicGroupQueryResourceType {
   resourceTypeUnspecified("RESOURCE_TYPE_UNSPECIFIED"),
   user("USER");
 
-  const DynamicGroupQueryResourceType(this.value);
-  final String value;
+  const DynamicGroupQueryResourceType(this.wireValue);
+  final String wireValue;
 
   static DynamicGroupQueryResourceType fromValue(String value) {
     for (final item in DynamicGroupQueryResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicGroupQueryResourceType value: $value');
   }
 }
-

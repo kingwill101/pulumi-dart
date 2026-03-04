@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched {
   /// Defines the unit of time that the lifecycle policy uses to calculate elapsed time since the last instance launched from the AMI. For example: days, weeks, months, or years. Valid values: `DAYS`, `WEEKS`, `MONTHS` or `YEARS`.
   final pulumi.Input<String> unit;
+
   /// The integer number of units for the time period. For example 6 (months).
   final pulumi.Input<int> value;
 
@@ -17,17 +18,15 @@ class LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
-  factory LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched(
-      unit: (map['unit'] as String).input(),
-      value: (map['value'] as int).input(),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

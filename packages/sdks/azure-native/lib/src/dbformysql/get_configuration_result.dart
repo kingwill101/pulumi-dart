@@ -6,34 +6,49 @@ import 'system_data_response.dart';
 class GetConfigurationResult {
   /// Allowed values of the configuration.
   final String allowedValues;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Current value of the configuration.
   final String? currentValue;
+
   /// Data type of the configuration.
   final String dataType;
+
   /// Default value of the configuration.
   final String defaultValue;
+
   /// Description of the configuration.
   final String description;
+
   /// The link used to get the document from community or Azure site.
   final String documentationLink;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// If is the configuration pending restart or not.
   final String isConfigPendingRestart;
+
   /// If is the configuration dynamic.
   final String isDynamicConfig;
+
   /// If is the configuration read only.
   final String isReadOnly;
+
   /// The name of the resource
   final String name;
+
   /// Source of the configuration.
   final String? source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Value of the configuration.
   final String? value;
 
@@ -98,7 +113,11 @@ class GetConfigurationResult {
     return GetConfigurationResult(
       allowedValues: map['allowedValues'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      currentValue: map['currentValue'] == null ? null : map['currentValue']! as String,
+      currentValue: (() {
+        final guardedValue = map['currentValue'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       dataType: map['dataType'] as String,
       defaultValue: map['defaultValue'] as String,
       description: map['description'] as String,
@@ -108,11 +127,20 @@ class GetConfigurationResult {
       isDynamicConfig: map['isDynamicConfig'] as String,
       isReadOnly: map['isReadOnly'] as String,
       name: map['name'] as String,
-      source: map['source'] == null ? null : map['source']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value']! as String,
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

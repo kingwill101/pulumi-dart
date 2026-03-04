@@ -4,16 +4,15 @@ enum TrafficType {
   aLL("ALL"),
   rEJECT("REJECT");
 
-  const TrafficType(this.value);
-  final String value;
+  const TrafficType(this.wireValue);
+  final String wireValue;
 
   static TrafficType fromValue(String value) {
     for (final item in TrafficType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrafficType value: $value');
   }
 }
-

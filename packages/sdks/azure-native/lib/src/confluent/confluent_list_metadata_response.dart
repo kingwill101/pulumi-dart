@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfluentListMetadataResponse {
   /// First page of the list
   final pulumi.Input<String>? first;
+
   /// Last page of the list
   final pulumi.Input<String>? last;
+
   /// Next page of the list
   final pulumi.Input<String>? next;
+
   /// Previous page of the list
   final pulumi.Input<String>? prev;
+
   /// Total size of the list
   final pulumi.Input<int>? totalSize;
 
@@ -41,12 +45,31 @@ class ConfluentListMetadataResponse {
 
   factory ConfluentListMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ConfluentListMetadataResponse(
-      first: map['first'] == null ? null : (map['first']! as String).input(),
-      last: map['last'] == null ? null : (map['last']! as String).input(),
-      next: map['next'] == null ? null : (map['next']! as String).input(),
-      prev: map['prev'] == null ? null : (map['prev']! as String).input(),
-      totalSize: map['totalSize'] == null ? null : (map['totalSize']! as int).input(),
+      first: (() {
+        final guardedValue = map['first'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      last: (() {
+        final guardedValue = map['last'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      next: (() {
+        final guardedValue = map['next'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prev: (() {
+        final guardedValue = map['prev'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalSize: (() {
+        final guardedValue = map['totalSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

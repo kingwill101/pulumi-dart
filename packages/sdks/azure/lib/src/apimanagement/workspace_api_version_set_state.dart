@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceApiVersionSetState {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementWorkspaceId;
+
   /// Specifies the description of the API Management Workspace API Version Set.
   final pulumi.Input<String>? description;
+
   /// Specifies the display name of the API Management Workspace API Version Set.
   final pulumi.Input<String>? displayName;
+
   /// Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the header to read from inbound requests to determine the API version.
   final pulumi.Input<String>? versionHeaderName;
+
   /// Specifies the name of the query string parameter to read from inbound requests to determine the API version.
   final pulumi.Input<String>? versionQueryName;
+
   /// Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   final pulumi.Input<String>? versioningScheme;
 
@@ -51,14 +57,41 @@ class WorkspaceApiVersionSetState {
 
   factory WorkspaceApiVersionSetState.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiVersionSetState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName']! as String).input(),
-      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName']! as String).input(),
-      versioningScheme: map['versioningScheme'] == null ? null : (map['versioningScheme']! as String).input(),
+      apiManagementWorkspaceId: (() {
+        final guardedValue = map['apiManagementWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionHeaderName: (() {
+        final guardedValue = map['versionHeaderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionQueryName: (() {
+        final guardedValue = map['versionQueryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versioningScheme: (() {
+        final guardedValue = map['versioningScheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

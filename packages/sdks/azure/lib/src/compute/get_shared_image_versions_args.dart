@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImageVersionsArgs {
   /// The name of the Shared Image in which the Shared Image exists.
   final pulumi.Input<String> galleryName;
+
   /// The name of the Shared Image in which this Version exists.
   final pulumi.Input<String> imageName;
+
   /// The name of the Resource Group in which the Shared Image Gallery exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags to filter the list of images against.
   final pulumi.Input<Map<String, String>>? tagsFilter;
 
@@ -39,11 +42,18 @@ class GetSharedImageVersionsArgs {
 
   factory GetSharedImageVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsArgs(
-      galleryName: (map['galleryName'] as String).input(),
-      imageName: (map['imageName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter']! as Map).cast<String, String>()).input(),
+      galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tagsFilter: (() {
+        final guardedValue = map['tagsFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
 
   /// Creates a new [GoogleCloudApigeeV1AdvancedApiOpsConfigResponse].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
-  GoogleCloudApigeeV1AdvancedApiOpsConfigResponse({
-    required this.enabled,
-  });
+  GoogleCloudApigeeV1AdvancedApiOpsConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1AdvancedApiOpsConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

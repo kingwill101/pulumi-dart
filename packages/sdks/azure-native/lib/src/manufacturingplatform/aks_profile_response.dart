@@ -9,20 +9,13 @@ class AksProfileResponse {
 
   /// Creates a new [AksProfileResponse].
   /// [id] Resource Id of AKS Resource
-  AksProfileResponse({
-    required this.id,
-  });
+  AksProfileResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory AksProfileResponse.fromMap(Map<String, dynamic> map) {
-    return AksProfileResponse(
-      id: (map['id'] as String).input(),
-    );
+    return AksProfileResponse(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

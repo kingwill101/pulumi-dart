@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInventoryItemArgs {
   /// Name of the inventoryItem.
   final pulumi.Input<String> inventoryItemName;
+
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the vCenter.
   final pulumi.Input<String> vcenterName;
 
@@ -34,10 +36,13 @@ class GetInventoryItemArgs {
 
   factory GetInventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return GetInventoryItemArgs(
-      inventoryItemName: (map['inventoryItemName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vcenterName: (map['vcenterName'] as String).input(),
+      inventoryItemName: pulumi.Input.fromValue(
+        map['inventoryItemName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vcenterName: pulumi.Input.fromValue(map['vcenterName'] as String),
     );
   }
 }
-

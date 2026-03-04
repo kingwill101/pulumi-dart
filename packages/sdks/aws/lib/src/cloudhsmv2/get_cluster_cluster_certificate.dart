@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterClusterCertificate {
   /// The HSM hardware certificate issued (signed) by AWS CloudHSM.
   final pulumi.Input<String> awsHardwareCertificate;
+
   /// The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
   final pulumi.Input<String> clusterCertificate;
+
   /// The certificate signing request (CSR). Available only in UNINITIALIZED state.
   final pulumi.Input<String> clusterCsr;
+
   /// The HSM certificate issued (signed) by the HSM hardware.
   final pulumi.Input<String> hsmCertificate;
+
   /// The HSM hardware certificate issued (signed) by the hardware manufacturer.
   /// The number of available cluster certificates may vary depending on state of the cluster.
   final pulumi.Input<String> manufacturerHardwareCertificate;
@@ -41,12 +45,17 @@ class GetClusterClusterCertificate {
 
   factory GetClusterClusterCertificate.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterCertificate(
-      awsHardwareCertificate: (map['awsHardwareCertificate'] as String).input(),
-      clusterCertificate: (map['clusterCertificate'] as String).input(),
-      clusterCsr: (map['clusterCsr'] as String).input(),
-      hsmCertificate: (map['hsmCertificate'] as String).input(),
-      manufacturerHardwareCertificate: (map['manufacturerHardwareCertificate'] as String).input(),
+      awsHardwareCertificate: pulumi.Input.fromValue(
+        map['awsHardwareCertificate'] as String,
+      ),
+      clusterCertificate: pulumi.Input.fromValue(
+        map['clusterCertificate'] as String,
+      ),
+      clusterCsr: pulumi.Input.fromValue(map['clusterCsr'] as String),
+      hsmCertificate: pulumi.Input.fromValue(map['hsmCertificate'] as String),
+      manufacturerHardwareCertificate: pulumi.Input.fromValue(
+        map['manufacturerHardwareCertificate'] as String,
+      ),
     );
   }
 }
-

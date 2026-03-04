@@ -4,29 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateIamInstanceProfile {
   final pulumi.Input<String> arn;
+
   /// Name of the launch template.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetLaunchTemplateIamInstanceProfile].
   /// [arn] Required.
   /// [name] Name of the launch template.
-  GetLaunchTemplateIamInstanceProfile({
-    required this.arn,
-    required this.name,
-  });
+  GetLaunchTemplateIamInstanceProfile({required this.arn, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'name': name,
-    };
+    return <String, dynamic>{'arn': arn, 'name': name};
   }
 
-  factory GetLaunchTemplateIamInstanceProfile.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateIamInstanceProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateIamInstanceProfile(
-      arn: (map['arn'] as String).input(),
-      name: (map['name'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

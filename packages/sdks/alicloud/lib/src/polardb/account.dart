@@ -8,7 +8,7 @@ import 'account_state.dart';
 ///
 /// For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 ///
-/// > **NOTE:** Available since v1.67.0.
+/// &gt; **NOTE:** Available since v1.67.0.
 ///
 /// ## Example Usage
 ///
@@ -313,31 +313,40 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The description of the database account.
   late final pulumi.Output<String?> accountDescription;
+
   /// The lock status of the account. Valid values:
   /// - `UnLock`: The account is not locked.
   /// - `Lock`: The account is locked.
   late final pulumi.Output<String> accountLockState;
+
   /// The account name. Must meet the following requirements:
   /// - Start with a lowercase letter and end with a letter or number.
   /// - Consists of lowercase letters, numbers, or underscores.
   /// - The length is 2 to 16 characters.
   /// - You cannot use some reserved usernames, such as root and admin.
   late final pulumi.Output<String> accountName;
+
   /// The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
   /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
   /// - Be 8 to 32 characters in length.
   /// - Special characters include !@#$%^&*()_+-=.
   late final pulumi.Output<String?> accountPassword;
+
   /// The time when the password for the database account expires.
   late final pulumi.Output<String> accountPasswordValidTime;
+
   /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
   late final pulumi.Output<String> accountType;
+
   /// The cluster ID.
   late final pulumi.Output<String> dbClusterId;
+
   /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
+
   /// (Available since v1.265.0) The status of the database account.
   late final pulumi.Output<String> status;
 
@@ -350,21 +359,25 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountLockState = registerOutput<String>('accountLockState');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.accountPasswordValidTime = registerOutput<String>('accountPasswordValidTime');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
-    this.status = registerOutput<String>('status');
+         'alicloud:polardb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountLockState = registerOutput<String>('accountLockState');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    accountPasswordValidTime = registerOutput<String>(
+      'accountPasswordValidTime',
+    );
+    accountType = registerOutput<String>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -385,20 +398,24 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountLockState = registerOutput<String>('accountLockState');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.accountPasswordValidTime = registerOutput<String>('accountPasswordValidTime');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
-    this.status = registerOutput<String>('status');
+         'alicloud:polardb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountLockState = registerOutput<String>('accountLockState');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    accountPasswordValidTime = registerOutput<String>(
+      'accountPasswordValidTime',
+    );
+    accountType = registerOutput<String>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
+    status = registerOutput<String>('status');
   }
 }

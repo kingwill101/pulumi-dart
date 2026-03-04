@@ -1,5 +1,3 @@
-library module_awsx;
-
 export 'awsx/bucket.dart';
 export 'awsx/default_bucket.dart';
 export 'awsx/default_log_group.dart';

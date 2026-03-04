@@ -10,17 +10,26 @@ import 'public_delegated_prefix_public_delegated_sub_prefix_compute_v1.dart';
 class GlobalPublicDelegatedPrefixComputeV1Args {
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
+
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
   final pulumi.Input<String>? ipCidrRange;
+
   /// If true, the prefix will be live migrated.
   final pulumi.Input<bool>? isLiveMigration;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   final pulumi.Input<String>? parentPrefix;
   final pulumi.Input<String>? project;
+
   /// The list of sub public delegated prefixes that exist for this public delegated prefix.
-  final pulumi.Input<List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>>? publicDelegatedSubPrefixs;
+  final pulumi.Input<
+    List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>
+  >?
+  publicDelegatedSubPrefixs;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -52,22 +61,76 @@ class GlobalPublicDelegatedPrefixComputeV1Args {
       'name': ?name,
       'parentPrefix': ?parentPrefix,
       'project': ?project,
-      'publicDelegatedSubPrefixs': ?pulumi.Input.mapOptionalInputValue<List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>, List<Map<String, dynamic>>>(publicDelegatedSubPrefixs, (value) => pulumi.Input.encodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicDelegatedSubPrefixs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>,
+            List<Map<String, dynamic>>
+          >(
+            publicDelegatedSubPrefixs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'requestId': ?requestId,
     };
   }
 
-  factory GlobalPublicDelegatedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
+  factory GlobalPublicDelegatedPrefixComputeV1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GlobalPublicDelegatedPrefixComputeV1Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipCidrRange: (() {
+        final guardedValue = map['ipCidrRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isLiveMigration: (() {
+        final guardedValue = map['isLiveMigration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentPrefix: (() {
+        final guardedValue = map['parentPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicDelegatedSubPrefixs: (() {
+        final guardedValue = map['publicDelegatedSubPrefixs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1
+          >(
+            guardedValue,
+            (value) =>
+                PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

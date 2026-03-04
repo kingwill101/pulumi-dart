@@ -5,9 +5,14 @@ import 'firewall_policy_firewall_policy_stateful_engine_options_flow_timeouts.da
 
 class FirewallPolicyFirewallPolicyStatefulEngineOptions {
   /// Amount of time that can pass without any traffic sent through the firewall before the firewall determines that the connection is idle.
-  final pulumi.Input<FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts>? flowTimeouts;
+  final pulumi.Input<
+    FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts
+  >?
+  flowTimeouts;
+
   /// Indicates how to manage the order of stateful rule evaluation for the policy. Default value: `DEFAULT_ACTION_ORDER`. Valid values: `DEFAULT_ACTION_ORDER`, `STRICT_ORDER`.
   final pulumi.Input<String>? ruleOrder;
+
   /// Describes how to treat traffic which has broken midstream. Default value: `DROP`. Valid values: `DROP`, `CONTINUE`, `REJECT`.
   final pulumi.Input<String>? streamExceptionPolicy;
 
@@ -23,18 +28,39 @@ class FirewallPolicyFirewallPolicyStatefulEngineOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'flowTimeouts': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts, Map<String, dynamic>>(flowTimeouts, (value) => value.toMap()),
+      'flowTimeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts,
+            Map<String, dynamic>
+          >(flowTimeouts, (value) => value.toMap()),
       'ruleOrder': ?ruleOrder,
       'streamExceptionPolicy': ?streamExceptionPolicy,
     };
   }
 
-  factory FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyFirewallPolicyStatefulEngineOptions(
-      flowTimeouts: map['flowTimeouts'] == null ? null : ((FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap((map['flowTimeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      ruleOrder: map['ruleOrder'] == null ? null : ((map['ruleOrder'] as String).input()).input(),
-      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : ((map['streamExceptionPolicy'] as String).input()).input(),
+      flowTimeouts: (() {
+        final guardedValue = map['flowTimeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ruleOrder: (() {
+        final guardedValue = map['ruleOrder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamExceptionPolicy: (() {
+        final guardedValue = map['streamExceptionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

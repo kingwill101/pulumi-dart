@@ -9,22 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// The name of the NetApp account in which the NetApp Policy should be created under. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
+
   /// Provides the number of daily backups to keep, defaults to `2` which is the minimum, maximum is 1019.
   final pulumi.Input<int>? dailyBackupsToKeep;
+
   /// Whether the Backup Policy is enabled. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Provides the number of monthly backups to keep, defaults to `1`. The minimum is `0` and the maximum is `1019`.
   ///
-  /// > **Note:** Currently, the combined (daily + weekly + monthy) retention counts cannot exceed 1019.
+  /// &gt; **Note:** Currently, the combined (daily + weekly + monthy) retention counts cannot exceed 1019.
   final pulumi.Input<int>? monthlyBackupsToKeep;
+
   /// The name of the NetApp Backup Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group where the NetApp Backup Policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Provides the number of weekly backups to keep, defaults to `1`. The minimum is `0` and the maximum is `1019`.
   final pulumi.Input<int>? weeklyBackupsToKeep;
 
@@ -66,16 +74,47 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      accountName: (map['accountName'] as String).input(),
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep']! as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep']! as int).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      dailyBackupsToKeep: (() {
+        final guardedValue = map['dailyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monthlyBackupsToKeep: (() {
+        final guardedValue = map['monthlyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      weeklyBackupsToKeep: (() {
+        final guardedValue = map['weeklyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

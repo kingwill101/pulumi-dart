@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueuesQueue {
   /// The attributes for the Queue.
   final pulumi.Input<Map<String, String>> attributes;
+
   /// Specifies whether the Auto Delete attribute is configured.
   final pulumi.Input<bool> autoDeleteState;
+
   /// CreateTime.
   final pulumi.Input<String> createTime;
+
   /// Specifies whether the queue is an exclusive queue.
   final pulumi.Input<bool> exclusiveState;
+
   /// The ID of the Queue. Its value is same as Queue Name.
   final pulumi.Input<String> id;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The last consume time.
   final pulumi.Input<String> lastConsumeTime;
+
   /// The queue name.
   final pulumi.Input<String> queueName;
+
   /// The name of the virtual host.
   final pulumi.Input<String> virtualHostName;
 
@@ -60,16 +68,17 @@ class GetQueuesQueue {
 
   factory GetQueuesQueue.fromMap(Map<String, dynamic> map) {
     return GetQueuesQueue(
-      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
-      autoDeleteState: (map['autoDeleteState'] as bool).input(),
-      createTime: (map['createTime'] as String).input(),
-      exclusiveState: (map['exclusiveState'] as bool).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      lastConsumeTime: (map['lastConsumeTime'] as String).input(),
-      queueName: (map['queueName'] as String).input(),
-      virtualHostName: (map['virtualHostName'] as String).input(),
+      attributes: pulumi.Input.fromValue(
+        (map['attributes'] as Map).cast<String, String>(),
+      ),
+      autoDeleteState: pulumi.Input.fromValue(map['autoDeleteState'] as bool),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      exclusiveState: pulumi.Input.fromValue(map['exclusiveState'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      lastConsumeTime: pulumi.Input.fromValue(map['lastConsumeTime'] as String),
+      queueName: pulumi.Input.fromValue(map['queueName'] as String),
+      virtualHostName: pulumi.Input.fromValue(map['virtualHostName'] as String),
     );
   }
 }
-

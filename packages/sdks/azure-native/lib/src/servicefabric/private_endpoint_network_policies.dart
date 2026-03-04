@@ -3,16 +3,15 @@ enum PrivateEndpointNetworkPolicies {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const PrivateEndpointNetworkPolicies(this.value);
-  final String value;
+  const PrivateEndpointNetworkPolicies(this.wireValue);
+  final String wireValue;
 
   static PrivateEndpointNetworkPolicies fromValue(String value) {
     for (final item in PrivateEndpointNetworkPolicies.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateEndpointNetworkPolicies value: $value');
   }
 }
-

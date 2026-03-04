@@ -22,11 +22,16 @@ class ClusterLoggingInfoBrokerLogsFirehose {
     };
   }
 
-  factory ClusterLoggingInfoBrokerLogsFirehose.fromMap(Map<String, dynamic> map) {
+  factory ClusterLoggingInfoBrokerLogsFirehose.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterLoggingInfoBrokerLogsFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : ((map['deliveryStream'] as String).input()).input(),
-      enabled: (map['enabled'] as bool).input(),
+      deliveryStream: (() {
+        final guardedValue = map['deliveryStream'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

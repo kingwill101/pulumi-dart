@@ -5,16 +5,15 @@ enum RedirectType {
   temporaryRedirect("TemporaryRedirect"),
   permanentRedirect("PermanentRedirect");
 
-  const RedirectType(this.value);
-  final String value;
+  const RedirectType(this.wireValue);
+  final String wireValue;
 
   static RedirectType fromValue(String value) {
     for (final item in RedirectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RedirectType value: $value');
   }
 }
-

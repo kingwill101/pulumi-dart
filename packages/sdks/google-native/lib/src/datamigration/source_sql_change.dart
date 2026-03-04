@@ -9,20 +9,15 @@ class SourceSqlChange {
 
   /// Creates a new [SourceSqlChange].
   /// [sqlCode] Sql code for source (stored procedure, function, trigger or view)
-  SourceSqlChange({
-    required this.sqlCode,
-  });
+  SourceSqlChange({required this.sqlCode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sqlCode': sqlCode,
-    };
+    return <String, dynamic>{'sqlCode': sqlCode};
   }
 
   factory SourceSqlChange.fromMap(Map<String, dynamic> map) {
     return SourceSqlChange(
-      sqlCode: (map['sqlCode'] as String).input(),
+      sqlCode: pulumi.Input.fromValue(map['sqlCode'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum EdgeMachineJobType {
   provisionOs("ProvisionOs"),
   downloadOs("DownloadOs");
 
-  const EdgeMachineJobType(this.value);
-  final String value;
+  const EdgeMachineJobType(this.wireValue);
+  final String wireValue;
 
   static EdgeMachineJobType fromValue(String value) {
     for (final item in EdgeMachineJobType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EdgeMachineJobType value: $value');
   }
 }
-

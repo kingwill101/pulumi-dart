@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaNextTaskResponse {
   /// Standard filter expression for this task to become an eligible next task.
   final pulumi.Input<String> condition;
+
   /// User-provided description intended to give additional business context about the task.
   final pulumi.Input<String> description;
+
   /// User-provided label that is attached to this edge in the UI.
   final pulumi.Input<String> displayName;
+
   /// ID of the next task.
   final pulumi.Input<String> taskConfigId;
+
   /// Task number of the next task.
   final pulumi.Input<String> taskId;
 
@@ -39,14 +43,15 @@ class GoogleCloudIntegrationsV1alphaNextTaskResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaNextTaskResponse(
-      condition: (map['condition'] as String).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      taskConfigId: (map['taskConfigId'] as String).input(),
-      taskId: (map['taskId'] as String).input(),
+      condition: pulumi.Input.fromValue(map['condition'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      taskConfigId: pulumi.Input.fromValue(map['taskConfigId'] as String),
+      taskId: pulumi.Input.fromValue(map['taskId'] as String),
     );
   }
 }
-

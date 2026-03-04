@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteDatabaseConnectionArgs {
   /// Name of the database connection.
   final pulumi.Input<String> databaseConnectionName;
+
   /// Name of the static site
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetStaticSiteDatabaseConnectionArgs {
     };
   }
 
-  factory GetStaticSiteDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetStaticSiteDatabaseConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStaticSiteDatabaseConnectionArgs(
-      databaseConnectionName: (map['databaseConnectionName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      databaseConnectionName: pulumi.Input.fromValue(
+        map['databaseConnectionName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

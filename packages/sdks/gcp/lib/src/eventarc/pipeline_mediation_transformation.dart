@@ -7,14 +7,14 @@ class PipelineMediationTransformation {
   /// The following CEL extension functions are provided for
   /// use in this CEL expression:
   /// - merge:
-  /// map1.merge(map2) > map3
+  /// map1.merge(map2) &gt; map3
   /// - Merges the passed CEL map with the existing CEL map the
   /// function is applied to.
   /// - If the same key exists in both maps, if the key's value is type
   /// map both maps are merged else the value from the passed map is
   /// used.
   /// - denormalize:
-  /// map.denormalize() > map
+  /// map.denormalize() &gt; map
   /// - Denormalizes a CEL map such that every value of type map or key
   /// in the map is expanded to return a single level map.
   /// - The resulting keys are "." separated indices of the map keys.
@@ -28,7 +28,7 @@ class PipelineMediationTransformation {
   /// "e": [4, 5]
   /// }
   /// .denormalize()
-  /// > {
+  /// &gt; {
   /// "a": 1,
   /// "b.c": 2,
   /// "b.d": 3,
@@ -36,7 +36,7 @@ class PipelineMediationTransformation {
   /// "e.1": 5
   /// }
   /// - setField:
-  /// map.setField(key, value) > message
+  /// map.setField(key, value) &gt; message
   /// - Sets the field of the message with the given key to the
   /// given value.
   /// - If the field is not present it will be added.
@@ -46,24 +46,24 @@ class PipelineMediationTransformation {
   /// - Key must be of type string.
   /// - Value may be any valid type.
   /// - removeFields:
-  /// map.removeFields([key1, key2, ...]) > message
+  /// map.removeFields([key1, key2, ...]) &gt; message
   /// - Removes the fields of the map with the given keys.
   /// - The keys can be a dot separated path to remove a field in a
   /// nested message.
   /// - If a key is not found it will be ignored.
   /// - Keys must be of type string.
   /// - toMap:
-  /// [map1, map2, ...].toMap() > map
+  /// [map1, map2, ...].toMap() &gt; map
   /// - Converts a CEL list of CEL maps to a single CEL map
   /// - toDestinationPayloadFormat():
-  /// message.data.toDestinationPayloadFormat() > string or bytes
+  /// message.data.toDestinationPayloadFormat() &gt; string or bytes
   /// - Converts the message data to the destination payload format
   /// specified in Pipeline.Destination.output_payload_format
   /// - This function is meant to be applied to the message.data field.
   /// - If the destination payload format is not set, the function will
   /// return the message data unchanged.
   /// - toCloudEventJsonWithPayloadFormat:
-  /// message.toCloudEventJsonWithPayloadFormat() > map
+  /// message.toCloudEventJsonWithPayloadFormat() &gt; map
   /// - Converts a message to the corresponding structure of JSON
   /// format for CloudEvents
   /// - This function applies toDestinationPayloadFormat() to the
@@ -83,20 +83,19 @@ class PipelineMediationTransformation {
 
   /// Creates a new [PipelineMediationTransformation].
   /// [transformationTemplate] The CEL expression template to apply to transform messages.
-  PipelineMediationTransformation({
-    this.transformationTemplate,
-  });
+  PipelineMediationTransformation({this.transformationTemplate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'transformationTemplate': ?transformationTemplate,
-    };
+    return <String, dynamic>{'transformationTemplate': ?transformationTemplate};
   }
 
   factory PipelineMediationTransformation.fromMap(Map<String, dynamic> map) {
     return PipelineMediationTransformation(
-      transformationTemplate: map['transformationTemplate'] == null ? null : (map['transformationTemplate']! as String).input(),
+      transformationTemplate: (() {
+        final guardedValue = map['transformationTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

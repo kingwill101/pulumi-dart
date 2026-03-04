@@ -10,20 +10,38 @@ class WebChatChannelProperties {
 
   /// Creates a new [WebChatChannelProperties].
   /// [sites] The list of Web Chat sites
-  WebChatChannelProperties({
-    this.sites,
-  });
+  WebChatChannelProperties({this.sites});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sites': ?pulumi.Input.mapOptionalInputValue<List<WebChatSite>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<WebChatSite, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sites':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebChatSite>,
+            List<Map<String, dynamic>>
+          >(
+            sites,
+            (value) =>
+                pulumi.Input.encodeList<WebChatSite, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory WebChatChannelProperties.fromMap(Map<String, dynamic> map) {
     return WebChatChannelProperties(
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<WebChatSite>(map['sites']!, (value) => WebChatSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sites: (() {
+        final guardedValue = map['sites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WebChatSite>(
+            guardedValue,
+            (value) =>
+                WebChatSite.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

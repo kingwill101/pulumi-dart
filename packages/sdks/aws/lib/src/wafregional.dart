@@ -1,5 +1,3 @@
-library module_wafregional;
-
 export 'wafregional/byte_match_set.dart';
 export 'wafregional/byte_match_set_args.dart';
 export 'wafregional/byte_match_set_byte_match_tuple.dart';

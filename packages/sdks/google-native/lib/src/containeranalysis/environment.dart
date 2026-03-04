@@ -8,20 +8,21 @@ class Environment {
 
   /// Creates a new [Environment].
   /// [customValues] Optional.
-  Environment({
-    this.customValues,
-  });
+  Environment({this.customValues});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'customValues': ?customValues,
-    };
+    return <String, dynamic>{'customValues': ?customValues};
   }
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      customValues: map['customValues'] == null ? null : ((map['customValues']! as Map).cast<String, String>()).input(),
+      customValues: (() {
+        final guardedValue = map['customValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

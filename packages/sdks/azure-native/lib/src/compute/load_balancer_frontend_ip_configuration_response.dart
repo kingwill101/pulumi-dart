@@ -7,8 +7,10 @@ import 'load_balancer_frontend_ip_configuration_properties_response.dart';
 class LoadBalancerFrontendIpConfigurationResponse {
   /// The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
   final pulumi.Input<String> name;
+
   /// Properties of load balancer frontend ip configuration.
-  final pulumi.Input<LoadBalancerFrontendIpConfigurationPropertiesResponse> properties;
+  final pulumi.Input<LoadBalancerFrontendIpConfigurationPropertiesResponse>
+  properties;
 
   /// Creates a new [LoadBalancerFrontendIpConfigurationResponse].
   /// [name] The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
@@ -21,15 +23,24 @@ class LoadBalancerFrontendIpConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': pulumi.Input.mapInputValue<LoadBalancerFrontendIpConfigurationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            LoadBalancerFrontendIpConfigurationPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory LoadBalancerFrontendIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerFrontendIpConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerFrontendIpConfigurationResponse(
-      name: (map['name'] as String).input(),
-      properties: (LoadBalancerFrontendIpConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        LoadBalancerFrontendIpConfigurationPropertiesResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

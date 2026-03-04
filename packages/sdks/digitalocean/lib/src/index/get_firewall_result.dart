@@ -10,24 +10,30 @@ class GetFirewallResult {
   /// A time value given in ISO8601 combined date and time format
   /// that represents when the Firewall was created.
   final String createdAt;
+
   /// The list of the IDs of the Droplets assigned to
   /// the Firewall.
   final List<int> dropletIds;
   final String firewallId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetFirewallInboundRule> inboundRules;
+
   /// The name of the Firewall.
   final String name;
   final List<GetFirewallOutboundRule> outboundRules;
+
   /// A set of object containing the fields, `droplet_id`,
   /// `removing`, and `status`.  It is provided to detail exactly which Droplets
   /// are having their security policies updated.  When empty, all changes
   /// have been successfully applied.
   final List<GetFirewallPendingChange> pendingChanges;
+
   /// A status string indicating the current state of the Firewall.
   /// This can be "waiting", "succeeded", or "failed".
   final String status;
+
   /// The names of the Tags assigned to the Firewall.
   final List<String> tags;
 
@@ -61,10 +67,22 @@ class GetFirewallResult {
       'dropletIds': dropletIds,
       'firewallId': firewallId,
       'id': id,
-      'inboundRules': pulumi.Input.encodeList<GetFirewallInboundRule, Map<String, dynamic>>(inboundRules, (value) => value.toMap()),
+      'inboundRules':
+          pulumi.Input.encodeList<GetFirewallInboundRule, Map<String, dynamic>>(
+            inboundRules,
+            (value) => value.toMap(),
+          ),
       'name': name,
-      'outboundRules': pulumi.Input.encodeList<GetFirewallOutboundRule, Map<String, dynamic>>(outboundRules, (value) => value.toMap()),
-      'pendingChanges': pulumi.Input.encodeList<GetFirewallPendingChange, Map<String, dynamic>>(pendingChanges, (value) => value.toMap()),
+      'outboundRules':
+          pulumi.Input.encodeList<
+            GetFirewallOutboundRule,
+            Map<String, dynamic>
+          >(outboundRules, (value) => value.toMap()),
+      'pendingChanges':
+          pulumi.Input.encodeList<
+            GetFirewallPendingChange,
+            Map<String, dynamic>
+          >(pendingChanges, (value) => value.toMap()),
       'status': status,
       'tags': tags,
     };
@@ -76,13 +94,27 @@ class GetFirewallResult {
       dropletIds: (map['dropletIds'] as List).cast<int>(),
       firewallId: map['firewallId'] as String,
       id: map['id'] as String,
-      inboundRules: pulumi.Input.decodeList<GetFirewallInboundRule>(map['inboundRules'], (value) => GetFirewallInboundRule.fromMap((value as Map).cast<String, dynamic>())),
+      inboundRules: pulumi.Input.decodeList<GetFirewallInboundRule>(
+        map['inboundRules']!,
+        (value) => GetFirewallInboundRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
-      outboundRules: pulumi.Input.decodeList<GetFirewallOutboundRule>(map['outboundRules'], (value) => GetFirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>())),
-      pendingChanges: pulumi.Input.decodeList<GetFirewallPendingChange>(map['pendingChanges'], (value) => GetFirewallPendingChange.fromMap((value as Map).cast<String, dynamic>())),
+      outboundRules: pulumi.Input.decodeList<GetFirewallOutboundRule>(
+        map['outboundRules']!,
+        (value) => GetFirewallOutboundRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      pendingChanges: pulumi.Input.decodeList<GetFirewallPendingChange>(
+        map['pendingChanges']!,
+        (value) => GetFirewallPendingChange.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       status: map['status'] as String,
       tags: (map['tags'] as List).cast<String>(),
     );
   }
 }
-

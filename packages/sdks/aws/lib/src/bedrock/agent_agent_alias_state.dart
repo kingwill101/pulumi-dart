@@ -8,22 +8,31 @@ import 'agent_agent_alias_timeouts.dart';
 class AgentAgentAliasState {
   /// ARN of the alias.
   final pulumi.Input<String>? agentAliasArn;
+
   /// Unique identifier of the alias.
   final pulumi.Input<String>? agentAliasId;
+
   /// Name of the alias.
   final pulumi.Input<String>? agentAliasName;
+
   /// Identifier of the agent to create an alias for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? agentId;
+
   /// Description of the alias.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Details about the routing configuration of the alias. See `routing_configuration` Block for details.
-  final pulumi.Input<List<AgentAgentAliasRoutingConfiguration>>? routingConfigurations;
+  final pulumi.Input<List<AgentAgentAliasRoutingConfiguration>>?
+  routingConfigurations;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AgentAgentAliasTimeouts>? timeouts;
@@ -60,26 +69,95 @@ class AgentAgentAliasState {
       'agentId': ?agentId,
       'description': ?description,
       'region': ?region,
-      'routingConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentAgentAliasRoutingConfiguration>, List<Map<String, dynamic>>>(routingConfigurations, (value) => pulumi.Input.encodeList<AgentAgentAliasRoutingConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routingConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AgentAgentAliasRoutingConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            routingConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AgentAgentAliasRoutingConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentAgentAliasTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentAgentAliasTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AgentAgentAliasState.fromMap(Map<String, dynamic> map) {
     return AgentAgentAliasState(
-      agentAliasArn: map['agentAliasArn'] == null ? null : ((map['agentAliasArn'] as String).input()).input(),
-      agentAliasId: map['agentAliasId'] == null ? null : ((map['agentAliasId'] as String).input()).input(),
-      agentAliasName: map['agentAliasName'] == null ? null : ((map['agentAliasName'] as String).input()).input(),
-      agentId: map['agentId'] == null ? null : ((map['agentId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routingConfigurations: map['routingConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(map['routingConfigurations']!, (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AgentAgentAliasTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      agentAliasArn: (() {
+        final guardedValue = map['agentAliasArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentAliasId: (() {
+        final guardedValue = map['agentAliasId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentAliasName: (() {
+        final guardedValue = map['agentAliasName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentId: (() {
+        final guardedValue = map['agentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingConfigurations: (() {
+        final guardedValue = map['routingConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(
+            guardedValue,
+            (value) => AgentAgentAliasRoutingConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentAgentAliasTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

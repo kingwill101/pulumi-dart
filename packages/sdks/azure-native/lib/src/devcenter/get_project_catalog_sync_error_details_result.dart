@@ -9,8 +9,10 @@ import 'catalog_sync_error_response.dart';
 class GetProjectCatalogSyncErrorDetailsResult {
   /// Catalog items that have conflicting names.
   final List<CatalogConflictErrorResponse> conflicts;
+
   /// Errors that occured during synchronization.
   final List<CatalogSyncErrorResponse> errors;
+
   /// Error information for the overall synchronization operation.
   final CatalogErrorDetailsResponse operationError;
 
@@ -26,18 +28,39 @@ class GetProjectCatalogSyncErrorDetailsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conflicts': pulumi.Input.encodeList<CatalogConflictErrorResponse, Map<String, dynamic>>(conflicts, (value) => value.toMap()),
-      'errors': pulumi.Input.encodeList<CatalogSyncErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'conflicts':
+          pulumi.Input.encodeList<
+            CatalogConflictErrorResponse,
+            Map<String, dynamic>
+          >(conflicts, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            CatalogSyncErrorResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
       'operationError': operationError.toMap(),
     };
   }
 
-  factory GetProjectCatalogSyncErrorDetailsResult.fromMap(Map<String, dynamic> map) {
+  factory GetProjectCatalogSyncErrorDetailsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProjectCatalogSyncErrorDetailsResult(
-      conflicts: pulumi.Input.decodeList<CatalogConflictErrorResponse>(map['conflicts'], (value) => CatalogConflictErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      errors: pulumi.Input.decodeList<CatalogSyncErrorResponse>(map['errors'], (value) => CatalogSyncErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      operationError: CatalogErrorDetailsResponse.fromMap((map['operationError'] as Map).cast<String, dynamic>()),
+      conflicts: pulumi.Input.decodeList<CatalogConflictErrorResponse>(
+        map['conflicts']!,
+        (value) => CatalogConflictErrorResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      errors: pulumi.Input.decodeList<CatalogSyncErrorResponse>(
+        map['errors']!,
+        (value) => CatalogSyncErrorResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      operationError: CatalogErrorDetailsResponse.fromMap(
+        (map['operationError']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

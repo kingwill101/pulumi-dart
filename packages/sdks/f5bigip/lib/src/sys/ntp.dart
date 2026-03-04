@@ -113,8 +113,10 @@ import 'ntp_state.dart';
 class Ntp extends pulumi.CustomResource {
   /// User defined description.
   late final pulumi.Output<String> description;
+
   /// Specifies the time servers that the system uses to update the system time.
   late final pulumi.Output<List<String>> servers;
+
   /// Specifies the time zone that you want to use for the system time.
   late final pulumi.Output<String?> timezone;
 
@@ -122,27 +124,20 @@ class Ntp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ntp]. {@macro pulumi_sys_ntp_ntp_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ntp(
-    String name, {
-    NtpArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:sys/ntp:Ntp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.servers = registerOutput<List<String>>('servers');
-    this.timezone = registerOutput<String?>('timezone');
+  Ntp(String name, {NtpArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:sys/ntp:Ntp',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String>('description');
+    servers = registerOutput<List<String>>('servers');
+    timezone = registerOutput<String?>('timezone');
   }
 
   /// Gets an existing [Ntp] resource's state with the given [name] and [id].
-  static Ntp get(
-    String name,
-    pulumi.Input<String> id, {
-    NtpState? state,
-  }) {
+  static Ntp get(String name, pulumi.Input<String> id, {NtpState? state}) {
     return Ntp._get(
       name,
       state: state?.toMap(),
@@ -155,13 +150,13 @@ class Ntp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/ntp:Ntp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.servers = registerOutput<List<String>>('servers');
-    this.timezone = registerOutput<String?>('timezone');
+         'f5bigip:sys/ntp:Ntp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    servers = registerOutput<List<String>>('servers');
+    timezone = registerOutput<String?>('timezone');
   }
 }

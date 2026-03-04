@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContentTypeArgs {
   /// Content type identifier.
   final pulumi.Input<String>? contentTypeId;
+
   /// Content type description.
   final pulumi.Input<String>? description;
+
   /// Content type identifier
   final pulumi.Input<String>? id;
+
   /// Content type name. Must be 1 to 250 characters long.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Content type schema.
   final pulumi.Input<dynamic>? schema;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Content type version.
   final pulumi.Input<String>? version;
 
@@ -59,15 +66,40 @@ class ContentTypeArgs {
 
   factory ContentTypeArgs.fromMap(Map<String, dynamic> map) {
     return ContentTypeArgs(
-      contentTypeId: map['contentTypeId'] == null ? null : (map['contentTypeId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']!).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      contentTypeId: (() {
+        final guardedValue = map['contentTypeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

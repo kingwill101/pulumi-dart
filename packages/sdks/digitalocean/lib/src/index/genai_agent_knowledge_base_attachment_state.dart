@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenaiAgentKnowledgeBaseAttachmentState {
   /// A unique identifier for an agent.
   final pulumi.Input<String>? agentUuid;
+
   /// A unique identifier for a knowledge base.
   final pulumi.Input<String>? knowledgeBaseUuid;
 
@@ -24,11 +25,20 @@ class GenaiAgentKnowledgeBaseAttachmentState {
     };
   }
 
-  factory GenaiAgentKnowledgeBaseAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory GenaiAgentKnowledgeBaseAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GenaiAgentKnowledgeBaseAttachmentState(
-      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid']! as String).input(),
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
+      agentUuid: (() {
+        final guardedValue = map['agentUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      knowledgeBaseUuid: (() {
+        final guardedValue = map['knowledgeBaseUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

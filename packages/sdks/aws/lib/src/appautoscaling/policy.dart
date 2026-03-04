@@ -1619,52 +1619,71 @@ import 'policy_target_tracking_scaling_policy_configuration.dart';
 class Policy extends pulumi.CustomResource {
   /// List of CloudWatch alarm ARNs associated with the scaling policy.
   late final pulumi.Output<List<String>> alarmArns;
+
   /// ARN assigned by AWS to the scaling policy.
   late final pulumi.Output<String> arn;
+
   /// Name of the policy. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> name;
+
   /// Policy type. Valid values are `StepScaling`, `TargetTrackingScaling`, and `PredictiveScaling`. Defaults to `StepScaling`. Certain services only support only one policy type. For more information see the [Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html), [Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html), and [Predictive Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-predictive-scaling.html) documentation.
   late final pulumi.Output<String?> policyType;
+
   /// Predictive scaling policy configuration, requires `policy_type = "PredictiveScaling"`. See supported fields below.
-  late final pulumi.Output<PolicyPredictiveScalingPolicyConfiguration?> predictiveScalingPolicyConfiguration;
+  late final pulumi.Output<PolicyPredictiveScalingPolicyConfiguration?>
+  predictiveScalingPolicyConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
   late final pulumi.Output<String> resourceId;
+
   /// Scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
   late final pulumi.Output<String> scalableDimension;
+
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
   late final pulumi.Output<String> serviceNamespace;
+
   /// Step scaling policy configuration, requires `policy_type = "StepScaling"` (default). See supported fields below.
-  late final pulumi.Output<PolicyStepScalingPolicyConfiguration?> stepScalingPolicyConfiguration;
+  late final pulumi.Output<PolicyStepScalingPolicyConfiguration?>
+  stepScalingPolicyConfiguration;
+
   /// Target tracking policy configuration, requires `policy_type = "TargetTrackingScaling"`. See supported fields below.
-  late final pulumi.Output<PolicyTargetTrackingScalingPolicyConfiguration?> targetTrackingScalingPolicyConfiguration;
+  late final pulumi.Output<PolicyTargetTrackingScalingPolicyConfiguration?>
+  targetTrackingScalingPolicyConfiguration;
 
   /// Creates a new [Policy].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_appautoscaling_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:appautoscaling/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmArns = registerOutput<List<String>>('alarmArns');
-    this.arn = registerOutput<String>('arn');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:appautoscaling/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    alarmArns = registerOutput<List<String>>('alarmArns');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.predictiveScalingPolicyConfiguration = registerOutput<PolicyPredictiveScalingPolicyConfiguration?>('predictiveScalingPolicyConfiguration');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.scalableDimension = registerOutput<String>('scalableDimension');
-    this.serviceNamespace = registerOutput<String>('serviceNamespace');
-    this.stepScalingPolicyConfiguration = registerOutput<PolicyStepScalingPolicyConfiguration?>('stepScalingPolicyConfiguration');
-    this.targetTrackingScalingPolicyConfiguration = registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>('targetTrackingScalingPolicyConfiguration');
+    policyType = registerOutput<String?>('policyType');
+    predictiveScalingPolicyConfiguration =
+        registerOutput<PolicyPredictiveScalingPolicyConfiguration?>(
+          'predictiveScalingPolicyConfiguration',
+        );
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    scalableDimension = registerOutput<String>('scalableDimension');
+    serviceNamespace = registerOutput<String>('serviceNamespace');
+    stepScalingPolicyConfiguration =
+        registerOutput<PolicyStepScalingPolicyConfiguration?>(
+          'stepScalingPolicyConfiguration',
+        );
+    targetTrackingScalingPolicyConfiguration =
+        registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>(
+          'targetTrackingScalingPolicyConfiguration',
+        );
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -1685,21 +1704,30 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appautoscaling/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmArns = registerOutput<List<String>>('alarmArns');
-    this.arn = registerOutput<String>('arn');
+         'aws:appautoscaling/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmArns = registerOutput<List<String>>('alarmArns');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.predictiveScalingPolicyConfiguration = registerOutput<PolicyPredictiveScalingPolicyConfiguration?>('predictiveScalingPolicyConfiguration');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.scalableDimension = registerOutput<String>('scalableDimension');
-    this.serviceNamespace = registerOutput<String>('serviceNamespace');
-    this.stepScalingPolicyConfiguration = registerOutput<PolicyStepScalingPolicyConfiguration?>('stepScalingPolicyConfiguration');
-    this.targetTrackingScalingPolicyConfiguration = registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>('targetTrackingScalingPolicyConfiguration');
+    policyType = registerOutput<String?>('policyType');
+    predictiveScalingPolicyConfiguration =
+        registerOutput<PolicyPredictiveScalingPolicyConfiguration?>(
+          'predictiveScalingPolicyConfiguration',
+        );
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    scalableDimension = registerOutput<String>('scalableDimension');
+    serviceNamespace = registerOutput<String>('serviceNamespace');
+    stepScalingPolicyConfiguration =
+        registerOutput<PolicyStepScalingPolicyConfiguration?>(
+          'stepScalingPolicyConfiguration',
+        );
+    targetTrackingScalingPolicyConfiguration =
+        registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>(
+          'targetTrackingScalingPolicyConfiguration',
+        );
   }
 }

@@ -6,7 +6,10 @@ import 'vmware_admin_cluster_network_config_ha_control_plane_config_control_plan
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
   /// Static IP addresses for the control plane nodes.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock>? controlPlaneIpBlock;
+  final pulumi.Input<
+    VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock
+  >?
+  controlPlaneIpBlock;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigHaControlPlaneConfig].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
@@ -16,14 +19,27 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controlPlaneIpBlock': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock, Map<String, dynamic>>(controlPlaneIpBlock, (value) => value.toMap()),
+      'controlPlaneIpBlock':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock,
+            Map<String, dynamic>
+          >(controlPlaneIpBlock, (value) => value.toMap()),
     };
   }
 
-  factory VmwareAdminClusterNetworkConfigHaControlPlaneConfig.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterNetworkConfigHaControlPlaneConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfig(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap((map['controlPlaneIpBlock']! as Map).cast<String, dynamic>())).input(),
+      controlPlaneIpBlock: (() {
+        final guardedValue = map['controlPlaneIpBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

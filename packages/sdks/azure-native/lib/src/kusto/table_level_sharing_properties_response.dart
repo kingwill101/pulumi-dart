@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableLevelSharingPropertiesResponse {
   /// List of external tables to exclude from the follower database
   final pulumi.Input<List<String>>? externalTablesToExclude;
+
   /// List of external tables to include in the follower database
   final pulumi.Input<List<String>>? externalTablesToInclude;
+
   /// List of functions to exclude from the follower database
   final pulumi.Input<List<String>>? functionsToExclude;
+
   /// List of functions to include in the follower database
   final pulumi.Input<List<String>>? functionsToInclude;
+
   /// List of materialized views to exclude from the follower database
   final pulumi.Input<List<String>>? materializedViewsToExclude;
+
   /// List of materialized views to include in the follower database
   final pulumi.Input<List<String>>? materializedViewsToInclude;
+
   /// List of tables to exclude from the follower database
   final pulumi.Input<List<String>>? tablesToExclude;
+
   /// List of tables to include in the follower database
   final pulumi.Input<List<String>>? tablesToInclude;
 
@@ -54,17 +61,50 @@ class TableLevelSharingPropertiesResponse {
     };
   }
 
-  factory TableLevelSharingPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory TableLevelSharingPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableLevelSharingPropertiesResponse(
-      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : ((map['externalTablesToExclude']! as List).cast<String>()).input(),
-      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : ((map['externalTablesToInclude']! as List).cast<String>()).input(),
-      functionsToExclude: map['functionsToExclude'] == null ? null : ((map['functionsToExclude']! as List).cast<String>()).input(),
-      functionsToInclude: map['functionsToInclude'] == null ? null : ((map['functionsToInclude']! as List).cast<String>()).input(),
-      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : ((map['materializedViewsToExclude']! as List).cast<String>()).input(),
-      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : ((map['materializedViewsToInclude']! as List).cast<String>()).input(),
-      tablesToExclude: map['tablesToExclude'] == null ? null : ((map['tablesToExclude']! as List).cast<String>()).input(),
-      tablesToInclude: map['tablesToInclude'] == null ? null : ((map['tablesToInclude']! as List).cast<String>()).input(),
+      externalTablesToExclude: (() {
+        final guardedValue = map['externalTablesToExclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      externalTablesToInclude: (() {
+        final guardedValue = map['externalTablesToInclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      functionsToExclude: (() {
+        final guardedValue = map['functionsToExclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      functionsToInclude: (() {
+        final guardedValue = map['functionsToInclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      materializedViewsToExclude: (() {
+        final guardedValue = map['materializedViewsToExclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      materializedViewsToInclude: (() {
+        final guardedValue = map['materializedViewsToInclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tablesToExclude: (() {
+        final guardedValue = map['tablesToExclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tablesToInclude: (() {
+        final guardedValue = map['tablesToInclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

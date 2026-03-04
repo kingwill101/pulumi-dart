@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointInformationResponse {
   /// The endpoint.
   final pulumi.Input<String>? endpoint;
+
   /// The endpoint type.
   final pulumi.Input<String>? endpointType;
+
   /// The schema version.
   final pulumi.Input<String>? schemaVersion;
 
@@ -30,10 +32,21 @@ class EndpointInformationResponse {
 
   factory EndpointInformationResponse.fromMap(Map<String, dynamic> map) {
     return EndpointInformationResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaVersion: (() {
+        final guardedValue = map['schemaVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

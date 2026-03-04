@@ -12,12 +12,16 @@ import 'workflow_access_key_args.dart';
 class WorkflowAccessKey extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the workflow access key name.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the not-after time.
   late final pulumi.Output<String?> notAfter;
+
   /// Gets or sets the not-before time.
   late final pulumi.Output<String?> notBefore;
+
   /// Gets the workflow access key type.
   late final pulumi.Output<String> type;
 
@@ -30,15 +34,15 @@ class WorkflowAccessKey extends pulumi.CustomResource {
     WorkflowAccessKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:WorkflowAccessKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:logic:WorkflowAccessKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.notAfter = registerOutput<String?>('notAfter');
-    this.notBefore = registerOutput<String?>('notBefore');
-    this.type = registerOutput<String>('type');
+    notAfter = registerOutput<String?>('notAfter');
+    notBefore = registerOutput<String?>('notBefore');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_tower_control_args.dart';
-import 'control_tower_control_parameter.dart';
 import 'control_tower_control_state.dart';
 
 /// Allows the application of pre-defined controls to organizational units. For more information on usage, please see the
@@ -95,12 +94,16 @@ import 'control_tower_control_state.dart';
 class ControlTowerControl extends pulumi.CustomResource {
   /// The ARN of the EnabledControl resource.
   late final pulumi.Output<String> arn;
+
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
   late final pulumi.Output<String> controlIdentifier;
+
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
-  late final pulumi.Output<List<ControlTowerControlParameter>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ARN of the organizational unit.
   ///
   /// The following arguments are optional:
@@ -115,16 +118,16 @@ class ControlTowerControl extends pulumi.CustomResource {
     ControlTowerControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:controltower/controlTowerControl:ControlTowerControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.controlIdentifier = registerOutput<String>('controlIdentifier');
-    this.parameters = registerOutput<List<ControlTowerControlParameter>?>('parameters');
-    this.region = registerOutput<String>('region');
-    this.targetIdentifier = registerOutput<String>('targetIdentifier');
+         'aws:controltower/controlTowerControl:ControlTowerControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    controlIdentifier = registerOutput<String>('controlIdentifier');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    region = registerOutput<String>('region');
+    targetIdentifier = registerOutput<String>('targetIdentifier');
   }
 
   /// Gets an existing [ControlTowerControl] resource's state with the given [name] and [id].
@@ -145,15 +148,15 @@ class ControlTowerControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:controltower/controlTowerControl:ControlTowerControl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.controlIdentifier = registerOutput<String>('controlIdentifier');
-    this.parameters = registerOutput<List<ControlTowerControlParameter>?>('parameters');
-    this.region = registerOutput<String>('region');
-    this.targetIdentifier = registerOutput<String>('targetIdentifier');
+         'aws:controltower/controlTowerControl:ControlTowerControl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    controlIdentifier = registerOutput<String>('controlIdentifier');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    region = registerOutput<String>('region');
+    targetIdentifier = registerOutput<String>('targetIdentifier');
   }
 }

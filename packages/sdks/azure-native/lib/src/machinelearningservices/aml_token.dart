@@ -10,20 +10,15 @@ class AmlToken {
 
   /// Creates a new [AmlToken].
   /// [identityType] Enum to determine identity framework.
-  AmlToken({
-    required this.identityType,
-  });
+  AmlToken({required this.identityType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identityType': identityType,
-    };
+    return <String, dynamic>{'identityType': identityType};
   }
 
   factory AmlToken.fromMap(Map<String, dynamic> map) {
     return AmlToken(
-      identityType: (map['identityType'] as String).input(),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
     );
   }
 }
-

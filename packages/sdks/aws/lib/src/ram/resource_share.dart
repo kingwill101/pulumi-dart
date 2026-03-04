@@ -126,16 +126,22 @@ import 'resource_share_state.dart';
 class ResourceShare extends pulumi.CustomResource {
   /// Indicates whether principals outside your organization can be associated with a resource share.
   late final pulumi.Output<bool?> allowExternalPrincipals;
+
   /// The Amazon Resource Name (ARN) of the resource share.
   late final pulumi.Output<String> arn;
+
   /// The name of the resource share.
   late final pulumi.Output<String> name;
+
   /// Specifies the Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
   late final pulumi.Output<List<String>> permissionArns;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -148,18 +154,18 @@ class ResourceShare extends pulumi.CustomResource {
     ResourceShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceShare:ResourceShare',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
-    this.arn = registerOutput<String>('arn');
+         'aws:ram/resourceShare:ResourceShare',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.permissionArns = registerOutput<List<String>>('permissionArns');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    permissionArns = registerOutput<List<String>>('permissionArns');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ResourceShare] resource's state with the given [name] and [id].
@@ -180,17 +186,17 @@ class ResourceShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceShare:ResourceShare',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
-    this.arn = registerOutput<String>('arn');
+         'aws:ram/resourceShare:ResourceShare',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.permissionArns = registerOutput<List<String>>('permissionArns');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    permissionArns = registerOutput<List<String>>('permissionArns');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

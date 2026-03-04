@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// Optional. If set to true, allowed_package_names are not enforced.
   final pulumi.Input<bool>? allowAllPackageNames;
+
   /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
   final pulumi.Input<List<String>>? allowedPackageNames;
+
   /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
   final pulumi.Input<bool>? supportNonGoogleAppStoreDistribution;
 
@@ -25,16 +27,30 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
     return <String, dynamic>{
       'allowAllPackageNames': ?allowAllPackageNames,
       'allowedPackageNames': ?allowedPackageNames,
-      'supportNonGoogleAppStoreDistribution': ?supportNonGoogleAppStoreDistribution,
+      'supportNonGoogleAppStoreDistribution':
+          ?supportNonGoogleAppStoreDistribution,
     };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecaptchaenterpriseV1AndroidKeySettings(
-      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames']! as bool).input(),
-      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames']! as List).cast<String>()).input(),
-      supportNonGoogleAppStoreDistribution: map['supportNonGoogleAppStoreDistribution'] == null ? null : (map['supportNonGoogleAppStoreDistribution']! as bool).input(),
+      allowAllPackageNames: (() {
+        final guardedValue = map['allowAllPackageNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowedPackageNames: (() {
+        final guardedValue = map['allowedPackageNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      supportNonGoogleAppStoreDistribution: (() {
+        final guardedValue = map['supportNonGoogleAppStoreDistribution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -657,31 +657,44 @@ import 'system_data_response.dart';
 class BlobDataSetMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Container that has the file path.
   late final pulumi.Output<String> containerName;
+
   /// The id of the source data set.
   late final pulumi.Output<String> dataSetId;
+
   /// Gets the status of the data set mapping.
   late final pulumi.Output<String> dataSetMappingStatus;
+
   /// File path within the source data set
   late final pulumi.Output<String> filePath;
+
   /// Kind of data set mapping.
   /// Expected value is 'Blob'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// File output type
   late final pulumi.Output<String?> outputType;
+
   /// Provisioning state of the data set mapping.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource group of storage account.
   late final pulumi.Output<String> resourceGroup;
+
   /// Storage account name of the source data set.
   late final pulumi.Output<String> storageAccountName;
+
   /// Subscription id of storage account.
   late final pulumi.Output<String> subscriptionId;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -694,24 +707,24 @@ class BlobDataSetMapping extends pulumi.CustomResource {
     BlobDataSetMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:BlobDataSetMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerName = registerOutput<String>('containerName');
-    this.dataSetId = registerOutput<String>('dataSetId');
-    this.dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
-    this.filePath = registerOutput<String>('filePath');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:BlobDataSetMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerName = registerOutput<String>('containerName');
+    dataSetId = registerOutput<String>('dataSetId');
+    dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
+    filePath = registerOutput<String>('filePath');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.outputType = registerOutput<String?>('outputType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGroup = registerOutput<String>('resourceGroup');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    outputType = registerOutput<String?>('outputType');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

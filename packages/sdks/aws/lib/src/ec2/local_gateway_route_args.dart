@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalGatewayRouteArgs {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
   final pulumi.Input<String> destinationCidrBlock;
+
   /// Identifier of EC2 Local Gateway Route Table.
   final pulumi.Input<String> localGatewayRouteTableId;
+
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
   final pulumi.Input<String> localGatewayVirtualInterfaceGroupId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,18 +35,28 @@ class LocalGatewayRouteArgs {
     return <String, dynamic>{
       'destinationCidrBlock': destinationCidrBlock,
       'localGatewayRouteTableId': localGatewayRouteTableId,
-      'localGatewayVirtualInterfaceGroupId': localGatewayVirtualInterfaceGroupId,
+      'localGatewayVirtualInterfaceGroupId':
+          localGatewayVirtualInterfaceGroupId,
       'region': ?region,
     };
   }
 
   factory LocalGatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteArgs(
-      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      localGatewayRouteTableId: (map['localGatewayRouteTableId'] as String).input(),
-      localGatewayVirtualInterfaceGroupId: (map['localGatewayVirtualInterfaceGroupId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      destinationCidrBlock: pulumi.Input.fromValue(
+        map['destinationCidrBlock'] as String,
+      ),
+      localGatewayRouteTableId: pulumi.Input.fromValue(
+        map['localGatewayRouteTableId'] as String,
+      ),
+      localGatewayVirtualInterfaceGroupId: pulumi.Input.fromValue(
+        map['localGatewayVirtualInterfaceGroupId'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

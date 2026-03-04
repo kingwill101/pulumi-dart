@@ -6,7 +6,9 @@ import 'smart_identity_provider_application_response.dart';
 /// An object to configure an identity provider for use with SMART on FHIR authentication.
 class SmartIdentityProviderConfigurationResponse {
   /// The array of identity provider applications for SMART on FHIR authentication.
-  final pulumi.Input<List<SmartIdentityProviderApplicationResponse>>? applications;
+  final pulumi.Input<List<SmartIdentityProviderApplicationResponse>>?
+  applications;
+
   /// The identity provider token authority also known as the token issuing authority.
   final pulumi.Input<String>? authority;
 
@@ -20,16 +22,43 @@ class SmartIdentityProviderConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications': ?pulumi.Input.mapOptionalInputValue<List<SmartIdentityProviderApplicationResponse>, List<Map<String, dynamic>>>(applications, (value) => pulumi.Input.encodeList<SmartIdentityProviderApplicationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applications':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SmartIdentityProviderApplicationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            applications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SmartIdentityProviderApplicationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'authority': ?authority,
     };
   }
 
-  factory SmartIdentityProviderConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory SmartIdentityProviderConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SmartIdentityProviderConfigurationResponse(
-      applications: map['applications'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderApplicationResponse>(map['applications']!, (value) => SmartIdentityProviderApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      applications: (() {
+        final guardedValue = map['applications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SmartIdentityProviderApplicationResponse>(
+            guardedValue,
+            (value) => SmartIdentityProviderApplicationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

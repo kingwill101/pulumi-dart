@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceSpecResponse {
   /// The instance type that the image version runs on.
   final pulumi.Input<String>? instanceType;
+
   /// The ARN of the SageMaker image that the image version belongs to.
   final pulumi.Input<String>? sageMakerImageArn;
+
   /// The ARN of the image version created on the instance.
   final pulumi.Input<String>? sageMakerImageVersionArn;
 
@@ -31,10 +33,21 @@ class ResourceSpecResponse {
 
   factory ResourceSpecResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSpecResponse(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      sageMakerImageArn: map['sageMakerImageArn'] == null ? null : (map['sageMakerImageArn']! as String).input(),
-      sageMakerImageVersionArn: map['sageMakerImageVersionArn'] == null ? null : (map['sageMakerImageVersionArn']! as String).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sageMakerImageArn: (() {
+        final guardedValue = map['sageMakerImageArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sageMakerImageVersionArn: (() {
+        final guardedValue = map['sageMakerImageVersionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

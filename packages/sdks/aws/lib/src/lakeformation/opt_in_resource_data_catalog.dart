@@ -8,20 +8,19 @@ class OptInResourceDataCatalog {
 
   /// Creates a new [OptInResourceDataCatalog].
   /// [id] Identifier for the catalog resource.
-  OptInResourceDataCatalog({
-    this.id,
-  });
+  OptInResourceDataCatalog({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory OptInResourceDataCatalog.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataCatalog(
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

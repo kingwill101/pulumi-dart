@@ -1,28 +1,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'io_thub_args.dart';
 import 'io_thub_cloud_to_device.dart';
-import 'io_thub_endpoint.dart';
-import 'io_thub_enrichment.dart';
 import 'io_thub_fallback_route.dart';
 import 'io_thub_file_upload.dart';
 import 'io_thub_identity.dart';
-import 'io_thub_network_rule_set.dart';
-import 'io_thub_route.dart';
-import 'io_thub_shared_access_policy.dart';
 import 'io_thub_sku.dart';
 import 'io_thub_state.dart';
 
 /// Manages an IotHub
 ///
-/// > **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
+/// &gt; **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
 ///
-/// > **Note:** Routes can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Route` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** Routes can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Route` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
-/// > **Note:** Enrichments can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Enrichment` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** Enrichments can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Enrichment` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
-/// > **Note:** Fallback route can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** Fallback route can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
-/// > **Note:** File upload can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FileUpload` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** File upload can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FileUpload` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
 /// ## Example Usage
 ///
@@ -774,48 +769,67 @@ import 'io_thub_state.dart';
 /// ```
 class IoTHub extends pulumi.CustomResource {
   late final pulumi.Output<IoTHubCloudToDevice> cloudToDevice;
+
   /// An `endpoint` block as defined below.
-  late final pulumi.Output<List<IoTHubEndpoint>> endpoints;
-  late final pulumi.Output<List<IoTHubEnrichment>> enrichments;
+  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> enrichments;
+
   /// The EventHub compatible endpoint for events data
   late final pulumi.Output<String> eventHubEventsEndpoint;
+
   /// The EventHub namespace for events data
   late final pulumi.Output<String> eventHubEventsNamespace;
+
   /// The EventHub compatible path for events data
   late final pulumi.Output<String> eventHubEventsPath;
+
   /// The EventHub compatible endpoint for operational data
   late final pulumi.Output<String> eventHubOperationsEndpoint;
+
   /// The EventHub compatible path for operational data
   late final pulumi.Output<String> eventHubOperationsPath;
+
   /// The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`. Defaults to `4`.
   late final pulumi.Output<int?> eventHubPartitionCount;
+
   /// The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
   late final pulumi.Output<int?> eventHubRetentionInDays;
+
   /// A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
   ///
-  /// > **Note:** If `fallback_route` isn't explicitly specified, the fallback route wouldn't be enabled by default.
+  /// &gt; **Note:** If `fallback_route` isn't explicitly specified, the fallback route wouldn't be enabled by default.
   late final pulumi.Output<IoTHubFallbackRoute> fallbackRoute;
+
   /// A `file_upload` block as defined below.
   late final pulumi.Output<IoTHubFileUpload?> fileUpload;
+
   /// The hostname of the IotHub Resource.
   late final pulumi.Output<String> hostname;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<IoTHubIdentity?> identity;
+
   /// If false, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
+
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String?> minTlsVersion;
+
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_rule_set` block as defined below.
-  late final pulumi.Output<List<IoTHubNetworkRuleSet>?> networkRuleSets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleSets;
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  late final pulumi.Output<List<IoTHubRoute>> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+
   /// One or more `shared_access_policy` blocks as defined below.
-  late final pulumi.Output<List<IoTHubSharedAccessPolicy>> sharedAccessPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> sharedAccessPolicies;
+
   /// A `sku` block as defined below.
   late final pulumi.Output<IoTHubSku> sku;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -825,42 +839,49 @@ class IoTHub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IoTHub]. {@macro pulumi_iot_io_thub_io_thub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IoTHub(
-    String name, {
-    IoTHubArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:iot/ioTHub:IoTHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
-    this.endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints');
-    this.enrichments = registerOutput<List<IoTHubEnrichment>>('enrichments');
-    this.eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
-    this.eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
-    this.eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
-    this.eventHubOperationsEndpoint = registerOutput<String>('eventHubOperationsEndpoint');
-    this.eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
-    this.eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
-    this.eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    this.fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
-    this.fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
-    this.hostname = registerOutput<String>('hostname');
-    this.identity = registerOutput<IoTHubIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
-    this.minTlsVersion = registerOutput<String?>('minTlsVersion');
+  IoTHub(String name, {IoTHubArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:iot/ioTHub:IoTHub',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
+    eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
+    eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
+    eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
+    eventHubOperationsEndpoint = registerOutput<String>(
+      'eventHubOperationsEndpoint',
+    );
+    eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
+    eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
+    eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
+    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<IoTHubIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkRuleSets = registerOutput<List<IoTHubNetworkRuleSet>?>('networkRuleSets');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routes = registerOutput<List<IoTHubRoute>>('routes');
-    this.sharedAccessPolicies = registerOutput<List<IoTHubSharedAccessPolicy>>('sharedAccessPolicies');
-    this.sku = registerOutput<IoTHubSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>(
+      'networkRuleSets',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'sharedAccessPolicies',
+    );
+    sku = registerOutput<IoTHubSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [IoTHub] resource's state with the given [name] and [id].
@@ -881,36 +902,46 @@ class IoTHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/ioTHub:IoTHub',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
-    this.endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints');
-    this.enrichments = registerOutput<List<IoTHubEnrichment>>('enrichments');
-    this.eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
-    this.eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
-    this.eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
-    this.eventHubOperationsEndpoint = registerOutput<String>('eventHubOperationsEndpoint');
-    this.eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
-    this.eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
-    this.eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    this.fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
-    this.fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
-    this.hostname = registerOutput<String>('hostname');
-    this.identity = registerOutput<IoTHubIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
-    this.minTlsVersion = registerOutput<String?>('minTlsVersion');
+         'azure:iot/ioTHub:IoTHub',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
+    eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
+    eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
+    eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
+    eventHubOperationsEndpoint = registerOutput<String>(
+      'eventHubOperationsEndpoint',
+    );
+    eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
+    eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
+    eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
+    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<IoTHubIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkRuleSets = registerOutput<List<IoTHubNetworkRuleSet>?>('networkRuleSets');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routes = registerOutput<List<IoTHubRoute>>('routes');
-    this.sharedAccessPolicies = registerOutput<List<IoTHubSharedAccessPolicy>>('sharedAccessPolicies');
-    this.sku = registerOutput<IoTHubSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>(
+      'networkRuleSets',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'sharedAccessPolicies',
+    );
+    sku = registerOutput<IoTHubSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

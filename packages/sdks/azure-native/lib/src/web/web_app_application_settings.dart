@@ -152,12 +152,16 @@ import 'web_app_application_settings_args.dart';
 class WebAppApplicationSettings extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Settings.
   late final pulumi.Output<Map<String, String>> properties;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -170,15 +174,15 @@ class WebAppApplicationSettings extends pulumi.CustomResource {
     WebAppApplicationSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppApplicationSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppApplicationSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<Map<String, String>>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<Map<String, String>>('properties');
+    type = registerOutput<String>('type');
   }
 }

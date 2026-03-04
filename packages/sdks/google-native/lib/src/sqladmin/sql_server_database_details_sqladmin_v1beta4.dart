@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerDatabaseDetailsSqladminV1beta4 {
   /// The version of SQL Server with which the database is to be made compatible
   final pulumi.Input<int>? compatibilityLevel;
+
   /// The recovery model of a SQL Server database
   final pulumi.Input<String>? recoveryModel;
 
@@ -24,11 +25,20 @@ class SqlServerDatabaseDetailsSqladminV1beta4 {
     };
   }
 
-  factory SqlServerDatabaseDetailsSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory SqlServerDatabaseDetailsSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerDatabaseDetailsSqladminV1beta4(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
-      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel']! as String).input(),
+      compatibilityLevel: (() {
+        final guardedValue = map['compatibilityLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recoveryModel: (() {
+        final guardedValue = map['recoveryModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

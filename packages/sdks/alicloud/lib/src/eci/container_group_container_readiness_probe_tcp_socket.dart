@@ -7,20 +7,21 @@ class ContainerGroupContainerReadinessProbeTcpSocket {
 
   /// Creates a new [ContainerGroupContainerReadinessProbeTcpSocket].
   /// [port] Optional.
-  ContainerGroupContainerReadinessProbeTcpSocket({
-    this.port,
-  });
+  ContainerGroupContainerReadinessProbeTcpSocket({this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': ?port,
-    };
+    return <String, dynamic>{'port': ?port};
   }
 
-  factory ContainerGroupContainerReadinessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupContainerReadinessProbeTcpSocket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupContainerReadinessProbeTcpSocket(
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

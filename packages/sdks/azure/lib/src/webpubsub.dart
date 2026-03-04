@@ -1,5 +1,3 @@
-library module_webpubsub;
-
 export 'webpubsub/custom_certificate.dart';
 export 'webpubsub/custom_certificate_args.dart';
 export 'webpubsub/custom_certificate_state.dart';

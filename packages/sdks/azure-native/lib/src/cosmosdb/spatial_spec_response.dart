@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpatialSpecResponse {
   /// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
   final pulumi.Input<String>? path;
+
   /// List of path's spatial type
   final pulumi.Input<List<String>>? types;
 
   /// Creates a new [SpatialSpecResponse].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
   /// [types] List of path's spatial type
-  SpatialSpecResponse({
-    this.path,
-    this.types,
-  });
+  SpatialSpecResponse({this.path, this.types});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-      'types': ?types,
-    };
+    return <String, dynamic>{'path': ?path, 'types': ?types};
   }
 
   factory SpatialSpecResponse.fromMap(Map<String, dynamic> map) {
     return SpatialSpecResponse(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      types: (() {
+        final guardedValue = map['types'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

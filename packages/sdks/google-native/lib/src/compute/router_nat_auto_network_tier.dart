@@ -6,16 +6,15 @@ enum RouterNatAutoNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const RouterNatAutoNetworkTier(this.value);
-  final String value;
+  const RouterNatAutoNetworkTier(this.wireValue);
+  final String wireValue;
 
   static RouterNatAutoNetworkTier fromValue(String value) {
     for (final item in RouterNatAutoNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterNatAutoNetworkTier value: $value');
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusMessageResponse {
   /// Service-defined message code.
   final pulumi.Input<String> code;
+
   /// Time in UTC at which the message was created.
   final pulumi.Input<String> createdDateTime;
+
   /// Severity level of message.
   final pulumi.Input<String> level;
+
   /// A human-readable representation of the message code.
   final pulumi.Input<String> message;
 
@@ -36,11 +39,10 @@ class StatusMessageResponse {
 
   factory StatusMessageResponse.fromMap(Map<String, dynamic> map) {
     return StatusMessageResponse(
-      code: (map['code'] as String).input(),
-      createdDateTime: (map['createdDateTime'] as String).input(),
-      level: (map['level'] as String).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      createdDateTime: pulumi.Input.fromValue(map['createdDateTime'] as String),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

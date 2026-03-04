@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyBuiltInPrioritizedExcludeObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String>? description;
+
   /// The excluded value per `description`.
   final pulumi.Input<String>? exclude;
+
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
+
   /// The prioritized value per `description`.
   final pulumi.Input<String>? prioritize;
 
@@ -33,13 +36,30 @@ class AlertRuleAnomalyBuiltInPrioritizedExcludeObservation {
     };
   }
 
-  factory AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleAnomalyBuiltInPrioritizedExcludeObservation(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      exclude: map['exclude'] == null ? null : (map['exclude']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      prioritize: map['prioritize'] == null ? null : (map['prioritize']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exclude: (() {
+        final guardedValue = map['exclude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prioritize: (() {
+        final guardedValue = map['prioritize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

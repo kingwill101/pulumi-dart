@@ -142,25 +142,35 @@ import 'system_data_response.dart';
 class AutoUpgradeProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configures how auto-upgrade will be run.
   late final pulumi.Output<String> channel;
+
   /// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
   /// If set to True: the auto upgrade has no effect - no upgrade will be run on the target managed clusters.
   /// This is a boolean and not an enum because enabled/disabled are all available states of the auto upgrade profile.
   /// By default, this is set to False.
   late final pulumi.Output<bool?> disabled;
+
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The node image upgrade to be applied to the target clusters in auto upgrade.
-  late final pulumi.Output<AutoUpgradeNodeImageSelectionResponse?> nodeImageSelection;
+  late final pulumi.Output<AutoUpgradeNodeImageSelectionResponse?>
+  nodeImageSelection;
+
   /// The provisioning state of the AutoUpgradeProfile resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
   late final pulumi.Output<String?> updateStrategyId;
 
@@ -173,20 +183,22 @@ class AutoUpgradeProfile extends pulumi.CustomResource {
     AutoUpgradeProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:AutoUpgradeProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.channel = registerOutput<String>('channel');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:containerservice:AutoUpgradeProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    channel = registerOutput<String>('channel');
+    disabled = registerOutput<bool?>('disabled');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.nodeImageSelection = registerOutput<AutoUpgradeNodeImageSelectionResponse?>('nodeImageSelection');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updateStrategyId = registerOutput<String?>('updateStrategyId');
+    nodeImageSelection = registerOutput<AutoUpgradeNodeImageSelectionResponse?>(
+      'nodeImageSelection',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updateStrategyId = registerOutput<String?>('updateStrategyId');
   }
 }

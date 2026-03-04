@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerResourcesResponse {
   /// Required CPU in cores, e.g. 0.5
   final pulumi.Input<double>? cpu;
+
   /// Ephemeral Storage, e.g. "1Gi"
   final pulumi.Input<String> ephemeralStorage;
+
   /// Required GPU in cores for GPU based app, e.g. 1.0
   final pulumi.Input<double>? gpu;
+
   /// Required memory, e.g. "250Mb"
   final pulumi.Input<String>? memory;
 
@@ -36,11 +39,24 @@ class ContainerResourcesResponse {
 
   factory ContainerResourcesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResourcesResponse(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      ephemeralStorage: (map['ephemeralStorage'] as String).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu']! as double).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      ephemeralStorage: pulumi.Input.fromValue(
+        map['ephemeralStorage'] as String,
+      ),
+      gpu: (() {
+        final guardedValue = map['gpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

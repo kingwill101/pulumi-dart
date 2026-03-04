@@ -715,18 +715,24 @@ import 'method_response_state.dart';
 class MethodResponse extends pulumi.CustomResource {
   /// The HTTP verb of the method resource (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`).
   late final pulumi.Output<String> httpMethod;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Resource identifier for the method resource.
   late final pulumi.Output<String> resourceId;
+
   /// A map specifying the model resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a Model name as the value.
   late final pulumi.Output<Map<String, String>?> responseModels;
+
   /// A map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a boolean flag indicating whether the method response parameter is required. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name.
   ///
   /// The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in `integration.response.header.{name}`, a static value enclosed within a pair of single quotes (e.g., '`application/json'`), or a JSON expression from the back-end response payload in the form of `integration.response.body.{JSON-expression}`, where `JSON-expression` is a valid JSON expression without the `$` prefix.)
   late final pulumi.Output<Map<String, bool>?> responseParameters;
+
   /// The string identifier of the associated REST API.
   late final pulumi.Output<String> restApi;
+
   /// The method response's status code.
   late final pulumi.Output<String> statusCode;
 
@@ -739,18 +745,20 @@ class MethodResponse extends pulumi.CustomResource {
     MethodResponseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/methodResponse:MethodResponse',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.httpMethod = registerOutput<String>('httpMethod');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.responseModels = registerOutput<Map<String, String>?>('responseModels');
-    this.responseParameters = registerOutput<Map<String, bool>?>('responseParameters');
-    this.restApi = registerOutput<String>('restApi');
-    this.statusCode = registerOutput<String>('statusCode');
+         'aws:apigateway/methodResponse:MethodResponse',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    httpMethod = registerOutput<String>('httpMethod');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    responseParameters = registerOutput<Map<String, bool>?>(
+      'responseParameters',
+    );
+    restApi = registerOutput<String>('restApi');
+    statusCode = registerOutput<String>('statusCode');
   }
 
   /// Gets an existing [MethodResponse] resource's state with the given [name] and [id].
@@ -771,17 +779,19 @@ class MethodResponse extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/methodResponse:MethodResponse',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.httpMethod = registerOutput<String>('httpMethod');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.responseModels = registerOutput<Map<String, String>?>('responseModels');
-    this.responseParameters = registerOutput<Map<String, bool>?>('responseParameters');
-    this.restApi = registerOutput<String>('restApi');
-    this.statusCode = registerOutput<String>('statusCode');
+         'aws:apigateway/methodResponse:MethodResponse',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    httpMethod = registerOutput<String>('httpMethod');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    responseParameters = registerOutput<Map<String, bool>?>(
+      'responseParameters',
+    );
+    restApi = registerOutput<String>('restApi');
+    statusCode = registerOutput<String>('statusCode');
   }
 }

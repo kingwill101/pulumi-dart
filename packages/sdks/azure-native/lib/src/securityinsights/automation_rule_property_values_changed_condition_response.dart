@@ -29,13 +29,30 @@ class AutomationRulePropertyValuesChangedConditionResponse {
     };
   }
 
-  factory AutomationRulePropertyValuesChangedConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory AutomationRulePropertyValuesChangedConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRulePropertyValuesChangedConditionResponse(
-      changeType: map['changeType'] == null ? null : (map['changeType']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : ((map['propertyValues']! as List).cast<String>()).input(),
+      changeType: (() {
+        final guardedValue = map['changeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyName: (() {
+        final guardedValue = map['propertyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyValues: (() {
+        final guardedValue = map['propertyValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

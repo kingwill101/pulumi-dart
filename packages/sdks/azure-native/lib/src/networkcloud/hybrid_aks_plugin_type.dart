@@ -4,16 +4,15 @@ enum HybridAksPluginType {
   valueSRIOV("SRIOV"),
   valueOSDevice("OSDevice");
 
-  const HybridAksPluginType(this.value);
-  final String value;
+  const HybridAksPluginType(this.wireValue);
+  final String wireValue;
 
   static HybridAksPluginType fromValue(String value) {
     for (final item in HybridAksPluginType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HybridAksPluginType value: $value');
   }
 }
-

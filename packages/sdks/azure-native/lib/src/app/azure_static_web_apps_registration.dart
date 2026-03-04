@@ -9,20 +9,19 @@ class AzureStaticWebAppsRegistration {
 
   /// Creates a new [AzureStaticWebAppsRegistration].
   /// [clientId] The Client ID of the app used for login.
-  AzureStaticWebAppsRegistration({
-    this.clientId,
-  });
+  AzureStaticWebAppsRegistration({this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': ?clientId,
-    };
+    return <String, dynamic>{'clientId': ?clientId};
   }
 
   factory AzureStaticWebAppsRegistration.fromMap(Map<String, dynamic> map) {
     return AzureStaticWebAppsRegistration(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

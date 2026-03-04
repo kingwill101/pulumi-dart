@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDedicatedCloudService.
 class GetDedicatedCloudServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
   final String gatewaySubnet;
+
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
   final String id;
+
   /// indicates whether account onboarded or not in a given region
   final String isAccountOnboarded;
+
   /// Azure region
   final String location;
+
   /// {dedicatedCloudServiceName}
   final String name;
+
   /// total nodes purchased
   final int nodes;
+
   /// link to a service management web portal
   final String serviceURL;
+
   /// The list of tags
   final Map<String, String>? tags;
+
   /// {resourceProviderNamespace}/{resourceType}
   final String type;
 
@@ -73,9 +81,12 @@ class GetDedicatedCloudServiceResult {
       name: map['name'] as String,
       nodes: map['nodes'] as int,
       serviceURL: map['serviceURL'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

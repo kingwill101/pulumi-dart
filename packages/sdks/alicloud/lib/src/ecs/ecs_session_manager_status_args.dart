@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsSessionManagerStatusArgs {
   /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   final pulumi.Input<String> sessionManagerStatusName;
+
   /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
   final pulumi.Input<String> status;
 
@@ -29,9 +30,10 @@ class EcsSessionManagerStatusArgs {
 
   factory EcsSessionManagerStatusArgs.fromMap(Map<String, dynamic> map) {
     return EcsSessionManagerStatusArgs(
-      sessionManagerStatusName: (map['sessionManagerStatusName'] as String).input(),
-      status: (map['status'] as String).input(),
+      sessionManagerStatusName: pulumi.Input.fromValue(
+        map['sessionManagerStatusName'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_apig;
-
 export 'apig/environment.dart';
 export 'apig/environment_args.dart';
 export 'apig/environment_state.dart';

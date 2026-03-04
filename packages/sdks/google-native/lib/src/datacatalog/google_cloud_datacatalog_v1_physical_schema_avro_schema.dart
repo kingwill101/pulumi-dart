@@ -9,20 +9,21 @@ class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema].
   /// [text] JSON source of the Avro schema.
-  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema({
-    this.text,
-  });
+  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema({this.text});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': ?text,
-    };
+    return <String, dynamic>{'text': ?text};
   }
 
-  factory GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema(
-      text: map['text'] == null ? null : (map['text']! as String).input(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

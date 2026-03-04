@@ -4,16 +4,15 @@ enum ApplicationLockLevel {
   valueReadOnly("ReadOnly"),
   valueNone("None");
 
-  const ApplicationLockLevel(this.value);
-  final String value;
+  const ApplicationLockLevel(this.wireValue);
+  final String wireValue;
 
   static ApplicationLockLevel fromValue(String value) {
     for (final item in ApplicationLockLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationLockLevel value: $value');
   }
 }
-

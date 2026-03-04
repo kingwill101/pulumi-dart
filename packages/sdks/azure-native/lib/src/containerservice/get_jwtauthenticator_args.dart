@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJWTAuthenticatorArgs {
   /// The name of the JWT authenticator.
   final pulumi.Input<String> jwtAuthenticatorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -34,10 +36,13 @@ class GetJWTAuthenticatorArgs {
 
   factory GetJWTAuthenticatorArgs.fromMap(Map<String, dynamic> map) {
     return GetJWTAuthenticatorArgs(
-      jwtAuthenticatorName: (map['jwtAuthenticatorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      jwtAuthenticatorName: pulumi.Input.fromValue(
+        map['jwtAuthenticatorName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

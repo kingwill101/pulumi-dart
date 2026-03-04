@@ -9,25 +9,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNacosConfigsArgs {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// The name of the application.
   final pulumi.Input<String>? appName;
+
   /// The ID of the data.
   final pulumi.Input<String>? dataId;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// The ID of the group.
   final pulumi.Input<String>? group;
-  /// A list of MSE Engine Configs ids. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+
+  /// A list of MSE Engine Configs ids. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;:&lt;data_id&gt;:&lt;group&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The id of Namespace.
   final pulumi.Input<String>? namespaceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   /// *
   final pulumi.Input<String>? outputFile;
+
   /// The extended request parameters. The JSON format is supported.
   final pulumi.Input<String>? requestPars;
+
   /// The tags of the configuration.
   final pulumi.Input<String>? tags;
 
@@ -37,7 +47,7 @@ class GetNacosConfigsArgs {
   /// [dataId] The ID of the data.
   /// [enableDetails] Default to `false`. Set it to `true` can output more details about resource attributes.
   /// [group] The ID of the group.
-  /// [ids] A list of MSE Engine Configs ids. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+  /// [ids] A list of MSE Engine Configs ids. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;:&lt;data_id&gt;:&lt;group&gt;`.
   /// [instanceId] The ID of the instance.
   /// [namespaceId] The id of Namespace.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
@@ -75,18 +85,57 @@ class GetNacosConfigsArgs {
 
   factory GetNacosConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetNacosConfigsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
-      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
-      dataId: map['dataId'] == null ? null : (map['dataId']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      requestPars: map['requestPars'] == null ? null : (map['requestPars']! as String).input(),
-      tags: map['tags'] == null ? null : (map['tags']! as String).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appName: (() {
+        final guardedValue = map['appName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataId: (() {
+        final guardedValue = map['dataId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestPars: (() {
+        final guardedValue = map['requestPars'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

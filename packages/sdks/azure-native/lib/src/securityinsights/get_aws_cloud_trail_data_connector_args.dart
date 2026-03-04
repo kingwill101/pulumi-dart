@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAwsCloudTrailDataConnectorArgs {
   /// Connector ID
   final pulumi.Input<String> dataConnectorId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,11 @@ class GetAwsCloudTrailDataConnectorArgs {
 
   factory GetAwsCloudTrailDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAwsCloudTrailDataConnectorArgs(
-      dataConnectorId: (map['dataConnectorId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      dataConnectorId: pulumi.Input.fromValue(map['dataConnectorId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

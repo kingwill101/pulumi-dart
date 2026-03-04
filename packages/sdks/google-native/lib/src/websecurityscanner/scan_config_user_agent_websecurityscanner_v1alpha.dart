@@ -5,16 +5,17 @@ enum ScanConfigUserAgentWebsecurityscannerV1alpha {
   chromeAndroid("CHROME_ANDROID"),
   safariIphone("SAFARI_IPHONE");
 
-  const ScanConfigUserAgentWebsecurityscannerV1alpha(this.value);
-  final String value;
+  const ScanConfigUserAgentWebsecurityscannerV1alpha(this.wireValue);
+  final String wireValue;
 
   static ScanConfigUserAgentWebsecurityscannerV1alpha fromValue(String value) {
     for (final item in ScanConfigUserAgentWebsecurityscannerV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigUserAgentWebsecurityscannerV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigUserAgentWebsecurityscannerV1alpha value: $value',
+    );
   }
 }
-

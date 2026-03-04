@@ -8,13 +8,17 @@ import 'firewall_policy_nat_rule_collection_action.dart';
 class FirewallPolicyNatRuleCollection {
   /// The action type of a Nat rule collection.
   final pulumi.Input<FirewallPolicyNatRuleCollectionAction>? action;
+
   /// The name of the rule collection.
   final pulumi.Input<String>? name;
+
   /// Priority of the Firewall Policy Rule Collection resource.
   final pulumi.Input<int>? priority;
+
   /// The type of the rule collection.
   /// Expected value is 'FirewallPolicyNatRuleCollection'.
   final pulumi.Input<String> ruleCollectionType;
+
   /// List of rules included in a rule collection.
   final pulumi.Input<List<ApplicationRule>>? rules;
 
@@ -34,22 +38,64 @@ class FirewallPolicyNatRuleCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyNatRuleCollectionAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'action':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirewallPolicyNatRuleCollectionAction,
+            Map<String, dynamic>
+          >(action, (value) => value.toMap()),
       'name': ?name,
       'priority': ?priority,
       'ruleCollectionType': ruleCollectionType,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<ApplicationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ApplicationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<ApplicationRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory FirewallPolicyNatRuleCollection.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRuleCollection(
-      action: map['action'] == null ? null : (FirewallPolicyNatRuleCollectionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      ruleCollectionType: (map['ruleCollectionType'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ApplicationRule>(map['rules']!, (value) => ApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirewallPolicyNatRuleCollectionAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleCollectionType: pulumi.Input.fromValue(
+        map['ruleCollectionType'] as String,
+      ),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationRule>(
+            guardedValue,
+            (value) =>
+                ApplicationRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

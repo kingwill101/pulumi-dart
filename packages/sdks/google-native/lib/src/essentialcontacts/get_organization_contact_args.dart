@@ -27,9 +27,8 @@ class GetOrganizationContactArgs {
 
   factory GetOrganizationContactArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationContactArgs(
-      contactId: (map['contactId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      contactId: pulumi.Input.fromValue(map['contactId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

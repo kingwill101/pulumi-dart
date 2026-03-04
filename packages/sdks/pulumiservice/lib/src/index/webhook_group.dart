@@ -3,16 +3,15 @@ enum WebhookGroup {
   deployments("deployments"),
   environments("environments");
 
-  const WebhookGroup(this.value);
-  final String value;
+  const WebhookGroup(this.wireValue);
+  final String wireValue;
 
   static WebhookGroup fromValue(String value) {
     for (final item in WebhookGroup.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookGroup value: $value');
   }
 }
-

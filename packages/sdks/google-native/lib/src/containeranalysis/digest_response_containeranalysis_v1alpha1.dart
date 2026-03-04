@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DigestResponseContaineranalysisV1alpha1 {
   /// `SHA1`, `SHA512` etc.
   final pulumi.Input<String> algo;
+
   /// Value of the digest.
   final pulumi.Input<String> digestBytes;
 
@@ -18,17 +19,15 @@ class DigestResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'algo': algo,
-      'digestBytes': digestBytes,
-    };
+    return <String, dynamic>{'algo': algo, 'digestBytes': digestBytes};
   }
 
-  factory DigestResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DigestResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DigestResponseContaineranalysisV1alpha1(
-      algo: (map['algo'] as String).input(),
-      digestBytes: (map['digestBytes'] as String).input(),
+      algo: pulumi.Input.fromValue(map['algo'] as String),
+      digestBytes: pulumi.Input.fromValue(map['digestBytes'] as String),
     );
   }
 }
-

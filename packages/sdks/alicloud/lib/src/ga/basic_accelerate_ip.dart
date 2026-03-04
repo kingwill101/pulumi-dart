@@ -6,7 +6,7 @@ import 'basic_accelerate_ip_state.dart';
 ///
 /// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateip).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -241,10 +241,13 @@ import 'basic_accelerate_ip_state.dart';
 class BasicAccelerateIp extends pulumi.CustomResource {
   /// The address of the Basic Accelerate IP.
   late final pulumi.Output<String> accelerateIpAddress;
+
   /// The ID of the Basic GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The ID of the Basic Ip Set.
   late final pulumi.Output<String> ipSetId;
+
   /// The status of the Basic Accelerate IP instance.
   late final pulumi.Output<String> status;
 
@@ -257,15 +260,15 @@ class BasicAccelerateIp extends pulumi.CustomResource {
     BasicAccelerateIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.ipSetId = registerOutput<String>('ipSetId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    ipSetId = registerOutput<String>('ipSetId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BasicAccelerateIp] resource's state with the given [name] and [id].
@@ -286,14 +289,14 @@ class BasicAccelerateIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.ipSetId = registerOutput<String>('ipSetId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    ipSetId = registerOutput<String>('ipSetId');
+    status = registerOutput<String>('status');
   }
 }

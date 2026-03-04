@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeysSshKey {
   /// Fingerprint of the SSH Key.
   final pulumi.Input<String> fingerprint;
+
   /// ID of the SSH Key.
   final pulumi.Input<int> id;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>> labels;
+
   /// Name of the SSH Key.
   final pulumi.Input<String> name;
+
   /// Public key of the SSH Key pair.
   final pulumi.Input<String> publicKey;
 
@@ -40,12 +44,13 @@ class GetSshKeysSshKey {
 
   factory GetSshKeysSshKey.fromMap(Map<String, dynamic> map) {
     return GetSshKeysSshKey(
-      fingerprint: (map['fingerprint'] as String).input(),
-      id: (map['id'] as int).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
-      publicKey: (map['publicKey'] as String).input(),
+      fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
-

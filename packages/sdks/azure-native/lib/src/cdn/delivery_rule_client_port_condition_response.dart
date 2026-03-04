@@ -8,6 +8,7 @@ class DeliveryRuleClientPortConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'ClientPort'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<ClientPortMatchConditionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleClientPortConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<ClientPortMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            ClientPortMatchConditionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleClientPortConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleClientPortConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleClientPortConditionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (ClientPortMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        ClientPortMatchConditionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

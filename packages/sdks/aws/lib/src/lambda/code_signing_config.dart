@@ -726,21 +726,30 @@ class CodeSigningConfig extends pulumi.CustomResource {
   /// Configuration block of allowed publishers as signing profiles for this code signing configuration. See below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<CodeSigningConfigAllowedPublishers> allowedPublishers;
+  late final pulumi.Output<CodeSigningConfigAllowedPublishers>
+  allowedPublishers;
+
   /// ARN of the code signing configuration.
   late final pulumi.Output<String> arn;
+
   /// Unique identifier for the code signing configuration.
   late final pulumi.Output<String> configId;
+
   /// Descriptive name for this code signing configuration.
   late final pulumi.Output<String?> description;
+
   /// Date and time that the code signing configuration was last modified.
   late final pulumi.Output<String> lastModified;
+
   /// Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
   late final pulumi.Output<CodeSigningConfigPolicies> policies;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -753,20 +762,22 @@ class CodeSigningConfig extends pulumi.CustomResource {
     CodeSigningConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/codeSigningConfig:CodeSigningConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers');
-    this.arn = registerOutput<String>('arn');
-    this.configId = registerOutput<String>('configId');
-    this.description = registerOutput<String?>('description');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.policies = registerOutput<CodeSigningConfigPolicies>('policies');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:lambda/codeSigningConfig:CodeSigningConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>(
+      'allowedPublishers',
+    );
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    description = registerOutput<String?>('description');
+    lastModified = registerOutput<String>('lastModified');
+    policies = registerOutput<CodeSigningConfigPolicies>('policies');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [CodeSigningConfig] resource's state with the given [name] and [id].
@@ -787,19 +798,21 @@ class CodeSigningConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/codeSigningConfig:CodeSigningConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers');
-    this.arn = registerOutput<String>('arn');
-    this.configId = registerOutput<String>('configId');
-    this.description = registerOutput<String?>('description');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.policies = registerOutput<CodeSigningConfigPolicies>('policies');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:lambda/codeSigningConfig:CodeSigningConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>(
+      'allowedPublishers',
+    );
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    description = registerOutput<String?>('description');
+    lastModified = registerOutput<String>('lastModified');
+    policies = registerOutput<CodeSigningConfigPolicies>('policies');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

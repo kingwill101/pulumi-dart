@@ -9,22 +9,31 @@ import 'system_data_response.dart';
 class GetGrafanaResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// ARM id of the grafana resource
   final String id;
+
   /// The managed identity of the grafana resource.
   final ManagedServiceIdentityResponse? identity;
+
   /// The geo-location where the grafana resource lives
   final String? location;
+
   /// Name of the grafana resource.
   final String name;
+
   /// Properties specific to the grafana resource.
   final ManagedGrafanaPropertiesResponse properties;
+
   /// The Sku of the grafana resource.
   final ResourceSkuResponse? sku;
+
   /// The system meta data relating to this grafana resource.
   final SystemDataResponse systemData;
+
   /// The tags for grafana resource.
   final Map<String, String>? tags;
+
   /// The type of the grafana resource.
   final String type;
 
@@ -56,11 +65,11 @@ class GetGrafanaResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -71,15 +80,38 @@ class GetGrafanaResult {
     return GetGrafanaResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: ManagedGrafanaPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : ResourceSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: ManagedGrafanaPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return ResourceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

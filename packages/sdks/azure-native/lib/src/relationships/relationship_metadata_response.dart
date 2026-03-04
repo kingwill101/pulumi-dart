@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipMetadataResponse {
   /// The type of the relationship source resource.
   final pulumi.Input<String> sourceType;
+
   /// The type of the relationship target resource.
   final pulumi.Input<String> targetType;
 
@@ -26,9 +27,8 @@ class RelationshipMetadataResponse {
 
   factory RelationshipMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipMetadataResponse(
-      sourceType: (map['sourceType'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
-

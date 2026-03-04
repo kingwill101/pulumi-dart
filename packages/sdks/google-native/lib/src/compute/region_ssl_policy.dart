@@ -1,40 +1,52 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_ssl_policy_args.dart';
-import 'region_ssl_policy_warnings_item_response.dart';
 import 'server_tls_settings_response.dart';
 
 /// Creates a new policy in the specified project and region using the data included in the request.
 class RegionSslPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
   late final pulumi.Output<List<String>> customFeatures;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String> description;
+
   /// The list of features enabled in the SSL policy.
   late final pulumi.Output<List<String>> enabledFeatures;
+
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
   late final pulumi.Output<String> fingerprint;
+
   /// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
   late final pulumi.Output<String> kind;
+
   /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
   late final pulumi.Output<String> minTlsVersion;
+
   /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
   late final pulumi.Output<String> profile;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> region;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
+
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   late final pulumi.Output<String> selfLinkWithId;
+
   /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   late final pulumi.Output<ServerTlsSettingsResponse> tlsSettings;
+
   /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-  late final pulumi.Output<List<RegionSslPolicyWarningsItemResponse>> warnings;
+  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
 
   /// Creates a new [RegionSslPolicy].
   /// [name] The Pulumi resource name.
@@ -45,26 +57,26 @@ class RegionSslPolicy extends pulumi.CustomResource {
     RegionSslPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:compute/alpha:RegionSslPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customFeatures = registerOutput<List<String>>('customFeatures');
-    this.description = registerOutput<String>('description');
-    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.kind = registerOutput<String>('kind');
-    this.minTlsVersion = registerOutput<String>('minTlsVersion');
+         'google-native:compute/alpha:RegionSslPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>>('customFeatures');
+    description = registerOutput<String>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    minTlsVersion = registerOutput<String>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    this.profile = registerOutput<String>('profile');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.requestId = registerOutput<String?>('requestId');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    this.tlsSettings = registerOutput<ServerTlsSettingsResponse>('tlsSettings');
-    this.warnings = registerOutput<List<RegionSslPolicyWarningsItemResponse>>('warnings');
+    profile = registerOutput<String>('profile');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    tlsSettings = registerOutput<ServerTlsSettingsResponse>('tlsSettings');
+    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
   }
 }

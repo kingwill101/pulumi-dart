@@ -6,16 +6,15 @@ enum OnPremClusterClusterType {
   standalone("STANDALONE"),
   user("USER");
 
-  const OnPremClusterClusterType(this.value);
-  final String value;
+  const OnPremClusterClusterType(this.wireValue);
+  final String wireValue;
 
   static OnPremClusterClusterType fromValue(String value) {
     for (final item in OnPremClusterClusterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OnPremClusterClusterType value: $value');
   }
 }
-

@@ -10,14 +10,19 @@ import 'token_credentials_properties.dart';
 class TokenArgs {
   /// The credentials that can be used for authenticating the token.
   final pulumi.Input<TokenCredentialsProperties>? credentials;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource ID of the scope map to which the token will be associated with.
   final pulumi.Input<String>? scopeMapId;
+
   /// The status of the token example enabled or disabled.
   final pulumi.Input<String>? status;
+
   /// The name of the token.
   final pulumi.Input<String>? tokenName;
 
@@ -39,7 +44,11 @@ class TokenArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials': ?pulumi.Input.mapOptionalInputValue<TokenCredentialsProperties, Map<String, dynamic>>(credentials, (value) => value.toMap()),
+      'credentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            TokenCredentialsProperties,
+            Map<String, dynamic>
+          >(credentials, (value) => value.toMap()),
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
       'scopeMapId': ?scopeMapId,
@@ -50,13 +59,34 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      credentials: map['credentials'] == null ? null : (TokenCredentialsProperties.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tokenName: map['tokenName'] == null ? null : (map['tokenName']! as String).input(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TokenCredentialsProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scopeMapId: (() {
+        final guardedValue = map['scopeMapId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenName: (() {
+        final guardedValue = map['tokenName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

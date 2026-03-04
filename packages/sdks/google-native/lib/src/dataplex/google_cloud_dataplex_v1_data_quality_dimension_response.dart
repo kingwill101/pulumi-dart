@@ -9,20 +9,17 @@ class GoogleCloudDataplexV1DataQualityDimensionResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityDimensionResponse].
   /// [name] The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
-  GoogleCloudDataplexV1DataQualityDimensionResponse({
-    required this.name,
-  });
+  GoogleCloudDataplexV1DataQualityDimensionResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory GoogleCloudDataplexV1DataQualityDimensionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityDimensionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityDimensionResponse(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

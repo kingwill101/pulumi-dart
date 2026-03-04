@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationArgs {
   /// The name of the application group
   final pulumi.Input<String> applicationGroupName;
+
   /// The name of the application within the specified application group
   final pulumi.Input<String> applicationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationGroupName: (map['applicationGroupName'] as String).input(),
-      applicationName: (map['applicationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      applicationGroupName: pulumi.Input.fromValue(
+        map['applicationGroupName'] as String,
+      ),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

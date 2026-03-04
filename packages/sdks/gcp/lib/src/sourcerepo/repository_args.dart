@@ -10,12 +10,15 @@ import 'repository_pubsub_config.dart';
 class RepositoryArgs {
   /// If set to true, skip repository creation if a repository with the same name already exists.
   final pulumi.Input<bool>? createIgnoreAlreadyExists;
+
   /// Resource name of the repository, of the form `{{repo}}`.
   /// The repo name may contain slashes. eg, `name/with/slash`
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// How this repository publishes a change in the repository through Cloud Pub/Sub.
   /// Keyed by the topic names.
   /// Structure is documented below.
@@ -38,17 +41,50 @@ class RepositoryArgs {
       'createIgnoreAlreadyExists': ?createIgnoreAlreadyExists,
       'name': ?name,
       'project': ?project,
-      'pubsubConfigs': ?pulumi.Input.mapOptionalInputValue<List<RepositoryPubsubConfig>, List<Map<String, dynamic>>>(pubsubConfigs, (value) => pulumi.Input.encodeList<RepositoryPubsubConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pubsubConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RepositoryPubsubConfig>,
+            List<Map<String, dynamic>>
+          >(
+            pubsubConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RepositoryPubsubConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs']!, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createIgnoreAlreadyExists: (() {
+        final guardedValue = map['createIgnoreAlreadyExists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubConfigs: (() {
+        final guardedValue = map['pubsubConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RepositoryPubsubConfig>(
+            guardedValue,
+            (value) => RepositoryPubsubConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

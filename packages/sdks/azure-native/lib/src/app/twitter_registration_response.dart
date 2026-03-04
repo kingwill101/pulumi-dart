@@ -8,6 +8,7 @@ class TwitterRegistrationResponse {
   /// This setting is required for enabling Twitter Sign-In.
   /// Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
   final pulumi.Input<String>? consumerKey;
+
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter
   /// application used for sign-in.
   final pulumi.Input<String>? consumerSecretSettingName;
@@ -29,9 +30,16 @@ class TwitterRegistrationResponse {
 
   factory TwitterRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return TwitterRegistrationResponse(
-      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']! as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
+      consumerKey: (() {
+        final guardedValue = map['consumerKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerSecretSettingName: (() {
+        final guardedValue = map['consumerSecretSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

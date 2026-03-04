@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenZfsSnapshotArgs {
   /// The name of the Snapshot. You can use a maximum of 203 alphanumeric characters plus either _ or -  or : or . for the name.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the volume to snapshot. This can be the root volume or a child volume.
   final pulumi.Input<String> volumeId;
 
@@ -39,11 +42,24 @@ class OpenZfsSnapshotArgs {
 
   factory OpenZfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return OpenZfsSnapshotArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      volumeId: (map['volumeId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      volumeId: pulumi.Input.fromValue(map['volumeId'] as String),
     );
   }
 }
-

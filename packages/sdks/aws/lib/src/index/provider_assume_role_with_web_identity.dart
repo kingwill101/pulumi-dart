@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderAssumeRoleWithWebIdentity {
   /// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
   final pulumi.Input<String>? duration;
+
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
   final pulumi.Input<String>? policy;
+
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
   final pulumi.Input<List<String>>? policyArns;
+
   /// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
   final pulumi.Input<String>? roleArn;
+
   /// An identifier for the assumed role session.
   final pulumi.Input<String>? sessionName;
   final pulumi.Input<String>? webIdentityToken;
@@ -48,14 +52,41 @@ class ProviderAssumeRoleWithWebIdentity {
 
   factory ProviderAssumeRoleWithWebIdentity.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRoleWithWebIdentity(
-      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
-      webIdentityToken: map['webIdentityToken'] == null ? null : ((map['webIdentityToken'] as String).input()).input(),
-      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : ((map['webIdentityTokenFile'] as String).input()).input(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyArns: (() {
+        final guardedValue = map['policyArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionName: (() {
+        final guardedValue = map['sessionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webIdentityToken: (() {
+        final guardedValue = map['webIdentityToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webIdentityTokenFile: (() {
+        final guardedValue = map['webIdentityTokenFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

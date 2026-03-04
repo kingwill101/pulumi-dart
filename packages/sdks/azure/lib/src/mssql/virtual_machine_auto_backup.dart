@@ -5,16 +5,22 @@ import 'virtual_machine_auto_backup_manual_schedule.dart';
 
 class VirtualMachineAutoBackup {
   final pulumi.Input<bool>? encryptionEnabled;
+
   /// Encryption password to use. Setting a password will enable encryption.
   final pulumi.Input<String>? encryptionPassword;
+
   /// A `manual_schedule` block as documented below. When this block is present, the schedule type is set to `Manual`. Without this block, the schedule type is set to `Automated`.
   final pulumi.Input<VirtualMachineAutoBackupManualSchedule>? manualSchedule;
+
   /// Retention period of backups, in days. Valid values are from `1` to `30`.
   final pulumi.Input<int> retentionPeriodInDays;
+
   /// Access key for the storage account where backups will be kept.
   final pulumi.Input<String> storageAccountAccessKey;
+
   /// Blob endpoint for the storage account where backups will be kept.
   final pulumi.Input<String> storageBlobEndpoint;
+
   /// Include or exclude system databases from auto backup.
   final pulumi.Input<bool>? systemDatabasesBackupEnabled;
 
@@ -40,7 +46,11 @@ class VirtualMachineAutoBackup {
     return <String, dynamic>{
       'encryptionEnabled': ?encryptionEnabled,
       'encryptionPassword': ?encryptionPassword,
-      'manualSchedule': ?pulumi.Input.mapOptionalInputValue<VirtualMachineAutoBackupManualSchedule, Map<String, dynamic>>(manualSchedule, (value) => value.toMap()),
+      'manualSchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineAutoBackupManualSchedule,
+            Map<String, dynamic>
+          >(manualSchedule, (value) => value.toMap()),
       'retentionPeriodInDays': retentionPeriodInDays,
       'storageAccountAccessKey': storageAccountAccessKey,
       'storageBlobEndpoint': storageBlobEndpoint,
@@ -50,14 +60,39 @@ class VirtualMachineAutoBackup {
 
   factory VirtualMachineAutoBackup.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoBackup(
-      encryptionEnabled: map['encryptionEnabled'] == null ? null : (map['encryptionEnabled']! as bool).input(),
-      encryptionPassword: map['encryptionPassword'] == null ? null : (map['encryptionPassword']! as String).input(),
-      manualSchedule: map['manualSchedule'] == null ? null : (VirtualMachineAutoBackupManualSchedule.fromMap((map['manualSchedule']! as Map).cast<String, dynamic>())).input(),
-      retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
-      storageAccountAccessKey: (map['storageAccountAccessKey'] as String).input(),
-      storageBlobEndpoint: (map['storageBlobEndpoint'] as String).input(),
-      systemDatabasesBackupEnabled: map['systemDatabasesBackupEnabled'] == null ? null : (map['systemDatabasesBackupEnabled']! as bool).input(),
+      encryptionEnabled: (() {
+        final guardedValue = map['encryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionPassword: (() {
+        final guardedValue = map['encryptionPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manualSchedule: (() {
+        final guardedValue = map['manualSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineAutoBackupManualSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      retentionPeriodInDays: pulumi.Input.fromValue(
+        map['retentionPeriodInDays'] as int,
+      ),
+      storageAccountAccessKey: pulumi.Input.fromValue(
+        map['storageAccountAccessKey'] as String,
+      ),
+      storageBlobEndpoint: pulumi.Input.fromValue(
+        map['storageBlobEndpoint'] as String,
+      ),
+      systemDatabasesBackupEnabled: (() {
+        final guardedValue = map['systemDatabasesBackupEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

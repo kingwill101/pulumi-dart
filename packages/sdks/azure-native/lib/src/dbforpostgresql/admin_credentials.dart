@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdminCredentials {
   /// Password for the user of the source server.
   final pulumi.Input<String> sourceServerPassword;
+
   /// Password for the user of the target server.
   final pulumi.Input<String> targetServerPassword;
 
@@ -26,9 +27,12 @@ class AdminCredentials {
 
   factory AdminCredentials.fromMap(Map<String, dynamic> map) {
     return AdminCredentials(
-      sourceServerPassword: (map['sourceServerPassword'] as String).input(),
-      targetServerPassword: (map['targetServerPassword'] as String).input(),
+      sourceServerPassword: pulumi.Input.fromValue(
+        map['sourceServerPassword'] as String,
+      ),
+      targetServerPassword: pulumi.Input.fromValue(
+        map['targetServerPassword'] as String,
+      ),
     );
   }
 }
-

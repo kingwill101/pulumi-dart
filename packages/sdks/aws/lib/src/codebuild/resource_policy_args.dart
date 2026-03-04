@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyArgs {
   /// A JSON-formatted resource policy. For more information, see [Sharing a Projec](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share) and [Sharing a Report Group](https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share).
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the Project or ReportGroup resource you want to associate with a resource policy.
   final pulumi.Input<String> resourceArn;
 
@@ -34,10 +36,13 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }
 }
-

@@ -10,8 +10,10 @@ import 'traffic_source_attachment_traffic_source.dart';
 class TrafficSourceAttachmentArgs {
   /// The name of the Auto Scaling group.
   final pulumi.Input<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The unique identifiers of a traffic sources.
   final pulumi.Input<TrafficSourceAttachmentTrafficSource>? trafficSource;
 
@@ -29,16 +31,33 @@ class TrafficSourceAttachmentArgs {
     return <String, dynamic>{
       'autoscalingGroupName': autoscalingGroupName,
       'region': ?region,
-      'trafficSource': ?pulumi.Input.mapOptionalInputValue<TrafficSourceAttachmentTrafficSource, Map<String, dynamic>>(trafficSource, (value) => value.toMap()),
+      'trafficSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrafficSourceAttachmentTrafficSource,
+            Map<String, dynamic>
+          >(trafficSource, (value) => value.toMap()),
     };
   }
 
   factory TrafficSourceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TrafficSourceAttachmentArgs(
-      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      trafficSource: map['trafficSource'] == null ? null : ((TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource']! as Map).cast<String, dynamic>())).input()).input(),
+      autoscalingGroupName: pulumi.Input.fromValue(
+        map['autoscalingGroupName'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trafficSource: (() {
+        final guardedValue = map['trafficSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TrafficSourceAttachmentTrafficSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

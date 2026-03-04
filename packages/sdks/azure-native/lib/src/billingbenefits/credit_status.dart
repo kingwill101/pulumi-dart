@@ -10,16 +10,15 @@ enum CreditStatus {
   valueExhausted("Exhausted"),
   valueNotStarted("NotStarted");
 
-  const CreditStatus(this.value);
-  final String value;
+  const CreditStatus(this.wireValue);
+  final String wireValue;
 
   static CreditStatus fromValue(String value) {
     for (final item in CreditStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CreditStatus value: $value');
   }
 }
-

@@ -309,14 +309,19 @@ import 'job_schedule_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// User-defined description of the job.
   late final pulumi.Output<String?> description;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Schedule properties of the job.
   late final pulumi.Output<JobScheduleResponse?> schedule;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The job version number.
   late final pulumi.Output<int> version;
 
@@ -324,21 +329,18 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_sql_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:sql:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:sql:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.schedule = registerOutput<JobScheduleResponse?>('schedule');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<int>('version');
+    schedule = registerOutput<JobScheduleResponse?>('schedule');
+    type = registerOutput<String>('type');
+    version = registerOutput<int>('version');
   }
 }

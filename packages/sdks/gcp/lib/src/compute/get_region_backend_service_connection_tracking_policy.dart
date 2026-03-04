@@ -20,8 +20,10 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
   /// unhealthy backends regardless of protocol and session affinity. It is
   /// generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
   final pulumi.Input<String> connectionPersistenceOnUnhealthyBackends;
+
   /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
   final pulumi.Input<bool> enableStrongAffinity;
+
   /// Specifies how long to keep a Connection Tracking entry while there is
   /// no matching traffic (in seconds).
   ///
@@ -29,6 +31,7 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
   ///
   /// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
   final pulumi.Input<int> idleTimeoutSec;
+
   /// Specifies the key used for connection tracking. There are two options:
   /// 'PER_CONNECTION': The Connection Tracking is performed as per the
   /// Connection Key (default Hash Method) for the specific protocol.
@@ -51,20 +54,26 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPersistenceOnUnhealthyBackends': connectionPersistenceOnUnhealthyBackends,
+      'connectionPersistenceOnUnhealthyBackends':
+          connectionPersistenceOnUnhealthyBackends,
       'enableStrongAffinity': enableStrongAffinity,
       'idleTimeoutSec': idleTimeoutSec,
       'trackingMode': trackingMode,
     };
   }
 
-  factory GetRegionBackendServiceConnectionTrackingPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetRegionBackendServiceConnectionTrackingPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionBackendServiceConnectionTrackingPolicy(
-      connectionPersistenceOnUnhealthyBackends: (map['connectionPersistenceOnUnhealthyBackends'] as String).input(),
-      enableStrongAffinity: (map['enableStrongAffinity'] as bool).input(),
-      idleTimeoutSec: (map['idleTimeoutSec'] as int).input(),
-      trackingMode: (map['trackingMode'] as String).input(),
+      connectionPersistenceOnUnhealthyBackends: pulumi.Input.fromValue(
+        map['connectionPersistenceOnUnhealthyBackends'] as String,
+      ),
+      enableStrongAffinity: pulumi.Input.fromValue(
+        map['enableStrongAffinity'] as bool,
+      ),
+      idleTimeoutSec: pulumi.Input.fromValue(map['idleTimeoutSec'] as int),
+      trackingMode: pulumi.Input.fromValue(map['trackingMode'] as String),
     );
   }
 }
-

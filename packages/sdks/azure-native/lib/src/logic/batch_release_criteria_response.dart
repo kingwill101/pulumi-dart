@@ -7,8 +7,10 @@ import 'workflow_trigger_recurrence_response.dart';
 class BatchReleaseCriteriaResponse {
   /// The batch size in bytes.
   final pulumi.Input<int>? batchSize;
+
   /// The message count.
   final pulumi.Input<int>? messageCount;
+
   /// The recurrence.
   final pulumi.Input<WorkflowTriggerRecurrenceResponse>? recurrence;
 
@@ -26,16 +28,35 @@ class BatchReleaseCriteriaResponse {
     return <String, dynamic>{
       'batchSize': ?batchSize,
       'messageCount': ?messageCount,
-      'recurrence': ?pulumi.Input.mapOptionalInputValue<WorkflowTriggerRecurrenceResponse, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
+      'recurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkflowTriggerRecurrenceResponse,
+            Map<String, dynamic>
+          >(recurrence, (value) => value.toMap()),
     };
   }
 
   factory BatchReleaseCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return BatchReleaseCriteriaResponse(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
-      messageCount: map['messageCount'] == null ? null : (map['messageCount']! as int).input(),
-      recurrence: map['recurrence'] == null ? null : (WorkflowTriggerRecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      batchSize: (() {
+        final guardedValue = map['batchSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      messageCount: (() {
+        final guardedValue = map['messageCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recurrence: (() {
+        final guardedValue = map['recurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkflowTriggerRecurrenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -39,12 +39,15 @@ class GetTagArtifactregistryV1beta1Args {
 
   factory GetTagArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTagArtifactregistryV1beta1Args(
-      location: (map['location'] as String).input(),
-      packageId: (map['packageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
-      tagId: (map['tagId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      packageId: pulumi.Input.fromValue(map['packageId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
+      tagId: pulumi.Input.fromValue(map['tagId'] as String),
     );
   }
 }
-

@@ -12,8 +12,10 @@ import 'threat_intelligence_switch_state.dart';
 class ThreatIntelligenceSwitch extends pulumi.CustomResource {
   /// Rule action. Value:
   late final pulumi.Output<String?> action;
+
   /// The threat intelligence classification ID.
   late final pulumi.Output<String> categoryId;
+
   /// Switch status. Value:
   late final pulumi.Output<int?> enableStatus;
 
@@ -26,14 +28,14 @@ class ThreatIntelligenceSwitch extends pulumi.CustomResource {
     ThreatIntelligenceSwitchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.categoryId = registerOutput<String>('categoryId');
-    this.enableStatus = registerOutput<int?>('enableStatus');
+         'alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    categoryId = registerOutput<String>('categoryId');
+    enableStatus = registerOutput<int?>('enableStatus');
   }
 
   /// Gets an existing [ThreatIntelligenceSwitch] resource's state with the given [name] and [id].
@@ -54,13 +56,13 @@ class ThreatIntelligenceSwitch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.categoryId = registerOutput<String>('categoryId');
-    this.enableStatus = registerOutput<int?>('enableStatus');
+         'alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    categoryId = registerOutput<String>('categoryId');
+    enableStatus = registerOutput<int?>('enableStatus');
   }
 }

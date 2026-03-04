@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectLambdaAccessPointPolicyArgs {
   /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
+
   /// The name of the Object Lambda Access Point.
   final pulumi.Input<String>? name;
+
   /// The Object Lambda Access Point resource policy document.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,22 @@ class ObjectLambdaAccessPointPolicyArgs {
 
   factory ObjectLambdaAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointPolicyArgs(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

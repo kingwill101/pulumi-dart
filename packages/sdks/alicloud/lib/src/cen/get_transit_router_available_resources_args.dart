@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterAvailableResourcesArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Specifies whether to query only the zones in which the multicast feature is supported.
   final pulumi.Input<bool>? supportMulticast;
 
@@ -27,11 +28,20 @@ class GetTransitRouterAvailableResourcesArgs {
     };
   }
 
-  factory GetTransitRouterAvailableResourcesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterAvailableResourcesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterAvailableResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast']! as bool).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportMulticast: (() {
+        final guardedValue = map['supportMulticast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -103,22 +103,71 @@ class Output<T> implements Input<T> {
     bool isSecret,
     Set<Resource> resources,
   ) async {
+    return _resolveOutputInternal<U>(value, isSecret, resources, <Object>{});
+  }
+
+  static Future<OutputData<U>> _resolveOutputInternal<U>(
+    dynamic value,
+    bool isSecret,
+    Set<Resource> resources,
+    Set<Object> seen,
+  ) async {
     if (value is Output) {
-      final innerData = await value.getData();
-      final resolvedValue = await _resolveOutput(
-        innerData.value,
-        innerData.isSecret || isSecret,
-        resources.union(innerData.resources),
-      );
-      return OutputData<U>(
-        value: resolvedValue.value as U,
-        isKnown: resolvedValue.isKnown && innerData.isKnown,
-        isSecret: resolvedValue.isSecret,
-        resources: resolvedValue.resources,
-      );
+      if (!seen.add(value)) {
+        throw StateError(
+          'Detected recursive Output/Input graph while resolving output value.',
+        );
+      }
+
+      try {
+        final innerData = await value.getData();
+        final resolvedValue = await _resolveOutputInternal(
+          innerData.value,
+          innerData.isSecret || isSecret,
+          resources.union(innerData.resources),
+          seen,
+        );
+        return OutputData<U>(
+          value: resolvedValue.value as U,
+          isKnown: resolvedValue.isKnown && innerData.isKnown,
+          isSecret: resolvedValue.isSecret,
+          resources: resolvedValue.resources,
+        );
+      } finally {
+        seen.remove(value);
+      }
     } else if (value is Future) {
       final resolvedValue = await value;
-      return _resolveOutput<U>(resolvedValue, isSecret, resources);
+      return _resolveOutputInternal<U>(
+        resolvedValue,
+        isSecret,
+        resources,
+        seen,
+      );
+    } else if (value is Input) {
+      if (!seen.add(value)) {
+        throw StateError(
+          'Detected recursive Output/Input graph while resolving output value.',
+        );
+      }
+
+      try {
+        final innerData = await value.toOutput().getData();
+        final resolvedValue = await _resolveOutputInternal(
+          innerData.value,
+          innerData.isSecret || isSecret,
+          resources.union(innerData.resources),
+          seen,
+        );
+        return OutputData<U>(
+          value: resolvedValue.value as U,
+          isKnown: resolvedValue.isKnown && innerData.isKnown,
+          isSecret: resolvedValue.isSecret,
+          resources: resolvedValue.resources,
+        );
+      } finally {
+        seen.remove(value);
+      }
     } else {
       return OutputData<U>(
         value: value as U,

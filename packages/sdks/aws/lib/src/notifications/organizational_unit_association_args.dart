@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationalUnitAssociationArgs {
   /// ARN of the notification configuration to associate the organizational unit with.
   final pulumi.Input<String> notificationConfigurationArn;
+
   /// ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
   final pulumi.Input<String> organizationalUnitId;
 
@@ -29,9 +30,12 @@ class OrganizationalUnitAssociationArgs {
 
   factory OrganizationalUnitAssociationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitAssociationArgs(
-      notificationConfigurationArn: (map['notificationConfigurationArn'] as String).input(),
-      organizationalUnitId: (map['organizationalUnitId'] as String).input(),
+      notificationConfigurationArn: pulumi.Input.fromValue(
+        map['notificationConfigurationArn'] as String,
+      ),
+      organizationalUnitId: pulumi.Input.fromValue(
+        map['organizationalUnitId'] as String,
+      ),
     );
   }
 }
-

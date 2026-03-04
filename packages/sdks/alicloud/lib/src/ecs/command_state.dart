@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommandState {
   /// The Base64-encoded content of the command.
   final pulumi.Input<String>? commandContent;
+
   /// The description of command.
   final pulumi.Input<String>? description;
+
   /// Specifies whether to use custom parameters in the command to be created. Default to: false.
   final pulumi.Input<bool>? enableParameter;
+
   /// The name of the command, which supports all character sets. It can be up to 128 characters in length.
   final pulumi.Input<String>? name;
+
   /// The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
   final pulumi.Input<int>? timeout;
+
   /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   final pulumi.Input<String>? type;
+
   /// The execution path of the command in the ECS instance.
   final pulumi.Input<String>? workingDir;
 
@@ -51,14 +57,41 @@ class CommandState {
 
   factory CommandState.fromMap(Map<String, dynamic> map) {
     return CommandState(
-      commandContent: map['commandContent'] == null ? null : (map['commandContent']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
+      commandContent: (() {
+        final guardedValue = map['commandContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableParameter: (() {
+        final guardedValue = map['enableParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workingDir: (() {
+        final guardedValue = map['workingDir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,7 +7,6 @@ import 'plan_response.dart';
 import 'regular_priority_profile_response.dart';
 import 'spot_priority_profile_response.dart';
 import 'system_data_response.dart';
-import 'vm_size_profile_response.dart';
 import 'vmattributes_response.dart';
 
 /// An Compute Fleet resource
@@ -637,39 +636,58 @@ import 'vmattributes_response.dart';
 /// ```
 class Fleet extends pulumi.CustomResource {
   /// Represents the configuration for additional locations where Fleet resources may be deployed.
-  late final pulumi.Output<AdditionalLocationsProfileResponse?> additionalLocationsProfile;
+  late final pulumi.Output<AdditionalLocationsProfileResponse?>
+  additionalLocationsProfile;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Compute Profile to use for running user's workloads.
   late final pulumi.Output<ComputeProfileResponse> computeProfile;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Details of the resource plan.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Configuration Options for Regular instances in Compute Fleet.
-  late final pulumi.Output<RegularPriorityProfileResponse?> regularPriorityProfile;
+  late final pulumi.Output<RegularPriorityProfileResponse?>
+  regularPriorityProfile;
+
   /// Configuration Options for Spot instances in Compute Fleet.
   late final pulumi.Output<SpotPriorityProfileResponse?> spotPriorityProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the time at which the Compute Fleet is created.
   late final pulumi.Output<String> timeCreated;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Specifies the ID which uniquely identifies a Compute Fleet.
   late final pulumi.Output<String> uniqueId;
+
   /// Attribute based Fleet.
   late final pulumi.Output<VMAttributesResponse?> vmAttributes;
+
   /// List of VM sizes supported for Compute Fleet
-  late final pulumi.Output<List<VmSizeProfileResponse>> vmSizesProfile;
+  late final pulumi.Output<List<Map<String, dynamic>>> vmSizesProfile;
+
   /// Zones in which the Compute Fleet is available
   late final pulumi.Output<List<String>?> zones;
 
@@ -677,33 +695,39 @@ class Fleet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Fleet]. {@macro pulumi_azurefleet_fleet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Fleet(
-    String name, {
-    FleetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:azurefleet:Fleet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalLocationsProfile = registerOutput<AdditionalLocationsProfileResponse?>('additionalLocationsProfile');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.computeProfile = registerOutput<ComputeProfileResponse>('computeProfile');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+  Fleet(String name, {FleetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:azurefleet:Fleet',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    additionalLocationsProfile =
+        registerOutput<AdditionalLocationsProfileResponse?>(
+          'additionalLocationsProfile',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeProfile = registerOutput<ComputeProfileResponse>('computeProfile');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.regularPriorityProfile = registerOutput<RegularPriorityProfileResponse?>('regularPriorityProfile');
-    this.spotPriorityProfile = registerOutput<SpotPriorityProfileResponse?>('spotPriorityProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.type = registerOutput<String>('type');
-    this.uniqueId = registerOutput<String>('uniqueId');
-    this.vmAttributes = registerOutput<VMAttributesResponse?>('vmAttributes');
-    this.vmSizesProfile = registerOutput<List<VmSizeProfileResponse>>('vmSizesProfile');
-    this.zones = registerOutput<List<String>?>('zones');
+    plan = registerOutput<PlanResponse?>('plan');
+    provisioningState = registerOutput<String>('provisioningState');
+    regularPriorityProfile = registerOutput<RegularPriorityProfileResponse?>(
+      'regularPriorityProfile',
+    );
+    spotPriorityProfile = registerOutput<SpotPriorityProfileResponse?>(
+      'spotPriorityProfile',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+    vmAttributes = registerOutput<VMAttributesResponse?>('vmAttributes');
+    vmSizesProfile = registerOutput<List<Map<String, dynamic>>>(
+      'vmSizesProfile',
+    );
+    zones = registerOutput<List<String>?>('zones');
   }
 }

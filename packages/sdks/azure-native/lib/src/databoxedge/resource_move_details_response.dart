@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceMoveDetailsResponse {
   /// Denotes whether move operation is in progress
   final pulumi.Input<String>? operationInProgress;
+
   /// Denotes the timeout of the operation to finish
   final pulumi.Input<String>? operationInProgressLockTimeoutInUTC;
 
@@ -20,15 +21,23 @@ class ResourceMoveDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'operationInProgress': ?operationInProgress,
-      'operationInProgressLockTimeoutInUTC': ?operationInProgressLockTimeoutInUTC,
+      'operationInProgressLockTimeoutInUTC':
+          ?operationInProgressLockTimeoutInUTC,
     };
   }
 
   factory ResourceMoveDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMoveDetailsResponse(
-      operationInProgress: map['operationInProgress'] == null ? null : (map['operationInProgress']! as String).input(),
-      operationInProgressLockTimeoutInUTC: map['operationInProgressLockTimeoutInUTC'] == null ? null : (map['operationInProgressLockTimeoutInUTC']! as String).input(),
+      operationInProgress: (() {
+        final guardedValue = map['operationInProgress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operationInProgressLockTimeoutInUTC: (() {
+        final guardedValue = map['operationInProgressLockTimeoutInUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_advisor;
-
 export 'advisor/assessment.dart';
 export 'advisor/assessment_args.dart';
 export 'advisor/functions.dart';

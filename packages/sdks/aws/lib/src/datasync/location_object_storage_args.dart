@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationObjectStorageArgs {
   /// The access key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
   final pulumi.Input<String>? accessKey;
+
   /// A list of DataSync Agent ARNs with which this location will be associated. For agentless cross-cloud transfers, this parameter does not need to be specified.
   final pulumi.Input<List<String>>? agentArns;
+
   /// The bucket on the self-managed object storage server that is used to read data from.
   final pulumi.Input<String> bucketName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The secret key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
   final pulumi.Input<String>? secretKey;
+
   /// Specifies a certificate to authenticate with an object storage system that uses a private or self-signed certificate authority (CA). You must specify a Base64-encoded .pem string. The certificate can be up to 32768 bytes (before Base64 encoding).
   final pulumi.Input<String>? serverCertificate;
+
   /// The name of the self-managed object storage server. This value is the IP address or Domain Name Service (DNS) name of the object storage server. An agent uses this host name to mount the object storage server in a network.
   final pulumi.Input<String> serverHostname;
+
   /// The port that your self-managed object storage server accepts inbound network traffic on. The server port is set by default to TCP 80 (`HTTP`) or TCP 443 (`HTTPS`). You can specify a custom port if your self-managed object storage server requires one.
   final pulumi.Input<int>? serverPort;
+
   /// The protocol that the object storage server uses to communicate. Valid values are `HTTP` or `HTTPS`.
   final pulumi.Input<String>? serverProtocol;
+
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
   final pulumi.Input<String>? subdirectory;
+
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -74,18 +84,55 @@ class LocationObjectStorageArgs {
 
   factory LocationObjectStorageArgs.fromMap(Map<String, dynamic> map) {
     return LocationObjectStorageArgs(
-      accessKey: map['accessKey'] == null ? null : ((map['accessKey'] as String).input()).input(),
-      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
-      bucketName: (map['bucketName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secretKey: map['secretKey'] == null ? null : ((map['secretKey'] as String).input()).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : ((map['serverCertificate'] as String).input()).input(),
-      serverHostname: (map['serverHostname'] as String).input(),
-      serverPort: map['serverPort'] == null ? null : ((map['serverPort'] as int).input()).input(),
-      serverProtocol: map['serverProtocol'] == null ? null : ((map['serverProtocol'] as String).input()).input(),
-      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      accessKey: (() {
+        final guardedValue = map['accessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentArns: (() {
+        final guardedValue = map['agentArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretKey: (() {
+        final guardedValue = map['secretKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverCertificate: (() {
+        final guardedValue = map['serverCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverHostname: pulumi.Input.fromValue(map['serverHostname'] as String),
+      serverPort: (() {
+        final guardedValue = map['serverPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serverProtocol: (() {
+        final guardedValue = map['serverProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subdirectory: (() {
+        final guardedValue = map['subdirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

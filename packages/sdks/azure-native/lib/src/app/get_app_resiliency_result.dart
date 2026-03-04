@@ -12,24 +12,34 @@ import 'timeout_policy_response.dart';
 class GetAppResiliencyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Policy that defines circuit breaker conditions
   final CircuitBreakerPolicyResponse? circuitBreakerPolicy;
+
   /// Defines parameters for http connection pooling
   final HttpConnectionPoolResponse? httpConnectionPool;
+
   /// Policy that defines http request retry conditions
   final HttpRetryPolicyResponse? httpRetryPolicy;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Defines parameters for tcp connection pooling
   final TcpConnectionPoolResponse? tcpConnectionPool;
+
   /// Policy that defines tcp request retry conditions
   final TcpRetryPolicyResponse? tcpRetryPolicy;
+
   /// Policy to set request timeouts
   final TimeoutPolicyResponse? timeoutPolicy;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,15 +72,15 @@ class GetAppResiliencyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'circuitBreakerPolicy': ?circuitBreakerPolicy == null ? null : circuitBreakerPolicy!.toMap(),
-      'httpConnectionPool': ?httpConnectionPool == null ? null : httpConnectionPool!.toMap(),
-      'httpRetryPolicy': ?httpRetryPolicy == null ? null : httpRetryPolicy!.toMap(),
+      'circuitBreakerPolicy': ?circuitBreakerPolicy?.toMap(),
+      'httpConnectionPool': ?httpConnectionPool?.toMap(),
+      'httpRetryPolicy': ?httpRetryPolicy?.toMap(),
       'id': id,
       'name': name,
       'systemData': systemData.toMap(),
-      'tcpConnectionPool': ?tcpConnectionPool == null ? null : tcpConnectionPool!.toMap(),
-      'tcpRetryPolicy': ?tcpRetryPolicy == null ? null : tcpRetryPolicy!.toMap(),
-      'timeoutPolicy': ?timeoutPolicy == null ? null : timeoutPolicy!.toMap(),
+      'tcpConnectionPool': ?tcpConnectionPool?.toMap(),
+      'tcpRetryPolicy': ?tcpRetryPolicy?.toMap(),
+      'timeoutPolicy': ?timeoutPolicy?.toMap(),
       'type': type,
     };
   }
@@ -78,17 +88,54 @@ class GetAppResiliencyResult {
   factory GetAppResiliencyResult.fromMap(Map<String, dynamic> map) {
     return GetAppResiliencyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : CircuitBreakerPolicyResponse.fromMap((map['circuitBreakerPolicy']! as Map).cast<String, dynamic>()),
-      httpConnectionPool: map['httpConnectionPool'] == null ? null : HttpConnectionPoolResponse.fromMap((map['httpConnectionPool']! as Map).cast<String, dynamic>()),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : HttpRetryPolicyResponse.fromMap((map['httpRetryPolicy']! as Map).cast<String, dynamic>()),
+      circuitBreakerPolicy: (() {
+        final guardedValue = map['circuitBreakerPolicy'];
+        if (guardedValue == null) return null;
+        return CircuitBreakerPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      httpConnectionPool: (() {
+        final guardedValue = map['httpConnectionPool'];
+        if (guardedValue == null) return null;
+        return HttpConnectionPoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      httpRetryPolicy: (() {
+        final guardedValue = map['httpRetryPolicy'];
+        if (guardedValue == null) return null;
+        return HttpRetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tcpConnectionPool: map['tcpConnectionPool'] == null ? null : TcpConnectionPoolResponse.fromMap((map['tcpConnectionPool']! as Map).cast<String, dynamic>()),
-      tcpRetryPolicy: map['tcpRetryPolicy'] == null ? null : TcpRetryPolicyResponse.fromMap((map['tcpRetryPolicy']! as Map).cast<String, dynamic>()),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : TimeoutPolicyResponse.fromMap((map['timeoutPolicy']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tcpConnectionPool: (() {
+        final guardedValue = map['tcpConnectionPool'];
+        if (guardedValue == null) return null;
+        return TcpConnectionPoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tcpRetryPolicy: (() {
+        final guardedValue = map['tcpRetryPolicy'];
+        if (guardedValue == null) return null;
+        return TcpRetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      timeoutPolicy: (() {
+        final guardedValue = map['timeoutPolicy'];
+        if (guardedValue == null) return null;
+        return TimeoutPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

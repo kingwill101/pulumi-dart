@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserIdentityInfo {
   /// The email address. If you are using SAML for identity management and include this parameter, an error is returned. Note that updates to the `email` is supported. From the [UpdateUserIdentityInfo API documentation](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserIdentityInfo.html) it is strongly recommended to limit who has the ability to invoke `UpdateUserIdentityInfo`. Someone with that ability can change the login credentials of other users by changing their email address. This poses a security risk to your organization. They can change the email address of a user to the attacker's email address, and then reset the password through email. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
   final pulumi.Input<String>? email;
+
   /// The first name. This is required if you are using Amazon Connect or SAML for identity management. Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String>? firstName;
+
   /// The last name. This is required if you are using Amazon Connect or SAML for identity management. Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String>? lastName;
+
   /// The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
   final pulumi.Input<String>? secondaryEmail;
 
@@ -35,11 +38,26 @@ class UserIdentityInfo {
 
   factory UserIdentityInfo.fromMap(Map<String, dynamic> map) {
     return UserIdentityInfo(
-      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
-      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
-      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
-      secondaryEmail: map['secondaryEmail'] == null ? null : ((map['secondaryEmail'] as String).input()).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryEmail: (() {
+        final guardedValue = map['secondaryEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

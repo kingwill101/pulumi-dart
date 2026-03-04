@@ -7,8 +7,11 @@ import 'buildpack_binding_launch_properties_response.dart';
 class BuildpackBindingPropertiesResponse {
   /// Buildpack Binding Type
   final pulumi.Input<String>? bindingType;
+
   /// The object describes the buildpack binding launch properties
-  final pulumi.Input<BuildpackBindingLaunchPropertiesResponse>? launchProperties;
+  final pulumi.Input<BuildpackBindingLaunchPropertiesResponse>?
+  launchProperties;
+
   /// State of the Buildpack Binding.
   final pulumi.Input<String> provisioningState;
 
@@ -25,17 +28,34 @@ class BuildpackBindingPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bindingType': ?bindingType,
-      'launchProperties': ?pulumi.Input.mapOptionalInputValue<BuildpackBindingLaunchPropertiesResponse, Map<String, dynamic>>(launchProperties, (value) => value.toMap()),
+      'launchProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildpackBindingLaunchPropertiesResponse,
+            Map<String, dynamic>
+          >(launchProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory BuildpackBindingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingPropertiesResponse(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
-      launchProperties: map['launchProperties'] == null ? null : (BuildpackBindingLaunchPropertiesResponse.fromMap((map['launchProperties']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      bindingType: (() {
+        final guardedValue = map['bindingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      launchProperties: (() {
+        final guardedValue = map['launchProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildpackBindingLaunchPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

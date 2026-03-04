@@ -211,29 +211,42 @@ import 'system_data_response.dart';
 /// ```
 class CapacityDetails extends pulumi.CustomResource {
   /// A collection of Dedicated capacity administrators
-  late final pulumi.Output<DedicatedCapacityAdministratorsResponse?> administration;
+  late final pulumi.Output<DedicatedCapacityAdministratorsResponse?>
+  administration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Capacity name
   late final pulumi.Output<String> friendlyName;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
   late final pulumi.Output<String?> mode;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU of the PowerBI Dedicated capacity resource.
   late final pulumi.Output<CapacitySkuResponse> sku;
+
   /// The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
   late final pulumi.Output<String> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Tenant ID for the capacity. Used for creating Pro Plus capacity.
   late final pulumi.Output<String> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -246,23 +259,25 @@ class CapacityDetails extends pulumi.CustomResource {
     CapacityDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:powerbidedicated:CapacityDetails',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administration = registerOutput<DedicatedCapacityAdministratorsResponse?>('administration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.location = registerOutput<String>('location');
-    this.mode = registerOutput<String?>('mode');
+         'azure-native:powerbidedicated:CapacityDetails',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administration = registerOutput<DedicatedCapacityAdministratorsResponse?>(
+      'administration',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    friendlyName = registerOutput<String>('friendlyName');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<CapacitySkuResponse>('sku');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<CapacitySkuResponse>('sku');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

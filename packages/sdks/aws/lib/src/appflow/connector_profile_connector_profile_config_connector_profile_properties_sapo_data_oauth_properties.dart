@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties {
   /// The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
   final pulumi.Input<String> authCodeUrl;
+
   /// The OAuth scopes required for OAuth type authentication.
   final pulumi.Input<List<String>> oauthScopes;
   final pulumi.Input<String> tokenUrl;
@@ -27,12 +28,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties(
-      authCodeUrl: (map['authCodeUrl'] as String).input(),
-      oauthScopes: ((map['oauthScopes'] as List).cast<String>()).input(),
-      tokenUrl: (map['tokenUrl'] as String).input(),
+      authCodeUrl: pulumi.Input.fromValue(map['authCodeUrl'] as String),
+      oauthScopes: pulumi.Input.fromValue(
+        (map['oauthScopes'] as List).cast<String>(),
+      ),
+      tokenUrl: pulumi.Input.fromValue(map['tokenUrl'] as String),
     );
   }
 }
-

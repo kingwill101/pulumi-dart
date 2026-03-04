@@ -7,12 +7,16 @@ import 'display_data_response.dart';
 class TransformSummaryResponse {
   /// Transform-specific display data.
   final pulumi.Input<List<DisplayDataResponse>> displayData;
+
   /// User names for all collection inputs to this transform.
   final pulumi.Input<List<String>> inputCollectionName;
+
   /// Type of transform.
   final pulumi.Input<String> kind;
+
   /// User provided name for this transform instance.
   final pulumi.Input<String> name;
+
   /// User names for all collection outputs to this transform.
   final pulumi.Input<List<String>> outputCollectionName;
 
@@ -32,7 +36,18 @@ class TransformSummaryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayData': pulumi.Input.mapInputValue<List<DisplayDataResponse>, List<Map<String, dynamic>>>(displayData, (value) => pulumi.Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'displayData':
+          pulumi.Input.mapInputValue<
+            List<DisplayDataResponse>,
+            List<Map<String, dynamic>>
+          >(
+            displayData,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DisplayDataResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'inputCollectionName': inputCollectionName,
       'kind': kind,
       'name': name,
@@ -42,12 +57,22 @@ class TransformSummaryResponse {
 
   factory TransformSummaryResponse.fromMap(Map<String, dynamic> map) {
     return TransformSummaryResponse(
-      displayData: (pulumi.Input.decodeList<DisplayDataResponse>(map['displayData'], (value) => DisplayDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputCollectionName: ((map['inputCollectionName'] as List).cast<String>()).input(),
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
-      outputCollectionName: ((map['outputCollectionName'] as List).cast<String>()).input(),
+      displayData: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DisplayDataResponse>(
+          map['displayData']!,
+          (value) => DisplayDataResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      inputCollectionName: pulumi.Input.fromValue(
+        (map['inputCollectionName'] as List).cast<String>(),
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      outputCollectionName: pulumi.Input.fromValue(
+        (map['outputCollectionName'] as List).cast<String>(),
+      ),
     );
   }
 }
-

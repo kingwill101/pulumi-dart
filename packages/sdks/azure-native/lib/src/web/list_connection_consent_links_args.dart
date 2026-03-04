@@ -10,10 +10,13 @@ import 'consent_link_parameter_definition.dart';
 class ListConnectionConsentLinksArgs {
   /// Connection name
   final pulumi.Input<String> connectionName;
+
   /// Collection of resources
   final pulumi.Input<List<ConsentLinkParameterDefinition>>? parameters;
+
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
 
@@ -32,7 +35,18 @@ class ListConnectionConsentLinksArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionName': connectionName,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ConsentLinkParameterDefinition>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ConsentLinkParameterDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConsentLinkParameterDefinition>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConsentLinkParameterDefinition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
     };
@@ -40,11 +54,27 @@ class ListConnectionConsentLinksArgs {
 
   factory ListConnectionConsentLinksArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectionConsentLinksArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConsentLinkParameterDefinition>(map['parameters']!, (value) => ConsentLinkParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConsentLinkParameterDefinition>(
+            guardedValue,
+            (value) => ConsentLinkParameterDefinition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

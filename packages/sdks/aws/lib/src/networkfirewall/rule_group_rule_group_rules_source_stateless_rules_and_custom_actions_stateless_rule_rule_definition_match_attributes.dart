@@ -9,17 +9,47 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_st
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes {
   /// Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Port below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort>>? destinationPorts;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort
+    >
+  >?
+  destinationPorts;
+
   /// Set of configuration blocks describing the destination IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any destination address. See Destination below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination>>? destinations;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination
+    >
+  >?
+  destinations;
+
   /// Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). If not specified, this matches with any protocol.
   final pulumi.Input<List<int>>? protocols;
+
   /// Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Port below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort>>? sourcePorts;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort
+    >
+  >?
+  sourcePorts;
+
   /// Set of configuration blocks describing the source IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any source address. See Source below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource>>? sources;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource
+    >
+  >?
+  sources;
+
   /// Set of configuration blocks containing the TCP flags and masks to inspect for. If not specified, this matches with any settings.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag>>? tcpFlags;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag
+    >
+  >?
+  tcpFlags;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes].
   /// [destinationPorts] Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Port below for details.
@@ -39,24 +69,164 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationPorts': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort>, List<Map<String, dynamic>>>(destinationPorts, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'destinations': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinationPorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort
+            >,
+            List<Map<String, dynamic>>
+          >(
+            destinationPorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'destinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination
+            >,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'protocols': ?protocols,
-      'sourcePorts': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort>, List<Map<String, dynamic>>>(sourcePorts, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tcpFlags': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag>, List<Map<String, dynamic>>>(tcpFlags, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourcePorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sourcePorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'tcpFlags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag
+            >,
+            List<Map<String, dynamic>>
+          >(
+            tcpFlags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes(
-      destinationPorts: map['destinationPorts'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort>(map['destinationPorts']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      destinations: map['destinations'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination>(map['destinations']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      protocols: map['protocols'] == null ? null : (((map['protocols'] as List).cast<int>()).input()).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort>(map['sourcePorts']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource>(map['sources']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tcpFlags: map['tcpFlags'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag>(map['tcpFlags']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      destinationPorts: (() {
+        final guardedValue = map['destinationPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort
+          >(
+            guardedValue,
+            (value) =>
+                RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination
+          >(
+            guardedValue,
+            (value) =>
+                RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      sourcePorts: (() {
+        final guardedValue = map['sourcePorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort
+          >(
+            guardedValue,
+            (value) =>
+                RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource
+          >(
+            guardedValue,
+            (value) =>
+                RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      tcpFlags: (() {
+        final guardedValue = map['tcpFlags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag
+          >(
+            guardedValue,
+            (value) =>
+                RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

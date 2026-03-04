@@ -1,5 +1,3 @@
-library module_edgenetwork;
-
 export 'edgenetwork/interconnect_attachment.dart';
 export 'edgenetwork/interconnect_attachment_args.dart';
 export 'edgenetwork/interconnect_attachment_state.dart';

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityServiceAzureADConfigResponse {
   /// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
   final pulumi.Input<String> clientId;
+
   /// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
   final pulumi.Input<String> clientSecret;
+
   /// Encrypted AzureAD client secret.
   final pulumi.Input<String> encryptedClientSecret;
+
   /// The redirect URL that kubectl uses for authorization.
   final pulumi.Input<String> kubectlRedirectUri;
+
   /// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
   final pulumi.Input<String> tenant;
 
@@ -39,14 +43,19 @@ class IdentityServiceAzureADConfigResponse {
     };
   }
 
-  factory IdentityServiceAzureADConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceAzureADConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceAzureADConfigResponse(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      encryptedClientSecret: (map['encryptedClientSecret'] as String).input(),
-      kubectlRedirectUri: (map['kubectlRedirectUri'] as String).input(),
-      tenant: (map['tenant'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      encryptedClientSecret: pulumi.Input.fromValue(
+        map['encryptedClientSecret'] as String,
+      ),
+      kubectlRedirectUri: pulumi.Input.fromValue(
+        map['kubectlRedirectUri'] as String,
+      ),
+      tenant: pulumi.Input.fromValue(map['tenant'] as String),
     );
   }
 }
-

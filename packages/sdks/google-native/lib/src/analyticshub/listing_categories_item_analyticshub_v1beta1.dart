@@ -20,16 +20,17 @@ enum ListingCategoriesItemAnalyticshubV1beta1 {
   categoryTransportationAndLogistics("CATEGORY_TRANSPORTATION_AND_LOGISTICS"),
   categoryTravelAndTourism("CATEGORY_TRAVEL_AND_TOURISM");
 
-  const ListingCategoriesItemAnalyticshubV1beta1(this.value);
-  final String value;
+  const ListingCategoriesItemAnalyticshubV1beta1(this.wireValue);
+  final String wireValue;
 
   static ListingCategoriesItemAnalyticshubV1beta1 fromValue(String value) {
     for (final item in ListingCategoriesItemAnalyticshubV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ListingCategoriesItemAnalyticshubV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ListingCategoriesItemAnalyticshubV1beta1 value: $value',
+    );
   }
 }
-

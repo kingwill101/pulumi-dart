@@ -12,27 +12,38 @@ import 'instruction_step_response.dart';
 class CustomizableConnectorUiConfigResponse {
   /// The exposure status of the connector to the customers.
   final pulumi.Input<ConnectorDefinitionsAvailabilityResponse>? availability;
+
   /// Gets or sets the way the connector checks whether the connector is connected.
   final pulumi.Input<List<ConnectivityCriterionResponse>> connectivityCriteria;
+
   /// Gets or sets the data types to check for last data received.
   final pulumi.Input<List<ConnectorDataTypeResponse>> dataTypes;
+
   /// Gets or sets the connector description in markdown format.
   final pulumi.Input<String> descriptionMarkdown;
+
   /// Gets or sets the graph queries to show the current data volume over time.
   final pulumi.Input<List<GraphQueryResponse>> graphQueries;
+
   /// Gets or sets custom connector id. optional field.
   final pulumi.Input<String>? id;
+
   /// Gets or sets the instruction steps to enable the connector.
   final pulumi.Input<List<InstructionStepResponse>> instructionSteps;
+
   /// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
   final pulumi.Input<bool>? isConnectivityCriteriasMatchSome;
+
   /// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
   /// The logo value should be in SVG format.
   final pulumi.Input<String>? logo;
+
   /// The required Permissions for the connector.
   final pulumi.Input<ConnectorDefinitionsPermissionsResponse> permissions;
+
   /// Gets or sets the connector publisher name.
   final pulumi.Input<String> publisher;
+
   /// Gets or sets the connector blade title.
   final pulumi.Input<String> title;
 
@@ -66,36 +77,143 @@ class CustomizableConnectorUiConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availability': ?pulumi.Input.mapOptionalInputValue<ConnectorDefinitionsAvailabilityResponse, Map<String, dynamic>>(availability, (value) => value.toMap()),
-      'connectivityCriteria': pulumi.Input.mapInputValue<List<ConnectivityCriterionResponse>, List<Map<String, dynamic>>>(connectivityCriteria, (value) => pulumi.Input.encodeList<ConnectivityCriterionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dataTypes': pulumi.Input.mapInputValue<List<ConnectorDataTypeResponse>, List<Map<String, dynamic>>>(dataTypes, (value) => pulumi.Input.encodeList<ConnectorDataTypeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'availability':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorDefinitionsAvailabilityResponse,
+            Map<String, dynamic>
+          >(availability, (value) => value.toMap()),
+      'connectivityCriteria':
+          pulumi.Input.mapInputValue<
+            List<ConnectivityCriterionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            connectivityCriteria,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConnectivityCriterionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'dataTypes':
+          pulumi.Input.mapInputValue<
+            List<ConnectorDataTypeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dataTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConnectorDataTypeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'descriptionMarkdown': descriptionMarkdown,
-      'graphQueries': pulumi.Input.mapInputValue<List<GraphQueryResponse>, List<Map<String, dynamic>>>(graphQueries, (value) => pulumi.Input.encodeList<GraphQueryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'graphQueries':
+          pulumi.Input.mapInputValue<
+            List<GraphQueryResponse>,
+            List<Map<String, dynamic>>
+          >(
+            graphQueries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GraphQueryResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
-      'instructionSteps': pulumi.Input.mapInputValue<List<InstructionStepResponse>, List<Map<String, dynamic>>>(instructionSteps, (value) => pulumi.Input.encodeList<InstructionStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instructionSteps':
+          pulumi.Input.mapInputValue<
+            List<InstructionStepResponse>,
+            List<Map<String, dynamic>>
+          >(
+            instructionSteps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstructionStepResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'isConnectivityCriteriasMatchSome': ?isConnectivityCriteriasMatchSome,
       'logo': ?logo,
-      'permissions': pulumi.Input.mapInputValue<ConnectorDefinitionsPermissionsResponse, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions':
+          pulumi.Input.mapInputValue<
+            ConnectorDefinitionsPermissionsResponse,
+            Map<String, dynamic>
+          >(permissions, (value) => value.toMap()),
       'publisher': publisher,
       'title': title,
     };
   }
 
-  factory CustomizableConnectorUiConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory CustomizableConnectorUiConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomizableConnectorUiConfigResponse(
-      availability: map['availability'] == null ? null : (ConnectorDefinitionsAvailabilityResponse.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
-      connectivityCriteria: (pulumi.Input.decodeList<ConnectivityCriterionResponse>(map['connectivityCriteria'], (value) => ConnectivityCriterionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataTypes: (pulumi.Input.decodeList<ConnectorDataTypeResponse>(map['dataTypes'], (value) => ConnectorDataTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      descriptionMarkdown: (map['descriptionMarkdown'] as String).input(),
-      graphQueries: (pulumi.Input.decodeList<GraphQueryResponse>(map['graphQueries'], (value) => GraphQueryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      instructionSteps: (pulumi.Input.decodeList<InstructionStepResponse>(map['instructionSteps'], (value) => InstructionStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isConnectivityCriteriasMatchSome: map['isConnectivityCriteriasMatchSome'] == null ? null : (map['isConnectivityCriteriasMatchSome']! as bool).input(),
-      logo: map['logo'] == null ? null : (map['logo']! as String).input(),
-      permissions: (ConnectorDefinitionsPermissionsResponse.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
-      publisher: (map['publisher'] as String).input(),
-      title: (map['title'] as String).input(),
+      availability: (() {
+        final guardedValue = map['availability'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorDefinitionsAvailabilityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectivityCriteria: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ConnectivityCriterionResponse>(
+          map['connectivityCriteria']!,
+          (value) => ConnectivityCriterionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dataTypes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ConnectorDataTypeResponse>(
+          map['dataTypes']!,
+          (value) => ConnectorDataTypeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      descriptionMarkdown: pulumi.Input.fromValue(
+        map['descriptionMarkdown'] as String,
+      ),
+      graphQueries: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GraphQueryResponse>(
+          map['graphQueries']!,
+          (value) => GraphQueryResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instructionSteps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<InstructionStepResponse>(
+          map['instructionSteps']!,
+          (value) => InstructionStepResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      isConnectivityCriteriasMatchSome: (() {
+        final guardedValue = map['isConnectivityCriteriasMatchSome'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logo: (() {
+        final guardedValue = map['logo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: pulumi.Input.fromValue(
+        ConnectorDefinitionsPermissionsResponse.fromMap(
+          (map['permissions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

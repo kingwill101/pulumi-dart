@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jit_network_access_policy_args.dart';
-import 'jit_network_access_policy_virtual_machine_response.dart';
-import 'jit_network_access_request_response.dart';
 
 /// Uses Azure REST API version 2020-01-01. In version 2.x of the Azure Native provider, it used API version 2020-01-01.
 ///
@@ -343,19 +341,25 @@ import 'jit_network_access_request_response.dart';
 class JitNetworkAccessPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
+
   /// Location where the resource is stored
   late final pulumi.Output<String> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Gets the provisioning state of the Just-in-Time policy.
   late final pulumi.Output<String> provisioningState;
-  late final pulumi.Output<List<JitNetworkAccessRequestResponse>?> requests;
+  late final pulumi.Output<List<Map<String, dynamic>>?> requests;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
-  late final pulumi.Output<List<JitNetworkAccessPolicyVirtualMachineResponse>> virtualMachines;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
 
   /// Creates a new [JitNetworkAccessPolicy].
   /// [name] The Pulumi resource name.
@@ -366,18 +370,20 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
     JitNetworkAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:JitNetworkAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:security:JitNetworkAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requests = registerOutput<List<JitNetworkAccessRequestResponse>?>('requests');
-    this.type = registerOutput<String>('type');
-    this.virtualMachines = registerOutput<List<JitNetworkAccessPolicyVirtualMachineResponse>>('virtualMachines');
+    provisioningState = registerOutput<String>('provisioningState');
+    requests = registerOutput<List<Map<String, dynamic>>?>('requests');
+    type = registerOutput<String>('type');
+    virtualMachines = registerOutput<List<Map<String, dynamic>>>(
+      'virtualMachines',
+    );
   }
 }

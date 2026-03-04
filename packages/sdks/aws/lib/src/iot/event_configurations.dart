@@ -4,7 +4,7 @@ import 'event_configurations_state.dart';
 
 /// Manages IoT event configurations.
 ///
-/// > **NOTE:** Deleting this resource does not disable the event configurations, the resource in simply removed from state instead.
+/// &gt; **NOTE:** Deleting this resource does not disable the event configurations, the resource in simply removed from state instead.
 ///
 /// ## Example Usage
 ///
@@ -175,6 +175,7 @@ import 'event_configurations_state.dart';
 class EventConfigurations extends pulumi.CustomResource {
   /// Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   late final pulumi.Output<Map<String, bool>> eventConfigurations;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -187,13 +188,15 @@ class EventConfigurations extends pulumi.CustomResource {
     EventConfigurationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/eventConfigurations:EventConfigurations',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations');
-    this.region = registerOutput<String>('region');
+         'aws:iot/eventConfigurations:EventConfigurations',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventConfigurations = registerOutput<Map<String, bool>>(
+      'eventConfigurations',
+    );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [EventConfigurations] resource's state with the given [name] and [id].
@@ -214,12 +217,14 @@ class EventConfigurations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/eventConfigurations:EventConfigurations',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations');
-    this.region = registerOutput<String>('region');
+         'aws:iot/eventConfigurations:EventConfigurations',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventConfigurations = registerOutput<Map<String, bool>>(
+      'eventConfigurations',
+    );
+    region = registerOutput<String>('region');
   }
 }

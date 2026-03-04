@@ -8,6 +8,7 @@ import 'repository_uri.dart';
 class RepositoryState {
   /// Time the repository was created in UTC.
   final pulumi.Input<String>? createTime;
+
   /// The deletion policy for the repository. Setting `ABANDON` allows the resource
   /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
   /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
@@ -17,26 +18,36 @@ class RepositoryState {
   /// * PREVENT
   /// * ABANDON
   final pulumi.Input<String>? deletionPolicy;
+
   /// Description of the repository, which cannot exceed 500 characters.
   final pulumi.Input<String>? description;
+
   /// Initial configurations for the repository.
   /// Structure is documented below.
   final pulumi.Input<RepositoryInitialConfig>? initialConfig;
+
   /// The name of the instance in which the repository is hosted.
   final pulumi.Input<String>? instance;
+
   /// The location for the Repository.
   final pulumi.Input<String>? location;
+
   /// The resource name for the Repository.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID for the Repository.
   final pulumi.Input<String>? repositoryId;
+
   /// Unique identifier of the repository.
   final pulumi.Input<String>? uid;
+
   /// Time the repository was updated in UTC.
   final pulumi.Input<String>? updateTime;
+
   /// URIs for the repository.
   /// Structure is documented below.
   final pulumi.Input<List<RepositoryUri>>? uris;
@@ -74,7 +85,11 @@ class RepositoryState {
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
-      'initialConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryInitialConfig, Map<String, dynamic>>(initialConfig, (value) => value.toMap()),
+      'initialConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryInitialConfig,
+            Map<String, dynamic>
+          >(initialConfig, (value) => value.toMap()),
       'instance': ?instance,
       'location': ?location,
       'name': ?name,
@@ -82,25 +97,93 @@ class RepositoryState {
       'repositoryId': ?repositoryId,
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'uris': ?pulumi.Input.mapOptionalInputValue<List<RepositoryUri>, List<Map<String, dynamic>>>(uris, (value) => pulumi.Input.encodeList<RepositoryUri, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'uris':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RepositoryUri>,
+            List<Map<String, dynamic>>
+          >(
+            uris,
+            (value) =>
+                pulumi.Input.encodeList<RepositoryUri, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig']! as Map).cast<String, dynamic>())).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
-      uris: map['uris'] == null ? null : (pulumi.Input.decodeList<RepositoryUri>(map['uris']!, (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialConfig: (() {
+        final guardedValue = map['initialConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryInitialConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: (() {
+        final guardedValue = map['repositoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uris: (() {
+        final guardedValue = map['uris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RepositoryUri>(
+            guardedValue,
+            (value) =>
+                RepositoryUri.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

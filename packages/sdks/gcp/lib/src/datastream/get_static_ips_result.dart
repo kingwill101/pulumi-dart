@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getStaticIps.
 class GetStaticIpsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String? project;
+
   /// A list of static IP addresses that Datastream will connect from.
   final List<String> staticIps;
 
@@ -35,9 +35,12 @@ class GetStaticIpsResult {
     return GetStaticIpsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       staticIps: (map['staticIps'] as List).cast<String>(),
     );
   }
 }
-

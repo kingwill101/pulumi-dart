@@ -14,7 +14,7 @@ import 'listener_xforwarded_for.dart';
 /// * [Configure a TCP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 /// * [Configure a UDP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -538,6 +538,7 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String?> stickySessionType;
   late final pulumi.Output<String?> tlsCipherPolicy;
   late final pulumi.Output<int?> unhealthyThreshold;
+
   /// Whether to set additional HTTP Header field "X-Forwarded-For".
   late final pulumi.Output<ListenerXForwardedFor> xForwardedFor;
 
@@ -550,54 +551,58 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.aclIds = registerOutput<List<String>>('aclIds');
-    this.aclStatus = registerOutput<String?>('aclStatus');
-    this.aclType = registerOutput<String?>('aclType');
-    this.backendPort = registerOutput<int?>('backendPort');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.caCertificateId = registerOutput<String?>('caCertificateId');
-    this.cookie = registerOutput<String?>('cookie');
-    this.cookieTimeout = registerOutput<int?>('cookieTimeout');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.description = registerOutput<String?>('description');
-    this.enableHttp2 = registerOutput<String?>('enableHttp2');
-    this.establishedTimeout = registerOutput<int?>('establishedTimeout');
-    this.forwardPort = registerOutput<int?>('forwardPort');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.gzip = registerOutput<bool?>('gzip');
-    this.healthCheck = registerOutput<String?>('healthCheck');
-    this.healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
-    this.healthCheckDomain = registerOutput<String?>('healthCheckDomain');
-    this.healthCheckHttpCode = registerOutput<String>('healthCheckHttpCode');
-    this.healthCheckInterval = registerOutput<int?>('healthCheckInterval');
-    this.healthCheckMethod = registerOutput<String>('healthCheckMethod');
-    this.healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
-    this.healthCheckType = registerOutput<String?>('healthCheckType');
-    this.healthCheckUri = registerOutput<String?>('healthCheckUri');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.idleTimeout = registerOutput<int?>('idleTimeout');
-    this.listenerForward = registerOutput<String>('listenerForward');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.masterSlaveServerGroupId = registerOutput<String?>('masterSlaveServerGroupId');
-    this.persistenceTimeout = registerOutput<int?>('persistenceTimeout');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
-    this.requestTimeout = registerOutput<int?>('requestTimeout');
-    this.scheduler = registerOutput<String?>('scheduler');
-    this.serverCertificateId = registerOutput<String>('serverCertificateId');
-    this.serverGroupId = registerOutput<String?>('serverGroupId');
-    this.sslCertificateId = registerOutput<String>('sslCertificateId');
-    this.stickySession = registerOutput<String?>('stickySession');
-    this.stickySessionType = registerOutput<String?>('stickySessionType');
-    this.tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    this.xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
+         'alicloud:slb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    aclIds = registerOutput<List<String>>('aclIds');
+    aclStatus = registerOutput<String?>('aclStatus');
+    aclType = registerOutput<String?>('aclType');
+    backendPort = registerOutput<int?>('backendPort');
+    bandwidth = registerOutput<int>('bandwidth');
+    caCertificateId = registerOutput<String?>('caCertificateId');
+    cookie = registerOutput<String?>('cookie');
+    cookieTimeout = registerOutput<int?>('cookieTimeout');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    description = registerOutput<String?>('description');
+    enableHttp2 = registerOutput<String?>('enableHttp2');
+    establishedTimeout = registerOutput<int?>('establishedTimeout');
+    forwardPort = registerOutput<int?>('forwardPort');
+    frontendPort = registerOutput<int>('frontendPort');
+    gzip = registerOutput<bool?>('gzip');
+    healthCheck = registerOutput<String?>('healthCheck');
+    healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
+    healthCheckDomain = registerOutput<String?>('healthCheckDomain');
+    healthCheckHttpCode = registerOutput<String>('healthCheckHttpCode');
+    healthCheckInterval = registerOutput<int?>('healthCheckInterval');
+    healthCheckMethod = registerOutput<String>('healthCheckMethod');
+    healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
+    healthCheckType = registerOutput<String?>('healthCheckType');
+    healthCheckUri = registerOutput<String?>('healthCheckUri');
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    listenerForward = registerOutput<String>('listenerForward');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    masterSlaveServerGroupId = registerOutput<String?>(
+      'masterSlaveServerGroupId',
+    );
+    persistenceTimeout = registerOutput<int?>('persistenceTimeout');
+    protocol = registerOutput<String>('protocol');
+    proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
+    requestTimeout = registerOutput<int?>('requestTimeout');
+    scheduler = registerOutput<String?>('scheduler');
+    serverCertificateId = registerOutput<String>('serverCertificateId');
+    serverGroupId = registerOutput<String?>('serverGroupId');
+    sslCertificateId = registerOutput<String>('sslCertificateId');
+    stickySession = registerOutput<String?>('stickySession');
+    stickySessionType = registerOutput<String?>('stickySessionType');
+    tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -618,53 +623,57 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.aclIds = registerOutput<List<String>>('aclIds');
-    this.aclStatus = registerOutput<String?>('aclStatus');
-    this.aclType = registerOutput<String?>('aclType');
-    this.backendPort = registerOutput<int?>('backendPort');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.caCertificateId = registerOutput<String?>('caCertificateId');
-    this.cookie = registerOutput<String?>('cookie');
-    this.cookieTimeout = registerOutput<int?>('cookieTimeout');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.description = registerOutput<String?>('description');
-    this.enableHttp2 = registerOutput<String?>('enableHttp2');
-    this.establishedTimeout = registerOutput<int?>('establishedTimeout');
-    this.forwardPort = registerOutput<int?>('forwardPort');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.gzip = registerOutput<bool?>('gzip');
-    this.healthCheck = registerOutput<String?>('healthCheck');
-    this.healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
-    this.healthCheckDomain = registerOutput<String?>('healthCheckDomain');
-    this.healthCheckHttpCode = registerOutput<String>('healthCheckHttpCode');
-    this.healthCheckInterval = registerOutput<int?>('healthCheckInterval');
-    this.healthCheckMethod = registerOutput<String>('healthCheckMethod');
-    this.healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
-    this.healthCheckType = registerOutput<String?>('healthCheckType');
-    this.healthCheckUri = registerOutput<String?>('healthCheckUri');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.idleTimeout = registerOutput<int?>('idleTimeout');
-    this.listenerForward = registerOutput<String>('listenerForward');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.masterSlaveServerGroupId = registerOutput<String?>('masterSlaveServerGroupId');
-    this.persistenceTimeout = registerOutput<int?>('persistenceTimeout');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
-    this.requestTimeout = registerOutput<int?>('requestTimeout');
-    this.scheduler = registerOutput<String?>('scheduler');
-    this.serverCertificateId = registerOutput<String>('serverCertificateId');
-    this.serverGroupId = registerOutput<String?>('serverGroupId');
-    this.sslCertificateId = registerOutput<String>('sslCertificateId');
-    this.stickySession = registerOutput<String?>('stickySession');
-    this.stickySessionType = registerOutput<String?>('stickySessionType');
-    this.tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    this.xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
+         'alicloud:slb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    aclIds = registerOutput<List<String>>('aclIds');
+    aclStatus = registerOutput<String?>('aclStatus');
+    aclType = registerOutput<String?>('aclType');
+    backendPort = registerOutput<int?>('backendPort');
+    bandwidth = registerOutput<int>('bandwidth');
+    caCertificateId = registerOutput<String?>('caCertificateId');
+    cookie = registerOutput<String?>('cookie');
+    cookieTimeout = registerOutput<int?>('cookieTimeout');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    description = registerOutput<String?>('description');
+    enableHttp2 = registerOutput<String?>('enableHttp2');
+    establishedTimeout = registerOutput<int?>('establishedTimeout');
+    forwardPort = registerOutput<int?>('forwardPort');
+    frontendPort = registerOutput<int>('frontendPort');
+    gzip = registerOutput<bool?>('gzip');
+    healthCheck = registerOutput<String?>('healthCheck');
+    healthCheckConnectPort = registerOutput<int>('healthCheckConnectPort');
+    healthCheckDomain = registerOutput<String?>('healthCheckDomain');
+    healthCheckHttpCode = registerOutput<String>('healthCheckHttpCode');
+    healthCheckInterval = registerOutput<int?>('healthCheckInterval');
+    healthCheckMethod = registerOutput<String>('healthCheckMethod');
+    healthCheckTimeout = registerOutput<int?>('healthCheckTimeout');
+    healthCheckType = registerOutput<String?>('healthCheckType');
+    healthCheckUri = registerOutput<String?>('healthCheckUri');
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    listenerForward = registerOutput<String>('listenerForward');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    masterSlaveServerGroupId = registerOutput<String?>(
+      'masterSlaveServerGroupId',
+    );
+    persistenceTimeout = registerOutput<int?>('persistenceTimeout');
+    protocol = registerOutput<String>('protocol');
+    proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
+    requestTimeout = registerOutput<int?>('requestTimeout');
+    scheduler = registerOutput<String?>('scheduler');
+    serverCertificateId = registerOutput<String>('serverCertificateId');
+    serverGroupId = registerOutput<String?>('serverGroupId');
+    sslCertificateId = registerOutput<String>('sslCertificateId');
+    stickySession = registerOutput<String?>('stickySession');
+    stickySessionType = registerOutput<String?>('stickySessionType');
+    tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
   }
 }

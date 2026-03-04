@@ -9,20 +9,29 @@ class VpnSiteO365Policy {
 
   /// Creates a new [VpnSiteO365Policy].
   /// [trafficCategory] A `traffic_category` block as defined above.
-  VpnSiteO365Policy({
-    this.trafficCategory,
-  });
+  VpnSiteO365Policy({this.trafficCategory});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trafficCategory': ?pulumi.Input.mapOptionalInputValue<VpnSiteO365PolicyTrafficCategory, Map<String, dynamic>>(trafficCategory, (value) => value.toMap()),
+      'trafficCategory':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpnSiteO365PolicyTrafficCategory,
+            Map<String, dynamic>
+          >(trafficCategory, (value) => value.toMap()),
     };
   }
 
   factory VpnSiteO365Policy.fromMap(Map<String, dynamic> map) {
     return VpnSiteO365Policy(
-      trafficCategory: map['trafficCategory'] == null ? null : (VpnSiteO365PolicyTrafficCategory.fromMap((map['trafficCategory']! as Map).cast<String, dynamic>())).input(),
+      trafficCategory: (() {
+        final guardedValue = map['trafficCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VpnSiteO365PolicyTrafficCategory.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

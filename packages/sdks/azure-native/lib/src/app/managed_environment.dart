@@ -11,10 +11,8 @@ import 'managed_environment_response_peer_authentication.dart';
 import 'managed_environment_response_peer_traffic_configuration.dart';
 import 'managed_service_identity_response.dart';
 import 'open_telemetry_configuration_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 import 'vnet_configuration_response.dart';
-import 'workload_profile_response.dart';
 
 /// An environment for hosting container apps
 ///
@@ -429,69 +427,108 @@ import 'workload_profile_response.dart';
 /// ```
 class ManagedEnvironment extends pulumi.CustomResource {
   /// Environment level Application Insights configuration
-  late final pulumi.Output<AppInsightsConfigurationResponse?> appInsightsConfiguration;
+  late final pulumi.Output<AppInsightsConfigurationResponse?>
+  appInsightsConfiguration;
+
   /// Cluster configuration which enables the log daemon to export app logs to configured destination
   late final pulumi.Output<AppLogsConfigurationResponse?> appLogsConfiguration;
+
   /// The list of availability zones to use for managed environment
   late final pulumi.Output<List<String>?> availabilityZones;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Custom domain configuration for the environment
-  late final pulumi.Output<CustomDomainConfigurationResponse?> customDomainConfiguration;
+  late final pulumi.Output<CustomDomainConfigurationResponse?>
+  customDomainConfiguration;
+
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry
   late final pulumi.Output<String?> daprAIConnectionString;
+
   /// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
   late final pulumi.Output<String?> daprAIInstrumentationKey;
+
   /// The configuration of Dapr component.
   late final pulumi.Output<DaprConfigurationResponse?> daprConfiguration;
+
   /// Default Domain Name for the cluster
   late final pulumi.Output<String> defaultDomain;
+
   /// Any errors that occurred during deployment or deployment validation
   late final pulumi.Output<String> deploymentErrors;
+
   /// Disk encryption configuration for the Managed Environment.
-  late final pulumi.Output<DiskEncryptionConfigurationResponse?> diskEncryptionConfiguration;
+  late final pulumi.Output<DiskEncryptionConfigurationResponse?>
+  diskEncryptionConfiguration;
+
   /// The endpoint of the eventstream of the Environment.
   late final pulumi.Output<String> eventStreamEndpoint;
+
   /// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
   late final pulumi.Output<String?> infrastructureResourceGroup;
+
   /// Ingress configuration for the Managed Environment.
   late final pulumi.Output<IngressConfigurationResponse?> ingressConfiguration;
+
   /// The configuration of Keda component.
   late final pulumi.Output<KedaConfigurationResponse?> kedaConfiguration;
+
   /// Kind of the Environment.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Environment Open Telemetry configuration
-  late final pulumi.Output<OpenTelemetryConfigurationResponse?> openTelemetryConfiguration;
+  late final pulumi.Output<OpenTelemetryConfigurationResponse?>
+  openTelemetryConfiguration;
+
   /// Peer authentication settings for the Managed Environment
-  late final pulumi.Output<ManagedEnvironmentResponsePeerAuthentication?> peerAuthentication;
+  late final pulumi.Output<ManagedEnvironmentResponsePeerAuthentication?>
+  peerAuthentication;
+
   /// Peer traffic settings for the Managed Environment
-  late final pulumi.Output<ManagedEnvironmentResponsePeerTrafficConfiguration?> peerTrafficConfiguration;
+  late final pulumi.Output<ManagedEnvironmentResponsePeerTrafficConfiguration?>
+  peerTrafficConfiguration;
+
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Private Link Default Domain Name for the environment
   late final pulumi.Output<String> privateLinkDefaultDomain;
+
   /// Provisioning state of the Environment.
   late final pulumi.Output<String> provisioningState;
+
   /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Static IP of the Environment
   late final pulumi.Output<String> staticIp;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Vnet configuration for the environment
   late final pulumi.Output<VnetConfigurationResponse?> vnetConfiguration;
+
   /// Workload profiles configured for the Managed Environment.
-  late final pulumi.Output<List<WorkloadProfileResponse>?> workloadProfiles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> workloadProfiles;
+
   /// Whether or not this Managed Environment is zone-redundant.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -504,43 +541,81 @@ class ManagedEnvironment extends pulumi.CustomResource {
     ManagedEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:ManagedEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appInsightsConfiguration = registerOutput<AppInsightsConfigurationResponse?>('appInsightsConfiguration');
-    this.appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>('appLogsConfiguration');
-    this.availabilityZones = registerOutput<List<String>?>('availabilityZones');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customDomainConfiguration = registerOutput<CustomDomainConfigurationResponse?>('customDomainConfiguration');
-    this.daprAIConnectionString = registerOutput<String?>('daprAIConnectionString');
-    this.daprAIInstrumentationKey = registerOutput<String?>('daprAIInstrumentationKey');
-    this.daprConfiguration = registerOutput<DaprConfigurationResponse?>('daprConfiguration');
-    this.defaultDomain = registerOutput<String>('defaultDomain');
-    this.deploymentErrors = registerOutput<String>('deploymentErrors');
-    this.diskEncryptionConfiguration = registerOutput<DiskEncryptionConfigurationResponse?>('diskEncryptionConfiguration');
-    this.eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.infrastructureResourceGroup = registerOutput<String?>('infrastructureResourceGroup');
-    this.ingressConfiguration = registerOutput<IngressConfigurationResponse?>('ingressConfiguration');
-    this.kedaConfiguration = registerOutput<KedaConfigurationResponse?>('kedaConfiguration');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:app:ManagedEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appInsightsConfiguration =
+        registerOutput<AppInsightsConfigurationResponse?>(
+          'appInsightsConfiguration',
+        );
+    appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>(
+      'appLogsConfiguration',
+    );
+    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDomainConfiguration =
+        registerOutput<CustomDomainConfigurationResponse?>(
+          'customDomainConfiguration',
+        );
+    daprAIConnectionString = registerOutput<String?>('daprAIConnectionString');
+    daprAIInstrumentationKey = registerOutput<String?>(
+      'daprAIInstrumentationKey',
+    );
+    daprConfiguration = registerOutput<DaprConfigurationResponse?>(
+      'daprConfiguration',
+    );
+    defaultDomain = registerOutput<String>('defaultDomain');
+    deploymentErrors = registerOutput<String>('deploymentErrors');
+    diskEncryptionConfiguration =
+        registerOutput<DiskEncryptionConfigurationResponse?>(
+          'diskEncryptionConfiguration',
+        );
+    eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    infrastructureResourceGroup = registerOutput<String?>(
+      'infrastructureResourceGroup',
+    );
+    ingressConfiguration = registerOutput<IngressConfigurationResponse?>(
+      'ingressConfiguration',
+    );
+    kedaConfiguration = registerOutput<KedaConfigurationResponse?>(
+      'kedaConfiguration',
+    );
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.openTelemetryConfiguration = registerOutput<OpenTelemetryConfigurationResponse?>('openTelemetryConfiguration');
-    this.peerAuthentication = registerOutput<ManagedEnvironmentResponsePeerAuthentication?>('peerAuthentication');
-    this.peerTrafficConfiguration = registerOutput<ManagedEnvironmentResponsePeerTrafficConfiguration?>('peerTrafficConfiguration');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.privateLinkDefaultDomain = registerOutput<String>('privateLinkDefaultDomain');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.staticIp = registerOutput<String>('staticIp');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vnetConfiguration = registerOutput<VnetConfigurationResponse?>('vnetConfiguration');
-    this.workloadProfiles = registerOutput<List<WorkloadProfileResponse>?>('workloadProfiles');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    openTelemetryConfiguration =
+        registerOutput<OpenTelemetryConfigurationResponse?>(
+          'openTelemetryConfiguration',
+        );
+    peerAuthentication =
+        registerOutput<ManagedEnvironmentResponsePeerAuthentication?>(
+          'peerAuthentication',
+        );
+    peerTrafficConfiguration =
+        registerOutput<ManagedEnvironmentResponsePeerTrafficConfiguration?>(
+          'peerTrafficConfiguration',
+        );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    privateLinkDefaultDomain = registerOutput<String>(
+      'privateLinkDefaultDomain',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    staticIp = registerOutput<String>('staticIp');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vnetConfiguration = registerOutput<VnetConfigurationResponse?>(
+      'vnetConfiguration',
+    );
+    workloadProfiles = registerOutput<List<Map<String, dynamic>>?>(
+      'workloadProfiles',
+    );
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

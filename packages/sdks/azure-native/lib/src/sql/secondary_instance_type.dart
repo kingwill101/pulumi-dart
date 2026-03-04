@@ -3,16 +3,15 @@ enum SecondaryInstanceType {
   valueGeo("Geo"),
   valueStandby("Standby");
 
-  const SecondaryInstanceType(this.value);
-  final String value;
+  const SecondaryInstanceType(this.wireValue);
+  final String wireValue;
 
   static SecondaryInstanceType fromValue(String value) {
     for (final item in SecondaryInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecondaryInstanceType value: $value');
   }
 }
-

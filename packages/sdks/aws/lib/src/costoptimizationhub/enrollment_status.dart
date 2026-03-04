@@ -4,7 +4,7 @@ import 'enrollment_status_state.dart';
 
 /// Resource for managing AWS Cost Optimization Hub Enrollment Status.
 ///
-/// > **TIP:** The Cost Optimization Hub only has a `us-east-1` endpoint. However, you can access the service globally with the AWS Provider from other regions. Other tools, such as the [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cost-optimization-hub/index.html), may require you to specify the `us-east-1` region when using the service.
+/// &gt; **TIP:** The Cost Optimization Hub only has a `us-east-1` endpoint. However, you can access the service globally with the AWS Provider from other regions. Other tools, such as the [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cost-optimization-hub/index.html), may require you to specify the `us-east-1` region when using the service.
 ///
 /// ## Example Usage
 ///
@@ -182,6 +182,7 @@ import 'enrollment_status_state.dart';
 class EnrollmentStatus extends pulumi.CustomResource {
   /// Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
   late final pulumi.Output<bool> includeMemberAccounts;
+
   /// Status of enrollment. When the resource is present in Terraform, its status will always be `Active`.
   late final pulumi.Output<String> status;
 
@@ -194,13 +195,13 @@ class EnrollmentStatus extends pulumi.CustomResource {
     EnrollmentStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
-    this.status = registerOutput<String>('status');
+         'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EnrollmentStatus] resource's state with the given [name] and [id].
@@ -221,12 +222,12 @@ class EnrollmentStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
-    this.status = registerOutput<String>('status');
+         'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
+    status = registerOutput<String>('status');
   }
 }

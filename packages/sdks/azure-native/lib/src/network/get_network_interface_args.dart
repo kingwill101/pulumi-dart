@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the network interface.
   final pulumi.Input<String> networkInterfaceName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetNetworkInterfaceArgs {
 
   factory GetNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceName: pulumi.Input.fromValue(
+        map['networkInterfaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

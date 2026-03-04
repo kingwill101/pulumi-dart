@@ -2,16 +2,15 @@
 enum SparkJobReferenceType {
   valueSparkJobDefinitionReference("SparkJobDefinitionReference");
 
-  const SparkJobReferenceType(this.value);
-  final String value;
+  const SparkJobReferenceType(this.wireValue);
+  final String wireValue;
 
   static SparkJobReferenceType fromValue(String value) {
     for (final item in SparkJobReferenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SparkJobReferenceType value: $value');
   }
 }
-

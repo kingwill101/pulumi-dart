@@ -7,13 +7,17 @@ import 'get_resources_resource.dart';
 class GetResourcesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The name of this Resource.
   final String name;
   final Map<String, String>? requiredTags;
+
   /// The name of the Resource Group in which this Resource exists.
   final String resourceGroupName;
+
   /// One or more `resource` blocks as defined below.
   final List<GetResourcesResource> resources;
+
   /// The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
   final String type;
 
@@ -39,7 +43,11 @@ class GetResourcesResult {
       'name': name,
       'requiredTags': ?requiredTags,
       'resourceGroupName': resourceGroupName,
-      'resources': pulumi.Input.encodeList<GetResourcesResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'resources':
+          pulumi.Input.encodeList<GetResourcesResource, Map<String, dynamic>>(
+            resources,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
@@ -48,11 +56,19 @@ class GetResourcesResult {
     return GetResourcesResult(
       id: map['id'] as String,
       name: map['name'] as String,
-      requiredTags: map['requiredTags'] == null ? null : (map['requiredTags']! as Map).cast<String, String>(),
+      requiredTags: (() {
+        final guardedValue = map['requiredTags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       resourceGroupName: map['resourceGroupName'] as String,
-      resources: pulumi.Input.decodeList<GetResourcesResource>(map['resources'], (value) => GetResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
+      resources: pulumi.Input.decodeList<GetResourcesResource>(
+        map['resources']!,
+        (value) => GetResourcesResource.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

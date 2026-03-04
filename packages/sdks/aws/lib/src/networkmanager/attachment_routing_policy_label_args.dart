@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentRoutingPolicyLabelArgs {
   /// The ID of the attachment to apply the routing policy label to.
   final pulumi.Input<String> attachmentId;
+
   /// The ID of the core network containing the attachment.
   final pulumi.Input<String> coreNetworkId;
+
   /// The routing policy label to apply to the attachment.
   final pulumi.Input<String> routingPolicyLabel;
 
@@ -34,10 +36,11 @@ class AttachmentRoutingPolicyLabelArgs {
 
   factory AttachmentRoutingPolicyLabelArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentRoutingPolicyLabelArgs(
-      attachmentId: (map['attachmentId'] as String).input(),
-      coreNetworkId: (map['coreNetworkId'] as String).input(),
-      routingPolicyLabel: (map['routingPolicyLabel'] as String).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      coreNetworkId: pulumi.Input.fromValue(map['coreNetworkId'] as String),
+      routingPolicyLabel: pulumi.Input.fromValue(
+        map['routingPolicyLabel'] as String,
+      ),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class DomainLaunchSecurityTdxQuoteGenerationService {
 
   /// Creates a new [DomainLaunchSecurityTdxQuoteGenerationService].
   /// [path] Sets the path for the quote generation service used in TDX.
-  DomainLaunchSecurityTdxQuoteGenerationService({
-    this.path,
-  });
+  DomainLaunchSecurityTdxQuoteGenerationService({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
-  factory DomainLaunchSecurityTdxQuoteGenerationService.fromMap(Map<String, dynamic> map) {
+  factory DomainLaunchSecurityTdxQuoteGenerationService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainLaunchSecurityTdxQuoteGenerationService(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

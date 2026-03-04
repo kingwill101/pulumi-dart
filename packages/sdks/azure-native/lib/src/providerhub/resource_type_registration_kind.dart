@@ -4,16 +4,15 @@ enum ResourceTypeRegistrationKind {
   hybrid("Hybrid"),
   direct("Direct");
 
-  const ResourceTypeRegistrationKind(this.value);
-  final String value;
+  const ResourceTypeRegistrationKind(this.wireValue);
+  final String wireValue;
 
   static ResourceTypeRegistrationKind fromValue(String value) {
     for (final item in ResourceTypeRegistrationKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceTypeRegistrationKind value: $value');
   }
 }
-

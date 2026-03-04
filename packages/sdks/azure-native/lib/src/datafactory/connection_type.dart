@@ -2,16 +2,15 @@
 enum ConnectionType {
   valueLinkedservicetype("linkedservicetype");
 
-  const ConnectionType(this.value);
-  final String value;
+  const ConnectionType(this.wireValue);
+  final String wireValue;
 
   static ConnectionType fromValue(String value) {
     for (final item in ConnectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionType value: $value');
   }
 }
-

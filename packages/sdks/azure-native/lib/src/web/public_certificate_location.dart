@@ -4,16 +4,15 @@ enum PublicCertificateLocation {
   valueLocalMachineMy("LocalMachineMy"),
   valueUnknown("Unknown");
 
-  const PublicCertificateLocation(this.value);
-  final String value;
+  const PublicCertificateLocation(this.wireValue);
+  final String wireValue;
 
   static PublicCertificateLocation fromValue(String value) {
     for (final item in PublicCertificateLocation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicCertificateLocation value: $value');
   }
 }
-

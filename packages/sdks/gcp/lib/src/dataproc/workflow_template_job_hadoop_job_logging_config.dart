@@ -8,20 +8,23 @@ class WorkflowTemplateJobHadoopJobLoggingConfig {
 
   /// Creates a new [WorkflowTemplateJobHadoopJobLoggingConfig].
   /// [driverLogLevels] The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  WorkflowTemplateJobHadoopJobLoggingConfig({
-    this.driverLogLevels,
-  });
+  WorkflowTemplateJobHadoopJobLoggingConfig({this.driverLogLevels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'driverLogLevels': ?driverLogLevels,
-    };
+    return <String, dynamic>{'driverLogLevels': ?driverLogLevels};
   }
 
-  factory WorkflowTemplateJobHadoopJobLoggingConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplateJobHadoopJobLoggingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplateJobHadoopJobLoggingConfig(
-      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels']! as Map).cast<String, String>()).input(),
+      driverLogLevels: (() {
+        final guardedValue = map['driverLogLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

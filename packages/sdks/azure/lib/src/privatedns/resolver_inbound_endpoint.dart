@@ -387,7 +387,7 @@ import 'resolver_inbound_endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-07-01
@@ -401,13 +401,18 @@ import 'resolver_inbound_endpoint_state.dart';
 /// ```
 class ResolverInboundEndpoint extends pulumi.CustomResource {
   /// One `ip_configurations` block as defined below. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
-  late final pulumi.Output<ResolverInboundEndpointIpConfigurations> ipConfigurations;
+  late final pulumi.Output<ResolverInboundEndpointIpConfigurations>
+  ipConfigurations;
+
   /// Specifies the Azure Region where the Private DNS Resolver Inbound Endpoint should exist. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   late final pulumi.Output<String> privateDnsResolverId;
+
   /// A mapping of tags which should be assigned to the Private DNS Resolver Inbound Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -420,16 +425,18 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
     ResolverInboundEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ResolverInboundEndpoint] resource's state with the given [name] and [id].
@@ -450,15 +457,17 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

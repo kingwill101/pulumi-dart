@@ -16,14 +16,23 @@ class ConnectToSourceOracleSyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            OracleConnectionInfoResponse,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToSourceOracleSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToSourceOracleSyncTaskInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToSourceOracleSyncTaskInputResponse(
-      sourceConnectionInfo: (OracleConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        OracleConnectionInfoResponse.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

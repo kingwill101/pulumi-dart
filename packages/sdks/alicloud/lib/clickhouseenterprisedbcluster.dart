@@ -1,3 +1,1 @@
-library pulumi_alicloud_clickhouseenterprisedbcluster;
-
 export 'package:pulumi_alicloud/src/clickhouseenterprisedbcluster.dart';

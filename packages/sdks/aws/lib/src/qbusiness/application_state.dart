@@ -9,25 +9,36 @@ import 'application_timeouts.dart';
 class ApplicationState {
   /// ARN of the Q Business application.
   final pulumi.Input<String>? arn;
+
   /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
-  final pulumi.Input<ApplicationAttachmentsConfiguration>? attachmentsConfiguration;
+  final pulumi.Input<ApplicationAttachmentsConfiguration>?
+  attachmentsConfiguration;
+
   /// Description of the Amazon Q application.
   final pulumi.Input<String>? description;
+
   /// Name of the Amazon Q application.
   final pulumi.Input<String>? displayName;
+
   /// Information about encryption configuration. See `encryption_configuration` below.
-  final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<ApplicationEncryptionConfiguration>?
+  encryptionConfiguration;
+
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   final pulumi.Input<String>? iamServiceRoleArn;
+
   /// ARN of the AWS IAM Identity Center application attached to your Amazon Q Business application.
   final pulumi.Input<String>? identityCenterApplicationArn;
+
   /// ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? identityCenterInstanceArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ApplicationTimeouts>? timeouts;
@@ -63,35 +74,110 @@ class ApplicationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'attachmentsConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationAttachmentsConfiguration, Map<String, dynamic>>(attachmentsConfiguration, (value) => value.toMap()),
+      'attachmentsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationAttachmentsConfiguration,
+            Map<String, dynamic>
+          >(attachmentsConfiguration, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
-      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'encryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationEncryptionConfiguration,
+            Map<String, dynamic>
+          >(encryptionConfiguration, (value) => value.toMap()),
       'iamServiceRoleArn': ?iamServiceRoleArn,
       'identityCenterApplicationArn': ?identityCenterApplicationArn,
       'identityCenterInstanceArn': ?identityCenterInstanceArn,
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ApplicationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      attachmentsConfiguration: map['attachmentsConfiguration'] == null ? null : ((ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      iamServiceRoleArn: map['iamServiceRoleArn'] == null ? null : ((map['iamServiceRoleArn'] as String).input()).input(),
-      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : ((map['identityCenterApplicationArn'] as String).input()).input(),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : ((map['identityCenterInstanceArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachmentsConfiguration: (() {
+        final guardedValue = map['attachmentsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationAttachmentsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionConfiguration: (() {
+        final guardedValue = map['encryptionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationEncryptionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      iamServiceRoleArn: (() {
+        final guardedValue = map['iamServiceRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityCenterApplicationArn: (() {
+        final guardedValue = map['identityCenterApplicationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityCenterInstanceArn: (() {
+        final guardedValue = map['identityCenterInstanceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

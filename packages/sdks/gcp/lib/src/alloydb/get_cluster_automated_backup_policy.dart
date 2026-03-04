@@ -13,21 +13,34 @@ class GetClusterAutomatedBackupPolicy {
   ///
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final pulumi.Input<String> backupWindow;
+
   /// Whether automated backups are enabled.
   final pulumi.Input<bool> enabled;
+
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
-  final pulumi.Input<List<GetClusterAutomatedBackupPolicyEncryptionConfig>> encryptionConfigs;
+  final pulumi.Input<List<GetClusterAutomatedBackupPolicyEncryptionConfig>>
+  encryptionConfigs;
+
   /// Labels to apply to backups created using this configuration.
   final pulumi.Input<Map<String, String>> labels;
+
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
   final pulumi.Input<String> location;
+
   /// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
-  final pulumi.Input<List<GetClusterAutomatedBackupPolicyQuantityBasedRetention>> quantityBasedRetentions;
+  final pulumi.Input<
+    List<GetClusterAutomatedBackupPolicyQuantityBasedRetention>
+  >
+  quantityBasedRetentions;
+
   /// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
-  final pulumi.Input<List<GetClusterAutomatedBackupPolicyTimeBasedRetention>> timeBasedRetentions;
+  final pulumi.Input<List<GetClusterAutomatedBackupPolicyTimeBasedRetention>>
+  timeBasedRetentions;
+
   /// Weekly schedule for the Backup.
-  final pulumi.Input<List<GetClusterAutomatedBackupPolicyWeeklySchedule>> weeklySchedules;
+  final pulumi.Input<List<GetClusterAutomatedBackupPolicyWeeklySchedule>>
+  weeklySchedules;
 
   /// Creates a new [GetClusterAutomatedBackupPolicy].
   /// [backupWindow] The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
@@ -53,26 +66,105 @@ class GetClusterAutomatedBackupPolicy {
     return <String, dynamic>{
       'backupWindow': backupWindow,
       'enabled': enabled,
-      'encryptionConfigs': pulumi.Input.mapInputValue<List<GetClusterAutomatedBackupPolicyEncryptionConfig>, List<Map<String, dynamic>>>(encryptionConfigs, (value) => pulumi.Input.encodeList<GetClusterAutomatedBackupPolicyEncryptionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryptionConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetClusterAutomatedBackupPolicyEncryptionConfig>,
+            List<Map<String, dynamic>>
+          >(
+            encryptionConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterAutomatedBackupPolicyEncryptionConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'labels': labels,
       'location': location,
-      'quantityBasedRetentions': pulumi.Input.mapInputValue<List<GetClusterAutomatedBackupPolicyQuantityBasedRetention>, List<Map<String, dynamic>>>(quantityBasedRetentions, (value) => pulumi.Input.encodeList<GetClusterAutomatedBackupPolicyQuantityBasedRetention, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeBasedRetentions': pulumi.Input.mapInputValue<List<GetClusterAutomatedBackupPolicyTimeBasedRetention>, List<Map<String, dynamic>>>(timeBasedRetentions, (value) => pulumi.Input.encodeList<GetClusterAutomatedBackupPolicyTimeBasedRetention, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'weeklySchedules': pulumi.Input.mapInputValue<List<GetClusterAutomatedBackupPolicyWeeklySchedule>, List<Map<String, dynamic>>>(weeklySchedules, (value) => pulumi.Input.encodeList<GetClusterAutomatedBackupPolicyWeeklySchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'quantityBasedRetentions':
+          pulumi.Input.mapInputValue<
+            List<GetClusterAutomatedBackupPolicyQuantityBasedRetention>,
+            List<Map<String, dynamic>>
+          >(
+            quantityBasedRetentions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterAutomatedBackupPolicyQuantityBasedRetention,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timeBasedRetentions':
+          pulumi.Input.mapInputValue<
+            List<GetClusterAutomatedBackupPolicyTimeBasedRetention>,
+            List<Map<String, dynamic>>
+          >(
+            timeBasedRetentions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterAutomatedBackupPolicyTimeBasedRetention,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'weeklySchedules':
+          pulumi.Input.mapInputValue<
+            List<GetClusterAutomatedBackupPolicyWeeklySchedule>,
+            List<Map<String, dynamic>>
+          >(
+            weeklySchedules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterAutomatedBackupPolicyWeeklySchedule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetClusterAutomatedBackupPolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterAutomatedBackupPolicy(
-      backupWindow: (map['backupWindow'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      encryptionConfigs: (pulumi.Input.decodeList<GetClusterAutomatedBackupPolicyEncryptionConfig>(map['encryptionConfigs'], (value) => GetClusterAutomatedBackupPolicyEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      quantityBasedRetentions: (pulumi.Input.decodeList<GetClusterAutomatedBackupPolicyQuantityBasedRetention>(map['quantityBasedRetentions'], (value) => GetClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeBasedRetentions: (pulumi.Input.decodeList<GetClusterAutomatedBackupPolicyTimeBasedRetention>(map['timeBasedRetentions'], (value) => GetClusterAutomatedBackupPolicyTimeBasedRetention.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weeklySchedules: (pulumi.Input.decodeList<GetClusterAutomatedBackupPolicyWeeklySchedule>(map['weeklySchedules'], (value) => GetClusterAutomatedBackupPolicyWeeklySchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupWindow: pulumi.Input.fromValue(map['backupWindow'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      encryptionConfigs: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GetClusterAutomatedBackupPolicyEncryptionConfig>(
+          map['encryptionConfigs']!,
+          (value) => GetClusterAutomatedBackupPolicyEncryptionConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      quantityBasedRetentions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetClusterAutomatedBackupPolicyQuantityBasedRetention
+        >(
+          map['quantityBasedRetentions']!,
+          (value) =>
+              GetClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      timeBasedRetentions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetClusterAutomatedBackupPolicyTimeBasedRetention
+        >(
+          map['timeBasedRetentions']!,
+          (value) => GetClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      weeklySchedules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClusterAutomatedBackupPolicyWeeklySchedule>(
+          map['weeklySchedules']!,
+          (value) => GetClusterAutomatedBackupPolicyWeeklySchedule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -1,11 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'multitenant_distribution_active_trusted_key_group.dart';
 import 'multitenant_distribution_args.dart';
-import 'multitenant_distribution_cache_behavior.dart';
-import 'multitenant_distribution_custom_error_response.dart';
 import 'multitenant_distribution_default_cache_behavior.dart';
-import 'multitenant_distribution_origin.dart';
-import 'multitenant_distribution_origin_group.dart';
 import 'multitenant_distribution_restrictions.dart';
 import 'multitenant_distribution_state.dart';
 import 'multitenant_distribution_tenant_config.dart';
@@ -18,7 +13,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///
 /// For information about CloudFront multi-tenant distributions, see the [Amazon CloudFront Developer Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/).
 ///
-/// > **NOTE:** CloudFront distributions take about 15 minutes to reach a deployed state after creation or modification. During this time, deletes to resources will be blocked. If you need to delete a distribution that is enabled and you do not want to wait, you need to use the `retain_on_delete` flag.
+/// &gt; **NOTE:** CloudFront distributions take about 15 minutes to reach a deployed state after creation or modification. During this time, deletes to resources will be blocked. If you need to delete a distribution that is enabled and you do not want to wait, you need to use the `retain_on_delete` flag.
 ///
 /// ## Multi-tenant Distribution Limitations
 ///
@@ -504,52 +499,77 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// ```
 class MultitenantDistribution extends pulumi.CustomResource {
   /// List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
-  late final pulumi.Output<List<MultitenantDistributionActiveTrustedKeyGroup>?> activeTrustedKeyGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> activeTrustedKeyGroups;
+
   /// ARN for the distribution.
   late final pulumi.Output<String> arn;
+
   /// Ordered list of cache behaviors resource for this distribution. See Cache Behavior below.
-  late final pulumi.Output<List<MultitenantDistributionCacheBehavior>?> cacheBehaviors;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cacheBehaviors;
+
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
   late final pulumi.Output<String> callerReference;
+
   /// Any comments you want to include about the distribution.
   late final pulumi.Output<String> comment;
+
   /// Connection mode for the distribution. Always set to `tenant-only` for multi-tenant distributions.
   late final pulumi.Output<String> connectionMode;
+
   /// One or more custom error response elements. See Custom Error Response below.
-  late final pulumi.Output<List<MultitenantDistributionCustomErrorResponse>?> customErrorResponses;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customErrorResponses;
+
   /// Default cache behavior for this distribution. See Default Cache Behavior below.
-  late final pulumi.Output<MultitenantDistributionDefaultCacheBehavior> defaultCacheBehavior;
+  late final pulumi.Output<MultitenantDistributionDefaultCacheBehavior>
+  defaultCacheBehavior;
+
   /// Object that you want CloudFront to return when an end user requests the root URL.
   late final pulumi.Output<String?> defaultRootObject;
+
   /// Domain name corresponding to the distribution.
   late final pulumi.Output<String> domainName;
+
   /// Whether the distribution is enabled to accept end user requests for content.
   late final pulumi.Output<bool> enabled;
+
   /// Current version of the distribution's information.
   late final pulumi.Output<String> etag;
+
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
   late final pulumi.Output<String> httpVersion;
+
   /// Number of invalidation batches currently in progress.
   late final pulumi.Output<int> inProgressInvalidationBatches;
+
   /// Date and time the distribution was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
-  late final pulumi.Output<List<MultitenantDistributionOriginGroup>?> originGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
+
   /// One or more origins for this distribution (multiples allowed). See Origin below.
-  late final pulumi.Output<List<MultitenantDistributionOrigin>?> origins;
+  late final pulumi.Output<List<Map<String, dynamic>>?> origins;
+
   /// Restriction configuration for this distribution. See Restrictions below.
   late final pulumi.Output<MultitenantDistributionRestrictions?> restrictions;
+
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   late final pulumi.Output<String> status;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   late final pulumi.Output<MultitenantDistributionTenantConfig> tenantConfig;
   late final pulumi.Output<MultitenantDistributionTimeouts?> timeouts;
+
   /// SSL configuration for this distribution. See Viewer Certificate below.
-  late final pulumi.Output<MultitenantDistributionViewerCertificate> viewerCertificate;
+  late final pulumi.Output<MultitenantDistributionViewerCertificate>
+  viewerCertificate;
+
   /// Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
   late final pulumi.Output<String?> webAclId;
 
@@ -562,36 +582,54 @@ class MultitenantDistribution extends pulumi.CustomResource {
     MultitenantDistributionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups');
-    this.arn = registerOutput<String>('arn');
-    this.cacheBehaviors = registerOutput<List<MultitenantDistributionCacheBehavior>?>('cacheBehaviors');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.comment = registerOutput<String>('comment');
-    this.connectionMode = registerOutput<String>('connectionMode');
-    this.customErrorResponses = registerOutput<List<MultitenantDistributionCustomErrorResponse>?>('customErrorResponses');
-    this.defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior');
-    this.defaultRootObject = registerOutput<String?>('defaultRootObject');
-    this.domainName = registerOutput<String>('domainName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.httpVersion = registerOutput<String>('httpVersion');
-    this.inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.originGroups = registerOutput<List<MultitenantDistributionOriginGroup>?>('originGroups');
-    this.origins = registerOutput<List<MultitenantDistributionOrigin>?>('origins');
-    this.restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig');
-    this.timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
-    this.viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate');
-    this.webAclId = registerOutput<String?>('webAclId');
+         'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'activeTrustedKeyGroups',
+    );
+    arn = registerOutput<String>('arn');
+    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
+      'cacheBehaviors',
+    );
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String>('comment');
+    connectionMode = registerOutput<String>('connectionMode');
+    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>(
+      'customErrorResponses',
+    );
+    defaultCacheBehavior =
+        registerOutput<MultitenantDistributionDefaultCacheBehavior>(
+          'defaultCacheBehavior',
+        );
+    defaultRootObject = registerOutput<String?>('defaultRootObject');
+    domainName = registerOutput<String>('domainName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    httpVersion = registerOutput<String>('httpVersion');
+    inProgressInvalidationBatches = registerOutput<int>(
+      'inProgressInvalidationBatches',
+    );
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
+    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    restrictions = registerOutput<MultitenantDistributionRestrictions?>(
+      'restrictions',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
+      'tenantConfig',
+    );
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
+    viewerCertificate =
+        registerOutput<MultitenantDistributionViewerCertificate>(
+          'viewerCertificate',
+        );
+    webAclId = registerOutput<String?>('webAclId');
   }
 
   /// Gets an existing [MultitenantDistribution] resource's state with the given [name] and [id].
@@ -612,35 +650,53 @@ class MultitenantDistribution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups');
-    this.arn = registerOutput<String>('arn');
-    this.cacheBehaviors = registerOutput<List<MultitenantDistributionCacheBehavior>?>('cacheBehaviors');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.comment = registerOutput<String>('comment');
-    this.connectionMode = registerOutput<String>('connectionMode');
-    this.customErrorResponses = registerOutput<List<MultitenantDistributionCustomErrorResponse>?>('customErrorResponses');
-    this.defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior');
-    this.defaultRootObject = registerOutput<String?>('defaultRootObject');
-    this.domainName = registerOutput<String>('domainName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.httpVersion = registerOutput<String>('httpVersion');
-    this.inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.originGroups = registerOutput<List<MultitenantDistributionOriginGroup>?>('originGroups');
-    this.origins = registerOutput<List<MultitenantDistributionOrigin>?>('origins');
-    this.restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig');
-    this.timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
-    this.viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate');
-    this.webAclId = registerOutput<String?>('webAclId');
+         'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'activeTrustedKeyGroups',
+    );
+    arn = registerOutput<String>('arn');
+    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
+      'cacheBehaviors',
+    );
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String>('comment');
+    connectionMode = registerOutput<String>('connectionMode');
+    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>(
+      'customErrorResponses',
+    );
+    defaultCacheBehavior =
+        registerOutput<MultitenantDistributionDefaultCacheBehavior>(
+          'defaultCacheBehavior',
+        );
+    defaultRootObject = registerOutput<String?>('defaultRootObject');
+    domainName = registerOutput<String>('domainName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    httpVersion = registerOutput<String>('httpVersion');
+    inProgressInvalidationBatches = registerOutput<int>(
+      'inProgressInvalidationBatches',
+    );
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
+    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    restrictions = registerOutput<MultitenantDistributionRestrictions?>(
+      'restrictions',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
+      'tenantConfig',
+    );
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
+    viewerCertificate =
+        registerOutput<MultitenantDistributionViewerCertificate>(
+          'viewerCertificate',
+        );
+    webAclId = registerOutput<String?>('webAclId');
   }
 }

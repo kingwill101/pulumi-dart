@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MachineGroupArgs {
   /// The specific machine identification, which can be an IP address or user-defined identity.
   final pulumi.Input<List<String>> identifyLists;
+
   /// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
   final pulumi.Input<String>? identifyType;
+
   /// The machine group name, which is unique in the same project.
   final pulumi.Input<String>? name;
+
   /// The project name to the machine group belongs.
   final pulumi.Input<String> project;
+
   /// The topic of a machine group.
   final pulumi.Input<String>? topic;
 
@@ -44,12 +48,25 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      identifyLists: ((map['identifyLists'] as List).cast<String>()).input(),
-      identifyType: map['identifyType'] == null ? null : (map['identifyType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: (map['project'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      identifyLists: pulumi.Input.fromValue(
+        (map['identifyLists'] as List).cast<String>(),
+      ),
+      identifyType: (() {
+        final guardedValue = map['identifyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

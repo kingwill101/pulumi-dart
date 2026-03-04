@@ -181,36 +181,52 @@ import 'webhook_args.dart';
 class Webhook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// content type
   late final pulumi.Output<String?> contentType;
+
   /// webhook deliveryStatus
   late final pulumi.Output<String> deliveryStatus;
+
   /// whether to enable ssl verification
   late final pulumi.Output<String?> enableSslVerification;
+
   /// under which event notification should be sent.
   late final pulumi.Output<List<String>?> events;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// webhook payload url
   late final pulumi.Output<String?> payloadUrl;
+
   /// Azure Resource Provisioning State
   late final pulumi.Output<String> provisioningState;
+
   /// whether to send notification under any event.
   late final pulumi.Output<String?> sendAllEvents;
+
   /// Webhook status.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tenant id.
   late final pulumi.Output<String> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// whether to update webhookKey.
   late final pulumi.Output<String?> updateWebhookKey;
+
   /// Webhook id in database.
   late final pulumi.Output<String> webhookId;
+
   /// webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   late final pulumi.Output<String?> webhookKey;
+
   /// whether webhookKey is enabled.
   late final pulumi.Output<String> webhookKeyEnabled;
 
@@ -223,27 +239,27 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appcomplianceautomation:Webhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contentType = registerOutput<String?>('contentType');
-    this.deliveryStatus = registerOutput<String>('deliveryStatus');
-    this.enableSslVerification = registerOutput<String?>('enableSslVerification');
-    this.events = registerOutput<List<String>?>('events');
+         'azure-native:appcomplianceautomation:Webhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String?>('contentType');
+    deliveryStatus = registerOutput<String>('deliveryStatus');
+    enableSslVerification = registerOutput<String?>('enableSslVerification');
+    events = registerOutput<List<String>?>('events');
     this.name = registerOutput<String>('name');
-    this.payloadUrl = registerOutput<String?>('payloadUrl');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sendAllEvents = registerOutput<String?>('sendAllEvents');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.updateWebhookKey = registerOutput<String?>('updateWebhookKey');
-    this.webhookId = registerOutput<String>('webhookId');
-    this.webhookKey = registerOutput<String?>('webhookKey');
-    this.webhookKeyEnabled = registerOutput<String>('webhookKeyEnabled');
+    payloadUrl = registerOutput<String?>('payloadUrl');
+    provisioningState = registerOutput<String>('provisioningState');
+    sendAllEvents = registerOutput<String?>('sendAllEvents');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    updateWebhookKey = registerOutput<String?>('updateWebhookKey');
+    webhookId = registerOutput<String>('webhookId');
+    webhookKey = registerOutput<String?>('webhookKey');
+    webhookKeyEnabled = registerOutput<String>('webhookKeyEnabled');
   }
 }

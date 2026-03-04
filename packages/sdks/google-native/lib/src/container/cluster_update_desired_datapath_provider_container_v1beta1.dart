@@ -4,16 +4,20 @@ enum ClusterUpdateDesiredDatapathProviderContainerV1beta1 {
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
-  const ClusterUpdateDesiredDatapathProviderContainerV1beta1(this.value);
-  final String value;
+  const ClusterUpdateDesiredDatapathProviderContainerV1beta1(this.wireValue);
+  final String wireValue;
 
-  static ClusterUpdateDesiredDatapathProviderContainerV1beta1 fromValue(String value) {
-    for (final item in ClusterUpdateDesiredDatapathProviderContainerV1beta1.values) {
-      if (item.value == value) {
+  static ClusterUpdateDesiredDatapathProviderContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ClusterUpdateDesiredDatapathProviderContainerV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterUpdateDesiredDatapathProviderContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ClusterUpdateDesiredDatapathProviderContainerV1beta1 value: $value',
+    );
   }
 }
-

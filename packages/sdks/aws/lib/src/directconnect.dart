@@ -1,5 +1,3 @@
-library module_directconnect;
-
 export 'directconnect/bgp_peer.dart';
 export 'directconnect/bgp_peer_args.dart';
 export 'directconnect/bgp_peer_state.dart';

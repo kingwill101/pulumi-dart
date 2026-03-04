@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_autoscaling_settings.dart';
-import 'cluster_node_type_config.dart';
 import 'cluster_state.dart';
 
 /// A cluster in a private cloud.
@@ -741,27 +740,35 @@ class Cluster extends pulumi.CustomResource {
   /// Configuration of the autoscaling applied to this cluster
   /// Structure is documented below.
   late final pulumi.Output<ClusterAutoscalingSettings?> autoscalingSettings;
+
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// True if the cluster is a management cluster; false otherwise.
   /// There can only be one management cluster in a private cloud and it has to be the first one.
   late final pulumi.Output<bool> management;
+
   /// The ID of the Cluster.
   late final pulumi.Output<String> name;
+
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  late final pulumi.Output<List<ClusterNodeTypeConfig>?> nodeTypeConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> nodeTypeConfigs;
+
   /// The resource name of the private cloud to create a new cluster in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
   late final pulumi.Output<String> parent;
+
   /// State of the Cluster.
   late final pulumi.Output<String> state;
+
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
+
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -776,20 +783,24 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings');
-    this.createTime = registerOutput<String>('createTime');
-    this.management = registerOutput<bool>('management');
+         'gcp:vmwareengine/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>(
+      'autoscalingSettings',
+    );
+    createTime = registerOutput<String>('createTime');
+    management = registerOutput<bool>('management');
     this.name = registerOutput<String>('name');
-    this.nodeTypeConfigs = registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs');
-    this.parent = registerOutput<String>('parent');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    nodeTypeConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'nodeTypeConfigs',
+    );
+    parent = registerOutput<String>('parent');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -810,19 +821,23 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings');
-    this.createTime = registerOutput<String>('createTime');
-    this.management = registerOutput<bool>('management');
+         'gcp:vmwareengine/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>(
+      'autoscalingSettings',
+    );
+    createTime = registerOutput<String>('createTime');
+    management = registerOutput<bool>('management');
     this.name = registerOutput<String>('name');
-    this.nodeTypeConfigs = registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs');
-    this.parent = registerOutput<String>('parent');
+    nodeTypeConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'nodeTypeConfigs',
+    );
+    parent = registerOutput<String>('parent');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

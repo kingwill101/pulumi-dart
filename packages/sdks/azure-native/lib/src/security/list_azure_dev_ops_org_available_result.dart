@@ -7,29 +7,46 @@ import 'azure_dev_ops_org_response.dart';
 class ListAzureDevOpsOrgAvailableResult {
   /// Gets or sets next link to scroll over the results.
   final String? nextLink;
+
   /// Gets or sets list of resources.
   final List<AzureDevOpsOrgResponse>? value;
 
   /// Creates a new [ListAzureDevOpsOrgAvailableResult].
   /// [nextLink] Gets or sets next link to scroll over the results.
   /// [value] Gets or sets list of resources.
-  ListAzureDevOpsOrgAvailableResult({
-    this.nextLink,
-    this.value,
-  });
+  ListAzureDevOpsOrgAvailableResult({this.nextLink, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<AzureDevOpsOrgResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AzureDevOpsOrgResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListAzureDevOpsOrgAvailableResult.fromMap(Map<String, dynamic> map) {
     return ListAzureDevOpsOrgAvailableResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<AzureDevOpsOrgResponse>(map['value']!, (value) => AzureDevOpsOrgResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AzureDevOpsOrgResponse>(
+          guardedValue,
+          (value) => AzureDevOpsOrgResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

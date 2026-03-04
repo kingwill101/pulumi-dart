@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   final pulumi.Input<String> endIpAddress;
+
   /// Name of the firewall rule.
   final pulumi.Input<String>? firewallRuleName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   final pulumi.Input<String> startIpAddress;
 
@@ -44,12 +48,17 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      firewallRuleName: (() {
+        final guardedValue = map['firewallRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
-

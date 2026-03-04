@@ -9,22 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncServerEndpointArgs {
   /// Is Cloud Tiering Enabled? Defaults to `false`.
   final pulumi.Input<bool>? cloudTieringEnabled;
+
   /// Specifies how the server initially downloads the Azure file share data. Valid Values includes `NamespaceThenModifiedFiles`, `NamespaceOnly`, and `AvoidTieredFiles`. Defaults to `NamespaceThenModifiedFiles`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? initialDownloadPolicy;
+
   /// Specifies how to handle the local cache. Valid Values include `UpdateLocallyCachedFiles` and `DownloadNewAndModifiedFiles`. Defaults to `UpdateLocallyCachedFiles`.
   final pulumi.Input<String>? localCacheMode;
+
   /// The name which should be used for this Storage Sync. Changing this forces a new Storage Sync Server Endpoint to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Registered Server that will be associate with the Storage Sync Server Endpoint. Changing this forces a new Storage Sync Server Endpoint to be created.
   ///
-  /// > **Note:** The target server must already be registered with the parent `azure.storage.Sync` prior to creating this endpoint. For more information on registering a server see the [Microsoft documentation](https://learn.microsoft.com/azure/storage/file-sync/file-sync-server-registration)
+  /// &gt; **Note:** The target server must already be registered with the parent `azure.storage.Sync` prior to creating this endpoint. For more information on registering a server see the [Microsoft documentation](https://learn.microsoft.com/azure/storage/file-sync/file-sync-server-registration)
   final pulumi.Input<String> registeredServerId;
+
   /// The path on the Windows Server to be synced to the Azure file share. Changing this forces a new Storage Sync Server Endpoint to be created.
   final pulumi.Input<String> serverLocalPath;
+
   /// The ID of the Storage Sync Group where the Storage Sync Server Endpoint should exist. Changing this forces a new Storage Sync Server Endpoint to be created.
   final pulumi.Input<String> storageSyncGroupId;
+
   /// Files older than the specified age will be tiered to the cloud.
   final pulumi.Input<int>? tierFilesOlderThanDays;
+
   /// What percentage of free space on the volume should be preserved? Defaults to `20`.
   final pulumi.Input<int>? volumeFreeSpacePercent;
 
@@ -66,16 +74,43 @@ class SyncServerEndpointArgs {
 
   factory SyncServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return SyncServerEndpointArgs(
-      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : (map['cloudTieringEnabled']! as bool).input(),
-      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy']! as String).input(),
-      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      registeredServerId: (map['registeredServerId'] as String).input(),
-      serverLocalPath: (map['serverLocalPath'] as String).input(),
-      storageSyncGroupId: (map['storageSyncGroupId'] as String).input(),
-      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays']! as int).input(),
-      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent']! as int).input(),
+      cloudTieringEnabled: (() {
+        final guardedValue = map['cloudTieringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      initialDownloadPolicy: (() {
+        final guardedValue = map['initialDownloadPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localCacheMode: (() {
+        final guardedValue = map['localCacheMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registeredServerId: pulumi.Input.fromValue(
+        map['registeredServerId'] as String,
+      ),
+      serverLocalPath: pulumi.Input.fromValue(map['serverLocalPath'] as String),
+      storageSyncGroupId: pulumi.Input.fromValue(
+        map['storageSyncGroupId'] as String,
+      ),
+      tierFilesOlderThanDays: (() {
+        final guardedValue = map['tierFilesOlderThanDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeFreeSpacePercent: (() {
+        final guardedValue = map['volumeFreeSpacePercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

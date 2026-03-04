@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda {
   /// ARN of the Lambda function.
   final pulumi.Input<String> arn;
+
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
 
@@ -28,12 +30,21 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda(
-      arn: (map['arn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

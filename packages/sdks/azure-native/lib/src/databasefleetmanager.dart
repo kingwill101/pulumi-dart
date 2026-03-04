@@ -1,5 +1,3 @@
-library module_databasefleetmanager;
-
 export 'databasefleetmanager/database_create_mode.dart';
 export 'databasefleetmanager/database_identity.dart';
 export 'databasefleetmanager/database_identity_response.dart';

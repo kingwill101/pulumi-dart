@@ -9,20 +9,19 @@ class GCS {
 
   /// Creates a new [GCS].
   /// [remotePath] Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
-  GCS({
-    this.remotePath,
-  });
+  GCS({this.remotePath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'remotePath': ?remotePath,
-    };
+    return <String, dynamic>{'remotePath': ?remotePath};
   }
 
   factory GCS.fromMap(Map<String, dynamic> map) {
     return GCS(
-      remotePath: map['remotePath'] == null ? null : (map['remotePath']! as String).input(),
+      remotePath: (() {
+        final guardedValue = map['remotePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

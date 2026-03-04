@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetReference {
   /// Arguments for dataset.
   final pulumi.Input<Map<String, dynamic>>? parameters;
+
   /// Reference dataset name.
   final pulumi.Input<String> referenceName;
+
   /// Dataset reference type.
   final pulumi.Input<String> type;
 
@@ -31,10 +33,15 @@ class DatasetReference {
 
   factory DatasetReference.fromMap(Map<String, dynamic> map) {
     return DatasetReference(
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
-      referenceName: (map['referenceName'] as String).input(),
-      type: (map['type'] as String).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

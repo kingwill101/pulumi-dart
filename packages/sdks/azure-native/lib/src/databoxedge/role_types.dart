@@ -8,16 +8,15 @@ enum RoleTypes {
   valueCloudEdgeManagement("CloudEdgeManagement"),
   valueKubernetes("Kubernetes");
 
-  const RoleTypes(this.value);
-  final String value;
+  const RoleTypes(this.wireValue);
+  final String wireValue;
 
   static RoleTypes fromValue(String value) {
     for (final item in RoleTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoleTypes value: $value');
   }
 }
-

@@ -211,20 +211,25 @@ import 'common_bandwith_package_attachment_state.dart';
 /// ```
 class CommonBandwithPackageAttachment extends pulumi.CustomResource {
   /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
-  /// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
+  /// &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
   late final pulumi.Output<String> bandwidthPackageBandwidth;
+
   /// The ID of the Internet Shared Bandwidth instance.
   late final pulumi.Output<String> bandwidthPackageId;
+
   /// . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
   late final pulumi.Output<bool?> cancelCommonBandwidthPackageIpBandwidth;
+
   /// The ID of the EIP that you want to query.
   ///
   /// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
   ///
-  /// > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+  /// &gt; **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
   late final pulumi.Output<String> instanceId;
+
   /// The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
   late final pulumi.Output<String?> ipType;
+
   /// The status of the Internet Shared Bandwidth instance.
   late final pulumi.Output<String> status;
 
@@ -237,17 +242,21 @@ class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     CommonBandwithPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthPackageBandwidth = registerOutput<String>('bandwidthPackageBandwidth');
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.cancelCommonBandwidthPackageIpBandwidth = registerOutput<bool?>('cancelCommonBandwidthPackageIpBandwidth');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipType = registerOutput<String?>('ipType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthPackageBandwidth = registerOutput<String>(
+      'bandwidthPackageBandwidth',
+    );
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    cancelCommonBandwidthPackageIpBandwidth = registerOutput<bool?>(
+      'cancelCommonBandwidthPackageIpBandwidth',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    ipType = registerOutput<String?>('ipType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [CommonBandwithPackageAttachment] resource's state with the given [name] and [id].
@@ -268,16 +277,20 @@ class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthPackageBandwidth = registerOutput<String>('bandwidthPackageBandwidth');
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.cancelCommonBandwidthPackageIpBandwidth = registerOutput<bool?>('cancelCommonBandwidthPackageIpBandwidth');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipType = registerOutput<String?>('ipType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthPackageBandwidth = registerOutput<String>(
+      'bandwidthPackageBandwidth',
+    );
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    cancelCommonBandwidthPackageIpBandwidth = registerOutput<bool?>(
+      'cancelCommonBandwidthPackageIpBandwidth',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    ipType = registerOutput<String?>('ipType');
+    status = registerOutput<String>('status');
   }
 }

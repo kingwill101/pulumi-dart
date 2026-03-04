@@ -666,7 +666,7 @@ import 'medtech_service_fhir_destination_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2022-12-01
@@ -681,14 +681,19 @@ import 'medtech_service_fhir_destination_state.dart';
 class MedtechServiceFhirDestination extends pulumi.CustomResource {
   /// Specifies the destination Fhir mappings of the Med Tech Service Fhir Destination.
   late final pulumi.Output<String> destinationFhirMappingJson;
+
   /// Specifies the destination fhir service id of the Med Tech Service Fhir Destination.
   late final pulumi.Output<String> destinationFhirServiceId;
+
   /// Specifies the destination identity resolution type where the Healthcare Med Tech Service Fhir Destination should be created. Possible values are `Create`, `Lookup`.
   late final pulumi.Output<String> destinationIdentityResolutionType;
+
   /// Specifies the Azure Region where the Healthcare Med Tech Service Fhir Destination should be created. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Healthcare Med Tech Service where the Healthcare Med Tech Service Fhir Destination should exist. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   late final pulumi.Output<String> medtechServiceId;
+
   /// Specifies the name of the Healthcare Med Tech Service Fhir Destination. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   late final pulumi.Output<String> name;
 
@@ -701,16 +706,22 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
     MedtechServiceFhirDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
-    this.destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');
-    this.destinationIdentityResolutionType = registerOutput<String>('destinationIdentityResolutionType');
-    this.location = registerOutput<String>('location');
-    this.medtechServiceId = registerOutput<String>('medtechServiceId');
+         'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationFhirMappingJson = registerOutput<String>(
+      'destinationFhirMappingJson',
+    );
+    destinationFhirServiceId = registerOutput<String>(
+      'destinationFhirServiceId',
+    );
+    destinationIdentityResolutionType = registerOutput<String>(
+      'destinationIdentityResolutionType',
+    );
+    location = registerOutput<String>('location');
+    medtechServiceId = registerOutput<String>('medtechServiceId');
     this.name = registerOutput<String>('name');
   }
 
@@ -732,16 +743,22 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
-    this.destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');
-    this.destinationIdentityResolutionType = registerOutput<String>('destinationIdentityResolutionType');
-    this.location = registerOutput<String>('location');
-    this.medtechServiceId = registerOutput<String>('medtechServiceId');
+         'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationFhirMappingJson = registerOutput<String>(
+      'destinationFhirMappingJson',
+    );
+    destinationFhirServiceId = registerOutput<String>(
+      'destinationFhirServiceId',
+    );
+    destinationIdentityResolutionType = registerOutput<String>(
+      'destinationIdentityResolutionType',
+    );
+    location = registerOutput<String>('location');
+    medtechServiceId = registerOutput<String>('medtechServiceId');
     this.name = registerOutput<String>('name');
   }
 }

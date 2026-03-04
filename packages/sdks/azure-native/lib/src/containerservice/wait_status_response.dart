@@ -7,6 +7,7 @@ import 'update_status_response.dart';
 class WaitStatusResponse {
   /// The status of the wait duration.
   final pulumi.Input<UpdateStatusResponse> status;
+
   /// The wait duration configured in seconds.
   final pulumi.Input<int> waitDurationInSeconds;
 
@@ -20,16 +21,25 @@ class WaitStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            UpdateStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'waitDurationInSeconds': waitDurationInSeconds,
     };
   }
 
   factory WaitStatusResponse.fromMap(Map<String, dynamic> map) {
     return WaitStatusResponse(
-      status: (UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      waitDurationInSeconds: (map['waitDurationInSeconds'] as int).input(),
+      status: pulumi.Input.fromValue(
+        UpdateStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      waitDurationInSeconds: pulumi.Input.fromValue(
+        map['waitDurationInSeconds'] as int,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_apigeeregistry;
-
 export 'apigeeregistry/api.dart';
 export 'apigeeregistry/api_args.dart';
 export 'apigeeregistry/api_artifact_iam_binding.dart';

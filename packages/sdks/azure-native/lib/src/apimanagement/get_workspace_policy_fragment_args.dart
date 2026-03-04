@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspacePolicyFragmentArgs {
   /// Policy fragment content format.
   final pulumi.Input<String>? format;
+
   /// A resource identifier.
   final pulumi.Input<String> id;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -44,12 +48,17 @@ class GetWorkspacePolicyFragmentArgs {
 
   factory GetWorkspacePolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePolicyFragmentArgs(
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      id: (map['id'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

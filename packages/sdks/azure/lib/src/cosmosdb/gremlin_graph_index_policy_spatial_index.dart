@@ -10,23 +10,22 @@ class GremlinGraphIndexPolicySpatialIndex {
   /// Creates a new [GremlinGraphIndexPolicySpatialIndex].
   /// [path] Path for which the indexing behaviour applies to. According to the service design, all spatial types including `LineString`, `MultiPolygon`, `Point`, and `Polygon` will be applied to the path.
   /// [types] Optional.
-  GremlinGraphIndexPolicySpatialIndex({
-    required this.path,
-    this.types,
-  });
+  GremlinGraphIndexPolicySpatialIndex({required this.path, this.types});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'types': ?types,
-    };
+    return <String, dynamic>{'path': path, 'types': ?types};
   }
 
-  factory GremlinGraphIndexPolicySpatialIndex.fromMap(Map<String, dynamic> map) {
+  factory GremlinGraphIndexPolicySpatialIndex.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GremlinGraphIndexPolicySpatialIndex(
-      path: (map['path'] as String).input(),
-      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      types: (() {
+        final guardedValue = map['types'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

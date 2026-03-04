@@ -6,31 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultCertificatePropertiesResponse {
   /// The activate date of certificate.
   final pulumi.Input<String> activateDate;
+
   /// Indicates whether to automatically synchronize certificate from key vault or not.
   final pulumi.Input<String>? autoSync;
+
   /// The certificate version of key vault.
   final pulumi.Input<String>? certVersion;
+
   /// The domain list of certificate.
   final pulumi.Input<List<String>> dnsNames;
+
   /// Optional. If set to true, it will not import private key from key vault.
   final pulumi.Input<bool>? excludePrivateKey;
+
   /// The expiration date of certificate.
   final pulumi.Input<String> expirationDate;
+
   /// The issue date of certificate.
   final pulumi.Input<String> issuedDate;
+
   /// The issuer of certificate.
   final pulumi.Input<String> issuer;
+
   /// The certificate name of key vault.
   final pulumi.Input<String> keyVaultCertName;
+
   /// Provisioning state of the Certificate
   final pulumi.Input<String> provisioningState;
+
   /// The subject name of certificate.
   final pulumi.Input<String> subjectName;
+
   /// The thumbprint of certificate.
   final pulumi.Input<String> thumbprint;
+
   /// The type of the certificate source.
   /// Expected value is 'KeyVaultCertificate'.
   final pulumi.Input<String> type;
+
   /// The vault uri of user key vault.
   final pulumi.Input<String> vaultUri;
 
@@ -85,23 +98,42 @@ class KeyVaultCertificatePropertiesResponse {
     };
   }
 
-  factory KeyVaultCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory KeyVaultCertificatePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KeyVaultCertificatePropertiesResponse(
-      activateDate: (map['activateDate'] as String).input(),
-      autoSync: map['autoSync'] == null ? null : (map['autoSync']! as String).input(),
-      certVersion: map['certVersion'] == null ? null : (map['certVersion']! as String).input(),
-      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey']! as bool).input(),
-      expirationDate: (map['expirationDate'] as String).input(),
-      issuedDate: (map['issuedDate'] as String).input(),
-      issuer: (map['issuer'] as String).input(),
-      keyVaultCertName: (map['keyVaultCertName'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      subjectName: (map['subjectName'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
-      type: (map['type'] as String).input(),
-      vaultUri: (map['vaultUri'] as String).input(),
+      activateDate: pulumi.Input.fromValue(map['activateDate'] as String),
+      autoSync: (() {
+        final guardedValue = map['autoSync'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certVersion: (() {
+        final guardedValue = map['certVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsNames: pulumi.Input.fromValue(
+        (map['dnsNames'] as List).cast<String>(),
+      ),
+      excludePrivateKey: (() {
+        final guardedValue = map['excludePrivateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
+      issuedDate: pulumi.Input.fromValue(map['issuedDate'] as String),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      keyVaultCertName: pulumi.Input.fromValue(
+        map['keyVaultCertName'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      subjectName: pulumi.Input.fromValue(map['subjectName'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vaultUri: pulumi.Input.fromValue(map['vaultUri'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ObjectType {
   valueBlob("Blob"),
   valueContainer("Container");
 
-  const ObjectType(this.value);
-  final String value;
+  const ObjectType(this.wireValue);
+  final String wireValue;
 
   static ObjectType fromValue(String value) {
     for (final item in ObjectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ObjectType value: $value');
   }
 }
-

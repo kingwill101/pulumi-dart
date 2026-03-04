@@ -3,16 +3,15 @@ enum RouterBgpAdvertisedGroupsItem {
   allSubnets("ALL_SUBNETS"),
   allVpcSubnets("ALL_VPC_SUBNETS");
 
-  const RouterBgpAdvertisedGroupsItem(this.value);
-  final String value;
+  const RouterBgpAdvertisedGroupsItem(this.wireValue);
+  final String wireValue;
 
   static RouterBgpAdvertisedGroupsItem fromValue(String value) {
     for (final item in RouterBgpAdvertisedGroupsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpAdvertisedGroupsItem value: $value');
   }
 }
-

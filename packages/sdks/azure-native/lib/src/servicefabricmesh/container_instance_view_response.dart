@@ -8,10 +8,13 @@ import 'container_state_response.dart';
 class ContainerInstanceViewResponse {
   /// Current container instance state.
   final pulumi.Input<ContainerStateResponse>? currentState;
+
   /// The events of this container instance.
   final pulumi.Input<List<ContainerEventResponse>>? events;
+
   /// Previous container instance state.
   final pulumi.Input<ContainerStateResponse>? previousState;
+
   /// The number of times the container has been restarted.
   final pulumi.Input<int>? restartCount;
 
@@ -29,20 +32,69 @@ class ContainerInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentState': ?pulumi.Input.mapOptionalInputValue<ContainerStateResponse, Map<String, dynamic>>(currentState, (value) => value.toMap()),
-      'events': ?pulumi.Input.mapOptionalInputValue<List<ContainerEventResponse>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<ContainerEventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'previousState': ?pulumi.Input.mapOptionalInputValue<ContainerStateResponse, Map<String, dynamic>>(previousState, (value) => value.toMap()),
+      'currentState':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStateResponse,
+            Map<String, dynamic>
+          >(currentState, (value) => value.toMap()),
+      'events':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContainerEventResponse>,
+            List<Map<String, dynamic>>
+          >(
+            events,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContainerEventResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'previousState':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStateResponse,
+            Map<String, dynamic>
+          >(previousState, (value) => value.toMap()),
       'restartCount': ?restartCount,
     };
   }
 
   factory ContainerInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return ContainerInstanceViewResponse(
-      currentState: map['currentState'] == null ? null : (ContainerStateResponse.fromMap((map['currentState']! as Map).cast<String, dynamic>())).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<ContainerEventResponse>(map['events']!, (value) => ContainerEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      previousState: map['previousState'] == null ? null : (ContainerStateResponse.fromMap((map['previousState']! as Map).cast<String, dynamic>())).input(),
-      restartCount: map['restartCount'] == null ? null : (map['restartCount']! as int).input(),
+      currentState: (() {
+        final guardedValue = map['currentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      events: (() {
+        final guardedValue = map['events'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContainerEventResponse>(
+            guardedValue,
+            (value) => ContainerEventResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      previousState: (() {
+        final guardedValue = map['previousState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      restartCount: (() {
+        final guardedValue = map['restartCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

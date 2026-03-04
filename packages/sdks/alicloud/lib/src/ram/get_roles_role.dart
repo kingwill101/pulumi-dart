@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRolesRole {
   /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
   final pulumi.Input<String> arn;
+
   /// The policy that specifies the trusted entity to assume the RAM role.
   final pulumi.Input<String> assumeRolePolicyDocument;
+
   /// The creation time.
   final pulumi.Input<String> createDate;
+
   /// The description of the RAM role.
   final pulumi.Input<String> description;
+
   /// The policy that specifies the trusted entity to assume the RAM role.
   final pulumi.Input<String> document;
+
   /// The ID of the RAM role.
   final pulumi.Input<String> id;
+
   /// The name of the RAM role.
   final pulumi.Input<String> name;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The update time.
   final pulumi.Input<String> updateDate;
 
@@ -60,16 +68,17 @@ class GetRolesRole {
 
   factory GetRolesRole.fromMap(Map<String, dynamic> map) {
     return GetRolesRole(
-      arn: (map['arn'] as String).input(),
-      assumeRolePolicyDocument: (map['assumeRolePolicyDocument'] as String).input(),
-      createDate: (map['createDate'] as String).input(),
-      description: (map['description'] as String).input(),
-      document: (map['document'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      updateDate: (map['updateDate'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      assumeRolePolicyDocument: pulumi.Input.fromValue(
+        map['assumeRolePolicyDocument'] as String,
+      ),
+      createDate: pulumi.Input.fromValue(map['createDate'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      document: pulumi.Input.fromValue(map['document'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      updateDate: pulumi.Input.fromValue(map['updateDate'] as String),
     );
   }
 }
-

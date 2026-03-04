@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageAgentDetailsResponse {
   /// Agent expiry date.
   final pulumi.Input<String>? agentExpiryDate;
+
   /// A value indicating whether installed agent needs to be updated.
   final pulumi.Input<String>? agentUpdateStatus;
+
   /// The agent version.
   final pulumi.Input<String>? agentVersion;
+
   /// A value indicating whether reboot is required after update is applied.
   final pulumi.Input<String>? postUpdateRebootStatus;
 
@@ -36,11 +39,26 @@ class InMageAgentDetailsResponse {
 
   factory InMageAgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAgentDetailsResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate']! as String).input(),
-      agentUpdateStatus: map['agentUpdateStatus'] == null ? null : (map['agentUpdateStatus']! as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
-      postUpdateRebootStatus: map['postUpdateRebootStatus'] == null ? null : (map['postUpdateRebootStatus']! as String).input(),
+      agentExpiryDate: (() {
+        final guardedValue = map['agentExpiryDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentUpdateStatus: (() {
+        final guardedValue = map['agentUpdateStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      postUpdateRebootStatus: (() {
+        final guardedValue = map['postUpdateRebootStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

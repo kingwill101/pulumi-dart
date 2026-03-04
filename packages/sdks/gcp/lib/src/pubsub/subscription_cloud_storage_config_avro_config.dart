@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionCloudStorageConfigAvroConfig {
   /// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
   final pulumi.Input<bool>? useTopicSchema;
+
   /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
   final pulumi.Input<bool>? writeMetadata;
 
@@ -23,11 +24,20 @@ class SubscriptionCloudStorageConfigAvroConfig {
     };
   }
 
-  factory SubscriptionCloudStorageConfigAvroConfig.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionCloudStorageConfigAvroConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionCloudStorageConfigAvroConfig(
-      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema']! as bool).input(),
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
+      useTopicSchema: (() {
+        final guardedValue = map['useTopicSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      writeMetadata: (() {
+        final guardedValue = map['writeMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

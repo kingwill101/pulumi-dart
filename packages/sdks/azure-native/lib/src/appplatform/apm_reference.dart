@@ -9,20 +9,15 @@ class ApmReference {
 
   /// Creates a new [ApmReference].
   /// [resourceId] Resource Id of the APM
-  ApmReference({
-    required this.resourceId,
-  });
+  ApmReference({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
   factory ApmReference.fromMap(Map<String, dynamic> map) {
     return ApmReference(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsEfsMountTargetPropertiesResponse {
   /// The ID of the file system for which to create the mount target.
   final pulumi.Input<String>? fileSystemId;
+
   /// Property id
   final pulumi.Input<String>? id;
+
   /// Valid IPv4 address within the address range of the specified subnet.
   final pulumi.Input<String>? ipAddress;
+
   /// Up to five VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as subnet specified.
   final pulumi.Input<List<String>>? securityGroups;
+
   /// The ID of the subnet to add the mount target in. For One Zone file systems, use the subnet that is associated with the file system's Availability Zone.
   final pulumi.Input<String>? subnetId;
 
@@ -39,14 +43,35 @@ class AwsEfsMountTargetPropertiesResponse {
     };
   }
 
-  factory AwsEfsMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsEfsMountTargetPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsEfsMountTargetPropertiesResponse(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups']! as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      fileSystemId: (() {
+        final guardedValue = map['fileSystemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

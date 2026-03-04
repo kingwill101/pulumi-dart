@@ -8,24 +8,33 @@ import 'session_logger_log_configuration.dart';
 class SessionLoggerState {
   /// Map of additional encryption context key-value pairs.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+
   /// List of ARNs of the web portals associated with the session logger.
   final pulumi.Input<List<String>>? associatedPortalArns;
+
   /// ARN of the customer managed KMS key used to encrypt sensitive information.
   final pulumi.Input<String>? customerManagedKey;
+
   /// Human-readable display name for the session logger resource. Forces replacement if changed.
   final pulumi.Input<String>? displayName;
+
   /// Event filter that determines which events are logged. See Event Filter below.
   final pulumi.Input<SessionLoggerEventFilter>? eventFilter;
+
   /// Configuration block for specifying where logs are delivered. See Log Configuration below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<SessionLoggerLogConfiguration>? logConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the session logger.
   final pulumi.Input<String>? sessionLoggerArn;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -59,8 +68,16 @@ class SessionLoggerState {
       'associatedPortalArns': ?associatedPortalArns,
       'customerManagedKey': ?customerManagedKey,
       'displayName': ?displayName,
-      'eventFilter': ?pulumi.Input.mapOptionalInputValue<SessionLoggerEventFilter, Map<String, dynamic>>(eventFilter, (value) => value.toMap()),
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<SessionLoggerLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'eventFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            SessionLoggerEventFilter,
+            Map<String, dynamic>
+          >(eventFilter, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SessionLoggerLogConfiguration,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'region': ?region,
       'sessionLoggerArn': ?sessionLoggerArn,
       'tags': ?tags,
@@ -70,17 +87,70 @@ class SessionLoggerState {
 
   factory SessionLoggerState.fromMap(Map<String, dynamic> map) {
     return SessionLoggerState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
-      eventFilter: map['eventFilter'] == null ? null : ((SessionLoggerEventFilter.fromMap((map['eventFilter']! as Map).cast<String, dynamic>())).input()).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : ((SessionLoggerLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sessionLoggerArn: map['sessionLoggerArn'] == null ? null : ((map['sessionLoggerArn'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      additionalEncryptionContext: (() {
+        final guardedValue = map['additionalEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      associatedPortalArns: (() {
+        final guardedValue = map['associatedPortalArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      customerManagedKey: (() {
+        final guardedValue = map['customerManagedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventFilter: (() {
+        final guardedValue = map['eventFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SessionLoggerEventFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SessionLoggerLogConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionLoggerArn: (() {
+        final guardedValue = map['sessionLoggerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

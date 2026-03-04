@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcsProfileResponseDatastreamV1alpha1 {
   /// The full project and resource path for Cloud Storage bucket including the name.
   final pulumi.Input<String> bucketName;
+
   /// The root path inside the Cloud Storage bucket.
   final pulumi.Input<String> rootPath;
 
@@ -18,17 +19,15 @@ class GcsProfileResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-      'rootPath': rootPath,
-    };
+    return <String, dynamic>{'bucketName': bucketName, 'rootPath': rootPath};
   }
 
-  factory GcsProfileResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory GcsProfileResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GcsProfileResponseDatastreamV1alpha1(
-      bucketName: (map['bucketName'] as String).input(),
-      rootPath: (map['rootPath'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      rootPath: pulumi.Input.fromValue(map['rootPath'] as String),
     );
   }
 }
-

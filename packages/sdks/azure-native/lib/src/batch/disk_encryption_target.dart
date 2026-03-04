@@ -3,16 +3,15 @@ enum DiskEncryptionTarget {
   osDisk("OsDisk"),
   temporaryDisk("TemporaryDisk");
 
-  const DiskEncryptionTarget(this.value);
-  final String value;
+  const DiskEncryptionTarget(this.wireValue);
+  final String wireValue;
 
   static DiskEncryptionTarget fromValue(String value) {
     for (final item in DiskEncryptionTarget.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskEncryptionTarget value: $value');
   }
 }
-

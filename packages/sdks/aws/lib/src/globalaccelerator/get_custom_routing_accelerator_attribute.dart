@@ -25,12 +25,17 @@ class GetCustomRoutingAcceleratorAttribute {
     };
   }
 
-  factory GetCustomRoutingAcceleratorAttribute.fromMap(Map<String, dynamic> map) {
+  factory GetCustomRoutingAcceleratorAttribute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomRoutingAcceleratorAttribute(
-      flowLogsEnabled: (map['flowLogsEnabled'] as bool).input(),
-      flowLogsS3Bucket: (map['flowLogsS3Bucket'] as String).input(),
-      flowLogsS3Prefix: (map['flowLogsS3Prefix'] as String).input(),
+      flowLogsEnabled: pulumi.Input.fromValue(map['flowLogsEnabled'] as bool),
+      flowLogsS3Bucket: pulumi.Input.fromValue(
+        map['flowLogsS3Bucket'] as String,
+      ),
+      flowLogsS3Prefix: pulumi.Input.fromValue(
+        map['flowLogsS3Prefix'] as String,
+      ),
     );
   }
 }
-

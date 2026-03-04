@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplianceCredentialKubeconfigResponse {
   /// Name which contains the role of the kubeconfig.
   final pulumi.Input<String> name;
+
   /// Contains the kubeconfig value.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class ApplianceCredentialKubeconfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory ApplianceCredentialKubeconfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplianceCredentialKubeconfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplianceCredentialKubeconfigResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

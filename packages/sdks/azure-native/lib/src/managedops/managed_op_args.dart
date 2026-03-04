@@ -10,29 +10,42 @@ import 'managed_ops_properties.dart';
 class ManagedOpArgs {
   /// Name of the resource.
   final pulumi.Input<String>? managedOpsName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ManagedOpsProperties>? properties;
 
   /// Creates a new [ManagedOpArgs].
   /// [managedOpsName] Name of the resource.
   /// [properties] The resource-specific properties for this resource.
-  ManagedOpArgs({
-    this.managedOpsName,
-    this.properties,
-  });
+  ManagedOpArgs({this.managedOpsName, this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'managedOpsName': ?managedOpsName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ManagedOpsProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedOpsProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory ManagedOpArgs.fromMap(Map<String, dynamic> map) {
     return ManagedOpArgs(
-      managedOpsName: map['managedOpsName'] == null ? null : (map['managedOpsName']! as String).input(),
-      properties: map['properties'] == null ? null : (ManagedOpsProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      managedOpsName: (() {
+        final guardedValue = map['managedOpsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedOpsProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

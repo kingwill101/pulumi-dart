@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomBytesArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
+
   /// The number of bytes requested. The minimum value for length is 1.
   final pulumi.Input<int> length;
 
   /// Creates a new [RandomBytesArgs].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [length] The number of bytes requested. The minimum value for length is 1.
-  RandomBytesArgs({
-    this.keepers,
-    required this.length,
-  });
+  RandomBytesArgs({this.keepers, required this.length});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keepers': ?keepers,
-      'length': length,
-    };
+    return <String, dynamic>{'keepers': ?keepers, 'length': length};
   }
 
   factory RandomBytesArgs.fromMap(Map<String, dynamic> map) {
     return RandomBytesArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
-      length: (map['length'] as int).input(),
+      keepers: (() {
+        final guardedValue = map['keepers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      length: pulumi.Input.fromValue(map['length'] as int),
     );
   }
 }
-

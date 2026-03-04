@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortfoliosPortfolio {
   /// The creation time of the portfolio
   final pulumi.Input<String> createTime;
+
   /// The description of the portfolio
   final pulumi.Input<String> description;
+
   /// The ID of the portfolio
   final pulumi.Input<String> id;
+
   /// The ARN of the portfolio
   final pulumi.Input<String> portfolioArn;
+
   /// The ID of the portfolio
   final pulumi.Input<String> portfolioId;
+
   /// The name of the portfolio
   final pulumi.Input<String> portfolioName;
+
   /// The provider name of the portfolio
   final pulumi.Input<String> providerName;
 
@@ -50,14 +56,13 @@ class GetPortfoliosPortfolio {
 
   factory GetPortfoliosPortfolio.fromMap(Map<String, dynamic> map) {
     return GetPortfoliosPortfolio(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      portfolioArn: (map['portfolioArn'] as String).input(),
-      portfolioId: (map['portfolioId'] as String).input(),
-      portfolioName: (map['portfolioName'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      portfolioArn: pulumi.Input.fromValue(map['portfolioArn'] as String),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      portfolioName: pulumi.Input.fromValue(map['portfolioName'] as String),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
     );
   }
 }
-

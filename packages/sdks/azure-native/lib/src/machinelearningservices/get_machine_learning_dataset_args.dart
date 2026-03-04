@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineLearningDatasetArgs {
   /// The Dataset name.
   final pulumi.Input<String> datasetName;
+
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,11 @@ class GetMachineLearningDatasetArgs {
 
   factory GetMachineLearningDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineLearningDatasetArgs(
-      datasetName: (map['datasetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      datasetName: pulumi.Input.fromValue(map['datasetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

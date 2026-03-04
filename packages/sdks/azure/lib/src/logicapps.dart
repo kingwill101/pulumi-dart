@@ -1,5 +1,3 @@
-library module_logicapps;
-
 export 'logicapps/action_custom.dart';
 export 'logicapps/action_custom_args.dart';
 export 'logicapps/action_custom_state.dart';

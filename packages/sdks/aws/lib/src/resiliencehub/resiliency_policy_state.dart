@@ -8,27 +8,36 @@ import 'resiliency_policy_timeouts.dart';
 class ResiliencyPolicyState {
   /// ARN of the Resiliency Policy.
   final pulumi.Input<String>? arn;
+
   /// Data Location Constraint of the Policy.
   /// Valid values are `AnyLocation`, `SameContinent`, and `SameCountry`.
   final pulumi.Input<String>? dataLocationConstraint;
+
   /// Description of Resiliency Policy.
   final pulumi.Input<String>? description;
+
   /// Estimated Cost Tier of the Resiliency Policy.
   final pulumi.Input<String>? estimatedCostTier;
+
   /// Name of Resiliency Policy.
   /// Must be between 2 and 60 characters long.
   /// Must start with an alphanumeric character and contain alphanumeric characters, underscores, or hyphens.
   final pulumi.Input<String>? name;
+
   /// The type of resiliency policy to be created, including the recovery time objective (RTO) and recovery point objective (RPO) in seconds. See `policy`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<ResiliencyPolicyPolicy>? policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Resiliency Policy Tier.
   /// Valid values are `MissionCritical`, `Critical`, `Important`, `CoreServices`, `NonCritical`, and `NotApplicable`.
   final pulumi.Input<String>? tier;
@@ -67,29 +76,92 @@ class ResiliencyPolicyState {
       'description': ?description,
       'estimatedCostTier': ?estimatedCostTier,
       'name': ?name,
-      'policy': ?pulumi.Input.mapOptionalInputValue<ResiliencyPolicyPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResiliencyPolicyPolicy,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'tier': ?tier,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ResiliencyPolicyTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResiliencyPolicyTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ResiliencyPolicyState.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      dataLocationConstraint: map['dataLocationConstraint'] == null ? null : ((map['dataLocationConstraint'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      estimatedCostTier: map['estimatedCostTier'] == null ? null : ((map['estimatedCostTier'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((ResiliencyPolicyPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ResiliencyPolicyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLocationConstraint: (() {
+        final guardedValue = map['dataLocationConstraint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      estimatedCostTier: (() {
+        final guardedValue = map['estimatedCostTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResiliencyPolicyPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResiliencyPolicyTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

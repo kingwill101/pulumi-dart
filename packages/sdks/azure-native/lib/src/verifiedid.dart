@@ -1,5 +1,3 @@
-library module_verifiedid;
-
 export 'verifiedid/authority.dart';
 export 'verifiedid/authority_args.dart';
 export 'verifiedid/functions.dart';

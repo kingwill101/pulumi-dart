@@ -1,5 +1,3 @@
-library module_bot;
-
 export 'bot/channel_alexa.dart';
 export 'bot/channel_alexa_args.dart';
 export 'bot/channel_alexa_state.dart';

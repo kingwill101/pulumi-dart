@@ -4,16 +4,15 @@ enum AuthPolicyTokenType {
   valueOrganization("organization"),
   valueRunner("runner");
 
-  const AuthPolicyTokenType(this.value);
-  final String value;
+  const AuthPolicyTokenType(this.wireValue);
+  final String wireValue;
 
   static AuthPolicyTokenType fromValue(String value) {
     for (final item in AuthPolicyTokenType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthPolicyTokenType value: $value');
   }
 }
-

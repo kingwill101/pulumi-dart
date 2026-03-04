@@ -5,16 +5,15 @@ enum VersionFramework {
   scikitLearn("SCIKIT_LEARN"),
   xgboost("XGBOOST");
 
-  const VersionFramework(this.value);
-  final String value;
+  const VersionFramework(this.wireValue);
+  final String wireValue;
 
   static VersionFramework fromValue(String value) {
     for (final item in VersionFramework.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionFramework value: $value');
   }
 }
-

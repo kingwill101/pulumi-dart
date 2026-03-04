@@ -156,20 +156,28 @@ import 'event_hub_connection_args.dart';
 class EventHubConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The event hub consumer group.
   late final pulumi.Output<String> consumerGroup;
+
   /// The data format of the message. Optionally the data format can be added to each message.
   late final pulumi.Output<String?> dataFormat;
+
   /// The resource ID of the event hub to be used to create a data connection.
   late final pulumi.Output<String> eventHubResourceId;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
   late final pulumi.Output<String?> tableName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,19 +190,19 @@ class EventHubConnection extends pulumi.CustomResource {
     EventHubConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kusto:EventHubConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.eventHubResourceId = registerOutput<String>('eventHubResourceId');
-    this.location = registerOutput<String?>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure-native:kusto:EventHubConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    eventHubResourceId = registerOutput<String>('eventHubResourceId');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.tableName = registerOutput<String?>('tableName');
-    this.type = registerOutput<String>('type');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
   }
 }

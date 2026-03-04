@@ -1,5 +1,3 @@
-library module_resources;
-
 export 'resources/action_on_unmanage.dart';
 export 'resources/action_on_unmanage_response.dart';
 export 'resources/alias_path_metadata_response.dart';

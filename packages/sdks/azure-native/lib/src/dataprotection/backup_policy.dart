@@ -7,8 +7,10 @@ import 'azure_backup_rule.dart';
 class BackupPolicy {
   /// Type of datasource for the backup management
   final pulumi.Input<List<String>> datasourceTypes;
+
   /// Expected value is 'BackupPolicy'.
   final pulumi.Input<String> objectType;
+
   /// Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
   final pulumi.Input<List<AzureBackupRule>> policyRules;
 
@@ -26,16 +28,34 @@ class BackupPolicy {
     return <String, dynamic>{
       'datasourceTypes': datasourceTypes,
       'objectType': objectType,
-      'policyRules': pulumi.Input.mapInputValue<List<AzureBackupRule>, List<Map<String, dynamic>>>(policyRules, (value) => pulumi.Input.encodeList<AzureBackupRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyRules':
+          pulumi.Input.mapInputValue<
+            List<AzureBackupRule>,
+            List<Map<String, dynamic>>
+          >(
+            policyRules,
+            (value) =>
+                pulumi.Input.encodeList<AzureBackupRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory BackupPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPolicy(
-      datasourceTypes: ((map['datasourceTypes'] as List).cast<String>()).input(),
-      objectType: (map['objectType'] as String).input(),
-      policyRules: (pulumi.Input.decodeList<AzureBackupRule>(map['policyRules'], (value) => AzureBackupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasourceTypes: pulumi.Input.fromValue(
+        (map['datasourceTypes'] as List).cast<String>(),
+      ),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      policyRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AzureBackupRule>(
+          map['policyRules']!,
+          (value) =>
+              AzureBackupRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

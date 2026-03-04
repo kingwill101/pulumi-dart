@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerMaintenanceWindowStartTime {
   /// Day of the week, e.g., `MONDAY`, `TUESDAY`, or `WEDNESDAY`.
   final pulumi.Input<String> dayOfWeek;
+
   /// Time, in 24-hour format, e.g., `02:00`.
   final pulumi.Input<String> timeOfDay;
+
   /// Time zone in either the Country/City format or the UTC offset format, e.g., `CET`.
   final pulumi.Input<String> timeZone;
 
@@ -30,10 +32,9 @@ class BrokerMaintenanceWindowStartTime {
 
   factory BrokerMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return BrokerMaintenanceWindowStartTime(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      timeOfDay: (map['timeOfDay'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      timeOfDay: pulumi.Input.fromValue(map['timeOfDay'] as String),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

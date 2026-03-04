@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientFileProtectState {
   /// 0 no alert 1 info 2 suspicious 3 critical.
   final pulumi.Input<int>? alertLevel;
+
   /// file operation.
   final pulumi.Input<List<String>>? fileOps;
+
   /// file path.
   final pulumi.Input<List<String>>? filePaths;
+
   /// process path.
   final pulumi.Input<List<String>>? procPaths;
+
   /// rule action, pass or alert.
   final pulumi.Input<String>? ruleAction;
+
   /// ruleName.
   final pulumi.Input<String>? ruleName;
+
   /// rule status 0 is disable 1 is enable.
   final pulumi.Input<int>? status;
+
   /// switch id.
   final pulumi.Input<String>? switchId;
 
@@ -56,15 +63,46 @@ class ClientFileProtectState {
 
   factory ClientFileProtectState.fromMap(Map<String, dynamic> map) {
     return ClientFileProtectState(
-      alertLevel: map['alertLevel'] == null ? null : (map['alertLevel']! as int).input(),
-      fileOps: map['fileOps'] == null ? null : ((map['fileOps']! as List).cast<String>()).input(),
-      filePaths: map['filePaths'] == null ? null : ((map['filePaths']! as List).cast<String>()).input(),
-      procPaths: map['procPaths'] == null ? null : ((map['procPaths']! as List).cast<String>()).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as int).input(),
-      switchId: map['switchId'] == null ? null : (map['switchId']! as String).input(),
+      alertLevel: (() {
+        final guardedValue = map['alertLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fileOps: (() {
+        final guardedValue = map['fileOps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      filePaths: (() {
+        final guardedValue = map['filePaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      procPaths: (() {
+        final guardedValue = map['procPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ruleAction: (() {
+        final guardedValue = map['ruleAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      switchId: (() {
+        final guardedValue = map['switchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

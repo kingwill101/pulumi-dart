@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCipherPolicyArgs {
   /// The encryption algorithms supported. It depends on the value of `tls_versions`.
   final pulumi.Input<List<String>> ciphers;
+
   /// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   final pulumi.Input<String> tlsCipherPolicyName;
+
   /// The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
   final pulumi.Input<List<String>> tlsVersions;
 
@@ -34,10 +36,13 @@ class TlsCipherPolicyArgs {
 
   factory TlsCipherPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TlsCipherPolicyArgs(
-      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
-      tlsCipherPolicyName: (map['tlsCipherPolicyName'] as String).input(),
-      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
+      ciphers: pulumi.Input.fromValue((map['ciphers'] as List).cast<String>()),
+      tlsCipherPolicyName: pulumi.Input.fromValue(
+        map['tlsCipherPolicyName'] as String,
+      ),
+      tlsVersions: pulumi.Input.fromValue(
+        (map['tlsVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

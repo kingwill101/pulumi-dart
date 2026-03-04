@@ -15,39 +15,56 @@ import 'user_property.dart';
 class ExecuteDataFlowActivity {
   /// Compute properties for data flow activity.
   final pulumi.Input<ExecuteDataFlowActivityTypePropertiesCompute>? compute;
+
   /// Continuation settings for execute data flow activity.
   final pulumi.Input<ContinuationSettingsReference>? continuationSettings;
+
   /// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
   final pulumi.Input<dynamic>? continueOnError;
+
   /// Data flow reference.
   final pulumi.Input<DataFlowReference> dataFlow;
+
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
+
   /// Activity description.
   final pulumi.Input<String>? description;
+
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? integrationRuntime;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+
   /// Activity name.
   final pulumi.Input<String> name;
+
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
+
   /// Activity policy.
   final pulumi.Input<ActivityPolicy>? policy;
+
   /// Concurrent run setting used for data flow execution. Allows sinks with the same save order to be processed concurrently. Type: boolean (or Expression with resultType boolean)
   final pulumi.Input<dynamic>? runConcurrently;
+
   /// Specify number of parallel staging for sources applicable to the sink. Type: integer (or Expression with resultType integer)
   final pulumi.Input<dynamic>? sourceStagingConcurrency;
+
   /// Staging info for execute data flow activity.
   final pulumi.Input<DataFlowStagingInfo>? staging;
+
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
+
   /// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? traceLevel;
+
   /// Type of activity.
   /// Expected value is 'ExecuteDataFlow'.
   final pulumi.Input<String> type;
+
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
 
@@ -93,48 +110,196 @@ class ExecuteDataFlowActivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compute': ?pulumi.Input.mapOptionalInputValue<ExecuteDataFlowActivityTypePropertiesCompute, Map<String, dynamic>>(compute, (value) => value.toMap()),
-      'continuationSettings': ?pulumi.Input.mapOptionalInputValue<ContinuationSettingsReference, Map<String, dynamic>>(continuationSettings, (value) => value.toMap()),
+      'compute':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecuteDataFlowActivityTypePropertiesCompute,
+            Map<String, dynamic>
+          >(compute, (value) => value.toMap()),
+      'continuationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContinuationSettingsReference,
+            Map<String, dynamic>
+          >(continuationSettings, (value) => value.toMap()),
       'continueOnError': ?continueOnError,
-      'dataFlow': pulumi.Input.mapInputValue<DataFlowReference, Map<String, dynamic>>(dataFlow, (value) => value.toMap()),
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataFlow':
+          pulumi.Input.mapInputValue<DataFlowReference, Map<String, dynamic>>(
+            dataFlow,
+            (value) => value.toMap(),
+          ),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityDependency>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityDependency,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
-      'integrationRuntime': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(integrationRuntime, (value) => value.toMap()),
-      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'integrationRuntime':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeReference,
+            Map<String, dynamic>
+          >(integrationRuntime, (value) => value.toMap()),
+      'linkedServiceName':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceReference,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActivityPolicy,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
       'runConcurrently': ?runConcurrently,
       'sourceStagingConcurrency': ?sourceStagingConcurrency,
-      'staging': ?pulumi.Input.mapOptionalInputValue<DataFlowStagingInfo, Map<String, dynamic>>(staging, (value) => value.toMap()),
+      'staging':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataFlowStagingInfo,
+            Map<String, dynamic>
+          >(staging, (value) => value.toMap()),
       'state': ?state,
       'traceLevel': ?traceLevel,
       'type': type,
-      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserProperty>,
+            List<Map<String, dynamic>>
+          >(
+            userProperties,
+            (value) =>
+                pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ExecuteDataFlowActivity.fromMap(Map<String, dynamic> map) {
     return ExecuteDataFlowActivity(
-      compute: map['compute'] == null ? null : (ExecuteDataFlowActivityTypePropertiesCompute.fromMap((map['compute']! as Map).cast<String, dynamic>())).input(),
-      continuationSettings: map['continuationSettings'] == null ? null : (ContinuationSettingsReference.fromMap((map['continuationSettings']! as Map).cast<String, dynamic>())).input(),
-      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError']!).input(),
-      dataFlow: (DataFlowReference.fromMap((map['dataFlow'] as Map).cast<String, dynamic>())).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntime: map['integrationRuntime'] == null ? null : (IntegrationRuntimeReference.fromMap((map['integrationRuntime']! as Map).cast<String, dynamic>())).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
-      runConcurrently: map['runConcurrently'] == null ? null : (map['runConcurrently']!).input(),
-      sourceStagingConcurrency: map['sourceStagingConcurrency'] == null ? null : (map['sourceStagingConcurrency']!).input(),
-      staging: map['staging'] == null ? null : (DataFlowStagingInfo.fromMap((map['staging']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      traceLevel: map['traceLevel'] == null ? null : (map['traceLevel']!).input(),
-      type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      compute: (() {
+        final guardedValue = map['compute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecuteDataFlowActivityTypePropertiesCompute.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      continuationSettings: (() {
+        final guardedValue = map['continuationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContinuationSettingsReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      continueOnError: (() {
+        final guardedValue = map['continueOnError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      dataFlow: pulumi.Input.fromValue(
+        DataFlowReference.fromMap(
+          (map['dataFlow']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityDependency>(
+            guardedValue,
+            (value) => ActivityDependency.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntime: (() {
+        final guardedValue = map['integrationRuntime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      onInactiveMarkAs: (() {
+        final guardedValue = map['onInactiveMarkAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      runConcurrently: (() {
+        final guardedValue = map['runConcurrently'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      sourceStagingConcurrency: (() {
+        final guardedValue = map['sourceStagingConcurrency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      staging: (() {
+        final guardedValue = map['staging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataFlowStagingInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      traceLevel: (() {
+        final guardedValue = map['traceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userProperties: (() {
+        final guardedValue = map['userProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserProperty>(
+            guardedValue,
+            (value) =>
+                UserProperty.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

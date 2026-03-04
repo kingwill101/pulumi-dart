@@ -1,5 +1,3 @@
-library module_redis;
-
 export 'redis/access_policy.dart';
 export 'redis/access_policy_args.dart';
 export 'redis/access_policy_assignment.dart';

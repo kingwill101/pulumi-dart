@@ -7,10 +7,13 @@ import 'marketplace_saa_sinfo_response.dart';
 class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
   /// The Azure Subscription ID to which the Organization belongs and gets billed into. This is empty for a new user OR a user without an Elastic Organization.
   final pulumi.Input<String>? billedAzureSubscriptionId;
+
   /// The Elastic Organization Id.
   final pulumi.Input<String>? elasticOrganizationId;
+
   /// The Elastic Organization Name.
   final pulumi.Input<String>? elasticOrganizationName;
+
   /// Marketplace SaaS Info of the resource.
   final pulumi.Input<MarketplaceSaaSInfoResponse> marketplaceSaasInfo;
 
@@ -31,17 +34,38 @@ class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
       'billedAzureSubscriptionId': ?billedAzureSubscriptionId,
       'elasticOrganizationId': ?elasticOrganizationId,
       'elasticOrganizationName': ?elasticOrganizationName,
-      'marketplaceSaasInfo': pulumi.Input.mapInputValue<MarketplaceSaaSInfoResponse, Map<String, dynamic>>(marketplaceSaasInfo, (value) => value.toMap()),
+      'marketplaceSaasInfo':
+          pulumi.Input.mapInputValue<
+            MarketplaceSaaSInfoResponse,
+            Map<String, dynamic>
+          >(marketplaceSaasInfo, (value) => value.toMap()),
     };
   }
 
-  factory ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId']! as String).input(),
-      elasticOrganizationId: map['elasticOrganizationId'] == null ? null : (map['elasticOrganizationId']! as String).input(),
-      elasticOrganizationName: map['elasticOrganizationName'] == null ? null : (map['elasticOrganizationName']! as String).input(),
-      marketplaceSaasInfo: (MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo'] as Map).cast<String, dynamic>())).input(),
+      billedAzureSubscriptionId: (() {
+        final guardedValue = map['billedAzureSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticOrganizationId: (() {
+        final guardedValue = map['elasticOrganizationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticOrganizationName: (() {
+        final guardedValue = map['elasticOrganizationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      marketplaceSaasInfo: pulumi.Input.fromValue(
+        MarketplaceSaaSInfoResponse.fromMap(
+          (map['marketplaceSaasInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

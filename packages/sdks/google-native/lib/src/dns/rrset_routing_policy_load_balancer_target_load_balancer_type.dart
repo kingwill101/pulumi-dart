@@ -5,16 +5,20 @@ enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
   regionalL4ilb("regionalL4ilb"),
   regionalL7ilb("regionalL7ilb");
 
-  const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(this.value);
-  final String value;
+  const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(this.wireValue);
+  final String wireValue;
 
-  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType fromValue(String value) {
-    for (final item in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.values) {
-      if (item.value == value) {
+  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType fromValue(
+    String value,
+  ) {
+    for (final item
+        in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value: $value');
+    throw ArgumentError(
+      'Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value: $value',
+    );
   }
 }
-

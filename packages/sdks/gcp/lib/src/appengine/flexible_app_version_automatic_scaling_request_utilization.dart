@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleAppVersionAutomaticScalingRequestUtilization {
   /// Target number of concurrent requests.
   final pulumi.Input<double>? targetConcurrentRequests;
+
   /// Target requests per second.
   final pulumi.Input<String>? targetRequestCountPerSecond;
 
@@ -23,11 +24,20 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization {
     };
   }
 
-  factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(Map<String, dynamic> map) {
+  factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleAppVersionAutomaticScalingRequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests']! as double).input(),
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond']! as String).input(),
+      targetConcurrentRequests: (() {
+        final guardedValue = map['targetConcurrentRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      targetRequestCountPerSecond: (() {
+        final guardedValue = map['targetRequestCountPerSecond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

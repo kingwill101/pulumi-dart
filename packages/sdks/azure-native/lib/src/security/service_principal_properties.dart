@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalProperties {
   /// Application ID of service principal.
   final pulumi.Input<String>? applicationId;
+
   /// A secret string that the application uses to prove its identity, also can be referred to as application password (write only).
   final pulumi.Input<String>? secret;
 
   /// Creates a new [ServicePrincipalProperties].
   /// [applicationId] Application ID of service principal.
   /// [secret] A secret string that the application uses to prove its identity, also can be referred to as application password (write only).
-  ServicePrincipalProperties({
-    this.applicationId,
-    this.secret,
-  });
+  ServicePrincipalProperties({this.applicationId, this.secret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ServicePrincipalProperties {
 
   factory ServicePrincipalProperties.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalProperties(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

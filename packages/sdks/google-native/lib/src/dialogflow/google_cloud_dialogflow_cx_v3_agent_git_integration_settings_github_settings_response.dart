@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse {
   /// The access token used to authenticate the access to the GitHub repository.
   final pulumi.Input<String> accessToken;
+
   /// A list of branches configured to be used from Dialogflow.
   final pulumi.Input<List<String>> branches;
+
   /// The unique repository display name for the GitHub repository.
   final pulumi.Input<String> displayName;
+
   /// The GitHub repository URI related to the agent.
   final pulumi.Input<String> repositoryUri;
+
   /// The branch of the GitHub repository tracked for this agent.
   final pulumi.Input<String> trackingBranch;
 
@@ -39,14 +43,17 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse
     };
   }
 
-  factory GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse(
-      accessToken: (map['accessToken'] as String).input(),
-      branches: ((map['branches'] as List).cast<String>()).input(),
-      displayName: (map['displayName'] as String).input(),
-      repositoryUri: (map['repositoryUri'] as String).input(),
-      trackingBranch: (map['trackingBranch'] as String).input(),
+      accessToken: pulumi.Input.fromValue(map['accessToken'] as String),
+      branches: pulumi.Input.fromValue(
+        (map['branches'] as List).cast<String>(),
+      ),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      repositoryUri: pulumi.Input.fromValue(map['repositoryUri'] as String),
+      trackingBranch: pulumi.Input.fromValue(map['trackingBranch'] as String),
     );
   }
 }
-

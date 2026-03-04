@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityConnectorArgs {
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
@@ -29,9 +30,12 @@ class GetSecurityConnectorArgs {
 
   factory GetSecurityConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityConnectorArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityConnectorName: (map['securityConnectorName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityConnectorName: pulumi.Input.fromValue(
+        map['securityConnectorName'] as String,
+      ),
     );
   }
 }
-

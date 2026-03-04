@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaiduCredential {
   /// Gets or sets baidu Api Key.
   final pulumi.Input<String> baiduApiKey;
+
   /// Gets or sets baidu Endpoint.
   final pulumi.Input<String> baiduEndPoint;
+
   /// Gets or sets baidu Secret Key
   final pulumi.Input<String> baiduSecretKey;
 
@@ -31,10 +33,9 @@ class BaiduCredential {
 
   factory BaiduCredential.fromMap(Map<String, dynamic> map) {
     return BaiduCredential(
-      baiduApiKey: (map['baiduApiKey'] as String).input(),
-      baiduEndPoint: (map['baiduEndPoint'] as String).input(),
-      baiduSecretKey: (map['baiduSecretKey'] as String).input(),
+      baiduApiKey: pulumi.Input.fromValue(map['baiduApiKey'] as String),
+      baiduEndPoint: pulumi.Input.fromValue(map['baiduEndPoint'] as String),
+      baiduSecretKey: pulumi.Input.fromValue(map['baiduSecretKey'] as String),
     );
   }
 }
-

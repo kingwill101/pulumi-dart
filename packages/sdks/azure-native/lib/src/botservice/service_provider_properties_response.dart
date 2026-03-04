@@ -7,14 +7,19 @@ import 'service_provider_parameter_response.dart';
 class ServiceProviderPropertiesResponse {
   /// URL of Dev Portal
   final pulumi.Input<String> devPortalUrl;
+
   /// Display Name of the Service Provider
   final pulumi.Input<String> displayName;
+
   /// The URL of icon
   final pulumi.Input<String>? iconUrl;
+
   /// Id for Service Provider
   final pulumi.Input<String> id;
+
   /// The list of parameters for the Service Provider
   final pulumi.Input<List<ServiceProviderParameterResponse>>? parameters;
+
   /// Name of the Service Provider
   final pulumi.Input<String> serviceProviderName;
 
@@ -40,20 +45,47 @@ class ServiceProviderPropertiesResponse {
       'displayName': displayName,
       'iconUrl': ?iconUrl,
       'id': id,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ServiceProviderParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ServiceProviderParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceProviderParameterResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceProviderParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceProviderName': serviceProviderName,
     };
   }
 
   factory ServiceProviderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderPropertiesResponse(
-      devPortalUrl: (map['devPortalUrl'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
-      id: (map['id'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ServiceProviderParameterResponse>(map['parameters']!, (value) => ServiceProviderParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceProviderName: (map['serviceProviderName'] as String).input(),
+      devPortalUrl: pulumi.Input.fromValue(map['devPortalUrl'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      iconUrl: (() {
+        final guardedValue = map['iconUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceProviderParameterResponse>(
+            guardedValue,
+            (value) => ServiceProviderParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      serviceProviderName: pulumi.Input.fromValue(
+        map['serviceProviderName'] as String,
+      ),
     );
   }
 }
-

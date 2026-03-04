@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentSettingArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// Name of Deployment Setting
   final pulumi.Input<String> deploymentSettingsName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetDeploymentSettingArgs {
 
   factory GetDeploymentSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentSettingArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      deploymentSettingsName: (map['deploymentSettingsName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      deploymentSettingsName: pulumi.Input.fromValue(
+        map['deploymentSettingsName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

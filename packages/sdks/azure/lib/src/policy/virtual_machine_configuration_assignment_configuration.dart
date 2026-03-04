@@ -6,16 +6,23 @@ import 'virtual_machine_configuration_assignment_configuration_parameter.dart';
 class VirtualMachineConfigurationAssignmentConfiguration {
   /// The assignment type for the Guest Configuration Assignment. Possible values are `Audit`, `ApplyAndAutoCorrect`, `ApplyAndMonitor` and `DeployAndAutoCorrect`.
   final pulumi.Input<String>? assignmentType;
+
   /// The content hash for the Guest Configuration package.
   ///
-  /// > **Note:** The value for `content_hash` should be the SH256SUM for the zip file in the `content_uri` and must be in upper case.
+  /// &gt; **Note:** The value for `content_hash` should be the SH256SUM for the zip file in the `content_uri` and must be in upper case.
   final pulumi.Input<String>? contentHash;
+
   /// The content URI where the Guest Configuration package is stored.
   ///
-  /// > **Note:** When deploying a Custom Guest Configuration package the `content_hash` and `content_uri` fields must be defined. For Built-in Guest Configuration packages, such as the `AzureWindowsBaseline` package, the `content_hash` and `content_uri` should not be defined, rather these fields will be returned after the Built-in Guest Configuration package has been provisioned. For more information on guest configuration assignments please see the [product documentation](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration-assignments).
+  /// &gt; **Note:** When deploying a Custom Guest Configuration package the `content_hash` and `content_uri` fields must be defined. For Built-in Guest Configuration packages, such as the `AzureWindowsBaseline` package, the `content_hash` and `content_uri` should not be defined, rather these fields will be returned after the Built-in Guest Configuration package has been provisioned. For more information on guest configuration assignments please see the [product documentation](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration-assignments).
   final pulumi.Input<String>? contentUri;
+
   /// One or more `parameter` blocks as defined below which define what configuration parameters and values against.
-  final pulumi.Input<List<VirtualMachineConfigurationAssignmentConfigurationParameter>>? parameters;
+  final pulumi.Input<
+    List<VirtualMachineConfigurationAssignmentConfigurationParameter>
+  >?
+  parameters;
+
   /// The version of the Guest Configuration that will be assigned in this Guest Configuration Assignment.
   final pulumi.Input<String>? version;
 
@@ -38,19 +45,61 @@ class VirtualMachineConfigurationAssignmentConfiguration {
       'assignmentType': ?assignmentType,
       'contentHash': ?contentHash,
       'contentUri': ?contentUri,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineConfigurationAssignmentConfigurationParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<VirtualMachineConfigurationAssignmentConfigurationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineConfigurationAssignmentConfigurationParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineConfigurationAssignmentConfigurationParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'version': ?version,
     };
   }
 
-  factory VirtualMachineConfigurationAssignmentConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineConfigurationAssignmentConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineConfigurationAssignmentConfiguration(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash']! as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<VirtualMachineConfigurationAssignmentConfigurationParameter>(map['parameters']!, (value) => VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      assignmentType: (() {
+        final guardedValue = map['assignmentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentHash: (() {
+        final guardedValue = map['contentHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentUri: (() {
+        final guardedValue = map['contentUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            VirtualMachineConfigurationAssignmentConfigurationParameter
+          >(
+            guardedValue,
+            (value) =>
+                VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

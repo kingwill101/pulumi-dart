@@ -6,7 +6,7 @@ import 'gateway_endpoint_route_table_attachment_state.dart';
 ///
 /// For information about VPC Gateway Endpoint Route Table Attachment and how to use it, see [What is Gateway Endpoint Route Table Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/311148).
 ///
-/// > **NOTE:** Available since v1.208.0.
+/// &gt; **NOTE:** Available since v1.208.0.
 ///
 /// ## Example Usage
 ///
@@ -301,8 +301,10 @@ import 'gateway_endpoint_route_table_attachment_state.dart';
 class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {
   /// The ID of the gateway endpoint instance to which you want to associate the route table.
   late final pulumi.Output<String> gatewayEndpointId;
+
   /// Routing table ID.
   late final pulumi.Output<String> routeTableId;
+
   /// Status of the gateway endpoint.
   late final pulumi.Output<String> status;
 
@@ -315,14 +317,14 @@ class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {
     GatewayEndpointRouteTableAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayEndpointId = registerOutput<String>('gatewayEndpointId');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayEndpointId = registerOutput<String>('gatewayEndpointId');
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [GatewayEndpointRouteTableAttachment] resource's state with the given [name] and [id].
@@ -343,13 +345,13 @@ class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayEndpointId = registerOutput<String>('gatewayEndpointId');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayEndpointId = registerOutput<String>('gatewayEndpointId');
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 }

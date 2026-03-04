@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSuppressionArgs {
   /// The name of the suppression.
   final pulumi.Input<String> name;
+
   /// The recommendation ID.
   final pulumi.Input<String> recommendationId;
+
   /// The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   final pulumi.Input<String> resourceUri;
 
@@ -34,10 +36,11 @@ class GetSuppressionArgs {
 
   factory GetSuppressionArgs.fromMap(Map<String, dynamic> map) {
     return GetSuppressionArgs(
-      name: (map['name'] as String).input(),
-      recommendationId: (map['recommendationId'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      recommendationId: pulumi.Input.fromValue(
+        map['recommendationId'] as String,
+      ),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

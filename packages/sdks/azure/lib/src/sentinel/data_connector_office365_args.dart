@@ -9,19 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorOffice365Args {
   /// Should the Exchange data connector be enabled? Defaults to `true`.
   final pulumi.Input<bool>? exchangeEnabled;
+
   /// The ID of the Log Analytics Workspace that this Office 365 Data Connector resides in. Changing this forces a new Office 365 Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Office 365 Data Connector. Changing this forces a new Office 365 Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// Should the SharePoint data connector be enabled? Defaults to `true`.
   final pulumi.Input<bool>? sharepointEnabled;
+
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
-  /// > **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
+  /// &gt; **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
   final pulumi.Input<bool>? teamsEnabled;
+
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [DataConnectorOffice365Args].
@@ -53,13 +58,34 @@ class DataConnectorOffice365Args {
 
   factory DataConnectorOffice365Args.fromMap(Map<String, dynamic> map) {
     return DataConnectorOffice365Args(
-      exchangeEnabled: map['exchangeEnabled'] == null ? null : (map['exchangeEnabled']! as bool).input(),
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sharepointEnabled: map['sharepointEnabled'] == null ? null : (map['sharepointEnabled']! as bool).input(),
-      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled']! as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      exchangeEnabled: (() {
+        final guardedValue = map['exchangeEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharepointEnabled: (() {
+        final guardedValue = map['sharepointEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      teamsEnabled: (() {
+        final guardedValue = map['teamsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

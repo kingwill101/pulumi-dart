@@ -176,16 +176,22 @@ import 'system_data_response.dart';
 class ProfileAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of custom domains associated with this agent link.
-  late final pulumi.Output<List<ResourceReferenceResponse>> customDomains;
+  late final pulumi.Output<List<Map<String, dynamic>>> customDomains;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning status of the profile agent association.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Reference to the web agent resource.
   late final pulumi.Output<ResourceReferenceResponse> webAgent;
 
@@ -198,17 +204,17 @@ class ProfileAgent extends pulumi.CustomResource {
     ProfileAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:ProfileAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customDomains = registerOutput<List<ResourceReferenceResponse>>('customDomains');
+         'azure-native:cdn:ProfileAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDomains = registerOutput<List<Map<String, dynamic>>>('customDomains');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.webAgent = registerOutput<ResourceReferenceResponse>('webAgent');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    webAgent = registerOutput<ResourceReferenceResponse>('webAgent');
   }
 }

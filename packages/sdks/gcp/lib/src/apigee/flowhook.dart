@@ -31,14 +31,19 @@ import 'flowhook_state.dart';
 class Flowhook extends pulumi.CustomResource {
   /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
   late final pulumi.Output<bool?> continueOnError;
+
   /// Description of the flow hook.
   late final pulumi.Output<String?> description;
+
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
+
   /// Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
   late final pulumi.Output<String> flowHookPoint;
+
   /// The Apigee Organization associated with the environment
   late final pulumi.Output<String> orgId;
+
   /// Id of the Sharedflow attaching to a flowhook point.
   late final pulumi.Output<String> sharedflow;
 
@@ -51,17 +56,17 @@ class Flowhook extends pulumi.CustomResource {
     FlowhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/flowhook:Flowhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.continueOnError = registerOutput<bool?>('continueOnError');
-    this.description = registerOutput<String?>('description');
-    this.environment = registerOutput<String>('environment');
-    this.flowHookPoint = registerOutput<String>('flowHookPoint');
-    this.orgId = registerOutput<String>('orgId');
-    this.sharedflow = registerOutput<String>('sharedflow');
+         'gcp:apigee/flowhook:Flowhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    continueOnError = registerOutput<bool?>('continueOnError');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String>('environment');
+    flowHookPoint = registerOutput<String>('flowHookPoint');
+    orgId = registerOutput<String>('orgId');
+    sharedflow = registerOutput<String>('sharedflow');
   }
 
   /// Gets an existing [Flowhook] resource's state with the given [name] and [id].
@@ -82,16 +87,16 @@ class Flowhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/flowhook:Flowhook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.continueOnError = registerOutput<bool?>('continueOnError');
-    this.description = registerOutput<String?>('description');
-    this.environment = registerOutput<String>('environment');
-    this.flowHookPoint = registerOutput<String>('flowHookPoint');
-    this.orgId = registerOutput<String>('orgId');
-    this.sharedflow = registerOutput<String>('sharedflow');
+         'gcp:apigee/flowhook:Flowhook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    continueOnError = registerOutput<bool?>('continueOnError');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String>('environment');
+    flowHookPoint = registerOutput<String>('flowHookPoint');
+    orgId = registerOutput<String>('orgId');
+    sharedflow = registerOutput<String>('sharedflow');
   }
 }

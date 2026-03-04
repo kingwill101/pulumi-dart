@@ -349,24 +349,35 @@ import 'system_data_response.dart';
 class IotConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Device Mappings.
   late final pulumi.Output<IotMappingPropertiesResponse?> deviceMapping;
+
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
+
   /// Setting indicating whether the service has a managed identity associated with it.
   late final pulumi.Output<ServiceManagedIdentityResponseIdentity?> identity;
+
   /// Source configuration.
-  late final pulumi.Output<IotEventHubIngestionEndpointConfigurationResponse?> ingestionEndpointConfiguration;
+  late final pulumi.Output<IotEventHubIngestionEndpointConfigurationResponse?>
+  ingestionEndpointConfiguration;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -379,21 +390,28 @@ class IotConnector extends pulumi.CustomResource {
     IotConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:healthcareapis:IotConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deviceMapping = registerOutput<IotMappingPropertiesResponse?>('deviceMapping');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<ServiceManagedIdentityResponseIdentity?>('identity');
-    this.ingestionEndpointConfiguration = registerOutput<IotEventHubIngestionEndpointConfigurationResponse?>('ingestionEndpointConfiguration');
-    this.location = registerOutput<String?>('location');
+         'azure-native:healthcareapis:IotConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deviceMapping = registerOutput<IotMappingPropertiesResponse?>(
+      'deviceMapping',
+    );
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
+      'identity',
+    );
+    ingestionEndpointConfiguration =
+        registerOutput<IotEventHubIngestionEndpointConfigurationResponse?>(
+          'ingestionEndpointConfiguration',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

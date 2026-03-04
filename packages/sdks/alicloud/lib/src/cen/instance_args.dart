@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// The name of the CEN instance.
   final pulumi.Input<String>? cenInstanceName;
+
   /// The description of the CEN instance.
   final pulumi.Input<String>? description;
+
   /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
   final pulumi.Input<String>? name;
+
   /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
   final pulumi.Input<String>? protectionLevel;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// The tags of the CEN instance.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -51,13 +56,38 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      cenInstanceName: map['cenInstanceName'] == null ? null : (map['cenInstanceName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      cenInstanceName: (() {
+        final guardedValue = map['cenInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionLevel: (() {
+        final guardedValue = map['protectionLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

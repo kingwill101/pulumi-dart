@@ -7,29 +7,23 @@ class SecureStringResponse {
   /// Type of the secret.
   /// Expected value is 'SecureString'.
   final pulumi.Input<String> type;
+
   /// Value of secure string.
   final pulumi.Input<String> value;
 
   /// Creates a new [SecureStringResponse].
   /// [type] Type of the secret.
   /// [value] Value of secure string.
-  SecureStringResponse({
-    required this.type,
-    required this.value,
-  });
+  SecureStringResponse({required this.type, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type, 'value': value};
   }
 
   factory SecureStringResponse.fromMap(Map<String, dynamic> map) {
     return SecureStringResponse(
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -7,13 +7,17 @@ import 'get_sites_site.dart';
 class GetSitesResult {
   /// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
   final String? accessType;
+
   /// Acceleration area
   final String? coverage;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Site IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of name of Sites.
   final List<String> names;
   final bool? onlyEnterprise;
@@ -21,13 +25,17 @@ class GetSitesResult {
   final int? pageNumber;
   final int? pageSize;
   final String? planSubscribeType;
+
   /// The ID of the resource group
   final String? resourceGroupId;
+
   /// Site Name
   final String? siteName;
   final String? siteSearchType;
+
   /// A list of Site Entries. Each element contains the following attributes:
   final List<GetSitesSite> sites;
+
   /// The status of the resource
   final String? status;
   final Map<String, String>? tags;
@@ -86,7 +94,10 @@ class GetSitesResult {
       'resourceGroupId': ?resourceGroupId,
       'siteName': ?siteName,
       'siteSearchType': ?siteSearchType,
-      'sites': pulumi.Input.encodeList<GetSitesSite, Map<String, dynamic>>(sites, (value) => value.toMap()),
+      'sites': pulumi.Input.encodeList<GetSitesSite, Map<String, dynamic>>(
+        sites,
+        (value) => value.toMap(),
+      ),
       'status': ?status,
       'tags': ?tags,
     };
@@ -94,24 +105,78 @@ class GetSitesResult {
 
   factory GetSitesResult.fromMap(Map<String, dynamic> map) {
     return GetSitesResult(
-      accessType: map['accessType'] == null ? null : map['accessType']! as String,
-      coverage: map['coverage'] == null ? null : map['coverage']! as String,
+      accessType: (() {
+        final guardedValue = map['accessType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      coverage: (() {
+        final guardedValue = map['coverage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      onlyEnterprise: map['onlyEnterprise'] == null ? null : map['onlyEnterprise']! as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      planSubscribeType: map['planSubscribeType'] == null ? null : map['planSubscribeType']! as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      siteName: map['siteName'] == null ? null : map['siteName']! as String,
-      siteSearchType: map['siteSearchType'] == null ? null : map['siteSearchType']! as String,
-      sites: pulumi.Input.decodeList<GetSitesSite>(map['sites'], (value) => GetSitesSite.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      onlyEnterprise: (() {
+        final guardedValue = map['onlyEnterprise'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      planSubscribeType: (() {
+        final guardedValue = map['planSubscribeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      siteName: (() {
+        final guardedValue = map['siteName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      siteSearchType: (() {
+        final guardedValue = map['siteSearchType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sites: pulumi.Input.decodeList<GetSitesSite>(
+        map['sites']!,
+        (value) => GetSitesSite.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

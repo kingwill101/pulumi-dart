@@ -4,7 +4,7 @@ import 'volume_type_v3_state.dart';
 
 /// Manages a V3 block storage volume type resource within OpenStack.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 ///
 /// ## Example Usage
@@ -253,14 +253,18 @@ class VolumeTypeV3 extends pulumi.CustomResource {
   /// Human-readable description of the port. Changing
   /// this updates the `description` of an existing volume type.
   late final pulumi.Output<String> description;
+
   /// Key/Value pairs of metadata for the volume type.
   late final pulumi.Output<Map<String, String>> extraSpecs;
+
   /// Whether the volume type is public. Changing
   /// this updates the `is_public` of an existing volume type.
   late final pulumi.Output<bool> isPublic;
+
   /// Name of the volume type.  Changing this
   /// updates the `name` of an existing volume type.
   late final pulumi.Output<String> name;
+
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
@@ -275,16 +279,16 @@ class VolumeTypeV3 extends pulumi.CustomResource {
     VolumeTypeV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
-    this.isPublic = registerOutput<bool>('isPublic');
+         'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
+    isPublic = registerOutput<bool>('isPublic');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [VolumeTypeV3] resource's state with the given [name] and [id].
@@ -305,15 +309,15 @@ class VolumeTypeV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
-    this.isPublic = registerOutput<bool>('isPublic');
+         'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
+    isPublic = registerOutput<bool>('isPublic');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

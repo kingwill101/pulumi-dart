@@ -31,10 +31,13 @@ class GetForwardingRuleComputeBetaArgs {
 
   factory GetForwardingRuleComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardingRuleComputeBetaArgs(
-      forwardingRule: (map['forwardingRule'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      forwardingRule: pulumi.Input.fromValue(map['forwardingRule'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

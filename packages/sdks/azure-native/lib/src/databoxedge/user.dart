@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asymmetric_encrypted_secret_response.dart';
-import 'share_access_right_response.dart';
 import 'system_data_response.dart';
 import 'user_args.dart';
 
@@ -174,16 +173,23 @@ import 'user_args.dart';
 class User extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The password details.
-  late final pulumi.Output<AsymmetricEncryptedSecretResponse?> encryptedPassword;
+  late final pulumi.Output<AsymmetricEncryptedSecretResponse?>
+  encryptedPassword;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// List of shares that the user has rights on. This field should not be specified during user creation.
-  late final pulumi.Output<List<ShareAccessRightResponse>> shareAccessRights;
+  late final pulumi.Output<List<Map<String, dynamic>>> shareAccessRights;
+
   /// Metadata pertaining to creation and last modification of User
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
+
   /// Type of the user.
   late final pulumi.Output<String> userType;
 
@@ -191,22 +197,23 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_databoxedge_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:databoxedge:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>('encryptedPassword');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:databoxedge:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>(
+      'encryptedPassword',
+    );
     this.name = registerOutput<String>('name');
-    this.shareAccessRights = registerOutput<List<ShareAccessRightResponse>>('shareAccessRights');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.userType = registerOutput<String>('userType');
+    shareAccessRights = registerOutput<List<Map<String, dynamic>>>(
+      'shareAccessRights',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    userType = registerOutput<String>('userType');
   }
 }

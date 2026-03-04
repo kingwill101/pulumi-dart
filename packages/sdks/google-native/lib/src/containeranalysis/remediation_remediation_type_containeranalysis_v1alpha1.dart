@@ -7,16 +7,20 @@ enum RemediationRemediationTypeContaineranalysisV1alpha1 {
   vendorFix("VENDOR_FIX"),
   workaround("WORKAROUND");
 
-  const RemediationRemediationTypeContaineranalysisV1alpha1(this.value);
-  final String value;
+  const RemediationRemediationTypeContaineranalysisV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static RemediationRemediationTypeContaineranalysisV1alpha1 fromValue(String value) {
-    for (final item in RemediationRemediationTypeContaineranalysisV1alpha1.values) {
-      if (item.value == value) {
+  static RemediationRemediationTypeContaineranalysisV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in RemediationRemediationTypeContaineranalysisV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RemediationRemediationTypeContaineranalysisV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown RemediationRemediationTypeContaineranalysisV1alpha1 value: $value',
+    );
   }
 }
-

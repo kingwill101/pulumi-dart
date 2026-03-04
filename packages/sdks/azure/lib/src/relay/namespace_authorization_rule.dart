@@ -221,7 +221,7 @@ import 'namespace_authorization_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Relay` - 2021-11-01
@@ -236,22 +236,31 @@ import 'namespace_authorization_rule_state.dart';
 class NamespaceAuthorizationRule extends pulumi.CustomResource {
   /// Grants listen access to this Authorization Rule. Defaults to `false`.
   late final pulumi.Output<bool?> listen;
+
   /// Grants manage access to this Authorization Rule. When this property is `true` - both `listen` and `send` must be set to `true` too. Defaults to `false`.
   late final pulumi.Output<bool?> manage;
+
   /// The name which should be used for this Azure Relay Namespace Authorization Rule. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   late final pulumi.Output<String> name;
+
   /// Name of the Azure Relay Namespace for which this Azure Relay Namespace Authorization Rule will be created. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   late final pulumi.Output<String> namespaceName;
+
   /// The Primary Connection String for the Azure Relay Namespace Authorization Rule.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The Primary Key for the Azure Relay Namespace Authorization Rule.
   late final pulumi.Output<String> primaryKey;
+
   /// The name of the Resource Group where the Azure Relay Namespace Authorization Rule should exist. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Secondary Connection String for the Azure Relay Namespace Authorization Rule.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The Secondary Key for the Azure Relay Namespace Authorization Rule.
   late final pulumi.Output<String> secondaryKey;
+
   /// Grants send access to this Authorization Rule. Defaults to `false`.
   late final pulumi.Output<bool?> send;
 
@@ -264,21 +273,23 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     NamespaceAuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/namespaceAuthorizationRule:NamespaceAuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:relay/namespaceAuthorizationRule:NamespaceAuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    send = registerOutput<bool?>('send');
   }
 
   /// Gets an existing [NamespaceAuthorizationRule] resource's state with the given [name] and [id].
@@ -299,20 +310,22 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/namespaceAuthorizationRule:NamespaceAuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:relay/namespaceAuthorizationRule:NamespaceAuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    send = registerOutput<bool?>('send');
   }
 }

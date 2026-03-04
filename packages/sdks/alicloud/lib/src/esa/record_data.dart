@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecordData {
   /// The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
   final pulumi.Input<int>? algorithm;
+
   /// The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
   final pulumi.Input<String>? certificate;
+
   /// The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
   final pulumi.Input<String>? fingerprint;
+
   /// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
   final pulumi.Input<int>? flag;
+
   /// The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
   final pulumi.Input<int>? keyTag;
+
   /// The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
   final pulumi.Input<int>? matchingType;
+
   /// The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
   final pulumi.Input<int>? port;
+
   /// The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
   final pulumi.Input<int>? priority;
+
   /// The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
   final pulumi.Input<int>? selector;
+
   /// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
   final pulumi.Input<String>? tag;
+
   /// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
   final pulumi.Input<int>? type;
+
   /// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
   final pulumi.Input<int>? usage;
+
   /// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
   /// - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
   /// - `CNAME`: the target domain name.
@@ -37,6 +49,7 @@ class RecordData {
   /// - `SRV`: a valid domain name of the target host.
   /// - `URI`: a valid URI string.
   final pulumi.Input<String>? value;
+
   /// The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
   final pulumi.Input<int>? weight;
 
@@ -93,21 +106,76 @@ class RecordData {
 
   factory RecordData.fromMap(Map<String, dynamic> map) {
     return RecordData(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as int).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      flag: map['flag'] == null ? null : (map['flag']! as int).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
-      matchingType: map['matchingType'] == null ? null : (map['matchingType']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as int).input(),
-      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as int).input(),
-      usage: map['usage'] == null ? null : (map['usage']! as int).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      algorithm: (() {
+        final guardedValue = map['algorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flag: (() {
+        final guardedValue = map['flag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      keyTag: (() {
+        final guardedValue = map['keyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      matchingType: (() {
+        final guardedValue = map['matchingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tag: (() {
+        final guardedValue = map['tag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      usage: (() {
+        final guardedValue = map['usage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

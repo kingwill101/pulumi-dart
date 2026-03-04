@@ -9,16 +9,15 @@ enum ConditionIamComputeV1 {
   noAttr("NO_ATTR"),
   securityRealm("SECURITY_REALM");
 
-  const ConditionIamComputeV1(this.value);
-  final String value;
+  const ConditionIamComputeV1(this.wireValue);
+  final String wireValue;
 
   static ConditionIamComputeV1 fromValue(String value) {
     for (final item in ConditionIamComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionIamComputeV1 value: $value');
   }
 }
-

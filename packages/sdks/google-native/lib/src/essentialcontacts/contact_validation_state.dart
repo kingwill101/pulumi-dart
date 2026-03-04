@@ -4,16 +4,15 @@ enum ContactValidationState {
   valid("VALID"),
   invalid("INVALID");
 
-  const ContactValidationState(this.value);
-  final String value;
+  const ContactValidationState(this.wireValue);
+  final String wireValue;
 
   static ContactValidationState fromValue(String value) {
     for (final item in ContactValidationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContactValidationState value: $value');
   }
 }
-

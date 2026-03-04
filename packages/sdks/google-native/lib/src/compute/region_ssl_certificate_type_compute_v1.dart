@@ -4,16 +4,17 @@ enum RegionSslCertificateTypeComputeV1 {
   selfManaged("SELF_MANAGED"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
-  const RegionSslCertificateTypeComputeV1(this.value);
-  final String value;
+  const RegionSslCertificateTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionSslCertificateTypeComputeV1 fromValue(String value) {
     for (final item in RegionSslCertificateTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslCertificateTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslCertificateTypeComputeV1 value: $value',
+    );
   }
 }
-

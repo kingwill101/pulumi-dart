@@ -28,16 +28,15 @@ enum MetricTransformationUnit {
   terabytes("Terabytes"),
   terabytesSecond("Terabytes/Second");
 
-  const MetricTransformationUnit(this.value);
-  final String value;
+  const MetricTransformationUnit(this.wireValue);
+  final String wireValue;
 
   static MetricTransformationUnit fromValue(String value) {
     for (final item in MetricTransformationUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricTransformationUnit value: $value');
   }
 }
-

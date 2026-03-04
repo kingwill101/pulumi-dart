@@ -1,10 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
-import 'instance_backend_node_group.dart';
-import 'instance_frontend_node_group.dart';
-import 'instance_observer_node_group.dart';
 import 'instance_state.dart';
-import 'instance_vswitch.dart';
 
 /// Provides a Star Rocks Instance resource.
 ///
@@ -12,7 +8,7 @@ import 'instance_vswitch.dart';
 ///
 /// For information about Star Rocks Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/starrocks/2022-10-19/CreateInstanceV1).
 ///
-/// > **NOTE:** Available since v1.256.0.
+/// &gt; **NOTE:** Available since v1.256.0.
 ///
 /// ## Example Usage
 ///
@@ -539,62 +535,85 @@ import 'instance_vswitch.dart';
 class Instance extends pulumi.CustomResource {
   /// Password of admin user.
   late final pulumi.Output<String> adminPassword;
+
   /// Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
   late final pulumi.Output<bool?> autoRenew;
+
   /// BackendNodeGroups See `backend_node_groups` below.
-  late final pulumi.Output<List<InstanceBackendNodeGroup>?> backendNodeGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> backendNodeGroups;
+
   /// ZoneId of instance.
   late final pulumi.Output<String> clusterZoneId;
+
   /// The creation time of the instance.
   late final pulumi.Output<String> createTime;
+
   /// Duration of purchase. It is only meaningful when payType is set to PrePaid.
   late final pulumi.Output<int?> duration;
+
   /// Whether encrypted
   late final pulumi.Output<bool?> encrypted;
+
   /// FrontendNodeGroups See `frontend_node_groups` below.
-  late final pulumi.Output<List<InstanceFrontendNodeGroup>?> frontendNodeGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontendNodeGroups;
+
   /// The name of the instance.
   late final pulumi.Output<String> instanceName;
+
   /// KmsKeyId
   late final pulumi.Output<String?> kmsKeyId;
+
   /// ObserverNodeGroups See `observer_node_groups` below.
-  late final pulumi.Output<List<InstanceObserverNodeGroup>?> observerNodeGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> observerNodeGroups;
+
   /// Role name used for password-free access to OSS.
   late final pulumi.Output<String?> ossAccessingRoleName;
+
   /// The package type of the instance:
   /// - trial
   /// - official
   late final pulumi.Output<String> packageType;
+
   /// The pay type of the instance:
   /// - prePaid
   /// - postPaid
   late final pulumi.Output<String> payType;
+
   /// The duration unit for purchasing:
   /// - Month
   /// - Year
   /// This is only meaningful when PayType is set to PrePaid.
   late final pulumi.Output<String?> pricingCycle;
+
   /// Promotion
   late final pulumi.Output<String?> promotionOptionNo;
+
   /// The region ID of the instance.
   late final pulumi.Output<String> regionId;
+
   /// ResourceGroupId
   late final pulumi.Output<String> resourceGroupId;
+
   /// The run mode of the instance:
   /// - shared_nothing
   /// - shared_data
   /// - lakehouse
   late final pulumi.Output<String> runMode;
+
   /// The status of the instance.
   late final pulumi.Output<String> status;
+
   /// Tag list of the instance.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The version of the instance.
   late final pulumi.Output<String> version;
+
   /// The VPC ID of the instance.
   late final pulumi.Output<String> vpcId;
+
   /// The VSwitches info of the instance. See `vswitches` below.
-  late final pulumi.Output<List<InstanceVswitch>?> vswitches;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vswitches;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -605,35 +624,41 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:starrocks/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPassword = registerOutput<String>('adminPassword');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.backendNodeGroups = registerOutput<List<InstanceBackendNodeGroup>?>('backendNodeGroups');
-    this.clusterZoneId = registerOutput<String>('clusterZoneId');
-    this.createTime = registerOutput<String>('createTime');
-    this.duration = registerOutput<int?>('duration');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.frontendNodeGroups = registerOutput<List<InstanceFrontendNodeGroup>?>('frontendNodeGroups');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.observerNodeGroups = registerOutput<List<InstanceObserverNodeGroup>?>('observerNodeGroups');
-    this.ossAccessingRoleName = registerOutput<String?>('ossAccessingRoleName');
-    this.packageType = registerOutput<String>('packageType');
-    this.payType = registerOutput<String>('payType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.runMode = registerOutput<String>('runMode');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String>('version');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitches = registerOutput<List<InstanceVswitch>?>('vswitches');
+         'alicloud:starrocks/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPassword = registerOutput<String>('adminPassword');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    backendNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'backendNodeGroups',
+    );
+    clusterZoneId = registerOutput<String>('clusterZoneId');
+    createTime = registerOutput<String>('createTime');
+    duration = registerOutput<int?>('duration');
+    encrypted = registerOutput<bool?>('encrypted');
+    frontendNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendNodeGroups',
+    );
+    instanceName = registerOutput<String>('instanceName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    observerNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'observerNodeGroups',
+    );
+    ossAccessingRoleName = registerOutput<String?>('ossAccessingRoleName');
+    packageType = registerOutput<String>('packageType');
+    payType = registerOutput<String>('payType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    runMode = registerOutput<String>('runMode');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String>('version');
+    vpcId = registerOutput<String>('vpcId');
+    vswitches = registerOutput<List<Map<String, dynamic>>?>('vswitches');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -654,34 +679,40 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:starrocks/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPassword = registerOutput<String>('adminPassword');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.backendNodeGroups = registerOutput<List<InstanceBackendNodeGroup>?>('backendNodeGroups');
-    this.clusterZoneId = registerOutput<String>('clusterZoneId');
-    this.createTime = registerOutput<String>('createTime');
-    this.duration = registerOutput<int?>('duration');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.frontendNodeGroups = registerOutput<List<InstanceFrontendNodeGroup>?>('frontendNodeGroups');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.observerNodeGroups = registerOutput<List<InstanceObserverNodeGroup>?>('observerNodeGroups');
-    this.ossAccessingRoleName = registerOutput<String?>('ossAccessingRoleName');
-    this.packageType = registerOutput<String>('packageType');
-    this.payType = registerOutput<String>('payType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.runMode = registerOutput<String>('runMode');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String>('version');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitches = registerOutput<List<InstanceVswitch>?>('vswitches');
+         'alicloud:starrocks/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPassword = registerOutput<String>('adminPassword');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    backendNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'backendNodeGroups',
+    );
+    clusterZoneId = registerOutput<String>('clusterZoneId');
+    createTime = registerOutput<String>('createTime');
+    duration = registerOutput<int?>('duration');
+    encrypted = registerOutput<bool?>('encrypted');
+    frontendNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendNodeGroups',
+    );
+    instanceName = registerOutput<String>('instanceName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    observerNodeGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'observerNodeGroups',
+    );
+    ossAccessingRoleName = registerOutput<String?>('ossAccessingRoleName');
+    packageType = registerOutput<String>('packageType');
+    payType = registerOutput<String>('payType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    runMode = registerOutput<String>('runMode');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String>('version');
+    vpcId = registerOutput<String>('vpcId');
+    vswitches = registerOutput<List<Map<String, dynamic>>?>('vswitches');
   }
 }

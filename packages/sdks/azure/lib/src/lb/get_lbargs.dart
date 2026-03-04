@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLBArgs {
   /// Specifies the name of the Load Balancer.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group in which the Load Balancer exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLBArgs].
   /// [name] Specifies the name of the Load Balancer.
   /// [resourceGroupName] The name of the Resource Group in which the Load Balancer exists.
-  GetLBArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetLBArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetLBArgs {
 
   factory GetLBArgs.fromMap(Map<String, dynamic> map) {
     return GetLBArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

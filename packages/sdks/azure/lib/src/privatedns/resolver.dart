@@ -199,7 +199,7 @@ import 'resolver_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-07-01
@@ -214,12 +214,16 @@ import 'resolver_state.dart';
 class Resolver extends pulumi.CustomResource {
   /// Specifies the Azure Region where the Private DNS Resolver should exist. Changing this forces a new Private DNS Resolver to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Private DNS Resolver. Changing this forces a new Private DNS Resolver to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Private DNS Resolver should exist. Changing this forces a new Private DNS Resolver to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Private DNS Resolver.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver. Changing this forces a new Private DNS Resolver to be created.
   late final pulumi.Output<String> virtualNetworkId;
 
@@ -232,16 +236,16 @@ class Resolver extends pulumi.CustomResource {
     ResolverArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolver:Resolver',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolver:Resolver',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 
   /// Gets an existing [Resolver] resource's state with the given [name] and [id].
@@ -262,15 +266,15 @@ class Resolver extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolver:Resolver',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolver:Resolver',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 }

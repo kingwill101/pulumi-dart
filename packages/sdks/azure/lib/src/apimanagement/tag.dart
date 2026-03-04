@@ -193,7 +193,7 @@ import 'tag_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -208,8 +208,10 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// The ID of the API Management. Changing this forces a new API Management Tag to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The display name of the API Management Tag. Defaults to the `name`.
   late final pulumi.Output<String> displayName;
+
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created. The name must be unique in the API Management Service.
   late final pulumi.Output<String> name;
 
@@ -217,27 +219,20 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_apimanagement_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(
-    String name, {
-    TagArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:apimanagement/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.displayName = registerOutput<String>('displayName');
+  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:apimanagement/tag:Tag',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(
-    String name,
-    pulumi.Input<String> id, {
-    TagState? state,
-  }) {
+  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -250,13 +245,13 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/tag:Tag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
   }
 }

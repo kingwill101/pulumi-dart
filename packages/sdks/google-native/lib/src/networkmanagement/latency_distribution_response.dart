@@ -10,20 +10,35 @@ class LatencyDistributionResponse {
 
   /// Creates a new [LatencyDistributionResponse].
   /// [latencyPercentiles] Representative latency percentiles.
-  LatencyDistributionResponse({
-    required this.latencyPercentiles,
-  });
+  LatencyDistributionResponse({required this.latencyPercentiles});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'latencyPercentiles': pulumi.Input.mapInputValue<List<LatencyPercentileResponse>, List<Map<String, dynamic>>>(latencyPercentiles, (value) => pulumi.Input.encodeList<LatencyPercentileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'latencyPercentiles':
+          pulumi.Input.mapInputValue<
+            List<LatencyPercentileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            latencyPercentiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LatencyPercentileResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LatencyDistributionResponse.fromMap(Map<String, dynamic> map) {
     return LatencyDistributionResponse(
-      latencyPercentiles: (pulumi.Input.decodeList<LatencyPercentileResponse>(map['latencyPercentiles'], (value) => LatencyPercentileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latencyPercentiles: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LatencyPercentileResponse>(
+          map['latencyPercentiles']!,
+          (value) => LatencyPercentileResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

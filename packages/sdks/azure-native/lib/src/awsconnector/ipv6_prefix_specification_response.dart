@@ -9,20 +9,19 @@ class Ipv6PrefixSpecificationResponse {
 
   /// Creates a new [Ipv6PrefixSpecificationResponse].
   /// [ipv6Prefix] Property ipv6Prefix
-  Ipv6PrefixSpecificationResponse({
-    this.ipv6Prefix,
-  });
+  Ipv6PrefixSpecificationResponse({this.ipv6Prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipv6Prefix': ?ipv6Prefix,
-    };
+    return <String, dynamic>{'ipv6Prefix': ?ipv6Prefix};
   }
 
   factory Ipv6PrefixSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return Ipv6PrefixSpecificationResponse(
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix']! as String).input(),
+      ipv6Prefix: (() {
+        final guardedValue = map['ipv6Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

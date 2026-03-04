@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNpmPackage.
 class GetNpmPackageResult {
   /// The time the package was created.
   final String createTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
+
   /// The fully qualified name of the fetched package. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/npmPackages/{{package}}:{{version}}
@@ -16,10 +17,13 @@ class GetNpmPackageResult {
   final String packageName;
   final String? project;
   final String repositoryId;
+
   /// A list of all Tags attached to this package.
   final List<String> tags;
+
   /// The time the package was last updated.
   final String updateTime;
+
   /// The version of the NPM package.
   final String version;
 
@@ -69,7 +73,11 @@ class GetNpmPackageResult {
       location: map['location'] as String,
       name: map['name'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       repositoryId: map['repositoryId'] as String,
       tags: (map['tags'] as List).cast<String>(),
       updateTime: map['updateTime'] as String,
@@ -77,4 +85,3 @@ class GetNpmPackageResult {
     );
   }
 }
-

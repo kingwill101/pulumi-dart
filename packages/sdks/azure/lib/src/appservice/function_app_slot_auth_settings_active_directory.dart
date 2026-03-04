@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionAppSlotAuthSettingsActiveDirectory {
   /// Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
   final pulumi.Input<List<String>>? allowedAudiences;
+
   /// The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
   final pulumi.Input<String> clientId;
+
   /// The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
   final pulumi.Input<String>? clientSecret;
 
@@ -28,12 +30,21 @@ class FunctionAppSlotAuthSettingsActiveDirectory {
     };
   }
 
-  factory FunctionAppSlotAuthSettingsActiveDirectory.fromMap(Map<String, dynamic> map) {
+  factory FunctionAppSlotAuthSettingsActiveDirectory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FunctionAppSlotAuthSettingsActiveDirectory(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      allowedAudiences: (() {
+        final guardedValue = map['allowedAudiences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_replication_policy_args.dart';
 import 'object_replication_policy_properties_response_metrics.dart';
-import 'object_replication_policy_rule_response.dart';
 
 /// The replication policy between two storage accounts. Multiple rules can be defined in one policy.
 ///
@@ -949,20 +948,29 @@ import 'object_replication_policy_rule_response.dart';
 class ObjectReplicationPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
   late final pulumi.Output<String> destinationAccount;
+
   /// Indicates when the policy is enabled on the source account.
   late final pulumi.Output<String> enabledTime;
+
   /// Optional. The object replication policy metrics feature options.
-  late final pulumi.Output<ObjectReplicationPolicyPropertiesResponseMetrics?> metrics;
+  late final pulumi.Output<ObjectReplicationPolicyPropertiesResponseMetrics?>
+  metrics;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A unique id for object replication policy.
   late final pulumi.Output<String> policyId;
+
   /// The storage account object replication rules.
-  late final pulumi.Output<List<ObjectReplicationPolicyRuleResponse>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   late final pulumi.Output<String> sourceAccount;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -975,19 +983,21 @@ class ObjectReplicationPolicy extends pulumi.CustomResource {
     ObjectReplicationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:ObjectReplicationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.destinationAccount = registerOutput<String>('destinationAccount');
-    this.enabledTime = registerOutput<String>('enabledTime');
-    this.metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>('metrics');
+         'azure-native:storage:ObjectReplicationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destinationAccount = registerOutput<String>('destinationAccount');
+    enabledTime = registerOutput<String>('enabledTime');
+    metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>(
+      'metrics',
+    );
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.rules = registerOutput<List<ObjectReplicationPolicyRuleResponse>?>('rules');
-    this.sourceAccount = registerOutput<String>('sourceAccount');
-    this.type = registerOutput<String>('type');
+    policyId = registerOutput<String>('policyId');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    sourceAccount = registerOutput<String>('sourceAccount');
+    type = registerOutput<String>('type');
   }
 }

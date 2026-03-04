@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HelmInstallOptionsResponse {
   /// The helm deployment atomic options
   final pulumi.Input<String>? atomic;
+
   /// The helm deployment timeout options
   final pulumi.Input<String>? timeout;
+
   /// The helm deployment wait options
   final pulumi.Input<String>? wait;
 
@@ -15,11 +17,7 @@ class HelmInstallOptionsResponse {
   /// [atomic] The helm deployment atomic options
   /// [timeout] The helm deployment timeout options
   /// [wait] The helm deployment wait options
-  HelmInstallOptionsResponse({
-    this.atomic,
-    this.timeout,
-    this.wait,
-  });
+  HelmInstallOptionsResponse({this.atomic, this.timeout, this.wait});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class HelmInstallOptionsResponse {
 
   factory HelmInstallOptionsResponse.fromMap(Map<String, dynamic> map) {
     return HelmInstallOptionsResponse(
-      atomic: map['atomic'] == null ? null : (map['atomic']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
-      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
+      atomic: (() {
+        final guardedValue = map['atomic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      wait: (() {
+        final guardedValue = map['wait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

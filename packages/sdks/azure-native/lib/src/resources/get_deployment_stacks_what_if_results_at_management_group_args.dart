@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// Name of the deployment stack what-if result.
   final pulumi.Input<String> deploymentStacksWhatIfResultName;
+
   /// The name of the management group. The name is case insensitive.
   final pulumi.Input<String> managementGroupId;
 
@@ -27,11 +28,16 @@ class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
     };
   }
 
-  factory GetDeploymentStacksWhatIfResultsAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentStacksWhatIfResultsAtManagementGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentStacksWhatIfResultsAtManagementGroupArgs(
-      deploymentStacksWhatIfResultName: (map['deploymentStacksWhatIfResultName'] as String).input(),
-      managementGroupId: (map['managementGroupId'] as String).input(),
+      deploymentStacksWhatIfResultName: pulumi.Input.fromValue(
+        map['deploymentStacksWhatIfResultName'] as String,
+      ),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
     );
   }
 }
-

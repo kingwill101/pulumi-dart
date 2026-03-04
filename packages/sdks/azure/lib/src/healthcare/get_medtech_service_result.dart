@@ -7,14 +7,19 @@ import 'get_medtech_service_identity.dart';
 class GetMedtechServiceResult {
   /// The Device Mappings of the Med Tech Service.
   final String deviceMappingJson;
+
   /// The Consumer Group of the Event Hub of the Healthcare Med Tech Service.
   final String eventhubConsumerGroupName;
+
   /// The name of the Event Hub of the Healthcare Med Tech Service.
   final String eventhubName;
+
   /// The namespace name of the Event Hub of the Healthcare Med Tech Service.
   final String eventhubNamespaceName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The `identity` block as defined below.
   final List<GetMedtechServiceIdentity> identities;
   final String name;
@@ -47,7 +52,11 @@ class GetMedtechServiceResult {
       'eventhubName': eventhubName,
       'eventhubNamespaceName': eventhubNamespaceName,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetMedtechServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<
+            GetMedtechServiceIdentity,
+            Map<String, dynamic>
+          >(identities, (value) => value.toMap()),
       'name': name,
       'workspaceId': workspaceId,
     };
@@ -60,10 +69,14 @@ class GetMedtechServiceResult {
       eventhubName: map['eventhubName'] as String,
       eventhubNamespaceName: map['eventhubNamespaceName'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetMedtechServiceIdentity>(map['identities'], (value) => GetMedtechServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetMedtechServiceIdentity>(
+        map['identities']!,
+        (value) => GetMedtechServiceIdentity.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
-

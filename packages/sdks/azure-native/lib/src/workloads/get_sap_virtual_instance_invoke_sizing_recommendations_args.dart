@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapVirtualInstanceInvokeSizingRecommendationsArgs {
   /// The geo-location where the resource is to be created.
   final pulumi.Input<String> appLocation;
+
   /// The database type.
   final pulumi.Input<String> databaseType;
+
   /// The database memory configuration.
   final pulumi.Input<double> dbMemory;
+
   /// The DB scale method.
   final pulumi.Input<String>? dbScaleMethod;
+
   /// The deployment type. Eg: SingleServer/ThreeTier
   final pulumi.Input<String> deploymentType;
+
   /// Defines the environment type - Production/Non Production.
   final pulumi.Input<String> environment;
+
   /// The high availability type.
   final pulumi.Input<String>? highAvailabilityType;
+
   /// The name of the Azure region.
   final pulumi.Input<String> location;
+
   /// Defines the SAP Product type.
   final pulumi.Input<String> sapProduct;
+
   /// The SAP Application Performance Standard measurement.
   final pulumi.Input<double> saps;
 
@@ -67,19 +76,28 @@ class GetSapVirtualInstanceInvokeSizingRecommendationsArgs {
     };
   }
 
-  factory GetSapVirtualInstanceInvokeSizingRecommendationsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSapVirtualInstanceInvokeSizingRecommendationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSapVirtualInstanceInvokeSizingRecommendationsArgs(
-      appLocation: (map['appLocation'] as String).input(),
-      databaseType: (map['databaseType'] as String).input(),
-      dbMemory: (map['dbMemory'] as double).input(),
-      dbScaleMethod: map['dbScaleMethod'] == null ? null : (map['dbScaleMethod']! as String).input(),
-      deploymentType: (map['deploymentType'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType']! as String).input(),
-      location: (map['location'] as String).input(),
-      sapProduct: (map['sapProduct'] as String).input(),
-      saps: (map['saps'] as double).input(),
+      appLocation: pulumi.Input.fromValue(map['appLocation'] as String),
+      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
+      dbMemory: pulumi.Input.fromValue(map['dbMemory'] as double),
+      dbScaleMethod: (() {
+        final guardedValue = map['dbScaleMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      highAvailabilityType: (() {
+        final guardedValue = map['highAvailabilityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      sapProduct: pulumi.Input.fromValue(map['sapProduct'] as String),
+      saps: pulumi.Input.fromValue(map['saps'] as double),
     );
   }
 }
-

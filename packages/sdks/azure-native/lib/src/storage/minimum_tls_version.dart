@@ -5,16 +5,15 @@ enum MinimumTlsVersion {
   valueTLS12("TLS1_2"),
   valueTLS13("TLS1_3");
 
-  const MinimumTlsVersion(this.value);
-  final String value;
+  const MinimumTlsVersion(this.wireValue);
+  final String wireValue;
 
   static MinimumTlsVersion fromValue(String value) {
     for (final item in MinimumTlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MinimumTlsVersion value: $value');
   }
 }
-

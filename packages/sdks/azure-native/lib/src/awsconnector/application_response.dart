@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Application
 class ApplicationResponse {
-  /// <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
+  /// &lt;p&gt;This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.&lt;/p&gt;
   final pulumi.Input<Map<String, String>>? additionalInfo;
-  /// <p>Arguments for Amazon EMR to pass to the application.</p>
+
+  /// &lt;p&gt;Arguments for Amazon EMR to pass to the application.&lt;/p&gt;
   final pulumi.Input<List<String>>? args;
-  /// <p>The name of the application.</p>
+
+  /// &lt;p&gt;The name of the application.&lt;/p&gt;
   final pulumi.Input<String>? name;
-  /// <p>The version of the application.</p>
+
+  /// &lt;p&gt;The version of the application.&lt;/p&gt;
   final pulumi.Input<String>? version;
 
   /// Creates a new [ApplicationResponse].
-  /// [additionalInfo] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
-  /// [args] <p>Arguments for Amazon EMR to pass to the application.</p>
-  /// [name] <p>The name of the application.</p>
-  /// [version] <p>The version of the application.</p>
+  /// [additionalInfo] &lt;p&gt;This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.&lt;/p&gt;
+  /// [args] &lt;p&gt;Arguments for Amazon EMR to pass to the application.&lt;/p&gt;
+  /// [name] &lt;p&gt;The name of the application.&lt;/p&gt;
+  /// [version] &lt;p&gt;The version of the application.&lt;/p&gt;
   ApplicationResponse({
     this.additionalInfo,
     this.args,
@@ -36,11 +39,28 @@ class ApplicationResponse {
 
   factory ApplicationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationResponse(
-      additionalInfo: map['additionalInfo'] == null ? null : ((map['additionalInfo']! as Map).cast<String, String>()).input(),
-      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      additionalInfo: (() {
+        final guardedValue = map['additionalInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      args: (() {
+        final guardedValue = map['args'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

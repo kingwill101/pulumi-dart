@@ -9,23 +9,32 @@ import 'provisioning_request_response.dart';
 class ProvisionOsJobPropertiesResponse {
   /// Deployment mode to trigger job.
   final pulumi.Input<String>? deploymentMode;
+
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
+
   /// error details.
   final pulumi.Input<ErrorDetailResponse> error;
+
   /// Unique, immutable job id.
   final pulumi.Input<String> jobId;
+
   /// Job Type supported.
   /// Expected value is 'ProvisionOs'.
   final pulumi.Input<String> jobType;
+
   /// Os Provisioning request.
   final pulumi.Input<ProvisioningRequestResponse> provisioningRequest;
+
   /// Job provisioning state
   final pulumi.Input<String> provisioningState;
+
   /// Reported Properties for Provision Os job
   final pulumi.Input<ProvisionOsReportedPropertiesResponse>? reportedProperties;
+
   /// The UTC date and time at which the job started.
   final pulumi.Input<String> startTimeUtc;
+
   /// Status of Edge device job.
   final pulumi.Input<String> status;
 
@@ -57,12 +66,24 @@ class ProvisionOsJobPropertiesResponse {
     return <String, dynamic>{
       'deploymentMode': ?deploymentMode,
       'endTimeUtc': endTimeUtc,
-      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'jobId': jobId,
       'jobType': jobType,
-      'provisioningRequest': pulumi.Input.mapInputValue<ProvisioningRequestResponse, Map<String, dynamic>>(provisioningRequest, (value) => value.toMap()),
+      'provisioningRequest':
+          pulumi.Input.mapInputValue<
+            ProvisioningRequestResponse,
+            Map<String, dynamic>
+          >(provisioningRequest, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'reportedProperties': ?pulumi.Input.mapOptionalInputValue<ProvisionOsReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
+      'reportedProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProvisionOsReportedPropertiesResponse,
+            Map<String, dynamic>
+          >(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
     };
@@ -70,17 +91,38 @@ class ProvisionOsJobPropertiesResponse {
 
   factory ProvisionOsJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProvisionOsJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
-      endTimeUtc: (map['endTimeUtc'] as String).input(),
-      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      jobId: (map['jobId'] as String).input(),
-      jobType: (map['jobType'] as String).input(),
-      provisioningRequest: (ProvisioningRequestResponse.fromMap((map['provisioningRequest'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      reportedProperties: map['reportedProperties'] == null ? null : (ProvisionOsReportedPropertiesResponse.fromMap((map['reportedProperties']! as Map).cast<String, dynamic>())).input(),
-      startTimeUtc: (map['startTimeUtc'] as String).input(),
-      status: (map['status'] as String).input(),
+      deploymentMode: (() {
+        final guardedValue = map['deploymentMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTimeUtc: pulumi.Input.fromValue(map['endTimeUtc'] as String),
+      error: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      jobType: pulumi.Input.fromValue(map['jobType'] as String),
+      provisioningRequest: pulumi.Input.fromValue(
+        ProvisioningRequestResponse.fromMap(
+          (map['provisioningRequest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      reportedProperties: (() {
+        final guardedValue = map['reportedProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProvisionOsReportedPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startTimeUtc: pulumi.Input.fromValue(map['startTimeUtc'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

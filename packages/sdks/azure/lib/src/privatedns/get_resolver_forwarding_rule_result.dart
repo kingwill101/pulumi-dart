@@ -6,15 +6,20 @@ import 'get_resolver_forwarding_rule_target_dns_server.dart';
 /// Result data returned by getResolverForwardingRule.
 class GetResolverForwardingRuleResult {
   final String dnsForwardingRulesetId;
+
   /// The domain name for the Private DNS Resolver Forwarding Rule.
   final String domainName;
+
   /// Is the Private DNS Resolver Forwarding Rule enabled?
   final bool enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The metadata attached to the Private DNS Resolver Forwarding Rule.
   final Map<String, String> metadata;
   final String name;
+
   /// A list of `target_dns_servers` block as defined below.
   final List<GetResolverForwardingRuleTargetDnsServer> targetDnsServers;
 
@@ -44,7 +49,11 @@ class GetResolverForwardingRuleResult {
       'id': id,
       'metadata': metadata,
       'name': name,
-      'targetDnsServers': pulumi.Input.encodeList<GetResolverForwardingRuleTargetDnsServer, Map<String, dynamic>>(targetDnsServers, (value) => value.toMap()),
+      'targetDnsServers':
+          pulumi.Input.encodeList<
+            GetResolverForwardingRuleTargetDnsServer,
+            Map<String, dynamic>
+          >(targetDnsServers, (value) => value.toMap()),
     };
   }
 
@@ -56,8 +65,13 @@ class GetResolverForwardingRuleResult {
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      targetDnsServers: pulumi.Input.decodeList<GetResolverForwardingRuleTargetDnsServer>(map['targetDnsServers'], (value) => GetResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>())),
+      targetDnsServers:
+          pulumi.Input.decodeList<GetResolverForwardingRuleTargetDnsServer>(
+            map['targetDnsServers']!,
+            (value) => GetResolverForwardingRuleTargetDnsServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

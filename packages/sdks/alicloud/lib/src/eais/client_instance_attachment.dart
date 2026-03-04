@@ -12,16 +12,22 @@ import 'client_instance_attachment_state.dart';
 class ClientInstanceAttachment extends pulumi.CustomResource {
   /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
   late final pulumi.Output<String?> category;
+
   /// The ID of the ECS or ECI instance bound to the EAIS instance.
   late final pulumi.Output<String> clientInstanceId;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The Ei instance specification, which is used to filter matching specifications for updating.
   late final pulumi.Output<String> eiInstanceType;
+
   /// The EAIS instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -34,18 +40,18 @@ class ClientInstanceAttachment extends pulumi.CustomResource {
     ClientInstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.clientInstanceId = registerOutput<String>('clientInstanceId');
-    this.createTime = registerOutput<String>('createTime');
-    this.eiInstanceType = registerOutput<String>('eiInstanceType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    clientInstanceId = registerOutput<String>('clientInstanceId');
+    createTime = registerOutput<String>('createTime');
+    eiInstanceType = registerOutput<String>('eiInstanceType');
+    instanceId = registerOutput<String>('instanceId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ClientInstanceAttachment] resource's state with the given [name] and [id].
@@ -66,17 +72,17 @@ class ClientInstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.clientInstanceId = registerOutput<String>('clientInstanceId');
-    this.createTime = registerOutput<String>('createTime');
-    this.eiInstanceType = registerOutput<String>('eiInstanceType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    clientInstanceId = registerOutput<String>('clientInstanceId');
+    createTime = registerOutput<String>('createTime');
+    eiInstanceType = registerOutput<String>('eiInstanceType');
+    instanceId = registerOutput<String>('instanceId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
   }
 }

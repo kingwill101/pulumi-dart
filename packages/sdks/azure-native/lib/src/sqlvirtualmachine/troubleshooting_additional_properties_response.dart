@@ -10,20 +10,31 @@ class TroubleshootingAdditionalPropertiesResponse {
 
   /// Creates a new [TroubleshootingAdditionalPropertiesResponse].
   /// [unhealthyReplicaInfo] The unhealthy replica information
-  TroubleshootingAdditionalPropertiesResponse({
-    this.unhealthyReplicaInfo,
-  });
+  TroubleshootingAdditionalPropertiesResponse({this.unhealthyReplicaInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'unhealthyReplicaInfo': ?pulumi.Input.mapOptionalInputValue<UnhealthyReplicaInfoResponse, Map<String, dynamic>>(unhealthyReplicaInfo, (value) => value.toMap()),
+      'unhealthyReplicaInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            UnhealthyReplicaInfoResponse,
+            Map<String, dynamic>
+          >(unhealthyReplicaInfo, (value) => value.toMap()),
     };
   }
 
-  factory TroubleshootingAdditionalPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory TroubleshootingAdditionalPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TroubleshootingAdditionalPropertiesResponse(
-      unhealthyReplicaInfo: map['unhealthyReplicaInfo'] == null ? null : (UnhealthyReplicaInfoResponse.fromMap((map['unhealthyReplicaInfo']! as Map).cast<String, dynamic>())).input(),
+      unhealthyReplicaInfo: (() {
+        final guardedValue = map['unhealthyReplicaInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UnhealthyReplicaInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

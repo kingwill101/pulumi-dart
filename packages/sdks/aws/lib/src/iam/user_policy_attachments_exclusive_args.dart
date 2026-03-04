@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyAttachmentsExclusiveArgs {
   /// A list of managed IAM policy ARNs to be attached to the user. Policies attached to this user but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyArns;
+
   /// IAM user name.
   final pulumi.Input<String> userName;
 
@@ -21,17 +22,15 @@ class UserPolicyAttachmentsExclusiveArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policyArns': policyArns,
-      'userName': userName,
-    };
+    return <String, dynamic>{'policyArns': policyArns, 'userName': userName};
   }
 
   factory UserPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentsExclusiveArgs(
-      policyArns: ((map['policyArns'] as List).cast<String>()).input(),
-      userName: (map['userName'] as String).input(),
+      policyArns: pulumi.Input.fromValue(
+        (map['policyArns'] as List).cast<String>(),
+      ),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

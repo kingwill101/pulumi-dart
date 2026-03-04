@@ -9,20 +9,17 @@ class InterconnectAttachmentPrivateInfoResponse {
 
   /// Creates a new [InterconnectAttachmentPrivateInfoResponse].
   /// [tag8021q] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-  InterconnectAttachmentPrivateInfoResponse({
-    required this.tag8021q,
-  });
+  InterconnectAttachmentPrivateInfoResponse({required this.tag8021q});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tag8021q': tag8021q,
-    };
+    return <String, dynamic>{'tag8021q': tag8021q};
   }
 
-  factory InterconnectAttachmentPrivateInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory InterconnectAttachmentPrivateInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectAttachmentPrivateInfoResponse(
-      tag8021q: (map['tag8021q'] as int).input(),
+      tag8021q: pulumi.Input.fromValue(map['tag8021q'] as int),
     );
   }
 }
-

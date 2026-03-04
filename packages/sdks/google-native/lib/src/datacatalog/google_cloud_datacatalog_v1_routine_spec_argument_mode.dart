@@ -5,16 +5,19 @@ enum GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
   out("OUT"),
   inout("INOUT");
 
-  const GoogleCloudDatacatalogV1RoutineSpecArgumentMode(this.value);
-  final String value;
+  const GoogleCloudDatacatalogV1RoutineSpecArgumentMode(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatacatalogV1RoutineSpecArgumentMode fromValue(String value) {
+  static GoogleCloudDatacatalogV1RoutineSpecArgumentMode fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDatacatalogV1RoutineSpecArgumentMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1RoutineSpecArgumentMode value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1RoutineSpecArgumentMode value: $value',
+    );
   }
 }
-

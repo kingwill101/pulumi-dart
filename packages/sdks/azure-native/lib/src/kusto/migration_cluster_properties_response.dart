@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationClusterPropertiesResponse {
   /// The public data ingestion URL of the cluster.
   final pulumi.Input<String> dataIngestionUri;
+
   /// The resource ID of the cluster.
   final pulumi.Input<String> id;
+
   /// The role of the cluster in the migration process.
   final pulumi.Input<String> role;
+
   /// The public URL of the cluster.
   final pulumi.Input<String> uri;
 
@@ -36,11 +39,12 @@ class MigrationClusterPropertiesResponse {
 
   factory MigrationClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationClusterPropertiesResponse(
-      dataIngestionUri: (map['dataIngestionUri'] as String).input(),
-      id: (map['id'] as String).input(),
-      role: (map['role'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      dataIngestionUri: pulumi.Input.fromValue(
+        map['dataIngestionUri'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

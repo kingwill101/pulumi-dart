@@ -1,5 +1,3 @@
-library module_chime;
-
 export 'chime/sdkvoice_global_settings.dart';
 export 'chime/sdkvoice_global_settings_args.dart';
 export 'chime/sdkvoice_global_settings_state.dart';

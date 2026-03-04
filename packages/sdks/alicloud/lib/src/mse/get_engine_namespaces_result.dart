@@ -7,10 +7,12 @@ import 'get_engine_namespaces_namespace.dart';
 class GetEngineNamespacesResult {
   final String? acceptLanguage;
   final String? clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? instanceId;
+
   /// A list of Mse Engine Namespaces. Each element contains the following attributes:
   final List<GetEngineNamespacesNamespace> namespaces;
   final String? outputFile;
@@ -40,21 +42,45 @@ class GetEngineNamespacesResult {
       'id': id,
       'ids': ids,
       'instanceId': ?instanceId,
-      'namespaces': pulumi.Input.encodeList<GetEngineNamespacesNamespace, Map<String, dynamic>>(namespaces, (value) => value.toMap()),
+      'namespaces':
+          pulumi.Input.encodeList<
+            GetEngineNamespacesNamespace,
+            Map<String, dynamic>
+          >(namespaces, (value) => value.toMap()),
       'outputFile': ?outputFile,
     };
   }
 
   factory GetEngineNamespacesResult.fromMap(Map<String, dynamic> map) {
     return GetEngineNamespacesResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage']! as String,
-      clusterId: map['clusterId'] == null ? null : map['clusterId']! as String,
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
-      namespaces: pulumi.Input.decodeList<GetEngineNamespacesNamespace>(map['namespaces'], (value) => GetEngineNamespacesNamespace.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      namespaces: pulumi.Input.decodeList<GetEngineNamespacesNamespace>(
+        map['namespaces']!,
+        (value) => GetEngineNamespacesNamespace.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

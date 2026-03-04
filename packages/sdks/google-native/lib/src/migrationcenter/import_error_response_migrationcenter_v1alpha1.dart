@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportErrorResponseMigrationcenterV1alpha1 {
   /// The error information.
   final pulumi.Input<String> errorDetails;
+
   /// The severity of the error.
   final pulumi.Input<String> severity;
 
@@ -24,11 +25,12 @@ class ImportErrorResponseMigrationcenterV1alpha1 {
     };
   }
 
-  factory ImportErrorResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ImportErrorResponseMigrationcenterV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImportErrorResponseMigrationcenterV1alpha1(
-      errorDetails: (map['errorDetails'] as String).input(),
-      severity: (map['severity'] as String).input(),
+      errorDetails: pulumi.Input.fromValue(map['errorDetails'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

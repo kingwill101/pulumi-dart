@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListFeatureSubscriptionArgs {
   /// Set of features
   final pulumi.Input<List<String>>? features;
+
   /// Location of feature.
   final pulumi.Input<String> locations;
 
   /// Creates a new [ListFeatureSubscriptionArgs].
   /// [features] Set of features
   /// [locations] Location of feature.
-  ListFeatureSubscriptionArgs({
-    this.features,
-    required this.locations,
-  });
+  ListFeatureSubscriptionArgs({this.features, required this.locations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'features': ?features,
-      'locations': locations,
-    };
+    return <String, dynamic>{'features': ?features, 'locations': locations};
   }
 
   factory ListFeatureSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ListFeatureSubscriptionArgs(
-      features: map['features'] == null ? null : ((map['features']! as List).cast<String>()).input(),
-      locations: (map['locations'] as String).input(),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      locations: pulumi.Input.fromValue(map['locations'] as String),
     );
   }
 }
-

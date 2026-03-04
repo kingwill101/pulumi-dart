@@ -13,15 +13,16 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': oversizeHandling};
   }
 
-  factory WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeaderOrder(
-      oversizeHandling: (map['oversizeHandling'] as String).input(),
+      oversizeHandling: pulumi.Input.fromValue(
+        map['oversizeHandling'] as String,
+      ),
     );
   }
 }
-

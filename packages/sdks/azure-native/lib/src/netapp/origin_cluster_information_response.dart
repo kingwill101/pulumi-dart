@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginClusterInformationResponse {
   /// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
   final pulumi.Input<List<String>> peerAddresses;
+
   /// ONTAP cluster name of external cluster hosting the origin volume
   final pulumi.Input<String> peerClusterName;
+
   /// External origin volume name associated to this cache
   final pulumi.Input<String> peerVolumeName;
+
   /// External Vserver (SVM) name  name of the SVM hosting the origin volume
   final pulumi.Input<String> peerVserverName;
 
@@ -36,11 +39,12 @@ class OriginClusterInformationResponse {
 
   factory OriginClusterInformationResponse.fromMap(Map<String, dynamic> map) {
     return OriginClusterInformationResponse(
-      peerAddresses: ((map['peerAddresses'] as List).cast<String>()).input(),
-      peerClusterName: (map['peerClusterName'] as String).input(),
-      peerVolumeName: (map['peerVolumeName'] as String).input(),
-      peerVserverName: (map['peerVserverName'] as String).input(),
+      peerAddresses: pulumi.Input.fromValue(
+        (map['peerAddresses'] as List).cast<String>(),
+      ),
+      peerClusterName: pulumi.Input.fromValue(map['peerClusterName'] as String),
+      peerVolumeName: pulumi.Input.fromValue(map['peerVolumeName'] as String),
+      peerVserverName: pulumi.Input.fromValue(map['peerVserverName'] as String),
     );
   }
 }
-

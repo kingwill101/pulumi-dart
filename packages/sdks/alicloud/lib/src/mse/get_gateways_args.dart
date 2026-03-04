@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaysArgs {
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// The name of the Gateway.
   final pulumi.Input<String>? gatewayName;
+
   /// A list of Gateway IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Gateway name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
   final pulumi.Input<String>? status;
+
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -54,14 +60,41 @@ class GetGatewaysArgs {
 
   factory GetGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewaysArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gatewayName: (() {
+        final guardedValue = map['gatewayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

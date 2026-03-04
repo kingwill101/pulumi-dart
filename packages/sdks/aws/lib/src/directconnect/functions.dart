@@ -223,7 +223,7 @@ Future<GetGatewayResult> getGateway(
 /// Retrieve information about a specific AWS Direct Connect location in the current AWS Region.
 /// These are the locations that can be specified when configuring `aws.directconnect.Connection` or `aws.directconnect.LinkAggregationGroup` resources.
 ///
-/// > **Note:** This data source is different from the `aws.directconnect.getLocations` data source which retrieves information about all the AWS Direct Connect locations in the current AWS Region.
+/// &gt; **Note:** This data source is different from the `aws.directconnect.getLocations` data source which retrieves information about all the AWS Direct Connect locations in the current AWS Region.
 ///
 /// ## Example Usage
 ///
@@ -331,7 +331,7 @@ Future<GetLocationResult> getLocation(
 /// Retrieve information about the AWS Direct Connect locations in the current AWS Region.
 /// These are the locations that can be specified when configuring `aws.directconnect.Connection` or `aws.directconnect.LinkAggregationGroup` resources.
 ///
-/// > **Note:** This data source is different from the `aws.directconnect.getLocation` data source which retrieves information about a specific AWS Direct Connect location in the current AWS Region.
+/// &gt; **Note:** This data source is different from the `aws.directconnect.getLocation` data source which retrieves information about a specific AWS Direct Connect location in the current AWS Region.
 ///
 /// ## Example Usage
 ///

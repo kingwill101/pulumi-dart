@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPredictionTrainingResultsArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The name of the Prediction.
   final pulumi.Input<String> predictionName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetPredictionTrainingResultsArgs {
 
   factory GetPredictionTrainingResultsArgs.fromMap(Map<String, dynamic> map) {
     return GetPredictionTrainingResultsArgs(
-      hubName: (map['hubName'] as String).input(),
-      predictionName: (map['predictionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      predictionName: pulumi.Input.fromValue(map['predictionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

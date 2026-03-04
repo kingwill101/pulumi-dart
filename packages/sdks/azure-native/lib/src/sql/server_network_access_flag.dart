@@ -3,16 +3,15 @@ enum ServerNetworkAccessFlag {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ServerNetworkAccessFlag(this.value);
-  final String value;
+  const ServerNetworkAccessFlag(this.wireValue);
+  final String wireValue;
 
   static ServerNetworkAccessFlag fromValue(String value) {
     for (final item in ServerNetworkAccessFlag.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerNetworkAccessFlag value: $value');
   }
 }
-

@@ -8,20 +8,17 @@ class SourceApiAssociationSourceApiAssociationConfig {
 
   /// Creates a new [SourceApiAssociationSourceApiAssociationConfig].
   /// [mergeType] Merge type. Valid values: `MANUAL_MERGE`, `AUTO_MERGE`
-  SourceApiAssociationSourceApiAssociationConfig({
-    required this.mergeType,
-  });
+  SourceApiAssociationSourceApiAssociationConfig({required this.mergeType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mergeType': mergeType,
-    };
+    return <String, dynamic>{'mergeType': mergeType};
   }
 
-  factory SourceApiAssociationSourceApiAssociationConfig.fromMap(Map<String, dynamic> map) {
+  factory SourceApiAssociationSourceApiAssociationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SourceApiAssociationSourceApiAssociationConfig(
-      mergeType: (map['mergeType'] as String).input(),
+      mergeType: pulumi.Input.fromValue(map['mergeType'] as String),
     );
   }
 }
-

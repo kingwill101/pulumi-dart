@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_args.dart';
 import 'managed_cluster_authentication.dart';
-import 'managed_cluster_custom_fabric_setting.dart';
-import 'managed_cluster_lb_rule.dart';
-import 'managed_cluster_node_type.dart';
 import 'managed_cluster_state.dart';
 
 /// Manages a Resource Group.
@@ -256,7 +253,7 @@ import 'managed_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceFabric` - 2024-04-01
@@ -271,38 +268,55 @@ import 'managed_cluster_state.dart';
 class ManagedCluster extends pulumi.CustomResource {
   /// Controls how connections to the cluster are authenticated. A `authentication` block as defined below.
   late final pulumi.Output<ManagedClusterAuthentication?> authentication;
+
   /// If true, backup service is enabled.
   late final pulumi.Output<bool?> backupServiceEnabled;
+
   /// Port to use when connecting to the cluster.
   late final pulumi.Output<int> clientConnectionPort;
+
   /// One or more `custom_fabric_setting` blocks as defined below.
-  late final pulumi.Output<List<ManagedClusterCustomFabricSetting>?> customFabricSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customFabricSettings;
+
   /// Hostname for the cluster. If unset the cluster's name will be used..
   late final pulumi.Output<String> dnsName;
+
   /// If true, DNS service is enabled.
   late final pulumi.Output<bool?> dnsServiceEnabled;
+
   /// Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
   late final pulumi.Output<int> httpGatewayPort;
+
   /// One or more `lb_rule` blocks as defined below.
-  late final pulumi.Output<List<ManagedClusterLbRule>> lbRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> lbRules;
+
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `node_type` blocks as defined below.
-  late final pulumi.Output<List<ManagedClusterNodeType>?> nodeTypes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> nodeTypes;
+
   /// Administrator password for the VMs that will be created as part of this cluster.
   late final pulumi.Output<String?> password;
+
   /// The name of the Resource Group where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// SKU for this cluster. Changing this forces a new resource to be created. Default is `Basic`, allowed values are either `Basic` or `Standard`.
   late final pulumi.Output<String?> sku;
+
   /// The resource ID of the Subnet. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String?> subnetId;
+
   /// A mapping of tags which should be assigned to the Resource Group.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Upgrade wave for the fabric runtime. Default is `Wave0`, allowed value must be one of `Wave0`, `Wave1`, or `Wave2`.
   late final pulumi.Output<String?> upgradeWave;
+
   /// Administrator password for the VMs that will be created as part of this cluster.
   late final pulumi.Output<String?> username;
 
@@ -315,29 +329,33 @@ class ManagedCluster extends pulumi.CustomResource {
     ManagedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicefabric/managedCluster:ManagedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<ManagedClusterAuthentication?>('authentication');
-    this.backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
-    this.clientConnectionPort = registerOutput<int>('clientConnectionPort');
-    this.customFabricSettings = registerOutput<List<ManagedClusterCustomFabricSetting>?>('customFabricSettings');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
-    this.httpGatewayPort = registerOutput<int>('httpGatewayPort');
-    this.lbRules = registerOutput<List<ManagedClusterLbRule>>('lbRules');
-    this.location = registerOutput<String>('location');
+         'azure:servicefabric/managedCluster:ManagedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<ManagedClusterAuthentication?>(
+      'authentication',
+    );
+    backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
+    clientConnectionPort = registerOutput<int>('clientConnectionPort');
+    customFabricSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'customFabricSettings',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
+    httpGatewayPort = registerOutput<int>('httpGatewayPort');
+    lbRules = registerOutput<List<Map<String, dynamic>>>('lbRules');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nodeTypes = registerOutput<List<ManagedClusterNodeType>?>('nodeTypes');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.upgradeWave = registerOutput<String?>('upgradeWave');
-    this.username = registerOutput<String?>('username');
+    nodeTypes = registerOutput<List<Map<String, dynamic>>?>('nodeTypes');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    upgradeWave = registerOutput<String?>('upgradeWave');
+    username = registerOutput<String?>('username');
   }
 
   /// Gets an existing [ManagedCluster] resource's state with the given [name] and [id].
@@ -358,28 +376,32 @@ class ManagedCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicefabric/managedCluster:ManagedCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<ManagedClusterAuthentication?>('authentication');
-    this.backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
-    this.clientConnectionPort = registerOutput<int>('clientConnectionPort');
-    this.customFabricSettings = registerOutput<List<ManagedClusterCustomFabricSetting>?>('customFabricSettings');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
-    this.httpGatewayPort = registerOutput<int>('httpGatewayPort');
-    this.lbRules = registerOutput<List<ManagedClusterLbRule>>('lbRules');
-    this.location = registerOutput<String>('location');
+         'azure:servicefabric/managedCluster:ManagedCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<ManagedClusterAuthentication?>(
+      'authentication',
+    );
+    backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
+    clientConnectionPort = registerOutput<int>('clientConnectionPort');
+    customFabricSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'customFabricSettings',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
+    httpGatewayPort = registerOutput<int>('httpGatewayPort');
+    lbRules = registerOutput<List<Map<String, dynamic>>>('lbRules');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nodeTypes = registerOutput<List<ManagedClusterNodeType>?>('nodeTypes');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.upgradeWave = registerOutput<String?>('upgradeWave');
-    this.username = registerOutput<String?>('username');
+    nodeTypes = registerOutput<List<Map<String, dynamic>>?>('nodeTypes');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    upgradeWave = registerOutput<String?>('upgradeWave');
+    username = registerOutput<String?>('username');
   }
 }

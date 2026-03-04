@@ -7,10 +7,13 @@ import 'gce_instance_filter_response.dart';
 class ResourceFilterResponse {
   /// Filter compute engine resource
   final pulumi.Input<GceInstanceFilterResponse> gceInstanceFilter;
+
   /// The label used for filter resource
   final pulumi.Input<Map<String, String>> inclusionLabels;
+
   /// The id pattern for filter resource
   final pulumi.Input<List<String>> resourceIdPatterns;
+
   /// The scopes of evaluation resource
   final pulumi.Input<List<String>> scopes;
 
@@ -28,7 +31,11 @@ class ResourceFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstanceFilter': pulumi.Input.mapInputValue<GceInstanceFilterResponse, Map<String, dynamic>>(gceInstanceFilter, (value) => value.toMap()),
+      'gceInstanceFilter':
+          pulumi.Input.mapInputValue<
+            GceInstanceFilterResponse,
+            Map<String, dynamic>
+          >(gceInstanceFilter, (value) => value.toMap()),
       'inclusionLabels': inclusionLabels,
       'resourceIdPatterns': resourceIdPatterns,
       'scopes': scopes,
@@ -37,11 +44,18 @@ class ResourceFilterResponse {
 
   factory ResourceFilterResponse.fromMap(Map<String, dynamic> map) {
     return ResourceFilterResponse(
-      gceInstanceFilter: (GceInstanceFilterResponse.fromMap((map['gceInstanceFilter'] as Map).cast<String, dynamic>())).input(),
-      inclusionLabels: ((map['inclusionLabels'] as Map).cast<String, String>()).input(),
-      resourceIdPatterns: ((map['resourceIdPatterns'] as List).cast<String>()).input(),
-      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      gceInstanceFilter: pulumi.Input.fromValue(
+        GceInstanceFilterResponse.fromMap(
+          (map['gceInstanceFilter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      inclusionLabels: pulumi.Input.fromValue(
+        (map['inclusionLabels'] as Map).cast<String, String>(),
+      ),
+      resourceIdPatterns: pulumi.Input.fromValue(
+        (map['resourceIdPatterns'] as List).cast<String>(),
+      ),
+      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
     );
   }
 }
-

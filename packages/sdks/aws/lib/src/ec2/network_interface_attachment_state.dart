@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceAttachmentState {
   /// The ENI Attachment ID.
   final pulumi.Input<String>? attachmentId;
+
   /// Network interface index (int).
   final pulumi.Input<int>? deviceIndex;
+
   /// Instance ID to attach.
   final pulumi.Input<String>? instanceId;
+
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   final pulumi.Input<int>? networkCardIndex;
+
   /// ENI ID to attach.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The status of the Network Interface Attachment.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class NetworkInterfaceAttachmentState {
 
   factory NetworkInterfaceAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentState(
-      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : ((map['deviceIndex'] as int).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      attachmentId: (() {
+        final guardedValue = map['attachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceIndex: (() {
+        final guardedValue = map['deviceIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkCardIndex: (() {
+        final guardedValue = map['networkCardIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

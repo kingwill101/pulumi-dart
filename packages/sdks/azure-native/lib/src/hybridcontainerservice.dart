@@ -1,5 +1,3 @@
-library module_hybridcontainerservice;
-
 export 'hybridcontainerservice/aadprofile.dart';
 export 'hybridcontainerservice/aadprofile_response_response.dart';
 export 'hybridcontainerservice/addon_profiles.dart';

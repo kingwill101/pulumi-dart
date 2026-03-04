@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserWorkloadsSecretState {
   /// A map of the secret data.
   final pulumi.Input<Map<String, String>>? data;
+
   /// Environment where the Kubernetes Secret will be stored and used.
   final pulumi.Input<String>? environment;
+
   /// Name of the Kubernetes Secret.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The location or Compute Engine region for the environment.
   final pulumi.Input<String>? region;
 
@@ -42,12 +46,33 @@ class UserWorkloadsSecretState {
 
   factory UserWorkloadsSecretState.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsSecretState(
-      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
-      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

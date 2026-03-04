@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_environment_data_response.dart';
-import 'cspm_monitor_aws_offering_response.dart';
 import 'security_connector_args.dart';
 import 'system_data_response.dart';
 
@@ -221,28 +220,40 @@ import 'system_data_response.dart';
 class SecurityConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The security connector environment data.
   late final pulumi.Output<AwsEnvironmentDataResponse?> environmentData;
+
   /// The multi cloud resource's cloud name.
   late final pulumi.Output<String?> environmentName;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
+
   /// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
   late final pulumi.Output<String?> hierarchyIdentifier;
+
   /// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
   late final pulumi.Output<String> hierarchyIdentifierTrialEndDate;
+
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
+
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// A collection of offerings for the security connector.
-  late final pulumi.Output<List<CspmMonitorAwsOfferingResponse>?> offerings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> offerings;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -255,23 +266,27 @@ class SecurityConnector extends pulumi.CustomResource {
     SecurityConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:SecurityConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.environmentData = registerOutput<AwsEnvironmentDataResponse?>('environmentData');
-    this.environmentName = registerOutput<String?>('environmentName');
-    this.etag = registerOutput<String?>('etag');
-    this.hierarchyIdentifier = registerOutput<String?>('hierarchyIdentifier');
-    this.hierarchyIdentifierTrialEndDate = registerOutput<String>('hierarchyIdentifierTrialEndDate');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:security:SecurityConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    environmentData = registerOutput<AwsEnvironmentDataResponse?>(
+      'environmentData',
+    );
+    environmentName = registerOutput<String?>('environmentName');
+    etag = registerOutput<String?>('etag');
+    hierarchyIdentifier = registerOutput<String?>('hierarchyIdentifier');
+    hierarchyIdentifierTrialEndDate = registerOutput<String>(
+      'hierarchyIdentifierTrialEndDate',
+    );
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.offerings = registerOutput<List<CspmMonitorAwsOfferingResponse>?>('offerings');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    offerings = registerOutput<List<Map<String, dynamic>>?>('offerings');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

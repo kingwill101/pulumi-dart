@@ -8,14 +8,23 @@ import 'google_cloud_dialogflow_cx_v3beta1_webhook_service_directory_config.dart
 class GoogleCloudDialogflowCxV3beta1Webhook {
   /// Indicates whether the webhook is disabled.
   final pulumi.Input<bool>? disabled;
+
   /// The human-readable name of the webhook, unique within the agent.
   final pulumi.Input<String> displayName;
+
   /// Configuration for a generic web service.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService>? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService>?
+  genericWebService;
+
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
   final pulumi.Input<String>? name;
+
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig>? serviceDirectory;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+  >?
+  serviceDirectory;
+
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
   final pulumi.Input<String>? timeout;
 
@@ -39,22 +48,59 @@ class GoogleCloudDialogflowCxV3beta1Webhook {
     return <String, dynamic>{
       'disabled': ?disabled,
       'displayName': displayName,
-      'genericWebService': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
+      'genericWebService':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
+            Map<String, dynamic>
+          >(genericWebService, (value) => value.toMap()),
       'name': ?name,
-      'serviceDirectory': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectory, (value) => value.toMap()),
+      'serviceDirectory':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig,
+            Map<String, dynamic>
+          >(serviceDirectory, (value) => value.toMap()),
       'timeout': ?timeout,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1Webhook.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1Webhook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1Webhook(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: (map['displayName'] as String).input(),
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory']! as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      genericWebService: (() {
+        final guardedValue = map['genericWebService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDirectory: (() {
+        final guardedValue = map['serviceDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

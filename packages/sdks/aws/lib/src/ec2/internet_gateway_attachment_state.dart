@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternetGatewayAttachmentState {
   /// The ID of the internet gateway.
   final pulumi.Input<String>? internetGatewayId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -31,10 +33,21 @@ class InternetGatewayAttachmentState {
 
   factory InternetGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return InternetGatewayAttachmentState(
-      internetGatewayId: map['internetGatewayId'] == null ? null : ((map['internetGatewayId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      internetGatewayId: (() {
+        final guardedValue = map['internetGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -400,32 +400,49 @@ import 'system_data_response.dart';
 class GlobalRulestack extends pulumi.CustomResource {
   /// subscription scope of global rulestack
   late final pulumi.Output<List<String>?> associatedSubscriptions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Mode for default rules creation
   late final pulumi.Output<String?> defaultMode;
+
   /// rulestack description
   late final pulumi.Output<String?> description;
+
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
+  late final pulumi.Output<
+    AzureResourceManagerManagedIdentityPropertiesResponse?
+  >
+  identity;
+
   /// Global Location
   late final pulumi.Output<String> location;
+
   /// minimum version
   late final pulumi.Output<String?> minAppIdVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// PanEtag info
   late final pulumi.Output<String?> panEtag;
+
   /// Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
   late final pulumi.Output<String?> panLocation;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Rulestack Type
   late final pulumi.Output<String?> scope;
+
   /// Security Profile
   late final pulumi.Output<SecurityServicesResponse?> securityServices;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -438,25 +455,32 @@ class GlobalRulestack extends pulumi.CustomResource {
     GlobalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:GlobalRulestack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedSubscriptions = registerOutput<List<String>?>('associatedSubscriptions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultMode = registerOutput<String?>('defaultMode');
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.minAppIdVersion = registerOutput<String?>('minAppIdVersion');
+         'azure-native:cloudngfw:GlobalRulestack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedSubscriptions = registerOutput<List<String>?>(
+      'associatedSubscriptions',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultMode = registerOutput<String?>('defaultMode');
+    description = registerOutput<String?>('description');
+    identity =
+        registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
+          'identity',
+        );
+    location = registerOutput<String>('location');
+    minAppIdVersion = registerOutput<String?>('minAppIdVersion');
     this.name = registerOutput<String>('name');
-    this.panEtag = registerOutput<String?>('panEtag');
-    this.panLocation = registerOutput<String?>('panLocation');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scope = registerOutput<String?>('scope');
-    this.securityServices = registerOutput<SecurityServicesResponse?>('securityServices');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    panEtag = registerOutput<String?>('panEtag');
+    panLocation = registerOutput<String?>('panLocation');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<String?>('scope');
+    securityServices = registerOutput<SecurityServicesResponse?>(
+      'securityServices',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

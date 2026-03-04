@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnycastEipAddressesArgs {
   /// Anycast EIP instance name.
   final pulumi.Input<String>? anycastEipAddressName;
+
   /// The bind instance ids.
   final pulumi.Input<List<String>>? bindInstanceIds;
+
   /// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
   final pulumi.Input<String>? businessStatus;
+
   /// A list of Anycast Eip Address IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
   final pulumi.Input<String>? internetChargeType;
+
   /// Anycast EIP instance IP address.
   final pulumi.Input<String>? ipAddress;
+
   /// A regex string to filter results by Anycast Eip Address name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
   final pulumi.Input<String>? paymentType;
+
   /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
   final pulumi.Input<String>? serviceLocation;
+
   /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
   final pulumi.Input<String>? status;
 
@@ -74,18 +84,61 @@ class GetAnycastEipAddressesArgs {
 
   factory GetAnycastEipAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesArgs(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName']! as String).input(),
-      bindInstanceIds: map['bindInstanceIds'] == null ? null : ((map['bindInstanceIds']! as List).cast<String>()).input(),
-      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      anycastEipAddressName: (() {
+        final guardedValue = map['anycastEipAddressName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bindInstanceIds: (() {
+        final guardedValue = map['bindInstanceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      businessStatus: (() {
+        final guardedValue = map['businessStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      internetChargeType: (() {
+        final guardedValue = map['internetChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceLocation: (() {
+        final guardedValue = map['serviceLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

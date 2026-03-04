@@ -1,5 +1,3 @@
-library module_finspace;
-
 export 'finspace/kx_cluster.dart';
 export 'finspace/kx_cluster_args.dart';
 export 'finspace/kx_cluster_auto_scaling_configuration.dart';

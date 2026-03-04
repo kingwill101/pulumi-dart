@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_pool_volume_args.dart';
-import 'mount_target_properties_response.dart';
-import 'placement_key_value_pairs_response.dart';
 import 'system_data_response.dart';
 import 'volume_properties_response_data_protection.dart';
 import 'volume_properties_response_export_policy.dart';
@@ -175,132 +173,195 @@ import 'volume_properties_response_export_policy.dart';
 class CapacityPoolVolume extends pulumi.CustomResource {
   /// Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
   late final pulumi.Output<double> actualThroughputMibps;
+
   /// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
   late final pulumi.Output<String?> avsDataStore;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource identifier used to identify the Backup.
   late final pulumi.Output<String?> backupId;
+
   /// Unique Baremetal Tenant Identifier.
   late final pulumi.Output<String> baremetalTenantId;
+
   /// Pool Resource Id used in case of creating a volume through volume group
   late final pulumi.Output<String?> capacityPoolResourceId;
+
   /// When a volume is being restored from another volume's snapshot, will show the percentage completion of this cloning process. When this value is empty/null there is no cloning process currently happening on this volume. This value will update every 5 minutes during cloning.
   late final pulumi.Output<int> cloneProgress;
+
   /// Specifies whether Cool Access(tiering) is enabled for the volume.
   late final pulumi.Output<bool?> coolAccess;
+
   /// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
   /// Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
   /// OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
   /// Never - No client-driven data is pulled from cool tier to standard storage.
   late final pulumi.Output<String?> coolAccessRetrievalPolicy;
+
   /// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
   late final pulumi.Output<String?> coolAccessTieringPolicy;
+
   /// Specifies the number of days after which data that is not accessed by clients will be tiered.
   late final pulumi.Output<int?> coolnessPeriod;
+
   /// A unique file path for the volume. Used when creating mount targets
   late final pulumi.Output<String> creationToken;
+
   /// DataProtection type volumes include an object containing details of the replication
-  late final pulumi.Output<VolumePropertiesResponseDataProtection?> dataProtection;
+  late final pulumi.Output<VolumePropertiesResponseDataProtection?>
+  dataProtection;
+
   /// Data store resource unique identifier
   late final pulumi.Output<List<String>> dataStoreResourceId;
+
   /// Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
   late final pulumi.Output<double?> defaultGroupQuotaInKiBs;
+
   /// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
   late final pulumi.Output<double?> defaultUserQuotaInKiBs;
+
   /// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
   late final pulumi.Output<bool?> deleteBaseSnapshot;
+
   /// The effective value of the network features type available to the volume, or current effective state of update.
   late final pulumi.Output<String> effectiveNetworkFeatures;
+
   /// Flag indicating whether subvolume operations are enabled on the volume
   late final pulumi.Output<String?> enableSubvolumes;
+
   /// Specifies if the volume is encrypted or not. Only available on volumes created or updated after 2022-01-01.
   late final pulumi.Output<bool> encrypted;
+
   /// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
   late final pulumi.Output<String?> encryptionKeySource;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Set of export policy rules
   late final pulumi.Output<VolumePropertiesResponseExportPolicy?> exportPolicy;
+
   /// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
   late final pulumi.Output<String> fileAccessLogs;
+
   /// Unique FileSystem Identifier.
   late final pulumi.Output<String> fileSystemId;
+
   /// Specifies if default quota is enabled for the volume.
   late final pulumi.Output<bool?> isDefaultQuotaEnabled;
+
   /// Specifies whether volume is a Large Volume or Regular Volume.
   late final pulumi.Output<bool?> isLargeVolume;
+
   /// Restoring
   late final pulumi.Output<bool?> isRestoring;
+
   /// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
   late final pulumi.Output<bool?> kerberosEnabled;
+
   /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
   late final pulumi.Output<String?> keyVaultPrivateEndpointResourceId;
+
   /// Specifies whether LDAP is enabled or not for a given NFS volume.
   late final pulumi.Output<bool?> ldapEnabled;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Maximum number of files allowed. Needs a service request in order to be changed. Only allowed to be changed if volume quota is more than 4TiB.
   late final pulumi.Output<double> maximumNumberOfFiles;
+
   /// List of mount targets
-  late final pulumi.Output<List<MountTargetPropertiesResponse>> mountTargets;
+  late final pulumi.Output<List<Map<String, dynamic>>> mountTargets;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The original value of the network features type available to the volume at the time it was created.
   late final pulumi.Output<String?> networkFeatures;
+
   /// Network Sibling Set ID for the the group of volumes sharing networking resources.
   late final pulumi.Output<String> networkSiblingSetId;
+
   /// Id of the snapshot or backup that the volume is restored from.
   late final pulumi.Output<String> originatingResourceId;
+
   /// Application specific placement rules for the particular volume
-  late final pulumi.Output<List<PlacementKeyValuePairsResponse>?> placementRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> placementRules;
+
   /// Set of protocol types, default NFSv3, CIFS for SMB protocol
   late final pulumi.Output<List<String>?> protocolTypes;
+
   /// The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides.
   late final pulumi.Output<String> provisionedAvailabilityZone;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Proximity placement group associated with the volume
   late final pulumi.Output<String?> proximityPlacementGroup;
+
   /// The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
   late final pulumi.Output<String?> securityStyle;
+
   /// The service level of the file system
   late final pulumi.Output<String?> serviceLevel;
+
   /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
   late final pulumi.Output<String?> smbAccessBasedEnumeration;
+
   /// Enables continuously available share property for smb volume. Only applicable for SMB volume
   late final pulumi.Output<bool?> smbContinuouslyAvailable;
+
   /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
   late final pulumi.Output<bool?> smbEncryption;
+
   /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
   late final pulumi.Output<String?> smbNonBrowsable;
+
   /// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
   late final pulumi.Output<bool?> snapshotDirectoryVisible;
+
   /// Resource identifier used to identify the Snapshot.
   late final pulumi.Output<String?> snapshotId;
+
   /// Provides storage to network proximity information for the volume.
   late final pulumi.Output<String> storageToNetworkProximity;
+
   /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
   late final pulumi.Output<String> subnetId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// T2 network information
   late final pulumi.Output<String> t2Network;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<double?> throughputMibps;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
   late final pulumi.Output<String?> unixPermissions;
+
   /// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
   late final pulumi.Output<double> usageThreshold;
+
   /// Volume Group Name
   late final pulumi.Output<String> volumeGroupName;
+
   /// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
   late final pulumi.Output<String?> volumeSpecName;
+
   /// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
   late final pulumi.Output<String?> volumeType;
+
   /// Availability Zone
   late final pulumi.Output<List<String>?> zones;
 
@@ -313,74 +374,102 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     CapacityPoolVolumeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPoolVolume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actualThroughputMibps = registerOutput<double>('actualThroughputMibps');
-    this.avsDataStore = registerOutput<String?>('avsDataStore');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupId = registerOutput<String?>('backupId');
-    this.baremetalTenantId = registerOutput<String>('baremetalTenantId');
-    this.capacityPoolResourceId = registerOutput<String?>('capacityPoolResourceId');
-    this.cloneProgress = registerOutput<int>('cloneProgress');
-    this.coolAccess = registerOutput<bool?>('coolAccess');
-    this.coolAccessRetrievalPolicy = registerOutput<String?>('coolAccessRetrievalPolicy');
-    this.coolAccessTieringPolicy = registerOutput<String?>('coolAccessTieringPolicy');
-    this.coolnessPeriod = registerOutput<int?>('coolnessPeriod');
-    this.creationToken = registerOutput<String>('creationToken');
-    this.dataProtection = registerOutput<VolumePropertiesResponseDataProtection?>('dataProtection');
-    this.dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId');
-    this.defaultGroupQuotaInKiBs = registerOutput<double?>('defaultGroupQuotaInKiBs');
-    this.defaultUserQuotaInKiBs = registerOutput<double?>('defaultUserQuotaInKiBs');
-    this.deleteBaseSnapshot = registerOutput<bool?>('deleteBaseSnapshot');
-    this.effectiveNetworkFeatures = registerOutput<String>('effectiveNetworkFeatures');
-    this.enableSubvolumes = registerOutput<String?>('enableSubvolumes');
-    this.encrypted = registerOutput<bool>('encrypted');
-    this.encryptionKeySource = registerOutput<String?>('encryptionKeySource');
-    this.etag = registerOutput<String>('etag');
-    this.exportPolicy = registerOutput<VolumePropertiesResponseExportPolicy?>('exportPolicy');
-    this.fileAccessLogs = registerOutput<String>('fileAccessLogs');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.isDefaultQuotaEnabled = registerOutput<bool?>('isDefaultQuotaEnabled');
-    this.isLargeVolume = registerOutput<bool?>('isLargeVolume');
-    this.isRestoring = registerOutput<bool?>('isRestoring');
-    this.kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
-    this.keyVaultPrivateEndpointResourceId = registerOutput<String?>('keyVaultPrivateEndpointResourceId');
-    this.ldapEnabled = registerOutput<bool?>('ldapEnabled');
-    this.location = registerOutput<String>('location');
-    this.maximumNumberOfFiles = registerOutput<double>('maximumNumberOfFiles');
-    this.mountTargets = registerOutput<List<MountTargetPropertiesResponse>>('mountTargets');
+         'azure-native:netapp:CapacityPoolVolume',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actualThroughputMibps = registerOutput<double>('actualThroughputMibps');
+    avsDataStore = registerOutput<String?>('avsDataStore');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupId = registerOutput<String?>('backupId');
+    baremetalTenantId = registerOutput<String>('baremetalTenantId');
+    capacityPoolResourceId = registerOutput<String?>('capacityPoolResourceId');
+    cloneProgress = registerOutput<int>('cloneProgress');
+    coolAccess = registerOutput<bool?>('coolAccess');
+    coolAccessRetrievalPolicy = registerOutput<String?>(
+      'coolAccessRetrievalPolicy',
+    );
+    coolAccessTieringPolicy = registerOutput<String?>(
+      'coolAccessTieringPolicy',
+    );
+    coolnessPeriod = registerOutput<int?>('coolnessPeriod');
+    creationToken = registerOutput<String>('creationToken');
+    dataProtection = registerOutput<VolumePropertiesResponseDataProtection?>(
+      'dataProtection',
+    );
+    dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId');
+    defaultGroupQuotaInKiBs = registerOutput<double?>(
+      'defaultGroupQuotaInKiBs',
+    );
+    defaultUserQuotaInKiBs = registerOutput<double?>('defaultUserQuotaInKiBs');
+    deleteBaseSnapshot = registerOutput<bool?>('deleteBaseSnapshot');
+    effectiveNetworkFeatures = registerOutput<String>(
+      'effectiveNetworkFeatures',
+    );
+    enableSubvolumes = registerOutput<String?>('enableSubvolumes');
+    encrypted = registerOutput<bool>('encrypted');
+    encryptionKeySource = registerOutput<String?>('encryptionKeySource');
+    etag = registerOutput<String>('etag');
+    exportPolicy = registerOutput<VolumePropertiesResponseExportPolicy?>(
+      'exportPolicy',
+    );
+    fileAccessLogs = registerOutput<String>('fileAccessLogs');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    isDefaultQuotaEnabled = registerOutput<bool?>('isDefaultQuotaEnabled');
+    isLargeVolume = registerOutput<bool?>('isLargeVolume');
+    isRestoring = registerOutput<bool?>('isRestoring');
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    keyVaultPrivateEndpointResourceId = registerOutput<String?>(
+      'keyVaultPrivateEndpointResourceId',
+    );
+    ldapEnabled = registerOutput<bool?>('ldapEnabled');
+    location = registerOutput<String>('location');
+    maximumNumberOfFiles = registerOutput<double>('maximumNumberOfFiles');
+    mountTargets = registerOutput<List<Map<String, dynamic>>>('mountTargets');
     this.name = registerOutput<String>('name');
-    this.networkFeatures = registerOutput<String?>('networkFeatures');
-    this.networkSiblingSetId = registerOutput<String>('networkSiblingSetId');
-    this.originatingResourceId = registerOutput<String>('originatingResourceId');
-    this.placementRules = registerOutput<List<PlacementKeyValuePairsResponse>?>('placementRules');
-    this.protocolTypes = registerOutput<List<String>?>('protocolTypes');
-    this.provisionedAvailabilityZone = registerOutput<String>('provisionedAvailabilityZone');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.proximityPlacementGroup = registerOutput<String?>('proximityPlacementGroup');
-    this.securityStyle = registerOutput<String?>('securityStyle');
-    this.serviceLevel = registerOutput<String?>('serviceLevel');
-    this.smbAccessBasedEnumeration = registerOutput<String?>('smbAccessBasedEnumeration');
-    this.smbContinuouslyAvailable = registerOutput<bool?>('smbContinuouslyAvailable');
-    this.smbEncryption = registerOutput<bool?>('smbEncryption');
-    this.smbNonBrowsable = registerOutput<String?>('smbNonBrowsable');
-    this.snapshotDirectoryVisible = registerOutput<bool?>('snapshotDirectoryVisible');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.storageToNetworkProximity = registerOutput<String>('storageToNetworkProximity');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.t2Network = registerOutput<String>('t2Network');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.throughputMibps = registerOutput<double?>('throughputMibps');
-    this.type = registerOutput<String>('type');
-    this.unixPermissions = registerOutput<String?>('unixPermissions');
-    this.usageThreshold = registerOutput<double>('usageThreshold');
-    this.volumeGroupName = registerOutput<String>('volumeGroupName');
-    this.volumeSpecName = registerOutput<String?>('volumeSpecName');
-    this.volumeType = registerOutput<String?>('volumeType');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkFeatures = registerOutput<String?>('networkFeatures');
+    networkSiblingSetId = registerOutput<String>('networkSiblingSetId');
+    originatingResourceId = registerOutput<String>('originatingResourceId');
+    placementRules = registerOutput<List<Map<String, dynamic>>?>(
+      'placementRules',
+    );
+    protocolTypes = registerOutput<List<String>?>('protocolTypes');
+    provisionedAvailabilityZone = registerOutput<String>(
+      'provisionedAvailabilityZone',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<String?>(
+      'proximityPlacementGroup',
+    );
+    securityStyle = registerOutput<String?>('securityStyle');
+    serviceLevel = registerOutput<String?>('serviceLevel');
+    smbAccessBasedEnumeration = registerOutput<String?>(
+      'smbAccessBasedEnumeration',
+    );
+    smbContinuouslyAvailable = registerOutput<bool?>(
+      'smbContinuouslyAvailable',
+    );
+    smbEncryption = registerOutput<bool?>('smbEncryption');
+    smbNonBrowsable = registerOutput<String?>('smbNonBrowsable');
+    snapshotDirectoryVisible = registerOutput<bool?>(
+      'snapshotDirectoryVisible',
+    );
+    snapshotId = registerOutput<String?>('snapshotId');
+    storageToNetworkProximity = registerOutput<String>(
+      'storageToNetworkProximity',
+    );
+    subnetId = registerOutput<String>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    t2Network = registerOutput<String>('t2Network');
+    tags = registerOutput<Map<String, String>?>('tags');
+    throughputMibps = registerOutput<double?>('throughputMibps');
+    type = registerOutput<String>('type');
+    unixPermissions = registerOutput<String?>('unixPermissions');
+    usageThreshold = registerOutput<double>('usageThreshold');
+    volumeGroupName = registerOutput<String>('volumeGroupName');
+    volumeSpecName = registerOutput<String?>('volumeSpecName');
+    volumeType = registerOutput<String?>('volumeType');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

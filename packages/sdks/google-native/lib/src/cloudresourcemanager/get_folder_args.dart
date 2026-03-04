@@ -11,20 +11,15 @@ class GetFolderArgs {
 
   /// Creates a new [GetFolderArgs].
   /// [folderId] Required.
-  GetFolderArgs({
-    required this.folderId,
-  });
+  GetFolderArgs({required this.folderId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'folderId': folderId,
-    };
+    return <String, dynamic>{'folderId': folderId};
   }
 
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
-      folderId: (map['folderId'] as String).input(),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
     );
   }
 }
-

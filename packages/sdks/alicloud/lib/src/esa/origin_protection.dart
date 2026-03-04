@@ -8,7 +8,7 @@ import 'origin_protection_state.dart';
 ///
 /// For information about ESA Origin Protection and how to use it, see [What is Origin Protection](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateOriginProtection).
 ///
-/// > **NOTE:** Available since v1.256.0.
+/// &gt; **NOTE:** Available since v1.256.0.
 ///
 /// ## Example Usage
 ///
@@ -217,6 +217,7 @@ class OriginProtection extends pulumi.CustomResource {
   /// - on
   /// - off
   late final pulumi.Output<String?> originConverge;
+
   /// Site Id
   late final pulumi.Output<String> siteId;
 
@@ -229,13 +230,13 @@ class OriginProtection extends pulumi.CustomResource {
     OriginProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originProtection:OriginProtection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.originConverge = registerOutput<String?>('originConverge');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/originProtection:OriginProtection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    originConverge = registerOutput<String?>('originConverge');
+    siteId = registerOutput<String>('siteId');
   }
 
   /// Gets an existing [OriginProtection] resource's state with the given [name] and [id].
@@ -256,12 +257,12 @@ class OriginProtection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originProtection:OriginProtection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.originConverge = registerOutput<String?>('originConverge');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/originProtection:OriginProtection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    originConverge = registerOutput<String?>('originConverge');
+    siteId = registerOutput<String>('siteId');
   }
 }

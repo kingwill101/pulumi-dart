@@ -8,20 +8,19 @@ class DomainFeaturesVmCoreInfo {
 
   /// Creates a new [DomainFeaturesVmCoreInfo].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesVmCoreInfo({
-    this.state,
-  });
+  DomainFeaturesVmCoreInfo({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesVmCoreInfo.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesVmCoreInfo(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

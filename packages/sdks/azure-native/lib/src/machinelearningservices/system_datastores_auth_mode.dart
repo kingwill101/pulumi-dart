@@ -4,16 +4,15 @@ enum SystemDatastoresAuthMode {
   valueIdentity("Identity"),
   valueUserDelegationSAS("UserDelegationSAS");
 
-  const SystemDatastoresAuthMode(this.value);
-  final String value;
+  const SystemDatastoresAuthMode(this.wireValue);
+  final String wireValue;
 
   static SystemDatastoresAuthMode fromValue(String value) {
     for (final item in SystemDatastoresAuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SystemDatastoresAuthMode value: $value');
   }
 }
-

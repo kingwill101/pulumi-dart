@@ -165,22 +165,31 @@ import 'system_data_response.dart';
 class AlertRuleResource extends pulumi.CustomResource {
   /// The resource ID of the alert rule resource.
   late final pulumi.Output<String> alertRuleResourceId;
+
   /// The template ID associated with alert rule resource.
   late final pulumi.Output<String> alertRuleTemplateId;
+
   /// The alert rule template version.
   late final pulumi.Output<String> alertRuleTemplateVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The properties with which the alert rule resource was created.
   late final pulumi.Output<String> createdWithProperties;
+
   /// The creation time of the alert rule resource.
   late final pulumi.Output<String> creationTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the alert rule resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -193,20 +202,22 @@ class AlertRuleResource extends pulumi.CustomResource {
     AlertRuleResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databasewatcher:AlertRuleResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRuleResourceId = registerOutput<String>('alertRuleResourceId');
-    this.alertRuleTemplateId = registerOutput<String>('alertRuleTemplateId');
-    this.alertRuleTemplateVersion = registerOutput<String>('alertRuleTemplateVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdWithProperties = registerOutput<String>('createdWithProperties');
-    this.creationTime = registerOutput<String>('creationTime');
+         'azure-native:databasewatcher:AlertRuleResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRuleResourceId = registerOutput<String>('alertRuleResourceId');
+    alertRuleTemplateId = registerOutput<String>('alertRuleTemplateId');
+    alertRuleTemplateVersion = registerOutput<String>(
+      'alertRuleTemplateVersion',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdWithProperties = registerOutput<String>('createdWithProperties');
+    creationTime = registerOutput<String>('creationTime');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

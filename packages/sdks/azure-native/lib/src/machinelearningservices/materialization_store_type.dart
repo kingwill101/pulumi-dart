@@ -5,16 +5,15 @@ enum MaterializationStoreType {
   valueOffline("Offline"),
   valueOnlineAndOffline("OnlineAndOffline");
 
-  const MaterializationStoreType(this.value);
-  final String value;
+  const MaterializationStoreType(this.wireValue);
+  final String wireValue;
 
   static MaterializationStoreType fromValue(String value) {
     for (final item in MaterializationStoreType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MaterializationStoreType value: $value');
   }
 }
-

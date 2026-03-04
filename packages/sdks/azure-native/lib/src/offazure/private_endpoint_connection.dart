@@ -134,14 +134,20 @@ import 'system_data_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the tag for optimistic concurrency control.
   late final pulumi.Output<String> eTag;
+
   /// Gets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Gets the properties of the object.
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
+  properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -154,16 +160,18 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:offazure:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -13,23 +13,20 @@ class GetRulesetArgs {
   /// Creates a new [GetRulesetArgs].
   /// [project] Optional.
   /// [rulesetId] Required.
-  GetRulesetArgs({
-    this.project,
-    required this.rulesetId,
-  });
+  GetRulesetArgs({this.project, required this.rulesetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'rulesetId': rulesetId,
-    };
+    return <String, dynamic>{'project': ?project, 'rulesetId': rulesetId};
   }
 
   factory GetRulesetArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesetArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rulesetId: (map['rulesetId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rulesetId: pulumi.Input.fromValue(map['rulesetId'] as String),
     );
   }
 }
-

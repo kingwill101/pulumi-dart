@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateSrvNetworkAddressState {
   /// The instance ID.
   final pulumi.Input<String>? dbInstanceId;
+
   /// Private network SRV highly available connection address
   final pulumi.Input<String>? privateSrvConnectionStringUri;
 
@@ -26,9 +27,16 @@ class PrivateSrvNetworkAddressState {
 
   factory PrivateSrvNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PrivateSrvNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      privateSrvConnectionStringUri: map['privateSrvConnectionStringUri'] == null ? null : (map['privateSrvConnectionStringUri']! as String).input(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateSrvConnectionStringUri: (() {
+        final guardedValue = map['privateSrvConnectionStringUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

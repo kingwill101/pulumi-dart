@@ -7,12 +7,16 @@ import 'scale_rule_auth_response.dart';
 class QueueScaleRuleResponse {
   /// Storage account name. required if using managed identity to authenticate
   final pulumi.Input<String>? accountName;
+
   /// Authentication secrets for the queue scale rule.
   final pulumi.Input<List<ScaleRuleAuthResponse>>? auth;
+
   /// The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   final pulumi.Input<String>? identity;
+
   /// Queue length.
   final pulumi.Input<int>? queueLength;
+
   /// Queue name.
   final pulumi.Input<String>? queueName;
 
@@ -33,7 +37,18 @@ class QueueScaleRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': ?accountName,
-      'auth': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleAuthResponse>, List<Map<String, dynamic>>>(auth, (value) => pulumi.Input.encodeList<ScaleRuleAuthResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auth':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ScaleRuleAuthResponse>,
+            List<Map<String, dynamic>>
+          >(
+            auth,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ScaleRuleAuthResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'identity': ?identity,
       'queueLength': ?queueLength,
       'queueName': ?queueName,
@@ -42,12 +57,38 @@ class QueueScaleRuleResponse {
 
   factory QueueScaleRuleResponse.fromMap(Map<String, dynamic> map) {
     return QueueScaleRuleResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuthResponse>(map['auth']!, (value) => ScaleRuleAuthResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      queueLength: map['queueLength'] == null ? null : (map['queueLength']! as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      auth: (() {
+        final guardedValue = map['auth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ScaleRuleAuthResponse>(
+            guardedValue,
+            (value) => ScaleRuleAuthResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueLength: (() {
+        final guardedValue = map['queueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

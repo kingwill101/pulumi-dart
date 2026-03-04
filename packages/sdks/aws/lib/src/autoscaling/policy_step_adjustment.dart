@@ -7,6 +7,7 @@ class PolicyStepAdjustment {
   /// difference between the alarm threshold and the CloudWatch metric.
   /// Without a value, AWS will treat this bound as negative infinity.
   final pulumi.Input<String>? metricIntervalLowerBound;
+
   /// Upper bound for the
   /// difference between the alarm threshold and the CloudWatch metric.
   /// Without a value, AWS will treat this bound as positive infinity. The upper bound
@@ -16,6 +17,7 @@ class PolicyStepAdjustment {
   ///
   /// The following arguments are only available to "TargetTrackingScaling" type policies:
   final pulumi.Input<String>? metricIntervalUpperBound;
+
   /// Number of members by which to
   /// scale, when the adjustment bounds are breached. A positive value scales
   /// up. A negative value scales down.
@@ -41,10 +43,19 @@ class PolicyStepAdjustment {
 
   factory PolicyStepAdjustment.fromMap(Map<String, dynamic> map) {
     return PolicyStepAdjustment(
-      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : ((map['metricIntervalLowerBound'] as String).input()).input(),
-      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : ((map['metricIntervalUpperBound'] as String).input()).input(),
-      scalingAdjustment: (map['scalingAdjustment'] as int).input(),
+      metricIntervalLowerBound: (() {
+        final guardedValue = map['metricIntervalLowerBound'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricIntervalUpperBound: (() {
+        final guardedValue = map['metricIntervalUpperBound'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingAdjustment: pulumi.Input.fromValue(
+        map['scalingAdjustment'] as int,
+      ),
     );
   }
 }
-

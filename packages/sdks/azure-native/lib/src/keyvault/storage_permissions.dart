@@ -15,16 +15,15 @@ enum StoragePermissions {
   valueGetsas("getsas"),
   valueDeletesas("deletesas");
 
-  const StoragePermissions(this.value);
-  final String value;
+  const StoragePermissions(this.wireValue);
+  final String wireValue;
 
   static StoragePermissions fromValue(String value) {
     for (final item in StoragePermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StoragePermissions value: $value');
   }
 }
-

@@ -1,3 +1,1 @@
-library pulumi_azure_native_logic;
-
 export 'package:pulumi_azure_native/src/logic.dart';

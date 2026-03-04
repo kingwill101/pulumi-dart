@@ -13,9 +13,9 @@ import 'api_config_iam_member_state.dart';
 ///
 /// * `gcp.apigateway.ApiConfigIamPolicy`: Retrieves the IAM policy for the apiconfig
 ///
-/// > **Note:** `gcp.apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.ApiConfigIamBinding` and `gcp.apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.ApiConfigIamBinding` and `gcp.apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 /// ## gcp.apigateway.ApiConfigIamPolicy
@@ -416,9 +416,9 @@ import 'api_config_iam_member_state.dart';
 ///
 /// * `gcp.apigateway.ApiConfigIamPolicy`: Retrieves the IAM policy for the apiconfig
 ///
-/// > **Note:** `gcp.apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.ApiConfigIamBinding` and `gcp.apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.ApiConfigIamBinding` and `gcp.apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 /// ## gcp.apigateway.ApiConfigIamPolicy
@@ -836,18 +836,21 @@ import 'api_config_iam_member_state.dart';
 /// $ pulumi import gcp:apigateway/apiConfigIamMember:ApiConfigIamMember editor projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ApiConfigIamMember extends pulumi.CustomResource {
   /// The API to attach the config to.
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> api;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> apiConfig;
   late final pulumi.Output<ApiConfigIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -861,9 +864,11 @@ class ApiConfigIamMember extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<String> member;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.apigateway.ApiConfigIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -878,18 +883,18 @@ class ApiConfigIamMember extends pulumi.CustomResource {
     ApiConfigIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigateway/apiConfigIamMember:ApiConfigIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.api = registerOutput<String>('api');
-    this.apiConfig = registerOutput<String>('apiConfig');
-    this.condition = registerOutput<ApiConfigIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:apigateway/apiConfigIamMember:ApiConfigIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    api = registerOutput<String>('api');
+    apiConfig = registerOutput<String>('apiConfig');
+    condition = registerOutput<ApiConfigIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [ApiConfigIamMember] resource's state with the given [name] and [id].
@@ -910,17 +915,17 @@ class ApiConfigIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigateway/apiConfigIamMember:ApiConfigIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.api = registerOutput<String>('api');
-    this.apiConfig = registerOutput<String>('apiConfig');
-    this.condition = registerOutput<ApiConfigIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:apigateway/apiConfigIamMember:ApiConfigIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    api = registerOutput<String>('api');
+    apiConfig = registerOutput<String>('apiConfig');
+    condition = registerOutput<ApiConfigIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

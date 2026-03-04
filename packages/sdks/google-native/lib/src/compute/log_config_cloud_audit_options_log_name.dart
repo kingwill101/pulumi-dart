@@ -4,16 +4,17 @@ enum LogConfigCloudAuditOptionsLogName {
   dataAccess("DATA_ACCESS"),
   unspecifiedLogName("UNSPECIFIED_LOG_NAME");
 
-  const LogConfigCloudAuditOptionsLogName(this.value);
-  final String value;
+  const LogConfigCloudAuditOptionsLogName(this.wireValue);
+  final String wireValue;
 
   static LogConfigCloudAuditOptionsLogName fromValue(String value) {
     for (final item in LogConfigCloudAuditOptionsLogName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LogConfigCloudAuditOptionsLogName value: $value');
+    throw ArgumentError(
+      'Unknown LogConfigCloudAuditOptionsLogName value: $value',
+    );
   }
 }
-

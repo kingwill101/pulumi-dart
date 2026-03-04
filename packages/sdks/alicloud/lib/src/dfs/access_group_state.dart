@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessGroupState {
   /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
   final pulumi.Input<String>? accessGroupName;
+
   /// The creation time of the permission group resource.
   final pulumi.Input<String>? createTime;
+
   /// The permission group description.  No more than 32 characters in length.
   final pulumi.Input<String>? description;
+
   /// The permission group type. Only VPC (VPC) is supported.
   final pulumi.Input<String>? networkType;
 
@@ -36,11 +39,26 @@ class AccessGroupState {
 
   factory AccessGroupState.fromMap(Map<String, dynamic> map) {
     return AccessGroupState(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      accessGroupName: (() {
+        final guardedValue = map['accessGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

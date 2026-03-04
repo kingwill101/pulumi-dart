@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceManagerConfigurationArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace manager configuration
   final pulumi.Input<String> workspaceManagerConfigurationName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -32,12 +34,17 @@ class GetWorkspaceManagerConfigurationArgs {
     };
   }
 
-  factory GetWorkspaceManagerConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkspaceManagerConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkspaceManagerConfigurationArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceManagerConfigurationName: (map['workspaceManagerConfigurationName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceManagerConfigurationName: pulumi.Input.fromValue(
+        map['workspaceManagerConfigurationName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

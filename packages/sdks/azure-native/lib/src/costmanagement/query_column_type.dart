@@ -3,16 +3,15 @@ enum QueryColumnType {
   valueTagKey("TagKey"),
   valueDimension("Dimension");
 
-  const QueryColumnType(this.value);
-  final String value;
+  const QueryColumnType(this.wireValue);
+  final String wireValue;
 
   static QueryColumnType fromValue(String value) {
     for (final item in QueryColumnType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QueryColumnType value: $value');
   }
 }
-

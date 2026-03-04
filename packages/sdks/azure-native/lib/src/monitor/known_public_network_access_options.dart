@@ -4,16 +4,17 @@ enum KnownPublicNetworkAccessOptions {
   valueDisabled("Disabled"),
   valueSecuredByPerimeter("SecuredByPerimeter");
 
-  const KnownPublicNetworkAccessOptions(this.value);
-  final String value;
+  const KnownPublicNetworkAccessOptions(this.wireValue);
+  final String wireValue;
 
   static KnownPublicNetworkAccessOptions fromValue(String value) {
     for (final item in KnownPublicNetworkAccessOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownPublicNetworkAccessOptions value: $value');
+    throw ArgumentError(
+      'Unknown KnownPublicNetworkAccessOptions value: $value',
+    );
   }
 }
-

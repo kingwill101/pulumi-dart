@@ -7,16 +7,17 @@ enum AzureBareMetalInstancePowerStateEnum {
   valueRestarting("restarting"),
   valueUnknown("unknown");
 
-  const AzureBareMetalInstancePowerStateEnum(this.value);
-  final String value;
+  const AzureBareMetalInstancePowerStateEnum(this.wireValue);
+  final String wireValue;
 
   static AzureBareMetalInstancePowerStateEnum fromValue(String value) {
     for (final item in AzureBareMetalInstancePowerStateEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureBareMetalInstancePowerStateEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureBareMetalInstancePowerStateEnum value: $value',
+    );
   }
 }
-

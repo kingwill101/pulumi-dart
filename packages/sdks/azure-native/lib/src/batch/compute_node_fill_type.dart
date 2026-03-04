@@ -3,16 +3,15 @@ enum ComputeNodeFillType {
   spread("Spread"),
   pack("Pack");
 
-  const ComputeNodeFillType(this.value);
-  final String value;
+  const ComputeNodeFillType(this.wireValue);
+  final String wireValue;
 
   static ComputeNodeFillType fromValue(String value) {
     for (final item in ComputeNodeFillType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeNodeFillType value: $value');
   }
 }
-

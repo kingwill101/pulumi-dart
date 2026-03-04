@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionStateOverrideActionResponse {
   /// The action.
   final pulumi.Input<String> action;
+
   /// The state.
   final pulumi.Input<String> state;
 
@@ -17,17 +18,15 @@ class SubscriptionStateOverrideActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': action,
-      'state': state,
-    };
+    return <String, dynamic>{'action': action, 'state': state};
   }
 
-  factory SubscriptionStateOverrideActionResponse.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionStateOverrideActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionStateOverrideActionResponse(
-      action: (map['action'] as String).input(),
-      state: (map['state'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

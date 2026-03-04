@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingRuleActionInvokeApi {
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final pulumi.Input<String> apiId;
+
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final pulumi.Input<String> stage;
+
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final pulumi.Input<bool>? stripBasePath;
 
@@ -30,10 +32,13 @@ class RoutingRuleActionInvokeApi {
 
   factory RoutingRuleActionInvokeApi.fromMap(Map<String, dynamic> map) {
     return RoutingRuleActionInvokeApi(
-      apiId: (map['apiId'] as String).input(),
-      stage: (map['stage'] as String).input(),
-      stripBasePath: map['stripBasePath'] == null ? null : ((map['stripBasePath'] as bool).input()).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      stage: pulumi.Input.fromValue(map['stage'] as String),
+      stripBasePath: (() {
+        final guardedValue = map['stripBasePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

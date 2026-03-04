@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trail_deprecated_args.dart';
 import 'trail_deprecated_state.dart';
 
-/// > **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
+/// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
 ///
 /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 ///
-/// > **NOTE:** Available in 1.35.0+
+/// &gt; **NOTE:** Available in 1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -140,6 +140,7 @@ import 'trail_deprecated_state.dart';
 class TrailDeprecated extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String?> dataEventTrailRegion;
+
   /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
   late final pulumi.Output<String> eventRw;
   late final pulumi.Output<String?> eventSelectors;
@@ -147,21 +148,27 @@ class TrailDeprecated extends pulumi.CustomResource {
   late final pulumi.Output<String?> maxComputeProjectArn;
   late final pulumi.Output<String> maxComputeWriteRoleArn;
   late final pulumi.Output<String?> mnsTopicArn;
+
   /// The name of the trail to be created, which must be unique for an account.
   late final pulumi.Output<String> name;
+
   /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
   late final pulumi.Output<String?> ossBucketName;
+
   /// The prefix of the specified OSS bucket name. This parameter can be left empty.
   late final pulumi.Output<String?> ossKeyPrefix;
   late final pulumi.Output<String?> ossWriteRoleArn;
   late final pulumi.Output<String> regionId;
+
   /// The RAM role in ActionTrail permitted by the user.
   late final pulumi.Output<String?> roleName;
+
   /// The unique ARN of the Log Service project.
   late final pulumi.Output<String?> slsProjectArn;
+
   /// The unique ARN of the Log Service role.
   ///
-  /// > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+  /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
   late final pulumi.Output<String> slsWriteRoleArn;
   late final pulumi.Output<String> status;
   late final pulumi.Output<String> trailName;
@@ -176,30 +183,30 @@ class TrailDeprecated extends pulumi.CustomResource {
     TrailDeprecatedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
-    this.eventRw = registerOutput<String>('eventRw');
-    this.eventSelectors = registerOutput<String?>('eventSelectors');
-    this.isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
-    this.maxComputeProjectArn = registerOutput<String?>('maxComputeProjectArn');
-    this.maxComputeWriteRoleArn = registerOutput<String>('maxComputeWriteRoleArn');
-    this.mnsTopicArn = registerOutput<String?>('mnsTopicArn');
+         'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
+    eventRw = registerOutput<String>('eventRw');
+    eventSelectors = registerOutput<String?>('eventSelectors');
+    isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
+    maxComputeProjectArn = registerOutput<String?>('maxComputeProjectArn');
+    maxComputeWriteRoleArn = registerOutput<String>('maxComputeWriteRoleArn');
+    mnsTopicArn = registerOutput<String?>('mnsTopicArn');
     this.name = registerOutput<String>('name');
-    this.ossBucketName = registerOutput<String?>('ossBucketName');
-    this.ossKeyPrefix = registerOutput<String?>('ossKeyPrefix');
-    this.ossWriteRoleArn = registerOutput<String?>('ossWriteRoleArn');
-    this.regionId = registerOutput<String>('regionId');
-    this.roleName = registerOutput<String?>('roleName');
-    this.slsProjectArn = registerOutput<String?>('slsProjectArn');
-    this.slsWriteRoleArn = registerOutput<String>('slsWriteRoleArn');
-    this.status = registerOutput<String>('status');
-    this.trailName = registerOutput<String>('trailName');
-    this.trailRegion = registerOutput<String>('trailRegion');
+    ossBucketName = registerOutput<String?>('ossBucketName');
+    ossKeyPrefix = registerOutput<String?>('ossKeyPrefix');
+    ossWriteRoleArn = registerOutput<String?>('ossWriteRoleArn');
+    regionId = registerOutput<String>('regionId');
+    roleName = registerOutput<String?>('roleName');
+    slsProjectArn = registerOutput<String?>('slsProjectArn');
+    slsWriteRoleArn = registerOutput<String>('slsWriteRoleArn');
+    status = registerOutput<String>('status');
+    trailName = registerOutput<String>('trailName');
+    trailRegion = registerOutput<String>('trailRegion');
   }
 
   /// Gets an existing [TrailDeprecated] resource's state with the given [name] and [id].
@@ -220,29 +227,29 @@ class TrailDeprecated extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
-    this.eventRw = registerOutput<String>('eventRw');
-    this.eventSelectors = registerOutput<String?>('eventSelectors');
-    this.isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
-    this.maxComputeProjectArn = registerOutput<String?>('maxComputeProjectArn');
-    this.maxComputeWriteRoleArn = registerOutput<String>('maxComputeWriteRoleArn');
-    this.mnsTopicArn = registerOutput<String?>('mnsTopicArn');
+         'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
+    eventRw = registerOutput<String>('eventRw');
+    eventSelectors = registerOutput<String?>('eventSelectors');
+    isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
+    maxComputeProjectArn = registerOutput<String?>('maxComputeProjectArn');
+    maxComputeWriteRoleArn = registerOutput<String>('maxComputeWriteRoleArn');
+    mnsTopicArn = registerOutput<String?>('mnsTopicArn');
     this.name = registerOutput<String>('name');
-    this.ossBucketName = registerOutput<String?>('ossBucketName');
-    this.ossKeyPrefix = registerOutput<String?>('ossKeyPrefix');
-    this.ossWriteRoleArn = registerOutput<String?>('ossWriteRoleArn');
-    this.regionId = registerOutput<String>('regionId');
-    this.roleName = registerOutput<String?>('roleName');
-    this.slsProjectArn = registerOutput<String?>('slsProjectArn');
-    this.slsWriteRoleArn = registerOutput<String>('slsWriteRoleArn');
-    this.status = registerOutput<String>('status');
-    this.trailName = registerOutput<String>('trailName');
-    this.trailRegion = registerOutput<String>('trailRegion');
+    ossBucketName = registerOutput<String?>('ossBucketName');
+    ossKeyPrefix = registerOutput<String?>('ossKeyPrefix');
+    ossWriteRoleArn = registerOutput<String?>('ossWriteRoleArn');
+    regionId = registerOutput<String>('regionId');
+    roleName = registerOutput<String?>('roleName');
+    slsProjectArn = registerOutput<String?>('slsProjectArn');
+    slsWriteRoleArn = registerOutput<String>('slsWriteRoleArn');
+    status = registerOutput<String>('status');
+    trailName = registerOutput<String>('trailName');
+    trailRegion = registerOutput<String>('trailRegion');
   }
 }

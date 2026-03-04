@@ -5,16 +5,17 @@ enum NfsExportOptionsSecurityFlavorsItem {
   krb5i("KRB5I"),
   krb5p("KRB5P");
 
-  const NfsExportOptionsSecurityFlavorsItem(this.value);
-  final String value;
+  const NfsExportOptionsSecurityFlavorsItem(this.wireValue);
+  final String wireValue;
 
   static NfsExportOptionsSecurityFlavorsItem fromValue(String value) {
     for (final item in NfsExportOptionsSecurityFlavorsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NfsExportOptionsSecurityFlavorsItem value: $value');
+    throw ArgumentError(
+      'Unknown NfsExportOptionsSecurityFlavorsItem value: $value',
+    );
   }
 }
-

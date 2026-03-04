@@ -8,20 +8,17 @@ class NfsLocationOnPremConfig {
 
   /// Creates a new [NfsLocationOnPremConfig].
   /// [agentArns] List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
-  NfsLocationOnPremConfig({
-    required this.agentArns,
-  });
+  NfsLocationOnPremConfig({required this.agentArns});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agentArns': agentArns,
-    };
+    return <String, dynamic>{'agentArns': agentArns};
   }
 
   factory NfsLocationOnPremConfig.fromMap(Map<String, dynamic> map) {
     return NfsLocationOnPremConfig(
-      agentArns: ((map['agentArns'] as List).cast<String>()).input(),
+      agentArns: pulumi.Input.fromValue(
+        (map['agentArns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

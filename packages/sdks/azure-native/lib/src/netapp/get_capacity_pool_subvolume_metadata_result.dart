@@ -1,32 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCapacityPoolSubvolumeMetadata.
 class GetCapacityPoolSubvolumeMetadataResult {
   /// Most recent access time and date
   final String? accessedTimeStamp;
+
   /// Bytes used
   final double? bytesUsed;
+
   /// Most recent change time and date
   final String? changedTimeStamp;
+
   /// Creation time and date
   final String? creationTimeStamp;
+
   /// Resource Id
   final String id;
+
   /// Most recent modification time and date
   final String? modifiedTimeStamp;
+
   /// Resource name
   final String name;
+
   /// Path to the parent subvolume
   final String? parentPath;
+
   /// Path to the subvolume
   final String? path;
+
   /// Permissions of the subvolume
   final String? permissions;
+
   /// Azure lifecycle management
   final String? provisioningState;
+
   /// Size of subvolume
   final double? size;
+
   /// Resource type
   final String type;
 
@@ -78,22 +89,63 @@ class GetCapacityPoolSubvolumeMetadataResult {
     };
   }
 
-  factory GetCapacityPoolSubvolumeMetadataResult.fromMap(Map<String, dynamic> map) {
+  factory GetCapacityPoolSubvolumeMetadataResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCapacityPoolSubvolumeMetadataResult(
-      accessedTimeStamp: map['accessedTimeStamp'] == null ? null : map['accessedTimeStamp']! as String,
-      bytesUsed: map['bytesUsed'] == null ? null : map['bytesUsed']! as double,
-      changedTimeStamp: map['changedTimeStamp'] == null ? null : map['changedTimeStamp']! as String,
-      creationTimeStamp: map['creationTimeStamp'] == null ? null : map['creationTimeStamp']! as String,
+      accessedTimeStamp: (() {
+        final guardedValue = map['accessedTimeStamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      bytesUsed: (() {
+        final guardedValue = map['bytesUsed'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      changedTimeStamp: (() {
+        final guardedValue = map['changedTimeStamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      creationTimeStamp: (() {
+        final guardedValue = map['creationTimeStamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      modifiedTimeStamp: map['modifiedTimeStamp'] == null ? null : map['modifiedTimeStamp']! as String,
+      modifiedTimeStamp: (() {
+        final guardedValue = map['modifiedTimeStamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      parentPath: map['parentPath'] == null ? null : map['parentPath']! as String,
-      path: map['path'] == null ? null : map['path']! as String,
-      permissions: map['permissions'] == null ? null : map['permissions']! as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      size: map['size'] == null ? null : map['size']! as double,
+      parentPath: (() {
+        final guardedValue = map['parentPath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -465,21 +465,28 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The time when the snapshot was created in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+
   /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The amount of bytes needed to allocate a full copy of the snapshot content.
   late final pulumi.Output<String> filesystemUsedBytes;
+
   /// The resource name of the filestore instance.
   late final pulumi.Output<String> instance;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
+
   /// The resource name of the snapshot. The name must be unique within the specified instance.
   /// The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -488,12 +495,15 @@ class Snapshot extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The snapshot state.
   late final pulumi.Output<String> state;
 
@@ -506,22 +516,22 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:filestore/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
-    this.instance = registerOutput<String>('instance');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:filestore/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
+    instance = registerOutput<String>('instance');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.state = registerOutput<String>('state');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -542,21 +552,21 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:filestore/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
-    this.instance = registerOutput<String>('instance');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:filestore/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
+    instance = registerOutput<String>('instance');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualApplianceSkuProperties {
   /// Virtual Appliance Scale Unit.
   final pulumi.Input<String>? bundledScaleUnit;
+
   /// Virtual Appliance Version.
   final pulumi.Input<String>? marketPlaceVersion;
+
   /// Virtual Appliance Vendor.
   final pulumi.Input<String>? vendor;
 
@@ -31,10 +33,21 @@ class VirtualApplianceSkuProperties {
 
   factory VirtualApplianceSkuProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSkuProperties(
-      bundledScaleUnit: map['bundledScaleUnit'] == null ? null : (map['bundledScaleUnit']! as String).input(),
-      marketPlaceVersion: map['marketPlaceVersion'] == null ? null : (map['marketPlaceVersion']! as String).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
+      bundledScaleUnit: (() {
+        final guardedValue = map['bundledScaleUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      marketPlaceVersion: (() {
+        final guardedValue = map['marketPlaceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vendor: (() {
+        final guardedValue = map['vendor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

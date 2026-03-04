@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseProxyArgs {
   /// The ID of the database instance.
   final pulumi.Input<String> instanceId;
+
   /// The password of the database account.
   final pulumi.Input<String> password;
+
   /// The ID of the tenant.
   final pulumi.Input<String>? tid;
+
   /// The username of the database account.
   final pulumi.Input<String> username;
 
@@ -39,11 +42,14 @@ class EnterpriseProxyArgs {
 
   factory EnterpriseProxyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      password: (map['password'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid']! as String).input(),
-      username: (map['username'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ class ManagedZoneDnsSecConfigResponseDnsV1beta2 {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
   final pulumi.Input<List<DnsKeySpecResponseDnsV1beta2>> defaultKeySpecs;
   final pulumi.Input<String> kind;
+
   /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
   final pulumi.Input<String> nonExistence;
+
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
   final pulumi.Input<String> state;
 
@@ -26,20 +28,39 @@ class ManagedZoneDnsSecConfigResponseDnsV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeySpecs': pulumi.Input.mapInputValue<List<DnsKeySpecResponseDnsV1beta2>, List<Map<String, dynamic>>>(defaultKeySpecs, (value) => pulumi.Input.encodeList<DnsKeySpecResponseDnsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultKeySpecs':
+          pulumi.Input.mapInputValue<
+            List<DnsKeySpecResponseDnsV1beta2>,
+            List<Map<String, dynamic>>
+          >(
+            defaultKeySpecs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DnsKeySpecResponseDnsV1beta2,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': kind,
       'nonExistence': nonExistence,
       'state': state,
     };
   }
 
-  factory ManagedZoneDnsSecConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneDnsSecConfigResponseDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneDnsSecConfigResponseDnsV1beta2(
-      defaultKeySpecs: (pulumi.Input.decodeList<DnsKeySpecResponseDnsV1beta2>(map['defaultKeySpecs'], (value) => DnsKeySpecResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: (map['kind'] as String).input(),
-      nonExistence: (map['nonExistence'] as String).input(),
-      state: (map['state'] as String).input(),
+      defaultKeySpecs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DnsKeySpecResponseDnsV1beta2>(
+          map['defaultKeySpecs']!,
+          (value) => DnsKeySpecResponseDnsV1beta2.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      nonExistence: pulumi.Input.fromValue(map['nonExistence'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

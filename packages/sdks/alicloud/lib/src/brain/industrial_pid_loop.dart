@@ -4,9 +4,9 @@ import 'industrial_pid_loop_state.dart';
 
 /// Provides a Brain Industrial Pid Loop resource.
 ///
-/// > **NOTE:** Available since v1.117.0.
+/// &gt; **NOTE:** Available since v1.117.0.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.229.1`.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.229.1`.
 ///
 /// ## Example Usage
 ///
@@ -142,18 +142,25 @@ import 'industrial_pid_loop_state.dart';
 class IndustrialPidLoop extends pulumi.CustomResource {
   /// The Pid Loop Configuration.
   late final pulumi.Output<String> pidLoopConfiguration;
+
   /// The dcs type of Pid Loop. Valid values: `standard`.
   late final pulumi.Output<String> pidLoopDcsType;
+
   /// The desc of Pid Loop.
   late final pulumi.Output<String?> pidLoopDesc;
+
   /// Whether is crucial Pid Loop.
   late final pulumi.Output<bool> pidLoopIsCrucial;
+
   /// The name of Pid Loop.
   late final pulumi.Output<String> pidLoopName;
+
   /// The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   late final pulumi.Output<String> pidLoopType;
+
   /// The pid project id.
   late final pulumi.Output<String> pidProjectId;
+
   /// The status of Pid Loop.
   late final pulumi.Output<String> status;
 
@@ -166,19 +173,19 @@ class IndustrialPidLoop extends pulumi.CustomResource {
     IndustrialPidLoopArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:brain/industrialPidLoop:IndustrialPidLoop',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.pidLoopConfiguration = registerOutput<String>('pidLoopConfiguration');
-    this.pidLoopDcsType = registerOutput<String>('pidLoopDcsType');
-    this.pidLoopDesc = registerOutput<String?>('pidLoopDesc');
-    this.pidLoopIsCrucial = registerOutput<bool>('pidLoopIsCrucial');
-    this.pidLoopName = registerOutput<String>('pidLoopName');
-    this.pidLoopType = registerOutput<String>('pidLoopType');
-    this.pidProjectId = registerOutput<String>('pidProjectId');
-    this.status = registerOutput<String>('status');
+         'alicloud:brain/industrialPidLoop:IndustrialPidLoop',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    pidLoopConfiguration = registerOutput<String>('pidLoopConfiguration');
+    pidLoopDcsType = registerOutput<String>('pidLoopDcsType');
+    pidLoopDesc = registerOutput<String?>('pidLoopDesc');
+    pidLoopIsCrucial = registerOutput<bool>('pidLoopIsCrucial');
+    pidLoopName = registerOutput<String>('pidLoopName');
+    pidLoopType = registerOutput<String>('pidLoopType');
+    pidProjectId = registerOutput<String>('pidProjectId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [IndustrialPidLoop] resource's state with the given [name] and [id].
@@ -199,18 +206,18 @@ class IndustrialPidLoop extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:brain/industrialPidLoop:IndustrialPidLoop',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.pidLoopConfiguration = registerOutput<String>('pidLoopConfiguration');
-    this.pidLoopDcsType = registerOutput<String>('pidLoopDcsType');
-    this.pidLoopDesc = registerOutput<String?>('pidLoopDesc');
-    this.pidLoopIsCrucial = registerOutput<bool>('pidLoopIsCrucial');
-    this.pidLoopName = registerOutput<String>('pidLoopName');
-    this.pidLoopType = registerOutput<String>('pidLoopType');
-    this.pidProjectId = registerOutput<String>('pidProjectId');
-    this.status = registerOutput<String>('status');
+         'alicloud:brain/industrialPidLoop:IndustrialPidLoop',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    pidLoopConfiguration = registerOutput<String>('pidLoopConfiguration');
+    pidLoopDcsType = registerOutput<String>('pidLoopDcsType');
+    pidLoopDesc = registerOutput<String?>('pidLoopDesc');
+    pidLoopIsCrucial = registerOutput<bool>('pidLoopIsCrucial');
+    pidLoopName = registerOutput<String>('pidLoopName');
+    pidLoopType = registerOutput<String>('pidLoopType');
+    pidProjectId = registerOutput<String>('pidProjectId');
+    status = registerOutput<String>('status');
   }
 }

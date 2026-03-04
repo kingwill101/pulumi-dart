@@ -3,16 +3,15 @@ enum Code {
   valueRunning("Running"),
   valueStopped("Stopped");
 
-  const Code(this.value);
-  final String value;
+  const Code(this.wireValue);
+  final String wireValue;
 
   static Code fromValue(String value) {
     for (final item in Code.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Code value: $value');
   }
 }
-

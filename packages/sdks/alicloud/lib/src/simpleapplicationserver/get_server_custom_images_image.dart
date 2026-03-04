@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCustomImagesImage {
   /// The first ID of the resource.
   final pulumi.Input<String> customImageId;
+
   /// The name of the resource.
   final pulumi.Input<String> customImageName;
+
   /// Image description information.
   final pulumi.Input<String> description;
+
   /// The ID of the Custom Image.
   final pulumi.Input<String> id;
+
   /// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
   final pulumi.Input<String> platform;
 
@@ -40,12 +44,11 @@ class GetServerCustomImagesImage {
 
   factory GetServerCustomImagesImage.fromMap(Map<String, dynamic> map) {
     return GetServerCustomImagesImage(
-      customImageId: (map['customImageId'] as String).input(),
-      customImageName: (map['customImageName'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      platform: (map['platform'] as String).input(),
+      customImageId: pulumi.Input.fromValue(map['customImageId'] as String),
+      customImageName: pulumi.Input.fromValue(map['customImageName'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      platform: pulumi.Input.fromValue(map['platform'] as String),
     );
   }
 }
-

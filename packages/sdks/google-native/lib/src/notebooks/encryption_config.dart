@@ -9,20 +9,19 @@ class EncryptionConfig {
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  EncryptionConfig({
-    this.kmsKey,
-  });
+  EncryptionConfig({this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': ?kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': ?kmsKey};
   }
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

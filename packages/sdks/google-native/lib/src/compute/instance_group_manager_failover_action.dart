@@ -3,16 +3,17 @@ enum InstanceGroupManagerFailoverAction {
   noFailover("NO_FAILOVER"),
   unknown("UNKNOWN");
 
-  const InstanceGroupManagerFailoverAction(this.value);
-  final String value;
+  const InstanceGroupManagerFailoverAction(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerFailoverAction fromValue(String value) {
     for (final item in InstanceGroupManagerFailoverAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerFailoverAction value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerFailoverAction value: $value',
+    );
   }
 }
-

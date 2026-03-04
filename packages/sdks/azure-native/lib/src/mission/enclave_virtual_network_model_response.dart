@@ -7,12 +7,16 @@ import 'subnet_configuration_response.dart';
 class EnclaveVirtualNetworkModelResponse {
   /// Allow Subnet Communication.
   final pulumi.Input<bool>? allowSubnetCommunication;
+
   /// Custom CIDR Range.
   final pulumi.Input<String>? customCidrRange;
+
   /// Network Name.
   final pulumi.Input<String>? networkName;
+
   /// Network Size.
   final pulumi.Input<String>? networkSize;
+
   /// Subnet Configurations.
   final pulumi.Input<List<SubnetConfigurationResponse>>? subnetConfigurations;
 
@@ -36,18 +40,55 @@ class EnclaveVirtualNetworkModelResponse {
       'customCidrRange': ?customCidrRange,
       'networkName': ?networkName,
       'networkSize': ?networkSize,
-      'subnetConfigurations': ?pulumi.Input.mapOptionalInputValue<List<SubnetConfigurationResponse>, List<Map<String, dynamic>>>(subnetConfigurations, (value) => pulumi.Input.encodeList<SubnetConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubnetConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subnetConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubnetConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory EnclaveVirtualNetworkModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveVirtualNetworkModelResponse(
-      allowSubnetCommunication: map['allowSubnetCommunication'] == null ? null : (map['allowSubnetCommunication']! as bool).input(),
-      customCidrRange: map['customCidrRange'] == null ? null : (map['customCidrRange']! as String).input(),
-      networkName: map['networkName'] == null ? null : (map['networkName']! as String).input(),
-      networkSize: map['networkSize'] == null ? null : (map['networkSize']! as String).input(),
-      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<SubnetConfigurationResponse>(map['subnetConfigurations']!, (value) => SubnetConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowSubnetCommunication: (() {
+        final guardedValue = map['allowSubnetCommunication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      customCidrRange: (() {
+        final guardedValue = map['customCidrRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkName: (() {
+        final guardedValue = map['networkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSize: (() {
+        final guardedValue = map['networkSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetConfigurations: (() {
+        final guardedValue = map['subnetConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubnetConfigurationResponse>(
+            guardedValue,
+            (value) => SubnetConfigurationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -263,10 +263,7 @@ import 'get_vpcs_result.dart';
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'linode:index/getAccount:getAccount',
@@ -894,8 +891,7 @@ Future<GetAccountLoginsResult> getAccountLogins(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountSettingsResult> getAccountSettings(
-  {
+Future<GetAccountSettingsResult> getAccountSettings({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1540,7 +1536,8 @@ Future<GetConsumerImageShareGroupResult> getConsumerImageShareGroup(
 /// * `label`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_consumer_image_share_group_image_shares_get_consumer_image_share_group_image_shares_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageShares(
+Future<GetConsumerImageShareGroupImageSharesResult>
+getConsumerImageShareGroupImageShares(
   GetConsumerImageShareGroupImageSharesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1848,7 +1845,7 @@ Future<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokens(
   return GetConsumerImageShareGroupTokensResult.fromMap(result);
 }
 
-/// > **DEPRECATION NOTICE:** This data source has been deprecated.
+/// &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
 ///
 /// Provides information about Linode Database Backups that match a set of filters.
 /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
@@ -2468,7 +2465,7 @@ Future<GetDatabaseEnginesResult> getDatabaseEngines(
   return GetDatabaseEnginesResult.fromMap(result);
 }
 
-/// > **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+/// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
 ///
 /// Provides information about a Linode MySQL Database.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
@@ -2591,7 +2588,7 @@ Future<GetDatabaseMysqlResult> getDatabaseMysql(
   return GetDatabaseMysqlResult.fromMap(result);
 }
 
-/// > **DEPRECATION NOTICE:** This data source has been deprecated.
+/// &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
 ///
 /// Provides information about Linode MySQL Database Backups that match a set of filters.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
@@ -3401,8 +3398,7 @@ Future<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(
 ///
 /// * `type` - The type of the value of `wait_timeout`.
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig(
-  {
+Future<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -3553,7 +3549,7 @@ Future<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(
   return GetDatabaseMysqlV2Result.fromMap(result);
 }
 
-/// > **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+/// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
 ///
 /// Provides information about a Linode PostgreSQL Database.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
@@ -4526,8 +4522,7 @@ Future<GetDatabasePostgresqlResult> getDatabasePostgresql(
 ///
 /// * `type` - The type of the `wal_writer_delay` setting.
 /// [options] Invoke options controlling this call.
-Future<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig(
-  {
+Future<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -5564,8 +5559,7 @@ Future<GetFirewallResult> getFirewall(
 }
 
 /// [options] Invoke options controlling this call.
-Future<GetFirewallSettingsResult> getFirewallSettings(
-  {
+Future<GetFirewallSettingsResult> getFirewallSettings({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -7585,7 +7579,7 @@ Future<GetIpv6RangeResult> getIpv6Range(
 /// Provides information about Linode IPv6 ranges that match a set of filters.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
 ///
-/// > Some fields may not be accessible directly the results of this data source.
+/// &gt; Some fields may not be accessible directly the results of this data source.
 /// For additional information about a specific IPv6 range consider using the linode.Ipv6Range
 /// data source.
 ///
@@ -8535,7 +8529,7 @@ Future<GetLkeTypesResult> getLkeTypes(
 /// The following example shows how one might use this data source to access information about a Linode LKE Version
 /// with additional information about the Linode LKE Version's tier (`enterprise` or `standard`).
 ///
-/// > **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+/// &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
 ///
 ///
 /// ```typescript
@@ -8749,7 +8743,7 @@ Future<GetLkeVersionResult> getLkeVersion(
 /// The following example shows how one might use this data source to access information about a Linode LKE Version
 /// with additional information about the Linode LKE Version's tier (`enterprise` or `standard`).
 ///
-/// > **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+/// &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
 ///
 ///
 /// ```typescript
@@ -8868,9 +8862,9 @@ Future<GetLkeVersionsResult> getLkeVersions(
   return GetLkeVersionsResult.fromMap(result);
 }
 
-/// > **Early Access:** Lock functionality is in early access and may not be available to all users.
+/// &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
 ///
-/// > **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+/// &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
 ///
 /// Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
 ///
@@ -8979,9 +8973,9 @@ Future<GetLockResult> getLock(
   return GetLockResult.fromMap(result);
 }
 
-/// > **Early Access:** Lock functionality is in early access and may not be available to all users.
+/// &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
 ///
-/// > **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+/// &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
 ///
 /// Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
 ///
@@ -10203,7 +10197,7 @@ Future<GetNodebalancerConfigsResult> getNodebalancerConfigs(
   return GetNodebalancerConfigsResult.fromMap(result);
 }
 
-/// > **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+/// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
 ///
 /// Provides information about a NodeBalancer VPC configuration.
 /// For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
@@ -10317,7 +10311,7 @@ Future<GetNodebalancerVpcResult> getNodebalancerVpc(
   return GetNodebalancerVpcResult.fromMap(result);
 }
 
-/// > **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+/// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
 ///
 /// Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
@@ -11965,7 +11959,8 @@ Future<GetProducerImageShareGroupResult> getProducerImageShareGroup(
 /// * `label`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_producer_image_share_group_image_shares_get_producer_image_share_group_image_shares_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageShares(
+Future<GetProducerImageShareGroupImageSharesResult>
+getProducerImageShareGroupImageShares(
   GetProducerImageShareGroupImageSharesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -12275,7 +12270,8 @@ Future<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMember(
 /// * `status`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_producer_image_share_group_members_get_producer_image_share_group_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembers(
+Future<GetProducerImageShareGroupMembersResult>
+getProducerImageShareGroupMembers(
   GetProducerImageShareGroupMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -12552,10 +12548,7 @@ Future<GetProducerImageShareGroupsResult> getProducerImageShareGroups(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetProfileResult> getProfile(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetProfileResult> getProfile({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'linode:index/getProfile:getProfile',
@@ -13734,7 +13727,7 @@ Future<GetUsersResult> getUsers(
   return GetUsersResult.fromMap(result);
 }
 
-/// > **Beta Notice** VLANs are currently available through early access.
+/// &gt; **Beta Notice** VLANs are currently available through early access.
 /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
 /// To learn more, see the early access documentation.
 ///
@@ -14354,7 +14347,7 @@ Future<GetVolumesResult> getVolumes(
 ///
 /// ## IPv6
 ///
-/// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+/// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
 ///
 /// Contains information about a single IPv6 allocation under this VPC.
 ///
@@ -14841,7 +14834,7 @@ Future<GetVpcIpsResult> getVpcIps(
 ///
 /// ## IPv6
 ///
-/// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+/// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
 ///
 /// The following attributes are exported under each entry of the `ipv6` field:
 ///
@@ -15003,7 +14996,7 @@ Future<GetVpcSubnetResult> getVpcSubnet(
 ///
 /// ## IPv6
 ///
-/// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+/// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
 ///
 /// The following attributes are exported under each entry of the `ipv6` field:
 ///
@@ -15167,7 +15160,7 @@ Future<GetVpcSubnetsResult> getVpcSubnets(
 ///
 /// ## IPv6
 ///
-/// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+/// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
 ///
 /// Contains information about a single IPv6 allocation under a VPC.
 ///

@@ -4,16 +4,15 @@ enum SearchSemanticSearch {
   free("free"),
   standard("standard");
 
-  const SearchSemanticSearch(this.value);
-  final String value;
+  const SearchSemanticSearch(this.wireValue);
+  final String wireValue;
 
   static SearchSemanticSearch fromValue(String value) {
     for (final item in SearchSemanticSearch.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SearchSemanticSearch value: $value');
   }
 }
-

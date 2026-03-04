@@ -3,16 +3,15 @@ enum CrossTenantTokenValidation {
   ensureSecureValidation("EnsureSecureValidation"),
   passthroughInsecureToken("PassthroughInsecureToken");
 
-  const CrossTenantTokenValidation(this.value);
-  final String value;
+  const CrossTenantTokenValidation(this.wireValue);
+  final String wireValue;
 
   static CrossTenantTokenValidation fromValue(String value) {
     for (final item in CrossTenantTokenValidation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CrossTenantTokenValidation value: $value');
   }
 }
-

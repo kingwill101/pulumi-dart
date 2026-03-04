@@ -18,107 +18,139 @@ import 'virtualization_type_enum_value_response.dart';
 
 /// Definition of awsEc2Image
 class AwsEc2ImagePropertiesResponse {
-  /// <p>The architecture of the image.</p>
+  /// &lt;p&gt;The architecture of the image.&lt;/p&gt;
   final pulumi.Input<ArchitectureValuesEnumValueResponse>? architecture;
-  /// <p>Any block device mapping entries.</p>
+
+  /// &lt;p&gt;Any block device mapping entries.&lt;/p&gt;
   final pulumi.Input<List<BlockDeviceMappingResponse>>? blockDeviceMappings;
-  /// <p>The boot mode of the image. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;The boot mode of the image. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<BootModeValuesEnumValueResponse>? bootMode;
-  /// <p>The date and time the image was created.</p>
+
+  /// &lt;p&gt;The date and time the image was created.&lt;/p&gt;
   final pulumi.Input<String>? creationDate;
-  /// <p>The date and time to deprecate the AMI, in UTC, in the following format: <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.</p>
+
+  /// &lt;p&gt;The date and time to deprecate the AMI, in UTC, in the following format: &lt;i&gt;YYYY&lt;/i&gt;-&lt;i&gt;MM&lt;/i&gt;-&lt;i&gt;DD&lt;/i&gt;T&lt;i&gt;HH&lt;/i&gt;:&lt;i&gt;MM&lt;/i&gt;:&lt;i&gt;SS&lt;/i&gt;Z. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.&lt;/p&gt;
   final pulumi.Input<String>? deprecationTime;
-  /// <p>Indicates whether deregistration protection is enabled for the AMI.</p>
+
+  /// &lt;p&gt;Indicates whether deregistration protection is enabled for the AMI.&lt;/p&gt;
   final pulumi.Input<String>? deregistrationProtection;
-  /// <p>The description of the AMI that was provided during image creation.</p>
+
+  /// &lt;p&gt;The description of the AMI that was provided during image creation.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>Specifies whether enhanced networking with ENA is enabled.</p>
+
+  /// &lt;p&gt;Specifies whether enhanced networking with ENA is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? enaSupport;
-  /// <p>The hypervisor type of the image. Only <code>xen</code> is supported. <code>ovm</code> is not supported.</p>
+
+  /// &lt;p&gt;The hypervisor type of the image. Only &lt;code&gt;xen&lt;/code&gt; is supported. &lt;code&gt;ovm&lt;/code&gt; is not supported.&lt;/p&gt;
   final pulumi.Input<HypervisorTypeEnumValueResponse>? hypervisor;
-  /// <p>The ID of the AMI.</p>
+
+  /// &lt;p&gt;The ID of the AMI.&lt;/p&gt;
   final pulumi.Input<String>? imageId;
-  /// <p>The location of the AMI.</p>
+
+  /// &lt;p&gt;The location of the AMI.&lt;/p&gt;
   final pulumi.Input<String>? imageLocation;
-  /// <p>The owner alias (<code>amazon</code> | <code>aws-marketplace</code>).</p>
+
+  /// &lt;p&gt;The owner alias (&lt;code&gt;amazon&lt;/code&gt; | &lt;code&gt;aws-marketplace&lt;/code&gt;).&lt;/p&gt;
   final pulumi.Input<String>? imageOwnerAlias;
-  /// <p>The type of image.</p>
+
+  /// &lt;p&gt;The type of image.&lt;/p&gt;
   final pulumi.Input<ImageTypeValuesEnumValueResponse>? imageType;
-  /// <p>If <code>v2.0</code>, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have <code>HttpTokens</code> automatically set to <code>required</code> so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, <code>HttpPutResponseHopLimit</code> is set to <code>2</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration'>Configure the AMI</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;If &lt;code&gt;v2.0&lt;/code&gt;, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have &lt;code&gt;HttpTokens&lt;/code&gt; automatically set to &lt;code&gt;required&lt;/code&gt; so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, &lt;code&gt;HttpPutResponseHopLimit&lt;/code&gt; is set to &lt;code&gt;2&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration'&gt;Configure the AMI&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<ImdsSupportValuesEnumValueResponse>? imdsSupport;
-  /// <p>The kernel associated with the image, if any. Only applicable for machine images.</p>
+
+  /// &lt;p&gt;The kernel associated with the image, if any. Only applicable for machine images.&lt;/p&gt;
   final pulumi.Input<String>? kernelId;
-  /// <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported.</p> <note> <p> <code>lastLaunchedTime</code> data is available starting April 2017.</p> </note>
+
+  /// &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported.&lt;/p&gt; &lt;note&gt; &lt;p&gt; &lt;code&gt;lastLaunchedTime&lt;/code&gt; data is available starting April 2017.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<String>? lastLaunchedTime;
-  /// <p>The name of the AMI that was provided during image creation.</p>
+
+  /// &lt;p&gt;The name of the AMI that was provided during image creation.&lt;/p&gt;
   final pulumi.Input<String>? name;
-  /// <p>The ID of the Amazon Web Services account that owns the image.</p>
+
+  /// &lt;p&gt;The ID of the Amazon Web Services account that owns the image.&lt;/p&gt;
   final pulumi.Input<String>? ownerId;
-  /// <p>This value is set to <code>windows</code> for Windows AMIs; otherwise, it is blank.</p>
+
+  /// &lt;p&gt;This value is set to &lt;code&gt;windows&lt;/code&gt; for Windows AMIs; otherwise, it is blank.&lt;/p&gt;
   final pulumi.Input<PlatformValuesEnumValueResponse>? platform;
-  /// <p>The platform details associated with the billing code of the AMI. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html'>Understand AMI billing information</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;The platform details associated with the billing code of the AMI. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html'&gt;Understand AMI billing information&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? platformDetails;
-  /// <p>Any product codes associated with the AMI.</p>
+
+  /// &lt;p&gt;Any product codes associated with the AMI.&lt;/p&gt;
   final pulumi.Input<List<ProductCodeResponse>>? productCodes;
-  /// <p>Indicates whether the image has public launch permissions. The value is <code>true</code> if this image has public launch permissions or <code>false</code> if it has only implicit and explicit launch permissions.</p>
+
+  /// &lt;p&gt;Indicates whether the image has public launch permissions. The value is &lt;code&gt;true&lt;/code&gt; if this image has public launch permissions or &lt;code&gt;false&lt;/code&gt; if it has only implicit and explicit launch permissions.&lt;/p&gt;
   final pulumi.Input<bool>? public;
-  /// <p>The RAM disk associated with the image, if any. Only applicable for machine images.</p>
+
+  /// &lt;p&gt;The RAM disk associated with the image, if any. Only applicable for machine images.&lt;/p&gt;
   final pulumi.Input<String>? ramdiskId;
-  /// <p>The device name of the root device volume (for example, <code>/dev/sda1</code>).</p>
+
+  /// &lt;p&gt;The device name of the root device volume (for example, &lt;code&gt;/dev/sda1&lt;/code&gt;).&lt;/p&gt;
   final pulumi.Input<String>? rootDeviceName;
-  /// <p>The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.</p>
+
+  /// &lt;p&gt;The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.&lt;/p&gt;
   final pulumi.Input<DeviceTypeEnumValueResponse>? rootDeviceType;
-  /// <p>The ID of the instance that the AMI was created from if the AMI was created using <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html'>CreateImage</a>. This field only appears if the AMI was created using CreateImage.</p>
+
+  /// &lt;p&gt;The ID of the instance that the AMI was created from if the AMI was created using &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html'&gt;CreateImage&lt;/a&gt;. This field only appears if the AMI was created using CreateImage.&lt;/p&gt;
   final pulumi.Input<String>? sourceInstanceId;
-  /// <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</p>
+
+  /// &lt;p&gt;Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.&lt;/p&gt;
   final pulumi.Input<String>? sriovNetSupport;
-  /// <p>The current state of the AMI. If the state is <code>available</code>, the image is successfully registered and can be used to launch an instance.</p>
+
+  /// &lt;p&gt;The current state of the AMI. If the state is &lt;code&gt;available&lt;/code&gt;, the image is successfully registered and can be used to launch an instance.&lt;/p&gt;
   final pulumi.Input<ImageStateEnumValueResponse>? state;
-  /// <p>The reason for the state change.</p>
+
+  /// &lt;p&gt;The reason for the state change.&lt;/p&gt;
   final pulumi.Input<StateReasonResponse>? stateReason;
-  /// <p>Any tags assigned to the image.</p>
+
+  /// &lt;p&gt;Any tags assigned to the image.&lt;/p&gt;
   final pulumi.Input<List<TagResponse>>? tags;
-  /// <p>If the image is configured for NitroTPM support, the value is <code>v2.0</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'>NitroTPM</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;If the image is configured for NitroTPM support, the value is &lt;code&gt;v2.0&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'&gt;NitroTPM&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<TpmSupportValuesEnumValueResponse>? tpmSupport;
-  /// <p>The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. <code>usageOperation</code> corresponds to the <a href='https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation'>lineitem/Operation</a> column on your Amazon Web Services Cost and Usage Report and in the <a href='https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html'>Amazon Web Services Price List API</a>. You can view these fields on the <b>Instances</b> or <b>AMIs</b> pages in the Amazon EC2 console, or in the responses that are returned by the <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html'>DescribeImages</a> command in the Amazon EC2 API, or the <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html'>describe-images</a> command in the CLI.</p>
+
+  /// &lt;p&gt;The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. &lt;code&gt;usageOperation&lt;/code&gt; corresponds to the &lt;a href='https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation'&gt;lineitem/Operation&lt;/a&gt; column on your Amazon Web Services Cost and Usage Report and in the &lt;a href='https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html'&gt;Amazon Web Services Price List API&lt;/a&gt;. You can view these fields on the &lt;b&gt;Instances&lt;/b&gt; or &lt;b&gt;AMIs&lt;/b&gt; pages in the Amazon EC2 console, or in the responses that are returned by the &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html'&gt;DescribeImages&lt;/a&gt; command in the Amazon EC2 API, or the &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html'&gt;describe-images&lt;/a&gt; command in the CLI.&lt;/p&gt;
   final pulumi.Input<String>? usageOperation;
-  /// <p>The type of virtualization of the AMI.</p>
+
+  /// &lt;p&gt;The type of virtualization of the AMI.&lt;/p&gt;
   final pulumi.Input<VirtualizationTypeEnumValueResponse>? virtualizationType;
 
   /// Creates a new [AwsEc2ImagePropertiesResponse].
-  /// [architecture] <p>The architecture of the image.</p>
-  /// [blockDeviceMappings] <p>Any block device mapping entries.</p>
-  /// [bootMode] <p>The boot mode of the image. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [creationDate] <p>The date and time the image was created.</p>
-  /// [deprecationTime] <p>The date and time to deprecate the AMI, in UTC, in the following format: <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.</p>
-  /// [deregistrationProtection] <p>Indicates whether deregistration protection is enabled for the AMI.</p>
-  /// [description] <p>The description of the AMI that was provided during image creation.</p>
-  /// [enaSupport] <p>Specifies whether enhanced networking with ENA is enabled.</p>
-  /// [hypervisor] <p>The hypervisor type of the image. Only <code>xen</code> is supported. <code>ovm</code> is not supported.</p>
-  /// [imageId] <p>The ID of the AMI.</p>
-  /// [imageLocation] <p>The location of the AMI.</p>
-  /// [imageOwnerAlias] <p>The owner alias (<code>amazon</code> | <code>aws-marketplace</code>).</p>
-  /// [imageType] <p>The type of image.</p>
-  /// [imdsSupport] <p>If <code>v2.0</code>, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have <code>HttpTokens</code> automatically set to <code>required</code> so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, <code>HttpPutResponseHopLimit</code> is set to <code>2</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration'>Configure the AMI</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [kernelId] <p>The kernel associated with the image, if any. Only applicable for machine images.</p>
-  /// [lastLaunchedTime] <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported.</p> <note> <p> <code>lastLaunchedTime</code> data is available starting April 2017.</p> </note>
-  /// [name] <p>The name of the AMI that was provided during image creation.</p>
-  /// [ownerId] <p>The ID of the Amazon Web Services account that owns the image.</p>
-  /// [platform] <p>This value is set to <code>windows</code> for Windows AMIs; otherwise, it is blank.</p>
-  /// [platformDetails] <p>The platform details associated with the billing code of the AMI. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html'>Understand AMI billing information</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [productCodes] <p>Any product codes associated with the AMI.</p>
-  /// [public] <p>Indicates whether the image has public launch permissions. The value is <code>true</code> if this image has public launch permissions or <code>false</code> if it has only implicit and explicit launch permissions.</p>
-  /// [ramdiskId] <p>The RAM disk associated with the image, if any. Only applicable for machine images.</p>
-  /// [rootDeviceName] <p>The device name of the root device volume (for example, <code>/dev/sda1</code>).</p>
-  /// [rootDeviceType] <p>The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.</p>
-  /// [sourceInstanceId] <p>The ID of the instance that the AMI was created from if the AMI was created using <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html'>CreateImage</a>. This field only appears if the AMI was created using CreateImage.</p>
-  /// [sriovNetSupport] <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</p>
-  /// [state] <p>The current state of the AMI. If the state is <code>available</code>, the image is successfully registered and can be used to launch an instance.</p>
-  /// [stateReason] <p>The reason for the state change.</p>
-  /// [tags] <p>Any tags assigned to the image.</p>
-  /// [tpmSupport] <p>If the image is configured for NitroTPM support, the value is <code>v2.0</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'>NitroTPM</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [usageOperation] <p>The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. <code>usageOperation</code> corresponds to the <a href='https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation'>lineitem/Operation</a> column on your Amazon Web Services Cost and Usage Report and in the <a href='https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html'>Amazon Web Services Price List API</a>. You can view these fields on the <b>Instances</b> or <b>AMIs</b> pages in the Amazon EC2 console, or in the responses that are returned by the <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html'>DescribeImages</a> command in the Amazon EC2 API, or the <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html'>describe-images</a> command in the CLI.</p>
-  /// [virtualizationType] <p>The type of virtualization of the AMI.</p>
+  /// [architecture] &lt;p&gt;The architecture of the image.&lt;/p&gt;
+  /// [blockDeviceMappings] &lt;p&gt;Any block device mapping entries.&lt;/p&gt;
+  /// [bootMode] &lt;p&gt;The boot mode of the image. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [creationDate] &lt;p&gt;The date and time the image was created.&lt;/p&gt;
+  /// [deprecationTime] &lt;p&gt;The date and time to deprecate the AMI, in UTC, in the following format: &lt;i&gt;YYYY&lt;/i&gt;-&lt;i&gt;MM&lt;/i&gt;-&lt;i&gt;DD&lt;/i&gt;T&lt;i&gt;HH&lt;/i&gt;:&lt;i&gt;MM&lt;/i&gt;:&lt;i&gt;SS&lt;/i&gt;Z. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.&lt;/p&gt;
+  /// [deregistrationProtection] &lt;p&gt;Indicates whether deregistration protection is enabled for the AMI.&lt;/p&gt;
+  /// [description] &lt;p&gt;The description of the AMI that was provided during image creation.&lt;/p&gt;
+  /// [enaSupport] &lt;p&gt;Specifies whether enhanced networking with ENA is enabled.&lt;/p&gt;
+  /// [hypervisor] &lt;p&gt;The hypervisor type of the image. Only &lt;code&gt;xen&lt;/code&gt; is supported. &lt;code&gt;ovm&lt;/code&gt; is not supported.&lt;/p&gt;
+  /// [imageId] &lt;p&gt;The ID of the AMI.&lt;/p&gt;
+  /// [imageLocation] &lt;p&gt;The location of the AMI.&lt;/p&gt;
+  /// [imageOwnerAlias] &lt;p&gt;The owner alias (&lt;code&gt;amazon&lt;/code&gt; | &lt;code&gt;aws-marketplace&lt;/code&gt;).&lt;/p&gt;
+  /// [imageType] &lt;p&gt;The type of image.&lt;/p&gt;
+  /// [imdsSupport] &lt;p&gt;If &lt;code&gt;v2.0&lt;/code&gt;, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have &lt;code&gt;HttpTokens&lt;/code&gt; automatically set to &lt;code&gt;required&lt;/code&gt; so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, &lt;code&gt;HttpPutResponseHopLimit&lt;/code&gt; is set to &lt;code&gt;2&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration'&gt;Configure the AMI&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [kernelId] &lt;p&gt;The kernel associated with the image, if any. Only applicable for machine images.&lt;/p&gt;
+  /// [lastLaunchedTime] &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported.&lt;/p&gt; &lt;note&gt; &lt;p&gt; &lt;code&gt;lastLaunchedTime&lt;/code&gt; data is available starting April 2017.&lt;/p&gt; &lt;/note&gt;
+  /// [name] &lt;p&gt;The name of the AMI that was provided during image creation.&lt;/p&gt;
+  /// [ownerId] &lt;p&gt;The ID of the Amazon Web Services account that owns the image.&lt;/p&gt;
+  /// [platform] &lt;p&gt;This value is set to &lt;code&gt;windows&lt;/code&gt; for Windows AMIs; otherwise, it is blank.&lt;/p&gt;
+  /// [platformDetails] &lt;p&gt;The platform details associated with the billing code of the AMI. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html'&gt;Understand AMI billing information&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [productCodes] &lt;p&gt;Any product codes associated with the AMI.&lt;/p&gt;
+  /// [public] &lt;p&gt;Indicates whether the image has public launch permissions. The value is &lt;code&gt;true&lt;/code&gt; if this image has public launch permissions or &lt;code&gt;false&lt;/code&gt; if it has only implicit and explicit launch permissions.&lt;/p&gt;
+  /// [ramdiskId] &lt;p&gt;The RAM disk associated with the image, if any. Only applicable for machine images.&lt;/p&gt;
+  /// [rootDeviceName] &lt;p&gt;The device name of the root device volume (for example, &lt;code&gt;/dev/sda1&lt;/code&gt;).&lt;/p&gt;
+  /// [rootDeviceType] &lt;p&gt;The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.&lt;/p&gt;
+  /// [sourceInstanceId] &lt;p&gt;The ID of the instance that the AMI was created from if the AMI was created using &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html'&gt;CreateImage&lt;/a&gt;. This field only appears if the AMI was created using CreateImage.&lt;/p&gt;
+  /// [sriovNetSupport] &lt;p&gt;Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.&lt;/p&gt;
+  /// [state] &lt;p&gt;The current state of the AMI. If the state is &lt;code&gt;available&lt;/code&gt;, the image is successfully registered and can be used to launch an instance.&lt;/p&gt;
+  /// [stateReason] &lt;p&gt;The reason for the state change.&lt;/p&gt;
+  /// [tags] &lt;p&gt;Any tags assigned to the image.&lt;/p&gt;
+  /// [tpmSupport] &lt;p&gt;If the image is configured for NitroTPM support, the value is &lt;code&gt;v2.0&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'&gt;NitroTPM&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [usageOperation] &lt;p&gt;The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. &lt;code&gt;usageOperation&lt;/code&gt; corresponds to the &lt;a href='https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation'&gt;lineitem/Operation&lt;/a&gt; column on your Amazon Web Services Cost and Usage Report and in the &lt;a href='https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html'&gt;Amazon Web Services Price List API&lt;/a&gt;. You can view these fields on the &lt;b&gt;Instances&lt;/b&gt; or &lt;b&gt;AMIs&lt;/b&gt; pages in the Amazon EC2 console, or in the responses that are returned by the &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html'&gt;DescribeImages&lt;/a&gt; command in the Amazon EC2 API, or the &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html'&gt;describe-images&lt;/a&gt; command in the CLI.&lt;/p&gt;
+  /// [virtualizationType] &lt;p&gt;The type of virtualization of the AMI.&lt;/p&gt;
   AwsEc2ImagePropertiesResponse({
     this.architecture,
     this.blockDeviceMappings,
@@ -157,78 +189,350 @@ class AwsEc2ImagePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'architecture': ?pulumi.Input.mapOptionalInputValue<ArchitectureValuesEnumValueResponse, Map<String, dynamic>>(architecture, (value) => value.toMap()),
-      'blockDeviceMappings': ?pulumi.Input.mapOptionalInputValue<List<BlockDeviceMappingResponse>, List<Map<String, dynamic>>>(blockDeviceMappings, (value) => pulumi.Input.encodeList<BlockDeviceMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'bootMode': ?pulumi.Input.mapOptionalInputValue<BootModeValuesEnumValueResponse, Map<String, dynamic>>(bootMode, (value) => value.toMap()),
+      'architecture':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArchitectureValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(architecture, (value) => value.toMap()),
+      'blockDeviceMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BlockDeviceMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            blockDeviceMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BlockDeviceMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'bootMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            BootModeValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(bootMode, (value) => value.toMap()),
       'creationDate': ?creationDate,
       'deprecationTime': ?deprecationTime,
       'deregistrationProtection': ?deregistrationProtection,
       'description': ?description,
       'enaSupport': ?enaSupport,
-      'hypervisor': ?pulumi.Input.mapOptionalInputValue<HypervisorTypeEnumValueResponse, Map<String, dynamic>>(hypervisor, (value) => value.toMap()),
+      'hypervisor':
+          ?pulumi.Input.mapOptionalInputValue<
+            HypervisorTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(hypervisor, (value) => value.toMap()),
       'imageId': ?imageId,
       'imageLocation': ?imageLocation,
       'imageOwnerAlias': ?imageOwnerAlias,
-      'imageType': ?pulumi.Input.mapOptionalInputValue<ImageTypeValuesEnumValueResponse, Map<String, dynamic>>(imageType, (value) => value.toMap()),
-      'imdsSupport': ?pulumi.Input.mapOptionalInputValue<ImdsSupportValuesEnumValueResponse, Map<String, dynamic>>(imdsSupport, (value) => value.toMap()),
+      'imageType':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageTypeValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(imageType, (value) => value.toMap()),
+      'imdsSupport':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImdsSupportValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(imdsSupport, (value) => value.toMap()),
       'kernelId': ?kernelId,
       'lastLaunchedTime': ?lastLaunchedTime,
       'name': ?name,
       'ownerId': ?ownerId,
-      'platform': ?pulumi.Input.mapOptionalInputValue<PlatformValuesEnumValueResponse, Map<String, dynamic>>(platform, (value) => value.toMap()),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlatformValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(platform, (value) => value.toMap()),
       'platformDetails': ?platformDetails,
-      'productCodes': ?pulumi.Input.mapOptionalInputValue<List<ProductCodeResponse>, List<Map<String, dynamic>>>(productCodes, (value) => pulumi.Input.encodeList<ProductCodeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'productCodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProductCodeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            productCodes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProductCodeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'public': ?public,
       'ramdiskId': ?ramdiskId,
       'rootDeviceName': ?rootDeviceName,
-      'rootDeviceType': ?pulumi.Input.mapOptionalInputValue<DeviceTypeEnumValueResponse, Map<String, dynamic>>(rootDeviceType, (value) => value.toMap()),
+      'rootDeviceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(rootDeviceType, (value) => value.toMap()),
       'sourceInstanceId': ?sourceInstanceId,
       'sriovNetSupport': ?sriovNetSupport,
-      'state': ?pulumi.Input.mapOptionalInputValue<ImageStateEnumValueResponse, Map<String, dynamic>>(state, (value) => value.toMap()),
-      'stateReason': ?pulumi.Input.mapOptionalInputValue<StateReasonResponse, Map<String, dynamic>>(stateReason, (value) => value.toMap()),
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tpmSupport': ?pulumi.Input.mapOptionalInputValue<TpmSupportValuesEnumValueResponse, Map<String, dynamic>>(tpmSupport, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageStateEnumValueResponse,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
+      'stateReason':
+          ?pulumi.Input.mapOptionalInputValue<
+            StateReasonResponse,
+            Map<String, dynamic>
+          >(stateReason, (value) => value.toMap()),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'tpmSupport':
+          ?pulumi.Input.mapOptionalInputValue<
+            TpmSupportValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(tpmSupport, (value) => value.toMap()),
       'usageOperation': ?usageOperation,
-      'virtualizationType': ?pulumi.Input.mapOptionalInputValue<VirtualizationTypeEnumValueResponse, Map<String, dynamic>>(virtualizationType, (value) => value.toMap()),
+      'virtualizationType':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualizationTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(virtualizationType, (value) => value.toMap()),
     };
   }
 
   factory AwsEc2ImagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2ImagePropertiesResponse(
-      architecture: map['architecture'] == null ? null : (ArchitectureValuesEnumValueResponse.fromMap((map['architecture']! as Map).cast<String, dynamic>())).input(),
-      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : (pulumi.Input.decodeList<BlockDeviceMappingResponse>(map['blockDeviceMappings']!, (value) => BlockDeviceMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootMode: map['bootMode'] == null ? null : (BootModeValuesEnumValueResponse.fromMap((map['bootMode']! as Map).cast<String, dynamic>())).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate']! as String).input(),
-      deprecationTime: map['deprecationTime'] == null ? null : (map['deprecationTime']! as String).input(),
-      deregistrationProtection: map['deregistrationProtection'] == null ? null : (map['deregistrationProtection']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enaSupport: map['enaSupport'] == null ? null : (map['enaSupport']! as bool).input(),
-      hypervisor: map['hypervisor'] == null ? null : (HypervisorTypeEnumValueResponse.fromMap((map['hypervisor']! as Map).cast<String, dynamic>())).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      imageLocation: map['imageLocation'] == null ? null : (map['imageLocation']! as String).input(),
-      imageOwnerAlias: map['imageOwnerAlias'] == null ? null : (map['imageOwnerAlias']! as String).input(),
-      imageType: map['imageType'] == null ? null : (ImageTypeValuesEnumValueResponse.fromMap((map['imageType']! as Map).cast<String, dynamic>())).input(),
-      imdsSupport: map['imdsSupport'] == null ? null : (ImdsSupportValuesEnumValueResponse.fromMap((map['imdsSupport']! as Map).cast<String, dynamic>())).input(),
-      kernelId: map['kernelId'] == null ? null : (map['kernelId']! as String).input(),
-      lastLaunchedTime: map['lastLaunchedTime'] == null ? null : (map['lastLaunchedTime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
-      platform: map['platform'] == null ? null : (PlatformValuesEnumValueResponse.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
-      platformDetails: map['platformDetails'] == null ? null : (map['platformDetails']! as String).input(),
-      productCodes: map['productCodes'] == null ? null : (pulumi.Input.decodeList<ProductCodeResponse>(map['productCodes']!, (value) => ProductCodeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      public: map['public'] == null ? null : (map['public']! as bool).input(),
-      ramdiskId: map['ramdiskId'] == null ? null : (map['ramdiskId']! as String).input(),
-      rootDeviceName: map['rootDeviceName'] == null ? null : (map['rootDeviceName']! as String).input(),
-      rootDeviceType: map['rootDeviceType'] == null ? null : (DeviceTypeEnumValueResponse.fromMap((map['rootDeviceType']! as Map).cast<String, dynamic>())).input(),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId']! as String).input(),
-      sriovNetSupport: map['sriovNetSupport'] == null ? null : (map['sriovNetSupport']! as String).input(),
-      state: map['state'] == null ? null : (ImageStateEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      stateReason: map['stateReason'] == null ? null : (StateReasonResponse.fromMap((map['stateReason']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tpmSupport: map['tpmSupport'] == null ? null : (TpmSupportValuesEnumValueResponse.fromMap((map['tpmSupport']! as Map).cast<String, dynamic>())).input(),
-      usageOperation: map['usageOperation'] == null ? null : (map['usageOperation']! as String).input(),
-      virtualizationType: map['virtualizationType'] == null ? null : (VirtualizationTypeEnumValueResponse.fromMap((map['virtualizationType']! as Map).cast<String, dynamic>())).input(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArchitectureValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blockDeviceMappings: (() {
+        final guardedValue = map['blockDeviceMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BlockDeviceMappingResponse>(
+            guardedValue,
+            (value) => BlockDeviceMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      bootMode: (() {
+        final guardedValue = map['bootMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BootModeValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      creationDate: (() {
+        final guardedValue = map['creationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deprecationTime: (() {
+        final guardedValue = map['deprecationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deregistrationProtection: (() {
+        final guardedValue = map['deregistrationProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enaSupport: (() {
+        final guardedValue = map['enaSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hypervisor: (() {
+        final guardedValue = map['hypervisor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HypervisorTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageLocation: (() {
+        final guardedValue = map['imageLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageOwnerAlias: (() {
+        final guardedValue = map['imageOwnerAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageType: (() {
+        final guardedValue = map['imageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageTypeValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imdsSupport: (() {
+        final guardedValue = map['imdsSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImdsSupportValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kernelId: (() {
+        final guardedValue = map['kernelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastLaunchedTime: (() {
+        final guardedValue = map['lastLaunchedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlatformValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      platformDetails: (() {
+        final guardedValue = map['platformDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productCodes: (() {
+        final guardedValue = map['productCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProductCodeResponse>(
+            guardedValue,
+            (value) => ProductCodeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      public: (() {
+        final guardedValue = map['public'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ramdiskId: (() {
+        final guardedValue = map['ramdiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootDeviceName: (() {
+        final guardedValue = map['rootDeviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootDeviceType: (() {
+        final guardedValue = map['rootDeviceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceInstanceId: (() {
+        final guardedValue = map['sourceInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sriovNetSupport: (() {
+        final guardedValue = map['sriovNetSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageStateEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateReason: (() {
+        final guardedValue = map['stateReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StateReasonResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagResponse>(
+            guardedValue,
+            (value) =>
+                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tpmSupport: (() {
+        final guardedValue = map['tpmSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TpmSupportValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      usageOperation: (() {
+        final guardedValue = map['usageOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualizationType: (() {
+        final guardedValue = map['virtualizationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualizationTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum CredentialType {
   azureKeyVaultSmb("AzureKeyVaultSmb");
 
-  const CredentialType(this.value);
-  final String value;
+  const CredentialType(this.wireValue);
+  final String wireValue;
 
   static CredentialType fromValue(String value) {
     for (final item in CredentialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CredentialType value: $value');
   }
 }
-

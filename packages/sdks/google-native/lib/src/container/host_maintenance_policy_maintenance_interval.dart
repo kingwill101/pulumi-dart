@@ -4,16 +4,17 @@ enum HostMaintenancePolicyMaintenanceInterval {
   asNeeded("AS_NEEDED"),
   periodic("PERIODIC");
 
-  const HostMaintenancePolicyMaintenanceInterval(this.value);
-  final String value;
+  const HostMaintenancePolicyMaintenanceInterval(this.wireValue);
+  final String wireValue;
 
   static HostMaintenancePolicyMaintenanceInterval fromValue(String value) {
     for (final item in HostMaintenancePolicyMaintenanceInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HostMaintenancePolicyMaintenanceInterval value: $value');
+    throw ArgumentError(
+      'Unknown HostMaintenancePolicyMaintenanceInterval value: $value',
+    );
   }
 }
-

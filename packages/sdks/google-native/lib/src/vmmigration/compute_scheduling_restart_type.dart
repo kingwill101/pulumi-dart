@@ -4,16 +4,15 @@ enum ComputeSchedulingRestartType {
   automaticRestart("AUTOMATIC_RESTART"),
   noAutomaticRestart("NO_AUTOMATIC_RESTART");
 
-  const ComputeSchedulingRestartType(this.value);
-  final String value;
+  const ComputeSchedulingRestartType(this.wireValue);
+  final String wireValue;
 
   static ComputeSchedulingRestartType fromValue(String value) {
     for (final item in ComputeSchedulingRestartType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeSchedulingRestartType value: $value');
   }
 }
-

@@ -4,7 +4,6 @@ import 'aiservices_customer_managed_key.dart';
 import 'aiservices_identity.dart';
 import 'aiservices_network_acls.dart';
 import 'aiservices_state.dart';
-import 'aiservices_storage.dart';
 
 /// Manages an AI Services Account.
 ///
@@ -168,7 +167,7 @@ import 'aiservices_storage.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -183,40 +182,56 @@ import 'aiservices_storage.dart';
 class AIServices extends pulumi.CustomResource {
   /// The subdomain name used for token-based authentication. This property is required when `network_acls` is specified. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource.
+  /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource.
   late final pulumi.Output<String?> customSubdomainName;
+
   /// A `customer_managed_key` block as documented below.
   late final pulumi.Output<AIServicesCustomerManagedKey?> customerManagedKey;
+
   /// The endpoint used to connect to the AI Services Account.
   late final pulumi.Output<String> endpoint;
+
   /// List of FQDNs allowed for the AI Services Account.
   late final pulumi.Output<List<String>?> fqdns;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AIServicesIdentity?> identity;
+
   /// Whether local authentication is enabled for the AI Services Account. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the AI Services Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
   late final pulumi.Output<AIServicesNetworkAcls?> networkAcls;
+
   /// Whether outbound network access is restricted for the AI Services Account. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
+
   /// A primary access key which can be used to connect to the AI Services Account.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// Whether public network access is allowed for the AI Services Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The name of the resource group in which the AI Services Account is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary access key which can be used to connect to the AI Services Account.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// Specifies the SKU Name for this AI Services Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`.
   ///
-  /// > **Note:** SKU `DC0` is the commitment tier for AI Services Account containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
+  /// &gt; **Note:** SKU `DC0` is the commitment tier for AI Services Account containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   late final pulumi.Output<String> skuName;
+
   /// A `storage` block as defined below.
-  late final pulumi.Output<List<AIServicesStorage>?> storages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storages;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -229,28 +244,34 @@ class AIServices extends pulumi.CustomResource {
     AIServicesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/aIServices:AIServices',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customSubdomainName = registerOutput<String?>('customSubdomainName');
-    this.customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.identity = registerOutput<AIServicesIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:cognitive/aIServices:AIServices',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    identity = registerOutput<AIServicesIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
-    this.outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.storages = registerOutput<List<AIServicesStorage>?>('storages');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
+    outboundNetworkAccessRestricted = registerOutput<bool?>(
+      'outboundNetworkAccessRestricted',
+    );
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AIServices] resource's state with the given [name] and [id].
@@ -271,27 +292,33 @@ class AIServices extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/aIServices:AIServices',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customSubdomainName = registerOutput<String?>('customSubdomainName');
-    this.customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.identity = registerOutput<AIServicesIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:cognitive/aIServices:AIServices',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    identity = registerOutput<AIServicesIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
-    this.outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.storages = registerOutput<List<AIServicesStorage>?>('storages');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
+    outboundNetworkAccessRestricted = registerOutput<bool?>(
+      'outboundNetworkAccessRestricted',
+    );
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

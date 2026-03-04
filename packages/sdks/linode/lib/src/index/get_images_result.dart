@@ -7,6 +7,7 @@ import 'get_images_image.dart';
 /// Result data returned by getImages.
 class GetImagesResult {
   final List<GetImagesFilter>? filters;
+
   /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
   final String id;
   final List<GetImagesImage> images;
@@ -32,9 +33,19 @@ class GetImagesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetImagesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetImagesFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
-      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(
+        images,
+        (value) => value.toMap(),
+      ),
       'latest': ?latest,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -43,13 +54,36 @@ class GetImagesResult {
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImagesFilter>(map['filters']!, (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetImagesFilter>(
+          guardedValue,
+          (value) =>
+              GetImagesFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      latest: map['latest'] == null ? null : map['latest']! as bool,
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      images: pulumi.Input.decodeList<GetImagesImage>(
+        map['images']!,
+        (value) =>
+            GetImagesImage.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      latest: (() {
+        final guardedValue = map['latest'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

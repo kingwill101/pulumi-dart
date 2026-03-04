@@ -874,7 +874,7 @@ import 'service_level_state.dart';
 /// ## Import
 ///
 /// New Relic Service Levels can be imported using a concatenated string of the format
-/// `<account_id>:<sli_id>:<guid>`, where the `guid` is the entity the SLI relates to.
+/// `&lt;account_id&gt;:&lt;sli_id&gt;:&lt;guid&gt;`, where the `guid` is the entity the SLI relates to.
 ///
 /// Example:
 ///
@@ -884,18 +884,24 @@ import 'service_level_state.dart';
 class ServiceLevel extends pulumi.CustomResource {
   /// The description of the SLI.
   late final pulumi.Output<String?> description;
+
   /// The events that define the NRDB data for the SLI/SLO calculations.
   /// See Events below for details.
   late final pulumi.Output<ServiceLevelEvents> events;
+
   /// The GUID of the entity (e.g, APM Service, Browser application, Workload, etc.) that you want to relate this SLI to. Note that changing the GUID will force a new resource.
   late final pulumi.Output<String> guid;
+
   /// A short name for the SLI that will help anyone understand what it is about.
   late final pulumi.Output<String> name;
+
   /// The objective of the SLI, only one can be defined.
   /// See Objective below for details.
   late final pulumi.Output<ServiceLevelObjective> objective;
+
   /// The unique entity identifier of the Service Level Indicator in New Relic.
   late final pulumi.Output<String> sliGuid;
+
   /// The unique entity identifier of the Service Level Indicator.
   late final pulumi.Output<String> sliId;
 
@@ -908,18 +914,18 @@ class ServiceLevel extends pulumi.CustomResource {
     ServiceLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/serviceLevel:ServiceLevel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.events = registerOutput<ServiceLevelEvents>('events');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/serviceLevel:ServiceLevel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    events = registerOutput<ServiceLevelEvents>('events');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.objective = registerOutput<ServiceLevelObjective>('objective');
-    this.sliGuid = registerOutput<String>('sliGuid');
-    this.sliId = registerOutput<String>('sliId');
+    objective = registerOutput<ServiceLevelObjective>('objective');
+    sliGuid = registerOutput<String>('sliGuid');
+    sliId = registerOutput<String>('sliId');
   }
 
   /// Gets an existing [ServiceLevel] resource's state with the given [name] and [id].
@@ -940,17 +946,17 @@ class ServiceLevel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/serviceLevel:ServiceLevel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.events = registerOutput<ServiceLevelEvents>('events');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/serviceLevel:ServiceLevel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    events = registerOutput<ServiceLevelEvents>('events');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.objective = registerOutput<ServiceLevelObjective>('objective');
-    this.sliGuid = registerOutput<String>('sliGuid');
-    this.sliId = registerOutput<String>('sliId');
+    objective = registerOutput<ServiceLevelObjective>('objective');
+    sliGuid = registerOutput<String>('sliGuid');
+    sliId = registerOutput<String>('sliId');
   }
 }

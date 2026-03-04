@@ -10,20 +10,33 @@ class ListCustomApiWsdlInterfacesResult {
 
   /// Creates a new [ListCustomApiWsdlInterfacesResult].
   /// [value] Collection of WSDL interfaces
-  ListCustomApiWsdlInterfacesResult({
-    this.value,
-  });
+  ListCustomApiWsdlInterfacesResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<WsdlServiceResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          WsdlServiceResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListCustomApiWsdlInterfacesResult.fromMap(Map<String, dynamic> map) {
     return ListCustomApiWsdlInterfacesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<WsdlServiceResponse>(map['value']!, (value) => WsdlServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<WsdlServiceResponse>(
+          guardedValue,
+          (value) => WsdlServiceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

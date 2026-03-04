@@ -7,16 +7,15 @@ enum OutcomeSummary {
   skipped("skipped"),
   flaky("flaky");
 
-  const OutcomeSummary(this.value);
-  final String value;
+  const OutcomeSummary(this.wireValue);
+  final String wireValue;
 
   static OutcomeSummary fromValue(String value) {
     for (final item in OutcomeSummary.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutcomeSummary value: $value');
   }
 }
-

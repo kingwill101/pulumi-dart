@@ -10,16 +10,22 @@ import 'account_project_identity.dart';
 class AccountProjectArgs {
   /// The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> cognitiveAccountId;
+
   /// A description of the Cognitive Account Project.
   final pulumi.Input<String>? description;
+
   /// The display name of the Cognitive Account Project.
   final pulumi.Input<String>? displayName;
+
   /// An `identity` block as defined below.
   final pulumi.Input<AccountProjectIdentity> identity;
+
   /// The Azure Region where the Cognitive Account Project should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the Cognitive Account Project. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,7 +52,11 @@ class AccountProjectArgs {
       'cognitiveAccountId': cognitiveAccountId,
       'description': ?description,
       'displayName': ?displayName,
-      'identity': pulumi.Input.mapInputValue<AccountProjectIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          pulumi.Input.mapInputValue<
+            AccountProjectIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'tags': ?tags,
@@ -55,14 +65,41 @@ class AccountProjectArgs {
 
   factory AccountProjectArgs.fromMap(Map<String, dynamic> map) {
     return AccountProjectArgs(
-      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identity: (AccountProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      cognitiveAccountId: pulumi.Input.fromValue(
+        map['cognitiveAccountId'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: pulumi.Input.fromValue(
+        AccountProjectIdentity.fromMap(
+          (map['identity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

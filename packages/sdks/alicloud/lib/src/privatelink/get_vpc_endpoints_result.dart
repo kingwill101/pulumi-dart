@@ -8,23 +8,31 @@ class GetVpcEndpointsResult {
   /// The status of Connection.
   final String? connectionStatus;
   final bool? enableDetails;
+
   /// A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
   final List<GetVpcEndpointsEndpoint> endpoints;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Vpc Endpoint names.
   final List<String> names;
   final String? outputFile;
+
   /// The name of the terminal node service associated with the terminal node.
   final String? serviceName;
+
   /// The status of Vpc Endpoint.
   final String? status;
+
   /// Tag tags of Vpc Endpoint.
   final Map<String, String>? tags;
+
   /// The name of Vpc Endpoint.
   final String? vpcEndpointName;
+
   /// The private network to which the terminal node belongs.
   final String? vpcId;
 
@@ -62,7 +70,11 @@ class GetVpcEndpointsResult {
     return <String, dynamic>{
       'connectionStatus': ?connectionStatus,
       'enableDetails': ?enableDetails,
-      'endpoints': pulumi.Input.encodeList<GetVpcEndpointsEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+      'endpoints':
+          pulumi.Input.encodeList<
+            GetVpcEndpointsEndpoint,
+            Map<String, dynamic>
+          >(endpoints, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -78,20 +90,60 @@ class GetVpcEndpointsResult {
 
   factory GetVpcEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointsResult(
-      connectionStatus: map['connectionStatus'] == null ? null : map['connectionStatus']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      endpoints: pulumi.Input.decodeList<GetVpcEndpointsEndpoint>(map['endpoints'], (value) => GetVpcEndpointsEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      connectionStatus: (() {
+        final guardedValue = map['connectionStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      endpoints: pulumi.Input.decodeList<GetVpcEndpointsEndpoint>(
+        map['endpoints']!,
+        (value) => GetVpcEndpointsEndpoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      vpcEndpointName: map['vpcEndpointName'] == null ? null : map['vpcEndpointName']! as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      vpcEndpointName: (() {
+        final guardedValue = map['vpcEndpointName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

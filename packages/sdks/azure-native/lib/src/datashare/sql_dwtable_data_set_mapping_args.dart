@@ -9,23 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDWTableDataSetMappingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
+
   /// The name of the data set mapping to be created.
   final pulumi.Input<String>? dataSetMappingName;
+
   /// DataWarehouse name of the source data set
   final pulumi.Input<String> dataWarehouseName;
+
   /// Kind of data set mapping.
   /// Expected value is 'SqlDWTable'.
   final pulumi.Input<String> kind;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schema of the table. Default value is dbo.
   final pulumi.Input<String> schemaName;
+
   /// The name of the share subscription which will hold the data set sink.
   final pulumi.Input<String> shareSubscriptionName;
+
   /// Resource id of SQL server
   final pulumi.Input<String> sqlServerResourceId;
+
   /// SQL DW table name.
   final pulumi.Input<String> tableName;
 
@@ -70,17 +79,28 @@ class SqlDWTableDataSetMappingArgs {
 
   factory SqlDWTableDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return SqlDWTableDataSetMappingArgs(
-      accountName: (map['accountName'] as String).input(),
-      dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
-      dataWarehouseName: (map['dataWarehouseName'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
-      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
-      sqlServerResourceId: (map['sqlServerResourceId'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
+      dataSetMappingName: (() {
+        final guardedValue = map['dataSetMappingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataWarehouseName: pulumi.Input.fromValue(
+        map['dataWarehouseName'] as String,
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
+      shareSubscriptionName: pulumi.Input.fromValue(
+        map['shareSubscriptionName'] as String,
+      ),
+      sqlServerResourceId: pulumi.Input.fromValue(
+        map['sqlServerResourceId'] as String,
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

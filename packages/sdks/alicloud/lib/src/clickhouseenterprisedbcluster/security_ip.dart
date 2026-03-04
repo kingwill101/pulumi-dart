@@ -8,7 +8,7 @@ import 'security_ip_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster Security I P and how to use it, see [What is Enterprise Db Cluster Security I P](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/ModifySecurityIPList).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -311,8 +311,10 @@ import 'security_ip_state.dart';
 class SecurityIp extends pulumi.CustomResource {
   /// The cluster ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The whitelist name.
   late final pulumi.Output<String> groupName;
+
   /// The IP address list under the whitelist group.
   late final pulumi.Output<String> securityIpList;
 
@@ -325,14 +327,14 @@ class SecurityIp extends pulumi.CustomResource {
     SecurityIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.groupName = registerOutput<String>('groupName');
-    this.securityIpList = registerOutput<String>('securityIpList');
+         'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    groupName = registerOutput<String>('groupName');
+    securityIpList = registerOutput<String>('securityIpList');
   }
 
   /// Gets an existing [SecurityIp] resource's state with the given [name] and [id].
@@ -353,13 +355,13 @@ class SecurityIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.groupName = registerOutput<String>('groupName');
-    this.securityIpList = registerOutput<String>('securityIpList');
+         'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    groupName = registerOutput<String>('groupName');
+    securityIpList = registerOutput<String>('securityIpList');
   }
 }

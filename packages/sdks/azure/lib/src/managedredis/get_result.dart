@@ -9,25 +9,35 @@ import 'get_identity.dart';
 class GetResult {
   /// A `customer_managed_key` block as defined below.
   final List<GetCustomerManagedKey> customerManagedKeys;
+
   /// A `default_database` block as defined below.
   final List<GetDefaultDatabase> defaultDatabases;
+
   /// Whether high availability is enabled for the Managed Redis instance.
   final bool highAvailabilityEnabled;
+
   /// The DNS hostname of the Managed Redis instance.
   final String hostname;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as defined below.
   final List<GetIdentity> identities;
+
   /// The Azure Region where the Managed Redis instance exists.
   final String location;
+
   /// The name of the Redis module.
   final String name;
+
   /// The public network access setting for the Managed Redis instance.
   final String publicNetworkAccess;
   final String resourceGroupName;
+
   /// The SKU name of the Managed Redis instance.
   final String skuName;
+
   /// A mapping of tags assigned to the Managed Redis instance.
   final Map<String, String> tags;
 
@@ -61,12 +71,23 @@ class GetResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedKeys': pulumi.Input.encodeList<GetCustomerManagedKey, Map<String, dynamic>>(customerManagedKeys, (value) => value.toMap()),
-      'defaultDatabases': pulumi.Input.encodeList<GetDefaultDatabase, Map<String, dynamic>>(defaultDatabases, (value) => value.toMap()),
+      'customerManagedKeys':
+          pulumi.Input.encodeList<GetCustomerManagedKey, Map<String, dynamic>>(
+            customerManagedKeys,
+            (value) => value.toMap(),
+          ),
+      'defaultDatabases':
+          pulumi.Input.encodeList<GetDefaultDatabase, Map<String, dynamic>>(
+            defaultDatabases,
+            (value) => value.toMap(),
+          ),
       'highAvailabilityEnabled': highAvailabilityEnabled,
       'hostname': hostname,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(
+        identities,
+        (value) => value.toMap(),
+      ),
       'location': location,
       'name': name,
       'publicNetworkAccess': publicNetworkAccess,
@@ -78,12 +99,24 @@ class GetResult {
 
   factory GetResult.fromMap(Map<String, dynamic> map) {
     return GetResult(
-      customerManagedKeys: pulumi.Input.decodeList<GetCustomerManagedKey>(map['customerManagedKeys'], (value) => GetCustomerManagedKey.fromMap((value as Map).cast<String, dynamic>())),
-      defaultDatabases: pulumi.Input.decodeList<GetDefaultDatabase>(map['defaultDatabases'], (value) => GetDefaultDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      customerManagedKeys: pulumi.Input.decodeList<GetCustomerManagedKey>(
+        map['customerManagedKeys']!,
+        (value) => GetCustomerManagedKey.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      defaultDatabases: pulumi.Input.decodeList<GetDefaultDatabase>(
+        map['defaultDatabases']!,
+        (value) =>
+            GetDefaultDatabase.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       highAvailabilityEnabled: map['highAvailabilityEnabled'] as bool,
       hostname: map['hostname'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetIdentity>(map['identities'], (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetIdentity>(
+        map['identities']!,
+        (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       publicNetworkAccess: map['publicNetworkAccess'] as String,
@@ -93,4 +126,3 @@ class GetResult {
     );
   }
 }
-

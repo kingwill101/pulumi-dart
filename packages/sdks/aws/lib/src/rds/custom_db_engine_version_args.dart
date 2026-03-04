@@ -9,28 +9,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDbEngineVersionArgs {
   /// The name of the Amazon S3 bucket that contains the database installation files.
   final pulumi.Input<String>? databaseInstallationFilesS3BucketName;
+
   /// The prefix for the Amazon S3 bucket that contains the database installation files.
   final pulumi.Input<String>? databaseInstallationFilesS3Prefix;
+
   /// The description of the CEV.
   final pulumi.Input<String>? description;
+
   /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
   final pulumi.Input<String> engine;
+
   /// The version of the database engine.
   final pulumi.Input<String> engineVersion;
+
   /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
   final pulumi.Input<String>? filename;
+
   /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
   final pulumi.Input<String>? kmsKeyId;
+
   /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
   final pulumi.Input<String>? manifest;
+
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
   final pulumi.Input<String>? manifestHash;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   final pulumi.Input<String>? sourceImageId;
+
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,7 +78,8 @@ class CustomDbEngineVersionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseInstallationFilesS3BucketName': ?databaseInstallationFilesS3BucketName,
+      'databaseInstallationFilesS3BucketName':
+          ?databaseInstallationFilesS3BucketName,
       'databaseInstallationFilesS3Prefix': ?databaseInstallationFilesS3Prefix,
       'description': ?description,
       'engine': engine,
@@ -84,20 +97,65 @@ class CustomDbEngineVersionArgs {
 
   factory CustomDbEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return CustomDbEngineVersionArgs(
-      databaseInstallationFilesS3BucketName: map['databaseInstallationFilesS3BucketName'] == null ? null : ((map['databaseInstallationFilesS3BucketName'] as String).input()).input(),
-      databaseInstallationFilesS3Prefix: map['databaseInstallationFilesS3Prefix'] == null ? null : ((map['databaseInstallationFilesS3Prefix'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      filename: map['filename'] == null ? null : ((map['filename'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      manifest: map['manifest'] == null ? null : ((map['manifest'] as String).input()).input(),
-      manifestHash: map['manifestHash'] == null ? null : ((map['manifestHash'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : ((map['sourceImageId'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      databaseInstallationFilesS3BucketName: (() {
+        final guardedValue = map['databaseInstallationFilesS3BucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseInstallationFilesS3Prefix: (() {
+        final guardedValue = map['databaseInstallationFilesS3Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      filename: (() {
+        final guardedValue = map['filename'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manifest: (() {
+        final guardedValue = map['manifest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manifestHash: (() {
+        final guardedValue = map['manifestHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceImageId: (() {
+        final guardedValue = map['sourceImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

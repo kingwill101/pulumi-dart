@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_pricing_args.dart';
-import 'subscription_pricing_extension.dart';
 import 'subscription_pricing_state.dart';
 
 /// Manages the Pricing Tier for Azure Security Center in the current subscription.
 ///
-/// > **Note:** Deletion of this resource will reset the pricing tier to `Free`
+/// &gt; **Note:** Deletion of this resource will reset the pricing tier to `Free`
 ///
 /// ## Example Usage
 ///
@@ -299,7 +298,7 @@ import 'subscription_pricing_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Security` - 2023-01-01
@@ -313,11 +312,14 @@ import 'subscription_pricing_state.dart';
 /// ```
 class SubscriptionPricing extends pulumi.CustomResource {
   /// One or more `extension` blocks as defined below.
-  late final pulumi.Output<List<SubscriptionPricingExtension>?> extensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+
   /// The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
   late final pulumi.Output<String?> resourceType;
+
   /// Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> subplan;
+
   /// The pricing tier to use. Possible values are `Free` and `Standard`.
   late final pulumi.Output<String> tier;
 
@@ -330,15 +332,15 @@ class SubscriptionPricing extends pulumi.CustomResource {
     SubscriptionPricingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.extensions = registerOutput<List<SubscriptionPricingExtension>?>('extensions');
-    this.resourceType = registerOutput<String?>('resourceType');
-    this.subplan = registerOutput<String?>('subplan');
-    this.tier = registerOutput<String>('tier');
+         'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    resourceType = registerOutput<String?>('resourceType');
+    subplan = registerOutput<String?>('subplan');
+    tier = registerOutput<String>('tier');
   }
 
   /// Gets an existing [SubscriptionPricing] resource's state with the given [name] and [id].
@@ -359,14 +361,14 @@ class SubscriptionPricing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.extensions = registerOutput<List<SubscriptionPricingExtension>?>('extensions');
-    this.resourceType = registerOutput<String?>('resourceType');
-    this.subplan = registerOutput<String?>('subplan');
-    this.tier = registerOutput<String>('tier');
+         'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    resourceType = registerOutput<String?>('resourceType');
+    subplan = registerOutput<String?>('subplan');
+    tier = registerOutput<String>('tier');
   }
 }

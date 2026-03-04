@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserArgs {
   /// The employee identifier assigned to the user by the organisation.
   final pulumi.Input<String>? employeeId;
+
   /// The SMTP address for the user.
   final pulumi.Input<String>? mail;
+
   /// The email alias of the user.
   final pulumi.Input<String>? mailNickname;
+
   /// The object ID of the user.
   final pulumi.Input<String>? objectId;
+
   /// The user principal name (UPN) of the user.
   ///
-  /// > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+  /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
   final pulumi.Input<String>? userPrincipalName;
 
   /// Creates a new [GetUserArgs].
@@ -46,12 +50,31 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      employeeId: map['employeeId'] == null ? null : (map['employeeId']! as String).input(),
-      mail: map['mail'] == null ? null : (map['mail']! as String).input(),
-      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
+      employeeId: (() {
+        final guardedValue = map['employeeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mail: (() {
+        final guardedValue = map['mail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mailNickname: (() {
+        final guardedValue = map['mailNickname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPrincipalName: (() {
+        final guardedValue = map['userPrincipalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

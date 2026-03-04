@@ -8,8 +8,10 @@ class AkriConnectorsServiceAccountAuthentication {
   /// AkriConnectorsMqttAuthenticationMethod properties.
   /// Expected value is 'ServiceAccountToken'.
   final pulumi.Input<String> method;
+
   /// The service account token for the MQTT connection.
-  final pulumi.Input<AkriConnectorsServiceAccountTokenSettings> serviceAccountTokenSettings;
+  final pulumi.Input<AkriConnectorsServiceAccountTokenSettings>
+  serviceAccountTokenSettings;
 
   /// Creates a new [AkriConnectorsServiceAccountAuthentication].
   /// [method] AkriConnectorsMqttAuthenticationMethod properties.
@@ -22,15 +24,24 @@ class AkriConnectorsServiceAccountAuthentication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'serviceAccountTokenSettings': pulumi.Input.mapInputValue<AkriConnectorsServiceAccountTokenSettings, Map<String, dynamic>>(serviceAccountTokenSettings, (value) => value.toMap()),
+      'serviceAccountTokenSettings':
+          pulumi.Input.mapInputValue<
+            AkriConnectorsServiceAccountTokenSettings,
+            Map<String, dynamic>
+          >(serviceAccountTokenSettings, (value) => value.toMap()),
     };
   }
 
-  factory AkriConnectorsServiceAccountAuthentication.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorsServiceAccountAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorsServiceAccountAuthentication(
-      method: (map['method'] as String).input(),
-      serviceAccountTokenSettings: (AkriConnectorsServiceAccountTokenSettings.fromMap((map['serviceAccountTokenSettings'] as Map).cast<String, dynamic>())).input(),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      serviceAccountTokenSettings: pulumi.Input.fromValue(
+        AkriConnectorsServiceAccountTokenSettings.fromMap(
+          (map['serviceAccountTokenSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

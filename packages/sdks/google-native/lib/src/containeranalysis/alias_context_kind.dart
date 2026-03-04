@@ -5,16 +5,15 @@ enum AliasContextKind {
   movable("MOVABLE"),
   other("OTHER");
 
-  const AliasContextKind(this.value);
-  final String value;
+  const AliasContextKind(this.wireValue);
+  final String wireValue;
 
   static AliasContextKind fromValue(String value) {
     for (final item in AliasContextKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AliasContextKind value: $value');
   }
 }
-

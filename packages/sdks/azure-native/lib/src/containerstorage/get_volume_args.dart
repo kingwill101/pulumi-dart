@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeArgs {
   /// Pool Object
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Volume Resource
   final pulumi.Input<String> volumeName;
 
@@ -34,10 +36,11 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class BodyDiagnosticSettingsResponse {
 
   /// Creates a new [BodyDiagnosticSettingsResponse].
   /// [bytes] Number of request body bytes to log.
-  BodyDiagnosticSettingsResponse({
-    this.bytes,
-  });
+  BodyDiagnosticSettingsResponse({this.bytes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bytes': ?bytes,
-    };
+    return <String, dynamic>{'bytes': ?bytes};
   }
 
   factory BodyDiagnosticSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BodyDiagnosticSettingsResponse(
-      bytes: map['bytes'] == null ? null : (map['bytes']! as int).input(),
+      bytes: (() {
+        final guardedValue = map['bytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

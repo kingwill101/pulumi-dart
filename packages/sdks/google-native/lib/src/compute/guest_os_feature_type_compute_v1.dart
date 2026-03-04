@@ -12,16 +12,15 @@ enum GuestOsFeatureTypeComputeV1 {
   virtioScsiMultiqueue("VIRTIO_SCSI_MULTIQUEUE"),
   windows("WINDOWS");
 
-  const GuestOsFeatureTypeComputeV1(this.value);
-  final String value;
+  const GuestOsFeatureTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static GuestOsFeatureTypeComputeV1 fromValue(String value) {
     for (final item in GuestOsFeatureTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GuestOsFeatureTypeComputeV1 value: $value');
   }
 }
-

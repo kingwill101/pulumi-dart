@@ -51,16 +51,51 @@ class PreReleaseAccessRequestSpec {
 
   factory PreReleaseAccessRequestSpec.fromMap(Map<String, dynamic> map) {
     return PreReleaseAccessRequestSpec(
-      city: map['city'] == null ? null : (map['city']! as String).input(),
-      companyWebsite: map['companyWebsite'] == null ? null : (map['companyWebsite']! as String).input(),
-      countryAndRegion: map['countryAndRegion'] == null ? null : (map['countryAndRegion']! as String).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      engagements: map['engagements'] == null ? null : ((map['engagements']! as List).cast<String>()).input(),
-      organizationName: map['organizationName'] == null ? null : (map['organizationName']! as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
-      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress']! as String).input(),
-      zipCode: map['zipCode'] == null ? null : (map['zipCode']! as String).input(),
+      city: (() {
+        final guardedValue = map['city'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      companyWebsite: (() {
+        final guardedValue = map['companyWebsite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryAndRegion: (() {
+        final guardedValue = map['countryAndRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engagements: (() {
+        final guardedValue = map['engagements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      organizationName: (() {
+        final guardedValue = map['organizationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stateOrProvince: (() {
+        final guardedValue = map['stateOrProvince'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streetAddress: (() {
+        final guardedValue = map['streetAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zipCode: (() {
+        final guardedValue = map['zipCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

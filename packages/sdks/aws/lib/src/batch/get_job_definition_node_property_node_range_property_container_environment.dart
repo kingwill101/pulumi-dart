@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment {
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
+
   /// The quantity of the specified resource to reserve for the container.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

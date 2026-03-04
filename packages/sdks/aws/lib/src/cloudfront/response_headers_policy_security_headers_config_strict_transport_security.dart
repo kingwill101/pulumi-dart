@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   /// A number that CloudFront uses as the value for the `max-age` directive in the `Strict-Transport-Security` HTTP response header.
   final pulumi.Input<int> accessControlMaxAgeSec;
+
   /// Whether CloudFront includes the `includeSubDomains` directive in the `Strict-Transport-Security` HTTP response header.
   final pulumi.Input<bool>? includeSubdomains;
+
   /// Whether CloudFront overrides the `Strict-Transport-Security` HTTP response header received from the origin with the one specified in this response headers policy.
   final pulumi.Input<bool> override;
+
   /// Whether CloudFront includes the `preload` directive in the `Strict-Transport-Security` HTTP response header.
   final pulumi.Input<bool>? preload;
 
@@ -33,13 +36,24 @@ class ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
     };
   }
 
-  factory ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
-      accessControlMaxAgeSec: (map['accessControlMaxAgeSec'] as int).input(),
-      includeSubdomains: map['includeSubdomains'] == null ? null : ((map['includeSubdomains'] as bool).input()).input(),
-      override: (map['override'] as bool).input(),
-      preload: map['preload'] == null ? null : ((map['preload'] as bool).input()).input(),
+      accessControlMaxAgeSec: pulumi.Input.fromValue(
+        map['accessControlMaxAgeSec'] as int,
+      ),
+      includeSubdomains: (() {
+        final guardedValue = map['includeSubdomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      override: pulumi.Input.fromValue(map['override'] as bool),
+      preload: (() {
+        final guardedValue = map['preload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

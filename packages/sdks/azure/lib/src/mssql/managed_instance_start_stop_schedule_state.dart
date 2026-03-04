@@ -7,14 +7,19 @@ import 'managed_instance_start_stop_schedule_schedule.dart';
 class ManagedInstanceStartStopScheduleState {
   /// Specifies the description of the schedule.
   final pulumi.Input<String>? description;
+
   /// Specifies the ID of the Managed Instance. Changing this forces a new Sql Start Stop Managed Instance Schedule to be created.
   final pulumi.Input<String>? managedInstanceId;
+
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
   final pulumi.Input<String>? nextExecutionTime;
+
   /// Next action to be executed (Start or Stop).
   final pulumi.Input<String>? nextRunAction;
+
   /// A `schedule` block as defined below.
   final pulumi.Input<List<ManagedInstanceStartStopScheduleSchedule>>? schedules;
+
   /// Specifies the time zone of the schedule. Defaults to `UTC`.
   final pulumi.Input<String>? timezoneId;
 
@@ -40,20 +45,63 @@ class ManagedInstanceStartStopScheduleState {
       'managedInstanceId': ?managedInstanceId,
       'nextExecutionTime': ?nextExecutionTime,
       'nextRunAction': ?nextRunAction,
-      'schedules': ?pulumi.Input.mapOptionalInputValue<List<ManagedInstanceStartStopScheduleSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<ManagedInstanceStartStopScheduleSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schedules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManagedInstanceStartStopScheduleSchedule>,
+            List<Map<String, dynamic>>
+          >(
+            schedules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManagedInstanceStartStopScheduleSchedule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'timezoneId': ?timezoneId,
     };
   }
 
-  factory ManagedInstanceStartStopScheduleState.fromMap(Map<String, dynamic> map) {
+  factory ManagedInstanceStartStopScheduleState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedInstanceStartStopScheduleState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId']! as String).input(),
-      nextExecutionTime: map['nextExecutionTime'] == null ? null : (map['nextExecutionTime']! as String).input(),
-      nextRunAction: map['nextRunAction'] == null ? null : (map['nextRunAction']! as String).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(map['schedules']!, (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timezoneId: map['timezoneId'] == null ? null : (map['timezoneId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedInstanceId: (() {
+        final guardedValue = map['managedInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextExecutionTime: (() {
+        final guardedValue = map['nextExecutionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextRunAction: (() {
+        final guardedValue = map['nextRunAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schedules: (() {
+        final guardedValue = map['schedules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(
+            guardedValue,
+            (value) => ManagedInstanceStartStopScheduleSchedule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      timezoneId: (() {
+        final guardedValue = map['timezoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

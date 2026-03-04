@@ -7,11 +7,22 @@ import 'channel_input_attachment_automatic_input_failover_settings_failover_cond
 
 class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings {
   /// MediaLive will perform a failover if the specified audio selector is silent for the specified period. See Audio Silence Failover Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings>? audioSilenceSettings;
+  final pulumi.Input<
+    ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings
+  >?
+  audioSilenceSettings;
+
   /// MediaLive will perform a failover if content is not detected in this input for the specified period. See Input Loss Failover Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings>? inputLossSettings;
+  final pulumi.Input<
+    ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings
+  >?
+  inputLossSettings;
+
   /// MediaLive will perform a failover if content is considered black for the specified period. See Video Black Failover Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings>? videoBlackSettings;
+  final pulumi.Input<
+    ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings
+  >?
+  videoBlackSettings;
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings].
   /// [audioSilenceSettings] MediaLive will perform a failover if the specified audio selector is silent for the specified period. See Audio Silence Failover Settings for more details.
@@ -25,18 +36,55 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioSilenceSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings, Map<String, dynamic>>(audioSilenceSettings, (value) => value.toMap()),
-      'inputLossSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings, Map<String, dynamic>>(inputLossSettings, (value) => value.toMap()),
-      'videoBlackSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings, Map<String, dynamic>>(videoBlackSettings, (value) => value.toMap()),
+      'audioSilenceSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings,
+            Map<String, dynamic>
+          >(audioSilenceSettings, (value) => value.toMap()),
+      'inputLossSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings,
+            Map<String, dynamic>
+          >(inputLossSettings, (value) => value.toMap()),
+      'videoBlackSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings,
+            Map<String, dynamic>
+          >(videoBlackSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings(
-      audioSilenceSettings: map['audioSilenceSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap((map['audioSilenceSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      inputLossSettings: map['inputLossSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap((map['inputLossSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      videoBlackSettings: map['videoBlackSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap((map['videoBlackSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      audioSilenceSettings: (() {
+        final guardedValue = map['audioSilenceSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inputLossSettings: (() {
+        final guardedValue = map['inputLossSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      videoBlackSettings: (() {
+        final guardedValue = map['videoBlackSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

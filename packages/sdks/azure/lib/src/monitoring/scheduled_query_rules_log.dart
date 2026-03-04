@@ -505,7 +505,7 @@ import 'scheduled_query_rules_log_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2018-04-16
@@ -520,20 +520,28 @@ import 'scheduled_query_rules_log_state.dart';
 class ScheduledQueryRulesLog extends pulumi.CustomResource {
   /// A list of IDs of Resources referred into query.
   late final pulumi.Output<List<String>?> authorizedResourceIds;
+
   /// A `criteria` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesLogCriteria> criteria;
+
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataSourceId;
+
   /// The description of the scheduled query rule.
   late final pulumi.Output<String?> description;
+
   /// Whether this scheduled query rule is enabled. Default is `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Specifies the Azure Region where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the scheduled query rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -546,20 +554,22 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     ScheduledQueryRulesLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
-    this.criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizedResourceIds = registerOutput<List<String>?>(
+      'authorizedResourceIds',
+    );
+    criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ScheduledQueryRulesLog] resource's state with the given [name] and [id].
@@ -580,19 +590,21 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
-    this.criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizedResourceIds = registerOutput<List<String>?>(
+      'authorizedResourceIds',
+    );
+    criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

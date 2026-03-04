@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOpenIdConnectProvider.
 class GetOpenIdConnectProviderResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Client ID of developer console which is the client application.
   final String clientId;
+
   /// Client Secret of developer console which is the client application.
   final String? clientSecret;
+
   /// User-friendly description of OpenID Connect Provider.
   final String? description;
+
   /// User-friendly OpenID Connect Provider name.
   final String displayName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Metadata endpoint URI.
   final String metadataEndpoint;
+
   /// The name of the resource
   final String name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
   final bool? useInApiDocumentation;
+
   /// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
   final bool? useInTestConsole;
 
@@ -72,16 +81,31 @@ class GetOpenIdConnectProviderResult {
     return GetOpenIdConnectProviderResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       metadataEndpoint: map['metadataEndpoint'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : map['useInApiDocumentation']! as bool,
-      useInTestConsole: map['useInTestConsole'] == null ? null : map['useInTestConsole']! as bool,
+      useInApiDocumentation: (() {
+        final guardedValue = map['useInApiDocumentation'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      useInTestConsole: (() {
+        final guardedValue = map['useInTestConsole'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

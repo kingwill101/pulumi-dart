@@ -9,30 +9,43 @@ import 'subnet_response.dart';
 class GetVirtualNetworkResult {
   /// The allowed subnets of the virtual network.
   final List<SubnetResponse>? allowedSubnets;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The creation date of the virtual network.
   final String createdDate;
+
   /// The description of the virtual network.
   final String? description;
+
   /// The Microsoft.Network resource identifier of the virtual network.
   final String? externalProviderResourceId;
+
   /// The external subnet properties.
   final List<ExternalSubnetResponse> externalSubnets;
+
   /// The identifier of the resource.
   final String id;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The provisioning status of the resource.
   final String provisioningState;
+
   /// The subnet overrides of the virtual network.
   final List<SubnetOverrideResponse>? subnetOverrides;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -70,17 +83,35 @@ class GetVirtualNetworkResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedSubnets': ?allowedSubnets == null ? null : pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(allowedSubnets!, (value) => value.toMap()),
+      'allowedSubnets': ?(() {
+        final guardedValue = allowedSubnets;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'azureApiVersion': azureApiVersion,
       'createdDate': createdDate,
       'description': ?description,
       'externalProviderResourceId': ?externalProviderResourceId,
-      'externalSubnets': pulumi.Input.encodeList<ExternalSubnetResponse, Map<String, dynamic>>(externalSubnets, (value) => value.toMap()),
+      'externalSubnets':
+          pulumi.Input.encodeList<ExternalSubnetResponse, Map<String, dynamic>>(
+            externalSubnets,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
-      'subnetOverrides': ?subnetOverrides == null ? null : pulumi.Input.encodeList<SubnetOverrideResponse, Map<String, dynamic>>(subnetOverrides!, (value) => value.toMap()),
+      'subnetOverrides': ?(() {
+        final guardedValue = subnetOverrides;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SubnetOverrideResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -89,21 +120,58 @@ class GetVirtualNetworkResult {
 
   factory GetVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkResult(
-      allowedSubnets: map['allowedSubnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['allowedSubnets']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowedSubnets: (() {
+        final guardedValue = map['allowedSubnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SubnetResponse>(
+          guardedValue,
+          (value) =>
+              SubnetResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      externalProviderResourceId: map['externalProviderResourceId'] == null ? null : map['externalProviderResourceId']! as String,
-      externalSubnets: pulumi.Input.decodeList<ExternalSubnetResponse>(map['externalSubnets'], (value) => ExternalSubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      externalProviderResourceId: (() {
+        final guardedValue = map['externalProviderResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      externalSubnets: pulumi.Input.decodeList<ExternalSubnetResponse>(
+        map['externalSubnets']!,
+        (value) => ExternalSubnetResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      subnetOverrides: map['subnetOverrides'] == null ? null : pulumi.Input.decodeList<SubnetOverrideResponse>(map['subnetOverrides']!, (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      subnetOverrides: (() {
+        final guardedValue = map['subnetOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SubnetOverrideResponse>(
+          guardedValue,
+          (value) => SubnetOverrideResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

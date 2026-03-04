@@ -1,5 +1,3 @@
-library module_iotfirmwaredefense;
-
 export 'iotfirmwaredefense/firmware.dart';
 export 'iotfirmwaredefense/firmware_args.dart';
 export 'iotfirmwaredefense/functions.dart';

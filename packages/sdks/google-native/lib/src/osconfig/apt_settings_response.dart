@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AptSettingsResponse {
   /// List of packages to exclude from update. These packages will be excluded
   final pulumi.Input<List<String>> excludes;
+
   /// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
   final pulumi.Input<List<String>> exclusivePackages;
+
   /// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
   final pulumi.Input<String> type;
 
@@ -31,10 +33,13 @@ class AptSettingsResponse {
 
   factory AptSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AptSettingsResponse(
-      excludes: ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePackages: ((map['exclusivePackages'] as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
+      excludes: pulumi.Input.fromValue(
+        (map['excludes'] as List).cast<String>(),
+      ),
+      exclusivePackages: pulumi.Input.fromValue(
+        (map['exclusivePackages'] as List).cast<String>(),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

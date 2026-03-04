@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProactiveDetectionConfigurationArgs {
   /// The ProactiveDetection configuration ID. This is unique within a Application Insights component.
   final pulumi.Input<String> configurationId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
 
@@ -32,12 +34,15 @@ class GetProactiveDetectionConfigurationArgs {
     };
   }
 
-  factory GetProactiveDetectionConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProactiveDetectionConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProactiveDetectionConfigurationArgs(
-      configurationId: (map['configurationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      configurationId: pulumi.Input.fromValue(map['configurationId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

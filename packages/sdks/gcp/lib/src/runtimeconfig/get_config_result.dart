@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConfig.
 class GetConfigResult {
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -35,8 +35,11 @@ class GetConfigResult {
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

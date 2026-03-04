@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationValidationDatabaseSummaryResultResponse {
   /// Validation end time
   final pulumi.Input<String> endedOn;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Migration Identifier
   final pulumi.Input<String> migrationId;
+
   /// Name of the source database
   final pulumi.Input<String> sourceDatabaseName;
+
   /// Validation start time
   final pulumi.Input<String> startedOn;
+
   /// Current status of validation at the database level
   final pulumi.Input<String> status;
+
   /// Name of the target database
   final pulumi.Input<String> targetDatabaseName;
 
@@ -49,16 +55,21 @@ class MigrationValidationDatabaseSummaryResultResponse {
     };
   }
 
-  factory MigrationValidationDatabaseSummaryResultResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrationValidationDatabaseSummaryResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrationValidationDatabaseSummaryResultResponse(
-      endedOn: (map['endedOn'] as String).input(),
-      id: (map['id'] as String).input(),
-      migrationId: (map['migrationId'] as String).input(),
-      sourceDatabaseName: (map['sourceDatabaseName'] as String).input(),
-      startedOn: (map['startedOn'] as String).input(),
-      status: (map['status'] as String).input(),
-      targetDatabaseName: (map['targetDatabaseName'] as String).input(),
+      endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      migrationId: pulumi.Input.fromValue(map['migrationId'] as String),
+      sourceDatabaseName: pulumi.Input.fromValue(
+        map['sourceDatabaseName'] as String,
+      ),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetDatabaseName: pulumi.Input.fromValue(
+        map['targetDatabaseName'] as String,
+      ),
     );
   }
 }
-

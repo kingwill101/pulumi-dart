@@ -1,5 +1,3 @@
-library module_authorization_k8s_io;
-
 export 'authorization_k8s_io/field_selector_attributes.dart';
 export 'authorization_k8s_io/field_selector_attributes_patch.dart';
 export 'authorization_k8s_io/label_selector_attributes.dart';

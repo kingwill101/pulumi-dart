@@ -9,16 +9,17 @@ enum GooglePrivacyDlpV2ConditionOperator {
   lessThanOrEquals("LESS_THAN_OR_EQUALS"),
   exists("EXISTS");
 
-  const GooglePrivacyDlpV2ConditionOperator(this.value);
-  final String value;
+  const GooglePrivacyDlpV2ConditionOperator(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2ConditionOperator fromValue(String value) {
     for (final item in GooglePrivacyDlpV2ConditionOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2ConditionOperator value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2ConditionOperator value: $value',
+    );
   }
 }
-

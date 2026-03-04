@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HcxResponse {
   /// Fully qualified domain name of the appliance.
   final pulumi.Input<String> fqdn;
+
   /// Internal IP address of the appliance.
   final pulumi.Input<String> internalIp;
+
   /// The state of the appliance.
   final pulumi.Input<String> state;
+
   /// Version of the appliance.
   final pulumi.Input<String> version;
 
@@ -36,11 +39,10 @@ class HcxResponse {
 
   factory HcxResponse.fromMap(Map<String, dynamic> map) {
     return HcxResponse(
-      fqdn: (map['fqdn'] as String).input(),
-      internalIp: (map['internalIp'] as String).input(),
-      state: (map['state'] as String).input(),
-      version: (map['version'] as String).input(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ExpressRoutePortsBillingType {
   valueMeteredData("MeteredData"),
   valueUnlimitedData("UnlimitedData");
 
-  const ExpressRoutePortsBillingType(this.value);
-  final String value;
+  const ExpressRoutePortsBillingType(this.wireValue);
+  final String wireValue;
 
   static ExpressRoutePortsBillingType fromValue(String value) {
     for (final item in ExpressRoutePortsBillingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRoutePortsBillingType value: $value');
   }
 }
-

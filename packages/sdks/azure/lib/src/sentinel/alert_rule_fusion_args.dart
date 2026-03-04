@@ -10,11 +10,14 @@ import 'alert_rule_fusion_source.dart';
 class AlertRuleFusionArgs {
   /// The GUID of the alert rule template which is used for this Sentinel Fusion Alert Rule. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   final pulumi.Input<String> alertRuleTemplateGuid;
+
   /// Should this Sentinel Fusion Alert Rule be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The ID of the Log Analytics Workspace this Sentinel Fusion Alert Rule belongs to. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   final pulumi.Input<String>? name;
+
   /// One or more `source` blocks as defined below.
   final pulumi.Input<List<AlertRuleFusionSource>>? sources;
 
@@ -38,18 +41,51 @@ class AlertRuleFusionArgs {
       'enabled': ?enabled,
       'logAnalyticsWorkspaceId': logAnalyticsWorkspaceId,
       'name': ?name,
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleFusionSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<AlertRuleFusionSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleFusionSource>,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleFusionSource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AlertRuleFusionArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleFusionArgs(
-      alertRuleTemplateGuid: (map['alertRuleTemplateGuid'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AlertRuleFusionSource>(map['sources']!, (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alertRuleTemplateGuid: pulumi.Input.fromValue(
+        map['alertRuleTemplateGuid'] as String,
+      ),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlertRuleFusionSource>(
+            guardedValue,
+            (value) => AlertRuleFusionSource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

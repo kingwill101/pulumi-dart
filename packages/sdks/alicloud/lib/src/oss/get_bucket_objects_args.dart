@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectsArgs {
   /// Name of the bucket that contains the objects to find.
   final pulumi.Input<String> bucketName;
+
   /// Filter results by the given key prefix (such as "path/to/folder/logs-").
   final pulumi.Input<String>? keyPrefix;
+
   /// A regex string to filter results by key.
   final pulumi.Input<String>? keyRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -39,11 +42,22 @@ class GetBucketObjectsArgs {
 
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
-      bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix']! as String).input(),
-      keyRegex: map['keyRegex'] == null ? null : (map['keyRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      keyPrefix: (() {
+        final guardedValue = map['keyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyRegex: (() {
+        final guardedValue = map['keyRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

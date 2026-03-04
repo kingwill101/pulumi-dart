@@ -8,8 +8,10 @@ import 'x12_protocol_settings_response.dart';
 class X12OneWayAgreementResponse {
   /// The X12 protocol settings.
   final pulumi.Input<X12ProtocolSettingsResponse> protocolSettings;
+
   /// The receiver business identity
   final pulumi.Input<BusinessIdentityResponse> receiverBusinessIdentity;
+
   /// The sender business identity
   final pulumi.Input<BusinessIdentityResponse> senderBusinessIdentity;
 
@@ -25,18 +27,41 @@ class X12OneWayAgreementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'protocolSettings': pulumi.Input.mapInputValue<X12ProtocolSettingsResponse, Map<String, dynamic>>(protocolSettings, (value) => value.toMap()),
-      'receiverBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(receiverBusinessIdentity, (value) => value.toMap()),
-      'senderBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(senderBusinessIdentity, (value) => value.toMap()),
+      'protocolSettings':
+          pulumi.Input.mapInputValue<
+            X12ProtocolSettingsResponse,
+            Map<String, dynamic>
+          >(protocolSettings, (value) => value.toMap()),
+      'receiverBusinessIdentity':
+          pulumi.Input.mapInputValue<
+            BusinessIdentityResponse,
+            Map<String, dynamic>
+          >(receiverBusinessIdentity, (value) => value.toMap()),
+      'senderBusinessIdentity':
+          pulumi.Input.mapInputValue<
+            BusinessIdentityResponse,
+            Map<String, dynamic>
+          >(senderBusinessIdentity, (value) => value.toMap()),
     };
   }
 
   factory X12OneWayAgreementResponse.fromMap(Map<String, dynamic> map) {
     return X12OneWayAgreementResponse(
-      protocolSettings: (X12ProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())).input(),
-      receiverBusinessIdentity: (BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
-      senderBusinessIdentity: (BusinessIdentityResponse.fromMap((map['senderBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
+      protocolSettings: pulumi.Input.fromValue(
+        X12ProtocolSettingsResponse.fromMap(
+          (map['protocolSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      receiverBusinessIdentity: pulumi.Input.fromValue(
+        BusinessIdentityResponse.fromMap(
+          (map['receiverBusinessIdentity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      senderBusinessIdentity: pulumi.Input.fromValue(
+        BusinessIdentityResponse.fromMap(
+          (map['senderBusinessIdentity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

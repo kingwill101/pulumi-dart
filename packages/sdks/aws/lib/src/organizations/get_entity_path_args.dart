@@ -12,20 +12,15 @@ class GetEntityPathArgs {
 
   /// Creates a new [GetEntityPathArgs].
   /// [entityId] Entity ID. Must be an organizational unit (OU) or AWS account ID.
-  GetEntityPathArgs({
-    required this.entityId,
-  });
+  GetEntityPathArgs({required this.entityId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entityId': entityId,
-    };
+    return <String, dynamic>{'entityId': entityId};
   }
 
   factory GetEntityPathArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityPathArgs(
-      entityId: (map['entityId'] as String).input(),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
     );
   }
 }
-

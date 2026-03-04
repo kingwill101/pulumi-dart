@@ -10,8 +10,10 @@ import 'schema_reference_properties.dart';
 class SchemaReferenceArgs {
   /// The resource-specific properties for this resource.
   final pulumi.Input<SchemaReferenceProperties>? properties;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The name of the SchemaReference
   final pulumi.Input<String>? schemaReferenceName;
 
@@ -27,7 +29,11 @@ class SchemaReferenceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<SchemaReferenceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SchemaReferenceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
       'schemaReferenceName': ?schemaReferenceName,
     };
@@ -35,10 +41,21 @@ class SchemaReferenceArgs {
 
   factory SchemaReferenceArgs.fromMap(Map<String, dynamic> map) {
     return SchemaReferenceArgs(
-      properties: map['properties'] == null ? null : (SchemaReferenceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      schemaReferenceName: map['schemaReferenceName'] == null ? null : (map['schemaReferenceName']! as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SchemaReferenceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      schemaReferenceName: (() {
+        final guardedValue = map['schemaReferenceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

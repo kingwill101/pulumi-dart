@@ -10,6 +10,7 @@ class GetServiceArgs {
   /// The name of this Communication Service.
   /// *
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Communication Service exists.
   /// *
   final pulumi.Input<String> resourceGroupName;
@@ -17,10 +18,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] The name of this Communication Service.
   /// [resourceGroupName] The name of the Resource Group where the Communication Service exists.
-  GetServiceArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetServiceArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,10 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

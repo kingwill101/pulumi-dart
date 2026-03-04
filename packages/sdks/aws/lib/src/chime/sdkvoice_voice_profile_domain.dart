@@ -182,14 +182,21 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
   /// ARN of the Voice Profile Domain.
   late final pulumi.Output<String> arn;
+
   /// Description of Voice Profile Domain.
   late final pulumi.Output<String?> description;
+
   /// Name of Voice Profile Domain.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration for server side encryption.
-  late final pulumi.Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration> serverSideEncryptionConfiguration;
+  late final pulumi.Output<
+    SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
+  >
+  serverSideEncryptionConfiguration;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -202,18 +209,21 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     SdkvoiceVoiceProfileDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    serverSideEncryptionConfiguration =
+        registerOutput<
+          SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
+        >('serverSideEncryptionConfiguration');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [SdkvoiceVoiceProfileDomain] resource's state with the given [name] and [id].
@@ -234,17 +244,20 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    serverSideEncryptionConfiguration =
+        registerOutput<
+          SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
+        >('serverSideEncryptionConfiguration');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

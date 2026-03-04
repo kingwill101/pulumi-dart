@@ -10,6 +10,7 @@ import 'source_iam_binding_condition.dart';
 class SourceIamBindingArgs {
   final pulumi.Input<SourceIamBindingCondition>? condition;
   final pulumi.Input<List<String>> members;
+
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String> organization;
@@ -32,7 +33,11 @@ class SourceIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<SourceIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'members': members,
       'organization': organization,
       'role': role,
@@ -42,12 +47,19 @@ class SourceIamBindingArgs {
 
   factory SourceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamBindingArgs(
-      condition: map['condition'] == null ? null : (SourceIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      organization: (map['organization'] as String).input(),
-      role: (map['role'] as String).input(),
-      source: (map['source'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

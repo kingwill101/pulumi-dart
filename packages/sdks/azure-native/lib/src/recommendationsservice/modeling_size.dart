@@ -4,16 +4,15 @@ enum ModelingSize {
   valueMedium("Medium"),
   valueLarge("Large");
 
-  const ModelingSize(this.value);
-  final String value;
+  const ModelingSize(this.wireValue);
+  final String wireValue;
 
   static ModelingSize fromValue(String value) {
     for (final item in ModelingSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelingSize value: $value');
   }
 }
-

@@ -7,12 +7,16 @@ import 'secure_string_response.dart';
 class IntegrationRuntimeSsisCatalogInfoResponse {
   /// The password of the administrator user account of the catalog database.
   final pulumi.Input<SecureStringResponse>? catalogAdminPassword;
+
   /// The administrator user name of catalog database.
   final pulumi.Input<String>? catalogAdminUserName;
+
   /// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
   final pulumi.Input<String>? catalogPricingTier;
+
   /// The catalog database server URL.
   final pulumi.Input<String>? catalogServerEndpoint;
+
   /// The dual standby pair name of Azure-SSIS Integration Runtimes to support SSISDB failover.
   final pulumi.Input<String>? dualStandbyPairName;
 
@@ -32,7 +36,11 @@ class IntegrationRuntimeSsisCatalogInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'catalogAdminPassword': ?pulumi.Input.mapOptionalInputValue<SecureStringResponse, Map<String, dynamic>>(catalogAdminPassword, (value) => value.toMap()),
+      'catalogAdminPassword':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecureStringResponse,
+            Map<String, dynamic>
+          >(catalogAdminPassword, (value) => value.toMap()),
       'catalogAdminUserName': ?catalogAdminUserName,
       'catalogPricingTier': ?catalogPricingTier,
       'catalogServerEndpoint': ?catalogServerEndpoint,
@@ -40,14 +48,39 @@ class IntegrationRuntimeSsisCatalogInfoResponse {
     };
   }
 
-  factory IntegrationRuntimeSsisCatalogInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory IntegrationRuntimeSsisCatalogInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationRuntimeSsisCatalogInfoResponse(
-      catalogAdminPassword: map['catalogAdminPassword'] == null ? null : (SecureStringResponse.fromMap((map['catalogAdminPassword']! as Map).cast<String, dynamic>())).input(),
-      catalogAdminUserName: map['catalogAdminUserName'] == null ? null : (map['catalogAdminUserName']! as String).input(),
-      catalogPricingTier: map['catalogPricingTier'] == null ? null : (map['catalogPricingTier']! as String).input(),
-      catalogServerEndpoint: map['catalogServerEndpoint'] == null ? null : (map['catalogServerEndpoint']! as String).input(),
-      dualStandbyPairName: map['dualStandbyPairName'] == null ? null : (map['dualStandbyPairName']! as String).input(),
+      catalogAdminPassword: (() {
+        final guardedValue = map['catalogAdminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecureStringResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      catalogAdminUserName: (() {
+        final guardedValue = map['catalogAdminUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      catalogPricingTier: (() {
+        final guardedValue = map['catalogPricingTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      catalogServerEndpoint: (() {
+        final guardedValue = map['catalogServerEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dualStandbyPairName: (() {
+        final guardedValue = map['dualStandbyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_kms;
-
 export 'kms/autokey_config.dart';
 export 'kms/autokey_config_args.dart';
 export 'kms/autokey_config_state.dart';

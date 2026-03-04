@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prefix_list_args.dart';
-import 'prefix_list_entry.dart';
-import 'prefix_list_prefix_list_association.dart';
 import 'prefix_list_state.dart';
 
 /// Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
 ///
 /// For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
 ///
-/// > **NOTE:** Available since v1.182.0.
+/// &gt; **NOTE:** Available since v1.182.0.
 ///
 /// ## Example Usage
 ///
@@ -254,26 +252,37 @@ import 'prefix_list_state.dart';
 class PrefixList extends pulumi.CustomResource {
   /// The time when the prefix list was created.
   late final pulumi.Output<String> createTime;
+
   /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
-  late final pulumi.Output<List<PrefixListEntry>?> entrys;
+  late final pulumi.Output<List<Map<String, dynamic>>?> entrys;
+
   /// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
   late final pulumi.Output<String> ipVersion;
+
   /// The maximum number of entries for CIDR address blocks in the prefix list.
   late final pulumi.Output<int> maxEntries;
+
   /// The association list information of the prefix list.
-  late final pulumi.Output<List<PrefixListPrefixListAssociation>> prefixListAssociations;
+  late final pulumi.Output<List<Map<String, dynamic>>> prefixListAssociations;
+
   /// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> prefixListDescription;
+
   /// The ID of the query Prefix List.
   late final pulumi.Output<String> prefixListId;
+
   /// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   late final pulumi.Output<String?> prefixListName;
+
   /// The ID of the resource group to which the PrefixList belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
   late final pulumi.Output<String> shareType;
+
   /// Resource attribute fields that represent the status of the resource.
   late final pulumi.Output<String> status;
+
   /// The tags of PrefixList.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -286,23 +295,25 @@ class PrefixList extends pulumi.CustomResource {
     PrefixListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/prefixList:PrefixList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.entrys = registerOutput<List<PrefixListEntry>?>('entrys');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.maxEntries = registerOutput<int>('maxEntries');
-    this.prefixListAssociations = registerOutput<List<PrefixListPrefixListAssociation>>('prefixListAssociations');
-    this.prefixListDescription = registerOutput<String?>('prefixListDescription');
-    this.prefixListId = registerOutput<String>('prefixListId');
-    this.prefixListName = registerOutput<String?>('prefixListName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.shareType = registerOutput<String>('shareType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:vpc/prefixList:PrefixList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    entrys = registerOutput<List<Map<String, dynamic>>?>('entrys');
+    ipVersion = registerOutput<String>('ipVersion');
+    maxEntries = registerOutput<int>('maxEntries');
+    prefixListAssociations = registerOutput<List<Map<String, dynamic>>>(
+      'prefixListAssociations',
+    );
+    prefixListDescription = registerOutput<String?>('prefixListDescription');
+    prefixListId = registerOutput<String>('prefixListId');
+    prefixListName = registerOutput<String?>('prefixListName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    shareType = registerOutput<String>('shareType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [PrefixList] resource's state with the given [name] and [id].
@@ -323,22 +334,24 @@ class PrefixList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/prefixList:PrefixList',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.entrys = registerOutput<List<PrefixListEntry>?>('entrys');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.maxEntries = registerOutput<int>('maxEntries');
-    this.prefixListAssociations = registerOutput<List<PrefixListPrefixListAssociation>>('prefixListAssociations');
-    this.prefixListDescription = registerOutput<String?>('prefixListDescription');
-    this.prefixListId = registerOutput<String>('prefixListId');
-    this.prefixListName = registerOutput<String?>('prefixListName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.shareType = registerOutput<String>('shareType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:vpc/prefixList:PrefixList',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    entrys = registerOutput<List<Map<String, dynamic>>?>('entrys');
+    ipVersion = registerOutput<String>('ipVersion');
+    maxEntries = registerOutput<int>('maxEntries');
+    prefixListAssociations = registerOutput<List<Map<String, dynamic>>>(
+      'prefixListAssociations',
+    );
+    prefixListDescription = registerOutput<String?>('prefixListDescription');
+    prefixListId = registerOutput<String>('prefixListId');
+    prefixListName = registerOutput<String?>('prefixListName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    shareType = registerOutput<String>('shareType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

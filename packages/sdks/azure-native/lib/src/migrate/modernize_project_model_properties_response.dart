@@ -7,10 +7,13 @@ import 'migration_configuration_response.dart';
 class ModernizeProjectModelPropertiesResponse {
   /// MigrationConfiguration properties.
   final pulumi.Input<MigrationConfigurationResponse>? migrationConfiguration;
+
   /// Gets or sets the provisioning state of the ModernizeProject.
   final pulumi.Input<String> provisioningState;
+
   /// Gets or sets the service endpoint.
   final pulumi.Input<String> serviceEndpoint;
+
   /// Gets or sets the service resource Id.
   final pulumi.Input<String> serviceResourceId;
 
@@ -28,20 +31,37 @@ class ModernizeProjectModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationConfiguration': ?pulumi.Input.mapOptionalInputValue<MigrationConfigurationResponse, Map<String, dynamic>>(migrationConfiguration, (value) => value.toMap()),
+      'migrationConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            MigrationConfigurationResponse,
+            Map<String, dynamic>
+          >(migrationConfiguration, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'serviceEndpoint': serviceEndpoint,
       'serviceResourceId': serviceResourceId,
     };
   }
 
-  factory ModernizeProjectModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ModernizeProjectModelPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModernizeProjectModelPropertiesResponse(
-      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfigurationResponse.fromMap((map['migrationConfiguration']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      serviceEndpoint: (map['serviceEndpoint'] as String).input(),
-      serviceResourceId: (map['serviceResourceId'] as String).input(),
+      migrationConfiguration: (() {
+        final guardedValue = map['migrationConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MigrationConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      serviceEndpoint: pulumi.Input.fromValue(map['serviceEndpoint'] as String),
+      serviceResourceId: pulumi.Input.fromValue(
+        map['serviceResourceId'] as String,
+      ),
     );
   }
 }
-

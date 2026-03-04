@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyResourceResponseSystemData {
   /// The timestamp of resource creation (UTC).
   final pulumi.Input<String> createdAt;
+
   /// The identity that created the resource.
   final pulumi.Input<String> createdBy;
+
   /// The type of identity that created the resource.
   final pulumi.Input<String> createdByType;
+
   /// The timestamp of the last modification the resource (UTC).
   final pulumi.Input<String> lastModifiedAt;
+
   /// The identity that last modified the resource.
   final pulumi.Input<String> lastModifiedBy;
+
   /// The type of identity that last modified the resource.
   final pulumi.Input<String> lastModifiedByType;
 
@@ -46,13 +51,14 @@ class ProxyResourceResponseSystemData {
 
   factory ProxyResourceResponseSystemData.fromMap(Map<String, dynamic> map) {
     return ProxyResourceResponseSystemData(
-      createdAt: (map['createdAt'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      createdByType: (map['createdByType'] as String).input(),
-      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      lastModifiedBy: (map['lastModifiedBy'] as String).input(),
-      lastModifiedByType: (map['lastModifiedByType'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      createdByType: pulumi.Input.fromValue(map['createdByType'] as String),
+      lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
+      lastModifiedBy: pulumi.Input.fromValue(map['lastModifiedBy'] as String),
+      lastModifiedByType: pulumi.Input.fromValue(
+        map['lastModifiedByType'] as String,
+      ),
     );
   }
 }
-

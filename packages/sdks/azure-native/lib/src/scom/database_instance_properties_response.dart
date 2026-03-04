@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstancePropertiesResponse {
   /// Fully qualified domain name of existing database instance
   final pulumi.Input<String> databaseFqdn;
+
   /// Resource Id of existing database instance
   final pulumi.Input<String>? databaseInstanceId;
+
   /// Resource Id of warehouse database on database instance
   final pulumi.Input<String> dwDatabaseId;
+
   /// Name of warehouse database on database instance
   final pulumi.Input<String> dwDatabaseName;
+
   /// Resource Id of operational database on database instance
   final pulumi.Input<String> operationalDatabaseId;
 
@@ -41,12 +45,17 @@ class DatabaseInstancePropertiesResponse {
 
   factory DatabaseInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseInstancePropertiesResponse(
-      databaseFqdn: (map['databaseFqdn'] as String).input(),
-      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId']! as String).input(),
-      dwDatabaseId: (map['dwDatabaseId'] as String).input(),
-      dwDatabaseName: (map['dwDatabaseName'] as String).input(),
-      operationalDatabaseId: (map['operationalDatabaseId'] as String).input(),
+      databaseFqdn: pulumi.Input.fromValue(map['databaseFqdn'] as String),
+      databaseInstanceId: (() {
+        final guardedValue = map['databaseInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dwDatabaseId: pulumi.Input.fromValue(map['dwDatabaseId'] as String),
+      dwDatabaseName: pulumi.Input.fromValue(map['dwDatabaseName'] as String),
+      operationalDatabaseId: pulumi.Input.fromValue(
+        map['operationalDatabaseId'] as String,
+      ),
     );
   }
 }
-

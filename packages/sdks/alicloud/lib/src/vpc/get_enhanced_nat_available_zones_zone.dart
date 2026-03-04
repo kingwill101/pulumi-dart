@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnhancedNatAvailableZonesZone {
   /// Name of the available zone.
   final pulumi.Input<String> localName;
+
   /// The ID of the available zone.
   final pulumi.Input<String> zoneId;
 
@@ -17,17 +18,13 @@ class GetEnhancedNatAvailableZonesZone {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'localName': localName,
-      'zoneId': zoneId,
-    };
+    return <String, dynamic>{'localName': localName, 'zoneId': zoneId};
   }
 
   factory GetEnhancedNatAvailableZonesZone.fromMap(Map<String, dynamic> map) {
     return GetEnhancedNatAvailableZonesZone(
-      localName: (map['localName'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      localName: pulumi.Input.fromValue(map['localName'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

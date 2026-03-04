@@ -8,7 +8,7 @@ import 'flow_log_state.dart';
 ///
 /// For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 ///
-/// > **NOTE:** Available since v1.117.0.
+/// &gt; **NOTE:** Available since v1.117.0.
 ///
 /// ## Example Usage
 ///
@@ -433,41 +433,57 @@ import 'flow_log_state.dart';
 class FlowLog extends pulumi.CustomResource {
   /// The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
   late final pulumi.Output<String> aggregationInterval;
+
   /// Business status
   late final pulumi.Output<String> businessStatus;
+
   /// Creation time
   late final pulumi.Output<String> createTime;
+
   /// The Description of the VPC Flow Log.
   late final pulumi.Output<String?> description;
+
   /// The flow log ID.
   late final pulumi.Output<String> flowLogId;
+
   /// The Name of the VPC Flow Log.
   late final pulumi.Output<String?> flowLogName;
+
   /// The IP address type of the collected traffic.
   late final pulumi.Output<String> ipVersion;
+
   /// The Logstore that stores the captured traffic data.
   late final pulumi.Output<String> logStoreName;
+
   /// The project that manages the captured traffic data.
   late final pulumi.Output<String> projectName;
+
   /// The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the resource.
   late final pulumi.Output<String> resourceId;
+
   /// The resource type of the traffic captured by the flow log:
   /// - `NetworkInterface`: ENI.
   /// - `VSwitch`: All ENIs in the VSwitch.
   /// - `VPC`: All ENIs in the VPC.
   late final pulumi.Output<String> resourceType;
+
   /// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
   late final pulumi.Output<String> status;
+
   /// The tag of the current instance resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The collected flow path. Value:
   /// - *all**: indicates full acquisition.
   /// - *internetGateway**: indicates public network traffic collection.
   late final pulumi.Output<List<String>> trafficPaths;
+
   /// The type of traffic collected. Valid values:
   /// - *All**: All traffic.
   /// - *Allow**: Access control allowedtraffic.
@@ -483,28 +499,28 @@ class FlowLog extends pulumi.CustomResource {
     FlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/flowLog:FlowLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregationInterval = registerOutput<String>('aggregationInterval');
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.flowLogId = registerOutput<String>('flowLogId');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.logStoreName = registerOutput<String>('logStoreName');
-    this.projectName = registerOutput<String>('projectName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficPaths = registerOutput<List<String>>('trafficPaths');
-    this.trafficType = registerOutput<String>('trafficType');
+         'alicloud:vpc/flowLog:FlowLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    businessStatus = registerOutput<String>('businessStatus');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    flowLogId = registerOutput<String>('flowLogId');
+    flowLogName = registerOutput<String?>('flowLogName');
+    ipVersion = registerOutput<String>('ipVersion');
+    logStoreName = registerOutput<String>('logStoreName');
+    projectName = registerOutput<String>('projectName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficPaths = registerOutput<List<String>>('trafficPaths');
+    trafficType = registerOutput<String>('trafficType');
   }
 
   /// Gets an existing [FlowLog] resource's state with the given [name] and [id].
@@ -525,27 +541,27 @@ class FlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/flowLog:FlowLog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregationInterval = registerOutput<String>('aggregationInterval');
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.flowLogId = registerOutput<String>('flowLogId');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.logStoreName = registerOutput<String>('logStoreName');
-    this.projectName = registerOutput<String>('projectName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficPaths = registerOutput<List<String>>('trafficPaths');
-    this.trafficType = registerOutput<String>('trafficType');
+         'alicloud:vpc/flowLog:FlowLog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    businessStatus = registerOutput<String>('businessStatus');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    flowLogId = registerOutput<String>('flowLogId');
+    flowLogName = registerOutput<String?>('flowLogName');
+    ipVersion = registerOutput<String>('ipVersion');
+    logStoreName = registerOutput<String>('logStoreName');
+    projectName = registerOutput<String>('projectName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficPaths = registerOutput<List<String>>('trafficPaths');
+    trafficType = registerOutput<String>('trafficType');
   }
 }

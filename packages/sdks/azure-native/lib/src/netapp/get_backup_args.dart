@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
+
   /// The name of the backup
   final pulumi.Input<String> backupName;
+
   /// The name of the Backup Vault
   final pulumi.Input<String> backupVaultName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetBackupArgs {
 
   factory GetBackupArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupArgs(
-      accountName: (map['accountName'] as String).input(),
-      backupName: (map['backupName'] as String).input(),
-      backupVaultName: (map['backupVaultName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      backupName: pulumi.Input.fromValue(map['backupName'] as String),
+      backupVaultName: pulumi.Input.fromValue(map['backupVaultName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

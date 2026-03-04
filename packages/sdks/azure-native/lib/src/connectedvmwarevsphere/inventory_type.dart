@@ -8,16 +8,15 @@ enum InventoryType {
   valueDatastore("Datastore"),
   valueHost("Host");
 
-  const InventoryType(this.value);
-  final String value;
+  const InventoryType(this.wireValue);
+  final String wireValue;
 
   static InventoryType fromValue(String value) {
     for (final item in InventoryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InventoryType value: $value');
   }
 }
-

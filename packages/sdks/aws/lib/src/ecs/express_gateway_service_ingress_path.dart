@@ -15,17 +15,13 @@ class ExpressGatewayServiceIngressPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessType': accessType,
-      'endpoint': endpoint,
-    };
+    return <String, dynamic>{'accessType': accessType, 'endpoint': endpoint};
   }
 
   factory ExpressGatewayServiceIngressPath.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceIngressPath(
-      accessType: (map['accessType'] as String).input(),
-      endpoint: (map['endpoint'] as String).input(),
+      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
-

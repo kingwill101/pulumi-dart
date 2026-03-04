@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridIdentityMetadatumArgs {
   /// Parameter for the name of the hybrid identity metadata resource.
   final pulumi.Input<String> hybridIdentityMetadataResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Parameter for the name of the provisioned cluster
   final pulumi.Input<String> resourceName;
 
@@ -34,10 +36,13 @@ class GetHybridIdentityMetadatumArgs {
 
   factory GetHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridIdentityMetadatumArgs(
-      hybridIdentityMetadataResourceName: (map['hybridIdentityMetadataResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      hybridIdentityMetadataResourceName: pulumi.Input.fromValue(
+        map['hybridIdentityMetadataResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

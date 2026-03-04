@@ -1,5 +1,3 @@
-library module_ecr;
-
 export 'ecr/account_setting.dart';
 export 'ecr/account_setting_args.dart';
 export 'ecr/account_setting_state.dart';

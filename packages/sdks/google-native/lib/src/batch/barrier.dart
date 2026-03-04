@@ -9,20 +9,19 @@ class Barrier {
 
   /// Creates a new [Barrier].
   /// [name] Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
-  Barrier({
-    this.name,
-  });
+  Barrier({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory Barrier.fromMap(Map<String, dynamic> map) {
     return Barrier(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

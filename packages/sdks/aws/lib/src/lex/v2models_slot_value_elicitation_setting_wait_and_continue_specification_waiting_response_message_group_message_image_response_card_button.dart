@@ -15,17 +15,15 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-      'value': value,
-    };
+    return <String, dynamic>{'text': text, 'value': value};
   }
 
-  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessageImageResponseCardButton.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessageImageResponseCardButton.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessageImageResponseCardButton(
-      text: (map['text'] as String).input(),
-      value: (map['value'] as String).input(),
+      text: pulumi.Input.fromValue(map['text'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

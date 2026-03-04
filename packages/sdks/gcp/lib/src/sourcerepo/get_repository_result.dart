@@ -6,6 +6,7 @@ import 'get_repository_pubsub_config.dart';
 /// Result data returned by getRepository.
 class GetRepositoryResult {
   final bool createIgnoreAlreadyExists;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -38,7 +39,11 @@ class GetRepositoryResult {
       'id': id,
       'name': name,
       'project': ?project,
-      'pubsubConfigs': pulumi.Input.encodeList<GetRepositoryPubsubConfig, Map<String, dynamic>>(pubsubConfigs, (value) => value.toMap()),
+      'pubsubConfigs':
+          pulumi.Input.encodeList<
+            GetRepositoryPubsubConfig,
+            Map<String, dynamic>
+          >(pubsubConfigs, (value) => value.toMap()),
       'size': size,
       'url': url,
     };
@@ -49,11 +54,19 @@ class GetRepositoryResult {
       createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
-      pubsubConfigs: pulumi.Input.decodeList<GetRepositoryPubsubConfig>(map['pubsubConfigs'], (value) => GetRepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pubsubConfigs: pulumi.Input.decodeList<GetRepositoryPubsubConfig>(
+        map['pubsubConfigs']!,
+        (value) => GetRepositoryPubsubConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       size: map['size'] as int,
       url: map['url'] as String,
     );
   }
 }
-

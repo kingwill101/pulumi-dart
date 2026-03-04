@@ -141,10 +141,14 @@ import 'extension_azure_monitor_agent_status_args.dart';
 class ExtensionAzureMonitorAgentStatus extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The status of the monitor on the HDInsight cluster.
   late final pulumi.Output<bool?> clusterMonitoringEnabled;
+
   /// The selected configurations.
-  late final pulumi.Output<AzureMonitorSelectedConfigurationsResponse?> selectedConfigurations;
+  late final pulumi.Output<AzureMonitorSelectedConfigurationsResponse?>
+  selectedConfigurations;
+
   /// The workspace ID of the monitor on the HDInsight cluster.
   late final pulumi.Output<String?> workspaceId;
 
@@ -157,14 +161,19 @@ class ExtensionAzureMonitorAgentStatus extends pulumi.CustomResource {
     ExtensionAzureMonitorAgentStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hdinsight:ExtensionAzureMonitorAgentStatus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
-    this.selectedConfigurations = registerOutput<AzureMonitorSelectedConfigurationsResponse?>('selectedConfigurations');
-    this.workspaceId = registerOutput<String?>('workspaceId');
+         'azure-native:hdinsight:ExtensionAzureMonitorAgentStatus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterMonitoringEnabled = registerOutput<bool?>(
+      'clusterMonitoringEnabled',
+    );
+    selectedConfigurations =
+        registerOutput<AzureMonitorSelectedConfigurationsResponse?>(
+          'selectedConfigurations',
+        );
+    workspaceId = registerOutput<String?>('workspaceId');
   }
 }

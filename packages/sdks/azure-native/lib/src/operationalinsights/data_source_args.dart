@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceArgs {
   /// The name of the datasource resource.
   final pulumi.Input<String>? dataSourceName;
+
   /// The kind of the DataSource.
   final pulumi.Input<String> kind;
+
   /// The data source properties in raw json format, each kind of data source have it's own schema.
   final pulumi.Input<dynamic> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,13 +54,24 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      properties: (map['properties']).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      dataSourceName: (() {
+        final guardedValue = map['dataSourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      properties: pulumi.Input.fromValue(map['properties']),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

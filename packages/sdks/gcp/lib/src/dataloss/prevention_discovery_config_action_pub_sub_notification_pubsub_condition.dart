@@ -6,7 +6,10 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
   /// An expression
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions>? expressions;
+  final pulumi.Input<
+    PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions
+  >?
+  expressions;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition].
   /// [expressions] An expression
@@ -16,14 +19,27 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
+      'expressions':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions,
+            Map<String, dynamic>
+          >(expressions, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition(
-      expressions: map['expressions'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions']! as Map).cast<String, dynamic>())).input(),
+      expressions: (() {
+        final guardedValue = map['expressions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

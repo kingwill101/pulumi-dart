@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountSchemaArgs {
   /// The content of the Logic App Integration Account Schema.
   final pulumi.Input<String> content;
+
   /// The file name of the Logic App Integration Account Schema.
   final pulumi.Input<String>? fileName;
+
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Schema to be created.
   final pulumi.Input<String> integrationAccountName;
+
   /// The metadata of the Logic App Integration Account Schema.
   final pulumi.Input<String>? metadata;
+
   /// The name which should be used for this Logic App Integration Account Schema. Changing this forces a new Logic App Integration Account Schema to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Logic App Integration Account Schema should exist. Changing this forces a new Logic App Integration Account Schema to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,28 @@ class IntegrationAccountSchemaArgs {
 
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
-      content: (map['content'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

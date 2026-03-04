@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrunkSubPort {
   /// The ID of the port to be made a subport of the trunk.
   final pulumi.Input<String> portId;
+
   /// The numeric id of the subport segment.
   final pulumi.Input<int> segmentationId;
+
   /// The segmentation technology to use, e.g., "vlan".
   final pulumi.Input<String> segmentationType;
 
@@ -30,10 +32,11 @@ class TrunkSubPort {
 
   factory TrunkSubPort.fromMap(Map<String, dynamic> map) {
     return TrunkSubPort(
-      portId: (map['portId'] as String).input(),
-      segmentationId: (map['segmentationId'] as int).input(),
-      segmentationType: (map['segmentationType'] as String).input(),
+      portId: pulumi.Input.fromValue(map['portId'] as String),
+      segmentationId: pulumi.Input.fromValue(map['segmentationId'] as int),
+      segmentationType: pulumi.Input.fromValue(
+        map['segmentationType'] as String,
+      ),
     );
   }
 }
-

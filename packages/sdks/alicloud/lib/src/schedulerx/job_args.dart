@@ -12,50 +12,72 @@ import 'job_time_config.dart';
 class JobArgs {
   /// Error retry interval, unit s, default value 30.
   final pulumi.Input<int>? attemptInterval;
+
   /// Full path of the task interface class.
   ///
   /// This field is available only when your task is of the Java task type.
   final pulumi.Input<String>? className;
+
   /// The script code of the python, shell, and go task types.
   final pulumi.Input<String>? content;
+
   /// Task description.
   final pulumi.Input<String>? description;
+
   /// Task execution mode, the possible results are as follows:
   final pulumi.Input<String> executeMode;
+
   /// Number of consecutive failed alarms
   final pulumi.Input<int>? failTimes;
+
   /// The application ID, which is obtained from the **application management** page of the console.
   final pulumi.Input<String> groupId;
+
   /// Task monitoring information See `job_monitor_info` below.
   final pulumi.Input<JobJobMonitorInfo>? jobMonitorInfo;
+
   /// JobName
   final pulumi.Input<String> jobName;
+
   /// Job Type
   final pulumi.Input<String> jobType;
+
   /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
   final pulumi.Input<JobMapTaskXattrs>? mapTaskXattrs;
+
   /// The maximum number of error retries, which is set based on business requirements. The default value is 0.
   final pulumi.Input<int>? maxAttempt;
+
   /// The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
   final pulumi.Input<String>? maxConcurrency;
+
   /// Namespace, which is obtained on the `Namespace` page of the console.
   final pulumi.Input<String> namespace;
+
   /// Special third parties are required.
   final pulumi.Input<String>? namespaceSource;
+
   /// User-defined parameters, which can be obtained at runtime.
   final pulumi.Input<String>? parameters;
+
   /// Task status. The values are as follows:
   final pulumi.Input<String>? status;
+
   /// Success Notification Switch
   final pulumi.Input<bool>? successNoticeEnable;
+
   /// Advanced configuration of parallel grid tasks, push model or pull model
   final pulumi.Input<String>? taskDispatchMode;
+
   /// K8s task type custom task template
   final pulumi.Input<String>? template;
+
   /// Time configuration information See `time_config` below.
   final pulumi.Input<JobTimeConfig> timeConfig;
+
   /// Time Zone
   final pulumi.Input<String>? timezone;
+
   /// Task Extension Field
   final pulumi.Input<String>? xAttrs;
 
@@ -118,10 +140,18 @@ class JobArgs {
       'executeMode': executeMode,
       'failTimes': ?failTimes,
       'groupId': groupId,
-      'jobMonitorInfo': ?pulumi.Input.mapOptionalInputValue<JobJobMonitorInfo, Map<String, dynamic>>(jobMonitorInfo, (value) => value.toMap()),
+      'jobMonitorInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobJobMonitorInfo,
+            Map<String, dynamic>
+          >(jobMonitorInfo, (value) => value.toMap()),
       'jobName': jobName,
       'jobType': jobType,
-      'mapTaskXattrs': ?pulumi.Input.mapOptionalInputValue<JobMapTaskXattrs, Map<String, dynamic>>(mapTaskXattrs, (value) => value.toMap()),
+      'mapTaskXattrs':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobMapTaskXattrs,
+            Map<String, dynamic>
+          >(mapTaskXattrs, (value) => value.toMap()),
       'maxAttempt': ?maxAttempt,
       'maxConcurrency': ?maxConcurrency,
       'namespace': namespace,
@@ -131,7 +161,11 @@ class JobArgs {
       'successNoticeEnable': ?successNoticeEnable,
       'taskDispatchMode': ?taskDispatchMode,
       'template': ?template,
-      'timeConfig': pulumi.Input.mapInputValue<JobTimeConfig, Map<String, dynamic>>(timeConfig, (value) => value.toMap()),
+      'timeConfig':
+          pulumi.Input.mapInputValue<JobTimeConfig, Map<String, dynamic>>(
+            timeConfig,
+            (value) => value.toMap(),
+          ),
       'timezone': ?timezone,
       'xAttrs': ?xAttrs,
     };
@@ -139,30 +173,109 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      attemptInterval: map['attemptInterval'] == null ? null : (map['attemptInterval']! as int).input(),
-      className: map['className'] == null ? null : (map['className']! as String).input(),
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      executeMode: (map['executeMode'] as String).input(),
-      failTimes: map['failTimes'] == null ? null : (map['failTimes']! as int).input(),
-      groupId: (map['groupId'] as String).input(),
-      jobMonitorInfo: map['jobMonitorInfo'] == null ? null : (JobJobMonitorInfo.fromMap((map['jobMonitorInfo']! as Map).cast<String, dynamic>())).input(),
-      jobName: (map['jobName'] as String).input(),
-      jobType: (map['jobType'] as String).input(),
-      mapTaskXattrs: map['mapTaskXattrs'] == null ? null : (JobMapTaskXattrs.fromMap((map['mapTaskXattrs']! as Map).cast<String, dynamic>())).input(),
-      maxAttempt: map['maxAttempt'] == null ? null : (map['maxAttempt']! as int).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency']! as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      namespaceSource: map['namespaceSource'] == null ? null : (map['namespaceSource']! as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      successNoticeEnable: map['successNoticeEnable'] == null ? null : (map['successNoticeEnable']! as bool).input(),
-      taskDispatchMode: map['taskDispatchMode'] == null ? null : (map['taskDispatchMode']! as String).input(),
-      template: map['template'] == null ? null : (map['template']! as String).input(),
-      timeConfig: (JobTimeConfig.fromMap((map['timeConfig'] as Map).cast<String, dynamic>())).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
-      xAttrs: map['xAttrs'] == null ? null : (map['xAttrs']! as String).input(),
+      attemptInterval: (() {
+        final guardedValue = map['attemptInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      className: (() {
+        final guardedValue = map['className'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executeMode: pulumi.Input.fromValue(map['executeMode'] as String),
+      failTimes: (() {
+        final guardedValue = map['failTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      jobMonitorInfo: (() {
+        final guardedValue = map['jobMonitorInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobJobMonitorInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      jobType: pulumi.Input.fromValue(map['jobType'] as String),
+      mapTaskXattrs: (() {
+        final guardedValue = map['mapTaskXattrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobMapTaskXattrs.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxAttempt: (() {
+        final guardedValue = map['maxAttempt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxConcurrency: (() {
+        final guardedValue = map['maxConcurrency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      namespaceSource: (() {
+        final guardedValue = map['namespaceSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      successNoticeEnable: (() {
+        final guardedValue = map['successNoticeEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      taskDispatchMode: (() {
+        final guardedValue = map['taskDispatchMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeConfig: pulumi.Input.fromValue(
+        JobTimeConfig.fromMap(
+          (map['timeConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xAttrs: (() {
+        final guardedValue = map['xAttrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

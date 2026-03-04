@@ -205,14 +205,19 @@ import 'system_data_response.dart';
 class ApiPortal extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// API portal properties payload
   late final pulumi.Output<ApiPortalPropertiesResponse> properties;
+
   /// Sku of the API portal resource
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -225,16 +230,16 @@ class ApiPortal extends pulumi.CustomResource {
     ApiPortalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appplatform:ApiPortal',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:appplatform:ApiPortal',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ApiPortalPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ApiPortalPropertiesResponse>('properties');
+    sku = registerOutput<SkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

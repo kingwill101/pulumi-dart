@@ -6,16 +6,15 @@ enum SecurityPolicyType {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const SecurityPolicyType(this.value);
-  final String value;
+  const SecurityPolicyType(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyType fromValue(String value) {
     for (final item in SecurityPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityPolicyType value: $value');
   }
 }
-

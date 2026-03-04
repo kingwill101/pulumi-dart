@@ -4,16 +4,15 @@ enum SchemaConfigSchemaType {
   analytics("ANALYTICS"),
   analyticsV2("ANALYTICS_V2");
 
-  const SchemaConfigSchemaType(this.value);
-  final String value;
+  const SchemaConfigSchemaType(this.wireValue);
+  final String wireValue;
 
   static SchemaConfigSchemaType fromValue(String value) {
     for (final item in SchemaConfigSchemaType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchemaConfigSchemaType value: $value');
   }
 }
-

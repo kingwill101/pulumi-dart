@@ -5,16 +5,15 @@ enum EceSecrets {
   localAdminCredential("LocalAdminCredential"),
   witnessStorageKey("WitnessStorageKey");
 
-  const EceSecrets(this.value);
-  final String value;
+  const EceSecrets(this.wireValue);
+  final String wireValue;
 
   static EceSecrets fromValue(String value) {
     for (final item in EceSecrets.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EceSecrets value: $value');
   }
 }
-

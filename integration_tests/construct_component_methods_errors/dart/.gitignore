@@ -28,7 +28,7 @@ x86/
 bld/
 [Bb]in/
 !bin/
-!bin/construct_component_methods_dart.dart
+!bin/construct_component_methods_errors_dart.dart
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

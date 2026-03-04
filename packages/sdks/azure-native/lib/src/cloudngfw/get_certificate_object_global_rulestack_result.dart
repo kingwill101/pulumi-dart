@@ -6,24 +6,34 @@ import 'system_data_response.dart';
 class GetCertificateObjectGlobalRulestackResult {
   /// comment for this object
   final String? auditComment;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// use certificate self signed
   final String certificateSelfSigned;
+
   /// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
   final String? certificateSignerResourceId;
+
   /// user description for this object
   final String? description;
+
   /// read only string representing last create or update
   final String? etag;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state of the resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,20 +79,39 @@ class GetCertificateObjectGlobalRulestackResult {
     };
   }
 
-  factory GetCertificateObjectGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateObjectGlobalRulestackResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateObjectGlobalRulestackResult(
-      auditComment: map['auditComment'] == null ? null : map['auditComment']! as String,
+      auditComment: (() {
+        final guardedValue = map['auditComment'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       certificateSelfSigned: map['certificateSelfSigned'] as String,
-      certificateSignerResourceId: map['certificateSignerResourceId'] == null ? null : map['certificateSignerResourceId']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      certificateSignerResourceId: (() {
+        final guardedValue = map['certificateSignerResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

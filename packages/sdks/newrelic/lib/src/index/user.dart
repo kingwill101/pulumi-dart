@@ -150,43 +150,39 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The ID of the authentication domain to which the user to be created would belong.
   late final pulumi.Output<String> authenticationDomainId;
+
   /// The email ID of the user to be created.
   late final pulumi.Output<String> emailId;
+
   /// The name of the user to be created.
   late final pulumi.Output<String> name;
+
   /// The tier to which the user to be created would belong. Accepted values for this argument are `BASIC_USER_TIER`, `CORE_USER_TIER`, or `FULL_USER_TIER`. If not specified in the configuration, the argument would default to `BASIC_USER_TIER`.
   ///
-  /// > **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
+  /// &gt; **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
   ///
-  /// > **WARNING:** Changing the `authentication_domain_id` of a `newrelic.User` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing user is not supported.
+  /// &gt; **WARNING:** Changing the `authentication_domain_id` of a `newrelic.User` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing user is not supported.
   late final pulumi.Output<String?> userType;
 
   /// Creates a new [User].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_index_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'newrelic:index/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationDomainId = registerOutput<String>('authenticationDomainId');
-    this.emailId = registerOutput<String>('emailId');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'newrelic:index/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authenticationDomainId = registerOutput<String>('authenticationDomainId');
+    emailId = registerOutput<String>('emailId');
     this.name = registerOutput<String>('name');
-    this.userType = registerOutput<String?>('userType');
+    userType = registerOutput<String?>('userType');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -199,14 +195,14 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationDomainId = registerOutput<String>('authenticationDomainId');
-    this.emailId = registerOutput<String>('emailId');
+         'newrelic:index/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationDomainId = registerOutput<String>('authenticationDomainId');
+    emailId = registerOutput<String>('emailId');
     this.name = registerOutput<String>('name');
-    this.userType = registerOutput<String?>('userType');
+    userType = registerOutput<String?>('userType');
   }
 }

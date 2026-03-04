@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostAttachmentState {
   /// Specifies the added to the host group ID.
   final pulumi.Input<String>? hostGroupId;
+
   /// Specified to be part of a host group of host ID.
   final pulumi.Input<String>? hostId;
+
   /// The bastion host instance id.
   final pulumi.Input<String>? instanceId;
 
@@ -15,11 +17,7 @@ class HostAttachmentState {
   /// [hostGroupId] Specifies the added to the host group ID.
   /// [hostId] Specified to be part of a host group of host ID.
   /// [instanceId] The bastion host instance id.
-  HostAttachmentState({
-    this.hostGroupId,
-    this.hostId,
-    this.instanceId,
-  });
+  HostAttachmentState({this.hostGroupId, this.hostId, this.instanceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class HostAttachmentState {
 
   factory HostAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAttachmentState(
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      hostGroupId: (() {
+        final guardedValue = map['hostGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostId: (() {
+        final guardedValue = map['hostId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

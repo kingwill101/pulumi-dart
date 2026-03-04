@@ -3,16 +3,15 @@ enum SubnetworkIpv6AccessType {
   external("EXTERNAL"),
   internal("INTERNAL");
 
-  const SubnetworkIpv6AccessType(this.value);
-  final String value;
+  const SubnetworkIpv6AccessType(this.wireValue);
+  final String wireValue;
 
   static SubnetworkIpv6AccessType fromValue(String value) {
     for (final item in SubnetworkIpv6AccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkIpv6AccessType value: $value');
   }
 }
-

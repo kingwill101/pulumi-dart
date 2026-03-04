@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class P2SVpnServerConfigVpnClientRootCertificateResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String>? etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The provisioning state of the VPN client root certificate resource.
   final pulumi.Input<String> provisioningState;
+
   /// The certificate public data.
   final pulumi.Input<String> publicCertData;
 
@@ -39,14 +43,29 @@ class P2SVpnServerConfigVpnClientRootCertificateResponse {
     };
   }
 
-  factory P2SVpnServerConfigVpnClientRootCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory P2SVpnServerConfigVpnClientRootCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return P2SVpnServerConfigVpnClientRootCertificateResponse(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      publicCertData: (map['publicCertData'] as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
     );
   }
 }
-

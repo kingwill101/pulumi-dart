@@ -13,15 +13,14 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageSizeGib': storageSizeGib,
-    };
+    return <String, dynamic>{'storageSizeGib': storageSizeGib};
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration(
-      storageSizeGib: (map['storageSizeGib'] as int).input(),
+      storageSizeGib: pulumi.Input.fromValue(map['storageSizeGib'] as int),
     );
   }
 }
-

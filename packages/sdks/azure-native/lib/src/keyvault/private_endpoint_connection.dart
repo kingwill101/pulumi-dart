@@ -161,20 +161,29 @@ import 'private_link_service_connection_state_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Modified whenever there is a change in the state of private endpoint connection.
   late final pulumi.Output<String?> etag;
+
   /// Azure location of the key vault resource.
   late final pulumi.Output<String> location;
+
   /// Name of the key vault resource.
   late final pulumi.Output<String> name;
+
   /// Properties of the private endpoint object.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+
   /// Approval state of the private link connection.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint connection.
   late final pulumi.Output<String> provisioningState;
+
   /// Tags assigned to the key vault resource.
   late final pulumi.Output<Map<String, String>> tags;
+
   /// Resource type of the key vault resource.
   late final pulumi.Output<String> type;
 
@@ -187,19 +196,24 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:keyvault:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:keyvault:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkServiceConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>>('tags');
+    type = registerOutput<String>('type');
   }
 }

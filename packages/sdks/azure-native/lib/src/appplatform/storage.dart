@@ -167,12 +167,16 @@ import 'system_data_response.dart';
 class Storage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Properties of the storage resource payload.
   late final pulumi.Output<StorageAccountResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -185,15 +189,15 @@ class Storage extends pulumi.CustomResource {
     StorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appplatform:Storage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:appplatform:Storage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<StorageAccountResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<StorageAccountResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitSourceContext {
   /// Git commit hash.
   final pulumi.Input<String>? revisionId;
+
   /// Git repository URL.
   final pulumi.Input<String>? url;
 
   /// Creates a new [GitSourceContext].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
+  GitSourceContext({this.revisionId, this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'revisionId': ?revisionId,
-      'url': ?url,
-    };
+    return <String, dynamic>{'revisionId': ?revisionId, 'url': ?url};
   }
 
   factory GitSourceContext.fromMap(Map<String, dynamic> map) {
     return GitSourceContext(
-      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      revisionId: (() {
+        final guardedValue = map['revisionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

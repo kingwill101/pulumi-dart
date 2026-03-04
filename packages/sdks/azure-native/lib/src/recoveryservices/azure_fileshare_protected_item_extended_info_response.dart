@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileshareProtectedItemExtendedInfoResponse {
   /// The oldest backup copy available for this item in the service.
   final pulumi.Input<String>? oldestRecoveryPoint;
+
   /// Indicates consistency of policy object and policy applied to this backup item.
   final pulumi.Input<String>? policyState;
+
   /// Number of available backup copies associated with this backup item.
   final pulumi.Input<int>? recoveryPointCount;
+
   /// Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
   final pulumi.Input<String> resourceState;
+
   /// The resource state sync time for this backup item.
   final pulumi.Input<String> resourceStateSyncTime;
 
@@ -39,14 +43,29 @@ class AzureFileshareProtectedItemExtendedInfoResponse {
     };
   }
 
-  factory AzureFileshareProtectedItemExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureFileshareProtectedItemExtendedInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureFileshareProtectedItemExtendedInfoResponse(
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
-      policyState: map['policyState'] == null ? null : (map['policyState']! as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
-      resourceState: (map['resourceState'] as String).input(),
-      resourceStateSyncTime: (map['resourceStateSyncTime'] as String).input(),
+      oldestRecoveryPoint: (() {
+        final guardedValue = map['oldestRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyState: (() {
+        final guardedValue = map['policyState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryPointCount: (() {
+        final guardedValue = map['recoveryPointCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceState: pulumi.Input.fromValue(map['resourceState'] as String),
+      resourceStateSyncTime: pulumi.Input.fromValue(
+        map['resourceStateSyncTime'] as String,
+      ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anomaly_security_mlanalytics_settings_args.dart';
-import 'security_mlanalytics_settings_data_source_response.dart';
 import 'system_data_response.dart';
 
 /// Represents Anomaly Security ML Analytics Settings
@@ -517,43 +516,62 @@ import 'system_data_response.dart';
 class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
   /// The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.
   late final pulumi.Output<int?> anomalySettingsVersion;
+
   /// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
   late final pulumi.Output<String> anomalyVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
   late final pulumi.Output<dynamic> customizableObservations;
+
   /// The description of the SecurityMLAnalyticsSettings.
   late final pulumi.Output<String?> description;
+
   /// The display name for settings created by this SecurityMLAnalyticsSettings.
   late final pulumi.Output<String> displayName;
+
   /// Determines whether this settings is enabled or disabled.
   late final pulumi.Output<bool> enabled;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The frequency that this SecurityMLAnalyticsSettings will be run.
   late final pulumi.Output<String> frequency;
+
   /// Determines whether this anomaly security ml analytics settings is a default settings
   late final pulumi.Output<bool> isDefaultSettings;
+
   /// The kind of security ML analytics settings
   /// Expected value is 'Anomaly'.
   late final pulumi.Output<String> kind;
+
   /// The last time that this SecurityMLAnalyticsSettings has been modified.
   late final pulumi.Output<String> lastModifiedUtc;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The required data sources for this SecurityMLAnalyticsSettings
-  late final pulumi.Output<List<SecurityMLAnalyticsSettingsDataSourceResponse>?> requiredDataConnectors;
+  late final pulumi.Output<List<Map<String, dynamic>>?> requiredDataConnectors;
+
   /// The anomaly settings definition Id
   late final pulumi.Output<String?> settingsDefinitionId;
+
   /// The anomaly SecurityMLAnalyticsSettings status
   late final pulumi.Output<String> settingsStatus;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tactics of the SecurityMLAnalyticsSettings
   late final pulumi.Output<List<String>?> tactics;
+
   /// The techniques of the SecurityMLAnalyticsSettings
   late final pulumi.Output<List<String>?> techniques;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -566,30 +584,34 @@ class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     AnomalySecurityMLAnalyticsSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:AnomalySecurityMLAnalyticsSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.anomalySettingsVersion = registerOutput<int?>('anomalySettingsVersion');
-    this.anomalyVersion = registerOutput<String>('anomalyVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customizableObservations = registerOutput<dynamic>('customizableObservations');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String?>('etag');
-    this.frequency = registerOutput<String>('frequency');
-    this.isDefaultSettings = registerOutput<bool>('isDefaultSettings');
-    this.kind = registerOutput<String>('kind');
-    this.lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+         'azure-native:securityinsights:AnomalySecurityMLAnalyticsSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    anomalySettingsVersion = registerOutput<int?>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customizableObservations = registerOutput<dynamic>(
+      'customizableObservations',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String?>('etag');
+    frequency = registerOutput<String>('frequency');
+    isDefaultSettings = registerOutput<bool>('isDefaultSettings');
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
-    this.requiredDataConnectors = registerOutput<List<SecurityMLAnalyticsSettingsDataSourceResponse>?>('requiredDataConnectors');
-    this.settingsDefinitionId = registerOutput<String?>('settingsDefinitionId');
-    this.settingsStatus = registerOutput<String>('settingsStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tactics = registerOutput<List<String>?>('tactics');
-    this.techniques = registerOutput<List<String>?>('techniques');
-    this.type = registerOutput<String>('type');
+    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>?>(
+      'requiredDataConnectors',
+    );
+    settingsDefinitionId = registerOutput<String?>('settingsDefinitionId');
+    settingsStatus = registerOutput<String>('settingsStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tactics = registerOutput<List<String>?>('tactics');
+    techniques = registerOutput<List<String>?>('techniques');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse {
   /// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
   final pulumi.Input<String> frequency;
+
   /// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
   final pulumi.Input<List<String>> types;
 
@@ -18,17 +19,15 @@ class GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'frequency': frequency,
-      'types': types,
-    };
+    return <String, dynamic>{'frequency': frequency, 'types': types};
   }
 
-  factory GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse(
-      frequency: (map['frequency'] as String).input(),
-      types: ((map['types'] as List).cast<String>()).input(),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      types: pulumi.Input.fromValue((map['types'] as List).cast<String>()),
     );
   }
 }
-

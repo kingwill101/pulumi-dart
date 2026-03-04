@@ -7,7 +7,7 @@ import 'role_association_state.dart';
 /// * [Amazon RDS Oracle integration with Amazon S3](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-s3-integration.html)
 /// * [Importing Amazon S3 Data into an RDS PostgreSQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PostgreSQL.S3Import.html)
 ///
-/// > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the `aws.rds.Instance` resource `monitoring_role_arn` argument instead.
+/// &gt; To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the `aws.rds.Instance` resource `monitoring_role_arn` argument instead.
 ///
 /// ## Import
 ///
@@ -19,10 +19,13 @@ import 'role_association_state.dart';
 class RoleAssociation extends pulumi.CustomResource {
   /// DB Instance Identifier to associate with the IAM Role.
   late final pulumi.Output<String> dbInstanceIdentifier;
+
   /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
   late final pulumi.Output<String> featureName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
   late final pulumi.Output<String> roleArn;
 
@@ -35,15 +38,15 @@ class RoleAssociation extends pulumi.CustomResource {
     RoleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/roleAssociation:RoleAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
-    this.featureName = registerOutput<String>('featureName');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
+         'aws:rds/roleAssociation:RoleAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
+    featureName = registerOutput<String>('featureName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
   }
 
   /// Gets an existing [RoleAssociation] resource's state with the given [name] and [id].
@@ -64,14 +67,14 @@ class RoleAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/roleAssociation:RoleAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
-    this.featureName = registerOutput<String>('featureName');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
+         'aws:rds/roleAssociation:RoleAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
+    featureName = registerOutput<String>('featureName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
   }
 }

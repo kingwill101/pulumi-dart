@@ -3,16 +3,15 @@ enum ChannelBinding {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ChannelBinding(this.value);
-  final String value;
+  const ChannelBinding(this.wireValue);
+  final String wireValue;
 
   static ChannelBinding fromValue(String value) {
     for (final item in ChannelBinding.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChannelBinding value: $value');
   }
 }
-

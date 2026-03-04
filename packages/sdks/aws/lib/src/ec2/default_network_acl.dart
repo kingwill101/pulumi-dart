@@ -1,12 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_network_acl_args.dart';
-import 'default_network_acl_egress.dart';
-import 'default_network_acl_ingress.dart';
 import 'default_network_acl_state.dart';
 
 /// Provides a resource to manage a VPC's default network ACL. This resource can manage the default network ACL of the default or a non-default VPC.
 ///
-/// > **NOTE:** This is an advanced resource with special caveats. Please read this document in its entirety before using this resource. The `aws.ec2.DefaultNetworkAcl` behaves differently from normal resources. This provider does not _create_ this resource but instead attempts to "adopt" it into management.
+/// &gt; **NOTE:** This is an advanced resource with special caveats. Please read this document in its entirety before using this resource. The `aws.ec2.DefaultNetworkAcl` behaves differently from normal resources. This provider does not _create_ this resource but instead attempts to "adopt" it into management.
 ///
 /// Every VPC has a default network ACL that can be managed but not destroyed. When the provider first adopts the Default Network ACL, it **immediately removes all rules in the ACL**. It then proceeds to create any rules specified in the configuration. This step is required so that only the rules specified in the configuration are created.
 ///
@@ -619,24 +617,33 @@ import 'default_network_acl_state.dart';
 class DefaultNetworkAcl extends pulumi.CustomResource {
   /// ARN of the Default Network ACL
   late final pulumi.Output<String> arn;
+
   /// Network ACL ID to manage. This attribute is exported from `aws.ec2.Vpc`, or manually found via the AWS Console.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> defaultNetworkAclId;
+
   /// Configuration block for an egress rule. Detailed below.
-  late final pulumi.Output<List<DefaultNetworkAclEgress>?> egress;
+  late final pulumi.Output<List<Map<String, dynamic>>?> egress;
+
   /// Configuration block for an ingress rule. Detailed below.
-  late final pulumi.Output<List<DefaultNetworkAclIngress>?> ingress;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ingress;
+
   /// ID of the AWS account that owns the Default Network ACL
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   late final pulumi.Output<List<String>?> subnetIds;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// ID of the associated VPC
   late final pulumi.Output<String> vpcId;
 
@@ -649,21 +656,21 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
     DefaultNetworkAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
-    this.egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress');
-    this.ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.subnetIds = registerOutput<List<String>?>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    egress = registerOutput<List<Map<String, dynamic>>?>('egress');
+    ingress = registerOutput<List<Map<String, dynamic>>?>('ingress');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>?>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [DefaultNetworkAcl] resource's state with the given [name] and [id].
@@ -684,20 +691,20 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
-    this.egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress');
-    this.ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.subnetIds = registerOutput<List<String>?>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    egress = registerOutput<List<Map<String, dynamic>>?>('egress');
+    ingress = registerOutput<List<Map<String, dynamic>>?>('ingress');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>?>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

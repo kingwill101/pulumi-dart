@@ -1,19 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_args.dart';
 import 'slot_auth_settings.dart';
-import 'slot_connection_string.dart';
 import 'slot_identity.dart';
 import 'slot_logs.dart';
 import 'slot_site_config.dart';
-import 'slot_site_credential.dart';
 import 'slot_state.dart';
-import 'slot_storage_account.dart';
 
 /// Manages an App Service Slot (within an App Service).
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebAppSlot` and `azure.appservice.WindowsWebAppSlot` resources instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebAppSlot` and `azure.appservice.WindowsWebAppSlot` resources instead.
 ///
-/// > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -838,40 +835,58 @@ import 'slot_storage_account.dart';
 class Slot extends pulumi.CustomResource {
   /// The name of the App Service within which to create the App Service Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
+
   /// The ID of the App Service Plan within which to create this App Service Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServicePlanId;
+
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>> appSettings;
+
   /// A `auth_settings` block as defined below.
   late final pulumi.Output<SlotAuthSettings> authSettings;
+
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool> clientAffinityEnabled;
+
   /// An `connection_string` block as defined below.
-  late final pulumi.Output<List<SlotConnectionString>> connectionStrings;
+  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+
   /// The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultSiteHostname;
+
   /// Is the App Service Slot Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Can the App Service Slot only be accessed via HTTPS? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<SlotIdentity?> identity;
+
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. See [Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity) for more information.
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `logs` block as defined below.
   late final pulumi.Output<SlotLogs> logs;
+
   /// Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `site_config` object as defined below.
   late final pulumi.Output<SlotSiteConfig> siteConfig;
+
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
-  late final pulumi.Output<List<SlotSiteCredential>> siteCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+
   /// One or more `storage_account` blocks as defined below.
-  late final pulumi.Output<List<SlotStorageAccount>> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -879,43 +894,44 @@ class Slot extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Slot]. {@macro pulumi_appservice_slot_slot_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Slot(
-    String name, {
-    SlotArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:appservice/slot:Slot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<SlotAuthSettings>('authSettings');
-    this.clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    this.connectionStrings = registerOutput<List<SlotConnectionString>>('connectionStrings');
-    this.defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<SlotIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<SlotLogs>('logs');
+  Slot(String name, {SlotArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:appservice/slot:Slot',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<SlotAuthSettings>('authSettings');
+    clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SlotIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    location = registerOutput<String>('location');
+    logs = registerOutput<SlotLogs>('logs');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<SlotSiteCredential>>('siteCredentials');
-    this.storageAccounts = registerOutput<List<SlotStorageAccount>>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Slot] resource's state with the given [name] and [id].
-  static Slot get(
-    String name,
-    pulumi.Input<String> id, {
-    SlotState? state,
-  }) {
+  static Slot get(String name, pulumi.Input<String> id, {SlotState? state}) {
     return Slot._get(
       name,
       state: state?.toMap(),
@@ -928,29 +944,37 @@ class Slot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/slot:Slot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<SlotAuthSettings>('authSettings');
-    this.clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    this.connectionStrings = registerOutput<List<SlotConnectionString>>('connectionStrings');
-    this.defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<SlotIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<SlotLogs>('logs');
+         'azure:appservice/slot:Slot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<SlotAuthSettings>('authSettings');
+    clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SlotIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    location = registerOutput<String>('location');
+    logs = registerOutput<SlotLogs>('logs');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<SlotSiteCredential>>('siteCredentials');
-    this.storageAccounts = registerOutput<List<SlotStorageAccount>>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

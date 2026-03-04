@@ -6,31 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageVersionState {
   /// A list of aliases for the image version.
   final pulumi.Input<List<String>>? aliases;
+
   /// The Amazon Resource Name (ARN) assigned by AWS to this Image Version.
   final pulumi.Input<String>? arn;
+
   /// The registry path of the container image on which this image version is based.
   final pulumi.Input<String>? baseImage;
+
   /// The registry path of the container image that contains this image version.
   final pulumi.Input<String>? containerImage;
+
   /// Indicates Horovod compatibility.
   final pulumi.Input<bool>? horovod;
   final pulumi.Input<String>? imageArn;
+
   /// The name of the image. Must be unique to your account.
   final pulumi.Input<String>? imageName;
+
   /// Indicates SageMaker AI job type compatibility. Valid values are: `TRAINING`, `INFERENCE`, and `NOTEBOOK_KERNEL`.
   final pulumi.Input<String>? jobType;
+
   /// The machine learning framework vended in the image version.
   final pulumi.Input<String>? mlFramework;
+
   /// Indicates CPU or GPU compatibility. Valid values are: `CPU` and `GPU`.
   final pulumi.Input<String>? processor;
+
   /// The supported programming language and its version.
   final pulumi.Input<String>? programmingLang;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The maintainer description of the image version.
   final pulumi.Input<String>? releaseNotes;
+
   /// The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
   final pulumi.Input<String>? vendorGuidance;
+
   /// The version of the image. If not specified, the latest version is described.
   final pulumi.Input<int>? version;
 
@@ -90,22 +103,81 @@ class ImageVersionState {
 
   factory ImageVersionState.fromMap(Map<String, dynamic> map) {
     return ImageVersionState(
-      aliases: map['aliases'] == null ? null : (((map['aliases'] as List).cast<String>()).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      baseImage: map['baseImage'] == null ? null : ((map['baseImage'] as String).input()).input(),
-      containerImage: map['containerImage'] == null ? null : ((map['containerImage'] as String).input()).input(),
-      horovod: map['horovod'] == null ? null : ((map['horovod'] as bool).input()).input(),
-      imageArn: map['imageArn'] == null ? null : ((map['imageArn'] as String).input()).input(),
-      imageName: map['imageName'] == null ? null : ((map['imageName'] as String).input()).input(),
-      jobType: map['jobType'] == null ? null : ((map['jobType'] as String).input()).input(),
-      mlFramework: map['mlFramework'] == null ? null : ((map['mlFramework'] as String).input()).input(),
-      processor: map['processor'] == null ? null : ((map['processor'] as String).input()).input(),
-      programmingLang: map['programmingLang'] == null ? null : ((map['programmingLang'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      releaseNotes: map['releaseNotes'] == null ? null : ((map['releaseNotes'] as String).input()).input(),
-      vendorGuidance: map['vendorGuidance'] == null ? null : ((map['vendorGuidance'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
+      aliases: (() {
+        final guardedValue = map['aliases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      baseImage: (() {
+        final guardedValue = map['baseImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerImage: (() {
+        final guardedValue = map['containerImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      horovod: (() {
+        final guardedValue = map['horovod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      imageArn: (() {
+        final guardedValue = map['imageArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobType: (() {
+        final guardedValue = map['jobType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mlFramework: (() {
+        final guardedValue = map['mlFramework'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processor: (() {
+        final guardedValue = map['processor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      programmingLang: (() {
+        final guardedValue = map['programmingLang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseNotes: (() {
+        final guardedValue = map['releaseNotes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vendorGuidance: (() {
+        final guardedValue = map['vendorGuidance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

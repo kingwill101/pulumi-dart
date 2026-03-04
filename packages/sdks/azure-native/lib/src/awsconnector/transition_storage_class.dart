@@ -7,16 +7,15 @@ enum TransitionStorageClass {
   oNEZONEIA("ONEZONE_IA"),
   sTANDARDIA("STANDARD_IA");
 
-  const TransitionStorageClass(this.value);
-  final String value;
+  const TransitionStorageClass(this.wireValue);
+  final String wireValue;
 
   static TransitionStorageClass fromValue(String value) {
     for (final item in TransitionStorageClass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransitionStorageClass value: $value');
   }
 }
-

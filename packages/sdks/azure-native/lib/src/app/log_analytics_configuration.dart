@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsConfiguration {
   /// Log analytics customer id
   final pulumi.Input<String>? customerId;
+
   /// Boolean indicating whether to parse json string log into dynamic json columns
   final pulumi.Input<bool>? dynamicJsonColumns;
+
   /// Log analytics customer key
   final pulumi.Input<String>? sharedKey;
 
@@ -31,10 +33,21 @@ class LogAnalyticsConfiguration {
 
   factory LogAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfiguration(
-      customerId: map['customerId'] == null ? null : (map['customerId']! as String).input(),
-      dynamicJsonColumns: map['dynamicJsonColumns'] == null ? null : (map['dynamicJsonColumns']! as bool).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
+      customerId: (() {
+        final guardedValue = map['customerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dynamicJsonColumns: (() {
+        final guardedValue = map['dynamicJsonColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sharedKey: (() {
+        final guardedValue = map['sharedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

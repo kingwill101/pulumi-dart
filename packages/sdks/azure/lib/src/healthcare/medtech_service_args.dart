@@ -10,20 +10,28 @@ import 'medtech_service_identity.dart';
 class MedtechServiceArgs {
   /// Specifies the Device Mappings of the Med Tech Service.
   final pulumi.Input<String> deviceMappingJson;
+
   /// Specifies the Consumer Group of the Event Hub to connect to.
   final pulumi.Input<String> eventhubConsumerGroupName;
+
   /// Specifies the name of the Event Hub to connect to.
   final pulumi.Input<String> eventhubName;
+
   /// Specifies the namespace name of the Event Hub to connect to.
   final pulumi.Input<String> eventhubNamespaceName;
+
   /// An `identity` block as defined below.
   final pulumi.Input<MedtechServiceIdentity>? identity;
+
   /// Specifies the Azure Region where the Healthcare Med Tech Service should be created. Changing this forces a new Healthcare Med Tech Service to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Healthcare Med Tech Service. Changing this forces a new Healthcare Med Tech Service to be created.
   final pulumi.Input<String>? name;
+
   /// A mapping of tags to assign to the Healthcare Med Tech Service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the id of the Healthcare Workspace where the Healthcare Med Tech Service should exist. Changing this forces a new Healthcare Med Tech Service to be created.
   final pulumi.Input<String> workspaceId;
 
@@ -55,7 +63,11 @@ class MedtechServiceArgs {
       'eventhubConsumerGroupName': eventhubConsumerGroupName,
       'eventhubName': eventhubName,
       'eventhubNamespaceName': eventhubNamespaceName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<MedtechServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            MedtechServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'tags': ?tags,
@@ -65,16 +77,43 @@ class MedtechServiceArgs {
 
   factory MedtechServiceArgs.fromMap(Map<String, dynamic> map) {
     return MedtechServiceArgs(
-      deviceMappingJson: (map['deviceMappingJson'] as String).input(),
-      eventhubConsumerGroupName: (map['eventhubConsumerGroupName'] as String).input(),
-      eventhubName: (map['eventhubName'] as String).input(),
-      eventhubNamespaceName: (map['eventhubNamespaceName'] as String).input(),
-      identity: map['identity'] == null ? null : (MedtechServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      deviceMappingJson: pulumi.Input.fromValue(
+        map['deviceMappingJson'] as String,
+      ),
+      eventhubConsumerGroupName: pulumi.Input.fromValue(
+        map['eventhubConsumerGroupName'] as String,
+      ),
+      eventhubName: pulumi.Input.fromValue(map['eventhubName'] as String),
+      eventhubNamespaceName: pulumi.Input.fromValue(
+        map['eventhubNamespaceName'] as String,
+      ),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MedtechServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

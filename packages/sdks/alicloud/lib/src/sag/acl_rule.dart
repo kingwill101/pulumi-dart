@@ -6,9 +6,9 @@ import 'acl_rule_state.dart';
 ///
 /// For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
 ///
-/// > **NOTE:** Available since v1.60.0.
+/// &gt; **NOTE:** Available since v1.60.0.
 ///
-/// > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -213,22 +213,31 @@ import 'acl_rule_state.dart';
 class AclRule extends pulumi.CustomResource {
   /// The ID of the ACL.
   late final pulumi.Output<String> aclId;
+
   /// The description of the ACL rule. It must be 1 to 512 characters in length.
   late final pulumi.Output<String?> description;
+
   /// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
   late final pulumi.Output<String> destCidr;
+
   /// The range of the destination port. Valid value: 80/80.
   late final pulumi.Output<String> destPortRange;
+
   /// The direction of the ACL rule. Valid values: in|out.
   late final pulumi.Output<String> direction;
+
   /// The protocol used by the ACL rule. The value is not case sensitive.
   late final pulumi.Output<String> ipProtocol;
+
   /// The policy used by the ACL rule. Valid values: accept|drop.
   late final pulumi.Output<String> policy;
+
   /// The priority of the ACL rule. Value range: 1 to 100.
   late final pulumi.Output<int?> priority;
+
   /// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
   late final pulumi.Output<String> sourceCidr;
+
   /// The range of the source port. Valid value: 80/80.
   late final pulumi.Output<String> sourcePortRange;
 
@@ -241,21 +250,21 @@ class AclRule extends pulumi.CustomResource {
     AclRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/aclRule:AclRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.description = registerOutput<String?>('description');
-    this.destCidr = registerOutput<String>('destCidr');
-    this.destPortRange = registerOutput<String>('destPortRange');
-    this.direction = registerOutput<String>('direction');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.policy = registerOutput<String>('policy');
-    this.priority = registerOutput<int?>('priority');
-    this.sourceCidr = registerOutput<String>('sourceCidr');
-    this.sourcePortRange = registerOutput<String>('sourcePortRange');
+         'alicloud:sag/aclRule:AclRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    description = registerOutput<String?>('description');
+    destCidr = registerOutput<String>('destCidr');
+    destPortRange = registerOutput<String>('destPortRange');
+    direction = registerOutput<String>('direction');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    policy = registerOutput<String>('policy');
+    priority = registerOutput<int?>('priority');
+    sourceCidr = registerOutput<String>('sourceCidr');
+    sourcePortRange = registerOutput<String>('sourcePortRange');
   }
 
   /// Gets an existing [AclRule] resource's state with the given [name] and [id].
@@ -276,20 +285,20 @@ class AclRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/aclRule:AclRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.description = registerOutput<String?>('description');
-    this.destCidr = registerOutput<String>('destCidr');
-    this.destPortRange = registerOutput<String>('destPortRange');
-    this.direction = registerOutput<String>('direction');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.policy = registerOutput<String>('policy');
-    this.priority = registerOutput<int?>('priority');
-    this.sourceCidr = registerOutput<String>('sourceCidr');
-    this.sourcePortRange = registerOutput<String>('sourcePortRange');
+         'alicloud:sag/aclRule:AclRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    description = registerOutput<String?>('description');
+    destCidr = registerOutput<String>('destCidr');
+    destPortRange = registerOutput<String>('destPortRange');
+    direction = registerOutput<String>('direction');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    policy = registerOutput<String>('policy');
+    priority = registerOutput<int?>('priority');
+    sourceCidr = registerOutput<String>('sourceCidr');
+    sourcePortRange = registerOutput<String>('sourcePortRange');
   }
 }

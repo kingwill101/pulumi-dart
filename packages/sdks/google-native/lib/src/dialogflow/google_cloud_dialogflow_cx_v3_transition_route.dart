@@ -7,14 +7,19 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
 class GoogleCloudDialogflowCxV3TransitionRoute {
   /// The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
   final pulumi.Input<String>? condition;
+
   /// Optional. The description of the transition route. The maximum length is 500 characters.
   final pulumi.Input<String>? description;
+
   /// The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the transition can only happen when the given intent is matched. At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
   final pulumi.Input<String>? intent;
+
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
   final pulumi.Input<String>? targetFlow;
+
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   final pulumi.Input<String>? targetPage;
+
   /// The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.
   final pulumi.Input<GoogleCloudDialogflowCxV3Fulfillment>? triggerFulfillment;
 
@@ -41,19 +46,52 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
       'intent': ?intent,
       'targetFlow': ?targetFlow,
       'targetPage': ?targetPage,
-      'triggerFulfillment': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3Fulfillment, Map<String, dynamic>>(triggerFulfillment, (value) => value.toMap()),
+      'triggerFulfillment':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3Fulfillment,
+            Map<String, dynamic>
+          >(triggerFulfillment, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3TransitionRoute.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3TransitionRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3TransitionRoute(
-      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      intent: map['intent'] == null ? null : (map['intent']! as String).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3Fulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      intent: (() {
+        final guardedValue = map['intent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetFlow: (() {
+        final guardedValue = map['targetFlow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPage: (() {
+        final guardedValue = map['targetPage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerFulfillment: (() {
+        final guardedValue = map['triggerFulfillment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3Fulfillment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

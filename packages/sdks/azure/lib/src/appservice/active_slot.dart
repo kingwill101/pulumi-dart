@@ -4,9 +4,9 @@ import 'active_slot_state.dart';
 
 /// Promotes an App Service Slot to Production within an App Service.
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.WebAppActiveSlot` resource instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.WebAppActiveSlot` resource instead.
 ///
-/// > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -185,8 +185,10 @@ import 'active_slot_state.dart';
 class ActiveSlot extends pulumi.CustomResource {
   /// The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
+
   /// The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
   late final pulumi.Output<String> appServiceSlotName;
+
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -199,14 +201,14 @@ class ActiveSlot extends pulumi.CustomResource {
     ActiveSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/activeSlot:ActiveSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.appServiceSlotName = registerOutput<String>('appServiceSlotName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:appservice/activeSlot:ActiveSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServiceSlotName = registerOutput<String>('appServiceSlotName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ActiveSlot] resource's state with the given [name] and [id].
@@ -227,13 +229,13 @@ class ActiveSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/activeSlot:ActiveSlot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.appServiceSlotName = registerOutput<String>('appServiceSlotName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:appservice/activeSlot:ActiveSlot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServiceSlotName = registerOutput<String>('appServiceSlotName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

@@ -6,9 +6,16 @@ import 'virtual_node_spec_backend_virtual_service_client_policy_tls_certificate_
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
   /// Local file certificate.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile>? file;
+  final pulumi.Input<
+    VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile
+  >?
+  file;
+
   /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds>? sds;
+  final pulumi.Input<
+    VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds
+  >?
+  sds;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate].
   /// [file] Local file certificate.
@@ -20,16 +27,41 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'file': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile, Map<String, dynamic>>(file, (value) => value.toMap()),
-      'sds': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds, Map<String, dynamic>>(sds, (value) => value.toMap()),
+      'file':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile,
+            Map<String, dynamic>
+          >(file, (value) => value.toMap()),
+      'sds':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds,
+            Map<String, dynamic>
+          >(sds, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate(
-      file: map['file'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
-      sds: map['sds'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
+      file: (() {
+        final guardedValue = map['file'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sds: (() {
+        final guardedValue = map['sds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

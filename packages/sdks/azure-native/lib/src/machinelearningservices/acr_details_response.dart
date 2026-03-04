@@ -10,20 +10,29 @@ class AcrDetailsResponse {
 
   /// Creates a new [AcrDetailsResponse].
   /// [systemCreatedAcrAccount] Details of system created ACR account to be used for the Registry
-  AcrDetailsResponse({
-    this.systemCreatedAcrAccount,
-  });
+  AcrDetailsResponse({this.systemCreatedAcrAccount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'systemCreatedAcrAccount': ?pulumi.Input.mapOptionalInputValue<SystemCreatedAcrAccountResponse, Map<String, dynamic>>(systemCreatedAcrAccount, (value) => value.toMap()),
+      'systemCreatedAcrAccount':
+          ?pulumi.Input.mapOptionalInputValue<
+            SystemCreatedAcrAccountResponse,
+            Map<String, dynamic>
+          >(systemCreatedAcrAccount, (value) => value.toMap()),
     };
   }
 
   factory AcrDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AcrDetailsResponse(
-      systemCreatedAcrAccount: map['systemCreatedAcrAccount'] == null ? null : (SystemCreatedAcrAccountResponse.fromMap((map['systemCreatedAcrAccount']! as Map).cast<String, dynamic>())).input(),
+      systemCreatedAcrAccount: (() {
+        final guardedValue = map['systemCreatedAcrAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SystemCreatedAcrAccountResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_avs;
-
 export 'avs/addon.dart';
 export 'avs/addon_arc_properties.dart';
 export 'avs/addon_arc_properties_response.dart';

@@ -10,20 +10,25 @@ class ApigatewayGatewayConfigResponse {
 
   /// Creates a new [ApigatewayGatewayConfigResponse].
   /// [backendConfig] Backend settings that are applied to all backends of the Gateway.
-  ApigatewayGatewayConfigResponse({
-    required this.backendConfig,
-  });
+  ApigatewayGatewayConfigResponse({required this.backendConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendConfig': pulumi.Input.mapInputValue<ApigatewayBackendConfigResponse, Map<String, dynamic>>(backendConfig, (value) => value.toMap()),
+      'backendConfig':
+          pulumi.Input.mapInputValue<
+            ApigatewayBackendConfigResponse,
+            Map<String, dynamic>
+          >(backendConfig, (value) => value.toMap()),
     };
   }
 
   factory ApigatewayGatewayConfigResponse.fromMap(Map<String, dynamic> map) {
     return ApigatewayGatewayConfigResponse(
-      backendConfig: (ApigatewayBackendConfigResponse.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
+      backendConfig: pulumi.Input.fromValue(
+        ApigatewayBackendConfigResponse.fromMap(
+          (map['backendConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

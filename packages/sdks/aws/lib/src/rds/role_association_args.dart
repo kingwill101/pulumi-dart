@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleAssociationArgs {
   /// DB Instance Identifier to associate with the IAM Role.
   final pulumi.Input<String> dbInstanceIdentifier;
+
   /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
   final pulumi.Input<String> featureName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
   final pulumi.Input<String> roleArn;
 
@@ -39,11 +42,16 @@ class RoleAssociationArgs {
 
   factory RoleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssociationArgs(
-      dbInstanceIdentifier: (map['dbInstanceIdentifier'] as String).input(),
-      featureName: (map['featureName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      dbInstanceIdentifier: pulumi.Input.fromValue(
+        map['dbInstanceIdentifier'] as String,
+      ),
+      featureName: pulumi.Input.fromValue(map['featureName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

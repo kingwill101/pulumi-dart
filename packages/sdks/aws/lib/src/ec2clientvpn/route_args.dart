@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteArgs {
   /// The ID of the Client VPN endpoint.
   final pulumi.Input<String> clientVpnEndpointId;
+
   /// A brief description of the route.
   final pulumi.Input<String>? description;
+
   /// The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   final pulumi.Input<String> destinationCidrBlock;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   final pulumi.Input<String> targetVpcSubnetId;
 
@@ -44,12 +48,25 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      clientVpnEndpointId: (map['clientVpnEndpointId'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      targetVpcSubnetId: (map['targetVpcSubnetId'] as String).input(),
+      clientVpnEndpointId: pulumi.Input.fromValue(
+        map['clientVpnEndpointId'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationCidrBlock: pulumi.Input.fromValue(
+        map['destinationCidrBlock'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVpcSubnetId: pulumi.Input.fromValue(
+        map['targetVpcSubnetId'] as String,
+      ),
     );
   }
 }
-

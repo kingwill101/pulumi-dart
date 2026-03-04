@@ -13,10 +13,7 @@ class GetBackendBucketArgs {
   /// Creates a new [GetBackendBucketArgs].
   /// [backendBucket] Required.
   /// [project] Optional.
-  GetBackendBucketArgs({
-    required this.backendBucket,
-    this.project,
-  });
+  GetBackendBucketArgs({required this.backendBucket, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,12 @@ class GetBackendBucketArgs {
 
   factory GetBackendBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketArgs(
-      backendBucket: (map['backendBucket'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backendBucket: pulumi.Input.fromValue(map['backendBucket'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

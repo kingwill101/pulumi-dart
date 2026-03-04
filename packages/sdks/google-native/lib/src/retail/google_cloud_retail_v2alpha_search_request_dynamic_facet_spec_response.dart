@@ -14,15 +14,14 @@ class GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

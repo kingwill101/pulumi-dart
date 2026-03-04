@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvgroupArgs {
   /// Host names for this environment group.
   final pulumi.Input<List<String>> hostnames;
+
   /// ID of the environment group.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -33,10 +34,15 @@ class EnvgroupArgs {
 
   factory EnvgroupArgs.fromMap(Map<String, dynamic> map) {
     return EnvgroupArgs(
-      hostnames: ((map['hostnames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      hostnames: pulumi.Input.fromValue(
+        (map['hostnames'] as List).cast<String>(),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

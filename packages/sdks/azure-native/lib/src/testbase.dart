@@ -1,5 +1,3 @@
-library module_testbase;
-
 export 'testbase/action.dart';
 export 'testbase/action_request.dart';
 export 'testbase/action_request_args.dart';

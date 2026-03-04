@@ -8,20 +8,19 @@ class ThemeConfigurationSheetTileBorder {
 
   /// Creates a new [ThemeConfigurationSheetTileBorder].
   /// [show] The option to enable display of borders for visuals.
-  ThemeConfigurationSheetTileBorder({
-    this.show,
-  });
+  ThemeConfigurationSheetTileBorder({this.show});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'show': ?show,
-    };
+    return <String, dynamic>{'show': ?show};
   }
 
   factory ThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileBorder(
-      show: map['show'] == null ? null : ((map['show'] as bool).input()).input(),
+      show: (() {
+        final guardedValue = map['show'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

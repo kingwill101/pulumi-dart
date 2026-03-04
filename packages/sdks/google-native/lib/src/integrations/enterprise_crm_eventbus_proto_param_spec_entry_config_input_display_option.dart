@@ -4,16 +4,22 @@ enum EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption {
   numberSlider("NUMBER_SLIDER"),
   booleanToggle("BOOLEAN_TOGGLE");
 
-  const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption
+  fromValue(String value) {
+    for (final item
+        in EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption value: $value',
+    );
   }
 }
-

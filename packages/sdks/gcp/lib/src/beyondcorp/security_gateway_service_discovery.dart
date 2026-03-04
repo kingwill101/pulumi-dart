@@ -10,20 +10,29 @@ class SecurityGatewayServiceDiscovery {
 
   /// Creates a new [SecurityGatewayServiceDiscovery].
   /// [apiGateway] External API configuration.
-  SecurityGatewayServiceDiscovery({
-    this.apiGateway,
-  });
+  SecurityGatewayServiceDiscovery({this.apiGateway});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiGateway': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayServiceDiscoveryApiGateway, Map<String, dynamic>>(apiGateway, (value) => value.toMap()),
+      'apiGateway':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityGatewayServiceDiscoveryApiGateway,
+            Map<String, dynamic>
+          >(apiGateway, (value) => value.toMap()),
     };
   }
 
   factory SecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscovery(
-      apiGateway: map['apiGateway'] == null ? null : (SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway']! as Map).cast<String, dynamic>())).input(),
+      apiGateway: (() {
+        final guardedValue = map['apiGateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityGatewayServiceDiscoveryApiGateway.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

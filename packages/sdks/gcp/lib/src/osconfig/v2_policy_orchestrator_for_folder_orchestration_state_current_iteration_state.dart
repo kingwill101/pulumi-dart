@@ -12,27 +12,39 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError>>? errors;
+  final pulumi.Input<
+    List<
+      V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError
+    >
+  >?
+  errors;
+
   /// (Output)
   /// Number of orchestration actions which failed so far. For more details,
   /// query the Cloud Logs.
   final pulumi.Input<String>? failedActions;
+
   /// (Output)
   /// Finish time of the wave iteration.
   final pulumi.Input<String>? finishTime;
+
   /// (Output)
   /// Overall number of actions done by the orchestrator so far.
   final pulumi.Input<String>? performedActions;
+
   /// (Output)
   /// An estimated percentage of the progress. Number between 0 and 100.
   final pulumi.Input<double>? progress;
+
   /// (Output)
   /// Handle to the Progressive Rollouts API rollout resource, which contains
   /// detailed information about a particular orchestration iteration.
   final pulumi.Input<String>? rolloutResource;
+
   /// (Output)
   /// Start time of the wave iteration.
   final pulumi.Input<String>? startTime;
+
   /// State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -64,7 +76,20 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError
+            >,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'failedActions': ?failedActions,
       'finishTime': ?finishTime,
       'performedActions': ?performedActions,
@@ -75,17 +100,60 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError>(map['errors']!, (value) => V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failedActions: map['failedActions'] == null ? null : (map['failedActions']! as String).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
-      performedActions: map['performedActions'] == null ? null : (map['performedActions']! as String).input(),
-      progress: map['progress'] == null ? null : (map['progress']! as double).input(),
-      rolloutResource: map['rolloutResource'] == null ? null : (map['rolloutResource']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      errors: (() {
+        final guardedValue = map['errors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError
+          >(
+            guardedValue,
+            (value) =>
+                V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      failedActions: (() {
+        final guardedValue = map['failedActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      finishTime: (() {
+        final guardedValue = map['finishTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performedActions: (() {
+        final guardedValue = map['performedActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      progress: (() {
+        final guardedValue = map['progress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      rolloutResource: (() {
+        final guardedValue = map['rolloutResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

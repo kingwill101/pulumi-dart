@@ -8,20 +8,22 @@ class ResourceGuard {
 
   /// Creates a new [ResourceGuard].
   /// [vaultCriticalOperationExclusionList] List of critical operations which are not protected by this resourceGuard
-  ResourceGuard({
-    this.vaultCriticalOperationExclusionList,
-  });
+  ResourceGuard({this.vaultCriticalOperationExclusionList});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vaultCriticalOperationExclusionList': ?vaultCriticalOperationExclusionList,
+      'vaultCriticalOperationExclusionList':
+          ?vaultCriticalOperationExclusionList,
     };
   }
 
   factory ResourceGuard.fromMap(Map<String, dynamic> map) {
     return ResourceGuard(
-      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList']! as List).cast<String>()).input(),
+      vaultCriticalOperationExclusionList: (() {
+        final guardedValue = map['vaultCriticalOperationExclusionList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

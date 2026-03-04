@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WsdlService {
   /// List of the endpoints' qualified names
   final pulumi.Input<List<String>>? endpointQualifiedNames;
+
   /// The service's qualified name
   final pulumi.Input<String> qualifiedName;
 
   /// Creates a new [WsdlService].
   /// [endpointQualifiedNames] List of the endpoints' qualified names
   /// [qualifiedName] The service's qualified name
-  WsdlService({
-    this.endpointQualifiedNames,
-    required this.qualifiedName,
-  });
+  WsdlService({this.endpointQualifiedNames, required this.qualifiedName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class WsdlService {
 
   factory WsdlService.fromMap(Map<String, dynamic> map) {
     return WsdlService(
-      endpointQualifiedNames: map['endpointQualifiedNames'] == null ? null : ((map['endpointQualifiedNames']! as List).cast<String>()).input(),
-      qualifiedName: (map['qualifiedName'] as String).input(),
+      endpointQualifiedNames: (() {
+        final guardedValue = map['endpointQualifiedNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      qualifiedName: pulumi.Input.fromValue(map['qualifiedName'] as String),
     );
   }
 }
-

@@ -113,39 +113,142 @@ class GetWafEntityParameterArgs {
       'sensitiveParameter': ?sensitiveParameter,
       'signatureOverridesDisables': ?signatureOverridesDisables,
       'type': ?type,
-      'url': ?pulumi.Input.mapOptionalInputValue<GetWafEntityParameterUrl, Map<String, dynamic>>(url, (value) => value.toMap()),
+      'url':
+          ?pulumi.Input.mapOptionalInputValue<
+            GetWafEntityParameterUrl,
+            Map<String, dynamic>
+          >(url, (value) => value.toMap()),
       'valueType': ?valueType,
     };
   }
 
   factory GetWafEntityParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetWafEntityParameterArgs(
-      allowEmptyType: map['allowEmptyType'] == null ? null : (map['allowEmptyType']! as bool).input(),
-      allowRepeatedParameterName: map['allowRepeatedParameterName'] == null ? null : (map['allowRepeatedParameterName']! as bool).input(),
-      attackSignaturesCheck: map['attackSignaturesCheck'] == null ? null : (map['attackSignaturesCheck']! as bool).input(),
-      checkMaxValueLength: map['checkMaxValueLength'] == null ? null : (map['checkMaxValueLength']! as bool).input(),
-      checkMinValueLength: map['checkMinValueLength'] == null ? null : (map['checkMinValueLength']! as bool).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableRegularExpression: map['enableRegularExpression'] == null ? null : (map['enableRegularExpression']! as bool).input(),
-      isBase64: map['isBase64'] == null ? null : (map['isBase64']! as bool).input(),
-      isCookie: map['isCookie'] == null ? null : (map['isCookie']! as bool).input(),
-      isHeader: map['isHeader'] == null ? null : (map['isHeader']! as bool).input(),
-      json: map['json'] == null ? null : (map['json']! as String).input(),
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      mandatory: map['mandatory'] == null ? null : (map['mandatory']! as bool).input(),
-      maxValueLength: map['maxValueLength'] == null ? null : (map['maxValueLength']! as int).input(),
-      metacharsOnParameterValueCheck: map['metacharsOnParameterValueCheck'] == null ? null : (map['metacharsOnParameterValueCheck']! as bool).input(),
-      minValueLength: map['minValueLength'] == null ? null : (map['minValueLength']! as int).input(),
-      name: (map['name'] as String).input(),
-      parameterLocation: map['parameterLocation'] == null ? null : (map['parameterLocation']! as String).input(),
-      performStaging: map['performStaging'] == null ? null : (map['performStaging']! as bool).input(),
-      sensitiveParameter: map['sensitiveParameter'] == null ? null : (map['sensitiveParameter']! as bool).input(),
-      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : ((map['signatureOverridesDisables']! as List).cast<int>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      url: map['url'] == null ? null : (GetWafEntityParameterUrl.fromMap((map['url']! as Map).cast<String, dynamic>())).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
+      allowEmptyType: (() {
+        final guardedValue = map['allowEmptyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowRepeatedParameterName: (() {
+        final guardedValue = map['allowRepeatedParameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      attackSignaturesCheck: (() {
+        final guardedValue = map['attackSignaturesCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      checkMaxValueLength: (() {
+        final guardedValue = map['checkMaxValueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      checkMinValueLength: (() {
+        final guardedValue = map['checkMinValueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableRegularExpression: (() {
+        final guardedValue = map['enableRegularExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isBase64: (() {
+        final guardedValue = map['isBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isCookie: (() {
+        final guardedValue = map['isCookie'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isHeader: (() {
+        final guardedValue = map['isHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      json: (() {
+        final guardedValue = map['json'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mandatory: (() {
+        final guardedValue = map['mandatory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxValueLength: (() {
+        final guardedValue = map['maxValueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      metacharsOnParameterValueCheck: (() {
+        final guardedValue = map['metacharsOnParameterValueCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      minValueLength: (() {
+        final guardedValue = map['minValueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameterLocation: (() {
+        final guardedValue = map['parameterLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performStaging: (() {
+        final guardedValue = map['performStaging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sensitiveParameter: (() {
+        final guardedValue = map['sensitiveParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      signatureOverridesDisables: (() {
+        final guardedValue = map['signatureOverridesDisables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GetWafEntityParameterUrl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      valueType: (() {
+        final guardedValue = map['valueType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

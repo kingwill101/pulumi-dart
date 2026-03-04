@@ -6,10 +6,15 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final pulumi.Input<String> mapBlockKey;
+
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
   final pulumi.Input<String>? shape;
+
   /// Configuration block for the current value of the slot. See `value`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue>? value;
+  final pulumi.Input<
+    V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue
+  >?
+  value;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
@@ -25,16 +30,33 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
     return <String, dynamic>{
       'mapBlockKey': mapBlockKey,
       'shape': ?shape,
-      'value': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlot.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlot(
-      mapBlockKey: (map['mapBlockKey'] as String).input(),
-      shape: map['shape'] == null ? null : ((map['shape'] as String).input()).input(),
-      value: map['value'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input()).input(),
+      mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
+      shape: (() {
+        final guardedValue = map['shape'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntentSlotValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

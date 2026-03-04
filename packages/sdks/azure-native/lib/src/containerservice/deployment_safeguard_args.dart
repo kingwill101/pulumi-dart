@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentSafeguardArgs {
   /// User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards
   final pulumi.Input<List<String>>? excludedNamespaces;
+
   /// The deployment safeguards level. Possible values are Warn and Enforce
   final pulumi.Input<String> level;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -34,10 +36,13 @@ class DeploymentSafeguardArgs {
 
   factory DeploymentSafeguardArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSafeguardArgs(
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces']! as List).cast<String>()).input(),
-      level: (map['level'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      excludedNamespaces: (() {
+        final guardedValue = map['excludedNamespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

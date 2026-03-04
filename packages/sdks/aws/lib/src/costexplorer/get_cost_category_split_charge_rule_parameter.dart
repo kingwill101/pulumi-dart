@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCostCategorySplitChargeRuleParameter {
   /// Parameter type.
   final pulumi.Input<String> type;
+
   /// Parameter values.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class GetCostCategorySplitChargeRuleParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'values': values,
-    };
+    return <String, dynamic>{'type': type, 'values': values};
   }
 
-  factory GetCostCategorySplitChargeRuleParameter.fromMap(Map<String, dynamic> map) {
+  factory GetCostCategorySplitChargeRuleParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCostCategorySplitChargeRuleParameter(
-      type: (map['type'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

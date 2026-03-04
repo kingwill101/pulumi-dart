@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   /// The SSML to be synthesized. For more information, see [SSML](https://developers.google.com/actions/reference/ssml).
   final pulumi.Input<String>? ssml;
+
   /// The raw text to be synthesized.
   final pulumi.Input<String>? text;
 
@@ -18,17 +19,23 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ssml': ?ssml,
-      'text': ?text,
-    };
+    return <String, dynamic>{'ssml': ?ssml, 'text': ?text};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech(
-      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
-      text: map['text'] == null ? null : (map['text']! as String).input(),
+      ssml: (() {
+        final guardedValue = map['ssml'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

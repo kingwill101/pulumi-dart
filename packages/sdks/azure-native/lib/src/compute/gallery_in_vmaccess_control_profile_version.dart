@@ -3,7 +3,6 @@ import 'access_control_rules_response.dart';
 import 'gallery_in_vmaccess_control_profile_version_args.dart';
 import 'replication_status_response.dart';
 import 'system_data_response.dart';
-import 'target_region_response.dart';
 
 /// Specifies information about the gallery inVMAccessControlProfile version that you want to create or update.
 ///
@@ -389,30 +388,43 @@ import 'target_region_response.dart';
 class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
   late final pulumi.Output<String> defaultAccess;
+
   /// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
   late final pulumi.Output<bool?> excludeFromLatest;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
   late final pulumi.Output<String> mode;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The timestamp for when the Resource Profile Version is published.
   late final pulumi.Output<String> publishedDate;
+
   /// This is the replication status of the gallery image version.
   late final pulumi.Output<ReplicationStatusResponse> replicationStatus;
+
   /// This is the Access Control Rules specification for an inVMAccessControlProfile version.
   late final pulumi.Output<AccessControlRulesResponse?> rules;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
-  late final pulumi.Output<List<TargetRegionResponse>?> targetLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> targetLocations;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -425,24 +437,28 @@ class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
     GalleryInVMAccessControlProfileVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:GalleryInVMAccessControlProfileVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultAccess = registerOutput<String>('defaultAccess');
-    this.excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
-    this.location = registerOutput<String>('location');
-    this.mode = registerOutput<String>('mode');
+         'azure-native:compute:GalleryInVMAccessControlProfileVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultAccess = registerOutput<String>('defaultAccess');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publishedDate = registerOutput<String>('publishedDate');
-    this.replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus');
-    this.rules = registerOutput<AccessControlRulesResponse?>('rules');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetLocations = registerOutput<List<TargetRegionResponse>?>('targetLocations');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    publishedDate = registerOutput<String>('publishedDate');
+    replicationStatus = registerOutput<ReplicationStatusResponse>(
+      'replicationStatus',
+    );
+    rules = registerOutput<AccessControlRulesResponse?>('rules');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetLocations = registerOutput<List<Map<String, dynamic>>?>(
+      'targetLocations',
+    );
+    type = registerOutput<String>('type');
   }
 }

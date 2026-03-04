@@ -12,20 +12,41 @@ import 'google_cloud_dialogflow_cx_v3beta1_response_message_text.dart';
 class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
   final pulumi.Input<String>? channel;
+
   /// Indicates that the conversation succeeded.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess>? conversationSuccess;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
+  >?
+  conversationSuccess;
+
   /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
   final pulumi.Input<Map<String, dynamic>>? knowledgeInfoCard;
+
   /// Hands off conversation to a human agent.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff>? liveAgentHandoff;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
+  >?
+  liveAgentHandoff;
+
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText>? outputAudioText;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
+  >?
+  outputAudioText;
+
   /// Returns a response containing a custom, platform-specific payload.
   final pulumi.Input<Map<String, String>>? payload;
+
   /// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio>? playAudio;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio>?
+  playAudio;
+
   /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall>? telephonyTransferCall;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall
+  >?
+  telephonyTransferCall;
+
   /// Returns a text response.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1ResponseMessageText>? text;
 
@@ -54,29 +75,118 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
-      'conversationSuccess': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess, Map<String, dynamic>>(conversationSuccess, (value) => value.toMap()),
+      'conversationSuccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess,
+            Map<String, dynamic>
+          >(conversationSuccess, (value) => value.toMap()),
       'knowledgeInfoCard': ?knowledgeInfoCard,
-      'liveAgentHandoff': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff, Map<String, dynamic>>(liveAgentHandoff, (value) => value.toMap()),
-      'outputAudioText': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText, Map<String, dynamic>>(outputAudioText, (value) => value.toMap()),
+      'liveAgentHandoff':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff,
+            Map<String, dynamic>
+          >(liveAgentHandoff, (value) => value.toMap()),
+      'outputAudioText':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText,
+            Map<String, dynamic>
+          >(outputAudioText, (value) => value.toMap()),
       'payload': ?payload,
-      'playAudio': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio, Map<String, dynamic>>(playAudio, (value) => value.toMap()),
-      'telephonyTransferCall': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall, Map<String, dynamic>>(telephonyTransferCall, (value) => value.toMap()),
-      'text': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1ResponseMessageText, Map<String, dynamic>>(text, (value) => value.toMap()),
+      'playAudio':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio,
+            Map<String, dynamic>
+          >(playAudio, (value) => value.toMap()),
+      'telephonyTransferCall':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall,
+            Map<String, dynamic>
+          >(telephonyTransferCall, (value) => value.toMap()),
+      'text':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageText,
+            Map<String, dynamic>
+          >(text, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessage(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
-      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : ((map['knowledgeInfoCard']! as Map).cast<String, dynamic>()).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : ((map['payload']! as Map).cast<String, String>()).input(),
-      playAudio: map['playAudio'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conversationSuccess: (() {
+        final guardedValue = map['conversationSuccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      knowledgeInfoCard: (() {
+        final guardedValue = map['knowledgeInfoCard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      liveAgentHandoff: (() {
+        final guardedValue = map['liveAgentHandoff'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      outputAudioText: (() {
+        final guardedValue = map['outputAudioText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      playAudio: (() {
+        final guardedValue = map['playAudio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      telephonyTransferCall: (() {
+        final guardedValue = map['telephonyTransferCall'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

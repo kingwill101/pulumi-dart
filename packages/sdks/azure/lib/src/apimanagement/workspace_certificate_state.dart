@@ -6,24 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceCertificateState {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementWorkspaceId;
+
   /// Specifies the base64-encoded string containing the certificate in PKCS#12 (.pfx) format.
   ///
-  /// > **Note:** This is required when `password` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
+  /// &gt; **Note:** This is required when `password` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
   final pulumi.Input<String>? certificateDataBase64;
+
   /// The expiration date of the API Management Workspace Certificate.
   final pulumi.Input<String>? expiration;
+
   /// Specifies the ID of the key vault secret.
   ///
-  /// > **Note:** This is required when `user_assigned_identity_client_id` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
+  /// &gt; **Note:** This is required when `user_assigned_identity_client_id` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the password used to access the `certificate_data_base64`.
   final pulumi.Input<String>? password;
+
   /// The subject name of the API Management Workspace Certificate.
   final pulumi.Input<String>? subject;
+
   /// The thumbprint of the API Management Workspace Certificate.
   final pulumi.Input<String>? thumbprint;
+
   /// Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
   final pulumi.Input<String>? userAssignedIdentityClientId;
 
@@ -65,16 +73,51 @@ class WorkspaceCertificateState {
 
   factory WorkspaceCertificateState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCertificateState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64']! as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId']! as String).input(),
+      apiManagementWorkspaceId: (() {
+        final guardedValue = map['apiManagementWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateDataBase64: (() {
+        final guardedValue = map['certificateDataBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiration: (() {
+        final guardedValue = map['expiration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityClientId: (() {
+        final guardedValue = map['userAssignedIdentityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

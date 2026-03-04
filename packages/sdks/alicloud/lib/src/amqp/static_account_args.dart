@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticAccountArgs {
   /// Access key.
   final pulumi.Input<String> accessKey;
+
   /// Amqp instance ID.
   final pulumi.Input<String> instanceId;
+
   /// Secret key.
   final pulumi.Input<String> secretKey;
 
@@ -34,10 +36,9 @@ class StaticAccountArgs {
 
   factory StaticAccountArgs.fromMap(Map<String, dynamic> map) {
     return StaticAccountArgs(
-      accessKey: (map['accessKey'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      secretKey: (map['secretKey'] as String).input(),
+      accessKey: pulumi.Input.fromValue(map['accessKey'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      secretKey: pulumi.Input.fromValue(map['secretKey'] as String),
     );
   }
 }
-

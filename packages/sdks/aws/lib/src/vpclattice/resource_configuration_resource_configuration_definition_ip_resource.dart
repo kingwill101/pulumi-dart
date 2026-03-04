@@ -13,15 +13,14 @@ class ResourceConfigurationResourceConfigurationDefinitionIpResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress};
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(Map<String, dynamic> map) {
+  factory ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceConfigurationResourceConfigurationDefinitionIpResource(
-      ipAddress: (map['ipAddress'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

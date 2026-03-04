@@ -28,10 +28,11 @@ class BasicPerfSampleSeriesResponse {
 
   factory BasicPerfSampleSeriesResponse.fromMap(Map<String, dynamic> map) {
     return BasicPerfSampleSeriesResponse(
-      perfMetricType: (map['perfMetricType'] as String).input(),
-      perfUnit: (map['perfUnit'] as String).input(),
-      sampleSeriesLabel: (map['sampleSeriesLabel'] as String).input(),
+      perfMetricType: pulumi.Input.fromValue(map['perfMetricType'] as String),
+      perfUnit: pulumi.Input.fromValue(map['perfUnit'] as String),
+      sampleSeriesLabel: pulumi.Input.fromValue(
+        map['sampleSeriesLabel'] as String,
+      ),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Address {
   /// First line of an Address.
   final pulumi.Input<String> address1;
+
   /// The second line of the Address. Optional.
   final pulumi.Input<String>? address2;
+
   /// The city for the address.
   final pulumi.Input<String> city;
+
   /// The country for the address.
   final pulumi.Input<String> country;
+
   /// The postal code for the address.
   final pulumi.Input<String> postalCode;
+
   /// The state or province for the address.
   final pulumi.Input<String> state;
 
@@ -46,13 +51,16 @@ class Address {
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
-      address1: (map['address1'] as String).input(),
-      address2: map['address2'] == null ? null : (map['address2']! as String).input(),
-      city: (map['city'] as String).input(),
-      country: (map['country'] as String).input(),
-      postalCode: (map['postalCode'] as String).input(),
-      state: (map['state'] as String).input(),
+      address1: pulumi.Input.fromValue(map['address1'] as String),
+      address2: (() {
+        final guardedValue = map['address2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      country: pulumi.Input.fromValue(map['country'] as String),
+      postalCode: pulumi.Input.fromValue(map['postalCode'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

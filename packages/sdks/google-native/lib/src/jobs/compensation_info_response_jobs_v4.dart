@@ -7,9 +7,13 @@ import 'compensation_range_response_jobs_v4.dart';
 /// Job compensation details.
 class CompensationInfoResponseJobsV4 {
   /// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-  final pulumi.Input<CompensationRangeResponseJobsV4> annualizedBaseCompensationRange;
+  final pulumi.Input<CompensationRangeResponseJobsV4>
+  annualizedBaseCompensationRange;
+
   /// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-  final pulumi.Input<CompensationRangeResponseJobsV4> annualizedTotalCompensationRange;
+  final pulumi.Input<CompensationRangeResponseJobsV4>
+  annualizedTotalCompensationRange;
+
   /// Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job.
   final pulumi.Input<List<CompensationEntryResponseJobsV4>> entries;
 
@@ -25,18 +29,53 @@ class CompensationInfoResponseJobsV4 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annualizedBaseCompensationRange': pulumi.Input.mapInputValue<CompensationRangeResponseJobsV4, Map<String, dynamic>>(annualizedBaseCompensationRange, (value) => value.toMap()),
-      'annualizedTotalCompensationRange': pulumi.Input.mapInputValue<CompensationRangeResponseJobsV4, Map<String, dynamic>>(annualizedTotalCompensationRange, (value) => value.toMap()),
-      'entries': pulumi.Input.mapInputValue<List<CompensationEntryResponseJobsV4>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<CompensationEntryResponseJobsV4, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'annualizedBaseCompensationRange':
+          pulumi.Input.mapInputValue<
+            CompensationRangeResponseJobsV4,
+            Map<String, dynamic>
+          >(annualizedBaseCompensationRange, (value) => value.toMap()),
+      'annualizedTotalCompensationRange':
+          pulumi.Input.mapInputValue<
+            CompensationRangeResponseJobsV4,
+            Map<String, dynamic>
+          >(annualizedTotalCompensationRange, (value) => value.toMap()),
+      'entries':
+          pulumi.Input.mapInputValue<
+            List<CompensationEntryResponseJobsV4>,
+            List<Map<String, dynamic>>
+          >(
+            entries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CompensationEntryResponseJobsV4,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CompensationInfoResponseJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationInfoResponseJobsV4(
-      annualizedBaseCompensationRange: (CompensationRangeResponseJobsV4.fromMap((map['annualizedBaseCompensationRange'] as Map).cast<String, dynamic>())).input(),
-      annualizedTotalCompensationRange: (CompensationRangeResponseJobsV4.fromMap((map['annualizedTotalCompensationRange'] as Map).cast<String, dynamic>())).input(),
-      entries: (pulumi.Input.decodeList<CompensationEntryResponseJobsV4>(map['entries'], (value) => CompensationEntryResponseJobsV4.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annualizedBaseCompensationRange: pulumi.Input.fromValue(
+        CompensationRangeResponseJobsV4.fromMap(
+          (map['annualizedBaseCompensationRange']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      annualizedTotalCompensationRange: pulumi.Input.fromValue(
+        CompensationRangeResponseJobsV4.fromMap(
+          (map['annualizedTotalCompensationRange']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      entries: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<CompensationEntryResponseJobsV4>(
+          map['entries']!,
+          (value) => CompensationEntryResponseJobsV4.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

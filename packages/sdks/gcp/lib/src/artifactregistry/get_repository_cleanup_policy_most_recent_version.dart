@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryCleanupPolicyMostRecentVersion {
   /// Minimum number of versions to keep.
   final pulumi.Input<int> keepCount;
+
   /// Match versions by package prefix. Applied on any prefix match.
   final pulumi.Input<List<String>> packageNamePrefixes;
 
@@ -23,11 +24,14 @@ class GetRepositoryCleanupPolicyMostRecentVersion {
     };
   }
 
-  factory GetRepositoryCleanupPolicyMostRecentVersion.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryCleanupPolicyMostRecentVersion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryCleanupPolicyMostRecentVersion(
-      keepCount: (map['keepCount'] as int).input(),
-      packageNamePrefixes: ((map['packageNamePrefixes'] as List).cast<String>()).input(),
+      keepCount: pulumi.Input.fromValue(map['keepCount'] as int),
+      packageNamePrefixes: pulumi.Input.fromValue(
+        (map['packageNamePrefixes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

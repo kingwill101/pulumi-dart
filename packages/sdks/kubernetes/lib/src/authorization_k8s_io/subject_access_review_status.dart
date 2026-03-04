@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubjectAccessReviewStatus {
   /// Allowed is required. True if the action would be allowed, false otherwise.
   final pulumi.Input<bool> allowed;
+
   /// Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.
   final pulumi.Input<bool>? denied;
+
   /// EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.
   final pulumi.Input<String>? evaluationError;
+
   /// Reason is optional.  It indicates why a request was allowed or denied.
   final pulumi.Input<String>? reason;
 
@@ -36,11 +39,22 @@ class SubjectAccessReviewStatus {
 
   factory SubjectAccessReviewStatus.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewStatus(
-      allowed: (map['allowed'] as bool).input(),
-      denied: map['denied'] == null ? null : (map['denied']! as bool).input(),
-      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      allowed: pulumi.Input.fromValue(map['allowed'] as bool),
+      denied: (() {
+        final guardedValue = map['denied'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      evaluationError: (() {
+        final guardedValue = map['evaluationError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

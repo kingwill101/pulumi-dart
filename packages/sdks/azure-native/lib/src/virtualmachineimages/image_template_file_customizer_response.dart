@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateFileCustomizerResponse {
   /// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
   final pulumi.Input<String>? destination;
+
   /// Friendly Name to provide context on what this customization step does
   final pulumi.Input<String>? name;
+
   /// SHA256 checksum of the file provided in the sourceUri field above
   final pulumi.Input<String>? sha256Checksum;
+
   /// The URI of the file to be uploaded for customizing the VM. It can be a github link, SAS URI for Azure Storage, etc
   final pulumi.Input<String>? sourceUri;
+
   /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// Expected value is 'File'.
   final pulumi.Input<String> type;
@@ -40,14 +44,31 @@ class ImageTemplateFileCustomizerResponse {
     };
   }
 
-  factory ImageTemplateFileCustomizerResponse.fromMap(Map<String, dynamic> map) {
+  factory ImageTemplateFileCustomizerResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageTemplateFileCustomizerResponse(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum']! as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
-      type: (map['type'] as String).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha256Checksum: (() {
+        final guardedValue = map['sha256Checksum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUri: (() {
+        final guardedValue = map['sourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

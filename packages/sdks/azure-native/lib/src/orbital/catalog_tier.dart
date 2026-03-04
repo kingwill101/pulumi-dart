@@ -2,16 +2,15 @@
 enum CatalogTier {
   basic("Basic");
 
-  const CatalogTier(this.value);
-  final String value;
+  const CatalogTier(this.wireValue);
+  final String wireValue;
 
   static CatalogTier fromValue(String value) {
     for (final item in CatalogTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CatalogTier value: $value');
   }
 }
-

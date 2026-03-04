@@ -3,16 +3,15 @@ enum PacketMirroringEnableComputeV1 {
   false_("FALSE"),
   true_("TRUE");
 
-  const PacketMirroringEnableComputeV1(this.value);
-  final String value;
+  const PacketMirroringEnableComputeV1(this.wireValue);
+  final String wireValue;
 
   static PacketMirroringEnableComputeV1 fromValue(String value) {
     for (final item in PacketMirroringEnableComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PacketMirroringEnableComputeV1 value: $value');
   }
 }
-

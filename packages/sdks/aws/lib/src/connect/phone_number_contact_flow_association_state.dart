@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PhoneNumberContactFlowAssociationState {
   /// Contact flow ID.
   final pulumi.Input<String>? contactFlowId;
+
   /// Amazon Connect instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// Phone number ID.
   final pulumi.Input<String>? phoneNumberId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,13 +37,30 @@ class PhoneNumberContactFlowAssociationState {
     };
   }
 
-  factory PhoneNumberContactFlowAssociationState.fromMap(Map<String, dynamic> map) {
+  factory PhoneNumberContactFlowAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PhoneNumberContactFlowAssociationState(
-      contactFlowId: map['contactFlowId'] == null ? null : ((map['contactFlowId'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      phoneNumberId: map['phoneNumberId'] == null ? null : ((map['phoneNumberId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      contactFlowId: (() {
+        final guardedValue = map['contactFlowId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumberId: (() {
+        final guardedValue = map['phoneNumberId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

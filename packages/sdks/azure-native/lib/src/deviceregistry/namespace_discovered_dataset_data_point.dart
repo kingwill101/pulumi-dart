@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceDiscoveredDatasetDataPoint {
   /// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
   final pulumi.Input<String>? dataPointConfiguration;
+
   /// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
   final pulumi.Input<String> dataSource;
+
   /// UTC timestamp indicating when the data point was added or modified.
   final pulumi.Input<String>? lastUpdatedOn;
+
   /// The name of the data point.
   final pulumi.Input<String> name;
+
   /// URI or type definition ID.
   final pulumi.Input<String>? typeRef;
 
@@ -39,14 +43,27 @@ class NamespaceDiscoveredDatasetDataPoint {
     };
   }
 
-  factory NamespaceDiscoveredDatasetDataPoint.fromMap(Map<String, dynamic> map) {
+  factory NamespaceDiscoveredDatasetDataPoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespaceDiscoveredDatasetDataPoint(
-      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration']! as String).input(),
-      dataSource: (map['dataSource'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
-      name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
+      dataPointConfiguration: (() {
+        final guardedValue = map['dataPointConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
+      lastUpdatedOn: (() {
+        final guardedValue = map['lastUpdatedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      typeRef: (() {
+        final guardedValue = map['typeRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

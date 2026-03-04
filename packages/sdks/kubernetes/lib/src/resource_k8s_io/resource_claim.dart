@@ -11,12 +11,16 @@ import 'resource_claim_status.dart';
 class ResourceClaim {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
   final pulumi.Input<ResourceClaimSpec> spec;
+
   /// Status describes whether the claim is ready to use and what has been allocated.
   final pulumi.Input<ResourceClaimStatus>? status;
 
@@ -38,20 +42,57 @@ class ResourceClaim {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': pulumi.Input.mapInputValue<ResourceClaimSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<ResourceClaimStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          pulumi.Input.mapInputValue<ResourceClaimSpec, Map<String, dynamic>>(
+            spec,
+            (value) => value.toMap(),
+          ),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceClaimStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory ResourceClaim.fromMap(Map<String, dynamic> map) {
     return ResourceClaim(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: (ResourceClaimSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ResourceClaimStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: pulumi.Input.fromValue(
+        ResourceClaimSpec.fromMap(
+          (map['spec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceClaimStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'get_recommendations_recommendation.dart';
 class GetRecommendationsResult {
   final List<String>? filterByCategories;
   final List<String>? filterByResourceGroups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// One or more `recommendations` blocks as defined below.
   final List<GetRecommendationsRecommendation> recommendations;
 
@@ -29,17 +31,34 @@ class GetRecommendationsResult {
       'filterByCategories': ?filterByCategories,
       'filterByResourceGroups': ?filterByResourceGroups,
       'id': id,
-      'recommendations': pulumi.Input.encodeList<GetRecommendationsRecommendation, Map<String, dynamic>>(recommendations, (value) => value.toMap()),
+      'recommendations':
+          pulumi.Input.encodeList<
+            GetRecommendationsRecommendation,
+            Map<String, dynamic>
+          >(recommendations, (value) => value.toMap()),
     };
   }
 
   factory GetRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsResult(
-      filterByCategories: map['filterByCategories'] == null ? null : (map['filterByCategories']! as List).cast<String>(),
-      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : (map['filterByResourceGroups']! as List).cast<String>(),
+      filterByCategories: (() {
+        final guardedValue = map['filterByCategories'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      filterByResourceGroups: (() {
+        final guardedValue = map['filterByResourceGroups'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
-      recommendations: pulumi.Input.decodeList<GetRecommendationsRecommendation>(map['recommendations'], (value) => GetRecommendationsRecommendation.fromMap((value as Map).cast<String, dynamic>())),
+      recommendations:
+          pulumi.Input.decodeList<GetRecommendationsRecommendation>(
+            map['recommendations']!,
+            (value) => GetRecommendationsRecommendation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

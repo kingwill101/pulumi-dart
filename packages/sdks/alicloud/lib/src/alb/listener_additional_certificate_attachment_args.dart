@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerAdditionalCertificateAttachmentArgs {
   /// The Certificate ID.
   final pulumi.Input<String> certificateId;
+
   /// The ID of the ALB listener.
   final pulumi.Input<String> listenerId;
 
@@ -27,11 +28,12 @@ class ListenerAdditionalCertificateAttachmentArgs {
     };
   }
 
-  factory ListenerAdditionalCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory ListenerAdditionalCertificateAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerAdditionalCertificateAttachmentArgs(
-      certificateId: (map['certificateId'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
+      certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
-

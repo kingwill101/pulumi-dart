@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizationRuleState {
   /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
   final pulumi.Input<String>? accessGroupId;
+
   /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
   final pulumi.Input<bool>? authorizeAllGroups;
+
   /// The ID of the Client VPN endpoint.
   final pulumi.Input<String>? clientVpnEndpointId;
+
   /// A brief description of the authorization rule.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IPv4 or IPv6 address range, in CIDR notation, of the network to which the authorization rule applies.
   final pulumi.Input<String>? targetNetworkCidr;
 
@@ -46,13 +51,36 @@ class AuthorizationRuleState {
 
   factory AuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleState(
-      accessGroupId: map['accessGroupId'] == null ? null : ((map['accessGroupId'] as String).input()).input(),
-      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : ((map['authorizeAllGroups'] as bool).input()).input(),
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      targetNetworkCidr: map['targetNetworkCidr'] == null ? null : ((map['targetNetworkCidr'] as String).input()).input(),
+      accessGroupId: (() {
+        final guardedValue = map['accessGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizeAllGroups: (() {
+        final guardedValue = map['authorizeAllGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clientVpnEndpointId: (() {
+        final guardedValue = map['clientVpnEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetNetworkCidr: (() {
+        final guardedValue = map['targetNetworkCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

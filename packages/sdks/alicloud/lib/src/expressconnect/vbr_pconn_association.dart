@@ -8,7 +8,7 @@ import 'vbr_pconn_association_state.dart';
 ///
 /// For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
 ///
-/// > **NOTE:** Available since v1.196.0.
+/// &gt; **NOTE:** Available since v1.196.0.
 ///
 /// ## Example Usage
 ///
@@ -315,35 +315,46 @@ import 'vbr_pconn_association_state.dart';
 class VbrPconnAssociation extends pulumi.CustomResource {
   /// (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
   late final pulumi.Output<String> circuitCode;
+
   /// Whether IPv6 is enabled. Value:
   late final pulumi.Output<bool> enableIpv6;
+
   /// The Alibaba cloud IP address of the VBR instance.
   late final pulumi.Output<String?> localGatewayIp;
+
   /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
   late final pulumi.Output<String?> localIpv6GatewayIp;
+
   /// The client IP address of the VBR instance.
   /// - This attribute only allows the VBR owner to specify or modify.
   /// - Required when creating a VBR instance for the physical connection owner.
   late final pulumi.Output<String?> peerGatewayIp;
+
   /// The IPv6 address of the client side of the VBR instance.
   /// - This attribute only allows the VBR owner to specify or modify.
   /// - Required when creating a VBR instance for the physical connection owner.
   late final pulumi.Output<String?> peerIpv6GatewayIp;
+
   /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
   /// Two IPv6 addresses must be in the same subnet.
   late final pulumi.Output<String?> peeringIpv6SubnetMask;
+
   /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
   /// The two IP addresses must be in the same subnet.
   late final pulumi.Output<String?> peeringSubnetMask;
+
   /// The ID of the leased line instance.
   late final pulumi.Output<String> physicalConnectionId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The ID of the VBR instance.
   late final pulumi.Output<String> vbrId;
+
   /// VLAN ID of the VBR. Valid values: **0 to 2999**.
   ///
-  /// > **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+  /// &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
   late final pulumi.Output<int> vlanId;
 
   /// Creates a new [VbrPconnAssociation].
@@ -355,23 +366,23 @@ class VbrPconnAssociation extends pulumi.CustomResource {
     VbrPconnAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.circuitCode = registerOutput<String>('circuitCode');
-    this.enableIpv6 = registerOutput<bool>('enableIpv6');
-    this.localGatewayIp = registerOutput<String?>('localGatewayIp');
-    this.localIpv6GatewayIp = registerOutput<String?>('localIpv6GatewayIp');
-    this.peerGatewayIp = registerOutput<String?>('peerGatewayIp');
-    this.peerIpv6GatewayIp = registerOutput<String?>('peerIpv6GatewayIp');
-    this.peeringIpv6SubnetMask = registerOutput<String?>('peeringIpv6SubnetMask');
-    this.peeringSubnetMask = registerOutput<String?>('peeringSubnetMask');
-    this.physicalConnectionId = registerOutput<String>('physicalConnectionId');
-    this.status = registerOutput<String>('status');
-    this.vbrId = registerOutput<String>('vbrId');
-    this.vlanId = registerOutput<int>('vlanId');
+         'alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    circuitCode = registerOutput<String>('circuitCode');
+    enableIpv6 = registerOutput<bool>('enableIpv6');
+    localGatewayIp = registerOutput<String?>('localGatewayIp');
+    localIpv6GatewayIp = registerOutput<String?>('localIpv6GatewayIp');
+    peerGatewayIp = registerOutput<String?>('peerGatewayIp');
+    peerIpv6GatewayIp = registerOutput<String?>('peerIpv6GatewayIp');
+    peeringIpv6SubnetMask = registerOutput<String?>('peeringIpv6SubnetMask');
+    peeringSubnetMask = registerOutput<String?>('peeringSubnetMask');
+    physicalConnectionId = registerOutput<String>('physicalConnectionId');
+    status = registerOutput<String>('status');
+    vbrId = registerOutput<String>('vbrId');
+    vlanId = registerOutput<int>('vlanId');
   }
 
   /// Gets an existing [VbrPconnAssociation] resource's state with the given [name] and [id].
@@ -392,22 +403,22 @@ class VbrPconnAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.circuitCode = registerOutput<String>('circuitCode');
-    this.enableIpv6 = registerOutput<bool>('enableIpv6');
-    this.localGatewayIp = registerOutput<String?>('localGatewayIp');
-    this.localIpv6GatewayIp = registerOutput<String?>('localIpv6GatewayIp');
-    this.peerGatewayIp = registerOutput<String?>('peerGatewayIp');
-    this.peerIpv6GatewayIp = registerOutput<String?>('peerIpv6GatewayIp');
-    this.peeringIpv6SubnetMask = registerOutput<String?>('peeringIpv6SubnetMask');
-    this.peeringSubnetMask = registerOutput<String?>('peeringSubnetMask');
-    this.physicalConnectionId = registerOutput<String>('physicalConnectionId');
-    this.status = registerOutput<String>('status');
-    this.vbrId = registerOutput<String>('vbrId');
-    this.vlanId = registerOutput<int>('vlanId');
+         'alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    circuitCode = registerOutput<String>('circuitCode');
+    enableIpv6 = registerOutput<bool>('enableIpv6');
+    localGatewayIp = registerOutput<String?>('localGatewayIp');
+    localIpv6GatewayIp = registerOutput<String?>('localIpv6GatewayIp');
+    peerGatewayIp = registerOutput<String?>('peerGatewayIp');
+    peerIpv6GatewayIp = registerOutput<String?>('peerIpv6GatewayIp');
+    peeringIpv6SubnetMask = registerOutput<String?>('peeringIpv6SubnetMask');
+    peeringSubnetMask = registerOutput<String?>('peeringSubnetMask');
+    physicalConnectionId = registerOutput<String>('physicalConnectionId');
+    status = registerOutput<String>('status');
+    vbrId = registerOutput<String>('vbrId');
+    vlanId = registerOutput<int>('vlanId');
   }
 }

@@ -1,0 +1,6 @@
+name: awsx-dart-ts-lb-attach-lambda
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX load balancer target attachment to Lambda in Dart.

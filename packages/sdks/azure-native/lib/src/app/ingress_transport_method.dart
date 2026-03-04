@@ -5,16 +5,15 @@ enum IngressTransportMethod {
   valueHttp2("http2"),
   valueTcp("tcp");
 
-  const IngressTransportMethod(this.value);
-  final String value;
+  const IngressTransportMethod(this.wireValue);
+  final String wireValue;
 
   static IngressTransportMethod fromValue(String value) {
     for (final item in IngressTransportMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IngressTransportMethod value: $value');
   }
 }
-

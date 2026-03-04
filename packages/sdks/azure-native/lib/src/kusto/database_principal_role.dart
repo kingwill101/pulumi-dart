@@ -7,16 +7,15 @@ enum DatabasePrincipalRole {
   valueUnrestrictedViewer("UnrestrictedViewer"),
   valueViewer("Viewer");
 
-  const DatabasePrincipalRole(this.value);
-  final String value;
+  const DatabasePrincipalRole(this.wireValue);
+  final String wireValue;
 
   static DatabasePrincipalRole fromValue(String value) {
     for (final item in DatabasePrincipalRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabasePrincipalRole value: $value');
   }
 }
-

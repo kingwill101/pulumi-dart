@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBoxSnapshotArgs {
   /// Description of the Storage Box Snapshot.
   final pulumi.Input<String>? description;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// ID of the Storage Box.
   final pulumi.Input<int> storageBoxId;
 
@@ -34,10 +36,19 @@ class StorageBoxSnapshotArgs {
 
   factory StorageBoxSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      storageBoxId: (map['storageBoxId'] as int).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
     );
   }
 }
-

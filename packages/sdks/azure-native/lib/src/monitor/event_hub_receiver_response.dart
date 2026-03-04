@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubReceiverResponse {
   /// The name of the specific Event Hub queue
   final pulumi.Input<String> eventHubName;
+
   /// The Event Hub namespace
   final pulumi.Input<String> eventHubNameSpace;
+
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
   final pulumi.Input<String>? managedIdentity;
+
   /// The name of the Event hub receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
+
   /// The Id for the subscription containing this event hub
   final pulumi.Input<String> subscriptionId;
+
   /// The tenant Id for the subscription containing this event hub
   final pulumi.Input<String>? tenantId;
+
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool>? useCommonAlertSchema;
 
@@ -51,14 +57,27 @@ class EventHubReceiverResponse {
 
   factory EventHubReceiverResponse.fromMap(Map<String, dynamic> map) {
     return EventHubReceiverResponse(
-      eventHubName: (map['eventHubName'] as String).input(),
-      eventHubNameSpace: (map['eventHubNameSpace'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
-      name: (map['name'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
+      eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
+      eventHubNameSpace: pulumi.Input.fromValue(
+        map['eventHubNameSpace'] as String,
+      ),
+      managedIdentity: (() {
+        final guardedValue = map['managedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useCommonAlertSchema: (() {
+        final guardedValue = map['useCommonAlertSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

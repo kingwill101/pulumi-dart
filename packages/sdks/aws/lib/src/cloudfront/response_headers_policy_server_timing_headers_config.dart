@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseHeadersPolicyServerTimingHeadersConfig {
   /// A Whether CloudFront adds the `Server-Timing` header to HTTP responses that it sends in response to requests that match a cache behavior that's associated with this response headers policy.
   final pulumi.Input<bool> enabled;
+
   /// A number 0–100 (inclusive) that specifies the percentage of responses that you want CloudFront to add the Server-Timing header to. Valid range: Minimum value of 0.0. Maximum value of 100.0.
   final pulumi.Input<double> samplingRate;
 
@@ -17,17 +18,15 @@ class ResponseHeadersPolicyServerTimingHeadersConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'samplingRate': samplingRate,
-    };
+    return <String, dynamic>{'enabled': enabled, 'samplingRate': samplingRate};
   }
 
-  factory ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicyServerTimingHeadersConfig(
-      enabled: (map['enabled'] as bool).input(),
-      samplingRate: (map['samplingRate'] as double).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      samplingRate: pulumi.Input.fromValue(map['samplingRate'] as double),
     );
   }
 }
-

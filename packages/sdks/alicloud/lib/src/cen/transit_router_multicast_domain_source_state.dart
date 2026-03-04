@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterMulticastDomainSourceState {
   /// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
   final pulumi.Input<String>? groupIpAddress;
+
   /// ENI ID of the multicast source.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// The ID of the multicast domain to which the multicast source belongs.
   final pulumi.Input<String>? transitRouterMulticastDomainId;
+
   /// The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
   final pulumi.Input<String>? vpcId;
 
@@ -39,14 +43,35 @@ class TransitRouterMulticastDomainSourceState {
     };
   }
 
-  factory TransitRouterMulticastDomainSourceState.fromMap(Map<String, dynamic> map) {
+  factory TransitRouterMulticastDomainSourceState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitRouterMulticastDomainSourceState(
-      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress']! as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      groupIpAddress: (() {
+        final guardedValue = map['groupIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterMulticastDomainId: (() {
+        final guardedValue = map['transitRouterMulticastDomainId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

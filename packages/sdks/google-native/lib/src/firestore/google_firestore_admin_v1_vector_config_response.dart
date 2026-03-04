@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleFirestoreAdminV1VectorConfigResponse {
   /// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
   final pulumi.Input<int> dimension;
+
   /// Indicates the vector index is a flat index.
   final pulumi.Input<Map<String, dynamic>> flat;
 
@@ -18,17 +19,17 @@ class GoogleFirestoreAdminV1VectorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dimension': dimension,
-      'flat': flat,
-    };
+    return <String, dynamic>{'dimension': dimension, 'flat': flat};
   }
 
-  factory GoogleFirestoreAdminV1VectorConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleFirestoreAdminV1VectorConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleFirestoreAdminV1VectorConfigResponse(
-      dimension: (map['dimension'] as int).input(),
-      flat: ((map['flat'] as Map).cast<String, dynamic>()).input(),
+      dimension: pulumi.Input.fromValue(map['dimension'] as int),
+      flat: pulumi.Input.fromValue(
+        (map['flat']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

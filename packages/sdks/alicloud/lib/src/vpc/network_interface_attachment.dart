@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_attachment_args.dart';
 import 'network_interface_attachment_state.dart';
 
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsNetworkInterfaceAttachment from version 1.123.1.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsNetworkInterfaceAttachment from version 1.123.1.
 ///
 /// Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
 ///
@@ -19,6 +19,7 @@ class NetworkInterfaceAttachment extends pulumi.CustomResource {
   /// The instance ID to attach.
   late final pulumi.Output<String> instanceId;
   late final pulumi.Output<int?> networkCardIndex;
+
   /// The ENI ID to attach.
   late final pulumi.Output<String> networkInterfaceId;
   late final pulumi.Output<String?> trunkNetworkInstanceId;
@@ -33,16 +34,18 @@ class NetworkInterfaceAttachment extends pulumi.CustomResource {
     NetworkInterfaceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.networkCardIndex = registerOutput<int?>('networkCardIndex');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.trunkNetworkInstanceId = registerOutput<String?>('trunkNetworkInstanceId');
-    this.waitForNetworkConfigurationReady = registerOutput<bool?>('waitForNetworkConfigurationReady');
+         'alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    networkCardIndex = registerOutput<int?>('networkCardIndex');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    trunkNetworkInstanceId = registerOutput<String?>('trunkNetworkInstanceId');
+    waitForNetworkConfigurationReady = registerOutput<bool?>(
+      'waitForNetworkConfigurationReady',
+    );
   }
 
   /// Gets an existing [NetworkInterfaceAttachment] resource's state with the given [name] and [id].
@@ -63,15 +66,17 @@ class NetworkInterfaceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.networkCardIndex = registerOutput<int?>('networkCardIndex');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.trunkNetworkInstanceId = registerOutput<String?>('trunkNetworkInstanceId');
-    this.waitForNetworkConfigurationReady = registerOutput<bool?>('waitForNetworkConfigurationReady');
+         'alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    networkCardIndex = registerOutput<int?>('networkCardIndex');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    trunkNetworkInstanceId = registerOutput<String?>('trunkNetworkInstanceId');
+    waitForNetworkConfigurationReady = registerOutput<bool?>(
+      'waitForNetworkConfigurationReady',
+    );
   }
 }

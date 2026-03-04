@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppPrivateEndpointConnectionSlotArgs {
   /// Name of the site.
   final pulumi.Input<String> name;
+
   /// Name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the site deployment slot.
   final pulumi.Input<String> slot;
 
@@ -37,13 +40,18 @@ class GetWebAppPrivateEndpointConnectionSlotArgs {
     };
   }
 
-  factory GetWebAppPrivateEndpointConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppPrivateEndpointConnectionSlotArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppPrivateEndpointConnectionSlotArgs(
-      name: (map['name'] as String).input(),
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

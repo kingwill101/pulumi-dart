@@ -5,16 +5,22 @@ enum OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha {
   shell("SHELL"),
   powershell("POWERSHELL");
 
-  const OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha(this.value);
-  final String value;
+  const OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha fromValue(String value) {
-    for (final item in OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.values) {
-      if (item.value == value) {
+  static OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha value: $value',
+    );
   }
 }
-

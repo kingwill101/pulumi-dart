@@ -10,40 +10,58 @@ import 'network_interface_response.dart';
 class ComputeEngineTargetDetailsResponse {
   /// Additional licenses to assign to the VM.
   final pulumi.Input<List<String>> additionalLicenses;
+
   /// The OS license returned from the adaptation module report.
   final pulumi.Input<AppliedLicenseResponse> appliedLicense;
+
   /// The VM Boot Option, as set in the source VM.
   final pulumi.Input<String> bootOption;
+
   /// Compute instance scheduling information (if empty default is used).
   final pulumi.Input<ComputeSchedulingResponse> computeScheduling;
+
   /// The disk type to use in the VM.
   final pulumi.Input<String> diskType;
+
   /// Optional. The encryption to apply to the VM disks.
   final pulumi.Input<EncryptionResponse> encryption;
+
   /// The hostname to assign to the VM.
   final pulumi.Input<String> hostname;
+
   /// A map of labels to associate with the VM.
   final pulumi.Input<Map<String, String>> labels;
+
   /// The license type to use in OS adaptation.
   final pulumi.Input<String> licenseType;
+
   /// The machine type to create the VM with.
   final pulumi.Input<String> machineType;
+
   /// The machine type series to create the VM with.
   final pulumi.Input<String> machineTypeSeries;
+
   /// The metadata key/value pairs to assign to the VM.
   final pulumi.Input<Map<String, String>> metadata;
+
   /// List of NICs connected to this VM.
   final pulumi.Input<List<NetworkInterfaceResponse>> networkInterfaces;
+
   /// A list of network tags to associate with the VM.
   final pulumi.Input<List<String>> networkTags;
+
   /// The Google Cloud target project ID or project name.
   final pulumi.Input<String> project;
+
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
   final pulumi.Input<bool> secureBoot;
+
   /// The service account to associate the VM with.
   final pulumi.Input<String> serviceAccount;
+
   /// The name of the VM to create.
   final pulumi.Input<String> vmName;
+
   /// The zone in which to create the VM.
   final pulumi.Input<String> zone;
 
@@ -92,18 +110,41 @@ class ComputeEngineTargetDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalLicenses': additionalLicenses,
-      'appliedLicense': pulumi.Input.mapInputValue<AppliedLicenseResponse, Map<String, dynamic>>(appliedLicense, (value) => value.toMap()),
+      'appliedLicense':
+          pulumi.Input.mapInputValue<
+            AppliedLicenseResponse,
+            Map<String, dynamic>
+          >(appliedLicense, (value) => value.toMap()),
       'bootOption': bootOption,
-      'computeScheduling': pulumi.Input.mapInputValue<ComputeSchedulingResponse, Map<String, dynamic>>(computeScheduling, (value) => value.toMap()),
+      'computeScheduling':
+          pulumi.Input.mapInputValue<
+            ComputeSchedulingResponse,
+            Map<String, dynamic>
+          >(computeScheduling, (value) => value.toMap()),
       'diskType': diskType,
-      'encryption': pulumi.Input.mapInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          pulumi.Input.mapInputValue<EncryptionResponse, Map<String, dynamic>>(
+            encryption,
+            (value) => value.toMap(),
+          ),
       'hostname': hostname,
       'labels': labels,
       'licenseType': licenseType,
       'machineType': machineType,
       'machineTypeSeries': machineTypeSeries,
       'metadata': metadata,
-      'networkInterfaces': pulumi.Input.mapInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          pulumi.Input.mapInputValue<
+            List<NetworkInterfaceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkInterfaceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'networkTags': networkTags,
       'project': project,
       'secureBoot': secureBoot,
@@ -115,26 +156,54 @@ class ComputeEngineTargetDetailsResponse {
 
   factory ComputeEngineTargetDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ComputeEngineTargetDetailsResponse(
-      additionalLicenses: ((map['additionalLicenses'] as List).cast<String>()).input(),
-      appliedLicense: (AppliedLicenseResponse.fromMap((map['appliedLicense'] as Map).cast<String, dynamic>())).input(),
-      bootOption: (map['bootOption'] as String).input(),
-      computeScheduling: (ComputeSchedulingResponse.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>())).input(),
-      diskType: (map['diskType'] as String).input(),
-      encryption: (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      hostname: (map['hostname'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      licenseType: (map['licenseType'] as String).input(),
-      machineType: (map['machineType'] as String).input(),
-      machineTypeSeries: (map['machineTypeSeries'] as String).input(),
-      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
-      networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkTags: ((map['networkTags'] as List).cast<String>()).input(),
-      project: (map['project'] as String).input(),
-      secureBoot: (map['secureBoot'] as bool).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
-      vmName: (map['vmName'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      additionalLicenses: pulumi.Input.fromValue(
+        (map['additionalLicenses'] as List).cast<String>(),
+      ),
+      appliedLicense: pulumi.Input.fromValue(
+        AppliedLicenseResponse.fromMap(
+          (map['appliedLicense']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      bootOption: pulumi.Input.fromValue(map['bootOption'] as String),
+      computeScheduling: pulumi.Input.fromValue(
+        ComputeSchedulingResponse.fromMap(
+          (map['computeScheduling']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
+      encryption: pulumi.Input.fromValue(
+        EncryptionResponse.fromMap(
+          (map['encryption']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
+      machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      machineTypeSeries: pulumi.Input.fromValue(
+        map['machineTypeSeries'] as String,
+      ),
+      metadata: pulumi.Input.fromValue(
+        (map['metadata'] as Map).cast<String, String>(),
+      ),
+      networkInterfaces: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NetworkInterfaceResponse>(
+          map['networkInterfaces']!,
+          (value) => NetworkInterfaceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      networkTags: pulumi.Input.fromValue(
+        (map['networkTags'] as List).cast<String>(),
+      ),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      secureBoot: pulumi.Input.fromValue(map['secureBoot'] as bool),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
+      vmName: pulumi.Input.fromValue(map['vmName'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

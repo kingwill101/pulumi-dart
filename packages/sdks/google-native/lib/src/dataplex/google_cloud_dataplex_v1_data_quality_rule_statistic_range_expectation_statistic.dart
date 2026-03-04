@@ -5,16 +5,22 @@ enum GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
   min("MIN"),
   max("MAX");
 
-  const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(this.value);
-  final String value;
+  const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic fromValue(String value) {
-    for (final item in GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic.values) {
-      if (item.value == value) {
+  static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic value: $value',
+    );
   }
 }
-

@@ -3,16 +3,15 @@ enum Workload {
   valueProduction("Production"),
   valueDevTest("DevTest");
 
-  const Workload(this.value);
-  final String value;
+  const Workload(this.wireValue);
+  final String wireValue;
 
   static Workload fromValue(String value) {
     for (final item in Workload.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Workload value: $value');
   }
 }
-

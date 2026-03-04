@@ -31,10 +31,9 @@ class GetRatePlanArgs {
 
   factory GetRatePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetRatePlanArgs(
-      apiproductId: (map['apiproductId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      rateplanId: (map['rateplanId'] as String).input(),
+      apiproductId: pulumi.Input.fromValue(map['apiproductId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      rateplanId: pulumi.Input.fromValue(map['rateplanId'] as String),
     );
   }
 }
-

@@ -311,34 +311,49 @@ import 'week_details_response.dart';
 class Schedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of the schedule.
   late final pulumi.Output<String> createdDate;
+
   /// If the schedule will occur once each day of the week, specify the daily recurrence.
   late final pulumi.Output<DayDetailsResponse?> dailyRecurrence;
+
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
   late final pulumi.Output<HourDetailsResponse?> hourlyRecurrence;
+
   /// The location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Notification settings.
   late final pulumi.Output<NotificationSettingsResponse?> notificationSettings;
+
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The status of the schedule (i.e. Enabled, Disabled)
   late final pulumi.Output<String?> status;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource ID to which the schedule belongs
   late final pulumi.Output<String?> targetResourceId;
+
   /// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
   late final pulumi.Output<String?> taskType;
-  /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
+
+  /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   late final pulumi.Output<String?> timeZoneId;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
+
   /// If the schedule will occur only some days of the week, specify the weekly recurrence.
   late final pulumi.Output<WeekDetailsResponse?> weeklyRecurrence;
 
@@ -351,26 +366,28 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devtestlab:Schedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.dailyRecurrence = registerOutput<DayDetailsResponse?>('dailyRecurrence');
-    this.hourlyRecurrence = registerOutput<HourDetailsResponse?>('hourlyRecurrence');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devtestlab:Schedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    dailyRecurrence = registerOutput<DayDetailsResponse?>('dailyRecurrence');
+    hourlyRecurrence = registerOutput<HourDetailsResponse?>('hourlyRecurrence');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.notificationSettings = registerOutput<NotificationSettingsResponse?>('notificationSettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String?>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceId = registerOutput<String?>('targetResourceId');
-    this.taskType = registerOutput<String?>('taskType');
-    this.timeZoneId = registerOutput<String?>('timeZoneId');
-    this.type = registerOutput<String>('type');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    this.weeklyRecurrence = registerOutput<WeekDetailsResponse?>('weeklyRecurrence');
+    notificationSettings = registerOutput<NotificationSettingsResponse?>(
+      'notificationSettings',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    taskType = registerOutput<String?>('taskType');
+    timeZoneId = registerOutput<String?>('timeZoneId');
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    weeklyRecurrence = registerOutput<WeekDetailsResponse?>('weeklyRecurrence');
   }
 }

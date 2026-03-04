@@ -31,10 +31,13 @@ class GetTargetProjectArgs {
 
   factory GetTargetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetProjectArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetProjectId: (map['targetProjectId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetProjectId: pulumi.Input.fromValue(map['targetProjectId'] as String),
     );
   }
 }
-

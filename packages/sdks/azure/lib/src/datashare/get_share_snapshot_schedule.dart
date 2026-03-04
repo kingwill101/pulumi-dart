@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareSnapshotSchedule {
   /// The name of this Data Share.
   final pulumi.Input<String> name;
+
   /// The interval of the synchronization with the source data.
   final pulumi.Input<String> recurrence;
+
   /// The synchronization with the source data's start time.
   final pulumi.Input<String> startTime;
 
@@ -30,10 +32,9 @@ class GetShareSnapshotSchedule {
 
   factory GetShareSnapshotSchedule.fromMap(Map<String, dynamic> map) {
     return GetShareSnapshotSchedule(
-      name: (map['name'] as String).input(),
-      recurrence: (map['recurrence'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      recurrence: pulumi.Input.fromValue(map['recurrence'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

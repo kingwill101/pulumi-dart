@@ -5,18 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
   /// A short phrase to describe what this parameter contains.
   final pulumi.Input<String> descriptivePhrase;
+
   /// Detailed help text for this parameter containing information not provided elsewhere. For example, instructions on how to migrate from a deprecated parameter.
   final pulumi.Input<String> helpText;
+
   /// Whether the default value is hidden in the UI.
   final pulumi.Input<bool> hideDefaultValue;
   final pulumi.Input<String> inputDisplayOption;
+
   /// Whether this field is hidden in the UI.
   final pulumi.Input<bool> isHidden;
+
   /// A user-friendly label for the parameter.
   final pulumi.Input<String> label;
   final pulumi.Input<String> parameterNameOption;
+
   /// A user-friendly label for subSection under which the parameter will be displayed.
   final pulumi.Input<String> subSectionLabel;
+
   /// Placeholder text which will appear in the UI input form for this parameter.
   final pulumi.Input<String> uiPlaceholderText;
 
@@ -56,18 +62,27 @@ class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse(
-      descriptivePhrase: (map['descriptivePhrase'] as String).input(),
-      helpText: (map['helpText'] as String).input(),
-      hideDefaultValue: (map['hideDefaultValue'] as bool).input(),
-      inputDisplayOption: (map['inputDisplayOption'] as String).input(),
-      isHidden: (map['isHidden'] as bool).input(),
-      label: (map['label'] as String).input(),
-      parameterNameOption: (map['parameterNameOption'] as String).input(),
-      subSectionLabel: (map['subSectionLabel'] as String).input(),
-      uiPlaceholderText: (map['uiPlaceholderText'] as String).input(),
+      descriptivePhrase: pulumi.Input.fromValue(
+        map['descriptivePhrase'] as String,
+      ),
+      helpText: pulumi.Input.fromValue(map['helpText'] as String),
+      hideDefaultValue: pulumi.Input.fromValue(map['hideDefaultValue'] as bool),
+      inputDisplayOption: pulumi.Input.fromValue(
+        map['inputDisplayOption'] as String,
+      ),
+      isHidden: pulumi.Input.fromValue(map['isHidden'] as bool),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      parameterNameOption: pulumi.Input.fromValue(
+        map['parameterNameOption'] as String,
+      ),
+      subSectionLabel: pulumi.Input.fromValue(map['subSectionLabel'] as String),
+      uiPlaceholderText: pulumi.Input.fromValue(
+        map['uiPlaceholderText'] as String,
+      ),
     );
   }
 }
-

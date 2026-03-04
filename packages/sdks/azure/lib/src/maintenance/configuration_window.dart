@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationWindow {
   /// The duration of the maintenance window in HH:mm format.
   final pulumi.Input<String>? duration;
+
   /// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
   final pulumi.Input<String>? expirationDateTime;
+
   /// The rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
   final pulumi.Input<String>? recurEvery;
+
   /// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format.
   final pulumi.Input<String> startDateTime;
+
   /// The time zone for the maintenance window. A list of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
   final pulumi.Input<String> timeZone;
 
@@ -40,12 +44,23 @@ class ConfigurationWindow {
 
   factory ConfigurationWindow.fromMap(Map<String, dynamic> map) {
     return ConfigurationWindow(
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
-      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime']! as String).input(),
-      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery']! as String).input(),
-      startDateTime: (map['startDateTime'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationDateTime: (() {
+        final guardedValue = map['expirationDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recurEvery: (() {
+        final guardedValue = map['recurEvery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startDateTime: pulumi.Input.fromValue(map['startDateTime'] as String),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

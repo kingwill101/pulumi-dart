@@ -8,16 +8,17 @@ enum SoftwareRecipeStepExtractArchiveType {
   tarXz("TAR_XZ"),
   zip("ZIP");
 
-  const SoftwareRecipeStepExtractArchiveType(this.value);
-  final String value;
+  const SoftwareRecipeStepExtractArchiveType(this.wireValue);
+  final String wireValue;
 
   static SoftwareRecipeStepExtractArchiveType fromValue(String value) {
     for (final item in SoftwareRecipeStepExtractArchiveType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoftwareRecipeStepExtractArchiveType value: $value');
+    throw ArgumentError(
+      'Unknown SoftwareRecipeStepExtractArchiveType value: $value',
+    );
   }
 }
-

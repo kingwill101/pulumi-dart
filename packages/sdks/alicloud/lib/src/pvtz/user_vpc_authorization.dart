@@ -4,7 +4,7 @@ import 'user_vpc_authorization_state.dart';
 
 /// Provides a Private Zone User Vpc Authorization resource.
 ///
-/// > **NOTE:** Available since v1.138.0.
+/// &gt; **NOTE:** Available since v1.138.0.
 ///
 /// ## Example Usage
 ///
@@ -137,8 +137,10 @@ import 'user_vpc_authorization_state.dart';
 class UserVpcAuthorization extends pulumi.CustomResource {
   /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
   late final pulumi.Output<String?> authChannel;
+
   /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
   late final pulumi.Output<String?> authType;
+
   /// The primary account ID of the user who authorizes the resource.
   late final pulumi.Output<String> authorizedUserId;
 
@@ -151,14 +153,14 @@ class UserVpcAuthorization extends pulumi.CustomResource {
     UserVpcAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authChannel = registerOutput<String?>('authChannel');
-    this.authType = registerOutput<String?>('authType');
-    this.authorizedUserId = registerOutput<String>('authorizedUserId');
+         'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authChannel = registerOutput<String?>('authChannel');
+    authType = registerOutput<String?>('authType');
+    authorizedUserId = registerOutput<String>('authorizedUserId');
   }
 
   /// Gets an existing [UserVpcAuthorization] resource's state with the given [name] and [id].
@@ -179,13 +181,13 @@ class UserVpcAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authChannel = registerOutput<String?>('authChannel');
-    this.authType = registerOutput<String?>('authType');
-    this.authorizedUserId = registerOutput<String>('authorizedUserId');
+         'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authChannel = registerOutput<String?>('authChannel');
+    authType = registerOutput<String?>('authType');
+    authorizedUserId = registerOutput<String>('authorizedUserId');
   }
 }

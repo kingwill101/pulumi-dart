@@ -271,7 +271,7 @@ import 'analytics_solution_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationsManagement` - 2015-11-01-preview
@@ -286,16 +286,22 @@ import 'analytics_solution_state.dart';
 class AnalyticsSolution extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `plan` block as documented below.
   late final pulumi.Output<AnalyticsSolutionPlan> plan;
+
   /// The name of the resource group in which the Log Analytics solution is created. Changing this forces a new resource to be created. Note: The solution and its related workspace can only exist in the same resource group.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the solution to be deployed. See [here for options](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions).Changing this forces a new resource to be created.
   late final pulumi.Output<String> solutionName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The full name of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceName;
+
   /// The full resource ID of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceResourceId;
 
@@ -308,18 +314,18 @@ class AnalyticsSolution extends pulumi.CustomResource {
     AnalyticsSolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.plan = registerOutput<AnalyticsSolutionPlan>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.solutionName = registerOutput<String>('solutionName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceName = registerOutput<String>('workspaceName');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+         'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    plan = registerOutput<AnalyticsSolutionPlan>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    solutionName = registerOutput<String>('solutionName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceName = registerOutput<String>('workspaceName');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 
   /// Gets an existing [AnalyticsSolution] resource's state with the given [name] and [id].
@@ -340,17 +346,17 @@ class AnalyticsSolution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.plan = registerOutput<AnalyticsSolutionPlan>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.solutionName = registerOutput<String>('solutionName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceName = registerOutput<String>('workspaceName');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+         'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    plan = registerOutput<AnalyticsSolutionPlan>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    solutionName = registerOutput<String>('solutionName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceName = registerOutput<String>('workspaceName');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 }

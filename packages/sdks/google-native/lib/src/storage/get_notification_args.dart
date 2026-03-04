@@ -31,10 +31,13 @@ class GetNotificationArgs {
 
   factory GetNotificationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationArgs(
-      bucket: (map['bucket'] as String).input(),
-      notification: (map['notification'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      notification: pulumi.Input.fromValue(map['notification'] as String),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

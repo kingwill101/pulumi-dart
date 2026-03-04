@@ -10,20 +10,21 @@ enum EventSource {
   valueSecureScoreControls("SecureScoreControls"),
   valueSecureScoreControlsSnapshot("SecureScoreControlsSnapshot"),
   valueRegulatoryComplianceAssessment("RegulatoryComplianceAssessment"),
-  valueRegulatoryComplianceAssessmentSnapshot("RegulatoryComplianceAssessmentSnapshot"),
+  valueRegulatoryComplianceAssessmentSnapshot(
+    "RegulatoryComplianceAssessmentSnapshot",
+  ),
   valueAttackPaths("AttackPaths"),
   valueAttackPathsSnapshot("AttackPathsSnapshot");
 
-  const EventSource(this.value);
-  final String value;
+  const EventSource(this.wireValue);
+  final String wireValue;
 
   static EventSource fromValue(String value) {
     for (final item in EventSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventSource value: $value');
   }
 }
-

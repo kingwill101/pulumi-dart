@@ -3,16 +3,15 @@ enum ApprovalPolicy {
   required("Required"),
   notRequired("NotRequired");
 
-  const ApprovalPolicy(this.value);
-  final String value;
+  const ApprovalPolicy(this.wireValue);
+  final String wireValue;
 
   static ApprovalPolicy fromValue(String value) {
     for (final item in ApprovalPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApprovalPolicy value: $value');
   }
 }
-

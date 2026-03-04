@@ -149,24 +149,35 @@ import 'user_assigned_service_identity_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates any errors on the connector resource.
   late final pulumi.Output<ConnectorErrorDefinitionResponse> errors;
+
   /// Managed service identity (user assigned identities)
   late final pulumi.Output<UserAssignedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Managed resource group configuration
-  late final pulumi.Output<ManagedRGConfigurationResponse?> managedResourceGroupConfiguration;
+  late final pulumi.Output<ManagedRGConfigurationResponse?>
+  managedResourceGroupConfiguration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines the ID of the connector's source resource.
   late final pulumi.Output<String> sourceResourceId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,21 +190,24 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errors = registerOutput<ConnectorErrorDefinitionResponse>('errors');
-    this.identity = registerOutput<UserAssignedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupConfiguration = registerOutput<ManagedRGConfigurationResponse?>('managedResourceGroupConfiguration');
+         'azure-native:workloads:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<ConnectorErrorDefinitionResponse>('errors');
+    identity = registerOutput<UserAssignedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration =
+        registerOutput<ManagedRGConfigurationResponse?>(
+          'managedResourceGroupConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

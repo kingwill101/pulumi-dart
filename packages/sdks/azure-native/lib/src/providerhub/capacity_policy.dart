@@ -3,16 +3,15 @@ enum CapacityPolicy {
   default_("Default"),
   restricted("Restricted");
 
-  const CapacityPolicy(this.value);
-  final String value;
+  const CapacityPolicy(this.wireValue);
+  final String wireValue;
 
   static CapacityPolicy fromValue(String value) {
     for (final item in CapacityPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CapacityPolicy value: $value');
   }
 }
-

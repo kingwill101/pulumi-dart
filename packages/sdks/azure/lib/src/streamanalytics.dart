@@ -1,5 +1,3 @@
-library module_streamanalytics;
-
 export 'streamanalytics/cluster.dart';
 export 'streamanalytics/cluster_args.dart';
 export 'streamanalytics/cluster_state.dart';

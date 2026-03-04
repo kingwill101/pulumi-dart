@@ -3,16 +3,15 @@ enum LanguageExtensionName {
   valuePYTHON("PYTHON"),
   valueR("R");
 
-  const LanguageExtensionName(this.value);
-  final String value;
+  const LanguageExtensionName(this.wireValue);
+  final String wireValue;
 
   static LanguageExtensionName fromValue(String value) {
     for (final item in LanguageExtensionName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LanguageExtensionName value: $value');
   }
 }
-

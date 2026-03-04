@@ -8,22 +8,31 @@ import 'system_data_response.dart';
 class GetMoveCollectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The etag of the resource.
   final String etag;
+
   /// Fully qualified resource Id for the resource.
   final String id;
+
   /// Defines the MSI properties of the Move Collection.
   final IdentityResponse? identity;
+
   /// The geo-location where the resource lives.
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// Defines the move collection properties.
   final MoveCollectionPropertiesResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
 
@@ -56,7 +65,7 @@ class GetMoveCollectionResult {
       'azureApiVersion': azureApiVersion,
       'etag': etag,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
@@ -71,14 +80,31 @@ class GetMoveCollectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: MoveCollectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: MoveCollectionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

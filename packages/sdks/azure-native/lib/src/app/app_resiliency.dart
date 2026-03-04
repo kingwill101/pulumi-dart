@@ -384,22 +384,31 @@ import 'timeout_policy_response.dart';
 class AppResiliency extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Policy that defines circuit breaker conditions
   late final pulumi.Output<CircuitBreakerPolicyResponse?> circuitBreakerPolicy;
+
   /// Defines parameters for http connection pooling
   late final pulumi.Output<HttpConnectionPoolResponse?> httpConnectionPool;
+
   /// Policy that defines http request retry conditions
   late final pulumi.Output<HttpRetryPolicyResponse?> httpRetryPolicy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Defines parameters for tcp connection pooling
   late final pulumi.Output<TcpConnectionPoolResponse?> tcpConnectionPool;
+
   /// Policy that defines tcp request retry conditions
   late final pulumi.Output<TcpRetryPolicyResponse?> tcpRetryPolicy;
+
   /// Policy to set request timeouts
   late final pulumi.Output<TimeoutPolicyResponse?> timeoutPolicy;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -412,20 +421,28 @@ class AppResiliency extends pulumi.CustomResource {
     AppResiliencyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:AppResiliency',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.circuitBreakerPolicy = registerOutput<CircuitBreakerPolicyResponse?>('circuitBreakerPolicy');
-    this.httpConnectionPool = registerOutput<HttpConnectionPoolResponse?>('httpConnectionPool');
-    this.httpRetryPolicy = registerOutput<HttpRetryPolicyResponse?>('httpRetryPolicy');
+         'azure-native:app:AppResiliency',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitBreakerPolicy = registerOutput<CircuitBreakerPolicyResponse?>(
+      'circuitBreakerPolicy',
+    );
+    httpConnectionPool = registerOutput<HttpConnectionPoolResponse?>(
+      'httpConnectionPool',
+    );
+    httpRetryPolicy = registerOutput<HttpRetryPolicyResponse?>(
+      'httpRetryPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tcpConnectionPool = registerOutput<TcpConnectionPoolResponse?>('tcpConnectionPool');
-    this.tcpRetryPolicy = registerOutput<TcpRetryPolicyResponse?>('tcpRetryPolicy');
-    this.timeoutPolicy = registerOutput<TimeoutPolicyResponse?>('timeoutPolicy');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tcpConnectionPool = registerOutput<TcpConnectionPoolResponse?>(
+      'tcpConnectionPool',
+    );
+    tcpRetryPolicy = registerOutput<TcpRetryPolicyResponse?>('tcpRetryPolicy');
+    timeoutPolicy = registerOutput<TimeoutPolicyResponse?>('timeoutPolicy');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_route_table_args.dart';
-import 'virtual_hub_route_table_route.dart';
 import 'virtual_hub_route_table_state.dart';
 
 /// Manages a Virtual Hub Route Table.
@@ -506,7 +505,7 @@ import 'virtual_hub_route_table_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -521,10 +520,13 @@ import 'virtual_hub_route_table_state.dart';
 class VirtualHubRouteTable extends pulumi.CustomResource {
   /// List of labels associated with this route table.
   late final pulumi.Output<List<String>?> labels;
+
   /// The name which should be used for Virtual Hub Route Table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `route` blocks as defined below.
-  late final pulumi.Output<List<VirtualHubRouteTableRoute>> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+
   /// The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -537,15 +539,15 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
     VirtualHubRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.routes = registerOutput<List<VirtualHubRouteTableRoute>>('routes');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 
   /// Gets an existing [VirtualHubRouteTable] resource's state with the given [name] and [id].
@@ -566,14 +568,14 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.routes = registerOutput<List<VirtualHubRouteTableRoute>>('routes');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

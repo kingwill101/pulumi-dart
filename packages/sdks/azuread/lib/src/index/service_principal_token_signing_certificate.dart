@@ -10,7 +10,7 @@ import 'service_principal_token_signing_certificate_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -309,22 +309,28 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+/// &gt; This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
   /// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
   ///
-  /// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+  /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
   late final pulumi.Output<String> displayName;
+
   /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   late final pulumi.Output<String> endDate;
+
   /// A UUID used to uniquely identify the verify certificate.
   late final pulumi.Output<String> keyId;
+
   /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
+
   /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
   late final pulumi.Output<String> startDate;
+
   /// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
   late final pulumi.Output<String> thumbprint;
+
   /// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
   late final pulumi.Output<String> value;
 
@@ -337,18 +343,18 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     ServicePrincipalTokenSigningCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.endDate = registerOutput<String>('endDate');
-    this.keyId = registerOutput<String>('keyId');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.startDate = registerOutput<String>('startDate');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.value = registerOutput<String>('value');
+         'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    keyId = registerOutput<String>('keyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    startDate = registerOutput<String>('startDate');
+    thumbprint = registerOutput<String>('thumbprint');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [ServicePrincipalTokenSigningCertificate] resource's state with the given [name] and [id].
@@ -369,17 +375,17 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.endDate = registerOutput<String>('endDate');
-    this.keyId = registerOutput<String>('keyId');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.startDate = registerOutput<String>('startDate');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.value = registerOutput<String>('value');
+         'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    keyId = registerOutput<String>('keyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    startDate = registerOutput<String>('startDate');
+    thumbprint = registerOutput<String>('thumbprint');
+    value = registerOutput<String>('value');
   }
 }

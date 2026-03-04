@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudTieringLowDiskModeResponse {
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
+
   /// Low disk mode state
   final pulumi.Input<String> state;
 
@@ -26,9 +27,10 @@ class CloudTieringLowDiskModeResponse {
 
   factory CloudTieringLowDiskModeResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringLowDiskModeResponse(
-      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
-      state: (map['state'] as String).input(),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['lastUpdatedTimestamp'] as String,
+      ),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

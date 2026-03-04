@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkTapArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of virtual network tap.
   final pulumi.Input<String> tapName;
 
@@ -29,9 +30,10 @@ class GetVirtualNetworkTapArgs {
 
   factory GetVirtualNetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkTapArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tapName: (map['tapName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tapName: pulumi.Input.fromValue(map['tapName'] as String),
     );
   }
 }
-

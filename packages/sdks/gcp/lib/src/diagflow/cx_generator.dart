@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_generator_args.dart';
 import 'cx_generator_llm_model_settings.dart';
 import 'cx_generator_model_parameter.dart';
-import 'cx_generator_placeholder.dart';
 import 'cx_generator_prompt_text.dart';
 import 'cx_generator_state.dart';
 
@@ -282,25 +281,32 @@ import 'cx_generator_state.dart';
 class CxGenerator extends pulumi.CustomResource {
   /// The human-readable name of the generator, unique within the agent.
   late final pulumi.Output<String> displayName;
+
   /// The language to create generators for the following fields:
   /// * Generator.prompt_text.text
   /// If not specified, the agent's default language is used.
   late final pulumi.Output<String?> languageCode;
+
   /// The LLM model settings.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorLlmModelSettings?> llmModelSettings;
+
   /// Parameters passed to the LLM to configure its behavior.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorModelParameter?> modelParameter;
+
   /// The unique identifier of the Generator.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/generators/<Generator ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/generators/&lt;Generator ID&gt;.
   late final pulumi.Output<String> name;
+
   /// The agent to create a Generator for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
+
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
-  late final pulumi.Output<List<CxGeneratorPlaceholder>?> placeholders;
+  late final pulumi.Output<List<Map<String, dynamic>>?> placeholders;
+
   /// Prompt for the LLM model.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorPromptText> promptText;
@@ -314,19 +320,23 @@ class CxGenerator extends pulumi.CustomResource {
     CxGeneratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxGenerator:CxGenerator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.languageCode = registerOutput<String?>('languageCode');
-    this.llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings');
-    this.modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter');
+         'gcp:diagflow/cxGenerator:CxGenerator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    languageCode = registerOutput<String?>('languageCode');
+    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>(
+      'llmModelSettings',
+    );
+    modelParameter = registerOutput<CxGeneratorModelParameter?>(
+      'modelParameter',
+    );
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders');
-    this.promptText = registerOutput<CxGeneratorPromptText>('promptText');
+    parent = registerOutput<String?>('parent');
+    placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
+    promptText = registerOutput<CxGeneratorPromptText>('promptText');
   }
 
   /// Gets an existing [CxGenerator] resource's state with the given [name] and [id].
@@ -347,18 +357,22 @@ class CxGenerator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxGenerator:CxGenerator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.languageCode = registerOutput<String?>('languageCode');
-    this.llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings');
-    this.modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter');
+         'gcp:diagflow/cxGenerator:CxGenerator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    languageCode = registerOutput<String?>('languageCode');
+    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>(
+      'llmModelSettings',
+    );
+    modelParameter = registerOutput<CxGeneratorModelParameter?>(
+      'modelParameter',
+    );
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders');
-    this.promptText = registerOutput<CxGeneratorPromptText>('promptText');
+    parent = registerOutput<String?>('parent');
+    placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
+    promptText = registerOutput<CxGeneratorPromptText>('promptText');
   }
 }

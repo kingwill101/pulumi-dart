@@ -5,32 +5,39 @@ import 'deployment_status_enum_value_response.dart';
 
 /// Definition of ServiceSoftwareOptions
 class ServiceSoftwareOptionsResponse {
-  /// <p>The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.</p>
+  /// &lt;p&gt;The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.&lt;/p&gt;
   final pulumi.Input<String>? automatedUpdateDate;
-  /// <p> True if you're able to cancel your service software version update. False if you can't cancel your service software update.</p>
+
+  /// &lt;p&gt; True if you're able to cancel your service software version update. False if you can't cancel your service software update.&lt;/p&gt;
   final pulumi.Input<bool>? cancellable;
-  /// <p>The current service software version present on the domain.</p>
+
+  /// &lt;p&gt;The current service software version present on the domain.&lt;/p&gt;
   final pulumi.Input<String>? currentVersion;
-  /// <p>A description of the service software update status.</p>
+
+  /// &lt;p&gt;A description of the service software update status.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>The new service software version, if one is available.</p>
+
+  /// &lt;p&gt;The new service software version, if one is available.&lt;/p&gt;
   final pulumi.Input<String>? newVersion;
-  /// <p>True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.</p>
+
+  /// &lt;p&gt;True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.&lt;/p&gt;
   final pulumi.Input<bool>? optionalDeployment;
-  /// <p>True if you're able to update your service software version. False if you can't update your service software version.</p>
+
+  /// &lt;p&gt;True if you're able to update your service software version. False if you can't update your service software version.&lt;/p&gt;
   final pulumi.Input<bool>? updateAvailable;
-  /// <p>The status of your service software update.</p>
+
+  /// &lt;p&gt;The status of your service software update.&lt;/p&gt;
   final pulumi.Input<DeploymentStatusEnumValueResponse>? updateStatus;
 
   /// Creates a new [ServiceSoftwareOptionsResponse].
-  /// [automatedUpdateDate] <p>The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.</p>
-  /// [cancellable] <p> True if you're able to cancel your service software version update. False if you can't cancel your service software update.</p>
-  /// [currentVersion] <p>The current service software version present on the domain.</p>
-  /// [description] <p>A description of the service software update status.</p>
-  /// [newVersion] <p>The new service software version, if one is available.</p>
-  /// [optionalDeployment] <p>True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.</p>
-  /// [updateAvailable] <p>True if you're able to update your service software version. False if you can't update your service software version.</p>
-  /// [updateStatus] <p>The status of your service software update.</p>
+  /// [automatedUpdateDate] &lt;p&gt;The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.&lt;/p&gt;
+  /// [cancellable] &lt;p&gt; True if you're able to cancel your service software version update. False if you can't cancel your service software update.&lt;/p&gt;
+  /// [currentVersion] &lt;p&gt;The current service software version present on the domain.&lt;/p&gt;
+  /// [description] &lt;p&gt;A description of the service software update status.&lt;/p&gt;
+  /// [newVersion] &lt;p&gt;The new service software version, if one is available.&lt;/p&gt;
+  /// [optionalDeployment] &lt;p&gt;True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.&lt;/p&gt;
+  /// [updateAvailable] &lt;p&gt;True if you're able to update your service software version. False if you can't update your service software version.&lt;/p&gt;
+  /// [updateStatus] &lt;p&gt;The status of your service software update.&lt;/p&gt;
   ServiceSoftwareOptionsResponse({
     this.automatedUpdateDate,
     this.cancellable,
@@ -51,21 +58,60 @@ class ServiceSoftwareOptionsResponse {
       'newVersion': ?newVersion,
       'optionalDeployment': ?optionalDeployment,
       'updateAvailable': ?updateAvailable,
-      'updateStatus': ?pulumi.Input.mapOptionalInputValue<DeploymentStatusEnumValueResponse, Map<String, dynamic>>(updateStatus, (value) => value.toMap()),
+      'updateStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(updateStatus, (value) => value.toMap()),
     };
   }
 
   factory ServiceSoftwareOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceSoftwareOptionsResponse(
-      automatedUpdateDate: map['automatedUpdateDate'] == null ? null : (map['automatedUpdateDate']! as String).input(),
-      cancellable: map['cancellable'] == null ? null : (map['cancellable']! as bool).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      newVersion: map['newVersion'] == null ? null : (map['newVersion']! as String).input(),
-      optionalDeployment: map['optionalDeployment'] == null ? null : (map['optionalDeployment']! as bool).input(),
-      updateAvailable: map['updateAvailable'] == null ? null : (map['updateAvailable']! as bool).input(),
-      updateStatus: map['updateStatus'] == null ? null : (DeploymentStatusEnumValueResponse.fromMap((map['updateStatus']! as Map).cast<String, dynamic>())).input(),
+      automatedUpdateDate: (() {
+        final guardedValue = map['automatedUpdateDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cancellable: (() {
+        final guardedValue = map['cancellable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      currentVersion: (() {
+        final guardedValue = map['currentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      newVersion: (() {
+        final guardedValue = map['newVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalDeployment: (() {
+        final guardedValue = map['optionalDeployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updateAvailable: (() {
+        final guardedValue = map['updateAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updateStatus: (() {
+        final guardedValue = map['updateStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

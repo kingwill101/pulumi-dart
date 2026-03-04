@@ -7,20 +7,19 @@ class SlsaBuilder {
 
   /// Creates a new [SlsaBuilder].
   /// [id] Optional.
-  SlsaBuilder({
-    this.id,
-  });
+  SlsaBuilder({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory SlsaBuilder.fromMap(Map<String, dynamic> map) {
     return SlsaBuilder(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

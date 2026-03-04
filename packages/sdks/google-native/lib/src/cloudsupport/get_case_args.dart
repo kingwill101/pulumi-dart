@@ -15,26 +15,17 @@ class GetCaseArgs {
   /// [caseId] Required.
   /// [v2Id] Required.
   /// [v2Id1] Required.
-  GetCaseArgs({
-    required this.caseId,
-    required this.v2Id,
-    required this.v2Id1,
-  });
+  GetCaseArgs({required this.caseId, required this.v2Id, required this.v2Id1});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caseId': caseId,
-      'v2Id': v2Id,
-      'v2Id1': v2Id1,
-    };
+    return <String, dynamic>{'caseId': caseId, 'v2Id': v2Id, 'v2Id1': v2Id1};
   }
 
   factory GetCaseArgs.fromMap(Map<String, dynamic> map) {
     return GetCaseArgs(
-      caseId: (map['caseId'] as String).input(),
-      v2Id: (map['v2Id'] as String).input(),
-      v2Id1: (map['v2Id1'] as String).input(),
+      caseId: pulumi.Input.fromValue(map['caseId'] as String),
+      v2Id: pulumi.Input.fromValue(map['v2Id'] as String),
+      v2Id1: pulumi.Input.fromValue(map['v2Id1'] as String),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalCertificateArgs {
   /// The ID of the GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
   final pulumi.Input<String> certificateId;
+
   /// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
   final pulumi.Input<String> domain;
+
   /// The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
   final pulumi.Input<String> listenerId;
 
@@ -39,11 +42,10 @@ class AdditionalCertificateArgs {
 
   factory AdditionalCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AdditionalCertificateArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      certificateId: (map['certificateId'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
-

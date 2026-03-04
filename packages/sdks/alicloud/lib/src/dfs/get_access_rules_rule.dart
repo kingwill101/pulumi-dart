@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessRulesRule {
   /// The resource ID of the Access Group.
   final pulumi.Input<String> accessGroupId;
+
   /// The ID of the Access Rule.
   final pulumi.Input<String> accessRuleId;
+
   /// The created time of the Access Rule.
   final pulumi.Input<String> createTime;
+
   /// The description of the Access Rule.
   final pulumi.Input<String> description;
+
   /// The resource ID of Access Rule.
   final pulumi.Input<String> id;
+
   /// The NetworkSegment of the Access Rule.
   final pulumi.Input<String> networkSegment;
+
   /// The priority of the Access Rule.
   final pulumi.Input<int> priority;
+
   /// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
   final pulumi.Input<String> rwAccessType;
 
@@ -55,15 +62,14 @@ class GetAccessRulesRule {
 
   factory GetAccessRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesRule(
-      accessGroupId: (map['accessGroupId'] as String).input(),
-      accessRuleId: (map['accessRuleId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      networkSegment: (map['networkSegment'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      rwAccessType: (map['rwAccessType'] as String).input(),
+      accessGroupId: pulumi.Input.fromValue(map['accessGroupId'] as String),
+      accessRuleId: pulumi.Input.fromValue(map['accessRuleId'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      networkSegment: pulumi.Input.fromValue(map['networkSegment'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rwAccessType: pulumi.Input.fromValue(map['rwAccessType'] as String),
     );
   }
 }
-

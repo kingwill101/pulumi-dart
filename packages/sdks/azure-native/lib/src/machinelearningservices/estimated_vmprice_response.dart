@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EstimatedVMPriceResponse {
   /// Operating system type used by the VM.
   final pulumi.Input<String> osType;
+
   /// The price charged for using the VM.
   final pulumi.Input<double> retailPrice;
+
   /// The type of the VM.
   final pulumi.Input<String> vmTier;
 
@@ -31,10 +33,9 @@ class EstimatedVMPriceResponse {
 
   factory EstimatedVMPriceResponse.fromMap(Map<String, dynamic> map) {
     return EstimatedVMPriceResponse(
-      osType: (map['osType'] as String).input(),
-      retailPrice: (map['retailPrice'] as double).input(),
-      vmTier: (map['vmTier'] as String).input(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      retailPrice: pulumi.Input.fromValue(map['retailPrice'] as double),
+      vmTier: pulumi.Input.fromValue(map['vmTier'] as String),
     );
   }
 }
-

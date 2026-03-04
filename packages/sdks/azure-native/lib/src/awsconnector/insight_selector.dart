@@ -9,20 +9,19 @@ class InsightSelector {
 
   /// Creates a new [InsightSelector].
   /// [insightType] The type of insight to log on a trail.
-  InsightSelector({
-    this.insightType,
-  });
+  InsightSelector({this.insightType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'insightType': ?insightType,
-    };
+    return <String, dynamic>{'insightType': ?insightType};
   }
 
   factory InsightSelector.fromMap(Map<String, dynamic> map) {
     return InsightSelector(
-      insightType: map['insightType'] == null ? null : (map['insightType']! as String).input(),
+      insightType: (() {
+        final guardedValue = map['insightType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

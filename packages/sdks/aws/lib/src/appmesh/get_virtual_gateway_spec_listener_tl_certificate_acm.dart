@@ -7,20 +7,17 @@ class GetVirtualGatewaySpecListenerTlCertificateAcm {
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlCertificateAcm].
   /// [certificateArn] Required.
-  GetVirtualGatewaySpecListenerTlCertificateAcm({
-    required this.certificateArn,
-  });
+  GetVirtualGatewaySpecListenerTlCertificateAcm({required this.certificateArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateArn': certificateArn,
-    };
+    return <String, dynamic>{'certificateArn': certificateArn};
   }
 
-  factory GetVirtualGatewaySpecListenerTlCertificateAcm.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerTlCertificateAcm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualGatewaySpecListenerTlCertificateAcm(
-      certificateArn: (map['certificateArn'] as String).input(),
+      certificateArn: pulumi.Input.fromValue(map['certificateArn'] as String),
     );
   }
 }
-

@@ -6,13 +6,18 @@ import 'volume_replication_destination_volume_parameters_tiering_policy.dart';
 class VolumeReplicationDestinationVolumeParameters {
   /// Description for the destination volume.
   final pulumi.Input<String>? description;
+
   /// Share name for destination volume. If not specified, name of source volume's share name will be used.
   final pulumi.Input<String>? shareName;
+
   /// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
   final pulumi.Input<String> storagePool;
+
   /// Tiering policy for the volume.
   /// Structure is documented below.
-  final pulumi.Input<VolumeReplicationDestinationVolumeParametersTieringPolicy>? tieringPolicy;
+  final pulumi.Input<VolumeReplicationDestinationVolumeParametersTieringPolicy>?
+  tieringPolicy;
+
   /// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
   final pulumi.Input<String>? volumeId;
 
@@ -35,19 +40,44 @@ class VolumeReplicationDestinationVolumeParameters {
       'description': ?description,
       'shareName': ?shareName,
       'storagePool': storagePool,
-      'tieringPolicy': ?pulumi.Input.mapOptionalInputValue<VolumeReplicationDestinationVolumeParametersTieringPolicy, Map<String, dynamic>>(tieringPolicy, (value) => value.toMap()),
+      'tieringPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeReplicationDestinationVolumeParametersTieringPolicy,
+            Map<String, dynamic>
+          >(tieringPolicy, (value) => value.toMap()),
       'volumeId': ?volumeId,
     };
   }
 
-  factory VolumeReplicationDestinationVolumeParameters.fromMap(Map<String, dynamic> map) {
+  factory VolumeReplicationDestinationVolumeParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeReplicationDestinationVolumeParameters(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
-      storagePool: (map['storagePool'] as String).input(),
-      tieringPolicy: map['tieringPolicy'] == null ? null : (VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap((map['tieringPolicy']! as Map).cast<String, dynamic>())).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePool: pulumi.Input.fromValue(map['storagePool'] as String),
+      tieringPolicy: (() {
+        final guardedValue = map['tieringPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

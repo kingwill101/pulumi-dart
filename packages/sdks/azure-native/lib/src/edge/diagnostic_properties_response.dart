@@ -9,20 +9,17 @@ class DiagnosticPropertiesResponse {
 
   /// Creates a new [DiagnosticPropertiesResponse].
   /// [provisioningState] The status of the last operation.
-  DiagnosticPropertiesResponse({
-    required this.provisioningState,
-  });
+  DiagnosticPropertiesResponse({required this.provisioningState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provisioningState': provisioningState,
-    };
+    return <String, dynamic>{'provisioningState': provisioningState};
   }
 
   factory DiagnosticPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

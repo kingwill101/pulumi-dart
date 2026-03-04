@@ -3,16 +3,15 @@ enum OnErrorDeploymentType {
   valueLastSuccessful("LastSuccessful"),
   valueSpecificDeployment("SpecificDeployment");
 
-  const OnErrorDeploymentType(this.value);
-  final String value;
+  const OnErrorDeploymentType(this.wireValue);
+  final String wireValue;
 
   static OnErrorDeploymentType fromValue(String value) {
     for (final item in OnErrorDeploymentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OnErrorDeploymentType value: $value');
   }
 }
-

@@ -35,11 +35,14 @@ class GetSessionArgs {
 
   factory GetSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionArgs(
-      databaseId: (map['databaseId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sessionId: (map['sessionId'] as String).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionId: pulumi.Input.fromValue(map['sessionId'] as String),
     );
   }
 }
-

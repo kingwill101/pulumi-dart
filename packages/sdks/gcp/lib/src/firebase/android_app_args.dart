@@ -12,16 +12,21 @@ class AndroidAppArgs {
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   final pulumi.Input<String>? apiKeyId;
   final pulumi.Input<String>? deletionPolicy;
+
   /// The user-assigned display name of the AndroidApp.
   final pulumi.Input<String> displayName;
+
   /// The canonical package name of the Android app as would appear in the Google Play
   /// Developer Console.
   final pulumi.Input<String> packageName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The SHA1 certificate hashes for the AndroidApp.
   final pulumi.Input<List<String>>? sha1Hashes;
+
   /// The SHA256 certificate hashes for the AndroidApp.
   final pulumi.Input<List<String>>? sha256Hashes;
 
@@ -57,14 +62,33 @@ class AndroidAppArgs {
 
   factory AndroidAppArgs.fromMap(Map<String, dynamic> map) {
     return AndroidAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      packageName: (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes']! as List).cast<String>()).input(),
-      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes']! as List).cast<String>()).input(),
+      apiKeyId: (() {
+        final guardedValue = map['apiKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      packageName: pulumi.Input.fromValue(map['packageName'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha1Hashes: (() {
+        final guardedValue = map['sha1Hashes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sha256Hashes: (() {
+        final guardedValue = map['sha256Hashes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

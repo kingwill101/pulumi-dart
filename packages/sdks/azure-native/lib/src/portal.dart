@@ -1,5 +1,3 @@
-library module_portal;
-
 export 'portal/configuration_properties.dart';
 export 'portal/configuration_properties_response.dart';
 export 'portal/console.dart';

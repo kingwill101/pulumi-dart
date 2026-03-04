@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistration.
 class GetRegistrationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Specifies the billing mode for the Azure Stack registration.
   final String? billingModel;
+
   /// The identifier of the registered Azure Stack.
   final String? cloudId;
+
   /// The entity tag used for optimistic concurrency when modifying the resource.
   final String? etag;
+
   /// ID of the resource.
   final String id;
+
   /// Location of the resource.
   final String location;
+
   /// Name of the resource.
   final String name;
+
   /// The object identifier associated with the Azure Stack connecting to Azure.
   final String? objectId;
+
   /// Custom tags for the resource.
   final Map<String, String>? tags;
+
   /// Type of Resource.
   final String type;
 
@@ -66,16 +74,35 @@ class GetRegistrationResult {
   factory GetRegistrationResult.fromMap(Map<String, dynamic> map) {
     return GetRegistrationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      billingModel: map['billingModel'] == null ? null : map['billingModel']! as String,
-      cloudId: map['cloudId'] == null ? null : map['cloudId']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      billingModel: (() {
+        final guardedValue = map['billingModel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      cloudId: (() {
+        final guardedValue = map['cloudId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

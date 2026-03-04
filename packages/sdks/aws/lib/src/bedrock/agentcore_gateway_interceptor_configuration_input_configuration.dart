@@ -13,15 +13,16 @@ class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'passRequestHeaders': passRequestHeaders,
-    };
+    return <String, dynamic>{'passRequestHeaders': passRequestHeaders};
   }
 
-  factory AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayInterceptorConfigurationInputConfiguration(
-      passRequestHeaders: (map['passRequestHeaders'] as bool).input(),
+      passRequestHeaders: pulumi.Input.fromValue(
+        map['passRequestHeaders'] as bool,
+      ),
     );
   }
 }
-

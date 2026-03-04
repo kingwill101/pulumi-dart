@@ -1,5 +1,3 @@
-library module_fabric;
-
 export 'fabric/capacity_administration.dart';
 export 'fabric/capacity_administration_response.dart';
 export 'fabric/fabric_capacity.dart';

@@ -9,20 +9,19 @@ class InstancePerformanceConfigFixedIops {
 
   /// Creates a new [InstancePerformanceConfigFixedIops].
   /// [maxIops] The number of IOPS to provision for the instance.
-  InstancePerformanceConfigFixedIops({
-    this.maxIops,
-  });
+  InstancePerformanceConfigFixedIops({this.maxIops});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxIops': ?maxIops,
-    };
+    return <String, dynamic>{'maxIops': ?maxIops};
   }
 
   factory InstancePerformanceConfigFixedIops.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigFixedIops(
-      maxIops: map['maxIops'] == null ? null : (map['maxIops']! as int).input(),
+      maxIops: (() {
+        final guardedValue = map['maxIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

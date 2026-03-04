@@ -166,30 +166,44 @@ import 'system_data_response.dart';
 class CloudEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure file share name
   late final pulumi.Output<String?> azureFileShareName;
+
   /// Backup Enabled
   late final pulumi.Output<String> backupEnabled;
+
   /// Cloud endpoint change enumeration status
-  late final pulumi.Output<CloudEndpointChangeEnumerationStatusResponse> changeEnumerationStatus;
+  late final pulumi.Output<CloudEndpointChangeEnumerationStatusResponse>
+  changeEnumerationStatus;
+
   /// Friendly Name
   late final pulumi.Output<String?> friendlyName;
+
   /// Resource Last Operation Name
   late final pulumi.Output<String?> lastOperationName;
+
   /// CloudEndpoint lastWorkflowId
   late final pulumi.Output<String?> lastWorkflowId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Partnership Id
   late final pulumi.Output<String?> partnershipId;
+
   /// CloudEndpoint Provisioning State
   late final pulumi.Output<String?> provisioningState;
+
   /// Storage Account Resource Id
   late final pulumi.Output<String?> storageAccountResourceId;
+
   /// Storage Account Tenant Id
   late final pulumi.Output<String?> storageAccountTenantId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -202,24 +216,29 @@ class CloudEndpoint extends pulumi.CustomResource {
     CloudEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagesync:CloudEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureFileShareName = registerOutput<String?>('azureFileShareName');
-    this.backupEnabled = registerOutput<String>('backupEnabled');
-    this.changeEnumerationStatus = registerOutput<CloudEndpointChangeEnumerationStatusResponse>('changeEnumerationStatus');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.lastOperationName = registerOutput<String?>('lastOperationName');
-    this.lastWorkflowId = registerOutput<String?>('lastWorkflowId');
+         'azure-native:storagesync:CloudEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureFileShareName = registerOutput<String?>('azureFileShareName');
+    backupEnabled = registerOutput<String>('backupEnabled');
+    changeEnumerationStatus =
+        registerOutput<CloudEndpointChangeEnumerationStatusResponse>(
+          'changeEnumerationStatus',
+        );
+    friendlyName = registerOutput<String?>('friendlyName');
+    lastOperationName = registerOutput<String?>('lastOperationName');
+    lastWorkflowId = registerOutput<String?>('lastWorkflowId');
     this.name = registerOutput<String>('name');
-    this.partnershipId = registerOutput<String?>('partnershipId');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.storageAccountResourceId = registerOutput<String?>('storageAccountResourceId');
-    this.storageAccountTenantId = registerOutput<String?>('storageAccountTenantId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    partnershipId = registerOutput<String?>('partnershipId');
+    provisioningState = registerOutput<String?>('provisioningState');
+    storageAccountResourceId = registerOutput<String?>(
+      'storageAccountResourceId',
+    );
+    storageAccountTenantId = registerOutput<String?>('storageAccountTenantId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

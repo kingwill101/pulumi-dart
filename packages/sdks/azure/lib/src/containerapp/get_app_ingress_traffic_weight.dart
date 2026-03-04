@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppIngressTrafficWeight {
   /// The label to apply to the revision as a name prefix for routing traffic.
   final pulumi.Input<String> label;
+
   /// This traffic Weight relates to the latest stable Container Revision.
   final pulumi.Input<bool> latestRevision;
+
   /// The percentage of traffic which should be sent this revision.
   final pulumi.Input<int> percentage;
+
   /// The suffix string to which this `traffic_weight` applies.
   final pulumi.Input<String> revisionSuffix;
 
@@ -35,11 +38,10 @@ class GetAppIngressTrafficWeight {
 
   factory GetAppIngressTrafficWeight.fromMap(Map<String, dynamic> map) {
     return GetAppIngressTrafficWeight(
-      label: (map['label'] as String).input(),
-      latestRevision: (map['latestRevision'] as bool).input(),
-      percentage: (map['percentage'] as int).input(),
-      revisionSuffix: (map['revisionSuffix'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      latestRevision: pulumi.Input.fromValue(map['latestRevision'] as bool),
+      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      revisionSuffix: pulumi.Input.fromValue(map['revisionSuffix'] as String),
     );
   }
 }
-

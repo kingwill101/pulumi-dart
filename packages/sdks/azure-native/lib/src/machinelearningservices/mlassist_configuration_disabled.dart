@@ -9,20 +9,15 @@ class MLAssistConfigurationDisabled {
 
   /// Creates a new [MLAssistConfigurationDisabled].
   /// [mlAssist] Expected value is 'Disabled'.
-  MLAssistConfigurationDisabled({
-    required this.mlAssist,
-  });
+  MLAssistConfigurationDisabled({required this.mlAssist});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mlAssist': mlAssist,
-    };
+    return <String, dynamic>{'mlAssist': mlAssist};
   }
 
   factory MLAssistConfigurationDisabled.fromMap(Map<String, dynamic> map) {
     return MLAssistConfigurationDisabled(
-      mlAssist: (map['mlAssist'] as String).input(),
+      mlAssist: pulumi.Input.fromValue(map['mlAssist'] as String),
     );
   }
 }
-

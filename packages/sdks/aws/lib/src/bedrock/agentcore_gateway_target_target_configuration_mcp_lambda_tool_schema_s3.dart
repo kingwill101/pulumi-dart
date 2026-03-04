@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3 {
   /// Account ID of the S3 bucket owner.
   final pulumi.Input<String>? bucketOwnerAccountId;
+
   /// S3 URI where the schema is stored.
   final pulumi.Input<String>? uri;
 
@@ -23,11 +24,20 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3 {
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3(
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : ((map['bucketOwnerAccountId'] as String).input()).input(),
-      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
+      bucketOwnerAccountId: (() {
+        final guardedValue = map['bucketOwnerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

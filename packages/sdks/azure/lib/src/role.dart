@@ -1,5 +1,3 @@
-library module_role;
-
 export 'role/assignment.dart';
 export 'role/assignment_args.dart';
 export 'role/assignment_state.dart';

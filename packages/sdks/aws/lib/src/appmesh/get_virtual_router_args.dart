@@ -10,10 +10,13 @@ class GetVirtualRouterArgs {
   /// Name of the mesh in which the virtual router exists
   final pulumi.Input<String> meshName;
   final pulumi.Input<String>? meshOwner;
+
   /// Name of the virtual router.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,12 +46,25 @@ class GetVirtualRouterArgs {
 
   factory GetVirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterArgs(
-      meshName: (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      meshName: pulumi.Input.fromValue(map['meshName'] as String),
+      meshOwner: (() {
+        final guardedValue = map['meshOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

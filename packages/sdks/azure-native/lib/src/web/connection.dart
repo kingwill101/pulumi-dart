@@ -181,15 +181,21 @@ import 'connection_args.dart';
 class Connection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource ETag
   late final pulumi.Output<String?> etag;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
-  late final pulumi.Output<ApiConnectionDefinitionResponseProperties> properties;
+  late final pulumi.Output<ApiConnectionDefinitionResponseProperties>
+  properties;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -202,17 +208,19 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:web:Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ApiConnectionDefinitionResponseProperties>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ApiConnectionDefinitionResponseProperties>(
+      'properties',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

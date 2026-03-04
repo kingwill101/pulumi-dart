@@ -3,16 +3,15 @@ enum ReportConfigSortingType {
   valueAscending("Ascending"),
   valueDescending("Descending");
 
-  const ReportConfigSortingType(this.value);
-  final String value;
+  const ReportConfigSortingType(this.wireValue);
+  final String wireValue;
 
   static ReportConfigSortingType fromValue(String value) {
     for (final item in ReportConfigSortingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportConfigSortingType value: $value');
   }
 }
-

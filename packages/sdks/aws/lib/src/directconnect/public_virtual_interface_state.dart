@@ -6,31 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicVirtualInterfaceState {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   final pulumi.Input<String>? addressFamily;
+
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
   final pulumi.Input<String>? amazonAddress;
   final pulumi.Input<String>? amazonSideAsn;
+
   /// The ARN of the virtual interface.
   final pulumi.Input<String>? arn;
+
   /// The Direct Connect endpoint on which the virtual interface terminates.
   final pulumi.Input<String>? awsDevice;
+
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   final pulumi.Input<int>? bgpAsn;
+
   /// The authentication key for BGP configuration.
   final pulumi.Input<String>? bgpAuthKey;
+
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
   final pulumi.Input<String>? connectionId;
+
   /// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
   final pulumi.Input<String>? customerAddress;
+
   /// The name for the virtual interface.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A list of routes to be advertised to the AWS network in this region.
   final pulumi.Input<List<String>>? routeFilterPrefixes;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The VLAN ID.
   final pulumi.Input<int>? vlan;
 
@@ -90,22 +103,85 @@ class PublicVirtualInterfaceState {
 
   factory PublicVirtualInterfaceState.fromMap(Map<String, dynamic> map) {
     return PublicVirtualInterfaceState(
-      addressFamily: map['addressFamily'] == null ? null : ((map['addressFamily'] as String).input()).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : ((map['amazonSideAsn'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      awsDevice: map['awsDevice'] == null ? null : ((map['awsDevice'] as String).input()).input(),
-      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as int).input()).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
-      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
-      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeFilterPrefixes: map['routeFilterPrefixes'] == null ? null : (((map['routeFilterPrefixes'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vlan: map['vlan'] == null ? null : ((map['vlan'] as int).input()).input(),
+      addressFamily: (() {
+        final guardedValue = map['addressFamily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      amazonAddress: (() {
+        final guardedValue = map['amazonAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      amazonSideAsn: (() {
+        final guardedValue = map['amazonSideAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsDevice: (() {
+        final guardedValue = map['awsDevice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bgpAsn: (() {
+        final guardedValue = map['bgpAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bgpAuthKey: (() {
+        final guardedValue = map['bgpAuthKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionId: (() {
+        final guardedValue = map['connectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerAddress: (() {
+        final guardedValue = map['customerAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeFilterPrefixes: (() {
+        final guardedValue = map['routeFilterPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vlan: (() {
+        final guardedValue = map['vlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

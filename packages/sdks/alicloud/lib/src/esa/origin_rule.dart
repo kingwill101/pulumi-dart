@@ -8,7 +8,7 @@ import 'origin_rule_state.dart';
 ///
 /// For information about ESA Origin Rule and how to use it, see [What is Origin Rule](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateOriginRule).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -209,50 +209,72 @@ import 'origin_rule_state.dart';
 class OriginRule extends pulumi.CustomResource {
   /// Back-to-source rule configuration ID
   late final pulumi.Output<int> configId;
+
   /// Overwrite the DNS resolution record of the origin request.
   late final pulumi.Output<String?> dnsRecord;
+
   /// Return Source 302 follow switch. Value range:
   late final pulumi.Output<String?> follow302Enable;
+
   /// 302 follows the upper limit of the number of times, with a value range of [1-5].
   late final pulumi.Output<String?> follow302MaxTries;
+
   /// Retain the original request parameter switch. Value range:
   late final pulumi.Output<String?> follow302RetainArgs;
+
   /// Retain the original request header switch. Value range:
   late final pulumi.Output<String?> follow302RetainHeader;
+
   /// Modify the source host after 302.
   late final pulumi.Output<String?> follow302TargetHost;
+
   /// The HOST carried in the back-to-origin request.
   late final pulumi.Output<String?> originHost;
+
   /// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
   late final pulumi.Output<String?> originHttpPort;
+
   /// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
   late final pulumi.Output<String?> originHttpsPort;
+
   /// The mtls switch. Value range:
   late final pulumi.Output<String?> originMtls;
+
   /// Read timeout interval of the source station (s).
   late final pulumi.Output<String?> originReadTimeout;
+
   /// The protocol used by the back-to-origin request. Value range:
   late final pulumi.Output<String?> originScheme;
+
   /// SNI carried in the back-to-origin request.
   late final pulumi.Output<String?> originSni;
+
   /// Source station certificate verification switch. Value range:
   late final pulumi.Output<String?> originVerify;
+
   /// Use the range sharding method to download the file from the source. Value range:
   late final pulumi.Output<String?> range;
+
   /// range shard size.
   late final pulumi.Output<String?> rangeChunkSize;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
+
   /// The site ID.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -265,34 +287,34 @@ class OriginRule extends pulumi.CustomResource {
     OriginRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originRule:OriginRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.dnsRecord = registerOutput<String?>('dnsRecord');
-    this.follow302Enable = registerOutput<String?>('follow302Enable');
-    this.follow302MaxTries = registerOutput<String?>('follow302MaxTries');
-    this.follow302RetainArgs = registerOutput<String?>('follow302RetainArgs');
-    this.follow302RetainHeader = registerOutput<String?>('follow302RetainHeader');
-    this.follow302TargetHost = registerOutput<String?>('follow302TargetHost');
-    this.originHost = registerOutput<String?>('originHost');
-    this.originHttpPort = registerOutput<String?>('originHttpPort');
-    this.originHttpsPort = registerOutput<String?>('originHttpsPort');
-    this.originMtls = registerOutput<String?>('originMtls');
-    this.originReadTimeout = registerOutput<String?>('originReadTimeout');
-    this.originScheme = registerOutput<String?>('originScheme');
-    this.originSni = registerOutput<String?>('originSni');
-    this.originVerify = registerOutput<String?>('originVerify');
-    this.range = registerOutput<String?>('range');
-    this.rangeChunkSize = registerOutput<String?>('rangeChunkSize');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/originRule:OriginRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    dnsRecord = registerOutput<String?>('dnsRecord');
+    follow302Enable = registerOutput<String?>('follow302Enable');
+    follow302MaxTries = registerOutput<String?>('follow302MaxTries');
+    follow302RetainArgs = registerOutput<String?>('follow302RetainArgs');
+    follow302RetainHeader = registerOutput<String?>('follow302RetainHeader');
+    follow302TargetHost = registerOutput<String?>('follow302TargetHost');
+    originHost = registerOutput<String?>('originHost');
+    originHttpPort = registerOutput<String?>('originHttpPort');
+    originHttpsPort = registerOutput<String?>('originHttpsPort');
+    originMtls = registerOutput<String?>('originMtls');
+    originReadTimeout = registerOutput<String?>('originReadTimeout');
+    originScheme = registerOutput<String?>('originScheme');
+    originSni = registerOutput<String?>('originSni');
+    originVerify = registerOutput<String?>('originVerify');
+    range = registerOutput<String?>('range');
+    rangeChunkSize = registerOutput<String?>('rangeChunkSize');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 
   /// Gets an existing [OriginRule] resource's state with the given [name] and [id].
@@ -313,33 +335,33 @@ class OriginRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originRule:OriginRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.dnsRecord = registerOutput<String?>('dnsRecord');
-    this.follow302Enable = registerOutput<String?>('follow302Enable');
-    this.follow302MaxTries = registerOutput<String?>('follow302MaxTries');
-    this.follow302RetainArgs = registerOutput<String?>('follow302RetainArgs');
-    this.follow302RetainHeader = registerOutput<String?>('follow302RetainHeader');
-    this.follow302TargetHost = registerOutput<String?>('follow302TargetHost');
-    this.originHost = registerOutput<String?>('originHost');
-    this.originHttpPort = registerOutput<String?>('originHttpPort');
-    this.originHttpsPort = registerOutput<String?>('originHttpsPort');
-    this.originMtls = registerOutput<String?>('originMtls');
-    this.originReadTimeout = registerOutput<String?>('originReadTimeout');
-    this.originScheme = registerOutput<String?>('originScheme');
-    this.originSni = registerOutput<String?>('originSni');
-    this.originVerify = registerOutput<String?>('originVerify');
-    this.range = registerOutput<String?>('range');
-    this.rangeChunkSize = registerOutput<String?>('rangeChunkSize');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/originRule:OriginRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    dnsRecord = registerOutput<String?>('dnsRecord');
+    follow302Enable = registerOutput<String?>('follow302Enable');
+    follow302MaxTries = registerOutput<String?>('follow302MaxTries');
+    follow302RetainArgs = registerOutput<String?>('follow302RetainArgs');
+    follow302RetainHeader = registerOutput<String?>('follow302RetainHeader');
+    follow302TargetHost = registerOutput<String?>('follow302TargetHost');
+    originHost = registerOutput<String?>('originHost');
+    originHttpPort = registerOutput<String?>('originHttpPort');
+    originHttpsPort = registerOutput<String?>('originHttpsPort');
+    originMtls = registerOutput<String?>('originMtls');
+    originReadTimeout = registerOutput<String?>('originReadTimeout');
+    originScheme = registerOutput<String?>('originScheme');
+    originSni = registerOutput<String?>('originSni');
+    originVerify = registerOutput<String?>('originVerify');
+    range = registerOutput<String?>('range');
+    rangeChunkSize = registerOutput<String?>('rangeChunkSize');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 }

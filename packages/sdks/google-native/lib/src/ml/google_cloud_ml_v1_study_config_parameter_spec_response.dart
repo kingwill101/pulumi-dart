@@ -12,22 +12,51 @@ import 'google_cloud_ml_v1_study_config_parameter_spec_matching_parent_int_value
 /// Represents a single parameter to optimize.
 class GoogleCloudMlV1StudyConfigParameterSpecResponse {
   /// The value spec for a 'CATEGORICAL' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse> categoricalValueSpec;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse
+  >
+  categoricalValueSpec;
+
   /// A child node is active if the parameter's value matches the child node's matching_parent_values. If two items in child_parameter_specs have the same name, they must have disjoint matching_parent_values.
-  final pulumi.Input<List<GoogleCloudMlV1StudyConfigParameterSpecResponse>> childParameterSpecs;
+  final pulumi.Input<List<GoogleCloudMlV1StudyConfigParameterSpecResponse>>
+  childParameterSpecs;
+
   /// The value spec for a 'DISCRETE' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse> discreteValueSpec;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse
+  >
+  discreteValueSpec;
+
   /// The value spec for a 'DOUBLE' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse> doubleValueSpec;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse
+  >
+  doubleValueSpec;
+
   /// The value spec for an 'INTEGER' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse> integerValueSpec;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse
+  >
+  integerValueSpec;
+
   /// The parameter name must be unique amongst all ParameterSpecs.
   final pulumi.Input<String> parameter;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse> parentCategoricalValues;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse> parentDiscreteValues;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse> parentIntValues;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse
+  >
+  parentCategoricalValues;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse
+  >
+  parentDiscreteValues;
+  final pulumi.Input<
+    GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse
+  >
+  parentIntValues;
+
   /// How the parameter should be scaled. Leave unset for categorical parameters.
   final pulumi.Input<String> scaleType;
+
   /// The type of the parameter.
   final pulumi.Input<String> type;
 
@@ -59,34 +88,110 @@ class GoogleCloudMlV1StudyConfigParameterSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categoricalValueSpec': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse, Map<String, dynamic>>(categoricalValueSpec, (value) => value.toMap()),
-      'childParameterSpecs': pulumi.Input.mapInputValue<List<GoogleCloudMlV1StudyConfigParameterSpecResponse>, List<Map<String, dynamic>>>(childParameterSpecs, (value) => pulumi.Input.encodeList<GoogleCloudMlV1StudyConfigParameterSpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'discreteValueSpec': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse, Map<String, dynamic>>(discreteValueSpec, (value) => value.toMap()),
-      'doubleValueSpec': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse, Map<String, dynamic>>(doubleValueSpec, (value) => value.toMap()),
-      'integerValueSpec': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse, Map<String, dynamic>>(integerValueSpec, (value) => value.toMap()),
+      'categoricalValueSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse,
+            Map<String, dynamic>
+          >(categoricalValueSpec, (value) => value.toMap()),
+      'childParameterSpecs':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudMlV1StudyConfigParameterSpecResponse>,
+            List<Map<String, dynamic>>
+          >(
+            childParameterSpecs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudMlV1StudyConfigParameterSpecResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'discreteValueSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse,
+            Map<String, dynamic>
+          >(discreteValueSpec, (value) => value.toMap()),
+      'doubleValueSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse,
+            Map<String, dynamic>
+          >(doubleValueSpec, (value) => value.toMap()),
+      'integerValueSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse,
+            Map<String, dynamic>
+          >(integerValueSpec, (value) => value.toMap()),
       'parameter': parameter,
-      'parentCategoricalValues': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse, Map<String, dynamic>>(parentCategoricalValues, (value) => value.toMap()),
-      'parentDiscreteValues': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse, Map<String, dynamic>>(parentDiscreteValues, (value) => value.toMap()),
-      'parentIntValues': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse, Map<String, dynamic>>(parentIntValues, (value) => value.toMap()),
+      'parentCategoricalValues':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse,
+            Map<String, dynamic>
+          >(parentCategoricalValues, (value) => value.toMap()),
+      'parentDiscreteValues':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse,
+            Map<String, dynamic>
+          >(parentDiscreteValues, (value) => value.toMap()),
+      'parentIntValues':
+          pulumi.Input.mapInputValue<
+            GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse,
+            Map<String, dynamic>
+          >(parentIntValues, (value) => value.toMap()),
       'scaleType': scaleType,
       'type': type,
     };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1StudyConfigParameterSpecResponse(
-      categoricalValueSpec: (GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse.fromMap((map['categoricalValueSpec'] as Map).cast<String, dynamic>())).input(),
-      childParameterSpecs: (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpecResponse>(map['childParameterSpecs'], (value) => GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discreteValueSpec: (GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse.fromMap((map['discreteValueSpec'] as Map).cast<String, dynamic>())).input(),
-      doubleValueSpec: (GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse.fromMap((map['doubleValueSpec'] as Map).cast<String, dynamic>())).input(),
-      integerValueSpec: (GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse.fromMap((map['integerValueSpec'] as Map).cast<String, dynamic>())).input(),
-      parameter: (map['parameter'] as String).input(),
-      parentCategoricalValues: (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse.fromMap((map['parentCategoricalValues'] as Map).cast<String, dynamic>())).input(),
-      parentDiscreteValues: (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse.fromMap((map['parentDiscreteValues'] as Map).cast<String, dynamic>())).input(),
-      parentIntValues: (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse.fromMap((map['parentIntValues'] as Map).cast<String, dynamic>())).input(),
-      scaleType: (map['scaleType'] as String).input(),
-      type: (map['type'] as String).input(),
+      categoricalValueSpec: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse.fromMap(
+          (map['categoricalValueSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      childParameterSpecs: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpecResponse>(
+          map['childParameterSpecs']!,
+          (value) => GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      discreteValueSpec: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse.fromMap(
+          (map['discreteValueSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      doubleValueSpec: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse.fromMap(
+          (map['doubleValueSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      integerValueSpec: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpecResponse.fromMap(
+          (map['integerValueSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parameter: pulumi.Input.fromValue(map['parameter'] as String),
+      parentCategoricalValues: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpecResponse.fromMap(
+          (map['parentCategoricalValues']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parentDiscreteValues: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse.fromMap(
+          (map['parentDiscreteValues']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parentIntValues: pulumi.Input.fromValue(
+        GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse.fromMap(
+          (map['parentIntValues']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      scaleType: pulumi.Input.fromValue(map['scaleType'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

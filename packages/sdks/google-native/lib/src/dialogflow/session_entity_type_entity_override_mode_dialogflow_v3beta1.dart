@@ -4,16 +4,20 @@ enum SessionEntityTypeEntityOverrideModeDialogflowV3beta1 {
   entityOverrideModeOverride("ENTITY_OVERRIDE_MODE_OVERRIDE"),
   entityOverrideModeSupplement("ENTITY_OVERRIDE_MODE_SUPPLEMENT");
 
-  const SessionEntityTypeEntityOverrideModeDialogflowV3beta1(this.value);
-  final String value;
+  const SessionEntityTypeEntityOverrideModeDialogflowV3beta1(this.wireValue);
+  final String wireValue;
 
-  static SessionEntityTypeEntityOverrideModeDialogflowV3beta1 fromValue(String value) {
-    for (final item in SessionEntityTypeEntityOverrideModeDialogflowV3beta1.values) {
-      if (item.value == value) {
+  static SessionEntityTypeEntityOverrideModeDialogflowV3beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in SessionEntityTypeEntityOverrideModeDialogflowV3beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SessionEntityTypeEntityOverrideModeDialogflowV3beta1 value: $value');
+    throw ArgumentError(
+      'Unknown SessionEntityTypeEntityOverrideModeDialogflowV3beta1 value: $value',
+    );
   }
 }
-

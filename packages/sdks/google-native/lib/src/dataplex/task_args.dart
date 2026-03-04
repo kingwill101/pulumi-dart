@@ -13,21 +13,28 @@ import 'google_cloud_dataplex_v1_task_trigger_spec.dart';
 class TaskArgs {
   /// Optional. Description of the task.
   final pulumi.Input<String>? description;
+
   /// Optional. User friendly display name.
   final pulumi.Input<String>? displayName;
+
   /// Spec related to how a task is executed.
   final pulumi.Input<GoogleCloudDataplexV1TaskExecutionSpec> executionSpec;
+
   /// Optional. User-defined labels for the task.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String> lakeId;
   final pulumi.Input<String>? location;
+
   /// Config related to running scheduled Notebooks.
   final pulumi.Input<GoogleCloudDataplexV1TaskNotebookTaskConfig>? notebook;
   final pulumi.Input<String>? project;
+
   /// Config related to running custom Spark tasks.
   final pulumi.Input<GoogleCloudDataplexV1TaskSparkTaskConfig>? spark;
+
   /// Required. Task identifier.
   final pulumi.Input<String> taskId;
+
   /// Spec related to how often and when a task should be triggered.
   final pulumi.Input<GoogleCloudDataplexV1TaskTriggerSpec> triggerSpec;
 
@@ -61,32 +68,93 @@ class TaskArgs {
     return <String, dynamic>{
       'description': ?description,
       'displayName': ?displayName,
-      'executionSpec': pulumi.Input.mapInputValue<GoogleCloudDataplexV1TaskExecutionSpec, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
+      'executionSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1TaskExecutionSpec,
+            Map<String, dynamic>
+          >(executionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'lakeId': lakeId,
       'location': ?location,
-      'notebook': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDataplexV1TaskNotebookTaskConfig, Map<String, dynamic>>(notebook, (value) => value.toMap()),
+      'notebook':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDataplexV1TaskNotebookTaskConfig,
+            Map<String, dynamic>
+          >(notebook, (value) => value.toMap()),
       'project': ?project,
-      'spark': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDataplexV1TaskSparkTaskConfig, Map<String, dynamic>>(spark, (value) => value.toMap()),
+      'spark':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDataplexV1TaskSparkTaskConfig,
+            Map<String, dynamic>
+          >(spark, (value) => value.toMap()),
       'taskId': taskId,
-      'triggerSpec': pulumi.Input.mapInputValue<GoogleCloudDataplexV1TaskTriggerSpec, Map<String, dynamic>>(triggerSpec, (value) => value.toMap()),
+      'triggerSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1TaskTriggerSpec,
+            Map<String, dynamic>
+          >(triggerSpec, (value) => value.toMap()),
     };
   }
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      executionSpec: (GoogleCloudDataplexV1TaskExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1TaskNotebookTaskConfig.fromMap((map['notebook']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      spark: map['spark'] == null ? null : (GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap((map['spark']! as Map).cast<String, dynamic>())).input(),
-      taskId: (map['taskId'] as String).input(),
-      triggerSpec: (GoogleCloudDataplexV1TaskTriggerSpec.fromMap((map['triggerSpec'] as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionSpec: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1TaskExecutionSpec.fromMap(
+          (map['executionSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      lakeId: pulumi.Input.fromValue(map['lakeId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notebook: (() {
+        final guardedValue = map['notebook'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDataplexV1TaskNotebookTaskConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spark: (() {
+        final guardedValue = map['spark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      taskId: pulumi.Input.fromValue(map['taskId'] as String),
+      triggerSpec: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1TaskTriggerSpec.fromMap(
+          (map['triggerSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

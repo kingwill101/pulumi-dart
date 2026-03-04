@@ -26,14 +26,19 @@ import 'deployment_state.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// Creation date of the deployment
   late final pulumi.Output<String> createdDate;
+
   /// Description of the deployment.
   late final pulumi.Output<String?> description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// REST API identifier.
   late final pulumi.Output<String> restApi;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   late final pulumi.Output<Map<String, String>?> triggers;
+
   /// Map to set on the related stage.
   late final pulumi.Output<Map<String, String>?> variables;
 
@@ -46,17 +51,17 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+         'aws:apigateway/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    triggers = registerOutput<Map<String, String>?>('triggers');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -77,16 +82,16 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+         'aws:apigateway/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    triggers = registerOutput<Map<String, String>?>('triggers');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 }

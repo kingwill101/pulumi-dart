@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualApplianceAdditionalNicPropertiesResponse {
   /// Flag (true or false) for Intent for Public Ip on additional nic
   final pulumi.Input<bool>? hasPublicIp;
+
   /// Name of additional nic
   final pulumi.Input<String>? name;
 
@@ -18,17 +19,23 @@ class VirtualApplianceAdditionalNicPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hasPublicIp': ?hasPublicIp,
-      'name': ?name,
-    };
+    return <String, dynamic>{'hasPublicIp': ?hasPublicIp, 'name': ?name};
   }
 
-  factory VirtualApplianceAdditionalNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualApplianceAdditionalNicPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualApplianceAdditionalNicPropertiesResponse(
-      hasPublicIp: map['hasPublicIp'] == null ? null : (map['hasPublicIp']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      hasPublicIp: (() {
+        final guardedValue = map['hasPublicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_voiceservices;
-
 export 'voiceservices/api_bridge_activation_state.dart';
 export 'voiceservices/api_bridge_properties.dart';
 export 'voiceservices/api_bridge_properties_response.dart';

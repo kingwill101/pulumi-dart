@@ -4,7 +4,7 @@ import 'working_storage_state.dart';
 
 /// Manages an AWS Storage Gateway working storage.
 ///
-/// > **NOTE:** The Storage Gateway API provides no method to remove a working storage disk. Destroying this resource does not perform any Storage Gateway actions.
+/// &gt; **NOTE:** The Storage Gateway API provides no method to remove a working storage disk. Destroying this resource does not perform any Storage Gateway actions.
 ///
 /// ## Example Usage
 ///
@@ -112,8 +112,10 @@ import 'working_storage_state.dart';
 class WorkingStorage extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
+
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -126,14 +128,14 @@ class WorkingStorage extends pulumi.CustomResource {
     WorkingStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:storagegateway/workingStorage:WorkingStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.gatewayArn = registerOutput<String>('gatewayArn');
-    this.region = registerOutput<String>('region');
+         'aws:storagegateway/workingStorage:WorkingStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [WorkingStorage] resource's state with the given [name] and [id].
@@ -154,13 +156,13 @@ class WorkingStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:storagegateway/workingStorage:WorkingStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.gatewayArn = registerOutput<String>('gatewayArn');
-    this.region = registerOutput<String>('region');
+         'aws:storagegateway/workingStorage:WorkingStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    region = registerOutput<String>('region');
   }
 }

@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkConnectionState {
   /// The Azure Active Directory Join type. Possible values are `AzureADJoin`, `HybridAzureADJoin` and `None`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? domainJoinType;
+
   /// The name of the Azure Active Directory domain.
   final pulumi.Input<String>? domainName;
+
   /// The password for the account used to join domain.
   final pulumi.Input<String>? domainPassword;
+
   /// The username of the Azure Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
   final pulumi.Input<String>? domainUsername;
+
   /// The Azure Region where the Dev Center Network Connection should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of this Dev Center Network Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The Azure Active Directory domain Organization Unit (OU).
   final pulumi.Input<String>? organizationUnit;
+
   /// Specifies the name of the Resource Group within which this Dev Center Network Connection should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The ID of the Subnet that is used to attach Virtual Machines.
   final pulumi.Input<String>? subnetId;
+
   /// A mapping of tags which should be assigned to the Dev Center Network Connection.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,17 +75,58 @@ class NetworkConnectionState {
 
   factory NetworkConnectionState.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionState(
-      domainJoinType: map['domainJoinType'] == null ? null : (map['domainJoinType']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword']! as String).input(),
-      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationUnit: map['organizationUnit'] == null ? null : (map['organizationUnit']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      domainJoinType: (() {
+        final guardedValue = map['domainJoinType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainPassword: (() {
+        final guardedValue = map['domainPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainUsername: (() {
+        final guardedValue = map['domainUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationUnit: (() {
+        final guardedValue = map['organizationUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

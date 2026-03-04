@@ -1,5 +1,3 @@
-library module_codesigning;
-
 export 'codesigning/account_sku.dart';
 export 'codesigning/account_sku_response.dart';
 export 'codesigning/certificate_profile.dart';

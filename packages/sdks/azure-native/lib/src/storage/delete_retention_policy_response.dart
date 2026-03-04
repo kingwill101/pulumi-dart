@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeleteRetentionPolicyResponse {
   /// This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
   final pulumi.Input<bool>? allowPermanentDelete;
+
   /// Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
   final pulumi.Input<int>? days;
+
   /// Indicates whether DeleteRetentionPolicy is enabled.
   final pulumi.Input<bool>? enabled;
 
@@ -31,10 +33,21 @@ class DeleteRetentionPolicyResponse {
 
   factory DeleteRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return DeleteRetentionPolicyResponse(
-      allowPermanentDelete: map['allowPermanentDelete'] == null ? null : (map['allowPermanentDelete']! as bool).input(),
-      days: map['days'] == null ? null : (map['days']! as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      allowPermanentDelete: (() {
+        final guardedValue = map['allowPermanentDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

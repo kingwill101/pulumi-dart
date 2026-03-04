@@ -9,15 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelTeamsArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
+
   /// Specifies whether to enable Microsoft Teams channel calls. This defaults to `false`.
   final pulumi.Input<bool>? callingEnabled;
+
   /// Specifies the webhook for Microsoft Teams channel calls.
   final pulumi.Input<String>? callingWebHook;
+
   /// The deployment environment for Microsoft Teams channel calls. Possible values are `CommercialDeployment` and `GCCModerateDeployment`. Defaults to `CommercialDeployment`.
   final pulumi.Input<String>? deploymentEnvironment;
   final pulumi.Input<bool>? enableCalling;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -53,14 +58,35 @@ class ChannelTeamsArgs {
 
   factory ChannelTeamsArgs.fromMap(Map<String, dynamic> map) {
     return ChannelTeamsArgs(
-      botName: (map['botName'] as String).input(),
-      callingEnabled: map['callingEnabled'] == null ? null : (map['callingEnabled']! as bool).input(),
-      callingWebHook: map['callingWebHook'] == null ? null : (map['callingWebHook']! as String).input(),
-      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment']! as String).input(),
-      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      botName: pulumi.Input.fromValue(map['botName'] as String),
+      callingEnabled: (() {
+        final guardedValue = map['callingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      callingWebHook: (() {
+        final guardedValue = map['callingWebHook'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentEnvironment: (() {
+        final guardedValue = map['deploymentEnvironment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableCalling: (() {
+        final guardedValue = map['enableCalling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

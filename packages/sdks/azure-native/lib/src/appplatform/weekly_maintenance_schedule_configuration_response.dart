@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklyMaintenanceScheduleConfigurationResponse {
   /// The day to run the maintenance job
   final pulumi.Input<String> day;
+
   /// The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
   final pulumi.Input<String> duration;
+
   /// The frequency to run the maintenance job
   /// Expected value is 'Weekly'.
   final pulumi.Input<String> frequency;
+
   /// The hour to run the maintenance job
   final pulumi.Input<int> hour;
 
@@ -35,13 +38,14 @@ class WeeklyMaintenanceScheduleConfigurationResponse {
     };
   }
 
-  factory WeeklyMaintenanceScheduleConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory WeeklyMaintenanceScheduleConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WeeklyMaintenanceScheduleConfigurationResponse(
-      day: (map['day'] as String).input(),
-      duration: (map['duration'] as String).input(),
-      frequency: (map['frequency'] as String).input(),
-      hour: (map['hour'] as int).input(),
+      day: pulumi.Input.fromValue(map['day'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      hour: pulumi.Input.fromValue(map['hour'] as int),
     );
   }
 }
-

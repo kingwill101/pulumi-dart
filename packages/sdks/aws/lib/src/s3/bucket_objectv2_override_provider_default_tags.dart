@@ -8,20 +8,23 @@ class BucketObjectv2OverrideProviderDefaultTags {
 
   /// Creates a new [BucketObjectv2OverrideProviderDefaultTags].
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  BucketObjectv2OverrideProviderDefaultTags({
-    this.tags,
-  });
+  BucketObjectv2OverrideProviderDefaultTags({this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
-  factory BucketObjectv2OverrideProviderDefaultTags.fromMap(Map<String, dynamic> map) {
+  factory BucketObjectv2OverrideProviderDefaultTags.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketObjectv2OverrideProviderDefaultTags(
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

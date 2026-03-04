@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentErrorResponse {
   /// Agent component where error message occured.
   final pulumi.Input<String> component;
+
   /// Agent error message.
   final pulumi.Input<String> message;
+
   /// Severity of the error message.
   final pulumi.Input<String> severity;
+
   /// The timestamp of error occured (UTC).
   final pulumi.Input<String> time;
 
@@ -36,11 +39,10 @@ class AgentErrorResponse {
 
   factory AgentErrorResponse.fromMap(Map<String, dynamic> map) {
     return AgentErrorResponse(
-      component: (map['component'] as String).input(),
-      message: (map['message'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      time: (map['time'] as String).input(),
+      component: pulumi.Input.fromValue(map['component'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
-

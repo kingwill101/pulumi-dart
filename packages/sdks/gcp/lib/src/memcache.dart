@@ -1,5 +1,3 @@
-library module_memcache;
-
 export 'memcache/functions.dart';
 export 'memcache/get_instance_args.dart';
 export 'memcache/get_instance_maintenance_policy.dart';

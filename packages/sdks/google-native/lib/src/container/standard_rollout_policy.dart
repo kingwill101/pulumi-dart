@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
   final pulumi.Input<int>? batchNodeCount;
+
   /// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
   final pulumi.Input<double>? batchPercentage;
+
   /// Soak time after each batch gets drained. Default to zero.
   final pulumi.Input<String>? batchSoakDuration;
 
@@ -31,10 +33,21 @@ class StandardRolloutPolicy {
 
   factory StandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return StandardRolloutPolicy(
-      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount']! as int).input(),
-      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage']! as double).input(),
-      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration']! as String).input(),
+      batchNodeCount: (() {
+        final guardedValue = map['batchNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      batchPercentage: (() {
+        final guardedValue = map['batchPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      batchSoakDuration: (() {
+        final guardedValue = map['batchSoakDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

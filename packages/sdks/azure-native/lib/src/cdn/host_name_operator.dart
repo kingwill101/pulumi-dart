@@ -11,16 +11,15 @@ enum HostNameOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const HostNameOperator(this.value);
-  final String value;
+  const HostNameOperator(this.wireValue);
+  final String wireValue;
 
   static HostNameOperator fromValue(String value) {
     for (final item in HostNameOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostNameOperator value: $value');
   }
 }
-

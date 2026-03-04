@@ -1,5 +1,3 @@
-library module_datastream;
-
 export 'datastream/connection_profile.dart';
 export 'datastream/connection_profile_args.dart';
 export 'datastream/connection_profile_forward_ssh_connectivity.dart';

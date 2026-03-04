@@ -8,22 +8,31 @@ import 'get_zone_primary_nameserver.dart';
 class GetZoneResult {
   /// Authoritative nameservers of the Zone.
   final GetZoneAuthoritativeNameservers authoritativeNameservers;
+
   /// Whether delete protection is enabled.
   final bool deleteProtection;
+
   /// ID of the Zone.
   final int? id;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final Map<String, String> labels;
+
   /// Mode of the Zone.
   final String mode;
+
   /// Name of the Zone.
   final String? name;
+
   /// Primary nameservers of the Zone.
   final List<GetZonePrimaryNameserver> primaryNameservers;
+
   /// Registrar of the Zone.
   final String registrar;
+
   /// Default Time To Live (TTL) of the Zone.
   final int ttl;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final String? withSelector;
 
@@ -59,7 +68,11 @@ class GetZoneResult {
       'labels': labels,
       'mode': mode,
       'name': ?name,
-      'primaryNameservers': pulumi.Input.encodeList<GetZonePrimaryNameserver, Map<String, dynamic>>(primaryNameservers, (value) => value.toMap()),
+      'primaryNameservers':
+          pulumi.Input.encodeList<
+            GetZonePrimaryNameserver,
+            Map<String, dynamic>
+          >(primaryNameservers, (value) => value.toMap()),
       'registrar': registrar,
       'ttl': ttl,
       'withSelector': ?withSelector,
@@ -68,17 +81,35 @@ class GetZoneResult {
 
   factory GetZoneResult.fromMap(Map<String, dynamic> map) {
     return GetZoneResult(
-      authoritativeNameservers: GetZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers'] as Map).cast<String, dynamic>()),
+      authoritativeNameservers: GetZoneAuthoritativeNameservers.fromMap(
+        (map['authoritativeNameservers']! as Map).cast<String, dynamic>(),
+      ),
       deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] == null ? null : map['id']! as int,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       labels: (map['labels'] as Map).cast<String, String>(),
       mode: map['mode'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      primaryNameservers: pulumi.Input.decodeList<GetZonePrimaryNameserver>(map['primaryNameservers'], (value) => GetZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryNameservers: pulumi.Input.decodeList<GetZonePrimaryNameserver>(
+        map['primaryNameservers']!,
+        (value) => GetZonePrimaryNameserver.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       registrar: map['registrar'] as String,
       ttl: map['ttl'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

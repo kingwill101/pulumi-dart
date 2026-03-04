@@ -8,20 +8,21 @@ class IndexServerSideEncryptionConfiguration {
 
   /// Creates a new [IndexServerSideEncryptionConfiguration].
   /// [kmsKeyId] The identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
-  IndexServerSideEncryptionConfiguration({
-    this.kmsKeyId,
-  });
+  IndexServerSideEncryptionConfiguration({this.kmsKeyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyId': ?kmsKeyId,
-    };
+    return <String, dynamic>{'kmsKeyId': ?kmsKeyId};
   }
 
-  factory IndexServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory IndexServerSideEncryptionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexServerSideEncryptionConfiguration(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

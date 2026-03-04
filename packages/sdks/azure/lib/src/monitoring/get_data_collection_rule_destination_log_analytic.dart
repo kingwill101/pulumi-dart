@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDestinationLogAnalytic {
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// The ID of a Log Analytic Workspace resource.
   final pulumi.Input<String> workspaceResourceId;
 
@@ -23,11 +24,14 @@ class GetDataCollectionRuleDestinationLogAnalytic {
     };
   }
 
-  factory GetDataCollectionRuleDestinationLogAnalytic.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDestinationLogAnalytic.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDestinationLogAnalytic(
-      name: (map['name'] as String).input(),
-      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      workspaceResourceId: pulumi.Input.fromValue(
+        map['workspaceResourceId'] as String,
+      ),
     );
   }
 }
-

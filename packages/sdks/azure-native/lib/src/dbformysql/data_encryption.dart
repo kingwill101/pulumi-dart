@@ -7,12 +7,16 @@ import 'data_encryption_type.dart';
 class DataEncryption {
   /// Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
   final pulumi.Input<String>? geoBackupKeyURI;
+
   /// Geo backup user identity resource id as identity can't cross region, need identity in same region as geo backup
   final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
+
   /// Primary key uri
   final pulumi.Input<String>? primaryKeyURI;
+
   /// Primary user identity resource id
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
+
   /// The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
   final pulumi.Input<DataEncryptionType>? type;
 
@@ -36,18 +40,42 @@ class DataEncryption {
       'geoBackupUserAssignedIdentityId': ?geoBackupUserAssignedIdentityId,
       'primaryKeyURI': ?primaryKeyURI,
       'primaryUserAssignedIdentityId': ?primaryUserAssignedIdentityId,
-      'type': ?pulumi.Input.mapOptionalInputValue<DataEncryptionType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<DataEncryptionType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory DataEncryption.fromMap(Map<String, dynamic> map) {
     return DataEncryption(
-      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI']! as String).input(),
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId']! as String).input(),
-      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI']! as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
-      type: map['type'] == null ? null : (DataEncryptionType.fromValue(map['type']! as String)).input(),
+      geoBackupKeyURI: (() {
+        final guardedValue = map['geoBackupKeyURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      geoBackupUserAssignedIdentityId: (() {
+        final guardedValue = map['geoBackupUserAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKeyURI: (() {
+        final guardedValue = map['primaryKeyURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryUserAssignedIdentityId: (() {
+        final guardedValue = map['primaryUserAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataEncryptionType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

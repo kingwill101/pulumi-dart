@@ -6,10 +6,13 @@ class GetViewsBillingView {
   /// ARN of the billing view.
   final pulumi.Input<String> arn;
   final pulumi.Input<String> billingViewType;
+
   /// Description of the billing view.
   final pulumi.Input<String> description;
+
   /// Name of the billing view.
   final pulumi.Input<String> name;
+
   /// Account ID of the billing view owner.
   final pulumi.Input<String> ownerAccountId;
 
@@ -39,12 +42,11 @@ class GetViewsBillingView {
 
   factory GetViewsBillingView.fromMap(Map<String, dynamic> map) {
     return GetViewsBillingView(
-      arn: (map['arn'] as String).input(),
-      billingViewType: (map['billingViewType'] as String).input(),
-      description: (map['description'] as String).input(),
-      name: (map['name'] as String).input(),
-      ownerAccountId: (map['ownerAccountId'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      billingViewType: pulumi.Input.fromValue(map['billingViewType'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      ownerAccountId: pulumi.Input.fromValue(map['ownerAccountId'] as String),
     );
   }
 }
-

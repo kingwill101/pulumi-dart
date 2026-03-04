@@ -11,16 +11,17 @@ enum MonitoringComponentConfigEnableComponentsItem {
   deployment("DEPLOYMENT"),
   statefulset("STATEFULSET");
 
-  const MonitoringComponentConfigEnableComponentsItem(this.value);
-  final String value;
+  const MonitoringComponentConfigEnableComponentsItem(this.wireValue);
+  final String wireValue;
 
   static MonitoringComponentConfigEnableComponentsItem fromValue(String value) {
     for (final item in MonitoringComponentConfigEnableComponentsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoringComponentConfigEnableComponentsItem value: $value');
+    throw ArgumentError(
+      'Unknown MonitoringComponentConfigEnableComponentsItem value: $value',
+    );
   }
 }
-

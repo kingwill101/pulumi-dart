@@ -4,16 +4,15 @@ enum Modes {
   enforce("Enforce"),
   disabled("Disabled");
 
-  const Modes(this.value);
-  final String value;
+  const Modes(this.wireValue);
+  final String wireValue;
 
   static Modes fromValue(String value) {
     for (final item in Modes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Modes value: $value');
   }
 }
-

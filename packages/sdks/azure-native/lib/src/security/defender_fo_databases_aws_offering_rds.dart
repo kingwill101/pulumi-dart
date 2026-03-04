@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderFoDatabasesAwsOfferingRds {
   /// The cloud role ARN in AWS for this feature
   final pulumi.Input<String>? cloudRoleArn;
+
   /// Is RDS protection enabled
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderFoDatabasesAwsOfferingRds].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is RDS protection enabled
-  DefenderFoDatabasesAwsOfferingRds({
-    this.cloudRoleArn,
-    this.enabled,
-  });
+  DefenderFoDatabasesAwsOfferingRds({this.cloudRoleArn, this.enabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DefenderFoDatabasesAwsOfferingRds {
 
   factory DefenderFoDatabasesAwsOfferingRds.fromMap(Map<String, dynamic> map) {
     return DefenderFoDatabasesAwsOfferingRds(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

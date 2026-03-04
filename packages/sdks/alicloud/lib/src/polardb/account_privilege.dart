@@ -4,7 +4,7 @@ import 'account_privilege_state.dart';
 
 /// Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 ///
-/// > **NOTE:** Available in v1.67.0+.
+/// &gt; **NOTE:** Available in v1.67.0+.
 ///
 /// ## Example Usage
 ///
@@ -393,10 +393,13 @@ import 'account_privilege_state.dart';
 class AccountPrivilege extends pulumi.CustomResource {
   /// A specified account name.
   late final pulumi.Output<String> accountName;
+
   /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
   late final pulumi.Output<String?> accountPrivilege;
+
   /// The Id of cluster in which account belongs.
   late final pulumi.Output<String> dbClusterId;
+
   /// List of specified database name.
   late final pulumi.Output<List<String>> dbNames;
 
@@ -409,15 +412,15 @@ class AccountPrivilege extends pulumi.CustomResource {
     AccountPrivilegeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/accountPrivilege:AccountPrivilege',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPrivilege = registerOutput<String?>('accountPrivilege');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbNames = registerOutput<List<String>>('dbNames');
+         'alicloud:polardb/accountPrivilege:AccountPrivilege',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    accountPrivilege = registerOutput<String?>('accountPrivilege');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbNames = registerOutput<List<String>>('dbNames');
   }
 
   /// Gets an existing [AccountPrivilege] resource's state with the given [name] and [id].
@@ -438,14 +441,14 @@ class AccountPrivilege extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/accountPrivilege:AccountPrivilege',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPrivilege = registerOutput<String?>('accountPrivilege');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbNames = registerOutput<List<String>>('dbNames');
+         'alicloud:polardb/accountPrivilege:AccountPrivilege',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    accountPrivilege = registerOutput<String?>('accountPrivilege');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbNames = registerOutput<List<String>>('dbNames');
   }
 }

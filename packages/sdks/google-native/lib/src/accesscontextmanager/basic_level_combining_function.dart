@@ -3,16 +3,15 @@ enum BasicLevelCombiningFunction {
   and("AND"),
   or("OR");
 
-  const BasicLevelCombiningFunction(this.value);
-  final String value;
+  const BasicLevelCombiningFunction(this.wireValue);
+  final String wireValue;
 
   static BasicLevelCombiningFunction fromValue(String value) {
     for (final item in BasicLevelCombiningFunction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BasicLevelCombiningFunction value: $value');
   }
 }
-

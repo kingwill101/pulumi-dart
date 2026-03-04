@@ -9,16 +9,15 @@ enum DirectPeeringType {
   valueVoice("Voice"),
   valueEdgeZoneForOperators("EdgeZoneForOperators");
 
-  const DirectPeeringType(this.value);
-  final String value;
+  const DirectPeeringType(this.wireValue);
+  final String wireValue;
 
   static DirectPeeringType fromValue(String value) {
     for (final item in DirectPeeringType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DirectPeeringType value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeliveryPipelineConditionTargetsTypeCondition {
   /// Human readable error message.
   final pulumi.Input<String>? errorDetails;
+
   /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
   final pulumi.Input<bool>? status;
 
@@ -17,17 +18,23 @@ class DeliveryPipelineConditionTargetsTypeCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'errorDetails': ?errorDetails,
-      'status': ?status,
-    };
+    return <String, dynamic>{'errorDetails': ?errorDetails, 'status': ?status};
   }
 
-  factory DeliveryPipelineConditionTargetsTypeCondition.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineConditionTargetsTypeCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineConditionTargetsTypeCondition(
-      errorDetails: map['errorDetails'] == null ? null : (map['errorDetails']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as bool).input(),
+      errorDetails: (() {
+        final guardedValue = map['errorDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

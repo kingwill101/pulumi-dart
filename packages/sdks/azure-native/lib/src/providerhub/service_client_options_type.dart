@@ -2,16 +2,15 @@ enum ServiceClientOptionsType {
   notSpecified("NotSpecified"),
   disableAutomaticDecompression("DisableAutomaticDecompression");
 
-  const ServiceClientOptionsType(this.value);
-  final String value;
+  const ServiceClientOptionsType(this.wireValue);
+  final String wireValue;
 
   static ServiceClientOptionsType fromValue(String value) {
     for (final item in ServiceClientOptionsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceClientOptionsType value: $value');
   }
 }
-

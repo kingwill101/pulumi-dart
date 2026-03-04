@@ -1,5 +1,3 @@
-library module_gkehub;
-
 export 'gkehub/feature.dart';
 export 'gkehub/feature_args.dart';
 export 'gkehub/feature_fleet_default_member_config.dart';

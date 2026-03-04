@@ -1,5 +1,3 @@
-library module_resourcemanager;
-
 export 'resourcemanager/account.dart';
 export 'resourcemanager/account_args.dart';
 export 'resourcemanager/account_state.dart';

@@ -4,16 +4,17 @@ enum StatefulEngineOptionsStreamExceptionPolicy {
   dROP("DROP"),
   rEJECT("REJECT");
 
-  const StatefulEngineOptionsStreamExceptionPolicy(this.value);
-  final String value;
+  const StatefulEngineOptionsStreamExceptionPolicy(this.wireValue);
+  final String wireValue;
 
   static StatefulEngineOptionsStreamExceptionPolicy fromValue(String value) {
     for (final item in StatefulEngineOptionsStreamExceptionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown StatefulEngineOptionsStreamExceptionPolicy value: $value');
+    throw ArgumentError(
+      'Unknown StatefulEngineOptionsStreamExceptionPolicy value: $value',
+    );
   }
 }
-

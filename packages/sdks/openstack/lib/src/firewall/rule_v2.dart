@@ -4,7 +4,7 @@ import 'rule_v2_state.dart';
 
 /// Manages a v2 firewall rule resource within OpenStack.
 ///
-/// > **Note:** Firewall v2 has no support for OVN currently.
+/// &gt; **Note:** Firewall v2 has no support for OVN currently.
 ///
 /// ## Example Usage
 ///
@@ -139,55 +139,68 @@ class RuleV2 extends pulumi.CustomResource {
   /// when the firewall rule matches. Changing this updates the `action` of an
   /// existing firewall rule. Default is `deny`.
   late final pulumi.Output<String?> action;
+
   /// A description for the firewall rule. Changing this
   /// updates the `description` of an existing firewall rule.
   late final pulumi.Output<String?> description;
+
   /// The destination IP address on which the
   /// firewall rule operates. Changing this updates the `destination_ip_address`
   /// of an existing firewall rule.
   late final pulumi.Output<String?> destinationIpAddress;
+
   /// The destination port on which the firewall
   /// rule operates. Changing this updates the `destination_port` of an existing
   /// firewall rule. Require not `any` or empty protocol.
   late final pulumi.Output<String?> destinationPort;
+
   /// Enabled status for the firewall rule (must be "true"
   /// or "false" if provided - defaults to "true"). Changing this updates the
   /// `enabled` status of an existing firewall rule.
   late final pulumi.Output<bool?> enabled;
+
   /// IP version, either 4 or 6. Changing this
   /// updates the `ip_version` of an existing firewall rule. Default is `4`.
   late final pulumi.Output<int?> ipVersion;
+
   /// A unique name for the firewall rule. Changing this
   /// updates the `name` of an existing firewall rule.
   late final pulumi.Output<String> name;
+
   /// This argument conflicts and is interchangeable
   /// with `tenant_id`. The owner of the firewall rule. Required if admin wants
   /// to create a firewall rule for another project. Changing this creates a new
   /// firewall rule.
   late final pulumi.Output<String> projectId;
+
   /// (Optional; Required if `source_port` or `destination_port` is not
   /// empty) The protocol type on which the firewall rule operates.
   /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
   /// `protocol` of an existing firewall rule. Default is `any`.
   late final pulumi.Output<String?> protocol;
+
   /// The region in which to obtain the v2 networking client.
   /// A networking client is needed to create a firewall rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// firewall rule.
   late final pulumi.Output<String> region;
+
   /// Sharing status of the firewall rule (must be "true"
   /// or "false" if provided). If this is "true" the policy is visible to, and
   /// can be used in, firewalls in other tenants. Changing this updates the
   /// `shared` status of an existing firewall policy. On
   late final pulumi.Output<bool?> shared;
+
   /// The source IP address on which the firewall
   /// rule operates. Changing this updates the `source_ip_address` of an existing
   /// firewall rule.
   late final pulumi.Output<String?> sourceIpAddress;
+
   /// The source port on which the firewall
   /// rule operates. Changing this updates the `source_port` of an existing
   /// firewall rule. Require not `any` or empty protocol.
   late final pulumi.Output<String?> sourcePort;
+
   /// This argument conflicts and is interchangeable
   /// with `project_id`. The owner of the firewall rule. Required if admin wants
   /// to create a firewall rule for another tenant. Changing this creates a new
@@ -198,30 +211,27 @@ class RuleV2 extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [RuleV2]. {@macro pulumi_firewall_rule_v2_rule_v2_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  RuleV2(
-    String name, {
-    RuleV2Args? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:firewall/ruleV2:RuleV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.description = registerOutput<String?>('description');
-    this.destinationIpAddress = registerOutput<String?>('destinationIpAddress');
-    this.destinationPort = registerOutput<String?>('destinationPort');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.ipVersion = registerOutput<int?>('ipVersion');
+  RuleV2(String name, {RuleV2Args? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:firewall/ruleV2:RuleV2',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    action = registerOutput<String?>('action');
+    description = registerOutput<String?>('description');
+    destinationIpAddress = registerOutput<String?>('destinationIpAddress');
+    destinationPort = registerOutput<String?>('destinationPort');
+    enabled = registerOutput<bool?>('enabled');
+    ipVersion = registerOutput<int?>('ipVersion');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.protocol = registerOutput<String?>('protocol');
-    this.region = registerOutput<String>('region');
-    this.shared = registerOutput<bool?>('shared');
-    this.sourceIpAddress = registerOutput<String?>('sourceIpAddress');
-    this.sourcePort = registerOutput<String?>('sourcePort');
-    this.tenantId = registerOutput<String>('tenantId');
+    projectId = registerOutput<String>('projectId');
+    protocol = registerOutput<String?>('protocol');
+    region = registerOutput<String>('region');
+    shared = registerOutput<bool?>('shared');
+    sourceIpAddress = registerOutput<String?>('sourceIpAddress');
+    sourcePort = registerOutput<String?>('sourcePort');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [RuleV2] resource's state with the given [name] and [id].
@@ -242,24 +252,24 @@ class RuleV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:firewall/ruleV2:RuleV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.description = registerOutput<String?>('description');
-    this.destinationIpAddress = registerOutput<String?>('destinationIpAddress');
-    this.destinationPort = registerOutput<String?>('destinationPort');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.ipVersion = registerOutput<int?>('ipVersion');
+         'openstack:firewall/ruleV2:RuleV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    description = registerOutput<String?>('description');
+    destinationIpAddress = registerOutput<String?>('destinationIpAddress');
+    destinationPort = registerOutput<String?>('destinationPort');
+    enabled = registerOutput<bool?>('enabled');
+    ipVersion = registerOutput<int?>('ipVersion');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.protocol = registerOutput<String?>('protocol');
-    this.region = registerOutput<String>('region');
-    this.shared = registerOutput<bool?>('shared');
-    this.sourceIpAddress = registerOutput<String?>('sourceIpAddress');
-    this.sourcePort = registerOutput<String?>('sourcePort');
-    this.tenantId = registerOutput<String>('tenantId');
+    projectId = registerOutput<String>('projectId');
+    protocol = registerOutput<String?>('protocol');
+    region = registerOutput<String>('region');
+    shared = registerOutput<bool?>('shared');
+    sourceIpAddress = registerOutput<String?>('sourceIpAddress');
+    sourcePort = registerOutput<String?>('sourcePort');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

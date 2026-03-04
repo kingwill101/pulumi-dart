@@ -672,7 +672,7 @@ import 'application_security_group_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -685,10 +685,11 @@ import 'application_security_group_association_state.dart';
 /// $ pulumi import azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation association1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/privateEndpoints/endpoints1|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/applicationSecurityGroups/securityGroup1",
 /// ```
 ///
-/// > **Note:** This ID is specific to Terraform - and is of the format `{privateEndpointId}|{applicationSecurityGroupId}`.
+/// &gt; **Note:** This ID is specific to Terraform - and is of the format `{privateEndpointId}|{applicationSecurityGroupId}`.
 class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
   /// The id of application security group to associate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationSecurityGroupId;
+
   /// The id of private endpoint to associate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateEndpointId;
 
@@ -701,13 +702,15 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     ApplicationSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
-    this.privateEndpointId = registerOutput<String>('privateEndpointId');
+         'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationSecurityGroupId = registerOutput<String>(
+      'applicationSecurityGroupId',
+    );
+    privateEndpointId = registerOutput<String>('privateEndpointId');
   }
 
   /// Gets an existing [ApplicationSecurityGroupAssociation] resource's state with the given [name] and [id].
@@ -728,12 +731,14 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
-    this.privateEndpointId = registerOutput<String>('privateEndpointId');
+         'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationSecurityGroupId = registerOutput<String>(
+      'applicationSecurityGroupId',
+    );
+    privateEndpointId = registerOutput<String>('privateEndpointId');
   }
 }

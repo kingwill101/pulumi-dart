@@ -275,10 +275,13 @@ import 'spaces_bucket_logging_state.dart';
 class SpacesBucketLogging extends pulumi.CustomResource {
   /// The name of the bucket which will be logged.
   late final pulumi.Output<String> bucket;
+
   /// The region where the bucket resides.
   late final pulumi.Output<String> region;
+
   /// The name of the bucket which will store the logs.
   late final pulumi.Output<String> targetBucket;
+
   /// The prefix for the log files.
   late final pulumi.Output<String> targetPrefix;
 
@@ -291,15 +294,15 @@ class SpacesBucketLogging extends pulumi.CustomResource {
     SpacesBucketLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.region = registerOutput<String>('region');
-    this.targetBucket = registerOutput<String>('targetBucket');
-    this.targetPrefix = registerOutput<String>('targetPrefix');
+         'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String>('targetPrefix');
   }
 
   /// Gets an existing [SpacesBucketLogging] resource's state with the given [name] and [id].
@@ -320,14 +323,14 @@ class SpacesBucketLogging extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.region = registerOutput<String>('region');
-    this.targetBucket = registerOutput<String>('targetBucket');
-    this.targetPrefix = registerOutput<String>('targetPrefix');
+         'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String>('targetPrefix');
   }
 }

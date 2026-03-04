@@ -3,16 +3,15 @@ enum TemplateType {
   valueUnknown("Unknown"),
   valueArmTemplate("ArmTemplate");
 
-  const TemplateType(this.value);
-  final String value;
+  const TemplateType(this.wireValue);
+  final String wireValue;
 
   static TemplateType fromValue(String value) {
     for (final item in TemplateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TemplateType value: $value');
   }
 }
-

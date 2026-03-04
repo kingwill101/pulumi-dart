@@ -9,9 +9,7 @@ class AzureMonitorWorkspaceIntegration {
 
   /// Creates a new [AzureMonitorWorkspaceIntegration].
   /// [azureMonitorWorkspaceResourceId] The resource Id of the connected Azure Monitor Workspace.
-  AzureMonitorWorkspaceIntegration({
-    this.azureMonitorWorkspaceResourceId,
-  });
+  AzureMonitorWorkspaceIntegration({this.azureMonitorWorkspaceResourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class AzureMonitorWorkspaceIntegration {
 
   factory AzureMonitorWorkspaceIntegration.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceIntegration(
-      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : (map['azureMonitorWorkspaceResourceId']! as String).input(),
+      azureMonitorWorkspaceResourceId: (() {
+        final guardedValue = map['azureMonitorWorkspaceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

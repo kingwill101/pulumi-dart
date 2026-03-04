@@ -7,15 +7,19 @@ class LoadBalancerCookieStickinessPolicyState {
   /// The time period after which
   /// the session cookie should be considered stale, expressed in seconds.
   final pulumi.Input<int>? cookieExpirationPeriod;
+
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   final pulumi.Input<int>? lbPort;
+
   /// The load balancer to which the policy
   /// should be attached.
   final pulumi.Input<String>? loadBalancer;
+
   /// The name of the stickiness policy.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -43,14 +47,35 @@ class LoadBalancerCookieStickinessPolicyState {
     };
   }
 
-  factory LoadBalancerCookieStickinessPolicyState.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerCookieStickinessPolicyState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerCookieStickinessPolicyState(
-      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : ((map['cookieExpirationPeriod'] as int).input()).input(),
-      lbPort: map['lbPort'] == null ? null : ((map['lbPort'] as int).input()).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : ((map['loadBalancer'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      cookieExpirationPeriod: (() {
+        final guardedValue = map['cookieExpirationPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lbPort: (() {
+        final guardedValue = map['lbPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      loadBalancer: (() {
+        final guardedValue = map['loadBalancer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CassandraViewResource {
   /// Name of the Cosmos DB Cassandra view
   final pulumi.Input<String> id;
+
   /// View Definition of the Cosmos DB Cassandra view
   final pulumi.Input<String> viewDefinition;
 
   /// Creates a new [CassandraViewResource].
   /// [id] Name of the Cosmos DB Cassandra view
   /// [viewDefinition] View Definition of the Cosmos DB Cassandra view
-  CassandraViewResource({
-    required this.id,
-    required this.viewDefinition,
-  });
+  CassandraViewResource({required this.id, required this.viewDefinition});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'viewDefinition': viewDefinition,
-    };
+    return <String, dynamic>{'id': id, 'viewDefinition': viewDefinition};
   }
 
   factory CassandraViewResource.fromMap(Map<String, dynamic> map) {
     return CassandraViewResource(
-      id: (map['id'] as String).input(),
-      viewDefinition: (map['viewDefinition'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      viewDefinition: pulumi.Input.fromValue(map['viewDefinition'] as String),
     );
   }
 }
-

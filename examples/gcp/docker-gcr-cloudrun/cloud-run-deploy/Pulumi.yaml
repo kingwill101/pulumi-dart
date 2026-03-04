@@ -1,6 +1,9 @@
 name: cloud-run-deploy
-runtime: dart
 description: Deploy a Docker image to Cloud Run from GCR.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
 
 template:
   config:

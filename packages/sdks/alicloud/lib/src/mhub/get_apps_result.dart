@@ -7,6 +7,7 @@ import 'get_apps_app.dart';
 class GetAppsResult {
   final List<GetAppsApp> apps;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -40,7 +41,10 @@ class GetAppsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apps': pulumi.Input.encodeList<GetAppsApp, Map<String, dynamic>>(apps, (value) => value.toMap()),
+      'apps': pulumi.Input.encodeList<GetAppsApp, Map<String, dynamic>>(
+        apps,
+        (value) => value.toMap(),
+      ),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -54,16 +58,34 @@ class GetAppsResult {
 
   factory GetAppsResult.fromMap(Map<String, dynamic> map) {
     return GetAppsResult(
-      apps: pulumi.Input.decodeList<GetAppsApp>(map['apps'], (value) => GetAppsApp.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      apps: pulumi.Input.decodeList<GetAppsApp>(
+        map['apps']!,
+        (value) => GetAppsApp.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      osType: map['osType'] == null ? null : map['osType']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       productId: map['productId'] as String,
     );
   }
 }
-

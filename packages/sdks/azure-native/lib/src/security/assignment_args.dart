@@ -12,30 +12,43 @@ import 'assignment_properties_additional_data.dart';
 class AssignmentArgs {
   /// Additional data about the assignment
   final pulumi.Input<AssignmentPropertiesAdditionalData>? additionalData;
+
   /// Component item with key as applied to this standard assignment over the given scope
   final pulumi.Input<AssignedComponentItem>? assignedComponent;
+
   /// Standard item with key as applied to this standard assignment over the given scope
   final pulumi.Input<AssignedStandardItem>? assignedStandard;
+
   /// The security assignment key - unique key for the standard assignment
   final pulumi.Input<String>? assignmentId;
+
   /// description of the standardAssignment
   final pulumi.Input<String>? description;
+
   /// display name of the standardAssignment
   final pulumi.Input<String>? displayName;
+
   /// expected effect of this assignment (Disable/Exempt/etc)
   final pulumi.Input<String>? effect;
+
   /// Expiration date of this assignment as a full ISO date
   final pulumi.Input<String>? expiresOn;
+
   /// Kind of the resource
   final pulumi.Input<String>? kind;
+
   /// Location where the resource is stored
   final pulumi.Input<String>? location;
+
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   final pulumi.Input<String>? scope;
+
   /// A list of key value pairs that describe the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -73,9 +86,21 @@ class AssignmentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalData': ?pulumi.Input.mapOptionalInputValue<AssignmentPropertiesAdditionalData, Map<String, dynamic>>(additionalData, (value) => value.toMap()),
-      'assignedComponent': ?pulumi.Input.mapOptionalInputValue<AssignedComponentItem, Map<String, dynamic>>(assignedComponent, (value) => value.toMap()),
-      'assignedStandard': ?pulumi.Input.mapOptionalInputValue<AssignedStandardItem, Map<String, dynamic>>(assignedStandard, (value) => value.toMap()),
+      'additionalData':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssignmentPropertiesAdditionalData,
+            Map<String, dynamic>
+          >(additionalData, (value) => value.toMap()),
+      'assignedComponent':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssignedComponentItem,
+            Map<String, dynamic>
+          >(assignedComponent, (value) => value.toMap()),
+      'assignedStandard':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssignedStandardItem,
+            Map<String, dynamic>
+          >(assignedStandard, (value) => value.toMap()),
       'assignmentId': ?assignmentId,
       'description': ?description,
       'displayName': ?displayName,
@@ -92,21 +117,88 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      additionalData: map['additionalData'] == null ? null : (AssignmentPropertiesAdditionalData.fromMap((map['additionalData']! as Map).cast<String, dynamic>())).input(),
-      assignedComponent: map['assignedComponent'] == null ? null : (AssignedComponentItem.fromMap((map['assignedComponent']! as Map).cast<String, dynamic>())).input(),
-      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard']! as Map).cast<String, dynamic>())).input(),
-      assignmentId: map['assignmentId'] == null ? null : (map['assignmentId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      additionalData: (() {
+        final guardedValue = map['additionalData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssignmentPropertiesAdditionalData.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      assignedComponent: (() {
+        final guardedValue = map['assignedComponent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssignedComponentItem.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      assignedStandard: (() {
+        final guardedValue = map['assignedStandard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssignedStandardItem.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      assignmentId: (() {
+        final guardedValue = map['assignmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiresOn: (() {
+        final guardedValue = map['expiresOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

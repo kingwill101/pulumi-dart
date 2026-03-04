@@ -8,7 +8,7 @@ import 'route_map_state.dart';
 ///
 /// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createcenroutemap).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -567,62 +567,91 @@ import 'route_map_state.dart';
 class RouteMap extends pulumi.CustomResource {
   /// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
   late final pulumi.Output<String?> asPathMatchMode;
+
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
+
   /// The ID of the region to which the CEN instance belongs.
   late final pulumi.Output<String> cenRegionId;
+
   /// A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
   late final pulumi.Output<String?> cidrMatchMode;
+
   /// A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
   late final pulumi.Output<String?> communityMatchMode;
+
   /// An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
   late final pulumi.Output<String?> communityOperateMode;
+
   /// The description of the route map.
   late final pulumi.Output<String?> description;
+
   /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
   late final pulumi.Output<List<String>?> destinationChildInstanceTypes;
+
   /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
   late final pulumi.Output<List<String>?> destinationCidrBlocks;
+
   /// A match statement that indicates the list of IDs of the destination instances.
   late final pulumi.Output<List<String>?> destinationInstanceIds;
+
   /// Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
   late final pulumi.Output<bool?> destinationInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
   late final pulumi.Output<List<String>?> destinationRouteTableIds;
+
   /// The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
   late final pulumi.Output<String> mapResult;
+
   /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
   late final pulumi.Output<List<String>?> matchAsns;
+
   /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
   late final pulumi.Output<List<String>?> matchCommunitySets;
+
   /// The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
   late final pulumi.Output<int?> nextPriority;
+
   /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
   late final pulumi.Output<List<String>?> operateCommunitySets;
+
   /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
   late final pulumi.Output<int?> preference;
+
   /// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
   late final pulumi.Output<List<String>?> prependAsPaths;
+
   /// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
   late final pulumi.Output<int> priority;
+
   /// ID of the RouteMap. It is available in 1.161.0+.
   late final pulumi.Output<String> routeMapId;
+
   /// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
   late final pulumi.Output<List<String>?> routeTypes;
+
   /// A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
   late final pulumi.Output<List<String>?> sourceChildInstanceTypes;
+
   /// A match statement that indicates the list of IDs of the source instances.
   late final pulumi.Output<List<String>?> sourceInstanceIds;
+
   /// Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
   late final pulumi.Output<bool?> sourceInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
   late final pulumi.Output<List<String>?> sourceRegionIds;
+
   /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
   late final pulumi.Output<List<String>?> sourceRouteTableIds;
+
   /// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
   late final pulumi.Output<String> status;
+
   /// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
   late final pulumi.Output<String> transitRouterRouteTableId;
+
   /// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
   late final pulumi.Output<String> transmitDirection;
 
@@ -635,41 +664,59 @@ class RouteMap extends pulumi.CustomResource {
     RouteMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/routeMap:RouteMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asPathMatchMode = registerOutput<String?>('asPathMatchMode');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenRegionId = registerOutput<String>('cenRegionId');
-    this.cidrMatchMode = registerOutput<String?>('cidrMatchMode');
-    this.communityMatchMode = registerOutput<String?>('communityMatchMode');
-    this.communityOperateMode = registerOutput<String?>('communityOperateMode');
-    this.description = registerOutput<String?>('description');
-    this.destinationChildInstanceTypes = registerOutput<List<String>?>('destinationChildInstanceTypes');
-    this.destinationCidrBlocks = registerOutput<List<String>?>('destinationCidrBlocks');
-    this.destinationInstanceIds = registerOutput<List<String>?>('destinationInstanceIds');
-    this.destinationInstanceIdsReverseMatch = registerOutput<bool?>('destinationInstanceIdsReverseMatch');
-    this.destinationRouteTableIds = registerOutput<List<String>?>('destinationRouteTableIds');
-    this.mapResult = registerOutput<String>('mapResult');
-    this.matchAsns = registerOutput<List<String>?>('matchAsns');
-    this.matchCommunitySets = registerOutput<List<String>?>('matchCommunitySets');
-    this.nextPriority = registerOutput<int?>('nextPriority');
-    this.operateCommunitySets = registerOutput<List<String>?>('operateCommunitySets');
-    this.preference = registerOutput<int?>('preference');
-    this.prependAsPaths = registerOutput<List<String>?>('prependAsPaths');
-    this.priority = registerOutput<int>('priority');
-    this.routeMapId = registerOutput<String>('routeMapId');
-    this.routeTypes = registerOutput<List<String>?>('routeTypes');
-    this.sourceChildInstanceTypes = registerOutput<List<String>?>('sourceChildInstanceTypes');
-    this.sourceInstanceIds = registerOutput<List<String>?>('sourceInstanceIds');
-    this.sourceInstanceIdsReverseMatch = registerOutput<bool?>('sourceInstanceIdsReverseMatch');
-    this.sourceRegionIds = registerOutput<List<String>?>('sourceRegionIds');
-    this.sourceRouteTableIds = registerOutput<List<String>?>('sourceRouteTableIds');
-    this.status = registerOutput<String>('status');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
-    this.transmitDirection = registerOutput<String>('transmitDirection');
+         'alicloud:cen/routeMap:RouteMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asPathMatchMode = registerOutput<String?>('asPathMatchMode');
+    cenId = registerOutput<String>('cenId');
+    cenRegionId = registerOutput<String>('cenRegionId');
+    cidrMatchMode = registerOutput<String?>('cidrMatchMode');
+    communityMatchMode = registerOutput<String?>('communityMatchMode');
+    communityOperateMode = registerOutput<String?>('communityOperateMode');
+    description = registerOutput<String?>('description');
+    destinationChildInstanceTypes = registerOutput<List<String>?>(
+      'destinationChildInstanceTypes',
+    );
+    destinationCidrBlocks = registerOutput<List<String>?>(
+      'destinationCidrBlocks',
+    );
+    destinationInstanceIds = registerOutput<List<String>?>(
+      'destinationInstanceIds',
+    );
+    destinationInstanceIdsReverseMatch = registerOutput<bool?>(
+      'destinationInstanceIdsReverseMatch',
+    );
+    destinationRouteTableIds = registerOutput<List<String>?>(
+      'destinationRouteTableIds',
+    );
+    mapResult = registerOutput<String>('mapResult');
+    matchAsns = registerOutput<List<String>?>('matchAsns');
+    matchCommunitySets = registerOutput<List<String>?>('matchCommunitySets');
+    nextPriority = registerOutput<int?>('nextPriority');
+    operateCommunitySets = registerOutput<List<String>?>(
+      'operateCommunitySets',
+    );
+    preference = registerOutput<int?>('preference');
+    prependAsPaths = registerOutput<List<String>?>('prependAsPaths');
+    priority = registerOutput<int>('priority');
+    routeMapId = registerOutput<String>('routeMapId');
+    routeTypes = registerOutput<List<String>?>('routeTypes');
+    sourceChildInstanceTypes = registerOutput<List<String>?>(
+      'sourceChildInstanceTypes',
+    );
+    sourceInstanceIds = registerOutput<List<String>?>('sourceInstanceIds');
+    sourceInstanceIdsReverseMatch = registerOutput<bool?>(
+      'sourceInstanceIdsReverseMatch',
+    );
+    sourceRegionIds = registerOutput<List<String>?>('sourceRegionIds');
+    sourceRouteTableIds = registerOutput<List<String>?>('sourceRouteTableIds');
+    status = registerOutput<String>('status');
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
+    transmitDirection = registerOutput<String>('transmitDirection');
   }
 
   /// Gets an existing [RouteMap] resource's state with the given [name] and [id].
@@ -690,40 +737,58 @@ class RouteMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/routeMap:RouteMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asPathMatchMode = registerOutput<String?>('asPathMatchMode');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenRegionId = registerOutput<String>('cenRegionId');
-    this.cidrMatchMode = registerOutput<String?>('cidrMatchMode');
-    this.communityMatchMode = registerOutput<String?>('communityMatchMode');
-    this.communityOperateMode = registerOutput<String?>('communityOperateMode');
-    this.description = registerOutput<String?>('description');
-    this.destinationChildInstanceTypes = registerOutput<List<String>?>('destinationChildInstanceTypes');
-    this.destinationCidrBlocks = registerOutput<List<String>?>('destinationCidrBlocks');
-    this.destinationInstanceIds = registerOutput<List<String>?>('destinationInstanceIds');
-    this.destinationInstanceIdsReverseMatch = registerOutput<bool?>('destinationInstanceIdsReverseMatch');
-    this.destinationRouteTableIds = registerOutput<List<String>?>('destinationRouteTableIds');
-    this.mapResult = registerOutput<String>('mapResult');
-    this.matchAsns = registerOutput<List<String>?>('matchAsns');
-    this.matchCommunitySets = registerOutput<List<String>?>('matchCommunitySets');
-    this.nextPriority = registerOutput<int?>('nextPriority');
-    this.operateCommunitySets = registerOutput<List<String>?>('operateCommunitySets');
-    this.preference = registerOutput<int?>('preference');
-    this.prependAsPaths = registerOutput<List<String>?>('prependAsPaths');
-    this.priority = registerOutput<int>('priority');
-    this.routeMapId = registerOutput<String>('routeMapId');
-    this.routeTypes = registerOutput<List<String>?>('routeTypes');
-    this.sourceChildInstanceTypes = registerOutput<List<String>?>('sourceChildInstanceTypes');
-    this.sourceInstanceIds = registerOutput<List<String>?>('sourceInstanceIds');
-    this.sourceInstanceIdsReverseMatch = registerOutput<bool?>('sourceInstanceIdsReverseMatch');
-    this.sourceRegionIds = registerOutput<List<String>?>('sourceRegionIds');
-    this.sourceRouteTableIds = registerOutput<List<String>?>('sourceRouteTableIds');
-    this.status = registerOutput<String>('status');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
-    this.transmitDirection = registerOutput<String>('transmitDirection');
+         'alicloud:cen/routeMap:RouteMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asPathMatchMode = registerOutput<String?>('asPathMatchMode');
+    cenId = registerOutput<String>('cenId');
+    cenRegionId = registerOutput<String>('cenRegionId');
+    cidrMatchMode = registerOutput<String?>('cidrMatchMode');
+    communityMatchMode = registerOutput<String?>('communityMatchMode');
+    communityOperateMode = registerOutput<String?>('communityOperateMode');
+    description = registerOutput<String?>('description');
+    destinationChildInstanceTypes = registerOutput<List<String>?>(
+      'destinationChildInstanceTypes',
+    );
+    destinationCidrBlocks = registerOutput<List<String>?>(
+      'destinationCidrBlocks',
+    );
+    destinationInstanceIds = registerOutput<List<String>?>(
+      'destinationInstanceIds',
+    );
+    destinationInstanceIdsReverseMatch = registerOutput<bool?>(
+      'destinationInstanceIdsReverseMatch',
+    );
+    destinationRouteTableIds = registerOutput<List<String>?>(
+      'destinationRouteTableIds',
+    );
+    mapResult = registerOutput<String>('mapResult');
+    matchAsns = registerOutput<List<String>?>('matchAsns');
+    matchCommunitySets = registerOutput<List<String>?>('matchCommunitySets');
+    nextPriority = registerOutput<int?>('nextPriority');
+    operateCommunitySets = registerOutput<List<String>?>(
+      'operateCommunitySets',
+    );
+    preference = registerOutput<int?>('preference');
+    prependAsPaths = registerOutput<List<String>?>('prependAsPaths');
+    priority = registerOutput<int>('priority');
+    routeMapId = registerOutput<String>('routeMapId');
+    routeTypes = registerOutput<List<String>?>('routeTypes');
+    sourceChildInstanceTypes = registerOutput<List<String>?>(
+      'sourceChildInstanceTypes',
+    );
+    sourceInstanceIds = registerOutput<List<String>?>('sourceInstanceIds');
+    sourceInstanceIdsReverseMatch = registerOutput<bool?>(
+      'sourceInstanceIdsReverseMatch',
+    );
+    sourceRegionIds = registerOutput<List<String>?>('sourceRegionIds');
+    sourceRouteTableIds = registerOutput<List<String>?>('sourceRouteTableIds');
+    status = registerOutput<String>('status');
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
+    transmitDirection = registerOutput<String>('transmitDirection');
   }
 }

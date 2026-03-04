@@ -3,16 +3,15 @@ enum GroupConnectivity {
   valueNone("None"),
   valueDirectlyConnected("DirectlyConnected");
 
-  const GroupConnectivity(this.value);
-  final String value;
+  const GroupConnectivity(this.wireValue);
+  final String wireValue;
 
   static GroupConnectivity fromValue(String value) {
     for (final item in GroupConnectivity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GroupConnectivity value: $value');
   }
 }
-

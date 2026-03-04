@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse {
   /// A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset.
   final pulumi.Input<double> confidence;
+
   /// Time offset of the end of this word relative to the beginning of the total conversation.
   final pulumi.Input<String> endOffset;
+
   /// Time offset of the start of this word relative to the beginning of the total conversation.
   final pulumi.Input<String> startOffset;
+
   /// The word itself. Includes punctuation marks that surround the word.
   final pulumi.Input<String> word;
 
@@ -34,13 +37,14 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse(
-      confidence: (map['confidence'] as double).input(),
-      endOffset: (map['endOffset'] as String).input(),
-      startOffset: (map['startOffset'] as String).input(),
-      word: (map['word'] as String).input(),
+      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      endOffset: pulumi.Input.fromValue(map['endOffset'] as String),
+      startOffset: pulumi.Input.fromValue(map['startOffset'] as String),
+      word: pulumi.Input.fromValue(map['word'] as String),
     );
   }
 }
-

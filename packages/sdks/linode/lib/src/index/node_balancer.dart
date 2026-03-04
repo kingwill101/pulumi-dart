@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_balancer_args.dart';
-import 'node_balancer_firewall.dart';
 import 'node_balancer_state.dart';
-import 'node_balancer_transfer.dart';
-import 'node_balancer_vpc.dart';
 
 /// Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
 /// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-node-balancer).
@@ -266,36 +263,49 @@ import 'node_balancer_vpc.dart';
 class NodeBalancer extends pulumi.CustomResource {
   /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
   late final pulumi.Output<int> clientConnThrottle;
+
   /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
   ///
   /// * **NOTE: This argument may not be generally available.**
   late final pulumi.Output<int> clientUdpSessThrottle;
+
   /// When this firewall was created.
   late final pulumi.Output<String> created;
+
   /// ID for the firewall you'd like to use with this NodeBalancer.
   late final pulumi.Output<int?> firewallId;
+
   /// A list of Firewalls assigned to this NodeBalancer.
-  late final pulumi.Output<List<NodeBalancerFirewall>> firewalls;
+  late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
+
   /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
   late final pulumi.Output<String> hostname;
+
   /// A list of IPv4 addresses or networks. Must be in IP/mask format.
   late final pulumi.Output<String> ipv4;
+
   /// A list of IPv6 addresses or networks. Must be in IP/mask format.
   late final pulumi.Output<String> ipv6;
+
   /// The label of the Linode NodeBalancer
   late final pulumi.Output<String?> label;
+
   /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
   ///
   /// - - -
   late final pulumi.Output<String> region;
+
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
+
   /// Information about the amount of transfer this NodeBalancer has had so far this month.
-  late final pulumi.Output<List<NodeBalancerTransfer>> transfers;
+  late final pulumi.Output<List<Map<String, dynamic>>> transfers;
+
   /// When this firewall was last updated.
   late final pulumi.Output<String> updated;
+
   /// A list of VPCs to be assigned to this NodeBalancer.
-  late final pulumi.Output<List<NodeBalancerVpc>?> vpcs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vpcs;
 
   /// Creates a new [NodeBalancer].
   /// [name] The Pulumi resource name.
@@ -306,25 +316,25 @@ class NodeBalancer extends pulumi.CustomResource {
     NodeBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/nodeBalancer:NodeBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientConnThrottle = registerOutput<int>('clientConnThrottle');
-    this.clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
-    this.created = registerOutput<String>('created');
-    this.firewallId = registerOutput<int?>('firewallId');
-    this.firewalls = registerOutput<List<NodeBalancerFirewall>>('firewalls');
-    this.hostname = registerOutput<String>('hostname');
-    this.ipv4 = registerOutput<String>('ipv4');
-    this.ipv6 = registerOutput<String>('ipv6');
-    this.label = registerOutput<String?>('label');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>>('tags');
-    this.transfers = registerOutput<List<NodeBalancerTransfer>>('transfers');
-    this.updated = registerOutput<String>('updated');
-    this.vpcs = registerOutput<List<NodeBalancerVpc>?>('vpcs');
+         'linode:index/nodeBalancer:NodeBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientConnThrottle = registerOutput<int>('clientConnThrottle');
+    clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
+    created = registerOutput<String>('created');
+    firewallId = registerOutput<int?>('firewallId');
+    firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
+    hostname = registerOutput<String>('hostname');
+    ipv4 = registerOutput<String>('ipv4');
+    ipv6 = registerOutput<String>('ipv6');
+    label = registerOutput<String?>('label');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>>('tags');
+    transfers = registerOutput<List<Map<String, dynamic>>>('transfers');
+    updated = registerOutput<String>('updated');
+    vpcs = registerOutput<List<Map<String, dynamic>>?>('vpcs');
   }
 
   /// Gets an existing [NodeBalancer] resource's state with the given [name] and [id].
@@ -345,24 +355,24 @@ class NodeBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/nodeBalancer:NodeBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientConnThrottle = registerOutput<int>('clientConnThrottle');
-    this.clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
-    this.created = registerOutput<String>('created');
-    this.firewallId = registerOutput<int?>('firewallId');
-    this.firewalls = registerOutput<List<NodeBalancerFirewall>>('firewalls');
-    this.hostname = registerOutput<String>('hostname');
-    this.ipv4 = registerOutput<String>('ipv4');
-    this.ipv6 = registerOutput<String>('ipv6');
-    this.label = registerOutput<String?>('label');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>>('tags');
-    this.transfers = registerOutput<List<NodeBalancerTransfer>>('transfers');
-    this.updated = registerOutput<String>('updated');
-    this.vpcs = registerOutput<List<NodeBalancerVpc>?>('vpcs');
+         'linode:index/nodeBalancer:NodeBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientConnThrottle = registerOutput<int>('clientConnThrottle');
+    clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
+    created = registerOutput<String>('created');
+    firewallId = registerOutput<int?>('firewallId');
+    firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
+    hostname = registerOutput<String>('hostname');
+    ipv4 = registerOutput<String>('ipv4');
+    ipv6 = registerOutput<String>('ipv6');
+    label = registerOutput<String?>('label');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>>('tags');
+    transfers = registerOutput<List<Map<String, dynamic>>>('transfers');
+    updated = registerOutput<String>('updated');
+    vpcs = registerOutput<List<Map<String, dynamic>>?>('vpcs');
   }
 }

@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpgradeHistoryEntryResponse {
   /// Action. Rolloback or Upgrade.
   final pulumi.Input<String> action;
+
   /// The container image before this instance upgrade.
   final pulumi.Input<String> containerImage;
+
   /// The time that this instance upgrade history entry is created.
   final pulumi.Input<String> createTime;
+
   /// The framework of this notebook instance.
   final pulumi.Input<String> framework;
+
   /// The snapshot of the boot disk of this notebook instance before upgrade.
   final pulumi.Input<String> snapshot;
+
   /// The state of this instance upgrade history entry.
   final pulumi.Input<String> state;
+
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
   final pulumi.Input<String> targetImage;
+
   /// Target VM Version, like m63.
   final pulumi.Input<String> targetVersion;
+
   /// The version of the notebook instance before this upgrade.
   final pulumi.Input<String> version;
+
   /// The VM image before this instance upgrade.
   final pulumi.Input<String> vmImage;
 
@@ -66,17 +75,16 @@ class UpgradeHistoryEntryResponse {
 
   factory UpgradeHistoryEntryResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntryResponse(
-      action: (map['action'] as String).input(),
-      containerImage: (map['containerImage'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      framework: (map['framework'] as String).input(),
-      snapshot: (map['snapshot'] as String).input(),
-      state: (map['state'] as String).input(),
-      targetImage: (map['targetImage'] as String).input(),
-      targetVersion: (map['targetVersion'] as String).input(),
-      version: (map['version'] as String).input(),
-      vmImage: (map['vmImage'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      containerImage: pulumi.Input.fromValue(map['containerImage'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      framework: pulumi.Input.fromValue(map['framework'] as String),
+      snapshot: pulumi.Input.fromValue(map['snapshot'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      targetImage: pulumi.Input.fromValue(map['targetImage'] as String),
+      targetVersion: pulumi.Input.fromValue(map['targetVersion'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      vmImage: pulumi.Input.fromValue(map['vmImage'] as String),
     );
   }
 }
-

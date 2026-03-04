@@ -8,20 +8,19 @@ class DistributionOriginGroupFailoverCriteria {
 
   /// Creates a new [DistributionOriginGroupFailoverCriteria].
   /// [statusCodes] List of HTTP status codes for the origin group.
-  DistributionOriginGroupFailoverCriteria({
-    required this.statusCodes,
-  });
+  DistributionOriginGroupFailoverCriteria({required this.statusCodes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'statusCodes': statusCodes,
-    };
+    return <String, dynamic>{'statusCodes': statusCodes};
   }
 
-  factory DistributionOriginGroupFailoverCriteria.fromMap(Map<String, dynamic> map) {
+  factory DistributionOriginGroupFailoverCriteria.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionOriginGroupFailoverCriteria(
-      statusCodes: ((map['statusCodes'] as List).cast<int>()).input(),
+      statusCodes: pulumi.Input.fromValue(
+        (map['statusCodes'] as List).cast<int>(),
+      ),
     );
   }
 }
-

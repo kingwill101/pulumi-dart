@@ -21,12 +21,12 @@ class IpamService extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamService:IpamService',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
+         'alicloud:vpc/ipamService:IpamService',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
   }
 
   /// Gets an existing [IpamService] resource's state with the given [name] and [id].
@@ -47,11 +47,11 @@ class IpamService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamService:IpamService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
+         'alicloud:vpc/ipamService:IpamService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
   }
 }

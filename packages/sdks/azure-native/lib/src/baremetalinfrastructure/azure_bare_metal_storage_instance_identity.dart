@@ -9,20 +9,21 @@ class AzureBareMetalStorageInstanceIdentity {
 
   /// Creates a new [AzureBareMetalStorageInstanceIdentity].
   /// [type] The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
-  AzureBareMetalStorageInstanceIdentity({
-    this.type,
-  });
+  AzureBareMetalStorageInstanceIdentity({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory AzureBareMetalStorageInstanceIdentity.fromMap(Map<String, dynamic> map) {
+  factory AzureBareMetalStorageInstanceIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureBareMetalStorageInstanceIdentity(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

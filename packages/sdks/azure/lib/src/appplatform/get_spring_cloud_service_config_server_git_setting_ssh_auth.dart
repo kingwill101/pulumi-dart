@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpringCloudServiceConfigServerGitSettingSshAuth {
   /// The host key of the Git repository server.
   final pulumi.Input<String> hostKey;
+
   /// The host key algorithm.
   final pulumi.Input<String> hostKeyAlgorithm;
+
   /// The SSH private key to access the Git repository, needed when the URI starts with `git@` or `ssh://`.
   final pulumi.Input<String> privateKey;
+
   /// Indicates whether the Config Server instance will fail to start if the host_key does not match.
   final pulumi.Input<bool> strictHostKeyCheckingEnabled;
 
@@ -33,13 +36,18 @@ class GetSpringCloudServiceConfigServerGitSettingSshAuth {
     };
   }
 
-  factory GetSpringCloudServiceConfigServerGitSettingSshAuth.fromMap(Map<String, dynamic> map) {
+  factory GetSpringCloudServiceConfigServerGitSettingSshAuth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSpringCloudServiceConfigServerGitSettingSshAuth(
-      hostKey: (map['hostKey'] as String).input(),
-      hostKeyAlgorithm: (map['hostKeyAlgorithm'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      strictHostKeyCheckingEnabled: (map['strictHostKeyCheckingEnabled'] as bool).input(),
+      hostKey: pulumi.Input.fromValue(map['hostKey'] as String),
+      hostKeyAlgorithm: pulumi.Input.fromValue(
+        map['hostKeyAlgorithm'] as String,
+      ),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      strictHostKeyCheckingEnabled: pulumi.Input.fromValue(
+        map['strictHostKeyCheckingEnabled'] as bool,
+      ),
     );
   }
 }
-

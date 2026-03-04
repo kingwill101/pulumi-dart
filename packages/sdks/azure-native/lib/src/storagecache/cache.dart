@@ -9,8 +9,6 @@ import 'cache_response_sku.dart';
 import 'cache_security_settings_response.dart';
 import 'cache_upgrade_settings_response.dart';
 import 'cache_upgrade_status_response.dart';
-import 'priming_job_response.dart';
-import 'storage_target_space_allocation_response.dart';
 import 'system_data_response.dart';
 
 /// A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
@@ -427,46 +425,68 @@ import 'system_data_response.dart';
 class Cache extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The size of this Cache, in GB.
   late final pulumi.Output<int?> cacheSizeGB;
+
   /// Specifies Directory Services settings of the cache.
-  late final pulumi.Output<CacheDirectorySettingsResponse?> directoryServicesSettings;
+  late final pulumi.Output<CacheDirectorySettingsResponse?>
+  directoryServicesSettings;
+
   /// Specifies encryption settings of the cache.
   late final pulumi.Output<CacheEncryptionSettingsResponse?> encryptionSettings;
+
   /// Health of the cache.
   late final pulumi.Output<CacheHealthResponse> health;
+
   /// The identity of the cache, if configured.
   late final pulumi.Output<CacheIdentityResponse?> identity;
+
   /// Region name string.
   late final pulumi.Output<String?> location;
+
   /// Array of IPv4 addresses that can be used by clients mounting this cache.
   late final pulumi.Output<List<String>> mountAddresses;
+
   /// Name of cache.
   late final pulumi.Output<String> name;
+
   /// Specifies network settings of the cache.
   late final pulumi.Output<CacheNetworkSettingsResponse?> networkSettings;
+
   /// Specifies the priming jobs defined in the cache.
-  late final pulumi.Output<List<PrimingJobResponse>> primingJobs;
+  late final pulumi.Output<List<Map<String, dynamic>>> primingJobs;
+
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies security settings of the cache.
   late final pulumi.Output<CacheSecuritySettingsResponse?> securitySettings;
+
   /// SKU for the cache.
   late final pulumi.Output<CacheResponseSku?> sku;
+
   /// Specifies the space allocation percentage for each storage target in the cache.
-  late final pulumi.Output<List<StorageTargetSpaceAllocationResponse>> spaceAllocation;
+  late final pulumi.Output<List<Map<String, dynamic>>> spaceAllocation;
+
   /// Subnet used for the cache.
   late final pulumi.Output<String?> subnet;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the cache; Microsoft.StorageCache/Cache
   late final pulumi.Output<String> type;
+
   /// Upgrade settings of the cache.
   late final pulumi.Output<CacheUpgradeSettingsResponse?> upgradeSettings;
+
   /// Upgrade status of the cache.
   late final pulumi.Output<CacheUpgradeStatusResponse> upgradeStatus;
+
   /// Availability zones for resources. This field should only contain a single element in the array.
   late final pulumi.Output<List<String>?> zones;
 
@@ -474,37 +494,46 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_storagecache_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(
-    String name, {
-    CacheArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:storagecache:Cache',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cacheSizeGB = registerOutput<int?>('cacheSizeGB');
-    this.directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>('directoryServicesSettings');
-    this.encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>('encryptionSettings');
-    this.health = registerOutput<CacheHealthResponse>('health');
-    this.identity = registerOutput<CacheIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
-    this.mountAddresses = registerOutput<List<String>>('mountAddresses');
+  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:storagecache:Cache',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cacheSizeGB = registerOutput<int?>('cacheSizeGB');
+    directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>(
+      'directoryServicesSettings',
+    );
+    encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>(
+      'encryptionSettings',
+    );
+    health = registerOutput<CacheHealthResponse>('health');
+    identity = registerOutput<CacheIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
+    mountAddresses = registerOutput<List<String>>('mountAddresses');
     this.name = registerOutput<String>('name');
-    this.networkSettings = registerOutput<CacheNetworkSettingsResponse?>('networkSettings');
-    this.primingJobs = registerOutput<List<PrimingJobResponse>>('primingJobs');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.securitySettings = registerOutput<CacheSecuritySettingsResponse?>('securitySettings');
-    this.sku = registerOutput<CacheResponseSku?>('sku');
-    this.spaceAllocation = registerOutput<List<StorageTargetSpaceAllocationResponse>>('spaceAllocation');
-    this.subnet = registerOutput<String?>('subnet');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>('upgradeSettings');
-    this.upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkSettings = registerOutput<CacheNetworkSettingsResponse?>(
+      'networkSettings',
+    );
+    primingJobs = registerOutput<List<Map<String, dynamic>>>('primingJobs');
+    provisioningState = registerOutput<String>('provisioningState');
+    securitySettings = registerOutput<CacheSecuritySettingsResponse?>(
+      'securitySettings',
+    );
+    sku = registerOutput<CacheResponseSku?>('sku');
+    spaceAllocation = registerOutput<List<Map<String, dynamic>>>(
+      'spaceAllocation',
+    );
+    subnet = registerOutput<String?>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>(
+      'upgradeSettings',
+    );
+    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

@@ -16,14 +16,23 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jobConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2RiskAnalysisJobConfigResponse, Map<String, dynamic>>(jobConfig, (value) => value.toMap()),
+      'jobConfig':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2RiskAnalysisJobConfigResponse,
+            Map<String, dynamic>
+          >(jobConfig, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse(
-      jobConfig: (GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.fromMap((map['jobConfig'] as Map).cast<String, dynamic>())).input(),
+      jobConfig: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.fromMap(
+          (map['jobConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

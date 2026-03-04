@@ -10,16 +10,15 @@ enum LegacyOperation {
   evaluateDeploymentOutput("EvaluateDeploymentOutput"),
   deploymentCleanup("DeploymentCleanup");
 
-  const LegacyOperation(this.value);
-  final String value;
+  const LegacyOperation(this.wireValue);
+  final String wireValue;
 
   static LegacyOperation fromValue(String value) {
     for (final item in LegacyOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LegacyOperation value: $value');
   }
 }
-

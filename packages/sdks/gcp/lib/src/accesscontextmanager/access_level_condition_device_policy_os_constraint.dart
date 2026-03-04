@@ -7,6 +7,7 @@ class AccessLevelConditionDevicePolicyOsConstraint {
   /// of this OS satisfies the constraint.
   /// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
   final pulumi.Input<String>? minimumVersion;
+
   /// The operating system type of the device.
   /// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
   final pulumi.Input<String> osType;
@@ -26,11 +27,16 @@ class AccessLevelConditionDevicePolicyOsConstraint {
     };
   }
 
-  factory AccessLevelConditionDevicePolicyOsConstraint.fromMap(Map<String, dynamic> map) {
+  factory AccessLevelConditionDevicePolicyOsConstraint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessLevelConditionDevicePolicyOsConstraint(
-      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion']! as String).input(),
-      osType: (map['osType'] as String).input(),
+      minimumVersion: (() {
+        final guardedValue = map['minimumVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
     );
   }
 }
-

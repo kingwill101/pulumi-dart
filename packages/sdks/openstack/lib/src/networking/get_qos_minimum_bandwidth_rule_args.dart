@@ -8,10 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networking_get_qos_minimum_bandwidth_rule_get_qos_minimum_bandwidth_rule_args_doc}
 class GetQosMinimumBandwidthRuleArgs {
   final pulumi.Input<String>? direction;
+
   /// The value of a minimum kbps bandwidth.
   final pulumi.Input<int>? minKbps;
+
   /// The QoS policy reference.
   final pulumi.Input<String> qosPolicyId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
   /// `region` argument of the provider is used.
@@ -40,11 +43,22 @@ class GetQosMinimumBandwidthRuleArgs {
 
   factory GetQosMinimumBandwidthRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetQosMinimumBandwidthRuleArgs(
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      minKbps: map['minKbps'] == null ? null : (map['minKbps']! as int).input(),
-      qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minKbps: (() {
+        final guardedValue = map['minKbps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      qosPolicyId: pulumi.Input.fromValue(map['qosPolicyId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

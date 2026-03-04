@@ -35,11 +35,16 @@ class GetWorkflowConfigArgs {
 
   factory GetWorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowConfigArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
-      workflowConfigId: (map['workflowConfigId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
+      workflowConfigId: pulumi.Input.fromValue(
+        map['workflowConfigId'] as String,
+      ),
     );
   }
 }
-

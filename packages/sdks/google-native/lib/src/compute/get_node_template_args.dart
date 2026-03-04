@@ -31,10 +31,13 @@ class GetNodeTemplateArgs {
 
   factory GetNodeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTemplateArgs(
-      nodeTemplate: (map['nodeTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      nodeTemplate: pulumi.Input.fromValue(map['nodeTemplate'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

@@ -4,14 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CapacityReservationTargetResponse
 class CapacityReservationTargetResponseResponse {
-  /// <p>The ID of the targeted Capacity Reservation.</p>
+  /// &lt;p&gt;The ID of the targeted Capacity Reservation.&lt;/p&gt;
   final pulumi.Input<String>? capacityReservationId;
-  /// <p>The ARN of the targeted Capacity Reservation group.</p>
+
+  /// &lt;p&gt;The ARN of the targeted Capacity Reservation group.&lt;/p&gt;
   final pulumi.Input<String>? capacityReservationResourceGroupArn;
 
   /// Creates a new [CapacityReservationTargetResponseResponse].
-  /// [capacityReservationId] <p>The ID of the targeted Capacity Reservation.</p>
-  /// [capacityReservationResourceGroupArn] <p>The ARN of the targeted Capacity Reservation group.</p>
+  /// [capacityReservationId] &lt;p&gt;The ID of the targeted Capacity Reservation.&lt;/p&gt;
+  /// [capacityReservationResourceGroupArn] &lt;p&gt;The ARN of the targeted Capacity Reservation group.&lt;/p&gt;
   CapacityReservationTargetResponseResponse({
     this.capacityReservationId,
     this.capacityReservationResourceGroupArn,
@@ -20,15 +21,25 @@ class CapacityReservationTargetResponseResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityReservationId': ?capacityReservationId,
-      'capacityReservationResourceGroupArn': ?capacityReservationResourceGroupArn,
+      'capacityReservationResourceGroupArn':
+          ?capacityReservationResourceGroupArn,
     };
   }
 
-  factory CapacityReservationTargetResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory CapacityReservationTargetResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityReservationTargetResponseResponse(
-      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId']! as String).input(),
-      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : (map['capacityReservationResourceGroupArn']! as String).input(),
+      capacityReservationId: (() {
+        final guardedValue = map['capacityReservationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capacityReservationResourceGroupArn: (() {
+        final guardedValue = map['capacityReservationResourceGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

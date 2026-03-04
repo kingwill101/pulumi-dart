@@ -10,10 +10,12 @@ class GetWebRegionBackendServiceIamPolicyArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> webRegionBackendService;
 
@@ -35,12 +37,23 @@ class GetWebRegionBackendServiceIamPolicyArgs {
     };
   }
 
-  factory GetWebRegionBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebRegionBackendServiceIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebRegionBackendServiceIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      webRegionBackendService: (map['webRegionBackendService'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webRegionBackendService: pulumi.Input.fromValue(
+        map['webRegionBackendService'] as String,
+      ),
     );
   }
 }
-

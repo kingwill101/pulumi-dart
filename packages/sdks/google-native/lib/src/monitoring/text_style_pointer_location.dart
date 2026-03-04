@@ -14,16 +14,15 @@ enum TextStylePointerLocation {
   plLeftBottom("PL_LEFT_BOTTOM"),
   plLeftTop("PL_LEFT_TOP");
 
-  const TextStylePointerLocation(this.value);
-  final String value;
+  const TextStylePointerLocation(this.wireValue);
+  final String wireValue;
 
   static TextStylePointerLocation fromValue(String value) {
     for (final item in TextStylePointerLocation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextStylePointerLocation value: $value');
   }
 }
-

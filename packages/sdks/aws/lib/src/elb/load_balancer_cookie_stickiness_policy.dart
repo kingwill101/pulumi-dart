@@ -194,15 +194,19 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
   /// The time period after which
   /// the session cookie should be considered stale, expressed in seconds.
   late final pulumi.Output<int?> cookieExpirationPeriod;
+
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   late final pulumi.Output<int> lbPort;
+
   /// The load balancer to which the policy
   /// should be attached.
   late final pulumi.Output<String> loadBalancer;
+
   /// The name of the stickiness policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -215,16 +219,16 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
     LoadBalancerCookieStickinessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LoadBalancerCookieStickinessPolicy] resource's state with the given [name] and [id].
@@ -245,15 +249,15 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsConnectorDataLakeDataDestination {
   /// The name for the Data Lake.
   final pulumi.Input<String> dataLakeName;
+
   /// Name of data destination.
   final pulumi.Input<String>? name;
+
   /// Type of data destination.
   /// Expected value is 'datalake'.
   final pulumi.Input<String> type;
@@ -30,12 +32,17 @@ class AnalyticsConnectorDataLakeDataDestination {
     };
   }
 
-  factory AnalyticsConnectorDataLakeDataDestination.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsConnectorDataLakeDataDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsConnectorDataLakeDataDestination(
-      dataLakeName: (map['dataLakeName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      dataLakeName: pulumi.Input.fromValue(map['dataLakeName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

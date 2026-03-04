@@ -2,11 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cluster_args.dart';
 import 'serverless_cluster_client_authentication.dart';
 import 'serverless_cluster_state.dart';
-import 'serverless_cluster_vpc_config.dart';
 
 /// Manages an Amazon MSK Serverless cluster.
 ///
-/// > **Note:** To manage a _provisioned_ Amazon MSK cluster, use the `aws.msk.Cluster` resource.
+/// &gt; **Note:** To manage a _provisioned_ Amazon MSK cluster, use the `aws.msk.Cluster` resource.
 ///
 /// ## Example Usage
 ///
@@ -173,22 +172,31 @@ import 'serverless_cluster_vpc_config.dart';
 class ServerlessCluster extends pulumi.CustomResource {
   /// The ARN of the serverless cluster.
   late final pulumi.Output<String> arn;
+
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `boot-abcdefg.c2.kafka-serverless.eu-central-1.amazonaws.com:9098`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslIam;
+
   /// Specifies client authentication information for the serverless cluster. See below.
-  late final pulumi.Output<ServerlessClusterClientAuthentication> clientAuthentication;
+  late final pulumi.Output<ServerlessClusterClientAuthentication>
+  clientAuthentication;
+
   /// The name of the serverless cluster.
   late final pulumi.Output<String> clusterName;
+
   /// UUID of the serverless cluster, for use in IAM policies.
   late final pulumi.Output<String> clusterUuid;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// VPC configuration information. See below.
-  late final pulumi.Output<List<ServerlessClusterVpcConfig>> vpcConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcConfigs;
 
   /// Creates a new [ServerlessCluster].
   /// [name] The Pulumi resource name.
@@ -199,20 +207,23 @@ class ServerlessCluster extends pulumi.CustomResource {
     ServerlessClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/serverlessCluster:ServerlessCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
-    this.clientAuthentication = registerOutput<ServerlessClusterClientAuthentication>('clientAuthentication');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterUuid = registerOutput<String>('clusterUuid');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcConfigs = registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs');
+         'aws:msk/serverlessCluster:ServerlessCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    clientAuthentication =
+        registerOutput<ServerlessClusterClientAuthentication>(
+          'clientAuthentication',
+        );
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcConfigs = registerOutput<List<Map<String, dynamic>>>('vpcConfigs');
   }
 
   /// Gets an existing [ServerlessCluster] resource's state with the given [name] and [id].
@@ -233,19 +244,22 @@ class ServerlessCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/serverlessCluster:ServerlessCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
-    this.clientAuthentication = registerOutput<ServerlessClusterClientAuthentication>('clientAuthentication');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterUuid = registerOutput<String>('clusterUuid');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcConfigs = registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs');
+         'aws:msk/serverlessCluster:ServerlessCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    clientAuthentication =
+        registerOutput<ServerlessClusterClientAuthentication>(
+          'clientAuthentication',
+        );
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcConfigs = registerOutput<List<Map<String, dynamic>>>('vpcConfigs');
   }
 }

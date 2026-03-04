@@ -1,5 +1,3 @@
-library module_clouddeploy;
-
 export 'clouddeploy/automation.dart';
 export 'clouddeploy/automation_args.dart';
 export 'clouddeploy/automation_rule.dart';

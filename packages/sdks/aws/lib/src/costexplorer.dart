@@ -1,5 +1,3 @@
-library module_costexplorer;
-
 export 'costexplorer/anomaly_monitor.dart';
 export 'costexplorer/anomaly_monitor_args.dart';
 export 'costexplorer/anomaly_monitor_state.dart';

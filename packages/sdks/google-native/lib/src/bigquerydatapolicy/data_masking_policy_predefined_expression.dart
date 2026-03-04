@@ -9,16 +9,17 @@ enum DataMaskingPolicyPredefinedExpression {
   emailMask("EMAIL_MASK"),
   dateYearMask("DATE_YEAR_MASK");
 
-  const DataMaskingPolicyPredefinedExpression(this.value);
-  final String value;
+  const DataMaskingPolicyPredefinedExpression(this.wireValue);
+  final String wireValue;
 
   static DataMaskingPolicyPredefinedExpression fromValue(String value) {
     for (final item in DataMaskingPolicyPredefinedExpression.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataMaskingPolicyPredefinedExpression value: $value');
+    throw ArgumentError(
+      'Unknown DataMaskingPolicyPredefinedExpression value: $value',
+    );
   }
 }
-

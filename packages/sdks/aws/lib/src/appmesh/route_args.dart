@@ -10,16 +10,22 @@ import 'route_spec.dart';
 class RouteArgs {
   /// Name of the service mesh in which to create the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> meshName;
+
   /// AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
   final pulumi.Input<String>? meshOwner;
+
   /// Name to use for the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Route specification to apply.
   final pulumi.Input<RouteSpec> spec;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualRouterName;
 
@@ -47,7 +53,10 @@ class RouteArgs {
       'meshOwner': ?meshOwner,
       'name': ?name,
       'region': ?region,
-      'spec': pulumi.Input.mapInputValue<RouteSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<RouteSpec, Map<String, dynamic>>(
+        spec,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
       'virtualRouterName': virtualRouterName,
     };
@@ -55,14 +64,35 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      meshName: (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      spec: (RouteSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      virtualRouterName: (map['virtualRouterName'] as String).input(),
+      meshName: pulumi.Input.fromValue(map['meshName'] as String),
+      meshOwner: (() {
+        final guardedValue = map['meshOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spec: pulumi.Input.fromValue(
+        RouteSpec.fromMap((map['spec']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualRouterName: pulumi.Input.fromValue(
+        map['virtualRouterName'] as String,
+      ),
     );
   }
 }
-

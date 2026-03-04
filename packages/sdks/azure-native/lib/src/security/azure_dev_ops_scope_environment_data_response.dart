@@ -10,20 +10,17 @@ class AzureDevOpsScopeEnvironmentDataResponse {
 
   /// Creates a new [AzureDevOpsScopeEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
-  AzureDevOpsScopeEnvironmentDataResponse({
-    required this.environmentType,
-  });
+  AzureDevOpsScopeEnvironmentDataResponse({required this.environmentType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'environmentType': environmentType,
-    };
+    return <String, dynamic>{'environmentType': environmentType};
   }
 
-  factory AzureDevOpsScopeEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureDevOpsScopeEnvironmentDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureDevOpsScopeEnvironmentDataResponse(
-      environmentType: (map['environmentType'] as String).input(),
+      environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum AzureBareMetalHardwareTypeNamesEnum {
   valueHPE("HPE"),
   valueSDFLEX("SDFLEX");
 
-  const AzureBareMetalHardwareTypeNamesEnum(this.value);
-  final String value;
+  const AzureBareMetalHardwareTypeNamesEnum(this.wireValue);
+  final String wireValue;
 
   static AzureBareMetalHardwareTypeNamesEnum fromValue(String value) {
     for (final item in AzureBareMetalHardwareTypeNamesEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureBareMetalHardwareTypeNamesEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureBareMetalHardwareTypeNamesEnum value: $value',
+    );
   }
 }
-

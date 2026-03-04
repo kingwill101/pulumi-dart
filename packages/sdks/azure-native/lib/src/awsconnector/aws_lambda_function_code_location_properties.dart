@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsLambdaFunctionCodeLocation
 class AwsLambdaFunctionCodeLocationProperties {
-  /// <p>URI of a container image in the Amazon ECR registry.</p>
+  /// &lt;p&gt;URI of a container image in the Amazon ECR registry.&lt;/p&gt;
   final pulumi.Input<String>? imageUri;
-  /// <p>A presigned URL that you can use to download the deployment package.</p>
+
+  /// &lt;p&gt;A presigned URL that you can use to download the deployment package.&lt;/p&gt;
   final pulumi.Input<String>? location;
-  /// <p>The service that's hosting the file.</p>
+
+  /// &lt;p&gt;The service that's hosting the file.&lt;/p&gt;
   final pulumi.Input<String>? repositoryType;
-  /// <p>The resolved URI for the image.</p>
+
+  /// &lt;p&gt;The resolved URI for the image.&lt;/p&gt;
   final pulumi.Input<String>? resolvedImageUri;
 
   /// Creates a new [AwsLambdaFunctionCodeLocationProperties].
-  /// [imageUri] <p>URI of a container image in the Amazon ECR registry.</p>
-  /// [location] <p>A presigned URL that you can use to download the deployment package.</p>
-  /// [repositoryType] <p>The service that's hosting the file.</p>
-  /// [resolvedImageUri] <p>The resolved URI for the image.</p>
+  /// [imageUri] &lt;p&gt;URI of a container image in the Amazon ECR registry.&lt;/p&gt;
+  /// [location] &lt;p&gt;A presigned URL that you can use to download the deployment package.&lt;/p&gt;
+  /// [repositoryType] &lt;p&gt;The service that's hosting the file.&lt;/p&gt;
+  /// [resolvedImageUri] &lt;p&gt;The resolved URI for the image.&lt;/p&gt;
   AwsLambdaFunctionCodeLocationProperties({
     this.imageUri,
     this.location,
@@ -34,13 +37,30 @@ class AwsLambdaFunctionCodeLocationProperties {
     };
   }
 
-  factory AwsLambdaFunctionCodeLocationProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsLambdaFunctionCodeLocationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsLambdaFunctionCodeLocationProperties(
-      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      repositoryType: map['repositoryType'] == null ? null : (map['repositoryType']! as String).input(),
-      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri']! as String).input(),
+      imageUri: (() {
+        final guardedValue = map['imageUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryType: (() {
+        final guardedValue = map['repositoryType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resolvedImageUri: (() {
+        final guardedValue = map['resolvedImageUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionState {
   /// The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
   final pulumi.Input<String>? createTime;
+
   /// The Site version's description.
   final pulumi.Input<String>? description;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   final pulumi.Input<int>? originVersion;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   final pulumi.Input<String>? siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   final pulumi.Input<int>? siteVersion;
+
   /// Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
   final pulumi.Input<String>? status;
 
@@ -46,13 +51,36 @@ class VersionState {
 
   factory VersionState.fromMap(Map<String, dynamic> map) {
     return VersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      originVersion: map['originVersion'] == null ? null : (map['originVersion']! as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originVersion: (() {
+        final guardedValue = map['originVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteVersion: (() {
+        final guardedValue = map['siteVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

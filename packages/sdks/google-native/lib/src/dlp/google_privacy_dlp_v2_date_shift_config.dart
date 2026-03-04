@@ -8,10 +8,13 @@ import 'google_privacy_dlp_v2_field_id.dart';
 class GooglePrivacyDlpV2DateShiftConfig {
   /// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
   final pulumi.Input<GooglePrivacyDlpV2FieldId>? context;
+
   /// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
   final pulumi.Input<GooglePrivacyDlpV2CryptoKey>? cryptoKey;
+
   /// For example, -5 means shift date to at most 5 days back in the past.
   final pulumi.Input<int> lowerBoundDays;
+
   /// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
   final pulumi.Input<int> upperBoundDays;
 
@@ -29,8 +32,16 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'context': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(context, (value) => value.toMap()),
-      'cryptoKey': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CryptoKey, Map<String, dynamic>>(cryptoKey, (value) => value.toMap()),
+      'context':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2FieldId,
+            Map<String, dynamic>
+          >(context, (value) => value.toMap()),
+      'cryptoKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2CryptoKey,
+            Map<String, dynamic>
+          >(cryptoKey, (value) => value.toMap()),
       'lowerBoundDays': lowerBoundDays,
       'upperBoundDays': upperBoundDays,
     };
@@ -38,11 +49,26 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   factory GooglePrivacyDlpV2DateShiftConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DateShiftConfig(
-      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
-      lowerBoundDays: (map['lowerBoundDays'] as int).input(),
-      upperBoundDays: (map['upperBoundDays'] as int).input(),
+      context: (() {
+        final guardedValue = map['context'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2FieldId.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cryptoKey: (() {
+        final guardedValue = map['cryptoKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2CryptoKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lowerBoundDays: pulumi.Input.fromValue(map['lowerBoundDays'] as int),
+      upperBoundDays: pulumi.Input.fromValue(map['upperBoundDays'] as int),
     );
   }
 }
-

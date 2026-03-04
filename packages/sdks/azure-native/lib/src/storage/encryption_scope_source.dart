@@ -3,16 +3,15 @@ enum EncryptionScopeSource {
   valueMicrosoftStorage("Microsoft.Storage"),
   valueMicrosoftKeyVault("Microsoft.KeyVault");
 
-  const EncryptionScopeSource(this.value);
-  final String value;
+  const EncryptionScopeSource(this.wireValue);
+  final String wireValue;
 
   static EncryptionScopeSource fromValue(String value) {
     for (final item in EncryptionScopeSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionScopeSource value: $value');
   }
 }
-

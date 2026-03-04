@@ -5,9 +5,14 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat {
   /// Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
-  final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric> metric;
+  final pulumi.Input<
+    PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric
+  >
+  metric;
+
   /// Statistic of the metrics to return.
   final pulumi.Input<String> stat;
+
   /// Unit of the metrics to return.
   final pulumi.Input<String>? unit;
 
@@ -23,18 +28,31 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metric': pulumi.Input.mapInputValue<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'metric':
+          pulumi.Input.mapInputValue<
+            PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric,
+            Map<String, dynamic>
+          >(metric, (value) => value.toMap()),
       'stat': stat,
       'unit': ?unit,
     };
   }
 
-  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
+  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat(
-      metric: (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
-      stat: (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
+      metric: pulumi.Input.fromValue(
+        PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap(
+          (map['metric']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      stat: pulumi.Input.fromValue(map['stat'] as String),
+      unit: (() {
+        final guardedValue = map['unit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

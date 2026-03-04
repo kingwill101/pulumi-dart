@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationTriggeringRule {
   /// The expected value.
   final pulumi.Input<String>? expectedValue;
+
   /// A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
   final pulumi.Input<String>? operator;
+
   /// The JPath of the entity model property that should be checked.
   final pulumi.Input<String>? propertyJPath;
+
   /// The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
   final pulumi.Input<String>? propertyType;
 
@@ -36,11 +39,26 @@ class AutomationTriggeringRule {
 
   factory AutomationTriggeringRule.fromMap(Map<String, dynamic> map) {
     return AutomationTriggeringRule(
-      expectedValue: map['expectedValue'] == null ? null : (map['expectedValue']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      propertyJPath: map['propertyJPath'] == null ? null : (map['propertyJPath']! as String).input(),
-      propertyType: map['propertyType'] == null ? null : (map['propertyType']! as String).input(),
+      expectedValue: (() {
+        final guardedValue = map['expectedValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyJPath: (() {
+        final guardedValue = map['propertyJPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyType: (() {
+        final guardedValue = map['propertyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

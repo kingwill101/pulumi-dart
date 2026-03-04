@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolDataDisk {
   /// The caching mode of data disks.
   final pulumi.Input<String> caching;
+
   /// The initial disk size in GB when creating new data disk.
   final pulumi.Input<int> diskSizeGb;
+
   /// The lun is used to uniquely identify each data disk.
   final pulumi.Input<int> lun;
+
   /// The storage account type to be used for the data disk.
   final pulumi.Input<String> storageAccountType;
 
@@ -35,11 +38,12 @@ class GetPoolDataDisk {
 
   factory GetPoolDataDisk.fromMap(Map<String, dynamic> map) {
     return GetPoolDataDisk(
-      caching: (map['caching'] as String).input(),
-      diskSizeGb: (map['diskSizeGb'] as int).input(),
-      lun: (map['lun'] as int).input(),
-      storageAccountType: (map['storageAccountType'] as String).input(),
+      caching: pulumi.Input.fromValue(map['caching'] as String),
+      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      lun: pulumi.Input.fromValue(map['lun'] as int),
+      storageAccountType: pulumi.Input.fromValue(
+        map['storageAccountType'] as String,
+      ),
     );
   }
 }
-

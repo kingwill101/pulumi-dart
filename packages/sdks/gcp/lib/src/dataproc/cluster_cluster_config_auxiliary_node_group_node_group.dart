@@ -6,8 +6,13 @@ import 'cluster_cluster_config_auxiliary_node_group_node_group_node_group_config
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
   /// The Node group resource name.
   final pulumi.Input<String>? name;
+
   /// The node group instance group configuration.
-  final pulumi.Input<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig>? nodeGroupConfig;
+  final pulumi.Input<
+    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig
+  >?
+  nodeGroupConfig;
+
   /// Node group roles.
   /// One of `"DRIVER"`.
   final pulumi.Input<List<String>> roles;
@@ -25,17 +30,34 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'nodeGroupConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig, Map<String, dynamic>>(nodeGroupConfig, (value) => value.toMap()),
+      'nodeGroupConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig,
+            Map<String, dynamic>
+          >(nodeGroupConfig, (value) => value.toMap()),
       'roles': roles,
     };
   }
 
-  factory ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigAuxiliaryNodeGroupNodeGroup(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig.fromMap((map['nodeGroupConfig']! as Map).cast<String, dynamic>())).input(),
-      roles: ((map['roles'] as List).cast<String>()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupConfig: (() {
+        final guardedValue = map['nodeGroupConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum OperationalMode {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const OperationalMode(this.value);
-  final String value;
+  const OperationalMode(this.wireValue);
+  final String wireValue;
 
   static OperationalMode fromValue(String value) {
     for (final item in OperationalMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperationalMode value: $value');
   }
 }
-

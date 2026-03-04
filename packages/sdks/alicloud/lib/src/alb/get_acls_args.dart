@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAclsArgs {
   /// The acl ids.
   final pulumi.Input<List<String>>? aclIds;
+
   /// The ACL Name.
   final pulumi.Input<String>? aclName;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Acl IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Acl name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Resource Group to Which the Number.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
   final pulumi.Input<String>? status;
 
@@ -59,15 +66,46 @@ class GetAclsArgs {
 
   factory GetAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetAclsArgs(
-      aclIds: map['aclIds'] == null ? null : ((map['aclIds']! as List).cast<String>()).input(),
-      aclName: map['aclName'] == null ? null : (map['aclName']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      aclIds: (() {
+        final guardedValue = map['aclIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      aclName: (() {
+        final guardedValue = map['aclName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

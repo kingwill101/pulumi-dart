@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KvNamespaceArgs {
   /// The description of the namespace.
   final pulumi.Input<String>? description;
+
   /// The name of the namespace.
   final pulumi.Input<String> kvNamespace;
 
   /// Creates a new [KvNamespaceArgs].
   /// [description] The description of the namespace.
   /// [kvNamespace] The name of the namespace.
-  KvNamespaceArgs({
-    this.description,
-    required this.kvNamespace,
-  });
+  KvNamespaceArgs({this.description, required this.kvNamespace});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class KvNamespaceArgs {
 
   factory KvNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return KvNamespaceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      kvNamespace: (map['kvNamespace'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kvNamespace: pulumi.Input.fromValue(map['kvNamespace'] as String),
     );
   }
 }
-

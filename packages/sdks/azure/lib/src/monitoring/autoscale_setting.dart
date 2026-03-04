@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscale_setting_args.dart';
 import 'autoscale_setting_notification.dart';
 import 'autoscale_setting_predictive.dart';
-import 'autoscale_setting_profile.dart';
 import 'autoscale_setting_state.dart';
 
 /// Manages a AutoScale Setting which can be applied to Virtual Machine Scale Sets, App Services and other scalable resources.
@@ -2562,7 +2561,7 @@ import 'autoscale_setting_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2022-10-01
@@ -2577,20 +2576,28 @@ import 'autoscale_setting_state.dart';
 class AutoscaleSetting extends pulumi.CustomResource {
   /// Specifies whether automatic scaling is enabled for the target resource. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Specifies the supported Azure location where the AutoScale Setting should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the AutoScale Setting. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies a `notification` block as defined below.
   late final pulumi.Output<AutoscaleSettingNotification?> notification;
+
   /// A `predictive` block as defined below.
   late final pulumi.Output<AutoscaleSettingPredictive?> predictive;
+
   /// Specifies one or more (up to 20) `profile` blocks as defined below.
-  late final pulumi.Output<List<AutoscaleSettingProfile>> profiles;
+  late final pulumi.Output<List<Map<String, dynamic>>> profiles;
+
   /// The name of the Resource Group in the AutoScale Setting should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -2603,20 +2610,22 @@ class AutoscaleSetting extends pulumi.CustomResource {
     AutoscaleSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/autoscaleSetting:AutoscaleSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/autoscaleSetting:AutoscaleSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notification = registerOutput<AutoscaleSettingNotification?>('notification');
-    this.predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
-    this.profiles = registerOutput<List<AutoscaleSettingProfile>>('profiles');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+    notification = registerOutput<AutoscaleSettingNotification?>(
+      'notification',
+    );
+    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
+    profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 
   /// Gets an existing [AutoscaleSetting] resource's state with the given [name] and [id].
@@ -2637,19 +2646,21 @@ class AutoscaleSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/autoscaleSetting:AutoscaleSetting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/autoscaleSetting:AutoscaleSetting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notification = registerOutput<AutoscaleSettingNotification?>('notification');
-    this.predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
-    this.profiles = registerOutput<List<AutoscaleSettingProfile>>('profiles');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+    notification = registerOutput<AutoscaleSettingNotification?>(
+      'notification',
+    );
+    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
+    profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

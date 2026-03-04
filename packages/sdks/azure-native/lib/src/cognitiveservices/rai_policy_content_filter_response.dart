@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiPolicyContentFilterResponse {
   /// The action types to apply to the content filters
   final pulumi.Input<String>? action;
+
   /// If blocking would occur.
   final pulumi.Input<bool>? blocking;
+
   /// If the ContentFilter is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Name of ContentFilter.
   final pulumi.Input<String>? name;
+
   /// Level at which content is filtered.
   final pulumi.Input<String>? severityThreshold;
+
   /// Content source to apply the Content Filters.
   final pulumi.Input<String>? source;
 
@@ -46,13 +51,36 @@ class RaiPolicyContentFilterResponse {
 
   factory RaiPolicyContentFilterResponse.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilterResponse(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      severityThreshold: map['severityThreshold'] == null ? null : (map['severityThreshold']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      blocking: (() {
+        final guardedValue = map['blocking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severityThreshold: (() {
+        final guardedValue = map['severityThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

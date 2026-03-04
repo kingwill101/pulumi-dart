@@ -13,15 +13,14 @@ class GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetMetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(Map<String, dynamic> map) {
+  factory GetMetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetastoreServiceMetadataIntegrationDataCatalogConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

@@ -9,26 +9,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcCenTrFirewallsArgs {
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// The page number of the pagination query. The default value is 1.
   final pulumi.Input<int>? currentPage;
+
   /// Firewall ID
   final pulumi.Input<String>? firewallId;
+
   /// The name of Cloud Firewall.
   final pulumi.Input<String>? firewallName;
-  /// The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+
+  /// The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.&gt; If this parameter is not set, the VPC boundary firewall in all states is queried.
   final pulumi.Input<String>? firewallSwitchStatus;
+
   /// A list of Vpc Cen Tr Firewall IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Current page number.
   final pulumi.Input<int>? pageNumber;
+
   /// The maximum number of pieces of data per page that are displayed during a paged query. The default value is 10.
   final pulumi.Input<int>? pageSize;
+
   /// The region ID of the transit router instance.
   final pulumi.Input<String>? regionNo;
+
   /// The routing pattern. Value: managed: indicates automatic mode
   final pulumi.Input<String>? routeMode;
+
   /// The ID of the transit router instance.
   final pulumi.Input<String>? transitRouterId;
 
@@ -37,7 +48,7 @@ class GetVpcCenTrFirewallsArgs {
   /// [currentPage] The page number of the pagination query. The default value is 1.
   /// [firewallId] Firewall ID
   /// [firewallName] The name of Cloud Firewall.
-  /// [firewallSwitchStatus] The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+  /// [firewallSwitchStatus] The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.&gt; If this parameter is not set, the VPC boundary firewall in all states is queried.
   /// [ids] A list of Vpc Cen Tr Firewall IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Current page number.
@@ -79,19 +90,66 @@ class GetVpcCenTrFirewallsArgs {
 
   factory GetVpcCenTrFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcCenTrFirewallsArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      currentPage: map['currentPage'] == null ? null : (map['currentPage']! as int).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as String).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
-      firewallSwitchStatus: map['firewallSwitchStatus'] == null ? null : (map['firewallSwitchStatus']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
-      routeMode: map['routeMode'] == null ? null : (map['routeMode']! as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentPage: (() {
+        final guardedValue = map['currentPage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      firewallId: (() {
+        final guardedValue = map['firewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallName: (() {
+        final guardedValue = map['firewallName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallSwitchStatus: (() {
+        final guardedValue = map['firewallSwitchStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionNo: (() {
+        final guardedValue = map['regionNo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeMode: (() {
+        final guardedValue = map['routeMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

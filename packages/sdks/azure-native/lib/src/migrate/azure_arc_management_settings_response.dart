@@ -10,20 +10,25 @@ class AzureArcManagementSettingsResponse {
 
   /// Creates a new [AzureArcManagementSettingsResponse].
   /// [monitoringSettings] Gets the azure arc monitoring settings.
-  AzureArcManagementSettingsResponse({
-    required this.monitoringSettings,
-  });
+  AzureArcManagementSettingsResponse({required this.monitoringSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monitoringSettings': pulumi.Input.mapInputValue<AzureArcMonitoringSettingsResponse, Map<String, dynamic>>(monitoringSettings, (value) => value.toMap()),
+      'monitoringSettings':
+          pulumi.Input.mapInputValue<
+            AzureArcMonitoringSettingsResponse,
+            Map<String, dynamic>
+          >(monitoringSettings, (value) => value.toMap()),
     };
   }
 
   factory AzureArcManagementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcManagementSettingsResponse(
-      monitoringSettings: (AzureArcMonitoringSettingsResponse.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: pulumi.Input.fromValue(
+        AzureArcMonitoringSettingsResponse.fromMap(
+          (map['monitoringSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

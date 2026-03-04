@@ -3,16 +3,17 @@ enum EncryptionConfigurationEncryptionType {
   aES256("AES256"),
   kMS("KMS");
 
-  const EncryptionConfigurationEncryptionType(this.value);
-  final String value;
+  const EncryptionConfigurationEncryptionType(this.wireValue);
+  final String wireValue;
 
   static EncryptionConfigurationEncryptionType fromValue(String value) {
     for (final item in EncryptionConfigurationEncryptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EncryptionConfigurationEncryptionType value: $value');
+    throw ArgumentError(
+      'Unknown EncryptionConfigurationEncryptionType value: $value',
+    );
   }
 }
-

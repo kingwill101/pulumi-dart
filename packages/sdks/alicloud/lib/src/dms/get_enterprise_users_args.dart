@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseUsersArgs {
   /// A list of DMS Enterprise User IDs (UID).
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter the results by the DMS Enterprise User nick_name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The role of the user to query.
   final pulumi.Input<String>? role;
+
   /// The keyword used to query users.
   final pulumi.Input<String>? searchKey;
+
   /// The status of the user.
   final pulumi.Input<String>? status;
+
   /// The ID of the tenant in DMS Enterprise.
   final pulumi.Input<int>? tid;
 
@@ -54,14 +60,41 @@ class GetEnterpriseUsersArgs {
 
   factory GetEnterpriseUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseUsersArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      searchKey: map['searchKey'] == null ? null : (map['searchKey']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchKey: (() {
+        final guardedValue = map['searchKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

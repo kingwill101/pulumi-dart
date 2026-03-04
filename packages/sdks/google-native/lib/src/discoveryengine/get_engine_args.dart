@@ -35,11 +35,14 @@ class GetEngineArgs {
 
   factory GetEngineArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      engineId: (map['engineId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      engineId: pulumi.Input.fromValue(map['engineId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

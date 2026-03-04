@@ -6,6 +6,7 @@ import 'get_users_user.dart';
 /// Result data returned by getUsers.
 class GetUsersResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -36,19 +37,36 @@ class GetUsersResult {
       'ids': ids,
       'keyword': ?keyword,
       'outputFile': ?outputFile,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(
+        users,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetUsersResult.fromMap(Map<String, dynamic> map) {
     return GetUsersResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      users: pulumi.Input.decodeList<GetUsersUser>(
+        map['users']!,
+        (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

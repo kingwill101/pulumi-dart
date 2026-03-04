@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyConnection {
   /// SSH Agent socket path. Default to environment variable SSH_AUTH_SOCK if present.
   final pulumi.Input<String>? agentSocketPath;
+
   /// Max allowed errors on trying to dial the remote host. -1 set count to unlimited. Default value is 10.
   final pulumi.Input<int>? dialErrorLimit;
+
   /// The address of the bastion host to connect to.
   final pulumi.Input<String> host;
+
   /// The expected host key to verify the server's identity. If not provided, the host key will be ignored.
   final pulumi.Input<String>? hostKey;
+
   /// The password we should use for the connection to the bastion host.
   final pulumi.Input<String>? password;
+
   /// Max number of seconds for each dial attempt. 0 implies no maximum. Default value is 15 seconds.
   final pulumi.Input<int>? perDialTimeout;
+
   /// The port of the bastion host to connect to.
   final pulumi.Input<double>? port;
+
   /// The contents of an SSH key to use for the connection. This takes preference over the password if provided.
   final pulumi.Input<String>? privateKey;
+
   /// The password to use in case the private key is encrypted.
   final pulumi.Input<String>? privateKeyPassword;
+
   /// The user that we should use for the connection to the bastion host.
   final pulumi.Input<String>? user;
 
@@ -66,17 +75,52 @@ class ProxyConnection {
 
   factory ProxyConnection.fromMap(Map<String, dynamic> map) {
     return ProxyConnection(
-      agentSocketPath: map['agentSocketPath'] == null ? null : (map['agentSocketPath']! as String).input(),
-      dialErrorLimit: map['dialErrorLimit'] == null ? null : (map['dialErrorLimit']! as int).input(),
-      host: (map['host'] as String).input(),
-      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      perDialTimeout: map['perDialTimeout'] == null ? null : (map['perDialTimeout']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as double).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      privateKeyPassword: map['privateKeyPassword'] == null ? null : (map['privateKeyPassword']! as String).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
+      agentSocketPath: (() {
+        final guardedValue = map['agentSocketPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dialErrorLimit: (() {
+        final guardedValue = map['dialErrorLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      hostKey: (() {
+        final guardedValue = map['hostKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      perDialTimeout: (() {
+        final guardedValue = map['perDialTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKeyPassword: (() {
+        final guardedValue = map['privateKeyPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

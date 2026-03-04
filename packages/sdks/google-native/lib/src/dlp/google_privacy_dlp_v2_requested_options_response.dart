@@ -8,8 +8,10 @@ import 'google_privacy_dlp_v2_inspect_template_response.dart';
 class GooglePrivacyDlpV2RequestedOptionsResponse {
   /// Inspect config.
   final pulumi.Input<GooglePrivacyDlpV2InspectJobConfigResponse> jobConfig;
+
   /// If run with an InspectTemplate, a snapshot of its state at the time of this run.
-  final pulumi.Input<GooglePrivacyDlpV2InspectTemplateResponse> snapshotInspectTemplate;
+  final pulumi.Input<GooglePrivacyDlpV2InspectTemplateResponse>
+  snapshotInspectTemplate;
 
   /// Creates a new [GooglePrivacyDlpV2RequestedOptionsResponse].
   /// [jobConfig] Inspect config.
@@ -21,16 +23,33 @@ class GooglePrivacyDlpV2RequestedOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jobConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2InspectJobConfigResponse, Map<String, dynamic>>(jobConfig, (value) => value.toMap()),
-      'snapshotInspectTemplate': pulumi.Input.mapInputValue<GooglePrivacyDlpV2InspectTemplateResponse, Map<String, dynamic>>(snapshotInspectTemplate, (value) => value.toMap()),
+      'jobConfig':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2InspectJobConfigResponse,
+            Map<String, dynamic>
+          >(jobConfig, (value) => value.toMap()),
+      'snapshotInspectTemplate':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2InspectTemplateResponse,
+            Map<String, dynamic>
+          >(snapshotInspectTemplate, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2RequestedOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RequestedOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RequestedOptionsResponse(
-      jobConfig: (GooglePrivacyDlpV2InspectJobConfigResponse.fromMap((map['jobConfig'] as Map).cast<String, dynamic>())).input(),
-      snapshotInspectTemplate: (GooglePrivacyDlpV2InspectTemplateResponse.fromMap((map['snapshotInspectTemplate'] as Map).cast<String, dynamic>())).input(),
+      jobConfig: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(
+          (map['jobConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      snapshotInspectTemplate: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2InspectTemplateResponse.fromMap(
+          (map['snapshotInspectTemplate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

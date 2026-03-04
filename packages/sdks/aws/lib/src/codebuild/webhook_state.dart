@@ -9,24 +9,34 @@ import 'webhook_scope_configuration.dart';
 class WebhookState {
   /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
   final pulumi.Input<String>? branchFilter;
+
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   final pulumi.Input<String>? buildType;
+
   /// Information about the webhook's trigger. See filter_group for details.
   final pulumi.Input<List<WebhookFilterGroup>>? filterGroups;
+
   /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
   final pulumi.Input<bool>? manualCreation;
+
   /// The CodeBuild endpoint where webhook events are sent.
   final pulumi.Input<String>? payloadUrl;
+
   /// The name of the build project.
   final pulumi.Input<String>? projectName;
+
   /// Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
   final pulumi.Input<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Scope configuration for global or organization webhooks. See scope_configuration for details.
   final pulumi.Input<WebhookScopeConfiguration>? scopeConfiguration;
+
   /// The secret token of the associated repository. Not returned by the CodeBuild API for all source types.
   final pulumi.Input<String>? secret;
+
   /// The URL to the webhook.
   final pulumi.Input<String>? url;
 
@@ -60,13 +70,32 @@ class WebhookState {
     return <String, dynamic>{
       'branchFilter': ?branchFilter,
       'buildType': ?buildType,
-      'filterGroups': ?pulumi.Input.mapOptionalInputValue<List<WebhookFilterGroup>, List<Map<String, dynamic>>>(filterGroups, (value) => pulumi.Input.encodeList<WebhookFilterGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filterGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebhookFilterGroup>,
+            List<Map<String, dynamic>>
+          >(
+            filterGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebhookFilterGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'manualCreation': ?manualCreation,
       'payloadUrl': ?payloadUrl,
       'projectName': ?projectName,
-      'pullRequestBuildPolicy': ?pulumi.Input.mapOptionalInputValue<WebhookPullRequestBuildPolicy, Map<String, dynamic>>(pullRequestBuildPolicy, (value) => value.toMap()),
+      'pullRequestBuildPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebhookPullRequestBuildPolicy,
+            Map<String, dynamic>
+          >(pullRequestBuildPolicy, (value) => value.toMap()),
       'region': ?region,
-      'scopeConfiguration': ?pulumi.Input.mapOptionalInputValue<WebhookScopeConfiguration, Map<String, dynamic>>(scopeConfiguration, (value) => value.toMap()),
+      'scopeConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebhookScopeConfiguration,
+            Map<String, dynamic>
+          >(scopeConfiguration, (value) => value.toMap()),
       'secret': ?secret,
       'url': ?url,
     };
@@ -74,18 +103,76 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      branchFilter: map['branchFilter'] == null ? null : ((map['branchFilter'] as String).input()).input(),
-      buildType: map['buildType'] == null ? null : ((map['buildType'] as String).input()).input(),
-      filterGroups: map['filterGroups'] == null ? null : ((pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups']!, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      manualCreation: map['manualCreation'] == null ? null : ((map['manualCreation'] as bool).input()).input(),
-      payloadUrl: map['payloadUrl'] == null ? null : ((map['payloadUrl'] as String).input()).input(),
-      projectName: map['projectName'] == null ? null : ((map['projectName'] as String).input()).input(),
-      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : ((WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scopeConfiguration: map['scopeConfiguration'] == null ? null : ((WebhookScopeConfiguration.fromMap((map['scopeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      secret: map['secret'] == null ? null : ((map['secret'] as String).input()).input(),
-      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
+      branchFilter: (() {
+        final guardedValue = map['branchFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      buildType: (() {
+        final guardedValue = map['buildType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filterGroups: (() {
+        final guardedValue = map['filterGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WebhookFilterGroup>(
+            guardedValue,
+            (value) => WebhookFilterGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      manualCreation: (() {
+        final guardedValue = map['manualCreation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      payloadUrl: (() {
+        final guardedValue = map['payloadUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: (() {
+        final guardedValue = map['projectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pullRequestBuildPolicy: (() {
+        final guardedValue = map['pullRequestBuildPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebhookPullRequestBuildPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeConfiguration: (() {
+        final guardedValue = map['scopeConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebhookScopeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

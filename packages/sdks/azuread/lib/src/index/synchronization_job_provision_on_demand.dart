@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synchronization_job_provision_on_demand_args.dart';
-import 'synchronization_job_provision_on_demand_parameter.dart';
 import 'synchronization_job_provision_on_demand_state.dart';
 
 /// Manages synchronization job on demand provisioning associated with a service principal (enterprise application) within Azure Active Directory.
@@ -437,11 +436,14 @@ import 'synchronization_job_provision_on_demand_state.dart';
 /// This resource does not support importing.
 class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
   /// One or more `parameter` blocks as documented below.
-  late final pulumi.Output<List<SynchronizationJobProvisionOnDemandParameter>> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+
   /// The ID of the service principal for the synchronization job.
   late final pulumi.Output<String> servicePrincipalId;
+
   /// The ID of the synchronization job.
   late final pulumi.Output<String> synchronizationJobId;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -454,15 +456,15 @@ class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
     SynchronizationJobProvisionOnDemandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parameters = registerOutput<List<SynchronizationJobProvisionOnDemandParameter>>('parameters');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.synchronizationJobId = registerOutput<String>('synchronizationJobId');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    synchronizationJobId = registerOutput<String>('synchronizationJobId');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
   /// Gets an existing [SynchronizationJobProvisionOnDemand] resource's state with the given [name] and [id].
@@ -483,14 +485,14 @@ class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parameters = registerOutput<List<SynchronizationJobProvisionOnDemandParameter>>('parameters');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.synchronizationJobId = registerOutput<String>('synchronizationJobId');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    synchronizationJobId = registerOutput<String>('synchronizationJobId');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

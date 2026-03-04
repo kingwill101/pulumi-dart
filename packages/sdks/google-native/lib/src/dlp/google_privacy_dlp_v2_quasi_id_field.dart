@@ -7,29 +7,42 @@ import 'google_privacy_dlp_v2_field_id.dart';
 class GooglePrivacyDlpV2QuasiIdField {
   /// A auxiliary field.
   final pulumi.Input<String>? customTag;
+
   /// Identifies the column.
   final pulumi.Input<GooglePrivacyDlpV2FieldId>? field;
 
   /// Creates a new [GooglePrivacyDlpV2QuasiIdField].
   /// [customTag] A auxiliary field.
   /// [field] Identifies the column.
-  GooglePrivacyDlpV2QuasiIdField({
-    this.customTag,
-    this.field,
-  });
+  GooglePrivacyDlpV2QuasiIdField({this.customTag, this.field});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customTag': ?customTag,
-      'field': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(field, (value) => value.toMap()),
+      'field':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2FieldId,
+            Map<String, dynamic>
+          >(field, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2QuasiIdField.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiIdField(
-      customTag: map['customTag'] == null ? null : (map['customTag']! as String).input(),
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
+      customTag: (() {
+        final guardedValue = map['customTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2FieldId.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

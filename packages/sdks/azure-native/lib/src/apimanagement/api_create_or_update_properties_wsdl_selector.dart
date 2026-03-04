@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiCreateOrUpdatePropertiesWsdlSelector {
   /// Name of endpoint(port) to import from WSDL
   final pulumi.Input<String>? wsdlEndpointName;
+
   /// Name of service to import from WSDL
   final pulumi.Input<String>? wsdlServiceName;
 
@@ -24,11 +25,20 @@ class ApiCreateOrUpdatePropertiesWsdlSelector {
     };
   }
 
-  factory ApiCreateOrUpdatePropertiesWsdlSelector.fromMap(Map<String, dynamic> map) {
+  factory ApiCreateOrUpdatePropertiesWsdlSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiCreateOrUpdatePropertiesWsdlSelector(
-      wsdlEndpointName: map['wsdlEndpointName'] == null ? null : (map['wsdlEndpointName']! as String).input(),
-      wsdlServiceName: map['wsdlServiceName'] == null ? null : (map['wsdlServiceName']! as String).input(),
+      wsdlEndpointName: (() {
+        final guardedValue = map['wsdlEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      wsdlServiceName: (() {
+        final guardedValue = map['wsdlServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

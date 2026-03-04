@@ -1,5 +1,3 @@
-library module_networkmanagement;
-
 export 'networkmanagement/abort_info_response.dart';
 export 'networkmanagement/abort_info_response_networkmanagement_v1beta1.dart';
 export 'networkmanagement/app_engine_version_endpoint.dart';

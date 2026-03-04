@@ -4,16 +4,15 @@ enum TextFormat {
   markdown("MARKDOWN"),
   raw("RAW");
 
-  const TextFormat(this.value);
-  final String value;
+  const TextFormat(this.wireValue);
+  final String wireValue;
 
   static TextFormat fromValue(String value) {
     for (final item in TextFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextFormat value: $value');
   }
 }
-

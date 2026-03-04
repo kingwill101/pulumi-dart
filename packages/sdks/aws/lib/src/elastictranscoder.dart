@@ -1,5 +1,3 @@
-library module_elastictranscoder;
-
 export 'elastictranscoder/pipeline.dart';
 export 'elastictranscoder/pipeline_args.dart';
 export 'elastictranscoder/pipeline_content_config.dart';

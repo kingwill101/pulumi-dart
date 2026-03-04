@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleFusionSourceSubType {
   /// Whether this source subtype under source signal is enabled or disabled in Fusion detection. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The Name of the source subtype under a given source signal in Fusion detection. Refer to Fusion alert rule template for supported values.
   final pulumi.Input<String> name;
+
   /// A list of severities that are enabled for this source subtype consumed in Fusion detection. Possible values for each element are `High`, `Medium`, `Low`, `Informational`.
   final pulumi.Input<List<String>> severitiesAlloweds;
 
@@ -30,10 +32,15 @@ class AlertRuleFusionSourceSubType {
 
   factory AlertRuleFusionSourceSubType.fromMap(Map<String, dynamic> map) {
     return AlertRuleFusionSourceSubType(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      severitiesAlloweds: ((map['severitiesAlloweds'] as List).cast<String>()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      severitiesAlloweds: pulumi.Input.fromValue(
+        (map['severitiesAlloweds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -11,7 +11,7 @@ import 'enterprise_snapshot_policy_storage_rule.dart';
 ///
 /// For information about EBS Enterprise Snapshot Policy and how to use it, see [What is Enterprise Snapshot Policy](https://next.api.aliyun.com/api/ebs/2021-07-30/CreateEnterpriseSnapshotPolicy).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -257,26 +257,39 @@ import 'enterprise_snapshot_policy_storage_rule.dart';
 class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Snapshot replication information. See `cross_region_copy_info` below.
-  late final pulumi.Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo> crossRegionCopyInfo;
+  late final pulumi.Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo>
+  crossRegionCopyInfo;
+
   /// Description information representing the resource.
   late final pulumi.Output<String?> desc;
+
   /// The name of the resource.
   late final pulumi.Output<String> enterpriseSnapshotPolicyName;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Snapshot retention policy representing resources. See `retain_rule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicyRetainRule> retainRule;
+
   /// The scheduling plan that represents the resource. See `schedule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicySchedule> schedule;
+
   /// Snapshot special retention rules. See `special_retain_rules` below.
-  late final pulumi.Output<EnterpriseSnapshotPolicySpecialRetainRules> specialRetainRules;
+  late final pulumi.Output<EnterpriseSnapshotPolicySpecialRetainRules>
+  specialRetainRules;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Snapshot storage policy. See `storage_rule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicyStorageRule?> storageRule;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Represents the target type of resource binding.
   late final pulumi.Output<String> targetType;
 
@@ -289,23 +302,35 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     EnterpriseSnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.crossRegionCopyInfo = registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>('crossRegionCopyInfo');
-    this.desc = registerOutput<String?>('desc');
-    this.enterpriseSnapshotPolicyName = registerOutput<String>('enterpriseSnapshotPolicyName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>('retainRule');
-    this.schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
-    this.specialRetainRules = registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>('specialRetainRules');
-    this.status = registerOutput<String>('status');
-    this.storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>('storageRule');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    crossRegionCopyInfo =
+        registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
+          'crossRegionCopyInfo',
+        );
+    desc = registerOutput<String?>('desc');
+    enterpriseSnapshotPolicyName = registerOutput<String>(
+      'enterpriseSnapshotPolicyName',
+    );
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
+      'retainRule',
+    );
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
+    specialRetainRules =
+        registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
+          'specialRetainRules',
+        );
+    status = registerOutput<String>('status');
+    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
+      'storageRule',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetType = registerOutput<String>('targetType');
   }
 
   /// Gets an existing [EnterpriseSnapshotPolicy] resource's state with the given [name] and [id].
@@ -326,22 +351,34 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.crossRegionCopyInfo = registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>('crossRegionCopyInfo');
-    this.desc = registerOutput<String?>('desc');
-    this.enterpriseSnapshotPolicyName = registerOutput<String>('enterpriseSnapshotPolicyName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>('retainRule');
-    this.schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
-    this.specialRetainRules = registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>('specialRetainRules');
-    this.status = registerOutput<String>('status');
-    this.storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>('storageRule');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    crossRegionCopyInfo =
+        registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
+          'crossRegionCopyInfo',
+        );
+    desc = registerOutput<String?>('desc');
+    enterpriseSnapshotPolicyName = registerOutput<String>(
+      'enterpriseSnapshotPolicyName',
+    );
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
+      'retainRule',
+    );
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
+    specialRetainRules =
+        registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
+          'specialRetainRules',
+        );
+    status = registerOutput<String>('status');
+    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
+      'storageRule',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetType = registerOutput<String>('targetType');
   }
 }

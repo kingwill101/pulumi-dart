@@ -10,12 +10,16 @@ import 'remote_private_endpoint.dart';
 class PrivateEndpointConnectionProxyArgs {
   /// Account name.
   final pulumi.Input<String> accountName;
+
   /// The ID of the private endpoint connection proxy object.
   final pulumi.Input<String>? privateEndpointConnectionProxyId;
+
   /// Remote private endpoint details.
   final pulumi.Input<RemotePrivateEndpoint>? remotePrivateEndpoint;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Operation status.
   final pulumi.Input<String>? status;
 
@@ -37,7 +41,11 @@ class PrivateEndpointConnectionProxyArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'privateEndpointConnectionProxyId': ?privateEndpointConnectionProxyId,
-      'remotePrivateEndpoint': ?pulumi.Input.mapOptionalInputValue<RemotePrivateEndpoint, Map<String, dynamic>>(remotePrivateEndpoint, (value) => value.toMap()),
+      'remotePrivateEndpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            RemotePrivateEndpoint,
+            Map<String, dynamic>
+          >(remotePrivateEndpoint, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'status': ?status,
     };
@@ -45,12 +53,29 @@ class PrivateEndpointConnectionProxyArgs {
 
   factory PrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyArgs(
-      accountName: (map['accountName'] as String).input(),
-      privateEndpointConnectionProxyId: map['privateEndpointConnectionProxyId'] == null ? null : (map['privateEndpointConnectionProxyId']! as String).input(),
-      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      privateEndpointConnectionProxyId: (() {
+        final guardedValue = map['privateEndpointConnectionProxyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remotePrivateEndpoint: (() {
+        final guardedValue = map['remotePrivateEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RemotePrivateEndpoint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

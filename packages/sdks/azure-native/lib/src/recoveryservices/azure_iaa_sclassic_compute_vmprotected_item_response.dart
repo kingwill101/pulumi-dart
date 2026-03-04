@@ -10,65 +10,97 @@ import 'kpiresource_health_details_response.dart';
 class AzureIaaSClassicComputeVMProtectedItemResponse {
   /// Type of backup management for the backed up item.
   final pulumi.Input<String> backupManagementType;
+
   /// Name of the backup set the backup item belongs to
   final pulumi.Input<String>? backupSetName;
+
   /// Unique name of container
   final pulumi.Input<String>? containerName;
+
   /// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
   final pulumi.Input<String>? createMode;
+
   /// Time for deferred deletion in UTC
   final pulumi.Input<String>? deferredDeleteTimeInUTC;
+
   /// Time remaining before the DS marked for deferred delete is permanently deleted
   final pulumi.Input<String>? deferredDeleteTimeRemaining;
+
   /// Additional information for this backup item.
-  final pulumi.Input<AzureIaaSVMProtectedItemExtendedInfoResponse>? extendedInfo;
+  final pulumi.Input<AzureIaaSVMProtectedItemExtendedInfoResponse>?
+  extendedInfo;
+
   /// Extended Properties for Azure IaasVM Backup.
   final pulumi.Input<ExtendedPropertiesResponse>? extendedProperties;
+
   /// Friendly name of the VM represented by this backup item.
   final pulumi.Input<String> friendlyName;
+
   /// Health details on this backup item.
   final pulumi.Input<List<AzureIaaSVMHealthDetailsResponse>>? healthDetails;
+
   /// Health status of protected item.
   final pulumi.Input<String> healthStatus;
+
   /// Flag to identify whether datasource is protected in archive
   final pulumi.Input<bool>? isArchiveEnabled;
+
   /// Flag to identify whether the deferred deleted DS is to be purged soon
   final pulumi.Input<bool>? isDeferredDeleteScheduleUpcoming;
+
   /// Flag to identify that deferred deleted DS is to be moved into Pause state
   final pulumi.Input<bool>? isRehydrate;
+
   /// Flag to identify whether the DS is scheduled for deferred delete
   final pulumi.Input<bool>? isScheduledForDeferredDelete;
+
   /// Health details of different KPIs
-  final pulumi.Input<Map<String, KPIResourceHealthDetailsResponse>>? kpisHealths;
+  final pulumi.Input<Map<String, KPIResourceHealthDetailsResponse>>?
+  kpisHealths;
+
   /// Last backup operation status.
   final pulumi.Input<String>? lastBackupStatus;
+
   /// Timestamp of the last backup operation on this backup item.
   final pulumi.Input<String> lastBackupTime;
+
   /// Timestamp when the last (latest) backup copy was created for this backup item.
   final pulumi.Input<String>? lastRecoveryPoint;
+
   /// ID of the backup policy with which this item is backed up.
   final pulumi.Input<String>? policyId;
+
   /// Name of the policy used for protection
   final pulumi.Input<String>? policyName;
+
   /// Data ID of the protected item.
   final pulumi.Input<String> protectedItemDataId;
+
   /// backup item type.
   /// Expected value is 'Microsoft.ClassicCompute/virtualMachines'.
   final pulumi.Input<String> protectedItemType;
+
   /// Backup state of this backup item.
   final pulumi.Input<String>? protectionState;
+
   /// Backup status of this backup item.
   final pulumi.Input<String>? protectionStatus;
+
   /// ResourceGuardOperationRequests on which LAC check will be performed
   final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+
   /// Soft delete retention period in days
   final pulumi.Input<int>? softDeleteRetentionPeriodInDays;
+
   /// ARM ID of the resource to be backed up.
   final pulumi.Input<String>? sourceResourceId;
+
   /// ID of the vault which protects this item
   final pulumi.Input<String> vaultId;
+
   /// Fully qualified ARM ID of the virtual machine represented by this item.
   final pulumi.Input<String> virtualMachineId;
+
   /// Type of workload this item represents.
   final pulumi.Input<String> workloadType;
 
@@ -146,16 +178,46 @@ class AzureIaaSClassicComputeVMProtectedItemResponse {
       'createMode': ?createMode,
       'deferredDeleteTimeInUTC': ?deferredDeleteTimeInUTC,
       'deferredDeleteTimeRemaining': ?deferredDeleteTimeRemaining,
-      'extendedInfo': ?pulumi.Input.mapOptionalInputValue<AzureIaaSVMProtectedItemExtendedInfoResponse, Map<String, dynamic>>(extendedInfo, (value) => value.toMap()),
-      'extendedProperties': ?pulumi.Input.mapOptionalInputValue<ExtendedPropertiesResponse, Map<String, dynamic>>(extendedProperties, (value) => value.toMap()),
+      'extendedInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureIaaSVMProtectedItemExtendedInfoResponse,
+            Map<String, dynamic>
+          >(extendedInfo, (value) => value.toMap()),
+      'extendedProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedPropertiesResponse,
+            Map<String, dynamic>
+          >(extendedProperties, (value) => value.toMap()),
       'friendlyName': friendlyName,
-      'healthDetails': ?pulumi.Input.mapOptionalInputValue<List<AzureIaaSVMHealthDetailsResponse>, List<Map<String, dynamic>>>(healthDetails, (value) => pulumi.Input.encodeList<AzureIaaSVMHealthDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AzureIaaSVMHealthDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            healthDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AzureIaaSVMHealthDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'healthStatus': healthStatus,
       'isArchiveEnabled': ?isArchiveEnabled,
       'isDeferredDeleteScheduleUpcoming': ?isDeferredDeleteScheduleUpcoming,
       'isRehydrate': ?isRehydrate,
       'isScheduledForDeferredDelete': ?isScheduledForDeferredDelete,
-      'kpisHealths': ?pulumi.Input.mapOptionalInputValue<Map<String, KPIResourceHealthDetailsResponse>, Map<String, Map<String, dynamic>>>(kpisHealths, (value) => pulumi.Input.encodeMapValues<KPIResourceHealthDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'kpisHealths':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, KPIResourceHealthDetailsResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            kpisHealths,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  KPIResourceHealthDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'lastBackupStatus': ?lastBackupStatus,
       'lastBackupTime': lastBackupTime,
       'lastRecoveryPoint': ?lastRecoveryPoint,
@@ -174,40 +236,159 @@ class AzureIaaSClassicComputeVMProtectedItemResponse {
     };
   }
 
-  factory AzureIaaSClassicComputeVMProtectedItemResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureIaaSClassicComputeVMProtectedItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureIaaSClassicComputeVMProtectedItemResponse(
-      backupManagementType: (map['backupManagementType'] as String).input(),
-      backupSetName: map['backupSetName'] == null ? null : (map['backupSetName']! as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
-      deferredDeleteTimeInUTC: map['deferredDeleteTimeInUTC'] == null ? null : (map['deferredDeleteTimeInUTC']! as String).input(),
-      deferredDeleteTimeRemaining: map['deferredDeleteTimeRemaining'] == null ? null : (map['deferredDeleteTimeRemaining']! as String).input(),
-      extendedInfo: map['extendedInfo'] == null ? null : (AzureIaaSVMProtectedItemExtendedInfoResponse.fromMap((map['extendedInfo']! as Map).cast<String, dynamic>())).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : (ExtendedPropertiesResponse.fromMap((map['extendedProperties']! as Map).cast<String, dynamic>())).input(),
-      friendlyName: (map['friendlyName'] as String).input(),
-      healthDetails: map['healthDetails'] == null ? null : (pulumi.Input.decodeList<AzureIaaSVMHealthDetailsResponse>(map['healthDetails']!, (value) => AzureIaaSVMHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthStatus: (map['healthStatus'] as String).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
-      isDeferredDeleteScheduleUpcoming: map['isDeferredDeleteScheduleUpcoming'] == null ? null : (map['isDeferredDeleteScheduleUpcoming']! as bool).input(),
-      isRehydrate: map['isRehydrate'] == null ? null : (map['isRehydrate']! as bool).input(),
-      isScheduledForDeferredDelete: map['isScheduledForDeferredDelete'] == null ? null : (map['isScheduledForDeferredDelete']! as bool).input(),
-      kpisHealths: map['kpisHealths'] == null ? null : (pulumi.Input.decodeMapValues<KPIResourceHealthDetailsResponse>(map['kpisHealths']!, (value) => KPIResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus']! as String).input(),
-      lastBackupTime: (map['lastBackupTime'] as String).input(),
-      lastRecoveryPoint: map['lastRecoveryPoint'] == null ? null : (map['lastRecoveryPoint']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      protectedItemDataId: (map['protectedItemDataId'] as String).input(),
-      protectedItemType: (map['protectedItemType'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      protectionStatus: map['protectionStatus'] == null ? null : (map['protectionStatus']! as String).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
-      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : (map['softDeleteRetentionPeriodInDays']! as int).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
-      virtualMachineId: (map['virtualMachineId'] as String).input(),
-      workloadType: (map['workloadType'] as String).input(),
+      backupManagementType: pulumi.Input.fromValue(
+        map['backupManagementType'] as String,
+      ),
+      backupSetName: (() {
+        final guardedValue = map['backupSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createMode: (() {
+        final guardedValue = map['createMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deferredDeleteTimeInUTC: (() {
+        final guardedValue = map['deferredDeleteTimeInUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deferredDeleteTimeRemaining: (() {
+        final guardedValue = map['deferredDeleteTimeRemaining'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedInfo: (() {
+        final guardedValue = map['extendedInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureIaaSVMProtectedItemExtendedInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      extendedProperties: (() {
+        final guardedValue = map['extendedProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      friendlyName: pulumi.Input.fromValue(map['friendlyName'] as String),
+      healthDetails: (() {
+        final guardedValue = map['healthDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AzureIaaSVMHealthDetailsResponse>(
+            guardedValue,
+            (value) => AzureIaaSVMHealthDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      healthStatus: pulumi.Input.fromValue(map['healthStatus'] as String),
+      isArchiveEnabled: (() {
+        final guardedValue = map['isArchiveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isDeferredDeleteScheduleUpcoming: (() {
+        final guardedValue = map['isDeferredDeleteScheduleUpcoming'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isRehydrate: (() {
+        final guardedValue = map['isRehydrate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isScheduledForDeferredDelete: (() {
+        final guardedValue = map['isScheduledForDeferredDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kpisHealths: (() {
+        final guardedValue = map['kpisHealths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<KPIResourceHealthDetailsResponse>(
+            guardedValue,
+            (value) => KPIResourceHealthDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      lastBackupStatus: (() {
+        final guardedValue = map['lastBackupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastBackupTime: pulumi.Input.fromValue(map['lastBackupTime'] as String),
+      lastRecoveryPoint: (() {
+        final guardedValue = map['lastRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectedItemDataId: pulumi.Input.fromValue(
+        map['protectedItemDataId'] as String,
+      ),
+      protectedItemType: pulumi.Input.fromValue(
+        map['protectedItemType'] as String,
+      ),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionStatus: (() {
+        final guardedValue = map['protectionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGuardOperationRequests: (() {
+        final guardedValue = map['resourceGuardOperationRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      softDeleteRetentionPeriodInDays: (() {
+        final guardedValue = map['softDeleteRetentionPeriodInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sourceResourceId: (() {
+        final guardedValue = map['sourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
+      virtualMachineId: pulumi.Input.fromValue(
+        map['virtualMachineId'] as String,
+      ),
+      workloadType: pulumi.Input.fromValue(map['workloadType'] as String),
     );
   }
 }
-

@@ -392,18 +392,25 @@ import 'sql_pool_workload_group_state.dart';
 class SqlPoolWorkloadGroup extends pulumi.CustomResource {
   /// The workload group importance level. Defaults to `normal`.
   late final pulumi.Output<String?> importance;
+
   /// The workload group cap percentage resource.
   late final pulumi.Output<int> maxResourcePercent;
+
   /// The workload group request maximum grant percentage. Defaults to `3`.
   late final pulumi.Output<double?> maxResourcePercentPerRequest;
+
   /// The workload group minimum percentage resource.
   late final pulumi.Output<int> minResourcePercent;
+
   /// The workload group request minimum grant percentage.
   late final pulumi.Output<double?> minResourcePercentPerRequest;
+
   /// The name which should be used for this Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Group to be created.
   late final pulumi.Output<String> name;
+
   /// The workload group query execution timeout.
   late final pulumi.Output<int?> queryExecutionTimeoutInSeconds;
+
   /// The ID of the Synapse SQL Pool. Changing this forces a new Synapse SQL Pool Workload Group to be created.
   late final pulumi.Output<String> sqlPoolId;
 
@@ -416,19 +423,25 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
     SqlPoolWorkloadGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.importance = registerOutput<String?>('importance');
-    this.maxResourcePercent = registerOutput<int>('maxResourcePercent');
-    this.maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
-    this.minResourcePercent = registerOutput<int>('minResourcePercent');
-    this.minResourcePercentPerRequest = registerOutput<double?>('minResourcePercentPerRequest');
+         'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    importance = registerOutput<String?>('importance');
+    maxResourcePercent = registerOutput<int>('maxResourcePercent');
+    maxResourcePercentPerRequest = registerOutput<double?>(
+      'maxResourcePercentPerRequest',
+    );
+    minResourcePercent = registerOutput<int>('minResourcePercent');
+    minResourcePercentPerRequest = registerOutput<double?>(
+      'minResourcePercentPerRequest',
+    );
     this.name = registerOutput<String>('name');
-    this.queryExecutionTimeoutInSeconds = registerOutput<int?>('queryExecutionTimeoutInSeconds');
-    this.sqlPoolId = registerOutput<String>('sqlPoolId');
+    queryExecutionTimeoutInSeconds = registerOutput<int?>(
+      'queryExecutionTimeoutInSeconds',
+    );
+    sqlPoolId = registerOutput<String>('sqlPoolId');
   }
 
   /// Gets an existing [SqlPoolWorkloadGroup] resource's state with the given [name] and [id].
@@ -449,18 +462,24 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.importance = registerOutput<String?>('importance');
-    this.maxResourcePercent = registerOutput<int>('maxResourcePercent');
-    this.maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
-    this.minResourcePercent = registerOutput<int>('minResourcePercent');
-    this.minResourcePercentPerRequest = registerOutput<double?>('minResourcePercentPerRequest');
+         'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    importance = registerOutput<String?>('importance');
+    maxResourcePercent = registerOutput<int>('maxResourcePercent');
+    maxResourcePercentPerRequest = registerOutput<double?>(
+      'maxResourcePercentPerRequest',
+    );
+    minResourcePercent = registerOutput<int>('minResourcePercent');
+    minResourcePercentPerRequest = registerOutput<double?>(
+      'minResourcePercentPerRequest',
+    );
     this.name = registerOutput<String>('name');
-    this.queryExecutionTimeoutInSeconds = registerOutput<int?>('queryExecutionTimeoutInSeconds');
-    this.sqlPoolId = registerOutput<String>('sqlPoolId');
+    queryExecutionTimeoutInSeconds = registerOutput<int?>(
+      'queryExecutionTimeoutInSeconds',
+    );
+    sqlPoolId = registerOutput<String>('sqlPoolId');
   }
 }

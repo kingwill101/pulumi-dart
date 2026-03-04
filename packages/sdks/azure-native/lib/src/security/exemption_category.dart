@@ -3,16 +3,15 @@ enum ExemptionCategory {
   valueWaiver("waiver"),
   valueMitigated("mitigated");
 
-  const ExemptionCategory(this.value);
-  final String value;
+  const ExemptionCategory(this.wireValue);
+  final String wireValue;
 
   static ExemptionCategory fromValue(String value) {
     for (final item in ExemptionCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExemptionCategory value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourceDataImportEventHubDataSource {
   /// The Event Hub consumer group name.
   final pulumi.Input<String> consumerGroup;
+
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// The stream to collect from Event Hub. Possible value should be a custom stream name.
   final pulumi.Input<String> stream;
 
@@ -28,12 +30,13 @@ class GetDataCollectionRuleDataSourceDataImportEventHubDataSource {
     };
   }
 
-  factory GetDataCollectionRuleDataSourceDataImportEventHubDataSource.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDataSourceDataImportEventHubDataSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDataSourceDataImportEventHubDataSource(
-      consumerGroup: (map['consumerGroup'] as String).input(),
-      name: (map['name'] as String).input(),
-      stream: (map['stream'] as String).input(),
+      consumerGroup: pulumi.Input.fromValue(map['consumerGroup'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      stream: pulumi.Input.fromValue(map['stream'] as String),
     );
   }
 }
-

@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionArgs {
   /// Name of the CloudFront function.
   final pulumi.Input<String> name;
+
   /// Function’s stage, either `DEVELOPMENT` or `LIVE`.
   final pulumi.Input<String> stage;
 
   /// Creates a new [GetFunctionArgs].
   /// [name] Name of the CloudFront function.
   /// [stage] Function’s stage, either `DEVELOPMENT` or `LIVE`.
-  GetFunctionArgs({
-    required this.name,
-    required this.stage,
-  });
+  GetFunctionArgs({required this.name, required this.stage});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'stage': stage,
-    };
+    return <String, dynamic>{'name': name, 'stage': stage};
   }
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionArgs(
-      name: (map['name'] as String).input(),
-      stage: (map['stage'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      stage: pulumi.Input.fromValue(map['stage'] as String),
     );
   }
 }
-

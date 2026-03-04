@@ -6,14 +6,20 @@ import 'virtual_machine_ssh_credentials_response.dart';
 class VirtualMachineSchemaResponseProperties {
   /// Public IP address of the virtual machine.
   final pulumi.Input<String>? address;
+
   /// Admin credentials for virtual machine
-  final pulumi.Input<VirtualMachineSshCredentialsResponse>? administratorAccount;
+  final pulumi.Input<VirtualMachineSshCredentialsResponse>?
+  administratorAccount;
+
   /// Indicates whether this compute will be used for running notebooks.
   final pulumi.Input<bool>? isNotebookInstanceCompute;
+
   /// Notebook server port open for ssh connections.
   final pulumi.Input<int>? notebookServerPort;
+
   /// Port open for ssh connections.
   final pulumi.Input<int>? sshPort;
+
   /// Virtual Machine size
   final pulumi.Input<String>? virtualMachineSize;
 
@@ -36,7 +42,11 @@ class VirtualMachineSchemaResponseProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'administratorAccount': ?pulumi.Input.mapOptionalInputValue<VirtualMachineSshCredentialsResponse, Map<String, dynamic>>(administratorAccount, (value) => value.toMap()),
+      'administratorAccount':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineSshCredentialsResponse,
+            Map<String, dynamic>
+          >(administratorAccount, (value) => value.toMap()),
       'isNotebookInstanceCompute': ?isNotebookInstanceCompute,
       'notebookServerPort': ?notebookServerPort,
       'sshPort': ?sshPort,
@@ -44,15 +54,44 @@ class VirtualMachineSchemaResponseProperties {
     };
   }
 
-  factory VirtualMachineSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineSchemaResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineSchemaResponseProperties(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      administratorAccount: map['administratorAccount'] == null ? null : (VirtualMachineSshCredentialsResponse.fromMap((map['administratorAccount']! as Map).cast<String, dynamic>())).input(),
-      isNotebookInstanceCompute: map['isNotebookInstanceCompute'] == null ? null : (map['isNotebookInstanceCompute']! as bool).input(),
-      notebookServerPort: map['notebookServerPort'] == null ? null : (map['notebookServerPort']! as int).input(),
-      sshPort: map['sshPort'] == null ? null : (map['sshPort']! as int).input(),
-      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      administratorAccount: (() {
+        final guardedValue = map['administratorAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineSshCredentialsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isNotebookInstanceCompute: (() {
+        final guardedValue = map['isNotebookInstanceCompute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      notebookServerPort: (() {
+        final guardedValue = map['notebookServerPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sshPort: (() {
+        final guardedValue = map['sshPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      virtualMachineSize: (() {
+        final guardedValue = map['virtualMachineSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

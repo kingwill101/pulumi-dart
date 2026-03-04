@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportSummaryChartDataDataPointResponse {
   /// The X-axis label for this data point.
   final pulumi.Input<String> label;
+
   /// The Y-axis value for this data point.
   final pulumi.Input<double> value;
 
@@ -18,17 +19,15 @@ class ReportSummaryChartDataDataPointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'label': label,
-      'value': value,
-    };
+    return <String, dynamic>{'label': label, 'value': value};
   }
 
-  factory ReportSummaryChartDataDataPointResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryChartDataDataPointResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryChartDataDataPointResponse(
-      label: (map['label'] as String).input(),
-      value: (map['value'] as double).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

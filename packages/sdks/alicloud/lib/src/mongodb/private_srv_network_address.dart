@@ -8,7 +8,7 @@ import 'private_srv_network_address_state.dart';
 ///
 /// For information about Mongodb Private Srv Network Address and how to use it, see [What is Private Srv Network Address](https://next.api.alibabacloud.com/document/Dds/2015-12-01/AllocateDBInstanceSrvNetworkAddress).
 ///
-/// > **NOTE:** Available since v1.240.0.
+/// &gt; **NOTE:** Available since v1.240.0.
 ///
 /// ## Example Usage
 ///
@@ -303,6 +303,7 @@ import 'private_srv_network_address_state.dart';
 class PrivateSrvNetworkAddress extends pulumi.CustomResource {
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Private network SRV highly available connection address
   late final pulumi.Output<String> privateSrvConnectionStringUri;
 
@@ -315,13 +316,15 @@ class PrivateSrvNetworkAddress extends pulumi.CustomResource {
     PrivateSrvNetworkAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.privateSrvConnectionStringUri = registerOutput<String>('privateSrvConnectionStringUri');
+         'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    privateSrvConnectionStringUri = registerOutput<String>(
+      'privateSrvConnectionStringUri',
+    );
   }
 
   /// Gets an existing [PrivateSrvNetworkAddress] resource's state with the given [name] and [id].
@@ -342,12 +345,14 @@ class PrivateSrvNetworkAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.privateSrvConnectionStringUri = registerOutput<String>('privateSrvConnectionStringUri');
+         'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    privateSrvConnectionStringUri = registerOutput<String>(
+      'privateSrvConnectionStringUri',
+    );
   }
 }

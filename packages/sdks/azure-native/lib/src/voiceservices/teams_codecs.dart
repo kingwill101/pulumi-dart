@@ -7,16 +7,15 @@ enum TeamsCodecs {
   sILK8("SILK_8"),
   sILK16("SILK_16");
 
-  const TeamsCodecs(this.value);
-  final String value;
+  const TeamsCodecs(this.wireValue);
+  final String wireValue;
 
   static TeamsCodecs fromValue(String value) {
     for (final item in TeamsCodecs.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TeamsCodecs value: $value');
   }
 }
-

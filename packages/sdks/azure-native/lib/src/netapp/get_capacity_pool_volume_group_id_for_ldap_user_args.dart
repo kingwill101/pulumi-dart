@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityPoolVolumeGroupIdForLdapUserArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
+
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// username is required to fetch the group to which user is part of
   final pulumi.Input<String> username;
+
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -42,14 +46,17 @@ class GetCapacityPoolVolumeGroupIdForLdapUserArgs {
     };
   }
 
-  factory GetCapacityPoolVolumeGroupIdForLdapUserArgs.fromMap(Map<String, dynamic> map) {
+  factory GetCapacityPoolVolumeGroupIdForLdapUserArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCapacityPoolVolumeGroupIdForLdapUserArgs(
-      accountName: (map['accountName'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      username: (map['username'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      username: pulumi.Input.fromValue(map['username'] as String),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

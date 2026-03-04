@@ -9,20 +9,19 @@ class SparkHistoryServerConfig {
 
   /// Creates a new [SparkHistoryServerConfig].
   /// [dataprocCluster] Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
-  SparkHistoryServerConfig({
-    this.dataprocCluster,
-  });
+  SparkHistoryServerConfig({this.dataprocCluster});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataprocCluster': ?dataprocCluster,
-    };
+    return <String, dynamic>{'dataprocCluster': ?dataprocCluster};
   }
 
   factory SparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return SparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
+      dataprocCluster: (() {
+        final guardedValue = map['dataprocCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

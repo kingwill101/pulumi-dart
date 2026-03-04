@@ -168,14 +168,19 @@ import 'system_data_response.dart';
 class ApplicationAccelerator extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Application accelerator properties payload
   late final pulumi.Output<ApplicationAcceleratorPropertiesResponse> properties;
+
   /// Sku of the application accelerator resource
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -188,16 +193,18 @@ class ApplicationAccelerator extends pulumi.CustomResource {
     ApplicationAcceleratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appplatform:ApplicationAccelerator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:appplatform:ApplicationAccelerator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ApplicationAcceleratorPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ApplicationAcceleratorPropertiesResponse>(
+      'properties',
+    );
+    sku = registerOutput<SkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

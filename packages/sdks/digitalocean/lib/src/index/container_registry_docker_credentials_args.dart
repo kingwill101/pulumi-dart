@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRegistryDockerCredentialsArgs {
   /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
   final pulumi.Input<int>? expirySeconds;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// Allow for write access to the container registry. Defaults to false.
   final pulumi.Input<bool>? write;
 
@@ -32,12 +34,21 @@ class ContainerRegistryDockerCredentialsArgs {
     };
   }
 
-  factory ContainerRegistryDockerCredentialsArgs.fromMap(Map<String, dynamic> map) {
+  factory ContainerRegistryDockerCredentialsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerRegistryDockerCredentialsArgs(
-      expirySeconds: map['expirySeconds'] == null ? null : (map['expirySeconds']! as int).input(),
-      registryName: (map['registryName'] as String).input(),
-      write: map['write'] == null ? null : (map['write']! as bool).input(),
+      expirySeconds: (() {
+        final guardedValue = map['expirySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      write: (() {
+        final guardedValue = map['write'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

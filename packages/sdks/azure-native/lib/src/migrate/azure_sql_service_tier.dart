@@ -6,16 +6,15 @@ enum AzureSqlServiceTier {
   valueBusinessCritical("BusinessCritical"),
   valueHyperScale("HyperScale");
 
-  const AzureSqlServiceTier(this.value);
-  final String value;
+  const AzureSqlServiceTier(this.wireValue);
+  final String wireValue;
 
   static AzureSqlServiceTier fromValue(String value) {
     for (final item in AzureSqlServiceTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSqlServiceTier value: $value');
   }
 }
-

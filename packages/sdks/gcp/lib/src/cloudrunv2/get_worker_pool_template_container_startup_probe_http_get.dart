@@ -5,9 +5,14 @@ import 'get_worker_pool_template_container_startup_probe_http_get_http_header.da
 
 class GetWorkerPoolTemplateContainerStartupProbeHttpGet {
   /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
-  final pulumi.Input<List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>> httpHeaders;
+  final pulumi.Input<
+    List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>
+  >
+  httpHeaders;
+
   /// Optional. Path to access on the HTTP server. Defaults to '/'.
   final pulumi.Input<String> path;
+
   /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
   final pulumi.Input<int> port;
 
@@ -23,18 +28,40 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpHeaders': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpHeaders':
+          pulumi.Input.mapInputValue<
+            List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>,
+            List<Map<String, dynamic>>
+          >(
+            httpHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'path': path,
       'port': port,
     };
   }
 
-  factory GetWorkerPoolTemplateContainerStartupProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GetWorkerPoolTemplateContainerStartupProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkerPoolTemplateContainerStartupProbeHttpGet(
-      httpHeaders: (pulumi.Input.decodeList<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
+      httpHeaders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader
+        >(
+          map['httpHeaders']!,
+          (value) =>
+              GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

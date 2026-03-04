@@ -9,10 +9,7 @@ class ServiceDnsEntry {
   /// Creates a new [ServiceDnsEntry].
   /// [domainName] Optional.
   /// [hostedZoneId] Optional.
-  ServiceDnsEntry({
-    this.domainName,
-    this.hostedZoneId,
-  });
+  ServiceDnsEntry({this.domainName, this.hostedZoneId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class ServiceDnsEntry {
 
   factory ServiceDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceDnsEntry(
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostedZoneId: (() {
+        final guardedValue = map['hostedZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

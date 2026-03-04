@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DevicePresenceVerificationDetailsResponse {
   /// Insights on current status.
   final pulumi.Input<String> message;
+
   /// Proof of possession status.
   final pulumi.Input<String> status;
 
@@ -18,17 +19,15 @@ class DevicePresenceVerificationDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'message': message,
-      'status': status,
-    };
+    return <String, dynamic>{'message': message, 'status': status};
   }
 
-  factory DevicePresenceVerificationDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory DevicePresenceVerificationDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DevicePresenceVerificationDetailsResponse(
-      message: (map['message'] as String).input(),
-      status: (map['status'] as String).input(),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

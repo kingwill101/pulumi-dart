@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_route_table_v2_args.dart';
-import 'virtual_hub_route_v2_response.dart';
 
 /// VirtualHubRouteTableV2 Resource.
 ///
@@ -264,16 +263,21 @@ import 'virtual_hub_route_v2_response.dart';
 class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
   /// List of all connections attached to this route table v2.
   late final pulumi.Output<List<String>?> attachedConnections;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the virtual hub route table v2 resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of all routes.
-  late final pulumi.Output<List<VirtualHubRouteV2Response>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
 
   /// Creates a new [VirtualHubRouteTableV2Network].
   /// [name] The Pulumi resource name.
@@ -284,16 +288,16 @@ class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
     VirtualHubRouteTableV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualHubRouteTableV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachedConnections = registerOutput<List<String>?>('attachedConnections');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:VirtualHubRouteTableV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachedConnections = registerOutput<List<String>?>('attachedConnections');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routes = registerOutput<List<VirtualHubRouteV2Response>?>('routes');
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
   }
 }

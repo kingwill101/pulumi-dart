@@ -8,10 +8,13 @@ import 'ospolicy_resource_file_remote_osconfig_v1alpha.dart';
 class OSPolicyResourceFileOsconfigV1alpha {
   /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
   final pulumi.Input<bool>? allowInsecure;
+
   /// A Cloud Storage object.
   final pulumi.Input<OSPolicyResourceFileGcsOsconfigV1alpha>? gcs;
+
   /// A local path within the VM to use.
   final pulumi.Input<String>? localPath;
+
   /// A generic remote file.
   final pulumi.Input<OSPolicyResourceFileRemoteOsconfigV1alpha>? remote;
 
@@ -30,19 +33,52 @@ class OSPolicyResourceFileOsconfigV1alpha {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInsecure': ?allowInsecure,
-      'gcs': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceFileGcsOsconfigV1alpha, Map<String, dynamic>>(gcs, (value) => value.toMap()),
+      'gcs':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceFileGcsOsconfigV1alpha,
+            Map<String, dynamic>
+          >(gcs, (value) => value.toMap()),
       'localPath': ?localPath,
-      'remote': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceFileRemoteOsconfigV1alpha, Map<String, dynamic>>(remote, (value) => value.toMap()),
+      'remote':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceFileRemoteOsconfigV1alpha,
+            Map<String, dynamic>
+          >(remote, (value) => value.toMap()),
     };
   }
 
-  factory OSPolicyResourceFileOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceFileOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceFileOsconfigV1alpha(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
-      gcs: map['gcs'] == null ? null : (OSPolicyResourceFileGcsOsconfigV1alpha.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
-      remote: map['remote'] == null ? null : (OSPolicyResourceFileRemoteOsconfigV1alpha.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
+      allowInsecure: (() {
+        final guardedValue = map['allowInsecure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gcs: (() {
+        final guardedValue = map['gcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceFileGcsOsconfigV1alpha.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localPath: (() {
+        final guardedValue = map['localPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remote: (() {
+        final guardedValue = map['remote'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceFileRemoteOsconfigV1alpha.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

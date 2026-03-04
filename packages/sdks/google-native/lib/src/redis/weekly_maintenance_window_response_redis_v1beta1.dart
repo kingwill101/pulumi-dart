@@ -7,8 +7,10 @@ import 'time_of_day_response_redis_v1beta1.dart';
 class WeeklyMaintenanceWindowResponseRedisV1beta1 {
   /// The day of week that maintenance updates occur.
   final pulumi.Input<String> day;
+
   /// Duration of the maintenance window. The current window is fixed at 1 hour.
   final pulumi.Input<String> duration;
+
   /// Start time of the window in UTC time.
   final pulumi.Input<TimeOfDayResponseRedisV1beta1> startTime;
 
@@ -26,16 +28,25 @@ class WeeklyMaintenanceWindowResponseRedisV1beta1 {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime': pulumi.Input.mapInputValue<TimeOfDayResponseRedisV1beta1, Map<String, dynamic>>(startTime, (value) => value.toMap()),
+      'startTime':
+          pulumi.Input.mapInputValue<
+            TimeOfDayResponseRedisV1beta1,
+            Map<String, dynamic>
+          >(startTime, (value) => value.toMap()),
     };
   }
 
-  factory WeeklyMaintenanceWindowResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WeeklyMaintenanceWindowResponseRedisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WeeklyMaintenanceWindowResponseRedisV1beta1(
-      day: (map['day'] as String).input(),
-      duration: (map['duration'] as String).input(),
-      startTime: (TimeOfDayResponseRedisV1beta1.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      day: pulumi.Input.fromValue(map['day'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      startTime: pulumi.Input.fromValue(
+        TimeOfDayResponseRedisV1beta1.fromMap(
+          (map['startTime']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

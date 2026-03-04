@@ -23,9 +23,12 @@ class AppAuthorizationConnectionTenant {
 
   factory AppAuthorizationConnectionTenant.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionTenant(
-      tenantDisplayName: (map['tenantDisplayName'] as String).input(),
-      tenantIdentifier: (map['tenantIdentifier'] as String).input(),
+      tenantDisplayName: pulumi.Input.fromValue(
+        map['tenantDisplayName'] as String,
+      ),
+      tenantIdentifier: pulumi.Input.fromValue(
+        map['tenantIdentifier'] as String,
+      ),
     );
   }
 }
-

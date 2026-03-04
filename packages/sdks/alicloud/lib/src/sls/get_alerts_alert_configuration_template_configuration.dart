@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertsAlertConfigurationTemplateConfiguration {
   /// Template Annotations.
   final pulumi.Input<Map<String, String>> annotations;
+
   /// Template Language.
   final pulumi.Input<String> lang;
+
   /// Template ID.
   final pulumi.Input<String> templateId;
+
   /// Template Variables.
   final pulumi.Input<Map<String, String>> tokens;
+
   /// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
   final pulumi.Input<String> type;
+
   /// Fixed as 2.0.
   final pulumi.Input<String> version;
 
@@ -43,15 +48,20 @@ class GetAlertsAlertConfigurationTemplateConfiguration {
     };
   }
 
-  factory GetAlertsAlertConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetAlertsAlertConfigurationTemplateConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAlertsAlertConfigurationTemplateConfiguration(
-      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
-      lang: (map['lang'] as String).input(),
-      templateId: (map['templateId'] as String).input(),
-      tokens: ((map['tokens'] as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
-      version: (map['version'] as String).input(),
+      annotations: pulumi.Input.fromValue(
+        (map['annotations'] as Map).cast<String, String>(),
+      ),
+      lang: pulumi.Input.fromValue(map['lang'] as String),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
+      tokens: pulumi.Input.fromValue(
+        (map['tokens'] as Map).cast<String, String>(),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

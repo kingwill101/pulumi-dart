@@ -86,19 +86,19 @@ class PipelineDestinationHttpEndpoint {
   /// Additionally, the following CEL extension functions are provided for
   /// use in this CEL expression:
   /// - toBase64Url:
-  /// map.toBase64Url() > string
+  /// map.toBase64Url() &gt; string
   /// - Converts a CelValue to a base64url encoded string
-  /// - toJsonString: map.toJsonString() > string
+  /// - toJsonString: map.toJsonString() &gt; string
   /// - Converts a CelValue to a JSON string
   /// - merge:
-  /// map1.merge(map2) > map3
+  /// map1.merge(map2) &gt; map3
   /// - Merges the passed CEL map with the existing CEL map the
   /// function is applied to.
   /// - If the same key exists in both maps, if the key's value is type
   /// map both maps are merged else the value from the passed map is
   /// used.
   /// - denormalize:
-  /// map.denormalize() > map
+  /// map.denormalize() &gt; map
   /// - Denormalizes a CEL map such that every value of type map or key
   /// in the map is expanded to return a single level map.
   /// - The resulting keys are "." separated indices of the map keys.
@@ -112,7 +112,7 @@ class PipelineDestinationHttpEndpoint {
   /// "e": [4, 5]
   /// }
   /// .denormalize()
-  /// > {
+  /// &gt; {
   /// "a": 1,
   /// "b.c": 2,
   /// "b.d": 3,
@@ -120,7 +120,7 @@ class PipelineDestinationHttpEndpoint {
   /// "e.1": 5
   /// }
   /// - setField:
-  /// map.setField(key, value) > message
+  /// map.setField(key, value) &gt; message
   /// - Sets the field of the message with the given key to the
   /// given value.
   /// - If the field is not present it will be added.
@@ -130,17 +130,17 @@ class PipelineDestinationHttpEndpoint {
   /// - Key must be of type string.
   /// - Value may be any valid type.
   /// - removeFields:
-  /// map.removeFields([key1, key2, ...]) > message
+  /// map.removeFields([key1, key2, ...]) &gt; message
   /// - Removes the fields of the map with the given keys.
   /// - The keys can be a dot separated path to remove a field in a
   /// nested message.
   /// - If a key is not found it will be ignored.
   /// - Keys must be of type string.
   /// - toMap:
-  /// [map1, map2, ...].toMap() > map
+  /// [map1, map2, ...].toMap() &gt; map
   /// - Converts a CEL list of CEL maps to a single CEL map
   /// - toCloudEventJsonWithPayloadFormat:
-  /// message.toCloudEventJsonWithPayloadFormat() > map
+  /// message.toCloudEventJsonWithPayloadFormat() &gt; map
   /// - Converts a message to the corresponding structure of JSON
   /// format for CloudEvents.
   /// - It converts `data` to destination payload format
@@ -162,6 +162,7 @@ class PipelineDestinationHttpEndpoint {
   /// standard CloudEvent format. If it doesn't then the outgoing message
   /// request may fail with a persistent error.
   final pulumi.Input<String>? messageBindingTemplate;
+
   /// The URI of the HTTP enpdoint.
   /// The value must be a RFC2396 URI string.
   /// Examples: `https://svc.us-central1.p.local:8080/route`.
@@ -185,9 +186,12 @@ class PipelineDestinationHttpEndpoint {
 
   factory PipelineDestinationHttpEndpoint.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationHttpEndpoint(
-      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : (map['messageBindingTemplate']! as String).input(),
-      uri: (map['uri'] as String).input(),
+      messageBindingTemplate: (() {
+        final guardedValue = map['messageBindingTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -9,20 +9,29 @@ import 'system_service_response.dart';
 class AKSSchemaResponseProperties {
   /// Number of agents
   final pulumi.Input<int>? agentCount;
+
   /// Agent virtual machine size
   final pulumi.Input<String>? agentVmSize;
+
   /// AKS networking configuration for vnet
-  final pulumi.Input<AksNetworkingConfigurationResponse>? aksNetworkingConfiguration;
+  final pulumi.Input<AksNetworkingConfigurationResponse>?
+  aksNetworkingConfiguration;
+
   /// Cluster full qualified domain name
   final pulumi.Input<String>? clusterFqdn;
+
   /// Intended usage of the cluster
   final pulumi.Input<String>? clusterPurpose;
+
   /// Load Balancer Subnet
   final pulumi.Input<String>? loadBalancerSubnet;
+
   /// Load Balancer Type
   final pulumi.Input<String>? loadBalancerType;
+
   /// SSL configuration
   final pulumi.Input<SslConfigurationResponse>? sslConfiguration;
+
   /// System services
   final pulumi.Input<List<SystemServiceResponse>> systemServices;
 
@@ -52,28 +61,93 @@ class AKSSchemaResponseProperties {
     return <String, dynamic>{
       'agentCount': ?agentCount,
       'agentVmSize': ?agentVmSize,
-      'aksNetworkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AksNetworkingConfigurationResponse, Map<String, dynamic>>(aksNetworkingConfiguration, (value) => value.toMap()),
+      'aksNetworkingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AksNetworkingConfigurationResponse,
+            Map<String, dynamic>
+          >(aksNetworkingConfiguration, (value) => value.toMap()),
       'clusterFqdn': ?clusterFqdn,
       'clusterPurpose': ?clusterPurpose,
       'loadBalancerSubnet': ?loadBalancerSubnet,
       'loadBalancerType': ?loadBalancerType,
-      'sslConfiguration': ?pulumi.Input.mapOptionalInputValue<SslConfigurationResponse, Map<String, dynamic>>(sslConfiguration, (value) => value.toMap()),
-      'systemServices': pulumi.Input.mapInputValue<List<SystemServiceResponse>, List<Map<String, dynamic>>>(systemServices, (value) => pulumi.Input.encodeList<SystemServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sslConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SslConfigurationResponse,
+            Map<String, dynamic>
+          >(sslConfiguration, (value) => value.toMap()),
+      'systemServices':
+          pulumi.Input.mapInputValue<
+            List<SystemServiceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            systemServices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SystemServiceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AKSSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
     return AKSSchemaResponseProperties(
-      agentCount: map['agentCount'] == null ? null : (map['agentCount']! as int).input(),
-      agentVmSize: map['agentVmSize'] == null ? null : (map['agentVmSize']! as String).input(),
-      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : (AksNetworkingConfigurationResponse.fromMap((map['aksNetworkingConfiguration']! as Map).cast<String, dynamic>())).input(),
-      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn']! as String).input(),
-      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose']! as String).input(),
-      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : (map['loadBalancerSubnet']! as String).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
-      sslConfiguration: map['sslConfiguration'] == null ? null : (SslConfigurationResponse.fromMap((map['sslConfiguration']! as Map).cast<String, dynamic>())).input(),
-      systemServices: (pulumi.Input.decodeList<SystemServiceResponse>(map['systemServices'], (value) => SystemServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentCount: (() {
+        final guardedValue = map['agentCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      agentVmSize: (() {
+        final guardedValue = map['agentVmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aksNetworkingConfiguration: (() {
+        final guardedValue = map['aksNetworkingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AksNetworkingConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clusterFqdn: (() {
+        final guardedValue = map['clusterFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterPurpose: (() {
+        final guardedValue = map['clusterPurpose'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerSubnet: (() {
+        final guardedValue = map['loadBalancerSubnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerType: (() {
+        final guardedValue = map['loadBalancerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslConfiguration: (() {
+        final guardedValue = map['sslConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SslConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemServices: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SystemServiceResponse>(
+          map['systemServices']!,
+          (value) => SystemServiceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

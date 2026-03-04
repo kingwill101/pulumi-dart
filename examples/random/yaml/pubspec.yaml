@@ -1,0 +1,14 @@
+name: random_dart_yaml
+description: Random password example ported from random-yaml.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 0.1.0
+  pulumi_random: ^4.19.1
+
+dev_dependencies:
+  lints: ^6.1.0

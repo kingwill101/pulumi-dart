@@ -4,16 +4,19 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedPeriod {
   week("WEEK"),
   month("MONTH");
 
-  const EnterpriseCrmEventbusProtoLogSettingsSeedPeriod(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoLogSettingsSeedPeriod(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoLogSettingsSeedPeriod fromValue(String value) {
+  static EnterpriseCrmEventbusProtoLogSettingsSeedPeriod fromValue(
+    String value,
+  ) {
     for (final item in EnterpriseCrmEventbusProtoLogSettingsSeedPeriod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedPeriod value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoLogSettingsSeedPeriod value: $value',
+    );
   }
 }
-

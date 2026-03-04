@@ -5,16 +5,17 @@ enum ShortSeriesHandlingConfiguration {
   valuePad("Pad"),
   valueDrop("Drop");
 
-  const ShortSeriesHandlingConfiguration(this.value);
-  final String value;
+  const ShortSeriesHandlingConfiguration(this.wireValue);
+  final String wireValue;
 
   static ShortSeriesHandlingConfiguration fromValue(String value) {
     for (final item in ShortSeriesHandlingConfiguration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ShortSeriesHandlingConfiguration value: $value');
+    throw ArgumentError(
+      'Unknown ShortSeriesHandlingConfiguration value: $value',
+    );
   }
 }
-

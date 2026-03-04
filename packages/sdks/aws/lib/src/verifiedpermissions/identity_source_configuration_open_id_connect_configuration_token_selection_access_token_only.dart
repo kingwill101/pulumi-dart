@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly {
   /// The access token aud claim values that you want to accept in your policy store.
   final pulumi.Input<List<String>>? audiences;
+
   /// The claim that determines the principal in OIDC access tokens.
   final pulumi.Input<String>? principalIdClaim;
 
@@ -23,11 +24,20 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessT
     };
   }
 
-  factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap(Map<String, dynamic> map) {
+  factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly(
-      audiences: map['audiences'] == null ? null : (((map['audiences'] as List).cast<String>()).input()).input(),
-      principalIdClaim: map['principalIdClaim'] == null ? null : ((map['principalIdClaim'] as String).input()).input(),
+      audiences: (() {
+        final guardedValue = map['audiences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalIdClaim: (() {
+        final guardedValue = map['principalIdClaim'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

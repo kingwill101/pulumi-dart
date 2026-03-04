@@ -3,16 +3,17 @@ enum DockerRepositoryPublicRepository {
   publicRepositoryUnspecified("PUBLIC_REPOSITORY_UNSPECIFIED"),
   dockerHub("DOCKER_HUB");
 
-  const DockerRepositoryPublicRepository(this.value);
-  final String value;
+  const DockerRepositoryPublicRepository(this.wireValue);
+  final String wireValue;
 
   static DockerRepositoryPublicRepository fromValue(String value) {
     for (final item in DockerRepositoryPublicRepository.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DockerRepositoryPublicRepository value: $value');
+    throw ArgumentError(
+      'Unknown DockerRepositoryPublicRepository value: $value',
+    );
   }
 }
-

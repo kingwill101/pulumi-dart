@@ -2,16 +2,15 @@
 enum AdministratorType {
   valueActiveDirectory("ActiveDirectory");
 
-  const AdministratorType(this.value);
-  final String value;
+  const AdministratorType(this.wireValue);
+  final String wireValue;
 
   static AdministratorType fromValue(String value) {
     for (final item in AdministratorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdministratorType value: $value');
   }
 }
-

@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'profile_rewrite_uri_rules_args.dart';
-import 'profile_rewrite_uri_rules_client.dart';
-import 'profile_rewrite_uri_rules_server.dart';
 import 'profile_rewrite_uri_rules_state.dart';
 
 /// `f5bigip.ltm.ProfileRewriteUriRules` Configures uri rewrite rules attached to the ltm rewrite profile
@@ -324,15 +322,19 @@ import 'profile_rewrite_uri_rules_state.dart';
 /// ```
 class ProfileRewriteUriRules extends pulumi.CustomResource {
   /// Block type. Each request is block type with following arguments.
-  late final pulumi.Output<List<ProfileRewriteUriRulesClient>> clients;
+  late final pulumi.Output<List<Map<String, dynamic>>> clients;
+
   /// Name of the rewrite profile. ( policy name should be in full path which is combination of partition and policy name )
   late final pulumi.Output<String> profileName;
+
   /// Specifies the name of the uri rule.
   late final pulumi.Output<String> ruleName;
+
   /// Specifies the type of the uri rule. Valid choices are: `request, response, both`. Default value is: `both`
   late final pulumi.Output<String?> ruleType;
+
   /// Block type. Each request is block type with following arguments.
-  late final pulumi.Output<List<ProfileRewriteUriRulesServer>> servers;
+  late final pulumi.Output<List<Map<String, dynamic>>> servers;
 
   /// Creates a new [ProfileRewriteUriRules].
   /// [name] The Pulumi resource name.
@@ -343,16 +345,16 @@ class ProfileRewriteUriRules extends pulumi.CustomResource {
     ProfileRewriteUriRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clients = registerOutput<List<ProfileRewriteUriRulesClient>>('clients');
-    this.profileName = registerOutput<String>('profileName');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<String?>('ruleType');
-    this.servers = registerOutput<List<ProfileRewriteUriRulesServer>>('servers');
+         'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clients = registerOutput<List<Map<String, dynamic>>>('clients');
+    profileName = registerOutput<String>('profileName');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<String?>('ruleType');
+    servers = registerOutput<List<Map<String, dynamic>>>('servers');
   }
 
   /// Gets an existing [ProfileRewriteUriRules] resource's state with the given [name] and [id].
@@ -373,15 +375,15 @@ class ProfileRewriteUriRules extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clients = registerOutput<List<ProfileRewriteUriRulesClient>>('clients');
-    this.profileName = registerOutput<String>('profileName');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<String?>('ruleType');
-    this.servers = registerOutput<List<ProfileRewriteUriRulesServer>>('servers');
+         'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clients = registerOutput<List<Map<String, dynamic>>>('clients');
+    profileName = registerOutput<String>('profileName');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<String?>('ruleType');
+    servers = registerOutput<List<Map<String, dynamic>>>('servers');
   }
 }

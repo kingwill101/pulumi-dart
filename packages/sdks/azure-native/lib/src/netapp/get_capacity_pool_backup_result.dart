@@ -6,32 +6,46 @@ import 'system_data_response.dart';
 class GetCapacityPoolBackupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// UUID v4 used to identify the Backup
   final String backupId;
+
   /// Type of backup Manual or Scheduled
   final String backupType;
+
   /// The creation date of the backup
   final String creationDate;
+
   /// Failure reason
   final String failureReason;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Label for backup
   final String? label;
+
   /// Resource location
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Azure lifecycle management
   final String provisioningState;
+
   /// Size of backup
   final double size;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   final bool? useExistingSnapshot;
+
   /// Volume name
   final String volumeName;
 
@@ -97,16 +111,25 @@ class GetCapacityPoolBackupResult {
       creationDate: map['creationDate'] as String,
       failureReason: map['failureReason'] as String,
       id: map['id'] as String,
-      label: map['label'] == null ? null : map['label']! as String,
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       size: map['size'] as double,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : map['useExistingSnapshot']! as bool,
+      useExistingSnapshot: (() {
+        final guardedValue = map['useExistingSnapshot'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       volumeName: map['volumeName'] as String,
     );
   }
 }
-

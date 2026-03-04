@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsageRule {
   /// If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or application.
   final pulumi.Input<bool>? allowUnregisteredCalls;
+
   /// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
   final pulumi.Input<String>? selector;
+
   /// If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods.
   final pulumi.Input<bool>? skipServiceControl;
 
@@ -31,10 +33,21 @@ class UsageRule {
 
   factory UsageRule.fromMap(Map<String, dynamic> map) {
     return UsageRule(
-      allowUnregisteredCalls: map['allowUnregisteredCalls'] == null ? null : (map['allowUnregisteredCalls']! as bool).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      skipServiceControl: map['skipServiceControl'] == null ? null : (map['skipServiceControl']! as bool).input(),
+      allowUnregisteredCalls: (() {
+        final guardedValue = map['allowUnregisteredCalls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipServiceControl: (() {
+        final guardedValue = map['skipServiceControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

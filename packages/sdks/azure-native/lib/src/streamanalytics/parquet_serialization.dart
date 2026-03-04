@@ -10,20 +10,15 @@ class ParquetSerialization {
 
   /// Creates a new [ParquetSerialization].
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-  ParquetSerialization({
-    required this.type,
-  });
+  ParquetSerialization({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ParquetSerialization.fromMap(Map<String, dynamic> map) {
     return ParquetSerialization(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionIdentityResponse {
   /// The principal identifier associated with the encryption.
   final pulumi.Input<String> principalId;
+
   /// The tenant identifier associated with the encryption.
   final pulumi.Input<String> tenantId;
+
   /// The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
   final pulumi.Input<String> type;
 
@@ -31,10 +33,9 @@ class EncryptionIdentityResponse {
 
   factory EncryptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

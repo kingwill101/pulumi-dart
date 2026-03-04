@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceAdditionalLocation {
   /// The number of compute units in this region.
   final pulumi.Input<int> capacity;
+
   /// Gateway URL of the API Management service in the Region.
   final pulumi.Input<String> gatewayRegionalUrl;
+
   /// The location name of the additional region among Azure Data center regions.
   final pulumi.Input<String> location;
+
   /// Private IP addresses of the API Management service in the additional location, for instances using virtual network mode.
   final pulumi.Input<List<String>> privateIpAddresses;
+
   /// ID of the standard SKU IPv4 Public IP. Available only for Premium SKU deployed in a virtual network.
   final pulumi.Input<String> publicIpAddressId;
+
   /// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
   final pulumi.Input<List<String>> publicIpAddresses;
+
   /// List of the availability zones where API Management is deployed in the additional region exists.
   final pulumi.Input<List<String>> zones;
 
@@ -50,14 +56,21 @@ class GetServiceAdditionalLocation {
 
   factory GetServiceAdditionalLocation.fromMap(Map<String, dynamic> map) {
     return GetServiceAdditionalLocation(
-      capacity: (map['capacity'] as int).input(),
-      gatewayRegionalUrl: (map['gatewayRegionalUrl'] as String).input(),
-      location: (map['location'] as String).input(),
-      privateIpAddresses: ((map['privateIpAddresses'] as List).cast<String>()).input(),
-      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
-      publicIpAddresses: ((map['publicIpAddresses'] as List).cast<String>()).input(),
-      zones: ((map['zones'] as List).cast<String>()).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      gatewayRegionalUrl: pulumi.Input.fromValue(
+        map['gatewayRegionalUrl'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      privateIpAddresses: pulumi.Input.fromValue(
+        (map['privateIpAddresses'] as List).cast<String>(),
+      ),
+      publicIpAddressId: pulumi.Input.fromValue(
+        map['publicIpAddressId'] as String,
+      ),
+      publicIpAddresses: pulumi.Input.fromValue(
+        (map['publicIpAddresses'] as List).cast<String>(),
+      ),
+      zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),
     );
   }
 }
-

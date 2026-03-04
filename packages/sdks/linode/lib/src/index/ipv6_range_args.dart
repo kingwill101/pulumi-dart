@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv6RangeArgs {
   /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   final pulumi.Input<int>? linodeId;
+
   /// The prefix length of the IPv6 range.
   final pulumi.Input<int> prefixLength;
+
   /// The IPv6 SLAAC address to assign this range to.
   final pulumi.Input<String>? routeTarget;
 
@@ -18,11 +20,7 @@ class Ipv6RangeArgs {
   /// [linodeId] The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   /// [prefixLength] The prefix length of the IPv6 range.
   /// [routeTarget] The IPv6 SLAAC address to assign this range to.
-  Ipv6RangeArgs({
-    this.linodeId,
-    required this.prefixLength,
-    this.routeTarget,
-  });
+  Ipv6RangeArgs({this.linodeId, required this.prefixLength, this.routeTarget});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class Ipv6RangeArgs {
 
   factory Ipv6RangeArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeArgs(
-      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
-      prefixLength: (map['prefixLength'] as int).input(),
-      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget']! as String).input(),
+      linodeId: (() {
+        final guardedValue = map['linodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      prefixLength: pulumi.Input.fromValue(map['prefixLength'] as int),
+      routeTarget: (() {
+        final guardedValue = map['routeTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

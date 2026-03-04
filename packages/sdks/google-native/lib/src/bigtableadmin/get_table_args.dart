@@ -35,11 +35,18 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tableId: (map['tableId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

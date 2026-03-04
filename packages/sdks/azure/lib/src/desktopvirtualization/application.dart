@@ -349,7 +349,7 @@ import 'application_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DesktopVirtualization` - 2024-04-03
@@ -364,22 +364,31 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// Resource ID for a Virtual Desktop Application Group to associate with the Virtual Desktop Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationGroupId;
+
   /// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. Possible values include: `DoNotAllow`, `Allow`, `Require`.
   late final pulumi.Output<String> commandLineArgumentPolicy;
+
   /// Command Line Arguments for Virtual Desktop Application.
   late final pulumi.Output<String?> commandLineArguments;
+
   /// Option to set a description for the Virtual Desktop Application.
   late final pulumi.Output<String?> description;
+
   /// Option to set a friendly name for the Virtual Desktop Application.
   late final pulumi.Output<String> friendlyName;
+
   /// The index of the icon you wish to use.
   late final pulumi.Output<int?> iconIndex;
+
   /// Specifies the path for an icon which will be used for this Virtual Desktop Application.
   late final pulumi.Output<String> iconPath;
+
   /// The name of the Virtual Desktop Application. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The file path location of the app on the Virtual Desktop OS.
   late final pulumi.Output<String> path;
+
   /// Specifies whether to show the RemoteApp program in the RD Web Access server.
   late final pulumi.Output<bool?> showInPortal;
 
@@ -392,21 +401,23 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGroupId = registerOutput<String>('applicationGroupId');
-    this.commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');
-    this.commandLineArguments = registerOutput<String?>('commandLineArguments');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.iconIndex = registerOutput<int?>('iconIndex');
-    this.iconPath = registerOutput<String>('iconPath');
+         'azure:desktopvirtualization/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    commandLineArgumentPolicy = registerOutput<String>(
+      'commandLineArgumentPolicy',
+    );
+    commandLineArguments = registerOutput<String?>('commandLineArguments');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String>('friendlyName');
+    iconIndex = registerOutput<int?>('iconIndex');
+    iconPath = registerOutput<String>('iconPath');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.showInPortal = registerOutput<bool?>('showInPortal');
+    path = registerOutput<String>('path');
+    showInPortal = registerOutput<bool?>('showInPortal');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -427,20 +438,22 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGroupId = registerOutput<String>('applicationGroupId');
-    this.commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');
-    this.commandLineArguments = registerOutput<String?>('commandLineArguments');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.iconIndex = registerOutput<int?>('iconIndex');
-    this.iconPath = registerOutput<String>('iconPath');
+         'azure:desktopvirtualization/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    commandLineArgumentPolicy = registerOutput<String>(
+      'commandLineArgumentPolicy',
+    );
+    commandLineArguments = registerOutput<String?>('commandLineArguments');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String>('friendlyName');
+    iconIndex = registerOutput<int?>('iconIndex');
+    iconPath = registerOutput<String>('iconPath');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.showInPortal = registerOutput<bool?>('showInPortal');
+    path = registerOutput<String>('path');
+    showInPortal = registerOutput<bool?>('showInPortal');
   }
 }

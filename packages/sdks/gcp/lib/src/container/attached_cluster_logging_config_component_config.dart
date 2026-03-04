@@ -9,20 +9,21 @@ class AttachedClusterLoggingConfigComponentConfig {
 
   /// Creates a new [AttachedClusterLoggingConfigComponentConfig].
   /// [enableComponents] The components to be enabled.
-  AttachedClusterLoggingConfigComponentConfig({
-    this.enableComponents,
-  });
+  AttachedClusterLoggingConfigComponentConfig({this.enableComponents});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableComponents': ?enableComponents,
-    };
+    return <String, dynamic>{'enableComponents': ?enableComponents};
   }
 
-  factory AttachedClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
+  factory AttachedClusterLoggingConfigComponentConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AttachedClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents']! as List).cast<String>()).input(),
+      enableComponents: (() {
+        final guardedValue = map['enableComponents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

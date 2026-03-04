@@ -6,16 +6,15 @@ enum AccessConfigNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const AccessConfigNetworkTier(this.value);
-  final String value;
+  const AccessConfigNetworkTier(this.wireValue);
+  final String wireValue;
 
   static AccessConfigNetworkTier fromValue(String value) {
     for (final item in AccessConfigNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessConfigNetworkTier value: $value');
   }
 }
-

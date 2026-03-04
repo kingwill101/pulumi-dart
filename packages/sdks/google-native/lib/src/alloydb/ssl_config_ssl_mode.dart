@@ -7,16 +7,15 @@ enum SslConfigSslMode {
   allowUnencryptedAndEncrypted("ALLOW_UNENCRYPTED_AND_ENCRYPTED"),
   encryptedOnly("ENCRYPTED_ONLY");
 
-  const SslConfigSslMode(this.value);
-  final String value;
+  const SslConfigSslMode(this.wireValue);
+  final String wireValue;
 
   static SslConfigSslMode fromValue(String value) {
     for (final item in SslConfigSslMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigSslMode value: $value');
   }
 }
-

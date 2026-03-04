@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZnodeState {
   /// The language type of the returned information. Valid values: `zh` or `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// The ID of the Cluster.
   final pulumi.Input<String>? clusterId;
+
   /// The Node data.
   final pulumi.Input<String>? data;
+
   /// The Node path. The value must start with a forward slash (/).
   final pulumi.Input<String>? path;
 
@@ -18,12 +21,7 @@ class ZnodeState {
   /// [clusterId] The ID of the Cluster.
   /// [data] The Node data.
   /// [path] The Node path. The value must start with a forward slash (/).
-  ZnodeState({
-    this.acceptLanguage,
-    this.clusterId,
-    this.data,
-    this.path,
-  });
+  ZnodeState({this.acceptLanguage, this.clusterId, this.data, this.path});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class ZnodeState {
 
   factory ZnodeState.fromMap(Map<String, dynamic> map) {
     return ZnodeState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      data: map['data'] == null ? null : (map['data']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

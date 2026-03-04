@@ -4,16 +4,15 @@ enum OutputDeliveryMode {
   valueUpload("Upload"),
   valueDirect("Direct");
 
-  const OutputDeliveryMode(this.value);
-  final String value;
+  const OutputDeliveryMode(this.wireValue);
+  final String wireValue;
 
   static OutputDeliveryMode fromValue(String value) {
     for (final item in OutputDeliveryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutputDeliveryMode value: $value');
   }
 }
-

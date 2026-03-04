@@ -8,7 +8,7 @@ import 'vswitch_state.dart';
 ///
 /// For information about ENS Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createvswitch).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -204,16 +204,22 @@ import 'vswitch_state.dart';
 class Vswitch extends pulumi.CustomResource {
   /// The CIDR block of the vSwitch.
   late final pulumi.Output<String> cidrBlock;
+
   /// The time when the VPC was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of the vSwitch.
   late final pulumi.Output<String?> description;
+
   /// ENS Region ID.
   late final pulumi.Output<String> ensRegionId;
+
   /// The ID of the network to which the vSwitch that you want to create belongs.
   late final pulumi.Output<String> networkId;
+
   /// The status of the vSwitch.
   late final pulumi.Output<String> status;
+
   /// The name of the vSwitch.
   late final pulumi.Output<String?> vswitchName;
 
@@ -226,18 +232,18 @@ class Vswitch extends pulumi.CustomResource {
     VswitchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/vswitch:Vswitch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.networkId = registerOutput<String>('networkId');
-    this.status = registerOutput<String>('status');
-    this.vswitchName = registerOutput<String?>('vswitchName');
+         'alicloud:ens/vswitch:Vswitch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    networkId = registerOutput<String>('networkId');
+    status = registerOutput<String>('status');
+    vswitchName = registerOutput<String?>('vswitchName');
   }
 
   /// Gets an existing [Vswitch] resource's state with the given [name] and [id].
@@ -258,17 +264,17 @@ class Vswitch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/vswitch:Vswitch',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.networkId = registerOutput<String>('networkId');
-    this.status = registerOutput<String>('status');
-    this.vswitchName = registerOutput<String?>('vswitchName');
+         'alicloud:ens/vswitch:Vswitch',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    networkId = registerOutput<String>('networkId');
+    status = registerOutput<String>('status');
+    vswitchName = registerOutput<String?>('vswitchName');
   }
 }

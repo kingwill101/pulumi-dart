@@ -8,16 +8,22 @@ import 'event_trigger_retry_policy_cloudfunctions_v2beta.dart';
 class EventTriggerCloudfunctionsV2beta {
   /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
   final pulumi.Input<String>? channel;
+
   /// Criteria used to filter events.
   final pulumi.Input<List<EventFilterCloudfunctionsV2beta>>? eventFilters;
+
   /// The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
   final pulumi.Input<String> eventType;
+
   /// Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
   final pulumi.Input<String>? pubsubTopic;
+
   /// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
   final pulumi.Input<EventTriggerRetryPolicyCloudfunctionsV2beta>? retryPolicy;
+
   /// Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
   final pulumi.Input<String>? serviceAccountEmail;
+
   /// The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
   final pulumi.Input<String>? triggerRegion;
 
@@ -42,10 +48,25 @@ class EventTriggerCloudfunctionsV2beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
-      'eventFilters': ?pulumi.Input.mapOptionalInputValue<List<EventFilterCloudfunctionsV2beta>, List<Map<String, dynamic>>>(eventFilters, (value) => pulumi.Input.encodeList<EventFilterCloudfunctionsV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'eventFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EventFilterCloudfunctionsV2beta>,
+            List<Map<String, dynamic>>
+          >(
+            eventFilters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EventFilterCloudfunctionsV2beta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'eventType': eventType,
       'pubsubTopic': ?pubsubTopic,
-      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<EventTriggerRetryPolicyCloudfunctionsV2beta, String>(retryPolicy, (value) => value.value),
+      'retryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventTriggerRetryPolicyCloudfunctionsV2beta,
+            String
+          >(retryPolicy, (value) => value.wireValue),
       'serviceAccountEmail': ?serviceAccountEmail,
       'triggerRegion': ?triggerRegion,
     };
@@ -53,14 +74,48 @@ class EventTriggerCloudfunctionsV2beta {
 
   factory EventTriggerCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return EventTriggerCloudfunctionsV2beta(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<EventFilterCloudfunctionsV2beta>(map['eventFilters']!, (value) => EventFilterCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventType: (map['eventType'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (EventTriggerRetryPolicyCloudfunctionsV2beta.fromValue(map['retryPolicy']! as String)).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
-      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion']! as String).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventFilters: (() {
+        final guardedValue = map['eventFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EventFilterCloudfunctionsV2beta>(
+            guardedValue,
+            (value) => EventFilterCloudfunctionsV2beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      eventType: pulumi.Input.fromValue(map['eventType'] as String),
+      pubsubTopic: (() {
+        final guardedValue = map['pubsubTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retryPolicy: (() {
+        final guardedValue = map['retryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventTriggerRetryPolicyCloudfunctionsV2beta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      serviceAccountEmail: (() {
+        final guardedValue = map['serviceAccountEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerRegion: (() {
+        final guardedValue = map['triggerRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

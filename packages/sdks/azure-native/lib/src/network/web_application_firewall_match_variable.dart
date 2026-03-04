@@ -9,16 +9,17 @@ enum WebApplicationFirewallMatchVariable {
   valueRequestBody("RequestBody"),
   valueRequestCookies("RequestCookies");
 
-  const WebApplicationFirewallMatchVariable(this.value);
-  final String value;
+  const WebApplicationFirewallMatchVariable(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallMatchVariable fromValue(String value) {
     for (final item in WebApplicationFirewallMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WebApplicationFirewallMatchVariable value: $value');
+    throw ArgumentError(
+      'Unknown WebApplicationFirewallMatchVariable value: $value',
+    );
   }
 }
-

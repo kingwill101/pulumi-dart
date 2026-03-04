@@ -6,40 +6,58 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectLineSiteResponse {
   /// DirectLine application id
   final pulumi.Input<String>? appId;
+
   /// Entity Tag
   final pulumi.Input<String>? eTag;
+
   /// Whether this site is enabled for block user upload.
   final pulumi.Input<bool>? isBlockUserUploadEnabled;
+
   /// Whether this site is disabled detailed logging for
   final pulumi.Input<bool>? isDetailedLoggingEnabled;
+
   /// Whether this site is enabled for DirectLine channel
   final pulumi.Input<bool> isEnabled;
+
   /// Whether this site is EndpointParameters enabled for channel
   final pulumi.Input<bool>? isEndpointParametersEnabled;
+
   /// Whether this no-storage site is disabled detailed logging for
   final pulumi.Input<bool>? isNoStorageEnabled;
+
   /// Whether this site is enabled for authentication with Bot Framework.
   final pulumi.Input<bool>? isSecureSiteEnabled;
+
   /// Whether this site is token enabled for channel
   final pulumi.Input<bool> isTokenEnabled;
+
   /// Whether this site is enabled for Bot Framework V1 protocol.
   final pulumi.Input<bool>? isV1Enabled;
+
   /// Whether this site is enabled for Bot Framework V3 protocol.
   final pulumi.Input<bool>? isV3Enabled;
+
   /// Whether this site is enabled for Webchat Speech
   final pulumi.Input<bool>? isWebChatSpeechEnabled;
+
   /// Whether this site is enabled for preview versions of Webchat
   final pulumi.Input<bool>? isWebchatPreviewEnabled;
+
   /// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String> key;
+
   /// Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String> key2;
+
   /// Site Id
   final pulumi.Input<String> siteId;
+
   /// Site name
   final pulumi.Input<String> siteName;
+
   /// Tenant Id
   final pulumi.Input<String>? tenantId;
+
   /// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
   final pulumi.Input<List<String>>? trustedOrigins;
 
@@ -111,26 +129,77 @@ class DirectLineSiteResponse {
 
   factory DirectLineSiteResponse.fromMap(Map<String, dynamic> map) {
     return DirectLineSiteResponse(
-      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      isBlockUserUploadEnabled: map['isBlockUserUploadEnabled'] == null ? null : (map['isBlockUserUploadEnabled']! as bool).input(),
-      isDetailedLoggingEnabled: map['isDetailedLoggingEnabled'] == null ? null : (map['isDetailedLoggingEnabled']! as bool).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      isEndpointParametersEnabled: map['isEndpointParametersEnabled'] == null ? null : (map['isEndpointParametersEnabled']! as bool).input(),
-      isNoStorageEnabled: map['isNoStorageEnabled'] == null ? null : (map['isNoStorageEnabled']! as bool).input(),
-      isSecureSiteEnabled: map['isSecureSiteEnabled'] == null ? null : (map['isSecureSiteEnabled']! as bool).input(),
-      isTokenEnabled: (map['isTokenEnabled'] as bool).input(),
-      isV1Enabled: map['isV1Enabled'] == null ? null : (map['isV1Enabled']! as bool).input(),
-      isV3Enabled: map['isV3Enabled'] == null ? null : (map['isV3Enabled']! as bool).input(),
-      isWebChatSpeechEnabled: map['isWebChatSpeechEnabled'] == null ? null : (map['isWebChatSpeechEnabled']! as bool).input(),
-      isWebchatPreviewEnabled: map['isWebchatPreviewEnabled'] == null ? null : (map['isWebchatPreviewEnabled']! as bool).input(),
-      key: (map['key'] as String).input(),
-      key2: (map['key2'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins']! as List).cast<String>()).input(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isBlockUserUploadEnabled: (() {
+        final guardedValue = map['isBlockUserUploadEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isDetailedLoggingEnabled: (() {
+        final guardedValue = map['isDetailedLoggingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      isEndpointParametersEnabled: (() {
+        final guardedValue = map['isEndpointParametersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isNoStorageEnabled: (() {
+        final guardedValue = map['isNoStorageEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isSecureSiteEnabled: (() {
+        final guardedValue = map['isSecureSiteEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isTokenEnabled: pulumi.Input.fromValue(map['isTokenEnabled'] as bool),
+      isV1Enabled: (() {
+        final guardedValue = map['isV1Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isV3Enabled: (() {
+        final guardedValue = map['isV3Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isWebChatSpeechEnabled: (() {
+        final guardedValue = map['isWebChatSpeechEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isWebchatPreviewEnabled: (() {
+        final guardedValue = map['isWebchatPreviewEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      key2: pulumi.Input.fromValue(map['key2'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustedOrigins: (() {
+        final guardedValue = map['trustedOrigins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

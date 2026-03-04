@@ -13,37 +13,51 @@ import 'user_phone_numbers.dart';
 class UserArgs {
   /// Details about the user's address. At most 1 address is allowed. Detailed below.
   final pulumi.Input<UserAddresses>? addresses;
+
   /// The name that is typically displayed when the user is referenced.
   final pulumi.Input<String> displayName;
+
   /// Details about the user's email. At most 1 email is allowed. Detailed below.
   final pulumi.Input<UserEmails>? emails;
+
   /// The globally unique identifier for the identity store that this user is in.
   final pulumi.Input<String> identityStoreId;
+
   /// The user's geographical region or location.
   final pulumi.Input<String>? locale;
+
   /// Details about the user's full name. Detailed below.
   final pulumi.Input<UserName>? name;
+
   /// An alternate name for the user.
   final pulumi.Input<String>? nickname;
+
   /// Details about the user's phone number. At most 1 phone number is allowed. Detailed below.
   final pulumi.Input<UserPhoneNumbers>? phoneNumbers;
+
   /// The preferred language of the user.
   final pulumi.Input<String>? preferredLanguage;
+
   /// An URL that may be associated with the user.
   final pulumi.Input<String>? profileUrl;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The user's time zone.
   final pulumi.Input<String>? timezone;
+
   /// The user's title.
   final pulumi.Input<String>? title;
+
   /// A unique string used to identify the user. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. The limit is 128 characters.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userName;
+
   /// The user type.
   ///
-  /// > Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
+  /// &gt; Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
   final pulumi.Input<String>? userType;
 
   /// Creates a new [UserArgs].
@@ -82,14 +96,30 @@ class UserArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': ?pulumi.Input.mapOptionalInputValue<UserAddresses, Map<String, dynamic>>(addresses, (value) => value.toMap()),
+      'addresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserAddresses,
+            Map<String, dynamic>
+          >(addresses, (value) => value.toMap()),
       'displayName': displayName,
-      'emails': ?pulumi.Input.mapOptionalInputValue<UserEmails, Map<String, dynamic>>(emails, (value) => value.toMap()),
+      'emails':
+          ?pulumi.Input.mapOptionalInputValue<UserEmails, Map<String, dynamic>>(
+            emails,
+            (value) => value.toMap(),
+          ),
       'identityStoreId': identityStoreId,
       'locale': ?locale,
-      'name': ?pulumi.Input.mapOptionalInputValue<UserName, Map<String, dynamic>>(name, (value) => value.toMap()),
+      'name':
+          ?pulumi.Input.mapOptionalInputValue<UserName, Map<String, dynamic>>(
+            name,
+            (value) => value.toMap(),
+          ),
       'nickname': ?nickname,
-      'phoneNumbers': ?pulumi.Input.mapOptionalInputValue<UserPhoneNumbers, Map<String, dynamic>>(phoneNumbers, (value) => value.toMap()),
+      'phoneNumbers':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserPhoneNumbers,
+            Map<String, dynamic>
+          >(phoneNumbers, (value) => value.toMap()),
       'preferredLanguage': ?preferredLanguage,
       'profileUrl': ?profileUrl,
       'region': ?region,
@@ -102,22 +132,79 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      addresses: map['addresses'] == null ? null : ((UserAddresses.fromMap((map['addresses']! as Map).cast<String, dynamic>())).input()).input(),
-      displayName: (map['displayName'] as String).input(),
-      emails: map['emails'] == null ? null : ((UserEmails.fromMap((map['emails']! as Map).cast<String, dynamic>())).input()).input(),
-      identityStoreId: (map['identityStoreId'] as String).input(),
-      locale: map['locale'] == null ? null : ((map['locale'] as String).input()).input(),
-      name: map['name'] == null ? null : ((UserName.fromMap((map['name']! as Map).cast<String, dynamic>())).input()).input(),
-      nickname: map['nickname'] == null ? null : ((map['nickname'] as String).input()).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : ((UserPhoneNumbers.fromMap((map['phoneNumbers']! as Map).cast<String, dynamic>())).input()).input(),
-      preferredLanguage: map['preferredLanguage'] == null ? null : ((map['preferredLanguage'] as String).input()).input(),
-      profileUrl: map['profileUrl'] == null ? null : ((map['profileUrl'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
-      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
-      userName: (map['userName'] as String).input(),
-      userType: map['userType'] == null ? null : ((map['userType'] as String).input()).input(),
+      addresses: (() {
+        final guardedValue = map['addresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      emails: (() {
+        final guardedValue = map['emails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      identityStoreId: pulumi.Input.fromValue(map['identityStoreId'] as String),
+      locale: (() {
+        final guardedValue = map['locale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserName.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      nickname: (() {
+        final guardedValue = map['nickname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumbers: (() {
+        final guardedValue = map['phoneNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserPhoneNumbers.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      preferredLanguage: (() {
+        final guardedValue = map['preferredLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profileUrl: (() {
+        final guardedValue = map['profileUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
+      userType: (() {
+        final guardedValue = map['userType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

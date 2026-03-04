@@ -150,7 +150,7 @@ import 'secret_v1_state.dart';
 ///
 /// ### Secret with whitespaces
 ///
-/// > **Note** If you want to store payload with leading or trailing whitespaces,
+/// &gt; **Note** If you want to store payload with leading or trailing whitespaces,
 /// it's recommended to store it in a base64 encoding. Plain text payload can also
 /// work, but further addind or removing of the leading or trailing whitespaces
 /// won't be detected as a state change, e.g. changing plain text payload from
@@ -497,7 +497,7 @@ import 'secret_v1_state.dart';
 ///
 /// ### Secret with the ACL
 ///
-/// > **Note** Only read ACLs are supported
+/// &gt; **Note** Only read ACLs are supported
 ///
 ///
 /// ```typescript
@@ -697,45 +697,63 @@ class SecretV1 extends pulumi.CustomResource {
   /// `read` operation is supported. If not specified, the secret is accessible
   /// project wide.
   late final pulumi.Output<SecretV1Acl> acl;
+
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<String> algorithm;
+
   /// The map of metadata, assigned on the secret, which has been
   /// explicitly and implicitly added.
   late final pulumi.Output<Map<String, String>> allMetadata;
+
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<int> bitLength;
+
   /// The map of the content types, assigned on the secret.
   late final pulumi.Output<Map<String, String>> contentTypes;
+
   /// The date the secret was created.
   late final pulumi.Output<String> createdAt;
+
   /// The creator of the secret.
   late final pulumi.Output<String> creatorId;
+
   /// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
   late final pulumi.Output<String?> expiration;
+
   /// Additional Metadata for the secret.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<String> mode;
+
   /// Human-readable name for the Secret. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
+
   /// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
   late final pulumi.Output<String?> payload;
+
   /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
   late final pulumi.Output<String?> payloadContentEncoding;
+
   /// (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
   late final pulumi.Output<String?> payloadContentType;
+
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a secret. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 secret.
   late final pulumi.Output<String> region;
+
   /// The secret reference / where to find the secret.
   late final pulumi.Output<String> secretRef;
+
   /// Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
   late final pulumi.Output<String> secretType;
+
   /// The status of the secret.
   late final pulumi.Output<String> status;
+
   /// The date the secret was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -748,30 +766,30 @@ class SecretV1 extends pulumi.CustomResource {
     SecretV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/secretV1:SecretV1',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<SecretV1Acl>('acl');
-    this.algorithm = registerOutput<String>('algorithm');
-    this.allMetadata = registerOutput<Map<String, String>>('allMetadata');
-    this.bitLength = registerOutput<int>('bitLength');
-    this.contentTypes = registerOutput<Map<String, String>>('contentTypes');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.creatorId = registerOutput<String>('creatorId');
-    this.expiration = registerOutput<String?>('expiration');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mode = registerOutput<String>('mode');
+         'openstack:keymanager/secretV1:SecretV1',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<SecretV1Acl>('acl');
+    algorithm = registerOutput<String>('algorithm');
+    allMetadata = registerOutput<Map<String, String>>('allMetadata');
+    bitLength = registerOutput<int>('bitLength');
+    contentTypes = registerOutput<Map<String, String>>('contentTypes');
+    createdAt = registerOutput<String>('createdAt');
+    creatorId = registerOutput<String>('creatorId');
+    expiration = registerOutput<String?>('expiration');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.payload = registerOutput<String?>('payload');
-    this.payloadContentEncoding = registerOutput<String?>('payloadContentEncoding');
-    this.payloadContentType = registerOutput<String?>('payloadContentType');
-    this.region = registerOutput<String>('region');
-    this.secretRef = registerOutput<String>('secretRef');
-    this.secretType = registerOutput<String>('secretType');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    payload = registerOutput<String?>('payload');
+    payloadContentEncoding = registerOutput<String?>('payloadContentEncoding');
+    payloadContentType = registerOutput<String?>('payloadContentType');
+    region = registerOutput<String>('region');
+    secretRef = registerOutput<String>('secretRef');
+    secretType = registerOutput<String>('secretType');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [SecretV1] resource's state with the given [name] and [id].
@@ -792,29 +810,29 @@ class SecretV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/secretV1:SecretV1',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<SecretV1Acl>('acl');
-    this.algorithm = registerOutput<String>('algorithm');
-    this.allMetadata = registerOutput<Map<String, String>>('allMetadata');
-    this.bitLength = registerOutput<int>('bitLength');
-    this.contentTypes = registerOutput<Map<String, String>>('contentTypes');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.creatorId = registerOutput<String>('creatorId');
-    this.expiration = registerOutput<String?>('expiration');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mode = registerOutput<String>('mode');
+         'openstack:keymanager/secretV1:SecretV1',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<SecretV1Acl>('acl');
+    algorithm = registerOutput<String>('algorithm');
+    allMetadata = registerOutput<Map<String, String>>('allMetadata');
+    bitLength = registerOutput<int>('bitLength');
+    contentTypes = registerOutput<Map<String, String>>('contentTypes');
+    createdAt = registerOutput<String>('createdAt');
+    creatorId = registerOutput<String>('creatorId');
+    expiration = registerOutput<String?>('expiration');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.payload = registerOutput<String?>('payload');
-    this.payloadContentEncoding = registerOutput<String?>('payloadContentEncoding');
-    this.payloadContentType = registerOutput<String?>('payloadContentType');
-    this.region = registerOutput<String>('region');
-    this.secretRef = registerOutput<String>('secretRef');
-    this.secretType = registerOutput<String>('secretType');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    payload = registerOutput<String?>('payload');
+    payloadContentEncoding = registerOutput<String?>('payloadContentEncoding');
+    payloadContentType = registerOutput<String?>('payloadContentType');
+    region = registerOutput<String>('region');
+    secretRef = registerOutput<String>('secretRef');
+    secretType = registerOutput<String>('secretType');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

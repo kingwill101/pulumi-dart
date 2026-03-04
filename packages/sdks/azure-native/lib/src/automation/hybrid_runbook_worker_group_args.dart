@@ -10,12 +10,16 @@ import 'run_as_credential_association_property.dart';
 class HybridRunbookWorkerGroupArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Sets the credential of a worker group.
   final pulumi.Input<RunAsCredentialAssociationProperty>? credential;
+
   /// The hybrid runbook worker group name
   final pulumi.Input<String>? hybridRunbookWorkerGroupName;
+
   /// Gets or sets the name of the resource.
   final pulumi.Input<String>? name;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,7 +40,11 @@ class HybridRunbookWorkerGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
-      'credential': ?pulumi.Input.mapOptionalInputValue<RunAsCredentialAssociationProperty, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'credential':
+          ?pulumi.Input.mapOptionalInputValue<
+            RunAsCredentialAssociationProperty,
+            Map<String, dynamic>
+          >(credential, (value) => value.toMap()),
       'hybridRunbookWorkerGroupName': ?hybridRunbookWorkerGroupName,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
@@ -45,12 +53,31 @@ class HybridRunbookWorkerGroupArgs {
 
   factory HybridRunbookWorkerGroupArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerGroupArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      credential: map['credential'] == null ? null : (RunAsCredentialAssociationProperty.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
-      hybridRunbookWorkerGroupName: map['hybridRunbookWorkerGroupName'] == null ? null : (map['hybridRunbookWorkerGroupName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RunAsCredentialAssociationProperty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hybridRunbookWorkerGroupName: (() {
+        final guardedValue = map['hybridRunbookWorkerGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_dependencymap;
-
 export 'dependencymap/dependency_process_filter.dart';
 export 'dependencymap/discovery_source.dart';
 export 'dependencymap/discovery_source_args.dart';

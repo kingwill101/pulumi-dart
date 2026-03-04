@@ -8,20 +8,17 @@ class VirtualServiceSpecProviderVirtualNode {
 
   /// Creates a new [VirtualServiceSpecProviderVirtualNode].
   /// [virtualNodeName] Name of the virtual node that is acting as a service provider. Must be between 1 and 255 characters in length.
-  VirtualServiceSpecProviderVirtualNode({
-    required this.virtualNodeName,
-  });
+  VirtualServiceSpecProviderVirtualNode({required this.virtualNodeName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'virtualNodeName': virtualNodeName,
-    };
+    return <String, dynamic>{'virtualNodeName': virtualNodeName};
   }
 
-  factory VirtualServiceSpecProviderVirtualNode.fromMap(Map<String, dynamic> map) {
+  factory VirtualServiceSpecProviderVirtualNode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualServiceSpecProviderVirtualNode(
-      virtualNodeName: (map['virtualNodeName'] as String).input(),
+      virtualNodeName: pulumi.Input.fromValue(map['virtualNodeName'] as String),
     );
   }
 }
-

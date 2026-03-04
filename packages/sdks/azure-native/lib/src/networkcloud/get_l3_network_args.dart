@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetL3NetworkArgs {
   /// The name of the L3 network.
   final pulumi.Input<String> l3NetworkName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetL3NetworkArgs {
 
   factory GetL3NetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetL3NetworkArgs(
-      l3NetworkName: (map['l3NetworkName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      l3NetworkName: pulumi.Input.fromValue(map['l3NetworkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -424,6 +424,7 @@ import 'organizational_unit_association_state.dart';
 class OrganizationalUnitAssociation extends pulumi.CustomResource {
   /// ARN of the notification configuration to associate the organizational unit with.
   late final pulumi.Output<String> notificationConfigurationArn;
+
   /// ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
   late final pulumi.Output<String> organizationalUnitId;
 
@@ -436,13 +437,15 @@ class OrganizationalUnitAssociation extends pulumi.CustomResource {
     OrganizationalUnitAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/organizationalUnitAssociation:OrganizationalUnitAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
-    this.organizationalUnitId = registerOutput<String>('organizationalUnitId');
+         'aws:notifications/organizationalUnitAssociation:OrganizationalUnitAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    notificationConfigurationArn = registerOutput<String>(
+      'notificationConfigurationArn',
+    );
+    organizationalUnitId = registerOutput<String>('organizationalUnitId');
   }
 
   /// Gets an existing [OrganizationalUnitAssociation] resource's state with the given [name] and [id].
@@ -463,12 +466,14 @@ class OrganizationalUnitAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/organizationalUnitAssociation:OrganizationalUnitAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
-    this.organizationalUnitId = registerOutput<String>('organizationalUnitId');
+         'aws:notifications/organizationalUnitAssociation:OrganizationalUnitAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    notificationConfigurationArn = registerOutput<String>(
+      'notificationConfigurationArn',
+    );
+    organizationalUnitId = registerOutput<String>('organizationalUnitId');
   }
 }

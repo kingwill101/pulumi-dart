@@ -6,24 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KxScalingGroupState {
   /// Amazon Resource Name (ARN) identifier of the KX Scaling Group.
   final pulumi.Input<String>? arn;
+
   /// The availability zone identifiers for the requested regions.
   final pulumi.Input<String>? availabilityZoneId;
+
   /// The list of Managed kdb clusters that are currently active in the given scaling group.
   final pulumi.Input<List<String>>? clusters;
+
   /// The timestamp at which the scaling group was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   final pulumi.Input<String>? createdTimestamp;
+
   /// A unique identifier for the kdb environment, where you want to create the scaling group.
   final pulumi.Input<String>? environmentId;
+
   /// The memory and CPU capabilities of the scaling group host on which FinSpace Managed kdb clusters will be placed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? hostType;
+
   /// Last timestamp at which the scaling group was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   final pulumi.Input<String>? lastModifiedTimestamp;
+
   /// Unique name for the scaling group that you want to create.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The status of scaling group.
   /// * `CREATING` - The scaling group creation is in progress.
   /// * `CREATE_FAILED` - The scaling group creation has failed.
@@ -34,10 +43,13 @@ class KxScalingGroupState {
   /// * `DELETE_FAILED` - The system failed to delete the scaling group.
   /// * `DELETED` - The scaling group is successfully deleted.
   final pulumi.Input<String>? status;
+
   /// The error message when a failed state occurs.
   final pulumi.Input<String>? statusReason;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -91,20 +103,75 @@ class KxScalingGroupState {
 
   factory KxScalingGroupState.fromMap(Map<String, dynamic> map) {
     return KxScalingGroupState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
-      clusters: map['clusters'] == null ? null : (((map['clusters'] as List).cast<String>()).input()).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
-      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
-      hostType: map['hostType'] == null ? null : ((map['hostType'] as String).input()).input(),
-      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : ((map['lastModifiedTimestamp'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: (() {
+        final guardedValue = map['availabilityZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusters: (() {
+        final guardedValue = map['clusters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      createdTimestamp: (() {
+        final guardedValue = map['createdTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostType: (() {
+        final guardedValue = map['hostType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedTimestamp: (() {
+        final guardedValue = map['lastModifiedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusReason: (() {
+        final guardedValue = map['statusReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

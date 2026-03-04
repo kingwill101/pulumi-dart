@@ -13,15 +13,14 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

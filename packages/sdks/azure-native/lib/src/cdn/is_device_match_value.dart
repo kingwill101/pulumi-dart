@@ -2,16 +2,15 @@ enum IsDeviceMatchValue {
   mobile("Mobile"),
   desktop("Desktop");
 
-  const IsDeviceMatchValue(this.value);
-  final String value;
+  const IsDeviceMatchValue(this.wireValue);
+  final String wireValue;
 
   static IsDeviceMatchValue fromValue(String value) {
     for (final item in IsDeviceMatchValue.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IsDeviceMatchValue value: $value');
   }
 }
-

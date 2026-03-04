@@ -21,11 +21,16 @@ class GetPlanStageTargetChannelTargetInfo {
     };
   }
 
-  factory GetPlanStageTargetChannelTargetInfo.fromMap(Map<String, dynamic> map) {
+  factory GetPlanStageTargetChannelTargetInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPlanStageTargetChannelTargetInfo(
-      contactChannelId: (map['contactChannelId'] as String).input(),
-      retryIntervalInMinutes: (map['retryIntervalInMinutes'] as int).input(),
+      contactChannelId: pulumi.Input.fromValue(
+        map['contactChannelId'] as String,
+      ),
+      retryIntervalInMinutes: pulumi.Input.fromValue(
+        map['retryIntervalInMinutes'] as int,
+      ),
     );
   }
 }
-

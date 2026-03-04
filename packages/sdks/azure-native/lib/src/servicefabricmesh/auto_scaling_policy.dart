@@ -8,8 +8,10 @@ import 'average_load_scaling_trigger.dart';
 class AutoScalingPolicy {
   /// The mechanism that is used to scale when auto scaling operation is invoked.
   final pulumi.Input<AddRemoveReplicaScalingMechanism> mechanism;
+
   /// The name of the auto scaling policy.
   final pulumi.Input<String> name;
+
   /// Determines when auto scaling operation will be invoked.
   final pulumi.Input<AverageLoadScalingTrigger> trigger;
 
@@ -25,18 +27,33 @@ class AutoScalingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mechanism': pulumi.Input.mapInputValue<AddRemoveReplicaScalingMechanism, Map<String, dynamic>>(mechanism, (value) => value.toMap()),
+      'mechanism':
+          pulumi.Input.mapInputValue<
+            AddRemoveReplicaScalingMechanism,
+            Map<String, dynamic>
+          >(mechanism, (value) => value.toMap()),
       'name': name,
-      'trigger': pulumi.Input.mapInputValue<AverageLoadScalingTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'trigger':
+          pulumi.Input.mapInputValue<
+            AverageLoadScalingTrigger,
+            Map<String, dynamic>
+          >(trigger, (value) => value.toMap()),
     };
   }
 
   factory AutoScalingPolicy.fromMap(Map<String, dynamic> map) {
     return AutoScalingPolicy(
-      mechanism: (AddRemoveReplicaScalingMechanism.fromMap((map['mechanism'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      trigger: (AverageLoadScalingTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      mechanism: pulumi.Input.fromValue(
+        AddRemoveReplicaScalingMechanism.fromMap(
+          (map['mechanism']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      trigger: pulumi.Input.fromValue(
+        AverageLoadScalingTrigger.fromMap(
+          (map['trigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

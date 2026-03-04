@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCipherPolicyState {
   /// The encryption algorithms supported. It depends on the value of `tls_versions`.
   final pulumi.Input<List<String>>? ciphers;
+
   /// TLS policy instance state.
   final pulumi.Input<String>? status;
+
   /// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   final pulumi.Input<String>? tlsCipherPolicyName;
+
   /// The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
   final pulumi.Input<List<String>>? tlsVersions;
 
@@ -36,11 +39,26 @@ class TlsCipherPolicyState {
 
   factory TlsCipherPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsCipherPolicyState(
-      ciphers: map['ciphers'] == null ? null : ((map['ciphers']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName']! as String).input(),
-      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions']! as List).cast<String>()).input(),
+      ciphers: (() {
+        final guardedValue = map['ciphers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsCipherPolicyName: (() {
+        final guardedValue = map['tlsCipherPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsVersions: (() {
+        final guardedValue = map['tlsVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

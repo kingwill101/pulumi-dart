@@ -8,16 +8,15 @@ enum KeyAlgorithm {
   rSA3072("RSA_3072"),
   rSA4096("RSA_4096");
 
-  const KeyAlgorithm(this.value);
-  final String value;
+  const KeyAlgorithm(this.wireValue);
+  final String wireValue;
 
   static KeyAlgorithm fromValue(String value) {
     for (final item in KeyAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyAlgorithm value: $value');
   }
 }
-

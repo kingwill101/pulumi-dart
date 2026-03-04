@@ -5,7 +5,7 @@ import 'dashboard_state.dart';
 /// The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
 /// [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
 /// ## Example Usage
 ///
@@ -443,13 +443,17 @@ import 'dashboard_state.dart';
 class Dashboard extends pulumi.CustomResource {
   /// Dashboard attribute.
   late final pulumi.Output<String> attribute;
+
   /// Configuration of charts in the dashboard.
   /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
   late final pulumi.Output<String> charList;
+
   /// The name of the Log Dashboard.
   late final pulumi.Output<String> dashboardName;
+
   /// Dashboard alias.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the log project. It is the only in one Alicloud account.
   late final pulumi.Output<String> projectName;
 
@@ -462,16 +466,16 @@ class Dashboard extends pulumi.CustomResource {
     DashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/dashboard:Dashboard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attribute = registerOutput<String>('attribute');
-    this.charList = registerOutput<String>('charList');
-    this.dashboardName = registerOutput<String>('dashboardName');
-    this.displayName = registerOutput<String?>('displayName');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:log/dashboard:Dashboard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attribute = registerOutput<String>('attribute');
+    charList = registerOutput<String>('charList');
+    dashboardName = registerOutput<String>('dashboardName');
+    displayName = registerOutput<String?>('displayName');
+    projectName = registerOutput<String>('projectName');
   }
 
   /// Gets an existing [Dashboard] resource's state with the given [name] and [id].
@@ -492,15 +496,15 @@ class Dashboard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/dashboard:Dashboard',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attribute = registerOutput<String>('attribute');
-    this.charList = registerOutput<String>('charList');
-    this.dashboardName = registerOutput<String>('dashboardName');
-    this.displayName = registerOutput<String?>('displayName');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:log/dashboard:Dashboard',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attribute = registerOutput<String>('attribute');
+    charList = registerOutput<String>('charList');
+    dashboardName = registerOutput<String>('dashboardName');
+    displayName = registerOutput<String?>('displayName');
+    projectName = registerOutput<String>('projectName');
   }
 }

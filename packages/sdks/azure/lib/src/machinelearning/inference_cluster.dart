@@ -6,7 +6,7 @@ import 'inference_cluster_state.dart';
 
 /// Manages a Machine Learning Inference Cluster.
 ///
-/// > **Note:** The Machine Learning Inference Cluster resource is used to attach an existing AKS cluster to the Machine Learning Workspace, it doesn't create the AKS cluster itself. Therefore it can only be created and deleted, not updated. Any change to the configuration will recreate the resource.
+/// &gt; **Note:** The Machine Learning Inference Cluster resource is used to attach an existing AKS cluster to the Machine Learning Workspace, it doesn't create the AKS cluster itself. Therefore it can only be created and deleted, not updated. Any change to the configuration will recreate the resource.
 ///
 /// ## Example Usage
 ///
@@ -649,7 +649,7 @@ import 'inference_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2025-07-01
@@ -666,22 +666,30 @@ import 'inference_cluster_state.dart';
 class InferenceCluster extends pulumi.CustomResource {
   /// The purpose of the Inference Cluster. Options are `DevTest`, `DenseProd` and `FastProd`. If used for Development or Testing, use `DevTest` here. Default purpose is `FastProd`, which is recommended for production workloads. Changing this forces a new Machine Learning Inference Cluster to be created.
   ///
-  /// > **Note:** When creating or attaching a cluster, if the cluster will be used for production (`cluster_purpose = "FastProd"`), then it must contain at least 12 virtual CPUs. The number of virtual CPUs can be calculated by multiplying the number of nodes in the cluster by the number of cores provided by the VM size selected. For example, if you use a VM size of "Standard_D3_v2", which has 4 virtual cores, then you should select 3 or greater as the number of nodes.
+  /// &gt; **Note:** When creating or attaching a cluster, if the cluster will be used for production (`cluster_purpose = "FastProd"`), then it must contain at least 12 virtual CPUs. The number of virtual CPUs can be calculated by multiplying the number of nodes in the cluster by the number of cores provided by the VM size selected. For example, if you use a VM size of "Standard_D3_v2", which has 4 virtual cores, then you should select 3 or greater as the number of nodes.
   late final pulumi.Output<String?> clusterPurpose;
+
   /// The description of the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String?> description;
+
   /// An `identity` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<InferenceClusterIdentity?> identity;
+
   /// The ID of the Kubernetes Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> kubernetesClusterId;
+
   /// The Azure Region where the Machine Learning Inference Cluster should exist. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
+
   /// The name which should be used for this Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// A `ssl` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<InferenceClusterSsl?> ssl;
+
   /// A mapping of tags which should be assigned to the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -694,20 +702,22 @@ class InferenceCluster extends pulumi.CustomResource {
     InferenceClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/inferenceCluster:InferenceCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterPurpose = registerOutput<String?>('clusterPurpose');
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<InferenceClusterIdentity?>('identity');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/inferenceCluster:InferenceCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterPurpose = registerOutput<String?>('clusterPurpose');
+    description = registerOutput<String?>('description');
+    identity = registerOutput<InferenceClusterIdentity?>('identity');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.ssl = registerOutput<InferenceClusterSsl?>('ssl');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    ssl = registerOutput<InferenceClusterSsl?>('ssl');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [InferenceCluster] resource's state with the given [name] and [id].
@@ -728,19 +738,21 @@ class InferenceCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/inferenceCluster:InferenceCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterPurpose = registerOutput<String?>('clusterPurpose');
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<InferenceClusterIdentity?>('identity');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/inferenceCluster:InferenceCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterPurpose = registerOutput<String?>('clusterPurpose');
+    description = registerOutput<String?>('description');
+    identity = registerOutput<InferenceClusterIdentity?>('identity');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.ssl = registerOutput<InferenceClusterSsl?>('ssl');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    ssl = registerOutput<InferenceClusterSsl?>('ssl');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

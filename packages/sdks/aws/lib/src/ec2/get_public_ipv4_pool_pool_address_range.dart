@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIpv4PoolPoolAddressRange {
   /// Number of addresses in the range.
   final pulumi.Input<int> addressCount;
+
   /// Number of available addresses in the range.
   final pulumi.Input<int> availableAddressCount;
+
   /// First address in the range.
   final pulumi.Input<String> firstAddress;
+
   /// Last address in the range.
   final pulumi.Input<String> lastAddress;
 
@@ -35,11 +38,12 @@ class GetPublicIpv4PoolPoolAddressRange {
 
   factory GetPublicIpv4PoolPoolAddressRange.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolPoolAddressRange(
-      addressCount: (map['addressCount'] as int).input(),
-      availableAddressCount: (map['availableAddressCount'] as int).input(),
-      firstAddress: (map['firstAddress'] as String).input(),
-      lastAddress: (map['lastAddress'] as String).input(),
+      addressCount: pulumi.Input.fromValue(map['addressCount'] as int),
+      availableAddressCount: pulumi.Input.fromValue(
+        map['availableAddressCount'] as int,
+      ),
+      firstAddress: pulumi.Input.fromValue(map['firstAddress'] as String),
+      lastAddress: pulumi.Input.fromValue(map['lastAddress'] as String),
     );
   }
 }
-

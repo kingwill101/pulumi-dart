@@ -661,10 +661,13 @@ class LocationTagBinding extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String?> location;
+
   /// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
   late final pulumi.Output<String> name;
+
   /// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   late final pulumi.Output<String> parent;
+
   /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
   late final pulumi.Output<String> tagValue;
 
@@ -677,15 +680,15 @@ class LocationTagBinding extends pulumi.CustomResource {
     LocationTagBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:tags/locationTagBinding:LocationTagBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String?>('location');
+         'gcp:tags/locationTagBinding:LocationTagBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.tagValue = registerOutput<String>('tagValue');
+    parent = registerOutput<String>('parent');
+    tagValue = registerOutput<String>('tagValue');
   }
 
   /// Gets an existing [LocationTagBinding] resource's state with the given [name] and [id].
@@ -706,14 +709,14 @@ class LocationTagBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:tags/locationTagBinding:LocationTagBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String?>('location');
+         'gcp:tags/locationTagBinding:LocationTagBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.tagValue = registerOutput<String>('tagValue');
+    parent = registerOutput<String>('parent');
+    tagValue = registerOutput<String>('tagValue');
   }
 }

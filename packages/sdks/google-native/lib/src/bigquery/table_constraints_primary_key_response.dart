@@ -8,20 +8,15 @@ class TableConstraintsPrimaryKeyResponse {
 
   /// Creates a new [TableConstraintsPrimaryKeyResponse].
   /// [columns] Required.
-  TableConstraintsPrimaryKeyResponse({
-    required this.columns,
-  });
+  TableConstraintsPrimaryKeyResponse({required this.columns});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'columns': columns,
-    };
+    return <String, dynamic>{'columns': columns};
   }
 
   factory TableConstraintsPrimaryKeyResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsPrimaryKeyResponse(
-      columns: ((map['columns'] as List).cast<String>()).input(),
+      columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
     );
   }
 }
-

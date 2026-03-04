@@ -31,10 +31,13 @@ class GetWorkflowWorkflowsV1betaArgs {
 
   factory GetWorkflowWorkflowsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowWorkflowsV1betaArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workflowId: (map['workflowId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
     );
   }
 }
-

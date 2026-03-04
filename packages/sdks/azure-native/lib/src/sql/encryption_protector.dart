@@ -277,24 +277,34 @@ import 'encryption_protector_args.dart';
 class EncryptionProtector extends pulumi.CustomResource {
   /// Key auto rotation opt-in flag. Either true or false.
   late final pulumi.Output<bool?> autoRotationEnabled;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of encryption protector. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The name of the server key.
   late final pulumi.Output<String?> serverKeyName;
+
   /// The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
   late final pulumi.Output<String> serverKeyType;
+
   /// Subregion of the encryption protector.
   late final pulumi.Output<String> subregion;
+
   /// Thumbprint of the server key.
   late final pulumi.Output<String> thumbprint;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The URI of the server key.
   late final pulumi.Output<String> uri;
 
@@ -307,21 +317,21 @@ class EncryptionProtector extends pulumi.CustomResource {
     EncryptionProtectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:EncryptionProtector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:EncryptionProtector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.serverKeyName = registerOutput<String?>('serverKeyName');
-    this.serverKeyType = registerOutput<String>('serverKeyType');
-    this.subregion = registerOutput<String>('subregion');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.type = registerOutput<String>('type');
-    this.uri = registerOutput<String>('uri');
+    serverKeyName = registerOutput<String?>('serverKeyName');
+    serverKeyType = registerOutput<String>('serverKeyType');
+    subregion = registerOutput<String>('subregion');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
   }
 }

@@ -9,20 +9,17 @@ class BgpCidrsConfigurationResponse {
 
   /// Creates a new [BgpCidrsConfigurationResponse].
   /// [bgpCidrs] Mcc cache node Bgp Cidr details.
-  BgpCidrsConfigurationResponse({
-    required this.bgpCidrs,
-  });
+  BgpCidrsConfigurationResponse({required this.bgpCidrs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bgpCidrs': bgpCidrs,
-    };
+    return <String, dynamic>{'bgpCidrs': bgpCidrs};
   }
 
   factory BgpCidrsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BgpCidrsConfigurationResponse(
-      bgpCidrs: ((map['bgpCidrs'] as List).cast<String>()).input(),
+      bgpCidrs: pulumi.Input.fromValue(
+        (map['bgpCidrs'] as List).cast<String>(),
+      ),
     );
   }
 }
-

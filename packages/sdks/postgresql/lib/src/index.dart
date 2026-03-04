@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/database.dart';
 export 'index/database_args.dart';
 export 'index/database_state.dart';

@@ -31,10 +31,15 @@ class GetConversionWorkspaceArgs {
 
   factory GetConversionWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetConversionWorkspaceArgs(
-      conversionWorkspaceId: (map['conversionWorkspaceId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      conversionWorkspaceId: pulumi.Input.fromValue(
+        map['conversionWorkspaceId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

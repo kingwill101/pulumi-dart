@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkAssociationState {
   /// Specifies the Management Group ID within which this Private Link Association should exist. Changing this forces a new Private Link Association to be created.
   ///
-  /// > **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
+  /// &gt; **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
   final pulumi.Input<String>? managementGroupId;
+
   /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignore_changes` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<String>? name;
+
   /// Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<String>? resourceManagementPrivateLinkId;
+
   /// The Tenant ID.
   final pulumi.Input<String>? tenantId;
 
@@ -43,12 +47,31 @@ class PrivateLinkAssociationState {
 
   factory PrivateLinkAssociationState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationState(
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      resourceManagementPrivateLinkId: map['resourceManagementPrivateLinkId'] == null ? null : (map['resourceManagementPrivateLinkId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      managementGroupId: (() {
+        final guardedValue = map['managementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceManagementPrivateLinkId: (() {
+        final guardedValue = map['resourceManagementPrivateLinkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

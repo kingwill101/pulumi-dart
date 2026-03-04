@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceLocation {
   /// Physical address.
   final pulumi.Input<String>? address;
+
   /// Latitude.
   final pulumi.Input<String>? latitude;
+
   /// Longitude.
   final pulumi.Input<String>? longitude;
 
@@ -14,11 +16,7 @@ class DeviceLocation {
   /// [address] Physical address.
   /// [latitude] Latitude.
   /// [longitude] Longitude.
-  DeviceLocation({
-    this.address,
-    this.latitude,
-    this.longitude,
-  });
+  DeviceLocation({this.address, this.latitude, this.longitude});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class DeviceLocation {
 
   factory DeviceLocation.fromMap(Map<String, dynamic> map) {
     return DeviceLocation(
-      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
-      latitude: map['latitude'] == null ? null : ((map['latitude'] as String).input()).input(),
-      longitude: map['longitude'] == null ? null : ((map['longitude'] as String).input()).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latitude: (() {
+        final guardedValue = map['latitude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      longitude: (() {
+        final guardedValue = map['longitude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

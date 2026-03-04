@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission {
   /// Set of AWS Organization ARNs to assign.
   final pulumi.Input<List<String>>? organizationArns;
+
   /// Set of AWS Organizational Unit ARNs to assign.
   final pulumi.Input<List<String>>? organizationalUnitArns;
+
   /// Set of EC2 launch permission user groups to assign. Use `all` to distribute a public AMI.
   final pulumi.Input<List<String>>? userGroups;
+
   /// Set of AWS Account identifiers to assign.
   final pulumi.Input<List<String>>? userIds;
 
@@ -33,13 +36,30 @@ class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPer
     };
   }
 
-  factory DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(Map<String, dynamic> map) {
+  factory DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission(
-      organizationArns: map['organizationArns'] == null ? null : (((map['organizationArns'] as List).cast<String>()).input()).input(),
-      organizationalUnitArns: map['organizationalUnitArns'] == null ? null : (((map['organizationalUnitArns'] as List).cast<String>()).input()).input(),
-      userGroups: map['userGroups'] == null ? null : (((map['userGroups'] as List).cast<String>()).input()).input(),
-      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
+      organizationArns: (() {
+        final guardedValue = map['organizationArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      organizationalUnitArns: (() {
+        final guardedValue = map['organizationalUnitArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userGroups: (() {
+        final guardedValue = map['userGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userIds: (() {
+        final guardedValue = map['userIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -7,16 +7,22 @@ class VMwareCbtContainerMappingInput {
   /// The class type.
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
+
   /// The target key vault ARM Id.
   final pulumi.Input<String>? keyVaultId;
+
   /// The target key vault URL.
   final pulumi.Input<String>? keyVaultUri;
+
   /// The secret name of the service bus connection string.
   final pulumi.Input<String>? serviceBusConnectionStringSecretName;
+
   /// The storage account ARM Id.
   final pulumi.Input<String> storageAccountId;
+
   /// The secret name of the storage account.
   final pulumi.Input<String>? storageAccountSasSecretName;
+
   /// The target location.
   final pulumi.Input<String> targetLocation;
 
@@ -43,7 +49,8 @@ class VMwareCbtContainerMappingInput {
       'instanceType': instanceType,
       'keyVaultId': ?keyVaultId,
       'keyVaultUri': ?keyVaultUri,
-      'serviceBusConnectionStringSecretName': ?serviceBusConnectionStringSecretName,
+      'serviceBusConnectionStringSecretName':
+          ?serviceBusConnectionStringSecretName,
       'storageAccountId': storageAccountId,
       'storageAccountSasSecretName': ?storageAccountSasSecretName,
       'targetLocation': targetLocation,
@@ -52,14 +59,31 @@ class VMwareCbtContainerMappingInput {
 
   factory VMwareCbtContainerMappingInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtContainerMappingInput(
-      instanceType: (map['instanceType'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      serviceBusConnectionStringSecretName: map['serviceBusConnectionStringSecretName'] == null ? null : (map['serviceBusConnectionStringSecretName']! as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName']! as String).input(),
-      targetLocation: (map['targetLocation'] as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBusConnectionStringSecretName: (() {
+        final guardedValue = map['serviceBusConnectionStringSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
+      storageAccountSasSecretName: (() {
+        final guardedValue = map['storageAccountSasSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetLocation: pulumi.Input.fromValue(map['targetLocation'] as String),
     );
   }
 }
-

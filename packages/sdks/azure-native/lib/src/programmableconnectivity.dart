@@ -1,5 +1,3 @@
-library module_programmableconnectivity;
-
 export 'programmableconnectivity/account_type.dart';
 export 'programmableconnectivity/application_properties.dart';
 export 'programmableconnectivity/application_properties_response.dart';

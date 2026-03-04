@@ -7,15 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vpc_get_ipam_ipam_pool_cidrs_get_ipam_ipam_pool_cidrs_args_doc}
 class GetIpamIpamPoolCidrsArgs {
-  /// The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+  /// The CIDR address segment to be preset.&gt; currently, only IPv4 address segments are supported.
   final pulumi.Input<String>? cidr;
+
   /// The ID of the IPAM pool instance.
   final pulumi.Input<String> ipamPoolId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetIpamIpamPoolCidrsArgs].
-  /// [cidr] The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+  /// [cidr] The CIDR address segment to be preset.&gt; currently, only IPv4 address segments are supported.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetIpamIpamPoolCidrsArgs({
@@ -34,10 +36,17 @@ class GetIpamIpamPoolCidrsArgs {
 
   factory GetIpamIpamPoolCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolCidrsArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      ipamPoolId: (map['ipamPoolId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

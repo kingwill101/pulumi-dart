@@ -4,16 +4,17 @@ enum GoogleCloudDataplexV1AssetResourceSpecType {
   storageBucket("STORAGE_BUCKET"),
   bigqueryDataset("BIGQUERY_DATASET");
 
-  const GoogleCloudDataplexV1AssetResourceSpecType(this.value);
-  final String value;
+  const GoogleCloudDataplexV1AssetResourceSpecType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDataplexV1AssetResourceSpecType fromValue(String value) {
     for (final item in GoogleCloudDataplexV1AssetResourceSpecType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1AssetResourceSpecType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1AssetResourceSpecType value: $value',
+    );
   }
 }
-

@@ -12,7 +12,7 @@ import 'application_api_access_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -212,7 +212,7 @@ import 'application_api_access_state.dart';
 /// ```
 ///
 ///
-/// > **Tip** For managing permissions for an additional API, create another instance of this resource
+/// &gt; **Tip** For managing permissions for an additional API, create another instance of this resource
 ///
 /// *Usage with azuread.Application resource*
 ///
@@ -335,13 +335,16 @@ import 'application_api_access_state.dart';
 class ApplicationApiAccess extends pulumi.CustomResource {
   /// The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiClientId;
+
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// A set of role IDs to be granted to the application, as published by the API.
   late final pulumi.Output<List<String>?> roleIds;
+
   /// A set of scope IDs to be granted to the application, as published by the API.
   ///
-  /// > At least one of `role_ids` or `scope_ids` must be specified.
+  /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
   late final pulumi.Output<List<String>?> scopeIds;
 
   /// Creates a new [ApplicationApiAccess].
@@ -353,15 +356,15 @@ class ApplicationApiAccess extends pulumi.CustomResource {
     ApplicationApiAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationApiAccess:ApplicationApiAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiClientId = registerOutput<String>('apiClientId');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.roleIds = registerOutput<List<String>?>('roleIds');
-    this.scopeIds = registerOutput<List<String>?>('scopeIds');
+         'azuread:index/applicationApiAccess:ApplicationApiAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiClientId = registerOutput<String>('apiClientId');
+    applicationId = registerOutput<String>('applicationId');
+    roleIds = registerOutput<List<String>?>('roleIds');
+    scopeIds = registerOutput<List<String>?>('scopeIds');
   }
 
   /// Gets an existing [ApplicationApiAccess] resource's state with the given [name] and [id].
@@ -382,14 +385,14 @@ class ApplicationApiAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationApiAccess:ApplicationApiAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiClientId = registerOutput<String>('apiClientId');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.roleIds = registerOutput<List<String>?>('roleIds');
-    this.scopeIds = registerOutput<List<String>?>('scopeIds');
+         'azuread:index/applicationApiAccess:ApplicationApiAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiClientId = registerOutput<String>('apiClientId');
+    applicationId = registerOutput<String>('applicationId');
+    roleIds = registerOutput<List<String>?>('roleIds');
+    scopeIds = registerOutput<List<String>?>('scopeIds');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_compound_condition_args.dart';
-import 'alert_compound_condition_component_condition.dart';
 import 'alert_compound_condition_state.dart';
 
 /// Use this resource to create and manage compound alert conditions in New Relic. Compound conditions allow you to combine multiple alert conditions using logical expressions (AND, OR, NOT) to create more sophisticated alerting logic.
@@ -1320,22 +1319,30 @@ import 'alert_compound_condition_state.dart';
 class AlertCompoundCondition extends pulumi.CustomResource {
   /// The New Relic account ID for managing your compound alert conditions. Defaults to the account ID set in your environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// The list of conditions to be combined. Each component condition must be enabled. Must include at least 2. See Component Conditions below for details.
-  late final pulumi.Output<List<AlertCompoundConditionComponentCondition>> componentConditions;
+  late final pulumi.Output<List<Map<String, dynamic>>> componentConditions;
+
   /// Whether or not the compound alert condition is enabled. Defaults to `true`.
   late final pulumi.Output<bool> enabled;
+
   /// How the compound condition will take into account the component conditions' facets during evaluation. Valid values are:
   /// - `FACETS_IGNORED` - (Default) Facets are not taken into consideration when determining when the compound alert condition activates
   /// - `FACETS_MATCH` - The compound alert condition will activate only when shared facets have matching values
   late final pulumi.Output<String> facetMatchingBehavior;
+
   /// The title of the compound alert condition.
   late final pulumi.Output<String> name;
+
   /// The ID of the policy where this alert compound condition should be used.
   late final pulumi.Output<String> policyId;
+
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
+
   /// The duration, in seconds, that the trigger expression must be true before the compound alert condition will activate. Between 30-86400 seconds.
   late final pulumi.Output<int> thresholdDuration;
+
   /// Expression that defines how component condition evaluations are combined. Valid operators are 'AND', 'OR', 'NOT'. For more complex expressions, use parentheses. Use the aliases from `component_conditions` to build expressions like `"A AND B"`, `"A OR B"`, `"(A AND B) OR C"`, or `"A AND (B OR C) AND NOT (D AND E)"`.
   late final pulumi.Output<String> triggerExpression;
 
@@ -1348,20 +1355,22 @@ class AlertCompoundCondition extends pulumi.CustomResource {
     AlertCompoundConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertCompoundCondition:AlertCompoundCondition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.componentConditions = registerOutput<List<AlertCompoundConditionComponentCondition>>('componentConditions');
-    this.enabled = registerOutput<bool>('enabled');
-    this.facetMatchingBehavior = registerOutput<String>('facetMatchingBehavior');
+         'newrelic:index/alertCompoundCondition:AlertCompoundCondition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    componentConditions = registerOutput<List<Map<String, dynamic>>>(
+      'componentConditions',
+    );
+    enabled = registerOutput<bool>('enabled');
+    facetMatchingBehavior = registerOutput<String>('facetMatchingBehavior');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.thresholdDuration = registerOutput<int>('thresholdDuration');
-    this.triggerExpression = registerOutput<String>('triggerExpression');
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    thresholdDuration = registerOutput<int>('thresholdDuration');
+    triggerExpression = registerOutput<String>('triggerExpression');
   }
 
   /// Gets an existing [AlertCompoundCondition] resource's state with the given [name] and [id].
@@ -1382,19 +1391,21 @@ class AlertCompoundCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertCompoundCondition:AlertCompoundCondition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.componentConditions = registerOutput<List<AlertCompoundConditionComponentCondition>>('componentConditions');
-    this.enabled = registerOutput<bool>('enabled');
-    this.facetMatchingBehavior = registerOutput<String>('facetMatchingBehavior');
+         'newrelic:index/alertCompoundCondition:AlertCompoundCondition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    componentConditions = registerOutput<List<Map<String, dynamic>>>(
+      'componentConditions',
+    );
+    enabled = registerOutput<bool>('enabled');
+    facetMatchingBehavior = registerOutput<String>('facetMatchingBehavior');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.thresholdDuration = registerOutput<int>('thresholdDuration');
-    this.triggerExpression = registerOutput<String>('triggerExpression');
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    thresholdDuration = registerOutput<int>('thresholdDuration');
+    triggerExpression = registerOutput<String>('triggerExpression');
   }
 }

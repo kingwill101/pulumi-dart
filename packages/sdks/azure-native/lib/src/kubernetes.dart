@@ -1,5 +1,3 @@
-library module_kubernetes;
-
 export 'kubernetes/aad_profile.dart';
 export 'kubernetes/aad_profile_response.dart';
 export 'kubernetes/agent_error_response.dart';

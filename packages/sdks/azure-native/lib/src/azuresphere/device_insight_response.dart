@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceInsightResponse {
   /// Event description
   final pulumi.Input<String> description;
+
   /// Device ID
   final pulumi.Input<String> deviceId;
+
   /// Event end timestamp
   final pulumi.Input<String> endTimestampUtc;
+
   /// Event category
   final pulumi.Input<String> eventCategory;
+
   /// Event class
   final pulumi.Input<String> eventClass;
+
   /// Event count
   final pulumi.Input<int> eventCount;
+
   /// Event type
   final pulumi.Input<String> eventType;
+
   /// Event start timestamp
   final pulumi.Input<String> startTimestampUtc;
 
@@ -56,15 +63,16 @@ class DeviceInsightResponse {
 
   factory DeviceInsightResponse.fromMap(Map<String, dynamic> map) {
     return DeviceInsightResponse(
-      description: (map['description'] as String).input(),
-      deviceId: (map['deviceId'] as String).input(),
-      endTimestampUtc: (map['endTimestampUtc'] as String).input(),
-      eventCategory: (map['eventCategory'] as String).input(),
-      eventClass: (map['eventClass'] as String).input(),
-      eventCount: (map['eventCount'] as int).input(),
-      eventType: (map['eventType'] as String).input(),
-      startTimestampUtc: (map['startTimestampUtc'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
+      endTimestampUtc: pulumi.Input.fromValue(map['endTimestampUtc'] as String),
+      eventCategory: pulumi.Input.fromValue(map['eventCategory'] as String),
+      eventClass: pulumi.Input.fromValue(map['eventClass'] as String),
+      eventCount: pulumi.Input.fromValue(map['eventCount'] as int),
+      eventType: pulumi.Input.fromValue(map['eventType'] as String),
+      startTimestampUtc: pulumi.Input.fromValue(
+        map['startTimestampUtc'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum SigningKey {
   valueSecondaryKey("secondaryKey"),
   valueManagedIdentity("managedIdentity");
 
-  const SigningKey(this.value);
-  final String value;
+  const SigningKey(this.wireValue);
+  final String wireValue;
 
   static SigningKey fromValue(String value) {
     for (final item in SigningKey.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SigningKey value: $value');
   }
 }
-

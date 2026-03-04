@@ -4,7 +4,7 @@ import 'linked_service_cosmos_db_mongo_api_state.dart';
 
 /// Manages a Linked Service (connection) between a CosmosDB and Azure Data Factory using Mongo API.
 ///
-/// > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+/// &gt; **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
 /// ## Example Usage
 ///
@@ -199,22 +199,31 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to CosmosDB Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The connection string.
   late final pulumi.Output<String?> connectionString;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The name of the database.
   late final pulumi.Output<String?> database;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Whether API server version is 3.2 or higher. Defaults to `false`.
   late final pulumi.Output<bool?> serverVersionIs32OrHigher;
 
@@ -227,21 +236,25 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
     LinkedServiceCosmosDbMongoApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.database = registerOutput<String?>('database');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+         'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String?>('connectionString');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    database = registerOutput<String?>('database');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.serverVersionIs32OrHigher = registerOutput<bool?>('serverVersionIs32OrHigher');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    serverVersionIs32OrHigher = registerOutput<bool?>(
+      'serverVersionIs32OrHigher',
+    );
   }
 
   /// Gets an existing [LinkedServiceCosmosDbMongoApi] resource's state with the given [name] and [id].
@@ -262,20 +275,24 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.database = registerOutput<String?>('database');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+         'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String?>('connectionString');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    database = registerOutput<String?>('database');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.serverVersionIs32OrHigher = registerOutput<bool?>('serverVersionIs32OrHigher');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    serverVersionIs32OrHigher = registerOutput<bool?>(
+      'serverVersionIs32OrHigher',
+    );
   }
 }

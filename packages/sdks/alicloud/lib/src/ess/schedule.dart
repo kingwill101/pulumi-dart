@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schedule_args.dart';
 import 'schedule_state.dart';
 
-/// > **NOTE:** This resource has been deprecated from v1.45.0. New resource `alicloud.ess.ScheduledTask` will replace.
+/// &gt; **NOTE:** This resource has been deprecated from v1.45.0. New resource `alicloud.ess.ScheduledTask` will replace.
 class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   late final pulumi.Output<int?> desiredCapacity;
@@ -27,24 +27,24 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/schedule:Schedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.desiredCapacity = registerOutput<int?>('desiredCapacity');
-    this.launchExpirationTime = registerOutput<int?>('launchExpirationTime');
-    this.launchTime = registerOutput<String?>('launchTime');
-    this.maxValue = registerOutput<int?>('maxValue');
-    this.minValue = registerOutput<int?>('minValue');
-    this.recurrenceEndTime = registerOutput<String>('recurrenceEndTime');
-    this.recurrenceType = registerOutput<String>('recurrenceType');
-    this.recurrenceValue = registerOutput<String>('recurrenceValue');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.scheduledAction = registerOutput<String?>('scheduledAction');
-    this.scheduledTaskName = registerOutput<String?>('scheduledTaskName');
-    this.taskEnabled = registerOutput<bool?>('taskEnabled');
+         'alicloud:ess/schedule:Schedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    desiredCapacity = registerOutput<int?>('desiredCapacity');
+    launchExpirationTime = registerOutput<int?>('launchExpirationTime');
+    launchTime = registerOutput<String?>('launchTime');
+    maxValue = registerOutput<int?>('maxValue');
+    minValue = registerOutput<int?>('minValue');
+    recurrenceEndTime = registerOutput<String>('recurrenceEndTime');
+    recurrenceType = registerOutput<String>('recurrenceType');
+    recurrenceValue = registerOutput<String>('recurrenceValue');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    scheduledAction = registerOutput<String?>('scheduledAction');
+    scheduledTaskName = registerOutput<String?>('scheduledTaskName');
+    taskEnabled = registerOutput<bool?>('taskEnabled');
   }
 
   /// Gets an existing [Schedule] resource's state with the given [name] and [id].
@@ -65,23 +65,23 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/schedule:Schedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.desiredCapacity = registerOutput<int?>('desiredCapacity');
-    this.launchExpirationTime = registerOutput<int?>('launchExpirationTime');
-    this.launchTime = registerOutput<String?>('launchTime');
-    this.maxValue = registerOutput<int?>('maxValue');
-    this.minValue = registerOutput<int?>('minValue');
-    this.recurrenceEndTime = registerOutput<String>('recurrenceEndTime');
-    this.recurrenceType = registerOutput<String>('recurrenceType');
-    this.recurrenceValue = registerOutput<String>('recurrenceValue');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.scheduledAction = registerOutput<String?>('scheduledAction');
-    this.scheduledTaskName = registerOutput<String?>('scheduledTaskName');
-    this.taskEnabled = registerOutput<bool?>('taskEnabled');
+         'alicloud:ess/schedule:Schedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    desiredCapacity = registerOutput<int?>('desiredCapacity');
+    launchExpirationTime = registerOutput<int?>('launchExpirationTime');
+    launchTime = registerOutput<String?>('launchTime');
+    maxValue = registerOutput<int?>('maxValue');
+    minValue = registerOutput<int?>('minValue');
+    recurrenceEndTime = registerOutput<String>('recurrenceEndTime');
+    recurrenceType = registerOutput<String>('recurrenceType');
+    recurrenceValue = registerOutput<String>('recurrenceValue');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    scheduledAction = registerOutput<String?>('scheduledAction');
+    scheduledTaskName = registerOutput<String?>('scheduledTaskName');
+    taskEnabled = registerOutput<bool?>('taskEnabled');
   }
 }

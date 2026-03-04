@@ -7,34 +7,49 @@ import 'vm_uptime.dart';
 class AssessmentProperties {
   /// Storage type selected for this disk.
   final pulumi.Input<String> azureDiskType;
+
   /// AHUB discount on windows virtual machines.
   final pulumi.Input<String> azureHybridUseBenefit;
+
   /// Target Azure location for which the machines should be assessed. These enums are the same as used by Compute API.
   final pulumi.Input<String> azureLocation;
+
   /// Offer code according to which cost estimation is done.
   final pulumi.Input<String> azureOfferCode;
+
   /// Pricing tier for Size evaluation.
   final pulumi.Input<String> azurePricingTier;
+
   /// Storage Redundancy type offered by Azure.
   final pulumi.Input<String> azureStorageRedundancy;
+
   /// List of azure VM families.
   final pulumi.Input<List<String>> azureVmFamilies;
+
   /// Currency to report prices in.
   final pulumi.Input<String> currency;
+
   /// Custom discount percentage to be applied on final costs. Can be in the range [0, 100].
   final pulumi.Input<double> discountPercentage;
+
   /// Percentile of performance data used to recommend Azure size.
   final pulumi.Input<String> percentile;
+
   /// Azure reserved instance.
   final pulumi.Input<String> reservedInstance;
+
   /// Scaling factor used over utilization data to add a performance buffer for new machines to be created in Azure. Min Value = 1.0, Max value = 1.9, Default = 1.3.
   final pulumi.Input<double> scalingFactor;
+
   /// Assessment sizing criterion.
   final pulumi.Input<String> sizingCriterion;
+
   /// User configurable setting that describes the status of the assessment.
   final pulumi.Input<String> stage;
+
   /// Time range of performance data used to recommend a size.
   final pulumi.Input<String> timeRange;
+
   /// Specify the duration for which the VMs are up in the on-premises environment.
   final pulumi.Input<VmUptime> vmUptime;
 
@@ -91,29 +106,45 @@ class AssessmentProperties {
       'sizingCriterion': sizingCriterion,
       'stage': stage,
       'timeRange': timeRange,
-      'vmUptime': pulumi.Input.mapInputValue<VmUptime, Map<String, dynamic>>(vmUptime, (value) => value.toMap()),
+      'vmUptime': pulumi.Input.mapInputValue<VmUptime, Map<String, dynamic>>(
+        vmUptime,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory AssessmentProperties.fromMap(Map<String, dynamic> map) {
     return AssessmentProperties(
-      azureDiskType: (map['azureDiskType'] as String).input(),
-      azureHybridUseBenefit: (map['azureHybridUseBenefit'] as String).input(),
-      azureLocation: (map['azureLocation'] as String).input(),
-      azureOfferCode: (map['azureOfferCode'] as String).input(),
-      azurePricingTier: (map['azurePricingTier'] as String).input(),
-      azureStorageRedundancy: (map['azureStorageRedundancy'] as String).input(),
-      azureVmFamilies: ((map['azureVmFamilies'] as List).cast<String>()).input(),
-      currency: (map['currency'] as String).input(),
-      discountPercentage: (map['discountPercentage'] as double).input(),
-      percentile: (map['percentile'] as String).input(),
-      reservedInstance: (map['reservedInstance'] as String).input(),
-      scalingFactor: (map['scalingFactor'] as double).input(),
-      sizingCriterion: (map['sizingCriterion'] as String).input(),
-      stage: (map['stage'] as String).input(),
-      timeRange: (map['timeRange'] as String).input(),
-      vmUptime: (VmUptime.fromMap((map['vmUptime'] as Map).cast<String, dynamic>())).input(),
+      azureDiskType: pulumi.Input.fromValue(map['azureDiskType'] as String),
+      azureHybridUseBenefit: pulumi.Input.fromValue(
+        map['azureHybridUseBenefit'] as String,
+      ),
+      azureLocation: pulumi.Input.fromValue(map['azureLocation'] as String),
+      azureOfferCode: pulumi.Input.fromValue(map['azureOfferCode'] as String),
+      azurePricingTier: pulumi.Input.fromValue(
+        map['azurePricingTier'] as String,
+      ),
+      azureStorageRedundancy: pulumi.Input.fromValue(
+        map['azureStorageRedundancy'] as String,
+      ),
+      azureVmFamilies: pulumi.Input.fromValue(
+        (map['azureVmFamilies'] as List).cast<String>(),
+      ),
+      currency: pulumi.Input.fromValue(map['currency'] as String),
+      discountPercentage: pulumi.Input.fromValue(
+        map['discountPercentage'] as double,
+      ),
+      percentile: pulumi.Input.fromValue(map['percentile'] as String),
+      reservedInstance: pulumi.Input.fromValue(
+        map['reservedInstance'] as String,
+      ),
+      scalingFactor: pulumi.Input.fromValue(map['scalingFactor'] as double),
+      sizingCriterion: pulumi.Input.fromValue(map['sizingCriterion'] as String),
+      stage: pulumi.Input.fromValue(map['stage'] as String),
+      timeRange: pulumi.Input.fromValue(map['timeRange'] as String),
+      vmUptime: pulumi.Input.fromValue(
+        VmUptime.fromMap((map['vmUptime']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

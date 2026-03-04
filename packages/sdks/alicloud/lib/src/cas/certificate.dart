@@ -6,15 +6,15 @@ import 'certificate_state.dart';
 ///
 /// For information about SSL Certificates Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/product/28533.html).
 ///
-/// > **NOTE:** Available since v1.35.0.
+/// &gt; **NOTE:** Available since v1.35.0.
 ///
-/// > **NOTE:** Deprecated since v1.129.0.
+/// &gt; **NOTE:** Deprecated since v1.129.0.
 ///
-/// > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
+/// &gt; **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
 ///
-/// > **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
+/// &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.129.0`. Please use new resource alicloud_ssl_certificates_service_certificate.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.129.0`. Please use new resource alicloud_ssl_certificates_service_certificate.
 ///
 /// ## Example Usage
 ///
@@ -462,9 +462,11 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> certificateName;
   late final pulumi.Output<String?> encryptCert;
   late final pulumi.Output<String?> encryptPrivateKey;
+
   /// Key of the Certificate in which the Certificate will add.
   late final pulumi.Output<String?> key;
   late final pulumi.Output<String?> lang;
+
   /// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> resourceGroupId;
@@ -481,22 +483,22 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cas/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cert = registerOutput<String?>('cert');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.encryptCert = registerOutput<String?>('encryptCert');
-    this.encryptPrivateKey = registerOutput<String?>('encryptPrivateKey');
-    this.key = registerOutput<String?>('key');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:cas/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cert = registerOutput<String?>('cert');
+    certificateName = registerOutput<String>('certificateName');
+    encryptCert = registerOutput<String?>('encryptCert');
+    encryptPrivateKey = registerOutput<String?>('encryptPrivateKey');
+    key = registerOutput<String?>('key');
+    lang = registerOutput<String?>('lang');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.signCert = registerOutput<String?>('signCert');
-    this.signPrivateKey = registerOutput<String?>('signPrivateKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    signCert = registerOutput<String?>('signCert');
+    signPrivateKey = registerOutput<String?>('signPrivateKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -517,21 +519,21 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cas/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cert = registerOutput<String?>('cert');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.encryptCert = registerOutput<String?>('encryptCert');
-    this.encryptPrivateKey = registerOutput<String?>('encryptPrivateKey');
-    this.key = registerOutput<String?>('key');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:cas/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cert = registerOutput<String?>('cert');
+    certificateName = registerOutput<String>('certificateName');
+    encryptCert = registerOutput<String?>('encryptCert');
+    encryptPrivateKey = registerOutput<String?>('encryptPrivateKey');
+    key = registerOutput<String?>('key');
+    lang = registerOutput<String?>('lang');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.signCert = registerOutput<String?>('signCert');
-    this.signPrivateKey = registerOutput<String?>('signPrivateKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    signCert = registerOutput<String?>('signCert');
+    signPrivateKey = registerOutput<String?>('signPrivateKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

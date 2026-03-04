@@ -7,16 +7,22 @@ import 'migration_eligibility_info_response.dart';
 class ConnectToSourceSqlServerTaskOutputLoginLevelResponse {
   /// The default database for the login.
   final pulumi.Input<String> defaultDatabase;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// The state of the login.
   final pulumi.Input<bool> isEnabled;
+
   /// The type of login.
   final pulumi.Input<String> loginType;
+
   /// Information about eligibility of login for migration.
   final pulumi.Input<MigrationEligibilityInfoResponse> migrationEligibility;
+
   /// Login name.
   final pulumi.Input<String> name;
+
   /// Type of result - database level or task level
   /// Expected value is 'LoginLevelOutput'.
   final pulumi.Input<String> resultType;
@@ -45,22 +51,31 @@ class ConnectToSourceSqlServerTaskOutputLoginLevelResponse {
       'id': id,
       'isEnabled': isEnabled,
       'loginType': loginType,
-      'migrationEligibility': pulumi.Input.mapInputValue<MigrationEligibilityInfoResponse, Map<String, dynamic>>(migrationEligibility, (value) => value.toMap()),
+      'migrationEligibility':
+          pulumi.Input.mapInputValue<
+            MigrationEligibilityInfoResponse,
+            Map<String, dynamic>
+          >(migrationEligibility, (value) => value.toMap()),
       'name': name,
       'resultType': resultType,
     };
   }
 
-  factory ConnectToSourceSqlServerTaskOutputLoginLevelResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToSourceSqlServerTaskOutputLoginLevelResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToSourceSqlServerTaskOutputLoginLevelResponse(
-      defaultDatabase: (map['defaultDatabase'] as String).input(),
-      id: (map['id'] as String).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      loginType: (map['loginType'] as String).input(),
-      migrationEligibility: (MigrationEligibilityInfoResponse.fromMap((map['migrationEligibility'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      resultType: (map['resultType'] as String).input(),
+      defaultDatabase: pulumi.Input.fromValue(map['defaultDatabase'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      loginType: pulumi.Input.fromValue(map['loginType'] as String),
+      migrationEligibility: pulumi.Input.fromValue(
+        MigrationEligibilityInfoResponse.fromMap(
+          (map['migrationEligibility']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resultType: pulumi.Input.fromValue(map['resultType'] as String),
     );
   }
 }
-

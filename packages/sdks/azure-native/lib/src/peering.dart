@@ -1,5 +1,3 @@
-library module_peering;
-
 export 'peering/bgp_session.dart';
 export 'peering/bgp_session_response.dart';
 export 'peering/connection_monitor_test.dart';

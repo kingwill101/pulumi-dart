@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Cluster {
   /// Number of nodes assigned to the elastic cluster.
   final pulumi.Input<int>? clusterSize;
+
   /// Default database name for the elastic cluster.
   final pulumi.Input<String>? defaultDatabaseName;
 
   /// Creates a new [Cluster].
   /// [clusterSize] Number of nodes assigned to the elastic cluster.
   /// [defaultDatabaseName] Default database name for the elastic cluster.
-  Cluster({
-    this.clusterSize,
-    this.defaultDatabaseName,
-  });
+  Cluster({this.clusterSize, this.defaultDatabaseName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class Cluster {
 
   factory Cluster.fromMap(Map<String, dynamic> map) {
     return Cluster(
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      defaultDatabaseName: map['defaultDatabaseName'] == null ? null : (map['defaultDatabaseName']! as String).input(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultDatabaseName: (() {
+        final guardedValue = map['defaultDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

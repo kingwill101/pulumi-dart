@@ -13,16 +13,15 @@ enum MonthOfYear {
   valueNovember("November"),
   valueDecember("December");
 
-  const MonthOfYear(this.value);
-  final String value;
+  const MonthOfYear(this.wireValue);
+  final String wireValue;
 
   static MonthOfYear fromValue(String value) {
     for (final item in MonthOfYear.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonthOfYear value: $value');
   }
 }
-

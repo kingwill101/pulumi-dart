@@ -7,29 +7,35 @@ import 'resource_identity_type.dart';
 class BatchAccountIdentity {
   /// The type of identity used for the Batch account.
   final pulumi.Input<ResourceIdentityType> type;
+
   /// The list of user identities associated with the Batch account.
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [BatchAccountIdentity].
   /// [type] The type of identity used for the Batch account.
   /// [userAssignedIdentities] The list of user identities associated with the Batch account.
-  BatchAccountIdentity({
-    required this.type,
-    this.userAssignedIdentities,
-  });
+  BatchAccountIdentity({required this.type, this.userAssignedIdentities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.mapInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': pulumi.Input.mapInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'userAssignedIdentities': ?userAssignedIdentities,
     };
   }
 
   factory BatchAccountIdentity.fromMap(Map<String, dynamic> map) {
     return BatchAccountIdentity(
-      type: (ResourceIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      type: pulumi.Input.fromValue(
+        ResourceIdentityType.fromValue(map['type']! as String),
+      ),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

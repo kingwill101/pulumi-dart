@@ -6,6 +6,7 @@ import 'db_system_properties_db_home_database_properties_db_backup_config_backup
 class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
   /// If set to true, enables automatic backups on the database.
   final pulumi.Input<bool>? autoBackupEnabled;
+
   /// Possible values:
   /// MONDAY
   /// TUESDAY
@@ -15,6 +16,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
   /// SATURDAY
   /// SUNDAY
   final pulumi.Input<String>? autoFullBackupDay;
+
   /// The window in which the full backup should be performed on the database.
   /// If no value is provided, the default is anytime.
   /// Possible values:
@@ -31,6 +33,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
   /// SLOT_ELEVEN
   /// SLOT_TWELVE
   final pulumi.Input<String>? autoFullBackupWindow;
+
   /// The window in which the incremental backup should be performed on the
   /// database. If no value is provided, the default is anytime except the auto
   /// full backup day.
@@ -48,14 +51,22 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
   /// SLOT_ELEVEN
   /// SLOT_TWELVE
   final pulumi.Input<String>? autoIncrementalBackupWindow;
+
   /// This defines when the backups will be deleted after Database termination.
   /// Possible values:
   /// DELETE_IMMEDIATELY
   /// DELETE_AFTER_RETENTION_PERIOD
   final pulumi.Input<String>? backupDeletionPolicy;
+
   /// Details of the database backup destinations.
   /// Structure is documented below.
-  final pulumi.Input<List<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail>>? backupDestinationDetails;
+  final pulumi.Input<
+    List<
+      DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail
+    >
+  >?
+  backupDestinationDetails;
+
   /// The number of days an automatic backup is retained before being
   /// automatically deleted. This value determines the earliest point in time to
   /// which a database can be restored. Min: 1, Max: 60.
@@ -86,21 +97,73 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
       'autoFullBackupWindow': ?autoFullBackupWindow,
       'autoIncrementalBackupWindow': ?autoIncrementalBackupWindow,
       'backupDeletionPolicy': ?backupDeletionPolicy,
-      'backupDestinationDetails': ?pulumi.Input.mapOptionalInputValue<List<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail>, List<Map<String, dynamic>>>(backupDestinationDetails, (value) => pulumi.Input.encodeList<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backupDestinationDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail
+            >,
+            List<Map<String, dynamic>>
+          >(
+            backupDestinationDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'retentionPeriodDays': ?retentionPeriodDays,
     };
   }
 
-  factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.fromMap(Map<String, dynamic> map) {
+  factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig(
-      autoBackupEnabled: map['autoBackupEnabled'] == null ? null : (map['autoBackupEnabled']! as bool).input(),
-      autoFullBackupDay: map['autoFullBackupDay'] == null ? null : (map['autoFullBackupDay']! as String).input(),
-      autoFullBackupWindow: map['autoFullBackupWindow'] == null ? null : (map['autoFullBackupWindow']! as String).input(),
-      autoIncrementalBackupWindow: map['autoIncrementalBackupWindow'] == null ? null : (map['autoIncrementalBackupWindow']! as String).input(),
-      backupDeletionPolicy: map['backupDeletionPolicy'] == null ? null : (map['backupDeletionPolicy']! as String).input(),
-      backupDestinationDetails: map['backupDestinationDetails'] == null ? null : (pulumi.Input.decodeList<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail>(map['backupDestinationDetails']!, (value) => DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
+      autoBackupEnabled: (() {
+        final guardedValue = map['autoBackupEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoFullBackupDay: (() {
+        final guardedValue = map['autoFullBackupDay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoFullBackupWindow: (() {
+        final guardedValue = map['autoFullBackupWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoIncrementalBackupWindow: (() {
+        final guardedValue = map['autoIncrementalBackupWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupDeletionPolicy: (() {
+        final guardedValue = map['backupDeletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupDestinationDetails: (() {
+        final guardedValue = map['backupDestinationDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail
+          >(
+            guardedValue,
+            (value) =>
+                DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      retentionPeriodDays: (() {
+        final guardedValue = map['retentionPeriodDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

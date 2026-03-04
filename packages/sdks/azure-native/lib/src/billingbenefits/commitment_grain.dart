@@ -4,16 +4,15 @@ enum CommitmentGrain {
   valueHourly("Hourly"),
   valueFullTerm("FullTerm");
 
-  const CommitmentGrain(this.value);
-  final String value;
+  const CommitmentGrain(this.wireValue);
+  final String wireValue;
 
   static CommitmentGrain fromValue(String value) {
     for (final item in CommitmentGrain.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CommitmentGrain value: $value');
   }
 }
-

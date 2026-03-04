@@ -10,18 +10,24 @@ import 'volume_timeouts.dart';
 class VolumeArgs {
   /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
   final pulumi.Input<String>? encryption;
+
   /// The label of the Linode Volume
   final pulumi.Input<String> label;
+
   /// The ID of a Linode Instance where the Volume should be attached.
   final pulumi.Input<int>? linodeId;
+
   /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
   ///
   /// - - -
   final pulumi.Input<String>? region;
+
   /// Size of the Volume in GB.
   final pulumi.Input<int>? size;
+
   /// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
   final pulumi.Input<int>? sourceVolumeId;
+
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final pulumi.Input<List<String>>? tags;
   final pulumi.Input<VolumeTimeouts>? timeouts;
@@ -55,21 +61,54 @@ class VolumeArgs {
       'size': ?size,
       'sourceVolumeId': ?sourceVolumeId,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<VolumeTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      encryption: map['encryption'] == null ? null : (map['encryption']! as String).input(),
-      label: (map['label'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      linodeId: (() {
+        final guardedValue = map['linodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sourceVolumeId: (() {
+        final guardedValue = map['sourceVolumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

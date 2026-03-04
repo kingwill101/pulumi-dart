@@ -14,16 +14,15 @@ enum Region {
   bLR1("blr1"),
   sYD1("syd1");
 
-  const Region(this.value);
-  final String value;
+  const Region(this.wireValue);
+  final String wireValue;
 
   static Region fromValue(String value) {
     for (final item in Region.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Region value: $value');
   }
 }
-

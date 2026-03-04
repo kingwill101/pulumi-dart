@@ -1,5 +1,3 @@
-library module_connectedvmwarevsphere;
-
 export 'connectedvmwarevsphere/cluster.dart';
 export 'connectedvmwarevsphere/cluster_args.dart';
 export 'connectedvmwarevsphere/datastore.dart';

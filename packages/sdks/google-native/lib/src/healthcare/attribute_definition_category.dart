@@ -4,16 +4,15 @@ enum AttributeDefinitionCategory {
   resource("RESOURCE"),
   request("REQUEST");
 
-  const AttributeDefinitionCategory(this.value);
-  final String value;
+  const AttributeDefinitionCategory(this.wireValue);
+  final String wireValue;
 
   static AttributeDefinitionCategory fromValue(String value) {
     for (final item in AttributeDefinitionCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttributeDefinitionCategory value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_securityandcompliance;
-
 export 'securityandcompliance/functions.dart';
 export 'securityandcompliance/get_private_endpoint_connections_adt_apiargs.dart';
 export 'securityandcompliance/get_private_endpoint_connections_adt_apiresult.dart';

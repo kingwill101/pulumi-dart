@@ -44,16 +44,15 @@ enum AzureOfferCode {
   savingsPlan1Year("SavingsPlan1Year"),
   savingsPlan3Year("SavingsPlan3Year");
 
-  const AzureOfferCode(this.value);
-  final String value;
+  const AzureOfferCode(this.wireValue);
+  final String wireValue;
 
   static AzureOfferCode fromValue(String value) {
     for (final item in AzureOfferCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureOfferCode value: $value');
   }
 }
-

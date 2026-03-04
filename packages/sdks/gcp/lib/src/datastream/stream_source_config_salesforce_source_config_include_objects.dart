@@ -6,7 +6,10 @@ import 'stream_source_config_salesforce_source_config_include_objects_object.dar
 class StreamSourceConfigSalesforceSourceConfigIncludeObjects {
   /// Salesforce objects in Salesforce Org.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>> objects;
+  final pulumi.Input<
+    List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>
+  >
+  objects;
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjects].
   /// [objects] Salesforce objects in Salesforce Org.
@@ -16,14 +19,36 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'objects': pulumi.Input.mapInputValue<List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>, List<Map<String, dynamic>>>(objects, (value) => pulumi.Input.encodeList<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'objects':
+          pulumi.Input.mapInputValue<
+            List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>,
+            List<Map<String, dynamic>>
+          >(
+            objects,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigSalesforceSourceConfigIncludeObjects(
-      objects: (pulumi.Input.decodeList<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>(map['objects'], (value) => StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objects: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject
+        >(
+          map['objects']!,
+          (value) =>
+              StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

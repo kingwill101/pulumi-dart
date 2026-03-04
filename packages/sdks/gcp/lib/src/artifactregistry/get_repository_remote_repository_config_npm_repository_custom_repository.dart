@@ -13,15 +13,14 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

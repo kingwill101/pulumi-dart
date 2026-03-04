@@ -3,16 +3,17 @@ enum OperationPreferencesRegionConcurrencyType {
   pARALLEL("PARALLEL"),
   sEQUENTIAL("SEQUENTIAL");
 
-  const OperationPreferencesRegionConcurrencyType(this.value);
-  final String value;
+  const OperationPreferencesRegionConcurrencyType(this.wireValue);
+  final String wireValue;
 
   static OperationPreferencesRegionConcurrencyType fromValue(String value) {
     for (final item in OperationPreferencesRegionConcurrencyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OperationPreferencesRegionConcurrencyType value: $value');
+    throw ArgumentError(
+      'Unknown OperationPreferencesRegionConcurrencyType value: $value',
+    );
   }
 }
-

@@ -4,16 +4,17 @@ enum GatewayLoadBalancerTunnelProtocol {
   valueNative("Native"),
   valueVXLAN("VXLAN");
 
-  const GatewayLoadBalancerTunnelProtocol(this.value);
-  final String value;
+  const GatewayLoadBalancerTunnelProtocol(this.wireValue);
+  final String wireValue;
 
   static GatewayLoadBalancerTunnelProtocol fromValue(String value) {
     for (final item in GatewayLoadBalancerTunnelProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GatewayLoadBalancerTunnelProtocol value: $value');
+    throw ArgumentError(
+      'Unknown GatewayLoadBalancerTunnelProtocol value: $value',
+    );
   }
 }
-

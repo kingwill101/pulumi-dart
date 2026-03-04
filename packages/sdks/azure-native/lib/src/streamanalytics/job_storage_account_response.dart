@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStorageAccountResponse {
   /// The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<String>? accountKey;
+
   /// The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<String>? accountName;
+
   /// Authentication Mode.
   final pulumi.Input<String>? authenticationMode;
 
@@ -31,10 +33,21 @@ class JobStorageAccountResponse {
 
   factory JobStorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authenticationMode: (() {
+        final guardedValue = map['authenticationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

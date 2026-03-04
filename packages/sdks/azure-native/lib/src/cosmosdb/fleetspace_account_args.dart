@@ -10,12 +10,19 @@ import 'fleetspace_account_properties_global_database_account_properties.dart';
 class FleetspaceAccountArgs {
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
   final pulumi.Input<String> fleetName;
+
   /// Cosmos DB fleetspace account name.
   final pulumi.Input<String>? fleetspaceAccountName;
+
   /// Cosmos DB fleetspace name. Needs to be unique under a fleet.
   final pulumi.Input<String> fleetspaceName;
+
   /// Configuration for fleetspace Account in the fleetspace.
-  final pulumi.Input<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties>? globalDatabaseAccountProperties;
+  final pulumi.Input<
+    FleetspaceAccountPropertiesGlobalDatabaseAccountProperties
+  >?
+  globalDatabaseAccountProperties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +45,36 @@ class FleetspaceAccountArgs {
       'fleetName': fleetName,
       'fleetspaceAccountName': ?fleetspaceAccountName,
       'fleetspaceName': fleetspaceName,
-      'globalDatabaseAccountProperties': ?pulumi.Input.mapOptionalInputValue<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties, Map<String, dynamic>>(globalDatabaseAccountProperties, (value) => value.toMap()),
+      'globalDatabaseAccountProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FleetspaceAccountPropertiesGlobalDatabaseAccountProperties,
+            Map<String, dynamic>
+          >(globalDatabaseAccountProperties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory FleetspaceAccountArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountArgs(
-      fleetName: (map['fleetName'] as String).input(),
-      fleetspaceAccountName: map['fleetspaceAccountName'] == null ? null : (map['fleetspaceAccountName']! as String).input(),
-      fleetspaceName: (map['fleetspaceName'] as String).input(),
-      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : (FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      fleetspaceAccountName: (() {
+        final guardedValue = map['fleetspaceAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fleetspaceName: pulumi.Input.fromValue(map['fleetspaceName'] as String),
+      globalDatabaseAccountProperties: (() {
+        final guardedValue = map['globalDatabaseAccountProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

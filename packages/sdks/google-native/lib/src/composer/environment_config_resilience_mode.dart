@@ -3,16 +3,17 @@ enum EnvironmentConfigResilienceMode {
   resilienceModeUnspecified("RESILIENCE_MODE_UNSPECIFIED"),
   highResilience("HIGH_RESILIENCE");
 
-  const EnvironmentConfigResilienceMode(this.value);
-  final String value;
+  const EnvironmentConfigResilienceMode(this.wireValue);
+  final String wireValue;
 
   static EnvironmentConfigResilienceMode fromValue(String value) {
     for (final item in EnvironmentConfigResilienceMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnvironmentConfigResilienceMode value: $value');
+    throw ArgumentError(
+      'Unknown EnvironmentConfigResilienceMode value: $value',
+    );
   }
 }
-

@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dedicated_host_group_args.dart';
 import 'dedicated_host_group_instance_view_response.dart';
 import 'dedicated_host_group_properties_additional_capabilities_response.dart';
-import 'sub_resource_read_only_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
@@ -349,27 +348,41 @@ import 'system_data_response.dart';
 /// ```
 class DedicatedHostGroup extends pulumi.CustomResource {
   /// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
-  late final pulumi.Output<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?> additionalCapabilities;
+  late final pulumi.Output<
+    DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
+  >
+  additionalCapabilities;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A list of references to all dedicated hosts in the dedicated host group.
-  late final pulumi.Output<List<SubResourceReadOnlyResponse>> hosts;
+  late final pulumi.Output<List<Map<String, dynamic>>> hosts;
+
   /// The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
   late final pulumi.Output<DedicatedHostGroupInstanceViewResponse> instanceView;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Number of fault domains that the host group can span.
   late final pulumi.Output<int> platformFaultDomainCount;
+
   /// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
   late final pulumi.Output<bool?> supportAutomaticPlacement;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -382,22 +395,29 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     DedicatedHostGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:DedicatedHostGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?>('additionalCapabilities');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hosts = registerOutput<List<SubResourceReadOnlyResponse>>('hosts');
-    this.instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>('instanceView');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:DedicatedHostGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities =
+        registerOutput<
+          DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
+        >('additionalCapabilities');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hosts = registerOutput<List<Map<String, dynamic>>>('hosts');
+    instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>(
+      'instanceView',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.supportAutomaticPlacement = registerOutput<bool?>('supportAutomaticPlacement');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    supportAutomaticPlacement = registerOutput<bool?>(
+      'supportAutomaticPlacement',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

@@ -7,12 +7,16 @@ import 'get_nb_types_type_region_price.dart';
 class GetNbTypesType {
   /// The unique ID assigned to this Node Balancer Type.
   final pulumi.Input<String> id;
+
   /// The Node Balancer Type's label.
   final pulumi.Input<String> label;
+
   /// Cost in US dollars, broken down into hourly and monthly charges.
   final pulumi.Input<List<GetNbTypesTypePrice>> prices;
+
   /// A list of region-specific prices for this Node Balancer Type.
   final pulumi.Input<List<GetNbTypesTypeRegionPrice>> regionPrices;
+
   /// The monthly outbound transfer amount, in MB.
   final pulumi.Input<int> transfer;
 
@@ -34,20 +38,55 @@ class GetNbTypesType {
     return <String, dynamic>{
       'id': id,
       'label': label,
-      'prices': pulumi.Input.mapInputValue<List<GetNbTypesTypePrice>, List<Map<String, dynamic>>>(prices, (value) => pulumi.Input.encodeList<GetNbTypesTypePrice, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'regionPrices': pulumi.Input.mapInputValue<List<GetNbTypesTypeRegionPrice>, List<Map<String, dynamic>>>(regionPrices, (value) => pulumi.Input.encodeList<GetNbTypesTypeRegionPrice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'prices':
+          pulumi.Input.mapInputValue<
+            List<GetNbTypesTypePrice>,
+            List<Map<String, dynamic>>
+          >(
+            prices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNbTypesTypePrice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'regionPrices':
+          pulumi.Input.mapInputValue<
+            List<GetNbTypesTypeRegionPrice>,
+            List<Map<String, dynamic>>
+          >(
+            regionPrices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNbTypesTypeRegionPrice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'transfer': transfer,
     };
   }
 
   factory GetNbTypesType.fromMap(Map<String, dynamic> map) {
     return GetNbTypesType(
-      id: (map['id'] as String).input(),
-      label: (map['label'] as String).input(),
-      prices: (pulumi.Input.decodeList<GetNbTypesTypePrice>(map['prices'], (value) => GetNbTypesTypePrice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regionPrices: (pulumi.Input.decodeList<GetNbTypesTypeRegionPrice>(map['regionPrices'], (value) => GetNbTypesTypeRegionPrice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transfer: (map['transfer'] as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      prices: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetNbTypesTypePrice>(
+          map['prices']!,
+          (value) => GetNbTypesTypePrice.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      regionPrices: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetNbTypesTypeRegionPrice>(
+          map['regionPrices']!,
+          (value) => GetNbTypesTypeRegionPrice.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      transfer: pulumi.Input.fromValue(map['transfer'] as int),
     );
   }
 }
-

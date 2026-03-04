@@ -6,16 +6,17 @@ enum WorkloadPartnerAssuredworkloadsV1beta1 {
   sovereignControlsBySiaMinsait("SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"),
   sovereignControlsByPsn("SOVEREIGN_CONTROLS_BY_PSN");
 
-  const WorkloadPartnerAssuredworkloadsV1beta1(this.value);
-  final String value;
+  const WorkloadPartnerAssuredworkloadsV1beta1(this.wireValue);
+  final String wireValue;
 
   static WorkloadPartnerAssuredworkloadsV1beta1 fromValue(String value) {
     for (final item in WorkloadPartnerAssuredworkloadsV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WorkloadPartnerAssuredworkloadsV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown WorkloadPartnerAssuredworkloadsV1beta1 value: $value',
+    );
   }
 }
-

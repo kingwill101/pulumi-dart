@@ -7,8 +7,11 @@ import 'temporary_resource_limits_config_response.dart';
 class FrontendResponse {
   /// Replicas is desired number of frontend replicas of the given distributed MQTT broker.
   final pulumi.Input<int> replicas;
+
   /// Defines the limits for resources of the frontend instances of the MQTT broker.
-  final pulumi.Input<TemporaryResourceLimitsConfigResponse>? temporaryResourceLimits;
+  final pulumi.Input<TemporaryResourceLimitsConfigResponse>?
+  temporaryResourceLimits;
+
   /// Number of logical frontend workers per pod.
   final pulumi.Input<int>? workers;
 
@@ -25,17 +28,32 @@ class FrontendResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'replicas': replicas,
-      'temporaryResourceLimits': ?pulumi.Input.mapOptionalInputValue<TemporaryResourceLimitsConfigResponse, Map<String, dynamic>>(temporaryResourceLimits, (value) => value.toMap()),
+      'temporaryResourceLimits':
+          ?pulumi.Input.mapOptionalInputValue<
+            TemporaryResourceLimitsConfigResponse,
+            Map<String, dynamic>
+          >(temporaryResourceLimits, (value) => value.toMap()),
       'workers': ?workers,
     };
   }
 
   factory FrontendResponse.fromMap(Map<String, dynamic> map) {
     return FrontendResponse(
-      replicas: (map['replicas'] as int).input(),
-      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfigResponse.fromMap((map['temporaryResourceLimits']! as Map).cast<String, dynamic>())).input(),
-      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
+      replicas: pulumi.Input.fromValue(map['replicas'] as int),
+      temporaryResourceLimits: (() {
+        final guardedValue = map['temporaryResourceLimits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TemporaryResourceLimitsConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workers: (() {
+        final guardedValue = map['workers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

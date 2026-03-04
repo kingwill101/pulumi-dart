@@ -5,16 +5,15 @@ enum RuleCategory {
   valueUserDefined("UserDefined"),
   valueDependency("Dependency");
 
-  const RuleCategory(this.value);
-  final String value;
+  const RuleCategory(this.wireValue);
+  final String wireValue;
 
   static RuleCategory fromValue(String value) {
     for (final item in RuleCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleCategory value: $value');
   }
 }
-

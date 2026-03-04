@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSeries {
   /// count is the number of occurrences in this series up to the last heartbeat time.
   final pulumi.Input<int> count;
+
   /// lastObservedTime is the time when last Event from the series was seen before last heartbeat.
   final pulumi.Input<String> lastObservedTime;
 
   /// Creates a new [EventSeries].
   /// [count] count is the number of occurrences in this series up to the last heartbeat time.
   /// [lastObservedTime] lastObservedTime is the time when last Event from the series was seen before last heartbeat.
-  EventSeries({
-    required this.count,
-    required this.lastObservedTime,
-  });
+  EventSeries({required this.count, required this.lastObservedTime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,10 @@ class EventSeries {
 
   factory EventSeries.fromMap(Map<String, dynamic> map) {
     return EventSeries(
-      count: (map['count'] as int).input(),
-      lastObservedTime: (map['lastObservedTime'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      lastObservedTime: pulumi.Input.fromValue(
+        map['lastObservedTime'] as String,
+      ),
     );
   }
 }
-

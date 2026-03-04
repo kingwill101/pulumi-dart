@@ -8,20 +8,21 @@ class BatchOperationsJobBucketListBucketsPrefixList {
 
   /// Creates a new [BatchOperationsJobBucketListBucketsPrefixList].
   /// [includedObjectPrefixes] (Optional)
-  BatchOperationsJobBucketListBucketsPrefixList({
-    this.includedObjectPrefixes,
-  });
+  BatchOperationsJobBucketListBucketsPrefixList({this.includedObjectPrefixes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'includedObjectPrefixes': ?includedObjectPrefixes,
-    };
+    return <String, dynamic>{'includedObjectPrefixes': ?includedObjectPrefixes};
   }
 
-  factory BatchOperationsJobBucketListBucketsPrefixList.fromMap(Map<String, dynamic> map) {
+  factory BatchOperationsJobBucketListBucketsPrefixList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BatchOperationsJobBucketListBucketsPrefixList(
-      includedObjectPrefixes: map['includedObjectPrefixes'] == null ? null : ((map['includedObjectPrefixes']! as List).cast<String>()).input(),
+      includedObjectPrefixes: (() {
+        final guardedValue = map['includedObjectPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -10,16 +10,15 @@ enum InstanceTierFileV1beta1 {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const InstanceTierFileV1beta1(this.value);
-  final String value;
+  const InstanceTierFileV1beta1(this.wireValue);
+  final String wireValue;
 
   static InstanceTierFileV1beta1 fromValue(String value) {
     for (final item in InstanceTierFileV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceTierFileV1beta1 value: $value');
   }
 }
-

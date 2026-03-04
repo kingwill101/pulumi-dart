@@ -7,6 +7,7 @@ import 'ospolicy_resource_file_response.dart';
 class OSPolicyResourcePackageResourceRPMResponse {
   /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   final pulumi.Input<bool> pullDeps;
+
   /// An rpm package.
   final pulumi.Input<OSPolicyResourceFileResponse> source;
 
@@ -21,15 +22,24 @@ class OSPolicyResourcePackageResourceRPMResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': pullDeps,
-      'source': pulumi.Input.mapInputValue<OSPolicyResourceFileResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourceFileResponse,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory OSPolicyResourcePackageResourceRPMResponse.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceRPMResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceRPMResponse(
-      pullDeps: (map['pullDeps'] as bool).input(),
-      source: (OSPolicyResourceFileResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      pullDeps: pulumi.Input.fromValue(map['pullDeps'] as bool),
+      source: pulumi.Input.fromValue(
+        OSPolicyResourceFileResponse.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

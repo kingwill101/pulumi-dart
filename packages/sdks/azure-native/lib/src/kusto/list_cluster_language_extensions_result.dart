@@ -10,20 +10,35 @@ class ListClusterLanguageExtensionsResult {
 
   /// Creates a new [ListClusterLanguageExtensionsResult].
   /// [value] The list of language extensions.
-  ListClusterLanguageExtensionsResult({
-    this.value,
-  });
+  ListClusterLanguageExtensionsResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<LanguageExtensionResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          LanguageExtensionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListClusterLanguageExtensionsResult.fromMap(Map<String, dynamic> map) {
+  factory ListClusterLanguageExtensionsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListClusterLanguageExtensionsResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<LanguageExtensionResponse>(map['value']!, (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<LanguageExtensionResponse>(
+          guardedValue,
+          (value) => LanguageExtensionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

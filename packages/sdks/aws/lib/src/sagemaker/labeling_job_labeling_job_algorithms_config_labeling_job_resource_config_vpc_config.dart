@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig {
   /// VPC security group IDs.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// IDs of the subnets in the VPC to which to connect the training job. Fields are documented below.
   final pulumi.Input<List<String>> subnets;
 
@@ -23,11 +24,14 @@ class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig {
     };
   }
 
-  factory LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap(Map<String, dynamic> map) {
+  factory LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig(
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

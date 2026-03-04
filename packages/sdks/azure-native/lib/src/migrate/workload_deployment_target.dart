@@ -4,16 +4,15 @@ enum WorkloadDeploymentTarget {
   valueAzureAppServiceContainer("AzureAppServiceContainer"),
   valueAzureAppServiceNative("AzureAppServiceNative");
 
-  const WorkloadDeploymentTarget(this.value);
-  final String value;
+  const WorkloadDeploymentTarget(this.wireValue);
+  final String wireValue;
 
   static WorkloadDeploymentTarget fromValue(String value) {
     for (final item in WorkloadDeploymentTarget.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadDeploymentTarget value: $value');
   }
 }
-

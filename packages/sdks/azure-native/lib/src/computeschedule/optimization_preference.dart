@@ -4,16 +4,15 @@ enum OptimizationPreference {
   availability("Availability"),
   costAvailabilityBalanced("CostAvailabilityBalanced");
 
-  const OptimizationPreference(this.value);
-  final String value;
+  const OptimizationPreference(this.wireValue);
+  final String wireValue;
 
   static OptimizationPreference fromValue(String value) {
     for (final item in OptimizationPreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OptimizationPreference value: $value');
   }
 }
-

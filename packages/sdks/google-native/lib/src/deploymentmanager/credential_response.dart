@@ -8,8 +8,10 @@ import 'service_account_response.dart';
 class CredentialResponse {
   /// Basic Auth Credential, only used by TypeProvider.
   final pulumi.Input<BasicAuthResponse> basicAuth;
+
   /// Service Account Credential, only used by Deployment.
   final pulumi.Input<ServiceAccountResponse> serviceAccount;
+
   /// Specify to use the project default credential, only supported by Deployment.
   final pulumi.Input<bool> useProjectDefault;
 
@@ -25,18 +27,35 @@ class CredentialResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuth': pulumi.Input.mapInputValue<BasicAuthResponse, Map<String, dynamic>>(basicAuth, (value) => value.toMap()),
-      'serviceAccount': pulumi.Input.mapInputValue<ServiceAccountResponse, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
+      'basicAuth':
+          pulumi.Input.mapInputValue<BasicAuthResponse, Map<String, dynamic>>(
+            basicAuth,
+            (value) => value.toMap(),
+          ),
+      'serviceAccount':
+          pulumi.Input.mapInputValue<
+            ServiceAccountResponse,
+            Map<String, dynamic>
+          >(serviceAccount, (value) => value.toMap()),
       'useProjectDefault': useProjectDefault,
     };
   }
 
   factory CredentialResponse.fromMap(Map<String, dynamic> map) {
     return CredentialResponse(
-      basicAuth: (BasicAuthResponse.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: (ServiceAccountResponse.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      useProjectDefault: (map['useProjectDefault'] as bool).input(),
+      basicAuth: pulumi.Input.fromValue(
+        BasicAuthResponse.fromMap(
+          (map['basicAuth']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      serviceAccount: pulumi.Input.fromValue(
+        ServiceAccountResponse.fromMap(
+          (map['serviceAccount']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      useProjectDefault: pulumi.Input.fromValue(
+        map['useProjectDefault'] as bool,
+      ),
     );
   }
 }
-

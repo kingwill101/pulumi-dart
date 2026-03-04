@@ -7,9 +7,12 @@ import 'google_cloud_aiplatform_v1beta1_explanation_parameters_response.dart';
 /// Specification of Model explanation.
 class GoogleCloudAiplatformV1beta1ExplanationSpecResponse {
   /// Optional. Metadata describing the Model's input and output for explanation.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationMetadataResponse> metadata;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationMetadataResponse>
+  metadata;
+
   /// Parameters that configure explaining of the Model's predictions.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationParametersResponse> parameters;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationParametersResponse>
+  parameters;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ExplanationSpecResponse].
   /// [metadata] Optional. Metadata describing the Model's input and output for explanation.
@@ -21,16 +24,33 @@ class GoogleCloudAiplatformV1beta1ExplanationSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ExplanationMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'parameters': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ExplanationParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'metadata':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1ExplanationMetadataResponse,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1ExplanationParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ExplanationSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ExplanationSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ExplanationSpecResponse(
-      metadata: (GoogleCloudAiplatformV1beta1ExplanationMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      parameters: (GoogleCloudAiplatformV1beta1ExplanationParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      metadata: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1beta1ExplanationMetadataResponse.fromMap(
+          (map['metadata']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parameters: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1beta1ExplanationParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

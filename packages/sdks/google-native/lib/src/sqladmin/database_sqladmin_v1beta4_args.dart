@@ -10,21 +10,29 @@ import 'sql_server_database_details_sqladmin_v1beta4.dart';
 class DatabaseSqladminV1beta4Args {
   /// The Cloud SQL charset value.
   final pulumi.Input<String>? charset;
+
   /// The Cloud SQL collation value.
   final pulumi.Input<String>? collation;
+
   /// This field is deprecated and will be removed from a future version of the API.
   final pulumi.Input<String>? etag;
+
   /// The name of the Cloud SQL instance. This does not include the project ID.
   final pulumi.Input<String> instance;
+
   /// This is always `sql#database`.
   final pulumi.Input<String>? kind;
+
   /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
   final pulumi.Input<String>? name;
+
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   final pulumi.Input<String>? project;
+
   /// The URI of this resource.
   final pulumi.Input<String>? selfLink;
-  final pulumi.Input<SqlServerDatabaseDetailsSqladminV1beta4>? sqlserverDatabaseDetails;
+  final pulumi.Input<SqlServerDatabaseDetailsSqladminV1beta4>?
+  sqlserverDatabaseDetails;
 
   /// Creates a new [DatabaseSqladminV1beta4Args].
   /// [charset] The Cloud SQL charset value.
@@ -58,22 +66,61 @@ class DatabaseSqladminV1beta4Args {
       'name': ?name,
       'project': ?project,
       'selfLink': ?selfLink,
-      'sqlserverDatabaseDetails': ?pulumi.Input.mapOptionalInputValue<SqlServerDatabaseDetailsSqladminV1beta4, Map<String, dynamic>>(sqlserverDatabaseDetails, (value) => value.toMap()),
+      'sqlserverDatabaseDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            SqlServerDatabaseDetailsSqladminV1beta4,
+            Map<String, dynamic>
+          >(sqlserverDatabaseDetails, (value) => value.toMap()),
     };
   }
 
   factory DatabaseSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return DatabaseSqladminV1beta4Args(
-      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
-      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      instance: (map['instance'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      sqlserverDatabaseDetails: map['sqlserverDatabaseDetails'] == null ? null : (SqlServerDatabaseDetailsSqladminV1beta4.fromMap((map['sqlserverDatabaseDetails']! as Map).cast<String, dynamic>())).input(),
+      charset: (() {
+        final guardedValue = map['charset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      collation: (() {
+        final guardedValue = map['collation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlserverDatabaseDetails: (() {
+        final guardedValue = map['sqlserverDatabaseDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SqlServerDatabaseDetailsSqladminV1beta4.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
   /// Absolute value threshold.
   final pulumi.Input<String>? absolute;
+
   /// Percentage threshold.
   final pulumi.Input<int>? percentage;
 
@@ -18,17 +19,23 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'absolute': ?absolute,
-      'percentage': ?percentage,
-    };
+    return <String, dynamic>{'absolute': ?absolute, 'percentage': ?percentage};
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue(
-      absolute: map['absolute'] == null ? null : (map['absolute']! as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      absolute: (() {
+        final guardedValue = map['absolute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,24 @@ class ListJobExecutionEnvSecretsResult {
 
   /// Creates a new [ListJobExecutionEnvSecretsResult].
   /// [value] Collection of resources.
-  ListJobExecutionEnvSecretsResult({
-    required this.value,
-  });
+  ListJobExecutionEnvSecretsResult({required this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(
+        value,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory ListJobExecutionEnvSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListJobExecutionEnvSecretsResult(
-      value: pulumi.Input.decodeList<SecretResponse>(map['value'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<SecretResponse>(
+        map['value']!,
+        (value) =>
+            SecretResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

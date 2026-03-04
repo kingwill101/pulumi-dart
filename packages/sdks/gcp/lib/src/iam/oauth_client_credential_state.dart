@@ -11,25 +11,32 @@ class OauthClientCredentialState {
   /// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? clientSecret;
+
   /// Whether the OauthClientCredential is disabled. You cannot use a
   /// disabled OauthClientCredential.
   final pulumi.Input<bool>? disabled;
+
   /// A user-specified display name of the OauthClientCredential.
   /// Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Immutable. Identifier. The resource name of the OauthClientCredential.
   /// Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   final pulumi.Input<String>? name;
+
   /// Required. The ID to use for the OauthClientCredential, which becomes the
   /// final component of the resource name. This value should be 4-32 characters,
   /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
   /// reserved for use by Google, and may not be specified.
   final pulumi.Input<String>? oauthClientCredentialId;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? oauthclient;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -69,15 +76,46 @@ class OauthClientCredentialState {
 
   factory OauthClientCredentialState.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialState(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      oauthClientCredentialId: map['oauthClientCredentialId'] == null ? null : (map['oauthClientCredentialId']! as String).input(),
-      oauthclient: map['oauthclient'] == null ? null : (map['oauthclient']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthClientCredentialId: (() {
+        final guardedValue = map['oauthClientCredentialId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthclient: (() {
+        final guardedValue = map['oauthclient'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

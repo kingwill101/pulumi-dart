@@ -7,6 +7,7 @@ import 'disk_exclusion_properties_response.dart';
 class ExtendedPropertiesResponse {
   /// Extended Properties for Disk Exclusion.
   final pulumi.Input<DiskExclusionPropertiesResponse>? diskExclusionProperties;
+
   /// Linux VM name
   final pulumi.Input<String>? linuxVmApplicationName;
 
@@ -20,16 +21,31 @@ class ExtendedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskExclusionProperties': ?pulumi.Input.mapOptionalInputValue<DiskExclusionPropertiesResponse, Map<String, dynamic>>(diskExclusionProperties, (value) => value.toMap()),
+      'diskExclusionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskExclusionPropertiesResponse,
+            Map<String, dynamic>
+          >(diskExclusionProperties, (value) => value.toMap()),
       'linuxVmApplicationName': ?linuxVmApplicationName,
     };
   }
 
   factory ExtendedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedPropertiesResponse(
-      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionPropertiesResponse.fromMap((map['diskExclusionProperties']! as Map).cast<String, dynamic>())).input(),
-      linuxVmApplicationName: map['linuxVmApplicationName'] == null ? null : (map['linuxVmApplicationName']! as String).input(),
+      diskExclusionProperties: (() {
+        final guardedValue = map['diskExclusionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskExclusionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linuxVmApplicationName: (() {
+        final guardedValue = map['linuxVmApplicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

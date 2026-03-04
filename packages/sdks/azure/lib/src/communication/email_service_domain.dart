@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_service_domain_args.dart';
 import 'email_service_domain_state.dart';
-import 'email_service_domain_verification_record.dart';
 
 /// Manages an Email Communication Service Domain.
 ///
@@ -182,7 +181,7 @@ import 'email_service_domain_verification_record.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Communication` - 2023-03-31
@@ -197,20 +196,27 @@ import 'email_service_domain_verification_record.dart';
 class EmailServiceDomain extends pulumi.CustomResource {
   /// Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> domainManagement;
+
   /// The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> emailServiceId;
+
   /// P2 sender domain that is displayed to the email recipients [RFC 5322].
   late final pulumi.Output<String> fromSenderDomain;
+
   /// P1 sender domain that is present on the email envelope [RFC 5321].
   late final pulumi.Output<String> mailFromSenderDomain;
+
   /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Email Communication Service.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   late final pulumi.Output<bool?> userEngagementTrackingEnabled;
+
   /// (Optional) An `verification_records` block as defined below.
-  late final pulumi.Output<List<EmailServiceDomainVerificationRecord>> verificationRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>> verificationRecords;
 
   /// Creates a new [EmailServiceDomain].
   /// [name] The Pulumi resource name.
@@ -221,19 +227,23 @@ class EmailServiceDomain extends pulumi.CustomResource {
     EmailServiceDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/emailServiceDomain:EmailServiceDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainManagement = registerOutput<String>('domainManagement');
-    this.emailServiceId = registerOutput<String>('emailServiceId');
-    this.fromSenderDomain = registerOutput<String>('fromSenderDomain');
-    this.mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
+         'azure:communication/emailServiceDomain:EmailServiceDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainManagement = registerOutput<String>('domainManagement');
+    emailServiceId = registerOutput<String>('emailServiceId');
+    fromSenderDomain = registerOutput<String>('fromSenderDomain');
+    mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.userEngagementTrackingEnabled = registerOutput<bool?>('userEngagementTrackingEnabled');
-    this.verificationRecords = registerOutput<List<EmailServiceDomainVerificationRecord>>('verificationRecords');
+    tags = registerOutput<Map<String, String>?>('tags');
+    userEngagementTrackingEnabled = registerOutput<bool?>(
+      'userEngagementTrackingEnabled',
+    );
+    verificationRecords = registerOutput<List<Map<String, dynamic>>>(
+      'verificationRecords',
+    );
   }
 
   /// Gets an existing [EmailServiceDomain] resource's state with the given [name] and [id].
@@ -254,18 +264,22 @@ class EmailServiceDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/emailServiceDomain:EmailServiceDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainManagement = registerOutput<String>('domainManagement');
-    this.emailServiceId = registerOutput<String>('emailServiceId');
-    this.fromSenderDomain = registerOutput<String>('fromSenderDomain');
-    this.mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
+         'azure:communication/emailServiceDomain:EmailServiceDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainManagement = registerOutput<String>('domainManagement');
+    emailServiceId = registerOutput<String>('emailServiceId');
+    fromSenderDomain = registerOutput<String>('fromSenderDomain');
+    mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.userEngagementTrackingEnabled = registerOutput<bool?>('userEngagementTrackingEnabled');
-    this.verificationRecords = registerOutput<List<EmailServiceDomainVerificationRecord>>('verificationRecords');
+    tags = registerOutput<Map<String, String>?>('tags');
+    userEngagementTrackingEnabled = registerOutput<bool?>(
+      'userEngagementTrackingEnabled',
+    );
+    verificationRecords = registerOutput<List<Map<String, dynamic>>>(
+      'verificationRecords',
+    );
   }
 }

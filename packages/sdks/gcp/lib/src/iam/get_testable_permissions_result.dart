@@ -8,8 +8,10 @@ class GetTestablePermissionsResult {
   /// The the support level of this permission for custom roles.
   final String? customSupportLevel;
   final String fullResourceName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of permissions matching the provided input. Structure is defined below.
   final List<GetTestablePermissionsPermission> permissions;
   final List<String>? stages;
@@ -33,19 +35,35 @@ class GetTestablePermissionsResult {
       'customSupportLevel': ?customSupportLevel,
       'fullResourceName': fullResourceName,
       'id': id,
-      'permissions': pulumi.Input.encodeList<GetTestablePermissionsPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions':
+          pulumi.Input.encodeList<
+            GetTestablePermissionsPermission,
+            Map<String, dynamic>
+          >(permissions, (value) => value.toMap()),
       'stages': ?stages,
     };
   }
 
   factory GetTestablePermissionsResult.fromMap(Map<String, dynamic> map) {
     return GetTestablePermissionsResult(
-      customSupportLevel: map['customSupportLevel'] == null ? null : map['customSupportLevel']! as String,
+      customSupportLevel: (() {
+        final guardedValue = map['customSupportLevel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       fullResourceName: map['fullResourceName'] as String,
       id: map['id'] as String,
-      permissions: pulumi.Input.decodeList<GetTestablePermissionsPermission>(map['permissions'], (value) => GetTestablePermissionsPermission.fromMap((value as Map).cast<String, dynamic>())),
-      stages: map['stages'] == null ? null : (map['stages']! as List).cast<String>(),
+      permissions: pulumi.Input.decodeList<GetTestablePermissionsPermission>(
+        map['permissions']!,
+        (value) => GetTestablePermissionsPermission.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      stages: (() {
+        final guardedValue = map['stages'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

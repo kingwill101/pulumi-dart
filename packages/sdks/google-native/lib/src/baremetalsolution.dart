@@ -1,5 +1,3 @@
-library module_baremetalsolution;
-
 export 'baremetalsolution/allowed_client.dart';
 export 'baremetalsolution/allowed_client_mount_permissions.dart';
 export 'baremetalsolution/allowed_client_response.dart';

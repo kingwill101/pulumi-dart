@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterMaintenanceWindowNodeOsNotAllowed {
   /// The end of a time span, formatted as an RFC3339 string.
   final pulumi.Input<String> end;
+
   /// The start of a time span, formatted as an RFC3339 string.
   final pulumi.Input<String> start;
 
@@ -17,17 +18,15 @@ class KubernetesClusterMaintenanceWindowNodeOsNotAllowed {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'start': start};
   }
 
-  factory KubernetesClusterMaintenanceWindowNodeOsNotAllowed.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterMaintenanceWindowNodeOsNotAllowed.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterMaintenanceWindowNodeOsNotAllowed(
-      end: (map['end'] as String).input(),
-      start: (map['start'] as String).input(),
+      end: pulumi.Input.fromValue(map['end'] as String),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

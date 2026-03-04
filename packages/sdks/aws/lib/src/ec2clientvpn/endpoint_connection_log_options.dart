@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConnectionLogOptions {
   /// The name of the CloudWatch Logs log group.
   final pulumi.Input<String>? cloudwatchLogGroup;
+
   /// The name of the CloudWatch Logs log stream to which the connection data is published.
   final pulumi.Input<String>? cloudwatchLogStream;
+
   /// Indicates whether connection logging is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -30,10 +32,17 @@ class EndpointConnectionLogOptions {
 
   factory EndpointConnectionLogOptions.fromMap(Map<String, dynamic> map) {
     return EndpointConnectionLogOptions(
-      cloudwatchLogGroup: map['cloudwatchLogGroup'] == null ? null : ((map['cloudwatchLogGroup'] as String).input()).input(),
-      cloudwatchLogStream: map['cloudwatchLogStream'] == null ? null : ((map['cloudwatchLogStream'] as String).input()).input(),
-      enabled: (map['enabled'] as bool).input(),
+      cloudwatchLogGroup: (() {
+        final guardedValue = map['cloudwatchLogGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudwatchLogStream: (() {
+        final guardedValue = map['cloudwatchLogStream'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

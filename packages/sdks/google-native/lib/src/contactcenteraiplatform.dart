@@ -1,5 +1,3 @@
-library module_contactcenteraiplatform;
-
 export 'contactcenteraiplatform/admin_user.dart';
 export 'contactcenteraiplatform/admin_user_response.dart';
 export 'contactcenteraiplatform/contact_center.dart';

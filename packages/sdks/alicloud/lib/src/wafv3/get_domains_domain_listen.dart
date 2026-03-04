@@ -5,30 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomainListen {
   /// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   final pulumi.Input<String> certId;
+
   /// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   final pulumi.Input<int> cipherSuite;
+
   /// The specific custom encryption suite to add.
   final pulumi.Input<List<String>> customCiphers;
+
   /// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   final pulumi.Input<bool> enableTlsv3;
+
   /// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used).
   final pulumi.Input<bool> exclusiveIp;
+
   /// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
   final pulumi.Input<bool> focusHttps;
+
   /// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   final pulumi.Input<bool> http2Enabled;
+
   /// The listening port of the HTTP protocol.
   final pulumi.Input<List<int>> httpPorts;
+
   /// The listening port of the HTTPS protocol.
   final pulumi.Input<List<int>> httpsPorts;
+
   /// Whether IPv6 is turned on.
   final pulumi.Input<bool> ipv6Enabled;
+
   /// The type of protection resource to use.
   final pulumi.Input<String> protectionResource;
+
   /// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   final pulumi.Input<String> tlsVersion;
+
   /// WAF obtains the real IP address of the client.
   final pulumi.Input<int> xffHeaderMode;
+
   /// Set the list of custom fields used to obtain the client IP address.
   final pulumi.Input<List<String>> xffHeaders;
 
@@ -85,21 +98,28 @@ class GetDomainsDomainListen {
 
   factory GetDomainsDomainListen.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainListen(
-      certId: (map['certId'] as String).input(),
-      cipherSuite: (map['cipherSuite'] as int).input(),
-      customCiphers: ((map['customCiphers'] as List).cast<String>()).input(),
-      enableTlsv3: (map['enableTlsv3'] as bool).input(),
-      exclusiveIp: (map['exclusiveIp'] as bool).input(),
-      focusHttps: (map['focusHttps'] as bool).input(),
-      http2Enabled: (map['http2Enabled'] as bool).input(),
-      httpPorts: ((map['httpPorts'] as List).cast<int>()).input(),
-      httpsPorts: ((map['httpsPorts'] as List).cast<int>()).input(),
-      ipv6Enabled: (map['ipv6Enabled'] as bool).input(),
-      protectionResource: (map['protectionResource'] as String).input(),
-      tlsVersion: (map['tlsVersion'] as String).input(),
-      xffHeaderMode: (map['xffHeaderMode'] as int).input(),
-      xffHeaders: ((map['xffHeaders'] as List).cast<String>()).input(),
+      certId: pulumi.Input.fromValue(map['certId'] as String),
+      cipherSuite: pulumi.Input.fromValue(map['cipherSuite'] as int),
+      customCiphers: pulumi.Input.fromValue(
+        (map['customCiphers'] as List).cast<String>(),
+      ),
+      enableTlsv3: pulumi.Input.fromValue(map['enableTlsv3'] as bool),
+      exclusiveIp: pulumi.Input.fromValue(map['exclusiveIp'] as bool),
+      focusHttps: pulumi.Input.fromValue(map['focusHttps'] as bool),
+      http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
+      httpPorts: pulumi.Input.fromValue((map['httpPorts'] as List).cast<int>()),
+      httpsPorts: pulumi.Input.fromValue(
+        (map['httpsPorts'] as List).cast<int>(),
+      ),
+      ipv6Enabled: pulumi.Input.fromValue(map['ipv6Enabled'] as bool),
+      protectionResource: pulumi.Input.fromValue(
+        map['protectionResource'] as String,
+      ),
+      tlsVersion: pulumi.Input.fromValue(map['tlsVersion'] as String),
+      xffHeaderMode: pulumi.Input.fromValue(map['xffHeaderMode'] as int),
+      xffHeaders: pulumi.Input.fromValue(
+        (map['xffHeaders'] as List).cast<String>(),
+      ),
     );
   }
 }
-

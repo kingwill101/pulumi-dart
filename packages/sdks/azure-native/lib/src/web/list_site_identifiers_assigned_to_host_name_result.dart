@@ -7,6 +7,7 @@ import 'identifier_response.dart';
 class ListSiteIdentifiersAssignedToHostNameResult {
   /// Link to next page of resources.
   final String nextLink;
+
   /// Collection of resources.
   final List<IdentifierResponse> value;
 
@@ -21,15 +22,24 @@ class ListSiteIdentifiersAssignedToHostNameResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<IdentifierResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<IdentifierResponse, Map<String, dynamic>>(
+            value,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory ListSiteIdentifiersAssignedToHostNameResult.fromMap(Map<String, dynamic> map) {
+  factory ListSiteIdentifiersAssignedToHostNameResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListSiteIdentifiersAssignedToHostNameResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<IdentifierResponse>(map['value'], (value) => IdentifierResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<IdentifierResponse>(
+        map['value']!,
+        (value) =>
+            IdentifierResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

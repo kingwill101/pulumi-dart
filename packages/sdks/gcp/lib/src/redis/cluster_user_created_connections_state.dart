@@ -7,12 +7,16 @@ import 'cluster_user_created_connections_cluster_endpoint.dart';
 class ClusterUserCreatedConnectionsState {
   /// A list of cluster endpoints
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterUserCreatedConnectionsClusterEndpoint>>? clusterEndpoints;
+  final pulumi.Input<List<ClusterUserCreatedConnectionsClusterEndpoint>>?
+  clusterEndpoints;
+
   /// The name of the Redis cluster these endpoints should be added to.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The name of the region of the Redis cluster these endpoints should be added to.
   final pulumi.Input<String>? region;
 
@@ -30,7 +34,18 @@ class ClusterUserCreatedConnectionsState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ClusterUserCreatedConnectionsClusterEndpoint>, List<Map<String, dynamic>>>(clusterEndpoints, (value) => pulumi.Input.encodeList<ClusterUserCreatedConnectionsClusterEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clusterEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterUserCreatedConnectionsClusterEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            clusterEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterUserCreatedConnectionsClusterEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'project': ?project,
       'region': ?region,
@@ -39,11 +54,33 @@ class ClusterUserCreatedConnectionsState {
 
   factory ClusterUserCreatedConnectionsState.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsState(
-      clusterEndpoints: map['clusterEndpoints'] == null ? null : (pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(map['clusterEndpoints']!, (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      clusterEndpoints: (() {
+        final guardedValue = map['clusterEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(
+            guardedValue,
+            (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

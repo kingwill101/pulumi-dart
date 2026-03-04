@@ -5,16 +5,17 @@ enum RegionSecurityPolicyTypeComputeBeta {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const RegionSecurityPolicyTypeComputeBeta(this.value);
-  final String value;
+  const RegionSecurityPolicyTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionSecurityPolicyTypeComputeBeta fromValue(String value) {
     for (final item in RegionSecurityPolicyTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSecurityPolicyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionSecurityPolicyTypeComputeBeta value: $value',
+    );
   }
 }
-

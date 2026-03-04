@@ -16,14 +16,24 @@ class ListManagedClusterMonitoringUserCredentialsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeconfigs': pulumi.Input.encodeList<CredentialResultResponse, Map<String, dynamic>>(kubeconfigs, (value) => value.toMap()),
+      'kubeconfigs':
+          pulumi.Input.encodeList<
+            CredentialResultResponse,
+            Map<String, dynamic>
+          >(kubeconfigs, (value) => value.toMap()),
     };
   }
 
-  factory ListManagedClusterMonitoringUserCredentialsResult.fromMap(Map<String, dynamic> map) {
+  factory ListManagedClusterMonitoringUserCredentialsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListManagedClusterMonitoringUserCredentialsResult(
-      kubeconfigs: pulumi.Input.decodeList<CredentialResultResponse>(map['kubeconfigs'], (value) => CredentialResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kubeconfigs: pulumi.Input.decodeList<CredentialResultResponse>(
+        map['kubeconfigs']!,
+        (value) => CredentialResultResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

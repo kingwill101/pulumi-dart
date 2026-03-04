@@ -10,7 +10,7 @@ import 'get_regions_result.dart';
 
 /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 ///
-/// > **NOTE:** Available in 1.196.0+
+/// &gt; **NOTE:** Available in 1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -139,7 +139,7 @@ Future<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters(
 
 /// This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///
@@ -264,7 +264,7 @@ Future<GetDiskReplicaGroupsResult> getDiskReplicaGroups(
 
 /// This data source provides Ebs Disk Replica Pair available to the user.
 ///
-/// > **NOTE:** Available in 1.196.0+
+/// &gt; **NOTE:** Available in 1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -386,7 +386,7 @@ Future<GetDiskReplicaPairsResult> getDiskReplicaPairs(
 
 /// This data source provides the Ebs Regions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///

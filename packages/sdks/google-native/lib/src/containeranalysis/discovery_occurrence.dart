@@ -10,18 +10,25 @@ import 'status.dart';
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
   final pulumi.Input<AnalysisCompleted>? analysisCompleted;
+
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
   final pulumi.Input<List<Status>>? analysisError;
+
   /// The status of discovery for the resource.
   final pulumi.Input<DiscoveryOccurrenceAnalysisStatus>? analysisStatus;
+
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
   final pulumi.Input<Status>? analysisStatusError;
+
   /// Whether the resource is continuously analyzed.
   final pulumi.Input<DiscoveryOccurrenceContinuousAnalysis>? continuousAnalysis;
+
   /// The CPE of the resource being scanned.
   final pulumi.Input<String>? cpe;
+
   /// The last time this resource was scanned.
   final pulumi.Input<String>? lastScanTime;
+
   /// The status of an SBOM generation.
   final pulumi.Input<SBOMStatus>? sbomStatus;
 
@@ -47,28 +54,108 @@ class DiscoveryOccurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analysisCompleted': ?pulumi.Input.mapOptionalInputValue<AnalysisCompleted, Map<String, dynamic>>(analysisCompleted, (value) => value.toMap()),
-      'analysisError': ?pulumi.Input.mapOptionalInputValue<List<Status>, List<Map<String, dynamic>>>(analysisError, (value) => pulumi.Input.encodeList<Status, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'analysisStatus': ?pulumi.Input.mapOptionalInputValue<DiscoveryOccurrenceAnalysisStatus, String>(analysisStatus, (value) => value.value),
-      'analysisStatusError': ?pulumi.Input.mapOptionalInputValue<Status, Map<String, dynamic>>(analysisStatusError, (value) => value.toMap()),
-      'continuousAnalysis': ?pulumi.Input.mapOptionalInputValue<DiscoveryOccurrenceContinuousAnalysis, String>(continuousAnalysis, (value) => value.value),
+      'analysisCompleted':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnalysisCompleted,
+            Map<String, dynamic>
+          >(analysisCompleted, (value) => value.toMap()),
+      'analysisError':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Status>,
+            List<Map<String, dynamic>>
+          >(
+            analysisError,
+            (value) => pulumi.Input.encodeList<Status, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'analysisStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiscoveryOccurrenceAnalysisStatus,
+            String
+          >(analysisStatus, (value) => value.wireValue),
+      'analysisStatusError':
+          ?pulumi.Input.mapOptionalInputValue<Status, Map<String, dynamic>>(
+            analysisStatusError,
+            (value) => value.toMap(),
+          ),
+      'continuousAnalysis':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiscoveryOccurrenceContinuousAnalysis,
+            String
+          >(continuousAnalysis, (value) => value.wireValue),
       'cpe': ?cpe,
       'lastScanTime': ?lastScanTime,
-      'sbomStatus': ?pulumi.Input.mapOptionalInputValue<SBOMStatus, Map<String, dynamic>>(sbomStatus, (value) => value.toMap()),
+      'sbomStatus':
+          ?pulumi.Input.mapOptionalInputValue<SBOMStatus, Map<String, dynamic>>(
+            sbomStatus,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory DiscoveryOccurrence.fromMap(Map<String, dynamic> map) {
     return DiscoveryOccurrence(
-      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompleted.fromMap((map['analysisCompleted']! as Map).cast<String, dynamic>())).input(),
-      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<Status>(map['analysisError']!, (value) => Status.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveryOccurrenceAnalysisStatus.fromValue(map['analysisStatus']! as String)).input(),
-      analysisStatusError: map['analysisStatusError'] == null ? null : (Status.fromMap((map['analysisStatusError']! as Map).cast<String, dynamic>())).input(),
-      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveryOccurrenceContinuousAnalysis.fromValue(map['continuousAnalysis']! as String)).input(),
-      cpe: map['cpe'] == null ? null : (map['cpe']! as String).input(),
-      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime']! as String).input(),
-      sbomStatus: map['sbomStatus'] == null ? null : (SBOMStatus.fromMap((map['sbomStatus']! as Map).cast<String, dynamic>())).input(),
+      analysisCompleted: (() {
+        final guardedValue = map['analysisCompleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnalysisCompleted.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      analysisError: (() {
+        final guardedValue = map['analysisError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Status>(
+            guardedValue,
+            (value) => Status.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      analysisStatus: (() {
+        final guardedValue = map['analysisStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiscoveryOccurrenceAnalysisStatus.fromValue(guardedValue as String),
+        );
+      })(),
+      analysisStatusError: (() {
+        final guardedValue = map['analysisStatusError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Status.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      continuousAnalysis: (() {
+        final guardedValue = map['continuousAnalysis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiscoveryOccurrenceContinuousAnalysis.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      cpe: (() {
+        final guardedValue = map['cpe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastScanTime: (() {
+        final guardedValue = map['lastScanTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sbomStatus: (() {
+        final guardedValue = map['sbomStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SBOMStatus.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

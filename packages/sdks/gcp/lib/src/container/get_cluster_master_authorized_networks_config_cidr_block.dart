@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterMasterAuthorizedNetworksConfigCidrBlock {
   /// External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
+
   /// Field for users to identify CIDR blocks.
   final pulumi.Input<String> displayName;
 
@@ -23,11 +24,12 @@ class GetClusterMasterAuthorizedNetworksConfigCidrBlock {
     };
   }
 
-  factory GetClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
+  factory GetClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterMasterAuthorizedNetworksConfigCidrBlock(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

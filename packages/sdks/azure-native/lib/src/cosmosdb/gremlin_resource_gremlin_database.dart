@@ -176,14 +176,20 @@ import 'gremlin_resource_gremlin_database_args.dart';
 class GremlinResourceGremlinDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
+
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<GremlinDatabaseGetPropertiesResponseOptions?> options;
-  late final pulumi.Output<GremlinDatabaseGetPropertiesResponseResource?> resource;
+  late final pulumi.Output<GremlinDatabaseGetPropertiesResponseOptions?>
+  options;
+  late final pulumi.Output<GremlinDatabaseGetPropertiesResponseResource?>
+  resource;
+
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -196,17 +202,21 @@ class GremlinResourceGremlinDatabase extends pulumi.CustomResource {
     GremlinResourceGremlinDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:GremlinResourceGremlinDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:cosmosdb:GremlinResourceGremlinDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<GremlinDatabaseGetPropertiesResponseOptions?>('options');
-    this.resource = registerOutput<GremlinDatabaseGetPropertiesResponseResource?>('resource');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    this.options = registerOutput<GremlinDatabaseGetPropertiesResponseOptions?>(
+      'options',
+    );
+    resource = registerOutput<GremlinDatabaseGetPropertiesResponseResource?>(
+      'resource',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

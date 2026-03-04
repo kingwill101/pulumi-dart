@@ -31,10 +31,15 @@ class GetManagementServerArgs {
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerArgs(
-      location: (map['location'] as String).input(),
-      managementServerId: (map['managementServerId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      managementServerId: pulumi.Input.fromValue(
+        map['managementServerId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

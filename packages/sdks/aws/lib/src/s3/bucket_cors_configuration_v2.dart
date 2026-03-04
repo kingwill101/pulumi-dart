@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_cors_configuration_v2_args.dart';
-import 'bucket_cors_configuration_v2_cors_rule.dart';
 import 'bucket_cors_configuration_v2_state.dart';
 
 /// Provides an S3 bucket CORS configuration resource. For more information about CORS, go to [Enabling Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html) in the Amazon S3 User Guide.
 ///
-/// > **NOTE:** S3 Buckets only support a single CORS configuration. Declaring multiple `aws.s3.BucketCorsConfiguration` resources to the same S3 Bucket will cause a perpetual difference in configuration.
+/// &gt; **NOTE:** S3 Buckets only support a single CORS configuration. Declaring multiple `aws.s3.BucketCorsConfiguration` resources to the same S3 Bucket will cause a perpetual difference in configuration.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -279,10 +278,13 @@ import 'bucket_cors_configuration_v2_state.dart';
 class BucketCorsConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
-  late final pulumi.Output<List<BucketCorsConfigurationV2CorsRule>> corsRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -295,15 +297,15 @@ class BucketCorsConfigurationV2 extends pulumi.CustomResource {
     BucketCorsConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BucketCorsConfigurationV2] resource's state with the given [name] and [id].
@@ -324,14 +326,14 @@ class BucketCorsConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
   }
 }

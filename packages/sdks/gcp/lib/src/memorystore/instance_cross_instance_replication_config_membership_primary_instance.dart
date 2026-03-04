@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
   /// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
   final pulumi.Input<String>? instance;
+
   /// (Output)
   /// The unique id of the primary instance.
   final pulumi.Input<String>? uid;
@@ -18,17 +19,23 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instance': ?instance,
-      'uid': ?uid,
-    };
+    return <String, dynamic>{'instance': ?instance, 'uid': ?uid};
   }
 
-  factory InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap(Map<String, dynamic> map) {
+  factory InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance(
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_attachment_args.dart';
 import 'disk_attachment_state.dart';
 
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDiskAttachment from version 1.122.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDiskAttachment from version 1.122.0.
 ///
 /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
 ///
@@ -285,8 +285,10 @@ class DiskAttachment extends pulumi.CustomResource {
   late final pulumi.Output<bool?> bootable;
   late final pulumi.Output<bool?> deleteWithInstance;
   late final pulumi.Output<String> device;
+
   /// ID of the Disk to be attached.
   late final pulumi.Output<String> diskId;
+
   /// ID of the Instance to attach to.
   late final pulumi.Output<String> instanceId;
   late final pulumi.Output<String?> keyPairName;
@@ -301,18 +303,18 @@ class DiskAttachment extends pulumi.CustomResource {
     DiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/diskAttachment:DiskAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bootable = registerOutput<bool?>('bootable');
-    this.deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
-    this.device = registerOutput<String>('device');
-    this.diskId = registerOutput<String>('diskId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.password = registerOutput<String?>('password');
+         'alicloud:ecs/diskAttachment:DiskAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bootable = registerOutput<bool?>('bootable');
+    deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
+    device = registerOutput<String>('device');
+    diskId = registerOutput<String>('diskId');
+    instanceId = registerOutput<String>('instanceId');
+    keyPairName = registerOutput<String?>('keyPairName');
+    password = registerOutput<String?>('password');
   }
 
   /// Gets an existing [DiskAttachment] resource's state with the given [name] and [id].
@@ -333,17 +335,17 @@ class DiskAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/diskAttachment:DiskAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bootable = registerOutput<bool?>('bootable');
-    this.deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
-    this.device = registerOutput<String>('device');
-    this.diskId = registerOutput<String>('diskId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.password = registerOutput<String?>('password');
+         'alicloud:ecs/diskAttachment:DiskAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bootable = registerOutput<bool?>('bootable');
+    deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
+    device = registerOutput<String>('device');
+    diskId = registerOutput<String>('diskId');
+    instanceId = registerOutput<String>('instanceId');
+    keyPairName = registerOutput<String?>('keyPairName');
+    password = registerOutput<String?>('password');
   }
 }

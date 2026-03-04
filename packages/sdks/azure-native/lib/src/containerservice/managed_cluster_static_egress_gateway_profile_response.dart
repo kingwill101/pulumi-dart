@@ -9,20 +9,21 @@ class ManagedClusterStaticEgressGatewayProfileResponse {
 
   /// Creates a new [ManagedClusterStaticEgressGatewayProfileResponse].
   /// [enabled] Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
-  ManagedClusterStaticEgressGatewayProfileResponse({
-    this.enabled,
-  });
+  ManagedClusterStaticEgressGatewayProfileResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterStaticEgressGatewayProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterStaticEgressGatewayProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterStaticEgressGatewayProfileResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

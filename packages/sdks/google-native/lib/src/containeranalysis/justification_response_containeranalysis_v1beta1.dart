@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JustificationResponseContaineranalysisV1beta1 {
   /// Additional details on why this justification was chosen.
   final pulumi.Input<String> details;
+
   /// The justification type for this vulnerability.
   final pulumi.Input<String> justificationType;
 
@@ -24,11 +25,14 @@ class JustificationResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory JustificationResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory JustificationResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JustificationResponseContaineranalysisV1beta1(
-      details: (map['details'] as String).input(),
-      justificationType: (map['justificationType'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      justificationType: pulumi.Input.fromValue(
+        map['justificationType'] as String,
+      ),
     );
   }
 }
-

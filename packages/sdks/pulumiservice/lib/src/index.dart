@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/access_token.dart';
 export 'index/access_token_args.dart';
 export 'index/agent_pool.dart';

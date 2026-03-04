@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListListEffectiveVirtualNetworkByNetworkGroupArgs {
   /// The name of the network group.
   final pulumi.Input<String> networkGroupName;
+
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   final pulumi.Input<String>? skipToken;
 
@@ -37,13 +40,24 @@ class ListListEffectiveVirtualNetworkByNetworkGroupArgs {
     };
   }
 
-  factory ListListEffectiveVirtualNetworkByNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory ListListEffectiveVirtualNetworkByNetworkGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListListEffectiveVirtualNetworkByNetworkGroupArgs(
-      networkGroupName: (map['networkGroupName'] as String).input(),
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      networkGroupName: pulumi.Input.fromValue(
+        map['networkGroupName'] as String,
+      ),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

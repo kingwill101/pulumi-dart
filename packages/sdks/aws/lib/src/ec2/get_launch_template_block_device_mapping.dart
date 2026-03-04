@@ -24,19 +24,38 @@ class GetLaunchTemplateBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
-      'ebs': pulumi.Input.mapInputValue<List<GetLaunchTemplateBlockDeviceMappingEb>, List<Map<String, dynamic>>>(ebs, (value) => pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebs':
+          pulumi.Input.mapInputValue<
+            List<GetLaunchTemplateBlockDeviceMappingEb>,
+            List<Map<String, dynamic>>
+          >(
+            ebs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLaunchTemplateBlockDeviceMappingEb,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'noDevice': noDevice,
       'virtualName': virtualName,
     };
   }
 
-  factory GetLaunchTemplateBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateBlockDeviceMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateBlockDeviceMapping(
-      deviceName: (map['deviceName'] as String).input(),
-      ebs: (pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs']!, (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      noDevice: (map['noDevice'] as String).input(),
-      virtualName: (map['virtualName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      ebs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(
+          map['ebs']!,
+          (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      noDevice: pulumi.Input.fromValue(map['noDevice'] as String),
+      virtualName: pulumi.Input.fromValue(map['virtualName'] as String),
     );
   }
 }
-

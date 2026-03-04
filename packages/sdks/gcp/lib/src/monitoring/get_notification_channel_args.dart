@@ -9,18 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationChannelArgs {
   /// The display name for this notification channel.
   final pulumi.Input<String>? displayName;
+
   /// Labels (corresponding to the
   /// NotificationChannelDescriptor schema) to filter the notification channels by.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The type of the notification channel.
   ///
   /// - - -
   ///
   /// Other optional fields include:
   final pulumi.Input<String>? type;
+
   /// User-provided key-value labels to filter by.
   final pulumi.Input<Map<String, String>>? userLabels;
 
@@ -50,12 +54,35 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userLabels: (() {
+        final guardedValue = map['userLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

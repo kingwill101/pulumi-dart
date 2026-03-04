@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'schedule_item_response.dart';
 import 'start_stop_managed_instance_schedule_args.dart';
 import 'system_data_response.dart';
 
@@ -425,20 +424,28 @@ import 'system_data_response.dart';
 class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of the schedule.
   late final pulumi.Output<String?> description;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
   late final pulumi.Output<String> nextExecutionTime;
+
   /// Next action to be executed (Start or Stop)
   late final pulumi.Output<String> nextRunAction;
+
   /// Schedule list.
-  late final pulumi.Output<List<ScheduleItemResponse>> scheduleList;
+  late final pulumi.Output<List<Map<String, dynamic>>> scheduleList;
+
   /// System data of the scheduled resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The time zone of the schedule.
   late final pulumi.Output<String?> timeZoneId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -451,19 +458,19 @@ class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     StartStopManagedInstanceScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:StartStopManagedInstanceSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+         'azure-native:sql:StartStopManagedInstanceSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.nextExecutionTime = registerOutput<String>('nextExecutionTime');
-    this.nextRunAction = registerOutput<String>('nextRunAction');
-    this.scheduleList = registerOutput<List<ScheduleItemResponse>>('scheduleList');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeZoneId = registerOutput<String?>('timeZoneId');
-    this.type = registerOutput<String>('type');
+    nextExecutionTime = registerOutput<String>('nextExecutionTime');
+    nextRunAction = registerOutput<String>('nextRunAction');
+    scheduleList = registerOutput<List<Map<String, dynamic>>>('scheduleList');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeZoneId = registerOutput<String?>('timeZoneId');
+    type = registerOutput<String>('type');
   }
 }

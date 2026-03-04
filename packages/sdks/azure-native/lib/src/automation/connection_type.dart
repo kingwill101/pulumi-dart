@@ -249,18 +249,26 @@ import 'field_definition_response.dart';
 class ConnectionType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Gets the field definitions of the connection type.
-  late final pulumi.Output<Map<String, FieldDefinitionResponse>> fieldDefinitions;
+  late final pulumi.Output<Map<String, FieldDefinitionResponse>>
+  fieldDefinitions;
+
   /// Gets or sets a Boolean value to indicate if the connection type is global.
   late final pulumi.Output<bool?> isGlobal;
+
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
+
   /// Gets the name of the connection type.
   late final pulumi.Output<String> name;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -273,18 +281,20 @@ class ConnectionType extends pulumi.CustomResource {
     ConnectionTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:ConnectionType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.fieldDefinitions = registerOutput<Map<String, FieldDefinitionResponse>>('fieldDefinitions');
-    this.isGlobal = registerOutput<bool?>('isGlobal');
-    this.lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+         'azure-native:automation:ConnectionType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    fieldDefinitions = registerOutput<Map<String, FieldDefinitionResponse>>(
+      'fieldDefinitions',
+    );
+    isGlobal = registerOutput<bool?>('isGlobal');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

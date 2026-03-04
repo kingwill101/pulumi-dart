@@ -13,15 +13,14 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

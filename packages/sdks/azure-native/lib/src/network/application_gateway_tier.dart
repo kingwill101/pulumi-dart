@@ -6,16 +6,15 @@ enum ApplicationGatewayTier {
   valueWAFV2("WAF_v2"),
   valueBasic("Basic");
 
-  const ApplicationGatewayTier(this.value);
-  final String value;
+  const ApplicationGatewayTier(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayTier fromValue(String value) {
     for (final item in ApplicationGatewayTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationGatewayTier value: $value');
   }
 }
-

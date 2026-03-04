@@ -7,8 +7,10 @@ import 'parent_service_group_properties_response.dart';
 class ServiceGroupPropertiesResponse {
   /// The display name of the serviceGroup. For example, ServiceGroupTest1
   final pulumi.Input<String>? displayName;
+
   /// The details of the parent serviceGroup.
   final pulumi.Input<ParentServiceGroupPropertiesResponse>? parent;
+
   /// The provisioning state of the serviceGroup. For example, Running
   final pulumi.Input<String> provisioningState;
 
@@ -25,17 +27,34 @@ class ServiceGroupPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'parent': ?pulumi.Input.mapOptionalInputValue<ParentServiceGroupPropertiesResponse, Map<String, dynamic>>(parent, (value) => value.toMap()),
+      'parent':
+          ?pulumi.Input.mapOptionalInputValue<
+            ParentServiceGroupPropertiesResponse,
+            Map<String, dynamic>
+          >(parent, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ServiceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceGroupPropertiesResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      parent: map['parent'] == null ? null : (ParentServiceGroupPropertiesResponse.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ParentServiceGroupPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

@@ -7,45 +7,65 @@ import 'extended_location_response.dart';
 class A2AReplicationProtectionClusterDetailsResponse {
   /// The cluster management Id.
   final pulumi.Input<String>? clusterManagementId;
+
   /// The recovery point Id to which the cluster was failed over.
   final pulumi.Input<String>? failoverRecoveryPointId;
+
   /// The initial primary extended location.
   final pulumi.Input<ExtendedLocationResponse>? initialPrimaryExtendedLocation;
+
   /// The initial primary fabric location.
   final pulumi.Input<String>? initialPrimaryFabricLocation;
+
   /// The initial primary availability zone.
   final pulumi.Input<String>? initialPrimaryZone;
+
   /// The initial recovery extended location.
   final pulumi.Input<ExtendedLocationResponse>? initialRecoveryExtendedLocation;
+
   /// The initial recovery fabric location.
   final pulumi.Input<String>? initialRecoveryFabricLocation;
+
   /// The initial recovery availability zone.
   final pulumi.Input<String>? initialRecoveryZone;
+
   /// Gets the Instance type.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
+
   /// The time (in UTC) when the last RPO value was calculated by Protection Service.
   final pulumi.Input<String>? lastRpoCalculatedTime;
+
   /// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
   final pulumi.Input<String>? lifecycleId;
+
   /// Whether Multi VM group is auto created or specified by user.
   final pulumi.Input<String>? multiVmGroupCreateOption;
+
   /// The multi vm group Id.
   final pulumi.Input<String>? multiVmGroupId;
+
   /// The multi vm group name.
   final pulumi.Input<String>? multiVmGroupName;
+
   /// The primary availability zone.
   final pulumi.Input<String>? primaryAvailabilityZone;
+
   /// The primary Extended Location.
   final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+
   /// Primary fabric location.
   final pulumi.Input<String>? primaryFabricLocation;
+
   /// The recovery availability zone.
   final pulumi.Input<String>? recoveryAvailabilityZone;
+
   /// The recovery Extended Location.
   final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+
   /// The recovery fabric location.
   final pulumi.Input<String>? recoveryFabricLocation;
+
   /// The last RPO value in seconds.
   final pulumi.Input<double>? rpoInSeconds;
 
@@ -99,10 +119,18 @@ class A2AReplicationProtectionClusterDetailsResponse {
     return <String, dynamic>{
       'clusterManagementId': ?clusterManagementId,
       'failoverRecoveryPointId': ?failoverRecoveryPointId,
-      'initialPrimaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialPrimaryExtendedLocation, (value) => value.toMap()),
+      'initialPrimaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(initialPrimaryExtendedLocation, (value) => value.toMap()),
       'initialPrimaryFabricLocation': ?initialPrimaryFabricLocation,
       'initialPrimaryZone': ?initialPrimaryZone,
-      'initialRecoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialRecoveryExtendedLocation, (value) => value.toMap()),
+      'initialRecoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(initialRecoveryExtendedLocation, (value) => value.toMap()),
       'initialRecoveryFabricLocation': ?initialRecoveryFabricLocation,
       'initialRecoveryZone': ?initialRecoveryZone,
       'instanceType': instanceType,
@@ -112,39 +140,144 @@ class A2AReplicationProtectionClusterDetailsResponse {
       'multiVmGroupId': ?multiVmGroupId,
       'multiVmGroupName': ?multiVmGroupName,
       'primaryAvailabilityZone': ?primaryAvailabilityZone,
-      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
+      'primaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(primaryExtendedLocation, (value) => value.toMap()),
       'primaryFabricLocation': ?primaryFabricLocation,
       'recoveryAvailabilityZone': ?recoveryAvailabilityZone,
-      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
+      'recoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(recoveryExtendedLocation, (value) => value.toMap()),
       'recoveryFabricLocation': ?recoveryFabricLocation,
       'rpoInSeconds': ?rpoInSeconds,
     };
   }
 
-  factory A2AReplicationProtectionClusterDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory A2AReplicationProtectionClusterDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return A2AReplicationProtectionClusterDetailsResponse(
-      clusterManagementId: map['clusterManagementId'] == null ? null : (map['clusterManagementId']! as String).input(),
-      failoverRecoveryPointId: map['failoverRecoveryPointId'] == null ? null : (map['failoverRecoveryPointId']! as String).input(),
-      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      initialPrimaryFabricLocation: map['initialPrimaryFabricLocation'] == null ? null : (map['initialPrimaryFabricLocation']! as String).input(),
-      initialPrimaryZone: map['initialPrimaryZone'] == null ? null : (map['initialPrimaryZone']! as String).input(),
-      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      initialRecoveryFabricLocation: map['initialRecoveryFabricLocation'] == null ? null : (map['initialRecoveryFabricLocation']! as String).input(),
-      initialRecoveryZone: map['initialRecoveryZone'] == null ? null : (map['initialRecoveryZone']! as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime']! as String).input(),
-      lifecycleId: map['lifecycleId'] == null ? null : (map['lifecycleId']! as String).input(),
-      multiVmGroupCreateOption: map['multiVmGroupCreateOption'] == null ? null : (map['multiVmGroupCreateOption']! as String).input(),
-      multiVmGroupId: map['multiVmGroupId'] == null ? null : (map['multiVmGroupId']! as String).input(),
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName']! as String).input(),
-      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : (map['primaryAvailabilityZone']! as String).input(),
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
-      recoveryAvailabilityZone: map['recoveryAvailabilityZone'] == null ? null : (map['recoveryAvailabilityZone']! as String).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation']! as String).input(),
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds']! as double).input(),
+      clusterManagementId: (() {
+        final guardedValue = map['clusterManagementId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failoverRecoveryPointId: (() {
+        final guardedValue = map['failoverRecoveryPointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialPrimaryExtendedLocation: (() {
+        final guardedValue = map['initialPrimaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initialPrimaryFabricLocation: (() {
+        final guardedValue = map['initialPrimaryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialPrimaryZone: (() {
+        final guardedValue = map['initialPrimaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialRecoveryExtendedLocation: (() {
+        final guardedValue = map['initialRecoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initialRecoveryFabricLocation: (() {
+        final guardedValue = map['initialRecoveryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialRecoveryZone: (() {
+        final guardedValue = map['initialRecoveryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      lastRpoCalculatedTime: (() {
+        final guardedValue = map['lastRpoCalculatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lifecycleId: (() {
+        final guardedValue = map['lifecycleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiVmGroupCreateOption: (() {
+        final guardedValue = map['multiVmGroupCreateOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiVmGroupId: (() {
+        final guardedValue = map['multiVmGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiVmGroupName: (() {
+        final guardedValue = map['multiVmGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryAvailabilityZone: (() {
+        final guardedValue = map['primaryAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryExtendedLocation: (() {
+        final guardedValue = map['primaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primaryFabricLocation: (() {
+        final guardedValue = map['primaryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryAvailabilityZone: (() {
+        final guardedValue = map['recoveryAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryExtendedLocation: (() {
+        final guardedValue = map['recoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recoveryFabricLocation: (() {
+        final guardedValue = map['recoveryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rpoInSeconds: (() {
+        final guardedValue = map['rpoInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

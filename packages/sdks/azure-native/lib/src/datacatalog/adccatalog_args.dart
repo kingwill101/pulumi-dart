@@ -10,22 +10,31 @@ import 'principals.dart';
 class ADCCatalogArgs {
   /// Azure data catalog admin list.
   final pulumi.Input<List<Principals>>? admins;
+
   /// The name of the data catalog in the specified subscription and resource group.
   final pulumi.Input<String>? catalogName;
+
   /// Automatic unit adjustment enabled or not.
   final pulumi.Input<bool>? enableAutomaticUnitAdjustment;
+
   /// Resource location
   final pulumi.Input<String>? location;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure data catalog SKU.
   final pulumi.Input<String>? sku;
+
   /// Azure data catalog provision status.
   final pulumi.Input<bool>? successfullyProvisioned;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Azure data catalog units.
   final pulumi.Input<int>? units;
+
   /// Azure data catalog user list.
   final pulumi.Input<List<Principals>>? users;
 
@@ -55,7 +64,18 @@ class ADCCatalogArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'admins': ?pulumi.Input.mapOptionalInputValue<List<Principals>, List<Map<String, dynamic>>>(admins, (value) => pulumi.Input.encodeList<Principals, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'admins':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Principals>,
+            List<Map<String, dynamic>>
+          >(
+            admins,
+            (value) =>
+                pulumi.Input.encodeList<Principals, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'catalogName': ?catalogName,
       'enableAutomaticUnitAdjustment': ?enableAutomaticUnitAdjustment,
       'location': ?location,
@@ -64,23 +84,85 @@ class ADCCatalogArgs {
       'successfullyProvisioned': ?successfullyProvisioned,
       'tags': ?tags,
       'units': ?units,
-      'users': ?pulumi.Input.mapOptionalInputValue<List<Principals>, List<Map<String, dynamic>>>(users, (value) => pulumi.Input.encodeList<Principals, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'users':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Principals>,
+            List<Map<String, dynamic>>
+          >(
+            users,
+            (value) =>
+                pulumi.Input.encodeList<Principals, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ADCCatalogArgs.fromMap(Map<String, dynamic> map) {
     return ADCCatalogArgs(
-      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<Principals>(map['admins']!, (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      catalogName: map['catalogName'] == null ? null : (map['catalogName']! as String).input(),
-      enableAutomaticUnitAdjustment: map['enableAutomaticUnitAdjustment'] == null ? null : (map['enableAutomaticUnitAdjustment']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      successfullyProvisioned: map['successfullyProvisioned'] == null ? null : (map['successfullyProvisioned']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      units: map['units'] == null ? null : (map['units']! as int).input(),
-      users: map['users'] == null ? null : (pulumi.Input.decodeList<Principals>(map['users']!, (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      admins: (() {
+        final guardedValue = map['admins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Principals>(
+            guardedValue,
+            (value) =>
+                Principals.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      catalogName: (() {
+        final guardedValue = map['catalogName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAutomaticUnitAdjustment: (() {
+        final guardedValue = map['enableAutomaticUnitAdjustment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      successfullyProvisioned: (() {
+        final guardedValue = map['successfullyProvisioned'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      units: (() {
+        final guardedValue = map['units'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      users: (() {
+        final guardedValue = map['users'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Principals>(
+            guardedValue,
+            (value) =>
+                Principals.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

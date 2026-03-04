@@ -1,521 +1,919 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_azuread;
-
-import 'package:pulumi_azuread/index.dart' as _index;
-import 'package:pulumi_azuread/providers.dart' as _providers;
+import 'package:pulumi_azuread/index.dart' as module_index;
+import 'package:pulumi_azuread/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final AccessPackage = _index.AccessPackage.new;
-  final AccessPackageArgs = _index.AccessPackageArgs.new;
-  final AccessPackageAssignmentPolicy = _index.AccessPackageAssignmentPolicy.new;
-  final AccessPackageAssignmentPolicyApprovalSettings = _index.AccessPackageAssignmentPolicyApprovalSettings.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStage = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs = _index.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.new;
-  final AccessPackageAssignmentPolicyApprovalSettingsArgs = _index.AccessPackageAssignmentPolicyApprovalSettings.new;
-  final AccessPackageAssignmentPolicyArgs = _index.AccessPackageAssignmentPolicyArgs.new;
-  final AccessPackageAssignmentPolicyAssignmentReviewSettings = _index.AccessPackageAssignmentPolicyAssignmentReviewSettings.new;
-  final AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs = _index.AccessPackageAssignmentPolicyAssignmentReviewSettings.new;
-  final AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer = _index.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer.new;
-  final AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs = _index.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer.new;
-  final AccessPackageAssignmentPolicyQuestion = _index.AccessPackageAssignmentPolicyQuestion.new;
-  final AccessPackageAssignmentPolicyQuestionArgs = _index.AccessPackageAssignmentPolicyQuestion.new;
-  final AccessPackageAssignmentPolicyQuestionChoice = _index.AccessPackageAssignmentPolicyQuestionChoice.new;
-  final AccessPackageAssignmentPolicyQuestionChoiceArgs = _index.AccessPackageAssignmentPolicyQuestionChoice.new;
-  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValue = _index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.new;
-  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs = _index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.new;
-  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText = _index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.new;
-  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs = _index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.new;
-  final AccessPackageAssignmentPolicyQuestionText = _index.AccessPackageAssignmentPolicyQuestionText.new;
-  final AccessPackageAssignmentPolicyQuestionTextArgs = _index.AccessPackageAssignmentPolicyQuestionText.new;
-  final AccessPackageAssignmentPolicyQuestionTextLocalizedText = _index.AccessPackageAssignmentPolicyQuestionTextLocalizedText.new;
-  final AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs = _index.AccessPackageAssignmentPolicyQuestionTextLocalizedText.new;
-  final AccessPackageAssignmentPolicyRequestorSettings = _index.AccessPackageAssignmentPolicyRequestorSettings.new;
-  final AccessPackageAssignmentPolicyRequestorSettingsArgs = _index.AccessPackageAssignmentPolicyRequestorSettings.new;
-  final AccessPackageAssignmentPolicyRequestorSettingsRequestor = _index.AccessPackageAssignmentPolicyRequestorSettingsRequestor.new;
-  final AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs = _index.AccessPackageAssignmentPolicyRequestorSettingsRequestor.new;
-  final AccessPackageAssignmentPolicyState = _index.AccessPackageAssignmentPolicyState.new;
-  final AccessPackageAssignmentPolicyStateArgs = _index.AccessPackageAssignmentPolicyState.new;
-  final AccessPackageCatalog = _index.AccessPackageCatalog.new;
-  final AccessPackageCatalogArgs = _index.AccessPackageCatalogArgs.new;
-  final AccessPackageCatalogRoleAssignment = _index.AccessPackageCatalogRoleAssignment.new;
-  final AccessPackageCatalogRoleAssignmentArgs = _index.AccessPackageCatalogRoleAssignmentArgs.new;
-  final AccessPackageCatalogRoleAssignmentState = _index.AccessPackageCatalogRoleAssignmentState.new;
-  final AccessPackageCatalogRoleAssignmentStateArgs = _index.AccessPackageCatalogRoleAssignmentState.new;
-  final AccessPackageCatalogState = _index.AccessPackageCatalogState.new;
-  final AccessPackageCatalogStateArgs = _index.AccessPackageCatalogState.new;
-  final AccessPackageResourceCatalogAssociation = _index.AccessPackageResourceCatalogAssociation.new;
-  final AccessPackageResourceCatalogAssociationArgs = _index.AccessPackageResourceCatalogAssociationArgs.new;
-  final AccessPackageResourceCatalogAssociationState = _index.AccessPackageResourceCatalogAssociationState.new;
-  final AccessPackageResourceCatalogAssociationStateArgs = _index.AccessPackageResourceCatalogAssociationState.new;
-  final AccessPackageResourcePackageAssociation = _index.AccessPackageResourcePackageAssociation.new;
-  final AccessPackageResourcePackageAssociationArgs = _index.AccessPackageResourcePackageAssociationArgs.new;
-  final AccessPackageResourcePackageAssociationState = _index.AccessPackageResourcePackageAssociationState.new;
-  final AccessPackageResourcePackageAssociationStateArgs = _index.AccessPackageResourcePackageAssociationState.new;
-  final AccessPackageState = _index.AccessPackageState.new;
-  final AccessPackageStateArgs = _index.AccessPackageState.new;
-  final AdministrativeUnit = _index.AdministrativeUnit.new;
-  final AdministrativeUnitArgs = _index.AdministrativeUnitArgs.new;
-  final AdministrativeUnitMember = _index.AdministrativeUnitMember.new;
-  final AdministrativeUnitMemberArgs = _index.AdministrativeUnitMemberArgs.new;
-  final AdministrativeUnitMemberState = _index.AdministrativeUnitMemberState.new;
-  final AdministrativeUnitMemberStateArgs = _index.AdministrativeUnitMemberState.new;
-  final AdministrativeUnitRoleMember = _index.AdministrativeUnitRoleMember.new;
-  final AdministrativeUnitRoleMemberArgs = _index.AdministrativeUnitRoleMemberArgs.new;
-  final AdministrativeUnitRoleMemberState = _index.AdministrativeUnitRoleMemberState.new;
-  final AdministrativeUnitRoleMemberStateArgs = _index.AdministrativeUnitRoleMemberState.new;
-  final AdministrativeUnitState = _index.AdministrativeUnitState.new;
-  final AdministrativeUnitStateArgs = _index.AdministrativeUnitState.new;
-  final AppRoleAssignment = _index.AppRoleAssignment.new;
-  final AppRoleAssignmentArgs = _index.AppRoleAssignmentArgs.new;
-  final AppRoleAssignmentState = _index.AppRoleAssignmentState.new;
-  final AppRoleAssignmentStateArgs = _index.AppRoleAssignmentState.new;
-  final Application = _index.Application.new;
-  final ApplicationApi = _index.ApplicationApi.new;
-  final ApplicationApiAccess = _index.ApplicationApiAccess.new;
-  final ApplicationApiAccessArgs = _index.ApplicationApiAccessArgs.new;
-  final ApplicationApiAccessState = _index.ApplicationApiAccessState.new;
-  final ApplicationApiAccessStateArgs = _index.ApplicationApiAccessState.new;
-  final ApplicationApiArgs = _index.ApplicationApi.new;
-  final ApplicationApiOauth2PermissionScope = _index.ApplicationApiOauth2PermissionScope.new;
-  final ApplicationApiOauth2PermissionScopeArgs = _index.ApplicationApiOauth2PermissionScope.new;
-  final ApplicationAppRole = _index.ApplicationAppRole.new;
-  final ApplicationAppRoleArgs = _index.ApplicationAppRole.new;
-  final ApplicationAppRoleState = _index.ApplicationAppRoleState.new;
-  final ApplicationAppRoleStateArgs = _index.ApplicationAppRoleState.new;
-  final ApplicationArgs = _index.ApplicationArgs.new;
-  final ApplicationCertificate = _index.ApplicationCertificate.new;
-  final ApplicationCertificateArgs = _index.ApplicationCertificateArgs.new;
-  final ApplicationCertificateState = _index.ApplicationCertificateState.new;
-  final ApplicationCertificateStateArgs = _index.ApplicationCertificateState.new;
-  final ApplicationFallbackPublicClient = _index.ApplicationFallbackPublicClient.new;
-  final ApplicationFallbackPublicClientArgs = _index.ApplicationFallbackPublicClientArgs.new;
-  final ApplicationFallbackPublicClientState = _index.ApplicationFallbackPublicClientState.new;
-  final ApplicationFallbackPublicClientStateArgs = _index.ApplicationFallbackPublicClientState.new;
-  final ApplicationFeatureTag = _index.ApplicationFeatureTag.new;
-  final ApplicationFeatureTagArgs = _index.ApplicationFeatureTag.new;
-  final ApplicationFederatedIdentityCredential = _index.ApplicationFederatedIdentityCredential.new;
-  final ApplicationFederatedIdentityCredentialArgs = _index.ApplicationFederatedIdentityCredentialArgs.new;
-  final ApplicationFederatedIdentityCredentialState = _index.ApplicationFederatedIdentityCredentialState.new;
-  final ApplicationFederatedIdentityCredentialStateArgs = _index.ApplicationFederatedIdentityCredentialState.new;
-  final ApplicationFlexibleFederatedIdentityCredential = _index.ApplicationFlexibleFederatedIdentityCredential.new;
-  final ApplicationFlexibleFederatedIdentityCredentialArgs = _index.ApplicationFlexibleFederatedIdentityCredentialArgs.new;
-  final ApplicationFlexibleFederatedIdentityCredentialState = _index.ApplicationFlexibleFederatedIdentityCredentialState.new;
-  final ApplicationFlexibleFederatedIdentityCredentialStateArgs = _index.ApplicationFlexibleFederatedIdentityCredentialState.new;
-  final ApplicationFromTemplate = _index.ApplicationFromTemplate.new;
-  final ApplicationFromTemplateArgs = _index.ApplicationFromTemplateArgs.new;
-  final ApplicationFromTemplateState = _index.ApplicationFromTemplateState.new;
-  final ApplicationFromTemplateStateArgs = _index.ApplicationFromTemplateState.new;
-  final ApplicationIdentifierUri = _index.ApplicationIdentifierUri.new;
-  final ApplicationIdentifierUriArgs = _index.ApplicationIdentifierUriArgs.new;
-  final ApplicationIdentifierUriState = _index.ApplicationIdentifierUriState.new;
-  final ApplicationIdentifierUriStateArgs = _index.ApplicationIdentifierUriState.new;
-  final ApplicationKnownClients = _index.ApplicationKnownClients.new;
-  final ApplicationKnownClientsArgs = _index.ApplicationKnownClientsArgs.new;
-  final ApplicationKnownClientsState = _index.ApplicationKnownClientsState.new;
-  final ApplicationKnownClientsStateArgs = _index.ApplicationKnownClientsState.new;
-  final ApplicationOptionalClaims = _index.ApplicationOptionalClaims.new;
-  final ApplicationOptionalClaimsAccessToken = _index.ApplicationOptionalClaimsAccessToken.new;
-  final ApplicationOptionalClaimsAccessTokenArgs = _index.ApplicationOptionalClaimsAccessToken.new;
-  final ApplicationOptionalClaimsArgs = _index.ApplicationOptionalClaims.new;
-  final ApplicationOptionalClaimsIdToken = _index.ApplicationOptionalClaimsIdToken.new;
-  final ApplicationOptionalClaimsIdTokenArgs = _index.ApplicationOptionalClaimsIdToken.new;
-  final ApplicationOptionalClaimsSaml2Token = _index.ApplicationOptionalClaimsSaml2Token.new;
-  final ApplicationOptionalClaimsSaml2TokenArgs = _index.ApplicationOptionalClaimsSaml2Token.new;
-  final ApplicationOptionalClaimsState = _index.ApplicationOptionalClaimsState.new;
-  final ApplicationOptionalClaimsStateArgs = _index.ApplicationOptionalClaimsState.new;
-  final ApplicationOwner = _index.ApplicationOwner.new;
-  final ApplicationOwnerArgs = _index.ApplicationOwnerArgs.new;
-  final ApplicationOwnerState = _index.ApplicationOwnerState.new;
-  final ApplicationOwnerStateArgs = _index.ApplicationOwnerState.new;
-  final ApplicationPassword = _index.ApplicationPassword.new;
-  final ApplicationPasswordArgs = _index.ApplicationPassword.new;
-  final ApplicationPasswordState = _index.ApplicationPasswordState.new;
-  final ApplicationPasswordStateArgs = _index.ApplicationPasswordState.new;
-  final ApplicationPermissionScope = _index.ApplicationPermissionScope.new;
-  final ApplicationPermissionScopeArgs = _index.ApplicationPermissionScopeArgs.new;
-  final ApplicationPermissionScopeState = _index.ApplicationPermissionScopeState.new;
-  final ApplicationPermissionScopeStateArgs = _index.ApplicationPermissionScopeState.new;
-  final ApplicationPreAuthorized = _index.ApplicationPreAuthorized.new;
-  final ApplicationPreAuthorizedArgs = _index.ApplicationPreAuthorizedArgs.new;
-  final ApplicationPreAuthorizedState = _index.ApplicationPreAuthorizedState.new;
-  final ApplicationPreAuthorizedStateArgs = _index.ApplicationPreAuthorizedState.new;
-  final ApplicationPublicClient = _index.ApplicationPublicClient.new;
-  final ApplicationPublicClientArgs = _index.ApplicationPublicClient.new;
-  final ApplicationRedirectUris = _index.ApplicationRedirectUris.new;
-  final ApplicationRedirectUrisArgs = _index.ApplicationRedirectUrisArgs.new;
-  final ApplicationRedirectUrisState = _index.ApplicationRedirectUrisState.new;
-  final ApplicationRedirectUrisStateArgs = _index.ApplicationRedirectUrisState.new;
-  final ApplicationRegistration = _index.ApplicationRegistration.new;
-  final ApplicationRegistrationArgs = _index.ApplicationRegistrationArgs.new;
-  final ApplicationRegistrationState = _index.ApplicationRegistrationState.new;
-  final ApplicationRegistrationStateArgs = _index.ApplicationRegistrationState.new;
-  final ApplicationRequiredResourceAccess = _index.ApplicationRequiredResourceAccess.new;
-  final ApplicationRequiredResourceAccessArgs = _index.ApplicationRequiredResourceAccess.new;
-  final ApplicationRequiredResourceAccessResourceAccess = _index.ApplicationRequiredResourceAccessResourceAccess.new;
-  final ApplicationRequiredResourceAccessResourceAccessArgs = _index.ApplicationRequiredResourceAccessResourceAccess.new;
-  final ApplicationSinglePageApplication = _index.ApplicationSinglePageApplication.new;
-  final ApplicationSinglePageApplicationArgs = _index.ApplicationSinglePageApplication.new;
-  final ApplicationState = _index.ApplicationState.new;
-  final ApplicationStateArgs = _index.ApplicationState.new;
-  final ApplicationWeb = _index.ApplicationWeb.new;
-  final ApplicationWebArgs = _index.ApplicationWeb.new;
-  final ApplicationWebImplicitGrant = _index.ApplicationWebImplicitGrant.new;
-  final ApplicationWebImplicitGrantArgs = _index.ApplicationWebImplicitGrant.new;
-  final AuthenticationStrengthPolicy = _index.AuthenticationStrengthPolicy.new;
-  final AuthenticationStrengthPolicyArgs = _index.AuthenticationStrengthPolicyArgs.new;
-  final AuthenticationStrengthPolicyState = _index.AuthenticationStrengthPolicyState.new;
-  final AuthenticationStrengthPolicyStateArgs = _index.AuthenticationStrengthPolicyState.new;
-  final ClaimsMappingPolicy = _index.ClaimsMappingPolicy.new;
-  final ClaimsMappingPolicyArgs = _index.ClaimsMappingPolicyArgs.new;
-  final ClaimsMappingPolicyState = _index.ClaimsMappingPolicyState.new;
-  final ClaimsMappingPolicyStateArgs = _index.ClaimsMappingPolicyState.new;
-  final ConditionalAccessPolicy = _index.ConditionalAccessPolicy.new;
-  final ConditionalAccessPolicyArgs = _index.ConditionalAccessPolicyArgs.new;
-  final ConditionalAccessPolicyConditions = _index.ConditionalAccessPolicyConditions.new;
-  final ConditionalAccessPolicyConditionsApplications = _index.ConditionalAccessPolicyConditionsApplications.new;
-  final ConditionalAccessPolicyConditionsApplicationsArgs = _index.ConditionalAccessPolicyConditionsApplications.new;
-  final ConditionalAccessPolicyConditionsArgs = _index.ConditionalAccessPolicyConditions.new;
-  final ConditionalAccessPolicyConditionsClientApplications = _index.ConditionalAccessPolicyConditionsClientApplications.new;
-  final ConditionalAccessPolicyConditionsClientApplicationsArgs = _index.ConditionalAccessPolicyConditionsClientApplications.new;
-  final ConditionalAccessPolicyConditionsClientApplicationsFilter = _index.ConditionalAccessPolicyConditionsClientApplicationsFilter.new;
-  final ConditionalAccessPolicyConditionsClientApplicationsFilterArgs = _index.ConditionalAccessPolicyConditionsClientApplicationsFilter.new;
-  final ConditionalAccessPolicyConditionsDevices = _index.ConditionalAccessPolicyConditionsDevices.new;
-  final ConditionalAccessPolicyConditionsDevicesArgs = _index.ConditionalAccessPolicyConditionsDevices.new;
-  final ConditionalAccessPolicyConditionsDevicesFilter = _index.ConditionalAccessPolicyConditionsDevicesFilter.new;
-  final ConditionalAccessPolicyConditionsDevicesFilterArgs = _index.ConditionalAccessPolicyConditionsDevicesFilter.new;
-  final ConditionalAccessPolicyConditionsLocations = _index.ConditionalAccessPolicyConditionsLocations.new;
-  final ConditionalAccessPolicyConditionsLocationsArgs = _index.ConditionalAccessPolicyConditionsLocations.new;
-  final ConditionalAccessPolicyConditionsPlatforms = _index.ConditionalAccessPolicyConditionsPlatforms.new;
-  final ConditionalAccessPolicyConditionsPlatformsArgs = _index.ConditionalAccessPolicyConditionsPlatforms.new;
-  final ConditionalAccessPolicyConditionsUsers = _index.ConditionalAccessPolicyConditionsUsers.new;
-  final ConditionalAccessPolicyConditionsUsersArgs = _index.ConditionalAccessPolicyConditionsUsers.new;
-  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser = _index.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.new;
-  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs = _index.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.new;
-  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant = _index.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.new;
-  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs = _index.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.new;
-  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser = _index.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.new;
-  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs = _index.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.new;
-  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant = _index.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.new;
-  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs = _index.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.new;
-  final ConditionalAccessPolicyGrantControls = _index.ConditionalAccessPolicyGrantControls.new;
-  final ConditionalAccessPolicyGrantControlsArgs = _index.ConditionalAccessPolicyGrantControls.new;
-  final ConditionalAccessPolicySessionControls = _index.ConditionalAccessPolicySessionControls.new;
-  final ConditionalAccessPolicySessionControlsArgs = _index.ConditionalAccessPolicySessionControls.new;
-  final ConditionalAccessPolicyState = _index.ConditionalAccessPolicyState.new;
-  final ConditionalAccessPolicyStateArgs = _index.ConditionalAccessPolicyState.new;
-  final CustomDirectoryRole = _index.CustomDirectoryRole.new;
-  final CustomDirectoryRoleArgs = _index.CustomDirectoryRoleArgs.new;
-  final CustomDirectoryRolePermission = _index.CustomDirectoryRolePermission.new;
-  final CustomDirectoryRolePermissionArgs = _index.CustomDirectoryRolePermission.new;
-  final CustomDirectoryRoleState = _index.CustomDirectoryRoleState.new;
-  final CustomDirectoryRoleStateArgs = _index.CustomDirectoryRoleState.new;
-  final DirectoryRole = _index.DirectoryRole.new;
-  final DirectoryRoleArgs = _index.DirectoryRoleArgs.new;
-  final DirectoryRoleAssignment = _index.DirectoryRoleAssignment.new;
-  final DirectoryRoleAssignmentArgs = _index.DirectoryRoleAssignmentArgs.new;
-  final DirectoryRoleAssignmentState = _index.DirectoryRoleAssignmentState.new;
-  final DirectoryRoleAssignmentStateArgs = _index.DirectoryRoleAssignmentState.new;
-  final DirectoryRoleEligibilityScheduleRequest = _index.DirectoryRoleEligibilityScheduleRequest.new;
-  final DirectoryRoleEligibilityScheduleRequestArgs = _index.DirectoryRoleEligibilityScheduleRequestArgs.new;
-  final DirectoryRoleEligibilityScheduleRequestState = _index.DirectoryRoleEligibilityScheduleRequestState.new;
-  final DirectoryRoleEligibilityScheduleRequestStateArgs = _index.DirectoryRoleEligibilityScheduleRequestState.new;
-  final DirectoryRoleMember = _index.DirectoryRoleMember.new;
-  final DirectoryRoleMemberArgs = _index.DirectoryRoleMemberArgs.new;
-  final DirectoryRoleMemberState = _index.DirectoryRoleMemberState.new;
-  final DirectoryRoleMemberStateArgs = _index.DirectoryRoleMemberState.new;
-  final DirectoryRoleState = _index.DirectoryRoleState.new;
-  final DirectoryRoleStateArgs = _index.DirectoryRoleState.new;
-  final GetAccessPackageArgs = _index.GetAccessPackageArgs.new;
-  final GetAccessPackageCatalogArgs = _index.GetAccessPackageCatalogArgs.new;
-  final GetAccessPackageCatalogResult = _index.GetAccessPackageCatalogResult.new;
-  final GetAccessPackageCatalogResultArgs = _index.GetAccessPackageCatalogResult.new;
-  final GetAccessPackageCatalogRoleArgs = _index.GetAccessPackageCatalogRoleArgs.new;
-  final GetAccessPackageCatalogRoleResult = _index.GetAccessPackageCatalogRoleResult.new;
-  final GetAccessPackageCatalogRoleResultArgs = _index.GetAccessPackageCatalogRoleResult.new;
-  final GetAccessPackageResult = _index.GetAccessPackageResult.new;
-  final GetAccessPackageResultArgs = _index.GetAccessPackageResult.new;
-  final GetAdministrativeUnitArgs = _index.GetAdministrativeUnitArgs.new;
-  final GetAdministrativeUnitResult = _index.GetAdministrativeUnitResult.new;
-  final GetAdministrativeUnitResultArgs = _index.GetAdministrativeUnitResult.new;
-  final GetApplicationApi = _index.GetApplicationApi.new;
-  final GetApplicationApiArgs = _index.GetApplicationApi.new;
-  final GetApplicationApiOauth2PermissionScope = _index.GetApplicationApiOauth2PermissionScope.new;
-  final GetApplicationApiOauth2PermissionScopeArgs = _index.GetApplicationApiOauth2PermissionScope.new;
-  final GetApplicationAppRole = _index.GetApplicationAppRole.new;
-  final GetApplicationAppRoleArgs = _index.GetApplicationAppRole.new;
-  final GetApplicationArgs = _index.GetApplicationArgs.new;
-  final GetApplicationFeatureTag = _index.GetApplicationFeatureTag.new;
-  final GetApplicationFeatureTagArgs = _index.GetApplicationFeatureTag.new;
-  final GetApplicationOptionalClaim = _index.GetApplicationOptionalClaim.new;
-  final GetApplicationOptionalClaimAccessToken = _index.GetApplicationOptionalClaimAccessToken.new;
-  final GetApplicationOptionalClaimAccessTokenArgs = _index.GetApplicationOptionalClaimAccessToken.new;
-  final GetApplicationOptionalClaimArgs = _index.GetApplicationOptionalClaim.new;
-  final GetApplicationOptionalClaimIdToken = _index.GetApplicationOptionalClaimIdToken.new;
-  final GetApplicationOptionalClaimIdTokenArgs = _index.GetApplicationOptionalClaimIdToken.new;
-  final GetApplicationOptionalClaimSaml2Token = _index.GetApplicationOptionalClaimSaml2Token.new;
-  final GetApplicationOptionalClaimSaml2TokenArgs = _index.GetApplicationOptionalClaimSaml2Token.new;
-  final GetApplicationPublicClient = _index.GetApplicationPublicClient.new;
-  final GetApplicationPublicClientArgs = _index.GetApplicationPublicClient.new;
-  final GetApplicationPublishedAppIdsResult = _index.GetApplicationPublishedAppIdsResult.new;
-  final GetApplicationPublishedAppIdsResultArgs = _index.GetApplicationPublishedAppIdsResult.new;
-  final GetApplicationRequiredResourceAccess = _index.GetApplicationRequiredResourceAccess.new;
-  final GetApplicationRequiredResourceAccessArgs = _index.GetApplicationRequiredResourceAccess.new;
-  final GetApplicationRequiredResourceAccessResourceAccess = _index.GetApplicationRequiredResourceAccessResourceAccess.new;
-  final GetApplicationRequiredResourceAccessResourceAccessArgs = _index.GetApplicationRequiredResourceAccessResourceAccess.new;
-  final GetApplicationResult = _index.GetApplicationResult.new;
-  final GetApplicationResultArgs = _index.GetApplicationResult.new;
-  final GetApplicationSinglePageApplication = _index.GetApplicationSinglePageApplication.new;
-  final GetApplicationSinglePageApplicationArgs = _index.GetApplicationSinglePageApplication.new;
-  final GetApplicationTemplateArgs = _index.GetApplicationTemplateArgs.new;
-  final GetApplicationTemplateResult = _index.GetApplicationTemplateResult.new;
-  final GetApplicationTemplateResultArgs = _index.GetApplicationTemplateResult.new;
-  final GetApplicationWeb = _index.GetApplicationWeb.new;
-  final GetApplicationWebArgs = _index.GetApplicationWeb.new;
-  final GetApplicationWebImplicitGrant = _index.GetApplicationWebImplicitGrant.new;
-  final GetApplicationWebImplicitGrantArgs = _index.GetApplicationWebImplicitGrant.new;
-  final GetClientConfigResult = _index.GetClientConfigResult.new;
-  final GetClientConfigResultArgs = _index.GetClientConfigResult.new;
-  final GetDirectoryObjectArgs = _index.GetDirectoryObjectArgs.new;
-  final GetDirectoryObjectResult = _index.GetDirectoryObjectResult.new;
-  final GetDirectoryObjectResultArgs = _index.GetDirectoryObjectResult.new;
-  final GetDirectoryRoleTemplatesResult = _index.GetDirectoryRoleTemplatesResult.new;
-  final GetDirectoryRoleTemplatesResultArgs = _index.GetDirectoryRoleTemplatesResult.new;
-  final GetDirectoryRoleTemplatesRoleTemplate = _index.GetDirectoryRoleTemplatesRoleTemplate.new;
-  final GetDirectoryRoleTemplatesRoleTemplateArgs = _index.GetDirectoryRoleTemplatesRoleTemplate.new;
-  final GetDirectoryRolesResult = _index.GetDirectoryRolesResult.new;
-  final GetDirectoryRolesResultArgs = _index.GetDirectoryRolesResult.new;
-  final GetDirectoryRolesRole = _index.GetDirectoryRolesRole.new;
-  final GetDirectoryRolesRoleArgs = _index.GetDirectoryRolesRole.new;
-  final GetDomainsArgs = _index.GetDomainsArgs.new;
-  final GetDomainsDomain = _index.GetDomainsDomain.new;
-  final GetDomainsDomainArgs = _index.GetDomainsDomain.new;
-  final GetDomainsResult = _index.GetDomainsResult.new;
-  final GetDomainsResultArgs = _index.GetDomainsResult.new;
-  final GetGroupArgs = _index.GetGroupArgs.new;
-  final GetGroupDynamicMembership = _index.GetGroupDynamicMembership.new;
-  final GetGroupDynamicMembershipArgs = _index.GetGroupDynamicMembership.new;
-  final GetGroupResult = _index.GetGroupResult.new;
-  final GetGroupResultArgs = _index.GetGroupResult.new;
-  final GetGroupRoleManagementPolicyArgs = _index.GetGroupRoleManagementPolicyArgs.new;
-  final GetGroupRoleManagementPolicyResult = _index.GetGroupRoleManagementPolicyResult.new;
-  final GetGroupRoleManagementPolicyResultArgs = _index.GetGroupRoleManagementPolicyResult.new;
-  final GetGroupsArgs = _index.GetGroupsArgs.new;
-  final GetGroupsResult = _index.GetGroupsResult.new;
-  final GetGroupsResultArgs = _index.GetGroupsResult.new;
-  final GetNamedLocationArgs = _index.GetNamedLocationArgs.new;
-  final GetNamedLocationCountry = _index.GetNamedLocationCountry.new;
-  final GetNamedLocationCountryArgs = _index.GetNamedLocationCountry.new;
-  final GetNamedLocationIp = _index.GetNamedLocationIp.new;
-  final GetNamedLocationIpArgs = _index.GetNamedLocationIp.new;
-  final GetNamedLocationResult = _index.GetNamedLocationResult.new;
-  final GetNamedLocationResultArgs = _index.GetNamedLocationResult.new;
-  final GetServicePrincipalAppRole = _index.GetServicePrincipalAppRole.new;
-  final GetServicePrincipalAppRoleArgs = _index.GetServicePrincipalAppRole.new;
-  final GetServicePrincipalArgs = _index.GetServicePrincipalArgs.new;
-  final GetServicePrincipalFeature = _index.GetServicePrincipalFeature.new;
-  final GetServicePrincipalFeatureArgs = _index.GetServicePrincipalFeature.new;
-  final GetServicePrincipalFeatureTag = _index.GetServicePrincipalFeatureTag.new;
-  final GetServicePrincipalFeatureTagArgs = _index.GetServicePrincipalFeatureTag.new;
-  final GetServicePrincipalOauth2PermissionScope = _index.GetServicePrincipalOauth2PermissionScope.new;
-  final GetServicePrincipalOauth2PermissionScopeArgs = _index.GetServicePrincipalOauth2PermissionScope.new;
-  final GetServicePrincipalResult = _index.GetServicePrincipalResult.new;
-  final GetServicePrincipalResultArgs = _index.GetServicePrincipalResult.new;
-  final GetServicePrincipalSamlSingleSignOn = _index.GetServicePrincipalSamlSingleSignOn.new;
-  final GetServicePrincipalSamlSingleSignOnArgs = _index.GetServicePrincipalSamlSingleSignOn.new;
-  final GetServicePrincipalsArgs = _index.GetServicePrincipalsArgs.new;
-  final GetServicePrincipalsResult = _index.GetServicePrincipalsResult.new;
-  final GetServicePrincipalsResultArgs = _index.GetServicePrincipalsResult.new;
-  final GetServicePrincipalsServicePrincipal = _index.GetServicePrincipalsServicePrincipal.new;
-  final GetServicePrincipalsServicePrincipalArgs = _index.GetServicePrincipalsServicePrincipal.new;
-  final GetUserArgs = _index.GetUserArgs.new;
-  final GetUserResult = _index.GetUserResult.new;
-  final GetUserResultArgs = _index.GetUserResult.new;
-  final GetUsersArgs = _index.GetUsersArgs.new;
-  final GetUsersResult = _index.GetUsersResult.new;
-  final GetUsersResultArgs = _index.GetUsersResult.new;
-  final GetUsersUser = _index.GetUsersUser.new;
-  final GetUsersUserArgs = _index.GetUsersUser.new;
-  final Group = _index.Group.new;
-  final GroupArgs = _index.GroupArgs.new;
-  final GroupDynamicMembership = _index.GroupDynamicMembership.new;
-  final GroupDynamicMembershipArgs = _index.GroupDynamicMembership.new;
-  final GroupMember = _index.GroupMember.new;
-  final GroupMemberArgs = _index.GroupMemberArgs.new;
-  final GroupMemberState = _index.GroupMemberState.new;
-  final GroupMemberStateArgs = _index.GroupMemberState.new;
-  final GroupRoleManagementPolicy = _index.GroupRoleManagementPolicy.new;
-  final GroupRoleManagementPolicyActivationRules = _index.GroupRoleManagementPolicyActivationRules.new;
-  final GroupRoleManagementPolicyActivationRulesApprovalStage = _index.GroupRoleManagementPolicyActivationRulesApprovalStage.new;
-  final GroupRoleManagementPolicyActivationRulesApprovalStageArgs = _index.GroupRoleManagementPolicyActivationRulesApprovalStage.new;
-  final GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover = _index.GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.new;
-  final GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs = _index.GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.new;
-  final GroupRoleManagementPolicyActivationRulesArgs = _index.GroupRoleManagementPolicyActivationRules.new;
-  final GroupRoleManagementPolicyActiveAssignmentRules = _index.GroupRoleManagementPolicyActiveAssignmentRules.new;
-  final GroupRoleManagementPolicyActiveAssignmentRulesArgs = _index.GroupRoleManagementPolicyActiveAssignmentRules.new;
-  final GroupRoleManagementPolicyArgs = _index.GroupRoleManagementPolicyArgs.new;
-  final GroupRoleManagementPolicyEligibleAssignmentRules = _index.GroupRoleManagementPolicyEligibleAssignmentRules.new;
-  final GroupRoleManagementPolicyEligibleAssignmentRulesArgs = _index.GroupRoleManagementPolicyEligibleAssignmentRules.new;
-  final GroupRoleManagementPolicyNotificationRules = _index.GroupRoleManagementPolicyNotificationRules.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignments = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignments.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignments.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesArgs = _index.GroupRoleManagementPolicyNotificationRules.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivations = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivations.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivations.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignments = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignments.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignments.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs = _index.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications.new;
-  final GroupRoleManagementPolicyState = _index.GroupRoleManagementPolicyState.new;
-  final GroupRoleManagementPolicyStateArgs = _index.GroupRoleManagementPolicyState.new;
-  final GroupState = _index.GroupState.new;
-  final GroupStateArgs = _index.GroupState.new;
-  final GroupWithoutMembers = _index.GroupWithoutMembers.new;
-  final GroupWithoutMembersArgs = _index.GroupWithoutMembersArgs.new;
-  final GroupWithoutMembersDynamicMembership = _index.GroupWithoutMembersDynamicMembership.new;
-  final GroupWithoutMembersDynamicMembershipArgs = _index.GroupWithoutMembersDynamicMembership.new;
-  final GroupWithoutMembersState = _index.GroupWithoutMembersState.new;
-  final GroupWithoutMembersStateArgs = _index.GroupWithoutMembersState.new;
-  final Invitation = _index.Invitation.new;
-  final InvitationArgs = _index.InvitationArgs.new;
-  final InvitationMessage = _index.InvitationMessage.new;
-  final InvitationMessageArgs = _index.InvitationMessage.new;
-  final InvitationState = _index.InvitationState.new;
-  final InvitationStateArgs = _index.InvitationState.new;
-  final NamedLocation = _index.NamedLocation.new;
-  final NamedLocationArgs = _index.NamedLocationArgs.new;
-  final NamedLocationCountry = _index.NamedLocationCountry.new;
-  final NamedLocationCountryArgs = _index.NamedLocationCountry.new;
-  final NamedLocationIp = _index.NamedLocationIp.new;
-  final NamedLocationIpArgs = _index.NamedLocationIp.new;
-  final NamedLocationState = _index.NamedLocationState.new;
-  final NamedLocationStateArgs = _index.NamedLocationState.new;
-  final PrivilegedAccessGroupAssignmentSchedule = _index.PrivilegedAccessGroupAssignmentSchedule.new;
-  final PrivilegedAccessGroupAssignmentScheduleArgs = _index.PrivilegedAccessGroupAssignmentScheduleArgs.new;
-  final PrivilegedAccessGroupAssignmentScheduleState = _index.PrivilegedAccessGroupAssignmentScheduleState.new;
-  final PrivilegedAccessGroupAssignmentScheduleStateArgs = _index.PrivilegedAccessGroupAssignmentScheduleState.new;
-  final PrivilegedAccessGroupEligibilitySchedule = _index.PrivilegedAccessGroupEligibilitySchedule.new;
-  final PrivilegedAccessGroupEligibilityScheduleArgs = _index.PrivilegedAccessGroupEligibilityScheduleArgs.new;
-  final PrivilegedAccessGroupEligibilityScheduleState = _index.PrivilegedAccessGroupEligibilityScheduleState.new;
-  final PrivilegedAccessGroupEligibilityScheduleStateArgs = _index.PrivilegedAccessGroupEligibilityScheduleState.new;
-  final ServicePrincipal = _index.ServicePrincipal.new;
-  final ServicePrincipalAppRole = _index.ServicePrincipalAppRole.new;
-  final ServicePrincipalAppRoleArgs = _index.ServicePrincipalAppRole.new;
-  final ServicePrincipalArgs = _index.ServicePrincipalArgs.new;
-  final ServicePrincipalCertificate = _index.ServicePrincipalCertificate.new;
-  final ServicePrincipalCertificateArgs = _index.ServicePrincipalCertificateArgs.new;
-  final ServicePrincipalCertificateState = _index.ServicePrincipalCertificateState.new;
-  final ServicePrincipalCertificateStateArgs = _index.ServicePrincipalCertificateState.new;
-  final ServicePrincipalClaimsMappingPolicyAssignment = _index.ServicePrincipalClaimsMappingPolicyAssignment.new;
-  final ServicePrincipalClaimsMappingPolicyAssignmentArgs = _index.ServicePrincipalClaimsMappingPolicyAssignmentArgs.new;
-  final ServicePrincipalClaimsMappingPolicyAssignmentState = _index.ServicePrincipalClaimsMappingPolicyAssignmentState.new;
-  final ServicePrincipalClaimsMappingPolicyAssignmentStateArgs = _index.ServicePrincipalClaimsMappingPolicyAssignmentState.new;
-  final ServicePrincipalDelegatedPermissionGrant = _index.ServicePrincipalDelegatedPermissionGrant.new;
-  final ServicePrincipalDelegatedPermissionGrantArgs = _index.ServicePrincipalDelegatedPermissionGrantArgs.new;
-  final ServicePrincipalDelegatedPermissionGrantState = _index.ServicePrincipalDelegatedPermissionGrantState.new;
-  final ServicePrincipalDelegatedPermissionGrantStateArgs = _index.ServicePrincipalDelegatedPermissionGrantState.new;
-  final ServicePrincipalFeature = _index.ServicePrincipalFeature.new;
-  final ServicePrincipalFeatureArgs = _index.ServicePrincipalFeature.new;
-  final ServicePrincipalFeatureTag = _index.ServicePrincipalFeatureTag.new;
-  final ServicePrincipalFeatureTagArgs = _index.ServicePrincipalFeatureTag.new;
-  final ServicePrincipalOauth2PermissionScope = _index.ServicePrincipalOauth2PermissionScope.new;
-  final ServicePrincipalOauth2PermissionScopeArgs = _index.ServicePrincipalOauth2PermissionScope.new;
-  final ServicePrincipalPassword = _index.ServicePrincipalPassword.new;
-  final ServicePrincipalPasswordArgs = _index.ServicePrincipalPasswordArgs.new;
-  final ServicePrincipalPasswordState = _index.ServicePrincipalPasswordState.new;
-  final ServicePrincipalPasswordStateArgs = _index.ServicePrincipalPasswordState.new;
-  final ServicePrincipalSamlSingleSignOn = _index.ServicePrincipalSamlSingleSignOn.new;
-  final ServicePrincipalSamlSingleSignOnArgs = _index.ServicePrincipalSamlSingleSignOn.new;
-  final ServicePrincipalState = _index.ServicePrincipalState.new;
-  final ServicePrincipalStateArgs = _index.ServicePrincipalState.new;
-  final ServicePrincipalTokenSigningCertificate = _index.ServicePrincipalTokenSigningCertificate.new;
-  final ServicePrincipalTokenSigningCertificateArgs = _index.ServicePrincipalTokenSigningCertificateArgs.new;
-  final ServicePrincipalTokenSigningCertificateState = _index.ServicePrincipalTokenSigningCertificateState.new;
-  final ServicePrincipalTokenSigningCertificateStateArgs = _index.ServicePrincipalTokenSigningCertificateState.new;
-  final SynchronizationJob = _index.SynchronizationJob.new;
-  final SynchronizationJobArgs = _index.SynchronizationJobArgs.new;
-  final SynchronizationJobProvisionOnDemand = _index.SynchronizationJobProvisionOnDemand.new;
-  final SynchronizationJobProvisionOnDemandArgs = _index.SynchronizationJobProvisionOnDemandArgs.new;
-  final SynchronizationJobProvisionOnDemandParameter = _index.SynchronizationJobProvisionOnDemandParameter.new;
-  final SynchronizationJobProvisionOnDemandParameterArgs = _index.SynchronizationJobProvisionOnDemandParameter.new;
-  final SynchronizationJobProvisionOnDemandParameterSubject = _index.SynchronizationJobProvisionOnDemandParameterSubject.new;
-  final SynchronizationJobProvisionOnDemandParameterSubjectArgs = _index.SynchronizationJobProvisionOnDemandParameterSubject.new;
-  final SynchronizationJobProvisionOnDemandState = _index.SynchronizationJobProvisionOnDemandState.new;
-  final SynchronizationJobProvisionOnDemandStateArgs = _index.SynchronizationJobProvisionOnDemandState.new;
-  final SynchronizationJobSchedule = _index.SynchronizationJobSchedule.new;
-  final SynchronizationJobScheduleArgs = _index.SynchronizationJobSchedule.new;
-  final SynchronizationJobState = _index.SynchronizationJobState.new;
-  final SynchronizationJobStateArgs = _index.SynchronizationJobState.new;
-  final SynchronizationSecret = _index.SynchronizationSecret.new;
-  final SynchronizationSecretArgs = _index.SynchronizationSecretArgs.new;
-  final SynchronizationSecretCredential = _index.SynchronizationSecretCredential.new;
-  final SynchronizationSecretCredentialArgs = _index.SynchronizationSecretCredential.new;
-  final SynchronizationSecretState = _index.SynchronizationSecretState.new;
-  final SynchronizationSecretStateArgs = _index.SynchronizationSecretState.new;
-  final User = _index.User.new;
-  final UserArgs = _index.UserArgs.new;
-  final UserFlowAttribute = _index.UserFlowAttribute.new;
-  final UserFlowAttributeArgs = _index.UserFlowAttributeArgs.new;
-  final UserFlowAttributeState = _index.UserFlowAttributeState.new;
-  final UserFlowAttributeStateArgs = _index.UserFlowAttributeState.new;
-  final UserState = _index.UserState.new;
-  final UserStateArgs = _index.UserState.new;
-  final getAccessPackage = _index.getAccessPackage;
-  final getAccessPackageCatalog = _index.getAccessPackageCatalog;
-  final getAccessPackageCatalogRole = _index.getAccessPackageCatalogRole;
-  final getAdministrativeUnit = _index.getAdministrativeUnit;
-  final getApplication = _index.getApplication;
-  final getApplicationPublishedAppIds = _index.getApplicationPublishedAppIds;
-  final getApplicationTemplate = _index.getApplicationTemplate;
-  final getClientConfig = _index.getClientConfig;
-  final getDirectoryObject = _index.getDirectoryObject;
-  final getDirectoryRoleTemplates = _index.getDirectoryRoleTemplates;
-  final getDirectoryRoles = _index.getDirectoryRoles;
-  final getDomains = _index.getDomains;
-  final getGroup = _index.getGroup;
-  final getGroupRoleManagementPolicy = _index.getGroupRoleManagementPolicy;
-  final getGroups = _index.getGroups;
-  final getNamedLocation = _index.getNamedLocation;
-  final getServicePrincipal = _index.getServicePrincipal;
-  final getServicePrincipals = _index.getServicePrincipals;
-  final getUser = _index.getUser;
-  final getUsers = _index.getUsers;
+  final AccessPackage = module_index.AccessPackage.new;
+  final AccessPackageArgs = module_index.AccessPackageArgs.new;
+  final AccessPackageAssignmentPolicy =
+      module_index.AccessPackageAssignmentPolicy.new;
+  final AccessPackageAssignmentPolicyApprovalSettings =
+      module_index.AccessPackageAssignmentPolicyApprovalSettings.new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStage =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStage
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStage
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs =
+      module_index
+          .AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
+          .new;
+  final AccessPackageAssignmentPolicyApprovalSettingsArgs =
+      module_index.AccessPackageAssignmentPolicyApprovalSettings.new;
+  final AccessPackageAssignmentPolicyArgs =
+      module_index.AccessPackageAssignmentPolicyArgs.new;
+  final AccessPackageAssignmentPolicyAssignmentReviewSettings =
+      module_index.AccessPackageAssignmentPolicyAssignmentReviewSettings.new;
+  final AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs =
+      module_index.AccessPackageAssignmentPolicyAssignmentReviewSettings.new;
+  final AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer =
+      module_index
+          .AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer
+          .new;
+  final AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs =
+      module_index
+          .AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer
+          .new;
+  final AccessPackageAssignmentPolicyQuestion =
+      module_index.AccessPackageAssignmentPolicyQuestion.new;
+  final AccessPackageAssignmentPolicyQuestionArgs =
+      module_index.AccessPackageAssignmentPolicyQuestion.new;
+  final AccessPackageAssignmentPolicyQuestionChoice =
+      module_index.AccessPackageAssignmentPolicyQuestionChoice.new;
+  final AccessPackageAssignmentPolicyQuestionChoiceArgs =
+      module_index.AccessPackageAssignmentPolicyQuestionChoice.new;
+  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValue =
+      module_index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.new;
+  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs =
+      module_index.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.new;
+  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText =
+      module_index
+          .AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText
+          .new;
+  final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs =
+      module_index
+          .AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText
+          .new;
+  final AccessPackageAssignmentPolicyQuestionText =
+      module_index.AccessPackageAssignmentPolicyQuestionText.new;
+  final AccessPackageAssignmentPolicyQuestionTextArgs =
+      module_index.AccessPackageAssignmentPolicyQuestionText.new;
+  final AccessPackageAssignmentPolicyQuestionTextLocalizedText =
+      module_index.AccessPackageAssignmentPolicyQuestionTextLocalizedText.new;
+  final AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs =
+      module_index.AccessPackageAssignmentPolicyQuestionTextLocalizedText.new;
+  final AccessPackageAssignmentPolicyRequestorSettings =
+      module_index.AccessPackageAssignmentPolicyRequestorSettings.new;
+  final AccessPackageAssignmentPolicyRequestorSettingsArgs =
+      module_index.AccessPackageAssignmentPolicyRequestorSettings.new;
+  final AccessPackageAssignmentPolicyRequestorSettingsRequestor =
+      module_index.AccessPackageAssignmentPolicyRequestorSettingsRequestor.new;
+  final AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs =
+      module_index.AccessPackageAssignmentPolicyRequestorSettingsRequestor.new;
+  final AccessPackageAssignmentPolicyState =
+      module_index.AccessPackageAssignmentPolicyState.new;
+  final AccessPackageAssignmentPolicyStateArgs =
+      module_index.AccessPackageAssignmentPolicyState.new;
+  final AccessPackageCatalog = module_index.AccessPackageCatalog.new;
+  final AccessPackageCatalogArgs = module_index.AccessPackageCatalogArgs.new;
+  final AccessPackageCatalogRoleAssignment =
+      module_index.AccessPackageCatalogRoleAssignment.new;
+  final AccessPackageCatalogRoleAssignmentArgs =
+      module_index.AccessPackageCatalogRoleAssignmentArgs.new;
+  final AccessPackageCatalogRoleAssignmentState =
+      module_index.AccessPackageCatalogRoleAssignmentState.new;
+  final AccessPackageCatalogRoleAssignmentStateArgs =
+      module_index.AccessPackageCatalogRoleAssignmentState.new;
+  final AccessPackageCatalogState = module_index.AccessPackageCatalogState.new;
+  final AccessPackageCatalogStateArgs =
+      module_index.AccessPackageCatalogState.new;
+  final AccessPackageResourceCatalogAssociation =
+      module_index.AccessPackageResourceCatalogAssociation.new;
+  final AccessPackageResourceCatalogAssociationArgs =
+      module_index.AccessPackageResourceCatalogAssociationArgs.new;
+  final AccessPackageResourceCatalogAssociationState =
+      module_index.AccessPackageResourceCatalogAssociationState.new;
+  final AccessPackageResourceCatalogAssociationStateArgs =
+      module_index.AccessPackageResourceCatalogAssociationState.new;
+  final AccessPackageResourcePackageAssociation =
+      module_index.AccessPackageResourcePackageAssociation.new;
+  final AccessPackageResourcePackageAssociationArgs =
+      module_index.AccessPackageResourcePackageAssociationArgs.new;
+  final AccessPackageResourcePackageAssociationState =
+      module_index.AccessPackageResourcePackageAssociationState.new;
+  final AccessPackageResourcePackageAssociationStateArgs =
+      module_index.AccessPackageResourcePackageAssociationState.new;
+  final AccessPackageState = module_index.AccessPackageState.new;
+  final AccessPackageStateArgs = module_index.AccessPackageState.new;
+  final AdministrativeUnit = module_index.AdministrativeUnit.new;
+  final AdministrativeUnitArgs = module_index.AdministrativeUnitArgs.new;
+  final AdministrativeUnitMember = module_index.AdministrativeUnitMember.new;
+  final AdministrativeUnitMemberArgs =
+      module_index.AdministrativeUnitMemberArgs.new;
+  final AdministrativeUnitMemberState =
+      module_index.AdministrativeUnitMemberState.new;
+  final AdministrativeUnitMemberStateArgs =
+      module_index.AdministrativeUnitMemberState.new;
+  final AdministrativeUnitRoleMember =
+      module_index.AdministrativeUnitRoleMember.new;
+  final AdministrativeUnitRoleMemberArgs =
+      module_index.AdministrativeUnitRoleMemberArgs.new;
+  final AdministrativeUnitRoleMemberState =
+      module_index.AdministrativeUnitRoleMemberState.new;
+  final AdministrativeUnitRoleMemberStateArgs =
+      module_index.AdministrativeUnitRoleMemberState.new;
+  final AdministrativeUnitState = module_index.AdministrativeUnitState.new;
+  final AdministrativeUnitStateArgs = module_index.AdministrativeUnitState.new;
+  final AppRoleAssignment = module_index.AppRoleAssignment.new;
+  final AppRoleAssignmentArgs = module_index.AppRoleAssignmentArgs.new;
+  final AppRoleAssignmentState = module_index.AppRoleAssignmentState.new;
+  final AppRoleAssignmentStateArgs = module_index.AppRoleAssignmentState.new;
+  final Application = module_index.Application.new;
+  final ApplicationApi = module_index.ApplicationApi.new;
+  final ApplicationApiAccess = module_index.ApplicationApiAccess.new;
+  final ApplicationApiAccessArgs = module_index.ApplicationApiAccessArgs.new;
+  final ApplicationApiAccessState = module_index.ApplicationApiAccessState.new;
+  final ApplicationApiAccessStateArgs =
+      module_index.ApplicationApiAccessState.new;
+  final ApplicationApiArgs = module_index.ApplicationApi.new;
+  final ApplicationApiOauth2PermissionScope =
+      module_index.ApplicationApiOauth2PermissionScope.new;
+  final ApplicationApiOauth2PermissionScopeArgs =
+      module_index.ApplicationApiOauth2PermissionScope.new;
+  final ApplicationAppRole = module_index.ApplicationAppRole.new;
+  final ApplicationAppRoleArgs = module_index.ApplicationAppRole.new;
+  final ApplicationAppRoleState = module_index.ApplicationAppRoleState.new;
+  final ApplicationAppRoleStateArgs = module_index.ApplicationAppRoleState.new;
+  final ApplicationArgs = module_index.ApplicationArgs.new;
+  final ApplicationCertificate = module_index.ApplicationCertificate.new;
+  final ApplicationCertificateArgs =
+      module_index.ApplicationCertificateArgs.new;
+  final ApplicationCertificateState =
+      module_index.ApplicationCertificateState.new;
+  final ApplicationCertificateStateArgs =
+      module_index.ApplicationCertificateState.new;
+  final ApplicationFallbackPublicClient =
+      module_index.ApplicationFallbackPublicClient.new;
+  final ApplicationFallbackPublicClientArgs =
+      module_index.ApplicationFallbackPublicClientArgs.new;
+  final ApplicationFallbackPublicClientState =
+      module_index.ApplicationFallbackPublicClientState.new;
+  final ApplicationFallbackPublicClientStateArgs =
+      module_index.ApplicationFallbackPublicClientState.new;
+  final ApplicationFeatureTag = module_index.ApplicationFeatureTag.new;
+  final ApplicationFeatureTagArgs = module_index.ApplicationFeatureTag.new;
+  final ApplicationFederatedIdentityCredential =
+      module_index.ApplicationFederatedIdentityCredential.new;
+  final ApplicationFederatedIdentityCredentialArgs =
+      module_index.ApplicationFederatedIdentityCredentialArgs.new;
+  final ApplicationFederatedIdentityCredentialState =
+      module_index.ApplicationFederatedIdentityCredentialState.new;
+  final ApplicationFederatedIdentityCredentialStateArgs =
+      module_index.ApplicationFederatedIdentityCredentialState.new;
+  final ApplicationFlexibleFederatedIdentityCredential =
+      module_index.ApplicationFlexibleFederatedIdentityCredential.new;
+  final ApplicationFlexibleFederatedIdentityCredentialArgs =
+      module_index.ApplicationFlexibleFederatedIdentityCredentialArgs.new;
+  final ApplicationFlexibleFederatedIdentityCredentialState =
+      module_index.ApplicationFlexibleFederatedIdentityCredentialState.new;
+  final ApplicationFlexibleFederatedIdentityCredentialStateArgs =
+      module_index.ApplicationFlexibleFederatedIdentityCredentialState.new;
+  final ApplicationFromTemplate = module_index.ApplicationFromTemplate.new;
+  final ApplicationFromTemplateArgs =
+      module_index.ApplicationFromTemplateArgs.new;
+  final ApplicationFromTemplateState =
+      module_index.ApplicationFromTemplateState.new;
+  final ApplicationFromTemplateStateArgs =
+      module_index.ApplicationFromTemplateState.new;
+  final ApplicationIdentifierUri = module_index.ApplicationIdentifierUri.new;
+  final ApplicationIdentifierUriArgs =
+      module_index.ApplicationIdentifierUriArgs.new;
+  final ApplicationIdentifierUriState =
+      module_index.ApplicationIdentifierUriState.new;
+  final ApplicationIdentifierUriStateArgs =
+      module_index.ApplicationIdentifierUriState.new;
+  final ApplicationKnownClients = module_index.ApplicationKnownClients.new;
+  final ApplicationKnownClientsArgs =
+      module_index.ApplicationKnownClientsArgs.new;
+  final ApplicationKnownClientsState =
+      module_index.ApplicationKnownClientsState.new;
+  final ApplicationKnownClientsStateArgs =
+      module_index.ApplicationKnownClientsState.new;
+  final ApplicationOptionalClaims = module_index.ApplicationOptionalClaims.new;
+  final ApplicationOptionalClaimsAccessToken =
+      module_index.ApplicationOptionalClaimsAccessToken.new;
+  final ApplicationOptionalClaimsAccessTokenArgs =
+      module_index.ApplicationOptionalClaimsAccessToken.new;
+  final ApplicationOptionalClaimsArgs =
+      module_index.ApplicationOptionalClaims.new;
+  final ApplicationOptionalClaimsIdToken =
+      module_index.ApplicationOptionalClaimsIdToken.new;
+  final ApplicationOptionalClaimsIdTokenArgs =
+      module_index.ApplicationOptionalClaimsIdToken.new;
+  final ApplicationOptionalClaimsSaml2Token =
+      module_index.ApplicationOptionalClaimsSaml2Token.new;
+  final ApplicationOptionalClaimsSaml2TokenArgs =
+      module_index.ApplicationOptionalClaimsSaml2Token.new;
+  final ApplicationOptionalClaimsState =
+      module_index.ApplicationOptionalClaimsState.new;
+  final ApplicationOptionalClaimsStateArgs =
+      module_index.ApplicationOptionalClaimsState.new;
+  final ApplicationOwner = module_index.ApplicationOwner.new;
+  final ApplicationOwnerArgs = module_index.ApplicationOwnerArgs.new;
+  final ApplicationOwnerState = module_index.ApplicationOwnerState.new;
+  final ApplicationOwnerStateArgs = module_index.ApplicationOwnerState.new;
+  final ApplicationPassword = module_index.ApplicationPassword.new;
+  final ApplicationPasswordArgs = module_index.ApplicationPassword.new;
+  final ApplicationPasswordState = module_index.ApplicationPasswordState.new;
+  final ApplicationPasswordStateArgs =
+      module_index.ApplicationPasswordState.new;
+  final ApplicationPermissionScope =
+      module_index.ApplicationPermissionScope.new;
+  final ApplicationPermissionScopeArgs =
+      module_index.ApplicationPermissionScopeArgs.new;
+  final ApplicationPermissionScopeState =
+      module_index.ApplicationPermissionScopeState.new;
+  final ApplicationPermissionScopeStateArgs =
+      module_index.ApplicationPermissionScopeState.new;
+  final ApplicationPreAuthorized = module_index.ApplicationPreAuthorized.new;
+  final ApplicationPreAuthorizedArgs =
+      module_index.ApplicationPreAuthorizedArgs.new;
+  final ApplicationPreAuthorizedState =
+      module_index.ApplicationPreAuthorizedState.new;
+  final ApplicationPreAuthorizedStateArgs =
+      module_index.ApplicationPreAuthorizedState.new;
+  final ApplicationPublicClient = module_index.ApplicationPublicClient.new;
+  final ApplicationPublicClientArgs = module_index.ApplicationPublicClient.new;
+  final ApplicationRedirectUris = module_index.ApplicationRedirectUris.new;
+  final ApplicationRedirectUrisArgs =
+      module_index.ApplicationRedirectUrisArgs.new;
+  final ApplicationRedirectUrisState =
+      module_index.ApplicationRedirectUrisState.new;
+  final ApplicationRedirectUrisStateArgs =
+      module_index.ApplicationRedirectUrisState.new;
+  final ApplicationRegistration = module_index.ApplicationRegistration.new;
+  final ApplicationRegistrationArgs =
+      module_index.ApplicationRegistrationArgs.new;
+  final ApplicationRegistrationState =
+      module_index.ApplicationRegistrationState.new;
+  final ApplicationRegistrationStateArgs =
+      module_index.ApplicationRegistrationState.new;
+  final ApplicationRequiredResourceAccess =
+      module_index.ApplicationRequiredResourceAccess.new;
+  final ApplicationRequiredResourceAccessArgs =
+      module_index.ApplicationRequiredResourceAccess.new;
+  final ApplicationRequiredResourceAccessResourceAccess =
+      module_index.ApplicationRequiredResourceAccessResourceAccess.new;
+  final ApplicationRequiredResourceAccessResourceAccessArgs =
+      module_index.ApplicationRequiredResourceAccessResourceAccess.new;
+  final ApplicationSinglePageApplication =
+      module_index.ApplicationSinglePageApplication.new;
+  final ApplicationSinglePageApplicationArgs =
+      module_index.ApplicationSinglePageApplication.new;
+  final ApplicationState = module_index.ApplicationState.new;
+  final ApplicationStateArgs = module_index.ApplicationState.new;
+  final ApplicationWeb = module_index.ApplicationWeb.new;
+  final ApplicationWebArgs = module_index.ApplicationWeb.new;
+  final ApplicationWebImplicitGrant =
+      module_index.ApplicationWebImplicitGrant.new;
+  final ApplicationWebImplicitGrantArgs =
+      module_index.ApplicationWebImplicitGrant.new;
+  final AuthenticationStrengthPolicy =
+      module_index.AuthenticationStrengthPolicy.new;
+  final AuthenticationStrengthPolicyArgs =
+      module_index.AuthenticationStrengthPolicyArgs.new;
+  final AuthenticationStrengthPolicyState =
+      module_index.AuthenticationStrengthPolicyState.new;
+  final AuthenticationStrengthPolicyStateArgs =
+      module_index.AuthenticationStrengthPolicyState.new;
+  final ClaimsMappingPolicy = module_index.ClaimsMappingPolicy.new;
+  final ClaimsMappingPolicyArgs = module_index.ClaimsMappingPolicyArgs.new;
+  final ClaimsMappingPolicyState = module_index.ClaimsMappingPolicyState.new;
+  final ClaimsMappingPolicyStateArgs =
+      module_index.ClaimsMappingPolicyState.new;
+  final ConditionalAccessPolicy = module_index.ConditionalAccessPolicy.new;
+  final ConditionalAccessPolicyArgs =
+      module_index.ConditionalAccessPolicyArgs.new;
+  final ConditionalAccessPolicyConditions =
+      module_index.ConditionalAccessPolicyConditions.new;
+  final ConditionalAccessPolicyConditionsApplications =
+      module_index.ConditionalAccessPolicyConditionsApplications.new;
+  final ConditionalAccessPolicyConditionsApplicationsArgs =
+      module_index.ConditionalAccessPolicyConditionsApplications.new;
+  final ConditionalAccessPolicyConditionsArgs =
+      module_index.ConditionalAccessPolicyConditions.new;
+  final ConditionalAccessPolicyConditionsClientApplications =
+      module_index.ConditionalAccessPolicyConditionsClientApplications.new;
+  final ConditionalAccessPolicyConditionsClientApplicationsArgs =
+      module_index.ConditionalAccessPolicyConditionsClientApplications.new;
+  final ConditionalAccessPolicyConditionsClientApplicationsFilter = module_index
+      .ConditionalAccessPolicyConditionsClientApplicationsFilter
+      .new;
+  final ConditionalAccessPolicyConditionsClientApplicationsFilterArgs =
+      module_index
+          .ConditionalAccessPolicyConditionsClientApplicationsFilter
+          .new;
+  final ConditionalAccessPolicyConditionsDevices =
+      module_index.ConditionalAccessPolicyConditionsDevices.new;
+  final ConditionalAccessPolicyConditionsDevicesArgs =
+      module_index.ConditionalAccessPolicyConditionsDevices.new;
+  final ConditionalAccessPolicyConditionsDevicesFilter =
+      module_index.ConditionalAccessPolicyConditionsDevicesFilter.new;
+  final ConditionalAccessPolicyConditionsDevicesFilterArgs =
+      module_index.ConditionalAccessPolicyConditionsDevicesFilter.new;
+  final ConditionalAccessPolicyConditionsLocations =
+      module_index.ConditionalAccessPolicyConditionsLocations.new;
+  final ConditionalAccessPolicyConditionsLocationsArgs =
+      module_index.ConditionalAccessPolicyConditionsLocations.new;
+  final ConditionalAccessPolicyConditionsPlatforms =
+      module_index.ConditionalAccessPolicyConditionsPlatforms.new;
+  final ConditionalAccessPolicyConditionsPlatformsArgs =
+      module_index.ConditionalAccessPolicyConditionsPlatforms.new;
+  final ConditionalAccessPolicyConditionsUsers =
+      module_index.ConditionalAccessPolicyConditionsUsers.new;
+  final ConditionalAccessPolicyConditionsUsersArgs =
+      module_index.ConditionalAccessPolicyConditionsUsers.new;
+  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser
+          .new;
+  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser
+          .new;
+  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
+          .new;
+  final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
+          .new;
+  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser
+          .new;
+  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser
+          .new;
+  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant
+          .new;
+  final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs =
+      module_index
+          .ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant
+          .new;
+  final ConditionalAccessPolicyGrantControls =
+      module_index.ConditionalAccessPolicyGrantControls.new;
+  final ConditionalAccessPolicyGrantControlsArgs =
+      module_index.ConditionalAccessPolicyGrantControls.new;
+  final ConditionalAccessPolicySessionControls =
+      module_index.ConditionalAccessPolicySessionControls.new;
+  final ConditionalAccessPolicySessionControlsArgs =
+      module_index.ConditionalAccessPolicySessionControls.new;
+  final ConditionalAccessPolicyState =
+      module_index.ConditionalAccessPolicyState.new;
+  final ConditionalAccessPolicyStateArgs =
+      module_index.ConditionalAccessPolicyState.new;
+  final CustomDirectoryRole = module_index.CustomDirectoryRole.new;
+  final CustomDirectoryRoleArgs = module_index.CustomDirectoryRoleArgs.new;
+  final CustomDirectoryRolePermission =
+      module_index.CustomDirectoryRolePermission.new;
+  final CustomDirectoryRolePermissionArgs =
+      module_index.CustomDirectoryRolePermission.new;
+  final CustomDirectoryRoleState = module_index.CustomDirectoryRoleState.new;
+  final CustomDirectoryRoleStateArgs =
+      module_index.CustomDirectoryRoleState.new;
+  final DirectoryRole = module_index.DirectoryRole.new;
+  final DirectoryRoleArgs = module_index.DirectoryRoleArgs.new;
+  final DirectoryRoleAssignment = module_index.DirectoryRoleAssignment.new;
+  final DirectoryRoleAssignmentArgs =
+      module_index.DirectoryRoleAssignmentArgs.new;
+  final DirectoryRoleAssignmentState =
+      module_index.DirectoryRoleAssignmentState.new;
+  final DirectoryRoleAssignmentStateArgs =
+      module_index.DirectoryRoleAssignmentState.new;
+  final DirectoryRoleEligibilityScheduleRequest =
+      module_index.DirectoryRoleEligibilityScheduleRequest.new;
+  final DirectoryRoleEligibilityScheduleRequestArgs =
+      module_index.DirectoryRoleEligibilityScheduleRequestArgs.new;
+  final DirectoryRoleEligibilityScheduleRequestState =
+      module_index.DirectoryRoleEligibilityScheduleRequestState.new;
+  final DirectoryRoleEligibilityScheduleRequestStateArgs =
+      module_index.DirectoryRoleEligibilityScheduleRequestState.new;
+  final DirectoryRoleMember = module_index.DirectoryRoleMember.new;
+  final DirectoryRoleMemberArgs = module_index.DirectoryRoleMemberArgs.new;
+  final DirectoryRoleMemberState = module_index.DirectoryRoleMemberState.new;
+  final DirectoryRoleMemberStateArgs =
+      module_index.DirectoryRoleMemberState.new;
+  final DirectoryRoleState = module_index.DirectoryRoleState.new;
+  final DirectoryRoleStateArgs = module_index.DirectoryRoleState.new;
+  final GetAccessPackageArgs = module_index.GetAccessPackageArgs.new;
+  final GetAccessPackageCatalogArgs =
+      module_index.GetAccessPackageCatalogArgs.new;
+  final GetAccessPackageCatalogResult =
+      module_index.GetAccessPackageCatalogResult.new;
+  final GetAccessPackageCatalogResultArgs =
+      module_index.GetAccessPackageCatalogResult.new;
+  final GetAccessPackageCatalogRoleArgs =
+      module_index.GetAccessPackageCatalogRoleArgs.new;
+  final GetAccessPackageCatalogRoleResult =
+      module_index.GetAccessPackageCatalogRoleResult.new;
+  final GetAccessPackageCatalogRoleResultArgs =
+      module_index.GetAccessPackageCatalogRoleResult.new;
+  final GetAccessPackageResult = module_index.GetAccessPackageResult.new;
+  final GetAccessPackageResultArgs = module_index.GetAccessPackageResult.new;
+  final GetAdministrativeUnitArgs = module_index.GetAdministrativeUnitArgs.new;
+  final GetAdministrativeUnitResult =
+      module_index.GetAdministrativeUnitResult.new;
+  final GetAdministrativeUnitResultArgs =
+      module_index.GetAdministrativeUnitResult.new;
+  final GetApplicationApi = module_index.GetApplicationApi.new;
+  final GetApplicationApiArgs = module_index.GetApplicationApi.new;
+  final GetApplicationApiOauth2PermissionScope =
+      module_index.GetApplicationApiOauth2PermissionScope.new;
+  final GetApplicationApiOauth2PermissionScopeArgs =
+      module_index.GetApplicationApiOauth2PermissionScope.new;
+  final GetApplicationAppRole = module_index.GetApplicationAppRole.new;
+  final GetApplicationAppRoleArgs = module_index.GetApplicationAppRole.new;
+  final GetApplicationArgs = module_index.GetApplicationArgs.new;
+  final GetApplicationFeatureTag = module_index.GetApplicationFeatureTag.new;
+  final GetApplicationFeatureTagArgs =
+      module_index.GetApplicationFeatureTag.new;
+  final GetApplicationOptionalClaim =
+      module_index.GetApplicationOptionalClaim.new;
+  final GetApplicationOptionalClaimAccessToken =
+      module_index.GetApplicationOptionalClaimAccessToken.new;
+  final GetApplicationOptionalClaimAccessTokenArgs =
+      module_index.GetApplicationOptionalClaimAccessToken.new;
+  final GetApplicationOptionalClaimArgs =
+      module_index.GetApplicationOptionalClaim.new;
+  final GetApplicationOptionalClaimIdToken =
+      module_index.GetApplicationOptionalClaimIdToken.new;
+  final GetApplicationOptionalClaimIdTokenArgs =
+      module_index.GetApplicationOptionalClaimIdToken.new;
+  final GetApplicationOptionalClaimSaml2Token =
+      module_index.GetApplicationOptionalClaimSaml2Token.new;
+  final GetApplicationOptionalClaimSaml2TokenArgs =
+      module_index.GetApplicationOptionalClaimSaml2Token.new;
+  final GetApplicationPublicClient =
+      module_index.GetApplicationPublicClient.new;
+  final GetApplicationPublicClientArgs =
+      module_index.GetApplicationPublicClient.new;
+  final GetApplicationPublishedAppIdsResult =
+      module_index.GetApplicationPublishedAppIdsResult.new;
+  final GetApplicationPublishedAppIdsResultArgs =
+      module_index.GetApplicationPublishedAppIdsResult.new;
+  final GetApplicationRequiredResourceAccess =
+      module_index.GetApplicationRequiredResourceAccess.new;
+  final GetApplicationRequiredResourceAccessArgs =
+      module_index.GetApplicationRequiredResourceAccess.new;
+  final GetApplicationRequiredResourceAccessResourceAccess =
+      module_index.GetApplicationRequiredResourceAccessResourceAccess.new;
+  final GetApplicationRequiredResourceAccessResourceAccessArgs =
+      module_index.GetApplicationRequiredResourceAccessResourceAccess.new;
+  final GetApplicationResult = module_index.GetApplicationResult.new;
+  final GetApplicationResultArgs = module_index.GetApplicationResult.new;
+  final GetApplicationSinglePageApplication =
+      module_index.GetApplicationSinglePageApplication.new;
+  final GetApplicationSinglePageApplicationArgs =
+      module_index.GetApplicationSinglePageApplication.new;
+  final GetApplicationTemplateArgs =
+      module_index.GetApplicationTemplateArgs.new;
+  final GetApplicationTemplateResult =
+      module_index.GetApplicationTemplateResult.new;
+  final GetApplicationTemplateResultArgs =
+      module_index.GetApplicationTemplateResult.new;
+  final GetApplicationWeb = module_index.GetApplicationWeb.new;
+  final GetApplicationWebArgs = module_index.GetApplicationWeb.new;
+  final GetApplicationWebImplicitGrant =
+      module_index.GetApplicationWebImplicitGrant.new;
+  final GetApplicationWebImplicitGrantArgs =
+      module_index.GetApplicationWebImplicitGrant.new;
+  final GetClientConfigResult = module_index.GetClientConfigResult.new;
+  final GetClientConfigResultArgs = module_index.GetClientConfigResult.new;
+  final GetDirectoryObjectArgs = module_index.GetDirectoryObjectArgs.new;
+  final GetDirectoryObjectResult = module_index.GetDirectoryObjectResult.new;
+  final GetDirectoryObjectResultArgs =
+      module_index.GetDirectoryObjectResult.new;
+  final GetDirectoryRoleTemplatesResult =
+      module_index.GetDirectoryRoleTemplatesResult.new;
+  final GetDirectoryRoleTemplatesResultArgs =
+      module_index.GetDirectoryRoleTemplatesResult.new;
+  final GetDirectoryRoleTemplatesRoleTemplate =
+      module_index.GetDirectoryRoleTemplatesRoleTemplate.new;
+  final GetDirectoryRoleTemplatesRoleTemplateArgs =
+      module_index.GetDirectoryRoleTemplatesRoleTemplate.new;
+  final GetDirectoryRolesResult = module_index.GetDirectoryRolesResult.new;
+  final GetDirectoryRolesResultArgs = module_index.GetDirectoryRolesResult.new;
+  final GetDirectoryRolesRole = module_index.GetDirectoryRolesRole.new;
+  final GetDirectoryRolesRoleArgs = module_index.GetDirectoryRolesRole.new;
+  final GetDomainsArgs = module_index.GetDomainsArgs.new;
+  final GetDomainsDomain = module_index.GetDomainsDomain.new;
+  final GetDomainsDomainArgs = module_index.GetDomainsDomain.new;
+  final GetDomainsResult = module_index.GetDomainsResult.new;
+  final GetDomainsResultArgs = module_index.GetDomainsResult.new;
+  final GetGroupArgs = module_index.GetGroupArgs.new;
+  final GetGroupDynamicMembership = module_index.GetGroupDynamicMembership.new;
+  final GetGroupDynamicMembershipArgs =
+      module_index.GetGroupDynamicMembership.new;
+  final GetGroupResult = module_index.GetGroupResult.new;
+  final GetGroupResultArgs = module_index.GetGroupResult.new;
+  final GetGroupRoleManagementPolicyArgs =
+      module_index.GetGroupRoleManagementPolicyArgs.new;
+  final GetGroupRoleManagementPolicyResult =
+      module_index.GetGroupRoleManagementPolicyResult.new;
+  final GetGroupRoleManagementPolicyResultArgs =
+      module_index.GetGroupRoleManagementPolicyResult.new;
+  final GetGroupsArgs = module_index.GetGroupsArgs.new;
+  final GetGroupsResult = module_index.GetGroupsResult.new;
+  final GetGroupsResultArgs = module_index.GetGroupsResult.new;
+  final GetNamedLocationArgs = module_index.GetNamedLocationArgs.new;
+  final GetNamedLocationCountry = module_index.GetNamedLocationCountry.new;
+  final GetNamedLocationCountryArgs = module_index.GetNamedLocationCountry.new;
+  final GetNamedLocationIp = module_index.GetNamedLocationIp.new;
+  final GetNamedLocationIpArgs = module_index.GetNamedLocationIp.new;
+  final GetNamedLocationResult = module_index.GetNamedLocationResult.new;
+  final GetNamedLocationResultArgs = module_index.GetNamedLocationResult.new;
+  final GetServicePrincipalAppRole =
+      module_index.GetServicePrincipalAppRole.new;
+  final GetServicePrincipalAppRoleArgs =
+      module_index.GetServicePrincipalAppRole.new;
+  final GetServicePrincipalArgs = module_index.GetServicePrincipalArgs.new;
+  final GetServicePrincipalFeature =
+      module_index.GetServicePrincipalFeature.new;
+  final GetServicePrincipalFeatureArgs =
+      module_index.GetServicePrincipalFeature.new;
+  final GetServicePrincipalFeatureTag =
+      module_index.GetServicePrincipalFeatureTag.new;
+  final GetServicePrincipalFeatureTagArgs =
+      module_index.GetServicePrincipalFeatureTag.new;
+  final GetServicePrincipalOauth2PermissionScope =
+      module_index.GetServicePrincipalOauth2PermissionScope.new;
+  final GetServicePrincipalOauth2PermissionScopeArgs =
+      module_index.GetServicePrincipalOauth2PermissionScope.new;
+  final GetServicePrincipalResult = module_index.GetServicePrincipalResult.new;
+  final GetServicePrincipalResultArgs =
+      module_index.GetServicePrincipalResult.new;
+  final GetServicePrincipalSamlSingleSignOn =
+      module_index.GetServicePrincipalSamlSingleSignOn.new;
+  final GetServicePrincipalSamlSingleSignOnArgs =
+      module_index.GetServicePrincipalSamlSingleSignOn.new;
+  final GetServicePrincipalsArgs = module_index.GetServicePrincipalsArgs.new;
+  final GetServicePrincipalsResult =
+      module_index.GetServicePrincipalsResult.new;
+  final GetServicePrincipalsResultArgs =
+      module_index.GetServicePrincipalsResult.new;
+  final GetServicePrincipalsServicePrincipal =
+      module_index.GetServicePrincipalsServicePrincipal.new;
+  final GetServicePrincipalsServicePrincipalArgs =
+      module_index.GetServicePrincipalsServicePrincipal.new;
+  final GetUserArgs = module_index.GetUserArgs.new;
+  final GetUserResult = module_index.GetUserResult.new;
+  final GetUserResultArgs = module_index.GetUserResult.new;
+  final GetUsersArgs = module_index.GetUsersArgs.new;
+  final GetUsersResult = module_index.GetUsersResult.new;
+  final GetUsersResultArgs = module_index.GetUsersResult.new;
+  final GetUsersUser = module_index.GetUsersUser.new;
+  final GetUsersUserArgs = module_index.GetUsersUser.new;
+  final Group = module_index.Group.new;
+  final GroupArgs = module_index.GroupArgs.new;
+  final GroupDynamicMembership = module_index.GroupDynamicMembership.new;
+  final GroupDynamicMembershipArgs = module_index.GroupDynamicMembership.new;
+  final GroupMember = module_index.GroupMember.new;
+  final GroupMemberArgs = module_index.GroupMemberArgs.new;
+  final GroupMemberState = module_index.GroupMemberState.new;
+  final GroupMemberStateArgs = module_index.GroupMemberState.new;
+  final GroupRoleManagementPolicy = module_index.GroupRoleManagementPolicy.new;
+  final GroupRoleManagementPolicyActivationRules =
+      module_index.GroupRoleManagementPolicyActivationRules.new;
+  final GroupRoleManagementPolicyActivationRulesApprovalStage =
+      module_index.GroupRoleManagementPolicyActivationRulesApprovalStage.new;
+  final GroupRoleManagementPolicyActivationRulesApprovalStageArgs =
+      module_index.GroupRoleManagementPolicyActivationRulesApprovalStage.new;
+  final GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover =
+      module_index
+          .GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover
+          .new;
+  final GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs =
+      module_index
+          .GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover
+          .new;
+  final GroupRoleManagementPolicyActivationRulesArgs =
+      module_index.GroupRoleManagementPolicyActivationRules.new;
+  final GroupRoleManagementPolicyActiveAssignmentRules =
+      module_index.GroupRoleManagementPolicyActiveAssignmentRules.new;
+  final GroupRoleManagementPolicyActiveAssignmentRulesArgs =
+      module_index.GroupRoleManagementPolicyActiveAssignmentRules.new;
+  final GroupRoleManagementPolicyArgs =
+      module_index.GroupRoleManagementPolicyArgs.new;
+  final GroupRoleManagementPolicyEligibleAssignmentRules =
+      module_index.GroupRoleManagementPolicyEligibleAssignmentRules.new;
+  final GroupRoleManagementPolicyEligibleAssignmentRulesArgs =
+      module_index.GroupRoleManagementPolicyEligibleAssignmentRules.new;
+  final GroupRoleManagementPolicyNotificationRules =
+      module_index.GroupRoleManagementPolicyNotificationRules.new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignments =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignments
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignments
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesArgs =
+      module_index.GroupRoleManagementPolicyNotificationRules.new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivations =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivations
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivations
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignments =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignments
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignments
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs =
+      module_index
+          .GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications
+          .new;
+  final GroupRoleManagementPolicyState =
+      module_index.GroupRoleManagementPolicyState.new;
+  final GroupRoleManagementPolicyStateArgs =
+      module_index.GroupRoleManagementPolicyState.new;
+  final GroupState = module_index.GroupState.new;
+  final GroupStateArgs = module_index.GroupState.new;
+  final GroupWithoutMembers = module_index.GroupWithoutMembers.new;
+  final GroupWithoutMembersArgs = module_index.GroupWithoutMembersArgs.new;
+  final GroupWithoutMembersDynamicMembership =
+      module_index.GroupWithoutMembersDynamicMembership.new;
+  final GroupWithoutMembersDynamicMembershipArgs =
+      module_index.GroupWithoutMembersDynamicMembership.new;
+  final GroupWithoutMembersState = module_index.GroupWithoutMembersState.new;
+  final GroupWithoutMembersStateArgs =
+      module_index.GroupWithoutMembersState.new;
+  final Invitation = module_index.Invitation.new;
+  final InvitationArgs = module_index.InvitationArgs.new;
+  final InvitationMessage = module_index.InvitationMessage.new;
+  final InvitationMessageArgs = module_index.InvitationMessage.new;
+  final InvitationState = module_index.InvitationState.new;
+  final InvitationStateArgs = module_index.InvitationState.new;
+  final NamedLocation = module_index.NamedLocation.new;
+  final NamedLocationArgs = module_index.NamedLocationArgs.new;
+  final NamedLocationCountry = module_index.NamedLocationCountry.new;
+  final NamedLocationCountryArgs = module_index.NamedLocationCountry.new;
+  final NamedLocationIp = module_index.NamedLocationIp.new;
+  final NamedLocationIpArgs = module_index.NamedLocationIp.new;
+  final NamedLocationState = module_index.NamedLocationState.new;
+  final NamedLocationStateArgs = module_index.NamedLocationState.new;
+  final PrivilegedAccessGroupAssignmentSchedule =
+      module_index.PrivilegedAccessGroupAssignmentSchedule.new;
+  final PrivilegedAccessGroupAssignmentScheduleArgs =
+      module_index.PrivilegedAccessGroupAssignmentScheduleArgs.new;
+  final PrivilegedAccessGroupAssignmentScheduleState =
+      module_index.PrivilegedAccessGroupAssignmentScheduleState.new;
+  final PrivilegedAccessGroupAssignmentScheduleStateArgs =
+      module_index.PrivilegedAccessGroupAssignmentScheduleState.new;
+  final PrivilegedAccessGroupEligibilitySchedule =
+      module_index.PrivilegedAccessGroupEligibilitySchedule.new;
+  final PrivilegedAccessGroupEligibilityScheduleArgs =
+      module_index.PrivilegedAccessGroupEligibilityScheduleArgs.new;
+  final PrivilegedAccessGroupEligibilityScheduleState =
+      module_index.PrivilegedAccessGroupEligibilityScheduleState.new;
+  final PrivilegedAccessGroupEligibilityScheduleStateArgs =
+      module_index.PrivilegedAccessGroupEligibilityScheduleState.new;
+  final ServicePrincipal = module_index.ServicePrincipal.new;
+  final ServicePrincipalAppRole = module_index.ServicePrincipalAppRole.new;
+  final ServicePrincipalAppRoleArgs = module_index.ServicePrincipalAppRole.new;
+  final ServicePrincipalArgs = module_index.ServicePrincipalArgs.new;
+  final ServicePrincipalCertificate =
+      module_index.ServicePrincipalCertificate.new;
+  final ServicePrincipalCertificateArgs =
+      module_index.ServicePrincipalCertificateArgs.new;
+  final ServicePrincipalCertificateState =
+      module_index.ServicePrincipalCertificateState.new;
+  final ServicePrincipalCertificateStateArgs =
+      module_index.ServicePrincipalCertificateState.new;
+  final ServicePrincipalClaimsMappingPolicyAssignment =
+      module_index.ServicePrincipalClaimsMappingPolicyAssignment.new;
+  final ServicePrincipalClaimsMappingPolicyAssignmentArgs =
+      module_index.ServicePrincipalClaimsMappingPolicyAssignmentArgs.new;
+  final ServicePrincipalClaimsMappingPolicyAssignmentState =
+      module_index.ServicePrincipalClaimsMappingPolicyAssignmentState.new;
+  final ServicePrincipalClaimsMappingPolicyAssignmentStateArgs =
+      module_index.ServicePrincipalClaimsMappingPolicyAssignmentState.new;
+  final ServicePrincipalDelegatedPermissionGrant =
+      module_index.ServicePrincipalDelegatedPermissionGrant.new;
+  final ServicePrincipalDelegatedPermissionGrantArgs =
+      module_index.ServicePrincipalDelegatedPermissionGrantArgs.new;
+  final ServicePrincipalDelegatedPermissionGrantState =
+      module_index.ServicePrincipalDelegatedPermissionGrantState.new;
+  final ServicePrincipalDelegatedPermissionGrantStateArgs =
+      module_index.ServicePrincipalDelegatedPermissionGrantState.new;
+  final ServicePrincipalFeature = module_index.ServicePrincipalFeature.new;
+  final ServicePrincipalFeatureArgs = module_index.ServicePrincipalFeature.new;
+  final ServicePrincipalFeatureTag =
+      module_index.ServicePrincipalFeatureTag.new;
+  final ServicePrincipalFeatureTagArgs =
+      module_index.ServicePrincipalFeatureTag.new;
+  final ServicePrincipalOauth2PermissionScope =
+      module_index.ServicePrincipalOauth2PermissionScope.new;
+  final ServicePrincipalOauth2PermissionScopeArgs =
+      module_index.ServicePrincipalOauth2PermissionScope.new;
+  final ServicePrincipalPassword = module_index.ServicePrincipalPassword.new;
+  final ServicePrincipalPasswordArgs =
+      module_index.ServicePrincipalPasswordArgs.new;
+  final ServicePrincipalPasswordState =
+      module_index.ServicePrincipalPasswordState.new;
+  final ServicePrincipalPasswordStateArgs =
+      module_index.ServicePrincipalPasswordState.new;
+  final ServicePrincipalSamlSingleSignOn =
+      module_index.ServicePrincipalSamlSingleSignOn.new;
+  final ServicePrincipalSamlSingleSignOnArgs =
+      module_index.ServicePrincipalSamlSingleSignOn.new;
+  final ServicePrincipalState = module_index.ServicePrincipalState.new;
+  final ServicePrincipalStateArgs = module_index.ServicePrincipalState.new;
+  final ServicePrincipalTokenSigningCertificate =
+      module_index.ServicePrincipalTokenSigningCertificate.new;
+  final ServicePrincipalTokenSigningCertificateArgs =
+      module_index.ServicePrincipalTokenSigningCertificateArgs.new;
+  final ServicePrincipalTokenSigningCertificateState =
+      module_index.ServicePrincipalTokenSigningCertificateState.new;
+  final ServicePrincipalTokenSigningCertificateStateArgs =
+      module_index.ServicePrincipalTokenSigningCertificateState.new;
+  final SynchronizationJob = module_index.SynchronizationJob.new;
+  final SynchronizationJobArgs = module_index.SynchronizationJobArgs.new;
+  final SynchronizationJobProvisionOnDemand =
+      module_index.SynchronizationJobProvisionOnDemand.new;
+  final SynchronizationJobProvisionOnDemandArgs =
+      module_index.SynchronizationJobProvisionOnDemandArgs.new;
+  final SynchronizationJobProvisionOnDemandParameter =
+      module_index.SynchronizationJobProvisionOnDemandParameter.new;
+  final SynchronizationJobProvisionOnDemandParameterArgs =
+      module_index.SynchronizationJobProvisionOnDemandParameter.new;
+  final SynchronizationJobProvisionOnDemandParameterSubject =
+      module_index.SynchronizationJobProvisionOnDemandParameterSubject.new;
+  final SynchronizationJobProvisionOnDemandParameterSubjectArgs =
+      module_index.SynchronizationJobProvisionOnDemandParameterSubject.new;
+  final SynchronizationJobProvisionOnDemandState =
+      module_index.SynchronizationJobProvisionOnDemandState.new;
+  final SynchronizationJobProvisionOnDemandStateArgs =
+      module_index.SynchronizationJobProvisionOnDemandState.new;
+  final SynchronizationJobSchedule =
+      module_index.SynchronizationJobSchedule.new;
+  final SynchronizationJobScheduleArgs =
+      module_index.SynchronizationJobSchedule.new;
+  final SynchronizationJobState = module_index.SynchronizationJobState.new;
+  final SynchronizationJobStateArgs = module_index.SynchronizationJobState.new;
+  final SynchronizationSecret = module_index.SynchronizationSecret.new;
+  final SynchronizationSecretArgs = module_index.SynchronizationSecretArgs.new;
+  final SynchronizationSecretCredential =
+      module_index.SynchronizationSecretCredential.new;
+  final SynchronizationSecretCredentialArgs =
+      module_index.SynchronizationSecretCredential.new;
+  final SynchronizationSecretState =
+      module_index.SynchronizationSecretState.new;
+  final SynchronizationSecretStateArgs =
+      module_index.SynchronizationSecretState.new;
+  final User = module_index.User.new;
+  final UserArgs = module_index.UserArgs.new;
+  final UserFlowAttribute = module_index.UserFlowAttribute.new;
+  final UserFlowAttributeArgs = module_index.UserFlowAttributeArgs.new;
+  final UserFlowAttributeState = module_index.UserFlowAttributeState.new;
+  final UserFlowAttributeStateArgs = module_index.UserFlowAttributeState.new;
+  final UserState = module_index.UserState.new;
+  final UserStateArgs = module_index.UserState.new;
+  final getAccessPackage = module_index.getAccessPackage;
+  final getAccessPackageCatalog = module_index.getAccessPackageCatalog;
+  final getAccessPackageCatalogRole = module_index.getAccessPackageCatalogRole;
+  final getAdministrativeUnit = module_index.getAdministrativeUnit;
+  final getApplication = module_index.getApplication;
+  final getApplicationPublishedAppIds =
+      module_index.getApplicationPublishedAppIds;
+  final getApplicationTemplate = module_index.getApplicationTemplate;
+  final getClientConfig = module_index.getClientConfig;
+  final getDirectoryObject = module_index.getDirectoryObject;
+  final getDirectoryRoleTemplates = module_index.getDirectoryRoleTemplates;
+  final getDirectoryRoles = module_index.getDirectoryRoles;
+  final getDomains = module_index.getDomains;
+  final getGroup = module_index.getGroup;
+  final getGroupRoleManagementPolicy =
+      module_index.getGroupRoleManagementPolicy;
+  final getGroups = module_index.getGroups;
+  final getNamedLocation = module_index.getNamedLocation;
+  final getServicePrincipal = module_index.getServicePrincipal;
+  final getServicePrincipals = module_index.getServicePrincipals;
+  final getUser = module_index.getUser;
+  final getUsers = module_index.getUsers;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Azuread = _providers.ProviderProvider.new;
-  final AzureadArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final terraformConfig = _providers.terraformConfig;
+  final Azuread = module_providers.ProviderProvider.new;
+  final AzureadArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
-

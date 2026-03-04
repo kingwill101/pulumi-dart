@@ -8,29 +8,50 @@ import 'secret_password_key_vault_properties.dart';
 class SecretPassword {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<SecretPasswordIdentity>? identity;
+
   /// Properties provided by KeyVault.
   final pulumi.Input<SecretPasswordKeyVaultProperties>? keyVaultProperties;
 
   /// Creates a new [SecretPassword].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keyVaultProperties] Properties provided by KeyVault.
-  SecretPassword({
-    this.identity,
-    this.keyVaultProperties,
-  });
+  SecretPassword({this.identity, this.keyVaultProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<SecretPasswordIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<SecretPasswordKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretPasswordIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretPasswordKeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory SecretPassword.fromMap(Map<String, dynamic> map) {
     return SecretPassword(
-      identity: map['identity'] == null ? null : (SecretPasswordIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (SecretPasswordKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretPasswordIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretPasswordKeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

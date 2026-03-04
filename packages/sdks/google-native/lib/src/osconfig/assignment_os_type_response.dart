@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentOsTypeResponse {
   /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
   final pulumi.Input<String> osArchitecture;
+
   /// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
   final pulumi.Input<String> osShortName;
+
   /// Targets VM instances with OS Inventory enabled and having the following following OS version.
   final pulumi.Input<String> osVersion;
 
@@ -31,10 +33,9 @@ class AssignmentOsTypeResponse {
 
   factory AssignmentOsTypeResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentOsTypeResponse(
-      osArchitecture: (map['osArchitecture'] as String).input(),
-      osShortName: (map['osShortName'] as String).input(),
-      osVersion: (map['osVersion'] as String).input(),
+      osArchitecture: pulumi.Input.fromValue(map['osArchitecture'] as String),
+      osShortName: pulumi.Input.fromValue(map['osShortName'] as String),
+      osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
     );
   }
 }
-

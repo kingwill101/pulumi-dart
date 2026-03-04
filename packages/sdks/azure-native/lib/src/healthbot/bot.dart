@@ -20,20 +20,28 @@ import 'system_data_response.dart';
 class Bot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the Azure Health Bot.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The set of properties specific to Azure Health Bot resource.
   late final pulumi.Output<HealthBotPropertiesResponse> properties;
+
   /// SKU of the Azure Health Bot.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -41,24 +49,21 @@ class Bot extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Bot]. {@macro pulumi_healthbot_bot_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Bot(
-    String name, {
-    BotArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:healthbot:Bot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+  Bot(String name, {BotArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:healthbot:Bot',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<HealthBotPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<HealthBotPropertiesResponse>('properties');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

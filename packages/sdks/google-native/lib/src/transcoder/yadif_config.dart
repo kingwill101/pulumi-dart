@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class YadifConfig {
   /// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
   final pulumi.Input<bool>? deinterlaceAllFrames;
+
   /// Disable spacial interlacing. The default is `false`.
   final pulumi.Input<bool>? disableSpatialInterlacing;
+
   /// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
   final pulumi.Input<String>? mode;
+
   /// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
   final pulumi.Input<String>? parity;
 
@@ -36,11 +39,26 @@ class YadifConfig {
 
   factory YadifConfig.fromMap(Map<String, dynamic> map) {
     return YadifConfig(
-      deinterlaceAllFrames: map['deinterlaceAllFrames'] == null ? null : (map['deinterlaceAllFrames']! as bool).input(),
-      disableSpatialInterlacing: map['disableSpatialInterlacing'] == null ? null : (map['disableSpatialInterlacing']! as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      parity: map['parity'] == null ? null : (map['parity']! as String).input(),
+      deinterlaceAllFrames: (() {
+        final guardedValue = map['deinterlaceAllFrames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      disableSpatialInterlacing: (() {
+        final guardedValue = map['disableSpatialInterlacing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parity: (() {
+        final guardedValue = map['parity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

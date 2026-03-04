@@ -9,20 +9,22 @@ class OriginAuthenticationMethodResponse {
 
   /// Creates a new [OriginAuthenticationMethodResponse].
   /// [jwt] Required.
-  OriginAuthenticationMethodResponse({
-    required this.jwt,
-  });
+  OriginAuthenticationMethodResponse({required this.jwt});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jwt': pulumi.Input.mapInputValue<JwtResponse, Map<String, dynamic>>(jwt, (value) => value.toMap()),
+      'jwt': pulumi.Input.mapInputValue<JwtResponse, Map<String, dynamic>>(
+        jwt,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory OriginAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationMethodResponse(
-      jwt: (JwtResponse.fromMap((map['jwt'] as Map).cast<String, dynamic>())).input(),
+      jwt: pulumi.Input.fromValue(
+        JwtResponse.fromMap((map['jwt']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

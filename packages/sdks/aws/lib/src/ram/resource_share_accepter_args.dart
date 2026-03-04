@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceShareAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the resource share.
   final pulumi.Input<String> shareArn;
 
   /// Creates a new [ResourceShareAccepterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shareArn] The ARN of the resource share.
-  ResourceShareAccepterArgs({
-    this.region,
-    required this.shareArn,
-  });
+  ResourceShareAccepterArgs({this.region, required this.shareArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'shareArn': shareArn,
-    };
+    return <String, dynamic>{'region': ?region, 'shareArn': shareArn};
   }
 
   factory ResourceShareAccepterArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareAccepterArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      shareArn: (map['shareArn'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareArn: pulumi.Input.fromValue(map['shareArn'] as String),
     );
   }
 }
-

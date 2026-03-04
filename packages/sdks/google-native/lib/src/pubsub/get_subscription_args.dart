@@ -13,10 +13,7 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionArgs({
-    this.project,
-    required this.subscriptionId,
-  });
+  GetSubscriptionArgs({this.project, required this.subscriptionId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,12 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

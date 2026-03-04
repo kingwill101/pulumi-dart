@@ -14,15 +14,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

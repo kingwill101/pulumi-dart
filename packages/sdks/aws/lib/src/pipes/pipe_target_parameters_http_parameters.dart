@@ -27,10 +27,25 @@ class PipeTargetParametersHttpParameters {
 
   factory PipeTargetParametersHttpParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersHttpParameters(
-      headerParameters: map['headerParameters'] == null ? null : (((map['headerParameters'] as Map).cast<String, String>()).input()).input(),
-      pathParameterValues: map['pathParameterValues'] == null ? null : ((map['pathParameterValues'] as String).input()).input(),
-      queryStringParameters: map['queryStringParameters'] == null ? null : (((map['queryStringParameters'] as Map).cast<String, String>()).input()).input(),
+      headerParameters: (() {
+        final guardedValue = map['headerParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      pathParameterValues: (() {
+        final guardedValue = map['pathParameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryStringParameters: (() {
+        final guardedValue = map['queryStringParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'firewall_policy_rule_collection_group_application_rule_collection.dart';
 import 'firewall_policy_rule_collection_group_args.dart';
-import 'firewall_policy_rule_collection_group_nat_rule_collection.dart';
-import 'firewall_policy_rule_collection_group_network_rule_collection.dart';
 import 'firewall_policy_rule_collection_group_state.dart';
 
 /// Manages a Firewall Policy Rule Collection Group.
@@ -593,7 +590,7 @@ import 'firewall_policy_rule_collection_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -607,15 +604,21 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// ```
 class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
   /// One or more `application_rule_collection` blocks as defined below.
-  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?> applicationRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  applicationRuleCollections;
+
   /// The ID of the Firewall Policy where the Firewall Policy Rule Collection Group should exist. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> firewallPolicyId;
+
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `nat_rule_collection` blocks as defined below.
-  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?> natRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> natRuleCollections;
+
   /// One or more `network_rule_collection` blocks as defined below.
-  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?> networkRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleCollections;
+
   /// The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   late final pulumi.Output<int> priority;
 
@@ -628,17 +631,23 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     FirewallPolicyRuleCollectionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections');
-    this.firewallPolicyId = registerOutput<String>('firewallPolicyId');
+         'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationRuleCollections',
+    );
+    firewallPolicyId = registerOutput<String>('firewallPolicyId');
     this.name = registerOutput<String>('name');
-    this.natRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?>('natRuleCollections');
-    this.networkRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?>('networkRuleCollections');
-    this.priority = registerOutput<int>('priority');
+    natRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'natRuleCollections',
+    );
+    networkRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'networkRuleCollections',
+    );
+    priority = registerOutput<int>('priority');
   }
 
   /// Gets an existing [FirewallPolicyRuleCollectionGroup] resource's state with the given [name] and [id].
@@ -659,16 +668,22 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections');
-    this.firewallPolicyId = registerOutput<String>('firewallPolicyId');
+         'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationRuleCollections',
+    );
+    firewallPolicyId = registerOutput<String>('firewallPolicyId');
     this.name = registerOutput<String>('name');
-    this.natRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?>('natRuleCollections');
-    this.networkRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?>('networkRuleCollections');
-    this.priority = registerOutput<int>('priority');
+    natRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'natRuleCollections',
+    );
+    networkRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'networkRuleCollections',
+    );
+    priority = registerOutput<int>('priority');
   }
 }

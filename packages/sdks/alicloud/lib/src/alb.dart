@@ -1,5 +1,3 @@
-library module_alb;
-
 export 'alb/acl.dart';
 export 'alb/acl_acl_entry.dart';
 export 'alb/acl_args.dart';

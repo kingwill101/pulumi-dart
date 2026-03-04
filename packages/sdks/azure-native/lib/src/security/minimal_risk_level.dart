@@ -5,16 +5,15 @@ enum MinimalRiskLevel {
   valueMedium("Medium"),
   valueLow("Low");
 
-  const MinimalRiskLevel(this.value);
-  final String value;
+  const MinimalRiskLevel(this.wireValue);
+  final String wireValue;
 
   static MinimalRiskLevel fromValue(String value) {
     for (final item in MinimalRiskLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MinimalRiskLevel value: $value');
   }
 }
-

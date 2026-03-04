@@ -1,5 +1,3 @@
-library module_desktopvirtualization;
-
 export 'desktopvirtualization/application.dart';
 export 'desktopvirtualization/application_args.dart';
 export 'desktopvirtualization/application_group.dart';

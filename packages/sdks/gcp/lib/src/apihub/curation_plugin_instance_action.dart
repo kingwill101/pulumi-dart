@@ -8,6 +8,7 @@ class CurationPluginInstanceAction {
   /// This should map to one of the action IDs specified
   /// in action configs in the plugin.
   final pulumi.Input<String>? actionId;
+
   /// (Output)
   /// Plugin instance that is using the curation.
   /// Format is
@@ -17,10 +18,7 @@ class CurationPluginInstanceAction {
   /// Creates a new [CurationPluginInstanceAction].
   /// [actionId] (Output)
   /// [pluginInstance] (Output)
-  CurationPluginInstanceAction({
-    this.actionId,
-    this.pluginInstance,
-  });
+  CurationPluginInstanceAction({this.actionId, this.pluginInstance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,16 @@ class CurationPluginInstanceAction {
 
   factory CurationPluginInstanceAction.fromMap(Map<String, dynamic> map) {
     return CurationPluginInstanceAction(
-      actionId: map['actionId'] == null ? null : (map['actionId']! as String).input(),
-      pluginInstance: map['pluginInstance'] == null ? null : (map['pluginInstance']! as String).input(),
+      actionId: (() {
+        final guardedValue = map['actionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginInstance: (() {
+        final guardedValue = map['pluginInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

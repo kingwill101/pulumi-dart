@@ -15,17 +15,15 @@ class GetDataSetPhysicalTableMapCustomSqlColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
-  factory GetDataSetPhysicalTableMapCustomSqlColumn.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapCustomSqlColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetPhysicalTableMapCustomSqlColumn(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class KubeEnvironmentProfile {
 
   /// Creates a new [KubeEnvironmentProfile].
   /// [id] Resource ID of the Kubernetes Environment.
-  KubeEnvironmentProfile({
-    this.id,
-  });
+  KubeEnvironmentProfile({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory KubeEnvironmentProfile.fromMap(Map<String, dynamic> map) {
     return KubeEnvironmentProfile(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

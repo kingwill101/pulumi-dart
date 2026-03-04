@@ -6,14 +6,19 @@ import 'system_data_response.dart';
 class GetDomainTopicResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified identifier of the resource.
   final String id;
+
   /// Name of the resource.
   final String name;
+
   /// Provisioning state of the domain topic.
   final String provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
+
   /// Type of the resource.
   final String type;
 
@@ -50,9 +55,10 @@ class GetDomainTopicResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

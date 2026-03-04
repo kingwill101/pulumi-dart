@@ -9,20 +9,15 @@ class CollapsibleGroupResponse {
 
   /// Creates a new [CollapsibleGroupResponse].
   /// [collapsed] The collapsed state of the widget on first page load.
-  CollapsibleGroupResponse({
-    required this.collapsed,
-  });
+  CollapsibleGroupResponse({required this.collapsed});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'collapsed': collapsed,
-    };
+    return <String, dynamic>{'collapsed': collapsed};
   }
 
   factory CollapsibleGroupResponse.fromMap(Map<String, dynamic> map) {
     return CollapsibleGroupResponse(
-      collapsed: (map['collapsed'] as bool).input(),
+      collapsed: pulumi.Input.fromValue(map['collapsed'] as bool),
     );
   }
 }
-

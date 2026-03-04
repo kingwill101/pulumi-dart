@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeployedResourcesPropertiesResponse {
   /// Gets or sets the context of deployed resources.
   final pulumi.Input<String> context;
+
   /// Gets or sets the deployed resource id.
   final pulumi.Input<String> deployedResourceId;
+
   /// Gets or sets the deployment timestamp.
   final pulumi.Input<String> deploymentTimestamp;
+
   /// Gets or sets the name of deployed resources.
   final pulumi.Input<String> displayName;
+
   /// Gets or sets the ID.
   final pulumi.Input<String> id;
+
   /// Gets or sets a value indicating whether resources are cleaned up from target.
   final pulumi.Input<bool> isCleanUpDone;
+
   /// Gets or sets a value indicating whether scenario is test migration.
   final pulumi.Input<bool> isTestMigration;
+
   /// Gets or sets the status of deployed resources.
   final pulumi.Input<String> status;
+
   /// Gets or sets the type of deployed resources.
   final pulumi.Input<String> type;
 
@@ -59,18 +67,23 @@ class DeployedResourcesPropertiesResponse {
     };
   }
 
-  factory DeployedResourcesPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DeployedResourcesPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeployedResourcesPropertiesResponse(
-      context: (map['context'] as String).input(),
-      deployedResourceId: (map['deployedResourceId'] as String).input(),
-      deploymentTimestamp: (map['deploymentTimestamp'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      id: (map['id'] as String).input(),
-      isCleanUpDone: (map['isCleanUpDone'] as bool).input(),
-      isTestMigration: (map['isTestMigration'] as bool).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      context: pulumi.Input.fromValue(map['context'] as String),
+      deployedResourceId: pulumi.Input.fromValue(
+        map['deployedResourceId'] as String,
+      ),
+      deploymentTimestamp: pulumi.Input.fromValue(
+        map['deploymentTimestamp'] as String,
+      ),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isCleanUpDone: pulumi.Input.fromValue(map['isCleanUpDone'] as bool),
+      isTestMigration: pulumi.Input.fromValue(map['isTestMigration'] as bool),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

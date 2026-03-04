@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerImageShareGroupTokensToken {
   /// When the token was created.
   final pulumi.Input<String> created;
+
   /// When the token will expire.
   final pulumi.Input<String> expiry;
+
   /// A label for the token.
   final pulumi.Input<String> label;
+
   /// The label of the Image Share Group that the token is for.
   final pulumi.Input<String> sharegroupLabel;
+
   /// The UUID of the Image Share Group that the token is for.
   final pulumi.Input<String> sharegroupUuid;
+
   /// The status of the token.
   final pulumi.Input<String> status;
+
   /// The UUID of the token.
   final pulumi.Input<String> tokenUuid;
+
   /// When the token was last updated.
   final pulumi.Input<String> updated;
+
   /// The UUID of the Image Share Group for which to create a token.
   final pulumi.Input<String> validForSharegroupUuid;
 
@@ -58,18 +66,21 @@ class GetConsumerImageShareGroupTokensToken {
     };
   }
 
-  factory GetConsumerImageShareGroupTokensToken.fromMap(Map<String, dynamic> map) {
+  factory GetConsumerImageShareGroupTokensToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConsumerImageShareGroupTokensToken(
-      created: (map['created'] as String).input(),
-      expiry: (map['expiry'] as String).input(),
-      label: (map['label'] as String).input(),
-      sharegroupLabel: (map['sharegroupLabel'] as String).input(),
-      sharegroupUuid: (map['sharegroupUuid'] as String).input(),
-      status: (map['status'] as String).input(),
-      tokenUuid: (map['tokenUuid'] as String).input(),
-      updated: (map['updated'] as String).input(),
-      validForSharegroupUuid: (map['validForSharegroupUuid'] as String).input(),
+      created: pulumi.Input.fromValue(map['created'] as String),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      sharegroupLabel: pulumi.Input.fromValue(map['sharegroupLabel'] as String),
+      sharegroupUuid: pulumi.Input.fromValue(map['sharegroupUuid'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tokenUuid: pulumi.Input.fromValue(map['tokenUuid'] as String),
+      updated: pulumi.Input.fromValue(map['updated'] as String),
+      validForSharegroupUuid: pulumi.Input.fromValue(
+        map['validForSharegroupUuid'] as String,
+      ),
     );
   }
 }
-

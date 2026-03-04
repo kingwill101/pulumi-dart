@@ -157,18 +157,25 @@ import 'system_data_response.dart';
 class ApplicationResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// The Arm id of the application resource.
   late final pulumi.Output<String> resourceId;
+
   /// The kind of the application resource.
   late final pulumi.Output<String?> resourceKind;
+
   /// The type of the application resource.
   late final pulumi.Output<String> resourceType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -181,18 +188,18 @@ class ApplicationResource extends pulumi.CustomResource {
     ApplicationResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:integrationspaces:ApplicationResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:integrationspaces:ApplicationResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceKind = registerOutput<String?>('resourceKind');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceId = registerOutput<String>('resourceId');
+    resourceKind = registerOutput<String?>('resourceKind');
+    resourceType = registerOutput<String>('resourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

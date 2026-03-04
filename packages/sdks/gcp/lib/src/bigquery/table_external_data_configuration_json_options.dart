@@ -8,20 +8,21 @@ class TableExternalDataConfigurationJsonOptions {
 
   /// Creates a new [TableExternalDataConfigurationJsonOptions].
   /// [encoding] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
-  TableExternalDataConfigurationJsonOptions({
-    this.encoding,
-  });
+  TableExternalDataConfigurationJsonOptions({this.encoding});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'encoding': ?encoding,
-    };
+    return <String, dynamic>{'encoding': ?encoding};
   }
 
-  factory TableExternalDataConfigurationJsonOptions.fromMap(Map<String, dynamic> map) {
+  factory TableExternalDataConfigurationJsonOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExternalDataConfigurationJsonOptions(
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -39,12 +39,15 @@ class GetConsentHealthcareV1beta1Args {
 
   factory GetConsentHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetConsentHealthcareV1beta1Args(
-      consentId: (map['consentId'] as String).input(),
-      consentStoreId: (map['consentStoreId'] as String).input(),
-      datasetId: (map['datasetId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      consentId: pulumi.Input.fromValue(map['consentId'] as String),
+      consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

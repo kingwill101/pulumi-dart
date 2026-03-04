@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_environment_type_args.dart';
 import 'project_environment_type_identity.dart';
 import 'project_environment_type_state.dart';
-import 'project_environment_type_user_role_assignment.dart';
 
 /// Manages a Dev Center Project Environment Type.
 ///
@@ -338,7 +337,7 @@ import 'project_environment_type_user_role_assignment.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -353,20 +352,27 @@ import 'project_environment_type_user_role_assignment.dart';
 class ProjectEnvironmentType extends pulumi.CustomResource {
   /// A list of roles to assign to the environment creator.
   late final pulumi.Output<List<String>?> creatorRoleAssignmentRoles;
+
   /// The ID of the subscription that the Environment Type will be mapped to. The environment's resources will be deployed into this subscription.
   late final pulumi.Output<String> deploymentTargetId;
+
   /// The ID of the associated Dev Center Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterProjectId;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ProjectEnvironmentTypeIdentity> identity;
+
   /// The Azure Region where the Dev Center Project Environment Type should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Dev Center Project Environment Type. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `user_role_assignment` block as defined below.
-  late final pulumi.Output<List<ProjectEnvironmentTypeUserRoleAssignment>?> userRoleAssignments;
+  late final pulumi.Output<List<Map<String, dynamic>>?> userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentType].
   /// [name] The Pulumi resource name.
@@ -377,19 +383,23 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     ProjectEnvironmentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles');
-    this.deploymentTargetId = registerOutput<String>('deploymentTargetId');
-    this.devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    this.identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creatorRoleAssignmentRoles = registerOutput<List<String>?>(
+      'creatorRoleAssignmentRoles',
+    );
+    deploymentTargetId = registerOutput<String>('deploymentTargetId');
+    devCenterProjectId = registerOutput<String>('devCenterProjectId');
+    identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.userRoleAssignments = registerOutput<List<ProjectEnvironmentTypeUserRoleAssignment>?>('userRoleAssignments');
+    tags = registerOutput<Map<String, String>?>('tags');
+    userRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
+      'userRoleAssignments',
+    );
   }
 
   /// Gets an existing [ProjectEnvironmentType] resource's state with the given [name] and [id].
@@ -410,18 +420,22 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles');
-    this.deploymentTargetId = registerOutput<String>('deploymentTargetId');
-    this.devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    this.identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creatorRoleAssignmentRoles = registerOutput<List<String>?>(
+      'creatorRoleAssignmentRoles',
+    );
+    deploymentTargetId = registerOutput<String>('deploymentTargetId');
+    devCenterProjectId = registerOutput<String>('devCenterProjectId');
+    identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.userRoleAssignments = registerOutput<List<ProjectEnvironmentTypeUserRoleAssignment>?>('userRoleAssignments');
+    tags = registerOutput<Map<String, String>?>('tags');
+    userRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
+      'userRoleAssignments',
+    );
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
   /// The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
   final pulumi.Input<String> fullName;
+
   /// Path to the proto file that contains the message type's definition.
   final pulumi.Input<String> path;
 
@@ -17,17 +18,15 @@ class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fullName': fullName,
-      'path': path,
-    };
+    return <String, dynamic>{'fullName': fullName, 'path': path};
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse(
-      fullName: (map['fullName'] as String).input(),
-      path: (map['path'] as String).input(),
+      fullName: pulumi.Input.fromValue(map['fullName'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

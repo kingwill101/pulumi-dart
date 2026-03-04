@@ -3,16 +3,17 @@ enum SecurityAlertPolicyUseServerDefault {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SecurityAlertPolicyUseServerDefault(this.value);
-  final String value;
+  const SecurityAlertPolicyUseServerDefault(this.wireValue);
+  final String wireValue;
 
   static SecurityAlertPolicyUseServerDefault fromValue(String value) {
     for (final item in SecurityAlertPolicyUseServerDefault.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityAlertPolicyUseServerDefault value: $value');
+    throw ArgumentError(
+      'Unknown SecurityAlertPolicyUseServerDefault value: $value',
+    );
   }
 }
-

@@ -8,20 +8,19 @@ class NlpVerticalFeaturizationSettings {
 
   /// Creates a new [NlpVerticalFeaturizationSettings].
   /// [datasetLanguage] Dataset language, useful for the text data.
-  NlpVerticalFeaturizationSettings({
-    this.datasetLanguage,
-  });
+  NlpVerticalFeaturizationSettings({this.datasetLanguage});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetLanguage': ?datasetLanguage,
-    };
+    return <String, dynamic>{'datasetLanguage': ?datasetLanguage};
   }
 
   factory NlpVerticalFeaturizationSettings.fromMap(Map<String, dynamic> map) {
     return NlpVerticalFeaturizationSettings(
-      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage']! as String).input(),
+      datasetLanguage: (() {
+        final guardedValue = map['datasetLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

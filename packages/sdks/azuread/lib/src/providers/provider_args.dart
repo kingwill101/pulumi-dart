@@ -9,46 +9,67 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderArgs {
   /// The Azure DevOps Pipeline Service Connection ID.
   final pulumi.Input<String>? adoPipelineServiceConnectionId;
+
   /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
   final pulumi.Input<String>? clientCertificate;
+
   /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
   final pulumi.Input<String>? clientCertificatePassword;
+
   /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
   final pulumi.Input<String>? clientCertificatePath;
+
   /// The Client ID which should be used for service principal authentication
   final pulumi.Input<String>? clientId;
+
   /// The path to a file containing the Client ID which should be used for service principal authentication
   final pulumi.Input<String>? clientIdFilePath;
+
   /// The application password to use when authenticating as a Service Principal using a Client Secret
   final pulumi.Input<String>? clientSecret;
+
   /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
   final pulumi.Input<String>? clientSecretFilePath;
+
   /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
   final pulumi.Input<bool>? disableTerraformPartnerId;
+
   /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
   final pulumi.Input<String>? environment;
+
   /// The Hostname which should be used for the Azure Metadata Service.
   final pulumi.Input<String>? metadataHost;
+
   /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
   final pulumi.Input<String>? msiEndpoint;
+
   /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
   final pulumi.Input<String>? oidcRequestToken;
+
   /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
   final pulumi.Input<String>? oidcRequestUrl;
+
   /// The ID token for use when authenticating as a Service Principal using OpenID Connect.
   final pulumi.Input<String>? oidcToken;
+
   /// The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
   final pulumi.Input<String>? oidcTokenFilePath;
+
   /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
   final pulumi.Input<String>? partnerId;
+
   /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
   final pulumi.Input<String>? tenantId;
+
   /// Allow Azure AKS Workload Identity to be used for Authentication.
   final pulumi.Input<bool>? useAksWorkloadIdentity;
+
   /// Allow Azure CLI to be used for Authentication
   final pulumi.Input<bool>? useCli;
+
   /// Allow Managed Identity to be used for Authentication
   final pulumi.Input<bool>? useMsi;
+
   /// Allow OpenID Connect to be used for authentication
   final pulumi.Input<bool>? useOidc;
 
@@ -129,29 +150,116 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      adoPipelineServiceConnectionId: map['adoPipelineServiceConnectionId'] == null ? null : (map['adoPipelineServiceConnectionId']! as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
-      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword']! as String).input(),
-      clientCertificatePath: map['clientCertificatePath'] == null ? null : (map['clientCertificatePath']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientIdFilePath: map['clientIdFilePath'] == null ? null : (map['clientIdFilePath']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      clientSecretFilePath: map['clientSecretFilePath'] == null ? null : (map['clientSecretFilePath']! as String).input(),
-      disableTerraformPartnerId: map['disableTerraformPartnerId'] == null ? null : (map['disableTerraformPartnerId']! as bool).input(),
-      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
-      metadataHost: map['metadataHost'] == null ? null : (map['metadataHost']! as String).input(),
-      msiEndpoint: map['msiEndpoint'] == null ? null : (map['msiEndpoint']! as String).input(),
-      oidcRequestToken: map['oidcRequestToken'] == null ? null : (map['oidcRequestToken']! as String).input(),
-      oidcRequestUrl: map['oidcRequestUrl'] == null ? null : (map['oidcRequestUrl']! as String).input(),
-      oidcToken: map['oidcToken'] == null ? null : (map['oidcToken']! as String).input(),
-      oidcTokenFilePath: map['oidcTokenFilePath'] == null ? null : (map['oidcTokenFilePath']! as String).input(),
-      partnerId: map['partnerId'] == null ? null : (map['partnerId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      useAksWorkloadIdentity: map['useAksWorkloadIdentity'] == null ? null : (map['useAksWorkloadIdentity']! as bool).input(),
-      useCli: map['useCli'] == null ? null : (map['useCli']! as bool).input(),
-      useMsi: map['useMsi'] == null ? null : (map['useMsi']! as bool).input(),
-      useOidc: map['useOidc'] == null ? null : (map['useOidc']! as bool).input(),
+      adoPipelineServiceConnectionId: (() {
+        final guardedValue = map['adoPipelineServiceConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCertificate: (() {
+        final guardedValue = map['clientCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCertificatePassword: (() {
+        final guardedValue = map['clientCertificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCertificatePath: (() {
+        final guardedValue = map['clientCertificatePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientIdFilePath: (() {
+        final guardedValue = map['clientIdFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecretFilePath: (() {
+        final guardedValue = map['clientSecretFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableTerraformPartnerId: (() {
+        final guardedValue = map['disableTerraformPartnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadataHost: (() {
+        final guardedValue = map['metadataHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      msiEndpoint: (() {
+        final guardedValue = map['msiEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidcRequestToken: (() {
+        final guardedValue = map['oidcRequestToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidcRequestUrl: (() {
+        final guardedValue = map['oidcRequestUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidcToken: (() {
+        final guardedValue = map['oidcToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidcTokenFilePath: (() {
+        final guardedValue = map['oidcTokenFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerId: (() {
+        final guardedValue = map['partnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useAksWorkloadIdentity: (() {
+        final guardedValue = map['useAksWorkloadIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      useCli: (() {
+        final guardedValue = map['useCli'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      useMsi: (() {
+        final guardedValue = map['useMsi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      useOidc: (() {
+        final guardedValue = map['useOidc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

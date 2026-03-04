@@ -189,26 +189,37 @@ import 'system_data_response.dart';
 class IotDpsResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   late final pulumi.Output<String?> etag;
+
   /// The managed identities for a provisioning service.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The resource location.
   late final pulumi.Output<String> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// Service specific properties for a provisioning service
   late final pulumi.Output<IotDpsPropertiesDescriptionResponse> properties;
+
   /// The resource group of the resource.
   late final pulumi.Output<String?> resourcegroup;
+
   /// Sku info for a provisioning Service.
   late final pulumi.Output<IotDpsSkuInfoResponse> sku;
+
   /// The subscription id of the resource.
   late final pulumi.Output<String?> subscriptionid;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -221,22 +232,24 @@ class IotDpsResource extends pulumi.CustomResource {
     IotDpsResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceprovisioningservices:IotDpsResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:deviceprovisioningservices:IotDpsResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<IotDpsPropertiesDescriptionResponse>('properties');
-    this.resourcegroup = registerOutput<String?>('resourcegroup');
-    this.sku = registerOutput<IotDpsSkuInfoResponse>('sku');
-    this.subscriptionid = registerOutput<String?>('subscriptionid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<IotDpsPropertiesDescriptionResponse>(
+      'properties',
+    );
+    resourcegroup = registerOutput<String?>('resourcegroup');
+    sku = registerOutput<IotDpsSkuInfoResponse>('sku');
+    subscriptionid = registerOutput<String?>('subscriptionid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

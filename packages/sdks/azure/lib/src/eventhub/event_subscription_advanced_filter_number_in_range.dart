@@ -5,9 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionAdvancedFilterNumberInRange {
   /// Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   final pulumi.Input<String> key;
+
   /// Specifies an array of values to compare to when using a multiple values operator.
   ///
-  /// > **Note:** A maximum of total number of advanced filter values allowed on event subscription is 25.
+  /// &gt; **Note:** A maximum of total number of advanced filter values allowed on event subscription is 25.
   final pulumi.Input<List<List<double>>> values;
 
   /// Creates a new [EventSubscriptionAdvancedFilterNumberInRange].
@@ -19,17 +20,17 @@ class EventSubscriptionAdvancedFilterNumberInRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory EventSubscriptionAdvancedFilterNumberInRange.fromMap(Map<String, dynamic> map) {
+  factory EventSubscriptionAdvancedFilterNumberInRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventSubscriptionAdvancedFilterNumberInRange(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<List<double>>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue(
+        (map['values'] as List).cast<List<double>>(),
+      ),
     );
   }
 }
-

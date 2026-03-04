@@ -5,16 +5,22 @@ enum FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState {
   disabled("DISABLED"),
   inherited("INHERITED");
 
-  const FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState(this.value);
-  final String value;
+  const FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState fromValue(String value) {
-    for (final item in FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.values) {
-      if (item.value == value) {
+  static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState
+  fromValue(String value) {
+    for (final item
+        in FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value');
+    throw ArgumentError(
+      'Unknown FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value',
+    );
   }
 }
-

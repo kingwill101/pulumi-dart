@@ -47,29 +47,27 @@ class ProductSubscriptionArgs {
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
   final pulumi.Input<String> productArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [ProductSubscriptionArgs].
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProductSubscriptionArgs({
-    required this.productArn,
-    this.region,
-  });
+  ProductSubscriptionArgs({required this.productArn, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'productArn': productArn,
-      'region': ?region,
-    };
+    return <String, dynamic>{'productArn': productArn, 'region': ?region};
   }
 
   factory ProductSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ProductSubscriptionArgs(
-      productArn: (map['productArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      productArn: pulumi.Input.fromValue(map['productArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,17 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorMicrosoftCloudAppSecurityArgs {
   /// Should the alerts be enabled? Defaults to `true`.
   final pulumi.Input<bool>? alertsEnabled;
+
   /// Should the Discovery Logs be enabled? Defaults to `true`.
   ///
-  /// > **Note:** One of either `alerts_enabled` or `discovery_logs_enabled` has to be specified.
+  /// &gt; **Note:** One of either `alerts_enabled` or `discovery_logs_enabled` has to be specified.
   final pulumi.Input<bool>? discoveryLogsEnabled;
+
   /// The ID of the Log Analytics Workspace that this Microsoft Cloud App Security Data Connector resides in. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Microsoft Cloud App Security Data Connector. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Tenant that this Microsoft Cloud App Security Data Connector connects to.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [DataConnectorMicrosoftCloudAppSecurityArgs].
@@ -46,14 +50,33 @@ class DataConnectorMicrosoftCloudAppSecurityArgs {
     };
   }
 
-  factory DataConnectorMicrosoftCloudAppSecurityArgs.fromMap(Map<String, dynamic> map) {
+  factory DataConnectorMicrosoftCloudAppSecurityArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataConnectorMicrosoftCloudAppSecurityArgs(
-      alertsEnabled: map['alertsEnabled'] == null ? null : (map['alertsEnabled']! as bool).input(),
-      discoveryLogsEnabled: map['discoveryLogsEnabled'] == null ? null : (map['discoveryLogsEnabled']! as bool).input(),
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      alertsEnabled: (() {
+        final guardedValue = map['alertsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      discoveryLogsEnabled: (() {
+        final guardedValue = map['discoveryLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

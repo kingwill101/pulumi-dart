@@ -4,7 +4,6 @@ import 'gremlin_graph_autoscale_settings.dart';
 import 'gremlin_graph_conflict_resolution_policy.dart';
 import 'gremlin_graph_index_policy.dart';
 import 'gremlin_graph_state.dart';
-import 'gremlin_graph_unique_key.dart';
 
 /// Manages a Gremlin Graph within a Cosmos DB Account.
 ///
@@ -316,11 +315,11 @@ import 'gremlin_graph_unique_key.dart';
 /// ```
 ///
 ///
-/// > **Note:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `azure.cosmosdb.Account` resource.
+/// &gt; **Note:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `azure.cosmosdb.Account` resource.
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2024-08-15
@@ -335,34 +334,47 @@ import 'gremlin_graph_unique_key.dart';
 class GremlinGraph extends pulumi.CustomResource {
   /// The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
   ///
-  /// > **Note:** Disabling `analytical_storage_ttl` will force a new resource to be created since it can't be disabled once it's enabled.
+  /// &gt; **Note:** Disabling `analytical_storage_ttl` will force a new resource to be created since it can't be disabled once it's enabled.
   late final pulumi.Output<int?> analyticalStorageTtl;
+
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partition_key_path` to be set.
   ///
-  /// > **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
+  /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<GremlinGraphAutoscaleSettings?> autoscaleSettings;
+
   /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<GremlinGraphConflictResolutionPolicy> conflictResolutionPolicy;
+  late final pulumi.Output<GremlinGraphConflictResolutionPolicy>
+  conflictResolutionPolicy;
+
   /// The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
   late final pulumi.Output<int?> defaultTtl;
+
   /// The configuration of the indexing policy. One or more `index_policy` blocks as defined below.
   late final pulumi.Output<GremlinGraphIndexPolicy> indexPolicy;
+
   /// Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Define a partition key. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partitionKeyPath;
+
   /// Define a partition key version. Changing this forces a new resource to be created. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   late final pulumi.Output<int?> partitionKeyVersion;
+
   /// The name of the resource group in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   late final pulumi.Output<int> throughput;
+
   /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<GremlinGraphUniqueKey>?> uniqueKeys;
+  late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
 
   /// Creates a new [GremlinGraph].
   /// [name] The Pulumi resource name.
@@ -373,24 +385,29 @@ class GremlinGraph extends pulumi.CustomResource {
     GremlinGraphArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/gremlinGraph:GremlinGraph',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    this.autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>('autoscaleSettings');
-    this.conflictResolutionPolicy = registerOutput<GremlinGraphConflictResolutionPolicy>('conflictResolutionPolicy');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.defaultTtl = registerOutput<int?>('defaultTtl');
-    this.indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
+         'azure:cosmosdb/gremlinGraph:GremlinGraph',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
+      'autoscaleSettings',
+    );
+    conflictResolutionPolicy =
+        registerOutput<GremlinGraphConflictResolutionPolicy>(
+          'conflictResolutionPolicy',
+        );
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
     this.name = registerOutput<String>('name');
-    this.partitionKeyPath = registerOutput<String>('partitionKeyPath');
-    this.partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.throughput = registerOutput<int>('throughput');
-    this.uniqueKeys = registerOutput<List<GremlinGraphUniqueKey>?>('uniqueKeys');
+    partitionKeyPath = registerOutput<String>('partitionKeyPath');
+    partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    throughput = registerOutput<int>('throughput');
+    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
   }
 
   /// Gets an existing [GremlinGraph] resource's state with the given [name] and [id].
@@ -411,23 +428,28 @@ class GremlinGraph extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/gremlinGraph:GremlinGraph',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    this.autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>('autoscaleSettings');
-    this.conflictResolutionPolicy = registerOutput<GremlinGraphConflictResolutionPolicy>('conflictResolutionPolicy');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.defaultTtl = registerOutput<int?>('defaultTtl');
-    this.indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
+         'azure:cosmosdb/gremlinGraph:GremlinGraph',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
+      'autoscaleSettings',
+    );
+    conflictResolutionPolicy =
+        registerOutput<GremlinGraphConflictResolutionPolicy>(
+          'conflictResolutionPolicy',
+        );
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
     this.name = registerOutput<String>('name');
-    this.partitionKeyPath = registerOutput<String>('partitionKeyPath');
-    this.partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.throughput = registerOutput<int>('throughput');
-    this.uniqueKeys = registerOutput<List<GremlinGraphUniqueKey>?>('uniqueKeys');
+    partitionKeyPath = registerOutput<String>('partitionKeyPath');
+    partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    throughput = registerOutput<int>('throughput');
+    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
   }
 }

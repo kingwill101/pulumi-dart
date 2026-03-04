@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobTargetGroupArgs {
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name of the target group.
   final pulumi.Input<String> targetGroupName;
 
@@ -39,11 +42,12 @@ class GetJobTargetGroupArgs {
 
   factory GetJobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetJobTargetGroupArgs(
-      jobAgentName: (map['jobAgentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      targetGroupName: (map['targetGroupName'] as String).input(),
+      jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      targetGroupName: pulumi.Input.fromValue(map['targetGroupName'] as String),
     );
   }
 }
-

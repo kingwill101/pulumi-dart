@@ -3,16 +3,15 @@ enum DynamicMemoryEnabled {
   valueFalse("false"),
   valueTrue("true");
 
-  const DynamicMemoryEnabled(this.value);
-  final String value;
+  const DynamicMemoryEnabled(this.wireValue);
+  final String wireValue;
 
   static DynamicMemoryEnabled fromValue(String value) {
     for (final item in DynamicMemoryEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicMemoryEnabled value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class ReplicaModificationsResponse {
 
   /// Creates a new [ReplicaModificationsResponse].
   /// [status] Specifies whether Amazon S3 replicates modifications on replicas.  *Allowed values*: ``Enabled`` | ``Disabled``
-  ReplicaModificationsResponse({
-    this.status,
-  });
+  ReplicaModificationsResponse({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory ReplicaModificationsResponse.fromMap(Map<String, dynamic> map) {
     return ReplicaModificationsResponse(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

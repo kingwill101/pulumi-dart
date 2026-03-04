@@ -184,30 +184,43 @@ import 'connector_args.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ID of the connector.
   late final pulumi.Output<int> connectorId;
+
   /// Name of the connector.
   late final pulumi.Output<String?> connectorName;
+
   /// The connector properties.
   late final pulumi.Output<Map<String, dynamic>> connectorProperties;
+
   /// Type of connector.
   late final pulumi.Output<String> connectorType;
+
   /// The created time.
   late final pulumi.Output<String> created;
+
   /// Description of the connector.
   late final pulumi.Output<String?> description;
+
   /// Display name of the connector.
   late final pulumi.Output<String?> displayName;
+
   /// If this is an internal connector.
   late final pulumi.Output<bool?> isInternal;
+
   /// The last modified time.
   late final pulumi.Output<String> lastModified;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// State of connector.
   late final pulumi.Output<String> state;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -220,24 +233,26 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customerinsights:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectorId = registerOutput<int>('connectorId');
-    this.connectorName = registerOutput<String?>('connectorName');
-    this.connectorProperties = registerOutput<Map<String, dynamic>>('connectorProperties');
-    this.connectorType = registerOutput<String>('connectorType');
-    this.created = registerOutput<String>('created');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.isInternal = registerOutput<bool?>('isInternal');
-    this.lastModified = registerOutput<String>('lastModified');
+         'azure-native:customerinsights:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorId = registerOutput<int>('connectorId');
+    connectorName = registerOutput<String?>('connectorName');
+    connectorProperties = registerOutput<Map<String, dynamic>>(
+      'connectorProperties',
+    );
+    connectorType = registerOutput<String>('connectorType');
+    created = registerOutput<String>('created');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    isInternal = registerOutput<bool?>('isInternal');
+    lastModified = registerOutput<String>('lastModified');
     this.name = registerOutput<String>('name');
-    this.state = registerOutput<String>('state');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    state = registerOutput<String>('state');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,7 +4,7 @@ import 'host_account_user_group_attachment_state.dart';
 
 /// Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user group.
 ///
-/// > **NOTE:** Available since v1.135.0.
+/// &gt; **NOTE:** Available since v1.135.0.
 ///
 /// ## Example Usage
 ///
@@ -495,10 +495,13 @@ import 'host_account_user_group_attachment_state.dart';
 class HostAccountUserGroupAttachment extends pulumi.CustomResource {
   /// A list IDs of the host account.
   late final pulumi.Output<List<String>> hostAccountIds;
+
   /// The ID of the host.
   late final pulumi.Output<String> hostId;
+
   /// The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
   late final pulumi.Output<String> instanceId;
+
   /// The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
   late final pulumi.Output<String> userGroupId;
 
@@ -511,15 +514,15 @@ class HostAccountUserGroupAttachment extends pulumi.CustomResource {
     HostAccountUserGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostAccountIds = registerOutput<List<String>>('hostAccountIds');
-    this.hostId = registerOutput<String>('hostId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.userGroupId = registerOutput<String>('userGroupId');
+         'alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostAccountIds = registerOutput<List<String>>('hostAccountIds');
+    hostId = registerOutput<String>('hostId');
+    instanceId = registerOutput<String>('instanceId');
+    userGroupId = registerOutput<String>('userGroupId');
   }
 
   /// Gets an existing [HostAccountUserGroupAttachment] resource's state with the given [name] and [id].
@@ -540,14 +543,14 @@ class HostAccountUserGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostAccountIds = registerOutput<List<String>>('hostAccountIds');
-    this.hostId = registerOutput<String>('hostId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.userGroupId = registerOutput<String>('userGroupId');
+         'alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostAccountIds = registerOutput<List<String>>('hostAccountIds');
+    hostId = registerOutput<String>('hostId');
+    instanceId = registerOutput<String>('instanceId');
+    userGroupId = registerOutput<String>('userGroupId');
   }
 }

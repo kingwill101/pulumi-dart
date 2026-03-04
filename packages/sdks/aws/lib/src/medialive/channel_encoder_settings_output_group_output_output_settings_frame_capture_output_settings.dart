@@ -13,15 +13,18 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSet
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nameModifier': ?nameModifier,
-    };
+    return <String, dynamic>{'nameModifier': ?nameModifier};
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings(
-      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
+      nameModifier: (() {
+        final guardedValue = map['nameModifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

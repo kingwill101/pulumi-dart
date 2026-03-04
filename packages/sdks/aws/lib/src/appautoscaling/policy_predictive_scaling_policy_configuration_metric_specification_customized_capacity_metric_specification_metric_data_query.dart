@@ -6,12 +6,19 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery {
   /// Math expression to perform on the returned data, if this object is performing a math expression.
   final pulumi.Input<String>? expression;
+
   /// Short name that identifies the object's results in the response.
   final pulumi.Input<String> id;
+
   /// Human-readable label for this metric or expression.
   final pulumi.Input<String>? label;
+
   /// Information about the metric data to return. See supported fields below.
-  final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat>? metricStat;
+  final pulumi.Input<
+    PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat
+  >?
+  metricStat;
+
   /// Whether to return the timestamps and raw data values of this metric.
   final pulumi.Input<bool>? returnData;
 
@@ -34,19 +41,44 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
       'expression': ?expression,
       'id': id,
       'label': ?label,
-      'metricStat': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat, Map<String, dynamic>>(metricStat, (value) => value.toMap()),
+      'metricStat':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat,
+            Map<String, dynamic>
+          >(metricStat, (value) => value.toMap()),
       'returnData': ?returnData,
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
-      id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
-      metricStat: map['metricStat'] == null ? null : ((PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat']! as Map).cast<String, dynamic>())).input()).input(),
-      returnData: map['returnData'] == null ? null : ((map['returnData'] as bool).input()).input(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricStat: (() {
+        final guardedValue = map['metricStat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      returnData: (() {
+        final guardedValue = map['returnData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountConsistencyPolicy {
   /// The Consistency Level used by this CosmosDB Account.
   final pulumi.Input<String> consistencyLevel;
+
   /// The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
   final pulumi.Input<int> maxIntervalInSeconds;
+
   /// The number of stale requests tolerated when the consistency level is Bounded Staleness.
   final pulumi.Input<int> maxStalenessPrefix;
 
@@ -30,10 +32,15 @@ class GetAccountConsistencyPolicy {
 
   factory GetAccountConsistencyPolicy.fromMap(Map<String, dynamic> map) {
     return GetAccountConsistencyPolicy(
-      consistencyLevel: (map['consistencyLevel'] as String).input(),
-      maxIntervalInSeconds: (map['maxIntervalInSeconds'] as int).input(),
-      maxStalenessPrefix: (map['maxStalenessPrefix'] as int).input(),
+      consistencyLevel: pulumi.Input.fromValue(
+        map['consistencyLevel'] as String,
+      ),
+      maxIntervalInSeconds: pulumi.Input.fromValue(
+        map['maxIntervalInSeconds'] as int,
+      ),
+      maxStalenessPrefix: pulumi.Input.fromValue(
+        map['maxStalenessPrefix'] as int,
+      ),
     );
   }
 }
-

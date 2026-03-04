@@ -1,5 +1,3 @@
-library module_dcdn;
-
 export 'dcdn/domain.dart';
 export 'dcdn/domain_args.dart';
 export 'dcdn/domain_config.dart';

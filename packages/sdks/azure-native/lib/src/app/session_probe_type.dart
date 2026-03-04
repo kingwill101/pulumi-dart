@@ -3,16 +3,15 @@ enum SessionProbeType {
   valueLiveness("Liveness"),
   valueStartup("Startup");
 
-  const SessionProbeType(this.value);
-  final String value;
+  const SessionProbeType(this.wireValue);
+  final String wireValue;
 
   static SessionProbeType fromValue(String value) {
     for (final item in SessionProbeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionProbeType value: $value');
   }
 }
-

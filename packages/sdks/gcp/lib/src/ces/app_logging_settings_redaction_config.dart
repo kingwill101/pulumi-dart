@@ -8,9 +8,11 @@ class AppLoggingSettingsRedactionConfig {
   /// Format:
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
   final pulumi.Input<String>? deidentifyTemplate;
+
   /// If true, redaction will be applied in various logging scenarios, including
   /// conversation history, Cloud Logging and audio recording.
   final pulumi.Input<bool>? enableRedaction;
+
   /// [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
   /// detection of sensitive data types.
   /// Format:
@@ -37,10 +39,21 @@ class AppLoggingSettingsRedactionConfig {
 
   factory AppLoggingSettingsRedactionConfig.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsRedactionConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
-      enableRedaction: map['enableRedaction'] == null ? null : (map['enableRedaction']! as bool).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
+      deidentifyTemplate: (() {
+        final guardedValue = map['deidentifyTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableRedaction: (() {
+        final guardedValue = map['enableRedaction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      inspectTemplate: (() {
+        final guardedValue = map['inspectTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

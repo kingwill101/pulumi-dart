@@ -1,5 +1,3 @@
-library module_looker;
-
 export 'looker/admin_settings.dart';
 export 'looker/admin_settings_response.dart';
 export 'looker/audit_config.dart';

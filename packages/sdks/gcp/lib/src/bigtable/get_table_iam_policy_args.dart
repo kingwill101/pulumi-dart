@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableIamPolicyArgs {
   final pulumi.Input<String> instanceName;
   final pulumi.Input<String>? project;
+
   /// The name or relative resource id of the table to manage IAM policies for.
   final pulumi.Input<String> table;
 
@@ -32,10 +33,13 @@ class GetTableIamPolicyArgs {
 
   factory GetTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTableIamPolicyArgs(
-      instanceName: (map['instanceName'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      table: (map['table'] as String).input(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
-

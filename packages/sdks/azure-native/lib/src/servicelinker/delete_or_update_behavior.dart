@@ -3,16 +3,15 @@ enum DeleteOrUpdateBehavior {
   valueDefault("Default"),
   valueForcedCleanup("ForcedCleanup");
 
-  const DeleteOrUpdateBehavior(this.value);
-  final String value;
+  const DeleteOrUpdateBehavior(this.wireValue);
+  final String wireValue;
 
   static DeleteOrUpdateBehavior fromValue(String value) {
     for (final item in DeleteOrUpdateBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeleteOrUpdateBehavior value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_args.dart';
-import 'framework_cloud_control_detail.dart';
 import 'framework_state.dart';
 
 /// Frameworks allow you to monitor and enforce compliance and security requirements. Manage compliance by assigning built-in or custom frameworks to resources.
@@ -444,34 +443,46 @@ import 'framework_state.dart';
 class Framework extends pulumi.CustomResource {
   /// The category of the framework.
   late final pulumi.Output<List<String>> categories;
+
   /// The details of the cloud controls directly added without any grouping in
   /// the framework.
   /// Structure is documented below.
-  late final pulumi.Output<List<FrameworkCloudControlDetail>?> cloudControlDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cloudControlDetails;
+
   /// The description of the framework. The maximum length is 2000 characters.
   late final pulumi.Output<String?> description;
+
   /// Display name of the framework. The maximum length is 200 characters.
   late final pulumi.Output<String?> displayName;
+
   /// ID of the framework.
   /// This is not the full name of the framework.
   /// This is the last part of the full name of the framework.
   late final pulumi.Output<String> frameworkId;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// Major revision of the framework incremented in ascending order.
   late final pulumi.Output<String> majorRevisionId;
+
   /// Identifier. The name of the framework.
   /// Format:
   /// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
   late final pulumi.Output<String> name;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> organization;
+
   /// cloud providers supported
   late final pulumi.Output<List<String>> supportedCloudProviders;
+
   /// The supported enforcement modes of the framework.
   late final pulumi.Output<List<String>> supportedEnforcementModes;
+
   /// target resource types supported by the Framework.
   late final pulumi.Output<List<String>> supportedTargetResourceTypes;
+
   /// The type of the framework. The default is TYPE_CUSTOM.
   /// Possible values:
   /// BUILT_IN
@@ -487,24 +498,32 @@ class Framework extends pulumi.CustomResource {
     FrameworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudsecuritycompliance/framework:Framework',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.categories = registerOutput<List<String>>('categories');
-    this.cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.frameworkId = registerOutput<String>('frameworkId');
-    this.location = registerOutput<String>('location');
-    this.majorRevisionId = registerOutput<String>('majorRevisionId');
+         'gcp:cloudsecuritycompliance/framework:Framework',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    categories = registerOutput<List<String>>('categories');
+    cloudControlDetails = registerOutput<List<Map<String, dynamic>>?>(
+      'cloudControlDetails',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    frameworkId = registerOutput<String>('frameworkId');
+    location = registerOutput<String>('location');
+    majorRevisionId = registerOutput<String>('majorRevisionId');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders');
-    this.supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes');
-    this.supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes');
-    this.type = registerOutput<String>('type');
+    organization = registerOutput<String>('organization');
+    supportedCloudProviders = registerOutput<List<String>>(
+      'supportedCloudProviders',
+    );
+    supportedEnforcementModes = registerOutput<List<String>>(
+      'supportedEnforcementModes',
+    );
+    supportedTargetResourceTypes = registerOutput<List<String>>(
+      'supportedTargetResourceTypes',
+    );
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Framework] resource's state with the given [name] and [id].
@@ -525,23 +544,31 @@ class Framework extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudsecuritycompliance/framework:Framework',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.categories = registerOutput<List<String>>('categories');
-    this.cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.frameworkId = registerOutput<String>('frameworkId');
-    this.location = registerOutput<String>('location');
-    this.majorRevisionId = registerOutput<String>('majorRevisionId');
+         'gcp:cloudsecuritycompliance/framework:Framework',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    categories = registerOutput<List<String>>('categories');
+    cloudControlDetails = registerOutput<List<Map<String, dynamic>>?>(
+      'cloudControlDetails',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    frameworkId = registerOutput<String>('frameworkId');
+    location = registerOutput<String>('location');
+    majorRevisionId = registerOutput<String>('majorRevisionId');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders');
-    this.supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes');
-    this.supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes');
-    this.type = registerOutput<String>('type');
+    organization = registerOutput<String>('organization');
+    supportedCloudProviders = registerOutput<List<String>>(
+      'supportedCloudProviders',
+    );
+    supportedEnforcementModes = registerOutput<List<String>>(
+      'supportedEnforcementModes',
+    );
+    supportedTargetResourceTypes = registerOutput<List<String>>(
+      'supportedTargetResourceTypes',
+    );
+    type = registerOutput<String>('type');
   }
 }

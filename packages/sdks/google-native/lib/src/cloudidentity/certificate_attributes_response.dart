@@ -7,20 +7,28 @@ import 'certificate_template_response.dart';
 class CertificateAttributesResponse {
   /// The X.509 extension for CertificateTemplate.
   final pulumi.Input<CertificateTemplateResponse> certificateTemplate;
+
   /// The encoded certificate fingerprint.
   final pulumi.Input<String> fingerprint;
+
   /// The name of the issuer of this certificate.
   final pulumi.Input<String> issuer;
+
   /// Serial number of the certificate, Example: "123456789".
   final pulumi.Input<String> serialNumber;
+
   /// The subject name of this certificate.
   final pulumi.Input<String> subject;
+
   /// The certificate thumbprint.
   final pulumi.Input<String> thumbprint;
+
   /// Validation state of this certificate.
   final pulumi.Input<String> validationState;
+
   /// Certificate not valid at or after this timestamp.
   final pulumi.Input<String> validityExpirationTime;
+
   /// Certificate not valid before this timestamp.
   final pulumi.Input<String> validityStartTime;
 
@@ -48,7 +56,11 @@ class CertificateAttributesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateTemplate': pulumi.Input.mapInputValue<CertificateTemplateResponse, Map<String, dynamic>>(certificateTemplate, (value) => value.toMap()),
+      'certificateTemplate':
+          pulumi.Input.mapInputValue<
+            CertificateTemplateResponse,
+            Map<String, dynamic>
+          >(certificateTemplate, (value) => value.toMap()),
       'fingerprint': fingerprint,
       'issuer': issuer,
       'serialNumber': serialNumber,
@@ -62,16 +74,23 @@ class CertificateAttributesResponse {
 
   factory CertificateAttributesResponse.fromMap(Map<String, dynamic> map) {
     return CertificateAttributesResponse(
-      certificateTemplate: (CertificateTemplateResponse.fromMap((map['certificateTemplate'] as Map).cast<String, dynamic>())).input(),
-      fingerprint: (map['fingerprint'] as String).input(),
-      issuer: (map['issuer'] as String).input(),
-      serialNumber: (map['serialNumber'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
-      validationState: (map['validationState'] as String).input(),
-      validityExpirationTime: (map['validityExpirationTime'] as String).input(),
-      validityStartTime: (map['validityStartTime'] as String).input(),
+      certificateTemplate: pulumi.Input.fromValue(
+        CertificateTemplateResponse.fromMap(
+          (map['certificateTemplate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
+      validationState: pulumi.Input.fromValue(map['validationState'] as String),
+      validityExpirationTime: pulumi.Input.fromValue(
+        map['validityExpirationTime'] as String,
+      ),
+      validityStartTime: pulumi.Input.fromValue(
+        map['validityStartTime'] as String,
+      ),
     );
   }
 }
-

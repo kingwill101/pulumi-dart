@@ -2,16 +2,15 @@
 enum SettingsKind {
   valueTaginheritance("taginheritance");
 
-  const SettingsKind(this.value);
-  final String value;
+  const SettingsKind(this.wireValue);
+  final String wireValue;
 
   static SettingsKind fromValue(String value) {
     for (final item in SettingsKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsKind value: $value');
   }
 }
-

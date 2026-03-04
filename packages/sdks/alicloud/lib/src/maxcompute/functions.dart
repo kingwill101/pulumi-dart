@@ -6,7 +6,7 @@ import 'get_service_result.dart';
 
 /// This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
 ///
-/// > **NOTE:** Available since v1.196.0.
+/// &gt; **NOTE:** Available since v1.196.0.
 ///
 /// ## Example Usage
 ///
@@ -185,15 +185,15 @@ Future<GetProjectsResult> getProjects(
   return GetProjectsResult.fromMap(result);
 }
 
-/// > **NOTE:** When you open MaxCompute service, you'd better open [DataWorks service](https://www.alibabacloud.com/help/en/product/72772.htm) as well.
+/// &gt; **NOTE:** When you open MaxCompute service, you'd better open [DataWorks service](https://www.alibabacloud.com/help/en/product/72772.htm) as well.
 ///
 /// Using this data source can open Maxcompute service automatically. If the service has been opened, it will return opened.
 ///
 /// For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
 ///
-/// > **NOTE:** Available in v1.117.0+
+/// &gt; **NOTE:** Available in v1.117.0+
 ///
-/// > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
+/// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
 ///
 /// ## Example Usage
 ///

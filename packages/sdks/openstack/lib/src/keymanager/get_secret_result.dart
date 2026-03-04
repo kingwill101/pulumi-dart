@@ -7,49 +7,71 @@ import 'get_secret_acl.dart';
 class GetSecretResult {
   /// See Argument Reference above.
   final bool? aclOnly;
+
   /// The list of ACLs assigned to a secret. The `read` structure is described below.
   final List<GetSecretAcl> acls;
+
   /// See Argument Reference above.
   final String? algorithm;
+
   /// See Argument Reference above.
   final int? bitLength;
+
   /// The map of the content types, assigned on the secret.
   final Map<String, String> contentTypes;
+
   /// The date the secret ACL was created.
   final String createdAt;
+
   /// See Argument Reference above.
   final String? createdAtFilter;
+
   /// The creator of the secret.
   final String creatorId;
+
   /// The date the secret will expire.
   final String expiration;
+
   /// See Argument Reference above.
   final String? expirationFilter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The map of metadata, assigned on the secret, which has been
   /// explicitly and implicitly added.
   final Map<String, String> metadata;
+
   /// See Argument Reference above.
   final String? mode;
+
   /// See Argument Reference above.
   final String? name;
+
   /// The secret payload.
   final String payload;
+
   /// The Secret encoding.
   final String payloadContentEncoding;
+
   /// The Secret content type.
   final String payloadContentType;
+
   /// See Argument Reference above.
   final String? region;
+
   /// The secret reference / where to find the secret.
   final String secretRef;
+
   /// See Argument Reference above.
   final String? secretType;
+
   /// The status of the secret.
   final String status;
+
   /// The date the secret ACL was last updated.
   final String updatedAt;
+
   /// See Argument Reference above.
   final String? updatedAtFilter;
 
@@ -106,7 +128,10 @@ class GetSecretResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aclOnly': ?aclOnly,
-      'acls': pulumi.Input.encodeList<GetSecretAcl, Map<String, dynamic>>(acls, (value) => value.toMap()),
+      'acls': pulumi.Input.encodeList<GetSecretAcl, Map<String, dynamic>>(
+        acls,
+        (value) => value.toMap(),
+      ),
       'algorithm': ?algorithm,
       'bitLength': ?bitLength,
       'contentTypes': contentTypes,
@@ -133,30 +158,72 @@ class GetSecretResult {
 
   factory GetSecretResult.fromMap(Map<String, dynamic> map) {
     return GetSecretResult(
-      aclOnly: map['aclOnly'] == null ? null : map['aclOnly']! as bool,
-      acls: pulumi.Input.decodeList<GetSecretAcl>(map['acls'], (value) => GetSecretAcl.fromMap((value as Map).cast<String, dynamic>())),
-      algorithm: map['algorithm'] == null ? null : map['algorithm']! as String,
-      bitLength: map['bitLength'] == null ? null : map['bitLength']! as int,
+      aclOnly: (() {
+        final guardedValue = map['aclOnly'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      acls: pulumi.Input.decodeList<GetSecretAcl>(
+        map['acls']!,
+        (value) => GetSecretAcl.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      algorithm: (() {
+        final guardedValue = map['algorithm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      bitLength: (() {
+        final guardedValue = map['bitLength'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       contentTypes: (map['contentTypes'] as Map).cast<String, String>(),
       createdAt: map['createdAt'] as String,
-      createdAtFilter: map['createdAtFilter'] == null ? null : map['createdAtFilter']! as String,
+      createdAtFilter: (() {
+        final guardedValue = map['createdAtFilter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       creatorId: map['creatorId'] as String,
       expiration: map['expiration'] as String,
-      expirationFilter: map['expirationFilter'] == null ? null : map['expirationFilter']! as String,
+      expirationFilter: (() {
+        final guardedValue = map['expirationFilter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      mode: map['mode'] == null ? null : map['mode']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       payload: map['payload'] as String,
       payloadContentEncoding: map['payloadContentEncoding'] as String,
       payloadContentType: map['payloadContentType'] as String,
-      region: map['region'] == null ? null : map['region']! as String,
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       secretRef: map['secretRef'] as String,
-      secretType: map['secretType'] == null ? null : map['secretType']! as String,
+      secretType: (() {
+        final guardedValue = map['secretType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       status: map['status'] as String,
       updatedAt: map['updatedAt'] as String,
-      updatedAtFilter: map['updatedAtFilter'] == null ? null : map['updatedAtFilter']! as String,
+      updatedAtFilter: (() {
+        final guardedValue = map['updatedAtFilter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

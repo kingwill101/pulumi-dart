@@ -7,27 +7,37 @@ import 'output_service_bus_queue_serialization.dart';
 class OutputServiceBusQueueState {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   final pulumi.Input<String>? authenticationMode;
+
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A list of property columns to add to the Service Bus Queue output.
   final pulumi.Input<List<String>>? propertyColumns;
+
   /// The name of the Service Bus Queue.
   final pulumi.Input<String>? queueName;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `serialization` block as defined below.
   final pulumi.Input<OutputServiceBusQueueSerialization>? serialization;
+
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   final pulumi.Input<String>? servicebusNamespace;
+
   /// The shared access policy key for the specified shared access policy. Required if `authentication_mode` is `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyKey;
+
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyName;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobName;
+
   /// A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Queue Output.
   ///
-  /// > **Note:** The acceptable keys are `ContentType`, `CorrelationId`, `Label`, `MessageId`, `PartitionKey`, `ReplyTo`, `ReplyToSessionId`, `ScheduledEnqueueTimeUtc`, `SessionId`, `TimeToLive` and `To`.
+  /// &gt; **Note:** The acceptable keys are `ContentType`, `CorrelationId`, `Label`, `MessageId`, `PartitionKey`, `ReplyTo`, `ReplyToSessionId`, `ScheduledEnqueueTimeUtc`, `SessionId`, `TimeToLive` and `To`.
   final pulumi.Input<Map<String, String>>? systemPropertyColumns;
 
   /// Creates a new [OutputServiceBusQueueState].
@@ -63,7 +73,11 @@ class OutputServiceBusQueueState {
       'propertyColumns': ?propertyColumns,
       'queueName': ?queueName,
       'resourceGroupName': ?resourceGroupName,
-      'serialization': ?pulumi.Input.mapOptionalInputValue<OutputServiceBusQueueSerialization, Map<String, dynamic>>(serialization, (value) => value.toMap()),
+      'serialization':
+          ?pulumi.Input.mapOptionalInputValue<
+            OutputServiceBusQueueSerialization,
+            Map<String, dynamic>
+          >(serialization, (value) => value.toMap()),
       'servicebusNamespace': ?servicebusNamespace,
       'sharedAccessPolicyKey': ?sharedAccessPolicyKey,
       'sharedAccessPolicyName': ?sharedAccessPolicyName,
@@ -74,18 +88,67 @@ class OutputServiceBusQueueState {
 
   factory OutputServiceBusQueueState.fromMap(Map<String, dynamic> map) {
     return OutputServiceBusQueueState(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns']! as List).cast<String>()).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      serialization: map['serialization'] == null ? null : (OutputServiceBusQueueSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
-      servicebusNamespace: map['servicebusNamespace'] == null ? null : (map['servicebusNamespace']! as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
-      systemPropertyColumns: map['systemPropertyColumns'] == null ? null : ((map['systemPropertyColumns']! as Map).cast<String, String>()).input(),
+      authenticationMode: (() {
+        final guardedValue = map['authenticationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyColumns: (() {
+        final guardedValue = map['propertyColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serialization: (() {
+        final guardedValue = map['serialization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OutputServiceBusQueueSerialization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      servicebusNamespace: (() {
+        final guardedValue = map['servicebusNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccessPolicyKey: (() {
+        final guardedValue = map['sharedAccessPolicyKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccessPolicyName: (() {
+        final guardedValue = map['sharedAccessPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamAnalyticsJobName: (() {
+        final guardedValue = map['streamAnalyticsJobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemPropertyColumns: (() {
+        final guardedValue = map['systemPropertyColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -39,20 +39,15 @@ class CELDeviceSelector {
 
   /// Creates a new [CELDeviceSelector].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
-  CELDeviceSelector({
-    required this.expression,
-  });
+  CELDeviceSelector({required this.expression});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expression': expression,
-    };
+    return <String, dynamic>{'expression': expression};
   }
 
   factory CELDeviceSelector.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelector(
-      expression: (map['expression'] as String).input(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
     );
   }
 }
-

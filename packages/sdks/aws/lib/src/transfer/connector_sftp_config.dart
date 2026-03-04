@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorSftpConfig {
   /// A list of public portion of the host key, or keys, that are used to authenticate the user to the external server to which you are connecting.(https://docs.aws.amazon.com/transfer/latest/userguide/API_SftpConnectorConfig.html)
   final pulumi.Input<List<String>>? trustedHostKeys;
+
   /// The identifier for the secret (in AWS Secrets Manager) that contains the SFTP user's private key, password, or both. The identifier can be either the Amazon Resource Name (ARN) or the name of the secret.
   final pulumi.Input<String>? userSecretId;
 
   /// Creates a new [ConnectorSftpConfig].
   /// [trustedHostKeys] A list of public portion of the host key, or keys, that are used to authenticate the user to the external server to which you are connecting.(https://docs.aws.amazon.com/transfer/latest/userguide/API_SftpConnectorConfig.html)
   /// [userSecretId] The identifier for the secret (in AWS Secrets Manager) that contains the SFTP user's private key, password, or both. The identifier can be either the Amazon Resource Name (ARN) or the name of the secret.
-  ConnectorSftpConfig({
-    this.trustedHostKeys,
-    this.userSecretId,
-  });
+  ConnectorSftpConfig({this.trustedHostKeys, this.userSecretId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class ConnectorSftpConfig {
 
   factory ConnectorSftpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorSftpConfig(
-      trustedHostKeys: map['trustedHostKeys'] == null ? null : (((map['trustedHostKeys'] as List).cast<String>()).input()).input(),
-      userSecretId: map['userSecretId'] == null ? null : ((map['userSecretId'] as String).input()).input(),
+      trustedHostKeys: (() {
+        final guardedValue = map['trustedHostKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userSecretId: (() {
+        final guardedValue = map['userSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,18 +6,25 @@ import 'vpn_server_configuration_properties_response.dart';
 class GetVpnServerConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// Properties of the P2SVpnServer configuration.
   final VpnServerConfigurationPropertiesResponse properties;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -58,13 +65,26 @@ class GetVpnServerConfigurationResult {
     return GetVpnServerConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: VpnServerConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: VpnServerConfigurationPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1ResourceAccessSpecResponse {
   /// Optional. The set of principals to be granted owner role on the resource.
   final pulumi.Input<List<String>> owners;
+
   /// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
   final pulumi.Input<List<String>> readers;
+
   /// Optional. The set of principals to be granted writer role on the resource.
   final pulumi.Input<List<String>> writers;
 
@@ -29,12 +31,13 @@ class GoogleCloudDataplexV1ResourceAccessSpecResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1ResourceAccessSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ResourceAccessSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ResourceAccessSpecResponse(
-      owners: ((map['owners'] as List).cast<String>()).input(),
-      readers: ((map['readers'] as List).cast<String>()).input(),
-      writers: ((map['writers'] as List).cast<String>()).input(),
+      owners: pulumi.Input.fromValue((map['owners'] as List).cast<String>()),
+      readers: pulumi.Input.fromValue((map['readers'] as List).cast<String>()),
+      writers: pulumi.Input.fromValue((map['writers'] as List).cast<String>()),
     );
   }
 }
-

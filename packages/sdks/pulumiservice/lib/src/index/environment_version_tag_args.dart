@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentVersionTagArgs {
   /// Environment name.
   final pulumi.Input<String> environment;
+
   /// Organization name.
   final pulumi.Input<String> organization;
+
   /// Project name.
   final pulumi.Input<String>? project;
+
   /// Revision number.
   final pulumi.Input<int> revision;
+
   /// Tag name.
   final pulumi.Input<String> tagName;
 
@@ -44,12 +48,15 @@ class EnvironmentVersionTagArgs {
 
   factory EnvironmentVersionTagArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentVersionTagArgs(
-      environment: (map['environment'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      revision: (map['revision'] as int).input(),
-      tagName: (map['tagName'] as String).input(),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revision: pulumi.Input.fromValue(map['revision'] as int),
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class WorkspaceNoPublicIPBooleanParameter {
 
   /// Creates a new [WorkspaceNoPublicIPBooleanParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceNoPublicIPBooleanParameter({
-    required this.value,
-  });
+  WorkspaceNoPublicIPBooleanParameter({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory WorkspaceNoPublicIPBooleanParameter.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceNoPublicIPBooleanParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceNoPublicIPBooleanParameter(
-      value: (map['value'] as bool).input(),
+      value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }
 }
-

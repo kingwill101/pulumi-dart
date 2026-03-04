@@ -9,18 +9,26 @@ import 'object_status_condition_definition_response.dart';
 class ObjectStatusDefinitionResponse {
   /// Object reference to the Kustomization that applied this object
   final pulumi.Input<ObjectReferenceDefinitionResponse>? appliedBy;
+
   /// Compliance state of the applied object showing whether the applied object has come into a ready state on the cluster.
   final pulumi.Input<String>? complianceState;
+
   /// Additional properties that are provided from objects of the HelmRelease kind
-  final pulumi.Input<HelmReleasePropertiesDefinitionResponse>? helmReleaseProperties;
+  final pulumi.Input<HelmReleasePropertiesDefinitionResponse>?
+  helmReleaseProperties;
+
   /// Kind of the applied object
   final pulumi.Input<String>? kind;
+
   /// Name of the applied object
   final pulumi.Input<String>? name;
+
   /// Namespace of the applied object
   final pulumi.Input<String>? namespace;
+
   /// List of Kubernetes object status conditions present on the cluster
-  final pulumi.Input<List<ObjectStatusConditionDefinitionResponse>>? statusConditions;
+  final pulumi.Input<List<ObjectStatusConditionDefinitionResponse>>?
+  statusConditions;
 
   /// Creates a new [ObjectStatusDefinitionResponse].
   /// [appliedBy] Object reference to the Kustomization that applied this object
@@ -42,26 +50,87 @@ class ObjectStatusDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliedBy': ?pulumi.Input.mapOptionalInputValue<ObjectReferenceDefinitionResponse, Map<String, dynamic>>(appliedBy, (value) => value.toMap()),
+      'appliedBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectReferenceDefinitionResponse,
+            Map<String, dynamic>
+          >(appliedBy, (value) => value.toMap()),
       'complianceState': ?complianceState,
-      'helmReleaseProperties': ?pulumi.Input.mapOptionalInputValue<HelmReleasePropertiesDefinitionResponse, Map<String, dynamic>>(helmReleaseProperties, (value) => value.toMap()),
+      'helmReleaseProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            HelmReleasePropertiesDefinitionResponse,
+            Map<String, dynamic>
+          >(helmReleaseProperties, (value) => value.toMap()),
       'kind': ?kind,
       'name': ?name,
       'namespace': ?namespace,
-      'statusConditions': ?pulumi.Input.mapOptionalInputValue<List<ObjectStatusConditionDefinitionResponse>, List<Map<String, dynamic>>>(statusConditions, (value) => pulumi.Input.encodeList<ObjectStatusConditionDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statusConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ObjectStatusConditionDefinitionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            statusConditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ObjectStatusConditionDefinitionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ObjectStatusDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ObjectStatusDefinitionResponse(
-      appliedBy: map['appliedBy'] == null ? null : (ObjectReferenceDefinitionResponse.fromMap((map['appliedBy']! as Map).cast<String, dynamic>())).input(),
-      complianceState: map['complianceState'] == null ? null : (map['complianceState']! as String).input(),
-      helmReleaseProperties: map['helmReleaseProperties'] == null ? null : (HelmReleasePropertiesDefinitionResponse.fromMap((map['helmReleaseProperties']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      statusConditions: map['statusConditions'] == null ? null : (pulumi.Input.decodeList<ObjectStatusConditionDefinitionResponse>(map['statusConditions']!, (value) => ObjectStatusConditionDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appliedBy: (() {
+        final guardedValue = map['appliedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectReferenceDefinitionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      complianceState: (() {
+        final guardedValue = map['complianceState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      helmReleaseProperties: (() {
+        final guardedValue = map['helmReleaseProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HelmReleasePropertiesDefinitionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusConditions: (() {
+        final guardedValue = map['statusConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ObjectStatusConditionDefinitionResponse>(
+            guardedValue,
+            (value) => ObjectStatusConditionDefinitionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

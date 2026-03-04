@@ -7,16 +7,15 @@ enum SubnetworkAggregationInterval {
   interval5Min("INTERVAL_5_MIN"),
   interval5Sec("INTERVAL_5_SEC");
 
-  const SubnetworkAggregationInterval(this.value);
-  final String value;
+  const SubnetworkAggregationInterval(this.wireValue);
+  final String wireValue;
 
   static SubnetworkAggregationInterval fromValue(String value) {
     for (final item in SubnetworkAggregationInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkAggregationInterval value: $value');
   }
 }
-

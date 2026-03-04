@@ -8,28 +8,39 @@ import 'application_timeouts.dart';
 class ApplicationState {
   /// Id of the Application.
   final pulumi.Input<String>? applicationId;
+
   /// ARN of the Application.
   final pulumi.Input<String>? arn;
+
   /// Current version of the application deployed.
   final pulumi.Input<int>? currentVersion;
+
   /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
   final pulumi.Input<ApplicationDefinition>? definition;
+
   /// Description of the application.
   final pulumi.Input<String>? description;
+
   /// Engine type must be `microfocus | bluage`.
   final pulumi.Input<String>? engineType;
+
   /// KMS Key to use for the Application.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Unique identifier of the application.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of role for application to use to access AWS resources.
   final pulumi.Input<String>? roleArn;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ApplicationTimeouts>? timeouts;
@@ -69,7 +80,11 @@ class ApplicationState {
       'applicationId': ?applicationId,
       'arn': ?arn,
       'currentVersion': ?currentVersion,
-      'definition': ?pulumi.Input.mapOptionalInputValue<ApplicationDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationDefinition,
+            Map<String, dynamic>
+          >(definition, (value) => value.toMap()),
       'description': ?description,
       'engineType': ?engineType,
       'kmsKeyId': ?kmsKeyId,
@@ -78,26 +93,93 @@ class ApplicationState {
       'roleArn': ?roleArn,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ApplicationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      currentVersion: map['currentVersion'] == null ? null : ((map['currentVersion'] as int).input()).input(),
-      definition: map['definition'] == null ? null : ((ApplicationDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      engineType: map['engineType'] == null ? null : ((map['engineType'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentVersion: (() {
+        final guardedValue = map['currentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineType: (() {
+        final guardedValue = map['engineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

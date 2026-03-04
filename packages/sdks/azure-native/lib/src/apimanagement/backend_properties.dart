@@ -6,24 +6,34 @@ import 'backend_service_fabric_cluster_properties.dart';
 /// Properties specific to the Backend Type.
 class BackendProperties {
   /// Backend Service Fabric Cluster Properties
-  final pulumi.Input<BackendServiceFabricClusterProperties>? serviceFabricCluster;
+  final pulumi.Input<BackendServiceFabricClusterProperties>?
+  serviceFabricCluster;
 
   /// Creates a new [BackendProperties].
   /// [serviceFabricCluster] Backend Service Fabric Cluster Properties
-  BackendProperties({
-    this.serviceFabricCluster,
-  });
+  BackendProperties({this.serviceFabricCluster});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceFabricCluster': ?pulumi.Input.mapOptionalInputValue<BackendServiceFabricClusterProperties, Map<String, dynamic>>(serviceFabricCluster, (value) => value.toMap()),
+      'serviceFabricCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendServiceFabricClusterProperties,
+            Map<String, dynamic>
+          >(serviceFabricCluster, (value) => value.toMap()),
     };
   }
 
   factory BackendProperties.fromMap(Map<String, dynamic> map) {
     return BackendProperties(
-      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricClusterProperties.fromMap((map['serviceFabricCluster']! as Map).cast<String, dynamic>())).input(),
+      serviceFabricCluster: (() {
+        final guardedValue = map['serviceFabricCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendServiceFabricClusterProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

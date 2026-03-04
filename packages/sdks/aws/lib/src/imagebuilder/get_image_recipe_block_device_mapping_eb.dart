@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageRecipeBlockDeviceMappingEb {
   /// Whether to delete the volume on termination. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<String> deleteOnTermination;
+
   /// Whether to encrypt the volume. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<String> encrypted;
+
   /// Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
   final pulumi.Input<int> iops;
+
   /// ARN of the Key Management Service (KMS) Key for encryption.
   final pulumi.Input<String> kmsKeyId;
+
   /// Identifier of the EC2 Volume Snapshot.
   final pulumi.Input<String> snapshotId;
+
   /// For GP3 volumes only. The throughput in MiB/s that the volume supports.
   final pulumi.Input<int> throughput;
+
   /// Size of the volume, in GiB.
   final pulumi.Input<int> volumeSize;
+
   /// Type of the volume. For example, `gp2` or `io2`.
   final pulumi.Input<String> volumeType;
 
@@ -55,15 +62,16 @@ class GetImageRecipeBlockDeviceMappingEb {
 
   factory GetImageRecipeBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeBlockDeviceMappingEb(
-      deleteOnTermination: (map['deleteOnTermination'] as String).input(),
-      encrypted: (map['encrypted'] as String).input(),
-      iops: (map['iops'] as int).input(),
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      throughput: (map['throughput'] as int).input(),
-      volumeSize: (map['volumeSize'] as int).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      deleteOnTermination: pulumi.Input.fromValue(
+        map['deleteOnTermination'] as String,
+      ),
+      encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      throughput: pulumi.Input.fromValue(map['throughput'] as int),
+      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

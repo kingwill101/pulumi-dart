@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'flow_log_response.dart';
-import 'network_interface_response.dart';
 import 'network_security_group_args.dart';
-import 'security_rule_response.dart';
-import 'subnet_response.dart';
 
 /// NetworkSecurityGroup resource.
 ///
@@ -323,30 +319,43 @@ import 'subnet_response.dart';
 class NetworkSecurityGroupNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The default security rules of network security group.
-  late final pulumi.Output<List<SecurityRuleResponse>> defaultSecurityRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> defaultSecurityRules;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// A collection of references to flow log resources.
-  late final pulumi.Output<List<FlowLogResponse>> flowLogs;
+  late final pulumi.Output<List<Map<String, dynamic>>> flowLogs;
+
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
   late final pulumi.Output<bool?> flushConnection;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// A collection of references to network interfaces.
-  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// The provisioning state of the network security group resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the network security group resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// A collection of security rules of the network security group.
-  late final pulumi.Output<List<SecurityRuleResponse>?> securityRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> securityRules;
+
   /// A collection of references to subnets.
-  late final pulumi.Output<List<SubnetResponse>> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -359,24 +368,30 @@ class NetworkSecurityGroupNetwork extends pulumi.CustomResource {
     NetworkSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkSecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultSecurityRules = registerOutput<List<SecurityRuleResponse>>('defaultSecurityRules');
-    this.etag = registerOutput<String>('etag');
-    this.flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs');
-    this.flushConnection = registerOutput<bool?>('flushConnection');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:NetworkSecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultSecurityRules = registerOutput<List<Map<String, dynamic>>>(
+      'defaultSecurityRules',
+    );
+    etag = registerOutput<String>('etag');
+    flowLogs = registerOutput<List<Map<String, dynamic>>>('flowLogs');
+    flushConnection = registerOutput<bool?>('flushConnection');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.securityRules = registerOutput<List<SecurityRuleResponse>?>('securityRules');
-    this.subnets = registerOutput<List<SubnetResponse>>('subnets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    securityRules = registerOutput<List<Map<String, dynamic>>?>(
+      'securityRules',
+    );
+    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

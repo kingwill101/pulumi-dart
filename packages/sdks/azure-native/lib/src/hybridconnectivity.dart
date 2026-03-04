@@ -1,5 +1,3 @@
-library module_hybridconnectivity;
-
 export 'hybridconnectivity/aws_cloud_profile.dart';
 export 'hybridconnectivity/aws_cloud_profile_response.dart';
 export 'hybridconnectivity/endpoint.dart';

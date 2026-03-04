@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListDnsResolverByVirtualNetworkArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The maximum number of results to return. If not specified, returns up to 100 results.
   final pulumi.Input<int>? top;
+
   /// The name of the virtual network.
   final pulumi.Input<String> virtualNetworkName;
 
@@ -32,12 +34,21 @@ class ListDnsResolverByVirtualNetworkArgs {
     };
   }
 
-  factory ListDnsResolverByVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
+  factory ListDnsResolverByVirtualNetworkArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListDnsResolverByVirtualNetworkArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      top: map['top'] == null ? null : (map['top']! as int).input(),
-      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      top: (() {
+        final guardedValue = map['top'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      virtualNetworkName: pulumi.Input.fromValue(
+        map['virtualNetworkName'] as String,
+      ),
     );
   }
 }
-

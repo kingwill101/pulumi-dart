@@ -9,6 +9,7 @@ class GetGenaiKnowledgeBaseResult {
   final String createdAt;
   final String? databaseId;
   final String? embeddingModelUuid;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? isPublic;
@@ -61,7 +62,14 @@ class GetGenaiKnowledgeBaseResult {
       'embeddingModelUuid': ?embeddingModelUuid,
       'id': id,
       'isPublic': ?isPublic,
-      'lastIndexingJobs': ?lastIndexingJobs == null ? null : pulumi.Input.encodeList<GetGenaiKnowledgeBaseLastIndexingJob, Map<String, dynamic>>(lastIndexingJobs!, (value) => value.toMap()),
+      'lastIndexingJobs': ?(() {
+        final guardedValue = lastIndexingJobs;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetGenaiKnowledgeBaseLastIndexingJob,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': ?name,
       'projectId': ?projectId,
       'region': ?region,
@@ -74,21 +82,69 @@ class GetGenaiKnowledgeBaseResult {
 
   factory GetGenaiKnowledgeBaseResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseResult(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : map['addedToAgentAt']! as String,
+      addedToAgentAt: (() {
+        final guardedValue = map['addedToAgentAt'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       createdAt: map['createdAt'] as String,
-      databaseId: map['databaseId'] == null ? null : map['databaseId']! as String,
-      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : map['embeddingModelUuid']! as String,
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      embeddingModelUuid: (() {
+        final guardedValue = map['embeddingModelUuid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      isPublic: map['isPublic'] == null ? null : map['isPublic']! as bool,
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs']!, (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name']! as String,
-      projectId: map['projectId'] == null ? null : map['projectId']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
+      isPublic: (() {
+        final guardedValue = map['isPublic'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastIndexingJobs: (() {
+        final guardedValue = map['lastIndexingJobs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(
+          guardedValue,
+          (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       updatedAt: map['updatedAt'] as String,
-      userId: map['userId'] == null ? null : map['userId']! as String,
-      uuid: map['uuid'] == null ? null : map['uuid']! as String,
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -13,16 +13,22 @@ import 'volume.dart';
 class Template {
   /// List of container definitions for the Container App.
   final pulumi.Input<List<Container>>? containers;
+
   /// List of specialized containers that run before app containers.
   final pulumi.Input<List<InitContainer>>? initContainers;
+
   /// User friendly suffix that is appended to the revision name
   final pulumi.Input<String>? revisionSuffix;
+
   /// Scaling properties for the Container App.
   final pulumi.Input<Scale>? scale;
+
   /// List of container app services bound to the app
   final pulumi.Input<List<ServiceBind>>? serviceBinds;
+
   /// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
   final pulumi.Input<double>? terminationGracePeriodSeconds;
+
   /// List of volume definitions for the Container App.
   final pulumi.Input<List<Volume>>? volumes;
 
@@ -46,26 +52,123 @@ class Template {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': ?pulumi.Input.mapOptionalInputValue<List<Container>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<Container, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'initContainers': ?pulumi.Input.mapOptionalInputValue<List<InitContainer>, List<Map<String, dynamic>>>(initContainers, (value) => pulumi.Input.encodeList<InitContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'containers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Container>,
+            List<Map<String, dynamic>>
+          >(
+            containers,
+            (value) => pulumi.Input.encodeList<Container, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'initContainers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InitContainer>,
+            List<Map<String, dynamic>>
+          >(
+            initContainers,
+            (value) =>
+                pulumi.Input.encodeList<InitContainer, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'revisionSuffix': ?revisionSuffix,
-      'scale': ?pulumi.Input.mapOptionalInputValue<Scale, Map<String, dynamic>>(scale, (value) => value.toMap()),
-      'serviceBinds': ?pulumi.Input.mapOptionalInputValue<List<ServiceBind>, List<Map<String, dynamic>>>(serviceBinds, (value) => pulumi.Input.encodeList<ServiceBind, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scale': ?pulumi.Input.mapOptionalInputValue<Scale, Map<String, dynamic>>(
+        scale,
+        (value) => value.toMap(),
+      ),
+      'serviceBinds':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceBind>,
+            List<Map<String, dynamic>>
+          >(
+            serviceBinds,
+            (value) =>
+                pulumi.Input.encodeList<ServiceBind, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'terminationGracePeriodSeconds': ?terminationGracePeriodSeconds,
-      'volumes': ?pulumi.Input.mapOptionalInputValue<List<Volume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<Volume, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Volume>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) => pulumi.Input.encodeList<Volume, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory Template.fromMap(Map<String, dynamic> map) {
     return Template(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers']!, (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainer>(map['initContainers']!, (value) => InitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix']! as String).input(),
-      scale: map['scale'] == null ? null : (Scale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
-      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<ServiceBind>(map['serviceBinds']!, (value) => ServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: (() {
+        final guardedValue = map['containers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Container>(
+            guardedValue,
+            (value) =>
+                Container.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      initContainers: (() {
+        final guardedValue = map['initContainers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InitContainer>(
+            guardedValue,
+            (value) =>
+                InitContainer.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      revisionSuffix: (() {
+        final guardedValue = map['revisionSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scale: (() {
+        final guardedValue = map['scale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Scale.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      serviceBinds: (() {
+        final guardedValue = map['serviceBinds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceBind>(
+            guardedValue,
+            (value) =>
+                ServiceBind.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      terminationGracePeriodSeconds: (() {
+        final guardedValue = map['terminationGracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      volumes: (() {
+        final guardedValue = map['volumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Volume>(
+            guardedValue,
+            (value) => Volume.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

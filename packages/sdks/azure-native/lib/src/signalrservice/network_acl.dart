@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkACL {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   final pulumi.Input<List<String>>? allow;
+
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   final pulumi.Input<List<String>>? deny;
 
   /// Creates a new [NetworkACL].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   /// [deny] Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  NetworkACL({
-    this.allow,
-    this.deny,
-  });
+  NetworkACL({this.allow, this.deny});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allow': ?allow,
-      'deny': ?deny,
-    };
+    return <String, dynamic>{'allow': ?allow, 'deny': ?deny};
   }
 
   factory NetworkACL.fromMap(Map<String, dynamic> map) {
     return NetworkACL(
-      allow: map['allow'] == null ? null : ((map['allow']! as List).cast<String>()).input(),
-      deny: map['deny'] == null ? null : ((map['deny']! as List).cast<String>()).input(),
+      allow: (() {
+        final guardedValue = map['allow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      deny: (() {
+        final guardedValue = map['deny'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

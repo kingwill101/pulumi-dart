@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAccessScopeArgs {
   /// Specifies the ARN of the application with the access scope with the targets to add or update.
   final pulumi.Input<String> applicationArn;
+
   /// Specifies an array list of ARNs that represent the authorized targets for this access scope.
   final pulumi.Input<List<String>>? authorizedTargets;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies the name of the access scope to be associated with the specified targets.
   ///
   /// The following arguments are optional:
@@ -41,11 +44,18 @@ class ApplicationAccessScopeArgs {
 
   factory ApplicationAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessScopeArgs(
-      applicationArn: (map['applicationArn'] as String).input(),
-      authorizedTargets: map['authorizedTargets'] == null ? null : (((map['authorizedTargets'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scope: (map['scope'] as String).input(),
+      applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
+      authorizedTargets: (() {
+        final guardedValue = map['authorizedTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

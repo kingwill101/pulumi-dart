@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtocolServiceState {
   /// The time when the protocol server service was created. The UTC time.
   final pulumi.Input<String>? createTime;
+
   /// Description of the agreement service.
   ///
   /// Limitations:
@@ -14,25 +15,33 @@ class ProtocolServiceState {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   final pulumi.Input<String>? description;
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the file system.
   final pulumi.Input<String>? fileSystemId;
+
   /// Protocol Service ID
   final pulumi.Input<String>? protocolServiceId;
+
   /// The specification of the protocol machine cluster.
   /// - Value range: General、CL1、CL2
   /// - Default value: General
   final pulumi.Input<String>? protocolSpec;
+
   /// The throughput of the protocol service. Unit: MB/s.
   final pulumi.Input<int>? protocolThroughput;
+
   /// The protocol type supported by the protocol service.
   ///
   /// Value range:
   /// - NFS: Protocol Service supports NFS protocol access.
   final pulumi.Input<String>? protocolType;
+
   /// Agreement service status.
   final pulumi.Input<String>? status;
+
   /// The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   final pulumi.Input<String>? vpcId;
+
   /// The VSwitchId of the protocol service.
   final pulumi.Input<String>? vswitchId;
 
@@ -80,18 +89,61 @@ class ProtocolServiceState {
 
   factory ProtocolServiceState.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
-      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId']! as String).input(),
-      protocolSpec: map['protocolSpec'] == null ? null : (map['protocolSpec']! as String).input(),
-      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput']! as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileSystemId: (() {
+        final guardedValue = map['fileSystemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolServiceId: (() {
+        final guardedValue = map['protocolServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolSpec: (() {
+        final guardedValue = map['protocolSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolThroughput: (() {
+        final guardedValue = map['protocolThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

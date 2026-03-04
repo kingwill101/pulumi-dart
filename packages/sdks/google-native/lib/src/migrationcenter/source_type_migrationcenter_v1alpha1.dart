@@ -6,16 +6,17 @@ enum SourceTypeMigrationcenterV1alpha1 {
   sourceTypeInventoryScan("SOURCE_TYPE_INVENTORY_SCAN"),
   sourceTypeCustom("SOURCE_TYPE_CUSTOM");
 
-  const SourceTypeMigrationcenterV1alpha1(this.value);
-  final String value;
+  const SourceTypeMigrationcenterV1alpha1(this.wireValue);
+  final String wireValue;
 
   static SourceTypeMigrationcenterV1alpha1 fromValue(String value) {
     for (final item in SourceTypeMigrationcenterV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SourceTypeMigrationcenterV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown SourceTypeMigrationcenterV1alpha1 value: $value',
+    );
   }
 }
-

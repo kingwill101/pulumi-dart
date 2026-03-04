@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransparentDataEncryptionResponse {
   /// Enable key auto rotation
   final pulumi.Input<bool>? enableAutoRotation;
+
   /// Customer Managed Key (CMK) Uri.
   final pulumi.Input<String>? keyUri;
+
   /// Additional Keys
   final pulumi.Input<List<String>>? keys;
 
@@ -31,10 +33,21 @@ class TransparentDataEncryptionResponse {
 
   factory TransparentDataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return TransparentDataEncryptionResponse(
-      enableAutoRotation: map['enableAutoRotation'] == null ? null : (map['enableAutoRotation']! as bool).input(),
-      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
-      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
+      enableAutoRotation: (() {
+        final guardedValue = map['enableAutoRotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyUri: (() {
+        final guardedValue = map['keyUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -8,16 +8,17 @@ enum UptimeCheckConfigSelectedRegionsItem {
   usaIowa("USA_IOWA"),
   usaVirginia("USA_VIRGINIA");
 
-  const UptimeCheckConfigSelectedRegionsItem(this.value);
-  final String value;
+  const UptimeCheckConfigSelectedRegionsItem(this.wireValue);
+  final String wireValue;
 
   static UptimeCheckConfigSelectedRegionsItem fromValue(String value) {
     for (final item in UptimeCheckConfigSelectedRegionsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UptimeCheckConfigSelectedRegionsItem value: $value');
+    throw ArgumentError(
+      'Unknown UptimeCheckConfigSelectedRegionsItem value: $value',
+    );
   }
 }
-

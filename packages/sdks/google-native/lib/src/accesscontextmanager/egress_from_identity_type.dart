@@ -5,16 +5,15 @@ enum EgressFromIdentityType {
   anyUserAccount("ANY_USER_ACCOUNT"),
   anyServiceAccount("ANY_SERVICE_ACCOUNT");
 
-  const EgressFromIdentityType(this.value);
-  final String value;
+  const EgressFromIdentityType(this.wireValue);
+  final String wireValue;
 
   static EgressFromIdentityType fromValue(String value) {
     for (final item in EgressFromIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EgressFromIdentityType value: $value');
   }
 }
-

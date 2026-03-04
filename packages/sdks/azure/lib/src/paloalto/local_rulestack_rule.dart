@@ -258,7 +258,7 @@ import 'local_rulestack_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
@@ -273,44 +273,62 @@ import 'local_rulestack_rule_state.dart';
 class LocalRulestackRule extends pulumi.CustomResource {
   /// The action to take on the rule being triggered. Possible values are `Allow`, `DenyResetBoth`, `DenyResetServer` and `DenySilent`.
   late final pulumi.Output<String> action;
+
   /// Specifies a list of Applications.
   late final pulumi.Output<List<String>> applications;
+
   /// The comment for Audit purposes.
   late final pulumi.Output<String?> auditComment;
+
   /// A `category` block as defined below.
   late final pulumi.Output<LocalRulestackRuleCategory?> category;
+
   /// The type of Decryption to perform on the rule. Possible values include `SSLInboundInspection`, `SSLOutboundInspection`, and `None`. Defaults to `None`.
   late final pulumi.Output<String?> decryptionRuleType;
+
   /// The description for the rule.
   late final pulumi.Output<String?> description;
+
   /// One or more `destination` blocks as defined below.
   late final pulumi.Output<LocalRulestackRuleDestination> destination;
+
   /// Should this Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The ID of the certificate for inbound inspection. Only valid when `decryption_rule_type` is set to `SSLInboundInspection`.
   late final pulumi.Output<String?> inspectionCertificateId;
+
   /// Should Logging be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> loggingEnabled;
+
   /// The name which should be used for this Palo Alto Local Rulestack Rule.
   late final pulumi.Output<String> name;
+
   /// Should the inverse of the Destination configuration be used. Defaults to `false`.
   late final pulumi.Output<bool?> negateDestination;
+
   /// Should the inverse of the Source configuration be used. Defaults to `false`.
   late final pulumi.Output<bool?> negateSource;
+
   /// The Priority of this rule. Rules are executed in numerical order. Possible values are between 1 and 1000000. Changing this forces a new Palo Alto Local Rulestack Rule to be created.
   ///
-  /// > **Note:** This is the primary identifier of a rule, as such it is not possible to change the Priority of a rule once created.
+  /// &gt; **Note:** This is the primary identifier of a rule, as such it is not possible to change the Priority of a rule once created.
   late final pulumi.Output<int> priority;
+
   /// The Protocol and port to use in the form `[protocol]:[port_number]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocol_ports`.
   ///
-  /// > **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocol_ports` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
+  /// &gt; **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocol_ports` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
   late final pulumi.Output<String?> protocol;
+
   /// Specifies a list of Protocol:Port entries. E.g. `[ "TCP:80", "UDP:5431" ]`. Conflicts with `protocol`.
   late final pulumi.Output<List<String>?> protocolPorts;
+
   /// The ID of the Local Rulestack in which to create this Rule. Changing this forces a new Palo Alto Local Rulestack Rule to be created.
   late final pulumi.Output<String> rulestackId;
+
   /// One or more `source` blocks as defined below.
   late final pulumi.Output<LocalRulestackRuleSource> source;
+
   /// A mapping of tags which should be assigned to the Palo Alto Local Rulestack Rule.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -323,30 +341,32 @@ class LocalRulestackRule extends pulumi.CustomResource {
     LocalRulestackRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackRule:LocalRulestackRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.applications = registerOutput<List<String>>('applications');
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.category = registerOutput<LocalRulestackRuleCategory?>('category');
-    this.decryptionRuleType = registerOutput<String?>('decryptionRuleType');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<LocalRulestackRuleDestination>('destination');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.inspectionCertificateId = registerOutput<String?>('inspectionCertificateId');
-    this.loggingEnabled = registerOutput<bool?>('loggingEnabled');
+         'azure:paloalto/localRulestackRule:LocalRulestackRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    applications = registerOutput<List<String>>('applications');
+    auditComment = registerOutput<String?>('auditComment');
+    category = registerOutput<LocalRulestackRuleCategory?>('category');
+    decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<LocalRulestackRuleDestination>('destination');
+    enabled = registerOutput<bool?>('enabled');
+    inspectionCertificateId = registerOutput<String?>(
+      'inspectionCertificateId',
+    );
+    loggingEnabled = registerOutput<bool?>('loggingEnabled');
     this.name = registerOutput<String>('name');
-    this.negateDestination = registerOutput<bool?>('negateDestination');
-    this.negateSource = registerOutput<bool?>('negateSource');
-    this.priority = registerOutput<int>('priority');
-    this.protocol = registerOutput<String?>('protocol');
-    this.protocolPorts = registerOutput<List<String>?>('protocolPorts');
-    this.rulestackId = registerOutput<String>('rulestackId');
-    this.source = registerOutput<LocalRulestackRuleSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    negateDestination = registerOutput<bool?>('negateDestination');
+    negateSource = registerOutput<bool?>('negateSource');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String?>('protocol');
+    protocolPorts = registerOutput<List<String>?>('protocolPorts');
+    rulestackId = registerOutput<String>('rulestackId');
+    source = registerOutput<LocalRulestackRuleSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [LocalRulestackRule] resource's state with the given [name] and [id].
@@ -367,29 +387,31 @@ class LocalRulestackRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackRule:LocalRulestackRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.applications = registerOutput<List<String>>('applications');
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.category = registerOutput<LocalRulestackRuleCategory?>('category');
-    this.decryptionRuleType = registerOutput<String?>('decryptionRuleType');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<LocalRulestackRuleDestination>('destination');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.inspectionCertificateId = registerOutput<String?>('inspectionCertificateId');
-    this.loggingEnabled = registerOutput<bool?>('loggingEnabled');
+         'azure:paloalto/localRulestackRule:LocalRulestackRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    applications = registerOutput<List<String>>('applications');
+    auditComment = registerOutput<String?>('auditComment');
+    category = registerOutput<LocalRulestackRuleCategory?>('category');
+    decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<LocalRulestackRuleDestination>('destination');
+    enabled = registerOutput<bool?>('enabled');
+    inspectionCertificateId = registerOutput<String?>(
+      'inspectionCertificateId',
+    );
+    loggingEnabled = registerOutput<bool?>('loggingEnabled');
     this.name = registerOutput<String>('name');
-    this.negateDestination = registerOutput<bool?>('negateDestination');
-    this.negateSource = registerOutput<bool?>('negateSource');
-    this.priority = registerOutput<int>('priority');
-    this.protocol = registerOutput<String?>('protocol');
-    this.protocolPorts = registerOutput<List<String>?>('protocolPorts');
-    this.rulestackId = registerOutput<String>('rulestackId');
-    this.source = registerOutput<LocalRulestackRuleSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    negateDestination = registerOutput<bool?>('negateDestination');
+    negateSource = registerOutput<bool?>('negateSource');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String?>('protocol');
+    protocolPorts = registerOutput<List<String>?>('protocolPorts');
+    rulestackId = registerOutput<String>('rulestackId');
+    source = registerOutput<LocalRulestackRuleSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

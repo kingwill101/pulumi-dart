@@ -1694,40 +1694,72 @@ import 'virtual_machine_instance_view_response.dart';
 class VirtualMachineInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Boolean indicating whether this is an existing local virtual machine or if one should be created.
   late final pulumi.Output<bool?> createFromLocal;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Guest agent install status.
-  late final pulumi.Output<GuestAgentInstallStatusResponse?> guestAgentInstallStatus;
+  late final pulumi.Output<GuestAgentInstallStatusResponse?>
+  guestAgentInstallStatus;
+
   /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-  late final pulumi.Output<VirtualMachineInstancePropertiesHardwareProfileResponse?> hardwareProfile;
+  late final pulumi.Output<
+    VirtualMachineInstancePropertiesHardwareProfileResponse?
+  >
+  hardwareProfile;
+
   /// HTTP Proxy configuration for the VM.
   late final pulumi.Output<HttpProxyConfigurationResponse?> httpProxyConfig;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The virtual machine instance view.
   late final pulumi.Output<VirtualMachineInstanceViewResponse> instanceView;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// NetworkProfile - describes the network configuration the virtual machine instance
-  late final pulumi.Output<VirtualMachineInstancePropertiesNetworkProfileResponse?> networkProfile;
+  late final pulumi.Output<
+    VirtualMachineInstancePropertiesNetworkProfileResponse?
+  >
+  networkProfile;
+
   /// OsProfile - describes the configuration of the operating system and sets login data
-  late final pulumi.Output<VirtualMachineInstancePropertiesOsProfileResponse?> osProfile;
+  late final pulumi.Output<VirtualMachineInstancePropertiesOsProfileResponse?>
+  osProfile;
+
   /// Provisioning state of the virtual machine instance.
   late final pulumi.Output<String> provisioningState;
+
   /// Unique identifier defined by ARC to identify the guest of the VM.
   late final pulumi.Output<String?> resourceUid;
+
   /// SecurityProfile - Specifies the security settings for the virtual machine instance.
-  late final pulumi.Output<VirtualMachineInstancePropertiesSecurityProfileResponse?> securityProfile;
+  late final pulumi.Output<
+    VirtualMachineInstancePropertiesSecurityProfileResponse?
+  >
+  securityProfile;
+
   /// The observed state of virtual machine instances
   late final pulumi.Output<VirtualMachineInstanceStatusResponse> status;
+
   /// StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  late final pulumi.Output<VirtualMachineInstancePropertiesStorageProfileResponse?> storageProfile;
+  late final pulumi.Output<
+    VirtualMachineInstancePropertiesStorageProfileResponse?
+  >
+  storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Unique identifier for the vm resource.
   late final pulumi.Output<String> vmId;
 
@@ -1740,29 +1772,52 @@ class VirtualMachineInstance extends pulumi.CustomResource {
     VirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:VirtualMachineInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createFromLocal = registerOutput<bool?>('createFromLocal');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.guestAgentInstallStatus = registerOutput<GuestAgentInstallStatusResponse?>('guestAgentInstallStatus');
-    this.hardwareProfile = registerOutput<VirtualMachineInstancePropertiesHardwareProfileResponse?>('hardwareProfile');
-    this.httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>('httpProxyConfig');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.instanceView = registerOutput<VirtualMachineInstanceViewResponse>('instanceView');
+         'azure-native:azurestackhci:VirtualMachineInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createFromLocal = registerOutput<bool?>('createFromLocal');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    guestAgentInstallStatus = registerOutput<GuestAgentInstallStatusResponse?>(
+      'guestAgentInstallStatus',
+    );
+    hardwareProfile =
+        registerOutput<
+          VirtualMachineInstancePropertiesHardwareProfileResponse?
+        >('hardwareProfile');
+    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>(
+      'httpProxyConfig',
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    instanceView = registerOutput<VirtualMachineInstanceViewResponse>(
+      'instanceView',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<VirtualMachineInstancePropertiesNetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<VirtualMachineInstancePropertiesOsProfileResponse?>('osProfile');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceUid = registerOutput<String?>('resourceUid');
-    this.securityProfile = registerOutput<VirtualMachineInstancePropertiesSecurityProfileResponse?>('securityProfile');
-    this.status = registerOutput<VirtualMachineInstanceStatusResponse>('status');
-    this.storageProfile = registerOutput<VirtualMachineInstancePropertiesStorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.vmId = registerOutput<String>('vmId');
+    networkProfile =
+        registerOutput<VirtualMachineInstancePropertiesNetworkProfileResponse?>(
+          'networkProfile',
+        );
+    osProfile =
+        registerOutput<VirtualMachineInstancePropertiesOsProfileResponse?>(
+          'osProfile',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceUid = registerOutput<String?>('resourceUid');
+    securityProfile =
+        registerOutput<
+          VirtualMachineInstancePropertiesSecurityProfileResponse?
+        >('securityProfile');
+    status = registerOutput<VirtualMachineInstanceStatusResponse>('status');
+    storageProfile =
+        registerOutput<VirtualMachineInstancePropertiesStorageProfileResponse?>(
+          'storageProfile',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    vmId = registerOutput<String>('vmId');
   }
 }

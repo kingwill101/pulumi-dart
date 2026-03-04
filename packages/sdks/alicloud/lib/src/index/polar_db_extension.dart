@@ -8,7 +8,7 @@ import 'polar_db_extension_state.dart';
 ///
 /// For information about Polar Db Extension and how to use it, see [What is Extension](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateExtensions).
 ///
-/// > **NOTE:** Available since v1.264.0.
+/// &gt; **NOTE:** Available since v1.264.0.
 ///
 /// ## Example Usage
 ///
@@ -441,14 +441,19 @@ import 'polar_db_extension_state.dart';
 class PolarDbExtension extends pulumi.CustomResource {
   /// The database account name of the associated PolarDB cluster. Only support `Super` account.
   late final pulumi.Output<String> accountName;
+
   /// The ID of the cluster.
   late final pulumi.Output<String> dbClusterId;
+
   /// PolarDB cluster database name.
   late final pulumi.Output<String> dbName;
+
   /// Default version.
   late final pulumi.Output<String> defaultVersion;
+
   /// Information about the installed plug-ins under the specified database.
   late final pulumi.Output<String> extensionName;
+
   /// Installed version, only supports upgrading to the default version.
   late final pulumi.Output<String> installedVersion;
 
@@ -461,17 +466,17 @@ class PolarDbExtension extends pulumi.CustomResource {
     PolarDbExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/polarDbExtension:PolarDbExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbName = registerOutput<String>('dbName');
-    this.defaultVersion = registerOutput<String>('defaultVersion');
-    this.extensionName = registerOutput<String>('extensionName');
-    this.installedVersion = registerOutput<String>('installedVersion');
+         'alicloud:index/polarDbExtension:PolarDbExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbName = registerOutput<String>('dbName');
+    defaultVersion = registerOutput<String>('defaultVersion');
+    extensionName = registerOutput<String>('extensionName');
+    installedVersion = registerOutput<String>('installedVersion');
   }
 
   /// Gets an existing [PolarDbExtension] resource's state with the given [name] and [id].
@@ -492,16 +497,16 @@ class PolarDbExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/polarDbExtension:PolarDbExtension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbName = registerOutput<String>('dbName');
-    this.defaultVersion = registerOutput<String>('defaultVersion');
-    this.extensionName = registerOutput<String>('extensionName');
-    this.installedVersion = registerOutput<String>('installedVersion');
+         'alicloud:index/polarDbExtension:PolarDbExtension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbName = registerOutput<String>('dbName');
+    defaultVersion = registerOutput<String>('defaultVersion');
+    extensionName = registerOutput<String>('extensionName');
+    installedVersion = registerOutput<String>('installedVersion');
   }
 }

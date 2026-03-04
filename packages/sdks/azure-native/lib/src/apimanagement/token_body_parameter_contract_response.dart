@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenBodyParameterContractResponse {
   /// body parameter name.
   final pulumi.Input<String> name;
+
   /// body parameter value.
   final pulumi.Input<String> value;
 
   /// Creates a new [TokenBodyParameterContractResponse].
   /// [name] body parameter name.
   /// [value] body parameter value.
-  TokenBodyParameterContractResponse({
-    required this.name,
-    required this.value,
-  });
+  TokenBodyParameterContractResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory TokenBodyParameterContractResponse.fromMap(Map<String, dynamic> map) {
     return TokenBodyParameterContractResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

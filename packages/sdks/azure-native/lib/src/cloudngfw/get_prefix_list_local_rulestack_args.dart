@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrefixListLocalRulestackArgs {
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
+
   /// Local Rule priority
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetPrefixListLocalRulestackArgs {
 
   factory GetPrefixListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListLocalRulestackArgs(
-      localRulestackName: (map['localRulestackName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      localRulestackName: pulumi.Input.fromValue(
+        map['localRulestackName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

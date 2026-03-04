@@ -1,5 +1,3 @@
-library module_core;
-
 export 'core/affinity.dart';
 export 'core/affinity_patch.dart';
 export 'core/app_armor_profile.dart';

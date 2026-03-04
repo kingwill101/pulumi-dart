@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryInfoResponse {
   /// registry server Url.
   final pulumi.Input<String>? registryUrl;
+
   /// registry username.
   final pulumi.Input<String>? registryUserName;
 
   /// Creates a new [RegistryInfoResponse].
   /// [registryUrl] registry server Url.
   /// [registryUserName] registry username.
-  RegistryInfoResponse({
-    this.registryUrl,
-    this.registryUserName,
-  });
+  RegistryInfoResponse({this.registryUrl, this.registryUserName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RegistryInfoResponse {
 
   factory RegistryInfoResponse.fromMap(Map<String, dynamic> map) {
     return RegistryInfoResponse(
-      registryUrl: map['registryUrl'] == null ? null : (map['registryUrl']! as String).input(),
-      registryUserName: map['registryUserName'] == null ? null : (map['registryUserName']! as String).input(),
+      registryUrl: (() {
+        final guardedValue = map['registryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryUserName: (() {
+        final guardedValue = map['registryUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

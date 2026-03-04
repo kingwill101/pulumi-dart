@@ -9,20 +9,19 @@ class TLSSecurityPolicyEnumValue {
 
   /// Creates a new [TLSSecurityPolicyEnumValue].
   /// [value] Property value
-  TLSSecurityPolicyEnumValue({
-    this.value,
-  });
+  TLSSecurityPolicyEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory TLSSecurityPolicyEnumValue.fromMap(Map<String, dynamic> map) {
     return TLSSecurityPolicyEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

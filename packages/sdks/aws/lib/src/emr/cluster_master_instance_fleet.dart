@@ -7,16 +7,23 @@ import 'cluster_master_instance_fleet_launch_specifications.dart';
 class ClusterMasterInstanceFleet {
   /// ID of the cluster.
   final pulumi.Input<String>? id;
+
   /// Configuration block for instance fleet.
-  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfig>>? instanceTypeConfigs;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfig>>?
+  instanceTypeConfigs;
+
   /// Configuration block for launch specification.
-  final pulumi.Input<ClusterMasterInstanceFleetLaunchSpecifications>? launchSpecifications;
+  final pulumi.Input<ClusterMasterInstanceFleetLaunchSpecifications>?
+  launchSpecifications;
+
   /// Friendly name given to the instance fleet.
   final pulumi.Input<String>? name;
   final pulumi.Input<int>? provisionedOnDemandCapacity;
   final pulumi.Input<int>? provisionedSpotCapacity;
+
   /// Target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
   final pulumi.Input<int>? targetOnDemandCapacity;
+
   /// Target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
   final pulumi.Input<int>? targetSpotCapacity;
 
@@ -43,8 +50,23 @@ class ClusterMasterInstanceFleet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'instanceTypeConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterInstanceFleetInstanceTypeConfig>, List<Map<String, dynamic>>>(instanceTypeConfigs, (value) => pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'launchSpecifications': ?pulumi.Input.mapOptionalInputValue<ClusterMasterInstanceFleetLaunchSpecifications, Map<String, dynamic>>(launchSpecifications, (value) => value.toMap()),
+      'instanceTypeConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterMasterInstanceFleetInstanceTypeConfig>,
+            List<Map<String, dynamic>>
+          >(
+            instanceTypeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterMasterInstanceFleetInstanceTypeConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'launchSpecifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterMasterInstanceFleetLaunchSpecifications,
+            Map<String, dynamic>
+          >(launchSpecifications, (value) => value.toMap()),
       'name': ?name,
       'provisionedOnDemandCapacity': ?provisionedOnDemandCapacity,
       'provisionedSpotCapacity': ?provisionedSpotCapacity,
@@ -55,15 +77,57 @@ class ClusterMasterInstanceFleet {
 
   factory ClusterMasterInstanceFleet.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleet(
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : ((pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs']!, (value) => ClusterMasterInstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      launchSpecifications: map['launchSpecifications'] == null ? null : ((ClusterMasterInstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : ((map['provisionedOnDemandCapacity'] as int).input()).input(),
-      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : ((map['provisionedSpotCapacity'] as int).input()).input(),
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : ((map['targetOnDemandCapacity'] as int).input()).input(),
-      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : ((map['targetSpotCapacity'] as int).input()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceTypeConfigs: (() {
+        final guardedValue = map['instanceTypeConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfig>(
+            guardedValue,
+            (value) => ClusterMasterInstanceFleetInstanceTypeConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      launchSpecifications: (() {
+        final guardedValue = map['launchSpecifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterMasterInstanceFleetLaunchSpecifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionedOnDemandCapacity: (() {
+        final guardedValue = map['provisionedOnDemandCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      provisionedSpotCapacity: (() {
+        final guardedValue = map['provisionedSpotCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetOnDemandCapacity: (() {
+        final guardedValue = map['targetOnDemandCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetSpotCapacity: (() {
+        final guardedValue = map['targetSpotCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

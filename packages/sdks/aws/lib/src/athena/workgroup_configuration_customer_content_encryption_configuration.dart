@@ -7,20 +7,21 @@ class WorkgroupConfigurationCustomerContentEncryptionConfiguration {
 
   /// Creates a new [WorkgroupConfigurationCustomerContentEncryptionConfiguration].
   /// [kmsKey] Optional.
-  WorkgroupConfigurationCustomerContentEncryptionConfiguration({
-    this.kmsKey,
-  });
+  WorkgroupConfigurationCustomerContentEncryptionConfiguration({this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': ?kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': ?kmsKey};
   }
 
-  factory WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkgroupConfigurationCustomerContentEncryptionConfiguration(
-      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

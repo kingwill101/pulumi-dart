@@ -6,7 +6,11 @@ import 'stream_destination_config_bigquery_destination_config_source_hierarchy_d
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
   /// Dataset template used for dynamic dataset creation.
   /// Structure is documented below.
-  final pulumi.Input<StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate> datasetTemplate;
+  final pulumi.Input<
+    StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate
+  >
+  datasetTemplate;
+
   /// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
   final pulumi.Input<String>? projectId;
 
@@ -20,16 +24,29 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasetTemplate': pulumi.Input.mapInputValue<StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate, Map<String, dynamic>>(datasetTemplate, (value) => value.toMap()),
+      'datasetTemplate':
+          pulumi.Input.mapInputValue<
+            StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate,
+            Map<String, dynamic>
+          >(datasetTemplate, (value) => value.toMap()),
       'projectId': ?projectId,
     };
   }
 
-  factory StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.fromMap(Map<String, dynamic> map) {
+  factory StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(
-      datasetTemplate: (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>())).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      datasetTemplate: pulumi.Input.fromValue(
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.fromMap(
+          (map['datasetTemplate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

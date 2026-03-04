@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse {
   /// Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
   final pulumi.Input<bool> exclusive;
+
   /// The regex applied to the input value(s).
   final pulumi.Input<String> regex;
 
@@ -18,17 +19,15 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exclusive': exclusive,
-      'regex': regex,
-    };
+    return <String, dynamic>{'exclusive': exclusive, 'regex': regex};
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse(
-      exclusive: (map['exclusive'] as bool).input(),
-      regex: (map['regex'] as String).input(),
+      exclusive: pulumi.Input.fromValue(map['exclusive'] as bool),
+      regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
-

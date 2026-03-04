@@ -9,16 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineGroupsArgs {
   /// Machine Group name
   final pulumi.Input<String>? groupName;
-  /// A list of Machine Group IDs. The value is formulated as `<project_name>:<group_name>`.
+
+  /// A list of Machine Group IDs. The value is formulated as `&lt;project_name&gt;:&lt;group_name&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Project name
   final pulumi.Input<String> projectName;
 
   /// Creates a new [GetMachineGroupsArgs].
   /// [groupName] Machine Group name
-  /// [ids] A list of Machine Group IDs. The value is formulated as `<project_name>:<group_name>`.
+  /// [ids] A list of Machine Group IDs. The value is formulated as `&lt;project_name&gt;:&lt;group_name&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
   GetMachineGroupsArgs({
@@ -39,11 +42,22 @@ class GetMachineGroupsArgs {
 
   factory GetMachineGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsArgs(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }
 }
-

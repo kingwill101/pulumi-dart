@@ -4,16 +4,22 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
   normalTask("NORMAL_TASK"),
   errorTask("ERROR_TASK");
 
-  const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value: $value',
+    );
   }
 }
-

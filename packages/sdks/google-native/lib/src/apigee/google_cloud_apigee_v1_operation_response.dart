@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1OperationResponse {
   /// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
   final pulumi.Input<List<String>> methods;
+
   /// REST resource path associated with the API proxy or remote service.
   final pulumi.Input<String> resource;
 
@@ -18,17 +19,15 @@ class GoogleCloudApigeeV1OperationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'methods': methods,
-      'resource': resource,
-    };
+    return <String, dynamic>{'methods': methods, 'resource': resource};
   }
 
-  factory GoogleCloudApigeeV1OperationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1OperationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1OperationResponse(
-      methods: ((map['methods'] as List).cast<String>()).input(),
-      resource: (map['resource'] as String).input(),
+      methods: pulumi.Input.fromValue((map['methods'] as List).cast<String>()),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
-

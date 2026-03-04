@@ -9,20 +9,29 @@ class NetworkVirtualPort {
 
   /// Creates a new [NetworkVirtualPort].
   /// [params] Defines parameters for the virtual port in the port group.
-  NetworkVirtualPort({
-    this.params,
-  });
+  NetworkVirtualPort({this.params});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'params': ?pulumi.Input.mapOptionalInputValue<NetworkVirtualPortParams, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'params':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkVirtualPortParams,
+            Map<String, dynamic>
+          >(params, (value) => value.toMap()),
     };
   }
 
   factory NetworkVirtualPort.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualPort(
-      params: map['params'] == null ? null : (NetworkVirtualPortParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      params: (() {
+        final guardedValue = map['params'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkVirtualPortParams.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

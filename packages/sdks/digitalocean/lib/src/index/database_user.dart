@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_user_args.dart';
-import 'database_user_setting.dart';
 import 'database_user_state.dart';
 
 /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
 ///
-/// > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
+/// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 ///
 /// ## Example Usage
 ///
@@ -647,25 +646,32 @@ import 'database_user_state.dart';
 /// $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 /// ```
 ///
-/// > **Note:** MongoDB user passwords are only available when the user is created. An existing MongoDB user that is imported will not have its `password` attribute exported. Recreate the user if it is necessary to access the password with Terraform.
+/// &gt; **Note:** MongoDB user passwords are only available when the user is created. An existing MongoDB user that is imported will not have its `password` attribute exported. Recreate the user if it is necessary to access the password with Terraform.
 class DatabaseUser extends pulumi.CustomResource {
   /// Access certificate for TLS client authentication. (Kafka only)
   late final pulumi.Output<String> accessCert;
+
   /// Access key for TLS client authentication. (Kafka only)
   late final pulumi.Output<String> accessKey;
+
   /// The ID of the original source database cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
   late final pulumi.Output<String?> mysqlAuthPlugin;
+
   /// The name for the database user.
   late final pulumi.Output<String> name;
+
   /// Password for the database user.
   late final pulumi.Output<String> password;
+
   /// Role for the database user. The value will be either "primary" or "normal".
   late final pulumi.Output<String> role;
+
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
-  late final pulumi.Output<List<DatabaseUserSetting>?> settings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> settings;
 
   /// Creates a new [DatabaseUser].
   /// [name] The Pulumi resource name.
@@ -676,19 +682,19 @@ class DatabaseUser extends pulumi.CustomResource {
     DatabaseUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseUser:DatabaseUser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessCert = registerOutput<String>('accessCert');
-    this.accessKey = registerOutput<String>('accessKey');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
+         'digitalocean:index/databaseUser:DatabaseUser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessCert = registerOutput<String>('accessCert');
+    accessKey = registerOutput<String>('accessKey');
+    clusterId = registerOutput<String>('clusterId');
+    mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.role = registerOutput<String>('role');
-    this.settings = registerOutput<List<DatabaseUserSetting>?>('settings');
+    password = registerOutput<String>('password');
+    role = registerOutput<String>('role');
+    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
   }
 
   /// Gets an existing [DatabaseUser] resource's state with the given [name] and [id].
@@ -709,18 +715,18 @@ class DatabaseUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseUser:DatabaseUser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessCert = registerOutput<String>('accessCert');
-    this.accessKey = registerOutput<String>('accessKey');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
+         'digitalocean:index/databaseUser:DatabaseUser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessCert = registerOutput<String>('accessCert');
+    accessKey = registerOutput<String>('accessKey');
+    clusterId = registerOutput<String>('clusterId');
+    mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.role = registerOutput<String>('role');
-    this.settings = registerOutput<List<DatabaseUserSetting>?>('settings');
+    password = registerOutput<String>('password');
+    role = registerOutput<String>('role');
+    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
   }
 }

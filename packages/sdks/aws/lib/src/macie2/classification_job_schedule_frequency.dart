@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClassificationJobScheduleFrequency {
   /// Specifies a daily recurrence pattern for running the job.
   final pulumi.Input<bool>? dailySchedule;
+
   /// Specifies a monthly recurrence pattern for running the job.
   final pulumi.Input<int>? monthlySchedule;
+
   /// Specifies a weekly recurrence pattern for running the job.
   final pulumi.Input<String>? weeklySchedule;
 
@@ -30,10 +32,21 @@ class ClassificationJobScheduleFrequency {
 
   factory ClassificationJobScheduleFrequency.fromMap(Map<String, dynamic> map) {
     return ClassificationJobScheduleFrequency(
-      dailySchedule: map['dailySchedule'] == null ? null : ((map['dailySchedule'] as bool).input()).input(),
-      monthlySchedule: map['monthlySchedule'] == null ? null : ((map['monthlySchedule'] as int).input()).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : ((map['weeklySchedule'] as String).input()).input(),
+      dailySchedule: (() {
+        final guardedValue = map['dailySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      monthlySchedule: (() {
+        final guardedValue = map['monthlySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      weeklySchedule: (() {
+        final guardedValue = map['weeklySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

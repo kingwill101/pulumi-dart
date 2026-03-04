@@ -9,20 +9,19 @@ class RenewalEligibilityEnumValue {
 
   /// Creates a new [RenewalEligibilityEnumValue].
   /// [value] Property value
-  RenewalEligibilityEnumValue({
-    this.value,
-  });
+  RenewalEligibilityEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory RenewalEligibilityEnumValue.fromMap(Map<String, dynamic> map) {
     return RenewalEligibilityEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

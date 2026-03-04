@@ -6,6 +6,7 @@ class GetAuthorityAccessUrl {
   /// The URL where this CertificateAuthority's CA certificate is published. This will only be
   /// set for CAs that have been activated.
   final pulumi.Input<String> caCertificateAccessUrl;
+
   /// The URL where this CertificateAuthority's CRLs are published. This will only be set for
   /// CAs that have been activated.
   final pulumi.Input<List<String>> crlAccessUrls;
@@ -27,9 +28,12 @@ class GetAuthorityAccessUrl {
 
   factory GetAuthorityAccessUrl.fromMap(Map<String, dynamic> map) {
     return GetAuthorityAccessUrl(
-      caCertificateAccessUrl: (map['caCertificateAccessUrl'] as String).input(),
-      crlAccessUrls: ((map['crlAccessUrls'] as List).cast<String>()).input(),
+      caCertificateAccessUrl: pulumi.Input.fromValue(
+        map['caCertificateAccessUrl'] as String,
+      ),
+      crlAccessUrls: pulumi.Input.fromValue(
+        (map['crlAccessUrls'] as List).cast<String>(),
+      ),
     );
   }
 }
-

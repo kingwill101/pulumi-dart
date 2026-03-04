@@ -7,6 +7,7 @@ import 'light_house_authorization.dart';
 class ProviderHubMetadataThirdPartyProviderAuthorization {
   /// The authorizations.
   final pulumi.Input<List<LightHouseAuthorization>>? authorizations;
+
   /// The managed by tenant id.
   final pulumi.Input<String>? managedByTenantId;
 
@@ -20,16 +21,43 @@ class ProviderHubMetadataThirdPartyProviderAuthorization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizations': ?pulumi.Input.mapOptionalInputValue<List<LightHouseAuthorization>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<LightHouseAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authorizations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LightHouseAuthorization>,
+            List<Map<String, dynamic>>
+          >(
+            authorizations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LightHouseAuthorization,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'managedByTenantId': ?managedByTenantId,
     };
   }
 
-  factory ProviderHubMetadataThirdPartyProviderAuthorization.fromMap(Map<String, dynamic> map) {
+  factory ProviderHubMetadataThirdPartyProviderAuthorization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProviderHubMetadataThirdPartyProviderAuthorization(
-      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<LightHouseAuthorization>(map['authorizations']!, (value) => LightHouseAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId']! as String).input(),
+      authorizations: (() {
+        final guardedValue = map['authorizations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LightHouseAuthorization>(
+            guardedValue,
+            (value) => LightHouseAuthorization.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      managedByTenantId: (() {
+        final guardedValue = map['managedByTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -241,18 +241,26 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ETag from NRP.
   late final pulumi.Output<String> eTag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the private endpoint connection proxy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Remote private endpoint details.
-  late final pulumi.Output<RemotePrivateEndpointResponse?> remotePrivateEndpoint;
+  late final pulumi.Output<RemotePrivateEndpointResponse?>
+  remotePrivateEndpoint;
+
   /// Operation status.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -265,18 +273,20 @@ class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
     PrivateEndpointConnectionProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceupdate:PrivateEndpointConnectionProxy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:deviceupdate:PrivateEndpointConnectionProxy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remotePrivateEndpoint = registerOutput<RemotePrivateEndpointResponse?>('remotePrivateEndpoint');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    remotePrivateEndpoint = registerOutput<RemotePrivateEndpointResponse?>(
+      'remotePrivateEndpoint',
+    );
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

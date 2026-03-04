@@ -11,8 +11,10 @@ import 'notification_channel_sns.dart';
 class NotificationChannelArgs {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   final pulumi.Input<NotificationChannelFilters>? filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
@@ -22,26 +24,45 @@ class NotificationChannelArgs {
   /// [filters] Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sns] SNS noficiation channel configurations. See the `sns` argument reference below.
-  NotificationChannelArgs({
-    this.filters,
-    this.region,
-    required this.sns,
-  });
+  NotificationChannelArgs({this.filters, this.region, required this.sns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<NotificationChannelFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotificationChannelFilters,
+            Map<String, dynamic>
+          >(filters, (value) => value.toMap()),
       'region': ?region,
-      'sns': pulumi.Input.mapInputValue<NotificationChannelSns, Map<String, dynamic>>(sns, (value) => value.toMap()),
+      'sns':
+          pulumi.Input.mapInputValue<
+            NotificationChannelSns,
+            Map<String, dynamic>
+          >(sns, (value) => value.toMap()),
     };
   }
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      filters: map['filters'] == null ? null : ((NotificationChannelFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sns: (NotificationChannelSns.fromMap((map['sns']! as Map).cast<String, dynamic>())).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotificationChannelFilters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sns: pulumi.Input.fromValue(
+        NotificationChannelSns.fromMap(
+          (map['sns']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

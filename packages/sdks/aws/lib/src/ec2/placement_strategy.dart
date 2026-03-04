@@ -4,16 +4,15 @@ enum PlacementStrategy {
   spread("spread"),
   cluster("cluster");
 
-  const PlacementStrategy(this.value);
-  final String value;
+  const PlacementStrategy(this.wireValue);
+  final String wireValue;
 
   static PlacementStrategy fromValue(String value) {
     for (final item in PlacementStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementStrategy value: $value');
   }
 }
-

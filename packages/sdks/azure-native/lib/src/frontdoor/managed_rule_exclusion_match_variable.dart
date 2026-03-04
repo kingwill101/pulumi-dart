@@ -6,16 +6,17 @@ enum ManagedRuleExclusionMatchVariable {
   valueRequestBodyPostArgNames("RequestBodyPostArgNames"),
   valueRequestBodyJsonArgNames("RequestBodyJsonArgNames");
 
-  const ManagedRuleExclusionMatchVariable(this.value);
-  final String value;
+  const ManagedRuleExclusionMatchVariable(this.wireValue);
+  final String wireValue;
 
   static ManagedRuleExclusionMatchVariable fromValue(String value) {
     for (final item in ManagedRuleExclusionMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedRuleExclusionMatchVariable value: $value');
+    throw ArgumentError(
+      'Unknown ManagedRuleExclusionMatchVariable value: $value',
+    );
   }
 }
-

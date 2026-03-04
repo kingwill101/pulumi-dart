@@ -6,24 +6,34 @@ import 'cross_subscription_restore_settings.dart';
 /// Restore Settings  of the vault
 class RestoreSettings {
   /// Settings for CrossSubscriptionRestore
-  final pulumi.Input<CrossSubscriptionRestoreSettings>? crossSubscriptionRestoreSettings;
+  final pulumi.Input<CrossSubscriptionRestoreSettings>?
+  crossSubscriptionRestoreSettings;
 
   /// Creates a new [RestoreSettings].
   /// [crossSubscriptionRestoreSettings] Settings for CrossSubscriptionRestore
-  RestoreSettings({
-    this.crossSubscriptionRestoreSettings,
-  });
+  RestoreSettings({this.crossSubscriptionRestoreSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossSubscriptionRestoreSettings': ?pulumi.Input.mapOptionalInputValue<CrossSubscriptionRestoreSettings, Map<String, dynamic>>(crossSubscriptionRestoreSettings, (value) => value.toMap()),
+      'crossSubscriptionRestoreSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CrossSubscriptionRestoreSettings,
+            Map<String, dynamic>
+          >(crossSubscriptionRestoreSettings, (value) => value.toMap()),
     };
   }
 
   factory RestoreSettings.fromMap(Map<String, dynamic> map) {
     return RestoreSettings(
-      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : (CrossSubscriptionRestoreSettings.fromMap((map['crossSubscriptionRestoreSettings']! as Map).cast<String, dynamic>())).input(),
+      crossSubscriptionRestoreSettings: (() {
+        final guardedValue = map['crossSubscriptionRestoreSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CrossSubscriptionRestoreSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

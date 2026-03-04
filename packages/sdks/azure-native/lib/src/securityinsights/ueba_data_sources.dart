@@ -5,16 +5,15 @@ enum UebaDataSources {
   valueSecurityEvent("SecurityEvent"),
   valueSigninLogs("SigninLogs");
 
-  const UebaDataSources(this.value);
-  final String value;
+  const UebaDataSources(this.wireValue);
+  final String wireValue;
 
   static UebaDataSources fromValue(String value) {
     for (final item in UebaDataSources.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UebaDataSources value: $value');
   }
 }
-

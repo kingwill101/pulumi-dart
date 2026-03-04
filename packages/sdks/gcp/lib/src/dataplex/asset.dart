@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_args.dart';
 import 'asset_discovery_spec.dart';
-import 'asset_discovery_status.dart';
 import 'asset_resource_spec.dart';
-import 'asset_resource_status.dart';
-import 'asset_security_status.dart';
 import 'asset_state.dart';
 
 /// The Dataplex Asset resource
@@ -409,43 +406,61 @@ import 'asset_state.dart';
 class Asset extends pulumi.CustomResource {
   /// Output only. The time when the asset was created.
   late final pulumi.Output<String> createTime;
+
   /// The zone for the resource
   late final pulumi.Output<String> dataplexZone;
+
   /// Optional. Description of the asset.
   late final pulumi.Output<String?> description;
+
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
   late final pulumi.Output<AssetDiscoverySpec> discoverySpec;
+
   /// Output only. Status of the discovery feature applied to data referenced by this asset.
-  late final pulumi.Output<List<AssetDiscoveryStatus>> discoveryStatuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> discoveryStatuses;
+
   /// Optional. User friendly display name.
   late final pulumi.Output<String?> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The lake for the resource
   late final pulumi.Output<String> lake;
+
   /// The location for the resource
   late final pulumi.Output<String> location;
+
   /// The name of the asset.
   late final pulumi.Output<String> name;
+
   /// The project for the resource
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
   late final pulumi.Output<AssetResourceSpec> resourceSpec;
+
   /// Output only. Status of the resource referenced by this asset.
-  late final pulumi.Output<List<AssetResourceStatus>> resourceStatuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
+
   /// Output only. Status of the security policy applied to resource referenced by this asset.
-  late final pulumi.Output<List<AssetSecurityStatus>> securityStatuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> securityStatuses;
+
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   late final pulumi.Output<String> state;
+
   /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
   late final pulumi.Output<String> uid;
+
   /// Output only. The time when the asset was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -453,43 +468,42 @@ class Asset extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Asset]. {@macro pulumi_dataplex_asset_asset_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Asset(
-    String name, {
-    AssetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:dataplex/asset:Asset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataplexZone = registerOutput<String>('dataplexZone');
-    this.description = registerOutput<String?>('description');
-    this.discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
-    this.discoveryStatuses = registerOutput<List<AssetDiscoveryStatus>>('discoveryStatuses');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.lake = registerOutput<String>('lake');
-    this.location = registerOutput<String>('location');
+  Asset(String name, {AssetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:dataplex/asset:Asset',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataplexZone = registerOutput<String>('dataplexZone');
+    description = registerOutput<String?>('description');
+    discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
+    discoveryStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'discoveryStatuses',
+    );
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
-    this.resourceStatuses = registerOutput<List<AssetResourceStatus>>('resourceStatuses');
-    this.securityStatuses = registerOutput<List<AssetSecurityStatus>>('securityStatuses');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
+    resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'resourceStatuses',
+    );
+    securityStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'securityStatuses',
+    );
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Asset] resource's state with the given [name] and [id].
-  static Asset get(
-    String name,
-    pulumi.Input<String> id, {
-    AssetState? state,
-  }) {
+  static Asset get(String name, pulumi.Input<String> id, {AssetState? state}) {
     return Asset._get(
       name,
       state: state?.toMap(),
@@ -502,29 +516,35 @@ class Asset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataplex/asset:Asset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataplexZone = registerOutput<String>('dataplexZone');
-    this.description = registerOutput<String?>('description');
-    this.discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
-    this.discoveryStatuses = registerOutput<List<AssetDiscoveryStatus>>('discoveryStatuses');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.lake = registerOutput<String>('lake');
-    this.location = registerOutput<String>('location');
+         'gcp:dataplex/asset:Asset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataplexZone = registerOutput<String>('dataplexZone');
+    description = registerOutput<String?>('description');
+    discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
+    discoveryStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'discoveryStatuses',
+    );
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
-    this.resourceStatuses = registerOutput<List<AssetResourceStatus>>('resourceStatuses');
-    this.securityStatuses = registerOutput<List<AssetSecurityStatus>>('securityStatuses');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
+    resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'resourceStatuses',
+    );
+    securityStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'securityStatuses',
+    );
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

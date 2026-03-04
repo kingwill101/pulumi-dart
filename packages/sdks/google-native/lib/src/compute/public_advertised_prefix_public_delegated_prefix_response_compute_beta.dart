@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicAdvertisedPrefixPublicDelegatedPrefixResponseComputeBeta {
   /// The IP address range of the public delegated prefix
   final pulumi.Input<String> ipRange;
+
   /// The name of the public delegated prefix
   final pulumi.Input<String> name;
+
   /// The project number of the public delegated prefix
   final pulumi.Input<String> project;
+
   /// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
   final pulumi.Input<String> region;
+
   /// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
   final pulumi.Input<String> status;
 
@@ -39,14 +43,15 @@ class PublicAdvertisedPrefixPublicDelegatedPrefixResponseComputeBeta {
     };
   }
 
-  factory PublicAdvertisedPrefixPublicDelegatedPrefixResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory PublicAdvertisedPrefixPublicDelegatedPrefixResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PublicAdvertisedPrefixPublicDelegatedPrefixResponseComputeBeta(
-      ipRange: (map['ipRange'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: (map['project'] as String).input(),
-      region: (map['region'] as String).input(),
-      status: (map['status'] as String).input(),
+      ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

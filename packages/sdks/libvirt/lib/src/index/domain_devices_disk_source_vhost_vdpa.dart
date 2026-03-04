@@ -8,20 +8,15 @@ class DomainDevicesDiskSourceVhostVdpa {
 
   /// Creates a new [DomainDevicesDiskSourceVhostVdpa].
   /// [dev] Specifies the device to be used for the VHostVDPA source in the backing store.
-  DomainDevicesDiskSourceVhostVdpa({
-    required this.dev,
-  });
+  DomainDevicesDiskSourceVhostVdpa({required this.dev});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dev': dev,
-    };
+    return <String, dynamic>{'dev': dev};
   }
 
   factory DomainDevicesDiskSourceVhostVdpa.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostVdpa(
-      dev: (map['dev'] as String).input(),
+      dev: pulumi.Input.fromValue(map['dev'] as String),
     );
   }
 }
-

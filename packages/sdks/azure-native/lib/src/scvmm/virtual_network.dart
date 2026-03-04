@@ -173,26 +173,37 @@ import 'virtual_network_args.dart';
 class VirtualNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Gets or sets the inventory Item ID for the resource.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Name of the virtual network in vmmServer.
   late final pulumi.Output<String> networkName;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// Unique ID of the virtual network.
   late final pulumi.Output<String?> uuid;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -205,22 +216,24 @@ class VirtualNetwork extends pulumi.CustomResource {
     VirtualNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scvmm:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.location = registerOutput<String>('location');
+         'azure-native:scvmm:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkName = registerOutput<String>('networkName');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vmmServerId = registerOutput<String?>('vmmServerId');
+    networkName = registerOutput<String>('networkName');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmmServerId = registerOutput<String?>('vmmServerId');
   }
 }

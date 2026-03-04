@@ -4,16 +4,15 @@ enum LogsPolicyDestination {
   cloudLogging("CLOUD_LOGGING"),
   path("PATH");
 
-  const LogsPolicyDestination(this.value);
-  final String value;
+  const LogsPolicyDestination(this.wireValue);
+  final String wireValue;
 
   static LogsPolicyDestination fromValue(String value) {
     for (final item in LogsPolicyDestination.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogsPolicyDestination value: $value');
   }
 }
-

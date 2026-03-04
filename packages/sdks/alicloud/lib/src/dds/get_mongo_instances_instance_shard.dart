@@ -31,11 +31,10 @@ class GetMongoInstancesInstanceShard {
 
   factory GetMongoInstancesInstanceShard.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstanceShard(
-      class_: (map['class'] as String).input(),
-      description: (map['description'] as String).input(),
-      nodeId: (map['nodeId'] as String).input(),
-      storage: (map['storage'] as int).input(),
+      class_: pulumi.Input.fromValue(map['class'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
+      storage: pulumi.Input.fromValue(map['storage'] as int),
     );
   }
 }
-

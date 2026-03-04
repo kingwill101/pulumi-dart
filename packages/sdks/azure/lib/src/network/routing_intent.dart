@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_intent_args.dart';
-import 'routing_intent_routing_policy.dart';
 import 'routing_intent_state.dart';
 
 /// Manages a Virtual Hub Routing Intent.
@@ -345,7 +344,7 @@ import 'routing_intent_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -360,8 +359,10 @@ import 'routing_intent_state.dart';
 class RoutingIntent extends pulumi.CustomResource {
   /// The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `routing_policy` blocks as defined below.
-  late final pulumi.Output<List<RoutingIntentRoutingPolicy>> routingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> routingPolicies;
+
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -374,14 +375,16 @@ class RoutingIntent extends pulumi.CustomResource {
     RoutingIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routingIntent:RoutingIntent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/routingIntent:RoutingIntent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    routingPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'routingPolicies',
+    );
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 
   /// Gets an existing [RoutingIntent] resource's state with the given [name] and [id].
@@ -402,13 +405,15 @@ class RoutingIntent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routingIntent:RoutingIntent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/routingIntent:RoutingIntent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    routingPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'routingPolicies',
+    );
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

@@ -9,30 +9,42 @@ import 'get_firewall_virtual_hub.dart';
 class GetFirewallResult {
   /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when it is `true`.
   final bool dnsProxyEnabled;
+
   /// The list of DNS servers that the Azure Firewall will direct DNS traffic to for name resolution.
   final List<String> dnsServers;
+
   /// The ID of the Firewall Policy applied to the Azure Firewall.
   final String firewallPolicyId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A `ip_configuration` block as defined below.
   final List<GetFirewallIpConfiguration> ipConfigurations;
+
   /// The Azure location where the Azure Firewall exists.
   final String location;
+
   /// A `management_ip_configuration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
   final List<GetFirewallManagementIpConfiguration> managementIpConfigurations;
   final String name;
   final String resourceGroupName;
+
   /// The SKU name of the Azure Firewall.
   final String skuName;
+
   /// The SKU tier of the Azure Firewall.
   final String skuTier;
+
   /// A mapping of tags assigned to the Azure Firewall.
   final Map<String, String> tags;
+
   /// The operation mode for threat intelligence-based filtering.
   final String threatIntelMode;
+
   /// A `virtual_hub` block as defined below.
   final List<GetFirewallVirtualHub> virtualHubs;
+
   /// A list of Availability Zones in which this Azure Firewall is located.
   final List<String> zones;
 
@@ -76,16 +88,28 @@ class GetFirewallResult {
       'dnsServers': dnsServers,
       'firewallPolicyId': firewallPolicyId,
       'id': id,
-      'ipConfigurations': pulumi.Input.encodeList<GetFirewallIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.encodeList<
+            GetFirewallIpConfiguration,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'location': location,
-      'managementIpConfigurations': pulumi.Input.encodeList<GetFirewallManagementIpConfiguration, Map<String, dynamic>>(managementIpConfigurations, (value) => value.toMap()),
+      'managementIpConfigurations':
+          pulumi.Input.encodeList<
+            GetFirewallManagementIpConfiguration,
+            Map<String, dynamic>
+          >(managementIpConfigurations, (value) => value.toMap()),
       'name': name,
       'resourceGroupName': resourceGroupName,
       'skuName': skuName,
       'skuTier': skuTier,
       'tags': tags,
       'threatIntelMode': threatIntelMode,
-      'virtualHubs': pulumi.Input.encodeList<GetFirewallVirtualHub, Map<String, dynamic>>(virtualHubs, (value) => value.toMap()),
+      'virtualHubs':
+          pulumi.Input.encodeList<GetFirewallVirtualHub, Map<String, dynamic>>(
+            virtualHubs,
+            (value) => value.toMap(),
+          ),
       'zones': zones,
     };
   }
@@ -96,18 +120,33 @@ class GetFirewallResult {
       dnsServers: (map['dnsServers'] as List).cast<String>(),
       firewallPolicyId: map['firewallPolicyId'] as String,
       id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<GetFirewallIpConfiguration>(map['ipConfigurations'], (value) => GetFirewallIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: pulumi.Input.decodeList<GetFirewallIpConfiguration>(
+        map['ipConfigurations']!,
+        (value) => GetFirewallIpConfiguration.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
-      managementIpConfigurations: pulumi.Input.decodeList<GetFirewallManagementIpConfiguration>(map['managementIpConfigurations'], (value) => GetFirewallManagementIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      managementIpConfigurations:
+          pulumi.Input.decodeList<GetFirewallManagementIpConfiguration>(
+            map['managementIpConfigurations']!,
+            (value) => GetFirewallManagementIpConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       skuName: map['skuName'] as String,
       skuTier: map['skuTier'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       threatIntelMode: map['threatIntelMode'] as String,
-      virtualHubs: pulumi.Input.decodeList<GetFirewallVirtualHub>(map['virtualHubs'], (value) => GetFirewallVirtualHub.fromMap((value as Map).cast<String, dynamic>())),
+      virtualHubs: pulumi.Input.decodeList<GetFirewallVirtualHub>(
+        map['virtualHubs']!,
+        (value) => GetFirewallVirtualHub.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
-

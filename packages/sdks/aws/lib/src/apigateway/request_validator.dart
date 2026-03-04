@@ -122,12 +122,16 @@ import 'request_validator_state.dart';
 class RequestValidator extends pulumi.CustomResource {
   /// Name of the request validator
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the associated Rest API
   late final pulumi.Output<String> restApi;
+
   /// Boolean whether to validate request body. Defaults to `false`.
   late final pulumi.Output<bool?> validateRequestBody;
+
   /// Boolean whether to validate request parameters. Defaults to `false`.
   late final pulumi.Output<bool?> validateRequestParameters;
 
@@ -140,16 +144,18 @@ class RequestValidator extends pulumi.CustomResource {
     RequestValidatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/requestValidator:RequestValidator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:apigateway/requestValidator:RequestValidator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.validateRequestBody = registerOutput<bool?>('validateRequestBody');
-    this.validateRequestParameters = registerOutput<bool?>('validateRequestParameters');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    validateRequestBody = registerOutput<bool?>('validateRequestBody');
+    validateRequestParameters = registerOutput<bool?>(
+      'validateRequestParameters',
+    );
   }
 
   /// Gets an existing [RequestValidator] resource's state with the given [name] and [id].
@@ -170,15 +176,17 @@ class RequestValidator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/requestValidator:RequestValidator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:apigateway/requestValidator:RequestValidator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.restApi = registerOutput<String>('restApi');
-    this.validateRequestBody = registerOutput<bool?>('validateRequestBody');
-    this.validateRequestParameters = registerOutput<bool?>('validateRequestParameters');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    validateRequestBody = registerOutput<bool?>('validateRequestBody');
+    validateRequestParameters = registerOutput<bool?>(
+      'validateRequestParameters',
+    );
   }
 }

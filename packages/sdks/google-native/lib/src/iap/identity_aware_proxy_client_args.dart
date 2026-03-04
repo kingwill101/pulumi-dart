@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iap_v1_identity_aware_proxy_client_args_doc}
 class IdentityAwareProxyClientArgs {
   final pulumi.Input<String> brandId;
+
   /// Human-friendly name given to the OAuth client.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<String>? project;
@@ -32,10 +33,17 @@ class IdentityAwareProxyClientArgs {
 
   factory IdentityAwareProxyClientArgs.fromMap(Map<String, dynamic> map) {
     return IdentityAwareProxyClientArgs(
-      brandId: (map['brandId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      brandId: pulumi.Input.fromValue(map['brandId'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

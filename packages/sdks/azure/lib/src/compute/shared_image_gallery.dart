@@ -173,7 +173,7 @@ import 'shared_image_gallery_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-03
@@ -188,16 +188,22 @@ import 'shared_image_gallery_state.dart';
 class SharedImageGallery extends pulumi.CustomResource {
   /// A description for this Shared Image Gallery.
   late final pulumi.Output<String?> description;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Shared Image Gallery. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Shared Image Gallery. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `sharing` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<SharedImageGallerySharing?> sharing;
+
   /// A mapping of tags to assign to the Shared Image Gallery.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Unique Name for this Shared Image Gallery.
   late final pulumi.Output<String> uniqueName;
 
@@ -210,18 +216,18 @@ class SharedImageGallery extends pulumi.CustomResource {
     SharedImageGalleryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/sharedImageGallery:SharedImageGallery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:compute/sharedImageGallery:SharedImageGallery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sharing = registerOutput<SharedImageGallerySharing?>('sharing');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueName = registerOutput<String>('uniqueName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sharing = registerOutput<SharedImageGallerySharing?>('sharing');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueName = registerOutput<String>('uniqueName');
   }
 
   /// Gets an existing [SharedImageGallery] resource's state with the given [name] and [id].
@@ -242,17 +248,17 @@ class SharedImageGallery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/sharedImageGallery:SharedImageGallery',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:compute/sharedImageGallery:SharedImageGallery',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sharing = registerOutput<SharedImageGallerySharing?>('sharing');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueName = registerOutput<String>('uniqueName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sharing = registerOutput<SharedImageGallerySharing?>('sharing');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueName = registerOutput<String>('uniqueName');
   }
 }

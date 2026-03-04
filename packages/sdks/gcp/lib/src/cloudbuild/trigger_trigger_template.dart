@@ -6,20 +6,26 @@ class TriggerTriggerTemplate {
   /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
   /// This field is a regular expression.
   final pulumi.Input<String>? branchName;
+
   /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
   final pulumi.Input<String>? commitSha;
+
   /// Directory, relative to the source root, in which to run the build.
   /// This must be a relative path. If a step's dir is specified and
   /// is an absolute path, this value is ignored for that step's
   /// execution.
   final pulumi.Input<String>? dir;
+
   /// Only trigger a build if the revision regex does NOT match the revision regex.
   final pulumi.Input<bool>? invertRegex;
+
   /// ID of the project that owns the Cloud Source Repository. If
   /// omitted, the project ID requesting the build is assumed.
   final pulumi.Input<String>? projectId;
+
   /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
   final pulumi.Input<String>? repoName;
+
   /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
   /// This field is a regular expression.
   final pulumi.Input<String>? tagName;
@@ -56,14 +62,41 @@ class TriggerTriggerTemplate {
 
   factory TriggerTriggerTemplate.fromMap(Map<String, dynamic> map) {
     return TriggerTriggerTemplate(
-      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
-      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
-      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
-      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
+      branchName: (() {
+        final guardedValue = map['branchName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      commitSha: (() {
+        final guardedValue = map['commitSha'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dir: (() {
+        final guardedValue = map['dir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invertRegex: (() {
+        final guardedValue = map['invertRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoName: (() {
+        final guardedValue = map['repoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagName: (() {
+        final guardedValue = map['tagName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

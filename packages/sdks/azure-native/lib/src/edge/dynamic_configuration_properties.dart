@@ -9,20 +9,15 @@ class DynamicConfigurationProperties {
 
   /// Creates a new [DynamicConfigurationProperties].
   /// [currentVersion] Current Version of dynamic configuration
-  DynamicConfigurationProperties({
-    required this.currentVersion,
-  });
+  DynamicConfigurationProperties({required this.currentVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'currentVersion': currentVersion,
-    };
+    return <String, dynamic>{'currentVersion': currentVersion};
   }
 
   factory DynamicConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationProperties(
-      currentVersion: (map['currentVersion'] as String).input(),
+      currentVersion: pulumi.Input.fromValue(map['currentVersion'] as String),
     );
   }
 }
-

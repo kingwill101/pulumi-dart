@@ -4,16 +4,15 @@ enum InstanceReadReplicasMode {
   readReplicasDisabled("READ_REPLICAS_DISABLED"),
   readReplicasEnabled("READ_REPLICAS_ENABLED");
 
-  const InstanceReadReplicasMode(this.value);
-  final String value;
+  const InstanceReadReplicasMode(this.wireValue);
+  final String wireValue;
 
   static InstanceReadReplicasMode fromValue(String value) {
     for (final item in InstanceReadReplicasMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceReadReplicasMode value: $value');
   }
 }
-

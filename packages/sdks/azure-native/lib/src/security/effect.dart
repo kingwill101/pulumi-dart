@@ -4,16 +4,15 @@ enum Effect {
   valueExempt("Exempt"),
   valueAttest("Attest");
 
-  const Effect(this.value);
-  final String value;
+  const Effect(this.wireValue);
+  final String wireValue;
 
   static Effect fromValue(String value) {
     for (final item in Effect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Effect value: $value');
   }
 }
-

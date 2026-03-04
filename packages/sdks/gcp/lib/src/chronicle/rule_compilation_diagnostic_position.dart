@@ -6,12 +6,15 @@ class RuleCompilationDiagnosticPosition {
   /// (Output)
   /// Output only. End column number, beginning at 1.
   final pulumi.Input<int>? endColumn;
+
   /// (Output)
   /// Output only. End line number, beginning at 1.
   final pulumi.Input<int>? endLine;
+
   /// (Output)
   /// Output only. Start column number, beginning at 1.
   final pulumi.Input<int>? startColumn;
+
   /// (Output)
   /// Output only. Start line number, beginning at 1.
   final pulumi.Input<int>? startLine;
@@ -39,11 +42,26 @@ class RuleCompilationDiagnosticPosition {
 
   factory RuleCompilationDiagnosticPosition.fromMap(Map<String, dynamic> map) {
     return RuleCompilationDiagnosticPosition(
-      endColumn: map['endColumn'] == null ? null : (map['endColumn']! as int).input(),
-      endLine: map['endLine'] == null ? null : (map['endLine']! as int).input(),
-      startColumn: map['startColumn'] == null ? null : (map['startColumn']! as int).input(),
-      startLine: map['startLine'] == null ? null : (map['startLine']! as int).input(),
+      endColumn: (() {
+        final guardedValue = map['endColumn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      endLine: (() {
+        final guardedValue = map['endLine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startColumn: (() {
+        final guardedValue = map['startColumn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startLine: (() {
+        final guardedValue = map['startLine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class GetClusterNodeConfigSandboxConfig {
 
   /// Creates a new [GetClusterNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
-  GetClusterNodeConfigSandboxConfig({
-    required this.sandboxType,
-  });
+  GetClusterNodeConfigSandboxConfig({required this.sandboxType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sandboxType': sandboxType,
-    };
+    return <String, dynamic>{'sandboxType': sandboxType};
   }
 
   factory GetClusterNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigSandboxConfig(
-      sandboxType: (map['sandboxType'] as String).input(),
+      sandboxType: pulumi.Input.fromValue(map['sandboxType'] as String),
     );
   }
 }
-

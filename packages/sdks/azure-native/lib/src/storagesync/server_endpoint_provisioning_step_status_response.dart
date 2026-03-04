@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointProvisioningStepStatusResponse {
   /// Additional information for the provisioning step
   final pulumi.Input<Map<String, String>> additionalInformation;
+
   /// End time of the provisioning step
   final pulumi.Input<String> endTime;
+
   /// Error code (HResult) for the provisioning step
   final pulumi.Input<int> errorCode;
+
   /// Estimated completion time of the provisioning step in minutes
   final pulumi.Input<int> minutesLeft;
+
   /// Name of the provisioning step
   final pulumi.Input<String> name;
+
   /// Estimated progress percentage
   final pulumi.Input<int> progressPercentage;
+
   /// Start time of the provisioning step
   final pulumi.Input<String> startTime;
+
   /// Status of the provisioning step
   final pulumi.Input<String> status;
 
@@ -54,17 +61,22 @@ class ServerEndpointProvisioningStepStatusResponse {
     };
   }
 
-  factory ServerEndpointProvisioningStepStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerEndpointProvisioningStepStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerEndpointProvisioningStepStatusResponse(
-      additionalInformation: ((map['additionalInformation'] as Map).cast<String, String>()).input(),
-      endTime: (map['endTime'] as String).input(),
-      errorCode: (map['errorCode'] as int).input(),
-      minutesLeft: (map['minutesLeft'] as int).input(),
-      name: (map['name'] as String).input(),
-      progressPercentage: (map['progressPercentage'] as int).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
+      additionalInformation: pulumi.Input.fromValue(
+        (map['additionalInformation'] as Map).cast<String, String>(),
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
+      minutesLeft: pulumi.Input.fromValue(map['minutesLeft'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      progressPercentage: pulumi.Input.fromValue(
+        map['progressPercentage'] as int,
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

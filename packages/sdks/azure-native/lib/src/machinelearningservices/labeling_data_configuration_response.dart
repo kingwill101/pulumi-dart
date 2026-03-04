@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelingDataConfigurationResponse {
   /// Resource Id of the data asset to perform labeling.
   final pulumi.Input<String>? dataId;
+
   /// Indicates whether to enable incremental data refresh.
   final pulumi.Input<String>? incrementalDataRefresh;
 
   /// Creates a new [LabelingDataConfigurationResponse].
   /// [dataId] Resource Id of the data asset to perform labeling.
   /// [incrementalDataRefresh] Indicates whether to enable incremental data refresh.
-  LabelingDataConfigurationResponse({
-    this.dataId,
-    this.incrementalDataRefresh,
-  });
+  LabelingDataConfigurationResponse({this.dataId, this.incrementalDataRefresh});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class LabelingDataConfigurationResponse {
 
   factory LabelingDataConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LabelingDataConfigurationResponse(
-      dataId: map['dataId'] == null ? null : (map['dataId']! as String).input(),
-      incrementalDataRefresh: map['incrementalDataRefresh'] == null ? null : (map['incrementalDataRefresh']! as String).input(),
+      dataId: (() {
+        final guardedValue = map['dataId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      incrementalDataRefresh: (() {
+        final guardedValue = map['incrementalDataRefresh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

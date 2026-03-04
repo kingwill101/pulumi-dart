@@ -1,5 +1,3 @@
-library module_monitoring;
-
 export 'monitoring/aad_diagnostic_setting.dart';
 export 'monitoring/aad_diagnostic_setting_args.dart';
 export 'monitoring/aad_diagnostic_setting_enabled_log.dart';

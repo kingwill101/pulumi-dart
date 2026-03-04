@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpAllocationArgs {
   /// IpAllocation tags.
   final pulumi.Input<Map<String, String>>? allocationTags;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the IpAllocation.
   final pulumi.Input<String>? ipAllocationName;
+
   /// The IPAM allocation ID.
   final pulumi.Input<String>? ipamAllocationId;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The address prefix for the IpAllocation.
   final pulumi.Input<String>? prefix;
+
   /// The address prefix length for the IpAllocation.
   final pulumi.Input<int>? prefixLength;
+
   /// The address prefix Type for the IpAllocation.
   final pulumi.Input<String>? prefixType;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type for the IpAllocation.
   final pulumi.Input<String>? type;
 
@@ -74,18 +84,63 @@ class IpAllocationArgs {
 
   factory IpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpAllocationArgs(
-      allocationTags: map['allocationTags'] == null ? null : ((map['allocationTags']! as Map).cast<String, String>()).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ipAllocationName: map['ipAllocationName'] == null ? null : (map['ipAllocationName']! as String).input(),
-      ipamAllocationId: map['ipamAllocationId'] == null ? null : (map['ipamAllocationId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
-      prefixType: map['prefixType'] == null ? null : (map['prefixType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      allocationTags: (() {
+        final guardedValue = map['allocationTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAllocationName: (() {
+        final guardedValue = map['ipAllocationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamAllocationId: (() {
+        final guardedValue = map['ipamAllocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixLength: (() {
+        final guardedValue = map['prefixLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      prefixType: (() {
+        final guardedValue = map['prefixType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

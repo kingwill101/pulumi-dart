@@ -3,16 +3,15 @@ enum AccountType {
   azureManaged("AzureManaged"),
   userManaged("UserManaged");
 
-  const AccountType(this.value);
-  final String value;
+  const AccountType(this.wireValue);
+  final String wireValue;
 
   static AccountType fromValue(String value) {
     for (final item in AccountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccountType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_opensearch;
-
 export 'opensearch/application.dart';
 export 'opensearch/application_app_config.dart';
 export 'opensearch/application_args.dart';

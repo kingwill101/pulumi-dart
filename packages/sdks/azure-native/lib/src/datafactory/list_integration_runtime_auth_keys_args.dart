@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIntegrationRuntimeAuthKeysArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The integration runtime name.
   final pulumi.Input<String> integrationRuntimeName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class ListIntegrationRuntimeAuthKeysArgs {
 
   factory ListIntegrationRuntimeAuthKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationRuntimeAuthKeysArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      integrationRuntimeName: pulumi.Input.fromValue(
+        map['integrationRuntimeName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

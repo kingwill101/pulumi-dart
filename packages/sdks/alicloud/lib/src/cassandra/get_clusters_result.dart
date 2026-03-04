@@ -7,14 +7,18 @@ import 'get_clusters_cluster.dart';
 class GetClustersResult {
   /// A list of Cassandra clusters. Its every element contains the following attributes:
   final List<GetClustersCluster> clusters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The list of Cassandra cluster ids.
   final List<String> ids;
   final String? nameRegex;
+
   /// The name list of Cassandra clusters.
   final List<String> names;
   final String? outputFile;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String>? tags;
 
@@ -38,7 +42,11 @@ class GetClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
+      'clusters':
+          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
+            clusters,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -50,14 +58,29 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(
+        map['clusters']!,
+        (value) =>
+            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

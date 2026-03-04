@@ -9,20 +9,39 @@ class DomainSysInfoSmbiosBaseBoard {
 
   /// Creates a new [DomainSysInfoSmbiosBaseBoard].
   /// [entries] Defines individual entries for the base board information.
-  DomainSysInfoSmbiosBaseBoard({
-    this.entries,
-  });
+  DomainSysInfoSmbiosBaseBoard({this.entries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoSmbiosBaseBoardEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoSmbiosBaseBoardEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'entries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainSysInfoSmbiosBaseBoardEntry>,
+            List<Map<String, dynamic>>
+          >(
+            entries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainSysInfoSmbiosBaseBoardEntry,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainSysInfoSmbiosBaseBoard.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosBaseBoard(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoardEntry>(map['entries']!, (value) => DomainSysInfoSmbiosBaseBoardEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (() {
+        final guardedValue = map['entries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoardEntry>(
+            guardedValue,
+            (value) => DomainSysInfoSmbiosBaseBoardEntry.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

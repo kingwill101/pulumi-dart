@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DependencyOfRelationshipProperties {
   /// The relationship target resource id.
   final pulumi.Input<String> targetId;
+
   /// The relationship target tenant id.
   final pulumi.Input<String>? targetTenant;
 
@@ -26,9 +27,12 @@ class DependencyOfRelationshipProperties {
 
   factory DependencyOfRelationshipProperties.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipProperties(
-      targetId: (map['targetId'] as String).input(),
-      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant']! as String).input(),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
+      targetTenant: (() {
+        final guardedValue = map['targetTenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

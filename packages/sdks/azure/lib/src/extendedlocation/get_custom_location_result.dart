@@ -7,19 +7,26 @@ import 'get_custom_location_authentication.dart';
 class GetCustomLocationResult {
   /// An `authentication` block as defined below.
   final List<GetCustomLocationAuthentication> authentications;
+
   /// The list of Cluster Extension IDs.
   final List<String> clusterExtensionIds;
+
   /// The display name of the Custom Location.
   final String displayName;
+
   /// The host resource ID.
   final String hostResourceId;
+
   /// The host type of the Custom Location.
   final String hostType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure location where the Custom Location exists.
   final String location;
   final String name;
+
   /// The namespace of the Custom Location.
   final String namespace;
   final String resourceGroupName;
@@ -50,7 +57,11 @@ class GetCustomLocationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentications': pulumi.Input.encodeList<GetCustomLocationAuthentication, Map<String, dynamic>>(authentications, (value) => value.toMap()),
+      'authentications':
+          pulumi.Input.encodeList<
+            GetCustomLocationAuthentication,
+            Map<String, dynamic>
+          >(authentications, (value) => value.toMap()),
       'clusterExtensionIds': clusterExtensionIds,
       'displayName': displayName,
       'hostResourceId': hostResourceId,
@@ -65,7 +76,12 @@ class GetCustomLocationResult {
 
   factory GetCustomLocationResult.fromMap(Map<String, dynamic> map) {
     return GetCustomLocationResult(
-      authentications: pulumi.Input.decodeList<GetCustomLocationAuthentication>(map['authentications'], (value) => GetCustomLocationAuthentication.fromMap((value as Map).cast<String, dynamic>())),
+      authentications: pulumi.Input.decodeList<GetCustomLocationAuthentication>(
+        map['authentications']!,
+        (value) => GetCustomLocationAuthentication.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       clusterExtensionIds: (map['clusterExtensionIds'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       hostResourceId: map['hostResourceId'] as String,
@@ -78,4 +94,3 @@ class GetCustomLocationResult {
     );
   }
 }
-

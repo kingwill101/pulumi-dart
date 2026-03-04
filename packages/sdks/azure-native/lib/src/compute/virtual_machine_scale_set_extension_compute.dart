@@ -322,30 +322,44 @@ import 'virtual_machine_scale_set_extension_args.dart';
 class VirtualMachineScaleSetExtensionCompute extends pulumi.CustomResource {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
   late final pulumi.Output<bool?> enableAutomaticUpgrade;
+
   /// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// Resource name
   late final pulumi.Output<String?> name;
+
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   late final pulumi.Output<dynamic> protectedSettings;
+
   /// The extensions protected settings that are passed by reference, and consumed from key vault
-  late final pulumi.Output<KeyVaultSecretReferenceResponse?> protectedSettingsFromKeyVault;
+  late final pulumi.Output<KeyVaultSecretReferenceResponse?>
+  protectedSettingsFromKeyVault;
+
   /// Collection of extension names after which this extension needs to be provisioned.
   late final pulumi.Output<List<String>?> provisionAfterExtensions;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The name of the extension handler publisher.
   late final pulumi.Output<String?> publisher;
+
   /// Json formatted public settings for the extension.
   late final pulumi.Output<dynamic> settings;
+
   /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
   late final pulumi.Output<bool?> suppressFailures;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// Specifies the version of the script handler.
   late final pulumi.Output<String?> typeHandlerVersion;
 
@@ -358,24 +372,29 @@ class VirtualMachineScaleSetExtensionCompute extends pulumi.CustomResource {
     VirtualMachineScaleSetExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:VirtualMachineScaleSetExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+         'azure-native:compute:VirtualMachineScaleSetExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String?>('name');
-    this.protectedSettings = registerOutput<dynamic>('protectedSettings');
-    this.protectedSettingsFromKeyVault = registerOutput<KeyVaultSecretReferenceResponse?>('protectedSettingsFromKeyVault');
-    this.provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publisher = registerOutput<String?>('publisher');
-    this.settings = registerOutput<dynamic>('settings');
-    this.suppressFailures = registerOutput<bool?>('suppressFailures');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+    protectedSettings = registerOutput<dynamic>('protectedSettings');
+    protectedSettingsFromKeyVault =
+        registerOutput<KeyVaultSecretReferenceResponse?>(
+          'protectedSettingsFromKeyVault',
+        );
+    provisionAfterExtensions = registerOutput<List<String>?>(
+      'provisionAfterExtensions',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    settings = registerOutput<dynamic>('settings');
+    suppressFailures = registerOutput<bool?>('suppressFailures');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }
 }

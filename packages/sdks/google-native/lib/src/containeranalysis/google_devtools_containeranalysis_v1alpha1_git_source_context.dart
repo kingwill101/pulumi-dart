@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   /// Git commit hash.
   final pulumi.Input<String> revisionId;
+
   /// Git repository URL.
   final pulumi.Input<String>? url;
 
@@ -18,17 +19,19 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'revisionId': revisionId,
-      'url': ?url,
-    };
+    return <String, dynamic>{'revisionId': revisionId, 'url': ?url};
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext(
-      revisionId: (map['revisionId'] as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      revisionId: pulumi.Input.fromValue(map['revisionId'] as String),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

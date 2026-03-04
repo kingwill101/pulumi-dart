@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneArgs {
   /// The name of the DNS Zone.
   final pulumi.Input<String> name;
+
   /// The Name of the Resource Group where the DNS Zone exists.
   /// If the Name of the Resource Group is not provided, the first DNS Zone from the list of DNS Zones
   /// in your subscription that matches `name` will be returned.
@@ -17,10 +18,7 @@ class GetZoneArgs {
   /// Creates a new [GetZoneArgs].
   /// [name] The name of the DNS Zone.
   /// [resourceGroupName] The Name of the Resource Group where the DNS Zone exists.
-  GetZoneArgs({
-    required this.name,
-    this.resourceGroupName,
-  });
+  GetZoneArgs({required this.name, this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,12 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

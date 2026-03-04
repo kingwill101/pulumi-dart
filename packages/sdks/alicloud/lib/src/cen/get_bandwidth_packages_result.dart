@@ -7,17 +7,22 @@ import 'get_bandwidth_packages_package.dart';
 class GetBandwidthPackagesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of specific CEN Bandwidth Package IDs.
   final List<String> ids;
   final bool? includeReservationData;
+
   /// The ID of the CEN instance that are associated with the bandwidth package.
   final String? instanceId;
   final String? nameRegex;
+
   /// (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of CEN bandwidth package. Each element contains the following attributes:
   final List<GetBandwidthPackagesPackage> packages;
+
   /// Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
   final String? status;
 
@@ -52,7 +57,11 @@ class GetBandwidthPackagesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'packages': pulumi.Input.encodeList<GetBandwidthPackagesPackage, Map<String, dynamic>>(packages, (value) => value.toMap()),
+      'packages':
+          pulumi.Input.encodeList<
+            GetBandwidthPackagesPackage,
+            Map<String, dynamic>
+          >(packages, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -61,14 +70,38 @@ class GetBandwidthPackagesResult {
     return GetBandwidthPackagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
-      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      packages: pulumi.Input.decodeList<GetBandwidthPackagesPackage>(map['packages'], (value) => GetBandwidthPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packages: pulumi.Input.decodeList<GetBandwidthPackagesPackage>(
+        map['packages']!,
+        (value) => GetBandwidthPackagesPackage.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

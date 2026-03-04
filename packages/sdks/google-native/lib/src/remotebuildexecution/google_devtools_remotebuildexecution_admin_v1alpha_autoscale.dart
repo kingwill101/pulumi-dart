@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
   /// The maximal number of workers. Must be equal to or greater than min_size.
   final pulumi.Input<String>? maxSize;
+
   /// The minimal number of workers. Must be greater than 0.
   final pulumi.Input<String>? minSize;
 
@@ -18,17 +19,23 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxSize': ?maxSize,
-      'minSize': ?minSize,
-    };
+    return <String, dynamic>{'maxSize': ?maxSize, 'minSize': ?minSize};
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(
-      maxSize: map['maxSize'] == null ? null : (map['maxSize']! as String).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize']! as String).input(),
+      maxSize: (() {
+        final guardedValue = map['maxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minSize: (() {
+        final guardedValue = map['minSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

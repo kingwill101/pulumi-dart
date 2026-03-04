@@ -13,46 +13,67 @@ import 'scheduled_query_rule_criteria.dart';
 class ScheduledQueryRuleArgs {
   /// Actions to invoke when the alert fires.
   final pulumi.Input<Actions>? actions;
+
   /// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
   final pulumi.Input<bool>? autoMitigate;
+
   /// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
   final pulumi.Input<bool>? checkWorkspaceAlertsStorageConfigured;
+
   /// The rule criteria that defines the conditions of the scheduled query rule.
   final pulumi.Input<ScheduledQueryRuleCriteria> criteria;
+
   /// The description of the scheduled query rule.
   final pulumi.Input<String>? description;
+
   /// The display name of the alert rule
   final pulumi.Input<String>? displayName;
+
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
   final pulumi.Input<bool> enabled;
+
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
   final pulumi.Input<String>? evaluationFrequency;
+
   /// The identity of the resource.
   final pulumi.Input<Identity>? identity;
+
   /// Indicates the type of scheduled query rule. The default is LogAlert.
   final pulumi.Input<String>? kind;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired. Relevant only for rules of the kind LogAlert.
   final pulumi.Input<String>? muteActionsDuration;
+
   /// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
   final pulumi.Input<String>? overrideQueryTimeRange;
+
   /// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
   final pulumi.Input<RuleResolveConfiguration>? resolveConfiguration;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the rule.
   final pulumi.Input<String>? ruleName;
+
   /// The list of resource id's that this scheduled query rule is scoped to.
   final pulumi.Input<List<String>> scopes;
+
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
   final pulumi.Input<double>? severity;
+
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
   final pulumi.Input<bool>? skipQueryValidation;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
   final pulumi.Input<List<String>>? targetResourceTypes;
+
   /// The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required only for rules of the kind LogAlert.
   final pulumi.Input<String>? windowSize;
 
@@ -106,20 +127,37 @@ class ScheduledQueryRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<Actions, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<Actions, Map<String, dynamic>>(
+            actions,
+            (value) => value.toMap(),
+          ),
       'autoMitigate': ?autoMitigate,
-      'checkWorkspaceAlertsStorageConfigured': ?checkWorkspaceAlertsStorageConfigured,
-      'criteria': pulumi.Input.mapInputValue<ScheduledQueryRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
+      'checkWorkspaceAlertsStorageConfigured':
+          ?checkWorkspaceAlertsStorageConfigured,
+      'criteria':
+          pulumi.Input.mapInputValue<
+            ScheduledQueryRuleCriteria,
+            Map<String, dynamic>
+          >(criteria, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'enabled': enabled,
       'evaluationFrequency': ?evaluationFrequency,
-      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(
+            identity,
+            (value) => value.toMap(),
+          ),
       'kind': ?kind,
       'location': ?location,
       'muteActionsDuration': ?muteActionsDuration,
       'overrideQueryTimeRange': ?overrideQueryTimeRange,
-      'resolveConfiguration': ?pulumi.Input.mapOptionalInputValue<RuleResolveConfiguration, Map<String, dynamic>>(resolveConfiguration, (value) => value.toMap()),
+      'resolveConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuleResolveConfiguration,
+            Map<String, dynamic>
+          >(resolveConfiguration, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
       'scopes': scopes,
@@ -133,29 +171,116 @@ class ScheduledQueryRuleArgs {
 
   factory ScheduledQueryRuleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRuleArgs(
-      actions: map['actions'] == null ? null : (Actions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
-      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate']! as bool).input(),
-      checkWorkspaceAlertsStorageConfigured: map['checkWorkspaceAlertsStorageConfigured'] == null ? null : (map['checkWorkspaceAlertsStorageConfigured']! as bool).input(),
-      criteria: (ScheduledQueryRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency']! as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      muteActionsDuration: map['muteActionsDuration'] == null ? null : (map['muteActionsDuration']! as String).input(),
-      overrideQueryTimeRange: map['overrideQueryTimeRange'] == null ? null : (map['overrideQueryTimeRange']! as String).input(),
-      resolveConfiguration: map['resolveConfiguration'] == null ? null : (RuleResolveConfiguration.fromMap((map['resolveConfiguration']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      scopes: ((map['scopes'] as List).cast<String>()).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as double).input(),
-      skipQueryValidation: map['skipQueryValidation'] == null ? null : (map['skipQueryValidation']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetResourceTypes: map['targetResourceTypes'] == null ? null : ((map['targetResourceTypes']! as List).cast<String>()).input(),
-      windowSize: map['windowSize'] == null ? null : (map['windowSize']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Actions.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      autoMitigate: (() {
+        final guardedValue = map['autoMitigate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      checkWorkspaceAlertsStorageConfigured: (() {
+        final guardedValue = map['checkWorkspaceAlertsStorageConfigured'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      criteria: pulumi.Input.fromValue(
+        ScheduledQueryRuleCriteria.fromMap(
+          (map['criteria']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      evaluationFrequency: (() {
+        final guardedValue = map['evaluationFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Identity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      muteActionsDuration: (() {
+        final guardedValue = map['muteActionsDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overrideQueryTimeRange: (() {
+        final guardedValue = map['overrideQueryTimeRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resolveConfiguration: (() {
+        final guardedValue = map['resolveConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuleResolveConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      skipQueryValidation: (() {
+        final guardedValue = map['skipQueryValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetResourceTypes: (() {
+        final guardedValue = map['targetResourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      windowSize: (() {
+        final guardedValue = map['windowSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
   /// The comparison operator that is used to compare the metric value with the threshold.
   final pulumi.Input<String> comparisonOperator;
+
   /// The name of the metric.
   final pulumi.Input<String> metricName;
+
   /// The aggregation period of the metric.
   final pulumi.Input<int> period;
+
   /// The statistical methods for Warn-level alerts.
   final pulumi.Input<String> statistics;
+
   /// The threshold for Warn-level alerts.
   final pulumi.Input<String> threshold;
 
@@ -38,14 +42,17 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
     };
   }
 
-  factory GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(Map<String, dynamic> map) {
+  factory GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList(
-      comparisonOperator: (map['comparisonOperator'] as String).input(),
-      metricName: (map['metricName'] as String).input(),
-      period: (map['period'] as int).input(),
-      statistics: (map['statistics'] as String).input(),
-      threshold: (map['threshold'] as String).input(),
+      comparisonOperator: pulumi.Input.fromValue(
+        map['comparisonOperator'] as String,
+      ),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      period: pulumi.Input.fromValue(map['period'] as int),
+      statistics: pulumi.Input.fromValue(map['statistics'] as String),
+      threshold: pulumi.Input.fromValue(map['threshold'] as String),
     );
   }
 }
-

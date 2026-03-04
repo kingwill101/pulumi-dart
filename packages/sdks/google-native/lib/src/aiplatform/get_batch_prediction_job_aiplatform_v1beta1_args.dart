@@ -29,12 +29,19 @@ class GetBatchPredictionJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetBatchPredictionJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetBatchPredictionJobAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBatchPredictionJobAiplatformV1beta1Args(
-      batchPredictionJobId: (map['batchPredictionJobId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      batchPredictionJobId: pulumi.Input.fromValue(
+        map['batchPredictionJobId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

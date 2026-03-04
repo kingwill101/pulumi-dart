@@ -146,10 +146,13 @@ import 'client_application_product_link_args.dart';
 class ClientApplicationProductLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The unique resource identifier of the Product.
   late final pulumi.Output<String> productId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -162,14 +165,14 @@ class ClientApplicationProductLink extends pulumi.CustomResource {
     ClientApplicationProductLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ClientApplicationProductLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:ClientApplicationProductLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.productId = registerOutput<String>('productId');
-    this.type = registerOutput<String>('type');
+    productId = registerOutput<String>('productId');
+    type = registerOutput<String>('type');
   }
 }

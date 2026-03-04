@@ -6,17 +6,22 @@ import 'listing_iam_binding_condition.dart';
 /// Input properties used for looking up and filtering ListingIamBinding resources.
 class ListingIamBindingState {
   final pulumi.Input<ListingIamBindingCondition>? condition;
+
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? dataExchangeId;
+
   /// (Computed) The etag of the IAM policy.
   final pulumi.Input<String>? etag;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? listingId;
+
   /// The name of the location this data exchange listing.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -30,9 +35,11 @@ class ListingIamBindingState {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<List<String>>? members;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigqueryanalyticshub.ListingIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -60,7 +67,11 @@ class ListingIamBindingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<ListingIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ListingIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'dataExchangeId': ?dataExchangeId,
       'etag': ?etag,
       'listingId': ?listingId,
@@ -73,15 +84,50 @@ class ListingIamBindingState {
 
   factory ListingIamBindingState.fromMap(Map<String, dynamic> map) {
     return ListingIamBindingState(
-      condition: map['condition'] == null ? null : (ListingIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      listingId: map['listingId'] == null ? null : (map['listingId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListingIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataExchangeId: (() {
+        final guardedValue = map['dataExchangeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listingId: (() {
+        final guardedValue = map['listingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

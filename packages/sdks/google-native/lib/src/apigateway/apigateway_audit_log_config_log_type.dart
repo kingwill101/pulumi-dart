@@ -5,16 +5,17 @@ enum ApigatewayAuditLogConfigLogType {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const ApigatewayAuditLogConfigLogType(this.value);
-  final String value;
+  const ApigatewayAuditLogConfigLogType(this.wireValue);
+  final String wireValue;
 
   static ApigatewayAuditLogConfigLogType fromValue(String value) {
     for (final item in ApigatewayAuditLogConfigLogType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApigatewayAuditLogConfigLogType value: $value');
+    throw ArgumentError(
+      'Unknown ApigatewayAuditLogConfigLogType value: $value',
+    );
   }
 }
-

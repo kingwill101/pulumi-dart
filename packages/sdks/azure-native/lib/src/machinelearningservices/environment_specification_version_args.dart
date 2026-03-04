@@ -10,12 +10,17 @@ import 'environment_specification_version_machinelearningservices.dart';
 class EnvironmentSpecificationVersionArgs {
   /// Name of EnvironmentSpecificationVersion.
   final pulumi.Input<String> name;
+
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<EnvironmentSpecificationVersionMachinelearningservices> properties;
+  final pulumi.Input<EnvironmentSpecificationVersionMachinelearningservices>
+  properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Version of EnvironmentSpecificationVersion.
   final pulumi.Input<String>? version;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -43,14 +48,24 @@ class EnvironmentSpecificationVersionArgs {
     };
   }
 
-  factory EnvironmentSpecificationVersionArgs.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentSpecificationVersionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentSpecificationVersionArgs(
-      name: (map['name'] as String).input(),
-      properties: (map['properties'] as EnvironmentSpecificationVersionMachinelearningservices).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        map['properties']
+            as EnvironmentSpecificationVersionMachinelearningservices,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

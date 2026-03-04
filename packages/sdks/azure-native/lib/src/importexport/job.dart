@@ -590,18 +590,25 @@ import 'system_data_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the job identity details
   late final pulumi.Output<IdentityDetailsResponse?> identity;
+
   /// Specifies the Azure location where the job is created.
   late final pulumi.Output<String?> location;
+
   /// Specifies the name of the job.
   late final pulumi.Output<String> name;
+
   /// Specifies the job properties
   late final pulumi.Output<JobDetailsResponse> properties;
+
   /// SystemData of ImportExport Jobs.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Specifies the tags that are assigned to the job.
   late final pulumi.Output<dynamic> tags;
+
   /// Specifies the type of the job resource.
   late final pulumi.Output<String> type;
 
@@ -609,23 +616,20 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_importexport_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:importexport:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityDetailsResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:importexport:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityDetailsResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<JobDetailsResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<dynamic>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<JobDetailsResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<dynamic>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -2,16 +2,15 @@
 enum ImageSourceType {
   raw("RAW");
 
-  const ImageSourceType(this.value);
-  final String value;
+  const ImageSourceType(this.wireValue);
+  final String wireValue;
 
   static ImageSourceType fromValue(String value) {
     for (final item in ImageSourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageSourceType value: $value');
   }
 }
-

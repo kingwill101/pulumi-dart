@@ -136,11 +136,14 @@ import 'floating_ip_associate_state.dart';
 /// ```
 class FloatingIpAssociate extends pulumi.CustomResource {
   late final pulumi.Output<String> fixedIp;
+
   /// IP Address of an existing floating IP.
   late final pulumi.Output<String> floatingIp;
+
   /// ID of an existing port with at least one IP address to
   /// associate with this floating IP.
   late final pulumi.Output<String> portId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a floating IP that can be used with
   /// another networking resource, such as a load balancer. If omitted, the
@@ -157,15 +160,15 @@ class FloatingIpAssociate extends pulumi.CustomResource {
     FloatingIpAssociateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/floatingIpAssociate:FloatingIpAssociate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fixedIp = registerOutput<String>('fixedIp');
-    this.floatingIp = registerOutput<String>('floatingIp');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
+         'openstack:networking/floatingIpAssociate:FloatingIpAssociate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fixedIp = registerOutput<String>('fixedIp');
+    floatingIp = registerOutput<String>('floatingIp');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [FloatingIpAssociate] resource's state with the given [name] and [id].
@@ -186,14 +189,14 @@ class FloatingIpAssociate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/floatingIpAssociate:FloatingIpAssociate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fixedIp = registerOutput<String>('fixedIp');
-    this.floatingIp = registerOutput<String>('floatingIp');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
+         'openstack:networking/floatingIpAssociate:FloatingIpAssociate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fixedIp = registerOutput<String>('fixedIp');
+    floatingIp = registerOutput<String>('floatingIp');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
   }
 }

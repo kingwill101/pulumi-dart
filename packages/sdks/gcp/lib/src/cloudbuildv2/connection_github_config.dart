@@ -6,30 +6,44 @@ import 'connection_github_config_authorizer_credential.dart';
 class ConnectionGithubConfig {
   /// GitHub App installation id.
   final pulumi.Input<int>? appInstallationId;
+
   /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>? authorizerCredential;
+  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>?
+  authorizerCredential;
 
   /// Creates a new [ConnectionGithubConfig].
   /// [appInstallationId] GitHub App installation id.
   /// [authorizerCredential] OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
-  ConnectionGithubConfig({
-    this.appInstallationId,
-    this.authorizerCredential,
-  });
+  ConnectionGithubConfig({this.appInstallationId, this.authorizerCredential});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInstallationId': ?appInstallationId,
-      'authorizerCredential': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubConfigAuthorizerCredential, Map<String, dynamic>>(authorizerCredential, (value) => value.toMap()),
+      'authorizerCredential':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionGithubConfigAuthorizerCredential,
+            Map<String, dynamic>
+          >(authorizerCredential, (value) => value.toMap()),
     };
   }
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as int).input(),
-      authorizerCredential: map['authorizerCredential'] == null ? null : (ConnectionGithubConfigAuthorizerCredential.fromMap((map['authorizerCredential']! as Map).cast<String, dynamic>())).input(),
+      appInstallationId: (() {
+        final guardedValue = map['appInstallationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      authorizerCredential: (() {
+        final guardedValue = map['authorizerCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionGithubConfigAuthorizerCredential.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

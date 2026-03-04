@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTrustProviderAttachmentState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Verified Access instance to attach the Trust Provider to.
   final pulumi.Input<String>? verifiedaccessInstanceId;
+
   /// The ID of the Verified Access trust provider.
   final pulumi.Input<String>? verifiedaccessTrustProviderId;
 
@@ -29,12 +31,25 @@ class InstanceTrustProviderAttachmentState {
     };
   }
 
-  factory InstanceTrustProviderAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory InstanceTrustProviderAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceTrustProviderAttachmentState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : ((map['verifiedaccessInstanceId'] as String).input()).input(),
-      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] == null ? null : ((map['verifiedaccessTrustProviderId'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedaccessInstanceId: (() {
+        final guardedValue = map['verifiedaccessInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedaccessTrustProviderId: (() {
+        final guardedValue = map['verifiedaccessTrustProviderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

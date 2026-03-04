@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataControllerArgs {
   /// The name of the data controller
   final pulumi.Input<String> dataControllerName;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetDataControllerArgs {
 
   factory GetDataControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetDataControllerArgs(
-      dataControllerName: (map['dataControllerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dataControllerName: pulumi.Input.fromValue(
+        map['dataControllerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

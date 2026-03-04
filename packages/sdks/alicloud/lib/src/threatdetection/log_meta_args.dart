@@ -29,29 +29,23 @@ class LogMetaArgs {
   /// - sas-filedetect-log: file detection log
   /// - sas-net-block: Network Defense Log
   final pulumi.Input<String> logMetaName;
+
   /// The status of the resource
   final pulumi.Input<String> status;
 
   /// Creates a new [LogMetaArgs].
   /// [logMetaName] The name of the exclusive Logstore where logs are stored. Value:
   /// [status] The status of the resource
-  LogMetaArgs({
-    required this.logMetaName,
-    required this.status,
-  });
+  LogMetaArgs({required this.logMetaName, required this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logMetaName': logMetaName,
-      'status': status,
-    };
+    return <String, dynamic>{'logMetaName': logMetaName, 'status': status};
   }
 
   factory LogMetaArgs.fromMap(Map<String, dynamic> map) {
     return LogMetaArgs(
-      logMetaName: (map['logMetaName'] as String).input(),
-      status: (map['status'] as String).input(),
+      logMetaName: pulumi.Input.fromValue(map['logMetaName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

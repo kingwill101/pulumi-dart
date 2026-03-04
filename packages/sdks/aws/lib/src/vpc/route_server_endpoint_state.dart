@@ -7,25 +7,34 @@ import 'route_server_endpoint_timeouts.dart';
 class RouteServerEndpointState {
   /// The ARN of the route server endpoint.
   final pulumi.Input<String>? arn;
+
   /// The IP address of the Elastic network interface for the endpoint.
   final pulumi.Input<String>? eniAddress;
+
   /// The ID of the Elastic network interface for the endpoint.
   final pulumi.Input<String>? eniId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The unique identifier of the route server endpoint.
   final pulumi.Input<String>? routeServerEndpointId;
+
   /// The ID of the route server for which to create an endpoint.
   final pulumi.Input<String>? routeServerId;
+
   /// The ID of the subnet in which to create the route server endpoint.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? subnetId;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<RouteServerEndpointTimeouts>? timeouts;
+
   /// The ID of the VPC containing the endpoint.
   final pulumi.Input<String>? vpcId;
 
@@ -66,25 +75,80 @@ class RouteServerEndpointState {
       'subnetId': ?subnetId,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<RouteServerEndpointTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteServerEndpointTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': ?vpcId,
     };
   }
 
   factory RouteServerEndpointState.fromMap(Map<String, dynamic> map) {
     return RouteServerEndpointState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      eniAddress: map['eniAddress'] == null ? null : ((map['eniAddress'] as String).input()).input(),
-      eniId: map['eniId'] == null ? null : ((map['eniId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeServerEndpointId: map['routeServerEndpointId'] == null ? null : ((map['routeServerEndpointId'] as String).input()).input(),
-      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((RouteServerEndpointTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eniAddress: (() {
+        final guardedValue = map['eniAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eniId: (() {
+        final guardedValue = map['eniId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeServerEndpointId: (() {
+        final guardedValue = map['routeServerEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeServerId: (() {
+        final guardedValue = map['routeServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteServerEndpointTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

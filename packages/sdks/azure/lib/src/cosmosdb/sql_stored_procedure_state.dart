@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlStoredProcedureState {
   /// The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String>? accountName;
+
   /// The body of the stored procedure.
   final pulumi.Input<String>? body;
+
   /// The name of the Cosmos DB SQL Container to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String>? containerName;
+
   /// The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String>? databaseName;
+
   /// Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -46,13 +51,36 @@ class SqlStoredProcedureState {
 
   factory SqlStoredProcedureState.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureState(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      body: map['body'] == null ? null : (map['body']! as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      body: (() {
+        final guardedValue = map['body'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

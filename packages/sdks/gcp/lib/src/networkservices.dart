@@ -1,5 +1,3 @@
-library module_networkservices;
-
 export 'networkservices/authz_extension.dart';
 export 'networkservices/authz_extension_args.dart';
 export 'networkservices/authz_extension_state.dart';

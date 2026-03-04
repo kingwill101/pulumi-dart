@@ -142,30 +142,43 @@ import 'system_data_response.dart';
 class ServerInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration data for this server instance.
   late final pulumi.Output<ConfigurationDataResponse> configurationData;
+
   /// Defines the errors related to SAP Instance resource.
   late final pulumi.Output<SAPMigrateErrorResponse> errors;
+
   /// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
   late final pulumi.Output<String> instanceSid;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// This is Operating System on which the host server is running.
   late final pulumi.Output<String> operatingSystem;
+
   /// Configuration data for this server instance.
   late final pulumi.Output<ExcelPerformanceDataResponse> performanceData;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines the type SAP instance on this server instance.
   late final pulumi.Output<String> sapInstanceType;
+
   /// This is the SAP Application Component; e.g. SAP S/4HANA 2022, SAP ERP ENHANCE PACKAGE.
   late final pulumi.Output<String> sapProduct;
+
   /// Provide the product version of the SAP product.
   late final pulumi.Output<String> sapProductVersion;
+
   /// This is the Virtual Machine Name of the SAP system. Add all the virtual machines attached to an SAP system which you wish to migrate to Azure. Keeping this not equal to ID as for single tier all InstanceTypes would be on same server, leading to multiple resources with same servername.
   late final pulumi.Output<String> serverName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,24 +191,28 @@ class ServerInstance extends pulumi.CustomResource {
     ServerInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:ServerInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationData = registerOutput<ConfigurationDataResponse>('configurationData');
-    this.errors = registerOutput<SAPMigrateErrorResponse>('errors');
-    this.instanceSid = registerOutput<String>('instanceSid');
+         'azure-native:workloads:ServerInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationData = registerOutput<ConfigurationDataResponse>(
+      'configurationData',
+    );
+    errors = registerOutput<SAPMigrateErrorResponse>('errors');
+    instanceSid = registerOutput<String>('instanceSid');
     this.name = registerOutput<String>('name');
-    this.operatingSystem = registerOutput<String>('operatingSystem');
-    this.performanceData = registerOutput<ExcelPerformanceDataResponse>('performanceData');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sapInstanceType = registerOutput<String>('sapInstanceType');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.sapProductVersion = registerOutput<String>('sapProductVersion');
-    this.serverName = registerOutput<String>('serverName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    operatingSystem = registerOutput<String>('operatingSystem');
+    performanceData = registerOutput<ExcelPerformanceDataResponse>(
+      'performanceData',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    sapInstanceType = registerOutput<String>('sapInstanceType');
+    sapProduct = registerOutput<String>('sapProduct');
+    sapProductVersion = registerOutput<String>('sapProductVersion');
+    serverName = registerOutput<String>('serverName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

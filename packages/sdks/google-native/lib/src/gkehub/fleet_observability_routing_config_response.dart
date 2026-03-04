@@ -9,20 +9,17 @@ class FleetObservabilityRoutingConfigResponse {
 
   /// Creates a new [FleetObservabilityRoutingConfigResponse].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfigResponse({
-    required this.mode,
-  });
+  FleetObservabilityRoutingConfigResponse({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory FleetObservabilityRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityRoutingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityRoutingConfigResponse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

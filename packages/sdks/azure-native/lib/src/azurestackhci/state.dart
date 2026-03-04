@@ -3,7 +3,9 @@ enum State {
   valueHasPrerequisite("HasPrerequisite"),
   valueObsolete("Obsolete"),
   valueReady("Ready"),
-  valueNotApplicableBecauseAnotherUpdateIsInProgress("NotApplicableBecauseAnotherUpdateIsInProgress"),
+  valueNotApplicableBecauseAnotherUpdateIsInProgress(
+    "NotApplicableBecauseAnotherUpdateIsInProgress",
+  ),
   valuePreparing("Preparing"),
   valueInstalling("Installing"),
   valueInstalled("Installed"),
@@ -20,16 +22,15 @@ enum State {
   valueScanFailed("ScanFailed"),
   valueAdditionalContentRequired("AdditionalContentRequired");
 
-  const State(this.value);
-  final String value;
+  const State(this.wireValue);
+  final String wireValue;
 
   static State fromValue(String value) {
     for (final item in State.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown State value: $value');
   }
 }
-

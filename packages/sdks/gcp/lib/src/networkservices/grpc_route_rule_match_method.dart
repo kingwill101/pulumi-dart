@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteRuleMatchMethod {
   /// Specifies that matches are case sensitive. The default value is true.
   final pulumi.Input<bool>? caseSensitive;
+
   /// Required. Name of the method to match against.
   final pulumi.Input<String> grpcMethod;
+
   /// Required. Name of the service to match against.
   final pulumi.Input<String> grpcService;
 
@@ -30,10 +32,13 @@ class GrpcRouteRuleMatchMethod {
 
   factory GrpcRouteRuleMatchMethod.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleMatchMethod(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
-      grpcMethod: (map['grpcMethod'] as String).input(),
-      grpcService: (map['grpcService'] as String).input(),
+      caseSensitive: (() {
+        final guardedValue = map['caseSensitive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      grpcMethod: pulumi.Input.fromValue(map['grpcMethod'] as String),
+      grpcService: pulumi.Input.fromValue(map['grpcService'] as String),
     );
   }
 }
-

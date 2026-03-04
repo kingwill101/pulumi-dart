@@ -4,16 +4,15 @@ enum WebAuthenticationType {
   valueAnonymous("Anonymous"),
   valueClientCertificate("ClientCertificate");
 
-  const WebAuthenticationType(this.value);
-  final String value;
+  const WebAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static WebAuthenticationType fromValue(String value) {
     for (final item in WebAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebAuthenticationType value: $value');
   }
 }
-

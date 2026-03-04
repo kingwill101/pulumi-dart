@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnqueueServerPropertiesResponse {
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
+
   /// Enqueue Server SAP Hostname.
   final pulumi.Input<String> hostname;
+
   /// Enqueue Server SAP IP Address.
   final pulumi.Input<String> ipAddress;
+
   /// Enqueue Server Port.
   final pulumi.Input<double> port;
 
@@ -36,11 +39,10 @@ class EnqueueServerPropertiesResponse {
 
   factory EnqueueServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnqueueServerPropertiesResponse(
-      health: (map['health'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      port: (map['port'] as double).input(),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      port: pulumi.Input.fromValue(map['port'] as double),
     );
   }
 }
-

@@ -155,12 +155,16 @@ import 'vpc_ipv4_cidr_block_association_state.dart';
 class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
   /// The IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using `ipv4_netmask_length`.
   late final pulumi.Output<String> cidrBlock;
+
   /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
   late final pulumi.Output<String?> ipv4IpamPoolId;
+
   /// The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4_ipam_pool_id`.
   late final pulumi.Output<int?> ipv4NetmaskLength;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the VPC to make the association with.
   late final pulumi.Output<String> vpcId;
 
@@ -173,16 +177,16 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
     VpcIpv4CidrBlockAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
-    this.ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
-    this.region = registerOutput<String>('region');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [VpcIpv4CidrBlockAssociation] resource's state with the given [name] and [id].
@@ -203,15 +207,15 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
-    this.ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
-    this.region = registerOutput<String>('region');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

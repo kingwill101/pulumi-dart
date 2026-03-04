@@ -9,20 +9,15 @@ class TIDataConnectorDataTypesIndicators {
 
   /// Creates a new [TIDataConnectorDataTypesIndicators].
   /// [state] Describe whether this data type connection is enabled or not.
-  TIDataConnectorDataTypesIndicators({
-    required this.state,
-  });
+  TIDataConnectorDataTypesIndicators({required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
   factory TIDataConnectorDataTypesIndicators.fromMap(Map<String, dynamic> map) {
     return TIDataConnectorDataTypesIndicators(
-      state: (map['state'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

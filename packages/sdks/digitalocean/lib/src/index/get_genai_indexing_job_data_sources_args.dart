@@ -11,20 +11,15 @@ class GetGenaiIndexingJobDataSourcesArgs {
 
   /// Creates a new [GetGenaiIndexingJobDataSourcesArgs].
   /// [indexingJobUuid] Required.
-  GetGenaiIndexingJobDataSourcesArgs({
-    required this.indexingJobUuid,
-  });
+  GetGenaiIndexingJobDataSourcesArgs({required this.indexingJobUuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'indexingJobUuid': indexingJobUuid,
-    };
+    return <String, dynamic>{'indexingJobUuid': indexingJobUuid};
   }
 
   factory GetGenaiIndexingJobDataSourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiIndexingJobDataSourcesArgs(
-      indexingJobUuid: (map['indexingJobUuid'] as String).input(),
+      indexingJobUuid: pulumi.Input.fromValue(map['indexingJobUuid'] as String),
     );
   }
 }
-

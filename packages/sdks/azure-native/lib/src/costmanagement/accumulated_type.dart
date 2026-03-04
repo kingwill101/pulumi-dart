@@ -3,16 +3,15 @@ enum AccumulatedType {
   valueTrue("true"),
   valueFalse("false");
 
-  const AccumulatedType(this.value);
-  final String value;
+  const AccumulatedType(this.wireValue);
+  final String wireValue;
 
   static AccumulatedType fromValue(String value) {
     for (final item in AccumulatedType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccumulatedType value: $value');
   }
 }
-

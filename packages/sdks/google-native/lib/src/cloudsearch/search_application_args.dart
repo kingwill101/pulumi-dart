@@ -15,22 +15,31 @@ import 'source_config.dart';
 class SearchApplicationArgs {
   /// Retrictions applied to the configurations. The maximum number of elements is 10.
   final pulumi.Input<List<DataSourceRestriction>>? dataSourceRestrictions;
+
   /// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
   final pulumi.Input<List<FacetOptions>>? defaultFacetOptions;
+
   /// The default options for sorting the search results
   final pulumi.Input<SortOptions>? defaultSortOptions;
+
   /// Display name of the Search Application. The maximum length is 300 characters.
   final pulumi.Input<String>? displayName;
+
   /// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
   final pulumi.Input<bool>? enableAuditLog;
+
   /// The name of the Search Application. Format: searchapplications/{application_id}.
   final pulumi.Input<String>? name;
+
   /// The default options for query interpretation
   final pulumi.Input<QueryInterpretationConfig>? queryInterpretationConfig;
+
   /// With each result we should return the URI for its thumbnail (when applicable)
   final pulumi.Input<bool>? returnResultThumbnailUrls;
+
   /// Configuration for ranking results.
   final pulumi.Input<ScoringConfig>? scoringConfig;
+
   /// Configuration for a sources specified in data_source_restrictions.
   final pulumi.Input<List<SourceConfig>>? sourceConfig;
 
@@ -60,32 +69,143 @@ class SearchApplicationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSourceRestrictions': ?pulumi.Input.mapOptionalInputValue<List<DataSourceRestriction>, List<Map<String, dynamic>>>(dataSourceRestrictions, (value) => pulumi.Input.encodeList<DataSourceRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultFacetOptions': ?pulumi.Input.mapOptionalInputValue<List<FacetOptions>, List<Map<String, dynamic>>>(defaultFacetOptions, (value) => pulumi.Input.encodeList<FacetOptions, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultSortOptions': ?pulumi.Input.mapOptionalInputValue<SortOptions, Map<String, dynamic>>(defaultSortOptions, (value) => value.toMap()),
+      'dataSourceRestrictions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataSourceRestriction>,
+            List<Map<String, dynamic>>
+          >(
+            dataSourceRestrictions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataSourceRestriction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'defaultFacetOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FacetOptions>,
+            List<Map<String, dynamic>>
+          >(
+            defaultFacetOptions,
+            (value) =>
+                pulumi.Input.encodeList<FacetOptions, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'defaultSortOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            SortOptions,
+            Map<String, dynamic>
+          >(defaultSortOptions, (value) => value.toMap()),
       'displayName': ?displayName,
       'enableAuditLog': ?enableAuditLog,
       'name': ?name,
-      'queryInterpretationConfig': ?pulumi.Input.mapOptionalInputValue<QueryInterpretationConfig, Map<String, dynamic>>(queryInterpretationConfig, (value) => value.toMap()),
+      'queryInterpretationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            QueryInterpretationConfig,
+            Map<String, dynamic>
+          >(queryInterpretationConfig, (value) => value.toMap()),
       'returnResultThumbnailUrls': ?returnResultThumbnailUrls,
-      'scoringConfig': ?pulumi.Input.mapOptionalInputValue<ScoringConfig, Map<String, dynamic>>(scoringConfig, (value) => value.toMap()),
-      'sourceConfig': ?pulumi.Input.mapOptionalInputValue<List<SourceConfig>, List<Map<String, dynamic>>>(sourceConfig, (value) => pulumi.Input.encodeList<SourceConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scoringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScoringConfig,
+            Map<String, dynamic>
+          >(scoringConfig, (value) => value.toMap()),
+      'sourceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SourceConfig>,
+            List<Map<String, dynamic>>
+          >(
+            sourceConfig,
+            (value) =>
+                pulumi.Input.encodeList<SourceConfig, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory SearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SearchApplicationArgs(
-      dataSourceRestrictions: map['dataSourceRestrictions'] == null ? null : (pulumi.Input.decodeList<DataSourceRestriction>(map['dataSourceRestrictions']!, (value) => DataSourceRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultFacetOptions: map['defaultFacetOptions'] == null ? null : (pulumi.Input.decodeList<FacetOptions>(map['defaultFacetOptions']!, (value) => FacetOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSortOptions: map['defaultSortOptions'] == null ? null : (SortOptions.fromMap((map['defaultSortOptions']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enableAuditLog: map['enableAuditLog'] == null ? null : (map['enableAuditLog']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      queryInterpretationConfig: map['queryInterpretationConfig'] == null ? null : (QueryInterpretationConfig.fromMap((map['queryInterpretationConfig']! as Map).cast<String, dynamic>())).input(),
-      returnResultThumbnailUrls: map['returnResultThumbnailUrls'] == null ? null : (map['returnResultThumbnailUrls']! as bool).input(),
-      scoringConfig: map['scoringConfig'] == null ? null : (ScoringConfig.fromMap((map['scoringConfig']! as Map).cast<String, dynamic>())).input(),
-      sourceConfig: map['sourceConfig'] == null ? null : (pulumi.Input.decodeList<SourceConfig>(map['sourceConfig']!, (value) => SourceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSourceRestrictions: (() {
+        final guardedValue = map['dataSourceRestrictions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataSourceRestriction>(
+            guardedValue,
+            (value) => DataSourceRestriction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      defaultFacetOptions: (() {
+        final guardedValue = map['defaultFacetOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FacetOptions>(
+            guardedValue,
+            (value) =>
+                FacetOptions.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      defaultSortOptions: (() {
+        final guardedValue = map['defaultSortOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SortOptions.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAuditLog: (() {
+        final guardedValue = map['enableAuditLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryInterpretationConfig: (() {
+        final guardedValue = map['queryInterpretationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QueryInterpretationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      returnResultThumbnailUrls: (() {
+        final guardedValue = map['returnResultThumbnailUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scoringConfig: (() {
+        final guardedValue = map['scoringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sourceConfig: (() {
+        final guardedValue = map['sourceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SourceConfig>(
+            guardedValue,
+            (value) =>
+                SourceConfig.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -10,20 +10,17 @@ class SkipFileShareConfiguration {
 
   /// Creates a new [SkipFileShareConfiguration].
   /// [configurationType] The type of file share config.
-  SkipFileShareConfiguration({
-    required this.configurationType,
-  });
+  SkipFileShareConfiguration({required this.configurationType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configurationType': configurationType,
-    };
+    return <String, dynamic>{'configurationType': configurationType};
   }
 
   factory SkipFileShareConfiguration.fromMap(Map<String, dynamic> map) {
     return SkipFileShareConfiguration(
-      configurationType: (map['configurationType'] as String).input(),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
     );
   }
 }
-

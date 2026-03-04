@@ -7,14 +7,18 @@ import 'public_delegated_prefix_public_delegated_sub_prefix.dart';
 class PublicDelegatedPrefixState {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
   final pulumi.Input<int>? allocatablePrefixLength;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// (Output)
   /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
   /// Applicable for IPv4 sub-PDPs only.
   final pulumi.Input<bool>? enableEnhancedIpv4Allocation;
+
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
   final pulumi.Input<String>? ipCidrRange;
+
   /// (Output)
   /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
   /// from parent prefix and can be one of following:
@@ -24,8 +28,10 @@ class PublicDelegatedPrefixState {
   /// be used privately within Google Cloud. All children PDPs will have
   /// access type as INTERNAL.
   final pulumi.Input<String>? ipv6AccessType;
+
   /// If true, the prefix will be live migrated.
   final pulumi.Input<bool>? isLiveMigration;
+
   /// Specifies the mode of this IPv6 PDP. MODE must be one of:
   /// * DELEGATION
   /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
@@ -33,6 +39,7 @@ class PublicDelegatedPrefixState {
   /// * INTERNAL_IPV6_SUBNETWORK_CREATION
   /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
   final pulumi.Input<String>? mode;
+
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -40,18 +47,24 @@ class PublicDelegatedPrefixState {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   final pulumi.Input<String>? parentPrefix;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// List of sub public delegated fixes for BYO IP functionality.
   /// Each item in this array represents a sub prefix that can be
   /// used to create addresses or further allocations.
   /// Structure is documented below.
-  final pulumi.Input<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>? publicDelegatedSubPrefixs;
+  final pulumi.Input<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>?
+  publicDelegatedSubPrefixs;
+
   /// A region where the prefix will reside.
   final pulumi.Input<String>? region;
+
   /// The URI of the created resource.
   final pulumi.Input<String>? selfLink;
 
@@ -97,7 +110,18 @@ class PublicDelegatedPrefixState {
       'name': ?name,
       'parentPrefix': ?parentPrefix,
       'project': ?project,
-      'publicDelegatedSubPrefixs': ?pulumi.Input.mapOptionalInputValue<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>, List<Map<String, dynamic>>>(publicDelegatedSubPrefixs, (value) => pulumi.Input.encodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicDelegatedSubPrefixs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PublicDelegatedPrefixPublicDelegatedSubPrefix>,
+            List<Map<String, dynamic>>
+          >(
+            publicDelegatedSubPrefixs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PublicDelegatedPrefixPublicDelegatedSubPrefix,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'selfLink': ?selfLink,
     };
@@ -105,20 +129,79 @@ class PublicDelegatedPrefixState {
 
   factory PublicDelegatedPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixState(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation']! as bool).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      allocatablePrefixLength: (() {
+        final guardedValue = map['allocatablePrefixLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableEnhancedIpv4Allocation: (() {
+        final guardedValue = map['enableEnhancedIpv4Allocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipCidrRange: (() {
+        final guardedValue = map['ipCidrRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AccessType: (() {
+        final guardedValue = map['ipv6AccessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isLiveMigration: (() {
+        final guardedValue = map['isLiveMigration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentPrefix: (() {
+        final guardedValue = map['parentPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicDelegatedSubPrefixs: (() {
+        final guardedValue = map['publicDelegatedSubPrefixs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(
+            guardedValue,
+            (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

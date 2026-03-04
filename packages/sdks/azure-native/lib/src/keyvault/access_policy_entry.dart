@@ -7,10 +7,13 @@ import 'permissions.dart';
 class AccessPolicyEntry {
   /// Application ID of the client making request on behalf of a principal
   final pulumi.Input<String>? applicationId;
+
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
   final pulumi.Input<String> objectId;
+
   /// Permissions the identity has for keys, secrets and certificates.
   final pulumi.Input<Permissions> permissions;
+
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
   final pulumi.Input<String> tenantId;
 
@@ -30,18 +33,29 @@ class AccessPolicyEntry {
     return <String, dynamic>{
       'applicationId': ?applicationId,
       'objectId': objectId,
-      'permissions': pulumi.Input.mapInputValue<Permissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions':
+          pulumi.Input.mapInputValue<Permissions, Map<String, dynamic>>(
+            permissions,
+            (value) => value.toMap(),
+          ),
       'tenantId': tenantId,
     };
   }
 
   factory AccessPolicyEntry.fromMap(Map<String, dynamic> map) {
     return AccessPolicyEntry(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      permissions: (Permissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      permissions: pulumi.Input.fromValue(
+        Permissions.fromMap(
+          (map['permissions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

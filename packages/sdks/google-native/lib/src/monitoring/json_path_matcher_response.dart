@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JsonPathMatcherResponse {
   /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
   final pulumi.Input<String> jsonMatcher;
+
   /// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
   final pulumi.Input<String> jsonPath;
 
   /// Creates a new [JsonPathMatcherResponse].
   /// [jsonMatcher] The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
   /// [jsonPath] JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
-  JsonPathMatcherResponse({
-    required this.jsonMatcher,
-    required this.jsonPath,
-  });
+  JsonPathMatcherResponse({required this.jsonMatcher, required this.jsonPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jsonMatcher': jsonMatcher,
-      'jsonPath': jsonPath,
-    };
+    return <String, dynamic>{'jsonMatcher': jsonMatcher, 'jsonPath': jsonPath};
   }
 
   factory JsonPathMatcherResponse.fromMap(Map<String, dynamic> map) {
     return JsonPathMatcherResponse(
-      jsonMatcher: (map['jsonMatcher'] as String).input(),
-      jsonPath: (map['jsonPath'] as String).input(),
+      jsonMatcher: pulumi.Input.fromValue(map['jsonMatcher'] as String),
+      jsonPath: pulumi.Input.fromValue(map['jsonPath'] as String),
     );
   }
 }
-

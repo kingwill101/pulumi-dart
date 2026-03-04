@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceArgs {
   /// The description of the namespace.
   final pulumi.Input<String>? description;
+
   /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   final pulumi.Input<String> namespace;
+
   /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
   /// - `cms.s1.large`: Data storage duration is 15 days.
   /// - `cms.s1.xlarge`: Data storage duration is 32 days.
@@ -40,10 +42,17 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      specification: (() {
+        final guardedValue = map['specification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,15 +15,18 @@ class CapacityProviderManagedInstancesProviderInfrastructureOptimization {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scaleInAfter': ?scaleInAfter,
-    };
+    return <String, dynamic>{'scaleInAfter': ?scaleInAfter};
   }
 
-  factory CapacityProviderManagedInstancesProviderInfrastructureOptimization.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderManagedInstancesProviderInfrastructureOptimization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderManagedInstancesProviderInfrastructureOptimization(
-      scaleInAfter: map['scaleInAfter'] == null ? null : ((map['scaleInAfter'] as int).input()).input(),
+      scaleInAfter: (() {
+        final guardedValue = map['scaleInAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

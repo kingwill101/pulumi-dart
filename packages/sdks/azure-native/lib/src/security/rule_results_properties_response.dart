@@ -9,20 +9,21 @@ class RuleResultsPropertiesResponse {
 
   /// Creates a new [RuleResultsPropertiesResponse].
   /// [results] Expected results in the baseline.
-  RuleResultsPropertiesResponse({
-    this.results,
-  });
+  RuleResultsPropertiesResponse({this.results});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'results': ?results,
-    };
+    return <String, dynamic>{'results': ?results};
   }
 
   factory RuleResultsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RuleResultsPropertiesResponse(
-      results: map['results'] == null ? null : ((map['results']! as List).cast<List<String>>()).input(),
+      results: (() {
+        final guardedValue = map['results'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<List<String>>(),
+        );
+      })(),
     );
   }
 }
-

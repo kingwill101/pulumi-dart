@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveDirectoryConnectorStatus {
   /// The time that the custom resource was last updated.
   final pulumi.Input<String>? lastUpdateTime;
+
   /// The version of the replicaSet associated with the AD connector custom resource.
   final pulumi.Input<double>? observedGeneration;
+
   /// The state of the AD connector custom resource.
   final pulumi.Input<String>? state;
 
@@ -31,10 +33,21 @@ class ActiveDirectoryConnectorStatus {
 
   factory ActiveDirectoryConnectorStatus.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorStatus(
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime']! as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as double).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      lastUpdateTime: (() {
+        final guardedValue = map['lastUpdateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

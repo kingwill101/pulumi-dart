@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning {
   /// The service account email address in GCP for this offering
   final pulumi.Input<String>? serviceAccountEmailAddress;
+
   /// The GCP workload identity provider id for this offering
   final pulumi.Input<String>? workloadIdentityProviderId;
 
@@ -24,11 +25,20 @@ class DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisio
     };
   }
 
-  factory DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
+  factory DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning(
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
+      serviceAccountEmailAddress: (() {
+        final guardedValue = map['serviceAccountEmailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityProviderId: (() {
+        final guardedValue = map['workloadIdentityProviderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

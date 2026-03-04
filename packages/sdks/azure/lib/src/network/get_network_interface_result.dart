@@ -7,33 +7,47 @@ import 'get_network_interface_ip_configuration.dart';
 class GetNetworkInterfaceResult {
   /// Indicates if accelerated networking is set on the specified Network Interface.
   final bool acceleratedNetworkingEnabled;
+
   /// List of DNS servers applied to the specified Network Interface.
   final List<String> appliedDnsServers;
+
   /// The list of DNS servers used by the specified Network Interface.
   final List<String> dnsServers;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The internal DNS name label of the specified Network Interface.
   final String internalDnsNameLabel;
+
   /// One or more `ip_configuration` blocks as defined below.
   final List<GetNetworkInterfaceIpConfiguration> ipConfigurations;
+
   /// Indicate if IP forwarding is set on the specified Network Interface.
   final bool ipForwardingEnabled;
+
   /// The location of the specified Network Interface.
   final String location;
+
   /// The MAC address used by the specified Network Interface.
   final String macAddress;
+
   /// The name of the IP Configuration.
   final String name;
+
   /// The ID of the network security group associated to the specified Network Interface.
   final String networkSecurityGroupId;
+
   /// The Private IP Address assigned to this Network Interface.
   final String privateIpAddress;
+
   /// The list of private IP addresses associates to the specified Network Interface.
   final List<String> privateIpAddresses;
   final String resourceGroupName;
+
   /// List the tags associated to the specified Network Interface.
   final Map<String, String> tags;
+
   /// The ID of the virtual machine that the specified Network Interface is attached to.
   final String virtualMachineId;
 
@@ -80,7 +94,11 @@ class GetNetworkInterfaceResult {
       'dnsServers': dnsServers,
       'id': id,
       'internalDnsNameLabel': internalDnsNameLabel,
-      'ipConfigurations': pulumi.Input.encodeList<GetNetworkInterfaceIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.encodeList<
+            GetNetworkInterfaceIpConfiguration,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'ipForwardingEnabled': ipForwardingEnabled,
       'location': location,
       'macAddress': macAddress,
@@ -101,7 +119,13 @@ class GetNetworkInterfaceResult {
       dnsServers: (map['dnsServers'] as List).cast<String>(),
       id: map['id'] as String,
       internalDnsNameLabel: map['internalDnsNameLabel'] as String,
-      ipConfigurations: pulumi.Input.decodeList<GetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => GetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations:
+          pulumi.Input.decodeList<GetNetworkInterfaceIpConfiguration>(
+            map['ipConfigurations']!,
+            (value) => GetNetworkInterfaceIpConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       ipForwardingEnabled: map['ipForwardingEnabled'] as bool,
       location: map['location'] as String,
       macAddress: map['macAddress'] as String,
@@ -115,4 +139,3 @@ class GetNetworkInterfaceResult {
     );
   }
 }
-

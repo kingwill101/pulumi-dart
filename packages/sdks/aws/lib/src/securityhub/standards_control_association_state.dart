@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardsControlAssociationState {
   /// The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? associationStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The unique identifier for the security control whose enablement status you want to update.
   final pulumi.Input<String>? securityControlId;
+
   /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? standardsArn;
+
   /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
   final pulumi.Input<String>? updatedReason;
 
@@ -43,12 +47,31 @@ class StandardsControlAssociationState {
 
   factory StandardsControlAssociationState.fromMap(Map<String, dynamic> map) {
     return StandardsControlAssociationState(
-      associationStatus: map['associationStatus'] == null ? null : ((map['associationStatus'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityControlId: map['securityControlId'] == null ? null : ((map['securityControlId'] as String).input()).input(),
-      standardsArn: map['standardsArn'] == null ? null : ((map['standardsArn'] as String).input()).input(),
-      updatedReason: map['updatedReason'] == null ? null : ((map['updatedReason'] as String).input()).input(),
+      associationStatus: (() {
+        final guardedValue = map['associationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityControlId: (() {
+        final guardedValue = map['securityControlId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standardsArn: (() {
+        final guardedValue = map['standardsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedReason: (() {
+        final guardedValue = map['updatedReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

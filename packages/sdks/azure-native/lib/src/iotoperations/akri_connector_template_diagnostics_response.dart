@@ -10,20 +10,27 @@ class AkriConnectorTemplateDiagnosticsResponse {
 
   /// Creates a new [AkriConnectorTemplateDiagnosticsResponse].
   /// [logs] The log settings for the Connector template.
-  AkriConnectorTemplateDiagnosticsResponse({
-    required this.logs,
-  });
+  AkriConnectorTemplateDiagnosticsResponse({required this.logs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logs': pulumi.Input.mapInputValue<AkriConnectorsDiagnosticsLogsResponse, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'logs':
+          pulumi.Input.mapInputValue<
+            AkriConnectorsDiagnosticsLogsResponse,
+            Map<String, dynamic>
+          >(logs, (value) => value.toMap()),
     };
   }
 
-  factory AkriConnectorTemplateDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorTemplateDiagnosticsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorTemplateDiagnosticsResponse(
-      logs: (AkriConnectorsDiagnosticsLogsResponse.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
+      logs: pulumi.Input.fromValue(
+        AkriConnectorsDiagnosticsLogsResponse.fromMap(
+          (map['logs']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum DataStringComparisonBehavior {
   valueOrdinal("Ordinal"),
   valueOrdinalIgnoreCase("OrdinalIgnoreCase");
 
-  const DataStringComparisonBehavior(this.value);
-  final String value;
+  const DataStringComparisonBehavior(this.wireValue);
+  final String wireValue;
 
   static DataStringComparisonBehavior fromValue(String value) {
     for (final item in DataStringComparisonBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataStringComparisonBehavior value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossTenantScopesResponse {
   /// List of management groups.
   final pulumi.Input<List<String>> managementGroups;
+
   /// List of subscriptions.
   final pulumi.Input<List<String>> subscriptions;
+
   /// Tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -31,10 +33,13 @@ class CrossTenantScopesResponse {
 
   factory CrossTenantScopesResponse.fromMap(Map<String, dynamic> map) {
     return CrossTenantScopesResponse(
-      managementGroups: ((map['managementGroups'] as List).cast<String>()).input(),
-      subscriptions: ((map['subscriptions'] as List).cast<String>()).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      managementGroups: pulumi.Input.fromValue(
+        (map['managementGroups'] as List).cast<String>(),
+      ),
+      subscriptions: pulumi.Input.fromValue(
+        (map['subscriptions'] as List).cast<String>(),
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

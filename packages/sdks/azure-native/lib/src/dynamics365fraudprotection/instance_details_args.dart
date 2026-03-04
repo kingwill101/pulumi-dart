@@ -10,12 +10,16 @@ import 'dfpinstance_administrators.dart';
 class InstanceDetailsArgs {
   /// A collection of DFP instance administrators
   final pulumi.Input<DFPInstanceAdministrators>? administration;
+
   /// The name of the DFP instances. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String>? instanceName;
+
   /// Location of the DFP resource.
   final pulumi.Input<String>? location;
+
   /// The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
   final pulumi.Input<String> resourceGroupName;
+
   /// Key-value pairs of additional resource provisioning properties.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +39,11 @@ class InstanceDetailsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administration': ?pulumi.Input.mapOptionalInputValue<DFPInstanceAdministrators, Map<String, dynamic>>(administration, (value) => value.toMap()),
+      'administration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DFPInstanceAdministrators,
+            Map<String, dynamic>
+          >(administration, (value) => value.toMap()),
       'instanceName': ?instanceName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -45,12 +53,35 @@ class InstanceDetailsArgs {
 
   factory InstanceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDetailsArgs(
-      administration: map['administration'] == null ? null : (DFPInstanceAdministrators.fromMap((map['administration']! as Map).cast<String, dynamic>())).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      administration: (() {
+        final guardedValue = map['administration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DFPInstanceAdministrators.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// Defines grace period for the imagefs.available soft eviction threshold
   final pulumi.Input<String> imagefsAvailable;
+
   /// Defines grace period for the imagefs.inodesFree soft eviction threshold.
   final pulumi.Input<String> imagefsInodesFree;
+
   /// Defines grace period for the memory.available soft eviction threshold.
   final pulumi.Input<String> memoryAvailable;
+
   /// Defines grace period for the nodefs.available soft eviction threshold.
   final pulumi.Input<String> nodefsAvailable;
+
   /// Defines grace period for the nodefs.inodesFree soft eviction threshold.
   final pulumi.Input<String> nodefsInodesFree;
+
   /// Defines grace period for the pid.available soft eviction threshold.
   final pulumi.Input<String> pidAvailable;
 
@@ -43,15 +48,22 @@ class GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
     };
   }
 
-  factory GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod(
-      imagefsAvailable: (map['imagefsAvailable'] as String).input(),
-      imagefsInodesFree: (map['imagefsInodesFree'] as String).input(),
-      memoryAvailable: (map['memoryAvailable'] as String).input(),
-      nodefsAvailable: (map['nodefsAvailable'] as String).input(),
-      nodefsInodesFree: (map['nodefsInodesFree'] as String).input(),
-      pidAvailable: (map['pidAvailable'] as String).input(),
+      imagefsAvailable: pulumi.Input.fromValue(
+        map['imagefsAvailable'] as String,
+      ),
+      imagefsInodesFree: pulumi.Input.fromValue(
+        map['imagefsInodesFree'] as String,
+      ),
+      memoryAvailable: pulumi.Input.fromValue(map['memoryAvailable'] as String),
+      nodefsAvailable: pulumi.Input.fromValue(map['nodefsAvailable'] as String),
+      nodefsInodesFree: pulumi.Input.fromValue(
+        map['nodefsInodesFree'] as String,
+      ),
+      pidAvailable: pulumi.Input.fromValue(map['pidAvailable'] as String),
     );
   }
 }
-

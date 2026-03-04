@@ -8,16 +8,15 @@ enum ContentMatcherMatcher {
   matchesJsonPath("MATCHES_JSON_PATH"),
   notMatchesJsonPath("NOT_MATCHES_JSON_PATH");
 
-  const ContentMatcherMatcher(this.value);
-  final String value;
+  const ContentMatcherMatcher(this.wireValue);
+  final String wireValue;
 
   static ContentMatcherMatcher fromValue(String value) {
     for (final item in ContentMatcherMatcher.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContentMatcherMatcher value: $value');
   }
 }
-

@@ -7,10 +7,18 @@ import 'slo_windows_based_sli_good_total_ratio_threshold_basic_sli_performance_l
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
   /// Availability based SLI, dervied from count of requests made to this service that return successfully.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability>? availability;
+  final pulumi.Input<
+    SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
+  >?
+  availability;
+
   /// Parameters for a latency threshold SLI.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency>? latency;
+  final pulumi.Input<
+    SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency
+  >?
+  latency;
+
   /// An optional set of locations to which this SLI is relevant.
   /// Telemetry from other locations will not be used to calculate
   /// performance for this SLI. If omitted, this SLI applies to all
@@ -18,6 +26,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
   /// that don't support breaking down by location, setting this
   /// field will result in an error.
   final pulumi.Input<List<String>>? locations;
+
   /// An optional set of RPCs to which this SLI is relevant.
   /// Telemetry from other methods will not be used to calculate
   /// performance for this SLI. If omitted, this SLI applies to all
@@ -25,6 +34,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
   /// breaking down by method, setting this field will result in an
   /// error.
   final pulumi.Input<List<String>>? methods;
+
   /// The set of API versions to which this SLI is relevant.
   /// Telemetry from other API versions will not be used to
   /// calculate performance for this SLI. If omitted,
@@ -49,22 +59,59 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availability': ?pulumi.Input.mapOptionalInputValue<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability, Map<String, dynamic>>(availability, (value) => value.toMap()),
-      'latency': ?pulumi.Input.mapOptionalInputValue<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency, Map<String, dynamic>>(latency, (value) => value.toMap()),
+      'availability':
+          ?pulumi.Input.mapOptionalInputValue<
+            SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability,
+            Map<String, dynamic>
+          >(availability, (value) => value.toMap()),
+      'latency':
+          ?pulumi.Input.mapOptionalInputValue<
+            SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency,
+            Map<String, dynamic>
+          >(latency, (value) => value.toMap()),
       'locations': ?locations,
       'methods': ?methods,
       'versions': ?versions,
     };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(
-      availability: map['availability'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
-      latency: map['latency'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap((map['latency']! as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
-      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
-      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
+      availability: (() {
+        final guardedValue = map['availability'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      latency: (() {
+        final guardedValue = map['latency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      methods: (() {
+        final guardedValue = map['methods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      versions: (() {
+        final guardedValue = map['versions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

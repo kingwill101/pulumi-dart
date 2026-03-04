@@ -7,11 +7,22 @@ import 'resource_configuration_resource_configuration_definition_ip_resource.dar
 
 class ResourceConfigurationResourceConfigurationDefinition {
   /// Resource DNS Configuration. See `arn_resource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionArnResource>? arnResource;
+  final pulumi.Input<
+    ResourceConfigurationResourceConfigurationDefinitionArnResource
+  >?
+  arnResource;
+
   /// Resource DNS Configuration. See `dns_resource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionDnsResource>? dnsResource;
+  final pulumi.Input<
+    ResourceConfigurationResourceConfigurationDefinitionDnsResource
+  >?
+  dnsResource;
+
   /// Resource DNS Configuration. See `ip_resource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionIpResource>? ipResource;
+  final pulumi.Input<
+    ResourceConfigurationResourceConfigurationDefinitionIpResource
+  >?
+  ipResource;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinition].
   /// [arnResource] Resource DNS Configuration. See `arn_resource` Block for details.
@@ -25,18 +36,55 @@ class ResourceConfigurationResourceConfigurationDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arnResource': ?pulumi.Input.mapOptionalInputValue<ResourceConfigurationResourceConfigurationDefinitionArnResource, Map<String, dynamic>>(arnResource, (value) => value.toMap()),
-      'dnsResource': ?pulumi.Input.mapOptionalInputValue<ResourceConfigurationResourceConfigurationDefinitionDnsResource, Map<String, dynamic>>(dnsResource, (value) => value.toMap()),
-      'ipResource': ?pulumi.Input.mapOptionalInputValue<ResourceConfigurationResourceConfigurationDefinitionIpResource, Map<String, dynamic>>(ipResource, (value) => value.toMap()),
+      'arnResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceConfigurationResourceConfigurationDefinitionArnResource,
+            Map<String, dynamic>
+          >(arnResource, (value) => value.toMap()),
+      'dnsResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceConfigurationResourceConfigurationDefinitionDnsResource,
+            Map<String, dynamic>
+          >(dnsResource, (value) => value.toMap()),
+      'ipResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceConfigurationResourceConfigurationDefinitionIpResource,
+            Map<String, dynamic>
+          >(ipResource, (value) => value.toMap()),
     };
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinition.fromMap(Map<String, dynamic> map) {
+  factory ResourceConfigurationResourceConfigurationDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceConfigurationResourceConfigurationDefinition(
-      arnResource: map['arnResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap((map['arnResource']! as Map).cast<String, dynamic>())).input()).input(),
-      dnsResource: map['dnsResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap((map['dnsResource']! as Map).cast<String, dynamic>())).input()).input(),
-      ipResource: map['ipResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap((map['ipResource']! as Map).cast<String, dynamic>())).input()).input(),
+      arnResource: (() {
+        final guardedValue = map['arnResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dnsResource: (() {
+        final guardedValue = map['dnsResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipResource: (() {
+        final guardedValue = map['ipResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

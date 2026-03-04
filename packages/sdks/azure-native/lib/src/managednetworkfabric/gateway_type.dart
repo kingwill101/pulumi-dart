@@ -3,16 +3,15 @@ enum GatewayType {
   valueInfrastructure("Infrastructure"),
   valueWorkload("Workload");
 
-  const GatewayType(this.value);
-  final String value;
+  const GatewayType(this.wireValue);
+  final String wireValue;
 
   static GatewayType fromValue(String value) {
     for (final item in GatewayType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GatewayType value: $value');
   }
 }
-

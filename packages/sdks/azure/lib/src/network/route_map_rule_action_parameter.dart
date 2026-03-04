@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteMapRuleActionParameter {
   /// A list of AS paths.
   final pulumi.Input<List<String>>? asPaths;
+
   /// A list of BGP communities.
   final pulumi.Input<List<String>>? communities;
+
   /// A list of route prefixes.
   final pulumi.Input<List<String>>? routePrefixes;
 
@@ -30,10 +32,21 @@ class RouteMapRuleActionParameter {
 
   factory RouteMapRuleActionParameter.fromMap(Map<String, dynamic> map) {
     return RouteMapRuleActionParameter(
-      asPaths: map['asPaths'] == null ? null : ((map['asPaths']! as List).cast<String>()).input(),
-      communities: map['communities'] == null ? null : ((map['communities']! as List).cast<String>()).input(),
-      routePrefixes: map['routePrefixes'] == null ? null : ((map['routePrefixes']! as List).cast<String>()).input(),
+      asPaths: (() {
+        final guardedValue = map['asPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      communities: (() {
+        final guardedValue = map['communities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      routePrefixes: (() {
+        final guardedValue = map['routePrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

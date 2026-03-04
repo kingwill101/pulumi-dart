@@ -6,16 +6,15 @@ enum KafkaAuthMethod {
   x509Certificate("X509Certificate"),
   anonymous("Anonymous");
 
-  const KafkaAuthMethod(this.value);
-  final String value;
+  const KafkaAuthMethod(this.wireValue);
+  final String wireValue;
 
   static KafkaAuthMethod fromValue(String value) {
     for (final item in KafkaAuthMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KafkaAuthMethod value: $value');
   }
 }
-

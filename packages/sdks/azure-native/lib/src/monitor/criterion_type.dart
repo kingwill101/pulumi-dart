@@ -3,16 +3,15 @@ enum CriterionType {
   valueStaticThresholdCriterion("StaticThresholdCriterion"),
   valueDynamicThresholdCriterion("DynamicThresholdCriterion");
 
-  const CriterionType(this.value);
-  final String value;
+  const CriterionType(this.wireValue);
+  final String wireValue;
 
   static CriterionType fromValue(String value) {
     for (final item in CriterionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CriterionType value: $value');
   }
 }
-

@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamResourceDiscoveryAssociationState {
   /// The Amazon Resource Name (ARN) of IPAM Resource Discovery Association.
   final pulumi.Input<String>? arn;
+
   /// The Amazon Resource Name (ARN) of the IPAM.
   final pulumi.Input<String>? ipamArn;
+
   /// The ID of the IPAM to associate.
   final pulumi.Input<String>? ipamId;
+
   /// The home region of the IPAM.
   final pulumi.Input<String>? ipamRegion;
+
   /// The ID of the Resource Discovery to associate.
   final pulumi.Input<String>? ipamResourceDiscoveryId;
+
   /// A boolean to identify if the Resource Discovery is the accounts default resource discovery.
   final pulumi.Input<bool>? isDefault;
+
   /// The account ID for the account that manages the Resource Discovery
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The lifecycle state of the association when you associate or disassociate a resource discovery.
   final pulumi.Input<String>? state;
+
   /// A map of tags to add to the IPAM resource discovery association resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -69,20 +79,69 @@ class VpcIpamResourceDiscoveryAssociationState {
     };
   }
 
-  factory VpcIpamResourceDiscoveryAssociationState.fromMap(Map<String, dynamic> map) {
+  factory VpcIpamResourceDiscoveryAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcIpamResourceDiscoveryAssociationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      ipamArn: map['ipamArn'] == null ? null : ((map['ipamArn'] as String).input()).input(),
-      ipamId: map['ipamId'] == null ? null : ((map['ipamId'] as String).input()).input(),
-      ipamRegion: map['ipamRegion'] == null ? null : ((map['ipamRegion'] as String).input()).input(),
-      ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] == null ? null : ((map['ipamResourceDiscoveryId'] as String).input()).input(),
-      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamArn: (() {
+        final guardedValue = map['ipamArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamId: (() {
+        final guardedValue = map['ipamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamRegion: (() {
+        final guardedValue = map['ipamRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamResourceDiscoveryId: (() {
+        final guardedValue = map['ipamResourceDiscoveryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

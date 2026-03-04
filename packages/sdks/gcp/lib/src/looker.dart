@@ -1,5 +1,3 @@
-library module_looker;
-
 export 'looker/instance.dart';
 export 'looker/instance_admin_settings.dart';
 export 'looker/instance_args.dart';

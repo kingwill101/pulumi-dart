@@ -10,20 +10,29 @@ class WidgetConfigUiBranding {
 
   /// Creates a new [WidgetConfigUiBranding].
   /// [logo] Logo image.
-  WidgetConfigUiBranding({
-    this.logo,
-  });
+  WidgetConfigUiBranding({this.logo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logo': ?pulumi.Input.mapOptionalInputValue<WidgetConfigUiBrandingLogo, Map<String, dynamic>>(logo, (value) => value.toMap()),
+      'logo':
+          ?pulumi.Input.mapOptionalInputValue<
+            WidgetConfigUiBrandingLogo,
+            Map<String, dynamic>
+          >(logo, (value) => value.toMap()),
     };
   }
 
   factory WidgetConfigUiBranding.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBranding(
-      logo: map['logo'] == null ? null : (WidgetConfigUiBrandingLogo.fromMap((map['logo']! as Map).cast<String, dynamic>())).input(),
+      logo: (() {
+        final guardedValue = map['logo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WidgetConfigUiBrandingLogo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

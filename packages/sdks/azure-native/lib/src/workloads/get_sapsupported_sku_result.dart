@@ -10,20 +10,33 @@ class GetSAPSupportedSkuResult {
 
   /// Creates a new [GetSAPSupportedSkuResult].
   /// [supportedSkus] Gets the list of SAP supported SKUs.
-  GetSAPSupportedSkuResult({
-    this.supportedSkus,
-  });
+  GetSAPSupportedSkuResult({this.supportedSkus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'supportedSkus': ?supportedSkus == null ? null : pulumi.Input.encodeList<SAPSupportedSkuResponse, Map<String, dynamic>>(supportedSkus!, (value) => value.toMap()),
+      'supportedSkus': ?(() {
+        final guardedValue = supportedSkus;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SAPSupportedSkuResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetSAPSupportedSkuResult.fromMap(Map<String, dynamic> map) {
     return GetSAPSupportedSkuResult(
-      supportedSkus: map['supportedSkus'] == null ? null : pulumi.Input.decodeList<SAPSupportedSkuResponse>(map['supportedSkus']!, (value) => SAPSupportedSkuResponse.fromMap((value as Map).cast<String, dynamic>())),
+      supportedSkus: (() {
+        final guardedValue = map['supportedSkus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SAPSupportedSkuResponse>(
+          guardedValue,
+          (value) => SAPSupportedSkuResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

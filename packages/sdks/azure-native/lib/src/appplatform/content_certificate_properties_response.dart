@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContentCertificatePropertiesResponse {
   /// The activate date of certificate.
   final pulumi.Input<String> activateDate;
+
   /// The domain list of certificate.
   final pulumi.Input<List<String>> dnsNames;
+
   /// The expiration date of certificate.
   final pulumi.Input<String> expirationDate;
+
   /// The issue date of certificate.
   final pulumi.Input<String> issuedDate;
+
   /// The issuer of certificate.
   final pulumi.Input<String> issuer;
+
   /// Provisioning state of the Certificate
   final pulumi.Input<String> provisioningState;
+
   /// The subject name of certificate.
   final pulumi.Input<String> subjectName;
+
   /// The thumbprint of certificate.
   final pulumi.Input<String> thumbprint;
+
   /// The type of the certificate source.
   /// Expected value is 'ContentCertificate'.
   final pulumi.Input<String> type;
@@ -60,18 +68,23 @@ class ContentCertificatePropertiesResponse {
     };
   }
 
-  factory ContentCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ContentCertificatePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContentCertificatePropertiesResponse(
-      activateDate: (map['activateDate'] as String).input(),
-      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
-      expirationDate: (map['expirationDate'] as String).input(),
-      issuedDate: (map['issuedDate'] as String).input(),
-      issuer: (map['issuer'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      subjectName: (map['subjectName'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
-      type: (map['type'] as String).input(),
+      activateDate: pulumi.Input.fromValue(map['activateDate'] as String),
+      dnsNames: pulumi.Input.fromValue(
+        (map['dnsNames'] as List).cast<String>(),
+      ),
+      expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
+      issuedDate: pulumi.Input.fromValue(map['issuedDate'] as String),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      subjectName: pulumi.Input.fromValue(map['subjectName'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

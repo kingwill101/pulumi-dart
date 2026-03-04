@@ -10,20 +10,17 @@ class RecordingConfigurationDestinationConfigurationS3 {
 
   /// Creates a new [RecordingConfigurationDestinationConfigurationS3].
   /// [bucketName] S3 bucket name where recorded videos will be stored.
-  RecordingConfigurationDestinationConfigurationS3({
-    required this.bucketName,
-  });
+  RecordingConfigurationDestinationConfigurationS3({required this.bucketName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-    };
+    return <String, dynamic>{'bucketName': bucketName};
   }
 
-  factory RecordingConfigurationDestinationConfigurationS3.fromMap(Map<String, dynamic> map) {
+  factory RecordingConfigurationDestinationConfigurationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordingConfigurationDestinationConfigurationS3(
-      bucketName: (map['bucketName'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
     );
   }
 }
-

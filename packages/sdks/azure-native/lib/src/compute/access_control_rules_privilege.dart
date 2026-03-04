@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessControlRulesPrivilege {
   /// The name of the privilege.
   final pulumi.Input<String> name;
+
   /// The HTTP path corresponding to the privilege.
   final pulumi.Input<String> path;
+
   /// The query parameters to match in the path.
   final pulumi.Input<Map<String, String>>? queryParameters;
 
@@ -31,10 +33,15 @@ class AccessControlRulesPrivilege {
 
   factory AccessControlRulesPrivilege.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesPrivilege(
-      name: (map['name'] as String).input(),
-      path: (map['path'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters']! as Map).cast<String, String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      queryParameters: (() {
+        final guardedValue = map['queryParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

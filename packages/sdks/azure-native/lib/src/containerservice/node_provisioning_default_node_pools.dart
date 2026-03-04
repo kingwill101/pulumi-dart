@@ -3,16 +3,17 @@ enum NodeProvisioningDefaultNodePools {
   valueNone("None"),
   valueAuto("Auto");
 
-  const NodeProvisioningDefaultNodePools(this.value);
-  final String value;
+  const NodeProvisioningDefaultNodePools(this.wireValue);
+  final String wireValue;
 
   static NodeProvisioningDefaultNodePools fromValue(String value) {
     for (final item in NodeProvisioningDefaultNodePools.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeProvisioningDefaultNodePools value: $value');
+    throw ArgumentError(
+      'Unknown NodeProvisioningDefaultNodePools value: $value',
+    );
   }
 }
-

@@ -11,62 +11,89 @@ import 'shared_image_purchase_plan.dart';
 class SharedImageArgs {
   /// Specifies if the Shared Image supports Accelerated Network. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? acceleratedNetworkSupportEnabled;
+
   /// CPU architecture supported by an OS. Possible values are `x64` and `Arm64`. Defaults to `x64`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? architecture;
+
   /// Specifies if Confidential Virtual Machines enabled. It will enable all the features of trusted, with higher confidentiality features for isolate machines or encrypted data. Available for Gen2 machines. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one of `trusted_launch_supported`, `trusted_launch_enabled`, `confidential_vm_supported` and `confidential_vm_enabled` can be specified.
+  /// &gt; **Note:** Only one of `trusted_launch_supported`, `trusted_launch_enabled`, `confidential_vm_supported` and `confidential_vm_enabled` can be specified.
   final pulumi.Input<bool>? confidentialVmEnabled;
+
   /// Specifies if supports creation of both Confidential virtual machines and Gen2 virtual machines with standard security from a compatible Gen2 OS disk VHD or Gen2 Managed image. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? confidentialVmSupported;
+
   /// A description of this Shared Image.
   final pulumi.Input<String>? description;
+
   /// Specifies if the Shared Image supports NVMe disks. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? diskControllerTypeNvmeEnabled;
+
   /// One or more Disk Types not allowed for the Image. Possible values include `Standard_LRS` and `Premium_LRS`.
   final pulumi.Input<List<String>>? diskTypesNotAlloweds;
+
   /// The end of life date in RFC3339 format of the Image.
   final pulumi.Input<String>? endOfLifeDate;
+
   /// The End User Licence Agreement for the Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eula;
+
   /// Specifies the name of the Shared Image Gallery in which this Shared Image should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> galleryName;
+
   /// Specifies if the Shared Image supports hibernation. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? hibernationEnabled;
+
   /// The generation of HyperV that the Virtual Machine used to create the Shared Image is based on. Possible values are `V1` and `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hyperVGeneration;
+
   /// An `identifier` block as defined below.
   final pulumi.Input<SharedImageIdentifier> identifier;
+
   /// Specifies the supported Azure location where the Shared Image Gallery exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Maximum memory in GB recommended for the Image.
   final pulumi.Input<int>? maxRecommendedMemoryInGb;
+
   /// Maximum count of vCPUs recommended for the Image.
   final pulumi.Input<int>? maxRecommendedVcpuCount;
+
   /// Minimum memory in GB recommended for the Image.
   final pulumi.Input<int>? minRecommendedMemoryInGb;
+
   /// Minimum count of vCPUs recommended for the Image.
   final pulumi.Input<int>? minRecommendedVcpuCount;
+
   /// Specifies the name of the Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The type of Operating System present in this Shared Image. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   final pulumi.Input<String> osType;
+
   /// The URI containing the Privacy Statement associated with this Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privacyStatementUri;
+
   /// A `purchase_plan` block as defined below.
   final pulumi.Input<SharedImagePurchasePlan>? purchasePlan;
+
   /// The URI containing the Release Notes associated with this Shared Image.
   final pulumi.Input<String>? releaseNoteUri;
+
   /// The name of the resource group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Changing this forces a new resource to be created.
   ///
-  /// !> **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
+  /// !&gt; **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
   final pulumi.Input<bool>? specialized;
+
   /// A mapping of tags to assign to the Shared Image.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies if Trusted Launch has to be enabled for the Virtual Machine created from the Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? trustedLaunchEnabled;
+
   /// Specifies if supports creation of both Trusted Launch virtual machines and Gen2 virtual machines with standard security created from the Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? trustedLaunchSupported;
 
@@ -144,7 +171,11 @@ class SharedImageArgs {
       'galleryName': galleryName,
       'hibernationEnabled': ?hibernationEnabled,
       'hyperVGeneration': ?hyperVGeneration,
-      'identifier': pulumi.Input.mapInputValue<SharedImageIdentifier, Map<String, dynamic>>(identifier, (value) => value.toMap()),
+      'identifier':
+          pulumi.Input.mapInputValue<
+            SharedImageIdentifier,
+            Map<String, dynamic>
+          >(identifier, (value) => value.toMap()),
       'location': ?location,
       'maxRecommendedMemoryInGb': ?maxRecommendedMemoryInGb,
       'maxRecommendedVcpuCount': ?maxRecommendedVcpuCount,
@@ -153,7 +184,11 @@ class SharedImageArgs {
       'name': ?name,
       'osType': osType,
       'privacyStatementUri': ?privacyStatementUri,
-      'purchasePlan': ?pulumi.Input.mapOptionalInputValue<SharedImagePurchasePlan, Map<String, dynamic>>(purchasePlan, (value) => value.toMap()),
+      'purchasePlan':
+          ?pulumi.Input.mapOptionalInputValue<
+            SharedImagePurchasePlan,
+            Map<String, dynamic>
+          >(purchasePlan, (value) => value.toMap()),
       'releaseNoteUri': ?releaseNoteUri,
       'resourceGroupName': resourceGroupName,
       'specialized': ?specialized,
@@ -165,35 +200,142 @@ class SharedImageArgs {
 
   factory SharedImageArgs.fromMap(Map<String, dynamic> map) {
     return SharedImageArgs(
-      acceleratedNetworkSupportEnabled: map['acceleratedNetworkSupportEnabled'] == null ? null : (map['acceleratedNetworkSupportEnabled']! as bool).input(),
-      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
-      confidentialVmEnabled: map['confidentialVmEnabled'] == null ? null : (map['confidentialVmEnabled']! as bool).input(),
-      confidentialVmSupported: map['confidentialVmSupported'] == null ? null : (map['confidentialVmSupported']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      diskControllerTypeNvmeEnabled: map['diskControllerTypeNvmeEnabled'] == null ? null : (map['diskControllerTypeNvmeEnabled']! as bool).input(),
-      diskTypesNotAlloweds: map['diskTypesNotAlloweds'] == null ? null : ((map['diskTypesNotAlloweds']! as List).cast<String>()).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
-      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
-      galleryName: (map['galleryName'] as String).input(),
-      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled']! as bool).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
-      identifier: (SharedImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      maxRecommendedMemoryInGb: map['maxRecommendedMemoryInGb'] == null ? null : (map['maxRecommendedMemoryInGb']! as int).input(),
-      maxRecommendedVcpuCount: map['maxRecommendedVcpuCount'] == null ? null : (map['maxRecommendedVcpuCount']! as int).input(),
-      minRecommendedMemoryInGb: map['minRecommendedMemoryInGb'] == null ? null : (map['minRecommendedMemoryInGb']! as int).input(),
-      minRecommendedVcpuCount: map['minRecommendedVcpuCount'] == null ? null : (map['minRecommendedVcpuCount']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      osType: (map['osType'] as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
-      purchasePlan: map['purchasePlan'] == null ? null : (SharedImagePurchasePlan.fromMap((map['purchasePlan']! as Map).cast<String, dynamic>())).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      specialized: map['specialized'] == null ? null : (map['specialized']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      trustedLaunchEnabled: map['trustedLaunchEnabled'] == null ? null : (map['trustedLaunchEnabled']! as bool).input(),
-      trustedLaunchSupported: map['trustedLaunchSupported'] == null ? null : (map['trustedLaunchSupported']! as bool).input(),
+      acceleratedNetworkSupportEnabled: (() {
+        final guardedValue = map['acceleratedNetworkSupportEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      confidentialVmEnabled: (() {
+        final guardedValue = map['confidentialVmEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      confidentialVmSupported: (() {
+        final guardedValue = map['confidentialVmSupported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskControllerTypeNvmeEnabled: (() {
+        final guardedValue = map['diskControllerTypeNvmeEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskTypesNotAlloweds: (() {
+        final guardedValue = map['diskTypesNotAlloweds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      endOfLifeDate: (() {
+        final guardedValue = map['endOfLifeDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eula: (() {
+        final guardedValue = map['eula'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
+      hibernationEnabled: (() {
+        final guardedValue = map['hibernationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hyperVGeneration: (() {
+        final guardedValue = map['hyperVGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identifier: pulumi.Input.fromValue(
+        SharedImageIdentifier.fromMap(
+          (map['identifier']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxRecommendedMemoryInGb: (() {
+        final guardedValue = map['maxRecommendedMemoryInGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRecommendedVcpuCount: (() {
+        final guardedValue = map['maxRecommendedVcpuCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minRecommendedMemoryInGb: (() {
+        final guardedValue = map['minRecommendedMemoryInGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minRecommendedVcpuCount: (() {
+        final guardedValue = map['minRecommendedVcpuCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      privacyStatementUri: (() {
+        final guardedValue = map['privacyStatementUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      purchasePlan: (() {
+        final guardedValue = map['purchasePlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SharedImagePurchasePlan.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      releaseNoteUri: (() {
+        final guardedValue = map['releaseNoteUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      specialized: (() {
+        final guardedValue = map['specialized'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      trustedLaunchEnabled: (() {
+        final guardedValue = map['trustedLaunchEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      trustedLaunchSupported: (() {
+        final guardedValue = map['trustedLaunchSupported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

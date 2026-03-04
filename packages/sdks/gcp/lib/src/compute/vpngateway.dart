@@ -10,7 +10,7 @@ import 'vpngateway_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
 ///
-/// > **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
+/// &gt; **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
 /// see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
 ///
 /// ## Example Usage
@@ -463,10 +463,13 @@ import 'vpngateway_state.dart';
 class VPNGateway extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> gatewayId;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -475,13 +478,17 @@ class VPNGateway extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The network this VPN gateway is accepting traffic for.
   late final pulumi.Output<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region this gateway should sit in.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -494,19 +501,19 @@ class VPNGateway extends pulumi.CustomResource {
     VPNGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/vPNGateway:VPNGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.gatewayId = registerOutput<int>('gatewayId');
+         'gcp:compute/vPNGateway:VPNGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    gatewayId = registerOutput<int>('gatewayId');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
   }
 
   /// Gets an existing [VPNGateway] resource's state with the given [name] and [id].
@@ -527,18 +534,18 @@ class VPNGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/vPNGateway:VPNGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.gatewayId = registerOutput<int>('gatewayId');
+         'gcp:compute/vPNGateway:VPNGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    gatewayId = registerOutput<int>('gatewayId');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
   }
 }

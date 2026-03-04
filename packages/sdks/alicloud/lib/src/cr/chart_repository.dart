@@ -6,7 +6,7 @@ import 'chart_repository_state.dart';
 ///
 /// For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartrepository).
 ///
-/// > **NOTE:** Available since v1.149.0.
+/// &gt; **NOTE:** Available since v1.149.0.
 ///
 /// ## Example Usage
 ///
@@ -273,12 +273,16 @@ import 'chart_repository_state.dart';
 class ChartRepository extends pulumi.CustomResource {
   /// The ID of the Container Registry instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the repository that you want to create.
   late final pulumi.Output<String> repoName;
+
   /// The namespace to which the repository belongs.
   late final pulumi.Output<String> repoNamespaceName;
+
   /// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   late final pulumi.Output<String> repoType;
+
   /// The summary about the repository.
   late final pulumi.Output<String?> summary;
 
@@ -291,16 +295,16 @@ class ChartRepository extends pulumi.CustomResource {
     ChartRepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/chartRepository:ChartRepository',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.repoName = registerOutput<String>('repoName');
-    this.repoNamespaceName = registerOutput<String>('repoNamespaceName');
-    this.repoType = registerOutput<String>('repoType');
-    this.summary = registerOutput<String?>('summary');
+         'alicloud:cr/chartRepository:ChartRepository',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    repoName = registerOutput<String>('repoName');
+    repoNamespaceName = registerOutput<String>('repoNamespaceName');
+    repoType = registerOutput<String>('repoType');
+    summary = registerOutput<String?>('summary');
   }
 
   /// Gets an existing [ChartRepository] resource's state with the given [name] and [id].
@@ -321,15 +325,15 @@ class ChartRepository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/chartRepository:ChartRepository',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.repoName = registerOutput<String>('repoName');
-    this.repoNamespaceName = registerOutput<String>('repoNamespaceName');
-    this.repoType = registerOutput<String>('repoType');
-    this.summary = registerOutput<String?>('summary');
+         'alicloud:cr/chartRepository:ChartRepository',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    repoName = registerOutput<String>('repoName');
+    repoNamespaceName = registerOutput<String>('repoNamespaceName');
+    repoType = registerOutput<String>('repoType');
+    summary = registerOutput<String?>('summary');
   }
 }

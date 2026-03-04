@@ -8,16 +8,15 @@ enum SqlVersion {
   valueSQLServer2022("SQL Server 2022"),
   valueUnknown("Unknown");
 
-  const SqlVersion(this.value);
-  final String value;
+  const SqlVersion(this.wireValue);
+  final String wireValue;
 
   static SqlVersion fromValue(String value) {
     for (final item in SqlVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlVersion value: $value');
   }
 }
-

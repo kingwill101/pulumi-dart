@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Endpoint {
   /// Host IP over which the application is exposed from the container
   final pulumi.Input<String>? hostIp;
+
   /// Name of the Endpoint
   final pulumi.Input<String>? name;
+
   /// Protocol over which communication will happen over this endpoint
   final pulumi.Input<String>? protocol;
+
   /// Port over which the application is exposed from container.
   final pulumi.Input<int>? published;
+
   /// Application port inside the container.
   final pulumi.Input<int>? target;
 
@@ -41,12 +45,31 @@ class Endpoint {
 
   factory Endpoint.fromMap(Map<String, dynamic> map) {
     return Endpoint(
-      hostIp: map['hostIp'] == null ? null : (map['hostIp']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      published: map['published'] == null ? null : (map['published']! as int).input(),
-      target: map['target'] == null ? null : (map['target']! as int).input(),
+      hostIp: (() {
+        final guardedValue = map['hostIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      published: (() {
+        final guardedValue = map['published'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

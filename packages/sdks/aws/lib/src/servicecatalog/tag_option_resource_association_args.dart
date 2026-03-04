@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOptionResourceAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Resource identifier.
   final pulumi.Input<String> resourceId;
+
   /// Tag Option identifier.
   final pulumi.Input<String> tagOptionId;
 
@@ -34,10 +36,13 @@ class TagOptionResourceAssociationArgs {
 
   factory TagOptionResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionResourceAssociationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      tagOptionId: (map['tagOptionId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      tagOptionId: pulumi.Input.fromValue(map['tagOptionId'] as String),
     );
   }
 }
-

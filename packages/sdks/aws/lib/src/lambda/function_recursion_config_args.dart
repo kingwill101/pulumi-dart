@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionRecursionConfigArgs {
   /// Name of the Lambda function.
   final pulumi.Input<String> functionName;
+
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> recursiveLoop;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,10 +38,13 @@ class FunctionRecursionConfigArgs {
 
   factory FunctionRecursionConfigArgs.fromMap(Map<String, dynamic> map) {
     return FunctionRecursionConfigArgs(
-      functionName: (map['functionName'] as String).input(),
-      recursiveLoop: (map['recursiveLoop'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      recursiveLoop: pulumi.Input.fromValue(map['recursiveLoop'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

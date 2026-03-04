@@ -1,5 +1,3 @@
-library module_cloudngfw;
-
 export 'cloudngfw/action_enum.dart';
 export 'cloudngfw/adv_security_object_model_response.dart';
 export 'cloudngfw/app_seen_data_response.dart';

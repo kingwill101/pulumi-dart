@@ -234,17 +234,23 @@ import 'package_state.dart';
 class Package extends pulumi.CustomResource {
   /// The current version of the package.
   late final pulumi.Output<String> availablePackageVersion;
+
   /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   late final pulumi.Output<String?> engineVersion;
+
   /// Description of the package.
   late final pulumi.Output<String?> packageDescription;
   late final pulumi.Output<String> packageId;
+
   /// Unique name for the package.
   late final pulumi.Output<String> packageName;
+
   /// Configuration block for the package source options.
   late final pulumi.Output<PackagePackageSource> packageSource;
+
   /// The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
   late final pulumi.Output<String> packageType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -257,19 +263,19 @@ class Package extends pulumi.CustomResource {
     PackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/package:Package',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availablePackageVersion = registerOutput<String>('availablePackageVersion');
-    this.engineVersion = registerOutput<String?>('engineVersion');
-    this.packageDescription = registerOutput<String?>('packageDescription');
-    this.packageId = registerOutput<String>('packageId');
-    this.packageName = registerOutput<String>('packageName');
-    this.packageSource = registerOutput<PackagePackageSource>('packageSource');
-    this.packageType = registerOutput<String>('packageType');
-    this.region = registerOutput<String>('region');
+         'aws:opensearch/package:Package',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availablePackageVersion = registerOutput<String>('availablePackageVersion');
+    engineVersion = registerOutput<String?>('engineVersion');
+    packageDescription = registerOutput<String?>('packageDescription');
+    packageId = registerOutput<String>('packageId');
+    packageName = registerOutput<String>('packageName');
+    packageSource = registerOutput<PackagePackageSource>('packageSource');
+    packageType = registerOutput<String>('packageType');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Package] resource's state with the given [name] and [id].
@@ -290,18 +296,18 @@ class Package extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/package:Package',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availablePackageVersion = registerOutput<String>('availablePackageVersion');
-    this.engineVersion = registerOutput<String?>('engineVersion');
-    this.packageDescription = registerOutput<String?>('packageDescription');
-    this.packageId = registerOutput<String>('packageId');
-    this.packageName = registerOutput<String>('packageName');
-    this.packageSource = registerOutput<PackagePackageSource>('packageSource');
-    this.packageType = registerOutput<String>('packageType');
-    this.region = registerOutput<String>('region');
+         'aws:opensearch/package:Package',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availablePackageVersion = registerOutput<String>('availablePackageVersion');
+    engineVersion = registerOutput<String?>('engineVersion');
+    packageDescription = registerOutput<String?>('packageDescription');
+    packageId = registerOutput<String>('packageId');
+    packageName = registerOutput<String>('packageName');
+    packageSource = registerOutput<PackagePackageSource>('packageSource');
+    packageType = registerOutput<String>('packageType');
+    region = registerOutput<String>('region');
   }
 }

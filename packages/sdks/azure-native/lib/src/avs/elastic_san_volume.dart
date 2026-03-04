@@ -9,20 +9,15 @@ class ElasticSanVolume {
 
   /// Creates a new [ElasticSanVolume].
   /// [targetId] Azure resource ID of the Elastic SAN Volume
-  ElasticSanVolume({
-    required this.targetId,
-  });
+  ElasticSanVolume({required this.targetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetId': targetId,
-    };
+    return <String, dynamic>{'targetId': targetId};
   }
 
   factory ElasticSanVolume.fromMap(Map<String, dynamic> map) {
     return ElasticSanVolume(
-      targetId: (map['targetId'] as String).input(),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

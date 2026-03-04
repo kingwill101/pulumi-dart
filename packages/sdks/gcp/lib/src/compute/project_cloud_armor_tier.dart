@@ -321,6 +321,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
   /// Managed protection tier to be set.
   /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
   late final pulumi.Output<String> cloudArmorTier;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -334,13 +335,13 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
     ProjectCloudArmorTierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudArmorTier = registerOutput<String>('cloudArmorTier');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [ProjectCloudArmorTier] resource's state with the given [name] and [id].
@@ -361,12 +362,12 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudArmorTier = registerOutput<String>('cloudArmorTier');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    project = registerOutput<String>('project');
   }
 }

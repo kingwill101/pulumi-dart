@@ -8,20 +8,17 @@ class DomainDevicesTpmBackendPassthroughDevice {
 
   /// Creates a new [DomainDevicesTpmBackendPassthroughDevice].
   /// [path] Specifies the path to the TPM device that is being passed through to the guest.
-  DomainDevicesTpmBackendPassthroughDevice({
-    required this.path,
-  });
+  DomainDevicesTpmBackendPassthroughDevice({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory DomainDevicesTpmBackendPassthroughDevice.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesTpmBackendPassthroughDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesTpmBackendPassthroughDevice(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

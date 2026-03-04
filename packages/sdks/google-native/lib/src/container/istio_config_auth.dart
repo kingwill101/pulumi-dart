@@ -3,16 +3,15 @@ enum IstioConfigAuth {
   authNone("AUTH_NONE"),
   authMutualTls("AUTH_MUTUAL_TLS");
 
-  const IstioConfigAuth(this.value);
-  final String value;
+  const IstioConfigAuth(this.wireValue);
+  final String wireValue;
 
   static IstioConfigAuth fromValue(String value) {
     for (final item in IstioConfigAuth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IstioConfigAuth value: $value');
   }
 }
-

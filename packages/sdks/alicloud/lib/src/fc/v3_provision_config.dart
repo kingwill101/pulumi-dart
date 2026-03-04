@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v3_provision_config_args.dart';
-import 'v3_provision_config_scheduled_action.dart';
 import 'v3_provision_config_state.dart';
-import 'v3_provision_config_target_tracking_policy.dart';
 
 /// Provides a FCV3 Provision Config resource.
 ///
@@ -10,7 +8,7 @@ import 'v3_provision_config_target_tracking_policy.dart';
 ///
 /// For information about FCV3 Provision Config and how to use it, see [What is Provision Config](https://www.alibabacloud.com/help/en/functioncompute/fc-3-0/developer-reference/api-fc-2023-03-30-putprovisionconfig).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -788,24 +786,33 @@ import 'v3_provision_config_target_tracking_policy.dart';
 class V3ProvisionConfig extends pulumi.CustomResource {
   /// Whether the CPU is always allocated. The default value is true.
   late final pulumi.Output<bool?> alwaysAllocateCpu;
+
   /// Whether to always assign GPU to function instance
   late final pulumi.Output<bool?> alwaysAllocateGpu;
+
   /// (Available since v1.234.0) Number of actual resources
   late final pulumi.Output<int> current;
+
   /// (Available since v1.234.0) Error message when a Reserved Instance creation fails
   late final pulumi.Output<String> currentError;
+
   /// (Available since v1.234.0) Resource Description of the function
   late final pulumi.Output<String> functionArn;
+
   /// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
   late final pulumi.Output<String> functionName;
+
   /// The function alias or LATEST.
   late final pulumi.Output<String?> qualifier;
+
   /// Timing policy configuration See `scheduled_actions` below.
-  late final pulumi.Output<List<V3ProvisionConfigScheduledAction>?> scheduledActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scheduledActions;
+
   /// Number of reserved target resources. The value range is [0,10000].
   late final pulumi.Output<int?> target;
+
   /// Metric tracking scaling policy configuration See `target_tracking_policies` below.
-  late final pulumi.Output<List<V3ProvisionConfigTargetTrackingPolicy>?> targetTrackingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> targetTrackingPolicies;
 
   /// Creates a new [V3ProvisionConfig].
   /// [name] The Pulumi resource name.
@@ -816,21 +823,25 @@ class V3ProvisionConfig extends pulumi.CustomResource {
     V3ProvisionConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alwaysAllocateCpu = registerOutput<bool?>('alwaysAllocateCpu');
-    this.alwaysAllocateGpu = registerOutput<bool?>('alwaysAllocateGpu');
-    this.current = registerOutput<int>('current');
-    this.currentError = registerOutput<String>('currentError');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.scheduledActions = registerOutput<List<V3ProvisionConfigScheduledAction>?>('scheduledActions');
-    this.target = registerOutput<int?>('target');
-    this.targetTrackingPolicies = registerOutput<List<V3ProvisionConfigTargetTrackingPolicy>?>('targetTrackingPolicies');
+         'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alwaysAllocateCpu = registerOutput<bool?>('alwaysAllocateCpu');
+    alwaysAllocateGpu = registerOutput<bool?>('alwaysAllocateGpu');
+    current = registerOutput<int>('current');
+    currentError = registerOutput<String>('currentError');
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    qualifier = registerOutput<String?>('qualifier');
+    scheduledActions = registerOutput<List<Map<String, dynamic>>?>(
+      'scheduledActions',
+    );
+    target = registerOutput<int?>('target');
+    targetTrackingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'targetTrackingPolicies',
+    );
   }
 
   /// Gets an existing [V3ProvisionConfig] resource's state with the given [name] and [id].
@@ -851,20 +862,24 @@ class V3ProvisionConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alwaysAllocateCpu = registerOutput<bool?>('alwaysAllocateCpu');
-    this.alwaysAllocateGpu = registerOutput<bool?>('alwaysAllocateGpu');
-    this.current = registerOutput<int>('current');
-    this.currentError = registerOutput<String>('currentError');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.scheduledActions = registerOutput<List<V3ProvisionConfigScheduledAction>?>('scheduledActions');
-    this.target = registerOutput<int?>('target');
-    this.targetTrackingPolicies = registerOutput<List<V3ProvisionConfigTargetTrackingPolicy>?>('targetTrackingPolicies');
+         'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alwaysAllocateCpu = registerOutput<bool?>('alwaysAllocateCpu');
+    alwaysAllocateGpu = registerOutput<bool?>('alwaysAllocateGpu');
+    current = registerOutput<int>('current');
+    currentError = registerOutput<String>('currentError');
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    qualifier = registerOutput<String?>('qualifier');
+    scheduledActions = registerOutput<List<Map<String, dynamic>>?>(
+      'scheduledActions',
+    );
+    target = registerOutput<int?>('target');
+    targetTrackingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'targetTrackingPolicies',
+    );
   }
 }

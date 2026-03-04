@@ -147,12 +147,16 @@ import 'system_data_response.dart';
 class FavoriteProcess extends pulumi.CustomResource {
   /// The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.
   late final pulumi.Output<String> actualProcessName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -165,15 +169,15 @@ class FavoriteProcess extends pulumi.CustomResource {
     FavoriteProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:testbase:FavoriteProcess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actualProcessName = registerOutput<String>('actualProcessName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:testbase:FavoriteProcess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actualProcessName = registerOutput<String>('actualProcessName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

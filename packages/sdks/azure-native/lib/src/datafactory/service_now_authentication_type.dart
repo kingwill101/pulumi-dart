@@ -3,16 +3,15 @@ enum ServiceNowAuthenticationType {
   valueBasic("Basic"),
   valueOAuth2("OAuth2");
 
-  const ServiceNowAuthenticationType(this.value);
-  final String value;
+  const ServiceNowAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static ServiceNowAuthenticationType fromValue(String value) {
     for (final item in ServiceNowAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceNowAuthenticationType value: $value');
   }
 }
-

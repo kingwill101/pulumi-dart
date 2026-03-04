@@ -294,7 +294,7 @@ import 'lication_load_balancer_security_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceNetworking` - 2025-01-01
@@ -309,12 +309,16 @@ import 'lication_load_balancer_security_policy_state.dart';
 class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
   /// The ID of the Application Load Balancer. Changing this forces a new Application Gateway for Containers Security Policy to be created.
   late final pulumi.Output<String> applicationLoadBalancerId;
+
   /// The Azure Region where the Application Load Balancer Security Policy should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Application Load Balancer Security Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Application Load Balancer Security Policy.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Web Application Firewall Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
   late final pulumi.Output<String> webApplicationFirewallPolicyId;
 
@@ -327,16 +331,20 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
     LicationLoadBalancerSecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
-    this.location = registerOutput<String>('location');
+         'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationLoadBalancerId = registerOutput<String>(
+      'applicationLoadBalancerId',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.webApplicationFirewallPolicyId = registerOutput<String>('webApplicationFirewallPolicyId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    webApplicationFirewallPolicyId = registerOutput<String>(
+      'webApplicationFirewallPolicyId',
+    );
   }
 
   /// Gets an existing [LicationLoadBalancerSecurityPolicy] resource's state with the given [name] and [id].
@@ -357,15 +365,19 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
-    this.location = registerOutput<String>('location');
+         'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationLoadBalancerId = registerOutput<String>(
+      'applicationLoadBalancerId',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.webApplicationFirewallPolicyId = registerOutput<String>('webApplicationFirewallPolicyId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    webApplicationFirewallPolicyId = registerOutput<String>(
+      'webApplicationFirewallPolicyId',
+    );
   }
 }

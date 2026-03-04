@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryCertificateBasedAuthProperties {
   /// The Amazon Resource Name (ARN) of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
   final pulumi.Input<String>? certificateAuthorityArn;
+
   /// Status of certificate-based authentication. Default `DISABLED`.
   final pulumi.Input<String>? status;
 
@@ -23,11 +24,20 @@ class DirectoryCertificateBasedAuthProperties {
     };
   }
 
-  factory DirectoryCertificateBasedAuthProperties.fromMap(Map<String, dynamic> map) {
+  factory DirectoryCertificateBasedAuthProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DirectoryCertificateBasedAuthProperties(
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      certificateAuthorityArn: (() {
+        final guardedValue = map['certificateAuthorityArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

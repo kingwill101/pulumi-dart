@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetAzureSqlTableSchemaColumn {
   /// The description of the column.
   final pulumi.Input<String>? description;
+
   /// The name of the column.
   final pulumi.Input<String> name;
+
   /// Type of the column. Valid values are `Byte`, `Byte[]`, `Boolean`, `Date`, `DateTime`,`DateTimeOffset`, `Decimal`, `Double`, `Guid`, `Int16`, `Int32`, `Int64`, `Single`, `String`, `TimeSpan`. Please note these values are case sensitive.
   final pulumi.Input<String>? type;
 
@@ -30,10 +32,17 @@ class DatasetAzureSqlTableSchemaColumn {
 
   factory DatasetAzureSqlTableSchemaColumn.fromMap(Map<String, dynamic> map) {
     return DatasetAzureSqlTableSchemaColumn(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

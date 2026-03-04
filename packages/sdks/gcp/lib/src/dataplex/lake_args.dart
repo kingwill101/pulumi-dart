@@ -10,23 +10,29 @@ import 'lake_metastore.dart';
 class LakeArgs {
   /// Optional. Description of the lake.
   final pulumi.Input<String>? description;
+
   /// Optional. User friendly display name.
   final pulumi.Input<String>? displayName;
+
   /// Optional. User-defined labels for the lake.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location for the resource
   final pulumi.Input<String> location;
+
   /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
   final pulumi.Input<LakeMetastore>? metastore;
+
   /// The name of the lake.
   ///
   ///
   ///
   /// - - -
   final pulumi.Input<String>? name;
+
   /// The project for the resource
   final pulumi.Input<String>? project;
 
@@ -54,7 +60,11 @@ class LakeArgs {
       'displayName': ?displayName,
       'labels': ?labels,
       'location': location,
-      'metastore': ?pulumi.Input.mapOptionalInputValue<LakeMetastore, Map<String, dynamic>>(metastore, (value) => value.toMap()),
+      'metastore':
+          ?pulumi.Input.mapOptionalInputValue<
+            LakeMetastore,
+            Map<String, dynamic>
+          >(metastore, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
     };
@@ -62,14 +72,41 @@ class LakeArgs {
 
   factory LakeArgs.fromMap(Map<String, dynamic> map) {
     return LakeArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      metastore: map['metastore'] == null ? null : (LakeMetastore.fromMap((map['metastore']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      metastore: (() {
+        final guardedValue = map['metastore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LakeMetastore.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

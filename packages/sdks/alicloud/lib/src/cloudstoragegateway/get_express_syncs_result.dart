@@ -36,7 +36,11 @@ class GetExpressSyncsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'syncs': pulumi.Input.encodeList<GetExpressSyncsSync, Map<String, dynamic>>(syncs, (value) => value.toMap()),
+      'syncs':
+          pulumi.Input.encodeList<GetExpressSyncsSync, Map<String, dynamic>>(
+            syncs,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -44,11 +48,22 @@ class GetExpressSyncsResult {
     return GetExpressSyncsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      syncs: pulumi.Input.decodeList<GetExpressSyncsSync>(map['syncs'], (value) => GetExpressSyncsSync.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      syncs: pulumi.Input.decodeList<GetExpressSyncsSync>(
+        map['syncs']!,
+        (value) =>
+            GetExpressSyncsSync.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

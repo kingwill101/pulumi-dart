@@ -6,11 +6,15 @@ import 'certificate_key_vault_properties.dart';
 /// Configuration properties for apps environment custom domain
 class CustomDomainConfiguration {
   /// Certificate stored in Azure Key Vault.
-  final pulumi.Input<CertificateKeyVaultProperties>? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultProperties>?
+  certificateKeyVaultProperties;
+
   /// Certificate password
   final pulumi.Input<String>? certificatePassword;
+
   /// PFX or PEM blob
   final pulumi.Input<String>? certificateValue;
+
   /// Dns suffix for the environment domain
   final pulumi.Input<String>? dnsSuffix;
 
@@ -28,7 +32,11 @@ class CustomDomainConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateKeyVaultProperties': ?pulumi.Input.mapOptionalInputValue<CertificateKeyVaultProperties, Map<String, dynamic>>(certificateKeyVaultProperties, (value) => value.toMap()),
+      'certificateKeyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateKeyVaultProperties,
+            Map<String, dynamic>
+          >(certificateKeyVaultProperties, (value) => value.toMap()),
       'certificatePassword': ?certificatePassword,
       'certificateValue': ?certificateValue,
       'dnsSuffix': ?dnsSuffix,
@@ -37,11 +45,30 @@ class CustomDomainConfiguration {
 
   factory CustomDomainConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomDomainConfiguration(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultProperties.fromMap((map['certificateKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
-      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue']! as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
+      certificateKeyVaultProperties: (() {
+        final guardedValue = map['certificateKeyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateKeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      certificatePassword: (() {
+        final guardedValue = map['certificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateValue: (() {
+        final guardedValue = map['certificateValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSuffix: (() {
+        final guardedValue = map['dnsSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

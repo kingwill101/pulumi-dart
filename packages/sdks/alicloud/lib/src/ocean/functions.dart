@@ -4,7 +4,7 @@ import 'get_base_instances_result.dart';
 
 /// This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.203.0+.
+/// &gt; **NOTE:** Available in v1.203.0+.
 ///
 /// ## Example Usage
 ///

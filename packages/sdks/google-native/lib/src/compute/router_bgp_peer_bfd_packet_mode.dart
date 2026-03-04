@@ -3,16 +3,15 @@ enum RouterBgpPeerBfdPacketMode {
   controlAndEcho("CONTROL_AND_ECHO"),
   controlOnly("CONTROL_ONLY");
 
-  const RouterBgpPeerBfdPacketMode(this.value);
-  final String value;
+  const RouterBgpPeerBfdPacketMode(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerBfdPacketMode fromValue(String value) {
     for (final item in RouterBgpPeerBfdPacketMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpPeerBfdPacketMode value: $value');
   }
 }
-

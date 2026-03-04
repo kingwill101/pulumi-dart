@@ -4,16 +4,20 @@ enum HiveMetastoreConfigEndpointProtocolMetastoreV1alpha {
   thrift("THRIFT"),
   grpc("GRPC");
 
-  const HiveMetastoreConfigEndpointProtocolMetastoreV1alpha(this.value);
-  final String value;
+  const HiveMetastoreConfigEndpointProtocolMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
-  static HiveMetastoreConfigEndpointProtocolMetastoreV1alpha fromValue(String value) {
-    for (final item in HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.values) {
-      if (item.value == value) {
+  static HiveMetastoreConfigEndpointProtocolMetastoreV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HiveMetastoreConfigEndpointProtocolMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown HiveMetastoreConfigEndpointProtocolMetastoreV1alpha value: $value',
+    );
   }
 }
-

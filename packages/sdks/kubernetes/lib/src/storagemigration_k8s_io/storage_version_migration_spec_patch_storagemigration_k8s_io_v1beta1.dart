@@ -10,20 +10,31 @@ class StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1 {
 
   /// Creates a new [StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1].
   /// [resource] The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.
-  StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1({
-    this.resource,
-  });
+  StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1({this.resource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resource': ?pulumi.Input.mapOptionalInputValue<GroupResourcePatch, Map<String, dynamic>>(resource, (value) => value.toMap()),
+      'resource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupResourcePatch,
+            Map<String, dynamic>
+          >(resource, (value) => value.toMap()),
     };
   }
 
-  factory StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1(
-      resource: map['resource'] == null ? null : (GroupResourcePatch.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupResourcePatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

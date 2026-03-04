@@ -3,16 +3,15 @@ enum VpnNatRuleType {
   valueStatic("Static"),
   valueDynamic("Dynamic");
 
-  const VpnNatRuleType(this.value);
-  final String value;
+  const VpnNatRuleType(this.wireValue);
+  final String wireValue;
 
   static VpnNatRuleType fromValue(String value) {
     for (final item in VpnNatRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnNatRuleType value: $value');
   }
 }
-

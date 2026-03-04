@@ -1,15 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_args.dart';
-import 'listener_certificate.dart';
 import 'listener_forwarded_for_config.dart';
-import 'listener_port_range.dart';
 import 'listener_state.dart';
 
 /// Provides a Global Accelerator (GA) Listener resource.
 ///
 /// For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createlistener).
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -275,43 +273,57 @@ import 'listener_state.dart';
 class Listener extends pulumi.CustomResource {
   /// The accelerator id.
   late final pulumi.Output<String> acceleratorId;
+
   /// The certificates of the listener. See `certificates` below.
-  /// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
-  late final pulumi.Output<List<ListenerCertificate>?> certificates;
+  /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+
   /// The clientAffinity of the listener. Default value: `NONE`. Valid values:
   /// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
   /// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
   late final pulumi.Output<String?> clientAffinity;
+
   /// The description of the listener.
   late final pulumi.Output<String?> description;
+
   /// The XForward headers. See `forwarded_for_config` below.
   late final pulumi.Output<ListenerForwardedForConfig?> forwardedForConfig;
+
   /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-  /// > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+  /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
   late final pulumi.Output<String> httpVersion;
+
   /// The timeout period of idle connections. Unit: seconds. Valid values:
   /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
   /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
   /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
   late final pulumi.Output<int> idleTimeout;
+
   /// The routing type of the listener. Default Value: `Standard`. Valid values:
   /// - `Standard`: intelligent routing.
   /// - `CustomRouting`: custom routing.
   late final pulumi.Output<String?> listenerType;
+
   /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
   late final pulumi.Output<String> name;
+
   /// The portRanges of the listener. See `port_ranges` below.
-  /// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
-  late final pulumi.Output<List<ListenerPortRange>> portRanges;
+  /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+  late final pulumi.Output<List<Map<String, dynamic>>> portRanges;
+
   /// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
   late final pulumi.Output<String?> protocol;
+
   /// The proxy protocol of the listener. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> proxyProtocol;
+
   /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-  /// > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+  /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
   late final pulumi.Output<int> requestTimeout;
+
   /// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
   late final pulumi.Output<String> securityPolicyId;
+
   /// The status of the listener.
   late final pulumi.Output<String> status;
 
@@ -324,26 +336,28 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.certificates = registerOutput<List<ListenerCertificate>?>('certificates');
-    this.clientAffinity = registerOutput<String?>('clientAffinity');
-    this.description = registerOutput<String?>('description');
-    this.forwardedForConfig = registerOutput<ListenerForwardedForConfig?>('forwardedForConfig');
-    this.httpVersion = registerOutput<String>('httpVersion');
-    this.idleTimeout = registerOutput<int>('idleTimeout');
-    this.listenerType = registerOutput<String?>('listenerType');
+         'alicloud:ga/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    clientAffinity = registerOutput<String?>('clientAffinity');
+    description = registerOutput<String?>('description');
+    forwardedForConfig = registerOutput<ListenerForwardedForConfig?>(
+      'forwardedForConfig',
+    );
+    httpVersion = registerOutput<String>('httpVersion');
+    idleTimeout = registerOutput<int>('idleTimeout');
+    listenerType = registerOutput<String?>('listenerType');
     this.name = registerOutput<String>('name');
-    this.portRanges = registerOutput<List<ListenerPortRange>>('portRanges');
-    this.protocol = registerOutput<String?>('protocol');
-    this.proxyProtocol = registerOutput<bool?>('proxyProtocol');
-    this.requestTimeout = registerOutput<int>('requestTimeout');
-    this.securityPolicyId = registerOutput<String>('securityPolicyId');
-    this.status = registerOutput<String>('status');
+    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
+    protocol = registerOutput<String?>('protocol');
+    proxyProtocol = registerOutput<bool?>('proxyProtocol');
+    requestTimeout = registerOutput<int>('requestTimeout');
+    securityPolicyId = registerOutput<String>('securityPolicyId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -364,25 +378,27 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.certificates = registerOutput<List<ListenerCertificate>?>('certificates');
-    this.clientAffinity = registerOutput<String?>('clientAffinity');
-    this.description = registerOutput<String?>('description');
-    this.forwardedForConfig = registerOutput<ListenerForwardedForConfig?>('forwardedForConfig');
-    this.httpVersion = registerOutput<String>('httpVersion');
-    this.idleTimeout = registerOutput<int>('idleTimeout');
-    this.listenerType = registerOutput<String?>('listenerType');
+         'alicloud:ga/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    clientAffinity = registerOutput<String?>('clientAffinity');
+    description = registerOutput<String?>('description');
+    forwardedForConfig = registerOutput<ListenerForwardedForConfig?>(
+      'forwardedForConfig',
+    );
+    httpVersion = registerOutput<String>('httpVersion');
+    idleTimeout = registerOutput<int>('idleTimeout');
+    listenerType = registerOutput<String?>('listenerType');
     this.name = registerOutput<String>('name');
-    this.portRanges = registerOutput<List<ListenerPortRange>>('portRanges');
-    this.protocol = registerOutput<String?>('protocol');
-    this.proxyProtocol = registerOutput<bool?>('proxyProtocol');
-    this.requestTimeout = registerOutput<int>('requestTimeout');
-    this.securityPolicyId = registerOutput<String>('securityPolicyId');
-    this.status = registerOutput<String>('status');
+    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
+    protocol = registerOutput<String?>('protocol');
+    proxyProtocol = registerOutput<bool?>('proxyProtocol');
+    requestTimeout = registerOutput<int>('requestTimeout');
+    securityPolicyId = registerOutput<String>('securityPolicyId');
+    status = registerOutput<String>('status');
   }
 }

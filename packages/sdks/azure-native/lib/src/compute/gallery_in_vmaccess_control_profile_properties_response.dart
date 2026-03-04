@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryInVMAccessControlProfilePropertiesResponse {
   /// This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
   final pulumi.Input<String> applicableHostEndpoint;
+
   /// The description of this gallery inVMAccessControlProfile resources. This property is updatable.
   final pulumi.Input<String>? description;
+
   /// This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
   final pulumi.Input<String> osType;
+
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
 
@@ -34,13 +37,22 @@ class GalleryInVMAccessControlProfilePropertiesResponse {
     };
   }
 
-  factory GalleryInVMAccessControlProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GalleryInVMAccessControlProfilePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryInVMAccessControlProfilePropertiesResponse(
-      applicableHostEndpoint: (map['applicableHostEndpoint'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      osType: (map['osType'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      applicableHostEndpoint: pulumi.Input.fromValue(
+        map['applicableHostEndpoint'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

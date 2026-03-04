@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateObjectLocalRulestackArgs {
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
+
   /// certificate name
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetCertificateObjectLocalRulestackArgs {
     };
   }
 
-  factory GetCertificateObjectLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateObjectLocalRulestackArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateObjectLocalRulestackArgs(
-      localRulestackName: (map['localRulestackName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      localRulestackName: pulumi.Input.fromValue(
+        map['localRulestackName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

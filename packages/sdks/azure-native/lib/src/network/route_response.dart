@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteResponse {
   /// The destination CIDR to which the route applies.
   final pulumi.Input<String>? addressPrefix;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
   final pulumi.Input<bool> hasBgpOverride;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
   final pulumi.Input<String>? nextHopIpAddress;
+
   /// The type of Azure hop the packet should be sent to.
   final pulumi.Input<String> nextHopType;
+
   /// The provisioning state of the route resource.
   final pulumi.Input<String> provisioningState;
+
   /// The type of the resource.
   final pulumi.Input<String>? type;
 
@@ -61,16 +69,37 @@ class RouteResponse {
 
   factory RouteResponse.fromMap(Map<String, dynamic> map) {
     return RouteResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
-      etag: (map['etag'] as String).input(),
-      hasBgpOverride: (map['hasBgpOverride'] as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
-      nextHopType: (map['nextHopType'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      addressPrefix: (() {
+        final guardedValue = map['addressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      hasBgpOverride: pulumi.Input.fromValue(map['hasBgpOverride'] as bool),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHopIpAddress: (() {
+        final guardedValue = map['nextHopIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

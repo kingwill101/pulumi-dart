@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_network_address_args.dart';
-import 'public_network_address_replica_set.dart';
 import 'public_network_address_state.dart';
 
 /// Provides an Alicloud MongoDB public network address resource.
 ///
 /// For information about MongoDB public network address and how to use it, see [Allocate Public Network Address for MongoDB](https://www.alibabacloud.com/help/en/mongodb/getting-started/apply-for-a-public-endpoint-for-an-apsaradb-for-mongodb-instance-optional).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -271,8 +270,9 @@ import 'public_network_address_state.dart';
 class PublicNetworkAddress extends pulumi.CustomResource {
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Replica set instance information.
-  late final pulumi.Output<List<PublicNetworkAddressReplicaSet>> replicaSets;
+  late final pulumi.Output<List<Map<String, dynamic>>> replicaSets;
 
   /// Creates a new [PublicNetworkAddress].
   /// [name] The Pulumi resource name.
@@ -283,13 +283,13 @@ class PublicNetworkAddress extends pulumi.CustomResource {
     PublicNetworkAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.replicaSets = registerOutput<List<PublicNetworkAddressReplicaSet>>('replicaSets');
+         'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    replicaSets = registerOutput<List<Map<String, dynamic>>>('replicaSets');
   }
 
   /// Gets an existing [PublicNetworkAddress] resource's state with the given [name] and [id].
@@ -310,12 +310,12 @@ class PublicNetworkAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.replicaSets = registerOutput<List<PublicNetworkAddressReplicaSet>>('replicaSets');
+         'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    replicaSets = registerOutput<List<Map<String, dynamic>>>('replicaSets');
   }
 }

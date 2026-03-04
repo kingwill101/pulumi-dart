@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppTemplateInitContainerEnv {
   /// The name of the Container App.
   final pulumi.Input<String> name;
+
   /// The name of the secret that contains the value for this environment variable.
   final pulumi.Input<String> secretName;
+
   /// The HTTP Header value.
   final pulumi.Input<String> value;
 
@@ -30,10 +32,9 @@ class GetAppTemplateInitContainerEnv {
 
   factory GetAppTemplateInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateInitContainerEnv(
-      name: (map['name'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SourceIamPolicy resources.
 class SourceIamPolicyState {
   final pulumi.Input<String>? etag;
+
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String>? organization;
@@ -34,11 +35,26 @@ class SourceIamPolicyState {
 
   factory SourceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyData: (() {
+        final guardedValue = map['policyData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

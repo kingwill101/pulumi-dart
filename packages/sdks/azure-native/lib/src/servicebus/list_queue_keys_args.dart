@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListQueueKeysArgs {
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
+
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// The queue name.
   final pulumi.Input<String> queueName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class ListQueueKeysArgs {
 
   factory ListQueueKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListQueueKeysArgs(
-      authorizationRuleName: (map['authorizationRuleName'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      queueName: (map['queueName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationRuleName: pulumi.Input.fromValue(
+        map['authorizationRuleName'] as String,
+      ),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      queueName: pulumi.Input.fromValue(map['queueName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainLogPublishingOption {
   /// The CloudWatch Log Group where the logs are published.
   final pulumi.Input<String> cloudwatchLogGroupArn;
+
   /// Whether node to node encryption is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The type of Elasticsearch log being published.
   final pulumi.Input<String> logType;
 
@@ -30,10 +32,11 @@ class GetDomainLogPublishingOption {
 
   factory GetDomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return GetDomainLogPublishingOption(
-      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      logType: (map['logType'] as String).input(),
+      cloudwatchLogGroupArn: pulumi.Input.fromValue(
+        map['cloudwatchLogGroupArn'] as String,
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

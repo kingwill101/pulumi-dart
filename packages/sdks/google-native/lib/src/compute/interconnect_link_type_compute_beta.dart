@@ -3,16 +3,17 @@ enum InterconnectLinkTypeComputeBeta {
   linkTypeEthernet100gLr("LINK_TYPE_ETHERNET_100G_LR"),
   linkTypeEthernet10gLr("LINK_TYPE_ETHERNET_10G_LR");
 
-  const InterconnectLinkTypeComputeBeta(this.value);
-  final String value;
+  const InterconnectLinkTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static InterconnectLinkTypeComputeBeta fromValue(String value) {
     for (final item in InterconnectLinkTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectLinkTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectLinkTypeComputeBeta value: $value',
+    );
   }
 }
-

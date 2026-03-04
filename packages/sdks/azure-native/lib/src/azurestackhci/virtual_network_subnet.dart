@@ -154,14 +154,19 @@ import 'virtual_network_subnet_properties_response.dart';
 class VirtualNetworkSubnet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource-specific properties for this resource.
   late final pulumi.Output<VirtualNetworkSubnetPropertiesResponse> properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -174,16 +179,20 @@ class VirtualNetworkSubnet extends pulumi.CustomResource {
     VirtualNetworkSubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:VirtualNetworkSubnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
+         'azure-native:azurestackhci:VirtualNetworkSubnet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<VirtualNetworkSubnetPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<VirtualNetworkSubnetPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

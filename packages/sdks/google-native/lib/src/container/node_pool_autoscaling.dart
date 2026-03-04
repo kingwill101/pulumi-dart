@@ -7,16 +7,22 @@ import 'node_pool_autoscaling_location_policy.dart';
 class NodePoolAutoscaling {
   /// Can this node pool be deleted automatically.
   final pulumi.Input<bool>? autoprovisioned;
+
   /// Is autoscaling enabled for this node pool.
   final pulumi.Input<bool>? enabled;
+
   /// Location policy used when scaling up a nodepool.
   final pulumi.Input<NodePoolAutoscalingLocationPolicy>? locationPolicy;
-  /// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+
+  /// Maximum number of nodes for one location in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
   final pulumi.Input<int>? maxNodeCount;
-  /// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
+
+  /// Minimum number of nodes for one location in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
   final pulumi.Input<int>? minNodeCount;
+
   /// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
   final pulumi.Input<int>? totalMaxNodeCount;
+
   /// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
   final pulumi.Input<int>? totalMinNodeCount;
 
@@ -24,8 +30,8 @@ class NodePoolAutoscaling {
   /// [autoprovisioned] Can this node pool be deleted automatically.
   /// [enabled] Is autoscaling enabled for this node pool.
   /// [locationPolicy] Location policy used when scaling up a nodepool.
-  /// [maxNodeCount] Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
-  /// [minNodeCount] Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
+  /// [maxNodeCount] Maximum number of nodes for one location in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
+  /// [minNodeCount] Minimum number of nodes for one location in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
   /// [totalMaxNodeCount] Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
   /// [totalMinNodeCount] Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
   NodePoolAutoscaling({
@@ -42,7 +48,11 @@ class NodePoolAutoscaling {
     return <String, dynamic>{
       'autoprovisioned': ?autoprovisioned,
       'enabled': ?enabled,
-      'locationPolicy': ?pulumi.Input.mapOptionalInputValue<NodePoolAutoscalingLocationPolicy, String>(locationPolicy, (value) => value.value),
+      'locationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolAutoscalingLocationPolicy,
+            String
+          >(locationPolicy, (value) => value.wireValue),
       'maxNodeCount': ?maxNodeCount,
       'minNodeCount': ?minNodeCount,
       'totalMaxNodeCount': ?totalMaxNodeCount,
@@ -52,14 +62,43 @@ class NodePoolAutoscaling {
 
   factory NodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoscaling(
-      autoprovisioned: map['autoprovisioned'] == null ? null : (map['autoprovisioned']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      locationPolicy: map['locationPolicy'] == null ? null : (NodePoolAutoscalingLocationPolicy.fromValue(map['locationPolicy']! as String)).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
-      totalMaxNodeCount: map['totalMaxNodeCount'] == null ? null : (map['totalMaxNodeCount']! as int).input(),
-      totalMinNodeCount: map['totalMinNodeCount'] == null ? null : (map['totalMinNodeCount']! as int).input(),
+      autoprovisioned: (() {
+        final guardedValue = map['autoprovisioned'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      locationPolicy: (() {
+        final guardedValue = map['locationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolAutoscalingLocationPolicy.fromValue(guardedValue as String),
+        );
+      })(),
+      maxNodeCount: (() {
+        final guardedValue = map['maxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minNodeCount: (() {
+        final guardedValue = map['minNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalMaxNodeCount: (() {
+        final guardedValue = map['totalMaxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalMinNodeCount: (() {
+        final guardedValue = map['totalMinNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

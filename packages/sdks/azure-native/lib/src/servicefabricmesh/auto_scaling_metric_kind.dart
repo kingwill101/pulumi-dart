@@ -2,16 +2,15 @@
 enum AutoScalingMetricKind {
   valueResource("Resource");
 
-  const AutoScalingMetricKind(this.value);
-  final String value;
+  const AutoScalingMetricKind(this.wireValue);
+  final String wireValue;
 
   static AutoScalingMetricKind fromValue(String value) {
     for (final item in AutoScalingMetricKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoScalingMetricKind value: $value');
   }
 }
-

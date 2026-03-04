@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterExampleContract {
   /// Long description for the example
   final pulumi.Input<String>? description;
+
   /// A URL that points to the literal example
   final pulumi.Input<String>? externalValue;
+
   /// Short description for the example
   final pulumi.Input<String>? summary;
+
   /// Example value. May be a primitive value, or an object.
   final pulumi.Input<dynamic>? value;
 
@@ -36,11 +39,26 @@ class ParameterExampleContract {
 
   factory ParameterExampleContract.fromMap(Map<String, dynamic> map) {
     return ParameterExampleContract(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      externalValue: map['externalValue'] == null ? null : (map['externalValue']! as String).input(),
-      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalValue: (() {
+        final guardedValue = map['externalValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

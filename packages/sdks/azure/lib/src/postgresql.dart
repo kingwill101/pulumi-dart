@@ -1,5 +1,3 @@
-library module_postgresql;
-
 export 'postgresql/active_directory_administrator.dart';
 export 'postgresql/active_directory_administrator_args.dart';
 export 'postgresql/active_directory_administrator_state.dart';

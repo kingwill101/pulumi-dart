@@ -13,9 +13,9 @@ import 'gateway_iam_binding_state.dart';
 ///
 /// * `gcp.apigateway.GatewayIamPolicy`: Retrieves the IAM policy for the gateway
 ///
-/// > **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 /// ## gcp.apigateway.GatewayIamPolicy
@@ -434,9 +434,9 @@ import 'gateway_iam_binding_state.dart';
 ///
 /// * `gcp.apigateway.GatewayIamPolicy`: Retrieves the IAM policy for the gateway
 ///
-/// > **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 /// ## gcp.apigateway.GatewayIamPolicy
@@ -872,15 +872,18 @@ import 'gateway_iam_binding_state.dart';
 /// $ pulumi import gcp:apigateway/gatewayIamBinding:GatewayIamBinding editor projects/{{project}}/locations/{{region}}/gateways/{{gateway}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class GatewayIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<GatewayIamBindingCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> gateway;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -894,14 +897,17 @@ class GatewayIamBinding extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<List<String>> members;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the gateway for the API.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The role that should be applied. Only one
   /// `gcp.apigateway.GatewayIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -916,18 +922,18 @@ class GatewayIamBinding extends pulumi.CustomResource {
     GatewayIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<GatewayIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.gateway = registerOutput<String>('gateway');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+         'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<GatewayIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    gateway = registerOutput<String>('gateway');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [GatewayIamBinding] resource's state with the given [name] and [id].
@@ -948,17 +954,17 @@ class GatewayIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<GatewayIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.gateway = registerOutput<String>('gateway');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+         'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<GatewayIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    gateway = registerOutput<String>('gateway');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 }

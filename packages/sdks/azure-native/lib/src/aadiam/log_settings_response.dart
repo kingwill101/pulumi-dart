@@ -7,8 +7,10 @@ import 'retention_policy_response.dart';
 class LogSettingsResponse {
   /// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
   final pulumi.Input<String>? category;
+
   /// A value indicating whether this log is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The retention policy for this log.
   final pulumi.Input<RetentionPolicyResponse>? retentionPolicy;
 
@@ -26,16 +28,31 @@ class LogSettingsResponse {
     return <String, dynamic>{
       'category': ?category,
       'enabled': enabled,
-      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<RetentionPolicyResponse, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionPolicyResponse,
+            Map<String, dynamic>
+          >(retentionPolicy, (value) => value.toMap()),
     };
   }
 
   factory LogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LogSettingsResponse(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      retentionPolicy: (() {
+        final guardedValue = map['retentionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetentionPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

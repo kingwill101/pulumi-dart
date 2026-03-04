@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListApplianceClusterUserCredentialArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Appliances name.
   final pulumi.Input<String> resourceName;
 
@@ -27,11 +28,14 @@ class ListApplianceClusterUserCredentialArgs {
     };
   }
 
-  factory ListApplianceClusterUserCredentialArgs.fromMap(Map<String, dynamic> map) {
+  factory ListApplianceClusterUserCredentialArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListApplianceClusterUserCredentialArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

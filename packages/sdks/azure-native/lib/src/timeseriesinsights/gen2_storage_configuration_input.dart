@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Gen2StorageConfigurationInput {
   /// The name of the storage account that will hold the environment's Gen2 data.
   final pulumi.Input<String> accountName;
+
   /// The value of the management key that grants the Time Series Insights service write access to the storage account. This property is not shown in environment responses.
   final pulumi.Input<String> managementKey;
 
@@ -26,9 +27,8 @@ class Gen2StorageConfigurationInput {
 
   factory Gen2StorageConfigurationInput.fromMap(Map<String, dynamic> map) {
     return Gen2StorageConfigurationInput(
-      accountName: (map['accountName'] as String).input(),
-      managementKey: (map['managementKey'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      managementKey: pulumi.Input.fromValue(map['managementKey'] as String),
     );
   }
 }
-

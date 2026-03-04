@@ -7,14 +7,19 @@ import 'tls_cert_method.dart';
 class ListenerPort {
   /// Reference to client authentication settings. Omit to disable authentication.
   final pulumi.Input<String>? authenticationRef;
+
   /// Reference to client authorization settings. Omit to disable authorization.
   final pulumi.Input<String>? authorizationRef;
+
   /// Kubernetes node port. Only relevant when this port is associated with a `NodePort` listener.
   final pulumi.Input<int>? nodePort;
+
   /// TCP port for accepting client connections.
   final pulumi.Input<int> port;
+
   /// Protocol to use for client connections.
   final pulumi.Input<String>? protocol;
+
   /// TLS server certificate settings for this port. Omit to disable TLS.
   final pulumi.Input<TlsCertMethod>? tls;
 
@@ -41,19 +46,44 @@ class ListenerPort {
       'nodePort': ?nodePort,
       'port': port,
       'protocol': ?protocol,
-      'tls': ?pulumi.Input.mapOptionalInputValue<TlsCertMethod, Map<String, dynamic>>(tls, (value) => value.toMap()),
+      'tls':
+          ?pulumi.Input.mapOptionalInputValue<
+            TlsCertMethod,
+            Map<String, dynamic>
+          >(tls, (value) => value.toMap()),
     };
   }
 
   factory ListenerPort.fromMap(Map<String, dynamic> map) {
     return ListenerPort(
-      authenticationRef: map['authenticationRef'] == null ? null : (map['authenticationRef']! as String).input(),
-      authorizationRef: map['authorizationRef'] == null ? null : (map['authorizationRef']! as String).input(),
-      nodePort: map['nodePort'] == null ? null : (map['nodePort']! as int).input(),
-      port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      tls: map['tls'] == null ? null : (TlsCertMethod.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
+      authenticationRef: (() {
+        final guardedValue = map['authenticationRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationRef: (() {
+        final guardedValue = map['authorizationRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodePort: (() {
+        final guardedValue = map['nodePort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls: (() {
+        final guardedValue = map['tls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TlsCertMethod.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

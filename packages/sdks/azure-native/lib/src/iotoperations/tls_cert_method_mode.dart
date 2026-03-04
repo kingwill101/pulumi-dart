@@ -3,16 +3,15 @@ enum TlsCertMethodMode {
   automatic("Automatic"),
   manual("Manual");
 
-  const TlsCertMethodMode(this.value);
-  final String value;
+  const TlsCertMethodMode(this.wireValue);
+  final String wireValue;
 
   static TlsCertMethodMode fromValue(String value) {
     for (final item in TlsCertMethodMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TlsCertMethodMode value: $value');
   }
 }
-

@@ -422,20 +422,28 @@ import 'sub_resource_response.dart';
 class HubVirtualNetworkConnection extends pulumi.CustomResource {
   /// Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
   late final pulumi.Output<bool?> allowHubToRemoteVnetTransit;
+
   /// Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
   late final pulumi.Output<bool?> allowRemoteVnetToUseHubVnetGateways;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Enable internet security.
   late final pulumi.Output<bool?> enableInternetSecurity;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the hub virtual network connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Reference to the remote virtual network.
   late final pulumi.Output<SubResourceResponse?> remoteVirtualNetwork;
+
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
 
@@ -448,19 +456,27 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
     HubVirtualNetworkConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:HubVirtualNetworkConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowHubToRemoteVnetTransit = registerOutput<bool?>('allowHubToRemoteVnetTransit');
-    this.allowRemoteVnetToUseHubVnetGateways = registerOutput<bool?>('allowRemoteVnetToUseHubVnetGateways');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:HubVirtualNetworkConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowHubToRemoteVnetTransit = registerOutput<bool?>(
+      'allowHubToRemoteVnetTransit',
+    );
+    allowRemoteVnetToUseHubVnetGateways = registerOutput<bool?>(
+      'allowRemoteVnetToUseHubVnetGateways',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork');
-    this.routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteVirtualNetwork = registerOutput<SubResourceResponse?>(
+      'remoteVirtualNetwork',
+    );
+    routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
+      'routingConfiguration',
+    );
   }
 }

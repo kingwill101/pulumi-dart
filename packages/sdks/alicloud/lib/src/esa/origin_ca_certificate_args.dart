@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginCaCertificateArgs {
   /// Certificate content.
   final pulumi.Input<String> certificate;
+
   /// The certificate name.
   final pulumi.Input<String>? name;
+
   /// Site Id
   final pulumi.Input<String> siteId;
 
@@ -34,10 +36,13 @@ class OriginCaCertificateArgs {
 
   factory OriginCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginCaCertificateArgs(
-      certificate: (map['certificate'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      siteId: (map['siteId'] as String).input(),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

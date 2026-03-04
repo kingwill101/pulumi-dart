@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkResource {
   /// The group ID of the resource.
   final pulumi.Input<String>? groupId;
+
   /// The ID of the private link resource.
   final pulumi.Input<String>? id;
+
   /// The name of the private link resource.
   final pulumi.Input<String>? name;
+
   /// The RequiredMembers of the resource
   final pulumi.Input<List<String>>? requiredMembers;
+
   /// The resource type.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,31 @@ class PrivateLinkResource {
 
   factory PrivateLinkResource.fromMap(Map<String, dynamic> map) {
     return PrivateLinkResource(
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      requiredMembers: map['requiredMembers'] == null ? null : ((map['requiredMembers']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requiredMembers: (() {
+        final guardedValue = map['requiredMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

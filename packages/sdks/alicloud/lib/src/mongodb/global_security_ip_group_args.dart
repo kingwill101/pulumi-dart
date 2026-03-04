@@ -9,9 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecurityIpGroupArgs {
   /// The name of the IP whitelist template.
   final pulumi.Input<String> globalIgName;
+
   /// The IP address in the whitelist template.
   ///
-  /// > **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
+  /// &gt; **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
   final pulumi.Input<String> globalSecurityIpList;
 
   /// Creates a new [GlobalSecurityIpGroupArgs].
@@ -31,9 +32,10 @@ class GlobalSecurityIpGroupArgs {
 
   factory GlobalSecurityIpGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupArgs(
-      globalIgName: (map['globalIgName'] as String).input(),
-      globalSecurityIpList: (map['globalSecurityIpList'] as String).input(),
+      globalIgName: pulumi.Input.fromValue(map['globalIgName'] as String),
+      globalSecurityIpList: pulumi.Input.fromValue(
+        map['globalSecurityIpList'] as String,
+      ),
     );
   }
 }
-

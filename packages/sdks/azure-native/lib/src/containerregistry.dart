@@ -1,5 +1,3 @@
-library module_containerregistry;
-
 export 'containerregistry/action.dart';
 export 'containerregistry/actions_required.dart';
 export 'containerregistry/activation_properties_response.dart';

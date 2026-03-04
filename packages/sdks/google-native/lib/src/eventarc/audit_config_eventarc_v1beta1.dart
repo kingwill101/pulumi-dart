@@ -7,29 +7,52 @@ import 'audit_log_config_eventarc_v1beta1.dart';
 class AuditConfigEventarcV1beta1 {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigEventarcV1beta1>>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String>? service;
 
   /// Creates a new [AuditConfigEventarcV1beta1].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigEventarcV1beta1({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigEventarcV1beta1({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<AuditLogConfigEventarcV1beta1>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigEventarcV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AuditLogConfigEventarcV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuditLogConfigEventarcV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'service': ?service,
     };
   }
 
   factory AuditConfigEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditConfigEventarcV1beta1(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigEventarcV1beta1>(map['auditLogConfigs']!, (value) => AuditLogConfigEventarcV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      auditLogConfigs: (() {
+        final guardedValue = map['auditLogConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AuditLogConfigEventarcV1beta1>(
+            guardedValue,
+            (value) => AuditLogConfigEventarcV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

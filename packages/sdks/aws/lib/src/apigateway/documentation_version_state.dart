@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentationVersionState {
   /// Description of the API documentation version.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated Rest API
   final pulumi.Input<String>? restApiId;
+
   /// Version identifier of the API documentation snapshot.
   final pulumi.Input<String>? version;
 
@@ -36,11 +39,26 @@ class DocumentationVersionState {
 
   factory DocumentationVersionState.fromMap(Map<String, dynamic> map) {
     return DocumentationVersionState(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApiId: map['restApiId'] == null ? null : ((map['restApiId'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApiId: (() {
+        final guardedValue = map['restApiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

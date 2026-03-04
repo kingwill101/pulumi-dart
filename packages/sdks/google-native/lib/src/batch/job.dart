@@ -1,40 +1,50 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_policy_response.dart';
 import 'job_args.dart';
-import 'job_notification_response.dart';
 import 'job_status_response.dart';
 import 'logs_policy_response.dart';
-import 'task_group_response.dart';
 
 /// Create a Job.
 /// Auto-naming is currently not supported for this resource.
 class Job extends pulumi.CustomResource {
   /// Compute resource allocation for all TaskGroups in the Job.
   late final pulumi.Output<AllocationPolicyResponse> allocationPolicy;
+
   /// When the Job was created.
   late final pulumi.Output<String> createTime;
+
   /// ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}".
   late final pulumi.Output<String?> jobId;
+
   /// Labels for the Job. Labels could be user provided or system generated. For example, "labels": { "department": "finance", "environment": "test" } You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
+
   /// Log preservation policy for the Job.
   late final pulumi.Output<LogsPolicyResponse> logsPolicy;
+
   /// Job name. For example: "projects/123456/locations/us-central1/jobs/job01".
   late final pulumi.Output<String> name;
+
   /// Notification configurations.
-  late final pulumi.Output<List<JobNotificationResponse>> notifications;
+  late final pulumi.Output<List<Map<String, dynamic>>> notifications;
+
   /// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
   late final pulumi.Output<String> priority;
   late final pulumi.Output<String> project;
+
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
+
   /// Job status. It is read only for users.
   late final pulumi.Output<JobStatusResponse> status;
+
   /// TaskGroups in the Job. Only one TaskGroup is supported now.
-  late final pulumi.Output<List<TaskGroupResponse>> taskGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> taskGroups;
+
   /// A system generated unique ID (in UUID4 format) for the Job.
   late final pulumi.Output<String> uid;
+
   /// The last time the Job was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -42,30 +52,29 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_batch_v1_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'google-native:batch/v1:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPolicy = registerOutput<AllocationPolicyResponse>('allocationPolicy');
-    this.createTime = registerOutput<String>('createTime');
-    this.jobId = registerOutput<String?>('jobId');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.location = registerOutput<String>('location');
-    this.logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'google-native:batch/v1:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allocationPolicy = registerOutput<AllocationPolicyResponse>(
+      'allocationPolicy',
+    );
+    createTime = registerOutput<String>('createTime');
+    jobId = registerOutput<String?>('jobId');
+    labels = registerOutput<Map<String, String>>('labels');
+    location = registerOutput<String>('location');
+    logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<List<JobNotificationResponse>>('notifications');
-    this.priority = registerOutput<String>('priority');
-    this.project = registerOutput<String>('project');
-    this.requestId = registerOutput<String?>('requestId');
-    this.status = registerOutput<JobStatusResponse>('status');
-    this.taskGroups = registerOutput<List<TaskGroupResponse>>('taskGroups');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    priority = registerOutput<String>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    status = registerOutput<JobStatusResponse>('status');
+    taskGroups = registerOutput<List<Map<String, dynamic>>>('taskGroups');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

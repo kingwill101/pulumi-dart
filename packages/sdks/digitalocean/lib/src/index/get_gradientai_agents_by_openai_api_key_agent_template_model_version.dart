@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
   /// Major version of the model
   final pulumi.Input<int>? major;
+
   /// Minor version of the model
   final pulumi.Input<int>? minor;
+
   /// Patch version of the model
   final pulumi.Input<int>? patch;
 
@@ -21,19 +23,28 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'major': ?major,
-      'minor': ?minor,
-      'patch': ?patch,
-    };
+    return <String, dynamic>{'major': ?major, 'minor': ?minor, 'patch': ?patch};
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion(
-      major: map['major'] == null ? null : (map['major']! as int).input(),
-      minor: map['minor'] == null ? null : (map['minor']! as int).input(),
-      patch: map['patch'] == null ? null : (map['patch']! as int).input(),
+      major: (() {
+        final guardedValue = map['major'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minor: (() {
+        final guardedValue = map['minor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      patch: (() {
+        final guardedValue = map['patch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,23 +9,16 @@ class GetNetworkInterfaceFilter {
   /// Creates a new [GetNetworkInterfaceFilter].
   /// [name] Required.
   /// [values] Required.
-  GetNetworkInterfaceFilter({
-    required this.name,
-    required this.values,
-  });
+  GetNetworkInterfaceFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetNetworkInterfaceFilter.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

@@ -9,26 +9,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatFirewallsArgs {
   /// A list of Nat Firewall IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// Lang
   final pulumi.Input<String>? lang;
+
   /// Member Account ID
   final pulumi.Input<int>? memberUid;
+
   /// NAT gateway ID
   final pulumi.Input<String>? natGatewayId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Page No
   final pulumi.Input<int>? pageNumber;
+
   /// Page Size
   final pulumi.Input<int>? pageSize;
+
   /// NAT firewall ID
   final pulumi.Input<String>? proxyId;
+
   /// NAT firewall name
   final pulumi.Input<String>? proxyName;
+
   /// Region
   final pulumi.Input<String>? regionNo;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// The ID of the VPC instance.
   final pulumi.Input<String>? vpcId;
 
@@ -79,19 +90,66 @@ class GetNatFirewallsArgs {
 
   factory GetNatFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetNatFirewallsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as int).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      proxyId: map['proxyId'] == null ? null : (map['proxyId']! as String).input(),
-      proxyName: map['proxyName'] == null ? null : (map['proxyName']! as String).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      natGatewayId: (() {
+        final guardedValue = map['natGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      proxyId: (() {
+        final guardedValue = map['proxyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyName: (() {
+        final guardedValue = map['proxyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionNo: (() {
+        final guardedValue = map['regionNo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

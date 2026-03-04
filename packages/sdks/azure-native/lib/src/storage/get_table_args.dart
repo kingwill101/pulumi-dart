@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   final pulumi.Input<String> tableName;
 
@@ -34,10 +36,11 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

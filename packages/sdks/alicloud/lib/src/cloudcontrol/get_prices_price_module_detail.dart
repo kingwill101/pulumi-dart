@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPricesPriceModuleDetail {
   /// Preferential price.
   final pulumi.Input<double> costAfterDiscount;
+
   /// Discount.
   final pulumi.Input<double> invoiceDiscount;
+
   /// Valuation Module Identification.
   final pulumi.Input<String> moduleCode;
+
   /// Pricing Module Name.
   final pulumi.Input<String> moduleName;
+
   /// Original Price.
   final pulumi.Input<double> originalCost;
+
   /// Price Type.
   final pulumi.Input<String> priceType;
 
@@ -45,13 +50,14 @@ class GetPricesPriceModuleDetail {
 
   factory GetPricesPriceModuleDetail.fromMap(Map<String, dynamic> map) {
     return GetPricesPriceModuleDetail(
-      costAfterDiscount: (map['costAfterDiscount'] as double).input(),
-      invoiceDiscount: (map['invoiceDiscount'] as double).input(),
-      moduleCode: (map['moduleCode'] as String).input(),
-      moduleName: (map['moduleName'] as String).input(),
-      originalCost: (map['originalCost'] as double).input(),
-      priceType: (map['priceType'] as String).input(),
+      costAfterDiscount: pulumi.Input.fromValue(
+        map['costAfterDiscount'] as double,
+      ),
+      invoiceDiscount: pulumi.Input.fromValue(map['invoiceDiscount'] as double),
+      moduleCode: pulumi.Input.fromValue(map['moduleCode'] as String),
+      moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
+      originalCost: pulumi.Input.fromValue(map['originalCost'] as double),
+      priceType: pulumi.Input.fromValue(map['priceType'] as String),
     );
   }
 }
-

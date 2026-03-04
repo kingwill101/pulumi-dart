@@ -160,26 +160,38 @@ import 'system_data_response.dart';
 class DevCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The URI of the Dev Center.
   late final pulumi.Output<String> devCenterUri;
+
   /// The display name of the devcenter.
   late final pulumi.Output<String?> displayName;
+
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
   late final pulumi.Output<EncryptionResponse?> encryption;
+
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Dev Center settings to be used when associating a project with a catalog.
-  late final pulumi.Output<DevCenterProjectCatalogSettingsResponse?> projectCatalogSettings;
+  late final pulumi.Output<DevCenterProjectCatalogSettingsResponse?>
+  projectCatalogSettings;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,22 +204,25 @@ class DevCenter extends pulumi.CustomResource {
     DevCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:DevCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.displayName = registerOutput<String?>('displayName');
-    this.encryption = registerOutput<EncryptionResponse?>('encryption');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:devcenter:DevCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    devCenterUri = registerOutput<String>('devCenterUri');
+    displayName = registerOutput<String?>('displayName');
+    encryption = registerOutput<EncryptionResponse?>('encryption');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.projectCatalogSettings = registerOutput<DevCenterProjectCatalogSettingsResponse?>('projectCatalogSettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    projectCatalogSettings =
+        registerOutput<DevCenterProjectCatalogSettingsResponse?>(
+          'projectCatalogSettings',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

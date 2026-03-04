@@ -6,29 +6,31 @@ class DeveloperAppCredentialApiProduct {
   /// (Output)
   /// Name of the API product.
   final pulumi.Input<String>? apiproduct;
+
   /// Status of the credential. Valid values include approved or revoked.
   final pulumi.Input<String>? status;
 
   /// Creates a new [DeveloperAppCredentialApiProduct].
   /// [apiproduct] (Output)
   /// [status] Status of the credential. Valid values include approved or revoked.
-  DeveloperAppCredentialApiProduct({
-    this.apiproduct,
-    this.status,
-  });
+  DeveloperAppCredentialApiProduct({this.apiproduct, this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiproduct': ?apiproduct,
-      'status': ?status,
-    };
+    return <String, dynamic>{'apiproduct': ?apiproduct, 'status': ?status};
   }
 
   factory DeveloperAppCredentialApiProduct.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredentialApiProduct(
-      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      apiproduct: (() {
+        final guardedValue = map['apiproduct'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

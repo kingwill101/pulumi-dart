@@ -7,12 +7,16 @@ import 'app_attach_package_info_properties_response.dart';
 class AppAttachPackagePropertiesResponse {
   /// Parameter indicating how the health check should behave if this package fails staging
   final pulumi.Input<String>? failHealthCheckOnStagingFailure;
+
   /// List of Hostpool resource Ids.
   final pulumi.Input<List<String>>? hostPoolReferences;
+
   /// Detailed properties for App Attach Package
   final pulumi.Input<AppAttachPackageInfoPropertiesResponse>? image;
+
   /// URL path to certificate name located in keyVault
   final pulumi.Input<String>? keyVaultURL;
+
   /// The provisioning state of the App Attach Package.
   final pulumi.Input<String> provisioningState;
 
@@ -34,7 +38,11 @@ class AppAttachPackagePropertiesResponse {
     return <String, dynamic>{
       'failHealthCheckOnStagingFailure': ?failHealthCheckOnStagingFailure,
       'hostPoolReferences': ?hostPoolReferences,
-      'image': ?pulumi.Input.mapOptionalInputValue<AppAttachPackageInfoPropertiesResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAttachPackageInfoPropertiesResponse,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
       'keyVaultURL': ?keyVaultURL,
       'provisioningState': provisioningState,
     };
@@ -42,12 +50,33 @@ class AppAttachPackagePropertiesResponse {
 
   factory AppAttachPackagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppAttachPackagePropertiesResponse(
-      failHealthCheckOnStagingFailure: map['failHealthCheckOnStagingFailure'] == null ? null : (map['failHealthCheckOnStagingFailure']! as String).input(),
-      hostPoolReferences: map['hostPoolReferences'] == null ? null : ((map['hostPoolReferences']! as List).cast<String>()).input(),
-      image: map['image'] == null ? null : (AppAttachPackageInfoPropertiesResponse.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      keyVaultURL: map['keyVaultURL'] == null ? null : (map['keyVaultURL']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      failHealthCheckOnStagingFailure: (() {
+        final guardedValue = map['failHealthCheckOnStagingFailure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostPoolReferences: (() {
+        final guardedValue = map['hostPoolReferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAttachPackageInfoPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultURL: (() {
+        final guardedValue = map['keyVaultURL'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

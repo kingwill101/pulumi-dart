@@ -31,10 +31,17 @@ class GetTopicIamPolicyArgs {
 
   factory GetTopicIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      topicId: (map['topicId'] as String).input(),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicId: pulumi.Input.fromValue(map['topicId'] as String),
     );
   }
 }
-

@@ -20,32 +20,54 @@ import 'google_cloud_dialogflow_v2_intent_message_text.dart';
 class GoogleCloudDialogflowV2IntentMessage {
   /// The basic card response for Actions on Google.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBasicCard>? basicCard;
+
   /// Browse carousel card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard>? browseCarouselCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard>?
+  browseCarouselCard;
+
   /// The card response.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCard>? card;
+
   /// The carousel card response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCarouselSelect>? carouselSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCarouselSelect>?
+  carouselSelect;
+
   /// The image response.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
+
   /// The link out suggestion chip for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion>? linkOutSuggestion;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion>?
+  linkOutSuggestion;
+
   /// The list card response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageListSelect>? listSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageListSelect>?
+  listSelect;
+
   /// The media content card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageMediaContent>? mediaContent;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageMediaContent>?
+  mediaContent;
+
   /// A custom platform-specific response.
   final pulumi.Input<Map<String, String>>? payload;
+
   /// Optional. The platform that this message is intended for.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessagePlatform>? platform;
+
   /// The quick replies response.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageQuickReplies>? quickReplies;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageQuickReplies>?
+  quickReplies;
+
   /// The voice and text-only responses for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSimpleResponses>? simpleResponses;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSimpleResponses>?
+  simpleResponses;
+
   /// The suggestion chips for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSuggestions>? suggestions;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSuggestions>?
+  suggestions;
+
   /// Table card for Actions on Google.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageTableCard>? tableCard;
+
   /// The text response.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageText>? text;
 
@@ -85,42 +107,217 @@ class GoogleCloudDialogflowV2IntentMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageBasicCard, Map<String, dynamic>>(basicCard, (value) => value.toMap()),
-      'browseCarouselCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard, Map<String, dynamic>>(browseCarouselCard, (value) => value.toMap()),
-      'card': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageCard, Map<String, dynamic>>(card, (value) => value.toMap()),
-      'carouselSelect': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageCarouselSelect, Map<String, dynamic>>(carouselSelect, (value) => value.toMap()),
-      'image': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageImage, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'linkOutSuggestion': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion, Map<String, dynamic>>(linkOutSuggestion, (value) => value.toMap()),
-      'listSelect': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageListSelect, Map<String, dynamic>>(listSelect, (value) => value.toMap()),
-      'mediaContent': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageMediaContent, Map<String, dynamic>>(mediaContent, (value) => value.toMap()),
+      'basicCard':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageBasicCard,
+            Map<String, dynamic>
+          >(basicCard, (value) => value.toMap()),
+      'browseCarouselCard':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard,
+            Map<String, dynamic>
+          >(browseCarouselCard, (value) => value.toMap()),
+      'card':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageCard,
+            Map<String, dynamic>
+          >(card, (value) => value.toMap()),
+      'carouselSelect':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageCarouselSelect,
+            Map<String, dynamic>
+          >(carouselSelect, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageImage,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'linkOutSuggestion':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion,
+            Map<String, dynamic>
+          >(linkOutSuggestion, (value) => value.toMap()),
+      'listSelect':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageListSelect,
+            Map<String, dynamic>
+          >(listSelect, (value) => value.toMap()),
+      'mediaContent':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageMediaContent,
+            Map<String, dynamic>
+          >(mediaContent, (value) => value.toMap()),
       'payload': ?payload,
-      'platform': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessagePlatform, String>(platform, (value) => value.value),
-      'quickReplies': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageQuickReplies, Map<String, dynamic>>(quickReplies, (value) => value.toMap()),
-      'simpleResponses': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageSimpleResponses, Map<String, dynamic>>(simpleResponses, (value) => value.toMap()),
-      'suggestions': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageSuggestions, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
-      'tableCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageTableCard, Map<String, dynamic>>(tableCard, (value) => value.toMap()),
-      'text': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageText, Map<String, dynamic>>(text, (value) => value.toMap()),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessagePlatform,
+            String
+          >(platform, (value) => value.wireValue),
+      'quickReplies':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageQuickReplies,
+            Map<String, dynamic>
+          >(quickReplies, (value) => value.toMap()),
+      'simpleResponses':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageSimpleResponses,
+            Map<String, dynamic>
+          >(simpleResponses, (value) => value.toMap()),
+      'suggestions':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageSuggestions,
+            Map<String, dynamic>
+          >(suggestions, (value) => value.toMap()),
+      'tableCard':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageTableCard,
+            Map<String, dynamic>
+          >(tableCard, (value) => value.toMap()),
+      'text':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageText,
+            Map<String, dynamic>
+          >(text, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessage(
-      basicCard: map['basicCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap((map['basicCard']! as Map).cast<String, dynamic>())).input(),
-      browseCarouselCard: map['browseCarouselCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap((map['browseCarouselCard']! as Map).cast<String, dynamic>())).input(),
-      card: map['card'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCard.fromMap((map['card']! as Map).cast<String, dynamic>())).input(),
-      carouselSelect: map['carouselSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap((map['carouselSelect']! as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      linkOutSuggestion: map['linkOutSuggestion'] == null ? null : (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap((map['linkOutSuggestion']! as Map).cast<String, dynamic>())).input(),
-      listSelect: map['listSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageListSelect.fromMap((map['listSelect']! as Map).cast<String, dynamic>())).input(),
-      mediaContent: map['mediaContent'] == null ? null : (GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap((map['mediaContent']! as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : ((map['payload']! as Map).cast<String, String>()).input(),
-      platform: map['platform'] == null ? null : (GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(map['platform']! as String)).input(),
-      quickReplies: map['quickReplies'] == null ? null : (GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap((map['quickReplies']! as Map).cast<String, dynamic>())).input(),
-      simpleResponses: map['simpleResponses'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap((map['simpleResponses']! as Map).cast<String, dynamic>())).input(),
-      suggestions: map['suggestions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap((map['suggestions']! as Map).cast<String, dynamic>())).input(),
-      tableCard: map['tableCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageTableCard.fromMap((map['tableCard']! as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (GoogleCloudDialogflowV2IntentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      basicCard: (() {
+        final guardedValue = map['basicCard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      browseCarouselCard: (() {
+        final guardedValue = map['browseCarouselCard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      card: (() {
+        final guardedValue = map['card'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageCard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      carouselSelect: (() {
+        final guardedValue = map['carouselSelect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageImage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linkOutSuggestion: (() {
+        final guardedValue = map['linkOutSuggestion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      listSelect: (() {
+        final guardedValue = map['listSelect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageListSelect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mediaContent: (() {
+        final guardedValue = map['mediaContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      quickReplies: (() {
+        final guardedValue = map['quickReplies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      simpleResponses: (() {
+        final guardedValue = map['simpleResponses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      suggestions: (() {
+        final guardedValue = map['suggestions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tableCard: (() {
+        final guardedValue = map['tableCard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageTableCard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

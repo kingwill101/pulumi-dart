@@ -9,23 +9,16 @@ class GetAppServiceSiteCredential {
   /// Creates a new [GetAppServiceSiteCredential].
   /// [password] Required.
   /// [username] Required.
-  GetAppServiceSiteCredential({
-    required this.password,
-    required this.username,
-  });
+  GetAppServiceSiteCredential({required this.password, required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
   factory GetAppServiceSiteCredential.fromMap(Map<String, dynamic> map) {
     return GetAppServiceSiteCredential(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -8,16 +8,22 @@ import 'tag_rule_metric_tag_filter.dart';
 class TagRuleState {
   /// Whether activity logs from Azure resources should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? activityLogEnabled;
+
   /// Whether Azure Active Directory logs should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? azureActiveDirectoryLogEnabled;
+
   /// A `log_tag_filter` block as defined below.
   final pulumi.Input<List<TagRuleLogTagFilter>>? logTagFilters;
+
   /// Whether metrics should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? metricEnabled;
+
   /// A `metric_tag_filter` block as defined below.
   final pulumi.Input<List<TagRuleMetricTagFilter>>? metricTagFilters;
+
   /// Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   final pulumi.Input<String>? monitorId;
+
   /// Whether subscription logs should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? subscriptionLogEnabled;
 
@@ -43,9 +49,31 @@ class TagRuleState {
     return <String, dynamic>{
       'activityLogEnabled': ?activityLogEnabled,
       'azureActiveDirectoryLogEnabled': ?azureActiveDirectoryLogEnabled,
-      'logTagFilters': ?pulumi.Input.mapOptionalInputValue<List<TagRuleLogTagFilter>, List<Map<String, dynamic>>>(logTagFilters, (value) => pulumi.Input.encodeList<TagRuleLogTagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'logTagFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagRuleLogTagFilter>,
+            List<Map<String, dynamic>>
+          >(
+            logTagFilters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TagRuleLogTagFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'metricEnabled': ?metricEnabled,
-      'metricTagFilters': ?pulumi.Input.mapOptionalInputValue<List<TagRuleMetricTagFilter>, List<Map<String, dynamic>>>(metricTagFilters, (value) => pulumi.Input.encodeList<TagRuleMetricTagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metricTagFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagRuleMetricTagFilter>,
+            List<Map<String, dynamic>>
+          >(
+            metricTagFilters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TagRuleMetricTagFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'monitorId': ?monitorId,
       'subscriptionLogEnabled': ?subscriptionLogEnabled,
     };
@@ -53,14 +81,55 @@ class TagRuleState {
 
   factory TagRuleState.fromMap(Map<String, dynamic> map) {
     return TagRuleState(
-      activityLogEnabled: map['activityLogEnabled'] == null ? null : (map['activityLogEnabled']! as bool).input(),
-      azureActiveDirectoryLogEnabled: map['azureActiveDirectoryLogEnabled'] == null ? null : (map['azureActiveDirectoryLogEnabled']! as bool).input(),
-      logTagFilters: map['logTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleLogTagFilter>(map['logTagFilters']!, (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricEnabled: map['metricEnabled'] == null ? null : (map['metricEnabled']! as bool).input(),
-      metricTagFilters: map['metricTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleMetricTagFilter>(map['metricTagFilters']!, (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monitorId: map['monitorId'] == null ? null : (map['monitorId']! as String).input(),
-      subscriptionLogEnabled: map['subscriptionLogEnabled'] == null ? null : (map['subscriptionLogEnabled']! as bool).input(),
+      activityLogEnabled: (() {
+        final guardedValue = map['activityLogEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      azureActiveDirectoryLogEnabled: (() {
+        final guardedValue = map['azureActiveDirectoryLogEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logTagFilters: (() {
+        final guardedValue = map['logTagFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagRuleLogTagFilter>(
+            guardedValue,
+            (value) => TagRuleLogTagFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      metricEnabled: (() {
+        final guardedValue = map['metricEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      metricTagFilters: (() {
+        final guardedValue = map['metricTagFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagRuleMetricTagFilter>(
+            guardedValue,
+            (value) => TagRuleMetricTagFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      monitorId: (() {
+        final guardedValue = map['monitorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionLogEnabled: (() {
+        final guardedValue = map['subscriptionLogEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

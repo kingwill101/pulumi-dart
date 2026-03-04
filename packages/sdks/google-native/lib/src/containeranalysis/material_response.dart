@@ -9,23 +9,18 @@ class MaterialResponse {
   /// Creates a new [MaterialResponse].
   /// [digest] Required.
   /// [uri] Required.
-  MaterialResponse({
-    required this.digest,
-    required this.uri,
-  });
+  MaterialResponse({required this.digest, required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': digest,
-      'uri': uri,
-    };
+    return <String, dynamic>{'digest': digest, 'uri': uri};
   }
 
   factory MaterialResponse.fromMap(Map<String, dynamic> map) {
     return MaterialResponse(
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      uri: (map['uri'] as String).input(),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

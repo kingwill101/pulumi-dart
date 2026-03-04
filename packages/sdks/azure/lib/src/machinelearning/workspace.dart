@@ -9,7 +9,7 @@ import 'workspace_state.dart';
 
 /// Manages a Azure Machine Learning Workspace
 ///
-/// > **Note:** For examples on how to set up the Azure Machine Learning workspace, together with compute and integrated services, see Terraform Quickstart
+/// &gt; **Note:** For examples on how to set up the Azure Machine Learning workspace, together with compute and integrated services, see Terraform Quickstart
 ///
 /// ## Example Usage
 ///
@@ -353,7 +353,7 @@ import 'workspace_state.dart';
 ///
 /// ### With Data Encryption
 ///
-/// > **Note:** The Key Vault must enable purge protection.
+/// &gt; **Note:** The Key Vault must enable purge protection.
 ///
 ///
 /// ```typescript
@@ -934,60 +934,84 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
+
   /// The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
+  /// &gt; **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
   late final pulumi.Output<String?> containerRegistryId;
+
   /// The description of this Machine Learning Workspace.
   late final pulumi.Output<String?> description;
+
   /// The url for the discovery service to identify regional endpoints for machine learning experimentation services.
   late final pulumi.Output<String> discoveryUrl;
+
   /// An `encryption` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<WorkspaceEncryption?> encryption;
+
   /// A `feature_store` block as defined below.
   late final pulumi.Output<WorkspaceFeatureStore?> featureStore;
+
   /// Display name for this Machine Learning Workspace.
   late final pulumi.Output<String?> friendlyName;
+
   /// Flag to signal High Business Impact (HBI) data in the workspace and reduce diagnostic data collected by the service. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> highBusinessImpact;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<WorkspaceIdentity> identity;
+
   /// The compute name for image build of the Machine Learning Workspace.
   late final pulumi.Output<String?> imageBuildComputeName;
+
   /// The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
+
   /// The type of the Workspace. Possible values are `Default`, `FeatureStore`. Defaults to `Default`
   late final pulumi.Output<String?> kind;
+
   /// Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `managed_network` block as defined below.
   late final pulumi.Output<WorkspaceManagedNetwork> managedNetwork;
+
   /// Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The user assigned identity id that represents the workspace identity.
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
+
   /// Enable public access when this Machine Learning Workspace is behind VNet. Defaults to `true`.
   ///
-  /// > **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
+  /// &gt; **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `serverless_compute` block as defined below.
   late final pulumi.Output<WorkspaceServerlessCompute?> serverlessCompute;
+
   /// Whether to enable service-side encryption with customer-managed keys (CMK). Default to `false`. Changing this forces a new resource to be created.
   ///
-  /// !> **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
+  /// !&gt; **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
   late final pulumi.Output<bool?> serviceSideEncryptionEnabled;
+
   /// SKU/edition of the Machine Learning Workspace, possible values are `Free`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   late final pulumi.Output<String?> skuName;
+
   /// The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
+  /// &gt; **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
   late final pulumi.Output<String> storageAccountId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
   late final pulumi.Output<bool?> v1LegacyModeEnabled;
+
   /// The immutable id associated with this workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -1000,36 +1024,44 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.containerRegistryId = registerOutput<String?>('containerRegistryId');
-    this.description = registerOutput<String?>('description');
-    this.discoveryUrl = registerOutput<String>('discoveryUrl');
-    this.encryption = registerOutput<WorkspaceEncryption?>('encryption');
-    this.featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    this.identity = registerOutput<WorkspaceIdentity>('identity');
-    this.imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
+         'azure:machinelearning/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    containerRegistryId = registerOutput<String?>('containerRegistryId');
+    description = registerOutput<String?>('description');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    encryption = registerOutput<WorkspaceEncryption?>('encryption');
+    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
+    identity = registerOutput<WorkspaceIdentity>('identity');
+    imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
     this.name = registerOutput<String>('name');
-    this.primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute');
-    this.serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
-    this.skuName = registerOutput<String?>('skuName');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    primaryUserAssignedIdentity = registerOutput<String?>(
+      'primaryUserAssignedIdentity',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
+      'serverlessCompute',
+    );
+    serviceSideEncryptionEnabled = registerOutput<bool?>(
+      'serviceSideEncryptionEnabled',
+    );
+    skuName = registerOutput<String?>('skuName');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -1050,35 +1082,43 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.containerRegistryId = registerOutput<String?>('containerRegistryId');
-    this.description = registerOutput<String?>('description');
-    this.discoveryUrl = registerOutput<String>('discoveryUrl');
-    this.encryption = registerOutput<WorkspaceEncryption?>('encryption');
-    this.featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    this.identity = registerOutput<WorkspaceIdentity>('identity');
-    this.imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
+         'azure:machinelearning/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    containerRegistryId = registerOutput<String?>('containerRegistryId');
+    description = registerOutput<String?>('description');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    encryption = registerOutput<WorkspaceEncryption?>('encryption');
+    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
+    identity = registerOutput<WorkspaceIdentity>('identity');
+    imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
     this.name = registerOutput<String>('name');
-    this.primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute');
-    this.serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
-    this.skuName = registerOutput<String?>('skuName');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    primaryUserAssignedIdentity = registerOutput<String?>(
+      'primaryUserAssignedIdentity',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
+      'serverlessCompute',
+    );
+    serviceSideEncryptionEnabled = registerOutput<bool?>(
+      'serviceSideEncryptionEnabled',
+    );
+    skuName = registerOutput<String?>('skuName');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

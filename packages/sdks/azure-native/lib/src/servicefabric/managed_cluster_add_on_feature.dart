@@ -4,16 +4,15 @@ enum ManagedClusterAddOnFeature {
   valueBackupRestoreService("BackupRestoreService"),
   valueResourceMonitorService("ResourceMonitorService");
 
-  const ManagedClusterAddOnFeature(this.value);
-  final String value;
+  const ManagedClusterAddOnFeature(this.wireValue);
+  final String wireValue;
 
   static ManagedClusterAddOnFeature fromValue(String value) {
     for (final item in ManagedClusterAddOnFeature.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedClusterAddOnFeature value: $value');
   }
 }
-

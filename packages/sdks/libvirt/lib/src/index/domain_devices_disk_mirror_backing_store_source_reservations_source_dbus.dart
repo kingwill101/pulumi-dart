@@ -13,15 +13,18 @@ class DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': ?channel,
-    };
+    return <String, dynamic>{'channel': ?channel};
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

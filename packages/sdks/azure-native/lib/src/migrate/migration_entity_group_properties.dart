@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationEntityGroupProperties {
   /// Display Name of the Workload.
   final pulumi.Input<String> applicationDisplayName;
+
   /// Application id
   final pulumi.Input<String> applicationId;
+
   /// Associated Assessment Id
   final pulumi.Input<String>? associatedAssessmentId;
+
   /// associated Wave Id
   final pulumi.Input<List<String>>? associatedWaveIds;
+
   /// Migration path
   final pulumi.Input<String>? migrationPath;
 
@@ -41,12 +45,25 @@ class MigrationEntityGroupProperties {
 
   factory MigrationEntityGroupProperties.fromMap(Map<String, dynamic> map) {
     return MigrationEntityGroupProperties(
-      applicationDisplayName: (map['applicationDisplayName'] as String).input(),
-      applicationId: (map['applicationId'] as String).input(),
-      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId']! as String).input(),
-      associatedWaveIds: map['associatedWaveIds'] == null ? null : ((map['associatedWaveIds']! as List).cast<String>()).input(),
-      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath']! as String).input(),
+      applicationDisplayName: pulumi.Input.fromValue(
+        map['applicationDisplayName'] as String,
+      ),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      associatedAssessmentId: (() {
+        final guardedValue = map['associatedAssessmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associatedWaveIds: (() {
+        final guardedValue = map['associatedWaveIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      migrationPath: (() {
+        final guardedValue = map['migrationPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

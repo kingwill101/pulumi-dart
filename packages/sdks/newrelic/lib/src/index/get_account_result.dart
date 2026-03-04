@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   final String? accountId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
@@ -36,12 +36,23 @@ class GetAccountResult {
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      accountId: map['accountId'] == null ? null : map['accountId']! as String,
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
-      scope: map['scope'] == null ? null : map['scope']! as String,
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

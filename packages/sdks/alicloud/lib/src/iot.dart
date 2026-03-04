@@ -1,5 +1,3 @@
-library module_iot;
-
 export 'iot/device_group.dart';
 export 'iot/device_group_args.dart';
 export 'iot/device_group_state.dart';

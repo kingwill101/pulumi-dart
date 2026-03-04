@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExposureControlFeatureValueByFactoryArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The feature name.
   final pulumi.Input<String>? featureName;
+
   /// The feature type.
   final pulumi.Input<String>? featureType;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,24 @@ class GetExposureControlFeatureValueByFactoryArgs {
     };
   }
 
-  factory GetExposureControlFeatureValueByFactoryArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExposureControlFeatureValueByFactoryArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExposureControlFeatureValueByFactoryArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
-      featureType: map['featureType'] == null ? null : (map['featureType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureType: (() {
+        final guardedValue = map['featureType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

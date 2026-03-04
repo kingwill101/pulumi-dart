@@ -6,14 +6,19 @@ class WafPolicyGraphqlProfileDefenseAttribute {
   /// Introspection queries can also be enforced to prevent attackers from using them to
   /// understand the API structure and potentially breach an application.
   final pulumi.Input<bool>? allowIntrospectionQueries;
+
   /// Specifies the highest number of batched queries allowed by the security policy.
   final pulumi.Input<String>? maximumBatchedQueries;
+
   /// Specifies the greatest nesting depth found in the GraphQL structure allowed by the security policy.
   final pulumi.Input<String>? maximumStructureDepth;
+
   /// Specifies the longest length, in bytes, allowed by the security policy of the request payload, or parameter value, where the GraphQL data was found.
   final pulumi.Input<String>? maximumTotalLength;
+
   /// Specifies the longest length (in bytes) of the longest GraphQL element value in the document allowed by the security policy.
   final pulumi.Input<String>? maximumValueLength;
+
   /// Specifies, when checked (enabled), that the system does not report when the security enforcer encounters warnings while parsing GraphQL content. Specifies when cleared (disabled), that the security policy reports when the security enforcer encounters warnings while parsing GraphQL content. The default setting is disabled.
   final pulumi.Input<bool>? tolerateParsingWarnings;
 
@@ -44,15 +49,40 @@ class WafPolicyGraphqlProfileDefenseAttribute {
     };
   }
 
-  factory WafPolicyGraphqlProfileDefenseAttribute.fromMap(Map<String, dynamic> map) {
+  factory WafPolicyGraphqlProfileDefenseAttribute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WafPolicyGraphqlProfileDefenseAttribute(
-      allowIntrospectionQueries: map['allowIntrospectionQueries'] == null ? null : (map['allowIntrospectionQueries']! as bool).input(),
-      maximumBatchedQueries: map['maximumBatchedQueries'] == null ? null : (map['maximumBatchedQueries']! as String).input(),
-      maximumStructureDepth: map['maximumStructureDepth'] == null ? null : (map['maximumStructureDepth']! as String).input(),
-      maximumTotalLength: map['maximumTotalLength'] == null ? null : (map['maximumTotalLength']! as String).input(),
-      maximumValueLength: map['maximumValueLength'] == null ? null : (map['maximumValueLength']! as String).input(),
-      tolerateParsingWarnings: map['tolerateParsingWarnings'] == null ? null : (map['tolerateParsingWarnings']! as bool).input(),
+      allowIntrospectionQueries: (() {
+        final guardedValue = map['allowIntrospectionQueries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maximumBatchedQueries: (() {
+        final guardedValue = map['maximumBatchedQueries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maximumStructureDepth: (() {
+        final guardedValue = map['maximumStructureDepth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maximumTotalLength: (() {
+        final guardedValue = map['maximumTotalLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maximumValueLength: (() {
+        final guardedValue = map['maximumValueLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tolerateParsingWarnings: (() {
+        final guardedValue = map['tolerateParsingWarnings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

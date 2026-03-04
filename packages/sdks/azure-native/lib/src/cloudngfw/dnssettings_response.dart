@@ -7,8 +7,10 @@ import 'ipaddress_response.dart';
 class DNSSettingsResponse {
   /// List of IPs associated with the Firewall
   final pulumi.Input<List<IPAddressResponse>>? dnsServers;
+
   /// Enable DNS proxy, disabled by default
   final pulumi.Input<String>? enableDnsProxy;
+
   /// Enabled DNS proxy type, disabled by default
   final pulumi.Input<String>? enabledDnsType;
 
@@ -24,7 +26,18 @@ class DNSSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsServers': ?pulumi.Input.mapOptionalInputValue<List<IPAddressResponse>, List<Map<String, dynamic>>>(dnsServers, (value) => pulumi.Input.encodeList<IPAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dnsServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IPAddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dnsServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IPAddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enableDnsProxy': ?enableDnsProxy,
       'enabledDnsType': ?enabledDnsType,
     };
@@ -32,10 +45,28 @@ class DNSSettingsResponse {
 
   factory DNSSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DNSSettingsResponse(
-      dnsServers: map['dnsServers'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['dnsServers']!, (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableDnsProxy: map['enableDnsProxy'] == null ? null : (map['enableDnsProxy']! as String).input(),
-      enabledDnsType: map['enabledDnsType'] == null ? null : (map['enabledDnsType']! as String).input(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IPAddressResponse>(
+            guardedValue,
+            (value) => IPAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enableDnsProxy: (() {
+        final guardedValue = map['enableDnsProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabledDnsType: (() {
+        final guardedValue = map['enabledDnsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

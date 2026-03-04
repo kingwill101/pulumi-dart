@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipOriginInformationResponse {
   /// The name of the discovery engine that created the relationship.
   final pulumi.Input<String> discoveryEngine;
+
   /// Identifies the origin type of the relationship.
   final pulumi.Input<String> relationshipOriginType;
 
@@ -24,11 +25,14 @@ class RelationshipOriginInformationResponse {
     };
   }
 
-  factory RelationshipOriginInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory RelationshipOriginInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelationshipOriginInformationResponse(
-      discoveryEngine: (map['discoveryEngine'] as String).input(),
-      relationshipOriginType: (map['relationshipOriginType'] as String).input(),
+      discoveryEngine: pulumi.Input.fromValue(map['discoveryEngine'] as String),
+      relationshipOriginType: pulumi.Input.fromValue(
+        map['relationshipOriginType'] as String,
+      ),
     );
   }
 }
-

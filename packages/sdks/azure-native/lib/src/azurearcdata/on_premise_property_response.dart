@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnPremisePropertyResponse {
   /// A globally unique ID identifying the associated Kubernetes cluster
   final pulumi.Input<String> id;
+
   /// Certificate that contains the Kubernetes cluster public key used to verify signing
   final pulumi.Input<String> publicSigningKey;
+
   /// Unique thumbprint returned to customer to verify the certificate being uploaded
   final pulumi.Input<String>? signingCertificateThumbprint;
 
@@ -31,10 +33,15 @@ class OnPremisePropertyResponse {
 
   factory OnPremisePropertyResponse.fromMap(Map<String, dynamic> map) {
     return OnPremisePropertyResponse(
-      id: (map['id'] as String).input(),
-      publicSigningKey: (map['publicSigningKey'] as String).input(),
-      signingCertificateThumbprint: map['signingCertificateThumbprint'] == null ? null : (map['signingCertificateThumbprint']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      publicSigningKey: pulumi.Input.fromValue(
+        map['publicSigningKey'] as String,
+      ),
+      signingCertificateThumbprint: (() {
+        final guardedValue = map['signingCertificateThumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

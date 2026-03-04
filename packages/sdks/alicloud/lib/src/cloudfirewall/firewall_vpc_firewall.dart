@@ -8,7 +8,7 @@ import 'firewall_vpc_firewall_state.dart';
 ///
 /// For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -298,22 +298,31 @@ import 'firewall_vpc_firewall_state.dart';
 class FirewallVpcFirewall extends pulumi.CustomResource {
   /// Bandwidth specifications for high-speed channels. Unit: Mbps.
   late final pulumi.Output<int> bandwidth;
+
   /// The communication type of the VPC firewall.
   late final pulumi.Output<String> connectType;
+
   /// The language type of the requested and received messages. Valid values:
   late final pulumi.Output<String?> lang;
+
   /// The details of the local VPC. See `local_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallLocalVpc> localVpc;
+
   /// The UID of the Alibaba Cloud member account.
   late final pulumi.Output<String?> memberUid;
+
   /// The details of the peer VPC. See `peer_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallPeerVpc> peerVpc;
+
   /// The region is open.
   late final pulumi.Output<String> regionStatus;
+
   /// The status of the resource. Valid values:
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallId;
+
   /// The name of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallName;
 
@@ -326,21 +335,21 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     FirewallVpcFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.connectType = registerOutput<String>('connectType');
-    this.lang = registerOutput<String?>('lang');
-    this.localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
-    this.regionStatus = registerOutput<String>('regionStatus');
-    this.status = registerOutput<String>('status');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
-    this.vpcFirewallName = registerOutput<String>('vpcFirewallName');
+         'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    connectType = registerOutput<String>('connectType');
+    lang = registerOutput<String?>('lang');
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
+    memberUid = registerOutput<String?>('memberUid');
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
+    regionStatus = registerOutput<String>('regionStatus');
+    status = registerOutput<String>('status');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
+    vpcFirewallName = registerOutput<String>('vpcFirewallName');
   }
 
   /// Gets an existing [FirewallVpcFirewall] resource's state with the given [name] and [id].
@@ -361,20 +370,20 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.connectType = registerOutput<String>('connectType');
-    this.lang = registerOutput<String?>('lang');
-    this.localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
-    this.regionStatus = registerOutput<String>('regionStatus');
-    this.status = registerOutput<String>('status');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
-    this.vpcFirewallName = registerOutput<String>('vpcFirewallName');
+         'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    connectType = registerOutput<String>('connectType');
+    lang = registerOutput<String?>('lang');
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
+    memberUid = registerOutput<String?>('memberUid');
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
+    regionStatus = registerOutput<String>('regionStatus');
+    status = registerOutput<String>('status');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
+    vpcFirewallName = registerOutput<String>('vpcFirewallName');
   }
 }

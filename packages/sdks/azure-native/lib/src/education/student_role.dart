@@ -3,16 +3,15 @@ enum StudentRole {
   valueStudent("Student"),
   valueAdmin("Admin");
 
-  const StudentRole(this.value);
-  final String value;
+  const StudentRole(this.wireValue);
+  final String wireValue;
 
   static StudentRole fromValue(String value) {
     for (final item in StudentRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StudentRole value: $value');
   }
 }
-

@@ -8,22 +8,31 @@ import 'spoke_summary_response.dart';
 class GetHubResult {
   /// The time the hub was created.
   final String createTime;
+
   /// An optional description of the hub.
   final String description;
+
   /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   final Map<String, String> labels;
+
   /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
   final String name;
+
   /// The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
   final List<String> routeTables;
+
   /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
   final List<RoutingVPCResponse> routingVpcs;
+
   /// A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
   final SpokeSummaryResponse spokeSummary;
+
   /// The current lifecycle state of this hub.
   final String state;
+
   /// The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
   final String uniqueId;
+
   /// The time the hub was last updated.
   final String updateTime;
 
@@ -58,7 +67,11 @@ class GetHubResult {
       'labels': labels,
       'name': name,
       'routeTables': routeTables,
-      'routingVpcs': pulumi.Input.encodeList<RoutingVPCResponse, Map<String, dynamic>>(routingVpcs, (value) => value.toMap()),
+      'routingVpcs':
+          pulumi.Input.encodeList<RoutingVPCResponse, Map<String, dynamic>>(
+            routingVpcs,
+            (value) => value.toMap(),
+          ),
       'spokeSummary': spokeSummary.toMap(),
       'state': state,
       'uniqueId': uniqueId,
@@ -73,12 +86,17 @@ class GetHubResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       routeTables: (map['routeTables'] as List).cast<String>(),
-      routingVpcs: pulumi.Input.decodeList<RoutingVPCResponse>(map['routingVpcs'], (value) => RoutingVPCResponse.fromMap((value as Map).cast<String, dynamic>())),
-      spokeSummary: SpokeSummaryResponse.fromMap((map['spokeSummary'] as Map).cast<String, dynamic>()),
+      routingVpcs: pulumi.Input.decodeList<RoutingVPCResponse>(
+        map['routingVpcs']!,
+        (value) =>
+            RoutingVPCResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      spokeSummary: SpokeSummaryResponse.fromMap(
+        (map['spokeSummary']! as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
       uniqueId: map['uniqueId'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

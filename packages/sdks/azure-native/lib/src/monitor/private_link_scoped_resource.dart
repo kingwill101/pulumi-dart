@@ -278,18 +278,25 @@ import 'system_data_response.dart';
 class PrivateLinkScopedResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The kind of scoped Azure monitor resource.
   late final pulumi.Output<String?> kind;
+
   /// The resource id of the scoped Azure monitor resource.
   late final pulumi.Output<String?> linkedResourceId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the Azure monitor resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   late final pulumi.Output<String?> subscriptionLocation;
+
   /// System data
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -302,18 +309,18 @@ class PrivateLinkScopedResource extends pulumi.CustomResource {
     PrivateLinkScopedResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:PrivateLinkScopedResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.linkedResourceId = registerOutput<String?>('linkedResourceId');
+         'azure-native:monitor:PrivateLinkScopedResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    linkedResourceId = registerOutput<String?>('linkedResourceId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.subscriptionLocation = registerOutput<String?>('subscriptionLocation');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    subscriptionLocation = registerOutput<String?>('subscriptionLocation');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

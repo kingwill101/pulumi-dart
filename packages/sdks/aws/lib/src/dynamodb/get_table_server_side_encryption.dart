@@ -15,17 +15,13 @@ class GetTableServerSideEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'kmsKeyArn': kmsKeyArn,
-    };
+    return <String, dynamic>{'enabled': enabled, 'kmsKeyArn': kmsKeyArn};
   }
 
   factory GetTableServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return GetTableServerSideEncryption(
-      enabled: (map['enabled'] as bool).input(),
-      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
     );
   }
 }
-

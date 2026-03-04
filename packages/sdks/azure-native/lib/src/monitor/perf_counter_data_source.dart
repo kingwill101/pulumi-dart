@@ -9,11 +9,14 @@ class PerfCounterDataSource {
   /// Use a wildcard (*) to collect a counter for all instances.
   /// To get a list of performance counters on Windows, run the command 'typeperf'.
   final pulumi.Input<List<String>>? counterSpecifiers;
+
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
+
   /// The number of seconds between consecutive counter measurements (samples).
   final pulumi.Input<int>? samplingFrequencyInSeconds;
+
   /// List of streams that this data source will be sent to.
   /// A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>>? streams;
@@ -41,11 +44,26 @@ class PerfCounterDataSource {
 
   factory PerfCounterDataSource.fromMap(Map<String, dynamic> map) {
     return PerfCounterDataSource(
-      counterSpecifiers: map['counterSpecifiers'] == null ? null : ((map['counterSpecifiers']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      samplingFrequencyInSeconds: map['samplingFrequencyInSeconds'] == null ? null : (map['samplingFrequencyInSeconds']! as int).input(),
-      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
+      counterSpecifiers: (() {
+        final guardedValue = map['counterSpecifiers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      samplingFrequencyInSeconds: (() {
+        final guardedValue = map['samplingFrequencyInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      streams: (() {
+        final guardedValue = map['streams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

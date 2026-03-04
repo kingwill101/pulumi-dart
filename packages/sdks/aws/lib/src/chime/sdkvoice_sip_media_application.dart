@@ -132,18 +132,24 @@ import 'sdkvoice_sip_media_application_state.dart';
 class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
   /// ARN (Amazon Resource Name) of the AWS Chime SDK Voice Sip Media Application
   late final pulumi.Output<String> arn;
+
   /// The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
   late final pulumi.Output<String> awsRegion;
+
   /// List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
   late final pulumi.Output<SdkvoiceSipMediaApplicationEndpoints> endpoints;
+
   /// The name of the AWS Chime SDK Voice Sip Media Application.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -156,18 +162,20 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     SdkvoiceSipMediaApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsRegion = registerOutput<String>('awsRegion');
-    this.endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>('endpoints');
+         'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsRegion = registerOutput<String>('awsRegion');
+    endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>(
+      'endpoints',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [SdkvoiceSipMediaApplication] resource's state with the given [name] and [id].
@@ -188,17 +196,19 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsRegion = registerOutput<String>('awsRegion');
-    this.endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>('endpoints');
+         'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsRegion = registerOutput<String>('awsRegion');
+    endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>(
+      'endpoints',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

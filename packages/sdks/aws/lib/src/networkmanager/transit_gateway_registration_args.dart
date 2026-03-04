@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayRegistrationArgs {
   /// ID of the Global Network to register to.
   final pulumi.Input<String> globalNetworkId;
+
   /// ARN of the Transit Gateway to register.
   final pulumi.Input<String> transitGatewayArn;
 
@@ -29,9 +30,10 @@ class TransitGatewayRegistrationArgs {
 
   factory TransitGatewayRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRegistrationArgs(
-      globalNetworkId: (map['globalNetworkId'] as String).input(),
-      transitGatewayArn: (map['transitGatewayArn'] as String).input(),
+      globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
+      transitGatewayArn: pulumi.Input.fromValue(
+        map['transitGatewayArn'] as String,
+      ),
     );
   }
 }
-

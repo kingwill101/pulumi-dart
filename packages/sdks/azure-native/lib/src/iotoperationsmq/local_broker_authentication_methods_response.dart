@@ -10,20 +10,27 @@ class LocalBrokerAuthenticationMethodsResponse {
 
   /// Creates a new [LocalBrokerAuthenticationMethodsResponse].
   /// [kubernetes] Kubernetes local broker authentication method.
-  LocalBrokerAuthenticationMethodsResponse({
-    required this.kubernetes,
-  });
+  LocalBrokerAuthenticationMethodsResponse({required this.kubernetes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubernetes': pulumi.Input.mapInputValue<LocalBrokerKubernetesAuthenticationResponse, Map<String, dynamic>>(kubernetes, (value) => value.toMap()),
+      'kubernetes':
+          pulumi.Input.mapInputValue<
+            LocalBrokerKubernetesAuthenticationResponse,
+            Map<String, dynamic>
+          >(kubernetes, (value) => value.toMap()),
     };
   }
 
-  factory LocalBrokerAuthenticationMethodsResponse.fromMap(Map<String, dynamic> map) {
+  factory LocalBrokerAuthenticationMethodsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocalBrokerAuthenticationMethodsResponse(
-      kubernetes: (LocalBrokerKubernetesAuthenticationResponse.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
+      kubernetes: pulumi.Input.fromValue(
+        LocalBrokerKubernetesAuthenticationResponse.fromMap(
+          (map['kubernetes']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

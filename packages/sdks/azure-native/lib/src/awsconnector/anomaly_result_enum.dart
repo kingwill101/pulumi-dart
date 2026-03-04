@@ -3,16 +3,15 @@ enum AnomalyResultEnum {
   anomalous("anomalous"),
   normal("normal");
 
-  const AnomalyResultEnum(this.value);
-  final String value;
+  const AnomalyResultEnum(this.wireValue);
+  final String wireValue;
 
   static AnomalyResultEnum fromValue(String value) {
     for (final item in AnomalyResultEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AnomalyResultEnum value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum InboundSsoAssignmentSsoMode {
   samlSso("SAML_SSO"),
   domainWideSamlIfEnabled("DOMAIN_WIDE_SAML_IF_ENABLED");
 
-  const InboundSsoAssignmentSsoMode(this.value);
-  final String value;
+  const InboundSsoAssignmentSsoMode(this.wireValue);
+  final String wireValue;
 
   static InboundSsoAssignmentSsoMode fromValue(String value) {
     for (final item in InboundSsoAssignmentSsoMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InboundSsoAssignmentSsoMode value: $value');
   }
 }
-

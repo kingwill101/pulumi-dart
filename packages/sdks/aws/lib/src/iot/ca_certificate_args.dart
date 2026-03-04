@@ -10,18 +10,25 @@ import 'ca_certificate_registration_config.dart';
 class CaCertificateArgs {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
   final pulumi.Input<bool> active;
+
   /// Boolean flag to indicate if the certificate should be active for device regisration.
   final pulumi.Input<bool> allowAutoRegistration;
+
   /// PEM encoded CA certificate.
   final pulumi.Input<String> caCertificatePem;
+
   /// The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
   final pulumi.Input<String>? certificateMode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Information about the registration configuration. See below.
   final pulumi.Input<CaCertificateRegistrationConfig>? registrationConfig;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// PEM encoded verification certificate containing the common name of a registration code. Review
   /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificate_mode` is `DEFAULT`.
   final pulumi.Input<String>? verificationCertificatePem;
@@ -53,7 +60,11 @@ class CaCertificateArgs {
       'caCertificatePem': caCertificatePem,
       'certificateMode': ?certificateMode,
       'region': ?region,
-      'registrationConfig': ?pulumi.Input.mapOptionalInputValue<CaCertificateRegistrationConfig, Map<String, dynamic>>(registrationConfig, (value) => value.toMap()),
+      'registrationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CaCertificateRegistrationConfig,
+            Map<String, dynamic>
+          >(registrationConfig, (value) => value.toMap()),
       'tags': ?tags,
       'verificationCertificatePem': ?verificationCertificatePem,
     };
@@ -61,15 +72,44 @@ class CaCertificateArgs {
 
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
-      active: (map['active'] as bool).input(),
-      allowAutoRegistration: (map['allowAutoRegistration'] as bool).input(),
-      caCertificatePem: (map['caCertificatePem'] as String).input(),
-      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      registrationConfig: map['registrationConfig'] == null ? null : ((CaCertificateRegistrationConfig.fromMap((map['registrationConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : ((map['verificationCertificatePem'] as String).input()).input(),
+      active: pulumi.Input.fromValue(map['active'] as bool),
+      allowAutoRegistration: pulumi.Input.fromValue(
+        map['allowAutoRegistration'] as bool,
+      ),
+      caCertificatePem: pulumi.Input.fromValue(
+        map['caCertificatePem'] as String,
+      ),
+      certificateMode: (() {
+        final guardedValue = map['certificateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationConfig: (() {
+        final guardedValue = map['registrationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CaCertificateRegistrationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      verificationCertificatePem: (() {
+        final guardedValue = map['verificationCertificatePem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,20 +12,15 @@ class GetEc2InstanceArgs {
 
   /// Creates a new [GetEc2InstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetEc2InstanceArgs({
-    required this.resourceUri,
-  });
+  GetEc2InstanceArgs({required this.resourceUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceUri': resourceUri,
-    };
+    return <String, dynamic>{'resourceUri': resourceUri};
   }
 
   factory GetEc2InstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetEc2InstanceArgs(
-      resourceUri: (map['resourceUri'] as String).input(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

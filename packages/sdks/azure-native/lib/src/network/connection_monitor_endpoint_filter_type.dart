@@ -2,16 +2,17 @@
 enum ConnectionMonitorEndpointFilterType {
   valueInclude("Include");
 
-  const ConnectionMonitorEndpointFilterType(this.value);
-  final String value;
+  const ConnectionMonitorEndpointFilterType(this.wireValue);
+  final String wireValue;
 
   static ConnectionMonitorEndpointFilterType fromValue(String value) {
     for (final item in ConnectionMonitorEndpointFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConnectionMonitorEndpointFilterType value: $value');
+    throw ArgumentError(
+      'Unknown ConnectionMonitorEndpointFilterType value: $value',
+    );
   }
 }
-

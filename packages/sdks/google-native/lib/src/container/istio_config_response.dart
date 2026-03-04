@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IstioConfigResponse {
   /// The specified Istio auth mode, either none, or mutual TLS.
   final pulumi.Input<String> auth;
+
   /// Whether Istio is enabled for this cluster.
   final pulumi.Input<bool> disabled;
 
   /// Creates a new [IstioConfigResponse].
   /// [auth] The specified Istio auth mode, either none, or mutual TLS.
   /// [disabled] Whether Istio is enabled for this cluster.
-  IstioConfigResponse({
-    required this.auth,
-    required this.disabled,
-  });
+  IstioConfigResponse({required this.auth, required this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'auth': auth,
-      'disabled': disabled,
-    };
+    return <String, dynamic>{'auth': auth, 'disabled': disabled};
   }
 
   factory IstioConfigResponse.fromMap(Map<String, dynamic> map) {
     return IstioConfigResponse(
-      auth: (map['auth'] as String).input(),
-      disabled: (map['disabled'] as bool).input(),
+      auth: pulumi.Input.fromValue(map['auth'] as String),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
-

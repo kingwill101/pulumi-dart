@@ -12,20 +12,35 @@ class GetLifecyclePolicyDocumentArgs {
 
   /// Creates a new [GetLifecyclePolicyDocumentArgs].
   /// [rules] Required.
-  GetLifecyclePolicyDocumentArgs({
-    required this.rules,
-  });
+  GetLifecyclePolicyDocumentArgs({required this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.mapInputValue<List<GetLifecyclePolicyDocumentRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<GetLifecyclePolicyDocumentRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<GetLifecyclePolicyDocumentRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLifecyclePolicyDocumentRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetLifecyclePolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePolicyDocumentArgs(
-      rules: (pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(map['rules']!, (value) => GetLifecyclePolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(
+          map['rules']!,
+          (value) => GetLifecyclePolicyDocumentRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

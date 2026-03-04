@@ -148,7 +148,7 @@ import 'dedicated_host_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -163,16 +163,22 @@ import 'dedicated_host_group_state.dart';
 class DedicatedHostGroup extends pulumi.CustomResource {
   /// Would virtual machines or virtual machine scale sets be placed automatically on this Dedicated Host Group? Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> automaticPlacementEnabled;
+
   /// The Azure location where the Dedicated Host Group exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Dedicated Host Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The number of fault domains that the Dedicated Host Group spans. Changing this forces a new resource to be created.
   late final pulumi.Output<int> platformFaultDomainCount;
+
   /// Specifies the name of the resource group the Dedicated Host Group is located in. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Availability Zone in which this Dedicated Host Group should be located. Changing this forces a new Dedicated Host Group to be created.
   late final pulumi.Output<String?> zone;
 
@@ -185,18 +191,20 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     DedicatedHostGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticPlacementEnabled = registerOutput<bool?>('automaticPlacementEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticPlacementEnabled = registerOutput<bool?>(
+      'automaticPlacementEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String?>('zone');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String?>('zone');
   }
 
   /// Gets an existing [DedicatedHostGroup] resource's state with the given [name] and [id].
@@ -217,17 +225,19 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticPlacementEnabled = registerOutput<bool?>('automaticPlacementEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticPlacementEnabled = registerOutput<bool?>(
+      'automaticPlacementEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String?>('zone');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String?>('zone');
   }
 }

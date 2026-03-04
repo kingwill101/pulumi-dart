@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicEndpointGroupArgs {
   /// The ID of the basic GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
   final pulumi.Input<String>? basicEndpointGroupName;
+
   /// The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
   final pulumi.Input<String>? description;
+
   /// The address of the endpoint.
   final pulumi.Input<String>? endpointAddress;
+
   /// The ID of the region where you want to create the endpoint group.
   final pulumi.Input<String> endpointGroupRegion;
+
   /// The sub address of the endpoint.
   final pulumi.Input<String>? endpointSubAddress;
+
   /// The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
   final pulumi.Input<String>? endpointType;
 
@@ -54,14 +60,35 @@ class BasicEndpointGroupArgs {
 
   factory BasicEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return BasicEndpointGroupArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      basicEndpointGroupName: map['basicEndpointGroupName'] == null ? null : (map['basicEndpointGroupName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress']! as String).input(),
-      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress']! as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      basicEndpointGroupName: (() {
+        final guardedValue = map['basicEndpointGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointAddress: (() {
+        final guardedValue = map['endpointAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointGroupRegion: pulumi.Input.fromValue(
+        map['endpointGroupRegion'] as String,
+      ),
+      endpointSubAddress: (() {
+        final guardedValue = map['endpointSubAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

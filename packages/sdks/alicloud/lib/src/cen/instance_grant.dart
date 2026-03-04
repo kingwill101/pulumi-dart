@@ -6,9 +6,9 @@ import 'instance_grant_state.dart';
 ///
 /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-attachcenchildinstance).
 ///
-/// > **NOTE:** Deprecated since v1.241.0. The resource have been deprecated and new resource type alicloud.cen.TransitRouterGrantAttachment is recommended.
+/// &gt; **NOTE:** Deprecated since v1.241.0. The resource have been deprecated and new resource type alicloud.cen.TransitRouterGrantAttachment is recommended.
 ///
-/// > **NOTE:** Available since v1.37.0.
+/// &gt; **NOTE:** Available since v1.37.0.
 ///
 /// ## Example Usage
 ///
@@ -270,8 +270,10 @@ import 'instance_grant_state.dart';
 class InstanceGrant extends pulumi.CustomResource {
   /// The ID of the CEN.
   late final pulumi.Output<String> cenId;
+
   /// The owner UID of the  CEN which the child instance granted to.
   late final pulumi.Output<String> cenOwnerId;
+
   /// The ID of the child instance to grant.
   late final pulumi.Output<String> childInstanceId;
 
@@ -284,14 +286,14 @@ class InstanceGrant extends pulumi.CustomResource {
     InstanceGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instanceGrant:InstanceGrant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.childInstanceId = registerOutput<String>('childInstanceId');
+         'alicloud:cen/instanceGrant:InstanceGrant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    childInstanceId = registerOutput<String>('childInstanceId');
   }
 
   /// Gets an existing [InstanceGrant] resource's state with the given [name] and [id].
@@ -312,13 +314,13 @@ class InstanceGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instanceGrant:InstanceGrant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.childInstanceId = registerOutput<String>('childInstanceId');
+         'alicloud:cen/instanceGrant:InstanceGrant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    childInstanceId = registerOutput<String>('childInstanceId');
   }
 }

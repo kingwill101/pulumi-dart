@@ -12,7 +12,7 @@ import 'get_ddos_coo_ports_result.dart';
 
 /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in v1.183.0+ .
+/// &gt; **NOTE:** Available in v1.183.0+ .
 ///
 /// ## Example Usage
 ///
@@ -193,7 +193,7 @@ Future<GetDdosBgpInstancesResult> getDdosBgpInstances(
 
 /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.180.0+.
+/// &gt; **NOTE:** Available in v1.180.0+.
 ///
 /// ## Example Usage
 ///
@@ -335,7 +335,7 @@ Future<GetDdosBgpIpsResult> getDdosBgpIps(
 
 /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.123.0.
+/// &gt; **NOTE:** Available since v1.123.0.
 ///
 /// ## Example Usage
 ///
@@ -460,7 +460,7 @@ Future<GetDdosCooDomainResourcesResult> getDdosCooDomainResources(
 
 /// This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.39.0.
+/// &gt; **NOTE:** Available since v1.39.0.
 ///
 /// ## Example Usage
 ///
@@ -568,7 +568,7 @@ Future<GetDdosCooInstancesResult> getDdosCooInstances(
 
 /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.123.0.
+/// &gt; **NOTE:** Available since v1.123.0.
 ///
 /// ## Example Usage
 ///

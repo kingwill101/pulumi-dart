@@ -6,16 +6,15 @@ enum ManagedDatabaseCreateMode {
   valueRecovery("Recovery"),
   valueRestoreLongTermRetentionBackup("RestoreLongTermRetentionBackup");
 
-  const ManagedDatabaseCreateMode(this.value);
-  final String value;
+  const ManagedDatabaseCreateMode(this.wireValue);
+  final String wireValue;
 
   static ManagedDatabaseCreateMode fromValue(String value) {
     for (final item in ManagedDatabaseCreateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedDatabaseCreateMode value: $value');
   }
 }
-

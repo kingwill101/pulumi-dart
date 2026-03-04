@@ -1,5 +1,3 @@
-library module_orgpolicy;
-
 export 'orgpolicy/custom_constraint.dart';
 export 'orgpolicy/custom_constraint_action_type.dart';
 export 'orgpolicy/custom_constraint_args.dart';

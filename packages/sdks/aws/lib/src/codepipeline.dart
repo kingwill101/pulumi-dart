@@ -1,5 +1,3 @@
-library module_codepipeline;
-
 export 'codepipeline/custom_action_type.dart';
 export 'codepipeline/custom_action_type_args.dart';
 export 'codepipeline/custom_action_type_configuration_property.dart';

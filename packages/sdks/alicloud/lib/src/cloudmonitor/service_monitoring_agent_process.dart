@@ -6,7 +6,7 @@ import 'service_monitoring_agent_process_state.dart';
 ///
 /// For information about Cloud Monitor Service Monitoring Agent Process and how to use it, see [What is Monitoring Agent Process](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createmonitoragentprocess).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -381,10 +381,13 @@ import 'service_monitoring_agent_process_state.dart';
 class ServiceMonitoringAgentProcess extends pulumi.CustomResource {
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The ID of the process.
   late final pulumi.Output<String> processId;
+
   /// The name of the process.
   late final pulumi.Output<String> processName;
+
   /// The user who launches the process.
   late final pulumi.Output<String?> processUser;
 
@@ -397,15 +400,15 @@ class ServiceMonitoringAgentProcess extends pulumi.CustomResource {
     ServiceMonitoringAgentProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.processId = registerOutput<String>('processId');
-    this.processName = registerOutput<String>('processName');
-    this.processUser = registerOutput<String?>('processUser');
+         'alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    processId = registerOutput<String>('processId');
+    processName = registerOutput<String>('processName');
+    processUser = registerOutput<String?>('processUser');
   }
 
   /// Gets an existing [ServiceMonitoringAgentProcess] resource's state with the given [name] and [id].
@@ -426,14 +429,14 @@ class ServiceMonitoringAgentProcess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.processId = registerOutput<String>('processId');
-    this.processName = registerOutput<String>('processName');
-    this.processUser = registerOutput<String?>('processUser');
+         'alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    processId = registerOutput<String>('processId');
+    processName = registerOutput<String>('processName');
+    processUser = registerOutput<String?>('processUser');
   }
 }

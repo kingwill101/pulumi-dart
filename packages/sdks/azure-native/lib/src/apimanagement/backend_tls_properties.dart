@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendTlsProperties {
   /// Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
   final pulumi.Input<bool>? validateCertificateChain;
+
   /// Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
   final pulumi.Input<bool>? validateCertificateName;
 
@@ -26,9 +27,16 @@ class BackendTlsProperties {
 
   factory BackendTlsProperties.fromMap(Map<String, dynamic> map) {
     return BackendTlsProperties(
-      validateCertificateChain: map['validateCertificateChain'] == null ? null : (map['validateCertificateChain']! as bool).input(),
-      validateCertificateName: map['validateCertificateName'] == null ? null : (map['validateCertificateName']! as bool).input(),
+      validateCertificateChain: (() {
+        final guardedValue = map['validateCertificateChain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validateCertificateName: (() {
+        final guardedValue = map['validateCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

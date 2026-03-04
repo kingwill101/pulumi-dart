@@ -14,15 +14,14 @@ class GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'phoneNumber': phoneNumber,
-    };
+    return <String, dynamic>{'phoneNumber': phoneNumber};
   }
 
-  factory GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse(
-      phoneNumber: (map['phoneNumber'] as String).input(),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
-

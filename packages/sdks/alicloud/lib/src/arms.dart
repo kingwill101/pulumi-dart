@@ -1,5 +1,3 @@
-library module_arms;
-
 export 'arms/addon_release.dart';
 export 'arms/addon_release_args.dart';
 export 'arms/addon_release_state.dart';

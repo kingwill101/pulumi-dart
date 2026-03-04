@@ -7,29 +7,42 @@ import 'autoscale_time_and_capacity_response.dart';
 class AutoscaleScheduleResponse {
   /// Days of the week for a schedule-based autoscale rule
   final pulumi.Input<List<String>>? days;
+
   /// Time and capacity for a schedule-based autoscale rule
   final pulumi.Input<AutoscaleTimeAndCapacityResponse>? timeAndCapacity;
 
   /// Creates a new [AutoscaleScheduleResponse].
   /// [days] Days of the week for a schedule-based autoscale rule
   /// [timeAndCapacity] Time and capacity for a schedule-based autoscale rule
-  AutoscaleScheduleResponse({
-    this.days,
-    this.timeAndCapacity,
-  });
+  AutoscaleScheduleResponse({this.days, this.timeAndCapacity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'days': ?days,
-      'timeAndCapacity': ?pulumi.Input.mapOptionalInputValue<AutoscaleTimeAndCapacityResponse, Map<String, dynamic>>(timeAndCapacity, (value) => value.toMap()),
+      'timeAndCapacity':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoscaleTimeAndCapacityResponse,
+            Map<String, dynamic>
+          >(timeAndCapacity, (value) => value.toMap()),
     };
   }
 
   factory AutoscaleScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleScheduleResponse(
-      days: map['days'] == null ? null : ((map['days']! as List).cast<String>()).input(),
-      timeAndCapacity: map['timeAndCapacity'] == null ? null : (AutoscaleTimeAndCapacityResponse.fromMap((map['timeAndCapacity']! as Map).cast<String, dynamic>())).input(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      timeAndCapacity: (() {
+        final guardedValue = map['timeAndCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoscaleTimeAndCapacityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

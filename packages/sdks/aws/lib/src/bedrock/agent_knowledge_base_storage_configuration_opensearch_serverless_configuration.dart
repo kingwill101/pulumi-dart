@@ -6,8 +6,13 @@ import 'agent_knowledge_base_storage_configuration_opensearch_serverless_configu
 class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   /// ARN of the OpenSearch Service vector store.
   final pulumi.Input<String> collectionArn;
+
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping> fieldMapping;
+  final pulumi.Input<
+    AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping
+  >
+  fieldMapping;
+
   /// Name of the vector store.
   final pulumi.Input<String> vectorIndexName;
 
@@ -24,17 +29,26 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collectionArn': collectionArn,
-      'fieldMapping': pulumi.Input.mapInputValue<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping, Map<String, dynamic>>(fieldMapping, (value) => value.toMap()),
+      'fieldMapping':
+          pulumi.Input.mapInputValue<
+            AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping,
+            Map<String, dynamic>
+          >(fieldMapping, (value) => value.toMap()),
       'vectorIndexName': vectorIndexName,
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration(
-      collectionArn: (map['collectionArn'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
-      vectorIndexName: (map['vectorIndexName'] as String).input(),
+      collectionArn: pulumi.Input.fromValue(map['collectionArn'] as String),
+      fieldMapping: pulumi.Input.fromValue(
+        AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap(
+          (map['fieldMapping']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vectorIndexName: pulumi.Input.fromValue(map['vectorIndexName'] as String),
     );
   }
 }
-

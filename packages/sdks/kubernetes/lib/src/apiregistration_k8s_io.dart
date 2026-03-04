@@ -1,5 +1,3 @@
-library module_apiregistration_k8s_io;
-
 export 'apiregistration_k8s_io/apiservice.dart';
 export 'apiregistration_k8s_io/apiservice_apiregistration_k8s_io_v1.dart';
 export 'apiregistration_k8s_io/apiservice_apiregistration_k8s_io_v1beta1.dart';

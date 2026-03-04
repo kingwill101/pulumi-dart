@@ -3,20 +3,23 @@ enum ProtectionIntentItemType {
   valueInvalid("Invalid"),
   valueAzureResourceItem("AzureResourceItem"),
   valueRecoveryServiceVaultItem("RecoveryServiceVaultItem"),
-  valueAzureWorkloadContainerAutoProtectionIntent("AzureWorkloadContainerAutoProtectionIntent"),
+  valueAzureWorkloadContainerAutoProtectionIntent(
+    "AzureWorkloadContainerAutoProtectionIntent",
+  ),
   valueAzureWorkloadAutoProtectionIntent("AzureWorkloadAutoProtectionIntent"),
-  valueAzureWorkloadSQLAutoProtectionIntent("AzureWorkloadSQLAutoProtectionIntent");
+  valueAzureWorkloadSQLAutoProtectionIntent(
+    "AzureWorkloadSQLAutoProtectionIntent",
+  );
 
-  const ProtectionIntentItemType(this.value);
-  final String value;
+  const ProtectionIntentItemType(this.wireValue);
+  final String wireValue;
 
   static ProtectionIntentItemType fromValue(String value) {
     for (final item in ProtectionIntentItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtectionIntentItemType value: $value');
   }
 }
-

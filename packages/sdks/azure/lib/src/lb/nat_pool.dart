@@ -4,9 +4,9 @@ import 'nat_pool_state.dart';
 
 /// Manages a Load Balancer NAT pool.
 ///
-/// > **Note:** This resource cannot be used with with virtual machines, instead use the `azure.lb.NatRule` resource.
+/// &gt; **Note:** This resource cannot be used with with virtual machines, instead use the `azure.lb.NatRule` resource.
 ///
-/// > **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
+/// &gt; **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
 ///
 /// ## Example Usage
 ///
@@ -291,7 +291,7 @@ import 'nat_pool_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2023-09-01
@@ -306,25 +306,35 @@ import 'nat_pool_state.dart';
 class NatPool extends pulumi.CustomResource {
   /// The port used for the internal endpoint. Possible values range between 1 and 65535, inclusive.
   late final pulumi.Output<int> backendPort;
+
   /// Are the floating IPs enabled for this Load Balancer Rule? A floating IP is reassigned to a secondary server in case the primary server fails. Required to configure a SQL AlwaysOn Availability Group.
   late final pulumi.Output<bool?> floatingIpEnabled;
   late final pulumi.Output<String> frontendIpConfigurationId;
+
   /// The name of the frontend IP configuration exposing this rule.
   late final pulumi.Output<String> frontendIpConfigurationName;
+
   /// The last port number in the range of external ports that will be used to provide Inbound NAT to NICs associated with this Load Balancer. Possible values range between 1 and 65534, inclusive.
   late final pulumi.Output<int> frontendPortEnd;
+
   /// The first port number in the range of external ports that will be used to provide Inbound NAT to NICs associated with this Load Balancer. Possible values range between 1 and 65534, inclusive.
   late final pulumi.Output<int> frontendPortStart;
+
   /// Specifies the idle timeout in minutes for TCP connections. Valid values are between `4` and `30`. Defaults to `4`.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
+
   /// The ID of the Load Balancer in which to create the NAT pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> loadbalancerId;
+
   /// Specifies the name of the NAT pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The transport protocol for the external endpoint. Possible values are `All`, `Tcp` and `Udp`.
   late final pulumi.Output<String> protocol;
+
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Is TCP Reset enabled for this Load Balancer Rule?
   late final pulumi.Output<bool?> tcpResetEnabled;
 
@@ -337,23 +347,27 @@ class NatPool extends pulumi.CustomResource {
     NatPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/natPool:NatPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendPort = registerOutput<int>('backendPort');
-    this.floatingIpEnabled = registerOutput<bool?>('floatingIpEnabled');
-    this.frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
-    this.frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
-    this.frontendPortEnd = registerOutput<int>('frontendPortEnd');
-    this.frontendPortStart = registerOutput<int>('frontendPortStart');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/natPool:NatPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendPort = registerOutput<int>('backendPort');
+    floatingIpEnabled = registerOutput<bool?>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>(
+      'frontendIpConfigurationId',
+    );
+    frontendIpConfigurationName = registerOutput<String>(
+      'frontendIpConfigurationName',
+    );
+    frontendPortEnd = registerOutput<int>('frontendPortEnd');
+    frontendPortStart = registerOutput<int>('frontendPortStart');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tcpResetEnabled = registerOutput<bool?>('tcpResetEnabled');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tcpResetEnabled = registerOutput<bool?>('tcpResetEnabled');
   }
 
   /// Gets an existing [NatPool] resource's state with the given [name] and [id].
@@ -374,22 +388,26 @@ class NatPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/natPool:NatPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendPort = registerOutput<int>('backendPort');
-    this.floatingIpEnabled = registerOutput<bool?>('floatingIpEnabled');
-    this.frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
-    this.frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
-    this.frontendPortEnd = registerOutput<int>('frontendPortEnd');
-    this.frontendPortStart = registerOutput<int>('frontendPortStart');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/natPool:NatPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendPort = registerOutput<int>('backendPort');
+    floatingIpEnabled = registerOutput<bool?>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>(
+      'frontendIpConfigurationId',
+    );
+    frontendIpConfigurationName = registerOutput<String>(
+      'frontendIpConfigurationName',
+    );
+    frontendPortEnd = registerOutput<int>('frontendPortEnd');
+    frontendPortStart = registerOutput<int>('frontendPortStart');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tcpResetEnabled = registerOutput<bool?>('tcpResetEnabled');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tcpResetEnabled = registerOutput<bool?>('tcpResetEnabled');
   }
 }

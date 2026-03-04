@@ -13,15 +13,16 @@ class DataSetLogicalTableMapDataTransformFilterOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'conditionExpression': conditionExpression,
-    };
+    return <String, dynamic>{'conditionExpression': conditionExpression};
   }
 
-  factory DataSetLogicalTableMapDataTransformFilterOperation.fromMap(Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapDataTransformFilterOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetLogicalTableMapDataTransformFilterOperation(
-      conditionExpression: (map['conditionExpression'] as String).input(),
+      conditionExpression: pulumi.Input.fromValue(
+        map['conditionExpression'] as String,
+      ),
     );
   }
 }
-

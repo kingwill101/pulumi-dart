@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreatorProperties {
   /// The consumed storage unit size in bytes for the creator resource.
   final pulumi.Input<int>? consumedStorageUnitSizeInBytes;
+
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   final pulumi.Input<int> storageUnits;
+
   /// The total allocated storage unit size in bytes for the creator resource.
   final pulumi.Input<int>? totalStorageUnitSizeInBytes;
 
@@ -31,10 +33,17 @@ class CreatorProperties {
 
   factory CreatorProperties.fromMap(Map<String, dynamic> map) {
     return CreatorProperties(
-      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes']! as int).input(),
-      storageUnits: (map['storageUnits'] as int).input(),
-      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes']! as int).input(),
+      consumedStorageUnitSizeInBytes: (() {
+        final guardedValue = map['consumedStorageUnitSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      storageUnits: pulumi.Input.fromValue(map['storageUnits'] as int),
+      totalStorageUnitSizeInBytes: (() {
+        final guardedValue = map['totalStorageUnitSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

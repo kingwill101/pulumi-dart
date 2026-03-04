@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicAuthorizationRuleArgs {
   /// Grants listen access to this this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? listen;
+
   /// Grants manage access to this this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   final pulumi.Input<bool>? manage;
+
   /// Specifies the name of the ServiceBus Topic Authorization Rule resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Grants send access to this this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? send;
+
   /// Specifies the ID of the ServiceBus Topic. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one of the 3 permissions below needs to be set.
+  /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> topicId;
 
   /// Creates a new [TopicAuthorizationRuleArgs].
@@ -46,12 +50,27 @@ class TopicAuthorizationRuleArgs {
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
-      topicId: (map['topicId'] as String).input(),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      topicId: pulumi.Input.fromValue(map['topicId'] as String),
     );
   }
 }
-

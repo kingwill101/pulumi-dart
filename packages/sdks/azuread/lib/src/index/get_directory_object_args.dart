@@ -12,20 +12,15 @@ class GetDirectoryObjectArgs {
 
   /// Creates a new [GetDirectoryObjectArgs].
   /// [objectId] Specifies the Object ID of the directory object to look up.
-  GetDirectoryObjectArgs({
-    required this.objectId,
-  });
+  GetDirectoryObjectArgs({required this.objectId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectId': objectId,
-    };
+    return <String, dynamic>{'objectId': objectId};
   }
 
   factory GetDirectoryObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetDirectoryObjectArgs(
-      objectId: (map['objectId'] as String).input(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
     );
   }
 }
-

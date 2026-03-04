@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImagePipelineExecutionArgs {
   /// The ID of the image template.
   final pulumi.Input<String> imagePipelineId;
+
   /// The status of the image build task. Valid values:
   /// - CANCELLED: canceled. The build process has been canceled.
   final pulumi.Input<String>? status;
@@ -16,10 +17,7 @@ class ImagePipelineExecutionArgs {
   /// Creates a new [ImagePipelineExecutionArgs].
   /// [imagePipelineId] The ID of the image template.
   /// [status] The status of the image build task. Valid values:
-  ImagePipelineExecutionArgs({
-    required this.imagePipelineId,
-    this.status,
-  });
+  ImagePipelineExecutionArgs({required this.imagePipelineId, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,9 +28,12 @@ class ImagePipelineExecutionArgs {
 
   factory ImagePipelineExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionArgs(
-      imagePipelineId: (map['imagePipelineId'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      imagePipelineId: pulumi.Input.fromValue(map['imagePipelineId'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

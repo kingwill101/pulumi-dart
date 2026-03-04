@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceWorkspaceProperty {
   /// Compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
   final pulumi.Input<String> computeTypeName;
+
   /// Size of the root volume.
   final pulumi.Input<int> rootVolumeSizeGib;
+
   /// Running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
   final pulumi.Input<String> runningMode;
+
   /// Time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
   final pulumi.Input<int> runningModeAutoStopTimeoutInMinutes;
+
   /// Size of the user storage.
   final pulumi.Input<int> userVolumeSizeGib;
 
@@ -33,19 +37,25 @@ class GetWorkspaceWorkspaceProperty {
       'computeTypeName': computeTypeName,
       'rootVolumeSizeGib': rootVolumeSizeGib,
       'runningMode': runningMode,
-      'runningModeAutoStopTimeoutInMinutes': runningModeAutoStopTimeoutInMinutes,
+      'runningModeAutoStopTimeoutInMinutes':
+          runningModeAutoStopTimeoutInMinutes,
       'userVolumeSizeGib': userVolumeSizeGib,
     };
   }
 
   factory GetWorkspaceWorkspaceProperty.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceWorkspaceProperty(
-      computeTypeName: (map['computeTypeName'] as String).input(),
-      rootVolumeSizeGib: (map['rootVolumeSizeGib'] as int).input(),
-      runningMode: (map['runningMode'] as String).input(),
-      runningModeAutoStopTimeoutInMinutes: (map['runningModeAutoStopTimeoutInMinutes'] as int).input(),
-      userVolumeSizeGib: (map['userVolumeSizeGib'] as int).input(),
+      computeTypeName: pulumi.Input.fromValue(map['computeTypeName'] as String),
+      rootVolumeSizeGib: pulumi.Input.fromValue(
+        map['rootVolumeSizeGib'] as int,
+      ),
+      runningMode: pulumi.Input.fromValue(map['runningMode'] as String),
+      runningModeAutoStopTimeoutInMinutes: pulumi.Input.fromValue(
+        map['runningModeAutoStopTimeoutInMinutes'] as int,
+      ),
+      userVolumeSizeGib: pulumi.Input.fromValue(
+        map['userVolumeSizeGib'] as int,
+      ),
     );
   }
 }
-

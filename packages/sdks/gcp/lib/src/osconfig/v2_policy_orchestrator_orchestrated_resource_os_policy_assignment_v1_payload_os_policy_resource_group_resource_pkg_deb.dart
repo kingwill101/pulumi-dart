@@ -9,9 +9,13 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// - install when true: `apt-get update && apt-get -y install
   /// package.deb`
   final pulumi.Input<bool>? pullDeps;
+
   /// A remote or local file.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource> source;
+  final pulumi.Input<
+    V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource
+  >
+  source;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb].
   /// [pullDeps] Whether dependencies should also be installed.
@@ -24,15 +28,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': ?pullDeps,
-      'source': pulumi.Input.mapInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
-      source: (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      pullDeps: (() {
+        final guardedValue = map['pullDeps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      source: pulumi.Input.fromValue(
+        V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

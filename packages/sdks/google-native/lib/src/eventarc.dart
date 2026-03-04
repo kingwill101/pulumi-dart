@@ -1,5 +1,3 @@
-library module_eventarc;
-
 export 'eventarc/audit_config.dart';
 export 'eventarc/audit_config_eventarc_v1beta1.dart';
 export 'eventarc/audit_config_response.dart';

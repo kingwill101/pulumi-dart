@@ -9,20 +9,39 @@ class DomainIoThreadIDs {
 
   /// Creates a new [DomainIoThreadIDs].
   /// [ioThreads] Defines the individual I/O threads associated with the domain.
-  DomainIoThreadIDs({
-    this.ioThreads,
-  });
+  DomainIoThreadIDs({this.ioThreads});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ioThreads': ?pulumi.Input.mapOptionalInputValue<List<DomainIoThreadIDsIoThread>, List<Map<String, dynamic>>>(ioThreads, (value) => pulumi.Input.encodeList<DomainIoThreadIDsIoThread, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ioThreads':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainIoThreadIDsIoThread>,
+            List<Map<String, dynamic>>
+          >(
+            ioThreads,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainIoThreadIDsIoThread,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainIoThreadIDs.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDs(
-      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(map['ioThreads']!, (value) => DomainIoThreadIDsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ioThreads: (() {
+        final guardedValue = map['ioThreads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(
+            guardedValue,
+            (value) => DomainIoThreadIDsIoThread.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'link_response.dart';
 class CategoryInformationResponse {
   /// Category display name of the child configuration.
   final pulumi.Input<String>? categoryDisplayName;
+
   /// Category name of the child configuration.
   final pulumi.Input<String>? categoryName;
+
   /// Description text for the category.
   final pulumi.Input<String>? description;
+
   /// Links for the category.
   final pulumi.Input<List<LinkResponse>>? links;
 
@@ -31,17 +34,49 @@ class CategoryInformationResponse {
       'categoryDisplayName': ?categoryDisplayName,
       'categoryName': ?categoryName,
       'description': ?description,
-      'links': ?pulumi.Input.mapOptionalInputValue<List<LinkResponse>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'links':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LinkResponse>,
+            List<Map<String, dynamic>>
+          >(
+            links,
+            (value) =>
+                pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory CategoryInformationResponse.fromMap(Map<String, dynamic> map) {
     return CategoryInformationResponse(
-      categoryDisplayName: map['categoryDisplayName'] == null ? null : (map['categoryDisplayName']! as String).input(),
-      categoryName: map['categoryName'] == null ? null : (map['categoryName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<LinkResponse>(map['links']!, (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      categoryDisplayName: (() {
+        final guardedValue = map['categoryDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      categoryName: (() {
+        final guardedValue = map['categoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      links: (() {
+        final guardedValue = map['links'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LinkResponse>(
+            guardedValue,
+            (value) =>
+                LinkResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

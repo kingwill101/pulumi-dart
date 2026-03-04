@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-vpc-subnets-with-tags
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC subnet tagging example in Dart.

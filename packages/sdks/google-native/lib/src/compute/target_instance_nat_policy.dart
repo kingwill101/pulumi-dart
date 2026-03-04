@@ -2,16 +2,15 @@
 enum TargetInstanceNatPolicy {
   noNat("NO_NAT");
 
-  const TargetInstanceNatPolicy(this.value);
-  final String value;
+  const TargetInstanceNatPolicy(this.wireValue);
+  final String wireValue;
 
   static TargetInstanceNatPolicy fromValue(String value) {
     for (final item in TargetInstanceNatPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetInstanceNatPolicy value: $value');
   }
 }
-

@@ -7,29 +7,52 @@ import 'audit_log_config_gkehub_v1alpha.dart';
 class AuditConfigGkehubV1alpha {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigGkehubV1alpha>>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String>? service;
 
   /// Creates a new [AuditConfigGkehubV1alpha].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigGkehubV1alpha({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigGkehubV1alpha({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<AuditLogConfigGkehubV1alpha>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigGkehubV1alpha, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AuditLogConfigGkehubV1alpha>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuditLogConfigGkehubV1alpha,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'service': ?service,
     };
   }
 
   factory AuditConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditConfigGkehubV1alpha(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha>(map['auditLogConfigs']!, (value) => AuditLogConfigGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      auditLogConfigs: (() {
+        final guardedValue = map['auditLogConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha>(
+            guardedValue,
+            (value) => AuditLogConfigGkehubV1alpha.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

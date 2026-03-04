@@ -15,6 +15,7 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
   /// }
   /// ```
   final pulumi.Input<String>? channel;
+
   /// Whether the RRSA feature has been enabled.
   final pulumi.Input<bool>? enabled;
 
@@ -27,17 +28,23 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': ?channel,
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'channel': ?channel, 'enabled': ?enabled};
   }
 
-  factory ServerlessKubernetesOperationPolicyClusterAutoUpgrade.fromMap(Map<String, dynamic> map) {
+  factory ServerlessKubernetesOperationPolicyClusterAutoUpgrade.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerlessKubernetesOperationPolicyClusterAutoUpgrade(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

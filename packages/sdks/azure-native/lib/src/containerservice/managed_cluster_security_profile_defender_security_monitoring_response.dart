@@ -14,15 +14,18 @@ class ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

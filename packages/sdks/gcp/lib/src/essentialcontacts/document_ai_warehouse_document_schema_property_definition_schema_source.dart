@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
   /// The schema name in the source.
   final pulumi.Input<String>? name;
+
   /// The Doc AI processor type name.
   final pulumi.Input<String>? processorType;
 
@@ -17,17 +18,23 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'processorType': ?processorType,
-    };
+    return <String, dynamic>{'name': ?name, 'processorType': ?processorType};
   }
 
-  factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource.fromMap(Map<String, dynamic> map) {
+  factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      processorType: map['processorType'] == null ? null : (map['processorType']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processorType: (() {
+        final guardedValue = map['processorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

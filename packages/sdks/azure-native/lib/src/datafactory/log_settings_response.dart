@@ -8,8 +8,10 @@ import 'log_location_settings_response.dart';
 class LogSettingsResponse {
   /// Specifies settings for copy activity log.
   final pulumi.Input<CopyActivityLogSettingsResponse>? copyActivityLogSettings;
+
   /// Specifies whether to enable copy activity log. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableCopyActivityLog;
+
   /// Log location settings customer needs to provide when enabling log.
   final pulumi.Input<LogLocationSettingsResponse> logLocationSettings;
 
@@ -25,18 +27,41 @@ class LogSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'copyActivityLogSettings': ?pulumi.Input.mapOptionalInputValue<CopyActivityLogSettingsResponse, Map<String, dynamic>>(copyActivityLogSettings, (value) => value.toMap()),
+      'copyActivityLogSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CopyActivityLogSettingsResponse,
+            Map<String, dynamic>
+          >(copyActivityLogSettings, (value) => value.toMap()),
       'enableCopyActivityLog': ?enableCopyActivityLog,
-      'logLocationSettings': pulumi.Input.mapInputValue<LogLocationSettingsResponse, Map<String, dynamic>>(logLocationSettings, (value) => value.toMap()),
+      'logLocationSettings':
+          pulumi.Input.mapInputValue<
+            LogLocationSettingsResponse,
+            Map<String, dynamic>
+          >(logLocationSettings, (value) => value.toMap()),
     };
   }
 
   factory LogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LogSettingsResponse(
-      copyActivityLogSettings: map['copyActivityLogSettings'] == null ? null : (CopyActivityLogSettingsResponse.fromMap((map['copyActivityLogSettings']! as Map).cast<String, dynamic>())).input(),
-      enableCopyActivityLog: map['enableCopyActivityLog'] == null ? null : (map['enableCopyActivityLog']!).input(),
-      logLocationSettings: (LogLocationSettingsResponse.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>())).input(),
+      copyActivityLogSettings: (() {
+        final guardedValue = map['copyActivityLogSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CopyActivityLogSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableCopyActivityLog: (() {
+        final guardedValue = map['enableCopyActivityLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      logLocationSettings: pulumi.Input.fromValue(
+        LogLocationSettingsResponse.fromMap(
+          (map['logLocationSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecoveryPlanManualActionDetails {
   /// The manual action description.
   final pulumi.Input<String>? description;
+
   /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// Expected value is 'ManualActionDetails'.
   final pulumi.Input<String> instanceType;
@@ -27,9 +28,12 @@ class RecoveryPlanManualActionDetails {
 
   factory RecoveryPlanManualActionDetails.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanManualActionDetails(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

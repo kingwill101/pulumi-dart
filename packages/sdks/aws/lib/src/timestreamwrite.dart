@@ -1,5 +1,3 @@
-library module_timestreamwrite;
-
 export 'timestreamwrite/database.dart';
 export 'timestreamwrite/database_args.dart';
 export 'timestreamwrite/database_state.dart';

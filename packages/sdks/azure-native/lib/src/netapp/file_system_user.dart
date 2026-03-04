@@ -8,29 +8,46 @@ import 'nfs_user.dart';
 class FileSystemUser {
   /// The effective CIFS username when accessing the volume data.
   final pulumi.Input<CifsUser>? cifsUser;
+
   /// The effective NFS User ID and Group ID when accessing the volume data.
   final pulumi.Input<NfsUser>? nfsUser;
 
   /// Creates a new [FileSystemUser].
   /// [cifsUser] The effective CIFS username when accessing the volume data.
   /// [nfsUser] The effective NFS User ID and Group ID when accessing the volume data.
-  FileSystemUser({
-    this.cifsUser,
-    this.nfsUser,
-  });
+  FileSystemUser({this.cifsUser, this.nfsUser});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cifsUser': ?pulumi.Input.mapOptionalInputValue<CifsUser, Map<String, dynamic>>(cifsUser, (value) => value.toMap()),
-      'nfsUser': ?pulumi.Input.mapOptionalInputValue<NfsUser, Map<String, dynamic>>(nfsUser, (value) => value.toMap()),
+      'cifsUser':
+          ?pulumi.Input.mapOptionalInputValue<CifsUser, Map<String, dynamic>>(
+            cifsUser,
+            (value) => value.toMap(),
+          ),
+      'nfsUser':
+          ?pulumi.Input.mapOptionalInputValue<NfsUser, Map<String, dynamic>>(
+            nfsUser,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory FileSystemUser.fromMap(Map<String, dynamic> map) {
     return FileSystemUser(
-      cifsUser: map['cifsUser'] == null ? null : (CifsUser.fromMap((map['cifsUser']! as Map).cast<String, dynamic>())).input(),
-      nfsUser: map['nfsUser'] == null ? null : (NfsUser.fromMap((map['nfsUser']! as Map).cast<String, dynamic>())).input(),
+      cifsUser: (() {
+        final guardedValue = map['cifsUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CifsUser.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      nfsUser: (() {
+        final guardedValue = map['nfsUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

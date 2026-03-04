@@ -8,18 +8,25 @@ import 'system_data_response.dart';
 class GetOrganizationEnvironmentByIdResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Type of environment
   final String? kind;
+
   /// Metadata of the record
   final SCMetadataEntityResponse? metadata;
+
   /// The name of the resource
   final String name;
+
   /// Stream governance configuration
   final StreamGovernanceConfigResponse? streamGovernanceConfig;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -48,25 +55,44 @@ class GetOrganizationEnvironmentByIdResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?metadata?.toMap(),
       'name': name,
-      'streamGovernanceConfig': ?streamGovernanceConfig == null ? null : streamGovernanceConfig!.toMap(),
+      'streamGovernanceConfig': ?streamGovernanceConfig?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetOrganizationEnvironmentByIdResult.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationEnvironmentByIdResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationEnvironmentByIdResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      metadata: map['metadata'] == null ? null : SCMetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return SCMetadataEntityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : StreamGovernanceConfigResponse.fromMap((map['streamGovernanceConfig']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      streamGovernanceConfig: (() {
+        final guardedValue = map['streamGovernanceConfig'];
+        if (guardedValue == null) return null;
+        return StreamGovernanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

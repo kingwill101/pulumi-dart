@@ -271,18 +271,25 @@ import 'system_data_response.dart';
 class ManagedNamespace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
   late final pulumi.Output<String> eTag;
+
   /// The location of the namespace.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
+
   /// Properties of a namespace.
   late final pulumi.Output<NamespacePropertiesResponse> properties;
+
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags to be persisted on the managed cluster namespace.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -295,18 +302,18 @@ class ManagedNamespace extends pulumi.CustomResource {
     ManagedNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:ManagedNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:containerservice:ManagedNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<NamespacePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<NamespacePropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

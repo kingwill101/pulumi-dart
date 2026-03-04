@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestorePointArgs {
   /// The expand expression to apply on the operation. 'InstanceView' retrieves information about the run-time state of a restore point.
   final pulumi.Input<String>? expand;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the restore point collection.
   final pulumi.Input<String> restorePointCollectionName;
+
   /// The name of the restore point.
   final pulumi.Input<String> restorePointName;
 
@@ -39,11 +42,20 @@ class GetRestorePointArgs {
 
   factory GetRestorePointArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePointArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
-      restorePointName: (map['restorePointName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      restorePointCollectionName: pulumi.Input.fromValue(
+        map['restorePointCollectionName'] as String,
+      ),
+      restorePointName: pulumi.Input.fromValue(
+        map['restorePointName'] as String,
+      ),
     );
   }
 }
-

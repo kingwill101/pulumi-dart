@@ -8,28 +8,40 @@ import 'system_data_response.dart';
 class GetPrometheusRuleGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Apply rule to data from a specific cluster.
   final String? clusterName;
+
   /// Rule group description.
   final String? description;
+
   /// Enable/disable rule group.
   final bool? enabled;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The interval in which to run the Prometheus rule group represented in ISO 8601 duration format. Should be between 1 and 15 minutes
   final String? interval;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Defines the rules in the Prometheus rule group.
   final List<PrometheusRuleResponse> rules;
+
   /// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   final List<String> scopes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -73,7 +85,11 @@ class GetPrometheusRuleGroupResult {
       'interval': ?interval,
       'location': location,
       'name': name,
-      'rules': pulumi.Input.encodeList<PrometheusRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<PrometheusRuleResponse, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
       'scopes': scopes,
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -84,19 +100,45 @@ class GetPrometheusRuleGroupResult {
   factory GetPrometheusRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPrometheusRuleGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterName: map['clusterName'] == null ? null : map['clusterName']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      interval: map['interval'] == null ? null : map['interval']! as String,
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      rules: pulumi.Input.decodeList<PrometheusRuleResponse>(map['rules'], (value) => PrometheusRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<PrometheusRuleResponse>(
+        map['rules']!,
+        (value) => PrometheusRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       scopes: (map['scopes'] as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

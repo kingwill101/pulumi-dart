@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityArgs {
   /// The capability that should be applied to the Chaos Studio Target. For supported values please see this Chaos Studio [Fault Library](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library). Changing this forces a new Chaos Studio Capability to be created.
   final pulumi.Input<String> capabilityType;
+
   /// The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
   final pulumi.Input<String> chaosStudioTargetId;
 
@@ -29,9 +30,10 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityType: (map['capabilityType'] as String).input(),
-      chaosStudioTargetId: (map['chaosStudioTargetId'] as String).input(),
+      capabilityType: pulumi.Input.fromValue(map['capabilityType'] as String),
+      chaosStudioTargetId: pulumi.Input.fromValue(
+        map['chaosStudioTargetId'] as String,
+      ),
     );
   }
 }
-

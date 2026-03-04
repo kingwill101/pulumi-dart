@@ -4,16 +4,15 @@ enum LocalDNSMode {
   valueRequired("Required"),
   valueDisabled("Disabled");
 
-  const LocalDNSMode(this.value);
-  final String value;
+  const LocalDNSMode(this.wireValue);
+  final String wireValue;
 
   static LocalDNSMode fromValue(String value) {
     for (final item in LocalDNSMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalDNSMode value: $value');
   }
 }
-

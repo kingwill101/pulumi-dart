@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshNetwork {
   /// The ID of the Security group
   final pulumi.Input<String> securityGroupId;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The list of Virtual Switch.
   final pulumi.Input<List<String>> vswitcheLists;
 
@@ -30,10 +32,11 @@ class GetServiceMeshesMeshNetwork {
 
   factory GetServiceMeshesMeshNetwork.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshNetwork(
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitcheLists: ((map['vswitcheLists'] as List).cast<String>()).input(),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitcheLists: pulumi.Input.fromValue(
+        (map['vswitcheLists'] as List).cast<String>(),
+      ),
     );
   }
 }
-

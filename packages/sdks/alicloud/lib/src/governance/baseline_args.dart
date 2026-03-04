@@ -12,8 +12,10 @@ class BaselineArgs {
   ///
   /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
   final pulumi.Input<List<BaselineBaselineItem>>? baselineItems;
+
   /// Baseline Name.
   final pulumi.Input<String>? baselineName;
+
   /// Baseline Description.
   final pulumi.Input<String>? description;
 
@@ -21,15 +23,22 @@ class BaselineArgs {
   /// [baselineItems] List of baseline items.
   /// [baselineName] Baseline Name.
   /// [description] Baseline Description.
-  BaselineArgs({
-    this.baselineItems,
-    this.baselineName,
-    this.description,
-  });
+  BaselineArgs({this.baselineItems, this.baselineName, this.description});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baselineItems': ?pulumi.Input.mapOptionalInputValue<List<BaselineBaselineItem>, List<Map<String, dynamic>>>(baselineItems, (value) => pulumi.Input.encodeList<BaselineBaselineItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'baselineItems':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BaselineBaselineItem>,
+            List<Map<String, dynamic>>
+          >(
+            baselineItems,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BaselineBaselineItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'baselineName': ?baselineName,
       'description': ?description,
     };
@@ -37,10 +46,28 @@ class BaselineArgs {
 
   factory BaselineArgs.fromMap(Map<String, dynamic> map) {
     return BaselineArgs(
-      baselineItems: map['baselineItems'] == null ? null : (pulumi.Input.decodeList<BaselineBaselineItem>(map['baselineItems']!, (value) => BaselineBaselineItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      baselineName: map['baselineName'] == null ? null : (map['baselineName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
+      baselineItems: (() {
+        final guardedValue = map['baselineItems'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BaselineBaselineItem>(
+            guardedValue,
+            (value) => BaselineBaselineItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      baselineName: (() {
+        final guardedValue = map['baselineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

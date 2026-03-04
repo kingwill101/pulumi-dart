@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbCertificateAttachmentState {
   /// Name of your SSL/TLS certificate.
   final pulumi.Input<String>? certificateName;
+
   /// Name of the load balancer to which you want to associate the SSL/TLS certificate.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? lbName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -33,10 +35,21 @@ class LbCertificateAttachmentState {
 
   factory LbCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return LbCertificateAttachmentState(
-      certificateName: map['certificateName'] == null ? null : ((map['certificateName'] as String).input()).input(),
-      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lbName: (() {
+        final guardedValue = map['lbName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

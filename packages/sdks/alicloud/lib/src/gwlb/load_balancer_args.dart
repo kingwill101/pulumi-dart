@@ -12,18 +12,24 @@ class LoadBalancerArgs {
   ///
   /// - `Ipv4`: IPv4 (default)
   final pulumi.Input<String>? addressIpVersion;
+
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// The GWLB instance name.
   ///
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   final pulumi.Input<String>? loadBalancerName;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The tag keys. You can specify at most 20 tags in each call.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The virtual private cloud (VPC) ID.
   final pulumi.Input<String> vpcId;
+
   /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
   final pulumi.Input<List<LoadBalancerZoneMapping>> zoneMappings;
 
@@ -53,20 +59,59 @@ class LoadBalancerArgs {
       'resourceGroupId': ?resourceGroupId,
       'tags': ?tags,
       'vpcId': vpcId,
-      'zoneMappings': pulumi.Input.mapInputValue<List<LoadBalancerZoneMapping>, List<Map<String, dynamic>>>(zoneMappings, (value) => pulumi.Input.encodeList<LoadBalancerZoneMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'zoneMappings':
+          pulumi.Input.mapInputValue<
+            List<LoadBalancerZoneMapping>,
+            List<Map<String, dynamic>>
+          >(
+            zoneMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoadBalancerZoneMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      zoneMappings: (pulumi.Input.decodeList<LoadBalancerZoneMapping>(map['zoneMappings'], (value) => LoadBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressIpVersion: (() {
+        final guardedValue = map['addressIpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerName: (() {
+        final guardedValue = map['loadBalancerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      zoneMappings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LoadBalancerZoneMapping>(
+          map['zoneMappings']!,
+          (value) => LoadBalancerZoneMapping.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

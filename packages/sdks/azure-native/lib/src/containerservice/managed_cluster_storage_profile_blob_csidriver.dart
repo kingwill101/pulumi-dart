@@ -9,20 +9,21 @@ class ManagedClusterStorageProfileBlobCSIDriver {
 
   /// Creates a new [ManagedClusterStorageProfileBlobCSIDriver].
   /// [enabled] Whether to enable AzureBlob CSI Driver. The default value is false.
-  ManagedClusterStorageProfileBlobCSIDriver({
-    this.enabled,
-  });
+  ManagedClusterStorageProfileBlobCSIDriver({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterStorageProfileBlobCSIDriver.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterStorageProfileBlobCSIDriver.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterStorageProfileBlobCSIDriver(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

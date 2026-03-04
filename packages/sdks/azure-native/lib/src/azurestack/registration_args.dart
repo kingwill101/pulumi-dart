@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistrationArgs {
   /// Location of the resource.
   final pulumi.Input<String>? location;
+
   /// Name of the Azure Stack registration.
   final pulumi.Input<String>? registrationName;
+
   /// The token identifying registered Azure Stack
   final pulumi.Input<String> registrationToken;
+
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -39,11 +42,20 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      registrationName: map['registrationName'] == null ? null : (map['registrationName']! as String).input(),
-      registrationToken: (map['registrationToken'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationName: (() {
+        final guardedValue = map['registrationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationToken: pulumi.Input.fromValue(
+        map['registrationToken'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
-

@@ -162,18 +162,25 @@ import 'sql_server_args.dart';
 class SqlServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Cores of the Sql Server.
   late final pulumi.Output<int?> cores;
+
   /// Sql Server Edition.
   late final pulumi.Output<String?> edition;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Sql Server Json Property Bag.
   late final pulumi.Output<String?> propertyBag;
+
   /// ID for Parent Sql Server Registration.
   late final pulumi.Output<String?> registrationID;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
+
   /// Version of the Sql Server.
   late final pulumi.Output<String?> version;
 
@@ -186,18 +193,18 @@ class SqlServer extends pulumi.CustomResource {
     SqlServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azuredata:SqlServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cores = registerOutput<int?>('cores');
-    this.edition = registerOutput<String?>('edition');
+         'azure-native:azuredata:SqlServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cores = registerOutput<int?>('cores');
+    edition = registerOutput<String?>('edition');
     this.name = registerOutput<String>('name');
-    this.propertyBag = registerOutput<String?>('propertyBag');
-    this.registrationID = registerOutput<String?>('registrationID');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    propertyBag = registerOutput<String?>('propertyBag');
+    registrationID = registerOutput<String?>('registrationID');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

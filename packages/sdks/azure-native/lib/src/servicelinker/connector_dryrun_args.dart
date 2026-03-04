@@ -10,12 +10,16 @@ import 'create_or_update_dryrun_parameters.dart';
 class ConnectorDryrunArgs {
   /// The name of dryrun.
   final pulumi.Input<String>? dryrunName;
+
   /// The name of Azure region.
   final pulumi.Input<String> location;
+
   /// The parameters of the dryrun
   final pulumi.Input<CreateOrUpdateDryrunParameters>? parameters;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the target subscription.
   final pulumi.Input<String>? subscriptionId;
 
@@ -37,7 +41,11 @@ class ConnectorDryrunArgs {
     return <String, dynamic>{
       'dryrunName': ?dryrunName,
       'location': location,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<CreateOrUpdateDryrunParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            CreateOrUpdateDryrunParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
     };
@@ -45,12 +53,29 @@ class ConnectorDryrunArgs {
 
   factory ConnectorDryrunArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorDryrunArgs(
-      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName']! as String).input(),
-      location: (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      dryrunName: (() {
+        final guardedValue = map['dryrunName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CreateOrUpdateDryrunParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

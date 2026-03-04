@@ -155,16 +155,22 @@ import 'volume_snapshot_state.dart';
 class VolumeSnapshot extends pulumi.CustomResource {
   /// The date and time the volume snapshot was created.
   late final pulumi.Output<String> createdAt;
+
   /// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
   late final pulumi.Output<int> minDiskSize;
+
   /// A name for the volume snapshot.
   late final pulumi.Output<String> name;
+
   /// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
   late final pulumi.Output<List<String>> regions;
+
   /// The billable size of the volume snapshot in gigabytes.
   late final pulumi.Output<double> size;
+
   /// A list of the tags to be applied to this volume snapshot.
   late final pulumi.Output<List<String>?> tags;
+
   /// The ID of the volume from which the volume snapshot originated.
   late final pulumi.Output<String> volumeId;
 
@@ -177,18 +183,18 @@ class VolumeSnapshot extends pulumi.CustomResource {
     VolumeSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/volumeSnapshot:VolumeSnapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.minDiskSize = registerOutput<int>('minDiskSize');
+         'digitalocean:index/volumeSnapshot:VolumeSnapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    this.regions = registerOutput<List<String>>('regions');
-    this.size = registerOutput<double>('size');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.volumeId = registerOutput<String>('volumeId');
+    regions = registerOutput<List<String>>('regions');
+    size = registerOutput<double>('size');
+    tags = registerOutput<List<String>?>('tags');
+    volumeId = registerOutput<String>('volumeId');
   }
 
   /// Gets an existing [VolumeSnapshot] resource's state with the given [name] and [id].
@@ -209,17 +215,17 @@ class VolumeSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/volumeSnapshot:VolumeSnapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.minDiskSize = registerOutput<int>('minDiskSize');
+         'digitalocean:index/volumeSnapshot:VolumeSnapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    this.regions = registerOutput<List<String>>('regions');
-    this.size = registerOutput<double>('size');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.volumeId = registerOutput<String>('volumeId');
+    regions = registerOutput<List<String>>('regions');
+    size = registerOutput<double>('size');
+    tags = registerOutput<List<String>?>('tags');
+    volumeId = registerOutput<String>('volumeId');
   }
 }

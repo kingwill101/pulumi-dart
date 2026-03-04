@@ -20,16 +20,15 @@ enum WorkloadComplianceRegime {
   il2("IL2"),
   jpRegionsAndSupport("JP_REGIONS_AND_SUPPORT");
 
-  const WorkloadComplianceRegime(this.value);
-  final String value;
+  const WorkloadComplianceRegime(this.wireValue);
+  final String wireValue;
 
   static WorkloadComplianceRegime fromValue(String value) {
     for (final item in WorkloadComplianceRegime.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadComplianceRegime value: $value');
   }
 }
-

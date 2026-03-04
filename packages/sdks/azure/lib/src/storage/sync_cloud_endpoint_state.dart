@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncCloudEndpointState {
   /// The Storage Share name to be synchronized in this Storage Sync Cloud Endpoint. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   final pulumi.Input<String>? fileShareName;
+
   /// The name which should be used for this Storage Sync Cloud Endpoint. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   final pulumi.Input<String>? storageAccountId;
+
   /// The Tenant ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created. Defaults to the current tenant id.
   final pulumi.Input<String>? storageAccountTenantId;
+
   /// The ID of the Storage Sync Group where this Cloud Endpoint should be created. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   final pulumi.Input<String>? storageSyncGroupId;
 
@@ -41,12 +45,31 @@ class SyncCloudEndpointState {
 
   factory SyncCloudEndpointState.fromMap(Map<String, dynamic> map) {
     return SyncCloudEndpointState(
-      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId']! as String).input(),
-      storageSyncGroupId: map['storageSyncGroupId'] == null ? null : (map['storageSyncGroupId']! as String).input(),
+      fileShareName: (() {
+        final guardedValue = map['fileShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountTenantId: (() {
+        final guardedValue = map['storageAccountTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSyncGroupId: (() {
+        final guardedValue = map['storageSyncGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

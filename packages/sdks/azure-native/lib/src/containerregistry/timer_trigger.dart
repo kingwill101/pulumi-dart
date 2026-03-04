@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimerTrigger {
   /// The name of the trigger.
   final pulumi.Input<String> name;
+
   /// The CRON expression for the task schedule
   final pulumi.Input<String> schedule;
+
   /// The current status of trigger.
   final pulumi.Input<String>? status;
 
@@ -15,11 +17,7 @@ class TimerTrigger {
   /// [name] The name of the trigger.
   /// [schedule] The CRON expression for the task schedule
   /// [status] The current status of trigger.
-  TimerTrigger({
-    required this.name,
-    required this.schedule,
-    this.status,
-  });
+  TimerTrigger({required this.name, required this.schedule, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,13 @@ class TimerTrigger {
 
   factory TimerTrigger.fromMap(Map<String, dynamic> map) {
     return TimerTrigger(
-      name: (map['name'] as String).input(),
-      schedule: (map['schedule'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

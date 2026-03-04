@@ -12,16 +12,15 @@ enum AzureOffer {
   savingsPlan1Year("SavingsPlan1Year"),
   savingsPlan3Year("SavingsPlan3Year");
 
-  const AzureOffer(this.value);
-  final String value;
+  const AzureOffer(this.wireValue);
+  final String wireValue;
 
   static AzureOffer fromValue(String value) {
     for (final item in AzureOffer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureOffer value: $value');
   }
 }
-

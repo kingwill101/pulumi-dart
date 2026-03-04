@@ -154,7 +154,7 @@ import 'service_plan_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -169,41 +169,54 @@ import 'service_plan_state.dart';
 class ServicePlan extends pulumi.CustomResource {
   /// The ID of the App Service Environment to create this Service Plan in.
   ///
-  /// > **Note:** Requires an Isolated SKU for `azure.appservice.EnvironmentV3`, supported values include `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`, `I4v2`, `I4mv2`, `I5v2`, `I5mv2`, and `I6v2`.
+  /// &gt; **Note:** Requires an Isolated SKU for `azure.appservice.EnvironmentV3`, supported values include `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`, `I4v2`, `I4mv2`, `I5v2`, `I5mv2`, and `I6v2`.
   late final pulumi.Output<String?> appServiceEnvironmentId;
+
   /// A string representing the Kind of Service Plan.
   late final pulumi.Output<String> kind;
+
   /// The Azure Region where the Service Plan should exist. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> location;
+
   /// The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premium_plan_auto_scale_enabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
   late final pulumi.Output<int> maximumElasticWorkerCount;
+
   /// The name which should be used for this Service Plan. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> name;
+
   /// The O/S type for the App Services to be hosted in this plan. Possible values include `Windows`, `Linux`, and `WindowsContainer`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> osType;
+
   /// Should Per Site Scaling be enabled. Defaults to `false`.
   late final pulumi.Output<bool?> perSiteScalingEnabled;
+
   /// Should automatic scaling be enabled for the Premium SKU Plan. Defaults to `false`. Cannot be set unless using a Premium SKU.
   late final pulumi.Output<bool?> premiumPlanAutoScaleEnabled;
+
   /// Whether this is a reserved Service Plan Type. `true` if `os_type` is `Linux`, otherwise `false`.
   late final pulumi.Output<bool> reserved;
+
   /// The name of the Resource Group where the Service Plan should exist. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SKU for the plan. Possible values include `B1`, `B2`, `B3`, `D1`, `F1`, `I1`, `I2`, `I3`, `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`, `I4v2`, `I4mv2`, `I5v2`, `I5mv2`, `I6v2`, `P1v2`, `P2v2`, `P3v2`, `P0v3`, `P1v3`, `P2v3`, `P3v3`, `P1mv3`, `P2mv3`, `P3mv3`, `P4mv3`, `P5mv3`, `P0v4`, `P1v4`, `P2v4`, `P3v4`, `P1mv4`, `P2mv4`, `P3mv4`, `P4mv4`, `P5mv4`, `S1`, `S2`, `S3`, `SHARED`, `EP1`, `EP2`, `EP3`, `FC1`, `WS1`, `WS2`, `WS3`, and `Y1`.
   ///
-  /// > **Note:** Isolated SKUs (`I1`, `I2`, `I3`, `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`) can only be used with App Service Environments
+  /// &gt; **Note:** Isolated SKUs (`I1`, `I2`, `I3`, `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`) can only be used with App Service Environments
   ///
-  /// > **Note:** Elastic and Consumption SKUs (`Y1`, `FC1`, `EP1`, `EP2`, and `EP3`) are for use with Function Apps.
+  /// &gt; **Note:** Elastic and Consumption SKUs (`Y1`, `FC1`, `EP1`, `EP2`, and `EP3`) are for use with Function Apps.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags which should be assigned to the AppService.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The number of Workers (instances) to be allocated.
   late final pulumi.Output<int> workerCount;
+
   /// Should the Service Plan balance across Availability Zones in the region.
   ///
-  /// > **Note:** If this setting is set to `true` and the `worker_count` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
+  /// &gt; **Note:** If this setting is set to `true` and the `worker_count` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
   ///
-  /// > **Note:** `zone_balancing_enabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `worker_count` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
+  /// &gt; **Note:** `zone_balancing_enabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `worker_count` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
   late final pulumi.Output<bool?> zoneBalancingEnabled;
 
   /// Creates a new [ServicePlan].
@@ -215,25 +228,31 @@ class ServicePlan extends pulumi.CustomResource {
     ServicePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/servicePlan:ServicePlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
+         'azure:appservice/servicePlan:ServicePlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceEnvironmentId = registerOutput<String?>(
+      'appServiceEnvironmentId',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int>(
+      'maximumElasticWorkerCount',
+    );
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String>('osType');
-    this.perSiteScalingEnabled = registerOutput<bool?>('perSiteScalingEnabled');
-    this.premiumPlanAutoScaleEnabled = registerOutput<bool?>('premiumPlanAutoScaleEnabled');
-    this.reserved = registerOutput<bool>('reserved');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workerCount = registerOutput<int>('workerCount');
-    this.zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
+    osType = registerOutput<String>('osType');
+    perSiteScalingEnabled = registerOutput<bool?>('perSiteScalingEnabled');
+    premiumPlanAutoScaleEnabled = registerOutput<bool?>(
+      'premiumPlanAutoScaleEnabled',
+    );
+    reserved = registerOutput<bool>('reserved');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workerCount = registerOutput<int>('workerCount');
+    zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
   }
 
   /// Gets an existing [ServicePlan] resource's state with the given [name] and [id].
@@ -254,24 +273,30 @@ class ServicePlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/servicePlan:ServicePlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
+         'azure:appservice/servicePlan:ServicePlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceEnvironmentId = registerOutput<String?>(
+      'appServiceEnvironmentId',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int>(
+      'maximumElasticWorkerCount',
+    );
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String>('osType');
-    this.perSiteScalingEnabled = registerOutput<bool?>('perSiteScalingEnabled');
-    this.premiumPlanAutoScaleEnabled = registerOutput<bool?>('premiumPlanAutoScaleEnabled');
-    this.reserved = registerOutput<bool>('reserved');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workerCount = registerOutput<int>('workerCount');
-    this.zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
+    osType = registerOutput<String>('osType');
+    perSiteScalingEnabled = registerOutput<bool?>('perSiteScalingEnabled');
+    premiumPlanAutoScaleEnabled = registerOutput<bool?>(
+      'premiumPlanAutoScaleEnabled',
+    );
+    reserved = registerOutput<bool>('reserved');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workerCount = registerOutput<int>('workerCount');
+    zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
   }
 }

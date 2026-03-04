@@ -7,6 +7,7 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabel {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The value that the label must match. The value has a maximum
   /// length of 1024 characters.
   final pulumi.Input<String> value;
@@ -20,17 +21,15 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap(Map<String, dynamic> map) {
+  factory GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGlobalForwardingRuleMetadataFilterFilterLabel(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

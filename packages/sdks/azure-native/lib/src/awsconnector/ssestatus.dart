@@ -5,16 +5,15 @@ enum SSEStatus {
   eNABLED("ENABLED"),
   eNABLING("ENABLING");
 
-  const SSEStatus(this.value);
-  final String value;
+  const SSEStatus(this.wireValue);
+  final String wireValue;
 
   static SSEStatus fromValue(String value) {
     for (final item in SSEStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SSEStatus value: $value');
   }
 }
-

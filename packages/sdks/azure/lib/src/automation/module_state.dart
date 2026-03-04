@@ -7,10 +7,13 @@ import 'module_module_link.dart';
 class ModuleState {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? automationAccountName;
+
   /// A `module_link` block as defined below.
   final pulumi.Input<ModuleModuleLink>? moduleLink;
+
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -29,7 +32,11 @@ class ModuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': ?automationAccountName,
-      'moduleLink': ?pulumi.Input.mapOptionalInputValue<ModuleModuleLink, Map<String, dynamic>>(moduleLink, (value) => value.toMap()),
+      'moduleLink':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModuleModuleLink,
+            Map<String, dynamic>
+          >(moduleLink, (value) => value.toMap()),
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
     };
@@ -37,11 +44,30 @@ class ModuleState {
 
   factory ModuleState.fromMap(Map<String, dynamic> map) {
     return ModuleState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
-      moduleLink: map['moduleLink'] == null ? null : (ModuleModuleLink.fromMap((map['moduleLink']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      automationAccountName: (() {
+        final guardedValue = map['automationAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moduleLink: (() {
+        final guardedValue = map['moduleLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModuleModuleLink.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

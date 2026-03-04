@@ -7,6 +7,7 @@ import 'container_service_ssh_configuration.dart';
 class ContainerServiceLinuxProfile {
   /// The administrator username to use for Linux VMs.
   final pulumi.Input<String> adminUsername;
+
   /// The SSH configuration for Linux-based VMs running on Azure.
   final pulumi.Input<ContainerServiceSshConfiguration> ssh;
 
@@ -21,15 +22,22 @@ class ContainerServiceLinuxProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminUsername': adminUsername,
-      'ssh': pulumi.Input.mapInputValue<ContainerServiceSshConfiguration, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'ssh':
+          pulumi.Input.mapInputValue<
+            ContainerServiceSshConfiguration,
+            Map<String, dynamic>
+          >(ssh, (value) => value.toMap()),
     };
   }
 
   factory ContainerServiceLinuxProfile.fromMap(Map<String, dynamic> map) {
     return ContainerServiceLinuxProfile(
-      adminUsername: (map['adminUsername'] as String).input(),
-      ssh: (ContainerServiceSshConfiguration.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
+      ssh: pulumi.Input.fromValue(
+        ContainerServiceSshConfiguration.fromMap(
+          (map['ssh']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

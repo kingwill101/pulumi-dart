@@ -35,11 +35,14 @@ class GetContextAiplatformV1beta1Args {
 
   factory GetContextAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetContextAiplatformV1beta1Args(
-      contextId: (map['contextId'] as String).input(),
-      location: (map['location'] as String).input(),
-      metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      contextId: pulumi.Input.fromValue(map['contextId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      metadataStoreId: pulumi.Input.fromValue(map['metadataStoreId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

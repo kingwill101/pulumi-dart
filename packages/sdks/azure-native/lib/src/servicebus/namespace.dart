@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_response.dart';
 import 'identity_response.dart';
 import 'namespace_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'sbsku_response.dart';
 import 'system_data_response.dart';
 
@@ -200,46 +199,68 @@ import 'system_data_response.dart';
 class Namespace extends pulumi.CustomResource {
   /// Alternate name for namespace
   late final pulumi.Output<String?> alternateName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the namespace was created
   late final pulumi.Output<String> createdAt;
+
   /// This property disables SAS authentication for the Service Bus namespace.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// Properties of BYOK Encryption description
   late final pulumi.Output<EncryptionResponse?> encryption;
+
   /// Properties of BYOK Identity description
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The Geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Identifier for Azure Insights metrics
   late final pulumi.Output<String> metricId;
+
   /// The minimum TLS version for the cluster to support, e.g. '1.2'
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
   late final pulumi.Output<int?> premiumMessagingPartitions;
+
   /// List of private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateEndpointConnections;
+
   /// Provisioning state of the namespace.
   late final pulumi.Output<String> provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Endpoint you can use to perform Service Bus operations.
   late final pulumi.Output<String> serviceBusEndpoint;
+
   /// Properties of SKU
   late final pulumi.Output<SBSkuResponse?> sku;
+
   /// Status of the namespace.
   late final pulumi.Output<String> status;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// The time the namespace was updated.
   late final pulumi.Output<String> updatedAt;
+
   /// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -252,32 +273,36 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicebus:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alternateName = registerOutput<String?>('alternateName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.encryption = registerOutput<EncryptionResponse?>('encryption');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.metricId = registerOutput<String>('metricId');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure-native:servicebus:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alternateName = registerOutput<String?>('alternateName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    encryption = registerOutput<EncryptionResponse?>('encryption');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.premiumMessagingPartitions = registerOutput<int?>('premiumMessagingPartitions');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
-    this.sku = registerOutput<SBSkuResponse?>('sku');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    premiumMessagingPartitions = registerOutput<int?>(
+      'premiumMessagingPartitions',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
+    sku = registerOutput<SBSkuResponse?>('sku');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

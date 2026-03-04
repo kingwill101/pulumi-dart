@@ -7,32 +7,46 @@ import 'system_data_response.dart';
 class GetCommunicationServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The location where the communication service stores its data at rest.
   final String dataLocation;
+
   /// FQDN of the CommunicationService instance.
   final String hostName;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   final ManagedServiceIdentityResponse? identity;
+
   /// The immutable resource Id of the communication service.
   final String immutableResourceId;
+
   /// List of email Domain resource Ids.
   final List<String>? linkedDomains;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Resource ID of an Azure Notification Hub linked to this resource.
   final String notificationHubId;
+
   /// Provisioning state of the resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Version of the CommunicationService resource. Probably you need the same or higher version of client SDKs.
   final String version;
 
@@ -76,7 +90,7 @@ class GetCommunicationServiceResult {
       'dataLocation': dataLocation,
       'hostName': hostName,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'immutableResourceId': immutableResourceId,
       'linkedDomains': ?linkedDomains,
       'location': location,
@@ -96,18 +110,33 @@ class GetCommunicationServiceResult {
       dataLocation: map['dataLocation'] as String,
       hostName: map['hostName'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       immutableResourceId: map['immutableResourceId'] as String,
-      linkedDomains: map['linkedDomains'] == null ? null : (map['linkedDomains']! as List).cast<String>(),
+      linkedDomains: (() {
+        final guardedValue = map['linkedDomains'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
       notificationHubId: map['notificationHubId'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
-

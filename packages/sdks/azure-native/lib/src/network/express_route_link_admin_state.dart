@@ -3,16 +3,15 @@ enum ExpressRouteLinkAdminState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ExpressRouteLinkAdminState(this.value);
-  final String value;
+  const ExpressRouteLinkAdminState(this.wireValue);
+  final String wireValue;
 
   static ExpressRouteLinkAdminState fromValue(String value) {
     for (final item in ExpressRouteLinkAdminState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRouteLinkAdminState value: $value');
   }
 }
-

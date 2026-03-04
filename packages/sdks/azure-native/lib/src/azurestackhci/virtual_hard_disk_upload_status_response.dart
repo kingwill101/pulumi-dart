@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHardDiskUploadStatusResponse {
   /// VirtualHardDisk upload error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive upload error message
   final pulumi.Input<String>? errorMessage;
+
   /// The progress of the operation in percentage
   final pulumi.Input<double>? progressPercentage;
+
   /// The status of Uploading virtual hard disk [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
+
   /// The uploaded sized of the virtual hard disk in MB
   final pulumi.Input<double>? uploadedSizeInMB;
 
@@ -39,14 +43,31 @@ class VirtualHardDiskUploadStatusResponse {
     };
   }
 
-  factory VirtualHardDiskUploadStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualHardDiskUploadStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualHardDiskUploadStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
-      status: (map['status'] as String).input(),
-      uploadedSizeInMB: map['uploadedSizeInMB'] == null ? null : (map['uploadedSizeInMB']! as double).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      progressPercentage: (() {
+        final guardedValue = map['progressPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      uploadedSizeInMB: (() {
+        final guardedValue = map['uploadedSizeInMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

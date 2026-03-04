@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureIntegrationsAutoDiscovery {
   /// The data polling interval in seconds
   final pulumi.Input<int>? metricsPollingInterval;
+
   /// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
   final pulumi.Input<List<String>>? resourceGroups;
 
@@ -25,9 +26,16 @@ class AzureIntegrationsAutoDiscovery {
 
   factory AzureIntegrationsAutoDiscovery.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsAutoDiscovery(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroups: (() {
+        final guardedValue = map['resourceGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

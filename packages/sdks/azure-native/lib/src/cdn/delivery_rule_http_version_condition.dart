@@ -8,6 +8,7 @@ class DeliveryRuleHttpVersionCondition {
   /// Request variable to compare with.
   /// Expected value is 'HttpVersion'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<HttpVersionMatchConditionParameters> parameters;
 
@@ -22,15 +23,22 @@ class DeliveryRuleHttpVersionCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<HttpVersionMatchConditionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            HttpVersionMatchConditionParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleHttpVersionCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleHttpVersionCondition(
-      name: (map['name'] as String).input(),
-      parameters: (HttpVersionMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        HttpVersionMatchConditionParameters.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

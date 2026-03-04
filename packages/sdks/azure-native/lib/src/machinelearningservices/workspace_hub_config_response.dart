@@ -24,9 +24,16 @@ class WorkspaceHubConfigResponse {
 
   factory WorkspaceHubConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceHubConfigResponse(
-      additionalWorkspaceStorageAccounts: map['additionalWorkspaceStorageAccounts'] == null ? null : ((map['additionalWorkspaceStorageAccounts']! as List).cast<String>()).input(),
-      defaultWorkspaceResourceGroup: map['defaultWorkspaceResourceGroup'] == null ? null : (map['defaultWorkspaceResourceGroup']! as String).input(),
+      additionalWorkspaceStorageAccounts: (() {
+        final guardedValue = map['additionalWorkspaceStorageAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      defaultWorkspaceResourceGroup: (() {
+        final guardedValue = map['defaultWorkspaceResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

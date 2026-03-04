@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CsvSerialization {
   /// Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<String>? encoding;
+
   /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<String>? fieldDelimiter;
+
   /// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Csv'.
   final pulumi.Input<String> type;
@@ -16,11 +18,7 @@ class CsvSerialization {
   /// [encoding] Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
   /// [fieldDelimiter] Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-  CsvSerialization({
-    this.encoding,
-    this.fieldDelimiter,
-    required this.type,
-  });
+  CsvSerialization({this.encoding, this.fieldDelimiter, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class CsvSerialization {
 
   factory CsvSerialization.fromMap(Map<String, dynamic> map) {
     return CsvSerialization(
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
-      type: (map['type'] as String).input(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldDelimiter: (() {
+        final guardedValue = map['fieldDelimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

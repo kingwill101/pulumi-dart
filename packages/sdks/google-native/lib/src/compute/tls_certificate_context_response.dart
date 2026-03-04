@@ -8,8 +8,10 @@ import 'tls_certificate_paths_response.dart';
 class TlsCertificateContextResponse {
   /// Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
   final pulumi.Input<TlsCertificatePathsResponse> certificatePaths;
+
   /// Defines how TLS certificates are obtained.
   final pulumi.Input<String> certificateSource;
+
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final pulumi.Input<SdsConfigResponse> sdsConfig;
 
@@ -25,18 +27,35 @@ class TlsCertificateContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificatePaths': pulumi.Input.mapInputValue<TlsCertificatePathsResponse, Map<String, dynamic>>(certificatePaths, (value) => value.toMap()),
+      'certificatePaths':
+          pulumi.Input.mapInputValue<
+            TlsCertificatePathsResponse,
+            Map<String, dynamic>
+          >(certificatePaths, (value) => value.toMap()),
       'certificateSource': certificateSource,
-      'sdsConfig': pulumi.Input.mapInputValue<SdsConfigResponse, Map<String, dynamic>>(sdsConfig, (value) => value.toMap()),
+      'sdsConfig':
+          pulumi.Input.mapInputValue<SdsConfigResponse, Map<String, dynamic>>(
+            sdsConfig,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory TlsCertificateContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertificateContextResponse(
-      certificatePaths: (TlsCertificatePathsResponse.fromMap((map['certificatePaths'] as Map).cast<String, dynamic>())).input(),
-      certificateSource: (map['certificateSource'] as String).input(),
-      sdsConfig: (SdsConfigResponse.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>())).input(),
+      certificatePaths: pulumi.Input.fromValue(
+        TlsCertificatePathsResponse.fromMap(
+          (map['certificatePaths']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      certificateSource: pulumi.Input.fromValue(
+        map['certificateSource'] as String,
+      ),
+      sdsConfig: pulumi.Input.fromValue(
+        SdsConfigResponse.fromMap(
+          (map['sdsConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

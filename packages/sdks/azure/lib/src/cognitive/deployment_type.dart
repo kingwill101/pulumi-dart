@@ -239,7 +239,7 @@ import 'deployment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -254,16 +254,22 @@ import 'deployment_state.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// The ID of the Cognitive Services Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
+
   /// Whether dynamic throttling is enabled.
   late final pulumi.Output<bool?> dynamicThrottlingEnabled;
+
   /// A `model` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DeploymentModel> model;
+
   /// The name of the Cognitive Services Account Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of RAI policy.
   late final pulumi.Output<String?> raiPolicyName;
+
   /// A `sku` block as defined below.
   late final pulumi.Output<DeploymentSku> sku;
+
   /// Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
   late final pulumi.Output<String?> versionUpgradeOption;
 
@@ -276,18 +282,20 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
-    this.model = registerOutput<DeploymentModel>('model');
+         'azure:cognitive/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    dynamicThrottlingEnabled = registerOutput<bool?>(
+      'dynamicThrottlingEnabled',
+    );
+    model = registerOutput<DeploymentModel>('model');
     this.name = registerOutput<String>('name');
-    this.raiPolicyName = registerOutput<String?>('raiPolicyName');
-    this.sku = registerOutput<DeploymentSku>('sku');
-    this.versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
+    raiPolicyName = registerOutput<String?>('raiPolicyName');
+    sku = registerOutput<DeploymentSku>('sku');
+    versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -308,17 +316,19 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
-    this.model = registerOutput<DeploymentModel>('model');
+         'azure:cognitive/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    dynamicThrottlingEnabled = registerOutput<bool?>(
+      'dynamicThrottlingEnabled',
+    );
+    model = registerOutput<DeploymentModel>('model');
     this.name = registerOutput<String>('name');
-    this.raiPolicyName = registerOutput<String?>('raiPolicyName');
-    this.sku = registerOutput<DeploymentSku>('sku');
-    this.versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
+    raiPolicyName = registerOutput<String?>('raiPolicyName');
+    sku = registerOutput<DeploymentSku>('sku');
+    versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }
 }

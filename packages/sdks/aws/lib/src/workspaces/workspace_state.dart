@@ -7,28 +7,40 @@ import 'workspace_workspace_properties.dart';
 class WorkspaceState {
   /// The ID of the bundle for the WorkSpace.
   final pulumi.Input<String>? bundleId;
+
   /// The name of the WorkSpace, as seen by the operating system.
   final pulumi.Input<String>? computerName;
+
   /// The ID of the directory for the WorkSpace.
   final pulumi.Input<String>? directoryId;
+
   /// The IP address of the WorkSpace.
   final pulumi.Input<String>? ipAddress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Indicates whether the data stored on the root volume is encrypted.
   final pulumi.Input<bool>? rootVolumeEncryptionEnabled;
+
   /// The operational state of the WorkSpace.
   final pulumi.Input<String>? state;
+
   /// The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   final pulumi.Input<String>? userName;
+
   /// Indicates whether the data stored on the user volume is encrypted.
   final pulumi.Input<bool>? userVolumeEncryptionEnabled;
+
   /// The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   final pulumi.Input<String>? volumeEncryptionKey;
+
   /// The WorkSpace properties.
   final pulumi.Input<WorkspaceWorkspaceProperties>? workspaceProperties;
 
@@ -76,26 +88,89 @@ class WorkspaceState {
       'userName': ?userName,
       'userVolumeEncryptionEnabled': ?userVolumeEncryptionEnabled,
       'volumeEncryptionKey': ?volumeEncryptionKey,
-      'workspaceProperties': ?pulumi.Input.mapOptionalInputValue<WorkspaceWorkspaceProperties, Map<String, dynamic>>(workspaceProperties, (value) => value.toMap()),
+      'workspaceProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceWorkspaceProperties,
+            Map<String, dynamic>
+          >(workspaceProperties, (value) => value.toMap()),
     };
   }
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      bundleId: map['bundleId'] == null ? null : ((map['bundleId'] as String).input()).input(),
-      computerName: map['computerName'] == null ? null : ((map['computerName'] as String).input()).input(),
-      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
-      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : ((map['rootVolumeEncryptionEnabled'] as bool).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
-      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : ((map['userVolumeEncryptionEnabled'] as bool).input()).input(),
-      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : ((map['volumeEncryptionKey'] as String).input()).input(),
-      workspaceProperties: map['workspaceProperties'] == null ? null : ((WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      bundleId: (() {
+        final guardedValue = map['bundleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      directoryId: (() {
+        final guardedValue = map['directoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootVolumeEncryptionEnabled: (() {
+        final guardedValue = map['rootVolumeEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userVolumeEncryptionEnabled: (() {
+        final guardedValue = map['userVolumeEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      volumeEncryptionKey: (() {
+        final guardedValue = map['volumeEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceProperties: (() {
+        final guardedValue = map['workspaceProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceWorkspaceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

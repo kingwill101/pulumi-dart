@@ -4,16 +4,15 @@ enum ConsistencyModeTypes {
   fileSystemConsistent("FileSystemConsistent"),
   applicationConsistent("ApplicationConsistent");
 
-  const ConsistencyModeTypes(this.value);
-  final String value;
+  const ConsistencyModeTypes(this.wireValue);
+  final String wireValue;
 
   static ConsistencyModeTypes fromValue(String value) {
     for (final item in ConsistencyModeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConsistencyModeTypes value: $value');
   }
 }
-

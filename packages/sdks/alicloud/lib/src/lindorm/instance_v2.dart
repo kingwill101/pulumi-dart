@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_v2_args.dart';
-import 'instance_v2_engine_list.dart';
 import 'instance_v2_state.dart';
-import 'instance_v2_white_ip_list.dart';
 
 /// Provides a Lindorm Instance V2 resource.
 ///
@@ -10,7 +8,7 @@ import 'instance_v2_white_ip_list.dart';
 ///
 /// For information about Lindorm Instance V2 and how to use it, see [What is Instance V2](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/CreateLindormV2Instance).
 ///
-/// > **NOTE:** Available since v1.260.0.
+/// &gt; **NOTE:** Available since v1.260.0.
 ///
 /// ## Example Usage
 ///
@@ -414,8 +412,10 @@ import 'instance_v2_white_ip_list.dart';
 class InstanceV2 extends pulumi.CustomResource {
   /// Coordination Zone VswitchId
   late final pulumi.Output<String?> arbiterVswitchId;
+
   /// Coordination Zone ZoneId
   late final pulumi.Output<String?> arbiterZoneId;
+
   /// Deployment Scenario
   ///
   /// Enumeration value:
@@ -423,23 +423,27 @@ class InstanceV2 extends pulumi.CustomResource {
   /// - **2.0**: Multi-AZ Basic Edition
   /// - **3.0**: Multi-AZ High Availability Edition
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String> archVersion;
+
   /// Automatic renewal duration. Unit: Month.
   ///
   /// Value range: `1` to `12`.
   ///
-  /// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
+  /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> autoRenewDuration;
+
   /// Whether the instance is automatically renewed. Enumerated values:
   late final pulumi.Output<bool?> autoRenewal;
+
   /// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
   ///
-  /// > **NOTE:**  Cloud storage capacity in GB
+  /// &gt; **NOTE:**  Cloud storage capacity in GB
   late final pulumi.Output<int?> cloudStorageSize;
+
   /// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
   ///
   /// Enumeration value:
@@ -447,42 +451,57 @@ class InstanceV2 extends pulumi.CustomResource {
   /// - **Performance storage**: Performance-based cloud storage
   /// - **Capacity Storage**: Capacity-based cloud storage
   late final pulumi.Output<String?> cloudStorageType;
+
   /// Whether to enable deletion protection
   late final pulumi.Output<String> deletionProtection;
+
   /// The specified duration when the resource is purchased. Only the subscription instances are valid.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> duration;
+
   /// Engine List See `engine_list` below.
-  late final pulumi.Output<List<InstanceV2EngineList>> engineLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> engineLists;
+
   /// Instance name
   late final pulumi.Output<String> instanceAlias;
+
   /// Resource attribute fields representing payment types
   ///
   /// Enumeration value:
   /// - `PREPAY`: Prepaid mode
   /// - `POSTPAY`: Postpay mode
   late final pulumi.Output<String> paymentType;
+
   /// Purchase duration unit: Month, Year
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> pricingCycle;
+
   /// Primary zone VswitchId
   late final pulumi.Output<String?> primaryVswitchId;
+
   /// Primary zone ZoneID
   late final pulumi.Output<String?> primaryZoneId;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// Standby zone VswitchId
   late final pulumi.Output<String?> standbyVswitchId;
+
   /// Standby zone ZoneID
   late final pulumi.Output<String?> standbyZoneId;
+
   /// VpcId
   late final pulumi.Output<String> vpcId;
+
   /// VswitchId
   late final pulumi.Output<String> vswitchId;
+
   /// Instance whitelist list See `white_ip_list` below.
-  late final pulumi.Output<List<InstanceV2WhiteIpList>> whiteIpLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> whiteIpLists;
+
   /// The zone ID  of the resource
   late final pulumi.Output<String> zoneId;
 
@@ -495,33 +514,33 @@ class InstanceV2 extends pulumi.CustomResource {
     InstanceV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:lindorm/instanceV2:InstanceV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
-    this.arbiterZoneId = registerOutput<String?>('arbiterZoneId');
-    this.archVersion = registerOutput<String>('archVersion');
-    this.autoRenewDuration = registerOutput<String?>('autoRenewDuration');
-    this.autoRenewal = registerOutput<bool?>('autoRenewal');
-    this.cloudStorageSize = registerOutput<int?>('cloudStorageSize');
-    this.cloudStorageType = registerOutput<String?>('cloudStorageType');
-    this.deletionProtection = registerOutput<String>('deletionProtection');
-    this.duration = registerOutput<int?>('duration');
-    this.engineLists = registerOutput<List<InstanceV2EngineList>>('engineLists');
-    this.instanceAlias = registerOutput<String>('instanceAlias');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryZoneId = registerOutput<String?>('primaryZoneId');
-    this.regionId = registerOutput<String>('regionId');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyZoneId = registerOutput<String?>('standbyZoneId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.whiteIpLists = registerOutput<List<InstanceV2WhiteIpList>>('whiteIpLists');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:lindorm/instanceV2:InstanceV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
+    arbiterZoneId = registerOutput<String?>('arbiterZoneId');
+    archVersion = registerOutput<String>('archVersion');
+    autoRenewDuration = registerOutput<String?>('autoRenewDuration');
+    autoRenewal = registerOutput<bool?>('autoRenewal');
+    cloudStorageSize = registerOutput<int?>('cloudStorageSize');
+    cloudStorageType = registerOutput<String?>('cloudStorageType');
+    deletionProtection = registerOutput<String>('deletionProtection');
+    duration = registerOutput<int?>('duration');
+    engineLists = registerOutput<List<Map<String, dynamic>>>('engineLists');
+    instanceAlias = registerOutput<String>('instanceAlias');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryZoneId = registerOutput<String?>('primaryZoneId');
+    regionId = registerOutput<String>('regionId');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyZoneId = registerOutput<String?>('standbyZoneId');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    whiteIpLists = registerOutput<List<Map<String, dynamic>>>('whiteIpLists');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [InstanceV2] resource's state with the given [name] and [id].
@@ -542,32 +561,32 @@ class InstanceV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:lindorm/instanceV2:InstanceV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
-    this.arbiterZoneId = registerOutput<String?>('arbiterZoneId');
-    this.archVersion = registerOutput<String>('archVersion');
-    this.autoRenewDuration = registerOutput<String?>('autoRenewDuration');
-    this.autoRenewal = registerOutput<bool?>('autoRenewal');
-    this.cloudStorageSize = registerOutput<int?>('cloudStorageSize');
-    this.cloudStorageType = registerOutput<String?>('cloudStorageType');
-    this.deletionProtection = registerOutput<String>('deletionProtection');
-    this.duration = registerOutput<int?>('duration');
-    this.engineLists = registerOutput<List<InstanceV2EngineList>>('engineLists');
-    this.instanceAlias = registerOutput<String>('instanceAlias');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryZoneId = registerOutput<String?>('primaryZoneId');
-    this.regionId = registerOutput<String>('regionId');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyZoneId = registerOutput<String?>('standbyZoneId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.whiteIpLists = registerOutput<List<InstanceV2WhiteIpList>>('whiteIpLists');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:lindorm/instanceV2:InstanceV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
+    arbiterZoneId = registerOutput<String?>('arbiterZoneId');
+    archVersion = registerOutput<String>('archVersion');
+    autoRenewDuration = registerOutput<String?>('autoRenewDuration');
+    autoRenewal = registerOutput<bool?>('autoRenewal');
+    cloudStorageSize = registerOutput<int?>('cloudStorageSize');
+    cloudStorageType = registerOutput<String?>('cloudStorageType');
+    deletionProtection = registerOutput<String>('deletionProtection');
+    duration = registerOutput<int?>('duration');
+    engineLists = registerOutput<List<Map<String, dynamic>>>('engineLists');
+    instanceAlias = registerOutput<String>('instanceAlias');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryZoneId = registerOutput<String?>('primaryZoneId');
+    regionId = registerOutput<String>('regionId');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyZoneId = registerOutput<String?>('standbyZoneId');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    whiteIpLists = registerOutput<List<Map<String, dynamic>>>('whiteIpLists');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

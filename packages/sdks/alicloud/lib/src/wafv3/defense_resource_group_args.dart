@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenseResourceGroupArgs {
   /// The description of the protected object group.
   final pulumi.Input<String>? description;
+
   /// The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
   final pulumi.Input<String> groupName;
+
   /// The ID of the WAF instance.
   final pulumi.Input<String> instanceId;
+
   /// The names of the protected objects that are added to the protected object group.
   final pulumi.Input<List<String>>? resourceLists;
 
@@ -39,11 +42,18 @@ class DefenseResourceGroupArgs {
 
   factory DefenseResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DefenseResourceGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      resourceLists: map['resourceLists'] == null ? null : ((map['resourceLists']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      resourceLists: (() {
+        final guardedValue = map['resourceLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

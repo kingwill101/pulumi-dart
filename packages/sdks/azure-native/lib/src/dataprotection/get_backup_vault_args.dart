@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupVaultArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 
@@ -29,9 +30,10 @@ class GetBackupVaultArgs {
 
   factory GetBackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

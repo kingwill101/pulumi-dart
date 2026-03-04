@@ -9,20 +9,19 @@ class AppVNetAddons {
 
   /// Creates a new [AppVNetAddons].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
-  AppVNetAddons({
-    this.publicEndpoint,
-  });
+  AppVNetAddons({this.publicEndpoint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicEndpoint': ?publicEndpoint,
-    };
+    return <String, dynamic>{'publicEndpoint': ?publicEndpoint};
   }
 
   factory AppVNetAddons.fromMap(Map<String, dynamic> map) {
     return AppVNetAddons(
-      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint']! as bool).input(),
+      publicEndpoint: (() {
+        final guardedValue = map['publicEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterKeyManagementService {
   /// Identifier of Azure Key Vault key. See [key identifier format](https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates#vault-name-and-object-name) for more details.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// Network access of the key vault Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. Defaults to `Public`.
   final pulumi.Input<String>? keyVaultNetworkAccess;
 
@@ -23,11 +24,16 @@ class KubernetesClusterKeyManagementService {
     };
   }
 
-  factory KubernetesClusterKeyManagementService.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterKeyManagementService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterKeyManagementService(
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      keyVaultNetworkAccess: map['keyVaultNetworkAccess'] == null ? null : (map['keyVaultNetworkAccess']! as String).input(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      keyVaultNetworkAccess: (() {
+        final guardedValue = map['keyVaultNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_new_args.dart';
 import 'domain_new_certificate_config.dart';
-import 'domain_new_source.dart';
 import 'domain_new_state.dart';
 
 /// Provides a CDN Domain resource.
@@ -10,7 +9,7 @@ import 'domain_new_state.dart';
 ///
 /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
 /// ## Example Usage
 ///
@@ -216,24 +215,34 @@ import 'domain_new_state.dart';
 class DomainNew extends pulumi.CustomResource {
   /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
   late final pulumi.Output<String> cdnType;
+
   /// Certificate configuration See `certificate_config` below.
   late final pulumi.Output<DomainNewCertificateConfig> certificateConfig;
+
   /// Health test URL.
   late final pulumi.Output<String?> checkUrl;
+
   /// The CNAME domain name corresponding to the accelerated domain name.
   late final pulumi.Output<String> cname;
+
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
+
   /// Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
   late final pulumi.Output<String?> env;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
   late final pulumi.Output<String> scope;
+
   /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
-  late final pulumi.Output<List<DomainNewSource>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+
   /// The status of the resource, valid values: `online`, `offline`.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -246,22 +255,24 @@ class DomainNew extends pulumi.CustomResource {
     DomainNewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cdn/domainNew:DomainNew',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnType = registerOutput<String>('cdnType');
-    this.certificateConfig = registerOutput<DomainNewCertificateConfig>('certificateConfig');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.cname = registerOutput<String>('cname');
-    this.domainName = registerOutput<String>('domainName');
-    this.env = registerOutput<String?>('env');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scope = registerOutput<String>('scope');
-    this.sources = registerOutput<List<DomainNewSource>>('sources');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:cdn/domainNew:DomainNew',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnType = registerOutput<String>('cdnType');
+    certificateConfig = registerOutput<DomainNewCertificateConfig>(
+      'certificateConfig',
+    );
+    checkUrl = registerOutput<String?>('checkUrl');
+    cname = registerOutput<String>('cname');
+    domainName = registerOutput<String>('domainName');
+    env = registerOutput<String?>('env');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scope = registerOutput<String>('scope');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DomainNew] resource's state with the given [name] and [id].
@@ -282,21 +293,23 @@ class DomainNew extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cdn/domainNew:DomainNew',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnType = registerOutput<String>('cdnType');
-    this.certificateConfig = registerOutput<DomainNewCertificateConfig>('certificateConfig');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.cname = registerOutput<String>('cname');
-    this.domainName = registerOutput<String>('domainName');
-    this.env = registerOutput<String?>('env');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scope = registerOutput<String>('scope');
-    this.sources = registerOutput<List<DomainNewSource>>('sources');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:cdn/domainNew:DomainNew',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnType = registerOutput<String>('cdnType');
+    certificateConfig = registerOutput<DomainNewCertificateConfig>(
+      'certificateConfig',
+    );
+    checkUrl = registerOutput<String?>('checkUrl');
+    cname = registerOutput<String>('cname');
+    domainName = registerOutput<String>('domainName');
+    env = registerOutput<String?>('env');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scope = registerOutput<String>('scope');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

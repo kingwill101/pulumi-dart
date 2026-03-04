@@ -1,5 +1,3 @@
-library module_customerinsights;
-
 export 'customerinsights/assignment_principal.dart';
 export 'customerinsights/assignment_principal_response.dart';
 export 'customerinsights/calculation_window_types.dart';

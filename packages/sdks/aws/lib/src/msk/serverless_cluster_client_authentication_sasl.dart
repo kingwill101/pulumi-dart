@@ -9,20 +9,27 @@ class ServerlessClusterClientAuthenticationSasl {
 
   /// Creates a new [ServerlessClusterClientAuthenticationSasl].
   /// [iam] Details for client authentication using IAM. See below.
-  ServerlessClusterClientAuthenticationSasl({
-    required this.iam,
-  });
+  ServerlessClusterClientAuthenticationSasl({required this.iam});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iam': pulumi.Input.mapInputValue<ServerlessClusterClientAuthenticationSaslIam, Map<String, dynamic>>(iam, (value) => value.toMap()),
+      'iam':
+          pulumi.Input.mapInputValue<
+            ServerlessClusterClientAuthenticationSaslIam,
+            Map<String, dynamic>
+          >(iam, (value) => value.toMap()),
     };
   }
 
-  factory ServerlessClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
+  factory ServerlessClusterClientAuthenticationSasl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerlessClusterClientAuthenticationSasl(
-      iam: (ServerlessClusterClientAuthenticationSaslIam.fromMap((map['iam']! as Map).cast<String, dynamic>())).input(),
+      iam: pulumi.Input.fromValue(
+        ServerlessClusterClientAuthenticationSaslIam.fromMap(
+          (map['iam']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

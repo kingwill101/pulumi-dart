@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewaySslCertificateResponse {
   /// Base-64 encoded pfx certificate. Only applicable in PUT Request.
   final pulumi.Input<String>? data;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// Name of the SSL certificate that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// Password for the pfx file specified in data. Only applicable in PUT request.
   final pulumi.Input<String>? password;
+
   /// The provisioning state of the SSL certificate resource.
   final pulumi.Input<String> provisioningState;
+
   /// Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
   final pulumi.Input<String> publicCertData;
+
   /// Type of the resource.
   final pulumi.Input<String> type;
 
@@ -59,18 +67,41 @@ class ApplicationGatewaySslCertificateResponse {
     };
   }
 
-  factory ApplicationGatewaySslCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewaySslCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewaySslCertificateResponse(
-      data: map['data'] == null ? null : (map['data']! as String).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      publicCertData: (map['publicCertData'] as String).input(),
-      type: (map['type'] as String).input(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

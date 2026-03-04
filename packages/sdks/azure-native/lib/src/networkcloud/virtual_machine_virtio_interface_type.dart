@@ -3,16 +3,17 @@ enum VirtualMachineVirtioInterfaceType {
   valueModern("Modern"),
   valueTransitional("Transitional");
 
-  const VirtualMachineVirtioInterfaceType(this.value);
-  final String value;
+  const VirtualMachineVirtioInterfaceType(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineVirtioInterfaceType fromValue(String value) {
     for (final item in VirtualMachineVirtioInterfaceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineVirtioInterfaceType value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineVirtioInterfaceType value: $value',
+    );
   }
 }
-

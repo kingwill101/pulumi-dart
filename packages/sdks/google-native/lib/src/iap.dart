@@ -1,5 +1,3 @@
-library module_iap;
-
 export 'iap/binding.dart';
 export 'iap/binding_iap_v1beta1.dart';
 export 'iap/binding_response.dart';

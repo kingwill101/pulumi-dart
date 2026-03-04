@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricValueStatusPatch {
   /// currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   final pulumi.Input<int>? averageUtilization;
+
   /// averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   final pulumi.Input<String>? averageValue;
+
   /// value is the current value of the metric (as a quantity).
   final pulumi.Input<String>? value;
 
@@ -31,10 +33,21 @@ class MetricValueStatusPatch {
 
   factory MetricValueStatusPatch.fromMap(Map<String, dynamic> map) {
     return MetricValueStatusPatch(
-      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization']! as int).input(),
-      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      averageUtilization: (() {
+        final guardedValue = map['averageUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      averageValue: (() {
+        final guardedValue = map['averageValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -303,7 +303,7 @@ import 'virtual_network_peering_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2024-05-01
@@ -318,30 +318,40 @@ import 'virtual_network_peering_state.dart';
 class VirtualNetworkPeering extends pulumi.CustomResource {
   /// A list of address blocks reserved for this virtual network in CIDR notation.
   late final pulumi.Output<List<String>> addressSpacePrefixes;
+
   /// Can the forwarded traffic from the VMs in the local virtual network be forwarded to the remote virtual network? Defaults to `false`.
   late final pulumi.Output<bool?> allowForwardedTraffic;
+
   /// Can the gateway links be used in the remote virtual network to link to the Databricks virtual network? Defaults to `false`.
   late final pulumi.Output<bool?> allowGatewayTransit;
+
   /// Can the VMs in the local virtual network space access the VMs in the remote virtual network space? Defaults to `true`.
   late final pulumi.Output<bool?> allowVirtualNetworkAccess;
+
   /// Specifies the name of the Databricks Virtual Network Peering resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of address blocks reserved for the remote virtual network in CIDR notation. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> remoteAddressSpacePrefixes;
+
   /// The ID of the remote virtual network. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The remote virtual network should be in the same region as the databricks workspace. Please see the [product documentation](https://learn.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering) for more information.
+  /// &gt; **Note:** The remote virtual network should be in the same region as the databricks workspace. Please see the [product documentation](https://learn.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering) for more information.
   late final pulumi.Output<String> remoteVirtualNetworkId;
+
   /// The name of the Resource Group in which the Databricks Virtual Network Peering should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
   ///
-  /// > **Note:** If the `use_remote_gateways` is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, the virtual network will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to `true`. `use_remote_gateways` cannot be set if the virtual network already has a gateway.
+  /// &gt; **Note:** If the `use_remote_gateways` is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, the virtual network will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to `true`. `use_remote_gateways` cannot be set if the virtual network already has a gateway.
   late final pulumi.Output<bool?> useRemoteGateways;
+
   /// The ID of the internal Virtual Network used by the DataBricks Workspace.
   ///
-  /// > **Note:** The `virtual_network_id` field is the value you must supply to the `azure.network.VirtualNetworkPeering` resources `remote_virtual_network_id` field to successfully peer the Databricks Virtual Network with the remote virtual network.
+  /// &gt; **Note:** The `virtual_network_id` field is the value you must supply to the `azure.network.VirtualNetworkPeering` resources `remote_virtual_network_id` field to successfully peer the Databricks Virtual Network with the remote virtual network.
   late final pulumi.Output<String> virtualNetworkId;
+
   /// The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -354,22 +364,26 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     VirtualNetworkPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
-    this.allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
-    this.allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    this.allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
+         'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>(
+      'allowVirtualNetworkAccess',
+    );
     this.name = registerOutput<String>('name');
-    this.remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes');
-    this.remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    remoteAddressSpacePrefixes = registerOutput<List<String>>(
+      'remoteAddressSpacePrefixes',
+    );
+    remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [VirtualNetworkPeering] resource's state with the given [name] and [id].
@@ -390,21 +404,25 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
-    this.allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
-    this.allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    this.allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
+         'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>(
+      'allowVirtualNetworkAccess',
+    );
     this.name = registerOutput<String>('name');
-    this.remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes');
-    this.remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    remoteAddressSpacePrefixes = registerOutput<List<String>>(
+      'remoteAddressSpacePrefixes',
+    );
+    remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

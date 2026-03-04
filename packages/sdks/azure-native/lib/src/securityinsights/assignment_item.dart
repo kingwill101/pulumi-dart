@@ -9,20 +9,19 @@ class AssignmentItem {
 
   /// Creates a new [AssignmentItem].
   /// [resourceId] The resource id of the content item
-  AssignmentItem({
-    this.resourceId,
-  });
+  AssignmentItem({this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': ?resourceId,
-    };
+    return <String, dynamic>{'resourceId': ?resourceId};
   }
 
   factory AssignmentItem.fromMap(Map<String, dynamic> map) {
     return AssignmentItem(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

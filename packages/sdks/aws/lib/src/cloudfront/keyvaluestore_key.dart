@@ -4,7 +4,7 @@ import 'keyvaluestore_key_state.dart';
 
 /// Resource for managing an AWS CloudFront KeyValueStore Key.
 ///
-/// !> This resource manages individual key value pairs in a KeyValueStore. This can lead to high costs associated with accessing the CloudFront KeyValueStore API when performing terraform operations with many key value pairs defined. For large key value stores, consider the `aws.cloudfront.KeyvaluestoreKeysExclusive` resource to minimize the number of API calls made to the CloudFront KeyValueStore API.
+/// !&gt; This resource manages individual key value pairs in a KeyValueStore. This can lead to high costs associated with accessing the CloudFront KeyValueStore API when performing terraform operations with many key value pairs defined. For large key value stores, consider the `aws.cloudfront.KeyvaluestoreKeysExclusive` resource to minimize the number of API calls made to the CloudFront KeyValueStore API.
 ///
 /// ## Example Usage
 ///
@@ -165,10 +165,13 @@ import 'keyvaluestore_key_state.dart';
 class KeyvaluestoreKey extends pulumi.CustomResource {
   /// Key to put.
   late final pulumi.Output<String> key;
+
   /// Amazon Resource Name (ARN) of the Key Value Store.
   late final pulumi.Output<String> keyValueStoreArn;
+
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
+
   /// Value to put.
   late final pulumi.Output<String> value;
 
@@ -181,15 +184,15 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
     KeyvaluestoreKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
-    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
-    this.value = registerOutput<String>('value');
+         'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    key = registerOutput<String>('key');
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [KeyvaluestoreKey] resource's state with the given [name] and [id].
@@ -210,14 +213,14 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
-    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
-    this.value = registerOutput<String>('value');
+         'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    key = registerOutput<String>('key');
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+    value = registerOutput<String>('value');
   }
 }

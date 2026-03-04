@@ -6,9 +6,16 @@ import 'cluster_virtual_cluster_config_auxiliary_services_config_spark_history_s
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
   /// The Hive Metastore configuration for this workload.
-  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig>? metastoreConfig;
+  final pulumi.Input<
+    ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig
+  >?
+  metastoreConfig;
+
   /// The Spark History Server configuration for the workload.
-  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<
+    ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
+  >?
+  sparkHistoryServerConfig;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfig].
   /// [metastoreConfig] The Hive Metastore configuration for this workload.
@@ -20,16 +27,41 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metastoreConfig': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig, Map<String, dynamic>>(metastoreConfig, (value) => value.toMap()),
-      'sparkHistoryServerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig, Map<String, dynamic>>(sparkHistoryServerConfig, (value) => value.toMap()),
+      'metastoreConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig,
+            Map<String, dynamic>
+          >(metastoreConfig, (value) => value.toMap()),
+      'sparkHistoryServerConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig,
+            Map<String, dynamic>
+          >(sparkHistoryServerConfig, (value) => value.toMap()),
     };
   }
 
-  factory ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfig(
-      metastoreConfig: map['metastoreConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap((map['metastoreConfig']! as Map).cast<String, dynamic>())).input(),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: (() {
+        final guardedValue = map['metastoreConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sparkHistoryServerConfig: (() {
+        final guardedValue = map['sparkHistoryServerConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

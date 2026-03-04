@@ -164,26 +164,38 @@ import 'system_data_response.dart';
 class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Modified whenever there is a change in the state of private endpoint connection.
   late final pulumi.Output<String?> etag;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The supported Azure location where the managed HSM Pool should be created.
   late final pulumi.Output<String?> location;
+
   /// The name of the managed HSM Pool.
   late final pulumi.Output<String> name;
+
   /// Properties of the private endpoint object.
   late final pulumi.Output<MHSMPrivateEndpointResponse?> privateEndpoint;
+
   /// Approval state of the private link connection.
-  late final pulumi.Output<MHSMPrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<MHSMPrivateLinkServiceConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint connection.
   late final pulumi.Output<String> provisioningState;
+
   /// SKU details
   late final pulumi.Output<ManagedHsmSkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the key vault resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type of the managed HSM Pool.
   late final pulumi.Output<String> type;
 
@@ -196,22 +208,27 @@ class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     MHSMPrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:keyvault:MHSMPrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:keyvault:MHSMPrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<MHSMPrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<MHSMPrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<ManagedHsmSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<MHSMPrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<MHSMPrivateLinkServiceConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<ManagedHsmSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

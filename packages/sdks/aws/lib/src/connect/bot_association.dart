@@ -6,7 +6,7 @@ import 'bot_association_state.dart';
 /// Allows the specified Amazon Connect instance to access the specified Amazon Lex (V1) bot. For more information see
 /// [Amazon Connect: Getting Started](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html) and [Add an Amazon Lex bot](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-lex.html).
 ///
-/// > **NOTE:** This resource only currently supports Amazon Lex (V1) Associations.
+/// &gt; **NOTE:** This resource only currently supports Amazon Lex (V1) Associations.
 ///
 /// ## Example Usage
 ///
@@ -493,8 +493,10 @@ import 'bot_association_state.dart';
 class BotAssociation extends pulumi.CustomResource {
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
   late final pulumi.Output<BotAssociationLexBot> lexBot;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -507,14 +509,14 @@ class BotAssociation extends pulumi.CustomResource {
     BotAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/botAssociation:BotAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lexBot = registerOutput<BotAssociationLexBot>('lexBot');
-    this.region = registerOutput<String>('region');
+         'aws:connect/botAssociation:BotAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    lexBot = registerOutput<BotAssociationLexBot>('lexBot');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BotAssociation] resource's state with the given [name] and [id].
@@ -535,13 +537,13 @@ class BotAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/botAssociation:BotAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lexBot = registerOutput<BotAssociationLexBot>('lexBot');
-    this.region = registerOutput<String>('region');
+         'aws:connect/botAssociation:BotAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    lexBot = registerOutput<BotAssociationLexBot>('lexBot');
+    region = registerOutput<String>('region');
   }
 }

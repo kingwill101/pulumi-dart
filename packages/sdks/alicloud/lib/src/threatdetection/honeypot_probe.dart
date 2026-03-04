@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'honeypot_probe_args.dart';
-import 'honeypot_probe_honeypot_bind_list.dart';
 import 'honeypot_probe_state.dart';
 
 /// Provides a Threat Detection Honeypot Probe resource.
 ///
 /// For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -197,28 +196,40 @@ import 'honeypot_probe_state.dart';
 class HoneypotProbe extends pulumi.CustomResource {
   /// ARP spoofing detection.**true**: Enable **false**: Disabled
   late final pulumi.Output<bool?> arp;
+
   /// The ID of the management node.
   late final pulumi.Output<String> controlNodeId;
+
   /// Probe display name.
   late final pulumi.Output<String> displayName;
+
   /// Configure the service.See the following `Block HoneypotBindList`.
-  late final pulumi.Output<List<HoneypotProbeHoneypotBindList>?> honeypotBindLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> honeypotBindLists;
+
   /// The first ID of the resource
   late final pulumi.Output<String> honeypotProbeId;
+
   /// Ping scan detection. Value: **true**: Enable **false**: Disabled
   late final pulumi.Output<bool?> ping;
+
   /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
   late final pulumi.Output<String> probeType;
+
   /// The version of the probe.
   late final pulumi.Output<String> probeVersion;
+
   /// The IP address of the proxy.
   late final pulumi.Output<String?> proxyIp;
+
   /// Listen to the IP address list.
   late final pulumi.Output<List<String>> serviceIpLists;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   late final pulumi.Output<String?> uuid;
+
   /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
   late final pulumi.Output<String?> vpcId;
 
@@ -231,24 +242,26 @@ class HoneypotProbe extends pulumi.CustomResource {
     HoneypotProbeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arp = registerOutput<bool?>('arp');
-    this.controlNodeId = registerOutput<String>('controlNodeId');
-    this.displayName = registerOutput<String>('displayName');
-    this.honeypotBindLists = registerOutput<List<HoneypotProbeHoneypotBindList>?>('honeypotBindLists');
-    this.honeypotProbeId = registerOutput<String>('honeypotProbeId');
-    this.ping = registerOutput<bool?>('ping');
-    this.probeType = registerOutput<String>('probeType');
-    this.probeVersion = registerOutput<String>('probeVersion');
-    this.proxyIp = registerOutput<String?>('proxyIp');
-    this.serviceIpLists = registerOutput<List<String>>('serviceIpLists');
-    this.status = registerOutput<String>('status');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arp = registerOutput<bool?>('arp');
+    controlNodeId = registerOutput<String>('controlNodeId');
+    displayName = registerOutput<String>('displayName');
+    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>(
+      'honeypotBindLists',
+    );
+    honeypotProbeId = registerOutput<String>('honeypotProbeId');
+    ping = registerOutput<bool?>('ping');
+    probeType = registerOutput<String>('probeType');
+    probeVersion = registerOutput<String>('probeVersion');
+    proxyIp = registerOutput<String?>('proxyIp');
+    serviceIpLists = registerOutput<List<String>>('serviceIpLists');
+    status = registerOutput<String>('status');
+    uuid = registerOutput<String?>('uuid');
+    vpcId = registerOutput<String?>('vpcId');
   }
 
   /// Gets an existing [HoneypotProbe] resource's state with the given [name] and [id].
@@ -269,23 +282,25 @@ class HoneypotProbe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arp = registerOutput<bool?>('arp');
-    this.controlNodeId = registerOutput<String>('controlNodeId');
-    this.displayName = registerOutput<String>('displayName');
-    this.honeypotBindLists = registerOutput<List<HoneypotProbeHoneypotBindList>?>('honeypotBindLists');
-    this.honeypotProbeId = registerOutput<String>('honeypotProbeId');
-    this.ping = registerOutput<bool?>('ping');
-    this.probeType = registerOutput<String>('probeType');
-    this.probeVersion = registerOutput<String>('probeVersion');
-    this.proxyIp = registerOutput<String?>('proxyIp');
-    this.serviceIpLists = registerOutput<List<String>>('serviceIpLists');
-    this.status = registerOutput<String>('status');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arp = registerOutput<bool?>('arp');
+    controlNodeId = registerOutput<String>('controlNodeId');
+    displayName = registerOutput<String>('displayName');
+    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>(
+      'honeypotBindLists',
+    );
+    honeypotProbeId = registerOutput<String>('honeypotProbeId');
+    ping = registerOutput<bool?>('ping');
+    probeType = registerOutput<String>('probeType');
+    probeVersion = registerOutput<String>('probeVersion');
+    proxyIp = registerOutput<String?>('proxyIp');
+    serviceIpLists = registerOutput<List<String>>('serviceIpLists');
+    status = registerOutput<String>('status');
+    uuid = registerOutput<String?>('uuid');
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

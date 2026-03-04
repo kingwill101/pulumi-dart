@@ -3,16 +3,17 @@ enum CommonLanguageSettingsDestinationsItem {
   github("GITHUB"),
   packageManager("PACKAGE_MANAGER");
 
-  const CommonLanguageSettingsDestinationsItem(this.value);
-  final String value;
+  const CommonLanguageSettingsDestinationsItem(this.wireValue);
+  final String wireValue;
 
   static CommonLanguageSettingsDestinationsItem fromValue(String value) {
     for (final item in CommonLanguageSettingsDestinationsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CommonLanguageSettingsDestinationsItem value: $value');
+    throw ArgumentError(
+      'Unknown CommonLanguageSettingsDestinationsItem value: $value',
+    );
   }
 }
-

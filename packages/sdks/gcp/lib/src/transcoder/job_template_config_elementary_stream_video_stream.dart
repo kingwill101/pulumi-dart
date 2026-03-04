@@ -8,25 +8,36 @@ class JobTemplateConfigElementaryStreamVideoStream {
   /// Structure is documented below.
   ///
   ///
-  /// <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+  /// &lt;a name="nested_config_elementary_streams_video_stream_h264"&gt;&lt;/a&gt;The `h264` block supports:
   final pulumi.Input<JobTemplateConfigElementaryStreamVideoStreamH264>? h264;
 
   /// Creates a new [JobTemplateConfigElementaryStreamVideoStream].
   /// [h264] H264 codec settings
-  JobTemplateConfigElementaryStreamVideoStream({
-    this.h264,
-  });
+  JobTemplateConfigElementaryStreamVideoStream({this.h264});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'h264': ?pulumi.Input.mapOptionalInputValue<JobTemplateConfigElementaryStreamVideoStreamH264, Map<String, dynamic>>(h264, (value) => value.toMap()),
+      'h264':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTemplateConfigElementaryStreamVideoStreamH264,
+            Map<String, dynamic>
+          >(h264, (value) => value.toMap()),
     };
   }
 
-  factory JobTemplateConfigElementaryStreamVideoStream.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateConfigElementaryStreamVideoStream.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateConfigElementaryStreamVideoStream(
-      h264: map['h264'] == null ? null : (JobTemplateConfigElementaryStreamVideoStreamH264.fromMap((map['h264']! as Map).cast<String, dynamic>())).input(),
+      h264: (() {
+        final guardedValue = map['h264'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTemplateConfigElementaryStreamVideoStreamH264.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

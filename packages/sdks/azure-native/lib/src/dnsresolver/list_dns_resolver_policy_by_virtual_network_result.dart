@@ -7,6 +7,7 @@ import 'sub_resource_response.dart';
 class ListDnsResolverPolicyByVirtualNetworkResult {
   /// The continuation token for the next page of results.
   final String nextLink;
+
   /// Enumeration of the sub-resources.
   final List<SubResourceResponse>? value;
 
@@ -21,15 +22,32 @@ class ListDnsResolverPolicyByVirtualNetworkResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SubResourceResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListDnsResolverPolicyByVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
+  factory ListDnsResolverPolicyByVirtualNetworkResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListDnsResolverPolicyByVirtualNetworkResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['value']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SubResourceResponse>(
+          guardedValue,
+          (value) => SubResourceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

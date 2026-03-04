@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolSchemaAttributeStringAttributeConstraint {
   /// - Maximum allowed length.
   final pulumi.Input<String> maxLength;
+
   /// - Minimum allowed length.
   final pulumi.Input<String> minLength;
 
@@ -17,17 +18,15 @@ class GetUserPoolSchemaAttributeStringAttributeConstraint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxLength': maxLength,
-      'minLength': minLength,
-    };
+    return <String, dynamic>{'maxLength': maxLength, 'minLength': minLength};
   }
 
-  factory GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap(Map<String, dynamic> map) {
+  factory GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserPoolSchemaAttributeStringAttributeConstraint(
-      maxLength: (map['maxLength'] as String).input(),
-      minLength: (map['minLength'] as String).input(),
+      maxLength: pulumi.Input.fromValue(map['maxLength'] as String),
+      minLength: pulumi.Input.fromValue(map['minLength'] as String),
     );
   }
 }
-

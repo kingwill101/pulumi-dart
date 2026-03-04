@@ -9,20 +9,15 @@ class LastOperationPropertiesResponse {
 
   /// Creates a new [LastOperationPropertiesResponse].
   /// [details] Details status of the last operation performed on the resource.
-  LastOperationPropertiesResponse({
-    required this.details,
-  });
+  LastOperationPropertiesResponse({required this.details});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'details': details,
-    };
+    return <String, dynamic>{'details': details};
   }
 
   factory LastOperationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LastOperationPropertiesResponse(
-      details: (map['details'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
     );
   }
 }
-

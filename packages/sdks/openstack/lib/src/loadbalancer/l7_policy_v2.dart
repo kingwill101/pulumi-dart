@@ -338,38 +338,49 @@ class L7PolicyV2 extends pulumi.CustomResource {
   /// The L7 Policy action - can either be REDIRECT\_TO\_POOL,
   /// REDIRECT\_TO\_URL or REJECT.
   late final pulumi.Output<String> action;
+
   /// The administrative state of the L7 Policy.
   /// A valid value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
+
   /// Human-readable description for the L7 Policy.
   late final pulumi.Output<String?> description;
+
   /// The Listener on which the L7 Policy will be associated with.
   /// Changing this creates a new L7 Policy.
   late final pulumi.Output<String> listenerId;
+
   /// Human-readable name for the L7 Policy. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
+
   /// The position of this policy on the listener. Positions start at 1.
   late final pulumi.Output<int> position;
+
   /// Integer. Requests matching this policy will be
   /// redirected to the specified URL or Prefix URL with the HTTP response code.
   /// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
   /// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
   late final pulumi.Output<int> redirectHttpCode;
+
   /// Requests matching this policy will be redirected to the
   /// pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
   late final pulumi.Output<String?> redirectPoolId;
+
   /// Requests matching this policy will be redirected to
   /// this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
   late final pulumi.Output<String?> redirectPrefix;
+
   /// Requests matching this policy will be redirected to this URL.
   /// Only valid if action is REDIRECT\_TO\_URL.
   late final pulumi.Output<String?> redirectUrl;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an L7 policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// L7 Policy.
   late final pulumi.Output<String> region;
+
   /// Required for admins. The UUID of the tenant who owns
   /// the L7 Policy.  Only administrative users can specify a tenant UUID
   /// other than their own. Changing this creates a new L7 Policy.
@@ -384,23 +395,23 @@ class L7PolicyV2 extends pulumi.CustomResource {
     L7PolicyV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/l7PolicyV2:L7PolicyV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.description = registerOutput<String?>('description');
-    this.listenerId = registerOutput<String>('listenerId');
+         'openstack:loadbalancer/l7PolicyV2:L7PolicyV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    description = registerOutput<String?>('description');
+    listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');
-    this.position = registerOutput<int>('position');
-    this.redirectHttpCode = registerOutput<int>('redirectHttpCode');
-    this.redirectPoolId = registerOutput<String?>('redirectPoolId');
-    this.redirectPrefix = registerOutput<String?>('redirectPrefix');
-    this.redirectUrl = registerOutput<String?>('redirectUrl');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
+    position = registerOutput<int>('position');
+    redirectHttpCode = registerOutput<int>('redirectHttpCode');
+    redirectPoolId = registerOutput<String?>('redirectPoolId');
+    redirectPrefix = registerOutput<String?>('redirectPrefix');
+    redirectUrl = registerOutput<String?>('redirectUrl');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [L7PolicyV2] resource's state with the given [name] and [id].
@@ -421,22 +432,22 @@ class L7PolicyV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/l7PolicyV2:L7PolicyV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.description = registerOutput<String?>('description');
-    this.listenerId = registerOutput<String>('listenerId');
+         'openstack:loadbalancer/l7PolicyV2:L7PolicyV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    description = registerOutput<String?>('description');
+    listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');
-    this.position = registerOutput<int>('position');
-    this.redirectHttpCode = registerOutput<int>('redirectHttpCode');
-    this.redirectPoolId = registerOutput<String?>('redirectPoolId');
-    this.redirectPrefix = registerOutput<String?>('redirectPrefix');
-    this.redirectUrl = registerOutput<String?>('redirectUrl');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
+    position = registerOutput<int>('position');
+    redirectHttpCode = registerOutput<int>('redirectHttpCode');
+    redirectPoolId = registerOutput<String?>('redirectPoolId');
+    redirectPrefix = registerOutput<String?>('redirectPrefix');
+    redirectUrl = registerOutput<String?>('redirectUrl');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

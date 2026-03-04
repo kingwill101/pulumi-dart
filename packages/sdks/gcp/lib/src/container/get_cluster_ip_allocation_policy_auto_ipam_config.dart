@@ -8,20 +8,17 @@ class GetClusterIpAllocationPolicyAutoIpamConfig {
 
   /// Creates a new [GetClusterIpAllocationPolicyAutoIpamConfig].
   /// [enabled] The flag that enables Auto IPAM on this cluster.
-  GetClusterIpAllocationPolicyAutoIpamConfig({
-    required this.enabled,
-  });
+  GetClusterIpAllocationPolicyAutoIpamConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetClusterIpAllocationPolicyAutoIpamConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterIpAllocationPolicyAutoIpamConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterIpAllocationPolicyAutoIpamConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

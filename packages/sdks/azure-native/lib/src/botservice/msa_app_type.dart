@@ -4,16 +4,15 @@ enum MsaAppType {
   singleTenant("SingleTenant"),
   multiTenant("MultiTenant");
 
-  const MsaAppType(this.value);
-  final String value;
+  const MsaAppType(this.wireValue);
+  final String wireValue;
 
   static MsaAppType fromValue(String value) {
     for (final item in MsaAppType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MsaAppType value: $value');
   }
 }
-

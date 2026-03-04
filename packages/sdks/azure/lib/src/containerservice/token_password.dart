@@ -332,7 +332,7 @@ import 'token_password_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01
@@ -347,8 +347,10 @@ import 'token_password_state.dart';
 class TokenPassword extends pulumi.CustomResource {
   /// The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.
   late final pulumi.Output<String> containerRegistryTokenId;
+
   /// One `password` block as defined below.
   late final pulumi.Output<TokenPasswordPassword1> password1;
+
   /// One `password` block as defined below.
   late final pulumi.Output<TokenPasswordPassword2?> password2;
 
@@ -361,14 +363,16 @@ class TokenPassword extends pulumi.CustomResource {
     TokenPasswordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/tokenPassword:TokenPassword',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
-    this.password1 = registerOutput<TokenPasswordPassword1>('password1');
-    this.password2 = registerOutput<TokenPasswordPassword2?>('password2');
+         'azure:containerservice/tokenPassword:TokenPassword',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryTokenId = registerOutput<String>(
+      'containerRegistryTokenId',
+    );
+    password1 = registerOutput<TokenPasswordPassword1>('password1');
+    password2 = registerOutput<TokenPasswordPassword2?>('password2');
   }
 
   /// Gets an existing [TokenPassword] resource's state with the given [name] and [id].
@@ -389,13 +393,15 @@ class TokenPassword extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/tokenPassword:TokenPassword',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
-    this.password1 = registerOutput<TokenPasswordPassword1>('password1');
-    this.password2 = registerOutput<TokenPasswordPassword2?>('password2');
+         'azure:containerservice/tokenPassword:TokenPassword',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryTokenId = registerOutput<String>(
+      'containerRegistryTokenId',
+    );
+    password1 = registerOutput<TokenPasswordPassword1>('password1');
+    password2 = registerOutput<TokenPasswordPassword2?>('password2');
   }
 }

@@ -4,16 +4,17 @@ enum RegionTargetHttpsProxyQuicOverride {
   enable("ENABLE"),
   none("NONE");
 
-  const RegionTargetHttpsProxyQuicOverride(this.value);
-  final String value;
+  const RegionTargetHttpsProxyQuicOverride(this.wireValue);
+  final String wireValue;
 
   static RegionTargetHttpsProxyQuicOverride fromValue(String value) {
     for (final item in RegionTargetHttpsProxyQuicOverride.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionTargetHttpsProxyQuicOverride value: $value');
+    throw ArgumentError(
+      'Unknown RegionTargetHttpsProxyQuicOverride value: $value',
+    );
   }
 }
-

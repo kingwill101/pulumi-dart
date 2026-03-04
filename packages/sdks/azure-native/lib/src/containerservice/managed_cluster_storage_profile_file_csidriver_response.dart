@@ -9,20 +9,21 @@ class ManagedClusterStorageProfileFileCSIDriverResponse {
 
   /// Creates a new [ManagedClusterStorageProfileFileCSIDriverResponse].
   /// [enabled] Whether to enable AzureFile CSI Driver. The default value is true.
-  ManagedClusterStorageProfileFileCSIDriverResponse({
-    this.enabled,
-  });
+  ManagedClusterStorageProfileFileCSIDriverResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterStorageProfileFileCSIDriverResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterStorageProfileFileCSIDriverResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterStorageProfileFileCSIDriverResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_autoscaling;
-
 export 'autoscaling/attachment.dart';
 export 'autoscaling/attachment_args.dart';
 export 'autoscaling/attachment_state.dart';

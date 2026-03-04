@@ -6,7 +6,7 @@ import 'transit_router_grant_attachment_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -221,12 +221,16 @@ import 'transit_router_grant_attachment_state.dart';
 class TransitRouterGrantAttachment extends pulumi.CustomResource {
   /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
   late final pulumi.Output<String> cenId;
+
   /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
   late final pulumi.Output<String> cenOwnerId;
+
   /// The ID of the network instance.
   late final pulumi.Output<String> instanceId;
+
   /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   late final pulumi.Output<String> instanceType;
+
   /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   late final pulumi.Output<String> orderType;
 
@@ -239,16 +243,16 @@ class TransitRouterGrantAttachment extends pulumi.CustomResource {
     TransitRouterGrantAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.orderType = registerOutput<String>('orderType');
+         'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    orderType = registerOutput<String>('orderType');
   }
 
   /// Gets an existing [TransitRouterGrantAttachment] resource's state with the given [name] and [id].
@@ -269,15 +273,15 @@ class TransitRouterGrantAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.orderType = registerOutput<String>('orderType');
+         'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    orderType = registerOutput<String>('orderType');
   }
 }

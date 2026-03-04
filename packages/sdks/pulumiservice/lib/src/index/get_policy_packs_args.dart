@@ -12,20 +12,17 @@ class GetPolicyPacksArgs {
 
   /// Creates a new [GetPolicyPacksArgs].
   /// [organizationName] The name of the Pulumi organization.
-  GetPolicyPacksArgs({
-    required this.organizationName,
-  });
+  GetPolicyPacksArgs({required this.organizationName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'organizationName': organizationName,
-    };
+    return <String, dynamic>{'organizationName': organizationName};
   }
 
   factory GetPolicyPacksArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyPacksArgs(
-      organizationName: (map['organizationName'] as String).input(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
     );
   }
 }
-

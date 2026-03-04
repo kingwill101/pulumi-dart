@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'note_args.dart';
 import 'note_attestation_authority.dart';
-import 'note_related_url.dart';
 import 'note_state.dart';
 
 /// A Container Analysis note is a high-level piece of metadata that
@@ -367,26 +366,36 @@ class Note extends pulumi.CustomResource {
   /// project.
   /// Structure is documented below.
   late final pulumi.Output<NoteAttestationAuthority> attestationAuthority;
+
   /// The time this note was created.
   late final pulumi.Output<String> createTime;
+
   /// Time of expiration for this note. Leave empty if note does not expire.
   late final pulumi.Output<String?> expirationTime;
+
   /// The type of analysis this note describes
   late final pulumi.Output<String> kind;
+
   /// A detailed description of the note
   late final pulumi.Output<String?> longDescription;
+
   /// The name of the note.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Names of other notes related to this note.
   late final pulumi.Output<List<String>?> relatedNoteNames;
+
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  late final pulumi.Output<List<NoteRelatedUrl>?> relatedUrls;
+  late final pulumi.Output<List<Map<String, dynamic>>?> relatedUrls;
+
   /// A one sentence description of the note.
   late final pulumi.Output<String?> shortDescription;
+
   /// The time this note was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -394,35 +403,30 @@ class Note extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Note]. {@macro pulumi_containeranalysis_note_note_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Note(
-    String name, {
-    NoteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:containeranalysis/note:Note',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority');
-    this.createTime = registerOutput<String>('createTime');
-    this.expirationTime = registerOutput<String?>('expirationTime');
-    this.kind = registerOutput<String>('kind');
-    this.longDescription = registerOutput<String?>('longDescription');
+  Note(String name, {NoteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:containeranalysis/note:Note',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    attestationAuthority = registerOutput<NoteAttestationAuthority>(
+      'attestationAuthority',
+    );
+    createTime = registerOutput<String>('createTime');
+    expirationTime = registerOutput<String?>('expirationTime');
+    kind = registerOutput<String>('kind');
+    longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
-    this.relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls');
-    this.shortDescription = registerOutput<String?>('shortDescription');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
+    relatedUrls = registerOutput<List<Map<String, dynamic>>?>('relatedUrls');
+    shortDescription = registerOutput<String?>('shortDescription');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Note] resource's state with the given [name] and [id].
-  static Note get(
-    String name,
-    pulumi.Input<String> id, {
-    NoteState? state,
-  }) {
+  static Note get(String name, pulumi.Input<String> id, {NoteState? state}) {
     return Note._get(
       name,
       state: state?.toMap(),
@@ -435,21 +439,23 @@ class Note extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:containeranalysis/note:Note',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority');
-    this.createTime = registerOutput<String>('createTime');
-    this.expirationTime = registerOutput<String?>('expirationTime');
-    this.kind = registerOutput<String>('kind');
-    this.longDescription = registerOutput<String?>('longDescription');
+         'gcp:containeranalysis/note:Note',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attestationAuthority = registerOutput<NoteAttestationAuthority>(
+      'attestationAuthority',
+    );
+    createTime = registerOutput<String>('createTime');
+    expirationTime = registerOutput<String?>('expirationTime');
+    kind = registerOutput<String>('kind');
+    longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
-    this.relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls');
-    this.shortDescription = registerOutput<String?>('shortDescription');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
+    relatedUrls = registerOutput<List<Map<String, dynamic>>?>('relatedUrls');
+    shortDescription = registerOutput<String?>('shortDescription');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

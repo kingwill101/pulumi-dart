@@ -35,11 +35,14 @@ class GetDicomStoreArgs {
 
   factory GetDicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDicomStoreArgs(
-      datasetId: (map['datasetId'] as String).input(),
-      dicomStoreId: (map['dicomStoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      dicomStoreId: pulumi.Input.fromValue(map['dicomStoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

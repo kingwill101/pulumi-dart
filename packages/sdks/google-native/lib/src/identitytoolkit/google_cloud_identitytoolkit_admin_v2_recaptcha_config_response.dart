@@ -8,10 +8,19 @@ import 'google_cloud_identitytoolkit_admin_v2_recaptcha_managed_rule_response.da
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
   /// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
   final pulumi.Input<String> emailPasswordEnforcementState;
+
   /// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>> managedRules;
+  final pulumi.Input<
+    List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>
+  >
+  managedRules;
+
   /// The reCAPTCHA keys.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>> recaptchaKeys;
+  final pulumi.Input<
+    List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>
+  >
+  recaptchaKeys;
+
   /// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
   final pulumi.Input<bool> useAccountDefender;
 
@@ -30,19 +39,66 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'emailPasswordEnforcementState': emailPasswordEnforcementState,
-      'managedRules': pulumi.Input.mapInputValue<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>, List<Map<String, dynamic>>>(managedRules, (value) => pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'recaptchaKeys': pulumi.Input.mapInputValue<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>, List<Map<String, dynamic>>>(recaptchaKeys, (value) => pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedRules':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            managedRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'recaptchaKeys':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            recaptchaKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'useAccountDefender': useAccountDefender,
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse(
-      emailPasswordEnforcementState: (map['emailPasswordEnforcementState'] as String).input(),
-      managedRules: (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>(map['managedRules'], (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recaptchaKeys: (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>(map['recaptchaKeys'], (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useAccountDefender: (map['useAccountDefender'] as bool).input(),
+      emailPasswordEnforcementState: pulumi.Input.fromValue(
+        map['emailPasswordEnforcementState'] as String,
+      ),
+      managedRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse
+        >(
+          map['managedRules']!,
+          (value) =>
+              GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      recaptchaKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse
+        >(
+          map['recaptchaKeys']!,
+          (value) =>
+              GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      useAccountDefender: pulumi.Input.fromValue(
+        map['useAccountDefender'] as bool,
+      ),
     );
   }
 }
-

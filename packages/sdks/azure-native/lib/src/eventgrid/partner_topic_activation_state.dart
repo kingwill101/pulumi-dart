@@ -4,16 +4,15 @@ enum PartnerTopicActivationState {
   valueActivated("Activated"),
   valueDeactivated("Deactivated");
 
-  const PartnerTopicActivationState(this.value);
-  final String value;
+  const PartnerTopicActivationState(this.wireValue);
+  final String wireValue;
 
   static PartnerTopicActivationState fromValue(String value) {
     for (final item in PartnerTopicActivationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PartnerTopicActivationState value: $value');
   }
 }
-

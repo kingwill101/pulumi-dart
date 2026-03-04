@@ -148,7 +148,7 @@ import 'cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2020-03-01
@@ -163,12 +163,16 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure Region where the Stream Analytics Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Stream Analytics Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Stream Analytics Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The number of streaming units supported by the Cluster. Accepted values are multiples of `36` in the range of `36` to `216`.
   late final pulumi.Output<int> streamingCapacity;
+
   /// A mapping of tags which should be assigned to the Stream Analytics.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -181,16 +185,16 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:streamanalytics/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.streamingCapacity = registerOutput<int>('streamingCapacity');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    streamingCapacity = registerOutput<int>('streamingCapacity');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -211,15 +215,15 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:streamanalytics/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.streamingCapacity = registerOutput<int>('streamingCapacity');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    streamingCapacity = registerOutput<int>('streamingCapacity');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultPropertiesResponse {
   /// The client id of the identity which will be used to access key vault.
   final pulumi.Input<String>? identity;
+
   /// Key vault uri to access the encryption key.
   final pulumi.Input<String>? keyIdentifier;
+
   /// Auto key rotation status for a CMK enabled registry.
   final pulumi.Input<bool> keyRotationEnabled;
+
   /// Timestamp of the last successful key rotation.
   final pulumi.Input<String> lastKeyRotationTimestamp;
+
   /// The fully qualified key identifier that includes the version of the key that is actually used for encryption.
   final pulumi.Input<String> versionedKeyIdentifier;
 
@@ -40,12 +44,25 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
-      keyRotationEnabled: (map['keyRotationEnabled'] as bool).input(),
-      lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
-      versionedKeyIdentifier: (map['versionedKeyIdentifier'] as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyIdentifier: (() {
+        final guardedValue = map['keyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyRotationEnabled: pulumi.Input.fromValue(
+        map['keyRotationEnabled'] as bool,
+      ),
+      lastKeyRotationTimestamp: pulumi.Input.fromValue(
+        map['lastKeyRotationTimestamp'] as String,
+      ),
+      versionedKeyIdentifier: pulumi.Input.fromValue(
+        map['versionedKeyIdentifier'] as String,
+      ),
     );
   }
 }
-

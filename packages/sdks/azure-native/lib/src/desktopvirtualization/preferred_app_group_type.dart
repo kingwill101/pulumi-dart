@@ -4,16 +4,15 @@ enum PreferredAppGroupType {
   valueDesktop("Desktop"),
   valueRailApplications("RailApplications");
 
-  const PreferredAppGroupType(this.value);
-  final String value;
+  const PreferredAppGroupType(this.wireValue);
+  final String wireValue;
 
   static PreferredAppGroupType fromValue(String value) {
     for (final item in PreferredAppGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PreferredAppGroupType value: $value');
   }
 }
-

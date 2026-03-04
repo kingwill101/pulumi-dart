@@ -10,44 +10,64 @@ import 'update_prerequisite.dart';
 class UpdateArgs {
   /// Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.
   final pulumi.Input<String>? additionalProperties;
+
   /// Indicates the way the update content can be downloaded.
   final pulumi.Input<String>? availabilityType;
+
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// Description of the update.
   final pulumi.Input<String>? description;
+
   /// Display name of the Update
   final pulumi.Input<String>? displayName;
+
   /// Last time the package-specific checks were run.
   final pulumi.Input<String>? healthCheckDate;
+
   /// Date that the update was installed.
   final pulumi.Input<String>? installedDate;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Minimum Sbe Version of the update.
   final pulumi.Input<String>? minSbeVersionRequired;
+
   /// Brief message with instructions for updates of AvailabilityType Notify.
   final pulumi.Input<String>? notifyMessage;
+
   /// Path where the update package is available.
   final pulumi.Input<String>? packagePath;
+
   /// Size of the package. This value is a combination of the size from update metadata and size of the payload that results from the live scan operation for OS update content.
   final pulumi.Input<double>? packageSizeInMb;
+
   /// Customer-visible type of the update.
   final pulumi.Input<String>? packageType;
+
   /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
   final pulumi.Input<List<UpdatePrerequisite>>? prerequisites;
+
   /// Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
   final pulumi.Input<double>? progressPercentage;
+
   /// Publisher of the update package.
   final pulumi.Input<String>? publisher;
+
   /// Link to release notes for the update.
   final pulumi.Input<String>? releaseLink;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// State of the update as it relates to this stamp.
   final pulumi.Input<String>? state;
+
   /// The name of the Update
   final pulumi.Input<String>? updateName;
+
   /// Version of the update.
   final pulumi.Input<String>? version;
 
@@ -112,7 +132,18 @@ class UpdateArgs {
       'packagePath': ?packagePath,
       'packageSizeInMb': ?packageSizeInMb,
       'packageType': ?packageType,
-      'prerequisites': ?pulumi.Input.mapOptionalInputValue<List<UpdatePrerequisite>, List<Map<String, dynamic>>>(prerequisites, (value) => pulumi.Input.encodeList<UpdatePrerequisite, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'prerequisites':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UpdatePrerequisite>,
+            List<Map<String, dynamic>>
+          >(
+            prerequisites,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UpdatePrerequisite,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'progressPercentage': ?progressPercentage,
       'publisher': ?publisher,
       'releaseLink': ?releaseLink,
@@ -125,28 +156,112 @@ class UpdateArgs {
 
   factory UpdateArgs.fromMap(Map<String, dynamic> map) {
     return UpdateArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']! as String).input(),
-      availabilityType: map['availabilityType'] == null ? null : (map['availabilityType']! as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      healthCheckDate: map['healthCheckDate'] == null ? null : (map['healthCheckDate']! as String).input(),
-      installedDate: map['installedDate'] == null ? null : (map['installedDate']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      minSbeVersionRequired: map['minSbeVersionRequired'] == null ? null : (map['minSbeVersionRequired']! as String).input(),
-      notifyMessage: map['notifyMessage'] == null ? null : (map['notifyMessage']! as String).input(),
-      packagePath: map['packagePath'] == null ? null : (map['packagePath']! as String).input(),
-      packageSizeInMb: map['packageSizeInMb'] == null ? null : (map['packageSizeInMb']! as double).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
-      prerequisites: map['prerequisites'] == null ? null : (pulumi.Input.decodeList<UpdatePrerequisite>(map['prerequisites']!, (value) => UpdatePrerequisite.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      releaseLink: map['releaseLink'] == null ? null : (map['releaseLink']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      updateName: map['updateName'] == null ? null : (map['updateName']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityType: (() {
+        final guardedValue = map['availabilityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckDate: (() {
+        final guardedValue = map['healthCheckDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      installedDate: (() {
+        final guardedValue = map['installedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minSbeVersionRequired: (() {
+        final guardedValue = map['minSbeVersionRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notifyMessage: (() {
+        final guardedValue = map['notifyMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packagePath: (() {
+        final guardedValue = map['packagePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageSizeInMb: (() {
+        final guardedValue = map['packageSizeInMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      packageType: (() {
+        final guardedValue = map['packageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prerequisites: (() {
+        final guardedValue = map['prerequisites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UpdatePrerequisite>(
+            guardedValue,
+            (value) => UpdatePrerequisite.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      progressPercentage: (() {
+        final guardedValue = map['progressPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseLink: (() {
+        final guardedValue = map['releaseLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateName: (() {
+        final guardedValue = map['updateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

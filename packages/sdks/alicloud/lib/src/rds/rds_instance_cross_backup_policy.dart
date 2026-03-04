@@ -6,7 +6,7 @@ import 'rds_instance_cross_backup_policy_state.dart';
 ///
 /// For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -404,16 +404,22 @@ class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
   /// - Disabled
   /// - Enable
   late final pulumi.Output<String> backupEnabled;
+
   /// The time when cross-region backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> backupEnabledTime;
+
   /// The ID of the destination region where the cross-region backup files of the instance are stored.
   late final pulumi.Output<String> crossBackupRegion;
+
   /// The policy that is used to save cross-region backups of the instance. Default value: 1. The default value 1 indicates that all cross-region backups are saved.
   late final pulumi.Output<String> crossBackupType;
+
   /// The state of the instance. For more information, see Instance status.
   late final pulumi.Output<String> dbInstanceStatus;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The lock status of the instance. Valid values:
   /// - Unlock: The instance is not locked.
   /// - ManualLock: The instance is manually locked.
@@ -421,14 +427,18 @@ class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
   /// - LockByRestoration: The instance is automatically locked before a rollback.
   /// - LockByDiskQuota: The instance is automatically locked because its storage space is exhausted. In this situation, the instance is inaccessible.
   late final pulumi.Output<String> lockMode;
+
   /// The status of the cross-region log backup feature on the instance. Valid values:
   /// - Enable: Enables the feature.
   /// - Disabled: Disables the feature.
   late final pulumi.Output<String> logBackupEnabled;
+
   /// The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> logBackupEnabledTime;
+
   /// The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
   late final pulumi.Output<String> retentType;
+
   /// The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
   late final pulumi.Output<int> retention;
 
@@ -441,22 +451,22 @@ class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
     RdsInstanceCrossBackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupEnabled = registerOutput<String>('backupEnabled');
-    this.backupEnabledTime = registerOutput<String>('backupEnabledTime');
-    this.crossBackupRegion = registerOutput<String>('crossBackupRegion');
-    this.crossBackupType = registerOutput<String>('crossBackupType');
-    this.dbInstanceStatus = registerOutput<String>('dbInstanceStatus');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.logBackupEnabled = registerOutput<String>('logBackupEnabled');
-    this.logBackupEnabledTime = registerOutput<String>('logBackupEnabledTime');
-    this.retentType = registerOutput<String>('retentType');
-    this.retention = registerOutput<int>('retention');
+         'alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupEnabled = registerOutput<String>('backupEnabled');
+    backupEnabledTime = registerOutput<String>('backupEnabledTime');
+    crossBackupRegion = registerOutput<String>('crossBackupRegion');
+    crossBackupType = registerOutput<String>('crossBackupType');
+    dbInstanceStatus = registerOutput<String>('dbInstanceStatus');
+    instanceId = registerOutput<String>('instanceId');
+    lockMode = registerOutput<String>('lockMode');
+    logBackupEnabled = registerOutput<String>('logBackupEnabled');
+    logBackupEnabledTime = registerOutput<String>('logBackupEnabledTime');
+    retentType = registerOutput<String>('retentType');
+    retention = registerOutput<int>('retention');
   }
 
   /// Gets an existing [RdsInstanceCrossBackupPolicy] resource's state with the given [name] and [id].
@@ -477,21 +487,21 @@ class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupEnabled = registerOutput<String>('backupEnabled');
-    this.backupEnabledTime = registerOutput<String>('backupEnabledTime');
-    this.crossBackupRegion = registerOutput<String>('crossBackupRegion');
-    this.crossBackupType = registerOutput<String>('crossBackupType');
-    this.dbInstanceStatus = registerOutput<String>('dbInstanceStatus');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.logBackupEnabled = registerOutput<String>('logBackupEnabled');
-    this.logBackupEnabledTime = registerOutput<String>('logBackupEnabledTime');
-    this.retentType = registerOutput<String>('retentType');
-    this.retention = registerOutput<int>('retention');
+         'alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupEnabled = registerOutput<String>('backupEnabled');
+    backupEnabledTime = registerOutput<String>('backupEnabledTime');
+    crossBackupRegion = registerOutput<String>('crossBackupRegion');
+    crossBackupType = registerOutput<String>('crossBackupType');
+    dbInstanceStatus = registerOutput<String>('dbInstanceStatus');
+    instanceId = registerOutput<String>('instanceId');
+    lockMode = registerOutput<String>('lockMode');
+    logBackupEnabled = registerOutput<String>('logBackupEnabled');
+    logBackupEnabledTime = registerOutput<String>('logBackupEnabledTime');
+    retentType = registerOutput<String>('retentType');
+    retention = registerOutput<int>('retention');
   }
 }

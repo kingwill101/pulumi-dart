@@ -6,16 +6,15 @@ enum SnapshotState {
   recoverable("recoverable"),
   recovering("recovering");
 
-  const SnapshotState(this.value);
-  final String value;
+  const SnapshotState(this.wireValue);
+  final String wireValue;
 
   static SnapshotState fromValue(String value) {
     for (final item in SnapshotState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapshotState value: $value');
   }
 }
-

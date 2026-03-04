@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupUserLogConfig {
   /// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
   final pulumi.Input<String>? jwtClaims;
+
   /// The query params to be record, support multi query params split by `,`. Set `*` to record all.
   final pulumi.Input<String>? queryString;
+
   /// Whether to record the request body.
   final pulumi.Input<bool>? requestBody;
+
   /// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
   final pulumi.Input<String>? requestHeaders;
+
   /// Whether to record the response body.
   final pulumi.Input<bool>? responseBody;
+
   /// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
   final pulumi.Input<String>? responseHeaders;
 
@@ -45,13 +50,36 @@ class GroupUserLogConfig {
 
   factory GroupUserLogConfig.fromMap(Map<String, dynamic> map) {
     return GroupUserLogConfig(
-      jwtClaims: map['jwtClaims'] == null ? null : (map['jwtClaims']! as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as bool).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : (map['requestHeaders']! as String).input(),
-      responseBody: map['responseBody'] == null ? null : (map['responseBody']! as bool).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (map['responseHeaders']! as String).input(),
+      jwtClaims: (() {
+        final guardedValue = map['jwtClaims'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryString: (() {
+        final guardedValue = map['queryString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestBody: (() {
+        final guardedValue = map['requestBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requestHeaders: (() {
+        final guardedValue = map['requestHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseBody: (() {
+        final guardedValue = map['responseBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      responseHeaders: (() {
+        final guardedValue = map['responseHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

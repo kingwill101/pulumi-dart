@@ -8,16 +8,15 @@ enum MessageNewTaskState {
   succeeded("SUCCEEDED"),
   unexecuted("UNEXECUTED");
 
-  const MessageNewTaskState(this.value);
-  final String value;
+  const MessageNewTaskState(this.wireValue);
+  final String wireValue;
 
   static MessageNewTaskState fromValue(String value) {
     for (final item in MessageNewTaskState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MessageNewTaskState value: $value');
   }
 }
-

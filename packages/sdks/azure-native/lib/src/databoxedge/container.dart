@@ -148,18 +148,25 @@ import 'system_data_response.dart';
 class Container extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current status of the container.
   late final pulumi.Output<String> containerStatus;
+
   /// The UTC time when container got created.
   late final pulumi.Output<String> createdDateTime;
+
   /// DataFormat for Container
   late final pulumi.Output<String> dataFormat;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Details of the refresh job on this container.
   late final pulumi.Output<RefreshDetailsResponse> refreshDetails;
+
   /// Metadata pertaining to creation and last modification of Container
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -172,18 +179,18 @@ class Container extends pulumi.CustomResource {
     ContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:Container',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerStatus = registerOutput<String>('containerStatus');
-    this.createdDateTime = registerOutput<String>('createdDateTime');
-    this.dataFormat = registerOutput<String>('dataFormat');
+         'azure-native:databoxedge:Container',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerStatus = registerOutput<String>('containerStatus');
+    createdDateTime = registerOutput<String>('createdDateTime');
+    dataFormat = registerOutput<String>('dataFormat');
     this.name = registerOutput<String>('name');
-    this.refreshDetails = registerOutput<RefreshDetailsResponse>('refreshDetails');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    refreshDetails = registerOutput<RefreshDetailsResponse>('refreshDetails');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

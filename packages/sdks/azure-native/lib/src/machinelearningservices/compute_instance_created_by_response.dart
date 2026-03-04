@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceCreatedByResponse {
   /// Uniquely identifies the user within his/her organization.
   final pulumi.Input<String> userId;
+
   /// Name of the user.
   final pulumi.Input<String> userName;
+
   /// Uniquely identifies user' Azure Active Directory organization.
   final pulumi.Input<String> userOrgId;
 
@@ -31,10 +33,9 @@ class ComputeInstanceCreatedByResponse {
 
   factory ComputeInstanceCreatedByResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceCreatedByResponse(
-      userId: (map['userId'] as String).input(),
-      userName: (map['userName'] as String).input(),
-      userOrgId: (map['userOrgId'] as String).input(),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
+      userOrgId: pulumi.Input.fromValue(map['userOrgId'] as String),
     );
   }
 }
-

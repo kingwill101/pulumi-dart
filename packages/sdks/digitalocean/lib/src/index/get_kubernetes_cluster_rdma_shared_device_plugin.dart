@@ -7,20 +7,17 @@ class GetKubernetesClusterRdmaSharedDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterRdmaSharedDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterRdmaSharedDevicePlugin({
-    required this.enabled,
-  });
+  GetKubernetesClusterRdmaSharedDevicePlugin({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetKubernetesClusterRdmaSharedDevicePlugin.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterRdmaSharedDevicePlugin.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterRdmaSharedDevicePlugin(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

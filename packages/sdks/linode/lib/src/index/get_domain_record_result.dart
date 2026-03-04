@@ -1,30 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomainRecord.
 class GetDomainRecordResult {
   /// The associated domain's unique ID.
   final int domainId;
+
   /// The unique ID of the Domain Record.
   final int? id;
+
   /// The name of the Record.
   final String? name;
+
   /// The port this Record points to.
   final int port;
+
   /// The priority of the target host. Lower values are preferred.
   final int priority;
+
   /// The protocol this Record's service communicates with. Only valid for SRV records.
   final String protocol;
+
   /// The service this Record identified. Only valid for SRV records.
   final String service;
+
   /// The tag portion of a CAA record.
   final String tag;
+
   /// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
   final String target;
+
   /// The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
   final int ttlSec;
+
   /// The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
   final String type;
+
   /// The relative weight of this Record. Higher values are preferred.
   final int weight;
 
@@ -76,8 +86,16 @@ class GetDomainRecordResult {
   factory GetDomainRecordResult.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordResult(
       domainId: map['domainId'] as int,
-      id: map['id'] == null ? null : map['id']! as int,
-      name: map['name'] == null ? null : map['name']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       port: map['port'] as int,
       priority: map['priority'] as int,
       protocol: map['protocol'] as String,
@@ -90,4 +108,3 @@ class GetDomainRecordResult {
     );
   }
 }
-

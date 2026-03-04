@@ -8,7 +8,7 @@ import 'streaming_job_state.dart';
 ///
 /// For information about GPDB Streaming Job and how to use it, see [What is Streaming Job](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingjob).
 ///
-/// > **NOTE:** Available since v1.231.0.
+/// &gt; **NOTE:** Available since v1.231.0.
 ///
 /// ## Example Usage
 ///
@@ -804,6 +804,7 @@ import 'streaming_job_state.dart';
 class StreamingJob extends pulumi.CustomResource {
   /// The name of the database account.
   late final pulumi.Output<String?> account;
+
   /// The delivery guarantee setting.
   ///
   /// Valid values:
@@ -811,48 +812,68 @@ class StreamingJob extends pulumi.CustomResource {
   /// - ATLEAST
   /// - EXACTLY
   late final pulumi.Output<String?> consistency;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The data source ID.
   late final pulumi.Output<String> dataSourceId;
+
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Target Field
   late final pulumi.Output<List<String>?> destColumns;
+
   /// The name of the destination database.
   late final pulumi.Output<String?> destDatabase;
+
   /// Target Schema
   late final pulumi.Output<String?> destSchema;
+
   /// The name of the destination table.
   late final pulumi.Output<String?> destTable;
+
   /// The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
   late final pulumi.Output<int?> errorLimitCount;
+
   /// Automatic offset reset
   late final pulumi.Output<String?> fallbackOffset;
+
   /// Group Name
   late final pulumi.Output<String?> groupName;
+
   /// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
   late final pulumi.Output<String?> jobConfig;
+
   /// The description of the job.
   late final pulumi.Output<String?> jobDescription;
+
   /// The job ID.
   late final pulumi.Output<String> jobId;
+
   /// The name of the job.
   late final pulumi.Output<String> jobName;
+
   /// Match Field
   late final pulumi.Output<List<String>?> matchColumns;
+
   /// The configuration mode. Valid values:
   ///
   /// 1.  basic: In basic mode, you must configure the configuration parameters.
   ///
   /// 2.  professional: In professional mode, you can submit a YAML configuration file.
   late final pulumi.Output<String?> mode;
+
   /// The password of the database account.
   late final pulumi.Output<String?> password;
+
   /// Source Field
   late final pulumi.Output<List<String>?> srcColumns;
+
   /// Service status, value:
   late final pulumi.Output<String> status;
+
   /// Specifies whether to test the real-time job. Valid values:
   ///
   /// - true
@@ -860,8 +881,10 @@ class StreamingJob extends pulumi.CustomResource {
   ///
   /// Default value: false.
   late final pulumi.Output<bool?> tryRun;
+
   /// Update Field
   late final pulumi.Output<List<String>?> updateColumns;
+
   /// The write mode.
   ///
   /// Valid values:
@@ -880,35 +903,35 @@ class StreamingJob extends pulumi.CustomResource {
     StreamingJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingJob:StreamingJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.account = registerOutput<String?>('account');
-    this.consistency = registerOutput<String?>('consistency');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.destColumns = registerOutput<List<String>?>('destColumns');
-    this.destDatabase = registerOutput<String?>('destDatabase');
-    this.destSchema = registerOutput<String?>('destSchema');
-    this.destTable = registerOutput<String?>('destTable');
-    this.errorLimitCount = registerOutput<int?>('errorLimitCount');
-    this.fallbackOffset = registerOutput<String?>('fallbackOffset');
-    this.groupName = registerOutput<String?>('groupName');
-    this.jobConfig = registerOutput<String?>('jobConfig');
-    this.jobDescription = registerOutput<String?>('jobDescription');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobName = registerOutput<String>('jobName');
-    this.matchColumns = registerOutput<List<String>?>('matchColumns');
-    this.mode = registerOutput<String?>('mode');
-    this.password = registerOutput<String?>('password');
-    this.srcColumns = registerOutput<List<String>?>('srcColumns');
-    this.status = registerOutput<String>('status');
-    this.tryRun = registerOutput<bool?>('tryRun');
-    this.updateColumns = registerOutput<List<String>?>('updateColumns');
-    this.writeMode = registerOutput<String?>('writeMode');
+         'alicloud:gpdb/streamingJob:StreamingJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    account = registerOutput<String?>('account');
+    consistency = registerOutput<String?>('consistency');
+    createTime = registerOutput<String>('createTime');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    destColumns = registerOutput<List<String>?>('destColumns');
+    destDatabase = registerOutput<String?>('destDatabase');
+    destSchema = registerOutput<String?>('destSchema');
+    destTable = registerOutput<String?>('destTable');
+    errorLimitCount = registerOutput<int?>('errorLimitCount');
+    fallbackOffset = registerOutput<String?>('fallbackOffset');
+    groupName = registerOutput<String?>('groupName');
+    jobConfig = registerOutput<String?>('jobConfig');
+    jobDescription = registerOutput<String?>('jobDescription');
+    jobId = registerOutput<String>('jobId');
+    jobName = registerOutput<String>('jobName');
+    matchColumns = registerOutput<List<String>?>('matchColumns');
+    mode = registerOutput<String?>('mode');
+    password = registerOutput<String?>('password');
+    srcColumns = registerOutput<List<String>?>('srcColumns');
+    status = registerOutput<String>('status');
+    tryRun = registerOutput<bool?>('tryRun');
+    updateColumns = registerOutput<List<String>?>('updateColumns');
+    writeMode = registerOutput<String?>('writeMode');
   }
 
   /// Gets an existing [StreamingJob] resource's state with the given [name] and [id].
@@ -929,34 +952,34 @@ class StreamingJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingJob:StreamingJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.account = registerOutput<String?>('account');
-    this.consistency = registerOutput<String?>('consistency');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.destColumns = registerOutput<List<String>?>('destColumns');
-    this.destDatabase = registerOutput<String?>('destDatabase');
-    this.destSchema = registerOutput<String?>('destSchema');
-    this.destTable = registerOutput<String?>('destTable');
-    this.errorLimitCount = registerOutput<int?>('errorLimitCount');
-    this.fallbackOffset = registerOutput<String?>('fallbackOffset');
-    this.groupName = registerOutput<String?>('groupName');
-    this.jobConfig = registerOutput<String?>('jobConfig');
-    this.jobDescription = registerOutput<String?>('jobDescription');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobName = registerOutput<String>('jobName');
-    this.matchColumns = registerOutput<List<String>?>('matchColumns');
-    this.mode = registerOutput<String?>('mode');
-    this.password = registerOutput<String?>('password');
-    this.srcColumns = registerOutput<List<String>?>('srcColumns');
-    this.status = registerOutput<String>('status');
-    this.tryRun = registerOutput<bool?>('tryRun');
-    this.updateColumns = registerOutput<List<String>?>('updateColumns');
-    this.writeMode = registerOutput<String?>('writeMode');
+         'alicloud:gpdb/streamingJob:StreamingJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    account = registerOutput<String?>('account');
+    consistency = registerOutput<String?>('consistency');
+    createTime = registerOutput<String>('createTime');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    destColumns = registerOutput<List<String>?>('destColumns');
+    destDatabase = registerOutput<String?>('destDatabase');
+    destSchema = registerOutput<String?>('destSchema');
+    destTable = registerOutput<String?>('destTable');
+    errorLimitCount = registerOutput<int?>('errorLimitCount');
+    fallbackOffset = registerOutput<String?>('fallbackOffset');
+    groupName = registerOutput<String?>('groupName');
+    jobConfig = registerOutput<String?>('jobConfig');
+    jobDescription = registerOutput<String?>('jobDescription');
+    jobId = registerOutput<String>('jobId');
+    jobName = registerOutput<String>('jobName');
+    matchColumns = registerOutput<List<String>?>('matchColumns');
+    mode = registerOutput<String?>('mode');
+    password = registerOutput<String?>('password');
+    srcColumns = registerOutput<List<String>?>('srcColumns');
+    status = registerOutput<String>('status');
+    tryRun = registerOutput<bool?>('tryRun');
+    updateColumns = registerOutput<List<String>?>('updateColumns');
+    writeMode = registerOutput<String?>('writeMode');
   }
 }

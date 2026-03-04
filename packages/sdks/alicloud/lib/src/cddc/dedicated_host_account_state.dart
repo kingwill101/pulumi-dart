@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DedicatedHostAccountState {
   /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
   final pulumi.Input<String>? accountName;
+
   /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
   final pulumi.Input<String>? accountPassword;
+
   /// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
   final pulumi.Input<String>? accountType;
+
   /// The ID of Dedicated the host.
   final pulumi.Input<String>? dedicatedHostId;
 
@@ -36,11 +39,26 @@ class DedicatedHostAccountState {
 
   factory DedicatedHostAccountState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAccountState(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountPassword: (() {
+        final guardedValue = map['accountPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountType: (() {
+        final guardedValue = map['accountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dedicatedHostId: (() {
+        final guardedValue = map['dedicatedHostId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

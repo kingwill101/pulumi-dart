@@ -7,12 +7,16 @@ import 'file_share_response.dart';
 class MigrateSqlServerSqlMIDatabaseInputResponse {
   /// The list of backup files to be used in case of existing backups.
   final pulumi.Input<List<String>>? backupFilePaths;
+
   /// Backup file share information for backing up this database.
   final pulumi.Input<FileShareResponse>? backupFileShare;
+
   /// id of the database
   final pulumi.Input<String>? id;
+
   /// Name of the database
   final pulumi.Input<String> name;
+
   /// Name of the database at destination
   final pulumi.Input<String> restoreDatabaseName;
 
@@ -33,21 +37,44 @@ class MigrateSqlServerSqlMIDatabaseInputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupFilePaths': ?backupFilePaths,
-      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShareResponse, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
+      'backupFileShare':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileShareResponse,
+            Map<String, dynamic>
+          >(backupFileShare, (value) => value.toMap()),
       'id': ?id,
       'name': name,
       'restoreDatabaseName': restoreDatabaseName,
     };
   }
 
-  factory MigrateSqlServerSqlMIDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateSqlServerSqlMIDatabaseInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateSqlServerSqlMIDatabaseInputResponse(
-      backupFilePaths: map['backupFilePaths'] == null ? null : ((map['backupFilePaths']! as List).cast<String>()).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: (map['name'] as String).input(),
-      restoreDatabaseName: (map['restoreDatabaseName'] as String).input(),
+      backupFilePaths: (() {
+        final guardedValue = map['backupFilePaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backupFileShare: (() {
+        final guardedValue = map['backupFileShare'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileShareResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      restoreDatabaseName: pulumi.Input.fromValue(
+        map['restoreDatabaseName'] as String,
+      ),
     );
   }
 }
-

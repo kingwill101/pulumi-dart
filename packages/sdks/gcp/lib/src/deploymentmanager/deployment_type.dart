@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
-import 'deployment_label.dart';
 import 'deployment_state.dart';
 import 'deployment_target.dart';
 
@@ -9,7 +8,7 @@ import 'deployment_target.dart';
 ///
 ///
 ///
-/// > **Warning:** This resource is intended only to manage a Deployment resource,
+/// &gt; **Warning:** This resource is intended only to manage a Deployment resource,
 /// and attempts to manage the Deployment's resources in the provider as well
 /// will likely result in errors or unexpected behavior as the two tools
 /// fight over ownership. We strongly discourage doing so unless you are an
@@ -230,6 +229,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// Default value is `CREATE_OR_ACQUIRE`.
   /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
   late final pulumi.Output<String?> createPolicy;
+
   /// Set the policy to use for deleting new resources on update/delete.
   /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
   /// resource is deleted after removal from Deployment Manager. If
@@ -239,32 +239,41 @@ class DeploymentType extends pulumi.CustomResource {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   late final pulumi.Output<String?> deletePolicy;
+
   /// Unique identifier for deployment. Output only.
   late final pulumi.Output<String> deploymentId;
+
   /// Optional user-provided description of deployment.
   late final pulumi.Output<String?> description;
+
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
-  late final pulumi.Output<List<DeploymentLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// Output only. URL of the manifest representing the last manifest that
   /// was successfully deployed.
   late final pulumi.Output<String> manifest;
+
   /// Unique name for the deployment
   late final pulumi.Output<String> name;
+
   /// If set to true, a deployment is created with "shell" resources
   /// that are not actually instantiated. This allows you to preview a
   /// deployment. It can be updated to false to actually deploy
   /// with real resources.
-  /// ~>**NOTE:** Deployment Manager does not allow update
+  /// ~&gt;**NOTE:** Deployment Manager does not allow update
   /// of a deployment in preview (unless updating to preview=false). Thus,
   /// the provider will force-recreate deployments if either preview is updated
   /// to true or if other fields are updated while preview is true.
   late final pulumi.Output<bool?> preview;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. Server defined URL for the resource.
   late final pulumi.Output<String> selfLink;
+
   /// Parameters that define your deployment, including the deployment
   /// configuration and relevant templates.
   /// Structure is documented below.
@@ -279,22 +288,22 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:deploymentmanager/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createPolicy = registerOutput<String?>('createPolicy');
-    this.deletePolicy = registerOutput<String?>('deletePolicy');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<List<DeploymentLabel>?>('labels');
-    this.manifest = registerOutput<String>('manifest');
+         'gcp:deploymentmanager/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createPolicy = registerOutput<String?>('createPolicy');
+    deletePolicy = registerOutput<String?>('deletePolicy');
+    deploymentId = registerOutput<String>('deploymentId');
+    description = registerOutput<String?>('description');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    manifest = registerOutput<String>('manifest');
     this.name = registerOutput<String>('name');
-    this.preview = registerOutput<bool?>('preview');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.target = registerOutput<DeploymentTarget>('target');
+    preview = registerOutput<bool?>('preview');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    target = registerOutput<DeploymentTarget>('target');
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -315,21 +324,21 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:deploymentmanager/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createPolicy = registerOutput<String?>('createPolicy');
-    this.deletePolicy = registerOutput<String?>('deletePolicy');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<List<DeploymentLabel>?>('labels');
-    this.manifest = registerOutput<String>('manifest');
+         'gcp:deploymentmanager/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createPolicy = registerOutput<String?>('createPolicy');
+    deletePolicy = registerOutput<String?>('deletePolicy');
+    deploymentId = registerOutput<String>('deploymentId');
+    description = registerOutput<String?>('description');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    manifest = registerOutput<String>('manifest');
     this.name = registerOutput<String>('name');
-    this.preview = registerOutput<bool?>('preview');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.target = registerOutput<DeploymentTarget>('target');
+    preview = registerOutput<bool?>('preview');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    target = registerOutput<DeploymentTarget>('target');
   }
 }

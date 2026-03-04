@@ -14,15 +14,14 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caseSensitive': caseSensitive,
-    };
+    return <String, dynamic>{'caseSensitive': caseSensitive};
   }
 
-  factory GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse(
-      caseSensitive: (map['caseSensitive'] as bool).input(),
+      caseSensitive: pulumi.Input.fromValue(map['caseSensitive'] as bool),
     );
   }
 }
-

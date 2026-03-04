@@ -7,16 +7,22 @@ import 'namespace_discovered_management_action.dart';
 class NamespaceDiscoveredManagementGroup {
   /// Array of actions that are part of the management group. Each action can have an individual configuration.
   final pulumi.Input<List<NamespaceDiscoveredManagementAction>>? actions;
+
   /// Default response timeout for all actions that are part of the management group.
   final pulumi.Input<int>? defaultTimeoutInSeconds;
+
   /// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
   final pulumi.Input<String>? defaultTopic;
+
   /// Timestamp (in UTC) indicating when the management group was added or modified.
   final pulumi.Input<String>? lastUpdatedOn;
+
   /// Stringified JSON that contains connector-specific configuration for the management group.
   final pulumi.Input<String>? managementGroupConfiguration;
+
   /// Name of the management group.
   final pulumi.Input<String> name;
+
   /// URI or type definition ID.
   final pulumi.Input<String>? typeRef;
 
@@ -40,7 +46,18 @@ class NamespaceDiscoveredManagementGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDiscoveredManagementAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<NamespaceDiscoveredManagementAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceDiscoveredManagementAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NamespaceDiscoveredManagementAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'defaultTimeoutInSeconds': ?defaultTimeoutInSeconds,
       'defaultTopic': ?defaultTopic,
       'lastUpdatedOn': ?lastUpdatedOn,
@@ -52,14 +69,44 @@ class NamespaceDiscoveredManagementGroup {
 
   factory NamespaceDiscoveredManagementGroup.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredManagementGroup(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredManagementAction>(map['actions']!, (value) => NamespaceDiscoveredManagementAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultTimeoutInSeconds: map['defaultTimeoutInSeconds'] == null ? null : (map['defaultTimeoutInSeconds']! as int).input(),
-      defaultTopic: map['defaultTopic'] == null ? null : (map['defaultTopic']! as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
-      managementGroupConfiguration: map['managementGroupConfiguration'] == null ? null : (map['managementGroupConfiguration']! as String).input(),
-      name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceDiscoveredManagementAction>(
+            guardedValue,
+            (value) => NamespaceDiscoveredManagementAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      defaultTimeoutInSeconds: (() {
+        final guardedValue = map['defaultTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultTopic: (() {
+        final guardedValue = map['defaultTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedOn: (() {
+        final guardedValue = map['lastUpdatedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroupConfiguration: (() {
+        final guardedValue = map['managementGroupConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      typeRef: (() {
+        final guardedValue = map['typeRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

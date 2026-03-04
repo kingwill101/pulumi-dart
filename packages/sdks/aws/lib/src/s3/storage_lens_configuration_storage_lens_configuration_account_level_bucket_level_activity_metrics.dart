@@ -13,15 +13,18 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAct
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap(Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'get_oidc_providers_result.dart';
 
 /// This data source provides Ims Oidc Provider available to the user.[What is Oidc Provider](https://next.api.alibabacloud.com/document/Ims/2019-08-15/CreateOIDCProvider)
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///

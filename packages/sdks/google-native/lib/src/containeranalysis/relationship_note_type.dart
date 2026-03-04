@@ -45,16 +45,15 @@ enum RelationshipNoteType {
   hasPrerequisite("HAS_PREREQUISITE"),
   other("OTHER");
 
-  const RelationshipNoteType(this.value);
-  final String value;
+  const RelationshipNoteType(this.wireValue);
+  final String wireValue;
 
   static RelationshipNoteType fromValue(String value) {
     for (final item in RelationshipNoteType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RelationshipNoteType value: $value');
   }
 }
-

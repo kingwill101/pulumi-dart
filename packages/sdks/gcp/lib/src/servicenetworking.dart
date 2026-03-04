@@ -1,5 +1,3 @@
-library module_servicenetworking;
-
 export 'servicenetworking/connection.dart';
 export 'servicenetworking/connection_args.dart';
 export 'servicenetworking/connection_state.dart';

@@ -5,16 +5,15 @@ enum DeploymentPlatform {
   flex("FLEX"),
   custom("CUSTOM");
 
-  const DeploymentPlatform(this.value);
-  final String value;
+  const DeploymentPlatform(this.wireValue);
+  final String wireValue;
 
   static DeploymentPlatform fromValue(String value) {
     for (final item in DeploymentPlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentPlatform value: $value');
   }
 }
-

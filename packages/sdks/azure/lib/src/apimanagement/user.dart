@@ -223,7 +223,7 @@ import 'user_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -238,24 +238,33 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The name of the API Management Service in which the User should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The kind of confirmation email which will be sent to this user. Possible values are `invite` and `signup`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> confirmation;
+
   /// The email address associated with this user.
   late final pulumi.Output<String> email;
+
   /// The first name for this user.
   late final pulumi.Output<String> firstName;
+
   /// The last name for this user.
   late final pulumi.Output<String> lastName;
+
   /// A note about this user.
   late final pulumi.Output<String?> note;
+
   /// The password associated with this user.
   late final pulumi.Output<String?> password;
+
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The state of this user. Possible values are `active`, `blocked` and `pending`.
   ///
-  /// > **Note:** the State can be changed from Pending > Active/Blocked but not from Active/Blocked > Pending.
+  /// &gt; **Note:** the State can be changed from Pending &gt; Active/Blocked but not from Active/Blocked &gt; Pending.
   late final pulumi.Output<String> state;
+
   /// The Identifier for this User, which must be unique within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> userId;
 
@@ -263,34 +272,27 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_apimanagement_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:apimanagement/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.confirmation = registerOutput<String?>('confirmation');
-    this.email = registerOutput<String>('email');
-    this.firstName = registerOutput<String>('firstName');
-    this.lastName = registerOutput<String>('lastName');
-    this.note = registerOutput<String?>('note');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.state = registerOutput<String>('state');
-    this.userId = registerOutput<String>('userId');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:apimanagement/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    confirmation = registerOutput<String?>('confirmation');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String>('firstName');
+    lastName = registerOutput<String>('lastName');
+    note = registerOutput<String?>('note');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    state = registerOutput<String>('state');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -303,20 +305,20 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.confirmation = registerOutput<String?>('confirmation');
-    this.email = registerOutput<String>('email');
-    this.firstName = registerOutput<String>('firstName');
-    this.lastName = registerOutput<String>('lastName');
-    this.note = registerOutput<String?>('note');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:apimanagement/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    confirmation = registerOutput<String?>('confirmation');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String>('firstName');
+    lastName = registerOutput<String>('lastName');
+    note = registerOutput<String?>('note');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
     this.state = registerOutput<String>('state');
-    this.userId = registerOutput<String>('userId');
+    userId = registerOutput<String>('userId');
   }
 }

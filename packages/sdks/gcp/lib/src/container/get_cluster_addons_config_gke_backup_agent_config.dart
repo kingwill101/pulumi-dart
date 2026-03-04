@@ -7,20 +7,17 @@ class GetClusterAddonsConfigGkeBackupAgentConfig {
 
   /// Creates a new [GetClusterAddonsConfigGkeBackupAgentConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigGkeBackupAgentConfig({
-    required this.enabled,
-  });
+  GetClusterAddonsConfigGkeBackupAgentConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetClusterAddonsConfigGkeBackupAgentConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigGkeBackupAgentConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAddonsConfigGkeBackupAgentConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

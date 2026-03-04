@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageSharePermissionArgs {
   /// Alibaba Cloud Account ID. It is used to share images.
   final pulumi.Input<String> accountId;
+
   /// The source image ID.
   final pulumi.Input<String> imageId;
 
   /// Creates a new [ImageSharePermissionArgs].
   /// [accountId] Alibaba Cloud Account ID. It is used to share images.
   /// [imageId] The source image ID.
-  ImageSharePermissionArgs({
-    required this.accountId,
-    required this.imageId,
-  });
+  ImageSharePermissionArgs({required this.accountId, required this.imageId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'imageId': imageId,
-    };
+    return <String, dynamic>{'accountId': accountId, 'imageId': imageId};
   }
 
   factory ImageSharePermissionArgs.fromMap(Map<String, dynamic> map) {
     return ImageSharePermissionArgs(
-      accountId: (map['accountId'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
     );
   }
 }
-

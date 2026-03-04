@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreditReasonResponse {
   /// The reason code for credit.
   final pulumi.Input<double> code;
+
   /// The free string description of the credit.
   final pulumi.Input<String> description;
 
   /// Creates a new [CreditReasonResponse].
   /// [code] The reason code for credit.
   /// [description] The free string description of the credit.
-  CreditReasonResponse({
-    required this.code,
-    required this.description,
-  });
+  CreditReasonResponse({required this.code, required this.description});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'description': description,
-    };
+    return <String, dynamic>{'code': code, 'description': description};
   }
 
   factory CreditReasonResponse.fromMap(Map<String, dynamic> map) {
     return CreditReasonResponse(
-      code: (map['code'] as double).input(),
-      description: (map['description'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as double),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

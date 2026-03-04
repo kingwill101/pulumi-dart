@@ -7,8 +7,10 @@ import 'day_of_week.dart';
 class ScheduleEntry {
   /// Day of the week when a cache can be patched.
   final pulumi.Input<DayOfWeek> dayOfWeek;
+
   /// ISO8601 timespan specifying how much time cache patching can take.
   final pulumi.Input<String>? maintenanceWindow;
+
   /// Start hour after which cache patching can start.
   final pulumi.Input<int> startHourUtc;
 
@@ -24,7 +26,10 @@ class ScheduleEntry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': pulumi.Input.mapInputValue<DayOfWeek, String>(dayOfWeek, (value) => value.value),
+      'dayOfWeek': pulumi.Input.mapInputValue<DayOfWeek, String>(
+        dayOfWeek,
+        (value) => value.wireValue,
+      ),
       'maintenanceWindow': ?maintenanceWindow,
       'startHourUtc': startHourUtc,
     };
@@ -32,10 +37,15 @@ class ScheduleEntry {
 
   factory ScheduleEntry.fromMap(Map<String, dynamic> map) {
     return ScheduleEntry(
-      dayOfWeek: (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow']! as String).input(),
-      startHourUtc: (map['startHourUtc'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(
+        DayOfWeek.fromValue(map['dayOfWeek']! as String),
+      ),
+      maintenanceWindow: (() {
+        final guardedValue = map['maintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startHourUtc: pulumi.Input.fromValue(map['startHourUtc'] as int),
     );
   }
 }
-

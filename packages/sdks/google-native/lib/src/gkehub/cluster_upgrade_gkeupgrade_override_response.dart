@@ -8,6 +8,7 @@ import 'cluster_upgrade_post_conditions_response.dart';
 class ClusterUpgradeGKEUpgradeOverrideResponse {
   /// Post conditions to override for the specified upgrade (name + version). Required.
   final pulumi.Input<ClusterUpgradePostConditionsResponse> postConditions;
+
   /// Which upgrade to override. Required.
   final pulumi.Input<ClusterUpgradeGKEUpgradeResponse> upgrade;
 
@@ -21,16 +22,33 @@ class ClusterUpgradeGKEUpgradeOverrideResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postConditions': pulumi.Input.mapInputValue<ClusterUpgradePostConditionsResponse, Map<String, dynamic>>(postConditions, (value) => value.toMap()),
-      'upgrade': pulumi.Input.mapInputValue<ClusterUpgradeGKEUpgradeResponse, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
+      'postConditions':
+          pulumi.Input.mapInputValue<
+            ClusterUpgradePostConditionsResponse,
+            Map<String, dynamic>
+          >(postConditions, (value) => value.toMap()),
+      'upgrade':
+          pulumi.Input.mapInputValue<
+            ClusterUpgradeGKEUpgradeResponse,
+            Map<String, dynamic>
+          >(upgrade, (value) => value.toMap()),
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeOverrideResponse.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeOverrideResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeGKEUpgradeOverrideResponse(
-      postConditions: (ClusterUpgradePostConditionsResponse.fromMap((map['postConditions'] as Map).cast<String, dynamic>())).input(),
-      upgrade: (ClusterUpgradeGKEUpgradeResponse.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
+      postConditions: pulumi.Input.fromValue(
+        ClusterUpgradePostConditionsResponse.fromMap(
+          (map['postConditions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      upgrade: pulumi.Input.fromValue(
+        ClusterUpgradeGKEUpgradeResponse.fromMap(
+          (map['upgrade']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

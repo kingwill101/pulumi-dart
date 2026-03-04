@@ -10,16 +10,15 @@ enum SourcePredefinedSource {
   googleCalendar("GOOGLE_CALENDAR"),
   googleKeep("GOOGLE_KEEP");
 
-  const SourcePredefinedSource(this.value);
-  final String value;
+  const SourcePredefinedSource(this.wireValue);
+  final String wireValue;
 
   static SourcePredefinedSource fromValue(String value) {
     for (final item in SourcePredefinedSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourcePredefinedSource value: $value');
   }
 }
-

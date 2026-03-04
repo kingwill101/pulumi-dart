@@ -34,7 +34,7 @@ import 'get_remote_writes_result.dart';
 
 /// This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -834,7 +834,7 @@ Future<GetAddonReleasesResult> getAddonReleases(
 
 /// This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.131.0+.
+/// &gt; **NOTE:** Available in v1.131.0+.
 ///
 /// ## Example Usage
 ///
@@ -953,7 +953,7 @@ Future<GetAlertContactGroupsResult> getAlertContactGroups(
 
 /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.129.0+.
+/// &gt; **NOTE:** Available in v1.129.0+.
 ///
 /// ## Example Usage
 ///
@@ -1093,7 +1093,7 @@ Future<GetAlertContactsResult> getAlertContacts(
 
 /// This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -1250,7 +1250,7 @@ Future<GetAlertRobotsResult> getAlertRobots(
 
 /// This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -1719,7 +1719,7 @@ Future<GetDispatchRulesResult> getDispatchRules(
 
 /// This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -2115,7 +2115,7 @@ Future<GetEnvCustomJobsResult> getEnvCustomJobs(
 
 /// This data source provides the ARMS Env Features of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -2864,7 +2864,7 @@ Future<GetEnvFeaturesResult> getEnvFeatures(
 
 /// This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -3757,7 +3757,7 @@ Future<GetEnvPodMonitorsResult> getEnvPodMonitors(
 
 /// This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -4645,7 +4645,7 @@ Future<GetEnvServiceMonitorsResult> getEnvServiceMonitors(
 
 /// This data source provides the ARMS Environments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -4958,7 +4958,7 @@ Future<GetEnvironmentsResult> getEnvironments(
 
 /// This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.203.0+.
+/// &gt; **NOTE:** Available in v1.203.0+.
 ///
 /// ## Example Usage
 ///
@@ -5095,9 +5095,9 @@ Future<GetIntegrationExportersResult> getIntegrationExporters(
 
 /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
-/// > **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
+/// &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
 ///
 /// ## Example Usage
 ///
@@ -5420,7 +5420,7 @@ Future<GetPrometheisResult> getPrometheis(
 
 /// This data source provides the Arms Prometheus of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.214.0.
+/// &gt; **NOTE:** Available since v1.214.0.
 ///
 /// ## Example Usage
 ///
@@ -5719,7 +5719,7 @@ Future<GetPrometheusResult> getPrometheus(
 
 /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -5897,7 +5897,7 @@ Future<GetPrometheusAlertRulesResult> getPrometheusAlertRules(
 
 /// This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -6064,9 +6064,9 @@ Future<GetPrometheusMonitoringsResult> getPrometheusMonitorings(
 
 /// This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
-/// > **DEPRECATED:** This data source has been deprecated since v1.228.0.
+/// &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
 ///
 /// ## Example Usage
 ///

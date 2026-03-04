@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroupWebhookReceiverAadAuth {
   /// The identifier URI for AAD auth.
   final pulumi.Input<String>? identifierUri;
+
   /// The webhook application object Id for AAD auth.
   final pulumi.Input<String> objectId;
+
   /// The tenant id for AAD auth.
   final pulumi.Input<String>? tenantId;
 
@@ -30,10 +32,17 @@ class ActionGroupWebhookReceiverAadAuth {
 
   factory ActionGroupWebhookReceiverAadAuth.fromMap(Map<String, dynamic> map) {
     return ActionGroupWebhookReceiverAadAuth(
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      identifierUri: (() {
+        final guardedValue = map['identifierUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

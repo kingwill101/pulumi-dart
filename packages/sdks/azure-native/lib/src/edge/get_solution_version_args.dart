@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSolutionVersionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the solution
   final pulumi.Input<String> solutionName;
+
   /// Name of the solution version
   final pulumi.Input<String> solutionVersionName;
+
   /// Name of the target
   final pulumi.Input<String> targetName;
 
@@ -39,11 +42,14 @@ class GetSolutionVersionArgs {
 
   factory GetSolutionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionVersionArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionName: (map['solutionName'] as String).input(),
-      solutionVersionName: (map['solutionVersionName'] as String).input(),
-      targetName: (map['targetName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      solutionName: pulumi.Input.fromValue(map['solutionName'] as String),
+      solutionVersionName: pulumi.Input.fromValue(
+        map['solutionVersionName'] as String,
+      ),
+      targetName: pulumi.Input.fromValue(map['targetName'] as String),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsExportResponse {
   /// Allow dev flag in NfsShare AllowedClientsRequest.
   final pulumi.Input<bool> allowDev;
+
   /// Allow the setuid flag.
   final pulumi.Input<bool> allowSuid;
+
   /// A CIDR range.
   final pulumi.Input<String> cidr;
+
   /// Either a single machine, identified by an ID, or a comma-separated list of machine IDs.
   final pulumi.Input<String> machineId;
+
   /// Network to use to publish the export.
   final pulumi.Input<String> networkId;
+
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   final pulumi.Input<bool> noRootSquash;
+
   /// Export permissions.
   final pulumi.Input<String> permissions;
 
@@ -51,14 +57,13 @@ class NfsExportResponse {
 
   factory NfsExportResponse.fromMap(Map<String, dynamic> map) {
     return NfsExportResponse(
-      allowDev: (map['allowDev'] as bool).input(),
-      allowSuid: (map['allowSuid'] as bool).input(),
-      cidr: (map['cidr'] as String).input(),
-      machineId: (map['machineId'] as String).input(),
-      networkId: (map['networkId'] as String).input(),
-      noRootSquash: (map['noRootSquash'] as bool).input(),
-      permissions: (map['permissions'] as String).input(),
+      allowDev: pulumi.Input.fromValue(map['allowDev'] as bool),
+      allowSuid: pulumi.Input.fromValue(map['allowSuid'] as bool),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      machineId: pulumi.Input.fromValue(map['machineId'] as String),
+      networkId: pulumi.Input.fromValue(map['networkId'] as String),
+      noRootSquash: pulumi.Input.fromValue(map['noRootSquash'] as bool),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_timeseriesinsights;
-
 export 'timeseriesinsights/access_policy.dart';
 export 'timeseriesinsights/access_policy_args.dart';
 export 'timeseriesinsights/access_policy_role.dart';

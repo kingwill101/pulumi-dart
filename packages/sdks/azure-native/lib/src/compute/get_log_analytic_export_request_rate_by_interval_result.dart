@@ -9,20 +9,19 @@ class GetLogAnalyticExportRequestRateByIntervalResult {
 
   /// Creates a new [GetLogAnalyticExportRequestRateByIntervalResult].
   /// [properties] LogAnalyticsOutput
-  GetLogAnalyticExportRequestRateByIntervalResult({
-    required this.properties,
-  });
+  GetLogAnalyticExportRequestRateByIntervalResult({required this.properties});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
-  factory GetLogAnalyticExportRequestRateByIntervalResult.fromMap(Map<String, dynamic> map) {
+  factory GetLogAnalyticExportRequestRateByIntervalResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogAnalyticExportRequestRateByIntervalResult(
-      properties: LogAnalyticsOutputResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: LogAnalyticsOutputResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

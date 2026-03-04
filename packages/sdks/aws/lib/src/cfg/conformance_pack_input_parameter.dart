@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConformancePackInputParameter {
   /// The input key.
   final pulumi.Input<String> parameterName;
+
   /// The input value.
   final pulumi.Input<String> parameterValue;
 
@@ -25,9 +26,8 @@ class ConformancePackInputParameter {
 
   factory ConformancePackInputParameter.fromMap(Map<String, dynamic> map) {
     return ConformancePackInputParameter(
-      parameterName: (map['parameterName'] as String).input(),
-      parameterValue: (map['parameterValue'] as String).input(),
+      parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
+      parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
-

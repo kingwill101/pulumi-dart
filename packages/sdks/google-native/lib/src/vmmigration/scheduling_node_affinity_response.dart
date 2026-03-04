@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulingNodeAffinityResponse {
   /// The label key of Node resource to reference.
   final pulumi.Input<String> key;
+
   /// The operator to use for the node resources specified in the `values` parameter.
   final pulumi.Input<String> operator;
+
   /// Corresponds to the label values of Node resource.
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,9 @@ class SchedulingNodeAffinityResponse {
 
   factory SchedulingNodeAffinityResponse.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinityResponse(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

@@ -390,13 +390,17 @@ import 'version_state.dart';
 class Version extends pulumi.CustomResource {
   /// The developer-provided description of this version.
   late final pulumi.Output<String?> description;
+
   /// The unique identifier of this agent version.
   late final pulumi.Output<String> name;
+
   /// The Flow to create an Version for.
-  /// Format: projects/<Project ID>/agent.
+  /// Format: projects/&lt;Project ID&gt;/agent.
   late final pulumi.Output<String?> parent;
+
   /// The status of this version.
   late final pulumi.Output<String> status;
+
   /// The sequential number of this version.
   late final pulumi.Output<int> versionNumber;
 
@@ -409,16 +413,16 @@ class Version extends pulumi.CustomResource {
     VersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/version:Version',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'gcp:diagflow/version:Version',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.status = registerOutput<String>('status');
-    this.versionNumber = registerOutput<int>('versionNumber');
+    parent = registerOutput<String?>('parent');
+    status = registerOutput<String>('status');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 
   /// Gets an existing [Version] resource's state with the given [name] and [id].
@@ -439,15 +443,15 @@ class Version extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/version:Version',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'gcp:diagflow/version:Version',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.status = registerOutput<String>('status');
-    this.versionNumber = registerOutput<int>('versionNumber');
+    parent = registerOutput<String?>('parent');
+    status = registerOutput<String>('status');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 }

@@ -262,13 +262,17 @@ class AppCheckDebugToken extends pulumi.CustomResource {
   /// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
   /// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
   late final pulumi.Output<String> appId;
+
   /// The last segment of the resource name of the debug token.
   late final pulumi.Output<String> debugTokenId;
+
   /// A human readable display name used to identify this debug token.
   late final pulumi.Output<String> displayName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The secret token itself. Must be provided during creation, and must be a UUID4,
   /// case insensitive. You may use a method of your choice such as random/random_uuid
   /// to generate the token.
@@ -287,16 +291,16 @@ class AppCheckDebugToken extends pulumi.CustomResource {
     AppCheckDebugTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.debugTokenId = registerOutput<String>('debugTokenId');
-    this.displayName = registerOutput<String>('displayName');
-    this.project = registerOutput<String>('project');
-    this.token = registerOutput<String>('token');
+         'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    debugTokenId = registerOutput<String>('debugTokenId');
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    token = registerOutput<String>('token');
   }
 
   /// Gets an existing [AppCheckDebugToken] resource's state with the given [name] and [id].
@@ -317,15 +321,15 @@ class AppCheckDebugToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.debugTokenId = registerOutput<String>('debugTokenId');
-    this.displayName = registerOutput<String>('displayName');
-    this.project = registerOutput<String>('project');
-    this.token = registerOutput<String>('token');
+         'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    debugTokenId = registerOutput<String>('debugTokenId');
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    token = registerOutput<String>('token');
   }
 }

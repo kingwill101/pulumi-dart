@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateApplicationsApplicationDimension {
   /// Quota dimension Key.
   final pulumi.Input<String> key;
+
   /// Quota dimension Value.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetTemplateApplicationsApplicationDimension {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GetTemplateApplicationsApplicationDimension.fromMap(Map<String, dynamic> map) {
+  factory GetTemplateApplicationsApplicationDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTemplateApplicationsApplicationDimension(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

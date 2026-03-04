@@ -3,16 +3,15 @@ enum IsEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const IsEnabled(this.value);
-  final String value;
+  const IsEnabled(this.wireValue);
+  final String wireValue;
 
   static IsEnabled fromValue(String value) {
     for (final item in IsEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IsEnabled value: $value');
   }
 }
-

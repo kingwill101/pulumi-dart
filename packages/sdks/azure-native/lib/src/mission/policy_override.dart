@@ -3,16 +3,15 @@ enum PolicyOverride {
   valueEnclave("Enclave"),
   valueNone("None");
 
-  const PolicyOverride(this.value);
-  final String value;
+  const PolicyOverride(this.wireValue);
+  final String wireValue;
 
   static PolicyOverride fromValue(String value) {
     for (final item in PolicyOverride.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyOverride value: $value');
   }
 }
-

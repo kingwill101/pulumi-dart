@@ -10,12 +10,16 @@ import 'geo_backup_policy_state.dart';
 class GeoBackupPolicyArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the Geo backup policy. This should always be 'Default'.
   final pulumi.Input<String>? geoBackupPolicyName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The state of the geo backup policy.
   final pulumi.Input<GeoBackupPolicyState> state;
 
@@ -39,18 +43,28 @@ class GeoBackupPolicyArgs {
       'geoBackupPolicyName': ?geoBackupPolicyName,
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
-      'state': pulumi.Input.mapInputValue<GeoBackupPolicyState, String>(state, (value) => value.value),
+      'state': pulumi.Input.mapInputValue<GeoBackupPolicyState, String>(
+        state,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory GeoBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GeoBackupPolicyArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      geoBackupPolicyName: map['geoBackupPolicyName'] == null ? null : (map['geoBackupPolicyName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      state: (GeoBackupPolicyState.fromValue(map['state'] as String)).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      geoBackupPolicyName: (() {
+        final guardedValue = map['geoBackupPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      state: pulumi.Input.fromValue(
+        GeoBackupPolicyState.fromValue(map['state']! as String),
+      ),
     );
   }
 }
-

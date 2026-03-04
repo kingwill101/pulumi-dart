@@ -3,16 +3,15 @@ enum StorageAccountStrategy {
   preferStandardZRS("PreferStandard_ZRS"),
   defaultStandardLRS("DefaultStandard_LRS");
 
-  const StorageAccountStrategy(this.value);
-  final String value;
+  const StorageAccountStrategy(this.wireValue);
+  final String wireValue;
 
   static StorageAccountStrategy fromValue(String value) {
     for (final item in StorageAccountStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageAccountStrategy value: $value');
   }
 }
-

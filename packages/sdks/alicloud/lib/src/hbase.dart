@@ -1,5 +1,3 @@
-library module_hbase;
-
 export 'hbase/functions.dart';
 export 'hbase/get_instance_types_args.dart';
 export 'hbase/get_instance_types_core_instance_type.dart';

@@ -8,16 +8,22 @@ import 'query_list_response_dataproc_v1beta2.dart';
 class PrestoJobResponseDataprocV1beta2 {
   /// Optional. Presto client tags to attach to this query
   final pulumi.Input<List<String>> clientTags;
+
   /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
   final pulumi.Input<bool> continueOnFailure;
+
   /// Optional. The runtime log config for job execution.
   final pulumi.Input<LoggingConfigResponseDataprocV1beta2> loggingConfig;
+
   /// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
   final pulumi.Input<String> outputFormat;
+
   /// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
   final pulumi.Input<Map<String, String>> properties;
+
   /// The HCFS URI of the script that contains SQL queries.
   final pulumi.Input<String> queryFileUri;
+
   /// A list of queries.
   final pulumi.Input<QueryListResponseDataprocV1beta2> queryList;
 
@@ -43,24 +49,45 @@ class PrestoJobResponseDataprocV1beta2 {
     return <String, dynamic>{
       'clientTags': clientTags,
       'continueOnFailure': continueOnFailure,
-      'loggingConfig': pulumi.Input.mapInputValue<LoggingConfigResponseDataprocV1beta2, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          pulumi.Input.mapInputValue<
+            LoggingConfigResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
       'outputFormat': outputFormat,
       'properties': properties,
       'queryFileUri': queryFileUri,
-      'queryList': pulumi.Input.mapInputValue<QueryListResponseDataprocV1beta2, Map<String, dynamic>>(queryList, (value) => value.toMap()),
+      'queryList':
+          pulumi.Input.mapInputValue<
+            QueryListResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(queryList, (value) => value.toMap()),
     };
   }
 
   factory PrestoJobResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return PrestoJobResponseDataprocV1beta2(
-      clientTags: ((map['clientTags'] as List).cast<String>()).input(),
-      continueOnFailure: (map['continueOnFailure'] as bool).input(),
-      loggingConfig: (LoggingConfigResponseDataprocV1beta2.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      outputFormat: (map['outputFormat'] as String).input(),
-      properties: ((map['properties'] as Map).cast<String, String>()).input(),
-      queryFileUri: (map['queryFileUri'] as String).input(),
-      queryList: (QueryListResponseDataprocV1beta2.fromMap((map['queryList'] as Map).cast<String, dynamic>())).input(),
+      clientTags: pulumi.Input.fromValue(
+        (map['clientTags'] as List).cast<String>(),
+      ),
+      continueOnFailure: pulumi.Input.fromValue(
+        map['continueOnFailure'] as bool,
+      ),
+      loggingConfig: pulumi.Input.fromValue(
+        LoggingConfigResponseDataprocV1beta2.fromMap(
+          (map['loggingConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFormat: pulumi.Input.fromValue(map['outputFormat'] as String),
+      properties: pulumi.Input.fromValue(
+        (map['properties'] as Map).cast<String, String>(),
+      ),
+      queryFileUri: pulumi.Input.fromValue(map['queryFileUri'] as String),
+      queryList: pulumi.Input.fromValue(
+        QueryListResponseDataprocV1beta2.fromMap(
+          (map['queryList']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

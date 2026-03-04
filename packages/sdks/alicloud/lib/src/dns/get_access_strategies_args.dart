@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessStrategiesArgs {
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Access Strategy IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The Id of the associated instance.
   final pulumi.Input<String> instanceId;
+
   /// The lang.
   final pulumi.Input<String>? lang;
+
   /// A regex string to filter results by Access Strategy name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The type of the access policy. Valid values:
   /// - `GEO`: based on geographic location.
   /// - `LATENCY`: Based on delay.
@@ -56,14 +62,33 @@ class GetAccessStrategiesArgs {
 
   factory GetAccessStrategiesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessStrategiesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      strategyMode: (map['strategyMode'] as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      strategyMode: pulumi.Input.fromValue(map['strategyMode'] as String),
     );
   }
 }
-

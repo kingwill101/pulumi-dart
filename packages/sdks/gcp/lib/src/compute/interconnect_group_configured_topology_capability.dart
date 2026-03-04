@@ -9,7 +9,11 @@ class InterconnectGroupConfiguredTopologyCapability {
   /// from intent.topologyCapability. This list is empty if and only if those
   /// are the same.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>>? intendedCapabilityBlockers;
+  final pulumi.Input<
+    List<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>
+  >?
+  intendedCapabilityBlockers;
+
   /// (Output)
   /// Which level of reliability this group is configured to
   /// support.
@@ -25,16 +29,48 @@ class InterconnectGroupConfiguredTopologyCapability {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intendedCapabilityBlockers': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>, List<Map<String, dynamic>>>(intendedCapabilityBlockers, (value) => pulumi.Input.encodeList<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'intendedCapabilityBlockers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker
+            >,
+            List<Map<String, dynamic>>
+          >(
+            intendedCapabilityBlockers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'supportedSla': ?supportedSla,
     };
   }
 
-  factory InterconnectGroupConfiguredTopologyCapability.fromMap(Map<String, dynamic> map) {
+  factory InterconnectGroupConfiguredTopologyCapability.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectGroupConfiguredTopologyCapability(
-      intendedCapabilityBlockers: map['intendedCapabilityBlockers'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>(map['intendedCapabilityBlockers']!, (value) => InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      supportedSla: map['supportedSla'] == null ? null : (map['supportedSla']! as String).input(),
+      intendedCapabilityBlockers: (() {
+        final guardedValue = map['intendedCapabilityBlockers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker
+          >(
+            guardedValue,
+            (value) =>
+                InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      supportedSla: (() {
+        final guardedValue = map['supportedSla'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
   /// Annotation spec set resource name.
   final pulumi.Input<String> annotationSpecSet;
+
   /// Optional. Instruction message showed on contributors UI.
   final pulumi.Input<String> instructionMessage;
 
@@ -24,11 +25,16 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(
-      annotationSpecSet: (map['annotationSpecSet'] as String).input(),
-      instructionMessage: (map['instructionMessage'] as String).input(),
+      annotationSpecSet: pulumi.Input.fromValue(
+        map['annotationSpecSet'] as String,
+      ),
+      instructionMessage: pulumi.Input.fromValue(
+        map['instructionMessage'] as String,
+      ),
     );
   }
 }
-

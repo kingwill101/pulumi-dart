@@ -13,15 +13,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'words': words,
-    };
+    return <String, dynamic>{'words': words};
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList(
-      words: ((map['words'] as List).cast<String>()).input(),
+      words: pulumi.Input.fromValue((map['words'] as List).cast<String>()),
     );
   }
 }
-

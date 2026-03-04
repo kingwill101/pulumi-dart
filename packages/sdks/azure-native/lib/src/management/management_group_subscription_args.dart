@@ -12,20 +12,15 @@ class ManagementGroupSubscriptionArgs {
 
   /// Creates a new [ManagementGroupSubscriptionArgs].
   /// [groupId] Management Group ID.
-  ManagementGroupSubscriptionArgs({
-    required this.groupId,
-  });
+  ManagementGroupSubscriptionArgs({required this.groupId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupId': groupId,
-    };
+    return <String, dynamic>{'groupId': groupId};
   }
 
   factory ManagementGroupSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupSubscriptionArgs(
-      groupId: (map['groupId'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
     );
   }
 }
-

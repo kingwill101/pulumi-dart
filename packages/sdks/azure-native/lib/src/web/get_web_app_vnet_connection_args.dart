@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppVnetConnectionArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the virtual network.
   final pulumi.Input<String> vnetName;
 
@@ -34,10 +36,11 @@ class GetWebAppVnetConnectionArgs {
 
   factory GetWebAppVnetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppVnetConnectionArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vnetName: (map['vnetName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vnetName: pulumi.Input.fromValue(map['vnetName'] as String),
     );
   }
 }
-

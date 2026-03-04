@@ -13,22 +13,31 @@ import 'floorsetting_google_mcp_server_floor_setting.dart';
 class FloorsettingArgs {
   /// AI Platform floor setting.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingAiPlatformFloorSetting>? aiPlatformFloorSetting;
+  final pulumi.Input<FloorsettingAiPlatformFloorSetting>?
+  aiPlatformFloorSetting;
+
   /// Floor Settings enforcement status.
   final pulumi.Input<bool>? enableFloorSettingEnforcement;
+
   /// Filters configuration.
   /// Structure is documented below.
   final pulumi.Input<FloorsettingFilterConfig> filterConfig;
+
   /// Metadata to enable multi language detection via floor setting.
   /// Structure is documented below.
   final pulumi.Input<FloorsettingFloorSettingMetadata>? floorSettingMetadata;
+
   /// Google MCP Server floor setting.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingGoogleMcpServerFloorSetting>? googleMcpServerFloorSetting;
+  final pulumi.Input<FloorsettingGoogleMcpServerFloorSetting>?
+  googleMcpServerFloorSetting;
+
   /// List of integrated services for which the floor setting is applicable.
   final pulumi.Input<List<String>>? integratedServices;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// Will be any one of these:
   /// * `projects/{project}`
   /// * `folders/{folder}`
@@ -57,11 +66,27 @@ class FloorsettingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aiPlatformFloorSetting': ?pulumi.Input.mapOptionalInputValue<FloorsettingAiPlatformFloorSetting, Map<String, dynamic>>(aiPlatformFloorSetting, (value) => value.toMap()),
+      'aiPlatformFloorSetting':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingAiPlatformFloorSetting,
+            Map<String, dynamic>
+          >(aiPlatformFloorSetting, (value) => value.toMap()),
       'enableFloorSettingEnforcement': ?enableFloorSettingEnforcement,
-      'filterConfig': pulumi.Input.mapInputValue<FloorsettingFilterConfig, Map<String, dynamic>>(filterConfig, (value) => value.toMap()),
-      'floorSettingMetadata': ?pulumi.Input.mapOptionalInputValue<FloorsettingFloorSettingMetadata, Map<String, dynamic>>(floorSettingMetadata, (value) => value.toMap()),
-      'googleMcpServerFloorSetting': ?pulumi.Input.mapOptionalInputValue<FloorsettingGoogleMcpServerFloorSetting, Map<String, dynamic>>(googleMcpServerFloorSetting, (value) => value.toMap()),
+      'filterConfig':
+          pulumi.Input.mapInputValue<
+            FloorsettingFilterConfig,
+            Map<String, dynamic>
+          >(filterConfig, (value) => value.toMap()),
+      'floorSettingMetadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingFloorSettingMetadata,
+            Map<String, dynamic>
+          >(floorSettingMetadata, (value) => value.toMap()),
+      'googleMcpServerFloorSetting':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingGoogleMcpServerFloorSetting,
+            Map<String, dynamic>
+          >(googleMcpServerFloorSetting, (value) => value.toMap()),
       'integratedServices': ?integratedServices,
       'location': location,
       'parent': parent,
@@ -70,15 +95,50 @@ class FloorsettingArgs {
 
   factory FloorsettingArgs.fromMap(Map<String, dynamic> map) {
     return FloorsettingArgs(
-      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting']! as Map).cast<String, dynamic>())).input(),
-      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement']! as bool).input(),
-      filterConfig: (FloorsettingFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
-      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata']! as Map).cast<String, dynamic>())).input(),
-      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting']! as Map).cast<String, dynamic>())).input(),
-      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices']! as List).cast<String>()).input(),
-      location: (map['location'] as String).input(),
-      parent: (map['parent'] as String).input(),
+      aiPlatformFloorSetting: (() {
+        final guardedValue = map['aiPlatformFloorSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingAiPlatformFloorSetting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableFloorSettingEnforcement: (() {
+        final guardedValue = map['enableFloorSettingEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filterConfig: pulumi.Input.fromValue(
+        FloorsettingFilterConfig.fromMap(
+          (map['filterConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      floorSettingMetadata: (() {
+        final guardedValue = map['floorSettingMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingFloorSettingMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      googleMcpServerFloorSetting: (() {
+        final guardedValue = map['googleMcpServerFloorSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingGoogleMcpServerFloorSetting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      integratedServices: (() {
+        final guardedValue = map['integratedServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

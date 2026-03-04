@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigIpLicenseArgs {
   /// Tmsh command to execute tmsh commands like install
   final pulumi.Input<String> command;
+
   /// A unique Key F5 provides for Licensing BIG-IP
   final pulumi.Input<String> registrationKey;
 
   /// Creates a new [BigIpLicenseArgs].
   /// [command] Tmsh command to execute tmsh commands like install
   /// [registrationKey] A unique Key F5 provides for Licensing BIG-IP
-  BigIpLicenseArgs({
-    required this.command,
-    required this.registrationKey,
-  });
+  BigIpLicenseArgs({required this.command, required this.registrationKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class BigIpLicenseArgs {
 
   factory BigIpLicenseArgs.fromMap(Map<String, dynamic> map) {
     return BigIpLicenseArgs(
-      command: (map['command'] as String).input(),
-      registrationKey: (map['registrationKey'] as String).input(),
+      command: pulumi.Input.fromValue(map['command'] as String),
+      registrationKey: pulumi.Input.fromValue(map['registrationKey'] as String),
     );
   }
 }
-

@@ -7,20 +7,15 @@ class GetListenerV2L7policy {
 
   /// Creates a new [GetListenerV2L7policy].
   /// [id] Required.
-  GetListenerV2L7policy({
-    required this.id,
-  });
+  GetListenerV2L7policy({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetListenerV2L7policy.fromMap(Map<String, dynamic> map) {
     return GetListenerV2L7policy(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_account_sink_args.dart';
 import 'billing_account_sink_bigquery_options.dart';
-import 'billing_account_sink_exclusion.dart';
 import 'billing_account_sink_state.dart';
 
 /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
 /// * How-to Guides
 /// * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 ///
-/// > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+/// &gt; **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 /// [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
 /// the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
 /// typical IAM roles granted on a project.
@@ -217,10 +216,13 @@ import 'billing_account_sink_state.dart';
 class BillingAccountSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
   late final pulumi.Output<BillingAccountSinkBigqueryOptions> bigqueryOptions;
+
   /// The billing account exported to the sink.
   late final pulumi.Output<String> billingAccount;
+
   /// A description of this sink. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
+
   /// The destination of the sink (or, in other words, where logs are written to). Can be a
   /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
   ///
@@ -231,16 +233,21 @@ class BillingAccountSink extends pulumi.CustomResource {
   ///
   /// The writer associated with the sink must have access to write to the above resource.
   late final pulumi.Output<String> destination;
+
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool?> disabled;
+
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final pulumi.Output<List<BillingAccountSinkExclusion>?> exclusions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> exclusions;
+
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String?> filter;
+
   /// The name of the logging sink.
   late final pulumi.Output<String> name;
+
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
   late final pulumi.Output<String> writerIdentity;
@@ -254,20 +261,22 @@ class BillingAccountSink extends pulumi.CustomResource {
     BillingAccountSinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/billingAccountSink:BillingAccountSink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions');
-    this.billingAccount = registerOutput<String>('billingAccount');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<String>('destination');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.exclusions = registerOutput<List<BillingAccountSinkExclusion>?>('exclusions');
-    this.filter = registerOutput<String?>('filter');
+         'gcp:logging/billingAccountSink:BillingAccountSink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>(
+      'bigqueryOptions',
+    );
+    billingAccount = registerOutput<String>('billingAccount');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool?>('disabled');
+    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
-    this.writerIdentity = registerOutput<String>('writerIdentity');
+    writerIdentity = registerOutput<String>('writerIdentity');
   }
 
   /// Gets an existing [BillingAccountSink] resource's state with the given [name] and [id].
@@ -288,19 +297,21 @@ class BillingAccountSink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/billingAccountSink:BillingAccountSink',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions');
-    this.billingAccount = registerOutput<String>('billingAccount');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<String>('destination');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.exclusions = registerOutput<List<BillingAccountSinkExclusion>?>('exclusions');
-    this.filter = registerOutput<String?>('filter');
+         'gcp:logging/billingAccountSink:BillingAccountSink',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>(
+      'bigqueryOptions',
+    );
+    billingAccount = registerOutput<String>('billingAccount');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool?>('disabled');
+    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
-    this.writerIdentity = registerOutput<String>('writerIdentity');
+    writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

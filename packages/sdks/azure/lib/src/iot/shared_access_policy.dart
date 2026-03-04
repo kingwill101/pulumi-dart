@@ -226,28 +226,38 @@ import 'shared_access_policy_state.dart';
 class SharedAccessPolicy extends pulumi.CustomResource {
   /// Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.
   ///
-  /// > **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
   late final pulumi.Output<bool?> deviceConnect;
+
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
+
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary connection string of the Shared Access Policy.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The primary key used to create the authentication token.
   late final pulumi.Output<String> primaryKey;
+
   /// Adds `RegistryRead` permission to this Shared Access Account. It allows read access to the identity registry.
   late final pulumi.Output<bool?> registryRead;
+
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
-  /// > **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
   late final pulumi.Output<bool?> registryWrite;
+
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary connection string of the Shared Access Policy.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The secondary key used to create the authentication token.
   late final pulumi.Output<String> secondaryKey;
+
   /// Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
   late final pulumi.Output<bool?> serviceConnect;
 
@@ -260,22 +270,24 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     SharedAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceConnect = registerOutput<bool?>('deviceConnect');
-    this.iothubName = registerOutput<String>('iothubName');
+         'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceConnect = registerOutput<bool?>('deviceConnect');
+    iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.registryRead = registerOutput<bool?>('registryRead');
-    this.registryWrite = registerOutput<bool?>('registryWrite');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.serviceConnect = registerOutput<bool?>('serviceConnect');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    registryRead = registerOutput<bool?>('registryRead');
+    registryWrite = registerOutput<bool?>('registryWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    serviceConnect = registerOutput<bool?>('serviceConnect');
   }
 
   /// Gets an existing [SharedAccessPolicy] resource's state with the given [name] and [id].
@@ -296,21 +308,23 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceConnect = registerOutput<bool?>('deviceConnect');
-    this.iothubName = registerOutput<String>('iothubName');
+         'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceConnect = registerOutput<bool?>('deviceConnect');
+    iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.registryRead = registerOutput<bool?>('registryRead');
-    this.registryWrite = registerOutput<bool?>('registryWrite');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.serviceConnect = registerOutput<bool?>('serviceConnect');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    registryRead = registerOutput<bool?>('registryRead');
+    registryWrite = registerOutput<bool?>('registryWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    serviceConnect = registerOutput<bool?>('serviceConnect');
   }
 }

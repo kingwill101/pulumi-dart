@@ -21,11 +21,12 @@ class GetDataSetLogicalTableMapDataTransformRenameColumnOperation {
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformRenameColumnOperation(
-      columnName: (map['columnName'] as String).input(),
-      newColumnName: (map['newColumnName'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      newColumnName: pulumi.Input.fromValue(map['newColumnName'] as String),
     );
   }
 }
-

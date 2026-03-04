@@ -15,11 +15,7 @@ class GetBucketArgs {
   /// [bucketId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBucketArgs({
-    required this.bucketId,
-    required this.location,
-    this.project,
-  });
+  GetBucketArgs({required this.bucketId, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetBucketArgs {
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucketId: (map['bucketId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

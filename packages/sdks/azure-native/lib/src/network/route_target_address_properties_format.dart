@@ -7,8 +7,10 @@ import 'subnet.dart';
 class RouteTargetAddressPropertiesFormat {
   /// The private IPv4 or IPv6 address of the service gateway route target address.
   final pulumi.Input<String>? privateIPAddress;
+
   /// The Private IP allocation method.
   final pulumi.Input<String>? privateIPAllocationMethod;
+
   /// The reference to the subnet resource.
   final pulumi.Input<Subnet>? subnet;
 
@@ -26,16 +28,33 @@ class RouteTargetAddressPropertiesFormat {
     return <String, dynamic>{
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'subnet': ?pulumi.Input.mapOptionalInputValue<Subnet, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          ?pulumi.Input.mapOptionalInputValue<Subnet, Map<String, dynamic>>(
+            subnet,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory RouteTargetAddressPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return RouteTargetAddressPropertiesFormat(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
-      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPAllocationMethod: (() {
+        final guardedValue = map['privateIPAllocationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Subnet.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

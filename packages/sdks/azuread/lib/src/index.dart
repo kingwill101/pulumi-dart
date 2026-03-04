@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/access_package.dart';
 export 'index/access_package_args.dart';
 export 'index/access_package_assignment_policy.dart';

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfCheck {
   /// The self check interval.
   final pulumi.Input<int>? intervalSeconds;
+
   /// The toggle to enable/disable self check.
   final pulumi.Input<String>? mode;
+
   /// The timeout for self check.
   final pulumi.Input<int>? timeoutSeconds;
 
@@ -15,11 +17,7 @@ class SelfCheck {
   /// [intervalSeconds] The self check interval.
   /// [mode] The toggle to enable/disable self check.
   /// [timeoutSeconds] The timeout for self check.
-  SelfCheck({
-    this.intervalSeconds,
-    this.mode,
-    this.timeoutSeconds,
-  });
+  SelfCheck({this.intervalSeconds, this.mode, this.timeoutSeconds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SelfCheck {
 
   factory SelfCheck.fromMap(Map<String, dynamic> map) {
     return SelfCheck(
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
+      intervalSeconds: (() {
+        final guardedValue = map['intervalSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeoutSeconds: (() {
+        final guardedValue = map['timeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -138,6 +138,7 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
   /// The Amazon S3 bucket that contains the logs that you want to share.
   late final pulumi.Output<String> logBucket;
+
   /// The ID of the Role Arn association used for allowing Shield DRT Access.
   late final pulumi.Output<String> roleArnAssociationId;
   late final pulumi.Output<DrtAccessLogBucketAssociationTimeouts?> timeouts;
@@ -151,14 +152,16 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
     DrtAccessLogBucketAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logBucket = registerOutput<String>('logBucket');
-    this.roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
-    this.timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>('timeouts');
+         'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logBucket = registerOutput<String>('logBucket');
+    roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
+    timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>(
+      'timeouts',
+    );
   }
 
   /// Gets an existing [DrtAccessLogBucketAssociation] resource's state with the given [name] and [id].
@@ -179,13 +182,15 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logBucket = registerOutput<String>('logBucket');
-    this.roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
-    this.timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>('timeouts');
+         'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logBucket = registerOutput<String>('logBucket');
+    roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
+    timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>(
+      'timeouts',
+    );
   }
 }

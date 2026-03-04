@@ -9,20 +9,21 @@ class BigQueryDestinationContainerV1beta1 {
 
   /// Creates a new [BigQueryDestinationContainerV1beta1].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationContainerV1beta1({
-    this.datasetId,
-  });
+  BigQueryDestinationContainerV1beta1({this.datasetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': ?datasetId,
-    };
+    return <String, dynamic>{'datasetId': ?datasetId};
   }
 
-  factory BigQueryDestinationContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory BigQueryDestinationContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BigQueryDestinationContainerV1beta1(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      datasetId: (() {
+        final guardedValue = map['datasetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

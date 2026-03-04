@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPricesPricePromotionDetail {
   /// Offer Description.
   final pulumi.Input<String> promotionDesc;
+
   /// Offer logo.
   final pulumi.Input<int> promotionId;
+
   /// Offer Name.
   final pulumi.Input<String> promotionName;
 
@@ -30,10 +32,9 @@ class GetPricesPricePromotionDetail {
 
   factory GetPricesPricePromotionDetail.fromMap(Map<String, dynamic> map) {
     return GetPricesPricePromotionDetail(
-      promotionDesc: (map['promotionDesc'] as String).input(),
-      promotionId: (map['promotionId'] as int).input(),
-      promotionName: (map['promotionName'] as String).input(),
+      promotionDesc: pulumi.Input.fromValue(map['promotionDesc'] as String),
+      promotionId: pulumi.Input.fromValue(map['promotionId'] as int),
+      promotionName: pulumi.Input.fromValue(map['promotionName'] as String),
     );
   }
 }
-

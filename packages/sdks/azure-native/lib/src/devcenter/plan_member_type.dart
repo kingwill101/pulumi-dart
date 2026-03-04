@@ -3,16 +3,15 @@ enum PlanMemberType {
   valueUser("User"),
   valueGroup("Group");
 
-  const PlanMemberType(this.value);
-  final String value;
+  const PlanMemberType(this.wireValue);
+  final String wireValue;
 
   static PlanMemberType fromValue(String value) {
     for (final item in PlanMemberType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlanMemberType value: $value');
   }
 }
-

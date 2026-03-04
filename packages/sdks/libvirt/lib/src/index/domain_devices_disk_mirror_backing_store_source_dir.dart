@@ -8,20 +8,21 @@ class DomainDevicesDiskMirrorBackingStoreSourceDir {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.
-  DomainDevicesDiskMirrorBackingStoreSourceDir({
-    this.dir,
-  });
+  DomainDevicesDiskMirrorBackingStoreSourceDir({this.dir});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dir': ?dir,
-    };
+    return <String, dynamic>{'dir': ?dir};
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceDir.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceDir.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreSourceDir(
-      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      dir: (() {
+        final guardedValue = map['dir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum PortType {
   valueSourcePort("SourcePort"),
   valueDestinationPort("DestinationPort");
 
-  const PortType(this.value);
-  final String value;
+  const PortType(this.wireValue);
+  final String wireValue;
 
   static PortType fromValue(String value) {
     for (final item in PortType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PortType value: $value');
   }
 }
-

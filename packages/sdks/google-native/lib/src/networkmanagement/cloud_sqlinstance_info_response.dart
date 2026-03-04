@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudSQLInstanceInfoResponse {
   /// Name of a Cloud SQL instance.
   final pulumi.Input<String> displayName;
+
   /// External IP address of a Cloud SQL instance.
   final pulumi.Input<String> externalIp;
+
   /// Internal IP address of a Cloud SQL instance.
   final pulumi.Input<String> internalIp;
+
   /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
   final pulumi.Input<String> networkUri;
+
   /// Region in which the Cloud SQL instance is running.
   final pulumi.Input<String> region;
+
   /// URI of a Cloud SQL instance.
   final pulumi.Input<String> uri;
 
@@ -46,13 +51,12 @@ class CloudSQLInstanceInfoResponse {
 
   factory CloudSQLInstanceInfoResponse.fromMap(Map<String, dynamic> map) {
     return CloudSQLInstanceInfoResponse(
-      displayName: (map['displayName'] as String).input(),
-      externalIp: (map['externalIp'] as String).input(),
-      internalIp: (map['internalIp'] as String).input(),
-      networkUri: (map['networkUri'] as String).input(),
-      region: (map['region'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
+      internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
+      networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

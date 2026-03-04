@@ -12,16 +12,15 @@ enum RulesEngineOperator {
   valueBeginsWith("BeginsWith"),
   valueEndsWith("EndsWith");
 
-  const RulesEngineOperator(this.value);
-  final String value;
+  const RulesEngineOperator(this.wireValue);
+  final String wireValue;
 
   static RulesEngineOperator fromValue(String value) {
     for (final item in RulesEngineOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RulesEngineOperator value: $value');
   }
 }
-

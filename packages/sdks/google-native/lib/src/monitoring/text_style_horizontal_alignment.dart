@@ -5,16 +5,15 @@ enum TextStyleHorizontalAlignment {
   hCenter("H_CENTER"),
   hRight("H_RIGHT");
 
-  const TextStyleHorizontalAlignment(this.value);
-  final String value;
+  const TextStyleHorizontalAlignment(this.wireValue);
+  final String wireValue;
 
   static TextStyleHorizontalAlignment fromValue(String value) {
     for (final item in TextStyleHorizontalAlignment.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextStyleHorizontalAlignment value: $value');
   }
 }
-

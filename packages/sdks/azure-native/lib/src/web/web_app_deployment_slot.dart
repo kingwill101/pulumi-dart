@@ -16,28 +16,40 @@ import 'web_app_deployment_slot_args.dart';
 class WebAppDeploymentSlot extends pulumi.CustomResource {
   /// True if deployment is currently active, false if completed and null if not started.
   late final pulumi.Output<bool?> active;
+
   /// Who authored the deployment.
   late final pulumi.Output<String?> author;
+
   /// Author email.
   late final pulumi.Output<String?> authorEmail;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Who performed the deployment.
   late final pulumi.Output<String?> deployer;
+
   /// Details on deployment.
   late final pulumi.Output<String?> details;
+
   /// End time.
   late final pulumi.Output<String?> endTime;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Details about deployment status.
   late final pulumi.Output<String?> message;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Start time.
   late final pulumi.Output<String?> startTime;
+
   /// Deployment status.
   late final pulumi.Output<int?> status;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -50,23 +62,23 @@ class WebAppDeploymentSlot extends pulumi.CustomResource {
     WebAppDeploymentSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppDeploymentSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool?>('active');
-    this.author = registerOutput<String?>('author');
-    this.authorEmail = registerOutput<String?>('authorEmail');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deployer = registerOutput<String?>('deployer');
-    this.details = registerOutput<String?>('details');
-    this.endTime = registerOutput<String?>('endTime');
-    this.kind = registerOutput<String?>('kind');
-    this.message = registerOutput<String?>('message');
+         'azure-native:web:WebAppDeploymentSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool?>('active');
+    author = registerOutput<String?>('author');
+    authorEmail = registerOutput<String?>('authorEmail');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deployer = registerOutput<String?>('deployer');
+    details = registerOutput<String?>('details');
+    endTime = registerOutput<String?>('endTime');
+    kind = registerOutput<String?>('kind');
+    message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');
-    this.startTime = registerOutput<String?>('startTime');
-    this.status = registerOutput<int?>('status');
-    this.type = registerOutput<String>('type');
+    startTime = registerOutput<String?>('startTime');
+    status = registerOutput<int?>('status');
+    type = registerOutput<String>('type');
   }
 }

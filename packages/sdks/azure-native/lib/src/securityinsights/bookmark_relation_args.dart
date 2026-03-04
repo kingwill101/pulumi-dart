@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BookmarkRelationArgs {
   /// Bookmark ID
   final pulumi.Input<String> bookmarkId;
+
   /// The resource ID of the related resource
   final pulumi.Input<String> relatedResourceId;
+
   /// Relation Name
   final pulumi.Input<String>? relationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -44,12 +48,19 @@ class BookmarkRelationArgs {
 
   factory BookmarkRelationArgs.fromMap(Map<String, dynamic> map) {
     return BookmarkRelationArgs(
-      bookmarkId: (map['bookmarkId'] as String).input(),
-      relatedResourceId: (map['relatedResourceId'] as String).input(),
-      relationName: map['relationName'] == null ? null : (map['relationName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      bookmarkId: pulumi.Input.fromValue(map['bookmarkId'] as String),
+      relatedResourceId: pulumi.Input.fromValue(
+        map['relatedResourceId'] as String,
+      ),
+      relationName: (() {
+        final guardedValue = map['relationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ class InstanceMasterUserSecret {
   /// The ARN for the KMS encryption key. If creating an
   /// encrypted replica, set this to the destination KMS ARN.
   final pulumi.Input<String>? kmsKeyId;
+
   /// The Amazon Resource Name (ARN) of the secret.
   final pulumi.Input<String>? secretArn;
+
   /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final pulumi.Input<String>? secretStatus;
 
@@ -15,11 +17,7 @@ class InstanceMasterUserSecret {
   /// [kmsKeyId] The ARN for the KMS encryption key. If creating an
   /// [secretArn] The Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  InstanceMasterUserSecret({
-    this.kmsKeyId,
-    this.secretArn,
-    this.secretStatus,
-  });
+  InstanceMasterUserSecret({this.kmsKeyId, this.secretArn, this.secretStatus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class InstanceMasterUserSecret {
 
   factory InstanceMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return InstanceMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
-      secretStatus: map['secretStatus'] == null ? null : ((map['secretStatus'] as String).input()).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretArn: (() {
+        final guardedValue = map['secretArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretStatus: (() {
+        final guardedValue = map['secretStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

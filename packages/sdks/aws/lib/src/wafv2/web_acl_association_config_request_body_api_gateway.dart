@@ -18,10 +18,13 @@ class WebAclAssociationConfigRequestBodyApiGateway {
     };
   }
 
-  factory WebAclAssociationConfigRequestBodyApiGateway.fromMap(Map<String, dynamic> map) {
+  factory WebAclAssociationConfigRequestBodyApiGateway.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclAssociationConfigRequestBodyApiGateway(
-      defaultSizeInspectionLimit: (map['defaultSizeInspectionLimit'] as String).input(),
+      defaultSizeInspectionLimit: pulumi.Input.fromValue(
+        map['defaultSizeInspectionLimit'] as String,
+      ),
     );
   }
 }
-

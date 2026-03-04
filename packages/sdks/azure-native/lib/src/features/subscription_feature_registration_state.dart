@@ -8,16 +8,17 @@ enum SubscriptionFeatureRegistrationState {
   valueUnregistering("Unregistering"),
   valueUnregistered("Unregistered");
 
-  const SubscriptionFeatureRegistrationState(this.value);
-  final String value;
+  const SubscriptionFeatureRegistrationState(this.wireValue);
+  final String wireValue;
 
   static SubscriptionFeatureRegistrationState fromValue(String value) {
     for (final item in SubscriptionFeatureRegistrationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubscriptionFeatureRegistrationState value: $value');
+    throw ArgumentError(
+      'Unknown SubscriptionFeatureRegistrationState value: $value',
+    );
   }
 }
-

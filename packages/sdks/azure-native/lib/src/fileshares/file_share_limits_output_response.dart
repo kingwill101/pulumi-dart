@@ -8,8 +8,10 @@ import 'file_share_provisioning_constants_response.dart';
 class FileShareLimitsOutputResponse {
   /// The limits for the file share.
   final pulumi.Input<FileShareLimitsResponse> limits;
+
   /// The provisioning constants for the file share.
-  final pulumi.Input<FileShareProvisioningConstantsResponse> provisioningConstants;
+  final pulumi.Input<FileShareProvisioningConstantsResponse>
+  provisioningConstants;
 
   /// Creates a new [FileShareLimitsOutputResponse].
   /// [limits] The limits for the file share.
@@ -21,16 +23,31 @@ class FileShareLimitsOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits': pulumi.Input.mapInputValue<FileShareLimitsResponse, Map<String, dynamic>>(limits, (value) => value.toMap()),
-      'provisioningConstants': pulumi.Input.mapInputValue<FileShareProvisioningConstantsResponse, Map<String, dynamic>>(provisioningConstants, (value) => value.toMap()),
+      'limits':
+          pulumi.Input.mapInputValue<
+            FileShareLimitsResponse,
+            Map<String, dynamic>
+          >(limits, (value) => value.toMap()),
+      'provisioningConstants':
+          pulumi.Input.mapInputValue<
+            FileShareProvisioningConstantsResponse,
+            Map<String, dynamic>
+          >(provisioningConstants, (value) => value.toMap()),
     };
   }
 
   factory FileShareLimitsOutputResponse.fromMap(Map<String, dynamic> map) {
     return FileShareLimitsOutputResponse(
-      limits: (FileShareLimitsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      provisioningConstants: (FileShareProvisioningConstantsResponse.fromMap((map['provisioningConstants'] as Map).cast<String, dynamic>())).input(),
+      limits: pulumi.Input.fromValue(
+        FileShareLimitsResponse.fromMap(
+          (map['limits']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningConstants: pulumi.Input.fromValue(
+        FileShareProvisioningConstantsResponse.fromMap(
+          (map['provisioningConstants']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -8,27 +8,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eflo_get_subnets_get_subnets_args_doc}
 class GetSubnetsArgs {
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
+
   /// Resource Group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
+
   /// Primary key ID.
   final pulumi.Input<String>? subnetId;
+
   /// The Subnet name.
   final pulumi.Input<String>? subnetName;
+
   /// Eflo subnet usage type, optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   final pulumi.Input<String>? type;
+
   /// The Eflo VPD ID.
   final pulumi.Input<String>? vpdId;
+
   /// The zone ID of the resource.
   final pulumi.Input<String>? zoneId;
 
@@ -79,19 +88,66 @@ class GetSubnetsArgs {
 
   factory GetSubnetsArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      subnetName: map['subnetName'] == null ? null : (map['subnetName']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpdId: map['vpdId'] == null ? null : (map['vpdId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetName: (() {
+        final guardedValue = map['subnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpdId: (() {
+        final guardedValue = map['vpdId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

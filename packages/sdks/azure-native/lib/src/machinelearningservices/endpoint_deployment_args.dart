@@ -10,11 +10,15 @@ import 'content_safety_endpoint_deployment_resource_properties.dart';
 class EndpointDeploymentArgs {
   /// Name of the deployment resource
   final pulumi.Input<String>? deploymentName;
+
   /// Name of the endpoint resource.
   final pulumi.Input<String> endpointName;
-  final pulumi.Input<ContentSafetyEndpointDeploymentResourceProperties> properties;
+  final pulumi.Input<ContentSafetyEndpointDeploymentResourceProperties>
+  properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -36,7 +40,11 @@ class EndpointDeploymentArgs {
     return <String, dynamic>{
       'deploymentName': ?deploymentName,
       'endpointName': endpointName,
-      'properties': pulumi.Input.mapInputValue<ContentSafetyEndpointDeploymentResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ContentSafetyEndpointDeploymentResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -44,12 +52,21 @@ class EndpointDeploymentArgs {
 
   factory EndpointDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentArgs(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      endpointName: (map['endpointName'] as String).input(),
-      properties: (ContentSafetyEndpointDeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      properties: pulumi.Input.fromValue(
+        ContentSafetyEndpointDeploymentResourceProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

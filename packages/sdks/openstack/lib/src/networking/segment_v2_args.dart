@@ -9,23 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SegmentV2Args {
   /// A description for the segment.
   final pulumi.Input<String>? description;
+
   /// A name for the segment.
   final pulumi.Input<String>? name;
+
   /// The UUID of the network this segment belongs to.
   /// Changing this will create a new segment.
   final pulumi.Input<String> networkId;
+
   /// The network type. Valid values depend on the
   /// backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
   /// this will create a new segment.
   final pulumi.Input<String> networkType;
+
   /// The name of the physical network. Changing this
   /// will create a new segment.
   final pulumi.Input<String>? physicalNetwork;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// segment.
   final pulumi.Input<String>? region;
+
   /// A segmentation identifier. Changing is allowed
   /// only for `vlan`.
   final pulumi.Input<int>? segmentationId;
@@ -62,14 +68,33 @@ class SegmentV2Args {
 
   factory SegmentV2Args.fromMap(Map<String, dynamic> map) {
     return SegmentV2Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkId: (map['networkId'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkId: pulumi.Input.fromValue(map['networkId'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      physicalNetwork: (() {
+        final guardedValue = map['physicalNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentationId: (() {
+        final guardedValue = map['segmentationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

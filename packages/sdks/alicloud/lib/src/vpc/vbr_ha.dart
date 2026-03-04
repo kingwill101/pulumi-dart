@@ -8,7 +8,7 @@ import 'vbr_ha_state.dart';
 ///
 /// For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
 ///
-/// > **NOTE:** Available since v1.151.0.
+/// &gt; **NOTE:** Available since v1.151.0.
 ///
 /// ## Example Usage
 ///
@@ -414,21 +414,28 @@ import 'vbr_ha_state.dart';
 class VbrHa extends pulumi.CustomResource {
   /// The creation time of the VBR.
   late final pulumi.Output<String> createTime;
+
   /// The description of the VBR switching group.
   /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> description;
+
   /// Whether to PreCheck only this request. Value range:
   /// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
   /// - *false** (default): Send a normal request and start the instance directly after passing the check.
   late final pulumi.Output<bool?> dryRun;
+
   /// The instance ID of another VBR in The VBR switching group.
   late final pulumi.Output<String> peerVbrId;
+
   /// The ID of the region to which the VBR belongs.
   late final pulumi.Output<String> regionId;
+
   /// Status of VBR switching Group
   late final pulumi.Output<String> status;
+
   /// VBR switch group name.
   late final pulumi.Output<String?> vbrHaName;
+
   /// The VBR instance ID.
   late final pulumi.Output<String> vbrId;
 
@@ -436,32 +443,25 @@ class VbrHa extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [VbrHa]. {@macro pulumi_vpc_vbr_ha_vbr_ha_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  VbrHa(
-    String name, {
-    VbrHaArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:vpc/vbrHa:VbrHa',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.peerVbrId = registerOutput<String>('peerVbrId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vbrHaName = registerOutput<String?>('vbrHaName');
-    this.vbrId = registerOutput<String>('vbrId');
+  VbrHa(String name, {VbrHaArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:vpc/vbrHa:VbrHa',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    peerVbrId = registerOutput<String>('peerVbrId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vbrHaName = registerOutput<String?>('vbrHaName');
+    vbrId = registerOutput<String>('vbrId');
   }
 
   /// Gets an existing [VbrHa] resource's state with the given [name] and [id].
-  static VbrHa get(
-    String name,
-    pulumi.Input<String> id, {
-    VbrHaState? state,
-  }) {
+  static VbrHa get(String name, pulumi.Input<String> id, {VbrHaState? state}) {
     return VbrHa._get(
       name,
       state: state?.toMap(),
@@ -474,18 +474,18 @@ class VbrHa extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vbrHa:VbrHa',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.peerVbrId = registerOutput<String>('peerVbrId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vbrHaName = registerOutput<String?>('vbrHaName');
-    this.vbrId = registerOutput<String>('vbrId');
+         'alicloud:vpc/vbrHa:VbrHa',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    peerVbrId = registerOutput<String>('peerVbrId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vbrHaName = registerOutput<String?>('vbrHaName');
+    vbrId = registerOutput<String>('vbrId');
   }
 }

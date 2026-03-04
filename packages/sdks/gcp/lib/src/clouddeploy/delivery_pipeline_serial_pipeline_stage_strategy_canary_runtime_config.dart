@@ -6,9 +6,16 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config_k
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
   /// Cloud Run runtime configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun>? cloudRun;
+  final pulumi.Input<
+    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun
+  >?
+  cloudRun;
+
   /// Kubernetes runtime configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes>? kubernetes;
+  final pulumi.Input<
+    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
+  >?
+  kubernetes;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.
@@ -20,16 +27,41 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRun': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun, Map<String, dynamic>>(cloudRun, (value) => value.toMap()),
-      'kubernetes': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes, Map<String, dynamic>>(kubernetes, (value) => value.toMap()),
+      'cloudRun':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun,
+            Map<String, dynamic>
+          >(cloudRun, (value) => value.toMap()),
+      'kubernetes':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes,
+            Map<String, dynamic>
+          >(kubernetes, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(
-      cloudRun: map['cloudRun'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
-      kubernetes: map['kubernetes'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
+      cloudRun: (() {
+        final guardedValue = map['cloudRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubernetes: (() {
+        final guardedValue = map['kubernetes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalLvpConfigResponse {
   /// The host machine path.
   final pulumi.Input<String> path;
+
   /// The StorageClass name that PVs will be created with.
   final pulumi.Input<String> storageClass;
 
   /// Creates a new [BareMetalLvpConfigResponse].
   /// [path] The host machine path.
   /// [storageClass] The StorageClass name that PVs will be created with.
-  BareMetalLvpConfigResponse({
-    required this.path,
-    required this.storageClass,
-  });
+  BareMetalLvpConfigResponse({required this.path, required this.storageClass});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'storageClass': storageClass,
-    };
+    return <String, dynamic>{'path': path, 'storageClass': storageClass};
   }
 
   factory BareMetalLvpConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpConfigResponse(
-      path: (map['path'] as String).input(),
-      storageClass: (map['storageClass'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }
 }
-

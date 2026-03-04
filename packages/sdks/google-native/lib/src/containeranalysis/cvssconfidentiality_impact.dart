@@ -6,16 +6,15 @@ enum CVSSConfidentialityImpact {
   impactPartial("IMPACT_PARTIAL"),
   impactComplete("IMPACT_COMPLETE");
 
-  const CVSSConfidentialityImpact(this.value);
-  final String value;
+  const CVSSConfidentialityImpact(this.wireValue);
+  final String wireValue;
 
   static CVSSConfidentialityImpact fromValue(String value) {
     for (final item in CVSSConfidentialityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSConfidentialityImpact value: $value');
   }
 }
-

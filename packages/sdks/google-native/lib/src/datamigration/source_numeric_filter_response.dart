@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceNumericFilterResponse {
   /// Enum to set the option defining the datatypes numeric filter has to be applied to
   final pulumi.Input<String> numericFilterOption;
+
   /// Optional. The filter will match columns with precision smaller than or equal to this number.
   final pulumi.Input<int> sourceMaxPrecisionFilter;
+
   /// Optional. The filter will match columns with scale smaller than or equal to this number.
   final pulumi.Input<int> sourceMaxScaleFilter;
+
   /// Optional. The filter will match columns with precision greater than or equal to this number.
   final pulumi.Input<int> sourceMinPrecisionFilter;
+
   /// Optional. The filter will match columns with scale greater than or equal to this number.
   final pulumi.Input<int> sourceMinScaleFilter;
 
@@ -41,12 +45,21 @@ class SourceNumericFilterResponse {
 
   factory SourceNumericFilterResponse.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilterResponse(
-      numericFilterOption: (map['numericFilterOption'] as String).input(),
-      sourceMaxPrecisionFilter: (map['sourceMaxPrecisionFilter'] as int).input(),
-      sourceMaxScaleFilter: (map['sourceMaxScaleFilter'] as int).input(),
-      sourceMinPrecisionFilter: (map['sourceMinPrecisionFilter'] as int).input(),
-      sourceMinScaleFilter: (map['sourceMinScaleFilter'] as int).input(),
+      numericFilterOption: pulumi.Input.fromValue(
+        map['numericFilterOption'] as String,
+      ),
+      sourceMaxPrecisionFilter: pulumi.Input.fromValue(
+        map['sourceMaxPrecisionFilter'] as int,
+      ),
+      sourceMaxScaleFilter: pulumi.Input.fromValue(
+        map['sourceMaxScaleFilter'] as int,
+      ),
+      sourceMinPrecisionFilter: pulumi.Input.fromValue(
+        map['sourceMinPrecisionFilter'] as int,
+      ),
+      sourceMinScaleFilter: pulumi.Input.fromValue(
+        map['sourceMinScaleFilter'] as int,
+      ),
     );
   }
 }
-

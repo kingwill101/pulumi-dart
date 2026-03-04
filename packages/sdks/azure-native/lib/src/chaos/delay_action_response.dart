@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelayActionResponse {
   /// ISO8601 formatted string that represents a duration.
   final pulumi.Input<String> duration;
+
   /// String that represents a Capability URN.
   final pulumi.Input<String> name;
+
   /// Enum that discriminates between action models.
   /// Expected value is 'delay'.
   final pulumi.Input<String> type;
@@ -23,19 +25,14 @@ class DelayActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'duration': duration,
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'duration': duration, 'name': name, 'type': type};
   }
 
   factory DelayActionResponse.fromMap(Map<String, dynamic> map) {
     return DelayActionResponse(
-      duration: (map['duration'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

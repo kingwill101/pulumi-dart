@@ -3,16 +3,15 @@ enum CookieExpirationConvention {
   valueFixedTime("FixedTime"),
   valueIdentityProviderDerived("IdentityProviderDerived");
 
-  const CookieExpirationConvention(this.value);
-  final String value;
+  const CookieExpirationConvention(this.wireValue);
+  final String wireValue;
 
   static CookieExpirationConvention fromValue(String value) {
     for (final item in CookieExpirationConvention.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CookieExpirationConvention value: $value');
   }
 }
-

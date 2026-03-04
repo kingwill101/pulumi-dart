@@ -29,13 +29,14 @@ class GetLoadBalancersBalancerBackendServer {
     };
   }
 
-  factory GetLoadBalancersBalancerBackendServer.fromMap(Map<String, dynamic> map) {
+  factory GetLoadBalancersBalancerBackendServer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLoadBalancersBalancerBackendServer(
-      description: (map['description'] as String).input(),
-      serverId: (map['serverId'] as String).input(),
-      type: (map['type'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

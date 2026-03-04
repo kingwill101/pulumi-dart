@@ -13,10 +13,7 @@ class GetEnvgroupArgs {
   /// Creates a new [GetEnvgroupArgs].
   /// [envgroupId] Required.
   /// [organizationId] Required.
-  GetEnvgroupArgs({
-    required this.envgroupId,
-    required this.organizationId,
-  });
+  GetEnvgroupArgs({required this.envgroupId, required this.organizationId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetEnvgroupArgs {
 
   factory GetEnvgroupArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupArgs(
-      envgroupId: (map['envgroupId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      envgroupId: pulumi.Input.fromValue(map['envgroupId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse {
   /// List of FQDNs for current private link connection.
   final pulumi.Input<List<String>> fqdns;
+
   /// The group ID for current private link connection.
   final pulumi.Input<String> groupId;
+
   /// The required member name for current private link connection.
   final pulumi.Input<String> requiredMemberName;
 
@@ -29,12 +31,15 @@ class NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse {
     };
   }
 
-  factory NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse(
-      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
-      groupId: (map['groupId'] as String).input(),
-      requiredMemberName: (map['requiredMemberName'] as String).input(),
+      fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      requiredMemberName: pulumi.Input.fromValue(
+        map['requiredMemberName'] as String,
+      ),
     );
   }
 }
-

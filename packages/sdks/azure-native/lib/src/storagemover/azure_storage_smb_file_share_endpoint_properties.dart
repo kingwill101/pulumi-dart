@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureStorageSmbFileShareEndpointProperties {
   /// A description for the Endpoint.
   final pulumi.Input<String>? description;
+
   /// The Endpoint resource type.
   /// Expected value is 'AzureStorageSmbFileShare'.
   final pulumi.Input<String> endpointType;
+
   /// The name of the Azure Storage file share.
   final pulumi.Input<String> fileShareName;
+
   /// The Azure Resource ID of the storage account.
   final pulumi.Input<String> storageAccountResourceId;
 
@@ -35,13 +38,20 @@ class AzureStorageSmbFileShareEndpointProperties {
     };
   }
 
-  factory AzureStorageSmbFileShareEndpointProperties.fromMap(Map<String, dynamic> map) {
+  factory AzureStorageSmbFileShareEndpointProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureStorageSmbFileShareEndpointProperties(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      fileShareName: (map['fileShareName'] as String).input(),
-      storageAccountResourceId: (map['storageAccountResourceId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      fileShareName: pulumi.Input.fromValue(map['fileShareName'] as String),
+      storageAccountResourceId: pulumi.Input.fromValue(
+        map['storageAccountResourceId'] as String,
+      ),
     );
   }
 }
-

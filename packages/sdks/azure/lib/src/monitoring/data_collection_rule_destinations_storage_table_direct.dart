@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionRuleDestinationsStorageTableDirect {
   /// The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// The resource ID of the Storage Account.
   final pulumi.Input<String> storageAccountId;
+
   /// The Storage Table name.
   final pulumi.Input<String> tableName;
 
@@ -28,12 +30,15 @@ class DataCollectionRuleDestinationsStorageTableDirect {
     };
   }
 
-  factory DataCollectionRuleDestinationsStorageTableDirect.fromMap(Map<String, dynamic> map) {
+  factory DataCollectionRuleDestinationsStorageTableDirect.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataCollectionRuleDestinationsStorageTableDirect(
-      name: (map['name'] as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

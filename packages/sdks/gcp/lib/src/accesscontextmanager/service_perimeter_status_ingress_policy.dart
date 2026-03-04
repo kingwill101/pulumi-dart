@@ -8,11 +8,14 @@ class ServicePerimeterStatusIngressPolicy {
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterStatusIngressPolicyIngressFrom>? ingressFrom;
+  final pulumi.Input<ServicePerimeterStatusIngressPolicyIngressFrom>?
+  ingressFrom;
+
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimeterStatusIngressPolicyIngressTo>? ingressTo;
+
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   final pulumi.Input<String>? title;
 
@@ -28,18 +31,47 @@ class ServicePerimeterStatusIngressPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingressFrom': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterStatusIngressPolicyIngressFrom, Map<String, dynamic>>(ingressFrom, (value) => value.toMap()),
-      'ingressTo': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterStatusIngressPolicyIngressTo, Map<String, dynamic>>(ingressTo, (value) => value.toMap()),
+      'ingressFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterStatusIngressPolicyIngressFrom,
+            Map<String, dynamic>
+          >(ingressFrom, (value) => value.toMap()),
+      'ingressTo':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterStatusIngressPolicyIngressTo,
+            Map<String, dynamic>
+          >(ingressTo, (value) => value.toMap()),
       'title': ?title,
     };
   }
 
-  factory ServicePerimeterStatusIngressPolicy.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterStatusIngressPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterStatusIngressPolicy(
-      ingressFrom: map['ingressFrom'] == null ? null : (ServicePerimeterStatusIngressPolicyIngressFrom.fromMap((map['ingressFrom']! as Map).cast<String, dynamic>())).input(),
-      ingressTo: map['ingressTo'] == null ? null : (ServicePerimeterStatusIngressPolicyIngressTo.fromMap((map['ingressTo']! as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      ingressFrom: (() {
+        final guardedValue = map['ingressFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterStatusIngressPolicyIngressFrom.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ingressTo: (() {
+        final guardedValue = map['ingressTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterStatusIngressPolicyIngressTo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

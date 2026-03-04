@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingDefaultDomainArgs {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String> backend;
+
   /// Whether the domain is disabled. Defaults to false.
   final pulumi.Input<bool>? disabled;
+
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
   final pulumi.Input<String> domainId;
+
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -45,12 +49,19 @@ class AppHostingDefaultDomainArgs {
 
   factory AppHostingDefaultDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDefaultDomainArgs(
-      backend: (map['backend'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      domainId: (map['domainId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backend: pulumi.Input.fromValue(map['backend'] as String),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

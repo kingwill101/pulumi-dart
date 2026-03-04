@@ -6,7 +6,9 @@ import 'cluster_automated_backup_config_fixed_frequency_schedule.dart';
 class ClusterAutomatedBackupConfig {
   /// Trigger automated backups at a fixed frequency.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutomatedBackupConfigFixedFrequencySchedule> fixedFrequencySchedule;
+  final pulumi.Input<ClusterAutomatedBackupConfigFixedFrequencySchedule>
+  fixedFrequencySchedule;
+
   /// How long to keep automated backups before the backups are deleted.
   /// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -22,16 +24,23 @@ class ClusterAutomatedBackupConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedFrequencySchedule': pulumi.Input.mapInputValue<ClusterAutomatedBackupConfigFixedFrequencySchedule, Map<String, dynamic>>(fixedFrequencySchedule, (value) => value.toMap()),
+      'fixedFrequencySchedule':
+          pulumi.Input.mapInputValue<
+            ClusterAutomatedBackupConfigFixedFrequencySchedule,
+            Map<String, dynamic>
+          >(fixedFrequencySchedule, (value) => value.toMap()),
       'retention': retention,
     };
   }
 
   factory ClusterAutomatedBackupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupConfig(
-      fixedFrequencySchedule: (ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap((map['fixedFrequencySchedule'] as Map).cast<String, dynamic>())).input(),
-      retention: (map['retention'] as String).input(),
+      fixedFrequencySchedule: pulumi.Input.fromValue(
+        ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
+          (map['fixedFrequencySchedule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      retention: pulumi.Input.fromValue(map['retention'] as String),
     );
   }
 }
-

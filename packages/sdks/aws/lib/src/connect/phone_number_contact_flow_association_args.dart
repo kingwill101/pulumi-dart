@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PhoneNumberContactFlowAssociationArgs {
   /// Contact flow ID.
   final pulumi.Input<String> contactFlowId;
+
   /// Amazon Connect instance ID.
   final pulumi.Input<String> instanceId;
+
   /// Phone number ID.
   final pulumi.Input<String> phoneNumberId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -37,13 +40,18 @@ class PhoneNumberContactFlowAssociationArgs {
     };
   }
 
-  factory PhoneNumberContactFlowAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory PhoneNumberContactFlowAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PhoneNumberContactFlowAssociationArgs(
-      contactFlowId: (map['contactFlowId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      phoneNumberId: (map['phoneNumberId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      contactFlowId: pulumi.Input.fromValue(map['contactFlowId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      phoneNumberId: pulumi.Input.fromValue(map['phoneNumberId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'server_group_server_attachment_state.dart';
 
 /// Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
 ///
-/// > **NOTE:** Available since v1.163.0.
+/// &gt; **NOTE:** Available since v1.163.0.
 ///
 /// For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
 ///
-/// > **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
+/// &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
 /// and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
 ///
 /// ## Example Usage
@@ -455,14 +455,19 @@ import 'server_group_server_attachment_state.dart';
 class ServerGroupServerAttachment extends pulumi.CustomResource {
   /// The description of the backend server.
   late final pulumi.Output<String> description;
+
   /// The port that is used by the backend server. Valid values: `1` to `65535`.
   late final pulumi.Output<int> port;
+
   /// The ID of the server group.
   late final pulumi.Output<String> serverGroupId;
+
   /// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
   late final pulumi.Output<String> serverId;
+
   /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
   late final pulumi.Output<String> type;
+
   /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
   late final pulumi.Output<int> weight;
 
@@ -475,17 +480,17 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
     ServerGroupServerAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.port = registerOutput<int>('port');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.serverId = registerOutput<String>('serverId');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    port = registerOutput<int>('port');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    serverId = registerOutput<String>('serverId');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [ServerGroupServerAttachment] resource's state with the given [name] and [id].
@@ -506,16 +511,16 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.port = registerOutput<int>('port');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.serverId = registerOutput<String>('serverId');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    port = registerOutput<int>('port');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    serverId = registerOutput<String>('serverId');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int>('weight');
   }
 }

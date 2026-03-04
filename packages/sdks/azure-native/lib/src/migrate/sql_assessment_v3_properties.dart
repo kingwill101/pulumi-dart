@@ -8,8 +8,10 @@ import 'sql_assessment_settings.dart';
 class SqlAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
   final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+
   /// Gets or sets the scope of assessment.
   final pulumi.Input<Scope>? scope;
+
   /// Gets or sets the settings for the assessment.
   final pulumi.Input<SqlAssessmentSettings>? settings;
 
@@ -26,17 +28,41 @@ class SqlAssessmentV3Properties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
-      'settings': ?pulumi.Input.mapOptionalInputValue<SqlAssessmentSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(
+        scope,
+        (value) => value.toMap(),
+      ),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SqlAssessmentSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory SqlAssessmentV3Properties.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentV3Properties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (SqlAssessmentSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: (() {
+        final guardedValue = map['fallbackMachineAssessmentArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Scope.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SqlAssessmentSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

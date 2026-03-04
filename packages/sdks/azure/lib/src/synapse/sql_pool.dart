@@ -330,24 +330,34 @@ import 'sql_pool_state.dart';
 class SqlPool extends pulumi.CustomResource {
   /// The name of the collation to use with this pool, only applicable when `create_mode` is set to `Default`. Azure default is `SQL_LATIN1_GENERAL_CP1_CI_AS`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> collation;
+
   /// Specifies how to create the SQL Pool. Valid values are: `Default`, `Recovery` or `PointInTimeRestore`. Must be `Default` to create a new database. Defaults to `Default`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String?> createMode;
+
   /// Is transparent data encryption enabled?
   late final pulumi.Output<bool?> dataEncrypted;
+
   /// Is geo-backup policy enabled? Defaults to `true`.
   late final pulumi.Output<bool?> geoBackupPolicyEnabled;
+
   /// The name which should be used for this Synapse SQL Pool. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Synapse SQL Pool or SQL Database which is to back up, only applicable when `create_mode` is set to `Recovery`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String?> recoveryDatabaseId;
+
   /// A `restore` block as defined below. Only applicable when `create_mode` is set to `PointInTimeRestore`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<SqlPoolRestore?> restore;
+
   /// Specifies the SKU Name for this Synapse SQL Pool. Possible values are `DW100c`, `DW200c`, `DW300c`, `DW400c`, `DW500c`, `DW1000c`, `DW1500c`, `DW2000c`, `DW2500c`, `DW3000c`, `DW5000c`, `DW6000c`, `DW7500c`, `DW10000c`, `DW15000c` or `DW30000c`.
   late final pulumi.Output<String> skuName;
+
   /// The storage account type that will be used to store backups for this Synapse SQL Pool. Possible values are `LRS` or `GRS`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> storageAccountType;
+
   /// The ID of Synapse Workspace within which this SQL Pool should be created. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
+
   /// A mapping of tags which should be assigned to the Synapse SQL Pool.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -360,22 +370,22 @@ class SqlPool extends pulumi.CustomResource {
     SqlPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPool:SqlPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.collation = registerOutput<String>('collation');
-    this.createMode = registerOutput<String?>('createMode');
-    this.dataEncrypted = registerOutput<bool?>('dataEncrypted');
-    this.geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
+         'azure:synapse/sqlPool:SqlPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    dataEncrypted = registerOutput<bool?>('dataEncrypted');
+    geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
     this.name = registerOutput<String>('name');
-    this.recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
-    this.restore = registerOutput<SqlPoolRestore?>('restore');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String>('storageAccountType');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
+    restore = registerOutput<SqlPoolRestore?>('restore');
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String>('storageAccountType');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [SqlPool] resource's state with the given [name] and [id].
@@ -396,21 +406,21 @@ class SqlPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPool:SqlPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.collation = registerOutput<String>('collation');
-    this.createMode = registerOutput<String?>('createMode');
-    this.dataEncrypted = registerOutput<bool?>('dataEncrypted');
-    this.geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
+         'azure:synapse/sqlPool:SqlPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    dataEncrypted = registerOutput<bool?>('dataEncrypted');
+    geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
     this.name = registerOutput<String>('name');
-    this.recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
-    this.restore = registerOutput<SqlPoolRestore?>('restore');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String>('storageAccountType');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
+    restore = registerOutput<SqlPoolRestore?>('restore');
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String>('storageAccountType');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

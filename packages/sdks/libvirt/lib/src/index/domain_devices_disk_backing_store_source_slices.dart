@@ -5,24 +5,47 @@ import 'domain_devices_disk_backing_store_source_slices_slice.dart';
 
 class DomainDevicesDiskBackingStoreSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceSlicesSlice>>? slices;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceSlicesSlice>>?
+  slices;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
-  DomainDevicesDiskBackingStoreSourceSlices({
-    this.slices,
-  });
+  DomainDevicesDiskBackingStoreSourceSlices({this.slices});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'slices': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskBackingStoreSourceSlicesSlice>, List<Map<String, dynamic>>>(slices, (value) => pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceSlicesSlice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'slices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainDevicesDiskBackingStoreSourceSlicesSlice>,
+            List<Map<String, dynamic>>
+          >(
+            slices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainDevicesDiskBackingStoreSourceSlicesSlice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceSlices.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskBackingStoreSourceSlices.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskBackingStoreSourceSlices(
-      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceSlicesSlice>(map['slices']!, (value) => DomainDevicesDiskBackingStoreSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slices: (() {
+        final guardedValue = map['slices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<DomainDevicesDiskBackingStoreSourceSlicesSlice>(
+            guardedValue,
+            (value) => DomainDevicesDiskBackingStoreSourceSlicesSlice.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

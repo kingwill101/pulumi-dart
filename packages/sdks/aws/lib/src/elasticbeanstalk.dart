@@ -1,5 +1,3 @@
-library module_elasticbeanstalk;
-
 export 'elasticbeanstalk/application.dart';
 export 'elasticbeanstalk/application_appversion_lifecycle.dart';
 export 'elasticbeanstalk/application_args.dart';

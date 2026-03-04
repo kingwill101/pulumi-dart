@@ -4,16 +4,15 @@ enum PingStatus {
   inactive("Inactive"),
   online("Online");
 
-  const PingStatus(this.value);
-  final String value;
+  const PingStatus(this.wireValue);
+  final String wireValue;
 
   static PingStatus fromValue(String value) {
     for (final item in PingStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PingStatus value: $value');
   }
 }
-

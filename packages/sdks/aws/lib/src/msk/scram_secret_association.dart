@@ -4,9 +4,9 @@ import 'scram_secret_association_state.dart';
 
 /// Associates SCRAM secrets stored in the Secrets Manager service with a Managed Streaming for Kafka (MSK) cluster.
 ///
-/// !> This resource takes exclusive ownership over SCRAM secrets associated with a cluster. This includes removal of SCRAM secrets which are not explicitly configured. To prevent persistent drift, ensure any `aws.msk.SingleScramSecretAssociation` resources managed alongside this resource are included in the `secret_arn_list` argument.
+/// !&gt; This resource takes exclusive ownership over SCRAM secrets associated with a cluster. This includes removal of SCRAM secrets which are not explicitly configured. To prevent persistent drift, ensure any `aws.msk.SingleScramSecretAssociation` resources managed alongside this resource are included in the `secret_arn_list` argument.
 ///
-/// > **Note:** The following assumes the MSK cluster has SASL/SCRAM authentication enabled. See below for example usage or refer to the [Username/Password Authentication](https://docs.aws.amazon.com/msk/latest/developerguide/msk-password.html) section of the MSK Developer Guide for more details.
+/// &gt; **Note:** The following assumes the MSK cluster has SASL/SCRAM authentication enabled. See below for example usage or refer to the [Username/Password Authentication](https://docs.aws.amazon.com/msk/latest/developerguide/msk-password.html) section of the MSK Developer Guide for more details.
 ///
 /// To set up username and password authentication for a cluster, create an `aws.secretsmanager.Secret` resource and associate
 /// a username and password with the secret with an `aws.secretsmanager.SecretVersion` resource. When creating a secret for the cluster,
@@ -469,8 +469,10 @@ import 'scram_secret_association_state.dart';
 class ScramSecretAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   late final pulumi.Output<String> clusterArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of AWS Secrets Manager secret ARNs.
   late final pulumi.Output<List<String>> secretArnLists;
 
@@ -483,14 +485,14 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     ScramSecretAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/scramSecretAssociation:ScramSecretAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterArn = registerOutput<String>('clusterArn');
-    this.region = registerOutput<String>('region');
-    this.secretArnLists = registerOutput<List<String>>('secretArnLists');
+         'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterArn = registerOutput<String>('clusterArn');
+    region = registerOutput<String>('region');
+    secretArnLists = registerOutput<List<String>>('secretArnLists');
   }
 
   /// Gets an existing [ScramSecretAssociation] resource's state with the given [name] and [id].
@@ -511,13 +513,13 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/scramSecretAssociation:ScramSecretAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterArn = registerOutput<String>('clusterArn');
-    this.region = registerOutput<String>('region');
-    this.secretArnLists = registerOutput<List<String>>('secretArnLists');
+         'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterArn = registerOutput<String>('clusterArn');
+    region = registerOutput<String>('region');
+    secretArnLists = registerOutput<List<String>>('secretArnLists');
   }
 }

@@ -9,20 +9,29 @@ class ApplicationPostStartV2 {
 
   /// Creates a new [ApplicationPostStartV2].
   /// [exec] Execute. See `exec` below.
-  ApplicationPostStartV2({
-    this.exec,
-  });
+  ApplicationPostStartV2({this.exec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec': ?pulumi.Input.mapOptionalInputValue<ApplicationPostStartV2Exec, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'exec':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationPostStartV2Exec,
+            Map<String, dynamic>
+          >(exec, (value) => value.toMap()),
     };
   }
 
   factory ApplicationPostStartV2.fromMap(Map<String, dynamic> map) {
     return ApplicationPostStartV2(
-      exec: map['exec'] == null ? null : (ApplicationPostStartV2Exec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      exec: (() {
+        final guardedValue = map['exec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationPostStartV2Exec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum RegionTargetHttpsProxyQuicOverrideComputeV1 {
   enable("ENABLE"),
   none("NONE");
 
-  const RegionTargetHttpsProxyQuicOverrideComputeV1(this.value);
-  final String value;
+  const RegionTargetHttpsProxyQuicOverrideComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionTargetHttpsProxyQuicOverrideComputeV1 fromValue(String value) {
     for (final item in RegionTargetHttpsProxyQuicOverrideComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionTargetHttpsProxyQuicOverrideComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionTargetHttpsProxyQuicOverrideComputeV1 value: $value',
+    );
   }
 }
-

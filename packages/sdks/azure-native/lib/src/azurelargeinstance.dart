@@ -1,5 +1,3 @@
-library module_azurelargeinstance;
-
 export 'azurelargeinstance/azure_large_instance.dart';
 export 'azurelargeinstance/azure_large_instance_args.dart';
 export 'azurelargeinstance/azure_large_instance_hardware_type_names_enum.dart';

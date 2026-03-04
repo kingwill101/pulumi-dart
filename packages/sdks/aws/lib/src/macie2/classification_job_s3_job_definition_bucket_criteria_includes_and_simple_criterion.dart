@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion {
   /// The operator to use in a condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
   final pulumi.Input<String>? comparator;
+
   /// The object property to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionkeyforjob)
   final pulumi.Input<String>? key;
+
   /// An array that lists the values to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionforjob)
   final pulumi.Input<List<String>>? values;
 
@@ -28,12 +30,25 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion {
     };
   }
 
-  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion(
-      comparator: map['comparator'] == null ? null : ((map['comparator'] as String).input()).input(),
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
+      comparator: (() {
+        final guardedValue = map['comparator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,13 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_newrelic;
-
-import 'package:pulumi_newrelic/cloud.dart' as _cloud;
-import 'package:pulumi_newrelic/index.dart' as _index;
-import 'package:pulumi_newrelic/insights.dart' as _insights;
-import 'package:pulumi_newrelic/plugins.dart' as _plugins;
-import 'package:pulumi_newrelic/providers.dart' as _providers;
-import 'package:pulumi_newrelic/synthetics.dart' as _synthetics;
+import 'package:pulumi_newrelic/cloud.dart' as module_cloud;
+import 'package:pulumi_newrelic/index.dart' as module_index;
+import 'package:pulumi_newrelic/insights.dart' as module_insights;
+import 'package:pulumi_newrelic/plugins.dart' as module_plugins;
+import 'package:pulumi_newrelic/providers.dart' as module_providers;
+import 'package:pulumi_newrelic/synthetics.dart' as module_synthetics;
 
 final cloud = _CloudModuleNamespace();
 final index = _IndexModuleNamespace();
@@ -18,1044 +16,1654 @@ final synthetics = _SyntheticsModuleNamespace();
 
 class _CloudModuleNamespace {
   _CloudModuleNamespace();
-  final AwsEuSovereignIntegrations = _cloud.AwsEuSovereignIntegrations.new;
-  final AwsEuSovereignIntegrationsArgs = _cloud.AwsEuSovereignIntegrationsArgs.new;
-  final AwsEuSovereignIntegrationsBilling = _cloud.AwsEuSovereignIntegrationsBilling.new;
-  final AwsEuSovereignIntegrationsBillingArgs = _cloud.AwsEuSovereignIntegrationsBilling.new;
-  final AwsEuSovereignIntegrationsCloudtrail = _cloud.AwsEuSovereignIntegrationsCloudtrail.new;
-  final AwsEuSovereignIntegrationsCloudtrailArgs = _cloud.AwsEuSovereignIntegrationsCloudtrail.new;
-  final AwsEuSovereignIntegrationsState = _cloud.AwsEuSovereignIntegrationsState.new;
-  final AwsEuSovereignIntegrationsStateArgs = _cloud.AwsEuSovereignIntegrationsState.new;
-  final AwsEuSovereignIntegrationsXRay = _cloud.AwsEuSovereignIntegrationsXRay.new;
-  final AwsEuSovereignIntegrationsXRayArgs = _cloud.AwsEuSovereignIntegrationsXRay.new;
-  final AwsEuSovereignLinkAccount = _cloud.AwsEuSovereignLinkAccount.new;
-  final AwsEuSovereignLinkAccountArgs = _cloud.AwsEuSovereignLinkAccountArgs.new;
-  final AwsEuSovereignLinkAccountState = _cloud.AwsEuSovereignLinkAccountState.new;
-  final AwsEuSovereignLinkAccountStateArgs = _cloud.AwsEuSovereignLinkAccountState.new;
-  final AwsGovcloudIntegrations = _cloud.AwsGovcloudIntegrations.new;
-  final AwsGovcloudIntegrationsAlb = _cloud.AwsGovcloudIntegrationsAlb.new;
-  final AwsGovcloudIntegrationsAlbArgs = _cloud.AwsGovcloudIntegrationsAlb.new;
-  final AwsGovcloudIntegrationsApiGateway = _cloud.AwsGovcloudIntegrationsApiGateway.new;
-  final AwsGovcloudIntegrationsApiGatewayArgs = _cloud.AwsGovcloudIntegrationsApiGateway.new;
-  final AwsGovcloudIntegrationsArgs = _cloud.AwsGovcloudIntegrationsArgs.new;
-  final AwsGovcloudIntegrationsAutoScaling = _cloud.AwsGovcloudIntegrationsAutoScaling.new;
-  final AwsGovcloudIntegrationsAutoScalingArgs = _cloud.AwsGovcloudIntegrationsAutoScaling.new;
-  final AwsGovcloudIntegrationsAwsDirectConnect = _cloud.AwsGovcloudIntegrationsAwsDirectConnect.new;
-  final AwsGovcloudIntegrationsAwsDirectConnectArgs = _cloud.AwsGovcloudIntegrationsAwsDirectConnect.new;
-  final AwsGovcloudIntegrationsAwsStates = _cloud.AwsGovcloudIntegrationsAwsStates.new;
-  final AwsGovcloudIntegrationsAwsStatesArgs = _cloud.AwsGovcloudIntegrationsAwsStates.new;
-  final AwsGovcloudIntegrationsCloudtrail = _cloud.AwsGovcloudIntegrationsCloudtrail.new;
-  final AwsGovcloudIntegrationsCloudtrailArgs = _cloud.AwsGovcloudIntegrationsCloudtrail.new;
-  final AwsGovcloudIntegrationsDynamoDb = _cloud.AwsGovcloudIntegrationsDynamoDb.new;
-  final AwsGovcloudIntegrationsDynamoDbArgs = _cloud.AwsGovcloudIntegrationsDynamoDb.new;
-  final AwsGovcloudIntegrationsEbs = _cloud.AwsGovcloudIntegrationsEbs.new;
-  final AwsGovcloudIntegrationsEbsArgs = _cloud.AwsGovcloudIntegrationsEbs.new;
-  final AwsGovcloudIntegrationsEc2 = _cloud.AwsGovcloudIntegrationsEc2.new;
-  final AwsGovcloudIntegrationsEc2Args = _cloud.AwsGovcloudIntegrationsEc2.new;
-  final AwsGovcloudIntegrationsElasticSearch = _cloud.AwsGovcloudIntegrationsElasticSearch.new;
-  final AwsGovcloudIntegrationsElasticSearchArgs = _cloud.AwsGovcloudIntegrationsElasticSearch.new;
-  final AwsGovcloudIntegrationsElb = _cloud.AwsGovcloudIntegrationsElb.new;
-  final AwsGovcloudIntegrationsElbArgs = _cloud.AwsGovcloudIntegrationsElb.new;
-  final AwsGovcloudIntegrationsEmr = _cloud.AwsGovcloudIntegrationsEmr.new;
-  final AwsGovcloudIntegrationsEmrArgs = _cloud.AwsGovcloudIntegrationsEmr.new;
-  final AwsGovcloudIntegrationsIam = _cloud.AwsGovcloudIntegrationsIam.new;
-  final AwsGovcloudIntegrationsIamArgs = _cloud.AwsGovcloudIntegrationsIam.new;
-  final AwsGovcloudIntegrationsLambda = _cloud.AwsGovcloudIntegrationsLambda.new;
-  final AwsGovcloudIntegrationsLambdaArgs = _cloud.AwsGovcloudIntegrationsLambda.new;
-  final AwsGovcloudIntegrationsRds = _cloud.AwsGovcloudIntegrationsRds.new;
-  final AwsGovcloudIntegrationsRdsArgs = _cloud.AwsGovcloudIntegrationsRds.new;
-  final AwsGovcloudIntegrationsRedShift = _cloud.AwsGovcloudIntegrationsRedShift.new;
-  final AwsGovcloudIntegrationsRedShiftArgs = _cloud.AwsGovcloudIntegrationsRedShift.new;
-  final AwsGovcloudIntegrationsRoute53 = _cloud.AwsGovcloudIntegrationsRoute53.new;
-  final AwsGovcloudIntegrationsRoute53Args = _cloud.AwsGovcloudIntegrationsRoute53.new;
-  final AwsGovcloudIntegrationsS3 = _cloud.AwsGovcloudIntegrationsS3.new;
-  final AwsGovcloudIntegrationsS3Args = _cloud.AwsGovcloudIntegrationsS3.new;
-  final AwsGovcloudIntegrationsSns = _cloud.AwsGovcloudIntegrationsSns.new;
-  final AwsGovcloudIntegrationsSnsArgs = _cloud.AwsGovcloudIntegrationsSns.new;
-  final AwsGovcloudIntegrationsSqs = _cloud.AwsGovcloudIntegrationsSqs.new;
-  final AwsGovcloudIntegrationsSqsArgs = _cloud.AwsGovcloudIntegrationsSqs.new;
-  final AwsGovcloudIntegrationsState = _cloud.AwsGovcloudIntegrationsState.new;
-  final AwsGovcloudIntegrationsStateArgs = _cloud.AwsGovcloudIntegrationsState.new;
-  final AwsGovcloudLinkAccount = _cloud.AwsGovcloudLinkAccount.new;
-  final AwsGovcloudLinkAccountArgs = _cloud.AwsGovcloudLinkAccountArgs.new;
-  final AwsGovcloudLinkAccountState = _cloud.AwsGovcloudLinkAccountState.new;
-  final AwsGovcloudLinkAccountStateArgs = _cloud.AwsGovcloudLinkAccountState.new;
-  final AwsIntegrations = _cloud.AwsIntegrations.new;
-  final AwsIntegrationsAlb = _cloud.AwsIntegrationsAlb.new;
-  final AwsIntegrationsAlbArgs = _cloud.AwsIntegrationsAlb.new;
-  final AwsIntegrationsApiGateway = _cloud.AwsIntegrationsApiGateway.new;
-  final AwsIntegrationsApiGatewayArgs = _cloud.AwsIntegrationsApiGateway.new;
-  final AwsIntegrationsArgs = _cloud.AwsIntegrationsArgs.new;
-  final AwsIntegrationsAutoScaling = _cloud.AwsIntegrationsAutoScaling.new;
-  final AwsIntegrationsAutoScalingArgs = _cloud.AwsIntegrationsAutoScaling.new;
-  final AwsIntegrationsAwsAppSync = _cloud.AwsIntegrationsAwsAppSync.new;
-  final AwsIntegrationsAwsAppSyncArgs = _cloud.AwsIntegrationsAwsAppSync.new;
-  final AwsIntegrationsAwsAthena = _cloud.AwsIntegrationsAwsAthena.new;
-  final AwsIntegrationsAwsAthenaArgs = _cloud.AwsIntegrationsAwsAthena.new;
-  final AwsIntegrationsAwsAutoDiscovery = _cloud.AwsIntegrationsAwsAutoDiscovery.new;
-  final AwsIntegrationsAwsAutoDiscoveryArgs = _cloud.AwsIntegrationsAwsAutoDiscovery.new;
-  final AwsIntegrationsAwsCognito = _cloud.AwsIntegrationsAwsCognito.new;
-  final AwsIntegrationsAwsCognitoArgs = _cloud.AwsIntegrationsAwsCognito.new;
-  final AwsIntegrationsAwsConnect = _cloud.AwsIntegrationsAwsConnect.new;
-  final AwsIntegrationsAwsConnectArgs = _cloud.AwsIntegrationsAwsConnect.new;
-  final AwsIntegrationsAwsDirectConnect = _cloud.AwsIntegrationsAwsDirectConnect.new;
-  final AwsIntegrationsAwsDirectConnectArgs = _cloud.AwsIntegrationsAwsDirectConnect.new;
-  final AwsIntegrationsAwsFsx = _cloud.AwsIntegrationsAwsFsx.new;
-  final AwsIntegrationsAwsFsxArgs = _cloud.AwsIntegrationsAwsFsx.new;
-  final AwsIntegrationsAwsGlue = _cloud.AwsIntegrationsAwsGlue.new;
-  final AwsIntegrationsAwsGlueArgs = _cloud.AwsIntegrationsAwsGlue.new;
-  final AwsIntegrationsAwsKinesisAnalytics = _cloud.AwsIntegrationsAwsKinesisAnalytics.new;
-  final AwsIntegrationsAwsKinesisAnalyticsArgs = _cloud.AwsIntegrationsAwsKinesisAnalytics.new;
-  final AwsIntegrationsAwsMediaConvert = _cloud.AwsIntegrationsAwsMediaConvert.new;
-  final AwsIntegrationsAwsMediaConvertArgs = _cloud.AwsIntegrationsAwsMediaConvert.new;
-  final AwsIntegrationsAwsMediaPackageVod = _cloud.AwsIntegrationsAwsMediaPackageVod.new;
-  final AwsIntegrationsAwsMediaPackageVodArgs = _cloud.AwsIntegrationsAwsMediaPackageVod.new;
-  final AwsIntegrationsAwsMq = _cloud.AwsIntegrationsAwsMq.new;
-  final AwsIntegrationsAwsMqArgs = _cloud.AwsIntegrationsAwsMq.new;
-  final AwsIntegrationsAwsMsk = _cloud.AwsIntegrationsAwsMsk.new;
-  final AwsIntegrationsAwsMskArgs = _cloud.AwsIntegrationsAwsMsk.new;
-  final AwsIntegrationsAwsNeptune = _cloud.AwsIntegrationsAwsNeptune.new;
-  final AwsIntegrationsAwsNeptuneArgs = _cloud.AwsIntegrationsAwsNeptune.new;
-  final AwsIntegrationsAwsQldb = _cloud.AwsIntegrationsAwsQldb.new;
-  final AwsIntegrationsAwsQldbArgs = _cloud.AwsIntegrationsAwsQldb.new;
-  final AwsIntegrationsAwsRoute53resolver = _cloud.AwsIntegrationsAwsRoute53resolver.new;
-  final AwsIntegrationsAwsRoute53resolverArgs = _cloud.AwsIntegrationsAwsRoute53resolver.new;
-  final AwsIntegrationsAwsStates = _cloud.AwsIntegrationsAwsStates.new;
-  final AwsIntegrationsAwsStatesArgs = _cloud.AwsIntegrationsAwsStates.new;
-  final AwsIntegrationsAwsTransitGateway = _cloud.AwsIntegrationsAwsTransitGateway.new;
-  final AwsIntegrationsAwsTransitGatewayArgs = _cloud.AwsIntegrationsAwsTransitGateway.new;
-  final AwsIntegrationsAwsWaf = _cloud.AwsIntegrationsAwsWaf.new;
-  final AwsIntegrationsAwsWafArgs = _cloud.AwsIntegrationsAwsWaf.new;
-  final AwsIntegrationsAwsWafv2 = _cloud.AwsIntegrationsAwsWafv2.new;
-  final AwsIntegrationsAwsWafv2Args = _cloud.AwsIntegrationsAwsWafv2.new;
-  final AwsIntegrationsBilling = _cloud.AwsIntegrationsBilling.new;
-  final AwsIntegrationsBillingArgs = _cloud.AwsIntegrationsBilling.new;
-  final AwsIntegrationsCloudfront = _cloud.AwsIntegrationsCloudfront.new;
-  final AwsIntegrationsCloudfrontArgs = _cloud.AwsIntegrationsCloudfront.new;
-  final AwsIntegrationsCloudtrail = _cloud.AwsIntegrationsCloudtrail.new;
-  final AwsIntegrationsCloudtrailArgs = _cloud.AwsIntegrationsCloudtrail.new;
-  final AwsIntegrationsDocDb = _cloud.AwsIntegrationsDocDb.new;
-  final AwsIntegrationsDocDbArgs = _cloud.AwsIntegrationsDocDb.new;
-  final AwsIntegrationsDynamodb = _cloud.AwsIntegrationsDynamodb.new;
-  final AwsIntegrationsDynamodbArgs = _cloud.AwsIntegrationsDynamodb.new;
-  final AwsIntegrationsEbs = _cloud.AwsIntegrationsEbs.new;
-  final AwsIntegrationsEbsArgs = _cloud.AwsIntegrationsEbs.new;
-  final AwsIntegrationsEc2 = _cloud.AwsIntegrationsEc2.new;
-  final AwsIntegrationsEc2Args = _cloud.AwsIntegrationsEc2.new;
-  final AwsIntegrationsEcs = _cloud.AwsIntegrationsEcs.new;
-  final AwsIntegrationsEcsArgs = _cloud.AwsIntegrationsEcs.new;
-  final AwsIntegrationsEfs = _cloud.AwsIntegrationsEfs.new;
-  final AwsIntegrationsEfsArgs = _cloud.AwsIntegrationsEfs.new;
-  final AwsIntegrationsElasticache = _cloud.AwsIntegrationsElasticache.new;
-  final AwsIntegrationsElasticacheArgs = _cloud.AwsIntegrationsElasticache.new;
-  final AwsIntegrationsElasticbeanstalk = _cloud.AwsIntegrationsElasticbeanstalk.new;
-  final AwsIntegrationsElasticbeanstalkArgs = _cloud.AwsIntegrationsElasticbeanstalk.new;
-  final AwsIntegrationsElasticsearch = _cloud.AwsIntegrationsElasticsearch.new;
-  final AwsIntegrationsElasticsearchArgs = _cloud.AwsIntegrationsElasticsearch.new;
-  final AwsIntegrationsElb = _cloud.AwsIntegrationsElb.new;
-  final AwsIntegrationsElbArgs = _cloud.AwsIntegrationsElb.new;
-  final AwsIntegrationsEmr = _cloud.AwsIntegrationsEmr.new;
-  final AwsIntegrationsEmrArgs = _cloud.AwsIntegrationsEmr.new;
-  final AwsIntegrationsHealth = _cloud.AwsIntegrationsHealth.new;
-  final AwsIntegrationsHealthArgs = _cloud.AwsIntegrationsHealth.new;
-  final AwsIntegrationsIam = _cloud.AwsIntegrationsIam.new;
-  final AwsIntegrationsIamArgs = _cloud.AwsIntegrationsIam.new;
-  final AwsIntegrationsIot = _cloud.AwsIntegrationsIot.new;
-  final AwsIntegrationsIotArgs = _cloud.AwsIntegrationsIot.new;
-  final AwsIntegrationsKinesis = _cloud.AwsIntegrationsKinesis.new;
-  final AwsIntegrationsKinesisArgs = _cloud.AwsIntegrationsKinesis.new;
-  final AwsIntegrationsKinesisFirehose = _cloud.AwsIntegrationsKinesisFirehose.new;
-  final AwsIntegrationsKinesisFirehoseArgs = _cloud.AwsIntegrationsKinesisFirehose.new;
-  final AwsIntegrationsLambda = _cloud.AwsIntegrationsLambda.new;
-  final AwsIntegrationsLambdaArgs = _cloud.AwsIntegrationsLambda.new;
-  final AwsIntegrationsRds = _cloud.AwsIntegrationsRds.new;
-  final AwsIntegrationsRdsArgs = _cloud.AwsIntegrationsRds.new;
-  final AwsIntegrationsRedshift = _cloud.AwsIntegrationsRedshift.new;
-  final AwsIntegrationsRedshiftArgs = _cloud.AwsIntegrationsRedshift.new;
-  final AwsIntegrationsRoute53 = _cloud.AwsIntegrationsRoute53.new;
-  final AwsIntegrationsRoute53Args = _cloud.AwsIntegrationsRoute53.new;
-  final AwsIntegrationsS3 = _cloud.AwsIntegrationsS3.new;
-  final AwsIntegrationsS3Args = _cloud.AwsIntegrationsS3.new;
-  final AwsIntegrationsSecurityHub = _cloud.AwsIntegrationsSecurityHub.new;
-  final AwsIntegrationsSecurityHubArgs = _cloud.AwsIntegrationsSecurityHub.new;
-  final AwsIntegrationsSes = _cloud.AwsIntegrationsSes.new;
-  final AwsIntegrationsSesArgs = _cloud.AwsIntegrationsSes.new;
-  final AwsIntegrationsSns = _cloud.AwsIntegrationsSns.new;
-  final AwsIntegrationsSnsArgs = _cloud.AwsIntegrationsSns.new;
-  final AwsIntegrationsSqs = _cloud.AwsIntegrationsSqs.new;
-  final AwsIntegrationsSqsArgs = _cloud.AwsIntegrationsSqs.new;
-  final AwsIntegrationsState = _cloud.AwsIntegrationsState.new;
-  final AwsIntegrationsStateArgs = _cloud.AwsIntegrationsState.new;
-  final AwsIntegrationsTrustedAdvisor = _cloud.AwsIntegrationsTrustedAdvisor.new;
-  final AwsIntegrationsTrustedAdvisorArgs = _cloud.AwsIntegrationsTrustedAdvisor.new;
-  final AwsIntegrationsVpc = _cloud.AwsIntegrationsVpc.new;
-  final AwsIntegrationsVpcArgs = _cloud.AwsIntegrationsVpc.new;
-  final AwsIntegrationsXRay = _cloud.AwsIntegrationsXRay.new;
-  final AwsIntegrationsXRayArgs = _cloud.AwsIntegrationsXRay.new;
-  final AwsLinkAccount = _cloud.AwsLinkAccount.new;
-  final AwsLinkAccountArgs = _cloud.AwsLinkAccountArgs.new;
-  final AwsLinkAccountState = _cloud.AwsLinkAccountState.new;
-  final AwsLinkAccountStateArgs = _cloud.AwsLinkAccountState.new;
-  final AzureIntegrations = _cloud.AzureIntegrations.new;
-  final AzureIntegrationsApiManagement = _cloud.AzureIntegrationsApiManagement.new;
-  final AzureIntegrationsApiManagementArgs = _cloud.AzureIntegrationsApiManagement.new;
-  final AzureIntegrationsAppGateway = _cloud.AzureIntegrationsAppGateway.new;
-  final AzureIntegrationsAppGatewayArgs = _cloud.AzureIntegrationsAppGateway.new;
-  final AzureIntegrationsAppService = _cloud.AzureIntegrationsAppService.new;
-  final AzureIntegrationsAppServiceArgs = _cloud.AzureIntegrationsAppService.new;
-  final AzureIntegrationsArgs = _cloud.AzureIntegrationsArgs.new;
-  final AzureIntegrationsAutoDiscovery = _cloud.AzureIntegrationsAutoDiscovery.new;
-  final AzureIntegrationsAutoDiscoveryArgs = _cloud.AzureIntegrationsAutoDiscovery.new;
-  final AzureIntegrationsContainers = _cloud.AzureIntegrationsContainers.new;
-  final AzureIntegrationsContainersArgs = _cloud.AzureIntegrationsContainers.new;
-  final AzureIntegrationsCosmosDb = _cloud.AzureIntegrationsCosmosDb.new;
-  final AzureIntegrationsCosmosDbArgs = _cloud.AzureIntegrationsCosmosDb.new;
-  final AzureIntegrationsCostManagement = _cloud.AzureIntegrationsCostManagement.new;
-  final AzureIntegrationsCostManagementArgs = _cloud.AzureIntegrationsCostManagement.new;
-  final AzureIntegrationsDataFactory = _cloud.AzureIntegrationsDataFactory.new;
-  final AzureIntegrationsDataFactoryArgs = _cloud.AzureIntegrationsDataFactory.new;
-  final AzureIntegrationsEventHub = _cloud.AzureIntegrationsEventHub.new;
-  final AzureIntegrationsEventHubArgs = _cloud.AzureIntegrationsEventHub.new;
-  final AzureIntegrationsExpressRoute = _cloud.AzureIntegrationsExpressRoute.new;
-  final AzureIntegrationsExpressRouteArgs = _cloud.AzureIntegrationsExpressRoute.new;
-  final AzureIntegrationsFirewalls = _cloud.AzureIntegrationsFirewalls.new;
-  final AzureIntegrationsFirewallsArgs = _cloud.AzureIntegrationsFirewalls.new;
-  final AzureIntegrationsFrontDoor = _cloud.AzureIntegrationsFrontDoor.new;
-  final AzureIntegrationsFrontDoorArgs = _cloud.AzureIntegrationsFrontDoor.new;
-  final AzureIntegrationsFunctions = _cloud.AzureIntegrationsFunctions.new;
-  final AzureIntegrationsFunctionsArgs = _cloud.AzureIntegrationsFunctions.new;
-  final AzureIntegrationsKeyVault = _cloud.AzureIntegrationsKeyVault.new;
-  final AzureIntegrationsKeyVaultArgs = _cloud.AzureIntegrationsKeyVault.new;
-  final AzureIntegrationsLoadBalancer = _cloud.AzureIntegrationsLoadBalancer.new;
-  final AzureIntegrationsLoadBalancerArgs = _cloud.AzureIntegrationsLoadBalancer.new;
-  final AzureIntegrationsLogicApps = _cloud.AzureIntegrationsLogicApps.new;
-  final AzureIntegrationsLogicAppsArgs = _cloud.AzureIntegrationsLogicApps.new;
-  final AzureIntegrationsMachineLearning = _cloud.AzureIntegrationsMachineLearning.new;
-  final AzureIntegrationsMachineLearningArgs = _cloud.AzureIntegrationsMachineLearning.new;
-  final AzureIntegrationsMariaDb = _cloud.AzureIntegrationsMariaDb.new;
-  final AzureIntegrationsMariaDbArgs = _cloud.AzureIntegrationsMariaDb.new;
-  final AzureIntegrationsMonitor = _cloud.AzureIntegrationsMonitor.new;
-  final AzureIntegrationsMonitorArgs = _cloud.AzureIntegrationsMonitor.new;
-  final AzureIntegrationsMysql = _cloud.AzureIntegrationsMysql.new;
-  final AzureIntegrationsMysqlArgs = _cloud.AzureIntegrationsMysql.new;
-  final AzureIntegrationsMysqlFlexible = _cloud.AzureIntegrationsMysqlFlexible.new;
-  final AzureIntegrationsMysqlFlexibleArgs = _cloud.AzureIntegrationsMysqlFlexible.new;
-  final AzureIntegrationsPostgresql = _cloud.AzureIntegrationsPostgresql.new;
-  final AzureIntegrationsPostgresqlArgs = _cloud.AzureIntegrationsPostgresql.new;
-  final AzureIntegrationsPostgresqlFlexible = _cloud.AzureIntegrationsPostgresqlFlexible.new;
-  final AzureIntegrationsPostgresqlFlexibleArgs = _cloud.AzureIntegrationsPostgresqlFlexible.new;
-  final AzureIntegrationsPowerBiDedicated = _cloud.AzureIntegrationsPowerBiDedicated.new;
-  final AzureIntegrationsPowerBiDedicatedArgs = _cloud.AzureIntegrationsPowerBiDedicated.new;
-  final AzureIntegrationsRedisCache = _cloud.AzureIntegrationsRedisCache.new;
-  final AzureIntegrationsRedisCacheArgs = _cloud.AzureIntegrationsRedisCache.new;
-  final AzureIntegrationsServiceBus = _cloud.AzureIntegrationsServiceBus.new;
-  final AzureIntegrationsServiceBusArgs = _cloud.AzureIntegrationsServiceBus.new;
-  final AzureIntegrationsSql = _cloud.AzureIntegrationsSql.new;
-  final AzureIntegrationsSqlArgs = _cloud.AzureIntegrationsSql.new;
-  final AzureIntegrationsSqlManaged = _cloud.AzureIntegrationsSqlManaged.new;
-  final AzureIntegrationsSqlManagedArgs = _cloud.AzureIntegrationsSqlManaged.new;
-  final AzureIntegrationsState = _cloud.AzureIntegrationsState.new;
-  final AzureIntegrationsStateArgs = _cloud.AzureIntegrationsState.new;
-  final AzureIntegrationsStorage = _cloud.AzureIntegrationsStorage.new;
-  final AzureIntegrationsStorageArgs = _cloud.AzureIntegrationsStorage.new;
-  final AzureIntegrationsVirtualMachine = _cloud.AzureIntegrationsVirtualMachine.new;
-  final AzureIntegrationsVirtualMachineArgs = _cloud.AzureIntegrationsVirtualMachine.new;
-  final AzureIntegrationsVirtualNetworks = _cloud.AzureIntegrationsVirtualNetworks.new;
-  final AzureIntegrationsVirtualNetworksArgs = _cloud.AzureIntegrationsVirtualNetworks.new;
-  final AzureIntegrationsVms = _cloud.AzureIntegrationsVms.new;
-  final AzureIntegrationsVmsArgs = _cloud.AzureIntegrationsVms.new;
-  final AzureIntegrationsVpnGateway = _cloud.AzureIntegrationsVpnGateway.new;
-  final AzureIntegrationsVpnGatewayArgs = _cloud.AzureIntegrationsVpnGateway.new;
-  final AzureLinkAccount = _cloud.AzureLinkAccount.new;
-  final AzureLinkAccountArgs = _cloud.AzureLinkAccountArgs.new;
-  final AzureLinkAccountState = _cloud.AzureLinkAccountState.new;
-  final AzureLinkAccountStateArgs = _cloud.AzureLinkAccountState.new;
-  final GcpIntegrations = _cloud.GcpIntegrations.new;
-  final GcpIntegrationsAlloyDb = _cloud.GcpIntegrationsAlloyDb.new;
-  final GcpIntegrationsAlloyDbArgs = _cloud.GcpIntegrationsAlloyDb.new;
-  final GcpIntegrationsAppEngine = _cloud.GcpIntegrationsAppEngine.new;
-  final GcpIntegrationsAppEngineArgs = _cloud.GcpIntegrationsAppEngine.new;
-  final GcpIntegrationsArgs = _cloud.GcpIntegrationsArgs.new;
-  final GcpIntegrationsBigQuery = _cloud.GcpIntegrationsBigQuery.new;
-  final GcpIntegrationsBigQueryArgs = _cloud.GcpIntegrationsBigQuery.new;
-  final GcpIntegrationsBigTable = _cloud.GcpIntegrationsBigTable.new;
-  final GcpIntegrationsBigTableArgs = _cloud.GcpIntegrationsBigTable.new;
-  final GcpIntegrationsComposer = _cloud.GcpIntegrationsComposer.new;
-  final GcpIntegrationsComposerArgs = _cloud.GcpIntegrationsComposer.new;
-  final GcpIntegrationsDataFlow = _cloud.GcpIntegrationsDataFlow.new;
-  final GcpIntegrationsDataFlowArgs = _cloud.GcpIntegrationsDataFlow.new;
-  final GcpIntegrationsDataProc = _cloud.GcpIntegrationsDataProc.new;
-  final GcpIntegrationsDataProcArgs = _cloud.GcpIntegrationsDataProc.new;
-  final GcpIntegrationsDataStore = _cloud.GcpIntegrationsDataStore.new;
-  final GcpIntegrationsDataStoreArgs = _cloud.GcpIntegrationsDataStore.new;
-  final GcpIntegrationsFireBaseDatabase = _cloud.GcpIntegrationsFireBaseDatabase.new;
-  final GcpIntegrationsFireBaseDatabaseArgs = _cloud.GcpIntegrationsFireBaseDatabase.new;
-  final GcpIntegrationsFireBaseHosting = _cloud.GcpIntegrationsFireBaseHosting.new;
-  final GcpIntegrationsFireBaseHostingArgs = _cloud.GcpIntegrationsFireBaseHosting.new;
-  final GcpIntegrationsFireBaseStorage = _cloud.GcpIntegrationsFireBaseStorage.new;
-  final GcpIntegrationsFireBaseStorageArgs = _cloud.GcpIntegrationsFireBaseStorage.new;
-  final GcpIntegrationsFireStore = _cloud.GcpIntegrationsFireStore.new;
-  final GcpIntegrationsFireStoreArgs = _cloud.GcpIntegrationsFireStore.new;
-  final GcpIntegrationsFunctions = _cloud.GcpIntegrationsFunctions.new;
-  final GcpIntegrationsFunctionsArgs = _cloud.GcpIntegrationsFunctions.new;
-  final GcpIntegrationsInterconnect = _cloud.GcpIntegrationsInterconnect.new;
-  final GcpIntegrationsInterconnectArgs = _cloud.GcpIntegrationsInterconnect.new;
-  final GcpIntegrationsKubernetes = _cloud.GcpIntegrationsKubernetes.new;
-  final GcpIntegrationsKubernetesArgs = _cloud.GcpIntegrationsKubernetes.new;
-  final GcpIntegrationsLoadBalancing = _cloud.GcpIntegrationsLoadBalancing.new;
-  final GcpIntegrationsLoadBalancingArgs = _cloud.GcpIntegrationsLoadBalancing.new;
-  final GcpIntegrationsMemCache = _cloud.GcpIntegrationsMemCache.new;
-  final GcpIntegrationsMemCacheArgs = _cloud.GcpIntegrationsMemCache.new;
-  final GcpIntegrationsPubSub = _cloud.GcpIntegrationsPubSub.new;
-  final GcpIntegrationsPubSubArgs = _cloud.GcpIntegrationsPubSub.new;
-  final GcpIntegrationsRedis = _cloud.GcpIntegrationsRedis.new;
-  final GcpIntegrationsRedisArgs = _cloud.GcpIntegrationsRedis.new;
-  final GcpIntegrationsRouter = _cloud.GcpIntegrationsRouter.new;
-  final GcpIntegrationsRouterArgs = _cloud.GcpIntegrationsRouter.new;
-  final GcpIntegrationsRun = _cloud.GcpIntegrationsRun.new;
-  final GcpIntegrationsRunArgs = _cloud.GcpIntegrationsRun.new;
-  final GcpIntegrationsSpanner = _cloud.GcpIntegrationsSpanner.new;
-  final GcpIntegrationsSpannerArgs = _cloud.GcpIntegrationsSpanner.new;
-  final GcpIntegrationsSql = _cloud.GcpIntegrationsSql.new;
-  final GcpIntegrationsSqlArgs = _cloud.GcpIntegrationsSql.new;
-  final GcpIntegrationsState = _cloud.GcpIntegrationsState.new;
-  final GcpIntegrationsStateArgs = _cloud.GcpIntegrationsState.new;
-  final GcpIntegrationsStorage = _cloud.GcpIntegrationsStorage.new;
-  final GcpIntegrationsStorageArgs = _cloud.GcpIntegrationsStorage.new;
-  final GcpIntegrationsVirtualMachines = _cloud.GcpIntegrationsVirtualMachines.new;
-  final GcpIntegrationsVirtualMachinesArgs = _cloud.GcpIntegrationsVirtualMachines.new;
-  final GcpIntegrationsVpcAccess = _cloud.GcpIntegrationsVpcAccess.new;
-  final GcpIntegrationsVpcAccessArgs = _cloud.GcpIntegrationsVpcAccess.new;
-  final GcpLinkAccount = _cloud.GcpLinkAccount.new;
-  final GcpLinkAccountArgs = _cloud.GcpLinkAccountArgs.new;
-  final GcpLinkAccountState = _cloud.GcpLinkAccountState.new;
-  final GcpLinkAccountStateArgs = _cloud.GcpLinkAccountState.new;
-  final OciLinkAccount = _cloud.OciLinkAccount.new;
-  final OciLinkAccountArgs = _cloud.OciLinkAccountArgs.new;
-  final OciLinkAccountState = _cloud.OciLinkAccountState.new;
-  final OciLinkAccountStateArgs = _cloud.OciLinkAccountState.new;
+  final AwsEuSovereignIntegrations =
+      module_cloud.AwsEuSovereignIntegrations.new;
+  final AwsEuSovereignIntegrationsArgs =
+      module_cloud.AwsEuSovereignIntegrationsArgs.new;
+  final AwsEuSovereignIntegrationsBilling =
+      module_cloud.AwsEuSovereignIntegrationsBilling.new;
+  final AwsEuSovereignIntegrationsBillingArgs =
+      module_cloud.AwsEuSovereignIntegrationsBilling.new;
+  final AwsEuSovereignIntegrationsCloudtrail =
+      module_cloud.AwsEuSovereignIntegrationsCloudtrail.new;
+  final AwsEuSovereignIntegrationsCloudtrailArgs =
+      module_cloud.AwsEuSovereignIntegrationsCloudtrail.new;
+  final AwsEuSovereignIntegrationsState =
+      module_cloud.AwsEuSovereignIntegrationsState.new;
+  final AwsEuSovereignIntegrationsStateArgs =
+      module_cloud.AwsEuSovereignIntegrationsState.new;
+  final AwsEuSovereignIntegrationsXRay =
+      module_cloud.AwsEuSovereignIntegrationsXRay.new;
+  final AwsEuSovereignIntegrationsXRayArgs =
+      module_cloud.AwsEuSovereignIntegrationsXRay.new;
+  final AwsEuSovereignLinkAccount = module_cloud.AwsEuSovereignLinkAccount.new;
+  final AwsEuSovereignLinkAccountArgs =
+      module_cloud.AwsEuSovereignLinkAccountArgs.new;
+  final AwsEuSovereignLinkAccountState =
+      module_cloud.AwsEuSovereignLinkAccountState.new;
+  final AwsEuSovereignLinkAccountStateArgs =
+      module_cloud.AwsEuSovereignLinkAccountState.new;
+  final AwsGovcloudIntegrations = module_cloud.AwsGovcloudIntegrations.new;
+  final AwsGovcloudIntegrationsAlb =
+      module_cloud.AwsGovcloudIntegrationsAlb.new;
+  final AwsGovcloudIntegrationsAlbArgs =
+      module_cloud.AwsGovcloudIntegrationsAlb.new;
+  final AwsGovcloudIntegrationsApiGateway =
+      module_cloud.AwsGovcloudIntegrationsApiGateway.new;
+  final AwsGovcloudIntegrationsApiGatewayArgs =
+      module_cloud.AwsGovcloudIntegrationsApiGateway.new;
+  final AwsGovcloudIntegrationsArgs =
+      module_cloud.AwsGovcloudIntegrationsArgs.new;
+  final AwsGovcloudIntegrationsAutoScaling =
+      module_cloud.AwsGovcloudIntegrationsAutoScaling.new;
+  final AwsGovcloudIntegrationsAutoScalingArgs =
+      module_cloud.AwsGovcloudIntegrationsAutoScaling.new;
+  final AwsGovcloudIntegrationsAwsDirectConnect =
+      module_cloud.AwsGovcloudIntegrationsAwsDirectConnect.new;
+  final AwsGovcloudIntegrationsAwsDirectConnectArgs =
+      module_cloud.AwsGovcloudIntegrationsAwsDirectConnect.new;
+  final AwsGovcloudIntegrationsAwsStates =
+      module_cloud.AwsGovcloudIntegrationsAwsStates.new;
+  final AwsGovcloudIntegrationsAwsStatesArgs =
+      module_cloud.AwsGovcloudIntegrationsAwsStates.new;
+  final AwsGovcloudIntegrationsCloudtrail =
+      module_cloud.AwsGovcloudIntegrationsCloudtrail.new;
+  final AwsGovcloudIntegrationsCloudtrailArgs =
+      module_cloud.AwsGovcloudIntegrationsCloudtrail.new;
+  final AwsGovcloudIntegrationsDynamoDb =
+      module_cloud.AwsGovcloudIntegrationsDynamoDb.new;
+  final AwsGovcloudIntegrationsDynamoDbArgs =
+      module_cloud.AwsGovcloudIntegrationsDynamoDb.new;
+  final AwsGovcloudIntegrationsEbs =
+      module_cloud.AwsGovcloudIntegrationsEbs.new;
+  final AwsGovcloudIntegrationsEbsArgs =
+      module_cloud.AwsGovcloudIntegrationsEbs.new;
+  final AwsGovcloudIntegrationsEc2 =
+      module_cloud.AwsGovcloudIntegrationsEc2.new;
+  final AwsGovcloudIntegrationsEc2Args =
+      module_cloud.AwsGovcloudIntegrationsEc2.new;
+  final AwsGovcloudIntegrationsElasticSearch =
+      module_cloud.AwsGovcloudIntegrationsElasticSearch.new;
+  final AwsGovcloudIntegrationsElasticSearchArgs =
+      module_cloud.AwsGovcloudIntegrationsElasticSearch.new;
+  final AwsGovcloudIntegrationsElb =
+      module_cloud.AwsGovcloudIntegrationsElb.new;
+  final AwsGovcloudIntegrationsElbArgs =
+      module_cloud.AwsGovcloudIntegrationsElb.new;
+  final AwsGovcloudIntegrationsEmr =
+      module_cloud.AwsGovcloudIntegrationsEmr.new;
+  final AwsGovcloudIntegrationsEmrArgs =
+      module_cloud.AwsGovcloudIntegrationsEmr.new;
+  final AwsGovcloudIntegrationsIam =
+      module_cloud.AwsGovcloudIntegrationsIam.new;
+  final AwsGovcloudIntegrationsIamArgs =
+      module_cloud.AwsGovcloudIntegrationsIam.new;
+  final AwsGovcloudIntegrationsLambda =
+      module_cloud.AwsGovcloudIntegrationsLambda.new;
+  final AwsGovcloudIntegrationsLambdaArgs =
+      module_cloud.AwsGovcloudIntegrationsLambda.new;
+  final AwsGovcloudIntegrationsRds =
+      module_cloud.AwsGovcloudIntegrationsRds.new;
+  final AwsGovcloudIntegrationsRdsArgs =
+      module_cloud.AwsGovcloudIntegrationsRds.new;
+  final AwsGovcloudIntegrationsRedShift =
+      module_cloud.AwsGovcloudIntegrationsRedShift.new;
+  final AwsGovcloudIntegrationsRedShiftArgs =
+      module_cloud.AwsGovcloudIntegrationsRedShift.new;
+  final AwsGovcloudIntegrationsRoute53 =
+      module_cloud.AwsGovcloudIntegrationsRoute53.new;
+  final AwsGovcloudIntegrationsRoute53Args =
+      module_cloud.AwsGovcloudIntegrationsRoute53.new;
+  final AwsGovcloudIntegrationsS3 = module_cloud.AwsGovcloudIntegrationsS3.new;
+  final AwsGovcloudIntegrationsS3Args =
+      module_cloud.AwsGovcloudIntegrationsS3.new;
+  final AwsGovcloudIntegrationsSns =
+      module_cloud.AwsGovcloudIntegrationsSns.new;
+  final AwsGovcloudIntegrationsSnsArgs =
+      module_cloud.AwsGovcloudIntegrationsSns.new;
+  final AwsGovcloudIntegrationsSqs =
+      module_cloud.AwsGovcloudIntegrationsSqs.new;
+  final AwsGovcloudIntegrationsSqsArgs =
+      module_cloud.AwsGovcloudIntegrationsSqs.new;
+  final AwsGovcloudIntegrationsState =
+      module_cloud.AwsGovcloudIntegrationsState.new;
+  final AwsGovcloudIntegrationsStateArgs =
+      module_cloud.AwsGovcloudIntegrationsState.new;
+  final AwsGovcloudLinkAccount = module_cloud.AwsGovcloudLinkAccount.new;
+  final AwsGovcloudLinkAccountArgs =
+      module_cloud.AwsGovcloudLinkAccountArgs.new;
+  final AwsGovcloudLinkAccountState =
+      module_cloud.AwsGovcloudLinkAccountState.new;
+  final AwsGovcloudLinkAccountStateArgs =
+      module_cloud.AwsGovcloudLinkAccountState.new;
+  final AwsIntegrations = module_cloud.AwsIntegrations.new;
+  final AwsIntegrationsAlb = module_cloud.AwsIntegrationsAlb.new;
+  final AwsIntegrationsAlbArgs = module_cloud.AwsIntegrationsAlb.new;
+  final AwsIntegrationsApiGateway = module_cloud.AwsIntegrationsApiGateway.new;
+  final AwsIntegrationsApiGatewayArgs =
+      module_cloud.AwsIntegrationsApiGateway.new;
+  final AwsIntegrationsArgs = module_cloud.AwsIntegrationsArgs.new;
+  final AwsIntegrationsAutoScaling =
+      module_cloud.AwsIntegrationsAutoScaling.new;
+  final AwsIntegrationsAutoScalingArgs =
+      module_cloud.AwsIntegrationsAutoScaling.new;
+  final AwsIntegrationsAwsAppSync = module_cloud.AwsIntegrationsAwsAppSync.new;
+  final AwsIntegrationsAwsAppSyncArgs =
+      module_cloud.AwsIntegrationsAwsAppSync.new;
+  final AwsIntegrationsAwsAthena = module_cloud.AwsIntegrationsAwsAthena.new;
+  final AwsIntegrationsAwsAthenaArgs =
+      module_cloud.AwsIntegrationsAwsAthena.new;
+  final AwsIntegrationsAwsAutoDiscovery =
+      module_cloud.AwsIntegrationsAwsAutoDiscovery.new;
+  final AwsIntegrationsAwsAutoDiscoveryArgs =
+      module_cloud.AwsIntegrationsAwsAutoDiscovery.new;
+  final AwsIntegrationsAwsCognito = module_cloud.AwsIntegrationsAwsCognito.new;
+  final AwsIntegrationsAwsCognitoArgs =
+      module_cloud.AwsIntegrationsAwsCognito.new;
+  final AwsIntegrationsAwsConnect = module_cloud.AwsIntegrationsAwsConnect.new;
+  final AwsIntegrationsAwsConnectArgs =
+      module_cloud.AwsIntegrationsAwsConnect.new;
+  final AwsIntegrationsAwsDirectConnect =
+      module_cloud.AwsIntegrationsAwsDirectConnect.new;
+  final AwsIntegrationsAwsDirectConnectArgs =
+      module_cloud.AwsIntegrationsAwsDirectConnect.new;
+  final AwsIntegrationsAwsFsx = module_cloud.AwsIntegrationsAwsFsx.new;
+  final AwsIntegrationsAwsFsxArgs = module_cloud.AwsIntegrationsAwsFsx.new;
+  final AwsIntegrationsAwsGlue = module_cloud.AwsIntegrationsAwsGlue.new;
+  final AwsIntegrationsAwsGlueArgs = module_cloud.AwsIntegrationsAwsGlue.new;
+  final AwsIntegrationsAwsKinesisAnalytics =
+      module_cloud.AwsIntegrationsAwsKinesisAnalytics.new;
+  final AwsIntegrationsAwsKinesisAnalyticsArgs =
+      module_cloud.AwsIntegrationsAwsKinesisAnalytics.new;
+  final AwsIntegrationsAwsMediaConvert =
+      module_cloud.AwsIntegrationsAwsMediaConvert.new;
+  final AwsIntegrationsAwsMediaConvertArgs =
+      module_cloud.AwsIntegrationsAwsMediaConvert.new;
+  final AwsIntegrationsAwsMediaPackageVod =
+      module_cloud.AwsIntegrationsAwsMediaPackageVod.new;
+  final AwsIntegrationsAwsMediaPackageVodArgs =
+      module_cloud.AwsIntegrationsAwsMediaPackageVod.new;
+  final AwsIntegrationsAwsMq = module_cloud.AwsIntegrationsAwsMq.new;
+  final AwsIntegrationsAwsMqArgs = module_cloud.AwsIntegrationsAwsMq.new;
+  final AwsIntegrationsAwsMsk = module_cloud.AwsIntegrationsAwsMsk.new;
+  final AwsIntegrationsAwsMskArgs = module_cloud.AwsIntegrationsAwsMsk.new;
+  final AwsIntegrationsAwsNeptune = module_cloud.AwsIntegrationsAwsNeptune.new;
+  final AwsIntegrationsAwsNeptuneArgs =
+      module_cloud.AwsIntegrationsAwsNeptune.new;
+  final AwsIntegrationsAwsQldb = module_cloud.AwsIntegrationsAwsQldb.new;
+  final AwsIntegrationsAwsQldbArgs = module_cloud.AwsIntegrationsAwsQldb.new;
+  final AwsIntegrationsAwsRoute53resolver =
+      module_cloud.AwsIntegrationsAwsRoute53resolver.new;
+  final AwsIntegrationsAwsRoute53resolverArgs =
+      module_cloud.AwsIntegrationsAwsRoute53resolver.new;
+  final AwsIntegrationsAwsStates = module_cloud.AwsIntegrationsAwsStates.new;
+  final AwsIntegrationsAwsStatesArgs =
+      module_cloud.AwsIntegrationsAwsStates.new;
+  final AwsIntegrationsAwsTransitGateway =
+      module_cloud.AwsIntegrationsAwsTransitGateway.new;
+  final AwsIntegrationsAwsTransitGatewayArgs =
+      module_cloud.AwsIntegrationsAwsTransitGateway.new;
+  final AwsIntegrationsAwsWaf = module_cloud.AwsIntegrationsAwsWaf.new;
+  final AwsIntegrationsAwsWafArgs = module_cloud.AwsIntegrationsAwsWaf.new;
+  final AwsIntegrationsAwsWafv2 = module_cloud.AwsIntegrationsAwsWafv2.new;
+  final AwsIntegrationsAwsWafv2Args = module_cloud.AwsIntegrationsAwsWafv2.new;
+  final AwsIntegrationsBilling = module_cloud.AwsIntegrationsBilling.new;
+  final AwsIntegrationsBillingArgs = module_cloud.AwsIntegrationsBilling.new;
+  final AwsIntegrationsCloudfront = module_cloud.AwsIntegrationsCloudfront.new;
+  final AwsIntegrationsCloudfrontArgs =
+      module_cloud.AwsIntegrationsCloudfront.new;
+  final AwsIntegrationsCloudtrail = module_cloud.AwsIntegrationsCloudtrail.new;
+  final AwsIntegrationsCloudtrailArgs =
+      module_cloud.AwsIntegrationsCloudtrail.new;
+  final AwsIntegrationsDocDb = module_cloud.AwsIntegrationsDocDb.new;
+  final AwsIntegrationsDocDbArgs = module_cloud.AwsIntegrationsDocDb.new;
+  final AwsIntegrationsDynamodb = module_cloud.AwsIntegrationsDynamodb.new;
+  final AwsIntegrationsDynamodbArgs = module_cloud.AwsIntegrationsDynamodb.new;
+  final AwsIntegrationsEbs = module_cloud.AwsIntegrationsEbs.new;
+  final AwsIntegrationsEbsArgs = module_cloud.AwsIntegrationsEbs.new;
+  final AwsIntegrationsEc2 = module_cloud.AwsIntegrationsEc2.new;
+  final AwsIntegrationsEc2Args = module_cloud.AwsIntegrationsEc2.new;
+  final AwsIntegrationsEcs = module_cloud.AwsIntegrationsEcs.new;
+  final AwsIntegrationsEcsArgs = module_cloud.AwsIntegrationsEcs.new;
+  final AwsIntegrationsEfs = module_cloud.AwsIntegrationsEfs.new;
+  final AwsIntegrationsEfsArgs = module_cloud.AwsIntegrationsEfs.new;
+  final AwsIntegrationsElasticache =
+      module_cloud.AwsIntegrationsElasticache.new;
+  final AwsIntegrationsElasticacheArgs =
+      module_cloud.AwsIntegrationsElasticache.new;
+  final AwsIntegrationsElasticbeanstalk =
+      module_cloud.AwsIntegrationsElasticbeanstalk.new;
+  final AwsIntegrationsElasticbeanstalkArgs =
+      module_cloud.AwsIntegrationsElasticbeanstalk.new;
+  final AwsIntegrationsElasticsearch =
+      module_cloud.AwsIntegrationsElasticsearch.new;
+  final AwsIntegrationsElasticsearchArgs =
+      module_cloud.AwsIntegrationsElasticsearch.new;
+  final AwsIntegrationsElb = module_cloud.AwsIntegrationsElb.new;
+  final AwsIntegrationsElbArgs = module_cloud.AwsIntegrationsElb.new;
+  final AwsIntegrationsEmr = module_cloud.AwsIntegrationsEmr.new;
+  final AwsIntegrationsEmrArgs = module_cloud.AwsIntegrationsEmr.new;
+  final AwsIntegrationsHealth = module_cloud.AwsIntegrationsHealth.new;
+  final AwsIntegrationsHealthArgs = module_cloud.AwsIntegrationsHealth.new;
+  final AwsIntegrationsIam = module_cloud.AwsIntegrationsIam.new;
+  final AwsIntegrationsIamArgs = module_cloud.AwsIntegrationsIam.new;
+  final AwsIntegrationsIot = module_cloud.AwsIntegrationsIot.new;
+  final AwsIntegrationsIotArgs = module_cloud.AwsIntegrationsIot.new;
+  final AwsIntegrationsKinesis = module_cloud.AwsIntegrationsKinesis.new;
+  final AwsIntegrationsKinesisArgs = module_cloud.AwsIntegrationsKinesis.new;
+  final AwsIntegrationsKinesisFirehose =
+      module_cloud.AwsIntegrationsKinesisFirehose.new;
+  final AwsIntegrationsKinesisFirehoseArgs =
+      module_cloud.AwsIntegrationsKinesisFirehose.new;
+  final AwsIntegrationsLambda = module_cloud.AwsIntegrationsLambda.new;
+  final AwsIntegrationsLambdaArgs = module_cloud.AwsIntegrationsLambda.new;
+  final AwsIntegrationsRds = module_cloud.AwsIntegrationsRds.new;
+  final AwsIntegrationsRdsArgs = module_cloud.AwsIntegrationsRds.new;
+  final AwsIntegrationsRedshift = module_cloud.AwsIntegrationsRedshift.new;
+  final AwsIntegrationsRedshiftArgs = module_cloud.AwsIntegrationsRedshift.new;
+  final AwsIntegrationsRoute53 = module_cloud.AwsIntegrationsRoute53.new;
+  final AwsIntegrationsRoute53Args = module_cloud.AwsIntegrationsRoute53.new;
+  final AwsIntegrationsS3 = module_cloud.AwsIntegrationsS3.new;
+  final AwsIntegrationsS3Args = module_cloud.AwsIntegrationsS3.new;
+  final AwsIntegrationsSecurityHub =
+      module_cloud.AwsIntegrationsSecurityHub.new;
+  final AwsIntegrationsSecurityHubArgs =
+      module_cloud.AwsIntegrationsSecurityHub.new;
+  final AwsIntegrationsSes = module_cloud.AwsIntegrationsSes.new;
+  final AwsIntegrationsSesArgs = module_cloud.AwsIntegrationsSes.new;
+  final AwsIntegrationsSns = module_cloud.AwsIntegrationsSns.new;
+  final AwsIntegrationsSnsArgs = module_cloud.AwsIntegrationsSns.new;
+  final AwsIntegrationsSqs = module_cloud.AwsIntegrationsSqs.new;
+  final AwsIntegrationsSqsArgs = module_cloud.AwsIntegrationsSqs.new;
+  final AwsIntegrationsState = module_cloud.AwsIntegrationsState.new;
+  final AwsIntegrationsStateArgs = module_cloud.AwsIntegrationsState.new;
+  final AwsIntegrationsTrustedAdvisor =
+      module_cloud.AwsIntegrationsTrustedAdvisor.new;
+  final AwsIntegrationsTrustedAdvisorArgs =
+      module_cloud.AwsIntegrationsTrustedAdvisor.new;
+  final AwsIntegrationsVpc = module_cloud.AwsIntegrationsVpc.new;
+  final AwsIntegrationsVpcArgs = module_cloud.AwsIntegrationsVpc.new;
+  final AwsIntegrationsXRay = module_cloud.AwsIntegrationsXRay.new;
+  final AwsIntegrationsXRayArgs = module_cloud.AwsIntegrationsXRay.new;
+  final AwsLinkAccount = module_cloud.AwsLinkAccount.new;
+  final AwsLinkAccountArgs = module_cloud.AwsLinkAccountArgs.new;
+  final AwsLinkAccountState = module_cloud.AwsLinkAccountState.new;
+  final AwsLinkAccountStateArgs = module_cloud.AwsLinkAccountState.new;
+  final AzureIntegrations = module_cloud.AzureIntegrations.new;
+  final AzureIntegrationsApiManagement =
+      module_cloud.AzureIntegrationsApiManagement.new;
+  final AzureIntegrationsApiManagementArgs =
+      module_cloud.AzureIntegrationsApiManagement.new;
+  final AzureIntegrationsAppGateway =
+      module_cloud.AzureIntegrationsAppGateway.new;
+  final AzureIntegrationsAppGatewayArgs =
+      module_cloud.AzureIntegrationsAppGateway.new;
+  final AzureIntegrationsAppService =
+      module_cloud.AzureIntegrationsAppService.new;
+  final AzureIntegrationsAppServiceArgs =
+      module_cloud.AzureIntegrationsAppService.new;
+  final AzureIntegrationsArgs = module_cloud.AzureIntegrationsArgs.new;
+  final AzureIntegrationsAutoDiscovery =
+      module_cloud.AzureIntegrationsAutoDiscovery.new;
+  final AzureIntegrationsAutoDiscoveryArgs =
+      module_cloud.AzureIntegrationsAutoDiscovery.new;
+  final AzureIntegrationsContainers =
+      module_cloud.AzureIntegrationsContainers.new;
+  final AzureIntegrationsContainersArgs =
+      module_cloud.AzureIntegrationsContainers.new;
+  final AzureIntegrationsCosmosDb = module_cloud.AzureIntegrationsCosmosDb.new;
+  final AzureIntegrationsCosmosDbArgs =
+      module_cloud.AzureIntegrationsCosmosDb.new;
+  final AzureIntegrationsCostManagement =
+      module_cloud.AzureIntegrationsCostManagement.new;
+  final AzureIntegrationsCostManagementArgs =
+      module_cloud.AzureIntegrationsCostManagement.new;
+  final AzureIntegrationsDataFactory =
+      module_cloud.AzureIntegrationsDataFactory.new;
+  final AzureIntegrationsDataFactoryArgs =
+      module_cloud.AzureIntegrationsDataFactory.new;
+  final AzureIntegrationsEventHub = module_cloud.AzureIntegrationsEventHub.new;
+  final AzureIntegrationsEventHubArgs =
+      module_cloud.AzureIntegrationsEventHub.new;
+  final AzureIntegrationsExpressRoute =
+      module_cloud.AzureIntegrationsExpressRoute.new;
+  final AzureIntegrationsExpressRouteArgs =
+      module_cloud.AzureIntegrationsExpressRoute.new;
+  final AzureIntegrationsFirewalls =
+      module_cloud.AzureIntegrationsFirewalls.new;
+  final AzureIntegrationsFirewallsArgs =
+      module_cloud.AzureIntegrationsFirewalls.new;
+  final AzureIntegrationsFrontDoor =
+      module_cloud.AzureIntegrationsFrontDoor.new;
+  final AzureIntegrationsFrontDoorArgs =
+      module_cloud.AzureIntegrationsFrontDoor.new;
+  final AzureIntegrationsFunctions =
+      module_cloud.AzureIntegrationsFunctions.new;
+  final AzureIntegrationsFunctionsArgs =
+      module_cloud.AzureIntegrationsFunctions.new;
+  final AzureIntegrationsKeyVault = module_cloud.AzureIntegrationsKeyVault.new;
+  final AzureIntegrationsKeyVaultArgs =
+      module_cloud.AzureIntegrationsKeyVault.new;
+  final AzureIntegrationsLoadBalancer =
+      module_cloud.AzureIntegrationsLoadBalancer.new;
+  final AzureIntegrationsLoadBalancerArgs =
+      module_cloud.AzureIntegrationsLoadBalancer.new;
+  final AzureIntegrationsLogicApps =
+      module_cloud.AzureIntegrationsLogicApps.new;
+  final AzureIntegrationsLogicAppsArgs =
+      module_cloud.AzureIntegrationsLogicApps.new;
+  final AzureIntegrationsMachineLearning =
+      module_cloud.AzureIntegrationsMachineLearning.new;
+  final AzureIntegrationsMachineLearningArgs =
+      module_cloud.AzureIntegrationsMachineLearning.new;
+  final AzureIntegrationsMariaDb = module_cloud.AzureIntegrationsMariaDb.new;
+  final AzureIntegrationsMariaDbArgs =
+      module_cloud.AzureIntegrationsMariaDb.new;
+  final AzureIntegrationsMonitor = module_cloud.AzureIntegrationsMonitor.new;
+  final AzureIntegrationsMonitorArgs =
+      module_cloud.AzureIntegrationsMonitor.new;
+  final AzureIntegrationsMysql = module_cloud.AzureIntegrationsMysql.new;
+  final AzureIntegrationsMysqlArgs = module_cloud.AzureIntegrationsMysql.new;
+  final AzureIntegrationsMysqlFlexible =
+      module_cloud.AzureIntegrationsMysqlFlexible.new;
+  final AzureIntegrationsMysqlFlexibleArgs =
+      module_cloud.AzureIntegrationsMysqlFlexible.new;
+  final AzureIntegrationsPostgresql =
+      module_cloud.AzureIntegrationsPostgresql.new;
+  final AzureIntegrationsPostgresqlArgs =
+      module_cloud.AzureIntegrationsPostgresql.new;
+  final AzureIntegrationsPostgresqlFlexible =
+      module_cloud.AzureIntegrationsPostgresqlFlexible.new;
+  final AzureIntegrationsPostgresqlFlexibleArgs =
+      module_cloud.AzureIntegrationsPostgresqlFlexible.new;
+  final AzureIntegrationsPowerBiDedicated =
+      module_cloud.AzureIntegrationsPowerBiDedicated.new;
+  final AzureIntegrationsPowerBiDedicatedArgs =
+      module_cloud.AzureIntegrationsPowerBiDedicated.new;
+  final AzureIntegrationsRedisCache =
+      module_cloud.AzureIntegrationsRedisCache.new;
+  final AzureIntegrationsRedisCacheArgs =
+      module_cloud.AzureIntegrationsRedisCache.new;
+  final AzureIntegrationsServiceBus =
+      module_cloud.AzureIntegrationsServiceBus.new;
+  final AzureIntegrationsServiceBusArgs =
+      module_cloud.AzureIntegrationsServiceBus.new;
+  final AzureIntegrationsSql = module_cloud.AzureIntegrationsSql.new;
+  final AzureIntegrationsSqlArgs = module_cloud.AzureIntegrationsSql.new;
+  final AzureIntegrationsSqlManaged =
+      module_cloud.AzureIntegrationsSqlManaged.new;
+  final AzureIntegrationsSqlManagedArgs =
+      module_cloud.AzureIntegrationsSqlManaged.new;
+  final AzureIntegrationsState = module_cloud.AzureIntegrationsState.new;
+  final AzureIntegrationsStateArgs = module_cloud.AzureIntegrationsState.new;
+  final AzureIntegrationsStorage = module_cloud.AzureIntegrationsStorage.new;
+  final AzureIntegrationsStorageArgs =
+      module_cloud.AzureIntegrationsStorage.new;
+  final AzureIntegrationsVirtualMachine =
+      module_cloud.AzureIntegrationsVirtualMachine.new;
+  final AzureIntegrationsVirtualMachineArgs =
+      module_cloud.AzureIntegrationsVirtualMachine.new;
+  final AzureIntegrationsVirtualNetworks =
+      module_cloud.AzureIntegrationsVirtualNetworks.new;
+  final AzureIntegrationsVirtualNetworksArgs =
+      module_cloud.AzureIntegrationsVirtualNetworks.new;
+  final AzureIntegrationsVms = module_cloud.AzureIntegrationsVms.new;
+  final AzureIntegrationsVmsArgs = module_cloud.AzureIntegrationsVms.new;
+  final AzureIntegrationsVpnGateway =
+      module_cloud.AzureIntegrationsVpnGateway.new;
+  final AzureIntegrationsVpnGatewayArgs =
+      module_cloud.AzureIntegrationsVpnGateway.new;
+  final AzureLinkAccount = module_cloud.AzureLinkAccount.new;
+  final AzureLinkAccountArgs = module_cloud.AzureLinkAccountArgs.new;
+  final AzureLinkAccountState = module_cloud.AzureLinkAccountState.new;
+  final AzureLinkAccountStateArgs = module_cloud.AzureLinkAccountState.new;
+  final GcpIntegrations = module_cloud.GcpIntegrations.new;
+  final GcpIntegrationsAlloyDb = module_cloud.GcpIntegrationsAlloyDb.new;
+  final GcpIntegrationsAlloyDbArgs = module_cloud.GcpIntegrationsAlloyDb.new;
+  final GcpIntegrationsAppEngine = module_cloud.GcpIntegrationsAppEngine.new;
+  final GcpIntegrationsAppEngineArgs =
+      module_cloud.GcpIntegrationsAppEngine.new;
+  final GcpIntegrationsArgs = module_cloud.GcpIntegrationsArgs.new;
+  final GcpIntegrationsBigQuery = module_cloud.GcpIntegrationsBigQuery.new;
+  final GcpIntegrationsBigQueryArgs = module_cloud.GcpIntegrationsBigQuery.new;
+  final GcpIntegrationsBigTable = module_cloud.GcpIntegrationsBigTable.new;
+  final GcpIntegrationsBigTableArgs = module_cloud.GcpIntegrationsBigTable.new;
+  final GcpIntegrationsComposer = module_cloud.GcpIntegrationsComposer.new;
+  final GcpIntegrationsComposerArgs = module_cloud.GcpIntegrationsComposer.new;
+  final GcpIntegrationsDataFlow = module_cloud.GcpIntegrationsDataFlow.new;
+  final GcpIntegrationsDataFlowArgs = module_cloud.GcpIntegrationsDataFlow.new;
+  final GcpIntegrationsDataProc = module_cloud.GcpIntegrationsDataProc.new;
+  final GcpIntegrationsDataProcArgs = module_cloud.GcpIntegrationsDataProc.new;
+  final GcpIntegrationsDataStore = module_cloud.GcpIntegrationsDataStore.new;
+  final GcpIntegrationsDataStoreArgs =
+      module_cloud.GcpIntegrationsDataStore.new;
+  final GcpIntegrationsFireBaseDatabase =
+      module_cloud.GcpIntegrationsFireBaseDatabase.new;
+  final GcpIntegrationsFireBaseDatabaseArgs =
+      module_cloud.GcpIntegrationsFireBaseDatabase.new;
+  final GcpIntegrationsFireBaseHosting =
+      module_cloud.GcpIntegrationsFireBaseHosting.new;
+  final GcpIntegrationsFireBaseHostingArgs =
+      module_cloud.GcpIntegrationsFireBaseHosting.new;
+  final GcpIntegrationsFireBaseStorage =
+      module_cloud.GcpIntegrationsFireBaseStorage.new;
+  final GcpIntegrationsFireBaseStorageArgs =
+      module_cloud.GcpIntegrationsFireBaseStorage.new;
+  final GcpIntegrationsFireStore = module_cloud.GcpIntegrationsFireStore.new;
+  final GcpIntegrationsFireStoreArgs =
+      module_cloud.GcpIntegrationsFireStore.new;
+  final GcpIntegrationsFunctions = module_cloud.GcpIntegrationsFunctions.new;
+  final GcpIntegrationsFunctionsArgs =
+      module_cloud.GcpIntegrationsFunctions.new;
+  final GcpIntegrationsInterconnect =
+      module_cloud.GcpIntegrationsInterconnect.new;
+  final GcpIntegrationsInterconnectArgs =
+      module_cloud.GcpIntegrationsInterconnect.new;
+  final GcpIntegrationsKubernetes = module_cloud.GcpIntegrationsKubernetes.new;
+  final GcpIntegrationsKubernetesArgs =
+      module_cloud.GcpIntegrationsKubernetes.new;
+  final GcpIntegrationsLoadBalancing =
+      module_cloud.GcpIntegrationsLoadBalancing.new;
+  final GcpIntegrationsLoadBalancingArgs =
+      module_cloud.GcpIntegrationsLoadBalancing.new;
+  final GcpIntegrationsMemCache = module_cloud.GcpIntegrationsMemCache.new;
+  final GcpIntegrationsMemCacheArgs = module_cloud.GcpIntegrationsMemCache.new;
+  final GcpIntegrationsPubSub = module_cloud.GcpIntegrationsPubSub.new;
+  final GcpIntegrationsPubSubArgs = module_cloud.GcpIntegrationsPubSub.new;
+  final GcpIntegrationsRedis = module_cloud.GcpIntegrationsRedis.new;
+  final GcpIntegrationsRedisArgs = module_cloud.GcpIntegrationsRedis.new;
+  final GcpIntegrationsRouter = module_cloud.GcpIntegrationsRouter.new;
+  final GcpIntegrationsRouterArgs = module_cloud.GcpIntegrationsRouter.new;
+  final GcpIntegrationsRun = module_cloud.GcpIntegrationsRun.new;
+  final GcpIntegrationsRunArgs = module_cloud.GcpIntegrationsRun.new;
+  final GcpIntegrationsSpanner = module_cloud.GcpIntegrationsSpanner.new;
+  final GcpIntegrationsSpannerArgs = module_cloud.GcpIntegrationsSpanner.new;
+  final GcpIntegrationsSql = module_cloud.GcpIntegrationsSql.new;
+  final GcpIntegrationsSqlArgs = module_cloud.GcpIntegrationsSql.new;
+  final GcpIntegrationsState = module_cloud.GcpIntegrationsState.new;
+  final GcpIntegrationsStateArgs = module_cloud.GcpIntegrationsState.new;
+  final GcpIntegrationsStorage = module_cloud.GcpIntegrationsStorage.new;
+  final GcpIntegrationsStorageArgs = module_cloud.GcpIntegrationsStorage.new;
+  final GcpIntegrationsVirtualMachines =
+      module_cloud.GcpIntegrationsVirtualMachines.new;
+  final GcpIntegrationsVirtualMachinesArgs =
+      module_cloud.GcpIntegrationsVirtualMachines.new;
+  final GcpIntegrationsVpcAccess = module_cloud.GcpIntegrationsVpcAccess.new;
+  final GcpIntegrationsVpcAccessArgs =
+      module_cloud.GcpIntegrationsVpcAccess.new;
+  final GcpLinkAccount = module_cloud.GcpLinkAccount.new;
+  final GcpLinkAccountArgs = module_cloud.GcpLinkAccountArgs.new;
+  final GcpLinkAccountState = module_cloud.GcpLinkAccountState.new;
+  final GcpLinkAccountStateArgs = module_cloud.GcpLinkAccountState.new;
+  final OciLinkAccount = module_cloud.OciLinkAccount.new;
+  final OciLinkAccountArgs = module_cloud.OciLinkAccountArgs.new;
+  final OciLinkAccountState = module_cloud.OciLinkAccountState.new;
+  final OciLinkAccountStateArgs = module_cloud.OciLinkAccountState.new;
 }
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final AccountManagement = _index.AccountManagement.new;
-  final AccountManagementArgs = _index.AccountManagementArgs.new;
-  final AccountManagementState = _index.AccountManagementState.new;
-  final AccountManagementStateArgs = _index.AccountManagementState.new;
-  final AlertChannel = _index.AlertChannel.new;
-  final AlertChannelArgs = _index.AlertChannelArgs.new;
-  final AlertChannelConfig = _index.AlertChannelConfig.new;
-  final AlertChannelConfigArgs = _index.AlertChannelConfig.new;
-  final AlertChannelState = _index.AlertChannelState.new;
-  final AlertChannelStateArgs = _index.AlertChannelState.new;
-  final AlertCompoundCondition = _index.AlertCompoundCondition.new;
-  final AlertCompoundConditionArgs = _index.AlertCompoundConditionArgs.new;
-  final AlertCompoundConditionComponentCondition = _index.AlertCompoundConditionComponentCondition.new;
-  final AlertCompoundConditionComponentConditionArgs = _index.AlertCompoundConditionComponentCondition.new;
-  final AlertCompoundConditionState = _index.AlertCompoundConditionState.new;
-  final AlertCompoundConditionStateArgs = _index.AlertCompoundConditionState.new;
-  final AlertCondition = _index.AlertCondition.new;
-  final AlertConditionArgs = _index.AlertConditionArgs.new;
-  final AlertConditionState = _index.AlertConditionState.new;
-  final AlertConditionStateArgs = _index.AlertConditionState.new;
-  final AlertConditionTerm = _index.AlertConditionTerm.new;
-  final AlertConditionTermArgs = _index.AlertConditionTerm.new;
-  final AlertMutingRule = _index.AlertMutingRule.new;
-  final AlertMutingRuleArgs = _index.AlertMutingRuleArgs.new;
-  final AlertMutingRuleCondition = _index.AlertMutingRuleCondition.new;
-  final AlertMutingRuleConditionArgs = _index.AlertMutingRuleCondition.new;
-  final AlertMutingRuleConditionCondition = _index.AlertMutingRuleConditionCondition.new;
-  final AlertMutingRuleConditionConditionArgs = _index.AlertMutingRuleConditionCondition.new;
-  final AlertMutingRuleSchedule = _index.AlertMutingRuleSchedule.new;
-  final AlertMutingRuleScheduleArgs = _index.AlertMutingRuleSchedule.new;
-  final AlertMutingRuleState = _index.AlertMutingRuleState.new;
-  final AlertMutingRuleStateArgs = _index.AlertMutingRuleState.new;
-  final AlertPolicy = _index.AlertPolicy.new;
-  final AlertPolicyArgs = _index.AlertPolicyArgs.new;
-  final AlertPolicyChannel = _index.AlertPolicyChannel.new;
-  final AlertPolicyChannelArgs = _index.AlertPolicyChannelArgs.new;
-  final AlertPolicyChannelState = _index.AlertPolicyChannelState.new;
-  final AlertPolicyChannelStateArgs = _index.AlertPolicyChannelState.new;
-  final AlertPolicyState = _index.AlertPolicyState.new;
-  final AlertPolicyStateArgs = _index.AlertPolicyState.new;
-  final ApiAccessKey = _index.ApiAccessKey.new;
-  final ApiAccessKeyArgs = _index.ApiAccessKeyArgs.new;
-  final ApiAccessKeyState = _index.ApiAccessKeyState.new;
-  final ApiAccessKeyStateArgs = _index.ApiAccessKeyState.new;
-  final BrowserApplication = _index.BrowserApplication.new;
-  final BrowserApplicationArgs = _index.BrowserApplicationArgs.new;
-  final BrowserApplicationState = _index.BrowserApplicationState.new;
-  final BrowserApplicationStateArgs = _index.BrowserApplicationState.new;
-  final DataPartitionRule = _index.DataPartitionRule.new;
-  final DataPartitionRuleArgs = _index.DataPartitionRuleArgs.new;
-  final DataPartitionRuleState = _index.DataPartitionRuleState.new;
-  final DataPartitionRuleStateArgs = _index.DataPartitionRuleState.new;
-  final EntityTags = _index.EntityTags.new;
-  final EntityTagsArgs = _index.EntityTagsArgs.new;
-  final EntityTagsState = _index.EntityTagsState.new;
-  final EntityTagsStateArgs = _index.EntityTagsState.new;
-  final EntityTagsTag = _index.EntityTagsTag.new;
-  final EntityTagsTagArgs = _index.EntityTagsTag.new;
-  final EventsToMetricsRule = _index.EventsToMetricsRule.new;
-  final EventsToMetricsRuleArgs = _index.EventsToMetricsRuleArgs.new;
-  final EventsToMetricsRuleState = _index.EventsToMetricsRuleState.new;
-  final EventsToMetricsRuleStateArgs = _index.EventsToMetricsRuleState.new;
-  final GetAccountArgs = _index.GetAccountArgs.new;
-  final GetAccountResult = _index.GetAccountResult.new;
-  final GetAccountResultArgs = _index.GetAccountResult.new;
-  final GetAlertChannelArgs = _index.GetAlertChannelArgs.new;
-  final GetAlertChannelConfig = _index.GetAlertChannelConfig.new;
-  final GetAlertChannelConfigArgs = _index.GetAlertChannelConfig.new;
-  final GetAlertChannelResult = _index.GetAlertChannelResult.new;
-  final GetAlertChannelResultArgs = _index.GetAlertChannelResult.new;
-  final GetAlertPolicyArgs = _index.GetAlertPolicyArgs.new;
-  final GetAlertPolicyResult = _index.GetAlertPolicyResult.new;
-  final GetAlertPolicyResultArgs = _index.GetAlertPolicyResult.new;
-  final GetApplicationArgs = _index.GetApplicationArgs.new;
-  final GetApplicationResult = _index.GetApplicationResult.new;
-  final GetApplicationResultArgs = _index.GetApplicationResult.new;
-  final GetAuthenticationDomainArgs = _index.GetAuthenticationDomainArgs.new;
-  final GetAuthenticationDomainResult = _index.GetAuthenticationDomainResult.new;
-  final GetAuthenticationDomainResultArgs = _index.GetAuthenticationDomainResult.new;
-  final GetCloudAccountArgs = _index.GetCloudAccountArgs.new;
-  final GetCloudAccountResult = _index.GetCloudAccountResult.new;
-  final GetCloudAccountResultArgs = _index.GetCloudAccountResult.new;
-  final GetEntityArgs = _index.GetEntityArgs.new;
-  final GetEntityResult = _index.GetEntityResult.new;
-  final GetEntityResultArgs = _index.GetEntityResult.new;
-  final GetEntityTag = _index.GetEntityTag.new;
-  final GetEntityTagArgs = _index.GetEntityTag.new;
-  final GetGroupArgs = _index.GetGroupArgs.new;
-  final GetGroupResult = _index.GetGroupResult.new;
-  final GetGroupResultArgs = _index.GetGroupResult.new;
-  final GetKeyTransactionArgs = _index.GetKeyTransactionArgs.new;
-  final GetKeyTransactionResult = _index.GetKeyTransactionResult.new;
-  final GetKeyTransactionResultArgs = _index.GetKeyTransactionResult.new;
-  final GetNotificationDestinationArgs = _index.GetNotificationDestinationArgs.new;
-  final GetNotificationDestinationProperty = _index.GetNotificationDestinationProperty.new;
-  final GetNotificationDestinationPropertyArgs = _index.GetNotificationDestinationProperty.new;
-  final GetNotificationDestinationResult = _index.GetNotificationDestinationResult.new;
-  final GetNotificationDestinationResultArgs = _index.GetNotificationDestinationResult.new;
-  final GetNotificationDestinationSecureUrl = _index.GetNotificationDestinationSecureUrl.new;
-  final GetNotificationDestinationSecureUrlArgs = _index.GetNotificationDestinationSecureUrl.new;
-  final GetObfuscationExpressionArgs = _index.GetObfuscationExpressionArgs.new;
-  final GetObfuscationExpressionResult = _index.GetObfuscationExpressionResult.new;
-  final GetObfuscationExpressionResultArgs = _index.GetObfuscationExpressionResult.new;
-  final GetServiceLevelAlertHelperArgs = _index.GetServiceLevelAlertHelperArgs.new;
-  final GetServiceLevelAlertHelperResult = _index.GetServiceLevelAlertHelperResult.new;
-  final GetServiceLevelAlertHelperResultArgs = _index.GetServiceLevelAlertHelperResult.new;
-  final GetTestGrokPatternArgs = _index.GetTestGrokPatternArgs.new;
-  final GetTestGrokPatternResult = _index.GetTestGrokPatternResult.new;
-  final GetTestGrokPatternResultArgs = _index.GetTestGrokPatternResult.new;
-  final GetTestGrokPatternTestGrok = _index.GetTestGrokPatternTestGrok.new;
-  final GetTestGrokPatternTestGrokArgs = _index.GetTestGrokPatternTestGrok.new;
-  final GetTestGrokPatternTestGrokAttribute = _index.GetTestGrokPatternTestGrokAttribute.new;
-  final GetTestGrokPatternTestGrokAttributeArgs = _index.GetTestGrokPatternTestGrokAttribute.new;
-  final GetUserArgs = _index.GetUserArgs.new;
-  final GetUserResult = _index.GetUserResult.new;
-  final GetUserResultArgs = _index.GetUserResult.new;
-  final Group = _index.Group.new;
-  final GroupArgs = _index.GroupArgs.new;
-  final GroupState = _index.GroupState.new;
-  final GroupStateArgs = _index.GroupState.new;
-  final InfraAlertCondition = _index.InfraAlertCondition.new;
-  final InfraAlertConditionArgs = _index.InfraAlertConditionArgs.new;
-  final InfraAlertConditionCritical = _index.InfraAlertConditionCritical.new;
-  final InfraAlertConditionCriticalArgs = _index.InfraAlertConditionCritical.new;
-  final InfraAlertConditionState = _index.InfraAlertConditionState.new;
-  final InfraAlertConditionStateArgs = _index.InfraAlertConditionState.new;
-  final InfraAlertConditionWarning = _index.InfraAlertConditionWarning.new;
-  final InfraAlertConditionWarningArgs = _index.InfraAlertConditionWarning.new;
-  final KeyTransaction = _index.KeyTransaction.new;
-  final KeyTransactionArgs = _index.KeyTransactionArgs.new;
-  final KeyTransactionState = _index.KeyTransactionState.new;
-  final KeyTransactionStateArgs = _index.KeyTransactionState.new;
-  final LogParsingRule = _index.LogParsingRule.new;
-  final LogParsingRuleArgs = _index.LogParsingRuleArgs.new;
-  final LogParsingRuleState = _index.LogParsingRuleState.new;
-  final LogParsingRuleStateArgs = _index.LogParsingRuleState.new;
-  final MonitorDowntime = _index.MonitorDowntime.new;
-  final MonitorDowntimeArgs = _index.MonitorDowntimeArgs.new;
-  final MonitorDowntimeEndRepeat = _index.MonitorDowntimeEndRepeat.new;
-  final MonitorDowntimeEndRepeatArgs = _index.MonitorDowntimeEndRepeat.new;
-  final MonitorDowntimeFrequency = _index.MonitorDowntimeFrequency.new;
-  final MonitorDowntimeFrequencyArgs = _index.MonitorDowntimeFrequency.new;
-  final MonitorDowntimeFrequencyDaysOfWeek = _index.MonitorDowntimeFrequencyDaysOfWeek.new;
-  final MonitorDowntimeFrequencyDaysOfWeekArgs = _index.MonitorDowntimeFrequencyDaysOfWeek.new;
-  final MonitorDowntimeState = _index.MonitorDowntimeState.new;
-  final MonitorDowntimeStateArgs = _index.MonitorDowntimeState.new;
-  final NotificationChannel = _index.NotificationChannel.new;
-  final NotificationChannelArgs = _index.NotificationChannelArgs.new;
-  final NotificationChannelProperty = _index.NotificationChannelProperty.new;
-  final NotificationChannelPropertyArgs = _index.NotificationChannelProperty.new;
-  final NotificationChannelState = _index.NotificationChannelState.new;
-  final NotificationChannelStateArgs = _index.NotificationChannelState.new;
-  final NotificationDestination = _index.NotificationDestination.new;
-  final NotificationDestinationArgs = _index.NotificationDestinationArgs.new;
-  final NotificationDestinationAuthBasic = _index.NotificationDestinationAuthBasic.new;
-  final NotificationDestinationAuthBasicArgs = _index.NotificationDestinationAuthBasic.new;
-  final NotificationDestinationAuthCustomHeader = _index.NotificationDestinationAuthCustomHeader.new;
-  final NotificationDestinationAuthCustomHeaderArgs = _index.NotificationDestinationAuthCustomHeader.new;
-  final NotificationDestinationAuthToken = _index.NotificationDestinationAuthToken.new;
-  final NotificationDestinationAuthTokenArgs = _index.NotificationDestinationAuthToken.new;
-  final NotificationDestinationProperty = _index.NotificationDestinationProperty.new;
-  final NotificationDestinationPropertyArgs = _index.NotificationDestinationProperty.new;
-  final NotificationDestinationSecureUrl = _index.NotificationDestinationSecureUrl.new;
-  final NotificationDestinationSecureUrlArgs = _index.NotificationDestinationSecureUrl.new;
-  final NotificationDestinationState = _index.NotificationDestinationState.new;
-  final NotificationDestinationStateArgs = _index.NotificationDestinationState.new;
-  final NrqlAlertCondition = _index.NrqlAlertCondition.new;
-  final NrqlAlertConditionArgs = _index.NrqlAlertConditionArgs.new;
-  final NrqlAlertConditionCritical = _index.NrqlAlertConditionCritical.new;
-  final NrqlAlertConditionCriticalArgs = _index.NrqlAlertConditionCritical.new;
-  final NrqlAlertConditionCriticalPrediction = _index.NrqlAlertConditionCriticalPrediction.new;
-  final NrqlAlertConditionCriticalPredictionArgs = _index.NrqlAlertConditionCriticalPrediction.new;
-  final NrqlAlertConditionNrql = _index.NrqlAlertConditionNrql.new;
-  final NrqlAlertConditionNrqlArgs = _index.NrqlAlertConditionNrql.new;
-  final NrqlAlertConditionOutlierConfiguration = _index.NrqlAlertConditionOutlierConfiguration.new;
-  final NrqlAlertConditionOutlierConfigurationArgs = _index.NrqlAlertConditionOutlierConfiguration.new;
-  final NrqlAlertConditionOutlierConfigurationDbscan = _index.NrqlAlertConditionOutlierConfigurationDbscan.new;
-  final NrqlAlertConditionOutlierConfigurationDbscanArgs = _index.NrqlAlertConditionOutlierConfigurationDbscan.new;
-  final NrqlAlertConditionState = _index.NrqlAlertConditionState.new;
-  final NrqlAlertConditionStateArgs = _index.NrqlAlertConditionState.new;
-  final NrqlAlertConditionTerm = _index.NrqlAlertConditionTerm.new;
-  final NrqlAlertConditionTermArgs = _index.NrqlAlertConditionTerm.new;
-  final NrqlAlertConditionTermPrediction = _index.NrqlAlertConditionTermPrediction.new;
-  final NrqlAlertConditionTermPredictionArgs = _index.NrqlAlertConditionTermPrediction.new;
-  final NrqlAlertConditionWarning = _index.NrqlAlertConditionWarning.new;
-  final NrqlAlertConditionWarningArgs = _index.NrqlAlertConditionWarning.new;
-  final NrqlAlertConditionWarningPrediction = _index.NrqlAlertConditionWarningPrediction.new;
-  final NrqlAlertConditionWarningPredictionArgs = _index.NrqlAlertConditionWarningPrediction.new;
-  final NrqlDropRule = _index.NrqlDropRule.new;
-  final NrqlDropRuleArgs = _index.NrqlDropRuleArgs.new;
-  final NrqlDropRuleState = _index.NrqlDropRuleState.new;
-  final NrqlDropRuleStateArgs = _index.NrqlDropRuleState.new;
-  final ObfuscationExpression = _index.ObfuscationExpression.new;
-  final ObfuscationExpressionArgs = _index.ObfuscationExpressionArgs.new;
-  final ObfuscationExpressionState = _index.ObfuscationExpressionState.new;
-  final ObfuscationExpressionStateArgs = _index.ObfuscationExpressionState.new;
-  final ObfuscationRule = _index.ObfuscationRule.new;
-  final ObfuscationRuleAction = _index.ObfuscationRuleAction.new;
-  final ObfuscationRuleActionArgs = _index.ObfuscationRuleAction.new;
-  final ObfuscationRuleArgs = _index.ObfuscationRuleArgs.new;
-  final ObfuscationRuleState = _index.ObfuscationRuleState.new;
-  final ObfuscationRuleStateArgs = _index.ObfuscationRuleState.new;
-  final OneDashboard = _index.OneDashboard.new;
-  final OneDashboardArgs = _index.OneDashboardArgs.new;
-  final OneDashboardJson = _index.OneDashboardJson.new;
-  final OneDashboardJsonArgs = _index.OneDashboardJsonArgs.new;
-  final OneDashboardJsonState = _index.OneDashboardJsonState.new;
-  final OneDashboardJsonStateArgs = _index.OneDashboardJsonState.new;
-  final OneDashboardPage = _index.OneDashboardPage.new;
-  final OneDashboardPageArgs = _index.OneDashboardPage.new;
-  final OneDashboardPageWidgetArea = _index.OneDashboardPageWidgetArea.new;
-  final OneDashboardPageWidgetAreaArgs = _index.OneDashboardPageWidgetArea.new;
-  final OneDashboardPageWidgetAreaColor = _index.OneDashboardPageWidgetAreaColor.new;
-  final OneDashboardPageWidgetAreaColorArgs = _index.OneDashboardPageWidgetAreaColor.new;
-  final OneDashboardPageWidgetAreaColorSeriesOverride = _index.OneDashboardPageWidgetAreaColorSeriesOverride.new;
-  final OneDashboardPageWidgetAreaColorSeriesOverrideArgs = _index.OneDashboardPageWidgetAreaColorSeriesOverride.new;
-  final OneDashboardPageWidgetAreaDataFormat = _index.OneDashboardPageWidgetAreaDataFormat.new;
-  final OneDashboardPageWidgetAreaDataFormatArgs = _index.OneDashboardPageWidgetAreaDataFormat.new;
-  final OneDashboardPageWidgetAreaInitialSorting = _index.OneDashboardPageWidgetAreaInitialSorting.new;
-  final OneDashboardPageWidgetAreaInitialSortingArgs = _index.OneDashboardPageWidgetAreaInitialSorting.new;
-  final OneDashboardPageWidgetAreaNrqlQuery = _index.OneDashboardPageWidgetAreaNrqlQuery.new;
-  final OneDashboardPageWidgetAreaNrqlQueryArgs = _index.OneDashboardPageWidgetAreaNrqlQuery.new;
-  final OneDashboardPageWidgetAreaNullValue = _index.OneDashboardPageWidgetAreaNullValue.new;
-  final OneDashboardPageWidgetAreaNullValueArgs = _index.OneDashboardPageWidgetAreaNullValue.new;
-  final OneDashboardPageWidgetAreaNullValueSeriesOverride = _index.OneDashboardPageWidgetAreaNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetAreaNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetAreaNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetAreaTooltip = _index.OneDashboardPageWidgetAreaTooltip.new;
-  final OneDashboardPageWidgetAreaTooltipArgs = _index.OneDashboardPageWidgetAreaTooltip.new;
-  final OneDashboardPageWidgetAreaUnit = _index.OneDashboardPageWidgetAreaUnit.new;
-  final OneDashboardPageWidgetAreaUnitArgs = _index.OneDashboardPageWidgetAreaUnit.new;
-  final OneDashboardPageWidgetAreaUnitSeriesOverride = _index.OneDashboardPageWidgetAreaUnitSeriesOverride.new;
-  final OneDashboardPageWidgetAreaUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetAreaUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBar = _index.OneDashboardPageWidgetBar.new;
-  final OneDashboardPageWidgetBarArgs = _index.OneDashboardPageWidgetBar.new;
-  final OneDashboardPageWidgetBarColor = _index.OneDashboardPageWidgetBarColor.new;
-  final OneDashboardPageWidgetBarColorArgs = _index.OneDashboardPageWidgetBarColor.new;
-  final OneDashboardPageWidgetBarColorSeriesOverride = _index.OneDashboardPageWidgetBarColorSeriesOverride.new;
-  final OneDashboardPageWidgetBarColorSeriesOverrideArgs = _index.OneDashboardPageWidgetBarColorSeriesOverride.new;
-  final OneDashboardPageWidgetBarDataFormat = _index.OneDashboardPageWidgetBarDataFormat.new;
-  final OneDashboardPageWidgetBarDataFormatArgs = _index.OneDashboardPageWidgetBarDataFormat.new;
-  final OneDashboardPageWidgetBarInitialSorting = _index.OneDashboardPageWidgetBarInitialSorting.new;
-  final OneDashboardPageWidgetBarInitialSortingArgs = _index.OneDashboardPageWidgetBarInitialSorting.new;
-  final OneDashboardPageWidgetBarNrqlQuery = _index.OneDashboardPageWidgetBarNrqlQuery.new;
-  final OneDashboardPageWidgetBarNrqlQueryArgs = _index.OneDashboardPageWidgetBarNrqlQuery.new;
-  final OneDashboardPageWidgetBarNullValue = _index.OneDashboardPageWidgetBarNullValue.new;
-  final OneDashboardPageWidgetBarNullValueArgs = _index.OneDashboardPageWidgetBarNullValue.new;
-  final OneDashboardPageWidgetBarNullValueSeriesOverride = _index.OneDashboardPageWidgetBarNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBarNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetBarNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBarUnit = _index.OneDashboardPageWidgetBarUnit.new;
-  final OneDashboardPageWidgetBarUnitArgs = _index.OneDashboardPageWidgetBarUnit.new;
-  final OneDashboardPageWidgetBarUnitSeriesOverride = _index.OneDashboardPageWidgetBarUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBarUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetBarUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBillboard = _index.OneDashboardPageWidgetBillboard.new;
-  final OneDashboardPageWidgetBillboardArgs = _index.OneDashboardPageWidgetBillboard.new;
-  final OneDashboardPageWidgetBillboardBillboardSettings = _index.OneDashboardPageWidgetBillboardBillboardSettings.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsArgs = _index.OneDashboardPageWidgetBillboardBillboardSettings.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsGridOptions = _index.OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsGridOptionsArgs = _index.OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsLink = _index.OneDashboardPageWidgetBillboardBillboardSettingsLink.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsLinkArgs = _index.OneDashboardPageWidgetBillboardBillboardSettingsLink.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsVisual = _index.OneDashboardPageWidgetBillboardBillboardSettingsVisual.new;
-  final OneDashboardPageWidgetBillboardBillboardSettingsVisualArgs = _index.OneDashboardPageWidgetBillboardBillboardSettingsVisual.new;
-  final OneDashboardPageWidgetBillboardColor = _index.OneDashboardPageWidgetBillboardColor.new;
-  final OneDashboardPageWidgetBillboardColorArgs = _index.OneDashboardPageWidgetBillboardColor.new;
-  final OneDashboardPageWidgetBillboardColorSeriesOverride = _index.OneDashboardPageWidgetBillboardColorSeriesOverride.new;
-  final OneDashboardPageWidgetBillboardColorSeriesOverrideArgs = _index.OneDashboardPageWidgetBillboardColorSeriesOverride.new;
-  final OneDashboardPageWidgetBillboardDataFormat = _index.OneDashboardPageWidgetBillboardDataFormat.new;
-  final OneDashboardPageWidgetBillboardDataFormatArgs = _index.OneDashboardPageWidgetBillboardDataFormat.new;
-  final OneDashboardPageWidgetBillboardInitialSorting = _index.OneDashboardPageWidgetBillboardInitialSorting.new;
-  final OneDashboardPageWidgetBillboardInitialSortingArgs = _index.OneDashboardPageWidgetBillboardInitialSorting.new;
-  final OneDashboardPageWidgetBillboardNrqlQuery = _index.OneDashboardPageWidgetBillboardNrqlQuery.new;
-  final OneDashboardPageWidgetBillboardNrqlQueryArgs = _index.OneDashboardPageWidgetBillboardNrqlQuery.new;
-  final OneDashboardPageWidgetBillboardNullValue = _index.OneDashboardPageWidgetBillboardNullValue.new;
-  final OneDashboardPageWidgetBillboardNullValueArgs = _index.OneDashboardPageWidgetBillboardNullValue.new;
-  final OneDashboardPageWidgetBillboardNullValueSeriesOverride = _index.OneDashboardPageWidgetBillboardNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBillboardNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetBillboardNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBillboardUnit = _index.OneDashboardPageWidgetBillboardUnit.new;
-  final OneDashboardPageWidgetBillboardUnitArgs = _index.OneDashboardPageWidgetBillboardUnit.new;
-  final OneDashboardPageWidgetBillboardUnitSeriesOverride = _index.OneDashboardPageWidgetBillboardUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBillboardUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetBillboardUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBullet = _index.OneDashboardPageWidgetBullet.new;
-  final OneDashboardPageWidgetBulletArgs = _index.OneDashboardPageWidgetBullet.new;
-  final OneDashboardPageWidgetBulletColor = _index.OneDashboardPageWidgetBulletColor.new;
-  final OneDashboardPageWidgetBulletColorArgs = _index.OneDashboardPageWidgetBulletColor.new;
-  final OneDashboardPageWidgetBulletColorSeriesOverride = _index.OneDashboardPageWidgetBulletColorSeriesOverride.new;
-  final OneDashboardPageWidgetBulletColorSeriesOverrideArgs = _index.OneDashboardPageWidgetBulletColorSeriesOverride.new;
-  final OneDashboardPageWidgetBulletDataFormat = _index.OneDashboardPageWidgetBulletDataFormat.new;
-  final OneDashboardPageWidgetBulletDataFormatArgs = _index.OneDashboardPageWidgetBulletDataFormat.new;
-  final OneDashboardPageWidgetBulletInitialSorting = _index.OneDashboardPageWidgetBulletInitialSorting.new;
-  final OneDashboardPageWidgetBulletInitialSortingArgs = _index.OneDashboardPageWidgetBulletInitialSorting.new;
-  final OneDashboardPageWidgetBulletNrqlQuery = _index.OneDashboardPageWidgetBulletNrqlQuery.new;
-  final OneDashboardPageWidgetBulletNrqlQueryArgs = _index.OneDashboardPageWidgetBulletNrqlQuery.new;
-  final OneDashboardPageWidgetBulletNullValue = _index.OneDashboardPageWidgetBulletNullValue.new;
-  final OneDashboardPageWidgetBulletNullValueArgs = _index.OneDashboardPageWidgetBulletNullValue.new;
-  final OneDashboardPageWidgetBulletNullValueSeriesOverride = _index.OneDashboardPageWidgetBulletNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBulletNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetBulletNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetBulletUnit = _index.OneDashboardPageWidgetBulletUnit.new;
-  final OneDashboardPageWidgetBulletUnitArgs = _index.OneDashboardPageWidgetBulletUnit.new;
-  final OneDashboardPageWidgetBulletUnitSeriesOverride = _index.OneDashboardPageWidgetBulletUnitSeriesOverride.new;
-  final OneDashboardPageWidgetBulletUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetBulletUnitSeriesOverride.new;
-  final OneDashboardPageWidgetFunnel = _index.OneDashboardPageWidgetFunnel.new;
-  final OneDashboardPageWidgetFunnelArgs = _index.OneDashboardPageWidgetFunnel.new;
-  final OneDashboardPageWidgetFunnelColor = _index.OneDashboardPageWidgetFunnelColor.new;
-  final OneDashboardPageWidgetFunnelColorArgs = _index.OneDashboardPageWidgetFunnelColor.new;
-  final OneDashboardPageWidgetFunnelColorSeriesOverride = _index.OneDashboardPageWidgetFunnelColorSeriesOverride.new;
-  final OneDashboardPageWidgetFunnelColorSeriesOverrideArgs = _index.OneDashboardPageWidgetFunnelColorSeriesOverride.new;
-  final OneDashboardPageWidgetFunnelDataFormat = _index.OneDashboardPageWidgetFunnelDataFormat.new;
-  final OneDashboardPageWidgetFunnelDataFormatArgs = _index.OneDashboardPageWidgetFunnelDataFormat.new;
-  final OneDashboardPageWidgetFunnelInitialSorting = _index.OneDashboardPageWidgetFunnelInitialSorting.new;
-  final OneDashboardPageWidgetFunnelInitialSortingArgs = _index.OneDashboardPageWidgetFunnelInitialSorting.new;
-  final OneDashboardPageWidgetFunnelNrqlQuery = _index.OneDashboardPageWidgetFunnelNrqlQuery.new;
-  final OneDashboardPageWidgetFunnelNrqlQueryArgs = _index.OneDashboardPageWidgetFunnelNrqlQuery.new;
-  final OneDashboardPageWidgetFunnelNullValue = _index.OneDashboardPageWidgetFunnelNullValue.new;
-  final OneDashboardPageWidgetFunnelNullValueArgs = _index.OneDashboardPageWidgetFunnelNullValue.new;
-  final OneDashboardPageWidgetFunnelNullValueSeriesOverride = _index.OneDashboardPageWidgetFunnelNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetFunnelNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetFunnelNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetFunnelUnit = _index.OneDashboardPageWidgetFunnelUnit.new;
-  final OneDashboardPageWidgetFunnelUnitArgs = _index.OneDashboardPageWidgetFunnelUnit.new;
-  final OneDashboardPageWidgetFunnelUnitSeriesOverride = _index.OneDashboardPageWidgetFunnelUnitSeriesOverride.new;
-  final OneDashboardPageWidgetFunnelUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetFunnelUnitSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmap = _index.OneDashboardPageWidgetHeatmap.new;
-  final OneDashboardPageWidgetHeatmapArgs = _index.OneDashboardPageWidgetHeatmap.new;
-  final OneDashboardPageWidgetHeatmapColor = _index.OneDashboardPageWidgetHeatmapColor.new;
-  final OneDashboardPageWidgetHeatmapColorArgs = _index.OneDashboardPageWidgetHeatmapColor.new;
-  final OneDashboardPageWidgetHeatmapColorSeriesOverride = _index.OneDashboardPageWidgetHeatmapColorSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmapColorSeriesOverrideArgs = _index.OneDashboardPageWidgetHeatmapColorSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmapDataFormat = _index.OneDashboardPageWidgetHeatmapDataFormat.new;
-  final OneDashboardPageWidgetHeatmapDataFormatArgs = _index.OneDashboardPageWidgetHeatmapDataFormat.new;
-  final OneDashboardPageWidgetHeatmapInitialSorting = _index.OneDashboardPageWidgetHeatmapInitialSorting.new;
-  final OneDashboardPageWidgetHeatmapInitialSortingArgs = _index.OneDashboardPageWidgetHeatmapInitialSorting.new;
-  final OneDashboardPageWidgetHeatmapNrqlQuery = _index.OneDashboardPageWidgetHeatmapNrqlQuery.new;
-  final OneDashboardPageWidgetHeatmapNrqlQueryArgs = _index.OneDashboardPageWidgetHeatmapNrqlQuery.new;
-  final OneDashboardPageWidgetHeatmapNullValue = _index.OneDashboardPageWidgetHeatmapNullValue.new;
-  final OneDashboardPageWidgetHeatmapNullValueArgs = _index.OneDashboardPageWidgetHeatmapNullValue.new;
-  final OneDashboardPageWidgetHeatmapNullValueSeriesOverride = _index.OneDashboardPageWidgetHeatmapNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmapNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetHeatmapNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmapUnit = _index.OneDashboardPageWidgetHeatmapUnit.new;
-  final OneDashboardPageWidgetHeatmapUnitArgs = _index.OneDashboardPageWidgetHeatmapUnit.new;
-  final OneDashboardPageWidgetHeatmapUnitSeriesOverride = _index.OneDashboardPageWidgetHeatmapUnitSeriesOverride.new;
-  final OneDashboardPageWidgetHeatmapUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetHeatmapUnitSeriesOverride.new;
-  final OneDashboardPageWidgetHistogram = _index.OneDashboardPageWidgetHistogram.new;
-  final OneDashboardPageWidgetHistogramArgs = _index.OneDashboardPageWidgetHistogram.new;
-  final OneDashboardPageWidgetHistogramColor = _index.OneDashboardPageWidgetHistogramColor.new;
-  final OneDashboardPageWidgetHistogramColorArgs = _index.OneDashboardPageWidgetHistogramColor.new;
-  final OneDashboardPageWidgetHistogramColorSeriesOverride = _index.OneDashboardPageWidgetHistogramColorSeriesOverride.new;
-  final OneDashboardPageWidgetHistogramColorSeriesOverrideArgs = _index.OneDashboardPageWidgetHistogramColorSeriesOverride.new;
-  final OneDashboardPageWidgetHistogramDataFormat = _index.OneDashboardPageWidgetHistogramDataFormat.new;
-  final OneDashboardPageWidgetHistogramDataFormatArgs = _index.OneDashboardPageWidgetHistogramDataFormat.new;
-  final OneDashboardPageWidgetHistogramInitialSorting = _index.OneDashboardPageWidgetHistogramInitialSorting.new;
-  final OneDashboardPageWidgetHistogramInitialSortingArgs = _index.OneDashboardPageWidgetHistogramInitialSorting.new;
-  final OneDashboardPageWidgetHistogramNrqlQuery = _index.OneDashboardPageWidgetHistogramNrqlQuery.new;
-  final OneDashboardPageWidgetHistogramNrqlQueryArgs = _index.OneDashboardPageWidgetHistogramNrqlQuery.new;
-  final OneDashboardPageWidgetHistogramNullValue = _index.OneDashboardPageWidgetHistogramNullValue.new;
-  final OneDashboardPageWidgetHistogramNullValueArgs = _index.OneDashboardPageWidgetHistogramNullValue.new;
-  final OneDashboardPageWidgetHistogramNullValueSeriesOverride = _index.OneDashboardPageWidgetHistogramNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetHistogramNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetHistogramNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetHistogramUnit = _index.OneDashboardPageWidgetHistogramUnit.new;
-  final OneDashboardPageWidgetHistogramUnitArgs = _index.OneDashboardPageWidgetHistogramUnit.new;
-  final OneDashboardPageWidgetHistogramUnitSeriesOverride = _index.OneDashboardPageWidgetHistogramUnitSeriesOverride.new;
-  final OneDashboardPageWidgetHistogramUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetHistogramUnitSeriesOverride.new;
-  final OneDashboardPageWidgetJson = _index.OneDashboardPageWidgetJson.new;
-  final OneDashboardPageWidgetJsonArgs = _index.OneDashboardPageWidgetJson.new;
-  final OneDashboardPageWidgetJsonColor = _index.OneDashboardPageWidgetJsonColor.new;
-  final OneDashboardPageWidgetJsonColorArgs = _index.OneDashboardPageWidgetJsonColor.new;
-  final OneDashboardPageWidgetJsonColorSeriesOverride = _index.OneDashboardPageWidgetJsonColorSeriesOverride.new;
-  final OneDashboardPageWidgetJsonColorSeriesOverrideArgs = _index.OneDashboardPageWidgetJsonColorSeriesOverride.new;
-  final OneDashboardPageWidgetJsonDataFormat = _index.OneDashboardPageWidgetJsonDataFormat.new;
-  final OneDashboardPageWidgetJsonDataFormatArgs = _index.OneDashboardPageWidgetJsonDataFormat.new;
-  final OneDashboardPageWidgetJsonInitialSorting = _index.OneDashboardPageWidgetJsonInitialSorting.new;
-  final OneDashboardPageWidgetJsonInitialSortingArgs = _index.OneDashboardPageWidgetJsonInitialSorting.new;
-  final OneDashboardPageWidgetJsonNrqlQuery = _index.OneDashboardPageWidgetJsonNrqlQuery.new;
-  final OneDashboardPageWidgetJsonNrqlQueryArgs = _index.OneDashboardPageWidgetJsonNrqlQuery.new;
-  final OneDashboardPageWidgetJsonNullValue = _index.OneDashboardPageWidgetJsonNullValue.new;
-  final OneDashboardPageWidgetJsonNullValueArgs = _index.OneDashboardPageWidgetJsonNullValue.new;
-  final OneDashboardPageWidgetJsonNullValueSeriesOverride = _index.OneDashboardPageWidgetJsonNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetJsonNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetJsonNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetJsonUnit = _index.OneDashboardPageWidgetJsonUnit.new;
-  final OneDashboardPageWidgetJsonUnitArgs = _index.OneDashboardPageWidgetJsonUnit.new;
-  final OneDashboardPageWidgetJsonUnitSeriesOverride = _index.OneDashboardPageWidgetJsonUnitSeriesOverride.new;
-  final OneDashboardPageWidgetJsonUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetJsonUnitSeriesOverride.new;
-  final OneDashboardPageWidgetLine = _index.OneDashboardPageWidgetLine.new;
-  final OneDashboardPageWidgetLineArgs = _index.OneDashboardPageWidgetLine.new;
-  final OneDashboardPageWidgetLineColor = _index.OneDashboardPageWidgetLineColor.new;
-  final OneDashboardPageWidgetLineColorArgs = _index.OneDashboardPageWidgetLineColor.new;
-  final OneDashboardPageWidgetLineColorSeriesOverride = _index.OneDashboardPageWidgetLineColorSeriesOverride.new;
-  final OneDashboardPageWidgetLineColorSeriesOverrideArgs = _index.OneDashboardPageWidgetLineColorSeriesOverride.new;
-  final OneDashboardPageWidgetLineDataFormat = _index.OneDashboardPageWidgetLineDataFormat.new;
-  final OneDashboardPageWidgetLineDataFormatArgs = _index.OneDashboardPageWidgetLineDataFormat.new;
-  final OneDashboardPageWidgetLineInitialSorting = _index.OneDashboardPageWidgetLineInitialSorting.new;
-  final OneDashboardPageWidgetLineInitialSortingArgs = _index.OneDashboardPageWidgetLineInitialSorting.new;
-  final OneDashboardPageWidgetLineNrqlQuery = _index.OneDashboardPageWidgetLineNrqlQuery.new;
-  final OneDashboardPageWidgetLineNrqlQueryArgs = _index.OneDashboardPageWidgetLineNrqlQuery.new;
-  final OneDashboardPageWidgetLineNullValue = _index.OneDashboardPageWidgetLineNullValue.new;
-  final OneDashboardPageWidgetLineNullValueArgs = _index.OneDashboardPageWidgetLineNullValue.new;
-  final OneDashboardPageWidgetLineNullValueSeriesOverride = _index.OneDashboardPageWidgetLineNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetLineNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetLineNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetLineThreshold = _index.OneDashboardPageWidgetLineThreshold.new;
-  final OneDashboardPageWidgetLineThresholdArgs = _index.OneDashboardPageWidgetLineThreshold.new;
-  final OneDashboardPageWidgetLineTooltip = _index.OneDashboardPageWidgetLineTooltip.new;
-  final OneDashboardPageWidgetLineTooltipArgs = _index.OneDashboardPageWidgetLineTooltip.new;
-  final OneDashboardPageWidgetLineUnit = _index.OneDashboardPageWidgetLineUnit.new;
-  final OneDashboardPageWidgetLineUnitArgs = _index.OneDashboardPageWidgetLineUnit.new;
-  final OneDashboardPageWidgetLineUnitSeriesOverride = _index.OneDashboardPageWidgetLineUnitSeriesOverride.new;
-  final OneDashboardPageWidgetLineUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetLineUnitSeriesOverride.new;
-  final OneDashboardPageWidgetLineYAxisRight = _index.OneDashboardPageWidgetLineYAxisRight.new;
-  final OneDashboardPageWidgetLineYAxisRightArgs = _index.OneDashboardPageWidgetLineYAxisRight.new;
-  final OneDashboardPageWidgetLogTable = _index.OneDashboardPageWidgetLogTable.new;
-  final OneDashboardPageWidgetLogTableArgs = _index.OneDashboardPageWidgetLogTable.new;
-  final OneDashboardPageWidgetLogTableColor = _index.OneDashboardPageWidgetLogTableColor.new;
-  final OneDashboardPageWidgetLogTableColorArgs = _index.OneDashboardPageWidgetLogTableColor.new;
-  final OneDashboardPageWidgetLogTableColorSeriesOverride = _index.OneDashboardPageWidgetLogTableColorSeriesOverride.new;
-  final OneDashboardPageWidgetLogTableColorSeriesOverrideArgs = _index.OneDashboardPageWidgetLogTableColorSeriesOverride.new;
-  final OneDashboardPageWidgetLogTableDataFormat = _index.OneDashboardPageWidgetLogTableDataFormat.new;
-  final OneDashboardPageWidgetLogTableDataFormatArgs = _index.OneDashboardPageWidgetLogTableDataFormat.new;
-  final OneDashboardPageWidgetLogTableInitialSorting = _index.OneDashboardPageWidgetLogTableInitialSorting.new;
-  final OneDashboardPageWidgetLogTableInitialSortingArgs = _index.OneDashboardPageWidgetLogTableInitialSorting.new;
-  final OneDashboardPageWidgetLogTableNrqlQuery = _index.OneDashboardPageWidgetLogTableNrqlQuery.new;
-  final OneDashboardPageWidgetLogTableNrqlQueryArgs = _index.OneDashboardPageWidgetLogTableNrqlQuery.new;
-  final OneDashboardPageWidgetLogTableNullValue = _index.OneDashboardPageWidgetLogTableNullValue.new;
-  final OneDashboardPageWidgetLogTableNullValueArgs = _index.OneDashboardPageWidgetLogTableNullValue.new;
-  final OneDashboardPageWidgetLogTableNullValueSeriesOverride = _index.OneDashboardPageWidgetLogTableNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetLogTableNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetLogTableNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetLogTableUnit = _index.OneDashboardPageWidgetLogTableUnit.new;
-  final OneDashboardPageWidgetLogTableUnitArgs = _index.OneDashboardPageWidgetLogTableUnit.new;
-  final OneDashboardPageWidgetLogTableUnitSeriesOverride = _index.OneDashboardPageWidgetLogTableUnitSeriesOverride.new;
-  final OneDashboardPageWidgetLogTableUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetLogTableUnitSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdown = _index.OneDashboardPageWidgetMarkdown.new;
-  final OneDashboardPageWidgetMarkdownArgs = _index.OneDashboardPageWidgetMarkdown.new;
-  final OneDashboardPageWidgetMarkdownColor = _index.OneDashboardPageWidgetMarkdownColor.new;
-  final OneDashboardPageWidgetMarkdownColorArgs = _index.OneDashboardPageWidgetMarkdownColor.new;
-  final OneDashboardPageWidgetMarkdownColorSeriesOverride = _index.OneDashboardPageWidgetMarkdownColorSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdownColorSeriesOverrideArgs = _index.OneDashboardPageWidgetMarkdownColorSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdownDataFormat = _index.OneDashboardPageWidgetMarkdownDataFormat.new;
-  final OneDashboardPageWidgetMarkdownDataFormatArgs = _index.OneDashboardPageWidgetMarkdownDataFormat.new;
-  final OneDashboardPageWidgetMarkdownInitialSorting = _index.OneDashboardPageWidgetMarkdownInitialSorting.new;
-  final OneDashboardPageWidgetMarkdownInitialSortingArgs = _index.OneDashboardPageWidgetMarkdownInitialSorting.new;
-  final OneDashboardPageWidgetMarkdownNullValue = _index.OneDashboardPageWidgetMarkdownNullValue.new;
-  final OneDashboardPageWidgetMarkdownNullValueArgs = _index.OneDashboardPageWidgetMarkdownNullValue.new;
-  final OneDashboardPageWidgetMarkdownNullValueSeriesOverride = _index.OneDashboardPageWidgetMarkdownNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdownNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetMarkdownNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdownUnit = _index.OneDashboardPageWidgetMarkdownUnit.new;
-  final OneDashboardPageWidgetMarkdownUnitArgs = _index.OneDashboardPageWidgetMarkdownUnit.new;
-  final OneDashboardPageWidgetMarkdownUnitSeriesOverride = _index.OneDashboardPageWidgetMarkdownUnitSeriesOverride.new;
-  final OneDashboardPageWidgetMarkdownUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetMarkdownUnitSeriesOverride.new;
-  final OneDashboardPageWidgetPy = _index.OneDashboardPageWidgetPy.new;
-  final OneDashboardPageWidgetPyArgs = _index.OneDashboardPageWidgetPy.new;
-  final OneDashboardPageWidgetPyColor = _index.OneDashboardPageWidgetPyColor.new;
-  final OneDashboardPageWidgetPyColorArgs = _index.OneDashboardPageWidgetPyColor.new;
-  final OneDashboardPageWidgetPyColorSeriesOverride = _index.OneDashboardPageWidgetPyColorSeriesOverride.new;
-  final OneDashboardPageWidgetPyColorSeriesOverrideArgs = _index.OneDashboardPageWidgetPyColorSeriesOverride.new;
-  final OneDashboardPageWidgetPyDataFormat = _index.OneDashboardPageWidgetPyDataFormat.new;
-  final OneDashboardPageWidgetPyDataFormatArgs = _index.OneDashboardPageWidgetPyDataFormat.new;
-  final OneDashboardPageWidgetPyInitialSorting = _index.OneDashboardPageWidgetPyInitialSorting.new;
-  final OneDashboardPageWidgetPyInitialSortingArgs = _index.OneDashboardPageWidgetPyInitialSorting.new;
-  final OneDashboardPageWidgetPyNrqlQuery = _index.OneDashboardPageWidgetPyNrqlQuery.new;
-  final OneDashboardPageWidgetPyNrqlQueryArgs = _index.OneDashboardPageWidgetPyNrqlQuery.new;
-  final OneDashboardPageWidgetPyNullValue = _index.OneDashboardPageWidgetPyNullValue.new;
-  final OneDashboardPageWidgetPyNullValueArgs = _index.OneDashboardPageWidgetPyNullValue.new;
-  final OneDashboardPageWidgetPyNullValueSeriesOverride = _index.OneDashboardPageWidgetPyNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetPyNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetPyNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetPyUnit = _index.OneDashboardPageWidgetPyUnit.new;
-  final OneDashboardPageWidgetPyUnitArgs = _index.OneDashboardPageWidgetPyUnit.new;
-  final OneDashboardPageWidgetPyUnitSeriesOverride = _index.OneDashboardPageWidgetPyUnitSeriesOverride.new;
-  final OneDashboardPageWidgetPyUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetPyUnitSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBar = _index.OneDashboardPageWidgetStackedBar.new;
-  final OneDashboardPageWidgetStackedBarArgs = _index.OneDashboardPageWidgetStackedBar.new;
-  final OneDashboardPageWidgetStackedBarColor = _index.OneDashboardPageWidgetStackedBarColor.new;
-  final OneDashboardPageWidgetStackedBarColorArgs = _index.OneDashboardPageWidgetStackedBarColor.new;
-  final OneDashboardPageWidgetStackedBarColorSeriesOverride = _index.OneDashboardPageWidgetStackedBarColorSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBarColorSeriesOverrideArgs = _index.OneDashboardPageWidgetStackedBarColorSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBarDataFormat = _index.OneDashboardPageWidgetStackedBarDataFormat.new;
-  final OneDashboardPageWidgetStackedBarDataFormatArgs = _index.OneDashboardPageWidgetStackedBarDataFormat.new;
-  final OneDashboardPageWidgetStackedBarInitialSorting = _index.OneDashboardPageWidgetStackedBarInitialSorting.new;
-  final OneDashboardPageWidgetStackedBarInitialSortingArgs = _index.OneDashboardPageWidgetStackedBarInitialSorting.new;
-  final OneDashboardPageWidgetStackedBarNrqlQuery = _index.OneDashboardPageWidgetStackedBarNrqlQuery.new;
-  final OneDashboardPageWidgetStackedBarNrqlQueryArgs = _index.OneDashboardPageWidgetStackedBarNrqlQuery.new;
-  final OneDashboardPageWidgetStackedBarNullValue = _index.OneDashboardPageWidgetStackedBarNullValue.new;
-  final OneDashboardPageWidgetStackedBarNullValueArgs = _index.OneDashboardPageWidgetStackedBarNullValue.new;
-  final OneDashboardPageWidgetStackedBarNullValueSeriesOverride = _index.OneDashboardPageWidgetStackedBarNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBarNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetStackedBarNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBarTooltip = _index.OneDashboardPageWidgetStackedBarTooltip.new;
-  final OneDashboardPageWidgetStackedBarTooltipArgs = _index.OneDashboardPageWidgetStackedBarTooltip.new;
-  final OneDashboardPageWidgetStackedBarUnit = _index.OneDashboardPageWidgetStackedBarUnit.new;
-  final OneDashboardPageWidgetStackedBarUnitArgs = _index.OneDashboardPageWidgetStackedBarUnit.new;
-  final OneDashboardPageWidgetStackedBarUnitSeriesOverride = _index.OneDashboardPageWidgetStackedBarUnitSeriesOverride.new;
-  final OneDashboardPageWidgetStackedBarUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetStackedBarUnitSeriesOverride.new;
-  final OneDashboardPageWidgetTable = _index.OneDashboardPageWidgetTable.new;
-  final OneDashboardPageWidgetTableArgs = _index.OneDashboardPageWidgetTable.new;
-  final OneDashboardPageWidgetTableColor = _index.OneDashboardPageWidgetTableColor.new;
-  final OneDashboardPageWidgetTableColorArgs = _index.OneDashboardPageWidgetTableColor.new;
-  final OneDashboardPageWidgetTableColorSeriesOverride = _index.OneDashboardPageWidgetTableColorSeriesOverride.new;
-  final OneDashboardPageWidgetTableColorSeriesOverrideArgs = _index.OneDashboardPageWidgetTableColorSeriesOverride.new;
-  final OneDashboardPageWidgetTableDataFormat = _index.OneDashboardPageWidgetTableDataFormat.new;
-  final OneDashboardPageWidgetTableDataFormatArgs = _index.OneDashboardPageWidgetTableDataFormat.new;
-  final OneDashboardPageWidgetTableInitialSorting = _index.OneDashboardPageWidgetTableInitialSorting.new;
-  final OneDashboardPageWidgetTableInitialSortingArgs = _index.OneDashboardPageWidgetTableInitialSorting.new;
-  final OneDashboardPageWidgetTableNrqlQuery = _index.OneDashboardPageWidgetTableNrqlQuery.new;
-  final OneDashboardPageWidgetTableNrqlQueryArgs = _index.OneDashboardPageWidgetTableNrqlQuery.new;
-  final OneDashboardPageWidgetTableNullValue = _index.OneDashboardPageWidgetTableNullValue.new;
-  final OneDashboardPageWidgetTableNullValueArgs = _index.OneDashboardPageWidgetTableNullValue.new;
-  final OneDashboardPageWidgetTableNullValueSeriesOverride = _index.OneDashboardPageWidgetTableNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetTableNullValueSeriesOverrideArgs = _index.OneDashboardPageWidgetTableNullValueSeriesOverride.new;
-  final OneDashboardPageWidgetTableThreshold = _index.OneDashboardPageWidgetTableThreshold.new;
-  final OneDashboardPageWidgetTableThresholdArgs = _index.OneDashboardPageWidgetTableThreshold.new;
-  final OneDashboardPageWidgetTableUnit = _index.OneDashboardPageWidgetTableUnit.new;
-  final OneDashboardPageWidgetTableUnitArgs = _index.OneDashboardPageWidgetTableUnit.new;
-  final OneDashboardPageWidgetTableUnitSeriesOverride = _index.OneDashboardPageWidgetTableUnitSeriesOverride.new;
-  final OneDashboardPageWidgetTableUnitSeriesOverrideArgs = _index.OneDashboardPageWidgetTableUnitSeriesOverride.new;
-  final OneDashboardRaw = _index.OneDashboardRaw.new;
-  final OneDashboardRawArgs = _index.OneDashboardRawArgs.new;
-  final OneDashboardRawPage = _index.OneDashboardRawPage.new;
-  final OneDashboardRawPageArgs = _index.OneDashboardRawPage.new;
-  final OneDashboardRawPageWidget = _index.OneDashboardRawPageWidget.new;
-  final OneDashboardRawPageWidgetArgs = _index.OneDashboardRawPageWidget.new;
-  final OneDashboardRawState = _index.OneDashboardRawState.new;
-  final OneDashboardRawStateArgs = _index.OneDashboardRawState.new;
-  final OneDashboardState = _index.OneDashboardState.new;
-  final OneDashboardStateArgs = _index.OneDashboardState.new;
-  final OneDashboardVariable = _index.OneDashboardVariable.new;
-  final OneDashboardVariableArgs = _index.OneDashboardVariable.new;
-  final OneDashboardVariableItem = _index.OneDashboardVariableItem.new;
-  final OneDashboardVariableItemArgs = _index.OneDashboardVariableItem.new;
-  final OneDashboardVariableNrqlQuery = _index.OneDashboardVariableNrqlQuery.new;
-  final OneDashboardVariableNrqlQueryArgs = _index.OneDashboardVariableNrqlQuery.new;
-  final OneDashboardVariableOption = _index.OneDashboardVariableOption.new;
-  final OneDashboardVariableOptionArgs = _index.OneDashboardVariableOption.new;
-  final PipelineCloudRule = _index.PipelineCloudRule.new;
-  final PipelineCloudRuleArgs = _index.PipelineCloudRuleArgs.new;
-  final PipelineCloudRuleState = _index.PipelineCloudRuleState.new;
-  final PipelineCloudRuleStateArgs = _index.PipelineCloudRuleState.new;
-  final ServiceLevel = _index.ServiceLevel.new;
-  final ServiceLevelArgs = _index.ServiceLevelArgs.new;
-  final ServiceLevelEvents = _index.ServiceLevelEvents.new;
-  final ServiceLevelEventsArgs = _index.ServiceLevelEvents.new;
-  final ServiceLevelEventsBadEvents = _index.ServiceLevelEventsBadEvents.new;
-  final ServiceLevelEventsBadEventsArgs = _index.ServiceLevelEventsBadEvents.new;
-  final ServiceLevelEventsBadEventsSelect = _index.ServiceLevelEventsBadEventsSelect.new;
-  final ServiceLevelEventsBadEventsSelectArgs = _index.ServiceLevelEventsBadEventsSelect.new;
-  final ServiceLevelEventsGoodEvents = _index.ServiceLevelEventsGoodEvents.new;
-  final ServiceLevelEventsGoodEventsArgs = _index.ServiceLevelEventsGoodEvents.new;
-  final ServiceLevelEventsGoodEventsSelect = _index.ServiceLevelEventsGoodEventsSelect.new;
-  final ServiceLevelEventsGoodEventsSelectArgs = _index.ServiceLevelEventsGoodEventsSelect.new;
-  final ServiceLevelEventsValidEvents = _index.ServiceLevelEventsValidEvents.new;
-  final ServiceLevelEventsValidEventsArgs = _index.ServiceLevelEventsValidEvents.new;
-  final ServiceLevelEventsValidEventsSelect = _index.ServiceLevelEventsValidEventsSelect.new;
-  final ServiceLevelEventsValidEventsSelectArgs = _index.ServiceLevelEventsValidEventsSelect.new;
-  final ServiceLevelObjective = _index.ServiceLevelObjective.new;
-  final ServiceLevelObjectiveArgs = _index.ServiceLevelObjective.new;
-  final ServiceLevelObjectiveTimeWindow = _index.ServiceLevelObjectiveTimeWindow.new;
-  final ServiceLevelObjectiveTimeWindowArgs = _index.ServiceLevelObjectiveTimeWindow.new;
-  final ServiceLevelObjectiveTimeWindowRolling = _index.ServiceLevelObjectiveTimeWindowRolling.new;
-  final ServiceLevelObjectiveTimeWindowRollingArgs = _index.ServiceLevelObjectiveTimeWindowRolling.new;
-  final ServiceLevelState = _index.ServiceLevelState.new;
-  final ServiceLevelStateArgs = _index.ServiceLevelState.new;
-  final User = _index.User.new;
-  final UserArgs = _index.UserArgs.new;
-  final UserState = _index.UserState.new;
-  final UserStateArgs = _index.UserState.new;
-  final Workflow = _index.Workflow.new;
-  final WorkflowArgs = _index.WorkflowArgs.new;
-  final WorkflowDestination = _index.WorkflowDestination.new;
-  final WorkflowDestinationArgs = _index.WorkflowDestination.new;
-  final WorkflowEnrichments = _index.WorkflowEnrichments.new;
-  final WorkflowEnrichmentsArgs = _index.WorkflowEnrichments.new;
-  final WorkflowEnrichmentsNrql = _index.WorkflowEnrichmentsNrql.new;
-  final WorkflowEnrichmentsNrqlArgs = _index.WorkflowEnrichmentsNrql.new;
-  final WorkflowEnrichmentsNrqlConfiguration = _index.WorkflowEnrichmentsNrqlConfiguration.new;
-  final WorkflowEnrichmentsNrqlConfigurationArgs = _index.WorkflowEnrichmentsNrqlConfiguration.new;
-  final WorkflowIssuesFilter = _index.WorkflowIssuesFilter.new;
-  final WorkflowIssuesFilterArgs = _index.WorkflowIssuesFilter.new;
-  final WorkflowIssuesFilterPredicate = _index.WorkflowIssuesFilterPredicate.new;
-  final WorkflowIssuesFilterPredicateArgs = _index.WorkflowIssuesFilterPredicate.new;
-  final WorkflowState = _index.WorkflowState.new;
-  final WorkflowStateArgs = _index.WorkflowState.new;
-  final getAccount = _index.getAccount;
-  final getAlertChannel = _index.getAlertChannel;
-  final getAlertPolicy = _index.getAlertPolicy;
-  final getApplication = _index.getApplication;
-  final getAuthenticationDomain = _index.getAuthenticationDomain;
-  final getCloudAccount = _index.getCloudAccount;
-  final getEntity = _index.getEntity;
-  final getGroup = _index.getGroup;
-  final getKeyTransaction = _index.getKeyTransaction;
-  final getNotificationDestination = _index.getNotificationDestination;
-  final getObfuscationExpression = _index.getObfuscationExpression;
-  final getServiceLevelAlertHelper = _index.getServiceLevelAlertHelper;
-  final getTestGrokPattern = _index.getTestGrokPattern;
-  final getUser = _index.getUser;
+  final AccountManagement = module_index.AccountManagement.new;
+  final AccountManagementArgs = module_index.AccountManagementArgs.new;
+  final AccountManagementState = module_index.AccountManagementState.new;
+  final AccountManagementStateArgs = module_index.AccountManagementState.new;
+  final AlertChannel = module_index.AlertChannel.new;
+  final AlertChannelArgs = module_index.AlertChannelArgs.new;
+  final AlertChannelConfig = module_index.AlertChannelConfig.new;
+  final AlertChannelConfigArgs = module_index.AlertChannelConfig.new;
+  final AlertChannelState = module_index.AlertChannelState.new;
+  final AlertChannelStateArgs = module_index.AlertChannelState.new;
+  final AlertCompoundCondition = module_index.AlertCompoundCondition.new;
+  final AlertCompoundConditionArgs =
+      module_index.AlertCompoundConditionArgs.new;
+  final AlertCompoundConditionComponentCondition =
+      module_index.AlertCompoundConditionComponentCondition.new;
+  final AlertCompoundConditionComponentConditionArgs =
+      module_index.AlertCompoundConditionComponentCondition.new;
+  final AlertCompoundConditionState =
+      module_index.AlertCompoundConditionState.new;
+  final AlertCompoundConditionStateArgs =
+      module_index.AlertCompoundConditionState.new;
+  final AlertCondition = module_index.AlertCondition.new;
+  final AlertConditionArgs = module_index.AlertConditionArgs.new;
+  final AlertConditionState = module_index.AlertConditionState.new;
+  final AlertConditionStateArgs = module_index.AlertConditionState.new;
+  final AlertConditionTerm = module_index.AlertConditionTerm.new;
+  final AlertConditionTermArgs = module_index.AlertConditionTerm.new;
+  final AlertMutingRule = module_index.AlertMutingRule.new;
+  final AlertMutingRuleArgs = module_index.AlertMutingRuleArgs.new;
+  final AlertMutingRuleCondition = module_index.AlertMutingRuleCondition.new;
+  final AlertMutingRuleConditionArgs =
+      module_index.AlertMutingRuleCondition.new;
+  final AlertMutingRuleConditionCondition =
+      module_index.AlertMutingRuleConditionCondition.new;
+  final AlertMutingRuleConditionConditionArgs =
+      module_index.AlertMutingRuleConditionCondition.new;
+  final AlertMutingRuleSchedule = module_index.AlertMutingRuleSchedule.new;
+  final AlertMutingRuleScheduleArgs = module_index.AlertMutingRuleSchedule.new;
+  final AlertMutingRuleState = module_index.AlertMutingRuleState.new;
+  final AlertMutingRuleStateArgs = module_index.AlertMutingRuleState.new;
+  final AlertPolicy = module_index.AlertPolicy.new;
+  final AlertPolicyArgs = module_index.AlertPolicyArgs.new;
+  final AlertPolicyChannel = module_index.AlertPolicyChannel.new;
+  final AlertPolicyChannelArgs = module_index.AlertPolicyChannelArgs.new;
+  final AlertPolicyChannelState = module_index.AlertPolicyChannelState.new;
+  final AlertPolicyChannelStateArgs = module_index.AlertPolicyChannelState.new;
+  final AlertPolicyState = module_index.AlertPolicyState.new;
+  final AlertPolicyStateArgs = module_index.AlertPolicyState.new;
+  final ApiAccessKey = module_index.ApiAccessKey.new;
+  final ApiAccessKeyArgs = module_index.ApiAccessKeyArgs.new;
+  final ApiAccessKeyState = module_index.ApiAccessKeyState.new;
+  final ApiAccessKeyStateArgs = module_index.ApiAccessKeyState.new;
+  final BrowserApplication = module_index.BrowserApplication.new;
+  final BrowserApplicationArgs = module_index.BrowserApplicationArgs.new;
+  final BrowserApplicationState = module_index.BrowserApplicationState.new;
+  final BrowserApplicationStateArgs = module_index.BrowserApplicationState.new;
+  final DataPartitionRule = module_index.DataPartitionRule.new;
+  final DataPartitionRuleArgs = module_index.DataPartitionRuleArgs.new;
+  final DataPartitionRuleState = module_index.DataPartitionRuleState.new;
+  final DataPartitionRuleStateArgs = module_index.DataPartitionRuleState.new;
+  final EntityTags = module_index.EntityTags.new;
+  final EntityTagsArgs = module_index.EntityTagsArgs.new;
+  final EntityTagsState = module_index.EntityTagsState.new;
+  final EntityTagsStateArgs = module_index.EntityTagsState.new;
+  final EntityTagsTag = module_index.EntityTagsTag.new;
+  final EntityTagsTagArgs = module_index.EntityTagsTag.new;
+  final EventsToMetricsRule = module_index.EventsToMetricsRule.new;
+  final EventsToMetricsRuleArgs = module_index.EventsToMetricsRuleArgs.new;
+  final EventsToMetricsRuleState = module_index.EventsToMetricsRuleState.new;
+  final EventsToMetricsRuleStateArgs =
+      module_index.EventsToMetricsRuleState.new;
+  final GetAccountArgs = module_index.GetAccountArgs.new;
+  final GetAccountResult = module_index.GetAccountResult.new;
+  final GetAccountResultArgs = module_index.GetAccountResult.new;
+  final GetAlertChannelArgs = module_index.GetAlertChannelArgs.new;
+  final GetAlertChannelConfig = module_index.GetAlertChannelConfig.new;
+  final GetAlertChannelConfigArgs = module_index.GetAlertChannelConfig.new;
+  final GetAlertChannelResult = module_index.GetAlertChannelResult.new;
+  final GetAlertChannelResultArgs = module_index.GetAlertChannelResult.new;
+  final GetAlertPolicyArgs = module_index.GetAlertPolicyArgs.new;
+  final GetAlertPolicyResult = module_index.GetAlertPolicyResult.new;
+  final GetAlertPolicyResultArgs = module_index.GetAlertPolicyResult.new;
+  final GetApplicationArgs = module_index.GetApplicationArgs.new;
+  final GetApplicationResult = module_index.GetApplicationResult.new;
+  final GetApplicationResultArgs = module_index.GetApplicationResult.new;
+  final GetAuthenticationDomainArgs =
+      module_index.GetAuthenticationDomainArgs.new;
+  final GetAuthenticationDomainResult =
+      module_index.GetAuthenticationDomainResult.new;
+  final GetAuthenticationDomainResultArgs =
+      module_index.GetAuthenticationDomainResult.new;
+  final GetCloudAccountArgs = module_index.GetCloudAccountArgs.new;
+  final GetCloudAccountResult = module_index.GetCloudAccountResult.new;
+  final GetCloudAccountResultArgs = module_index.GetCloudAccountResult.new;
+  final GetEntityArgs = module_index.GetEntityArgs.new;
+  final GetEntityResult = module_index.GetEntityResult.new;
+  final GetEntityResultArgs = module_index.GetEntityResult.new;
+  final GetEntityTag = module_index.GetEntityTag.new;
+  final GetEntityTagArgs = module_index.GetEntityTag.new;
+  final GetGroupArgs = module_index.GetGroupArgs.new;
+  final GetGroupResult = module_index.GetGroupResult.new;
+  final GetGroupResultArgs = module_index.GetGroupResult.new;
+  final GetKeyTransactionArgs = module_index.GetKeyTransactionArgs.new;
+  final GetKeyTransactionResult = module_index.GetKeyTransactionResult.new;
+  final GetKeyTransactionResultArgs = module_index.GetKeyTransactionResult.new;
+  final GetNotificationDestinationArgs =
+      module_index.GetNotificationDestinationArgs.new;
+  final GetNotificationDestinationProperty =
+      module_index.GetNotificationDestinationProperty.new;
+  final GetNotificationDestinationPropertyArgs =
+      module_index.GetNotificationDestinationProperty.new;
+  final GetNotificationDestinationResult =
+      module_index.GetNotificationDestinationResult.new;
+  final GetNotificationDestinationResultArgs =
+      module_index.GetNotificationDestinationResult.new;
+  final GetNotificationDestinationSecureUrl =
+      module_index.GetNotificationDestinationSecureUrl.new;
+  final GetNotificationDestinationSecureUrlArgs =
+      module_index.GetNotificationDestinationSecureUrl.new;
+  final GetObfuscationExpressionArgs =
+      module_index.GetObfuscationExpressionArgs.new;
+  final GetObfuscationExpressionResult =
+      module_index.GetObfuscationExpressionResult.new;
+  final GetObfuscationExpressionResultArgs =
+      module_index.GetObfuscationExpressionResult.new;
+  final GetServiceLevelAlertHelperArgs =
+      module_index.GetServiceLevelAlertHelperArgs.new;
+  final GetServiceLevelAlertHelperResult =
+      module_index.GetServiceLevelAlertHelperResult.new;
+  final GetServiceLevelAlertHelperResultArgs =
+      module_index.GetServiceLevelAlertHelperResult.new;
+  final GetTestGrokPatternArgs = module_index.GetTestGrokPatternArgs.new;
+  final GetTestGrokPatternResult = module_index.GetTestGrokPatternResult.new;
+  final GetTestGrokPatternResultArgs =
+      module_index.GetTestGrokPatternResult.new;
+  final GetTestGrokPatternTestGrok =
+      module_index.GetTestGrokPatternTestGrok.new;
+  final GetTestGrokPatternTestGrokArgs =
+      module_index.GetTestGrokPatternTestGrok.new;
+  final GetTestGrokPatternTestGrokAttribute =
+      module_index.GetTestGrokPatternTestGrokAttribute.new;
+  final GetTestGrokPatternTestGrokAttributeArgs =
+      module_index.GetTestGrokPatternTestGrokAttribute.new;
+  final GetUserArgs = module_index.GetUserArgs.new;
+  final GetUserResult = module_index.GetUserResult.new;
+  final GetUserResultArgs = module_index.GetUserResult.new;
+  final Group = module_index.Group.new;
+  final GroupArgs = module_index.GroupArgs.new;
+  final GroupState = module_index.GroupState.new;
+  final GroupStateArgs = module_index.GroupState.new;
+  final InfraAlertCondition = module_index.InfraAlertCondition.new;
+  final InfraAlertConditionArgs = module_index.InfraAlertConditionArgs.new;
+  final InfraAlertConditionCritical =
+      module_index.InfraAlertConditionCritical.new;
+  final InfraAlertConditionCriticalArgs =
+      module_index.InfraAlertConditionCritical.new;
+  final InfraAlertConditionState = module_index.InfraAlertConditionState.new;
+  final InfraAlertConditionStateArgs =
+      module_index.InfraAlertConditionState.new;
+  final InfraAlertConditionWarning =
+      module_index.InfraAlertConditionWarning.new;
+  final InfraAlertConditionWarningArgs =
+      module_index.InfraAlertConditionWarning.new;
+  final KeyTransaction = module_index.KeyTransaction.new;
+  final KeyTransactionArgs = module_index.KeyTransactionArgs.new;
+  final KeyTransactionState = module_index.KeyTransactionState.new;
+  final KeyTransactionStateArgs = module_index.KeyTransactionState.new;
+  final LogParsingRule = module_index.LogParsingRule.new;
+  final LogParsingRuleArgs = module_index.LogParsingRuleArgs.new;
+  final LogParsingRuleState = module_index.LogParsingRuleState.new;
+  final LogParsingRuleStateArgs = module_index.LogParsingRuleState.new;
+  final MonitorDowntime = module_index.MonitorDowntime.new;
+  final MonitorDowntimeArgs = module_index.MonitorDowntimeArgs.new;
+  final MonitorDowntimeEndRepeat = module_index.MonitorDowntimeEndRepeat.new;
+  final MonitorDowntimeEndRepeatArgs =
+      module_index.MonitorDowntimeEndRepeat.new;
+  final MonitorDowntimeFrequency = module_index.MonitorDowntimeFrequency.new;
+  final MonitorDowntimeFrequencyArgs =
+      module_index.MonitorDowntimeFrequency.new;
+  final MonitorDowntimeFrequencyDaysOfWeek =
+      module_index.MonitorDowntimeFrequencyDaysOfWeek.new;
+  final MonitorDowntimeFrequencyDaysOfWeekArgs =
+      module_index.MonitorDowntimeFrequencyDaysOfWeek.new;
+  final MonitorDowntimeState = module_index.MonitorDowntimeState.new;
+  final MonitorDowntimeStateArgs = module_index.MonitorDowntimeState.new;
+  final NotificationChannel = module_index.NotificationChannel.new;
+  final NotificationChannelArgs = module_index.NotificationChannelArgs.new;
+  final NotificationChannelProperty =
+      module_index.NotificationChannelProperty.new;
+  final NotificationChannelPropertyArgs =
+      module_index.NotificationChannelProperty.new;
+  final NotificationChannelState = module_index.NotificationChannelState.new;
+  final NotificationChannelStateArgs =
+      module_index.NotificationChannelState.new;
+  final NotificationDestination = module_index.NotificationDestination.new;
+  final NotificationDestinationArgs =
+      module_index.NotificationDestinationArgs.new;
+  final NotificationDestinationAuthBasic =
+      module_index.NotificationDestinationAuthBasic.new;
+  final NotificationDestinationAuthBasicArgs =
+      module_index.NotificationDestinationAuthBasic.new;
+  final NotificationDestinationAuthCustomHeader =
+      module_index.NotificationDestinationAuthCustomHeader.new;
+  final NotificationDestinationAuthCustomHeaderArgs =
+      module_index.NotificationDestinationAuthCustomHeader.new;
+  final NotificationDestinationAuthToken =
+      module_index.NotificationDestinationAuthToken.new;
+  final NotificationDestinationAuthTokenArgs =
+      module_index.NotificationDestinationAuthToken.new;
+  final NotificationDestinationProperty =
+      module_index.NotificationDestinationProperty.new;
+  final NotificationDestinationPropertyArgs =
+      module_index.NotificationDestinationProperty.new;
+  final NotificationDestinationSecureUrl =
+      module_index.NotificationDestinationSecureUrl.new;
+  final NotificationDestinationSecureUrlArgs =
+      module_index.NotificationDestinationSecureUrl.new;
+  final NotificationDestinationState =
+      module_index.NotificationDestinationState.new;
+  final NotificationDestinationStateArgs =
+      module_index.NotificationDestinationState.new;
+  final NrqlAlertCondition = module_index.NrqlAlertCondition.new;
+  final NrqlAlertConditionArgs = module_index.NrqlAlertConditionArgs.new;
+  final NrqlAlertConditionCritical =
+      module_index.NrqlAlertConditionCritical.new;
+  final NrqlAlertConditionCriticalArgs =
+      module_index.NrqlAlertConditionCritical.new;
+  final NrqlAlertConditionCriticalPrediction =
+      module_index.NrqlAlertConditionCriticalPrediction.new;
+  final NrqlAlertConditionCriticalPredictionArgs =
+      module_index.NrqlAlertConditionCriticalPrediction.new;
+  final NrqlAlertConditionNrql = module_index.NrqlAlertConditionNrql.new;
+  final NrqlAlertConditionNrqlArgs = module_index.NrqlAlertConditionNrql.new;
+  final NrqlAlertConditionOutlierConfiguration =
+      module_index.NrqlAlertConditionOutlierConfiguration.new;
+  final NrqlAlertConditionOutlierConfigurationArgs =
+      module_index.NrqlAlertConditionOutlierConfiguration.new;
+  final NrqlAlertConditionOutlierConfigurationDbscan =
+      module_index.NrqlAlertConditionOutlierConfigurationDbscan.new;
+  final NrqlAlertConditionOutlierConfigurationDbscanArgs =
+      module_index.NrqlAlertConditionOutlierConfigurationDbscan.new;
+  final NrqlAlertConditionState = module_index.NrqlAlertConditionState.new;
+  final NrqlAlertConditionStateArgs = module_index.NrqlAlertConditionState.new;
+  final NrqlAlertConditionTerm = module_index.NrqlAlertConditionTerm.new;
+  final NrqlAlertConditionTermArgs = module_index.NrqlAlertConditionTerm.new;
+  final NrqlAlertConditionTermPrediction =
+      module_index.NrqlAlertConditionTermPrediction.new;
+  final NrqlAlertConditionTermPredictionArgs =
+      module_index.NrqlAlertConditionTermPrediction.new;
+  final NrqlAlertConditionWarning = module_index.NrqlAlertConditionWarning.new;
+  final NrqlAlertConditionWarningArgs =
+      module_index.NrqlAlertConditionWarning.new;
+  final NrqlAlertConditionWarningPrediction =
+      module_index.NrqlAlertConditionWarningPrediction.new;
+  final NrqlAlertConditionWarningPredictionArgs =
+      module_index.NrqlAlertConditionWarningPrediction.new;
+  final NrqlDropRule = module_index.NrqlDropRule.new;
+  final NrqlDropRuleArgs = module_index.NrqlDropRuleArgs.new;
+  final NrqlDropRuleState = module_index.NrqlDropRuleState.new;
+  final NrqlDropRuleStateArgs = module_index.NrqlDropRuleState.new;
+  final ObfuscationExpression = module_index.ObfuscationExpression.new;
+  final ObfuscationExpressionArgs = module_index.ObfuscationExpressionArgs.new;
+  final ObfuscationExpressionState =
+      module_index.ObfuscationExpressionState.new;
+  final ObfuscationExpressionStateArgs =
+      module_index.ObfuscationExpressionState.new;
+  final ObfuscationRule = module_index.ObfuscationRule.new;
+  final ObfuscationRuleAction = module_index.ObfuscationRuleAction.new;
+  final ObfuscationRuleActionArgs = module_index.ObfuscationRuleAction.new;
+  final ObfuscationRuleArgs = module_index.ObfuscationRuleArgs.new;
+  final ObfuscationRuleState = module_index.ObfuscationRuleState.new;
+  final ObfuscationRuleStateArgs = module_index.ObfuscationRuleState.new;
+  final OneDashboard = module_index.OneDashboard.new;
+  final OneDashboardArgs = module_index.OneDashboardArgs.new;
+  final OneDashboardJson = module_index.OneDashboardJson.new;
+  final OneDashboardJsonArgs = module_index.OneDashboardJsonArgs.new;
+  final OneDashboardJsonState = module_index.OneDashboardJsonState.new;
+  final OneDashboardJsonStateArgs = module_index.OneDashboardJsonState.new;
+  final OneDashboardPage = module_index.OneDashboardPage.new;
+  final OneDashboardPageArgs = module_index.OneDashboardPage.new;
+  final OneDashboardPageWidgetArea =
+      module_index.OneDashboardPageWidgetArea.new;
+  final OneDashboardPageWidgetAreaArgs =
+      module_index.OneDashboardPageWidgetArea.new;
+  final OneDashboardPageWidgetAreaColor =
+      module_index.OneDashboardPageWidgetAreaColor.new;
+  final OneDashboardPageWidgetAreaColorArgs =
+      module_index.OneDashboardPageWidgetAreaColor.new;
+  final OneDashboardPageWidgetAreaColorSeriesOverride =
+      module_index.OneDashboardPageWidgetAreaColorSeriesOverride.new;
+  final OneDashboardPageWidgetAreaColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetAreaColorSeriesOverride.new;
+  final OneDashboardPageWidgetAreaDataFormat =
+      module_index.OneDashboardPageWidgetAreaDataFormat.new;
+  final OneDashboardPageWidgetAreaDataFormatArgs =
+      module_index.OneDashboardPageWidgetAreaDataFormat.new;
+  final OneDashboardPageWidgetAreaInitialSorting =
+      module_index.OneDashboardPageWidgetAreaInitialSorting.new;
+  final OneDashboardPageWidgetAreaInitialSortingArgs =
+      module_index.OneDashboardPageWidgetAreaInitialSorting.new;
+  final OneDashboardPageWidgetAreaNrqlQuery =
+      module_index.OneDashboardPageWidgetAreaNrqlQuery.new;
+  final OneDashboardPageWidgetAreaNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetAreaNrqlQuery.new;
+  final OneDashboardPageWidgetAreaNullValue =
+      module_index.OneDashboardPageWidgetAreaNullValue.new;
+  final OneDashboardPageWidgetAreaNullValueArgs =
+      module_index.OneDashboardPageWidgetAreaNullValue.new;
+  final OneDashboardPageWidgetAreaNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetAreaNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetAreaNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetAreaNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetAreaTooltip =
+      module_index.OneDashboardPageWidgetAreaTooltip.new;
+  final OneDashboardPageWidgetAreaTooltipArgs =
+      module_index.OneDashboardPageWidgetAreaTooltip.new;
+  final OneDashboardPageWidgetAreaUnit =
+      module_index.OneDashboardPageWidgetAreaUnit.new;
+  final OneDashboardPageWidgetAreaUnitArgs =
+      module_index.OneDashboardPageWidgetAreaUnit.new;
+  final OneDashboardPageWidgetAreaUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetAreaUnitSeriesOverride.new;
+  final OneDashboardPageWidgetAreaUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetAreaUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBar = module_index.OneDashboardPageWidgetBar.new;
+  final OneDashboardPageWidgetBarArgs =
+      module_index.OneDashboardPageWidgetBar.new;
+  final OneDashboardPageWidgetBarColor =
+      module_index.OneDashboardPageWidgetBarColor.new;
+  final OneDashboardPageWidgetBarColorArgs =
+      module_index.OneDashboardPageWidgetBarColor.new;
+  final OneDashboardPageWidgetBarColorSeriesOverride =
+      module_index.OneDashboardPageWidgetBarColorSeriesOverride.new;
+  final OneDashboardPageWidgetBarColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBarColorSeriesOverride.new;
+  final OneDashboardPageWidgetBarDataFormat =
+      module_index.OneDashboardPageWidgetBarDataFormat.new;
+  final OneDashboardPageWidgetBarDataFormatArgs =
+      module_index.OneDashboardPageWidgetBarDataFormat.new;
+  final OneDashboardPageWidgetBarInitialSorting =
+      module_index.OneDashboardPageWidgetBarInitialSorting.new;
+  final OneDashboardPageWidgetBarInitialSortingArgs =
+      module_index.OneDashboardPageWidgetBarInitialSorting.new;
+  final OneDashboardPageWidgetBarNrqlQuery =
+      module_index.OneDashboardPageWidgetBarNrqlQuery.new;
+  final OneDashboardPageWidgetBarNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetBarNrqlQuery.new;
+  final OneDashboardPageWidgetBarNullValue =
+      module_index.OneDashboardPageWidgetBarNullValue.new;
+  final OneDashboardPageWidgetBarNullValueArgs =
+      module_index.OneDashboardPageWidgetBarNullValue.new;
+  final OneDashboardPageWidgetBarNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetBarNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBarNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBarNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBarUnit =
+      module_index.OneDashboardPageWidgetBarUnit.new;
+  final OneDashboardPageWidgetBarUnitArgs =
+      module_index.OneDashboardPageWidgetBarUnit.new;
+  final OneDashboardPageWidgetBarUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetBarUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBarUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBarUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBillboard =
+      module_index.OneDashboardPageWidgetBillboard.new;
+  final OneDashboardPageWidgetBillboardArgs =
+      module_index.OneDashboardPageWidgetBillboard.new;
+  final OneDashboardPageWidgetBillboardBillboardSettings =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettings.new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsArgs =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettings.new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsGridOptions =
+      module_index
+          .OneDashboardPageWidgetBillboardBillboardSettingsGridOptions
+          .new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsGridOptionsArgs =
+      module_index
+          .OneDashboardPageWidgetBillboardBillboardSettingsGridOptions
+          .new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsLink =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettingsLink.new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsLinkArgs =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettingsLink.new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsVisual =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettingsVisual.new;
+  final OneDashboardPageWidgetBillboardBillboardSettingsVisualArgs =
+      module_index.OneDashboardPageWidgetBillboardBillboardSettingsVisual.new;
+  final OneDashboardPageWidgetBillboardColor =
+      module_index.OneDashboardPageWidgetBillboardColor.new;
+  final OneDashboardPageWidgetBillboardColorArgs =
+      module_index.OneDashboardPageWidgetBillboardColor.new;
+  final OneDashboardPageWidgetBillboardColorSeriesOverride =
+      module_index.OneDashboardPageWidgetBillboardColorSeriesOverride.new;
+  final OneDashboardPageWidgetBillboardColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBillboardColorSeriesOverride.new;
+  final OneDashboardPageWidgetBillboardDataFormat =
+      module_index.OneDashboardPageWidgetBillboardDataFormat.new;
+  final OneDashboardPageWidgetBillboardDataFormatArgs =
+      module_index.OneDashboardPageWidgetBillboardDataFormat.new;
+  final OneDashboardPageWidgetBillboardInitialSorting =
+      module_index.OneDashboardPageWidgetBillboardInitialSorting.new;
+  final OneDashboardPageWidgetBillboardInitialSortingArgs =
+      module_index.OneDashboardPageWidgetBillboardInitialSorting.new;
+  final OneDashboardPageWidgetBillboardNrqlQuery =
+      module_index.OneDashboardPageWidgetBillboardNrqlQuery.new;
+  final OneDashboardPageWidgetBillboardNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetBillboardNrqlQuery.new;
+  final OneDashboardPageWidgetBillboardNullValue =
+      module_index.OneDashboardPageWidgetBillboardNullValue.new;
+  final OneDashboardPageWidgetBillboardNullValueArgs =
+      module_index.OneDashboardPageWidgetBillboardNullValue.new;
+  final OneDashboardPageWidgetBillboardNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetBillboardNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBillboardNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBillboardNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBillboardUnit =
+      module_index.OneDashboardPageWidgetBillboardUnit.new;
+  final OneDashboardPageWidgetBillboardUnitArgs =
+      module_index.OneDashboardPageWidgetBillboardUnit.new;
+  final OneDashboardPageWidgetBillboardUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetBillboardUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBillboardUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBillboardUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBullet =
+      module_index.OneDashboardPageWidgetBullet.new;
+  final OneDashboardPageWidgetBulletArgs =
+      module_index.OneDashboardPageWidgetBullet.new;
+  final OneDashboardPageWidgetBulletColor =
+      module_index.OneDashboardPageWidgetBulletColor.new;
+  final OneDashboardPageWidgetBulletColorArgs =
+      module_index.OneDashboardPageWidgetBulletColor.new;
+  final OneDashboardPageWidgetBulletColorSeriesOverride =
+      module_index.OneDashboardPageWidgetBulletColorSeriesOverride.new;
+  final OneDashboardPageWidgetBulletColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBulletColorSeriesOverride.new;
+  final OneDashboardPageWidgetBulletDataFormat =
+      module_index.OneDashboardPageWidgetBulletDataFormat.new;
+  final OneDashboardPageWidgetBulletDataFormatArgs =
+      module_index.OneDashboardPageWidgetBulletDataFormat.new;
+  final OneDashboardPageWidgetBulletInitialSorting =
+      module_index.OneDashboardPageWidgetBulletInitialSorting.new;
+  final OneDashboardPageWidgetBulletInitialSortingArgs =
+      module_index.OneDashboardPageWidgetBulletInitialSorting.new;
+  final OneDashboardPageWidgetBulletNrqlQuery =
+      module_index.OneDashboardPageWidgetBulletNrqlQuery.new;
+  final OneDashboardPageWidgetBulletNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetBulletNrqlQuery.new;
+  final OneDashboardPageWidgetBulletNullValue =
+      module_index.OneDashboardPageWidgetBulletNullValue.new;
+  final OneDashboardPageWidgetBulletNullValueArgs =
+      module_index.OneDashboardPageWidgetBulletNullValue.new;
+  final OneDashboardPageWidgetBulletNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetBulletNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBulletNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBulletNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetBulletUnit =
+      module_index.OneDashboardPageWidgetBulletUnit.new;
+  final OneDashboardPageWidgetBulletUnitArgs =
+      module_index.OneDashboardPageWidgetBulletUnit.new;
+  final OneDashboardPageWidgetBulletUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetBulletUnitSeriesOverride.new;
+  final OneDashboardPageWidgetBulletUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetBulletUnitSeriesOverride.new;
+  final OneDashboardPageWidgetFunnel =
+      module_index.OneDashboardPageWidgetFunnel.new;
+  final OneDashboardPageWidgetFunnelArgs =
+      module_index.OneDashboardPageWidgetFunnel.new;
+  final OneDashboardPageWidgetFunnelColor =
+      module_index.OneDashboardPageWidgetFunnelColor.new;
+  final OneDashboardPageWidgetFunnelColorArgs =
+      module_index.OneDashboardPageWidgetFunnelColor.new;
+  final OneDashboardPageWidgetFunnelColorSeriesOverride =
+      module_index.OneDashboardPageWidgetFunnelColorSeriesOverride.new;
+  final OneDashboardPageWidgetFunnelColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetFunnelColorSeriesOverride.new;
+  final OneDashboardPageWidgetFunnelDataFormat =
+      module_index.OneDashboardPageWidgetFunnelDataFormat.new;
+  final OneDashboardPageWidgetFunnelDataFormatArgs =
+      module_index.OneDashboardPageWidgetFunnelDataFormat.new;
+  final OneDashboardPageWidgetFunnelInitialSorting =
+      module_index.OneDashboardPageWidgetFunnelInitialSorting.new;
+  final OneDashboardPageWidgetFunnelInitialSortingArgs =
+      module_index.OneDashboardPageWidgetFunnelInitialSorting.new;
+  final OneDashboardPageWidgetFunnelNrqlQuery =
+      module_index.OneDashboardPageWidgetFunnelNrqlQuery.new;
+  final OneDashboardPageWidgetFunnelNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetFunnelNrqlQuery.new;
+  final OneDashboardPageWidgetFunnelNullValue =
+      module_index.OneDashboardPageWidgetFunnelNullValue.new;
+  final OneDashboardPageWidgetFunnelNullValueArgs =
+      module_index.OneDashboardPageWidgetFunnelNullValue.new;
+  final OneDashboardPageWidgetFunnelNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetFunnelNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetFunnelNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetFunnelNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetFunnelUnit =
+      module_index.OneDashboardPageWidgetFunnelUnit.new;
+  final OneDashboardPageWidgetFunnelUnitArgs =
+      module_index.OneDashboardPageWidgetFunnelUnit.new;
+  final OneDashboardPageWidgetFunnelUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetFunnelUnitSeriesOverride.new;
+  final OneDashboardPageWidgetFunnelUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetFunnelUnitSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmap =
+      module_index.OneDashboardPageWidgetHeatmap.new;
+  final OneDashboardPageWidgetHeatmapArgs =
+      module_index.OneDashboardPageWidgetHeatmap.new;
+  final OneDashboardPageWidgetHeatmapColor =
+      module_index.OneDashboardPageWidgetHeatmapColor.new;
+  final OneDashboardPageWidgetHeatmapColorArgs =
+      module_index.OneDashboardPageWidgetHeatmapColor.new;
+  final OneDashboardPageWidgetHeatmapColorSeriesOverride =
+      module_index.OneDashboardPageWidgetHeatmapColorSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmapColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHeatmapColorSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmapDataFormat =
+      module_index.OneDashboardPageWidgetHeatmapDataFormat.new;
+  final OneDashboardPageWidgetHeatmapDataFormatArgs =
+      module_index.OneDashboardPageWidgetHeatmapDataFormat.new;
+  final OneDashboardPageWidgetHeatmapInitialSorting =
+      module_index.OneDashboardPageWidgetHeatmapInitialSorting.new;
+  final OneDashboardPageWidgetHeatmapInitialSortingArgs =
+      module_index.OneDashboardPageWidgetHeatmapInitialSorting.new;
+  final OneDashboardPageWidgetHeatmapNrqlQuery =
+      module_index.OneDashboardPageWidgetHeatmapNrqlQuery.new;
+  final OneDashboardPageWidgetHeatmapNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetHeatmapNrqlQuery.new;
+  final OneDashboardPageWidgetHeatmapNullValue =
+      module_index.OneDashboardPageWidgetHeatmapNullValue.new;
+  final OneDashboardPageWidgetHeatmapNullValueArgs =
+      module_index.OneDashboardPageWidgetHeatmapNullValue.new;
+  final OneDashboardPageWidgetHeatmapNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetHeatmapNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmapNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHeatmapNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmapUnit =
+      module_index.OneDashboardPageWidgetHeatmapUnit.new;
+  final OneDashboardPageWidgetHeatmapUnitArgs =
+      module_index.OneDashboardPageWidgetHeatmapUnit.new;
+  final OneDashboardPageWidgetHeatmapUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetHeatmapUnitSeriesOverride.new;
+  final OneDashboardPageWidgetHeatmapUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHeatmapUnitSeriesOverride.new;
+  final OneDashboardPageWidgetHistogram =
+      module_index.OneDashboardPageWidgetHistogram.new;
+  final OneDashboardPageWidgetHistogramArgs =
+      module_index.OneDashboardPageWidgetHistogram.new;
+  final OneDashboardPageWidgetHistogramColor =
+      module_index.OneDashboardPageWidgetHistogramColor.new;
+  final OneDashboardPageWidgetHistogramColorArgs =
+      module_index.OneDashboardPageWidgetHistogramColor.new;
+  final OneDashboardPageWidgetHistogramColorSeriesOverride =
+      module_index.OneDashboardPageWidgetHistogramColorSeriesOverride.new;
+  final OneDashboardPageWidgetHistogramColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHistogramColorSeriesOverride.new;
+  final OneDashboardPageWidgetHistogramDataFormat =
+      module_index.OneDashboardPageWidgetHistogramDataFormat.new;
+  final OneDashboardPageWidgetHistogramDataFormatArgs =
+      module_index.OneDashboardPageWidgetHistogramDataFormat.new;
+  final OneDashboardPageWidgetHistogramInitialSorting =
+      module_index.OneDashboardPageWidgetHistogramInitialSorting.new;
+  final OneDashboardPageWidgetHistogramInitialSortingArgs =
+      module_index.OneDashboardPageWidgetHistogramInitialSorting.new;
+  final OneDashboardPageWidgetHistogramNrqlQuery =
+      module_index.OneDashboardPageWidgetHistogramNrqlQuery.new;
+  final OneDashboardPageWidgetHistogramNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetHistogramNrqlQuery.new;
+  final OneDashboardPageWidgetHistogramNullValue =
+      module_index.OneDashboardPageWidgetHistogramNullValue.new;
+  final OneDashboardPageWidgetHistogramNullValueArgs =
+      module_index.OneDashboardPageWidgetHistogramNullValue.new;
+  final OneDashboardPageWidgetHistogramNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetHistogramNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetHistogramNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHistogramNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetHistogramUnit =
+      module_index.OneDashboardPageWidgetHistogramUnit.new;
+  final OneDashboardPageWidgetHistogramUnitArgs =
+      module_index.OneDashboardPageWidgetHistogramUnit.new;
+  final OneDashboardPageWidgetHistogramUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetHistogramUnitSeriesOverride.new;
+  final OneDashboardPageWidgetHistogramUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetHistogramUnitSeriesOverride.new;
+  final OneDashboardPageWidgetJson =
+      module_index.OneDashboardPageWidgetJson.new;
+  final OneDashboardPageWidgetJsonArgs =
+      module_index.OneDashboardPageWidgetJson.new;
+  final OneDashboardPageWidgetJsonColor =
+      module_index.OneDashboardPageWidgetJsonColor.new;
+  final OneDashboardPageWidgetJsonColorArgs =
+      module_index.OneDashboardPageWidgetJsonColor.new;
+  final OneDashboardPageWidgetJsonColorSeriesOverride =
+      module_index.OneDashboardPageWidgetJsonColorSeriesOverride.new;
+  final OneDashboardPageWidgetJsonColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetJsonColorSeriesOverride.new;
+  final OneDashboardPageWidgetJsonDataFormat =
+      module_index.OneDashboardPageWidgetJsonDataFormat.new;
+  final OneDashboardPageWidgetJsonDataFormatArgs =
+      module_index.OneDashboardPageWidgetJsonDataFormat.new;
+  final OneDashboardPageWidgetJsonInitialSorting =
+      module_index.OneDashboardPageWidgetJsonInitialSorting.new;
+  final OneDashboardPageWidgetJsonInitialSortingArgs =
+      module_index.OneDashboardPageWidgetJsonInitialSorting.new;
+  final OneDashboardPageWidgetJsonNrqlQuery =
+      module_index.OneDashboardPageWidgetJsonNrqlQuery.new;
+  final OneDashboardPageWidgetJsonNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetJsonNrqlQuery.new;
+  final OneDashboardPageWidgetJsonNullValue =
+      module_index.OneDashboardPageWidgetJsonNullValue.new;
+  final OneDashboardPageWidgetJsonNullValueArgs =
+      module_index.OneDashboardPageWidgetJsonNullValue.new;
+  final OneDashboardPageWidgetJsonNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetJsonNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetJsonNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetJsonNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetJsonUnit =
+      module_index.OneDashboardPageWidgetJsonUnit.new;
+  final OneDashboardPageWidgetJsonUnitArgs =
+      module_index.OneDashboardPageWidgetJsonUnit.new;
+  final OneDashboardPageWidgetJsonUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetJsonUnitSeriesOverride.new;
+  final OneDashboardPageWidgetJsonUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetJsonUnitSeriesOverride.new;
+  final OneDashboardPageWidgetLine =
+      module_index.OneDashboardPageWidgetLine.new;
+  final OneDashboardPageWidgetLineArgs =
+      module_index.OneDashboardPageWidgetLine.new;
+  final OneDashboardPageWidgetLineColor =
+      module_index.OneDashboardPageWidgetLineColor.new;
+  final OneDashboardPageWidgetLineColorArgs =
+      module_index.OneDashboardPageWidgetLineColor.new;
+  final OneDashboardPageWidgetLineColorSeriesOverride =
+      module_index.OneDashboardPageWidgetLineColorSeriesOverride.new;
+  final OneDashboardPageWidgetLineColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLineColorSeriesOverride.new;
+  final OneDashboardPageWidgetLineDataFormat =
+      module_index.OneDashboardPageWidgetLineDataFormat.new;
+  final OneDashboardPageWidgetLineDataFormatArgs =
+      module_index.OneDashboardPageWidgetLineDataFormat.new;
+  final OneDashboardPageWidgetLineInitialSorting =
+      module_index.OneDashboardPageWidgetLineInitialSorting.new;
+  final OneDashboardPageWidgetLineInitialSortingArgs =
+      module_index.OneDashboardPageWidgetLineInitialSorting.new;
+  final OneDashboardPageWidgetLineNrqlQuery =
+      module_index.OneDashboardPageWidgetLineNrqlQuery.new;
+  final OneDashboardPageWidgetLineNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetLineNrqlQuery.new;
+  final OneDashboardPageWidgetLineNullValue =
+      module_index.OneDashboardPageWidgetLineNullValue.new;
+  final OneDashboardPageWidgetLineNullValueArgs =
+      module_index.OneDashboardPageWidgetLineNullValue.new;
+  final OneDashboardPageWidgetLineNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetLineNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetLineNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLineNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetLineThreshold =
+      module_index.OneDashboardPageWidgetLineThreshold.new;
+  final OneDashboardPageWidgetLineThresholdArgs =
+      module_index.OneDashboardPageWidgetLineThreshold.new;
+  final OneDashboardPageWidgetLineTooltip =
+      module_index.OneDashboardPageWidgetLineTooltip.new;
+  final OneDashboardPageWidgetLineTooltipArgs =
+      module_index.OneDashboardPageWidgetLineTooltip.new;
+  final OneDashboardPageWidgetLineUnit =
+      module_index.OneDashboardPageWidgetLineUnit.new;
+  final OneDashboardPageWidgetLineUnitArgs =
+      module_index.OneDashboardPageWidgetLineUnit.new;
+  final OneDashboardPageWidgetLineUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetLineUnitSeriesOverride.new;
+  final OneDashboardPageWidgetLineUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLineUnitSeriesOverride.new;
+  final OneDashboardPageWidgetLineYAxisRight =
+      module_index.OneDashboardPageWidgetLineYAxisRight.new;
+  final OneDashboardPageWidgetLineYAxisRightArgs =
+      module_index.OneDashboardPageWidgetLineYAxisRight.new;
+  final OneDashboardPageWidgetLogTable =
+      module_index.OneDashboardPageWidgetLogTable.new;
+  final OneDashboardPageWidgetLogTableArgs =
+      module_index.OneDashboardPageWidgetLogTable.new;
+  final OneDashboardPageWidgetLogTableColor =
+      module_index.OneDashboardPageWidgetLogTableColor.new;
+  final OneDashboardPageWidgetLogTableColorArgs =
+      module_index.OneDashboardPageWidgetLogTableColor.new;
+  final OneDashboardPageWidgetLogTableColorSeriesOverride =
+      module_index.OneDashboardPageWidgetLogTableColorSeriesOverride.new;
+  final OneDashboardPageWidgetLogTableColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLogTableColorSeriesOverride.new;
+  final OneDashboardPageWidgetLogTableDataFormat =
+      module_index.OneDashboardPageWidgetLogTableDataFormat.new;
+  final OneDashboardPageWidgetLogTableDataFormatArgs =
+      module_index.OneDashboardPageWidgetLogTableDataFormat.new;
+  final OneDashboardPageWidgetLogTableInitialSorting =
+      module_index.OneDashboardPageWidgetLogTableInitialSorting.new;
+  final OneDashboardPageWidgetLogTableInitialSortingArgs =
+      module_index.OneDashboardPageWidgetLogTableInitialSorting.new;
+  final OneDashboardPageWidgetLogTableNrqlQuery =
+      module_index.OneDashboardPageWidgetLogTableNrqlQuery.new;
+  final OneDashboardPageWidgetLogTableNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetLogTableNrqlQuery.new;
+  final OneDashboardPageWidgetLogTableNullValue =
+      module_index.OneDashboardPageWidgetLogTableNullValue.new;
+  final OneDashboardPageWidgetLogTableNullValueArgs =
+      module_index.OneDashboardPageWidgetLogTableNullValue.new;
+  final OneDashboardPageWidgetLogTableNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetLogTableNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetLogTableNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLogTableNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetLogTableUnit =
+      module_index.OneDashboardPageWidgetLogTableUnit.new;
+  final OneDashboardPageWidgetLogTableUnitArgs =
+      module_index.OneDashboardPageWidgetLogTableUnit.new;
+  final OneDashboardPageWidgetLogTableUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetLogTableUnitSeriesOverride.new;
+  final OneDashboardPageWidgetLogTableUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetLogTableUnitSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdown =
+      module_index.OneDashboardPageWidgetMarkdown.new;
+  final OneDashboardPageWidgetMarkdownArgs =
+      module_index.OneDashboardPageWidgetMarkdown.new;
+  final OneDashboardPageWidgetMarkdownColor =
+      module_index.OneDashboardPageWidgetMarkdownColor.new;
+  final OneDashboardPageWidgetMarkdownColorArgs =
+      module_index.OneDashboardPageWidgetMarkdownColor.new;
+  final OneDashboardPageWidgetMarkdownColorSeriesOverride =
+      module_index.OneDashboardPageWidgetMarkdownColorSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdownColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetMarkdownColorSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdownDataFormat =
+      module_index.OneDashboardPageWidgetMarkdownDataFormat.new;
+  final OneDashboardPageWidgetMarkdownDataFormatArgs =
+      module_index.OneDashboardPageWidgetMarkdownDataFormat.new;
+  final OneDashboardPageWidgetMarkdownInitialSorting =
+      module_index.OneDashboardPageWidgetMarkdownInitialSorting.new;
+  final OneDashboardPageWidgetMarkdownInitialSortingArgs =
+      module_index.OneDashboardPageWidgetMarkdownInitialSorting.new;
+  final OneDashboardPageWidgetMarkdownNullValue =
+      module_index.OneDashboardPageWidgetMarkdownNullValue.new;
+  final OneDashboardPageWidgetMarkdownNullValueArgs =
+      module_index.OneDashboardPageWidgetMarkdownNullValue.new;
+  final OneDashboardPageWidgetMarkdownNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetMarkdownNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdownNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetMarkdownNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdownUnit =
+      module_index.OneDashboardPageWidgetMarkdownUnit.new;
+  final OneDashboardPageWidgetMarkdownUnitArgs =
+      module_index.OneDashboardPageWidgetMarkdownUnit.new;
+  final OneDashboardPageWidgetMarkdownUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetMarkdownUnitSeriesOverride.new;
+  final OneDashboardPageWidgetMarkdownUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetMarkdownUnitSeriesOverride.new;
+  final OneDashboardPageWidgetPy = module_index.OneDashboardPageWidgetPy.new;
+  final OneDashboardPageWidgetPyArgs =
+      module_index.OneDashboardPageWidgetPy.new;
+  final OneDashboardPageWidgetPyColor =
+      module_index.OneDashboardPageWidgetPyColor.new;
+  final OneDashboardPageWidgetPyColorArgs =
+      module_index.OneDashboardPageWidgetPyColor.new;
+  final OneDashboardPageWidgetPyColorSeriesOverride =
+      module_index.OneDashboardPageWidgetPyColorSeriesOverride.new;
+  final OneDashboardPageWidgetPyColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetPyColorSeriesOverride.new;
+  final OneDashboardPageWidgetPyDataFormat =
+      module_index.OneDashboardPageWidgetPyDataFormat.new;
+  final OneDashboardPageWidgetPyDataFormatArgs =
+      module_index.OneDashboardPageWidgetPyDataFormat.new;
+  final OneDashboardPageWidgetPyInitialSorting =
+      module_index.OneDashboardPageWidgetPyInitialSorting.new;
+  final OneDashboardPageWidgetPyInitialSortingArgs =
+      module_index.OneDashboardPageWidgetPyInitialSorting.new;
+  final OneDashboardPageWidgetPyNrqlQuery =
+      module_index.OneDashboardPageWidgetPyNrqlQuery.new;
+  final OneDashboardPageWidgetPyNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetPyNrqlQuery.new;
+  final OneDashboardPageWidgetPyNullValue =
+      module_index.OneDashboardPageWidgetPyNullValue.new;
+  final OneDashboardPageWidgetPyNullValueArgs =
+      module_index.OneDashboardPageWidgetPyNullValue.new;
+  final OneDashboardPageWidgetPyNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetPyNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetPyNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetPyNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetPyUnit =
+      module_index.OneDashboardPageWidgetPyUnit.new;
+  final OneDashboardPageWidgetPyUnitArgs =
+      module_index.OneDashboardPageWidgetPyUnit.new;
+  final OneDashboardPageWidgetPyUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetPyUnitSeriesOverride.new;
+  final OneDashboardPageWidgetPyUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetPyUnitSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBar =
+      module_index.OneDashboardPageWidgetStackedBar.new;
+  final OneDashboardPageWidgetStackedBarArgs =
+      module_index.OneDashboardPageWidgetStackedBar.new;
+  final OneDashboardPageWidgetStackedBarColor =
+      module_index.OneDashboardPageWidgetStackedBarColor.new;
+  final OneDashboardPageWidgetStackedBarColorArgs =
+      module_index.OneDashboardPageWidgetStackedBarColor.new;
+  final OneDashboardPageWidgetStackedBarColorSeriesOverride =
+      module_index.OneDashboardPageWidgetStackedBarColorSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBarColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetStackedBarColorSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBarDataFormat =
+      module_index.OneDashboardPageWidgetStackedBarDataFormat.new;
+  final OneDashboardPageWidgetStackedBarDataFormatArgs =
+      module_index.OneDashboardPageWidgetStackedBarDataFormat.new;
+  final OneDashboardPageWidgetStackedBarInitialSorting =
+      module_index.OneDashboardPageWidgetStackedBarInitialSorting.new;
+  final OneDashboardPageWidgetStackedBarInitialSortingArgs =
+      module_index.OneDashboardPageWidgetStackedBarInitialSorting.new;
+  final OneDashboardPageWidgetStackedBarNrqlQuery =
+      module_index.OneDashboardPageWidgetStackedBarNrqlQuery.new;
+  final OneDashboardPageWidgetStackedBarNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetStackedBarNrqlQuery.new;
+  final OneDashboardPageWidgetStackedBarNullValue =
+      module_index.OneDashboardPageWidgetStackedBarNullValue.new;
+  final OneDashboardPageWidgetStackedBarNullValueArgs =
+      module_index.OneDashboardPageWidgetStackedBarNullValue.new;
+  final OneDashboardPageWidgetStackedBarNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetStackedBarNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBarNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetStackedBarNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBarTooltip =
+      module_index.OneDashboardPageWidgetStackedBarTooltip.new;
+  final OneDashboardPageWidgetStackedBarTooltipArgs =
+      module_index.OneDashboardPageWidgetStackedBarTooltip.new;
+  final OneDashboardPageWidgetStackedBarUnit =
+      module_index.OneDashboardPageWidgetStackedBarUnit.new;
+  final OneDashboardPageWidgetStackedBarUnitArgs =
+      module_index.OneDashboardPageWidgetStackedBarUnit.new;
+  final OneDashboardPageWidgetStackedBarUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetStackedBarUnitSeriesOverride.new;
+  final OneDashboardPageWidgetStackedBarUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetStackedBarUnitSeriesOverride.new;
+  final OneDashboardPageWidgetTable =
+      module_index.OneDashboardPageWidgetTable.new;
+  final OneDashboardPageWidgetTableArgs =
+      module_index.OneDashboardPageWidgetTable.new;
+  final OneDashboardPageWidgetTableColor =
+      module_index.OneDashboardPageWidgetTableColor.new;
+  final OneDashboardPageWidgetTableColorArgs =
+      module_index.OneDashboardPageWidgetTableColor.new;
+  final OneDashboardPageWidgetTableColorSeriesOverride =
+      module_index.OneDashboardPageWidgetTableColorSeriesOverride.new;
+  final OneDashboardPageWidgetTableColorSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetTableColorSeriesOverride.new;
+  final OneDashboardPageWidgetTableDataFormat =
+      module_index.OneDashboardPageWidgetTableDataFormat.new;
+  final OneDashboardPageWidgetTableDataFormatArgs =
+      module_index.OneDashboardPageWidgetTableDataFormat.new;
+  final OneDashboardPageWidgetTableInitialSorting =
+      module_index.OneDashboardPageWidgetTableInitialSorting.new;
+  final OneDashboardPageWidgetTableInitialSortingArgs =
+      module_index.OneDashboardPageWidgetTableInitialSorting.new;
+  final OneDashboardPageWidgetTableNrqlQuery =
+      module_index.OneDashboardPageWidgetTableNrqlQuery.new;
+  final OneDashboardPageWidgetTableNrqlQueryArgs =
+      module_index.OneDashboardPageWidgetTableNrqlQuery.new;
+  final OneDashboardPageWidgetTableNullValue =
+      module_index.OneDashboardPageWidgetTableNullValue.new;
+  final OneDashboardPageWidgetTableNullValueArgs =
+      module_index.OneDashboardPageWidgetTableNullValue.new;
+  final OneDashboardPageWidgetTableNullValueSeriesOverride =
+      module_index.OneDashboardPageWidgetTableNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetTableNullValueSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetTableNullValueSeriesOverride.new;
+  final OneDashboardPageWidgetTableThreshold =
+      module_index.OneDashboardPageWidgetTableThreshold.new;
+  final OneDashboardPageWidgetTableThresholdArgs =
+      module_index.OneDashboardPageWidgetTableThreshold.new;
+  final OneDashboardPageWidgetTableUnit =
+      module_index.OneDashboardPageWidgetTableUnit.new;
+  final OneDashboardPageWidgetTableUnitArgs =
+      module_index.OneDashboardPageWidgetTableUnit.new;
+  final OneDashboardPageWidgetTableUnitSeriesOverride =
+      module_index.OneDashboardPageWidgetTableUnitSeriesOverride.new;
+  final OneDashboardPageWidgetTableUnitSeriesOverrideArgs =
+      module_index.OneDashboardPageWidgetTableUnitSeriesOverride.new;
+  final OneDashboardRaw = module_index.OneDashboardRaw.new;
+  final OneDashboardRawArgs = module_index.OneDashboardRawArgs.new;
+  final OneDashboardRawPage = module_index.OneDashboardRawPage.new;
+  final OneDashboardRawPageArgs = module_index.OneDashboardRawPage.new;
+  final OneDashboardRawPageWidget = module_index.OneDashboardRawPageWidget.new;
+  final OneDashboardRawPageWidgetArgs =
+      module_index.OneDashboardRawPageWidget.new;
+  final OneDashboardRawState = module_index.OneDashboardRawState.new;
+  final OneDashboardRawStateArgs = module_index.OneDashboardRawState.new;
+  final OneDashboardState = module_index.OneDashboardState.new;
+  final OneDashboardStateArgs = module_index.OneDashboardState.new;
+  final OneDashboardVariable = module_index.OneDashboardVariable.new;
+  final OneDashboardVariableArgs = module_index.OneDashboardVariable.new;
+  final OneDashboardVariableItem = module_index.OneDashboardVariableItem.new;
+  final OneDashboardVariableItemArgs =
+      module_index.OneDashboardVariableItem.new;
+  final OneDashboardVariableNrqlQuery =
+      module_index.OneDashboardVariableNrqlQuery.new;
+  final OneDashboardVariableNrqlQueryArgs =
+      module_index.OneDashboardVariableNrqlQuery.new;
+  final OneDashboardVariableOption =
+      module_index.OneDashboardVariableOption.new;
+  final OneDashboardVariableOptionArgs =
+      module_index.OneDashboardVariableOption.new;
+  final PipelineCloudRule = module_index.PipelineCloudRule.new;
+  final PipelineCloudRuleArgs = module_index.PipelineCloudRuleArgs.new;
+  final PipelineCloudRuleState = module_index.PipelineCloudRuleState.new;
+  final PipelineCloudRuleStateArgs = module_index.PipelineCloudRuleState.new;
+  final ServiceLevel = module_index.ServiceLevel.new;
+  final ServiceLevelArgs = module_index.ServiceLevelArgs.new;
+  final ServiceLevelEvents = module_index.ServiceLevelEvents.new;
+  final ServiceLevelEventsArgs = module_index.ServiceLevelEvents.new;
+  final ServiceLevelEventsBadEvents =
+      module_index.ServiceLevelEventsBadEvents.new;
+  final ServiceLevelEventsBadEventsArgs =
+      module_index.ServiceLevelEventsBadEvents.new;
+  final ServiceLevelEventsBadEventsSelect =
+      module_index.ServiceLevelEventsBadEventsSelect.new;
+  final ServiceLevelEventsBadEventsSelectArgs =
+      module_index.ServiceLevelEventsBadEventsSelect.new;
+  final ServiceLevelEventsGoodEvents =
+      module_index.ServiceLevelEventsGoodEvents.new;
+  final ServiceLevelEventsGoodEventsArgs =
+      module_index.ServiceLevelEventsGoodEvents.new;
+  final ServiceLevelEventsGoodEventsSelect =
+      module_index.ServiceLevelEventsGoodEventsSelect.new;
+  final ServiceLevelEventsGoodEventsSelectArgs =
+      module_index.ServiceLevelEventsGoodEventsSelect.new;
+  final ServiceLevelEventsValidEvents =
+      module_index.ServiceLevelEventsValidEvents.new;
+  final ServiceLevelEventsValidEventsArgs =
+      module_index.ServiceLevelEventsValidEvents.new;
+  final ServiceLevelEventsValidEventsSelect =
+      module_index.ServiceLevelEventsValidEventsSelect.new;
+  final ServiceLevelEventsValidEventsSelectArgs =
+      module_index.ServiceLevelEventsValidEventsSelect.new;
+  final ServiceLevelObjective = module_index.ServiceLevelObjective.new;
+  final ServiceLevelObjectiveArgs = module_index.ServiceLevelObjective.new;
+  final ServiceLevelObjectiveTimeWindow =
+      module_index.ServiceLevelObjectiveTimeWindow.new;
+  final ServiceLevelObjectiveTimeWindowArgs =
+      module_index.ServiceLevelObjectiveTimeWindow.new;
+  final ServiceLevelObjectiveTimeWindowRolling =
+      module_index.ServiceLevelObjectiveTimeWindowRolling.new;
+  final ServiceLevelObjectiveTimeWindowRollingArgs =
+      module_index.ServiceLevelObjectiveTimeWindowRolling.new;
+  final ServiceLevelState = module_index.ServiceLevelState.new;
+  final ServiceLevelStateArgs = module_index.ServiceLevelState.new;
+  final User = module_index.User.new;
+  final UserArgs = module_index.UserArgs.new;
+  final UserState = module_index.UserState.new;
+  final UserStateArgs = module_index.UserState.new;
+  final Workflow = module_index.Workflow.new;
+  final WorkflowArgs = module_index.WorkflowArgs.new;
+  final WorkflowDestination = module_index.WorkflowDestination.new;
+  final WorkflowDestinationArgs = module_index.WorkflowDestination.new;
+  final WorkflowEnrichments = module_index.WorkflowEnrichments.new;
+  final WorkflowEnrichmentsArgs = module_index.WorkflowEnrichments.new;
+  final WorkflowEnrichmentsNrql = module_index.WorkflowEnrichmentsNrql.new;
+  final WorkflowEnrichmentsNrqlArgs = module_index.WorkflowEnrichmentsNrql.new;
+  final WorkflowEnrichmentsNrqlConfiguration =
+      module_index.WorkflowEnrichmentsNrqlConfiguration.new;
+  final WorkflowEnrichmentsNrqlConfigurationArgs =
+      module_index.WorkflowEnrichmentsNrqlConfiguration.new;
+  final WorkflowIssuesFilter = module_index.WorkflowIssuesFilter.new;
+  final WorkflowIssuesFilterArgs = module_index.WorkflowIssuesFilter.new;
+  final WorkflowIssuesFilterPredicate =
+      module_index.WorkflowIssuesFilterPredicate.new;
+  final WorkflowIssuesFilterPredicateArgs =
+      module_index.WorkflowIssuesFilterPredicate.new;
+  final WorkflowState = module_index.WorkflowState.new;
+  final WorkflowStateArgs = module_index.WorkflowState.new;
+  final getAccount = module_index.getAccount;
+  final getAlertChannel = module_index.getAlertChannel;
+  final getAlertPolicy = module_index.getAlertPolicy;
+  final getApplication = module_index.getApplication;
+  final getAuthenticationDomain = module_index.getAuthenticationDomain;
+  final getCloudAccount = module_index.getCloudAccount;
+  final getEntity = module_index.getEntity;
+  final getGroup = module_index.getGroup;
+  final getKeyTransaction = module_index.getKeyTransaction;
+  final getNotificationDestination = module_index.getNotificationDestination;
+  final getObfuscationExpression = module_index.getObfuscationExpression;
+  final getServiceLevelAlertHelper = module_index.getServiceLevelAlertHelper;
+  final getTestGrokPattern = module_index.getTestGrokPattern;
+  final getUser = module_index.getUser;
 }
 
 class _InsightsModuleNamespace {
   _InsightsModuleNamespace();
-  final Event = _insights.Event.new;
-  final EventArgs = _insights.EventArgs.new;
-  final EventEvent = _insights.EventEvent.new;
-  final EventEventArgs = _insights.EventEvent.new;
-  final EventEventAttribute = _insights.EventEventAttribute.new;
-  final EventEventAttributeArgs = _insights.EventEventAttribute.new;
-  final EventState = _insights.EventState.new;
-  final EventStateArgs = _insights.EventState.new;
+  final Event = module_insights.Event.new;
+  final EventArgs = module_insights.EventArgs.new;
+  final EventEvent = module_insights.EventEvent.new;
+  final EventEventArgs = module_insights.EventEvent.new;
+  final EventEventAttribute = module_insights.EventEventAttribute.new;
+  final EventEventAttributeArgs = module_insights.EventEventAttribute.new;
+  final EventState = module_insights.EventState.new;
+  final EventStateArgs = module_insights.EventState.new;
 }
 
 class _PluginsModuleNamespace {
   _PluginsModuleNamespace();
-  final ApplicationSettings = _plugins.ApplicationSettings.new;
-  final ApplicationSettingsArgs = _plugins.ApplicationSettingsArgs.new;
-  final ApplicationSettingsErrorCollector = _plugins.ApplicationSettingsErrorCollector.new;
-  final ApplicationSettingsErrorCollectorArgs = _plugins.ApplicationSettingsErrorCollector.new;
-  final ApplicationSettingsState = _plugins.ApplicationSettingsState.new;
-  final ApplicationSettingsStateArgs = _plugins.ApplicationSettingsState.new;
-  final ApplicationSettingsTransactionTracer = _plugins.ApplicationSettingsTransactionTracer.new;
-  final ApplicationSettingsTransactionTracerArgs = _plugins.ApplicationSettingsTransactionTracer.new;
-  final ApplicationSettingsTransactionTracerExplainQueryPlan = _plugins.ApplicationSettingsTransactionTracerExplainQueryPlan.new;
-  final ApplicationSettingsTransactionTracerExplainQueryPlanArgs = _plugins.ApplicationSettingsTransactionTracerExplainQueryPlan.new;
-  final ApplicationSettingsTransactionTracerSql = _plugins.ApplicationSettingsTransactionTracerSql.new;
-  final ApplicationSettingsTransactionTracerSqlArgs = _plugins.ApplicationSettingsTransactionTracerSql.new;
-  final Workload = _plugins.Workload.new;
-  final WorkloadArgs = _plugins.WorkloadArgs.new;
-  final WorkloadEntitySearchQuery = _plugins.WorkloadEntitySearchQuery.new;
-  final WorkloadEntitySearchQueryArgs = _plugins.WorkloadEntitySearchQuery.new;
-  final WorkloadState = _plugins.WorkloadState.new;
-  final WorkloadStateArgs = _plugins.WorkloadState.new;
-  final WorkloadStatusConfigAutomatic = _plugins.WorkloadStatusConfigAutomatic.new;
-  final WorkloadStatusConfigAutomaticArgs = _plugins.WorkloadStatusConfigAutomatic.new;
-  final WorkloadStatusConfigAutomaticRemainingEntitiesRule = _plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRule.new;
-  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleArgs = _plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRule.new;
-  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup = _plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup.new;
-  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollupArgs = _plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup.new;
-  final WorkloadStatusConfigAutomaticRule = _plugins.WorkloadStatusConfigAutomaticRule.new;
-  final WorkloadStatusConfigAutomaticRuleArgs = _plugins.WorkloadStatusConfigAutomaticRule.new;
-  final WorkloadStatusConfigAutomaticRuleNrqlQuery = _plugins.WorkloadStatusConfigAutomaticRuleNrqlQuery.new;
-  final WorkloadStatusConfigAutomaticRuleNrqlQueryArgs = _plugins.WorkloadStatusConfigAutomaticRuleNrqlQuery.new;
-  final WorkloadStatusConfigAutomaticRuleRollup = _plugins.WorkloadStatusConfigAutomaticRuleRollup.new;
-  final WorkloadStatusConfigAutomaticRuleRollupArgs = _plugins.WorkloadStatusConfigAutomaticRuleRollup.new;
-  final WorkloadStatusConfigStatic = _plugins.WorkloadStatusConfigStatic.new;
-  final WorkloadStatusConfigStaticArgs = _plugins.WorkloadStatusConfigStatic.new;
+  final ApplicationSettings = module_plugins.ApplicationSettings.new;
+  final ApplicationSettingsArgs = module_plugins.ApplicationSettingsArgs.new;
+  final ApplicationSettingsErrorCollector =
+      module_plugins.ApplicationSettingsErrorCollector.new;
+  final ApplicationSettingsErrorCollectorArgs =
+      module_plugins.ApplicationSettingsErrorCollector.new;
+  final ApplicationSettingsState = module_plugins.ApplicationSettingsState.new;
+  final ApplicationSettingsStateArgs =
+      module_plugins.ApplicationSettingsState.new;
+  final ApplicationSettingsTransactionTracer =
+      module_plugins.ApplicationSettingsTransactionTracer.new;
+  final ApplicationSettingsTransactionTracerArgs =
+      module_plugins.ApplicationSettingsTransactionTracer.new;
+  final ApplicationSettingsTransactionTracerExplainQueryPlan =
+      module_plugins.ApplicationSettingsTransactionTracerExplainQueryPlan.new;
+  final ApplicationSettingsTransactionTracerExplainQueryPlanArgs =
+      module_plugins.ApplicationSettingsTransactionTracerExplainQueryPlan.new;
+  final ApplicationSettingsTransactionTracerSql =
+      module_plugins.ApplicationSettingsTransactionTracerSql.new;
+  final ApplicationSettingsTransactionTracerSqlArgs =
+      module_plugins.ApplicationSettingsTransactionTracerSql.new;
+  final Workload = module_plugins.Workload.new;
+  final WorkloadArgs = module_plugins.WorkloadArgs.new;
+  final WorkloadEntitySearchQuery =
+      module_plugins.WorkloadEntitySearchQuery.new;
+  final WorkloadEntitySearchQueryArgs =
+      module_plugins.WorkloadEntitySearchQuery.new;
+  final WorkloadState = module_plugins.WorkloadState.new;
+  final WorkloadStateArgs = module_plugins.WorkloadState.new;
+  final WorkloadStatusConfigAutomatic =
+      module_plugins.WorkloadStatusConfigAutomatic.new;
+  final WorkloadStatusConfigAutomaticArgs =
+      module_plugins.WorkloadStatusConfigAutomatic.new;
+  final WorkloadStatusConfigAutomaticRemainingEntitiesRule =
+      module_plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRule.new;
+  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleArgs =
+      module_plugins.WorkloadStatusConfigAutomaticRemainingEntitiesRule.new;
+  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup =
+      module_plugins
+          .WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup
+          .new;
+  final WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollupArgs =
+      module_plugins
+          .WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup
+          .new;
+  final WorkloadStatusConfigAutomaticRule =
+      module_plugins.WorkloadStatusConfigAutomaticRule.new;
+  final WorkloadStatusConfigAutomaticRuleArgs =
+      module_plugins.WorkloadStatusConfigAutomaticRule.new;
+  final WorkloadStatusConfigAutomaticRuleNrqlQuery =
+      module_plugins.WorkloadStatusConfigAutomaticRuleNrqlQuery.new;
+  final WorkloadStatusConfigAutomaticRuleNrqlQueryArgs =
+      module_plugins.WorkloadStatusConfigAutomaticRuleNrqlQuery.new;
+  final WorkloadStatusConfigAutomaticRuleRollup =
+      module_plugins.WorkloadStatusConfigAutomaticRuleRollup.new;
+  final WorkloadStatusConfigAutomaticRuleRollupArgs =
+      module_plugins.WorkloadStatusConfigAutomaticRuleRollup.new;
+  final WorkloadStatusConfigStatic =
+      module_plugins.WorkloadStatusConfigStatic.new;
+  final WorkloadStatusConfigStaticArgs =
+      module_plugins.WorkloadStatusConfigStatic.new;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Newrelic = _providers.ProviderProvider.new;
-  final NewrelicArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final terraformConfig = _providers.terraformConfig;
+  final Newrelic = module_providers.ProviderProvider.new;
+  final NewrelicArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
 
 class _SyntheticsModuleNamespace {
   _SyntheticsModuleNamespace();
-  final AlertCondition = _synthetics.AlertCondition.new;
-  final AlertConditionArgs = _synthetics.AlertConditionArgs.new;
-  final AlertConditionState = _synthetics.AlertConditionState.new;
-  final AlertConditionStateArgs = _synthetics.AlertConditionState.new;
-  final BrokenLinksMonitor = _synthetics.BrokenLinksMonitor.new;
-  final BrokenLinksMonitorArgs = _synthetics.BrokenLinksMonitorArgs.new;
-  final BrokenLinksMonitorState = _synthetics.BrokenLinksMonitorState.new;
-  final BrokenLinksMonitorStateArgs = _synthetics.BrokenLinksMonitorState.new;
-  final BrokenLinksMonitorTag = _synthetics.BrokenLinksMonitorTag.new;
-  final BrokenLinksMonitorTagArgs = _synthetics.BrokenLinksMonitorTag.new;
-  final CertCheckMonitor = _synthetics.CertCheckMonitor.new;
-  final CertCheckMonitorArgs = _synthetics.CertCheckMonitorArgs.new;
-  final CertCheckMonitorState = _synthetics.CertCheckMonitorState.new;
-  final CertCheckMonitorStateArgs = _synthetics.CertCheckMonitorState.new;
-  final CertCheckMonitorTag = _synthetics.CertCheckMonitorTag.new;
-  final CertCheckMonitorTagArgs = _synthetics.CertCheckMonitorTag.new;
-  final GetPrivateLocationArgs = _synthetics.GetPrivateLocationArgs.new;
-  final GetPrivateLocationResult = _synthetics.GetPrivateLocationResult.new;
-  final GetPrivateLocationResultArgs = _synthetics.GetPrivateLocationResult.new;
-  final GetSecureCredentialArgs = _synthetics.GetSecureCredentialArgs.new;
-  final GetSecureCredentialResult = _synthetics.GetSecureCredentialResult.new;
-  final GetSecureCredentialResultArgs = _synthetics.GetSecureCredentialResult.new;
-  final Monitor = _synthetics.Monitor.new;
-  final MonitorArgs = _synthetics.MonitorArgs.new;
-  final MonitorCustomHeader = _synthetics.MonitorCustomHeader.new;
-  final MonitorCustomHeaderArgs = _synthetics.MonitorCustomHeader.new;
-  final MonitorState = _synthetics.MonitorState.new;
-  final MonitorStateArgs = _synthetics.MonitorState.new;
-  final MonitorTag = _synthetics.MonitorTag.new;
-  final MonitorTagArgs = _synthetics.MonitorTag.new;
-  final MultiLocationAlertCondition = _synthetics.MultiLocationAlertCondition.new;
-  final MultiLocationAlertConditionArgs = _synthetics.MultiLocationAlertConditionArgs.new;
-  final MultiLocationAlertConditionCritical = _synthetics.MultiLocationAlertConditionCritical.new;
-  final MultiLocationAlertConditionCriticalArgs = _synthetics.MultiLocationAlertConditionCritical.new;
-  final MultiLocationAlertConditionState = _synthetics.MultiLocationAlertConditionState.new;
-  final MultiLocationAlertConditionStateArgs = _synthetics.MultiLocationAlertConditionState.new;
-  final MultiLocationAlertConditionWarning = _synthetics.MultiLocationAlertConditionWarning.new;
-  final MultiLocationAlertConditionWarningArgs = _synthetics.MultiLocationAlertConditionWarning.new;
-  final PrivateLocation = _synthetics.PrivateLocation.new;
-  final PrivateLocationArgs = _synthetics.PrivateLocationArgs.new;
-  final PrivateLocationState = _synthetics.PrivateLocationState.new;
-  final PrivateLocationStateArgs = _synthetics.PrivateLocationState.new;
-  final ScriptMonitor = _synthetics.ScriptMonitor.new;
-  final ScriptMonitorArgs = _synthetics.ScriptMonitorArgs.new;
-  final ScriptMonitorLocationPrivate = _synthetics.ScriptMonitorLocationPrivate.new;
-  final ScriptMonitorLocationPrivateArgs = _synthetics.ScriptMonitorLocationPrivate.new;
-  final ScriptMonitorState = _synthetics.ScriptMonitorState.new;
-  final ScriptMonitorStateArgs = _synthetics.ScriptMonitorState.new;
-  final ScriptMonitorTag = _synthetics.ScriptMonitorTag.new;
-  final ScriptMonitorTagArgs = _synthetics.ScriptMonitorTag.new;
-  final SecureCredential = _synthetics.SecureCredential.new;
-  final SecureCredentialArgs = _synthetics.SecureCredentialArgs.new;
-  final SecureCredentialState = _synthetics.SecureCredentialState.new;
-  final SecureCredentialStateArgs = _synthetics.SecureCredentialState.new;
-  final StepMonitor = _synthetics.StepMonitor.new;
-  final StepMonitorArgs = _synthetics.StepMonitorArgs.new;
-  final StepMonitorLocationPrivate = _synthetics.StepMonitorLocationPrivate.new;
-  final StepMonitorLocationPrivateArgs = _synthetics.StepMonitorLocationPrivate.new;
-  final StepMonitorState = _synthetics.StepMonitorState.new;
-  final StepMonitorStateArgs = _synthetics.StepMonitorState.new;
-  final StepMonitorStep = _synthetics.StepMonitorStep.new;
-  final StepMonitorStepArgs = _synthetics.StepMonitorStep.new;
-  final StepMonitorTag = _synthetics.StepMonitorTag.new;
-  final StepMonitorTagArgs = _synthetics.StepMonitorTag.new;
-  final getPrivateLocation = _synthetics.getPrivateLocation;
-  final getSecureCredential = _synthetics.getSecureCredential;
+  final AlertCondition = module_synthetics.AlertCondition.new;
+  final AlertConditionArgs = module_synthetics.AlertConditionArgs.new;
+  final AlertConditionState = module_synthetics.AlertConditionState.new;
+  final AlertConditionStateArgs = module_synthetics.AlertConditionState.new;
+  final BrokenLinksMonitor = module_synthetics.BrokenLinksMonitor.new;
+  final BrokenLinksMonitorArgs = module_synthetics.BrokenLinksMonitorArgs.new;
+  final BrokenLinksMonitorState = module_synthetics.BrokenLinksMonitorState.new;
+  final BrokenLinksMonitorStateArgs =
+      module_synthetics.BrokenLinksMonitorState.new;
+  final BrokenLinksMonitorTag = module_synthetics.BrokenLinksMonitorTag.new;
+  final BrokenLinksMonitorTagArgs = module_synthetics.BrokenLinksMonitorTag.new;
+  final CertCheckMonitor = module_synthetics.CertCheckMonitor.new;
+  final CertCheckMonitorArgs = module_synthetics.CertCheckMonitorArgs.new;
+  final CertCheckMonitorState = module_synthetics.CertCheckMonitorState.new;
+  final CertCheckMonitorStateArgs = module_synthetics.CertCheckMonitorState.new;
+  final CertCheckMonitorTag = module_synthetics.CertCheckMonitorTag.new;
+  final CertCheckMonitorTagArgs = module_synthetics.CertCheckMonitorTag.new;
+  final GetPrivateLocationArgs = module_synthetics.GetPrivateLocationArgs.new;
+  final GetPrivateLocationResult =
+      module_synthetics.GetPrivateLocationResult.new;
+  final GetPrivateLocationResultArgs =
+      module_synthetics.GetPrivateLocationResult.new;
+  final GetSecureCredentialArgs = module_synthetics.GetSecureCredentialArgs.new;
+  final GetSecureCredentialResult =
+      module_synthetics.GetSecureCredentialResult.new;
+  final GetSecureCredentialResultArgs =
+      module_synthetics.GetSecureCredentialResult.new;
+  final Monitor = module_synthetics.Monitor.new;
+  final MonitorArgs = module_synthetics.MonitorArgs.new;
+  final MonitorCustomHeader = module_synthetics.MonitorCustomHeader.new;
+  final MonitorCustomHeaderArgs = module_synthetics.MonitorCustomHeader.new;
+  final MonitorState = module_synthetics.MonitorState.new;
+  final MonitorStateArgs = module_synthetics.MonitorState.new;
+  final MonitorTag = module_synthetics.MonitorTag.new;
+  final MonitorTagArgs = module_synthetics.MonitorTag.new;
+  final MultiLocationAlertCondition =
+      module_synthetics.MultiLocationAlertCondition.new;
+  final MultiLocationAlertConditionArgs =
+      module_synthetics.MultiLocationAlertConditionArgs.new;
+  final MultiLocationAlertConditionCritical =
+      module_synthetics.MultiLocationAlertConditionCritical.new;
+  final MultiLocationAlertConditionCriticalArgs =
+      module_synthetics.MultiLocationAlertConditionCritical.new;
+  final MultiLocationAlertConditionState =
+      module_synthetics.MultiLocationAlertConditionState.new;
+  final MultiLocationAlertConditionStateArgs =
+      module_synthetics.MultiLocationAlertConditionState.new;
+  final MultiLocationAlertConditionWarning =
+      module_synthetics.MultiLocationAlertConditionWarning.new;
+  final MultiLocationAlertConditionWarningArgs =
+      module_synthetics.MultiLocationAlertConditionWarning.new;
+  final PrivateLocation = module_synthetics.PrivateLocation.new;
+  final PrivateLocationArgs = module_synthetics.PrivateLocationArgs.new;
+  final PrivateLocationState = module_synthetics.PrivateLocationState.new;
+  final PrivateLocationStateArgs = module_synthetics.PrivateLocationState.new;
+  final ScriptMonitor = module_synthetics.ScriptMonitor.new;
+  final ScriptMonitorArgs = module_synthetics.ScriptMonitorArgs.new;
+  final ScriptMonitorLocationPrivate =
+      module_synthetics.ScriptMonitorLocationPrivate.new;
+  final ScriptMonitorLocationPrivateArgs =
+      module_synthetics.ScriptMonitorLocationPrivate.new;
+  final ScriptMonitorState = module_synthetics.ScriptMonitorState.new;
+  final ScriptMonitorStateArgs = module_synthetics.ScriptMonitorState.new;
+  final ScriptMonitorTag = module_synthetics.ScriptMonitorTag.new;
+  final ScriptMonitorTagArgs = module_synthetics.ScriptMonitorTag.new;
+  final SecureCredential = module_synthetics.SecureCredential.new;
+  final SecureCredentialArgs = module_synthetics.SecureCredentialArgs.new;
+  final SecureCredentialState = module_synthetics.SecureCredentialState.new;
+  final SecureCredentialStateArgs = module_synthetics.SecureCredentialState.new;
+  final StepMonitor = module_synthetics.StepMonitor.new;
+  final StepMonitorArgs = module_synthetics.StepMonitorArgs.new;
+  final StepMonitorLocationPrivate =
+      module_synthetics.StepMonitorLocationPrivate.new;
+  final StepMonitorLocationPrivateArgs =
+      module_synthetics.StepMonitorLocationPrivate.new;
+  final StepMonitorState = module_synthetics.StepMonitorState.new;
+  final StepMonitorStateArgs = module_synthetics.StepMonitorState.new;
+  final StepMonitorStep = module_synthetics.StepMonitorStep.new;
+  final StepMonitorStepArgs = module_synthetics.StepMonitorStep.new;
+  final StepMonitorTag = module_synthetics.StepMonitorTag.new;
+  final StepMonitorTagArgs = module_synthetics.StepMonitorTag.new;
+  final getPrivateLocation = module_synthetics.getPrivateLocation;
+  final getSecureCredential = module_synthetics.getSecureCredential;
 }
-

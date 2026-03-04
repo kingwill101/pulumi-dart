@@ -7,6 +7,7 @@ import 'mqtt_destination_configuration.dart';
 class EventMqttDestination {
   /// The MQTT destination configuration.
   final pulumi.Input<MqttDestinationConfiguration> configuration;
+
   /// The set of supported event destinations for an asset.
   /// Expected value is 'Mqtt'.
   final pulumi.Input<String> target;
@@ -14,23 +15,27 @@ class EventMqttDestination {
   /// Creates a new [EventMqttDestination].
   /// [configuration] The MQTT destination configuration.
   /// [target] The set of supported event destinations for an asset.
-  EventMqttDestination({
-    required this.configuration,
-    required this.target,
-  });
+  EventMqttDestination({required this.configuration, required this.target});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': pulumi.Input.mapInputValue<MqttDestinationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          pulumi.Input.mapInputValue<
+            MqttDestinationConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory EventMqttDestination.fromMap(Map<String, dynamic> map) {
     return EventMqttDestination(
-      configuration: (MqttDestinationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      target: (map['target'] as String).input(),
+      configuration: pulumi.Input.fromValue(
+        MqttDestinationConfiguration.fromMap(
+          (map['configuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
-

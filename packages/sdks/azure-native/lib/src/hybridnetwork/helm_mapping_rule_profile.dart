@@ -7,12 +7,16 @@ import 'helm_mapping_rule_profile_options.dart';
 class HelmMappingRuleProfile {
   /// Helm package version.
   final pulumi.Input<String>? helmPackageVersion;
+
   /// The helm deployment options
   final pulumi.Input<HelmMappingRuleProfileOptions>? options;
+
   /// Helm release name.
   final pulumi.Input<String>? releaseName;
+
   /// Helm release namespace.
   final pulumi.Input<String>? releaseNamespace;
+
   /// Helm release values.
   final pulumi.Input<String>? values;
 
@@ -33,7 +37,11 @@ class HelmMappingRuleProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'helmPackageVersion': ?helmPackageVersion,
-      'options': ?pulumi.Input.mapOptionalInputValue<HelmMappingRuleProfileOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options':
+          ?pulumi.Input.mapOptionalInputValue<
+            HelmMappingRuleProfileOptions,
+            Map<String, dynamic>
+          >(options, (value) => value.toMap()),
       'releaseName': ?releaseName,
       'releaseNamespace': ?releaseNamespace,
       'values': ?values,
@@ -42,12 +50,35 @@ class HelmMappingRuleProfile {
 
   factory HelmMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return HelmMappingRuleProfile(
-      helmPackageVersion: map['helmPackageVersion'] == null ? null : (map['helmPackageVersion']! as String).input(),
-      options: map['options'] == null ? null : (HelmMappingRuleProfileOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
-      releaseName: map['releaseName'] == null ? null : (map['releaseName']! as String).input(),
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
-      values: map['values'] == null ? null : (map['values']! as String).input(),
+      helmPackageVersion: (() {
+        final guardedValue = map['helmPackageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HelmMappingRuleProfileOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      releaseName: (() {
+        final guardedValue = map['releaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseNamespace: (() {
+        final guardedValue = map['releaseNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

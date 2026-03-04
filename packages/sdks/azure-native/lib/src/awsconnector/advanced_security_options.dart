@@ -5,23 +5,27 @@ import 'samloptions_output.dart';
 
 /// Definition of AdvancedSecurityOptions
 class AdvancedSecurityOptions {
-  /// <p>Date and time when the migration period will be disabled. Only necessary when <a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'>enabling fine-grained access control on an existing domain</a>.</p>
+  /// &lt;p&gt;Date and time when the migration period will be disabled. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? anonymousAuthDisableDate;
-  /// <p>True if a 30-day migration period is enabled, during which administrators can create role mappings. Only necessary when <a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'>enabling fine-grained access control on an existing domain</a>.</p>
+
+  /// &lt;p&gt;True if a 30-day migration period is enabled, during which administrators can create role mappings. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<bool>? anonymousAuthEnabled;
-  /// <p>True if fine-grained access control is enabled.</p>
+
+  /// &lt;p&gt;True if fine-grained access control is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
-  /// <p>True if the internal user database is enabled.</p>
+
+  /// &lt;p&gt;True if the internal user database is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? internalUserDatabaseEnabled;
-  /// <p>Container for information about the SAML configuration for OpenSearch Dashboards.</p>
+
+  /// &lt;p&gt;Container for information about the SAML configuration for OpenSearch Dashboards.&lt;/p&gt;
   final pulumi.Input<SAMLOptionsOutput>? samlOptions;
 
   /// Creates a new [AdvancedSecurityOptions].
-  /// [anonymousAuthDisableDate] <p>Date and time when the migration period will be disabled. Only necessary when <a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'>enabling fine-grained access control on an existing domain</a>.</p>
-  /// [anonymousAuthEnabled] <p>True if a 30-day migration period is enabled, during which administrators can create role mappings. Only necessary when <a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'>enabling fine-grained access control on an existing domain</a>.</p>
-  /// [enabled] <p>True if fine-grained access control is enabled.</p>
-  /// [internalUserDatabaseEnabled] <p>True if the internal user database is enabled.</p>
-  /// [samlOptions] <p>Container for information about the SAML configuration for OpenSearch Dashboards.</p>
+  /// [anonymousAuthDisableDate] &lt;p&gt;Date and time when the migration period will be disabled. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
+  /// [anonymousAuthEnabled] &lt;p&gt;True if a 30-day migration period is enabled, during which administrators can create role mappings. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
+  /// [enabled] &lt;p&gt;True if fine-grained access control is enabled.&lt;/p&gt;
+  /// [internalUserDatabaseEnabled] &lt;p&gt;True if the internal user database is enabled.&lt;/p&gt;
+  /// [samlOptions] &lt;p&gt;Container for information about the SAML configuration for OpenSearch Dashboards.&lt;/p&gt;
   AdvancedSecurityOptions({
     this.anonymousAuthDisableDate,
     this.anonymousAuthEnabled,
@@ -36,18 +40,45 @@ class AdvancedSecurityOptions {
       'anonymousAuthEnabled': ?anonymousAuthEnabled,
       'enabled': ?enabled,
       'internalUserDatabaseEnabled': ?internalUserDatabaseEnabled,
-      'samlOptions': ?pulumi.Input.mapOptionalInputValue<SAMLOptionsOutput, Map<String, dynamic>>(samlOptions, (value) => value.toMap()),
+      'samlOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            SAMLOptionsOutput,
+            Map<String, dynamic>
+          >(samlOptions, (value) => value.toMap()),
     };
   }
 
   factory AdvancedSecurityOptions.fromMap(Map<String, dynamic> map) {
     return AdvancedSecurityOptions(
-      anonymousAuthDisableDate: map['anonymousAuthDisableDate'] == null ? null : (map['anonymousAuthDisableDate']! as String).input(),
-      anonymousAuthEnabled: map['anonymousAuthEnabled'] == null ? null : (map['anonymousAuthEnabled']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : (map['internalUserDatabaseEnabled']! as bool).input(),
-      samlOptions: map['samlOptions'] == null ? null : (SAMLOptionsOutput.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input(),
+      anonymousAuthDisableDate: (() {
+        final guardedValue = map['anonymousAuthDisableDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      anonymousAuthEnabled: (() {
+        final guardedValue = map['anonymousAuthEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      internalUserDatabaseEnabled: (() {
+        final guardedValue = map['internalUserDatabaseEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      samlOptions: (() {
+        final guardedValue = map['samlOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SAMLOptionsOutput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

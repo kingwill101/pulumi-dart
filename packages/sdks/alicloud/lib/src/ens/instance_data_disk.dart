@@ -9,12 +9,16 @@ class InstanceDataDisk {
   /// - local_hdd: local hdd disk
   /// - local_ssd: local disk ssd.
   final pulumi.Input<String>? category;
+
   /// Cloud Disk ID.
   final pulumi.Input<String>? diskId;
+
   /// The ID of the KMS key used by the cloud disk.
   final pulumi.Input<String>? encryptKeyId;
+
   /// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
   final pulumi.Input<bool>? encrypted;
+
   /// Data disk size, unit: GB.
   final pulumi.Input<int>? size;
 
@@ -44,12 +48,31 @@ class InstanceDataDisk {
 
   factory InstanceDataDisk.fromMap(Map<String, dynamic> map) {
     return InstanceDataDisk(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      encryptKeyId: map['encryptKeyId'] == null ? null : (map['encryptKeyId']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptKeyId: (() {
+        final guardedValue = map['encryptKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -35,11 +35,18 @@ class GetEntryGroupArgs {
 
   factory GetEntryGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupArgs(
-      entryGroupId: (map['entryGroupId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
+      entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readMask: (() {
+        final guardedValue = map['readMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

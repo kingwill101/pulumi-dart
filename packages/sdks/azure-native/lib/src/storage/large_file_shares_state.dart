@@ -3,16 +3,15 @@ enum LargeFileSharesState {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const LargeFileSharesState(this.value);
-  final String value;
+  const LargeFileSharesState(this.wireValue);
+  final String wireValue;
 
   static LargeFileSharesState fromValue(String value) {
     for (final item in LargeFileSharesState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LargeFileSharesState value: $value');
   }
 }
-

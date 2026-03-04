@@ -10,10 +10,13 @@ import 'table_replication_rule.dart';
 class TableReplicationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   final pulumi.Input<String> role;
+
   /// Replication rules. See Rule below for more details.
   final pulumi.Input<TableReplicationRule>? rule;
+
   /// ARN referencing the Table that owns this replication configuration.
   final pulumi.Input<String> tableArn;
 
@@ -33,18 +36,33 @@ class TableReplicationArgs {
     return <String, dynamic>{
       'region': ?region,
       'role': role,
-      'rule': ?pulumi.Input.mapOptionalInputValue<TableReplicationRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
+      'rule':
+          ?pulumi.Input.mapOptionalInputValue<
+            TableReplicationRule,
+            Map<String, dynamic>
+          >(rule, (value) => value.toMap()),
       'tableArn': tableArn,
     };
   }
 
   factory TableReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      role: (map['role'] as String).input(),
-      rule: map['rule'] == null ? null : ((TableReplicationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
-      tableArn: (map['tableArn'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      rule: (() {
+        final guardedValue = map['rule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableReplicationRule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tableArn: pulumi.Input.fromValue(map['tableArn'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ConnectionCloudResource {
 
   /// Creates a new [ConnectionCloudResource].
   /// [serviceAccountId] (Output)
-  ConnectionCloudResource({
-    this.serviceAccountId,
-  });
+  ConnectionCloudResource({this.serviceAccountId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccountId': ?serviceAccountId,
-    };
+    return <String, dynamic>{'serviceAccountId': ?serviceAccountId};
   }
 
   factory ConnectionCloudResource.fromMap(Map<String, dynamic> map) {
     return ConnectionCloudResource(
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
+      serviceAccountId: (() {
+        final guardedValue = map['serviceAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

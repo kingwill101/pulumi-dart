@@ -10,10 +10,7 @@ class UserAssignedIdentityProperties {
   /// Creates a new [UserAssignedIdentityProperties].
   /// [clientId] Optional.
   /// [principalId] Optional.
-  UserAssignedIdentityProperties({
-    this.clientId,
-    this.principalId,
-  });
+  UserAssignedIdentityProperties({this.clientId, this.principalId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +21,16 @@ class UserAssignedIdentityProperties {
 
   factory UserAssignedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityProperties(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

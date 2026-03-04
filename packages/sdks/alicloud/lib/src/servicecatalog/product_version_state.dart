@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductVersionState {
   /// Whether the version is activated
   final pulumi.Input<bool>? active;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Version description
   final pulumi.Input<String>? description;
+
   /// Administrator guidance
   final pulumi.Input<String>? guidance;
+
   /// Product ID
   final pulumi.Input<String>? productId;
+
   /// The name of the resource
   final pulumi.Input<String>? productVersionName;
+
   /// Template Type
   final pulumi.Input<String>? templateType;
+
   /// Template URL
   final pulumi.Input<String>? templateUrl;
 
@@ -56,15 +63,46 @@ class ProductVersionState {
 
   factory ProductVersionState.fromMap(Map<String, dynamic> map) {
     return ProductVersionState(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      guidance: map['guidance'] == null ? null : (map['guidance']! as String).input(),
-      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
-      productVersionName: map['productVersionName'] == null ? null : (map['productVersionName']! as String).input(),
-      templateType: map['templateType'] == null ? null : (map['templateType']! as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl']! as String).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      guidance: (() {
+        final guardedValue = map['guidance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: (() {
+        final guardedValue = map['productId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productVersionName: (() {
+        final guardedValue = map['productVersionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateType: (() {
+        final guardedValue = map['templateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateUrl: (() {
+        final guardedValue = map['templateUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionRuleResponseMetadata {
   /// Azure offering managing this resource on-behalf-of customer.
   final pulumi.Input<String> provisionedBy;
+
   /// Resource Id of azure offering managing this resource on-behalf-of customer.
   final pulumi.Input<String> provisionedByResourceId;
 
@@ -26,9 +27,10 @@ class DataCollectionRuleResponseMetadata {
 
   factory DataCollectionRuleResponseMetadata.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleResponseMetadata(
-      provisionedBy: (map['provisionedBy'] as String).input(),
-      provisionedByResourceId: (map['provisionedByResourceId'] as String).input(),
+      provisionedBy: pulumi.Input.fromValue(map['provisionedBy'] as String),
+      provisionedByResourceId: pulumi.Input.fromValue(
+        map['provisionedByResourceId'] as String,
+      ),
     );
   }
 }
-

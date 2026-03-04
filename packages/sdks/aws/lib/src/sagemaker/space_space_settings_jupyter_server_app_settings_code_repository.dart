@@ -13,15 +13,14 @@ class SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'repositoryUrl': repositoryUrl,
-    };
+    return <String, dynamic>{'repositoryUrl': repositoryUrl};
   }
 
-  factory SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository(
-      repositoryUrl: (map['repositoryUrl'] as String).input(),
+      repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
     );
   }
 }
-

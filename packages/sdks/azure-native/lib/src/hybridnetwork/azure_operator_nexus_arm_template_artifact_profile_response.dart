@@ -8,8 +8,10 @@ import 'referenced_resource_response.dart';
 class AzureOperatorNexusArmTemplateArtifactProfileResponse {
   /// The reference to artifact store.
   final pulumi.Input<ReferencedResourceResponse>? artifactStore;
+
   /// Template artifact profile.
-  final pulumi.Input<ArmTemplateArtifactProfileResponse>? templateArtifactProfile;
+  final pulumi.Input<ArmTemplateArtifactProfileResponse>?
+  templateArtifactProfile;
 
   /// Creates a new [AzureOperatorNexusArmTemplateArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
@@ -21,16 +23,41 @@ class AzureOperatorNexusArmTemplateArtifactProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
-      'templateArtifactProfile': ?pulumi.Input.mapOptionalInputValue<ArmTemplateArtifactProfileResponse, Map<String, dynamic>>(templateArtifactProfile, (value) => value.toMap()),
+      'artifactStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResourceResponse,
+            Map<String, dynamic>
+          >(artifactStore, (value) => value.toMap()),
+      'templateArtifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArmTemplateArtifactProfileResponse,
+            Map<String, dynamic>
+          >(templateArtifactProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureOperatorNexusArmTemplateArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureOperatorNexusArmTemplateArtifactProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureOperatorNexusArmTemplateArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
-      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfileResponse.fromMap((map['templateArtifactProfile']! as Map).cast<String, dynamic>())).input(),
+      artifactStore: (() {
+        final guardedValue = map['artifactStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      templateArtifactProfile: (() {
+        final guardedValue = map['templateArtifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArmTemplateArtifactProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

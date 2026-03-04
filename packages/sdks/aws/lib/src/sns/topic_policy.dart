@@ -4,7 +4,7 @@ import 'topic_policy_state.dart';
 
 /// Provides an SNS topic policy resource
 ///
-/// > **NOTE:** If a Principal is specified as just an AWS account ID rather than an ARN, AWS silently converts it to the ARN for the root user, causing future deployments to differ. To avoid this problem, just specify the full ARN, e.g. `arn:aws:iam::123456789012:root`
+/// &gt; **NOTE:** If a Principal is specified as just an AWS account ID rather than an ARN, AWS silently converts it to the ARN for the root user, causing future deployments to differ. To avoid this problem, just specify the full ARN, e.g. `arn:aws:iam::123456789012:root`
 ///
 /// ## Example Usage
 ///
@@ -352,10 +352,13 @@ import 'topic_policy_state.dart';
 class TopicPolicy extends pulumi.CustomResource {
   /// The ARN of the SNS topic
   late final pulumi.Output<String> arn;
+
   /// The AWS Account ID of the SNS topic owner
   late final pulumi.Output<String> owner;
+
   /// The fully-formed AWS policy as JSON.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -368,15 +371,15 @@ class TopicPolicy extends pulumi.CustomResource {
     TopicPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sns/topicPolicy:TopicPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.owner = registerOutput<String>('owner');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:sns/topicPolicy:TopicPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    owner = registerOutput<String>('owner');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [TopicPolicy] resource's state with the given [name] and [id].
@@ -397,14 +400,14 @@ class TopicPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sns/topicPolicy:TopicPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.owner = registerOutput<String>('owner');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:sns/topicPolicy:TopicPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    owner = registerOutput<String>('owner');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

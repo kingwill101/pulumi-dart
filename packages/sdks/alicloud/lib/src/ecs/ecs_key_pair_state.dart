@@ -6,18 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsKeyPairState {
   /// (Available since v1.237.0) The time when the key pair was created.
   final pulumi.Input<String>? createTime;
+
   /// The fingerprint of the key pair.
   final pulumi.Input<String>? fingerPrint;
+
   /// The key file.
   final pulumi.Input<String>? keyFile;
   final pulumi.Input<String>? keyName;
   final pulumi.Input<String>? keyNamePrefix;
+
   /// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   final pulumi.Input<String>? keyPairName;
+
   /// The public key of the key pair.
   final pulumi.Input<String>? publicKey;
+
   /// The ID of the resource group to which to add the key pair.
   final pulumi.Input<String>? resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,16 +65,53 @@ class EcsKeyPairState {
 
   factory EcsKeyPairState.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint']! as String).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix']! as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerPrint: (() {
+        final guardedValue = map['fingerPrint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyFile: (() {
+        final guardedValue = map['keyFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyNamePrefix: (() {
+        final guardedValue = map['keyNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

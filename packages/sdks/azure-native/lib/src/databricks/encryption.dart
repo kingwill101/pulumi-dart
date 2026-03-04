@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Encryption {
   /// The name of KeyVault key.
   final pulumi.Input<String>? keyName;
+
   /// The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   final pulumi.Input<String>? keySource;
+
   /// The Uri of KeyVault.
   final pulumi.Input<String>? keyVaultUri;
+
   /// The version of KeyVault key.
   final pulumi.Input<String>? keyVersion;
 
@@ -18,12 +21,7 @@ class Encryption {
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   /// [keyVaultUri] The Uri of KeyVault.
   /// [keyVersion] The version of KeyVault key.
-  Encryption({
-    this.keyName,
-    this.keySource,
-    this.keyVaultUri,
-    this.keyVersion,
-  });
+  Encryption({this.keyName, this.keySource, this.keyVaultUri, this.keyVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keySource: (() {
+        final guardedValue = map['keySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

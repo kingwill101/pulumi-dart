@@ -8,20 +8,13 @@ class AppCacheConfig {
 
   /// Creates a new [AppCacheConfig].
   /// [type] Type of cache configuration to use for an Amplify app. Valid values: `AMPLIFY_MANAGED`, `AMPLIFY_MANAGED_NO_COOKIES`.
-  AppCacheConfig({
-    required this.type,
-  });
+  AppCacheConfig({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory AppCacheConfig.fromMap(Map<String, dynamic> map) {
-    return AppCacheConfig(
-      type: (map['type'] as String).input(),
-    );
+    return AppCacheConfig(type: pulumi.Input.fromValue(map['type'] as String));
   }
 }
-

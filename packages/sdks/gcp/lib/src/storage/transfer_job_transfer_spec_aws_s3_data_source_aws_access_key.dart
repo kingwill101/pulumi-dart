@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
   /// AWS Key ID.
   final pulumi.Input<String> accessKeyId;
+
   /// AWS Secret Access Key.
   final pulumi.Input<String> secretAccessKey;
 
@@ -23,11 +24,12 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
     };
   }
 
-  factory TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.fromMap(Map<String, dynamic> map) {
+  factory TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(
-      accessKeyId: (map['accessKeyId'] as String).input(),
-      secretAccessKey: (map['secretAccessKey'] as String).input(),
+      accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
+      secretAccessKey: pulumi.Input.fromValue(map['secretAccessKey'] as String),
     );
   }
 }
-

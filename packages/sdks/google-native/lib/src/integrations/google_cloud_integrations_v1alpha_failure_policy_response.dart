@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaFailurePolicyResponse {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
   final pulumi.Input<String> intervalTime;
+
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   final pulumi.Input<int> maxRetries;
+
   /// Defines what happens to the task upon failure.
   final pulumi.Input<String> retryStrategy;
 
@@ -29,12 +31,13 @@ class GoogleCloudIntegrationsV1alphaFailurePolicyResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaFailurePolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaFailurePolicyResponse(
-      intervalTime: (map['intervalTime'] as String).input(),
-      maxRetries: (map['maxRetries'] as int).input(),
-      retryStrategy: (map['retryStrategy'] as String).input(),
+      intervalTime: pulumi.Input.fromValue(map['intervalTime'] as String),
+      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      retryStrategy: pulumi.Input.fromValue(map['retryStrategy'] as String),
     );
   }
 }
-

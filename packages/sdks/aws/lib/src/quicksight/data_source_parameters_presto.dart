@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersPresto {
   /// The catalog to which to connect.
   final pulumi.Input<String> catalog;
+
   /// The host to which to connect.
   final pulumi.Input<String> host;
+
   /// The port to which to connect.
   final pulumi.Input<int> port;
 
@@ -21,19 +23,14 @@ class DataSourceParametersPresto {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'catalog': catalog,
-      'host': host,
-      'port': port,
-    };
+    return <String, dynamic>{'catalog': catalog, 'host': host, 'port': port};
   }
 
   factory DataSourceParametersPresto.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersPresto(
-      catalog: (map['catalog'] as String).input(),
-      host: (map['host'] as String).input(),
-      port: (map['port'] as int).input(),
+      catalog: pulumi.Input.fromValue(map['catalog'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

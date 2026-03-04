@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aad_diagnostic_setting_args.dart';
-import 'aad_diagnostic_setting_enabled_log.dart';
 import 'aad_diagnostic_setting_state.dart';
 
 /// Manages an Azure Active Directory Diagnostic Setting for Azure Monitor.
 ///
-/// > **Note:** When using Service Principal authentication, the Service Principal must be assigned the _Contributor_ role at the scope `/providers/Microsoft.aadiam`. You can assign this role using the `az` CLI command: `az role assignment create --assignee-principal-type ServicePrincipal --assignee-object-id "<sp-object-id>" --scope "/providers/Microsoft.aadiam" --role "Contributor"`. The assigning user must be a User Access Administrator at the root level. Refer to the [Azure elevation guide](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin) for details.
+/// &gt; **Note:** When using Service Principal authentication, the Service Principal must be assigned the _Contributor_ role at the scope `/providers/Microsoft.aadiam`. You can assign this role using the `az` CLI command: `az role assignment create --assignee-principal-type ServicePrincipal --assignee-object-id "&lt;sp-object-id&gt;" --scope "/providers/Microsoft.aadiam" --role "Contributor"`. The assigning user must be a User Access Administrator at the root level. Refer to the [Azure elevation guide](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin) for details.
 ///
 /// ## Example Usage
 ///
@@ -277,7 +276,7 @@ import 'aad_diagnostic_setting_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AADIAM` - 2017-04-01
@@ -291,20 +290,25 @@ import 'aad_diagnostic_setting_state.dart';
 /// ```
 class AadDiagnosticSetting extends pulumi.CustomResource {
   /// One or more `enabled_log` blocks as defined below.
-  late final pulumi.Output<List<AadDiagnosticSettingEnabledLog>?> enabledLogs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
+
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
+  /// &gt; **Note:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
   late final pulumi.Output<String?> eventhubAuthorizationRuleId;
+
   /// Specifies the name of the Event Hub where Diagnostics Data should be sent. If not specified, the default Event Hub will be used. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventhubName;
+
   /// Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Monitor Azure Active Directory Diagnostic Setting. Changing this forces a new Monitor Azure Active Directory Diagnostic Setting to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** One of `eventhub_authorization_rule_id`, `log_analytics_workspace_id` and `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `eventhub_authorization_rule_id`, `log_analytics_workspace_id` and `storage_account_id` must be specified.
   late final pulumi.Output<String?> storageAccountId;
 
   /// Creates a new [AadDiagnosticSetting].
@@ -316,17 +320,21 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
     AadDiagnosticSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs');
-    this.eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
-    this.eventhubName = registerOutput<String?>('eventhubName');
-    this.logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+         'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
+    eventhubAuthorizationRuleId = registerOutput<String?>(
+      'eventhubAuthorizationRuleId',
+    );
+    eventhubName = registerOutput<String?>('eventhubName');
+    logAnalyticsWorkspaceId = registerOutput<String?>(
+      'logAnalyticsWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
   }
 
   /// Gets an existing [AadDiagnosticSetting] resource's state with the given [name] and [id].
@@ -347,16 +355,20 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs');
-    this.eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
-    this.eventhubName = registerOutput<String?>('eventhubName');
-    this.logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+         'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
+    eventhubAuthorizationRuleId = registerOutput<String?>(
+      'eventhubAuthorizationRuleId',
+    );
+    eventhubName = registerOutput<String?>('eventhubName');
+    logAnalyticsWorkspaceId = registerOutput<String?>(
+      'logAnalyticsWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
   }
 }

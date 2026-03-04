@@ -8,20 +8,21 @@ class DomainFeaturesCapabilitiesAuditControl {
 
   /// Creates a new [DomainFeaturesCapabilitiesAuditControl].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesAuditControl({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesAuditControl({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
-  factory DomainFeaturesCapabilitiesAuditControl.fromMap(Map<String, dynamic> map) {
+  factory DomainFeaturesCapabilitiesAuditControl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainFeaturesCapabilitiesAuditControl(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,15 @@ class NoneAuthModelResponse {
 
   /// Creates a new [NoneAuthModelResponse].
   /// [type] Type of paging
-  NoneAuthModelResponse({
-    required this.type,
-  });
+  NoneAuthModelResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory NoneAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return NoneAuthModelResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

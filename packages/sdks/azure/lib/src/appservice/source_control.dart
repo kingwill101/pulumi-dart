@@ -247,7 +247,7 @@ import 'source_control_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -262,26 +262,36 @@ import 'source_control_state.dart';
 class SourceControl extends pulumi.CustomResource {
   /// The ID of the Windows or Linux Web App. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Function apps are not supported at this time.
+  /// &gt; **Note:** Function apps are not supported at this time.
   late final pulumi.Output<String> appId;
+
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   late final pulumi.Output<String> branch;
+
   /// A `github_action_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SourceControlGithubActionConfiguration?> githubActionConfiguration;
+  late final pulumi.Output<SourceControlGithubActionConfiguration?>
+  githubActionConfiguration;
+
   /// The URL for the repository. Changing this forces a new resource to be created.
   late final pulumi.Output<String> repoUrl;
+
   /// Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Azure can typically set this value automatically based on the `repo_url` value.
+  /// &gt; **Note:** Azure can typically set this value automatically based on the `repo_url` value.
   late final pulumi.Output<bool?> rollbackEnabled;
+
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<String> scmType;
+
   /// Should the App use local Git configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useLocalGit;
+
   /// Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useManualIntegration;
+
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useMercurial;
+
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<bool> usesGithubAction;
 
@@ -294,21 +304,24 @@ class SourceControl extends pulumi.CustomResource {
     SourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControl:SourceControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.branch = registerOutput<String>('branch');
-    this.githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration');
-    this.repoUrl = registerOutput<String>('repoUrl');
-    this.rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
-    this.scmType = registerOutput<String>('scmType');
-    this.useLocalGit = registerOutput<bool?>('useLocalGit');
-    this.useManualIntegration = registerOutput<bool?>('useManualIntegration');
-    this.useMercurial = registerOutput<bool?>('useMercurial');
-    this.usesGithubAction = registerOutput<bool>('usesGithubAction');
+         'azure:appservice/sourceControl:SourceControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration =
+        registerOutput<SourceControlGithubActionConfiguration?>(
+          'githubActionConfiguration',
+        );
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
   }
 
   /// Gets an existing [SourceControl] resource's state with the given [name] and [id].
@@ -329,20 +342,23 @@ class SourceControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControl:SourceControl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.branch = registerOutput<String>('branch');
-    this.githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration');
-    this.repoUrl = registerOutput<String>('repoUrl');
-    this.rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
-    this.scmType = registerOutput<String>('scmType');
-    this.useLocalGit = registerOutput<bool?>('useLocalGit');
-    this.useManualIntegration = registerOutput<bool?>('useManualIntegration');
-    this.useMercurial = registerOutput<bool?>('useMercurial');
-    this.usesGithubAction = registerOutput<bool>('usesGithubAction');
+         'azure:appservice/sourceControl:SourceControl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration =
+        registerOutput<SourceControlGithubActionConfiguration?>(
+          'githubActionConfiguration',
+        );
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
   }
 }

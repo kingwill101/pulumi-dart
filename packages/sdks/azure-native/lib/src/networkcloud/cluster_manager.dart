@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cluster_available_version_response.dart';
 import 'cluster_manager_args.dart';
 import 'extended_location_response.dart';
 import 'managed_resource_group_configuration_response.dart';
@@ -217,38 +216,56 @@ import 'system_data_response.dart';
 class ClusterManager extends pulumi.CustomResource {
   /// The resource ID of the Log Analytics workspace that is used for the logs collection.
   late final pulumi.Output<String?> analyticsWorkspaceId;
+
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
   late final pulumi.Output<List<String>?> availabilityZones;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
-  late final pulumi.Output<List<ClusterAvailableVersionResponse>> clusterVersions;
+  late final pulumi.Output<List<Map<String, dynamic>>> clusterVersions;
+
   /// The detailed status that provides additional information about the cluster manager.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
   late final pulumi.Output<String> fabricControllerId;
+
   /// The identity of the cluster manager.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The configuration of the managed resource group associated with the resource.
-  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?> managedResourceGroupConfiguration;
+  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?>
+  managedResourceGroupConfiguration;
+
   /// The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
   late final pulumi.Output<ExtendedLocationResponse> managerExtendedLocation;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the cluster manager.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
   late final pulumi.Output<String?> vmSize;
 
@@ -261,28 +278,35 @@ class ClusterManager extends pulumi.CustomResource {
     ClusterManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:ClusterManager',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
-    this.availabilityZones = registerOutput<List<String>?>('availabilityZones');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterVersions = registerOutput<List<ClusterAvailableVersionResponse>>('clusterVersions');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.etag = registerOutput<String>('etag');
-    this.fabricControllerId = registerOutput<String>('fabricControllerId');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration');
-    this.managerExtendedLocation = registerOutput<ExtendedLocationResponse>('managerExtendedLocation');
+         'azure-native:networkcloud:ClusterManager',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterVersions = registerOutput<List<Map<String, dynamic>>>(
+      'clusterVersions',
+    );
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    fabricControllerId = registerOutput<String>('fabricControllerId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration =
+        registerOutput<ManagedResourceGroupConfigurationResponse?>(
+          'managedResourceGroupConfiguration',
+        );
+    managerExtendedLocation = registerOutput<ExtendedLocationResponse>(
+      'managerExtendedLocation',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmSize = registerOutput<String?>('vmSize');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmSize = registerOutput<String?>('vmSize');
   }
 }

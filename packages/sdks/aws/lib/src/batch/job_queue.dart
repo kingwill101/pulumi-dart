@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_queue_args.dart';
-import 'job_queue_compute_environment_order.dart';
-import 'job_queue_job_state_time_limit_action.dart';
 import 'job_queue_state.dart';
 import 'job_queue_timeouts.dart';
 
@@ -434,23 +432,34 @@ import 'job_queue_timeouts.dart';
 class JobQueue extends pulumi.CustomResource {
   /// The Amazon Resource Name of the job queue.
   late final pulumi.Output<String> arn;
+
   /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment runs a specific job. Compute environments must be in the VALID state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.
-  late final pulumi.Output<List<JobQueueComputeEnvironmentOrder>?> computeEnvironmentOrders;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  computeEnvironmentOrders;
+
   /// The set of job state time limit actions mapped to a job queue. Specifies an action that AWS Batch will take after the job has remained at the head of the queue in the specified state for longer than the specified time.
-  late final pulumi.Output<List<JobQueueJobStateTimeLimitAction>?> jobStateTimeLimitActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  jobStateTimeLimitActions;
+
   /// Specifies the name of the job queue.
   late final pulumi.Output<String> name;
+
   /// The priority of the job queue. Job queues with a higher priority
   /// are evaluated first when associated with the same compute environment.
   late final pulumi.Output<int> priority;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ARN of the fair share scheduling policy. If this parameter is specified, the job queue uses a fair share scheduling policy. If this parameter isn't specified, the job queue uses a first in, first out (FIFO) scheduling policy. After a job queue is created, you can replace but can't remove the fair share scheduling policy.
   late final pulumi.Output<String?> schedulingPolicyArn;
+
   /// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
   late final pulumi.Output<String> state;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<JobQueueTimeouts?> timeouts;
@@ -464,22 +473,26 @@ class JobQueue extends pulumi.CustomResource {
     JobQueueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:batch/jobQueue:JobQueue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders');
-    this.jobStateTimeLimitActions = registerOutput<List<JobQueueJobStateTimeLimitAction>?>('jobStateTimeLimitActions');
+         'aws:batch/jobQueue:JobQueue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    computeEnvironmentOrders = registerOutput<List<Map<String, dynamic>>?>(
+      'computeEnvironmentOrders',
+    );
+    jobStateTimeLimitActions = registerOutput<List<Map<String, dynamic>>?>(
+      'jobStateTimeLimitActions',
+    );
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.region = registerOutput<String>('region');
-    this.schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<JobQueueTimeouts?>('timeouts');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<JobQueueTimeouts?>('timeouts');
   }
 
   /// Gets an existing [JobQueue] resource's state with the given [name] and [id].
@@ -500,21 +513,25 @@ class JobQueue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:batch/jobQueue:JobQueue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders');
-    this.jobStateTimeLimitActions = registerOutput<List<JobQueueJobStateTimeLimitAction>?>('jobStateTimeLimitActions');
+         'aws:batch/jobQueue:JobQueue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    computeEnvironmentOrders = registerOutput<List<Map<String, dynamic>>?>(
+      'computeEnvironmentOrders',
+    );
+    jobStateTimeLimitActions = registerOutput<List<Map<String, dynamic>>?>(
+      'jobStateTimeLimitActions',
+    );
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.region = registerOutput<String>('region');
-    this.schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
     this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<JobQueueTimeouts?>('timeouts');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<JobQueueTimeouts?>('timeouts');
   }
 }

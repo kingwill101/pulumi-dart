@@ -9,20 +9,17 @@ class ManagementAssociationPropertiesResponse {
 
   /// Creates a new [ManagementAssociationPropertiesResponse].
   /// [applicationId] The applicationId of the appliance for this association.
-  ManagementAssociationPropertiesResponse({
-    required this.applicationId,
-  });
+  ManagementAssociationPropertiesResponse({required this.applicationId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'applicationId': applicationId,
-    };
+    return <String, dynamic>{'applicationId': applicationId};
   }
 
-  factory ManagementAssociationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagementAssociationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagementAssociationPropertiesResponse(
-      applicationId: (map['applicationId'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
     );
   }
 }
-

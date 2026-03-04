@@ -12,9 +12,11 @@ class GetKMSKeyRingArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
+
   /// The KeyRing's name.
   /// A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,11 +25,7 @@ class GetKMSKeyRingArgs {
   /// [location] The Google Cloud Platform location for the KeyRing.
   /// [name] The KeyRing's name.
   /// [project] The project in which the resource belongs. If it
-  GetKMSKeyRingArgs({
-    required this.location,
-    required this.name,
-    this.project,
-  });
+  GetKMSKeyRingArgs({required this.location, required this.name, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +37,13 @@ class GetKMSKeyRingArgs {
 
   factory GetKMSKeyRingArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSKeyRingArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

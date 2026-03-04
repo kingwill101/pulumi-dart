@@ -6,7 +6,11 @@ import 'repository_remote_repository_config_docker_repository_custom_repository.
 class RepositoryRemoteRepositoryConfigDockerRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository>? customRepository;
+  final pulumi.Input<
+    RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository
+  >?
+  customRepository;
+
   /// Address of the remote repository.
   /// Possible values are: `DOCKER_HUB`.
   final pulumi.Input<String>? publicRepository;
@@ -21,16 +25,33 @@ class RepositoryRemoteRepositoryConfigDockerRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository, Map<String, dynamic>>(customRepository, (value) => value.toMap()),
+      'customRepository':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository,
+            Map<String, dynamic>
+          >(customRepository, (value) => value.toMap()),
       'publicRepository': ?publicRepository,
     };
   }
 
-  factory RepositoryRemoteRepositoryConfigDockerRepository.fromMap(Map<String, dynamic> map) {
+  factory RepositoryRemoteRepositoryConfigDockerRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryRemoteRepositoryConfigDockerRepository(
-      customRepository: map['customRepository'] == null ? null : (RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap((map['customRepository']! as Map).cast<String, dynamic>())).input(),
-      publicRepository: map['publicRepository'] == null ? null : (map['publicRepository']! as String).input(),
+      customRepository: (() {
+        final guardedValue = map['customRepository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicRepository: (() {
+        final guardedValue = map['publicRepository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

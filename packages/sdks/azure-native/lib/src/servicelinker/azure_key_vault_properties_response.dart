@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureKeyVaultPropertiesResponse {
   /// True if connect via Kubernetes CSI Driver.
   final pulumi.Input<bool>? connectAsKubernetesCsiDriver;
+
   /// The azure resource type.
   /// Expected value is 'KeyVault'.
   final pulumi.Input<String> type;
@@ -27,9 +28,12 @@ class AzureKeyVaultPropertiesResponse {
 
   factory AzureKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultPropertiesResponse(
-      connectAsKubernetesCsiDriver: map['connectAsKubernetesCsiDriver'] == null ? null : (map['connectAsKubernetesCsiDriver']! as bool).input(),
-      type: (map['type'] as String).input(),
+      connectAsKubernetesCsiDriver: (() {
+        final guardedValue = map['connectAsKubernetesCsiDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

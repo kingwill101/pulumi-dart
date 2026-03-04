@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationsOrganization {
   /// The ID of the Organization.
   final pulumi.Input<String> id;
+
   /// The first ID of the resource.
   final pulumi.Input<String> organizationId;
+
   /// Company name.
   final pulumi.Input<String> organizationName;
 
@@ -30,10 +32,11 @@ class GetOrganizationsOrganization {
 
   factory GetOrganizationsOrganization.fromMap(Map<String, dynamic> map) {
     return GetOrganizationsOrganization(
-      id: (map['id'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
     );
   }
 }
-

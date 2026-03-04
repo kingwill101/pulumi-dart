@@ -16,17 +16,23 @@ class ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gkeClusterName': ?gkeClusterName,
-      'kind': ?kind,
-    };
+    return <String, dynamic>{'gkeClusterName': ?gkeClusterName, 'kind': ?kind};
   }
 
-  factory ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2(
-      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      gkeClusterName: (() {
+        final guardedValue = map['gkeClusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

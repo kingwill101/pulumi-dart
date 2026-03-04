@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_power_shell_script_args.dart';
 import 'container_configuration_response.dart';
-import 'environment_variable_response.dart';
 import 'managed_service_identity_response.dart';
 import 'script_status_response.dart';
 import 'storage_account_configuration_response.dart';
@@ -203,49 +202,72 @@ import 'system_data_response.dart';
 class AzurePowerShellScript extends pulumi.CustomResource {
   /// Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2'
   late final pulumi.Output<String?> arguments;
+
   /// Azure PowerShell module version to be used.
   late final pulumi.Output<String> azPowerShellVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
   late final pulumi.Output<String?> cleanupPreference;
+
   /// Container settings.
   late final pulumi.Output<ContainerConfigurationResponse?> containerSettings;
+
   /// The environment variables to pass over to the script.
-  late final pulumi.Output<List<EnvironmentVariableResponse>?> environmentVariables;
+  late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
+
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Type of the script.
   /// Expected value is 'AzurePowerShell'.
   late final pulumi.Output<String> kind;
+
   /// The location of the ACI and the storage account for the deployment script.
   late final pulumi.Output<String> location;
+
   /// Name of this resource.
   late final pulumi.Output<String> name;
+
   /// List of script outputs.
   late final pulumi.Output<Map<String, dynamic>> outputs;
+
   /// Uri for the script. This is the entry point for the external script.
   late final pulumi.Output<String?> primaryScriptUri;
+
   /// State of the script execution. This only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day).
   late final pulumi.Output<String> retentionInterval;
+
   /// Script body.
   late final pulumi.Output<String?> scriptContent;
+
   /// Contains the results of script execution.
   late final pulumi.Output<ScriptStatusResponse> status;
+
   /// Storage Account settings.
-  late final pulumi.Output<StorageAccountConfigurationResponse?> storageAccountSettings;
+  late final pulumi.Output<StorageAccountConfigurationResponse?>
+  storageAccountSettings;
+
   /// Supporting files for the external script.
   late final pulumi.Output<List<String>?> supportingScriptUris;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   late final pulumi.Output<String?> timeout;
+
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -258,33 +280,42 @@ class AzurePowerShellScript extends pulumi.CustomResource {
     AzurePowerShellScriptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resources:AzurePowerShellScript',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arguments = registerOutput<String?>('arguments');
-    this.azPowerShellVersion = registerOutput<String>('azPowerShellVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cleanupPreference = registerOutput<String?>('cleanupPreference');
-    this.containerSettings = registerOutput<ContainerConfigurationResponse?>('containerSettings');
-    this.environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:resources:AzurePowerShellScript',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arguments = registerOutput<String?>('arguments');
+    azPowerShellVersion = registerOutput<String>('azPowerShellVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cleanupPreference = registerOutput<String?>('cleanupPreference');
+    containerSettings = registerOutput<ContainerConfigurationResponse?>(
+      'containerSettings',
+    );
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'environmentVariables',
+    );
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<Map<String, dynamic>>('outputs');
-    this.primaryScriptUri = registerOutput<String?>('primaryScriptUri');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.retentionInterval = registerOutput<String>('retentionInterval');
-    this.scriptContent = registerOutput<String?>('scriptContent');
-    this.status = registerOutput<ScriptStatusResponse>('status');
-    this.storageAccountSettings = registerOutput<StorageAccountConfigurationResponse?>('storageAccountSettings');
-    this.supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<String?>('timeout');
-    this.type = registerOutput<String>('type');
+    outputs = registerOutput<Map<String, dynamic>>('outputs');
+    primaryScriptUri = registerOutput<String?>('primaryScriptUri');
+    provisioningState = registerOutput<String>('provisioningState');
+    retentionInterval = registerOutput<String>('retentionInterval');
+    scriptContent = registerOutput<String?>('scriptContent');
+    status = registerOutput<ScriptStatusResponse>('status');
+    storageAccountSettings =
+        registerOutput<StorageAccountConfigurationResponse?>(
+          'storageAccountSettings',
+        );
+    supportingScriptUris = registerOutput<List<String>?>(
+      'supportingScriptUris',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<String?>('timeout');
+    type = registerOutput<String>('type');
   }
 }

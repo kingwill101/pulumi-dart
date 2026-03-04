@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactsRotationRecurrenceDailySetting {
   /// (Required) The hour of the day.
   final pulumi.Input<int> hourOfDay;
+
   /// (Required) The minutes of the hour.
   final pulumi.Input<int> minuteOfHour;
 
@@ -23,11 +24,12 @@ class ContactsRotationRecurrenceDailySetting {
     };
   }
 
-  factory ContactsRotationRecurrenceDailySetting.fromMap(Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceDailySetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsRotationRecurrenceDailySetting(
-      hourOfDay: (map['hourOfDay'] as int).input(),
-      minuteOfHour: (map['minuteOfHour'] as int).input(),
+      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
+      minuteOfHour: pulumi.Input.fromValue(map['minuteOfHour'] as int),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_config_response.dart';
-import 'endpoint_response.dart';
 import 'monitor_config_response.dart';
 import 'profile_args.dart';
 
@@ -1641,28 +1640,40 @@ import 'profile_args.dart';
 class Profile extends pulumi.CustomResource {
   /// The list of allowed endpoint record types.
   late final pulumi.Output<List<String>?> allowedEndpointRecordTypes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The DNS settings of the Traffic Manager profile.
   late final pulumi.Output<DnsConfigResponse?> dnsConfig;
+
   /// The list of endpoints in the Traffic Manager profile.
-  late final pulumi.Output<List<EndpointResponse>?> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
+
   /// Maximum number of endpoints to be returned for MultiValue routing type.
   late final pulumi.Output<double?> maxReturn;
+
   /// The endpoint monitoring settings of the Traffic Manager profile.
   late final pulumi.Output<MonitorConfigResponse?> monitorConfig;
+
   /// The name of the resource
   late final pulumi.Output<String?> name;
+
   /// The status of the Traffic Manager profile.
   late final pulumi.Output<String?> profileStatus;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The traffic routing method of the Traffic Manager profile.
   late final pulumi.Output<String?> trafficRoutingMethod;
+
   /// Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
   late final pulumi.Output<String?> trafficViewEnrollmentStatus;
+
   /// The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   late final pulumi.Output<String?> type;
 
@@ -1675,23 +1686,27 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:trafficmanager:Profile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedEndpointRecordTypes = registerOutput<List<String>?>('allowedEndpointRecordTypes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig');
-    this.endpoints = registerOutput<List<EndpointResponse>?>('endpoints');
-    this.location = registerOutput<String?>('location');
-    this.maxReturn = registerOutput<double?>('maxReturn');
-    this.monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig');
+         'azure-native:trafficmanager:Profile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedEndpointRecordTypes = registerOutput<List<String>?>(
+      'allowedEndpointRecordTypes',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig');
+    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
+    location = registerOutput<String?>('location');
+    maxReturn = registerOutput<double?>('maxReturn');
+    monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig');
     this.name = registerOutput<String?>('name');
-    this.profileStatus = registerOutput<String?>('profileStatus');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficRoutingMethod = registerOutput<String?>('trafficRoutingMethod');
-    this.trafficViewEnrollmentStatus = registerOutput<String?>('trafficViewEnrollmentStatus');
-    this.type = registerOutput<String?>('type');
+    profileStatus = registerOutput<String?>('profileStatus');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficRoutingMethod = registerOutput<String?>('trafficRoutingMethod');
+    trafficViewEnrollmentStatus = registerOutput<String?>(
+      'trafficViewEnrollmentStatus',
+    );
+    type = registerOutput<String?>('type');
   }
 }

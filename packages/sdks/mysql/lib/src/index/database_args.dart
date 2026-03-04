@@ -11,6 +11,7 @@ class DatabaseArgs {
   /// a table is created without specifying an explicit character set. Defaults
   /// to "utf8".
   final pulumi.Input<String>? defaultCharacterSet;
+
   /// The default collation to use when a table
   /// is created without specifying an explicit collation. Defaults to
   /// ``utf8_general_ci``. Each character set has its own set of collations, so
@@ -23,6 +24,7 @@ class DatabaseArgs {
   /// configuration and then set the ``default_character_set`` and
   /// ``default_collation`` to match.
   final pulumi.Input<String>? defaultCollation;
+
   /// The name of the database. This must be unique within
   /// a given MySQL server and may or may not be case-sensitive depending on
   /// the operating system on which the MySQL server is running.
@@ -32,11 +34,7 @@ class DatabaseArgs {
   /// [defaultCharacterSet] The default character set to use when
   /// [defaultCollation] The default collation to use when a table
   /// [name] The name of the database. This must be unique within
-  DatabaseArgs({
-    this.defaultCharacterSet,
-    this.defaultCollation,
-    this.name,
-  });
+  DatabaseArgs({this.defaultCharacterSet, this.defaultCollation, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +46,21 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      defaultCharacterSet: map['defaultCharacterSet'] == null ? null : (map['defaultCharacterSet']! as String).input(),
-      defaultCollation: map['defaultCollation'] == null ? null : (map['defaultCollation']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      defaultCharacterSet: (() {
+        final guardedValue = map['defaultCharacterSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultCollation: (() {
+        final guardedValue = map['defaultCollation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

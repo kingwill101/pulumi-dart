@@ -11,20 +11,28 @@ import 'data_collection_endpoint_resource_identity.dart';
 class DataCollectionEndpointArgs {
   /// The name of the data collection endpoint. The name is case insensitive.
   final pulumi.Input<String>? dataCollectionEndpointName;
+
   /// Description of the data collection endpoint.
   final pulumi.Input<String>? description;
+
   /// Managed service identity of the resource.
   final pulumi.Input<DataCollectionEndpointResourceIdentity>? identity;
+
   /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
   final pulumi.Input<String>? immutableId;
+
   /// The kind of the resource.
   final pulumi.Input<String>? kind;
+
   /// The geo-location where the resource lives.
   final pulumi.Input<String>? location;
+
   /// Network access control rules for the endpoints.
   final pulumi.Input<DataCollectionEndpointNetworkAcls>? networkAcls;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,11 +62,19 @@ class DataCollectionEndpointArgs {
     return <String, dynamic>{
       'dataCollectionEndpointName': ?dataCollectionEndpointName,
       'description': ?description,
-      'identity': ?pulumi.Input.mapOptionalInputValue<DataCollectionEndpointResourceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCollectionEndpointResourceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'immutableId': ?immutableId,
       'kind': ?kind,
       'location': ?location,
-      'networkAcls': ?pulumi.Input.mapOptionalInputValue<DataCollectionEndpointNetworkAcls, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
+      'networkAcls':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCollectionEndpointNetworkAcls,
+            Map<String, dynamic>
+          >(networkAcls, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -66,16 +82,59 @@ class DataCollectionEndpointArgs {
 
   factory DataCollectionEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointArgs(
-      dataCollectionEndpointName: map['dataCollectionEndpointName'] == null ? null : (map['dataCollectionEndpointName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      identity: map['identity'] == null ? null : (DataCollectionEndpointResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      immutableId: map['immutableId'] == null ? null : (map['immutableId']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (DataCollectionEndpointNetworkAcls.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dataCollectionEndpointName: (() {
+        final guardedValue = map['dataCollectionEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCollectionEndpointResourceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      immutableId: (() {
+        final guardedValue = map['immutableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAcls: (() {
+        final guardedValue = map['networkAcls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCollectionEndpointNetworkAcls.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

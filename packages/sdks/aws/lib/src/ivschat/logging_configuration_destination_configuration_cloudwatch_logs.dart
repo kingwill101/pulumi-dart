@@ -13,15 +13,14 @@ class LoggingConfigurationDestinationConfigurationCloudwatchLogs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logGroupName': logGroupName,
-    };
+    return <String, dynamic>{'logGroupName': logGroupName};
   }
 
-  factory LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap(Map<String, dynamic> map) {
+  factory LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoggingConfigurationDestinationConfigurationCloudwatchLogs(
-      logGroupName: (map['logGroupName'] as String).input(),
+      logGroupName: pulumi.Input.fromValue(map['logGroupName'] as String),
     );
   }
 }
-

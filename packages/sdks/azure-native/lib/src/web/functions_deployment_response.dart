@@ -10,20 +10,29 @@ class FunctionsDeploymentResponse {
 
   /// Creates a new [FunctionsDeploymentResponse].
   /// [storage] Storage for deployed package used by the function app.
-  FunctionsDeploymentResponse({
-    this.storage,
-  });
+  FunctionsDeploymentResponse({this.storage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storage': ?pulumi.Input.mapOptionalInputValue<FunctionsDeploymentResponseStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
+      'storage':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionsDeploymentResponseStorage,
+            Map<String, dynamic>
+          >(storage, (value) => value.toMap()),
     };
   }
 
   factory FunctionsDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentResponse(
-      storage: map['storage'] == null ? null : (FunctionsDeploymentResponseStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionsDeploymentResponseStorage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

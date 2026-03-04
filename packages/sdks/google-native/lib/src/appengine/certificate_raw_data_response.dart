@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateRawDataResponse {
   /// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
   final pulumi.Input<String> privateKey;
+
   /// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
   final pulumi.Input<String> publicCertificate;
 
@@ -26,9 +27,10 @@ class CertificateRawDataResponse {
 
   factory CertificateRawDataResponse.fromMap(Map<String, dynamic> map) {
     return CertificateRawDataResponse(
-      privateKey: (map['privateKey'] as String).input(),
-      publicCertificate: (map['publicCertificate'] as String).input(),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      publicCertificate: pulumi.Input.fromValue(
+        map['publicCertificate'] as String,
+      ),
     );
   }
 }
-

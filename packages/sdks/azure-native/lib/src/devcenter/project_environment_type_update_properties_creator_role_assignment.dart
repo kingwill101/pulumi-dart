@@ -9,20 +9,21 @@ class ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment {
 
   /// Creates a new [ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment].
   /// [roles] A map of roles to assign to the environment creator.
-  ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment({
-    this.roles,
-  });
+  ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment({this.roles});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'roles': ?roles,
-    };
+    return <String, dynamic>{'roles': ?roles};
   }
 
-  factory ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap(Map<String, dynamic> map) {
+  factory ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment(
-      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

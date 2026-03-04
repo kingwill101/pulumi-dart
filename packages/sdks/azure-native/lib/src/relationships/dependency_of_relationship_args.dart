@@ -10,8 +10,10 @@ import 'dependency_of_relationship_properties.dart';
 class DependencyOfRelationshipArgs {
   /// Name of dependencyOf relationship.
   final pulumi.Input<String>? name;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<DependencyOfRelationshipProperties>? properties;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -28,17 +30,32 @@ class DependencyOfRelationshipArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DependencyOfRelationshipProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DependencyOfRelationshipProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
   factory DependencyOfRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (DependencyOfRelationshipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DependencyOfRelationshipProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

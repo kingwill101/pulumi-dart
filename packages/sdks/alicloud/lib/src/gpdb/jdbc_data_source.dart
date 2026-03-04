@@ -8,7 +8,7 @@ import 'jdbc_data_source_state.dart';
 ///
 /// For information about AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -468,22 +468,31 @@ import 'jdbc_data_source_state.dart';
 class JdbcDataSource extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Data Source Description
   late final pulumi.Output<String?> dataSourceDescription;
+
   /// The data source ID.
   late final pulumi.Output<String> dataSourceId;
+
   /// Data Source Name
   late final pulumi.Output<String?> dataSourceName;
+
   /// Data Source Type
   late final pulumi.Output<String?> dataSourceType;
+
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The JDBC connection string.
   late final pulumi.Output<String?> jdbcConnectionString;
+
   /// The password of the database account.
   late final pulumi.Output<String?> jdbcPassword;
+
   /// The name of the database account.
   late final pulumi.Output<String> jdbcUserName;
+
   /// Data Source Status
   late final pulumi.Output<String> status;
 
@@ -496,21 +505,21 @@ class JdbcDataSource extends pulumi.CustomResource {
     JdbcDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/jdbcDataSource:JdbcDataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dataSourceName = registerOutput<String?>('dataSourceName');
-    this.dataSourceType = registerOutput<String?>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.jdbcConnectionString = registerOutput<String?>('jdbcConnectionString');
-    this.jdbcPassword = registerOutput<String?>('jdbcPassword');
-    this.jdbcUserName = registerOutput<String>('jdbcUserName');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/jdbcDataSource:JdbcDataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dataSourceName = registerOutput<String?>('dataSourceName');
+    dataSourceType = registerOutput<String?>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    jdbcConnectionString = registerOutput<String?>('jdbcConnectionString');
+    jdbcPassword = registerOutput<String?>('jdbcPassword');
+    jdbcUserName = registerOutput<String>('jdbcUserName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [JdbcDataSource] resource's state with the given [name] and [id].
@@ -531,20 +540,20 @@ class JdbcDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/jdbcDataSource:JdbcDataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dataSourceName = registerOutput<String?>('dataSourceName');
-    this.dataSourceType = registerOutput<String?>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.jdbcConnectionString = registerOutput<String?>('jdbcConnectionString');
-    this.jdbcPassword = registerOutput<String?>('jdbcPassword');
-    this.jdbcUserName = registerOutput<String>('jdbcUserName');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/jdbcDataSource:JdbcDataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dataSourceName = registerOutput<String?>('dataSourceName');
+    dataSourceType = registerOutput<String?>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    jdbcConnectionString = registerOutput<String?>('jdbcConnectionString');
+    jdbcPassword = registerOutput<String?>('jdbcPassword');
+    jdbcUserName = registerOutput<String>('jdbcUserName');
+    status = registerOutput<String>('status');
   }
 }

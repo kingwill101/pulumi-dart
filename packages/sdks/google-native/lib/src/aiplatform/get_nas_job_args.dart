@@ -15,11 +15,7 @@ class GetNasJobArgs {
   /// [location] Required.
   /// [nasJobId] Required.
   /// [project] Optional.
-  GetNasJobArgs({
-    required this.location,
-    required this.nasJobId,
-    this.project,
-  });
+  GetNasJobArgs({required this.location, required this.nasJobId, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetNasJobArgs {
 
   factory GetNasJobArgs.fromMap(Map<String, dynamic> map) {
     return GetNasJobArgs(
-      location: (map['location'] as String).input(),
-      nasJobId: (map['nasJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      nasJobId: pulumi.Input.fromValue(map['nasJobId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,22 +6,31 @@ import 'system_data_response.dart';
 class GetAzureADAdministratorResult {
   /// Type of the sever administrator.
   final String? administratorType;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The resource id of the identity used for AAD Authentication.
   final String? identityResourceId;
+
   /// Login name of the server administrator.
   final String? login;
+
   /// The name of the resource
   final String name;
+
   /// SID (object ID) of the server administrator.
   final String? sid;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Tenant ID of the administrator.
   final String? tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -66,17 +75,38 @@ class GetAzureADAdministratorResult {
 
   factory GetAzureADAdministratorResult.fromMap(Map<String, dynamic> map) {
     return GetAzureADAdministratorResult(
-      administratorType: map['administratorType'] == null ? null : map['administratorType']! as String,
+      administratorType: (() {
+        final guardedValue = map['administratorType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identityResourceId: map['identityResourceId'] == null ? null : map['identityResourceId']! as String,
-      login: map['login'] == null ? null : map['login']! as String,
+      identityResourceId: (() {
+        final guardedValue = map['identityResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      sid: map['sid'] == null ? null : map['sid']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      sid: (() {
+        final guardedValue = map['sid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

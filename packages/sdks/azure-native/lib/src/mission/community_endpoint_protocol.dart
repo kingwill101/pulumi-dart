@@ -9,16 +9,15 @@ enum CommunityEndpointProtocol {
   hTTPS("HTTPS"),
   hTTP("HTTP");
 
-  const CommunityEndpointProtocol(this.value);
-  final String value;
+  const CommunityEndpointProtocol(this.wireValue);
+  final String wireValue;
 
   static CommunityEndpointProtocol fromValue(String value) {
     for (final item in CommunityEndpointProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CommunityEndpointProtocol value: $value');
   }
 }
-

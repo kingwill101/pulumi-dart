@@ -27,9 +27,8 @@ class GetOrganizationMuteConfigArgs {
 
   factory GetOrganizationMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationMuteConfigArgs(
-      muteConfigId: (map['muteConfigId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      muteConfigId: pulumi.Input.fromValue(map['muteConfigId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

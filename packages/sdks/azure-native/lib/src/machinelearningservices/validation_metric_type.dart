@@ -5,16 +5,15 @@ enum ValidationMetricType {
   valueVoc("Voc"),
   valueCocoVoc("CocoVoc");
 
-  const ValidationMetricType(this.value);
-  final String value;
+  const ValidationMetricType(this.wireValue);
+  final String wireValue;
 
   static ValidationMetricType fromValue(String value) {
     for (final item in ValidationMetricType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ValidationMetricType value: $value');
   }
 }
-

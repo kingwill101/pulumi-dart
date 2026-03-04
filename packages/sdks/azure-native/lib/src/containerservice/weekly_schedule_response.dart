@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklyScheduleResponse {
   /// Specifies on which day of the week the maintenance occurs.
   final pulumi.Input<String> dayOfWeek;
+
   /// Specifies the number of weeks between each set of occurrences.
   final pulumi.Input<int> intervalWeeks;
 
@@ -26,9 +27,8 @@ class WeeklyScheduleResponse {
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      intervalWeeks: (map['intervalWeeks'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      intervalWeeks: pulumi.Input.fromValue(map['intervalWeeks'] as int),
     );
   }
 }
-

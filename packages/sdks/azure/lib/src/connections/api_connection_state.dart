@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiConnectionState {
   /// A display name for this API Connection.
   final pulumi.Input<String>? displayName;
+
   /// The ID of the Managed API which this API Connection is linked to. Changing this forces a new API Connection to be created.
   final pulumi.Input<String>? managedApiId;
+
   /// The Name which should be used for this API Connection. Changing this forces a new API Connection to be created.
   final pulumi.Input<String>? name;
+
   /// A map of parameter values associated with this API Connection.
   ///
-  /// > **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
+  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
   final pulumi.Input<Map<String, String>>? parameterValues;
+
   /// The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the API Connection.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,13 +53,40 @@ class ApiConnectionState {
 
   factory ApiConnectionState.fromMap(Map<String, dynamic> map) {
     return ApiConnectionState(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      managedApiId: map['managedApiId'] == null ? null : (map['managedApiId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues']! as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedApiId: (() {
+        final guardedValue = map['managedApiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValues: (() {
+        final guardedValue = map['parameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

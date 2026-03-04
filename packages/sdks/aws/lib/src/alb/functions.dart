@@ -6,7 +6,7 @@ import 'get_load_balancer_result.dart';
 import 'get_target_group_args.dart';
 import 'get_target_group_result.dart';
 
-/// > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Listener.
 ///
@@ -191,7 +191,7 @@ Future<GetListenerResult> getListener(
   return GetListenerResult.fromMap(result);
 }
 
-/// > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer.
 ///
@@ -341,7 +341,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
-/// > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Target Group.
 ///

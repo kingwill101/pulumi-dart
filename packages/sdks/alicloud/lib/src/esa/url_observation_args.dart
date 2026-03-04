@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlObservationArgs {
   /// SDK integration mode. Value:
   final pulumi.Input<String> sdkType;
+
   /// The site ID.
   final pulumi.Input<String> siteId;
+
   /// The URL of the page to monitor.
   final pulumi.Input<String> url;
 
@@ -25,19 +27,14 @@ class UrlObservationArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sdkType': sdkType,
-      'siteId': siteId,
-      'url': url,
-    };
+    return <String, dynamic>{'sdkType': sdkType, 'siteId': siteId, 'url': url};
   }
 
   factory UrlObservationArgs.fromMap(Map<String, dynamic> map) {
     return UrlObservationArgs(
-      sdkType: (map['sdkType'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      url: (map['url'] as String).input(),
+      sdkType: pulumi.Input.fromValue(map['sdkType'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

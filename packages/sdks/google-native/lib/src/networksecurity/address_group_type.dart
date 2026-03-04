@@ -4,16 +4,15 @@ enum AddressGroupType {
   ipv4("IPV4"),
   ipv6("IPV6");
 
-  const AddressGroupType(this.value);
-  final String value;
+  const AddressGroupType(this.wireValue);
+  final String wireValue;
 
   static AddressGroupType fromValue(String value) {
     for (final item in AddressGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressGroupType value: $value');
   }
 }
-

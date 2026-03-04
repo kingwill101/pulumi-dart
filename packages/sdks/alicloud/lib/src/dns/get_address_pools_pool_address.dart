@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddressPoolsPoolAddress {
   /// The address that you want to add to the address pool.
   final pulumi.Input<String> address;
+
   /// The source region of the address.
   final pulumi.Input<String> attributeInfo;
+
   /// The weight of the address.
   final pulumi.Input<int> lbaWeight;
+
   /// The type of the address.
   final pulumi.Input<String> mode;
+
   /// The description of the address.
   final pulumi.Input<String> remark;
 
@@ -40,12 +44,11 @@ class GetAddressPoolsPoolAddress {
 
   factory GetAddressPoolsPoolAddress.fromMap(Map<String, dynamic> map) {
     return GetAddressPoolsPoolAddress(
-      address: (map['address'] as String).input(),
-      attributeInfo: (map['attributeInfo'] as String).input(),
-      lbaWeight: (map['lbaWeight'] as int).input(),
-      mode: (map['mode'] as String).input(),
-      remark: (map['remark'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      attributeInfo: pulumi.Input.fromValue(map['attributeInfo'] as String),
+      lbaWeight: pulumi.Input.fromValue(map['lbaWeight'] as int),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      remark: pulumi.Input.fromValue(map['remark'] as String),
     );
   }
 }
-

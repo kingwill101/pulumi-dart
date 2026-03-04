@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectStorageEndpointsEndpoint {
   /// The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
   final pulumi.Input<String> endpointType;
+
   /// The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
   final pulumi.Input<String> region;
+
   /// Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
   final pulumi.Input<String> s3Endpoint;
 
@@ -30,10 +32,9 @@ class GetObjectStorageEndpointsEndpoint {
 
   factory GetObjectStorageEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageEndpointsEndpoint(
-      endpointType: (map['endpointType'] as String).input(),
-      region: (map['region'] as String).input(),
-      s3Endpoint: (map['s3Endpoint'] as String).input(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      s3Endpoint: pulumi.Input.fromValue(map['s3Endpoint'] as String),
     );
   }
 }
-

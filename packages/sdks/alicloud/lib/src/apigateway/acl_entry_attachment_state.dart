@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AclEntryAttachmentState {
   /// The ID of the ACL that the entry will be attached to.
   final pulumi.Input<String>? aclId;
+
   /// The comment for the entry.
   final pulumi.Input<String>? comment;
+
   /// The CIDR block of the entry to attach.
   final pulumi.Input<String>? entry;
 
@@ -15,11 +17,7 @@ class AclEntryAttachmentState {
   /// [aclId] The ID of the ACL that the entry will be attached to.
   /// [comment] The comment for the entry.
   /// [entry] The CIDR block of the entry to attach.
-  AclEntryAttachmentState({
-    this.aclId,
-    this.comment,
-    this.entry,
-  });
+  AclEntryAttachmentState({this.aclId, this.comment, this.entry});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class AclEntryAttachmentState {
 
   factory AclEntryAttachmentState.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      entry: map['entry'] == null ? null : (map['entry']! as String).input(),
+      aclId: (() {
+        final guardedValue = map['aclId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entry: (() {
+        final guardedValue = map['entry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class MHSMVirtualNetworkRule {
 
   /// Creates a new [MHSMVirtualNetworkRule].
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
-  MHSMVirtualNetworkRule({
-    required this.id,
-  });
+  MHSMVirtualNetworkRule({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory MHSMVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return MHSMVirtualNetworkRule(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

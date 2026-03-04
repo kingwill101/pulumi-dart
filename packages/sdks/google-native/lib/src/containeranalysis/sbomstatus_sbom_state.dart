@@ -4,16 +4,15 @@ enum SBOMStatusSbomState {
   pending("PENDING"),
   complete("COMPLETE");
 
-  const SBOMStatusSbomState(this.value);
-  final String value;
+  const SBOMStatusSbomState(this.wireValue);
+  final String wireValue;
 
   static SBOMStatusSbomState fromValue(String value) {
     for (final item in SBOMStatusSbomState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SBOMStatusSbomState value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum AfdMinimumTlsVersion {
   valueTLS12("TLS12"),
   valueTLS13("TLS13");
 
-  const AfdMinimumTlsVersion(this.value);
-  final String value;
+  const AfdMinimumTlsVersion(this.wireValue);
+  final String wireValue;
 
   static AfdMinimumTlsVersion fromValue(String value) {
     for (final item in AfdMinimumTlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AfdMinimumTlsVersion value: $value');
   }
 }
-

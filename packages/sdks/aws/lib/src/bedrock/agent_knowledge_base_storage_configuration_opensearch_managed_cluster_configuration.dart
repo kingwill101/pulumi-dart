@@ -6,10 +6,16 @@ import 'agent_knowledge_base_storage_configuration_opensearch_managed_cluster_co
 class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration {
   /// ARN of the OpenSearch domain.
   final pulumi.Input<String> domainArn;
+
   /// Endpoint URL of the OpenSearch domain.
   final pulumi.Input<String> domainEndpoint;
+
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping> fieldMapping;
+  final pulumi.Input<
+    AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping
+  >
+  fieldMapping;
+
   /// Name of the vector store.
   final pulumi.Input<String> vectorIndexName;
 
@@ -29,18 +35,27 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguratio
     return <String, dynamic>{
       'domainArn': domainArn,
       'domainEndpoint': domainEndpoint,
-      'fieldMapping': pulumi.Input.mapInputValue<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping, Map<String, dynamic>>(fieldMapping, (value) => value.toMap()),
+      'fieldMapping':
+          pulumi.Input.mapInputValue<
+            AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping,
+            Map<String, dynamic>
+          >(fieldMapping, (value) => value.toMap()),
       'vectorIndexName': vectorIndexName,
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration(
-      domainArn: (map['domainArn'] as String).input(),
-      domainEndpoint: (map['domainEndpoint'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
-      vectorIndexName: (map['vectorIndexName'] as String).input(),
+      domainArn: pulumi.Input.fromValue(map['domainArn'] as String),
+      domainEndpoint: pulumi.Input.fromValue(map['domainEndpoint'] as String),
+      fieldMapping: pulumi.Input.fromValue(
+        AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping.fromMap(
+          (map['fieldMapping']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vectorIndexName: pulumi.Input.fromValue(map['vectorIndexName'] as String),
     );
   }
 }
-

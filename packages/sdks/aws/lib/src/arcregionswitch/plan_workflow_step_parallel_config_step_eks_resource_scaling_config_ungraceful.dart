@@ -18,10 +18,13 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful(
-      minimumSuccessPercentage: (map['minimumSuccessPercentage'] as int).input(),
+      minimumSuccessPercentage: pulumi.Input.fromValue(
+        map['minimumSuccessPercentage'] as int,
+      ),
     );
   }
 }
-

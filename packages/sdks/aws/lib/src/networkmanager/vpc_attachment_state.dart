@@ -7,34 +7,49 @@ import 'vpc_attachment_options.dart';
 class VpcAttachmentState {
   /// ARN of the attachment.
   final pulumi.Input<String>? arn;
+
   /// Policy rule number associated with the attachment.
   final pulumi.Input<int>? attachmentPolicyRuleNumber;
+
   /// Type of attachment.
   final pulumi.Input<String>? attachmentType;
+
   /// ARN of a core network.
   final pulumi.Input<String>? coreNetworkArn;
+
   /// ID of a core network for the VPC attachment.
   final pulumi.Input<String>? coreNetworkId;
+
   /// Region where the edge is located.
   final pulumi.Input<String>? edgeLocation;
+
   /// Options for the VPC attachment. See below.
   final pulumi.Input<VpcAttachmentOptions>? options;
+
   /// ID of the attachment account owner.
   final pulumi.Input<String>? ownerAccountId;
+
   /// Attachment resource ARN.
   final pulumi.Input<String>? resourceArn;
+
   /// The routing policy label to apply to the VPC attachment for traffic routing decisions. Maximum length of 256 characters.
   final pulumi.Input<String>? routingPolicyLabel;
+
   /// Name of the segment attachment.
   final pulumi.Input<String>? segmentName;
+
   /// State of the attachment.
   final pulumi.Input<String>? state;
+
   /// Subnet ARNs of the VPC attachment.
   final pulumi.Input<List<String>>? subnetArns;
+
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// ARN of the VPC.
   ///
   /// The following arguments are optional:
@@ -84,7 +99,11 @@ class VpcAttachmentState {
       'coreNetworkArn': ?coreNetworkArn,
       'coreNetworkId': ?coreNetworkId,
       'edgeLocation': ?edgeLocation,
-      'options': ?pulumi.Input.mapOptionalInputValue<VpcAttachmentOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpcAttachmentOptions,
+            Map<String, dynamic>
+          >(options, (value) => value.toMap()),
       'ownerAccountId': ?ownerAccountId,
       'resourceArn': ?resourceArn,
       'routingPolicyLabel': ?routingPolicyLabel,
@@ -99,23 +118,94 @@ class VpcAttachmentState {
 
   factory VpcAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : ((map['attachmentPolicyRuleNumber'] as int).input()).input(),
-      attachmentType: map['attachmentType'] == null ? null : ((map['attachmentType'] as String).input()).input(),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : ((map['coreNetworkArn'] as String).input()).input(),
-      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
-      edgeLocation: map['edgeLocation'] == null ? null : ((map['edgeLocation'] as String).input()).input(),
-      options: map['options'] == null ? null : ((VpcAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
-      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
-      segmentName: map['segmentName'] == null ? null : ((map['segmentName'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      subnetArns: map['subnetArns'] == null ? null : (((map['subnetArns'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vpcArn: map['vpcArn'] == null ? null : ((map['vpcArn'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachmentPolicyRuleNumber: (() {
+        final guardedValue = map['attachmentPolicyRuleNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      attachmentType: (() {
+        final guardedValue = map['attachmentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreNetworkArn: (() {
+        final guardedValue = map['coreNetworkArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreNetworkId: (() {
+        final guardedValue = map['coreNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edgeLocation: (() {
+        final guardedValue = map['edgeLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VpcAttachmentOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ownerAccountId: (() {
+        final guardedValue = map['ownerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingPolicyLabel: (() {
+        final guardedValue = map['routingPolicyLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentName: (() {
+        final guardedValue = map['segmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetArns: (() {
+        final guardedValue = map['subnetArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcArn: (() {
+        final guardedValue = map['vpcArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

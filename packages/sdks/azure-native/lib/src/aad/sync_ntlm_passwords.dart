@@ -3,16 +3,15 @@ enum SyncNtlmPasswords {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SyncNtlmPasswords(this.value);
-  final String value;
+  const SyncNtlmPasswords(this.wireValue);
+  final String wireValue;
 
   static SyncNtlmPasswords fromValue(String value) {
     for (final item in SyncNtlmPasswords.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SyncNtlmPasswords value: $value');
   }
 }
-

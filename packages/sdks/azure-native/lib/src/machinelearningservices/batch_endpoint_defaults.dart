@@ -10,20 +10,19 @@ class BatchEndpointDefaults {
 
   /// Creates a new [BatchEndpointDefaults].
   /// [deploymentName] Name of the deployment that will be default for the endpoint.
-  BatchEndpointDefaults({
-    this.deploymentName,
-  });
+  BatchEndpointDefaults({this.deploymentName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deploymentName': ?deploymentName,
-    };
+    return <String, dynamic>{'deploymentName': ?deploymentName};
   }
 
   factory BatchEndpointDefaults.fromMap(Map<String, dynamic> map) {
     return BatchEndpointDefaults(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

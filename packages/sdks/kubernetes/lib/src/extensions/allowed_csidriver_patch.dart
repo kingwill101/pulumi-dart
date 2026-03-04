@@ -9,20 +9,19 @@ class AllowedCSIDriverPatch {
 
   /// Creates a new [AllowedCSIDriverPatch].
   /// [name] Name is the registered name of the CSI driver
-  AllowedCSIDriverPatch({
-    this.name,
-  });
+  AllowedCSIDriverPatch({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory AllowedCSIDriverPatch.fromMap(Map<String, dynamic> map) {
     return AllowedCSIDriverPatch(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

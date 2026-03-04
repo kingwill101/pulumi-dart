@@ -9,26 +9,37 @@ import 'system_data_response.dart';
 class GetWebAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Optional textual description of the agent.
   final String? description;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// List of paths associated with the web agent.
   final List<AgentPathResponse>? paths;
+
   /// References to agent links in CDN profiles.
   final List<ResourceReferenceResponse> profileAgentLinks;
+
   /// Provisioning status of the web agent.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// System prompt for the web agent.
   final String? systemPrompt;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -67,8 +78,19 @@ class GetWebAgentResult {
       'id': id,
       'location': location,
       'name': name,
-      'paths': ?paths == null ? null : pulumi.Input.encodeList<AgentPathResponse, Map<String, dynamic>>(paths!, (value) => value.toMap()),
-      'profileAgentLinks': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(profileAgentLinks, (value) => value.toMap()),
+      'paths': ?(() {
+        final guardedValue = paths;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<AgentPathResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
+      'profileAgentLinks':
+          pulumi.Input.encodeList<
+            ResourceReferenceResponse,
+            Map<String, dynamic>
+          >(profileAgentLinks, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'systemPrompt': ?systemPrompt,
@@ -80,18 +102,44 @@ class GetWebAgentResult {
   factory GetWebAgentResult.fromMap(Map<String, dynamic> map) {
     return GetWebAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      paths: map['paths'] == null ? null : pulumi.Input.decodeList<AgentPathResponse>(map['paths']!, (value) => AgentPathResponse.fromMap((value as Map).cast<String, dynamic>())),
-      profileAgentLinks: pulumi.Input.decodeList<ResourceReferenceResponse>(map['profileAgentLinks'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      paths: (() {
+        final guardedValue = map['paths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AgentPathResponse>(
+          guardedValue,
+          (value) =>
+              AgentPathResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      profileAgentLinks: pulumi.Input.decodeList<ResourceReferenceResponse>(
+        map['profileAgentLinks']!,
+        (value) => ResourceReferenceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      systemPrompt: map['systemPrompt'] == null ? null : map['systemPrompt']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      systemPrompt: (() {
+        final guardedValue = map['systemPrompt'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

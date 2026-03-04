@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta3 {
   /// `lastTransitionTime` is the last time the condition transitioned from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
+
   /// `message` is a human-readable message indicating details about last transition.
   final pulumi.Input<String>? message;
+
   /// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
   final pulumi.Input<String>? reason;
+
   /// `status` is the status of the condition. Can be True, False, Unknown. Required.
   final pulumi.Input<String>? status;
+
   /// `type` is the type of the condition. Required.
   final pulumi.Input<String>? type;
 
@@ -39,14 +43,35 @@ class PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta3 {
     };
   }
 
-  factory PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
+  factory PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta3(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      lastTransitionTime: (() {
+        final guardedValue = map['lastTransitionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SelectorType {
   valueList("List"),
   valueQuery("Query");
 
-  const SelectorType(this.value);
-  final String value;
+  const SelectorType(this.wireValue);
+  final String wireValue;
 
   static SelectorType fromValue(String value) {
     for (final item in SelectorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SelectorType value: $value');
   }
 }
-

@@ -8,35 +8,47 @@ import 'ai_feature_store_online_serving_config.dart';
 class AiFeatureStoreState {
   /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureStoreEncryptionSpec>? encryptionSpec;
+
   /// Used to perform consistent read-modify-write updates.
   final pulumi.Input<String>? etag;
+
   /// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
   final pulumi.Input<bool>? forceDestroy;
+
   /// A set of key/value label pairs to assign to this Featurestore.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
+
   /// Config for online serving resources.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureStoreOnlineServingConfig>? onlineServingConfig;
+
   /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
   final pulumi.Input<int>? onlineStorageTtlDays;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The region of the dataset. eg us-central1
   final pulumi.Input<String>? region;
+
   /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? updateTime;
 
@@ -74,12 +86,20 @@ class AiFeatureStoreState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'effectiveLabels': ?effectiveLabels,
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiFeatureStoreEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiFeatureStoreEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'etag': ?etag,
       'forceDestroy': ?forceDestroy,
       'labels': ?labels,
       'name': ?name,
-      'onlineServingConfig': ?pulumi.Input.mapOptionalInputValue<AiFeatureStoreOnlineServingConfig, Map<String, dynamic>>(onlineServingConfig, (value) => value.toMap()),
+      'onlineServingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiFeatureStoreOnlineServingConfig,
+            Map<String, dynamic>
+          >(onlineServingConfig, (value) => value.toMap()),
       'onlineStorageTtlDays': ?onlineStorageTtlDays,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
@@ -90,20 +110,85 @@ class AiFeatureStoreState {
 
   factory AiFeatureStoreState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      onlineServingConfig: map['onlineServingConfig'] == null ? null : (AiFeatureStoreOnlineServingConfig.fromMap((map['onlineServingConfig']! as Map).cast<String, dynamic>())).input(),
-      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      encryptionSpec: (() {
+        final guardedValue = map['encryptionSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiFeatureStoreEncryptionSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onlineServingConfig: (() {
+        final guardedValue = map['onlineServingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiFeatureStoreOnlineServingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      onlineStorageTtlDays: (() {
+        final guardedValue = map['onlineStorageTtlDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

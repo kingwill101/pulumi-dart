@@ -6,19 +6,36 @@ import 'get_application_scaling_rules_rule_scaling_rule_metric_metrics_status_ne
 
 class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
   /// The current monitoring indicator elasticity list.
-  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric>> currentMetrics;
+  final pulumi.Input<
+    List<
+      GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric
+    >
+  >
+  currentMetrics;
+
   /// The number of current instances.
   final pulumi.Input<int> currentReplicas;
+
   /// The number of target instances.
   final pulumi.Input<int> desiredReplicas;
+
   /// The time of the last elastic expansion.
   final pulumi.Input<String> lastScaleTime;
+
   /// The maximum number of instances.
   final pulumi.Input<int> maxReplicas;
+
   /// The minimum number of instances.
   final pulumi.Input<int> minReplicas;
+
   /// Next monitoring indicator elasticity list
-  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric>> nextScaleMetrics;
+  final pulumi.Input<
+    List<
+      GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric
+    >
+  >
+  nextScaleMetrics;
+
   /// The next cycle of monitoring indicator elasticity.
   final pulumi.Input<int> nextScaleTimePeriod;
 
@@ -44,28 +61,77 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentMetrics': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric>, List<Map<String, dynamic>>>(currentMetrics, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'currentMetrics':
+          pulumi.Input.mapInputValue<
+            List<
+              GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric
+            >,
+            List<Map<String, dynamic>>
+          >(
+            currentMetrics,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'currentReplicas': currentReplicas,
       'desiredReplicas': desiredReplicas,
       'lastScaleTime': lastScaleTime,
       'maxReplicas': maxReplicas,
       'minReplicas': minReplicas,
-      'nextScaleMetrics': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric>, List<Map<String, dynamic>>>(nextScaleMetrics, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nextScaleMetrics':
+          pulumi.Input.mapInputValue<
+            List<
+              GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric
+            >,
+            List<Map<String, dynamic>>
+          >(
+            nextScaleMetrics,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nextScaleTimePeriod': nextScaleTimePeriod,
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus(
-      currentMetrics: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric>(map['currentMetrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentReplicas: (map['currentReplicas'] as int).input(),
-      desiredReplicas: (map['desiredReplicas'] as int).input(),
-      lastScaleTime: (map['lastScaleTime'] as String).input(),
-      maxReplicas: (map['maxReplicas'] as int).input(),
-      minReplicas: (map['minReplicas'] as int).input(),
-      nextScaleMetrics: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric>(map['nextScaleMetrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nextScaleTimePeriod: (map['nextScaleTimePeriod'] as int).input(),
+      currentMetrics: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric
+        >(
+          map['currentMetrics']!,
+          (value) =>
+              GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      currentReplicas: pulumi.Input.fromValue(map['currentReplicas'] as int),
+      desiredReplicas: pulumi.Input.fromValue(map['desiredReplicas'] as int),
+      lastScaleTime: pulumi.Input.fromValue(map['lastScaleTime'] as String),
+      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
+      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
+      nextScaleMetrics: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric
+        >(
+          map['nextScaleMetrics']!,
+          (value) =>
+              GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      nextScaleTimePeriod: pulumi.Input.fromValue(
+        map['nextScaleTimePeriod'] as int,
+      ),
     );
   }
 }
-

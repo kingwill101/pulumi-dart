@@ -3,16 +3,15 @@ enum ScheduledActionKind {
   email("Email"),
   insightAlert("InsightAlert");
 
-  const ScheduledActionKind(this.value);
-  final String value;
+  const ScheduledActionKind(this.wireValue);
+  final String wireValue;
 
   static ScheduledActionKind fromValue(String value) {
     for (final item in ScheduledActionKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduledActionKind value: $value');
   }
 }
-

@@ -7,24 +7,34 @@ import 'user_secret_store_response.dart';
 class GetUserResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The creation date of the user profile.
   final String createdDate;
+
   /// The identifier of the resource.
   final String id;
+
   /// The identity of the user.
   final UserIdentityResponse? identity;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The provisioning status of the resource.
   final String provisioningState;
+
   /// The secret store of the user.
   final UserSecretStoreResponse? secretStore;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -59,11 +69,11 @@ class GetUserResult {
       'azureApiVersion': azureApiVersion,
       'createdDate': createdDate,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
-      'secretStore': ?secretStore == null ? null : secretStore!.toMap(),
+      'secretStore': ?secretStore?.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -75,15 +85,34 @@ class GetUserResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : UserIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return UserIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      secretStore: map['secretStore'] == null ? null : UserSecretStoreResponse.fromMap((map['secretStore']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      secretStore: (() {
+        final guardedValue = map['secretStore'];
+        if (guardedValue == null) return null;
+        return UserSecretStoreResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

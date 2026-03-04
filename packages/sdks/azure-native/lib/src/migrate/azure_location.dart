@@ -69,16 +69,15 @@ enum AzureLocation {
   newZealandNorth("NewZealandNorth"),
   spainCentral("SpainCentral");
 
-  const AzureLocation(this.value);
-  final String value;
+  const AzureLocation(this.wireValue);
+  final String wireValue;
 
   static AzureLocation fromValue(String value) {
     for (final item in AzureLocation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureLocation value: $value');
   }
 }
-

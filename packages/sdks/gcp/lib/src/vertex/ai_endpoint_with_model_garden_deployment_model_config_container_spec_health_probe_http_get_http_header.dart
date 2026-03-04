@@ -7,6 +7,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
   /// This will be canonicalized upon output, so case-variant names will be
   /// understood as the same header.
   final pulumi.Input<String>? name;
+
   /// The header field value
   final pulumi.Input<String>? value;
 
@@ -19,17 +20,23 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class GoogleTypeTimeZoneResponse {
 
   /// Creates a new [GoogleTypeTimeZoneResponse].
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  GoogleTypeTimeZoneResponse({
-    required this.version,
-  });
+  GoogleTypeTimeZoneResponse({required this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': version,
-    };
+    return <String, dynamic>{'version': version};
   }
 
   factory GoogleTypeTimeZoneResponse.fromMap(Map<String, dynamic> map) {
     return GoogleTypeTimeZoneResponse(
-      version: (map['version'] as String).input(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

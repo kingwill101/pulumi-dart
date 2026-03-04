@@ -7,20 +7,17 @@ class CloudExadataInfrastructureMaintenanceWindowMonth {
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindowMonth].
   /// [name] Required.
-  CloudExadataInfrastructureMaintenanceWindowMonth({
-    required this.name,
-  });
+  CloudExadataInfrastructureMaintenanceWindowMonth({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory CloudExadataInfrastructureMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
+  factory CloudExadataInfrastructureMaintenanceWindowMonth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudExadataInfrastructureMaintenanceWindowMonth(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

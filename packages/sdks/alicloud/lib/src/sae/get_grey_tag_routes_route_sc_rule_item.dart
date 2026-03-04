@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGreyTagRoutesRouteScRuleItem {
   /// The comparison operator.
   final pulumi.Input<String> cond;
+
   /// The name of the parameter.
   final pulumi.Input<String> name;
+
   /// The operator.
   final pulumi.Input<String> operator;
+
   /// The Compare types.
   final pulumi.Input<String> type;
+
   /// The value of the parameter.
   final pulumi.Input<String> value;
 
@@ -40,12 +44,11 @@ class GetGreyTagRoutesRouteScRuleItem {
 
   factory GetGreyTagRoutesRouteScRuleItem.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteScRuleItem(
-      cond: (map['cond'] as String).input(),
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      cond: pulumi.Input.fromValue(map['cond'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

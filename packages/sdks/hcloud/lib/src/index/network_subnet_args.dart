@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSubnetArgs {
   /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
   final pulumi.Input<String> ipRange;
+
   /// ID of the Network the subnet should be added to.
   final pulumi.Input<int> networkId;
+
   /// Name of network zone.
   final pulumi.Input<String> networkZone;
+
   /// Type of subnet. `server`, `cloud` or `vswitch`
   final pulumi.Input<String> type;
+
   /// ID of the vswitch, Required if type is `vswitch`
   final pulumi.Input<int>? vswitchId;
 
@@ -44,12 +48,15 @@ class NetworkSubnetArgs {
 
   factory NetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetArgs(
-      ipRange: (map['ipRange'] as String).input(),
-      networkId: (map['networkId'] as int).input(),
-      networkZone: (map['networkZone'] as String).input(),
-      type: (map['type'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as int).input(),
+      ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
+      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

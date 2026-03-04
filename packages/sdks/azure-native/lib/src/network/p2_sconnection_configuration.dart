@@ -8,12 +8,16 @@ import 'routing_configuration.dart';
 class P2SConnectionConfiguration {
   /// Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
   final pulumi.Input<bool>? enableInternetSecurity;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
   final pulumi.Input<AddressSpace>? vpnClientAddressPool;
 
@@ -36,19 +40,52 @@ class P2SConnectionConfiguration {
       'enableInternetSecurity': ?enableInternetSecurity,
       'id': ?id,
       'name': ?name,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
-      'vpnClientAddressPool': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
+      'routingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutingConfiguration,
+            Map<String, dynamic>
+          >(routingConfiguration, (value) => value.toMap()),
+      'vpnClientAddressPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddressSpace,
+            Map<String, dynamic>
+          >(vpnClientAddressPool, (value) => value.toMap()),
     };
   }
 
   factory P2SConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return P2SConnectionConfiguration(
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool']! as Map).cast<String, dynamic>())).input(),
+      enableInternetSecurity: (() {
+        final guardedValue = map['enableInternetSecurity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingConfiguration: (() {
+        final guardedValue = map['routingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoutingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpnClientAddressPool: (() {
+        final guardedValue = map['vpnClientAddressPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddressSpace.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

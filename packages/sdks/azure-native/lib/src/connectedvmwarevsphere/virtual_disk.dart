@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualDisk {
   /// Gets or sets the controller id.
   final pulumi.Input<int>? controllerKey;
+
   /// Gets or sets the device key value.
   final pulumi.Input<int>? deviceKey;
+
   /// Gets or sets the device name.
   final pulumi.Input<String>? deviceName;
+
   /// Gets or sets the disk mode.
   final pulumi.Input<String>? diskMode;
+
   /// Gets or sets the disk total size.
   final pulumi.Input<int>? diskSizeGB;
+
   /// Gets or sets the disk backing type.
   final pulumi.Input<String>? diskType;
+
   /// Gets or sets the name of the virtual disk.
   final pulumi.Input<String>? name;
+
   /// Gets or sets the unit number of the disk on the controller.
   final pulumi.Input<int>? unitNumber;
 
@@ -56,15 +63,46 @@ class VirtualDisk {
 
   factory VirtualDisk.fromMap(Map<String, dynamic> map) {
     return VirtualDisk(
-      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey']! as int).input(),
-      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey']! as int).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
-      diskMode: map['diskMode'] == null ? null : (map['diskMode']! as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      unitNumber: map['unitNumber'] == null ? null : (map['unitNumber']! as int).input(),
+      controllerKey: (() {
+        final guardedValue = map['controllerKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deviceKey: (() {
+        final guardedValue = map['deviceKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deviceName: (() {
+        final guardedValue = map['deviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskMode: (() {
+        final guardedValue = map['diskMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSizeGB: (() {
+        final guardedValue = map['diskSizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      unitNumber: (() {
+        final guardedValue = map['unitNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

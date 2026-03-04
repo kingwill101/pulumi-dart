@@ -21,16 +21,15 @@ enum Metric {
   valueGroupAndWarmPoolDesiredCapacity("GroupAndWarmPoolDesiredCapacity"),
   valueGroupAndWarmPoolTotalCapacity("GroupAndWarmPoolTotalCapacity");
 
-  const Metric(this.value);
-  final String value;
+  const Metric(this.wireValue);
+  final String wireValue;
 
   static Metric fromValue(String value) {
     for (final item in Metric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Metric value: $value');
   }
 }
-

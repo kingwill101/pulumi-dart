@@ -39,13 +39,36 @@ class DomainCreate {
 
   factory DomainCreate.fromMap(Map<String, dynamic> map) {
     return DomainCreate(
-      autodestroy: map['autodestroy'] == null ? null : (map['autodestroy']! as bool).input(),
-      bypassCache: map['bypassCache'] == null ? null : (map['bypassCache']! as bool).input(),
-      forceBoot: map['forceBoot'] == null ? null : (map['forceBoot']! as bool).input(),
-      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
-      resetNvram: map['resetNvram'] == null ? null : (map['resetNvram']! as bool).input(),
-      validate: map['validate'] == null ? null : (map['validate']! as bool).input(),
+      autodestroy: (() {
+        final guardedValue = map['autodestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      bypassCache: (() {
+        final guardedValue = map['bypassCache'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forceBoot: (() {
+        final guardedValue = map['forceBoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      paused: (() {
+        final guardedValue = map['paused'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resetNvram: (() {
+        final guardedValue = map['resetNvram'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validate: (() {
+        final guardedValue = map['validate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

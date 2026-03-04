@@ -5,16 +5,15 @@ enum JobVisibilityJobsV4 {
   sharedWithGoogle("SHARED_WITH_GOOGLE"),
   sharedWithPublic("SHARED_WITH_PUBLIC");
 
-  const JobVisibilityJobsV4(this.value);
-  final String value;
+  const JobVisibilityJobsV4(this.wireValue);
+  final String wireValue;
 
   static JobVisibilityJobsV4 fromValue(String value) {
     for (final item in JobVisibilityJobsV4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobVisibilityJobsV4 value: $value');
   }
 }
-

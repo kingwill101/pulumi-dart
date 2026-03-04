@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_migrations_mongo_to_cosmos_dbv_core_mongo_args.dart';
 import 'error_info_response.dart';
 import 'mongo_connection_information_response.dart';
-import 'mongo_migration_collection_response.dart';
 import 'system_data_response.dart';
 
 /// Database Migration Resource for Mongo to CosmosDb.
@@ -582,39 +581,58 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbvCoreMongo migrationRequest /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}
 /// ```
-class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomResource {
+class DatabaseMigrationsMongoToCosmosDbvCoreMongo
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of Mongo Collections to be migrated.
-  late final pulumi.Output<List<MongoMigrationCollectionResponse>?> collectionList;
+  late final pulumi.Output<List<Map<String, dynamic>>?> collectionList;
+
   /// Database migration end time.
   late final pulumi.Output<String> endedOn;
+
   /// Expected value is 'MongoToCosmosDbMongo'.
   late final pulumi.Output<String> kind;
+
   /// Error details in case of migration failure.
   late final pulumi.Output<ErrorInfoResponse> migrationFailureError;
+
   /// ID for current migration operation.
   late final pulumi.Output<String?> migrationOperationId;
+
   /// Resource Id of the Migration Service.
   late final pulumi.Output<String?> migrationService;
+
   /// Migration status.
   late final pulumi.Output<String> migrationStatus;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Error message for migration provisioning failure, if any.
   late final pulumi.Output<String?> provisioningError;
+
   /// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource Id of the target resource.
   late final pulumi.Output<String?> scope;
+
   /// Source Mongo connection details.
-  late final pulumi.Output<MongoConnectionInformationResponse?> sourceMongoConnection;
+  late final pulumi.Output<MongoConnectionInformationResponse?>
+  sourceMongoConnection;
+
   /// Database migration start time.
   late final pulumi.Output<String> startedOn;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Target Cosmos DB Mongo connection details.
-  late final pulumi.Output<MongoConnectionInformationResponse?> targetMongoConnection;
+  late final pulumi.Output<MongoConnectionInformationResponse?>
+  targetMongoConnection;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -627,27 +645,35 @@ class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomResource 
     DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbvCoreMongo',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collectionList = registerOutput<List<MongoMigrationCollectionResponse>?>('collectionList');
-    this.endedOn = registerOutput<String>('endedOn');
-    this.kind = registerOutput<String>('kind');
-    this.migrationFailureError = registerOutput<ErrorInfoResponse>('migrationFailureError');
-    this.migrationOperationId = registerOutput<String?>('migrationOperationId');
-    this.migrationService = registerOutput<String?>('migrationService');
-    this.migrationStatus = registerOutput<String>('migrationStatus');
+         'azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbvCoreMongo',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collectionList = registerOutput<List<Map<String, dynamic>>?>(
+      'collectionList',
+    );
+    endedOn = registerOutput<String>('endedOn');
+    kind = registerOutput<String>('kind');
+    migrationFailureError = registerOutput<ErrorInfoResponse>(
+      'migrationFailureError',
+    );
+    migrationOperationId = registerOutput<String?>('migrationOperationId');
+    migrationService = registerOutput<String?>('migrationService');
+    migrationStatus = registerOutput<String>('migrationStatus');
     this.name = registerOutput<String>('name');
-    this.provisioningError = registerOutput<String?>('provisioningError');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scope = registerOutput<String?>('scope');
-    this.sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>('sourceMongoConnection');
-    this.startedOn = registerOutput<String>('startedOn');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>('targetMongoConnection');
-    this.type = registerOutput<String>('type');
+    provisioningError = registerOutput<String?>('provisioningError');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<String?>('scope');
+    sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
+      'sourceMongoConnection',
+    );
+    startedOn = registerOutput<String>('startedOn');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
+      'targetMongoConnection',
+    );
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_ml;
-
 export 'ml/functions.dart';
 export 'ml/get_job_args.dart';
 export 'ml/get_job_iam_policy_args.dart';

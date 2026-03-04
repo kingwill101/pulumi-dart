@@ -9,14 +9,19 @@ import 'app_authorization_connection_timeouts.dart';
 class AppAuthorizationConnectionState {
   /// The name of the application.
   final pulumi.Input<String>? app;
+
   /// The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
   final pulumi.Input<String>? appAuthorizationArn;
+
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String>? appBundleArn;
+
   /// Contains OAuth2 authorization information.This is required if the app authorization for the request is configured with an OAuth2 (oauth2) authorization type.
   final pulumi.Input<AppAuthorizationConnectionAuthRequest>? authRequest;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Contains information about an application tenant, such as the application display name and identifier.
   final pulumi.Input<List<AppAuthorizationConnectionTenant>>? tenants;
   final pulumi.Input<AppAuthorizationConnectionTimeouts>? timeouts;
@@ -44,23 +49,84 @@ class AppAuthorizationConnectionState {
       'app': ?app,
       'appAuthorizationArn': ?appAuthorizationArn,
       'appBundleArn': ?appBundleArn,
-      'authRequest': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationConnectionAuthRequest, Map<String, dynamic>>(authRequest, (value) => value.toMap()),
+      'authRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationConnectionAuthRequest,
+            Map<String, dynamic>
+          >(authRequest, (value) => value.toMap()),
       'region': ?region,
-      'tenants': ?pulumi.Input.mapOptionalInputValue<List<AppAuthorizationConnectionTenant>, List<Map<String, dynamic>>>(tenants, (value) => pulumi.Input.encodeList<AppAuthorizationConnectionTenant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationConnectionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'tenants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppAuthorizationConnectionTenant>,
+            List<Map<String, dynamic>>
+          >(
+            tenants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppAuthorizationConnectionTenant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationConnectionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AppAuthorizationConnectionState.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionState(
-      app: map['app'] == null ? null : ((map['app'] as String).input()).input(),
-      appAuthorizationArn: map['appAuthorizationArn'] == null ? null : ((map['appAuthorizationArn'] as String).input()).input(),
-      appBundleArn: map['appBundleArn'] == null ? null : ((map['appBundleArn'] as String).input()).input(),
-      authRequest: map['authRequest'] == null ? null : ((AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tenants: map['tenants'] == null ? null : ((pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(map['tenants']!, (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      app: (() {
+        final guardedValue = map['app'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appAuthorizationArn: (() {
+        final guardedValue = map['appAuthorizationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appBundleArn: (() {
+        final guardedValue = map['appBundleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authRequest: (() {
+        final guardedValue = map['authRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationConnectionAuthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenants: (() {
+        final guardedValue = map['tenants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(
+            guardedValue,
+            (value) => AppAuthorizationConnectionTenant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationConnectionTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

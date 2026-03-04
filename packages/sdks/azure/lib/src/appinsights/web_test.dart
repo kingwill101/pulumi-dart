@@ -4,7 +4,7 @@ import 'web_test_state.dart';
 
 /// Manages an Application Insights WebTest.
 ///
-/// > **Note:** Despite the discrepancy in its name, this Terraform resource corresponds to the Azure resource 'Application Insights Classic Web Test'. Azure changed the name, but we retained the original name in Terraform to avoid disruption and ensure backward compatibility.
+/// &gt; **Note:** Despite the discrepancy in its name, this Terraform resource corresponds to the Azure resource 'Application Insights Classic Web Test'. Azure changed the name, but we retained the original name in Terraform to avoid disruption and ensure backward compatibility.
 ///
 /// ## Example Usage
 ///
@@ -295,7 +295,7 @@ import 'web_test_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2022-06-15
@@ -310,31 +310,43 @@ import 'web_test_state.dart';
 class WebTest extends pulumi.CustomResource {
   /// The ID of the Application Insights component on which the WebTest operates. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
+
   /// An XML configuration specification for a WebTest ([see here for more information](https://docs.microsoft.com/rest/api/application-insights/webtests/createorupdate/)).
   late final pulumi.Output<String> configuration;
+
   /// Purpose/user defined descriptive test for this WebTest.
   late final pulumi.Output<String?> description;
+
   /// Is the test actively being monitored.
   late final pulumi.Output<bool?> enabled;
+
   /// Interval in seconds between test runs for this WebTest. Valid options are `300`, `600` and `900`. Defaults to `300`.
   late final pulumi.Output<int?> frequency;
+
   /// A list of where to physically run the tests from to give global coverage for accessibility of your application.
   ///
-  /// > **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
+  /// &gt; **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
   late final pulumi.Output<List<String>> geoLocations;
+
   /// The kind of web test that this web test watches. Choices are `ping` and `multistep`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. It needs to correlate with location of parent resource (azurerm_application_insights).
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Application Insights WebTest. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Application Insights WebTest. Changing this forces a new resource
   late final pulumi.Output<String> resourceGroupName;
+
   /// Allow for retries should this WebTest fail.
   late final pulumi.Output<bool?> retryEnabled;
   late final pulumi.Output<String> syntheticMonitorId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
   late final pulumi.Output<int?> timeout;
 
@@ -347,25 +359,25 @@ class WebTest extends pulumi.CustomResource {
     WebTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/webTest:WebTest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.configuration = registerOutput<String>('configuration');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int?>('frequency');
-    this.geoLocations = registerOutput<List<String>>('geoLocations');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/webTest:WebTest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    configuration = registerOutput<String>('configuration');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryEnabled = registerOutput<bool?>('retryEnabled');
-    this.syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<int?>('timeout');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<int?>('timeout');
   }
 
   /// Gets an existing [WebTest] resource's state with the given [name] and [id].
@@ -386,24 +398,24 @@ class WebTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/webTest:WebTest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.configuration = registerOutput<String>('configuration');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int?>('frequency');
-    this.geoLocations = registerOutput<List<String>>('geoLocations');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/webTest:WebTest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    configuration = registerOutput<String>('configuration');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryEnabled = registerOutput<bool?>('retryEnabled');
-    this.syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<int?>('timeout');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<int?>('timeout');
   }
 }

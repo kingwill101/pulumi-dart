@@ -4,16 +4,15 @@ enum AuthConfigVisibility {
   private("PRIVATE"),
   clientVisible("CLIENT_VISIBLE");
 
-  const AuthConfigVisibility(this.value);
-  final String value;
+  const AuthConfigVisibility(this.wireValue);
+  final String wireValue;
 
   static AuthConfigVisibility fromValue(String value) {
     for (final item in AuthConfigVisibility.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthConfigVisibility value: $value');
   }
 }
-

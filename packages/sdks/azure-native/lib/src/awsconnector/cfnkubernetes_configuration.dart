@@ -10,20 +10,29 @@ class CFNKubernetesConfiguration {
 
   /// Creates a new [CFNKubernetesConfiguration].
   /// [auditLogs] Property auditLogs
-  CFNKubernetesConfiguration({
-    this.auditLogs,
-  });
+  CFNKubernetesConfiguration({this.auditLogs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogs': ?pulumi.Input.mapOptionalInputValue<CFNKubernetesAuditLogsConfiguration, Map<String, dynamic>>(auditLogs, (value) => value.toMap()),
+      'auditLogs':
+          ?pulumi.Input.mapOptionalInputValue<
+            CFNKubernetesAuditLogsConfiguration,
+            Map<String, dynamic>
+          >(auditLogs, (value) => value.toMap()),
     };
   }
 
   factory CFNKubernetesConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesConfiguration(
-      auditLogs: map['auditLogs'] == null ? null : (CFNKubernetesAuditLogsConfiguration.fromMap((map['auditLogs']! as Map).cast<String, dynamic>())).input(),
+      auditLogs: (() {
+        final guardedValue = map['auditLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CFNKubernetesAuditLogsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

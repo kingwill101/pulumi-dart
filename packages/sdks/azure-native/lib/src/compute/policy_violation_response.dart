@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyViolationResponse {
   /// Describes the nature of the policy violation.
   final pulumi.Input<String>? category;
+
   /// Describes specific details about why this policy violation was reported.
   final pulumi.Input<String>? details;
 
   /// Creates a new [PolicyViolationResponse].
   /// [category] Describes the nature of the policy violation.
   /// [details] Describes specific details about why this policy violation was reported.
-  PolicyViolationResponse({
-    this.category,
-    this.details,
-  });
+  PolicyViolationResponse({this.category, this.details});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'category': ?category,
-      'details': ?details,
-    };
+    return <String, dynamic>{'category': ?category, 'details': ?details};
   }
 
   factory PolicyViolationResponse.fromMap(Map<String, dynamic> map) {
     return PolicyViolationResponse(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      details: map['details'] == null ? null : (map['details']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

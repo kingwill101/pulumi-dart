@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceInitialReplicaSet {
   /// A list of subnet IP addresses for the domain controllers in the initial replica set, typically two.
   final pulumi.Input<List<String>>? domainControllerIpAddresses;
+
   /// The publicly routable IP address for the domain controllers in the initial replica set.
   final pulumi.Input<String>? externalAccessIpAddress;
+
   /// A unique ID for the replica set.
   final pulumi.Input<String>? id;
+
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The current service status for the initial replica set.
   final pulumi.Input<String>? serviceStatus;
+
   /// The ID of the subnet in which to place the initial replica set. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 
@@ -45,13 +50,32 @@ class ServiceInitialReplicaSet {
 
   factory ServiceInitialReplicaSet.fromMap(Map<String, dynamic> map) {
     return ServiceInitialReplicaSet(
-      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses']! as List).cast<String>()).input(),
-      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus']! as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      domainControllerIpAddresses: (() {
+        final guardedValue = map['domainControllerIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      externalAccessIpAddress: (() {
+        final guardedValue = map['externalAccessIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceStatus: (() {
+        final guardedValue = map['serviceStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -11,16 +11,22 @@ import 'scan_schedule.dart';
 class InsightsAccountArgs {
   /// Name of the insights account.
   final pulumi.Input<String> accountName;
+
   /// The ESC environment used for provider credentials. Format: 'project/environment' with optional '@version' suffix (e.g., 'my-project/prod-env' or 'my-project/prod-env@v1.0').
   final pulumi.Input<String> environment;
+
   /// The organization's name.
   final pulumi.Input<String> organizationName;
+
   /// The cloud provider for scanning.
   final pulumi.Input<CloudProvider> provider;
+
   /// Provider-specific configuration as a JSON object. For AWS, specify regions to scan: {"regions": ["us-west-1", "us-west-2"]}.
   final pulumi.Input<Map<String, dynamic>>? providerConfig;
+
   /// Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   final pulumi.Input<ScanSchedule> scanSchedule;
+
   /// Key-value tags to associate with the insights account.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,23 +53,46 @@ class InsightsAccountArgs {
       'accountName': accountName,
       'environment': environment,
       'organizationName': organizationName,
-      'provider': pulumi.Input.mapInputValue<CloudProvider, String>(provider, (value) => value.value),
+      'provider': pulumi.Input.mapInputValue<CloudProvider, String>(
+        provider,
+        (value) => value.wireValue,
+      ),
       'providerConfig': ?providerConfig,
-      'scanSchedule': pulumi.Input.mapInputValue<ScanSchedule, String>(scanSchedule, (value) => value.value),
+      'scanSchedule': pulumi.Input.mapInputValue<ScanSchedule, String>(
+        scanSchedule,
+        (value) => value.wireValue,
+      ),
       'tags': ?tags,
     };
   }
 
   factory InsightsAccountArgs.fromMap(Map<String, dynamic> map) {
     return InsightsAccountArgs(
-      accountName: (map['accountName'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      provider: (CloudProvider.fromValue(map['provider'] as String)).input(),
-      providerConfig: map['providerConfig'] == null ? null : ((map['providerConfig']! as Map).cast<String, dynamic>()).input(),
-      scanSchedule: (ScanSchedule.fromValue(map['scanSchedule'] as String)).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      provider: pulumi.Input.fromValue(
+        CloudProvider.fromValue(map['provider']! as String),
+      ),
+      providerConfig: (() {
+        final guardedValue = map['providerConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      scanSchedule: pulumi.Input.fromValue(
+        ScanSchedule.fromValue(map['scanSchedule']! as String),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

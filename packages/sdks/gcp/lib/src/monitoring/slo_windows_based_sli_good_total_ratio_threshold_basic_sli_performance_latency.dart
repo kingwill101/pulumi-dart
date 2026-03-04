@@ -15,15 +15,14 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threshold': threshold,
-    };
+    return <String, dynamic>{'threshold': threshold};
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(
-      threshold: (map['threshold'] as String).input(),
+      threshold: pulumi.Input.fromValue(map['threshold'] as String),
     );
   }
 }
-

@@ -126,7 +126,7 @@ import 'get_topic_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -255,7 +255,7 @@ Future<GetNamespaceResult> getNamespace(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -384,13 +384,14 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicebus_get_namespace_disaster_recovery_config_get_namespace_disaster_recovery_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryConfig(
+Future<GetNamespaceDisasterRecoveryConfigResult>
+getNamespaceDisasterRecoveryConfig(
   GetNamespaceDisasterRecoveryConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -513,7 +514,7 @@ Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryCon
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -654,7 +655,7 @@ Future<GetQueueResult> getQueue(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -783,7 +784,7 @@ Future<GetQueueAuthorizationRuleResult> getQueueAuthorizationRule(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -912,7 +913,7 @@ Future<GetSubscriptionResult> getSubscription(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -1053,7 +1054,7 @@ Future<GetTopicResult> getTopic(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01

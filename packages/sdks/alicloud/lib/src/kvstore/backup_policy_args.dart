@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
   final pulumi.Input<List<String>>? backupPeriods;
+
   /// Backup time, in the format of HH:mmZ- HH:mm Z.
   final pulumi.Input<String>? backupTime;
+
   /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   final pulumi.Input<String> instanceId;
 
@@ -34,10 +36,17 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPeriods: map['backupPeriods'] == null ? null : ((map['backupPeriods']! as List).cast<String>()).input(),
-      backupTime: map['backupTime'] == null ? null : (map['backupTime']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      backupPeriods: (() {
+        final guardedValue = map['backupPeriods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backupTime: (() {
+        final guardedValue = map['backupTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

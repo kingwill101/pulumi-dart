@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWebsiteConfigurationRoutingRuleCondition {
   /// HTTP error code when the redirect is applied. If specified with `key_prefix_equals`, then both must be true for the redirect to be applied.
   final pulumi.Input<String>? httpErrorCodeReturnedEquals;
+
   /// Object key name prefix when the redirect is applied. If specified with `http_error_code_returned_equals`, then both must be true for the redirect to be applied.
   final pulumi.Input<String>? keyPrefixEquals;
 
@@ -23,11 +24,20 @@ class BucketWebsiteConfigurationRoutingRuleCondition {
     };
   }
 
-  factory BucketWebsiteConfigurationRoutingRuleCondition.fromMap(Map<String, dynamic> map) {
+  factory BucketWebsiteConfigurationRoutingRuleCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketWebsiteConfigurationRoutingRuleCondition(
-      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : ((map['httpErrorCodeReturnedEquals'] as String).input()).input(),
-      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : ((map['keyPrefixEquals'] as String).input()).input(),
+      httpErrorCodeReturnedEquals: (() {
+        final guardedValue = map['httpErrorCodeReturnedEquals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyPrefixEquals: (() {
+        final guardedValue = map['keyPrefixEquals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

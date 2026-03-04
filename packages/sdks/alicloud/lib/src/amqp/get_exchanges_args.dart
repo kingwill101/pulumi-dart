@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExchangesArgs {
   /// A list of Exchange IDs. Its element value is same as Exchange Name.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// A regex string to filter results by Exchange name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of virtual host where an exchange resides.
   final pulumi.Input<String> virtualHostName;
 
@@ -44,12 +48,23 @@ class GetExchangesArgs {
 
   factory GetExchangesArgs.fromMap(Map<String, dynamic> map) {
     return GetExchangesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      virtualHostName: (map['virtualHostName'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualHostName: pulumi.Input.fromValue(map['virtualHostName'] as String),
     );
   }
 }
-

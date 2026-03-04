@@ -8,16 +8,15 @@ enum GCSPayloadInfoFormat {
   importJobFormatExportedAzureCsv("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"),
   importJobFormatManualCsv("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
-  const GCSPayloadInfoFormat(this.value);
-  final String value;
+  const GCSPayloadInfoFormat(this.wireValue);
+  final String wireValue;
 
   static GCSPayloadInfoFormat fromValue(String value) {
     for (final item in GCSPayloadInfoFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GCSPayloadInfoFormat value: $value');
   }
 }
-

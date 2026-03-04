@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getZoneShareV2.
 class GetZoneShareV2Result {
   /// See Argument Reference above.
   final String? allProjects;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String? projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// The ID of the zone share.
   final String shareId;
+
   /// See Argument Reference above.
   final String? targetProjectId;
+
   /// See Argument Reference above.
   final String zoneId;
 
@@ -50,14 +55,25 @@ class GetZoneShareV2Result {
 
   factory GetZoneShareV2Result.fromMap(Map<String, dynamic> map) {
     return GetZoneShareV2Result(
-      allProjects: map['allProjects'] == null ? null : map['allProjects']! as String,
+      allProjects: (() {
+        final guardedValue = map['allProjects'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId']! as String,
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
       shareId: map['shareId'] as String,
-      targetProjectId: map['targetProjectId'] == null ? null : map['targetProjectId']! as String,
+      targetProjectId: (() {
+        final guardedValue = map['targetProjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       zoneId: map['zoneId'] as String,
     );
   }
 }
-

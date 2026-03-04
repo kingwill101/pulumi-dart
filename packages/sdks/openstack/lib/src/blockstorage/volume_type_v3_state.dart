@@ -7,14 +7,18 @@ class VolumeTypeV3State {
   /// Human-readable description of the port. Changing
   /// this updates the `description` of an existing volume type.
   final pulumi.Input<String>? description;
+
   /// Key/Value pairs of metadata for the volume type.
   final pulumi.Input<Map<String, String>>? extraSpecs;
+
   /// Whether the volume type is public. Changing
   /// this updates the `is_public` of an existing volume type.
   final pulumi.Input<bool>? isPublic;
+
   /// Name of the volume type.  Changing this
   /// updates the `name` of an existing volume type.
   final pulumi.Input<String>? name;
+
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
@@ -46,12 +50,33 @@ class VolumeTypeV3State {
 
   factory VolumeTypeV3State.fromMap(Map<String, dynamic> map) {
     return VolumeTypeV3State(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs']! as Map).cast<String, String>()).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extraSpecs: (() {
+        final guardedValue = map['extraSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      isPublic: (() {
+        final guardedValue = map['isPublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

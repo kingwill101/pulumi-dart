@@ -7,8 +7,10 @@ import 'a2_acontainer_mapping_input.dart';
 class CreateProtectionContainerMappingInputProperties {
   /// Applicable policy.
   final pulumi.Input<String>? policyId;
+
   /// Provider specific input for pairing.
   final pulumi.Input<A2AContainerMappingInput>? providerSpecificInput;
+
   /// The target unique protection container name.
   final pulumi.Input<String>? targetProtectionContainerId;
 
@@ -25,17 +27,38 @@ class CreateProtectionContainerMappingInputProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'policyId': ?policyId,
-      'providerSpecificInput': ?pulumi.Input.mapOptionalInputValue<A2AContainerMappingInput, Map<String, dynamic>>(providerSpecificInput, (value) => value.toMap()),
+      'providerSpecificInput':
+          ?pulumi.Input.mapOptionalInputValue<
+            A2AContainerMappingInput,
+            Map<String, dynamic>
+          >(providerSpecificInput, (value) => value.toMap()),
       'targetProtectionContainerId': ?targetProtectionContainerId,
     };
   }
 
-  factory CreateProtectionContainerMappingInputProperties.fromMap(Map<String, dynamic> map) {
+  factory CreateProtectionContainerMappingInputProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CreateProtectionContainerMappingInputProperties(
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2AContainerMappingInput.fromMap((map['providerSpecificInput']! as Map).cast<String, dynamic>())).input(),
-      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId']! as String).input(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerSpecificInput: (() {
+        final guardedValue = map['providerSpecificInput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          A2AContainerMappingInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetProtectionContainerId: (() {
+        final guardedValue = map['targetProtectionContainerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

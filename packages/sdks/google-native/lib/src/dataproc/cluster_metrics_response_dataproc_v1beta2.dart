@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMetricsResponseDataprocV1beta2 {
   /// The HDFS metrics.
   final pulumi.Input<Map<String, String>> hdfsMetrics;
+
   /// The YARN metrics.
   final pulumi.Input<Map<String, String>> yarnMetrics;
 
@@ -24,11 +25,16 @@ class ClusterMetricsResponseDataprocV1beta2 {
     };
   }
 
-  factory ClusterMetricsResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ClusterMetricsResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMetricsResponseDataprocV1beta2(
-      hdfsMetrics: ((map['hdfsMetrics'] as Map).cast<String, String>()).input(),
-      yarnMetrics: ((map['yarnMetrics'] as Map).cast<String, String>()).input(),
+      hdfsMetrics: pulumi.Input.fromValue(
+        (map['hdfsMetrics'] as Map).cast<String, String>(),
+      ),
+      yarnMetrics: pulumi.Input.fromValue(
+        (map['yarnMetrics'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

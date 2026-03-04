@@ -305,22 +305,31 @@ import 'system_data_response.dart';
 class Replication extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the replication at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
   late final pulumi.Output<bool?> regionEndpointEnabled;
+
   /// The status of the replication at the time the operation was called.
   late final pulumi.Output<StatusResponse> status;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Whether or not zone redundancy is enabled for this container registry replication
   late final pulumi.Output<String?> zoneRedundancy;
 
@@ -333,20 +342,20 @@ class Replication extends pulumi.CustomResource {
     ReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:Replication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:containerregistry:Replication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.regionEndpointEnabled = registerOutput<bool?>('regionEndpointEnabled');
-    this.status = registerOutput<StatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zoneRedundancy = registerOutput<String?>('zoneRedundancy');
+    provisioningState = registerOutput<String>('provisioningState');
+    regionEndpointEnabled = registerOutput<bool?>('regionEndpointEnabled');
+    status = registerOutput<StatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zoneRedundancy = registerOutput<String?>('zoneRedundancy');
   }
 }

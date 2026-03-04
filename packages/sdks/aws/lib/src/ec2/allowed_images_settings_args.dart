@@ -9,9 +9,12 @@ import 'allowed_images_settings_image_criterion.dart';
 /// {@macro pulumi_ec2_allowed_images_settings_allowed_images_settings_args_doc}
 class AllowedImagesSettingsArgs {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
-  final pulumi.Input<List<AllowedImagesSettingsImageCriterion>>? imageCriterions;
+  final pulumi.Input<List<AllowedImagesSettingsImageCriterion>>?
+  imageCriterions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   final pulumi.Input<String> state;
 
@@ -27,7 +30,18 @@ class AllowedImagesSettingsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageCriterions': ?pulumi.Input.mapOptionalInputValue<List<AllowedImagesSettingsImageCriterion>, List<Map<String, dynamic>>>(imageCriterions, (value) => pulumi.Input.encodeList<AllowedImagesSettingsImageCriterion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'imageCriterions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AllowedImagesSettingsImageCriterion>,
+            List<Map<String, dynamic>>
+          >(
+            imageCriterions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AllowedImagesSettingsImageCriterion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'state': state,
     };
@@ -35,10 +49,24 @@ class AllowedImagesSettingsArgs {
 
   factory AllowedImagesSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsArgs(
-      imageCriterions: map['imageCriterions'] == null ? null : ((pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(map['imageCriterions']!, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: (map['state'] as String).input(),
+      imageCriterions: (() {
+        final guardedValue = map['imageCriterions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(
+            guardedValue,
+            (value) => AllowedImagesSettingsImageCriterion.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

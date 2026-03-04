@@ -1,5 +1,3 @@
-library module_chronicle;
-
 export 'chronicle/data_access_label.dart';
 export 'chronicle/data_access_label_args.dart';
 export 'chronicle/data_access_label_state.dart';

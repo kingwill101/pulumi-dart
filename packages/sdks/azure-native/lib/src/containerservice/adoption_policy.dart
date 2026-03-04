@@ -4,16 +4,15 @@ enum AdoptionPolicy {
   valueIfIdentical("IfIdentical"),
   valueAlways("Always");
 
-  const AdoptionPolicy(this.value);
-  final String value;
+  const AdoptionPolicy(this.wireValue);
+  final String wireValue;
 
   static AdoptionPolicy fromValue(String value) {
     for (final item in AdoptionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdoptionPolicy value: $value');
   }
 }
-

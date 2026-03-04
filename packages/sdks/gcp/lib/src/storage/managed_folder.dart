@@ -184,20 +184,26 @@ import 'managed_folder_state.dart';
 class ManagedFolder extends pulumi.CustomResource {
   /// The name of the bucket that contains the managed folder.
   late final pulumi.Output<String> bucket;
+
   /// The timestamp at which this managed folder was created.
   late final pulumi.Output<String> createTime;
+
   /// Allows the deletion of a managed folder even if contains
   /// objects. If a non-empty managed folder is deleted, any objects
   /// within the folder will remain in a simulated folder with the
   /// same name.
   late final pulumi.Output<bool?> forceDestroy;
+
   /// The metadata generation of the managed folder.
   late final pulumi.Output<String> metageneration;
+
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
   late final pulumi.Output<String> name;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The timestamp at which this managed folder was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -210,18 +216,18 @@ class ManagedFolder extends pulumi.CustomResource {
     ManagedFolderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/managedFolder:ManagedFolder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metageneration = registerOutput<String>('metageneration');
+         'gcp:storage/managedFolder:ManagedFolder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [ManagedFolder] resource's state with the given [name] and [id].
@@ -242,17 +248,17 @@ class ManagedFolder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/managedFolder:ManagedFolder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metageneration = registerOutput<String>('metageneration');
+         'gcp:storage/managedFolder:ManagedFolder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

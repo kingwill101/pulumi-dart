@@ -4,16 +4,17 @@ enum DNSConfigClusterDnsScopeContainerV1beta1 {
   clusterScope("CLUSTER_SCOPE"),
   vpcScope("VPC_SCOPE");
 
-  const DNSConfigClusterDnsScopeContainerV1beta1(this.value);
-  final String value;
+  const DNSConfigClusterDnsScopeContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static DNSConfigClusterDnsScopeContainerV1beta1 fromValue(String value) {
     for (final item in DNSConfigClusterDnsScopeContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DNSConfigClusterDnsScopeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown DNSConfigClusterDnsScopeContainerV1beta1 value: $value',
+    );
   }
 }
-

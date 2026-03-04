@@ -7,21 +7,29 @@ import 'backend_rule_path_translation.dart';
 class BackendRule {
   /// The address of the API backend. The scheme is used to determine the backend protocol and security. The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol version.
   final pulumi.Input<String>? address;
+
   /// The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
   final pulumi.Input<double>? deadline;
+
   /// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
   final pulumi.Input<bool>? disableAuth;
+
   /// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
   final pulumi.Input<String>? jwtAudience;
+
   /// Deprecated, do not use.
   final pulumi.Input<double>? minDeadline;
+
   /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
   final pulumi.Input<double>? operationDeadline;
+
   /// The map between request protocol and the backend address.
   final pulumi.Input<Map<String, String>>? overridesByRequestProtocol;
   final pulumi.Input<BackendRulePathTranslation>? pathTranslation;
+
   /// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
   final pulumi.Input<String>? protocol;
+
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
   final pulumi.Input<String>? selector;
 
@@ -58,7 +66,11 @@ class BackendRule {
       'minDeadline': ?minDeadline,
       'operationDeadline': ?operationDeadline,
       'overridesByRequestProtocol': ?overridesByRequestProtocol,
-      'pathTranslation': ?pulumi.Input.mapOptionalInputValue<BackendRulePathTranslation, String>(pathTranslation, (value) => value.value),
+      'pathTranslation':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendRulePathTranslation,
+            String
+          >(pathTranslation, (value) => value.wireValue),
       'protocol': ?protocol,
       'selector': ?selector,
     };
@@ -66,17 +78,60 @@ class BackendRule {
 
   factory BackendRule.fromMap(Map<String, dynamic> map) {
     return BackendRule(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      deadline: map['deadline'] == null ? null : (map['deadline']! as double).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
-      jwtAudience: map['jwtAudience'] == null ? null : (map['jwtAudience']! as String).input(),
-      minDeadline: map['minDeadline'] == null ? null : (map['minDeadline']! as double).input(),
-      operationDeadline: map['operationDeadline'] == null ? null : (map['operationDeadline']! as double).input(),
-      overridesByRequestProtocol: map['overridesByRequestProtocol'] == null ? null : ((map['overridesByRequestProtocol']! as Map).cast<String, String>()).input(),
-      pathTranslation: map['pathTranslation'] == null ? null : (BackendRulePathTranslation.fromValue(map['pathTranslation']! as String)).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deadline: (() {
+        final guardedValue = map['deadline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      disableAuth: (() {
+        final guardedValue = map['disableAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      jwtAudience: (() {
+        final guardedValue = map['jwtAudience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minDeadline: (() {
+        final guardedValue = map['minDeadline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      operationDeadline: (() {
+        final guardedValue = map['operationDeadline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      overridesByRequestProtocol: (() {
+        final guardedValue = map['overridesByRequestProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      pathTranslation: (() {
+        final guardedValue = map['pathTranslation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendRulePathTranslation.fromValue(guardedValue as String),
+        );
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

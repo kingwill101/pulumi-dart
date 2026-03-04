@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkflowArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workflow resource.
   final pulumi.Input<String> workflowName;
 
@@ -29,9 +30,10 @@ class GetWorkflowArgs {
 
   factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

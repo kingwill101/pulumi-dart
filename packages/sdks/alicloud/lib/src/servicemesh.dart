@@ -1,5 +1,3 @@
-library module_servicemesh;
-
 export 'servicemesh/extension_provider.dart';
 export 'servicemesh/extension_provider_args.dart';
 export 'servicemesh/extension_provider_state.dart';

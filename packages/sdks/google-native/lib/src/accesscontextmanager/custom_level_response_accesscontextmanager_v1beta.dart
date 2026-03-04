@@ -10,20 +10,27 @@ class CustomLevelResponseAccesscontextmanagerV1beta {
 
   /// Creates a new [CustomLevelResponseAccesscontextmanagerV1beta].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevelResponseAccesscontextmanagerV1beta({
-    required this.expr,
-  });
+  CustomLevelResponseAccesscontextmanagerV1beta({required this.expr});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expr': pulumi.Input.mapInputValue<ExprResponseAccesscontextmanagerV1beta, Map<String, dynamic>>(expr, (value) => value.toMap()),
+      'expr':
+          pulumi.Input.mapInputValue<
+            ExprResponseAccesscontextmanagerV1beta,
+            Map<String, dynamic>
+          >(expr, (value) => value.toMap()),
     };
   }
 
-  factory CustomLevelResponseAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
+  factory CustomLevelResponseAccesscontextmanagerV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomLevelResponseAccesscontextmanagerV1beta(
-      expr: (ExprResponseAccesscontextmanagerV1beta.fromMap((map['expr'] as Map).cast<String, dynamic>())).input(),
+      expr: pulumi.Input.fromValue(
+        ExprResponseAccesscontextmanagerV1beta.fromMap(
+          (map['expr']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

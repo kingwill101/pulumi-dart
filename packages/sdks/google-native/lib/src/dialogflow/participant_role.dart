@@ -5,16 +5,15 @@ enum ParticipantRole {
   automatedAgent("AUTOMATED_AGENT"),
   endUser("END_USER");
 
-  const ParticipantRole(this.value);
-  final String value;
+  const ParticipantRole(this.wireValue);
+  final String wireValue;
 
   static ParticipantRole fromValue(String value) {
     for (final item in ParticipantRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ParticipantRole value: $value');
   }
 }
-

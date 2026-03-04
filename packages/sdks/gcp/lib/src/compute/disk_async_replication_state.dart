@@ -7,6 +7,7 @@ import 'disk_async_replication_secondary_disk.dart';
 class DiskAsyncReplicationState {
   /// The primary disk (source of replication).
   final pulumi.Input<String>? primaryDisk;
+
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
   ///
   /// The `secondary_disk` block includes:
@@ -15,23 +16,35 @@ class DiskAsyncReplicationState {
   /// Creates a new [DiskAsyncReplicationState].
   /// [primaryDisk] The primary disk (source of replication).
   /// [secondaryDisk] The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-  DiskAsyncReplicationState({
-    this.primaryDisk,
-    this.secondaryDisk,
-  });
+  DiskAsyncReplicationState({this.primaryDisk, this.secondaryDisk});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'primaryDisk': ?primaryDisk,
-      'secondaryDisk': ?pulumi.Input.mapOptionalInputValue<DiskAsyncReplicationSecondaryDisk, Map<String, dynamic>>(secondaryDisk, (value) => value.toMap()),
+      'secondaryDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskAsyncReplicationSecondaryDisk,
+            Map<String, dynamic>
+          >(secondaryDisk, (value) => value.toMap()),
     };
   }
 
   factory DiskAsyncReplicationState.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationState(
-      primaryDisk: map['primaryDisk'] == null ? null : (map['primaryDisk']! as String).input(),
-      secondaryDisk: map['secondaryDisk'] == null ? null : (DiskAsyncReplicationSecondaryDisk.fromMap((map['secondaryDisk']! as Map).cast<String, dynamic>())).input(),
+      primaryDisk: (() {
+        final guardedValue = map['primaryDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryDisk: (() {
+        final guardedValue = map['secondaryDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskAsyncReplicationSecondaryDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

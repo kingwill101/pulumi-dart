@@ -15,32 +15,46 @@ import 'resource_forest_settings.dart';
 class DomainServiceArgs {
   /// Configuration diagnostics data containing latest execution from client.
   final pulumi.Input<ConfigDiagnostics>? configDiagnostics;
+
   /// Domain Configuration Type
   final pulumi.Input<String>? domainConfigurationType;
+
   /// The name of the Azure domain that the user would like to deploy Domain Services to.
   final pulumi.Input<String>? domainName;
+
   /// DomainSecurity Settings
   final pulumi.Input<DomainSecuritySettings>? domainSecuritySettings;
+
   /// The name of the domain service.
   final pulumi.Input<String>? domainServiceName;
+
   /// Enabled or Disabled flag to turn on Group-based filtered sync
   final pulumi.Input<String>? filteredSync;
+
   /// Secure LDAP Settings
   final pulumi.Input<LdapsSettings>? ldapsSettings;
+
   /// Resource location
   final pulumi.Input<String>? location;
+
   /// Notification Settings
   final pulumi.Input<NotificationSettings>? notificationSettings;
+
   /// List of ReplicaSets
   final pulumi.Input<List<ReplicaSet>>? replicaSets;
+
   /// Resource Forest Settings
   final pulumi.Input<ResourceForestSettings>? resourceForestSettings;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Sku Type
   final pulumi.Input<String>? sku;
+
   /// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
   final pulumi.Input<String>? syncScope;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -80,17 +94,48 @@ class DomainServiceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configDiagnostics': ?pulumi.Input.mapOptionalInputValue<ConfigDiagnostics, Map<String, dynamic>>(configDiagnostics, (value) => value.toMap()),
+      'configDiagnostics':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigDiagnostics,
+            Map<String, dynamic>
+          >(configDiagnostics, (value) => value.toMap()),
       'domainConfigurationType': ?domainConfigurationType,
       'domainName': ?domainName,
-      'domainSecuritySettings': ?pulumi.Input.mapOptionalInputValue<DomainSecuritySettings, Map<String, dynamic>>(domainSecuritySettings, (value) => value.toMap()),
+      'domainSecuritySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainSecuritySettings,
+            Map<String, dynamic>
+          >(domainSecuritySettings, (value) => value.toMap()),
       'domainServiceName': ?domainServiceName,
       'filteredSync': ?filteredSync,
-      'ldapsSettings': ?pulumi.Input.mapOptionalInputValue<LdapsSettings, Map<String, dynamic>>(ldapsSettings, (value) => value.toMap()),
+      'ldapsSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            LdapsSettings,
+            Map<String, dynamic>
+          >(ldapsSettings, (value) => value.toMap()),
       'location': ?location,
-      'notificationSettings': ?pulumi.Input.mapOptionalInputValue<NotificationSettings, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
-      'replicaSets': ?pulumi.Input.mapOptionalInputValue<List<ReplicaSet>, List<Map<String, dynamic>>>(replicaSets, (value) => pulumi.Input.encodeList<ReplicaSet, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resourceForestSettings': ?pulumi.Input.mapOptionalInputValue<ResourceForestSettings, Map<String, dynamic>>(resourceForestSettings, (value) => value.toMap()),
+      'notificationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotificationSettings,
+            Map<String, dynamic>
+          >(notificationSettings, (value) => value.toMap()),
+      'replicaSets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReplicaSet>,
+            List<Map<String, dynamic>>
+          >(
+            replicaSets,
+            (value) =>
+                pulumi.Input.encodeList<ReplicaSet, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'resourceForestSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceForestSettings,
+            Map<String, dynamic>
+          >(resourceForestSettings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sku': ?sku,
       'syncScope': ?syncScope,
@@ -100,22 +145,105 @@ class DomainServiceArgs {
 
   factory DomainServiceArgs.fromMap(Map<String, dynamic> map) {
     return DomainServiceArgs(
-      configDiagnostics: map['configDiagnostics'] == null ? null : (ConfigDiagnostics.fromMap((map['configDiagnostics']! as Map).cast<String, dynamic>())).input(),
-      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      domainSecuritySettings: map['domainSecuritySettings'] == null ? null : (DomainSecuritySettings.fromMap((map['domainSecuritySettings']! as Map).cast<String, dynamic>())).input(),
-      domainServiceName: map['domainServiceName'] == null ? null : (map['domainServiceName']! as String).input(),
-      filteredSync: map['filteredSync'] == null ? null : (map['filteredSync']! as String).input(),
-      ldapsSettings: map['ldapsSettings'] == null ? null : (LdapsSettings.fromMap((map['ldapsSettings']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (NotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
-      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<ReplicaSet>(map['replicaSets']!, (value) => ReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceForestSettings: map['resourceForestSettings'] == null ? null : (ResourceForestSettings.fromMap((map['resourceForestSettings']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      syncScope: map['syncScope'] == null ? null : (map['syncScope']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      configDiagnostics: (() {
+        final guardedValue = map['configDiagnostics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigDiagnostics.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainConfigurationType: (() {
+        final guardedValue = map['domainConfigurationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainSecuritySettings: (() {
+        final guardedValue = map['domainSecuritySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainSecuritySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainServiceName: (() {
+        final guardedValue = map['domainServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filteredSync: (() {
+        final guardedValue = map['filteredSync'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ldapsSettings: (() {
+        final guardedValue = map['ldapsSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LdapsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationSettings: (() {
+        final guardedValue = map['notificationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotificationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      replicaSets: (() {
+        final guardedValue = map['replicaSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReplicaSet>(
+            guardedValue,
+            (value) =>
+                ReplicaSet.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resourceForestSettings: (() {
+        final guardedValue = map['resourceForestSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceForestSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncScope: (() {
+        final guardedValue = map['syncScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -16,14 +16,23 @@ class GooglePrivacyDlpV2BigQueryTableCollectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryRegexesResponse, Map<String, dynamic>>(includeRegexes, (value) => value.toMap()),
+      'includeRegexes':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2BigQueryRegexesResponse,
+            Map<String, dynamic>
+          >(includeRegexes, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableCollectionResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableCollectionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryTableCollectionResponse(
-      includeRegexes: (GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
+      includeRegexes: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap(
+          (map['includeRegexes']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

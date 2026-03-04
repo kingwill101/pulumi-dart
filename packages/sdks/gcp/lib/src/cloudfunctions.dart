@@ -1,5 +1,3 @@
-library module_cloudfunctions;
-
 export 'cloudfunctions/function_args.dart';
 export 'cloudfunctions/function_event_trigger.dart';
 export 'cloudfunctions/function_event_trigger_failure_policy.dart';

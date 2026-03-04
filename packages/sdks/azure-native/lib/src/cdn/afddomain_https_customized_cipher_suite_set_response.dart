@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AFDDomainHttpsCustomizedCipherSuiteSetResponse {
   /// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
   final pulumi.Input<List<String>>? cipherSuiteSetForTls12;
+
   /// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
   final pulumi.Input<List<String>>? cipherSuiteSetForTls13;
 
@@ -24,11 +25,20 @@ class AFDDomainHttpsCustomizedCipherSuiteSetResponse {
     };
   }
 
-  factory AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap(Map<String, dynamic> map) {
+  factory AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AFDDomainHttpsCustomizedCipherSuiteSetResponse(
-      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : ((map['cipherSuiteSetForTls12']! as List).cast<String>()).input(),
-      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : ((map['cipherSuiteSetForTls13']! as List).cast<String>()).input(),
+      cipherSuiteSetForTls12: (() {
+        final guardedValue = map['cipherSuiteSetForTls12'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cipherSuiteSetForTls13: (() {
+        final guardedValue = map['cipherSuiteSetForTls13'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

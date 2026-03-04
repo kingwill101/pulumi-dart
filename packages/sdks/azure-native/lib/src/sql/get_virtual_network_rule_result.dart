@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVirtualNetworkRule.
 class GetVirtualNetworkRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   final bool? ignoreMissingVnetServiceEndpoint;
+
   /// Resource name.
   final String name;
+
   /// Virtual Network Rule State
   final String state;
+
   /// Resource type.
   final String type;
+
   /// The ARM resource id of the virtual network subnet.
   final String virtualNetworkSubnetId;
 
@@ -52,7 +57,11 @@ class GetVirtualNetworkRuleResult {
     return GetVirtualNetworkRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : map['ignoreMissingVnetServiceEndpoint']! as bool,
+      ignoreMissingVnetServiceEndpoint: (() {
+        final guardedValue = map['ignoreMissingVnetServiceEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
       state: map['state'] as String,
       type: map['type'] as String,
@@ -60,4 +69,3 @@ class GetVirtualNetworkRuleResult {
     );
   }
 }
-

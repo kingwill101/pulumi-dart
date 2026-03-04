@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryArgs {
   /// The name of the Container Registry.
   final pulumi.Input<String> name;
+
   /// The Name of the Resource Group where this Container Registry exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetRegistryArgs].
   /// [name] The name of the Container Registry.
   /// [resourceGroupName] The Name of the Resource Group where this Container Registry exists.
-  GetRegistryArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetRegistryArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetRegistryArgs {
 
   factory GetRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

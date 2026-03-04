@@ -5,16 +5,15 @@ enum AddressNetworkTierComputeV1 {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const AddressNetworkTierComputeV1(this.value);
-  final String value;
+  const AddressNetworkTierComputeV1(this.wireValue);
+  final String wireValue;
 
   static AddressNetworkTierComputeV1 fromValue(String value) {
     for (final item in AddressNetworkTierComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressNetworkTierComputeV1 value: $value');
   }
 }
-

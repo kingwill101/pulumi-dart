@@ -9,20 +9,21 @@ class VolumeReplicationHybridReplicationUserCommand {
 
   /// Creates a new [VolumeReplicationHybridReplicationUserCommand].
   /// [commands] (Output)
-  VolumeReplicationHybridReplicationUserCommand({
-    this.commands,
-  });
+  VolumeReplicationHybridReplicationUserCommand({this.commands});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'commands': ?commands,
-    };
+    return <String, dynamic>{'commands': ?commands};
   }
 
-  factory VolumeReplicationHybridReplicationUserCommand.fromMap(Map<String, dynamic> map) {
+  factory VolumeReplicationHybridReplicationUserCommand.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeReplicationHybridReplicationUserCommand(
-      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

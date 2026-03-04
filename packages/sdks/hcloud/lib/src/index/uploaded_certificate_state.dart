@@ -6,21 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadedCertificateState {
   /// PEM encoded TLS certificate.
   final pulumi.Input<String>? certificate;
+
   /// (string) Point in time when the Certificate was created at Hetzner Cloud (in ISO-8601 format).
   final pulumi.Input<String>? created;
+
   /// (list) Domains and subdomains covered by the certificate.
   final pulumi.Input<List<String>>? domainNames;
+
   /// (string) Fingerprint of the certificate.
   final pulumi.Input<String>? fingerprint;
+
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of the Certificate.
   final pulumi.Input<String>? name;
+
   /// (string) Point in time when the Certificate stops being valid (in ISO-8601 format).
   final pulumi.Input<String>? notValidAfter;
+
   /// (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   final pulumi.Input<String>? notValidBefore;
+
   /// PEM encoded private key belonging to the certificate.
   final pulumi.Input<String>? privateKey;
   final pulumi.Input<String>? type;
@@ -66,17 +74,58 @@ class UploadedCertificateState {
 
   factory UploadedCertificateState.fromMap(Map<String, dynamic> map) {
     return UploadedCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      domainNames: map['domainNames'] == null ? null : ((map['domainNames']! as List).cast<String>()).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notValidAfter: map['notValidAfter'] == null ? null : (map['notValidAfter']! as String).input(),
-      notValidBefore: map['notValidBefore'] == null ? null : (map['notValidBefore']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainNames: (() {
+        final guardedValue = map['domainNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notValidAfter: (() {
+        final guardedValue = map['notValidAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notValidBefore: (() {
+        final guardedValue = map['notValidBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

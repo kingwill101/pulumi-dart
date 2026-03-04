@@ -6,16 +6,15 @@ enum IncidentSource {
   serviceNow("ServiceNow"),
   other("Other");
 
-  const IncidentSource(this.value);
-  final String value;
+  const IncidentSource(this.wireValue);
+  final String wireValue;
 
   static IncidentSource fromValue(String value) {
     for (final item in IncidentSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentSource value: $value');
   }
 }
-

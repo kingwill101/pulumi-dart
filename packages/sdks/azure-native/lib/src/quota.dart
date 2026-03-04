@@ -1,5 +1,3 @@
-library module_quota;
-
 export 'quota/functions.dart';
 export 'quota/get_group_quota_args.dart';
 export 'quota/get_group_quota_result.dart';

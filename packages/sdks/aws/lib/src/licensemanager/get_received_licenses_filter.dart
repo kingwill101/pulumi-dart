@@ -123,29 +123,23 @@ class GetReceivedLicensesFilter {
   ///               - ""
   /// ```
   final pulumi.Input<String> name;
+
   /// Set of values that are accepted for the given field.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetReceivedLicensesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetReceivedLicensesFilter({
-    required this.name,
-    required this.values,
-  });
+  GetReceivedLicensesFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetReceivedLicensesFilter.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicensesFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

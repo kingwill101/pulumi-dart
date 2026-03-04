@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklyScheduleResponse {
   /// Schedule run days.
   final pulumi.Input<List<String>>? scheduleRunDays;
+
   /// List of times of day this schedule has to be run.
   final pulumi.Input<List<String>>? scheduleRunTimes;
 
   /// Creates a new [WeeklyScheduleResponse].
   /// [scheduleRunDays] Schedule run days.
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
-  WeeklyScheduleResponse({
-    this.scheduleRunDays,
-    this.scheduleRunTimes,
-  });
+  WeeklyScheduleResponse({this.scheduleRunDays, this.scheduleRunTimes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class WeeklyScheduleResponse {
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays']! as List).cast<String>()).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
+      scheduleRunDays: (() {
+        final guardedValue = map['scheduleRunDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scheduleRunTimes: (() {
+        final guardedValue = map['scheduleRunTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceStatusResponse {
   /// The last update time for this condition.
   final pulumi.Input<String> lastUpdatedAt;
+
   /// A human readable message indicating details about the status.
   final pulumi.Input<String> message;
+
   /// The reason for the condition's status.
   final pulumi.Input<String> reason;
+
   /// Severity with which to treat failures of this type of condition.
   final pulumi.Input<String> severity;
+
   /// Status of the condition.
   final pulumi.Input<String> status;
+
   /// The type of the condition.
   final pulumi.Input<String> type;
 
@@ -46,13 +51,12 @@ class ResourceStatusResponse {
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      lastUpdatedAt: (map['lastUpdatedAt'] as String).input(),
-      message: (map['message'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      lastUpdatedAt: pulumi.Input.fromValue(map['lastUpdatedAt'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

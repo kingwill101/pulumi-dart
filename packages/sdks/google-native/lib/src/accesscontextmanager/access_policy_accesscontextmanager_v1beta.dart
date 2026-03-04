@@ -6,8 +6,10 @@ import 'access_policy_accesscontextmanager_v1beta_args.dart';
 class AccessPolicyAccesscontextmanagerV1beta extends pulumi.CustomResource {
   /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
   late final pulumi.Output<String> name;
+
   /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   late final pulumi.Output<String> parent;
+
   /// Human readable title. Does not affect behavior.
   late final pulumi.Output<String> title;
 
@@ -20,13 +22,13 @@ class AccessPolicyAccesscontextmanagerV1beta extends pulumi.CustomResource {
     AccessPolicyAccesscontextmanagerV1betaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:accesscontextmanager/v1beta:AccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:accesscontextmanager/v1beta:AccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.title = registerOutput<String>('title');
+    parent = registerOutput<String>('parent');
+    title = registerOutput<String>('title');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectArgs {
   /// Name of the resource group
   final pulumi.Input<String> groupName;
+
   /// Name of the project
   final pulumi.Input<String> projectName;
+
   /// Name of the service
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,9 @@ class GetProjectArgs {
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class FeatureFleetDefaultMemberConfigMesh {
 
   /// Creates a new [FeatureFleetDefaultMemberConfigMesh].
   /// [management] Whether to automatically manage Service Mesh
-  FeatureFleetDefaultMemberConfigMesh({
-    required this.management,
-  });
+  FeatureFleetDefaultMemberConfigMesh({required this.management});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'management': management,
-    };
+    return <String, dynamic>{'management': management};
   }
 
-  factory FeatureFleetDefaultMemberConfigMesh.fromMap(Map<String, dynamic> map) {
+  factory FeatureFleetDefaultMemberConfigMesh.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureFleetDefaultMemberConfigMesh(
-      management: (map['management'] as String).input(),
+      management: pulumi.Input.fromValue(map['management'] as String),
     );
   }
 }
-

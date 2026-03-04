@@ -8,20 +8,19 @@ class SaaSLocation {
 
   /// Creates a new [SaaSLocation].
   /// [name] Name of location.
-  SaaSLocation({
-    this.name,
-  });
+  SaaSLocation({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory SaaSLocation.fromMap(Map<String, dynamic> map) {
     return SaaSLocation(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

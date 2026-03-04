@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskCommonSettingCustomHostHost {
   /// Domain Name.
   final pulumi.Input<String> domain;
+
   /// IpType.
   final pulumi.Input<int> ipType;
+
   /// The IP list.
   final pulumi.Input<List<String>> ips;
 
@@ -21,19 +23,16 @@ class SyntheticTaskCommonSettingCustomHostHost {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-      'ipType': ipType,
-      'ips': ips,
-    };
+    return <String, dynamic>{'domain': domain, 'ipType': ipType, 'ips': ips};
   }
 
-  factory SyntheticTaskCommonSettingCustomHostHost.fromMap(Map<String, dynamic> map) {
+  factory SyntheticTaskCommonSettingCustomHostHost.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SyntheticTaskCommonSettingCustomHostHost(
-      domain: (map['domain'] as String).input(),
-      ipType: (map['ipType'] as int).input(),
-      ips: ((map['ips'] as List).cast<String>()).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      ipType: pulumi.Input.fromValue(map['ipType'] as int),
+      ips: pulumi.Input.fromValue((map['ips'] as List).cast<String>()),
     );
   }
 }
-

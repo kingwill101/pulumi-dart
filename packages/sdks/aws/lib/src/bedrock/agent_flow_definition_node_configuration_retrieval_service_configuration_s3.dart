@@ -12,15 +12,14 @@ class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-    };
+    return <String, dynamic>{'bucketName': bucketName};
   }
 
-  factory AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3(
-      bucketName: (map['bucketName'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
     );
   }
 }
-

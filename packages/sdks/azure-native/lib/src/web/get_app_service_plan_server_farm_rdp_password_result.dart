@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAppServicePlanServerFarmRdpPassword.
 class GetAppServicePlanServerFarmRdpPasswordResult {
   /// The RDP password for the server farm.
   final String? rdpPassword;
+
   /// The RDP password expiry date.
   final String? rdpPasswordExpiry;
 
@@ -23,11 +23,20 @@ class GetAppServicePlanServerFarmRdpPasswordResult {
     };
   }
 
-  factory GetAppServicePlanServerFarmRdpPasswordResult.fromMap(Map<String, dynamic> map) {
+  factory GetAppServicePlanServerFarmRdpPasswordResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppServicePlanServerFarmRdpPasswordResult(
-      rdpPassword: map['rdpPassword'] == null ? null : map['rdpPassword']! as String,
-      rdpPasswordExpiry: map['rdpPasswordExpiry'] == null ? null : map['rdpPasswordExpiry']! as String,
+      rdpPassword: (() {
+        final guardedValue = map['rdpPassword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rdpPasswordExpiry: (() {
+        final guardedValue = map['rdpPasswordExpiry'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

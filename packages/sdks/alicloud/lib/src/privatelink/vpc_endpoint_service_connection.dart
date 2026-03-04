@@ -8,7 +8,7 @@ import 'vpc_endpoint_service_connection_state.dart';
 ///
 /// For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-enablevpcendpointzoneconnection).
 ///
-/// > **NOTE:** Available since v1.110.0.
+/// &gt; **NOTE:** Available since v1.110.0.
 ///
 /// ## Example Usage
 ///
@@ -466,12 +466,16 @@ class VpcEndpointServiceConnection extends pulumi.CustomResource {
   ///
   /// Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
   late final pulumi.Output<int> bandwidth;
+
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The endpoint ID.
   late final pulumi.Output<String> endpointId;
+
   /// The endpoint service ID.
   late final pulumi.Output<String> serviceId;
+
   /// The state of the endpoint connection.
   late final pulumi.Output<String> status;
 
@@ -484,16 +488,16 @@ class VpcEndpointServiceConnection extends pulumi.CustomResource {
     VpcEndpointServiceConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointId = registerOutput<String>('endpointId');
+    serviceId = registerOutput<String>('serviceId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [VpcEndpointServiceConnection] resource's state with the given [name] and [id].
@@ -514,15 +518,15 @@ class VpcEndpointServiceConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointId = registerOutput<String>('endpointId');
+    serviceId = registerOutput<String>('serviceId');
+    status = registerOutput<String>('status');
   }
 }

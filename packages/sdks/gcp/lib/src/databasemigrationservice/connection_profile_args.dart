@@ -15,29 +15,38 @@ class ConnectionProfileArgs {
   /// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileAlloydb>? alloydb;
+
   /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileCloudsql>? cloudsql;
+
   /// The ID of the connection profile.
   final pulumi.Input<String> connectionProfileId;
+
   /// The connection profile display name.
   final pulumi.Input<String>? displayName;
+
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location where the connection profile should reside.
   final pulumi.Input<String>? location;
+
   /// Specifies connection parameters required specifically for MySQL databases.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileMysql>? mysql;
+
   /// Specifies connection parameters required specifically for Oracle databases.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileOracle>? oracle;
+
   /// Specifies connection parameters required specifically for PostgreSQL databases.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfilePostgresql>? postgresql;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -68,32 +77,111 @@ class ConnectionProfileArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alloydb': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileAlloydb, Map<String, dynamic>>(alloydb, (value) => value.toMap()),
-      'cloudsql': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileCloudsql, Map<String, dynamic>>(cloudsql, (value) => value.toMap()),
+      'alloydb':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfileAlloydb,
+            Map<String, dynamic>
+          >(alloydb, (value) => value.toMap()),
+      'cloudsql':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfileCloudsql,
+            Map<String, dynamic>
+          >(cloudsql, (value) => value.toMap()),
       'connectionProfileId': connectionProfileId,
       'displayName': ?displayName,
       'labels': ?labels,
       'location': ?location,
-      'mysql': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileMysql, Map<String, dynamic>>(mysql, (value) => value.toMap()),
-      'oracle': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileOracle, Map<String, dynamic>>(oracle, (value) => value.toMap()),
-      'postgresql': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresql, Map<String, dynamic>>(postgresql, (value) => value.toMap()),
+      'mysql':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfileMysql,
+            Map<String, dynamic>
+          >(mysql, (value) => value.toMap()),
+      'oracle':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfileOracle,
+            Map<String, dynamic>
+          >(oracle, (value) => value.toMap()),
+      'postgresql':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfilePostgresql,
+            Map<String, dynamic>
+          >(postgresql, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory ConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileArgs(
-      alloydb: map['alloydb'] == null ? null : (ConnectionProfileAlloydb.fromMap((map['alloydb']! as Map).cast<String, dynamic>())).input(),
-      cloudsql: map['cloudsql'] == null ? null : (ConnectionProfileCloudsql.fromMap((map['cloudsql']! as Map).cast<String, dynamic>())).input(),
-      connectionProfileId: (map['connectionProfileId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mysql: map['mysql'] == null ? null : (ConnectionProfileMysql.fromMap((map['mysql']! as Map).cast<String, dynamic>())).input(),
-      oracle: map['oracle'] == null ? null : (ConnectionProfileOracle.fromMap((map['oracle']! as Map).cast<String, dynamic>())).input(),
-      postgresql: map['postgresql'] == null ? null : (ConnectionProfilePostgresql.fromMap((map['postgresql']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      alloydb: (() {
+        final guardedValue = map['alloydb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfileAlloydb.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cloudsql: (() {
+        final guardedValue = map['cloudsql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfileCloudsql.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionProfileId: pulumi.Input.fromValue(
+        map['connectionProfileId'] as String,
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mysql: (() {
+        final guardedValue = map['mysql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfileMysql.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      oracle: (() {
+        final guardedValue = map['oracle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfileOracle.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      postgresql: (() {
+        final guardedValue = map['postgresql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfilePostgresql.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

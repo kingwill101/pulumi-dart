@@ -8,36 +8,52 @@ import 'tls_cert_method_response.dart';
 class GetBrokerListenerResult {
   /// The flag for enabling Authentication rules on Listener Port.
   final bool? authenticationEnabled;
+
   /// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
   final bool? authorizationEnabled;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The k8s cr/resource reference of mq/broker.
   final String brokerRef;
+
   /// Extended Location
   final ExtendedLocationPropertyResponse extendedLocation;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The node port to use on the Host node.
   final int? nodePort;
+
   /// The port to start Listening for connections on.
   final int port;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// The service name to expose Listener port on.
   final String? serviceName;
+
   /// The Kubernetes Service type to deploy for Listener.
   final String? serviceType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
   final TlsCertMethodResponse? tls;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -96,31 +112,64 @@ class GetBrokerListenerResult {
       'serviceType': ?serviceType,
       'systemData': systemData.toMap(),
       'tags': ?tags,
-      'tls': ?tls == null ? null : tls!.toMap(),
+      'tls': ?tls?.toMap(),
       'type': type,
     };
   }
 
   factory GetBrokerListenerResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerListenerResult(
-      authenticationEnabled: map['authenticationEnabled'] == null ? null : map['authenticationEnabled']! as bool,
-      authorizationEnabled: map['authorizationEnabled'] == null ? null : map['authorizationEnabled']! as bool,
+      authenticationEnabled: (() {
+        final guardedValue = map['authenticationEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      authorizationEnabled: (() {
+        final guardedValue = map['authorizationEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       brokerRef: map['brokerRef'] as String,
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: ExtendedLocationPropertyResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nodePort: map['nodePort'] == null ? null : map['nodePort']! as int,
+      nodePort: (() {
+        final guardedValue = map['nodePort'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       port: map['port'] as int,
       provisioningState: map['provisioningState'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName']! as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      tls: map['tls'] == null ? null : TlsCertMethodResponse.fromMap((map['tls']! as Map).cast<String, dynamic>()),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceType: (() {
+        final guardedValue = map['serviceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      tls: (() {
+        final guardedValue = map['tls'];
+        if (guardedValue == null) return null;
+        return TlsCertMethodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

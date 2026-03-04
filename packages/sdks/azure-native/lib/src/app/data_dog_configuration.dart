@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataDogConfiguration {
   /// The data dog api key
   final pulumi.Input<String>? key;
+
   /// The data dog site
   final pulumi.Input<String>? site;
 
   /// Creates a new [DataDogConfiguration].
   /// [key] The data dog api key
   /// [site] The data dog site
-  DataDogConfiguration({
-    this.key,
-    this.site,
-  });
+  DataDogConfiguration({this.key, this.site});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'site': ?site,
-    };
+    return <String, dynamic>{'key': ?key, 'site': ?site};
   }
 
   factory DataDogConfiguration.fromMap(Map<String, dynamic> map) {
     return DataDogConfiguration(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      site: map['site'] == null ? null : (map['site']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      site: (() {
+        final guardedValue = map['site'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

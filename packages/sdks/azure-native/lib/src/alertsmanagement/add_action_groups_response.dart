@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddActionGroupsResponse {
   /// List of action group Ids to add to alert processing rule.
   final pulumi.Input<List<String>> actionGroupIds;
+
   /// Action that should be applied.
   /// Expected value is 'AddActionGroups'.
   final pulumi.Input<String> actionType;
@@ -27,9 +28,10 @@ class AddActionGroupsResponse {
 
   factory AddActionGroupsResponse.fromMap(Map<String, dynamic> map) {
     return AddActionGroupsResponse(
-      actionGroupIds: ((map['actionGroupIds'] as List).cast<String>()).input(),
-      actionType: (map['actionType'] as String).input(),
+      actionGroupIds: pulumi.Input.fromValue(
+        (map['actionGroupIds'] as List).cast<String>(),
+      ),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
     );
   }
 }
-

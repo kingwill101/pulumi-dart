@@ -1,5 +1,3 @@
-library module_storage_k8s_io;
-
 export 'storage_k8s_io/csidriver.dart';
 export 'storage_k8s_io/csidriver_args.dart';
 export 'storage_k8s_io/csidriver_list.dart';

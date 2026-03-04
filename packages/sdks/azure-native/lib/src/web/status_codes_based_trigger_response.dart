@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusCodesBasedTriggerResponse {
   /// Request Count.
   final pulumi.Input<int>? count;
+
   /// Request Path
   final pulumi.Input<String>? path;
+
   /// HTTP status code.
   final pulumi.Input<int>? status;
+
   /// Request Sub Status.
   final pulumi.Input<int>? subStatus;
+
   /// Time interval.
   final pulumi.Input<String>? timeInterval;
+
   /// Win32 error code.
   final pulumi.Input<int>? win32Status;
 
@@ -46,13 +51,36 @@ class StatusCodesBasedTriggerResponse {
 
   factory StatusCodesBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return StatusCodesBasedTriggerResponse(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as int).input(),
-      subStatus: map['subStatus'] == null ? null : (map['subStatus']! as int).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
-      win32Status: map['win32Status'] == null ? null : (map['win32Status']! as int).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      subStatus: (() {
+        final guardedValue = map['subStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeInterval: (() {
+        final guardedValue = map['timeInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      win32Status: (() {
+        final guardedValue = map['win32Status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

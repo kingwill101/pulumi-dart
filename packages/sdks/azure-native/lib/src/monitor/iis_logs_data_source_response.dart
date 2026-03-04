@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IisLogsDataSourceResponse {
   /// Absolute paths file location
   final pulumi.Input<List<String>>? logDirectories;
+
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
+
   /// IIS streams
   final pulumi.Input<List<String>> streams;
 
@@ -32,10 +34,17 @@ class IisLogsDataSourceResponse {
 
   factory IisLogsDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return IisLogsDataSourceResponse(
-      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
+      logDirectories: (() {
+        final guardedValue = map['logDirectories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
-

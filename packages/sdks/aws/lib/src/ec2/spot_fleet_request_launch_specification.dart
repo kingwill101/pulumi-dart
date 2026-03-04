@@ -8,28 +8,39 @@ import 'spot_fleet_request_launch_specification_root_block_device.dart';
 class SpotFleetRequestLaunchSpecification {
   final pulumi.Input<String> ami;
   final pulumi.Input<bool>? associatePublicIpAddress;
+
   /// The availability zone in which to place the request.
   final pulumi.Input<String>? availabilityZone;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>>? ebsBlockDevices;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>>?
+  ebsBlockDevices;
   final pulumi.Input<bool>? ebsOptimized;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>>? ephemeralBlockDevices;
+  final pulumi.Input<
+    List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>
+  >?
+  ephemeralBlockDevices;
   final pulumi.Input<String>? iamInstanceProfile;
   final pulumi.Input<String>? iamInstanceProfileArn;
+
   /// The type of instance to request.
   final pulumi.Input<String> instanceType;
   final pulumi.Input<String>? keyName;
   final pulumi.Input<bool>? monitoring;
   final pulumi.Input<String>? placementGroup;
   final pulumi.Input<String>? placementTenancy;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationRootBlockDevice>>? rootBlockDevices;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationRootBlockDevice>>?
+  rootBlockDevices;
+
   /// The maximum bid price per unit hour.
   final pulumi.Input<String>? spotPrice;
+
   /// The subnet in which to launch the requested instance.
   final pulumi.Input<String>? subnetId;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? userData;
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+
   /// The capacity added to the fleet by a fulfilled request.
   final pulumi.Input<String>? weightedCapacity;
 
@@ -82,9 +93,31 @@ class SpotFleetRequestLaunchSpecification {
       'ami': ami,
       'associatePublicIpAddress': ?associatePublicIpAddress,
       'availabilityZone': ?availabilityZone,
-      'ebsBlockDevices': ?pulumi.Input.mapOptionalInputValue<List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>, List<Map<String, dynamic>>>(ebsBlockDevices, (value) => pulumi.Input.encodeList<SpotFleetRequestLaunchSpecificationEbsBlockDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebsBlockDevices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>,
+            List<Map<String, dynamic>>
+          >(
+            ebsBlockDevices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpotFleetRequestLaunchSpecificationEbsBlockDevice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ebsOptimized': ?ebsOptimized,
-      'ephemeralBlockDevices': ?pulumi.Input.mapOptionalInputValue<List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>, List<Map<String, dynamic>>>(ephemeralBlockDevices, (value) => pulumi.Input.encodeList<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ephemeralBlockDevices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>,
+            List<Map<String, dynamic>>
+          >(
+            ephemeralBlockDevices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpotFleetRequestLaunchSpecificationEphemeralBlockDevice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'iamInstanceProfile': ?iamInstanceProfile,
       'iamInstanceProfileArn': ?iamInstanceProfileArn,
       'instanceType': instanceType,
@@ -92,7 +125,18 @@ class SpotFleetRequestLaunchSpecification {
       'monitoring': ?monitoring,
       'placementGroup': ?placementGroup,
       'placementTenancy': ?placementTenancy,
-      'rootBlockDevices': ?pulumi.Input.mapOptionalInputValue<List<SpotFleetRequestLaunchSpecificationRootBlockDevice>, List<Map<String, dynamic>>>(rootBlockDevices, (value) => pulumi.Input.encodeList<SpotFleetRequestLaunchSpecificationRootBlockDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rootBlockDevices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SpotFleetRequestLaunchSpecificationRootBlockDevice>,
+            List<Map<String, dynamic>>
+          >(
+            rootBlockDevices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpotFleetRequestLaunchSpecificationRootBlockDevice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'spotPrice': ?spotPrice,
       'subnetId': ?subnetId,
       'tags': ?tags,
@@ -102,29 +146,134 @@ class SpotFleetRequestLaunchSpecification {
     };
   }
 
-  factory SpotFleetRequestLaunchSpecification.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchSpecification(
-      ami: (map['ami'] as String).input(),
-      associatePublicIpAddress: map['associatePublicIpAddress'] == null ? null : ((map['associatePublicIpAddress'] as bool).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      ebsBlockDevices: map['ebsBlockDevices'] == null ? null : ((pulumi.Input.decodeList<SpotFleetRequestLaunchSpecificationEbsBlockDevice>(map['ebsBlockDevices']!, (value) => SpotFleetRequestLaunchSpecificationEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      ebsOptimized: map['ebsOptimized'] == null ? null : ((map['ebsOptimized'] as bool).input()).input(),
-      ephemeralBlockDevices: map['ephemeralBlockDevices'] == null ? null : ((pulumi.Input.decodeList<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>(map['ephemeralBlockDevices']!, (value) => SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      iamInstanceProfile: map['iamInstanceProfile'] == null ? null : ((map['iamInstanceProfile'] as String).input()).input(),
-      iamInstanceProfileArn: map['iamInstanceProfileArn'] == null ? null : ((map['iamInstanceProfileArn'] as String).input()).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
-      monitoring: map['monitoring'] == null ? null : ((map['monitoring'] as bool).input()).input(),
-      placementGroup: map['placementGroup'] == null ? null : ((map['placementGroup'] as String).input()).input(),
-      placementTenancy: map['placementTenancy'] == null ? null : ((map['placementTenancy'] as String).input()).input(),
-      rootBlockDevices: map['rootBlockDevices'] == null ? null : ((pulumi.Input.decodeList<SpotFleetRequestLaunchSpecificationRootBlockDevice>(map['rootBlockDevices']!, (value) => SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      spotPrice: map['spotPrice'] == null ? null : ((map['spotPrice'] as String).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      userData: map['userData'] == null ? null : ((map['userData'] as String).input()).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as String).input()).input(),
+      ami: pulumi.Input.fromValue(map['ami'] as String),
+      associatePublicIpAddress: (() {
+        final guardedValue = map['associatePublicIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebsBlockDevices: (() {
+        final guardedValue = map['ebsBlockDevices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            SpotFleetRequestLaunchSpecificationEbsBlockDevice
+          >(
+            guardedValue,
+            (value) =>
+                SpotFleetRequestLaunchSpecificationEbsBlockDevice.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      ebsOptimized: (() {
+        final guardedValue = map['ebsOptimized'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ephemeralBlockDevices: (() {
+        final guardedValue = map['ephemeralBlockDevices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            SpotFleetRequestLaunchSpecificationEphemeralBlockDevice
+          >(
+            guardedValue,
+            (value) =>
+                SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      iamInstanceProfile: (() {
+        final guardedValue = map['iamInstanceProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamInstanceProfileArn: (() {
+        final guardedValue = map['iamInstanceProfileArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoring: (() {
+        final guardedValue = map['monitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      placementGroup: (() {
+        final guardedValue = map['placementGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      placementTenancy: (() {
+        final guardedValue = map['placementTenancy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootBlockDevices: (() {
+        final guardedValue = map['rootBlockDevices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            SpotFleetRequestLaunchSpecificationRootBlockDevice
+          >(
+            guardedValue,
+            (value) =>
+                SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      spotPrice: (() {
+        final guardedValue = map['spotPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcSecurityGroupIds: (() {
+        final guardedValue = map['vpcSecurityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      weightedCapacity: (() {
+        final guardedValue = map['weightedCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

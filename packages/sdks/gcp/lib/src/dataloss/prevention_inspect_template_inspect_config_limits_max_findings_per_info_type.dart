@@ -8,7 +8,11 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
   /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
   /// specified in another InfoTypeLimit.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>? infoType;
+  final pulumi.Input<
+    PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
+  >?
+  infoType;
+
   /// Max findings limit for the given infoType.
   final pulumi.Input<int> maxFindings;
 
@@ -22,16 +26,29 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoType': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType, Map<String, dynamic>>(infoType, (value) => value.toMap()),
+      'infoType':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType,
+            Map<String, dynamic>
+          >(infoType, (value) => value.toMap()),
       'maxFindings': maxFindings,
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(
-      infoType: map['infoType'] == null ? null : (PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
-      maxFindings: (map['maxFindings'] as int).input(),
+      infoType: (() {
+        final guardedValue = map['infoType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxFindings: pulumi.Input.fromValue(map['maxFindings'] as int),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum NotificationStageName {
   shipped("Shipped"),
   delivered("Delivered");
 
-  const NotificationStageName(this.value);
-  final String value;
+  const NotificationStageName(this.wireValue);
+  final String wireValue;
 
   static NotificationStageName fromValue(String value) {
     for (final item in NotificationStageName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotificationStageName value: $value');
   }
 }
-

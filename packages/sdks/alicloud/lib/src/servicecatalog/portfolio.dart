@@ -6,7 +6,7 @@ import 'portfolio_state.dart';
 ///
 /// For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
 /// ## Example Usage
 ///
@@ -139,12 +139,16 @@ import 'portfolio_state.dart';
 class Portfolio extends pulumi.CustomResource {
   /// The creation time of the portfolio
   late final pulumi.Output<String> createTime;
+
   /// The description of the portfolio
   late final pulumi.Output<String?> description;
+
   /// The ARN of the portfolio
   late final pulumi.Output<String> portfolioArn;
+
   /// The name of the portfolio
   late final pulumi.Output<String> portfolioName;
+
   /// The provider name of the portfolio
   late final pulumi.Output<String> providerName;
 
@@ -157,16 +161,16 @@ class Portfolio extends pulumi.CustomResource {
     PortfolioArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/portfolio:Portfolio',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.portfolioArn = registerOutput<String>('portfolioArn');
-    this.portfolioName = registerOutput<String>('portfolioName');
-    this.providerName = registerOutput<String>('providerName');
+         'alicloud:servicecatalog/portfolio:Portfolio',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    portfolioArn = registerOutput<String>('portfolioArn');
+    portfolioName = registerOutput<String>('portfolioName');
+    providerName = registerOutput<String>('providerName');
   }
 
   /// Gets an existing [Portfolio] resource's state with the given [name] and [id].
@@ -187,15 +191,15 @@ class Portfolio extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/portfolio:Portfolio',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.portfolioArn = registerOutput<String>('portfolioArn');
-    this.portfolioName = registerOutput<String>('portfolioName');
-    this.providerName = registerOutput<String>('providerName');
+         'alicloud:servicecatalog/portfolio:Portfolio',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    portfolioArn = registerOutput<String>('portfolioArn');
+    portfolioName = registerOutput<String>('portfolioName');
+    providerName = registerOutput<String>('providerName');
   }
 }

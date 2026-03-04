@@ -4,16 +4,15 @@ enum BmpExportPolicy {
   postPolicy("Post-Policy"),
   all("All");
 
-  const BmpExportPolicy(this.value);
-  final String value;
+  const BmpExportPolicy(this.wireValue);
+  final String wireValue;
 
   static BmpExportPolicy fromValue(String value) {
     for (final item in BmpExportPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BmpExportPolicy value: $value');
   }
 }
-

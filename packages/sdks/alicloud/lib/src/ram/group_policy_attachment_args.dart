@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentArgs {
   /// The name of the group.
   final pulumi.Input<String> groupName;
+
   /// The name of the policy.
   final pulumi.Input<String> policyName;
+
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
@@ -36,10 +38,9 @@ class GroupPolicyAttachmentArgs {
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentArgs(
-      groupName: (map['groupName'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
     );
   }
 }
-

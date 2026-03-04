@@ -5,16 +5,15 @@ enum CacheIdentityType {
   valueSystemAssignedUserAssigned("SystemAssigned, UserAssigned"),
   valueNone("None");
 
-  const CacheIdentityType(this.value);
-  final String value;
+  const CacheIdentityType(this.wireValue);
+  final String wireValue;
 
   static CacheIdentityType fromValue(String value) {
     for (final item in CacheIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CacheIdentityType value: $value');
   }
 }
-

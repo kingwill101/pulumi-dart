@@ -111,25 +111,35 @@ import 'app_monitor_state.dart';
 /// ```
 class AppMonitor extends pulumi.CustomResource {
   /// configuration data for the app monitor. See app_monitor_configuration below.
-  late final pulumi.Output<AppMonitorAppMonitorConfiguration> appMonitorConfiguration;
+  late final pulumi.Output<AppMonitorAppMonitorConfiguration>
+  appMonitorConfiguration;
+
   /// The unique ID of the app monitor. Useful for JS templates.
   late final pulumi.Output<String> appMonitorId;
+
   /// The Amazon Resource Name (ARN) specifying the app monitor.
   late final pulumi.Output<String> arn;
+
   /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See custom_events below.
   late final pulumi.Output<AppMonitorCustomEvents> customEvents;
+
   /// Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is `false`.
   late final pulumi.Output<bool?> cwLogEnabled;
+
   /// The name of the log group where the copies are stored.
   late final pulumi.Output<String> cwLogGroup;
   late final pulumi.Output<String?> domain;
   late final pulumi.Output<List<String>?> domainLists;
+
   /// The name of the log stream.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -142,23 +152,25 @@ class AppMonitor extends pulumi.CustomResource {
     AppMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rum/appMonitor:AppMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration');
-    this.appMonitorId = registerOutput<String>('appMonitorId');
-    this.arn = registerOutput<String>('arn');
-    this.customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
-    this.cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
-    this.cwLogGroup = registerOutput<String>('cwLogGroup');
-    this.domain = registerOutput<String?>('domain');
-    this.domainLists = registerOutput<List<String>?>('domainLists');
+         'aws:rum/appMonitor:AppMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>(
+      'appMonitorConfiguration',
+    );
+    appMonitorId = registerOutput<String>('appMonitorId');
+    arn = registerOutput<String>('arn');
+    customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
+    cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
+    cwLogGroup = registerOutput<String>('cwLogGroup');
+    domain = registerOutput<String?>('domain');
+    domainLists = registerOutput<List<String>?>('domainLists');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [AppMonitor] resource's state with the given [name] and [id].
@@ -179,22 +191,24 @@ class AppMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rum/appMonitor:AppMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration');
-    this.appMonitorId = registerOutput<String>('appMonitorId');
-    this.arn = registerOutput<String>('arn');
-    this.customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
-    this.cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
-    this.cwLogGroup = registerOutput<String>('cwLogGroup');
-    this.domain = registerOutput<String?>('domain');
-    this.domainLists = registerOutput<List<String>?>('domainLists');
+         'aws:rum/appMonitor:AppMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>(
+      'appMonitorConfiguration',
+    );
+    appMonitorId = registerOutput<String>('appMonitorId');
+    arn = registerOutput<String>('arn');
+    customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
+    cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
+    cwLogGroup = registerOutput<String>('cwLogGroup');
+    domain = registerOutput<String?>('domain');
+    domainLists = registerOutput<List<String>?>('domainLists');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

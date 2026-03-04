@@ -8,20 +8,21 @@ class UserApiKeyResponsePropertiesResponse {
 
   /// Creates a new [UserApiKeyResponsePropertiesResponse].
   /// [apiKey] The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.
-  UserApiKeyResponsePropertiesResponse({
-    this.apiKey,
-  });
+  UserApiKeyResponsePropertiesResponse({this.apiKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiKey': ?apiKey,
-    };
+    return <String, dynamic>{'apiKey': ?apiKey};
   }
 
-  factory UserApiKeyResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory UserApiKeyResponsePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserApiKeyResponsePropertiesResponse(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

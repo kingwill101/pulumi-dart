@@ -8,7 +8,7 @@ import 'saml_provider_state.dart';
 ///
 /// For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 ///
-/// > **NOTE:** Available since v1.114.0.
+/// &gt; **NOTE:** Available since v1.114.0.
 ///
 /// ## Example Usage
 ///
@@ -131,13 +131,17 @@ import 'saml_provider_state.dart';
 class SamlProvider extends pulumi.CustomResource {
   /// The identity provider's ARN.
   late final pulumi.Output<String> arn;
+
   /// The description.
   late final pulumi.Output<String?> description;
+
   /// The metadata file which is Base64-encoded.
   /// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
   late final pulumi.Output<String> encodedsamlMetadataDocument;
+
   /// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
   late final pulumi.Output<String> samlProviderName;
+
   /// Update time.
   late final pulumi.Output<String> updateDate;
 
@@ -150,16 +154,18 @@ class SamlProvider extends pulumi.CustomResource {
     SamlProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/samlProvider:SamlProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encodedsamlMetadataDocument = registerOutput<String>('encodedsamlMetadataDocument');
-    this.samlProviderName = registerOutput<String>('samlProviderName');
-    this.updateDate = registerOutput<String>('updateDate');
+         'alicloud:ram/samlProvider:SamlProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encodedsamlMetadataDocument = registerOutput<String>(
+      'encodedsamlMetadataDocument',
+    );
+    samlProviderName = registerOutput<String>('samlProviderName');
+    updateDate = registerOutput<String>('updateDate');
   }
 
   /// Gets an existing [SamlProvider] resource's state with the given [name] and [id].
@@ -180,15 +186,17 @@ class SamlProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/samlProvider:SamlProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.encodedsamlMetadataDocument = registerOutput<String>('encodedsamlMetadataDocument');
-    this.samlProviderName = registerOutput<String>('samlProviderName');
-    this.updateDate = registerOutput<String>('updateDate');
+         'alicloud:ram/samlProvider:SamlProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encodedsamlMetadataDocument = registerOutput<String>(
+      'encodedsamlMetadataDocument',
+    );
+    samlProviderName = registerOutput<String>('samlProviderName');
+    updateDate = registerOutput<String>('updateDate');
   }
 }

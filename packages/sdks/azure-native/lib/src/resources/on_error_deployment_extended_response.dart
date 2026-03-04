@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnErrorDeploymentExtendedResponse {
   /// The deployment to be used on error case.
   final pulumi.Input<String>? deploymentName;
+
   /// The state of the provisioning for the on error deployment.
   final pulumi.Input<String> provisioningState;
+
   /// The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
   final pulumi.Input<String>? type;
 
@@ -31,10 +33,19 @@ class OnErrorDeploymentExtendedResponse {
 
   factory OnErrorDeploymentExtendedResponse.fromMap(Map<String, dynamic> map) {
     return OnErrorDeploymentExtendedResponse(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

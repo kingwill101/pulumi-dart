@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'health_error_details_response.dart';
 import 'system_data_response.dart';
 import 'vcenter_controller_args.dart';
 
@@ -166,32 +165,46 @@ import 'vcenter_controller_args.dart';
 class VcenterController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the timestamp marking vCenter creation.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Gets the errors.
-  late final pulumi.Output<List<HealthErrorDetailsResponse>> errors;
+  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+
   /// Gets or sets the FQDN/IPAddress of the vCenter.
   late final pulumi.Output<String?> fqdn;
+
   /// Gets or sets the friendly name of the vCenter.
   late final pulumi.Output<String?> friendlyName;
+
   /// Gets the instance UUID of the vCenter.
   late final pulumi.Output<String> instanceUuid;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the performance statistics enabled on the vCenter.
   late final pulumi.Output<String> perfStatisticsLevel;
+
   /// Gets or sets the port of the vCenter.
   late final pulumi.Output<String?> port;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Gets or sets the run as account ID of the vCenter.
   late final pulumi.Output<String?> runAsAccountId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Gets the timestamp marking last updated on the vCenter.
   late final pulumi.Output<String> updatedTimestamp;
+
   /// Gets the version of the vCenter.
   late final pulumi.Output<String> version;
 
@@ -204,25 +217,25 @@ class VcenterController extends pulumi.CustomResource {
     VcenterControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:VcenterController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.errors = registerOutput<List<HealthErrorDetailsResponse>>('errors');
-    this.fqdn = registerOutput<String?>('fqdn');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.instanceUuid = registerOutput<String>('instanceUuid');
+         'azure-native:offazure:VcenterController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    fqdn = registerOutput<String?>('fqdn');
+    friendlyName = registerOutput<String?>('friendlyName');
+    instanceUuid = registerOutput<String>('instanceUuid');
     this.name = registerOutput<String>('name');
-    this.perfStatisticsLevel = registerOutput<String>('perfStatisticsLevel');
-    this.port = registerOutput<String?>('port');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.runAsAccountId = registerOutput<String?>('runAsAccountId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    this.version = registerOutput<String>('version');
+    perfStatisticsLevel = registerOutput<String>('perfStatisticsLevel');
+    port = registerOutput<String?>('port');
+    provisioningState = registerOutput<String?>('provisioningState');
+    runAsAccountId = registerOutput<String?>('runAsAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    version = registerOutput<String>('version');
   }
 }

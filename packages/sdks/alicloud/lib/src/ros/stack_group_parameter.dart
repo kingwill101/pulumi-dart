@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackGroupParameter {
   /// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
   final pulumi.Input<String> parameterKey;
+
   /// The value of parameter N.
   final pulumi.Input<String> parameterValue;
 
@@ -25,9 +26,8 @@ class StackGroupParameter {
 
   factory StackGroupParameter.fromMap(Map<String, dynamic> map) {
     return StackGroupParameter(
-      parameterKey: (map['parameterKey'] as String).input(),
-      parameterValue: (map['parameterValue'] as String).input(),
+      parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
+      parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
-

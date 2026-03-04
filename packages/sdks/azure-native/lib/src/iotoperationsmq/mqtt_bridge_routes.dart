@@ -7,14 +7,19 @@ import 'mqtt_bridge_route_shared_subscription.dart';
 class MqttBridgeRoutes {
   /// Direction of the route.
   final pulumi.Input<String> direction;
+
   /// Name of the route.
   final pulumi.Input<String> name;
+
   /// Qos for MQTT connection.
   final pulumi.Input<int>? qos;
+
   /// Shared subscription topic details.
   final pulumi.Input<MqttBridgeRouteSharedSubscription>? sharedSubscription;
+
   /// Source topic of the route.
   final pulumi.Input<String> source;
+
   /// Target topic of the route. Ignore if same as source
   final pulumi.Input<String>? target;
 
@@ -39,7 +44,11 @@ class MqttBridgeRoutes {
       'direction': direction,
       'name': name,
       'qos': ?qos,
-      'sharedSubscription': ?pulumi.Input.mapOptionalInputValue<MqttBridgeRouteSharedSubscription, Map<String, dynamic>>(sharedSubscription, (value) => value.toMap()),
+      'sharedSubscription':
+          ?pulumi.Input.mapOptionalInputValue<
+            MqttBridgeRouteSharedSubscription,
+            Map<String, dynamic>
+          >(sharedSubscription, (value) => value.toMap()),
       'source': source,
       'target': ?target,
     };
@@ -47,13 +56,28 @@ class MqttBridgeRoutes {
 
   factory MqttBridgeRoutes.fromMap(Map<String, dynamic> map) {
     return MqttBridgeRoutes(
-      direction: (map['direction'] as String).input(),
-      name: (map['name'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
-      sharedSubscription: map['sharedSubscription'] == null ? null : (MqttBridgeRouteSharedSubscription.fromMap((map['sharedSubscription']! as Map).cast<String, dynamic>())).input(),
-      source: (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      qos: (() {
+        final guardedValue = map['qos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sharedSubscription: (() {
+        final guardedValue = map['sharedSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MqttBridgeRouteSharedSubscription.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

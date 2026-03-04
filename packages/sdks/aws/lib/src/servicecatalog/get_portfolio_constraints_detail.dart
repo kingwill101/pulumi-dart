@@ -5,15 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortfolioConstraintsDetail {
   /// Identifier of the constraint.
   final pulumi.Input<String> constraintId;
+
   /// Description of the constraint.
   final pulumi.Input<String> description;
   final pulumi.Input<String> owner;
+
   /// Portfolio identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> portfolioId;
+
   /// Product identifier.
   final pulumi.Input<String> productId;
+
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
   final pulumi.Input<String> type;
 
@@ -46,13 +50,12 @@ class GetPortfolioConstraintsDetail {
 
   factory GetPortfolioConstraintsDetail.fromMap(Map<String, dynamic> map) {
     return GetPortfolioConstraintsDetail(
-      constraintId: (map['constraintId'] as String).input(),
-      description: (map['description'] as String).input(),
-      owner: (map['owner'] as String).input(),
-      portfolioId: (map['portfolioId'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      type: (map['type'] as String).input(),
+      constraintId: pulumi.Input.fromValue(map['constraintId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

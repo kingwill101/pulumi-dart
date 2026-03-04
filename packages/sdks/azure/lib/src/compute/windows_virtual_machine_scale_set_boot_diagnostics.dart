@@ -5,25 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineScaleSetBootDiagnostics {
   /// The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
   ///
-  /// > **Note:** Passing a null value will utilize a Managed Storage Account to store Boot Diagnostics
+  /// &gt; **Note:** Passing a null value will utilize a Managed Storage Account to store Boot Diagnostics
   final pulumi.Input<String>? storageAccountUri;
 
   /// Creates a new [WindowsVirtualMachineScaleSetBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
-  WindowsVirtualMachineScaleSetBootDiagnostics({
-    this.storageAccountUri,
-  });
+  WindowsVirtualMachineScaleSetBootDiagnostics({this.storageAccountUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageAccountUri': ?storageAccountUri,
-    };
+    return <String, dynamic>{'storageAccountUri': ?storageAccountUri};
   }
 
-  factory WindowsVirtualMachineScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
+  factory WindowsVirtualMachineScaleSetBootDiagnostics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsVirtualMachineScaleSetBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri']! as String).input(),
+      storageAccountUri: (() {
+        final guardedValue = map['storageAccountUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

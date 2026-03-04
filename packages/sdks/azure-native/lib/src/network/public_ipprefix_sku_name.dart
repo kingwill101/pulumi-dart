@@ -2,16 +2,15 @@
 enum PublicIPPrefixSkuName {
   valueStandard("Standard");
 
-  const PublicIPPrefixSkuName(this.value);
-  final String value;
+  const PublicIPPrefixSkuName(this.wireValue);
+  final String wireValue;
 
   static PublicIPPrefixSkuName fromValue(String value) {
     for (final item in PublicIPPrefixSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPPrefixSkuName value: $value');
   }
 }
-

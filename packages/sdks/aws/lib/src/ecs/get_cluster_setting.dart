@@ -9,23 +9,16 @@ class GetClusterSetting {
   /// Creates a new [GetClusterSetting].
   /// [name] Required.
   /// [value] Required.
-  GetClusterSetting({
-    required this.name,
-    required this.value,
-  });
+  GetClusterSetting({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory GetClusterSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterSetting(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

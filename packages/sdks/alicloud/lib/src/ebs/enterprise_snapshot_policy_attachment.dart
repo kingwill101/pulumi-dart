@@ -6,7 +6,7 @@ import 'enterprise_snapshot_policy_attachment_state.dart';
 ///
 /// For information about EBS Enterprise Snapshot Policy Attachment and how to use it, see [What is Enterprise Snapshot Policy Attachment](https://next.api.aliyun.com/api/ebs/2021-07-30/BindEnterpriseSnapshotPolicy).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -284,6 +284,7 @@ import 'enterprise_snapshot_policy_attachment_state.dart';
 class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
   /// Cloud Disk ID.
   late final pulumi.Output<String> diskId;
+
   /// the enterprise snapshot policy id.
   late final pulumi.Output<String> policyId;
 
@@ -296,13 +297,13 @@ class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
     EnterpriseSnapshotPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.policyId = registerOutput<String>('policyId');
+         'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    policyId = registerOutput<String>('policyId');
   }
 
   /// Gets an existing [EnterpriseSnapshotPolicyAttachment] resource's state with the given [name] and [id].
@@ -323,12 +324,12 @@ class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.policyId = registerOutput<String>('policyId');
+         'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    policyId = registerOutput<String>('policyId');
   }
 }

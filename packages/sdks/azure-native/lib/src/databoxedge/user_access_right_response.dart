@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAccessRightResponse {
   /// Type of access to be allowed for the user.
   final pulumi.Input<String> accessType;
+
   /// User ID (already existing in the device).
   final pulumi.Input<String> userId;
 
   /// Creates a new [UserAccessRightResponse].
   /// [accessType] Type of access to be allowed for the user.
   /// [userId] User ID (already existing in the device).
-  UserAccessRightResponse({
-    required this.accessType,
-    required this.userId,
-  });
+  UserAccessRightResponse({required this.accessType, required this.userId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessType': accessType,
-      'userId': userId,
-    };
+    return <String, dynamic>{'accessType': accessType, 'userId': userId};
   }
 
   factory UserAccessRightResponse.fromMap(Map<String, dynamic> map) {
     return UserAccessRightResponse(
-      accessType: (map['accessType'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

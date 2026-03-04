@@ -7,12 +7,17 @@ import 'secret_key_vault_properties_response.dart';
 class AzureFilePropertiesResponse {
   /// Access mode for storage
   final pulumi.Input<String>? accessMode;
+
   /// Storage account key for azure file.
   final pulumi.Input<String>? accountKey;
+
   /// Storage account key stored as an Azure Key Vault secret.
-  final pulumi.Input<SecretKeyVaultPropertiesResponse>? accountKeyVaultProperties;
+  final pulumi.Input<SecretKeyVaultPropertiesResponse>?
+  accountKeyVaultProperties;
+
   /// Storage account name for azure file.
   final pulumi.Input<String>? accountName;
+
   /// Azure file share name.
   final pulumi.Input<String>? shareName;
 
@@ -34,7 +39,11 @@ class AzureFilePropertiesResponse {
     return <String, dynamic>{
       'accessMode': ?accessMode,
       'accountKey': ?accountKey,
-      'accountKeyVaultProperties': ?pulumi.Input.mapOptionalInputValue<SecretKeyVaultPropertiesResponse, Map<String, dynamic>>(accountKeyVaultProperties, (value) => value.toMap()),
+      'accountKeyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretKeyVaultPropertiesResponse,
+            Map<String, dynamic>
+          >(accountKeyVaultProperties, (value) => value.toMap()),
       'accountName': ?accountName,
       'shareName': ?shareName,
     };
@@ -42,12 +51,35 @@ class AzureFilePropertiesResponse {
 
   factory AzureFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureFilePropertiesResponse(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      accountKeyVaultProperties: map['accountKeyVaultProperties'] == null ? null : (SecretKeyVaultPropertiesResponse.fromMap((map['accountKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      accessMode: (() {
+        final guardedValue = map['accessMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountKeyVaultProperties: (() {
+        final guardedValue = map['accountKeyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretKeyVaultPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

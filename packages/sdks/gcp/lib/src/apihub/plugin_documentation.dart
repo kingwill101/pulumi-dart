@@ -8,20 +8,19 @@ class PluginDocumentation {
 
   /// Creates a new [PluginDocumentation].
   /// [externalUri] The uri of the externally hosted documentation.
-  PluginDocumentation({
-    this.externalUri,
-  });
+  PluginDocumentation({this.externalUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalUri': ?externalUri,
-    };
+    return <String, dynamic>{'externalUri': ?externalUri};
   }
 
   factory PluginDocumentation.fromMap(Map<String, dynamic> map) {
     return PluginDocumentation(
-      externalUri: map['externalUri'] == null ? null : (map['externalUri']! as String).input(),
+      externalUri: (() {
+        final guardedValue = map['externalUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

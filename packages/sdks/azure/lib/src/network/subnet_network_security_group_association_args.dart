@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetNetworkSecurityGroupAssociationArgs {
   /// The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkSecurityGroupId;
+
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 
@@ -27,11 +28,14 @@ class SubnetNetworkSecurityGroupAssociationArgs {
     };
   }
 
-  factory SubnetNetworkSecurityGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory SubnetNetworkSecurityGroupAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubnetNetworkSecurityGroupAssociationArgs(
-      networkSecurityGroupId: (map['networkSecurityGroupId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      networkSecurityGroupId: pulumi.Input.fromValue(
+        map['networkSecurityGroupId'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

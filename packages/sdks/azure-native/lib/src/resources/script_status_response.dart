@@ -7,14 +7,19 @@ import 'error_response_response.dart';
 class ScriptStatusResponse {
   /// ACI resource Id.
   final pulumi.Input<String> containerInstanceId;
+
   /// End time of the script execution.
   final pulumi.Input<String> endTime;
+
   /// Error that is relayed from the script execution.
   final pulumi.Input<ErrorResponseResponse>? error;
+
   /// Time the deployment script resource will expire.
   final pulumi.Input<String> expirationTime;
+
   /// Start time of the script execution.
   final pulumi.Input<String> startTime;
+
   /// Storage account resource Id.
   final pulumi.Input<String> storageAccountId;
 
@@ -38,7 +43,11 @@ class ScriptStatusResponse {
     return <String, dynamic>{
       'containerInstanceId': containerInstanceId,
       'endTime': endTime,
-      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponseResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          ?pulumi.Input.mapOptionalInputValue<
+            ErrorResponseResponse,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
       'expirationTime': expirationTime,
       'startTime': startTime,
       'storageAccountId': storageAccountId,
@@ -47,13 +56,24 @@ class ScriptStatusResponse {
 
   factory ScriptStatusResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStatusResponse(
-      containerInstanceId: (map['containerInstanceId'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      error: map['error'] == null ? null : (ErrorResponseResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
-      expirationTime: (map['expirationTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
+      containerInstanceId: pulumi.Input.fromValue(
+        map['containerInstanceId'] as String,
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ErrorResponseResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      expirationTime: pulumi.Input.fromValue(map['expirationTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
     );
   }
 }
-

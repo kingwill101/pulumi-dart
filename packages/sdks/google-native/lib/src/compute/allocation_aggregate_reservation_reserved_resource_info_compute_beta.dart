@@ -5,7 +5,10 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator_comp
 
 class AllocationAggregateReservationReservedResourceInfoComputeBeta {
   /// Properties of accelerator resources in this reservation.
-  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta>? accelerator;
+  final pulumi.Input<
+    AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta
+  >?
+  accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoComputeBeta].
   /// [accelerator] Properties of accelerator resources in this reservation.
@@ -15,14 +18,27 @@ class AllocationAggregateReservationReservedResourceInfoComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerator': ?pulumi.Input.mapOptionalInputValue<AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta, Map<String, dynamic>>(accelerator, (value) => value.toMap()),
+      'accelerator':
+          ?pulumi.Input.mapOptionalInputValue<
+            AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta,
+            Map<String, dynamic>
+          >(accelerator, (value) => value.toMap()),
     };
   }
 
-  factory AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationAggregateReservationReservedResourceInfoComputeBeta(
-      accelerator: map['accelerator'] == null ? null : (AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta.fromMap((map['accelerator']! as Map).cast<String, dynamic>())).input(),
+      accelerator: (() {
+        final guardedValue = map['accelerator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

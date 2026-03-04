@@ -1,5 +1,3 @@
-library module_guestconfiguration;
-
 export 'guestconfiguration/assignment_info_response.dart';
 export 'guestconfiguration/assignment_report_resource_compliance_reason_response.dart';
 export 'guestconfiguration/assignment_report_resource_response.dart';

@@ -4,16 +4,17 @@ enum BrokerResourceDefinitionMethods {
   publish("Publish"),
   subscribe("Subscribe");
 
-  const BrokerResourceDefinitionMethods(this.value);
-  final String value;
+  const BrokerResourceDefinitionMethods(this.wireValue);
+  final String wireValue;
 
   static BrokerResourceDefinitionMethods fromValue(String value) {
     for (final item in BrokerResourceDefinitionMethods.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BrokerResourceDefinitionMethods value: $value');
+    throw ArgumentError(
+      'Unknown BrokerResourceDefinitionMethods value: $value',
+    );
   }
 }
-

@@ -7,10 +7,14 @@ import 'virtual_machine_scale_set_extension_properties_response.dart';
 class VirtualMachineScaleSetExtensionResponse {
   /// Resource Id
   final pulumi.Input<String> id;
+
   /// The name of the extension.
   final pulumi.Input<String>? name;
+
   /// Describes the properties of a Virtual Machine Scale Set Extension.
-  final pulumi.Input<VirtualMachineScaleSetExtensionPropertiesResponse>? properties;
+  final pulumi.Input<VirtualMachineScaleSetExtensionPropertiesResponse>?
+  properties;
+
   /// Resource type
   final pulumi.Input<String> type;
 
@@ -30,18 +34,35 @@ class VirtualMachineScaleSetExtensionResponse {
     return <String, dynamic>{
       'id': id,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetExtensionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetExtensionPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory VirtualMachineScaleSetExtensionResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetExtensionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetExtensionResponse(
-      id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetExtensionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetExtensionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

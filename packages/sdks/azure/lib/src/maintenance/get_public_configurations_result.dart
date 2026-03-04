@@ -7,10 +7,13 @@ import 'get_public_configurations_config.dart';
 class GetPublicConfigurationsResult {
   /// A `configs` block as defined below.
   final List<GetPublicConfigurationsConfig> configs;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure location of the Public Maintenance Configuration.
   final String? location;
+
   /// The rate at which a maintenance window is expected to recur.
   final String? recurEvery;
   final String? scope;
@@ -31,7 +34,11 @@ class GetPublicConfigurationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.encodeList<GetPublicConfigurationsConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'configs':
+          pulumi.Input.encodeList<
+            GetPublicConfigurationsConfig,
+            Map<String, dynamic>
+          >(configs, (value) => value.toMap()),
       'id': id,
       'location': ?location,
       'recurEvery': ?recurEvery,
@@ -41,12 +48,28 @@ class GetPublicConfigurationsResult {
 
   factory GetPublicConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetPublicConfigurationsResult(
-      configs: pulumi.Input.decodeList<GetPublicConfigurationsConfig>(map['configs'], (value) => GetPublicConfigurationsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      configs: pulumi.Input.decodeList<GetPublicConfigurationsConfig>(
+        map['configs']!,
+        (value) => GetPublicConfigurationsConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      recurEvery: map['recurEvery'] == null ? null : map['recurEvery']! as String,
-      scope: map['scope'] == null ? null : map['scope']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      recurEvery: (() {
+        final guardedValue = map['recurEvery'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

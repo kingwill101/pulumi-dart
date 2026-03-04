@@ -8,8 +8,9 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
   /// Possible values are: `default`, `private`.
   ///
-  /// <a name="nested_dns64_config"></a>The `dns64_config` block supports:
+  /// &lt;a name="nested_dns64_config"&gt;&lt;/a&gt;The `dns64_config` block supports:
   final pulumi.Input<String>? forwardingPath;
+
   /// IPv4 address to forward to.
   final pulumi.Input<String> ipv4Address;
 
@@ -28,11 +29,16 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
     };
   }
 
-  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
+  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: map['forwardingPath'] == null ? null : (map['forwardingPath']! as String).input(),
-      ipv4Address: (map['ipv4Address'] as String).input(),
+      forwardingPath: (() {
+        final guardedValue = map['forwardingPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
     );
   }
 }
-

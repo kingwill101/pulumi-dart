@@ -14,7 +14,7 @@ import 'get_gateways_result.dart';
 
 /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 ///
-/// > **NOTE:** Available since v1.18.0.
+/// &gt; **NOTE:** Available since v1.18.0.
 ///
 /// ## Example Usage
 ///
@@ -279,7 +279,7 @@ Future<GetCustomerGatewaysResult> getCustomerGateways(
 
 /// This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.183.0.
+/// &gt; **NOTE:** Available since v1.183.0.
 ///
 /// ## Example Usage
 ///
@@ -907,7 +907,7 @@ Future<GetGatewayVcoRoutesResult> getGatewayVcoRoutes(
 
 /// This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpn_get_gateway_vpn_attachments_get_gateway_vpn_attachments_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(
@@ -925,7 +925,7 @@ Future<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(
 
 /// This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -1032,7 +1032,7 @@ Future<GetGatewayZonesResult> getGatewayZones(
 
 /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 ///
-/// > **NOTE:** Available since v1.18.0.
+/// &gt; **NOTE:** Available since v1.18.0.
 ///
 /// ## Example Usage
 ///

@@ -17,17 +17,15 @@ class ManagedZoneCloudLoggingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableLogging': enableLogging,
-      'kind': kind,
-    };
+    return <String, dynamic>{'enableLogging': enableLogging, 'kind': kind};
   }
 
-  factory ManagedZoneCloudLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneCloudLoggingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneCloudLoggingConfigResponse(
-      enableLogging: (map['enableLogging'] as bool).input(),
-      kind: (map['kind'] as String).input(),
+      enableLogging: pulumi.Input.fromValue(map['enableLogging'] as bool),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
-

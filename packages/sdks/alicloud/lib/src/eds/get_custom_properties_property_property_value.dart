@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomPropertiesPropertyPropertyValue {
   /// The value of an attribute.
   final pulumi.Input<String> propertyValue;
+
   /// The value of an attribute id.
   final pulumi.Input<String> propertyValueId;
 
@@ -23,11 +24,12 @@ class GetCustomPropertiesPropertyPropertyValue {
     };
   }
 
-  factory GetCustomPropertiesPropertyPropertyValue.fromMap(Map<String, dynamic> map) {
+  factory GetCustomPropertiesPropertyPropertyValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomPropertiesPropertyPropertyValue(
-      propertyValue: (map['propertyValue'] as String).input(),
-      propertyValueId: (map['propertyValueId'] as String).input(),
+      propertyValue: pulumi.Input.fromValue(map['propertyValue'] as String),
+      propertyValueId: pulumi.Input.fromValue(map['propertyValueId'] as String),
     );
   }
 }
-

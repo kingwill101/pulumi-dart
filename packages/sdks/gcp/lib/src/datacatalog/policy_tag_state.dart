@@ -6,22 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTagState {
   /// Resource names of child policy tags of this policy tag.
   final pulumi.Input<List<String>>? childPolicyTags;
+
   /// Description of this policy tag. It must: contain only unicode characters, tabs,
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
   /// If not set, defaults to an empty description.
   final pulumi.Input<String>? description;
+
   /// User defined name of this policy tag. It must: be unique within the parent
   /// taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
   /// not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
   final pulumi.Input<String>? displayName;
+
   /// Resource name of this policy tag, whose format is:
   /// "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
   final pulumi.Input<String>? name;
+
   /// Resource name of this policy tag's parent policy tag.
   /// If empty, it means this policy tag is a top level policy tag.
   /// If not set, defaults to an empty string.
   final pulumi.Input<String>? parentPolicyTag;
+
   /// Taxonomy the policy tag is associated with
   final pulumi.Input<String>? taxonomy;
 
@@ -54,13 +59,36 @@ class PolicyTagState {
 
   factory PolicyTagState.fromMap(Map<String, dynamic> map) {
     return PolicyTagState(
-      childPolicyTags: map['childPolicyTags'] == null ? null : ((map['childPolicyTags']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag']! as String).input(),
-      taxonomy: map['taxonomy'] == null ? null : (map['taxonomy']! as String).input(),
+      childPolicyTags: (() {
+        final guardedValue = map['childPolicyTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentPolicyTag: (() {
+        final guardedValue = map['parentPolicyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taxonomy: (() {
+        final guardedValue = map['taxonomy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

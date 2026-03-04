@@ -4,16 +4,15 @@ enum EnvironmentApiProxyType {
   programmable("PROGRAMMABLE"),
   configurable("CONFIGURABLE");
 
-  const EnvironmentApiProxyType(this.value);
-  final String value;
+  const EnvironmentApiProxyType(this.wireValue);
+  final String wireValue;
 
   static EnvironmentApiProxyType fromValue(String value) {
     for (final item in EnvironmentApiProxyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentApiProxyType value: $value');
   }
 }
-

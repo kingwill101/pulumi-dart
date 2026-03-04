@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatusResponse {
   /// Gets the number of times this job has executed.
   final pulumi.Input<int> executionCount;
+
   /// Gets the number of times this job has failed.
   final pulumi.Input<int> failureCount;
+
   /// Gets the number of faulted occurrences (occurrences that were retried and failed as many times as the retry policy states).
   final pulumi.Input<int> faultedCount;
+
   /// Gets the time the last occurrence executed in ISO-8601 format.  Could be empty if job has not run yet.
   final pulumi.Input<String> lastExecutionTime;
+
   /// Gets the time of the next occurrence in ISO-8601 format. Could be empty if the job is completed.
   final pulumi.Input<String> nextExecutionTime;
 
@@ -40,12 +44,15 @@ class JobStatusResponse {
 
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
-      executionCount: (map['executionCount'] as int).input(),
-      failureCount: (map['failureCount'] as int).input(),
-      faultedCount: (map['faultedCount'] as int).input(),
-      lastExecutionTime: (map['lastExecutionTime'] as String).input(),
-      nextExecutionTime: (map['nextExecutionTime'] as String).input(),
+      executionCount: pulumi.Input.fromValue(map['executionCount'] as int),
+      failureCount: pulumi.Input.fromValue(map['failureCount'] as int),
+      faultedCount: pulumi.Input.fromValue(map['faultedCount'] as int),
+      lastExecutionTime: pulumi.Input.fromValue(
+        map['lastExecutionTime'] as String,
+      ),
+      nextExecutionTime: pulumi.Input.fromValue(
+        map['nextExecutionTime'] as String,
+      ),
     );
   }
 }
-

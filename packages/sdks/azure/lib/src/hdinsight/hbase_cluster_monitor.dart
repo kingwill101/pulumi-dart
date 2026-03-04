@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HBaseClusterMonitor {
   /// The Operations Management Suite (OMS) workspace ID.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// The Operations Management Suite (OMS) workspace key.
   final pulumi.Input<String> primaryKey;
 
@@ -25,9 +26,10 @@ class HBaseClusterMonitor {
 
   factory HBaseClusterMonitor.fromMap(Map<String, dynamic> map) {
     return HBaseClusterMonitor(
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      primaryKey: (map['primaryKey'] as String).input(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
     );
   }
 }
-

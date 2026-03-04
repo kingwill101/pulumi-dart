@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerAppsSourceControlArgs {
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Container App SourceControl.
   final pulumi.Input<String> sourceControlName;
 
@@ -34,10 +36,15 @@ class GetContainerAppsSourceControlArgs {
 
   factory GetContainerAppsSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSourceControlArgs(
-      containerAppName: (map['containerAppName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceControlName: (map['sourceControlName'] as String).input(),
+      containerAppName: pulumi.Input.fromValue(
+        map['containerAppName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sourceControlName: pulumi.Input.fromValue(
+        map['sourceControlName'] as String,
+      ),
     );
   }
 }
-

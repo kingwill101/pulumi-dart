@@ -8,20 +8,15 @@ class DomainDevicesCryptoAlias {
 
   /// Creates a new [DomainDevicesCryptoAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesCryptoAlias({
-    required this.name,
-  });
+  DomainDevicesCryptoAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesCryptoAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesCryptoAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

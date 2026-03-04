@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcpUserAccessBindingArgs {
   /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
   final pulumi.Input<List<String>>? accessLevels;
+
   /// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
   final pulumi.Input<List<String>>? dryRunAccessLevels;
+
   /// Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
   final pulumi.Input<String> groupKey;
+
   /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -43,12 +46,23 @@ class GcpUserAccessBindingArgs {
 
   factory GcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingArgs(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
-      dryRunAccessLevels: map['dryRunAccessLevels'] == null ? null : ((map['dryRunAccessLevels']! as List).cast<String>()).input(),
-      groupKey: (map['groupKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      accessLevels: (() {
+        final guardedValue = map['accessLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dryRunAccessLevels: (() {
+        final guardedValue = map['dryRunAccessLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupKey: pulumi.Input.fromValue(map['groupKey'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

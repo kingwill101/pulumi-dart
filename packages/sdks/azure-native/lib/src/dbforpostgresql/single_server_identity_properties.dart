@@ -2,16 +2,15 @@
 enum SingleServerIdentityProperties {
   valueSystemAssigned("SystemAssigned");
 
-  const SingleServerIdentityProperties(this.value);
-  final String value;
+  const SingleServerIdentityProperties(this.wireValue);
+  final String wireValue;
 
   static SingleServerIdentityProperties fromValue(String value) {
     for (final item in SingleServerIdentityProperties.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleServerIdentityProperties value: $value');
   }
 }
-

@@ -4,9 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshKeysFilter {
   final pulumi.Input<bool>? all;
+
   /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
   final pulumi.Input<String> key;
   final pulumi.Input<String>? matchBy;
+
   /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
   final pulumi.Input<List<String>> values;
 
@@ -33,11 +35,18 @@ class GetSshKeysFilter {
 
   factory GetSshKeysFilter.fromMap(Map<String, dynamic> map) {
     return GetSshKeysFilter(
-      all: map['all'] == null ? null : (map['all']! as bool).input(),
-      key: (map['key'] as String).input(),
-      matchBy: map['matchBy'] == null ? null : (map['matchBy']! as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      all: (() {
+        final guardedValue = map['all'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      matchBy: (() {
+        final guardedValue = map['matchBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

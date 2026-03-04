@@ -7,29 +7,46 @@ import 'unencrypted_credentials_response.dart';
 class ListJobCredentialsResult {
   /// Link for the next set of unencrypted credentials.
   final String? nextLink;
+
   /// List of unencrypted credentials.
   final List<UnencryptedCredentialsResponse>? value;
 
   /// Creates a new [ListJobCredentialsResult].
   /// [nextLink] Link for the next set of unencrypted credentials.
   /// [value] List of unencrypted credentials.
-  ListJobCredentialsResult({
-    this.nextLink,
-    this.value,
-  });
+  ListJobCredentialsResult({this.nextLink, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<UnencryptedCredentialsResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          UnencryptedCredentialsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListJobCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListJobCredentialsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<UnencryptedCredentialsResponse>(map['value']!, (value) => UnencryptedCredentialsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<UnencryptedCredentialsResponse>(
+          guardedValue,
+          (value) => UnencryptedCredentialsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

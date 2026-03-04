@@ -14,20 +14,21 @@ class ToolOpenApiToolServiceDirectoryConfig {
 
   /// Creates a new [ToolOpenApiToolServiceDirectoryConfig].
   /// [service] (Output)
-  ToolOpenApiToolServiceDirectoryConfig({
-    this.service,
-  });
+  ToolOpenApiToolServiceDirectoryConfig({this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'service': ?service,
-    };
+    return <String, dynamic>{'service': ?service};
   }
 
-  factory ToolOpenApiToolServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolOpenApiToolServiceDirectoryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolOpenApiToolServiceDirectoryConfig(
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

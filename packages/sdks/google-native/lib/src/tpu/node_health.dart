@@ -7,16 +7,15 @@ enum NodeHealth {
   unhealthyTensorflow("UNHEALTHY_TENSORFLOW"),
   unhealthyMaintenance("UNHEALTHY_MAINTENANCE");
 
-  const NodeHealth(this.value);
-  final String value;
+  const NodeHealth(this.wireValue);
+  final String wireValue;
 
   static NodeHealth fromValue(String value) {
     for (final item in NodeHealth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeHealth value: $value');
   }
 }
-

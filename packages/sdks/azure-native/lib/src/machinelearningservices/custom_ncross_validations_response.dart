@@ -7,29 +7,23 @@ class CustomNCrossValidationsResponse {
   /// Determines how N-Cross validations value is determined.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> mode;
+
   /// [Required] N-Cross validations value.
   final pulumi.Input<int> value;
 
   /// Creates a new [CustomNCrossValidationsResponse].
   /// [mode] Determines how N-Cross validations value is determined.
   /// [value] [Required] N-Cross validations value.
-  CustomNCrossValidationsResponse({
-    required this.mode,
-    required this.value,
-  });
+  CustomNCrossValidationsResponse({required this.mode, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-      'value': value,
-    };
+    return <String, dynamic>{'mode': mode, 'value': value};
   }
 
   factory CustomNCrossValidationsResponse.fromMap(Map<String, dynamic> map) {
     return CustomNCrossValidationsResponse(
-      mode: (map['mode'] as String).input(),
-      value: (map['value'] as int).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

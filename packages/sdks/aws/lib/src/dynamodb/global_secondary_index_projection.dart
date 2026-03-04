@@ -6,6 +6,7 @@ class GlobalSecondaryIndexProjection {
   /// Specifies which additional attributes to include in the index.
   /// Only valid when `projection_type` is `INCLUDE`.`
   final pulumi.Input<List<String>>? nonKeyAttributes;
+
   /// The set of attributes represented in the index.
   /// One of `ALL`, `INCLUDE`, or `KEYS_ONLY`.
   final pulumi.Input<String> projectionType;
@@ -27,9 +28,12 @@ class GlobalSecondaryIndexProjection {
 
   factory GlobalSecondaryIndexProjection.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexProjection(
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : (((map['nonKeyAttributes'] as List).cast<String>()).input()).input(),
-      projectionType: (map['projectionType'] as String).input(),
+      nonKeyAttributes: (() {
+        final guardedValue = map['nonKeyAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      projectionType: pulumi.Input.fromValue(map['projectionType'] as String),
     );
   }
 }
-

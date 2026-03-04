@@ -339,7 +339,7 @@ import 'shared_private_link_resource_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -354,18 +354,23 @@ import 'shared_private_link_resource_state.dart';
 class SharedPrivateLinkResource extends pulumi.CustomResource {
   /// Specify the name of the Web Pubsub Shared Private Link Resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specify the request message for requesting approval of the Shared Private Link Enabled Remote Resource.
   late final pulumi.Output<String?> requestMessage;
+
   /// The status of a private endpoint connection. Possible values are Pending, Approved, Rejected or Disconnected.
   late final pulumi.Output<String> status;
+
   /// Specify the sub resource name which the Web Pubsub Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The available sub resource can be retrieved by using `azure.webpubsub.getPrivateLinkResource` data source.
+  /// &gt; **Note:** The available sub resource can be retrieved by using `azure.webpubsub.getPrivateLinkResource` data source.
   late final pulumi.Output<String> subresourceName;
+
   /// Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The sub resource name should match with the type of the target resource id that's being specified.
+  /// &gt; **Note:** The sub resource name should match with the type of the target resource id that's being specified.
   late final pulumi.Output<String> targetResourceId;
+
   /// Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubId;
 
@@ -378,17 +383,17 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     SharedPrivateLinkResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.status = registerOutput<String>('status');
-    this.subresourceName = registerOutput<String>('subresourceName');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+    requestMessage = registerOutput<String?>('requestMessage');
+    status = registerOutput<String>('status');
+    subresourceName = registerOutput<String>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 
   /// Gets an existing [SharedPrivateLinkResource] resource's state with the given [name] and [id].
@@ -409,16 +414,16 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.status = registerOutput<String>('status');
-    this.subresourceName = registerOutput<String>('subresourceName');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+    requestMessage = registerOutput<String?>('requestMessage');
+    status = registerOutput<String>('status');
+    subresourceName = registerOutput<String>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

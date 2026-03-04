@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
-import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides a Polar Db Parameter Group resource.
@@ -9,7 +8,7 @@ import 'parameter_group_state.dart';
 ///
 /// For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 ///
-/// > **NOTE:** Available since v1.183.0.
+/// &gt; **NOTE:** Available since v1.183.0.
 ///
 /// ## Example Usage
 ///
@@ -164,30 +163,36 @@ import 'parameter_group_state.dart';
 class ParameterGroup extends pulumi.CustomResource {
   /// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// The type of the database engine. Only `MySQL` is supported.
   late final pulumi.Output<String> dbType;
+
   /// The version of the database engine. Valid values:
   /// - **5.6**
   /// - **5.7**
   /// - **8.0**
   late final pulumi.Output<String> dbVersion;
+
   /// The description of the parameter template.
   late final pulumi.Output<String?> description;
+
   /// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
   late final pulumi.Output<String> name;
+
   /// The name of the parameter template. The name must meet the following requirements:
   ///
   /// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
   ///
   /// - It must be 8 to 64 characters in length.
   late final pulumi.Output<String> parameterGroupName;
+
   /// Details about the parameters. See `parameters` below.
   ///
-  /// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+  /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
   ///
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
-  late final pulumi.Output<List<ParameterGroupParameter>> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
 
   /// Creates a new [ParameterGroup].
   /// [name] The Pulumi resource name.
@@ -198,18 +203,18 @@ class ParameterGroup extends pulumi.CustomResource {
     ParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbType = registerOutput<String>('dbType');
-    this.dbVersion = registerOutput<String>('dbVersion');
-    this.description = registerOutput<String?>('description');
+         'alicloud:polardb/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbType = registerOutput<String>('dbType');
+    dbVersion = registerOutput<String>('dbVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parameterGroupName = registerOutput<String>('parameterGroupName');
-    this.parameters = registerOutput<List<ParameterGroupParameter>>('parameters');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -230,17 +235,17 @@ class ParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbType = registerOutput<String>('dbType');
-    this.dbVersion = registerOutput<String>('dbVersion');
-    this.description = registerOutput<String?>('description');
+         'alicloud:polardb/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbType = registerOutput<String>('dbType');
+    dbVersion = registerOutput<String>('dbVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parameterGroupName = registerOutput<String>('parameterGroupName');
-    this.parameters = registerOutput<List<ParameterGroupParameter>>('parameters');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
   }
 }

@@ -8,8 +8,10 @@ import 'google_privacy_dlp_v2_primitive_transformation.dart';
 class GooglePrivacyDlpV2InfoTypeTransformation {
   /// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
   final pulumi.Input<List<GooglePrivacyDlpV2InfoType>>? infoTypes;
+
   /// Primitive transformation to apply to the infoType.
-  final pulumi.Input<GooglePrivacyDlpV2PrimitiveTransformation> primitiveTransformation;
+  final pulumi.Input<GooglePrivacyDlpV2PrimitiveTransformation>
+  primitiveTransformation;
 
   /// Creates a new [GooglePrivacyDlpV2InfoTypeTransformation].
   /// [infoTypes] InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
@@ -21,16 +23,47 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes': ?pulumi.Input.mapOptionalInputValue<List<GooglePrivacyDlpV2InfoType>, List<Map<String, dynamic>>>(infoTypes, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'primitiveTransformation': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PrimitiveTransformation, Map<String, dynamic>>(primitiveTransformation, (value) => value.toMap()),
+      'infoTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GooglePrivacyDlpV2InfoType>,
+            List<Map<String, dynamic>>
+          >(
+            infoTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GooglePrivacyDlpV2InfoType,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'primitiveTransformation':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2PrimitiveTransformation,
+            Map<String, dynamic>
+          >(primitiveTransformation, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeTransformation.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeTransformation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeTransformation(
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes']!, (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primitiveTransformation: (GooglePrivacyDlpV2PrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
+      infoTypes: (() {
+        final guardedValue = map['infoTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(
+            guardedValue,
+            (value) => GooglePrivacyDlpV2InfoType.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      primitiveTransformation: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2PrimitiveTransformation.fromMap(
+          (map['primitiveTransformation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

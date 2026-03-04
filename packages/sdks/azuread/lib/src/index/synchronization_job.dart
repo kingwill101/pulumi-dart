@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synchronization_job_args.dart';
-import 'synchronization_job_schedule.dart';
 import 'synchronization_job_state.dart';
 
 /// Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
@@ -295,14 +294,17 @@ import 'synchronization_job_state.dart';
 /// $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example /servicePrincipals/00000000-0000-0000-0000-000000000000/synchronization/jobs/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
 class SynchronizationJob extends pulumi.CustomResource {
   /// Whether the provisioning job is enabled. Default state is `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// A `schedule` list as documented below.
-  late final pulumi.Output<List<SynchronizationJobSchedule>> schedules;
+  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
+
   /// Identifier of the synchronization template this job is based on.
   late final pulumi.Output<String> templateId;
 
@@ -315,15 +317,15 @@ class SynchronizationJob extends pulumi.CustomResource {
     SynchronizationJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationJob:SynchronizationJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.schedules = registerOutput<List<SynchronizationJobSchedule>>('schedules');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.templateId = registerOutput<String>('templateId');
+         'azuread:index/synchronizationJob:SynchronizationJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    templateId = registerOutput<String>('templateId');
   }
 
   /// Gets an existing [SynchronizationJob] resource's state with the given [name] and [id].
@@ -344,14 +346,14 @@ class SynchronizationJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationJob:SynchronizationJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.schedules = registerOutput<List<SynchronizationJobSchedule>>('schedules');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    this.templateId = registerOutput<String>('templateId');
+         'azuread:index/synchronizationJob:SynchronizationJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    templateId = registerOutput<String>('templateId');
   }
 }

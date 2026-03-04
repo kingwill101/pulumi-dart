@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRegistryArgs {
   /// The name of the container_registry
   final pulumi.Input<String>? name;
+
   /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
   final pulumi.Input<String>? region;
+
   /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
   final pulumi.Input<String> subscriptionTierSlug;
 
@@ -34,10 +36,19 @@ class ContainerRegistryArgs {
 
   factory ContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      subscriptionTierSlug: (map['subscriptionTierSlug'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionTierSlug: pulumi.Input.fromValue(
+        map['subscriptionTierSlug'] as String,
+      ),
     );
   }
 }
-

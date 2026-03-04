@@ -1,5 +1,3 @@
-library module_nginx;
-
 export 'nginx/api_key.dart';
 export 'nginx/api_key_args.dart';
 export 'nginx/api_key_state.dart';

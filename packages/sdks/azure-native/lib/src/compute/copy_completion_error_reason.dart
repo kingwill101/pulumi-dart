@@ -2,16 +2,15 @@
 enum CopyCompletionErrorReason {
   copySourceNotFound("CopySourceNotFound");
 
-  const CopyCompletionErrorReason(this.value);
-  final String value;
+  const CopyCompletionErrorReason(this.wireValue);
+  final String wireValue;
 
   static CopyCompletionErrorReason fromValue(String value) {
     for (final item in CopyCompletionErrorReason.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CopyCompletionErrorReason value: $value');
   }
 }
-

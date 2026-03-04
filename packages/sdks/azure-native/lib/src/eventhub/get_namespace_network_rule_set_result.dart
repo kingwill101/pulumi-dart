@@ -9,24 +9,34 @@ import 'system_data_response.dart';
 class GetNamespaceNetworkRuleSetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Default Action for Network Rule Set
   final String? defaultAction;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// List of IpRules
   final List<NWRuleSetIpRulesResponse>? ipRules;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
   final String? publicNetworkAccess;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// Value that indicates whether Trusted Service Access is Enabled or not.
   final bool? trustedServiceAccessEnabled;
+
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   final String type;
+
   /// List VirtualNetwork Rules
   final List<NWRuleSetVirtualNetworkRulesResponse>? virtualNetworkRules;
 
@@ -61,31 +71,76 @@ class GetNamespaceNetworkRuleSetResult {
       'azureApiVersion': azureApiVersion,
       'defaultAction': ?defaultAction,
       'id': id,
-      'ipRules': ?ipRules == null ? null : pulumi.Input.encodeList<NWRuleSetIpRulesResponse, Map<String, dynamic>>(ipRules!, (value) => value.toMap()),
+      'ipRules': ?(() {
+        final guardedValue = ipRules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          NWRuleSetIpRulesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'location': location,
       'name': name,
       'publicNetworkAccess': ?publicNetworkAccess,
       'systemData': systemData.toMap(),
       'trustedServiceAccessEnabled': ?trustedServiceAccessEnabled,
       'type': type,
-      'virtualNetworkRules': ?virtualNetworkRules == null ? null : pulumi.Input.encodeList<NWRuleSetVirtualNetworkRulesResponse, Map<String, dynamic>>(virtualNetworkRules!, (value) => value.toMap()),
+      'virtualNetworkRules': ?(() {
+        final guardedValue = virtualNetworkRules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          NWRuleSetVirtualNetworkRulesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetNamespaceNetworkRuleSetResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceNetworkRuleSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction']! as String,
+      defaultAction: (() {
+        final guardedValue = map['defaultAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(map['ipRules']!, (value) => NWRuleSetIpRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipRules: (() {
+        final guardedValue = map['ipRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(
+          guardedValue,
+          (value) => NWRuleSetIpRulesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : map['trustedServiceAccessEnabled']! as bool,
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      trustedServiceAccessEnabled: (() {
+        final guardedValue = map['trustedServiceAccessEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       type: map['type'] as String,
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(map['virtualNetworkRules']!, (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      virtualNetworkRules: (() {
+        final guardedValue = map['virtualNetworkRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(
+          guardedValue,
+          (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JwtClaimChecks {
   /// The list of the allowed client applications.
   final pulumi.Input<List<String>>? allowedClientApplications;
+
   /// The list of the allowed groups.
   final pulumi.Input<List<String>>? allowedGroups;
 
   /// Creates a new [JwtClaimChecks].
   /// [allowedClientApplications] The list of the allowed client applications.
   /// [allowedGroups] The list of the allowed groups.
-  JwtClaimChecks({
-    this.allowedClientApplications,
-    this.allowedGroups,
-  });
+  JwtClaimChecks({this.allowedClientApplications, this.allowedGroups});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class JwtClaimChecks {
 
   factory JwtClaimChecks.fromMap(Map<String, dynamic> map) {
     return JwtClaimChecks(
-      allowedClientApplications: map['allowedClientApplications'] == null ? null : ((map['allowedClientApplications']! as List).cast<String>()).input(),
-      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups']! as List).cast<String>()).input(),
+      allowedClientApplications: (() {
+        final guardedValue = map['allowedClientApplications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowedGroups: (() {
+        final guardedValue = map['allowedGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

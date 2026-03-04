@@ -6,55 +6,70 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpsBasicConfigurationState {
   /// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
   final pulumi.Input<String>? ciphersuite;
+
   /// Cipher suite group. Default is all cipher suites. Possible values:
   /// - all: All cipher suites.
   /// - strict: Strong cipher suites.
   /// - custom: Custom cipher suites.
   final pulumi.Input<String>? ciphersuiteGroup;
+
   /// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://www.alibabacloud.com/help/en/doc-detail/2867470.html) interface.
   final pulumi.Input<int>? configId;
+
   /// Indicates whether HTTP2 is enabled. Default is on. Possible values:
   /// - on: Enabled.
   /// - off: Disabled.
   final pulumi.Input<String>? http2;
+
   /// Whether to enable HTTP3, which is enabled by default. The value can be:
   /// - on: Enabled.
   /// - off: Disabled.
   final pulumi.Input<String>? http3;
+
   /// Whether to enable HTTPS. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   final pulumi.Input<String>? https;
+
   /// Indicates whether OCSP is enabled. Default is off. Possible values:
   /// - on: Enabled.
   /// - off: Disabled.
   final pulumi.Input<String>? ocspStapling;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// -  Match all incoming requests: value set to true
   /// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   final pulumi.Input<String>? rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   final pulumi.Input<String>? ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   final pulumi.Input<String>? ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   final pulumi.Input<int>? sequence;
+
   /// Site ID, which can be obtained by calling the ListSites interface.
   final pulumi.Input<String>? siteId;
+
   /// Whether to enable TLS1.0. Default is disabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   final pulumi.Input<String>? tls10;
+
   /// Whether to enable TLS1.1. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   final pulumi.Input<String>? tls11;
+
   /// Whether to enable TLS1.2. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   final pulumi.Input<String>? tls12;
+
   /// Whether to enable TLS1.3. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
@@ -119,23 +134,86 @@ class HttpsBasicConfigurationState {
 
   factory HttpsBasicConfigurationState.fromMap(Map<String, dynamic> map) {
     return HttpsBasicConfigurationState(
-      ciphersuite: map['ciphersuite'] == null ? null : (map['ciphersuite']! as String).input(),
-      ciphersuiteGroup: map['ciphersuiteGroup'] == null ? null : (map['ciphersuiteGroup']! as String).input(),
-      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
-      http2: map['http2'] == null ? null : (map['http2']! as String).input(),
-      http3: map['http3'] == null ? null : (map['http3']! as String).input(),
-      https: map['https'] == null ? null : (map['https']! as String).input(),
-      ocspStapling: map['ocspStapling'] == null ? null : (map['ocspStapling']! as String).input(),
-      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      tls10: map['tls10'] == null ? null : (map['tls10']! as String).input(),
-      tls11: map['tls11'] == null ? null : (map['tls11']! as String).input(),
-      tls12: map['tls12'] == null ? null : (map['tls12']! as String).input(),
-      tls13: map['tls13'] == null ? null : (map['tls13']! as String).input(),
+      ciphersuite: (() {
+        final guardedValue = map['ciphersuite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ciphersuiteGroup: (() {
+        final guardedValue = map['ciphersuiteGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configId: (() {
+        final guardedValue = map['configId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      http2: (() {
+        final guardedValue = map['http2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      http3: (() {
+        final guardedValue = map['http3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      https: (() {
+        final guardedValue = map['https'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ocspStapling: (() {
+        final guardedValue = map['ocspStapling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rule: (() {
+        final guardedValue = map['rule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleEnable: (() {
+        final guardedValue = map['ruleEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sequence: (() {
+        final guardedValue = map['sequence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls10: (() {
+        final guardedValue = map['tls10'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls11: (() {
+        final guardedValue = map['tls11'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls12: (() {
+        final guardedValue = map['tls12'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls13: (() {
+        final guardedValue = map['tls13'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

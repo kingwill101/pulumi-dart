@@ -9,11 +9,11 @@ import 'spring_cloud_gateway_quota.dart';
 import 'spring_cloud_gateway_sso.dart';
 import 'spring_cloud_gateway_state.dart';
 
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
 /// Manages a Spring Cloud Gateway.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGateway` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGateway` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -419,7 +419,7 @@ import 'spring_cloud_gateway_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AppPlatform` - 2024-01-01-preview
@@ -434,36 +434,55 @@ import 'spring_cloud_gateway_state.dart';
 class SpringCloudGateway extends pulumi.CustomResource {
   /// A `api_metadata` block as defined below.
   late final pulumi.Output<SpringCloudGatewayApiMetadata?> apiMetadata;
+
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringIds;
+
   /// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringTypes;
+
   /// A `client_authorization` block as defined below.
-  late final pulumi.Output<SpringCloudGatewayClientAuthorization?> clientAuthorization;
+  late final pulumi.Output<SpringCloudGatewayClientAuthorization?>
+  clientAuthorization;
+
   /// A `cors` block as defined below.
   late final pulumi.Output<SpringCloudGatewayCors?> cors;
+
   /// Specifies the environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
+
   /// is only https is allowed?
   late final pulumi.Output<bool?> httpsOnly;
+
   /// Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
+
   /// A `local_response_cache_per_instance` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
-  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerInstance?> localResponseCachePerInstance;
+  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerInstance?>
+  localResponseCachePerInstance;
+
   /// A `local_response_cache_per_route` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
-  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerRoute?> localResponseCachePerRoute;
+  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerRoute?>
+  localResponseCachePerRoute;
+
   /// The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;
+
   /// Indicates whether the Spring Cloud Gateway exposes endpoint.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// A `quota` block as defined below.
   late final pulumi.Output<SpringCloudGatewayQuota> quota;
+
   /// Specifies the sensitive environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> sensitiveEnvironmentVariables;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Gateway to be created.
   late final pulumi.Output<String> springCloudServiceId;
+
   /// A `sso` block as defined below.
   late final pulumi.Output<SpringCloudGatewaySso?> sso;
+
   /// URL of the Spring Cloud Gateway, exposed when 'public_network_access_enabled' is true.
   late final pulumi.Output<String> url;
 
@@ -476,28 +495,47 @@ class SpringCloudGateway extends pulumi.CustomResource {
     SpringCloudGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGateway:SpringCloudGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata');
-    this.applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
-    this.applicationPerformanceMonitoringTypes = registerOutput<List<String>?>('applicationPerformanceMonitoringTypes');
-    this.clientAuthorization = registerOutput<SpringCloudGatewayClientAuthorization?>('clientAuthorization');
-    this.cors = registerOutput<SpringCloudGatewayCors?>('cors');
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.instanceCount = registerOutput<int?>('instanceCount');
-    this.localResponseCachePerInstance = registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>('localResponseCachePerInstance');
-    this.localResponseCachePerRoute = registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>('localResponseCachePerRoute');
+         'azure:appplatform/springCloudGateway:SpringCloudGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>(
+      'applicationPerformanceMonitoringIds',
+    );
+    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>(
+      'applicationPerformanceMonitoringTypes',
+    );
+    clientAuthorization =
+        registerOutput<SpringCloudGatewayClientAuthorization?>(
+          'clientAuthorization',
+        );
+    cors = registerOutput<SpringCloudGatewayCors?>('cors');
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    instanceCount = registerOutput<int?>('instanceCount');
+    localResponseCachePerInstance =
+        registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>(
+          'localResponseCachePerInstance',
+        );
+    localResponseCachePerRoute =
+        registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>(
+          'localResponseCachePerRoute',
+        );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.quota = registerOutput<SpringCloudGatewayQuota>('quota');
-    this.sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>('sensitiveEnvironmentVariables');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.sso = registerOutput<SpringCloudGatewaySso?>('sso');
-    this.url = registerOutput<String>('url');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    quota = registerOutput<SpringCloudGatewayQuota>('quota');
+    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>(
+      'sensitiveEnvironmentVariables',
+    );
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    sso = registerOutput<SpringCloudGatewaySso?>('sso');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [SpringCloudGateway] resource's state with the given [name] and [id].
@@ -518,27 +556,46 @@ class SpringCloudGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGateway:SpringCloudGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata');
-    this.applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
-    this.applicationPerformanceMonitoringTypes = registerOutput<List<String>?>('applicationPerformanceMonitoringTypes');
-    this.clientAuthorization = registerOutput<SpringCloudGatewayClientAuthorization?>('clientAuthorization');
-    this.cors = registerOutput<SpringCloudGatewayCors?>('cors');
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.instanceCount = registerOutput<int?>('instanceCount');
-    this.localResponseCachePerInstance = registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>('localResponseCachePerInstance');
-    this.localResponseCachePerRoute = registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>('localResponseCachePerRoute');
+         'azure:appplatform/springCloudGateway:SpringCloudGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>(
+      'applicationPerformanceMonitoringIds',
+    );
+    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>(
+      'applicationPerformanceMonitoringTypes',
+    );
+    clientAuthorization =
+        registerOutput<SpringCloudGatewayClientAuthorization?>(
+          'clientAuthorization',
+        );
+    cors = registerOutput<SpringCloudGatewayCors?>('cors');
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    instanceCount = registerOutput<int?>('instanceCount');
+    localResponseCachePerInstance =
+        registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>(
+          'localResponseCachePerInstance',
+        );
+    localResponseCachePerRoute =
+        registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>(
+          'localResponseCachePerRoute',
+        );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.quota = registerOutput<SpringCloudGatewayQuota>('quota');
-    this.sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>('sensitiveEnvironmentVariables');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.sso = registerOutput<SpringCloudGatewaySso?>('sso');
-    this.url = registerOutput<String>('url');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    quota = registerOutput<SpringCloudGatewayQuota>('quota');
+    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>(
+      'sensitiveEnvironmentVariables',
+    );
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    sso = registerOutput<SpringCloudGatewaySso?>('sso');
+    url = registerOutput<String>('url');
   }
 }

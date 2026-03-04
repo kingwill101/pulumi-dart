@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceDeploymentScriptAzureCliStorageAccount {
   /// Specifies the storage account access key.
   final pulumi.Input<String> key;
+
   /// Specifies the storage account name.
   final pulumi.Input<String> name;
 
@@ -17,17 +18,15 @@ class ResourceDeploymentScriptAzureCliStorageAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'name': name,
-    };
+    return <String, dynamic>{'key': key, 'name': name};
   }
 
-  factory ResourceDeploymentScriptAzureCliStorageAccount.fromMap(Map<String, dynamic> map) {
+  factory ResourceDeploymentScriptAzureCliStorageAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceDeploymentScriptAzureCliStorageAccount(
-      key: (map['key'] as String).input(),
-      name: (map['name'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

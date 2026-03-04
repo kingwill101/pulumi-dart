@@ -6,10 +6,17 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse {
   /// Key of a custom response body to use.
   final pulumi.Input<String>? customResponseBodyKey;
+
   /// HTTP response code to return (200-599).
   final pulumi.Input<int> responseCode;
+
   /// Headers to include in the response. See below.
-  final pulumi.Input<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>>? responseHeaders;
+  final pulumi.Input<
+    List<
+      WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader
+    >
+  >?
+  responseHeaders;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse].
   /// [customResponseBodyKey] Key of a custom response body to use.
@@ -25,16 +32,48 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlo
     return <String, dynamic>{
       'customResponseBodyKey': ?customResponseBodyKey,
       'responseCode': responseCode,
-      'responseHeaders': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>, List<Map<String, dynamic>>>(responseHeaders, (value) => pulumi.Input.encodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeaders':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader
+            >,
+            List<Map<String, dynamic>>
+          >(
+            responseHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : ((map['customResponseBodyKey'] as String).input()).input(),
-      responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customResponseBodyKey: (() {
+        final guardedValue = map['customResponseBodyKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseCode: pulumi.Input.fromValue(map['responseCode'] as int),
+      responseHeaders: (() {
+        final guardedValue = map['responseHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader
+          >(
+            guardedValue,
+            (value) =>
+                WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -35,11 +35,10 @@ class GetWorkforcePoolKeyArgs {
 
   factory GetWorkforcePoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkforcePoolKeyArgs(
-      keyId: (map['keyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      providerId: (map['providerId'] as String).input(),
-      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      providerId: pulumi.Input.fromValue(map['providerId'] as String),
+      workforcePoolId: pulumi.Input.fromValue(map['workforcePoolId'] as String),
     );
   }
 }
-

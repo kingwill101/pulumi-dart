@@ -12,18 +12,29 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings>? dtmfSettings;
+  final pulumi.Input<
+    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings
+  >?
+  dtmfSettings;
+
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings>? loggingSettings;
+  final pulumi.Input<
+    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings
+  >?
+  loggingSettings;
+
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings>? speechSettings;
+  final pulumi.Input<
+    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings
+  >?
+  speechSettings;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
@@ -37,18 +48,55 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dtmfSettings': ?pulumi.Input.mapOptionalInputValue<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings, Map<String, dynamic>>(dtmfSettings, (value) => value.toMap()),
-      'loggingSettings': ?pulumi.Input.mapOptionalInputValue<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings, Map<String, dynamic>>(loggingSettings, (value) => value.toMap()),
-      'speechSettings': ?pulumi.Input.mapOptionalInputValue<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings, Map<String, dynamic>>(speechSettings, (value) => value.toMap()),
+      'dtmfSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings,
+            Map<String, dynamic>
+          >(dtmfSettings, (value) => value.toMap()),
+      'loggingSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings,
+            Map<String, dynamic>
+          >(loggingSettings, (value) => value.toMap()),
+      'speechSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings,
+            Map<String, dynamic>
+          >(speechSettings, (value) => value.toMap()),
     };
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(Map<String, dynamic> map) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
-      loggingSettings: map['loggingSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings']! as Map).cast<String, dynamic>())).input(),
-      speechSettings: map['speechSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings']! as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: (() {
+        final guardedValue = map['dtmfSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loggingSettings: (() {
+        final guardedValue = map['loggingSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      speechSettings: (() {
+        final guardedValue = map['speechSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

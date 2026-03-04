@@ -391,14 +391,19 @@ import 'schema_args.dart';
 class Schema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Free-form schema entity description.
   late final pulumi.Output<String?> description;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Schema Type. Immutable.
   late final pulumi.Output<String> schemaType;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Json-encoded string for non json-based schema.
   late final pulumi.Output<String?> value;
 
@@ -406,21 +411,18 @@ class Schema extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Schema]. {@macro pulumi_apimanagement_schema_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Schema(
-    String name, {
-    SchemaArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:apimanagement:Schema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+  Schema(String name, {SchemaArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:apimanagement:Schema',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.schemaType = registerOutput<String>('schemaType');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    schemaType = registerOutput<String>('schemaType');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

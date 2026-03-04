@@ -4,16 +4,17 @@ enum IngressRuleActionAppengineV1beta {
   allow("ALLOW"),
   deny("DENY");
 
-  const IngressRuleActionAppengineV1beta(this.value);
-  final String value;
+  const IngressRuleActionAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static IngressRuleActionAppengineV1beta fromValue(String value) {
     for (final item in IngressRuleActionAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IngressRuleActionAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown IngressRuleActionAppengineV1beta value: $value',
+    );
   }
 }
-

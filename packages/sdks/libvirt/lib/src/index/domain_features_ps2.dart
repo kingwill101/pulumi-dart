@@ -8,20 +8,19 @@ class DomainFeaturesPs2 {
 
   /// Creates a new [DomainFeaturesPs2].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesPs2({
-    this.state,
-  });
+  DomainFeaturesPs2({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesPs2.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesPs2(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiKey': apiKey,
-    };
+    return <String, dynamic>{'apiKey': apiKey};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular(
-      apiKey: (map['apiKey'] as String).input(),
+      apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
     );
   }
 }
-

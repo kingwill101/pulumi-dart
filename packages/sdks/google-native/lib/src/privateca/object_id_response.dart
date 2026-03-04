@@ -9,20 +9,17 @@ class ObjectIdResponse {
 
   /// Creates a new [ObjectIdResponse].
   /// [objectIdPath] The parts of an OID path. The most significant parts of the path come first.
-  ObjectIdResponse({
-    required this.objectIdPath,
-  });
+  ObjectIdResponse({required this.objectIdPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPath': objectIdPath,
-    };
+    return <String, dynamic>{'objectIdPath': objectIdPath};
   }
 
   factory ObjectIdResponse.fromMap(Map<String, dynamic> map) {
     return ObjectIdResponse(
-      objectIdPath: ((map['objectIdPath'] as List).cast<int>()).input(),
+      objectIdPath: pulumi.Input.fromValue(
+        (map['objectIdPath'] as List).cast<int>(),
+      ),
     );
   }
 }
-

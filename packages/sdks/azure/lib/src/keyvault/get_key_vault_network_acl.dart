@@ -31,11 +31,12 @@ class GetKeyVaultNetworkAcl {
 
   factory GetKeyVaultNetworkAcl.fromMap(Map<String, dynamic> map) {
     return GetKeyVaultNetworkAcl(
-      bypass: (map['bypass'] as String).input(),
-      defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: ((map['ipRules'] as List).cast<String>()).input(),
-      virtualNetworkSubnetIds: ((map['virtualNetworkSubnetIds'] as List).cast<String>()).input(),
+      bypass: pulumi.Input.fromValue(map['bypass'] as String),
+      defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
+      ipRules: pulumi.Input.fromValue((map['ipRules'] as List).cast<String>()),
+      virtualNetworkSubnetIds: pulumi.Input.fromValue(
+        (map['virtualNetworkSubnetIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

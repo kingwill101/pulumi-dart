@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1NotificationConfigResponse {
   /// Format of message.
   final pulumi.Input<String> messageFormat;
+
   /// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
   final pulumi.Input<String> topic;
 
@@ -18,17 +19,15 @@ class GoogleCloudDialogflowV2beta1NotificationConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'messageFormat': messageFormat,
-      'topic': topic,
-    };
+    return <String, dynamic>{'messageFormat': messageFormat, 'topic': topic};
   }
 
-  factory GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1NotificationConfigResponse(
-      messageFormat: (map['messageFormat'] as String).input(),
-      topic: (map['topic'] as String).input(),
+      messageFormat: pulumi.Input.fromValue(map['messageFormat'] as String),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

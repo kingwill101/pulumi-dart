@@ -3,16 +3,15 @@ enum GenerationManifestType {
   valueHelm("helm"),
   valueKube("kube");
 
-  const GenerationManifestType(this.value);
-  final String value;
+  const GenerationManifestType(this.wireValue);
+  final String wireValue;
 
   static GenerationManifestType fromValue(String value) {
     for (final item in GenerationManifestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GenerationManifestType value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAcceleratorSpareIpAttachmentsAttachment {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The ID of the Accelerator Spare Ip Attachment.
   final pulumi.Input<String> id;
+
   /// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   final pulumi.Input<String> spareIp;
+
   /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
   final pulumi.Input<String> status;
 
@@ -33,13 +36,14 @@ class GetAcceleratorSpareIpAttachmentsAttachment {
     };
   }
 
-  factory GetAcceleratorSpareIpAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
+  factory GetAcceleratorSpareIpAttachmentsAttachment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAcceleratorSpareIpAttachmentsAttachment(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      id: (map['id'] as String).input(),
-      spareIp: (map['spareIp'] as String).input(),
-      status: (map['status'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      spareIp: pulumi.Input.fromValue(map['spareIp'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

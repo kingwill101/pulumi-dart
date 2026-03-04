@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceResponse {
   /// The external IP to define in the NIC.
   final pulumi.Input<String> externalIp;
+
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final pulumi.Input<String> internalIp;
+
   /// The network to connect the NIC to.
   final pulumi.Input<String> network;
+
   /// The subnetwork to connect the NIC to.
   final pulumi.Input<String> subnetwork;
 
@@ -36,11 +39,10 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      externalIp: (map['externalIp'] as String).input(),
-      internalIp: (map['internalIp'] as String).input(),
-      network: (map['network'] as String).input(),
-      subnetwork: (map['subnetwork'] as String).input(),
+      externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
+      internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
-

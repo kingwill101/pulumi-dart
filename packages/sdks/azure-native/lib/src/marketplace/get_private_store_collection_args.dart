@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateStoreCollectionArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
+
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
 
@@ -29,9 +30,8 @@ class GetPrivateStoreCollectionArgs {
 
   factory GetPrivateStoreCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateStoreCollectionArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      privateStoreId: (map['privateStoreId'] as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
     );
   }
 }
-

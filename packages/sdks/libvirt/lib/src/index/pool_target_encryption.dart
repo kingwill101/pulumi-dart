@@ -8,10 +8,13 @@ import 'pool_target_encryption_secret.dart';
 class PoolTargetEncryption {
   /// Sets the encryption cipher for the storage volume to be applied.
   final pulumi.Input<PoolTargetEncryptionCipher>? cipher;
+
   /// Defines the format of the encryption for the storage volume.
   final pulumi.Input<String> format;
+
   /// Controls the initialization vector generation settings for the encryption.
   final pulumi.Input<PoolTargetEncryptionIvgen>? ivgen;
+
   /// Provides the configuration for the secret used in the encryption process.
   final pulumi.Input<PoolTargetEncryptionSecret>? secret;
 
@@ -29,20 +32,55 @@ class PoolTargetEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cipher': ?pulumi.Input.mapOptionalInputValue<PoolTargetEncryptionCipher, Map<String, dynamic>>(cipher, (value) => value.toMap()),
+      'cipher':
+          ?pulumi.Input.mapOptionalInputValue<
+            PoolTargetEncryptionCipher,
+            Map<String, dynamic>
+          >(cipher, (value) => value.toMap()),
       'format': format,
-      'ivgen': ?pulumi.Input.mapOptionalInputValue<PoolTargetEncryptionIvgen, Map<String, dynamic>>(ivgen, (value) => value.toMap()),
-      'secret': ?pulumi.Input.mapOptionalInputValue<PoolTargetEncryptionSecret, Map<String, dynamic>>(secret, (value) => value.toMap()),
+      'ivgen':
+          ?pulumi.Input.mapOptionalInputValue<
+            PoolTargetEncryptionIvgen,
+            Map<String, dynamic>
+          >(ivgen, (value) => value.toMap()),
+      'secret':
+          ?pulumi.Input.mapOptionalInputValue<
+            PoolTargetEncryptionSecret,
+            Map<String, dynamic>
+          >(secret, (value) => value.toMap()),
     };
   }
 
   factory PoolTargetEncryption.fromMap(Map<String, dynamic> map) {
     return PoolTargetEncryption(
-      cipher: map['cipher'] == null ? null : (PoolTargetEncryptionCipher.fromMap((map['cipher']! as Map).cast<String, dynamic>())).input(),
-      format: (map['format'] as String).input(),
-      ivgen: map['ivgen'] == null ? null : (PoolTargetEncryptionIvgen.fromMap((map['ivgen']! as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (PoolTargetEncryptionSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      cipher: (() {
+        final guardedValue = map['cipher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PoolTargetEncryptionCipher.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      ivgen: (() {
+        final guardedValue = map['ivgen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PoolTargetEncryptionIvgen.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PoolTargetEncryptionSecret.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

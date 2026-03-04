@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceDelegation {
   /// Should subscription requests be delegated to an external url? Defaults to `false`.
   final pulumi.Input<bool>? subscriptionsEnabled;
+
   /// The delegation URL.
   final pulumi.Input<String>? url;
+
   /// Should user registration requests be delegated to an external url? Defaults to `false`.
   final pulumi.Input<bool>? userRegistrationEnabled;
+
   /// A base64-encoded validation key to validate, that a request is coming from Azure API Management.
   final pulumi.Input<String>? validationKey;
 
@@ -35,11 +38,26 @@ class ServiceDelegation {
 
   factory ServiceDelegation.fromMap(Map<String, dynamic> map) {
     return ServiceDelegation(
-      subscriptionsEnabled: map['subscriptionsEnabled'] == null ? null : (map['subscriptionsEnabled']! as bool).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      userRegistrationEnabled: map['userRegistrationEnabled'] == null ? null : (map['userRegistrationEnabled']! as bool).input(),
-      validationKey: map['validationKey'] == null ? null : (map['validationKey']! as String).input(),
+      subscriptionsEnabled: (() {
+        final guardedValue = map['subscriptionsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userRegistrationEnabled: (() {
+        final guardedValue = map['userRegistrationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validationKey: (() {
+        final guardedValue = map['validationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

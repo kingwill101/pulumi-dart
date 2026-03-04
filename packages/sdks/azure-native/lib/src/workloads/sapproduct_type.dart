@@ -4,16 +4,15 @@ enum SAPProductType {
   s4HANA("S4HANA"),
   other("Other");
 
-  const SAPProductType(this.value);
-  final String value;
+  const SAPProductType(this.wireValue);
+  final String wireValue;
 
   static SAPProductType fromValue(String value) {
     for (final item in SAPProductType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SAPProductType value: $value');
   }
 }
-

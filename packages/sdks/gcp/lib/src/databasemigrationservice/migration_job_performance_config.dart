@@ -9,20 +9,19 @@ class MigrationJobPerformanceConfig {
 
   /// Creates a new [MigrationJobPerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  MigrationJobPerformanceConfig({
-    this.dumpParallelLevel,
-  });
+  MigrationJobPerformanceConfig({this.dumpParallelLevel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dumpParallelLevel': ?dumpParallelLevel,
-    };
+    return <String, dynamic>{'dumpParallelLevel': ?dumpParallelLevel};
   }
 
   factory MigrationJobPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return MigrationJobPerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (map['dumpParallelLevel']! as String).input(),
+      dumpParallelLevel: (() {
+        final guardedValue = map['dumpParallelLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

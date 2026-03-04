@@ -4,16 +4,15 @@ enum InstanceRoleType {
   mASTER("MASTER"),
   tASK("TASK");
 
-  const InstanceRoleType(this.value);
-  final String value;
+  const InstanceRoleType(this.wireValue);
+  final String wireValue;
 
   static InstanceRoleType fromValue(String value) {
     for (final item in InstanceRoleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceRoleType value: $value');
   }
 }
-

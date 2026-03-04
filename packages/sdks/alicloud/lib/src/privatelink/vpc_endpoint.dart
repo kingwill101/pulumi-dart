@@ -8,7 +8,7 @@ import 'vpc_endpoint_state.dart';
 ///
 /// For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
 ///
-/// > **NOTE:** Available since v1.109.0.
+/// &gt; **NOTE:** Available since v1.109.0.
 ///
 /// ## Example Usage
 ///
@@ -408,48 +408,68 @@ class VpcEndpoint extends pulumi.CustomResource {
   /// - `IPv4` (default): IPv4.
   /// - `DualStack`: dual-stack.
   late final pulumi.Output<String> addressIpVersion;
+
   /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
   late final pulumi.Output<int> bandwidth;
+
   /// The state of the endpoint connection.
   late final pulumi.Output<String> connectionStatus;
+
   /// The time when the endpoint was created.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The service state of the endpoint.
   late final pulumi.Output<String> endpointBusinessStatus;
+
   /// The description of the endpoint.
   late final pulumi.Output<String?> endpointDescription;
+
   /// The domain name of the endpoint.
   late final pulumi.Output<String> endpointDomain;
+
   /// The endpoint type.
   ///
   /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
   late final pulumi.Output<String> endpointType;
+
   /// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
   late final pulumi.Output<String> policyDocument;
+
   /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
   late final pulumi.Output<bool?> protectedEnabled;
+
   /// (Available since v1.239.0) The region ID of the endpoint.
   late final pulumi.Output<String> regionId;
+
   /// The resource group ID.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
   ///
   /// The endpoint can be associated with up to 10 security groups.
   late final pulumi.Output<List<String>?> securityGroupIds;
+
   /// The ID of the endpoint service with which the endpoint is associated.
   late final pulumi.Output<String> serviceId;
+
   /// The name of the endpoint service with which the endpoint is associated.
   late final pulumi.Output<String> serviceName;
+
   /// The state of the endpoint.
   late final pulumi.Output<String> status;
+
   /// The list of tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the endpoint.
   late final pulumi.Output<String?> vpcEndpointName;
+
   /// The ID of the VPC to which the endpoint belongs.
   late final pulumi.Output<String> vpcId;
+
   /// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
   late final pulumi.Output<int> zonePrivateIpAddressCount;
 
@@ -462,32 +482,34 @@ class VpcEndpoint extends pulumi.CustomResource {
     VpcEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpoint:VpcEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointBusinessStatus = registerOutput<String>('endpointBusinessStatus');
-    this.endpointDescription = registerOutput<String?>('endpointDescription');
-    this.endpointDomain = registerOutput<String>('endpointDomain');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.protectedEnabled = registerOutput<bool?>('protectedEnabled');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcEndpointName = registerOutput<String?>('vpcEndpointName');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zonePrivateIpAddressCount = registerOutput<int>('zonePrivateIpAddressCount');
+         'alicloud:privatelink/vpcEndpoint:VpcEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    bandwidth = registerOutput<int>('bandwidth');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointBusinessStatus = registerOutput<String>('endpointBusinessStatus');
+    endpointDescription = registerOutput<String?>('endpointDescription');
+    endpointDomain = registerOutput<String>('endpointDomain');
+    endpointType = registerOutput<String>('endpointType');
+    policyDocument = registerOutput<String>('policyDocument');
+    protectedEnabled = registerOutput<bool?>('protectedEnabled');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcEndpointName = registerOutput<String?>('vpcEndpointName');
+    vpcId = registerOutput<String>('vpcId');
+    zonePrivateIpAddressCount = registerOutput<int>(
+      'zonePrivateIpAddressCount',
+    );
   }
 
   /// Gets an existing [VpcEndpoint] resource's state with the given [name] and [id].
@@ -508,31 +530,33 @@ class VpcEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpoint:VpcEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointBusinessStatus = registerOutput<String>('endpointBusinessStatus');
-    this.endpointDescription = registerOutput<String?>('endpointDescription');
-    this.endpointDomain = registerOutput<String>('endpointDomain');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.protectedEnabled = registerOutput<bool?>('protectedEnabled');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcEndpointName = registerOutput<String?>('vpcEndpointName');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zonePrivateIpAddressCount = registerOutput<int>('zonePrivateIpAddressCount');
+         'alicloud:privatelink/vpcEndpoint:VpcEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    bandwidth = registerOutput<int>('bandwidth');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointBusinessStatus = registerOutput<String>('endpointBusinessStatus');
+    endpointDescription = registerOutput<String?>('endpointDescription');
+    endpointDomain = registerOutput<String>('endpointDomain');
+    endpointType = registerOutput<String>('endpointType');
+    policyDocument = registerOutput<String>('policyDocument');
+    protectedEnabled = registerOutput<bool?>('protectedEnabled');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcEndpointName = registerOutput<String?>('vpcEndpointName');
+    vpcId = registerOutput<String>('vpcId');
+    zonePrivateIpAddressCount = registerOutput<int>(
+      'zonePrivateIpAddressCount',
+    );
   }
 }

@@ -6,7 +6,7 @@ import 'data_flow_state.dart';
 ///
 /// For information about File Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 ///
-/// > **NOTE:** Available since v1.153.0.
+/// &gt; **NOTE:** Available since v1.153.0.
 ///
 /// ## Example Usage
 ///
@@ -525,25 +525,33 @@ import 'data_flow_state.dart';
 class DataFlow extends pulumi.CustomResource {
   /// The ID of the Data flow.
   late final pulumi.Output<String> dataFlowId;
+
   /// The Description of the data flow. Restrictions:
   late final pulumi.Output<String?> description;
+
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The ID of the Fileset.
   late final pulumi.Output<String> fsetId;
+
   /// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
   /// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
   /// - `SSL`: Protects access through SSL certificates.
   late final pulumi.Output<String> sourceSecurityType;
-  /// The access path of the source store. Format: `<storage type>://<path>`. Among them:
+
+  /// The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`. Among them:
   /// - storage type: currently only OSS is supported.
   /// - path: the bucket name of OSS.
   /// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
   late final pulumi.Output<String> sourceStorage;
+
   /// The status of the Data flow. Valid values: `Running`, `Stopped`.
   late final pulumi.Output<String> status;
+
   /// The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
   late final pulumi.Output<int> throughput;
 
@@ -556,20 +564,20 @@ class DataFlow extends pulumi.CustomResource {
     DataFlowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/dataFlow:DataFlow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataFlowId = registerOutput<String>('dataFlowId');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fsetId = registerOutput<String>('fsetId');
-    this.sourceSecurityType = registerOutput<String>('sourceSecurityType');
-    this.sourceStorage = registerOutput<String>('sourceStorage');
-    this.status = registerOutput<String>('status');
-    this.throughput = registerOutput<int>('throughput');
+         'alicloud:nas/dataFlow:DataFlow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataFlowId = registerOutput<String>('dataFlowId');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fsetId = registerOutput<String>('fsetId');
+    sourceSecurityType = registerOutput<String>('sourceSecurityType');
+    sourceStorage = registerOutput<String>('sourceStorage');
+    status = registerOutput<String>('status');
+    throughput = registerOutput<int>('throughput');
   }
 
   /// Gets an existing [DataFlow] resource's state with the given [name] and [id].
@@ -590,19 +598,19 @@ class DataFlow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/dataFlow:DataFlow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataFlowId = registerOutput<String>('dataFlowId');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fsetId = registerOutput<String>('fsetId');
-    this.sourceSecurityType = registerOutput<String>('sourceSecurityType');
-    this.sourceStorage = registerOutput<String>('sourceStorage');
-    this.status = registerOutput<String>('status');
-    this.throughput = registerOutput<int>('throughput');
+         'alicloud:nas/dataFlow:DataFlow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataFlowId = registerOutput<String>('dataFlowId');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fsetId = registerOutput<String>('fsetId');
+    sourceSecurityType = registerOutput<String>('sourceSecurityType');
+    sourceStorage = registerOutput<String>('sourceStorage');
+    status = registerOutput<String>('status');
+    throughput = registerOutput<int>('throughput');
   }
 }

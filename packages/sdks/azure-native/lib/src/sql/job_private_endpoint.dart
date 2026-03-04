@@ -146,12 +146,16 @@ import 'job_private_endpoint_args.dart';
 class JobPrivateEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Private endpoint id of the private endpoint.
   late final pulumi.Output<String> privateEndpointId;
+
   /// ARM resource id of the server the private endpoint will target.
   late final pulumi.Output<String> targetServerAzureResourceId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -164,15 +168,17 @@ class JobPrivateEndpoint extends pulumi.CustomResource {
     JobPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:JobPrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:sql:JobPrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.privateEndpointId = registerOutput<String>('privateEndpointId');
-    this.targetServerAzureResourceId = registerOutput<String>('targetServerAzureResourceId');
-    this.type = registerOutput<String>('type');
+    privateEndpointId = registerOutput<String>('privateEndpointId');
+    targetServerAzureResourceId = registerOutput<String>(
+      'targetServerAzureResourceId',
+    );
+    type = registerOutput<String>('type');
   }
 }

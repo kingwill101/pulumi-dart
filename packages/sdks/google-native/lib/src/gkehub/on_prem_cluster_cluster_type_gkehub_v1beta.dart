@@ -6,16 +6,17 @@ enum OnPremClusterClusterTypeGkehubV1beta {
   standalone("STANDALONE"),
   user("USER");
 
-  const OnPremClusterClusterTypeGkehubV1beta(this.value);
-  final String value;
+  const OnPremClusterClusterTypeGkehubV1beta(this.wireValue);
+  final String wireValue;
 
   static OnPremClusterClusterTypeGkehubV1beta fromValue(String value) {
     for (final item in OnPremClusterClusterTypeGkehubV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OnPremClusterClusterTypeGkehubV1beta value: $value');
+    throw ArgumentError(
+      'Unknown OnPremClusterClusterTypeGkehubV1beta value: $value',
+    );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_share_args.dart';
-import 'resource_share_resource.dart';
 import 'resource_share_state.dart';
 
 /// Provides a Resource Manager Resource Share resource.
@@ -9,7 +8,7 @@ import 'resource_share_state.dart';
 ///
 /// For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -136,33 +135,43 @@ class ResourceShare extends pulumi.CustomResource {
   /// - false (default): Only sharing within the resource directory is allowed.
   /// - true: Allow sharing to any account.
   late final pulumi.Output<bool?> allowExternalTargets;
+
   /// The create time of resource share.
   late final pulumi.Output<String> createTime;
+
   /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<String>?> permissionNames;
+
   /// ResourceArns
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<String>?> resourceArns;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The name of resource share.
   late final pulumi.Output<String> resourceShareName;
+
   /// The owner of resource share,  `Self` and `OtherAccounts`.
   late final pulumi.Output<String> resourceShareOwner;
+
   /// List of shared resources. See `resources` below.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-  late final pulumi.Output<List<ResourceShareResource>?> resources;
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
+
   /// The status of resource share.  `Active`,`Deleted` and `Deleting`.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource user.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<String>?> targets;
 
   /// Creates a new [ResourceShare].
@@ -174,22 +183,22 @@ class ResourceShare extends pulumi.CustomResource {
     ResourceShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/resourceShare:ResourceShare',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
-    this.createTime = registerOutput<String>('createTime');
-    this.permissionNames = registerOutput<List<String>?>('permissionNames');
-    this.resourceArns = registerOutput<List<String>?>('resourceArns');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceShareName = registerOutput<String>('resourceShareName');
-    this.resourceShareOwner = registerOutput<String>('resourceShareOwner');
-    this.resources = registerOutput<List<ResourceShareResource>?>('resources');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<List<String>?>('targets');
+         'alicloud:resourcemanager/resourceShare:ResourceShare',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
+    createTime = registerOutput<String>('createTime');
+    permissionNames = registerOutput<List<String>?>('permissionNames');
+    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceShareName = registerOutput<String>('resourceShareName');
+    resourceShareOwner = registerOutput<String>('resourceShareOwner');
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<List<String>?>('targets');
   }
 
   /// Gets an existing [ResourceShare] resource's state with the given [name] and [id].
@@ -210,21 +219,21 @@ class ResourceShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/resourceShare:ResourceShare',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
-    this.createTime = registerOutput<String>('createTime');
-    this.permissionNames = registerOutput<List<String>?>('permissionNames');
-    this.resourceArns = registerOutput<List<String>?>('resourceArns');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceShareName = registerOutput<String>('resourceShareName');
-    this.resourceShareOwner = registerOutput<String>('resourceShareOwner');
-    this.resources = registerOutput<List<ResourceShareResource>?>('resources');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<List<String>?>('targets');
+         'alicloud:resourcemanager/resourceShare:ResourceShare',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
+    createTime = registerOutput<String>('createTime');
+    permissionNames = registerOutput<List<String>?>('permissionNames');
+    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceShareName = registerOutput<String>('resourceShareName');
+    resourceShareOwner = registerOutput<String>('resourceShareOwner');
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<List<String>?>('targets');
   }
 }

@@ -10,20 +10,38 @@ class LifecycleConfigurationResponse {
 
   /// Creates a new [LifecycleConfigurationResponse].
   /// [rules] A lifecycle rule for individual objects in an Amazon S3 bucket.
-  LifecycleConfigurationResponse({
-    this.rules,
-  });
+  LifecycleConfigurationResponse({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<RuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory LifecycleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigurationResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleResponse>(map['rules']!, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RuleResponse>(
+            guardedValue,
+            (value) =>
+                RuleResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

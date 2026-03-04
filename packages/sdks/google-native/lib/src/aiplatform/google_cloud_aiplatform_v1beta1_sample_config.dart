@@ -7,10 +7,13 @@ import 'google_cloud_aiplatform_v1beta1_sample_config_sample_strategy.dart';
 class GoogleCloudAiplatformV1beta1SampleConfig {
   /// The percentage of data needed to be labeled in each following batch (except the first batch).
   final pulumi.Input<int>? followingBatchSamplePercentage;
+
   /// The percentage of data needed to be labeled in the first batch.
   final pulumi.Input<int>? initialBatchSamplePercentage;
+
   /// Field to choose sampling strategy. Sampling strategy will decide which data should be selected for human labeling in every batch.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy>? sampleStrategy;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy>?
+  sampleStrategy;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SampleConfig].
   /// [followingBatchSamplePercentage] The percentage of data needed to be labeled in each following batch (except the first batch).
@@ -26,16 +29,37 @@ class GoogleCloudAiplatformV1beta1SampleConfig {
     return <String, dynamic>{
       'followingBatchSamplePercentage': ?followingBatchSamplePercentage,
       'initialBatchSamplePercentage': ?initialBatchSamplePercentage,
-      'sampleStrategy': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy, String>(sampleStrategy, (value) => value.value),
+      'sampleStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy,
+            String
+          >(sampleStrategy, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1SampleConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SampleConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1SampleConfig(
-      followingBatchSamplePercentage: map['followingBatchSamplePercentage'] == null ? null : (map['followingBatchSamplePercentage']! as int).input(),
-      initialBatchSamplePercentage: map['initialBatchSamplePercentage'] == null ? null : (map['initialBatchSamplePercentage']! as int).input(),
-      sampleStrategy: map['sampleStrategy'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy.fromValue(map['sampleStrategy']! as String)).input(),
+      followingBatchSamplePercentage: (() {
+        final guardedValue = map['followingBatchSamplePercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      initialBatchSamplePercentage: (() {
+        final guardedValue = map['initialBatchSamplePercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sampleStrategy: (() {
+        final guardedValue = map['sampleStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

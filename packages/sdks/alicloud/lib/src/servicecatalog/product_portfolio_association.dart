@@ -8,7 +8,7 @@ import 'product_portfolio_association_state.dart';
 ///
 /// For information about Service Catalog Product Portfolio Association and how to use it, see [What is Product Portfolio Association](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-associateproductwithportfolio).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -253,6 +253,7 @@ import 'product_portfolio_association_state.dart';
 class ProductPortfolioAssociation extends pulumi.CustomResource {
   /// Product Portfolio ID
   late final pulumi.Output<String> portfolioId;
+
   /// Product ID
   late final pulumi.Output<String> productId;
 
@@ -265,13 +266,13 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     ProductPortfolioAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portfolioId = registerOutput<String>('portfolioId');
-    this.productId = registerOutput<String>('productId');
+         'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portfolioId = registerOutput<String>('portfolioId');
+    productId = registerOutput<String>('productId');
   }
 
   /// Gets an existing [ProductPortfolioAssociation] resource's state with the given [name] and [id].
@@ -292,12 +293,12 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portfolioId = registerOutput<String>('portfolioId');
-    this.productId = registerOutput<String>('productId');
+         'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portfolioId = registerOutput<String>('portfolioId');
+    productId = registerOutput<String>('productId');
   }
 }

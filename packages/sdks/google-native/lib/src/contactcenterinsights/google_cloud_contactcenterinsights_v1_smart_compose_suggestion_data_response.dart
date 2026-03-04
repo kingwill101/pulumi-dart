@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse {
   /// The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
   final pulumi.Input<double> confidenceScore;
+
   /// Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
   final pulumi.Input<Map<String, String>> metadata;
+
   /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
   final pulumi.Input<String> queryRecord;
+
   /// The content of the suggestion.
   final pulumi.Input<String> suggestion;
 
@@ -34,13 +37,16 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse(
-      confidenceScore: (map['confidenceScore'] as double).input(),
-      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
-      queryRecord: (map['queryRecord'] as String).input(),
-      suggestion: (map['suggestion'] as String).input(),
+      confidenceScore: pulumi.Input.fromValue(map['confidenceScore'] as double),
+      metadata: pulumi.Input.fromValue(
+        (map['metadata'] as Map).cast<String, String>(),
+      ),
+      queryRecord: pulumi.Input.fromValue(map['queryRecord'] as String),
+      suggestion: pulumi.Input.fromValue(map['suggestion'] as String),
     );
   }
 }
-

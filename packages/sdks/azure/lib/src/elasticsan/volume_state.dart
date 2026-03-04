@@ -7,20 +7,27 @@ import 'volume_create_source.dart';
 class VolumeState {
   /// A `create_source` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VolumeCreateSource>? createSource;
+
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
-  /// > **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
+  /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
   final pulumi.Input<int>? sizeInGib;
+
   /// The iSCSI Target IQN of the Elastic SAN Volume.
   final pulumi.Input<String>? targetIqn;
+
   /// The iSCSI Target Portal Host Name of the Elastic SAN Volume.
   final pulumi.Input<String>? targetPortalHostname;
+
   /// The iSCSI Target Portal Port of the Elastic SAN Volume.
   final pulumi.Input<int>? targetPortalPort;
+
   /// Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? volumeGroupId;
+
   /// The UUID of the Elastic SAN Volume.
   final pulumi.Input<String>? volumeId;
 
@@ -46,7 +53,11 @@ class VolumeState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createSource': ?pulumi.Input.mapOptionalInputValue<VolumeCreateSource, Map<String, dynamic>>(createSource, (value) => value.toMap()),
+      'createSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeCreateSource,
+            Map<String, dynamic>
+          >(createSource, (value) => value.toMap()),
       'name': ?name,
       'sizeInGib': ?sizeInGib,
       'targetIqn': ?targetIqn,
@@ -59,15 +70,50 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sizeInGib: map['sizeInGib'] == null ? null : (map['sizeInGib']! as int).input(),
-      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn']! as String).input(),
-      targetPortalHostname: map['targetPortalHostname'] == null ? null : (map['targetPortalHostname']! as String).input(),
-      targetPortalPort: map['targetPortalPort'] == null ? null : (map['targetPortalPort']! as int).input(),
-      volumeGroupId: map['volumeGroupId'] == null ? null : (map['volumeGroupId']! as String).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      createSource: (() {
+        final guardedValue = map['createSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeCreateSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sizeInGib: (() {
+        final guardedValue = map['sizeInGib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetIqn: (() {
+        final guardedValue = map['targetIqn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPortalHostname: (() {
+        final guardedValue = map['targetPortalHostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPortalPort: (() {
+        final guardedValue = map['targetPortalPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeGroupId: (() {
+        final guardedValue = map['volumeGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

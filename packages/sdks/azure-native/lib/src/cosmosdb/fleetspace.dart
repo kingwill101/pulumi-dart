@@ -185,20 +185,31 @@ import 'system_data_response.dart';
 class Fleetspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of data regions assigned to the fleetspace. Eg [westus2]
   late final pulumi.Output<List<String>?> dataRegions;
+
   /// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
   late final pulumi.Output<String?> fleetspaceApiKind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A provisioning state of the Fleetspace.
   late final pulumi.Output<String> provisioningState;
+
   /// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
   late final pulumi.Output<String?> serviceTier;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Configuration for throughput pool in the fleetspace.
-  late final pulumi.Output<FleetspacePropertiesResponseThroughputPoolConfiguration?> throughputPoolConfiguration;
+  late final pulumi.Output<
+    FleetspacePropertiesResponseThroughputPoolConfiguration?
+  >
+  throughputPoolConfiguration;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -211,19 +222,22 @@ class Fleetspace extends pulumi.CustomResource {
     FleetspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:Fleetspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataRegions = registerOutput<List<String>?>('dataRegions');
-    this.fleetspaceApiKind = registerOutput<String?>('fleetspaceApiKind');
+         'azure-native:cosmosdb:Fleetspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataRegions = registerOutput<List<String>?>('dataRegions');
+    fleetspaceApiKind = registerOutput<String?>('fleetspaceApiKind');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serviceTier = registerOutput<String?>('serviceTier');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.throughputPoolConfiguration = registerOutput<FleetspacePropertiesResponseThroughputPoolConfiguration?>('throughputPoolConfiguration');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceTier = registerOutput<String?>('serviceTier');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    throughputPoolConfiguration =
+        registerOutput<
+          FleetspacePropertiesResponseThroughputPoolConfiguration?
+        >('throughputPoolConfiguration');
+    type = registerOutput<String>('type');
   }
 }

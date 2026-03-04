@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppLogHttpLogAzureBlobStorage {
   /// The retention period in days.
   final pulumi.Input<int> retentionInDays;
+
   /// The SAS url to an Azure blob container.
   final pulumi.Input<String> sasUrl;
 
@@ -23,11 +24,12 @@ class GetLinuxWebAppLogHttpLogAzureBlobStorage {
     };
   }
 
-  factory GetLinuxWebAppLogHttpLogAzureBlobStorage.fromMap(Map<String, dynamic> map) {
+  factory GetLinuxWebAppLogHttpLogAzureBlobStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinuxWebAppLogHttpLogAzureBlobStorage(
-      retentionInDays: (map['retentionInDays'] as int).input(),
-      sasUrl: (map['sasUrl'] as String).input(),
+      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }
 }
-

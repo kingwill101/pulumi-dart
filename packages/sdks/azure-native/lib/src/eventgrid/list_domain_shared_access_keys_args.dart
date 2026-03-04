@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListDomainSharedAccessKeysArgs {
   /// Name of the domain.
   final pulumi.Input<String> domainName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListDomainSharedAccessKeysArgs {
 
   factory ListDomainSharedAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListDomainSharedAccessKeysArgs(
-      domainName: (map['domainName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

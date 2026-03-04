@@ -4,16 +4,15 @@ enum LedgerSku {
   valueBasic("Basic"),
   valueUnknown("Unknown");
 
-  const LedgerSku(this.value);
-  final String value;
+  const LedgerSku(this.wireValue);
+  final String wireValue;
 
   static LedgerSku fromValue(String value) {
     for (final item in LedgerSku.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LedgerSku value: $value');
   }
 }
-

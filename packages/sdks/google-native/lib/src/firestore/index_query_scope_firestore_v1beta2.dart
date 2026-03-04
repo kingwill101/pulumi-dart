@@ -4,16 +4,17 @@ enum IndexQueryScopeFirestoreV1beta2 {
   collection("COLLECTION"),
   collectionGroup("COLLECTION_GROUP");
 
-  const IndexQueryScopeFirestoreV1beta2(this.value);
-  final String value;
+  const IndexQueryScopeFirestoreV1beta2(this.wireValue);
+  final String wireValue;
 
   static IndexQueryScopeFirestoreV1beta2 fromValue(String value) {
     for (final item in IndexQueryScopeFirestoreV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IndexQueryScopeFirestoreV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown IndexQueryScopeFirestoreV1beta2 value: $value',
+    );
   }
 }
-

@@ -883,23 +883,32 @@ import 'system_data_response.dart';
 class SqlDBTableDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
+
   /// Database name of the source data set
   late final pulumi.Output<String> databaseName;
+
   /// Kind of data set.
   /// Expected value is 'SqlDBTable'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Schema of the table. Default value is dbo.
   late final pulumi.Output<String> schemaName;
+
   /// Resource id of SQL server
   late final pulumi.Output<String> sqlServerResourceId;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// SQL DB table name.
   late final pulumi.Output<String> tableName;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -912,20 +921,20 @@ class SqlDBTableDataSet extends pulumi.CustomResource {
     SqlDBTableDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:SqlDBTableDataSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataSetId = registerOutput<String>('dataSetId');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:SqlDBTableDataSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    databaseName = registerOutput<String>('databaseName');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.schemaName = registerOutput<String>('schemaName');
-    this.sqlServerResourceId = registerOutput<String>('sqlServerResourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tableName = registerOutput<String>('tableName');
-    this.type = registerOutput<String>('type');
+    schemaName = registerOutput<String>('schemaName');
+    sqlServerResourceId = registerOutput<String>('sqlServerResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
   }
 }

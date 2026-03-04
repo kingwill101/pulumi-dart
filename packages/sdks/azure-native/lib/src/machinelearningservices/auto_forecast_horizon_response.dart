@@ -10,20 +10,15 @@ class AutoForecastHorizonResponse {
 
   /// Creates a new [AutoForecastHorizonResponse].
   /// [mode] Enum to determine forecast horizon selection mode.
-  AutoForecastHorizonResponse({
-    required this.mode,
-  });
+  AutoForecastHorizonResponse({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory AutoForecastHorizonResponse.fromMap(Map<String, dynamic> map) {
     return AutoForecastHorizonResponse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum FutureReservationPlanningStatus {
   planningStatusUnspecified("PLANNING_STATUS_UNSPECIFIED"),
   submitted("SUBMITTED");
 
-  const FutureReservationPlanningStatus(this.value);
-  final String value;
+  const FutureReservationPlanningStatus(this.wireValue);
+  final String wireValue;
 
   static FutureReservationPlanningStatus fromValue(String value) {
     for (final item in FutureReservationPlanningStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FutureReservationPlanningStatus value: $value');
+    throw ArgumentError(
+      'Unknown FutureReservationPlanningStatus value: $value',
+    );
   }
 }
-

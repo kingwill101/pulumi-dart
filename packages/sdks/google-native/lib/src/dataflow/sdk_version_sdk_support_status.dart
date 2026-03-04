@@ -6,16 +6,15 @@ enum SdkVersionSdkSupportStatus {
   deprecated("DEPRECATED"),
   unsupported("UNSUPPORTED");
 
-  const SdkVersionSdkSupportStatus(this.value);
-  final String value;
+  const SdkVersionSdkSupportStatus(this.wireValue);
+  final String wireValue;
 
   static SdkVersionSdkSupportStatus fromValue(String value) {
     for (final item in SdkVersionSdkSupportStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SdkVersionSdkSupportStatus value: $value');
   }
 }
-

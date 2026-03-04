@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailWordPolicyConfigWordsConfig {
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String>? inputAction;
+
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? inputEnabled;
+
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String>? outputAction;
+
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? outputEnabled;
+
   /// The custom word text.
   final pulumi.Input<String> text;
 
@@ -38,14 +42,31 @@ class GuardrailWordPolicyConfigWordsConfig {
     };
   }
 
-  factory GuardrailWordPolicyConfigWordsConfig.fromMap(Map<String, dynamic> map) {
+  factory GuardrailWordPolicyConfigWordsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuardrailWordPolicyConfigWordsConfig(
-      inputAction: map['inputAction'] == null ? null : ((map['inputAction'] as String).input()).input(),
-      inputEnabled: map['inputEnabled'] == null ? null : ((map['inputEnabled'] as bool).input()).input(),
-      outputAction: map['outputAction'] == null ? null : ((map['outputAction'] as String).input()).input(),
-      outputEnabled: map['outputEnabled'] == null ? null : ((map['outputEnabled'] as bool).input()).input(),
-      text: (map['text'] as String).input(),
+      inputAction: (() {
+        final guardedValue = map['inputAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputEnabled: (() {
+        final guardedValue = map['inputEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      outputAction: (() {
+        final guardedValue = map['outputAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputEnabled: (() {
+        final guardedValue = map['outputEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

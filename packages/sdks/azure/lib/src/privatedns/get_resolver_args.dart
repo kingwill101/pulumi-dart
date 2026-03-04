@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverArgs {
   /// Name of the Private DNS Resolver.
   final pulumi.Input<String> name;
+
   /// Name of the Resource Group where the Private DNS Resolver exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetResolverArgs].
   /// [name] Name of the Private DNS Resolver.
   /// [resourceGroupName] Name of the Resource Group where the Private DNS Resolver exists.
-  GetResolverArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetResolverArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetResolverArgs {
 
   factory GetResolverArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

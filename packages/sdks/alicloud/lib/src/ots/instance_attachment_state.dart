@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAttachmentState {
   /// The name of the OTS instance.
   final pulumi.Input<String>? instanceName;
+
   /// The ID of attaching VPC to instance.
   final pulumi.Input<String>? vpcId;
+
   /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   final pulumi.Input<String>? vpcName;
+
   /// The ID of attaching VSwitch to instance.
   final pulumi.Input<String>? vswitchId;
 
@@ -36,11 +39,26 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vpcName: map['vpcName'] == null ? null : (map['vpcName']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcName: (() {
+        final guardedValue = map['vpcName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

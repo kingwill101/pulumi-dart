@@ -1,5 +1,3 @@
-library module_resourcegroups;
-
 export 'resourcegroups/group.dart';
 export 'resourcegroups/group_args.dart';
 export 'resourcegroups/group_configuration.dart';

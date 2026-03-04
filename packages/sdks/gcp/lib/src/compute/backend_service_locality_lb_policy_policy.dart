@@ -34,20 +34,17 @@ class BackendServiceLocalityLbPolicyPolicy {
 
   /// Creates a new [BackendServiceLocalityLbPolicyPolicy].
   /// [name] The name of a locality load balancer policy to be used. The value
-  BackendServiceLocalityLbPolicyPolicy({
-    required this.name,
-  });
+  BackendServiceLocalityLbPolicyPolicy({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory BackendServiceLocalityLbPolicyPolicy.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceLocalityLbPolicyPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceLocalityLbPolicyPolicy(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

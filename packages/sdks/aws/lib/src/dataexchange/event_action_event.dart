@@ -10,20 +10,25 @@ class EventActionEvent {
 
   /// Creates a new [EventActionEvent].
   /// [revisionPublished] Configuration for a Revision Published event.
-  EventActionEvent({
-    required this.revisionPublished,
-  });
+  EventActionEvent({required this.revisionPublished});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'revisionPublished': pulumi.Input.mapInputValue<EventActionEventRevisionPublished, Map<String, dynamic>>(revisionPublished, (value) => value.toMap()),
+      'revisionPublished':
+          pulumi.Input.mapInputValue<
+            EventActionEventRevisionPublished,
+            Map<String, dynamic>
+          >(revisionPublished, (value) => value.toMap()),
     };
   }
 
   factory EventActionEvent.fromMap(Map<String, dynamic> map) {
     return EventActionEvent(
-      revisionPublished: (EventActionEventRevisionPublished.fromMap((map['revisionPublished']! as Map).cast<String, dynamic>())).input(),
+      revisionPublished: pulumi.Input.fromValue(
+        EventActionEventRevisionPublished.fromMap(
+          (map['revisionPublished']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

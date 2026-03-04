@@ -9,11 +9,14 @@ import 'collector_properties.dart';
 /// {@macro pulumi_migrate_vmware_collector_args_doc}
 class VMwareCollectorArgs {
   final pulumi.Input<String>? eTag;
+
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
   final pulumi.Input<CollectorProperties>? properties;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
+
   /// Unique name of a VMware collector within a project.
   final pulumi.Input<String>? vmWareCollectorName;
 
@@ -35,7 +38,11 @@ class VMwareCollectorArgs {
     return <String, dynamic>{
       'eTag': ?eTag,
       'projectName': projectName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<CollectorProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            CollectorProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'vmWareCollectorName': ?vmWareCollectorName,
     };
@@ -43,12 +50,29 @@ class VMwareCollectorArgs {
 
   factory VMwareCollectorArgs.fromMap(Map<String, dynamic> map) {
     return VMwareCollectorArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (CollectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmWareCollectorName: map['vmWareCollectorName'] == null ? null : (map['vmWareCollectorName']! as String).input(),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CollectorProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmWareCollectorName: (() {
+        final guardedValue = map['vmWareCollectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

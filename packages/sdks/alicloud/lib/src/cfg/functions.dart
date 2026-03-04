@@ -20,7 +20,7 @@ import 'get_rules_result.dart';
 
 /// This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.124.0.
+/// &gt; **NOTE:** Available since v1.124.0.
 ///
 /// ## Example Usage
 ///
@@ -157,7 +157,7 @@ Future<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(
 
 /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.124.0.
+/// &gt; **NOTE:** Available since v1.124.0.
 ///
 /// ## Example Usage
 ///
@@ -294,7 +294,7 @@ Future<GetAggregateConfigRulesResult> getAggregateConfigRules(
 
 /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.172.0.
+/// &gt; **NOTE:** Available since v1.172.0.
 ///
 /// ## Example Usage
 ///
@@ -436,7 +436,7 @@ Future<GetAggregateDeliveriesResult> getAggregateDeliveries(
 
 /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.124.0.
+/// &gt; **NOTE:** Available since v1.124.0.
 ///
 /// ## Example Usage
 ///
@@ -567,7 +567,7 @@ Future<GetAggregatorsResult> getAggregators(
 
 /// This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.124.0.
+/// &gt; **NOTE:** Available since v1.124.0.
 ///
 /// ## Example Usage
 ///
@@ -698,7 +698,7 @@ Future<GetCompliancePacksResult> getCompliancePacks(
 
 /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.99.0.
+/// &gt; **NOTE:** Available since v1.99.0.
 ///
 /// ## Example Usage
 ///
@@ -806,7 +806,7 @@ Future<GetConfigurationRecordersResult> getConfigurationRecorders(
 
 /// This data source provides the Config Deliveries of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.171.0.
+/// &gt; **NOTE:** Available since v1.171.0.
 ///
 /// ## Example Usage
 ///
@@ -929,12 +929,12 @@ Future<GetDeliveriesResult> getDeliveries(
   return GetDeliveriesResult.fromMap(result);
 }
 
-/// > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+/// &gt; **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
 /// Please use new datasource alicloud.cfg.getDeliveries instead.
 ///
 /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.99.0+.
+/// &gt; **NOTE:**  Available in 1.99.0+.
 ///
 /// ## Example Usage
 ///
@@ -1063,7 +1063,7 @@ Future<GetDeliveryChannelsResult> getDeliveryChannels(
 
 /// This data source provides the Config Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.99.0.
+/// &gt; **NOTE:** Available since v1.99.0.
 ///
 /// ## Example Usage
 ///

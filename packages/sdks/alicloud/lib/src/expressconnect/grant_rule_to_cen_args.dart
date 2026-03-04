@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrantRuleToCenArgs {
   /// The ID of the CEN instance to which you want to grant permissions.
   final pulumi.Input<String> cenId;
+
   /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   final pulumi.Input<String> cenOwnerId;
+
   /// The ID of the VBR.
   final pulumi.Input<String> instanceId;
 
@@ -34,10 +36,9 @@ class GrantRuleToCenArgs {
 
   factory GrantRuleToCenArgs.fromMap(Map<String, dynamic> map) {
     return GrantRuleToCenArgs(
-      cenId: (map['cenId'] as String).input(),
-      cenOwnerId: (map['cenOwnerId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      cenOwnerId: pulumi.Input.fromValue(map['cenOwnerId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dynamic_tag_group_args.dart';
-import 'dynamic_tag_group_match_express.dart';
 import 'dynamic_tag_group_state.dart';
 
 /// Provides a Cloud Monitor Service Dynamic Tag Group resource.
 ///
 /// For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -200,14 +199,19 @@ import 'dynamic_tag_group_state.dart';
 class DynamicTagGroup extends pulumi.CustomResource {
   /// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
   late final pulumi.Output<List<String>> contactGroupLists;
+
   /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
   late final pulumi.Output<String> matchExpressFilterRelation;
+
   /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
-  late final pulumi.Output<List<DynamicTagGroupMatchExpress>> matchExpresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> matchExpresses;
+
   /// The status of the Dynamic Tag Group.
   late final pulumi.Output<String> status;
+
   /// The tag keys of the cloud resources.
   late final pulumi.Output<String> tagKey;
+
   /// The IDs of the alert templates.
   late final pulumi.Output<List<String>?> templateIdLists;
 
@@ -220,17 +224,21 @@ class DynamicTagGroup extends pulumi.CustomResource {
     DynamicTagGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/dynamicTagGroup:DynamicTagGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactGroupLists = registerOutput<List<String>>('contactGroupLists');
-    this.matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
-    this.matchExpresses = registerOutput<List<DynamicTagGroupMatchExpress>>('matchExpresses');
-    this.status = registerOutput<String>('status');
-    this.tagKey = registerOutput<String>('tagKey');
-    this.templateIdLists = registerOutput<List<String>?>('templateIdLists');
+         'alicloud:cms/dynamicTagGroup:DynamicTagGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactGroupLists = registerOutput<List<String>>('contactGroupLists');
+    matchExpressFilterRelation = registerOutput<String>(
+      'matchExpressFilterRelation',
+    );
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
+      'matchExpresses',
+    );
+    status = registerOutput<String>('status');
+    tagKey = registerOutput<String>('tagKey');
+    templateIdLists = registerOutput<List<String>?>('templateIdLists');
   }
 
   /// Gets an existing [DynamicTagGroup] resource's state with the given [name] and [id].
@@ -251,16 +259,20 @@ class DynamicTagGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/dynamicTagGroup:DynamicTagGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactGroupLists = registerOutput<List<String>>('contactGroupLists');
-    this.matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
-    this.matchExpresses = registerOutput<List<DynamicTagGroupMatchExpress>>('matchExpresses');
-    this.status = registerOutput<String>('status');
-    this.tagKey = registerOutput<String>('tagKey');
-    this.templateIdLists = registerOutput<List<String>?>('templateIdLists');
+         'alicloud:cms/dynamicTagGroup:DynamicTagGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactGroupLists = registerOutput<List<String>>('contactGroupLists');
+    matchExpressFilterRelation = registerOutput<String>(
+      'matchExpressFilterRelation',
+    );
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
+      'matchExpresses',
+    );
+    status = registerOutput<String>('status');
+    tagKey = registerOutput<String>('tagKey');
+    templateIdLists = registerOutput<List<String>?>('templateIdLists');
   }
 }

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFirewallPolicy.
 class GetFirewallPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -40,8 +39,11 @@ class GetFirewallPolicyResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

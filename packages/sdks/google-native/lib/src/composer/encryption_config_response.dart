@@ -9,20 +9,15 @@ class EncryptionConfigResponse {
 
   /// Creates a new [EncryptionConfigResponse].
   /// [kmsKeyName] Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
-  EncryptionConfigResponse({
-    required this.kmsKeyName,
-  });
+  EncryptionConfigResponse({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigResponse(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

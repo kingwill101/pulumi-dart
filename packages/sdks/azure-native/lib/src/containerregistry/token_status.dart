@@ -3,16 +3,15 @@ enum TokenStatus {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const TokenStatus(this.value);
-  final String value;
+  const TokenStatus(this.wireValue);
+  final String wireValue;
 
   static TokenStatus fromValue(String value) {
     for (final item in TokenStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TokenStatus value: $value');
   }
 }
-

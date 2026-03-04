@@ -9,20 +9,19 @@ class UserInitiatedRebootResponse {
 
   /// Creates a new [UserInitiatedRebootResponse].
   /// [automaticallyApprove] Specifies Reboot Scheduled Event related configurations.
-  UserInitiatedRebootResponse({
-    this.automaticallyApprove,
-  });
+  UserInitiatedRebootResponse({this.automaticallyApprove});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'automaticallyApprove': ?automaticallyApprove,
-    };
+    return <String, dynamic>{'automaticallyApprove': ?automaticallyApprove};
   }
 
   factory UserInitiatedRebootResponse.fromMap(Map<String, dynamic> map) {
     return UserInitiatedRebootResponse(
-      automaticallyApprove: map['automaticallyApprove'] == null ? null : (map['automaticallyApprove']! as bool).input(),
+      automaticallyApprove: (() {
+        final guardedValue = map['automaticallyApprove'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

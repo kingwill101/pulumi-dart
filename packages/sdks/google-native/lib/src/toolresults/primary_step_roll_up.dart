@@ -7,16 +7,15 @@ enum PrimaryStepRollUp {
   skipped("skipped"),
   flaky("flaky");
 
-  const PrimaryStepRollUp(this.value);
-  final String value;
+  const PrimaryStepRollUp(this.wireValue);
+  final String wireValue;
 
   static PrimaryStepRollUp fromValue(String value) {
     for (final item in PrimaryStepRollUp.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrimaryStepRollUp value: $value');
   }
 }
-

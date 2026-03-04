@@ -5,16 +5,15 @@ enum AppDatabaseType {
   cloudFirestore("CLOUD_FIRESTORE"),
   cloudDatastoreCompatibility("CLOUD_DATASTORE_COMPATIBILITY");
 
-  const AppDatabaseType(this.value);
-  final String value;
+  const AppDatabaseType(this.wireValue);
+  final String wireValue;
 
   static AppDatabaseType fromValue(String value) {
     for (final item in AppDatabaseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppDatabaseType value: $value');
   }
 }
-

@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MachineReferenceWithHintsResponse {
   /// Last known display name.
   final pulumi.Input<String> displayNameHint;
+
   /// Resource URI.
   final pulumi.Input<String> id;
+
   /// Specifies the sub-class of the reference.
   /// Expected value is 'ref:machinewithhints'.
   final pulumi.Input<String> kind;
+
   /// Resource name.
   final pulumi.Input<String> name;
+
   /// Last known operating system family.
   final pulumi.Input<String> osFamilyHint;
+
   /// Resource type qualifier.
   final pulumi.Input<String> type;
 
@@ -47,13 +52,12 @@ class MachineReferenceWithHintsResponse {
 
   factory MachineReferenceWithHintsResponse.fromMap(Map<String, dynamic> map) {
     return MachineReferenceWithHintsResponse(
-      displayNameHint: (map['displayNameHint'] as String).input(),
-      id: (map['id'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
-      osFamilyHint: (map['osFamilyHint'] as String).input(),
-      type: (map['type'] as String).input(),
+      displayNameHint: pulumi.Input.fromValue(map['displayNameHint'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      osFamilyHint: pulumi.Input.fromValue(map['osFamilyHint'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

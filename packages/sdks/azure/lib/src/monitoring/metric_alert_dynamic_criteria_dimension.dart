@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricAlertDynamicCriteriaDimension {
   /// One of the dimension names.
   final pulumi.Input<String> name;
+
   /// The dimension operator. Possible values are `Include`, `Exclude` and `StartsWith`.
   final pulumi.Input<String> operator;
+
   /// The list of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -28,12 +30,13 @@ class MetricAlertDynamicCriteriaDimension {
     };
   }
 
-  factory MetricAlertDynamicCriteriaDimension.fromMap(Map<String, dynamic> map) {
+  factory MetricAlertDynamicCriteriaDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetricAlertDynamicCriteriaDimension(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

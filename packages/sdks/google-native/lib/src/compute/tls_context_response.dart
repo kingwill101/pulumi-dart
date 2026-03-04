@@ -8,6 +8,7 @@ import 'tls_validation_context_response.dart';
 class TlsContextResponse {
   /// Defines the mechanism to obtain the client or server certificate.
   final pulumi.Input<TlsCertificateContextResponse> certificateContext;
+
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. If omitted, the proxy will not validate the server or client certificate.
   final pulumi.Input<TlsValidationContextResponse> validationContext;
 
@@ -21,16 +22,31 @@ class TlsContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateContext': pulumi.Input.mapInputValue<TlsCertificateContextResponse, Map<String, dynamic>>(certificateContext, (value) => value.toMap()),
-      'validationContext': pulumi.Input.mapInputValue<TlsValidationContextResponse, Map<String, dynamic>>(validationContext, (value) => value.toMap()),
+      'certificateContext':
+          pulumi.Input.mapInputValue<
+            TlsCertificateContextResponse,
+            Map<String, dynamic>
+          >(certificateContext, (value) => value.toMap()),
+      'validationContext':
+          pulumi.Input.mapInputValue<
+            TlsValidationContextResponse,
+            Map<String, dynamic>
+          >(validationContext, (value) => value.toMap()),
     };
   }
 
   factory TlsContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsContextResponse(
-      certificateContext: (TlsCertificateContextResponse.fromMap((map['certificateContext'] as Map).cast<String, dynamic>())).input(),
-      validationContext: (TlsValidationContextResponse.fromMap((map['validationContext'] as Map).cast<String, dynamic>())).input(),
+      certificateContext: pulumi.Input.fromValue(
+        TlsCertificateContextResponse.fromMap(
+          (map['certificateContext']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      validationContext: pulumi.Input.fromValue(
+        TlsValidationContextResponse.fromMap(
+          (map['validationContext']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

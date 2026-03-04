@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitConnectionArgs {
   /// The IPv4 address space from which to allocate customer address for global reach. Changing this forces a new Express Route Circuit Connection to be created.
   final pulumi.Input<String> addressPrefixIpv4;
+
   /// The IPv6 address space from which to allocate customer addresses for global reach.
   ///
-  /// > **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
+  /// &gt; **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
   final pulumi.Input<String>? addressPrefixIpv6;
+
   /// The authorization key which is associated with the Express Route Circuit Connection.
   final pulumi.Input<String>? authorizationKey;
+
   /// The name which should be used for this Express Route Circuit Connection. Changing this forces a new Express Route Circuit Connection to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the peered Express Route Circuit Private Peering. Changing this forces a new Express Route Circuit Connection to be created.
   final pulumi.Input<String> peerPeeringId;
+
   /// The ID of the Express Route Circuit Private Peering that this Express Route Circuit Connection connects with. Changing this forces a new Express Route Circuit Connection to be created.
   final pulumi.Input<String> peeringId;
 
@@ -51,13 +56,26 @@ class ExpressRouteCircuitConnectionArgs {
 
   factory ExpressRouteCircuitConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionArgs(
-      addressPrefixIpv4: (map['addressPrefixIpv4'] as String).input(),
-      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6']! as String).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      peerPeeringId: (map['peerPeeringId'] as String).input(),
-      peeringId: (map['peeringId'] as String).input(),
+      addressPrefixIpv4: pulumi.Input.fromValue(
+        map['addressPrefixIpv4'] as String,
+      ),
+      addressPrefixIpv6: (() {
+        final guardedValue = map['addressPrefixIpv6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peerPeeringId: pulumi.Input.fromValue(map['peerPeeringId'] as String),
+      peeringId: pulumi.Input.fromValue(map['peeringId'] as String),
     );
   }
 }
-

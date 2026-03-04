@@ -1,5 +1,3 @@
-library module_flowcontrol_apiserver_k8s_io;
-
 export 'flowcontrol_apiserver_k8s_io/exempt_priority_level_configuration.dart';
 export 'flowcontrol_apiserver_k8s_io/exempt_priority_level_configuration_flowcontrol_apiserver_k8s_io_v1beta2.dart';
 export 'flowcontrol_apiserver_k8s_io/exempt_priority_level_configuration_flowcontrol_apiserver_k8s_io_v1beta3.dart';

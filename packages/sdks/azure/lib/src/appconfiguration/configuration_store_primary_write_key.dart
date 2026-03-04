@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationStorePrimaryWriteKey {
   /// The Connection String for this Access Key - consisting of the Endpoint, ID, and Secret.
   final pulumi.Input<String>? connectionString;
+
   /// The ID of the Access Key.
   final pulumi.Input<String>? id;
+
   /// The Secret of the Access Key.
   final pulumi.Input<String>? secret;
 
@@ -30,10 +32,21 @@ class ConfigurationStorePrimaryWriteKey {
 
   factory ConfigurationStorePrimaryWriteKey.fromMap(Map<String, dynamic> map) {
     return ConfigurationStorePrimaryWriteKey(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

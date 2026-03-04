@@ -10,8 +10,10 @@ import 'custom_rollout_properties.dart';
 class CustomRolloutArgs {
   /// Properties of the rollout.
   final pulumi.Input<CustomRolloutProperties> properties;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
+
   /// The rollout name.
   final pulumi.Input<String>? rolloutName;
 
@@ -27,7 +29,11 @@ class CustomRolloutArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<CustomRolloutProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            CustomRolloutProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'providerNamespace': providerNamespace,
       'rolloutName': ?rolloutName,
     };
@@ -35,10 +41,19 @@ class CustomRolloutArgs {
 
   factory CustomRolloutArgs.fromMap(Map<String, dynamic> map) {
     return CustomRolloutArgs(
-      properties: (CustomRolloutProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      rolloutName: map['rolloutName'] == null ? null : (map['rolloutName']! as String).input(),
+      properties: pulumi.Input.fromValue(
+        CustomRolloutProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      rolloutName: (() {
+        final guardedValue = map['rolloutName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

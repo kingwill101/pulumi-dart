@@ -4,23 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceNetworkInterfaceAssociation
 class InstanceNetworkInterfaceAssociation {
-  /// <p>The carrier IP address associated with the network interface.</p>
+  /// &lt;p&gt;The carrier IP address associated with the network interface.&lt;/p&gt;
   final pulumi.Input<String>? carrierIp;
-  /// <p>The customer-owned IP address associated with the network interface.</p>
+
+  /// &lt;p&gt;The customer-owned IP address associated with the network interface.&lt;/p&gt;
   final pulumi.Input<String>? customerOwnedIp;
-  /// <p>The ID of the owner of the Elastic IP address.</p>
+
+  /// &lt;p&gt;The ID of the owner of the Elastic IP address.&lt;/p&gt;
   final pulumi.Input<String>? ipOwnerId;
-  /// <p>The public DNS name.</p>
+
+  /// &lt;p&gt;The public DNS name.&lt;/p&gt;
   final pulumi.Input<String>? publicDnsName;
-  /// <p>The public IP address or Elastic IP address bound to the network interface.</p>
+
+  /// &lt;p&gt;The public IP address or Elastic IP address bound to the network interface.&lt;/p&gt;
   final pulumi.Input<String>? publicIp;
 
   /// Creates a new [InstanceNetworkInterfaceAssociation].
-  /// [carrierIp] <p>The carrier IP address associated with the network interface.</p>
-  /// [customerOwnedIp] <p>The customer-owned IP address associated with the network interface.</p>
-  /// [ipOwnerId] <p>The ID of the owner of the Elastic IP address.</p>
-  /// [publicDnsName] <p>The public DNS name.</p>
-  /// [publicIp] <p>The public IP address or Elastic IP address bound to the network interface.</p>
+  /// [carrierIp] &lt;p&gt;The carrier IP address associated with the network interface.&lt;/p&gt;
+  /// [customerOwnedIp] &lt;p&gt;The customer-owned IP address associated with the network interface.&lt;/p&gt;
+  /// [ipOwnerId] &lt;p&gt;The ID of the owner of the Elastic IP address.&lt;/p&gt;
+  /// [publicDnsName] &lt;p&gt;The public DNS name.&lt;/p&gt;
+  /// [publicIp] &lt;p&gt;The public IP address or Elastic IP address bound to the network interface.&lt;/p&gt;
   InstanceNetworkInterfaceAssociation({
     this.carrierIp,
     this.customerOwnedIp,
@@ -39,14 +43,35 @@ class InstanceNetworkInterfaceAssociation {
     };
   }
 
-  factory InstanceNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
+  factory InstanceNetworkInterfaceAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceNetworkInterfaceAssociation(
-      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp']! as String).input(),
-      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp']! as String).input(),
-      ipOwnerId: map['ipOwnerId'] == null ? null : (map['ipOwnerId']! as String).input(),
-      publicDnsName: map['publicDnsName'] == null ? null : (map['publicDnsName']! as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp']! as String).input(),
+      carrierIp: (() {
+        final guardedValue = map['carrierIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerOwnedIp: (() {
+        final guardedValue = map['customerOwnedIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipOwnerId: (() {
+        final guardedValue = map['ipOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicDnsName: (() {
+        final guardedValue = map['publicDnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIp: (() {
+        final guardedValue = map['publicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

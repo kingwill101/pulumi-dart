@@ -7,20 +7,15 @@ class GetVpcIpamOperatingRegion {
 
   /// Creates a new [GetVpcIpamOperatingRegion].
   /// [regionName] Required.
-  GetVpcIpamOperatingRegion({
-    required this.regionName,
-  });
+  GetVpcIpamOperatingRegion({required this.regionName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regionName': regionName,
-    };
+    return <String, dynamic>{'regionName': regionName};
   }
 
   factory GetVpcIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamOperatingRegion(
-      regionName: (map['regionName'] as String).input(),
+      regionName: pulumi.Input.fromValue(map['regionName'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ServiceBusTransportType {
   valueNetMessaging("NetMessaging"),
   valueAMQP("AMQP");
 
-  const ServiceBusTransportType(this.value);
-  final String value;
+  const ServiceBusTransportType(this.wireValue);
+  final String wireValue;
 
   static ServiceBusTransportType fromValue(String value) {
     for (final item in ServiceBusTransportType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceBusTransportType value: $value');
   }
 }
-

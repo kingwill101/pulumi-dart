@@ -5,7 +5,10 @@ import 'virtual_node_spec_listener_tls_validation_subject_alternative_names_matc
 
 class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
   /// Criteria for determining a SAN's match.
-  final pulumi.Input<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch> match;
+  final pulumi.Input<
+    VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch
+  >
+  match;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
@@ -15,14 +18,23 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'match': pulumi.Input.mapInputValue<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
+      'match':
+          pulumi.Input.mapInputValue<
+            VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch,
+            Map<String, dynamic>
+          >(match, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames(
-      match: (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      match: pulumi.Input.fromValue(
+        VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap(
+          (map['match']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

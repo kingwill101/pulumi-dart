@@ -4,7 +4,7 @@ import 'managed_hardware_security_module_key_state.dart';
 
 /// Manages a Key Vault Managed Hardware Security Module Key.
 ///
-/// > **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module Key resource on destroy, rather than the default soft-delete. See `purge_soft_deleted_hardware_security_modules_on_destroy` for more information.
+/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module Key resource on destroy, rather than the default soft-delete. See `purge_soft_deleted_hardware_security_modules_on_destroy` for more information.
 ///
 /// ## Example Usage
 ///
@@ -404,7 +404,7 @@ import 'managed_hardware_security_module_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.KeyVault` - 2023-07-01
@@ -419,24 +419,33 @@ import 'managed_hardware_security_module_key_state.dart';
 class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
   /// Specifies the curve to use when creating an `EC-HSM` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field is required if `key_type` is `EC-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> curve;
+
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z'). When this parameter gets changed on reruns, if newer date is ahead of current date, an update is performed. If the newer date is before the current date, resource will be force created.
   late final pulumi.Output<String?> expirationDate;
+
   /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify`, `wrapKey` and `import`. Please note these values are case-sensitive.
   late final pulumi.Output<List<String>> keyOpts;
+
   /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `key_type` is `RSA-HSM` or `oct-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> keySize;
+
   /// Specifies the Key Type to use for this Key Vault Managed Hardware Security Module Key. Possible values are `EC-HSM`, `oct-HSM` and `RSA-HSM`. More details see [HSM-protected keys](https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys#hsm-protected-keys). Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyType;
+
   /// Specifies the ID of the Key Vault Managed Hardware Security Module that they key will be owned by. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedHsmId;
+
   /// Specifies the name of the Key Vault Managed Hardware Security Module Key. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
-  /// > **Note:** Once `expiration_date` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
+  /// &gt; **Note:** Once `expiration_date` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
   late final pulumi.Output<String?> notBeforeDate;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The versioned Key Vault Secret Managed Hardware Security Module Key ID.
   late final pulumi.Output<String> versionedId;
 
@@ -449,21 +458,21 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
     ManagedHardwareSecurityModuleKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.curve = registerOutput<String?>('curve');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.keyOpts = registerOutput<List<String>>('keyOpts');
-    this.keySize = registerOutput<int?>('keySize');
-    this.keyType = registerOutput<String>('keyType');
-    this.managedHsmId = registerOutput<String>('managedHsmId');
+         'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    curve = registerOutput<String?>('curve');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyOpts = registerOutput<List<String>>('keyOpts');
+    keySize = registerOutput<int?>('keySize');
+    keyType = registerOutput<String>('keyType');
+    managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    this.notBeforeDate = registerOutput<String?>('notBeforeDate');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.versionedId = registerOutput<String>('versionedId');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    tags = registerOutput<Map<String, String>?>('tags');
+    versionedId = registerOutput<String>('versionedId');
   }
 
   /// Gets an existing [ManagedHardwareSecurityModuleKey] resource's state with the given [name] and [id].
@@ -484,20 +493,20 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.curve = registerOutput<String?>('curve');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.keyOpts = registerOutput<List<String>>('keyOpts');
-    this.keySize = registerOutput<int?>('keySize');
-    this.keyType = registerOutput<String>('keyType');
-    this.managedHsmId = registerOutput<String>('managedHsmId');
+         'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    curve = registerOutput<String?>('curve');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyOpts = registerOutput<List<String>>('keyOpts');
+    keySize = registerOutput<int?>('keySize');
+    keyType = registerOutput<String>('keyType');
+    managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    this.notBeforeDate = registerOutput<String?>('notBeforeDate');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.versionedId = registerOutput<String>('versionedId');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    tags = registerOutput<Map<String, String>?>('tags');
+    versionedId = registerOutput<String>('versionedId');
   }
 }

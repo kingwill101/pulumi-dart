@@ -10,23 +10,24 @@ class OrganizationRootPolicyType {
   /// Creates a new [OrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.
   /// [type] Optional.
-  OrganizationRootPolicyType({
-    this.status,
-    this.type,
-  });
+  OrganizationRootPolicyType({this.status, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-      'type': ?type,
-    };
+    return <String, dynamic>{'status': ?status, 'type': ?type};
   }
 
   factory OrganizationRootPolicyType.fromMap(Map<String, dynamic> map) {
     return OrganizationRootPolicyType(
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

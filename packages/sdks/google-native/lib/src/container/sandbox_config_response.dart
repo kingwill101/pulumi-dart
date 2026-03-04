@@ -9,20 +9,15 @@ class SandboxConfigResponse {
 
   /// Creates a new [SandboxConfigResponse].
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfigResponse({
-    required this.type,
-  });
+  SandboxConfigResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory SandboxConfigResponse.fromMap(Map<String, dynamic> map) {
     return SandboxConfigResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -10,14 +10,19 @@ import 'transport_layer_application_rule.dart';
 class TransportLayerApplicationArgs {
   /// Whether to enable China mainland network access optimization, default is disabled. Value range:
   final pulumi.Input<String>? crossBorderOptimization;
+
   /// IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
   final pulumi.Input<String>? ipAccessRule;
+
   /// IPv6 switch.
   final pulumi.Input<String>? ipv6;
+
   /// Domain name of the transport layer application
   final pulumi.Input<String> recordName;
+
   /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
   final pulumi.Input<List<TransportLayerApplicationRule>> rules;
+
   /// Site ID.
   final pulumi.Input<String> siteId;
 
@@ -43,20 +48,49 @@ class TransportLayerApplicationArgs {
       'ipAccessRule': ?ipAccessRule,
       'ipv6': ?ipv6,
       'recordName': recordName,
-      'rules': pulumi.Input.mapInputValue<List<TransportLayerApplicationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<TransportLayerApplicationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<TransportLayerApplicationRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TransportLayerApplicationRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'siteId': siteId,
     };
   }
 
   factory TransportLayerApplicationArgs.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationArgs(
-      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization']! as String).input(),
-      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule']! as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
-      recordName: (map['recordName'] as String).input(),
-      rules: (pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules'], (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      siteId: (map['siteId'] as String).input(),
+      crossBorderOptimization: (() {
+        final guardedValue = map['crossBorderOptimization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAccessRule: (() {
+        final guardedValue = map['ipAccessRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6: (() {
+        final guardedValue = map['ipv6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordName: pulumi.Input.fromValue(map['recordName'] as String),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TransportLayerApplicationRule>(
+          map['rules']!,
+          (value) => TransportLayerApplicationRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

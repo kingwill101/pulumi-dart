@@ -8,10 +8,13 @@ import 'csinode_spec_patch.dart';
 class CSINodePatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object's metadata. metadata.name must be the Kubernetes node name.
   final pulumi.Input<ObjectMetaPatch>? metadata;
+
   /// spec is the specification of CSINode
   final pulumi.Input<CSINodeSpecPatch>? spec;
 
@@ -20,29 +23,55 @@ class CSINodePatch {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. metadata.name must be the Kubernetes node name.
   /// [spec] spec is the specification of CSINode
-  CSINodePatch({
-    this.apiVersion,
-    this.kind,
-    this.metadata,
-    this.spec,
-  });
+  CSINodePatch({this.apiVersion, this.kind, this.metadata, this.spec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<CSINodeSpecPatch, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectMetaPatch,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            CSINodeSpecPatch,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
   factory CSINodePatch.fromMap(Map<String, dynamic> map) {
     return CSINodePatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (CSINodeSpecPatch.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMetaPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CSINodeSpecPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

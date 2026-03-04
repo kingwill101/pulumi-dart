@@ -129,7 +129,8 @@ import 'firewall_settings_state.dart';
 /// See the [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/put-firewall-settings) for more details.
 class FirewallSettings extends pulumi.CustomResource {
   /// A map of default firewall IDs for various interfaces.
-  late final pulumi.Output<FirewallSettingsDefaultFirewallIds?> defaultFirewallIds;
+  late final pulumi.Output<FirewallSettingsDefaultFirewallIds?>
+  defaultFirewallIds;
 
   /// Creates a new [FirewallSettings].
   /// [name] The Pulumi resource name.
@@ -140,12 +141,14 @@ class FirewallSettings extends pulumi.CustomResource {
     FirewallSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/firewallSettings:FirewallSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>('defaultFirewallIds');
+         'linode:index/firewallSettings:FirewallSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>(
+      'defaultFirewallIds',
+    );
   }
 
   /// Gets an existing [FirewallSettings] resource's state with the given [name] and [id].
@@ -166,11 +169,13 @@ class FirewallSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/firewallSettings:FirewallSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>('defaultFirewallIds');
+         'linode:index/firewallSettings:FirewallSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>(
+      'defaultFirewallIds',
+    );
   }
 }

@@ -6,11 +6,14 @@ import 'jit_network_access_request_virtual_machine_response.dart';
 class JitNetworkAccessRequestResponse {
   /// The justification for making the initiate request
   final pulumi.Input<String>? justification;
+
   /// The identity of the person who made the request
   final pulumi.Input<String> requestor;
+
   /// The start time of the request in UTC
   final pulumi.Input<String> startTimeUtc;
-  final pulumi.Input<List<JitNetworkAccessRequestVirtualMachineResponse>> virtualMachines;
+  final pulumi.Input<List<JitNetworkAccessRequestVirtualMachineResponse>>
+  virtualMachines;
 
   /// Creates a new [JitNetworkAccessRequestResponse].
   /// [justification] The justification for making the initiate request
@@ -29,17 +32,38 @@ class JitNetworkAccessRequestResponse {
       'justification': ?justification,
       'requestor': requestor,
       'startTimeUtc': startTimeUtc,
-      'virtualMachines': pulumi.Input.mapInputValue<List<JitNetworkAccessRequestVirtualMachineResponse>, List<Map<String, dynamic>>>(virtualMachines, (value) => pulumi.Input.encodeList<JitNetworkAccessRequestVirtualMachineResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualMachines':
+          pulumi.Input.mapInputValue<
+            List<JitNetworkAccessRequestVirtualMachineResponse>,
+            List<Map<String, dynamic>>
+          >(
+            virtualMachines,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JitNetworkAccessRequestVirtualMachineResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory JitNetworkAccessRequestResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequestResponse(
-      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
-      requestor: (map['requestor'] as String).input(),
-      startTimeUtc: (map['startTimeUtc'] as String).input(),
-      virtualMachines: (pulumi.Input.decodeList<JitNetworkAccessRequestVirtualMachineResponse>(map['virtualMachines'], (value) => JitNetworkAccessRequestVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      justification: (() {
+        final guardedValue = map['justification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestor: pulumi.Input.fromValue(map['requestor'] as String),
+      startTimeUtc: pulumi.Input.fromValue(map['startTimeUtc'] as String),
+      virtualMachines: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<JitNetworkAccessRequestVirtualMachineResponse>(
+          map['virtualMachines']!,
+          (value) => JitNetworkAccessRequestVirtualMachineResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

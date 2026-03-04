@@ -9,15 +9,21 @@ import 'single_server_configuration_response.dart';
 class DeploymentWithOSConfigurationResponse {
   /// The geo-location where the SAP system is to be created.
   final pulumi.Input<String>? appLocation;
+
   /// The configuration Type.
   /// Expected value is 'DeploymentWithOSConfig'.
   final pulumi.Input<String> configurationType;
+
   /// The infrastructure configuration.
-  final pulumi.Input<SingleServerConfigurationResponse>? infrastructureConfiguration;
+  final pulumi.Input<SingleServerConfigurationResponse>?
+  infrastructureConfiguration;
+
   /// The OS and SAP configuration.
   final pulumi.Input<OsSapConfigurationResponse>? osSapConfiguration;
+
   /// The software configuration.
-  final pulumi.Input<ExternalInstallationSoftwareConfigurationResponse>? softwareConfiguration;
+  final pulumi.Input<ExternalInstallationSoftwareConfigurationResponse>?
+  softwareConfiguration;
 
   /// Creates a new [DeploymentWithOSConfigurationResponse].
   /// [appLocation] The geo-location where the SAP system is to be created.
@@ -37,20 +43,63 @@ class DeploymentWithOSConfigurationResponse {
     return <String, dynamic>{
       'appLocation': ?appLocation,
       'configurationType': configurationType,
-      'infrastructureConfiguration': ?pulumi.Input.mapOptionalInputValue<SingleServerConfigurationResponse, Map<String, dynamic>>(infrastructureConfiguration, (value) => value.toMap()),
-      'osSapConfiguration': ?pulumi.Input.mapOptionalInputValue<OsSapConfigurationResponse, Map<String, dynamic>>(osSapConfiguration, (value) => value.toMap()),
-      'softwareConfiguration': ?pulumi.Input.mapOptionalInputValue<ExternalInstallationSoftwareConfigurationResponse, Map<String, dynamic>>(softwareConfiguration, (value) => value.toMap()),
+      'infrastructureConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SingleServerConfigurationResponse,
+            Map<String, dynamic>
+          >(infrastructureConfiguration, (value) => value.toMap()),
+      'osSapConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            OsSapConfigurationResponse,
+            Map<String, dynamic>
+          >(osSapConfiguration, (value) => value.toMap()),
+      'softwareConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExternalInstallationSoftwareConfigurationResponse,
+            Map<String, dynamic>
+          >(softwareConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory DeploymentWithOSConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DeploymentWithOSConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentWithOSConfigurationResponse(
-      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
-      configurationType: (map['configurationType'] as String).input(),
-      infrastructureConfiguration: map['infrastructureConfiguration'] == null ? null : (SingleServerConfigurationResponse.fromMap((map['infrastructureConfiguration']! as Map).cast<String, dynamic>())).input(),
-      osSapConfiguration: map['osSapConfiguration'] == null ? null : (OsSapConfigurationResponse.fromMap((map['osSapConfiguration']! as Map).cast<String, dynamic>())).input(),
-      softwareConfiguration: map['softwareConfiguration'] == null ? null : (ExternalInstallationSoftwareConfigurationResponse.fromMap((map['softwareConfiguration']! as Map).cast<String, dynamic>())).input(),
+      appLocation: (() {
+        final guardedValue = map['appLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
+      infrastructureConfiguration: (() {
+        final guardedValue = map['infrastructureConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SingleServerConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osSapConfiguration: (() {
+        final guardedValue = map['osSapConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OsSapConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      softwareConfiguration: (() {
+        final guardedValue = map['softwareConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExternalInstallationSoftwareConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -155,14 +155,20 @@ import 'system_data_response.dart';
 class HybridRunbookWorkerGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Sets the credential of a worker group.
-  late final pulumi.Output<RunAsCredentialAssociationPropertyResponse?> credential;
+  late final pulumi.Output<RunAsCredentialAssociationPropertyResponse?>
+  credential;
+
   /// Type of the HybridWorkerGroup.
   late final pulumi.Output<String?> groupType;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -175,16 +181,18 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     HybridRunbookWorkerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:HybridRunbookWorkerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.credential = registerOutput<RunAsCredentialAssociationPropertyResponse?>('credential');
-    this.groupType = registerOutput<String?>('groupType');
+         'azure-native:automation:HybridRunbookWorkerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credential = registerOutput<RunAsCredentialAssociationPropertyResponse?>(
+      'credential',
+    );
+    groupType = registerOutput<String?>('groupType');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

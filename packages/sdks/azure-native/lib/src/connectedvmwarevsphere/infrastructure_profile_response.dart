@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InfrastructureProfileResponse {
   /// Gets the name of the corresponding resource in Kubernetes.
   final pulumi.Input<String> customResourceName;
+
   /// Firmware type
   final pulumi.Input<String>? firmwareType;
+
   /// Gets or sets the folder path of the vm.
   final pulumi.Input<String> folderPath;
+
   /// Gets or sets the instance uuid of the vm.
   final pulumi.Input<String> instanceUuid;
+
   /// Gets or sets the inventory Item ID for the virtual machine.
   final pulumi.Input<String>? inventoryItemId;
+
   /// Gets or sets the vCenter Managed Object name for the virtual machine.
   final pulumi.Input<String> moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
   final pulumi.Input<String> moRefId;
+
   /// Gets or sets the SMBIOS UUID of the vm.
   final pulumi.Input<String>? smbiosUuid;
+
   /// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
   final pulumi.Input<String>? templateId;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   final pulumi.Input<String>? vCenterId;
 
@@ -66,17 +75,38 @@ class InfrastructureProfileResponse {
 
   factory InfrastructureProfileResponse.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfileResponse(
-      customResourceName: (map['customResourceName'] as String).input(),
-      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType']! as String).input(),
-      folderPath: (map['folderPath'] as String).input(),
-      instanceUuid: (map['instanceUuid'] as String).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
-      moName: (map['moName'] as String).input(),
-      moRefId: (map['moRefId'] as String).input(),
-      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
-      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId']! as String).input(),
+      customResourceName: pulumi.Input.fromValue(
+        map['customResourceName'] as String,
+      ),
+      firmwareType: (() {
+        final guardedValue = map['firmwareType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folderPath: pulumi.Input.fromValue(map['folderPath'] as String),
+      instanceUuid: pulumi.Input.fromValue(map['instanceUuid'] as String),
+      inventoryItemId: (() {
+        final guardedValue = map['inventoryItemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moName: pulumi.Input.fromValue(map['moName'] as String),
+      moRefId: pulumi.Input.fromValue(map['moRefId'] as String),
+      smbiosUuid: (() {
+        final guardedValue = map['smbiosUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vCenterId: (() {
+        final guardedValue = map['vCenterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,30 +9,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotHubDataConnectionArgs {
   /// Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
+
   /// Specifies the IotHub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
   final pulumi.Input<String> consumerGroup;
+
   /// Specifies the data format of the IoTHub messages. Allowed values: `APACHEAVRO`, `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `ORC`, `PARQUET`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSV`, `TSVE`, `TXT` and `W3CLOGFILE`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataFormat;
+
   /// Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
+
   /// Indication for database routing information from the data connection, by default only database routing information is allowed. Allowed values: `Single`, `Multi`. Changing this forces a new resource to be created. Defaults to `Single`.
   final pulumi.Input<String>? databaseRoutingType;
+
   /// Specifies the System Properties that each IoT Hub message should contain. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? eventSystemProperties;
+
   /// Specifies the resource id of the IotHub this data connection will use for ingestion. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubId;
+
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? mappingRuleName;
+
   /// The name of the Kusto IotHub Data Connection to create. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the date after which data should be retrieved from IoT Hub. When defined, the data connection retrieves existing events created since the specified retrieval start date. It can only retrieve events retained by the IoT Hub, based on its retention period. The value should be in RFC3339 format (e.g., `2023-06-26T12:00:00Z`).
   final pulumi.Input<String>? retrievalStartDate;
+
   /// Specifies the IotHub Shared Access Policy this data connection will use for ingestion, which must have read permission. Changing this forces a new resource to be created.
   final pulumi.Input<String> sharedAccessPolicyName;
+
   /// Specifies the target table name used for the message ingestion. Table must exist before resource is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? tableName;
 
@@ -89,21 +102,56 @@ class IotHubDataConnectionArgs {
 
   factory IotHubDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDataConnectionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      consumerGroup: (map['consumerGroup'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType']! as String).input(),
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties']! as List).cast<String>()).input(),
-      iothubId: (map['iothubId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate']! as String).input(),
-      sharedAccessPolicyName: (map['sharedAccessPolicyName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      consumerGroup: pulumi.Input.fromValue(map['consumerGroup'] as String),
+      dataFormat: (() {
+        final guardedValue = map['dataFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      databaseRoutingType: (() {
+        final guardedValue = map['databaseRoutingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventSystemProperties: (() {
+        final guardedValue = map['eventSystemProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      iothubId: pulumi.Input.fromValue(map['iothubId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mappingRuleName: (() {
+        final guardedValue = map['mappingRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      retrievalStartDate: (() {
+        final guardedValue = map['retrievalStartDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccessPolicyName: pulumi.Input.fromValue(
+        map['sharedAccessPolicyName'] as String,
+      ),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

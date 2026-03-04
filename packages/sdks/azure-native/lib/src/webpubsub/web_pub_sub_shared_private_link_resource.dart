@@ -153,20 +153,28 @@ import 'web_pub_sub_shared_private_link_resource_args.dart';
 class WebPubSubSharedPrivateLinkResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The group id from the provider of resource the shared private link resource is for
   late final pulumi.Output<String> groupId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource id of the resource the shared private link resource is for
   late final pulumi.Output<String> privateLinkResourceId;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The request message for requesting approval of the shared private link resource
   late final pulumi.Output<String?> requestMessage;
+
   /// Status of the shared private link resource
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,19 +187,19 @@ class WebPubSubSharedPrivateLinkResource extends pulumi.CustomResource {
     WebPubSubSharedPrivateLinkResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:webpubsub:WebPubSubSharedPrivateLinkResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupId = registerOutput<String>('groupId');
+         'azure-native:webpubsub:WebPubSubSharedPrivateLinkResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
-    this.privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMessage = registerOutput<String?>('requestMessage');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

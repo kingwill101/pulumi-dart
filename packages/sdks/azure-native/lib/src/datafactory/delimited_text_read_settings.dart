@@ -7,8 +7,10 @@ import 'tar_gzip_read_settings.dart';
 class DelimitedTextReadSettings {
   /// Compression settings.
   final pulumi.Input<TarGZipReadSettings>? compressionProperties;
+
   /// Indicates the number of non-empty rows to skip when reading data from input files. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? skipLineCount;
+
   /// The read setting type.
   /// Expected value is 'DelimitedTextReadSettings'.
   final pulumi.Input<String> type;
@@ -25,7 +27,11 @@ class DelimitedTextReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettings, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            TarGZipReadSettings,
+            Map<String, dynamic>
+          >(compressionProperties, (value) => value.toMap()),
       'skipLineCount': ?skipLineCount,
       'type': type,
     };
@@ -33,10 +39,21 @@ class DelimitedTextReadSettings {
 
   factory DelimitedTextReadSettings.fromMap(Map<String, dynamic> map) {
     return DelimitedTextReadSettings(
-      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettings.fromMap((map['compressionProperties']! as Map).cast<String, dynamic>())).input(),
-      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']!).input(),
-      type: (map['type'] as String).input(),
+      compressionProperties: (() {
+        final guardedValue = map['compressionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TarGZipReadSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      skipLineCount: (() {
+        final guardedValue = map['skipLineCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

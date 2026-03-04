@@ -10,20 +10,31 @@ class ManagedEnvironmentPeerTrafficConfiguration {
 
   /// Creates a new [ManagedEnvironmentPeerTrafficConfiguration].
   /// [encryption] Peer traffic encryption settings for the Managed Environment
-  ManagedEnvironmentPeerTrafficConfiguration({
-    this.encryption,
-  });
+  ManagedEnvironmentPeerTrafficConfiguration({this.encryption});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?pulumi.Input.mapOptionalInputValue<ManagedEnvironmentEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedEnvironmentEncryption,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
     };
   }
 
-  factory ManagedEnvironmentPeerTrafficConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ManagedEnvironmentPeerTrafficConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedEnvironmentPeerTrafficConfiguration(
-      encryption: map['encryption'] == null ? null : (ManagedEnvironmentEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedEnvironmentEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum AzureStorageProtocol {
   valueHttp("Http"),
   valueNfs("Nfs");
 
-  const AzureStorageProtocol(this.value);
-  final String value;
+  const AzureStorageProtocol(this.wireValue);
+  final String wireValue;
 
   static AzureStorageProtocol fromValue(String value) {
     for (final item in AzureStorageProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureStorageProtocol value: $value');
   }
 }
-

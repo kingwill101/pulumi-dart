@@ -6,18 +6,25 @@ import 'folder_cloudresourcemanager_v3_args.dart';
 class FolderCloudresourcemanagerV3 extends pulumi.CustomResource {
   /// Timestamp when the folder was created.
   late final pulumi.Output<String> createTime;
+
   /// Timestamp when the folder was requested to be deleted.
   late final pulumi.Output<String> deleteTime;
+
   /// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
   late final pulumi.Output<String> displayName;
+
   /// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
+
   /// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
   late final pulumi.Output<String> name;
+
   /// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
   late final pulumi.Output<String> parent;
+
   /// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
   late final pulumi.Output<String> state;
+
   /// Timestamp when the folder was last modified.
   late final pulumi.Output<String> updateTime;
 
@@ -30,18 +37,18 @@ class FolderCloudresourcemanagerV3 extends pulumi.CustomResource {
     FolderCloudresourcemanagerV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudresourcemanager/v3:Folder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteTime = registerOutput<String>('deleteTime');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String>('etag');
+         'google-native:cloudresourcemanager/v3:Folder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

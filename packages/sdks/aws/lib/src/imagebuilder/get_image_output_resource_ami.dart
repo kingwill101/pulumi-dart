@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageOutputResourceAmi {
   /// Account identifier of the AMI.
   final pulumi.Input<String> accountId;
+
   /// Description of the AMI.
   final pulumi.Input<String> description;
+
   /// Identifier of the AMI.
   final pulumi.Input<String> image;
+
   /// Name of the AMI.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
 
@@ -40,12 +44,11 @@ class GetImageOutputResourceAmi {
 
   factory GetImageOutputResourceAmi.fromMap(Map<String, dynamic> map) {
     return GetImageOutputResourceAmi(
-      accountId: (map['accountId'] as String).input(),
-      description: (map['description'] as String).input(),
-      image: (map['image'] as String).input(),
-      name: (map['name'] as String).input(),
-      region: (map['region'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum IngressClientCertificateMode {
   valueAccept("accept"),
   valueRequire("require");
 
-  const IngressClientCertificateMode(this.value);
-  final String value;
+  const IngressClientCertificateMode(this.wireValue);
+  final String wireValue;
 
   static IngressClientCertificateMode fromValue(String value) {
     for (final item in IngressClientCertificateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IngressClientCertificateMode value: $value');
   }
 }
-

@@ -30,10 +30,18 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// reasons of consistency and being explicit, exit codes `100` and `101`
   /// were chosen.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec>? exec;
+  final pulumi.Input<
+    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec
+  >?
+  exec;
+
   /// A resource that manages the state of a file.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile>? file;
+  final pulumi.Input<
+    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile
+  >?
+  file;
+
   /// The id of the resource with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -41,12 +49,20 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// * Must end with a number or a letter.
   /// * Must be unique within the OS policy.
   final pulumi.Input<String> id;
+
   /// A resource that manages a system package.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg>? pkg;
+  final pulumi.Input<
+    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg
+  >?
+  pkg;
+
   /// A resource that manages a package repository.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository>? repository;
+  final pulumi.Input<
+    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository
+  >?
+  repository;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource].
   /// [exec] A resource that allows executing scripts on the VM.
@@ -64,22 +80,71 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec, Map<String, dynamic>>(exec, (value) => value.toMap()),
-      'file': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'exec':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec,
+            Map<String, dynamic>
+          >(exec, (value) => value.toMap()),
+      'file':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile,
+            Map<String, dynamic>
+          >(file, (value) => value.toMap()),
       'id': id,
-      'pkg': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg, Map<String, dynamic>>(pkg, (value) => value.toMap()),
-      'repository': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository, Map<String, dynamic>>(repository, (value) => value.toMap()),
+      'pkg':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg,
+            Map<String, dynamic>
+          >(pkg, (value) => value.toMap()),
+      'repository':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository,
+            Map<String, dynamic>
+          >(repository, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource(
-      exec: map['exec'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      pkg: map['pkg'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap((map['pkg']! as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
+      exec: (() {
+        final guardedValue = map['exec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      file: (() {
+        final guardedValue = map['file'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pkg: (() {
+        final guardedValue = map['pkg'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      repository: (() {
+        final guardedValue = map['repository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

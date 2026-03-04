@@ -10,44 +10,67 @@ import 'node_pool_node_config_kubelet_config_topology_manager.dart';
 class NodePoolNodeConfigKubeletConfig {
   /// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
   final pulumi.Input<List<String>>? allowedUnsafeSysctls;
+
   /// Defines the maximum number of container log files that can be present for a container.
   final pulumi.Input<int>? containerLogMaxFiles;
+
   /// Defines the maximum size of the container log file before it is rotated.
   final pulumi.Input<String>? containerLogMaxSize;
+
   /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
   final pulumi.Input<bool>? cpuCfsQuota;
+
   /// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
   final pulumi.Input<String>? cpuCfsQuotaPeriod;
+
   /// Control the CPU management policy on the node.
   final pulumi.Input<String>? cpuManagerPolicy;
+
   /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
   final pulumi.Input<int>? evictionMaxPodGracePeriodSeconds;
+
   /// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
-  final pulumi.Input<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim>? evictionMinimumReclaim;
+  final pulumi.Input<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim>?
+  evictionMinimumReclaim;
+
   /// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
   final pulumi.Input<NodePoolNodeConfigKubeletConfigEvictionSoft>? evictionSoft;
+
   /// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
-  final pulumi.Input<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod>? evictionSoftGracePeriod;
+  final pulumi.Input<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod>?
+  evictionSoftGracePeriod;
+
   /// Defines the percent of disk usage after which image garbage collection is always run.
   final pulumi.Input<int>? imageGcHighThresholdPercent;
+
   /// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
   final pulumi.Input<int>? imageGcLowThresholdPercent;
+
   /// Defines the maximum age an image can be unused before it is garbage collected.
   final pulumi.Input<String>? imageMaximumGcAge;
+
   /// Defines the minimum age for an unused image before it is garbage collected.
   final pulumi.Input<String>? imageMinimumGcAge;
+
   /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
   final pulumi.Input<String>? insecureKubeletReadonlyPortEnabled;
+
   /// Set the maximum number of image pulls in parallel.
   final pulumi.Input<int>? maxParallelImagePulls;
+
   /// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
-  final pulumi.Input<NodePoolNodeConfigKubeletConfigMemoryManager>? memoryManager;
+  final pulumi.Input<NodePoolNodeConfigKubeletConfigMemoryManager>?
+  memoryManager;
+
   /// Controls the maximum number of processes allowed to run in a pod.
   final pulumi.Input<int>? podPidsLimit;
+
   /// Defines whether to enable single process OOM killer.
   final pulumi.Input<bool>? singleProcessOomKill;
+
   /// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
-  final pulumi.Input<NodePoolNodeConfigKubeletConfigTopologyManager>? topologyManager;
+  final pulumi.Input<NodePoolNodeConfigKubeletConfigTopologyManager>?
+  topologyManager;
 
   /// Creates a new [NodePoolNodeConfigKubeletConfig].
   /// [allowedUnsafeSysctls] Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
@@ -102,45 +125,164 @@ class NodePoolNodeConfigKubeletConfig {
       'cpuCfsQuotaPeriod': ?cpuCfsQuotaPeriod,
       'cpuManagerPolicy': ?cpuManagerPolicy,
       'evictionMaxPodGracePeriodSeconds': ?evictionMaxPodGracePeriodSeconds,
-      'evictionMinimumReclaim': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim, Map<String, dynamic>>(evictionMinimumReclaim, (value) => value.toMap()),
-      'evictionSoft': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigEvictionSoft, Map<String, dynamic>>(evictionSoft, (value) => value.toMap()),
-      'evictionSoftGracePeriod': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod, Map<String, dynamic>>(evictionSoftGracePeriod, (value) => value.toMap()),
+      'evictionMinimumReclaim':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim,
+            Map<String, dynamic>
+          >(evictionMinimumReclaim, (value) => value.toMap()),
+      'evictionSoft':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfigEvictionSoft,
+            Map<String, dynamic>
+          >(evictionSoft, (value) => value.toMap()),
+      'evictionSoftGracePeriod':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod,
+            Map<String, dynamic>
+          >(evictionSoftGracePeriod, (value) => value.toMap()),
       'imageGcHighThresholdPercent': ?imageGcHighThresholdPercent,
       'imageGcLowThresholdPercent': ?imageGcLowThresholdPercent,
       'imageMaximumGcAge': ?imageMaximumGcAge,
       'imageMinimumGcAge': ?imageMinimumGcAge,
       'insecureKubeletReadonlyPortEnabled': ?insecureKubeletReadonlyPortEnabled,
       'maxParallelImagePulls': ?maxParallelImagePulls,
-      'memoryManager': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigMemoryManager, Map<String, dynamic>>(memoryManager, (value) => value.toMap()),
+      'memoryManager':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfigMemoryManager,
+            Map<String, dynamic>
+          >(memoryManager, (value) => value.toMap()),
       'podPidsLimit': ?podPidsLimit,
       'singleProcessOomKill': ?singleProcessOomKill,
-      'topologyManager': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigTopologyManager, Map<String, dynamic>>(topologyManager, (value) => value.toMap()),
+      'topologyManager':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfigTopologyManager,
+            Map<String, dynamic>
+          >(topologyManager, (value) => value.toMap()),
     };
   }
 
   factory NodePoolNodeConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigKubeletConfig(
-      allowedUnsafeSysctls: map['allowedUnsafeSysctls'] == null ? null : ((map['allowedUnsafeSysctls']! as List).cast<String>()).input(),
-      containerLogMaxFiles: map['containerLogMaxFiles'] == null ? null : (map['containerLogMaxFiles']! as int).input(),
-      containerLogMaxSize: map['containerLogMaxSize'] == null ? null : (map['containerLogMaxSize']! as String).input(),
-      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota']! as bool).input(),
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod']! as String).input(),
-      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy']! as String).input(),
-      evictionMaxPodGracePeriodSeconds: map['evictionMaxPodGracePeriodSeconds'] == null ? null : (map['evictionMaxPodGracePeriodSeconds']! as int).input(),
-      evictionMinimumReclaim: map['evictionMinimumReclaim'] == null ? null : (NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap((map['evictionMinimumReclaim']! as Map).cast<String, dynamic>())).input(),
-      evictionSoft: map['evictionSoft'] == null ? null : (NodePoolNodeConfigKubeletConfigEvictionSoft.fromMap((map['evictionSoft']! as Map).cast<String, dynamic>())).input(),
-      evictionSoftGracePeriod: map['evictionSoftGracePeriod'] == null ? null : (NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap((map['evictionSoftGracePeriod']! as Map).cast<String, dynamic>())).input(),
-      imageGcHighThresholdPercent: map['imageGcHighThresholdPercent'] == null ? null : (map['imageGcHighThresholdPercent']! as int).input(),
-      imageGcLowThresholdPercent: map['imageGcLowThresholdPercent'] == null ? null : (map['imageGcLowThresholdPercent']! as int).input(),
-      imageMaximumGcAge: map['imageMaximumGcAge'] == null ? null : (map['imageMaximumGcAge']! as String).input(),
-      imageMinimumGcAge: map['imageMinimumGcAge'] == null ? null : (map['imageMinimumGcAge']! as String).input(),
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled']! as String).input(),
-      maxParallelImagePulls: map['maxParallelImagePulls'] == null ? null : (map['maxParallelImagePulls']! as int).input(),
-      memoryManager: map['memoryManager'] == null ? null : (NodePoolNodeConfigKubeletConfigMemoryManager.fromMap((map['memoryManager']! as Map).cast<String, dynamic>())).input(),
-      podPidsLimit: map['podPidsLimit'] == null ? null : (map['podPidsLimit']! as int).input(),
-      singleProcessOomKill: map['singleProcessOomKill'] == null ? null : (map['singleProcessOomKill']! as bool).input(),
-      topologyManager: map['topologyManager'] == null ? null : (NodePoolNodeConfigKubeletConfigTopologyManager.fromMap((map['topologyManager']! as Map).cast<String, dynamic>())).input(),
+      allowedUnsafeSysctls: (() {
+        final guardedValue = map['allowedUnsafeSysctls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      containerLogMaxFiles: (() {
+        final guardedValue = map['containerLogMaxFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      containerLogMaxSize: (() {
+        final guardedValue = map['containerLogMaxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuCfsQuota: (() {
+        final guardedValue = map['cpuCfsQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      cpuCfsQuotaPeriod: (() {
+        final guardedValue = map['cpuCfsQuotaPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuManagerPolicy: (() {
+        final guardedValue = map['cpuManagerPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evictionMaxPodGracePeriodSeconds: (() {
+        final guardedValue = map['evictionMaxPodGracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      evictionMinimumReclaim: (() {
+        final guardedValue = map['evictionMinimumReclaim'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      evictionSoft: (() {
+        final guardedValue = map['evictionSoft'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      evictionSoftGracePeriod: (() {
+        final guardedValue = map['evictionSoftGracePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageGcHighThresholdPercent: (() {
+        final guardedValue = map['imageGcHighThresholdPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      imageGcLowThresholdPercent: (() {
+        final guardedValue = map['imageGcLowThresholdPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      imageMaximumGcAge: (() {
+        final guardedValue = map['imageMaximumGcAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageMinimumGcAge: (() {
+        final guardedValue = map['imageMinimumGcAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      insecureKubeletReadonlyPortEnabled: (() {
+        final guardedValue = map['insecureKubeletReadonlyPortEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxParallelImagePulls: (() {
+        final guardedValue = map['maxParallelImagePulls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryManager: (() {
+        final guardedValue = map['memoryManager'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfigMemoryManager.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      podPidsLimit: (() {
+        final guardedValue = map['podPidsLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      singleProcessOomKill: (() {
+        final guardedValue = map['singleProcessOomKill'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      topologyManager: (() {
+        final guardedValue = map['topologyManager'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfigTopologyManager.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

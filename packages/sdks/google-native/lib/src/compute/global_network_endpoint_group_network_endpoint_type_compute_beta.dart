@@ -8,16 +8,22 @@ enum GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   serverless("SERVERLESS");
 
-  const GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.value);
-  final String value;
+  const GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
-    for (final item in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
-      if (item.value == value) {
+  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value',
+    );
   }
 }
-

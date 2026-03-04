@@ -113,10 +113,13 @@ import 'fast_snapshot_restore_timeouts.dart';
 class FastSnapshotRestore extends pulumi.CustomResource {
   /// Availability zone in which to enable fast snapshot restores.
   late final pulumi.Output<String> availabilityZone;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the snapshot.
   late final pulumi.Output<String> snapshotId;
+
   /// State of fast snapshot restores. Valid values are `enabling`, `optimizing`, `enabled`, `disabling`, `disabled`.
   late final pulumi.Output<String> state;
   late final pulumi.Output<FastSnapshotRestoreTimeouts?> timeouts;
@@ -130,16 +133,16 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     FastSnapshotRestoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.region = registerOutput<String>('region');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.state = registerOutput<String>('state');
-    this.timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
+         'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    region = registerOutput<String>('region');
+    snapshotId = registerOutput<String>('snapshotId');
+    state = registerOutput<String>('state');
+    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
   }
 
   /// Gets an existing [FastSnapshotRestore] resource's state with the given [name] and [id].
@@ -160,15 +163,15 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.region = registerOutput<String>('region');
-    this.snapshotId = registerOutput<String>('snapshotId');
+         'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    region = registerOutput<String>('region');
+    snapshotId = registerOutput<String>('snapshotId');
     this.state = registerOutput<String>('state');
-    this.timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
+    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
   }
 }

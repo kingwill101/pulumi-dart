@@ -155,7 +155,7 @@ import 'elasticsearch_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Elastic` - 2023-06-01
@@ -170,34 +170,47 @@ import 'elasticsearch_state.dart';
 class Elasticsearch extends pulumi.CustomResource {
   /// The ID of the Deployment within Elastic Cloud.
   late final pulumi.Output<String> elasticCloudDeploymentId;
+
   /// Specifies the Email Address which should be associated with this Elasticsearch account. Changing this forces a new Elasticsearch to be created.
   late final pulumi.Output<String> elasticCloudEmailAddress;
+
   /// The Default URL used for Single Sign On (SSO) to Elastic Cloud.
   late final pulumi.Output<String> elasticCloudSsoDefaultUrl;
+
   /// The ID of the User Account within Elastic Cloud.
   late final pulumi.Output<String> elasticCloudUserId;
+
   /// The URL to the Elasticsearch Service associated with this Elasticsearch.
   late final pulumi.Output<String> elasticsearchServiceUrl;
+
   /// The URL to the Kibana Dashboard associated with this Elasticsearch.
   late final pulumi.Output<String> kibanaServiceUrl;
+
   /// The URI used for SSO to the Kibana Dashboard associated with this Elasticsearch.
   late final pulumi.Output<String> kibanaSsoUri;
+
   /// The Azure Region where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
   late final pulumi.Output<String> location;
+
   /// A `logs` block as defined below.
   late final pulumi.Output<ElasticsearchLogs?> logs;
+
   /// Specifies if the Elasticsearch should have monitoring configured? Defaults to `true`. Changing this forces a new Elasticsearch to be created.
   late final pulumi.Output<bool?> monitoringEnabled;
+
   /// The name which should be used for this Elasticsearch resource. Changing this forces a new Elasticsearch to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
   ///
-  /// > **Note:** The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term.
+  /// &gt; **Note:** The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term.
   /// Ex: If the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly".
   /// You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=PlansAndPrice) for more details or in case of any issues with the SKU.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags which should be assigned to the Elasticsearch resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -210,25 +223,31 @@ class Elasticsearch extends pulumi.CustomResource {
     ElasticsearchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:elasticcloud/elasticsearch:Elasticsearch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.elasticCloudDeploymentId = registerOutput<String>('elasticCloudDeploymentId');
-    this.elasticCloudEmailAddress = registerOutput<String>('elasticCloudEmailAddress');
-    this.elasticCloudSsoDefaultUrl = registerOutput<String>('elasticCloudSsoDefaultUrl');
-    this.elasticCloudUserId = registerOutput<String>('elasticCloudUserId');
-    this.elasticsearchServiceUrl = registerOutput<String>('elasticsearchServiceUrl');
-    this.kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
-    this.kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<ElasticsearchLogs?>('logs');
-    this.monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+         'azure:elasticcloud/elasticsearch:Elasticsearch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    elasticCloudDeploymentId = registerOutput<String>(
+      'elasticCloudDeploymentId',
+    );
+    elasticCloudEmailAddress = registerOutput<String>(
+      'elasticCloudEmailAddress',
+    );
+    elasticCloudSsoDefaultUrl = registerOutput<String>(
+      'elasticCloudSsoDefaultUrl',
+    );
+    elasticCloudUserId = registerOutput<String>('elasticCloudUserId');
+    elasticsearchServiceUrl = registerOutput<String>('elasticsearchServiceUrl');
+    kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
+    kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
+    location = registerOutput<String>('location');
+    logs = registerOutput<ElasticsearchLogs?>('logs');
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Elasticsearch] resource's state with the given [name] and [id].
@@ -249,24 +268,30 @@ class Elasticsearch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:elasticcloud/elasticsearch:Elasticsearch',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.elasticCloudDeploymentId = registerOutput<String>('elasticCloudDeploymentId');
-    this.elasticCloudEmailAddress = registerOutput<String>('elasticCloudEmailAddress');
-    this.elasticCloudSsoDefaultUrl = registerOutput<String>('elasticCloudSsoDefaultUrl');
-    this.elasticCloudUserId = registerOutput<String>('elasticCloudUserId');
-    this.elasticsearchServiceUrl = registerOutput<String>('elasticsearchServiceUrl');
-    this.kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
-    this.kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<ElasticsearchLogs?>('logs');
-    this.monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+         'azure:elasticcloud/elasticsearch:Elasticsearch',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    elasticCloudDeploymentId = registerOutput<String>(
+      'elasticCloudDeploymentId',
+    );
+    elasticCloudEmailAddress = registerOutput<String>(
+      'elasticCloudEmailAddress',
+    );
+    elasticCloudSsoDefaultUrl = registerOutput<String>(
+      'elasticCloudSsoDefaultUrl',
+    );
+    elasticCloudUserId = registerOutput<String>('elasticCloudUserId');
+    elasticsearchServiceUrl = registerOutput<String>('elasticsearchServiceUrl');
+    kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
+    kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
+    location = registerOutput<String>('location');
+    logs = registerOutput<ElasticsearchLogs?>('logs');
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

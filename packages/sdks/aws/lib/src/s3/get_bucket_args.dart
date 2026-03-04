@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketArgs {
   /// Name of the bucket
   final pulumi.Input<String> bucket;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetBucketArgs].
   /// [bucket] Name of the bucket
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBucketArgs({
-    required this.bucket,
-    this.region,
-  });
+  GetBucketArgs({required this.bucket, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'region': ?region,
-    };
+    return <String, dynamic>{'bucket': bucket, 'region': ?region};
   }
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

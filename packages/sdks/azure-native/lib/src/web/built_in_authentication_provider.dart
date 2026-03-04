@@ -9,16 +9,15 @@ enum BuiltInAuthenticationProvider {
   valueTwitter("Twitter"),
   valueGithub("Github");
 
-  const BuiltInAuthenticationProvider(this.value);
-  final String value;
+  const BuiltInAuthenticationProvider(this.wireValue);
+  final String wireValue;
 
   static BuiltInAuthenticationProvider fromValue(String value) {
     for (final item in BuiltInAuthenticationProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuiltInAuthenticationProvider value: $value');
   }
 }
-

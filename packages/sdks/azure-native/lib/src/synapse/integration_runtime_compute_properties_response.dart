@@ -7,15 +7,21 @@ import 'integration_runtime_vnet_properties_response.dart';
 /// The compute resource properties for managed integration runtime.
 class IntegrationRuntimeComputePropertiesResponse {
   /// Data flow properties for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeDataFlowPropertiesResponse>? dataFlowProperties;
+  final pulumi.Input<IntegrationRuntimeDataFlowPropertiesResponse>?
+  dataFlowProperties;
+
   /// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
   final pulumi.Input<String>? location;
+
   /// Maximum parallel executions count per node for managed integration runtime.
   final pulumi.Input<int>? maxParallelExecutionsPerNode;
+
   /// The node size requirement to managed integration runtime.
   final pulumi.Input<String>? nodeSize;
+
   /// The required number of nodes for managed integration runtime.
   final pulumi.Input<int>? numberOfNodes;
+
   /// VNet properties for managed integration runtime.
   final pulumi.Input<IntegrationRuntimeVNetPropertiesResponse>? vNetProperties;
 
@@ -37,24 +43,65 @@ class IntegrationRuntimeComputePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataFlowProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeDataFlowPropertiesResponse, Map<String, dynamic>>(dataFlowProperties, (value) => value.toMap()),
+      'dataFlowProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeDataFlowPropertiesResponse,
+            Map<String, dynamic>
+          >(dataFlowProperties, (value) => value.toMap()),
       'location': ?location,
       'maxParallelExecutionsPerNode': ?maxParallelExecutionsPerNode,
       'nodeSize': ?nodeSize,
       'numberOfNodes': ?numberOfNodes,
-      'vNetProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeVNetPropertiesResponse, Map<String, dynamic>>(vNetProperties, (value) => value.toMap()),
+      'vNetProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeVNetPropertiesResponse,
+            Map<String, dynamic>
+          >(vNetProperties, (value) => value.toMap()),
     };
   }
 
-  factory IntegrationRuntimeComputePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory IntegrationRuntimeComputePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationRuntimeComputePropertiesResponse(
-      dataFlowProperties: map['dataFlowProperties'] == null ? null : (IntegrationRuntimeDataFlowPropertiesResponse.fromMap((map['dataFlowProperties']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      maxParallelExecutionsPerNode: map['maxParallelExecutionsPerNode'] == null ? null : (map['maxParallelExecutionsPerNode']! as int).input(),
-      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize']! as String).input(),
-      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes']! as int).input(),
-      vNetProperties: map['vNetProperties'] == null ? null : (IntegrationRuntimeVNetPropertiesResponse.fromMap((map['vNetProperties']! as Map).cast<String, dynamic>())).input(),
+      dataFlowProperties: (() {
+        final guardedValue = map['dataFlowProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeDataFlowPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxParallelExecutionsPerNode: (() {
+        final guardedValue = map['maxParallelExecutionsPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeSize: (() {
+        final guardedValue = map['nodeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfNodes: (() {
+        final guardedValue = map['numberOfNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vNetProperties: (() {
+        final guardedValue = map['vNetProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeVNetPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

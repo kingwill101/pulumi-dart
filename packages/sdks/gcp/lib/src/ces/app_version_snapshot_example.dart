@@ -7,33 +7,41 @@ class AppVersionSnapshotExample {
   /// (Output)
   /// Timestamp when the toolset was created.
   final pulumi.Input<String>? createTime;
+
   /// The description of the app version.
   final pulumi.Input<String>? description;
+
   /// The display name of the app version.
   final pulumi.Input<String>? displayName;
+
   /// (Output)
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   final pulumi.Input<String>? entryAgent;
+
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String>? etag;
+
   /// (Output)
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
   final pulumi.Input<bool>? invalid;
+
   /// (Output)
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotExampleMessage>>? messages;
+
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
+
   /// (Output)
   /// Timestamp when the toolset was last updated.
   final pulumi.Input<String>? updateTime;
@@ -68,7 +76,18 @@ class AppVersionSnapshotExample {
       'entryAgent': ?entryAgent,
       'etag': ?etag,
       'invalid': ?invalid,
-      'messages': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessage>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'messages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessage>,
+            List<Map<String, dynamic>>
+          >(
+            messages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'updateTime': ?updateTime,
     };
@@ -76,16 +95,58 @@ class AppVersionSnapshotExample {
 
   factory AppVersionSnapshotExample.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExample(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      invalid: map['invalid'] == null ? null : (map['invalid']! as bool).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(map['messages']!, (value) => AppVersionSnapshotExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entryAgent: (() {
+        final guardedValue = map['entryAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invalid: (() {
+        final guardedValue = map['invalid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      messages: (() {
+        final guardedValue = map['messages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(
+            guardedValue,
+            (value) => AppVersionSnapshotExampleMessage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum EntityProviders {
   valueActiveDirectory("ActiveDirectory"),
   valueAzureActiveDirectory("AzureActiveDirectory");
 
-  const EntityProviders(this.value);
-  final String value;
+  const EntityProviders(this.wireValue);
+  final String wireValue;
 
   static EntityProviders fromValue(String value) {
     for (final item in EntityProviders.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityProviders value: $value');
   }
 }
-

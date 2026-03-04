@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LineRegistrationResponse {
   /// Access token for the line channel registration
   final pulumi.Input<String>? channelAccessToken;
+
   /// Secret for the line channel registration
   final pulumi.Input<String>? channelSecret;
+
   /// Id generated for the line channel registration
   final pulumi.Input<String> generatedId;
 
@@ -31,10 +33,17 @@ class LineRegistrationResponse {
 
   factory LineRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return LineRegistrationResponse(
-      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken']! as String).input(),
-      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret']! as String).input(),
-      generatedId: (map['generatedId'] as String).input(),
+      channelAccessToken: (() {
+        final guardedValue = map['channelAccessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channelSecret: (() {
+        final guardedValue = map['channelSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      generatedId: pulumi.Input.fromValue(map['generatedId'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentStatusResponse {
   /// Last modified time of this blueprint definition.
   final pulumi.Input<String> lastModified;
+
   /// List of resources that were created by the blueprint assignment.
   final pulumi.Input<List<String>> managedResources;
+
   /// Creation time of this blueprint definition.
   final pulumi.Input<String> timeCreated;
 
@@ -31,10 +33,11 @@ class AssignmentStatusResponse {
 
   factory AssignmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentStatusResponse(
-      lastModified: (map['lastModified'] as String).input(),
-      managedResources: ((map['managedResources'] as List).cast<String>()).input(),
-      timeCreated: (map['timeCreated'] as String).input(),
+      lastModified: pulumi.Input.fromValue(map['lastModified'] as String),
+      managedResources: pulumi.Input.fromValue(
+        (map['managedResources'] as List).cast<String>(),
+      ),
+      timeCreated: pulumi.Input.fromValue(map['timeCreated'] as String),
     );
   }
 }
-

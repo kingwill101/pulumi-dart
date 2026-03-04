@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_channel_args.dart';
-import 'notification_channel_property.dart';
 import 'notification_channel_state.dart';
 
 /// Use this resource to create and manage New Relic notification channels. Details regarding supported products and permissions can be found [here](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/destinations).
@@ -161,7 +160,7 @@ import 'notification_channel_state.dart';
 ///
 /// ## Additional Examples
 ///
-/// > **NOTE:** We support all properties. The mentioned properties are just an example.
+/// &gt; **NOTE:** We support all properties. The mentioned properties are just an example.
 ///
 /// ##### [ServiceNow](https://docs.newrelic.com/docs/apis/nerdgraph/examples/nerdgraph-api-notifications-channels/#servicenow)
 /// To see the properties’ keys for your account, check ServiceNow incidents table.
@@ -2049,7 +2048,7 @@ import 'notification_channel_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** Sensitive data such as channel API keys, service keys, etc are not returned from the underlying API for security reasons and may not be set in state when importing.
+/// &gt; **NOTE:** Sensitive data such as channel API keys, service keys, etc are not returned from the underlying API for security reasons and may not be set in state when importing.
 ///
 /// ## Full Scenario Example
 ///
@@ -2379,18 +2378,25 @@ import 'notification_channel_state.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the notification channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// Indicates whether the channel is active.
   late final pulumi.Output<bool?> active;
+
   /// The id of the destination.
   late final pulumi.Output<String> destinationId;
+
   /// The name of the channel.
   late final pulumi.Output<String> name;
+
   /// The type of product.  One of: `DISCUSSIONS`, `ERROR_TRACKING` or `IINT` (workflows).
   late final pulumi.Output<String> product;
+
   /// A nested block that describes a notification channel property. See Nested property blocks below for details.
-  late final pulumi.Output<List<NotificationChannelProperty>> properties;
+  late final pulumi.Output<List<Map<String, dynamic>>> properties;
+
   /// The status of the channel.
   late final pulumi.Output<String> status;
+
   /// The type of channel.  One of: `EMAIL`, `SERVICENOW_INCIDENTS`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA_CLASSIC`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `SLACK` and `SLACK_COLLABORATION`, `PAGERDUTY_ACCOUNT_INTEGRATION`, `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS` or `WORKFLOW_AUTOMATION`.
   late final pulumi.Output<String> type;
 
@@ -2403,19 +2409,19 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/notificationChannel:NotificationChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.active = registerOutput<bool?>('active');
-    this.destinationId = registerOutput<String>('destinationId');
+         'newrelic:index/notificationChannel:NotificationChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    active = registerOutput<bool?>('active');
+    destinationId = registerOutput<String>('destinationId');
     this.name = registerOutput<String>('name');
-    this.product = registerOutput<String>('product');
-    this.properties = registerOutput<List<NotificationChannelProperty>>('properties');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    product = registerOutput<String>('product');
+    properties = registerOutput<List<Map<String, dynamic>>>('properties');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [NotificationChannel] resource's state with the given [name] and [id].
@@ -2436,18 +2442,18 @@ class NotificationChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/notificationChannel:NotificationChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.active = registerOutput<bool?>('active');
-    this.destinationId = registerOutput<String>('destinationId');
+         'newrelic:index/notificationChannel:NotificationChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    active = registerOutput<bool?>('active');
+    destinationId = registerOutput<String>('destinationId');
     this.name = registerOutput<String>('name');
-    this.product = registerOutput<String>('product');
-    this.properties = registerOutput<List<NotificationChannelProperty>>('properties');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    product = registerOutput<String>('product');
+    properties = registerOutput<List<Map<String, dynamic>>>('properties');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

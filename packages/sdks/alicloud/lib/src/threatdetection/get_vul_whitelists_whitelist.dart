@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVulWhitelistsWhitelist {
   /// The ID of the Vul Whitelist.
   final pulumi.Input<String> id;
+
   /// Reason for adding whitelist.
   final pulumi.Input<String> reason;
+
   /// Set the effective range of the whitelist.
   final pulumi.Input<String> targetInfo;
+
   /// The ID of the Vul Whitelist.
   final pulumi.Input<String> vulWhitelistId;
+
   /// Information about the vulnerability to be added to the whitelist.
   final pulumi.Input<String> whitelist;
 
@@ -40,12 +44,11 @@ class GetVulWhitelistsWhitelist {
 
   factory GetVulWhitelistsWhitelist.fromMap(Map<String, dynamic> map) {
     return GetVulWhitelistsWhitelist(
-      id: (map['id'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      targetInfo: (map['targetInfo'] as String).input(),
-      vulWhitelistId: (map['vulWhitelistId'] as String).input(),
-      whitelist: (map['whitelist'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      targetInfo: pulumi.Input.fromValue(map['targetInfo'] as String),
+      vulWhitelistId: pulumi.Input.fromValue(map['vulWhitelistId'] as String),
+      whitelist: pulumi.Input.fromValue(map['whitelist'] as String),
     );
   }
 }
-

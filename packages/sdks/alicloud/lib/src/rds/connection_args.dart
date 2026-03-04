@@ -9,18 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionArgs {
   /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
   ///
-  /// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+  /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
   final pulumi.Input<String>? babelfishPort;
-  /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
+
+  /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
   final pulumi.Input<String>? connectionPrefix;
+
   /// The Id of instance that can run database.
   final pulumi.Input<String> instanceId;
+
   /// Internet connection port. Valid value: [1000-5999]. Default to 3306.
   final pulumi.Input<String>? port;
 
   /// Creates a new [ConnectionArgs].
   /// [babelfishPort] The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
-  /// [connectionPrefix] Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
+  /// [connectionPrefix] Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
   /// [instanceId] The Id of instance that can run database.
   /// [port] Internet connection port. Valid value: [1000-5999]. Default to 3306.
   ConnectionArgs({
@@ -41,11 +44,22 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      babelfishPort: map['babelfishPort'] == null ? null : (map['babelfishPort']! as String).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
+      babelfishPort: (() {
+        final guardedValue = map['babelfishPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionPrefix: (() {
+        final guardedValue = map['connectionPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

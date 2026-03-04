@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LifecycleConfigurationResponse {
   /// The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
   final pulumi.Input<int>? cooldownPeriodInSeconds;
+
   /// The lifecycle type of the session pool.
   final pulumi.Input<String>? lifecycleType;
+
   /// The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
   final pulumi.Input<int>? maxAlivePeriodInSeconds;
 
@@ -31,10 +33,21 @@ class LifecycleConfigurationResponse {
 
   factory LifecycleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigurationResponse(
-      cooldownPeriodInSeconds: map['cooldownPeriodInSeconds'] == null ? null : (map['cooldownPeriodInSeconds']! as int).input(),
-      lifecycleType: map['lifecycleType'] == null ? null : (map['lifecycleType']! as String).input(),
-      maxAlivePeriodInSeconds: map['maxAlivePeriodInSeconds'] == null ? null : (map['maxAlivePeriodInSeconds']! as int).input(),
+      cooldownPeriodInSeconds: (() {
+        final guardedValue = map['cooldownPeriodInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lifecycleType: (() {
+        final guardedValue = map['lifecycleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxAlivePeriodInSeconds: (() {
+        final guardedValue = map['maxAlivePeriodInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

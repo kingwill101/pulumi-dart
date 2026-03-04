@@ -176,7 +176,7 @@ import 'data_collection_endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2023-03-11
@@ -191,24 +191,34 @@ import 'data_collection_endpoint_state.dart';
 class DataCollectionEndpoint extends pulumi.CustomResource {
   /// The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.
   late final pulumi.Output<String> configurationAccessEndpoint;
+
   /// Specifies a description for the Data Collection Endpoint.
   late final pulumi.Output<String?> description;
+
   /// The immutable ID of the Data Collection Endpoint.
   late final pulumi.Output<String> immutableId;
+
   /// The kind of the Data Collection Endpoint. Possible values are `Linux` and `Windows`.
   late final pulumi.Output<String?> kind;
+
   /// The Azure Region where the Data Collection Endpoint should exist. Changing this forces a new Data Collection Endpoint to be created.
   late final pulumi.Output<String> location;
+
   /// The endpoint used for ingesting logs, e.g., `https://mydce-abcd.eastus-1.ingest.monitor.azure.com`.
   late final pulumi.Output<String> logsIngestionEndpoint;
+
   /// The endpoint used for ingesting metrics, e.g., `https://mydce-abcd.eastus-1.metrics.ingest.monitor.azure.com`.
   late final pulumi.Output<String> metricsIngestionEndpoint;
+
   /// The name which should be used for this Data Collection Endpoint. Changing this forces a new Data Collection Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`. Default to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the Resource Group where the Data Collection Endpoint should exist. Changing this forces a new Data Collection Endpoint to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Data Collection Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -221,22 +231,28 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     DataCollectionEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationAccessEndpoint = registerOutput<String>('configurationAccessEndpoint');
-    this.description = registerOutput<String?>('description');
-    this.immutableId = registerOutput<String>('immutableId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.logsIngestionEndpoint = registerOutput<String>('logsIngestionEndpoint');
-    this.metricsIngestionEndpoint = registerOutput<String>('metricsIngestionEndpoint');
+         'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationAccessEndpoint = registerOutput<String>(
+      'configurationAccessEndpoint',
+    );
+    description = registerOutput<String?>('description');
+    immutableId = registerOutput<String>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    logsIngestionEndpoint = registerOutput<String>('logsIngestionEndpoint');
+    metricsIngestionEndpoint = registerOutput<String>(
+      'metricsIngestionEndpoint',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DataCollectionEndpoint] resource's state with the given [name] and [id].
@@ -257,21 +273,27 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationAccessEndpoint = registerOutput<String>('configurationAccessEndpoint');
-    this.description = registerOutput<String?>('description');
-    this.immutableId = registerOutput<String>('immutableId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.logsIngestionEndpoint = registerOutput<String>('logsIngestionEndpoint');
-    this.metricsIngestionEndpoint = registerOutput<String>('metricsIngestionEndpoint');
+         'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationAccessEndpoint = registerOutput<String>(
+      'configurationAccessEndpoint',
+    );
+    description = registerOutput<String?>('description');
+    immutableId = registerOutput<String>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    logsIngestionEndpoint = registerOutput<String>('logsIngestionEndpoint');
+    metricsIngestionEndpoint = registerOutput<String>(
+      'metricsIngestionEndpoint',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

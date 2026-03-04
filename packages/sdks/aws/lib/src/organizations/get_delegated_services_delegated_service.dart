@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDelegatedServicesDelegatedService {
   /// The date that the account became a delegated administrator for this service.
   final pulumi.Input<String> delegationEnabledDate;
+
   /// The name of an AWS service that can request an operation for the specified service.
   final pulumi.Input<String> servicePrincipal;
 
@@ -23,11 +24,16 @@ class GetDelegatedServicesDelegatedService {
     };
   }
 
-  factory GetDelegatedServicesDelegatedService.fromMap(Map<String, dynamic> map) {
+  factory GetDelegatedServicesDelegatedService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDelegatedServicesDelegatedService(
-      delegationEnabledDate: (map['delegationEnabledDate'] as String).input(),
-      servicePrincipal: (map['servicePrincipal'] as String).input(),
+      delegationEnabledDate: pulumi.Input.fromValue(
+        map['delegationEnabledDate'] as String,
+      ),
+      servicePrincipal: pulumi.Input.fromValue(
+        map['servicePrincipal'] as String,
+      ),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'peer_connection_state.dart';
 ///
 /// For information about Vpc Peer Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
 ///
-/// > **NOTE:** Available since v1.186.0.
+/// &gt; **NOTE:** Available since v1.186.0.
 ///
 /// ## Example Usage
 ///
@@ -250,47 +250,61 @@ class PeerConnection extends pulumi.CustomResource {
   /// *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
   /// *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
   ///
-  /// > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
+  /// &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
   late final pulumi.Output<int?> acceptingAliUid;
+
   /// The region ID of the accepter VPC of the VPC peering connection that you want to create.
   ///
   /// - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
   /// - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
   late final pulumi.Output<String> acceptingRegionId;
+
   /// The ID of the accepter VPC.
   late final pulumi.Output<String> acceptingVpcId;
+
   /// The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
   late final pulumi.Output<int> bandwidth;
+
   /// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
   late final pulumi.Output<String> createTime;
+
   /// The description of the VPC peering connection.
   /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String> description;
+
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// Specifies whether to forcefully delete the VPC peering connection. Valid values:
   late final pulumi.Output<bool?> forceDelete;
+
   /// The link type of the VPC peering connection that you want to create. Valid values:
   /// - Platinum.
   /// - Gold: default value.
   ///
-  /// > **NOTE:**
+  /// &gt; **NOTE:**
   ///
-  /// > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+  /// &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
   late final pulumi.Output<String> linkType;
+
   /// The name of the VPC peering connection.
   /// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String> peerConnectionName;
+
   /// The region ID of the resource to which you want to create and add tags.
   late final pulumi.Output<String> regionId;
+
   /// The ID of the new resource group.
   ///
-  /// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+  /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The tags of VpcPeer.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
   late final pulumi.Output<String> vpcId;
 
@@ -303,26 +317,26 @@ class PeerConnection extends pulumi.CustomResource {
     PeerConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/peerConnection:PeerConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptingAliUid = registerOutput<int?>('acceptingAliUid');
-    this.acceptingRegionId = registerOutput<String>('acceptingRegionId');
-    this.acceptingVpcId = registerOutput<String>('acceptingVpcId');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.forceDelete = registerOutput<bool?>('forceDelete');
-    this.linkType = registerOutput<String>('linkType');
-    this.peerConnectionName = registerOutput<String>('peerConnectionName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/peerConnection:PeerConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptingAliUid = registerOutput<int?>('acceptingAliUid');
+    acceptingRegionId = registerOutput<String>('acceptingRegionId');
+    acceptingVpcId = registerOutput<String>('acceptingVpcId');
+    bandwidth = registerOutput<int>('bandwidth');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    linkType = registerOutput<String>('linkType');
+    peerConnectionName = registerOutput<String>('peerConnectionName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [PeerConnection] resource's state with the given [name] and [id].
@@ -343,25 +357,25 @@ class PeerConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/peerConnection:PeerConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptingAliUid = registerOutput<int?>('acceptingAliUid');
-    this.acceptingRegionId = registerOutput<String>('acceptingRegionId');
-    this.acceptingVpcId = registerOutput<String>('acceptingVpcId');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.forceDelete = registerOutput<bool?>('forceDelete');
-    this.linkType = registerOutput<String>('linkType');
-    this.peerConnectionName = registerOutput<String>('peerConnectionName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/peerConnection:PeerConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptingAliUid = registerOutput<int?>('acceptingAliUid');
+    acceptingRegionId = registerOutput<String>('acceptingRegionId');
+    acceptingVpcId = registerOutput<String>('acceptingVpcId');
+    bandwidth = registerOutput<int>('bandwidth');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    linkType = registerOutput<String>('linkType');
+    peerConnectionName = registerOutput<String>('peerConnectionName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

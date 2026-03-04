@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AADBasedSecurityPrincipal {
   /// LedgerRole associated with the Security Principal of Ledger
   final pulumi.Input<String>? ledgerRoleName;
+
   /// UUID/GUID based Principal Id of the Security Principal
   final pulumi.Input<String>? principalId;
+
   /// UUID/GUID based Tenant Id of the Security Principal
   final pulumi.Input<String>? tenantId;
 
@@ -31,10 +33,21 @@ class AADBasedSecurityPrincipal {
 
   factory AADBasedSecurityPrincipal.fromMap(Map<String, dynamic> map) {
     return AADBasedSecurityPrincipal(
-      ledgerRoleName: map['ledgerRoleName'] == null ? null : (map['ledgerRoleName']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      ledgerRoleName: (() {
+        final guardedValue = map['ledgerRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

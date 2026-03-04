@@ -10,20 +10,31 @@ class GooglePrivacyDlpV2BigQueryTableCollection {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableCollection].
   /// [includeRegexes] A collection of regular expressions to match a BigQuery table against.
-  GooglePrivacyDlpV2BigQueryTableCollection({
-    this.includeRegexes,
-  });
+  GooglePrivacyDlpV2BigQueryTableCollection({this.includeRegexes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BigQueryRegexes, Map<String, dynamic>>(includeRegexes, (value) => value.toMap()),
+      'includeRegexes':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2BigQueryRegexes,
+            Map<String, dynamic>
+          >(includeRegexes, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryTableCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : (GooglePrivacyDlpV2BigQueryRegexes.fromMap((map['includeRegexes']! as Map).cast<String, dynamic>())).input(),
+      includeRegexes: (() {
+        final guardedValue = map['includeRegexes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2BigQueryRegexes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -10,23 +10,16 @@ class GetTableAttribute {
   /// Creates a new [GetTableAttribute].
   /// [name] Name of the DynamoDB table.
   /// [type] Required.
-  GetTableAttribute({
-    required this.name,
-    required this.type,
-  });
+  GetTableAttribute({required this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
   factory GetTableAttribute.fromMap(Map<String, dynamic> map) {
     return GetTableAttribute(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

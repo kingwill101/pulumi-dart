@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareNodePoolAutoscalingConfigResponse {
   /// Maximum number of replicas in the NodePool.
   final pulumi.Input<int> maxReplicas;
+
   /// Minimum number of replicas in the NodePool.
   final pulumi.Input<int> minReplicas;
 
@@ -24,11 +25,12 @@ class VmwareNodePoolAutoscalingConfigResponse {
     };
   }
 
-  factory VmwareNodePoolAutoscalingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory VmwareNodePoolAutoscalingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareNodePoolAutoscalingConfigResponse(
-      maxReplicas: (map['maxReplicas'] as int).input(),
-      minReplicas: (map['minReplicas'] as int).input(),
+      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
+      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
     );
   }
 }
-

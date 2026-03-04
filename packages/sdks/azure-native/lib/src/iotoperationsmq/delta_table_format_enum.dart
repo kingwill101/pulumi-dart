@@ -16,16 +16,15 @@ enum DeltaTableFormatEnum {
   binary("binary"),
   utf8("utf8");
 
-  const DeltaTableFormatEnum(this.value);
-  final String value;
+  const DeltaTableFormatEnum(this.wireValue);
+  final String wireValue;
 
   static DeltaTableFormatEnum fromValue(String value) {
     for (final item in DeltaTableFormatEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeltaTableFormatEnum value: $value');
   }
 }
-

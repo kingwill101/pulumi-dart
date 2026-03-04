@@ -6,23 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaAzureCosmosDBSourceConnectorInfo {
   /// Kafka API Key
   final pulumi.Input<String>? apiKey;
+
   /// Kafka API Secret
   final pulumi.Input<String>? apiSecret;
+
   /// Kafka Auth Type
   final pulumi.Input<String>? authType;
+
   /// Kafka Input Data Format Type
   final pulumi.Input<String>? inputFormat;
+
   /// Maximum Tasks
   final pulumi.Input<String>? maxTasks;
+
   /// Kafka Output Data Format Type
   final pulumi.Input<String>? outputFormat;
+
   /// Partner Connector type.
   /// Expected value is 'KafkaAzureCosmosDBSource'.
   final pulumi.Input<String> partnerConnectorType;
+
   /// Kafka Service Account Id
   final pulumi.Input<String>? serviceAccountId;
+
   /// Kafka topics Regex pattern
   final pulumi.Input<String>? topicRegex;
+
   /// Kafka topics directory
   final pulumi.Input<String>? topicsDir;
 
@@ -65,19 +74,58 @@ class KafkaAzureCosmosDBSourceConnectorInfo {
     };
   }
 
-  factory KafkaAzureCosmosDBSourceConnectorInfo.fromMap(Map<String, dynamic> map) {
+  factory KafkaAzureCosmosDBSourceConnectorInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KafkaAzureCosmosDBSourceConnectorInfo(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
-      apiSecret: map['apiSecret'] == null ? null : (map['apiSecret']! as String).input(),
-      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat']! as String).input(),
-      maxTasks: map['maxTasks'] == null ? null : (map['maxTasks']! as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
-      partnerConnectorType: (map['partnerConnectorType'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
-      topicRegex: map['topicRegex'] == null ? null : (map['topicRegex']! as String).input(),
-      topicsDir: map['topicsDir'] == null ? null : (map['topicsDir']! as String).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiSecret: (() {
+        final guardedValue = map['apiSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputFormat: (() {
+        final guardedValue = map['inputFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxTasks: (() {
+        final guardedValue = map['maxTasks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFormat: (() {
+        final guardedValue = map['outputFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerConnectorType: pulumi.Input.fromValue(
+        map['partnerConnectorType'] as String,
+      ),
+      serviceAccountId: (() {
+        final guardedValue = map['serviceAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicRegex: (() {
+        final guardedValue = map['topicRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicsDir: (() {
+        final guardedValue = map['topicsDir'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

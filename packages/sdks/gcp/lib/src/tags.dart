@@ -1,5 +1,3 @@
-library module_tags;
-
 export 'tags/functions.dart';
 export 'tags/get_tag_key_args.dart';
 export 'tags/get_tag_key_iam_policy_args.dart';

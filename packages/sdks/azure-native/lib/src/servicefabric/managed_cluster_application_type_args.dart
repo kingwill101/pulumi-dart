@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterApplicationTypeArgs {
   /// The name of the application type name resource.
   final pulumi.Input<String>? applicationTypeName;
+
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// Resource location depends on the parent resource.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,27 @@ class ManagedClusterApplicationTypeArgs {
 
   factory ManagedClusterApplicationTypeArgs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterApplicationTypeArgs(
-      applicationTypeName: map['applicationTypeName'] == null ? null : (map['applicationTypeName']! as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      applicationTypeName: (() {
+        final guardedValue = map['applicationTypeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

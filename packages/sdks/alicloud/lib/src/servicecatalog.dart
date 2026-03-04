@@ -1,5 +1,3 @@
-library module_servicecatalog;
-
 export 'servicecatalog/functions.dart';
 export 'servicecatalog/get_end_user_products_args.dart';
 export 'servicecatalog/get_end_user_products_end_user_product.dart';

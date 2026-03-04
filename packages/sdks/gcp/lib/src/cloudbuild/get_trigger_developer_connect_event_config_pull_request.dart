@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerDeveloperConnectEventConfigPullRequest {
   /// Regex of branches to match.
   final pulumi.Input<String> branch;
+
   /// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final pulumi.Input<String> commentControl;
+
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final pulumi.Input<bool> invertRegex;
 
@@ -28,12 +30,13 @@ class GetTriggerDeveloperConnectEventConfigPullRequest {
     };
   }
 
-  factory GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(Map<String, dynamic> map) {
+  factory GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTriggerDeveloperConnectEventConfigPullRequest(
-      branch: (map['branch'] as String).input(),
-      commentControl: (map['commentControl'] as String).input(),
-      invertRegex: (map['invertRegex'] as bool).input(),
+      branch: pulumi.Input.fromValue(map['branch'] as String),
+      commentControl: pulumi.Input.fromValue(map['commentControl'] as String),
+      invertRegex: pulumi.Input.fromValue(map['invertRegex'] as bool),
     );
   }
 }
-

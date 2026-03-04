@@ -571,7 +571,7 @@ import 'flexible_server_firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforMySQL` - 2023-12-30
@@ -586,14 +586,18 @@ import 'flexible_server_firewall_rule_state.dart';
 class FlexibleServerFirewallRule extends pulumi.CustomResource {
   /// Specifies the End IP Address associated with this Firewall Rule.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
+
   /// Specifies the name of the MySQL Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the MySQL Flexible Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// Specifies the Start IP Address associated with this Firewall Rule.
   late final pulumi.Output<String> startIpAddress;
 
@@ -606,16 +610,16 @@ class FlexibleServerFirewallRule extends pulumi.CustomResource {
     FlexibleServerFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:mysql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 
   /// Gets an existing [FlexibleServerFirewallRule] resource's state with the given [name] and [id].
@@ -636,15 +640,15 @@ class FlexibleServerFirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:mysql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 }

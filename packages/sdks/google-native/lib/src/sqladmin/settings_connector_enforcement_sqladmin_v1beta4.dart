@@ -4,16 +4,17 @@ enum SettingsConnectorEnforcementSqladminV1beta4 {
   notRequired("NOT_REQUIRED"),
   required("REQUIRED");
 
-  const SettingsConnectorEnforcementSqladminV1beta4(this.value);
-  final String value;
+  const SettingsConnectorEnforcementSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsConnectorEnforcementSqladminV1beta4 fromValue(String value) {
     for (final item in SettingsConnectorEnforcementSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsConnectorEnforcementSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsConnectorEnforcementSqladminV1beta4 value: $value',
+    );
   }
 }
-

@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReportDefinitionArgs {
   /// Name of the report definition to match.
   final pulumi.Input<String> reportName;
+
   /// Map of key-value pairs assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetReportDefinitionArgs].
   /// [reportName] Name of the report definition to match.
   /// [tags] Map of key-value pairs assigned to the resource.
-  GetReportDefinitionArgs({
-    required this.reportName,
-    this.tags,
-  });
+  GetReportDefinitionArgs({required this.reportName, this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'reportName': reportName,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'reportName': reportName, 'tags': ?tags};
   }
 
   factory GetReportDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionArgs(
-      reportName: (map['reportName'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      reportName: pulumi.Input.fromValue(map['reportName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

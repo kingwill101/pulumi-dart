@@ -7,7 +7,9 @@ import 'average_partition_load_scaling_trigger_response.dart';
 /// Specifies a metric to load balance a service during runtime.
 class ScalingPolicyResponse {
   /// Specifies the mechanism associated with this scaling policy
-  final pulumi.Input<AddRemoveIncrementalNamedPartitionScalingMechanismResponse> scalingMechanism;
+  final pulumi.Input<AddRemoveIncrementalNamedPartitionScalingMechanismResponse>
+  scalingMechanism;
+
   /// Specifies the trigger associated with this scaling policy.
   final pulumi.Input<AveragePartitionLoadScalingTriggerResponse> scalingTrigger;
 
@@ -21,16 +23,31 @@ class ScalingPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scalingMechanism': pulumi.Input.mapInputValue<AddRemoveIncrementalNamedPartitionScalingMechanismResponse, Map<String, dynamic>>(scalingMechanism, (value) => value.toMap()),
-      'scalingTrigger': pulumi.Input.mapInputValue<AveragePartitionLoadScalingTriggerResponse, Map<String, dynamic>>(scalingTrigger, (value) => value.toMap()),
+      'scalingMechanism':
+          pulumi.Input.mapInputValue<
+            AddRemoveIncrementalNamedPartitionScalingMechanismResponse,
+            Map<String, dynamic>
+          >(scalingMechanism, (value) => value.toMap()),
+      'scalingTrigger':
+          pulumi.Input.mapInputValue<
+            AveragePartitionLoadScalingTriggerResponse,
+            Map<String, dynamic>
+          >(scalingTrigger, (value) => value.toMap()),
     };
   }
 
   factory ScalingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ScalingPolicyResponse(
-      scalingMechanism: (AddRemoveIncrementalNamedPartitionScalingMechanismResponse.fromMap((map['scalingMechanism'] as Map).cast<String, dynamic>())).input(),
-      scalingTrigger: (AveragePartitionLoadScalingTriggerResponse.fromMap((map['scalingTrigger'] as Map).cast<String, dynamic>())).input(),
+      scalingMechanism: pulumi.Input.fromValue(
+        AddRemoveIncrementalNamedPartitionScalingMechanismResponse.fromMap(
+          (map['scalingMechanism']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      scalingTrigger: pulumi.Input.fromValue(
+        AveragePartitionLoadScalingTriggerResponse.fromMap(
+          (map['scalingTrigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

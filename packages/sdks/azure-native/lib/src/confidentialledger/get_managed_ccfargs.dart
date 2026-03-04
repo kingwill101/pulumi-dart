@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedCCFArgs {
   /// Name of the Managed CCF
   final pulumi.Input<String> appName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetManagedCCFArgs].
   /// [appName] Name of the Managed CCF
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedCCFArgs({
-    required this.appName,
-    required this.resourceGroupName,
-  });
+  GetManagedCCFArgs({required this.appName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetManagedCCFArgs {
 
   factory GetManagedCCFArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedCCFArgs(
-      appName: (map['appName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

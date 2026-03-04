@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicEndpointArgs {
   /// The public network connection string prefix of the instance.
   final pulumi.Input<String> connectionStringPrefix;
+
   /// The cluster ID.
   final pulumi.Input<String> dbInstanceId;
+
   /// Network type of the connection address. Valid values:
   /// - Public: Public network.
   final pulumi.Input<String> netType;
@@ -35,10 +37,11 @@ class PublicEndpointArgs {
 
   factory PublicEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PublicEndpointArgs(
-      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      netType: (map['netType'] as String).input(),
+      connectionStringPrefix: pulumi.Input.fromValue(
+        map['connectionStringPrefix'] as String,
+      ),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      netType: pulumi.Input.fromValue(map['netType'] as String),
     );
   }
 }
-

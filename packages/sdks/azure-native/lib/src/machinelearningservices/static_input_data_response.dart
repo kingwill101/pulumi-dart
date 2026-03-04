@@ -6,19 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticInputDataResponse {
   /// Mapping of column names to special uses.
   final pulumi.Input<Map<String, String>>? columns;
+
   /// The context metadata of the data source.
   final pulumi.Input<String>? dataContext;
+
   /// Monitoring input data type enum.
   /// Expected value is 'Static'.
   final pulumi.Input<String> inputDataType;
+
   /// [Required] Specifies the type of job.
   final pulumi.Input<String> jobInputType;
+
   /// Reference to the component asset used to preprocess the data.
   final pulumi.Input<String>? preprocessingComponentId;
+
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
+
   /// [Required] The end date of the data window.
   final pulumi.Input<String> windowEnd;
+
   /// [Required] The start date of the data window.
   final pulumi.Input<String> windowStart;
 
@@ -57,15 +64,28 @@ class StaticInputDataResponse {
 
   factory StaticInputDataResponse.fromMap(Map<String, dynamic> map) {
     return StaticInputDataResponse(
-      columns: map['columns'] == null ? null : ((map['columns']! as Map).cast<String, String>()).input(),
-      dataContext: map['dataContext'] == null ? null : (map['dataContext']! as String).input(),
-      inputDataType: (map['inputDataType'] as String).input(),
-      jobInputType: (map['jobInputType'] as String).input(),
-      preprocessingComponentId: map['preprocessingComponentId'] == null ? null : (map['preprocessingComponentId']! as String).input(),
-      uri: (map['uri'] as String).input(),
-      windowEnd: (map['windowEnd'] as String).input(),
-      windowStart: (map['windowStart'] as String).input(),
+      columns: (() {
+        final guardedValue = map['columns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      dataContext: (() {
+        final guardedValue = map['dataContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputDataType: pulumi.Input.fromValue(map['inputDataType'] as String),
+      jobInputType: pulumi.Input.fromValue(map['jobInputType'] as String),
+      preprocessingComponentId: (() {
+        final guardedValue = map['preprocessingComponentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      windowEnd: pulumi.Input.fromValue(map['windowEnd'] as String),
+      windowStart: pulumi.Input.fromValue(map['windowStart'] as String),
     );
   }
 }
-

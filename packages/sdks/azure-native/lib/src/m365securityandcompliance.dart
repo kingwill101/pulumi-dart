@@ -1,5 +1,3 @@
-library module_m365securityandcompliance;
-
 export 'm365securityandcompliance/functions.dart';
 export 'm365securityandcompliance/get_private_endpoint_connections_adt_apiargs.dart';
 export 'm365securityandcompliance/get_private_endpoint_connections_adt_apiresult.dart';

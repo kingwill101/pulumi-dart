@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiagnosticServiceArgs {
   /// Name of MQ diagnostic resource
   final pulumi.Input<String> diagnosticServiceName;
+
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetDiagnosticServiceArgs {
 
   factory GetDiagnosticServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticServiceArgs(
-      diagnosticServiceName: (map['diagnosticServiceName'] as String).input(),
-      mqName: (map['mqName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      diagnosticServiceName: pulumi.Input.fromValue(
+        map['diagnosticServiceName'] as String,
+      ),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'virtual_network_subnet_status_provisioning_status_response.dart';
 class VirtualNetworkSubnetStatusResponse {
   /// VirtualNetworkSubnet provisioning error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
+
   /// Public IP provisioning status
-  final pulumi.Input<VirtualNetworkSubnetStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<VirtualNetworkSubnetStatusProvisioningStatusResponse>?
+  provisioningStatus;
 
   /// Creates a new [VirtualNetworkSubnetStatusResponse].
   /// [errorCode] VirtualNetworkSubnet provisioning error code
@@ -26,16 +29,35 @@ class VirtualNetworkSubnetStatusResponse {
     return <String, dynamic>{
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkSubnetStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNetworkSubnetStatusProvisioningStatusResponse,
+            Map<String, dynamic>
+          >(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory VirtualNetworkSubnetStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualNetworkSubnetStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatus: (() {
+        final guardedValue = map['provisioningStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNetworkSubnetStatusProvisioningStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedHsmSkuResponse {
   /// SKU Family of the managed HSM Pool
   final pulumi.Input<String> family;
+
   /// SKU of the managed HSM Pool
   final pulumi.Input<String> name;
 
   /// Creates a new [ManagedHsmSkuResponse].
   /// [family] SKU Family of the managed HSM Pool
   /// [name] SKU of the managed HSM Pool
-  ManagedHsmSkuResponse({
-    required this.family,
-    required this.name,
-  });
+  ManagedHsmSkuResponse({required this.family, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'family': family,
-      'name': name,
-    };
+    return <String, dynamic>{'family': family, 'name': name};
   }
 
   factory ManagedHsmSkuResponse.fromMap(Map<String, dynamic> map) {
     return ManagedHsmSkuResponse(
-      family: (map['family'] as String).input(),
-      name: (map['name'] as String).input(),
+      family: pulumi.Input.fromValue(map['family'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

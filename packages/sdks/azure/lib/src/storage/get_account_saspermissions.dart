@@ -5,25 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountSASPermissions {
   /// Should Add permissions be enabled for this SAS?
   final pulumi.Input<bool> add;
+
   /// Should Create permissions be enabled for this SAS?
   final pulumi.Input<bool> create;
+
   /// Should Delete permissions be enabled for this SAS?
   final pulumi.Input<bool> delete;
+
   /// Should Filter by Index Tags permissions be enabled for this SAS?
   ///
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas)
   /// for additional details on the fields above.
   final pulumi.Input<bool> filter;
+
   /// Should List permissions be enabled for this SAS?
   final pulumi.Input<bool> list;
+
   /// Should Process permissions be enabled for this SAS?
   final pulumi.Input<bool> process;
+
   /// Should Read permissions be enabled for this SAS?
   final pulumi.Input<bool> read;
+
   /// Should Get / Set Index Tags permissions be enabled for this SAS?
   final pulumi.Input<bool> tag;
+
   /// Should Update permissions be enabled for this SAS?
   final pulumi.Input<bool> update;
+
   /// Should Write permissions be enabled for this SAS?
   final pulumi.Input<bool> write;
 
@@ -68,17 +77,16 @@ class GetAccountSASPermissions {
 
   factory GetAccountSASPermissions.fromMap(Map<String, dynamic> map) {
     return GetAccountSASPermissions(
-      add: (map['add'] as bool).input(),
-      create: (map['create'] as bool).input(),
-      delete: (map['delete'] as bool).input(),
-      filter: (map['filter'] as bool).input(),
-      list: (map['list'] as bool).input(),
-      process: (map['process'] as bool).input(),
-      read: (map['read'] as bool).input(),
-      tag: (map['tag'] as bool).input(),
-      update: (map['update'] as bool).input(),
-      write: (map['write'] as bool).input(),
+      add: pulumi.Input.fromValue(map['add'] as bool),
+      create: pulumi.Input.fromValue(map['create'] as bool),
+      delete: pulumi.Input.fromValue(map['delete'] as bool),
+      filter: pulumi.Input.fromValue(map['filter'] as bool),
+      list: pulumi.Input.fromValue(map['list'] as bool),
+      process: pulumi.Input.fromValue(map['process'] as bool),
+      read: pulumi.Input.fromValue(map['read'] as bool),
+      tag: pulumi.Input.fromValue(map['tag'] as bool),
+      update: pulumi.Input.fromValue(map['update'] as bool),
+      write: pulumi.Input.fromValue(map['write'] as bool),
     );
   }
 }
-

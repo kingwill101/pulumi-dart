@@ -4,16 +4,15 @@ enum VersioningScheme {
   valueQuery("Query"),
   valueHeader("Header");
 
-  const VersioningScheme(this.value);
-  final String value;
+  const VersioningScheme(this.wireValue);
+  final String wireValue;
 
   static VersioningScheme fromValue(String value) {
     for (final item in VersioningScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersioningScheme value: $value');
   }
 }
-

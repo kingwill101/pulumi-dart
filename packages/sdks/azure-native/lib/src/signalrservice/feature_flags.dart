@@ -9,16 +9,15 @@ enum FeatureFlags {
   valueEnableMessagingLogs("EnableMessagingLogs"),
   valueEnableLiveTrace("EnableLiveTrace");
 
-  const FeatureFlags(this.value);
-  final String value;
+  const FeatureFlags(this.wireValue);
+  final String wireValue;
 
   static FeatureFlags fromValue(String value) {
     for (final item in FeatureFlags.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureFlags value: $value');
   }
 }
-

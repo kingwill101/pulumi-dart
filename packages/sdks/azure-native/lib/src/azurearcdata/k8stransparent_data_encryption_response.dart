@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class K8stransparentDataEncryptionResponse {
   /// Transparent data encryption mode. Can be Service Managed, Customer managed or disabled
   final pulumi.Input<String>? mode;
+
   /// Protector secret for customer managed Transparent data encryption mode
   final pulumi.Input<String>? protectorSecret;
 
   /// Creates a new [K8stransparentDataEncryptionResponse].
   /// [mode] Transparent data encryption mode. Can be Service Managed, Customer managed or disabled
   /// [protectorSecret] Protector secret for customer managed Transparent data encryption mode
-  K8stransparentDataEncryptionResponse({
-    this.mode,
-    this.protectorSecret,
-  });
+  K8stransparentDataEncryptionResponse({this.mode, this.protectorSecret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class K8stransparentDataEncryptionResponse {
     };
   }
 
-  factory K8stransparentDataEncryptionResponse.fromMap(Map<String, dynamic> map) {
+  factory K8stransparentDataEncryptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return K8stransparentDataEncryptionResponse(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      protectorSecret: map['protectorSecret'] == null ? null : (map['protectorSecret']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectorSecret: (() {
+        final guardedValue = map['protectorSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

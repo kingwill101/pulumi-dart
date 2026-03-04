@@ -3,16 +3,15 @@ enum FilterBehavior {
   dROP("DROP"),
   kEEP("KEEP");
 
-  const FilterBehavior(this.value);
-  final String value;
+  const FilterBehavior(this.wireValue);
+  final String wireValue;
 
   static FilterBehavior fromValue(String value) {
     for (final item in FilterBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FilterBehavior value: $value');
   }
 }
-

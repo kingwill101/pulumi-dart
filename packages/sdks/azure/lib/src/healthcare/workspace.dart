@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_args.dart';
-import 'workspace_private_endpoint_connection.dart';
 import 'workspace_state.dart';
 
 /// Manages a Healthcare workspace
@@ -109,7 +108,7 @@ import 'workspace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2024-03-31
@@ -124,11 +123,15 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// Specifies the Azure Region where the Healthcare Workspace should be created. Changing this forces a new Healthcare Workspace to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<WorkspacePrivateEndpointConnection>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Healthcare Workspace.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -141,16 +144,18 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:healthcare/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<WorkspacePrivateEndpointConnection>>('privateEndpointConnections');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -171,15 +176,17 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:healthcare/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<WorkspacePrivateEndpointConnection>>('privateEndpointConnections');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

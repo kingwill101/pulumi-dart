@@ -8,20 +8,17 @@ class DomainOsNvRamSourceVhostUserSpicePort {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainOsNvRamSourceVhostUserSpicePort({
-    required this.channel,
-  });
+  DomainOsNvRamSourceVhostUserSpicePort({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
-  factory DomainOsNvRamSourceVhostUserSpicePort.fromMap(Map<String, dynamic> map) {
+  factory DomainOsNvRamSourceVhostUserSpicePort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainOsNvRamSourceVhostUserSpicePort(
-      channel: (map['channel'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
-

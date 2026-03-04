@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitKindDependency {
   /// An alias for the dependency. Used for input variable mapping.
   final pulumi.Input<String> alias;
+
   /// The unit kind of the dependency.
   final pulumi.Input<String> unitKind;
 
   /// Creates a new [UnitKindDependency].
   /// [alias] An alias for the dependency. Used for input variable mapping.
   /// [unitKind] The unit kind of the dependency.
-  UnitKindDependency({
-    required this.alias,
-    required this.unitKind,
-  });
+  UnitKindDependency({required this.alias, required this.unitKind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'alias': alias,
-      'unitKind': unitKind,
-    };
+    return <String, dynamic>{'alias': alias, 'unitKind': unitKind};
   }
 
   factory UnitKindDependency.fromMap(Map<String, dynamic> map) {
     return UnitKindDependency(
-      alias: (map['alias'] as String).input(),
-      unitKind: (map['unitKind'] as String).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      unitKind: pulumi.Input.fromValue(map['unitKind'] as String),
     );
   }
 }
-

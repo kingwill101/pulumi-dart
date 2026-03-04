@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeekDayOfMonthResponseOsconfigV1beta {
   /// A day of the week.
   final pulumi.Input<String> dayOfWeek;
+
   /// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
   final pulumi.Input<int> dayOffset;
+
   /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
   final pulumi.Input<int> weekOrdinal;
 
@@ -29,12 +31,13 @@ class WeekDayOfMonthResponseOsconfigV1beta {
     };
   }
 
-  factory WeekDayOfMonthResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
+  factory WeekDayOfMonthResponseOsconfigV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WeekDayOfMonthResponseOsconfigV1beta(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      dayOffset: (map['dayOffset'] as int).input(),
-      weekOrdinal: (map['weekOrdinal'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      dayOffset: pulumi.Input.fromValue(map['dayOffset'] as int),
+      weekOrdinal: pulumi.Input.fromValue(map['weekOrdinal'] as int),
     );
   }
 }
-

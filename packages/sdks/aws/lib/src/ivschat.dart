@@ -1,5 +1,3 @@
-library module_ivschat;
-
 export 'ivschat/logging_configuration.dart';
 export 'ivschat/logging_configuration_args.dart';
 export 'ivschat/logging_configuration_destination_configuration.dart';

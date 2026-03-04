@@ -155,14 +155,19 @@ import 'private_atlase_args.dart';
 class PrivateAtlase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The Private Atlas resource properties.
   late final pulumi.Output<PrivateAtlasPropertiesResponse> properties;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -175,16 +180,16 @@ class PrivateAtlase extends pulumi.CustomResource {
     PrivateAtlaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:maps:PrivateAtlase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:maps:PrivateAtlase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateAtlasPropertiesResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateAtlasPropertiesResponse>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

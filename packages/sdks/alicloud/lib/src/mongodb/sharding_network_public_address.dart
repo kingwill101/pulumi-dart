@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sharding_network_public_address_args.dart';
-import 'sharding_network_public_address_network_address.dart';
 import 'sharding_network_public_address_state.dart';
 
 /// Provides a MongoDB Sharding Network Public Address resource.
 ///
 /// For information about MongoDB Sharding Network Public Address and how to use it, see [What is Sharding Network Public Address](https://www.alibabacloud.com/help/doc-detail/67602.html).
 ///
-/// > **NOTE:** Available since v1.149.0.
+/// &gt; **NOTE:** Available since v1.149.0.
 ///
-/// > **NOTE:** This operation supports sharded cluster instances only.
+/// &gt; **NOTE:** This operation supports sharded cluster instances only.
 ///
 /// ## Example Usage
 ///
@@ -366,8 +365,10 @@ import 'sharding_network_public_address_state.dart';
 class ShardingNetworkPublicAddress extends pulumi.CustomResource {
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The endpoint of the instance.
-  late final pulumi.Output<List<ShardingNetworkPublicAddressNetworkAddress>> networkAddresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkAddresses;
+
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   late final pulumi.Output<String> nodeId;
 
@@ -380,14 +381,16 @@ class ShardingNetworkPublicAddress extends pulumi.CustomResource {
     ShardingNetworkPublicAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkAddresses = registerOutput<List<ShardingNetworkPublicAddressNetworkAddress>>('networkAddresses');
-    this.nodeId = registerOutput<String>('nodeId');
+         'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
+      'networkAddresses',
+    );
+    nodeId = registerOutput<String>('nodeId');
   }
 
   /// Gets an existing [ShardingNetworkPublicAddress] resource's state with the given [name] and [id].
@@ -408,13 +411,15 @@ class ShardingNetworkPublicAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkAddresses = registerOutput<List<ShardingNetworkPublicAddressNetworkAddress>>('networkAddresses');
-    this.nodeId = registerOutput<String>('nodeId');
+         'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
+      'networkAddresses',
+    );
+    nodeId = registerOutput<String>('nodeId');
   }
 }

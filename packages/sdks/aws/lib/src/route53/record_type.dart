@@ -12,16 +12,15 @@ enum RecordType {
   valueSRV("SRV"),
   valueTXT("TXT");
 
-  const RecordType(this.value);
-  final String value;
+  const RecordType(this.wireValue);
+  final String wireValue;
 
   static RecordType fromValue(String value) {
     for (final item in RecordType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecordType value: $value');
   }
 }
-

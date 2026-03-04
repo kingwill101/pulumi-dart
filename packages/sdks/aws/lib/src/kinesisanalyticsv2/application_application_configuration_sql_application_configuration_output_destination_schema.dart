@@ -13,15 +13,16 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestin
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recordFormatType': recordFormatType,
-    };
+    return <String, dynamic>{'recordFormatType': recordFormatType};
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema(
-      recordFormatType: (map['recordFormatType'] as String).input(),
+      recordFormatType: pulumi.Input.fromValue(
+        map['recordFormatType'] as String,
+      ),
     );
   }
 }
-

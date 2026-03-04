@@ -6,10 +6,16 @@ import 'model_primary_container_additional_model_data_source_s3_data_source_mode
 class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
   final pulumi.Input<String> compressionType;
+
   /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
-  final pulumi.Input<ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<
+    ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig
+  >?
+  modelAccessConfig;
+
   /// Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   final pulumi.Input<String> s3DataType;
+
   /// The S3 path of model data to deploy.
   final pulumi.Input<String> s3Uri;
 
@@ -28,19 +34,32 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compressionType': compressionType,
-      'modelAccessConfig': ?pulumi.Input.mapOptionalInputValue<ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig, Map<String, dynamic>>(modelAccessConfig, (value) => value.toMap()),
+      'modelAccessConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig,
+            Map<String, dynamic>
+          >(modelAccessConfig, (value) => value.toMap()),
       's3DataType': s3DataType,
       's3Uri': s3Uri,
     };
   }
 
-  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap(Map<String, dynamic> map) {
+  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModelPrimaryContainerAdditionalModelDataSourceS3DataSource(
-      compressionType: (map['compressionType'] as String).input(),
-      modelAccessConfig: map['modelAccessConfig'] == null ? null : ((ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap((map['modelAccessConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      s3DataType: (map['s3DataType'] as String).input(),
-      s3Uri: (map['s3Uri'] as String).input(),
+      compressionType: pulumi.Input.fromValue(map['compressionType'] as String),
+      modelAccessConfig: (() {
+        final guardedValue = map['modelAccessConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3DataType: pulumi.Input.fromValue(map['s3DataType'] as String),
+      s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
     );
   }
 }
-

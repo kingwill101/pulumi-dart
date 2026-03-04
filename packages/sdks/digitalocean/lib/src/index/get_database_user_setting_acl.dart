@@ -27,10 +27,9 @@ class GetDatabaseUserSettingAcl {
 
   factory GetDatabaseUserSettingAcl.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserSettingAcl(
-      id: (map['id'] as String).input(),
-      permission: (map['permission'] as String).input(),
-      topic: (map['topic'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

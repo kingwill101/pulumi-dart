@@ -11,9 +11,9 @@ import 'iammember_state.dart';
 /// * `gcp.serviceaccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
 /// * `gcp.serviceaccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
 ///
-/// > **Note:** `gcp.serviceaccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceaccount.IAMBinding` and `gcp.serviceaccount.IAMMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.serviceaccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceaccount.IAMBinding` and `gcp.serviceaccount.IAMMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## Example Usage
 ///
@@ -1757,8 +1757,10 @@ class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<IAMMemberCondition?> condition;
+
   /// (Computed) The etag of the service account IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -1768,10 +1770,12 @@ class IAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
+
   /// The fully-qualified name of the service account to apply policy to.
   late final pulumi.Output<String> serviceAccountId;
 
@@ -1784,16 +1788,16 @@ class IAMMember extends pulumi.CustomResource {
     IAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:serviceaccount/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
-    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+         'gcp:serviceaccount/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
   }
 
   /// Gets an existing [IAMMember] resource's state with the given [name] and [id].
@@ -1814,15 +1818,15 @@ class IAMMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:serviceaccount/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
-    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+         'gcp:serviceaccount/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionPhysicalConnectionRequirements {
   /// The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
   final pulumi.Input<String>? availabilityZone;
+
   /// The security group ID list used by the connection.
   final pulumi.Input<List<String>>? securityGroupIdLists;
+
   /// The subnet ID used by the connection.
   final pulumi.Input<String>? subnetId;
 
@@ -28,12 +30,25 @@ class ConnectionPhysicalConnectionRequirements {
     };
   }
 
-  factory ConnectionPhysicalConnectionRequirements.fromMap(Map<String, dynamic> map) {
+  factory ConnectionPhysicalConnectionRequirements.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionPhysicalConnectionRequirements(
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      securityGroupIdLists: map['securityGroupIdLists'] == null ? null : (((map['securityGroupIdLists'] as List).cast<String>()).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIdLists: (() {
+        final guardedValue = map['securityGroupIdLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

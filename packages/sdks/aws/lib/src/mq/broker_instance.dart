@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerInstance {
   /// URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engine_type`.
   final pulumi.Input<String>? consoleUrl;
+
   /// Broker's wire-level protocol endpoints in the following order & format referenceable e.g., as `instances.0.endpoints.0` (SSL):
   /// * For `ActiveMQ`:
   /// * `ssl://broker-id.mq.us-west-2.amazonaws.com:61617`
@@ -15,6 +16,7 @@ class BrokerInstance {
   /// * For `RabbitMQ`:
   /// * `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
   final pulumi.Input<List<String>>? endpoints;
+
   /// IP Address of the broker.
   final pulumi.Input<String>? ipAddress;
 
@@ -22,11 +24,7 @@ class BrokerInstance {
   /// [consoleUrl] URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engine_type`.
   /// [endpoints] Broker's wire-level protocol endpoints in the following order & format referenceable e.g., as `instances.0.endpoints.0` (SSL):
   /// [ipAddress] IP Address of the broker.
-  BrokerInstance({
-    this.consoleUrl,
-    this.endpoints,
-    this.ipAddress,
-  });
+  BrokerInstance({this.consoleUrl, this.endpoints, this.ipAddress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +36,21 @@ class BrokerInstance {
 
   factory BrokerInstance.fromMap(Map<String, dynamic> map) {
     return BrokerInstance(
-      consoleUrl: map['consoleUrl'] == null ? null : ((map['consoleUrl'] as String).input()).input(),
-      endpoints: map['endpoints'] == null ? null : (((map['endpoints'] as List).cast<String>()).input()).input(),
-      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      consoleUrl: (() {
+        final guardedValue = map['consoleUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoints: (() {
+        final guardedValue = map['endpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class CreationDataResponse {
 
   /// Creates a new [CreationDataResponse].
   /// [sourceResourceId] This is the ARM ID of the source object to be used to create the target object.
-  CreationDataResponse({
-    this.sourceResourceId,
-  });
+  CreationDataResponse({this.sourceResourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourceResourceId': ?sourceResourceId,
-    };
+    return <String, dynamic>{'sourceResourceId': ?sourceResourceId};
   }
 
   factory CreationDataResponse.fromMap(Map<String, dynamic> map) {
     return CreationDataResponse(
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      sourceResourceId: (() {
+        final guardedValue = map['sourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslConfigurationResponse {
   /// Cert data
   final pulumi.Input<String>? cert;
+
   /// CNAME of the cert
   final pulumi.Input<String>? cname;
+
   /// Key data
   final pulumi.Input<String>? key;
+
   /// Leaf domain label of public endpoint
   final pulumi.Input<String>? leafDomainLabel;
+
   /// Indicates whether to overwrite existing domain label.
   final pulumi.Input<bool>? overwriteExistingDomain;
+
   /// Enable or disable ssl for scoring
   final pulumi.Input<String>? status;
 
@@ -46,13 +51,36 @@ class SslConfigurationResponse {
 
   factory SslConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SslConfigurationResponse(
-      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
-      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      leafDomainLabel: map['leafDomainLabel'] == null ? null : (map['leafDomainLabel']! as String).input(),
-      overwriteExistingDomain: map['overwriteExistingDomain'] == null ? null : (map['overwriteExistingDomain']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      cert: (() {
+        final guardedValue = map['cert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cname: (() {
+        final guardedValue = map['cname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      leafDomainLabel: (() {
+        final guardedValue = map['leafDomainLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overwriteExistingDomain: (() {
+        final guardedValue = map['overwriteExistingDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

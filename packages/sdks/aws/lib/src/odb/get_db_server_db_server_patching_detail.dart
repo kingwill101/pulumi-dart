@@ -31,11 +31,16 @@ class GetDbServerDbServerPatchingDetail {
 
   factory GetDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServerDbServerPatchingDetail(
-      estimatedPatchDuration: (map['estimatedPatchDuration'] as int).input(),
-      patchingStatus: (map['patchingStatus'] as String).input(),
-      timePatchingEnded: (map['timePatchingEnded'] as String).input(),
-      timePatchingStarted: (map['timePatchingStarted'] as String).input(),
+      estimatedPatchDuration: pulumi.Input.fromValue(
+        map['estimatedPatchDuration'] as int,
+      ),
+      patchingStatus: pulumi.Input.fromValue(map['patchingStatus'] as String),
+      timePatchingEnded: pulumi.Input.fromValue(
+        map['timePatchingEnded'] as String,
+      ),
+      timePatchingStarted: pulumi.Input.fromValue(
+        map['timePatchingStarted'] as String,
+      ),
     );
   }
 }
-

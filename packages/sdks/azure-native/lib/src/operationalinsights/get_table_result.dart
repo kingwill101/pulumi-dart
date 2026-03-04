@@ -10,36 +10,52 @@ import 'system_data_response.dart';
 class GetTableResult {
   /// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
   final int archiveRetentionInDays;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The timestamp that table plan was last modified (UTC).
   final String lastPlanModifiedDate;
+
   /// The name of the resource
   final String name;
+
   /// Instruct the system how to handle and charge the logs ingested to this table.
   final String? plan;
+
   /// Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
   final String provisioningState;
+
   /// Parameters of the restore operation that initiated this table.
   final RestoredLogsResponse? restoredLogs;
+
   /// Search job execution statistics.
   final ResultStatisticsResponse resultStatistics;
+
   /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
   final int? retentionInDays;
+
   /// True - Value originates from workspace retention in days, False - Customer specific.
   final bool retentionInDaysAsDefault;
+
   /// Table schema.
   final SchemaResponse? schema;
+
   /// Parameters of the search job that initiated this table.
   final SearchResultsResponse? searchResults;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
   final int? totalRetentionInDays;
+
   /// True - Value originates from retention in days, False - Customer specific.
   final bool totalRetentionInDaysAsDefault;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -90,12 +106,12 @@ class GetTableResult {
       'name': name,
       'plan': ?plan,
       'provisioningState': provisioningState,
-      'restoredLogs': ?restoredLogs == null ? null : restoredLogs!.toMap(),
+      'restoredLogs': ?restoredLogs?.toMap(),
       'resultStatistics': resultStatistics.toMap(),
       'retentionInDays': ?retentionInDays,
       'retentionInDaysAsDefault': retentionInDaysAsDefault,
-      'schema': ?schema == null ? null : schema!.toMap(),
-      'searchResults': ?searchResults == null ? null : searchResults!.toMap(),
+      'schema': ?schema?.toMap(),
+      'searchResults': ?searchResults?.toMap(),
       'systemData': systemData.toMap(),
       'totalRetentionInDays': ?totalRetentionInDays,
       'totalRetentionInDaysAsDefault': totalRetentionInDaysAsDefault,
@@ -110,19 +126,53 @@ class GetTableResult {
       id: map['id'] as String,
       lastPlanModifiedDate: map['lastPlanModifiedDate'] as String,
       name: map['name'] as String,
-      plan: map['plan'] == null ? null : map['plan']! as String,
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      restoredLogs: map['restoredLogs'] == null ? null : RestoredLogsResponse.fromMap((map['restoredLogs']! as Map).cast<String, dynamic>()),
-      resultStatistics: ResultStatisticsResponse.fromMap((map['resultStatistics'] as Map).cast<String, dynamic>()),
-      retentionInDays: map['retentionInDays'] == null ? null : map['retentionInDays']! as int,
+      restoredLogs: (() {
+        final guardedValue = map['restoredLogs'];
+        if (guardedValue == null) return null;
+        return RestoredLogsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      resultStatistics: ResultStatisticsResponse.fromMap(
+        (map['resultStatistics']! as Map).cast<String, dynamic>(),
+      ),
+      retentionInDays: (() {
+        final guardedValue = map['retentionInDays'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       retentionInDaysAsDefault: map['retentionInDaysAsDefault'] as bool,
-      schema: map['schema'] == null ? null : SchemaResponse.fromMap((map['schema']! as Map).cast<String, dynamic>()),
-      searchResults: map['searchResults'] == null ? null : SearchResultsResponse.fromMap((map['searchResults']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : map['totalRetentionInDays']! as int,
-      totalRetentionInDaysAsDefault: map['totalRetentionInDaysAsDefault'] as bool,
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return SchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      searchResults: (() {
+        final guardedValue = map['searchResults'];
+        if (guardedValue == null) return null;
+        return SearchResultsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      totalRetentionInDays: (() {
+        final guardedValue = map['totalRetentionInDays'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      totalRetentionInDaysAsDefault:
+          map['totalRetentionInDaysAsDefault'] as bool,
       type: map['type'] as String,
     );
   }
 }
-

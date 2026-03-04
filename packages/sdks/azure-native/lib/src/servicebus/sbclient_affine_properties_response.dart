@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SBClientAffinePropertiesResponse {
   /// Indicates the Client ID of the application that created the client-affine subscription.
   final pulumi.Input<String>? clientId;
+
   /// For client-affine subscriptions, this value indicates whether the subscription is durable or not.
   final pulumi.Input<bool>? isDurable;
+
   /// For client-affine subscriptions, this value indicates whether the subscription is shared or not.
   final pulumi.Input<bool>? isShared;
 
@@ -31,10 +33,21 @@ class SBClientAffinePropertiesResponse {
 
   factory SBClientAffinePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SBClientAffinePropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      isDurable: map['isDurable'] == null ? null : (map['isDurable']! as bool).input(),
-      isShared: map['isShared'] == null ? null : (map['isShared']! as bool).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDurable: (() {
+        final guardedValue = map['isDurable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isShared: (() {
+        final guardedValue = map['isShared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

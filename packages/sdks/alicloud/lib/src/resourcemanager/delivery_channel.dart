@@ -11,7 +11,7 @@ import 'delivery_channel_state.dart';
 ///
 /// For information about Resource Manager Delivery Channel and how to use it, see [What is Delivery Channel](https://next.api.alibabacloud.com/document/ResourceCenter/2022-12-01/CreateDeliveryChannel).
 ///
-/// > **NOTE:** Available since v1.262.0.
+/// &gt; **NOTE:** Available since v1.262.0.
 ///
 /// ## Example Usage
 ///
@@ -280,14 +280,21 @@ import 'delivery_channel_state.dart';
 class DeliveryChannel extends pulumi.CustomResource {
   /// The description of the delivery channel.
   late final pulumi.Output<String?> deliveryChannelDescription;
+
   /// The effective scope of the delivery channel. See `delivery_channel_filter` below.
-  late final pulumi.Output<DeliveryChannelDeliveryChannelFilter> deliveryChannelFilter;
+  late final pulumi.Output<DeliveryChannelDeliveryChannelFilter>
+  deliveryChannelFilter;
+
   /// The name of the delivery channel.
   late final pulumi.Output<String> deliveryChannelName;
+
   /// The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
-  late final pulumi.Output<DeliveryChannelResourceChangeDelivery?> resourceChangeDelivery;
+  late final pulumi.Output<DeliveryChannelResourceChangeDelivery?>
+  resourceChangeDelivery;
+
   /// The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
-  late final pulumi.Output<DeliveryChannelResourceSnapshotDelivery?> resourceSnapshotDelivery;
+  late final pulumi.Output<DeliveryChannelResourceSnapshotDelivery?>
+  resourceSnapshotDelivery;
 
   /// Creates a new [DeliveryChannel].
   /// [name] The Pulumi resource name.
@@ -298,16 +305,27 @@ class DeliveryChannel extends pulumi.CustomResource {
     DeliveryChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/deliveryChannel:DeliveryChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryChannelDescription = registerOutput<String?>('deliveryChannelDescription');
-    this.deliveryChannelFilter = registerOutput<DeliveryChannelDeliveryChannelFilter>('deliveryChannelFilter');
-    this.deliveryChannelName = registerOutput<String>('deliveryChannelName');
-    this.resourceChangeDelivery = registerOutput<DeliveryChannelResourceChangeDelivery?>('resourceChangeDelivery');
-    this.resourceSnapshotDelivery = registerOutput<DeliveryChannelResourceSnapshotDelivery?>('resourceSnapshotDelivery');
+         'alicloud:resourcemanager/deliveryChannel:DeliveryChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryChannelDescription = registerOutput<String?>(
+      'deliveryChannelDescription',
+    );
+    deliveryChannelFilter =
+        registerOutput<DeliveryChannelDeliveryChannelFilter>(
+          'deliveryChannelFilter',
+        );
+    deliveryChannelName = registerOutput<String>('deliveryChannelName');
+    resourceChangeDelivery =
+        registerOutput<DeliveryChannelResourceChangeDelivery?>(
+          'resourceChangeDelivery',
+        );
+    resourceSnapshotDelivery =
+        registerOutput<DeliveryChannelResourceSnapshotDelivery?>(
+          'resourceSnapshotDelivery',
+        );
   }
 
   /// Gets an existing [DeliveryChannel] resource's state with the given [name] and [id].
@@ -328,15 +346,26 @@ class DeliveryChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/deliveryChannel:DeliveryChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryChannelDescription = registerOutput<String?>('deliveryChannelDescription');
-    this.deliveryChannelFilter = registerOutput<DeliveryChannelDeliveryChannelFilter>('deliveryChannelFilter');
-    this.deliveryChannelName = registerOutput<String>('deliveryChannelName');
-    this.resourceChangeDelivery = registerOutput<DeliveryChannelResourceChangeDelivery?>('resourceChangeDelivery');
-    this.resourceSnapshotDelivery = registerOutput<DeliveryChannelResourceSnapshotDelivery?>('resourceSnapshotDelivery');
+         'alicloud:resourcemanager/deliveryChannel:DeliveryChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryChannelDescription = registerOutput<String?>(
+      'deliveryChannelDescription',
+    );
+    deliveryChannelFilter =
+        registerOutput<DeliveryChannelDeliveryChannelFilter>(
+          'deliveryChannelFilter',
+        );
+    deliveryChannelName = registerOutput<String>('deliveryChannelName');
+    resourceChangeDelivery =
+        registerOutput<DeliveryChannelResourceChangeDelivery?>(
+          'resourceChangeDelivery',
+        );
+    resourceSnapshotDelivery =
+        registerOutput<DeliveryChannelResourceSnapshotDelivery?>(
+          'resourceSnapshotDelivery',
+        );
   }
 }

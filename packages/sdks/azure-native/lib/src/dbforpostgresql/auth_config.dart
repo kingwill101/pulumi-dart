@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthConfig {
   /// Indicates if the server supports Microsoft Entra authentication.
   final pulumi.Input<String>? activeDirectoryAuth;
+
   /// Indicates if the server supports password based authentication.
   final pulumi.Input<String>? passwordAuth;
+
   /// Identifier of the tenant of the delegated resource.
   final pulumi.Input<String>? tenantId;
 
@@ -15,11 +17,7 @@ class AuthConfig {
   /// [activeDirectoryAuth] Indicates if the server supports Microsoft Entra authentication.
   /// [passwordAuth] Indicates if the server supports password based authentication.
   /// [tenantId] Identifier of the tenant of the delegated resource.
-  AuthConfig({
-    this.activeDirectoryAuth,
-    this.passwordAuth,
-    this.tenantId,
-  });
+  AuthConfig({this.activeDirectoryAuth, this.passwordAuth, this.tenantId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class AuthConfig {
 
   factory AuthConfig.fromMap(Map<String, dynamic> map) {
     return AuthConfig(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth']! as String).input(),
-      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      activeDirectoryAuth: (() {
+        final guardedValue = map['activeDirectoryAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordAuth: (() {
+        final guardedValue = map['passwordAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

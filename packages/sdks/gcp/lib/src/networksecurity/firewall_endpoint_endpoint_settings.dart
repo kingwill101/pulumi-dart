@@ -8,20 +8,19 @@ class FirewallEndpointEndpointSettings {
 
   /// Creates a new [FirewallEndpointEndpointSettings].
   /// [jumboFramesEnabled] Indicates whether Jumbo Frames are enabled for the firewall endpoint.
-  FirewallEndpointEndpointSettings({
-    this.jumboFramesEnabled,
-  });
+  FirewallEndpointEndpointSettings({this.jumboFramesEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jumboFramesEnabled': ?jumboFramesEnabled,
-    };
+    return <String, dynamic>{'jumboFramesEnabled': ?jumboFramesEnabled};
   }
 
   factory FirewallEndpointEndpointSettings.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointEndpointSettings(
-      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled']! as bool).input(),
+      jumboFramesEnabled: (() {
+        final guardedValue = map['jumboFramesEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

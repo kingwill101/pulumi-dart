@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListBotSecretsArgs {
   /// The name of the Bot resource.
   final pulumi.Input<String> botName;
+
   /// The name of the Bot resource group in the user subscription.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListBotSecretsArgs].
   /// [botName] The name of the Bot resource.
   /// [resourceGroupName] The name of the Bot resource group in the user subscription.
-  ListBotSecretsArgs({
-    required this.botName,
-    required this.resourceGroupName,
-  });
+  ListBotSecretsArgs({required this.botName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class ListBotSecretsArgs {
 
   factory ListBotSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListBotSecretsArgs(
-      botName: (map['botName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      botName: pulumi.Input.fromValue(map['botName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

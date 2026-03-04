@@ -9,20 +9,23 @@ class ResourceSyncRulePropertiesResponseSelector {
 
   /// Creates a new [ResourceSyncRulePropertiesResponseSelector].
   /// [matchLabels] MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
-  ResourceSyncRulePropertiesResponseSelector({
-    this.matchLabels,
-  });
+  ResourceSyncRulePropertiesResponseSelector({this.matchLabels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'matchLabels': ?matchLabels,
-    };
+    return <String, dynamic>{'matchLabels': ?matchLabels};
   }
 
-  factory ResourceSyncRulePropertiesResponseSelector.fromMap(Map<String, dynamic> map) {
+  factory ResourceSyncRulePropertiesResponseSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceSyncRulePropertiesResponseSelector(
-      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels']! as Map).cast<String, String>()).input(),
+      matchLabels: (() {
+        final guardedValue = map['matchLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

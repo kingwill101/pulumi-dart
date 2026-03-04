@@ -1,5 +1,3 @@
-library module_web;
-
 export 'web/allowed_audiences_validation.dart';
 export 'web/allowed_audiences_validation_response.dart';
 export 'web/allowed_principals.dart';

@@ -7,8 +7,10 @@ import 'virtual_machine_properties_response_ssh.dart';
 class VirtualMachinePropertiesResponseLinuxConfiguration {
   /// DisablePasswordAuthentication - whether password authentication should be disabled
   final pulumi.Input<bool>? disablePasswordAuthentication;
+
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
   final pulumi.Input<bool>? provisionVMAgent;
+
   /// SSH - contains settings related to ssh configuration
   final pulumi.Input<VirtualMachinePropertiesResponseSsh>? ssh;
 
@@ -26,16 +28,37 @@ class VirtualMachinePropertiesResponseLinuxConfiguration {
     return <String, dynamic>{
       'disablePasswordAuthentication': ?disablePasswordAuthentication,
       'provisionVMAgent': ?provisionVMAgent,
-      'ssh': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesResponseSsh, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'ssh':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachinePropertiesResponseSsh,
+            Map<String, dynamic>
+          >(ssh, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachinePropertiesResponseLinuxConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesResponseLinuxConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesResponseLinuxConfiguration(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
-      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      disablePasswordAuthentication: (() {
+        final guardedValue = map['disablePasswordAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provisionVMAgent: (() {
+        final guardedValue = map['provisionVMAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ssh: (() {
+        final guardedValue = map['ssh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachinePropertiesResponseSsh.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'delegated_administrator_state.dart';
 ///
 /// For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
 ///
-/// > **NOTE:** Available since v1.181.0.
+/// &gt; **NOTE:** Available since v1.181.0.
 ///
 /// ## Example Usage
 ///
@@ -149,6 +149,7 @@ import 'delegated_administrator_state.dart';
 class DelegatedAdministrator extends pulumi.CustomResource {
   /// The Alibaba Cloud account ID of the member in the resource directory.
   late final pulumi.Output<String> accountId;
+
   /// The identifier of the trusted service.
   late final pulumi.Output<String> servicePrincipal;
 
@@ -161,13 +162,13 @@ class DelegatedAdministrator extends pulumi.CustomResource {
     DelegatedAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.servicePrincipal = registerOutput<String>('servicePrincipal');
+         'alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    servicePrincipal = registerOutput<String>('servicePrincipal');
   }
 
   /// Gets an existing [DelegatedAdministrator] resource's state with the given [name] and [id].
@@ -188,12 +189,12 @@ class DelegatedAdministrator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.servicePrincipal = registerOutput<String>('servicePrincipal');
+         'alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    servicePrincipal = registerOutput<String>('servicePrincipal');
   }
 }

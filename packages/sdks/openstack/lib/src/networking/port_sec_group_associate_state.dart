@@ -7,16 +7,20 @@ class PortSecGroupAssociateState {
   /// The collection of Security Group IDs on the port
   /// which have been explicitly and implicitly added.
   final pulumi.Input<List<String>>? allSecurityGroupIds;
+
   /// Whether to replace or append the list of security
   /// groups, specified in the `security_group_ids`. Defaults to `false`.
   final pulumi.Input<bool>? enforce;
+
   /// An UUID of the port to apply security groups to.
   final pulumi.Input<String>? portId;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to manage a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// resource.
   final pulumi.Input<String>? region;
+
   /// A list of security group IDs to apply to
   /// the port. The security groups must be specified by ID and not name (as
   /// opposed to how they are configured with the Compute Instance).
@@ -48,12 +52,31 @@ class PortSecGroupAssociateState {
 
   factory PortSecGroupAssociateState.fromMap(Map<String, dynamic> map) {
     return PortSecGroupAssociateState(
-      allSecurityGroupIds: map['allSecurityGroupIds'] == null ? null : ((map['allSecurityGroupIds']! as List).cast<String>()).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
-      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      allSecurityGroupIds: (() {
+        final guardedValue = map['allSecurityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enforce: (() {
+        final guardedValue = map['enforce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      portId: (() {
+        final guardedValue = map['portId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

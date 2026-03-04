@@ -6,29 +6,36 @@ import 'instance_attachment_ena_srd_specification_response.dart';
 
 /// Definition of InstanceNetworkInterfaceAttachment
 class InstanceNetworkInterfaceAttachmentResponse {
-  /// <p>The time stamp when the attachment initiated.</p>
+  /// &lt;p&gt;The time stamp when the attachment initiated.&lt;/p&gt;
   final pulumi.Input<String>? attachTime;
-  /// <p>The ID of the network interface attachment.</p>
+
+  /// &lt;p&gt;The ID of the network interface attachment.&lt;/p&gt;
   final pulumi.Input<String>? attachmentId;
-  /// <p>Indicates whether the network interface is deleted when the instance is terminated.</p>
+
+  /// &lt;p&gt;Indicates whether the network interface is deleted when the instance is terminated.&lt;/p&gt;
   final pulumi.Input<bool>? deleteOnTermination;
-  /// <p>The index of the device on the instance for the network interface attachment.</p>
+
+  /// &lt;p&gt;The index of the device on the instance for the network interface attachment.&lt;/p&gt;
   final pulumi.Input<int>? deviceIndex;
-  /// <p>Contains the ENA Express settings for the network interface that's attached to the instance.</p>
-  final pulumi.Input<InstanceAttachmentEnaSrdSpecificationResponse>? enaSrdSpecification;
-  /// <p>The index of the network card.</p>
+
+  /// &lt;p&gt;Contains the ENA Express settings for the network interface that's attached to the instance.&lt;/p&gt;
+  final pulumi.Input<InstanceAttachmentEnaSrdSpecificationResponse>?
+  enaSrdSpecification;
+
+  /// &lt;p&gt;The index of the network card.&lt;/p&gt;
   final pulumi.Input<int>? networkCardIndex;
-  /// <p>The attachment state.</p>
+
+  /// &lt;p&gt;The attachment state.&lt;/p&gt;
   final pulumi.Input<AttachmentStatusEnumValueResponse>? status;
 
   /// Creates a new [InstanceNetworkInterfaceAttachmentResponse].
-  /// [attachTime] <p>The time stamp when the attachment initiated.</p>
-  /// [attachmentId] <p>The ID of the network interface attachment.</p>
-  /// [deleteOnTermination] <p>Indicates whether the network interface is deleted when the instance is terminated.</p>
-  /// [deviceIndex] <p>The index of the device on the instance for the network interface attachment.</p>
-  /// [enaSrdSpecification] <p>Contains the ENA Express settings for the network interface that's attached to the instance.</p>
-  /// [networkCardIndex] <p>The index of the network card.</p>
-  /// [status] <p>The attachment state.</p>
+  /// [attachTime] &lt;p&gt;The time stamp when the attachment initiated.&lt;/p&gt;
+  /// [attachmentId] &lt;p&gt;The ID of the network interface attachment.&lt;/p&gt;
+  /// [deleteOnTermination] &lt;p&gt;Indicates whether the network interface is deleted when the instance is terminated.&lt;/p&gt;
+  /// [deviceIndex] &lt;p&gt;The index of the device on the instance for the network interface attachment.&lt;/p&gt;
+  /// [enaSrdSpecification] &lt;p&gt;Contains the ENA Express settings for the network interface that's attached to the instance.&lt;/p&gt;
+  /// [networkCardIndex] &lt;p&gt;The index of the network card.&lt;/p&gt;
+  /// [status] &lt;p&gt;The attachment state.&lt;/p&gt;
   InstanceNetworkInterfaceAttachmentResponse({
     this.attachTime,
     this.attachmentId,
@@ -45,22 +52,67 @@ class InstanceNetworkInterfaceAttachmentResponse {
       'attachmentId': ?attachmentId,
       'deleteOnTermination': ?deleteOnTermination,
       'deviceIndex': ?deviceIndex,
-      'enaSrdSpecification': ?pulumi.Input.mapOptionalInputValue<InstanceAttachmentEnaSrdSpecificationResponse, Map<String, dynamic>>(enaSrdSpecification, (value) => value.toMap()),
+      'enaSrdSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceAttachmentEnaSrdSpecificationResponse,
+            Map<String, dynamic>
+          >(enaSrdSpecification, (value) => value.toMap()),
       'networkCardIndex': ?networkCardIndex,
-      'status': ?pulumi.Input.mapOptionalInputValue<AttachmentStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            AttachmentStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
-  factory InstanceNetworkInterfaceAttachmentResponse.fromMap(Map<String, dynamic> map) {
+  factory InstanceNetworkInterfaceAttachmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceNetworkInterfaceAttachmentResponse(
-      attachTime: map['attachTime'] == null ? null : (map['attachTime']! as String).input(),
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination']! as bool).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex']! as int).input(),
-      enaSrdSpecification: map['enaSrdSpecification'] == null ? null : (InstanceAttachmentEnaSrdSpecificationResponse.fromMap((map['enaSrdSpecification']! as Map).cast<String, dynamic>())).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex']! as int).input(),
-      status: map['status'] == null ? null : (AttachmentStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      attachTime: (() {
+        final guardedValue = map['attachTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachmentId: (() {
+        final guardedValue = map['attachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteOnTermination: (() {
+        final guardedValue = map['deleteOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deviceIndex: (() {
+        final guardedValue = map['deviceIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enaSrdSpecification: (() {
+        final guardedValue = map['enaSrdSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceAttachmentEnaSrdSpecificationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkCardIndex: (() {
+        final guardedValue = map['networkCardIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AttachmentStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

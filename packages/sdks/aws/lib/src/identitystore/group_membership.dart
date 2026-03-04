@@ -239,12 +239,16 @@ import 'group_membership_state.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The identifier for a group in the Identity Store.
   late final pulumi.Output<String> groupId;
+
   /// Identity Store ID associated with the Single Sign-On Instance.
   late final pulumi.Output<String> identityStoreId;
+
   /// The identifier for a user in the Identity Store.
   late final pulumi.Output<String> memberId;
+
   /// The identifier of the newly created group membership in the Identity Store.
   late final pulumi.Output<String> membershipId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -257,16 +261,16 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:identitystore/groupMembership:GroupMembership',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupId = registerOutput<String>('groupId');
-    this.identityStoreId = registerOutput<String>('identityStoreId');
-    this.memberId = registerOutput<String>('memberId');
-    this.membershipId = registerOutput<String>('membershipId');
-    this.region = registerOutput<String>('region');
+         'aws:identitystore/groupMembership:GroupMembership',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupId = registerOutput<String>('groupId');
+    identityStoreId = registerOutput<String>('identityStoreId');
+    memberId = registerOutput<String>('memberId');
+    membershipId = registerOutput<String>('membershipId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [GroupMembership] resource's state with the given [name] and [id].
@@ -287,15 +291,15 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:identitystore/groupMembership:GroupMembership',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupId = registerOutput<String>('groupId');
-    this.identityStoreId = registerOutput<String>('identityStoreId');
-    this.memberId = registerOutput<String>('memberId');
-    this.membershipId = registerOutput<String>('membershipId');
-    this.region = registerOutput<String>('region');
+         'aws:identitystore/groupMembership:GroupMembership',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupId = registerOutput<String>('groupId');
+    identityStoreId = registerOutput<String>('identityStoreId');
+    memberId = registerOutput<String>('memberId');
+    membershipId = registerOutput<String>('membershipId');
+    region = registerOutput<String>('region');
   }
 }

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_permission_args.dart';
-import 'user_permission_permission.dart';
 import 'user_permission_state.dart';
 
 /// Provides a Service Mesh UserPermission resource.
 ///
 /// For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
 ///
-/// > **NOTE:** Available since v1.174.0.
+/// &gt; **NOTE:** Available since v1.174.0.
 ///
 /// ## Example Usage
 ///
@@ -452,7 +451,8 @@ import 'user_permission_state.dart';
 /// ```
 class UserPermission extends pulumi.CustomResource {
   /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
-  late final pulumi.Output<List<UserPermissionPermission>> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>> permissions;
+
   /// The configuration of the Load Balancer. See the following `Block load_balancer`.
   late final pulumi.Output<String> subAccountUserId;
 
@@ -465,13 +465,13 @@ class UserPermission extends pulumi.CustomResource {
     UserPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicemesh/userPermission:UserPermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.permissions = registerOutput<List<UserPermissionPermission>>('permissions');
-    this.subAccountUserId = registerOutput<String>('subAccountUserId');
+         'alicloud:servicemesh/userPermission:UserPermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    subAccountUserId = registerOutput<String>('subAccountUserId');
   }
 
   /// Gets an existing [UserPermission] resource's state with the given [name] and [id].
@@ -492,12 +492,12 @@ class UserPermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicemesh/userPermission:UserPermission',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.permissions = registerOutput<List<UserPermissionPermission>>('permissions');
-    this.subAccountUserId = registerOutput<String>('subAccountUserId');
+         'alicloud:servicemesh/userPermission:UserPermission',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    subAccountUserId = registerOutput<String>('subAccountUserId');
   }
 }

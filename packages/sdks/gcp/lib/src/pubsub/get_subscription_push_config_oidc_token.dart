@@ -10,6 +10,7 @@ class GetSubscriptionPushConfigOidcToken {
   /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
   /// Note: if not specified, the Push endpoint URL will be used.
   final pulumi.Input<String> audience;
+
   /// Service account email to be used for generating the OIDC token.
   /// The caller (for subscriptions.create, subscriptions.patch, and
   /// subscriptions.modifyPushConfig RPCs) must have the
@@ -33,9 +34,10 @@ class GetSubscriptionPushConfigOidcToken {
 
   factory GetSubscriptionPushConfigOidcToken.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPushConfigOidcToken(
-      audience: (map['audience'] as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
     );
   }
 }
-

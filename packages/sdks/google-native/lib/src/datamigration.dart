@@ -1,5 +1,3 @@
-library module_datamigration;
-
 export 'datamigration/alloy_db_connection_profile.dart';
 export 'datamigration/alloy_db_connection_profile_response.dart';
 export 'datamigration/alloy_db_settings.dart';

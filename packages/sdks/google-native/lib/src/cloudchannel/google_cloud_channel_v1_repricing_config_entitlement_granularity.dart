@@ -9,20 +9,21 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 
   /// Creates a new [GoogleCloudChannelV1RepricingConfigEntitlementGranularity].
   /// [entitlement] Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  GoogleCloudChannelV1RepricingConfigEntitlementGranularity({
-    this.entitlement,
-  });
+  GoogleCloudChannelV1RepricingConfigEntitlementGranularity({this.entitlement});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entitlement': ?entitlement,
-    };
+    return <String, dynamic>{'entitlement': ?entitlement};
   }
 
-  factory GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1RepricingConfigEntitlementGranularity(
-      entitlement: map['entitlement'] == null ? null : (map['entitlement']! as String).input(),
+      entitlement: (() {
+        final guardedValue = map['entitlement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

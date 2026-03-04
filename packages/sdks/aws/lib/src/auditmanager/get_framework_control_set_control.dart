@@ -7,20 +7,15 @@ class GetFrameworkControlSetControl {
 
   /// Creates a new [GetFrameworkControlSetControl].
   /// [id] Required.
-  GetFrameworkControlSetControl({
-    required this.id,
-  });
+  GetFrameworkControlSetControl({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetFrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControlSetControl(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

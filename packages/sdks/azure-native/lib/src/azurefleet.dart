@@ -1,5 +1,3 @@
-library module_azurefleet;
-
 export 'azurefleet/accelerator_manufacturer.dart';
 export 'azurefleet/accelerator_type.dart';
 export 'azurefleet/additional_capabilities.dart';

@@ -7,21 +7,30 @@ import 'dynamic_delivery_attribute_mapping_response.dart';
 class WebHookEventSubscriptionDestinationResponse {
   /// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
   final pulumi.Input<String>? azureActiveDirectoryApplicationIdOrUri;
+
   /// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
   final pulumi.Input<String>? azureActiveDirectoryTenantId;
+
   /// Delivery attribute details.
-  final pulumi.Input<List<DynamicDeliveryAttributeMappingResponse>>? deliveryAttributeMappings;
+  final pulumi.Input<List<DynamicDeliveryAttributeMappingResponse>>?
+  deliveryAttributeMappings;
+
   /// The base URL that represents the endpoint of the destination of an event subscription.
   final pulumi.Input<String> endpointBaseUrl;
+
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'WebHook'.
   final pulumi.Input<String> endpointType;
+
   /// The URL that represents the endpoint of the destination of an event subscription.
   final pulumi.Input<String>? endpointUrl;
+
   /// Maximum number of events per batch.
   final pulumi.Input<int>? maxEventsPerBatch;
+
   /// Minimum TLS version that should be supported by webhook endpoint
   final pulumi.Input<String>? minimumTlsVersionAllowed;
+
   /// Preferred batch size in Kilobytes.
   final pulumi.Input<int>? preferredBatchSizeInKilobytes;
 
@@ -49,9 +58,21 @@ class WebHookEventSubscriptionDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureActiveDirectoryApplicationIdOrUri': ?azureActiveDirectoryApplicationIdOrUri,
+      'azureActiveDirectoryApplicationIdOrUri':
+          ?azureActiveDirectoryApplicationIdOrUri,
       'azureActiveDirectoryTenantId': ?azureActiveDirectoryTenantId,
-      'deliveryAttributeMappings': ?pulumi.Input.mapOptionalInputValue<List<DynamicDeliveryAttributeMappingResponse>, List<Map<String, dynamic>>>(deliveryAttributeMappings, (value) => pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deliveryAttributeMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DynamicDeliveryAttributeMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            deliveryAttributeMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DynamicDeliveryAttributeMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'endpointBaseUrl': endpointBaseUrl,
       'endpointType': endpointType,
       'endpointUrl': ?endpointUrl,
@@ -61,18 +82,54 @@ class WebHookEventSubscriptionDestinationResponse {
     };
   }
 
-  factory WebHookEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
+  factory WebHookEventSubscriptionDestinationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebHookEventSubscriptionDestinationResponse(
-      azureActiveDirectoryApplicationIdOrUri: map['azureActiveDirectoryApplicationIdOrUri'] == null ? null : (map['azureActiveDirectoryApplicationIdOrUri']! as String).input(),
-      azureActiveDirectoryTenantId: map['azureActiveDirectoryTenantId'] == null ? null : (map['azureActiveDirectoryTenantId']! as String).input(),
-      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings']!, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointBaseUrl: (map['endpointBaseUrl'] as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch']! as int).input(),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed']! as String).input(),
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes']! as int).input(),
+      azureActiveDirectoryApplicationIdOrUri: (() {
+        final guardedValue = map['azureActiveDirectoryApplicationIdOrUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureActiveDirectoryTenantId: (() {
+        final guardedValue = map['azureActiveDirectoryTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deliveryAttributeMappings: (() {
+        final guardedValue = map['deliveryAttributeMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(
+            guardedValue,
+            (value) => DynamicDeliveryAttributeMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      endpointBaseUrl: pulumi.Input.fromValue(map['endpointBaseUrl'] as String),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      endpointUrl: (() {
+        final guardedValue = map['endpointUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxEventsPerBatch: (() {
+        final guardedValue = map['maxEventsPerBatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimumTlsVersionAllowed: (() {
+        final guardedValue = map['minimumTlsVersionAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredBatchSizeInKilobytes: (() {
+        final guardedValue = map['preferredBatchSizeInKilobytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

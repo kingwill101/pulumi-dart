@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSourceConfigurationAuthenticationConfiguration {
   /// ARN of the IAM role that grants the App Runner service access to a source repository. Required for ECR image repositories (but not for ECR Public)
   final pulumi.Input<String>? accessRoleArn;
+
   /// ARN of the App Runner connection that enables the App Runner service to connect to a source repository. Required for GitHub code repositories.
   final pulumi.Input<String>? connectionArn;
 
@@ -23,11 +24,20 @@ class ServiceSourceConfigurationAuthenticationConfiguration {
     };
   }
 
-  factory ServiceSourceConfigurationAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ServiceSourceConfigurationAuthenticationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceSourceConfigurationAuthenticationConfiguration(
-      accessRoleArn: map['accessRoleArn'] == null ? null : ((map['accessRoleArn'] as String).input()).input(),
-      connectionArn: map['connectionArn'] == null ? null : ((map['connectionArn'] as String).input()).input(),
+      accessRoleArn: (() {
+        final guardedValue = map['accessRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionArn: (() {
+        final guardedValue = map['connectionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

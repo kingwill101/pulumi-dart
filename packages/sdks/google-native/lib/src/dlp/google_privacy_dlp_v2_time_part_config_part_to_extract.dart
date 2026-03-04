@@ -8,16 +8,17 @@ enum GooglePrivacyDlpV2TimePartConfigPartToExtract {
   weekOfYear("WEEK_OF_YEAR"),
   hourOfDay("HOUR_OF_DAY");
 
-  const GooglePrivacyDlpV2TimePartConfigPartToExtract(this.value);
-  final String value;
+  const GooglePrivacyDlpV2TimePartConfigPartToExtract(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2TimePartConfigPartToExtract fromValue(String value) {
     for (final item in GooglePrivacyDlpV2TimePartConfigPartToExtract.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2TimePartConfigPartToExtract value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2TimePartConfigPartToExtract value: $value',
+    );
   }
 }
-

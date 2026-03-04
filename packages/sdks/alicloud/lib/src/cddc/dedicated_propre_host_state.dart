@@ -7,73 +7,99 @@ import 'dedicated_propre_host_ecs_class_list.dart';
 class DedicatedPropreHostState {
   /// Whether to pay automatically when the host is created.
   final pulumi.Input<bool>? autoPay;
+
   /// Whether to enable automatic renewal. Valid values:
   /// - **true**: On
   /// - **false** (default): Off
   final pulumi.Input<String>? autoRenew;
+
   /// You have a dedicated cluster ID.
   final pulumi.Input<String>? dedicatedHostGroupId;
+
   /// ECS specifications. See `ecs_class_list` below.
   final pulumi.Input<List<DedicatedPropreHostEcsClassList>>? ecsClassLists;
+
   /// The ID of the cloud server deployment set.
   final pulumi.Input<String>? ecsDeploymentSetId;
+
   /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
   final pulumi.Input<String>? ecsHostName;
+
   /// ECS instance ID.
   final pulumi.Input<String>? ecsInstanceId;
+
   /// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
   final pulumi.Input<String>? ecsInstanceName;
+
   /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
   /// - **true**: added.
   /// - **false** (default): Do not add.
   /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
   final pulumi.Input<String>? ecsUniqueSuffix;
+
   /// The ID of the zone.
   final pulumi.Input<String>? ecsZoneId;
+
   /// Database type, value:
   /// - **alisql**
   /// - **tair**
   /// - **mssql**
   /// Must be consistent with the parent resource cluster engine attributes.
   final pulumi.Input<String>? engine;
+
   /// The ID of the custom image.
-  /// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
+  /// &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
   final pulumi.Input<String>? imageId;
+
   /// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
   final pulumi.Input<String>? internetChargeType;
+
   /// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
   final pulumi.Input<int>? internetMaxBandwidthOut;
+
   /// The key pair name.
   final pulumi.Input<String>? keyPairName;
+
   /// Host login password, which can be set later. The password must meet the following requirements:
   /// - Length is 8~30 characters.
   /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
   /// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-  /// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+  /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
   final pulumi.Input<String>? osPassword;
+
   /// Whether to use the default password of the image.
   /// - **false**: (default)Do not use
   /// - **true**: Use
-  /// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+  /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
   final pulumi.Input<String>? passwordInherit;
+
   /// The Payment type. Currently, only **Subscription** is supported.
   final pulumi.Input<String>? paymentType;
+
   /// Duration of purchase.
   final pulumi.Input<String>? period;
+
   /// The subscription type. Currently, only **Monthly** (subscription) is supported.
   final pulumi.Input<String>? periodType;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The ID of the security group.
   final pulumi.Input<String>? securityGroupId;
+
   /// Host tag information.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// User-defined script data. The maximum size of the original data is 16kB.
   final pulumi.Input<String>? userData;
+
   /// Whether custom data is encoded in Base64 format.
   final pulumi.Input<bool>? userDataEncoded;
+
   /// VPCID of the VPC.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the virtual switch.
   final pulumi.Input<String>? vswitchId;
 
@@ -140,7 +166,18 @@ class DedicatedPropreHostState {
       'autoPay': ?autoPay,
       'autoRenew': ?autoRenew,
       'dedicatedHostGroupId': ?dedicatedHostGroupId,
-      'ecsClassLists': ?pulumi.Input.mapOptionalInputValue<List<DedicatedPropreHostEcsClassList>, List<Map<String, dynamic>>>(ecsClassLists, (value) => pulumi.Input.encodeList<DedicatedPropreHostEcsClassList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ecsClassLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DedicatedPropreHostEcsClassList>,
+            List<Map<String, dynamic>>
+          >(
+            ecsClassLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DedicatedPropreHostEcsClassList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ecsDeploymentSetId': ?ecsDeploymentSetId,
       'ecsHostName': ?ecsHostName,
       'ecsInstanceId': ?ecsInstanceId,
@@ -169,34 +206,150 @@ class DedicatedPropreHostState {
 
   factory DedicatedPropreHostState.fromMap(Map<String, dynamic> map) {
     return DedicatedPropreHostState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as String).input(),
-      dedicatedHostGroupId: map['dedicatedHostGroupId'] == null ? null : (map['dedicatedHostGroupId']! as String).input(),
-      ecsClassLists: map['ecsClassLists'] == null ? null : (pulumi.Input.decodeList<DedicatedPropreHostEcsClassList>(map['ecsClassLists']!, (value) => DedicatedPropreHostEcsClassList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ecsDeploymentSetId: map['ecsDeploymentSetId'] == null ? null : (map['ecsDeploymentSetId']! as String).input(),
-      ecsHostName: map['ecsHostName'] == null ? null : (map['ecsHostName']! as String).input(),
-      ecsInstanceId: map['ecsInstanceId'] == null ? null : (map['ecsInstanceId']! as String).input(),
-      ecsInstanceName: map['ecsInstanceName'] == null ? null : (map['ecsInstanceName']! as String).input(),
-      ecsUniqueSuffix: map['ecsUniqueSuffix'] == null ? null : (map['ecsUniqueSuffix']! as String).input(),
-      ecsZoneId: map['ecsZoneId'] == null ? null : (map['ecsZoneId']! as String).input(),
-      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
-      internetMaxBandwidthOut: map['internetMaxBandwidthOut'] == null ? null : (map['internetMaxBandwidthOut']! as int).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      osPassword: map['osPassword'] == null ? null : (map['osPassword']! as String).input(),
-      passwordInherit: map['passwordInherit'] == null ? null : (map['passwordInherit']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as String).input(),
-      periodType: map['periodType'] == null ? null : (map['periodType']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
-      userDataEncoded: map['userDataEncoded'] == null ? null : (map['userDataEncoded']! as bool).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dedicatedHostGroupId: (() {
+        final guardedValue = map['dedicatedHostGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsClassLists: (() {
+        final guardedValue = map['ecsClassLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DedicatedPropreHostEcsClassList>(
+            guardedValue,
+            (value) => DedicatedPropreHostEcsClassList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ecsDeploymentSetId: (() {
+        final guardedValue = map['ecsDeploymentSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsHostName: (() {
+        final guardedValue = map['ecsHostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsInstanceId: (() {
+        final guardedValue = map['ecsInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsInstanceName: (() {
+        final guardedValue = map['ecsInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsUniqueSuffix: (() {
+        final guardedValue = map['ecsUniqueSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsZoneId: (() {
+        final guardedValue = map['ecsZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internetChargeType: (() {
+        final guardedValue = map['internetChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internetMaxBandwidthOut: (() {
+        final guardedValue = map['internetMaxBandwidthOut'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osPassword: (() {
+        final guardedValue = map['osPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordInherit: (() {
+        final guardedValue = map['passwordInherit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      periodType: (() {
+        final guardedValue = map['periodType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userDataEncoded: (() {
+        final guardedValue = map['userDataEncoded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

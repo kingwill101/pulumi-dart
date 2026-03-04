@@ -129,7 +129,7 @@ func TestParameterizedDart(t *testing.T) {
 			}
 			for _, expected := range []string{
 				"library " + packageName + ";",
-				"import 'package:" + packageName + "/index.dart' as _index;",
+				"import 'package:" + packageName + "/index.dart' as module_index;",
 				"final index = _IndexModuleNamespace();",
 			} {
 				if !strings.Contains(string(rootSDK), expected) {

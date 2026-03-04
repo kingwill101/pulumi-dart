@@ -11,22 +11,33 @@ import 'relationship_link_field_mapping.dart';
 class RelationshipLinkArgs {
   /// Localized descriptions for the Relationship Link.
   final pulumi.Input<Map<String, String>>? description;
+
   /// Localized display name for the Relationship Link.
   final pulumi.Input<Map<String, String>>? displayName;
+
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The InteractionType associated with the Relationship Link.
   final pulumi.Input<String> interactionType;
+
   /// The mappings between Interaction and Relationship fields.
   final pulumi.Input<List<RelationshipLinkFieldMapping>>? mappings;
+
   /// The property references for the Profile of the Relationship.
-  final pulumi.Input<List<ParticipantProfilePropertyReference>> profilePropertyReferences;
+  final pulumi.Input<List<ParticipantProfilePropertyReference>>
+  profilePropertyReferences;
+
   /// The property references for the Related Profile of the Relationship.
-  final pulumi.Input<List<ParticipantProfilePropertyReference>> relatedProfilePropertyReferences;
+  final pulumi.Input<List<ParticipantProfilePropertyReference>>
+  relatedProfilePropertyReferences;
+
   /// The name of the relationship link.
   final pulumi.Input<String>? relationshipLinkName;
+
   /// The Relationship associated with the Link.
   final pulumi.Input<String> relationshipName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -60,9 +71,42 @@ class RelationshipLinkArgs {
       'displayName': ?displayName,
       'hubName': hubName,
       'interactionType': interactionType,
-      'mappings': ?pulumi.Input.mapOptionalInputValue<List<RelationshipLinkFieldMapping>, List<Map<String, dynamic>>>(mappings, (value) => pulumi.Input.encodeList<RelationshipLinkFieldMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'profilePropertyReferences': pulumi.Input.mapInputValue<List<ParticipantProfilePropertyReference>, List<Map<String, dynamic>>>(profilePropertyReferences, (value) => pulumi.Input.encodeList<ParticipantProfilePropertyReference, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'relatedProfilePropertyReferences': pulumi.Input.mapInputValue<List<ParticipantProfilePropertyReference>, List<Map<String, dynamic>>>(relatedProfilePropertyReferences, (value) => pulumi.Input.encodeList<ParticipantProfilePropertyReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RelationshipLinkFieldMapping>,
+            List<Map<String, dynamic>>
+          >(
+            mappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RelationshipLinkFieldMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'profilePropertyReferences':
+          pulumi.Input.mapInputValue<
+            List<ParticipantProfilePropertyReference>,
+            List<Map<String, dynamic>>
+          >(
+            profilePropertyReferences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ParticipantProfilePropertyReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'relatedProfilePropertyReferences':
+          pulumi.Input.mapInputValue<
+            List<ParticipantProfilePropertyReference>,
+            List<Map<String, dynamic>>
+          >(
+            relatedProfilePropertyReferences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ParticipantProfilePropertyReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'relationshipLinkName': ?relationshipLinkName,
       'relationshipName': relationshipName,
       'resourceGroupName': resourceGroupName,
@@ -71,17 +115,61 @@ class RelationshipLinkArgs {
 
   factory RelationshipLinkArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipLinkArgs(
-      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
-      hubName: (map['hubName'] as String).input(),
-      interactionType: (map['interactionType'] as String).input(),
-      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<RelationshipLinkFieldMapping>(map['mappings']!, (value) => RelationshipLinkFieldMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profilePropertyReferences: (pulumi.Input.decodeList<ParticipantProfilePropertyReference>(map['profilePropertyReferences'], (value) => ParticipantProfilePropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relatedProfilePropertyReferences: (pulumi.Input.decodeList<ParticipantProfilePropertyReference>(map['relatedProfilePropertyReferences'], (value) => ParticipantProfilePropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relationshipLinkName: map['relationshipLinkName'] == null ? null : (map['relationshipLinkName']! as String).input(),
-      relationshipName: (map['relationshipName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      interactionType: pulumi.Input.fromValue(map['interactionType'] as String),
+      mappings: (() {
+        final guardedValue = map['mappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RelationshipLinkFieldMapping>(
+            guardedValue,
+            (value) => RelationshipLinkFieldMapping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      profilePropertyReferences: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ParticipantProfilePropertyReference>(
+          map['profilePropertyReferences']!,
+          (value) => ParticipantProfilePropertyReference.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      relatedProfilePropertyReferences: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ParticipantProfilePropertyReference>(
+          map['relatedProfilePropertyReferences']!,
+          (value) => ParticipantProfilePropertyReference.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      relationshipLinkName: (() {
+        final guardedValue = map['relationshipLinkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relationshipName: pulumi.Input.fromValue(
+        map['relationshipName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

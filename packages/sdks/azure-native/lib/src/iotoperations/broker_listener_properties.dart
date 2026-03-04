@@ -7,8 +7,10 @@ import 'listener_port.dart';
 class BrokerListenerProperties {
   /// Ports on which this listener accepts client connections.
   final pulumi.Input<List<ListenerPort>> ports;
+
   /// Kubernetes Service name of this listener.
   final pulumi.Input<String>? serviceName;
+
   /// Kubernetes Service type of this listener.
   final pulumi.Input<String>? serviceType;
 
@@ -24,7 +26,18 @@ class BrokerListenerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ports': pulumi.Input.mapInputValue<List<ListenerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ListenerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ports':
+          pulumi.Input.mapInputValue<
+            List<ListenerPort>,
+            List<Map<String, dynamic>>
+          >(
+            ports,
+            (value) =>
+                pulumi.Input.encodeList<ListenerPort, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'serviceName': ?serviceName,
       'serviceType': ?serviceType,
     };
@@ -32,10 +45,23 @@ class BrokerListenerProperties {
 
   factory BrokerListenerProperties.fromMap(Map<String, dynamic> map) {
     return BrokerListenerProperties(
-      ports: (pulumi.Input.decodeList<ListenerPort>(map['ports'], (value) => ListenerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
+      ports: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ListenerPort>(
+          map['ports']!,
+          (value) =>
+              ListenerPort.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceType: (() {
+        final guardedValue = map['serviceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

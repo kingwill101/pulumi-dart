@@ -3,16 +3,15 @@ enum ConfigServerEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ConfigServerEnabledState(this.value);
-  final String value;
+  const ConfigServerEnabledState(this.wireValue);
+  final String wireValue;
 
   static ConfigServerEnabledState fromValue(String value) {
     for (final item in ConfigServerEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConfigServerEnabledState value: $value');
   }
 }
-

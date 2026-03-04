@@ -10,20 +10,27 @@ class SecurityConfigResponseDataprocV1beta2 {
 
   /// Creates a new [SecurityConfigResponseDataprocV1beta2].
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfigResponseDataprocV1beta2({
-    required this.kerberosConfig,
-  });
+  SecurityConfigResponseDataprocV1beta2({required this.kerberosConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kerberosConfig': pulumi.Input.mapInputValue<KerberosConfigResponseDataprocV1beta2, Map<String, dynamic>>(kerberosConfig, (value) => value.toMap()),
+      'kerberosConfig':
+          pulumi.Input.mapInputValue<
+            KerberosConfigResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(kerberosConfig, (value) => value.toMap()),
     };
   }
 
-  factory SecurityConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory SecurityConfigResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityConfigResponseDataprocV1beta2(
-      kerberosConfig: (KerberosConfigResponseDataprocV1beta2.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: pulumi.Input.fromValue(
+        KerberosConfigResponseDataprocV1beta2.fromMap(
+          (map['kerberosConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

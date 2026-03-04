@@ -6,13 +6,26 @@ import 'event_source_mapping_amazon_managed_kafka_event_source_config_schema_reg
 
 class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig {
   /// Configuration block for authentication Lambda uses to access the schema registry.
-  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>>? accessConfigs;
+  final pulumi.Input<
+    List<
+      EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig
+    >
+  >?
+  accessConfigs;
+
   /// Record format that Lambda delivers to the function after schema validation. Valid values: `JSON`, `SOURCE`.
   final pulumi.Input<String>? eventRecordFormat;
+
   /// URI of the schema registry. For AWS Glue schema registries, use the ARN of the registry. For Confluent schema registries, use the registry URL.
   final pulumi.Input<String>? schemaRegistryUri;
+
   /// Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry.
-  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>>? schemaValidationConfigs;
+  final pulumi.Input<
+    List<
+      EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig
+    >
+  >?
+  schemaValidationConfigs;
 
   /// Creates a new [EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig].
   /// [accessConfigs] Configuration block for authentication Lambda uses to access the schema registry.
@@ -28,20 +41,83 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            accessConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'eventRecordFormat': ?eventRecordFormat,
       'schemaRegistryUri': ?schemaRegistryUri,
-      'schemaValidationConfigs': ?pulumi.Input.mapOptionalInputValue<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>, List<Map<String, dynamic>>>(schemaValidationConfigs, (value) => pulumi.Input.encodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schemaValidationConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            schemaValidationConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig.fromMap(Map<String, dynamic> map) {
+  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig(
-      accessConfigs: map['accessConfigs'] == null ? null : ((pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>(map['accessConfigs']!, (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      eventRecordFormat: map['eventRecordFormat'] == null ? null : ((map['eventRecordFormat'] as String).input()).input(),
-      schemaRegistryUri: map['schemaRegistryUri'] == null ? null : ((map['schemaRegistryUri'] as String).input()).input(),
-      schemaValidationConfigs: map['schemaValidationConfigs'] == null ? null : ((pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>(map['schemaValidationConfigs']!, (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      accessConfigs: (() {
+        final guardedValue = map['accessConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig
+          >(
+            guardedValue,
+            (value) =>
+                EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      eventRecordFormat: (() {
+        final guardedValue = map['eventRecordFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaRegistryUri: (() {
+        final guardedValue = map['schemaRegistryUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaValidationConfigs: (() {
+        final guardedValue = map['schemaValidationConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig
+          >(
+            guardedValue,
+            (value) =>
+                EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

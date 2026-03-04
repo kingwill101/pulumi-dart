@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskAttachmentArgs {
   /// Name of the Lightsail disk.
   final pulumi.Input<String> diskName;
+
   /// Disk path to expose to the instance.
   final pulumi.Input<String> diskPath;
+
   /// Name of the Lightsail instance to attach to.
   final pulumi.Input<String> instanceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,14 @@ class DiskAttachmentArgs {
 
   factory DiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentArgs(
-      diskName: (map['diskName'] as String).input(),
-      diskPath: (map['diskPath'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      diskName: pulumi.Input.fromValue(map['diskName'] as String),
+      diskPath: pulumi.Input.fromValue(map['diskPath'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

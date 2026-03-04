@@ -3,16 +3,15 @@ enum ResolveConflictsOnCreate {
   none("NONE"),
   overwrite("OVERWRITE");
 
-  const ResolveConflictsOnCreate(this.value);
-  final String value;
+  const ResolveConflictsOnCreate(this.wireValue);
+  final String wireValue;
 
   static ResolveConflictsOnCreate fromValue(String value) {
     for (final item in ResolveConflictsOnCreate.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResolveConflictsOnCreate value: $value');
   }
 }
-

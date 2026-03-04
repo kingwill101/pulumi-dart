@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineTypesMachineTypeAccelerator {
   /// Number of accelerator cards exposed to the guest.
   final pulumi.Input<int> guestAcceleratorCount;
+
   /// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
   final pulumi.Input<String> guestAcceleratorType;
 
@@ -23,11 +24,16 @@ class GetMachineTypesMachineTypeAccelerator {
     };
   }
 
-  factory GetMachineTypesMachineTypeAccelerator.fromMap(Map<String, dynamic> map) {
+  factory GetMachineTypesMachineTypeAccelerator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMachineTypesMachineTypeAccelerator(
-      guestAcceleratorCount: (map['guestAcceleratorCount'] as int).input(),
-      guestAcceleratorType: (map['guestAcceleratorType'] as String).input(),
+      guestAcceleratorCount: pulumi.Input.fromValue(
+        map['guestAcceleratorCount'] as int,
+      ),
+      guestAcceleratorType: pulumi.Input.fromValue(
+        map['guestAcceleratorType'] as String,
+      ),
     );
   }
 }
-

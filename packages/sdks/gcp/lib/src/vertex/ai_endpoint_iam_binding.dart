@@ -21,18 +21,18 @@ class AiEndpointIamBinding extends pulumi.CustomResource {
     AiEndpointIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [AiEndpointIamBinding] resource's state with the given [name] and [id].
@@ -53,17 +53,17 @@ class AiEndpointIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

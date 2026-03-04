@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlStoredProcedureArgs {
   /// The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
+
   /// The body of the stored procedure.
   final pulumi.Input<String> body;
+
   /// The name of the Cosmos DB SQL Container to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerName;
+
   /// The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
+
   /// Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,18 @@ class SqlStoredProcedureArgs {
 
   factory SqlStoredProcedureArgs.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureArgs(
-      accountName: (map['accountName'] as String).input(),
-      body: (map['body'] as String).input(),
-      containerName: (map['containerName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      body: pulumi.Input.fromValue(map['body'] as String),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

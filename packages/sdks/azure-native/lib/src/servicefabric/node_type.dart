@@ -1,17 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'additional_network_interface_configuration_response.dart';
 import 'endpoint_range_description_response.dart';
-import 'frontend_configuration_response.dart';
-import 'network_security_rule_response.dart';
 import 'node_type_args.dart';
-import 'node_type_nat_config_response.dart';
 import 'node_type_sku_response.dart';
 import 'system_data_response.dart';
-import 'vault_secret_group_response.dart';
 import 'vm_image_plan_response.dart';
 import 'vm_managed_identity_response.dart';
-import 'vmss_data_disk_response.dart';
-import 'vmssextension_response.dart';
 
 /// Describes a node type in the cluster, each node type represents sub set of nodes in the cluster.
 ///
@@ -2358,113 +2351,168 @@ import 'vmssextension_response.dart';
 /// ```
 class NodeType extends pulumi.CustomResource {
   /// Additional managed data disks.
-  late final pulumi.Output<List<VmssDataDiskResponse>?> additionalDataDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> additionalDataDisks;
+
   /// Specifies the settings for any additional secondary network interfaces to attach to the node type.
-  late final pulumi.Output<List<AdditionalNetworkInterfaceConfigurationResponse>?> additionalNetworkInterfaceConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  additionalNetworkInterfaceConfigurations;
+
   /// The range of ports from which cluster assigned port to Service Fabric applications.
   late final pulumi.Output<EndpointRangeDescriptionResponse?> applicationPorts;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
   late final pulumi.Output<Map<String, String>?> capacities;
+
   /// Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name.
   late final pulumi.Output<String?> computerNamePrefix;
+
   /// Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
   late final pulumi.Output<String?> dataDiskLetter;
+
   /// Disk size for the managed disk attached to the vms on the node type in GBs.
   late final pulumi.Output<int?> dataDiskSizeGB;
+
   /// Managed data disk type. Specifies the storage account type for the managed disk
   late final pulumi.Output<String?> dataDiskType;
+
   /// Specifies the resource id of the DSCP configuration to apply to the node type network interface.
   late final pulumi.Output<String?> dscpConfigurationId;
+
   /// Specifies whether the network interface is accelerated networking-enabled.
   late final pulumi.Output<bool?> enableAcceleratedNetworking;
+
   /// Enable or disable the Host Encryption for the virtual machines on the node type. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Default: The Encryption at host will be disabled unless this property is set to true for the resource.
   late final pulumi.Output<bool?> enableEncryptionAtHost;
+
   /// Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers.
   late final pulumi.Output<bool?> enableNodePublicIP;
+
   /// Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers.
   late final pulumi.Output<bool?> enableNodePublicIPv6;
+
   /// Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
   late final pulumi.Output<bool?> enableOverProvisioning;
+
   /// The range of ephemeral ports that nodes in this node type should be configured with.
   late final pulumi.Output<EndpointRangeDescriptionResponse?> ephemeralPorts;
+
   /// Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
   late final pulumi.Output<String?> evictionPolicy;
+
   /// Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created.
-  late final pulumi.Output<List<FrontendConfigurationResponse>?> frontendConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontendConfigurations;
+
   /// Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
   late final pulumi.Output<String?> hostGroupId;
+
   /// Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created.
   late final pulumi.Output<bool> isPrimary;
+
   /// Indicates whether the node type will be Spot Virtual Machines. Azure will allocate the VMs if there is capacity available and the VMs can be evicted at any time.
   late final pulumi.Output<bool?> isSpotVM;
+
   /// Indicates if the node type can only host Stateless workloads.
   late final pulumi.Output<bool?> isStateless;
+
   /// Indicates if scale set associated with the node type can be composed of multiple placement groups.
   late final pulumi.Output<bool?> multiplePlacementGroups;
+
   /// Azure resource name.
   late final pulumi.Output<String> name;
+
   /// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
-  late final pulumi.Output<List<NodeTypeNatConfigResponse>?> natConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> natConfigurations;
+
   /// Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer.
   late final pulumi.Output<String?> natGatewayId;
+
   /// The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
-  late final pulumi.Output<List<NetworkSecurityRuleResponse>?> networkSecurityRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkSecurityRules;
+
   /// The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
   late final pulumi.Output<Map<String, String>?> placementProperties;
+
   /// The provisioning state of the node type resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch SecurityType
   late final pulumi.Output<bool?> secureBootEnabled;
+
   /// Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
   late final pulumi.Output<String?> securityType;
+
   /// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
   late final pulumi.Output<String?> serviceArtifactReferenceId;
+
   /// The node type sku.
   late final pulumi.Output<NodeTypeSkuResponse?> sku;
+
   /// Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
   late final pulumi.Output<String?> spotRestoreTimeout;
+
   /// Indicates the resource id of the subnet for the node type.
   late final pulumi.Output<String?> subnetId;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Azure resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Azure resource type.
   late final pulumi.Output<String> type;
+
   /// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
   late final pulumi.Output<bool?> useDefaultPublicLoadBalancer;
+
   /// Indicates whether to use ephemeral os disk. The sku selected on the vmSize property needs to support this feature.
   late final pulumi.Output<bool?> useEphemeralOSDisk;
+
   /// Specifies whether to use the temporary disk for the service fabric data root, in which case no managed data disk will be attached and the temporary disk will be used. It is only allowed for stateless node types.
   late final pulumi.Output<bool?> useTempDataDisk;
+
   /// Set of extensions that should be installed onto the virtual machines.
-  late final pulumi.Output<List<VMSSExtensionResponse>?> vmExtensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vmExtensions;
+
   /// The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer.
   late final pulumi.Output<String?> vmImageOffer;
-  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+
+  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started -&gt;. Enter any required information and then click Save.
   late final pulumi.Output<VmImagePlanResponse?> vmImagePlan;
+
   /// The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer.
   late final pulumi.Output<String?> vmImagePublisher;
+
   /// Indicates the resource id of the vm image. This parameter is used for custom vm image.
   late final pulumi.Output<String?> vmImageResourceId;
+
   /// The SKU of the Azure Virtual Machines Marketplace image. For example, 14.04.0-LTS or 2012-R2-Datacenter.
   late final pulumi.Output<String?> vmImageSku;
+
   /// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
   late final pulumi.Output<String?> vmImageVersion;
-  /// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+
+  /// The number of nodes in the node type. &lt;br /&gt;&lt;br /&gt;**Values:** &lt;br /&gt;-1 - Use when auto scale rules are configured or sku.capacity is defined &lt;br /&gt; 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
   late final pulumi.Output<int> vmInstanceCount;
+
   /// Identities to assign to the virtual machine scale set under the node type.
   late final pulumi.Output<VmManagedIdentityResponse?> vmManagedIdentity;
+
   /// The secrets to install in the virtual machines.
-  late final pulumi.Output<List<VaultSecretGroupResponse>?> vmSecrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vmSecrets;
+
   /// Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime.
   late final pulumi.Output<List<String>?> vmSetupActions;
+
   /// Indicates the resource id of the vm shared galleries image. This parameter is used for custom vm image.
   late final pulumi.Output<String?> vmSharedGalleryImageId;
+
   /// The size of virtual machines in the pool. All virtual machines in a pool are the same size. For example, Standard_D3.
   late final pulumi.Output<String?> vmSize;
+
   /// Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
   late final pulumi.Output<List<String>?> zones;
 
@@ -2477,65 +2525,90 @@ class NodeType extends pulumi.CustomResource {
     NodeTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabric:NodeType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalDataDisks = registerOutput<List<VmssDataDiskResponse>?>('additionalDataDisks');
-    this.additionalNetworkInterfaceConfigurations = registerOutput<List<AdditionalNetworkInterfaceConfigurationResponse>?>('additionalNetworkInterfaceConfigurations');
-    this.applicationPorts = registerOutput<EndpointRangeDescriptionResponse?>('applicationPorts');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capacities = registerOutput<Map<String, String>?>('capacities');
-    this.computerNamePrefix = registerOutput<String?>('computerNamePrefix');
-    this.dataDiskLetter = registerOutput<String?>('dataDiskLetter');
-    this.dataDiskSizeGB = registerOutput<int?>('dataDiskSizeGB');
-    this.dataDiskType = registerOutput<String?>('dataDiskType');
-    this.dscpConfigurationId = registerOutput<String?>('dscpConfigurationId');
-    this.enableAcceleratedNetworking = registerOutput<bool?>('enableAcceleratedNetworking');
-    this.enableEncryptionAtHost = registerOutput<bool?>('enableEncryptionAtHost');
-    this.enableNodePublicIP = registerOutput<bool?>('enableNodePublicIP');
-    this.enableNodePublicIPv6 = registerOutput<bool?>('enableNodePublicIPv6');
-    this.enableOverProvisioning = registerOutput<bool?>('enableOverProvisioning');
-    this.ephemeralPorts = registerOutput<EndpointRangeDescriptionResponse?>('ephemeralPorts');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.frontendConfigurations = registerOutput<List<FrontendConfigurationResponse>?>('frontendConfigurations');
-    this.hostGroupId = registerOutput<String?>('hostGroupId');
-    this.isPrimary = registerOutput<bool>('isPrimary');
-    this.isSpotVM = registerOutput<bool?>('isSpotVM');
-    this.isStateless = registerOutput<bool?>('isStateless');
-    this.multiplePlacementGroups = registerOutput<bool?>('multiplePlacementGroups');
+         'azure-native:servicefabric:NodeType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalDataDisks = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalDataDisks',
+    );
+    additionalNetworkInterfaceConfigurations =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'additionalNetworkInterfaceConfigurations',
+        );
+    applicationPorts = registerOutput<EndpointRangeDescriptionResponse?>(
+      'applicationPorts',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacities = registerOutput<Map<String, String>?>('capacities');
+    computerNamePrefix = registerOutput<String?>('computerNamePrefix');
+    dataDiskLetter = registerOutput<String?>('dataDiskLetter');
+    dataDiskSizeGB = registerOutput<int?>('dataDiskSizeGB');
+    dataDiskType = registerOutput<String?>('dataDiskType');
+    dscpConfigurationId = registerOutput<String?>('dscpConfigurationId');
+    enableAcceleratedNetworking = registerOutput<bool?>(
+      'enableAcceleratedNetworking',
+    );
+    enableEncryptionAtHost = registerOutput<bool?>('enableEncryptionAtHost');
+    enableNodePublicIP = registerOutput<bool?>('enableNodePublicIP');
+    enableNodePublicIPv6 = registerOutput<bool?>('enableNodePublicIPv6');
+    enableOverProvisioning = registerOutput<bool?>('enableOverProvisioning');
+    ephemeralPorts = registerOutput<EndpointRangeDescriptionResponse?>(
+      'ephemeralPorts',
+    );
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    frontendConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendConfigurations',
+    );
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    isPrimary = registerOutput<bool>('isPrimary');
+    isSpotVM = registerOutput<bool?>('isSpotVM');
+    isStateless = registerOutput<bool?>('isStateless');
+    multiplePlacementGroups = registerOutput<bool?>('multiplePlacementGroups');
     this.name = registerOutput<String>('name');
-    this.natConfigurations = registerOutput<List<NodeTypeNatConfigResponse>?>('natConfigurations');
-    this.natGatewayId = registerOutput<String?>('natGatewayId');
-    this.networkSecurityRules = registerOutput<List<NetworkSecurityRuleResponse>?>('networkSecurityRules');
-    this.placementProperties = registerOutput<Map<String, String>?>('placementProperties');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
-    this.securityType = registerOutput<String?>('securityType');
-    this.serviceArtifactReferenceId = registerOutput<String?>('serviceArtifactReferenceId');
-    this.sku = registerOutput<NodeTypeSkuResponse?>('sku');
-    this.spotRestoreTimeout = registerOutput<String?>('spotRestoreTimeout');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.useDefaultPublicLoadBalancer = registerOutput<bool?>('useDefaultPublicLoadBalancer');
-    this.useEphemeralOSDisk = registerOutput<bool?>('useEphemeralOSDisk');
-    this.useTempDataDisk = registerOutput<bool?>('useTempDataDisk');
-    this.vmExtensions = registerOutput<List<VMSSExtensionResponse>?>('vmExtensions');
-    this.vmImageOffer = registerOutput<String?>('vmImageOffer');
-    this.vmImagePlan = registerOutput<VmImagePlanResponse?>('vmImagePlan');
-    this.vmImagePublisher = registerOutput<String?>('vmImagePublisher');
-    this.vmImageResourceId = registerOutput<String?>('vmImageResourceId');
-    this.vmImageSku = registerOutput<String?>('vmImageSku');
-    this.vmImageVersion = registerOutput<String?>('vmImageVersion');
-    this.vmInstanceCount = registerOutput<int>('vmInstanceCount');
-    this.vmManagedIdentity = registerOutput<VmManagedIdentityResponse?>('vmManagedIdentity');
-    this.vmSecrets = registerOutput<List<VaultSecretGroupResponse>?>('vmSecrets');
-    this.vmSetupActions = registerOutput<List<String>?>('vmSetupActions');
-    this.vmSharedGalleryImageId = registerOutput<String?>('vmSharedGalleryImageId');
-    this.vmSize = registerOutput<String?>('vmSize');
-    this.zones = registerOutput<List<String>?>('zones');
+    natConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'natConfigurations',
+    );
+    natGatewayId = registerOutput<String?>('natGatewayId');
+    networkSecurityRules = registerOutput<List<Map<String, dynamic>>?>(
+      'networkSecurityRules',
+    );
+    placementProperties = registerOutput<Map<String, String>?>(
+      'placementProperties',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    securityType = registerOutput<String?>('securityType');
+    serviceArtifactReferenceId = registerOutput<String?>(
+      'serviceArtifactReferenceId',
+    );
+    sku = registerOutput<NodeTypeSkuResponse?>('sku');
+    spotRestoreTimeout = registerOutput<String?>('spotRestoreTimeout');
+    subnetId = registerOutput<String?>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    useDefaultPublicLoadBalancer = registerOutput<bool?>(
+      'useDefaultPublicLoadBalancer',
+    );
+    useEphemeralOSDisk = registerOutput<bool?>('useEphemeralOSDisk');
+    useTempDataDisk = registerOutput<bool?>('useTempDataDisk');
+    vmExtensions = registerOutput<List<Map<String, dynamic>>?>('vmExtensions');
+    vmImageOffer = registerOutput<String?>('vmImageOffer');
+    vmImagePlan = registerOutput<VmImagePlanResponse?>('vmImagePlan');
+    vmImagePublisher = registerOutput<String?>('vmImagePublisher');
+    vmImageResourceId = registerOutput<String?>('vmImageResourceId');
+    vmImageSku = registerOutput<String?>('vmImageSku');
+    vmImageVersion = registerOutput<String?>('vmImageVersion');
+    vmInstanceCount = registerOutput<int>('vmInstanceCount');
+    vmManagedIdentity = registerOutput<VmManagedIdentityResponse?>(
+      'vmManagedIdentity',
+    );
+    vmSecrets = registerOutput<List<Map<String, dynamic>>?>('vmSecrets');
+    vmSetupActions = registerOutput<List<String>?>('vmSetupActions');
+    vmSharedGalleryImageId = registerOutput<String?>('vmSharedGalleryImageId');
+    vmSize = registerOutput<String?>('vmSize');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

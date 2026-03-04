@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsArgs {
   /// Provide description for your DNS server
   final pulumi.Input<String> description;
+
   /// Specifies the name servers that the system uses to validate DNS lookups, and resolve host names.
   final pulumi.Input<List<String>> nameServers;
+
   /// Configures the number of dots needed in a name before an initial absolute query will be made.
   final pulumi.Input<int>? numberOfDots;
+
   /// Specifies the domains that the system searches for local domain lookups, to resolve local host names.
   final pulumi.Input<List<String>>? searches;
 
@@ -39,11 +42,20 @@ class DnsArgs {
 
   factory DnsArgs.fromMap(Map<String, dynamic> map) {
     return DnsArgs(
-      description: (map['description'] as String).input(),
-      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
-      numberOfDots: map['numberOfDots'] == null ? null : (map['numberOfDots']! as int).input(),
-      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      nameServers: pulumi.Input.fromValue(
+        (map['nameServers'] as List).cast<String>(),
+      ),
+      numberOfDots: (() {
+        final guardedValue = map['numberOfDots'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      searches: (() {
+        final guardedValue = map['searches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

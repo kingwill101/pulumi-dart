@@ -260,7 +260,7 @@ import 'workbook_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2022-04-01
@@ -275,26 +275,36 @@ import 'workbook_state.dart';
 class Workbook extends pulumi.CustomResource {
   /// Workbook category, as defined by the user at creation time. There may be additional category types beyond the following: `workbook`, `sentinel`. Defaults to `workbook`.
   late final pulumi.Output<String?> category;
+
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON.
   late final pulumi.Output<String> dataJson;
+
   /// Specifies the description of the workbook.
   late final pulumi.Output<String?> description;
+
   /// Specifies the user-defined name (display name) of the workbook.
   late final pulumi.Output<String> displayName;
+
   /// An `identity` block as defined below. Changing this forces a new Workbook to be created.
   late final pulumi.Output<WorkbookIdentity?> identity;
+
   /// Specifies the Azure Region where the Workbook should exist. Changing this forces a new Workbook to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Workbook as a UUID/GUID. It should not contain any uppercase letters. Changing this forces a new Workbook to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Workbook should exist. Changing this forces a new Workbook to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Resource ID for a source resource. It should not contain any uppercase letters. Defaults to `azure monitor`.
   late final pulumi.Output<String?> sourceId;
+
   /// Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   ///
-  /// > **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
+  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
   late final pulumi.Output<String?> storageContainerId;
+
   /// A mapping of tags which should be assigned to the Workbook.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -307,22 +317,22 @@ class Workbook extends pulumi.CustomResource {
     WorkbookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/workbook:Workbook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.dataJson = registerOutput<String>('dataJson');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.identity = registerOutput<WorkbookIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/workbook:Workbook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    dataJson = registerOutput<String>('dataJson');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<WorkbookIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.storageContainerId = registerOutput<String?>('storageContainerId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceId = registerOutput<String?>('sourceId');
+    storageContainerId = registerOutput<String?>('storageContainerId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Workbook] resource's state with the given [name] and [id].
@@ -343,21 +353,21 @@ class Workbook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/workbook:Workbook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.dataJson = registerOutput<String>('dataJson');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.identity = registerOutput<WorkbookIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/workbook:Workbook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    dataJson = registerOutput<String>('dataJson');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<WorkbookIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.storageContainerId = registerOutput<String?>('storageContainerId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceId = registerOutput<String?>('sourceId');
+    storageContainerId = registerOutput<String?>('storageContainerId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

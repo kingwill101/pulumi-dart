@@ -8,20 +8,19 @@ class LakeMetastore {
 
   /// Creates a new [LakeMetastore].
   /// [service] Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
-  LakeMetastore({
-    this.service,
-  });
+  LakeMetastore({this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'service': ?service,
-    };
+    return <String, dynamic>{'service': ?service};
   }
 
   factory LakeMetastore.fromMap(Map<String, dynamic> map) {
     return LakeMetastore(
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

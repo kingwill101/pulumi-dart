@@ -10,16 +10,15 @@ enum Readiness {
   removedFromARM("RemovedFromARM"),
   retired("Retired");
 
-  const Readiness(this.value);
-  final String value;
+  const Readiness(this.wireValue);
+  final String wireValue;
 
   static Readiness fromValue(String value) {
     for (final item in Readiness.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Readiness value: $value');
   }
 }
-

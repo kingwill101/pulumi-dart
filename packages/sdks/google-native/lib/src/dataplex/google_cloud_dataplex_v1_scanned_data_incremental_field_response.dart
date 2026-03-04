@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   /// Value that marks the end of the range.
   final pulumi.Input<String> end;
+
   /// The field that contains values which monotonically increases over time (e.g. a timestamp column).
   final pulumi.Input<String> field;
+
   /// Value that marks the start of the range.
   final pulumi.Input<String> start;
 
@@ -22,19 +24,16 @@ class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'field': field,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'field': field, 'start': start};
   }
 
-  factory GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse(
-      end: (map['end'] as String).input(),
-      field: (map['field'] as String).input(),
-      start: (map['start'] as String).input(),
+      end: pulumi.Input.fromValue(map['end'] as String),
+      field: pulumi.Input.fromValue(map['field'] as String),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CooWebCcRuleRuleDetailCondition {
   /// Matching content.
   final pulumi.Input<String> content;
+
   /// The statistic source. Valid values:
   final pulumi.Input<String> field;
+
   /// Set this parameter only when the statistic source is `header`.
   final pulumi.Input<String>? headerName;
+
   /// Matching method.
   final pulumi.Input<String> matchMethod;
 
@@ -35,11 +38,14 @@ class CooWebCcRuleRuleDetailCondition {
 
   factory CooWebCcRuleRuleDetailCondition.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailCondition(
-      content: (map['content'] as String).input(),
-      field: (map['field'] as String).input(),
-      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
-      matchMethod: (map['matchMethod'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      field: pulumi.Input.fromValue(map['field'] as String),
+      headerName: (() {
+        final guardedValue = map['headerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchMethod: pulumi.Input.fromValue(map['matchMethod'] as String),
     );
   }
 }
-

@@ -10,9 +10,11 @@ import 'google_cloud_apigee_v1_datastore_config.dart';
 class DatastoreArgs {
   /// Datastore Configurations.
   final pulumi.Input<GoogleCloudApigeeV1DatastoreConfig>? datastoreConfig;
+
   /// Display name in UI
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> organizationId;
+
   /// Destination storage type. Supported types `gcs` or `bigquery`.
   final pulumi.Input<String>? targetType;
 
@@ -30,7 +32,11 @@ class DatastoreArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datastoreConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudApigeeV1DatastoreConfig, Map<String, dynamic>>(datastoreConfig, (value) => value.toMap()),
+      'datastoreConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudApigeeV1DatastoreConfig,
+            Map<String, dynamic>
+          >(datastoreConfig, (value) => value.toMap()),
       'displayName': displayName,
       'organizationId': organizationId,
       'targetType': ?targetType,
@@ -39,11 +45,22 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreConfig: map['datastoreConfig'] == null ? null : (GoogleCloudApigeeV1DatastoreConfig.fromMap((map['datastoreConfig']! as Map).cast<String, dynamic>())).input(),
-      displayName: (map['displayName'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      datastoreConfig: (() {
+        final guardedValue = map['datastoreConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudApigeeV1DatastoreConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

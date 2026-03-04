@@ -4,16 +4,15 @@ enum JMSType {
   queue("QUEUE"),
   topic("TOPIC");
 
-  const JMSType(this.value);
-  final String value;
+  const JMSType(this.wireValue);
+  final String wireValue;
 
   static JMSType fromValue(String value) {
     for (final item in JMSType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JMSType value: $value');
   }
 }
-

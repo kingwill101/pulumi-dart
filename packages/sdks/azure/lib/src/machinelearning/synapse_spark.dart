@@ -587,7 +587,7 @@ import 'synapse_spark_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.MachineLearningServices` - 2025-06-01
@@ -602,18 +602,25 @@ import 'synapse_spark_state.dart';
 class SynapseSpark extends pulumi.CustomResource {
   /// The description of the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<String?> description;
+
   /// An `identity` block as defined below. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<SynapseSparkIdentity?> identity;
+
   /// Whether local authentication methods is enabled. Defaults to `true`. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// The Azure Region where the Machine Learning Synapse Spark should exist. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
+
   /// The name which should be used for this Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the linked Synapse Spark Pool. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<String> synapseSparkPoolId;
+
   /// A mapping of tags which should be assigned to the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -626,19 +633,21 @@ class SynapseSpark extends pulumi.CustomResource {
     SynapseSparkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/synapseSpark:SynapseSpark',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<SynapseSparkIdentity?>('identity');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/synapseSpark:SynapseSpark',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<SynapseSparkIdentity?>('identity');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [SynapseSpark] resource's state with the given [name] and [id].
@@ -659,18 +668,20 @@ class SynapseSpark extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/synapseSpark:SynapseSpark',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<SynapseSparkIdentity?>('identity');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/synapseSpark:SynapseSpark',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<SynapseSparkIdentity?>('identity');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

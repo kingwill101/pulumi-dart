@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration {
   /// Database username for authentication to an Amazon Redshift provisioned data warehouse.
   final pulumi.Input<String>? databaseUser;
+
   /// Type of authentication to use. Valid values: `IAM`, `USERNAME_PASSWORD`.
   final pulumi.Input<String> type;
+
   /// ARN of a Secrets Manager secret for authentication.
   final pulumi.Input<String>? usernamePasswordSecretArn;
 
@@ -28,12 +30,21 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration(
-      databaseUser: map['databaseUser'] == null ? null : ((map['databaseUser'] as String).input()).input(),
-      type: (map['type'] as String).input(),
-      usernamePasswordSecretArn: map['usernamePasswordSecretArn'] == null ? null : ((map['usernamePasswordSecretArn'] as String).input()).input(),
+      databaseUser: (() {
+        final guardedValue = map['databaseUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      usernamePasswordSecretArn: (() {
+        final guardedValue = map['usernamePasswordSecretArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

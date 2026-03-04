@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCrossConnectionPeeringArgs {
   /// The name of the ExpressRouteCrossConnection.
   final pulumi.Input<String> crossConnectionName;
+
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetExpressRouteCrossConnectionPeeringArgs {
     };
   }
 
-  factory GetExpressRouteCrossConnectionPeeringArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExpressRouteCrossConnectionPeeringArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExpressRouteCrossConnectionPeeringArgs(
-      crossConnectionName: (map['crossConnectionName'] as String).input(),
-      peeringName: (map['peeringName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      crossConnectionName: pulumi.Input.fromValue(
+        map['crossConnectionName'] as String,
+      ),
+      peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

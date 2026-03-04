@@ -17,44 +17,64 @@ import 'upgrade_settings_response.dart';
 class GetNodePoolResult {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
   final NodePoolAutoscalingResponse autoscaling;
+
   /// Enable best effort provisioning for nodes
   final BestEffortProvisioningResponse bestEffortProvisioning;
+
   /// Which conditions caused the current node pool state.
   final List<StatusConditionResponse> conditions;
+
   /// The node configuration of the pool.
   final NodeConfigResponse config;
+
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
+
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
   final int initialNodeCount;
+
   /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
   final List<String> instanceGroupUrls;
+
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
   final List<String> locations;
+
   /// NodeManagement configuration for this NodePool.
   final NodeManagementResponse management;
+
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final MaxPodsConstraintResponse maxPodsConstraint;
+
   /// The name of the node pool.
   final String name;
+
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
   final NodeNetworkConfigResponse networkConfig;
+
   /// Specifies the node placement policy.
   final PlacementPolicyResponse placementPolicy;
+
   /// [Output only] The pod CIDR block size per node in this node pool.
   final int podIpv4CidrSize;
+
   /// Specifies the configuration of queued provisioning.
   final QueuedProvisioningResponse queuedProvisioning;
+
   /// [Output only] Server-defined URL for the resource.
   final String selfLink;
+
   /// [Output only] The status of the nodes in this pool instance.
   final String status;
+
   /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
   final String statusMessage;
+
   /// [Output only] Update info contains relevant information during a node pool update.
   final UpdateInfoResponse updateInfo;
+
   /// Upgrade settings control disruption and speed of the upgrade.
   final UpgradeSettingsResponse upgradeSettings;
+
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   final String version;
 
@@ -108,7 +128,11 @@ class GetNodePoolResult {
     return <String, dynamic>{
       'autoscaling': autoscaling.toMap(),
       'bestEffortProvisioning': bestEffortProvisioning.toMap(),
-      'conditions': pulumi.Input.encodeList<StatusConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<
+            StatusConditionResponse,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'config': config.toMap(),
       'etag': etag,
       'initialNodeCount': initialNodeCount,
@@ -132,28 +156,52 @@ class GetNodePoolResult {
 
   factory GetNodePoolResult.fromMap(Map<String, dynamic> map) {
     return GetNodePoolResult(
-      autoscaling: NodePoolAutoscalingResponse.fromMap((map['autoscaling'] as Map).cast<String, dynamic>()),
-      bestEffortProvisioning: BestEffortProvisioningResponse.fromMap((map['bestEffortProvisioning'] as Map).cast<String, dynamic>()),
-      conditions: pulumi.Input.decodeList<StatusConditionResponse>(map['conditions'], (value) => StatusConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      config: NodeConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      autoscaling: NodePoolAutoscalingResponse.fromMap(
+        (map['autoscaling']! as Map).cast<String, dynamic>(),
+      ),
+      bestEffortProvisioning: BestEffortProvisioningResponse.fromMap(
+        (map['bestEffortProvisioning']! as Map).cast<String, dynamic>(),
+      ),
+      conditions: pulumi.Input.decodeList<StatusConditionResponse>(
+        map['conditions']!,
+        (value) => StatusConditionResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      config: NodeConfigResponse.fromMap(
+        (map['config']! as Map).cast<String, dynamic>(),
+      ),
       etag: map['etag'] as String,
       initialNodeCount: map['initialNodeCount'] as int,
       instanceGroupUrls: (map['instanceGroupUrls'] as List).cast<String>(),
       locations: (map['locations'] as List).cast<String>(),
-      management: NodeManagementResponse.fromMap((map['management'] as Map).cast<String, dynamic>()),
-      maxPodsConstraint: MaxPodsConstraintResponse.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>()),
+      management: NodeManagementResponse.fromMap(
+        (map['management']! as Map).cast<String, dynamic>(),
+      ),
+      maxPodsConstraint: MaxPodsConstraintResponse.fromMap(
+        (map['maxPodsConstraint']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      networkConfig: NodeNetworkConfigResponse.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      placementPolicy: PlacementPolicyResponse.fromMap((map['placementPolicy'] as Map).cast<String, dynamic>()),
+      networkConfig: NodeNetworkConfigResponse.fromMap(
+        (map['networkConfig']! as Map).cast<String, dynamic>(),
+      ),
+      placementPolicy: PlacementPolicyResponse.fromMap(
+        (map['placementPolicy']! as Map).cast<String, dynamic>(),
+      ),
       podIpv4CidrSize: map['podIpv4CidrSize'] as int,
-      queuedProvisioning: QueuedProvisioningResponse.fromMap((map['queuedProvisioning'] as Map).cast<String, dynamic>()),
+      queuedProvisioning: QueuedProvisioningResponse.fromMap(
+        (map['queuedProvisioning']! as Map).cast<String, dynamic>(),
+      ),
       selfLink: map['selfLink'] as String,
       status: map['status'] as String,
       statusMessage: map['statusMessage'] as String,
-      updateInfo: UpdateInfoResponse.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
-      upgradeSettings: UpgradeSettingsResponse.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>()),
+      updateInfo: UpdateInfoResponse.fromMap(
+        (map['updateInfo']! as Map).cast<String, dynamic>(),
+      ),
+      upgradeSettings: UpgradeSettingsResponse.fromMap(
+        (map['upgradeSettings']! as Map).cast<String, dynamic>(),
+      ),
       version: map['version'] as String,
     );
   }
 }
-

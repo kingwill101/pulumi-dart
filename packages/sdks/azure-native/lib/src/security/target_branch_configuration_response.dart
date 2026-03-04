@@ -9,6 +9,7 @@ class TargetBranchConfigurationResponse {
   /// Enabled - PR Annotations are enabled on the resource's default branch.
   /// Disabled - PR Annotations are disabled on the resource's default branch.
   final pulumi.Input<String>? annotateDefaultBranch;
+
   /// Gets or sets branches that should have annotations.
   final pulumi.Input<List<String>>? branchNames;
 
@@ -29,9 +30,16 @@ class TargetBranchConfigurationResponse {
 
   factory TargetBranchConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TargetBranchConfigurationResponse(
-      annotateDefaultBranch: map['annotateDefaultBranch'] == null ? null : (map['annotateDefaultBranch']! as String).input(),
-      branchNames: map['branchNames'] == null ? null : ((map['branchNames']! as List).cast<String>()).input(),
+      annotateDefaultBranch: (() {
+        final guardedValue = map['annotateDefaultBranch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      branchNames: (() {
+        final guardedValue = map['branchNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

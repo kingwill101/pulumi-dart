@@ -10,10 +10,13 @@ class GetMembershipBindingArgs {
   /// The location for the GKE Hub Membership Binding.
   /// Currently only `global` is supported.
   final pulumi.Input<String> location;
+
   /// The ID of the membership binding.
   final pulumi.Input<String> membershipBindingId;
+
   /// The ID of the membership that this binding applies to.
   final pulumi.Input<String> membershipId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -41,11 +44,16 @@ class GetMembershipBindingArgs {
 
   factory GetMembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipBindingArgs(
-      location: (map['location'] as String).input(),
-      membershipBindingId: (map['membershipBindingId'] as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      membershipBindingId: pulumi.Input.fromValue(
+        map['membershipBindingId'] as String,
+      ),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

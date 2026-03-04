@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendPoolItemResponse {
   /// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
   final pulumi.Input<String> id;
+
   /// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
   final pulumi.Input<int>? priority;
+
   /// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
   final pulumi.Input<int>? weight;
 
@@ -15,11 +17,7 @@ class BackendPoolItemResponse {
   /// [id] The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
   /// [priority] The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
   /// [weight] The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
-  BackendPoolItemResponse({
-    required this.id,
-    this.priority,
-    this.weight,
-  });
+  BackendPoolItemResponse({required this.id, this.priority, this.weight});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class BackendPoolItemResponse {
 
   factory BackendPoolItemResponse.fromMap(Map<String, dynamic> map) {
     return BackendPoolItemResponse(
-      id: (map['id'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

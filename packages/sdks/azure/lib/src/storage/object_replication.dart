@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_replication_args.dart';
-import 'object_replication_rule.dart';
 import 'object_replication_state.dart';
 
 /// Manages a Storage Object Replication.
@@ -421,7 +420,7 @@ import 'object_replication_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -436,12 +435,16 @@ import 'object_replication_state.dart';
 class ObjectReplication extends pulumi.CustomResource {
   /// The ID of the Object Replication in the destination storage account.
   late final pulumi.Output<String> destinationObjectReplicationId;
+
   /// The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
   late final pulumi.Output<String> destinationStorageAccountId;
+
   /// One or more `rules` blocks as defined below.
-  late final pulumi.Output<List<ObjectReplicationRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+
   /// The ID of the Object Replication in the source storage account.
   late final pulumi.Output<String> sourceObjectReplicationId;
+
   /// The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
   late final pulumi.Output<String> sourceStorageAccountId;
 
@@ -454,16 +457,22 @@ class ObjectReplication extends pulumi.CustomResource {
     ObjectReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/objectReplication:ObjectReplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
-    this.destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
-    this.rules = registerOutput<List<ObjectReplicationRule>>('rules');
-    this.sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
-    this.sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+         'azure:storage/objectReplication:ObjectReplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationObjectReplicationId = registerOutput<String>(
+      'destinationObjectReplicationId',
+    );
+    destinationStorageAccountId = registerOutput<String>(
+      'destinationStorageAccountId',
+    );
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    sourceObjectReplicationId = registerOutput<String>(
+      'sourceObjectReplicationId',
+    );
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }
 
   /// Gets an existing [ObjectReplication] resource's state with the given [name] and [id].
@@ -484,15 +493,21 @@ class ObjectReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/objectReplication:ObjectReplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
-    this.destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
-    this.rules = registerOutput<List<ObjectReplicationRule>>('rules');
-    this.sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
-    this.sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+         'azure:storage/objectReplication:ObjectReplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationObjectReplicationId = registerOutput<String>(
+      'destinationObjectReplicationId',
+    );
+    destinationStorageAccountId = registerOutput<String>(
+      'destinationStorageAccountId',
+    );
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    sourceObjectReplicationId = registerOutput<String>(
+      'sourceObjectReplicationId',
+    );
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }
 }

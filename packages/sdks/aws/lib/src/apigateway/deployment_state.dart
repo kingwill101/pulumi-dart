@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentState {
   /// Creation date of the deployment
   final pulumi.Input<String>? createdDate;
+
   /// Description of the deployment.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// REST API identifier.
   final pulumi.Input<String>? restApi;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   final pulumi.Input<Map<String, String>>? triggers;
+
   /// Map to set on the related stage.
   final pulumi.Input<Map<String, String>>? variables;
 
@@ -46,13 +51,40 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
-      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
-      variables: map['variables'] == null ? null : (((map['variables'] as Map).cast<String, String>()).input()).input(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApi: (() {
+        final guardedValue = map['restApi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      variables: (() {
+        final guardedValue = map['variables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

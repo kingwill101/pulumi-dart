@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1LookerSystemSpec {
   /// Name of the parent Looker Instance. Empty if it does not exist.
   final pulumi.Input<String>? parentInstanceDisplayName;
+
   /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
   final pulumi.Input<String>? parentInstanceId;
+
   /// Name of the parent Model. Empty if it does not exist.
   final pulumi.Input<String>? parentModelDisplayName;
+
   /// ID of the parent Model. Empty if it does not exist.
   final pulumi.Input<String>? parentModelId;
+
   /// Name of the parent View. Empty if it does not exist.
   final pulumi.Input<String>? parentViewDisplayName;
+
   /// ID of the parent View. Empty if it does not exist.
   final pulumi.Input<String>? parentViewId;
 
@@ -44,15 +49,40 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
     };
   }
 
-  factory GoogleCloudDatacatalogV1LookerSystemSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1LookerSystemSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1LookerSystemSpec(
-      parentInstanceDisplayName: map['parentInstanceDisplayName'] == null ? null : (map['parentInstanceDisplayName']! as String).input(),
-      parentInstanceId: map['parentInstanceId'] == null ? null : (map['parentInstanceId']! as String).input(),
-      parentModelDisplayName: map['parentModelDisplayName'] == null ? null : (map['parentModelDisplayName']! as String).input(),
-      parentModelId: map['parentModelId'] == null ? null : (map['parentModelId']! as String).input(),
-      parentViewDisplayName: map['parentViewDisplayName'] == null ? null : (map['parentViewDisplayName']! as String).input(),
-      parentViewId: map['parentViewId'] == null ? null : (map['parentViewId']! as String).input(),
+      parentInstanceDisplayName: (() {
+        final guardedValue = map['parentInstanceDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentInstanceId: (() {
+        final guardedValue = map['parentInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentModelDisplayName: (() {
+        final guardedValue = map['parentModelDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentModelId: (() {
+        final guardedValue = map['parentModelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentViewDisplayName: (() {
+        final guardedValue = map['parentViewDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentViewId: (() {
+        final guardedValue = map['parentViewId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

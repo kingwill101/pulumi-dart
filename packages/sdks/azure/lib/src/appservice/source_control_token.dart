@@ -4,7 +4,7 @@ import 'source_control_token_state.dart';
 
 /// Manages an App Service Source Control Token.
 ///
-/// > **Note:** This resource can only manage the token for the user currently running Terraform. Managing tokens for another user is not supported by the service.
+/// &gt; **Note:** This resource can only manage the token for the user currently running Terraform. Managing tokens for another user is not supported by the service.
 ///
 /// ## Example Usage
 ///
@@ -104,7 +104,7 @@ import 'source_control_token_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-01-01
@@ -119,10 +119,12 @@ import 'source_control_token_state.dart';
 class SourceControlToken extends pulumi.CustomResource {
   /// The Access Token.
   late final pulumi.Output<String> token;
+
   /// The Access Token Secret.
   ///
-  /// > **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
+  /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
   late final pulumi.Output<String?> tokenSecret;
+
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   late final pulumi.Output<String> type;
 
@@ -135,14 +137,14 @@ class SourceControlToken extends pulumi.CustomResource {
     SourceControlTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControlToken:SourceControlToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.token = registerOutput<String>('token');
-    this.tokenSecret = registerOutput<String?>('tokenSecret');
-    this.type = registerOutput<String>('type');
+         'azure:appservice/sourceControlToken:SourceControlToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    token = registerOutput<String>('token');
+    tokenSecret = registerOutput<String?>('tokenSecret');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [SourceControlToken] resource's state with the given [name] and [id].
@@ -163,13 +165,13 @@ class SourceControlToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControlToken:SourceControlToken',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.token = registerOutput<String>('token');
-    this.tokenSecret = registerOutput<String?>('tokenSecret');
-    this.type = registerOutput<String>('type');
+         'azure:appservice/sourceControlToken:SourceControlToken',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    token = registerOutput<String>('token');
+    tokenSecret = registerOutput<String?>('tokenSecret');
+    type = registerOutput<String>('type');
   }
 }

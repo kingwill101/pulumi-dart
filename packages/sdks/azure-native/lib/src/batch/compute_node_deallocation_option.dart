@@ -5,16 +5,15 @@ enum ComputeNodeDeallocationOption {
   taskCompletion("TaskCompletion"),
   retainedData("RetainedData");
 
-  const ComputeNodeDeallocationOption(this.value);
-  final String value;
+  const ComputeNodeDeallocationOption(this.wireValue);
+  final String wireValue;
 
   static ComputeNodeDeallocationOption fromValue(String value) {
     for (final item in ComputeNodeDeallocationOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeNodeDeallocationOption value: $value');
   }
 }
-

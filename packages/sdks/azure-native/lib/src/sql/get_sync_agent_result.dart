@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSyncAgent.
 class GetSyncAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Expiration time of the sync agent version.
   final String expiryTime;
+
   /// Resource ID.
   final String id;
+
   /// If the sync agent version is up to date.
   final bool isUpToDate;
+
   /// Last alive time of the sync agent.
   final String lastAliveTime;
+
   /// Resource name.
   final String name;
+
   /// State of the sync agent.
   final String state;
+
   /// ARM resource id of the sync database in the sync agent.
   final String? syncDatabaseId;
+
   /// Resource type.
   final String type;
+
   /// Version of the sync agent.
   final String version;
 
@@ -72,10 +80,13 @@ class GetSyncAgentResult {
       lastAliveTime: map['lastAliveTime'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : map['syncDatabaseId']! as String,
+      syncDatabaseId: (() {
+        final guardedValue = map['syncDatabaseId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
-

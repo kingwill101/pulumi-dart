@@ -11,23 +11,33 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_batch_deployment_args_doc}
 class BatchDeploymentArgs {
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<BatchDeploymentMachinelearningservices> batchDeploymentProperties;
+  final pulumi.Input<BatchDeploymentMachinelearningservices>
+  batchDeploymentProperties;
+
   /// The identifier for the Batch inference deployment.
   final pulumi.Input<String>? deploymentName;
+
   /// Inference endpoint name
   final pulumi.Input<String> endpointName;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   final pulumi.Input<String>? kind;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Sku details required for ARM contract for Autoscaling.
   final pulumi.Input<Sku>? sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -60,11 +70,18 @@ class BatchDeploymentArgs {
       'batchDeploymentProperties': batchDeploymentProperties,
       'deploymentName': ?deploymentName,
       'endpointName': endpointName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
       'workspaceName': workspaceName,
     };
@@ -72,17 +89,53 @@ class BatchDeploymentArgs {
 
   factory BatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return BatchDeploymentArgs(
-      batchDeploymentProperties: (map['batchDeploymentProperties'] as BatchDeploymentMachinelearningservices).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      endpointName: (map['endpointName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      batchDeploymentProperties: pulumi.Input.fromValue(
+        map['batchDeploymentProperties']
+            as BatchDeploymentMachinelearningservices,
+      ),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

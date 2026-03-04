@@ -1,5 +1,3 @@
-library module_acm;
-
 export 'acm/certificate.dart';
 export 'acm/certificate_args.dart';
 export 'acm/certificate_domain_validation_option.dart';

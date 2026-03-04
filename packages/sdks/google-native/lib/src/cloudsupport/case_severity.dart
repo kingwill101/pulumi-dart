@@ -7,16 +7,15 @@ enum CaseSeverity {
   s3("S3"),
   s4("S4");
 
-  const CaseSeverity(this.value);
-  final String value;
+  const CaseSeverity(this.wireValue);
+  final String wireValue;
 
   static CaseSeverity fromValue(String value) {
     for (final item in CaseSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CaseSeverity value: $value');
   }
 }
-

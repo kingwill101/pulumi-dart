@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetStackedBarNullValueSeriesOverride {
   /// Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   final pulumi.Input<String>? nullValue;
+
   /// Series name
   final pulumi.Input<String>? seriesName;
 
@@ -23,11 +24,20 @@ class OneDashboardPageWidgetStackedBarNullValueSeriesOverride {
     };
   }
 
-  factory OneDashboardPageWidgetStackedBarNullValueSeriesOverride.fromMap(Map<String, dynamic> map) {
+  factory OneDashboardPageWidgetStackedBarNullValueSeriesOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OneDashboardPageWidgetStackedBarNullValueSeriesOverride(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
-      seriesName: map['seriesName'] == null ? null : (map['seriesName']! as String).input(),
+      nullValue: (() {
+        final guardedValue = map['nullValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      seriesName: (() {
+        final guardedValue = map['seriesName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

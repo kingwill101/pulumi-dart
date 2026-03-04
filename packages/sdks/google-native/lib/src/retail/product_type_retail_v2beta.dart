@@ -5,16 +5,15 @@ enum ProductTypeRetailV2beta {
   variant("VARIANT"),
   collection("COLLECTION");
 
-  const ProductTypeRetailV2beta(this.value);
-  final String value;
+  const ProductTypeRetailV2beta(this.wireValue);
+  final String wireValue;
 
   static ProductTypeRetailV2beta fromValue(String value) {
     for (final item in ProductTypeRetailV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProductTypeRetailV2beta value: $value');
   }
 }
-

@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeComputeBeta {
   dataWrite("DATA_WRITE"),
   logTypeUnspecified("LOG_TYPE_UNSPECIFIED");
 
-  const AuditLogConfigLogTypeComputeBeta(this.value);
-  final String value;
+  const AuditLogConfigLogTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeComputeBeta fromValue(String value) {
     for (final item in AuditLogConfigLogTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeComputeBeta value: $value',
+    );
   }
 }
-

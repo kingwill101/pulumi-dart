@@ -7,16 +7,15 @@ enum DaysOfWeek {
   valueFriday("Friday"),
   valueSaturday("Saturday");
 
-  const DaysOfWeek(this.value);
-  final String value;
+  const DaysOfWeek(this.wireValue);
+  final String wireValue;
 
   static DaysOfWeek fromValue(String value) {
     for (final item in DaysOfWeek.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DaysOfWeek value: $value');
   }
 }
-

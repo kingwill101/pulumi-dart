@@ -9,16 +9,15 @@ enum Threats {
   valueMissingCoverage("missingCoverage"),
   valueDenialOfService("denialOfService");
 
-  const Threats(this.value);
-  final String value;
+  const Threats(this.wireValue);
+  final String wireValue;
 
   static Threats fromValue(String value) {
     for (final item in Threats.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Threats value: $value');
   }
 }
-

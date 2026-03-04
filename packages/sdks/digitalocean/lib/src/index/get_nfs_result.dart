@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNfs.
 class GetNfsResult {
   /// The host IP of the NFS server accessible from the associated VPC.
   final String host;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The mount path for accessing the NFS share.
   final String mountPath;
+
   /// Name of the NFS share.
   final String name;
+
   /// The performance tier of the NFS share (`standard` or `high`).
   final String performanceTier;
+
   /// The region where the NFS share is located.
   final String? region;
+
   /// The size of the NFS share in GiB.
   final int size;
+
   /// The current status of the NFS share.
   final String status;
   final List<String> tags;
@@ -64,11 +70,14 @@ class GetNfsResult {
       mountPath: map['mountPath'] as String,
       name: map['name'] as String,
       performanceTier: map['performanceTier'] as String,
-      region: map['region'] == null ? null : map['region']! as String,
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       size: map['size'] as int,
       status: map['status'] as String,
       tags: (map['tags'] as List).cast<String>(),
     );
   }
 }
-

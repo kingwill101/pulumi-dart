@@ -8,8 +8,10 @@ class K8sActiveDirectoryResponse {
   /// Account name for AAD
   final pulumi.Input<String>? accountName;
   final pulumi.Input<K8sActiveDirectoryResponseConnector>? connector;
+
   /// An array of encryption types
   final pulumi.Input<List<String>>? encryptionTypes;
+
   /// Keytab secret used to authenticate with Active Directory.
   final pulumi.Input<String>? keytabSecret;
 
@@ -28,7 +30,11 @@ class K8sActiveDirectoryResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': ?accountName,
-      'connector': ?pulumi.Input.mapOptionalInputValue<K8sActiveDirectoryResponseConnector, Map<String, dynamic>>(connector, (value) => value.toMap()),
+      'connector':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sActiveDirectoryResponseConnector,
+            Map<String, dynamic>
+          >(connector, (value) => value.toMap()),
       'encryptionTypes': ?encryptionTypes,
       'keytabSecret': ?keytabSecret,
     };
@@ -36,11 +42,30 @@ class K8sActiveDirectoryResponse {
 
   factory K8sActiveDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return K8sActiveDirectoryResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      connector: map['connector'] == null ? null : (K8sActiveDirectoryResponseConnector.fromMap((map['connector']! as Map).cast<String, dynamic>())).input(),
-      encryptionTypes: map['encryptionTypes'] == null ? null : ((map['encryptionTypes']! as List).cast<String>()).input(),
-      keytabSecret: map['keytabSecret'] == null ? null : (map['keytabSecret']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connector: (() {
+        final guardedValue = map['connector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sActiveDirectoryResponseConnector.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encryptionTypes: (() {
+        final guardedValue = map['encryptionTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      keytabSecret: (() {
+        final guardedValue = map['keytabSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

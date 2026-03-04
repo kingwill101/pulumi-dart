@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_creds_args.dart';
-import 'user_creds_resource_identity.dart';
 import 'user_creds_state.dart';
 
 /// User credentials for a Cloud Firestore with MongoDB compatibility database.
@@ -458,25 +457,32 @@ import 'user_creds_state.dart';
 class UserCreds extends pulumi.CustomResource {
   /// The timestamp at which these user creds were created.
   late final pulumi.Output<String> createTime;
+
   /// The Firestore database ID.
   late final pulumi.Output<String> database;
+
   /// The ID to use for the user creds, which will become the final component
   /// of the user cred's resource name.
   /// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
   /// with first character a letter and the last a letter or a number. Must not
   /// be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Describes the Resource Identity principal.
   /// Structure is documented below.
-  late final pulumi.Output<List<UserCredsResourceIdentity>> resourceIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>> resourceIdentities;
+
   /// The plaintext server-generated password for the user creds.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> securePassword;
+
   /// The state of the user creds.
   late final pulumi.Output<String> state;
+
   /// The timestamp at which these user creds were updated.
   late final pulumi.Output<String> updateTime;
 
@@ -489,19 +495,21 @@ class UserCreds extends pulumi.CustomResource {
     UserCredsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firestore/userCreds:UserCreds',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.database = registerOutput<String>('database');
+         'gcp:firestore/userCreds:UserCreds',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.resourceIdentities = registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities');
-    this.securePassword = registerOutput<String>('securePassword');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    resourceIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'resourceIdentities',
+    );
+    securePassword = registerOutput<String>('securePassword');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [UserCreds] resource's state with the given [name] and [id].
@@ -522,18 +530,20 @@ class UserCreds extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firestore/userCreds:UserCreds',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.database = registerOutput<String>('database');
+         'gcp:firestore/userCreds:UserCreds',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.resourceIdentities = registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities');
-    this.securePassword = registerOutput<String>('securePassword');
+    project = registerOutput<String>('project');
+    resourceIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'resourceIdentities',
+    );
+    securePassword = registerOutput<String>('securePassword');
     this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

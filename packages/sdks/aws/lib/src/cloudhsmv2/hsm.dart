@@ -140,20 +140,27 @@ import 'hsm_state.dart';
 class Hsm extends pulumi.CustomResource {
   /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
   late final pulumi.Output<String> availabilityZone;
+
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   late final pulumi.Output<String> clusterId;
+
   /// The id of the ENI interface allocated for HSM module.
   late final pulumi.Output<String> hsmEniId;
+
   /// The id of the HSM module.
   late final pulumi.Output<String> hsmId;
+
   /// The state of the HSM module.
   late final pulumi.Output<String> hsmState;
+
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
-  /// > **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
+  /// &gt; **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
   late final pulumi.Output<String> ipAddress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
   late final pulumi.Output<String> subnetId;
 
@@ -161,32 +168,25 @@ class Hsm extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hsm]. {@macro pulumi_cloudhsmv2_hsm_hsm_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hsm(
-    String name, {
-    HsmArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:cloudhsmv2/hsm:Hsm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.hsmEniId = registerOutput<String>('hsmEniId');
-    this.hsmId = registerOutput<String>('hsmId');
-    this.hsmState = registerOutput<String>('hsmState');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
+  Hsm(String name, {HsmArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:cloudhsmv2/hsm:Hsm',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    clusterId = registerOutput<String>('clusterId');
+    hsmEniId = registerOutput<String>('hsmEniId');
+    hsmId = registerOutput<String>('hsmId');
+    hsmState = registerOutput<String>('hsmState');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [Hsm] resource's state with the given [name] and [id].
-  static Hsm get(
-    String name,
-    pulumi.Input<String> id, {
-    HsmState? state,
-  }) {
+  static Hsm get(String name, pulumi.Input<String> id, {HsmState? state}) {
     return Hsm._get(
       name,
       state: state?.toMap(),
@@ -199,18 +199,18 @@ class Hsm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudhsmv2/hsm:Hsm',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.hsmEniId = registerOutput<String>('hsmEniId');
-    this.hsmId = registerOutput<String>('hsmId');
-    this.hsmState = registerOutput<String>('hsmState');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
+         'aws:cloudhsmv2/hsm:Hsm',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    clusterId = registerOutput<String>('clusterId');
+    hsmEniId = registerOutput<String>('hsmEniId');
+    hsmId = registerOutput<String>('hsmId');
+    hsmState = registerOutput<String>('hsmState');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

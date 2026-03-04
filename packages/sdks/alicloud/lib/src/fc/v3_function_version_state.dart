@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3FunctionVersionState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Description of the function version
   final pulumi.Input<String>? description;
+
   /// Function Name
   final pulumi.Input<String>? functionName;
+
   /// (Available since v1.234.0) Update time
   final pulumi.Input<String>? lastModifiedTime;
+
   /// Function Version
   final pulumi.Input<String>? versionId;
 
@@ -41,12 +45,31 @@ class V3FunctionVersionState {
 
   factory V3FunctionVersionState.fromMap(Map<String, dynamic> map) {
     return V3FunctionVersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionName: (() {
+        final guardedValue = map['functionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionId: (() {
+        final guardedValue = map['versionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

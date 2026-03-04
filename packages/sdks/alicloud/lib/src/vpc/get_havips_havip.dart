@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHavipsHavip {
   /// EIP bound to HaVip.
   final pulumi.Input<List<String>> associatedEipAddresses;
+
   /// An ECS instance that is bound to HaVip.
   final pulumi.Input<List<String>> associatedInstances;
+
   /// Dependence of a HaVip instance.
   final pulumi.Input<String> description;
+
   /// The  ID of the resource.
   final pulumi.Input<String> havipId;
+
   /// The name of the HaVip instance.
   final pulumi.Input<String> havipName;
+
   /// The ID of the Ha Vip.
   final pulumi.Input<String> id;
+
   /// IP address of private network.
   final pulumi.Input<String> ipAddress;
+
   /// The primary instance ID bound to HaVip.
   final pulumi.Input<String> masterInstanceId;
+
   /// The status.
   final pulumi.Input<String> status;
+
   /// The VPC ID to which the HaVip instance belongs.
   final pulumi.Input<String> vpcId;
+
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
 
@@ -70,18 +80,23 @@ class GetHavipsHavip {
 
   factory GetHavipsHavip.fromMap(Map<String, dynamic> map) {
     return GetHavipsHavip(
-      associatedEipAddresses: ((map['associatedEipAddresses'] as List).cast<String>()).input(),
-      associatedInstances: ((map['associatedInstances'] as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      havipId: (map['havipId'] as String).input(),
-      havipName: (map['havipName'] as String).input(),
-      id: (map['id'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      masterInstanceId: (map['masterInstanceId'] as String).input(),
-      status: (map['status'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      associatedEipAddresses: pulumi.Input.fromValue(
+        (map['associatedEipAddresses'] as List).cast<String>(),
+      ),
+      associatedInstances: pulumi.Input.fromValue(
+        (map['associatedInstances'] as List).cast<String>(),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      havipId: pulumi.Input.fromValue(map['havipId'] as String),
+      havipName: pulumi.Input.fromValue(map['havipName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      masterInstanceId: pulumi.Input.fromValue(
+        map['masterInstanceId'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

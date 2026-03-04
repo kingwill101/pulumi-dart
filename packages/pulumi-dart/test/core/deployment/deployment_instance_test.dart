@@ -464,12 +464,56 @@ void main() {
     );
 
     test(
-      'registerResourceOutputs logs unknown stack outputs and still registers request',
+      'registerResourceOutputs includes unknown stack outputs as serialized sentinels during preview',
+      () async {
+        final previewDeployment = DeploymentImpl.createForTesting(
+          organizationName: 'org',
+          projectName: 'project',
+          stackName: 'stack',
+          isDryRun: true,
+          monitor: monitor,
+          engine: MockEngine(),
+        );
+        final stack = MockStack();
+        when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
+          final data = invocation.positionalArguments[0] as OutputData<dynamic>;
+          return Value()
+            ..stringValue = data.isKnown
+                ? data.value?.toString() ?? ''
+                : 'unknown';
+        });
+        previewDeployment.setStack(stack);
+
+        final stackResource = DependencyResource(
+          'urn:pulumi:stack::project::pulumi:pulumi:Stack::project-stack',
+        );
+        final outputs = Output.create(<String, dynamic>{
+          'pending': Output.createUnknown<String>(),
+        });
+
+        await previewDeployment.registerResourceOutputs(stackResource, outputs);
+
+        expect(monitor.registerResourceOutputsCalls, 1);
+        final request = monitor.lastRegisterResourceOutputsRequest!;
+        expect(request.urn, await stackResource.urn.getValue());
+        expect(request.outputs.fields.containsKey('pending'), isTrue);
+        expect(
+          request.outputs.fields['pending']!.stringValue,
+          equals('unknown'),
+        );
+      },
+    );
+
+    test(
+      'registerResourceOutputs omits unknown stack outputs outside preview',
       () async {
         final stack = MockStack();
         when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
           final data = invocation.positionalArguments[0] as OutputData<dynamic>;
-          return Value()..stringValue = data.value?.toString() ?? '';
+          return Value()
+            ..stringValue = data.isKnown
+                ? data.value?.toString() ?? ''
+                : 'unknown';
         });
         deployment.setStack(stack);
 
@@ -485,7 +529,7 @@ void main() {
         expect(monitor.registerResourceOutputsCalls, 1);
         final request = monitor.lastRegisterResourceOutputsRequest!;
         expect(request.urn, await stackResource.urn.getValue());
-        expect(request.outputs.fields, isEmpty);
+        expect(request.outputs.fields.containsKey('pending'), isFalse);
       },
     );
 

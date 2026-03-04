@@ -311,22 +311,31 @@ import 'system_data_response.dart';
 class BrokerAuthorization extends pulumi.CustomResource {
   /// The list of authorization policies supported by the Authorization Resource.
   late final pulumi.Output<AuthorizationConfigResponse> authorizationPolicies;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The array of listener Resources it supports.
   late final pulumi.Output<List<String>> listenerRef;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -339,20 +348,24 @@ class BrokerAuthorization extends pulumi.CustomResource {
     BrokerAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsmq:BrokerAuthorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationPolicies = registerOutput<AuthorizationConfigResponse>('authorizationPolicies');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.listenerRef = registerOutput<List<String>>('listenerRef');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsmq:BrokerAuthorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationPolicies = registerOutput<AuthorizationConfigResponse>(
+      'authorizationPolicies',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    listenerRef = registerOutput<List<String>>('listenerRef');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

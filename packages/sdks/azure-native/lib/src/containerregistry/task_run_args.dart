@@ -11,16 +11,22 @@ import 'identity_properties.dart';
 class TaskRunArgs {
   /// How the run should be forced to rerun even if the run request configuration has not changed
   final pulumi.Input<String>? forceUpdateTag;
+
   /// Identity for the resource.
   final pulumi.Input<IdentityProperties>? identity;
+
   /// The location of the resource
   final pulumi.Input<String>? location;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The request (parameters) for the run
   final pulumi.Input<DockerBuildRequest>? runRequest;
+
   /// The name of the task run.
   final pulumi.Input<String>? taskRunName;
 
@@ -45,25 +51,62 @@ class TaskRunArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'forceUpdateTag': ?forceUpdateTag,
-      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityProperties,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
-      'runRequest': ?pulumi.Input.mapOptionalInputValue<DockerBuildRequest, Map<String, dynamic>>(runRequest, (value) => value.toMap()),
+      'runRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            DockerBuildRequest,
+            Map<String, dynamic>
+          >(runRequest, (value) => value.toMap()),
       'taskRunName': ?taskRunName,
     };
   }
 
   factory TaskRunArgs.fromMap(Map<String, dynamic> map) {
     return TaskRunArgs(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runRequest: map['runRequest'] == null ? null : (DockerBuildRequest.fromMap((map['runRequest']! as Map).cast<String, dynamic>())).input(),
-      taskRunName: map['taskRunName'] == null ? null : (map['taskRunName']! as String).input(),
+      forceUpdateTag: (() {
+        final guardedValue = map['forceUpdateTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runRequest: (() {
+        final guardedValue = map['runRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DockerBuildRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      taskRunName: (() {
+        final guardedValue = map['taskRunName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

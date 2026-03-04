@@ -7,7 +7,7 @@ import 'firewall_vpc_firewall_cen_state.dart';
 ///
 /// For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -163,20 +163,28 @@ import 'firewall_vpc_firewall_cen_state.dart';
 class FirewallVpcFirewallCen extends pulumi.CustomResource {
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
+
   /// Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
   late final pulumi.Output<String> connectType;
+
   /// The language type of the requested and received messages. Valid values:
   late final pulumi.Output<String?> lang;
+
   /// The details of the VPC. See `local_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallCenLocalVpc> localVpc;
+
   /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
   late final pulumi.Output<String?> memberUid;
+
   /// Firewall switch status.
   late final pulumi.Output<String> status;
+
   /// VPC firewall ID
   late final pulumi.Output<String> vpcFirewallId;
+
   /// The name of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallName;
+
   /// The ID of the region to which the VPC is created.
   late final pulumi.Output<String> vpcRegion;
 
@@ -189,20 +197,20 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     FirewallVpcFirewallCenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.connectType = registerOutput<String>('connectType');
-    this.lang = registerOutput<String?>('lang');
-    this.localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.status = registerOutput<String>('status');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
-    this.vpcFirewallName = registerOutput<String>('vpcFirewallName');
-    this.vpcRegion = registerOutput<String>('vpcRegion');
+         'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    connectType = registerOutput<String>('connectType');
+    lang = registerOutput<String?>('lang');
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
+    memberUid = registerOutput<String?>('memberUid');
+    status = registerOutput<String>('status');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
+    vpcFirewallName = registerOutput<String>('vpcFirewallName');
+    vpcRegion = registerOutput<String>('vpcRegion');
   }
 
   /// Gets an existing [FirewallVpcFirewallCen] resource's state with the given [name] and [id].
@@ -223,19 +231,19 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.connectType = registerOutput<String>('connectType');
-    this.lang = registerOutput<String?>('lang');
-    this.localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.status = registerOutput<String>('status');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
-    this.vpcFirewallName = registerOutput<String>('vpcFirewallName');
-    this.vpcRegion = registerOutput<String>('vpcRegion');
+         'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    connectType = registerOutput<String>('connectType');
+    lang = registerOutput<String?>('lang');
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
+    memberUid = registerOutput<String?>('memberUid');
+    status = registerOutput<String>('status');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
+    vpcFirewallName = registerOutput<String>('vpcFirewallName');
+    vpcRegion = registerOutput<String>('vpcRegion');
   }
 }

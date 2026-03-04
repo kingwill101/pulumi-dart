@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FhirServiceCors {
   /// A set of headers to be allowed via CORS.
   final pulumi.Input<List<String>> allowedHeaders;
+
   /// The methods to be allowed via CORS. Possible values are `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PATCH` and `PUT`.
   final pulumi.Input<List<String>> allowedMethods;
+
   /// A set of origins to be allowed via CORS.
   final pulumi.Input<List<String>> allowedOrigins;
+
   /// If credentials are allowed via CORS.
   final pulumi.Input<bool>? credentialsAllowed;
+
   /// The max age to be allowed via CORS.
   final pulumi.Input<int>? maxAgeInSeconds;
 
@@ -40,12 +44,25 @@ class FhirServiceCors {
 
   factory FhirServiceCors.fromMap(Map<String, dynamic> map) {
     return FhirServiceCors(
-      allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
-      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed']! as bool).input(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds']! as int).input(),
+      allowedHeaders: pulumi.Input.fromValue(
+        (map['allowedHeaders'] as List).cast<String>(),
+      ),
+      allowedMethods: pulumi.Input.fromValue(
+        (map['allowedMethods'] as List).cast<String>(),
+      ),
+      allowedOrigins: pulumi.Input.fromValue(
+        (map['allowedOrigins'] as List).cast<String>(),
+      ),
+      credentialsAllowed: (() {
+        final guardedValue = map['credentialsAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxAgeInSeconds: (() {
+        final guardedValue = map['maxAgeInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

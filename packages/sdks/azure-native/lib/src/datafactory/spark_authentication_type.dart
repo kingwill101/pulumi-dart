@@ -5,16 +5,15 @@ enum SparkAuthenticationType {
   valueUsernameAndPassword("UsernameAndPassword"),
   valueWindowsAzureHDInsightService("WindowsAzureHDInsightService");
 
-  const SparkAuthenticationType(this.value);
-  final String value;
+  const SparkAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SparkAuthenticationType fromValue(String value) {
     for (final item in SparkAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SparkAuthenticationType value: $value');
   }
 }
-

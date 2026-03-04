@@ -7,12 +7,16 @@ import 'container_app_probe_response_http_headers.dart';
 class ContainerAppProbeResponseHttpGet {
   /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
   final pulumi.Input<String>? host;
+
   /// Custom headers to set in the request. HTTP allows repeated headers.
   final pulumi.Input<List<ContainerAppProbeResponseHttpHeaders>>? httpHeaders;
+
   /// Path to access on the HTTP server.
   final pulumi.Input<String>? path;
+
   /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
   final pulumi.Input<int> port;
+
   /// Scheme to use for connecting to the host. Defaults to HTTP.
   final pulumi.Input<String>? scheme;
 
@@ -33,7 +37,18 @@ class ContainerAppProbeResponseHttpGet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<ContainerAppProbeResponseHttpHeaders>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<ContainerAppProbeResponseHttpHeaders, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpHeaders':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContainerAppProbeResponseHttpHeaders>,
+            List<Map<String, dynamic>>
+          >(
+            httpHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContainerAppProbeResponseHttpHeaders,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'path': ?path,
       'port': port,
       'scheme': ?scheme,
@@ -42,12 +57,34 @@ class ContainerAppProbeResponseHttpGet {
 
   factory ContainerAppProbeResponseHttpGet.fromMap(Map<String, dynamic> map) {
     return ContainerAppProbeResponseHttpGet(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<ContainerAppProbeResponseHttpHeaders>(map['httpHeaders']!, (value) => ContainerAppProbeResponseHttpHeaders.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpHeaders: (() {
+        final guardedValue = map['httpHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContainerAppProbeResponseHttpHeaders>(
+            guardedValue,
+            (value) => ContainerAppProbeResponseHttpHeaders.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      scheme: (() {
+        final guardedValue = map['scheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

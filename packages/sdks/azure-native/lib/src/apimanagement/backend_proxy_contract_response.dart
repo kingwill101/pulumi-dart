@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendProxyContractResponse {
   /// Password to connect to the WebProxy Server
   final pulumi.Input<String>? password;
+
   /// WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
   final pulumi.Input<String> url;
+
   /// Username to connect to the WebProxy server
   final pulumi.Input<String>? username;
 
@@ -31,10 +33,17 @@ class BackendProxyContractResponse {
 
   factory BackendProxyContractResponse.fromMap(Map<String, dynamic> map) {
     return BackendProxyContractResponse(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      url: (map['url'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

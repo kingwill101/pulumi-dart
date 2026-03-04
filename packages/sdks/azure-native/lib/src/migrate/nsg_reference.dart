@@ -9,20 +9,17 @@ class NsgReference {
 
   /// Creates a new [NsgReference].
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  NsgReference({
-    required this.sourceArmResourceId,
-  });
+  NsgReference({required this.sourceArmResourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourceArmResourceId': sourceArmResourceId,
-    };
+    return <String, dynamic>{'sourceArmResourceId': sourceArmResourceId};
   }
 
   factory NsgReference.fromMap(Map<String, dynamic> map) {
     return NsgReference(
-      sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
+      sourceArmResourceId: pulumi.Input.fromValue(
+        map['sourceArmResourceId'] as String,
+      ),
     );
   }
 }
-

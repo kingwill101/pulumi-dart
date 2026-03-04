@@ -7,14 +7,19 @@ import 'table_level_sharing_properties_response.dart';
 class FollowerDatabaseDefinitionResponse {
   /// Resource name of the attached database configuration in the follower cluster.
   final pulumi.Input<String> attachedDatabaseConfigurationName;
+
   /// Resource id of the cluster that follows a database owned by this cluster.
   final pulumi.Input<String> clusterResourceId;
+
   /// The database name owned by this cluster that was followed. * in case following all databases.
   final pulumi.Input<String> databaseName;
+
   /// The origin of the following setup.
   final pulumi.Input<String> databaseShareOrigin;
+
   /// Table level sharing specifications
-  final pulumi.Input<TableLevelSharingPropertiesResponse> tableLevelSharingProperties;
+  final pulumi.Input<TableLevelSharingPropertiesResponse>
+  tableLevelSharingProperties;
 
   /// Creates a new [FollowerDatabaseDefinitionResponse].
   /// [attachedDatabaseConfigurationName] Resource name of the attached database configuration in the follower cluster.
@@ -36,18 +41,31 @@ class FollowerDatabaseDefinitionResponse {
       'clusterResourceId': clusterResourceId,
       'databaseName': databaseName,
       'databaseShareOrigin': databaseShareOrigin,
-      'tableLevelSharingProperties': pulumi.Input.mapInputValue<TableLevelSharingPropertiesResponse, Map<String, dynamic>>(tableLevelSharingProperties, (value) => value.toMap()),
+      'tableLevelSharingProperties':
+          pulumi.Input.mapInputValue<
+            TableLevelSharingPropertiesResponse,
+            Map<String, dynamic>
+          >(tableLevelSharingProperties, (value) => value.toMap()),
     };
   }
 
   factory FollowerDatabaseDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return FollowerDatabaseDefinitionResponse(
-      attachedDatabaseConfigurationName: (map['attachedDatabaseConfigurationName'] as String).input(),
-      clusterResourceId: (map['clusterResourceId'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      databaseShareOrigin: (map['databaseShareOrigin'] as String).input(),
-      tableLevelSharingProperties: (TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
+      attachedDatabaseConfigurationName: pulumi.Input.fromValue(
+        map['attachedDatabaseConfigurationName'] as String,
+      ),
+      clusterResourceId: pulumi.Input.fromValue(
+        map['clusterResourceId'] as String,
+      ),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      databaseShareOrigin: pulumi.Input.fromValue(
+        map['databaseShareOrigin'] as String,
+      ),
+      tableLevelSharingProperties: pulumi.Input.fromValue(
+        TableLevelSharingPropertiesResponse.fromMap(
+          (map['tableLevelSharingProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

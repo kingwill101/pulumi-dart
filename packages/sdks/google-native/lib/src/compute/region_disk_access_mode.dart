@@ -4,16 +4,15 @@ enum RegionDiskAccessMode {
   readWriteMany("READ_WRITE_MANY"),
   readWriteSingle("READ_WRITE_SINGLE");
 
-  const RegionDiskAccessMode(this.value);
-  final String value;
+  const RegionDiskAccessMode(this.wireValue);
+  final String wireValue;
 
   static RegionDiskAccessMode fromValue(String value) {
     for (final item in RegionDiskAccessMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionDiskAccessMode value: $value');
   }
 }
-

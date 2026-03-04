@@ -3,16 +3,15 @@ enum PolicyEvaluatorType {
   allowedValuesPolicy("AllowedValuesPolicy"),
   maxValuePolicy("MaxValuePolicy");
 
-  const PolicyEvaluatorType(this.value);
-  final String value;
+  const PolicyEvaluatorType(this.wireValue);
+  final String wireValue;
 
   static PolicyEvaluatorType fromValue(String value) {
     for (final item in PolicyEvaluatorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyEvaluatorType value: $value');
   }
 }
-

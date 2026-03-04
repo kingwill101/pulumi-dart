@@ -10,28 +10,40 @@ import 'system_data_response.dart';
 class GetPipelineResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Detailed description of the Pipeline.
   final String? description;
+
   /// Flag indicating whether the pipeline should be running or not.
   final bool enabled;
+
   /// Edge location of the resource.
   final ExtendedLocationResponse extendedLocation;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Information about where to pull input data from.
   final PipelineInputResponse input;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// Map of stage ids to stage configurations for all pipeline processing and output stages.
   final Map<String, PipelineStageResponse> stages;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -76,7 +88,11 @@ class GetPipelineResult {
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'stages': pulumi.Input.encodeMapValues<PipelineStageResponse, Map<String, dynamic>>(stages, (value) => value.toMap()),
+      'stages':
+          pulumi.Input.encodeMapValues<
+            PipelineStageResponse,
+            Map<String, dynamic>
+          >(stages, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -86,19 +102,37 @@ class GetPipelineResult {
   factory GetPipelineResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       enabled: map['enabled'] as bool,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: ExtendedLocationResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
-      input: PipelineInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>()),
+      input: PipelineInputResponse.fromMap(
+        (map['input']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      stages: pulumi.Input.decodeMapValues<PipelineStageResponse>(map['stages'], (value) => PipelineStageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      stages: pulumi.Input.decodeMapValues<PipelineStageResponse>(
+        map['stages']!,
+        (value) => PipelineStageResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

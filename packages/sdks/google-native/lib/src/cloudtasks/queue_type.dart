@@ -4,16 +4,15 @@ enum QueueType {
   pull("PULL"),
   push("PUSH");
 
-  const QueueType(this.value);
-  final String value;
+  const QueueType(this.wireValue);
+  final String wireValue;
 
   static QueueType fromValue(String value) {
     for (final item in QueueType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QueueType value: $value');
   }
 }
-

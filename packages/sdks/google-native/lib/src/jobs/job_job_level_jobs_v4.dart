@@ -7,16 +7,15 @@ enum JobJobLevelJobsV4 {
   director("DIRECTOR"),
   executive("EXECUTIVE");
 
-  const JobJobLevelJobsV4(this.value);
-  final String value;
+  const JobJobLevelJobsV4(this.wireValue);
+  final String wireValue;
 
   static JobJobLevelJobsV4 fromValue(String value) {
     for (final item in JobJobLevelJobsV4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobJobLevelJobsV4 value: $value');
   }
 }
-

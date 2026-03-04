@@ -4,16 +4,15 @@ enum MinimalSeverity {
   valueMedium("Medium"),
   valueLow("Low");
 
-  const MinimalSeverity(this.value);
-  final String value;
+  const MinimalSeverity(this.wireValue);
+  final String wireValue;
 
   static MinimalSeverity fromValue(String value) {
     for (final item in MinimalSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MinimalSeverity value: $value');
   }
 }
-

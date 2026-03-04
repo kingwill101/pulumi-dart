@@ -4,7 +4,7 @@ import 'snapshot_block_public_access_state.dart';
 
 /// Provides a resource to manage the state of the "Block public access for snapshots" setting on region level.
 ///
-/// > **NOTE:** Removing this Terraform resource disables blocking.
+/// &gt; **NOTE:** Removing this Terraform resource disables blocking.
 ///
 /// ## Example Usage
 ///
@@ -103,6 +103,7 @@ import 'snapshot_block_public_access_state.dart';
 class SnapshotBlockPublicAccess extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
   late final pulumi.Output<String> state;
 
@@ -115,13 +116,13 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
     SnapshotBlockPublicAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
+         'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [SnapshotBlockPublicAccess] resource's state with the given [name] and [id].
@@ -142,12 +143,12 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
+         'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
   }
 }

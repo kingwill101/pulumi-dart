@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationSnapshotArgs {
   /// The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   final pulumi.Input<String> applicationName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the application snapshot.
   final pulumi.Input<String> snapshotName;
 
@@ -34,10 +36,13 @@ class ApplicationSnapshotArgs {
 
   factory ApplicationSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotArgs(
-      applicationName: (map['applicationName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
     );
   }
 }
-

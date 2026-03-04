@@ -13,15 +13,16 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'listenerArns': listenerArns,
-    };
+    return <String, dynamic>{'listenerArns': listenerArns};
   }
 
-  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute(
-      listenerArns: ((map['listenerArns'] as List).cast<String>()).input(),
+      listenerArns: pulumi.Input.fromValue(
+        (map['listenerArns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

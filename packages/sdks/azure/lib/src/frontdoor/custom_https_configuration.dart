@@ -3,19 +3,19 @@ import 'custom_https_configuration_args.dart';
 import 'custom_https_configuration_custom_https_configuration.dart';
 import 'custom_https_configuration_state.dart';
 
-/// !> **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// !&gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
 /// Manages the Custom HTTPS Configuration for an Azure Front Door (classic) Frontend Endpoint.
 ///
-/// > **Note:** Defining custom HTTPS configurations using a separate `azure.frontdoor.CustomHttpsConfiguration` resource allows for parallel creation/update.
+/// &gt; **Note:** Defining custom HTTPS configurations using a separate `azure.frontdoor.CustomHttpsConfiguration` resource allows for parallel creation/update.
 ///
-/// !> **Note:** In order to address the ordering issue we have changed the design on how to retrieve existing sub resources such as frontend endpoints. Existing design will be deprecated and will result in an incorrect configuration. Please refer to the updated documentation below for more information.
+/// !&gt; **Note:** In order to address the ordering issue we have changed the design on how to retrieve existing sub resources such as frontend endpoints. Existing design will be deprecated and will result in an incorrect configuration. Please refer to the updated documentation below for more information.
 ///
-/// !> **Note:** The `resource_group_name` field has been removed as of the `v2.58.0` provider release. If the `resource_group_name` field has been defined in your current `azure.frontdoor.CustomHttpsConfiguration` resource configuration file please remove it else you will receive a `An argument named "resource_group_name" is not expected here.` error. If your pre-existing Front Door instance contained inline `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
+/// !&gt; **Note:** The `resource_group_name` field has been removed as of the `v2.58.0` provider release. If the `resource_group_name` field has been defined in your current `azure.frontdoor.CustomHttpsConfiguration` resource configuration file please remove it else you will receive a `An argument named "resource_group_name" is not expected here.` error. If your pre-existing Front Door instance contained inline `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
 ///
-/// !> **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
+/// !&gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
 ///
-/// !> **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -568,9 +568,12 @@ import 'custom_https_configuration_state.dart';
 /// ```
 class CustomHttpsConfiguration extends pulumi.CustomResource {
   /// A `custom_https_configuration` block as defined above.
-  late final pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration?> customHttpsConfiguration;
+  late final pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration?>
+  customHttpsConfiguration;
+
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   late final pulumi.Output<bool> customHttpsProvisioningEnabled;
+
   /// The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> frontendEndpointId;
 
@@ -583,14 +586,19 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     CustomHttpsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customHttpsConfiguration = registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>('customHttpsConfiguration');
-    this.customHttpsProvisioningEnabled = registerOutput<bool>('customHttpsProvisioningEnabled');
-    this.frontendEndpointId = registerOutput<String>('frontendEndpointId');
+         'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customHttpsConfiguration =
+        registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
+          'customHttpsConfiguration',
+        );
+    customHttpsProvisioningEnabled = registerOutput<bool>(
+      'customHttpsProvisioningEnabled',
+    );
+    frontendEndpointId = registerOutput<String>('frontendEndpointId');
   }
 
   /// Gets an existing [CustomHttpsConfiguration] resource's state with the given [name] and [id].
@@ -611,13 +619,18 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customHttpsConfiguration = registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>('customHttpsConfiguration');
-    this.customHttpsProvisioningEnabled = registerOutput<bool>('customHttpsProvisioningEnabled');
-    this.frontendEndpointId = registerOutput<String>('frontendEndpointId');
+         'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customHttpsConfiguration =
+        registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
+          'customHttpsConfiguration',
+        );
+    customHttpsProvisioningEnabled = registerOutput<bool>(
+      'customHttpsProvisioningEnabled',
+    );
+    frontendEndpointId = registerOutput<String>('frontendEndpointId');
   }
 }

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatus {
   /// Optional job state details, such as an error description if the state is ERROR.
   final pulumi.Input<String>? details;
+
   /// A state message specifying the overall job state.
   final pulumi.Input<String>? state;
+
   /// The time when this state was entered.
   final pulumi.Input<String>? stateStartTime;
+
   /// Additional state information, which includes status reported by the agent.
   final pulumi.Input<String>? substate;
 
@@ -17,12 +20,7 @@ class JobStatus {
   /// [state] A state message specifying the overall job state.
   /// [stateStartTime] The time when this state was entered.
   /// [substate] Additional state information, which includes status reported by the agent.
-  JobStatus({
-    this.details,
-    this.state,
-    this.stateStartTime,
-    this.substate,
-  });
+  JobStatus({this.details, this.state, this.stateStartTime, this.substate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,11 +33,26 @@ class JobStatus {
 
   factory JobStatus.fromMap(Map<String, dynamic> map) {
     return JobStatus(
-      details: map['details'] == null ? null : (map['details']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      stateStartTime: map['stateStartTime'] == null ? null : (map['stateStartTime']! as String).input(),
-      substate: map['substate'] == null ? null : (map['substate']! as String).input(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stateStartTime: (() {
+        final guardedValue = map['stateStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      substate: (() {
+        final guardedValue = map['substate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

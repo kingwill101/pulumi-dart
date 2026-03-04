@@ -31,10 +31,13 @@ class GetPhraseSetArgs {
 
   factory GetPhraseSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPhraseSetArgs(
-      location: (map['location'] as String).input(),
-      phraseSetId: (map['phraseSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      phraseSetId: pulumi.Input.fromValue(map['phraseSetId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

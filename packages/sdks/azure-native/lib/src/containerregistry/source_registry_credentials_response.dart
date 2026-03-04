@@ -11,20 +11,19 @@ class SourceRegistryCredentialsResponse {
 
   /// Creates a new [SourceRegistryCredentialsResponse].
   /// [loginMode] The authentication mode which determines the source registry login scope. The credentials for the source registry
-  SourceRegistryCredentialsResponse({
-    this.loginMode,
-  });
+  SourceRegistryCredentialsResponse({this.loginMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loginMode': ?loginMode,
-    };
+    return <String, dynamic>{'loginMode': ?loginMode};
   }
 
   factory SourceRegistryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return SourceRegistryCredentialsResponse(
-      loginMode: map['loginMode'] == null ? null : (map['loginMode']! as String).input(),
+      loginMode: (() {
+        final guardedValue = map['loginMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

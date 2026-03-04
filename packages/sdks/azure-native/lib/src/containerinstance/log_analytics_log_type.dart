@@ -3,16 +3,15 @@ enum LogAnalyticsLogType {
   valueContainerInsights("ContainerInsights"),
   valueContainerInstanceLogs("ContainerInstanceLogs");
 
-  const LogAnalyticsLogType(this.value);
-  final String value;
+  const LogAnalyticsLogType(this.wireValue);
+  final String wireValue;
 
   static LogAnalyticsLogType fromValue(String value) {
     for (final item in LogAnalyticsLogType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogAnalyticsLogType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_securitycenter;
-
 export 'securitycenter/functions.dart';
 export 'securitycenter/get_groups_args.dart';
 export 'securitycenter/get_groups_group.dart';

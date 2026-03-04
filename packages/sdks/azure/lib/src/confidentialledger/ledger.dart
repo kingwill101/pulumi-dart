@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ledger_args.dart';
-import 'ledger_azuread_based_service_principal.dart';
-import 'ledger_certificate_based_security_principal.dart';
 import 'ledger_state.dart';
 
 /// Manages a Confidential Ledger.
@@ -201,7 +199,7 @@ import 'ledger_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ConfidentialLedger` - 2022-05-13
@@ -215,21 +213,31 @@ import 'ledger_state.dart';
 /// ```
 class Ledger extends pulumi.CustomResource {
   /// A list of `azuread_based_service_principal` blocks as defined below.
-  late final pulumi.Output<List<LedgerAzureadBasedServicePrincipal>> azureadBasedServicePrincipals;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  azureadBasedServicePrincipals;
+
   /// A list of `certificate_based_security_principal` blocks as defined below.
-  late final pulumi.Output<List<LedgerCertificateBasedSecurityPrincipal>?> certificateBasedSecurityPrincipals;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  certificateBasedSecurityPrincipals;
+
   /// The Identity Service Endpoint for this Confidential Ledger.
   late final pulumi.Output<String> identityServiceEndpoint;
+
   /// The Endpoint for this Confidential Ledger.
   late final pulumi.Output<String> ledgerEndpoint;
+
   /// Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ledgerType;
+
   /// Specifies the supported Azure location where the Confidential Ledger exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Confidential Ledger.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -237,25 +245,27 @@ class Ledger extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ledger]. {@macro pulumi_confidentialledger_ledger_ledger_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ledger(
-    String name, {
-    LedgerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:confidentialledger/ledger:Ledger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureadBasedServicePrincipals = registerOutput<List<LedgerAzureadBasedServicePrincipal>>('azureadBasedServicePrincipals');
-    this.certificateBasedSecurityPrincipals = registerOutput<List<LedgerCertificateBasedSecurityPrincipal>?>('certificateBasedSecurityPrincipals');
-    this.identityServiceEndpoint = registerOutput<String>('identityServiceEndpoint');
-    this.ledgerEndpoint = registerOutput<String>('ledgerEndpoint');
-    this.ledgerType = registerOutput<String>('ledgerType');
-    this.location = registerOutput<String>('location');
+  Ledger(String name, {LedgerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:confidentialledger/ledger:Ledger',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureadBasedServicePrincipals = registerOutput<List<Map<String, dynamic>>>(
+      'azureadBasedServicePrincipals',
+    );
+    certificateBasedSecurityPrincipals =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'certificateBasedSecurityPrincipals',
+        );
+    identityServiceEndpoint = registerOutput<String>('identityServiceEndpoint');
+    ledgerEndpoint = registerOutput<String>('ledgerEndpoint');
+    ledgerType = registerOutput<String>('ledgerType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Ledger] resource's state with the given [name] and [id].
@@ -276,19 +286,24 @@ class Ledger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:confidentialledger/ledger:Ledger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureadBasedServicePrincipals = registerOutput<List<LedgerAzureadBasedServicePrincipal>>('azureadBasedServicePrincipals');
-    this.certificateBasedSecurityPrincipals = registerOutput<List<LedgerCertificateBasedSecurityPrincipal>?>('certificateBasedSecurityPrincipals');
-    this.identityServiceEndpoint = registerOutput<String>('identityServiceEndpoint');
-    this.ledgerEndpoint = registerOutput<String>('ledgerEndpoint');
-    this.ledgerType = registerOutput<String>('ledgerType');
-    this.location = registerOutput<String>('location');
+         'azure:confidentialledger/ledger:Ledger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureadBasedServicePrincipals = registerOutput<List<Map<String, dynamic>>>(
+      'azureadBasedServicePrincipals',
+    );
+    certificateBasedSecurityPrincipals =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'certificateBasedSecurityPrincipals',
+        );
+    identityServiceEndpoint = registerOutput<String>('identityServiceEndpoint');
+    ledgerEndpoint = registerOutput<String>('ledgerEndpoint');
+    ledgerType = registerOutput<String>('ledgerType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -16,32 +16,46 @@ import 'receipt_rule_workmail_action.dart';
 class ReceiptRuleArgs {
   /// A list of Add Header Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleAddHeaderAction>>? addHeaderActions;
+
   /// The name of the rule to place this rule after
   final pulumi.Input<String>? after;
+
   /// A list of Bounce Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleBounceAction>>? bounceActions;
+
   /// If true, the rule will be enabled
   final pulumi.Input<bool>? enabled;
+
   /// A list of Lambda Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleLambdaAction>>? lambdaActions;
+
   /// The name of the rule
   final pulumi.Input<String>? name;
+
   /// A list of email addresses
   final pulumi.Input<List<String>>? recipients;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the rule set
   final pulumi.Input<String> ruleSetName;
+
   /// A list of S3 Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleS3Action>>? s3Actions;
+
   /// If true, incoming emails will be scanned for spam and viruses
   final pulumi.Input<bool>? scanEnabled;
+
   /// A list of SNS Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleSnsAction>>? snsActions;
+
   /// A list of Stop Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleStopAction>>? stopActions;
+
   /// `Require` or `Optional`
   final pulumi.Input<String>? tlsPolicy;
+
   /// A list of WorkMail Action blocks. Documented below.
   final pulumi.Input<List<ReceiptRuleWorkmailAction>>? workmailActions;
 
@@ -81,42 +95,223 @@ class ReceiptRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addHeaderActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleAddHeaderAction>, List<Map<String, dynamic>>>(addHeaderActions, (value) => pulumi.Input.encodeList<ReceiptRuleAddHeaderAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'addHeaderActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleAddHeaderAction>,
+            List<Map<String, dynamic>>
+          >(
+            addHeaderActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleAddHeaderAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'after': ?after,
-      'bounceActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleBounceAction>, List<Map<String, dynamic>>>(bounceActions, (value) => pulumi.Input.encodeList<ReceiptRuleBounceAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bounceActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleBounceAction>,
+            List<Map<String, dynamic>>
+          >(
+            bounceActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleBounceAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': ?enabled,
-      'lambdaActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleLambdaAction>, List<Map<String, dynamic>>>(lambdaActions, (value) => pulumi.Input.encodeList<ReceiptRuleLambdaAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lambdaActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleLambdaAction>,
+            List<Map<String, dynamic>>
+          >(
+            lambdaActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleLambdaAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'recipients': ?recipients,
       'region': ?region,
       'ruleSetName': ruleSetName,
-      's3Actions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleS3Action>, List<Map<String, dynamic>>>(s3Actions, (value) => pulumi.Input.encodeList<ReceiptRuleS3Action, Map<String, dynamic>>(value, (value) => value.toMap())),
+      's3Actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleS3Action>,
+            List<Map<String, dynamic>>
+          >(
+            s3Actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleS3Action,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'scanEnabled': ?scanEnabled,
-      'snsActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleSnsAction>, List<Map<String, dynamic>>>(snsActions, (value) => pulumi.Input.encodeList<ReceiptRuleSnsAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'stopActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleStopAction>, List<Map<String, dynamic>>>(stopActions, (value) => pulumi.Input.encodeList<ReceiptRuleStopAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'snsActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleSnsAction>,
+            List<Map<String, dynamic>>
+          >(
+            snsActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleSnsAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'stopActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleStopAction>,
+            List<Map<String, dynamic>>
+          >(
+            stopActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleStopAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tlsPolicy': ?tlsPolicy,
-      'workmailActions': ?pulumi.Input.mapOptionalInputValue<List<ReceiptRuleWorkmailAction>, List<Map<String, dynamic>>>(workmailActions, (value) => pulumi.Input.encodeList<ReceiptRuleWorkmailAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workmailActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReceiptRuleWorkmailAction>,
+            List<Map<String, dynamic>>
+          >(
+            workmailActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReceiptRuleWorkmailAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ReceiptRuleArgs.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleArgs(
-      addHeaderActions: map['addHeaderActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(map['addHeaderActions']!, (value) => ReceiptRuleAddHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      after: map['after'] == null ? null : ((map['after'] as String).input()).input(),
-      bounceActions: map['bounceActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleBounceAction>(map['bounceActions']!, (value) => ReceiptRuleBounceAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      lambdaActions: map['lambdaActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleLambdaAction>(map['lambdaActions']!, (value) => ReceiptRuleLambdaAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      recipients: map['recipients'] == null ? null : (((map['recipients'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      ruleSetName: (map['ruleSetName'] as String).input(),
-      s3Actions: map['s3Actions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleS3Action>(map['s3Actions']!, (value) => ReceiptRuleS3Action.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      scanEnabled: map['scanEnabled'] == null ? null : ((map['scanEnabled'] as bool).input()).input(),
-      snsActions: map['snsActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleSnsAction>(map['snsActions']!, (value) => ReceiptRuleSnsAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      stopActions: map['stopActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleStopAction>(map['stopActions']!, (value) => ReceiptRuleStopAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tlsPolicy: map['tlsPolicy'] == null ? null : ((map['tlsPolicy'] as String).input()).input(),
-      workmailActions: map['workmailActions'] == null ? null : ((pulumi.Input.decodeList<ReceiptRuleWorkmailAction>(map['workmailActions']!, (value) => ReceiptRuleWorkmailAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      addHeaderActions: (() {
+        final guardedValue = map['addHeaderActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(
+            guardedValue,
+            (value) => ReceiptRuleAddHeaderAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      after: (() {
+        final guardedValue = map['after'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bounceActions: (() {
+        final guardedValue = map['bounceActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleBounceAction>(
+            guardedValue,
+            (value) => ReceiptRuleBounceAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lambdaActions: (() {
+        final guardedValue = map['lambdaActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleLambdaAction>(
+            guardedValue,
+            (value) => ReceiptRuleLambdaAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recipients: (() {
+        final guardedValue = map['recipients'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleSetName: pulumi.Input.fromValue(map['ruleSetName'] as String),
+      s3Actions: (() {
+        final guardedValue = map['s3Actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleS3Action>(
+            guardedValue,
+            (value) => ReceiptRuleS3Action.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      scanEnabled: (() {
+        final guardedValue = map['scanEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      snsActions: (() {
+        final guardedValue = map['snsActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleSnsAction>(
+            guardedValue,
+            (value) => ReceiptRuleSnsAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      stopActions: (() {
+        final guardedValue = map['stopActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleStopAction>(
+            guardedValue,
+            (value) => ReceiptRuleStopAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tlsPolicy: (() {
+        final guardedValue = map['tlsPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workmailActions: (() {
+        final guardedValue = map['workmailActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReceiptRuleWorkmailAction>(
+            guardedValue,
+            (value) => ReceiptRuleWorkmailAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

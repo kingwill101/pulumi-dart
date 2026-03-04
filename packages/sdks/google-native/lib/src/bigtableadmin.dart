@@ -1,5 +1,3 @@
-library module_bigtableadmin;
-
 export 'bigtableadmin/app_profile.dart';
 export 'bigtableadmin/app_profile_args.dart';
 export 'bigtableadmin/app_profile_priority.dart';

@@ -198,8 +198,10 @@ import 'invite_accepter_state.dart';
 class InviteAccepter extends pulumi.CustomResource {
   /// The detector ID of the member GuardDuty account.
   late final pulumi.Output<String> detectorId;
+
   /// AWS account ID for primary account.
   late final pulumi.Output<String> masterAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -212,14 +214,14 @@ class InviteAccepter extends pulumi.CustomResource {
     InviteAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/inviteAccepter:InviteAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.detectorId = registerOutput<String>('detectorId');
-    this.masterAccountId = registerOutput<String>('masterAccountId');
-    this.region = registerOutput<String>('region');
+         'aws:guardduty/inviteAccepter:InviteAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    detectorId = registerOutput<String>('detectorId');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [InviteAccepter] resource's state with the given [name] and [id].
@@ -240,13 +242,13 @@ class InviteAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/inviteAccepter:InviteAccepter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.detectorId = registerOutput<String>('detectorId');
-    this.masterAccountId = registerOutput<String>('masterAccountId');
-    this.region = registerOutput<String>('region');
+         'aws:guardduty/inviteAccepter:InviteAccepter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    detectorId = registerOutput<String>('detectorId');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    region = registerOutput<String>('region');
   }
 }

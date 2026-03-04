@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZipDeflateReadSettingsResponse {
   /// Preserve the zip file name as folder path. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? preserveZipFileNameAsFolder;
+
   /// The Compression setting type.
   /// Expected value is 'ZipDeflateReadSettings'.
   final pulumi.Input<String> type;
@@ -27,9 +28,12 @@ class ZipDeflateReadSettingsResponse {
 
   factory ZipDeflateReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ZipDeflateReadSettingsResponse(
-      preserveZipFileNameAsFolder: map['preserveZipFileNameAsFolder'] == null ? null : (map['preserveZipFileNameAsFolder']!).input(),
-      type: (map['type'] as String).input(),
+      preserveZipFileNameAsFolder: (() {
+        final guardedValue = map['preserveZipFileNameAsFolder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

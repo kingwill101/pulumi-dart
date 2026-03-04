@@ -6,7 +6,7 @@ import 'instance_state.dart';
 ///
 /// For information about Dts Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance).
 ///
-/// > **NOTE:** Available since v1.198.0.
+/// &gt; **NOTE:** Available since v1.198.0.
 ///
 /// ## Example Usage
 ///
@@ -213,16 +213,21 @@ class Instance extends pulumi.CustomResource {
   /// - **false**: No, the default value.
   /// - **true**: Yes.
   late final pulumi.Output<bool?> autoPay;
+
   /// Whether to start the task automatically after the purchase is completed. Value:
   /// - **false**: No, the default value.
   /// - **true**: Yes.
   late final pulumi.Output<bool?> autoStart;
+
   /// Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
   late final pulumi.Output<int?> computeUnit;
+
   /// Instance creation time
   late final pulumi.Output<String> createTime;
+
   /// The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
   late final pulumi.Output<int> databaseCount;
+
   /// The target database engine type.
   /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
   /// - **PolarDB**:PolarDB MySQL.
@@ -250,29 +255,40 @@ class Instance extends pulumi.CustomResource {
   /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
   /// - This parameter or **job_id** must be passed in.
   late final pulumi.Output<String> destinationEndpointEngineName;
+
   /// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
   late final pulumi.Output<String?> destinationRegion;
+
   /// The ID of the subscription instance.
   late final pulumi.Output<String> dtsInstanceId;
+
   /// Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
   late final pulumi.Output<int?> du;
+
   /// Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
   late final pulumi.Output<String?> feeType;
+
   /// The type of the migration or synchronization instance.
   /// - The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.
   /// - The types of synchronization instances: **large**, **medium**, **small**, **micro**.
   /// - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
   late final pulumi.Output<String?> instanceClass;
+
   /// The name of Dts instance.
   late final pulumi.Output<String> instanceName;
-  /// The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
+
+  /// The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).&gt; After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
   late final pulumi.Output<String?> jobId;
+
   /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
   late final pulumi.Output<String?> paymentType;
+
   /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
   late final pulumi.Output<String?> period;
+
   /// Resource Group ID.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Source instance database engine type.
   /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
   /// - **PolarDB**:PolarDB MySQL.
@@ -300,27 +316,34 @@ class Instance extends pulumi.CustomResource {
   /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
   /// - This parameter or **job_id** must be passed in.
   late final pulumi.Output<String> sourceEndpointEngineName;
+
   /// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
   late final pulumi.Output<String?> sourceRegion;
+
   /// Instance status.
   late final pulumi.Output<String> status;
+
   /// Synchronization topology, value:
   /// - **oneway**: one-way synchronization, the default value.
   /// - **bidirectional**: two-way synchronization.
   late final pulumi.Output<String?> syncArchitecture;
+
   /// The synchronization direction. Default value: `Forward`. Valid values:
   /// - `Forward`: Data is synchronized from the source database to the destination database.
   /// - `Reverse`: Data is synchronized from the destination database to the source database.
   /// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
   late final pulumi.Output<String?> synchronizationDirection;
+
   /// The tag value corresponding to the tag key.See the following `Block Tags`.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The instance type. Valid values:
   /// - **migration**: MIGRATION.
   /// - **sync**: synchronization.
   /// - **subscribe**: SUBSCRIBE.
   /// - **NOTE:** This parameter or **job_id** must be passed in.
   late final pulumi.Output<String?> type;
+
   /// Prepaid instance purchase duration.
   /// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
   /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
@@ -338,35 +361,41 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoStart = registerOutput<bool?>('autoStart');
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.createTime = registerOutput<String>('createTime');
-    this.databaseCount = registerOutput<int>('databaseCount');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationRegion = registerOutput<String?>('destinationRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.du = registerOutput<int?>('du');
-    this.feeType = registerOutput<String?>('feeType');
-    this.instanceClass = registerOutput<String?>('instanceClass');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.jobId = registerOutput<String?>('jobId');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceRegion = registerOutput<String?>('sourceRegion');
-    this.status = registerOutput<String>('status');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.synchronizationDirection = registerOutput<String?>('synchronizationDirection');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
-    this.usedTime = registerOutput<int?>('usedTime');
+         'alicloud:dts/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoStart = registerOutput<bool?>('autoStart');
+    computeUnit = registerOutput<int?>('computeUnit');
+    createTime = registerOutput<String>('createTime');
+    databaseCount = registerOutput<int>('databaseCount');
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationRegion = registerOutput<String?>('destinationRegion');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    du = registerOutput<int?>('du');
+    feeType = registerOutput<String?>('feeType');
+    instanceClass = registerOutput<String?>('instanceClass');
+    instanceName = registerOutput<String>('instanceName');
+    jobId = registerOutput<String?>('jobId');
+    paymentType = registerOutput<String?>('paymentType');
+    period = registerOutput<String?>('period');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceRegion = registerOutput<String?>('sourceRegion');
+    status = registerOutput<String>('status');
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    synchronizationDirection = registerOutput<String?>(
+      'synchronizationDirection',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
+    usedTime = registerOutput<int?>('usedTime');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -387,34 +416,40 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoStart = registerOutput<bool?>('autoStart');
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.createTime = registerOutput<String>('createTime');
-    this.databaseCount = registerOutput<int>('databaseCount');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationRegion = registerOutput<String?>('destinationRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.du = registerOutput<int?>('du');
-    this.feeType = registerOutput<String?>('feeType');
-    this.instanceClass = registerOutput<String?>('instanceClass');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.jobId = registerOutput<String?>('jobId');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceRegion = registerOutput<String?>('sourceRegion');
-    this.status = registerOutput<String>('status');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.synchronizationDirection = registerOutput<String?>('synchronizationDirection');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
-    this.usedTime = registerOutput<int?>('usedTime');
+         'alicloud:dts/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoStart = registerOutput<bool?>('autoStart');
+    computeUnit = registerOutput<int?>('computeUnit');
+    createTime = registerOutput<String>('createTime');
+    databaseCount = registerOutput<int>('databaseCount');
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationRegion = registerOutput<String?>('destinationRegion');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    du = registerOutput<int?>('du');
+    feeType = registerOutput<String?>('feeType');
+    instanceClass = registerOutput<String?>('instanceClass');
+    instanceName = registerOutput<String>('instanceName');
+    jobId = registerOutput<String?>('jobId');
+    paymentType = registerOutput<String?>('paymentType');
+    period = registerOutput<String?>('period');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceRegion = registerOutput<String?>('sourceRegion');
+    status = registerOutput<String>('status');
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    synchronizationDirection = registerOutput<String?>(
+      'synchronizationDirection',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
+    usedTime = registerOutput<int?>('usedTime');
   }
 }

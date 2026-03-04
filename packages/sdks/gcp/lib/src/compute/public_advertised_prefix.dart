@@ -376,10 +376,13 @@ import 'public_advertised_prefix_state.dart';
 class PublicAdvertisedPrefix extends pulumi.CustomResource {
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// The IPv4 address to be used for reverse DNS verification.
   late final pulumi.Output<String?> dnsVerificationIp;
+
   /// The address range, in CIDR format, represented by this public advertised prefix.
   late final pulumi.Output<String> ipCidrRange;
+
   /// The internet access type for IPv6 Public Advertised Prefixes. It can be
   /// set to one of following:
   /// * EXTERNAL: Default access type. The prefix will be announced to the
@@ -389,6 +392,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
   /// access type as INTERNAL.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   late final pulumi.Output<String> ipv6AccessType;
+
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -396,6 +400,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Specifies how child public delegated prefix will be scoped. pdpScope
   /// must be one of: GLOBAL, REGIONAL
   /// * REGIONAL: The public delegated prefix is regional only. The
@@ -404,11 +409,14 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
   /// will take ~4 weeks.
   /// Possible values are: `GLOBAL`, `REGIONAL`.
   late final pulumi.Output<String?> pdpScope;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// Output Only. The shared secret to be used for reverse DNS verification.
   late final pulumi.Output<String> sharedSecret;
 
@@ -421,20 +429,20 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
     PublicAdvertisedPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
-    this.ipCidrRange = registerOutput<String>('ipCidrRange');
-    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
+         'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
     this.name = registerOutput<String>('name');
-    this.pdpScope = registerOutput<String?>('pdpScope');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sharedSecret = registerOutput<String>('sharedSecret');
+    pdpScope = registerOutput<String?>('pdpScope');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sharedSecret = registerOutput<String>('sharedSecret');
   }
 
   /// Gets an existing [PublicAdvertisedPrefix] resource's state with the given [name] and [id].
@@ -455,19 +463,19 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
-    this.ipCidrRange = registerOutput<String>('ipCidrRange');
-    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
+         'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
     this.name = registerOutput<String>('name');
-    this.pdpScope = registerOutput<String?>('pdpScope');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sharedSecret = registerOutput<String>('sharedSecret');
+    pdpScope = registerOutput<String?>('pdpScope');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sharedSecret = registerOutput<String>('sharedSecret');
   }
 }

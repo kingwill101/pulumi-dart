@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportConfigTimePeriodResponse {
   /// The start date to pull data from.
   final pulumi.Input<String> from;
+
   /// The end date to pull data to.
   final pulumi.Input<String> to;
 
   /// Creates a new [ReportConfigTimePeriodResponse].
   /// [from] The start date to pull data from.
   /// [to] The end date to pull data to.
-  ReportConfigTimePeriodResponse({
-    required this.from,
-    required this.to,
-  });
+  ReportConfigTimePeriodResponse({required this.from, required this.to});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'from': from,
-      'to': to,
-    };
+    return <String, dynamic>{'from': from, 'to': to};
   }
 
   factory ReportConfigTimePeriodResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigTimePeriodResponse(
-      from: (map['from'] as String).input(),
-      to: (map['to'] as String).input(),
+      from: pulumi.Input.fromValue(map['from'] as String),
+      to: pulumi.Input.fromValue(map['to'] as String),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class MachineConfigResponse {
 
   /// Creates a new [MachineConfigResponse].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfigResponse({
-    required this.cpuCount,
-  });
+  MachineConfigResponse({required this.cpuCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCount': cpuCount,
-    };
+    return <String, dynamic>{'cpuCount': cpuCount};
   }
 
   factory MachineConfigResponse.fromMap(Map<String, dynamic> map) {
     return MachineConfigResponse(
-      cpuCount: (map['cpuCount'] as int).input(),
+      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
     );
   }
 }
-

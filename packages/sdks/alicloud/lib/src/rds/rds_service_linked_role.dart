@@ -6,7 +6,7 @@ import 'rds_service_linked_role_state.dart';
 ///
 /// For information about RDS Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 ///
-/// > **NOTE:** Available since v1.189.0.
+/// &gt; **NOTE:** Available since v1.189.0.
 ///
 /// ## Example Usage
 ///
@@ -110,10 +110,13 @@ import 'rds_service_linked_role_state.dart';
 class RdsServiceLinkedRole extends pulumi.CustomResource {
   /// The Alibaba Cloud Resource Name (ARN) of the role.
   late final pulumi.Output<String> arn;
+
   /// The ID of the role.
   late final pulumi.Output<String> roleId;
+
   /// The name of the role.
   late final pulumi.Output<String> roleName;
+
   /// The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
   late final pulumi.Output<String> serviceName;
 
@@ -126,15 +129,15 @@ class RdsServiceLinkedRole extends pulumi.CustomResource {
     RdsServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.serviceName = registerOutput<String>('serviceName');
+         'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    serviceName = registerOutput<String>('serviceName');
   }
 
   /// Gets an existing [RdsServiceLinkedRole] resource's state with the given [name] and [id].
@@ -155,14 +158,14 @@ class RdsServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.serviceName = registerOutput<String>('serviceName');
+         'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    serviceName = registerOutput<String>('serviceName');
   }
 }

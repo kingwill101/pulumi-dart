@@ -1,5 +1,3 @@
-library module_cdn;
-
 export 'cdn/action_type.dart';
 export 'cdn/activated_resource_reference.dart';
 export 'cdn/activated_resource_reference_response.dart';

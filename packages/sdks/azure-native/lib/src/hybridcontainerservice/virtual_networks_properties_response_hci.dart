@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworksPropertiesResponseHci {
   /// Resource group in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocGroup;
+
   /// Location in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocLocation;
+
   /// Virtual Network name in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocVnetName;
 
@@ -29,12 +31,25 @@ class VirtualNetworksPropertiesResponseHci {
     };
   }
 
-  factory VirtualNetworksPropertiesResponseHci.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworksPropertiesResponseHci.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworksPropertiesResponseHci(
-      mocGroup: map['mocGroup'] == null ? null : (map['mocGroup']! as String).input(),
-      mocLocation: map['mocLocation'] == null ? null : (map['mocLocation']! as String).input(),
-      mocVnetName: map['mocVnetName'] == null ? null : (map['mocVnetName']! as String).input(),
+      mocGroup: (() {
+        final guardedValue = map['mocGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mocLocation: (() {
+        final guardedValue = map['mocLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mocVnetName: (() {
+        final guardedValue = map['mocVnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

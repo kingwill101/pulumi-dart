@@ -8,20 +8,15 @@ class WebAclRuleAction {
 
   /// Creates a new [WebAclRuleAction].
   /// [type] valid values are: `BLOCK`, `ALLOW`, or `COUNT`
-  WebAclRuleAction({
-    required this.type,
-  });
+  WebAclRuleAction({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory WebAclRuleAction.fromMap(Map<String, dynamic> map) {
     return WebAclRuleAction(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

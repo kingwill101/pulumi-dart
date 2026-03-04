@@ -20,32 +20,49 @@ import 'user_role_assignment_response.dart';
 class ProjectEnvironmentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The role definition assigned to the environment creator on backing resources.
-  late final pulumi.Output<ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?> creatorRoleAssignment;
+  late final pulumi.Output<
+    ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?
+  >
+  creatorRoleAssignment;
+
   /// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
   late final pulumi.Output<String?> deploymentTargetId;
+
   /// The display name of the project environment type.
   late final pulumi.Output<String?> displayName;
+
   /// The number of environments of this type.
   late final pulumi.Output<int> environmentCount;
+
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location for the environment type
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines whether this Environment Type can be used in this Project.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-  late final pulumi.Output<Map<String, UserRoleAssignmentResponse>?> userRoleAssignments;
+  late final pulumi.Output<Map<String, UserRoleAssignmentResponse>?>
+  userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentType].
   /// [name] The Pulumi resource name.
@@ -56,24 +73,30 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     ProjectEnvironmentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:ProjectEnvironmentType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creatorRoleAssignment = registerOutput<ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?>('creatorRoleAssignment');
-    this.deploymentTargetId = registerOutput<String?>('deploymentTargetId');
-    this.displayName = registerOutput<String?>('displayName');
-    this.environmentCount = registerOutput<int>('environmentCount');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devcenter:ProjectEnvironmentType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creatorRoleAssignment =
+        registerOutput<
+          ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?
+        >('creatorRoleAssignment');
+    deploymentTargetId = registerOutput<String?>('deploymentTargetId');
+    displayName = registerOutput<String?>('displayName');
+    environmentCount = registerOutput<int>('environmentCount');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.userRoleAssignments = registerOutput<Map<String, UserRoleAssignmentResponse>?>('userRoleAssignments');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    userRoleAssignments =
+        registerOutput<Map<String, UserRoleAssignmentResponse>?>(
+          'userRoleAssignments',
+        );
   }
 }

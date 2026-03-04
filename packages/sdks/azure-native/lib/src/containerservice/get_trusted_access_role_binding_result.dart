@@ -6,18 +6,25 @@ import 'system_data_response.dart';
 class GetTrustedAccessRoleBindingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The current provisioning state of trusted access role binding.
   final String provisioningState;
+
   /// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
   final List<String> roles;
+
   /// The ARM resource ID of source resource that trusted access is configured for.
   final String sourceResourceId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,9 +69,10 @@ class GetTrustedAccessRoleBindingResult {
       provisioningState: map['provisioningState'] as String,
       roles: (map['roles'] as List).cast<String>(),
       sourceResourceId: map['sourceResourceId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

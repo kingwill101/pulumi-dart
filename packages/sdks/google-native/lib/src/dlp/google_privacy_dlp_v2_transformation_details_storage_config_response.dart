@@ -16,14 +16,23 @@ class GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'table': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryTableResponse, Map<String, dynamic>>(table, (value) => value.toMap()),
+      'table':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2BigQueryTableResponse,
+            Map<String, dynamic>
+          >(table, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse(
-      table: (GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      table: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
+          (map['table']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

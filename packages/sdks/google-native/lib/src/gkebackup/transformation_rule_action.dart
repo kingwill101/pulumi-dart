@@ -7,10 +7,13 @@ import 'transformation_rule_action_op.dart';
 class TransformationRuleAction {
   /// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
   final pulumi.Input<String>? fromPath;
+
   /// op specifies the operation to perform.
   final pulumi.Input<TransformationRuleActionOp> op;
+
   /// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
   final pulumi.Input<String>? path;
+
   /// Optional. A string that specifies the desired value in string format to use for transformation.
   final pulumi.Input<String>? value;
 
@@ -29,7 +32,10 @@ class TransformationRuleAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fromPath': ?fromPath,
-      'op': pulumi.Input.mapInputValue<TransformationRuleActionOp, String>(op, (value) => value.value),
+      'op': pulumi.Input.mapInputValue<TransformationRuleActionOp, String>(
+        op,
+        (value) => value.wireValue,
+      ),
       'path': ?path,
       'value': ?value,
     };
@@ -37,11 +43,24 @@ class TransformationRuleAction {
 
   factory TransformationRuleAction.fromMap(Map<String, dynamic> map) {
     return TransformationRuleAction(
-      fromPath: map['fromPath'] == null ? null : (map['fromPath']! as String).input(),
-      op: (TransformationRuleActionOp.fromValue(map['op'] as String)).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      fromPath: (() {
+        final guardedValue = map['fromPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      op: pulumi.Input.fromValue(
+        TransformationRuleActionOp.fromValue(map['op']! as String),
+      ),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

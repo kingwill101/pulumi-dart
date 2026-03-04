@@ -18,10 +18,13 @@ class VpcIpamResourceDiscoveryOrganizationalUnitExclusion {
     };
   }
 
-  factory VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap(Map<String, dynamic> map) {
+  factory VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcIpamResourceDiscoveryOrganizationalUnitExclusion(
-      organizationsEntityPath: (map['organizationsEntityPath'] as String).input(),
+      organizationsEntityPath: pulumi.Input.fromValue(
+        map['organizationsEntityPath'] as String,
+      ),
     );
   }
 }
-

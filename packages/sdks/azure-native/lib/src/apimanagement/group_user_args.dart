@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupUserArgs {
   /// Group identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> groupId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// User identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? userId;
 
@@ -39,11 +42,16 @@ class GroupUserArgs {
 
   factory GroupUserArgs.fromMap(Map<String, dynamic> map) {
     return GroupUserArgs(
-      groupId: (map['groupId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnLinkConnectionIkeSasArgs {
   /// The name of the vpn connection.
   final pulumi.Input<String> connectionName;
+
   /// The name of the gateway.
   final pulumi.Input<String> gatewayName;
+
   /// The name of the vpn link connection.
   final pulumi.Input<String> linkConnectionName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetVpnLinkConnectionIkeSasArgs {
 
   factory GetVpnLinkConnectionIkeSasArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnLinkConnectionIkeSasArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
-      linkConnectionName: (map['linkConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      linkConnectionName: pulumi.Input.fromValue(
+        map['linkConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

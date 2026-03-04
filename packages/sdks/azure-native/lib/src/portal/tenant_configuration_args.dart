@@ -10,29 +10,42 @@ import 'configuration_properties.dart';
 class TenantConfigurationArgs {
   /// The name of the Configuration
   final pulumi.Input<String>? configurationName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ConfigurationProperties>? properties;
 
   /// Creates a new [TenantConfigurationArgs].
   /// [configurationName] The name of the Configuration
   /// [properties] The resource-specific properties for this resource.
-  TenantConfigurationArgs({
-    this.configurationName,
-    this.properties,
-  });
+  TenantConfigurationArgs({this.configurationName, this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationName': ?configurationName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory TenantConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TenantConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      configurationName: (() {
+        final guardedValue = map['configurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -11,54 +11,79 @@ import 'system_data_response.dart';
 class GetNamespaceResult {
   /// Alternate name specified when alias and namespace names are same.
   final String? alternateName;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Cluster ARM ID of the Namespace.
   final String? clusterArmId;
+
   /// The time the Namespace was created.
   final String createdAt;
+
   /// This property disables SAS authentication for the Event Hubs namespace.
   final bool? disableLocalAuth;
+
   /// Properties of BYOK Encryption description
   final EncryptionResponse? encryption;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Properties of BYOK Identity description
   final IdentityResponse? identity;
+
   /// Value that indicates whether AutoInflate is enabled for eventhub namespace.
   final bool? isAutoInflateEnabled;
+
   /// Value that indicates whether Kafka is enabled for eventhub namespace.
   final bool? kafkaEnabled;
+
   /// Resource location.
   final String? location;
+
   /// Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
   final int? maximumThroughputUnits;
+
   /// Identifier for Azure Insights metrics.
   final String metricId;
+
   /// The minimum TLS version for the cluster to support, e.g. '1.2'
   final String? minimumTlsVersion;
+
   /// The name of the resource
   final String name;
+
   /// List of private endpoint connections.
   final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
+
   /// Provisioning state of the Namespace.
   final String provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
   final String? publicNetworkAccess;
+
   /// Endpoint you can use to perform Service Bus operations.
   final String serviceBusEndpoint;
+
   /// Properties of sku resource
   final SkuResponse? sku;
+
   /// Status of the Namespace.
   final String status;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The time the Namespace was updated.
   final String updatedAt;
+
   /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
   final bool? zoneRedundant;
 
@@ -125,9 +150,9 @@ class GetNamespaceResult {
       'clusterArmId': ?clusterArmId,
       'createdAt': createdAt,
       'disableLocalAuth': ?disableLocalAuth,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?encryption?.toMap(),
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'isAutoInflateEnabled': ?isAutoInflateEnabled,
       'kafkaEnabled': ?kafkaEnabled,
       'location': ?location,
@@ -135,11 +160,18 @@ class GetNamespaceResult {
       'metricId': metricId,
       'minimumTlsVersion': ?minimumTlsVersion,
       'name': name,
-      'privateEndpointConnections': ?privateEndpointConnections == null ? null : pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections!, (value) => value.toMap()),
+      'privateEndpointConnections': ?(() {
+        final guardedValue = privateEndpointConnections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateEndpointConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'serviceBusEndpoint': serviceBusEndpoint,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'status': status,
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -151,33 +183,105 @@ class GetNamespaceResult {
 
   factory GetNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceResult(
-      alternateName: map['alternateName'] == null ? null : map['alternateName']! as String,
+      alternateName: (() {
+        final guardedValue = map['alternateName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterArmId: map['clusterArmId'] == null ? null : map['clusterArmId']! as String,
+      clusterArmId: (() {
+        final guardedValue = map['clusterArmId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       createdAt: map['createdAt'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth']! as bool,
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      isAutoInflateEnabled: map['isAutoInflateEnabled'] == null ? null : map['isAutoInflateEnabled']! as bool,
-      kafkaEnabled: map['kafkaEnabled'] == null ? null : map['kafkaEnabled']! as bool,
-      location: map['location'] == null ? null : map['location']! as String,
-      maximumThroughputUnits: map['maximumThroughputUnits'] == null ? null : map['maximumThroughputUnits']! as int,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      isAutoInflateEnabled: (() {
+        final guardedValue = map['isAutoInflateEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      kafkaEnabled: (() {
+        final guardedValue = map['kafkaEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      maximumThroughputUnits: (() {
+        final guardedValue = map['maximumThroughputUnits'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       metricId: map['metricId'] as String,
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : map['minimumTlsVersion']! as String,
+      minimumTlsVersion: (() {
+        final guardedValue = map['minimumTlsVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+          guardedValue,
+          (value) => PrivateEndpointConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       serviceBusEndpoint: map['serviceBusEndpoint'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant']! as bool,
+      zoneRedundant: (() {
+        final guardedValue = map['zoneRedundant'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

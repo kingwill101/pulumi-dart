@@ -145,16 +145,22 @@ import 'customer_gateway_state.dart';
 class CustomerGateway extends pulumi.CustomResource {
   /// Asn.
   late final pulumi.Output<String?> asn;
+
   /// The time when the customer gateway was created.
   late final pulumi.Output<int> createTime;
+
   /// The name of the customer gateway.
   late final pulumi.Output<String> customerGatewayName;
+
   /// The description of the customer gateway.
   late final pulumi.Output<String?> description;
+
   /// The IP address of the customer gateway.
   late final pulumi.Output<String> ipAddress;
+
   /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
   late final pulumi.Output<String> name;
+
   /// tag.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -169,18 +175,18 @@ class CustomerGateway extends pulumi.CustomResource {
     CustomerGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/customerGateway:CustomerGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asn = registerOutput<String?>('asn');
-    this.createTime = registerOutput<int>('createTime');
-    this.customerGatewayName = registerOutput<String>('customerGatewayName');
-    this.description = registerOutput<String?>('description');
-    this.ipAddress = registerOutput<String>('ipAddress');
+         'alicloud:vpn/customerGateway:CustomerGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asn = registerOutput<String?>('asn');
+    createTime = registerOutput<int>('createTime');
+    customerGatewayName = registerOutput<String>('customerGatewayName');
+    description = registerOutput<String?>('description');
+    ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [CustomerGateway] resource's state with the given [name] and [id].
@@ -201,17 +207,17 @@ class CustomerGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/customerGateway:CustomerGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asn = registerOutput<String?>('asn');
-    this.createTime = registerOutput<int>('createTime');
-    this.customerGatewayName = registerOutput<String>('customerGatewayName');
-    this.description = registerOutput<String?>('description');
-    this.ipAddress = registerOutput<String>('ipAddress');
+         'alicloud:vpn/customerGateway:CustomerGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asn = registerOutput<String?>('asn');
+    createTime = registerOutput<int>('createTime');
+    customerGatewayName = registerOutput<String>('customerGatewayName');
+    description = registerOutput<String?>('description');
+    ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
   /// The key of the tag of the dispatch rule.
   final pulumi.Input<String> key;
+
   /// The operator used in the dispatch rule.
   final pulumi.Input<String> operator;
+
   /// The value of the tag.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,16 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'operator': operator,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'operator': operator, 'value': value};
   }
 
-  factory GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(Map<String, dynamic> map) {
+  factory GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

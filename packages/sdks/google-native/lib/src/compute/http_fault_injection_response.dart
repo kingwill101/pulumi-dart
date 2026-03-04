@@ -8,29 +8,42 @@ import 'http_fault_delay_response.dart';
 class HttpFaultInjectionResponse {
   /// The specification for how client requests are aborted as part of fault injection.
   final pulumi.Input<HttpFaultAbortResponse> abort;
+
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   final pulumi.Input<HttpFaultDelayResponse> delay;
 
   /// Creates a new [HttpFaultInjectionResponse].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjectionResponse({
-    required this.abort,
-    required this.delay,
-  });
+  HttpFaultInjectionResponse({required this.abort, required this.delay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort': pulumi.Input.mapInputValue<HttpFaultAbortResponse, Map<String, dynamic>>(abort, (value) => value.toMap()),
-      'delay': pulumi.Input.mapInputValue<HttpFaultDelayResponse, Map<String, dynamic>>(delay, (value) => value.toMap()),
+      'abort':
+          pulumi.Input.mapInputValue<
+            HttpFaultAbortResponse,
+            Map<String, dynamic>
+          >(abort, (value) => value.toMap()),
+      'delay':
+          pulumi.Input.mapInputValue<
+            HttpFaultDelayResponse,
+            Map<String, dynamic>
+          >(delay, (value) => value.toMap()),
     };
   }
 
   factory HttpFaultInjectionResponse.fromMap(Map<String, dynamic> map) {
     return HttpFaultInjectionResponse(
-      abort: (HttpFaultAbortResponse.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: (HttpFaultDelayResponse.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: pulumi.Input.fromValue(
+        HttpFaultAbortResponse.fromMap(
+          (map['abort']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      delay: pulumi.Input.fromValue(
+        HttpFaultDelayResponse.fromMap(
+          (map['delay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

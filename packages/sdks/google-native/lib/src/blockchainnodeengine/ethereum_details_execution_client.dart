@@ -4,16 +4,15 @@ enum EthereumDetailsExecutionClient {
   geth("GETH"),
   erigon("ERIGON");
 
-  const EthereumDetailsExecutionClient(this.value);
-  final String value;
+  const EthereumDetailsExecutionClient(this.wireValue);
+  final String wireValue;
 
   static EthereumDetailsExecutionClient fromValue(String value) {
     for (final item in EthereumDetailsExecutionClient.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EthereumDetailsExecutionClient value: $value');
   }
 }
-

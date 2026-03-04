@@ -5,16 +5,15 @@ enum GatewayAPIConfigChannel {
   channelExperimental("CHANNEL_EXPERIMENTAL"),
   channelStandard("CHANNEL_STANDARD");
 
-  const GatewayAPIConfigChannel(this.value);
-  final String value;
+  const GatewayAPIConfigChannel(this.wireValue);
+  final String wireValue;
 
   static GatewayAPIConfigChannel fromValue(String value) {
     for (final item in GatewayAPIConfigChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GatewayAPIConfigChannel value: $value');
   }
 }
-

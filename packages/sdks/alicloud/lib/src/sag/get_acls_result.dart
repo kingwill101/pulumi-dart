@@ -7,11 +7,14 @@ import 'get_acls_acl.dart';
 class GetAclsResult {
   /// A list of Sag Acls. Each element contains the following attributes:
   final List<GetAclsAcl> acls;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Sag Acl IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Sag Acls names.
   final List<String> names;
   final String? outputFile;
@@ -34,7 +37,10 @@ class GetAclsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': pulumi.Input.encodeList<GetAclsAcl, Map<String, dynamic>>(acls, (value) => value.toMap()),
+      'acls': pulumi.Input.encodeList<GetAclsAcl, Map<String, dynamic>>(
+        acls,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -45,13 +51,23 @@ class GetAclsResult {
 
   factory GetAclsResult.fromMap(Map<String, dynamic> map) {
     return GetAclsResult(
-      acls: pulumi.Input.decodeList<GetAclsAcl>(map['acls'], (value) => GetAclsAcl.fromMap((value as Map).cast<String, dynamic>())),
+      acls: pulumi.Input.decodeList<GetAclsAcl>(
+        map['acls']!,
+        (value) => GetAclsAcl.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'my_sql_connection_info_response.dart';
 class ConnectToTargetAzureDbForMySqlTaskInputResponse {
   /// Flag for whether or not the migration is offline
   final pulumi.Input<bool>? isOfflineMigration;
+
   /// Connection information for source MySQL server
   final pulumi.Input<MySqlConnectionInfoResponse> sourceConnectionInfo;
+
   /// Connection information for target Azure Database for MySQL server
   final pulumi.Input<MySqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -25,17 +27,38 @@ class ConnectToTargetAzureDbForMySqlTaskInputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isOfflineMigration': ?isOfflineMigration,
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
-      'targetConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            MySqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo':
+          pulumi.Input.mapInputValue<
+            MySqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToTargetAzureDbForMySqlTaskInputResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToTargetAzureDbForMySqlTaskInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToTargetAzureDbForMySqlTaskInputResponse(
-      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration']! as bool).input(),
-      sourceConnectionInfo: (MySqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      targetConnectionInfo: (MySqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      isOfflineMigration: (() {
+        final guardedValue = map['isOfflineMigration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        MySqlConnectionInfoResponse.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetConnectionInfo: pulumi.Input.fromValue(
+        MySqlConnectionInfoResponse.fromMap(
+          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

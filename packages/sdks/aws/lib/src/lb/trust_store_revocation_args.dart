@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustStoreRevocationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// S3 Bucket name holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Bucket;
+
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Key;
+
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   final pulumi.Input<String>? revocationsS3ObjectVersion;
+
   /// Trust Store ARN.
   final pulumi.Input<String> trustStoreArn;
 
@@ -44,12 +48,23 @@ class TrustStoreRevocationArgs {
 
   factory TrustStoreRevocationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      revocationsS3Bucket: (map['revocationsS3Bucket'] as String).input(),
-      revocationsS3Key: (map['revocationsS3Key'] as String).input(),
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : ((map['revocationsS3ObjectVersion'] as String).input()).input(),
-      trustStoreArn: (map['trustStoreArn'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revocationsS3Bucket: pulumi.Input.fromValue(
+        map['revocationsS3Bucket'] as String,
+      ),
+      revocationsS3Key: pulumi.Input.fromValue(
+        map['revocationsS3Key'] as String,
+      ),
+      revocationsS3ObjectVersion: (() {
+        final guardedValue = map['revocationsS3ObjectVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustStoreArn: pulumi.Input.fromValue(map['trustStoreArn'] as String),
     );
   }
 }
-

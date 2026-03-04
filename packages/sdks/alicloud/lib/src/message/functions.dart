@@ -8,7 +8,7 @@ import 'get_service_topics_result.dart';
 
 /// This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.188.0+.
+/// &gt; **NOTE:** Available in v1.188.0+.
 ///
 /// ## Example Usage
 ///
@@ -161,7 +161,7 @@ Future<GetServiceQueuesResult> getServiceQueues(
 
 /// This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.188.0+.
+/// &gt; **NOTE:** Available in v1.188.0+.
 ///
 /// ## Example Usage
 ///
@@ -320,7 +320,7 @@ Future<GetServiceSubscriptionsResult> getServiceSubscriptions(
 
 /// This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.188.0+.
+/// &gt; **NOTE:** Available in v1.188.0+.
 ///
 /// ## Example Usage
 ///

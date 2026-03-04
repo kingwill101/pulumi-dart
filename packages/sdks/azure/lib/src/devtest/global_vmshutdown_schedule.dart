@@ -510,7 +510,7 @@ import 'global_vmshutdown_schedule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevTestLab` - 2018-09-15
@@ -523,20 +523,27 @@ import 'global_vmshutdown_schedule_state.dart';
 /// $ pulumi import azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.DevTestLab/schedules/shutdown-computevm-SampleVM
 /// ```
 ///
-/// The name of the resource within the `resource id` will always follow the format `shutdown-computevm-<VM Name>` where `<VM Name>` is replaced by the name of the target Virtual Machine
+/// The name of the resource within the `resource id` will always follow the format `shutdown-computevm-&lt;VM Name&gt;` where `&lt;VM Name&gt;` is replaced by the name of the target Virtual Machine
 class GlobalVMShutdownSchedule extends pulumi.CustomResource {
   /// The time each day when the schedule takes effect. Must match the format HHmm where HH is 00-23 and mm is 00-59 (e.g. 0930, 2300, etc.)
   late final pulumi.Output<String> dailyRecurrenceTime;
+
   /// Whether to enable the schedule. Possible values are `true` and `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The location where the schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The notification setting of a schedule. A `notification_settings` block as defined below.
-  late final pulumi.Output<GlobalVMShutdownScheduleNotificationSettings> notificationSettings;
+  late final pulumi.Output<GlobalVMShutdownScheduleNotificationSettings>
+  notificationSettings;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The time zone ID (e.g. Pacific Standard time). Refer to this guide for a [full list of accepted time zone names](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   late final pulumi.Output<String> timezone;
+
   /// The resource ID of the target ARM-based Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -549,18 +556,21 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     GlobalVMShutdownScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
-    this.notificationSettings = registerOutput<GlobalVMShutdownScheduleNotificationSettings>('notificationSettings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezone = registerOutput<String>('timezone');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    notificationSettings =
+        registerOutput<GlobalVMShutdownScheduleNotificationSettings>(
+          'notificationSettings',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezone = registerOutput<String>('timezone');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [GlobalVMShutdownSchedule] resource's state with the given [name] and [id].
@@ -581,17 +591,20 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.location = registerOutput<String>('location');
-    this.notificationSettings = registerOutput<GlobalVMShutdownScheduleNotificationSettings>('notificationSettings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezone = registerOutput<String>('timezone');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    notificationSettings =
+        registerOutput<GlobalVMShutdownScheduleNotificationSettings>(
+          'notificationSettings',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezone = registerOutput<String>('timezone');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

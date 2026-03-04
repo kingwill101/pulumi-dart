@@ -12,7 +12,8 @@ class GetGradientaiKnowledgeBaseArgs {
   final pulumi.Input<String>? databaseId;
   final pulumi.Input<String>? embeddingModelUuid;
   final pulumi.Input<bool>? isPublic;
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseLastIndexingJob>>?
+  lastIndexingJobs;
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? projectId;
   final pulumi.Input<String>? region;
@@ -52,7 +53,18 @@ class GetGradientaiKnowledgeBaseArgs {
       'databaseId': ?databaseId,
       'embeddingModelUuid': ?embeddingModelUuid,
       'isPublic': ?isPublic,
-      'lastIndexingJobs': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiKnowledgeBaseLastIndexingJob>, List<Map<String, dynamic>>>(lastIndexingJobs, (value) => pulumi.Input.encodeList<GetGradientaiKnowledgeBaseLastIndexingJob, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastIndexingJobs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiKnowledgeBaseLastIndexingJob>,
+            List<Map<String, dynamic>>
+          >(
+            lastIndexingJobs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiKnowledgeBaseLastIndexingJob,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'projectId': ?projectId,
       'region': ?region,
@@ -64,18 +76,68 @@ class GetGradientaiKnowledgeBaseArgs {
 
   factory GetGradientaiKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseArgs(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : (map['addedToAgentAt']! as String).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
-      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : (map['embeddingModelUuid']! as String).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs']!, (value) => GetGradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      addedToAgentAt: (() {
+        final guardedValue = map['addedToAgentAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      embeddingModelUuid: (() {
+        final guardedValue = map['embeddingModelUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isPublic: (() {
+        final guardedValue = map['isPublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastIndexingJobs: (() {
+        final guardedValue = map['lastIndexingJobs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGradientaiKnowledgeBaseLastIndexingJob>(
+            guardedValue,
+            (value) => GetGradientaiKnowledgeBaseLastIndexingJob.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

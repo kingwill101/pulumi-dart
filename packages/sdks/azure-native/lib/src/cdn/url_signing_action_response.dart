@@ -8,29 +8,34 @@ class UrlSigningActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'UrlSigning'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the action.
   final pulumi.Input<UrlSigningActionParametersResponse> parameters;
 
   /// Creates a new [UrlSigningActionResponse].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  UrlSigningActionResponse({
-    required this.name,
-    required this.parameters,
-  });
+  UrlSigningActionResponse({required this.name, required this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<UrlSigningActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            UrlSigningActionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
   factory UrlSigningActionResponse.fromMap(Map<String, dynamic> map) {
     return UrlSigningActionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (UrlSigningActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        UrlSigningActionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -10,16 +10,22 @@ import 'alert_rule_properties.dart';
 class AlertArgs {
   /// Name of the SAP monitor alert resource.
   final pulumi.Input<String>? alertName;
+
   /// Describes the properties of an alert.
   final pulumi.Input<AlertRuleProperties>? alertRuleProperties;
+
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
+
   /// Name of provider instances associated with the alert.
   final pulumi.Input<List<String>>? providerNames;
+
   /// The provider type for alert. For example, the value can be SapHana.
   final pulumi.Input<String>? providerType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the alert template from which it was created.
   final pulumi.Input<String>? templateName;
 
@@ -44,7 +50,11 @@ class AlertArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertName': ?alertName,
-      'alertRuleProperties': ?pulumi.Input.mapOptionalInputValue<AlertRuleProperties, Map<String, dynamic>>(alertRuleProperties, (value) => value.toMap()),
+      'alertRuleProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertRuleProperties,
+            Map<String, dynamic>
+          >(alertRuleProperties, (value) => value.toMap()),
       'monitorName': monitorName,
       'providerNames': ?providerNames,
       'providerType': ?providerType,
@@ -55,14 +65,39 @@ class AlertArgs {
 
   factory AlertArgs.fromMap(Map<String, dynamic> map) {
     return AlertArgs(
-      alertName: map['alertName'] == null ? null : (map['alertName']! as String).input(),
-      alertRuleProperties: map['alertRuleProperties'] == null ? null : (AlertRuleProperties.fromMap((map['alertRuleProperties']! as Map).cast<String, dynamic>())).input(),
-      monitorName: (map['monitorName'] as String).input(),
-      providerNames: map['providerNames'] == null ? null : ((map['providerNames']! as List).cast<String>()).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      alertName: (() {
+        final guardedValue = map['alertName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alertRuleProperties: (() {
+        final guardedValue = map['alertRuleProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertRuleProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
+      providerNames: (() {
+        final guardedValue = map['providerNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      providerType: (() {
+        final guardedValue = map['providerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      templateName: (() {
+        final guardedValue = map['templateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

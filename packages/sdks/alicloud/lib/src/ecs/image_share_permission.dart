@@ -4,13 +4,13 @@ import 'image_share_permission_state.dart';
 
 /// Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.
 ///
-/// > **NOTE:** You can only share your own custom images to other Alibaba Cloud users.
+/// &gt; **NOTE:** You can only share your own custom images to other Alibaba Cloud users.
 ///
-/// > **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.
+/// &gt; **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.
 ///
-/// > **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
+/// &gt; **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
 ///
-/// > **NOTE:** Available in 1.68.0+.
+/// &gt; **NOTE:** Available in 1.68.0+.
 ///
 /// ## Example Usage
 ///
@@ -480,7 +480,7 @@ import 'image_share_permission_state.dart';
 ///
 /// The following attributes are exported:
 ///
-/// * `id` - ID of the image. It formats as `<image_id>:<account_id>`
+/// * `id` - ID of the image. It formats as `&lt;image_id&gt;:&lt;account_id&gt;`
 ///
 /// ## Import
 ///
@@ -492,6 +492,7 @@ import 'image_share_permission_state.dart';
 class ImageSharePermission extends pulumi.CustomResource {
   /// Alibaba Cloud Account ID. It is used to share images.
   late final pulumi.Output<String> accountId;
+
   /// The source image ID.
   late final pulumi.Output<String> imageId;
 
@@ -504,13 +505,13 @@ class ImageSharePermission extends pulumi.CustomResource {
     ImageSharePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageSharePermission:ImageSharePermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.imageId = registerOutput<String>('imageId');
+         'alicloud:ecs/imageSharePermission:ImageSharePermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    imageId = registerOutput<String>('imageId');
   }
 
   /// Gets an existing [ImageSharePermission] resource's state with the given [name] and [id].
@@ -531,12 +532,12 @@ class ImageSharePermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageSharePermission:ImageSharePermission',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.imageId = registerOutput<String>('imageId');
+         'alicloud:ecs/imageSharePermission:ImageSharePermission',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    imageId = registerOutput<String>('imageId');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserMetadataResponse {
   /// Optional. The number of additional developer users the instance owner has purchased.
   final pulumi.Input<int> additionalDeveloperUserCount;
+
   /// Optional. The number of additional standard users the instance owner has purchased.
   final pulumi.Input<int> additionalStandardUserCount;
+
   /// Optional. The number of additional viewer users the instance owner has purchased.
   final pulumi.Input<int> additionalViewerUserCount;
 
@@ -31,10 +33,15 @@ class UserMetadataResponse {
 
   factory UserMetadataResponse.fromMap(Map<String, dynamic> map) {
     return UserMetadataResponse(
-      additionalDeveloperUserCount: (map['additionalDeveloperUserCount'] as int).input(),
-      additionalStandardUserCount: (map['additionalStandardUserCount'] as int).input(),
-      additionalViewerUserCount: (map['additionalViewerUserCount'] as int).input(),
+      additionalDeveloperUserCount: pulumi.Input.fromValue(
+        map['additionalDeveloperUserCount'] as int,
+      ),
+      additionalStandardUserCount: pulumi.Input.fromValue(
+        map['additionalStandardUserCount'] as int,
+      ),
+      additionalViewerUserCount: pulumi.Input.fromValue(
+        map['additionalViewerUserCount'] as int,
+      ),
     );
   }
 }
-

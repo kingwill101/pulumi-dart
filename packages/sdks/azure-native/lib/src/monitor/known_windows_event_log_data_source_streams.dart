@@ -2,16 +2,17 @@ enum KnownWindowsEventLogDataSourceStreams {
   valueMicrosoftWindowsEvent("Microsoft-WindowsEvent"),
   valueMicrosoftEvent("Microsoft-Event");
 
-  const KnownWindowsEventLogDataSourceStreams(this.value);
-  final String value;
+  const KnownWindowsEventLogDataSourceStreams(this.wireValue);
+  final String wireValue;
 
   static KnownWindowsEventLogDataSourceStreams fromValue(String value) {
     for (final item in KnownWindowsEventLogDataSourceStreams.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownWindowsEventLogDataSourceStreams value: $value');
+    throw ArgumentError(
+      'Unknown KnownWindowsEventLogDataSourceStreams value: $value',
+    );
   }
 }
-

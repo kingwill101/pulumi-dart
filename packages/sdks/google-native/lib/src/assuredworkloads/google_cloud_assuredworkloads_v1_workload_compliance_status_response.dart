@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
   /// Number of current resource violations which are not acknowledged.
   final pulumi.Input<int> acknowledgedResourceViolationCount;
+
   /// Number of current orgPolicy violations which are acknowledged.
   final pulumi.Input<int> acknowledgedViolationCount;
+
   /// Number of current resource violations which are acknowledged.
   final pulumi.Input<int> activeResourceViolationCount;
+
   /// Number of current orgPolicy violations which are not acknowledged.
   final pulumi.Input<int> activeViolationCount;
 
@@ -34,13 +37,22 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(
-      acknowledgedResourceViolationCount: (map['acknowledgedResourceViolationCount'] as int).input(),
-      acknowledgedViolationCount: (map['acknowledgedViolationCount'] as int).input(),
-      activeResourceViolationCount: (map['activeResourceViolationCount'] as int).input(),
-      activeViolationCount: (map['activeViolationCount'] as int).input(),
+      acknowledgedResourceViolationCount: pulumi.Input.fromValue(
+        map['acknowledgedResourceViolationCount'] as int,
+      ),
+      acknowledgedViolationCount: pulumi.Input.fromValue(
+        map['acknowledgedViolationCount'] as int,
+      ),
+      activeResourceViolationCount: pulumi.Input.fromValue(
+        map['activeResourceViolationCount'] as int,
+      ),
+      activeViolationCount: pulumi.Input.fromValue(
+        map['activeViolationCount'] as int,
+      ),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogResourcePolicyArgs {
   /// Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
   final pulumi.Input<String> policyDocument;
+
   /// Name of the resource policy.
   final pulumi.Input<String> policyName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,13 @@ class LogResourcePolicyArgs {
 
   factory LogResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogResourcePolicyArgs(
-      policyDocument: (map['policyDocument'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

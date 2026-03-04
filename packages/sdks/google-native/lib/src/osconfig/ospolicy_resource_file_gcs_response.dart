@@ -6,35 +6,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSPolicyResourceFileGcsResponse {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
+
   /// Generation number of the Cloud Storage object.
   final pulumi.Input<String> generation;
+
   /// Name of the Cloud Storage object.
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [OSPolicyResourceFileGcsResponse].
   /// [bucket] Bucket of the Cloud Storage object.
   /// [generation] Generation number of the Cloud Storage object.
-  /// [object] Name of the Cloud Storage object.
+  /// [object_] Name of the Cloud Storage object.
   OSPolicyResourceFileGcsResponse({
     required this.bucket,
     required this.generation,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
       'generation': generation,
-      'object': object,
+      'object': object_,
     };
   }
 
   factory OSPolicyResourceFileGcsResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileGcsResponse(
-      bucket: (map['bucket'] as String).input(),
-      generation: (map['generation'] as String).input(),
-      object: (map['object'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generation: pulumi.Input.fromValue(map['generation'] as String),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

@@ -37,14 +37,21 @@ class GetConsentArtifactHealthcareV1beta1Args {
     };
   }
 
-  factory GetConsentArtifactHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConsentArtifactHealthcareV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConsentArtifactHealthcareV1beta1Args(
-      consentArtifactId: (map['consentArtifactId'] as String).input(),
-      consentStoreId: (map['consentStoreId'] as String).input(),
-      datasetId: (map['datasetId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      consentArtifactId: pulumi.Input.fromValue(
+        map['consentArtifactId'] as String,
+      ),
+      consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

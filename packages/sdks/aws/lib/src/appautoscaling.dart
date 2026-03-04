@@ -1,5 +1,3 @@
-library module_appautoscaling;
-
 export 'appautoscaling/policy.dart';
 export 'appautoscaling/policy_args.dart';
 export 'appautoscaling/policy_predictive_scaling_policy_configuration.dart';

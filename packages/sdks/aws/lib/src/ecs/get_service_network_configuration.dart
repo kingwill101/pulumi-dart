@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceNetworkConfiguration {
   /// Whether tasks receive public IP addresses
   final pulumi.Input<bool> assignPublicIp;
+
   /// Security groups associated with tasks
   final pulumi.Input<List<String>> securityGroups;
+
   /// Subnets associated with tasks
   final pulumi.Input<List<String>> subnets;
 
@@ -30,10 +32,11 @@ class GetServiceNetworkConfiguration {
 
   factory GetServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceNetworkConfiguration(
-      assignPublicIp: (map['assignPublicIp'] as bool).input(),
-      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      assignPublicIp: pulumi.Input.fromValue(map['assignPublicIp'] as bool),
+      securityGroups: pulumi.Input.fromValue(
+        (map['securityGroups'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

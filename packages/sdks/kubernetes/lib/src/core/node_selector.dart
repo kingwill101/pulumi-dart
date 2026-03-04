@@ -10,20 +10,34 @@ class NodeSelector {
 
   /// Creates a new [NodeSelector].
   /// [nodeSelectorTerms] Required. A list of node selector terms. The terms are ORed.
-  NodeSelector({
-    required this.nodeSelectorTerms,
-  });
+  NodeSelector({required this.nodeSelectorTerms});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSelectorTerms': pulumi.Input.mapInputValue<List<NodeSelectorTerm>, List<Map<String, dynamic>>>(nodeSelectorTerms, (value) => pulumi.Input.encodeList<NodeSelectorTerm, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeSelectorTerms':
+          pulumi.Input.mapInputValue<
+            List<NodeSelectorTerm>,
+            List<Map<String, dynamic>>
+          >(
+            nodeSelectorTerms,
+            (value) =>
+                pulumi.Input.encodeList<NodeSelectorTerm, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory NodeSelector.fromMap(Map<String, dynamic> map) {
     return NodeSelector(
-      nodeSelectorTerms: (pulumi.Input.decodeList<NodeSelectorTerm>(map['nodeSelectorTerms'], (value) => NodeSelectorTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelectorTerms: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NodeSelectorTerm>(
+          map['nodeSelectorTerms']!,
+          (value) =>
+              NodeSelectorTerm.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

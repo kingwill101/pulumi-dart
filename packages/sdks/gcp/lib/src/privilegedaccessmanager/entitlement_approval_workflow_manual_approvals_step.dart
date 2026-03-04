@@ -9,11 +9,15 @@ class EntitlementApprovalWorkflowManualApprovalsStep {
   /// will indefinitely block. Should always be greater than 0. Currently 1 is the only
   /// supported value.
   final pulumi.Input<int>? approvalsNeeded;
+
   /// Optional. Additional email addresses to be notified when a grant is pending approval.
   final pulumi.Input<List<String>>? approverEmailRecipients;
+
   /// The potential set of approvers in this step. This list should contain at only one entry.
   /// Structure is documented below.
-  final pulumi.Input<EntitlementApprovalWorkflowManualApprovalsStepApprovers> approvers;
+  final pulumi.Input<EntitlementApprovalWorkflowManualApprovalsStepApprovers>
+  approvers;
+
   /// (Output, Beta)
   /// Output Only. The ID of the approval step.
   final pulumi.Input<String>? id;
@@ -34,18 +38,39 @@ class EntitlementApprovalWorkflowManualApprovalsStep {
     return <String, dynamic>{
       'approvalsNeeded': ?approvalsNeeded,
       'approverEmailRecipients': ?approverEmailRecipients,
-      'approvers': pulumi.Input.mapInputValue<EntitlementApprovalWorkflowManualApprovalsStepApprovers, Map<String, dynamic>>(approvers, (value) => value.toMap()),
+      'approvers':
+          pulumi.Input.mapInputValue<
+            EntitlementApprovalWorkflowManualApprovalsStepApprovers,
+            Map<String, dynamic>
+          >(approvers, (value) => value.toMap()),
       'id': ?id,
     };
   }
 
-  factory EntitlementApprovalWorkflowManualApprovalsStep.fromMap(Map<String, dynamic> map) {
+  factory EntitlementApprovalWorkflowManualApprovalsStep.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntitlementApprovalWorkflowManualApprovalsStep(
-      approvalsNeeded: map['approvalsNeeded'] == null ? null : (map['approvalsNeeded']! as int).input(),
-      approverEmailRecipients: map['approverEmailRecipients'] == null ? null : ((map['approverEmailRecipients']! as List).cast<String>()).input(),
-      approvers: (EntitlementApprovalWorkflowManualApprovalsStepApprovers.fromMap((map['approvers'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      approvalsNeeded: (() {
+        final guardedValue = map['approvalsNeeded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      approverEmailRecipients: (() {
+        final guardedValue = map['approverEmailRecipients'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      approvers: pulumi.Input.fromValue(
+        EntitlementApprovalWorkflowManualApprovalsStepApprovers.fromMap(
+          (map['approvers']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,14 +15,19 @@ class Account extends pulumi.CustomResource {
   /// - Start with Chinese and English letters.
   /// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
   late final pulumi.Output<String?> accountDescription;
+
   /// Account Name
   late final pulumi.Output<String> accountName;
+
   /// Account Password
   late final pulumi.Output<String> accountPassword;
+
   /// The account Comment Information type. Value:
   late final pulumi.Output<String> characterType;
+
   /// Instance Id
   late final pulumi.Output<String> instanceId;
+
   /// Account Status
   late final pulumi.Output<String> status;
 
@@ -35,17 +40,17 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.characterType = registerOutput<String>('characterType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:mongodb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    characterType = registerOutput<String>('characterType');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -66,16 +71,16 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.characterType = registerOutput<String>('characterType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:mongodb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    characterType = registerOutput<String>('characterType');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
   }
 }

@@ -4,16 +4,15 @@ enum RequiredNsgRules {
   valueNoAzureDatabricksRules("NoAzureDatabricksRules"),
   valueNoAzureServiceRules("NoAzureServiceRules");
 
-  const RequiredNsgRules(this.value);
-  final String value;
+  const RequiredNsgRules(this.wireValue);
+  final String wireValue;
 
   static RequiredNsgRules fromValue(String value) {
     for (final item in RequiredNsgRules.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequiredNsgRules value: $value');
   }
 }
-

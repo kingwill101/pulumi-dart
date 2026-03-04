@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentTemplateLogConfigurationS3Configuration {
   /// The name of the destination bucket.
   final pulumi.Input<String> bucketName;
+
   /// The bucket prefix.
   final pulumi.Input<String>? prefix;
 
@@ -17,17 +18,19 @@ class ExperimentTemplateLogConfigurationS3Configuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-      'prefix': ?prefix,
-    };
+    return <String, dynamic>{'bucketName': bucketName, 'prefix': ?prefix};
   }
 
-  factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
+  factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperimentTemplateLogConfigurationS3Configuration(
-      bucketName: (map['bucketName'] as String).input(),
-      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

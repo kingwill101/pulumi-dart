@@ -13,15 +13,16 @@ class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyValueStoreArn': keyValueStoreArn,
-    };
+    return <String, dynamic>{'keyValueStoreArn': keyValueStoreArn};
   }
 
-  factory ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap(Map<String, dynamic> map) {
+  factory ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation(
-      keyValueStoreArn: (map['keyValueStoreArn'] as String).input(),
+      keyValueStoreArn: pulumi.Input.fromValue(
+        map['keyValueStoreArn'] as String,
+      ),
     );
   }
 }
-

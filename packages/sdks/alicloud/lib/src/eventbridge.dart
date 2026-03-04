@@ -1,5 +1,3 @@
-library module_eventbridge;
-
 export 'eventbridge/api_destination.dart';
 export 'eventbridge/api_destination_args.dart';
 export 'eventbridge/api_destination_http_api_parameters.dart';

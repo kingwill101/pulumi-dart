@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkDnsServersState {
   /// List of IP addresses of DNS servers
   final pulumi.Input<List<String>>? dnsServers;
+
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkId;
 
   /// Creates a new [VirtualNetworkDnsServersState].
   /// [dnsServers] List of IP addresses of DNS servers
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
-  VirtualNetworkDnsServersState({
-    this.dnsServers,
-    this.virtualNetworkId,
-  });
+  VirtualNetworkDnsServersState({this.dnsServers, this.virtualNetworkId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VirtualNetworkDnsServersState {
 
   factory VirtualNetworkDnsServersState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsServersState(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      virtualNetworkId: (() {
+        final guardedValue = map['virtualNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

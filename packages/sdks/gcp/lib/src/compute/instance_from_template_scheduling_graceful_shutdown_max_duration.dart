@@ -8,6 +8,7 @@ class InstanceFromTemplateSchedulingGracefulShutdownMaxDuration {
   /// with a 0 seconds field and a positive nanos field. Must
   /// be from 0 to 999,999,999 inclusive.
   final pulumi.Input<int>? nanos;
+
   /// Span of time at a resolution of a second.
   /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
   final pulumi.Input<int> seconds;
@@ -21,17 +22,19 @@ class InstanceFromTemplateSchedulingGracefulShutdownMaxDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nanos': ?nanos,
-      'seconds': seconds,
-    };
+    return <String, dynamic>{'nanos': ?nanos, 'seconds': seconds};
   }
 
-  factory InstanceFromTemplateSchedulingGracefulShutdownMaxDuration.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromTemplateSchedulingGracefulShutdownMaxDuration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromTemplateSchedulingGracefulShutdownMaxDuration(
-      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
-      seconds: (map['seconds'] as int).input(),
+      nanos: (() {
+        final guardedValue = map['nanos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      seconds: pulumi.Input.fromValue(map['seconds'] as int),
     );
   }
 }
-

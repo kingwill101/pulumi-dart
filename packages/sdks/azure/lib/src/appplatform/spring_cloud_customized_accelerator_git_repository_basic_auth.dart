@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth {
   /// Specifies the password of git repository basic auth.
   final pulumi.Input<String> password;
+
   /// Specifies the username of git repository basic auth.
   final pulumi.Input<String> username;
 
@@ -17,17 +18,15 @@ class SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
-  factory SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

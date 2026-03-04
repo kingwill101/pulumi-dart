@@ -6,18 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceState {
   /// JSON string matching the CloudFormation resource type schema with desired configuration.
   final pulumi.Input<String>? desiredState;
+
   /// JSON string matching the CloudFormation resource type schema with current configuration. Underlying attributes can be referenced via the `jsondecode()` function, for example, `jsondecode(data.aws_cloudcontrolapi_resource.example.properties)["example"]`.
   final pulumi.Input<String>? properties;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amazon Resource Name (ARN) of the IAM Role to assume for operations.
   final pulumi.Input<String>? roleArn;
+
   /// JSON string of the CloudFormation resource type schema which is used for plan time validation where possible. Automatically fetched if not provided. In large scale environments with multiple resources using the same `type_name`, it is recommended to fetch the schema once via the `aws.cloudformation.CloudFormationType` data source and use this argument to reduce `DescribeType` API operation throttling. This value is marked sensitive only to prevent large plan differences from showing.
   final pulumi.Input<String>? schema;
+
   /// CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? typeName;
+
   /// Identifier of the CloudFormation resource type version.
   final pulumi.Input<String>? typeVersionId;
 
@@ -53,14 +59,41 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      desiredState: map['desiredState'] == null ? null : ((map['desiredState'] as String).input()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
-      typeName: map['typeName'] == null ? null : ((map['typeName'] as String).input()).input(),
-      typeVersionId: map['typeVersionId'] == null ? null : ((map['typeVersionId'] as String).input()).input(),
+      desiredState: (() {
+        final guardedValue = map['desiredState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeName: (() {
+        final guardedValue = map['typeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeVersionId: (() {
+        final guardedValue = map['typeVersionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

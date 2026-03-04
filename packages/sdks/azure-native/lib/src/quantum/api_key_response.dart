@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyResponse {
   /// The creation time of the api key.
   final pulumi.Input<String>? createdAt;
+
   /// The Api key.
   final pulumi.Input<String> key;
 
   /// Creates a new [ApiKeyResponse].
   /// [createdAt] The creation time of the api key.
   /// [key] The Api key.
-  ApiKeyResponse({
-    this.createdAt,
-    required this.key,
-  });
+  ApiKeyResponse({this.createdAt, required this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'createdAt': ?createdAt,
-      'key': key,
-    };
+    return <String, dynamic>{'createdAt': ?createdAt, 'key': key};
   }
 
   factory ApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyResponse(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      key: (map['key'] as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

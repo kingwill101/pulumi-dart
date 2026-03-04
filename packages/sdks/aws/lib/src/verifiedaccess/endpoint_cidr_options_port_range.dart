@@ -9,23 +9,16 @@ class EndpointCidrOptionsPortRange {
   /// Creates a new [EndpointCidrOptionsPortRange].
   /// [fromPort] Required.
   /// [toPort] Required.
-  EndpointCidrOptionsPortRange({
-    required this.fromPort,
-    required this.toPort,
-  });
+  EndpointCidrOptionsPortRange({required this.fromPort, required this.toPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': fromPort,
-      'toPort': toPort,
-    };
+    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
   }
 
   factory EndpointCidrOptionsPortRange.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptionsPortRange(
-      fromPort: (map['fromPort'] as int).input(),
-      toPort: (map['toPort'] as int).input(),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

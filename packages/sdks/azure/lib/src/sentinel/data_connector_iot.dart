@@ -214,8 +214,10 @@ import 'data_connector_iot_state.dart';
 class DataConnectorIot extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Iot Data Connector resides in. Changing this forces a new Iot Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Iot Data Connector. Changing this forces a new Iot Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the subscription that this Iot Data Connector connects to. Changing this forces a new Iot Data Connector to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -228,14 +230,14 @@ class DataConnectorIot extends pulumi.CustomResource {
     DataConnectorIotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorIot:DataConnectorIot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorIot:DataConnectorIot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [DataConnectorIot] resource's state with the given [name] and [id].
@@ -256,13 +258,13 @@ class DataConnectorIot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorIot:DataConnectorIot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorIot:DataConnectorIot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

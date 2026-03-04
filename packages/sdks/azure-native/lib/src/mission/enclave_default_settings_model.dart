@@ -9,20 +9,19 @@ class EnclaveDefaultSettingsModel {
 
   /// Creates a new [EnclaveDefaultSettingsModel].
   /// [diagnosticDestination] Diagnostic Destination.
-  EnclaveDefaultSettingsModel({
-    this.diagnosticDestination,
-  });
+  EnclaveDefaultSettingsModel({this.diagnosticDestination});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diagnosticDestination': ?diagnosticDestination,
-    };
+    return <String, dynamic>{'diagnosticDestination': ?diagnosticDestination};
   }
 
   factory EnclaveDefaultSettingsModel.fromMap(Map<String, dynamic> map) {
     return EnclaveDefaultSettingsModel(
-      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination']! as String).input(),
+      diagnosticDestination: (() {
+        final guardedValue = map['diagnosticDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

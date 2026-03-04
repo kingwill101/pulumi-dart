@@ -1,5 +1,3 @@
-library module_servicefabricmesh;
-
 export 'servicefabricmesh/add_remove_replica_scaling_mechanism.dart';
 export 'servicefabricmesh/add_remove_replica_scaling_mechanism_response.dart';
 export 'servicefabricmesh/application.dart';

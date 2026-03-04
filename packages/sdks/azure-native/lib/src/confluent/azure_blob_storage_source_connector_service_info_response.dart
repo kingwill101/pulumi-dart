@@ -7,10 +7,13 @@ class AzureBlobStorageSourceConnectorServiceInfoResponse {
   /// The connector service type.
   /// Expected value is 'AzureBlobStorageSourceConnector'.
   final pulumi.Input<String> connectorServiceType;
+
   /// Azure Blob Storage Account Key
   final pulumi.Input<String>? storageAccountKey;
+
   /// Azure Blob Storage Account Name
   final pulumi.Input<String>? storageAccountName;
+
   /// Azure Blob Storage Account Container Name
   final pulumi.Input<String>? storageContainerName;
 
@@ -35,13 +38,28 @@ class AzureBlobStorageSourceConnectorServiceInfoResponse {
     };
   }
 
-  factory AzureBlobStorageSourceConnectorServiceInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureBlobStorageSourceConnectorServiceInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureBlobStorageSourceConnectorServiceInfoResponse(
-      connectorServiceType: (map['connectorServiceType'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
+      connectorServiceType: pulumi.Input.fromValue(
+        map['connectorServiceType'] as String,
+      ),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageContainerName: (() {
+        final guardedValue = map['storageContainerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

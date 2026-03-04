@@ -10,7 +10,7 @@ import 'usage_export_bucket_state.dart';
 /// and for further details, the
 /// [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
 ///
-/// > **Note:** You should specify only one of these per project.  If there are two or more
+/// &gt; **Note:** You should specify only one of these per project.  If there are two or more
 /// they will fight over which bucket the reports should be stored in.  It is
 /// safe to have multiple resources with the same backing bucket.
 ///
@@ -127,8 +127,10 @@ class UsageExportBucket extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucketName;
+
   /// A prefix for the reports, for instance, the project name.
   late final pulumi.Output<String?> prefix;
+
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
 
@@ -141,14 +143,14 @@ class UsageExportBucket extends pulumi.CustomResource {
     UsageExportBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/usageExportBucket:UsageExportBucket',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketName = registerOutput<String>('bucketName');
-    this.prefix = registerOutput<String?>('prefix');
-    this.project = registerOutput<String>('project');
+         'gcp:projects/usageExportBucket:UsageExportBucket',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketName = registerOutput<String>('bucketName');
+    prefix = registerOutput<String?>('prefix');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [UsageExportBucket] resource's state with the given [name] and [id].
@@ -169,13 +171,13 @@ class UsageExportBucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/usageExportBucket:UsageExportBucket',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketName = registerOutput<String>('bucketName');
-    this.prefix = registerOutput<String?>('prefix');
-    this.project = registerOutput<String>('project');
+         'gcp:projects/usageExportBucket:UsageExportBucket',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketName = registerOutput<String>('bucketName');
+    prefix = registerOutput<String?>('prefix');
+    project = registerOutput<String>('project');
   }
 }

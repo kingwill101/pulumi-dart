@@ -6,24 +6,49 @@ import 'virtual_machine_properties_response_network_interfaces.dart';
 /// NetworkProfile - describes the network configuration the virtual machine
 class VirtualMachinePropertiesResponseNetworkProfile {
   /// NetworkInterfaces - list of network interfaces to be attached to the virtual machine
-  final pulumi.Input<List<VirtualMachinePropertiesResponseNetworkInterfaces>>? networkInterfaces;
+  final pulumi.Input<List<VirtualMachinePropertiesResponseNetworkInterfaces>>?
+  networkInterfaces;
 
   /// Creates a new [VirtualMachinePropertiesResponseNetworkProfile].
   /// [networkInterfaces] NetworkInterfaces - list of network interfaces to be attached to the virtual machine
-  VirtualMachinePropertiesResponseNetworkProfile({
-    this.networkInterfaces,
-  });
+  VirtualMachinePropertiesResponseNetworkProfile({this.networkInterfaces});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachinePropertiesResponseNetworkInterfaces>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<VirtualMachinePropertiesResponseNetworkInterfaces, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachinePropertiesResponseNetworkInterfaces>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachinePropertiesResponseNetworkInterfaces,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory VirtualMachinePropertiesResponseNetworkProfile.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesResponseNetworkProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesResponseNetworkProfile(
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesResponseNetworkInterfaces>(map['networkInterfaces']!, (value) => VirtualMachinePropertiesResponseNetworkInterfaces.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: (() {
+        final guardedValue = map['networkInterfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            VirtualMachinePropertiesResponseNetworkInterfaces
+          >(
+            guardedValue,
+            (value) =>
+                VirtualMachinePropertiesResponseNetworkInterfaces.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'key_vault_reference_response.dart';
 class KeyVaultParameterReferenceResponse {
   /// Azure Key Vault reference.
   final pulumi.Input<KeyVaultReferenceResponse> keyVault;
+
   /// Azure Key Vault secret name.
   final pulumi.Input<String> secretName;
+
   /// Azure Key Vault secret version.
   final pulumi.Input<String>? secretVersion;
 
@@ -24,7 +26,11 @@ class KeyVaultParameterReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': pulumi.Input.mapInputValue<KeyVaultReferenceResponse, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
+      'keyVault':
+          pulumi.Input.mapInputValue<
+            KeyVaultReferenceResponse,
+            Map<String, dynamic>
+          >(keyVault, (value) => value.toMap()),
       'secretName': secretName,
       'secretVersion': ?secretVersion,
     };
@@ -32,10 +38,17 @@ class KeyVaultParameterReferenceResponse {
 
   factory KeyVaultParameterReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultParameterReferenceResponse(
-      keyVault: (KeyVaultReferenceResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
+      keyVault: pulumi.Input.fromValue(
+        KeyVaultReferenceResponse.fromMap(
+          (map['keyVault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      secretVersion: (() {
+        final guardedValue = map['secretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,15 +15,18 @@ class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAgentAuth': ?serviceAgentAuth,
-    };
+    return <String, dynamic>{'serviceAgentAuth': ?serviceAgentAuth};
   }
 
-  factory CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig(
-      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : (map['serviceAgentAuth']! as String).input(),
+      serviceAgentAuth: (() {
+        final guardedValue = map['serviceAgentAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

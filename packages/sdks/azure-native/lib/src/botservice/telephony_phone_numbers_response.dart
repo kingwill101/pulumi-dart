@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TelephonyPhoneNumbersResponse {
   /// The endpoint of ACS.
   final pulumi.Input<String>? acsEndpoint;
+
   /// The resource id of ACS.
   final pulumi.Input<String>? acsResourceId;
+
   /// The secret of ACS.
   final pulumi.Input<String>? acsSecret;
+
   /// The service region of cognitive service.
   final pulumi.Input<String>? cognitiveServiceRegion;
+
   /// The resource id of cognitive service.
   final pulumi.Input<String>? cognitiveServiceResourceId;
+
   /// The subscription key of cognitive service.
   final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
+
   /// The default locale of the phone number.
   final pulumi.Input<String>? defaultLocale;
+
   /// The element id.
   final pulumi.Input<String>? id;
+
   /// Optional Property that will determine the offering type of the phone.
   final pulumi.Input<String>? offerType;
+
   /// The phone number.
   final pulumi.Input<String>? phoneNumber;
 
@@ -66,17 +75,56 @@ class TelephonyPhoneNumbersResponse {
 
   factory TelephonyPhoneNumbersResponse.fromMap(Map<String, dynamic> map) {
     return TelephonyPhoneNumbersResponse(
-      acsEndpoint: map['acsEndpoint'] == null ? null : (map['acsEndpoint']! as String).input(),
-      acsResourceId: map['acsResourceId'] == null ? null : (map['acsResourceId']! as String).input(),
-      acsSecret: map['acsSecret'] == null ? null : (map['acsSecret']! as String).input(),
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion']! as String).input(),
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId']! as String).input(),
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey']! as String).input(),
-      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      offerType: map['offerType'] == null ? null : (map['offerType']! as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      acsEndpoint: (() {
+        final guardedValue = map['acsEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acsResourceId: (() {
+        final guardedValue = map['acsResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acsSecret: (() {
+        final guardedValue = map['acsSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cognitiveServiceRegion: (() {
+        final guardedValue = map['cognitiveServiceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cognitiveServiceResourceId: (() {
+        final guardedValue = map['cognitiveServiceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cognitiveServiceSubscriptionKey: (() {
+        final guardedValue = map['cognitiveServiceSubscriptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultLocale: (() {
+        final guardedValue = map['defaultLocale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offerType: (() {
+        final guardedValue = map['offerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

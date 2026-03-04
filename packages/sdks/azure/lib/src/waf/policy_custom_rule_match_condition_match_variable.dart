@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyCustomRuleMatchConditionMatchVariable {
   /// Describes field of the matchVariable collection
   final pulumi.Input<String>? selector;
+
   /// The name of the Match Variable. Possible values are `RemoteAddr`, `RequestMethod`, `QueryString`, `PostArgs`, `RequestUri`, `RequestHeaders`, `RequestBody` and `RequestCookies`.
   final pulumi.Input<String> variableName;
 
@@ -23,11 +24,16 @@ class PolicyCustomRuleMatchConditionMatchVariable {
     };
   }
 
-  factory PolicyCustomRuleMatchConditionMatchVariable.fromMap(Map<String, dynamic> map) {
+  factory PolicyCustomRuleMatchConditionMatchVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyCustomRuleMatchConditionMatchVariable(
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      variableName: (map['variableName'] as String).input(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
     );
   }
 }
-

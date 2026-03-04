@@ -8,20 +8,19 @@ class GatewayLogConfigSls {
 
   /// Creates a new [GatewayLogConfigSls].
   /// [enable] Enable Log Service
-  GatewayLogConfigSls({
-    this.enable,
-  });
+  GatewayLogConfigSls({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory GatewayLogConfigSls.fromMap(Map<String, dynamic> map) {
     return GatewayLogConfigSls(
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

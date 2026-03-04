@@ -18,10 +18,15 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (map['totalEgressBandwidthTier']! as String).input(),
+      totalEgressBandwidthTier: (() {
+        final guardedValue = map['totalEgressBandwidthTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

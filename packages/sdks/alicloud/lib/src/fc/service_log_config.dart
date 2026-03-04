@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceLogConfig {
   /// Enable instance level metrics.
   final pulumi.Input<bool>? enableInstanceMetrics;
+
   /// Enable request level metrics.
   final pulumi.Input<bool>? enableRequestMetrics;
+
   /// The log store name of Alicloud Simple Log Service.
   final pulumi.Input<String> logstore;
+
   /// The project name of the Alicloud Simple Log Service.
   final pulumi.Input<String> project;
 
@@ -35,11 +38,18 @@ class ServiceLogConfig {
 
   factory ServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLogConfig(
-      enableInstanceMetrics: map['enableInstanceMetrics'] == null ? null : (map['enableInstanceMetrics']! as bool).input(),
-      enableRequestMetrics: map['enableRequestMetrics'] == null ? null : (map['enableRequestMetrics']! as bool).input(),
-      logstore: (map['logstore'] as String).input(),
-      project: (map['project'] as String).input(),
+      enableInstanceMetrics: (() {
+        final guardedValue = map['enableInstanceMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableRequestMetrics: (() {
+        final guardedValue = map['enableRequestMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logstore: pulumi.Input.fromValue(map['logstore'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

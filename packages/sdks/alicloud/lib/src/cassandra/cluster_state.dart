@@ -6,46 +6,62 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterState {
   /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
   final pulumi.Input<bool>? autoRenew;
+
   /// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
   final pulumi.Input<int>? autoRenewPeriod;
+
   /// Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
   final pulumi.Input<String>? clusterName;
+
   /// Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
   final pulumi.Input<String>? dataCenterName;
+
   /// User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
   /// - Custom storage space; value range: [160, 2000].
   /// - 80-GB increments.
   final pulumi.Input<int>? diskSize;
+
   /// The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
   final pulumi.Input<String>? diskType;
   final pulumi.Input<bool>? enablePublic;
+
   /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
   final pulumi.Input<String>? instanceType;
+
   /// Set the instance's IP whitelist in VPC network.
   final pulumi.Input<String>? ipWhite;
+
   /// The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
   final pulumi.Input<String>? maintainEndTime;
+
   /// The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
   final pulumi.Input<String>? maintainStartTime;
+
   /// Cassandra major version. Now only support version `3.11`.
   final pulumi.Input<String>? majorVersion;
+
   /// The node count of Cassandra dataCenter-1 default to 2.
   final pulumi.Input<int>? nodeCount;
   final pulumi.Input<String>? password;
+
   /// The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
   final pulumi.Input<String>? payType;
   final pulumi.Input<int>? period;
   final pulumi.Input<String>? periodUnit;
   final pulumi.Input<List<String>>? publicPoints;
+
   /// A list of security group ids to associate with.
   ///
-  /// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+  /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
   final pulumi.Input<List<String>>? securityGroups;
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The vswitch_id of dataCenter-1, can not empty.
   final pulumi.Input<String>? vswitchId;
+
   /// The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
   final pulumi.Input<String>? zoneId;
 
@@ -129,30 +145,123 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName']! as String).input(),
-      diskSize: map['diskSize'] == null ? null : (map['diskSize']! as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      enablePublic: map['enablePublic'] == null ? null : (map['enablePublic']! as bool).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      ipWhite: map['ipWhite'] == null ? null : (map['ipWhite']! as String).input(),
-      maintainEndTime: map['maintainEndTime'] == null ? null : (map['maintainEndTime']! as String).input(),
-      maintainStartTime: map['maintainStartTime'] == null ? null : (map['maintainStartTime']! as String).input(),
-      majorVersion: map['majorVersion'] == null ? null : (map['majorVersion']! as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      payType: map['payType'] == null ? null : (map['payType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
-      publicPoints: map['publicPoints'] == null ? null : ((map['publicPoints']! as List).cast<String>()).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenewPeriod: (() {
+        final guardedValue = map['autoRenewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataCenterName: (() {
+        final guardedValue = map['dataCenterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSize: (() {
+        final guardedValue = map['diskSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablePublic: (() {
+        final guardedValue = map['enablePublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipWhite: (() {
+        final guardedValue = map['ipWhite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintainEndTime: (() {
+        final guardedValue = map['maintainEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintainStartTime: (() {
+        final guardedValue = map['maintainStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      majorVersion: (() {
+        final guardedValue = map['majorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payType: (() {
+        final guardedValue = map['payType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodUnit: (() {
+        final guardedValue = map['periodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicPoints: (() {
+        final guardedValue = map['publicPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

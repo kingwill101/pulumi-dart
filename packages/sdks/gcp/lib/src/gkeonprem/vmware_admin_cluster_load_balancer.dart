@@ -10,12 +10,17 @@ class VmwareAdminClusterLoadBalancer {
   /// Configuration for F5 Big IP typed load balancers.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterLoadBalancerF5Config>? f5Config;
+
   /// Manually configured load balancers.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancerManualLbConfig>? manualLbConfig;
+  final pulumi.Input<VmwareAdminClusterLoadBalancerManualLbConfig>?
+  manualLbConfig;
+
   /// Metal LB load balancers.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancerMetalLbConfig>? metalLbConfig;
+  final pulumi.Input<VmwareAdminClusterLoadBalancerMetalLbConfig>?
+  metalLbConfig;
+
   /// Specified the VMware Load Balancer Config
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterLoadBalancerVipConfig> vipConfig;
@@ -34,20 +39,63 @@ class VmwareAdminClusterLoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'f5Config': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterLoadBalancerF5Config, Map<String, dynamic>>(f5Config, (value) => value.toMap()),
-      'manualLbConfig': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterLoadBalancerManualLbConfig, Map<String, dynamic>>(manualLbConfig, (value) => value.toMap()),
-      'metalLbConfig': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterLoadBalancerMetalLbConfig, Map<String, dynamic>>(metalLbConfig, (value) => value.toMap()),
-      'vipConfig': pulumi.Input.mapInputValue<VmwareAdminClusterLoadBalancerVipConfig, Map<String, dynamic>>(vipConfig, (value) => value.toMap()),
+      'f5Config':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterLoadBalancerF5Config,
+            Map<String, dynamic>
+          >(f5Config, (value) => value.toMap()),
+      'manualLbConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterLoadBalancerManualLbConfig,
+            Map<String, dynamic>
+          >(manualLbConfig, (value) => value.toMap()),
+      'metalLbConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterLoadBalancerMetalLbConfig,
+            Map<String, dynamic>
+          >(metalLbConfig, (value) => value.toMap()),
+      'vipConfig':
+          pulumi.Input.mapInputValue<
+            VmwareAdminClusterLoadBalancerVipConfig,
+            Map<String, dynamic>
+          >(vipConfig, (value) => value.toMap()),
     };
   }
 
   factory VmwareAdminClusterLoadBalancer.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancer(
-      f5Config: map['f5Config'] == null ? null : (VmwareAdminClusterLoadBalancerF5Config.fromMap((map['f5Config']! as Map).cast<String, dynamic>())).input(),
-      manualLbConfig: map['manualLbConfig'] == null ? null : (VmwareAdminClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig']! as Map).cast<String, dynamic>())).input(),
-      metalLbConfig: map['metalLbConfig'] == null ? null : (VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig']! as Map).cast<String, dynamic>())).input(),
-      vipConfig: (VmwareAdminClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
+      f5Config: (() {
+        final guardedValue = map['f5Config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterLoadBalancerF5Config.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      manualLbConfig: (() {
+        final guardedValue = map['manualLbConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterLoadBalancerManualLbConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metalLbConfig: (() {
+        final guardedValue = map['metalLbConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vipConfig: pulumi.Input.fromValue(
+        VmwareAdminClusterLoadBalancerVipConfig.fromMap(
+          (map['vipConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

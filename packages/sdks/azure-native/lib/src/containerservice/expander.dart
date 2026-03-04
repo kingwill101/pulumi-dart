@@ -5,16 +5,15 @@ enum Expander {
   valuePriority("priority"),
   valueRandom("random");
 
-  const Expander(this.value);
-  final String value;
+  const Expander(this.wireValue);
+  final String wireValue;
 
   static Expander fromValue(String value) {
     for (final item in Expander.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Expander value: $value');
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkedSubscriptionArgs {
   /// Name of the Linked Subscription resource.
   final pulumi.Input<String> linkedSubscriptionName;
+
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -29,9 +30,10 @@ class GetLinkedSubscriptionArgs {
 
   factory GetLinkedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkedSubscriptionArgs(
-      linkedSubscriptionName: (map['linkedSubscriptionName'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
+      linkedSubscriptionName: pulumi.Input.fromValue(
+        map['linkedSubscriptionName'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
-

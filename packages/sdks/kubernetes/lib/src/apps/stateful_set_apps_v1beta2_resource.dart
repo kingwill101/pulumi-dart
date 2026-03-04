@@ -24,11 +24,14 @@ import 'stateful_set_status_apps_v1beta2.dart';
 class StatefulSetAppsV1beta2Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
   late final pulumi.Output<ObjectMeta> metadata;
+
   /// Spec defines the desired identities of pods in this set.
   late final pulumi.Output<StatefulSetSpecAppsV1beta2> spec;
+
   /// Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
   late final pulumi.Output<StatefulSetStatusAppsV1beta2?> status;
 
@@ -41,15 +44,15 @@ class StatefulSetAppsV1beta2Resource extends pulumi.CustomResource {
     StatefulSetAppsV1beta2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:apps/v1beta2:StatefulSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.kind = registerOutput<String>('kind');
-    this.metadata = registerOutput<ObjectMeta>('metadata');
-    this.spec = registerOutput<StatefulSetSpecAppsV1beta2>('spec');
-    this.status = registerOutput<StatefulSetStatusAppsV1beta2?>('status');
+         'kubernetes:apps/v1beta2:StatefulSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata');
+    spec = registerOutput<StatefulSetSpecAppsV1beta2>('spec');
+    status = registerOutput<StatefulSetStatusAppsV1beta2?>('status');
   }
 }

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceApplicationResponse {
   /// Name of the ComputeInstance application.
   final pulumi.Input<String>? displayName;
+
   /// Application' endpoint URI.
   final pulumi.Input<String>? endpointUri;
 
   /// Creates a new [ComputeInstanceApplicationResponse].
   /// [displayName] Name of the ComputeInstance application.
   /// [endpointUri] Application' endpoint URI.
-  ComputeInstanceApplicationResponse({
-    this.displayName,
-    this.endpointUri,
-  });
+  ComputeInstanceApplicationResponse({this.displayName, this.endpointUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ComputeInstanceApplicationResponse {
 
   factory ComputeInstanceApplicationResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceApplicationResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointUri: (() {
+        final guardedValue = map['endpointUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

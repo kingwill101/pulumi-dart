@@ -35,11 +35,18 @@ class GetHubGroupIamPolicyArgs {
 
   factory GetHubGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetHubGroupIamPolicyArgs(
-      groupId: (map['groupId'] as String).input(),
-      hubId: (map['hubId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      hubId: pulumi.Input.fromValue(map['hubId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

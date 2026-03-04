@@ -9,20 +9,19 @@ class MongoIndexKeys {
 
   /// Creates a new [MongoIndexKeys].
   /// [keys] List of keys for each MongoDB collection in the Azure Cosmos DB service
-  MongoIndexKeys({
-    this.keys,
-  });
+  MongoIndexKeys({this.keys});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keys': ?keys,
-    };
+    return <String, dynamic>{'keys': ?keys};
   }
 
   factory MongoIndexKeys.fromMap(Map<String, dynamic> map) {
     return MongoIndexKeys(
-      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

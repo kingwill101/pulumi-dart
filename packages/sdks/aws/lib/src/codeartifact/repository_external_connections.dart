@@ -28,10 +28,19 @@ class RepositoryExternalConnections {
 
   factory RepositoryExternalConnections.fromMap(Map<String, dynamic> map) {
     return RepositoryExternalConnections(
-      externalConnectionName: (map['externalConnectionName'] as String).input(),
-      packageFormat: map['packageFormat'] == null ? null : ((map['packageFormat'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      externalConnectionName: pulumi.Input.fromValue(
+        map['externalConnectionName'] as String,
+      ),
+      packageFormat: (() {
+        final guardedValue = map['packageFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

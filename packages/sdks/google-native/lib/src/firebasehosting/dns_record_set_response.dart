@@ -8,8 +8,10 @@ import 'status_response.dart';
 class DnsRecordSetResponse {
   /// An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
   final pulumi.Input<StatusResponse> checkError;
+
   /// The domain name the record set pertains to.
   final pulumi.Input<String> domainName;
+
   /// Records on the domain.
   final pulumi.Input<List<DnsRecordResponse>> records;
 
@@ -25,18 +27,42 @@ class DnsRecordSetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'checkError': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(checkError, (value) => value.toMap()),
+      'checkError':
+          pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(
+            checkError,
+            (value) => value.toMap(),
+          ),
       'domainName': domainName,
-      'records': pulumi.Input.mapInputValue<List<DnsRecordResponse>, List<Map<String, dynamic>>>(records, (value) => pulumi.Input.encodeList<DnsRecordResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'records':
+          pulumi.Input.mapInputValue<
+            List<DnsRecordResponse>,
+            List<Map<String, dynamic>>
+          >(
+            records,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DnsRecordResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DnsRecordSetResponse.fromMap(Map<String, dynamic> map) {
     return DnsRecordSetResponse(
-      checkError: (StatusResponse.fromMap((map['checkError'] as Map).cast<String, dynamic>())).input(),
-      domainName: (map['domainName'] as String).input(),
-      records: (pulumi.Input.decodeList<DnsRecordResponse>(map['records'], (value) => DnsRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkError: pulumi.Input.fromValue(
+        StatusResponse.fromMap(
+          (map['checkError']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      records: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DnsRecordResponse>(
+          map['records']!,
+          (value) =>
+              DnsRecordResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

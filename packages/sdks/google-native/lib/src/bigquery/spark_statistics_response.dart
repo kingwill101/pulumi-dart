@@ -6,10 +6,13 @@ import 'spark_logging_info_response.dart';
 class SparkStatisticsResponse {
   /// Endpoints generated for the Spark job.
   final pulumi.Input<Map<String, String>> endpoints;
+
   /// Logging info is used to generate a link to Cloud Logging.
   final pulumi.Input<SparkLoggingInfoResponse> loggingInfo;
+
   /// Spark job id if a Spark job is created successfully.
   final pulumi.Input<String> sparkJobId;
+
   /// Location where the Spark job is executed.
   final pulumi.Input<String> sparkJobLocation;
 
@@ -28,7 +31,11 @@ class SparkStatisticsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpoints': endpoints,
-      'loggingInfo': pulumi.Input.mapInputValue<SparkLoggingInfoResponse, Map<String, dynamic>>(loggingInfo, (value) => value.toMap()),
+      'loggingInfo':
+          pulumi.Input.mapInputValue<
+            SparkLoggingInfoResponse,
+            Map<String, dynamic>
+          >(loggingInfo, (value) => value.toMap()),
       'sparkJobId': sparkJobId,
       'sparkJobLocation': sparkJobLocation,
     };
@@ -36,11 +43,18 @@ class SparkStatisticsResponse {
 
   factory SparkStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return SparkStatisticsResponse(
-      endpoints: ((map['endpoints'] as Map).cast<String, String>()).input(),
-      loggingInfo: (SparkLoggingInfoResponse.fromMap((map['loggingInfo'] as Map).cast<String, dynamic>())).input(),
-      sparkJobId: (map['sparkJobId'] as String).input(),
-      sparkJobLocation: (map['sparkJobLocation'] as String).input(),
+      endpoints: pulumi.Input.fromValue(
+        (map['endpoints'] as Map).cast<String, String>(),
+      ),
+      loggingInfo: pulumi.Input.fromValue(
+        SparkLoggingInfoResponse.fromMap(
+          (map['loggingInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sparkJobId: pulumi.Input.fromValue(map['sparkJobId'] as String),
+      sparkJobLocation: pulumi.Input.fromValue(
+        map['sparkJobLocation'] as String,
+      ),
     );
   }
 }
-

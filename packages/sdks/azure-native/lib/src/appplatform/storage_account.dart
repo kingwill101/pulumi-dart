@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccount {
   /// The account key of the Azure Storage Account.
   final pulumi.Input<String> accountKey;
+
   /// The account name of the Azure Storage Account.
   final pulumi.Input<String> accountName;
+
   /// The type of the storage.
   /// Expected value is 'StorageAccount'.
   final pulumi.Input<String> storageType;
@@ -32,10 +34,9 @@ class StorageAccount {
 
   factory StorageAccount.fromMap(Map<String, dynamic> map) {
     return StorageAccount(
-      accountKey: (map['accountKey'] as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      storageType: (map['storageType'] as String).input(),
+      accountKey: pulumi.Input.fromValue(map['accountKey'] as String),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      storageType: pulumi.Input.fromValue(map['storageType'] as String),
     );
   }
 }
-

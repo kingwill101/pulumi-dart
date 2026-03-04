@@ -4,16 +4,15 @@ enum CustomConnectorVersionType {
   openApi("OPEN_API"),
   proto("PROTO");
 
-  const CustomConnectorVersionType(this.value);
-  final String value;
+  const CustomConnectorVersionType(this.wireValue);
+  final String wireValue;
 
   static CustomConnectorVersionType fromValue(String value) {
     for (final item in CustomConnectorVersionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomConnectorVersionType value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum PlacementGroupStrategy {
   pARTITION("PARTITION"),
   sPREAD("SPREAD");
 
-  const PlacementGroupStrategy(this.value);
-  final String value;
+  const PlacementGroupStrategy(this.wireValue);
+  final String wireValue;
 
   static PlacementGroupStrategy fromValue(String value) {
     for (final item in PlacementGroupStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementGroupStrategy value: $value');
   }
 }
-

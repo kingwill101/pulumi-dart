@@ -2,16 +2,15 @@
 enum ResourcePropertiesObjectType {
   valueDefaultResourceProperties("DefaultResourceProperties");
 
-  const ResourcePropertiesObjectType(this.value);
-  final String value;
+  const ResourcePropertiesObjectType(this.wireValue);
+  final String wireValue;
 
   static ResourcePropertiesObjectType fromValue(String value) {
     for (final item in ResourcePropertiesObjectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourcePropertiesObjectType value: $value');
   }
 }
-

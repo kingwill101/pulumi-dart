@@ -9,20 +9,15 @@ class FleetResponse {
 
   /// Creates a new [FleetResponse].
   /// [membership] The name of the managed fleet Membership resource associated to this cluster. Membership names are formatted as `projects//locations//memberships/`.
-  FleetResponse({
-    required this.membership,
-  });
+  FleetResponse({required this.membership});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'membership': membership,
-    };
+    return <String, dynamic>{'membership': membership};
   }
 
   factory FleetResponse.fromMap(Map<String, dynamic> map) {
     return FleetResponse(
-      membership: (map['membership'] as String).input(),
+      membership: pulumi.Input.fromValue(map['membership'] as String),
     );
   }
 }
-

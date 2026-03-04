@@ -32,7 +32,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.120.0+.
+/// &gt; **NOTE:** Available in v1.120.0+.
 ///
 /// ## Example Usage
 ///
@@ -157,7 +157,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source is the character set supported by querying RDS instances.
 ///
-/// > **NOTE:** Available in v1.198.0+.
+/// &gt; **NOTE:** Available in v1.198.0+.
 ///
 /// ## Example Usage
 ///
@@ -282,7 +282,7 @@ Future<GetCharacterSetNamesResult> getCharacterSetNames(
 ///
 /// For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeclassdetails).
 ///
-/// > **NOTE:** Available since v1.209.0+
+/// &gt; **NOTE:** Available since v1.209.0+
 ///
 /// ## Example Usage
 ///
@@ -407,7 +407,7 @@ Future<GetClassDetailsResult> getClassDetails(
 
 /// Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 ///
-/// > **NOTE:** Available in v1.198.0+.
+/// &gt; **NOTE:** Available in v1.198.0+.
 ///
 /// ## Example Usage
 ///
@@ -526,7 +526,7 @@ Future<GetCollationTimeZonesResult> getCollationTimeZones(
 
 /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.196.0+.
+/// &gt; **NOTE:** Available in v1.196.0+.
 ///
 /// ## Example Usage
 ///
@@ -657,7 +657,7 @@ Future<GetCrossRegionBackupsResult> getCrossRegionBackups(
 
 /// This data source provides an available area for remote disaster recovery for RDS.
 ///
-/// > **NOTE:** Available in v1.193.0+.
+/// &gt; **NOTE:** Available in v1.193.0+.
 ///
 /// ## Example Usage
 ///
@@ -771,7 +771,7 @@ Future<GetCrossRegionsResult> getCrossRegions(
 
 /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.196.0+
+/// &gt; **NOTE:** Available in v1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -900,7 +900,7 @@ Future<GetInstanceClassInfosResult> getInstanceClassInfos(
 
 /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.46.0
+/// &gt; **NOTE:** Available since v1.46.0
 ///
 /// ## Example Usage
 ///
@@ -1035,7 +1035,7 @@ Future<GetInstanceClassesResult> getInstanceClasses(
 
 /// This data source provides the RDS instance engines resource available info of Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.46.0+
+/// &gt; **NOTE:** Available in v1.46.0+
 ///
 /// ## Example Usage
 ///
@@ -1171,7 +1171,7 @@ Future<GetInstanceEnginesResult> getInstanceEngines(
 /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
 /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 ///
-/// > **NOTE:** Available since v1.7.0+
+/// &gt; **NOTE:** Available since v1.7.0+
 ///
 /// ## Example Usage
 ///
@@ -1318,7 +1318,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.174.0+.
+/// &gt; **NOTE:** Available in v1.174.0+.
 ///
 /// ## Example Usage
 ///
@@ -1439,7 +1439,7 @@ Future<GetModifyParameterLogsResult> getModifyParameterLogs(
 
 /// This data source provides the Rds Backups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.149.0+.
+/// &gt; **NOTE:** Available in v1.149.0+.
 ///
 /// ## Example Usage
 ///
@@ -1573,7 +1573,7 @@ Future<GetRdsParameterGroupsResult> getRdsParameterGroups(
 
 /// This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.204.0+.
+/// &gt; **NOTE:** Available since v1.204.0+.
 ///
 /// ## Example Usage
 ///
@@ -1692,7 +1692,7 @@ Future<GetSlotsResult> getSlots(
 
 /// This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available since v1.73.0.
+/// &gt; **NOTE:** Available since v1.73.0.
 ///
 /// ## Example Usage
 ///

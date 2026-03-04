@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterInstanceModel {
   /// The health status of the instance.
   final pulumi.Input<String> healthStatus;
+
   /// (Deprecated from version 1.232.0)
   final pulumi.Input<String> instanceType;
+
   /// The public IP address.
   final pulumi.Input<String> internetIp;
+
   /// The IP address of the instance.
   final pulumi.Input<String> ip;
+
   /// The name of the pod.
   final pulumi.Input<String> podName;
+
   /// The role.
   final pulumi.Input<String> role;
+
   /// The single-thread IP address.
   final pulumi.Input<String> singleTunnelVip;
+
   /// (Deprecated from version 1.232.0)
   final pulumi.Input<String> vip;
 
@@ -55,15 +62,14 @@ class GetClustersClusterInstanceModel {
 
   factory GetClustersClusterInstanceModel.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterInstanceModel(
-      healthStatus: (map['healthStatus'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      internetIp: (map['internetIp'] as String).input(),
-      ip: (map['ip'] as String).input(),
-      podName: (map['podName'] as String).input(),
-      role: (map['role'] as String).input(),
-      singleTunnelVip: (map['singleTunnelVip'] as String).input(),
-      vip: (map['vip'] as String).input(),
+      healthStatus: pulumi.Input.fromValue(map['healthStatus'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      internetIp: pulumi.Input.fromValue(map['internetIp'] as String),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      podName: pulumi.Input.fromValue(map['podName'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      singleTunnelVip: pulumi.Input.fromValue(map['singleTunnelVip'] as String),
+      vip: pulumi.Input.fromValue(map['vip'] as String),
     );
   }
 }
-

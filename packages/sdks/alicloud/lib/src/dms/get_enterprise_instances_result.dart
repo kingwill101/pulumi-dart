@@ -7,23 +7,30 @@ import 'get_enterprise_instances_instance.dart';
 class GetEnterpriseInstancesResult {
   /// The type of the environment to which the database instance belongs..
   final String? envType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of DMS Enterprise IDs (Each of them consists of host:port).
   final List<String> ids;
   final String? instanceAliasRegex;
+
   /// The ID of the database instance.
   final String? instanceSource;
+
   /// The ID of the database instance.
   final String? instanceType;
+
   /// A list of KMS keys. Each element contains the following attributes:
   final List<GetEnterpriseInstancesInstance> instances;
   final String? nameRegex;
+
   /// A list of DMS Enterprise names.
   final List<String> names;
   final String? netType;
   final String? outputFile;
   final String? searchKey;
+
   /// The status of the database instance.
   final String? status;
   final int? tid;
@@ -68,7 +75,11 @@ class GetEnterpriseInstancesResult {
       'instanceAliasRegex': ?instanceAliasRegex,
       'instanceSource': ?instanceSource,
       'instanceType': ?instanceType,
-      'instances': pulumi.Input.encodeList<GetEnterpriseInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetEnterpriseInstancesInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'netType': ?netType,
@@ -81,21 +92,65 @@ class GetEnterpriseInstancesResult {
 
   factory GetEnterpriseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesResult(
-      envType: map['envType'] == null ? null : map['envType']! as String,
+      envType: (() {
+        final guardedValue = map['envType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : map['instanceAliasRegex']! as String,
-      instanceSource: map['instanceSource'] == null ? null : map['instanceSource']! as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
-      instances: pulumi.Input.decodeList<GetEnterpriseInstancesInstance>(map['instances'], (value) => GetEnterpriseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      instanceAliasRegex: (() {
+        final guardedValue = map['instanceAliasRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceSource: (() {
+        final guardedValue = map['instanceSource'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instances: pulumi.Input.decodeList<GetEnterpriseInstancesInstance>(
+        map['instances']!,
+        (value) => GetEnterpriseInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      netType: map['netType'] == null ? null : map['netType']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      searchKey: map['searchKey'] == null ? null : map['searchKey']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tid: map['tid'] == null ? null : map['tid']! as int,
+      netType: (() {
+        final guardedValue = map['netType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      searchKey: (() {
+        final guardedValue = map['searchKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

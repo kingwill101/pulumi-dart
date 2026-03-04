@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AllowlistCustomAlertRule {
   /// The values to allow. The format of the values depends on the rule type.
   final pulumi.Input<List<String>> allowlistValues;
+
   /// Status of the custom alert.
   final pulumi.Input<bool> isEnabled;
+
   /// The type of the custom alert rule.
   /// Expected value is 'AllowlistCustomAlertRule'.
   final pulumi.Input<String> ruleType;
@@ -32,10 +34,11 @@ class AllowlistCustomAlertRule {
 
   factory AllowlistCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return AllowlistCustomAlertRule(
-      allowlistValues: ((map['allowlistValues'] as List).cast<String>()).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      ruleType: (map['ruleType'] as String).input(),
+      allowlistValues: pulumi.Input.fromValue(
+        (map['allowlistValues'] as List).cast<String>(),
+      ),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }
 }
-

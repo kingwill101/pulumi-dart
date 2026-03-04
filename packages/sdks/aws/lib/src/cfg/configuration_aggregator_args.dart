@@ -10,13 +10,19 @@ import 'configuration_aggregator_organization_aggregation_source.dart';
 /// {@macro pulumi_cfg_configuration_aggregator_configuration_aggregator_args_doc}
 class ConfigurationAggregatorArgs {
   /// The account(s) to aggregate config data from as documented below.
-  final pulumi.Input<ConfigurationAggregatorAccountAggregationSource>? accountAggregationSource;
+  final pulumi.Input<ConfigurationAggregatorAccountAggregationSource>?
+  accountAggregationSource;
+
   /// The name of the configuration aggregator.
   final pulumi.Input<String>? name;
+
   /// The organization to aggregate config data from as documented below.
-  final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource>? organizationAggregationSource;
+  final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource>?
+  organizationAggregationSource;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
@@ -38,9 +44,17 @@ class ConfigurationAggregatorArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountAggregationSource': ?pulumi.Input.mapOptionalInputValue<ConfigurationAggregatorAccountAggregationSource, Map<String, dynamic>>(accountAggregationSource, (value) => value.toMap()),
+      'accountAggregationSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationAggregatorAccountAggregationSource,
+            Map<String, dynamic>
+          >(accountAggregationSource, (value) => value.toMap()),
       'name': ?name,
-      'organizationAggregationSource': ?pulumi.Input.mapOptionalInputValue<ConfigurationAggregatorOrganizationAggregationSource, Map<String, dynamic>>(organizationAggregationSource, (value) => value.toMap()),
+      'organizationAggregationSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationAggregatorOrganizationAggregationSource,
+            Map<String, dynamic>
+          >(organizationAggregationSource, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
     };
@@ -48,12 +62,41 @@ class ConfigurationAggregatorArgs {
 
   factory ConfigurationAggregatorArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorArgs(
-      accountAggregationSource: map['accountAggregationSource'] == null ? null : ((ConfigurationAggregatorAccountAggregationSource.fromMap((map['accountAggregationSource']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      organizationAggregationSource: map['organizationAggregationSource'] == null ? null : ((ConfigurationAggregatorOrganizationAggregationSource.fromMap((map['organizationAggregationSource']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      accountAggregationSource: (() {
+        final guardedValue = map['accountAggregationSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationAggregatorAccountAggregationSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationAggregationSource: (() {
+        final guardedValue = map['organizationAggregationSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationAggregatorOrganizationAggregationSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

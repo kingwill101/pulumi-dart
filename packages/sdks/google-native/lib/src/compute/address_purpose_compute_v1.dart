@@ -9,16 +9,15 @@ enum AddressPurposeComputeV1 {
   sharedLoadbalancerVip("SHARED_LOADBALANCER_VIP"),
   vpcPeering("VPC_PEERING");
 
-  const AddressPurposeComputeV1(this.value);
-  final String value;
+  const AddressPurposeComputeV1(this.wireValue);
+  final String wireValue;
 
   static AddressPurposeComputeV1 fromValue(String value) {
     for (final item in AddressPurposeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressPurposeComputeV1 value: $value');
   }
 }
-

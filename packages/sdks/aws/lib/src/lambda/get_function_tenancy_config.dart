@@ -8,20 +8,17 @@ class GetFunctionTenancyConfig {
 
   /// Creates a new [GetFunctionTenancyConfig].
   /// [tenantIsolationMode] (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
-  GetFunctionTenancyConfig({
-    required this.tenantIsolationMode,
-  });
+  GetFunctionTenancyConfig({required this.tenantIsolationMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tenantIsolationMode': tenantIsolationMode,
-    };
+    return <String, dynamic>{'tenantIsolationMode': tenantIsolationMode};
   }
 
   factory GetFunctionTenancyConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionTenancyConfig(
-      tenantIsolationMode: (map['tenantIsolationMode'] as String).input(),
+      tenantIsolationMode: pulumi.Input.fromValue(
+        map['tenantIsolationMode'] as String,
+      ),
     );
   }
 }
-

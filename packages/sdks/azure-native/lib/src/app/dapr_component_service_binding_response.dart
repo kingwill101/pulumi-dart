@@ -7,8 +7,10 @@ import 'dapr_service_bind_metadata_response.dart';
 class DaprComponentServiceBindingResponse {
   /// Service bind metadata
   final pulumi.Input<DaprServiceBindMetadataResponse>? metadata;
+
   /// Name of the service bind
   final pulumi.Input<String>? name;
+
   /// Resource id of the target service
   final pulumi.Input<String>? serviceId;
 
@@ -24,18 +26,39 @@ class DaprComponentServiceBindingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?pulumi.Input.mapOptionalInputValue<DaprServiceBindMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaprServiceBindMetadataResponse,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'name': ?name,
       'serviceId': ?serviceId,
     };
   }
 
-  factory DaprComponentServiceBindingResponse.fromMap(Map<String, dynamic> map) {
+  factory DaprComponentServiceBindingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaprComponentServiceBindingResponse(
-      metadata: map['metadata'] == null ? null : (DaprServiceBindMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaprServiceBindMetadataResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

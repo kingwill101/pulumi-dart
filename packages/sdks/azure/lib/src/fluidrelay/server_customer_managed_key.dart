@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerCustomerManagedKey {
   /// The Key Vault Key Id that will be used to encrypt the Fluid Relay Server.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
   final pulumi.Input<String> userAssignedIdentityId;
 
@@ -25,9 +26,10 @@ class ServerCustomerManagedKey {
 
   factory ServerCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return ServerCustomerManagedKey(
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      userAssignedIdentityId: (map['userAssignedIdentityId'] as String).input(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      userAssignedIdentityId: pulumi.Input.fromValue(
+        map['userAssignedIdentityId'] as String,
+      ),
     );
   }
 }
-

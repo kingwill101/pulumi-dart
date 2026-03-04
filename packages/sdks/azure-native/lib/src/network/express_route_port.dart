@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'express_route_link_response.dart';
 import 'express_route_port_args.dart';
 import 'managed_service_identity_response.dart';
-import 'sub_resource_response.dart';
 
 /// ExpressRoutePort resource definition.
 ///
@@ -328,40 +326,58 @@ import 'sub_resource_response.dart';
 class ExpressRoutePort extends pulumi.CustomResource {
   /// Date of the physical port allocation to be used in Letter of Authorization.
   late final pulumi.Output<String> allocationDate;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Bandwidth of procured ports in Gbps.
   late final pulumi.Output<int?> bandwidthInGbps;
+
   /// The billing type of the ExpressRoutePort resource.
   late final pulumi.Output<String?> billingType;
+
   /// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
-  late final pulumi.Output<List<SubResourceResponse>> circuits;
+  late final pulumi.Output<List<Map<String, dynamic>>> circuits;
+
   /// Encapsulation method on physical ports.
   late final pulumi.Output<String?> encapsulation;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Ether type of the physical port.
   late final pulumi.Output<String> etherType;
+
   /// The identity of ExpressRoutePort, if configured.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The set of physical links of the ExpressRoutePort resource.
-  late final pulumi.Output<List<ExpressRouteLinkResponse>?> links;
+  late final pulumi.Output<List<Map<String, dynamic>>?> links;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Maximum transmission unit of the physical port pair(s).
   late final pulumi.Output<String> mtu;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The name of the peering location that the ExpressRoutePort is mapped to physically.
   late final pulumi.Output<String?> peeringLocation;
+
   /// Aggregate Gbps of associated circuit bandwidths.
   late final pulumi.Output<double> provisionedBandwidthInGbps;
+
   /// The provisioning state of the express route port resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the express route port resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -374,29 +390,31 @@ class ExpressRoutePort extends pulumi.CustomResource {
     ExpressRoutePortArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRoutePort',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationDate = registerOutput<String>('allocationDate');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bandwidthInGbps = registerOutput<int?>('bandwidthInGbps');
-    this.billingType = registerOutput<String?>('billingType');
-    this.circuits = registerOutput<List<SubResourceResponse>>('circuits');
-    this.encapsulation = registerOutput<String?>('encapsulation');
-    this.etag = registerOutput<String>('etag');
-    this.etherType = registerOutput<String>('etherType');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.links = registerOutput<List<ExpressRouteLinkResponse>?>('links');
-    this.location = registerOutput<String?>('location');
-    this.mtu = registerOutput<String>('mtu');
+         'azure-native:network:ExpressRoutePort',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationDate = registerOutput<String>('allocationDate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bandwidthInGbps = registerOutput<int?>('bandwidthInGbps');
+    billingType = registerOutput<String?>('billingType');
+    circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
+    encapsulation = registerOutput<String?>('encapsulation');
+    etag = registerOutput<String>('etag');
+    etherType = registerOutput<String>('etherType');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    location = registerOutput<String?>('location');
+    mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
-    this.peeringLocation = registerOutput<String?>('peeringLocation');
-    this.provisionedBandwidthInGbps = registerOutput<double>('provisionedBandwidthInGbps');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    peeringLocation = registerOutput<String?>('peeringLocation');
+    provisionedBandwidthInGbps = registerOutput<double>(
+      'provisionedBandwidthInGbps',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

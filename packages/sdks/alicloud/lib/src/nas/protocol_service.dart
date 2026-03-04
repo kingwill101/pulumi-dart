@@ -8,7 +8,7 @@ import 'protocol_service_state.dart';
 ///
 /// For information about File Storage (NAS) Protocol Service and how to use it, see [What is Protocol Service](https://next.api.alibabacloud.com/document/NAS/2017-06-26/CreateProtocolService).
 ///
-/// > **NOTE:** Available since v1.267.0.
+/// &gt; **NOTE:** Available since v1.267.0.
 ///
 /// ## Example Usage
 ///
@@ -337,6 +337,7 @@ import 'protocol_service_state.dart';
 class ProtocolService extends pulumi.CustomResource {
   /// The time when the protocol server service was created. The UTC time.
   late final pulumi.Output<String> createTime;
+
   /// Description of the agreement service.
   ///
   /// Limitations:
@@ -345,25 +346,33 @@ class ProtocolService extends pulumi.CustomResource {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> description;
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// Protocol Service ID
   late final pulumi.Output<String> protocolServiceId;
+
   /// The specification of the protocol machine cluster.
   /// - Value range: General、CL1、CL2
   /// - Default value: General
   late final pulumi.Output<String> protocolSpec;
+
   /// The throughput of the protocol service. Unit: MB/s.
   late final pulumi.Output<int> protocolThroughput;
+
   /// The protocol type supported by the protocol service.
   ///
   /// Value range:
   /// - NFS: Protocol Service supports NFS protocol access.
   late final pulumi.Output<String> protocolType;
+
   /// Agreement service status.
   late final pulumi.Output<String> status;
+
   /// The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   late final pulumi.Output<String?> vpcId;
+
   /// The VSwitchId of the protocol service.
   late final pulumi.Output<String?> vswitchId;
 
@@ -376,22 +385,22 @@ class ProtocolService extends pulumi.CustomResource {
     ProtocolServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/protocolService:ProtocolService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.protocolServiceId = registerOutput<String>('protocolServiceId');
-    this.protocolSpec = registerOutput<String>('protocolSpec');
-    this.protocolThroughput = registerOutput<int>('protocolThroughput');
-    this.protocolType = registerOutput<String>('protocolType');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:nas/protocolService:ProtocolService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    protocolServiceId = registerOutput<String>('protocolServiceId');
+    protocolSpec = registerOutput<String>('protocolSpec');
+    protocolThroughput = registerOutput<int>('protocolThroughput');
+    protocolType = registerOutput<String>('protocolType');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [ProtocolService] resource's state with the given [name] and [id].
@@ -412,21 +421,21 @@ class ProtocolService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/protocolService:ProtocolService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.protocolServiceId = registerOutput<String>('protocolServiceId');
-    this.protocolSpec = registerOutput<String>('protocolSpec');
-    this.protocolThroughput = registerOutput<int>('protocolThroughput');
-    this.protocolType = registerOutput<String>('protocolType');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:nas/protocolService:ProtocolService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    protocolServiceId = registerOutput<String>('protocolServiceId');
+    protocolSpec = registerOutput<String>('protocolSpec');
+    protocolThroughput = registerOutput<int>('protocolThroughput');
+    protocolType = registerOutput<String>('protocolType');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

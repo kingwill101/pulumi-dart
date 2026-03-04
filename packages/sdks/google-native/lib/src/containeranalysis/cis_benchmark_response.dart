@@ -10,10 +10,7 @@ class CisBenchmarkResponse {
   /// Creates a new [CisBenchmarkResponse].
   /// [profileLevel] Required.
   /// [severity] Required.
-  CisBenchmarkResponse({
-    required this.profileLevel,
-    required this.severity,
-  });
+  CisBenchmarkResponse({required this.profileLevel, required this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +21,8 @@ class CisBenchmarkResponse {
 
   factory CisBenchmarkResponse.fromMap(Map<String, dynamic> map) {
     return CisBenchmarkResponse(
-      profileLevel: (map['profileLevel'] as int).input(),
-      severity: (map['severity'] as String).input(),
+      profileLevel: pulumi.Input.fromValue(map['profileLevel'] as int),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

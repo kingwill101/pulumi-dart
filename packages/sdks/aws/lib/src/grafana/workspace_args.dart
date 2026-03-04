@@ -11,38 +11,54 @@ import 'workspace_vpc_configuration.dart';
 class WorkspaceArgs {
   /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
   final pulumi.Input<String> accountAccessType;
+
   /// The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   final pulumi.Input<List<String>> authenticationProviders;
+
   /// The configuration string for the workspace that you create. For more information about the format and configuration options available, see [Working in your Grafana workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
   final pulumi.Input<String>? configuration;
+
   /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, XRAY`
   final pulumi.Input<List<String>>? dataSources;
+
   /// The workspace description.
   final pulumi.Input<String>? description;
+
   /// Specifies the version of Grafana to support in the new workspace. Supported values are `8.4`, `9.4` and `10.4`. If not specified, defaults to the latest version.
   final pulumi.Input<String>? grafanaVersion;
+
   /// The Grafana workspace name.
   final pulumi.Input<String>? name;
+
   /// Configuration for network access to your workspace.See Network Access Control below.
   final pulumi.Input<WorkspaceNetworkAccessControl>? networkAccessControl;
+
   /// The notification destinations. If a data source is specified here, Amazon Managed Grafana will create IAM roles and permissions needed to use these destinations. Must be set to `SNS`.
   final pulumi.Input<List<String>>? notificationDestinations;
+
   /// The role name that the workspace uses to access resources through Amazon Organizations.
   final pulumi.Input<String>? organizationRoleName;
+
   /// The Amazon Organizations organizational units that the workspace is authorized to use data sources from.
   final pulumi.Input<List<String>>? organizationalUnits;
+
   /// The permission type of the workspace. If `SERVICE_MANAGED` is specified, the IAM roles and IAM policy attachments are generated automatically. If `CUSTOMER_MANAGED` is specified, the IAM roles and IAM policy attachments will not be created.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> permissionType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IAM role ARN that the workspace assumes.
   final pulumi.Input<String>? roleArn;
+
   /// The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   final pulumi.Input<String>? stackSetName;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
   final pulumi.Input<WorkspaceVpcConfiguration>? vpcConfiguration;
 
@@ -93,7 +109,11 @@ class WorkspaceArgs {
       'description': ?description,
       'grafanaVersion': ?grafanaVersion,
       'name': ?name,
-      'networkAccessControl': ?pulumi.Input.mapOptionalInputValue<WorkspaceNetworkAccessControl, Map<String, dynamic>>(networkAccessControl, (value) => value.toMap()),
+      'networkAccessControl':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceNetworkAccessControl,
+            Map<String, dynamic>
+          >(networkAccessControl, (value) => value.toMap()),
       'notificationDestinations': ?notificationDestinations,
       'organizationRoleName': ?organizationRoleName,
       'organizationalUnits': ?organizationalUnits,
@@ -102,30 +122,103 @@ class WorkspaceArgs {
       'roleArn': ?roleArn,
       'stackSetName': ?stackSetName,
       'tags': ?tags,
-      'vpcConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkspaceVpcConfiguration, Map<String, dynamic>>(vpcConfiguration, (value) => value.toMap()),
+      'vpcConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceVpcConfiguration,
+            Map<String, dynamic>
+          >(vpcConfiguration, (value) => value.toMap()),
     };
   }
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      accountAccessType: (map['accountAccessType'] as String).input(),
-      authenticationProviders: ((map['authenticationProviders'] as List).cast<String>()).input(),
-      configuration: map['configuration'] == null ? null : ((map['configuration'] as String).input()).input(),
-      dataSources: map['dataSources'] == null ? null : (((map['dataSources'] as List).cast<String>()).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      grafanaVersion: map['grafanaVersion'] == null ? null : ((map['grafanaVersion'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      networkAccessControl: map['networkAccessControl'] == null ? null : ((WorkspaceNetworkAccessControl.fromMap((map['networkAccessControl']! as Map).cast<String, dynamic>())).input()).input(),
-      notificationDestinations: map['notificationDestinations'] == null ? null : (((map['notificationDestinations'] as List).cast<String>()).input()).input(),
-      organizationRoleName: map['organizationRoleName'] == null ? null : ((map['organizationRoleName'] as String).input()).input(),
-      organizationalUnits: map['organizationalUnits'] == null ? null : (((map['organizationalUnits'] as List).cast<String>()).input()).input(),
-      permissionType: (map['permissionType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      stackSetName: map['stackSetName'] == null ? null : ((map['stackSetName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((WorkspaceVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      accountAccessType: pulumi.Input.fromValue(
+        map['accountAccessType'] as String,
+      ),
+      authenticationProviders: pulumi.Input.fromValue(
+        (map['authenticationProviders'] as List).cast<String>(),
+      ),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSources: (() {
+        final guardedValue = map['dataSources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grafanaVersion: (() {
+        final guardedValue = map['grafanaVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAccessControl: (() {
+        final guardedValue = map['networkAccessControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceNetworkAccessControl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      notificationDestinations: (() {
+        final guardedValue = map['notificationDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      organizationRoleName: (() {
+        final guardedValue = map['organizationRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationalUnits: (() {
+        final guardedValue = map['organizationalUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      permissionType: pulumi.Input.fromValue(map['permissionType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackSetName: (() {
+        final guardedValue = map['stackSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcConfiguration: (() {
+        final guardedValue = map['vpcConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceVpcConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

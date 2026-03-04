@@ -7,24 +7,34 @@ import 'system_data_response.dart';
 class GetStandbyVirtualMachinePoolResult {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
   final String? attachedVirtualMachineScaleSetId;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Specifies the elasticity profile of the standby virtual machine pools.
   final StandbyVirtualMachinePoolElasticityProfileResponse? elasticityProfile;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Specifies the desired state of virtual machines in the pool.
   final String virtualMachineState;
 
@@ -58,7 +68,7 @@ class GetStandbyVirtualMachinePoolResult {
     return <String, dynamic>{
       'attachedVirtualMachineScaleSetId': ?attachedVirtualMachineScaleSetId,
       'azureApiVersion': azureApiVersion,
-      'elasticityProfile': ?elasticityProfile == null ? null : elasticityProfile!.toMap(),
+      'elasticityProfile': ?elasticityProfile?.toMap(),
       'id': id,
       'location': location,
       'name': name,
@@ -72,18 +82,33 @@ class GetStandbyVirtualMachinePoolResult {
 
   factory GetStandbyVirtualMachinePoolResult.fromMap(Map<String, dynamic> map) {
     return GetStandbyVirtualMachinePoolResult(
-      attachedVirtualMachineScaleSetId: map['attachedVirtualMachineScaleSetId'] == null ? null : map['attachedVirtualMachineScaleSetId']! as String,
+      attachedVirtualMachineScaleSetId: (() {
+        final guardedValue = map['attachedVirtualMachineScaleSetId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      elasticityProfile: map['elasticityProfile'] == null ? null : StandbyVirtualMachinePoolElasticityProfileResponse.fromMap((map['elasticityProfile']! as Map).cast<String, dynamic>()),
+      elasticityProfile: (() {
+        final guardedValue = map['elasticityProfile'];
+        if (guardedValue == null) return null;
+        return StandbyVirtualMachinePoolElasticityProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       virtualMachineState: map['virtualMachineState'] as String,
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_transcoder;
-
 export 'transcoder/ad_break.dart';
 export 'transcoder/ad_break_response.dart';
 export 'transcoder/animation.dart';

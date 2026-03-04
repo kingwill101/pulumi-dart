@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_identity_response.dart';
 import 'server_args.dart';
 import 'server_external_administrator_response.dart';
-import 'server_private_endpoint_connection_response.dart';
 
 /// An Azure SQL Database server.
 ///
@@ -220,46 +219,68 @@ import 'server_private_endpoint_connection_response.dart';
 class Server extends pulumi.CustomResource {
   /// Administrator username for the server. Once created it cannot be changed.
   late final pulumi.Output<String?> administratorLogin;
+
   /// The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
   late final pulumi.Output<ServerExternalAdministratorResponse?> administrators;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Status of external governance.
   late final pulumi.Output<String> externalGovernanceStatus;
+
   /// The Client id used for cross tenant CMK scenario
   late final pulumi.Output<String?> federatedClientId;
+
   /// The fully qualified domain name of the server.
   late final pulumi.Output<String> fullyQualifiedDomainName;
+
   /// The Azure Active Directory identity of the server.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
+
   /// Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> isIPv6Enabled;
+
   /// A CMK URI of the key to use for encryption.
   late final pulumi.Output<String?> keyId;
+
   /// Kind of sql server. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
   late final pulumi.Output<String?> minimalTlsVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The resource id of a user assigned identity to be used by default.
   late final pulumi.Output<String?> primaryUserAssignedIdentityId;
+
   /// List of private endpoint connections on a server
-  late final pulumi.Output<List<ServerPrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> restrictOutboundNetworkAccess;
+
   /// The state of the server.
   late final pulumi.Output<String> state;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The version of the server.
   late final pulumi.Output<String?> version;
+
   /// Whether or not existing server has a workspace created and if it allows connection from workspace
   late final pulumi.Output<String> workspaceFeature;
 
@@ -267,37 +288,46 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_sql_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:sql:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.administrators = registerOutput<ServerExternalAdministratorResponse?>('administrators');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.externalGovernanceStatus = registerOutput<String>('externalGovernanceStatus');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
-    this.isIPv6Enabled = registerOutput<String?>('isIPv6Enabled');
-    this.keyId = registerOutput<String?>('keyId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:sql:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    administrators = registerOutput<ServerExternalAdministratorResponse?>(
+      'administrators',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    externalGovernanceStatus = registerOutput<String>(
+      'externalGovernanceStatus',
+    );
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    isIPv6Enabled = registerOutput<String?>('isIPv6Enabled');
+    keyId = registerOutput<String?>('keyId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    this.primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
-    this.privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.restrictOutboundNetworkAccess = registerOutput<String?>('restrictOutboundNetworkAccess');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
-    this.workspaceFeature = registerOutput<String>('workspaceFeature');
+    primaryUserAssignedIdentityId = registerOutput<String?>(
+      'primaryUserAssignedIdentityId',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    restrictOutboundNetworkAccess = registerOutput<String?>(
+      'restrictOutboundNetworkAccess',
+    );
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+    workspaceFeature = registerOutput<String>('workspaceFeature');
   }
 }

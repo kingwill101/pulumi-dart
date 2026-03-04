@@ -8,16 +8,15 @@ enum IotHubSku {
   valueB2("B2"),
   valueB3("B3");
 
-  const IotHubSku(this.value);
-  final String value;
+  const IotHubSku(this.wireValue);
+  final String wireValue;
 
   static IotHubSku fromValue(String value) {
     for (final item in IotHubSku.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IotHubSku value: $value');
   }
 }
-

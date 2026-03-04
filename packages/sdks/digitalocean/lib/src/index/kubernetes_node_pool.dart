@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_node_pool_args.dart';
-import 'kubernetes_node_pool_node.dart';
 import 'kubernetes_node_pool_state.dart';
-import 'kubernetes_node_pool_taint.dart';
 
 /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 ///
@@ -396,30 +394,41 @@ import 'kubernetes_node_pool_taint.dart';
 class KubernetesNodePool extends pulumi.CustomResource {
   /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
   late final pulumi.Output<int> actualNodeCount;
+
   /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
   late final pulumi.Output<bool?> autoScale;
+
   /// The ID of the Kubernetes cluster to which the node pool is associated.
   late final pulumi.Output<String> clusterId;
+
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
   late final pulumi.Output<int?> maxNodes;
+
   /// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
   late final pulumi.Output<int?> minNodes;
+
   /// A name for the node pool.
   late final pulumi.Output<String> name;
+
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
   late final pulumi.Output<int?> nodeCount;
+
   /// A list of nodes in the pool. Each node exports the following attributes:
-  late final pulumi.Output<List<KubernetesNodePoolNode>> nodes;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
   late final pulumi.Output<String> size;
+
   /// A list of tag names to be applied to the Kubernetes cluster.
   late final pulumi.Output<List<String>?> tags;
+
   /// A list of taints applied to all nodes in the pool.
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
-  late final pulumi.Output<List<KubernetesNodePoolTaint>?> taints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> taints;
 
   /// Creates a new [KubernetesNodePool].
   /// [name] The Pulumi resource name.
@@ -430,23 +439,23 @@ class KubernetesNodePool extends pulumi.CustomResource {
     KubernetesNodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actualNodeCount = registerOutput<int>('actualNodeCount');
-    this.autoScale = registerOutput<bool?>('autoScale');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.maxNodes = registerOutput<int?>('maxNodes');
-    this.minNodes = registerOutput<int?>('minNodes');
+         'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actualNodeCount = registerOutput<int>('actualNodeCount');
+    autoScale = registerOutput<bool?>('autoScale');
+    clusterId = registerOutput<String>('clusterId');
+    labels = registerOutput<Map<String, String>?>('labels');
+    maxNodes = registerOutput<int?>('maxNodes');
+    minNodes = registerOutput<int?>('minNodes');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.nodes = registerOutput<List<KubernetesNodePoolNode>>('nodes');
-    this.size = registerOutput<String>('size');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.taints = registerOutput<List<KubernetesNodePoolTaint>?>('taints');
+    nodeCount = registerOutput<int?>('nodeCount');
+    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    size = registerOutput<String>('size');
+    tags = registerOutput<List<String>?>('tags');
+    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
   }
 
   /// Gets an existing [KubernetesNodePool] resource's state with the given [name] and [id].
@@ -467,22 +476,22 @@ class KubernetesNodePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actualNodeCount = registerOutput<int>('actualNodeCount');
-    this.autoScale = registerOutput<bool?>('autoScale');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.maxNodes = registerOutput<int?>('maxNodes');
-    this.minNodes = registerOutput<int?>('minNodes');
+         'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actualNodeCount = registerOutput<int>('actualNodeCount');
+    autoScale = registerOutput<bool?>('autoScale');
+    clusterId = registerOutput<String>('clusterId');
+    labels = registerOutput<Map<String, String>?>('labels');
+    maxNodes = registerOutput<int?>('maxNodes');
+    minNodes = registerOutput<int?>('minNodes');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.nodes = registerOutput<List<KubernetesNodePoolNode>>('nodes');
-    this.size = registerOutput<String>('size');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.taints = registerOutput<List<KubernetesNodePoolTaint>?>('taints');
+    nodeCount = registerOutput<int?>('nodeCount');
+    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    size = registerOutput<String>('size');
+    tags = registerOutput<List<String>?>('tags');
+    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
   }
 }

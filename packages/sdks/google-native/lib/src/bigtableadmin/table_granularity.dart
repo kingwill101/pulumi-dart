@@ -3,16 +3,15 @@ enum TableGranularity {
   timestampGranularityUnspecified("TIMESTAMP_GRANULARITY_UNSPECIFIED"),
   millis("MILLIS");
 
-  const TableGranularity(this.value);
-  final String value;
+  const TableGranularity(this.wireValue);
+  final String wireValue;
 
   static TableGranularity fromValue(String value) {
     for (final item in TableGranularity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TableGranularity value: $value');
   }
 }
-

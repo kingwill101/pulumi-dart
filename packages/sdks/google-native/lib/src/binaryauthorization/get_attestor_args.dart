@@ -13,23 +13,20 @@ class GetAttestorArgs {
   /// Creates a new [GetAttestorArgs].
   /// [attestorId] Required.
   /// [project] Optional.
-  GetAttestorArgs({
-    required this.attestorId,
-    this.project,
-  });
+  GetAttestorArgs({required this.attestorId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attestorId': attestorId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'attestorId': attestorId, 'project': ?project};
   }
 
   factory GetAttestorArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorArgs(
-      attestorId: (map['attestorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      attestorId: pulumi.Input.fromValue(map['attestorId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

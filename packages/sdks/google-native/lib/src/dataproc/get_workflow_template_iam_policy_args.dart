@@ -31,10 +31,15 @@ class GetWorkflowTemplateIamPolicyArgs {
 
   factory GetWorkflowTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowTemplateIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workflowTemplateId: (map['workflowTemplateId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowTemplateId: pulumi.Input.fromValue(
+        map['workflowTemplateId'] as String,
+      ),
     );
   }
 }
-

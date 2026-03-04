@@ -9,21 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DedicatedHostGroupArgs {
   /// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
   final pulumi.Input<String>? allocationPolicy;
+
   /// The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
   final pulumi.Input<int>? cpuAllocationRatio;
+
   /// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
   final pulumi.Input<String>? dedicatedHostGroupDesc;
+
   /// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
   final pulumi.Input<int>? diskAllocationRatio;
+
   /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
   final pulumi.Input<String> engine;
+
   /// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
   final pulumi.Input<String>? hostReplacePolicy;
+
   /// The Memory Allocation Ratio of the Dedicated Host Group.
   final pulumi.Input<int>? memAllocationRatio;
+
   /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
   /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
   final pulumi.Input<bool>? openPermission;
+
   /// The virtual private cloud (VPC) ID of the dedicated cluster.
   final pulumi.Input<String> vpcId;
 
@@ -65,16 +73,43 @@ class DedicatedHostGroupArgs {
 
   factory DedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
-      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio']! as int).input(),
-      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc']! as String).input(),
-      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio']! as int).input(),
-      engine: (map['engine'] as String).input(),
-      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy']! as String).input(),
-      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio']! as int).input(),
-      openPermission: map['openPermission'] == null ? null : (map['openPermission']! as bool).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      allocationPolicy: (() {
+        final guardedValue = map['allocationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuAllocationRatio: (() {
+        final guardedValue = map['cpuAllocationRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dedicatedHostGroupDesc: (() {
+        final guardedValue = map['dedicatedHostGroupDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskAllocationRatio: (() {
+        final guardedValue = map['diskAllocationRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      hostReplacePolicy: (() {
+        final guardedValue = map['hostReplacePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memAllocationRatio: (() {
+        final guardedValue = map['memAllocationRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      openPermission: (() {
+        final guardedValue = map['openPermission'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

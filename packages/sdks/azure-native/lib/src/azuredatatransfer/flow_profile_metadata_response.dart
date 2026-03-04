@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowProfileMetadataResponse {
   /// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
   final pulumi.Input<String> description;
+
   /// A guid represented as a string for the FlowProfile resource, assigned by the system.
   final pulumi.Input<String> flowProfileId;
+
   /// The name of the FlowProfile.
   final pulumi.Input<String> name;
+
   /// The name of the parent Pipeline Azure resource associated with this FlowProfile.
   final pulumi.Input<String> pipeline;
+
   /// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
   final pulumi.Input<String> replicationScenario;
+
   /// The operational status of the FlowProfile.
   final pulumi.Input<String> status;
 
@@ -46,13 +51,14 @@ class FlowProfileMetadataResponse {
 
   factory FlowProfileMetadataResponse.fromMap(Map<String, dynamic> map) {
     return FlowProfileMetadataResponse(
-      description: (map['description'] as String).input(),
-      flowProfileId: (map['flowProfileId'] as String).input(),
-      name: (map['name'] as String).input(),
-      pipeline: (map['pipeline'] as String).input(),
-      replicationScenario: (map['replicationScenario'] as String).input(),
-      status: (map['status'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      flowProfileId: pulumi.Input.fromValue(map['flowProfileId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      pipeline: pulumi.Input.fromValue(map['pipeline'] as String),
+      replicationScenario: pulumi.Input.fromValue(
+        map['replicationScenario'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

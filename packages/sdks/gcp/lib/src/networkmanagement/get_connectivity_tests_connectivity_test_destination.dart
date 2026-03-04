@@ -5,25 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectivityTestsConnectivityTestDestination {
   /// A Cloud SQL instance URI.
   final pulumi.Input<String> cloudSqlInstance;
+
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
   final pulumi.Input<String> forwardingRule;
+
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
   final pulumi.Input<String> fqdn;
+
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
   final pulumi.Input<String> gkeMasterCluster;
+
   /// A Compute Engine instance URI.
   final pulumi.Input<String> instance;
+
   /// The IP address of the endpoint.
   final pulumi.Input<String> ipAddress;
+
   /// A VPC network URI.
   final pulumi.Input<String> network;
+
   /// The IP protocol port of the endpoint.
   final pulumi.Input<int> port;
+
   /// Project ID where the endpoint is located.
   final pulumi.Input<String> projectId;
+
   /// A Redis Cluster URI.
   final pulumi.Input<String> redisCluster;
+
   /// A Redis Instance URI.
   final pulumi.Input<String> redisInstance;
 
@@ -69,20 +79,25 @@ class GetConnectivityTestsConnectivityTestDestination {
     };
   }
 
-  factory GetConnectivityTestsConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestsConnectivityTestDestination(
-      cloudSqlInstance: (map['cloudSqlInstance'] as String).input(),
-      forwardingRule: (map['forwardingRule'] as String).input(),
-      fqdn: (map['fqdn'] as String).input(),
-      gkeMasterCluster: (map['gkeMasterCluster'] as String).input(),
-      instance: (map['instance'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      network: (map['network'] as String).input(),
-      port: (map['port'] as int).input(),
-      projectId: (map['projectId'] as String).input(),
-      redisCluster: (map['redisCluster'] as String).input(),
-      redisInstance: (map['redisInstance'] as String).input(),
+      cloudSqlInstance: pulumi.Input.fromValue(
+        map['cloudSqlInstance'] as String,
+      ),
+      forwardingRule: pulumi.Input.fromValue(map['forwardingRule'] as String),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      gkeMasterCluster: pulumi.Input.fromValue(
+        map['gkeMasterCluster'] as String,
+      ),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      redisCluster: pulumi.Input.fromValue(map['redisCluster'] as String),
+      redisInstance: pulumi.Input.fromValue(map['redisInstance'] as String),
     );
   }
 }
-

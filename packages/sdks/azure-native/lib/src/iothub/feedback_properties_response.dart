@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedbackPropertiesResponse {
   /// The lock duration for the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
   final pulumi.Input<String>? lockDurationAsIso8601;
+
   /// The number of times the IoT hub attempts to deliver a message on the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
   final pulumi.Input<int>? maxDeliveryCount;
+
   /// The period of time for which a message is available to consume before it is expired by the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
   final pulumi.Input<String>? ttlAsIso8601;
 
@@ -31,10 +33,21 @@ class FeedbackPropertiesResponse {
 
   factory FeedbackPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FeedbackPropertiesResponse(
-      lockDurationAsIso8601: map['lockDurationAsIso8601'] == null ? null : (map['lockDurationAsIso8601']! as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
-      ttlAsIso8601: map['ttlAsIso8601'] == null ? null : (map['ttlAsIso8601']! as String).input(),
+      lockDurationAsIso8601: (() {
+        final guardedValue = map['lockDurationAsIso8601'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxDeliveryCount: (() {
+        final guardedValue = map['maxDeliveryCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ttlAsIso8601: (() {
+        final guardedValue = map['ttlAsIso8601'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

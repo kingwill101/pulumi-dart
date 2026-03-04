@@ -7,16 +7,15 @@ enum RoleStage {
   disabled("DISABLED"),
   eap("EAP");
 
-  const RoleStage(this.value);
-  final String value;
+  const RoleStage(this.wireValue);
+  final String wireValue;
 
   static RoleStage fromValue(String value) {
     for (final item in RoleStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoleStage value: $value');
   }
 }
-

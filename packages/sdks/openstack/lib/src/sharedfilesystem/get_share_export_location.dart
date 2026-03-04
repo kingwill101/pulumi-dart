@@ -9,23 +9,16 @@ class GetShareExportLocation {
   /// Creates a new [GetShareExportLocation].
   /// [path] Required.
   /// [preferred] Required.
-  GetShareExportLocation({
-    required this.path,
-    required this.preferred,
-  });
+  GetShareExportLocation({required this.path, required this.preferred});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'preferred': preferred,
-    };
+    return <String, dynamic>{'path': path, 'preferred': preferred};
   }
 
   factory GetShareExportLocation.fromMap(Map<String, dynamic> map) {
     return GetShareExportLocation(
-      path: (map['path'] as String).input(),
-      preferred: (map['preferred'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      preferred: pulumi.Input.fromValue(map['preferred'] as String),
     );
   }
 }
-

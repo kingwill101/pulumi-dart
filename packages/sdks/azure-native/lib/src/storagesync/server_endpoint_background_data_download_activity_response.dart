@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointBackgroundDataDownloadActivityResponse {
   /// Running count of bytes downloaded
   final pulumi.Input<double> downloadedBytes;
+
   /// Progress percentage
   final pulumi.Input<int> percentProgress;
+
   /// Timestamp when the operation started
   final pulumi.Input<String> startedTimestamp;
+
   /// Timestamp when properties were updated
   final pulumi.Input<String> timestamp;
 
@@ -34,13 +37,16 @@ class ServerEndpointBackgroundDataDownloadActivityResponse {
     };
   }
 
-  factory ServerEndpointBackgroundDataDownloadActivityResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerEndpointBackgroundDataDownloadActivityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerEndpointBackgroundDataDownloadActivityResponse(
-      downloadedBytes: (map['downloadedBytes'] as double).input(),
-      percentProgress: (map['percentProgress'] as int).input(),
-      startedTimestamp: (map['startedTimestamp'] as String).input(),
-      timestamp: (map['timestamp'] as String).input(),
+      downloadedBytes: pulumi.Input.fromValue(map['downloadedBytes'] as double),
+      percentProgress: pulumi.Input.fromValue(map['percentProgress'] as int),
+      startedTimestamp: pulumi.Input.fromValue(
+        map['startedTimestamp'] as String,
+      ),
+      timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
     );
   }
 }
-

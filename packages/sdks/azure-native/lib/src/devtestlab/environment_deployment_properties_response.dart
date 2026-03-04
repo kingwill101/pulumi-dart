@@ -7,6 +7,7 @@ import 'arm_template_parameter_properties_response.dart';
 class EnvironmentDeploymentPropertiesResponse {
   /// The Azure Resource Manager template's identifier.
   final pulumi.Input<String>? armTemplateId;
+
   /// The parameters of the Azure Resource Manager template.
   final pulumi.Input<List<ArmTemplateParameterPropertiesResponse>>? parameters;
 
@@ -21,15 +22,42 @@ class EnvironmentDeploymentPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'armTemplateId': ?armTemplateId,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ArmTemplateParameterPropertiesResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ArmTemplateParameterPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ArmTemplateParameterPropertiesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ArmTemplateParameterPropertiesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory EnvironmentDeploymentPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentDeploymentPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentDeploymentPropertiesResponse(
-      armTemplateId: map['armTemplateId'] == null ? null : (map['armTemplateId']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArmTemplateParameterPropertiesResponse>(map['parameters']!, (value) => ArmTemplateParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      armTemplateId: (() {
+        final guardedValue = map['armTemplateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ArmTemplateParameterPropertiesResponse>(
+            guardedValue,
+            (value) => ArmTemplateParameterPropertiesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

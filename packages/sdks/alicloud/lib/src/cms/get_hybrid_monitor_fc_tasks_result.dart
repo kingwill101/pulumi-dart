@@ -40,7 +40,11 @@ class GetHybridMonitorFcTasksResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'tasks': pulumi.Input.encodeList<GetHybridMonitorFcTasksTask, Map<String, dynamic>>(tasks, (value) => value.toMap()),
+      'tasks':
+          pulumi.Input.encodeList<
+            GetHybridMonitorFcTasksTask,
+            Map<String, dynamic>
+          >(tasks, (value) => value.toMap()),
     };
   }
 
@@ -48,12 +52,32 @@ class GetHybridMonitorFcTasksResult {
     return GetHybridMonitorFcTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      tasks: pulumi.Input.decodeList<GetHybridMonitorFcTasksTask>(map['tasks'], (value) => GetHybridMonitorFcTasksTask.fromMap((value as Map).cast<String, dynamic>())),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      tasks: pulumi.Input.decodeList<GetHybridMonitorFcTasksTask>(
+        map['tasks']!,
+        (value) => GetHybridMonitorFcTasksTask.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

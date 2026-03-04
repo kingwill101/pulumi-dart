@@ -8,26 +8,37 @@ import 'virtual_network_appliance_ip_configuration_response.dart';
 class GetVirtualNetworkApplianceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Bandwidth of the VirtualNetworkAppliance resource in Gbps.
   final String? bandwidthInGbps;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// A list of IPConfigurations of the virtual network appliance.
   final List<VirtualNetworkApplianceIpConfigurationResponse> ipConfigurations;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the virtual network appliance resource.
   final String provisioningState;
+
   /// The resource GUID property of the virtual network appliance resource.
   final String resourceGuid;
+
   /// The reference to the subnet resource.
   final SubnetResponse? subnet;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -65,12 +76,16 @@ class GetVirtualNetworkApplianceResult {
       'bandwidthInGbps': ?bandwidthInGbps,
       'etag': etag,
       'id': ?id,
-      'ipConfigurations': pulumi.Input.encodeList<VirtualNetworkApplianceIpConfigurationResponse, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.encodeList<
+            VirtualNetworkApplianceIpConfigurationResponse,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?subnet?.toMap(),
       'tags': ?tags,
       'type': type,
     };
@@ -79,18 +94,46 @@ class GetVirtualNetworkApplianceResult {
   factory GetVirtualNetworkApplianceResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkApplianceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : map['bandwidthInGbps']! as String,
+      bandwidthInGbps: (() {
+        final guardedValue = map['bandwidthInGbps'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      ipConfigurations: pulumi.Input.decodeList<VirtualNetworkApplianceIpConfigurationResponse>(map['ipConfigurations'], (value) => VirtualNetworkApplianceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ipConfigurations:
+          pulumi
+              .Input.decodeList<VirtualNetworkApplianceIpConfigurationResponse>(
+            map['ipConfigurations']!,
+            (value) => VirtualNetworkApplianceIpConfigurationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

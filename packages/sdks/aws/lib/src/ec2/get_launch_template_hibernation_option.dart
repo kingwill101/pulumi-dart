@@ -7,20 +7,15 @@ class GetLaunchTemplateHibernationOption {
 
   /// Creates a new [GetLaunchTemplateHibernationOption].
   /// [configured] Required.
-  GetLaunchTemplateHibernationOption({
-    required this.configured,
-  });
+  GetLaunchTemplateHibernationOption({required this.configured});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configured': configured,
-    };
+    return <String, dynamic>{'configured': configured};
   }
 
   factory GetLaunchTemplateHibernationOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateHibernationOption(
-      configured: (map['configured'] as bool).input(),
+      configured: pulumi.Input.fromValue(map['configured'] as bool),
     );
   }
 }
-

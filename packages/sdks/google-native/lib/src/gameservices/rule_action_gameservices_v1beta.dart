@@ -7,16 +7,15 @@ enum RuleActionGameservicesV1beta {
   denyWithLog("DENY_WITH_LOG"),
   log("LOG");
 
-  const RuleActionGameservicesV1beta(this.value);
-  final String value;
+  const RuleActionGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static RuleActionGameservicesV1beta fromValue(String value) {
     for (final item in RuleActionGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleActionGameservicesV1beta value: $value');
   }
 }
-

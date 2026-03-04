@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessConfigurationPermissionPolicy {
   /// The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
   final pulumi.Input<String>? permissionPolicyDocument;
+
   /// The name of the policy.
   final pulumi.Input<String> permissionPolicyName;
+
   /// The type of the policy. Valid values: `System`, `Inline`.
   final pulumi.Input<String> permissionPolicyType;
 
@@ -28,12 +30,21 @@ class AccessConfigurationPermissionPolicy {
     };
   }
 
-  factory AccessConfigurationPermissionPolicy.fromMap(Map<String, dynamic> map) {
+  factory AccessConfigurationPermissionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessConfigurationPermissionPolicy(
-      permissionPolicyDocument: map['permissionPolicyDocument'] == null ? null : (map['permissionPolicyDocument']! as String).input(),
-      permissionPolicyName: (map['permissionPolicyName'] as String).input(),
-      permissionPolicyType: (map['permissionPolicyType'] as String).input(),
+      permissionPolicyDocument: (() {
+        final guardedValue = map['permissionPolicyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissionPolicyName: pulumi.Input.fromValue(
+        map['permissionPolicyName'] as String,
+      ),
+      permissionPolicyType: pulumi.Input.fromValue(
+        map['permissionPolicyType'] as String,
+      ),
     );
   }
 }
-

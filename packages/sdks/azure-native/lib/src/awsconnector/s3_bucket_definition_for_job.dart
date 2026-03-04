@@ -4,31 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of S3BucketDefinitionForJob
 class S3BucketDefinitionForJob {
-  /// <p>The unique identifier for the Amazon Web Services account that owns the buckets.</p>
+  /// &lt;p&gt;The unique identifier for the Amazon Web Services account that owns the buckets.&lt;/p&gt;
   final pulumi.Input<String>? accountId;
-  /// <p>An array that lists the names of the buckets.</p>
+
+  /// &lt;p&gt;An array that lists the names of the buckets.&lt;/p&gt;
   final pulumi.Input<List<String>>? buckets;
 
   /// Creates a new [S3BucketDefinitionForJob].
-  /// [accountId] <p>The unique identifier for the Amazon Web Services account that owns the buckets.</p>
-  /// [buckets] <p>An array that lists the names of the buckets.</p>
-  S3BucketDefinitionForJob({
-    this.accountId,
-    this.buckets,
-  });
+  /// [accountId] &lt;p&gt;The unique identifier for the Amazon Web Services account that owns the buckets.&lt;/p&gt;
+  /// [buckets] &lt;p&gt;An array that lists the names of the buckets.&lt;/p&gt;
+  S3BucketDefinitionForJob({this.accountId, this.buckets});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': ?accountId,
-      'buckets': ?buckets,
-    };
+    return <String, dynamic>{'accountId': ?accountId, 'buckets': ?buckets};
   }
 
   factory S3BucketDefinitionForJob.fromMap(Map<String, dynamic> map) {
     return S3BucketDefinitionForJob(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      buckets: map['buckets'] == null ? null : ((map['buckets']! as List).cast<String>()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      buckets: (() {
+        final guardedValue = map['buckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

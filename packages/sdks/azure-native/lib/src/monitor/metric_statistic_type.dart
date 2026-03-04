@@ -6,16 +6,15 @@ enum MetricStatisticType {
   valueSum("Sum"),
   valueCount("Count");
 
-  const MetricStatisticType(this.value);
-  final String value;
+  const MetricStatisticType(this.wireValue);
+  final String wireValue;
 
   static MetricStatisticType fromValue(String value) {
     for (final item in MetricStatisticType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricStatisticType value: $value');
   }
 }
-

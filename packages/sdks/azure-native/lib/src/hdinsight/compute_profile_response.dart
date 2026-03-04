@@ -10,20 +10,38 @@ class ComputeProfileResponse {
 
   /// Creates a new [ComputeProfileResponse].
   /// [roles] The list of roles in the cluster.
-  ComputeProfileResponse({
-    this.roles,
-  });
+  ComputeProfileResponse({this.roles});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'roles': ?pulumi.Input.mapOptionalInputValue<List<RoleResponse>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<RoleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'roles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RoleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            roles,
+            (value) =>
+                pulumi.Input.encodeList<RoleResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ComputeProfileResponse.fromMap(Map<String, dynamic> map) {
     return ComputeProfileResponse(
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<RoleResponse>(map['roles']!, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RoleResponse>(
+            guardedValue,
+            (value) =>
+                RoleResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

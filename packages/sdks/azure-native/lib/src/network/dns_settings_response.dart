@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsSettingsResponse {
   /// Enable DNS Proxy on Firewalls attached to the Firewall Policy.
   final pulumi.Input<bool>? enableProxy;
+
   /// FQDNs in Network Rules are supported when set to true.
   final pulumi.Input<bool>? requireProxyForNetworkRules;
+
   /// List of Custom DNS Servers.
   final pulumi.Input<List<String>>? servers;
 
@@ -31,10 +33,21 @@ class DnsSettingsResponse {
 
   factory DnsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DnsSettingsResponse(
-      enableProxy: map['enableProxy'] == null ? null : (map['enableProxy']! as bool).input(),
-      requireProxyForNetworkRules: map['requireProxyForNetworkRules'] == null ? null : (map['requireProxyForNetworkRules']! as bool).input(),
-      servers: map['servers'] == null ? null : ((map['servers']! as List).cast<String>()).input(),
+      enableProxy: (() {
+        final guardedValue = map['enableProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireProxyForNetworkRules: (() {
+        final guardedValue = map['requireProxyForNetworkRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      servers: (() {
+        final guardedValue = map['servers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

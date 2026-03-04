@@ -8,9 +8,12 @@ class ExtensionsInstanceRuntimeData {
   /// The fatal error state for the extension instance
   /// Structure is documented below.
   final pulumi.Input<ExtensionsInstanceRuntimeDataFatalError>? fatalError;
+
   /// The processing state for the extension instance
   /// Structure is documented below.
-  final pulumi.Input<ExtensionsInstanceRuntimeDataProcessingState>? processingState;
+  final pulumi.Input<ExtensionsInstanceRuntimeDataProcessingState>?
+  processingState;
+
   /// The time of the last state update.
   final pulumi.Input<String>? stateUpdateTime;
 
@@ -26,18 +29,45 @@ class ExtensionsInstanceRuntimeData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fatalError': ?pulumi.Input.mapOptionalInputValue<ExtensionsInstanceRuntimeDataFatalError, Map<String, dynamic>>(fatalError, (value) => value.toMap()),
-      'processingState': ?pulumi.Input.mapOptionalInputValue<ExtensionsInstanceRuntimeDataProcessingState, Map<String, dynamic>>(processingState, (value) => value.toMap()),
+      'fatalError':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtensionsInstanceRuntimeDataFatalError,
+            Map<String, dynamic>
+          >(fatalError, (value) => value.toMap()),
+      'processingState':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtensionsInstanceRuntimeDataProcessingState,
+            Map<String, dynamic>
+          >(processingState, (value) => value.toMap()),
       'stateUpdateTime': ?stateUpdateTime,
     };
   }
 
   factory ExtensionsInstanceRuntimeData.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeData(
-      fatalError: map['fatalError'] == null ? null : (ExtensionsInstanceRuntimeDataFatalError.fromMap((map['fatalError']! as Map).cast<String, dynamic>())).input(),
-      processingState: map['processingState'] == null ? null : (ExtensionsInstanceRuntimeDataProcessingState.fromMap((map['processingState']! as Map).cast<String, dynamic>())).input(),
-      stateUpdateTime: map['stateUpdateTime'] == null ? null : (map['stateUpdateTime']! as String).input(),
+      fatalError: (() {
+        final guardedValue = map['fatalError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtensionsInstanceRuntimeDataFatalError.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      processingState: (() {
+        final guardedValue = map['processingState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtensionsInstanceRuntimeDataProcessingState.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateUpdateTime: (() {
+        final guardedValue = map['stateUpdateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

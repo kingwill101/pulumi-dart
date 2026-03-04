@@ -9,6 +9,7 @@ class GetInstancePerformanceConfig {
   /// which will remain constant regardless of instance
   /// capacity.
   final pulumi.Input<List<GetInstancePerformanceConfigFixedIop>> fixedIops;
+
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   final pulumi.Input<List<GetInstancePerformanceConfigIopsPerTb>> iopsPerTbs;
@@ -23,16 +24,51 @@ class GetInstancePerformanceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedIops': pulumi.Input.mapInputValue<List<GetInstancePerformanceConfigFixedIop>, List<Map<String, dynamic>>>(fixedIops, (value) => pulumi.Input.encodeList<GetInstancePerformanceConfigFixedIop, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'iopsPerTbs': pulumi.Input.mapInputValue<List<GetInstancePerformanceConfigIopsPerTb>, List<Map<String, dynamic>>>(iopsPerTbs, (value) => pulumi.Input.encodeList<GetInstancePerformanceConfigIopsPerTb, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fixedIops':
+          pulumi.Input.mapInputValue<
+            List<GetInstancePerformanceConfigFixedIop>,
+            List<Map<String, dynamic>>
+          >(
+            fixedIops,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstancePerformanceConfigFixedIop,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'iopsPerTbs':
+          pulumi.Input.mapInputValue<
+            List<GetInstancePerformanceConfigIopsPerTb>,
+            List<Map<String, dynamic>>
+          >(
+            iopsPerTbs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstancePerformanceConfigIopsPerTb,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetInstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfig(
-      fixedIops: (pulumi.Input.decodeList<GetInstancePerformanceConfigFixedIop>(map['fixedIops'], (value) => GetInstancePerformanceConfigFixedIop.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      iopsPerTbs: (pulumi.Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(map['iopsPerTbs'], (value) => GetInstancePerformanceConfigIopsPerTb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fixedIops: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInstancePerformanceConfigFixedIop>(
+          map['fixedIops']!,
+          (value) => GetInstancePerformanceConfigFixedIop.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      iopsPerTbs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(
+          map['iopsPerTbs']!,
+          (value) => GetInstancePerformanceConfigIopsPerTb.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

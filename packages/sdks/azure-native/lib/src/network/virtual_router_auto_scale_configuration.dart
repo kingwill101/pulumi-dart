@@ -9,20 +9,21 @@ class VirtualRouterAutoScaleConfiguration {
 
   /// Creates a new [VirtualRouterAutoScaleConfiguration].
   /// [minCapacity] The minimum number of scale units for VirtualHub Router.
-  VirtualRouterAutoScaleConfiguration({
-    this.minCapacity,
-  });
+  VirtualRouterAutoScaleConfiguration({this.minCapacity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minCapacity': ?minCapacity,
-    };
+    return <String, dynamic>{'minCapacity': ?minCapacity};
   }
 
-  factory VirtualRouterAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualRouterAutoScaleConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualRouterAutoScaleConfiguration(
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
+      minCapacity: (() {
+        final guardedValue = map['minCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

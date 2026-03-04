@@ -10,14 +10,19 @@ import 'connect_attachment_options.dart';
 class ConnectAttachmentArgs {
   /// ID of a core network where you want to create the attachment.
   final pulumi.Input<String> coreNetworkId;
+
   /// Region where the edge is located.
   final pulumi.Input<String> edgeLocation;
+
   /// Options block. See options for more information.
   final pulumi.Input<ConnectAttachmentOptions> options;
+
   /// The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   final pulumi.Input<String>? routingPolicyLabel;
+
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ID of the attachment between the two connections.
   ///
   /// The following arguments are optional:
@@ -43,7 +48,11 @@ class ConnectAttachmentArgs {
     return <String, dynamic>{
       'coreNetworkId': coreNetworkId,
       'edgeLocation': edgeLocation,
-      'options': pulumi.Input.mapInputValue<ConnectAttachmentOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options':
+          pulumi.Input.mapInputValue<
+            ConnectAttachmentOptions,
+            Map<String, dynamic>
+          >(options, (value) => value.toMap()),
       'routingPolicyLabel': ?routingPolicyLabel,
       'tags': ?tags,
       'transportAttachmentId': transportAttachmentId,
@@ -52,13 +61,28 @@ class ConnectAttachmentArgs {
 
   factory ConnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectAttachmentArgs(
-      coreNetworkId: (map['coreNetworkId'] as String).input(),
-      edgeLocation: (map['edgeLocation'] as String).input(),
-      options: (ConnectAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transportAttachmentId: (map['transportAttachmentId'] as String).input(),
+      coreNetworkId: pulumi.Input.fromValue(map['coreNetworkId'] as String),
+      edgeLocation: pulumi.Input.fromValue(map['edgeLocation'] as String),
+      options: pulumi.Input.fromValue(
+        ConnectAttachmentOptions.fromMap(
+          (map['options']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      routingPolicyLabel: (() {
+        final guardedValue = map['routingPolicyLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transportAttachmentId: pulumi.Input.fromValue(
+        map['transportAttachmentId'] as String,
+      ),
     );
   }
 }
-

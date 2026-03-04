@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
   /// The name of the header to add.
   final pulumi.Input<String> headerName;
+
   /// The value of the header to add.
   final pulumi.Input<String> headerValue;
+
   /// If false, headerValue is appended to any values that already exist for the header.
   /// If true, headerValue is set for the header, discarding any values that were set for that header.
   final pulumi.Input<bool> replace;
@@ -29,12 +31,13 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
     };
   }
 
-  factory URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd.fromMap(Map<String, dynamic> map) {
+  factory URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(
-      headerName: (map['headerName'] as String).input(),
-      headerValue: (map['headerValue'] as String).input(),
-      replace: (map['replace'] as bool).input(),
+      headerName: pulumi.Input.fromValue(map['headerName'] as String),
+      headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
+      replace: pulumi.Input.fromValue(map['replace'] as bool),
     );
   }
 }
-

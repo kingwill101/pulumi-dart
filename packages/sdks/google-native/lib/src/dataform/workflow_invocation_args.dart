@@ -10,11 +10,13 @@ import 'invocation_config.dart';
 class WorkflowInvocationArgs {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   final pulumi.Input<String>? compilationResult;
+
   /// Immutable. If left unset, a default InvocationConfig will be used.
   final pulumi.Input<InvocationConfig>? invocationConfig;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> repositoryId;
+
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
   final pulumi.Input<String>? workflowConfig;
 
@@ -37,7 +39,11 @@ class WorkflowInvocationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compilationResult': ?compilationResult,
-      'invocationConfig': ?pulumi.Input.mapOptionalInputValue<InvocationConfig, Map<String, dynamic>>(invocationConfig, (value) => value.toMap()),
+      'invocationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            InvocationConfig,
+            Map<String, dynamic>
+          >(invocationConfig, (value) => value.toMap()),
       'location': ?location,
       'project': ?project,
       'repositoryId': repositoryId,
@@ -47,13 +53,36 @@ class WorkflowInvocationArgs {
 
   factory WorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowInvocationArgs(
-      compilationResult: map['compilationResult'] == null ? null : (map['compilationResult']! as String).input(),
-      invocationConfig: map['invocationConfig'] == null ? null : (InvocationConfig.fromMap((map['invocationConfig']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
-      workflowConfig: map['workflowConfig'] == null ? null : (map['workflowConfig']! as String).input(),
+      compilationResult: (() {
+        final guardedValue = map['compilationResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invocationConfig: (() {
+        final guardedValue = map['invocationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InvocationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
+      workflowConfig: (() {
+        final guardedValue = map['workflowConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

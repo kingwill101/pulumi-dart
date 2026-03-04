@@ -1,11 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
-import 'service_cor.dart';
 import 'service_identity.dart';
 import 'service_live_trace.dart';
 import 'service_sku.dart';
 import 'service_state.dart';
-import 'service_upstream_endpoint.dart';
 
 /// Manages an Azure SignalR service.
 ///
@@ -297,7 +295,7 @@ import 'service_upstream_endpoint.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -312,61 +310,86 @@ import 'service_upstream_endpoint.dart';
 class Service extends pulumi.CustomResource {
   /// Whether to enable AAD auth? Defaults to `true`.
   late final pulumi.Output<bool?> aadAuthEnabled;
+
   /// Specifies if Connectivity Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> connectivityLogsEnabled;
+
   /// A `cors` block as documented below.
-  late final pulumi.Output<List<ServiceCor>> cors;
+  late final pulumi.Output<List<Map<String, dynamic>>> cors;
+
   /// The FQDN of the SignalR service.
   late final pulumi.Output<String> hostname;
+
   /// Specifies if Http Request Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> httpRequestLogsEnabled;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
+
   /// The publicly accessible IP of the SignalR service.
   late final pulumi.Output<String> ipAddress;
+
   /// A `live_trace` block as defined below.
   late final pulumi.Output<ServiceLiveTrace?> liveTrace;
   late final pulumi.Output<bool?> liveTraceEnabled;
+
   /// Whether to enable local auth? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// Specifies the supported Azure location where the SignalR service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies if Messaging Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> messagingLogsEnabled;
+
   /// The name of the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary access key for the SignalR service.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// The primary connection string for the SignalR service.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// Whether to enable public network access? Defaults to `true`.
   ///
-  /// > **Note:** `public_network_access_enabled` cannot be set to `false` in `Free` sku tier.
+  /// &gt; **Note:** `public_network_access_enabled` cannot be set to `false` in `Free` sku tier.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The publicly accessible port of the SignalR service which is designed for browser/client use.
   late final pulumi.Output<int> publicPort;
+
   /// The name of the resource group in which to create the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary access key for the SignalR service.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// The secondary connection string for the SignalR service.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The publicly accessible port of the SignalR service which is designed for customer server side use.
   late final pulumi.Output<int> serverPort;
+
   /// Specifies the client connection timeout. Defaults to `30`.
   late final pulumi.Output<int?> serverlessConnectionTimeoutInSeconds;
+
   /// Specifies the service mode. Possible values are `Classic`, `Default` and `Serverless`. Defaults to `Default`.
   late final pulumi.Output<String?> serviceMode;
+
   /// A `sku` block as documented below.
   late final pulumi.Output<ServiceSku> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   ///
-  /// > **Note:** `tls_client_cert_enabled` cannot be set to `true` in `Free` sku tier.
+  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` in `Free` sku tier.
   late final pulumi.Output<bool?> tlsClientCertEnabled;
+
   /// An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
-  late final pulumi.Output<List<ServiceUpstreamEndpoint>?> upstreamEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> upstreamEndpoints;
 
   /// Creates a new [Service].
   /// [name] The Pulumi resource name.
@@ -377,38 +400,46 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
-    this.connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
-    this.cors = registerOutput<List<ServiceCor>>('cors');
-    this.hostname = registerOutput<String>('hostname');
-    this.httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    this.identity = registerOutput<ServiceIdentity?>('identity');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
-    this.liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.messagingLogsEnabled = registerOutput<bool?>('messagingLogsEnabled');
+         'azure:signalr/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
+    cors = registerOutput<List<Map<String, dynamic>>>('cors');
+    hostname = registerOutput<String>('hostname');
+    httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
+    identity = registerOutput<ServiceIdentity?>('identity');
+    ipAddress = registerOutput<String>('ipAddress');
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    messagingLogsEnabled = registerOutput<bool?>('messagingLogsEnabled');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.serverlessConnectionTimeoutInSeconds = registerOutput<int?>('serverlessConnectionTimeoutInSeconds');
-    this.serviceMode = registerOutput<String?>('serviceMode');
-    this.sku = registerOutput<ServiceSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    this.upstreamEndpoints = registerOutput<List<ServiceUpstreamEndpoint>?>('upstreamEndpoints');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    serverPort = registerOutput<int>('serverPort');
+    serverlessConnectionTimeoutInSeconds = registerOutput<int?>(
+      'serverlessConnectionTimeoutInSeconds',
+    );
+    serviceMode = registerOutput<String?>('serviceMode');
+    sku = registerOutput<ServiceSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'upstreamEndpoints',
+    );
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -429,37 +460,45 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
-    this.connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
-    this.cors = registerOutput<List<ServiceCor>>('cors');
-    this.hostname = registerOutput<String>('hostname');
-    this.httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    this.identity = registerOutput<ServiceIdentity?>('identity');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
-    this.liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.messagingLogsEnabled = registerOutput<bool?>('messagingLogsEnabled');
+         'azure:signalr/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
+    cors = registerOutput<List<Map<String, dynamic>>>('cors');
+    hostname = registerOutput<String>('hostname');
+    httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
+    identity = registerOutput<ServiceIdentity?>('identity');
+    ipAddress = registerOutput<String>('ipAddress');
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    messagingLogsEnabled = registerOutput<bool?>('messagingLogsEnabled');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.serverlessConnectionTimeoutInSeconds = registerOutput<int?>('serverlessConnectionTimeoutInSeconds');
-    this.serviceMode = registerOutput<String?>('serviceMode');
-    this.sku = registerOutput<ServiceSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    this.upstreamEndpoints = registerOutput<List<ServiceUpstreamEndpoint>?>('upstreamEndpoints');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    serverPort = registerOutput<int>('serverPort');
+    serverlessConnectionTimeoutInSeconds = registerOutput<int?>(
+      'serverlessConnectionTimeoutInSeconds',
+    );
+    serviceMode = registerOutput<String?>('serviceMode');
+    sku = registerOutput<ServiceSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'upstreamEndpoints',
+    );
   }
 }

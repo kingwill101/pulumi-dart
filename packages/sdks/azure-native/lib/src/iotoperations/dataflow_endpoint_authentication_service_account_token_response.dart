@@ -14,15 +14,14 @@ class DataflowEndpointAuthenticationServiceAccountTokenResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audience': audience,
-    };
+    return <String, dynamic>{'audience': audience};
   }
 
-  factory DataflowEndpointAuthenticationServiceAccountTokenResponse.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointAuthenticationServiceAccountTokenResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointAuthenticationServiceAccountTokenResponse(
-      audience: (map['audience'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
     );
   }
 }
-

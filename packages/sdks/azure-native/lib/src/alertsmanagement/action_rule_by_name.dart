@@ -408,14 +408,19 @@ import 'action_rule_by_name_args.dart';
 class ActionRuleByName extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Azure resource name
   late final pulumi.Output<String> name;
+
   /// action rule properties
   late final pulumi.Output<ActionGroupResponse> properties;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -428,16 +433,16 @@ class ActionRuleByName extends pulumi.CustomResource {
     ActionRuleByNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:alertsmanagement:ActionRuleByName',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:alertsmanagement:ActionRuleByName',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ActionGroupResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ActionGroupResponse>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ParameterGroupStatus
 class ParameterGroupStatus {
-  /// <p>The node IDs of one or more nodes to be rebooted.</p>
+  /// &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
   final pulumi.Input<List<String>>? nodeIdsToReboot;
-  /// <p>The status of parameter updates. </p>
+
+  /// &lt;p&gt;The status of parameter updates. &lt;/p&gt;
   final pulumi.Input<String>? parameterApplyStatus;
-  /// <p>The name of the parameter group.</p>
+
+  /// &lt;p&gt;The name of the parameter group.&lt;/p&gt;
   final pulumi.Input<String>? parameterGroupName;
 
   /// Creates a new [ParameterGroupStatus].
-  /// [nodeIdsToReboot] <p>The node IDs of one or more nodes to be rebooted.</p>
-  /// [parameterApplyStatus] <p>The status of parameter updates. </p>
-  /// [parameterGroupName] <p>The name of the parameter group.</p>
+  /// [nodeIdsToReboot] &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
+  /// [parameterApplyStatus] &lt;p&gt;The status of parameter updates. &lt;/p&gt;
+  /// [parameterGroupName] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
   ParameterGroupStatus({
     this.nodeIdsToReboot,
     this.parameterApplyStatus,
@@ -31,10 +33,21 @@ class ParameterGroupStatus {
 
   factory ParameterGroupStatus.fromMap(Map<String, dynamic> map) {
     return ParameterGroupStatus(
-      nodeIdsToReboot: map['nodeIdsToReboot'] == null ? null : ((map['nodeIdsToReboot']! as List).cast<String>()).input(),
-      parameterApplyStatus: map['parameterApplyStatus'] == null ? null : (map['parameterApplyStatus']! as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName']! as String).input(),
+      nodeIdsToReboot: (() {
+        final guardedValue = map['nodeIdsToReboot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parameterApplyStatus: (() {
+        final guardedValue = map['parameterApplyStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterGroupName: (() {
+        final guardedValue = map['parameterGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

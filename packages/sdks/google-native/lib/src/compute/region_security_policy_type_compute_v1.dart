@@ -4,16 +4,17 @@ enum RegionSecurityPolicyTypeComputeV1 {
   cloudArmorEdge("CLOUD_ARMOR_EDGE"),
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK");
 
-  const RegionSecurityPolicyTypeComputeV1(this.value);
-  final String value;
+  const RegionSecurityPolicyTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionSecurityPolicyTypeComputeV1 fromValue(String value) {
     for (final item in RegionSecurityPolicyTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSecurityPolicyTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionSecurityPolicyTypeComputeV1 value: $value',
+    );
   }
 }
-

@@ -128,21 +128,28 @@ class ResourceType extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> arn;
+
   /// Flag to enable AWS LakeFormation hybrid access permission mode.
   late final pulumi.Output<bool> hybridAccessEnabled;
+
   /// Date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> lastModified;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Role that has read/write access to the resource.
   late final pulumi.Output<String> roleArn;
+
   /// Designates an AWS Identity and Access Management (IAM) service-linked role by registering this role with the Data Catalog.
   late final pulumi.Output<bool?> useServiceLinkedRole;
+
   /// Whether or not the resource is a federated resource. Set to true when registering AWS Glue connections for federated catalog functionality.
   late final pulumi.Output<bool> withFederation;
+
   /// Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
   ///
-  /// > **NOTE:** AWS does not support registering an S3 location with an IAM role and subsequently updating the S3 location registration to a service-linked role.
+  /// &gt; **NOTE:** AWS does not support registering an S3 location with an IAM role and subsequently updating the S3 location registration to a service-linked role.
   late final pulumi.Output<bool> withPrivilegedAccess;
 
   /// Creates a new [ResourceType].
@@ -154,19 +161,19 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lakeformation/resource:Resource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.useServiceLinkedRole = registerOutput<bool?>('useServiceLinkedRole');
-    this.withFederation = registerOutput<bool>('withFederation');
-    this.withPrivilegedAccess = registerOutput<bool>('withPrivilegedAccess');
+         'aws:lakeformation/resource:Resource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
+    lastModified = registerOutput<String>('lastModified');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    useServiceLinkedRole = registerOutput<bool?>('useServiceLinkedRole');
+    withFederation = registerOutput<bool>('withFederation');
+    withPrivilegedAccess = registerOutput<bool>('withPrivilegedAccess');
   }
 
   /// Gets an existing [ResourceType] resource's state with the given [name] and [id].
@@ -187,18 +194,18 @@ class ResourceType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lakeformation/resource:Resource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.useServiceLinkedRole = registerOutput<bool?>('useServiceLinkedRole');
-    this.withFederation = registerOutput<bool>('withFederation');
-    this.withPrivilegedAccess = registerOutput<bool>('withPrivilegedAccess');
+         'aws:lakeformation/resource:Resource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
+    lastModified = registerOutput<String>('lastModified');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    useServiceLinkedRole = registerOutput<bool?>('useServiceLinkedRole');
+    withFederation = registerOutput<bool>('withFederation');
+    withPrivilegedAccess = registerOutput<bool>('withPrivilegedAccess');
   }
 }

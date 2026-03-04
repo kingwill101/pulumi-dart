@@ -1,11 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_package_reference_response.dart';
 import 'auto_scale_run_response.dart';
 import 'batch_pool_identity_response.dart';
-import 'certificate_reference_response.dart';
 import 'deployment_configuration_response.dart';
-import 'metadata_item_response.dart';
-import 'mount_configuration_response.dart';
 import 'network_configuration_response.dart';
 import 'pool_args.dart';
 import 'resize_operation_status_response.dart';
@@ -14,7 +10,6 @@ import 'start_task_response.dart';
 import 'system_data_response.dart';
 import 'task_scheduling_policy_response.dart';
 import 'upgrade_policy_response.dart';
-import 'user_account_response.dart';
 
 /// Contains information about a pool.
 ///
@@ -3703,76 +3698,112 @@ import 'user_account_response.dart';
 class Pool extends pulumi.CustomResource {
   /// Whether the pool is resizing.
   late final pulumi.Output<String> allocationState;
+
   /// The time at which the pool entered its current allocation state.
   late final pulumi.Output<String> allocationStateTransitionTime;
+
   /// The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
   late final pulumi.Output<List<String>?> applicationLicenses;
+
   /// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
-  late final pulumi.Output<List<ApplicationPackageReferenceResponse>?> applicationPackages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> applicationPackages;
+
   /// This property is set only if the pool automatically scales, i.e. autoScaleSettings are used.
   late final pulumi.Output<AutoScaleRunResponse> autoScaleRun;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
   ///
   /// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
-  late final pulumi.Output<List<CertificateReferenceResponse>?> certificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+
   /// The creation time of the pool.
   late final pulumi.Output<String> creationTime;
+
   /// The number of dedicated compute nodes currently in the pool.
   late final pulumi.Output<int> currentDedicatedNodes;
+
   /// The number of Spot/low-priority compute nodes currently in the pool.
   late final pulumi.Output<int> currentLowPriorityNodes;
+
   /// Determines how a pool communicates with the Batch service.
   late final pulumi.Output<String> currentNodeCommunicationMode;
+
   /// Deployment configuration properties.
-  late final pulumi.Output<DeploymentConfigurationResponse?> deploymentConfiguration;
+  late final pulumi.Output<DeploymentConfigurationResponse?>
+  deploymentConfiguration;
+
   /// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
   late final pulumi.Output<String?> displayName;
+
   /// The ETag of the resource, used for concurrency statements.
   late final pulumi.Output<String> etag;
+
   /// The type of identity used for the Batch Pool.
   late final pulumi.Output<BatchPoolIdentityResponse?> identity;
+
   /// This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'.
   late final pulumi.Output<String?> interNodeCommunication;
+
   /// This is the last time at which the pool level data, such as the targetDedicatedNodes or autoScaleSettings, changed. It does not factor in node-level changes such as a compute node changing state.
   late final pulumi.Output<String> lastModified;
+
   /// The Batch service does not assign any meaning to metadata; it is solely for the use of user code.
-  late final pulumi.Output<List<MetadataItemResponse>?> metadata;
+  late final pulumi.Output<List<Map<String, dynamic>>?> metadata;
+
   /// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
-  late final pulumi.Output<List<MountConfigurationResponse>?> mountConfiguration;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mountConfiguration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The network configuration for a pool.
   late final pulumi.Output<NetworkConfigurationResponse?> networkConfiguration;
+
   /// The current state of the pool.
   late final pulumi.Output<String> provisioningState;
+
   /// The time at which the pool entered its current state.
   late final pulumi.Output<String> provisioningStateTransitionTime;
+
   /// Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
   late final pulumi.Output<ResizeOperationStatusResponse> resizeOperationStatus;
+
   /// The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
   late final pulumi.Output<Map<String, String>?> resourceTags;
+
   /// Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
   late final pulumi.Output<ScaleSettingsResponse?> scaleSettings;
+
   /// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
   late final pulumi.Output<StartTaskResponse?> startTask;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// If omitted, the default value is Default.
   late final pulumi.Output<String?> targetNodeCommunicationMode;
+
   /// If not specified, the default is spread.
   late final pulumi.Output<TaskSchedulingPolicyResponse?> taskSchedulingPolicy;
+
   /// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
   late final pulumi.Output<int?> taskSlotsPerNode;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Describes an upgrade policy - automatic, manual, or rolling.
   late final pulumi.Output<UpgradePolicyResponse?> upgradePolicy;
+
   /// The list of user accounts to be created on each node in the pool.
-  late final pulumi.Output<List<UserAccountResponse>?> userAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> userAccounts;
+
   /// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
   late final pulumi.Output<String?> vmSize;
 
@@ -3780,51 +3811,68 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_batch_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:batch:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationState = registerOutput<String>('allocationState');
-    this.allocationStateTransitionTime = registerOutput<String>('allocationStateTransitionTime');
-    this.applicationLicenses = registerOutput<List<String>?>('applicationLicenses');
-    this.applicationPackages = registerOutput<List<ApplicationPackageReferenceResponse>?>('applicationPackages');
-    this.autoScaleRun = registerOutput<AutoScaleRunResponse>('autoScaleRun');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certificates = registerOutput<List<CertificateReferenceResponse>?>('certificates');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.currentDedicatedNodes = registerOutput<int>('currentDedicatedNodes');
-    this.currentLowPriorityNodes = registerOutput<int>('currentLowPriorityNodes');
-    this.currentNodeCommunicationMode = registerOutput<String>('currentNodeCommunicationMode');
-    this.deploymentConfiguration = registerOutput<DeploymentConfigurationResponse?>('deploymentConfiguration');
-    this.displayName = registerOutput<String?>('displayName');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<BatchPoolIdentityResponse?>('identity');
-    this.interNodeCommunication = registerOutput<String?>('interNodeCommunication');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.metadata = registerOutput<List<MetadataItemResponse>?>('metadata');
-    this.mountConfiguration = registerOutput<List<MountConfigurationResponse>?>('mountConfiguration');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:batch:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allocationState = registerOutput<String>('allocationState');
+    allocationStateTransitionTime = registerOutput<String>(
+      'allocationStateTransitionTime',
+    );
+    applicationLicenses = registerOutput<List<String>?>('applicationLicenses');
+    applicationPackages = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationPackages',
+    );
+    autoScaleRun = registerOutput<AutoScaleRunResponse>('autoScaleRun');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    creationTime = registerOutput<String>('creationTime');
+    currentDedicatedNodes = registerOutput<int>('currentDedicatedNodes');
+    currentLowPriorityNodes = registerOutput<int>('currentLowPriorityNodes');
+    currentNodeCommunicationMode = registerOutput<String>(
+      'currentNodeCommunicationMode',
+    );
+    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse?>(
+      'deploymentConfiguration',
+    );
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<BatchPoolIdentityResponse?>('identity');
+    interNodeCommunication = registerOutput<String?>('interNodeCommunication');
+    lastModified = registerOutput<String>('lastModified');
+    metadata = registerOutput<List<Map<String, dynamic>>?>('metadata');
+    mountConfiguration = registerOutput<List<Map<String, dynamic>>?>(
+      'mountConfiguration',
+    );
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<NetworkConfigurationResponse?>('networkConfiguration');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.provisioningStateTransitionTime = registerOutput<String>('provisioningStateTransitionTime');
-    this.resizeOperationStatus = registerOutput<ResizeOperationStatusResponse>('resizeOperationStatus');
-    this.resourceTags = registerOutput<Map<String, String>?>('resourceTags');
-    this.scaleSettings = registerOutput<ScaleSettingsResponse?>('scaleSettings');
-    this.startTask = registerOutput<StartTaskResponse?>('startTask');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
-    this.taskSchedulingPolicy = registerOutput<TaskSchedulingPolicyResponse?>('taskSchedulingPolicy');
-    this.taskSlotsPerNode = registerOutput<int?>('taskSlotsPerNode');
-    this.type = registerOutput<String>('type');
-    this.upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy');
-    this.userAccounts = registerOutput<List<UserAccountResponse>?>('userAccounts');
-    this.vmSize = registerOutput<String?>('vmSize');
+    networkConfiguration = registerOutput<NetworkConfigurationResponse?>(
+      'networkConfiguration',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    provisioningStateTransitionTime = registerOutput<String>(
+      'provisioningStateTransitionTime',
+    );
+    resizeOperationStatus = registerOutput<ResizeOperationStatusResponse>(
+      'resizeOperationStatus',
+    );
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    scaleSettings = registerOutput<ScaleSettingsResponse?>('scaleSettings');
+    startTask = registerOutput<StartTaskResponse?>('startTask');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetNodeCommunicationMode = registerOutput<String?>(
+      'targetNodeCommunicationMode',
+    );
+    taskSchedulingPolicy = registerOutput<TaskSchedulingPolicyResponse?>(
+      'taskSchedulingPolicy',
+    );
+    taskSlotsPerNode = registerOutput<int?>('taskSlotsPerNode');
+    type = registerOutput<String>('type');
+    upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy');
+    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    vmSize = registerOutput<String?>('vmSize');
   }
 }

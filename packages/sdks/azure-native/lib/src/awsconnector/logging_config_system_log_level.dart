@@ -4,16 +4,15 @@ enum LoggingConfigSystemLogLevel {
   iNFO("INFO"),
   wARN("WARN");
 
-  const LoggingConfigSystemLogLevel(this.value);
-  final String value;
+  const LoggingConfigSystemLogLevel(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigSystemLogLevel fromValue(String value) {
     for (final item in LoggingConfigSystemLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingConfigSystemLogLevel value: $value');
   }
 }
-

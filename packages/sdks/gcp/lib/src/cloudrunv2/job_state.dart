@@ -16,36 +16,49 @@ class JobState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
   final pulumi.Input<JobBinaryAuthorization>? binaryAuthorization;
+
   /// Arbitrary identifier for the API client.
   final pulumi.Input<String>? client;
+
   /// Arbitrary version identifier for the API client.
   final pulumi.Input<String>? clientVersion;
+
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
   /// Structure is documented below.
   final pulumi.Input<List<JobCondition>>? conditions;
+
   /// (Output)
   /// Creation timestamp of the execution.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+
   /// Email address of the authenticated creator.
   final pulumi.Input<String>? creator;
+
   /// The deletion time.
   final pulumi.Input<String>? deleteTime;
   final pulumi.Input<bool>? deletionProtection;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   final pulumi.Input<String>? etag;
+
   /// Number of executions created for this job.
   final pulumi.Input<int>? executionCount;
+
   /// For a deleted resource, the time after which it will be permanently deleted.
   final pulumi.Input<String>? expireTime;
+
   /// A number that monotonically increases every time the user modifies the desired state.
   final pulumi.Input<String>? generation;
+
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
   /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -53,47 +66,62 @@ class JobState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Email address of the last authenticated modifier.
   final pulumi.Input<String>? lastModifier;
+
   /// Name of the last created execution.
   /// Structure is documented below.
   final pulumi.Input<List<JobLatestCreatedExecution>>? latestCreatedExecutions;
+
   /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
   /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
   /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
   /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
   final pulumi.Input<String>? launchStage;
+
   /// The location of the cloud run job
   final pulumi.Input<String>? location;
+
   /// Name of the Job.
   final pulumi.Input<String>? name;
+
   /// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   final pulumi.Input<String>? observedGeneration;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
   /// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
   /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
   /// If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
   final pulumi.Input<bool>? reconciling;
+
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
   /// The sum of job name and token length must be fewer than 63 characters.
   final pulumi.Input<String>? runExecutionToken;
+
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
   /// The sum of job name and token length must be fewer than 63 characters.
   final pulumi.Input<String>? startExecutionToken;
+
   /// The template used to create executions for this Job.
   /// Structure is documented below.
   final pulumi.Input<JobTemplate>? template;
+
   /// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
   /// Structure is documented below.
   final pulumi.Input<List<JobTerminalCondition>>? terminalConditions;
+
   /// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   final pulumi.Input<String>? uid;
+
   /// The last-modified time.
   final pulumi.Input<String>? updateTime;
 
@@ -166,10 +194,25 @@ class JobState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<JobBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
+      'binaryAuthorization':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobBinaryAuthorization,
+            Map<String, dynamic>
+          >(binaryAuthorization, (value) => value.toMap()),
       'client': ?client,
       'clientVersion': ?clientVersion,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<JobCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<JobCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JobCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<JobCondition, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'createTime': ?createTime,
       'creator': ?creator,
       'deleteTime': ?deleteTime,
@@ -182,7 +225,18 @@ class JobState {
       'generation': ?generation,
       'labels': ?labels,
       'lastModifier': ?lastModifier,
-      'latestCreatedExecutions': ?pulumi.Input.mapOptionalInputValue<List<JobLatestCreatedExecution>, List<Map<String, dynamic>>>(latestCreatedExecutions, (value) => pulumi.Input.encodeList<JobLatestCreatedExecution, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'latestCreatedExecutions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JobLatestCreatedExecution>,
+            List<Map<String, dynamic>>
+          >(
+            latestCreatedExecutions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JobLatestCreatedExecution,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'launchStage': ?launchStage,
       'location': ?location,
       'name': ?name,
@@ -192,8 +246,23 @@ class JobState {
       'reconciling': ?reconciling,
       'runExecutionToken': ?runExecutionToken,
       'startExecutionToken': ?startExecutionToken,
-      'template': ?pulumi.Input.mapOptionalInputValue<JobTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
-      'terminalConditions': ?pulumi.Input.mapOptionalInputValue<List<JobTerminalCondition>, List<Map<String, dynamic>>>(terminalConditions, (value) => pulumi.Input.encodeList<JobTerminalCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'template':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTemplate,
+            Map<String, dynamic>
+          >(template, (value) => value.toMap()),
+      'terminalConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JobTerminalCondition>,
+            List<Map<String, dynamic>>
+          >(
+            terminalConditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JobTerminalCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -201,38 +270,197 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (JobBinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (map['client']! as String).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<JobCondition>(map['conditions']!, (value) => JobCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      creator: map['creator'] == null ? null : (map['creator']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      executionCount: map['executionCount'] == null ? null : (map['executionCount']! as int).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      lastModifier: map['lastModifier'] == null ? null : (map['lastModifier']! as String).input(),
-      latestCreatedExecutions: map['latestCreatedExecutions'] == null ? null : (pulumi.Input.decodeList<JobLatestCreatedExecution>(map['latestCreatedExecutions']!, (value) => JobLatestCreatedExecution.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchStage: map['launchStage'] == null ? null : (map['launchStage']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
-      runExecutionToken: map['runExecutionToken'] == null ? null : (map['runExecutionToken']! as String).input(),
-      startExecutionToken: map['startExecutionToken'] == null ? null : (map['startExecutionToken']! as String).input(),
-      template: map['template'] == null ? null : (JobTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
-      terminalConditions: map['terminalConditions'] == null ? null : (pulumi.Input.decodeList<JobTerminalCondition>(map['terminalConditions']!, (value) => JobTerminalCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      binaryAuthorization: (() {
+        final guardedValue = map['binaryAuthorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobBinaryAuthorization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      client: (() {
+        final guardedValue = map['client'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientVersion: (() {
+        final guardedValue = map['clientVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JobCondition>(
+            guardedValue,
+            (value) =>
+                JobCondition.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creator: (() {
+        final guardedValue = map['creator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionCount: (() {
+        final guardedValue = map['executionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      lastModifier: (() {
+        final guardedValue = map['lastModifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latestCreatedExecutions: (() {
+        final guardedValue = map['latestCreatedExecutions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JobLatestCreatedExecution>(
+            guardedValue,
+            (value) => JobLatestCreatedExecution.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      launchStage: (() {
+        final guardedValue = map['launchStage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      reconciling: (() {
+        final guardedValue = map['reconciling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      runExecutionToken: (() {
+        final guardedValue = map['runExecutionToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startExecutionToken: (() {
+        final guardedValue = map['startExecutionToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      terminalConditions: (() {
+        final guardedValue = map['terminalConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JobTerminalCondition>(
+            guardedValue,
+            (value) => JobTerminalCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

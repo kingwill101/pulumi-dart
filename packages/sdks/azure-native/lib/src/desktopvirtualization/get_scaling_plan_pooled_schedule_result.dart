@@ -7,46 +7,67 @@ import 'time_response.dart';
 class GetScalingPlanPooledScheduleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Set of days of the week on which this schedule is active.
   final List<String>? daysOfWeek;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Load balancing algorithm for off-peak period.
   final String? offPeakLoadBalancingAlgorithm;
+
   /// Starting time for off-peak period.
   final TimeResponse? offPeakStartTime;
+
   /// Load balancing algorithm for peak period.
   final String? peakLoadBalancingAlgorithm;
+
   /// Starting time for peak period.
   final TimeResponse? peakStartTime;
+
   /// Capacity threshold for ramp down period.
   final int? rampDownCapacityThresholdPct;
+
   /// Should users be logged off forcefully from hosts.
   final bool? rampDownForceLogoffUsers;
+
   /// Load balancing algorithm for ramp down period.
   final String? rampDownLoadBalancingAlgorithm;
+
   /// Minimum host percentage for ramp down period.
   final int? rampDownMinimumHostsPct;
+
   /// Notification message for users during ramp down period.
   final String? rampDownNotificationMessage;
+
   /// Starting time for ramp down period.
   final TimeResponse? rampDownStartTime;
+
   /// Specifies when to stop hosts during ramp down period.
   final String? rampDownStopHostsWhen;
+
   /// Number of minutes to wait to stop hosts during ramp down period.
   final int? rampDownWaitTimeMinutes;
+
   /// Capacity threshold for ramp up period.
   final int? rampUpCapacityThresholdPct;
+
   /// Load balancing algorithm for ramp up period.
   final String? rampUpLoadBalancingAlgorithm;
+
   /// Minimum host percentage for ramp up period.
   final int? rampUpMinimumHostsPct;
+
   /// Starting time for ramp up period.
   final TimeResponse? rampUpStartTime;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -105,21 +126,21 @@ class GetScalingPlanPooledScheduleResult {
       'id': id,
       'name': name,
       'offPeakLoadBalancingAlgorithm': ?offPeakLoadBalancingAlgorithm,
-      'offPeakStartTime': ?offPeakStartTime == null ? null : offPeakStartTime!.toMap(),
+      'offPeakStartTime': ?offPeakStartTime?.toMap(),
       'peakLoadBalancingAlgorithm': ?peakLoadBalancingAlgorithm,
-      'peakStartTime': ?peakStartTime == null ? null : peakStartTime!.toMap(),
+      'peakStartTime': ?peakStartTime?.toMap(),
       'rampDownCapacityThresholdPct': ?rampDownCapacityThresholdPct,
       'rampDownForceLogoffUsers': ?rampDownForceLogoffUsers,
       'rampDownLoadBalancingAlgorithm': ?rampDownLoadBalancingAlgorithm,
       'rampDownMinimumHostsPct': ?rampDownMinimumHostsPct,
       'rampDownNotificationMessage': ?rampDownNotificationMessage,
-      'rampDownStartTime': ?rampDownStartTime == null ? null : rampDownStartTime!.toMap(),
+      'rampDownStartTime': ?rampDownStartTime?.toMap(),
       'rampDownStopHostsWhen': ?rampDownStopHostsWhen,
       'rampDownWaitTimeMinutes': ?rampDownWaitTimeMinutes,
       'rampUpCapacityThresholdPct': ?rampUpCapacityThresholdPct,
       'rampUpLoadBalancingAlgorithm': ?rampUpLoadBalancingAlgorithm,
       'rampUpMinimumHostsPct': ?rampUpMinimumHostsPct,
-      'rampUpStartTime': ?rampUpStartTime == null ? null : rampUpStartTime!.toMap(),
+      'rampUpStartTime': ?rampUpStartTime?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -128,28 +149,105 @@ class GetScalingPlanPooledScheduleResult {
   factory GetScalingPlanPooledScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetScalingPlanPooledScheduleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      daysOfWeek: map['daysOfWeek'] == null ? null : (map['daysOfWeek']! as List).cast<String>(),
+      daysOfWeek: (() {
+        final guardedValue = map['daysOfWeek'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      offPeakLoadBalancingAlgorithm: map['offPeakLoadBalancingAlgorithm'] == null ? null : map['offPeakLoadBalancingAlgorithm']! as String,
-      offPeakStartTime: map['offPeakStartTime'] == null ? null : TimeResponse.fromMap((map['offPeakStartTime']! as Map).cast<String, dynamic>()),
-      peakLoadBalancingAlgorithm: map['peakLoadBalancingAlgorithm'] == null ? null : map['peakLoadBalancingAlgorithm']! as String,
-      peakStartTime: map['peakStartTime'] == null ? null : TimeResponse.fromMap((map['peakStartTime']! as Map).cast<String, dynamic>()),
-      rampDownCapacityThresholdPct: map['rampDownCapacityThresholdPct'] == null ? null : map['rampDownCapacityThresholdPct']! as int,
-      rampDownForceLogoffUsers: map['rampDownForceLogoffUsers'] == null ? null : map['rampDownForceLogoffUsers']! as bool,
-      rampDownLoadBalancingAlgorithm: map['rampDownLoadBalancingAlgorithm'] == null ? null : map['rampDownLoadBalancingAlgorithm']! as String,
-      rampDownMinimumHostsPct: map['rampDownMinimumHostsPct'] == null ? null : map['rampDownMinimumHostsPct']! as int,
-      rampDownNotificationMessage: map['rampDownNotificationMessage'] == null ? null : map['rampDownNotificationMessage']! as String,
-      rampDownStartTime: map['rampDownStartTime'] == null ? null : TimeResponse.fromMap((map['rampDownStartTime']! as Map).cast<String, dynamic>()),
-      rampDownStopHostsWhen: map['rampDownStopHostsWhen'] == null ? null : map['rampDownStopHostsWhen']! as String,
-      rampDownWaitTimeMinutes: map['rampDownWaitTimeMinutes'] == null ? null : map['rampDownWaitTimeMinutes']! as int,
-      rampUpCapacityThresholdPct: map['rampUpCapacityThresholdPct'] == null ? null : map['rampUpCapacityThresholdPct']! as int,
-      rampUpLoadBalancingAlgorithm: map['rampUpLoadBalancingAlgorithm'] == null ? null : map['rampUpLoadBalancingAlgorithm']! as String,
-      rampUpMinimumHostsPct: map['rampUpMinimumHostsPct'] == null ? null : map['rampUpMinimumHostsPct']! as int,
-      rampUpStartTime: map['rampUpStartTime'] == null ? null : TimeResponse.fromMap((map['rampUpStartTime']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      offPeakLoadBalancingAlgorithm: (() {
+        final guardedValue = map['offPeakLoadBalancingAlgorithm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      offPeakStartTime: (() {
+        final guardedValue = map['offPeakStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      peakLoadBalancingAlgorithm: (() {
+        final guardedValue = map['peakLoadBalancingAlgorithm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peakStartTime: (() {
+        final guardedValue = map['peakStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rampDownCapacityThresholdPct: (() {
+        final guardedValue = map['rampDownCapacityThresholdPct'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampDownForceLogoffUsers: (() {
+        final guardedValue = map['rampDownForceLogoffUsers'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      rampDownLoadBalancingAlgorithm: (() {
+        final guardedValue = map['rampDownLoadBalancingAlgorithm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownMinimumHostsPct: (() {
+        final guardedValue = map['rampDownMinimumHostsPct'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampDownNotificationMessage: (() {
+        final guardedValue = map['rampDownNotificationMessage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownStartTime: (() {
+        final guardedValue = map['rampDownStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rampDownStopHostsWhen: (() {
+        final guardedValue = map['rampDownStopHostsWhen'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownWaitTimeMinutes: (() {
+        final guardedValue = map['rampDownWaitTimeMinutes'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampUpCapacityThresholdPct: (() {
+        final guardedValue = map['rampUpCapacityThresholdPct'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampUpLoadBalancingAlgorithm: (() {
+        final guardedValue = map['rampUpLoadBalancingAlgorithm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampUpMinimumHostsPct: (() {
+        final guardedValue = map['rampUpMinimumHostsPct'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampUpStartTime: (() {
+        final guardedValue = map['rampUpStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

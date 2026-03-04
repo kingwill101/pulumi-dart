@@ -9,18 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TairInstanceArgs {
   /// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
   final pulumi.Input<String>? autoRenew;
+
   /// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
   final pulumi.Input<String>? autoRenewPeriod;
+
   /// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
   ///
   /// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
   final pulumi.Input<String>? backupId;
+
   /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
   final pulumi.Input<String>? clusterBackupId;
+
   /// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
   final pulumi.Input<String>? connectionStringPrefix;
+
   /// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
   final pulumi.Input<String>? effectiveTime;
+
   /// Database version. Default value: 1.0.
   ///
   /// Rules for transferring parameters of different tair product types:
@@ -31,8 +37,10 @@ class TairInstanceArgs {
   ///
   /// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
   final pulumi.Input<String>? engineVersion;
+
   /// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
   final pulumi.Input<bool>? forceUpgrade;
+
   /// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
   ///
   /// 1. Enter true if you want the new instance to be the first child instance.
@@ -41,66 +49,93 @@ class TairInstanceArgs {
   ///
   /// 3. Not as a distributed instance, you do not need to enter any values.
   final pulumi.Input<String>? globalInstanceId;
+
   /// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
   final pulumi.Input<String> instanceClass;
+
   /// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
   final pulumi.Input<String> instanceType;
+
   /// Instance intranet bandwidth
   final pulumi.Input<int>? intranetBandwidth;
+
   /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
   final pulumi.Input<String>? modifyMode;
+
   /// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
   final pulumi.Input<String>? nodeType;
+
   /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
   final pulumi.Input<String>? paramNoLooseSentinelEnabled;
+
   /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
   final pulumi.Input<String>? paramNoLooseSentinelPasswordFreeAccess;
+
   /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
   final pulumi.Input<String>? paramNoLooseSentinelPasswordFreeCommands;
+
   /// The value is semisync or async. The default value is async.
   ///
   /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
   final pulumi.Input<String>? paramReplMode;
+
   /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
   final pulumi.Input<String>? paramSemisyncReplTimeout;
+
   /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
   final pulumi.Input<String>? paramSentinelCompatEnable;
+
   /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
   final pulumi.Input<String>? password;
+
   /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
   final pulumi.Input<String>? paymentType;
+
   /// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
   final pulumi.Input<int>? period;
+
   /// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
   final pulumi.Input<int>? port;
+
   /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
   ///
   /// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
   ///
   /// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
   final pulumi.Input<int>? readOnlyCount;
+
   /// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
   final pulumi.Input<String>? recoverConfigMode;
+
   /// The ID of the resource group to which the instance belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
   final pulumi.Input<String>? secondaryZoneId;
+
   /// Security group id
   final pulumi.Input<String>? securityGroupId;
+
   /// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
   final pulumi.Input<String>? securityIpGroupName;
+
   /// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
   final pulumi.Input<String>? securityIps;
+
   /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
   final pulumi.Input<int>? shardCount;
+
   /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
   ///
   /// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
   final pulumi.Input<int>? slaveReadOnlyCount;
+
   /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
   final pulumi.Input<String>? srcDbInstanceId;
+
   /// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
   final pulumi.Input<String>? sslEnabled;
+
   /// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
   ///
   /// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
@@ -109,18 +144,25 @@ class TairInstanceArgs {
   ///
   /// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
   final pulumi.Input<String>? storagePerformanceLevel;
+
   /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
   final pulumi.Input<int>? storageSizeGb;
+
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the resource.
   final pulumi.Input<String>? tairInstanceName;
+
   /// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
   final pulumi.Input<String>? vpcAuthMode;
+
   /// The ID of the virtual private cloud (VPC).
   final pulumi.Input<String> vpcId;
+
   /// The ID of the vSwitch to which the instance is connected.
   final pulumi.Input<String> vswitchId;
+
   /// Zone ID
   final pulumi.Input<String> zoneId;
 
@@ -231,8 +273,10 @@ class TairInstanceArgs {
       'modifyMode': ?modifyMode,
       'nodeType': ?nodeType,
       'paramNoLooseSentinelEnabled': ?paramNoLooseSentinelEnabled,
-      'paramNoLooseSentinelPasswordFreeAccess': ?paramNoLooseSentinelPasswordFreeAccess,
-      'paramNoLooseSentinelPasswordFreeCommands': ?paramNoLooseSentinelPasswordFreeCommands,
+      'paramNoLooseSentinelPasswordFreeAccess':
+          ?paramNoLooseSentinelPasswordFreeAccess,
+      'paramNoLooseSentinelPasswordFreeCommands':
+          ?paramNoLooseSentinelPasswordFreeCommands,
       'paramReplMode': ?paramReplMode,
       'paramSemisyncReplTimeout': ?paramSemisyncReplTimeout,
       'paramSentinelCompatEnable': ?paramSentinelCompatEnable,
@@ -264,50 +308,203 @@ class TairInstanceArgs {
 
   factory TairInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TairInstanceArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as String).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as String).input(),
-      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
-      clusterBackupId: map['clusterBackupId'] == null ? null : (map['clusterBackupId']! as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
-      forceUpgrade: map['forceUpgrade'] == null ? null : (map['forceUpgrade']! as bool).input(),
-      globalInstanceId: map['globalInstanceId'] == null ? null : (map['globalInstanceId']! as String).input(),
-      instanceClass: (map['instanceClass'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      intranetBandwidth: map['intranetBandwidth'] == null ? null : (map['intranetBandwidth']! as int).input(),
-      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode']! as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
-      paramNoLooseSentinelEnabled: map['paramNoLooseSentinelEnabled'] == null ? null : (map['paramNoLooseSentinelEnabled']! as String).input(),
-      paramNoLooseSentinelPasswordFreeAccess: map['paramNoLooseSentinelPasswordFreeAccess'] == null ? null : (map['paramNoLooseSentinelPasswordFreeAccess']! as String).input(),
-      paramNoLooseSentinelPasswordFreeCommands: map['paramNoLooseSentinelPasswordFreeCommands'] == null ? null : (map['paramNoLooseSentinelPasswordFreeCommands']! as String).input(),
-      paramReplMode: map['paramReplMode'] == null ? null : (map['paramReplMode']! as String).input(),
-      paramSemisyncReplTimeout: map['paramSemisyncReplTimeout'] == null ? null : (map['paramSemisyncReplTimeout']! as String).input(),
-      paramSentinelCompatEnable: map['paramSentinelCompatEnable'] == null ? null : (map['paramSentinelCompatEnable']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      readOnlyCount: map['readOnlyCount'] == null ? null : (map['readOnlyCount']! as int).input(),
-      recoverConfigMode: map['recoverConfigMode'] == null ? null : (map['recoverConfigMode']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      secondaryZoneId: map['secondaryZoneId'] == null ? null : (map['secondaryZoneId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      securityIpGroupName: map['securityIpGroupName'] == null ? null : (map['securityIpGroupName']! as String).input(),
-      securityIps: map['securityIps'] == null ? null : (map['securityIps']! as String).input(),
-      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as int).input(),
-      slaveReadOnlyCount: map['slaveReadOnlyCount'] == null ? null : (map['slaveReadOnlyCount']! as int).input(),
-      srcDbInstanceId: map['srcDbInstanceId'] == null ? null : (map['srcDbInstanceId']! as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as String).input(),
-      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel']! as String).input(),
-      storageSizeGb: map['storageSizeGb'] == null ? null : (map['storageSizeGb']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tairInstanceName: map['tairInstanceName'] == null ? null : (map['tairInstanceName']! as String).input(),
-      vpcAuthMode: map['vpcAuthMode'] == null ? null : (map['vpcAuthMode']! as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoRenewPeriod: (() {
+        final guardedValue = map['autoRenewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupId: (() {
+        final guardedValue = map['backupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterBackupId: (() {
+        final guardedValue = map['clusterBackupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStringPrefix: (() {
+        final guardedValue = map['connectionStringPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveTime: (() {
+        final guardedValue = map['effectiveTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceUpgrade: (() {
+        final guardedValue = map['forceUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      globalInstanceId: (() {
+        final guardedValue = map['globalInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      intranetBandwidth: (() {
+        final guardedValue = map['intranetBandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      modifyMode: (() {
+        final guardedValue = map['modifyMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeType: (() {
+        final guardedValue = map['nodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramNoLooseSentinelEnabled: (() {
+        final guardedValue = map['paramNoLooseSentinelEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramNoLooseSentinelPasswordFreeAccess: (() {
+        final guardedValue = map['paramNoLooseSentinelPasswordFreeAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramNoLooseSentinelPasswordFreeCommands: (() {
+        final guardedValue = map['paramNoLooseSentinelPasswordFreeCommands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramReplMode: (() {
+        final guardedValue = map['paramReplMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramSemisyncReplTimeout: (() {
+        final guardedValue = map['paramSemisyncReplTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paramSentinelCompatEnable: (() {
+        final guardedValue = map['paramSentinelCompatEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      readOnlyCount: (() {
+        final guardedValue = map['readOnlyCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recoverConfigMode: (() {
+        final guardedValue = map['recoverConfigMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryZoneId: (() {
+        final guardedValue = map['secondaryZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpGroupName: (() {
+        final guardedValue = map['securityIpGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIps: (() {
+        final guardedValue = map['securityIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shardCount: (() {
+        final guardedValue = map['shardCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      slaveReadOnlyCount: (() {
+        final guardedValue = map['slaveReadOnlyCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      srcDbInstanceId: (() {
+        final guardedValue = map['srcDbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslEnabled: (() {
+        final guardedValue = map['sslEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePerformanceLevel: (() {
+        final guardedValue = map['storagePerformanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSizeGb: (() {
+        final guardedValue = map['storageSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tairInstanceName: (() {
+        final guardedValue = map['tairInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcAuthMode: (() {
+        final guardedValue = map['vpcAuthMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

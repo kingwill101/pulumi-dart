@@ -8,20 +8,28 @@ import 'system_data_response.dart';
 class GetServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource Id for the resource.
   final String id;
+
   /// The GEO location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// Properties of the Service resource
   final ClusterResourcePropertiesResponse properties;
+
   /// Sku of the Service resource
   final SkuResponse? sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Tags of the service which is a list of key value pairs that describe the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
 
@@ -54,7 +62,7 @@ class GetServiceResult {
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -65,14 +73,31 @@ class GetServiceResult {
     return GetServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: ClusterResourcePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: ClusterResourcePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

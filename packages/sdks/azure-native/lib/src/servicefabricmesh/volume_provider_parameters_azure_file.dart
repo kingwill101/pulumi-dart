@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeProviderParametersAzureFile {
   /// Access key of the Azure storage account for the File Share.
   final pulumi.Input<String>? accountKey;
+
   /// Name of the Azure storage account for the File Share.
   final pulumi.Input<String> accountName;
+
   /// Name of the Azure Files file share that provides storage for the volume.
   final pulumi.Input<String> shareName;
 
@@ -31,10 +33,13 @@ class VolumeProviderParametersAzureFile {
 
   factory VolumeProviderParametersAzureFile.fromMap(Map<String, dynamic> map) {
     return VolumeProviderParametersAzureFile(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemParameter {
   /// Define the HTTP header name to use for the parameter. It is case insensitive.
   final pulumi.Input<String>? httpHeader;
+
   /// Define the name of the parameter, such as "api_key" . It is case sensitive.
   final pulumi.Input<String>? name;
+
   /// Define the URL query parameter name to use for the parameter. It is case sensitive.
   final pulumi.Input<String>? urlQueryParameter;
 
@@ -15,11 +17,7 @@ class SystemParameter {
   /// [httpHeader] Define the HTTP header name to use for the parameter. It is case insensitive.
   /// [name] Define the name of the parameter, such as "api_key" . It is case sensitive.
   /// [urlQueryParameter] Define the URL query parameter name to use for the parameter. It is case sensitive.
-  SystemParameter({
-    this.httpHeader,
-    this.name,
-    this.urlQueryParameter,
-  });
+  SystemParameter({this.httpHeader, this.name, this.urlQueryParameter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SystemParameter {
 
   factory SystemParameter.fromMap(Map<String, dynamic> map) {
     return SystemParameter(
-      httpHeader: map['httpHeader'] == null ? null : (map['httpHeader']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      urlQueryParameter: map['urlQueryParameter'] == null ? null : (map['urlQueryParameter']! as String).input(),
+      httpHeader: (() {
+        final guardedValue = map['httpHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlQueryParameter: (() {
+        final guardedValue = map['urlQueryParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

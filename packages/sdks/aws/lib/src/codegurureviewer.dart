@@ -1,5 +1,3 @@
-library module_codegurureviewer;
-
 export 'codegurureviewer/repository_association.dart';
 export 'codegurureviewer/repository_association_args.dart';
 export 'codegurureviewer/repository_association_kms_key_details.dart';

@@ -3,16 +3,15 @@ enum ManagedNetworkStatus {
   valueInactive("Inactive"),
   valueActive("Active");
 
-  const ManagedNetworkStatus(this.value);
-  final String value;
+  const ManagedNetworkStatus(this.wireValue);
+  final String wireValue;
 
   static ManagedNetworkStatus fromValue(String value) {
     for (final item in ManagedNetworkStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedNetworkStatus value: $value');
   }
 }
-

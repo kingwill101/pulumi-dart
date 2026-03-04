@@ -28,8 +28,19 @@ class GetObjectStorageEndpointsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints': pulumi.Input.encodeList<GetObjectStorageEndpointsEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetObjectStorageEndpointsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'endpoints':
+          pulumi.Input.encodeList<
+            GetObjectStorageEndpointsEndpoint,
+            Map<String, dynamic>
+          >(endpoints, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetObjectStorageEndpointsFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -38,12 +49,33 @@ class GetObjectStorageEndpointsResult {
 
   factory GetObjectStorageEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageEndpointsResult(
-      endpoints: pulumi.Input.decodeList<GetObjectStorageEndpointsEndpoint>(map['endpoints'], (value) => GetObjectStorageEndpointsEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetObjectStorageEndpointsFilter>(map['filters']!, (value) => GetObjectStorageEndpointsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetObjectStorageEndpointsEndpoint>(
+        map['endpoints']!,
+        (value) => GetObjectStorageEndpointsEndpoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetObjectStorageEndpointsFilter>(
+          guardedValue,
+          (value) => GetObjectStorageEndpointsFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

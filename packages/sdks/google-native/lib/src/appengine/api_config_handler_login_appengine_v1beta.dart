@@ -5,16 +5,17 @@ enum ApiConfigHandlerLoginAppengineV1beta {
   loginAdmin("LOGIN_ADMIN"),
   loginRequired("LOGIN_REQUIRED");
 
-  const ApiConfigHandlerLoginAppengineV1beta(this.value);
-  final String value;
+  const ApiConfigHandlerLoginAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static ApiConfigHandlerLoginAppengineV1beta fromValue(String value) {
     for (final item in ApiConfigHandlerLoginAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApiConfigHandlerLoginAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ApiConfigHandlerLoginAppengineV1beta value: $value',
+    );
   }
 }
-

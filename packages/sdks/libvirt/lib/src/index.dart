@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/cloudinit_disk.dart';
 export 'index/cloudinit_disk_args.dart';
 export 'index/cloudinit_disk_state.dart';

@@ -11,16 +11,22 @@ import 'organization_bucket_config_index_config.dart';
 class OrganizationBucketConfigArgs {
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   final pulumi.Input<String> bucketId;
+
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   final pulumi.Input<OrganizationBucketConfigCmekSettings>? cmekSettings;
+
   /// Describes this bucket.
   final pulumi.Input<String>? description;
+
   /// A list of indexed fields and related configuration data. Structure is documented below.
   final pulumi.Input<List<OrganizationBucketConfigIndexConfig>>? indexConfigs;
+
   /// The location of the bucket. The supported locations are: "global" "us-central1"
   final pulumi.Input<String> location;
+
   /// The parent resource that contains the logging bucket.
   final pulumi.Input<String> organization;
+
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   final pulumi.Input<int>? retentionDays;
 
@@ -45,9 +51,24 @@ class OrganizationBucketConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketId': bucketId,
-      'cmekSettings': ?pulumi.Input.mapOptionalInputValue<OrganizationBucketConfigCmekSettings, Map<String, dynamic>>(cmekSettings, (value) => value.toMap()),
+      'cmekSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            OrganizationBucketConfigCmekSettings,
+            Map<String, dynamic>
+          >(cmekSettings, (value) => value.toMap()),
       'description': ?description,
-      'indexConfigs': ?pulumi.Input.mapOptionalInputValue<List<OrganizationBucketConfigIndexConfig>, List<Map<String, dynamic>>>(indexConfigs, (value) => pulumi.Input.encodeList<OrganizationBucketConfigIndexConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'indexConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OrganizationBucketConfigIndexConfig>,
+            List<Map<String, dynamic>>
+          >(
+            indexConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OrganizationBucketConfigIndexConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'location': location,
       'organization': organization,
       'retentionDays': ?retentionDays,
@@ -56,14 +77,40 @@ class OrganizationBucketConfigArgs {
 
   factory OrganizationBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketConfigArgs(
-      bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs']!, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: (map['location'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      cmekSettings: (() {
+        final guardedValue = map['cmekSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OrganizationBucketConfigCmekSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexConfigs: (() {
+        final guardedValue = map['indexConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(
+            guardedValue,
+            (value) => OrganizationBucketConfigIndexConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      retentionDays: (() {
+        final guardedValue = map['retentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

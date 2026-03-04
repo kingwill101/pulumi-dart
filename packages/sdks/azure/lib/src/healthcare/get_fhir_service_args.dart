@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFhirServiceArgs {
   /// The name of the Healthcare FHIR Service.
   final pulumi.Input<String> name;
+
   /// The map of tags assigned to the Healthcare FHIR Service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The id of the Healthcare Workspace in which the Healthcare FHIR Service exists.
   final pulumi.Input<String> workspaceId;
 
@@ -34,10 +36,15 @@ class GetFhirServiceArgs {
 
   factory GetFhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceArgs(
-      name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

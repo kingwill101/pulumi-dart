@@ -363,38 +363,56 @@ import 'connector_mapping_properties_response.dart';
 class ConnectorMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The connector mapping name
   late final pulumi.Output<String> connectorMappingName;
+
   /// The connector name.
   late final pulumi.Output<String> connectorName;
+
   /// Type of connector.
   late final pulumi.Output<String?> connectorType;
+
   /// The created time.
   late final pulumi.Output<String> created;
+
   /// The DataFormat ID.
   late final pulumi.Output<String> dataFormatId;
+
   /// The description of the connector mapping.
   late final pulumi.Output<String?> description;
+
   /// Display name for the connector mapping.
   late final pulumi.Output<String?> displayName;
+
   /// Defines which entity type the file should map to.
   late final pulumi.Output<String> entityType;
+
   /// The mapping entity name.
   late final pulumi.Output<String> entityTypeName;
+
   /// The last modified time.
   late final pulumi.Output<String> lastModified;
+
   /// The properties of the mapping.
-  late final pulumi.Output<ConnectorMappingPropertiesResponse> mappingProperties;
+  late final pulumi.Output<ConnectorMappingPropertiesResponse>
+  mappingProperties;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The next run time based on customer's settings.
   late final pulumi.Output<String> nextRunTime;
+
   /// The RunId.
   late final pulumi.Output<String> runId;
+
   /// State of connector mapping.
   late final pulumi.Output<String> state;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -407,28 +425,30 @@ class ConnectorMapping extends pulumi.CustomResource {
     ConnectorMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customerinsights:ConnectorMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectorMappingName = registerOutput<String>('connectorMappingName');
-    this.connectorName = registerOutput<String>('connectorName');
-    this.connectorType = registerOutput<String?>('connectorType');
-    this.created = registerOutput<String>('created');
-    this.dataFormatId = registerOutput<String>('dataFormatId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.entityType = registerOutput<String>('entityType');
-    this.entityTypeName = registerOutput<String>('entityTypeName');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>('mappingProperties');
+         'azure-native:customerinsights:ConnectorMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorMappingName = registerOutput<String>('connectorMappingName');
+    connectorName = registerOutput<String>('connectorName');
+    connectorType = registerOutput<String?>('connectorType');
+    created = registerOutput<String>('created');
+    dataFormatId = registerOutput<String>('dataFormatId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    entityType = registerOutput<String>('entityType');
+    entityTypeName = registerOutput<String>('entityTypeName');
+    lastModified = registerOutput<String>('lastModified');
+    mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>(
+      'mappingProperties',
+    );
     this.name = registerOutput<String>('name');
-    this.nextRunTime = registerOutput<String>('nextRunTime');
-    this.runId = registerOutput<String>('runId');
-    this.state = registerOutput<String>('state');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    runId = registerOutput<String>('runId');
+    state = registerOutput<String>('state');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

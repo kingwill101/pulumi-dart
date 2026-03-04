@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DependsOnProfile {
   /// Application installation operation dependency.
   final pulumi.Input<List<String>>? installDependsOn;
+
   /// Application deletion operation dependency.
   final pulumi.Input<List<String>>? uninstallDependsOn;
+
   /// Application update operation dependency.
   final pulumi.Input<List<String>>? updateDependsOn;
 
@@ -31,10 +33,21 @@ class DependsOnProfile {
 
   factory DependsOnProfile.fromMap(Map<String, dynamic> map) {
     return DependsOnProfile(
-      installDependsOn: map['installDependsOn'] == null ? null : ((map['installDependsOn']! as List).cast<String>()).input(),
-      uninstallDependsOn: map['uninstallDependsOn'] == null ? null : ((map['uninstallDependsOn']! as List).cast<String>()).input(),
-      updateDependsOn: map['updateDependsOn'] == null ? null : ((map['updateDependsOn']! as List).cast<String>()).input(),
+      installDependsOn: (() {
+        final guardedValue = map['installDependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      uninstallDependsOn: (() {
+        final guardedValue = map['uninstallDependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      updateDependsOn: (() {
+        final guardedValue = map['updateDependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

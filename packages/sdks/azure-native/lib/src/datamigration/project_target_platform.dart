@@ -7,16 +7,15 @@ enum ProjectTargetPlatform {
   valueMongoDb("MongoDb"),
   valueUnknown("Unknown");
 
-  const ProjectTargetPlatform(this.value);
-  final String value;
+  const ProjectTargetPlatform(this.wireValue);
+  final String wireValue;
 
   static ProjectTargetPlatform fromValue(String value) {
     for (final item in ProjectTargetPlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProjectTargetPlatform value: $value');
   }
 }
-

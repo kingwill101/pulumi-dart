@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupClusterDataEncryption {
   /// URI for the key in keyvault for data encryption of the primary server.
   final pulumi.Input<String>? primaryKeyUri;
+
   /// Resource Id for the User assigned identity to be used for data encryption of the primary server.
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
   final pulumi.Input<String>? type;
@@ -30,10 +31,21 @@ class ServerGroupClusterDataEncryption {
 
   factory ServerGroupClusterDataEncryption.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterDataEncryption(
-      primaryKeyUri: map['primaryKeyUri'] == null ? null : (map['primaryKeyUri']! as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      primaryKeyUri: (() {
+        final guardedValue = map['primaryKeyUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryUserAssignedIdentityId: (() {
+        final guardedValue = map['primaryUserAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

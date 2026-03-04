@@ -4,16 +4,17 @@ enum ResourceProviderCapabilitiesEffect {
   allow("Allow"),
   disallow("Disallow");
 
-  const ResourceProviderCapabilitiesEffect(this.value);
-  final String value;
+  const ResourceProviderCapabilitiesEffect(this.wireValue);
+  final String wireValue;
 
   static ResourceProviderCapabilitiesEffect fromValue(String value) {
     for (final item in ResourceProviderCapabilitiesEffect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourceProviderCapabilitiesEffect value: $value');
+    throw ArgumentError(
+      'Unknown ResourceProviderCapabilitiesEffect value: $value',
+    );
   }
 }
-

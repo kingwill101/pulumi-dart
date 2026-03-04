@@ -1,5 +1,3 @@
-library module_composer;
-
 export 'composer/allowed_ip_range.dart';
 export 'composer/allowed_ip_range_composer_v1beta1.dart';
 export 'composer/allowed_ip_range_response.dart';

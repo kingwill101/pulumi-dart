@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// Specify the path to the certificate file of this certificate.
   final pulumi.Input<String> certificateVirtualPath;
+
   /// Specify the ID of the Key Vault Secret for this certificate.
   final pulumi.Input<String> keyVaultSecretId;
+
   /// Specify the path to the key file of this certificate.
   final pulumi.Input<String> keyVirtualPath;
+
   /// The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   final pulumi.Input<String> nginxDeploymentId;
 
@@ -44,12 +48,21 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateVirtualPath: (map['certificateVirtualPath'] as String).input(),
-      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
-      keyVirtualPath: (map['keyVirtualPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
+      certificateVirtualPath: pulumi.Input.fromValue(
+        map['certificateVirtualPath'] as String,
+      ),
+      keyVaultSecretId: pulumi.Input.fromValue(
+        map['keyVaultSecretId'] as String,
+      ),
+      keyVirtualPath: pulumi.Input.fromValue(map['keyVirtualPath'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nginxDeploymentId: pulumi.Input.fromValue(
+        map['nginxDeploymentId'] as String,
+      ),
     );
   }
 }
-

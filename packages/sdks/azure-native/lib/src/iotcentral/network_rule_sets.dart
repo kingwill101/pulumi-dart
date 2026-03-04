@@ -7,10 +7,13 @@ import 'network_rule_set_ip_rule.dart';
 class NetworkRuleSets {
   /// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
   final pulumi.Input<bool>? applyToDevices;
+
   /// Whether these rules apply for connectivity via IoT Central web portal and APIs.
   final pulumi.Input<bool>? applyToIoTCentral;
+
   /// The default network action to apply.
   final pulumi.Input<String>? defaultAction;
+
   /// List of IP rules.
   final pulumi.Input<List<NetworkRuleSetIpRule>>? ipRules;
 
@@ -31,17 +34,50 @@ class NetworkRuleSets {
       'applyToDevices': ?applyToDevices,
       'applyToIoTCentral': ?applyToIoTCentral,
       'defaultAction': ?defaultAction,
-      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<NetworkRuleSetIpRule>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<NetworkRuleSetIpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkRuleSetIpRule>,
+            List<Map<String, dynamic>>
+          >(
+            ipRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkRuleSetIpRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkRuleSets.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSets(
-      applyToDevices: map['applyToDevices'] == null ? null : (map['applyToDevices']! as bool).input(),
-      applyToIoTCentral: map['applyToIoTCentral'] == null ? null : (map['applyToIoTCentral']! as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<NetworkRuleSetIpRule>(map['ipRules']!, (value) => NetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyToDevices: (() {
+        final guardedValue = map['applyToDevices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      applyToIoTCentral: (() {
+        final guardedValue = map['applyToIoTCentral'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      defaultAction: (() {
+        final guardedValue = map['defaultAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRules: (() {
+        final guardedValue = map['ipRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkRuleSetIpRule>(
+            guardedValue,
+            (value) => NetworkRuleSetIpRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

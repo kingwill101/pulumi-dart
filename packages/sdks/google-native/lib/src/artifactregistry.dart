@@ -1,5 +1,3 @@
-library module_artifactregistry;
-
 export 'artifactregistry/apt_repository.dart';
 export 'artifactregistry/apt_repository_response.dart';
 export 'artifactregistry/binding.dart';

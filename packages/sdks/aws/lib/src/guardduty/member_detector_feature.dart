@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'member_detector_feature_additional_configuration.dart';
 import 'member_detector_feature_args.dart';
 import 'member_detector_feature_state.dart';
 
 /// Provides a resource to manage a single Amazon GuardDuty [detector feature](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-features-activation-model.html#guardduty-features) for a member account.
 ///
-/// > **NOTE:** Deleting this resource does not disable the detector feature in the member account, the resource in simply removed from state instead.
+/// &gt; **NOTE:** Deleting this resource does not disable the detector feature in the member account, the resource in simply removed from state instead.
 ///
 /// ## Example Usage
 ///
@@ -347,14 +346,20 @@ import 'member_detector_feature_state.dart';
 class MemberDetectorFeature extends pulumi.CustomResource {
   /// Member account ID to be updated.
   late final pulumi.Output<String> accountId;
+
   /// Additional feature configuration block. See below.
-  late final pulumi.Output<List<MemberDetectorFeatureAdditionalConfiguration>?> additionalConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  additionalConfigurations;
+
   /// Amazon GuardDuty detector ID.
   late final pulumi.Output<String> detectorId;
+
   /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> status;
 
@@ -367,17 +372,19 @@ class MemberDetectorFeature extends pulumi.CustomResource {
     MemberDetectorFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.additionalConfigurations = registerOutput<List<MemberDetectorFeatureAdditionalConfiguration>?>('additionalConfigurations');
-    this.detectorId = registerOutput<String>('detectorId');
+         'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    additionalConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalConfigurations',
+    );
+    detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [MemberDetectorFeature] resource's state with the given [name] and [id].
@@ -398,16 +405,18 @@ class MemberDetectorFeature extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.additionalConfigurations = registerOutput<List<MemberDetectorFeatureAdditionalConfiguration>?>('additionalConfigurations');
-    this.detectorId = registerOutput<String>('detectorId');
+         'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    additionalConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalConfigurations',
+    );
+    detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 }

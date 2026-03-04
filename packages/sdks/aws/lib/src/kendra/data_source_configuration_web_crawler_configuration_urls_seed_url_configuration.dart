@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration {
   /// The list of seed or starting point URLs of the websites you want to crawl. The list can include a maximum of `100` seed URLs. Array Members: Minimum number of `0` items. Maximum number of `100` items. Length Constraints: Minimum length of `1`. Maximum length of `2048`.
   final pulumi.Input<List<String>> seedUrls;
+
   /// The default mode is set to `HOST_ONLY`. You can choose one of the following modes:
   /// * `HOST_ONLY` - crawl only the website host names. For example, if the seed URL is `"abc.example.com"`, then only URLs with host name `"abc.example.com"` are crawled.
   /// * `SUBDOMAINS` - crawl the website host names with subdomains. For example, if the seed URL is `"abc.example.com"`, then `"a.abc.example.com"` and `"b.abc.example.com"` are also crawled.
@@ -26,11 +27,18 @@ class DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration {
     };
   }
 
-  factory DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration(
-      seedUrls: ((map['seedUrls'] as List).cast<String>()).input(),
-      webCrawlerMode: map['webCrawlerMode'] == null ? null : ((map['webCrawlerMode'] as String).input()).input(),
+      seedUrls: pulumi.Input.fromValue(
+        (map['seedUrls'] as List).cast<String>(),
+      ),
+      webCrawlerMode: (() {
+        final guardedValue = map['webCrawlerMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

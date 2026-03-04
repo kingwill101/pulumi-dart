@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedAccessPolicyArgs {
   /// The name of the IoTHub to which this Shared Access Policy belongs.
   final pulumi.Input<String> iothubName;
+
   /// Specifies the name of the IotHub Shared Access Policy resource.
   final pulumi.Input<String> name;
+
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetSharedAccessPolicyArgs {
 
   factory GetSharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedAccessPolicyArgs(
-      iothubName: (map['iothubName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      iothubName: pulumi.Input.fromValue(map['iothubName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

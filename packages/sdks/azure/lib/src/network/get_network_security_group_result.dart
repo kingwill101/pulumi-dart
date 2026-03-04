@@ -7,13 +7,17 @@ import 'get_network_security_group_security_rule.dart';
 class GetNetworkSecurityGroupResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The supported Azure location where the resource exists.
   final String location;
+
   /// The name of the security rule.
   final String name;
   final String resourceGroupName;
+
   /// One or more `security_rule` blocks as defined below.
   final List<GetNetworkSecurityGroupSecurityRule> securityRules;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -39,7 +43,11 @@ class GetNetworkSecurityGroupResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'securityRules': pulumi.Input.encodeList<GetNetworkSecurityGroupSecurityRule, Map<String, dynamic>>(securityRules, (value) => value.toMap()),
+      'securityRules':
+          pulumi.Input.encodeList<
+            GetNetworkSecurityGroupSecurityRule,
+            Map<String, dynamic>
+          >(securityRules, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -50,9 +58,14 @@ class GetNetworkSecurityGroupResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      securityRules: pulumi.Input.decodeList<GetNetworkSecurityGroupSecurityRule>(map['securityRules'], (value) => GetNetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>())),
+      securityRules:
+          pulumi.Input.decodeList<GetNetworkSecurityGroupSecurityRule>(
+            map['securityRules']!,
+            (value) => GetNetworkSecurityGroupSecurityRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

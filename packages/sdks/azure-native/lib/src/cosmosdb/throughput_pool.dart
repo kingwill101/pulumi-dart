@@ -148,18 +148,25 @@ import 'throughput_pool_args.dart';
 class ThroughputPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Value for throughput to be shared among CosmosDB resources in the pool.
   late final pulumi.Output<int?> maxThroughput;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A provisioning state of the ThroughputPool.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -172,18 +179,18 @@ class ThroughputPool extends pulumi.CustomResource {
     ThroughputPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:ThroughputPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
-    this.maxThroughput = registerOutput<int?>('maxThroughput');
+         'azure-native:cosmosdb:ThroughputPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    maxThroughput = registerOutput<int?>('maxThroughput');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

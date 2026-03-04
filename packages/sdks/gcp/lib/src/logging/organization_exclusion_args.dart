@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationExclusionArgs {
   /// A human-readable description.
   final pulumi.Input<String>? description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   final pulumi.Input<bool>? disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   final pulumi.Input<String> filter;
+
   /// The name of the logging exclusion.
   final pulumi.Input<String>? name;
+
   /// The organization to create the exclusion in.
   final pulumi.Input<String> orgId;
 
@@ -47,12 +51,23 @@ class OrganizationExclusionArgs {
 
   factory OrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      filter: (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: (map['orgId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
     );
   }
 }
-

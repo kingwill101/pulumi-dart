@@ -1,5 +1,3 @@
-library module_scheduler;
-
 export 'scheduler/basic_authentication.dart';
 export 'scheduler/basic_authentication_response.dart';
 export 'scheduler/client_cert_authentication.dart';

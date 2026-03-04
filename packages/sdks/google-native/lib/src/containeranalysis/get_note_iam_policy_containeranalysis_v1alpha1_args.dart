@@ -19,17 +19,19 @@ class GetNoteIamPolicyContaineranalysisV1alpha1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'noteId': noteId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'noteId': noteId, 'project': ?project};
   }
 
-  factory GetNoteIamPolicyContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetNoteIamPolicyContaineranalysisV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNoteIamPolicyContaineranalysisV1alpha1Args(
-      noteId: (map['noteId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      noteId: pulumi.Input.fromValue(map['noteId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorDetailsResponse {
   /// Multi-part error code for classification and root causing of errors (ex: 400.200.100.432).
   final pulumi.Input<String> code;
+
   /// Unique identifier for the transaction to aid in debugging.
   final pulumi.Input<String> correlationId;
+
   /// Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”).
   final pulumi.Input<String> info;
+
   /// Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”).
   final pulumi.Input<String> message;
 
@@ -36,11 +39,10 @@ class ErrorDetailsResponse {
 
   factory ErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailsResponse(
-      code: (map['code'] as String).input(),
-      correlationId: (map['correlationId'] as String).input(),
-      info: (map['info'] as String).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
+      info: pulumi.Input.fromValue(map['info'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

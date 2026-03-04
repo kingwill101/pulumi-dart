@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcFirewallAclEngineModeArgs {
   /// The ID of member account.
   final pulumi.Input<String>? memberUid;
+
   /// The mode of the ACL engine. Possible values are `0`, `1`.
   final pulumi.Input<int> strictMode;
+
   /// The ID of the VPC firewall.
   final pulumi.Input<String> vpcFirewallId;
 
@@ -34,10 +36,13 @@ class VpcFirewallAclEngineModeArgs {
 
   factory VpcFirewallAclEngineModeArgs.fromMap(Map<String, dynamic> map) {
     return VpcFirewallAclEngineModeArgs(
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
-      strictMode: (map['strictMode'] as int).input(),
-      vpcFirewallId: (map['vpcFirewallId'] as String).input(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      strictMode: pulumi.Input.fromValue(map['strictMode'] as int),
+      vpcFirewallId: pulumi.Input.fromValue(map['vpcFirewallId'] as String),
     );
   }
 }
-

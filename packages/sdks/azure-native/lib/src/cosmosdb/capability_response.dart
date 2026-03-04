@@ -9,20 +9,19 @@ class CapabilityResponse {
 
   /// Creates a new [CapabilityResponse].
   /// [name] Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-  CapabilityResponse({
-    this.name,
-  });
+  CapabilityResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory CapabilityResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationBusinessProcessDevelopmentArtifactArgs {
   /// The name of the Application
   final pulumi.Input<String> applicationName;
+
   /// The name of the business process development artifact.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the space
   final pulumi.Input<String> spaceName;
 
@@ -37,13 +40,16 @@ class GetApplicationBusinessProcessDevelopmentArtifactArgs {
     };
   }
 
-  factory GetApplicationBusinessProcessDevelopmentArtifactArgs.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationBusinessProcessDevelopmentArtifactArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationBusinessProcessDevelopmentArtifactArgs(
-      applicationName: (map['applicationName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spaceName: (map['spaceName'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      spaceName: pulumi.Input.fromValue(map['spaceName'] as String),
     );
   }
 }
-

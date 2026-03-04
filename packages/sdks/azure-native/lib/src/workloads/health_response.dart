@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthResponse {
   /// Health state of the resource
   final pulumi.Input<String> healthState;
+
   /// Reasons impacting health state
   final pulumi.Input<String> impactingReasons;
 
   /// Creates a new [HealthResponse].
   /// [healthState] Health state of the resource
   /// [impactingReasons] Reasons impacting health state
-  HealthResponse({
-    required this.healthState,
-    required this.impactingReasons,
-  });
+  HealthResponse({required this.healthState, required this.impactingReasons});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,10 @@ class HealthResponse {
 
   factory HealthResponse.fromMap(Map<String, dynamic> map) {
     return HealthResponse(
-      healthState: (map['healthState'] as String).input(),
-      impactingReasons: (map['impactingReasons'] as String).input(),
+      healthState: pulumi.Input.fromValue(map['healthState'] as String),
+      impactingReasons: pulumi.Input.fromValue(
+        map['impactingReasons'] as String,
+      ),
     );
   }
 }
-

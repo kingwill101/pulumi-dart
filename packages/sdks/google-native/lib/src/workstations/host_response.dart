@@ -10,20 +10,25 @@ class HostResponse {
 
   /// Creates a new [HostResponse].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  HostResponse({
-    required this.gceInstance,
-  });
+  HostResponse({required this.gceInstance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstance': pulumi.Input.mapInputValue<GceInstanceResponse, Map<String, dynamic>>(gceInstance, (value) => value.toMap()),
+      'gceInstance':
+          pulumi.Input.mapInputValue<GceInstanceResponse, Map<String, dynamic>>(
+            gceInstance,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory HostResponse.fromMap(Map<String, dynamic> map) {
     return HostResponse(
-      gceInstance: (GceInstanceResponse.fromMap((map['gceInstance'] as Map).cast<String, dynamic>())).input(),
+      gceInstance: pulumi.Input.fromValue(
+        GceInstanceResponse.fromMap(
+          (map['gceInstance']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

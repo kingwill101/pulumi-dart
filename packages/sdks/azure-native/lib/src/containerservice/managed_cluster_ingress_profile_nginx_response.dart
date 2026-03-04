@@ -18,10 +18,15 @@ class ManagedClusterIngressProfileNginxResponse {
     };
   }
 
-  factory ManagedClusterIngressProfileNginxResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterIngressProfileNginxResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterIngressProfileNginxResponse(
-      defaultIngressControllerType: map['defaultIngressControllerType'] == null ? null : (map['defaultIngressControllerType']! as String).input(),
+      defaultIngressControllerType: (() {
+        final guardedValue = map['defaultIngressControllerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

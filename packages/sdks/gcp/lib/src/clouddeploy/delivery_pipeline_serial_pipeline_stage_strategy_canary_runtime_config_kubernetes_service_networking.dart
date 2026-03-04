@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
   /// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
   final pulumi.Input<String> deployment;
+
   /// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
   final pulumi.Input<bool>? disablePodOverprovisioning;
+
   /// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
   final pulumi.Input<String>? podSelectorLabel;
+
   /// Required. Name of the Kubernetes Service.
   final pulumi.Input<String> service;
 
@@ -33,13 +36,22 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking(
-      deployment: (map['deployment'] as String).input(),
-      disablePodOverprovisioning: map['disablePodOverprovisioning'] == null ? null : (map['disablePodOverprovisioning']! as bool).input(),
-      podSelectorLabel: map['podSelectorLabel'] == null ? null : (map['podSelectorLabel']! as String).input(),
-      service: (map['service'] as String).input(),
+      deployment: pulumi.Input.fromValue(map['deployment'] as String),
+      disablePodOverprovisioning: (() {
+        final guardedValue = map['disablePodOverprovisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      podSelectorLabel: (() {
+        final guardedValue = map['podSelectorLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

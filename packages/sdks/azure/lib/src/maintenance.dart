@@ -1,5 +1,3 @@
-library module_maintenance;
-
 export 'maintenance/assignment_dedicated_host.dart';
 export 'maintenance/assignment_dedicated_host_args.dart';
 export 'maintenance/assignment_dedicated_host_state.dart';

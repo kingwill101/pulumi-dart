@@ -8,7 +8,7 @@ import 'cache_reserve_instance_state.dart';
 ///
 /// For information about ESA Cache Reserve Instance and how to use it, see [What is Cache Reserve Instance](https://next.api.alibabacloud.com/document/ESA/2024-09-10/PurchaseCacheReserve).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -165,20 +165,27 @@ import 'cache_reserve_instance_state.dart';
 class CacheReserveInstance extends pulumi.CustomResource {
   /// Automatic payment.
   late final pulumi.Output<bool?> autoPay;
+
   /// Whether to auto-renew:
   late final pulumi.Output<bool?> autoRenew;
+
   /// Cache holding area
   /// - `HK`: Hong Kong, China
   /// - `CN`: Mainland China
   late final pulumi.Output<String?> crRegion;
+
   /// Instance purchase time.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to enable auto payment.
   late final pulumi.Output<String> paymentType;
+
   /// Purchase period (unit: month).
   late final pulumi.Output<int?> period;
+
   /// Cache retention specification (unit: GB).
   late final pulumi.Output<int?> quotaGb;
+
   /// The status of the cache reserve instance. , it is unavailable.
   late final pulumi.Output<String> status;
 
@@ -191,19 +198,19 @@ class CacheReserveInstance extends pulumi.CustomResource {
     CacheReserveInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.crRegion = registerOutput<String?>('crRegion');
-    this.createTime = registerOutput<String>('createTime');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.quotaGb = registerOutput<int?>('quotaGb');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    crRegion = registerOutput<String?>('crRegion');
+    createTime = registerOutput<String>('createTime');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    quotaGb = registerOutput<int?>('quotaGb');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [CacheReserveInstance] resource's state with the given [name] and [id].
@@ -224,18 +231,18 @@ class CacheReserveInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.crRegion = registerOutput<String?>('crRegion');
-    this.createTime = registerOutput<String>('createTime');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.quotaGb = registerOutput<int?>('quotaGb');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    crRegion = registerOutput<String?>('crRegion');
+    createTime = registerOutput<String>('createTime');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    quotaGb = registerOutput<int?>('quotaGb');
+    status = registerOutput<String>('status');
   }
 }

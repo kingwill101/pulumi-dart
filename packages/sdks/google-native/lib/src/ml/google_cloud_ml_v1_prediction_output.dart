@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1PredictionOutput {
   /// The number of data instances which resulted in errors.
   final pulumi.Input<String>? errorCount;
+
   /// Node hours used by the batch prediction job.
   final pulumi.Input<double>? nodeHours;
+
   /// The output Google Cloud Storage location provided at the job creation time.
   final pulumi.Input<String>? outputPath;
+
   /// The number of generated predictions.
   final pulumi.Input<String>? predictionCount;
 
@@ -36,11 +39,26 @@ class GoogleCloudMlV1PredictionOutput {
 
   factory GoogleCloudMlV1PredictionOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1PredictionOutput(
-      errorCount: map['errorCount'] == null ? null : (map['errorCount']! as String).input(),
-      nodeHours: map['nodeHours'] == null ? null : (map['nodeHours']! as double).input(),
-      outputPath: map['outputPath'] == null ? null : (map['outputPath']! as String).input(),
-      predictionCount: map['predictionCount'] == null ? null : (map['predictionCount']! as String).input(),
+      errorCount: (() {
+        final guardedValue = map['errorCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeHours: (() {
+        final guardedValue = map['nodeHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      outputPath: (() {
+        final guardedValue = map['outputPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      predictionCount: (() {
+        final guardedValue = map['predictionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

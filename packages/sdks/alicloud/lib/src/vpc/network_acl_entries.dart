@@ -1,16 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_entries_args.dart';
-import 'network_acl_entries_egress.dart';
-import 'network_acl_entries_ingress.dart';
 import 'network_acl_entries_state.dart';
 
 /// Provides a network acl entries resource to create ingress and egress entries.
 ///
-/// > **NOTE:** Available in 1.45.0+.
+/// &gt; **NOTE:** Available in 1.45.0+.
 ///
-/// > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
+/// &gt; **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
 ///
-/// > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
+/// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
 ///
 /// ## Example Usage
 ///
@@ -444,9 +442,11 @@ import 'network_acl_entries_state.dart';
 /// 📚 Need more examples? VIEW MORE EXAMPLES
 class NetworkAclEntries extends pulumi.CustomResource {
   /// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
-  late final pulumi.Output<List<NetworkAclEntriesEgress>?> egresses;
+  late final pulumi.Output<List<Map<String, dynamic>>?> egresses;
+
   /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
-  late final pulumi.Output<List<NetworkAclEntriesIngress>?> ingresses;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ingresses;
+
   /// The id of the network acl, the field can't be changed.
   late final pulumi.Output<String> networkAclId;
 
@@ -459,14 +459,14 @@ class NetworkAclEntries extends pulumi.CustomResource {
     NetworkAclEntriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAclEntries:NetworkAclEntries',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.egresses = registerOutput<List<NetworkAclEntriesEgress>?>('egresses');
-    this.ingresses = registerOutput<List<NetworkAclEntriesIngress>?>('ingresses');
-    this.networkAclId = registerOutput<String>('networkAclId');
+         'alicloud:vpc/networkAclEntries:NetworkAclEntries',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    egresses = registerOutput<List<Map<String, dynamic>>?>('egresses');
+    ingresses = registerOutput<List<Map<String, dynamic>>?>('ingresses');
+    networkAclId = registerOutput<String>('networkAclId');
   }
 
   /// Gets an existing [NetworkAclEntries] resource's state with the given [name] and [id].
@@ -487,13 +487,13 @@ class NetworkAclEntries extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAclEntries:NetworkAclEntries',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.egresses = registerOutput<List<NetworkAclEntriesEgress>?>('egresses');
-    this.ingresses = registerOutput<List<NetworkAclEntriesIngress>?>('ingresses');
-    this.networkAclId = registerOutput<String>('networkAclId');
+         'alicloud:vpc/networkAclEntries:NetworkAclEntries',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    egresses = registerOutput<List<Map<String, dynamic>>?>('egresses');
+    ingresses = registerOutput<List<Map<String, dynamic>>?>('ingresses');
+    networkAclId = registerOutput<String>('networkAclId');
   }
 }

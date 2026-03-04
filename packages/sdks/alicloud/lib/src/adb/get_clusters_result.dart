@@ -7,20 +7,25 @@ import 'get_clusters_cluster.dart';
 class GetClustersResult {
   /// A list of ADB clusters. Each element contains the following attributes:
   final List<GetClustersCluster> clusters;
+
   /// The description of the ADB cluster.
   final String? description;
   final String? descriptionRegex;
+
   /// A list of ADB cluster descriptions.
   final List<String> descriptions;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of ADB cluster IDs.
   final List<String> ids;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
   final String? resourceGroupId;
+
   /// Status of the cluster.
   final String? status;
   final Map<String, String>? tags;
@@ -60,7 +65,11 @@ class GetClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
+      'clusters':
+          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
+            clusters,
+            (value) => value.toMap(),
+          ),
       'description': ?description,
       'descriptionRegex': ?descriptionRegex,
       'descriptions': descriptions,
@@ -79,21 +88,60 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description']! as String,
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(
+        map['clusters']!,
+        (value) =>
+            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      descriptionRegex: (() {
+        final guardedValue = map['descriptionRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       descriptions: (map['descriptions'] as List).cast<String>(),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       totalCount: map['totalCount'] as int,
     );
   }
 }
-

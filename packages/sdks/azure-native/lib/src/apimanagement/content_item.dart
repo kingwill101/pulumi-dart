@@ -192,10 +192,13 @@ import 'content_item_args.dart';
 class ContentItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Properties of the content item.
   late final pulumi.Output<dynamic> properties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -208,14 +211,14 @@ class ContentItem extends pulumi.CustomResource {
     ContentItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ContentItem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:ContentItem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<dynamic>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
   }
 }

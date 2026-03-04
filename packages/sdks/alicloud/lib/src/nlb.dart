@@ -1,5 +1,3 @@
-library module_nlb;
-
 export 'nlb/functions.dart';
 export 'nlb/get_listeners_args.dart';
 export 'nlb/get_listeners_listener.dart';

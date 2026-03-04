@@ -6,6 +6,7 @@ class MetastoreServiceMaintenanceWindow {
   /// The day of week, when the window starts.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> dayOfWeek;
+
   /// The hour of day (0-23) when the window starts.
   final pulumi.Input<int> hourOfDay;
 
@@ -18,17 +19,13 @@ class MetastoreServiceMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek,
-      'hourOfDay': hourOfDay,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek, 'hourOfDay': hourOfDay};
   }
 
   factory MetastoreServiceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceMaintenanceWindow(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      hourOfDay: (map['hourOfDay'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
     );
   }
 }
-

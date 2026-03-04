@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAPICollectionArgs {
   /// A string representing the apiCollections resource within the Microsoft.Security provider namespace. This string matches the Azure API Management API name.
   final pulumi.Input<String> apiCollectionId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,11 @@ class GetAPICollectionArgs {
 
   factory GetAPICollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetAPICollectionArgs(
-      apiCollectionId: (map['apiCollectionId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      apiCollectionId: pulumi.Input.fromValue(map['apiCollectionId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

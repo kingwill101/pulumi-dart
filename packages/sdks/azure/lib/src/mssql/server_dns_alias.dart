@@ -193,7 +193,7 @@ import 'server_dns_alias_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -208,8 +208,10 @@ import 'server_dns_alias_state.dart';
 class ServerDnsAlias extends pulumi.CustomResource {
   /// The fully qualified DNS record for alias.
   late final pulumi.Output<String> dnsRecord;
+
   /// The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   late final pulumi.Output<String> mssqlServerId;
+
   /// The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
   late final pulumi.Output<String> name;
 
@@ -222,13 +224,13 @@ class ServerDnsAlias extends pulumi.CustomResource {
     ServerDnsAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/serverDnsAlias:ServerDnsAlias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsRecord = registerOutput<String>('dnsRecord');
-    this.mssqlServerId = registerOutput<String>('mssqlServerId');
+         'azure:mssql/serverDnsAlias:ServerDnsAlias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsRecord = registerOutput<String>('dnsRecord');
+    mssqlServerId = registerOutput<String>('mssqlServerId');
     this.name = registerOutput<String>('name');
   }
 
@@ -250,13 +252,13 @@ class ServerDnsAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/serverDnsAlias:ServerDnsAlias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsRecord = registerOutput<String>('dnsRecord');
-    this.mssqlServerId = registerOutput<String>('mssqlServerId');
+         'azure:mssql/serverDnsAlias:ServerDnsAlias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsRecord = registerOutput<String>('dnsRecord');
+    mssqlServerId = registerOutput<String>('mssqlServerId');
     this.name = registerOutput<String>('name');
   }
 }

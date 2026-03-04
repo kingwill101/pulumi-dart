@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTaskExecutionOverridesContainerOverrideEnvironment {
   /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
   final pulumi.Input<String> key;
+
   /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetTaskExecutionOverridesContainerOverrideEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GetTaskExecutionOverridesContainerOverrideEnvironment.fromMap(Map<String, dynamic> map) {
+  factory GetTaskExecutionOverridesContainerOverrideEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTaskExecutionOverridesContainerOverrideEnvironment(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

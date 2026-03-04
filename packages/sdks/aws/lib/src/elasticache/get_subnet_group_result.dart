@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSubnetGroup.
 class GetSubnetGroupResult {
   /// ARN of the subnet group.
   final String arn;
+
   /// Description of the subnet group.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Set of VPC Subnet ID-s of the subnet group.
   final List<String> subnetIds;
+
   /// Map of tags assigned to the subnet group.
   final Map<String, String>? tags;
+
   /// The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group.
   final String vpcId;
 
@@ -59,9 +63,12 @@ class GetSubnetGroupResult {
       name: map['name'] as String,
       region: map['region'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       vpcId: map['vpcId'] as String,
     );
   }
 }
-

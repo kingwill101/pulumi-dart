@@ -9,34 +9,49 @@ import 'system_data_response.dart';
 class ListChannelWithKeysResult {
   /// Changed time of the resource
   final String? changedTime;
+
   /// Entity tag of the resource
   final String? entityTag;
+
   /// Entity Tag.
   final String? etag;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Required. Gets or sets the Kind of the resource.
   final String? kind;
+
   /// Specifies the location of the resource.
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// The set of properties specific to bot channel resource
   final AcsChatChannelResponse properties;
+
   /// Provisioning state of the resource
   final String? provisioningState;
+
   /// The set of properties specific to bot channel resource
   final AcsChatChannelResponse? resource;
+
   /// Channel settings
   final ChannelSettingsResponse? setting;
+
   /// Gets or sets the SKU of the resource.
   final SkuResponse? sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Contains resource tags defined as key/value pairs.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Entity zones
   final List<String> zones;
 
@@ -87,9 +102,9 @@ class ListChannelWithKeysResult {
       'name': name,
       'properties': properties.toMap(),
       'provisioningState': ?provisioningState,
-      'resource': ?resource == null ? null : resource!.toMap(),
-      'setting': ?setting == null ? null : setting!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'resource': ?resource?.toMap(),
+      'setting': ?setting?.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -99,23 +114,72 @@ class ListChannelWithKeysResult {
 
   factory ListChannelWithKeysResult.fromMap(Map<String, dynamic> map) {
     return ListChannelWithKeysResult(
-      changedTime: map['changedTime'] == null ? null : map['changedTime']! as String,
-      entityTag: map['entityTag'] == null ? null : map['entityTag']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      changedTime: (() {
+        final guardedValue = map['changedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      entityTag: (() {
+        final guardedValue = map['entityTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: AcsChatChannelResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      resource: map['resource'] == null ? null : AcsChatChannelResponse.fromMap((map['resource']! as Map).cast<String, dynamic>()),
-      setting: map['setting'] == null ? null : ChannelSettingsResponse.fromMap((map['setting']! as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: AcsChatChannelResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return AcsChatChannelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      setting: (() {
+        final guardedValue = map['setting'];
+        if (guardedValue == null) return null;
+        return ChannelSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
-

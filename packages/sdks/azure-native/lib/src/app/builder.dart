@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'builder_args.dart';
-import 'container_registry_response.dart';
 import 'managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -19,22 +18,31 @@ import 'system_data_response.dart';
 class Builder extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of mappings of container registries and the managed identity used to connect to it.
-  late final pulumi.Output<List<ContainerRegistryResponse>?> containerRegistries;
+  late final pulumi.Output<List<Map<String, dynamic>>?> containerRegistries;
+
   /// Resource ID of the container apps environment that the builder is associated with.
   late final pulumi.Output<String> environmentId;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of a builder resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -47,20 +55,22 @@ class Builder extends pulumi.CustomResource {
     BuilderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:Builder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerRegistries = registerOutput<List<ContainerRegistryResponse>?>('containerRegistries');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:app:Builder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerRegistries = registerOutput<List<Map<String, dynamic>>?>(
+      'containerRegistries',
+    );
+    environmentId = registerOutput<String>('environmentId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

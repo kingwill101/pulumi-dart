@@ -3,16 +3,20 @@ enum SecurityPolicyDdosProtectionConfigDdosProtection {
   advancedPreview("ADVANCED_PREVIEW"),
   standard("STANDARD");
 
-  const SecurityPolicyDdosProtectionConfigDdosProtection(this.value);
-  final String value;
+  const SecurityPolicyDdosProtectionConfigDdosProtection(this.wireValue);
+  final String wireValue;
 
-  static SecurityPolicyDdosProtectionConfigDdosProtection fromValue(String value) {
-    for (final item in SecurityPolicyDdosProtectionConfigDdosProtection.values) {
-      if (item.value == value) {
+  static SecurityPolicyDdosProtectionConfigDdosProtection fromValue(
+    String value,
+  ) {
+    for (final item
+        in SecurityPolicyDdosProtectionConfigDdosProtection.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyDdosProtectionConfigDdosProtection value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyDdosProtectionConfigDdosProtection value: $value',
+    );
   }
 }
-

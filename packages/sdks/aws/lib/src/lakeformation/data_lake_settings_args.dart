@@ -11,29 +11,42 @@ import 'data_lake_settings_create_table_default_permission.dart';
 class DataLakeSettingsArgs {
   /// Set of ARNs of AWS Lake Formation principals (IAM users or roles).
   final pulumi.Input<List<String>>? admins;
+
   /// Whether to allow Amazon EMR clusters to access data managed by Lake Formation.
   final pulumi.Input<bool>? allowExternalDataFiltering;
+
   /// Whether to allow a third-party query engine to get data access credentials without session tags when a caller has full data access permissions.
   final pulumi.Input<bool>? allowFullTableExternalDataAccess;
+
   /// Lake Formation relies on a privileged process secured by Amazon EMR or the third party integrator to tag the user's role while assuming it.
   final pulumi.Input<List<String>>? authorizedSessionTagValueLists;
+
   /// Identifier for the Data Catalog. By default, the account ID.
   final pulumi.Input<String>? catalogId;
+
   /// Up to three configuration blocks of principal permissions for default create database permissions. Detailed below.
-  final pulumi.Input<List<DataLakeSettingsCreateDatabaseDefaultPermission>>? createDatabaseDefaultPermissions;
+  final pulumi.Input<List<DataLakeSettingsCreateDatabaseDefaultPermission>>?
+  createDatabaseDefaultPermissions;
+
   /// Up to three configuration blocks of principal permissions for default create table permissions. Detailed below.
-  final pulumi.Input<List<DataLakeSettingsCreateTableDefaultPermission>>? createTableDefaultPermissions;
+  final pulumi.Input<List<DataLakeSettingsCreateTableDefaultPermission>>?
+  createTableDefaultPermissions;
+
   /// A list of the account IDs of Amazon Web Services accounts with Amazon EMR clusters that are to perform data filtering.
   final pulumi.Input<List<String>>? externalDataFilteringAllowLists;
+
   /// Key-value map of additional configuration. Valid values for the `CROSS_ACCOUNT_VERSION` key are `"1"`, `"2"`, `"3"`, or `"4"`. `SET_CONTEXT` is also returned with a value of `TRUE`. In a fresh account, prior to configuring, `CROSS_ACCOUNT_VERSION` is `"1"`. Destroying this resource sets the `CROSS_ACCOUNT_VERSION` to `"1"`.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Set of ARNs of AWS Lake Formation principals (IAM users or roles) with only view access to the resources.
   final pulumi.Input<List<String>>? readOnlyAdmins;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
   ///
-  /// > **NOTE:** Although optional, not including `admins`, `create_database_default_permissions`, `create_table_default_permissions`, `parameters`, and/or `trusted_resource_owners` results in the setting being cleared.
+  /// &gt; **NOTE:** Although optional, not including `admins`, `create_database_default_permissions`, `create_table_default_permissions`, `parameters`, and/or `trusted_resource_owners` results in the setting being cleared.
   final pulumi.Input<List<String>>? trustedResourceOwners;
 
   /// Creates a new [DataLakeSettingsArgs].
@@ -71,8 +84,30 @@ class DataLakeSettingsArgs {
       'allowFullTableExternalDataAccess': ?allowFullTableExternalDataAccess,
       'authorizedSessionTagValueLists': ?authorizedSessionTagValueLists,
       'catalogId': ?catalogId,
-      'createDatabaseDefaultPermissions': ?pulumi.Input.mapOptionalInputValue<List<DataLakeSettingsCreateDatabaseDefaultPermission>, List<Map<String, dynamic>>>(createDatabaseDefaultPermissions, (value) => pulumi.Input.encodeList<DataLakeSettingsCreateDatabaseDefaultPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'createTableDefaultPermissions': ?pulumi.Input.mapOptionalInputValue<List<DataLakeSettingsCreateTableDefaultPermission>, List<Map<String, dynamic>>>(createTableDefaultPermissions, (value) => pulumi.Input.encodeList<DataLakeSettingsCreateTableDefaultPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'createDatabaseDefaultPermissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataLakeSettingsCreateDatabaseDefaultPermission>,
+            List<Map<String, dynamic>>
+          >(
+            createDatabaseDefaultPermissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataLakeSettingsCreateDatabaseDefaultPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'createTableDefaultPermissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataLakeSettingsCreateTableDefaultPermission>,
+            List<Map<String, dynamic>>
+          >(
+            createTableDefaultPermissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataLakeSettingsCreateTableDefaultPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'externalDataFilteringAllowLists': ?externalDataFilteringAllowLists,
       'parameters': ?parameters,
       'readOnlyAdmins': ?readOnlyAdmins,
@@ -83,19 +118,84 @@ class DataLakeSettingsArgs {
 
   factory DataLakeSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeSettingsArgs(
-      admins: map['admins'] == null ? null : (((map['admins'] as List).cast<String>()).input()).input(),
-      allowExternalDataFiltering: map['allowExternalDataFiltering'] == null ? null : ((map['allowExternalDataFiltering'] as bool).input()).input(),
-      allowFullTableExternalDataAccess: map['allowFullTableExternalDataAccess'] == null ? null : ((map['allowFullTableExternalDataAccess'] as bool).input()).input(),
-      authorizedSessionTagValueLists: map['authorizedSessionTagValueLists'] == null ? null : (((map['authorizedSessionTagValueLists'] as List).cast<String>()).input()).input(),
-      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
-      createDatabaseDefaultPermissions: map['createDatabaseDefaultPermissions'] == null ? null : ((pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(map['createDatabaseDefaultPermissions']!, (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : ((pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(map['createTableDefaultPermissions']!, (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      externalDataFilteringAllowLists: map['externalDataFilteringAllowLists'] == null ? null : (((map['externalDataFilteringAllowLists'] as List).cast<String>()).input()).input(),
-      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
-      readOnlyAdmins: map['readOnlyAdmins'] == null ? null : (((map['readOnlyAdmins'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      trustedResourceOwners: map['trustedResourceOwners'] == null ? null : (((map['trustedResourceOwners'] as List).cast<String>()).input()).input(),
+      admins: (() {
+        final guardedValue = map['admins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowExternalDataFiltering: (() {
+        final guardedValue = map['allowExternalDataFiltering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowFullTableExternalDataAccess: (() {
+        final guardedValue = map['allowFullTableExternalDataAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      authorizedSessionTagValueLists: (() {
+        final guardedValue = map['authorizedSessionTagValueLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createDatabaseDefaultPermissions: (() {
+        final guardedValue = map['createDatabaseDefaultPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            DataLakeSettingsCreateDatabaseDefaultPermission
+          >(
+            guardedValue,
+            (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      createTableDefaultPermissions: (() {
+        final guardedValue = map['createTableDefaultPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(
+            guardedValue,
+            (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      externalDataFilteringAllowLists: (() {
+        final guardedValue = map['externalDataFilteringAllowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      readOnlyAdmins: (() {
+        final guardedValue = map['readOnlyAdmins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustedResourceOwners: (() {
+        final guardedValue = map['trustedResourceOwners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

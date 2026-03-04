@@ -14,15 +14,18 @@ class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableAnswerFeedback': ?enableAnswerFeedback,
-    };
+    return <String, dynamic>{'enableAnswerFeedback': ?enableAnswerFeedback};
   }
 
-  factory GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings(
-      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : (map['enableAnswerFeedback']! as bool).input(),
+      enableAnswerFeedback: (() {
+        final guardedValue = map['enableAnswerFeedback'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

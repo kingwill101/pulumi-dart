@@ -6,16 +6,15 @@ enum MachineGroupType {
   valueAzureVmss("azure-vmss"),
   valueUserStatic("user-static");
 
-  const MachineGroupType(this.value);
-  final String value;
+  const MachineGroupType(this.wireValue);
+  final String wireValue;
 
   static MachineGroupType fromValue(String value) {
     for (final item in MachineGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MachineGroupType value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModuleManagementNetworkProfile {
   /// The private IPv4 address of the network interface. Changing this forces a new Dedicated Hardware Security Module to be created.
   final pulumi.Input<List<String>> networkInterfacePrivateIpAddresses;
+
   /// The ID of the subnet. Changing this forces a new Dedicated Hardware Security Module to be created.
   final pulumi.Input<String> subnetId;
 
@@ -25,9 +26,10 @@ class ModuleManagementNetworkProfile {
 
   factory ModuleManagementNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ModuleManagementNetworkProfile(
-      networkInterfacePrivateIpAddresses: ((map['networkInterfacePrivateIpAddresses'] as List).cast<String>()).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      networkInterfacePrivateIpAddresses: pulumi.Input.fromValue(
+        (map['networkInterfacePrivateIpAddresses'] as List).cast<String>(),
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

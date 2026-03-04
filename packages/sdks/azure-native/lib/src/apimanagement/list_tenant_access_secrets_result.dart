@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listTenantAccessSecrets.
 class ListTenantAccessSecretsResult {
   /// Determines whether direct access is enabled.
   final bool? enabled;
+
   /// Access Information type ('access' or 'gitAccess')
   final String? id;
+
   /// Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   final String? primaryKey;
+
   /// Principal (User) Identifier.
   final String? principalId;
+
   /// Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   final String? secondaryKey;
 
@@ -40,12 +43,31 @@ class ListTenantAccessSecretsResult {
 
   factory ListTenantAccessSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListTenantAccessSecretsResult(
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
-      id: map['id'] == null ? null : map['id']! as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
-      principalId: map['principalId'] == null ? null : map['principalId']! as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

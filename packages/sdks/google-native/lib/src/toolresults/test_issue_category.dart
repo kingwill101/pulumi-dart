@@ -4,16 +4,15 @@ enum TestIssueCategory {
   common("common"),
   robo("robo");
 
-  const TestIssueCategory(this.value);
-  final String value;
+  const TestIssueCategory(this.wireValue);
+  final String wireValue;
 
   static TestIssueCategory fromValue(String value) {
     for (final item in TestIssueCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestIssueCategory value: $value');
   }
 }
-

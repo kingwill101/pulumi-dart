@@ -101,14 +101,19 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of group
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// A description for the group.
   late final pulumi.Output<String?> description;
+
   /// A name for the group.
   late final pulumi.Output<String> groupName;
+
   /// The namespace. Currently, you should set this to `default`.
   late final pulumi.Output<String?> namespace;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -116,30 +121,23 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_quicksight_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:quicksight/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.description = registerOutput<String?>('description');
-    this.groupName = registerOutput<String>('groupName');
-    this.namespace = registerOutput<String?>('namespace');
-    this.region = registerOutput<String>('region');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:quicksight/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    description = registerOutput<String?>('description');
+    groupName = registerOutput<String>('groupName');
+    namespace = registerOutput<String?>('namespace');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -152,16 +150,16 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.description = registerOutput<String?>('description');
-    this.groupName = registerOutput<String>('groupName');
-    this.namespace = registerOutput<String?>('namespace');
-    this.region = registerOutput<String>('region');
+         'aws:quicksight/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    description = registerOutput<String?>('description');
+    groupName = registerOutput<String>('groupName');
+    namespace = registerOutput<String?>('namespace');
+    region = registerOutput<String>('region');
   }
 }

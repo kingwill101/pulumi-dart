@@ -1,5 +1,3 @@
-library module_blueprint;
-
 export 'blueprint/assignment.dart';
 export 'blueprint/assignment_args.dart';
 export 'blueprint/assignment_identity.dart';

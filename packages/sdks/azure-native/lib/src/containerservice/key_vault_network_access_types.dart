@@ -3,16 +3,15 @@ enum KeyVaultNetworkAccessTypes {
   valuePublic("Public"),
   valuePrivate("Private");
 
-  const KeyVaultNetworkAccessTypes(this.value);
-  final String value;
+  const KeyVaultNetworkAccessTypes(this.wireValue);
+  final String wireValue;
 
   static KeyVaultNetworkAccessTypes fromValue(String value) {
     for (final item in KeyVaultNetworkAccessTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyVaultNetworkAccessTypes value: $value');
   }
 }
-

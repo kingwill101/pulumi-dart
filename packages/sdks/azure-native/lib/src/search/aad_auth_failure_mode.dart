@@ -3,16 +3,15 @@ enum AadAuthFailureMode {
   http403("http403"),
   http401WithBearerChallenge("http401WithBearerChallenge");
 
-  const AadAuthFailureMode(this.value);
-  final String value;
+  const AadAuthFailureMode(this.wireValue);
+  final String wireValue;
 
   static AadAuthFailureMode fromValue(String value) {
     for (final item in AadAuthFailureMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AadAuthFailureMode value: $value');
   }
 }
-

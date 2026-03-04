@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseAccessControlsState {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
   final pulumi.Input<List<String>>? allowLists;
+
   /// The unique ID of the target database.
   final pulumi.Input<int>? databaseId;
+
   /// The unique type of the target database. (`mysql`, `postgresql`)
   final pulumi.Input<String>? databaseType;
 
@@ -31,10 +33,21 @@ class DatabaseAccessControlsState {
 
   factory DatabaseAccessControlsState.fromMap(Map<String, dynamic> map) {
     return DatabaseAccessControlsState(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as int).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      allowLists: (() {
+        final guardedValue = map['allowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      databaseType: (() {
+        final guardedValue = map['databaseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

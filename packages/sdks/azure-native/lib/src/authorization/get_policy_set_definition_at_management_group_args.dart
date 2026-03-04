@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicySetDefinitionAtManagementGroupArgs {
   /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   final pulumi.Input<String>? expand;
+
   /// The ID of the management group.
   final pulumi.Input<String> managementGroupId;
+
   /// The name of the policy set definition to get.
   final pulumi.Input<String> policySetDefinitionName;
 
@@ -32,12 +34,21 @@ class GetPolicySetDefinitionAtManagementGroupArgs {
     };
   }
 
-  factory GetPolicySetDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPolicySetDefinitionAtManagementGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicySetDefinitionAtManagementGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      policySetDefinitionName: pulumi.Input.fromValue(
+        map['policySetDefinitionName'] as String,
+      ),
     );
   }
 }
-

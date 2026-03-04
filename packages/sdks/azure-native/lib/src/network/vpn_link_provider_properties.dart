@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnLinkProviderProperties {
   /// Name of the link provider.
   final pulumi.Input<String>? linkProviderName;
+
   /// Link speed.
   final pulumi.Input<int>? linkSpeedInMbps;
 
   /// Creates a new [VpnLinkProviderProperties].
   /// [linkProviderName] Name of the link provider.
   /// [linkSpeedInMbps] Link speed.
-  VpnLinkProviderProperties({
-    this.linkProviderName,
-    this.linkSpeedInMbps,
-  });
+  VpnLinkProviderProperties({this.linkProviderName, this.linkSpeedInMbps});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VpnLinkProviderProperties {
 
   factory VpnLinkProviderProperties.fromMap(Map<String, dynamic> map) {
     return VpnLinkProviderProperties(
-      linkProviderName: map['linkProviderName'] == null ? null : (map['linkProviderName']! as String).input(),
-      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps']! as int).input(),
+      linkProviderName: (() {
+        final guardedValue = map['linkProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkSpeedInMbps: (() {
+        final guardedValue = map['linkSpeedInMbps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

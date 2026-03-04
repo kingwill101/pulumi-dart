@@ -4,16 +4,15 @@ enum InstanceTransitEncryptionMode {
   serverAuthentication("SERVER_AUTHENTICATION"),
   disabled("DISABLED");
 
-  const InstanceTransitEncryptionMode(this.value);
-  final String value;
+  const InstanceTransitEncryptionMode(this.wireValue);
+  final String wireValue;
 
   static InstanceTransitEncryptionMode fromValue(String value) {
     for (final item in InstanceTransitEncryptionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceTransitEncryptionMode value: $value');
   }
 }
-

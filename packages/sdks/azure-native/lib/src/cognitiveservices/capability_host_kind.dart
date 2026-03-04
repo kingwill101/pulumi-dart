@@ -2,16 +2,15 @@
 enum CapabilityHostKind {
   valueAgents("Agents");
 
-  const CapabilityHostKind(this.value);
-  final String value;
+  const CapabilityHostKind(this.wireValue);
+  final String wireValue;
 
   static CapabilityHostKind fromValue(String value) {
     for (final item in CapabilityHostKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CapabilityHostKind value: $value');
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareToAzStackHCINicInputResponse {
   /// Gets or sets the NIC label.
   final pulumi.Input<String> label;
+
   /// Gets or sets the network name.
   final pulumi.Input<String> networkName;
+
   /// Gets or sets the NIC Id.
   final pulumi.Input<String> nicId;
+
   /// Gets or sets the selection type of the NIC.
   final pulumi.Input<String> selectionTypeForFailover;
+
   /// Gets or sets the target network Id within AzStackHCI Cluster.
   final pulumi.Input<String> targetNetworkId;
+
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
   final pulumi.Input<String> testNetworkId;
 
@@ -46,13 +51,14 @@ class VMwareToAzStackHCINicInputResponse {
 
   factory VMwareToAzStackHCINicInputResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCINicInputResponse(
-      label: (map['label'] as String).input(),
-      networkName: (map['networkName'] as String).input(),
-      nicId: (map['nicId'] as String).input(),
-      selectionTypeForFailover: (map['selectionTypeForFailover'] as String).input(),
-      targetNetworkId: (map['targetNetworkId'] as String).input(),
-      testNetworkId: (map['testNetworkId'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      networkName: pulumi.Input.fromValue(map['networkName'] as String),
+      nicId: pulumi.Input.fromValue(map['nicId'] as String),
+      selectionTypeForFailover: pulumi.Input.fromValue(
+        map['selectionTypeForFailover'] as String,
+      ),
+      targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
+      testNetworkId: pulumi.Input.fromValue(map['testNetworkId'] as String),
     );
   }
 }
-

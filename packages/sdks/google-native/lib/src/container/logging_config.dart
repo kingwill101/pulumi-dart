@@ -10,20 +10,29 @@ class LoggingConfig {
 
   /// Creates a new [LoggingConfig].
   /// [componentConfig] Logging components configuration
-  LoggingConfig({
-    this.componentConfig,
-  });
+  LoggingConfig({this.componentConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?pulumi.Input.mapOptionalInputValue<LoggingComponentConfig, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
+      'componentConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            LoggingComponentConfig,
+            Map<String, dynamic>
+          >(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (LoggingComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      componentConfig: (() {
+        final guardedValue = map['componentConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LoggingComponentConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

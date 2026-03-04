@@ -1202,14 +1202,19 @@ import 'interface_vpc.dart';
 class Interface extends pulumi.CustomResource {
   /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
   late final pulumi.Output<InterfaceDefaultRoute> defaultRoute;
+
   /// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
   late final pulumi.Output<int?> firewallId;
+
   /// The ID of the Linode to assign this interface to.
   late final pulumi.Output<int> linodeId;
+
   /// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfacePublic?> public;
+
   /// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfaceVlan?> vlan;
+
   /// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfaceVpc?> vpc;
 
@@ -1222,17 +1227,17 @@ class Interface extends pulumi.CustomResource {
     InterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/interface:Interface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute');
-    this.firewallId = registerOutput<int?>('firewallId');
-    this.linodeId = registerOutput<int>('linodeId');
-    this.public = registerOutput<InterfacePublic?>('public');
-    this.vlan = registerOutput<InterfaceVlan?>('vlan');
-    this.vpc = registerOutput<InterfaceVpc?>('vpc');
+         'linode:index/interface:Interface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute');
+    firewallId = registerOutput<int?>('firewallId');
+    linodeId = registerOutput<int>('linodeId');
+    public = registerOutput<InterfacePublic?>('public');
+    vlan = registerOutput<InterfaceVlan?>('vlan');
+    vpc = registerOutput<InterfaceVpc?>('vpc');
   }
 
   /// Gets an existing [Interface] resource's state with the given [name] and [id].
@@ -1253,16 +1258,16 @@ class Interface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/interface:Interface',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute');
-    this.firewallId = registerOutput<int?>('firewallId');
-    this.linodeId = registerOutput<int>('linodeId');
-    this.public = registerOutput<InterfacePublic?>('public');
-    this.vlan = registerOutput<InterfaceVlan?>('vlan');
-    this.vpc = registerOutput<InterfaceVpc?>('vpc');
+         'linode:index/interface:Interface',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute');
+    firewallId = registerOutput<int?>('firewallId');
+    linodeId = registerOutput<int>('linodeId');
+    public = registerOutput<InterfacePublic?>('public');
+    vlan = registerOutput<InterfaceVlan?>('vlan');
+    vpc = registerOutput<InterfaceVpc?>('vpc');
   }
 }

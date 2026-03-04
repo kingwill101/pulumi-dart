@@ -7,12 +7,14 @@ import 'get_database_system_versions_version.dart';
 class GetDatabaseSystemVersionsResult {
   final bool? databaseSoftwareImageSupported;
   final String? databaseSystemShape;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String? shapeFamily;
   final String? storageManagement;
   final bool? upgradeSupported;
+
   /// A `versions` block as defined below.
   final List<GetDatabaseSystemVersionsVersion> versions;
 
@@ -45,21 +47,49 @@ class GetDatabaseSystemVersionsResult {
       'shapeFamily': ?shapeFamily,
       'storageManagement': ?storageManagement,
       'upgradeSupported': ?upgradeSupported,
-      'versions': pulumi.Input.encodeList<GetDatabaseSystemVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions':
+          pulumi.Input.encodeList<
+            GetDatabaseSystemVersionsVersion,
+            Map<String, dynamic>
+          >(versions, (value) => value.toMap()),
     };
   }
 
   factory GetDatabaseSystemVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsResult(
-      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : map['databaseSoftwareImageSupported']! as bool,
-      databaseSystemShape: map['databaseSystemShape'] == null ? null : map['databaseSystemShape']! as String,
+      databaseSoftwareImageSupported: (() {
+        final guardedValue = map['databaseSoftwareImageSupported'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      databaseSystemShape: (() {
+        final guardedValue = map['databaseSystemShape'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
-      shapeFamily: map['shapeFamily'] == null ? null : map['shapeFamily']! as String,
-      storageManagement: map['storageManagement'] == null ? null : map['storageManagement']! as String,
-      upgradeSupported: map['upgradeSupported'] == null ? null : map['upgradeSupported']! as bool,
-      versions: pulumi.Input.decodeList<GetDatabaseSystemVersionsVersion>(map['versions'], (value) => GetDatabaseSystemVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
+      shapeFamily: (() {
+        final guardedValue = map['shapeFamily'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageManagement: (() {
+        final guardedValue = map['storageManagement'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      upgradeSupported: (() {
+        final guardedValue = map['upgradeSupported'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      versions: pulumi.Input.decodeList<GetDatabaseSystemVersionsVersion>(
+        map['versions']!,
+        (value) => GetDatabaseSystemVersionsVersion.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

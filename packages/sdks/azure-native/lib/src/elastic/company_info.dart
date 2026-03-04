@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompanyInfo {
   /// Business of the company
   final pulumi.Input<String>? business;
+
   /// Country of the company location.
   final pulumi.Input<String>? country;
+
   /// Domain of the company
   final pulumi.Input<String>? domain;
+
   /// Number of employees in the company
   final pulumi.Input<String>? employeesNumber;
+
   /// State of the company location.
   final pulumi.Input<String>? state;
 
@@ -41,12 +45,31 @@ class CompanyInfo {
 
   factory CompanyInfo.fromMap(Map<String, dynamic> map) {
     return CompanyInfo(
-      business: map['business'] == null ? null : (map['business']! as String).input(),
-      country: map['country'] == null ? null : (map['country']! as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      employeesNumber: map['employeesNumber'] == null ? null : (map['employeesNumber']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      business: (() {
+        final guardedValue = map['business'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      country: (() {
+        final guardedValue = map['country'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      employeesNumber: (() {
+        final guardedValue = map['employeesNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

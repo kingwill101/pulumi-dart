@@ -8,9 +8,7 @@ class ConversationProfileLoggingConfig {
 
   /// Creates a new [ConversationProfileLoggingConfig].
   /// [enableStackdriverLogging] Whether to log conversation events
-  ConversationProfileLoggingConfig({
-    this.enableStackdriverLogging,
-  });
+  ConversationProfileLoggingConfig({this.enableStackdriverLogging});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class ConversationProfileLoggingConfig {
 
   factory ConversationProfileLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileLoggingConfig(
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
+      enableStackdriverLogging: (() {
+        final guardedValue = map['enableStackdriverLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

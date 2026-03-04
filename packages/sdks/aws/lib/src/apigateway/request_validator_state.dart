@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestValidatorState {
   /// Name of the request validator
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated Rest API
   final pulumi.Input<String>? restApi;
+
   /// Boolean whether to validate request body. Defaults to `false`.
   final pulumi.Input<bool>? validateRequestBody;
+
   /// Boolean whether to validate request parameters. Defaults to `false`.
   final pulumi.Input<bool>? validateRequestParameters;
 
@@ -41,12 +45,31 @@ class RequestValidatorState {
 
   factory RequestValidatorState.fromMap(Map<String, dynamic> map) {
     return RequestValidatorState(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
-      validateRequestBody: map['validateRequestBody'] == null ? null : ((map['validateRequestBody'] as bool).input()).input(),
-      validateRequestParameters: map['validateRequestParameters'] == null ? null : ((map['validateRequestParameters'] as bool).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApi: (() {
+        final guardedValue = map['restApi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validateRequestBody: (() {
+        final guardedValue = map['validateRequestBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validateRequestParameters: (() {
+        final guardedValue = map['validateRequestParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

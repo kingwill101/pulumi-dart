@@ -7,22 +7,31 @@ import 'connection_setting_parameter_response.dart';
 class ConnectionSettingPropertiesResponse {
   /// Client Id associated with the Connection Setting.
   final pulumi.Input<String>? clientId;
+
   /// Client Secret associated with the Connection Setting
   final pulumi.Input<String>? clientSecret;
+
   /// Id of the Connection Setting.
   final pulumi.Input<String>? id;
+
   /// Name of the Connection Setting.
   final pulumi.Input<String>? name;
+
   /// Service Provider Parameters associated with the Connection Setting
   final pulumi.Input<List<ConnectionSettingParameterResponse>>? parameters;
+
   /// Provisioning state of the resource
   final pulumi.Input<String>? provisioningState;
+
   /// Scopes associated with the Connection Setting
   final pulumi.Input<String>? scopes;
+
   /// Service Provider Display Name associated with the Connection Setting
   final pulumi.Input<String>? serviceProviderDisplayName;
+
   /// Service Provider Id associated with the Connection Setting
   final pulumi.Input<String>? serviceProviderId;
+
   /// Setting Id set by the service for the Connection Setting.
   final pulumi.Input<String> settingId;
 
@@ -56,7 +65,18 @@ class ConnectionSettingPropertiesResponse {
       'clientSecret': ?clientSecret,
       'id': ?id,
       'name': ?name,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ConnectionSettingParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ConnectionSettingParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConnectionSettingParameterResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConnectionSettingParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': ?provisioningState,
       'scopes': ?scopes,
       'serviceProviderDisplayName': ?serviceProviderDisplayName,
@@ -65,19 +85,63 @@ class ConnectionSettingPropertiesResponse {
     };
   }
 
-  factory ConnectionSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectionSettingPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionSettingPropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConnectionSettingParameterResponse>(map['parameters']!, (value) => ConnectionSettingParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
-      serviceProviderDisplayName: map['serviceProviderDisplayName'] == null ? null : (map['serviceProviderDisplayName']! as String).input(),
-      serviceProviderId: map['serviceProviderId'] == null ? null : (map['serviceProviderId']! as String).input(),
-      settingId: (map['settingId'] as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConnectionSettingParameterResponse>(
+            guardedValue,
+            (value) => ConnectionSettingParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceProviderDisplayName: (() {
+        final guardedValue = map['serviceProviderDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceProviderId: (() {
+        final guardedValue = map['serviceProviderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingId: pulumi.Input.fromValue(map['settingId'] as String),
     );
   }
 }
-

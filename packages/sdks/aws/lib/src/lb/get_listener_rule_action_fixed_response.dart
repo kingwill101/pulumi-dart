@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleActionFixedResponse {
   /// Content type of the response.
   final pulumi.Input<String> contentType;
+
   /// Message body of the response.
   final pulumi.Input<String> messageBody;
+
   /// The HTTP redirect code.
   final pulumi.Input<String> statusCode;
 
@@ -30,10 +32,9 @@ class GetListenerRuleActionFixedResponse {
 
   factory GetListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionFixedResponse(
-      contentType: (map['contentType'] as String).input(),
-      messageBody: (map['messageBody'] as String).input(),
-      statusCode: (map['statusCode'] as String).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      messageBody: pulumi.Input.fromValue(map['messageBody'] as String),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
-

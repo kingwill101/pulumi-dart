@@ -8,20 +8,19 @@ class ServiceIntegrationOpsCenter {
 
   /// Creates a new [ServiceIntegrationOpsCenter].
   /// [optInStatus] Specifies if DevOps Guru is enabled to create an AWS Systems Manager OpsItem for each created insight. Valid values are `DISABLED` and `ENABLED`.
-  ServiceIntegrationOpsCenter({
-    this.optInStatus,
-  });
+  ServiceIntegrationOpsCenter({this.optInStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'optInStatus': ?optInStatus,
-    };
+    return <String, dynamic>{'optInStatus': ?optInStatus};
   }
 
   factory ServiceIntegrationOpsCenter.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationOpsCenter(
-      optInStatus: map['optInStatus'] == null ? null : ((map['optInStatus'] as String).input()).input(),
+      optInStatus: (() {
+        final guardedValue = map['optInStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

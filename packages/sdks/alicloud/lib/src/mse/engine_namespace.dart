@@ -6,7 +6,7 @@ import 'engine_namespace_state.dart';
 ///
 /// For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 ///
-/// > **NOTE:** Available since v1.166.0.
+/// &gt; **NOTE:** Available since v1.166.0.
 ///
 /// ## Example Usage
 ///
@@ -326,16 +326,21 @@ import 'engine_namespace_state.dart';
 class EngineNamespace extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> acceptLanguage;
+
   /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
   late final pulumi.Output<String> clusterId;
+
   /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
   late final pulumi.Output<String> instanceId;
+
   /// The description of the namespace.
   ///
   /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
   late final pulumi.Output<String> namespaceDesc;
+
   /// The id of Namespace.
   late final pulumi.Output<String> namespaceId;
+
   /// The name of the Engine Namespace.
   late final pulumi.Output<String> namespaceShowName;
 
@@ -348,17 +353,17 @@ class EngineNamespace extends pulumi.CustomResource {
     EngineNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/engineNamespace:EngineNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceDesc = registerOutput<String>('namespaceDesc');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.namespaceShowName = registerOutput<String>('namespaceShowName');
+         'alicloud:mse/engineNamespace:EngineNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceDesc = registerOutput<String>('namespaceDesc');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceShowName = registerOutput<String>('namespaceShowName');
   }
 
   /// Gets an existing [EngineNamespace] resource's state with the given [name] and [id].
@@ -379,16 +384,16 @@ class EngineNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/engineNamespace:EngineNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceDesc = registerOutput<String>('namespaceDesc');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.namespaceShowName = registerOutput<String>('namespaceShowName');
+         'alicloud:mse/engineNamespace:EngineNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceDesc = registerOutput<String>('namespaceDesc');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceShowName = registerOutput<String>('namespaceShowName');
   }
 }

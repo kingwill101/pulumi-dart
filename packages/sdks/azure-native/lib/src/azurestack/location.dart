@@ -2,16 +2,15 @@
 enum Location {
   valueGlobal("global");
 
-  const Location(this.value);
-  final String value;
+  const Location(this.wireValue);
+  final String wireValue;
 
   static Location fromValue(String value) {
     for (final item in Location.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Location value: $value');
   }
 }
-

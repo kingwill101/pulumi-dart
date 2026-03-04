@@ -7,6 +7,7 @@ import 'google_type_date_billingbudgets_v1beta1.dart';
 class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
   /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
   final pulumi.Input<GoogleTypeDateBillingbudgetsV1beta1>? endDate;
+
   /// The start date must be after January 1, 2017.
   final pulumi.Input<GoogleTypeDateBillingbudgetsV1beta1> startDate;
 
@@ -20,16 +21,37 @@ class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': ?pulumi.Input.mapOptionalInputValue<GoogleTypeDateBillingbudgetsV1beta1, Map<String, dynamic>>(endDate, (value) => value.toMap()),
-      'startDate': pulumi.Input.mapInputValue<GoogleTypeDateBillingbudgetsV1beta1, Map<String, dynamic>>(startDate, (value) => value.toMap()),
+      'endDate':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleTypeDateBillingbudgetsV1beta1,
+            Map<String, dynamic>
+          >(endDate, (value) => value.toMap()),
+      'startDate':
+          pulumi.Input.mapInputValue<
+            GoogleTypeDateBillingbudgetsV1beta1,
+            Map<String, dynamic>
+          >(startDate, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudBillingBudgetsV1beta1CustomPeriod.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBillingBudgetsV1beta1CustomPeriod.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBillingBudgetsV1beta1CustomPeriod(
-      endDate: map['endDate'] == null ? null : (GoogleTypeDateBillingbudgetsV1beta1.fromMap((map['endDate']! as Map).cast<String, dynamic>())).input(),
-      startDate: (GoogleTypeDateBillingbudgetsV1beta1.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
+      endDate: (() {
+        final guardedValue = map['endDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleTypeDateBillingbudgetsV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startDate: pulumi.Input.fromValue(
+        GoogleTypeDateBillingbudgetsV1beta1.fromMap(
+          (map['startDate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

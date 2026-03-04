@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkingStorageState {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   final pulumi.Input<String>? diskId;
+
   /// The Amazon Resource Name (ARN) of the gateway.
   final pulumi.Input<String>? gatewayArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -15,11 +17,7 @@ class WorkingStorageState {
   /// [diskId] Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  WorkingStorageState({
-    this.diskId,
-    this.gatewayArn,
-    this.region,
-  });
+  WorkingStorageState({this.diskId, this.gatewayArn, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class WorkingStorageState {
 
   factory WorkingStorageState.fromMap(Map<String, dynamic> map) {
     return WorkingStorageState(
-      diskId: map['diskId'] == null ? null : ((map['diskId'] as String).input()).input(),
-      gatewayArn: map['gatewayArn'] == null ? null : ((map['gatewayArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayArn: (() {
+        final guardedValue = map['gatewayArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

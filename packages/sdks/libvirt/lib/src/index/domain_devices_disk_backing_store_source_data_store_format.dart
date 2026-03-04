@@ -5,7 +5,11 @@ import 'domain_devices_disk_backing_store_source_data_store_format_metadata_cach
 
 class DomainDevicesDiskBackingStoreSourceDataStoreFormat {
   /// Configures the metadata cache settings for the data store format within the backing store source.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache>? metadataCache;
+  final pulumi.Input<
+    DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache
+  >?
+  metadataCache;
+
   /// Specifies the type of the data store format being used in the backing store source.
   final pulumi.Input<String> type;
 
@@ -19,16 +23,29 @@ class DomainDevicesDiskBackingStoreSourceDataStoreFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataCache': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache, Map<String, dynamic>>(metadataCache, (value) => value.toMap()),
+      'metadataCache':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache,
+            Map<String, dynamic>
+          >(metadataCache, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceDataStoreFormat.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskBackingStoreSourceDataStoreFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskBackingStoreSourceDataStoreFormat(
-      metadataCache: map['metadataCache'] == null ? null : (DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.fromMap((map['metadataCache']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      metadataCache: (() {
+        final guardedValue = map['metadataCache'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

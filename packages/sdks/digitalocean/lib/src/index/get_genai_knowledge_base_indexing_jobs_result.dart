@@ -27,19 +27,38 @@ class GetGenaiKnowledgeBaseIndexingJobsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'jobs': pulumi.Input.encodeList<GetGenaiKnowledgeBaseIndexingJobsJob, Map<String, dynamic>>(jobs, (value) => value.toMap()),
+      'jobs':
+          pulumi.Input.encodeList<
+            GetGenaiKnowledgeBaseIndexingJobsJob,
+            Map<String, dynamic>
+          >(jobs, (value) => value.toMap()),
       'knowledgeBaseUuid': knowledgeBaseUuid,
-      'metas': pulumi.Input.encodeList<GetGenaiKnowledgeBaseIndexingJobsMeta, Map<String, dynamic>>(metas, (value) => value.toMap()),
+      'metas':
+          pulumi.Input.encodeList<
+            GetGenaiKnowledgeBaseIndexingJobsMeta,
+            Map<String, dynamic>
+          >(metas, (value) => value.toMap()),
     };
   }
 
-  factory GetGenaiKnowledgeBaseIndexingJobsResult.fromMap(Map<String, dynamic> map) {
+  factory GetGenaiKnowledgeBaseIndexingJobsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGenaiKnowledgeBaseIndexingJobsResult(
       id: map['id'] as String,
-      jobs: pulumi.Input.decodeList<GetGenaiKnowledgeBaseIndexingJobsJob>(map['jobs'], (value) => GetGenaiKnowledgeBaseIndexingJobsJob.fromMap((value as Map).cast<String, dynamic>())),
+      jobs: pulumi.Input.decodeList<GetGenaiKnowledgeBaseIndexingJobsJob>(
+        map['jobs']!,
+        (value) => GetGenaiKnowledgeBaseIndexingJobsJob.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       knowledgeBaseUuid: map['knowledgeBaseUuid'] as String,
-      metas: pulumi.Input.decodeList<GetGenaiKnowledgeBaseIndexingJobsMeta>(map['metas'], (value) => GetGenaiKnowledgeBaseIndexingJobsMeta.fromMap((value as Map).cast<String, dynamic>())),
+      metas: pulumi.Input.decodeList<GetGenaiKnowledgeBaseIndexingJobsMeta>(
+        map['metas']!,
+        (value) => GetGenaiKnowledgeBaseIndexingJobsMeta.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

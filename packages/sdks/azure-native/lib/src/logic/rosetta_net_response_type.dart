@@ -4,16 +4,15 @@ enum RosettaNetResponseType {
   valueSync("Sync"),
   valueAsync("Async");
 
-  const RosettaNetResponseType(this.value);
-  final String value;
+  const RosettaNetResponseType(this.wireValue);
+  final String wireValue;
 
   static RosettaNetResponseType fromValue(String value) {
     for (final item in RosettaNetResponseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RosettaNetResponseType value: $value');
   }
 }
-

@@ -6,46 +6,64 @@ class GetDbNodesDbNode {
   /// Additional information about the planned maintenance.
   final pulumi.Input<String> additionalDetails;
   final pulumi.Input<String> arn;
+
   /// The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   final pulumi.Input<String> backupIpId;
   final pulumi.Input<String> backupVnic2Id;
+
   /// The OCID of the backup VNIC for the DB node.
   final pulumi.Input<String> backupVnicId;
+
   /// The number of CPU cores enabled on the DB node.
   final pulumi.Input<int> cpuCoreCount;
+
   /// The date and time when the DB node was created.
   final pulumi.Input<String> createdAt;
   final pulumi.Input<int> dbNodeStorageSize;
+
   /// The unique identifier of the database server that's associated with the DB node.
   final pulumi.Input<String> dbServerId;
+
   /// The OCID of the DB system.
   final pulumi.Input<String> dbSystemId;
+
   /// The name of the fault domain where the DB node is located.
   final pulumi.Input<String> faultDomain;
+
   /// The OCID of the host IP address that's associated with the DB node.
   final pulumi.Input<String> hostIpId;
+
   /// The host name for the DB node.
   final pulumi.Input<String> hostname;
   final pulumi.Input<String> id;
+
   /// The type of maintenance the DB node is undergoing.
   final pulumi.Input<String> maintenanceType;
   final pulumi.Input<int> memorySize;
+
   /// The name of the OCI resource anchor for the DB node.
   final pulumi.Input<String> ociResourceAnchorName;
+
   /// The OCID of the DB node.
   final pulumi.Input<String> ocid;
   final pulumi.Input<int> softwareStorageSize;
+
   /// The current status of the DB node.
   final pulumi.Input<String> status;
+
   /// Additional information about the status of the DB node.
   final pulumi.Input<String> statusReason;
+
   /// The end date and time of the maintenance window.
   final pulumi.Input<String> timeMaintenanceWindowEnd;
+
   /// The start date and time of the maintenance window.
   final pulumi.Input<String> timeMaintenanceWindowStart;
+
   /// The total number of CPU cores reserved on the DB node.
   final pulumi.Input<int> totalCpuCoreCount;
   final pulumi.Input<String> vnic2Id;
+
   /// The OCID of the VNIC.
   final pulumi.Input<String> vnicId;
 
@@ -138,33 +156,46 @@ class GetDbNodesDbNode {
 
   factory GetDbNodesDbNode.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNode(
-      additionalDetails: (map['additionalDetails'] as String).input(),
-      arn: (map['arn'] as String).input(),
-      backupIpId: (map['backupIpId'] as String).input(),
-      backupVnic2Id: (map['backupVnic2Id'] as String).input(),
-      backupVnicId: (map['backupVnicId'] as String).input(),
-      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      dbNodeStorageSize: (map['dbNodeStorageSize'] as int).input(),
-      dbServerId: (map['dbServerId'] as String).input(),
-      dbSystemId: (map['dbSystemId'] as String).input(),
-      faultDomain: (map['faultDomain'] as String).input(),
-      hostIpId: (map['hostIpId'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      id: (map['id'] as String).input(),
-      maintenanceType: (map['maintenanceType'] as String).input(),
-      memorySize: (map['memorySize'] as int).input(),
-      ociResourceAnchorName: (map['ociResourceAnchorName'] as String).input(),
-      ocid: (map['ocid'] as String).input(),
-      softwareStorageSize: (map['softwareStorageSize'] as int).input(),
-      status: (map['status'] as String).input(),
-      statusReason: (map['statusReason'] as String).input(),
-      timeMaintenanceWindowEnd: (map['timeMaintenanceWindowEnd'] as String).input(),
-      timeMaintenanceWindowStart: (map['timeMaintenanceWindowStart'] as String).input(),
-      totalCpuCoreCount: (map['totalCpuCoreCount'] as int).input(),
-      vnic2Id: (map['vnic2Id'] as String).input(),
-      vnicId: (map['vnicId'] as String).input(),
+      additionalDetails: pulumi.Input.fromValue(
+        map['additionalDetails'] as String,
+      ),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      backupIpId: pulumi.Input.fromValue(map['backupIpId'] as String),
+      backupVnic2Id: pulumi.Input.fromValue(map['backupVnic2Id'] as String),
+      backupVnicId: pulumi.Input.fromValue(map['backupVnicId'] as String),
+      cpuCoreCount: pulumi.Input.fromValue(map['cpuCoreCount'] as int),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      dbNodeStorageSize: pulumi.Input.fromValue(
+        map['dbNodeStorageSize'] as int,
+      ),
+      dbServerId: pulumi.Input.fromValue(map['dbServerId'] as String),
+      dbSystemId: pulumi.Input.fromValue(map['dbSystemId'] as String),
+      faultDomain: pulumi.Input.fromValue(map['faultDomain'] as String),
+      hostIpId: pulumi.Input.fromValue(map['hostIpId'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      maintenanceType: pulumi.Input.fromValue(map['maintenanceType'] as String),
+      memorySize: pulumi.Input.fromValue(map['memorySize'] as int),
+      ociResourceAnchorName: pulumi.Input.fromValue(
+        map['ociResourceAnchorName'] as String,
+      ),
+      ocid: pulumi.Input.fromValue(map['ocid'] as String),
+      softwareStorageSize: pulumi.Input.fromValue(
+        map['softwareStorageSize'] as int,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusReason: pulumi.Input.fromValue(map['statusReason'] as String),
+      timeMaintenanceWindowEnd: pulumi.Input.fromValue(
+        map['timeMaintenanceWindowEnd'] as String,
+      ),
+      timeMaintenanceWindowStart: pulumi.Input.fromValue(
+        map['timeMaintenanceWindowStart'] as String,
+      ),
+      totalCpuCoreCount: pulumi.Input.fromValue(
+        map['totalCpuCoreCount'] as int,
+      ),
+      vnic2Id: pulumi.Input.fromValue(map['vnic2Id'] as String),
+      vnicId: pulumi.Input.fromValue(map['vnicId'] as String),
     );
   }
 }
-

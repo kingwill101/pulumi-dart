@@ -8,20 +8,19 @@ class NodePoolAutoMode {
 
   /// Creates a new [NodePoolAutoMode].
   /// [enabled] Whether to enable auto mode. Valid values:
-  NodePoolAutoMode({
-    this.enabled,
-  });
+  NodePoolAutoMode({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory NodePoolAutoMode.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoMode(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

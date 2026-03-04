@@ -9,17 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceGuestAttributesArgs {
   /// The name or self_link of the instance.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If `self_link` is provided, this value is ignored.  If neither `self_link`
   /// nor `project` are provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Path to query for the guest attributes. Consists of
   /// `namespace` name for the attributes followed with a `/`.
   final pulumi.Input<String>? queryPath;
   final pulumi.Input<String>? region;
+
   /// Key of a variable to get the value of. Consists of
   /// `namespace` name and `key` name for the variable separated by a `/`.
   final pulumi.Input<String>? variableKey;
+
   /// The zone of the instance. If `self_link` is provided, this
   /// value is ignored.  If neither `self_link` nor `zone` are provided, the
   /// provider zone is used.
@@ -54,13 +58,32 @@ class GetInstanceGuestAttributesArgs {
 
   factory GetInstanceGuestAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGuestAttributesArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      queryPath: map['queryPath'] == null ? null : (map['queryPath']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      variableKey: map['variableKey'] == null ? null : (map['variableKey']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryPath: (() {
+        final guardedValue = map['queryPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      variableKey: (() {
+        final guardedValue = map['variableKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

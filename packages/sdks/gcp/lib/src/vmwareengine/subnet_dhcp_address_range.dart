@@ -6,6 +6,7 @@ class SubnetDhcpAddressRange {
   /// (Output)
   /// The first IP address of the range.
   final pulumi.Input<String>? firstAddress;
+
   /// (Output)
   /// The last IP address of the range.
   final pulumi.Input<String>? lastAddress;
@@ -13,10 +14,7 @@ class SubnetDhcpAddressRange {
   /// Creates a new [SubnetDhcpAddressRange].
   /// [firstAddress] (Output)
   /// [lastAddress] (Output)
-  SubnetDhcpAddressRange({
-    this.firstAddress,
-    this.lastAddress,
-  });
+  SubnetDhcpAddressRange({this.firstAddress, this.lastAddress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class SubnetDhcpAddressRange {
 
   factory SubnetDhcpAddressRange.fromMap(Map<String, dynamic> map) {
     return SubnetDhcpAddressRange(
-      firstAddress: map['firstAddress'] == null ? null : (map['firstAddress']! as String).input(),
-      lastAddress: map['lastAddress'] == null ? null : (map['lastAddress']! as String).input(),
+      firstAddress: (() {
+        final guardedValue = map['firstAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastAddress: (() {
+        final guardedValue = map['lastAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnatEntriesEntry {
   /// The ID of the Snat Entry.
   final pulumi.Input<String> id;
+
   /// The ID of snat entry.
   final pulumi.Input<String> snatEntryId;
+
   /// The name of snat entry.
   final pulumi.Input<String> snatEntryName;
+
   /// The public IP of the Snat Entry.
   final pulumi.Input<String> snatIp;
+
   /// The source CIDR block of the Snat Entry.
   final pulumi.Input<String> sourceCidr;
+
   /// The source vswitch ID.
   final pulumi.Input<String> sourceVswitchId;
+
   /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
   final pulumi.Input<String> status;
 
@@ -50,14 +56,13 @@ class GetSnatEntriesEntry {
 
   factory GetSnatEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetSnatEntriesEntry(
-      id: (map['id'] as String).input(),
-      snatEntryId: (map['snatEntryId'] as String).input(),
-      snatEntryName: (map['snatEntryName'] as String).input(),
-      snatIp: (map['snatIp'] as String).input(),
-      sourceCidr: (map['sourceCidr'] as String).input(),
-      sourceVswitchId: (map['sourceVswitchId'] as String).input(),
-      status: (map['status'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      snatEntryId: pulumi.Input.fromValue(map['snatEntryId'] as String),
+      snatEntryName: pulumi.Input.fromValue(map['snatEntryName'] as String),
+      snatIp: pulumi.Input.fromValue(map['snatIp'] as String),
+      sourceCidr: pulumi.Input.fromValue(map['sourceCidr'] as String),
+      sourceVswitchId: pulumi.Input.fromValue(map['sourceVswitchId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

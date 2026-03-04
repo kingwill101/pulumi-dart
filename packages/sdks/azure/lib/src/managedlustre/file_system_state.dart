@@ -11,32 +11,45 @@ import 'file_system_root_squash.dart';
 class FileSystemState {
   /// An `encryption_key` block as defined below.
   ///
-  /// > **Note:** Removing `encryption_key` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryption_key` forces a new resource to be created.
   final pulumi.Input<FileSystemEncryptionKey>? encryptionKey;
+
   /// A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<FileSystemHsmSetting>? hsmSetting;
+
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<FileSystemIdentity>? identity;
+
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// A `maintenance_window` block as defined below.
   final pulumi.Input<FileSystemMaintenanceWindow>? maintenanceWindow;
+
   /// IP Address of Managed Lustre File System Services.
   final pulumi.Input<String>? mgsAddress;
+
   /// The name which should be used for this Azure Managed Lustre File System. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `root_squash` block as defined below.
   final pulumi.Input<FileSystemRootSquash>? rootSquash;
+
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuName;
+
   /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   final pulumi.Input<int>? storageCapacityInTb;
+
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subnetId;
+
   /// A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? zones;
 
@@ -74,15 +87,35 @@ class FileSystemState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionKey': ?pulumi.Input.mapOptionalInputValue<FileSystemEncryptionKey, Map<String, dynamic>>(encryptionKey, (value) => value.toMap()),
-      'hsmSetting': ?pulumi.Input.mapOptionalInputValue<FileSystemHsmSetting, Map<String, dynamic>>(hsmSetting, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<FileSystemIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'encryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemEncryptionKey,
+            Map<String, dynamic>
+          >(encryptionKey, (value) => value.toMap()),
+      'hsmSetting':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemHsmSetting,
+            Map<String, dynamic>
+          >(hsmSetting, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<FileSystemMaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'maintenanceWindow':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemMaintenanceWindow,
+            Map<String, dynamic>
+          >(maintenanceWindow, (value) => value.toMap()),
       'mgsAddress': ?mgsAddress,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'rootSquash': ?pulumi.Input.mapOptionalInputValue<FileSystemRootSquash, Map<String, dynamic>>(rootSquash, (value) => value.toMap()),
+      'rootSquash':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemRootSquash,
+            Map<String, dynamic>
+          >(rootSquash, (value) => value.toMap()),
       'skuName': ?skuName,
       'storageCapacityInTb': ?storageCapacityInTb,
       'subnetId': ?subnetId,
@@ -93,21 +126,98 @@ class FileSystemState {
 
   factory FileSystemState.fromMap(Map<String, dynamic> map) {
     return FileSystemState(
-      encryptionKey: map['encryptionKey'] == null ? null : (FileSystemEncryptionKey.fromMap((map['encryptionKey']! as Map).cast<String, dynamic>())).input(),
-      hsmSetting: map['hsmSetting'] == null ? null : (FileSystemHsmSetting.fromMap((map['hsmSetting']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (FileSystemIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (FileSystemMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
-      mgsAddress: map['mgsAddress'] == null ? null : (map['mgsAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      rootSquash: map['rootSquash'] == null ? null : (FileSystemRootSquash.fromMap((map['rootSquash']! as Map).cast<String, dynamic>())).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
-      storageCapacityInTb: map['storageCapacityInTb'] == null ? null : (map['storageCapacityInTb']! as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      encryptionKey: (() {
+        final guardedValue = map['encryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemEncryptionKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hsmSetting: (() {
+        final guardedValue = map['hsmSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemHsmSetting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceWindow: (() {
+        final guardedValue = map['maintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemMaintenanceWindow.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mgsAddress: (() {
+        final guardedValue = map['mgsAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootSquash: (() {
+        final guardedValue = map['rootSquash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemRootSquash.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageCapacityInTb: (() {
+        final guardedValue = map['storageCapacityInTb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

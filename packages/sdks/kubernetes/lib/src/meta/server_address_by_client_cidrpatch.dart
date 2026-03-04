@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerAddressByClientCIDRPatch {
   /// The CIDR with which clients can match their IP to figure out the server address that they should use.
   final pulumi.Input<String>? clientCIDR;
+
   /// Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.
   final pulumi.Input<String>? serverAddress;
 
   /// Creates a new [ServerAddressByClientCIDRPatch].
   /// [clientCIDR] The CIDR with which clients can match their IP to figure out the server address that they should use.
   /// [serverAddress] Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.
-  ServerAddressByClientCIDRPatch({
-    this.clientCIDR,
-    this.serverAddress,
-  });
+  ServerAddressByClientCIDRPatch({this.clientCIDR, this.serverAddress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ServerAddressByClientCIDRPatch {
 
   factory ServerAddressByClientCIDRPatch.fromMap(Map<String, dynamic> map) {
     return ServerAddressByClientCIDRPatch(
-      clientCIDR: map['clientCIDR'] == null ? null : (map['clientCIDR']! as String).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
+      clientCIDR: (() {
+        final guardedValue = map['clientCIDR'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverAddress: (() {
+        final guardedValue = map['serverAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

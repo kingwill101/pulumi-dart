@@ -27,97 +27,152 @@ import 'node_pool_node_config_workload_metadata_config.dart';
 
 class NodePoolNodeConfig {
   /// Specifies options for controlling advanced machine features.
-  final pulumi.Input<NodePoolNodeConfigAdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<NodePoolNodeConfigAdvancedMachineFeatures>?
+  advancedMachineFeatures;
+
   /// Boot disk configuration for node pools nodes.
   final pulumi.Input<NodePoolNodeConfigBootDisk>? bootDisk;
+
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
   final pulumi.Input<String>? bootDiskKmsKey;
+
   /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
   final pulumi.Input<NodePoolNodeConfigConfidentialNodes>? confidentialNodes;
+
   /// Parameters for containerd configuration.
   final pulumi.Input<NodePoolNodeConfigContainerdConfig>? containerdConfig;
+
   /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
   final pulumi.Input<int>? diskSizeGb;
+
   /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
   final pulumi.Input<String>? diskType;
+
   /// List of kubernetes taints applied to each node.
   final pulumi.Input<List<NodePoolNodeConfigEffectiveTaint>>? effectiveTaints;
+
   /// If enabled boot disks are configured with confidential mode.
   final pulumi.Input<bool>? enableConfidentialStorage;
+
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
-  final pulumi.Input<NodePoolNodeConfigEphemeralStorageConfig>? ephemeralStorageConfig;
+  final pulumi.Input<NodePoolNodeConfigEphemeralStorageConfig>?
+  ephemeralStorageConfig;
+
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
-  final pulumi.Input<NodePoolNodeConfigEphemeralStorageLocalSsdConfig>? ephemeralStorageLocalSsdConfig;
+  final pulumi.Input<NodePoolNodeConfigEphemeralStorageLocalSsdConfig>?
+  ephemeralStorageLocalSsdConfig;
+
   /// Enable or disable NCCL Fast Socket in the node pool.
   final pulumi.Input<NodePoolNodeConfigFastSocket>? fastSocket;
+
   /// Enables Flex Start provisioning model for the node pool
   final pulumi.Input<bool>? flexStart;
+
   /// GCFS configuration for this node.
   final pulumi.Input<NodePoolNodeConfigGcfsConfig>? gcfsConfig;
+
   /// List of the type and count of accelerator cards attached to the instance.
-  final pulumi.Input<List<NodePoolNodeConfigGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<NodePoolNodeConfigGuestAccelerator>>?
+  guestAccelerators;
+
   /// Enable or disable gvnic in the node pool.
   final pulumi.Input<NodePoolNodeConfigGvnic>? gvnic;
+
   /// The maintenance policy for the hosts on which the GKE VMs run on.
-  final pulumi.Input<NodePoolNodeConfigHostMaintenancePolicy>? hostMaintenancePolicy;
+  final pulumi.Input<NodePoolNodeConfigHostMaintenancePolicy>?
+  hostMaintenancePolicy;
+
   /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
   final pulumi.Input<String>? imageType;
+
   /// Node kubelet configs.
   final pulumi.Input<NodePoolNodeConfigKubeletConfig>? kubeletConfig;
+
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Parameters that can be configured on Linux nodes.
   final pulumi.Input<NodePoolNodeConfigLinuxNodeConfig>? linuxNodeConfig;
+
   /// Parameters for raw-block local NVMe SSDs.
-  final pulumi.Input<NodePoolNodeConfigLocalNvmeSsdBlockConfig>? localNvmeSsdBlockConfig;
+  final pulumi.Input<NodePoolNodeConfigLocalNvmeSsdBlockConfig>?
+  localNvmeSsdBlockConfig;
+
   /// The number of local SSD disks to be attached to the node.
   final pulumi.Input<int>? localSsdCount;
+
   /// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
   final pulumi.Input<String>? localSsdEncryptionMode;
+
   /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
   final pulumi.Input<String>? loggingVariant;
+
   /// The name of a Google Compute Engine machine type.
   final pulumi.Input<String>? machineType;
+
   /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
   final pulumi.Input<String>? maxRunDuration;
+
   /// The metadata key/value pairs assigned to instances in the cluster.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
   final pulumi.Input<String>? minCpuPlatform;
+
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
   final pulumi.Input<String>? nodeGroup;
+
   /// The set of Google API scopes to be made available on all of the node VMs.
   final pulumi.Input<List<String>>? oauthScopes;
+
   /// Whether the nodes are created as preemptible VM instances.
   final pulumi.Input<bool>? preemptible;
+
   /// The reservation affinity configuration for the node pool.
-  final pulumi.Input<NodePoolNodeConfigReservationAffinity>? reservationAffinity;
+  final pulumi.Input<NodePoolNodeConfigReservationAffinity>?
+  reservationAffinity;
+
   /// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
   final pulumi.Input<Map<String, String>>? resourceLabels;
+
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   final pulumi.Input<Map<String, String>>? resourceManagerTags;
+
   /// Sandbox configuration for this node.
   final pulumi.Input<NodePoolNodeConfigSandboxConfig>? sandboxConfig;
+
   /// Secondary boot disks for preloading data or container images.
-  final pulumi.Input<List<NodePoolNodeConfigSecondaryBootDisk>>? secondaryBootDisks;
+  final pulumi.Input<List<NodePoolNodeConfigSecondaryBootDisk>>?
+  secondaryBootDisks;
+
   /// The Google Cloud Platform Service Account to be used by the node VMs.
   final pulumi.Input<String>? serviceAccount;
+
   /// Shielded Instance options.
-  final pulumi.Input<NodePoolNodeConfigShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<NodePoolNodeConfigShieldedInstanceConfig>?
+  shieldedInstanceConfig;
+
   /// Node affinity options for sole tenant node pools.
   final pulumi.Input<NodePoolNodeConfigSoleTenantConfig>? soleTenantConfig;
+
   /// Whether the nodes are created as spot VM instances.
   final pulumi.Input<bool>? spot;
+
   /// The list of Storage Pools where boot disks are provisioned.
   final pulumi.Input<List<String>>? storagePools;
+
   /// The list of instance tags applied to all nodes.
   final pulumi.Input<List<String>>? tags;
+
   /// List of Kubernetes taints to be applied to each node.
   final pulumi.Input<List<NodePoolNodeConfigTaint>>? taints;
+
   /// Parameters that can be configured on Windows nodes.
   final pulumi.Input<NodePoolNodeConfigWindowsNodeConfig>? windowsNodeConfig;
+
   /// The workload metadata configuration for this node.
-  final pulumi.Input<NodePoolNodeConfigWorkloadMetadataConfig>? workloadMetadataConfig;
+  final pulumi.Input<NodePoolNodeConfigWorkloadMetadataConfig>?
+  workloadMetadataConfig;
 
   /// Creates a new [NodePoolNodeConfig].
   /// [advancedMachineFeatures] Specifies options for controlling advanced machine features.
@@ -217,28 +272,102 @@ class NodePoolNodeConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigAdvancedMachineFeatures, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
-      'bootDisk': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigBootDisk, Map<String, dynamic>>(bootDisk, (value) => value.toMap()),
+      'advancedMachineFeatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigAdvancedMachineFeatures,
+            Map<String, dynamic>
+          >(advancedMachineFeatures, (value) => value.toMap()),
+      'bootDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigBootDisk,
+            Map<String, dynamic>
+          >(bootDisk, (value) => value.toMap()),
       'bootDiskKmsKey': ?bootDiskKmsKey,
-      'confidentialNodes': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigConfidentialNodes, Map<String, dynamic>>(confidentialNodes, (value) => value.toMap()),
-      'containerdConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigContainerdConfig, Map<String, dynamic>>(containerdConfig, (value) => value.toMap()),
+      'confidentialNodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigConfidentialNodes,
+            Map<String, dynamic>
+          >(confidentialNodes, (value) => value.toMap()),
+      'containerdConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigContainerdConfig,
+            Map<String, dynamic>
+          >(containerdConfig, (value) => value.toMap()),
       'diskSizeGb': ?diskSizeGb,
       'diskType': ?diskType,
-      'effectiveTaints': ?pulumi.Input.mapOptionalInputValue<List<NodePoolNodeConfigEffectiveTaint>, List<Map<String, dynamic>>>(effectiveTaints, (value) => pulumi.Input.encodeList<NodePoolNodeConfigEffectiveTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'effectiveTaints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodePoolNodeConfigEffectiveTaint>,
+            List<Map<String, dynamic>>
+          >(
+            effectiveTaints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodePoolNodeConfigEffectiveTaint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enableConfidentialStorage': ?enableConfidentialStorage,
-      'ephemeralStorageConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigEphemeralStorageConfig, Map<String, dynamic>>(ephemeralStorageConfig, (value) => value.toMap()),
-      'ephemeralStorageLocalSsdConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigEphemeralStorageLocalSsdConfig, Map<String, dynamic>>(ephemeralStorageLocalSsdConfig, (value) => value.toMap()),
-      'fastSocket': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigFastSocket, Map<String, dynamic>>(fastSocket, (value) => value.toMap()),
+      'ephemeralStorageConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigEphemeralStorageConfig,
+            Map<String, dynamic>
+          >(ephemeralStorageConfig, (value) => value.toMap()),
+      'ephemeralStorageLocalSsdConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigEphemeralStorageLocalSsdConfig,
+            Map<String, dynamic>
+          >(ephemeralStorageLocalSsdConfig, (value) => value.toMap()),
+      'fastSocket':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigFastSocket,
+            Map<String, dynamic>
+          >(fastSocket, (value) => value.toMap()),
       'flexStart': ?flexStart,
-      'gcfsConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigGcfsConfig, Map<String, dynamic>>(gcfsConfig, (value) => value.toMap()),
-      'guestAccelerators': ?pulumi.Input.mapOptionalInputValue<List<NodePoolNodeConfigGuestAccelerator>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<NodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'gvnic': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigGvnic, Map<String, dynamic>>(gvnic, (value) => value.toMap()),
-      'hostMaintenancePolicy': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigHostMaintenancePolicy, Map<String, dynamic>>(hostMaintenancePolicy, (value) => value.toMap()),
+      'gcfsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigGcfsConfig,
+            Map<String, dynamic>
+          >(gcfsConfig, (value) => value.toMap()),
+      'guestAccelerators':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodePoolNodeConfigGuestAccelerator>,
+            List<Map<String, dynamic>>
+          >(
+            guestAccelerators,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodePoolNodeConfigGuestAccelerator,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'gvnic':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigGvnic,
+            Map<String, dynamic>
+          >(gvnic, (value) => value.toMap()),
+      'hostMaintenancePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigHostMaintenancePolicy,
+            Map<String, dynamic>
+          >(hostMaintenancePolicy, (value) => value.toMap()),
       'imageType': ?imageType,
-      'kubeletConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfig, Map<String, dynamic>>(kubeletConfig, (value) => value.toMap()),
+      'kubeletConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigKubeletConfig,
+            Map<String, dynamic>
+          >(kubeletConfig, (value) => value.toMap()),
       'labels': ?labels,
-      'linuxNodeConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigLinuxNodeConfig, Map<String, dynamic>>(linuxNodeConfig, (value) => value.toMap()),
-      'localNvmeSsdBlockConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigLocalNvmeSsdBlockConfig, Map<String, dynamic>>(localNvmeSsdBlockConfig, (value) => value.toMap()),
+      'linuxNodeConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigLinuxNodeConfig,
+            Map<String, dynamic>
+          >(linuxNodeConfig, (value) => value.toMap()),
+      'localNvmeSsdBlockConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigLocalNvmeSsdBlockConfig,
+            Map<String, dynamic>
+          >(localNvmeSsdBlockConfig, (value) => value.toMap()),
       'localSsdCount': ?localSsdCount,
       'localSsdEncryptionMode': ?localSsdEncryptionMode,
       'loggingVariant': ?loggingVariant,
@@ -249,72 +378,413 @@ class NodePoolNodeConfig {
       'nodeGroup': ?nodeGroup,
       'oauthScopes': ?oauthScopes,
       'preemptible': ?preemptible,
-      'reservationAffinity': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigReservationAffinity, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
+      'reservationAffinity':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigReservationAffinity,
+            Map<String, dynamic>
+          >(reservationAffinity, (value) => value.toMap()),
       'resourceLabels': ?resourceLabels,
       'resourceManagerTags': ?resourceManagerTags,
-      'sandboxConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigSandboxConfig, Map<String, dynamic>>(sandboxConfig, (value) => value.toMap()),
-      'secondaryBootDisks': ?pulumi.Input.mapOptionalInputValue<List<NodePoolNodeConfigSecondaryBootDisk>, List<Map<String, dynamic>>>(secondaryBootDisks, (value) => pulumi.Input.encodeList<NodePoolNodeConfigSecondaryBootDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sandboxConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigSandboxConfig,
+            Map<String, dynamic>
+          >(sandboxConfig, (value) => value.toMap()),
+      'secondaryBootDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodePoolNodeConfigSecondaryBootDisk>,
+            List<Map<String, dynamic>>
+          >(
+            secondaryBootDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodePoolNodeConfigSecondaryBootDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceAccount': ?serviceAccount,
-      'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
-      'soleTenantConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigSoleTenantConfig, Map<String, dynamic>>(soleTenantConfig, (value) => value.toMap()),
+      'shieldedInstanceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigShieldedInstanceConfig,
+            Map<String, dynamic>
+          >(shieldedInstanceConfig, (value) => value.toMap()),
+      'soleTenantConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigSoleTenantConfig,
+            Map<String, dynamic>
+          >(soleTenantConfig, (value) => value.toMap()),
       'spot': ?spot,
       'storagePools': ?storagePools,
       'tags': ?tags,
-      'taints': ?pulumi.Input.mapOptionalInputValue<List<NodePoolNodeConfigTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<NodePoolNodeConfigTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'windowsNodeConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigWindowsNodeConfig, Map<String, dynamic>>(windowsNodeConfig, (value) => value.toMap()),
-      'workloadMetadataConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigWorkloadMetadataConfig, Map<String, dynamic>>(workloadMetadataConfig, (value) => value.toMap()),
+      'taints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodePoolNodeConfigTaint>,
+            List<Map<String, dynamic>>
+          >(
+            taints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodePoolNodeConfigTaint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'windowsNodeConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigWindowsNodeConfig,
+            Map<String, dynamic>
+          >(windowsNodeConfig, (value) => value.toMap()),
+      'workloadMetadataConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigWorkloadMetadataConfig,
+            Map<String, dynamic>
+          >(workloadMetadataConfig, (value) => value.toMap()),
     };
   }
 
   factory NodePoolNodeConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfig(
-      advancedMachineFeatures: map['advancedMachineFeatures'] == null ? null : (NodePoolNodeConfigAdvancedMachineFeatures.fromMap((map['advancedMachineFeatures']! as Map).cast<String, dynamic>())).input(),
-      bootDisk: map['bootDisk'] == null ? null : (NodePoolNodeConfigBootDisk.fromMap((map['bootDisk']! as Map).cast<String, dynamic>())).input(),
-      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey']! as String).input(),
-      confidentialNodes: map['confidentialNodes'] == null ? null : (NodePoolNodeConfigConfidentialNodes.fromMap((map['confidentialNodes']! as Map).cast<String, dynamic>())).input(),
-      containerdConfig: map['containerdConfig'] == null ? null : (NodePoolNodeConfigContainerdConfig.fromMap((map['containerdConfig']! as Map).cast<String, dynamic>())).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      effectiveTaints: map['effectiveTaints'] == null ? null : (pulumi.Input.decodeList<NodePoolNodeConfigEffectiveTaint>(map['effectiveTaints']!, (value) => NodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableConfidentialStorage: map['enableConfidentialStorage'] == null ? null : (map['enableConfidentialStorage']! as bool).input(),
-      ephemeralStorageConfig: map['ephemeralStorageConfig'] == null ? null : (NodePoolNodeConfigEphemeralStorageConfig.fromMap((map['ephemeralStorageConfig']! as Map).cast<String, dynamic>())).input(),
-      ephemeralStorageLocalSsdConfig: map['ephemeralStorageLocalSsdConfig'] == null ? null : (NodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap((map['ephemeralStorageLocalSsdConfig']! as Map).cast<String, dynamic>())).input(),
-      fastSocket: map['fastSocket'] == null ? null : (NodePoolNodeConfigFastSocket.fromMap((map['fastSocket']! as Map).cast<String, dynamic>())).input(),
-      flexStart: map['flexStart'] == null ? null : (map['flexStart']! as bool).input(),
-      gcfsConfig: map['gcfsConfig'] == null ? null : (NodePoolNodeConfigGcfsConfig.fromMap((map['gcfsConfig']! as Map).cast<String, dynamic>())).input(),
-      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<NodePoolNodeConfigGuestAccelerator>(map['guestAccelerators']!, (value) => NodePoolNodeConfigGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gvnic: map['gvnic'] == null ? null : (NodePoolNodeConfigGvnic.fromMap((map['gvnic']! as Map).cast<String, dynamic>())).input(),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (NodePoolNodeConfigHostMaintenancePolicy.fromMap((map['hostMaintenancePolicy']! as Map).cast<String, dynamic>())).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
-      kubeletConfig: map['kubeletConfig'] == null ? null : (NodePoolNodeConfigKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      linuxNodeConfig: map['linuxNodeConfig'] == null ? null : (NodePoolNodeConfigLinuxNodeConfig.fromMap((map['linuxNodeConfig']! as Map).cast<String, dynamic>())).input(),
-      localNvmeSsdBlockConfig: map['localNvmeSsdBlockConfig'] == null ? null : (NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((map['localNvmeSsdBlockConfig']! as Map).cast<String, dynamic>())).input(),
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
-      localSsdEncryptionMode: map['localSsdEncryptionMode'] == null ? null : (map['localSsdEncryptionMode']! as String).input(),
-      loggingVariant: map['loggingVariant'] == null ? null : (map['loggingVariant']! as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (map['maxRunDuration']! as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
-      nodeGroup: map['nodeGroup'] == null ? null : (map['nodeGroup']! as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (NodePoolNodeConfigReservationAffinity.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
-      resourceLabels: map['resourceLabels'] == null ? null : ((map['resourceLabels']! as Map).cast<String, String>()).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
-      sandboxConfig: map['sandboxConfig'] == null ? null : (NodePoolNodeConfigSandboxConfig.fromMap((map['sandboxConfig']! as Map).cast<String, dynamic>())).input(),
-      secondaryBootDisks: map['secondaryBootDisks'] == null ? null : (pulumi.Input.decodeList<NodePoolNodeConfigSecondaryBootDisk>(map['secondaryBootDisks']!, (value) => NodePoolNodeConfigSecondaryBootDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (NodePoolNodeConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
-      soleTenantConfig: map['soleTenantConfig'] == null ? null : (NodePoolNodeConfigSoleTenantConfig.fromMap((map['soleTenantConfig']! as Map).cast<String, dynamic>())).input(),
-      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
-      storagePools: map['storagePools'] == null ? null : ((map['storagePools']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodePoolNodeConfigTaint>(map['taints']!, (value) => NodePoolNodeConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsNodeConfig: map['windowsNodeConfig'] == null ? null : (NodePoolNodeConfigWindowsNodeConfig.fromMap((map['windowsNodeConfig']! as Map).cast<String, dynamic>())).input(),
-      workloadMetadataConfig: map['workloadMetadataConfig'] == null ? null : (NodePoolNodeConfigWorkloadMetadataConfig.fromMap((map['workloadMetadataConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedMachineFeatures: (() {
+        final guardedValue = map['advancedMachineFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigAdvancedMachineFeatures.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bootDisk: (() {
+        final guardedValue = map['bootDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigBootDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bootDiskKmsKey: (() {
+        final guardedValue = map['bootDiskKmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      confidentialNodes: (() {
+        final guardedValue = map['confidentialNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigConfidentialNodes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerdConfig: (() {
+        final guardedValue = map['containerdConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigContainerdConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      diskSizeGb: (() {
+        final guardedValue = map['diskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveTaints: (() {
+        final guardedValue = map['effectiveTaints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodePoolNodeConfigEffectiveTaint>(
+            guardedValue,
+            (value) => NodePoolNodeConfigEffectiveTaint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enableConfidentialStorage: (() {
+        final guardedValue = map['enableConfidentialStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ephemeralStorageConfig: (() {
+        final guardedValue = map['ephemeralStorageConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigEphemeralStorageConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ephemeralStorageLocalSsdConfig: (() {
+        final guardedValue = map['ephemeralStorageLocalSsdConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fastSocket: (() {
+        final guardedValue = map['fastSocket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigFastSocket.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      flexStart: (() {
+        final guardedValue = map['flexStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gcfsConfig: (() {
+        final guardedValue = map['gcfsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigGcfsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      guestAccelerators: (() {
+        final guardedValue = map['guestAccelerators'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodePoolNodeConfigGuestAccelerator>(
+            guardedValue,
+            (value) => NodePoolNodeConfigGuestAccelerator.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      gvnic: (() {
+        final guardedValue = map['gvnic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigGvnic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hostMaintenancePolicy: (() {
+        final guardedValue = map['hostMaintenancePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigHostMaintenancePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageType: (() {
+        final guardedValue = map['imageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kubeletConfig: (() {
+        final guardedValue = map['kubeletConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigKubeletConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      linuxNodeConfig: (() {
+        final guardedValue = map['linuxNodeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigLinuxNodeConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localNvmeSsdBlockConfig: (() {
+        final guardedValue = map['localNvmeSsdBlockConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localSsdCount: (() {
+        final guardedValue = map['localSsdCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      localSsdEncryptionMode: (() {
+        final guardedValue = map['localSsdEncryptionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggingVariant: (() {
+        final guardedValue = map['loggingVariant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxRunDuration: (() {
+        final guardedValue = map['maxRunDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      minCpuPlatform: (() {
+        final guardedValue = map['minCpuPlatform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroup: (() {
+        final guardedValue = map['nodeGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthScopes: (() {
+        final guardedValue = map['oauthScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      preemptible: (() {
+        final guardedValue = map['preemptible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      reservationAffinity: (() {
+        final guardedValue = map['reservationAffinity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigReservationAffinity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceLabels: (() {
+        final guardedValue = map['resourceLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceManagerTags: (() {
+        final guardedValue = map['resourceManagerTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      sandboxConfig: (() {
+        final guardedValue = map['sandboxConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigSandboxConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secondaryBootDisks: (() {
+        final guardedValue = map['secondaryBootDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodePoolNodeConfigSecondaryBootDisk>(
+            guardedValue,
+            (value) => NodePoolNodeConfigSecondaryBootDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shieldedInstanceConfig: (() {
+        final guardedValue = map['shieldedInstanceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigShieldedInstanceConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      soleTenantConfig: (() {
+        final guardedValue = map['soleTenantConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigSoleTenantConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spot: (() {
+        final guardedValue = map['spot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      storagePools: (() {
+        final guardedValue = map['storagePools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      taints: (() {
+        final guardedValue = map['taints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodePoolNodeConfigTaint>(
+            guardedValue,
+            (value) => NodePoolNodeConfigTaint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      windowsNodeConfig: (() {
+        final guardedValue = map['windowsNodeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigWindowsNodeConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workloadMetadataConfig: (() {
+        final guardedValue = map['workloadMetadataConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigWorkloadMetadataConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_container;
-
 export 'container/accelerator_config.dart';
 export 'container/accelerator_config_container_v1beta1.dart';
 export 'container/accelerator_config_response.dart';

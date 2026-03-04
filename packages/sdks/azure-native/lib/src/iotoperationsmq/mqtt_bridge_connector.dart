@@ -569,34 +569,51 @@ import 'system_data_response.dart';
 class MqttBridgeConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The number of instances to deploy for a bridge rollout.
   late final pulumi.Output<int?> bridgeInstances;
+
   /// The client id prefix of the dynamically generated client ids.
   late final pulumi.Output<String?> clientIdPrefix;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The details of MqttBridge Docker Image.
   late final pulumi.Output<ContainerImageResponse> image;
+
   /// The details for connecting with Local Broker.
-  late final pulumi.Output<LocalBrokerConnectionSpecResponse?> localBrokerConnection;
+  late final pulumi.Output<LocalBrokerConnectionSpecResponse?>
+  localBrokerConnection;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The log level of the Bridge Connector instances.
   late final pulumi.Output<String?> logLevel;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The Node Tolerations for the Bridge Connector pods.
   late final pulumi.Output<NodeTolerationsResponse?> nodeTolerations;
+
   /// The protocol to use for connecting with Brokers.
   late final pulumi.Output<String> protocol;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// The details for connecting with Remote Broker.
-  late final pulumi.Output<MqttBridgeRemoteBrokerConnectionSpecResponse> remoteBrokerConnection;
+  late final pulumi.Output<MqttBridgeRemoteBrokerConnectionSpecResponse>
+  remoteBrokerConnection;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -609,26 +626,35 @@ class MqttBridgeConnector extends pulumi.CustomResource {
     MqttBridgeConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsmq:MqttBridgeConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bridgeInstances = registerOutput<int?>('bridgeInstances');
-    this.clientIdPrefix = registerOutput<String?>('clientIdPrefix');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.image = registerOutput<ContainerImageResponse>('image');
-    this.localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>('localBrokerConnection');
-    this.location = registerOutput<String>('location');
-    this.logLevel = registerOutput<String?>('logLevel');
+         'azure-native:iotoperationsmq:MqttBridgeConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bridgeInstances = registerOutput<int?>('bridgeInstances');
+    clientIdPrefix = registerOutput<String?>('clientIdPrefix');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    image = registerOutput<ContainerImageResponse>('image');
+    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>(
+      'localBrokerConnection',
+    );
+    location = registerOutput<String>('location');
+    logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
-    this.nodeTolerations = registerOutput<NodeTolerationsResponse?>('nodeTolerations');
-    this.protocol = registerOutput<String>('protocol');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remoteBrokerConnection = registerOutput<MqttBridgeRemoteBrokerConnectionSpecResponse>('remoteBrokerConnection');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodeTolerations = registerOutput<NodeTolerationsResponse?>(
+      'nodeTolerations',
+    );
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteBrokerConnection =
+        registerOutput<MqttBridgeRemoteBrokerConnectionSpecResponse>(
+          'remoteBrokerConnection',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

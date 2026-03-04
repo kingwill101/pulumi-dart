@@ -9,37 +9,53 @@ import 'parameter_specification.dart';
 class SftpServerLinkedService {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// The authentication type to be used to connect to the FTP server.
   final pulumi.Input<String>? authenticationType;
+
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+
   /// Linked service description.
   final pulumi.Input<String>? description;
+
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
+
   /// The SFTP server host name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> host;
+
   /// The host key finger-print of the SFTP server. When SkipHostKeyValidation is false, HostKeyFingerprint should be specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? hostKeyFingerprint;
+
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+
   /// The password to decrypt the SSH private key if the SSH private key is encrypted.
   final pulumi.Input<AzureKeyVaultSecretReference>? passPhrase;
+
   /// Password to logon the SFTP server for Basic authentication.
   final pulumi.Input<AzureKeyVaultSecretReference>? password;
+
   /// The TCP port number that the SFTP server uses to listen for client connections. Default value is 22. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? port;
+
   /// Base64 encoded SSH private key content for SshPublicKey authentication. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format.
   final pulumi.Input<AzureKeyVaultSecretReference>? privateKeyContent;
+
   /// The SSH private key file path for SshPublicKey authentication. Only valid for on-premises copy. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? privateKeyPath;
+
   /// If true, skip the SSH host key validation. Default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? skipHostKeyValidation;
+
   /// Type of linked service.
   /// Expected value is 'Sftp'.
   final pulumi.Input<String> type;
+
   /// The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
+
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -85,16 +101,43 @@ class SftpServerLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
-      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'connectVia':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeReference,
+            Map<String, dynamic>
+          >(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': host,
       'hostKeyFingerprint': ?hostKeyFingerprint,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'passPhrase': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(passPhrase, (value) => value.toMap()),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecification>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'passPhrase':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureKeyVaultSecretReference,
+            Map<String, dynamic>
+          >(passPhrase, (value) => value.toMap()),
+      'password':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureKeyVaultSecretReference,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
       'port': ?port,
-      'privateKeyContent': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(privateKeyContent, (value) => value.toMap()),
+      'privateKeyContent':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureKeyVaultSecretReference,
+            Map<String, dynamic>
+          >(privateKeyContent, (value) => value.toMap()),
       'privateKeyPath': ?privateKeyPath,
       'skipHostKeyValidation': ?skipHostKeyValidation,
       'type': type,
@@ -105,24 +148,106 @@ class SftpServerLinkedService {
 
   factory SftpServerLinkedService.fromMap(Map<String, dynamic> map) {
     return SftpServerLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
-      host: (map['host']).input(),
-      hostKeyFingerprint: map['hostKeyFingerprint'] == null ? null : (map['hostKeyFingerprint']!).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      passPhrase: map['passPhrase'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['passPhrase']! as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']!).input(),
-      privateKeyContent: map['privateKeyContent'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['privateKeyContent']! as Map).cast<String, dynamic>())).input(),
-      privateKeyPath: map['privateKeyPath'] == null ? null : (map['privateKeyPath']!).input(),
-      skipHostKeyValidation: map['skipHostKeyValidation'] == null ? null : (map['skipHostKeyValidation']!).input(),
-      type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']!).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      authenticationType: (() {
+        final guardedValue = map['authenticationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectVia: (() {
+        final guardedValue = map['connectVia'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptedCredential: (() {
+        final guardedValue = map['encryptedCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: pulumi.Input.fromValue(map['host']),
+      hostKeyFingerprint: (() {
+        final guardedValue = map['hostKeyFingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecification>(
+            guardedValue,
+            (value) => ParameterSpecification.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      passPhrase: (() {
+        final guardedValue = map['passPhrase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureKeyVaultSecretReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureKeyVaultSecretReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      privateKeyContent: (() {
+        final guardedValue = map['privateKeyContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureKeyVaultSecretReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateKeyPath: (() {
+        final guardedValue = map['privateKeyPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      skipHostKeyValidation: (() {
+        final guardedValue = map['skipHostKeyValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

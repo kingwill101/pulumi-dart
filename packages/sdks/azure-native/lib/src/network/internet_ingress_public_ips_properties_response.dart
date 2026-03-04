@@ -9,20 +9,21 @@ class InternetIngressPublicIpsPropertiesResponse {
 
   /// Creates a new [InternetIngressPublicIpsPropertiesResponse].
   /// [id] Resource Uri of Public Ip
-  InternetIngressPublicIpsPropertiesResponse({
-    this.id,
-  });
+  InternetIngressPublicIpsPropertiesResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory InternetIngressPublicIpsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory InternetIngressPublicIpsPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InternetIngressPublicIpsPropertiesResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

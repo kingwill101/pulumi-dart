@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretArgs {
   /// The name of the Resource Group to which the vault belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the secret.
   final pulumi.Input<String> secretName;
+
   /// The name of the vault.
   final pulumi.Input<String> vaultName;
 
@@ -34,10 +36,11 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

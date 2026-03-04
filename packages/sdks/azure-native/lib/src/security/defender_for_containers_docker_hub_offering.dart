@@ -10,20 +10,17 @@ class DefenderForContainersDockerHubOffering {
 
   /// Creates a new [DefenderForContainersDockerHubOffering].
   /// [offeringType] The type of the security offering.
-  DefenderForContainersDockerHubOffering({
-    required this.offeringType,
-  });
+  DefenderForContainersDockerHubOffering({required this.offeringType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'offeringType': offeringType,
-    };
+    return <String, dynamic>{'offeringType': offeringType};
   }
 
-  factory DefenderForContainersDockerHubOffering.fromMap(Map<String, dynamic> map) {
+  factory DefenderForContainersDockerHubOffering.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForContainersDockerHubOffering(
-      offeringType: (map['offeringType'] as String).input(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

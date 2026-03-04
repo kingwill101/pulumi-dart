@@ -7,20 +7,17 @@ class GetOtsBackupPlansPlanOtsDetail {
 
   /// Creates a new [GetOtsBackupPlansPlanOtsDetail].
   /// [tableNames] Required.
-  GetOtsBackupPlansPlanOtsDetail({
-    required this.tableNames,
-  });
+  GetOtsBackupPlansPlanOtsDetail({required this.tableNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tableNames': tableNames,
-    };
+    return <String, dynamic>{'tableNames': tableNames};
   }
 
   factory GetOtsBackupPlansPlanOtsDetail.fromMap(Map<String, dynamic> map) {
     return GetOtsBackupPlansPlanOtsDetail(
-      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
+      tableNames: pulumi.Input.fromValue(
+        (map['tableNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

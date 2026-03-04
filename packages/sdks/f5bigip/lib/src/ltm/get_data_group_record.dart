@@ -4,29 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataGroupRecord {
   final pulumi.Input<String>? data;
+
   /// Name of the datagroup
   final pulumi.Input<String> name;
 
   /// Creates a new [GetDataGroupRecord].
   /// [data] Optional.
   /// [name] Name of the datagroup
-  GetDataGroupRecord({
-    this.data,
-    required this.name,
-  });
+  GetDataGroupRecord({this.data, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': ?data,
-      'name': name,
-    };
+    return <String, dynamic>{'data': ?data, 'name': name};
   }
 
   factory GetDataGroupRecord.fromMap(Map<String, dynamic> map) {
     return GetDataGroupRecord(
-      data: map['data'] == null ? null : (map['data']! as String).input(),
-      name: (map['name'] as String).input(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

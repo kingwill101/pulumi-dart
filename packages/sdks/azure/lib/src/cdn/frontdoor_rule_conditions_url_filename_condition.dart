@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorRuleConditionsUrlFilenameCondition {
   /// A list of one or more string or integer values(e.g. "1") representing the value of the request file name to match. If multiple values are specified, they're evaluated using `OR` logic.
   ///
-  /// > **Note:** The `match_values` field is only optional if the `operator` is set to `Any`.
+  /// &gt; **Note:** The `match_values` field is only optional if the `operator` is set to `Any`.
   final pulumi.Input<List<String>>? matchValues;
+
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   final pulumi.Input<bool>? negateCondition;
+
   /// A Conditional operator. Possible values include `Any`, `Equal`, `Contains`, `BeginsWith`, `EndsWith`, `LessThan`, `LessThanOrEqual`, `GreaterThan`, `GreaterThanOrEqual` or `RegEx`. Details can be found in the `Condition Operator List` below.
   final pulumi.Input<String> operator;
+
   /// A Conditional operator. Possible values include `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` or `UrlEncode`. Details can be found in the `Condition Transform List` below.
   final pulumi.Input<List<String>>? transforms;
 
@@ -35,13 +38,26 @@ class FrontdoorRuleConditionsUrlFilenameCondition {
     };
   }
 
-  factory FrontdoorRuleConditionsUrlFilenameCondition.fromMap(Map<String, dynamic> map) {
+  factory FrontdoorRuleConditionsUrlFilenameCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontdoorRuleConditionsUrlFilenameCondition(
-      matchValues: map['matchValues'] == null ? null : ((map['matchValues']! as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
-      operator: (map['operator'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
+      matchValues: (() {
+        final guardedValue = map['matchValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      negateCondition: (() {
+        final guardedValue = map['negateCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      transforms: (() {
+        final guardedValue = map['transforms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

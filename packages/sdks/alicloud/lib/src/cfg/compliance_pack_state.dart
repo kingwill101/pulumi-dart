@@ -8,16 +8,22 @@ import 'compliance_pack_config_rule_id.dart';
 class CompliancePackState {
   /// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
   final pulumi.Input<String>? compliancePackName;
+
   /// Compliance Package Template Id.
   final pulumi.Input<String>? compliancePackTemplateId;
+
   /// A list of Config Rule IDs. See `config_rule_ids` below.
   final pulumi.Input<List<CompliancePackConfigRuleId>>? configRuleIds;
+
   /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
   final pulumi.Input<List<CompliancePackConfigRule>>? configRules;
+
   /// The Description of compliance pack.
   final pulumi.Input<String>? description;
+
   /// The Risk Level. Valid values:
   final pulumi.Input<int>? riskLevel;
+
   /// The status of the Compliance Pack.
   final pulumi.Input<String>? status;
 
@@ -43,8 +49,30 @@ class CompliancePackState {
     return <String, dynamic>{
       'compliancePackName': ?compliancePackName,
       'compliancePackTemplateId': ?compliancePackTemplateId,
-      'configRuleIds': ?pulumi.Input.mapOptionalInputValue<List<CompliancePackConfigRuleId>, List<Map<String, dynamic>>>(configRuleIds, (value) => pulumi.Input.encodeList<CompliancePackConfigRuleId, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'configRules': ?pulumi.Input.mapOptionalInputValue<List<CompliancePackConfigRule>, List<Map<String, dynamic>>>(configRules, (value) => pulumi.Input.encodeList<CompliancePackConfigRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configRuleIds':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CompliancePackConfigRuleId>,
+            List<Map<String, dynamic>>
+          >(
+            configRuleIds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CompliancePackConfigRuleId,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'configRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CompliancePackConfigRule>,
+            List<Map<String, dynamic>>
+          >(
+            configRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CompliancePackConfigRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'riskLevel': ?riskLevel,
       'status': ?status,
@@ -53,14 +81,55 @@ class CompliancePackState {
 
   factory CompliancePackState.fromMap(Map<String, dynamic> map) {
     return CompliancePackState(
-      compliancePackName: map['compliancePackName'] == null ? null : (map['compliancePackName']! as String).input(),
-      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : (map['compliancePackTemplateId']! as String).input(),
-      configRuleIds: map['configRuleIds'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleId>(map['configRuleIds']!, (value) => CompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configRules: map['configRules'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRule>(map['configRules']!, (value) => CompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      compliancePackName: (() {
+        final guardedValue = map['compliancePackName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      compliancePackTemplateId: (() {
+        final guardedValue = map['compliancePackTemplateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configRuleIds: (() {
+        final guardedValue = map['configRuleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CompliancePackConfigRuleId>(
+            guardedValue,
+            (value) => CompliancePackConfigRuleId.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      configRules: (() {
+        final guardedValue = map['configRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CompliancePackConfigRule>(
+            guardedValue,
+            (value) => CompliancePackConfigRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      riskLevel: (() {
+        final guardedValue = map['riskLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

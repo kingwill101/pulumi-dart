@@ -7,20 +7,29 @@ import 'google_cloud_documentai_v1beta3_processor_version_alias_response.dart';
 class GetProcessorDocumentaiV1beta3Result {
   /// The time the processor was created.
   final String createTime;
+
   /// The default processor version.
   final String defaultProcessorVersion;
+
   /// The display name of the processor.
   final String displayName;
+
   /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
   final String kmsKeyName;
+
   /// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
   final String name;
+
   /// Immutable. The http endpoint that can be called to invoke processing.
   final String processEndpoint;
+
   /// The processor version aliases.
-  final List<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse> processorVersionAliases;
+  final List<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse>
+  processorVersionAliases;
+
   /// The state of the processor.
   final String state;
+
   /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
   final String type;
 
@@ -54,13 +63,19 @@ class GetProcessorDocumentaiV1beta3Result {
       'kmsKeyName': kmsKeyName,
       'name': name,
       'processEndpoint': processEndpoint,
-      'processorVersionAliases': pulumi.Input.encodeList<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse, Map<String, dynamic>>(processorVersionAliases, (value) => value.toMap()),
+      'processorVersionAliases':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse,
+            Map<String, dynamic>
+          >(processorVersionAliases, (value) => value.toMap()),
       'state': state,
       'type': type,
     };
   }
 
-  factory GetProcessorDocumentaiV1beta3Result.fromMap(Map<String, dynamic> map) {
+  factory GetProcessorDocumentaiV1beta3Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProcessorDocumentaiV1beta3Result(
       createTime: map['createTime'] as String,
       defaultProcessorVersion: map['defaultProcessorVersion'] as String,
@@ -68,10 +83,18 @@ class GetProcessorDocumentaiV1beta3Result {
       kmsKeyName: map['kmsKeyName'] as String,
       name: map['name'] as String,
       processEndpoint: map['processEndpoint'] as String,
-      processorVersionAliases: pulumi.Input.decodeList<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse>(map['processorVersionAliases'], (value) => GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse.fromMap((value as Map).cast<String, dynamic>())),
+      processorVersionAliases:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse
+          >(
+            map['processorVersionAliases']!,
+            (value) =>
+                GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       state: map['state'] as String,
       type: map['type'] as String,
     );
   }
 }
-

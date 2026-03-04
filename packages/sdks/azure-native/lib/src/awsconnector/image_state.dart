@@ -9,16 +9,15 @@ enum ImageState {
   pending("pending"),
   transient("transient");
 
-  const ImageState(this.value);
-  final String value;
+  const ImageState(this.wireValue);
+  final String wireValue;
 
   static ImageState fromValue(String value) {
     for (final item in ImageState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageState value: $value');
   }
 }
-

@@ -9,35 +9,49 @@ import 'get_reservation_block_reservation_maintenance.dart';
 class GetReservationBlockResult {
   /// The number of resources that are allocated in this reservation block.
   final int blockCount;
+
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
+
   /// Health information for the reservation block. Structure is documented below.
   final List<GetReservationBlockHealthInfo> healthInfos;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The number of instances that are currently in use on this reservation block.
   final int inUseCount;
+
   /// Type of the resource. Always `compute#reservationBlock` for reservation blocks.
   final String kind;
   final String name;
+
   /// The physical topology of the reservation block. Structure is documented below.
   final List<GetReservationBlockPhysicalTopology> physicalTopologies;
   final String project;
   final String reservation;
+
   /// Maintenance information for this reservation block. Structure is documented below.
   final List<GetReservationBlockReservationMaintenance> reservationMaintenances;
+
   /// The number of reservation sub-blocks associated with this reservation block.
   final int reservationSubBlockCount;
+
   /// The number of in-use reservation sub-blocks associated with this reservation block.
   final int reservationSubBlockInUseCount;
+
   /// The unique identifier for the resource.
   final String resourceId;
+
   /// Server-defined fully-qualified URL for this resource.
   final String selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   final String selfLinkWithId;
+
   /// Status of the reservation block.
   final String status;
+
   /// A List of all block sub-block names in the parent block.
   final List<String> subBlockNames;
   final String? zone;
@@ -88,15 +102,27 @@ class GetReservationBlockResult {
     return <String, dynamic>{
       'blockCount': blockCount,
       'creationTimestamp': creationTimestamp,
-      'healthInfos': pulumi.Input.encodeList<GetReservationBlockHealthInfo, Map<String, dynamic>>(healthInfos, (value) => value.toMap()),
+      'healthInfos':
+          pulumi.Input.encodeList<
+            GetReservationBlockHealthInfo,
+            Map<String, dynamic>
+          >(healthInfos, (value) => value.toMap()),
       'id': id,
       'inUseCount': inUseCount,
       'kind': kind,
       'name': name,
-      'physicalTopologies': pulumi.Input.encodeList<GetReservationBlockPhysicalTopology, Map<String, dynamic>>(physicalTopologies, (value) => value.toMap()),
+      'physicalTopologies':
+          pulumi.Input.encodeList<
+            GetReservationBlockPhysicalTopology,
+            Map<String, dynamic>
+          >(physicalTopologies, (value) => value.toMap()),
       'project': project,
       'reservation': reservation,
-      'reservationMaintenances': pulumi.Input.encodeList<GetReservationBlockReservationMaintenance, Map<String, dynamic>>(reservationMaintenances, (value) => value.toMap()),
+      'reservationMaintenances':
+          pulumi.Input.encodeList<
+            GetReservationBlockReservationMaintenance,
+            Map<String, dynamic>
+          >(reservationMaintenances, (value) => value.toMap()),
       'reservationSubBlockCount': reservationSubBlockCount,
       'reservationSubBlockInUseCount': reservationSubBlockInUseCount,
       'resourceId': resourceId,
@@ -112,24 +138,45 @@ class GetReservationBlockResult {
     return GetReservationBlockResult(
       blockCount: map['blockCount'] as int,
       creationTimestamp: map['creationTimestamp'] as String,
-      healthInfos: pulumi.Input.decodeList<GetReservationBlockHealthInfo>(map['healthInfos'], (value) => GetReservationBlockHealthInfo.fromMap((value as Map).cast<String, dynamic>())),
+      healthInfos: pulumi.Input.decodeList<GetReservationBlockHealthInfo>(
+        map['healthInfos']!,
+        (value) => GetReservationBlockHealthInfo.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       inUseCount: map['inUseCount'] as int,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      physicalTopologies: pulumi.Input.decodeList<GetReservationBlockPhysicalTopology>(map['physicalTopologies'], (value) => GetReservationBlockPhysicalTopology.fromMap((value as Map).cast<String, dynamic>())),
+      physicalTopologies:
+          pulumi.Input.decodeList<GetReservationBlockPhysicalTopology>(
+            map['physicalTopologies']!,
+            (value) => GetReservationBlockPhysicalTopology.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       project: map['project'] as String,
       reservation: map['reservation'] as String,
-      reservationMaintenances: pulumi.Input.decodeList<GetReservationBlockReservationMaintenance>(map['reservationMaintenances'], (value) => GetReservationBlockReservationMaintenance.fromMap((value as Map).cast<String, dynamic>())),
+      reservationMaintenances:
+          pulumi.Input.decodeList<GetReservationBlockReservationMaintenance>(
+            map['reservationMaintenances']!,
+            (value) => GetReservationBlockReservationMaintenance.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       reservationSubBlockCount: map['reservationSubBlockCount'] as int,
-      reservationSubBlockInUseCount: map['reservationSubBlockInUseCount'] as int,
+      reservationSubBlockInUseCount:
+          map['reservationSubBlockInUseCount'] as int,
       resourceId: map['resourceId'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       status: map['status'] as String,
       subBlockNames: (map['subBlockNames'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone']! as String,
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

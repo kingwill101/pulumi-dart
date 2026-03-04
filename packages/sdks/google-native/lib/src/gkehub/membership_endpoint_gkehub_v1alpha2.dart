@@ -12,14 +12,19 @@ import 'on_prem_cluster_gkehub_v1alpha2.dart';
 class MembershipEndpointGkehubV1alpha2 {
   /// Optional. Specific information for a GDC Edge Appliance cluster.
   final pulumi.Input<ApplianceClusterGkehubV1alpha2>? applianceCluster;
+
   /// Optional. Specific information for a Google Edge cluster.
   final pulumi.Input<EdgeClusterGkehubV1alpha2>? edgeCluster;
+
   /// Optional. Specific information for a GKE-on-GCP cluster.
   final pulumi.Input<GkeClusterGkehubV1alpha2>? gkeCluster;
+
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
   final pulumi.Input<KubernetesResourceGkehubV1alpha2>? kubernetesResource;
+
   /// Optional. Specific information for a GKE Multi-Cloud cluster.
   final pulumi.Input<MultiCloudClusterGkehubV1alpha2>? multiCloudCluster;
+
   /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
   final pulumi.Input<OnPremClusterGkehubV1alpha2>? onPremCluster;
 
@@ -41,24 +46,95 @@ class MembershipEndpointGkehubV1alpha2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applianceCluster': ?pulumi.Input.mapOptionalInputValue<ApplianceClusterGkehubV1alpha2, Map<String, dynamic>>(applianceCluster, (value) => value.toMap()),
-      'edgeCluster': ?pulumi.Input.mapOptionalInputValue<EdgeClusterGkehubV1alpha2, Map<String, dynamic>>(edgeCluster, (value) => value.toMap()),
-      'gkeCluster': ?pulumi.Input.mapOptionalInputValue<GkeClusterGkehubV1alpha2, Map<String, dynamic>>(gkeCluster, (value) => value.toMap()),
-      'kubernetesResource': ?pulumi.Input.mapOptionalInputValue<KubernetesResourceGkehubV1alpha2, Map<String, dynamic>>(kubernetesResource, (value) => value.toMap()),
-      'multiCloudCluster': ?pulumi.Input.mapOptionalInputValue<MultiCloudClusterGkehubV1alpha2, Map<String, dynamic>>(multiCloudCluster, (value) => value.toMap()),
-      'onPremCluster': ?pulumi.Input.mapOptionalInputValue<OnPremClusterGkehubV1alpha2, Map<String, dynamic>>(onPremCluster, (value) => value.toMap()),
+      'applianceCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplianceClusterGkehubV1alpha2,
+            Map<String, dynamic>
+          >(applianceCluster, (value) => value.toMap()),
+      'edgeCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeClusterGkehubV1alpha2,
+            Map<String, dynamic>
+          >(edgeCluster, (value) => value.toMap()),
+      'gkeCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            GkeClusterGkehubV1alpha2,
+            Map<String, dynamic>
+          >(gkeCluster, (value) => value.toMap()),
+      'kubernetesResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesResourceGkehubV1alpha2,
+            Map<String, dynamic>
+          >(kubernetesResource, (value) => value.toMap()),
+      'multiCloudCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiCloudClusterGkehubV1alpha2,
+            Map<String, dynamic>
+          >(multiCloudCluster, (value) => value.toMap()),
+      'onPremCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            OnPremClusterGkehubV1alpha2,
+            Map<String, dynamic>
+          >(onPremCluster, (value) => value.toMap()),
     };
   }
 
   factory MembershipEndpointGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return MembershipEndpointGkehubV1alpha2(
-      applianceCluster: map['applianceCluster'] == null ? null : (ApplianceClusterGkehubV1alpha2.fromMap((map['applianceCluster']! as Map).cast<String, dynamic>())).input(),
-      edgeCluster: map['edgeCluster'] == null ? null : (EdgeClusterGkehubV1alpha2.fromMap((map['edgeCluster']! as Map).cast<String, dynamic>())).input(),
-      gkeCluster: map['gkeCluster'] == null ? null : (GkeClusterGkehubV1alpha2.fromMap((map['gkeCluster']! as Map).cast<String, dynamic>())).input(),
-      kubernetesResource: map['kubernetesResource'] == null ? null : (KubernetesResourceGkehubV1alpha2.fromMap((map['kubernetesResource']! as Map).cast<String, dynamic>())).input(),
-      multiCloudCluster: map['multiCloudCluster'] == null ? null : (MultiCloudClusterGkehubV1alpha2.fromMap((map['multiCloudCluster']! as Map).cast<String, dynamic>())).input(),
-      onPremCluster: map['onPremCluster'] == null ? null : (OnPremClusterGkehubV1alpha2.fromMap((map['onPremCluster']! as Map).cast<String, dynamic>())).input(),
+      applianceCluster: (() {
+        final guardedValue = map['applianceCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplianceClusterGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      edgeCluster: (() {
+        final guardedValue = map['edgeCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeClusterGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      gkeCluster: (() {
+        final guardedValue = map['gkeCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GkeClusterGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubernetesResource: (() {
+        final guardedValue = map['kubernetesResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesResourceGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      multiCloudCluster: (() {
+        final guardedValue = map['multiCloudCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiCloudClusterGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      onPremCluster: (() {
+        final guardedValue = map['onPremCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OnPremClusterGkehubV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

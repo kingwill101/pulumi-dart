@@ -5,16 +5,17 @@ enum IpConfigurationSslModeSqladminV1beta4 {
   encryptedOnly("ENCRYPTED_ONLY"),
   trustedClientCertificateRequired("TRUSTED_CLIENT_CERTIFICATE_REQUIRED");
 
-  const IpConfigurationSslModeSqladminV1beta4(this.value);
-  final String value;
+  const IpConfigurationSslModeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static IpConfigurationSslModeSqladminV1beta4 fromValue(String value) {
     for (final item in IpConfigurationSslModeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IpConfigurationSslModeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown IpConfigurationSslModeSqladminV1beta4 value: $value',
+    );
   }
 }
-

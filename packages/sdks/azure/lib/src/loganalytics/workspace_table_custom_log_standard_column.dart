@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceTableCustomLogStandardColumn {
   /// The description of the table.
   final pulumi.Input<String>? description;
+
   /// The display name of the table.
   final pulumi.Input<String>? displayName;
+
   /// Specifies the name of the Log Analytics Workspace Table Custom Log. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `name` must end with `_CL`.
+  /// &gt; **Note:** `name` must end with `_CL`.
   final pulumi.Input<String>? name;
+
   /// The data type of the standard column.
   final pulumi.Input<String>? type;
 
@@ -35,13 +38,30 @@ class WorkspaceTableCustomLogStandardColumn {
     };
   }
 
-  factory WorkspaceTableCustomLogStandardColumn.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceTableCustomLogStandardColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceTableCustomLogStandardColumn(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

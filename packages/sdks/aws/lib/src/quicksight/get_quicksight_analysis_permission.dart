@@ -15,17 +15,13 @@ class GetQuicksightAnalysisPermission {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'actions': actions,
-      'principal': principal,
-    };
+    return <String, dynamic>{'actions': actions, 'principal': principal};
   }
 
   factory GetQuicksightAnalysisPermission.fromMap(Map<String, dynamic> map) {
     return GetQuicksightAnalysisPermission(
-      actions: ((map['actions'] as List).cast<String>()).input(),
-      principal: (map['principal'] as String).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
+      principal: pulumi.Input.fromValue(map['principal'] as String),
     );
   }
 }
-

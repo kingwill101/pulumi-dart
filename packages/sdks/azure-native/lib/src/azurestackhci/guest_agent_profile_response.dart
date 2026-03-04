@@ -7,12 +7,16 @@ import 'error_detail_response.dart';
 class GuestAgentProfileResponse {
   /// The hybrid machine agent full version.
   final pulumi.Input<String> agentVersion;
+
   /// Details about the error state.
   final pulumi.Input<List<ErrorDetailResponse>> errorDetails;
+
   /// The time of the last status change.
   final pulumi.Input<String> lastStatusChange;
+
   /// The status of the hybrid machine agent.
   final pulumi.Input<String> status;
+
   /// Specifies the VM's unique SMBIOS ID.
   final pulumi.Input<String> vmUuid;
 
@@ -33,7 +37,18 @@ class GuestAgentProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentVersion': agentVersion,
-      'errorDetails': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errorDetails':
+          pulumi.Input.mapInputValue<
+            List<ErrorDetailResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errorDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ErrorDetailResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'lastStatusChange': lastStatusChange,
       'status': status,
       'vmUuid': vmUuid,
@@ -42,12 +57,20 @@ class GuestAgentProfileResponse {
 
   factory GuestAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return GuestAgentProfileResponse(
-      agentVersion: (map['agentVersion'] as String).input(),
-      errorDetails: (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastStatusChange: (map['lastStatusChange'] as String).input(),
-      status: (map['status'] as String).input(),
-      vmUuid: (map['vmUuid'] as String).input(),
+      agentVersion: pulumi.Input.fromValue(map['agentVersion'] as String),
+      errorDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ErrorDetailResponse>(
+          map['errorDetails']!,
+          (value) => ErrorDetailResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      lastStatusChange: pulumi.Input.fromValue(
+        map['lastStatusChange'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vmUuid: pulumi.Input.fromValue(map['vmUuid'] as String),
     );
   }
 }
-

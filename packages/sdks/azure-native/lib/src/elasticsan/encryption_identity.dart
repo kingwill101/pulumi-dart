@@ -9,9 +9,7 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [encryptionUserAssignedIdentity] Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
-  EncryptionIdentity({
-    this.encryptionUserAssignedIdentity,
-  });
+  EncryptionIdentity({this.encryptionUserAssignedIdentity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class EncryptionIdentity {
 
   factory EncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentity(
-      encryptionUserAssignedIdentity: map['encryptionUserAssignedIdentity'] == null ? null : (map['encryptionUserAssignedIdentity']! as String).input(),
+      encryptionUserAssignedIdentity: (() {
+        final guardedValue = map['encryptionUserAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

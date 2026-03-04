@@ -8,20 +8,15 @@ class ChannelCdiInputSpecification {
 
   /// Creates a new [ChannelCdiInputSpecification].
   /// [resolution] Maximum CDI input resolution.
-  ChannelCdiInputSpecification({
-    required this.resolution,
-  });
+  ChannelCdiInputSpecification({required this.resolution});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resolution': resolution,
-    };
+    return <String, dynamic>{'resolution': resolution};
   }
 
   factory ChannelCdiInputSpecification.fromMap(Map<String, dynamic> map) {
     return ChannelCdiInputSpecification(
-      resolution: (map['resolution'] as String).input(),
+      resolution: pulumi.Input.fromValue(map['resolution'] as String),
     );
   }
 }
-

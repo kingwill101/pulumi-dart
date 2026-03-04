@@ -3,16 +3,15 @@ enum SnapshotDirectoryVisibility {
   hidden("Hidden"),
   visible("Visible");
 
-  const SnapshotDirectoryVisibility(this.value);
-  final String value;
+  const SnapshotDirectoryVisibility(this.wireValue);
+  final String wireValue;
 
   static SnapshotDirectoryVisibility fromValue(String value) {
     for (final item in SnapshotDirectoryVisibility.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapshotDirectoryVisibility value: $value');
   }
 }
-

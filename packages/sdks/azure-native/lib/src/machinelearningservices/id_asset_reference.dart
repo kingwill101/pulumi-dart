@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdAssetReference {
   /// [Required] ARM resource ID of the asset.
   final pulumi.Input<String> assetId;
+
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'Id'.
   final pulumi.Input<String> referenceType;
@@ -13,10 +14,7 @@ class IdAssetReference {
   /// Creates a new [IdAssetReference].
   /// [assetId] [Required] ARM resource ID of the asset.
   /// [referenceType] Enum to determine which reference method to use for an asset.
-  IdAssetReference({
-    required this.assetId,
-    required this.referenceType,
-  });
+  IdAssetReference({required this.assetId, required this.referenceType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,8 @@ class IdAssetReference {
 
   factory IdAssetReference.fromMap(Map<String, dynamic> map) {
     return IdAssetReference(
-      assetId: (map['assetId'] as String).input(),
-      referenceType: (map['referenceType'] as String).input(),
+      assetId: pulumi.Input.fromValue(map['assetId'] as String),
+      referenceType: pulumi.Input.fromValue(map['referenceType'] as String),
     );
   }
 }
-

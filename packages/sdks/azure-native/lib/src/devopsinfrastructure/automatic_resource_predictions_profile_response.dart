@@ -7,6 +7,7 @@ class AutomaticResourcePredictionsProfileResponse {
   /// Determines how the stand-by scheme should be provided.
   /// Expected value is 'Automatic'.
   final pulumi.Input<String> kind;
+
   /// Determines the balance between cost and performance.
   final pulumi.Input<String>? predictionPreference;
 
@@ -25,11 +26,16 @@ class AutomaticResourcePredictionsProfileResponse {
     };
   }
 
-  factory AutomaticResourcePredictionsProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AutomaticResourcePredictionsProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomaticResourcePredictionsProfileResponse(
-      kind: (map['kind'] as String).input(),
-      predictionPreference: map['predictionPreference'] == null ? null : (map['predictionPreference']! as String).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      predictionPreference: (() {
+        final guardedValue = map['predictionPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

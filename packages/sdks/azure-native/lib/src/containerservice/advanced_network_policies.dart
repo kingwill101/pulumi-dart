@@ -4,16 +4,15 @@ enum AdvancedNetworkPolicies {
   valueFQDN("FQDN"),
   valueNone("None");
 
-  const AdvancedNetworkPolicies(this.value);
-  final String value;
+  const AdvancedNetworkPolicies(this.wireValue);
+  final String wireValue;
 
   static AdvancedNetworkPolicies fromValue(String value) {
     for (final item in AdvancedNetworkPolicies.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdvancedNetworkPolicies value: $value');
   }
 }
-

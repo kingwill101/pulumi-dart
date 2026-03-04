@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaVersionArgs {
   /// Human-readable description of the schema.
   final pulumi.Input<String>? description;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schema content.
   final pulumi.Input<String> schemaContent;
+
   /// Schema name parameter.
   final pulumi.Input<String> schemaName;
+
   /// Schema registry name parameter.
   final pulumi.Input<String> schemaRegistryName;
+
   /// Schema version name parameter.
   final pulumi.Input<String>? schemaVersionName;
 
@@ -49,13 +54,24 @@ class SchemaVersionArgs {
 
   factory SchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return SchemaVersionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaContent: (map['schemaContent'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
-      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
-      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaContent: pulumi.Input.fromValue(map['schemaContent'] as String),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
+      schemaRegistryName: pulumi.Input.fromValue(
+        map['schemaRegistryName'] as String,
+      ),
+      schemaVersionName: (() {
+        final guardedValue = map['schemaVersionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

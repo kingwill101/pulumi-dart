@@ -13,15 +13,18 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'qaScorecardRevisions': ?qaScorecardRevisions,
-    };
+    return <String, dynamic>{'qaScorecardRevisions': ?qaScorecardRevisions};
   }
 
-  factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(Map<String, dynamic> map) {
+  factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalysisRuleAnnotatorSelectorQaConfigScorecardList(
-      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : ((map['qaScorecardRevisions']! as List).cast<String>()).input(),
+      qaScorecardRevisions: (() {
+        final guardedValue = map['qaScorecardRevisions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

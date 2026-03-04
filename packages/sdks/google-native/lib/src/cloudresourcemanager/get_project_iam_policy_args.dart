@@ -11,20 +11,15 @@ class GetProjectIamPolicyArgs {
 
   /// Creates a new [GetProjectIamPolicyArgs].
   /// [resource] Required.
-  GetProjectIamPolicyArgs({
-    required this.resource,
-  });
+  GetProjectIamPolicyArgs({required this.resource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resource': resource,
-    };
+    return <String, dynamic>{'resource': resource};
   }
 
   factory GetProjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectIamPolicyArgs(
-      resource: (map['resource'] as String).input(),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
-

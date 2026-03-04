@@ -6,16 +6,15 @@ enum AuthenticationType {
   valueActiveDirectoryIntegrated("ActiveDirectoryIntegrated"),
   valueActiveDirectoryPassword("ActiveDirectoryPassword");
 
-  const AuthenticationType(this.value);
-  final String value;
+  const AuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AuthenticationType fromValue(String value) {
     for (final item in AuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthenticationType value: $value');
   }
 }
-

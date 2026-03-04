@@ -7,12 +7,16 @@ import 'volume_response.dart';
 class ResourcesResponse {
   /// Number of CPU cores needed.
   final pulumi.Input<double> cpu;
+
   /// Disk size (GB) needed.
   final pulumi.Input<double> diskGb;
+
   /// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
   final pulumi.Input<String> kmsKeyReference;
+
   /// Memory (GB) needed.
   final pulumi.Input<double> memoryGb;
+
   /// User specified volumes.
   final pulumi.Input<List<VolumeResponse>> volumes;
 
@@ -36,18 +40,34 @@ class ResourcesResponse {
       'diskGb': diskGb,
       'kmsKeyReference': kmsKeyReference,
       'memoryGb': memoryGb,
-      'volumes': pulumi.Input.mapInputValue<List<VolumeResponse>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          pulumi.Input.mapInputValue<
+            List<VolumeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) =>
+                pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ResourcesResponse.fromMap(Map<String, dynamic> map) {
     return ResourcesResponse(
-      cpu: (map['cpu'] as double).input(),
-      diskGb: (map['diskGb'] as double).input(),
-      kmsKeyReference: (map['kmsKeyReference'] as String).input(),
-      memoryGb: (map['memoryGb'] as double).input(),
-      volumes: (pulumi.Input.decodeList<VolumeResponse>(map['volumes'], (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      diskGb: pulumi.Input.fromValue(map['diskGb'] as double),
+      kmsKeyReference: pulumi.Input.fromValue(map['kmsKeyReference'] as String),
+      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      volumes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VolumeResponse>(
+          map['volumes']!,
+          (value) =>
+              VolumeResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

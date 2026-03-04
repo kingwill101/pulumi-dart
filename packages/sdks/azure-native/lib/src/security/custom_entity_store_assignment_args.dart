@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomEntityStoreAssignmentArgs {
   /// Name of the custom entity store assignment. Generated name is GUID.
   final pulumi.Input<String>? customEntityStoreAssignmentName;
+
   /// The principal assigned with entity store. If not provided, will use caller principal. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   final pulumi.Input<String>? principal;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,19 @@ class CustomEntityStoreAssignmentArgs {
 
   factory CustomEntityStoreAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return CustomEntityStoreAssignmentArgs(
-      customEntityStoreAssignmentName: map['customEntityStoreAssignmentName'] == null ? null : (map['customEntityStoreAssignmentName']! as String).input(),
-      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      customEntityStoreAssignmentName: (() {
+        final guardedValue = map['customEntityStoreAssignmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principal: (() {
+        final guardedValue = map['principal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterByokEntityResponse {
   /// ID of the referred resource
   final pulumi.Input<String>? id;
+
   /// API URL for accessing or modifying the referred object
   final pulumi.Input<String>? related;
+
   /// CRN reference to the referred resource
   final pulumi.Input<String>? resourceName;
 
@@ -15,11 +17,7 @@ class ClusterByokEntityResponse {
   /// [id] ID of the referred resource
   /// [related] API URL for accessing or modifying the referred object
   /// [resourceName] CRN reference to the referred resource
-  ClusterByokEntityResponse({
-    this.id,
-    this.related,
-    this.resourceName,
-  });
+  ClusterByokEntityResponse({this.id, this.related, this.resourceName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ClusterByokEntityResponse {
 
   factory ClusterByokEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterByokEntityResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      related: map['related'] == null ? null : (map['related']! as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      related: (() {
+        final guardedValue = map['related'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_healthcare;
-
 export 'healthcare/consent_store.dart';
 export 'healthcare/consent_store_args.dart';
 export 'healthcare/consent_store_iam_binding.dart';

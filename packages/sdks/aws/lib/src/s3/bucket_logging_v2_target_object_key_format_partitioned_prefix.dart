@@ -13,15 +13,16 @@ class BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'partitionDateSource': partitionDateSource,
-    };
+    return <String, dynamic>{'partitionDateSource': partitionDateSource};
   }
 
-  factory BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix.fromMap(Map<String, dynamic> map) {
+  factory BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix(
-      partitionDateSource: (map['partitionDateSource'] as String).input(),
+      partitionDateSource: pulumi.Input.fromValue(
+        map['partitionDateSource'] as String,
+      ),
     );
   }
 }
-

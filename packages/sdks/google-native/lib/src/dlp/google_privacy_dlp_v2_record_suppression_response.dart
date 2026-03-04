@@ -10,20 +10,27 @@ class GooglePrivacyDlpV2RecordSuppressionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2RecordSuppressionResponse].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-  GooglePrivacyDlpV2RecordSuppressionResponse({
-    required this.condition,
-  });
+  GooglePrivacyDlpV2RecordSuppressionResponse({required this.condition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': pulumi.Input.mapInputValue<GooglePrivacyDlpV2RecordConditionResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2RecordConditionResponse,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2RecordSuppressionResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RecordSuppressionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RecordSuppressionResponse(
-      condition: (GooglePrivacyDlpV2RecordConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2RecordConditionResponse.fromMap(
+          (map['condition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

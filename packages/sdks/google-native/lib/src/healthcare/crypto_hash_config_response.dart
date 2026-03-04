@@ -7,29 +7,34 @@ import 'kms_wrapped_crypto_key_response.dart';
 class CryptoHashConfigResponse {
   /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
   final pulumi.Input<String> cryptoKey;
+
   /// KMS wrapped key. Must not be set if `crypto_key` is set.
   final pulumi.Input<KmsWrappedCryptoKeyResponse> kmsWrapped;
 
   /// Creates a new [CryptoHashConfigResponse].
   /// [cryptoKey] An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
   /// [kmsWrapped] KMS wrapped key. Must not be set if `crypto_key` is set.
-  CryptoHashConfigResponse({
-    required this.cryptoKey,
-    required this.kmsWrapped,
-  });
+  CryptoHashConfigResponse({required this.cryptoKey, required this.kmsWrapped});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKey': cryptoKey,
-      'kmsWrapped': pulumi.Input.mapInputValue<KmsWrappedCryptoKeyResponse, Map<String, dynamic>>(kmsWrapped, (value) => value.toMap()),
+      'kmsWrapped':
+          pulumi.Input.mapInputValue<
+            KmsWrappedCryptoKeyResponse,
+            Map<String, dynamic>
+          >(kmsWrapped, (value) => value.toMap()),
     };
   }
 
   factory CryptoHashConfigResponse.fromMap(Map<String, dynamic> map) {
     return CryptoHashConfigResponse(
-      cryptoKey: (map['cryptoKey'] as String).input(),
-      kmsWrapped: (KmsWrappedCryptoKeyResponse.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: pulumi.Input.fromValue(map['cryptoKey'] as String),
+      kmsWrapped: pulumi.Input.fromValue(
+        KmsWrappedCryptoKeyResponse.fromMap(
+          (map['kmsWrapped']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

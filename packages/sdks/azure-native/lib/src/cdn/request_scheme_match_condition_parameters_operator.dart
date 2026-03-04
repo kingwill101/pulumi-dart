@@ -2,16 +2,17 @@
 enum RequestSchemeMatchConditionParametersOperator {
   equal("Equal");
 
-  const RequestSchemeMatchConditionParametersOperator(this.value);
-  final String value;
+  const RequestSchemeMatchConditionParametersOperator(this.wireValue);
+  final String wireValue;
 
   static RequestSchemeMatchConditionParametersOperator fromValue(String value) {
     for (final item in RequestSchemeMatchConditionParametersOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RequestSchemeMatchConditionParametersOperator value: $value');
+    throw ArgumentError(
+      'Unknown RequestSchemeMatchConditionParametersOperator value: $value',
+    );
   }
 }
-

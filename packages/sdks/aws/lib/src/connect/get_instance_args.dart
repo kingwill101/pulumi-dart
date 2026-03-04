@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceArgs {
   /// Returns information on a specific connect instance by alias
   ///
-  /// > **NOTE:** One of either `instance_id` or `instance_alias` is required.
+  /// &gt; **NOTE:** One of either `instance_id` or `instance_alias` is required.
   final pulumi.Input<String>? instanceAlias;
+
   /// Returns information on a specific connect instance by id
   final pulumi.Input<String>? instanceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assigned to the instance.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +44,28 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instanceAlias: map['instanceAlias'] == null ? null : ((map['instanceAlias'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      instanceAlias: (() {
+        final guardedValue = map['instanceAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
   /// If true, DF Interaction logging is currently enabled.
   final pulumi.Input<bool>? enableInteractionLogging;
+
   /// If true, StackDriver logging is currently enabled.
   final pulumi.Input<bool>? enableStackdriverLogging;
 
@@ -24,11 +25,20 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings(
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging']! as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
+      enableInteractionLogging: (() {
+        final guardedValue = map['enableInteractionLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStackdriverLogging: (() {
+        final guardedValue = map['enableStackdriverLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

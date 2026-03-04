@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrderableDbInstanceArgs {
   /// DB engine. Default: `docdb`
   final pulumi.Input<String>? engine;
+
   /// Version of the DB engine.
   final pulumi.Input<String>? engineVersion;
+
   /// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferred_instance_classes`.)
   final pulumi.Input<String>? instanceClass;
+
   /// License model. Default: `na`
   final pulumi.Input<String>? licenseModel;
+
   /// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instance_class`.)
   final pulumi.Input<List<String>>? preferredInstanceClasses;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Enable to show only VPC.
   final pulumi.Input<bool>? vpc;
 
@@ -54,14 +60,41 @@ class GetOrderableDbInstanceArgs {
 
   factory GetOrderableDbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceArgs(
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      instanceClass: map['instanceClass'] == null ? null : ((map['instanceClass'] as String).input()).input(),
-      licenseModel: map['licenseModel'] == null ? null : ((map['licenseModel'] as String).input()).input(),
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (((map['preferredInstanceClasses'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpc: map['vpc'] == null ? null : ((map['vpc'] as bool).input()).input(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceClass: (() {
+        final guardedValue = map['instanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredInstanceClasses: (() {
+        final guardedValue = map['preferredInstanceClasses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpc: (() {
+        final guardedValue = map['vpc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

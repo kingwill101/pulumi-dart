@@ -10,12 +10,15 @@ class BindingArgs {
   /// Optional. Labels for this MembershipBinding.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Required. The ID to use for the MembershipBinding.
   final pulumi.Input<String> membershipBindingId;
   final pulumi.Input<String> membershipId;
+
   /// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
   final pulumi.Input<String>? scope;
 
@@ -51,14 +54,37 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      membershipBindingId: (map['membershipBindingId'] as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      membershipBindingId: pulumi.Input.fromValue(
+        map['membershipBindingId'] as String,
+      ),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

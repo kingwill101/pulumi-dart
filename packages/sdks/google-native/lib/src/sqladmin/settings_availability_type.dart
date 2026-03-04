@@ -4,16 +4,15 @@ enum SettingsAvailabilityType {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const SettingsAvailabilityType(this.value);
-  final String value;
+  const SettingsAvailabilityType(this.wireValue);
+  final String wireValue;
 
   static SettingsAvailabilityType fromValue(String value) {
     for (final item in SettingsAvailabilityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsAvailabilityType value: $value');
   }
 }
-

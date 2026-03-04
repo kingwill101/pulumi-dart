@@ -7,11 +7,20 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
   /// Additional fields to be included in the model request for the Prompt node.
   final pulumi.Input<String>? additionalModelRequestFields;
+
   /// Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration>? inferenceConfiguration;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration
+  >?
+  inferenceConfiguration;
   final pulumi.Input<String> modelId;
+
   /// Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration>? templateConfiguration;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration
+  >?
+  templateConfiguration;
+
   /// The type of prompt template. Valid values: `TEXT`, `CHAT`.
   final pulumi.Input<String> templateType;
 
@@ -32,21 +41,50 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalModelRequestFields': ?additionalModelRequestFields,
-      'inferenceConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration, Map<String, dynamic>>(inferenceConfiguration, (value) => value.toMap()),
+      'inferenceConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration,
+            Map<String, dynamic>
+          >(inferenceConfiguration, (value) => value.toMap()),
       'modelId': modelId,
-      'templateConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration, Map<String, dynamic>>(templateConfiguration, (value) => value.toMap()),
+      'templateConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration,
+            Map<String, dynamic>
+          >(templateConfiguration, (value) => value.toMap()),
       'templateType': templateType,
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline(
-      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : ((map['additionalModelRequestFields'] as String).input()).input(),
-      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration.fromMap((map['inferenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      modelId: (map['modelId'] as String).input(),
-      templateConfiguration: map['templateConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap((map['templateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      templateType: (map['templateType'] as String).input(),
+      additionalModelRequestFields: (() {
+        final guardedValue = map['additionalModelRequestFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inferenceConfiguration: (() {
+        final guardedValue = map['inferenceConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      templateConfiguration: (() {
+        final guardedValue = map['templateConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      templateType: pulumi.Input.fromValue(map['templateType'] as String),
     );
   }
 }
-

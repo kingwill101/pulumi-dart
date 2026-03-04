@@ -9,20 +9,29 @@ class WorkteamWorkerAccessConfiguration {
 
   /// Creates a new [WorkteamWorkerAccessConfiguration].
   /// [s3Presign] Defines any Amazon S3 resource constraints. see S3 Presign details below.
-  WorkteamWorkerAccessConfiguration({
-    this.s3Presign,
-  });
+  WorkteamWorkerAccessConfiguration({this.s3Presign});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Presign': ?pulumi.Input.mapOptionalInputValue<WorkteamWorkerAccessConfigurationS3Presign, Map<String, dynamic>>(s3Presign, (value) => value.toMap()),
+      's3Presign':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkteamWorkerAccessConfigurationS3Presign,
+            Map<String, dynamic>
+          >(s3Presign, (value) => value.toMap()),
     };
   }
 
   factory WorkteamWorkerAccessConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkteamWorkerAccessConfiguration(
-      s3Presign: map['s3Presign'] == null ? null : ((WorkteamWorkerAccessConfigurationS3Presign.fromMap((map['s3Presign']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Presign: (() {
+        final guardedValue = map['s3Presign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkteamWorkerAccessConfigurationS3Presign.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

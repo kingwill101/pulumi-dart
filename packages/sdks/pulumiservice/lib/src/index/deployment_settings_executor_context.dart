@@ -9,20 +9,15 @@ class DeploymentSettingsExecutorContext {
 
   /// Creates a new [DeploymentSettingsExecutorContext].
   /// [executorImage] Allows overriding the default executor image with a custom image. E.g. 'pulumi/pulumi-nodejs:latest'
-  DeploymentSettingsExecutorContext({
-    required this.executorImage,
-  });
+  DeploymentSettingsExecutorContext({required this.executorImage});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'executorImage': executorImage,
-    };
+    return <String, dynamic>{'executorImage': executorImage};
   }
 
   factory DeploymentSettingsExecutorContext.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsExecutorContext(
-      executorImage: (map['executorImage'] as String).input(),
+      executorImage: pulumi.Input.fromValue(map['executorImage'] as String),
     );
   }
 }
-

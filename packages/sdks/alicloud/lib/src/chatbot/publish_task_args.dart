@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublishTaskArgs {
   /// The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   final pulumi.Input<String>? agentKey;
+
   /// The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   final pulumi.Input<String> bizType;
+
   /// Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   final pulumi.Input<List<String>>? dataIdLists;
 
@@ -18,11 +20,7 @@ class PublishTaskArgs {
   /// [agentKey] The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   /// [bizType] The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   /// [dataIdLists] Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
-  PublishTaskArgs({
-    this.agentKey,
-    required this.bizType,
-    this.dataIdLists,
-  });
+  PublishTaskArgs({this.agentKey, required this.bizType, this.dataIdLists});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class PublishTaskArgs {
 
   factory PublishTaskArgs.fromMap(Map<String, dynamic> map) {
     return PublishTaskArgs(
-      agentKey: map['agentKey'] == null ? null : (map['agentKey']! as String).input(),
-      bizType: (map['bizType'] as String).input(),
-      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists']! as List).cast<String>()).input(),
+      agentKey: (() {
+        final guardedValue = map['agentKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bizType: pulumi.Input.fromValue(map['bizType'] as String),
+      dataIdLists: (() {
+        final guardedValue = map['dataIdLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

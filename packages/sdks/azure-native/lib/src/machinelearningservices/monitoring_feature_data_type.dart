@@ -3,16 +3,15 @@ enum MonitoringFeatureDataType {
   valueNumerical("Numerical"),
   valueCategorical("Categorical");
 
-  const MonitoringFeatureDataType(this.value);
-  final String value;
+  const MonitoringFeatureDataType(this.wireValue);
+  final String wireValue;
 
   static MonitoringFeatureDataType fromValue(String value) {
     for (final item in MonitoringFeatureDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitoringFeatureDataType value: $value');
   }
 }
-

@@ -4,16 +4,17 @@ enum FirewallPolicyRuleConditionType {
   valueNetworkRuleCondition("NetworkRuleCondition"),
   valueNatRuleCondition("NatRuleCondition");
 
-  const FirewallPolicyRuleConditionType(this.value);
-  final String value;
+  const FirewallPolicyRuleConditionType(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyRuleConditionType fromValue(String value) {
     for (final item in FirewallPolicyRuleConditionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyRuleConditionType value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyRuleConditionType value: $value',
+    );
   }
 }
-

@@ -306,22 +306,31 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// the date and time when the project was created, (ISO8601)
   late final pulumi.Output<String> createdAt;
+
   /// the description of the project
   late final pulumi.Output<String?> description;
+
   /// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
   late final pulumi.Output<String?> environment;
+
   /// a boolean indicating whether or not the project is the default project. (Default: "false")
   late final pulumi.Output<bool?> isDefault;
+
   /// The name of the Project
   late final pulumi.Output<String> name;
+
   /// the id of the project owner.
   late final pulumi.Output<int> ownerId;
+
   /// the unique universal identifier of the project owner.
   late final pulumi.Output<String> ownerUuid;
+
   /// the purpose of the project, (Default: "Web Application")
   late final pulumi.Output<String?> purpose;
+
   /// a list of uniform resource names (URNs) for the resources associated with the project
   late final pulumi.Output<List<String>> resources;
+
   /// the date and time when the project was last updated, (ISO8601)
   late final pulumi.Output<String> updatedAt;
 
@@ -334,21 +343,21 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.environment = registerOutput<String?>('environment');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'digitalocean:index/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String?>('environment');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<int>('ownerId');
-    this.ownerUuid = registerOutput<String>('ownerUuid');
-    this.purpose = registerOutput<String?>('purpose');
-    this.resources = registerOutput<List<String>>('resources');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    ownerId = registerOutput<int>('ownerId');
+    ownerUuid = registerOutput<String>('ownerUuid');
+    purpose = registerOutput<String?>('purpose');
+    resources = registerOutput<List<String>>('resources');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -369,20 +378,20 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.environment = registerOutput<String?>('environment');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'digitalocean:index/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String?>('environment');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<int>('ownerId');
-    this.ownerUuid = registerOutput<String>('ownerUuid');
-    this.purpose = registerOutput<String?>('purpose');
-    this.resources = registerOutput<List<String>>('resources');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    ownerId = registerOutput<int>('ownerId');
+    ownerUuid = registerOutput<String>('ownerUuid');
+    purpose = registerOutput<String?>('purpose');
+    resources = registerOutput<List<String>>('resources');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

@@ -10,6 +10,7 @@ class GetApplicationsResult {
   final bool? enableDetails;
   final String? fieldType;
   final String? fieldValue;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -50,7 +51,11 @@ class GetApplicationsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appName': ?appName,
-      'applications': pulumi.Input.encodeList<GetApplicationsApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
+      'applications':
+          pulumi.Input.encodeList<
+            GetApplicationsApplication,
+            Map<String, dynamic>
+          >(applications, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'fieldType': ?fieldType,
       'fieldValue': ?fieldValue,
@@ -66,19 +71,59 @@ class GetApplicationsResult {
 
   factory GetApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationsResult(
-      appName: map['appName'] == null ? null : map['appName']! as String,
-      applications: pulumi.Input.decodeList<GetApplicationsApplication>(map['applications'], (value) => GetApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      fieldType: map['fieldType'] == null ? null : map['fieldType']! as String,
-      fieldValue: map['fieldValue'] == null ? null : map['fieldValue']! as String,
+      appName: (() {
+        final guardedValue = map['appName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      applications: pulumi.Input.decodeList<GetApplicationsApplication>(
+        map['applications']!,
+        (value) => GetApplicationsApplication.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      fieldType: (() {
+        final guardedValue = map['fieldType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fieldValue: (() {
+        final guardedValue = map['fieldValue'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namespaceId: map['namespaceId'] == null ? null : map['namespaceId']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      reverse: map['reverse'] == null ? null : map['reverse']! as bool,
-      status: map['status'] == null ? null : map['status']! as String,
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      reverse: (() {
+        final guardedValue = map['reverse'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

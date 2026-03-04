@@ -168,14 +168,19 @@ import 'system_data_response.dart';
 class IdentityBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
   late final pulumi.Output<String> eTag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource-specific properties for this resource.
   late final pulumi.Output<IdentityBindingPropertiesResponse> properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -188,16 +193,18 @@ class IdentityBinding extends pulumi.CustomResource {
     IdentityBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:IdentityBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:containerservice:IdentityBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<IdentityBindingPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<IdentityBindingPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,29 +7,44 @@ import 'kafka_token_key_vault_properties.dart';
 class SaslRemoteBrokerBasicAuthenticationToken {
   /// Keyvault token keyvault secret properties.
   final pulumi.Input<KafkaTokenKeyVaultProperties>? keyVault;
+
   /// Secret where cert details are stored.
   final pulumi.Input<String>? secretName;
 
   /// Creates a new [SaslRemoteBrokerBasicAuthenticationToken].
   /// [keyVault] Keyvault token keyvault secret properties.
   /// [secretName] Secret where cert details are stored.
-  SaslRemoteBrokerBasicAuthenticationToken({
-    this.keyVault,
-    this.secretName,
-  });
+  SaslRemoteBrokerBasicAuthenticationToken({this.keyVault, this.secretName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': ?pulumi.Input.mapOptionalInputValue<KafkaTokenKeyVaultProperties, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
+      'keyVault':
+          ?pulumi.Input.mapOptionalInputValue<
+            KafkaTokenKeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVault, (value) => value.toMap()),
       'secretName': ?secretName,
     };
   }
 
-  factory SaslRemoteBrokerBasicAuthenticationToken.fromMap(Map<String, dynamic> map) {
+  factory SaslRemoteBrokerBasicAuthenticationToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SaslRemoteBrokerBasicAuthenticationToken(
-      keyVault: map['keyVault'] == null ? null : (KafkaTokenKeyVaultProperties.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      keyVault: (() {
+        final guardedValue = map['keyVault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KafkaTokenKeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secretName: (() {
+        final guardedValue = map['secretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

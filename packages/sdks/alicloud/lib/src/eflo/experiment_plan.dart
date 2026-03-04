@@ -8,7 +8,7 @@ import 'experiment_plan_state.dart';
 ///
 /// For information about Eflo Experiment Plan and how to use it, see [What is Experiment Plan](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createexperimentplan).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -482,16 +482,22 @@ import 'experiment_plan_state.dart';
 class ExperimentPlan extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Additional operating parameters. You can include information about the specified node.
   late final pulumi.Output<Map<String, String>?> externalParams;
+
   /// Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
   late final pulumi.Output<String> planName;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the resource.
   late final pulumi.Output<int> resourceId;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the template.
   late final pulumi.Output<int> templateId;
 
@@ -504,18 +510,18 @@ class ExperimentPlan extends pulumi.CustomResource {
     ExperimentPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/experimentPlan:ExperimentPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.externalParams = registerOutput<Map<String, String>?>('externalParams');
-    this.planName = registerOutput<String>('planName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceId = registerOutput<int>('resourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateId = registerOutput<int>('templateId');
+         'alicloud:eflo/experimentPlan:ExperimentPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    externalParams = registerOutput<Map<String, String>?>('externalParams');
+    planName = registerOutput<String>('planName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceId = registerOutput<int>('resourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateId = registerOutput<int>('templateId');
   }
 
   /// Gets an existing [ExperimentPlan] resource's state with the given [name] and [id].
@@ -536,17 +542,17 @@ class ExperimentPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/experimentPlan:ExperimentPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.externalParams = registerOutput<Map<String, String>?>('externalParams');
-    this.planName = registerOutput<String>('planName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.resourceId = registerOutput<int>('resourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateId = registerOutput<int>('templateId');
+         'alicloud:eflo/experimentPlan:ExperimentPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    externalParams = registerOutput<Map<String, String>?>('externalParams');
+    planName = registerOutput<String>('planName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    resourceId = registerOutput<int>('resourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateId = registerOutput<int>('templateId');
   }
 }

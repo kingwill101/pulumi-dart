@@ -14,36 +14,50 @@ import 'instance_warm_node_configuration.dart';
 class InstanceArgs {
   /// Renewal Period
   final pulumi.Input<int>? autoRenewDuration;
+
   /// The Elasticsearch cluster's client node quantity, between 2 and 25.
   final pulumi.Input<int>? clientNodeAmount;
+
   /// Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
   final pulumi.Input<InstanceClientNodeConfiguration>? clientNodeConfiguration;
+
   /// The client node spec. If specified, client node will be created.
   final pulumi.Input<String>? clientNodeSpec;
+
   /// The Elasticsearch cluster's data node quantity, between 2 and 50.
   final pulumi.Input<int>? dataNodeAmount;
+
   /// Elasticsearch data node information See `data_node_configuration` below.
   final pulumi.Input<InstanceDataNodeConfiguration>? dataNodeConfiguration;
+
   /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
   final pulumi.Input<bool>? dataNodeDiskEncrypted;
+
   /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
   final pulumi.Input<String>? dataNodeDiskPerformanceLevel;
+
   /// The single data node storage space.
   final pulumi.Input<int>? dataNodeDiskSize;
+
   /// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
   final pulumi.Input<String>? dataNodeDiskType;
+
   /// The data node specifications of the Elasticsearch instance.
   final pulumi.Input<String>? dataNodeSpec;
+
   /// Instance name
   final pulumi.Input<String>? description;
+
   /// Whether to enable Kibana private network access.
   ///
   /// The meaning of the value is as follows:
   /// - true: On.
   /// - false: does not open.
   final pulumi.Input<bool>? enableKibanaPrivateNetwork;
+
   /// Does Kibana enable public access
   final pulumi.Input<bool>? enableKibanaPublicNetwork;
+
   /// Whether to enable Kibana public network access.
   ///
   /// The meaning of the value is as follows:
@@ -51,70 +65,102 @@ class InstanceArgs {
   /// - false: does not open.
   final pulumi.Input<bool>? enablePublic;
   final pulumi.Input<bool>? force;
+
   /// Version type.
   final pulumi.Input<String>? instanceCategory;
+
   /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
   final pulumi.Input<String>? instanceChargeType;
+
   /// Elasticsearch Kibana node settings See `kibana_configuration` below.
   final pulumi.Input<InstanceKibanaConfiguration>? kibanaConfiguration;
+
   /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
   final pulumi.Input<String>? kibanaNodeSpec;
+
   /// Kibana private network security group ID
   final pulumi.Input<String>? kibanaPrivateSecurityGroupId;
+
   /// Cluster Kibana node private network access whitelist
   final pulumi.Input<List<String>>? kibanaPrivateWhitelists;
+
   /// Kibana private network access whitelist
   final pulumi.Input<List<String>>? kibanaWhitelists;
+
   /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
   final pulumi.Input<String>? kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   final pulumi.Input<Map<String, String>>? kmsEncryptionContext;
+
   /// Elasticsearch proprietary master node configuration information See `master_configuration` below.
   final pulumi.Input<InstanceMasterConfiguration>? masterConfiguration;
+
   /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
   final pulumi.Input<String>? masterNodeDiskType;
+
   /// The dedicated master node spec. If specified, dedicated master node will be created.
   final pulumi.Input<String>? masterNodeSpec;
   final pulumi.Input<String>? orderActionType;
+
   /// The access password of the instance.
   final pulumi.Input<String>? password;
+
   /// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
   final pulumi.Input<String>? paymentType;
+
   /// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
   final pulumi.Input<int>? period;
+
   /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
   final pulumi.Input<List<String>>? privateWhitelists;
+
   /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
   final pulumi.Input<String>? protocol;
+
   /// Elasticseach public network access whitelist IP list
   final pulumi.Input<List<String>>? publicWhitelists;
+
   /// Renewal Status
   final pulumi.Input<String>? renewStatus;
+
   /// Renewal Period Unit
   final pulumi.Input<String>? renewalDurationUnit;
+
   /// Resource group to which the instance belongs
   final pulumi.Input<String>? resourceGroupId;
+
   /// Configuration information
   final pulumi.Input<Map<String, String>>? settingConfig;
+
   /// Collection of tag key-value pairs
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? updateStrategy;
+
   /// Instance version
   final pulumi.Input<String> version;
+
   /// The ID of VSwitch.
   final pulumi.Input<String> vswitchId;
+
   /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
   final pulumi.Input<int>? warmNodeAmount;
+
   /// Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
   final pulumi.Input<InstanceWarmNodeConfiguration>? warmNodeConfiguration;
+
   /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
   final pulumi.Input<bool>? warmNodeDiskEncrypted;
+
   /// The single warm node storage space, should between 500 and 20480
   final pulumi.Input<int>? warmNodeDiskSize;
+
   /// The warm node disk type. Supported values:  cloud_efficiency.
   final pulumi.Input<String>? warmNodeDiskType;
+
   /// The warm node specifications of the Elasticsearch instance.
   final pulumi.Input<String>? warmNodeSpec;
+
   /// The number of zones in the Elasticsearch instance.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -228,10 +274,18 @@ class InstanceArgs {
     return <String, dynamic>{
       'autoRenewDuration': ?autoRenewDuration,
       'clientNodeAmount': ?clientNodeAmount,
-      'clientNodeConfiguration': ?pulumi.Input.mapOptionalInputValue<InstanceClientNodeConfiguration, Map<String, dynamic>>(clientNodeConfiguration, (value) => value.toMap()),
+      'clientNodeConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceClientNodeConfiguration,
+            Map<String, dynamic>
+          >(clientNodeConfiguration, (value) => value.toMap()),
       'clientNodeSpec': ?clientNodeSpec,
       'dataNodeAmount': ?dataNodeAmount,
-      'dataNodeConfiguration': ?pulumi.Input.mapOptionalInputValue<InstanceDataNodeConfiguration, Map<String, dynamic>>(dataNodeConfiguration, (value) => value.toMap()),
+      'dataNodeConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceDataNodeConfiguration,
+            Map<String, dynamic>
+          >(dataNodeConfiguration, (value) => value.toMap()),
       'dataNodeDiskEncrypted': ?dataNodeDiskEncrypted,
       'dataNodeDiskPerformanceLevel': ?dataNodeDiskPerformanceLevel,
       'dataNodeDiskSize': ?dataNodeDiskSize,
@@ -244,14 +298,22 @@ class InstanceArgs {
       'force': ?force,
       'instanceCategory': ?instanceCategory,
       'instanceChargeType': ?instanceChargeType,
-      'kibanaConfiguration': ?pulumi.Input.mapOptionalInputValue<InstanceKibanaConfiguration, Map<String, dynamic>>(kibanaConfiguration, (value) => value.toMap()),
+      'kibanaConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceKibanaConfiguration,
+            Map<String, dynamic>
+          >(kibanaConfiguration, (value) => value.toMap()),
       'kibanaNodeSpec': ?kibanaNodeSpec,
       'kibanaPrivateSecurityGroupId': ?kibanaPrivateSecurityGroupId,
       'kibanaPrivateWhitelists': ?kibanaPrivateWhitelists,
       'kibanaWhitelists': ?kibanaWhitelists,
       'kmsEncryptedPassword': ?kmsEncryptedPassword,
       'kmsEncryptionContext': ?kmsEncryptionContext,
-      'masterConfiguration': ?pulumi.Input.mapOptionalInputValue<InstanceMasterConfiguration, Map<String, dynamic>>(masterConfiguration, (value) => value.toMap()),
+      'masterConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceMasterConfiguration,
+            Map<String, dynamic>
+          >(masterConfiguration, (value) => value.toMap()),
       'masterNodeDiskType': ?masterNodeDiskType,
       'masterNodeSpec': ?masterNodeSpec,
       'orderActionType': ?orderActionType,
@@ -270,7 +332,11 @@ class InstanceArgs {
       'version': version,
       'vswitchId': vswitchId,
       'warmNodeAmount': ?warmNodeAmount,
-      'warmNodeConfiguration': ?pulumi.Input.mapOptionalInputValue<InstanceWarmNodeConfiguration, Map<String, dynamic>>(warmNodeConfiguration, (value) => value.toMap()),
+      'warmNodeConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceWarmNodeConfiguration,
+            Map<String, dynamic>
+          >(warmNodeConfiguration, (value) => value.toMap()),
       'warmNodeDiskEncrypted': ?warmNodeDiskEncrypted,
       'warmNodeDiskSize': ?warmNodeDiskSize,
       'warmNodeDiskType': ?warmNodeDiskType,
@@ -281,57 +347,274 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration']! as int).input(),
-      clientNodeAmount: map['clientNodeAmount'] == null ? null : (map['clientNodeAmount']! as int).input(),
-      clientNodeConfiguration: map['clientNodeConfiguration'] == null ? null : (InstanceClientNodeConfiguration.fromMap((map['clientNodeConfiguration']! as Map).cast<String, dynamic>())).input(),
-      clientNodeSpec: map['clientNodeSpec'] == null ? null : (map['clientNodeSpec']! as String).input(),
-      dataNodeAmount: map['dataNodeAmount'] == null ? null : (map['dataNodeAmount']! as int).input(),
-      dataNodeConfiguration: map['dataNodeConfiguration'] == null ? null : (InstanceDataNodeConfiguration.fromMap((map['dataNodeConfiguration']! as Map).cast<String, dynamic>())).input(),
-      dataNodeDiskEncrypted: map['dataNodeDiskEncrypted'] == null ? null : (map['dataNodeDiskEncrypted']! as bool).input(),
-      dataNodeDiskPerformanceLevel: map['dataNodeDiskPerformanceLevel'] == null ? null : (map['dataNodeDiskPerformanceLevel']! as String).input(),
-      dataNodeDiskSize: map['dataNodeDiskSize'] == null ? null : (map['dataNodeDiskSize']! as int).input(),
-      dataNodeDiskType: map['dataNodeDiskType'] == null ? null : (map['dataNodeDiskType']! as String).input(),
-      dataNodeSpec: map['dataNodeSpec'] == null ? null : (map['dataNodeSpec']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableKibanaPrivateNetwork: map['enableKibanaPrivateNetwork'] == null ? null : (map['enableKibanaPrivateNetwork']! as bool).input(),
-      enableKibanaPublicNetwork: map['enableKibanaPublicNetwork'] == null ? null : (map['enableKibanaPublicNetwork']! as bool).input(),
-      enablePublic: map['enablePublic'] == null ? null : (map['enablePublic']! as bool).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      instanceCategory: map['instanceCategory'] == null ? null : (map['instanceCategory']! as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
-      kibanaConfiguration: map['kibanaConfiguration'] == null ? null : (InstanceKibanaConfiguration.fromMap((map['kibanaConfiguration']! as Map).cast<String, dynamic>())).input(),
-      kibanaNodeSpec: map['kibanaNodeSpec'] == null ? null : (map['kibanaNodeSpec']! as String).input(),
-      kibanaPrivateSecurityGroupId: map['kibanaPrivateSecurityGroupId'] == null ? null : (map['kibanaPrivateSecurityGroupId']! as String).input(),
-      kibanaPrivateWhitelists: map['kibanaPrivateWhitelists'] == null ? null : ((map['kibanaPrivateWhitelists']! as List).cast<String>()).input(),
-      kibanaWhitelists: map['kibanaWhitelists'] == null ? null : ((map['kibanaWhitelists']! as List).cast<String>()).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
-      masterConfiguration: map['masterConfiguration'] == null ? null : (InstanceMasterConfiguration.fromMap((map['masterConfiguration']! as Map).cast<String, dynamic>())).input(),
-      masterNodeDiskType: map['masterNodeDiskType'] == null ? null : (map['masterNodeDiskType']! as String).input(),
-      masterNodeSpec: map['masterNodeSpec'] == null ? null : (map['masterNodeSpec']! as String).input(),
-      orderActionType: map['orderActionType'] == null ? null : (map['orderActionType']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      privateWhitelists: map['privateWhitelists'] == null ? null : ((map['privateWhitelists']! as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      publicWhitelists: map['publicWhitelists'] == null ? null : ((map['publicWhitelists']! as List).cast<String>()).input(),
-      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus']! as String).input(),
-      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      settingConfig: map['settingConfig'] == null ? null : ((map['settingConfig']! as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy']! as String).input(),
-      version: (map['version'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      warmNodeAmount: map['warmNodeAmount'] == null ? null : (map['warmNodeAmount']! as int).input(),
-      warmNodeConfiguration: map['warmNodeConfiguration'] == null ? null : (InstanceWarmNodeConfiguration.fromMap((map['warmNodeConfiguration']! as Map).cast<String, dynamic>())).input(),
-      warmNodeDiskEncrypted: map['warmNodeDiskEncrypted'] == null ? null : (map['warmNodeDiskEncrypted']! as bool).input(),
-      warmNodeDiskSize: map['warmNodeDiskSize'] == null ? null : (map['warmNodeDiskSize']! as int).input(),
-      warmNodeDiskType: map['warmNodeDiskType'] == null ? null : (map['warmNodeDiskType']! as String).input(),
-      warmNodeSpec: map['warmNodeSpec'] == null ? null : (map['warmNodeSpec']! as String).input(),
-      zoneCount: map['zoneCount'] == null ? null : (map['zoneCount']! as int).input(),
+      autoRenewDuration: (() {
+        final guardedValue = map['autoRenewDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clientNodeAmount: (() {
+        final guardedValue = map['clientNodeAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clientNodeConfiguration: (() {
+        final guardedValue = map['clientNodeConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceClientNodeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientNodeSpec: (() {
+        final guardedValue = map['clientNodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataNodeAmount: (() {
+        final guardedValue = map['dataNodeAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataNodeConfiguration: (() {
+        final guardedValue = map['dataNodeConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceDataNodeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataNodeDiskEncrypted: (() {
+        final guardedValue = map['dataNodeDiskEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dataNodeDiskPerformanceLevel: (() {
+        final guardedValue = map['dataNodeDiskPerformanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataNodeDiskSize: (() {
+        final guardedValue = map['dataNodeDiskSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataNodeDiskType: (() {
+        final guardedValue = map['dataNodeDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataNodeSpec: (() {
+        final guardedValue = map['dataNodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableKibanaPrivateNetwork: (() {
+        final guardedValue = map['enableKibanaPrivateNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableKibanaPublicNetwork: (() {
+        final guardedValue = map['enableKibanaPublicNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePublic: (() {
+        final guardedValue = map['enablePublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceCategory: (() {
+        final guardedValue = map['instanceCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kibanaConfiguration: (() {
+        final guardedValue = map['kibanaConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceKibanaConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kibanaNodeSpec: (() {
+        final guardedValue = map['kibanaNodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kibanaPrivateSecurityGroupId: (() {
+        final guardedValue = map['kibanaPrivateSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kibanaPrivateWhitelists: (() {
+        final guardedValue = map['kibanaPrivateWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kibanaWhitelists: (() {
+        final guardedValue = map['kibanaWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kmsEncryptedPassword: (() {
+        final guardedValue = map['kmsEncryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptionContext: (() {
+        final guardedValue = map['kmsEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      masterConfiguration: (() {
+        final guardedValue = map['masterConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceMasterConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      masterNodeDiskType: (() {
+        final guardedValue = map['masterNodeDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterNodeSpec: (() {
+        final guardedValue = map['masterNodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderActionType: (() {
+        final guardedValue = map['orderActionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      privateWhitelists: (() {
+        final guardedValue = map['privateWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicWhitelists: (() {
+        final guardedValue = map['publicWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      renewStatus: (() {
+        final guardedValue = map['renewStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalDurationUnit: (() {
+        final guardedValue = map['renewalDurationUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingConfig: (() {
+        final guardedValue = map['settingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateStrategy: (() {
+        final guardedValue = map['updateStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      warmNodeAmount: (() {
+        final guardedValue = map['warmNodeAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      warmNodeConfiguration: (() {
+        final guardedValue = map['warmNodeConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceWarmNodeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      warmNodeDiskEncrypted: (() {
+        final guardedValue = map['warmNodeDiskEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      warmNodeDiskSize: (() {
+        final guardedValue = map['warmNodeDiskSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      warmNodeDiskType: (() {
+        final guardedValue = map['warmNodeDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      warmNodeSpec: (() {
+        final guardedValue = map['warmNodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneCount: (() {
+        final guardedValue = map['zoneCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

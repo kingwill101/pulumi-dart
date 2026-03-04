@@ -6,7 +6,7 @@ import 'integration_exporter_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusintegration).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -349,10 +349,13 @@ import 'integration_exporter_state.dart';
 class IntegrationExporter extends pulumi.CustomResource {
   /// The ID of the Prometheus instance.
   late final pulumi.Output<String> clusterId;
+
   /// The ID of the Integration Exporter instance.
   late final pulumi.Output<int> instanceId;
+
   /// The type of prometheus integration.
   late final pulumi.Output<String> integrationType;
+
   /// Exporter configuration parameter json string.
   late final pulumi.Output<String> param;
 
@@ -365,15 +368,15 @@ class IntegrationExporter extends pulumi.CustomResource {
     IntegrationExporterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/integrationExporter:IntegrationExporter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<int>('instanceId');
-    this.integrationType = registerOutput<String>('integrationType');
-    this.param = registerOutput<String>('param');
+         'alicloud:arms/integrationExporter:IntegrationExporter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<int>('instanceId');
+    integrationType = registerOutput<String>('integrationType');
+    param = registerOutput<String>('param');
   }
 
   /// Gets an existing [IntegrationExporter] resource's state with the given [name] and [id].
@@ -394,14 +397,14 @@ class IntegrationExporter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/integrationExporter:IntegrationExporter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<int>('instanceId');
-    this.integrationType = registerOutput<String>('integrationType');
-    this.param = registerOutput<String>('param');
+         'alicloud:arms/integrationExporter:IntegrationExporter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<int>('instanceId');
+    integrationType = registerOutput<String>('integrationType');
+    param = registerOutput<String>('param');
   }
 }

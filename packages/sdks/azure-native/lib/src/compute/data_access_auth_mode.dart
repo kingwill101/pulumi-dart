@@ -3,16 +3,15 @@ enum DataAccessAuthMode {
   azureActiveDirectory("AzureActiveDirectory"),
   none("None");
 
-  const DataAccessAuthMode(this.value);
-  final String value;
+  const DataAccessAuthMode(this.wireValue);
+  final String wireValue;
 
   static DataAccessAuthMode fromValue(String value) {
     for (final item in DataAccessAuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataAccessAuthMode value: $value');
   }
 }
-

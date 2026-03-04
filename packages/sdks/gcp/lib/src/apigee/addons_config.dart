@@ -712,6 +712,7 @@ class AddonsConfig extends pulumi.CustomResource {
   /// Addon configurations of the Apigee organization.
   /// Structure is documented below.
   late final pulumi.Output<AddonsConfigAddonsConfig?> addonsConfig;
+
   /// Name of the Apigee organization.
   late final pulumi.Output<String> org;
 
@@ -724,13 +725,13 @@ class AddonsConfig extends pulumi.CustomResource {
     AddonsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/addonsConfig:AddonsConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');
-    this.org = registerOutput<String>('org');
+         'gcp:apigee/addonsConfig:AddonsConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');
+    org = registerOutput<String>('org');
   }
 
   /// Gets an existing [AddonsConfig] resource's state with the given [name] and [id].
@@ -751,12 +752,12 @@ class AddonsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/addonsConfig:AddonsConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');
-    this.org = registerOutput<String>('org');
+         'gcp:apigee/addonsConfig:AddonsConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');
+    org = registerOutput<String>('org');
   }
 }

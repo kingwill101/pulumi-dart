@@ -6,7 +6,7 @@ import 'ecs_backup_client_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Ecs Backup Client and how to use it, see [What is Ecs Backup Client](https://www.alibabacloud.com/help/doc-detail/186570.htm).
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -439,7 +439,7 @@ import 'ecs_backup_client_state.dart';
 ///
 /// ## Notice
 ///
-/// > **Note:** Please read the following precautions carefully before deleting a client:
+/// &gt; **Note:** Please read the following precautions carefully before deleting a client:
 /// 1. You cannot delete active clients that have received heartbeat packets within one hour.
 /// 2. You can make the client inactive by change the status of client to `STOPPED`.
 /// 3. The resources bound to the client will be deleted in cascade, including:
@@ -457,24 +457,34 @@ import 'ecs_backup_client_state.dart';
 class EcsBackupClient extends pulumi.CustomResource {
   /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
   late final pulumi.Output<String> dataNetworkType;
+
   /// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
   late final pulumi.Output<String> dataProxySetting;
+
   /// The ID of ECS instance.
   late final pulumi.Output<String> instanceId;
+
   /// The number of CPU cores used by a single backup task, 0 means no restrictions.
   late final pulumi.Output<String> maxCpuCore;
+
   /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
   late final pulumi.Output<String> maxWorker;
+
   /// Custom data plane proxy server host address.
   late final pulumi.Output<String> proxyHost;
+
   /// The password of custom data plane proxy server.
   late final pulumi.Output<String> proxyPassword;
+
   /// Custom data plane proxy server host port.
   late final pulumi.Output<String> proxyPort;
+
   /// The username of custom data plane proxy server.
   late final pulumi.Output<String> proxyUser;
+
   /// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
   late final pulumi.Output<String> status;
+
   /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
   late final pulumi.Output<bool> useHttps;
 
@@ -487,22 +497,22 @@ class EcsBackupClient extends pulumi.CustomResource {
     EcsBackupClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ecsBackupClient:EcsBackupClient',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataNetworkType = registerOutput<String>('dataNetworkType');
-    this.dataProxySetting = registerOutput<String>('dataProxySetting');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxCpuCore = registerOutput<String>('maxCpuCore');
-    this.maxWorker = registerOutput<String>('maxWorker');
-    this.proxyHost = registerOutput<String>('proxyHost');
-    this.proxyPassword = registerOutput<String>('proxyPassword');
-    this.proxyPort = registerOutput<String>('proxyPort');
-    this.proxyUser = registerOutput<String>('proxyUser');
-    this.status = registerOutput<String>('status');
-    this.useHttps = registerOutput<bool>('useHttps');
+         'alicloud:hbr/ecsBackupClient:EcsBackupClient',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataNetworkType = registerOutput<String>('dataNetworkType');
+    dataProxySetting = registerOutput<String>('dataProxySetting');
+    instanceId = registerOutput<String>('instanceId');
+    maxCpuCore = registerOutput<String>('maxCpuCore');
+    maxWorker = registerOutput<String>('maxWorker');
+    proxyHost = registerOutput<String>('proxyHost');
+    proxyPassword = registerOutput<String>('proxyPassword');
+    proxyPort = registerOutput<String>('proxyPort');
+    proxyUser = registerOutput<String>('proxyUser');
+    status = registerOutput<String>('status');
+    useHttps = registerOutput<bool>('useHttps');
   }
 
   /// Gets an existing [EcsBackupClient] resource's state with the given [name] and [id].
@@ -523,21 +533,21 @@ class EcsBackupClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ecsBackupClient:EcsBackupClient',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataNetworkType = registerOutput<String>('dataNetworkType');
-    this.dataProxySetting = registerOutput<String>('dataProxySetting');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxCpuCore = registerOutput<String>('maxCpuCore');
-    this.maxWorker = registerOutput<String>('maxWorker');
-    this.proxyHost = registerOutput<String>('proxyHost');
-    this.proxyPassword = registerOutput<String>('proxyPassword');
-    this.proxyPort = registerOutput<String>('proxyPort');
-    this.proxyUser = registerOutput<String>('proxyUser');
-    this.status = registerOutput<String>('status');
-    this.useHttps = registerOutput<bool>('useHttps');
+         'alicloud:hbr/ecsBackupClient:EcsBackupClient',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataNetworkType = registerOutput<String>('dataNetworkType');
+    dataProxySetting = registerOutput<String>('dataProxySetting');
+    instanceId = registerOutput<String>('instanceId');
+    maxCpuCore = registerOutput<String>('maxCpuCore');
+    maxWorker = registerOutput<String>('maxWorker');
+    proxyHost = registerOutput<String>('proxyHost');
+    proxyPassword = registerOutput<String>('proxyPassword');
+    proxyPort = registerOutput<String>('proxyPort');
+    proxyUser = registerOutput<String>('proxyUser');
+    status = registerOutput<String>('status');
+    useHttps = registerOutput<bool>('useHttps');
   }
 }

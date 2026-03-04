@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3FunctionVersionArgs {
   /// Description of the function version
   final pulumi.Input<String>? description;
+
   /// Function Name
   final pulumi.Input<String> functionName;
 
   /// Creates a new [V3FunctionVersionArgs].
   /// [description] Description of the function version
   /// [functionName] Function Name
-  V3FunctionVersionArgs({
-    this.description,
-    required this.functionName,
-  });
+  V3FunctionVersionArgs({this.description, required this.functionName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class V3FunctionVersionArgs {
 
   factory V3FunctionVersionArgs.fromMap(Map<String, dynamic> map) {
     return V3FunctionVersionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      functionName: (map['functionName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
     );
   }
 }
-

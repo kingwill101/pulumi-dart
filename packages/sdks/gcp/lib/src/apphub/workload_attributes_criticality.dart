@@ -9,20 +9,15 @@ class WorkloadAttributesCriticality {
 
   /// Creates a new [WorkloadAttributesCriticality].
   /// [type] Criticality type.
-  WorkloadAttributesCriticality({
-    required this.type,
-  });
+  WorkloadAttributesCriticality({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory WorkloadAttributesCriticality.fromMap(Map<String, dynamic> map) {
     return WorkloadAttributesCriticality(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

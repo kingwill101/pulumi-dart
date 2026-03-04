@@ -8,20 +8,15 @@ class GetKubernetesClusterWindowsProfile {
 
   /// Creates a new [GetKubernetesClusterWindowsProfile].
   /// [adminUsername] The username associated with the administrator account of the Windows VMs.
-  GetKubernetesClusterWindowsProfile({
-    required this.adminUsername,
-  });
+  GetKubernetesClusterWindowsProfile({required this.adminUsername});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'adminUsername': adminUsername,
-    };
+    return <String, dynamic>{'adminUsername': adminUsername};
   }
 
   factory GetKubernetesClusterWindowsProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterWindowsProfile(
-      adminUsername: (map['adminUsername'] as String).input(),
+      adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
     );
   }
 }
-

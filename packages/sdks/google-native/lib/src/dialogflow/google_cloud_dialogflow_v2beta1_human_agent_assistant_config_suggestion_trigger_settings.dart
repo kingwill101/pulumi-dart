@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings {
   /// Do not trigger if last utterance is small talk.
   final pulumi.Input<bool>? noSmallTalk;
+
   /// Only trigger suggestion if participant role of last utterance is END_USER.
   final pulumi.Input<bool>? onlyEndUser;
 
@@ -24,11 +25,20 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSett
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings(
-      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk']! as bool).input(),
-      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser']! as bool).input(),
+      noSmallTalk: (() {
+        final guardedValue = map['noSmallTalk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      onlyEndUser: (() {
+        final guardedValue = map['onlyEndUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

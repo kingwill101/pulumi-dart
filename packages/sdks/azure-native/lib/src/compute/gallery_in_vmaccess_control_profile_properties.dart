@@ -8,8 +8,10 @@ import 'operating_system_types.dart';
 class GalleryInVMAccessControlProfileProperties {
   /// This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
   final pulumi.Input<EndpointTypes> applicableHostEndpoint;
+
   /// The description of this gallery inVMAccessControlProfile resources. This property is updatable.
   final pulumi.Input<String>? description;
+
   /// This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
   final pulumi.Input<OperatingSystemTypes> osType;
 
@@ -25,18 +27,34 @@ class GalleryInVMAccessControlProfileProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicableHostEndpoint': pulumi.Input.mapInputValue<EndpointTypes, String>(applicableHostEndpoint, (value) => value.value),
+      'applicableHostEndpoint':
+          pulumi.Input.mapInputValue<EndpointTypes, String>(
+            applicableHostEndpoint,
+            (value) => value.wireValue,
+          ),
       'description': ?description,
-      'osType': pulumi.Input.mapInputValue<OperatingSystemTypes, String>(osType, (value) => value.value),
+      'osType': pulumi.Input.mapInputValue<OperatingSystemTypes, String>(
+        osType,
+        (value) => value.wireValue,
+      ),
     };
   }
 
-  factory GalleryInVMAccessControlProfileProperties.fromMap(Map<String, dynamic> map) {
+  factory GalleryInVMAccessControlProfileProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryInVMAccessControlProfileProperties(
-      applicableHostEndpoint: (EndpointTypes.fromValue(map['applicableHostEndpoint'] as String)).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      osType: (OperatingSystemTypes.fromValue(map['osType'] as String)).input(),
+      applicableHostEndpoint: pulumi.Input.fromValue(
+        EndpointTypes.fromValue(map['applicableHostEndpoint']! as String),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(
+        OperatingSystemTypes.fromValue(map['osType']! as String),
+      ),
     );
   }
 }
-

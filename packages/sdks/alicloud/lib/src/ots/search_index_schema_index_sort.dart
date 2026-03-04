@@ -9,20 +9,35 @@ class SearchIndexSchemaIndexSort {
 
   /// Creates a new [SearchIndexSchemaIndexSort].
   /// [sorters] Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
-  SearchIndexSchemaIndexSort({
-    required this.sorters,
-  });
+  SearchIndexSchemaIndexSort({required this.sorters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sorters': pulumi.Input.mapInputValue<List<SearchIndexSchemaIndexSortSorter>, List<Map<String, dynamic>>>(sorters, (value) => pulumi.Input.encodeList<SearchIndexSchemaIndexSortSorter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sorters':
+          pulumi.Input.mapInputValue<
+            List<SearchIndexSchemaIndexSortSorter>,
+            List<Map<String, dynamic>>
+          >(
+            sorters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SearchIndexSchemaIndexSortSorter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SearchIndexSchemaIndexSort.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchemaIndexSort(
-      sorters: (pulumi.Input.decodeList<SearchIndexSchemaIndexSortSorter>(map['sorters'], (value) => SearchIndexSchemaIndexSortSorter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SearchIndexSchemaIndexSortSorter>(
+          map['sorters']!,
+          (value) => SearchIndexSchemaIndexSortSorter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

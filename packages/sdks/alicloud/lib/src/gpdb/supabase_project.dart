@@ -8,7 +8,7 @@ import 'supabase_project_state.dart';
 ///
 /// For information about AnalyticDB for PostgreSQL (GPDB) Supabase Project and how to use it, see [What is Supabase Project](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateSupabaseProject).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -233,29 +233,40 @@ class SupabaseProject extends pulumi.CustomResource {
   /// - Support for special characters:! @#$%^& *()_+-=
   /// - Length is 8~32 characters.
   late final pulumi.Output<String> accountPassword;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// cloud disk performance level
   late final pulumi.Output<String> diskPerformanceLevel;
+
   /// The project name. The naming rules are as follows:
   /// - 1~128 characters in length.
   /// - Can only contain English letters, numbers, dashes (-) and underscores (_).
   /// - Must begin with an English letter or an underscore (_).
   late final pulumi.Output<String> projectName;
+
   /// The performance level of the Supabase instance.
   late final pulumi.Output<String> projectSpec;
+
   /// The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The IP address whitelist.
   late final pulumi.Output<List<String>> securityIpLists;
+
   /// The status of the Supabase instance.
   late final pulumi.Output<String> status;
+
   /// The storage capacity of the instance. Unit: GB.
   late final pulumi.Output<int> storageSize;
+
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
+
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
+
   /// The Zone ID.
   late final pulumi.Output<String> zoneId;
 
@@ -268,23 +279,23 @@ class SupabaseProject extends pulumi.CustomResource {
     SupabaseProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/supabaseProject:SupabaseProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.createTime = registerOutput<String>('createTime');
-    this.diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');
-    this.projectName = registerOutput<String>('projectName');
-    this.projectSpec = registerOutput<String>('projectSpec');
-    this.regionId = registerOutput<String>('regionId');
-    this.securityIpLists = registerOutput<List<String>>('securityIpLists');
-    this.status = registerOutput<String>('status');
-    this.storageSize = registerOutput<int>('storageSize');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:gpdb/supabaseProject:SupabaseProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountPassword = registerOutput<String>('accountPassword');
+    createTime = registerOutput<String>('createTime');
+    diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');
+    projectName = registerOutput<String>('projectName');
+    projectSpec = registerOutput<String>('projectSpec');
+    regionId = registerOutput<String>('regionId');
+    securityIpLists = registerOutput<List<String>>('securityIpLists');
+    status = registerOutput<String>('status');
+    storageSize = registerOutput<int>('storageSize');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [SupabaseProject] resource's state with the given [name] and [id].
@@ -305,22 +316,22 @@ class SupabaseProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/supabaseProject:SupabaseProject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.createTime = registerOutput<String>('createTime');
-    this.diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');
-    this.projectName = registerOutput<String>('projectName');
-    this.projectSpec = registerOutput<String>('projectSpec');
-    this.regionId = registerOutput<String>('regionId');
-    this.securityIpLists = registerOutput<List<String>>('securityIpLists');
-    this.status = registerOutput<String>('status');
-    this.storageSize = registerOutput<int>('storageSize');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:gpdb/supabaseProject:SupabaseProject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountPassword = registerOutput<String>('accountPassword');
+    createTime = registerOutput<String>('createTime');
+    diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');
+    projectName = registerOutput<String>('projectName');
+    projectSpec = registerOutput<String>('projectSpec');
+    regionId = registerOutput<String>('regionId');
+    securityIpLists = registerOutput<List<String>>('securityIpLists');
+    status = registerOutput<String>('status');
+    storageSize = registerOutput<int>('storageSize');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -140,10 +140,13 @@ import 'server_azure_adonly_authentication_args.dart';
 class ServerAzureADOnlyAuthentication extends pulumi.CustomResource {
   /// Azure Active Directory only Authentication enabled.
   late final pulumi.Output<bool> azureADOnlyAuthentication;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -156,14 +159,16 @@ class ServerAzureADOnlyAuthentication extends pulumi.CustomResource {
     ServerAzureADOnlyAuthenticationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ServerAzureADOnlyAuthentication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureADOnlyAuthentication = registerOutput<bool>('azureADOnlyAuthentication');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:sql:ServerAzureADOnlyAuthentication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureADOnlyAuthentication = registerOutput<bool>(
+      'azureADOnlyAuthentication',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

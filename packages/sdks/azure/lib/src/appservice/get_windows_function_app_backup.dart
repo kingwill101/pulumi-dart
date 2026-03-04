@@ -6,10 +6,13 @@ import 'get_windows_function_app_backup_schedule.dart';
 class GetWindowsFunctionAppBackup {
   /// Is the Backup Job enabled?
   final pulumi.Input<bool> enabled;
+
   /// The name of this Windows Function App.
   final pulumi.Input<String> name;
+
   /// A `schedule` block as defined below.
   final pulumi.Input<List<GetWindowsFunctionAppBackupSchedule>> schedules;
+
   /// The SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
@@ -29,18 +32,37 @@ class GetWindowsFunctionAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schedules':
+          pulumi.Input.mapInputValue<
+            List<GetWindowsFunctionAppBackupSchedule>,
+            List<Map<String, dynamic>>
+          >(
+            schedules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetWindowsFunctionAppBackupSchedule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory GetWindowsFunctionAppBackup.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppBackup(
-      enabled: (map['enabled'] as bool).input(),
-      name: (map['name'] as String).input(),
-      schedules: (pulumi.Input.decodeList<GetWindowsFunctionAppBackupSchedule>(map['schedules'], (value) => GetWindowsFunctionAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      schedules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetWindowsFunctionAppBackupSchedule>(
+          map['schedules']!,
+          (value) => GetWindowsFunctionAppBackupSchedule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      storageAccountUrl: pulumi.Input.fromValue(
+        map['storageAccountUrl'] as String,
+      ),
     );
   }
 }
-

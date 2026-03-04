@@ -8,20 +8,19 @@ class ExcludedPathResponse {
 
   /// Creates a new [ExcludedPathResponse].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  ExcludedPathResponse({
-    this.path,
-  });
+  ExcludedPathResponse({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
   factory ExcludedPathResponse.fromMap(Map<String, dynamic> map) {
     return ExcludedPathResponse(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

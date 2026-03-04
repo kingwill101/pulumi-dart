@@ -6,18 +6,25 @@ import 'system_data_response.dart';
 class GetHierarchySettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
   final String? defaultManagementGroup;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
   final bool? requireAuthorizationForGroupCreation;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
   final String? tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -47,7 +54,8 @@ class GetHierarchySettingResult {
       'defaultManagementGroup': ?defaultManagementGroup,
       'id': id,
       'name': name,
-      'requireAuthorizationForGroupCreation': ?requireAuthorizationForGroupCreation,
+      'requireAuthorizationForGroupCreation':
+          ?requireAuthorizationForGroupCreation,
       'systemData': systemData.toMap(),
       'tenantId': ?tenantId,
       'type': type,
@@ -57,14 +65,27 @@ class GetHierarchySettingResult {
   factory GetHierarchySettingResult.fromMap(Map<String, dynamic> map) {
     return GetHierarchySettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : map['defaultManagementGroup']! as String,
+      defaultManagementGroup: (() {
+        final guardedValue = map['defaultManagementGroup'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : map['requireAuthorizationForGroupCreation']! as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      requireAuthorizationForGroupCreation: (() {
+        final guardedValue = map['requireAuthorizationForGroupCreation'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

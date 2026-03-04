@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inbound_endpoint_args.dart';
-import 'ip_configuration_response.dart';
 import 'system_data_response.dart';
 
 /// Describes an inbound endpoint for a DNS resolver.
@@ -201,22 +200,31 @@ import 'system_data_response.dart';
 class InboundEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ETag of the inbound endpoint.
   late final pulumi.Output<String> etag;
+
   /// IP configurations for the inbound endpoint.
-  late final pulumi.Output<List<IpConfigurationResponse>> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of the inbound endpoint. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// The resourceGuid property of the inbound endpoint resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -229,20 +237,22 @@ class InboundEndpoint extends pulumi.CustomResource {
     InboundEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dnsresolver:InboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.ipConfigurations = registerOutput<List<IpConfigurationResponse>>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure-native:dnsresolver:InboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

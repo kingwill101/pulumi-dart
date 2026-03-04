@@ -6,16 +6,15 @@ enum JobActionType {
   valueServiceBusQueue("ServiceBusQueue"),
   valueServiceBusTopic("ServiceBusTopic");
 
-  const JobActionType(this.value);
-  final String value;
+  const JobActionType(this.wireValue);
+  final String wireValue;
 
   static JobActionType fromValue(String value) {
     for (final item in JobActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobActionType value: $value');
   }
 }
-

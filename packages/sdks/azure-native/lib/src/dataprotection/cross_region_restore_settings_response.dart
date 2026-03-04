@@ -8,20 +8,19 @@ class CrossRegionRestoreSettingsResponse {
 
   /// Creates a new [CrossRegionRestoreSettingsResponse].
   /// [state] CrossRegionRestore state
-  CrossRegionRestoreSettingsResponse({
-    this.state,
-  });
+  CrossRegionRestoreSettingsResponse({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory CrossRegionRestoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CrossRegionRestoreSettingsResponse(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

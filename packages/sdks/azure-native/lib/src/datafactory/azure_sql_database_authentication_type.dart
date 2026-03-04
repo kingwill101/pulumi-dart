@@ -5,16 +5,17 @@ enum AzureSqlDatabaseAuthenticationType {
   valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
-  const AzureSqlDatabaseAuthenticationType(this.value);
-  final String value;
+  const AzureSqlDatabaseAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AzureSqlDatabaseAuthenticationType fromValue(String value) {
     for (final item in AzureSqlDatabaseAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureSqlDatabaseAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown AzureSqlDatabaseAuthenticationType value: $value',
+    );
   }
 }
-

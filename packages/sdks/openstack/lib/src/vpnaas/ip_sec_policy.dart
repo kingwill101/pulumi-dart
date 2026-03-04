@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_sec_policy_args.dart';
-import 'ip_sec_policy_lifetime.dart';
 import 'ip_sec_policy_state.dart';
 
 /// Manages a V2 Neutron IPSec policy resource within OpenStack.
@@ -105,35 +104,45 @@ class IpSecPolicy extends pulumi.CustomResource {
   /// aes-xcbc, aes-cmac. Default is sha1.
   /// Changing this updates the algorithm of the existing policy.
   late final pulumi.Output<String> authAlgorithm;
+
   /// The human-readable description for the policy.
   /// Changing this updates the description of the existing policy.
   late final pulumi.Output<String?> description;
+
   /// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
   /// Changing this updates the existing policy.
   late final pulumi.Output<String> encapsulationMode;
+
   /// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
   /// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
   /// The default value is aes-128. Changing this updates the existing policy.
   late final pulumi.Output<String> encryptionAlgorithm;
+
   /// The lifetime of the security association. Consists of Unit and Value.
-  late final pulumi.Output<List<IpSecPolicyLifetime>> lifetimes;
+  late final pulumi.Output<List<Map<String, dynamic>>> lifetimes;
+
   /// The name of the policy. Changing this updates the name of
   /// the existing policy.
   late final pulumi.Output<String> name;
+
   /// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
   /// Default is group5. Changing this updates the existing policy.
   late final pulumi.Output<String> pfs;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an IPSec policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// policy.
   late final pulumi.Output<String> region;
+
   /// The owner of the policy. Required if admin wants to
   /// create a policy for another project. Changing this creates a new policy.
   late final pulumi.Output<String> tenantId;
+
   /// The transform protocol. Valid values are esp, ah and ah-esp.
   /// Changing this updates the existing policy. Default is ESP.
   late final pulumi.Output<String> transformProtocol;
+
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -146,22 +155,22 @@ class IpSecPolicy extends pulumi.CustomResource {
     IpSecPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authAlgorithm = registerOutput<String>('authAlgorithm');
-    this.description = registerOutput<String?>('description');
-    this.encapsulationMode = registerOutput<String>('encapsulationMode');
-    this.encryptionAlgorithm = registerOutput<String>('encryptionAlgorithm');
-    this.lifetimes = registerOutput<List<IpSecPolicyLifetime>>('lifetimes');
+         'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authAlgorithm = registerOutput<String>('authAlgorithm');
+    description = registerOutput<String?>('description');
+    encapsulationMode = registerOutput<String>('encapsulationMode');
+    encryptionAlgorithm = registerOutput<String>('encryptionAlgorithm');
+    lifetimes = registerOutput<List<Map<String, dynamic>>>('lifetimes');
     this.name = registerOutput<String>('name');
-    this.pfs = registerOutput<String>('pfs');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.transformProtocol = registerOutput<String>('transformProtocol');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    pfs = registerOutput<String>('pfs');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    transformProtocol = registerOutput<String>('transformProtocol');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
   /// Gets an existing [IpSecPolicy] resource's state with the given [name] and [id].
@@ -182,21 +191,21 @@ class IpSecPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authAlgorithm = registerOutput<String>('authAlgorithm');
-    this.description = registerOutput<String?>('description');
-    this.encapsulationMode = registerOutput<String>('encapsulationMode');
-    this.encryptionAlgorithm = registerOutput<String>('encryptionAlgorithm');
-    this.lifetimes = registerOutput<List<IpSecPolicyLifetime>>('lifetimes');
+         'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authAlgorithm = registerOutput<String>('authAlgorithm');
+    description = registerOutput<String?>('description');
+    encapsulationMode = registerOutput<String>('encapsulationMode');
+    encryptionAlgorithm = registerOutput<String>('encryptionAlgorithm');
+    lifetimes = registerOutput<List<Map<String, dynamic>>>('lifetimes');
     this.name = registerOutput<String>('name');
-    this.pfs = registerOutput<String>('pfs');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.transformProtocol = registerOutput<String>('transformProtocol');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    pfs = registerOutput<String>('pfs');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    transformProtocol = registerOutput<String>('transformProtocol');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

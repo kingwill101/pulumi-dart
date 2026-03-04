@@ -9,16 +9,15 @@ enum AuthType {
   valueUserAccount("userAccount"),
   valueEasyAuthMicrosoftEntraID("easyAuthMicrosoftEntraID");
 
-  const AuthType(this.value);
-  final String value;
+  const AuthType(this.wireValue);
+  final String wireValue;
 
   static AuthType fromValue(String value) {
     for (final item in AuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthType value: $value');
   }
 }
-

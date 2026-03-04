@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCheckStructuresStructureStandardRequirementSection {
   /// The ID of the section for the check item.
   final pulumi.Input<int> id;
+
   /// The display name of the standard for the check item.
   final pulumi.Input<String> showName;
 
@@ -17,17 +18,15 @@ class GetCheckStructuresStructureStandardRequirementSection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'showName': showName,
-    };
+    return <String, dynamic>{'id': id, 'showName': showName};
   }
 
-  factory GetCheckStructuresStructureStandardRequirementSection.fromMap(Map<String, dynamic> map) {
+  factory GetCheckStructuresStructureStandardRequirementSection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCheckStructuresStructureStandardRequirementSection(
-      id: (map['id'] as int).input(),
-      showName: (map['showName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      showName: pulumi.Input.fromValue(map['showName'] as String),
     );
   }
 }
-

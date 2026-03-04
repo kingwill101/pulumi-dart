@@ -1,5 +1,3 @@
-library module_m2;
-
 export 'm2/application.dart';
 export 'm2/application_args.dart';
 export 'm2/application_definition.dart';

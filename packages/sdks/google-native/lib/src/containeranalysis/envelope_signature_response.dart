@@ -9,23 +9,16 @@ class EnvelopeSignatureResponse {
   /// Creates a new [EnvelopeSignatureResponse].
   /// [keyid] Required.
   /// [sig] Required.
-  EnvelopeSignatureResponse({
-    required this.keyid,
-    required this.sig,
-  });
+  EnvelopeSignatureResponse({required this.keyid, required this.sig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyid': keyid,
-      'sig': sig,
-    };
+    return <String, dynamic>{'keyid': keyid, 'sig': sig};
   }
 
   factory EnvelopeSignatureResponse.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureResponse(
-      keyid: (map['keyid'] as String).input(),
-      sig: (map['sig'] as String).input(),
+      keyid: pulumi.Input.fromValue(map['keyid'] as String),
+      sig: pulumi.Input.fromValue(map['sig'] as String),
     );
   }
 }
-

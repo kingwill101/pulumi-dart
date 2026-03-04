@@ -6,29 +6,27 @@ class StackAccessEndpoint {
   /// Type of the interface endpoint.
   /// See the [`AccessEndpoint` AWS API documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html) for valid values.
   final pulumi.Input<String> endpointType;
+
   /// ID of the VPC in which the interface endpoint is used.
   final pulumi.Input<String>? vpceId;
 
   /// Creates a new [StackAccessEndpoint].
   /// [endpointType] Type of the interface endpoint.
   /// [vpceId] ID of the VPC in which the interface endpoint is used.
-  StackAccessEndpoint({
-    required this.endpointType,
-    this.vpceId,
-  });
+  StackAccessEndpoint({required this.endpointType, this.vpceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpointType': endpointType,
-      'vpceId': ?vpceId,
-    };
+    return <String, dynamic>{'endpointType': endpointType, 'vpceId': ?vpceId};
   }
 
   factory StackAccessEndpoint.fromMap(Map<String, dynamic> map) {
     return StackAccessEndpoint(
-      endpointType: (map['endpointType'] as String).input(),
-      vpceId: map['vpceId'] == null ? null : ((map['vpceId'] as String).input()).input(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      vpceId: (() {
+        final guardedValue = map['vpceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

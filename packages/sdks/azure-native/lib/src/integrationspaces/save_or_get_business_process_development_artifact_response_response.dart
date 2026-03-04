@@ -8,8 +8,11 @@ import 'system_data_response.dart';
 class SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse {
   /// The name of the business process development artifact.
   final pulumi.Input<String> name;
+
   /// The properties of the business process development artifact.
-  final pulumi.Input<BusinessProcessDevelopmentArtifactPropertiesResponse>? properties;
+  final pulumi.Input<BusinessProcessDevelopmentArtifactPropertiesResponse>?
+  properties;
+
   /// The system data of the business process development artifact.
   final pulumi.Input<SystemDataResponse> systemData;
 
@@ -26,17 +29,38 @@ class SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<BusinessProcessDevelopmentArtifactPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BusinessProcessDevelopmentArtifactPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse(
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

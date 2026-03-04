@@ -13,15 +13,18 @@ class ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowNonRestoredState': ?allowNonRestoredState,
-    };
+    return <String, dynamic>{'allowNonRestoredState': ?allowNonRestoredState};
   }
 
-  factory ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration(
-      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : ((map['allowNonRestoredState'] as bool).input()).input(),
+      allowNonRestoredState: (() {
+        final guardedValue = map['allowNonRestoredState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

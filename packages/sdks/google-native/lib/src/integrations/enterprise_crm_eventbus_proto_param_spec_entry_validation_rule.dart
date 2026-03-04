@@ -6,9 +6,18 @@ import 'enterprise_crm_eventbus_proto_param_spec_entry_validation_rule_int_range
 import 'enterprise_crm_eventbus_proto_param_spec_entry_validation_rule_string_regex.dart';
 
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange>? doubleRange;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange>? intRange;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex>? stringRegex;
+  final pulumi.Input<
+    EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange
+  >?
+  doubleRange;
+  final pulumi.Input<
+    EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange
+  >?
+  intRange;
+  final pulumi.Input<
+    EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex
+  >?
+  stringRegex;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRule].
   /// [doubleRange] Optional.
@@ -22,18 +31,55 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'doubleRange': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange, Map<String, dynamic>>(doubleRange, (value) => value.toMap()),
-      'intRange': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange, Map<String, dynamic>>(intRange, (value) => value.toMap()),
-      'stringRegex': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex, Map<String, dynamic>>(stringRegex, (value) => value.toMap()),
+      'doubleRange':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange,
+            Map<String, dynamic>
+          >(doubleRange, (value) => value.toMap()),
+      'intRange':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange,
+            Map<String, dynamic>
+          >(intRange, (value) => value.toMap()),
+      'stringRegex':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex,
+            Map<String, dynamic>
+          >(stringRegex, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRule(
-      doubleRange: map['doubleRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromMap((map['doubleRange']! as Map).cast<String, dynamic>())).input(),
-      intRange: map['intRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromMap((map['intRange']! as Map).cast<String, dynamic>())).input(),
-      stringRegex: map['stringRegex'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromMap((map['stringRegex']! as Map).cast<String, dynamic>())).input(),
+      doubleRange: (() {
+        final guardedValue = map['doubleRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      intRange: (() {
+        final guardedValue = map['intRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stringRegex: (() {
+        final guardedValue = map['stringRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

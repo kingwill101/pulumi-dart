@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComponentTransformResponse {
   /// Dataflow service generated name for this source.
   final pulumi.Input<String> name;
+
   /// User name for the original user transform with which this transform is most closely associated.
   final pulumi.Input<String> originalTransform;
+
   /// Human-readable name for this transform; may be user or system generated.
   final pulumi.Input<String> userName;
 
@@ -31,10 +33,11 @@ class ComponentTransformResponse {
 
   factory ComponentTransformResponse.fromMap(Map<String, dynamic> map) {
     return ComponentTransformResponse(
-      name: (map['name'] as String).input(),
-      originalTransform: (map['originalTransform'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      originalTransform: pulumi.Input.fromValue(
+        map['originalTransform'] as String,
+      ),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

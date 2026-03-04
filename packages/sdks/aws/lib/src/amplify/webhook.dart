@@ -172,14 +172,19 @@ import 'webhook_state.dart';
 class Webhook extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
+
   /// ARN for the webhook.
   late final pulumi.Output<String> arn;
+
   /// Name for a branch that is part of the Amplify app.
   late final pulumi.Output<String> branchName;
+
   /// Description for a webhook.
   late final pulumi.Output<String?> description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// URL of the webhook.
   late final pulumi.Output<String> url;
 
@@ -192,17 +197,17 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amplify/webhook:Webhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.arn = registerOutput<String>('arn');
-    this.branchName = registerOutput<String>('branchName');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.url = registerOutput<String>('url');
+         'aws:amplify/webhook:Webhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    branchName = registerOutput<String>('branchName');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [Webhook] resource's state with the given [name] and [id].
@@ -223,16 +228,16 @@ class Webhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amplify/webhook:Webhook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.arn = registerOutput<String>('arn');
-    this.branchName = registerOutput<String>('branchName');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.url = registerOutput<String>('url');
+         'aws:amplify/webhook:Webhook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    branchName = registerOutput<String>('branchName');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    url = registerOutput<String>('url');
   }
 }

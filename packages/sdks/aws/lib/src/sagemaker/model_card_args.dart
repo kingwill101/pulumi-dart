@@ -11,14 +11,19 @@ import 'model_card_timeouts.dart';
 class ModelCardArgs {
   /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
   final pulumi.Input<String> content;
+
   /// Name of the model card.
   final pulumi.Input<String> modelCardName;
+
   /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   final pulumi.Input<String> modelCardStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
+
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ModelCardTimeouts>? timeouts;
@@ -47,22 +52,55 @@ class ModelCardArgs {
       'modelCardName': modelCardName,
       'modelCardStatus': modelCardStatus,
       'region': ?region,
-      'securityConfig': ?pulumi.Input.mapOptionalInputValue<ModelCardSecurityConfig, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
+      'securityConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelCardSecurityConfig,
+            Map<String, dynamic>
+          >(securityConfig, (value) => value.toMap()),
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ModelCardTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelCardTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ModelCardArgs.fromMap(Map<String, dynamic> map) {
     return ModelCardArgs(
-      content: (map['content'] as String).input(),
-      modelCardName: (map['modelCardName'] as String).input(),
-      modelCardStatus: (map['modelCardStatus'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityConfig: map['securityConfig'] == null ? null : ((ModelCardSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ModelCardTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      modelCardName: pulumi.Input.fromValue(map['modelCardName'] as String),
+      modelCardStatus: pulumi.Input.fromValue(map['modelCardStatus'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityConfig: (() {
+        final guardedValue = map['securityConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelCardSecurityConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelCardTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

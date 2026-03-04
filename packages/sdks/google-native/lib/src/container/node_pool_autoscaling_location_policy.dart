@@ -4,16 +4,17 @@ enum NodePoolAutoscalingLocationPolicy {
   balanced("BALANCED"),
   any("ANY");
 
-  const NodePoolAutoscalingLocationPolicy(this.value);
-  final String value;
+  const NodePoolAutoscalingLocationPolicy(this.wireValue);
+  final String wireValue;
 
   static NodePoolAutoscalingLocationPolicy fromValue(String value) {
     for (final item in NodePoolAutoscalingLocationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodePoolAutoscalingLocationPolicy value: $value');
+    throw ArgumentError(
+      'Unknown NodePoolAutoscalingLocationPolicy value: $value',
+    );
   }
 }
-

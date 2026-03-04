@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'metric_configuration_response.dart';
 import 'monitoring_config_args.dart';
 import 'system_data_response.dart';
 
@@ -212,12 +211,16 @@ import 'system_data_response.dart';
 class MonitoringConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The metrics configuration details
-  late final pulumi.Output<List<MetricConfigurationResponse>> metricConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> metricConfigurations;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Metadata pertaining to creation and last modification of MonitoringConfiguration
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -230,15 +233,17 @@ class MonitoringConfig extends pulumi.CustomResource {
     MonitoringConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:MonitoringConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.metricConfigurations = registerOutput<List<MetricConfigurationResponse>>('metricConfigurations');
+         'azure-native:databoxedge:MonitoringConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    metricConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'metricConfigurations',
+    );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

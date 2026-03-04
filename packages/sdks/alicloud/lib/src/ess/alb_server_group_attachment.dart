@@ -6,13 +6,13 @@ import 'alb_server_group_attachment_state.dart';
 ///
 /// For information about alb server group attachment, see [AttachAlbServerGroups](https://www.alibabacloud.com/help/en/doc-detail/266800.html).
 ///
-/// > **NOTE:** If scaling group's network type is `VPC`, the alb server groups must be in the same `VPC`.
+/// &gt; **NOTE:** If scaling group's network type is `VPC`, the alb server groups must be in the same `VPC`.
 ///
-/// > **NOTE:** Alb server group attachment is defined uniquely by `scaling_group_id`, `alb_server_group_id`, `port`.
+/// &gt; **NOTE:** Alb server group attachment is defined uniquely by `scaling_group_id`, `alb_server_group_id`, `port`.
 ///
-/// > **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` don't support modification.
+/// &gt; **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` don't support modification.
 ///
-/// > **NOTE:** Available since v1.158.0.
+/// &gt; **NOTE:** Available since v1.158.0.
 ///
 /// ## Example Usage
 ///
@@ -647,13 +647,17 @@ import 'alb_server_group_attachment_state.dart';
 class AlbServerGroupAttachment extends pulumi.CustomResource {
   /// ID of Alb Server Group.
   late final pulumi.Output<String> albServerGroupId;
+
   /// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
   /// server group from scaling group. Default to false.
   late final pulumi.Output<bool?> forceAttach;
+
   /// The port will be used for Alb Server Group backend server.
   late final pulumi.Output<int> port;
+
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
+
   /// The weight of an ECS instance attached to the Alb Server Group.
   late final pulumi.Output<int> weight;
 
@@ -666,16 +670,16 @@ class AlbServerGroupAttachment extends pulumi.CustomResource {
     AlbServerGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.albServerGroupId = registerOutput<String>('albServerGroupId');
-    this.forceAttach = registerOutput<bool?>('forceAttach');
-    this.port = registerOutput<int>('port');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    albServerGroupId = registerOutput<String>('albServerGroupId');
+    forceAttach = registerOutput<bool?>('forceAttach');
+    port = registerOutput<int>('port');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [AlbServerGroupAttachment] resource's state with the given [name] and [id].
@@ -696,15 +700,15 @@ class AlbServerGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.albServerGroupId = registerOutput<String>('albServerGroupId');
-    this.forceAttach = registerOutput<bool?>('forceAttach');
-    this.port = registerOutput<int>('port');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    albServerGroupId = registerOutput<String>('albServerGroupId');
+    forceAttach = registerOutput<bool?>('forceAttach');
+    port = registerOutput<int>('port');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    weight = registerOutput<int>('weight');
   }
 }

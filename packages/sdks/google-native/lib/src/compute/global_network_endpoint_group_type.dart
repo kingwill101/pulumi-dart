@@ -2,16 +2,15 @@
 enum GlobalNetworkEndpointGroupType {
   loadBalancing("LOAD_BALANCING");
 
-  const GlobalNetworkEndpointGroupType(this.value);
-  final String value;
+  const GlobalNetworkEndpointGroupType(this.wireValue);
+  final String wireValue;
 
   static GlobalNetworkEndpointGroupType fromValue(String value) {
     for (final item in GlobalNetworkEndpointGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalNetworkEndpointGroupType value: $value');
   }
 }
-

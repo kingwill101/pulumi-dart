@@ -19,16 +19,15 @@ enum DsRecordAlgorithm {
   privatedns("PRIVATEDNS"),
   privateoid("PRIVATEOID");
 
-  const DsRecordAlgorithm(this.value);
-  final String value;
+  const DsRecordAlgorithm(this.wireValue);
+  final String wireValue;
 
   static DsRecordAlgorithm fromValue(String value) {
     for (final item in DsRecordAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DsRecordAlgorithm value: $value');
   }
 }
-

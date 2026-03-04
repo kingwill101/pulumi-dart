@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityProfile {
   /// The resource ID of the user's Azure Active Directory Domain Service.
   final pulumi.Input<String>? aaddsResourceId;
+
   /// Optional. The Distinguished Names for cluster user groups
   final pulumi.Input<List<String>>? clusterUsersGroupDNs;
+
   /// The directory type.
   final pulumi.Input<String>? directoryType;
+
   /// The organization's active directory domain.
   final pulumi.Input<String>? domain;
+
   /// The domain admin password.
   final pulumi.Input<String>? domainUserPassword;
+
   /// The domain user account that will have admin privileges on the cluster.
   final pulumi.Input<String>? domainUsername;
+
   /// The LDAPS protocol URLs to communicate with the Active Directory.
   final pulumi.Input<List<String>>? ldapsUrls;
+
   /// User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS.
   final pulumi.Input<String>? msiResourceId;
+
   /// The organizational unit within the Active Directory to place the cluster and service accounts.
   final pulumi.Input<String>? organizationalUnitDN;
 
@@ -61,16 +69,51 @@ class SecurityProfile {
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      aaddsResourceId: map['aaddsResourceId'] == null ? null : (map['aaddsResourceId']! as String).input(),
-      clusterUsersGroupDNs: map['clusterUsersGroupDNs'] == null ? null : ((map['clusterUsersGroupDNs']! as List).cast<String>()).input(),
-      directoryType: map['directoryType'] == null ? null : (map['directoryType']! as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      domainUserPassword: map['domainUserPassword'] == null ? null : (map['domainUserPassword']! as String).input(),
-      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername']! as String).input(),
-      ldapsUrls: map['ldapsUrls'] == null ? null : ((map['ldapsUrls']! as List).cast<String>()).input(),
-      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId']! as String).input(),
-      organizationalUnitDN: map['organizationalUnitDN'] == null ? null : (map['organizationalUnitDN']! as String).input(),
+      aaddsResourceId: (() {
+        final guardedValue = map['aaddsResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterUsersGroupDNs: (() {
+        final guardedValue = map['clusterUsersGroupDNs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      directoryType: (() {
+        final guardedValue = map['directoryType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainUserPassword: (() {
+        final guardedValue = map['domainUserPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainUsername: (() {
+        final guardedValue = map['domainUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ldapsUrls: (() {
+        final guardedValue = map['ldapsUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      msiResourceId: (() {
+        final guardedValue = map['msiResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationalUnitDN: (() {
+        final guardedValue = map['organizationalUnitDN'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

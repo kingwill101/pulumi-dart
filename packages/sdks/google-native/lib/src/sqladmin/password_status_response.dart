@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PasswordStatusResponse {
   /// If true, user does not have login privileges.
   final pulumi.Input<bool> locked;
+
   /// The expiration time of the current password.
   final pulumi.Input<String> passwordExpirationTime;
 
@@ -26,9 +27,10 @@ class PasswordStatusResponse {
 
   factory PasswordStatusResponse.fromMap(Map<String, dynamic> map) {
     return PasswordStatusResponse(
-      locked: (map['locked'] as bool).input(),
-      passwordExpirationTime: (map['passwordExpirationTime'] as String).input(),
+      locked: pulumi.Input.fromValue(map['locked'] as bool),
+      passwordExpirationTime: pulumi.Input.fromValue(
+        map['passwordExpirationTime'] as String,
+      ),
     );
   }
 }
-

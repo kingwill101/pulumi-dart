@@ -7,8 +7,10 @@ import 'polling_options_response_deploymentmanager_v2beta.dart';
 class AsyncOptionsResponseDeploymentmanagerV2beta {
   /// Method regex where this policy will apply.
   final pulumi.Input<String> methodMatch;
+
   /// Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking until polling conditions tell whether the resource is completed or failed.
-  final pulumi.Input<PollingOptionsResponseDeploymentmanagerV2beta> pollingOptions;
+  final pulumi.Input<PollingOptionsResponseDeploymentmanagerV2beta>
+  pollingOptions;
 
   /// Creates a new [AsyncOptionsResponseDeploymentmanagerV2beta].
   /// [methodMatch] Method regex where this policy will apply.
@@ -21,15 +23,24 @@ class AsyncOptionsResponseDeploymentmanagerV2beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'methodMatch': methodMatch,
-      'pollingOptions': pulumi.Input.mapInputValue<PollingOptionsResponseDeploymentmanagerV2beta, Map<String, dynamic>>(pollingOptions, (value) => value.toMap()),
+      'pollingOptions':
+          pulumi.Input.mapInputValue<
+            PollingOptionsResponseDeploymentmanagerV2beta,
+            Map<String, dynamic>
+          >(pollingOptions, (value) => value.toMap()),
     };
   }
 
-  factory AsyncOptionsResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory AsyncOptionsResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AsyncOptionsResponseDeploymentmanagerV2beta(
-      methodMatch: (map['methodMatch'] as String).input(),
-      pollingOptions: (PollingOptionsResponseDeploymentmanagerV2beta.fromMap((map['pollingOptions'] as Map).cast<String, dynamic>())).input(),
+      methodMatch: pulumi.Input.fromValue(map['methodMatch'] as String),
+      pollingOptions: pulumi.Input.fromValue(
+        PollingOptionsResponseDeploymentmanagerV2beta.fromMap(
+          (map['pollingOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

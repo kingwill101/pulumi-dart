@@ -7,8 +7,10 @@ import 'server_endpoint_recall_error_response.dart';
 class ServerEndpointRecallStatusResponse {
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
+
   /// Array of recall errors
   final pulumi.Input<List<ServerEndpointRecallErrorResponse>> recallErrors;
+
   /// Total count of recall errors.
   final pulumi.Input<double> totalRecallErrorsCount;
 
@@ -25,17 +27,38 @@ class ServerEndpointRecallStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
-      'recallErrors': pulumi.Input.mapInputValue<List<ServerEndpointRecallErrorResponse>, List<Map<String, dynamic>>>(recallErrors, (value) => pulumi.Input.encodeList<ServerEndpointRecallErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recallErrors':
+          pulumi.Input.mapInputValue<
+            List<ServerEndpointRecallErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            recallErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServerEndpointRecallErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'totalRecallErrorsCount': totalRecallErrorsCount,
     };
   }
 
   factory ServerEndpointRecallStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointRecallStatusResponse(
-      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
-      recallErrors: (pulumi.Input.decodeList<ServerEndpointRecallErrorResponse>(map['recallErrors'], (value) => ServerEndpointRecallErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      totalRecallErrorsCount: (map['totalRecallErrorsCount'] as double).input(),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['lastUpdatedTimestamp'] as String,
+      ),
+      recallErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ServerEndpointRecallErrorResponse>(
+          map['recallErrors']!,
+          (value) => ServerEndpointRecallErrorResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      totalRecallErrorsCount: pulumi.Input.fromValue(
+        map['totalRecallErrorsCount'] as double,
+      ),
     );
   }
 }
-

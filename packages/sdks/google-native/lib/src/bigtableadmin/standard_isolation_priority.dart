@@ -5,16 +5,15 @@ enum StandardIsolationPriority {
   priorityMedium("PRIORITY_MEDIUM"),
   priorityHigh("PRIORITY_HIGH");
 
-  const StandardIsolationPriority(this.value);
-  final String value;
+  const StandardIsolationPriority(this.wireValue);
+  final String wireValue;
 
   static StandardIsolationPriority fromValue(String value) {
     for (final item in StandardIsolationPriority.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StandardIsolationPriority value: $value');
   }
 }
-

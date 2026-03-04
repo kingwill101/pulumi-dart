@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1StudyTimeConstraint {
   /// Compares the wallclock time to this time. Must use UTC timezone.
   final pulumi.Input<String>? endTime;
+
   /// Counts the wallclock time passed since the creation of this Study.
   final pulumi.Input<String>? maxDuration;
 
@@ -18,17 +19,23 @@ class GoogleCloudAiplatformV1beta1StudyTimeConstraint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endTime': ?endTime,
-      'maxDuration': ?maxDuration,
-    };
+    return <String, dynamic>{'endTime': ?endTime, 'maxDuration': ?maxDuration};
   }
 
-  factory GoogleCloudAiplatformV1beta1StudyTimeConstraint.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1StudyTimeConstraint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1StudyTimeConstraint(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxDuration: (() {
+        final guardedValue = map['maxDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

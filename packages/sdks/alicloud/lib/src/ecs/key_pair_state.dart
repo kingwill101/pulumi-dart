@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyPairState {
   final pulumi.Input<String>? createTime;
   final pulumi.Input<String>? fingerPrint;
+
   /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
   final pulumi.Input<String>? keyFile;
+
   /// The key pair's name. It is the only in one Alicloud account.
   final pulumi.Input<String>? keyName;
   final pulumi.Input<String>? keyNamePrefix;
   final pulumi.Input<String>? keyPairName;
+
   /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
   final pulumi.Input<String>? publicKey;
+
   /// The Id of resource group which the key pair belongs.
   final pulumi.Input<String>? resourceGroupId;
   final pulumi.Input<Map<String, String>>? tags;
@@ -56,16 +60,53 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint']! as String).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix']! as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerPrint: (() {
+        final guardedValue = map['fingerPrint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyFile: (() {
+        final guardedValue = map['keyFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyNamePrefix: (() {
+        final guardedValue = map['keyNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

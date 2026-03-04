@@ -264,22 +264,31 @@ import 'system_data_response.dart';
 class QueryPack extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Current state of this QueryPack: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
   late final pulumi.Output<String> provisioningState;
+
   /// The unique ID of your application. This field cannot be changed.
   late final pulumi.Output<String> queryPackId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
   late final pulumi.Output<String> timeCreated;
+
   /// Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
   late final pulumi.Output<String> timeModified;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -292,20 +301,20 @@ class QueryPack extends pulumi.CustomResource {
     QueryPackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:QueryPack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:operationalinsights:QueryPack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.queryPackId = registerOutput<String>('queryPackId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    queryPackId = registerOutput<String>('queryPackId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
   }
 }

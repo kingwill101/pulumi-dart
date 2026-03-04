@@ -8,6 +8,7 @@ import 'referenced_resource.dart';
 class AzureArcKubernetesArtifactProfile {
   /// The reference to artifact store.
   final pulumi.Input<ReferencedResource>? artifactStore;
+
   /// Helm artifact profile.
   final pulumi.Input<HelmArtifactProfile>? helmArtifactProfile;
 
@@ -21,16 +22,39 @@ class AzureArcKubernetesArtifactProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResource, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
-      'helmArtifactProfile': ?pulumi.Input.mapOptionalInputValue<HelmArtifactProfile, Map<String, dynamic>>(helmArtifactProfile, (value) => value.toMap()),
+      'artifactStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResource,
+            Map<String, dynamic>
+          >(artifactStore, (value) => value.toMap()),
+      'helmArtifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            HelmArtifactProfile,
+            Map<String, dynamic>
+          >(helmArtifactProfile, (value) => value.toMap()),
     };
   }
 
   factory AzureArcKubernetesArtifactProfile.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesArtifactProfile(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResource.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
-      helmArtifactProfile: map['helmArtifactProfile'] == null ? null : (HelmArtifactProfile.fromMap((map['helmArtifactProfile']! as Map).cast<String, dynamic>())).input(),
+      artifactStore: (() {
+        final guardedValue = map['artifactStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      helmArtifactProfile: (() {
+        final guardedValue = map['helmArtifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HelmArtifactProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

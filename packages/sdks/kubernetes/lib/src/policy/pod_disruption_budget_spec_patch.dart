@@ -7,10 +7,13 @@ import '../meta/label_selector_patch.dart';
 class PodDisruptionBudgetSpecPatch {
   /// An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
   final pulumi.Input<int>? maxUnavailable;
+
   /// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
   final pulumi.Input<int>? minAvailable;
+
   /// Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
   final pulumi.Input<LabelSelectorPatch>? selector;
+
   /// UnhealthyPodEvictionPolicy defines the criteria for when unhealthy pods should be considered for eviction. Current implementation considers healthy pods, as pods that have status.conditions item with type="Ready",status="True".
   ///
   /// Valid policies are IfHealthyBudget and AlwaysAllow. If no policy is specified, the default behavior will be used, which corresponds to the IfHealthyBudget policy.
@@ -38,18 +41,41 @@ class PodDisruptionBudgetSpecPatch {
     return <String, dynamic>{
       'maxUnavailable': ?maxUnavailable,
       'minAvailable': ?minAvailable,
-      'selector': ?pulumi.Input.mapOptionalInputValue<LabelSelectorPatch, Map<String, dynamic>>(selector, (value) => value.toMap()),
+      'selector':
+          ?pulumi.Input.mapOptionalInputValue<
+            LabelSelectorPatch,
+            Map<String, dynamic>
+          >(selector, (value) => value.toMap()),
       'unhealthyPodEvictionPolicy': ?unhealthyPodEvictionPolicy,
     };
   }
 
   factory PodDisruptionBudgetSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetSpecPatch(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
-      minAvailable: map['minAvailable'] == null ? null : (map['minAvailable']! as int).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
-      unhealthyPodEvictionPolicy: map['unhealthyPodEvictionPolicy'] == null ? null : (map['unhealthyPodEvictionPolicy']! as String).input(),
+      maxUnavailable: (() {
+        final guardedValue = map['maxUnavailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minAvailable: (() {
+        final guardedValue = map['minAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LabelSelectorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      unhealthyPodEvictionPolicy: (() {
+        final guardedValue = map['unhealthyPodEvictionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

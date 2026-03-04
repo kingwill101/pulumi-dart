@@ -5,6 +5,7 @@ import 'access_token_args.dart';
 class AccessToken extends pulumi.CustomResource {
   /// Description of the access token.
   late final pulumi.Output<String> description;
+
   /// The token's value.
   late final pulumi.Output<String> value;
 
@@ -17,12 +18,12 @@ class AccessToken extends pulumi.CustomResource {
     AccessTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:AccessToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.value = registerOutput<String>('value');
+         'pulumiservice:index:AccessToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    value = registerOutput<String>('value');
   }
 }

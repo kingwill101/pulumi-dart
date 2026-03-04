@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAclPoliciesArgs {
   /// The type of endpoint. Valid values: `internet`.
   final pulumi.Input<String> endpointType;
+
   /// A list of Endpoint Acl Policy IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -39,11 +42,18 @@ class GetEndpointAclPoliciesArgs {
 
   factory GetEndpointAclPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclPoliciesArgs(
-      endpointType: (map['endpointType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

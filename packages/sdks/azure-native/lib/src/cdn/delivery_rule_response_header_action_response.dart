@@ -8,6 +8,7 @@ class DeliveryRuleResponseHeaderActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'ModifyResponseHeader'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the action.
   final pulumi.Input<HeaderActionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleResponseHeaderActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<HeaderActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            HeaderActionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleResponseHeaderActionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleResponseHeaderActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleResponseHeaderActionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (HeaderActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        HeaderActionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

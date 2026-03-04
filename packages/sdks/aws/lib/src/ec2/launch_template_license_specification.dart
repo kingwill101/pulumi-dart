@@ -8,9 +8,7 @@ class LaunchTemplateLicenseSpecification {
 
   /// Creates a new [LaunchTemplateLicenseSpecification].
   /// [licenseConfigurationArn] ARN of the license configuration.
-  LaunchTemplateLicenseSpecification({
-    required this.licenseConfigurationArn,
-  });
+  LaunchTemplateLicenseSpecification({required this.licenseConfigurationArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class LaunchTemplateLicenseSpecification {
 
   factory LaunchTemplateLicenseSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateLicenseSpecification(
-      licenseConfigurationArn: (map['licenseConfigurationArn'] as String).input(),
+      licenseConfigurationArn: pulumi.Input.fromValue(
+        map['licenseConfigurationArn'] as String,
+      ),
     );
   }
 }
-

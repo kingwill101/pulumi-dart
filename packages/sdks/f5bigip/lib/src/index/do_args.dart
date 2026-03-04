@@ -10,20 +10,27 @@ class DoArgs {
   /// IP Address of BIGIP Host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   final pulumi.Input<String>? bigipAddress;
+
   /// Password of  BIGIP host to be used for this resource
   final pulumi.Input<String>? bigipPassword;
+
   /// Port number of BIGIP host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   final pulumi.Input<String>? bigipPort;
+
   /// Enable to use an external authentication source (LDAP, TACACS, etc)
   final pulumi.Input<bool>? bigipTokenAuth;
+
   /// UserName of BIGIP host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   final pulumi.Input<String>? bigipUser;
+
   /// Name of the of the Declarative DO JSON file
   final pulumi.Input<String> doJson;
+
   /// unique identifier for DO resource
   final pulumi.Input<String>? tenantName;
+
   /// DO json
   final pulumi.Input<int>? timeout;
 
@@ -62,15 +69,42 @@ class DoArgs {
 
   factory DoArgs.fromMap(Map<String, dynamic> map) {
     return DoArgs(
-      bigipAddress: map['bigipAddress'] == null ? null : (map['bigipAddress']! as String).input(),
-      bigipPassword: map['bigipPassword'] == null ? null : (map['bigipPassword']! as String).input(),
-      bigipPort: map['bigipPort'] == null ? null : (map['bigipPort']! as String).input(),
-      bigipTokenAuth: map['bigipTokenAuth'] == null ? null : (map['bigipTokenAuth']! as bool).input(),
-      bigipUser: map['bigipUser'] == null ? null : (map['bigipUser']! as String).input(),
-      doJson: (map['doJson'] as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      bigipAddress: (() {
+        final guardedValue = map['bigipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigipPassword: (() {
+        final guardedValue = map['bigipPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigipPort: (() {
+        final guardedValue = map['bigipPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigipTokenAuth: (() {
+        final guardedValue = map['bigipTokenAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      bigipUser: (() {
+        final guardedValue = map['bigipUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      doJson: pulumi.Input.fromValue(map['doJson'] as String),
+      tenantName: (() {
+        final guardedValue = map['tenantName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

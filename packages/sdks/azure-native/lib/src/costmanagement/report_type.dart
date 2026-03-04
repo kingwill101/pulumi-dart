@@ -2,16 +2,15 @@
 enum ReportType {
   valueUsage("Usage");
 
-  const ReportType(this.value);
-  final String value;
+  const ReportType(this.wireValue);
+  final String wireValue;
 
   static ReportType fromValue(String value) {
     for (final item in ReportType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportType value: $value');
   }
 }
-

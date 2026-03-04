@@ -5,16 +5,15 @@ enum IncidentSeverity {
   valueLow("Low"),
   valueInformational("Informational");
 
-  const IncidentSeverity(this.value);
-  final String value;
+  const IncidentSeverity(this.wireValue);
+  final String wireValue;
 
   static IncidentSeverity fromValue(String value) {
     for (final item in IncidentSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentSeverity value: $value');
   }
 }
-

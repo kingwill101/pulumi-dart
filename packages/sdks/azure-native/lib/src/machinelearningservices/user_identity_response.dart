@@ -10,20 +10,15 @@ class UserIdentityResponse {
 
   /// Creates a new [UserIdentityResponse].
   /// [identityType] Enum to determine identity framework.
-  UserIdentityResponse({
-    required this.identityType,
-  });
+  UserIdentityResponse({required this.identityType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identityType': identityType,
-    };
+    return <String, dynamic>{'identityType': identityType};
   }
 
   factory UserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityResponse(
-      identityType: (map['identityType'] as String).input(),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
     );
   }
 }
-

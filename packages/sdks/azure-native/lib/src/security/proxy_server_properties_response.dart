@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyServerPropertiesResponse {
   /// Proxy server IP
   final pulumi.Input<String>? ip;
+
   /// Proxy server port
   final pulumi.Input<String>? port;
 
   /// Creates a new [ProxyServerPropertiesResponse].
   /// [ip] Proxy server IP
   /// [port] Proxy server port
-  ProxyServerPropertiesResponse({
-    this.ip,
-    this.port,
-  });
+  ProxyServerPropertiesResponse({this.ip, this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ?ip,
-      'port': ?port,
-    };
+    return <String, dynamic>{'ip': ?ip, 'port': ?port};
   }
 
   factory ProxyServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProxyServerPropertiesResponse(
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

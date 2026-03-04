@@ -1882,28 +1882,36 @@ class CxTool extends pulumi.CustomResource {
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolConnectorSpec?> connectorSpec;
+
   /// Data store search tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolDataStoreSpec?> dataStoreSpec;
+
   /// High level description of the Tool and its usage.
   late final pulumi.Output<String> description;
+
   /// The human-readable name of the tool, unique within the agent.
   late final pulumi.Output<String> displayName;
+
   /// Client side executed function specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolFunctionSpec?> functionSpec;
+
   /// The unique identifier of the Tool.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/tools/&lt;Tool ID&gt;.
   late final pulumi.Output<String> name;
+
   /// OpenAPI specification of the Tool.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolOpenApiSpec?> openApiSpec;
+
   /// The agent to create a Tool for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
+
   /// The tool type.
   late final pulumi.Output<String> toolType;
 
@@ -1911,25 +1919,22 @@ class CxTool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [CxTool]. {@macro pulumi_diagflow_cx_tool_cx_tool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  CxTool(
-    String name, {
-    CxToolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:diagflow/cxTool:CxTool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
-    this.dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
+  CxTool(String name, {CxToolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:diagflow/cxTool:CxTool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
+    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
     this.name = registerOutput<String>('name');
-    this.openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
-    this.parent = registerOutput<String?>('parent');
-    this.toolType = registerOutput<String>('toolType');
+    openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
+    parent = registerOutput<String?>('parent');
+    toolType = registerOutput<String>('toolType');
   }
 
   /// Gets an existing [CxTool] resource's state with the given [name] and [id].
@@ -1950,19 +1955,19 @@ class CxTool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxTool:CxTool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
-    this.dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
+         'gcp:diagflow/cxTool:CxTool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
+    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
     this.name = registerOutput<String>('name');
-    this.openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
-    this.parent = registerOutput<String?>('parent');
-    this.toolType = registerOutput<String>('toolType');
+    openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
+    parent = registerOutput<String?>('parent');
+    toolType = registerOutput<String>('toolType');
   }
 }

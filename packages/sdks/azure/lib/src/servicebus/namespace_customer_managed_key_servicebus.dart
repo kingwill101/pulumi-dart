@@ -4,9 +4,9 @@ import 'namespace_customer_managed_key_state.dart';
 
 /// Manages a Service Bus Namespace Customer Managed Key.
 ///
-/// !> **Note:** It is not possible to remove the Customer Managed Key from the Service Bus Namespace once it's been added. To remove the Customer Managed Key, the parent Service Bus Namespace must be deleted and recreated.
+/// !&gt; **Note:** It is not possible to remove the Customer Managed Key from the Service Bus Namespace once it's been added. To remove the Customer Managed Key, the parent Service Bus Namespace must be deleted and recreated.
 ///
-/// > **Note:** This resource should only be used to create a Customer Managed Key for Service Bus Namespaces with System Assigned identities. The `customer_managed_key` block in `azure.servicebus.Namespace` should be used to create a Customer Managed Key for a Service Bus Namespace with a User Assigned identity.
+/// &gt; **Note:** This resource should only be used to create a Customer Managed Key for Service Bus Namespaces with System Assigned identities. The `customer_managed_key` block in `azure.servicebus.Namespace` should be used to create a Customer Managed Key for a Service Bus Namespace with a User Assigned identity.
 ///
 /// ## Example Usage
 ///
@@ -634,7 +634,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -649,8 +649,10 @@ import 'namespace_customer_managed_key_state.dart';
 class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
   /// Used to specify whether enable Infrastructure Encryption. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   late final pulumi.Output<String> keyVaultKeyId;
+
   /// The ID of the Service Bus namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceId;
 
@@ -663,14 +665,16 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
     NamespaceCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.namespaceId = registerOutput<String>('namespaceId');
+         'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    namespaceId = registerOutput<String>('namespaceId');
   }
 
   /// Gets an existing [NamespaceCustomerManagedKeyServicebus] resource's state with the given [name] and [id].
@@ -691,13 +695,15 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.namespaceId = registerOutput<String>('namespaceId');
+         'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    namespaceId = registerOutput<String>('namespaceId');
   }
 }

@@ -1,0 +1,6 @@
+name: awsx-dart-ts-vpc-get-default-vpc
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Fetch default VPC details with AWSX in Dart.

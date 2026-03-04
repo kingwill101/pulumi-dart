@@ -9,20 +9,15 @@ class NodeGroupAffinity {
 
   /// Creates a new [NodeGroupAffinity].
   /// [nodeGroupUri] The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/nodeGroups/node-group-1 projects/[project_id]/zones/[zone]/nodeGroups/node-group-1 node-group-1
-  NodeGroupAffinity({
-    required this.nodeGroupUri,
-  });
+  NodeGroupAffinity({required this.nodeGroupUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeGroupUri': nodeGroupUri,
-    };
+    return <String, dynamic>{'nodeGroupUri': nodeGroupUri};
   }
 
   factory NodeGroupAffinity.fromMap(Map<String, dynamic> map) {
     return NodeGroupAffinity(
-      nodeGroupUri: (map['nodeGroupUri'] as String).input(),
+      nodeGroupUri: pulumi.Input.fromValue(map['nodeGroupUri'] as String),
     );
   }
 }
-

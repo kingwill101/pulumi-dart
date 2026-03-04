@@ -152,14 +152,19 @@ import 'sql_resource_sql_role_assignment_args.dart';
 class SqlResourceSqlRoleAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription.
   late final pulumi.Output<String?> principalId;
+
   /// The unique identifier for the associated Role Definition.
   late final pulumi.Output<String?> roleDefinitionId;
+
   /// The data plane resource path for which access is being granted through this Role Assignment.
   late final pulumi.Output<String?> scope;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -172,16 +177,16 @@ class SqlResourceSqlRoleAssignment extends pulumi.CustomResource {
     SqlResourceSqlRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:SqlResourceSqlRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cosmosdb:SqlResourceSqlRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String?>('principalId');
-    this.roleDefinitionId = registerOutput<String?>('roleDefinitionId');
-    this.scope = registerOutput<String?>('scope');
-    this.type = registerOutput<String>('type');
+    principalId = registerOutput<String?>('principalId');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    scope = registerOutput<String?>('scope');
+    type = registerOutput<String>('type');
   }
 }

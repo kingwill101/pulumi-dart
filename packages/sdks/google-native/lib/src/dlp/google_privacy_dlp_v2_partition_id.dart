@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2PartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   final pulumi.Input<String>? namespaceId;
+
   /// The ID of the project to which the entities belong.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GooglePrivacyDlpV2PartitionId].
   /// [namespaceId] If not empty, the ID of the namespace to which the entities belong.
   /// [project] The ID of the project to which the entities belong.
-  GooglePrivacyDlpV2PartitionId({
-    this.namespaceId,
-    this.project,
-  });
+  GooglePrivacyDlpV2PartitionId({this.namespaceId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespaceId': ?namespaceId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'namespaceId': ?namespaceId, 'project': ?project};
   }
 
   factory GooglePrivacyDlpV2PartitionId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PartitionId(
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

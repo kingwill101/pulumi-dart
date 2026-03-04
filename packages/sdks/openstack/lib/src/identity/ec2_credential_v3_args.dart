@@ -12,10 +12,12 @@ class Ec2CredentialV3Args {
   /// be scoped to. Only administrative users can specify a project ID different
   /// from the current auth scope.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new EC2 credential.
   final pulumi.Input<String>? region;
+
   /// The ID of the user the EC2 credential is created for.
   /// Only administrative users can specify a user ID different from the current
   /// auth scope.
@@ -25,11 +27,7 @@ class Ec2CredentialV3Args {
   /// [projectId] The ID of the project the EC2 credential is created
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [userId] The ID of the user the EC2 credential is created for.
-  Ec2CredentialV3Args({
-    this.projectId,
-    this.region,
-    this.userId,
-  });
+  Ec2CredentialV3Args({this.projectId, this.region, this.userId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +39,21 @@ class Ec2CredentialV3Args {
 
   factory Ec2CredentialV3Args.fromMap(Map<String, dynamic> map) {
     return Ec2CredentialV3Args(
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

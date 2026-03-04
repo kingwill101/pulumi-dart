@@ -12,26 +12,41 @@ import 'instance_refresh_desired_configuration_launch_template_override.dart';
 class InstanceRefreshArgs {
   /// The duration of the pause when the task reaches a checkpoint. Unit: minutes.
   final pulumi.Input<int>? checkpointPauseTime;
+
   /// The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
   final pulumi.Input<List<InstanceRefreshCheckpoint>>? checkpoints;
+
   /// The list of containers in the instance. See `desired_configuration_containers` below for details.
-  final pulumi.Input<List<InstanceRefreshDesiredConfigurationContainer>>? desiredConfigurationContainers;
+  final pulumi.Input<List<InstanceRefreshDesiredConfigurationContainer>>?
+  desiredConfigurationContainers;
+
   /// The ID of the image file. This is the image resource used for automatic instance creation.
   final pulumi.Input<String>? desiredConfigurationImageId;
+
   /// The ID of the launch template. The scaling group uses this template to obtain launch configuration information.
   final pulumi.Input<String>? desiredConfigurationLaunchTemplateId;
+
   /// The instance type information in the launch template overrides. See `desired_configuration_launch_template_overrides` below for details.
-  final pulumi.Input<List<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>>? desiredConfigurationLaunchTemplateOverrides;
+  final pulumi.Input<
+    List<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>
+  >?
+  desiredConfigurationLaunchTemplateOverrides;
+
   /// The version of the launch template.
   final pulumi.Input<String>? desiredConfigurationLaunchTemplateVersion;
+
   /// The percentage by which the number of instances in the scaling group can exceed the group's capacity during the instance refresh.
   final pulumi.Input<int>? maxHealthyPercentage;
+
   /// The percentage of instances that must be healthy in the scaling group during the instance refresh. The value is a percentage of the scaling group's capacity.
   final pulumi.Input<int>? minHealthyPercentage;
+
   /// The ID of the scaling group.
   final pulumi.Input<String> scalingGroupId;
+
   /// Indicates whether to skip instances that match the desired configuration.
   final pulumi.Input<bool>? skipMatching;
+
   /// The current status of the instance refresh task. Possible values:
   /// - Pending: The instance refresh task is created and waiting to be scheduled.
   /// - InProgress: The instance refresh task is in progress.
@@ -77,12 +92,47 @@ class InstanceRefreshArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkpointPauseTime': ?checkpointPauseTime,
-      'checkpoints': ?pulumi.Input.mapOptionalInputValue<List<InstanceRefreshCheckpoint>, List<Map<String, dynamic>>>(checkpoints, (value) => pulumi.Input.encodeList<InstanceRefreshCheckpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'desiredConfigurationContainers': ?pulumi.Input.mapOptionalInputValue<List<InstanceRefreshDesiredConfigurationContainer>, List<Map<String, dynamic>>>(desiredConfigurationContainers, (value) => pulumi.Input.encodeList<InstanceRefreshDesiredConfigurationContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'checkpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceRefreshCheckpoint>,
+            List<Map<String, dynamic>>
+          >(
+            checkpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceRefreshCheckpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'desiredConfigurationContainers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceRefreshDesiredConfigurationContainer>,
+            List<Map<String, dynamic>>
+          >(
+            desiredConfigurationContainers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceRefreshDesiredConfigurationContainer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'desiredConfigurationImageId': ?desiredConfigurationImageId,
-      'desiredConfigurationLaunchTemplateId': ?desiredConfigurationLaunchTemplateId,
-      'desiredConfigurationLaunchTemplateOverrides': ?pulumi.Input.mapOptionalInputValue<List<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>, List<Map<String, dynamic>>>(desiredConfigurationLaunchTemplateOverrides, (value) => pulumi.Input.encodeList<InstanceRefreshDesiredConfigurationLaunchTemplateOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'desiredConfigurationLaunchTemplateVersion': ?desiredConfigurationLaunchTemplateVersion,
+      'desiredConfigurationLaunchTemplateId':
+          ?desiredConfigurationLaunchTemplateId,
+      'desiredConfigurationLaunchTemplateOverrides':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>,
+            List<Map<String, dynamic>>
+          >(
+            desiredConfigurationLaunchTemplateOverrides,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceRefreshDesiredConfigurationLaunchTemplateOverride,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'desiredConfigurationLaunchTemplateVersion':
+          ?desiredConfigurationLaunchTemplateVersion,
       'maxHealthyPercentage': ?maxHealthyPercentage,
       'minHealthyPercentage': ?minHealthyPercentage,
       'scalingGroupId': scalingGroupId,
@@ -93,19 +143,86 @@ class InstanceRefreshArgs {
 
   factory InstanceRefreshArgs.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshArgs(
-      checkpointPauseTime: map['checkpointPauseTime'] == null ? null : (map['checkpointPauseTime']! as int).input(),
-      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshCheckpoint>(map['checkpoints']!, (value) => InstanceRefreshCheckpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationContainers: map['desiredConfigurationContainers'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainer>(map['desiredConfigurationContainers']!, (value) => InstanceRefreshDesiredConfigurationContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationImageId: map['desiredConfigurationImageId'] == null ? null : (map['desiredConfigurationImageId']! as String).input(),
-      desiredConfigurationLaunchTemplateId: map['desiredConfigurationLaunchTemplateId'] == null ? null : (map['desiredConfigurationLaunchTemplateId']! as String).input(),
-      desiredConfigurationLaunchTemplateOverrides: map['desiredConfigurationLaunchTemplateOverrides'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>(map['desiredConfigurationLaunchTemplateOverrides']!, (value) => InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationLaunchTemplateVersion: map['desiredConfigurationLaunchTemplateVersion'] == null ? null : (map['desiredConfigurationLaunchTemplateVersion']! as String).input(),
-      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage']! as int).input(),
-      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage']! as int).input(),
-      scalingGroupId: (map['scalingGroupId'] as String).input(),
-      skipMatching: map['skipMatching'] == null ? null : (map['skipMatching']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      checkpointPauseTime: (() {
+        final guardedValue = map['checkpointPauseTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      checkpoints: (() {
+        final guardedValue = map['checkpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceRefreshCheckpoint>(
+            guardedValue,
+            (value) => InstanceRefreshCheckpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      desiredConfigurationContainers: (() {
+        final guardedValue = map['desiredConfigurationContainers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainer>(
+            guardedValue,
+            (value) => InstanceRefreshDesiredConfigurationContainer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      desiredConfigurationImageId: (() {
+        final guardedValue = map['desiredConfigurationImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desiredConfigurationLaunchTemplateId: (() {
+        final guardedValue = map['desiredConfigurationLaunchTemplateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desiredConfigurationLaunchTemplateOverrides: (() {
+        final guardedValue = map['desiredConfigurationLaunchTemplateOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            InstanceRefreshDesiredConfigurationLaunchTemplateOverride
+          >(
+            guardedValue,
+            (value) =>
+                InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      desiredConfigurationLaunchTemplateVersion: (() {
+        final guardedValue = map['desiredConfigurationLaunchTemplateVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxHealthyPercentage: (() {
+        final guardedValue = map['maxHealthyPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minHealthyPercentage: (() {
+        final guardedValue = map['minHealthyPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
+      skipMatching: (() {
+        final guardedValue = map['skipMatching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

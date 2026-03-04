@@ -9,20 +9,19 @@ class LanguageExtensionResponse {
 
   /// Creates a new [LanguageExtensionResponse].
   /// [languageExtensionName] The language extension name.
-  LanguageExtensionResponse({
-    this.languageExtensionName,
-  });
+  LanguageExtensionResponse({this.languageExtensionName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'languageExtensionName': ?languageExtensionName,
-    };
+    return <String, dynamic>{'languageExtensionName': ?languageExtensionName};
   }
 
   factory LanguageExtensionResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionResponse(
-      languageExtensionName: map['languageExtensionName'] == null ? null : (map['languageExtensionName']! as String).input(),
+      languageExtensionName: (() {
+        final guardedValue = map['languageExtensionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

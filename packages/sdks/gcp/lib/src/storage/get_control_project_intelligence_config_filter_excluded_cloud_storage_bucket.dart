@@ -13,15 +13,16 @@ class GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucket {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketIdRegexes': bucketIdRegexes,
-    };
+    return <String, dynamic>{'bucketIdRegexes': bucketIdRegexes};
   }
 
-  factory GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap(Map<String, dynamic> map) {
+  factory GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucket(
-      bucketIdRegexes: ((map['bucketIdRegexes'] as List).cast<String>()).input(),
+      bucketIdRegexes: pulumi.Input.fromValue(
+        (map['bucketIdRegexes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

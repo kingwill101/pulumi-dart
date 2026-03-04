@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserGroupsArgs {
   /// A list of User Group self IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// Specify the New Group of the Bastion Host of Instance Id.
   final pulumi.Input<String> instanceId;
+
   /// A regex string to filter results by User Group name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Specify the New Group Name. Supports up to 128 Characters.
   final pulumi.Input<String>? userGroupName;
 
@@ -44,12 +48,27 @@ class GetUserGroupsArgs {
 
   factory GetUserGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      userGroupName: map['userGroupName'] == null ? null : (map['userGroupName']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userGroupName: (() {
+        final guardedValue = map['userGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

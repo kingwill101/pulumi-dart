@@ -8,13 +8,17 @@ import 'get_configuration_protected_file.dart';
 class GetConfigurationResult {
   /// A `config_file` block as defined below.
   final List<GetConfigurationConfigFile> configFiles;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String nginxDeploymentId;
+
   /// The package data for this configuration.
   final String packageData;
+
   /// A `protected_file` block as defined below.
   final List<GetConfigurationProtectedFile> protectedFiles;
+
   /// The root file path of this Nginx Configuration.
   final String rootFile;
 
@@ -36,24 +40,41 @@ class GetConfigurationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configFiles': pulumi.Input.encodeList<GetConfigurationConfigFile, Map<String, dynamic>>(configFiles, (value) => value.toMap()),
+      'configFiles':
+          pulumi.Input.encodeList<
+            GetConfigurationConfigFile,
+            Map<String, dynamic>
+          >(configFiles, (value) => value.toMap()),
       'id': id,
       'nginxDeploymentId': nginxDeploymentId,
       'packageData': packageData,
-      'protectedFiles': pulumi.Input.encodeList<GetConfigurationProtectedFile, Map<String, dynamic>>(protectedFiles, (value) => value.toMap()),
+      'protectedFiles':
+          pulumi.Input.encodeList<
+            GetConfigurationProtectedFile,
+            Map<String, dynamic>
+          >(protectedFiles, (value) => value.toMap()),
       'rootFile': rootFile,
     };
   }
 
   factory GetConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationResult(
-      configFiles: pulumi.Input.decodeList<GetConfigurationConfigFile>(map['configFiles'], (value) => GetConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>())),
+      configFiles: pulumi.Input.decodeList<GetConfigurationConfigFile>(
+        map['configFiles']!,
+        (value) => GetConfigurationConfigFile.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       nginxDeploymentId: map['nginxDeploymentId'] as String,
       packageData: map['packageData'] as String,
-      protectedFiles: pulumi.Input.decodeList<GetConfigurationProtectedFile>(map['protectedFiles'], (value) => GetConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>())),
+      protectedFiles: pulumi.Input.decodeList<GetConfigurationProtectedFile>(
+        map['protectedFiles']!,
+        (value) => GetConfigurationProtectedFile.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       rootFile: map['rootFile'] as String,
     );
   }
 }
-

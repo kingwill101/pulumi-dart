@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerParametersResponse {
   /// When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
   final pulumi.Input<String>? endBy;
+
   /// Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
   final pulumi.Input<int>? interval;
+
   /// Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
   final pulumi.Input<String>? intervalUnit;
+
   /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
   final pulumi.Input<String>? startFrom;
+
   /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
   final pulumi.Input<String>? startOn;
 
@@ -41,12 +45,31 @@ class TriggerParametersResponse {
 
   factory TriggerParametersResponse.fromMap(Map<String, dynamic> map) {
     return TriggerParametersResponse(
-      endBy: map['endBy'] == null ? null : (map['endBy']! as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
-      intervalUnit: map['intervalUnit'] == null ? null : (map['intervalUnit']! as String).input(),
-      startFrom: map['startFrom'] == null ? null : (map['startFrom']! as String).input(),
-      startOn: map['startOn'] == null ? null : (map['startOn']! as String).input(),
+      endBy: (() {
+        final guardedValue = map['endBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      intervalUnit: (() {
+        final guardedValue = map['intervalUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startFrom: (() {
+        final guardedValue = map['startFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startOn: (() {
+        final guardedValue = map['startOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

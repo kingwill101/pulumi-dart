@@ -136,7 +136,7 @@ import 'get_registry_token_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2025-07-01
@@ -265,7 +265,7 @@ Future<GetClusterNodePoolResult> getClusterNodePool(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2024-04-01
@@ -406,7 +406,7 @@ Future<GetFleetManagerResult> getFleetManager(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerInstance` - 2025-09-01
@@ -525,7 +525,7 @@ Future<GetGroupResult> getGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2025-07-01
@@ -644,7 +644,7 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2025-07-01
@@ -773,7 +773,7 @@ Future<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2019-08-01
@@ -902,7 +902,7 @@ Future<GetKubernetesServiceVersionsResult> getKubernetesServiceVersions(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01
@@ -941,7 +941,7 @@ Future<GetRegistryResult> getRegistry(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2023-07-01
@@ -1076,7 +1076,7 @@ Future<GetRegistryCacheRuleResult> getRegistryCacheRule(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01
@@ -1211,7 +1211,7 @@ Future<GetRegistryScopeMapResult> getRegistryScopeMap(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01

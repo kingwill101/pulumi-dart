@@ -8,20 +8,19 @@ class ServiceMeshExtraConfiguration {
 
   /// Creates a new [ServiceMeshExtraConfiguration].
   /// [crAggregationEnabled] Whether the data plane KubeAPI access capability is enabled.
-  ServiceMeshExtraConfiguration({
-    this.crAggregationEnabled,
-  });
+  ServiceMeshExtraConfiguration({this.crAggregationEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'crAggregationEnabled': ?crAggregationEnabled,
-    };
+    return <String, dynamic>{'crAggregationEnabled': ?crAggregationEnabled};
   }
 
   factory ServiceMeshExtraConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceMeshExtraConfiguration(
-      crAggregationEnabled: map['crAggregationEnabled'] == null ? null : (map['crAggregationEnabled']! as bool).input(),
+      crAggregationEnabled: (() {
+        final guardedValue = map['crAggregationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

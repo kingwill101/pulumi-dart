@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse {
   /// The Apple developer key ID (10-character string).
   final pulumi.Input<String> keyId;
+
   /// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
   final pulumi.Input<String> privateKey;
+
   /// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
   final pulumi.Input<String> teamId;
 
@@ -29,12 +31,13 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse {
     };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse(
-      keyId: (map['keyId'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      teamId: (map['teamId'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      teamId: pulumi.Input.fromValue(map['teamId'] as String),
     );
   }
 }
-

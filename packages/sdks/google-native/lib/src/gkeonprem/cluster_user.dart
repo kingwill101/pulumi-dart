@@ -9,20 +9,15 @@ class ClusterUser {
 
   /// Creates a new [ClusterUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  ClusterUser({
-    required this.username,
-  });
+  ClusterUser({required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': username,
-    };
+    return <String, dynamic>{'username': username};
   }
 
   factory ClusterUser.fromMap(Map<String, dynamic> map) {
     return ClusterUser(
-      username: (map['username'] as String).input(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

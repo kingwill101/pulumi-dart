@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceArgs {
   /// Name of instance.
   final pulumi.Input<String> instanceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instanceName: (map['instanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

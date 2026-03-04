@@ -349,14 +349,14 @@ import 'subnet_network_security_group_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
 ///
 /// ## Import
 ///
-/// Subnet `<->` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g.
+/// Subnet `&lt;-&gt;` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/subnets/mysubnet1
@@ -364,6 +364,7 @@ import 'subnet_network_security_group_association_state.dart';
 class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
   /// The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkSecurityGroupId;
+
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
 
@@ -376,13 +377,13 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     SubnetNetworkSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [SubnetNetworkSecurityGroupAssociation] resource's state with the given [name] and [id].
@@ -403,12 +404,12 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

@@ -5,37 +5,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse {
   /// Number of applied changes
   final pulumi.Input<double> appliedChanges;
+
   /// Number of cdc deletes
   final pulumi.Input<double> cdcDeleteCounter;
+
   /// Number of cdc inserts
   final pulumi.Input<double> cdcInsertCounter;
+
   /// Number of cdc updates
   final pulumi.Input<double> cdcUpdateCounter;
+
   /// Name of the database
   final pulumi.Input<String> databaseName;
+
   /// Migration end time
   final pulumi.Input<String> endedOn;
+
   /// Number of tables completed in full load
   final pulumi.Input<double> fullLoadCompletedTables;
+
   /// Number of tables errored in full load
   final pulumi.Input<double> fullLoadErroredTables;
+
   /// Number of tables loading in full load
   final pulumi.Input<double> fullLoadLoadingTables;
+
   /// Number of tables queued in full load
   final pulumi.Input<double> fullLoadQueuedTables;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Number of incoming changes
   final pulumi.Input<double> incomingChanges;
+
   /// Indicates if initial load (full load) has been completed
   final pulumi.Input<bool> initializationCompleted;
+
   /// CDC apply latency
   final pulumi.Input<double> latency;
+
   /// Migration state that this database is in
   final pulumi.Input<String> migrationState;
+
   /// Result type
   /// Expected value is 'DatabaseLevelOutput'.
   final pulumi.Input<String> resultType;
+
   /// Migration start time
   final pulumi.Input<String> startedOn;
 
@@ -99,26 +115,43 @@ class MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse {
     };
   }
 
-  factory MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse(
-      appliedChanges: (map['appliedChanges'] as double).input(),
-      cdcDeleteCounter: (map['cdcDeleteCounter'] as double).input(),
-      cdcInsertCounter: (map['cdcInsertCounter'] as double).input(),
-      cdcUpdateCounter: (map['cdcUpdateCounter'] as double).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      endedOn: (map['endedOn'] as String).input(),
-      fullLoadCompletedTables: (map['fullLoadCompletedTables'] as double).input(),
-      fullLoadErroredTables: (map['fullLoadErroredTables'] as double).input(),
-      fullLoadLoadingTables: (map['fullLoadLoadingTables'] as double).input(),
-      fullLoadQueuedTables: (map['fullLoadQueuedTables'] as double).input(),
-      id: (map['id'] as String).input(),
-      incomingChanges: (map['incomingChanges'] as double).input(),
-      initializationCompleted: (map['initializationCompleted'] as bool).input(),
-      latency: (map['latency'] as double).input(),
-      migrationState: (map['migrationState'] as String).input(),
-      resultType: (map['resultType'] as String).input(),
-      startedOn: (map['startedOn'] as String).input(),
+      appliedChanges: pulumi.Input.fromValue(map['appliedChanges'] as double),
+      cdcDeleteCounter: pulumi.Input.fromValue(
+        map['cdcDeleteCounter'] as double,
+      ),
+      cdcInsertCounter: pulumi.Input.fromValue(
+        map['cdcInsertCounter'] as double,
+      ),
+      cdcUpdateCounter: pulumi.Input.fromValue(
+        map['cdcUpdateCounter'] as double,
+      ),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
+      fullLoadCompletedTables: pulumi.Input.fromValue(
+        map['fullLoadCompletedTables'] as double,
+      ),
+      fullLoadErroredTables: pulumi.Input.fromValue(
+        map['fullLoadErroredTables'] as double,
+      ),
+      fullLoadLoadingTables: pulumi.Input.fromValue(
+        map['fullLoadLoadingTables'] as double,
+      ),
+      fullLoadQueuedTables: pulumi.Input.fromValue(
+        map['fullLoadQueuedTables'] as double,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      incomingChanges: pulumi.Input.fromValue(map['incomingChanges'] as double),
+      initializationCompleted: pulumi.Input.fromValue(
+        map['initializationCompleted'] as bool,
+      ),
+      latency: pulumi.Input.fromValue(map['latency'] as double),
+      migrationState: pulumi.Input.fromValue(map['migrationState'] as String),
+      resultType: pulumi.Input.fromValue(map['resultType'] as String),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
     );
   }
 }
-

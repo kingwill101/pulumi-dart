@@ -10,20 +10,29 @@ class ActionDefinition {
 
   /// Creates a new [ActionDefinition].
   /// [publishMetricAction] Property publishMetricAction
-  ActionDefinition({
-    this.publishMetricAction,
-  });
+  ActionDefinition({this.publishMetricAction});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publishMetricAction': ?pulumi.Input.mapOptionalInputValue<PublishMetricAction, Map<String, dynamic>>(publishMetricAction, (value) => value.toMap()),
+      'publishMetricAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            PublishMetricAction,
+            Map<String, dynamic>
+          >(publishMetricAction, (value) => value.toMap()),
     };
   }
 
   factory ActionDefinition.fromMap(Map<String, dynamic> map) {
     return ActionDefinition(
-      publishMetricAction: map['publishMetricAction'] == null ? null : (PublishMetricAction.fromMap((map['publishMetricAction']! as Map).cast<String, dynamic>())).input(),
+      publishMetricAction: (() {
+        final guardedValue = map['publishMetricAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublishMetricAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

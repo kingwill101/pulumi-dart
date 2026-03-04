@@ -2226,40 +2226,58 @@ import 'trigger_properties_response.dart';
 class Task extends pulumi.CustomResource {
   /// The machine configuration of the run agent.
   late final pulumi.Output<AgentPropertiesResponse?> agentConfiguration;
+
   /// The dedicated agent pool for the task.
   late final pulumi.Output<String?> agentPoolName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of task.
   late final pulumi.Output<String> creationDate;
+
   /// The properties that describes a set of credentials that will be used when this run is invoked.
   late final pulumi.Output<CredentialsResponse?> credentials;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The value of this property indicates whether the task resource is system task or not.
   late final pulumi.Output<bool?> isSystemTask;
+
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
+
   /// The template that describes the repository and tag information for run log artifact.
   late final pulumi.Output<String?> logTemplate;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The platform properties against which the run has to happen.
   late final pulumi.Output<PlatformPropertiesResponse?> platform;
+
   /// The provisioning state of the task.
   late final pulumi.Output<String> provisioningState;
+
   /// The current status of task.
   late final pulumi.Output<String?> status;
+
   /// The properties of a task step.
   late final pulumi.Output<DockerBuildStepResponse?> step;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Run timeout in seconds.
   late final pulumi.Output<int?> timeout;
+
   /// The properties that describe all triggers for the task.
   late final pulumi.Output<TriggerPropertiesResponse?> trigger;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -2267,34 +2285,33 @@ class Task extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Task]. {@macro pulumi_containerregistry_task_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Task(
-    String name, {
-    TaskArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:containerregistry:Task',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentConfiguration = registerOutput<AgentPropertiesResponse?>('agentConfiguration');
-    this.agentPoolName = registerOutput<String?>('agentPoolName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.credentials = registerOutput<CredentialsResponse?>('credentials');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.isSystemTask = registerOutput<bool?>('isSystemTask');
-    this.location = registerOutput<String>('location');
-    this.logTemplate = registerOutput<String?>('logTemplate');
+  Task(String name, {TaskArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:containerregistry:Task',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    agentConfiguration = registerOutput<AgentPropertiesResponse?>(
+      'agentConfiguration',
+    );
+    agentPoolName = registerOutput<String?>('agentPoolName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    credentials = registerOutput<CredentialsResponse?>('credentials');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    isSystemTask = registerOutput<bool?>('isSystemTask');
+    location = registerOutput<String>('location');
+    logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<PlatformPropertiesResponse?>('platform');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String?>('status');
-    this.step = registerOutput<DockerBuildStepResponse?>('step');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<int?>('timeout');
-    this.trigger = registerOutput<TriggerPropertiesResponse?>('trigger');
-    this.type = registerOutput<String>('type');
+    platform = registerOutput<PlatformPropertiesResponse?>('platform');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String?>('status');
+    step = registerOutput<DockerBuildStepResponse?>('step');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<int?>('timeout');
+    trigger = registerOutput<TriggerPropertiesResponse?>('trigger');
+    type = registerOutput<String>('type');
   }
 }

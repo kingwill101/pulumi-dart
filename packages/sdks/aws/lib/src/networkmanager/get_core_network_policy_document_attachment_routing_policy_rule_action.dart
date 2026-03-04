@@ -18,10 +18,13 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap(Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction(
-      associateRoutingPolicies: ((map['associateRoutingPolicies'] as List).cast<String>()).input(),
+      associateRoutingPolicies: pulumi.Input.fromValue(
+        (map['associateRoutingPolicies'] as List).cast<String>(),
+      ),
     );
   }
 }
-

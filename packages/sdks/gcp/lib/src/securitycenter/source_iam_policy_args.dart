@@ -33,10 +33,9 @@ class SourceIamPolicyArgs {
 
   factory SourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyArgs(
-      organization: (map['organization'] as String).input(),
-      policyData: (map['policyData'] as String).input(),
-      source: (map['source'] as String).input(),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      policyData: pulumi.Input.fromValue(map['policyData'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

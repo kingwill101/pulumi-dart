@@ -25,12 +25,13 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
     };
   }
 
-  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecServiceDiscoveryDn(
-      hostname: (map['hostname'] as String).input(),
-      ipPreference: (map['ipPreference'] as String).input(),
-      responseType: (map['responseType'] as String).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      ipPreference: pulumi.Input.fromValue(map['ipPreference'] as String),
+      responseType: pulumi.Input.fromValue(map['responseType'] as String),
     );
   }
 }
-

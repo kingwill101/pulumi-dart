@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_tags_args.dart';
 import 'entity_tags_state.dart';
-import 'entity_tags_tag.dart';
 
 /// Use this resource to create, update, and delete tags for a New Relic One entity.
 ///
-/// > **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
-/// <br><br>
+/// &gt; **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
+/// &lt;br&gt;&lt;br&gt;
 /// Before upgrading to version 2.0.0 or later, it is recommended to upgrade to the most recent 1.x version of the provider and ensure that your environment successfully runs `pulumi preview` without unexpected changes.
 ///
 /// ## Example Usage
@@ -336,7 +335,7 @@ import 'entity_tags_tag.dart';
 /// ## Import
 ///
 /// New Relic One entity tags can be imported using a concatenated string of the format
-/// `<guid>`, e.g.
+/// `&lt;guid&gt;`, e.g.
 ///
 /// ```bash
 /// $ terraform import newrelic_entity_tags.foo MjUyMDUyOHxBUE18QVBRTElDQVRJT058MjE1MDM3Nzk1
@@ -344,8 +343,9 @@ import 'entity_tags_tag.dart';
 class EntityTags extends pulumi.CustomResource {
   /// The guid of the entity to tag.
   late final pulumi.Output<String> guid;
+
   /// A nested block that describes an entity tag. See Nested tag blocks below for details.
-  late final pulumi.Output<List<EntityTagsTag>> tags;
+  late final pulumi.Output<List<Map<String, dynamic>>> tags;
 
   /// Creates a new [EntityTags].
   /// [name] The Pulumi resource name.
@@ -356,13 +356,13 @@ class EntityTags extends pulumi.CustomResource {
     EntityTagsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/entityTags:EntityTags',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.guid = registerOutput<String>('guid');
-    this.tags = registerOutput<List<EntityTagsTag>>('tags');
+         'newrelic:index/entityTags:EntityTags',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    guid = registerOutput<String>('guid');
+    tags = registerOutput<List<Map<String, dynamic>>>('tags');
   }
 
   /// Gets an existing [EntityTags] resource's state with the given [name] and [id].
@@ -383,12 +383,12 @@ class EntityTags extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/entityTags:EntityTags',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.guid = registerOutput<String>('guid');
-    this.tags = registerOutput<List<EntityTagsTag>>('tags');
+         'newrelic:index/entityTags:EntityTags',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    guid = registerOutput<String>('guid');
+    tags = registerOutput<List<Map<String, dynamic>>>('tags');
   }
 }

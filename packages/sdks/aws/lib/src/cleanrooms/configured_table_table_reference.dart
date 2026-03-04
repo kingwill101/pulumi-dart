@@ -23,9 +23,8 @@ class ConfiguredTableTableReference {
 
   factory ConfiguredTableTableReference.fromMap(Map<String, dynamic> map) {
     return ConfiguredTableTableReference(
-      databaseName: (map['databaseName'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

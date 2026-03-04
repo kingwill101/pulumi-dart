@@ -10,38 +10,55 @@ import 'system_data_response.dart';
 class GetDatabaseMigrationsMongoToCosmosDbRUMongoResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// List of Mongo Collections to be migrated.
   final List<MongoMigrationCollectionResponse>? collectionList;
+
   /// Database migration end time.
   final String endedOn;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Expected value is 'MongoToCosmosDbMongo'.
   final String kind;
+
   /// Error details in case of migration failure.
   final ErrorInfoResponse migrationFailureError;
+
   /// ID for current migration operation.
   final String? migrationOperationId;
+
   /// Resource Id of the Migration Service.
   final String? migrationService;
+
   /// Migration status.
   final String migrationStatus;
+
   /// The name of the resource
   final String name;
+
   /// Error message for migration provisioning failure, if any.
   final String? provisioningError;
+
   /// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
   final String provisioningState;
+
   /// Resource Id of the target resource.
   final String? scope;
+
   /// Source Mongo connection details.
   final MongoConnectionInformationResponse? sourceMongoConnection;
+
   /// Database migration start time.
   final String startedOn;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Target Cosmos DB Mongo connection details.
   final MongoConnectionInformationResponse? targetMongoConnection;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -88,7 +105,14 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'collectionList': ?collectionList == null ? null : pulumi.Input.encodeList<MongoMigrationCollectionResponse, Map<String, dynamic>>(collectionList!, (value) => value.toMap()),
+      'collectionList': ?(() {
+        final guardedValue = collectionList;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          MongoMigrationCollectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'endedOn': endedOn,
       'id': id,
       'kind': kind,
@@ -100,35 +124,77 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoResult {
       'provisioningError': ?provisioningError,
       'provisioningState': provisioningState,
       'scope': ?scope,
-      'sourceMongoConnection': ?sourceMongoConnection == null ? null : sourceMongoConnection!.toMap(),
+      'sourceMongoConnection': ?sourceMongoConnection?.toMap(),
       'startedOn': startedOn,
       'systemData': systemData.toMap(),
-      'targetMongoConnection': ?targetMongoConnection == null ? null : targetMongoConnection!.toMap(),
+      'targetMongoConnection': ?targetMongoConnection?.toMap(),
       'type': type,
     };
   }
 
-  factory GetDatabaseMigrationsMongoToCosmosDbRUMongoResult.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMigrationsMongoToCosmosDbRUMongoResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMigrationsMongoToCosmosDbRUMongoResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      collectionList: map['collectionList'] == null ? null : pulumi.Input.decodeList<MongoMigrationCollectionResponse>(map['collectionList']!, (value) => MongoMigrationCollectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      collectionList: (() {
+        final guardedValue = map['collectionList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<MongoMigrationCollectionResponse>(
+          guardedValue,
+          (value) => MongoMigrationCollectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       endedOn: map['endedOn'] as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      migrationFailureError: ErrorInfoResponse.fromMap((map['migrationFailureError'] as Map).cast<String, dynamic>()),
-      migrationOperationId: map['migrationOperationId'] == null ? null : map['migrationOperationId']! as String,
-      migrationService: map['migrationService'] == null ? null : map['migrationService']! as String,
+      migrationFailureError: ErrorInfoResponse.fromMap(
+        (map['migrationFailureError']! as Map).cast<String, dynamic>(),
+      ),
+      migrationOperationId: (() {
+        final guardedValue = map['migrationOperationId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      migrationService: (() {
+        final guardedValue = map['migrationService'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       migrationStatus: map['migrationStatus'] as String,
       name: map['name'] as String,
-      provisioningError: map['provisioningError'] == null ? null : map['provisioningError']! as String,
+      provisioningError: (() {
+        final guardedValue = map['provisioningError'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] == null ? null : map['scope']! as String,
-      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : MongoConnectionInformationResponse.fromMap((map['sourceMongoConnection']! as Map).cast<String, dynamic>()),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sourceMongoConnection: (() {
+        final guardedValue = map['sourceMongoConnection'];
+        if (guardedValue == null) return null;
+        return MongoConnectionInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       startedOn: map['startedOn'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetMongoConnection: map['targetMongoConnection'] == null ? null : MongoConnectionInformationResponse.fromMap((map['targetMongoConnection']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      targetMongoConnection: (() {
+        final guardedValue = map['targetMongoConnection'];
+        if (guardedValue == null) return null;
+        return MongoConnectionInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

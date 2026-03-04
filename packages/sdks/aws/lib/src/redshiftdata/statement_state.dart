@@ -7,23 +7,31 @@ import 'statement_parameter.dart';
 class StatementState {
   /// The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.
   final pulumi.Input<String>? clusterIdentifier;
+
   /// The name of the database.
   final pulumi.Input<String>? database;
+
   /// The database user name.
   final pulumi.Input<String>? dbUser;
   final pulumi.Input<List<StatementParameter>>? parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name or ARN of the secret that enables access to the database.
   final pulumi.Input<String>? secretArn;
+
   /// The SQL statement text to run.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? sql;
+
   /// The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
   final pulumi.Input<String>? statementName;
+
   /// A value that indicates whether to send an event to the Amazon EventBridge event bus after the SQL statement runs.
   final pulumi.Input<bool>? withEvent;
+
   /// The serverless workgroup name. This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.
   final pulumi.Input<String>? workgroupName;
 
@@ -56,7 +64,18 @@ class StatementState {
       'clusterIdentifier': ?clusterIdentifier,
       'database': ?database,
       'dbUser': ?dbUser,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<StatementParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<StatementParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StatementParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StatementParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'secretArn': ?secretArn,
       'sql': ?sql,
@@ -68,17 +87,63 @@ class StatementState {
 
   factory StatementState.fromMap(Map<String, dynamic> map) {
     return StatementState(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
-      database: map['database'] == null ? null : ((map['database'] as String).input()).input(),
-      dbUser: map['dbUser'] == null ? null : ((map['dbUser'] as String).input()).input(),
-      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<StatementParameter>(map['parameters']!, (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
-      sql: map['sql'] == null ? null : ((map['sql'] as String).input()).input(),
-      statementName: map['statementName'] == null ? null : ((map['statementName'] as String).input()).input(),
-      withEvent: map['withEvent'] == null ? null : ((map['withEvent'] as bool).input()).input(),
-      workgroupName: map['workgroupName'] == null ? null : ((map['workgroupName'] as String).input()).input(),
+      clusterIdentifier: (() {
+        final guardedValue = map['clusterIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbUser: (() {
+        final guardedValue = map['dbUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StatementParameter>(
+            guardedValue,
+            (value) => StatementParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretArn: (() {
+        final guardedValue = map['secretArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sql: (() {
+        final guardedValue = map['sql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statementName: (() {
+        final guardedValue = map['statementName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withEvent: (() {
+        final guardedValue = map['withEvent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      workgroupName: (() {
+        final guardedValue = map['workgroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

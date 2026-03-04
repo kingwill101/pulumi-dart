@@ -3,16 +3,15 @@ enum StorageLimitExceededBehavior {
   valuePurgeOldData("PurgeOldData"),
   valuePauseIngress("PauseIngress");
 
-  const StorageLimitExceededBehavior(this.value);
-  final String value;
+  const StorageLimitExceededBehavior(this.wireValue);
+  final String wireValue;
 
   static StorageLimitExceededBehavior fromValue(String value) {
     for (final item in StorageLimitExceededBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageLimitExceededBehavior value: $value');
   }
 }
-

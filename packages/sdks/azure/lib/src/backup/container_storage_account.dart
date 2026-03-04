@@ -247,11 +247,13 @@ import 'container_storage_account_state.dart';
 class ContainerStorageAccount extends pulumi.CustomResource {
   /// The name of the vault where the storage account will be registered. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// Name of the resource group where the vault is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Storage Account to be registered Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Azure Backup places a Resource Lock on the storage account that will cause deletion to fail until the account is unregistered from Azure Backup
+  /// &gt; **Note:** Azure Backup places a Resource Lock on the storage account that will cause deletion to fail until the account is unregistered from Azure Backup
   late final pulumi.Output<String> storageAccountId;
 
   /// Creates a new [ContainerStorageAccount].
@@ -263,14 +265,14 @@ class ContainerStorageAccount extends pulumi.CustomResource {
     ContainerStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/containerStorageAccount:ContainerStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:backup/containerStorageAccount:ContainerStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [ContainerStorageAccount] resource's state with the given [name] and [id].
@@ -291,13 +293,13 @@ class ContainerStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/containerStorageAccount:ContainerStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:backup/containerStorageAccount:ContainerStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

@@ -9,8 +9,11 @@ import 'share_settings_response.dart';
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
   /// The previous share settings of the Future Reservation.
   final pulumi.Input<ShareSettingsResponse> shareSettings;
+
   /// The previous instance related properties of the Future Reservation.
-  final pulumi.Input<FutureReservationSpecificSKUPropertiesResponse> specificSkuProperties;
+  final pulumi.Input<FutureReservationSpecificSKUPropertiesResponse>
+  specificSkuProperties;
+
   /// The previous time window of the Future Reservation.
   final pulumi.Input<FutureReservationTimeWindowResponse> timeWindow;
 
@@ -26,18 +29,43 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'shareSettings': pulumi.Input.mapInputValue<ShareSettingsResponse, Map<String, dynamic>>(shareSettings, (value) => value.toMap()),
-      'specificSkuProperties': pulumi.Input.mapInputValue<FutureReservationSpecificSKUPropertiesResponse, Map<String, dynamic>>(specificSkuProperties, (value) => value.toMap()),
-      'timeWindow': pulumi.Input.mapInputValue<FutureReservationTimeWindowResponse, Map<String, dynamic>>(timeWindow, (value) => value.toMap()),
+      'shareSettings':
+          pulumi.Input.mapInputValue<
+            ShareSettingsResponse,
+            Map<String, dynamic>
+          >(shareSettings, (value) => value.toMap()),
+      'specificSkuProperties':
+          pulumi.Input.mapInputValue<
+            FutureReservationSpecificSKUPropertiesResponse,
+            Map<String, dynamic>
+          >(specificSkuProperties, (value) => value.toMap()),
+      'timeWindow':
+          pulumi.Input.mapInputValue<
+            FutureReservationTimeWindowResponse,
+            Map<String, dynamic>
+          >(timeWindow, (value) => value.toMap()),
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse(
-      shareSettings: (ShareSettingsResponse.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificSkuProperties: (FutureReservationSpecificSKUPropertiesResponse.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())).input(),
-      timeWindow: (FutureReservationTimeWindowResponse.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
+      shareSettings: pulumi.Input.fromValue(
+        ShareSettingsResponse.fromMap(
+          (map['shareSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      specificSkuProperties: pulumi.Input.fromValue(
+        FutureReservationSpecificSKUPropertiesResponse.fromMap(
+          (map['specificSkuProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      timeWindow: pulumi.Input.fromValue(
+        FutureReservationTimeWindowResponse.fromMap(
+          (map['timeWindow']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_version_args.dart';
-import 'app_version_snapshot.dart';
 import 'app_version_state.dart';
 
 /// Description
@@ -207,37 +206,47 @@ import 'app_version_state.dart';
 class AppVersion extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> app;
+
   /// The ID to use for the app version, which will become the final component
   /// of the app version's resource name. If not provided, a unique ID will be
   /// automatically assigned for the app version.
   late final pulumi.Output<String> appVersionId;
+
   /// (Output)
   /// Timestamp when the toolset was created.
   late final pulumi.Output<String> createTime;
+
   /// Email of the user who created the app version.
   late final pulumi.Output<String> creator;
+
   /// The description of the app version.
   late final pulumi.Output<String?> description;
+
   /// The display name of the app version.
   late final pulumi.Output<String?> displayName;
+
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// A snapshot of the app.
   /// Structure is documented below.
-  late final pulumi.Output<List<AppVersionSnapshot>> snapshots;
+  late final pulumi.Output<List<Map<String, dynamic>>> snapshots;
 
   /// Creates a new [AppVersion].
   /// [name] The Pulumi resource name.
@@ -248,22 +257,22 @@ class AppVersion extends pulumi.CustomResource {
     AppVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:ces/appVersion:AppVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.app = registerOutput<String>('app');
-    this.appVersionId = registerOutput<String>('appVersionId');
-    this.createTime = registerOutput<String>('createTime');
-    this.creator = registerOutput<String>('creator');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:ces/appVersion:AppVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    app = registerOutput<String>('app');
+    appVersionId = registerOutput<String>('appVersionId');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots');
+    project = registerOutput<String>('project');
+    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
   }
 
   /// Gets an existing [AppVersion] resource's state with the given [name] and [id].
@@ -284,21 +293,21 @@ class AppVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:ces/appVersion:AppVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.app = registerOutput<String>('app');
-    this.appVersionId = registerOutput<String>('appVersionId');
-    this.createTime = registerOutput<String>('createTime');
-    this.creator = registerOutput<String>('creator');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:ces/appVersion:AppVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    app = registerOutput<String>('app');
+    appVersionId = registerOutput<String>('appVersionId');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots');
+    project = registerOutput<String>('project');
+    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
   }
 }

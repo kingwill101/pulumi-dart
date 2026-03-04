@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterTableColumnsResponse {
   /// Optional. List of columns to be excluded for a particular table.
   final pulumi.Input<List<String>> excludeColumns;
+
   /// Optional. List of columns to be included for a particular table.
   final pulumi.Input<List<String>> includeColumns;
 
@@ -26,9 +27,12 @@ class FilterTableColumnsResponse {
 
   factory FilterTableColumnsResponse.fromMap(Map<String, dynamic> map) {
     return FilterTableColumnsResponse(
-      excludeColumns: ((map['excludeColumns'] as List).cast<String>()).input(),
-      includeColumns: ((map['includeColumns'] as List).cast<String>()).input(),
+      excludeColumns: pulumi.Input.fromValue(
+        (map['excludeColumns'] as List).cast<String>(),
+      ),
+      includeColumns: pulumi.Input.fromValue(
+        (map['includeColumns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

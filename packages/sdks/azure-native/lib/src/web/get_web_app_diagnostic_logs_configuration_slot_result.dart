@@ -8,20 +8,28 @@ import 'http_logs_config_response.dart';
 class GetWebAppDiagnosticLogsConfigurationSlotResult {
   /// Application logs configuration.
   final ApplicationLogsConfigResponse? applicationLogs;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Detailed error messages configuration.
   final EnabledConfigResponse? detailedErrorMessages;
+
   /// Failed requests tracing configuration.
   final EnabledConfigResponse? failedRequestsTracing;
+
   /// HTTP logs configuration.
   final HttpLogsConfigResponse? httpLogs;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Resource type.
   final String type;
 
@@ -49,11 +57,11 @@ class GetWebAppDiagnosticLogsConfigurationSlotResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationLogs': ?applicationLogs == null ? null : applicationLogs!.toMap(),
+      'applicationLogs': ?applicationLogs?.toMap(),
       'azureApiVersion': azureApiVersion,
-      'detailedErrorMessages': ?detailedErrorMessages == null ? null : detailedErrorMessages!.toMap(),
-      'failedRequestsTracing': ?failedRequestsTracing == null ? null : failedRequestsTracing!.toMap(),
-      'httpLogs': ?httpLogs == null ? null : httpLogs!.toMap(),
+      'detailedErrorMessages': ?detailedErrorMessages?.toMap(),
+      'failedRequestsTracing': ?failedRequestsTracing?.toMap(),
+      'httpLogs': ?httpLogs?.toMap(),
       'id': id,
       'kind': ?kind,
       'name': name,
@@ -61,18 +69,47 @@ class GetWebAppDiagnosticLogsConfigurationSlotResult {
     };
   }
 
-  factory GetWebAppDiagnosticLogsConfigurationSlotResult.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppDiagnosticLogsConfigurationSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppDiagnosticLogsConfigurationSlotResult(
-      applicationLogs: map['applicationLogs'] == null ? null : ApplicationLogsConfigResponse.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>()),
+      applicationLogs: (() {
+        final guardedValue = map['applicationLogs'];
+        if (guardedValue == null) return null;
+        return ApplicationLogsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : EnabledConfigResponse.fromMap((map['detailedErrorMessages']! as Map).cast<String, dynamic>()),
-      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : EnabledConfigResponse.fromMap((map['failedRequestsTracing']! as Map).cast<String, dynamic>()),
-      httpLogs: map['httpLogs'] == null ? null : HttpLogsConfigResponse.fromMap((map['httpLogs']! as Map).cast<String, dynamic>()),
+      detailedErrorMessages: (() {
+        final guardedValue = map['detailedErrorMessages'];
+        if (guardedValue == null) return null;
+        return EnabledConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      failedRequestsTracing: (() {
+        final guardedValue = map['failedRequestsTracing'];
+        if (guardedValue == null) return null;
+        return EnabledConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      httpLogs: (() {
+        final guardedValue = map['httpLogs'];
+        if (guardedValue == null) return null;
+        return HttpLogsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

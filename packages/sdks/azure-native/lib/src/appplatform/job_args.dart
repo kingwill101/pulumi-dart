@@ -10,10 +10,13 @@ import 'job_resource_properties.dart';
 class JobArgs {
   /// The name of the Job resource.
   final pulumi.Input<String>? jobName;
+
   /// Properties of the Job resource
   final pulumi.Input<JobResourceProperties>? properties;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -32,7 +35,11 @@ class JobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobName': ?jobName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<JobResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -40,11 +47,24 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
-      properties: map['properties'] == null ? null : (JobResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      jobName: (() {
+        final guardedValue = map['jobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobResourceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

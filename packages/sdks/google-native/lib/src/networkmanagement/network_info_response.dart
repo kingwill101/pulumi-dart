@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInfoResponse {
   /// Name of a Compute Engine network.
   final pulumi.Input<String> displayName;
+
   /// The IP range that matches the test.
   final pulumi.Input<String> matchedIpRange;
+
   /// URI of a Compute Engine network.
   final pulumi.Input<String> uri;
 
@@ -31,10 +33,9 @@ class NetworkInfoResponse {
 
   factory NetworkInfoResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInfoResponse(
-      displayName: (map['displayName'] as String).input(),
-      matchedIpRange: (map['matchedIpRange'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      matchedIpRange: pulumi.Input.fromValue(map['matchedIpRange'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

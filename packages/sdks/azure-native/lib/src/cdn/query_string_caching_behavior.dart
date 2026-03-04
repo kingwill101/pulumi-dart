@@ -5,16 +5,15 @@ enum QueryStringCachingBehavior {
   valueUseQueryString("UseQueryString"),
   valueNotSet("NotSet");
 
-  const QueryStringCachingBehavior(this.value);
-  final String value;
+  const QueryStringCachingBehavior(this.wireValue);
+  final String wireValue;
 
   static QueryStringCachingBehavior fromValue(String value) {
     for (final item in QueryStringCachingBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QueryStringCachingBehavior value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectStorageQuotaQuotaUsage {
   /// The maximum quantity allowed by the quota.
   final pulumi.Input<int> quotaLimit;
+
   /// The quantity of the Object Storage resource currently in use.
   final pulumi.Input<int> usage;
 
@@ -17,17 +18,13 @@ class GetObjectStorageQuotaQuotaUsage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'quotaLimit': quotaLimit,
-      'usage': usage,
-    };
+    return <String, dynamic>{'quotaLimit': quotaLimit, 'usage': usage};
   }
 
   factory GetObjectStorageQuotaQuotaUsage.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotaQuotaUsage(
-      quotaLimit: (map['quotaLimit'] as int).input(),
-      usage: (map['usage'] as int).input(),
+      quotaLimit: pulumi.Input.fromValue(map['quotaLimit'] as int),
+      usage: pulumi.Input.fromValue(map['usage'] as int),
     );
   }
 }
-

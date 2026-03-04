@@ -6,16 +6,22 @@ import 'get_share_snapshot_schedule.dart';
 /// Result data returned by getShare.
 class GetShareResult {
   final String accountId;
+
   /// The description of the Data Share.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The kind of the Data Share.
   final String kind;
+
   /// The name of the snapshot schedule.
   final String name;
+
   /// A `snapshot_schedule` block as defined below.
   final List<GetShareSnapshotSchedule> snapshotSchedules;
+
   /// The terms of the Data Share.
   final String terms;
 
@@ -44,7 +50,11 @@ class GetShareResult {
       'id': id,
       'kind': kind,
       'name': name,
-      'snapshotSchedules': pulumi.Input.encodeList<GetShareSnapshotSchedule, Map<String, dynamic>>(snapshotSchedules, (value) => value.toMap()),
+      'snapshotSchedules':
+          pulumi.Input.encodeList<
+            GetShareSnapshotSchedule,
+            Map<String, dynamic>
+          >(snapshotSchedules, (value) => value.toMap()),
       'terms': terms,
     };
   }
@@ -56,9 +66,13 @@ class GetShareResult {
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      snapshotSchedules: pulumi.Input.decodeList<GetShareSnapshotSchedule>(map['snapshotSchedules'], (value) => GetShareSnapshotSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      snapshotSchedules: pulumi.Input.decodeList<GetShareSnapshotSchedule>(
+        map['snapshotSchedules']!,
+        (value) => GetShareSnapshotSchedule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       terms: map['terms'] as String,
     );
   }
 }
-

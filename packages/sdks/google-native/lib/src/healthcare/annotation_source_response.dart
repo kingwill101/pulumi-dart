@@ -10,20 +10,25 @@ class AnnotationSourceResponse {
 
   /// Creates a new [AnnotationSourceResponse].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.
-  AnnotationSourceResponse({
-    required this.cloudHealthcareSource,
-  });
+  AnnotationSourceResponse({required this.cloudHealthcareSource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudHealthcareSource': pulumi.Input.mapInputValue<CloudHealthcareSourceResponse, Map<String, dynamic>>(cloudHealthcareSource, (value) => value.toMap()),
+      'cloudHealthcareSource':
+          pulumi.Input.mapInputValue<
+            CloudHealthcareSourceResponse,
+            Map<String, dynamic>
+          >(cloudHealthcareSource, (value) => value.toMap()),
     };
   }
 
   factory AnnotationSourceResponse.fromMap(Map<String, dynamic> map) {
     return AnnotationSourceResponse(
-      cloudHealthcareSource: (CloudHealthcareSourceResponse.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>())).input(),
+      cloudHealthcareSource: pulumi.Input.fromValue(
+        CloudHealthcareSourceResponse.fromMap(
+          (map['cloudHealthcareSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum RegistryEndpointTrustedSigningKeyType {
   secret("Secret"),
   configMap("ConfigMap");
 
-  const RegistryEndpointTrustedSigningKeyType(this.value);
-  final String value;
+  const RegistryEndpointTrustedSigningKeyType(this.wireValue);
+  final String wireValue;
 
   static RegistryEndpointTrustedSigningKeyType fromValue(String value) {
     for (final item in RegistryEndpointTrustedSigningKeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegistryEndpointTrustedSigningKeyType value: $value');
+    throw ArgumentError(
+      'Unknown RegistryEndpointTrustedSigningKeyType value: $value',
+    );
   }
 }
-

@@ -9,20 +9,19 @@ class ClientConnectionResponse {
 
   /// Creates a new [ClientConnectionResponse].
   /// [enabled] Indicates if client connection is enabled for this SQL Server instance.
-  ClientConnectionResponse({
-    this.enabled,
-  });
+  ClientConnectionResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ClientConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ClientConnectionResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

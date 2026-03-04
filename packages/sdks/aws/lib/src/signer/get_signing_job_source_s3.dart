@@ -18,19 +18,14 @@ class GetSigningJobSourceS3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'key': key,
-      'version': version,
-    };
+    return <String, dynamic>{'bucket': bucket, 'key': key, 'version': version};
   }
 
   factory GetSigningJobSourceS3.fromMap(Map<String, dynamic> map) {
     return GetSigningJobSourceS3(
-      bucket: (map['bucket'] as String).input(),
-      key: (map['key'] as String).input(),
-      version: (map['version'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

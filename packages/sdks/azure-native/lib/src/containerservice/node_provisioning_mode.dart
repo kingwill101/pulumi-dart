@@ -3,16 +3,15 @@ enum NodeProvisioningMode {
   valueManual("Manual"),
   valueAuto("Auto");
 
-  const NodeProvisioningMode(this.value);
-  final String value;
+  const NodeProvisioningMode(this.wireValue);
+  final String wireValue;
 
   static NodeProvisioningMode fromValue(String value) {
     for (final item in NodeProvisioningMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeProvisioningMode value: $value');
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv6EgressRuleArgs {
   /// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
   final pulumi.Input<String>? description;
+
   /// The ID of the IPv6 address to which you want to apply the egress-only rule.
   final pulumi.Input<String> instanceId;
+
   /// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
   final pulumi.Input<String>? instanceType;
+
   /// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
   final pulumi.Input<String>? ipv6EgressRuleName;
+
   /// The ID of the IPv6 gateway.
   final pulumi.Input<String> ipv6GatewayId;
 
@@ -44,12 +48,23 @@ class Ipv6EgressRuleArgs {
 
   factory Ipv6EgressRuleArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6EgressRuleArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName']! as String).input(),
-      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6EgressRuleName: (() {
+        final guardedValue = map['ipv6EgressRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6GatewayId: pulumi.Input.fromValue(map['ipv6GatewayId'] as String),
     );
   }
 }
-

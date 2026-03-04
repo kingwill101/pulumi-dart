@@ -4,9 +4,9 @@ import 'static_site_custom_domain_state.dart';
 
 /// Manages a Static Site Custom Domain.
 ///
-/// !> **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
+/// !&gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
 ///
-/// > **Note:** The `azure.appservice.StaticSiteCustomDomain` resource is deprecated in favour of `azure.appservice.StaticWebAppCustomDomain` and will be removed in a future major release.
+/// &gt; **Note:** The `azure.appservice.StaticSiteCustomDomain` resource is deprecated in favour of `azure.appservice.StaticWebAppCustomDomain` and will be removed in a future major release.
 ///
 /// ## Example Usage
 ///
@@ -511,10 +511,13 @@ import 'static_site_custom_domain_state.dart';
 class StaticSiteCustomDomain extends pulumi.CustomResource {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> domainName;
+
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> staticSiteId;
+
   /// Token to be used with `dns-txt-token` validation.
   late final pulumi.Output<String> validationToken;
+
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String?> validationType;
 
@@ -527,15 +530,15 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     StaticSiteCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.staticSiteId = registerOutput<String>('staticSiteId');
-    this.validationToken = registerOutput<String>('validationToken');
-    this.validationType = registerOutput<String?>('validationType');
+         'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    staticSiteId = registerOutput<String>('staticSiteId');
+    validationToken = registerOutput<String>('validationToken');
+    validationType = registerOutput<String?>('validationType');
   }
 
   /// Gets an existing [StaticSiteCustomDomain] resource's state with the given [name] and [id].
@@ -556,14 +559,14 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.staticSiteId = registerOutput<String>('staticSiteId');
-    this.validationToken = registerOutput<String>('validationToken');
-    this.validationType = registerOutput<String?>('validationType');
+         'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    staticSiteId = registerOutput<String>('staticSiteId');
+    validationToken = registerOutput<String>('validationToken');
+    validationType = registerOutput<String?>('validationType');
   }
 }

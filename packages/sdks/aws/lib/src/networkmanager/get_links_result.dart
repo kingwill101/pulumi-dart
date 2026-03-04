@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLinks.
 class GetLinksResult {
   final String globalNetworkId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IDs of the links.
   final List<String> ids;
   final String? providerName;
@@ -48,11 +49,26 @@ class GetLinksResult {
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      providerName: map['providerName'] == null ? null : map['providerName'] as String,
-      siteId: map['siteId'] == null ? null : map['siteId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReconciliationPolicyPropertiesResponse {
   /// Policy interval
   final pulumi.Input<String> interval;
+
   /// The state of the ReconciliationPolicy
   final pulumi.Input<String> state;
 
@@ -18,17 +19,15 @@ class ReconciliationPolicyPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interval': interval,
-      'state': state,
-    };
+    return <String, dynamic>{'interval': interval, 'state': state};
   }
 
-  factory ReconciliationPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ReconciliationPolicyPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReconciliationPolicyPropertiesResponse(
-      interval: (map['interval'] as String).input(),
-      state: (map['state'] as String).input(),
+      interval: pulumi.Input.fromValue(map['interval'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

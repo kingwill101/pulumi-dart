@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdConnectorDirectoriesDirectoryAdConnector {
   /// The address of AD connector.
   final pulumi.Input<String> adConnectorAddress;
+
   /// The status of connector.
   final pulumi.Input<String> connectorStatus;
+
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
+
   /// The AD Connector specifications.
   final pulumi.Input<String> specification;
+
   /// The AD Connector control trust password.
   final pulumi.Input<String> trustKey;
+
   /// The ID of vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -43,15 +48,20 @@ class GetAdConnectorDirectoriesDirectoryAdConnector {
     };
   }
 
-  factory GetAdConnectorDirectoriesDirectoryAdConnector.fromMap(Map<String, dynamic> map) {
+  factory GetAdConnectorDirectoriesDirectoryAdConnector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAdConnectorDirectoriesDirectoryAdConnector(
-      adConnectorAddress: (map['adConnectorAddress'] as String).input(),
-      connectorStatus: (map['connectorStatus'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      specification: (map['specification'] as String).input(),
-      trustKey: (map['trustKey'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      adConnectorAddress: pulumi.Input.fromValue(
+        map['adConnectorAddress'] as String,
+      ),
+      connectorStatus: pulumi.Input.fromValue(map['connectorStatus'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      specification: pulumi.Input.fromValue(map['specification'] as String),
+      trustKey: pulumi.Input.fromValue(map['trustKey'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

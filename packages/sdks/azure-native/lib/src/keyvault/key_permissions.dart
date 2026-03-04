@@ -21,16 +21,15 @@ enum KeyPermissions {
   valueGetrotationpolicy("getrotationpolicy"),
   valueSetrotationpolicy("setrotationpolicy");
 
-  const KeyPermissions(this.value);
-  final String value;
+  const KeyPermissions(this.wireValue);
+  final String wireValue;
 
   static KeyPermissions fromValue(String value) {
     for (final item in KeyPermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyPermissions value: $value');
   }
 }
-

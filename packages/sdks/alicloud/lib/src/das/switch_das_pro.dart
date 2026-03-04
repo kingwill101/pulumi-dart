@@ -6,9 +6,9 @@ import 'switch_das_pro_state.dart';
 ///
 /// For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
 ///
-/// > **NOTE:** Deprecated since v1.249.0.
+/// &gt; **NOTE:** Deprecated since v1.249.0.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.249.0`.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.249.0`.
 ///
 /// ## Example Usage
 ///
@@ -386,10 +386,13 @@ import 'switch_das_pro_state.dart';
 class SwitchDasPro extends pulumi.CustomResource {
   /// The ID of the database instance.
   late final pulumi.Output<String> instanceId;
+
   /// The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
   late final pulumi.Output<int> sqlRetention;
+
   /// Whether the database instance has DAS professional.
   late final pulumi.Output<bool> status;
+
   /// The ID of the Alibaba Cloud account that is used to create the database instance.
   late final pulumi.Output<String> userId;
 
@@ -402,15 +405,15 @@ class SwitchDasPro extends pulumi.CustomResource {
     SwitchDasProArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:das/switchDasPro:SwitchDasPro',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.sqlRetention = registerOutput<int>('sqlRetention');
-    this.status = registerOutput<bool>('status');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:das/switchDasPro:SwitchDasPro',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    sqlRetention = registerOutput<int>('sqlRetention');
+    status = registerOutput<bool>('status');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [SwitchDasPro] resource's state with the given [name] and [id].
@@ -431,14 +434,14 @@ class SwitchDasPro extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:das/switchDasPro:SwitchDasPro',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.sqlRetention = registerOutput<int>('sqlRetention');
-    this.status = registerOutput<bool>('status');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:das/switchDasPro:SwitchDasPro',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    sqlRetention = registerOutput<int>('sqlRetention');
+    status = registerOutput<bool>('status');
+    userId = registerOutput<String>('userId');
   }
 }

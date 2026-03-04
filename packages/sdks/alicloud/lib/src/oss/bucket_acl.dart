@@ -12,6 +12,7 @@ import 'bucket_acl_state.dart';
 class BucketAcl extends pulumi.CustomResource {
   /// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   late final pulumi.Output<String> acl;
+
   /// The name of the bucket to which the current ACL configuration belongs.
   late final pulumi.Output<String> bucket;
 
@@ -24,13 +25,13 @@ class BucketAcl extends pulumi.CustomResource {
     BucketAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketAcl:BucketAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String>('acl');
-    this.bucket = registerOutput<String>('bucket');
+         'alicloud:oss/bucketAcl:BucketAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String>('acl');
+    bucket = registerOutput<String>('bucket');
   }
 
   /// Gets an existing [BucketAcl] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class BucketAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketAcl:BucketAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String>('acl');
-    this.bucket = registerOutput<String>('bucket');
+         'alicloud:oss/bucketAcl:BucketAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String>('acl');
+    bucket = registerOutput<String>('bucket');
   }
 }

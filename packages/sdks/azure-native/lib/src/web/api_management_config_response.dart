@@ -9,20 +9,19 @@ class ApiManagementConfigResponse {
 
   /// Creates a new [ApiManagementConfigResponse].
   /// [id] APIM-Api Identifier.
-  ApiManagementConfigResponse({
-    this.id,
-  });
+  ApiManagementConfigResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ApiManagementConfigResponse.fromMap(Map<String, dynamic> map) {
     return ApiManagementConfigResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

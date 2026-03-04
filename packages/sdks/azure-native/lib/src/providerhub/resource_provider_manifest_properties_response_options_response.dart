@@ -18,10 +18,15 @@ class ResourceProviderManifestPropertiesResponseOptionsResponse {
     };
   }
 
-  factory ResourceProviderManifestPropertiesResponseOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManifestPropertiesResponseOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManifestPropertiesResponseOptionsResponse(
-      serviceClientOptionsType: map['serviceClientOptionsType'] == null ? null : (map['serviceClientOptionsType']! as String).input(),
+      serviceClientOptionsType: (() {
+        final guardedValue = map['serviceClientOptionsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

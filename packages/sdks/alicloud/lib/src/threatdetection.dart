@@ -1,5 +1,3 @@
-library module_threatdetection;
-
 export 'threatdetection/anti_brute_force_rule.dart';
 export 'threatdetection/anti_brute_force_rule_args.dart';
 export 'threatdetection/anti_brute_force_rule_protocol_type.dart';

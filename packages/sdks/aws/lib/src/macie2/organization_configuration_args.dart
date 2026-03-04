@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationConfigurationArgs {
   /// Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   final pulumi.Input<bool> autoEnable;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [OrganizationConfigurationArgs].
   /// [autoEnable] Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationArgs({
-    required this.autoEnable,
-    this.region,
-  });
+  OrganizationConfigurationArgs({required this.autoEnable, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoEnable': autoEnable,
-      'region': ?region,
-    };
+    return <String, dynamic>{'autoEnable': autoEnable, 'region': ?region};
   }
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: (map['autoEnable'] as bool).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      autoEnable: pulumi.Input.fromValue(map['autoEnable'] as bool),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

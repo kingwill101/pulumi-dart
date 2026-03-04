@@ -1,5 +1,3 @@
-library module_lakeformation;
-
 export 'lakeformation/data_cells_filter.dart';
 export 'lakeformation/data_cells_filter_args.dart';
 export 'lakeformation/data_cells_filter_state.dart';

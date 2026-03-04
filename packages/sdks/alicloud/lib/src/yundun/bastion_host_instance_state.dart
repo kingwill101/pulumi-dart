@@ -67,11 +67,33 @@ class BastionHostInstanceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adAuthServers': ?pulumi.Input.mapOptionalInputValue<List<BastionHostInstanceAdAuthServer>, List<Map<String, dynamic>>>(adAuthServers, (value) => pulumi.Input.encodeList<BastionHostInstanceAdAuthServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'adAuthServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BastionHostInstanceAdAuthServer>,
+            List<Map<String, dynamic>>
+          >(
+            adAuthServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BastionHostInstanceAdAuthServer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'bandwidth': ?bandwidth,
       'description': ?description,
       'enablePublicAccess': ?enablePublicAccess,
-      'ldapAuthServers': ?pulumi.Input.mapOptionalInputValue<List<BastionHostInstanceLdapAuthServer>, List<Map<String, dynamic>>>(ldapAuthServers, (value) => pulumi.Input.encodeList<BastionHostInstanceLdapAuthServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ldapAuthServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BastionHostInstanceLdapAuthServer>,
+            List<Map<String, dynamic>>
+          >(
+            ldapAuthServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BastionHostInstanceLdapAuthServer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'licenseCode': ?licenseCode,
       'period': ?period,
       'planCode': ?planCode,
@@ -90,25 +112,112 @@ class BastionHostInstanceState {
 
   factory BastionHostInstanceState.fromMap(Map<String, dynamic> map) {
     return BastionHostInstanceState(
-      adAuthServers: map['adAuthServers'] == null ? null : (pulumi.Input.decodeList<BastionHostInstanceAdAuthServer>(map['adAuthServers']!, (value) => BastionHostInstanceAdAuthServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enablePublicAccess: map['enablePublicAccess'] == null ? null : (map['enablePublicAccess']! as bool).input(),
-      ldapAuthServers: map['ldapAuthServers'] == null ? null : (pulumi.Input.decodeList<BastionHostInstanceLdapAuthServer>(map['ldapAuthServers']!, (value) => BastionHostInstanceLdapAuthServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseCode: map['licenseCode'] == null ? null : (map['licenseCode']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      planCode: map['planCode'] == null ? null : (map['planCode']! as String).input(),
-      publicWhiteLists: map['publicWhiteLists'] == null ? null : ((map['publicWhiteLists']! as List).cast<String>()).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
-      renewalPeriodUnit: map['renewalPeriodUnit'] == null ? null : (map['renewalPeriodUnit']! as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
-      slaveVswitchId: map['slaveVswitchId'] == null ? null : (map['slaveVswitchId']! as String).input(),
-      storage: map['storage'] == null ? null : (map['storage']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      adAuthServers: (() {
+        final guardedValue = map['adAuthServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BastionHostInstanceAdAuthServer>(
+            guardedValue,
+            (value) => BastionHostInstanceAdAuthServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablePublicAccess: (() {
+        final guardedValue = map['enablePublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ldapAuthServers: (() {
+        final guardedValue = map['ldapAuthServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BastionHostInstanceLdapAuthServer>(
+            guardedValue,
+            (value) => BastionHostInstanceLdapAuthServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      licenseCode: (() {
+        final guardedValue = map['licenseCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      planCode: (() {
+        final guardedValue = map['planCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicWhiteLists: (() {
+        final guardedValue = map['publicWhiteLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      renewPeriod: (() {
+        final guardedValue = map['renewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewalPeriodUnit: (() {
+        final guardedValue = map['renewalPeriodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      slaveVswitchId: (() {
+        final guardedValue = map['slaveVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

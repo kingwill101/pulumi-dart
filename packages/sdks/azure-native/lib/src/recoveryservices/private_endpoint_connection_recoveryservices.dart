@@ -208,16 +208,22 @@ import 'private_endpoint_connection_response.dart';
 class PrivateEndpointConnectionRecoveryservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Optional ETag.
   late final pulumi.Output<String?> eTag;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
+
   /// PrivateEndpointConnectionResource properties
   late final pulumi.Output<PrivateEndpointConnectionResponse> properties;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -230,17 +236,19 @@ class PrivateEndpointConnectionRecoveryservices extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:recoveryservices:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateEndpointConnectionResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateEndpointConnectionResponse>(
+      'properties',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

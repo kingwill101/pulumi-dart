@@ -7,12 +7,15 @@ import 'get_vpc_endpoint_service_users_user.dart';
 class GetVpcEndpointServiceUsersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Vpc Endpoint Service User IDs.
   final List<String> ids;
   final String? outputFile;
   final String serviceId;
+
   /// The Id of Ram User.
   final String? userId;
+
   /// A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
   final List<GetVpcEndpointServiceUsersUser> users;
 
@@ -39,7 +42,11 @@ class GetVpcEndpointServiceUsersResult {
       'outputFile': ?outputFile,
       'serviceId': serviceId,
       'userId': ?userId,
-      'users': pulumi.Input.encodeList<GetVpcEndpointServiceUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'users':
+          pulumi.Input.encodeList<
+            GetVpcEndpointServiceUsersUser,
+            Map<String, dynamic>
+          >(users, (value) => value.toMap()),
     };
   }
 
@@ -47,11 +54,23 @@ class GetVpcEndpointServiceUsersResult {
     return GetVpcEndpointServiceUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       serviceId: map['serviceId'] as String,
-      userId: map['userId'] == null ? null : map['userId']! as String,
-      users: pulumi.Input.decodeList<GetVpcEndpointServiceUsersUser>(map['users'], (value) => GetVpcEndpointServiceUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      users: pulumi.Input.decodeList<GetVpcEndpointServiceUsersUser>(
+        map['users']!,
+        (value) => GetVpcEndpointServiceUsersUser.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class DataCatalogConfigMetastoreV1beta {
 
   /// Creates a new [DataCatalogConfigMetastoreV1beta].
   /// [enabled] Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-  DataCatalogConfigMetastoreV1beta({
-    this.enabled,
-  });
+  DataCatalogConfigMetastoreV1beta({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory DataCatalogConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DataCatalogConfigMetastoreV1beta(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

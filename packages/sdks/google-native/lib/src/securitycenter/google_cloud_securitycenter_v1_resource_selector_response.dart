@@ -14,15 +14,16 @@ class GoogleCloudSecuritycenterV1ResourceSelectorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': resourceTypes};
   }
 
-  factory GoogleCloudSecuritycenterV1ResourceSelectorResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1ResourceSelectorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudSecuritycenterV1ResourceSelectorResponse(
-      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: pulumi.Input.fromValue(
+        (map['resourceTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

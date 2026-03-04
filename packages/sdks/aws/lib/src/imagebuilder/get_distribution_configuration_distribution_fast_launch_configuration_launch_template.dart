@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate {
   /// ID of the Amazon EC2 launch template.
   final pulumi.Input<String> launchTemplateId;
+
   /// The name of the launch template to use for faster launching for a Windows AMI.
   final pulumi.Input<String> launchTemplateName;
+
   /// The version of the launch template to use for faster launching for a Windows AMI.
   final pulumi.Input<String> launchTemplateVersion;
 
@@ -28,12 +30,19 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTempl
     };
   }
 
-  factory GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate(
-      launchTemplateId: (map['launchTemplateId'] as String).input(),
-      launchTemplateName: (map['launchTemplateName'] as String).input(),
-      launchTemplateVersion: (map['launchTemplateVersion'] as String).input(),
+      launchTemplateId: pulumi.Input.fromValue(
+        map['launchTemplateId'] as String,
+      ),
+      launchTemplateName: pulumi.Input.fromValue(
+        map['launchTemplateName'] as String,
+      ),
+      launchTemplateVersion: pulumi.Input.fromValue(
+        map['launchTemplateVersion'] as String,
+      ),
     );
   }
 }
-

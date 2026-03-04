@@ -4,37 +4,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Endpoint
 class DaxClusterEndpointResponse {
-  /// <p>The DNS hostname of the endpoint.</p>
+  /// &lt;p&gt;The DNS hostname of the endpoint.&lt;/p&gt;
   final pulumi.Input<String>? address;
-  /// <p>The port number that applications should use to connect to the endpoint.</p>
+
+  /// &lt;p&gt;The port number that applications should use to connect to the endpoint.&lt;/p&gt;
   final pulumi.Input<int>? port;
-  /// <p>The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.</p>
+
+  /// &lt;p&gt;The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.&lt;/p&gt;
   final pulumi.Input<String>? url;
 
   /// Creates a new [DaxClusterEndpointResponse].
-  /// [address] <p>The DNS hostname of the endpoint.</p>
-  /// [port] <p>The port number that applications should use to connect to the endpoint.</p>
-  /// [url] <p>The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.</p>
-  DaxClusterEndpointResponse({
-    this.address,
-    this.port,
-    this.url,
-  });
+  /// [address] &lt;p&gt;The DNS hostname of the endpoint.&lt;/p&gt;
+  /// [port] &lt;p&gt;The port number that applications should use to connect to the endpoint.&lt;/p&gt;
+  /// [url] &lt;p&gt;The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.&lt;/p&gt;
+  DaxClusterEndpointResponse({this.address, this.port, this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': ?address,
-      'port': ?port,
-      'url': ?url,
-    };
+    return <String, dynamic>{'address': ?address, 'port': ?port, 'url': ?url};
   }
 
   factory DaxClusterEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DaxClusterEndpointResponse(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadedUserSourceInfo {
   /// Relative path of the storage which stores the source
   final pulumi.Input<String>? relativePath;
+
   /// Type of the source uploaded
   /// Expected value is 'UploadedUserSourceInfo'.
   final pulumi.Input<String> type;
+
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -16,11 +18,7 @@ class UploadedUserSourceInfo {
   /// [relativePath] Relative path of the storage which stores the source
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  UploadedUserSourceInfo({
-    this.relativePath,
-    required this.type,
-    this.version,
-  });
+  UploadedUserSourceInfo({this.relativePath, required this.type, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class UploadedUserSourceInfo {
 
   factory UploadedUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return UploadedUserSourceInfo(
-      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      relativePath: (() {
+        final guardedValue = map['relativePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

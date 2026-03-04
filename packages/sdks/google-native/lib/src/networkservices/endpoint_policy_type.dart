@@ -4,16 +4,15 @@ enum EndpointPolicyType {
   sidecarProxy("SIDECAR_PROXY"),
   grpcServer("GRPC_SERVER");
 
-  const EndpointPolicyType(this.value);
-  final String value;
+  const EndpointPolicyType(this.wireValue);
+  final String wireValue;
 
   static EndpointPolicyType fromValue(String value) {
     for (final item in EndpointPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointPolicyType value: $value');
   }
 }
-

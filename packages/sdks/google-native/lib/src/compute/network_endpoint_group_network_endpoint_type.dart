@@ -8,16 +8,17 @@ enum NetworkEndpointGroupNetworkEndpointType {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   serverless("SERVERLESS");
 
-  const NetworkEndpointGroupNetworkEndpointType(this.value);
-  final String value;
+  const NetworkEndpointGroupNetworkEndpointType(this.wireValue);
+  final String wireValue;
 
   static NetworkEndpointGroupNetworkEndpointType fromValue(String value) {
     for (final item in NetworkEndpointGroupNetworkEndpointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkEndpointGroupNetworkEndpointType value: $value');
+    throw ArgumentError(
+      'Unknown NetworkEndpointGroupNetworkEndpointType value: $value',
+    );
   }
 }
-

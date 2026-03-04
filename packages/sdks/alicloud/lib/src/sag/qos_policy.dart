@@ -7,9 +7,9 @@ import 'qos_policy_state.dart';
 ///
 /// For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqospolicy).
 ///
-/// > **NOTE:** Available since v1.60.0.
+/// &gt; **NOTE:** Available since v1.60.0.
 ///
-/// > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -324,24 +324,34 @@ import 'qos_policy_state.dart';
 class QosPolicy extends pulumi.CustomResource {
   /// The description of the QoS policy.
   late final pulumi.Output<String?> description;
+
   /// The destination CIDR block.
   late final pulumi.Output<String> destCidr;
+
   /// The destination port range.
   late final pulumi.Output<String> destPortRange;
+
   /// The expiration time of the quintuple rule.
   late final pulumi.Output<String?> endTime;
+
   /// The transport layer protocol.
   late final pulumi.Output<String> ipProtocol;
+
   /// The name of the QoS policy.
   late final pulumi.Output<String> name;
+
   /// The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
   late final pulumi.Output<int> priority;
+
   /// The instance ID of the QoS policy to which the quintuple rule is created.
   late final pulumi.Output<String> qosId;
+
   /// The source CIDR block.
   late final pulumi.Output<String> sourceCidr;
+
   /// The source port range of the transport layer.
   late final pulumi.Output<String> sourcePortRange;
+
   /// The time when the quintuple rule takes effect.
   late final pulumi.Output<String?> startTime;
 
@@ -354,22 +364,22 @@ class QosPolicy extends pulumi.CustomResource {
     QosPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/qosPolicy:QosPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destCidr = registerOutput<String>('destCidr');
-    this.destPortRange = registerOutput<String>('destPortRange');
-    this.endTime = registerOutput<String?>('endTime');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
+         'alicloud:sag/qosPolicy:QosPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destCidr = registerOutput<String>('destCidr');
+    destPortRange = registerOutput<String>('destPortRange');
+    endTime = registerOutput<String?>('endTime');
+    ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.qosId = registerOutput<String>('qosId');
-    this.sourceCidr = registerOutput<String>('sourceCidr');
-    this.sourcePortRange = registerOutput<String>('sourcePortRange');
-    this.startTime = registerOutput<String?>('startTime');
+    priority = registerOutput<int>('priority');
+    qosId = registerOutput<String>('qosId');
+    sourceCidr = registerOutput<String>('sourceCidr');
+    sourcePortRange = registerOutput<String>('sourcePortRange');
+    startTime = registerOutput<String?>('startTime');
   }
 
   /// Gets an existing [QosPolicy] resource's state with the given [name] and [id].
@@ -390,21 +400,21 @@ class QosPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/qosPolicy:QosPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destCidr = registerOutput<String>('destCidr');
-    this.destPortRange = registerOutput<String>('destPortRange');
-    this.endTime = registerOutput<String?>('endTime');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
+         'alicloud:sag/qosPolicy:QosPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destCidr = registerOutput<String>('destCidr');
+    destPortRange = registerOutput<String>('destPortRange');
+    endTime = registerOutput<String?>('endTime');
+    ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.qosId = registerOutput<String>('qosId');
-    this.sourceCidr = registerOutput<String>('sourceCidr');
-    this.sourcePortRange = registerOutput<String>('sourcePortRange');
-    this.startTime = registerOutput<String?>('startTime');
+    priority = registerOutput<int>('priority');
+    qosId = registerOutput<String>('qosId');
+    sourceCidr = registerOutput<String>('sourceCidr');
+    sourcePortRange = registerOutput<String>('sourcePortRange');
+    startTime = registerOutput<String?>('startTime');
   }
 }

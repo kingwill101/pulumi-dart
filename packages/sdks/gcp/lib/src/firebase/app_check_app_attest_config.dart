@@ -476,11 +476,14 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
   /// The ID of an
   /// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
   late final pulumi.Output<String> appId;
+
   /// The relative resource name of the App Attest configuration object
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -495,15 +498,15 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
     AppCheckAppAttestConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
+         'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.tokenTtl = registerOutput<String>('tokenTtl');
+    project = registerOutput<String>('project');
+    tokenTtl = registerOutput<String>('tokenTtl');
   }
 
   /// Gets an existing [AppCheckAppAttestConfig] resource's state with the given [name] and [id].
@@ -524,14 +527,14 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
+         'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.tokenTtl = registerOutput<String>('tokenTtl');
+    project = registerOutput<String>('project');
+    tokenTtl = registerOutput<String>('tokenTtl');
   }
 }

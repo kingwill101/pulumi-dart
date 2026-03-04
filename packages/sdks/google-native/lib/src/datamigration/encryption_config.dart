@@ -9,20 +9,19 @@ class EncryptionConfig {
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKeyName] The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
-  EncryptionConfig({
-    this.kmsKeyName,
-  });
+  EncryptionConfig({this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': ?kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': ?kmsKeyName};
   }
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'policy_state.dart';
 ///
 /// For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -157,10 +157,13 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// The document of the tag policy.
   late final pulumi.Output<String> policyContent;
+
   /// The description of the policy. The description must be 1 to 512 characters in length.
   late final pulumi.Output<String?> policyDesc;
+
   /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
   late final pulumi.Output<String> policyName;
+
   /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
   late final pulumi.Output<String> userType;
 
@@ -168,20 +171,17 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_tag_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:tag/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyContent = registerOutput<String>('policyContent');
-    this.policyDesc = registerOutput<String?>('policyDesc');
-    this.policyName = registerOutput<String>('policyName');
-    this.userType = registerOutput<String>('userType');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:tag/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    policyContent = registerOutput<String>('policyContent');
+    policyDesc = registerOutput<String?>('policyDesc');
+    policyName = registerOutput<String>('policyName');
+    userType = registerOutput<String>('userType');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -202,14 +202,14 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyContent = registerOutput<String>('policyContent');
-    this.policyDesc = registerOutput<String?>('policyDesc');
-    this.policyName = registerOutput<String>('policyName');
-    this.userType = registerOutput<String>('userType');
+         'alicloud:tag/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyContent = registerOutput<String>('policyContent');
+    policyDesc = registerOutput<String?>('policyDesc');
+    policyName = registerOutput<String>('policyName');
+    userType = registerOutput<String>('userType');
   }
 }

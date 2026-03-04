@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IscsiTargetInfoResponse {
   /// State of the operation on the resource.
   final pulumi.Input<String> provisioningState;
+
   /// Operational status of the iSCSI Target.
   final pulumi.Input<String>? status;
+
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
   final pulumi.Input<String> targetIqn;
+
   /// iSCSI Target Portal Host Name
   final pulumi.Input<String> targetPortalHostname;
+
   /// iSCSI Target Portal Port
   final pulumi.Input<int> targetPortalPort;
 
@@ -41,12 +45,19 @@ class IscsiTargetInfoResponse {
 
   factory IscsiTargetInfoResponse.fromMap(Map<String, dynamic> map) {
     return IscsiTargetInfoResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      targetIqn: (map['targetIqn'] as String).input(),
-      targetPortalHostname: (map['targetPortalHostname'] as String).input(),
-      targetPortalPort: (map['targetPortalPort'] as int).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetIqn: pulumi.Input.fromValue(map['targetIqn'] as String),
+      targetPortalHostname: pulumi.Input.fromValue(
+        map['targetPortalHostname'] as String,
+      ),
+      targetPortalPort: pulumi.Input.fromValue(map['targetPortalPort'] as int),
     );
   }
 }
-

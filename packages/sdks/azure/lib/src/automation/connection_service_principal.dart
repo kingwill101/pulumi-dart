@@ -252,7 +252,7 @@ import 'connection_service_principal_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -267,18 +267,25 @@ import 'connection_service_principal_state.dart';
 class ConnectionServicePrincipal extends pulumi.CustomResource {
   /// The (Client) ID of the Service Principal.
   late final pulumi.Output<String> applicationId;
+
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The thumbprint of the Service Principal Certificate.
   late final pulumi.Output<String> certificateThumbprint;
+
   /// A description for this Connection.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The subscription GUID.
   late final pulumi.Output<String> subscriptionId;
+
   /// The ID of the Tenant the Service Principal is assigned in.
   late final pulumi.Output<String> tenantId;
 
@@ -291,19 +298,19 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
     ConnectionServicePrincipalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.certificateThumbprint = registerOutput<String>('certificateThumbprint');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    automationAccountName = registerOutput<String>('automationAccountName');
+    certificateThumbprint = registerOutput<String>('certificateThumbprint');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.tenantId = registerOutput<String>('tenantId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [ConnectionServicePrincipal] resource's state with the given [name] and [id].
@@ -324,18 +331,18 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.certificateThumbprint = registerOutput<String>('certificateThumbprint');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    automationAccountName = registerOutput<String>('automationAccountName');
+    certificateThumbprint = registerOutput<String>('certificateThumbprint');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.tenantId = registerOutput<String>('tenantId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

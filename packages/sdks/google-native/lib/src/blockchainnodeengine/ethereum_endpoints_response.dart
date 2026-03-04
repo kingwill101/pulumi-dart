@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EthereumEndpointsResponse {
   /// The assigned URL for the node's Beacon API endpoint.
   final pulumi.Input<String> beaconApiEndpoint;
+
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details.
   final pulumi.Input<String> beaconPrometheusMetricsApiEndpoint;
+
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
   final pulumi.Input<String> executionClientPrometheusMetricsApiEndpoint;
 
@@ -25,16 +27,22 @@ class EthereumEndpointsResponse {
     return <String, dynamic>{
       'beaconApiEndpoint': beaconApiEndpoint,
       'beaconPrometheusMetricsApiEndpoint': beaconPrometheusMetricsApiEndpoint,
-      'executionClientPrometheusMetricsApiEndpoint': executionClientPrometheusMetricsApiEndpoint,
+      'executionClientPrometheusMetricsApiEndpoint':
+          executionClientPrometheusMetricsApiEndpoint,
     };
   }
 
   factory EthereumEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EthereumEndpointsResponse(
-      beaconApiEndpoint: (map['beaconApiEndpoint'] as String).input(),
-      beaconPrometheusMetricsApiEndpoint: (map['beaconPrometheusMetricsApiEndpoint'] as String).input(),
-      executionClientPrometheusMetricsApiEndpoint: (map['executionClientPrometheusMetricsApiEndpoint'] as String).input(),
+      beaconApiEndpoint: pulumi.Input.fromValue(
+        map['beaconApiEndpoint'] as String,
+      ),
+      beaconPrometheusMetricsApiEndpoint: pulumi.Input.fromValue(
+        map['beaconPrometheusMetricsApiEndpoint'] as String,
+      ),
+      executionClientPrometheusMetricsApiEndpoint: pulumi.Input.fromValue(
+        map['executionClientPrometheusMetricsApiEndpoint'] as String,
+      ),
     );
   }
 }
-

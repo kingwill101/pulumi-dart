@@ -31,10 +31,13 @@ class GetQueueIamPolicyArgs {
 
   factory GetQueueIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      queueId: (map['queueId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: pulumi.Input.fromValue(map['queueId'] as String),
     );
   }
 }
-

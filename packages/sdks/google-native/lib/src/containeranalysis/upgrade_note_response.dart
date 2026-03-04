@@ -9,10 +9,13 @@ import 'windows_update_response.dart';
 class UpgradeNoteResponse {
   /// Metadata about the upgrade for each specific operating system.
   final pulumi.Input<List<UpgradeDistributionResponse>> distributions;
+
   /// Required for non-Windows OS. The package this Upgrade is for.
   final pulumi.Input<String> package;
+
   /// Required for non-Windows OS. The version of the package in machine + human readable form.
   final pulumi.Input<VersionResponse> version;
+
   /// Required for Windows OS. Represents the metadata about the Windows update.
   final pulumi.Input<WindowsUpdateResponse> windowsUpdate;
 
@@ -30,20 +33,53 @@ class UpgradeNoteResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributions': pulumi.Input.mapInputValue<List<UpgradeDistributionResponse>, List<Map<String, dynamic>>>(distributions, (value) => pulumi.Input.encodeList<UpgradeDistributionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'distributions':
+          pulumi.Input.mapInputValue<
+            List<UpgradeDistributionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            distributions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UpgradeDistributionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'package': package,
-      'version': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
-      'windowsUpdate': pulumi.Input.mapInputValue<WindowsUpdateResponse, Map<String, dynamic>>(windowsUpdate, (value) => value.toMap()),
+      'version':
+          pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(
+            version,
+            (value) => value.toMap(),
+          ),
+      'windowsUpdate':
+          pulumi.Input.mapInputValue<
+            WindowsUpdateResponse,
+            Map<String, dynamic>
+          >(windowsUpdate, (value) => value.toMap()),
     };
   }
 
   factory UpgradeNoteResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteResponse(
-      distributions: (pulumi.Input.decodeList<UpgradeDistributionResponse>(map['distributions'], (value) => UpgradeDistributionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      package: (map['package'] as String).input(),
-      version: (VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
-      windowsUpdate: (WindowsUpdateResponse.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
+      distributions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<UpgradeDistributionResponse>(
+          map['distributions']!,
+          (value) => UpgradeDistributionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      package: pulumi.Input.fromValue(map['package'] as String),
+      version: pulumi.Input.fromValue(
+        VersionResponse.fromMap(
+          (map['version']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      windowsUpdate: pulumi.Input.fromValue(
+        WindowsUpdateResponse.fromMap(
+          (map['windowsUpdate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

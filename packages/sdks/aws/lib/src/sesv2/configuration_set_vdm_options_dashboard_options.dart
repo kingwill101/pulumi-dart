@@ -8,20 +8,21 @@ class ConfigurationSetVdmOptionsDashboardOptions {
 
   /// Creates a new [ConfigurationSetVdmOptionsDashboardOptions].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  ConfigurationSetVdmOptionsDashboardOptions({
-    this.engagementMetrics,
-  });
+  ConfigurationSetVdmOptionsDashboardOptions({this.engagementMetrics});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engagementMetrics': ?engagementMetrics,
-    };
+    return <String, dynamic>{'engagementMetrics': ?engagementMetrics};
   }
 
-  factory ConfigurationSetVdmOptionsDashboardOptions.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationSetVdmOptionsDashboardOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationSetVdmOptionsDashboardOptions(
-      engagementMetrics: map['engagementMetrics'] == null ? null : ((map['engagementMetrics'] as String).input()).input(),
+      engagementMetrics: (() {
+        final guardedValue = map['engagementMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

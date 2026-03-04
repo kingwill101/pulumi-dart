@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserDefinedFunctionResourceResponse {
   /// [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
   final pulumi.Input<String> inlineCode;
+
   /// [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
   final pulumi.Input<String> resourceUri;
 
@@ -24,11 +25,12 @@ class UserDefinedFunctionResourceResponse {
     };
   }
 
-  factory UserDefinedFunctionResourceResponse.fromMap(Map<String, dynamic> map) {
+  factory UserDefinedFunctionResourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserDefinedFunctionResourceResponse(
-      inlineCode: (map['inlineCode'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      inlineCode: pulumi.Input.fromValue(map['inlineCode'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

@@ -27,10 +27,9 @@ class UserProfileDetailSso {
 
   factory UserProfileDetailSso.fromMap(Map<String, dynamic> map) {
     return UserProfileDetailSso(
-      firstName: (map['firstName'] as String).input(),
-      lastName: (map['lastName'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      firstName: pulumi.Input.fromValue(map['firstName'] as String),
+      lastName: pulumi.Input.fromValue(map['lastName'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

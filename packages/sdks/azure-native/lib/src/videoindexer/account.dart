@@ -332,28 +332,41 @@ import 'system_data_response.dart';
 class Account extends pulumi.CustomResource {
   /// The account's data-plane ID. This can be set only when connecting an existing classic account
   late final pulumi.Output<String?> accountId;
+
   /// The account's name
   late final pulumi.Output<String> accountName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the status of the account at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// The storage services details
-  late final pulumi.Output<StorageServicesForPutRequestResponse?> storageServices;
+  late final pulumi.Output<StorageServicesForPutRequestResponse?>
+  storageServices;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The account's tenant id
   late final pulumi.Output<String> tenantId;
+
   /// An integer representing the total seconds that have been indexed on the account
   late final pulumi.Output<int> totalSecondsIndexed;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -366,23 +379,25 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:videoindexer:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String?>('accountId');
-    this.accountName = registerOutput<String>('accountName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:videoindexer:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String?>('accountId');
+    accountName = registerOutput<String>('accountName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageServices = registerOutput<StorageServicesForPutRequestResponse?>('storageServices');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.totalSecondsIndexed = registerOutput<int>('totalSecondsIndexed');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageServices = registerOutput<StorageServicesForPutRequestResponse?>(
+      'storageServices',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    totalSecondsIndexed = registerOutput<int>('totalSecondsIndexed');
+    type = registerOutput<String>('type');
   }
 }

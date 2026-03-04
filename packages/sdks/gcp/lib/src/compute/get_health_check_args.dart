@@ -11,6 +11,7 @@ class GetHealthCheckArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -18,23 +19,20 @@ class GetHealthCheckArgs {
   /// Creates a new [GetHealthCheckArgs].
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetHealthCheckArgs({
-    required this.name,
-    this.project,
-  });
+  GetHealthCheckArgs({required this.name, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'project': ?project,
-    };
+    return <String, dynamic>{'name': name, 'project': ?project};
   }
 
   factory GetHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

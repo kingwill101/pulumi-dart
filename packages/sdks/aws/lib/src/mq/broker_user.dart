@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerUser {
   /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
   final pulumi.Input<bool>? consoleAccess;
+
   /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engine_type` of `ActiveMQ` only.
   final pulumi.Input<List<String>>? groups;
+
   /// Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   final pulumi.Input<String> password;
+
   /// Whether to set replication user. Defaults to `false`.
   final pulumi.Input<bool>? replicationUser;
+
   /// Username of the user.
   ///
   /// The following arguments are optional:
@@ -42,12 +46,23 @@ class BrokerUser {
 
   factory BrokerUser.fromMap(Map<String, dynamic> map) {
     return BrokerUser(
-      consoleAccess: map['consoleAccess'] == null ? null : ((map['consoleAccess'] as bool).input()).input(),
-      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
-      password: (map['password'] as String).input(),
-      replicationUser: map['replicationUser'] == null ? null : ((map['replicationUser'] as bool).input()).input(),
-      username: (map['username'] as String).input(),
+      consoleAccess: (() {
+        final guardedValue = map['consoleAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      replicationUser: (() {
+        final guardedValue = map['replicationUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_datareplication;
-
 export 'datareplication/az_stack_hcicluster_properties.dart';
 export 'datareplication/az_stack_hcicluster_properties_response.dart';
 export 'datareplication/az_stack_hcifabric_model_custom_properties.dart';

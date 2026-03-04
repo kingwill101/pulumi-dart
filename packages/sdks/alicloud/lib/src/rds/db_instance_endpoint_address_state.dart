@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstanceEndpointAddressState {
   /// The endpoint of the instance.
   final pulumi.Input<String>? connectionString;
+
   /// The prefix of the public endpoint.
   final pulumi.Input<String>? connectionStringPrefix;
+
   /// The Endpoint ID of the instance.
   final pulumi.Input<String>? dbInstanceEndpointId;
+
   /// The ID of the instance.
   final pulumi.Input<String>? dbInstanceId;
+
   /// The IP address of the endpoint.
   final pulumi.Input<String>? ipAddress;
+
   /// The type of the IP address.
   final pulumi.Input<String>? ipType;
+
   /// The port number of the public endpoint.
   final pulumi.Input<String>? port;
 
@@ -51,14 +57,41 @@ class DbInstanceEndpointAddressState {
 
   factory DbInstanceEndpointAddressState.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointAddressState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
-      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId']! as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStringPrefix: (() {
+        final guardedValue = map['connectionStringPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceEndpointId: (() {
+        final guardedValue = map['dbInstanceEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipType: (() {
+        final guardedValue = map['ipType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

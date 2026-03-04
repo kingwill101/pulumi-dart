@@ -7,14 +7,19 @@ import 'system_data_response.dart';
 class GetDigitalTwinsEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier.
   final String id;
+
   /// Extension resource name.
   final String name;
+
   /// DigitalTwinsInstance endpoint resource properties.
   final EventGridResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The resource type.
   final String type;
 
@@ -50,10 +55,13 @@ class GetDigitalTwinsEndpointResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: EventGridResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: EventGridResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

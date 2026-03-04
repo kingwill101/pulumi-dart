@@ -14,15 +14,14 @@ class GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instance': instance,
-    };
+    return <String, dynamic>{'instance': instance};
   }
 
-  factory GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(Map<String, dynamic> map) {
+  factory GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint(
-      instance: (map['instance'] as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
     );
   }
 }
-

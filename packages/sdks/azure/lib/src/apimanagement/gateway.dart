@@ -237,7 +237,7 @@ import 'gateway_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -252,10 +252,13 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The ID of the API Management Resource in which the gateway will be created. Changing this forces a new API Management Gateway resource to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The description of the API Management Gateway.
   late final pulumi.Output<String?> description;
+
   /// A `location_data` block as documented below.
   late final pulumi.Output<GatewayLocationData> locationData;
+
   /// The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   late final pulumi.Output<String> name;
 
@@ -268,14 +271,14 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.locationData = registerOutput<GatewayLocationData>('locationData');
+         'azure:apimanagement/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    locationData = registerOutput<GatewayLocationData>('locationData');
     this.name = registerOutput<String>('name');
   }
 
@@ -297,14 +300,14 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.locationData = registerOutput<GatewayLocationData>('locationData');
+         'azure:apimanagement/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    locationData = registerOutput<GatewayLocationData>('locationData');
     this.name = registerOutput<String>('name');
   }
 }

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcmCredential {
   /// Gets or sets the GCM endpoint.
   final pulumi.Input<String>? gcmEndpoint;
+
   /// Gets or sets the Google API key.
   final pulumi.Input<String> googleApiKey;
 
   /// Creates a new [GcmCredential].
   /// [gcmEndpoint] Gets or sets the GCM endpoint.
   /// [googleApiKey] Gets or sets the Google API key.
-  GcmCredential({
-    this.gcmEndpoint,
-    required this.googleApiKey,
-  });
+  GcmCredential({this.gcmEndpoint, required this.googleApiKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class GcmCredential {
 
   factory GcmCredential.fromMap(Map<String, dynamic> map) {
     return GcmCredential(
-      gcmEndpoint: map['gcmEndpoint'] == null ? null : (map['gcmEndpoint']! as String).input(),
-      googleApiKey: (map['googleApiKey'] as String).input(),
+      gcmEndpoint: (() {
+        final guardedValue = map['gcmEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      googleApiKey: pulumi.Input.fromValue(map['googleApiKey'] as String),
     );
   }
 }
-

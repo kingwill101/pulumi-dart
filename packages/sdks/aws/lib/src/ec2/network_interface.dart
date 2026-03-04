@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_args.dart';
-import 'network_interface_attachment.dart';
 import 'network_interface_state.dart';
 
 /// Provides an Elastic network interface (ENI) resource.
@@ -176,58 +175,83 @@ import 'network_interface_state.dart';
 class NetworkInterface extends pulumi.CustomResource {
   /// ARN of the network interface.
   late final pulumi.Output<String> arn;
+
   /// Configuration block to define the attachment of the ENI. See Attachment below for more details!
-  late final pulumi.Output<List<NetworkInterfaceAttachment>> attachments;
+  late final pulumi.Output<List<Map<String, dynamic>>> attachments;
+
   /// Description for the network interface.
   late final pulumi.Output<String?> description;
+
   /// Enables assigning a primary IPv6 Global Unicast Address (GUA) to the network interface (ENI) in dual-stack or IPv6-only subnets. This ensures the instance attached to the ENI retains a consistent IPv6 address. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains assigned until the instance is terminated or the ENI is detached. Enabling and subsequent disabling forces recreation of the ENI.
   late final pulumi.Output<bool> enablePrimaryIpv6;
+
   /// Type of network interface to create. Set to `efa` for Elastic Fabric Adapter. Changing `interface_type` will cause the resource to be destroyed and re-created.
   late final pulumi.Output<String> interfaceType;
+
   /// Number of IPv4 prefixes that AWS automatically assigns to the network interface.
   late final pulumi.Output<int> ipv4PrefixCount;
+
   /// One or more IPv4 prefixes assigned to the network interface.
   late final pulumi.Output<List<String>> ipv4Prefixes;
+
   /// Number of IPv6 addresses to assign to a network interface. You can't use this option if specifying specific `ipv6_addresses`. If your subnet has the AssignIpv6AddressOnCreation attribute set to `true`, you can specify `0` to override this setting.
   late final pulumi.Output<int> ipv6AddressCount;
+
   /// Whether `ipv6_address_list` is allowed and controls the IPs to assign to the ENI and `ipv6_addresses` and `ipv6_address_count` become read-only. Default is `false`.
   late final pulumi.Output<bool?> ipv6AddressListEnabled;
+
   /// List of private IPs to assign to the ENI in sequential order.
   late final pulumi.Output<List<String>> ipv6AddressLists;
+
   /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Addresses are assigned without regard to order. You can't use this option if you're specifying `ipv6_address_count`.
   late final pulumi.Output<List<String>> ipv6Addresses;
+
   /// Number of IPv6 prefixes that AWS automatically assigns to the network interface.
   late final pulumi.Output<int> ipv6PrefixCount;
+
   /// One or more IPv6 prefixes assigned to the network interface.
   late final pulumi.Output<List<String>> ipv6Prefixes;
+
   /// MAC address of the network interface.
   late final pulumi.Output<String> macAddress;
   late final pulumi.Output<String> outpostArn;
+
   /// AWS account ID of the owner of the network interface.
   late final pulumi.Output<String> ownerId;
+
   /// Private DNS name of the network interface (IPv4).
   late final pulumi.Output<String> privateDnsName;
   late final pulumi.Output<String> privateIp;
+
   /// Whether `private_ip_list` is allowed and controls the IPs to assign to the ENI and `private_ips` and `private_ips_count` become read-only. Default is `false`.
   late final pulumi.Output<bool?> privateIpListEnabled;
+
   /// List of private IPs to assign to the ENI in sequential order. Requires setting `private_ip_list_enabled` to `true`.
   late final pulumi.Output<List<String>> privateIpLists;
+
   /// List of private IPs to assign to the ENI without regard to order.
   late final pulumi.Output<List<String>> privateIps;
+
   /// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + `private_ips_count`, as a primary private IP will be assiged to an ENI by default.
   late final pulumi.Output<int> privateIpsCount;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of security group IDs to assign to the ENI.
   late final pulumi.Output<List<String>> securityGroups;
+
   /// Whether to enable source destination checking for the ENI. Default true.
   late final pulumi.Output<bool?> sourceDestCheck;
+
   /// Subnet ID to create the ENI in.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> subnetId;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -240,39 +264,39 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterface:NetworkInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments');
-    this.description = registerOutput<String?>('description');
-    this.enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
-    this.interfaceType = registerOutput<String>('interfaceType');
-    this.ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
-    this.ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
-    this.ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    this.ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
-    this.ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
-    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
-    this.ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
-    this.ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
-    this.macAddress = registerOutput<String>('macAddress');
-    this.outpostArn = registerOutput<String>('outpostArn');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.privateDnsName = registerOutput<String>('privateDnsName');
-    this.privateIp = registerOutput<String>('privateIp');
-    this.privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
-    this.privateIpLists = registerOutput<List<String>>('privateIpLists');
-    this.privateIps = registerOutput<List<String>>('privateIps');
-    this.privateIpsCount = registerOutput<int>('privateIpsCount');
-    this.region = registerOutput<String>('region');
-    this.securityGroups = registerOutput<List<String>>('securityGroups');
-    this.sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ec2/networkInterface:NetworkInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    description = registerOutput<String?>('description');
+    enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    interfaceType = registerOutput<String>('interfaceType');
+    ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
+    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
+    ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
+    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
+    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
+    macAddress = registerOutput<String>('macAddress');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateIp = registerOutput<String>('privateIp');
+    privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
+    privateIpLists = registerOutput<List<String>>('privateIpLists');
+    privateIps = registerOutput<List<String>>('privateIps');
+    privateIpsCount = registerOutput<int>('privateIpsCount');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups');
+    sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [NetworkInterface] resource's state with the given [name] and [id].
@@ -293,38 +317,38 @@ class NetworkInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterface:NetworkInterface',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments');
-    this.description = registerOutput<String?>('description');
-    this.enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
-    this.interfaceType = registerOutput<String>('interfaceType');
-    this.ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
-    this.ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
-    this.ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    this.ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
-    this.ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
-    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
-    this.ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
-    this.ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
-    this.macAddress = registerOutput<String>('macAddress');
-    this.outpostArn = registerOutput<String>('outpostArn');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.privateDnsName = registerOutput<String>('privateDnsName');
-    this.privateIp = registerOutput<String>('privateIp');
-    this.privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
-    this.privateIpLists = registerOutput<List<String>>('privateIpLists');
-    this.privateIps = registerOutput<List<String>>('privateIps');
-    this.privateIpsCount = registerOutput<int>('privateIpsCount');
-    this.region = registerOutput<String>('region');
-    this.securityGroups = registerOutput<List<String>>('securityGroups');
-    this.sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ec2/networkInterface:NetworkInterface',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    description = registerOutput<String?>('description');
+    enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    interfaceType = registerOutput<String>('interfaceType');
+    ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
+    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
+    ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
+    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
+    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
+    macAddress = registerOutput<String>('macAddress');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateIp = registerOutput<String>('privateIp');
+    privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
+    privateIpLists = registerOutput<List<String>>('privateIpLists');
+    privateIps = registerOutput<List<String>>('privateIps');
+    privateIpsCount = registerOutput<int>('privateIpsCount');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups');
+    sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

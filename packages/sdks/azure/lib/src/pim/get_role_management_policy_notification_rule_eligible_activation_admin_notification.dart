@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification {
   /// A list of additional email addresses that will receive these notifications.
   final pulumi.Input<List<String>> additionalRecipients;
+
   /// (Boolean) Should the default recipients receive these notifications.
   final pulumi.Input<bool> defaultRecipients;
+
   /// (String) What level of notifications should be sent. Either `All` or `Critical`.
   final pulumi.Input<String> notificationLevel;
 
@@ -28,12 +30,19 @@ class GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification
     };
   }
 
-  factory GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification.fromMap(Map<String, dynamic> map) {
+  factory GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification(
-      additionalRecipients: ((map['additionalRecipients'] as List).cast<String>()).input(),
-      defaultRecipients: (map['defaultRecipients'] as bool).input(),
-      notificationLevel: (map['notificationLevel'] as String).input(),
+      additionalRecipients: pulumi.Input.fromValue(
+        (map['additionalRecipients'] as List).cast<String>(),
+      ),
+      defaultRecipients: pulumi.Input.fromValue(
+        map['defaultRecipients'] as bool,
+      ),
+      notificationLevel: pulumi.Input.fromValue(
+        map['notificationLevel'] as String,
+      ),
     );
   }
 }
-

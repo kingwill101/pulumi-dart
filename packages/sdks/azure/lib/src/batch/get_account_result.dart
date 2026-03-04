@@ -8,25 +8,35 @@ import 'get_account_key_vault_reference.dart';
 class GetAccountResult {
   /// The account endpoint used to interact with the Batch service.
   final String accountEndpoint;
+
   /// The `encryption` block that describes the Azure KeyVault key reference used to encrypt data for the Azure Batch account.
   final List<GetAccountEncryption> encryptions;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The `key_vault_reference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   final List<GetAccountKeyVaultReference> keyVaultReferences;
+
   /// The Azure Region in which this Batch account exists.
   final String location;
+
   /// The Batch account name.
   final String name;
+
   /// The pool allocation mode configured for this Batch account.
   final String poolAllocationMode;
+
   /// The Batch account primary access key.
   final String primaryAccessKey;
   final String resourceGroupName;
+
   /// The Batch account secondary access key.
   final String secondaryAccessKey;
+
   /// The ID of the Storage Account used for this Batch account.
   final String storageAccountId;
+
   /// A map of tags assigned to the Batch account.
   final Map<String, String> tags;
 
@@ -61,9 +71,17 @@ class GetAccountResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountEndpoint': accountEndpoint,
-      'encryptions': pulumi.Input.encodeList<GetAccountEncryption, Map<String, dynamic>>(encryptions, (value) => value.toMap()),
+      'encryptions':
+          pulumi.Input.encodeList<GetAccountEncryption, Map<String, dynamic>>(
+            encryptions,
+            (value) => value.toMap(),
+          ),
       'id': id,
-      'keyVaultReferences': pulumi.Input.encodeList<GetAccountKeyVaultReference, Map<String, dynamic>>(keyVaultReferences, (value) => value.toMap()),
+      'keyVaultReferences':
+          pulumi.Input.encodeList<
+            GetAccountKeyVaultReference,
+            Map<String, dynamic>
+          >(keyVaultReferences, (value) => value.toMap()),
       'location': location,
       'name': name,
       'poolAllocationMode': poolAllocationMode,
@@ -78,9 +96,19 @@ class GetAccountResult {
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
       accountEndpoint: map['accountEndpoint'] as String,
-      encryptions: pulumi.Input.decodeList<GetAccountEncryption>(map['encryptions'], (value) => GetAccountEncryption.fromMap((value as Map).cast<String, dynamic>())),
+      encryptions: pulumi.Input.decodeList<GetAccountEncryption>(
+        map['encryptions']!,
+        (value) => GetAccountEncryption.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      keyVaultReferences: pulumi.Input.decodeList<GetAccountKeyVaultReference>(map['keyVaultReferences'], (value) => GetAccountKeyVaultReference.fromMap((value as Map).cast<String, dynamic>())),
+      keyVaultReferences: pulumi.Input.decodeList<GetAccountKeyVaultReference>(
+        map['keyVaultReferences']!,
+        (value) => GetAccountKeyVaultReference.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       poolAllocationMode: map['poolAllocationMode'] as String,
@@ -92,4 +120,3 @@ class GetAccountResult {
     );
   }
 }
-

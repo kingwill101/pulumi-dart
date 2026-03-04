@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
   /// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
   final pulumi.Input<String> aggregationMethod;
+
   /// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
   final pulumi.Input<int> cpuUsagePercentage;
+
   /// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
   final pulumi.Input<int> memoryUsagePercentage;
+
   /// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
   final pulumi.Input<double> storageMultiplier;
 
@@ -34,13 +37,22 @@ class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
     };
   }
 
-  factory VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePreferencesSizingOptimizationCustomParametersResponse(
-      aggregationMethod: (map['aggregationMethod'] as String).input(),
-      cpuUsagePercentage: (map['cpuUsagePercentage'] as int).input(),
-      memoryUsagePercentage: (map['memoryUsagePercentage'] as int).input(),
-      storageMultiplier: (map['storageMultiplier'] as double).input(),
+      aggregationMethod: pulumi.Input.fromValue(
+        map['aggregationMethod'] as String,
+      ),
+      cpuUsagePercentage: pulumi.Input.fromValue(
+        map['cpuUsagePercentage'] as int,
+      ),
+      memoryUsagePercentage: pulumi.Input.fromValue(
+        map['memoryUsagePercentage'] as int,
+      ),
+      storageMultiplier: pulumi.Input.fromValue(
+        map['storageMultiplier'] as double,
+      ),
     );
   }
 }
-

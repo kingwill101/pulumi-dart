@@ -8,7 +8,7 @@ import 'group_state.dart';
 ///
 /// For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -147,15 +147,19 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The Group comment information. The maximum length is 128 characters.
   late final pulumi.Output<String?> comments;
+
   /// (Available since v1.245.0) The create time of the group.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> force;
+
   /// The group name. You must specify at least one of the `group_name` and `name`.
   /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<String> groupName;
+
   /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
   late final pulumi.Output<String> name;
 
@@ -163,29 +167,22 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_ram_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ram/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comments = registerOutput<String?>('comments');
-    this.createTime = registerOutput<String>('createTime');
-    this.force = registerOutput<bool?>('force');
-    this.groupName = registerOutput<String>('groupName');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ram/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    comments = registerOutput<String?>('comments');
+    createTime = registerOutput<String>('createTime');
+    force = registerOutput<bool?>('force');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -198,15 +195,15 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comments = registerOutput<String?>('comments');
-    this.createTime = registerOutput<String>('createTime');
-    this.force = registerOutput<bool?>('force');
-    this.groupName = registerOutput<String>('groupName');
+         'alicloud:ram/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comments = registerOutput<String?>('comments');
+    createTime = registerOutput<String>('createTime');
+    force = registerOutput<bool?>('force');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
   }
 }

@@ -380,7 +380,7 @@ import 'insights_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AlertsManagement` - 2019-06-01
@@ -397,41 +397,58 @@ import 'insights_state.dart';
 class Insights extends pulumi.CustomResource {
   /// The App ID associated with this Application Insights component.
   late final pulumi.Output<String> appId;
+
   /// Specifies the type of Application Insights to create. Valid values are `ios` for _iOS_, `java` for _Java web_, `MobileCenter` for _App Center_, `Node.JS` for _Node.js_, `other` for _General_, `phone` for _Windows Phone_, `store` for _Windows Store_ and `web` for _ASP.NET_. Please note these values are case sensitive; unmatched values are treated as _ASP.NET_ by Azure. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationType;
+
   /// The Connection String for this Application Insights component. (Sensitive)
   late final pulumi.Output<String> connectionString;
+
   /// Specifies the Application Insights component daily data volume cap in GB. Defaults to `100`.
   late final pulumi.Output<double?> dailyDataCapInGb;
+
   /// Specifies if a notification email will be sent when the daily data volume cap is met. Defaults to `false`.
   late final pulumi.Output<bool?> dailyDataCapNotificationsDisabled;
+
   /// By default the real client IP is masked as `0.0.0.0` in the logs. Use this argument to disable masking and log the real client IP. Defaults to `false`.
   late final pulumi.Output<bool?> disableIpMasking;
+
   /// Should the Application Insights component force users to create their own storage account for profiling? Defaults to `false`.
   late final pulumi.Output<bool?> forceCustomerStorageForProfiler;
+
   /// The Instrumentation Key for this Application Insights component. (Sensitive)
   late final pulumi.Output<String> instrumentationKey;
+
   /// Should the Application Insights component support ingestion over the Public Internet? Defaults to `true`.
   late final pulumi.Output<bool?> internetIngestionEnabled;
+
   /// Should the Application Insights component support querying over the Public Internet? Defaults to `true`.
   late final pulumi.Output<bool?> internetQueryEnabled;
+
   /// Disable Non-Azure AD based Auth. Defaults to `false`.
   late final pulumi.Output<bool?> localAuthenticationDisabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Application Insights component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Application Insights component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the retention period in days. Possible values are `30`, `60`, `90`, `120`, `180`, `270`, `365`, `550` or `730`. Defaults to `90`.
   late final pulumi.Output<int?> retentionInDays;
+
   /// Specifies the percentage of the data produced by the monitored application that is sampled for Application Insights telemetry. Defaults to `100`.
   late final pulumi.Output<double?> samplingPercentage;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the id of a log analytics workspace resource.
   ///
-  /// > **Note:** `workspace_id` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspace_id` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspace_id` in the config file to the new value.
+  /// &gt; **Note:** `workspace_id` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspace_id` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspace_id` in the config file to the new value.
   late final pulumi.Output<String> workspaceId;
 
   /// Creates a new [Insights].
@@ -443,29 +460,37 @@ class Insights extends pulumi.CustomResource {
     InsightsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/insights:Insights',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.applicationType = registerOutput<String>('applicationType');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
-    this.dailyDataCapNotificationsDisabled = registerOutput<bool?>('dailyDataCapNotificationsDisabled');
-    this.disableIpMasking = registerOutput<bool?>('disableIpMasking');
-    this.forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
-    this.instrumentationKey = registerOutput<String>('instrumentationKey');
-    this.internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
-    this.internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
-    this.localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/insights:Insights',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    applicationType = registerOutput<String>('applicationType');
+    connectionString = registerOutput<String>('connectionString');
+    dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
+    dailyDataCapNotificationsDisabled = registerOutput<bool?>(
+      'dailyDataCapNotificationsDisabled',
+    );
+    disableIpMasking = registerOutput<bool?>('disableIpMasking');
+    forceCustomerStorageForProfiler = registerOutput<bool?>(
+      'forceCustomerStorageForProfiler',
+    );
+    instrumentationKey = registerOutput<String>('instrumentationKey');
+    internetIngestionEnabled = registerOutput<bool?>(
+      'internetIngestionEnabled',
+    );
+    internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
+    localAuthenticationDisabled = registerOutput<bool?>(
+      'localAuthenticationDisabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.samplingPercentage = registerOutput<double?>('samplingPercentage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    samplingPercentage = registerOutput<double?>('samplingPercentage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [Insights] resource's state with the given [name] and [id].
@@ -486,28 +511,36 @@ class Insights extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/insights:Insights',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.applicationType = registerOutput<String>('applicationType');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
-    this.dailyDataCapNotificationsDisabled = registerOutput<bool?>('dailyDataCapNotificationsDisabled');
-    this.disableIpMasking = registerOutput<bool?>('disableIpMasking');
-    this.forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
-    this.instrumentationKey = registerOutput<String>('instrumentationKey');
-    this.internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
-    this.internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
-    this.localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/insights:Insights',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    applicationType = registerOutput<String>('applicationType');
+    connectionString = registerOutput<String>('connectionString');
+    dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
+    dailyDataCapNotificationsDisabled = registerOutput<bool?>(
+      'dailyDataCapNotificationsDisabled',
+    );
+    disableIpMasking = registerOutput<bool?>('disableIpMasking');
+    forceCustomerStorageForProfiler = registerOutput<bool?>(
+      'forceCustomerStorageForProfiler',
+    );
+    instrumentationKey = registerOutput<String>('instrumentationKey');
+    internetIngestionEnabled = registerOutput<bool?>(
+      'internetIngestionEnabled',
+    );
+    internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
+    localAuthenticationDisabled = registerOutput<bool?>(
+      'localAuthenticationDisabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.samplingPercentage = registerOutput<double?>('samplingPercentage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    samplingPercentage = registerOutput<double?>('samplingPercentage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

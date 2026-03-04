@@ -4,16 +4,15 @@ enum TermCommitmentType {
   trial("Trial"),
   timed("Timed");
 
-  const TermCommitmentType(this.value);
-  final String value;
+  const TermCommitmentType(this.wireValue);
+  final String wireValue;
 
   static TermCommitmentType fromValue(String value) {
     for (final item in TermCommitmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TermCommitmentType value: $value');
   }
 }
-

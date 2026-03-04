@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
   final pulumi.Input<int>? batchNodeCount;
+
   /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
   final pulumi.Input<double>? batchPercentage;
+
   /// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
   final pulumi.Input<String>? batchSoakDuration;
 
@@ -28,12 +30,25 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
     };
   }
 
-  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(
-      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount']! as int).input(),
-      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage']! as double).input(),
-      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration']! as String).input(),
+      batchNodeCount: (() {
+        final guardedValue = map['batchNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      batchPercentage: (() {
+        final guardedValue = map['batchPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      batchSoakDuration: (() {
+        final guardedValue = map['batchSoakDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

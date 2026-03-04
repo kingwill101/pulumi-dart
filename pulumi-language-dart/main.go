@@ -20,15 +20,20 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
 	"net"
+	"net/url"
 	"os"
 	"os/exec"
 	"os/signal"
 	"path/filepath"
+	"regexp"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -136,6 +141,11 @@ type dartLanguageHost struct {
 
 type activeOperation struct {
 	cancel context.CancelFunc
+}
+
+type dartRuntimeOptions struct {
+	binary      string
+	buildTarget string
 }
 
 // newLanguageHost creates a new instance of dartLanguageHost.
@@ -282,9 +292,27 @@ func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, prog
 				}
 			}
 		}
+		if filepath.Ext(entryPoint) == ".dart" && !strings.ContainsAny(entryPoint, `/\\`) {
+			if programDirectory != "" {
+				absoluteEntry := filepath.Join(programDirectory, entryPoint)
+				if _, err := os.Stat(absoluteEntry); err != nil {
+					candidate := filepath.Join("bin", entryPoint)
+					if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+						return filepath.ToSlash(candidate)
+					}
+				}
+			}
+		}
 		return entryPoint
 	}
-	if strings.TrimSpace(fallback) == "." {
+	fallback = strings.TrimSpace(fallback)
+	// Pulumi may provide an empty legacy program value while setting ProgramInfo
+	// fields. Treat empty as "." so standard bin/main.dart or bin/<pubspec>.dart
+	// resolution still applies and compile-cache flow can be used.
+	if fallback == "" {
+		fallback = "."
+	}
+	if fallback == "." {
 		if programDirectory != "" {
 			if _, err := os.Stat(filepath.Join(programDirectory, "bin", "main.dart")); err == nil {
 				return filepath.ToSlash(filepath.Join("bin", "main.dart"))
@@ -302,7 +330,269 @@ func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, prog
 		}
 		return "."
 	}
-	return strings.TrimSpace(fallback)
+	return fallback
+}
+
+func hasPubspecInDirectory(dir string) bool {
+	if strings.TrimSpace(dir) == "" {
+		return false
+	}
+	_, err := os.Stat(filepath.Join(dir, "pubspec.yaml"))
+	return err == nil
+}
+
+func normalizeProgramDirectoryAndEntryPoint(programDirectory, entryPoint, fallbackRoot string) (string, string) {
+	programDirectory = strings.TrimSpace(programDirectory)
+	entryPoint = strings.TrimSpace(entryPoint)
+	fallbackRoot = strings.TrimSpace(fallbackRoot)
+	if programDirectory == "" {
+		return programDirectory, entryPoint
+	}
+
+	if !filepath.IsAbs(programDirectory) && fallbackRoot != "" {
+		programDirectory = filepath.Clean(filepath.Join(fallbackRoot, programDirectory))
+	}
+
+	originalDirectory := programDirectory
+	if !hasPubspecInDirectory(programDirectory) {
+		parent := filepath.Dir(programDirectory)
+		if parent != programDirectory && hasPubspecInDirectory(parent) {
+			programDirectory = parent
+			if entryPoint != "" && entryPoint != "." && !filepath.IsAbs(entryPoint) {
+				if rel, err := filepath.Rel(programDirectory, originalDirectory); err == nil && rel != "." {
+					relSlash := filepath.ToSlash(rel)
+					entryPointSlash := filepath.ToSlash(filepath.Clean(entryPoint))
+					if entryPointSlash != relSlash && !strings.HasPrefix(entryPointSlash, relSlash+"/") {
+						entryPoint = filepath.ToSlash(filepath.Join(rel, entryPoint))
+					}
+				}
+			}
+		}
+	}
+
+	return programDirectory, entryPoint
+}
+
+func normalizeCompilationContext(programDirectory, entryPoint, fallbackRoot string) (string, string) {
+	programDirectory, entryPoint = normalizeProgramDirectoryAndEntryPoint(programDirectory, entryPoint, fallbackRoot)
+	if strings.TrimSpace(programDirectory) == "" || strings.TrimSpace(entryPoint) == "" || strings.TrimSpace(entryPoint) == "." {
+		return programDirectory, entryPoint
+	}
+	if filepath.IsAbs(entryPoint) {
+		return programDirectory, entryPoint
+	}
+
+	entryPointPath := filepath.FromSlash(entryPoint)
+	candidate := filepath.Join(programDirectory, entryPointPath)
+	if _, err := os.Stat(candidate); err == nil {
+		return programDirectory, entryPoint
+	}
+
+	if !strings.ContainsAny(entryPoint, `/\\`) {
+		binCandidate := filepath.Join("bin", entryPointPath)
+		if _, err := os.Stat(filepath.Join(programDirectory, binCandidate)); err == nil {
+			return programDirectory, filepath.ToSlash(binCandidate)
+		}
+	}
+
+	return programDirectory, entryPoint
+}
+
+func parseDartRuntimeOptions(info *pulumirpc.ProgramInfo) (dartRuntimeOptions, error) {
+	var options dartRuntimeOptions
+	if info == nil || info.GetOptions() == nil {
+		return options, nil
+	}
+
+	rawOptions := info.GetOptions().AsMap()
+	if binary, ok := rawOptions["binary"]; ok {
+		value, ok := binary.(string)
+		if !ok {
+			return options, errors.New("binary option must be a string")
+		}
+		options.binary = strings.TrimSpace(value)
+	}
+
+	if buildTarget, ok := rawOptions["buildTarget"]; ok {
+		value, ok := buildTarget.(string)
+		if !ok {
+			return options, errors.New("buildTarget option must be a string")
+		}
+		options.buildTarget = strings.TrimSpace(value)
+	}
+
+	if options.binary != "" && options.buildTarget != "" {
+		return options, errors.New("binary and buildTarget cannot both be specified")
+	}
+
+	return options, nil
+}
+
+func normalizeDartBuildTargetPath(programDirectory, buildTarget string) string {
+	buildTarget = strings.TrimSpace(buildTarget)
+	if buildTarget == "" {
+		return ""
+	}
+	if filepath.IsAbs(buildTarget) || programDirectory == "" {
+		return buildTarget
+	}
+	return filepath.Join(programDirectory, buildTarget)
+}
+
+func appendDartFileFingerprint(entries *[]string, programDirectory, path string) error {
+	stat, err := os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	if stat.IsDir() {
+		return nil
+	}
+
+	relative := path
+	if programDirectory != "" {
+		if rel, err := filepath.Rel(programDirectory, path); err == nil {
+			relative = rel
+		}
+	}
+	relative = filepath.ToSlash(relative)
+	*entries = append(*entries, fmt.Sprintf("%s|%d|%d", relative, stat.Size(), stat.ModTime().UTC().UnixNano()))
+	return nil
+}
+
+func appendDartDirectoryFingerprints(entries *[]string, programDirectory, dir string) error {
+	stat, err := os.Stat(dir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	if !stat.IsDir() {
+		return nil
+	}
+
+	return filepath.WalkDir(dir, func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
+			if path != dir && strings.HasPrefix(d.Name(), ".") {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if filepath.Ext(path) != ".dart" {
+			return nil
+		}
+		return appendDartFileFingerprint(entries, programDirectory, path)
+	})
+}
+
+func computeDartProgramFingerprint(programDirectory, entryPoint string) (string, error) {
+	entryPoint = strings.TrimSpace(entryPoint)
+	entries := []string{
+		fmt.Sprintf("entryPoint=%s", filepath.ToSlash(entryPoint)),
+	}
+
+	if entryPoint != "" && entryPoint != "." && programDirectory != "" {
+		entryPath := entryPoint
+		if !filepath.IsAbs(entryPath) {
+			entryPath = filepath.Join(programDirectory, filepath.FromSlash(entryPoint))
+		}
+		if err := appendDartFileFingerprint(&entries, programDirectory, entryPath); err != nil {
+			return "", err
+		}
+	}
+
+	if programDirectory != "" {
+		for _, relative := range []string{"pubspec.yaml", "pubspec.lock"} {
+			if err := appendDartFileFingerprint(&entries, programDirectory, filepath.Join(programDirectory, relative)); err != nil {
+				return "", err
+			}
+		}
+		for _, relativeDir := range []string{"bin", "lib", "tool"} {
+			if err := appendDartDirectoryFingerprints(&entries, programDirectory, filepath.Join(programDirectory, relativeDir)); err != nil {
+				return "", err
+			}
+		}
+	}
+
+	sort.Strings(entries)
+	hasher := sha256.New()
+	for _, entry := range entries {
+		_, _ = io.WriteString(hasher, entry)
+		_, _ = io.WriteString(hasher, "\n")
+	}
+	return hex.EncodeToString(hasher.Sum(nil))[:24], nil
+}
+
+func defaultDartBuildTarget(programDirectory, entryPoint string) (string, error) {
+	if strings.TrimSpace(programDirectory) == "" {
+		return "", errors.New("program directory is required")
+	}
+	fingerprint, err := computeDartProgramFingerprint(programDirectory, entryPoint)
+	if err != nil {
+		return "", err
+	}
+
+	name := "program-" + fingerprint
+	if runtime.GOOS == "windows" {
+		name += ".exe"
+	}
+	return filepath.Join(programDirectory, ".dart_tool", "pulumi", "cache", "exe", name), nil
+}
+
+func (host *dartLanguageHost) ensureCompiledDartProgram(
+	ctx context.Context,
+	programDirectory string,
+	entryPoint string,
+	buildTarget string,
+	reuseExisting bool,
+) (string, error) {
+	if strings.TrimSpace(programDirectory) == "" {
+		return "", errors.New("program directory is required for compilation")
+	}
+	if strings.TrimSpace(entryPoint) == "" || strings.TrimSpace(entryPoint) == "." {
+		return "", errors.New("program entry point is required for compilation")
+	}
+	if strings.TrimSpace(buildTarget) == "" {
+		return "", errors.New("build target is required for compilation")
+	}
+
+	if reuseExisting {
+		if stat, err := os.Stat(buildTarget); err == nil && !stat.IsDir() {
+			logging.V(5).Infof("Reusing cached Dart executable: %s", buildTarget)
+			fmt.Fprintf(os.Stderr, "pulumi-language-dart: cache hit executable=%s\n", buildTarget)
+			return buildTarget, nil
+		} else if err != nil && !os.IsNotExist(err) {
+			return "", fmt.Errorf("failed to inspect cached executable %s: %w", buildTarget, err)
+		}
+	}
+
+	if err := os.MkdirAll(filepath.Dir(buildTarget), 0o700); err != nil {
+		return "", fmt.Errorf("failed to create build target directory: %w", err)
+	}
+
+	compileArgs := []string{"compile", "exe", entryPoint, "-o", buildTarget}
+	if logging.V(5) {
+		logging.V(5).Infof("Compiling Dart Pulumi program: %s %s", host.exec, strings.Join(compileArgs, " "))
+	}
+	fmt.Fprintf(os.Stderr, "pulumi-language-dart: cache miss compiling entrypoint=%s output=%s\n", entryPoint, buildTarget)
+	start := time.Now()
+
+	cmd := exec.CommandContext(ctx, host.exec, compileArgs...)
+	cmd.Dir = programDirectory
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		return "", err
+	}
+	fmt.Fprintf(os.Stderr, "pulumi-language-dart: compile complete duration=%s output=%s\n", time.Since(start).Round(time.Millisecond), buildTarget)
+
+	return buildTarget, nil
 }
 
 type projectPackageSpec struct {
@@ -374,6 +664,58 @@ func encodePackageParameters(parameters []string) []byte {
 	return encoded
 }
 
+func (host *dartLanguageHost) warmUpCompileCacheFromProgramInfo(
+	ctx context.Context,
+	info *pulumirpc.ProgramInfo,
+	programDirectory string,
+) error {
+	runtimeOptions, err := parseDartRuntimeOptions(info)
+	if err != nil {
+		return err
+	}
+
+	// Binary executions do not use source compile caching.
+	if host.binary != "" || runtimeOptions.binary != "" {
+		return nil
+	}
+	if info != nil {
+		if explicitEntry := strings.TrimSpace(info.GetEntryPoint()); explicitEntry != "" && explicitEntry != "." && filepath.Ext(explicitEntry) != "" {
+			logging.V(5).Infof("GetRequiredPackages: skipping compile-cache warm-up for explicit file entrypoint %q", explicitEntry)
+			return nil
+		}
+	}
+
+	// Keep explicit buildTarget behavior owned by Run() to avoid surprising
+	// semantics for fixed output paths.
+	if runtimeOptions.buildTarget != "" {
+		return nil
+	}
+
+	entryPoint := resolveProgramEntryPoint(info, ".", programDirectory)
+	programDirectory, entryPoint = normalizeCompilationContext(programDirectory, entryPoint, info.GetRootDirectory())
+	if entryPoint == "" || entryPoint == "." {
+		logging.V(5).Infof("GetRequiredPackages: skipping compile-cache warm-up for non-concrete entrypoint %q", entryPoint)
+		return nil
+	}
+	if filepath.Ext(entryPoint) == ".dart" && !strings.ContainsAny(entryPoint, `/\\`) && programDirectory != "" {
+		if _, err := os.Stat(filepath.Join(programDirectory, entryPoint)); err != nil {
+			logging.V(5).Infof("GetRequiredPackages: skipping compile-cache warm-up for unresolved relative entrypoint %q in %q", entryPoint, programDirectory)
+			return nil
+		}
+	}
+
+	buildTarget, err := defaultDartBuildTarget(programDirectory, entryPoint)
+	if err != nil {
+		return fmt.Errorf("failed to determine Dart build target: %w", err)
+	}
+
+	_, err = host.ensureCompiledDartProgram(ctx, programDirectory, entryPoint, buildTarget, true /*reuseExisting*/)
+	if err != nil {
+		return fmt.Errorf("failed to warm Dart compile cache: %w", err)
+	}
+	return nil
+}
+
 func (host *dartLanguageHost) GetRequiredPackages(
 	ctx context.Context,
 	req *pulumirpc.GetRequiredPackagesRequest,
@@ -399,6 +741,17 @@ func (host *dartLanguageHost) GetRequiredPackages(
 	pubspec, err := ReadAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil, err
+	}
+
+	projectDirectory := strings.TrimSpace(req.GetInfo().GetRootDirectory())
+	if projectDirectory == "" {
+		projectDirectory = filepath.Dir(pubspecPath)
+	}
+	if projectDirectory == "" {
+		projectDirectory = searchDir
+	}
+	if err := host.warmUpCompileCacheFromProgramInfo(ctx, req.GetInfo(), projectDirectory); err != nil {
+		logging.V(3).Infof("GetRequiredPackages: warm-up compile cache skipped due to error: %v", err)
 	}
 
 	projectPackages, err := readProjectPackages(searchDir)
@@ -509,6 +862,19 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		})
 	}
 
+	logging.V(5).Infof("GetRequiredPackages: resolved %d package dependencies for directory %q", len(packages), searchDir)
+	for _, pkg := range packages {
+		if pkg == nil {
+			continue
+		}
+		logging.V(7).Infof("GetRequiredPackages: package name=%q kind=%q version=%q server=%q", pkg.Name, pkg.Kind, pkg.Version, pkg.Server)
+		if pkg.Parameterization != nil {
+			logging.V(7).Infof(
+				"GetRequiredPackages: parameterization name=%q version=%q value=%s",
+				pkg.Parameterization.Name, pkg.Parameterization.Version, pkg.Parameterization.Value)
+		}
+	}
+
 	return &pulumirpc.GetRequiredPackagesResponse{Packages: packages}, nil
 }
 
@@ -564,6 +930,15 @@ func (host *dartLanguageHost) GetRequiredPlugins(
 			Server:    strings.TrimSpace(pkg.GetServer()),
 			Checksums: pkg.GetChecksums(),
 		})
+	}
+	logging.V(5).Infof("GetRequiredPlugins: resolved %d plugins for program %q", len(plugins), req.GetProgram())
+	for _, plugin := range plugins {
+		if plugin == nil {
+			continue
+		}
+		logging.V(7).Infof(
+			"GetRequiredPlugins: plugin name=%q kind=%q version=%q server=%q",
+			plugin.Name, plugin.Kind, plugin.Version, plugin.Server)
 	}
 
 	return &pulumirpc.GetRequiredPluginsResponse{Plugins: plugins}, nil
@@ -926,7 +1301,7 @@ func (host *dartLanguageHost) emitStartDebugging(
 	name string,
 	port int,
 ) error {
-	config, err := structpb.NewStruct(map[string]interface{}{
+	return host.emitStartDebuggingWithConfig(ctx, engineClient, map[string]interface{}{
 		"name":    name,
 		"type":    "dart",
 		"request": "attach",
@@ -935,14 +1310,23 @@ func (host *dartLanguageHost) emitStartDebugging(
 			"host": "127.0.0.1",
 			"port": port,
 		},
-	})
+	}, fmt.Sprintf("on port %d", port))
+}
+
+func (host *dartLanguageHost) emitStartDebuggingWithConfig(
+	ctx context.Context,
+	engineClient pulumirpc.EngineClient,
+	configMap map[string]interface{},
+	message string,
+) error {
+	config, err := structpb.NewStruct(configMap)
 	if err != nil {
 		return fmt.Errorf("failed to serialize debugger config: %w", err)
 	}
 
 	_, err = engineClient.StartDebugging(ctx, &pulumirpc.StartDebuggingRequest{
 		Config:  config,
-		Message: fmt.Sprintf("on port %d", port),
+		Message: message,
 	})
 	if err != nil {
 		return fmt.Errorf("unable to start debugging: %w", err)
@@ -952,6 +1336,129 @@ func (host *dartLanguageHost) emitStartDebugging(
 }
 
 // Run executes
+
+var vmServiceURIRegex = regexp.MustCompile(`(?:https?|ws)://[^\s]+`)
+
+func parseVMServiceURIFromLine(line string) string {
+	line = strings.TrimSpace(line)
+	if line == "" {
+		return ""
+	}
+
+	lower := strings.ToLower(line)
+	if !strings.Contains(lower, "vm service") && !strings.Contains(lower, "dart devtools") {
+		return ""
+	}
+
+	uri := vmServiceURIRegex.FindString(line)
+	uri = strings.TrimRight(uri, ".,);")
+	return strings.TrimSpace(uri)
+}
+
+func debugAttachMessageFromVMServiceURI(vmServiceURI string) string {
+	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
+	if err != nil || u == nil || u.Host == "" {
+		return fmt.Sprintf("on vm service %s", vmServiceURI)
+	}
+	return fmt.Sprintf("on vm service %s", u.Host)
+}
+
+func vmServicePortFromURI(vmServiceURI string) string {
+	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
+	if err != nil || u == nil {
+		return ""
+	}
+	return strings.TrimSpace(u.Port())
+}
+
+func vmServiceEndpointFromURI(vmServiceURI string) string {
+	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
+	if err != nil || u == nil {
+		return ""
+	}
+	return strings.TrimSpace(u.Host)
+}
+
+type vmServiceURIWatcher struct {
+	target io.Writer
+	notify func(string)
+
+	mu      sync.Mutex
+	pending string
+}
+
+func rewriteDebuggerOutputLine(line string) string {
+	trimmed := strings.TrimSpace(line)
+	switch {
+	case strings.HasPrefix(trimmed, "The Dart DevTools debugger and profiler is available at:"):
+		if uri := parseVMServiceURIFromLine(trimmed); uri != "" {
+			if endpoint := vmServiceEndpointFromURI(uri); endpoint != "" {
+				return "devtools profiler: " + endpoint
+			}
+			return "devtools profiler: " + uri
+		}
+		return "devtools profiler"
+	case strings.HasPrefix(trimmed, "The Dart VM service is listening on"):
+		if uri := parseVMServiceURIFromLine(trimmed); uri != "" {
+			if endpoint := vmServiceEndpointFromURI(uri); endpoint != "" {
+				return "vm service: " + endpoint
+			}
+			return "vm service: " + uri
+		}
+		return "vm service"
+	default:
+		return line
+	}
+}
+
+func (w *vmServiceURIWatcher) Write(p []byte) (int, error) {
+	n := len(p)
+	if n == 0 {
+		return 0, nil
+	}
+
+	w.mu.Lock()
+	defer w.mu.Unlock()
+
+	w.pending += string(p)
+	for {
+		idx := strings.IndexByte(w.pending, '\n')
+		if idx < 0 {
+			break
+		}
+		line := strings.TrimSuffix(w.pending[:idx], "\r")
+		w.pending = w.pending[idx+1:]
+		if uri := parseVMServiceURIFromLine(line); uri != "" {
+			w.notify(uri)
+		}
+		rewritten := rewriteDebuggerOutputLine(line)
+		if _, err := io.WriteString(w.target, rewritten+"\n"); err != nil {
+			return n, err
+		}
+	}
+	return n, nil
+}
+
+func runResponseForProcessError(err error) *pulumirpc.RunResponse {
+	if exiterr, ok := err.(*exec.ExitError); ok {
+		if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
+			if status.ExitStatus() == dartProcessExitedAfterShowingUserActionableMessage {
+				return &pulumirpc.RunResponse{Error: "", Bail: true}
+			}
+
+			return &pulumirpc.RunResponse{
+				Error: fmt.Sprintf("Program exited with non-zero exit code: %d\n %v", status.ExitStatus(), err),
+			}
+		}
+		return &pulumirpc.RunResponse{
+			Error: fmt.Sprintf("Program exited unexpectedly: %v", exiterr),
+		}
+	}
+
+	return &pulumirpc.RunResponse{
+		Error: fmt.Sprintf("Problem executing program (could not run language executor): %v", err),
+	}
+}
 
 // Run is the RPC endpoint for LanguageRuntimeServer::Run
 func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest) (*pulumirpc.RunResponse, error) {
@@ -970,20 +1477,71 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		return nil, errors.Wrap(err, "failed to serialize configuration secret keys")
 	}
 
-	executable := host.exec
-	args := []string{}
 	programDirectory := resolveProgramDirectory(req.GetInfo(), req.GetPwd())
 	entryPoint := resolveProgramEntryPoint(req.GetInfo(), req.GetProgram(), programDirectory)
+	fallbackRoot := req.GetPwd()
+	if fallbackRoot == "" && req.GetInfo() != nil {
+		fallbackRoot = req.GetInfo().GetRootDirectory()
+	}
+	programDirectory, entryPoint = normalizeCompilationContext(programDirectory, entryPoint, fallbackRoot)
+	runtimeOptions, err := parseDartRuntimeOptions(req.GetInfo())
+	if err != nil {
+		return nil, err
+	}
 
-	if host.binary != "" {
-		// Use the specified binary
-		executable = host.binary
-	} else {
-		// Run the project from source. Pulumi projects conventionally use
-		// `bin/<project_name>.dart` as the program entrypoint.
-		args = append(args, "run")
+	executable := host.exec
+	args := []string{}
+
+	if host.binary != "" && (runtimeOptions.binary != "" || runtimeOptions.buildTarget != "") {
+		return nil, errors.New("host --binary cannot be combined with runtime options binary/buildTarget")
+	}
+
+	if req.GetAttachDebugger() {
+		if host.binary != "" || runtimeOptions.binary != "" {
+			return &pulumirpc.RunResponse{
+				Error: "attach debugger is not supported with precompiled binaries; run from source instead",
+			}, nil
+		}
+
+		executable = host.exec
+		args = append(args, "--enable-vm-service=0", "--pause-isolates-on-start", "--disable-service-auth-codes", "run")
 		if entryPoint != "" && entryPoint != "." {
 			args = append(args, entryPoint)
+		}
+	} else {
+		if host.binary != "" {
+			executable = host.binary
+		} else if runtimeOptions.binary != "" {
+			executable = runtimeOptions.binary
+		} else {
+			if runtimeOptions.buildTarget != "" && (entryPoint == "" || entryPoint == ".") {
+				return nil, errors.New("runtime option buildTarget requires a concrete Dart entry point")
+			}
+
+			if entryPoint != "" && entryPoint != "." {
+				buildTarget := normalizeDartBuildTargetPath(programDirectory, runtimeOptions.buildTarget)
+				reuseExisting := runtimeOptions.buildTarget == ""
+				if buildTarget == "" {
+					buildTarget, err = defaultDartBuildTarget(programDirectory, entryPoint)
+					if err != nil {
+						return nil, err
+					}
+				}
+
+				executable, err = host.ensureCompiledDartProgram(runCtx, programDirectory, entryPoint, buildTarget, reuseExisting)
+				if err != nil {
+					return &pulumirpc.RunResponse{
+						Error: fmt.Sprintf("Problem compiling program: %v", err),
+					}, nil
+				}
+			}
+
+			if executable == host.exec {
+				args = append(args, "run")
+				if entryPoint != "" && entryPoint != "." {
+					args = append(args, entryPoint)
+				}
+			}
 		}
 	}
 
@@ -996,6 +1554,13 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		logging.V(5).Infoln("Language host launching process: ", executable, commandStr)
 	}
 
+	// Now simply spawn a process to execute the requested program, wiring up stdout/stderr directly.
+	cmd := exec.CommandContext(runCtx, executable, args...)
+	if programDirectory != "" {
+		cmd.Dir = programDirectory
+	}
+	cmd.Env = host.constructEnv(req, config, configSecretKeys)
+
 	if req.GetAttachDebugger() {
 		engineClient, closer, err := host.connectToEngine()
 		if err != nil {
@@ -1005,61 +1570,83 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		}
 		defer closer.Close()
 
-		debugServer, port, err := startDAPDebugServer(true)
-		if err != nil {
+		vmServiceURIChan := make(chan string, 1)
+		var notifyVMServiceURIOnce sync.Once
+		notifyVMServiceURI := func(uri string) {
+			if strings.TrimSpace(uri) == "" {
+				return
+			}
+			notifyVMServiceURIOnce.Do(func() {
+				vmServiceURIChan <- strings.TrimSpace(uri)
+			})
+		}
+		cmd.Stdout = &vmServiceURIWatcher{target: os.Stdout, notify: notifyVMServiceURI}
+		cmd.Stderr = &vmServiceURIWatcher{target: os.Stderr, notify: notifyVMServiceURI}
+
+		if err := cmd.Start(); err != nil {
+			return runResponseForProcessError(err), nil
+		}
+
+		runDone := make(chan error, 1)
+		go func() {
+			runDone <- cmd.Wait()
+		}()
+
+		var vmServiceURI string
+		select {
+		case vmServiceURI = <-vmServiceURIChan:
+		case err := <-runDone:
+			if err != nil {
+				return runResponseForProcessError(err), nil
+			}
+			return &pulumirpc.RunResponse{}, nil
+		case <-runCtx.Done():
 			return &pulumirpc.RunResponse{
-				Error: fmt.Sprintf("problem starting debugger endpoint: %v", err),
+				Error: fmt.Sprintf("problem waiting for debugger attach: %v", runCtx.Err()),
+			}, nil
+		case <-time.After(2 * time.Minute):
+			if cmd.Process != nil {
+				_ = cmd.Process.Kill()
+			}
+			return &pulumirpc.RunResponse{
+				Error: "problem waiting for debugger attach: timed out waiting for Dart VM service URI",
 			}, nil
 		}
-		defer debugServer.Close()
 
-		if err := host.emitStartDebugging(ctx, engineClient, "Pulumi: Program (Dart)", port); err != nil {
+		if err := host.emitStartDebuggingWithConfig(
+			ctx,
+			engineClient,
+			map[string]interface{}{
+				"name":         "Pulumi: Program (Dart)",
+				"type":         "dart",
+				"request":      "attach",
+				"vmServiceUri": vmServiceURI,
+			},
+			debugAttachMessageFromVMServiceURI(vmServiceURI),
+		); err != nil {
+			if cmd.Process != nil {
+				_ = cmd.Process.Kill()
+			}
 			return &pulumirpc.RunResponse{
 				Error: fmt.Sprintf("problem starting debugger: %v", err),
 			}, nil
 		}
-		if err := debugServer.WaitForContinue(runCtx, 2*time.Minute); err != nil {
-			return &pulumirpc.RunResponse{
-				Error: fmt.Sprintf("problem waiting for debugger attach: %v", err),
-			}, nil
+		if endpoint := vmServiceEndpointFromURI(vmServiceURI); endpoint != "" {
+			fmt.Fprintf(os.Stderr, "pulumi-language-dart: debugger endpoint=%s\n", endpoint)
+		} else if port := vmServicePortFromURI(vmServiceURI); port != "" {
+			fmt.Fprintf(os.Stderr, "pulumi-language-dart: debugger endpoint=127.0.0.1:%s\n", port)
 		}
+
+		if err := <-runDone; err != nil {
+			return runResponseForProcessError(err), nil
+		}
+		return &pulumirpc.RunResponse{}, nil
 	}
 
-	// Now simply spawn a process to execute the requested program, wiring up stdout/stderr directly.
-	cmd := exec.CommandContext(runCtx, executable, args...)
-	if programDirectory != "" {
-		cmd.Dir = programDirectory
-	}
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	cmd.Env = host.constructEnv(req, config, configSecretKeys)
 	if err := cmd.Run(); err != nil {
-		if exiterr, ok := err.(*exec.ExitError); ok {
-			// If the program ran, but exited with a non-zero error code.  This will happen often, since user
-			// errors will trigger this.  So, the error message should look as nice as possible.
-			if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
-				// Check if we got special exit code that means "we already gave the user an
-				// actionable message". In that case, we can simply bail out and terminate `pulumi`
-				// without showing any more messages.
-
-				if status.ExitStatus() == dartProcessExitedAfterShowingUserActionableMessage {
-					return &pulumirpc.RunResponse{Error: "", Bail: true}, nil
-				}
-
-				return &pulumirpc.RunResponse{
-					Error: fmt.Sprintf("Program exited with non-zero exit code: %d\n %v", status.ExitStatus(), err),
-				}, nil
-			}
-			return &pulumirpc.RunResponse{
-				Error: fmt.Sprintf("Program exited unexpectedly: %v", exiterr),
-			}, nil
-		}
-
-		// Otherwise, we didn't even get to run the program.  This ought to never happen unless there's
-		// a bug or system condition that prevented us from running the language exec.  Issue a scarier error.
-		return &pulumirpc.RunResponse{
-			Error: fmt.Sprintf("Problem executing program (could not run language executor): %v", err),
-		}, nil
+		return runResponseForProcessError(err), nil
 	}
 
 	return &pulumirpc.RunResponse{}, nil

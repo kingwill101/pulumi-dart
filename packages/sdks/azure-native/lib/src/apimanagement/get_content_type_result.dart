@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getContentType.
 class GetContentTypeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Content type description.
   final String? description;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Content type schema.
   final dynamic schema;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Content type version.
   final String? version;
 
@@ -51,13 +56,24 @@ class GetContentTypeResult {
   factory GetContentTypeResult.fromMap(Map<String, dynamic> map) {
     return GetContentTypeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      schema: map['schema'] == null ? null : map['schema']!,
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

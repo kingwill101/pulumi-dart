@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAttachmentArgs {
   /// The ID of the directory.
   final pulumi.Input<String> directoryId;
+
   /// The ID of the group.
   final pulumi.Input<String> groupId;
+
   /// The ID of the user.
   final pulumi.Input<String> userId;
 
@@ -34,10 +36,9 @@ class UserAttachmentArgs {
 
   factory UserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserAttachmentArgs(
-      directoryId: (map['directoryId'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

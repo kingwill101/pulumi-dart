@@ -8,20 +8,17 @@ class StreamProcessorDataSharingPreference {
 
   /// Creates a new [StreamProcessorDataSharingPreference].
   /// [optIn] Whether you are sharing data with Rekognition to improve model performance.
-  StreamProcessorDataSharingPreference({
-    required this.optIn,
-  });
+  StreamProcessorDataSharingPreference({required this.optIn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'optIn': optIn,
-    };
+    return <String, dynamic>{'optIn': optIn};
   }
 
-  factory StreamProcessorDataSharingPreference.fromMap(Map<String, dynamic> map) {
+  factory StreamProcessorDataSharingPreference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamProcessorDataSharingPreference(
-      optIn: (map['optIn'] as bool).input(),
+      optIn: pulumi.Input.fromValue(map['optIn'] as bool),
     );
   }
 }
-

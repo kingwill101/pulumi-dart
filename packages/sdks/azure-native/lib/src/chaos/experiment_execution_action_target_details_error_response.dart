@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentExecutionActionTargetDetailsErrorResponse {
   /// The error code.
   final pulumi.Input<String> code;
+
   /// The error message
   final pulumi.Input<String> message;
 
@@ -18,17 +19,15 @@ class ExperimentExecutionActionTargetDetailsErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'message': message};
   }
 
-  factory ExperimentExecutionActionTargetDetailsErrorResponse.fromMap(Map<String, dynamic> map) {
+  factory ExperimentExecutionActionTargetDetailsErrorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperimentExecutionActionTargetDetailsErrorResponse(
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

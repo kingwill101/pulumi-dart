@@ -190,20 +190,28 @@ import 'token_credentials_properties_response.dart';
 class Token extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of scope map.
   late final pulumi.Output<String> creationDate;
+
   /// The credentials that can be used for authenticating the token.
   late final pulumi.Output<TokenCredentialsPropertiesResponse?> credentials;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource ID of the scope map to which the token will be associated with.
   late final pulumi.Output<String?> scopeMapId;
+
   /// The status of the token example enabled or disabled.
   late final pulumi.Output<String?> status;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -211,24 +219,23 @@ class Token extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Token]. {@macro pulumi_containerregistry_token_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Token(
-    String name, {
-    TokenArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:containerregistry:Token',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.credentials = registerOutput<TokenCredentialsPropertiesResponse?>('credentials');
+  Token(String name, {TokenArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:containerregistry:Token',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    credentials = registerOutput<TokenCredentialsPropertiesResponse?>(
+      'credentials',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scopeMapId = registerOutput<String?>('scopeMapId');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    scopeMapId = registerOutput<String?>('scopeMapId');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

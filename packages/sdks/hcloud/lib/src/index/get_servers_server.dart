@@ -88,7 +88,18 @@ class GetServersServer {
       'labels': labels,
       'location': location,
       'name': name,
-      'networks': ?pulumi.Input.mapOptionalInputValue<List<GetServersServerNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<GetServersServerNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetServersServerNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServersServerNetwork,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'placementGroupId': ?placementGroupId,
       'primaryDiskSize': primaryDiskSize,
       'rebuildProtection': rebuildProtection,
@@ -100,28 +111,48 @@ class GetServersServer {
 
   factory GetServersServer.fromMap(Map<String, dynamic> map) {
     return GetServersServer(
-      backupWindow: (map['backupWindow'] as String).input(),
-      backups: (map['backups'] as bool).input(),
-      datacenter: (map['datacenter'] as String).input(),
-      deleteProtection: (map['deleteProtection'] as bool).input(),
-      firewallIds: ((map['firewallIds'] as List).cast<int>()).input(),
-      id: (map['id'] as int).input(),
-      image: (map['image'] as String).input(),
-      ipv4Address: (map['ipv4Address'] as String).input(),
-      ipv6Address: (map['ipv6Address'] as String).input(),
-      ipv6Network: (map['ipv6Network'] as String).input(),
-      iso: (map['iso'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetServersServerNetwork>(map['networks']!, (value) => GetServersServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId']! as int).input(),
-      primaryDiskSize: (map['primaryDiskSize'] as int).input(),
-      rebuildProtection: (map['rebuildProtection'] as bool).input(),
-      rescue: (map['rescue'] as String).input(),
-      serverType: (map['serverType'] as String).input(),
-      status: (map['status'] as String).input(),
+      backupWindow: pulumi.Input.fromValue(map['backupWindow'] as String),
+      backups: pulumi.Input.fromValue(map['backups'] as bool),
+      datacenter: pulumi.Input.fromValue(map['datacenter'] as String),
+      deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
+      firewallIds: pulumi.Input.fromValue(
+        (map['firewallIds'] as List).cast<int>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
+      ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
+      ipv6Network: pulumi.Input.fromValue(map['ipv6Network'] as String),
+      iso: pulumi.Input.fromValue(map['iso'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networks: (() {
+        final guardedValue = map['networks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetServersServerNetwork>(
+            guardedValue,
+            (value) => GetServersServerNetwork.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      placementGroupId: (() {
+        final guardedValue = map['placementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      primaryDiskSize: pulumi.Input.fromValue(map['primaryDiskSize'] as int),
+      rebuildProtection: pulumi.Input.fromValue(
+        map['rebuildProtection'] as bool,
+      ),
+      rescue: pulumi.Input.fromValue(map['rescue'] as String),
+      serverType: pulumi.Input.fromValue(map['serverType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

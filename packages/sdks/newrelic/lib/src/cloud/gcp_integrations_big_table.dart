@@ -8,20 +8,19 @@ class GcpIntegrationsBigTable {
 
   /// Creates a new [GcpIntegrationsBigTable].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsBigTable({
-    this.metricsPollingInterval,
-  });
+  GcpIntegrationsBigTable({this.metricsPollingInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metricsPollingInterval': ?metricsPollingInterval,
-    };
+    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
   }
 
   factory GcpIntegrationsBigTable.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsBigTable(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_agfoodplatform;
-
 export 'agfoodplatform/api_key_auth_credentials.dart';
 export 'agfoodplatform/api_key_auth_credentials_response.dart';
 export 'agfoodplatform/api_properties.dart';

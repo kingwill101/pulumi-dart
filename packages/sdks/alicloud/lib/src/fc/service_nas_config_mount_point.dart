@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNasConfigMountPoint {
   /// The local address where to mount your remote NAS directory.
   final pulumi.Input<String> mountDir;
+
   /// The address of the remote NAS directory.
   final pulumi.Input<String> serverAddr;
 
@@ -17,17 +18,13 @@ class ServiceNasConfigMountPoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mountDir': mountDir,
-      'serverAddr': serverAddr,
-    };
+    return <String, dynamic>{'mountDir': mountDir, 'serverAddr': serverAddr};
   }
 
   factory ServiceNasConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return ServiceNasConfigMountPoint(
-      mountDir: (map['mountDir'] as String).input(),
-      serverAddr: (map['serverAddr'] as String).input(),
+      mountDir: pulumi.Input.fromValue(map['mountDir'] as String),
+      serverAddr: pulumi.Input.fromValue(map['serverAddr'] as String),
     );
   }
 }
-

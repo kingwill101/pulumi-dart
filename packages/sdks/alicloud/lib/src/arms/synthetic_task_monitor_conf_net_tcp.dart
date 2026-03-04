@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskMonitorConfNetTcp {
   /// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
   final pulumi.Input<int>? connectTimes;
+
   /// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
   final pulumi.Input<int>? interval;
+
   /// The target URL.
   final pulumi.Input<String> targetUrl;
+
   /// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
   final pulumi.Input<int>? timeout;
+
   /// Whether to enable tracert. The default is true.
   final pulumi.Input<bool>? tracertEnable;
+
   /// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
   final pulumi.Input<int>? tracertNumMax;
+
   /// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
   final pulumi.Input<int>? tracertTimeout;
 
@@ -50,14 +56,37 @@ class SyntheticTaskMonitorConfNetTcp {
 
   factory SyntheticTaskMonitorConfNetTcp.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfNetTcp(
-      connectTimes: map['connectTimes'] == null ? null : (map['connectTimes']! as int).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
-      targetUrl: (map['targetUrl'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable']! as bool).input(),
-      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax']! as int).input(),
-      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout']! as int).input(),
+      connectTimes: (() {
+        final guardedValue = map['connectTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetUrl: pulumi.Input.fromValue(map['targetUrl'] as String),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tracertEnable: (() {
+        final guardedValue = map['tracertEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tracertNumMax: (() {
+        final guardedValue = map['tracertNumMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tracertTimeout: (() {
+        final guardedValue = map['tracertTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

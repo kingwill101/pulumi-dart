@@ -8,38 +8,54 @@ import 'snapshot_import_disk_container.dart';
 class SnapshotImportState {
   /// Amazon Resource Name (ARN) of the EBS Snapshot.
   final pulumi.Input<String>? arn;
+
   /// The client-specific data. Detailed below.
   final pulumi.Input<SnapshotImportClientData>? clientData;
+
   /// The data encryption key identifier for the snapshot.
   final pulumi.Input<String>? dataEncryptionKeyId;
+
   /// The description string for the import snapshot task.
   final pulumi.Input<String>? description;
+
   /// Information about the disk container. Detailed below.
   final pulumi.Input<SnapshotImportDiskContainer>? diskContainer;
+
   /// Specifies whether the destination snapshot of the imported image should be encrypted. The default KMS key for EBS is used unless you specify a non-default KMS key using KmsKeyId.
   final pulumi.Input<bool>? encrypted;
+
   /// An identifier for the symmetric KMS key to use when creating the encrypted snapshot. This parameter is only required if you want to use a non-default KMS key; if this parameter is not specified, the default KMS key for EBS is used. If a KmsKeyId is specified, the Encrypted flag must also be set.
   final pulumi.Input<String>? kmsKeyId;
   final pulumi.Input<String>? outpostArn;
+
   /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
   final pulumi.Input<String>? ownerAlias;
+
   /// The AWS account ID of the EBS snapshot owner.
   final pulumi.Input<String>? ownerId;
+
   /// Indicates whether to permanently restore an archived snapshot.
   final pulumi.Input<bool>? permanentRestore;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the IAM Role the VM Import/Export service will assume. This role needs certain permissions. See https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-role. Default: `vmimport`
   final pulumi.Input<String>? roleName;
+
   /// The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   final pulumi.Input<String>? storageTier;
+
   /// A map of tags to assign to the snapshot.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   final pulumi.Input<int>? temporaryRestoreDays;
   final pulumi.Input<String>? volumeId;
+
   /// The size of the drive in GiBs.
   final pulumi.Input<int>? volumeSize;
 
@@ -88,10 +104,18 @@ class SnapshotImportState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'clientData': ?pulumi.Input.mapOptionalInputValue<SnapshotImportClientData, Map<String, dynamic>>(clientData, (value) => value.toMap()),
+      'clientData':
+          ?pulumi.Input.mapOptionalInputValue<
+            SnapshotImportClientData,
+            Map<String, dynamic>
+          >(clientData, (value) => value.toMap()),
       'dataEncryptionKeyId': ?dataEncryptionKeyId,
       'description': ?description,
-      'diskContainer': ?pulumi.Input.mapOptionalInputValue<SnapshotImportDiskContainer, Map<String, dynamic>>(diskContainer, (value) => value.toMap()),
+      'diskContainer':
+          ?pulumi.Input.mapOptionalInputValue<
+            SnapshotImportDiskContainer,
+            Map<String, dynamic>
+          >(diskContainer, (value) => value.toMap()),
       'encrypted': ?encrypted,
       'kmsKeyId': ?kmsKeyId,
       'outpostArn': ?outpostArn,
@@ -111,26 +135,113 @@ class SnapshotImportState {
 
   factory SnapshotImportState.fromMap(Map<String, dynamic> map) {
     return SnapshotImportState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      clientData: map['clientData'] == null ? null : ((SnapshotImportClientData.fromMap((map['clientData']! as Map).cast<String, dynamic>())).input()).input(),
-      dataEncryptionKeyId: map['dataEncryptionKeyId'] == null ? null : ((map['dataEncryptionKeyId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      diskContainer: map['diskContainer'] == null ? null : ((SnapshotImportDiskContainer.fromMap((map['diskContainer']! as Map).cast<String, dynamic>())).input()).input(),
-      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
-      ownerAlias: map['ownerAlias'] == null ? null : ((map['ownerAlias'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      permanentRestore: map['permanentRestore'] == null ? null : ((map['permanentRestore'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
-      storageTier: map['storageTier'] == null ? null : ((map['storageTier'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : ((map['temporaryRestoreDays'] as int).input()).input(),
-      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
-      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientData: (() {
+        final guardedValue = map['clientData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SnapshotImportClientData.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataEncryptionKeyId: (() {
+        final guardedValue = map['dataEncryptionKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskContainer: (() {
+        final guardedValue = map['diskContainer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SnapshotImportDiskContainer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outpostArn: (() {
+        final guardedValue = map['outpostArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerAlias: (() {
+        final guardedValue = map['ownerAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permanentRestore: (() {
+        final guardedValue = map['permanentRestore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageTier: (() {
+        final guardedValue = map['storageTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      temporaryRestoreDays: (() {
+        final guardedValue = map['temporaryRestoreDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeSize: (() {
+        final guardedValue = map['volumeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,28 @@ import 'vmware_source_details_response.dart';
 class GetSourceResult {
   /// AWS type source details.
   final AwsSourceDetailsResponse aws;
+
   /// Azure type source details.
   final AzureSourceDetailsResponse azure;
+
   /// The create time timestamp.
   final String createTime;
+
   /// User-provided description of the source.
   final String description;
+
   /// Optional. Immutable. The encryption details of the source data stored by the service.
   final EncryptionResponse encryption;
+
   /// The labels of the source.
   final Map<String, String> labels;
+
   /// The Source name.
   final String name;
+
   /// The update time timestamp.
   final String updateTime;
+
   /// Vmware type source details.
   final VmwareSourceDetailsResponse vmware;
 
@@ -64,16 +72,23 @@ class GetSourceResult {
 
   factory GetSourceResult.fromMap(Map<String, dynamic> map) {
     return GetSourceResult(
-      aws: AwsSourceDetailsResponse.fromMap((map['aws'] as Map).cast<String, dynamic>()),
-      azure: AzureSourceDetailsResponse.fromMap((map['azure'] as Map).cast<String, dynamic>()),
+      aws: AwsSourceDetailsResponse.fromMap(
+        (map['aws']! as Map).cast<String, dynamic>(),
+      ),
+      azure: AzureSourceDetailsResponse.fromMap(
+        (map['azure']! as Map).cast<String, dynamic>(),
+      ),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: EncryptionResponse.fromMap(
+        (map['encryption']! as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
-      vmware: VmwareSourceDetailsResponse.fromMap((map['vmware'] as Map).cast<String, dynamic>()),
+      vmware: VmwareSourceDetailsResponse.fromMap(
+        (map['vmware']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

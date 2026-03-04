@@ -186,7 +186,7 @@ import 'services_account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.GraphServices` - 2023-04-13
@@ -201,12 +201,16 @@ import 'services_account_state.dart';
 class ServicesAccount extends pulumi.CustomResource {
   /// Customer owned application ID. Changing this forces a new Account to be created.
   late final pulumi.Output<String> applicationId;
+
   /// Billing Plan Id.
   late final pulumi.Output<String> billingPlanId;
+
   /// Specifies the name of this Account. Changing this forces a new Account to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group within which this Account should exist. Changing this forces a new Account to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Account.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -219,16 +223,16 @@ class ServicesAccount extends pulumi.CustomResource {
     ServicesAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:graph/servicesAccount:ServicesAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.billingPlanId = registerOutput<String>('billingPlanId');
+         'azure:graph/servicesAccount:ServicesAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    billingPlanId = registerOutput<String>('billingPlanId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ServicesAccount] resource's state with the given [name] and [id].
@@ -249,15 +253,15 @@ class ServicesAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:graph/servicesAccount:ServicesAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.billingPlanId = registerOutput<String>('billingPlanId');
+         'azure:graph/servicesAccount:ServicesAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    billingPlanId = registerOutput<String>('billingPlanId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

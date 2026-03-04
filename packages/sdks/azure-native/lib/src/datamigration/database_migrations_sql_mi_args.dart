@@ -9,10 +9,13 @@ import 'database_migration_properties_sql_mi.dart';
 /// {@macro pulumi_datamigration_database_migrations_sql_mi_args_doc}
 class DatabaseMigrationsSqlMiArgs {
   final pulumi.Input<String> managedInstanceName;
+
   /// Database Migration Resource properties for SQL Managed Instance.
   final pulumi.Input<DatabaseMigrationPropertiesSqlMi>? properties;
+
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the target database.
   final pulumi.Input<String>? targetDbName;
 
@@ -31,7 +34,11 @@ class DatabaseMigrationsSqlMiArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'managedInstanceName': managedInstanceName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DatabaseMigrationPropertiesSqlMi, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseMigrationPropertiesSqlMi,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'targetDbName': ?targetDbName,
     };
@@ -39,11 +46,26 @@ class DatabaseMigrationsSqlMiArgs {
 
   factory DatabaseMigrationsSqlMiArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlMiArgs(
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlMi.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName']! as String).input(),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseMigrationPropertiesSqlMi.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetDbName: (() {
+        final guardedValue = map['targetDbName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

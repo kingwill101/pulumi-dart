@@ -4,7 +4,7 @@ import 'transit_router_route_table_state.dart';
 
 /// Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterroutetable)
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -174,18 +174,25 @@ import 'transit_router_route_table_state.dart';
 class TransitRouterRouteTable extends pulumi.CustomResource {
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
+
   /// The associating status of the Transit Router.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
+
   /// The description of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableDescription;
+
   /// The id of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableId;
+
   /// The name of the transit router route table.
   late final pulumi.Output<String?> transitRouterRouteTableName;
+
   /// The type of the transit router route table. Valid values: `Custom`, `System`.
   late final pulumi.Output<String> transitRouterRouteTableType;
 
@@ -198,19 +205,27 @@ class TransitRouterRouteTable extends pulumi.CustomResource {
     TransitRouterRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterRouteTableDescription = registerOutput<String>('transitRouterRouteTableDescription');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
-    this.transitRouterRouteTableName = registerOutput<String?>('transitRouterRouteTableName');
-    this.transitRouterRouteTableType = registerOutput<String>('transitRouterRouteTableType');
+         'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterRouteTableDescription = registerOutput<String>(
+      'transitRouterRouteTableDescription',
+    );
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
+    transitRouterRouteTableName = registerOutput<String?>(
+      'transitRouterRouteTableName',
+    );
+    transitRouterRouteTableType = registerOutput<String>(
+      'transitRouterRouteTableType',
+    );
   }
 
   /// Gets an existing [TransitRouterRouteTable] resource's state with the given [name] and [id].
@@ -231,18 +246,26 @@ class TransitRouterRouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterRouteTableDescription = registerOutput<String>('transitRouterRouteTableDescription');
-    this.transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
-    this.transitRouterRouteTableName = registerOutput<String?>('transitRouterRouteTableName');
-    this.transitRouterRouteTableType = registerOutput<String>('transitRouterRouteTableType');
+         'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterRouteTableDescription = registerOutput<String>(
+      'transitRouterRouteTableDescription',
+    );
+    transitRouterRouteTableId = registerOutput<String>(
+      'transitRouterRouteTableId',
+    );
+    transitRouterRouteTableName = registerOutput<String?>(
+      'transitRouterRouteTableName',
+    );
+    transitRouterRouteTableType = registerOutput<String>(
+      'transitRouterRouteTableType',
+    );
   }
 }

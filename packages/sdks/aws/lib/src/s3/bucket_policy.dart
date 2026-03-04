@@ -4,7 +4,7 @@ import 'bucket_policy_state.dart';
 
 /// Attaches a policy to an S3 bucket resource.
 ///
-/// > Policies can be attached to both S3 general purpose buckets and S3 directory buckets.
+/// &gt; Policies can be attached to both S3 general purpose buckets and S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -251,7 +251,7 @@ import 'bucket_policy_state.dart';
 /// ```
 ///
 ///
-/// > Only one `aws.s3.BucketPolicy` resource should be defined per S3 bucket. Defining multiple `aws.s3.BucketPolicy` resources with different Pulumi names but the same `bucket` value may result in unexpected policy overwrites. Each resource uses the `PutBucketPolicy` API, which replaces the entire existing policy without error or warning. Because Pulumi treats each resource independently, the policy applied last will silently override any previously applied policy.
+/// &gt; Only one `aws.s3.BucketPolicy` resource should be defined per S3 bucket. Defining multiple `aws.s3.BucketPolicy` resources with different Pulumi names but the same `bucket` value may result in unexpected policy overwrites. Each resource uses the `PutBucketPolicy` API, which replaces the entire existing policy without error or warning. Because Pulumi treats each resource independently, the policy applied last will silently override any previously applied policy.
 ///
 /// ## Import
 ///
@@ -275,8 +275,10 @@ import 'bucket_policy_state.dart';
 class BucketPolicy extends pulumi.CustomResource {
   /// Name of the bucket to which to apply the policy.
   late final pulumi.Output<String> bucket;
+
   /// Text of the policy. Although this is a bucket policy rather than an IAM policy, the `aws.iam.getPolicyDocument` data source may be used, so long as it specifies a principal. For more information about building AWS IAM policy documents, see the AWS IAM Policy Document Guide. Note: Bucket policies are limited to 20 KB in size.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -289,14 +291,14 @@ class BucketPolicy extends pulumi.CustomResource {
     BucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BucketPolicy] resource's state with the given [name] and [id].
@@ -317,13 +319,13 @@ class BucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

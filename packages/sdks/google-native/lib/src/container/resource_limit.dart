@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceLimit {
   /// Maximum amount of the resource in the cluster.
   final pulumi.Input<String>? maximum;
+
   /// Minimum amount of the resource in the cluster.
   final pulumi.Input<String>? minimum;
+
   /// Resource name "cpu", "memory" or gpu-specific string.
   final pulumi.Input<String>? resourceType;
 
@@ -15,11 +17,7 @@ class ResourceLimit {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] Resource name "cpu", "memory" or gpu-specific string.
-  ResourceLimit({
-    this.maximum,
-    this.minimum,
-    this.resourceType,
-  });
+  ResourceLimit({this.maximum, this.minimum, this.resourceType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ResourceLimit {
 
   factory ResourceLimit.fromMap(Map<String, dynamic> map) {
     return ResourceLimit(
-      maximum: map['maximum'] == null ? null : (map['maximum']! as String).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      maximum: (() {
+        final guardedValue = map['maximum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimum: (() {
+        final guardedValue = map['minimum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -14,29 +14,41 @@ import 'rest_api_poller_request_paging_config.dart';
 class RestApiPollerDataConnectorArgs {
   /// The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
   final pulumi.Input<Map<String, String>>? addOnAttributes;
+
   /// The a authentication model.
   final pulumi.Input<AWSAuthModel> auth;
+
   /// The connector definition name (the dataConnectorDefinition resource id).
   final pulumi.Input<String> connectorDefinitionName;
+
   /// Connector ID
   final pulumi.Input<String>? dataConnectorId;
+
   /// The Log Analytics table destination.
   final pulumi.Input<String>? dataType;
+
   /// The DCR related properties.
   final pulumi.Input<DCRConfiguration>? dcrConfig;
+
   /// Indicates whether the connector is active or not.
   final pulumi.Input<bool>? isActive;
+
   /// The kind of the data connector
   /// Expected value is 'RestApiPoller'.
   final pulumi.Input<String> kind;
+
   /// The paging configuration.
   final pulumi.Input<RestApiPollerRequestPagingConfig>? paging;
+
   /// The request configuration.
   final pulumi.Input<RestApiPollerRequestConfig> request;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The response configuration.
   final pulumi.Input<CcpResponseConfig>? response;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -73,37 +85,107 @@ class RestApiPollerDataConnectorArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addOnAttributes': ?addOnAttributes,
-      'auth': pulumi.Input.mapInputValue<AWSAuthModel, Map<String, dynamic>>(auth, (value) => value.toMap()),
+      'auth': pulumi.Input.mapInputValue<AWSAuthModel, Map<String, dynamic>>(
+        auth,
+        (value) => value.toMap(),
+      ),
       'connectorDefinitionName': connectorDefinitionName,
       'dataConnectorId': ?dataConnectorId,
       'dataType': ?dataType,
-      'dcrConfig': ?pulumi.Input.mapOptionalInputValue<DCRConfiguration, Map<String, dynamic>>(dcrConfig, (value) => value.toMap()),
+      'dcrConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DCRConfiguration,
+            Map<String, dynamic>
+          >(dcrConfig, (value) => value.toMap()),
       'isActive': ?isActive,
       'kind': kind,
-      'paging': ?pulumi.Input.mapOptionalInputValue<RestApiPollerRequestPagingConfig, Map<String, dynamic>>(paging, (value) => value.toMap()),
-      'request': pulumi.Input.mapInputValue<RestApiPollerRequestConfig, Map<String, dynamic>>(request, (value) => value.toMap()),
+      'paging':
+          ?pulumi.Input.mapOptionalInputValue<
+            RestApiPollerRequestPagingConfig,
+            Map<String, dynamic>
+          >(paging, (value) => value.toMap()),
+      'request':
+          pulumi.Input.mapInputValue<
+            RestApiPollerRequestConfig,
+            Map<String, dynamic>
+          >(request, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'response': ?pulumi.Input.mapOptionalInputValue<CcpResponseConfig, Map<String, dynamic>>(response, (value) => value.toMap()),
+      'response':
+          ?pulumi.Input.mapOptionalInputValue<
+            CcpResponseConfig,
+            Map<String, dynamic>
+          >(response, (value) => value.toMap()),
       'workspaceName': workspaceName,
     };
   }
 
   factory RestApiPollerDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return RestApiPollerDataConnectorArgs(
-      addOnAttributes: map['addOnAttributes'] == null ? null : ((map['addOnAttributes']! as Map).cast<String, String>()).input(),
-      auth: (AWSAuthModel.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      connectorDefinitionName: (map['connectorDefinitionName'] as String).input(),
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      dcrConfig: map['dcrConfig'] == null ? null : (DCRConfiguration.fromMap((map['dcrConfig']! as Map).cast<String, dynamic>())).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
-      kind: (map['kind'] as String).input(),
-      paging: map['paging'] == null ? null : (RestApiPollerRequestPagingConfig.fromMap((map['paging']! as Map).cast<String, dynamic>())).input(),
-      request: (RestApiPollerRequestConfig.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      response: map['response'] == null ? null : (CcpResponseConfig.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      addOnAttributes: (() {
+        final guardedValue = map['addOnAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      auth: pulumi.Input.fromValue(
+        AWSAuthModel.fromMap((map['auth']! as Map).cast<String, dynamic>()),
+      ),
+      connectorDefinitionName: pulumi.Input.fromValue(
+        map['connectorDefinitionName'] as String,
+      ),
+      dataConnectorId: (() {
+        final guardedValue = map['dataConnectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dcrConfig: (() {
+        final guardedValue = map['dcrConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DCRConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isActive: (() {
+        final guardedValue = map['isActive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      paging: (() {
+        final guardedValue = map['paging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RestApiPollerRequestPagingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      request: pulumi.Input.fromValue(
+        RestApiPollerRequestConfig.fromMap(
+          (map['request']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      response: (() {
+        final guardedValue = map['response'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CcpResponseConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

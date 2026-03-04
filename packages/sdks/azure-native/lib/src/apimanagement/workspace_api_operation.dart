@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'parameter_contract_response.dart';
 import 'request_contract_response.dart';
-import 'response_contract_response.dart';
 import 'workspace_api_operation_args.dart';
 
 /// API Operation details.
@@ -326,24 +324,34 @@ import 'workspace_api_operation_args.dart';
 class WorkspaceApiOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the operation. May include HTML formatting tags.
   late final pulumi.Output<String?> description;
+
   /// Operation Name.
   late final pulumi.Output<String> displayName;
+
   /// A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
   late final pulumi.Output<String> method;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Operation Policies
   late final pulumi.Output<String?> policies;
+
   /// An entity containing request details.
   late final pulumi.Output<RequestContractResponse?> request;
+
   /// Array of Operation responses.
-  late final pulumi.Output<List<ResponseContractResponse>?> responses;
+  late final pulumi.Output<List<Map<String, dynamic>>?> responses;
+
   /// Collection of URL template parameters.
-  late final pulumi.Output<List<ParameterContractResponse>?> templateParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   late final pulumi.Output<String> urlTemplate;
 
@@ -356,21 +364,23 @@ class WorkspaceApiOperation extends pulumi.CustomResource {
     WorkspaceApiOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceApiOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.method = registerOutput<String>('method');
+         'azure-native:apimanagement:WorkspaceApiOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    method = registerOutput<String>('method');
     this.name = registerOutput<String>('name');
-    this.policies = registerOutput<String?>('policies');
-    this.request = registerOutput<RequestContractResponse?>('request');
-    this.responses = registerOutput<List<ResponseContractResponse>?>('responses');
-    this.templateParameters = registerOutput<List<ParameterContractResponse>?>('templateParameters');
-    this.type = registerOutput<String>('type');
-    this.urlTemplate = registerOutput<String>('urlTemplate');
+    policies = registerOutput<String?>('policies');
+    request = registerOutput<RequestContractResponse?>('request');
+    responses = registerOutput<List<Map<String, dynamic>>?>('responses');
+    templateParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'templateParameters',
+    );
+    type = registerOutput<String>('type');
+    urlTemplate = registerOutput<String>('urlTemplate');
   }
 }

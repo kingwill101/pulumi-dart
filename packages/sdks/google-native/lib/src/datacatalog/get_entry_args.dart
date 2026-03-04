@@ -35,11 +35,14 @@ class GetEntryArgs {
 
   factory GetEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryArgs(
-      entryGroupId: (map['entryGroupId'] as String).input(),
-      entryId: (map['entryId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
+      entryId: pulumi.Input.fromValue(map['entryId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig {
   /// Name of the Amazon S3 bucket.
   final pulumi.Input<String>? bucketName;
+
   /// Amazon S3 bucket prefix.
   final pulumi.Input<String>? bucketPrefix;
+
   /// If the flow should fail after the first instance of a failure when attempting to place data in the destination.
   final pulumi.Input<bool>? failOnFirstDestinationError;
 
@@ -28,12 +30,25 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHand
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig(
-      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      failOnFirstDestinationError: map['failOnFirstDestinationError'] == null ? null : ((map['failOnFirstDestinationError'] as bool).input()).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failOnFirstDestinationError: (() {
+        final guardedValue = map['failOnFirstDestinationError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

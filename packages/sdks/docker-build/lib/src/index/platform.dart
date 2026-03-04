@@ -28,16 +28,15 @@ enum Platform {
   valueWindows386("windows/386"),
   valueWindowsAmd64("windows/amd64");
 
-  const Platform(this.value);
-  final String value;
+  const Platform(this.wireValue);
+  final String wireValue;
 
   static Platform fromValue(String value) {
     for (final item in Platform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Platform value: $value');
   }
 }
-

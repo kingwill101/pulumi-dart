@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalProfileResponse {
   /// The client ID used for the cluster.
   final pulumi.Input<String>? clientId;
+
   /// The client secret used for the cluster.
   final pulumi.Input<String>? clientSecret;
 
   /// Creates a new [ServicePrincipalProfileResponse].
   /// [clientId] The client ID used for the cluster.
   /// [clientSecret] The client secret used for the cluster.
-  ServicePrincipalProfileResponse({
-    this.clientId,
-    this.clientSecret,
-  });
+  ServicePrincipalProfileResponse({this.clientId, this.clientSecret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ServicePrincipalProfileResponse {
 
   factory ServicePrincipalProfileResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalProfileResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

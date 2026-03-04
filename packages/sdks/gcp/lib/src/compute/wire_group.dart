@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'wire_group_args.dart';
-import 'wire_group_endpoint.dart';
 import 'wire_group_state.dart';
-import 'wire_group_topology.dart';
-import 'wire_group_wire.dart';
 import 'wire_group_wire_group_properties.dart';
 import 'wire_group_wire_properties.dart';
 
@@ -478,36 +475,46 @@ import 'wire_group_wire_properties.dart';
 class WireGroup extends pulumi.CustomResource {
   /// Indicates whether the wire group is administratively enabled.
   late final pulumi.Output<bool?> adminEnabled;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// Required cross site network to which wire group belongs.
   late final pulumi.Output<String> crossSiteNetwork;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
+
   /// Endpoints grouped by location, each mapping to interconnect configurations.
   /// Structure is documented below.
-  late final pulumi.Output<List<WireGroupEndpoint>?> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Topology details for the wire group configuration.
   /// Structure is documented below.
-  late final pulumi.Output<List<WireGroupTopology>> topologies;
+  late final pulumi.Output<List<Map<String, dynamic>>> topologies;
+
   /// Properties specific to the wire group.
   /// Structure is documented below.
   late final pulumi.Output<WireGroupWireGroupProperties?> wireGroupProperties;
+
   /// Default properties for wires within the group.
   /// Structure is documented below.
   late final pulumi.Output<WireGroupWireProperties?> wireProperties;
+
   /// The single/redundant wire(s) managed by the wire group.
   /// Structure is documented below.
-  late final pulumi.Output<List<WireGroupWire>> wires;
+  late final pulumi.Output<List<Map<String, dynamic>>> wires;
 
   /// Creates a new [WireGroup].
   /// [name] The Pulumi resource name.
@@ -518,22 +525,24 @@ class WireGroup extends pulumi.CustomResource {
     WireGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/wireGroup:WireGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminEnabled = registerOutput<bool?>('adminEnabled');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
-    this.description = registerOutput<String?>('description');
-    this.endpoints = registerOutput<List<WireGroupEndpoint>?>('endpoints');
+         'gcp:compute/wireGroup:WireGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminEnabled = registerOutput<bool?>('adminEnabled');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
+    description = registerOutput<String?>('description');
+    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.topologies = registerOutput<List<WireGroupTopology>>('topologies');
-    this.wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>('wireGroupProperties');
-    this.wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties');
-    this.wires = registerOutput<List<WireGroupWire>>('wires');
+    project = registerOutput<String>('project');
+    topologies = registerOutput<List<Map<String, dynamic>>>('topologies');
+    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>(
+      'wireGroupProperties',
+    );
+    wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties');
+    wires = registerOutput<List<Map<String, dynamic>>>('wires');
   }
 
   /// Gets an existing [WireGroup] resource's state with the given [name] and [id].
@@ -554,21 +563,23 @@ class WireGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/wireGroup:WireGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminEnabled = registerOutput<bool?>('adminEnabled');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
-    this.description = registerOutput<String?>('description');
-    this.endpoints = registerOutput<List<WireGroupEndpoint>?>('endpoints');
+         'gcp:compute/wireGroup:WireGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminEnabled = registerOutput<bool?>('adminEnabled');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
+    description = registerOutput<String?>('description');
+    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.topologies = registerOutput<List<WireGroupTopology>>('topologies');
-    this.wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>('wireGroupProperties');
-    this.wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties');
-    this.wires = registerOutput<List<WireGroupWire>>('wires');
+    project = registerOutput<String>('project');
+    topologies = registerOutput<List<Map<String, dynamic>>>('topologies');
+    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>(
+      'wireGroupProperties',
+    );
+    wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties');
+    wires = registerOutput<List<Map<String, dynamic>>>('wires');
   }
 }

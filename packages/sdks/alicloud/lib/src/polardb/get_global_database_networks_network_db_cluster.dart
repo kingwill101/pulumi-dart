@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGlobalDatabaseNetworksNetworkDbCluster {
   /// The ID of the cluster.
   final pulumi.Input<String> dbClusterId;
+
   /// The region ID of the cluster.
   final pulumi.Input<String> regionId;
+
   /// The role of the cluster.
   final pulumi.Input<String> role;
 
@@ -28,12 +30,13 @@ class GetGlobalDatabaseNetworksNetworkDbCluster {
     };
   }
 
-  factory GetGlobalDatabaseNetworksNetworkDbCluster.fromMap(Map<String, dynamic> map) {
+  factory GetGlobalDatabaseNetworksNetworkDbCluster.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGlobalDatabaseNetworksNetworkDbCluster(
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      role: (map['role'] as String).input(),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum Option {
   valueExceptionOnly("ExceptionOnly"),
   valueNotApplicable("NotApplicable");
 
-  const Option(this.value);
-  final String value;
+  const Option(this.wireValue);
+  final String wireValue;
 
   static Option fromValue(String value) {
     for (final item in Option.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Option value: $value');
   }
 }
-

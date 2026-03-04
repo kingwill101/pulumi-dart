@@ -7,6 +7,7 @@ import 'extended_location_response.dart';
 class A2AExtendedLocationDetailsResponse {
   /// The primary ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+
   /// The recovery ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
 
@@ -20,16 +21,39 @@ class A2AExtendedLocationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
-      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
+      'primaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(primaryExtendedLocation, (value) => value.toMap()),
+      'recoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(recoveryExtendedLocation, (value) => value.toMap()),
     };
   }
 
   factory A2AExtendedLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AExtendedLocationDetailsResponse(
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      primaryExtendedLocation: (() {
+        final guardedValue = map['primaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recoveryExtendedLocation: (() {
+        final guardedValue = map['recoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

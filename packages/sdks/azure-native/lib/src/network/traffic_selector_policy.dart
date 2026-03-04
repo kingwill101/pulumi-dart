@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficSelectorPolicy {
   /// A collection of local address spaces in CIDR format.
   final pulumi.Input<List<String>> localAddressRanges;
+
   /// A collection of remote address spaces in CIDR format.
   final pulumi.Input<List<String>> remoteAddressRanges;
 
@@ -26,9 +27,12 @@ class TrafficSelectorPolicy {
 
   factory TrafficSelectorPolicy.fromMap(Map<String, dynamic> map) {
     return TrafficSelectorPolicy(
-      localAddressRanges: ((map['localAddressRanges'] as List).cast<String>()).input(),
-      remoteAddressRanges: ((map['remoteAddressRanges'] as List).cast<String>()).input(),
+      localAddressRanges: pulumi.Input.fromValue(
+        (map['localAddressRanges'] as List).cast<String>(),
+      ),
+      remoteAddressRanges: pulumi.Input.fromValue(
+        (map['remoteAddressRanges'] as List).cast<String>(),
+      ),
     );
   }
 }
-

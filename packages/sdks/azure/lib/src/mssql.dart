@@ -1,5 +1,3 @@
-library module_mssql;
-
 export 'mssql/database.dart';
 export 'mssql/database_args.dart';
 export 'mssql/database_extended_auditing_policy.dart';

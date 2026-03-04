@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskSkuResponse {
   /// The sku name.
   final pulumi.Input<String>? name;
+
   /// The sku tier.
   final pulumi.Input<String> tier;
 
   /// Creates a new [DiskSkuResponse].
   /// [name] The sku name.
   /// [tier] The sku tier.
-  DiskSkuResponse({
-    this.name,
-    required this.tier,
-  });
+  DiskSkuResponse({this.name, required this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'tier': tier,
-    };
+    return <String, dynamic>{'name': ?name, 'tier': tier};
   }
 
   factory DiskSkuResponse.fromMap(Map<String, dynamic> map) {
     return DiskSkuResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tier: (map['tier'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
-

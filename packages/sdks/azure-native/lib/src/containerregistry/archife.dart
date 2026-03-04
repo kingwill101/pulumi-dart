@@ -179,18 +179,25 @@ import 'system_data_response.dart';
 class Archife extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The package source of the archive.
-  late final pulumi.Output<ArchivePackageSourcePropertiesResponse?> packageSource;
+  late final pulumi.Output<ArchivePackageSourcePropertiesResponse?>
+  packageSource;
+
   /// The provisioning state of the archive at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// The published version of the archive.
   late final pulumi.Output<String?> publishedVersion;
   late final pulumi.Output<String> repositoryEndpoint;
   late final pulumi.Output<String?> repositoryEndpointPrefix;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -203,19 +210,23 @@ class Archife extends pulumi.CustomResource {
     ArchifeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:Archife',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:containerregistry:Archife',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.packageSource = registerOutput<ArchivePackageSourcePropertiesResponse?>('packageSource');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publishedVersion = registerOutput<String?>('publishedVersion');
-    this.repositoryEndpoint = registerOutput<String>('repositoryEndpoint');
-    this.repositoryEndpointPrefix = registerOutput<String?>('repositoryEndpointPrefix');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    packageSource = registerOutput<ArchivePackageSourcePropertiesResponse?>(
+      'packageSource',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publishedVersion = registerOutput<String?>('publishedVersion');
+    repositoryEndpoint = registerOutput<String>('repositoryEndpoint');
+    repositoryEndpointPrefix = registerOutput<String?>(
+      'repositoryEndpointPrefix',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

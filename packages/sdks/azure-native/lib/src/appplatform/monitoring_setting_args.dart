@@ -10,8 +10,10 @@ import 'monitoring_setting_properties.dart';
 class MonitoringSettingArgs {
   /// Properties of the Monitoring Setting resource
   final pulumi.Input<MonitoringSettingProperties>? properties;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -27,7 +29,11 @@ class MonitoringSettingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<MonitoringSettingProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringSettingProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -35,10 +41,19 @@ class MonitoringSettingArgs {
 
   factory MonitoringSettingArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingArgs(
-      properties: map['properties'] == null ? null : (MonitoringSettingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringSettingProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

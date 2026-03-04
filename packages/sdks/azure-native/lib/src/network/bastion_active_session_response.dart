@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BastionActiveSessionResponse {
   /// The protocol used to connect to the target.
   final pulumi.Input<String> protocol;
+
   /// The type of the resource.
   final pulumi.Input<String> resourceType;
+
   /// Duration in mins the session has been active.
   final pulumi.Input<double> sessionDurationInMins;
+
   /// A unique id for the session.
   final pulumi.Input<String> sessionId;
+
   /// The time when the session started.
   final pulumi.Input<dynamic> startTime;
+
   /// The host name of the target.
   final pulumi.Input<String> targetHostName;
+
   /// The IP Address of the target.
   final pulumi.Input<String> targetIpAddress;
+
   /// The resource group of the target.
   final pulumi.Input<String> targetResourceGroup;
+
   /// The resource id of the target.
   final pulumi.Input<String> targetResourceId;
+
   /// The subscription id for the target virtual machine.
   final pulumi.Input<String> targetSubscriptionId;
+
   /// The user name who is active on this session.
   final pulumi.Input<String> userName;
 
@@ -71,18 +81,25 @@ class BastionActiveSessionResponse {
 
   factory BastionActiveSessionResponse.fromMap(Map<String, dynamic> map) {
     return BastionActiveSessionResponse(
-      protocol: (map['protocol'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      sessionDurationInMins: (map['sessionDurationInMins'] as double).input(),
-      sessionId: (map['sessionId'] as String).input(),
-      startTime: (map['startTime']).input(),
-      targetHostName: (map['targetHostName'] as String).input(),
-      targetIpAddress: (map['targetIpAddress'] as String).input(),
-      targetResourceGroup: (map['targetResourceGroup'] as String).input(),
-      targetResourceId: (map['targetResourceId'] as String).input(),
-      targetSubscriptionId: (map['targetSubscriptionId'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      sessionDurationInMins: pulumi.Input.fromValue(
+        map['sessionDurationInMins'] as double,
+      ),
+      sessionId: pulumi.Input.fromValue(map['sessionId'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime']),
+      targetHostName: pulumi.Input.fromValue(map['targetHostName'] as String),
+      targetIpAddress: pulumi.Input.fromValue(map['targetIpAddress'] as String),
+      targetResourceGroup: pulumi.Input.fromValue(
+        map['targetResourceGroup'] as String,
+      ),
+      targetResourceId: pulumi.Input.fromValue(
+        map['targetResourceId'] as String,
+      ),
+      targetSubscriptionId: pulumi.Input.fromValue(
+        map['targetSubscriptionId'] as String,
+      ),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

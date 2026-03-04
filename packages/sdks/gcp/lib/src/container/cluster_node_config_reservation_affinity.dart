@@ -11,8 +11,10 @@ class ClusterNodeConfigReservationAffinity {
   /// * `"ANY_RESERVATION"`: Consume any reservation available.
   /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
   final pulumi.Input<String> consumeReservationType;
+
   /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
   final pulumi.Input<String>? key;
+
   /// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
   final pulumi.Input<List<String>>? values;
 
@@ -34,12 +36,23 @@ class ClusterNodeConfigReservationAffinity {
     };
   }
 
-  factory ClusterNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigReservationAffinity(
-      consumeReservationType: (map['consumeReservationType'] as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      consumeReservationType: pulumi.Input.fromValue(
+        map['consumeReservationType'] as String,
+      ),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

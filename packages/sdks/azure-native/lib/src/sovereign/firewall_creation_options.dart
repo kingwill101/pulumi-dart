@@ -4,16 +4,15 @@ enum FirewallCreationOptions {
   standard("Standard"),
   premium("Premium");
 
-  const FirewallCreationOptions(this.value);
-  final String value;
+  const FirewallCreationOptions(this.wireValue);
+  final String wireValue;
 
   static FirewallCreationOptions fromValue(String value) {
     for (final item in FirewallCreationOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallCreationOptions value: $value');
   }
 }
-

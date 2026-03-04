@@ -8,6 +8,7 @@ import 'sub_resource.dart';
 class FirewallPolicyLogAnalyticsResources {
   /// The default workspace Id for Firewall Policy Insights.
   final pulumi.Input<SubResource>? defaultWorkspaceId;
+
   /// List of workspaces for Firewall Policy Insights.
   final pulumi.Input<List<FirewallPolicyLogAnalyticsWorkspace>>? workspaces;
 
@@ -21,16 +22,49 @@ class FirewallPolicyLogAnalyticsResources {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultWorkspaceId': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(defaultWorkspaceId, (value) => value.toMap()),
-      'workspaces': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyLogAnalyticsWorkspace>, List<Map<String, dynamic>>>(workspaces, (value) => pulumi.Input.encodeList<FirewallPolicyLogAnalyticsWorkspace, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultWorkspaceId':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(defaultWorkspaceId, (value) => value.toMap()),
+      'workspaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FirewallPolicyLogAnalyticsWorkspace>,
+            List<Map<String, dynamic>>
+          >(
+            workspaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallPolicyLogAnalyticsWorkspace,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory FirewallPolicyLogAnalyticsResources.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyLogAnalyticsResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyLogAnalyticsResources(
-      defaultWorkspaceId: map['defaultWorkspaceId'] == null ? null : (SubResource.fromMap((map['defaultWorkspaceId']! as Map).cast<String, dynamic>())).input(),
-      workspaces: map['workspaces'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyLogAnalyticsWorkspace>(map['workspaces']!, (value) => FirewallPolicyLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultWorkspaceId: (() {
+        final guardedValue = map['defaultWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      workspaces: (() {
+        final guardedValue = map['workspaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FirewallPolicyLogAnalyticsWorkspace>(
+            guardedValue,
+            (value) => FirewallPolicyLogAnalyticsWorkspace.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

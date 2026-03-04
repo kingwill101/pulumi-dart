@@ -4,16 +4,15 @@ enum AgentPoolMode {
   valueUser("User"),
   valueGateway("Gateway");
 
-  const AgentPoolMode(this.value);
-  final String value;
+  const AgentPoolMode(this.wireValue);
+  final String wireValue;
 
   static AgentPoolMode fromValue(String value) {
     for (final item in AgentPoolMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentPoolMode value: $value');
   }
 }
-

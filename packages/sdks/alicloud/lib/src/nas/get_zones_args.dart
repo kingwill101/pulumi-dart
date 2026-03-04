@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesArgs {
   /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
   final pulumi.Input<String>? fileSystemType;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetZonesArgs].
   /// [fileSystemType] The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
-    this.fileSystemType,
-    this.outputFile,
-  });
+  GetZonesArgs({this.fileSystemType, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      fileSystemType: (() {
+        final guardedValue = map['fileSystemType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JavaComponentConfigurationProperty {
   /// The name of the property
   final pulumi.Input<String>? propertyName;
+
   /// The value of the property
   final pulumi.Input<String>? value;
 
   /// Creates a new [JavaComponentConfigurationProperty].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  JavaComponentConfigurationProperty({
-    this.propertyName,
-    this.value,
-  });
+  JavaComponentConfigurationProperty({this.propertyName, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'propertyName': ?propertyName,
-      'value': ?value,
-    };
+    return <String, dynamic>{'propertyName': ?propertyName, 'value': ?value};
   }
 
   factory JavaComponentConfigurationProperty.fromMap(Map<String, dynamic> map) {
     return JavaComponentConfigurationProperty(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      propertyName: (() {
+        final guardedValue = map['propertyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

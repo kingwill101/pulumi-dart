@@ -9,16 +9,22 @@ enum OrganizationContactNotificationCategorySubscriptionsItem {
   productUpdates("PRODUCT_UPDATES"),
   technicalIncidents("TECHNICAL_INCIDENTS");
 
-  const OrganizationContactNotificationCategorySubscriptionsItem(this.value);
-  final String value;
+  const OrganizationContactNotificationCategorySubscriptionsItem(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static OrganizationContactNotificationCategorySubscriptionsItem fromValue(String value) {
-    for (final item in OrganizationContactNotificationCategorySubscriptionsItem.values) {
-      if (item.value == value) {
+  static OrganizationContactNotificationCategorySubscriptionsItem fromValue(
+    String value,
+  ) {
+    for (final item
+        in OrganizationContactNotificationCategorySubscriptionsItem.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OrganizationContactNotificationCategorySubscriptionsItem value: $value');
+    throw ArgumentError(
+      'Unknown OrganizationContactNotificationCategorySubscriptionsItem value: $value',
+    );
   }
 }
-

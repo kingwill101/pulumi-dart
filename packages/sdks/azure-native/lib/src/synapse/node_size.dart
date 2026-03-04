@@ -8,16 +8,15 @@ enum NodeSize {
   valueXXLarge("XXLarge"),
   valueXXXLarge("XXXLarge");
 
-  const NodeSize(this.value);
-  final String value;
+  const NodeSize(this.wireValue);
+  final String wireValue;
 
   static NodeSize fromValue(String value) {
     for (final item in NodeSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeSize value: $value');
   }
 }
-

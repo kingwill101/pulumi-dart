@@ -4,16 +4,15 @@ enum TypeSyntax {
   syntaxProto3("SYNTAX_PROTO3"),
   syntaxEditions("SYNTAX_EDITIONS");
 
-  const TypeSyntax(this.value);
-  final String value;
+  const TypeSyntax(this.wireValue);
+  final String wireValue;
 
   static TypeSyntax fromValue(String value) {
     for (final item in TypeSyntax.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TypeSyntax value: $value');
   }
 }
-

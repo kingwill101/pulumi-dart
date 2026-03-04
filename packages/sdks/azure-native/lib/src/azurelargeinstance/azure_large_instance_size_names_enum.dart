@@ -46,16 +46,17 @@ enum AzureLargeInstanceSizeNamesEnum {
   s896ooo("S896ooo"),
   s960m("S960m");
 
-  const AzureLargeInstanceSizeNamesEnum(this.value);
-  final String value;
+  const AzureLargeInstanceSizeNamesEnum(this.wireValue);
+  final String wireValue;
 
   static AzureLargeInstanceSizeNamesEnum fromValue(String value) {
     for (final item in AzureLargeInstanceSizeNamesEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureLargeInstanceSizeNamesEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureLargeInstanceSizeNamesEnum value: $value',
+    );
   }
 }
-

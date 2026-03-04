@@ -151,22 +151,31 @@ import 'system_data_response.dart';
 class Evidence extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Control id.
   late final pulumi.Output<String?> controlId;
+
   /// Evidence type.
   late final pulumi.Output<String?> evidenceType;
+
   /// Extra data considered as evidence.
   late final pulumi.Output<String?> extraData;
+
   /// The path of the file in storage.
   late final pulumi.Output<String> filePath;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Responsibility id.
   late final pulumi.Output<String?> responsibilityId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,20 +188,20 @@ class Evidence extends pulumi.CustomResource {
     EvidenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appcomplianceautomation:Evidence',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.controlId = registerOutput<String?>('controlId');
-    this.evidenceType = registerOutput<String?>('evidenceType');
-    this.extraData = registerOutput<String?>('extraData');
-    this.filePath = registerOutput<String>('filePath');
+         'azure-native:appcomplianceautomation:Evidence',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    controlId = registerOutput<String?>('controlId');
+    evidenceType = registerOutput<String?>('evidenceType');
+    extraData = registerOutput<String?>('extraData');
+    filePath = registerOutput<String>('filePath');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.responsibilityId = registerOutput<String?>('responsibilityId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    responsibilityId = registerOutput<String?>('responsibilityId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

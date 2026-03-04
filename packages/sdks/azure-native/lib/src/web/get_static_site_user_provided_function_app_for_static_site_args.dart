@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// Name of the function app registered with the static site.
   final pulumi.Input<String> functionAppName;
+
   /// Name of the static site.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,15 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs {
     };
   }
 
-  factory GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs.fromMap(Map<String, dynamic> map) {
+  factory GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs(
-      functionAppName: (map['functionAppName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      functionAppName: pulumi.Input.fromValue(map['functionAppName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

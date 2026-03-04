@@ -4,16 +4,15 @@ enum PortMirroringDirectionEnum {
   eGRESS("EGRESS"),
   bIDIRECTIONAL("BIDIRECTIONAL");
 
-  const PortMirroringDirectionEnum(this.value);
-  final String value;
+  const PortMirroringDirectionEnum(this.wireValue);
+  final String wireValue;
 
   static PortMirroringDirectionEnum fromValue(String value) {
     for (final item in PortMirroringDirectionEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PortMirroringDirectionEnum value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ class ApplicationIamIdentityCenterOptions {
   /// Specifies whether IAM Identity Center is enabled or disabled.
   final pulumi.Input<bool>? enabled;
   final pulumi.Input<String>? iamIdentityCenterApplicationArn;
+
   /// The Amazon Resource Name (ARN) of the IAM Identity Center instance. Must be between 20 and 2048 characters.
   final pulumi.Input<String>? iamIdentityCenterInstanceArn;
+
   /// The ARN of the IAM role associated with the IAM Identity Center application. Must be between 20 and 2048 characters and match the pattern for IAM role ARNs.
   final pulumi.Input<String>? iamRoleForIdentityCenterApplicationArn;
 
@@ -28,17 +30,35 @@ class ApplicationIamIdentityCenterOptions {
       'enabled': ?enabled,
       'iamIdentityCenterApplicationArn': ?iamIdentityCenterApplicationArn,
       'iamIdentityCenterInstanceArn': ?iamIdentityCenterInstanceArn,
-      'iamRoleForIdentityCenterApplicationArn': ?iamRoleForIdentityCenterApplicationArn,
+      'iamRoleForIdentityCenterApplicationArn':
+          ?iamRoleForIdentityCenterApplicationArn,
     };
   }
 
-  factory ApplicationIamIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
+  factory ApplicationIamIdentityCenterOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationIamIdentityCenterOptions(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      iamIdentityCenterApplicationArn: map['iamIdentityCenterApplicationArn'] == null ? null : ((map['iamIdentityCenterApplicationArn'] as String).input()).input(),
-      iamIdentityCenterInstanceArn: map['iamIdentityCenterInstanceArn'] == null ? null : ((map['iamIdentityCenterInstanceArn'] as String).input()).input(),
-      iamRoleForIdentityCenterApplicationArn: map['iamRoleForIdentityCenterApplicationArn'] == null ? null : ((map['iamRoleForIdentityCenterApplicationArn'] as String).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      iamIdentityCenterApplicationArn: (() {
+        final guardedValue = map['iamIdentityCenterApplicationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamIdentityCenterInstanceArn: (() {
+        final guardedValue = map['iamIdentityCenterInstanceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRoleForIdentityCenterApplicationArn: (() {
+        final guardedValue = map['iamRoleForIdentityCenterApplicationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

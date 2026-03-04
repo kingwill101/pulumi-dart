@@ -3,16 +3,15 @@ enum ScriptActivityLogDestination {
   valueActivityOutput("ActivityOutput"),
   valueExternalStore("ExternalStore");
 
-  const ScriptActivityLogDestination(this.value);
-  final String value;
+  const ScriptActivityLogDestination(this.wireValue);
+  final String wireValue;
 
   static ScriptActivityLogDestination fromValue(String value) {
     for (final item in ScriptActivityLogDestination.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScriptActivityLogDestination value: $value');
   }
 }
-

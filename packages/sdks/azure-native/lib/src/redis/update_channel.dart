@@ -3,16 +3,15 @@ enum UpdateChannel {
   stable("Stable"),
   preview("Preview");
 
-  const UpdateChannel(this.value);
-  final String value;
+  const UpdateChannel(this.wireValue);
+  final String wireValue;
 
   static UpdateChannel fromValue(String value) {
     for (final item in UpdateChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpdateChannel value: $value');
   }
 }
-

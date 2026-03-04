@@ -10,23 +10,24 @@ class GrafeasV1beta1IntotoSignature {
   /// Creates a new [GrafeasV1beta1IntotoSignature].
   /// [keyid] Optional.
   /// [sig] Optional.
-  GrafeasV1beta1IntotoSignature({
-    this.keyid,
-    this.sig,
-  });
+  GrafeasV1beta1IntotoSignature({this.keyid, this.sig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyid': ?keyid,
-      'sig': ?sig,
-    };
+    return <String, dynamic>{'keyid': ?keyid, 'sig': ?sig};
   }
 
   factory GrafeasV1beta1IntotoSignature.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoSignature(
-      keyid: map['keyid'] == null ? null : (map['keyid']! as String).input(),
-      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
+      keyid: (() {
+        final guardedValue = map['keyid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sig: (() {
+        final guardedValue = map['sig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

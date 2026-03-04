@@ -9,9 +9,9 @@ import 'dataset_iam_member_state.dart';
 /// * `gcp.healthcare.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
 /// * `gcp.healthcare.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
 ///
-/// > **Note:** `gcp.healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DatasetIamBinding` and `gcp.healthcare.DatasetIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DatasetIamBinding` and `gcp.healthcare.DatasetIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.healthcare.DatasetIamPolicy
 ///
@@ -613,13 +613,16 @@ import 'dataset_iam_member_state.dart';
 /// ```
 class DatasetIamMember extends pulumi.CustomResource {
   late final pulumi.Output<DatasetIamMemberCondition?> condition;
+
   /// The dataset ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}` or
   /// `{location_name}/{dataset_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   late final pulumi.Output<String> datasetId;
+
   /// (Computed) The etag of the dataset's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -629,6 +632,7 @@ class DatasetIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -643,16 +647,16 @@ class DatasetIamMember extends pulumi.CustomResource {
     DatasetIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/datasetIamMember:DatasetIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DatasetIamMemberCondition?>('condition');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/datasetIamMember:DatasetIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DatasetIamMemberCondition?>('condition');
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [DatasetIamMember] resource's state with the given [name] and [id].
@@ -673,15 +677,15 @@ class DatasetIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/datasetIamMember:DatasetIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DatasetIamMemberCondition?>('condition');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/datasetIamMember:DatasetIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<DatasetIamMemberCondition?>('condition');
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

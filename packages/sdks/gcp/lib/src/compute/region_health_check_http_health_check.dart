@@ -7,12 +7,15 @@ class RegionHealthCheckHttpHealthCheck {
   /// If left empty (default value), the public IP on behalf of which this health
   /// check is performed will be used.
   final pulumi.Input<String>? host;
+
   /// The TCP port number for the HTTP health check request.
   /// The default value is 80.
   final pulumi.Input<int>? port;
+
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
   final pulumi.Input<String>? portName;
+
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -25,14 +28,17 @@ class RegionHealthCheckHttpHealthCheck {
   /// `portName` fields.
   /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
   final pulumi.Input<String>? portSpecification;
+
   /// Specifies the type of proxy header to append before sending data to the
   /// backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
   final pulumi.Input<String>? proxyHeader;
+
   /// The request path of the HTTP health check request.
   /// The default value is /.
   final pulumi.Input<String>? requestPath;
+
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
@@ -70,14 +76,41 @@ class RegionHealthCheckHttpHealthCheck {
 
   factory RegionHealthCheckHttpHealthCheck.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckHttpHealthCheck(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification']! as String).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader']! as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
-      response: map['response'] == null ? null : (map['response']! as String).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      portName: (() {
+        final guardedValue = map['portName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portSpecification: (() {
+        final guardedValue = map['portSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyHeader: (() {
+        final guardedValue = map['proxyHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestPath: (() {
+        final guardedValue = map['requestPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      response: (() {
+        final guardedValue = map['response'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

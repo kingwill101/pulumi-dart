@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError {
   /// The status code, which should be an enum value of [google.rpc.Code].
   final pulumi.Input<int> code;
+
   /// A developer-facing error message.
   final pulumi.Input<String> message;
 
@@ -17,17 +18,15 @@ class GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'message': message};
   }
 
-  factory GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError.fromMap(Map<String, dynamic> map) {
+  factory GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError(
-      code: (map['code'] as int).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as int),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

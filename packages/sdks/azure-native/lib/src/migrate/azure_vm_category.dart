@@ -9,16 +9,15 @@ enum AzureVmCategory {
   storageOptimized("StorageOptimized"),
   isolated("Isolated");
 
-  const AzureVmCategory(this.value);
-  final String value;
+  const AzureVmCategory(this.wireValue);
+  final String wireValue;
 
   static AzureVmCategory fromValue(String value) {
     for (final item in AzureVmCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureVmCategory value: $value');
   }
 }
-

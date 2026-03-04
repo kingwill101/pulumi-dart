@@ -9,36 +9,54 @@ import 'pod_cidroverprovision_config_container_v1beta1.dart';
 class IPAllocationPolicyContainerV1beta1 {
   /// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
   final pulumi.Input<bool>? allowRouteOverlap;
+
   /// This field is deprecated, use cluster_ipv4_cidr_block.
   final pulumi.Input<String>? clusterIpv4Cidr;
+
   /// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
   final pulumi.Input<String>? clusterIpv4CidrBlock;
+
   /// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
   final pulumi.Input<String>? clusterSecondaryRangeName;
+
   /// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
   final pulumi.Input<bool>? createSubnetwork;
+
   /// The ipv6 access type (internal or external) when create_subnetwork is true
-  final pulumi.Input<IPAllocationPolicyIpv6AccessTypeContainerV1beta1>? ipv6AccessType;
+  final pulumi.Input<IPAllocationPolicyIpv6AccessTypeContainerV1beta1>?
+  ipv6AccessType;
+
   /// This field is deprecated, use node_ipv4_cidr_block.
   final pulumi.Input<String>? nodeIpv4Cidr;
+
   /// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
   final pulumi.Input<String>? nodeIpv4CidrBlock;
+
   /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
-  final pulumi.Input<PodCIDROverprovisionConfigContainerV1beta1>? podCidrOverprovisionConfig;
+  final pulumi.Input<PodCIDROverprovisionConfigContainerV1beta1>?
+  podCidrOverprovisionConfig;
+
   /// This field is deprecated, use services_ipv4_cidr_block.
   final pulumi.Input<String>? servicesIpv4Cidr;
+
   /// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
   final pulumi.Input<String>? servicesIpv4CidrBlock;
+
   /// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
   final pulumi.Input<String>? servicesSecondaryRangeName;
+
   /// IP stack type
   final pulumi.Input<IPAllocationPolicyStackTypeContainerV1beta1>? stackType;
+
   /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
   final pulumi.Input<String>? subnetworkName;
+
   /// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
   final pulumi.Input<String>? tpuIpv4CidrBlock;
+
   /// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
   final pulumi.Input<bool>? useIpAliases;
+
   /// Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
   final pulumi.Input<bool>? useRoutes;
 
@@ -87,14 +105,26 @@ class IPAllocationPolicyContainerV1beta1 {
       'clusterIpv4CidrBlock': ?clusterIpv4CidrBlock,
       'clusterSecondaryRangeName': ?clusterSecondaryRangeName,
       'createSubnetwork': ?createSubnetwork,
-      'ipv6AccessType': ?pulumi.Input.mapOptionalInputValue<IPAllocationPolicyIpv6AccessTypeContainerV1beta1, String>(ipv6AccessType, (value) => value.value),
+      'ipv6AccessType':
+          ?pulumi.Input.mapOptionalInputValue<
+            IPAllocationPolicyIpv6AccessTypeContainerV1beta1,
+            String
+          >(ipv6AccessType, (value) => value.wireValue),
       'nodeIpv4Cidr': ?nodeIpv4Cidr,
       'nodeIpv4CidrBlock': ?nodeIpv4CidrBlock,
-      'podCidrOverprovisionConfig': ?pulumi.Input.mapOptionalInputValue<PodCIDROverprovisionConfigContainerV1beta1, Map<String, dynamic>>(podCidrOverprovisionConfig, (value) => value.toMap()),
+      'podCidrOverprovisionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PodCIDROverprovisionConfigContainerV1beta1,
+            Map<String, dynamic>
+          >(podCidrOverprovisionConfig, (value) => value.toMap()),
       'servicesIpv4Cidr': ?servicesIpv4Cidr,
       'servicesIpv4CidrBlock': ?servicesIpv4CidrBlock,
       'servicesSecondaryRangeName': ?servicesSecondaryRangeName,
-      'stackType': ?pulumi.Input.mapOptionalInputValue<IPAllocationPolicyStackTypeContainerV1beta1, String>(stackType, (value) => value.value),
+      'stackType':
+          ?pulumi.Input.mapOptionalInputValue<
+            IPAllocationPolicyStackTypeContainerV1beta1,
+            String
+          >(stackType, (value) => value.wireValue),
       'subnetworkName': ?subnetworkName,
       'tpuIpv4CidrBlock': ?tpuIpv4CidrBlock,
       'useIpAliases': ?useIpAliases,
@@ -104,24 +134,103 @@ class IPAllocationPolicyContainerV1beta1 {
 
   factory IPAllocationPolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return IPAllocationPolicyContainerV1beta1(
-      allowRouteOverlap: map['allowRouteOverlap'] == null ? null : (map['allowRouteOverlap']! as bool).input(),
-      clusterIpv4Cidr: map['clusterIpv4Cidr'] == null ? null : (map['clusterIpv4Cidr']! as String).input(),
-      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock']! as String).input(),
-      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName']! as String).input(),
-      createSubnetwork: map['createSubnetwork'] == null ? null : (map['createSubnetwork']! as bool).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (IPAllocationPolicyIpv6AccessTypeContainerV1beta1.fromValue(map['ipv6AccessType']! as String)).input(),
-      nodeIpv4Cidr: map['nodeIpv4Cidr'] == null ? null : (map['nodeIpv4Cidr']! as String).input(),
-      nodeIpv4CidrBlock: map['nodeIpv4CidrBlock'] == null ? null : (map['nodeIpv4CidrBlock']! as String).input(),
-      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (PodCIDROverprovisionConfigContainerV1beta1.fromMap((map['podCidrOverprovisionConfig']! as Map).cast<String, dynamic>())).input(),
-      servicesIpv4Cidr: map['servicesIpv4Cidr'] == null ? null : (map['servicesIpv4Cidr']! as String).input(),
-      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock']! as String).input(),
-      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName']! as String).input(),
-      stackType: map['stackType'] == null ? null : (IPAllocationPolicyStackTypeContainerV1beta1.fromValue(map['stackType']! as String)).input(),
-      subnetworkName: map['subnetworkName'] == null ? null : (map['subnetworkName']! as String).input(),
-      tpuIpv4CidrBlock: map['tpuIpv4CidrBlock'] == null ? null : (map['tpuIpv4CidrBlock']! as String).input(),
-      useIpAliases: map['useIpAliases'] == null ? null : (map['useIpAliases']! as bool).input(),
-      useRoutes: map['useRoutes'] == null ? null : (map['useRoutes']! as bool).input(),
+      allowRouteOverlap: (() {
+        final guardedValue = map['allowRouteOverlap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterIpv4Cidr: (() {
+        final guardedValue = map['clusterIpv4Cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterIpv4CidrBlock: (() {
+        final guardedValue = map['clusterIpv4CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterSecondaryRangeName: (() {
+        final guardedValue = map['clusterSecondaryRangeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createSubnetwork: (() {
+        final guardedValue = map['createSubnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv6AccessType: (() {
+        final guardedValue = map['ipv6AccessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IPAllocationPolicyIpv6AccessTypeContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      nodeIpv4Cidr: (() {
+        final guardedValue = map['nodeIpv4Cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeIpv4CidrBlock: (() {
+        final guardedValue = map['nodeIpv4CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      podCidrOverprovisionConfig: (() {
+        final guardedValue = map['podCidrOverprovisionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PodCIDROverprovisionConfigContainerV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      servicesIpv4Cidr: (() {
+        final guardedValue = map['servicesIpv4Cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicesIpv4CidrBlock: (() {
+        final guardedValue = map['servicesIpv4CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicesSecondaryRangeName: (() {
+        final guardedValue = map['servicesSecondaryRangeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackType: (() {
+        final guardedValue = map['stackType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IPAllocationPolicyStackTypeContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      subnetworkName: (() {
+        final guardedValue = map['subnetworkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tpuIpv4CidrBlock: (() {
+        final guardedValue = map['tpuIpv4CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useIpAliases: (() {
+        final guardedValue = map['useIpAliases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      useRoutes: (() {
+        final guardedValue = map['useRoutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -21,11 +21,12 @@ class GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
     };
   }
 
-  factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener(
-      instancePort: (map['instancePort'] as int).input(),
-      loadBalancerPort: (map['loadBalancerPort'] as int).input(),
+      instancePort: pulumi.Input.fromValue(map['instancePort'] as int),
+      loadBalancerPort: pulumi.Input.fromValue(map['loadBalancerPort'] as int),
     );
   }
 }
-

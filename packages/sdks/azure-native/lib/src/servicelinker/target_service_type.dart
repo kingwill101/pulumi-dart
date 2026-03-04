@@ -5,16 +5,15 @@ enum TargetServiceType {
   valueConfluentSchemaRegistry("ConfluentSchemaRegistry"),
   valueSelfHostedServer("SelfHostedServer");
 
-  const TargetServiceType(this.value);
-  final String value;
+  const TargetServiceType(this.wireValue);
+  final String wireValue;
 
   static TargetServiceType fromValue(String value) {
     for (final item in TargetServiceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetServiceType value: $value');
   }
 }
-

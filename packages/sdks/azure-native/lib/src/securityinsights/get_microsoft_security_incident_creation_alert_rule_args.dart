@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMicrosoftSecurityIncidentCreationAlertRuleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Alert rule ID
   final pulumi.Input<String> ruleId;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -32,12 +34,15 @@ class GetMicrosoftSecurityIncidentCreationAlertRuleArgs {
     };
   }
 
-  factory GetMicrosoftSecurityIncidentCreationAlertRuleArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMicrosoftSecurityIncidentCreationAlertRuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMicrosoftSecurityIncidentCreationAlertRuleArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleId: (map['ruleId'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

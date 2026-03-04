@@ -1,5 +1,3 @@
-library module_medialive;
-
 export 'medialive/channel.dart';
 export 'medialive/channel_args.dart';
 export 'medialive/channel_cdi_input_specification.dart';

@@ -3,16 +3,15 @@ enum EncryptionConfigType {
   valueUserManaged("UserManaged"),
   valueServiceManaged("ServiceManaged");
 
-  const EncryptionConfigType(this.value);
-  final String value;
+  const EncryptionConfigType(this.wireValue);
+  final String wireValue;
 
   static EncryptionConfigType fromValue(String value) {
     for (final item in EncryptionConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionConfigType value: $value');
   }
 }
-

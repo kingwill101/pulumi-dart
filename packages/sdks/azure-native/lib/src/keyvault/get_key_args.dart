@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeyArgs {
   /// The name of the key to be retrieved.
   final pulumi.Input<String> keyName;
+
   /// The name of the resource group which contains the specified key vault.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the vault which contains the key to be retrieved.
   final pulumi.Input<String> vaultName;
 
@@ -34,10 +36,11 @@ class GetKeyArgs {
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
-      keyName: (map['keyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

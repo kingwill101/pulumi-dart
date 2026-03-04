@@ -3,16 +3,17 @@ enum GoogleBigQueryAuthenticationType {
   valueServiceAuthentication("ServiceAuthentication"),
   valueUserAuthentication("UserAuthentication");
 
-  const GoogleBigQueryAuthenticationType(this.value);
-  final String value;
+  const GoogleBigQueryAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static GoogleBigQueryAuthenticationType fromValue(String value) {
     for (final item in GoogleBigQueryAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleBigQueryAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleBigQueryAuthenticationType value: $value',
+    );
   }
 }
-

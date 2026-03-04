@@ -15,10 +15,13 @@ class EndpointPortPatch {
   ///
   /// * Other protocols should use implementation-defined prefixed names such as mycompany.com/my-custom-protocol.
   final pulumi.Input<String>? appProtocol;
+
   /// The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
   final pulumi.Input<String>? name;
+
   /// The port number of the endpoint.
   final pulumi.Input<int>? port;
+
   /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
   final pulumi.Input<String>? protocol;
 
@@ -27,12 +30,7 @@ class EndpointPortPatch {
   /// [name] The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
   /// [port] The port number of the endpoint.
   /// [protocol] The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
-  EndpointPortPatch({
-    this.appProtocol,
-    this.name,
-    this.port,
-    this.protocol,
-  });
+  EndpointPortPatch({this.appProtocol, this.name, this.port, this.protocol});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +43,26 @@ class EndpointPortPatch {
 
   factory EndpointPortPatch.fromMap(Map<String, dynamic> map) {
     return EndpointPortPatch(
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      appProtocol: (() {
+        final guardedValue = map['appProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

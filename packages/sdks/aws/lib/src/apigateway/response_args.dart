@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseArgs {
   /// Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of parameters (paths, query strings and headers) of the Gateway Response.
   final pulumi.Input<Map<String, String>>? responseParameters;
+
   /// Map of templates used to transform the response body.
   final pulumi.Input<Map<String, String>>? responseTemplates;
+
   /// Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
   final pulumi.Input<String> responseType;
+
   /// String identifier of the associated REST API.
   final pulumi.Input<String> restApiId;
+
   /// HTTP status code of the Gateway Response.
   final pulumi.Input<String>? statusCode;
 
@@ -49,13 +54,32 @@ class ResponseArgs {
 
   factory ResponseArgs.fromMap(Map<String, dynamic> map) {
     return ResponseArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, String>()).input()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
-      responseType: (map['responseType'] as String).input(),
-      restApiId: (map['restApiId'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseParameters: (() {
+        final guardedValue = map['responseParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      responseTemplates: (() {
+        final guardedValue = map['responseTemplates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      responseType: pulumi.Input.fromValue(map['responseType'] as String),
+      restApiId: pulumi.Input.fromValue(map['restApiId'] as String),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

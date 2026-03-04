@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentResponse {
   /// Deployment identifier.
   final pulumi.Input<String>? deploymentId;
+
   /// Url to access repository action logs.
   final pulumi.Input<String>? deploymentLogsUrl;
+
   /// The outcome of the deployment.
   final pulumi.Input<String>? deploymentResult;
+
   /// Current status of the deployment.
   final pulumi.Input<String>? deploymentState;
+
   /// The time when the deployment finished.
   final pulumi.Input<String>? deploymentTime;
 
@@ -41,12 +45,31 @@ class DeploymentResponse {
 
   factory DeploymentResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResponse(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl']! as String).input(),
-      deploymentResult: map['deploymentResult'] == null ? null : (map['deploymentResult']! as String).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
-      deploymentTime: map['deploymentTime'] == null ? null : (map['deploymentTime']! as String).input(),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentLogsUrl: (() {
+        final guardedValue = map['deploymentLogsUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentResult: (() {
+        final guardedValue = map['deploymentResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentState: (() {
+        final guardedValue = map['deploymentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentTime: (() {
+        final guardedValue = map['deploymentTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

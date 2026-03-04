@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleResourceArgs {
   /// The alert rule proxy resource name.
   final pulumi.Input<String> alertRuleResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -34,10 +36,13 @@ class GetAlertRuleResourceArgs {
 
   factory GetAlertRuleResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleResourceArgs(
-      alertRuleResourceName: (map['alertRuleResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      watcherName: (map['watcherName'] as String).input(),
+      alertRuleResourceName: pulumi.Input.fromValue(
+        map['alertRuleResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
-

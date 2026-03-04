@@ -1,5 +1,3 @@
-library module_mongocluster;
-
 export 'mongocluster/firewall_rule.dart';
 export 'mongocluster/firewall_rule_args.dart';
 export 'mongocluster/firewall_rule_state.dart';

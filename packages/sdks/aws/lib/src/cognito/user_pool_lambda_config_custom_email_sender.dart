@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoolLambdaConfigCustomEmailSender {
   /// The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers to send email notifications to users.
   final pulumi.Input<String> lambdaArn;
+
   /// The Lambda version represents the signature of the "request" attribute in the "event" information Amazon Cognito passes to your custom email Lambda function. The only supported value is `V1_0`.
   final pulumi.Input<String> lambdaVersion;
 
@@ -23,11 +24,12 @@ class UserPoolLambdaConfigCustomEmailSender {
     };
   }
 
-  factory UserPoolLambdaConfigCustomEmailSender.fromMap(Map<String, dynamic> map) {
+  factory UserPoolLambdaConfigCustomEmailSender.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserPoolLambdaConfigCustomEmailSender(
-      lambdaArn: (map['lambdaArn'] as String).input(),
-      lambdaVersion: (map['lambdaVersion'] as String).input(),
+      lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
+      lambdaVersion: pulumi.Input.fromValue(map['lambdaVersion'] as String),
     );
   }
 }
-

@@ -9,26 +9,41 @@ import 'virtual_machine_scale_set_network_configuration_dns_settings_response.da
 class VirtualMachineScaleSetNetworkConfigurationResponse {
   /// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
   final pulumi.Input<String>? auxiliaryMode;
+
   /// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
   final pulumi.Input<String>? auxiliarySku;
+
   /// Specify what happens to the network interface when the VM is deleted
   final pulumi.Input<String>? deleteOption;
+
   /// Specifies whether the network interface is disabled for tcp state tracking.
   final pulumi.Input<bool>? disableTcpStateTracking;
+
   /// The dns settings to be applied on the network interfaces.
-  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse>? dnsSettings;
+  final pulumi.Input<
+    VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse
+  >?
+  dnsSettings;
+
   /// Specifies whether the network interface is accelerated networking-enabled.
   final pulumi.Input<bool>? enableAcceleratedNetworking;
+
   /// Specifies whether the network interface is FPGA networking-enabled.
   final pulumi.Input<bool>? enableFpga;
+
   /// Whether IP forwarding enabled on this NIC.
   final pulumi.Input<bool>? enableIPForwarding;
+
   /// Specifies the IP configurations of the network interface.
-  final pulumi.Input<List<VirtualMachineScaleSetIPConfigurationResponse>> ipConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetIPConfigurationResponse>>
+  ipConfigurations;
+
   /// The network configuration name.
   final pulumi.Input<String> name;
+
   /// The network security group.
   final pulumi.Input<SubResourceResponse>? networkSecurityGroup;
+
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
   final pulumi.Input<bool>? primary;
 
@@ -66,32 +81,107 @@ class VirtualMachineScaleSetNetworkConfigurationResponse {
       'auxiliarySku': ?auxiliarySku,
       'deleteOption': ?deleteOption,
       'disableTcpStateTracking': ?disableTcpStateTracking,
-      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
+      'dnsSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse,
+            Map<String, dynamic>
+          >(dnsSettings, (value) => value.toMap()),
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
       'enableFpga': ?enableFpga,
       'enableIPForwarding': ?enableIPForwarding,
-      'ipConfigurations': pulumi.Input.mapInputValue<List<VirtualMachineScaleSetIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipConfigurations':
+          pulumi.Input.mapInputValue<
+            List<VirtualMachineScaleSetIPConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineScaleSetIPConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
+      'networkSecurityGroup':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(networkSecurityGroup, (value) => value.toMap()),
       'primary': ?primary,
     };
   }
 
-  factory VirtualMachineScaleSetNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetNetworkConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetNetworkConfigurationResponse(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode']! as String).input(),
-      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku']! as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
-      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : (map['disableTcpStateTracking']! as bool).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
-      enableFpga: map['enableFpga'] == null ? null : (map['enableFpga']! as bool).input(),
-      enableIPForwarding: map['enableIPForwarding'] == null ? null : (map['enableIPForwarding']! as bool).input(),
-      ipConfigurations: (pulumi.Input.decodeList<VirtualMachineScaleSetIPConfigurationResponse>(map['ipConfigurations'], (value) => VirtualMachineScaleSetIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (SubResourceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
-      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      auxiliaryMode: (() {
+        final guardedValue = map['auxiliaryMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      auxiliarySku: (() {
+        final guardedValue = map['auxiliarySku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteOption: (() {
+        final guardedValue = map['deleteOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableTcpStateTracking: (() {
+        final guardedValue = map['disableTcpStateTracking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsSettings: (() {
+        final guardedValue = map['dnsSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableAcceleratedNetworking: (() {
+        final guardedValue = map['enableAcceleratedNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableFpga: (() {
+        final guardedValue = map['enableFpga'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableIPForwarding: (() {
+        final guardedValue = map['enableIPForwarding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipConfigurations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VirtualMachineScaleSetIPConfigurationResponse>(
+          map['ipConfigurations']!,
+          (value) => VirtualMachineScaleSetIPConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkSecurityGroup: (() {
+        final guardedValue = map['networkSecurityGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

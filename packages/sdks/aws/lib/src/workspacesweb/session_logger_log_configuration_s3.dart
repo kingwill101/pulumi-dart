@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionLoggerLogConfigurationS3 {
   /// S3 bucket name where logs are delivered.
   final pulumi.Input<String> bucket;
+
   /// Expected bucket owner of the target S3 bucket.
   final pulumi.Input<String>? bucketOwner;
+
   /// Folder structure that defines the organizational structure for log files in S3. Valid values: `FlatStructure`, `DateBasedStructure`.
   final pulumi.Input<String> folderStructure;
+
   /// S3 path prefix that determines where log files are stored.
   final pulumi.Input<String>? keyPrefix;
+
   /// Format of the log file written to S3. Valid values: `Json`, `Parquet`.
   final pulumi.Input<String> logFileFormat;
 
@@ -40,12 +44,19 @@ class SessionLoggerLogConfigurationS3 {
 
   factory SessionLoggerLogConfigurationS3.fromMap(Map<String, dynamic> map) {
     return SessionLoggerLogConfigurationS3(
-      bucket: (map['bucket'] as String).input(),
-      bucketOwner: map['bucketOwner'] == null ? null : ((map['bucketOwner'] as String).input()).input(),
-      folderStructure: (map['folderStructure'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
-      logFileFormat: (map['logFileFormat'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bucketOwner: (() {
+        final guardedValue = map['bucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folderStructure: pulumi.Input.fromValue(map['folderStructure'] as String),
+      keyPrefix: (() {
+        final guardedValue = map['keyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logFileFormat: pulumi.Input.fromValue(map['logFileFormat'] as String),
     );
   }
 }
-

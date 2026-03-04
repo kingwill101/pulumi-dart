@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesMemBalloonDriver {
   /// Enables the ATS (Address Translation Services) feature for the memory balloon device driver.
   final pulumi.Input<String>? ats;
+
   /// Configures the use of IOMMU support by the memory balloon device driver.
   final pulumi.Input<String>? iommu;
+
   /// Sets the packed setting for the memory balloon device driver, allowing for optimized memory usage.
   final pulumi.Input<String>? packed;
+
   /// Configures the use of per-virtqueue pages for the memory balloon device driver, enhancing performance.
   final pulumi.Input<String>? pagePerVq;
 
@@ -35,11 +38,26 @@ class DomainDevicesMemBalloonDriver {
 
   factory DomainDevicesMemBalloonDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemBalloonDriver(
-      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
-      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
+      ats: (() {
+        final guardedValue = map['ats'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iommu: (() {
+        final guardedValue = map['iommu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packed: (() {
+        final guardedValue = map['packed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pagePerVq: (() {
+        final guardedValue = map['pagePerVq'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,17 @@ enum GoogleCloudMlV1PredictionInputDataFormat {
   tfRecordGzip("TF_RECORD_GZIP"),
   csv("CSV");
 
-  const GoogleCloudMlV1PredictionInputDataFormat(this.value);
-  final String value;
+  const GoogleCloudMlV1PredictionInputDataFormat(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1PredictionInputDataFormat fromValue(String value) {
     for (final item in GoogleCloudMlV1PredictionInputDataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1PredictionInputDataFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1PredictionInputDataFormat value: $value',
+    );
   }
 }
-

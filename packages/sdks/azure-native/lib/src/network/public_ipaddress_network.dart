@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ddos_settings_response.dart';
 import 'extended_location_response.dart';
-import 'ip_tag_response.dart';
 import 'ipconfiguration_response.dart';
 import 'nat_gateway_response.dart';
 import 'public_ipaddress_args.dart';
@@ -569,52 +568,76 @@ import 'sub_resource_response.dart';
 class PublicIPAddressNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The DDoS protection custom policy associated with the public IP address.
   late final pulumi.Output<DdosSettingsResponse?> ddosSettings;
+
   /// Specify what happens to the public IP address when the VM using it is deleted
   late final pulumi.Output<String?> deleteOption;
+
   /// The FQDN of the DNS record associated with the public IP address.
   late final pulumi.Output<PublicIPAddressDnsSettingsResponse?> dnsSettings;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the public ip address.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The idle timeout of the public IP address.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
+
   /// The IP address associated with the public IP address resource.
   late final pulumi.Output<String?> ipAddress;
+
   /// The IP configuration associated with the public IP address.
   late final pulumi.Output<IPConfigurationResponse> ipConfiguration;
+
   /// The list of tags associated with the public IP address.
-  late final pulumi.Output<List<IpTagResponse>?> ipTags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+
   /// The linked public IP address of the public IP address resource.
   late final pulumi.Output<PublicIPAddressResponse?> linkedPublicIPAddress;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Migration phase of Public IP Address.
   late final pulumi.Output<String?> migrationPhase;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The NatGateway for the Public IP address.
   late final pulumi.Output<NatGatewayResponse?> natGateway;
+
   /// The provisioning state of the public IP address resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The public IP address version.
   late final pulumi.Output<String?> publicIPAddressVersion;
+
   /// The public IP address allocation method.
   late final pulumi.Output<String?> publicIPAllocationMethod;
+
   /// The Public IP Prefix this Public IP Address should be allocated from.
   late final pulumi.Output<SubResourceResponse?> publicIPPrefix;
+
   /// The resource GUID property of the public IP address resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The service public IP address of the public IP address resource.
   late final pulumi.Output<PublicIPAddressResponse?> servicePublicIPAddress;
+
   /// The public IP address SKU.
   late final pulumi.Output<PublicIPAddressSkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -627,35 +650,47 @@ class PublicIPAddressNetwork extends pulumi.CustomResource {
     PublicIPAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:PublicIPAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.ddosSettings = registerOutput<DdosSettingsResponse?>('ddosSettings');
-    this.deleteOption = registerOutput<String?>('deleteOption');
-    this.dnsSettings = registerOutput<PublicIPAddressDnsSettingsResponse?>('dnsSettings');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.ipAddress = registerOutput<String?>('ipAddress');
-    this.ipConfiguration = registerOutput<IPConfigurationResponse>('ipConfiguration');
-    this.ipTags = registerOutput<List<IpTagResponse>?>('ipTags');
-    this.linkedPublicIPAddress = registerOutput<PublicIPAddressResponse?>('linkedPublicIPAddress');
-    this.location = registerOutput<String?>('location');
-    this.migrationPhase = registerOutput<String?>('migrationPhase');
+         'azure-native:network:PublicIPAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ddosSettings = registerOutput<DdosSettingsResponse?>('ddosSettings');
+    deleteOption = registerOutput<String?>('deleteOption');
+    dnsSettings = registerOutput<PublicIPAddressDnsSettingsResponse?>(
+      'dnsSettings',
+    );
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    ipAddress = registerOutput<String?>('ipAddress');
+    ipConfiguration = registerOutput<IPConfigurationResponse>(
+      'ipConfiguration',
+    );
+    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    linkedPublicIPAddress = registerOutput<PublicIPAddressResponse?>(
+      'linkedPublicIPAddress',
+    );
+    location = registerOutput<String?>('location');
+    migrationPhase = registerOutput<String?>('migrationPhase');
     this.name = registerOutput<String>('name');
-    this.natGateway = registerOutput<NatGatewayResponse?>('natGateway');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
-    this.publicIPAllocationMethod = registerOutput<String?>('publicIPAllocationMethod');
-    this.publicIPPrefix = registerOutput<SubResourceResponse?>('publicIPPrefix');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.servicePublicIPAddress = registerOutput<PublicIPAddressResponse?>('servicePublicIPAddress');
-    this.sku = registerOutput<PublicIPAddressSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    natGateway = registerOutput<NatGatewayResponse?>('natGateway');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
+    publicIPAllocationMethod = registerOutput<String?>(
+      'publicIPAllocationMethod',
+    );
+    publicIPPrefix = registerOutput<SubResourceResponse?>('publicIPPrefix');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    servicePublicIPAddress = registerOutput<PublicIPAddressResponse?>(
+      'servicePublicIPAddress',
+    );
+    sku = registerOutput<PublicIPAddressSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

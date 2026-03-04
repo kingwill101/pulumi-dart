@@ -8,6 +8,7 @@ class GetNetworkResult {
   final String createTime;
   final String description;
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -60,7 +61,11 @@ class GetNetworkResult {
       'type': type,
       'uid': uid,
       'updateTime': updateTime,
-      'vpcNetworks': pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(vpcNetworks, (value) => value.toMap()),
+      'vpcNetworks':
+          pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(
+            vpcNetworks,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -72,13 +77,21 @@ class GetNetworkResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       state: map['state'] as String,
       type: map['type'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
-      vpcNetworks: pulumi.Input.decodeList<GetNetworkVpcNetwork>(map['vpcNetworks'], (value) => GetNetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      vpcNetworks: pulumi.Input.decodeList<GetNetworkVpcNetwork>(
+        map['vpcNetworks']!,
+        (value) => GetNetworkVpcNetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

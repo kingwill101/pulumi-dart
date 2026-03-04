@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// The account ID that this configuration applies to.
   final pulumi.Input<String> accountId;
+
   /// Whether the specified Amazon EC2 launch template is set as the default launch template.
   final pulumi.Input<bool> default_;
+
   /// ID of the Amazon EC2 launch template.
   final pulumi.Input<String> launchTemplateId;
 
@@ -28,12 +30,15 @@ class GetDistributionConfigurationDistributionLaunchTemplateConfiguration {
     };
   }
 
-  factory GetDistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionConfigurationDistributionLaunchTemplateConfiguration(
-      accountId: (map['accountId'] as String).input(),
-      default_: (map['default'] as bool).input(),
-      launchTemplateId: (map['launchTemplateId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      default_: pulumi.Input.fromValue(map['default'] as bool),
+      launchTemplateId: pulumi.Input.fromValue(
+        map['launchTemplateId'] as String,
+      ),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerStateResponse {
   /// The human-readable status of the container instance state.
   final pulumi.Input<String> detailStatus;
+
   /// The container instance exit codes correspond to those from the `docker run` command.
   final pulumi.Input<int> exitCode;
+
   /// The date-time when the container instance state finished.
   final pulumi.Input<String> finishTime;
+
   /// The date-time when the container instance state started.
   final pulumi.Input<String> startTime;
+
   /// The state of the container instance.
   final pulumi.Input<String> state;
 
@@ -41,12 +45,11 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: (map['detailStatus'] as String).input(),
-      exitCode: (map['exitCode'] as int).input(),
-      finishTime: (map['finishTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
+      detailStatus: pulumi.Input.fromValue(map['detailStatus'] as String),
+      exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
+      finishTime: pulumi.Input.fromValue(map['finishTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

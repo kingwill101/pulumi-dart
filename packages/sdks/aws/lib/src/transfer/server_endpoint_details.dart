@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointDetails {
   /// A list of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. This property can only be used when `endpoint_type` is set to `VPC`.
   final pulumi.Input<List<String>>? addressAllocationIds;
+
   /// A list of security groups IDs that are available to attach to your server's endpoint. If no security groups are specified, the VPC's default security groups are automatically assigned to your endpoint. This property can only be used when `endpoint_type` is set to `VPC`.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// A list of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when `endpoint_type` is set to `VPC`.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// The ID of the VPC endpoint. This property can only be used when `endpoint_type` is set to `VPC_ENDPOINT`
   final pulumi.Input<String>? vpcEndpointId;
+
   /// The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when `endpoint_type` is set to `VPC`.
   final pulumi.Input<String>? vpcId;
 
@@ -40,12 +44,31 @@ class ServerEndpointDetails {
 
   factory ServerEndpointDetails.fromMap(Map<String, dynamic> map) {
     return ServerEndpointDetails(
-      addressAllocationIds: map['addressAllocationIds'] == null ? null : (((map['addressAllocationIds'] as List).cast<String>()).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      addressAllocationIds: (() {
+        final guardedValue = map['addressAllocationIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcEndpointId: (() {
+        final guardedValue = map['vpcEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

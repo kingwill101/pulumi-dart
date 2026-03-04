@@ -7,6 +7,7 @@ class RiskConfigurationRiskExceptionConfiguration {
   /// The IP range is in CIDR notation, a compact representation of an IP address and its routing prefix.
   /// Can contain a maximum of 200 items.
   final pulumi.Input<List<String>>? blockedIpRangeLists;
+
   /// Risk detection isn't performed on the IP addresses in this range list.
   /// The IP range is in CIDR notation.
   /// Can contain a maximum of 200 items.
@@ -27,11 +28,20 @@ class RiskConfigurationRiskExceptionConfiguration {
     };
   }
 
-  factory RiskConfigurationRiskExceptionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory RiskConfigurationRiskExceptionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RiskConfigurationRiskExceptionConfiguration(
-      blockedIpRangeLists: map['blockedIpRangeLists'] == null ? null : (((map['blockedIpRangeLists'] as List).cast<String>()).input()).input(),
-      skippedIpRangeLists: map['skippedIpRangeLists'] == null ? null : (((map['skippedIpRangeLists'] as List).cast<String>()).input()).input(),
+      blockedIpRangeLists: (() {
+        final guardedValue = map['blockedIpRangeLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      skippedIpRangeLists: (() {
+        final guardedValue = map['skippedIpRangeLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

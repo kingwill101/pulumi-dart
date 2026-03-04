@@ -1,5 +1,3 @@
-library module_osconfig;
-
 export 'osconfig/apt_repository.dart';
 export 'osconfig/apt_repository_archive_type.dart';
 export 'osconfig/apt_repository_response.dart';

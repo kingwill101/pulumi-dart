@@ -28,17 +28,31 @@ class GetMetaTagsResult {
       'id': id,
       'keyName': ?keyName,
       'outputFile': ?outputFile,
-      'tags': pulumi.Input.encodeList<GetMetaTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.encodeList<GetMetaTagsTag, Map<String, dynamic>>(
+        tags,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetMetaTagsResult.fromMap(Map<String, dynamic> map) {
     return GetMetaTagsResult(
       id: map['id'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: pulumi.Input.decodeList<GetMetaTagsTag>(map['tags'], (value) => GetMetaTagsTag.fromMap((value as Map).cast<String, dynamic>())),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: pulumi.Input.decodeList<GetMetaTagsTag>(
+        map['tags']!,
+        (value) =>
+            GetMetaTagsTag.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

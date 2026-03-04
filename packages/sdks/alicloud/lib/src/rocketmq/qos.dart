@@ -6,9 +6,9 @@ import 'qos_state.dart';
 ///
 /// For information about Sag Qos and how to use it, see [What is Qos](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqos).
 ///
-/// > **NOTE:** Available since v1.60.0.
+/// &gt; **NOTE:** Available since v1.60.0.
 ///
-/// > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -117,25 +117,18 @@ class Qos extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Qos]. {@macro pulumi_rocketmq_qos_qos_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Qos(
-    String name, {
-    QosArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:rocketmq/qos:Qos',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Qos(String name, {QosArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:rocketmq/qos:Qos',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Qos] resource's state with the given [name] and [id].
-  static Qos get(
-    String name,
-    pulumi.Input<String> id, {
-    QosState? state,
-  }) {
+  static Qos get(String name, pulumi.Input<String> id, {QosState? state}) {
     return Qos._get(
       name,
       state: state?.toMap(),
@@ -148,11 +141,11 @@ class Qos extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/qos:Qos',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'alicloud:rocketmq/qos:Qos',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
   }
 }

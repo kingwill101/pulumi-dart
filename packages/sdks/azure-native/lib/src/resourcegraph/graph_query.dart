@@ -148,24 +148,34 @@ import 'system_data_response.dart';
 class GraphQuery extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of a graph query.
   late final pulumi.Output<String?> description;
+
   /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   late final pulumi.Output<String?> etag;
+
   /// The location of the resource
   late final pulumi.Output<String?> location;
+
   /// Azure resource name. This is GUID value. The display name should be assigned within properties field.
   late final pulumi.Output<String> name;
+
   /// KQL query that will be graph.
   late final pulumi.Output<String> query;
+
   /// Enum indicating a type of graph query.
   late final pulumi.Output<String> resultKind;
+
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Date and time in UTC of the last modification that was made to this graph query definition.
   late final pulumi.Output<String> timeModified;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -178,21 +188,21 @@ class GraphQuery extends pulumi.CustomResource {
     GraphQueryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resourcegraph:GraphQuery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:resourcegraph:GraphQuery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.resultKind = registerOutput<String>('resultKind');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
+    query = registerOutput<String>('query');
+    resultKind = registerOutput<String>('resultKind');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
   }
 }

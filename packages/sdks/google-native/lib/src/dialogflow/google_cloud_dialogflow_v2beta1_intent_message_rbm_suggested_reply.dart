@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply. This data will be also forwarded to webhook to allow performing custom business logic.
   final pulumi.Input<String>? postbackData;
+
   /// Suggested reply text.
   final pulumi.Input<String>? text;
 
@@ -18,17 +19,23 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'postbackData': ?postbackData,
-      'text': ?text,
-    };
+    return <String, dynamic>{'postbackData': ?postbackData, 'text': ?text};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply(
-      postbackData: map['postbackData'] == null ? null : (map['postbackData']! as String).input(),
-      text: map['text'] == null ? null : (map['text']! as String).input(),
+      postbackData: (() {
+        final guardedValue = map['postbackData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

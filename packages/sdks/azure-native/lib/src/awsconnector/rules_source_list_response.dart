@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RulesSourceListResponse {
   /// Property generatedRulesType
   final pulumi.Input<String>? generatedRulesType;
+
   /// Property targetTypes
   final pulumi.Input<List<String>>? targetTypes;
+
   /// Property targets
   final pulumi.Input<List<String>>? targets;
 
@@ -31,10 +33,21 @@ class RulesSourceListResponse {
 
   factory RulesSourceListResponse.fromMap(Map<String, dynamic> map) {
     return RulesSourceListResponse(
-      generatedRulesType: map['generatedRulesType'] == null ? null : (map['generatedRulesType']! as String).input(),
-      targetTypes: map['targetTypes'] == null ? null : ((map['targetTypes']! as List).cast<String>()).input(),
-      targets: map['targets'] == null ? null : ((map['targets']! as List).cast<String>()).input(),
+      generatedRulesType: (() {
+        final guardedValue = map['generatedRulesType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetTypes: (() {
+        final guardedValue = map['targetTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

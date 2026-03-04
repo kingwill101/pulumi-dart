@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreateFirewallRuleWithAccountParameters {
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final pulumi.Input<String> endIpAddress;
+
   /// The unique name of the firewall rule to create.
   final pulumi.Input<String> name;
+
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final pulumi.Input<String> startIpAddress;
 
@@ -29,12 +31,13 @@ class CreateFirewallRuleWithAccountParameters {
     };
   }
 
-  factory CreateFirewallRuleWithAccountParameters.fromMap(Map<String, dynamic> map) {
+  factory CreateFirewallRuleWithAccountParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CreateFirewallRuleWithAccountParameters(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      name: (map['name'] as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
-

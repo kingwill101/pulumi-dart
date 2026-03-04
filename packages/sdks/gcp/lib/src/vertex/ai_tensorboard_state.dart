@@ -7,34 +7,46 @@ import 'ai_tensorboard_encryption_spec.dart';
 class AiTensorboardState {
   /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
   final pulumi.Input<String>? blobStoragePathPrefix;
+
   /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
+
   /// Description of this Tensorboard.
   final pulumi.Input<String>? description;
+
   /// User provided name of this Tensorboard.
   final pulumi.Input<String>? displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiTensorboardEncryptionSpec>? encryptionSpec;
+
   /// The labels with user-defined metadata to organize your Tensorboards.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of the Tensorboard.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The region of the tensorboard. eg us-central1
   final pulumi.Input<String>? region;
+
   /// The number of Runs stored in this Tensorboard.
   final pulumi.Input<String>? runCount;
+
   /// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? updateTime;
 
@@ -75,7 +87,11 @@ class AiTensorboardState {
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiTensorboardEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiTensorboardEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
@@ -88,20 +104,81 @@ class AiTensorboardState {
 
   factory AiTensorboardState.fromMap(Map<String, dynamic> map) {
     return AiTensorboardState(
-      blobStoragePathPrefix: map['blobStoragePathPrefix'] == null ? null : (map['blobStoragePathPrefix']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiTensorboardEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      runCount: map['runCount'] == null ? null : (map['runCount']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      blobStoragePathPrefix: (() {
+        final guardedValue = map['blobStoragePathPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      encryptionSpec: (() {
+        final guardedValue = map['encryptionSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiTensorboardEncryptionSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runCount: (() {
+        final guardedValue = map['runCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

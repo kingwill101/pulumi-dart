@@ -9,16 +9,15 @@ enum AgentDeploymentState {
   valueDeleted("Deleted"),
   valueUpdating("Updating");
 
-  const AgentDeploymentState(this.value);
-  final String value;
+  const AgentDeploymentState(this.wireValue);
+  final String wireValue;
 
   static AgentDeploymentState fromValue(String value) {
     for (final item in AgentDeploymentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentDeploymentState value: $value');
   }
 }
-

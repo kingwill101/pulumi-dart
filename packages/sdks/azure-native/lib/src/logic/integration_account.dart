@@ -155,18 +155,26 @@ import 'resource_reference_response.dart';
 class IntegrationAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The integration service environment.
-  late final pulumi.Output<ResourceReferenceResponse?> integrationServiceEnvironment;
+  late final pulumi.Output<ResourceReferenceResponse?>
+  integrationServiceEnvironment;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The sku.
   late final pulumi.Output<IntegrationAccountSkuResponse?> sku;
+
   /// The workflow state.
   late final pulumi.Output<String?> state;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -179,18 +187,20 @@ class IntegrationAccount extends pulumi.CustomResource {
     IntegrationAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>('integrationServiceEnvironment');
-    this.location = registerOutput<String?>('location');
+         'azure-native:logic:IntegrationAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
+      'integrationServiceEnvironment',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.sku = registerOutput<IntegrationAccountSkuResponse?>('sku');
-    this.state = registerOutput<String?>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    sku = registerOutput<IntegrationAccountSkuResponse?>('sku');
+    state = registerOutput<String?>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

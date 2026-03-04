@@ -10,20 +10,39 @@ class VolumePropertiesExportPolicy {
 
   /// Creates a new [VolumePropertiesExportPolicy].
   /// [rules] Export policy rule
-  VolumePropertiesExportPolicy({
-    this.rules,
-  });
+  VolumePropertiesExportPolicy({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<ExportPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ExportPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExportPolicyRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<ExportPolicyRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory VolumePropertiesExportPolicy.fromMap(Map<String, dynamic> map) {
     return VolumePropertiesExportPolicy(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExportPolicyRule>(map['rules']!, (value) => ExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExportPolicyRule>(
+            guardedValue,
+            (value) => ExportPolicyRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

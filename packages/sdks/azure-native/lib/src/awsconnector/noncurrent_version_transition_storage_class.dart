@@ -7,16 +7,17 @@ enum NoncurrentVersionTransitionStorageClass {
   oNEZONEIA("ONEZONE_IA"),
   sTANDARDIA("STANDARD_IA");
 
-  const NoncurrentVersionTransitionStorageClass(this.value);
-  final String value;
+  const NoncurrentVersionTransitionStorageClass(this.wireValue);
+  final String wireValue;
 
   static NoncurrentVersionTransitionStorageClass fromValue(String value) {
     for (final item in NoncurrentVersionTransitionStorageClass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NoncurrentVersionTransitionStorageClass value: $value');
+    throw ArgumentError(
+      'Unknown NoncurrentVersionTransitionStorageClass value: $value',
+    );
   }
 }
-

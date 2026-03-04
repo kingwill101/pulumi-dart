@@ -9,16 +9,17 @@ enum WeeklyMaintenanceWindowDayMemcacheV1beta2 {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeeklyMaintenanceWindowDayMemcacheV1beta2(this.value);
-  final String value;
+  const WeeklyMaintenanceWindowDayMemcacheV1beta2(this.wireValue);
+  final String wireValue;
 
   static WeeklyMaintenanceWindowDayMemcacheV1beta2 fromValue(String value) {
     for (final item in WeeklyMaintenanceWindowDayMemcacheV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WeeklyMaintenanceWindowDayMemcacheV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown WeeklyMaintenanceWindowDayMemcacheV1beta2 value: $value',
+    );
   }
 }
-

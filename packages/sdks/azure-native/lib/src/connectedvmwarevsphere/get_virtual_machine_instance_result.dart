@@ -16,36 +16,52 @@ import 'system_data_response.dart';
 class GetVirtualMachineInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the extended location.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Hardware properties.
   final HardwareProfileResponse? hardwareProfile;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Gets the infrastructure profile.
   final InfrastructureProfileResponse? infrastructureProfile;
+
   /// The name of the resource
   final String name;
+
   /// Network properties.
   final NetworkProfileResponse? networkProfile;
+
   /// OS properties.
   final OsProfileForVMInstanceResponse? osProfile;
+
   /// Placement properties.
   final PlacementProfileResponse? placementProfile;
+
   /// Gets the power state of the virtual machine.
   final String powerState;
+
   /// Gets the provisioning state.
   final String provisioningState;
+
   /// Gets or sets a unique identifier for the vm resource.
   final String resourceUid;
+
   /// Gets the security profile.
   final SecurityProfileResponse? securityProfile;
+
   /// The resource status information.
   final List<ResourceStatusResponse> statuses;
+
   /// Storage properties.
   final StorageProfileResponse? storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -90,20 +106,24 @@ class GetVirtualMachineInstanceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
-      'hardwareProfile': ?hardwareProfile == null ? null : hardwareProfile!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'hardwareProfile': ?hardwareProfile?.toMap(),
       'id': id,
-      'infrastructureProfile': ?infrastructureProfile == null ? null : infrastructureProfile!.toMap(),
+      'infrastructureProfile': ?infrastructureProfile?.toMap(),
       'name': name,
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
-      'placementProfile': ?placementProfile == null ? null : placementProfile!.toMap(),
+      'networkProfile': ?networkProfile?.toMap(),
+      'osProfile': ?osProfile?.toMap(),
+      'placementProfile': ?placementProfile?.toMap(),
       'powerState': powerState,
       'provisioningState': provisioningState,
       'resourceUid': resourceUid,
-      'securityProfile': ?securityProfile == null ? null : securityProfile!.toMap(),
-      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'securityProfile': ?securityProfile?.toMap(),
+      'statuses':
+          pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(
+            statuses,
+            (value) => value.toMap(),
+          ),
+      'storageProfile': ?storageProfile?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -112,23 +132,77 @@ class GetVirtualMachineInstanceResult {
   factory GetVirtualMachineInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      hardwareProfile: map['hardwareProfile'] == null ? null : HardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      hardwareProfile: (() {
+        final guardedValue = map['hardwareProfile'];
+        if (guardedValue == null) return null;
+        return HardwareProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      infrastructureProfile: map['infrastructureProfile'] == null ? null : InfrastructureProfileResponse.fromMap((map['infrastructureProfile']! as Map).cast<String, dynamic>()),
+      infrastructureProfile: (() {
+        final guardedValue = map['infrastructureProfile'];
+        if (guardedValue == null) return null;
+        return InfrastructureProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>()),
-      osProfile: map['osProfile'] == null ? null : OsProfileForVMInstanceResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>()),
-      placementProfile: map['placementProfile'] == null ? null : PlacementProfileResponse.fromMap((map['placementProfile']! as Map).cast<String, dynamic>()),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      osProfile: (() {
+        final guardedValue = map['osProfile'];
+        if (guardedValue == null) return null;
+        return OsProfileForVMInstanceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      placementProfile: (() {
+        final guardedValue = map['placementProfile'];
+        if (guardedValue == null) return null;
+        return PlacementProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       powerState: map['powerState'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceUid: map['resourceUid'] as String,
-      securityProfile: map['securityProfile'] == null ? null : SecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>()),
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses'], (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      storageProfile: map['storageProfile'] == null ? null : StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      securityProfile: (() {
+        final guardedValue = map['securityProfile'];
+        if (guardedValue == null) return null;
+        return SecurityProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(
+        map['statuses']!,
+        (value) => ResourceStatusResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return StorageProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

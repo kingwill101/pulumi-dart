@@ -7,14 +7,19 @@ import 'ingress_settings_response_client_auth.dart';
 class IngressSettingsResponse {
   /// How ingress should communicate with this app backend service.
   final pulumi.Input<String>? backendProtocol;
+
   /// Client-Certification Authentication.
   final pulumi.Input<IngressSettingsResponseClientAuth>? clientAuth;
+
   /// Ingress read time out in seconds.
   final pulumi.Input<int>? readTimeoutInSeconds;
+
   /// Ingress send time out in seconds.
   final pulumi.Input<int>? sendTimeoutInSeconds;
+
   /// Type of the affinity, set this to Cookie to enable session affinity.
   final pulumi.Input<String>? sessionAffinity;
+
   /// Time in seconds until the cookie expires.
   final pulumi.Input<int>? sessionCookieMaxAge;
 
@@ -37,7 +42,11 @@ class IngressSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendProtocol': ?backendProtocol,
-      'clientAuth': ?pulumi.Input.mapOptionalInputValue<IngressSettingsResponseClientAuth, Map<String, dynamic>>(clientAuth, (value) => value.toMap()),
+      'clientAuth':
+          ?pulumi.Input.mapOptionalInputValue<
+            IngressSettingsResponseClientAuth,
+            Map<String, dynamic>
+          >(clientAuth, (value) => value.toMap()),
       'readTimeoutInSeconds': ?readTimeoutInSeconds,
       'sendTimeoutInSeconds': ?sendTimeoutInSeconds,
       'sessionAffinity': ?sessionAffinity,
@@ -47,13 +56,40 @@ class IngressSettingsResponse {
 
   factory IngressSettingsResponse.fromMap(Map<String, dynamic> map) {
     return IngressSettingsResponse(
-      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol']! as String).input(),
-      clientAuth: map['clientAuth'] == null ? null : (IngressSettingsResponseClientAuth.fromMap((map['clientAuth']! as Map).cast<String, dynamic>())).input(),
-      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds']! as int).input(),
-      sendTimeoutInSeconds: map['sendTimeoutInSeconds'] == null ? null : (map['sendTimeoutInSeconds']! as int).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as String).input(),
-      sessionCookieMaxAge: map['sessionCookieMaxAge'] == null ? null : (map['sessionCookieMaxAge']! as int).input(),
+      backendProtocol: (() {
+        final guardedValue = map['backendProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientAuth: (() {
+        final guardedValue = map['clientAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IngressSettingsResponseClientAuth.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      readTimeoutInSeconds: (() {
+        final guardedValue = map['readTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sendTimeoutInSeconds: (() {
+        final guardedValue = map['sendTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sessionAffinity: (() {
+        final guardedValue = map['sessionAffinity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionCookieMaxAge: (() {
+        final guardedValue = map['sessionCookieMaxAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

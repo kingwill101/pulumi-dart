@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageDiskReference {
   /// A relative uri containing a community Azure Compute Gallery image reference.
   final pulumi.Input<String>? communityGalleryImageId;
+
   /// A relative uri containing either a Platform Image Repository, user image, or Azure Compute Gallery image reference.
   final pulumi.Input<String>? id;
+
   /// If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.
   final pulumi.Input<int>? lun;
+
   /// A relative uri containing a direct shared Azure Compute Gallery image reference.
   final pulumi.Input<String>? sharedGalleryImageId;
 
@@ -36,11 +39,26 @@ class ImageDiskReference {
 
   factory ImageDiskReference.fromMap(Map<String, dynamic> map) {
     return ImageDiskReference(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId']! as String).input(),
+      communityGalleryImageId: (() {
+        final guardedValue = map['communityGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lun: (() {
+        final guardedValue = map['lun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sharedGalleryImageId: (() {
+        final guardedValue = map['sharedGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

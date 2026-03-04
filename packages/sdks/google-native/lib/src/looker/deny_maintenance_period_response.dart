@@ -8,8 +8,10 @@ import 'time_of_day_response.dart';
 class DenyMaintenancePeriodResponse {
   /// End date of the deny maintenance period.
   final pulumi.Input<DateResponse> endDate;
+
   /// Start date of the deny maintenance period.
   final pulumi.Input<DateResponse> startDate;
+
   /// Time in UTC when the period starts and ends.
   final pulumi.Input<TimeOfDayResponse> time;
 
@@ -25,18 +27,38 @@ class DenyMaintenancePeriodResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(endDate, (value) => value.toMap()),
-      'startDate': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(startDate, (value) => value.toMap()),
-      'time': pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(time, (value) => value.toMap()),
+      'endDate': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(
+        endDate,
+        (value) => value.toMap(),
+      ),
+      'startDate':
+          pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(
+            startDate,
+            (value) => value.toMap(),
+          ),
+      'time':
+          pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(
+            time,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory DenyMaintenancePeriodResponse.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriodResponse(
-      endDate: (DateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
-      startDate: (DateResponse.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
-      time: (TimeOfDayResponse.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
+      endDate: pulumi.Input.fromValue(
+        DateResponse.fromMap((map['endDate']! as Map).cast<String, dynamic>()),
+      ),
+      startDate: pulumi.Input.fromValue(
+        DateResponse.fromMap(
+          (map['startDate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      time: pulumi.Input.fromValue(
+        TimeOfDayResponse.fromMap(
+          (map['time']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

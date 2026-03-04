@@ -7,6 +7,7 @@ class AppVersionSnapshotAppModelSetting {
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
   final pulumi.Input<String>? model;
+
   /// (Output)
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
@@ -17,23 +18,24 @@ class AppVersionSnapshotAppModelSetting {
   /// Creates a new [AppVersionSnapshotAppModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotAppModelSetting({
-    this.model,
-    this.temperature,
-  });
+  AppVersionSnapshotAppModelSetting({this.model, this.temperature});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'model': ?model,
-      'temperature': ?temperature,
-    };
+    return <String, dynamic>{'model': ?model, 'temperature': ?temperature};
   }
 
   factory AppVersionSnapshotAppModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppModelSetting(
-      model: map['model'] == null ? null : (map['model']! as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      temperature: (() {
+        final guardedValue = map['temperature'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

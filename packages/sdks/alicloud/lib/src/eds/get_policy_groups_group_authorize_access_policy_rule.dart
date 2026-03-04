@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
   /// The cidrip of authorize access rule..
   final pulumi.Input<String> cidrIp;
+
   /// The description of authorize access rule.
   final pulumi.Input<String> description;
 
@@ -17,17 +18,15 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidrIp': cidrIp,
-      'description': description,
-    };
+    return <String, dynamic>{'cidrIp': cidrIp, 'description': description};
   }
 
-  factory GetPolicyGroupsGroupAuthorizeAccessPolicyRule.fromMap(Map<String, dynamic> map) {
+  factory GetPolicyGroupsGroupAuthorizeAccessPolicyRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicyGroupsGroupAuthorizeAccessPolicyRule(
-      cidrIp: (map['cidrIp'] as String).input(),
-      description: (map['description'] as String).input(),
+      cidrIp: pulumi.Input.fromValue(map['cidrIp'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

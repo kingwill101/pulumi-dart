@@ -10,9 +10,9 @@ import 'get_main_versions_result.dart';
 
 /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -858,7 +858,7 @@ Future<GetClustersResult> getClusters(
 /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and
 /// system disk types available in Alibaba Cloud account when create a emr cluster.
 ///
-/// > **NOTE:** Available in 1.60.0+
+/// &gt; **NOTE:** Available in 1.60.0+
 ///
 /// ## Example Usage
 ///
@@ -1000,7 +1000,7 @@ Future<GetDiskTypesResult> getDiskTypes(
 /// The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
 /// instance types available in Alibaba Cloud account when create a emr cluster.
 ///
-/// > **NOTE:** Available in 1.59.0+
+/// &gt; **NOTE:** Available in 1.59.0+
 ///
 /// ## Example Usage
 ///
@@ -1165,7 +1165,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// The `alicloud.emr.getMainVersions` data source provides a collection of emr
 /// main versions available in Alibaba Cloud account when create a emr cluster.
 ///
-/// > **NOTE:** Available in 1.59.0+
+/// &gt; **NOTE:** Available in 1.59.0+
 ///
 /// ## Example Usage
 ///

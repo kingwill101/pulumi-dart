@@ -1,5 +1,3 @@
-library module_redhatopenshift;
-
 export 'redhatopenshift/cluster.dart';
 export 'redhatopenshift/cluster_api_server_profile.dart';
 export 'redhatopenshift/cluster_args.dart';

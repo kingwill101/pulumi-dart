@@ -13,15 +13,18 @@ class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'replacementStrategy': ?replacementStrategy,
-    };
+    return <String, dynamic>{'replacementStrategy': ?replacementStrategy};
   }
 
-  factory SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance(
-      replacementStrategy: map['replacementStrategy'] == null ? null : ((map['replacementStrategy'] as String).input()).input(),
+      replacementStrategy: (() {
+        final guardedValue = map['replacementStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

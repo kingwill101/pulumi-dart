@@ -197,7 +197,7 @@ import 'domain_topic_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -212,8 +212,10 @@ import 'domain_topic_state.dart';
 class DomainTopic extends pulumi.CustomResource {
   /// Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainName;
+
   /// Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -226,14 +228,14 @@ class DomainTopic extends pulumi.CustomResource {
     DomainTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/domainTopic:DomainTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
+         'azure:eventgrid/domainTopic:DomainTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [DomainTopic] resource's state with the given [name] and [id].
@@ -254,13 +256,13 @@ class DomainTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/domainTopic:DomainTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
+         'azure:eventgrid/domainTopic:DomainTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

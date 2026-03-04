@@ -1,5 +1,3 @@
-library module_devhub;
-
 export 'devhub/acr.dart';
 export 'devhub/acrresponse.dart';
 export 'devhub/deployment_properties.dart';

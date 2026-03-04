@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficMirrorFilterEgressRulesArgs {
   /// A list of Traffic Mirror Filter Egress Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
   final pulumi.Input<String>? status;
+
   /// The ID of the Traffic Mirror Filter.
   final pulumi.Input<String> trafficMirrorFilterId;
 
@@ -37,13 +40,28 @@ class GetTrafficMirrorFilterEgressRulesArgs {
     };
   }
 
-  factory GetTrafficMirrorFilterEgressRulesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTrafficMirrorFilterEgressRulesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrafficMirrorFilterEgressRulesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trafficMirrorFilterId: pulumi.Input.fromValue(
+        map['trafficMirrorFilterId'] as String,
+      ),
     );
   }
 }
-

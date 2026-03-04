@@ -7,16 +7,21 @@ import 'get_scaling_rules_rule.dart';
 class GetScalingRulesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of scaling rule ids.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of scaling rule names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of scaling rules. Each element contains the following attributes:
   final List<GetScalingRulesRule> rules;
+
   /// ID of the scaling group.
   final String? scalingGroupId;
+
   /// Type of the scaling rule.
   final String? type;
 
@@ -47,7 +52,11 @@ class GetScalingRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetScalingRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<GetScalingRulesRule, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
       'scalingGroupId': ?scalingGroupId,
       'type': ?type,
     };
@@ -57,13 +66,32 @@ class GetScalingRulesResult {
     return GetScalingRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      rules: pulumi.Input.decodeList<GetScalingRulesRule>(map['rules'], (value) => GetScalingRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId']! as String,
-      type: map['type'] == null ? null : map['type']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rules: pulumi.Input.decodeList<GetScalingRulesRule>(
+        map['rules']!,
+        (value) =>
+            GetScalingRulesRule.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      scalingGroupId: (() {
+        final guardedValue = map['scalingGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

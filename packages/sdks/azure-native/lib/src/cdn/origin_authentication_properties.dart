@@ -7,8 +7,10 @@ import 'resource_reference.dart';
 class OriginAuthenticationProperties {
   /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
   final pulumi.Input<String>? scope;
+
   /// The type of the authentication for the origin.
   final pulumi.Input<String>? type;
+
   /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
   final pulumi.Input<ResourceReference>? userAssignedIdentity;
 
@@ -26,16 +28,35 @@ class OriginAuthenticationProperties {
     return <String, dynamic>{
       'scope': ?scope,
       'type': ?type,
-      'userAssignedIdentity': ?pulumi.Input.mapOptionalInputValue<ResourceReference, Map<String, dynamic>>(userAssignedIdentity, (value) => value.toMap()),
+      'userAssignedIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceReference,
+            Map<String, dynamic>
+          >(userAssignedIdentity, (value) => value.toMap()),
     };
   }
 
   factory OriginAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationProperties(
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (ResourceReference.fromMap((map['userAssignedIdentity']! as Map).cast<String, dynamic>())).input(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

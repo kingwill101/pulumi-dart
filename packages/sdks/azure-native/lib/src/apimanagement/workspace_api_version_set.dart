@@ -158,18 +158,25 @@ import 'workspace_api_version_set_args.dart';
 class WorkspaceApiVersionSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of API Version Set.
   late final pulumi.Output<String?> description;
+
   /// Name of API Version Set
   late final pulumi.Output<String> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
   late final pulumi.Output<String?> versionHeaderName;
+
   /// Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
   late final pulumi.Output<String?> versionQueryName;
+
   /// An value that determines where the API Version identifier will be located in a HTTP request.
   late final pulumi.Output<String> versioningScheme;
 
@@ -182,18 +189,18 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     WorkspaceApiVersionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceApiVersionSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azure-native:apimanagement:WorkspaceApiVersionSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.versionHeaderName = registerOutput<String?>('versionHeaderName');
-    this.versionQueryName = registerOutput<String?>('versionQueryName');
-    this.versioningScheme = registerOutput<String>('versioningScheme');
+    type = registerOutput<String>('type');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
   }
 }

@@ -14,15 +14,16 @@ class ResourceProviderManifestPropertiesProviderAuthentication {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedAudiences': allowedAudiences,
-    };
+    return <String, dynamic>{'allowedAudiences': allowedAudiences};
   }
 
-  factory ResourceProviderManifestPropertiesProviderAuthentication.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManifestPropertiesProviderAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManifestPropertiesProviderAuthentication(
-      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: pulumi.Input.fromValue(
+        (map['allowedAudiences'] as List).cast<String>(),
+      ),
     );
   }
 }
-

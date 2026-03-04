@@ -187,20 +187,28 @@ import 'system_data_response.dart';
 class MoveCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The etag of the resource.
   late final pulumi.Output<String> etag;
+
   /// Defines the MSI properties of the Move Collection.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The geo-location where the resource lives.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the move collection properties.
   late final pulumi.Output<MoveCollectionPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -213,19 +221,19 @@ class MoveCollection extends pulumi.CustomResource {
     MoveCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:MoveCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:migrate:MoveCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MoveCollectionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MoveCollectionPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

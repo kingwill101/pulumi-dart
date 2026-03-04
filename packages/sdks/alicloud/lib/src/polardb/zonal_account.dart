@@ -4,7 +4,7 @@ import 'zonal_account_state.dart';
 
 /// Provides a PolarDB Zonal account resource and used to manage databases.
 ///
-/// > **NOTE:** Available since v1.262.0.
+/// &gt; **NOTE:** Available since v1.262.0.
 ///
 /// ## Example Usage
 ///
@@ -182,12 +182,16 @@ import 'zonal_account_state.dart';
 class ZonalAccount extends pulumi.CustomResource {
   /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   late final pulumi.Output<String?> accountDescription;
+
   /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
   late final pulumi.Output<String> accountName;
+
   /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
   late final pulumi.Output<String> accountPassword;
+
   /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
   late final pulumi.Output<String> accountType;
+
   /// The Id of cluster in which account belongs.
   late final pulumi.Output<String> dbClusterId;
 
@@ -200,16 +204,16 @@ class ZonalAccount extends pulumi.CustomResource {
     ZonalAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/zonalAccount:ZonalAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
+         'alicloud:polardb/zonalAccount:ZonalAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
   }
 
   /// Gets an existing [ZonalAccount] resource's state with the given [name] and [id].
@@ -230,15 +234,15 @@ class ZonalAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/zonalAccount:ZonalAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
+         'alicloud:polardb/zonalAccount:ZonalAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
   }
 }

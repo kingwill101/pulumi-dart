@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_app_dynamics_application_performance_monitoring_args.dart';
 import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart';
 
-/// > **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
+/// &gt; **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for App Dynamics.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -245,7 +245,7 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AppPlatform` - 2024-01-01-preview
@@ -257,29 +257,41 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.CustomResource {
+class SpringCloudAppDynamicsApplicationPerformanceMonitoring
+    extends pulumi.CustomResource {
   /// Specifies the account access key used to authenticate with the Controller.
   late final pulumi.Output<String> agentAccountAccessKey;
+
   /// Specifies the account name of the App Dynamics account.
   late final pulumi.Output<String> agentAccountName;
+
   /// Specifies the name of the logical business application that this JVM node belongs to.
   late final pulumi.Output<String?> agentApplicationName;
+
   /// Specifies the name of the node. Where JVMs are dynamically created.
   late final pulumi.Output<String?> agentNodeName;
+
   /// Specifies the name of the tier that this JVM node belongs to.
   late final pulumi.Output<String?> agentTierName;
+
   /// Specifies the unique host ID which is used to Logically partition a single physical host or virtual machine such that it appears to the Controller that the application is running on different machines.
   late final pulumi.Output<String?> agentUniqueHostId;
+
   /// Specifies the hostname or the IP address of the AppDynamics Controller.
   late final pulumi.Output<String> controllerHostName;
+
   /// Specifies the HTTP(S) port of the AppDynamics Controller. This is the port used to access the AppDynamics browser-based user interface.
   late final pulumi.Output<int?> controllerPort;
+
   /// Specifies whether enable use SSL (HTTPS) to connect to the AppDynamics Controller.
   late final pulumi.Output<bool?> controllerSslEnabled;
+
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
+
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for App Dynamics. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -292,23 +304,23 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
     SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
-    this.agentAccountName = registerOutput<String>('agentAccountName');
-    this.agentApplicationName = registerOutput<String?>('agentApplicationName');
-    this.agentNodeName = registerOutput<String?>('agentNodeName');
-    this.agentTierName = registerOutput<String?>('agentTierName');
-    this.agentUniqueHostId = registerOutput<String?>('agentUniqueHostId');
-    this.controllerHostName = registerOutput<String>('controllerHostName');
-    this.controllerPort = registerOutput<int?>('controllerPort');
-    this.controllerSslEnabled = registerOutput<bool?>('controllerSslEnabled');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
+    agentAccountName = registerOutput<String>('agentAccountName');
+    agentApplicationName = registerOutput<String?>('agentApplicationName');
+    agentNodeName = registerOutput<String?>('agentNodeName');
+    agentTierName = registerOutput<String?>('agentTierName');
+    agentUniqueHostId = registerOutput<String?>('agentUniqueHostId');
+    controllerHostName = registerOutput<String>('controllerHostName');
+    controllerPort = registerOutput<int?>('controllerPort');
+    controllerSslEnabled = registerOutput<bool?>('controllerSslEnabled');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
   /// Gets an existing [SpringCloudAppDynamicsApplicationPerformanceMonitoring] resource's state with the given [name] and [id].
@@ -329,22 +341,22 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
-    this.agentAccountName = registerOutput<String>('agentAccountName');
-    this.agentApplicationName = registerOutput<String?>('agentApplicationName');
-    this.agentNodeName = registerOutput<String?>('agentNodeName');
-    this.agentTierName = registerOutput<String?>('agentTierName');
-    this.agentUniqueHostId = registerOutput<String?>('agentUniqueHostId');
-    this.controllerHostName = registerOutput<String>('controllerHostName');
-    this.controllerPort = registerOutput<int?>('controllerPort');
-    this.controllerSslEnabled = registerOutput<bool?>('controllerSslEnabled');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
+    agentAccountName = registerOutput<String>('agentAccountName');
+    agentApplicationName = registerOutput<String?>('agentApplicationName');
+    agentNodeName = registerOutput<String?>('agentNodeName');
+    agentTierName = registerOutput<String?>('agentTierName');
+    agentUniqueHostId = registerOutput<String?>('agentUniqueHostId');
+    controllerHostName = registerOutput<String>('controllerHostName');
+    controllerPort = registerOutput<int?>('controllerPort');
+    controllerSslEnabled = registerOutput<bool?>('controllerSslEnabled');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

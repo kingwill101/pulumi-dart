@@ -7,12 +7,15 @@ class FileSystemSmbAcl {
   /// - true: Allow anonymous access.
   /// - false (default): Anonymous access is not allowed.
   final pulumi.Input<bool>? enableAnonymousAccess;
+
   /// Whether SMB ACL is enabled
   final pulumi.Input<bool>? enabled;
+
   /// Whether transmission encryption is enabled.
   /// - true: Enables encryption in transit.
   /// - false (default): Transport encryption is not enabled.
   final pulumi.Input<bool>? encryptData;
+
   /// The user directory home path for each user. The file path format is as follows:
   /// - A forward slash (/) or backslash (\) as a separator.
   /// - Each paragraph cannot contain ":|? *.
@@ -21,12 +24,14 @@ class FileSystemSmbAcl {
   ///
   /// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
   ///
-  /// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+  /// &gt; **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
   final pulumi.Input<String>? homeDirPath;
+
   /// Whether to reject non-encrypted clients.
   /// - true: Deny non-encrypted clients.
   /// - false (default): Non-encrypted clients are not rejected.
   final pulumi.Input<bool>? rejectUnencryptedAccess;
+
   /// The ID of the Super User. The ID rules are as follows:
   /// - Must start with S and no other letters can appear after the S at the beginning.
   /// - At least three dashes (-) apart.
@@ -63,13 +68,36 @@ class FileSystemSmbAcl {
 
   factory FileSystemSmbAcl.fromMap(Map<String, dynamic> map) {
     return FileSystemSmbAcl(
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      encryptData: map['encryptData'] == null ? null : (map['encryptData']! as bool).input(),
-      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath']! as String).input(),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess']! as bool).input(),
-      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid']! as String).input(),
+      enableAnonymousAccess: (() {
+        final guardedValue = map['enableAnonymousAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptData: (() {
+        final guardedValue = map['encryptData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      homeDirPath: (() {
+        final guardedValue = map['homeDirPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rejectUnencryptedAccess: (() {
+        final guardedValue = map['rejectUnencryptedAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      superAdminSid: (() {
+        final guardedValue = map['superAdminSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

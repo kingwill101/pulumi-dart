@@ -6,26 +6,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterState {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   final pulumi.Input<String>? cenId;
+
   /// (Available since v1.247.0) The time when the transit router was created.
   final pulumi.Input<String>? createTime;
+
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
+
   /// (Available since v1.247.0) The ID of the region where the transit router is deployed.
   final pulumi.Input<String>? regionId;
+
   /// The status of the transit router.
   final pulumi.Input<String>? status;
+
   /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
   final pulumi.Input<bool>? supportMulticast;
+
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The description of the Enterprise Edition transit router instance.
   /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   final pulumi.Input<String>? transitRouterDescription;
+
   /// The ID of the transit router.
   final pulumi.Input<String>? transitRouterId;
+
   /// The name of the Enterprise Edition transit router.
   /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   final pulumi.Input<String>? transitRouterName;
+
   /// The edition of the transit router.
   final pulumi.Input<String>? type;
 
@@ -73,18 +83,63 @@ class TransitRouterState {
 
   factory TransitRouterState.fromMap(Map<String, dynamic> map) {
     return TransitRouterState(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription']! as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
-      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportMulticast: (() {
+        final guardedValue = map['supportMulticast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitRouterDescription: (() {
+        final guardedValue = map['transitRouterDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterName: (() {
+        final guardedValue = map['transitRouterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

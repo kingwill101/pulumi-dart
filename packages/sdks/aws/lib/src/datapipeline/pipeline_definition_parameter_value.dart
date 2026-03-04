@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineDefinitionParameterValue {
   /// ID of the parameter value.
   final pulumi.Input<String> id;
+
   /// Field value, expressed as a String.
   final pulumi.Input<String> stringValue;
 
@@ -17,17 +18,13 @@ class PipelineDefinitionParameterValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'stringValue': stringValue,
-    };
+    return <String, dynamic>{'id': id, 'stringValue': stringValue};
   }
 
   factory PipelineDefinitionParameterValue.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionParameterValue(
-      id: (map['id'] as String).input(),
-      stringValue: (map['stringValue'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
     );
   }
 }
-

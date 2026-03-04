@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupMembershipArgs {
   /// An instance being added to the InstanceGroup
   final pulumi.Input<String> instance;
+
   /// Represents an Instance Group resource name that the instance belongs to.
   final pulumi.Input<String> instanceGroup;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A reference to the zone where the instance group resides.
   final pulumi.Input<String>? zone;
 
@@ -40,11 +43,18 @@ class InstanceGroupMembershipArgs {
 
   factory InstanceGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupMembershipArgs(
-      instance: (map['instance'] as String).input(),
-      instanceGroup: (map['instanceGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      instanceGroup: pulumi.Input.fromValue(map['instanceGroup'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

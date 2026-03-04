@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadNetworkPortMirroringArgs {
   /// Destination VM Group.
   final pulumi.Input<String>? destination;
+
   /// Direction of port mirroring profile.
   final pulumi.Input<String>? direction;
+
   /// Display name of the port mirroring profile.
   final pulumi.Input<String>? displayName;
+
   /// ID of the NSX port mirroring profile.
   final pulumi.Input<String>? portMirroringId;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// NSX revision number.
   final pulumi.Input<double>? revision;
+
   /// Source VM Group.
   final pulumi.Input<String>? source;
 
@@ -59,15 +66,42 @@ class WorkloadNetworkPortMirroringArgs {
 
   factory WorkloadNetworkPortMirroringArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPortMirroringArgs(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      portMirroringId: map['portMirroringId'] == null ? null : (map['portMirroringId']! as String).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portMirroringId: (() {
+        final guardedValue = map['portMirroringId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

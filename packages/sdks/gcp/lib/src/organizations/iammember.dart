@@ -11,13 +11,13 @@ import 'iammember_state.dart';
 /// * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
 ///
-/// > **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.organizations.IAMPolicy
 ///
-/// !> **Warning:** New organizations have several default policies which will,
+/// !&gt; **Warning:** New organizations have several default policies which will,
 /// without extreme caution, be **overwritten** by use of this resource.
 /// The safest alternative is to use multiple `gcp.organizations.IAMBinding`
 /// resources. This resource makes it easy to remove your own access to
@@ -364,7 +364,7 @@ import 'iammember_state.dart';
 ///
 /// ## gcp.organizations.IAMBinding
 ///
-/// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+/// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 ///
 ///
 /// ```typescript
@@ -1002,7 +1002,7 @@ import 'iammember_state.dart';
 ///
 /// ## gcp.organizations.IAMBinding
 ///
-/// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+/// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 ///
 ///
 /// ```typescript
@@ -1667,8 +1667,10 @@ class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<IAMMemberCondition?> condition;
+
   /// (Computed) The etag of the organization's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -1676,8 +1678,10 @@ class IAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The organization id of the target organization.
   late final pulumi.Output<String> orgId;
+
   /// The role that should be applied. Only one
   /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -1692,16 +1696,16 @@ class IAMMember extends pulumi.CustomResource {
     IAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:organizations/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.orgId = registerOutput<String>('orgId');
-    this.role = registerOutput<String>('role');
+         'gcp:organizations/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    orgId = registerOutput<String>('orgId');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [IAMMember] resource's state with the given [name] and [id].
@@ -1722,15 +1726,15 @@ class IAMMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:organizations/iAMMember:IAMMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.orgId = registerOutput<String>('orgId');
-    this.role = registerOutput<String>('role');
+         'gcp:organizations/iAMMember:IAMMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    orgId = registerOutput<String>('orgId');
+    role = registerOutput<String>('role');
   }
 }

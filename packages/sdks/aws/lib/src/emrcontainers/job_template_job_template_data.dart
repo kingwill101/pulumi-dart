@@ -6,13 +6,18 @@ import 'job_template_job_template_data_job_driver.dart';
 
 class JobTemplateJobTemplateData {
   /// The configuration settings that are used to override defaults configuration.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverrides>? configurationOverrides;
+  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverrides>?
+  configurationOverrides;
+
   /// The execution role ARN of the job run.
   final pulumi.Input<String> executionRoleArn;
+
   /// Specify the driver that the job runs on. Exactly one of the two available job drivers is required, either sparkSqlJobDriver or sparkSubmitJobDriver.
   final pulumi.Input<JobTemplateJobTemplateDataJobDriver> jobDriver;
+
   /// The tags assigned to jobs started using the job template.
   final pulumi.Input<Map<String, String>>? jobTags;
+
   /// The release version of Amazon EMR.
   final pulumi.Input<String> releaseLabel;
 
@@ -32,9 +37,17 @@ class JobTemplateJobTemplateData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurationOverrides': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateDataConfigurationOverrides, Map<String, dynamic>>(configurationOverrides, (value) => value.toMap()),
+      'configurationOverrides':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTemplateJobTemplateDataConfigurationOverrides,
+            Map<String, dynamic>
+          >(configurationOverrides, (value) => value.toMap()),
       'executionRoleArn': executionRoleArn,
-      'jobDriver': pulumi.Input.mapInputValue<JobTemplateJobTemplateDataJobDriver, Map<String, dynamic>>(jobDriver, (value) => value.toMap()),
+      'jobDriver':
+          pulumi.Input.mapInputValue<
+            JobTemplateJobTemplateDataJobDriver,
+            Map<String, dynamic>
+          >(jobDriver, (value) => value.toMap()),
       'jobTags': ?jobTags,
       'releaseLabel': releaseLabel,
     };
@@ -42,12 +55,31 @@ class JobTemplateJobTemplateData {
 
   factory JobTemplateJobTemplateData.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateData(
-      configurationOverrides: map['configurationOverrides'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverrides.fromMap((map['configurationOverrides']! as Map).cast<String, dynamic>())).input()).input(),
-      executionRoleArn: (map['executionRoleArn'] as String).input(),
-      jobDriver: (JobTemplateJobTemplateDataJobDriver.fromMap((map['jobDriver']! as Map).cast<String, dynamic>())).input(),
-      jobTags: map['jobTags'] == null ? null : (((map['jobTags'] as Map).cast<String, String>()).input()).input(),
-      releaseLabel: (map['releaseLabel'] as String).input(),
+      configurationOverrides: (() {
+        final guardedValue = map['configurationOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTemplateJobTemplateDataConfigurationOverrides.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      executionRoleArn: pulumi.Input.fromValue(
+        map['executionRoleArn'] as String,
+      ),
+      jobDriver: pulumi.Input.fromValue(
+        JobTemplateJobTemplateDataJobDriver.fromMap(
+          (map['jobDriver']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      jobTags: (() {
+        final guardedValue = map['jobTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      releaseLabel: pulumi.Input.fromValue(map['releaseLabel'] as String),
     );
   }
 }
-

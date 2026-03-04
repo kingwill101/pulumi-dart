@@ -1,5 +1,3 @@
-library module_ens;
-
 export 'ens/disk.dart';
 export 'ens/disk_args.dart';
 export 'ens/disk_instance_attachment.dart';

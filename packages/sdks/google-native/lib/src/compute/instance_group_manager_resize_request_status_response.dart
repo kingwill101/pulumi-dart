@@ -6,7 +6,9 @@ import 'queuing_policy_response.dart';
 
 class InstanceGroupManagerResizeRequestStatusResponse {
   /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
-  final pulumi.Input<InstanceGroupManagerResizeRequestStatusErrorResponse> error;
+  final pulumi.Input<InstanceGroupManagerResizeRequestStatusErrorResponse>
+  error;
+
   /// Constraints for the time when the instances start provisioning. Always exposed as absolute time.
   final pulumi.Input<QueuingPolicyResponse> queuingPolicy;
 
@@ -20,16 +22,33 @@ class InstanceGroupManagerResizeRequestStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': pulumi.Input.mapInputValue<InstanceGroupManagerResizeRequestStatusErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
-      'queuingPolicy': pulumi.Input.mapInputValue<QueuingPolicyResponse, Map<String, dynamic>>(queuingPolicy, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<
+            InstanceGroupManagerResizeRequestStatusErrorResponse,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
+      'queuingPolicy':
+          pulumi.Input.mapInputValue<
+            QueuingPolicyResponse,
+            Map<String, dynamic>
+          >(queuingPolicy, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusResponse(
-      error: (InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      queuingPolicy: (QueuingPolicyResponse.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())).input(),
+      error: pulumi.Input.fromValue(
+        InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      queuingPolicy: pulumi.Input.fromValue(
+        QueuingPolicyResponse.fromMap(
+          (map['queuingPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

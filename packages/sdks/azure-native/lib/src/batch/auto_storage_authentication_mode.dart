@@ -3,16 +3,15 @@ enum AutoStorageAuthenticationMode {
   storageKeys("StorageKeys"),
   batchAccountManagedIdentity("BatchAccountManagedIdentity");
 
-  const AutoStorageAuthenticationMode(this.value);
-  final String value;
+  const AutoStorageAuthenticationMode(this.wireValue);
+  final String wireValue;
 
   static AutoStorageAuthenticationMode fromValue(String value) {
     for (final item in AutoStorageAuthenticationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoStorageAuthenticationMode value: $value');
   }
 }
-

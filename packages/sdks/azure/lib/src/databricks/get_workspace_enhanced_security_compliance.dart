@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceEnhancedSecurityCompliance {
   /// Whether automatic cluster updates for this workspace is enabled.
   final pulumi.Input<bool> automaticClusterUpdateEnabled;
+
   /// Whether compliance security profile for this workspace is enabled.
   final pulumi.Input<bool> complianceSecurityProfileEnabled;
+
   /// A list of standards enforced on this workspace.
   final pulumi.Input<List<String>> complianceSecurityProfileStandards;
+
   /// Whether enhanced security monitoring for this workspace is enabled.
   final pulumi.Input<bool> enhancedSecurityMonitoringEnabled;
 
@@ -33,13 +36,22 @@ class GetWorkspaceEnhancedSecurityCompliance {
     };
   }
 
-  factory GetWorkspaceEnhancedSecurityCompliance.fromMap(Map<String, dynamic> map) {
+  factory GetWorkspaceEnhancedSecurityCompliance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkspaceEnhancedSecurityCompliance(
-      automaticClusterUpdateEnabled: (map['automaticClusterUpdateEnabled'] as bool).input(),
-      complianceSecurityProfileEnabled: (map['complianceSecurityProfileEnabled'] as bool).input(),
-      complianceSecurityProfileStandards: ((map['complianceSecurityProfileStandards'] as List).cast<String>()).input(),
-      enhancedSecurityMonitoringEnabled: (map['enhancedSecurityMonitoringEnabled'] as bool).input(),
+      automaticClusterUpdateEnabled: pulumi.Input.fromValue(
+        map['automaticClusterUpdateEnabled'] as bool,
+      ),
+      complianceSecurityProfileEnabled: pulumi.Input.fromValue(
+        map['complianceSecurityProfileEnabled'] as bool,
+      ),
+      complianceSecurityProfileStandards: pulumi.Input.fromValue(
+        (map['complianceSecurityProfileStandards'] as List).cast<String>(),
+      ),
+      enhancedSecurityMonitoringEnabled: pulumi.Input.fromValue(
+        map['enhancedSecurityMonitoringEnabled'] as bool,
+      ),
     );
   }
 }
-

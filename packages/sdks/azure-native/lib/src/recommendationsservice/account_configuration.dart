@@ -3,16 +3,15 @@ enum AccountConfiguration {
   valueFree("Free"),
   valueCapacity("Capacity");
 
-  const AccountConfiguration(this.value);
-  final String value;
+  const AccountConfiguration(this.wireValue);
+  final String wireValue;
 
   static AccountConfiguration fromValue(String value) {
     for (final item in AccountConfiguration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccountConfiguration value: $value');
   }
 }
-

@@ -10,20 +10,25 @@ class VolumeTypeResponse {
 
   /// Creates a new [VolumeTypeResponse].
   /// [elasticSan] Properties of the ElasticSAN iSCSI target
-  VolumeTypeResponse({
-    required this.elasticSan,
-  });
+  VolumeTypeResponse({required this.elasticSan});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elasticSan': pulumi.Input.mapInputValue<ElasticSanVolumePropertiesResponse, Map<String, dynamic>>(elasticSan, (value) => value.toMap()),
+      'elasticSan':
+          pulumi.Input.mapInputValue<
+            ElasticSanVolumePropertiesResponse,
+            Map<String, dynamic>
+          >(elasticSan, (value) => value.toMap()),
     };
   }
 
   factory VolumeTypeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeTypeResponse(
-      elasticSan: (ElasticSanVolumePropertiesResponse.fromMap((map['elasticSan'] as Map).cast<String, dynamic>())).input(),
+      elasticSan: pulumi.Input.fromValue(
+        ElasticSanVolumePropertiesResponse.fromMap(
+          (map['elasticSan']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

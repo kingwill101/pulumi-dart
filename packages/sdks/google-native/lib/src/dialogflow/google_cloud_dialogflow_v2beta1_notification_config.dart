@@ -6,7 +6,11 @@ import 'google_cloud_dialogflow_v2beta1_notification_config_message_format.dart'
 /// Defines notification behavior.
 class GoogleCloudDialogflowV2beta1NotificationConfig {
   /// Format of message.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat>? messageFormat;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat
+  >?
+  messageFormat;
+
   /// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
   final pulumi.Input<String>? topic;
 
@@ -20,16 +24,33 @@ class GoogleCloudDialogflowV2beta1NotificationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'messageFormat': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat, String>(messageFormat, (value) => value.value),
+      'messageFormat':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat,
+            String
+          >(messageFormat, (value) => value.wireValue),
       'topic': ?topic,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1NotificationConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1NotificationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1NotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.fromValue(map['messageFormat']! as String)).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      messageFormat: (() {
+        final guardedValue = map['messageFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

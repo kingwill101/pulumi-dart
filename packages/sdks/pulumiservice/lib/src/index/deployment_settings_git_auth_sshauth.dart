@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentSettingsGitAuthSSHAuth {
   /// Optional password for SSH authentication.
   final pulumi.Input<String>? password;
+
   /// SSH private key.
   final pulumi.Input<String> sshPrivateKey;
 
@@ -26,9 +27,12 @@ class DeploymentSettingsGitAuthSSHAuth {
 
   factory DeploymentSettingsGitAuthSSHAuth.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitAuthSSHAuth(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      sshPrivateKey: (map['sshPrivateKey'] as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sshPrivateKey: pulumi.Input.fromValue(map['sshPrivateKey'] as String),
     );
   }
 }
-

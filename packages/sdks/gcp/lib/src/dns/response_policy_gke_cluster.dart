@@ -10,20 +10,15 @@ class ResponsePolicyGkeCluster {
 
   /// Creates a new [ResponsePolicyGkeCluster].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to.
-  ResponsePolicyGkeCluster({
-    required this.gkeClusterName,
-  });
+  ResponsePolicyGkeCluster({required this.gkeClusterName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gkeClusterName': gkeClusterName,
-    };
+    return <String, dynamic>{'gkeClusterName': gkeClusterName};
   }
 
   factory ResponsePolicyGkeCluster.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyGkeCluster(
-      gkeClusterName: (map['gkeClusterName'] as String).input(),
+      gkeClusterName: pulumi.Input.fromValue(map['gkeClusterName'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SwitchExtensionResponse {
   /// This represents whether extension is enabled on virtualSwitch.
   final pulumi.Input<bool> extensionEnabled;
+
   /// This will show extension name for virtualSwitch.
   final pulumi.Input<String> extensionName;
+
   /// Unique identifier for virtualSwitch.
   final pulumi.Input<String> switchId;
 
@@ -31,10 +33,9 @@ class SwitchExtensionResponse {
 
   factory SwitchExtensionResponse.fromMap(Map<String, dynamic> map) {
     return SwitchExtensionResponse(
-      extensionEnabled: (map['extensionEnabled'] as bool).input(),
-      extensionName: (map['extensionName'] as String).input(),
-      switchId: (map['switchId'] as String).input(),
+      extensionEnabled: pulumi.Input.fromValue(map['extensionEnabled'] as bool),
+      extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
+      switchId: pulumi.Input.fromValue(map['switchId'] as String),
     );
   }
 }
-

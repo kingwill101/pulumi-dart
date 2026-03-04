@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synchronization_secret_args.dart';
-import 'synchronization_secret_credential.dart';
 import 'synchronization_secret_state.dart';
 
 /// Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
@@ -251,7 +250,8 @@ import 'synchronization_secret_state.dart';
 /// This resource does not support importing.
 class SynchronizationSecret extends pulumi.CustomResource {
   /// One or more `credential` blocks as documented below.
-  late final pulumi.Output<List<SynchronizationSecretCredential>?> credentials;
+  late final pulumi.Output<List<Map<String, dynamic>>?> credentials;
+
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
 
@@ -264,13 +264,13 @@ class SynchronizationSecret extends pulumi.CustomResource {
     SynchronizationSecretArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationSecret:SynchronizationSecret',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.credentials = registerOutput<List<SynchronizationSecretCredential>?>('credentials');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
+         'azuread:index/synchronizationSecret:SynchronizationSecret',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 
   /// Gets an existing [SynchronizationSecret] resource's state with the given [name] and [id].
@@ -291,12 +291,12 @@ class SynchronizationSecret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/synchronizationSecret:SynchronizationSecret',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.credentials = registerOutput<List<SynchronizationSecretCredential>?>('credentials');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
+         'azuread:index/synchronizationSecret:SynchronizationSecret',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 }

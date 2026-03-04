@@ -12,40 +12,53 @@ import 'configuration_store_replica.dart';
 class ConfigurationStoreArgs {
   /// The data plane proxy authentication mode. Possible values are `Local` and `Pass-through`. Defaults to `Local`.
   final pulumi.Input<String>? dataPlaneProxyAuthenticationMode;
+
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
-  /// > **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
+  /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
   final pulumi.Input<bool>? dataPlaneProxyPrivateLinkDelegationEnabled;
+
   /// An `encryption` block as defined below.
   final pulumi.Input<ConfigurationStoreEncryption>? encryption;
+
   /// An `identity` block as defined below.
   final pulumi.Input<ConfigurationStoreIdentity>? identity;
+
   /// Whether local authentication methods is enabled. Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
-  /// > **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
+  /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
-  /// !> **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
+  /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   final pulumi.Input<bool>? purgeProtectionEnabled;
+
   /// One or more `replica` blocks as defined below.
   final pulumi.Input<List<ConfigurationStoreReplica>>? replicas;
+
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
-  /// > **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
+  /// &gt; **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
   final pulumi.Input<String>? sku;
+
   /// The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** If Purge Protection is enabled, this field can only be configured one time and cannot be updated.
+  /// &gt; **Note:** If Purge Protection is enabled, this field can only be configured one time and cannot be updated.
   final pulumi.Input<int>? softDeleteRetentionDays;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -84,15 +97,35 @@ class ConfigurationStoreArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataPlaneProxyAuthenticationMode': ?dataPlaneProxyAuthenticationMode,
-      'dataPlaneProxyPrivateLinkDelegationEnabled': ?dataPlaneProxyPrivateLinkDelegationEnabled,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<ConfigurationStoreEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ConfigurationStoreIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'dataPlaneProxyPrivateLinkDelegationEnabled':
+          ?dataPlaneProxyPrivateLinkDelegationEnabled,
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationStoreEncryption,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationStoreIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'localAuthEnabled': ?localAuthEnabled,
       'location': ?location,
       'name': ?name,
       'publicNetworkAccess': ?publicNetworkAccess,
       'purgeProtectionEnabled': ?purgeProtectionEnabled,
-      'replicas': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStoreReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<ConfigurationStoreReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationStoreReplica>,
+            List<Map<String, dynamic>>
+          >(
+            replicas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationStoreReplica,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupName': resourceGroupName,
       'sku': ?sku,
       'softDeleteRetentionDays': ?softDeleteRetentionDays,
@@ -102,21 +135,91 @@ class ConfigurationStoreArgs {
 
   factory ConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreArgs(
-      dataPlaneProxyAuthenticationMode: map['dataPlaneProxyAuthenticationMode'] == null ? null : (map['dataPlaneProxyAuthenticationMode']! as String).input(),
-      dataPlaneProxyPrivateLinkDelegationEnabled: map['dataPlaneProxyPrivateLinkDelegationEnabled'] == null ? null : (map['dataPlaneProxyPrivateLinkDelegationEnabled']! as bool).input(),
-      encryption: map['encryption'] == null ? null : (ConfigurationStoreEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ConfigurationStoreIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled']! as bool).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ConfigurationStoreReplica>(map['replicas']!, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dataPlaneProxyAuthenticationMode: (() {
+        final guardedValue = map['dataPlaneProxyAuthenticationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataPlaneProxyPrivateLinkDelegationEnabled: (() {
+        final guardedValue = map['dataPlaneProxyPrivateLinkDelegationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationStoreEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationStoreIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localAuthEnabled: (() {
+        final guardedValue = map['localAuthEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      purgeProtectionEnabled: (() {
+        final guardedValue = map['purgeProtectionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      replicas: (() {
+        final guardedValue = map['replicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationStoreReplica>(
+            guardedValue,
+            (value) => ConfigurationStoreReplica.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softDeleteRetentionDays: (() {
+        final guardedValue = map['softDeleteRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

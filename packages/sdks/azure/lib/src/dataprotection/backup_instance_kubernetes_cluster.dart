@@ -1246,7 +1246,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataProtection` - 2024-04-01
@@ -1260,19 +1260,29 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// ```
 class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
   /// A `backup_datasource_parameters` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<BackupInstanceKubernetesClusterBackupDatasourceParameters?> backupDatasourceParameters;
+  late final pulumi.Output<
+    BackupInstanceKubernetesClusterBackupDatasourceParameters?
+  >
+  backupDatasourceParameters;
+
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> backupPolicyId;
+
   /// The ID of the Kubernetes Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kubernetesClusterId;
+
   /// The location of the Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The protection state of the Backup Instance Kubernetes Cluster.
   late final pulumi.Output<String> protectionState;
+
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   late final pulumi.Output<String> snapshotResourceGroupName;
+
   /// The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -1285,19 +1295,24 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
     BackupInstanceKubernetesClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupDatasourceParameters = registerOutput<BackupInstanceKubernetesClusterBackupDatasourceParameters?>('backupDatasourceParameters');
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.location = registerOutput<String>('location');
+         'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupDatasourceParameters =
+        registerOutput<
+          BackupInstanceKubernetesClusterBackupDatasourceParameters?
+        >('backupDatasourceParameters');
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectionState = registerOutput<String>('protectionState');
-    this.snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
-    this.vaultId = registerOutput<String>('vaultId');
+    protectionState = registerOutput<String>('protectionState');
+    snapshotResourceGroupName = registerOutput<String>(
+      'snapshotResourceGroupName',
+    );
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [BackupInstanceKubernetesCluster] resource's state with the given [name] and [id].
@@ -1318,18 +1333,23 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupDatasourceParameters = registerOutput<BackupInstanceKubernetesClusterBackupDatasourceParameters?>('backupDatasourceParameters');
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.location = registerOutput<String>('location');
+         'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupDatasourceParameters =
+        registerOutput<
+          BackupInstanceKubernetesClusterBackupDatasourceParameters?
+        >('backupDatasourceParameters');
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectionState = registerOutput<String>('protectionState');
-    this.snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
-    this.vaultId = registerOutput<String>('vaultId');
+    protectionState = registerOutput<String>('protectionState');
+    snapshotResourceGroupName = registerOutput<String>(
+      'snapshotResourceGroupName',
+    );
+    vaultId = registerOutput<String>('vaultId');
   }
 }

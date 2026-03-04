@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogTailAttachmentArgs {
   /// The Logtail configuration name, which is unique in the same project.
   final pulumi.Input<String> logtailConfigName;
+
   /// The machine group name, which is unique in the same project.
   final pulumi.Input<String> machineGroupName;
+
   /// The project name to the log store belongs.
   final pulumi.Input<String> project;
 
@@ -34,10 +36,13 @@ class LogTailAttachmentArgs {
 
   factory LogTailAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LogTailAttachmentArgs(
-      logtailConfigName: (map['logtailConfigName'] as String).input(),
-      machineGroupName: (map['machineGroupName'] as String).input(),
-      project: (map['project'] as String).input(),
+      logtailConfigName: pulumi.Input.fromValue(
+        map['logtailConfigName'] as String,
+      ),
+      machineGroupName: pulumi.Input.fromValue(
+        map['machineGroupName'] as String,
+      ),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

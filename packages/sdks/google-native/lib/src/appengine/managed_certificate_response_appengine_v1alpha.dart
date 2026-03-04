@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedCertificateResponseAppengineV1alpha {
   /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
   final pulumi.Input<String> lastRenewalTime;
+
   /// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
   final pulumi.Input<String> status;
 
@@ -24,11 +25,12 @@ class ManagedCertificateResponseAppengineV1alpha {
     };
   }
 
-  factory ManagedCertificateResponseAppengineV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ManagedCertificateResponseAppengineV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedCertificateResponseAppengineV1alpha(
-      lastRenewalTime: (map['lastRenewalTime'] as String).input(),
-      status: (map['status'] as String).input(),
+      lastRenewalTime: pulumi.Input.fromValue(map['lastRenewalTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

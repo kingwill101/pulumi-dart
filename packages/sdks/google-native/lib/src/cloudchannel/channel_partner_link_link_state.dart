@@ -6,16 +6,15 @@ enum ChannelPartnerLinkLinkState {
   revoked("REVOKED"),
   suspended("SUSPENDED");
 
-  const ChannelPartnerLinkLinkState(this.value);
-  final String value;
+  const ChannelPartnerLinkLinkState(this.wireValue);
+  final String wireValue;
 
   static ChannelPartnerLinkLinkState fromValue(String value) {
     for (final item in ChannelPartnerLinkLinkState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChannelPartnerLinkLinkState value: $value');
   }
 }
-

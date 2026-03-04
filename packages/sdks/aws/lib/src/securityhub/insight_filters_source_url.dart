@@ -9,23 +9,16 @@ class InsightFiltersSourceUrl {
   /// Creates a new [InsightFiltersSourceUrl].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersSourceUrl({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersSourceUrl({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersSourceUrl.fromMap(Map<String, dynamic> map) {
     return InsightFiltersSourceUrl(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

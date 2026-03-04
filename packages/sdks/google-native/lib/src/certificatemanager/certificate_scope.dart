@@ -4,16 +4,15 @@ enum CertificateScope {
   edgeCache("EDGE_CACHE"),
   allRegions("ALL_REGIONS");
 
-  const CertificateScope(this.value);
-  final String value;
+  const CertificateScope(this.wireValue);
+  final String wireValue;
 
   static CertificateScope fromValue(String value) {
     for (final item in CertificateScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CertificateScope value: $value');
   }
 }
-

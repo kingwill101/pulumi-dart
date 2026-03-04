@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationsArgs {
   /// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
   final pulumi.Input<String>? appName;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
   final pulumi.Input<String>? fieldType;
+
   /// The field value.
   final pulumi.Input<String>? fieldValue;
+
   /// A list of Application IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
   final pulumi.Input<String>? namespaceId;
+
   /// The order by.Valid values:`running`,`instances`.
   final pulumi.Input<String>? orderBy;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The reverse.
   final pulumi.Input<bool>? reverse;
+
   /// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
   final pulumi.Input<String>? status;
 
@@ -69,17 +78,56 @@ class GetApplicationsArgs {
 
   factory GetApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationsArgs(
-      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      fieldType: map['fieldType'] == null ? null : (map['fieldType']! as String).input(),
-      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      reverse: map['reverse'] == null ? null : (map['reverse']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      appName: (() {
+        final guardedValue = map['appName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fieldType: (() {
+        final guardedValue = map['fieldType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldValue: (() {
+        final guardedValue = map['fieldValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reverse: (() {
+        final guardedValue = map['reverse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

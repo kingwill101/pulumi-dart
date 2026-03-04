@@ -7,29 +7,42 @@ import 'action_definition.dart';
 class CustomAction {
   /// Property actionDefinition
   final pulumi.Input<ActionDefinition>? actionDefinition;
+
   /// Property actionName
   final pulumi.Input<String>? actionName;
 
   /// Creates a new [CustomAction].
   /// [actionDefinition] Property actionDefinition
   /// [actionName] Property actionName
-  CustomAction({
-    this.actionDefinition,
-    this.actionName,
-  });
+  CustomAction({this.actionDefinition, this.actionName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionDefinition': ?pulumi.Input.mapOptionalInputValue<ActionDefinition, Map<String, dynamic>>(actionDefinition, (value) => value.toMap()),
+      'actionDefinition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActionDefinition,
+            Map<String, dynamic>
+          >(actionDefinition, (value) => value.toMap()),
       'actionName': ?actionName,
     };
   }
 
   factory CustomAction.fromMap(Map<String, dynamic> map) {
     return CustomAction(
-      actionDefinition: map['actionDefinition'] == null ? null : (ActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
-      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
+      actionDefinition: (() {
+        final guardedValue = map['actionDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActionDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      actionName: (() {
+        final guardedValue = map['actionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

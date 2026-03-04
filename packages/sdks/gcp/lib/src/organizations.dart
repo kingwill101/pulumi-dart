@@ -1,5 +1,3 @@
-library module_organizations;
-
 export 'organizations/access_approval_settings.dart';
 export 'organizations/access_approval_settings_args.dart';
 export 'organizations/access_approval_settings_enrolled_service.dart';

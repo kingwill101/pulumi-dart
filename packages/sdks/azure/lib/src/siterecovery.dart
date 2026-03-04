@@ -1,5 +1,3 @@
-library module_siterecovery;
-
 export 'siterecovery/fabric.dart';
 export 'siterecovery/fabric_args.dart';
 export 'siterecovery/fabric_state.dart';

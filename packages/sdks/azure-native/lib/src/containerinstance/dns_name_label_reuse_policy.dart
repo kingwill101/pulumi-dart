@@ -6,16 +6,15 @@ enum DnsNameLabelReusePolicy {
   valueResourceGroupReuse("ResourceGroupReuse"),
   valueNoreuse("Noreuse");
 
-  const DnsNameLabelReusePolicy(this.value);
-  final String value;
+  const DnsNameLabelReusePolicy(this.wireValue);
+  final String wireValue;
 
   static DnsNameLabelReusePolicy fromValue(String value) {
     for (final item in DnsNameLabelReusePolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsNameLabelReusePolicy value: $value');
   }
 }
-

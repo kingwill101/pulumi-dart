@@ -12,13 +12,16 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Data backup retention days.
   late final pulumi.Output<int> backupRetentionPeriod;
+
   /// The instance ID.
-  /// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+  /// &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Whether to enable automatic recovery points. Value Description:
   /// - **true**: enabled.
   /// - **false**: Closed.
   late final pulumi.Output<bool> enableRecoveryPoint;
+
   /// Data backup cycle. Separate multiple values with commas (,). Value Description:
   /// - **Monday**: Monday.
   /// - **Tuesday**: Tuesday.
@@ -28,8 +31,10 @@ class BackupPolicy extends pulumi.CustomResource {
   /// - **Saturday**: Saturday.
   /// - **Sunday**: Sunday.
   late final pulumi.Output<String> preferredBackupPeriod;
+
   /// Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
   late final pulumi.Output<String> preferredBackupTime;
+
   /// Recovery point frequency. Value Description:
   /// - **1**: Hourly.
   /// - **2**: Every two hours.
@@ -46,17 +51,17 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.enableRecoveryPoint = registerOutput<bool>('enableRecoveryPoint');
-    this.preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
-    this.preferredBackupTime = registerOutput<String>('preferredBackupTime');
-    this.recoveryPointPeriod = registerOutput<String>('recoveryPointPeriod');
+         'alicloud:gpdb/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    enableRecoveryPoint = registerOutput<bool>('enableRecoveryPoint');
+    preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
+    preferredBackupTime = registerOutput<String>('preferredBackupTime');
+    recoveryPointPeriod = registerOutput<String>('recoveryPointPeriod');
   }
 
   /// Gets an existing [BackupPolicy] resource's state with the given [name] and [id].
@@ -77,16 +82,16 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.enableRecoveryPoint = registerOutput<bool>('enableRecoveryPoint');
-    this.preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
-    this.preferredBackupTime = registerOutput<String>('preferredBackupTime');
-    this.recoveryPointPeriod = registerOutput<String>('recoveryPointPeriod');
+         'alicloud:gpdb/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    enableRecoveryPoint = registerOutput<bool>('enableRecoveryPoint');
+    preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
+    preferredBackupTime = registerOutput<String>('preferredBackupTime');
+    recoveryPointPeriod = registerOutput<String>('recoveryPointPeriod');
   }
 }

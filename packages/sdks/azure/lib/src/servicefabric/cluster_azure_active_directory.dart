@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterAzureActiveDirectory {
   /// The Azure Active Directory Client ID which should be used for the Client Application.
   final pulumi.Input<String> clientApplicationId;
+
   /// The Azure Active Directory Cluster Application ID.
   final pulumi.Input<String> clusterApplicationId;
+
   /// The Azure Active Directory Tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -30,10 +32,13 @@ class ClusterAzureActiveDirectory {
 
   factory ClusterAzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return ClusterAzureActiveDirectory(
-      clientApplicationId: (map['clientApplicationId'] as String).input(),
-      clusterApplicationId: (map['clusterApplicationId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientApplicationId: pulumi.Input.fromValue(
+        map['clientApplicationId'] as String,
+      ),
+      clusterApplicationId: pulumi.Input.fromValue(
+        map['clusterApplicationId'] as String,
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

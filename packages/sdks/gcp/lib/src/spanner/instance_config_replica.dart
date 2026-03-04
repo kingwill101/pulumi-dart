@@ -6,8 +6,10 @@ class InstanceConfigReplica {
   /// If true, this location is designated as the default leader location where
   /// leader replicas are placed.
   final pulumi.Input<bool>? defaultLeaderLocation;
+
   /// The location of the serving resources, e.g. "us-central1".
   final pulumi.Input<String>? location;
+
   /// Indicates the type of replica.  See the [replica types
   /// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
   /// for more details.
@@ -18,11 +20,7 @@ class InstanceConfigReplica {
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where
   /// [location] The location of the serving resources, e.g. "us-central1".
   /// [type] Indicates the type of replica.  See the [replica types
-  InstanceConfigReplica({
-    this.defaultLeaderLocation,
-    this.location,
-    this.type,
-  });
+  InstanceConfigReplica({this.defaultLeaderLocation, this.location, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class InstanceConfigReplica {
 
   factory InstanceConfigReplica.fromMap(Map<String, dynamic> map) {
     return InstanceConfigReplica(
-      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      defaultLeaderLocation: (() {
+        final guardedValue = map['defaultLeaderLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

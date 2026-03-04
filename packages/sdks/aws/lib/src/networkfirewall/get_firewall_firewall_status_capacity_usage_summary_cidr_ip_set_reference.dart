@@ -13,15 +13,16 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resolvedCidrCount': resolvedCidrCount,
-    };
+    return <String, dynamic>{'resolvedCidrCount': resolvedCidrCount};
   }
 
-  factory GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference(
-      resolvedCidrCount: (map['resolvedCidrCount'] as int).input(),
+      resolvedCidrCount: pulumi.Input.fromValue(
+        map['resolvedCidrCount'] as int,
+      ),
     );
   }
 }
-

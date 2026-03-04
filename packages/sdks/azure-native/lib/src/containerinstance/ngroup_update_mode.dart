@@ -2,16 +2,15 @@ enum NGroupUpdateMode {
   valueManual("Manual"),
   valueRolling("Rolling");
 
-  const NGroupUpdateMode(this.value);
-  final String value;
+  const NGroupUpdateMode(this.wireValue);
+  final String wireValue;
 
   static NGroupUpdateMode fromValue(String value) {
     for (final item in NGroupUpdateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NGroupUpdateMode value: $value');
   }
 }
-

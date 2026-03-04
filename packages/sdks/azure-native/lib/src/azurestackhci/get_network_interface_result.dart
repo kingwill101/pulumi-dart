@@ -12,32 +12,46 @@ import 'system_data_response.dart';
 class GetNetworkInterfaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Boolean indicating whether this is a existing local network interface or if one should be created.
   final bool? createFromLocal;
+
   /// DNS Settings for the interface
   final InterfaceDNSSettingsResponse? dnsSettings;
+
   /// The extendedLocation of the resource.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// IPConfigurations - A list of IPConfigurations of the network interface.
   final List<IPConfigurationResponse>? ipConfigurations;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// MacAddress - The MAC address of the network interface.
   final String? macAddress;
+
   /// The name of the resource
   final String name;
+
   /// NetworkSecurityGroup - Network Security Group attached to the network interface.
   final NetworkSecurityGroupArmReferenceResponse? networkSecurityGroup;
+
   /// Provisioning state of the network interface.
   final String provisioningState;
+
   /// The observed state of network interfaces
   final NetworkInterfaceStatusResponse status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -79,14 +93,21 @@ class GetNetworkInterfaceResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'createFromLocal': ?createFromLocal,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'dnsSettings': ?dnsSettings?.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': id,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<IPConfigurationResponse, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?(() {
+        final guardedValue = ipConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          IPConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'location': location,
       'macAddress': ?macAddress,
       'name': name,
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'networkSecurityGroup': ?networkSecurityGroup?.toMap(),
       'provisioningState': provisioningState,
       'status': status.toMap(),
       'systemData': systemData.toMap(),
@@ -98,21 +119,63 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createFromLocal: map['createFromLocal'] == null ? null : map['createFromLocal']! as bool,
-      dnsSettings: map['dnsSettings'] == null ? null : InterfaceDNSSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      createFromLocal: (() {
+        final guardedValue = map['createFromLocal'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      dnsSettings: (() {
+        final guardedValue = map['dnsSettings'];
+        if (guardedValue == null) return null;
+        return InterfaceDNSSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations']!, (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: (() {
+        final guardedValue = map['ipConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<IPConfigurationResponse>(
+          guardedValue,
+          (value) => IPConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       location: map['location'] as String,
-      macAddress: map['macAddress'] == null ? null : map['macAddress']! as String,
+      macAddress: (() {
+        final guardedValue = map['macAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>()),
+      networkSecurityGroup: (() {
+        final guardedValue = map['networkSecurityGroup'];
+        if (guardedValue == null) return null;
+        return NetworkSecurityGroupArmReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      status: NetworkInterfaceStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      status: NetworkInterfaceStatusResponse.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

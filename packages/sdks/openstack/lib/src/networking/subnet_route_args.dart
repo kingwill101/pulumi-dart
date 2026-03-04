@@ -10,14 +10,17 @@ class SubnetRouteArgs {
   /// CIDR block to match on the packet’s destination IP. Changing
   /// this creates a new routing entry.
   final pulumi.Input<String> destinationCidr;
+
   /// IP address of the next hop gateway.  Changing
   /// this creates a new routing entry.
   final pulumi.Input<String> nextHop;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// routing entry.
   final pulumi.Input<String>? region;
+
   /// ID of the subnet this routing entry belongs to. Changing
   /// this creates a new routing entry.
   final pulumi.Input<String> subnetId;
@@ -45,11 +48,14 @@ class SubnetRouteArgs {
 
   factory SubnetRouteArgs.fromMap(Map<String, dynamic> map) {
     return SubnetRouteArgs(
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

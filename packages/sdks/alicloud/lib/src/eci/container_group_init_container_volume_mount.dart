@@ -25,12 +25,25 @@ class ContainerGroupInitContainerVolumeMount {
     };
   }
 
-  factory ContainerGroupInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupInitContainerVolumeMount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupInitContainerVolumeMount(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      mountPath: (() {
+        final guardedValue = map['mountPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

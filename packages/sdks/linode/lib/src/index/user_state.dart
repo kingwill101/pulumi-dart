@@ -16,38 +16,53 @@ import 'user_vpc_grant.dart';
 class UserState {
   /// The domains the user has permissions access to.
   final pulumi.Input<List<UserDomainGrant>>? domainGrants;
+
   /// The email address of the user.
   final pulumi.Input<String>? email;
+
   /// The firewalls the user has permissions access to.
   final pulumi.Input<List<UserFirewallGrant>>? firewallGrants;
+
   /// A structure containing the Account-level grants a User has.
   final pulumi.Input<UserGlobalGrants>? globalGrants;
+
   /// The images the user has permissions access to.
   final pulumi.Input<List<UserImageGrant>>? imageGrants;
+
   /// The Linodes the user has permissions access to.
   final pulumi.Input<List<UserLinodeGrant>>? linodeGrants;
+
   /// The longview the user has permissions access to.
   final pulumi.Input<List<UserLongviewGrant>>? longviewGrants;
+
   /// The NodeBalancers the user has permissions access to.
   final pulumi.Input<List<UserNodebalancerGrant>>? nodebalancerGrants;
+
   /// If true, this user will only have explicit permissions granted.
   ///
   /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
   ///
   /// The following arguments are sets of entity grants:
   final pulumi.Input<bool>? restricted;
+
   /// A list of the User's SSH keys.
   final pulumi.Input<List<String>>? sshKeys;
+
   /// The StackScripts the user has permissions access to.
   final pulumi.Input<List<UserStackscriptGrant>>? stackscriptGrants;
+
   /// Whether the user has two-factor-authentication enabled.
   final pulumi.Input<bool>? tfaEnabled;
+
   /// The type of this user.
   final pulumi.Input<String>? userType;
+
   /// The username of the user.
   final pulumi.Input<String>? username;
+
   /// The volumes the user has permissions access to.
   final pulumi.Input<List<UserVolumeGrant>>? volumeGrants;
+
   /// The Virtual Private Clouds (VPCs) the user has permissions access to.
   final pulumi.Input<List<UserVpcGrant>>? vpcGrants;
 
@@ -89,44 +104,272 @@ class UserState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainGrants': ?pulumi.Input.mapOptionalInputValue<List<UserDomainGrant>, List<Map<String, dynamic>>>(domainGrants, (value) => pulumi.Input.encodeList<UserDomainGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'domainGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserDomainGrant>,
+            List<Map<String, dynamic>>
+          >(
+            domainGrants,
+            (value) =>
+                pulumi.Input.encodeList<UserDomainGrant, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'email': ?email,
-      'firewallGrants': ?pulumi.Input.mapOptionalInputValue<List<UserFirewallGrant>, List<Map<String, dynamic>>>(firewallGrants, (value) => pulumi.Input.encodeList<UserFirewallGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'globalGrants': ?pulumi.Input.mapOptionalInputValue<UserGlobalGrants, Map<String, dynamic>>(globalGrants, (value) => value.toMap()),
-      'imageGrants': ?pulumi.Input.mapOptionalInputValue<List<UserImageGrant>, List<Map<String, dynamic>>>(imageGrants, (value) => pulumi.Input.encodeList<UserImageGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'linodeGrants': ?pulumi.Input.mapOptionalInputValue<List<UserLinodeGrant>, List<Map<String, dynamic>>>(linodeGrants, (value) => pulumi.Input.encodeList<UserLinodeGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'longviewGrants': ?pulumi.Input.mapOptionalInputValue<List<UserLongviewGrant>, List<Map<String, dynamic>>>(longviewGrants, (value) => pulumi.Input.encodeList<UserLongviewGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'nodebalancerGrants': ?pulumi.Input.mapOptionalInputValue<List<UserNodebalancerGrant>, List<Map<String, dynamic>>>(nodebalancerGrants, (value) => pulumi.Input.encodeList<UserNodebalancerGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'firewallGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserFirewallGrant>,
+            List<Map<String, dynamic>>
+          >(
+            firewallGrants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserFirewallGrant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'globalGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserGlobalGrants,
+            Map<String, dynamic>
+          >(globalGrants, (value) => value.toMap()),
+      'imageGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserImageGrant>,
+            List<Map<String, dynamic>>
+          >(
+            imageGrants,
+            (value) =>
+                pulumi.Input.encodeList<UserImageGrant, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'linodeGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserLinodeGrant>,
+            List<Map<String, dynamic>>
+          >(
+            linodeGrants,
+            (value) =>
+                pulumi.Input.encodeList<UserLinodeGrant, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'longviewGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserLongviewGrant>,
+            List<Map<String, dynamic>>
+          >(
+            longviewGrants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserLongviewGrant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'nodebalancerGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserNodebalancerGrant>,
+            List<Map<String, dynamic>>
+          >(
+            nodebalancerGrants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserNodebalancerGrant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'restricted': ?restricted,
       'sshKeys': ?sshKeys,
-      'stackscriptGrants': ?pulumi.Input.mapOptionalInputValue<List<UserStackscriptGrant>, List<Map<String, dynamic>>>(stackscriptGrants, (value) => pulumi.Input.encodeList<UserStackscriptGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stackscriptGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserStackscriptGrant>,
+            List<Map<String, dynamic>>
+          >(
+            stackscriptGrants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserStackscriptGrant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tfaEnabled': ?tfaEnabled,
       'userType': ?userType,
       'username': ?username,
-      'volumeGrants': ?pulumi.Input.mapOptionalInputValue<List<UserVolumeGrant>, List<Map<String, dynamic>>>(volumeGrants, (value) => pulumi.Input.encodeList<UserVolumeGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'vpcGrants': ?pulumi.Input.mapOptionalInputValue<List<UserVpcGrant>, List<Map<String, dynamic>>>(vpcGrants, (value) => pulumi.Input.encodeList<UserVpcGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserVolumeGrant>,
+            List<Map<String, dynamic>>
+          >(
+            volumeGrants,
+            (value) =>
+                pulumi.Input.encodeList<UserVolumeGrant, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'vpcGrants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserVpcGrant>,
+            List<Map<String, dynamic>>
+          >(
+            vpcGrants,
+            (value) =>
+                pulumi.Input.encodeList<UserVpcGrant, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      domainGrants: map['domainGrants'] == null ? null : (pulumi.Input.decodeList<UserDomainGrant>(map['domainGrants']!, (value) => UserDomainGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      firewallGrants: map['firewallGrants'] == null ? null : (pulumi.Input.decodeList<UserFirewallGrant>(map['firewallGrants']!, (value) => UserFirewallGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      globalGrants: map['globalGrants'] == null ? null : (UserGlobalGrants.fromMap((map['globalGrants']! as Map).cast<String, dynamic>())).input(),
-      imageGrants: map['imageGrants'] == null ? null : (pulumi.Input.decodeList<UserImageGrant>(map['imageGrants']!, (value) => UserImageGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linodeGrants: map['linodeGrants'] == null ? null : (pulumi.Input.decodeList<UserLinodeGrant>(map['linodeGrants']!, (value) => UserLinodeGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      longviewGrants: map['longviewGrants'] == null ? null : (pulumi.Input.decodeList<UserLongviewGrant>(map['longviewGrants']!, (value) => UserLongviewGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodebalancerGrants: map['nodebalancerGrants'] == null ? null : (pulumi.Input.decodeList<UserNodebalancerGrant>(map['nodebalancerGrants']!, (value) => UserNodebalancerGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restricted: map['restricted'] == null ? null : (map['restricted']! as bool).input(),
-      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys']! as List).cast<String>()).input(),
-      stackscriptGrants: map['stackscriptGrants'] == null ? null : (pulumi.Input.decodeList<UserStackscriptGrant>(map['stackscriptGrants']!, (value) => UserStackscriptGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tfaEnabled: map['tfaEnabled'] == null ? null : (map['tfaEnabled']! as bool).input(),
-      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
-      volumeGrants: map['volumeGrants'] == null ? null : (pulumi.Input.decodeList<UserVolumeGrant>(map['volumeGrants']!, (value) => UserVolumeGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcGrants: map['vpcGrants'] == null ? null : (pulumi.Input.decodeList<UserVpcGrant>(map['vpcGrants']!, (value) => UserVpcGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainGrants: (() {
+        final guardedValue = map['domainGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserDomainGrant>(
+            guardedValue,
+            (value) =>
+                UserDomainGrant.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallGrants: (() {
+        final guardedValue = map['firewallGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserFirewallGrant>(
+            guardedValue,
+            (value) => UserFirewallGrant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      globalGrants: (() {
+        final guardedValue = map['globalGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserGlobalGrants.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageGrants: (() {
+        final guardedValue = map['imageGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserImageGrant>(
+            guardedValue,
+            (value) =>
+                UserImageGrant.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      linodeGrants: (() {
+        final guardedValue = map['linodeGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserLinodeGrant>(
+            guardedValue,
+            (value) =>
+                UserLinodeGrant.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      longviewGrants: (() {
+        final guardedValue = map['longviewGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserLongviewGrant>(
+            guardedValue,
+            (value) => UserLongviewGrant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nodebalancerGrants: (() {
+        final guardedValue = map['nodebalancerGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserNodebalancerGrant>(
+            guardedValue,
+            (value) => UserNodebalancerGrant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      restricted: (() {
+        final guardedValue = map['restricted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sshKeys: (() {
+        final guardedValue = map['sshKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      stackscriptGrants: (() {
+        final guardedValue = map['stackscriptGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserStackscriptGrant>(
+            guardedValue,
+            (value) => UserStackscriptGrant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tfaEnabled: (() {
+        final guardedValue = map['tfaEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userType: (() {
+        final guardedValue = map['userType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeGrants: (() {
+        final guardedValue = map['volumeGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserVolumeGrant>(
+            guardedValue,
+            (value) =>
+                UserVolumeGrant.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      vpcGrants: (() {
+        final guardedValue = map['vpcGrants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserVpcGrant>(
+            guardedValue,
+            (value) =>
+                UserVpcGrant.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

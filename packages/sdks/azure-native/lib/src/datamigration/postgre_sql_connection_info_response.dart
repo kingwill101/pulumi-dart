@@ -6,29 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgreSqlConnectionInfoResponse {
   /// Additional connection settings
   final pulumi.Input<String>? additionalSettings;
+
   /// Authentication type to use for connection
   final pulumi.Input<String>? authentication;
+
   /// Data source
   final pulumi.Input<String>? dataSource;
+
   /// Name of the database
   final pulumi.Input<String>? databaseName;
+
   /// Whether to encrypt the connection
   final pulumi.Input<bool>? encryptConnection;
+
   /// Password credential.
   final pulumi.Input<String>? password;
+
   /// Port for Server
   final pulumi.Input<int> port;
+
   /// server brand version
   final pulumi.Input<String>? serverBrandVersion;
+
   /// Name of the server
   final pulumi.Input<String> serverName;
+
   /// server version
   final pulumi.Input<String>? serverVersion;
+
   /// Whether to trust the server certificate
   final pulumi.Input<bool>? trustServerCertificate;
+
   /// Type of connection info
   /// Expected value is 'PostgreSqlConnectionInfo'.
   final pulumi.Input<String> type;
+
   /// User name
   final pulumi.Input<String>? userName;
 
@@ -82,20 +94,59 @@ class PostgreSqlConnectionInfoResponse {
 
   factory PostgreSqlConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return PostgreSqlConnectionInfoResponse(
-      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings']! as String).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource']! as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
-      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection']! as bool).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      port: (map['port'] as int).input(),
-      serverBrandVersion: map['serverBrandVersion'] == null ? null : (map['serverBrandVersion']! as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate']! as bool).input(),
-      type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      additionalSettings: (() {
+        final guardedValue = map['additionalSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSource: (() {
+        final guardedValue = map['dataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptConnection: (() {
+        final guardedValue = map['encryptConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serverBrandVersion: (() {
+        final guardedValue = map['serverBrandVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      serverVersion: (() {
+        final guardedValue = map['serverVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustServerCertificate: (() {
+        final guardedValue = map['trustServerCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

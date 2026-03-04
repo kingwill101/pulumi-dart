@@ -8,16 +8,15 @@ enum ProtectionState {
   valueProtectionPaused("ProtectionPaused"),
   valueBackupsSuspended("BackupsSuspended");
 
-  const ProtectionState(this.value);
-  final String value;
+  const ProtectionState(this.wireValue);
+  final String wireValue;
 
   static ProtectionState fromValue(String value) {
     for (final item in ProtectionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtectionState value: $value');
   }
 }
-

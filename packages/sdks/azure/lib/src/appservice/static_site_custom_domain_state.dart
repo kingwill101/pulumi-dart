@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteCustomDomainState {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? domainName;
+
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? staticSiteId;
+
   /// Token to be used with `dns-txt-token` validation.
   final pulumi.Input<String>? validationToken;
+
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? validationType;
 
@@ -36,11 +39,26 @@ class StaticSiteCustomDomainState {
 
   factory StaticSiteCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      staticSiteId: map['staticSiteId'] == null ? null : (map['staticSiteId']! as String).input(),
-      validationToken: map['validationToken'] == null ? null : (map['validationToken']! as String).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      staticSiteId: (() {
+        final guardedValue = map['staticSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validationToken: (() {
+        final guardedValue = map['validationToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validationType: (() {
+        final guardedValue = map['validationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

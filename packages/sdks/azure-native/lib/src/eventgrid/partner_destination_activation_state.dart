@@ -3,16 +3,17 @@ enum PartnerDestinationActivationState {
   valueNeverActivated("NeverActivated"),
   valueActivated("Activated");
 
-  const PartnerDestinationActivationState(this.value);
-  final String value;
+  const PartnerDestinationActivationState(this.wireValue);
+  final String wireValue;
 
   static PartnerDestinationActivationState fromValue(String value) {
     for (final item in PartnerDestinationActivationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PartnerDestinationActivationState value: $value');
+    throw ArgumentError(
+      'Unknown PartnerDestinationActivationState value: $value',
+    );
   }
 }
-

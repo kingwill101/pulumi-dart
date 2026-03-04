@@ -1,5 +1,3 @@
-library module_datafactory;
-
 export 'datafactory/credential_service_principal.dart';
 export 'datafactory/credential_service_principal_args.dart';
 export 'datafactory/credential_service_principal_service_principal_key.dart';

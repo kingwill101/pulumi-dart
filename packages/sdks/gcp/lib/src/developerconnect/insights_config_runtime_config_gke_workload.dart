@@ -7,6 +7,7 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   /// Format:
   /// `projects/{project}/locations/{location}/clusters/{cluster}`.
   final pulumi.Input<String> cluster;
+
   /// (Output)
   /// The name of the GKE deployment.
   /// Format:
@@ -22,17 +23,19 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cluster': cluster,
-      'deployment': ?deployment,
-    };
+    return <String, dynamic>{'cluster': cluster, 'deployment': ?deployment};
   }
 
-  factory InsightsConfigRuntimeConfigGkeWorkload.fromMap(Map<String, dynamic> map) {
+  factory InsightsConfigRuntimeConfigGkeWorkload.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsConfigRuntimeConfigGkeWorkload(
-      cluster: (map['cluster'] as String).input(),
-      deployment: map['deployment'] == null ? null : (map['deployment']! as String).input(),
+      cluster: pulumi.Input.fromValue(map['cluster'] as String),
+      deployment: (() {
+        final guardedValue = map['deployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

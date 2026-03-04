@@ -194,12 +194,16 @@ import 'nfs_snapshot_state.dart';
 class NfsSnapshot extends pulumi.CustomResource {
   /// The date and time when the snapshot was created.
   late final pulumi.Output<String> createdAt;
+
   /// A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
   late final pulumi.Output<String> name;
+
   /// The region where the NFS snapshot will be created.
   late final pulumi.Output<String> region;
+
   /// The ID of the NFS share to snapshot.
   late final pulumi.Output<String> shareId;
+
   /// The size of the snapshot in GiB.
   late final pulumi.Output<int> size;
   late final pulumi.Output<String> status;
@@ -213,17 +217,17 @@ class NfsSnapshot extends pulumi.CustomResource {
     NfsSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/nfsSnapshot:NfsSnapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
+         'digitalocean:index/nfsSnapshot:NfsSnapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.shareId = registerOutput<String>('shareId');
-    this.size = registerOutput<int>('size');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    size = registerOutput<int>('size');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NfsSnapshot] resource's state with the given [name] and [id].
@@ -244,16 +248,16 @@ class NfsSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/nfsSnapshot:NfsSnapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
+         'digitalocean:index/nfsSnapshot:NfsSnapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.shareId = registerOutput<String>('shareId');
-    this.size = registerOutput<int>('size');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    size = registerOutput<int>('size');
+    status = registerOutput<String>('status');
   }
 }

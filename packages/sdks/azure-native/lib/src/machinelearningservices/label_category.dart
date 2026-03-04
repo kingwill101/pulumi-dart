@@ -7,8 +7,10 @@ import 'label_class.dart';
 class LabelCategory {
   /// Dictionary of label classes in this category.
   final pulumi.Input<Map<String, LabelClass>>? classes;
+
   /// Display name of the label category.
   final pulumi.Input<String>? displayName;
+
   /// Indicates whether it is allowed to select multiple classes in this category.
   final pulumi.Input<String>? multiSelect;
 
@@ -16,15 +18,22 @@ class LabelCategory {
   /// [classes] Dictionary of label classes in this category.
   /// [displayName] Display name of the label category.
   /// [multiSelect] Indicates whether it is allowed to select multiple classes in this category.
-  LabelCategory({
-    this.classes,
-    this.displayName,
-    this.multiSelect,
-  });
+  LabelCategory({this.classes, this.displayName, this.multiSelect});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'classes': ?pulumi.Input.mapOptionalInputValue<Map<String, LabelClass>, Map<String, Map<String, dynamic>>>(classes, (value) => pulumi.Input.encodeMapValues<LabelClass, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'classes':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, LabelClass>,
+            Map<String, Map<String, dynamic>>
+          >(
+            classes,
+            (value) =>
+                pulumi.Input.encodeMapValues<LabelClass, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'displayName': ?displayName,
       'multiSelect': ?multiSelect,
     };
@@ -32,10 +41,27 @@ class LabelCategory {
 
   factory LabelCategory.fromMap(Map<String, dynamic> map) {
     return LabelCategory(
-      classes: map['classes'] == null ? null : (pulumi.Input.decodeMapValues<LabelClass>(map['classes']!, (value) => LabelClass.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      multiSelect: map['multiSelect'] == null ? null : (map['multiSelect']! as String).input(),
+      classes: (() {
+        final guardedValue = map['classes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<LabelClass>(
+            guardedValue,
+            (value) =>
+                LabelClass.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiSelect: (() {
+        final guardedValue = map['multiSelect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

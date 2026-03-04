@@ -8,20 +8,19 @@ class JobTemplateConfigOutput {
 
   /// Creates a new [JobTemplateConfigOutput].
   /// [uri] URI for the output file(s). For example, gs://my-bucket/outputs/.
-  JobTemplateConfigOutput({
-    this.uri,
-  });
+  JobTemplateConfigOutput({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory JobTemplateConfigOutput.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOutput(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

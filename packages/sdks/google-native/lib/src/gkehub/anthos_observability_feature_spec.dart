@@ -10,20 +10,29 @@ class AnthosObservabilityFeatureSpec {
 
   /// Creates a new [AnthosObservabilityFeatureSpec].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
-  AnthosObservabilityFeatureSpec({
-    this.defaultMembershipSpec,
-  });
+  AnthosObservabilityFeatureSpec({this.defaultMembershipSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultMembershipSpec': ?pulumi.Input.mapOptionalInputValue<AnthosObservabilityMembershipSpec, Map<String, dynamic>>(defaultMembershipSpec, (value) => value.toMap()),
+      'defaultMembershipSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnthosObservabilityMembershipSpec,
+            Map<String, dynamic>
+          >(defaultMembershipSpec, (value) => value.toMap()),
     };
   }
 
   factory AnthosObservabilityFeatureSpec.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpec(
-      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : (AnthosObservabilityMembershipSpec.fromMap((map['defaultMembershipSpec']! as Map).cast<String, dynamic>())).input(),
+      defaultMembershipSpec: (() {
+        final guardedValue = map['defaultMembershipSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnthosObservabilityMembershipSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

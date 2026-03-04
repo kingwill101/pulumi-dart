@@ -31,10 +31,13 @@ class GetCatalogArgs {
 
   factory GetCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

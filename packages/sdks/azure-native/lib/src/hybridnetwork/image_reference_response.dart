@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReferenceResponse {
   /// Specifies in decimal numbers, the exact version of image used to create the virtual machine.
   final pulumi.Input<String>? exactVersion;
+
   /// Specifies the offer of the image used to create the virtual machine.
   final pulumi.Input<String>? offer;
+
   /// The image publisher.
   final pulumi.Input<String>? publisher;
+
   /// The image SKU.
   final pulumi.Input<String>? sku;
+
   /// Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
   final pulumi.Input<String>? version;
 
@@ -41,12 +45,31 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      exactVersion: map['exactVersion'] == null ? null : (map['exactVersion']! as String).input(),
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      exactVersion: (() {
+        final guardedValue = map['exactVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

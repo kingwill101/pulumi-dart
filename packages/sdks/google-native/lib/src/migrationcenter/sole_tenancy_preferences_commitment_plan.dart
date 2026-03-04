@@ -5,16 +5,17 @@ enum SoleTenancyPreferencesCommitmentPlan {
   commitment1Year("COMMITMENT_1_YEAR"),
   commitment3Year("COMMITMENT_3_YEAR");
 
-  const SoleTenancyPreferencesCommitmentPlan(this.value);
-  final String value;
+  const SoleTenancyPreferencesCommitmentPlan(this.wireValue);
+  final String wireValue;
 
   static SoleTenancyPreferencesCommitmentPlan fromValue(String value) {
     for (final item in SoleTenancyPreferencesCommitmentPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoleTenancyPreferencesCommitmentPlan value: $value');
+    throw ArgumentError(
+      'Unknown SoleTenancyPreferencesCommitmentPlan value: $value',
+    );
   }
 }
-

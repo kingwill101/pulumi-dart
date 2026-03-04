@@ -196,40 +196,58 @@ import 'workbook_resource_response_identity.dart';
 class Workbook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Workbook category, as defined by the user at creation time.
   late final pulumi.Output<String> category;
+
   /// The description of the workbook.
   late final pulumi.Output<String?> description;
+
   /// The user-defined name (display name) of the workbook.
   late final pulumi.Output<String> displayName;
+
   /// Resource etag
   late final pulumi.Output<String?> etag;
+
   /// Identity used for BYOS
   late final pulumi.Output<WorkbookResourceResponseIdentity?> identity;
+
   /// The kind of workbook. Only valid value is shared.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The unique revision id for this workbook definition
   late final pulumi.Output<String> revision;
+
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON
   late final pulumi.Output<String> serializedData;
+
   /// ResourceId for a source resource.
   late final pulumi.Output<String?> sourceId;
+
   /// The resourceId to the storage account when bring your own storage is used
   late final pulumi.Output<String?> storageUri;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Date and time in UTC of the last modification that was made to this workbook definition.
   late final pulumi.Output<String> timeModified;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Unique user id of the specific user that owns this workbook.
   late final pulumi.Output<String> userId;
+
   /// Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
   late final pulumi.Output<String?> version;
 
@@ -242,29 +260,29 @@ class Workbook extends pulumi.CustomResource {
     WorkbookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:applicationinsights:Workbook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String>('category');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<WorkbookResourceResponseIdentity?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:applicationinsights:Workbook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<WorkbookResourceResponseIdentity?>('identity');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.revision = registerOutput<String>('revision');
-    this.serializedData = registerOutput<String>('serializedData');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.storageUri = registerOutput<String?>('storageUri');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
-    this.userId = registerOutput<String>('userId');
-    this.version = registerOutput<String?>('version');
+    revision = registerOutput<String>('revision');
+    serializedData = registerOutput<String>('serializedData');
+    sourceId = registerOutput<String?>('sourceId');
+    storageUri = registerOutput<String?>('storageUri');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String>('userId');
+    version = registerOutput<String?>('version');
   }
 }

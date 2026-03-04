@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'node_template_accelerator.dart';
 import 'node_template_args.dart';
-import 'node_template_disk.dart';
 import 'node_template_node_type_flexibility.dart';
 import 'node_template_server_binding.dart';
 import 'node_template_state.dart';
@@ -643,41 +641,54 @@ class NodeTemplate extends pulumi.CustomResource {
   /// List of the type and count of accelerator cards attached to the
   /// node template
   /// Structure is documented below.
-  late final pulumi.Output<List<NodeTemplateAccelerator>?> accelerators;
+  late final pulumi.Output<List<Map<String, dynamic>>?> accelerators;
+
   /// CPU overcommit.
   /// Default value is `NONE`.
   /// Possible values are: `ENABLED`, `NONE`.
   late final pulumi.Output<String?> cpuOvercommitType;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional textual description of the resource.
   late final pulumi.Output<String?> description;
+
   /// List of the type, size and count of disks attached to the
   /// node template
   /// Structure is documented below.
-  late final pulumi.Output<List<NodeTemplateDisk>?> disks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> disks;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Labels to use for node affinity, which will be used in
   /// instance scheduling.
   late final pulumi.Output<Map<String, String>?> nodeAffinityLabels;
+
   /// Node type to use for nodes group that are created from this template.
   /// Only one of nodeTypeFlexibility and nodeType can be specified.
   late final pulumi.Output<String?> nodeType;
+
   /// Flexible properties for the desired node type. Node groups that
   /// use this node template will create nodes of a type that matches
   /// these properties. Only one of nodeTypeFlexibility and nodeType can
   /// be specified.
   /// Structure is documented below.
-  late final pulumi.Output<NodeTemplateNodeTypeFlexibility?> nodeTypeFlexibility;
+  late final pulumi.Output<NodeTemplateNodeTypeFlexibility?>
+  nodeTypeFlexibility;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Region where nodes using the node template will be created.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The server binding policy for nodes using this template. Determines
   /// where the nodes should restart following a maintenance event.
   /// Structure is documented below.
@@ -692,24 +703,28 @@ class NodeTemplate extends pulumi.CustomResource {
     NodeTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/nodeTemplate:NodeTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators');
-    this.cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.disks = registerOutput<List<NodeTemplateDisk>?>('disks');
+         'gcp:compute/nodeTemplate:NodeTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
+    cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     this.name = registerOutput<String>('name');
-    this.nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels');
-    this.nodeType = registerOutput<String?>('nodeType');
-    this.nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
+    nodeAffinityLabels = registerOutput<Map<String, String>?>(
+      'nodeAffinityLabels',
+    );
+    nodeType = registerOutput<String?>('nodeType');
+    nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>(
+      'nodeTypeFlexibility',
+    );
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
   }
 
   /// Gets an existing [NodeTemplate] resource's state with the given [name] and [id].
@@ -730,23 +745,27 @@ class NodeTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/nodeTemplate:NodeTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators');
-    this.cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.disks = registerOutput<List<NodeTemplateDisk>?>('disks');
+         'gcp:compute/nodeTemplate:NodeTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
+    cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     this.name = registerOutput<String>('name');
-    this.nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels');
-    this.nodeType = registerOutput<String?>('nodeType');
-    this.nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
+    nodeAffinityLabels = registerOutput<Map<String, String>?>(
+      'nodeAffinityLabels',
+    );
+    nodeType = registerOutput<String?>('nodeType');
+    nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>(
+      'nodeTypeFlexibility',
+    );
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
   }
 }

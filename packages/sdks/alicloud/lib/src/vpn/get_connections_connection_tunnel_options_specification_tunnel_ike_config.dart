@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
   /// IKE auth Algorithm.
   final pulumi.Input<String> ikeAuthAlg;
+
   /// IKE encript algorithm.
   final pulumi.Input<String> ikeEncAlg;
+
   /// IKE lifetime.
   final pulumi.Input<int> ikeLifetime;
+
   /// IKE Mode.
   final pulumi.Input<String> ikeMode;
+
   /// DH Group.
   final pulumi.Input<String> ikePfs;
+
   /// IKE Version.
   final pulumi.Input<String> ikeVersion;
+
   /// The local Id.
   final pulumi.Input<String> localId;
+
   /// Preshared secret key.
   final pulumi.Input<String> psk;
+
   /// Remote ID.
   final pulumi.Input<String> remoteId;
 
@@ -58,18 +66,19 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
     };
   }
 
-  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap(Map<String, dynamic> map) {
+  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig(
-      ikeAuthAlg: (map['ikeAuthAlg'] as String).input(),
-      ikeEncAlg: (map['ikeEncAlg'] as String).input(),
-      ikeLifetime: (map['ikeLifetime'] as int).input(),
-      ikeMode: (map['ikeMode'] as String).input(),
-      ikePfs: (map['ikePfs'] as String).input(),
-      ikeVersion: (map['ikeVersion'] as String).input(),
-      localId: (map['localId'] as String).input(),
-      psk: (map['psk'] as String).input(),
-      remoteId: (map['remoteId'] as String).input(),
+      ikeAuthAlg: pulumi.Input.fromValue(map['ikeAuthAlg'] as String),
+      ikeEncAlg: pulumi.Input.fromValue(map['ikeEncAlg'] as String),
+      ikeLifetime: pulumi.Input.fromValue(map['ikeLifetime'] as int),
+      ikeMode: pulumi.Input.fromValue(map['ikeMode'] as String),
+      ikePfs: pulumi.Input.fromValue(map['ikePfs'] as String),
+      ikeVersion: pulumi.Input.fromValue(map['ikeVersion'] as String),
+      localId: pulumi.Input.fromValue(map['localId'] as String),
+      psk: pulumi.Input.fromValue(map['psk'] as String),
+      remoteId: pulumi.Input.fromValue(map['remoteId'] as String),
     );
   }
 }
-

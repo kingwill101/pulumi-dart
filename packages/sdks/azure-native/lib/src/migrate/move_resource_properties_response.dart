@@ -11,24 +11,36 @@ import 'move_resource_properties_response_move_status.dart';
 class MoveResourcePropertiesResponse {
   /// Gets or sets the move resource dependencies.
   final pulumi.Input<List<MoveResourceDependencyResponse>> dependsOn;
+
   /// Gets or sets the move resource dependencies overrides.
-  final pulumi.Input<List<MoveResourceDependencyOverrideResponse>>? dependsOnOverrides;
+  final pulumi.Input<List<MoveResourceDependencyOverrideResponse>>?
+  dependsOnOverrides;
+
   /// Defines the move resource errors.
   final pulumi.Input<MoveResourcePropertiesResponseErrors> errors;
+
   /// Gets or sets the existing target ARM Id of the resource.
   final pulumi.Input<String>? existingTargetId;
+
   /// Gets a value indicating whether the resolve action is required over the move collection.
   final pulumi.Input<bool> isResolveRequired;
+
   /// Defines the move resource status.
   final pulumi.Input<MoveResourcePropertiesResponseMoveStatus> moveStatus;
+
   /// Defines the provisioning states.
   final pulumi.Input<String> provisioningState;
+
   /// Gets or sets the resource settings.
   final pulumi.Input<AvailabilitySetResourceSettingsResponse>? resourceSettings;
+
   /// Gets or sets the Source ARM Id of the resource.
   final pulumi.Input<String> sourceId;
+
   /// Gets or sets the source resource settings.
-  final pulumi.Input<AvailabilitySetResourceSettingsResponse> sourceResourceSettings;
+  final pulumi.Input<AvailabilitySetResourceSettingsResponse>
+  sourceResourceSettings;
+
   /// Gets or sets the Target ARM Id of the resource.
   final pulumi.Input<String> targetId;
 
@@ -60,34 +72,117 @@ class MoveResourcePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependsOn': pulumi.Input.mapInputValue<List<MoveResourceDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<MoveResourceDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dependsOnOverrides': ?pulumi.Input.mapOptionalInputValue<List<MoveResourceDependencyOverrideResponse>, List<Map<String, dynamic>>>(dependsOnOverrides, (value) => pulumi.Input.encodeList<MoveResourceDependencyOverrideResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'errors': pulumi.Input.mapInputValue<MoveResourcePropertiesResponseErrors, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'dependsOn':
+          pulumi.Input.mapInputValue<
+            List<MoveResourceDependencyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MoveResourceDependencyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'dependsOnOverrides':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MoveResourceDependencyOverrideResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOnOverrides,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MoveResourceDependencyOverrideResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'errors':
+          pulumi.Input.mapInputValue<
+            MoveResourcePropertiesResponseErrors,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
       'existingTargetId': ?existingTargetId,
       'isResolveRequired': isResolveRequired,
-      'moveStatus': pulumi.Input.mapInputValue<MoveResourcePropertiesResponseMoveStatus, Map<String, dynamic>>(moveStatus, (value) => value.toMap()),
+      'moveStatus':
+          pulumi.Input.mapInputValue<
+            MoveResourcePropertiesResponseMoveStatus,
+            Map<String, dynamic>
+          >(moveStatus, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'resourceSettings': ?pulumi.Input.mapOptionalInputValue<AvailabilitySetResourceSettingsResponse, Map<String, dynamic>>(resourceSettings, (value) => value.toMap()),
+      'resourceSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AvailabilitySetResourceSettingsResponse,
+            Map<String, dynamic>
+          >(resourceSettings, (value) => value.toMap()),
       'sourceId': sourceId,
-      'sourceResourceSettings': pulumi.Input.mapInputValue<AvailabilitySetResourceSettingsResponse, Map<String, dynamic>>(sourceResourceSettings, (value) => value.toMap()),
+      'sourceResourceSettings':
+          pulumi.Input.mapInputValue<
+            AvailabilitySetResourceSettingsResponse,
+            Map<String, dynamic>
+          >(sourceResourceSettings, (value) => value.toMap()),
       'targetId': targetId,
     };
   }
 
   factory MoveResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MoveResourcePropertiesResponse(
-      dependsOn: (pulumi.Input.decodeList<MoveResourceDependencyResponse>(map['dependsOn'], (value) => MoveResourceDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverrideResponse>(map['dependsOnOverrides']!, (value) => MoveResourceDependencyOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errors: (MoveResourcePropertiesResponseErrors.fromMap((map['errors'] as Map).cast<String, dynamic>())).input(),
-      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId']! as String).input(),
-      isResolveRequired: (map['isResolveRequired'] as bool).input(),
-      moveStatus: (MoveResourcePropertiesResponseMoveStatus.fromMap((map['moveStatus'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettingsResponse.fromMap((map['resourceSettings']! as Map).cast<String, dynamic>())).input(),
-      sourceId: (map['sourceId'] as String).input(),
-      sourceResourceSettings: (AvailabilitySetResourceSettingsResponse.fromMap((map['sourceResourceSettings'] as Map).cast<String, dynamic>())).input(),
-      targetId: (map['targetId'] as String).input(),
+      dependsOn: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MoveResourceDependencyResponse>(
+          map['dependsOn']!,
+          (value) => MoveResourceDependencyResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dependsOnOverrides: (() {
+        final guardedValue = map['dependsOnOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MoveResourceDependencyOverrideResponse>(
+            guardedValue,
+            (value) => MoveResourceDependencyOverrideResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      errors: pulumi.Input.fromValue(
+        MoveResourcePropertiesResponseErrors.fromMap(
+          (map['errors']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      existingTargetId: (() {
+        final guardedValue = map['existingTargetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isResolveRequired: pulumi.Input.fromValue(
+        map['isResolveRequired'] as bool,
+      ),
+      moveStatus: pulumi.Input.fromValue(
+        MoveResourcePropertiesResponseMoveStatus.fromMap(
+          (map['moveStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceSettings: (() {
+        final guardedValue = map['resourceSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AvailabilitySetResourceSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
+      sourceResourceSettings: pulumi.Input.fromValue(
+        AvailabilitySetResourceSettingsResponse.fromMap(
+          (map['sourceResourceSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

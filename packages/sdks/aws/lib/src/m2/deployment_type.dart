@@ -125,14 +125,18 @@ import 'deployment_timeouts.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// Application to deploy.
   late final pulumi.Output<String> applicationId;
+
   /// Version to application to deploy
   late final pulumi.Output<int> applicationVersion;
   late final pulumi.Output<String> deploymentId;
+
   /// Environment to deploy application to.
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<bool?> forceStop;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Start the application once deployed.
   late final pulumi.Output<bool> start;
   late final pulumi.Output<DeploymentTimeouts?> timeouts;
@@ -146,19 +150,19 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:m2/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.applicationVersion = registerOutput<int>('applicationVersion');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.forceStop = registerOutput<bool?>('forceStop');
-    this.region = registerOutput<String>('region');
-    this.start = registerOutput<bool>('start');
-    this.timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
+         'aws:m2/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    applicationVersion = registerOutput<int>('applicationVersion');
+    deploymentId = registerOutput<String>('deploymentId');
+    environmentId = registerOutput<String>('environmentId');
+    forceStop = registerOutput<bool?>('forceStop');
+    region = registerOutput<String>('region');
+    start = registerOutput<bool>('start');
+    timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -179,18 +183,18 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:m2/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.applicationVersion = registerOutput<int>('applicationVersion');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.forceStop = registerOutput<bool?>('forceStop');
-    this.region = registerOutput<String>('region');
-    this.start = registerOutput<bool>('start');
-    this.timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
+         'aws:m2/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    applicationVersion = registerOutput<int>('applicationVersion');
+    deploymentId = registerOutput<String>('deploymentId');
+    environmentId = registerOutput<String>('environmentId');
+    forceStop = registerOutput<bool?>('forceStop');
+    region = registerOutput<String>('region');
+    start = registerOutput<bool>('start');
+    timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
   }
 }

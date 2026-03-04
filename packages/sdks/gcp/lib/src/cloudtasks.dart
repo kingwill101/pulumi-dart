@@ -1,5 +1,3 @@
-library module_cloudtasks;
-
 export 'cloudtasks/functions.dart';
 export 'cloudtasks/get_queue_iam_policy_args.dart';
 export 'cloudtasks/get_queue_iam_policy_result.dart';

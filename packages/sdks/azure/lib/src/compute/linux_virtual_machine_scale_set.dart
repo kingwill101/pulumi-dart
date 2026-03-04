@@ -1,20 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_virtual_machine_scale_set_additional_capabilities.dart';
-import 'linux_virtual_machine_scale_set_admin_ssh_key.dart';
 import 'linux_virtual_machine_scale_set_args.dart';
 import 'linux_virtual_machine_scale_set_automatic_instance_repair.dart';
 import 'linux_virtual_machine_scale_set_automatic_os_upgrade_policy.dart';
 import 'linux_virtual_machine_scale_set_boot_diagnostics.dart';
-import 'linux_virtual_machine_scale_set_data_disk.dart';
-import 'linux_virtual_machine_scale_set_extension.dart';
-import 'linux_virtual_machine_scale_set_gallery_application.dart';
 import 'linux_virtual_machine_scale_set_identity.dart';
-import 'linux_virtual_machine_scale_set_network_interface.dart';
 import 'linux_virtual_machine_scale_set_os_disk.dart';
 import 'linux_virtual_machine_scale_set_plan.dart';
 import 'linux_virtual_machine_scale_set_rolling_upgrade_policy.dart';
 import 'linux_virtual_machine_scale_set_scale_in.dart';
-import 'linux_virtual_machine_scale_set_secret.dart';
 import 'linux_virtual_machine_scale_set_source_image_reference.dart';
 import 'linux_virtual_machine_scale_set_spot_restore.dart';
 import 'linux_virtual_machine_scale_set_state.dart';
@@ -24,7 +18,7 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** As of the **v2.86.0** (November 19, 2021) release of the provider this resource will only create Virtual Machine Scale Sets with the **Uniform** Orchestration Mode. For Virtual Machine Scale Sets with **Flexible** orchestration mode, use `azure.compute.OrchestratedVirtualMachineScaleSet`. Flexible orchestration mode is recommended for workloads on Azure.
+/// &gt; **Note:** As of the **v2.86.0** (November 19, 2021) release of the provider this resource will only create Virtual Machine Scale Sets with the **Uniform** Orchestration Mode. For Virtual Machine Scale Sets with **Flexible** orchestration mode, use `azure.compute.OrchestratedVirtualMachineScaleSet`. Flexible orchestration mode is recommended for workloads on Azure.
 ///
 /// ## Example Usage
 ///
@@ -452,7 +446,7 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-11-01
@@ -466,158 +460,219 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 /// ```
 class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// An `additional_capabilities` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetAdditionalCapabilities?> additionalCapabilities;
+  late final pulumi.Output<LinuxVirtualMachineScaleSetAdditionalCapabilities?>
+  additionalCapabilities;
+
   /// The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When an `admin_password` is specified `disable_password_authentication` must be set to `false`.
+  /// &gt; **Note:** When an `admin_password` is specified `disable_password_authentication` must be set to `false`.
   ///
-  /// > **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
+  /// &gt; **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
   late final pulumi.Output<String?> adminPassword;
+
   /// One or more `admin_ssh_key` blocks as defined below.
   ///
-  /// > **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetAdminSshKey>?> adminSshKeys;
+  /// &gt; **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
+  late final pulumi.Output<List<Map<String, dynamic>>?> adminSshKeys;
+
   /// The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> adminUsername;
+
   /// An `automatic_instance_repair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `health_probe_id` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
   ///
-  /// > **Note:** For more information about Automatic Instance Repair, please refer to the [product documentation](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
-  late final pulumi.Output<LinuxVirtualMachineScaleSetAutomaticInstanceRepair> automaticInstanceRepair;
+  /// &gt; **Note:** For more information about Automatic Instance Repair, please refer to the [product documentation](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+  late final pulumi.Output<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>
+  automaticInstanceRepair;
+
   /// An `automatic_os_upgrade_policy` block as defined below. This can only be specified when `upgrade_mode` is set to either `Automatic` or `Rolling`.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?> automaticOsUpgradePolicy;
+  late final pulumi.Output<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>
+  automaticOsUpgradePolicy;
+
   /// A `boot_diagnostics` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetBootDiagnostics?> bootDiagnostics;
+  late final pulumi.Output<LinuxVirtualMachineScaleSetBootDiagnostics?>
+  bootDiagnostics;
+
   /// Specifies the ID of the Capacity Reservation Group which the Virtual Machine Scale Set should be allocated to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `capacity_reservation_group_id` cannot be used with `proximity_placement_group_id`
+  /// &gt; **Note:** `capacity_reservation_group_id` cannot be used with `proximity_placement_group_id`
   ///
-  /// > **Note:** `single_placement_group` must be set to `false` when `capacity_reservation_group_id` is specified.
+  /// &gt; **Note:** `single_placement_group` must be set to `false` when `capacity_reservation_group_id` is specified.
   late final pulumi.Output<String?> capacityReservationGroupId;
+
   /// The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name_prefix`, then you must specify `computer_name_prefix`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> computerNamePrefix;
+
   /// The Base64-Encoded Custom Data which should be used for this Virtual Machine Scale Set.
   ///
-  /// > **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
+  /// &gt; **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
   late final pulumi.Output<String?> customData;
+
   /// One or more `data_disk` blocks as defined below.
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetDataDisk>?> dataDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+
   /// Should Password Authentication be disabled on this Virtual Machine Scale Set? Defaults to `true`.
   ///
-  /// > **Note:** In general we'd recommend using SSH Keys for authentication rather than Passwords - but there's tradeoff's to each - please [see this thread for more information](https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords).
+  /// &gt; **Note:** In general we'd recommend using SSH Keys for authentication rather than Passwords - but there's tradeoff's to each - please [see this thread for more information](https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords).
   ///
-  /// > **Note:** When a `admin_password` is specified `disable_password_authentication` must be set to `false`.
+  /// &gt; **Note:** When a `admin_password` is specified `disable_password_authentication` must be set to `false`.
   late final pulumi.Output<bool?> disablePasswordAuthentication;
+
   /// Should Virtual Machine Extensions be run on Overprovisioned Virtual Machines in the Scale Set? Defaults to `false`.
   late final pulumi.Output<bool?> doNotRunExtensionsOnOverprovisionedMachines;
+
   /// Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine Scale Set should exist. Changing this forces a new Linux Virtual Machine Scale Set to be created.
   late final pulumi.Output<String?> edgeZone;
+
   /// Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?
   late final pulumi.Output<bool?> encryptionAtHostEnabled;
+
   /// Specifies the eviction policy for Virtual Machines in this Scale Set. Possible values are `Deallocate` and `Delete`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This can only be configured when `priority` is set to `Spot`.
+  /// &gt; **Note:** This can only be configured when `priority` is set to `Spot`.
   late final pulumi.Output<String?> evictionPolicy;
+
   /// Should extension operations be allowed on the Virtual Machine Scale Set? Possible values are `true` or `false`. Defaults to `true`. Changing this forces a new Linux Virtual Machine Scale Set to be created.
   ///
-  /// > **Note:** `extension_operations_enabled` may only be set to `false` if there are no extensions defined in the `extension` field.
+  /// &gt; **Note:** `extension_operations_enabled` may only be set to `false` if there are no extensions defined in the `extension` field.
   late final pulumi.Output<bool?> extensionOperationsEnabled;
+
   /// One or more `extension` blocks as defined below
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetExtension>> extensions;
+  late final pulumi.Output<List<Map<String, dynamic>>> extensions;
+
   /// Specifies the duration allocated for all extensions to start. The time duration should be between `15` minutes and `120` minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
   late final pulumi.Output<String?> extensionsTimeBudget;
+
   /// One or more `gallery_application` blocks as defined below.
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetGalleryApplication>?> galleryApplications;
+  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApplications;
+
   /// The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`.
   late final pulumi.Output<String?> healthProbeId;
+
   /// Specifies the ID of the dedicated host group that the virtual machine scale set resides in. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hostGroupId;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetIdentity?> identity;
+
   /// The number of Virtual Machines in the Scale Set. Defaults to `0`.
   ///
-  /// > **NOTE:** If you're using AutoScaling, you may wish to use [`Ignore Changes` functionality](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to ignore changes to this field.
+  /// &gt; **NOTE:** If you're using AutoScaling, you may wish to use [`Ignore Changes` functionality](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to ignore changes to this field.
   late final pulumi.Output<int?> instances;
+
   /// The Azure location where the Linux Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The maximum price you're willing to pay for each Virtual Machine in this Scale Set, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machines in the Scale Set will be evicted using the `eviction_policy`. Defaults to `-1`, which means that each Virtual Machine in this Scale Set should not be evicted for price reasons.
   ///
-  /// > **Note:** This can only be configured when `priority` is set to `Spot`.
+  /// &gt; **Note:** This can only be configured when `priority` is set to `Spot`.
   late final pulumi.Output<double?> maxBidPrice;
+
   /// The name of the Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `network_interface` blocks as defined below.
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetNetworkInterface>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// An `os_disk` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetOsDisk> osDisk;
+
   /// Should Azure over-provision Virtual Machines in this Scale Set? This means that multiple Virtual Machines will be provisioned and Azure will keep the instances which become available first - which improves provisioning success rates and improves deployment time. You're not billed for these over-provisioned VM's and they don't count towards the Subscription Quota. Defaults to `true`.
   late final pulumi.Output<bool?> overprovision;
+
   /// A `plan` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When using an image from Azure Marketplace a `plan` must be specified.
+  /// &gt; **Note:** When using an image from Azure Marketplace a `plan` must be specified.
   late final pulumi.Output<LinuxVirtualMachineScaleSetPlan?> plan;
+
   /// Specifies the number of fault domains that are used by this Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
   late final pulumi.Output<int> platformFaultDomainCount;
+
   /// The Priority of this Virtual Machine Scale Set. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this value forces a new resource.
   ///
-  /// > **Note:** When `priority` is set to `Spot` an `eviction_policy` must be specified.
+  /// &gt; **Note:** When `priority` is set to `Spot` an `eviction_policy` must be specified.
   late final pulumi.Output<String?> priority;
+
   /// Should the Azure VM Agent be provisioned on each Virtual Machine in the Scale Set? Defaults to `true`. Changing this value forces a new resource to be created.
   late final pulumi.Output<bool?> provisionVmAgent;
+
   /// The ID of the Proximity Placement Group in which the Virtual Machine Scale Set should be assigned to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> proximityPlacementGroupId;
+
   /// Should resilient VM creation be enabled? When enabled, the service will attempt to create VMs in alternative fault domains or zones if the primary location fails during creation. Defaults to `false`.
   ///
-  /// > **Note:** `resilient_vm_creation_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
+  /// &gt; **Note:** `resilient_vm_creation_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
   late final pulumi.Output<bool?> resilientVmCreationEnabled;
+
   /// Should resilient VM deletion be enabled? When enabled, the service will use a more resilient deletion process that attempts to gracefully handle failures during VM termination. Defaults to `false`.
   ///
-  /// > **Note:** `resilient_vm_deletion_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
+  /// &gt; **Note:** `resilient_vm_deletion_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
   late final pulumi.Output<bool?> resilientVmDeletionEnabled;
+
   /// The name of the Resource Group in which the Linux Virtual Machine Scale Set should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `rolling_upgrade_policy` block as defined below. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`. Changing this forces a new resource to be created.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetRollingUpgradePolicy?> rollingUpgradePolicy;
+  late final pulumi.Output<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>
+  rollingUpgradePolicy;
+
   /// A `scale_in` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetScaleIn?> scaleIn;
+
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<LinuxVirtualMachineScaleSetSecret>?> secrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+
   /// Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> secureBootEnabled;
+
   /// Should this Virtual Machine Scale Set be limited to a Single Placement Group, which means the number of instances will be capped at 100 Virtual Machines. Defaults to `true`.
   late final pulumi.Output<bool?> singlePlacementGroup;
+
   /// The Virtual Machine SKU for the Scale Set, such as `Standard_F2`.
   late final pulumi.Output<String> sku;
+
   /// The ID of an Image which each Virtual Machine in this Scale Set should be based on. Possible Image ID types include `Image ID`, `Shared Image ID`, `Shared Image Version ID`, `Community Gallery Image ID`, `Community Gallery Image Version ID`, `Shared Gallery Image ID` and `Shared Gallery Image Version ID`.
   ///
-  /// > **Note:** One of either `source_image_id` or `source_image_reference` must be set.
+  /// &gt; **Note:** One of either `source_image_id` or `source_image_reference` must be set.
   late final pulumi.Output<String?> sourceImageId;
+
   /// A `source_image_reference` block as defined below.
   ///
-  /// > **Note:** One of either `source_image_id` or `source_image_reference` must be set.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetSourceImageReference?> sourceImageReference;
+  /// &gt; **Note:** One of either `source_image_id` or `source_image_reference` must be set.
+  late final pulumi.Output<LinuxVirtualMachineScaleSetSourceImageReference?>
+  sourceImageReference;
+
   /// A `spot_restore` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetSpotRestore> spotRestore;
+
   /// A mapping of tags which should be assigned to this Virtual Machine Scale Set.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `termination_notification` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineScaleSetTerminationNotification> terminationNotification;
+  late final pulumi.Output<LinuxVirtualMachineScaleSetTerminationNotification>
+  terminationNotification;
+
   /// The Unique ID for this Linux Virtual Machine Scale Set.
   late final pulumi.Output<String> uniqueId;
+
   /// Specifies how Upgrades (e.g. changing the Image/SKU) should be performed to Virtual Machine Instances. Possible values are `Automatic`, `Manual` and `Rolling`. Defaults to `Manual`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** If rolling upgrades are configured and running on a Linux Virtual Machine Scale Set, they will be cancelled when Terraform tries to destroy the resource.
+  /// &gt; **Note:** If rolling upgrades are configured and running on a Linux Virtual Machine Scale Set, they will be cancelled when Terraform tries to destroy the resource.
   late final pulumi.Output<String?> upgradeMode;
+
   /// The Base64-Encoded User Data which should be used for this Virtual Machine Scale Set.
   late final pulumi.Output<String?> userData;
+
   /// Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> vtpmEnabled;
+
   /// Should the Virtual Machines in this Scale Set be strictly evenly distributed across Availability Zones? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This can only be set to `true` when one or more `zones` are configured.
+  /// &gt; **Note:** This can only be set to `true` when one or more `zones` are configured.
   late final pulumi.Output<bool?> zoneBalance;
+
   /// Specifies a list of Availability Zones in which this Linux Virtual Machine Scale Set should be located.
   ///
-  /// > **Note:** Updating `zones` to remove an existing zone forces a new Virtual Machine Scale Set to be created.
+  /// &gt; **Note:** Updating `zones` to remove an existing zone forces a new Virtual Machine Scale Set to be created.
   late final pulumi.Output<List<String>?> zones;
 
   /// Creates a new [LinuxVirtualMachineScaleSet].
@@ -629,66 +684,107 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     LinuxVirtualMachineScaleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities');
-    this.adminPassword = registerOutput<String?>('adminPassword');
-    this.adminSshKeys = registerOutput<List<LinuxVirtualMachineScaleSetAdminSshKey>?>('adminSshKeys');
-    this.adminUsername = registerOutput<String>('adminUsername');
-    this.automaticInstanceRepair = registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair');
-    this.automaticOsUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy');
-    this.bootDiagnostics = registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics');
-    this.capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
-    this.computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    this.customData = registerOutput<String?>('customData');
-    this.dataDisks = registerOutput<List<LinuxVirtualMachineScaleSetDataDisk>?>('dataDisks');
-    this.disablePasswordAuthentication = registerOutput<bool?>('disablePasswordAuthentication');
-    this.doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
-    this.edgeZone = registerOutput<String?>('edgeZone');
-    this.encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    this.extensions = registerOutput<List<LinuxVirtualMachineScaleSetExtension>>('extensions');
-    this.extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    this.galleryApplications = registerOutput<List<LinuxVirtualMachineScaleSetGalleryApplication>?>('galleryApplications');
-    this.healthProbeId = registerOutput<String?>('healthProbeId');
-    this.hostGroupId = registerOutput<String?>('hostGroupId');
-    this.identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
-    this.instances = registerOutput<int?>('instances');
-    this.location = registerOutput<String>('location');
-    this.maxBidPrice = registerOutput<double?>('maxBidPrice');
+         'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities =
+        registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>(
+          'additionalCapabilities',
+        );
+    adminPassword = registerOutput<String?>('adminPassword');
+    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminUsername = registerOutput<String>('adminUsername');
+    automaticInstanceRepair =
+        registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>(
+          'automaticInstanceRepair',
+        );
+    automaticOsUpgradePolicy =
+        registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>(
+          'automaticOsUpgradePolicy',
+        );
+    bootDiagnostics =
+        registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>(
+          'bootDiagnostics',
+        );
+    capacityReservationGroupId = registerOutput<String?>(
+      'capacityReservationGroupId',
+    );
+    computerNamePrefix = registerOutput<String>('computerNamePrefix');
+    customData = registerOutput<String?>('customData');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    disablePasswordAuthentication = registerOutput<bool?>(
+      'disablePasswordAuthentication',
+    );
+    doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>(
+      'doNotRunExtensionsOnOverprovisionedMachines',
+    );
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensionOperationsEnabled = registerOutput<bool?>(
+      'extensionOperationsEnabled',
+    );
+    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
+      'galleryApplications',
+    );
+    healthProbeId = registerOutput<String?>('healthProbeId');
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
+    instances = registerOutput<int?>('instances');
+    location = registerOutput<String>('location');
+    maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<LinuxVirtualMachineScaleSetNetworkInterface>>('networkInterfaces');
-    this.osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
-    this.overprovision = registerOutput<bool?>('overprovision');
-    this.plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.priority = registerOutput<String?>('priority');
-    this.provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
-    this.proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
-    this.resilientVmCreationEnabled = registerOutput<bool?>('resilientVmCreationEnabled');
-    this.resilientVmDeletionEnabled = registerOutput<bool?>('resilientVmDeletionEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rollingUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy');
-    this.scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
-    this.secrets = registerOutput<List<LinuxVirtualMachineScaleSetSecret>?>('secrets');
-    this.secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
-    this.singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
-    this.sku = registerOutput<String>('sku');
-    this.sourceImageId = registerOutput<String?>('sourceImageId');
-    this.sourceImageReference = registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>('sourceImageReference');
-    this.spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>('spotRestore');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.terminationNotification = registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>('terminationNotification');
-    this.uniqueId = registerOutput<String>('uniqueId');
-    this.upgradeMode = registerOutput<String?>('upgradeMode');
-    this.userData = registerOutput<String?>('userData');
-    this.vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
-    this.zoneBalance = registerOutput<bool?>('zoneBalance');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    priority = registerOutput<String?>('priority');
+    provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
+    proximityPlacementGroupId = registerOutput<String?>(
+      'proximityPlacementGroupId',
+    );
+    resilientVmCreationEnabled = registerOutput<bool?>(
+      'resilientVmCreationEnabled',
+    );
+    resilientVmDeletionEnabled = registerOutput<bool?>(
+      'resilientVmDeletionEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rollingUpgradePolicy =
+        registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>(
+          'rollingUpgradePolicy',
+        );
+    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<String>('sku');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    sourceImageReference =
+        registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>(
+          'sourceImageReference',
+        );
+    spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>(
+      'spotRestore',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    terminationNotification =
+        registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>(
+          'terminationNotification',
+        );
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradeMode = registerOutput<String?>('upgradeMode');
+    userData = registerOutput<String?>('userData');
+    vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [LinuxVirtualMachineScaleSet] resource's state with the given [name] and [id].
@@ -709,65 +805,106 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities');
-    this.adminPassword = registerOutput<String?>('adminPassword');
-    this.adminSshKeys = registerOutput<List<LinuxVirtualMachineScaleSetAdminSshKey>?>('adminSshKeys');
-    this.adminUsername = registerOutput<String>('adminUsername');
-    this.automaticInstanceRepair = registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair');
-    this.automaticOsUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy');
-    this.bootDiagnostics = registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics');
-    this.capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
-    this.computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    this.customData = registerOutput<String?>('customData');
-    this.dataDisks = registerOutput<List<LinuxVirtualMachineScaleSetDataDisk>?>('dataDisks');
-    this.disablePasswordAuthentication = registerOutput<bool?>('disablePasswordAuthentication');
-    this.doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
-    this.edgeZone = registerOutput<String?>('edgeZone');
-    this.encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    this.extensions = registerOutput<List<LinuxVirtualMachineScaleSetExtension>>('extensions');
-    this.extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    this.galleryApplications = registerOutput<List<LinuxVirtualMachineScaleSetGalleryApplication>?>('galleryApplications');
-    this.healthProbeId = registerOutput<String?>('healthProbeId');
-    this.hostGroupId = registerOutput<String?>('hostGroupId');
-    this.identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
-    this.instances = registerOutput<int?>('instances');
-    this.location = registerOutput<String>('location');
-    this.maxBidPrice = registerOutput<double?>('maxBidPrice');
+         'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities =
+        registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>(
+          'additionalCapabilities',
+        );
+    adminPassword = registerOutput<String?>('adminPassword');
+    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminUsername = registerOutput<String>('adminUsername');
+    automaticInstanceRepair =
+        registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>(
+          'automaticInstanceRepair',
+        );
+    automaticOsUpgradePolicy =
+        registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>(
+          'automaticOsUpgradePolicy',
+        );
+    bootDiagnostics =
+        registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>(
+          'bootDiagnostics',
+        );
+    capacityReservationGroupId = registerOutput<String?>(
+      'capacityReservationGroupId',
+    );
+    computerNamePrefix = registerOutput<String>('computerNamePrefix');
+    customData = registerOutput<String?>('customData');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    disablePasswordAuthentication = registerOutput<bool?>(
+      'disablePasswordAuthentication',
+    );
+    doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>(
+      'doNotRunExtensionsOnOverprovisionedMachines',
+    );
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensionOperationsEnabled = registerOutput<bool?>(
+      'extensionOperationsEnabled',
+    );
+    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
+      'galleryApplications',
+    );
+    healthProbeId = registerOutput<String?>('healthProbeId');
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
+    instances = registerOutput<int?>('instances');
+    location = registerOutput<String>('location');
+    maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<LinuxVirtualMachineScaleSetNetworkInterface>>('networkInterfaces');
-    this.osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
-    this.overprovision = registerOutput<bool?>('overprovision');
-    this.plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.priority = registerOutput<String?>('priority');
-    this.provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
-    this.proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
-    this.resilientVmCreationEnabled = registerOutput<bool?>('resilientVmCreationEnabled');
-    this.resilientVmDeletionEnabled = registerOutput<bool?>('resilientVmDeletionEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rollingUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy');
-    this.scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
-    this.secrets = registerOutput<List<LinuxVirtualMachineScaleSetSecret>?>('secrets');
-    this.secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
-    this.singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
-    this.sku = registerOutput<String>('sku');
-    this.sourceImageId = registerOutput<String?>('sourceImageId');
-    this.sourceImageReference = registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>('sourceImageReference');
-    this.spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>('spotRestore');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.terminationNotification = registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>('terminationNotification');
-    this.uniqueId = registerOutput<String>('uniqueId');
-    this.upgradeMode = registerOutput<String?>('upgradeMode');
-    this.userData = registerOutput<String?>('userData');
-    this.vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
-    this.zoneBalance = registerOutput<bool?>('zoneBalance');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    priority = registerOutput<String?>('priority');
+    provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
+    proximityPlacementGroupId = registerOutput<String?>(
+      'proximityPlacementGroupId',
+    );
+    resilientVmCreationEnabled = registerOutput<bool?>(
+      'resilientVmCreationEnabled',
+    );
+    resilientVmDeletionEnabled = registerOutput<bool?>(
+      'resilientVmDeletionEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rollingUpgradePolicy =
+        registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>(
+          'rollingUpgradePolicy',
+        );
+    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<String>('sku');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    sourceImageReference =
+        registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>(
+          'sourceImageReference',
+        );
+    spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>(
+      'spotRestore',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    terminationNotification =
+        registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>(
+          'terminationNotification',
+        );
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradeMode = registerOutput<String?>('upgradeMode');
+    userData = registerOutput<String?>('userData');
+    vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

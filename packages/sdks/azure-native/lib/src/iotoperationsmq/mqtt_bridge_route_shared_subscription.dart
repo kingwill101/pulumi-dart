@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MqttBridgeRouteSharedSubscription {
   /// The group shared subscription minimum share number.
   final pulumi.Input<int> groupMinimumShareNumber;
+
   /// The group name for Shared subscription.
   final pulumi.Input<String> groupName;
 
@@ -26,9 +27,10 @@ class MqttBridgeRouteSharedSubscription {
 
   factory MqttBridgeRouteSharedSubscription.fromMap(Map<String, dynamic> map) {
     return MqttBridgeRouteSharedSubscription(
-      groupMinimumShareNumber: (map['groupMinimumShareNumber'] as int).input(),
-      groupName: (map['groupName'] as String).input(),
+      groupMinimumShareNumber: pulumi.Input.fromValue(
+        map['groupMinimumShareNumber'] as int,
+      ),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }
 }
-

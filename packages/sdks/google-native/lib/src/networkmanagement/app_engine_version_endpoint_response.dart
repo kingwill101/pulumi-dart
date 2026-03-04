@@ -9,20 +9,15 @@ class AppEngineVersionEndpointResponse {
 
   /// Creates a new [AppEngineVersionEndpointResponse].
   /// [uri] An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
-  AppEngineVersionEndpointResponse({
-    required this.uri,
-  });
+  AppEngineVersionEndpointResponse({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
   factory AppEngineVersionEndpointResponse.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionEndpointResponse(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Int64RangeMatchResponseComputeV1 {
   /// The end of the range (exclusive) in signed long integer format.
   final pulumi.Input<String> rangeEnd;
+
   /// The start of the range (inclusive) in signed long integer format.
   final pulumi.Input<String> rangeStart;
 
@@ -18,17 +19,13 @@ class Int64RangeMatchResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'rangeEnd': rangeEnd,
-      'rangeStart': rangeStart,
-    };
+    return <String, dynamic>{'rangeEnd': rangeEnd, 'rangeStart': rangeStart};
   }
 
   factory Int64RangeMatchResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return Int64RangeMatchResponseComputeV1(
-      rangeEnd: (map['rangeEnd'] as String).input(),
-      rangeStart: (map['rangeStart'] as String).input(),
+      rangeEnd: pulumi.Input.fromValue(map['rangeEnd'] as String),
+      rangeStart: pulumi.Input.fromValue(map['rangeStart'] as String),
     );
   }
 }
-

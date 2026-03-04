@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LaunchGroup {
   /// Specifies the description of the launch group.
   final pulumi.Input<String>? description;
+
   /// Specifies the name of the feature that the launch is using.
   final pulumi.Input<String> feature;
+
   /// Specifies the name of the lahnch group.
   final pulumi.Input<String> name;
+
   /// Specifies the feature variation to use for this launch group.
   final pulumi.Input<String> variation;
 
@@ -35,11 +38,14 @@ class LaunchGroup {
 
   factory LaunchGroup.fromMap(Map<String, dynamic> map) {
     return LaunchGroup(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      feature: (map['feature'] as String).input(),
-      name: (map['name'] as String).input(),
-      variation: (map['variation'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      feature: pulumi.Input.fromValue(map['feature'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      variation: pulumi.Input.fromValue(map['variation'] as String),
     );
   }
 }
-

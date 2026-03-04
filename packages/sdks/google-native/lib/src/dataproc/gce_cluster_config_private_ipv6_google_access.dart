@@ -5,16 +5,17 @@ enum GceClusterConfigPrivateIpv6GoogleAccess {
   outbound("OUTBOUND"),
   bidirectional("BIDIRECTIONAL");
 
-  const GceClusterConfigPrivateIpv6GoogleAccess(this.value);
-  final String value;
+  const GceClusterConfigPrivateIpv6GoogleAccess(this.wireValue);
+  final String wireValue;
 
   static GceClusterConfigPrivateIpv6GoogleAccess fromValue(String value) {
     for (final item in GceClusterConfigPrivateIpv6GoogleAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GceClusterConfigPrivateIpv6GoogleAccess value: $value');
+    throw ArgumentError(
+      'Unknown GceClusterConfigPrivateIpv6GoogleAccess value: $value',
+    );
   }
 }
-

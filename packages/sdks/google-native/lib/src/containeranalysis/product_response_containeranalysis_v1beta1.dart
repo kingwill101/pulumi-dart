@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductResponseContaineranalysisV1beta1 {
   /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   final pulumi.Input<String> genericUri;
+
   /// Name of the product.
   final pulumi.Input<String> name;
 
@@ -18,17 +19,15 @@ class ProductResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'genericUri': genericUri,
-      'name': name,
-    };
+    return <String, dynamic>{'genericUri': genericUri, 'name': name};
   }
 
-  factory ProductResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ProductResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProductResponseContaineranalysisV1beta1(
-      genericUri: (map['genericUri'] as String).input(),
-      name: (map['name'] as String).input(),
+      genericUri: pulumi.Input.fromValue(map['genericUri'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

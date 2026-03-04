@@ -4,16 +4,17 @@ enum MembershipSpecCertificateManagement {
   disabled("DISABLED"),
   enabled("ENABLED");
 
-  const MembershipSpecCertificateManagement(this.value);
-  final String value;
+  const MembershipSpecCertificateManagement(this.wireValue);
+  final String wireValue;
 
   static MembershipSpecCertificateManagement fromValue(String value) {
     for (final item in MembershipSpecCertificateManagement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MembershipSpecCertificateManagement value: $value');
+    throw ArgumentError(
+      'Unknown MembershipSpecCertificateManagement value: $value',
+    );
   }
 }
-

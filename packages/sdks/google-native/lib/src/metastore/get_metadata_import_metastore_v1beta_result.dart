@@ -6,16 +6,22 @@ import 'database_dump_response_metastore_v1beta.dart';
 class GetMetadataImportMetastoreV1betaResult {
   /// The time when the metadata import was started.
   final String createTime;
+
   /// Immutable. A database dump from a pre-existing metastore's database.
   final DatabaseDumpResponseMetastoreV1beta databaseDump;
+
   /// The description of the metadata import.
   final String description;
+
   /// The time when the metadata import finished.
   final String endTime;
+
   /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   final String name;
+
   /// The current state of the metadata import.
   final String state;
+
   /// The time when the metadata import was last updated.
   final String updateTime;
 
@@ -49,10 +55,14 @@ class GetMetadataImportMetastoreV1betaResult {
     };
   }
 
-  factory GetMetadataImportMetastoreV1betaResult.fromMap(Map<String, dynamic> map) {
+  factory GetMetadataImportMetastoreV1betaResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetadataImportMetastoreV1betaResult(
       createTime: map['createTime'] as String,
-      databaseDump: DatabaseDumpResponseMetastoreV1beta.fromMap((map['databaseDump'] as Map).cast<String, dynamic>()),
+      databaseDump: DatabaseDumpResponseMetastoreV1beta.fromMap(
+        (map['databaseDump']! as Map).cast<String, dynamic>(),
+      ),
       description: map['description'] as String,
       endTime: map['endTime'] as String,
       name: map['name'] as String,
@@ -61,4 +71,3 @@ class GetMetadataImportMetastoreV1betaResult {
     );
   }
 }
-

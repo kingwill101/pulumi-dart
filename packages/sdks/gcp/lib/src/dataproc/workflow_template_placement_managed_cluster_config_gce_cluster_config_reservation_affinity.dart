@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
   /// Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
   final pulumi.Input<String>? consumeReservationType;
+
   /// Corresponds to the label key of reservation resource.
   final pulumi.Input<String>? key;
+
   /// Corresponds to the label values of reservation resource.
   final pulumi.Input<List<String>>? values;
 
@@ -28,12 +30,25 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] == null ? null : (map['consumeReservationType']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      consumeReservationType: (() {
+        final guardedValue = map['consumeReservationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

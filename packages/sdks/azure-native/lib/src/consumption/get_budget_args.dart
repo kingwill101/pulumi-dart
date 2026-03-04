@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetArgs {
   /// Budget Name.
   final pulumi.Input<String> budgetName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetBudgetArgs].
   /// [budgetName] Budget Name.
   /// [scope] The fully qualified Azure Resource manager identifier of the resource.
-  GetBudgetArgs({
-    required this.budgetName,
-    required this.scope,
-  });
+  GetBudgetArgs({required this.budgetName, required this.scope});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'budgetName': budgetName,
-      'scope': scope,
-    };
+    return <String, dynamic>{'budgetName': budgetName, 'scope': scope};
   }
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
-      budgetName: (map['budgetName'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      budgetName: pulumi.Input.fromValue(map['budgetName'] as String),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

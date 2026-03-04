@@ -7,10 +7,13 @@ import 'mysql_rdbms_response.dart';
 class MysqlSourceConfigResponse {
   /// MySQL objects to exclude from the stream.
   final pulumi.Input<MysqlRdbmsResponse> excludeObjects;
+
   /// MySQL objects to retrieve from the source.
   final pulumi.Input<MysqlRdbmsResponse> includeObjects;
+
   /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   final pulumi.Input<int> maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   final pulumi.Input<int> maxConcurrentCdcTasks;
 
@@ -28,8 +31,16 @@ class MysqlSourceConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludeObjects': pulumi.Input.mapInputValue<MysqlRdbmsResponse, Map<String, dynamic>>(excludeObjects, (value) => value.toMap()),
-      'includeObjects': pulumi.Input.mapInputValue<MysqlRdbmsResponse, Map<String, dynamic>>(includeObjects, (value) => value.toMap()),
+      'excludeObjects':
+          pulumi.Input.mapInputValue<MysqlRdbmsResponse, Map<String, dynamic>>(
+            excludeObjects,
+            (value) => value.toMap(),
+          ),
+      'includeObjects':
+          pulumi.Input.mapInputValue<MysqlRdbmsResponse, Map<String, dynamic>>(
+            includeObjects,
+            (value) => value.toMap(),
+          ),
       'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks,
       'maxConcurrentCdcTasks': maxConcurrentCdcTasks,
     };
@@ -37,11 +48,22 @@ class MysqlSourceConfigResponse {
 
   factory MysqlSourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return MysqlSourceConfigResponse(
-      excludeObjects: (MysqlRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: (MysqlRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: (map['maxConcurrentBackfillTasks'] as int).input(),
-      maxConcurrentCdcTasks: (map['maxConcurrentCdcTasks'] as int).input(),
+      excludeObjects: pulumi.Input.fromValue(
+        MysqlRdbmsResponse.fromMap(
+          (map['excludeObjects']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      includeObjects: pulumi.Input.fromValue(
+        MysqlRdbmsResponse.fromMap(
+          (map['includeObjects']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maxConcurrentBackfillTasks: pulumi.Input.fromValue(
+        map['maxConcurrentBackfillTasks'] as int,
+      ),
+      maxConcurrentCdcTasks: pulumi.Input.fromValue(
+        map['maxConcurrentCdcTasks'] as int,
+      ),
     );
   }
 }
-

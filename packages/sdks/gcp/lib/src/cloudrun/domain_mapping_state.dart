@@ -9,17 +9,22 @@ import 'domain_mapping_status.dart';
 class DomainMappingState {
   /// The location of the cloud run instance. eg us-central1
   final pulumi.Input<String>? location;
+
   /// Metadata associated with this DomainMapping.
   /// Structure is documented below.
   final pulumi.Input<DomainMappingMetadata>? metadata;
+
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The spec for this DomainMapping.
   /// Structure is documented below.
   final pulumi.Input<DomainMappingSpec>? spec;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<List<DomainMappingStatus>>? statuses;
@@ -43,23 +48,80 @@ class DomainMappingState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<DomainMappingMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainMappingMetadata,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
-      'spec': ?pulumi.Input.mapOptionalInputValue<DomainMappingSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<DomainMappingStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<DomainMappingStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainMappingSpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainMappingStatus>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainMappingStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatus>(map['statuses']!, (value) => DomainMappingStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainMappingMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainMappingSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainMappingStatus>(
+            guardedValue,
+            (value) => DomainMappingStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

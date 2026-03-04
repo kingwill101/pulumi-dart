@@ -6,9 +6,12 @@ import 'service_task_spec_container_spec_privileges_se_linux_context.dart';
 
 class ServiceTaskSpecContainerSpecPrivileges {
   /// CredentialSpec for managed service account (Windows only)
-  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesCredentialSpec>? credentialSpec;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesCredentialSpec>?
+  credentialSpec;
+
   /// SELinux labels of the container
-  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext>? seLinuxContext;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext>?
+  seLinuxContext;
 
   /// Creates a new [ServiceTaskSpecContainerSpecPrivileges].
   /// [credentialSpec] CredentialSpec for managed service account (Windows only)
@@ -20,16 +23,41 @@ class ServiceTaskSpecContainerSpecPrivileges {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentialSpec': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecPrivilegesCredentialSpec, Map<String, dynamic>>(credentialSpec, (value) => value.toMap()),
-      'seLinuxContext': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext, Map<String, dynamic>>(seLinuxContext, (value) => value.toMap()),
+      'credentialSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTaskSpecContainerSpecPrivilegesCredentialSpec,
+            Map<String, dynamic>
+          >(credentialSpec, (value) => value.toMap()),
+      'seLinuxContext':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext,
+            Map<String, dynamic>
+          >(seLinuxContext, (value) => value.toMap()),
     };
   }
 
-  factory ServiceTaskSpecContainerSpecPrivileges.fromMap(Map<String, dynamic> map) {
+  factory ServiceTaskSpecContainerSpecPrivileges.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTaskSpecContainerSpecPrivileges(
-      credentialSpec: map['credentialSpec'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.fromMap((map['credentialSpec']! as Map).cast<String, dynamic>())).input(),
-      seLinuxContext: map['seLinuxContext'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap((map['seLinuxContext']! as Map).cast<String, dynamic>())).input(),
+      credentialSpec: (() {
+        final guardedValue = map['credentialSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      seLinuxContext: (() {
+        final guardedValue = map['seLinuxContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,7 +6,9 @@ import 'authorization_logging_options_response_gameservices_v1beta.dart';
 /// Write a Cloud Audit log
 class CloudAuditOptionsResponseGameservicesV1beta {
   /// Information used by the Cloud Audit Logging pipeline.
-  final pulumi.Input<AuthorizationLoggingOptionsResponseGameservicesV1beta> authorizationLoggingOptions;
+  final pulumi.Input<AuthorizationLoggingOptionsResponseGameservicesV1beta>
+  authorizationLoggingOptions;
+
   /// The log_name to populate in the Cloud Audit Record.
   final pulumi.Input<String> logName;
 
@@ -20,16 +22,25 @@ class CloudAuditOptionsResponseGameservicesV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationLoggingOptions': pulumi.Input.mapInputValue<AuthorizationLoggingOptionsResponseGameservicesV1beta, Map<String, dynamic>>(authorizationLoggingOptions, (value) => value.toMap()),
+      'authorizationLoggingOptions':
+          pulumi.Input.mapInputValue<
+            AuthorizationLoggingOptionsResponseGameservicesV1beta,
+            Map<String, dynamic>
+          >(authorizationLoggingOptions, (value) => value.toMap()),
       'logName': logName,
     };
   }
 
-  factory CloudAuditOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
+  factory CloudAuditOptionsResponseGameservicesV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudAuditOptionsResponseGameservicesV1beta(
-      authorizationLoggingOptions: (AuthorizationLoggingOptionsResponseGameservicesV1beta.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      logName: (map['logName'] as String).input(),
+      authorizationLoggingOptions: pulumi.Input.fromValue(
+        AuthorizationLoggingOptionsResponseGameservicesV1beta.fromMap(
+          (map['authorizationLoggingOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      logName: pulumi.Input.fromValue(map['logName'] as String),
     );
   }
 }
-

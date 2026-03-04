@@ -6,12 +6,18 @@ import 'firewall_policy_rule_collection_group_application_rule_collection_rule.d
 class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
   /// The action to take for the application rules in this collection. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> action;
+
   /// The name which should be used for this application rule collection.
   final pulumi.Input<String> name;
+
   /// The priority of the application rule collection. The range is `100` - `65000`.
   final pulumi.Input<int> priority;
+
   /// One or more `application_rule` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>> rules;
+  final pulumi.Input<
+    List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>
+  >
+  rules;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollection].
   /// [action] The action to take for the application rules in this collection. Possible values are `Allow` and `Deny`.
@@ -30,17 +36,41 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
       'action': action,
       'name': name,
       'priority': priority,
-      'rules': pulumi.Input.mapInputValue<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<
+              FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule
+            >,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyRuleCollectionGroupApplicationRuleCollection(
-      action: (map['action'] as String).input(),
-      name: (map['name'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      rules: (pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>(map['rules'], (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule
+        >(
+          map['rules']!,
+          (value) =>
+              FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

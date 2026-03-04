@@ -12,8 +12,10 @@ class ApiArgs {
   /// - - -
   final pulumi.Input<String> configBundle;
   final pulumi.Input<String>? detectMd5hash;
+
   /// The ID of the API proxy.
   final pulumi.Input<String>? name;
+
   /// The Apigee Organization name associated with the Apigee instance.
   final pulumi.Input<String> orgId;
 
@@ -40,11 +42,18 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      configBundle: (map['configBundle'] as String).input(),
-      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: (map['orgId'] as String).input(),
+      configBundle: pulumi.Input.fromValue(map['configBundle'] as String),
+      detectMd5hash: (() {
+        final guardedValue = map['detectMd5hash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
     );
   }
 }
-

@@ -9,20 +9,13 @@ class HttpData {
 
   /// Creates a new [HttpData].
   /// [listUrl] The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
-  HttpData({
-    required this.listUrl,
-  });
+  HttpData({required this.listUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'listUrl': listUrl,
-    };
+    return <String, dynamic>{'listUrl': listUrl};
   }
 
   factory HttpData.fromMap(Map<String, dynamic> map) {
-    return HttpData(
-      listUrl: (map['listUrl'] as String).input(),
-    );
+    return HttpData(listUrl: pulumi.Input.fromValue(map['listUrl'] as String));
   }
 }
-

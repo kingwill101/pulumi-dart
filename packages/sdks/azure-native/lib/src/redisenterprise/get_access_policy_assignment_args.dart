@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPolicyAssignmentArgs {
   /// The name of the Redis Enterprise database access policy assignment.
   final pulumi.Input<String> accessPolicyAssignmentName;
+
   /// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   final pulumi.Input<String> clusterName;
+
   /// The name of the Redis Enterprise database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetAccessPolicyAssignmentArgs {
 
   factory GetAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: (map['accessPolicyAssignmentName'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accessPolicyAssignmentName: pulumi.Input.fromValue(
+        map['accessPolicyAssignmentName'] as String,
+      ),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

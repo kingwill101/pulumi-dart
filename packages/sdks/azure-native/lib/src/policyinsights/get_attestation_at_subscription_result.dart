@@ -8,34 +8,49 @@ import 'system_data_response.dart';
 class GetAttestationAtSubscriptionResult {
   /// The time the evidence was assessed
   final String? assessmentDate;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Comments describing why this attestation was created.
   final String? comments;
+
   /// The compliance state that should be set on the resource.
   final String? complianceState;
+
   /// The evidence supporting the compliance state set in this attestation.
   final List<AttestationEvidenceResponse>? evidence;
+
   /// The time the compliance state should expire.
   final String? expiresOn;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The time the compliance state was last changed in this attestation.
   final String lastComplianceStateChangeAt;
+
   /// Additional metadata for this attestation
   final dynamic metadata;
+
   /// The name of the resource
   final String name;
+
   /// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
   final String? owner;
+
   /// The resource ID of the policy assignment that the attestation is setting the state for.
   final String policyAssignmentId;
+
   /// The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition.
   final String? policyDefinitionReferenceId;
+
   /// The status of the attestation.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -81,7 +96,14 @@ class GetAttestationAtSubscriptionResult {
       'azureApiVersion': azureApiVersion,
       'comments': ?comments,
       'complianceState': ?complianceState,
-      'evidence': ?evidence == null ? null : pulumi.Input.encodeList<AttestationEvidenceResponse, Map<String, dynamic>>(evidence!, (value) => value.toMap()),
+      'evidence': ?(() {
+        final guardedValue = evidence;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AttestationEvidenceResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'expiresOn': ?expiresOn,
       'id': id,
       'lastComplianceStateChangeAt': lastComplianceStateChangeAt,
@@ -98,23 +120,61 @@ class GetAttestationAtSubscriptionResult {
 
   factory GetAttestationAtSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtSubscriptionResult(
-      assessmentDate: map['assessmentDate'] == null ? null : map['assessmentDate']! as String,
+      assessmentDate: (() {
+        final guardedValue = map['assessmentDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      comments: map['comments'] == null ? null : map['comments']! as String,
-      complianceState: map['complianceState'] == null ? null : map['complianceState']! as String,
-      evidence: map['evidence'] == null ? null : pulumi.Input.decodeList<AttestationEvidenceResponse>(map['evidence']!, (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as String,
+      comments: (() {
+        final guardedValue = map['comments'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      complianceState: (() {
+        final guardedValue = map['complianceState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      evidence: (() {
+        final guardedValue = map['evidence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AttestationEvidenceResponse>(
+          guardedValue,
+          (value) => AttestationEvidenceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      expiresOn: (() {
+        final guardedValue = map['expiresOn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       lastComplianceStateChangeAt: map['lastComplianceStateChangeAt'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata']!,
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       name: map['name'] as String,
-      owner: map['owner'] == null ? null : map['owner']! as String,
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       policyAssignmentId: map['policyAssignmentId'] as String,
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : map['policyDefinitionReferenceId']! as String,
+      policyDefinitionReferenceId: (() {
+        final guardedValue = map['policyDefinitionReferenceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

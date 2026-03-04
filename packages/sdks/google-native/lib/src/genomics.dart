@@ -1,5 +1,3 @@
-library module_genomics;
-
 export 'genomics/disk.dart';
 export 'genomics/disk_response.dart';
 export 'genomics/disk_type.dart';

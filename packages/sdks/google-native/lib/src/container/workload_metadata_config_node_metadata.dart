@@ -5,16 +5,17 @@ enum WorkloadMetadataConfigNodeMetadata {
   expose("EXPOSE"),
   gkeMetadataServer("GKE_METADATA_SERVER");
 
-  const WorkloadMetadataConfigNodeMetadata(this.value);
-  final String value;
+  const WorkloadMetadataConfigNodeMetadata(this.wireValue);
+  final String wireValue;
 
   static WorkloadMetadataConfigNodeMetadata fromValue(String value) {
     for (final item in WorkloadMetadataConfigNodeMetadata.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WorkloadMetadataConfigNodeMetadata value: $value');
+    throw ArgumentError(
+      'Unknown WorkloadMetadataConfigNodeMetadata value: $value',
+    );
   }
 }
-

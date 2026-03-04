@@ -9,20 +9,15 @@ class PredeployResponse {
 
   /// Creates a new [PredeployResponse].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
-  PredeployResponse({
-    required this.actions,
-  });
+  PredeployResponse({required this.actions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'actions': actions,
-    };
+    return <String, dynamic>{'actions': actions};
   }
 
   factory PredeployResponse.fromMap(Map<String, dynamic> map) {
     return PredeployResponse(
-      actions: ((map['actions'] as List).cast<String>()).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
     );
   }
 }
-

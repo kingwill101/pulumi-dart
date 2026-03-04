@@ -4,7 +4,7 @@ import 'policy_state.dart';
 
 /// Manages a API Management service Policy.
 ///
-/// > **Note:** This resource will, upon creation, **overwrite any existing policy in the API Management service**, as there is no feasible way to test whether the policy has been modified from the default. Similarly, when this resource is destroyed, the API Management service will revert to its default policy.
+/// &gt; **Note:** This resource will, upon creation, **overwrite any existing policy in the API Management service**, as there is no feasible way to test whether the policy has been modified from the default. Similarly, when this resource is destroyed, the API Management service will revert to its default policy.
 ///
 /// ## Example Usage
 ///
@@ -270,7 +270,7 @@ import 'policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01, 2022-08-01
@@ -285,8 +285,10 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// The ID of the API Management service. Changing this forces a new API Management service Policy to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The XML Content for this Policy as a string. To integrate frontend and backend services in Azure API Management, utilize the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, specifying the `base-url` value. Typically, this value corresponds to the `url` property defined in the `Backend` resource configuration.
   late final pulumi.Output<String> xmlContent;
+
   /// A link to a Policy XML Document, which must be publicly available.
   late final pulumi.Output<String?> xmlLink;
 
@@ -294,19 +296,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_apimanagement_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:apimanagement/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlLink = registerOutput<String?>('xmlLink');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:apimanagement/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -327,13 +326,13 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlLink = registerOutput<String?>('xmlLink');
+         'azure:apimanagement/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
   }
 }

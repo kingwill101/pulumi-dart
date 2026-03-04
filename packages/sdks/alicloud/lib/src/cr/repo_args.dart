@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepoArgs {
   /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
   final pulumi.Input<String>? detail;
+
   /// Name of container registry repository.
   final pulumi.Input<String>? name;
+
   /// Name of container registry namespace where repository is located.
   final pulumi.Input<String> namespace;
+
   /// `PUBLIC` or `PRIVATE`, repo's visibility.
   final pulumi.Input<String> repoType;
+
   /// The repository general information. It can contain 1 to 80 characters.
   final pulumi.Input<String> summary;
 
@@ -44,12 +48,19 @@ class RepoArgs {
 
   factory RepoArgs.fromMap(Map<String, dynamic> map) {
     return RepoArgs(
-      detail: map['detail'] == null ? null : (map['detail']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      repoType: (map['repoType'] as String).input(),
-      summary: (map['summary'] as String).input(),
+      detail: (() {
+        final guardedValue = map['detail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      repoType: pulumi.Input.fromValue(map['repoType'] as String),
+      summary: pulumi.Input.fromValue(map['summary'] as String),
     );
   }
 }
-

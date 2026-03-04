@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicatorReplicationInfoListConsumerGroupReplication {
   /// List of regular expression patterns indicating the consumer groups that should not be replicated.
   final pulumi.Input<List<String>>? consumerGroupsToExcludes;
+
   /// List of regular expression patterns indicating the consumer groups to copy.
   final pulumi.Input<List<String>> consumerGroupsToReplicates;
+
   /// Whether to periodically check for new consumer groups.
   final pulumi.Input<bool>? detectAndCopyNewConsumerGroups;
+
   /// Whether to periodically write the translated offsets to __consumer_offsets topic in target cluster.
   final pulumi.Input<bool>? synchroniseConsumerGroupOffsets;
 
@@ -33,13 +36,28 @@ class ReplicatorReplicationInfoListConsumerGroupReplication {
     };
   }
 
-  factory ReplicatorReplicationInfoListConsumerGroupReplication.fromMap(Map<String, dynamic> map) {
+  factory ReplicatorReplicationInfoListConsumerGroupReplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatorReplicationInfoListConsumerGroupReplication(
-      consumerGroupsToExcludes: map['consumerGroupsToExcludes'] == null ? null : (((map['consumerGroupsToExcludes'] as List).cast<String>()).input()).input(),
-      consumerGroupsToReplicates: ((map['consumerGroupsToReplicates'] as List).cast<String>()).input(),
-      detectAndCopyNewConsumerGroups: map['detectAndCopyNewConsumerGroups'] == null ? null : ((map['detectAndCopyNewConsumerGroups'] as bool).input()).input(),
-      synchroniseConsumerGroupOffsets: map['synchroniseConsumerGroupOffsets'] == null ? null : ((map['synchroniseConsumerGroupOffsets'] as bool).input()).input(),
+      consumerGroupsToExcludes: (() {
+        final guardedValue = map['consumerGroupsToExcludes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      consumerGroupsToReplicates: pulumi.Input.fromValue(
+        (map['consumerGroupsToReplicates'] as List).cast<String>(),
+      ),
+      detectAndCopyNewConsumerGroups: (() {
+        final guardedValue = map['detectAndCopyNewConsumerGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      synchroniseConsumerGroupOffsets: (() {
+        final guardedValue = map['synchroniseConsumerGroupOffsets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

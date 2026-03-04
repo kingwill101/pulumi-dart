@@ -3,16 +3,15 @@ enum DoubleEncryptionStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const DoubleEncryptionStatus(this.value);
-  final String value;
+  const DoubleEncryptionStatus(this.wireValue);
+  final String wireValue;
 
   static DoubleEncryptionStatus fromValue(String value) {
     for (final item in DoubleEncryptionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DoubleEncryptionStatus value: $value');
   }
 }
-

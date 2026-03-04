@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationSchedulerConfiguration {
   /// Maximum concurrent job runs on this application. Valid range is `1` to `1000`. Defaults to `15`.
   final pulumi.Input<int>? maxConcurrentRuns;
+
   /// Maximum duration in minutes for the job in QUEUED state. Valid range is from `15` to `720`. Defaults to `360`.
   final pulumi.Input<int>? queueTimeoutMinutes;
 
@@ -25,9 +26,16 @@ class ApplicationSchedulerConfiguration {
 
   factory ApplicationSchedulerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationSchedulerConfiguration(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : ((map['maxConcurrentRuns'] as int).input()).input(),
-      queueTimeoutMinutes: map['queueTimeoutMinutes'] == null ? null : ((map['queueTimeoutMinutes'] as int).input()).input(),
+      maxConcurrentRuns: (() {
+        final guardedValue = map['maxConcurrentRuns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queueTimeoutMinutes: (() {
+        final guardedValue = map['queueTimeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

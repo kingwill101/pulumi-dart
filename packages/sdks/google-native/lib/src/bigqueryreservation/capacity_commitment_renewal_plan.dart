@@ -11,16 +11,15 @@ enum CapacityCommitmentRenewalPlan {
   threeYear("THREE_YEAR"),
   none("NONE");
 
-  const CapacityCommitmentRenewalPlan(this.value);
-  final String value;
+  const CapacityCommitmentRenewalPlan(this.wireValue);
+  final String wireValue;
 
   static CapacityCommitmentRenewalPlan fromValue(String value) {
     for (final item in CapacityCommitmentRenewalPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CapacityCommitmentRenewalPlan value: $value');
   }
 }
-

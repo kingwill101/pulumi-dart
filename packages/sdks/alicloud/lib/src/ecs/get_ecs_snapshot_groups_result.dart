@@ -6,6 +6,7 @@ import 'get_ecs_snapshot_groups_group.dart';
 /// Result data returned by getEcsSnapshotGroups.
 class GetEcsSnapshotGroupsResult {
   final List<GetEcsSnapshotGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,7 +44,11 @@ class GetEcsSnapshotGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetEcsSnapshotGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GetEcsSnapshotGroupsGroup,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': ?instanceId,
@@ -58,17 +63,45 @@ class GetEcsSnapshotGroupsResult {
 
   factory GetEcsSnapshotGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotGroupsResult(
-      groups: pulumi.Input.decodeList<GetEcsSnapshotGroupsGroup>(map['groups'], (value) => GetEcsSnapshotGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetEcsSnapshotGroupsGroup>(
+        map['groups']!,
+        (value) => GetEcsSnapshotGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      snapshotGroupName: map['snapshotGroupName'] == null ? null : map['snapshotGroupName']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snapshotGroupName: (() {
+        final guardedValue = map['snapshotGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicIpSetState {
   /// The ID of the acceleration region.
   final pulumi.Input<String>? accelerateRegionId;
+
   /// The ID of the basic GA instance.
   final pulumi.Input<String>? acceleratorId;
+
   /// The bandwidth of the acceleration region. Unit: Mbit/s.
   final pulumi.Input<int>? bandwidth;
+
   /// The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   final pulumi.Input<String>? ispType;
+
   /// The status of the Basic Ip Set instance.
   final pulumi.Input<String>? status;
 
@@ -41,12 +45,31 @@ class BasicIpSetState {
 
   factory BasicIpSetState.fromMap(Map<String, dynamic> map) {
     return BasicIpSetState(
-      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId']! as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accelerateRegionId: (() {
+        final guardedValue = map['accelerateRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acceleratorId: (() {
+        final guardedValue = map['acceleratorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ispType: (() {
+        final guardedValue = map['ispType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

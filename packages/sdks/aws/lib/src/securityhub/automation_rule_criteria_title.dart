@@ -9,23 +9,16 @@ class AutomationRuleCriteriaTitle {
   /// Creates a new [AutomationRuleCriteriaTitle].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaTitle({
-    required this.comparison,
-    required this.value,
-  });
+  AutomationRuleCriteriaTitle({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory AutomationRuleCriteriaTitle.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaTitle(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

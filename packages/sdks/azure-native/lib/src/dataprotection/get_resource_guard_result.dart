@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetResourceGuardResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Optional ETag.
   final String? eTag;
+
   /// Resource Id represents the complete path to the resource.
   final String id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name associated with the resource.
   final String name;
+
   /// ResourceGuardResource properties
   final ResourceGuardResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -63,15 +71,30 @@ class GetResourceGuardResult {
   factory GetResourceGuardResult.fromMap(Map<String, dynamic> map) {
     return GetResourceGuardResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: ResourceGuardResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: ResourceGuardResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

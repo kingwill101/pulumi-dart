@@ -7,10 +7,13 @@ import 'stream_rule_set_customization_rule_bigquery_partitioning.dart';
 class StreamRuleSetCustomizationRule {
   /// BigQuery clustering rule.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryClustering>? bigqueryClustering;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryClustering>?
+  bigqueryClustering;
+
   /// BigQuery partitioning rule.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioning>? bigqueryPartitioning;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioning>?
+  bigqueryPartitioning;
 
   /// Creates a new [StreamRuleSetCustomizationRule].
   /// [bigqueryClustering] BigQuery clustering rule.
@@ -22,16 +25,39 @@ class StreamRuleSetCustomizationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryClustering': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryClustering, Map<String, dynamic>>(bigqueryClustering, (value) => value.toMap()),
-      'bigqueryPartitioning': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryPartitioning, Map<String, dynamic>>(bigqueryPartitioning, (value) => value.toMap()),
+      'bigqueryClustering':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetCustomizationRuleBigqueryClustering,
+            Map<String, dynamic>
+          >(bigqueryClustering, (value) => value.toMap()),
+      'bigqueryPartitioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetCustomizationRuleBigqueryPartitioning,
+            Map<String, dynamic>
+          >(bigqueryPartitioning, (value) => value.toMap()),
     };
   }
 
   factory StreamRuleSetCustomizationRule.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRule(
-      bigqueryClustering: map['bigqueryClustering'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering']! as Map).cast<String, dynamic>())).input(),
-      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning']! as Map).cast<String, dynamic>())).input(),
+      bigqueryClustering: (() {
+        final guardedValue = map['bigqueryClustering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetCustomizationRuleBigqueryClustering.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bigqueryPartitioning: (() {
+        final guardedValue = map['bigqueryPartitioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

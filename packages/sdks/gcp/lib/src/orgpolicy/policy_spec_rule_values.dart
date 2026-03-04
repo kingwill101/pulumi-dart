@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicySpecRuleValues {
   /// List of values allowed at this resource.
   final pulumi.Input<List<String>>? allowedValues;
+
   /// List of values denied at this resource.
   final pulumi.Input<List<String>>? deniedValues;
 
   /// Creates a new [PolicySpecRuleValues].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  PolicySpecRuleValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
+  PolicySpecRuleValues({this.allowedValues, this.deniedValues});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class PolicySpecRuleValues {
 
   factory PolicySpecRuleValues.fromMap(Map<String, dynamic> map) {
     return PolicySpecRuleValues(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<String>()).input(),
-      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues']! as List).cast<String>()).input(),
+      allowedValues: (() {
+        final guardedValue = map['allowedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      deniedValues: (() {
+        final guardedValue = map['deniedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

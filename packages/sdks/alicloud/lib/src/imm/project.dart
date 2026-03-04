@@ -6,7 +6,7 @@ import 'project_state.dart';
 ///
 /// For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -269,6 +269,7 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// The name of Project.
   late final pulumi.Output<String> project;
+
   /// The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
   late final pulumi.Output<String> serviceRole;
 
@@ -281,13 +282,13 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:imm/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.project = registerOutput<String>('project');
-    this.serviceRole = registerOutput<String>('serviceRole');
+         'alicloud:imm/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    project = registerOutput<String>('project');
+    serviceRole = registerOutput<String>('serviceRole');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -308,12 +309,12 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:imm/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.project = registerOutput<String>('project');
-    this.serviceRole = registerOutput<String>('serviceRole');
+         'alicloud:imm/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    project = registerOutput<String>('project');
+    serviceRole = registerOutput<String>('serviceRole');
   }
 }

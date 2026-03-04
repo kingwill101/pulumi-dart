@@ -197,26 +197,32 @@ import 'keypair_state.dart';
 class Keypair extends pulumi.CustomResource {
   /// The fingerprint of the public key.
   late final pulumi.Output<String> fingerprint;
+
   /// A unique name for the keypair. Changing this creates a new
   /// keypair.
   late final pulumi.Output<String> name;
+
   /// The generated private key when no public key is specified.
   late final pulumi.Output<String> privateKey;
+
   /// A pregenerated OpenSSH-formatted public key.
   /// Changing this creates a new keypair. If a public key is not specified, then
   /// a public/private key pair will be automatically generated. If a pair is
   /// created, then destroying this resource means you will lose access to that
   /// keypair forever.
   late final pulumi.Output<String> publicKey;
+
   /// The region in which to obtain the V2 Compute client.
   /// Keypairs are associated with accounts, but a Compute client is needed to
   /// create one. If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new keypair.
   late final pulumi.Output<String> region;
+
   /// This allows administrative users to operate key-pairs
   /// of specified user ID. For this feature your need to have openstack microversion
   /// 2.10 (Liberty) or later.
   late final pulumi.Output<String> userId;
+
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -229,18 +235,18 @@ class Keypair extends pulumi.CustomResource {
     KeypairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/keypair:Keypair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'openstack:compute/keypair:Keypair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.publicKey = registerOutput<String>('publicKey');
-    this.region = registerOutput<String>('region');
-    this.userId = registerOutput<String>('userId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    privateKey = registerOutput<String>('privateKey');
+    publicKey = registerOutput<String>('publicKey');
+    region = registerOutput<String>('region');
+    userId = registerOutput<String>('userId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
   /// Gets an existing [Keypair] resource's state with the given [name] and [id].
@@ -261,17 +267,17 @@ class Keypair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/keypair:Keypair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'openstack:compute/keypair:Keypair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.publicKey = registerOutput<String>('publicKey');
-    this.region = registerOutput<String>('region');
-    this.userId = registerOutput<String>('userId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    privateKey = registerOutput<String>('privateKey');
+    publicKey = registerOutput<String>('publicKey');
+    region = registerOutput<String>('region');
+    userId = registerOutput<String>('userId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

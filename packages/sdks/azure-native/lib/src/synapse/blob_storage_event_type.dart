@@ -3,16 +3,15 @@ enum BlobStorageEventType {
   valueMicrosoftStorageBlobCreated("Microsoft.Storage.BlobCreated"),
   valueMicrosoftStorageBlobRenamed("Microsoft.Storage.BlobRenamed");
 
-  const BlobStorageEventType(this.value);
-  final String value;
+  const BlobStorageEventType(this.wireValue);
+  final String wireValue;
 
   static BlobStorageEventType fromValue(String value) {
     for (final item in BlobStorageEventType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlobStorageEventType value: $value');
   }
 }
-

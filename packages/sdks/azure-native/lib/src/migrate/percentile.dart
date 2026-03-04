@@ -7,16 +7,15 @@ enum Percentile {
   percentile99("Percentile99"),
   percentileUnknown("PercentileUnknown");
 
-  const Percentile(this.value);
-  final String value;
+  const Percentile(this.wireValue);
+  final String wireValue;
 
   static Percentile fromValue(String value) {
     for (final item in Percentile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Percentile value: $value');
   }
 }
-

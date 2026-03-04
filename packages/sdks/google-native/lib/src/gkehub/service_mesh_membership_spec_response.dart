@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMembershipSpecResponse {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final pulumi.Input<String> controlPlane;
+
   /// Enables automatic Service Mesh management.
   final pulumi.Input<String> management;
 
@@ -26,9 +27,8 @@ class ServiceMeshMembershipSpecResponse {
 
   factory ServiceMeshMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpecResponse(
-      controlPlane: (map['controlPlane'] as String).input(),
-      management: (map['management'] as String).input(),
+      controlPlane: pulumi.Input.fromValue(map['controlPlane'] as String),
+      management: pulumi.Input.fromValue(map['management'] as String),
     );
   }
 }
-

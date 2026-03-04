@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
   /// The action that should be taken for a specified IP address, subnet range or tag.
   final pulumi.Input<String> access;
+
   /// The priority for this rule.
   final pulumi.Input<int> priority;
+
   /// The source address prefix or tag to match for the rule.
   final pulumi.Input<String> sourceAddressPrefix;
+
   /// The source port ranges to match for the rule.
   final pulumi.Input<List<String>> sourcePortRanges;
 
@@ -33,13 +36,18 @@ class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
     };
   }
 
-  factory GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap(Map<String, dynamic> map) {
+  factory GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule(
-      access: (map['access'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      sourceAddressPrefix: (map['sourceAddressPrefix'] as String).input(),
-      sourcePortRanges: ((map['sourcePortRanges'] as List).cast<String>()).input(),
+      access: pulumi.Input.fromValue(map['access'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      sourceAddressPrefix: pulumi.Input.fromValue(
+        map['sourceAddressPrefix'] as String,
+      ),
+      sourcePortRanges: pulumi.Input.fromValue(
+        (map['sourcePortRanges'] as List).cast<String>(),
+      ),
     );
   }
 }
-

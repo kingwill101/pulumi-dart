@@ -4,16 +4,17 @@ enum EndpointPolicyTypeNetworkservicesV1beta1 {
   sidecarProxy("SIDECAR_PROXY"),
   grpcServer("GRPC_SERVER");
 
-  const EndpointPolicyTypeNetworkservicesV1beta1(this.value);
-  final String value;
+  const EndpointPolicyTypeNetworkservicesV1beta1(this.wireValue);
+  final String wireValue;
 
   static EndpointPolicyTypeNetworkservicesV1beta1 fromValue(String value) {
     for (final item in EndpointPolicyTypeNetworkservicesV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EndpointPolicyTypeNetworkservicesV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EndpointPolicyTypeNetworkservicesV1beta1 value: $value',
+    );
   }
 }
-

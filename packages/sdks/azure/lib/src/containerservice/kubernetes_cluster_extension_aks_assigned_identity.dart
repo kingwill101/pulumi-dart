@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterExtensionAksAssignedIdentity {
   /// The principal ID of resource identity.
   final pulumi.Input<String>? principalId;
+
   /// The tenant ID of resource.
   final pulumi.Input<String>? tenantId;
+
   /// The identity type.
   final pulumi.Input<String>? type;
 
@@ -28,12 +30,25 @@ class KubernetesClusterExtensionAksAssignedIdentity {
     };
   }
 
-  factory KubernetesClusterExtensionAksAssignedIdentity.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterExtensionAksAssignedIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterExtensionAksAssignedIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

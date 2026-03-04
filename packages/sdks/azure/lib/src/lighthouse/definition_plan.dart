@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefinitionPlan {
   /// The plan name of the marketplace offer.
   final pulumi.Input<String> name;
+
   /// The product code of the plan.
   final pulumi.Input<String> product;
+
   /// The publisher ID of the plan.
   final pulumi.Input<String> publisher;
+
   /// The version of the plan.
   final pulumi.Input<String> version;
 
@@ -35,11 +38,10 @@ class DefinitionPlan {
 
   factory DefinitionPlan.fromMap(Map<String, dynamic> map) {
     return DefinitionPlan(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      version: (map['version'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

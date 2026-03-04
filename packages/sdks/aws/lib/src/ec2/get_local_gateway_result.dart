@@ -7,11 +7,14 @@ import 'get_local_gateway_filter.dart';
 class GetLocalGatewayResult {
   final List<GetLocalGatewayFilter>? filters;
   final String id;
+
   /// ARN of Outpost
   final String outpostArn;
+
   /// AWS account identifier that owns the Local Gateway.
   final String ownerId;
   final String region;
+
   /// State of the local gateway.
   final String state;
   final Map<String, String> tags;
@@ -36,7 +39,14 @@ class GetLocalGatewayResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLocalGatewayFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetLocalGatewayFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'outpostArn': outpostArn,
       'ownerId': ownerId,
@@ -48,7 +58,16 @@ class GetLocalGatewayResult {
 
   factory GetLocalGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters']!, (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetLocalGatewayFilter>(
+          guardedValue,
+          (value) => GetLocalGatewayFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       outpostArn: map['outpostArn'] as String,
       ownerId: map['ownerId'] as String,
@@ -58,4 +77,3 @@ class GetLocalGatewayResult {
     );
   }
 }
-

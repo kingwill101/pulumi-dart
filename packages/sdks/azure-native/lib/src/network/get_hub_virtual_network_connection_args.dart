@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHubVirtualNetworkConnectionArgs {
   /// The name of the vpn connection.
   final pulumi.Input<String> connectionName;
+
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 
@@ -34,10 +36,11 @@ class GetHubVirtualNetworkConnectionArgs {
 
   factory GetHubVirtualNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetHubVirtualNetworkConnectionArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualHubName: (map['virtualHubName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
-

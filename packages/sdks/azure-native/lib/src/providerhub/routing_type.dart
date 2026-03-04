@@ -15,16 +15,15 @@ enum RoutingType {
   locationMapping("LocationMapping"),
   serviceFanout("ServiceFanout");
 
-  const RoutingType(this.value);
-  final String value;
+  const RoutingType(this.wireValue);
+  final String wireValue;
 
   static RoutingType fromValue(String value) {
     for (final item in RoutingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingType value: $value');
   }
 }
-

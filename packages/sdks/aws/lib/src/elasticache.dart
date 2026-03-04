@@ -1,5 +1,3 @@
-library module_elasticache;
-
 export 'elasticache/cluster.dart';
 export 'elasticache/cluster_args.dart';
 export 'elasticache/cluster_cache_node.dart';

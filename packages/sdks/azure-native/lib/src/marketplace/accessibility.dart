@@ -5,16 +5,15 @@ enum Accessibility {
   valuePrivateTenantOnLevel("PrivateTenantOnLevel"),
   valuePrivateSubscriptionOnLevel("PrivateSubscriptionOnLevel");
 
-  const Accessibility(this.value);
-  final String value;
+  const Accessibility(this.wireValue);
+  final String wireValue;
 
   static Accessibility fromValue(String value) {
     for (final item in Accessibility.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Accessibility value: $value');
   }
 }
-

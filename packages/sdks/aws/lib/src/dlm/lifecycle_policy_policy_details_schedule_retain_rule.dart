@@ -25,12 +25,25 @@ class LifecyclePolicyPolicyDetailsScheduleRetainRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsScheduleRetainRule(
-      count: map['count'] == null ? null : ((map['count'] as int).input()).input(),
-      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
-      intervalUnit: map['intervalUnit'] == null ? null : ((map['intervalUnit'] as String).input()).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      intervalUnit: (() {
+        final guardedValue = map['intervalUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

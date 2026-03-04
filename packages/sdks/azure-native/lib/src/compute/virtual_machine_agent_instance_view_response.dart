@@ -7,9 +7,12 @@ import 'virtual_machine_extension_handler_instance_view_response.dart';
 /// The instance view of the VM Agent running on the virtual machine.
 class VirtualMachineAgentInstanceViewResponse {
   /// The virtual machine extension handler instance view.
-  final pulumi.Input<List<VirtualMachineExtensionHandlerInstanceViewResponse>>? extensionHandlers;
+  final pulumi.Input<List<VirtualMachineExtensionHandlerInstanceViewResponse>>?
+  extensionHandlers;
+
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+
   /// The VM Agent full version.
   final pulumi.Input<String>? vmAgentVersion;
 
@@ -25,18 +28,70 @@ class VirtualMachineAgentInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensionHandlers': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineExtensionHandlerInstanceViewResponse>, List<Map<String, dynamic>>>(extensionHandlers, (value) => pulumi.Input.encodeList<VirtualMachineExtensionHandlerInstanceViewResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensionHandlers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineExtensionHandlerInstanceViewResponse>,
+            List<Map<String, dynamic>>
+          >(
+            extensionHandlers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineExtensionHandlerInstanceViewResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vmAgentVersion': ?vmAgentVersion,
     };
   }
 
-  factory VirtualMachineAgentInstanceViewResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineAgentInstanceViewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineAgentInstanceViewResponse(
-      extensionHandlers: map['extensionHandlers'] == null ? null : (pulumi.Input.decodeList<VirtualMachineExtensionHandlerInstanceViewResponse>(map['extensionHandlers']!, (value) => VirtualMachineExtensionHandlerInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmAgentVersion: map['vmAgentVersion'] == null ? null : (map['vmAgentVersion']! as String).input(),
+      extensionHandlers: (() {
+        final guardedValue = map['extensionHandlers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            VirtualMachineExtensionHandlerInstanceViewResponse
+          >(
+            guardedValue,
+            (value) =>
+                VirtualMachineExtensionHandlerInstanceViewResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatusResponse>(
+            guardedValue,
+            (value) => InstanceViewStatusResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vmAgentVersion: (() {
+        final guardedValue = map['vmAgentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1615,11 +1615,14 @@ class HostingVersion extends pulumi.CustomResource {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
   late final pulumi.Output<HostingVersionConfig?> config;
+
   /// The fully-qualified resource name for the version, in the format:
   /// sites/SITE_ID/versions/VERSION_ID
   late final pulumi.Output<String> name;
+
   /// Required. The ID of the site in which to create this Version.
   late final pulumi.Output<String> siteId;
+
   /// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
   late final pulumi.Output<String> versionId;
 
@@ -1632,15 +1635,15 @@ class HostingVersion extends pulumi.CustomResource {
     HostingVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/hostingVersion:HostingVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<HostingVersionConfig?>('config');
+         'gcp:firebase/hostingVersion:HostingVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<HostingVersionConfig?>('config');
     this.name = registerOutput<String>('name');
-    this.siteId = registerOutput<String>('siteId');
-    this.versionId = registerOutput<String>('versionId');
+    siteId = registerOutput<String>('siteId');
+    versionId = registerOutput<String>('versionId');
   }
 
   /// Gets an existing [HostingVersion] resource's state with the given [name] and [id].
@@ -1661,14 +1664,14 @@ class HostingVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/hostingVersion:HostingVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<HostingVersionConfig?>('config');
+         'gcp:firebase/hostingVersion:HostingVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<HostingVersionConfig?>('config');
     this.name = registerOutput<String>('name');
-    this.siteId = registerOutput<String>('siteId');
-    this.versionId = registerOutput<String>('versionId');
+    siteId = registerOutput<String>('siteId');
+    versionId = registerOutput<String>('versionId');
   }
 }

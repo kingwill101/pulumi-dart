@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceAttachment {
   /// ID of the network interface attachment.
   final pulumi.Input<String> attachmentId;
+
   /// Device index of the network interface attachment on the instance.
   final pulumi.Input<int> deviceIndex;
+
   /// ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// AWS account ID of the owner of the instance.
   final pulumi.Input<String> instanceOwnerId;
+
   /// Index of the network card.
   final pulumi.Input<int> networkCardIndex;
 
@@ -40,12 +44,11 @@ class GetNetworkInterfaceAttachment {
 
   factory GetNetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceAttachment(
-      attachmentId: (map['attachmentId'] as String).input(),
-      deviceIndex: (map['deviceIndex'] as int).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceOwnerId: (map['instanceOwnerId'] as String).input(),
-      networkCardIndex: (map['networkCardIndex'] as int).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceOwnerId: pulumi.Input.fromValue(map['instanceOwnerId'] as String),
+      networkCardIndex: pulumi.Input.fromValue(map['networkCardIndex'] as int),
     );
   }
 }
-

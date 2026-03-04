@@ -13,22 +13,31 @@ import 'storage_configuration.dart';
 class DicomServiceArgs {
   /// Dicom Service Cors configuration.
   final pulumi.Input<CorsConfiguration>? corsConfiguration;
+
   /// The name of DICOM Service resource.
   final pulumi.Input<String>? dicomServiceName;
+
   /// If data partitions is enabled or not.
   final pulumi.Input<bool>? enableDataPartitions;
+
   /// The encryption settings of the DICOM service
   final pulumi.Input<Encryption>? encryption;
+
   /// Setting indicating whether the service has a managed identity associated with it.
   final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The configuration of external storage account
   final pulumi.Input<StorageConfiguration>? storageConfiguration;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -58,14 +67,30 @@ class DicomServiceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsConfiguration': ?pulumi.Input.mapOptionalInputValue<CorsConfiguration, Map<String, dynamic>>(corsConfiguration, (value) => value.toMap()),
+      'corsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            CorsConfiguration,
+            Map<String, dynamic>
+          >(corsConfiguration, (value) => value.toMap()),
       'dicomServiceName': ?dicomServiceName,
       'enableDataPartitions': ?enableDataPartitions,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ServiceManagedIdentityIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(
+            encryption,
+            (value) => value.toMap(),
+          ),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceManagedIdentityIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'storageConfiguration': ?pulumi.Input.mapOptionalInputValue<StorageConfiguration, Map<String, dynamic>>(storageConfiguration, (value) => value.toMap()),
+      'storageConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageConfiguration,
+            Map<String, dynamic>
+          >(storageConfiguration, (value) => value.toMap()),
       'tags': ?tags,
       'workspaceName': workspaceName,
     };
@@ -73,17 +98,66 @@ class DicomServiceArgs {
 
   factory DicomServiceArgs.fromMap(Map<String, dynamic> map) {
     return DicomServiceArgs(
-      corsConfiguration: map['corsConfiguration'] == null ? null : (CorsConfiguration.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
-      dicomServiceName: map['dicomServiceName'] == null ? null : (map['dicomServiceName']! as String).input(),
-      enableDataPartitions: map['enableDataPartitions'] == null ? null : (map['enableDataPartitions']! as bool).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      corsConfiguration: (() {
+        final guardedValue = map['corsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CorsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dicomServiceName: (() {
+        final guardedValue = map['dicomServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDataPartitions: (() {
+        final guardedValue = map['enableDataPartitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Encryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceManagedIdentityIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageConfiguration: (() {
+        final guardedValue = map['storageConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

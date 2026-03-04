@@ -8,16 +8,22 @@ import 'port_mapping_response.dart';
 class BindingResponse {
   /// WebApplication certificate.
   final pulumi.Input<CertResponse>? cert;
+
   /// Gets or sets the binding host name.
   final pulumi.Input<String>? hostName;
+
   /// Gets the ID.
   final pulumi.Input<String> id;
+
   /// Gets or sets the IP Address.
   final pulumi.Input<String>? ipAddress;
+
   /// Gets or sets the application port.
   final pulumi.Input<String>? port;
+
   /// WebApplication port mapping.
   final pulumi.Input<PortMappingResponse>? portMapping;
+
   /// Gets or sets the protocol.
   final pulumi.Input<String>? protocol;
 
@@ -41,26 +47,63 @@ class BindingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cert': ?pulumi.Input.mapOptionalInputValue<CertResponse, Map<String, dynamic>>(cert, (value) => value.toMap()),
+      'cert':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertResponse,
+            Map<String, dynamic>
+          >(cert, (value) => value.toMap()),
       'hostName': ?hostName,
       'id': id,
       'ipAddress': ?ipAddress,
       'port': ?port,
-      'portMapping': ?pulumi.Input.mapOptionalInputValue<PortMappingResponse, Map<String, dynamic>>(portMapping, (value) => value.toMap()),
+      'portMapping':
+          ?pulumi.Input.mapOptionalInputValue<
+            PortMappingResponse,
+            Map<String, dynamic>
+          >(portMapping, (value) => value.toMap()),
       'protocol': ?protocol,
     };
   }
 
   factory BindingResponse.fromMap(Map<String, dynamic> map) {
     return BindingResponse(
-      cert: map['cert'] == null ? null : (CertResponse.fromMap((map['cert']! as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      id: (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      portMapping: map['portMapping'] == null ? null : (PortMappingResponse.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      cert: (() {
+        final guardedValue = map['cert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portMapping: (() {
+        final guardedValue = map['portMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PortMappingResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

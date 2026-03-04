@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_component_args.dart';
-import 'dapr_component_service_binding_response.dart';
-import 'dapr_metadata_response.dart';
-import 'secret_response.dart';
 import 'system_data_response.dart';
 
 /// Dapr Component.
@@ -699,28 +696,40 @@ import 'system_data_response.dart';
 class DaprComponent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Component type
   late final pulumi.Output<String?> componentType;
+
   /// Boolean describing if the component errors are ignores
   late final pulumi.Output<bool?> ignoreErrors;
+
   /// Initialization timeout
   late final pulumi.Output<String?> initTimeout;
+
   /// Component metadata
-  late final pulumi.Output<List<DaprMetadataResponse>?> metadata;
+  late final pulumi.Output<List<Map<String, dynamic>>?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Names of container apps that can use this Dapr component
   late final pulumi.Output<List<String>?> scopes;
+
   /// Name of a Dapr component to retrieve component secrets from
   late final pulumi.Output<String?> secretStoreComponent;
+
   /// Collection of secrets used by a Dapr component
-  late final pulumi.Output<List<SecretResponse>?> secrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+
   /// List of container app services that are bound to the Dapr component
-  late final pulumi.Output<List<DaprComponentServiceBindingResponse>?> serviceComponentBind;
+  late final pulumi.Output<List<Map<String, dynamic>>?> serviceComponentBind;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Component version
   late final pulumi.Output<String?> version;
 
@@ -733,23 +742,25 @@ class DaprComponent extends pulumi.CustomResource {
     DaprComponentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:DaprComponent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.componentType = registerOutput<String?>('componentType');
-    this.ignoreErrors = registerOutput<bool?>('ignoreErrors');
-    this.initTimeout = registerOutput<String?>('initTimeout');
-    this.metadata = registerOutput<List<DaprMetadataResponse>?>('metadata');
+         'azure-native:app:DaprComponent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    componentType = registerOutput<String?>('componentType');
+    ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    initTimeout = registerOutput<String?>('initTimeout');
+    metadata = registerOutput<List<Map<String, dynamic>>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.scopes = registerOutput<List<String>?>('scopes');
-    this.secretStoreComponent = registerOutput<String?>('secretStoreComponent');
-    this.secrets = registerOutput<List<SecretResponse>?>('secrets');
-    this.serviceComponentBind = registerOutput<List<DaprComponentServiceBindingResponse>?>('serviceComponentBind');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    scopes = registerOutput<List<String>?>('scopes');
+    secretStoreComponent = registerOutput<String?>('secretStoreComponent');
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    serviceComponentBind = registerOutput<List<Map<String, dynamic>>?>(
+      'serviceComponentBind',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

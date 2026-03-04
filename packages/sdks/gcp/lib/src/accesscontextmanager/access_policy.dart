@@ -15,7 +15,7 @@ import 'access_policy_state.dart';
 /// * How-to Guides
 /// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 ///
-/// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+/// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 /// you must specify a `billing_project` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
@@ -285,16 +285,21 @@ import 'access_policy_state.dart';
 class AccessPolicy extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
   late final pulumi.Output<String> name;
+
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
   late final pulumi.Output<String> parent;
+
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
   late final pulumi.Output<String?> scopes;
+
   /// Human readable title. Does not affect behavior.
   late final pulumi.Output<String> title;
+
   /// Time the AccessPolicy was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -307,17 +312,17 @@ class AccessPolicy extends pulumi.CustomResource {
     AccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.scopes = registerOutput<String?>('scopes');
-    this.title = registerOutput<String>('title');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    scopes = registerOutput<String?>('scopes');
+    title = registerOutput<String>('title');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [AccessPolicy] resource's state with the given [name] and [id].
@@ -338,16 +343,16 @@ class AccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.scopes = registerOutput<String?>('scopes');
-    this.title = registerOutput<String>('title');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    scopes = registerOutput<String?>('scopes');
+    title = registerOutput<String>('title');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

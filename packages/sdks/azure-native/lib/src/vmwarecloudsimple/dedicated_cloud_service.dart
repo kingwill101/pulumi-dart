@@ -138,20 +138,28 @@ import 'dedicated_cloud_service_args.dart';
 class DedicatedCloudService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
   late final pulumi.Output<String> gatewaySubnet;
+
   /// indicates whether account onboarded or not in a given region
   late final pulumi.Output<String> isAccountOnboarded;
+
   /// Azure region
   late final pulumi.Output<String> location;
+
   /// {dedicatedCloudServiceName}
   late final pulumi.Output<String> name;
+
   /// total nodes purchased
   late final pulumi.Output<int> nodes;
+
   /// link to a service management web portal
   late final pulumi.Output<String> serviceURL;
+
   /// The list of tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// {resourceProviderNamespace}/{resourceType}
   late final pulumi.Output<String> type;
 
@@ -164,19 +172,19 @@ class DedicatedCloudService extends pulumi.CustomResource {
     DedicatedCloudServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:vmwarecloudsimple:DedicatedCloudService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.gatewaySubnet = registerOutput<String>('gatewaySubnet');
-    this.isAccountOnboarded = registerOutput<String>('isAccountOnboarded');
-    this.location = registerOutput<String>('location');
+         'azure-native:vmwarecloudsimple:DedicatedCloudService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    gatewaySubnet = registerOutput<String>('gatewaySubnet');
+    isAccountOnboarded = registerOutput<String>('isAccountOnboarded');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nodes = registerOutput<int>('nodes');
-    this.serviceURL = registerOutput<String>('serviceURL');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodes = registerOutput<int>('nodes');
+    serviceURL = registerOutput<String>('serviceURL');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

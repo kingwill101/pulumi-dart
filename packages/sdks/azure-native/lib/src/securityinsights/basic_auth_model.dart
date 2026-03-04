@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAuthModel {
   /// The password
   final pulumi.Input<String> password;
+
   /// Type of paging
   /// Expected value is 'Basic'.
   final pulumi.Input<String> type;
+
   /// The user name.
   final pulumi.Input<String> userName;
 
@@ -32,10 +34,9 @@ class BasicAuthModel {
 
   factory BasicAuthModel.fromMap(Map<String, dynamic> map) {
     return BasicAuthModel(
-      password: (map['password'] as String).input(),
-      type: (map['type'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

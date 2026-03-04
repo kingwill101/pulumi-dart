@@ -178,30 +178,44 @@ import 'system_data_response.dart';
 class ManagedPrivateEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The state of managed private endpoint connection.
-  late final pulumi.Output<ManagedPrivateEndpointConnectionStateResponse> connectionState;
+  late final pulumi.Output<ManagedPrivateEndpointConnectionStateResponse>
+  connectionState;
+
   /// The group Ids of the managed private endpoint.
   late final pulumi.Output<List<String>?> groupIds;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The ARM resource ID of the resource for which the managed private endpoint is pointing to.
   late final pulumi.Output<String?> privateLinkResourceId;
+
   /// The region of the resource to which the managed private endpoint is pointing to.
   late final pulumi.Output<String?> privateLinkResourceRegion;
+
   /// The private IP of private endpoint after approval. This property is empty before connection is approved.
   late final pulumi.Output<String> privateLinkServicePrivateIP;
+
   /// The URL of the data store behind the private link service. It would be the URL in the Grafana data source configuration page without the protocol and port.
   late final pulumi.Output<String?> privateLinkServiceUrl;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// User input request message of the managed private endpoint.
   late final pulumi.Output<String?> requestMessage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -214,24 +228,31 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     ManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dashboard:ManagedPrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionState = registerOutput<ManagedPrivateEndpointConnectionStateResponse>('connectionState');
-    this.groupIds = registerOutput<List<String>?>('groupIds');
-    this.location = registerOutput<String>('location');
+         'azure-native:dashboard:ManagedPrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionState =
+        registerOutput<ManagedPrivateEndpointConnectionStateResponse>(
+          'connectionState',
+        );
+    groupIds = registerOutput<List<String>?>('groupIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
-    this.privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
-    this.privateLinkServicePrivateIP = registerOutput<String>('privateLinkServicePrivateIP');
-    this.privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>(
+      'privateLinkResourceRegion',
+    );
+    privateLinkServicePrivateIP = registerOutput<String>(
+      'privateLinkServicePrivateIP',
+    );
+    privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMessage = registerOutput<String?>('requestMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

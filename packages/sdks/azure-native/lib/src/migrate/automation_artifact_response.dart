@@ -7,9 +7,12 @@ import 'azure_file_share_hydration_profile_response.dart';
 class AutomationArtifactResponse {
   /// Gets or sets the artifacts.
   final pulumi.Input<Map<String, String>>? artifacts;
+
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final pulumi.Input<AzureFileShareHydrationProfileResponse>? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfileResponse>?
+  azureFileShareProfile;
+
   /// Gets or sets the status of automation artifacts.
   final pulumi.Input<String>? status;
 
@@ -26,17 +29,38 @@ class AutomationArtifactResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifacts': ?artifacts,
-      'azureFileShareProfile': ?pulumi.Input.mapOptionalInputValue<AzureFileShareHydrationProfileResponse, Map<String, dynamic>>(azureFileShareProfile, (value) => value.toMap()),
+      'azureFileShareProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFileShareHydrationProfileResponse,
+            Map<String, dynamic>
+          >(azureFileShareProfile, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory AutomationArtifactResponse.fromMap(Map<String, dynamic> map) {
     return AutomationArtifactResponse(
-      artifacts: map['artifacts'] == null ? null : ((map['artifacts']! as Map).cast<String, String>()).input(),
-      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      artifacts: (() {
+        final guardedValue = map['artifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      azureFileShareProfile: (() {
+        final guardedValue = map['azureFileShareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFileShareHydrationProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

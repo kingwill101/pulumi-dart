@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallPolicyArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetFirewallPolicyArgs {
 
   factory GetFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallPolicyName: pulumi.Input.fromValue(
+        map['firewallPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

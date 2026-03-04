@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowIssuesFilterPredicate {
   /// Issue event attribute to check
   final pulumi.Input<String> attribute;
+
   /// An operator to use to compare the attribute with the provided `values`, see supported operators below
   final pulumi.Input<String> operator;
+
   /// The `attribute` must match **any** of the values in this list
   final pulumi.Input<List<String>> values;
 
@@ -30,10 +32,9 @@ class WorkflowIssuesFilterPredicate {
 
   factory WorkflowIssuesFilterPredicate.fromMap(Map<String, dynamic> map) {
     return WorkflowIssuesFilterPredicate(
-      attribute: (map['attribute'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      attribute: pulumi.Input.fromValue(map['attribute'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

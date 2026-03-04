@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsIntegrationsAwsAppSync {
   /// Specify each AWS region that includes the resources that you want to monitor.
   final pulumi.Input<List<String>>? awsRegions;
+
   /// The data polling interval in seconds.
   final pulumi.Input<int>? metricsPollingInterval;
 
   /// Creates a new [AwsIntegrationsAwsAppSync].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsAppSync({
-    this.awsRegions,
-    this.metricsPollingInterval,
-  });
+  AwsIntegrationsAwsAppSync({this.awsRegions, this.metricsPollingInterval});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class AwsIntegrationsAwsAppSync {
 
   factory AwsIntegrationsAwsAppSync.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsAwsAppSync(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      awsRegions: (() {
+        final guardedValue = map['awsRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

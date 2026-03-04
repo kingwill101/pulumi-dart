@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPasswordValidationPolicySqladminV1beta4 {
   /// Number of failed login attempts allowed before user get locked.
   final pulumi.Input<int>? allowedFailedAttempts;
+
   /// If true, failed login attempts check will be enabled.
   final pulumi.Input<bool>? enableFailedAttemptsCheck;
+
   /// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   final pulumi.Input<bool>? enablePasswordVerification;
+
   /// Expiration duration after password is updated.
   final pulumi.Input<String>? passwordExpirationDuration;
 
@@ -34,13 +37,30 @@ class UserPasswordValidationPolicySqladminV1beta4 {
     };
   }
 
-  factory UserPasswordValidationPolicySqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory UserPasswordValidationPolicySqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserPasswordValidationPolicySqladminV1beta4(
-      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : (map['allowedFailedAttempts']! as int).input(),
-      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : (map['enableFailedAttemptsCheck']! as bool).input(),
-      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : (map['enablePasswordVerification']! as bool).input(),
-      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : (map['passwordExpirationDuration']! as String).input(),
+      allowedFailedAttempts: (() {
+        final guardedValue = map['allowedFailedAttempts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableFailedAttemptsCheck: (() {
+        final guardedValue = map['enableFailedAttemptsCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePasswordVerification: (() {
+        final guardedValue = map['enablePasswordVerification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      passwordExpirationDuration: (() {
+        final guardedValue = map['passwordExpirationDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

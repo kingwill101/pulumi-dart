@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetThroughputPoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Value for throughput to be shared among CosmosDB resources in the pool.
   final int? maxThroughput;
+
   /// The name of the resource
   final String name;
+
   /// A provisioning state of the ThroughputPool.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -64,13 +72,22 @@ class GetThroughputPoolResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      maxThroughput: map['maxThroughput'] == null ? null : map['maxThroughput']! as int,
+      maxThroughput: (() {
+        final guardedValue = map['maxThroughput'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Cancel {
   true_("True"),
   false_("False");
 
-  const Cancel(this.value);
-  final String value;
+  const Cancel(this.wireValue);
+  final String wireValue;
 
   static Cancel fromValue(String value) {
     for (final item in Cancel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Cancel value: $value');
   }
 }
-

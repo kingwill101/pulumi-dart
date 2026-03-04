@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoIndexOptionsResponse {
   /// Expire after seconds
   final pulumi.Input<int>? expireAfterSeconds;
+
   /// Is unique or not
   final pulumi.Input<bool>? unique;
 
   /// Creates a new [MongoIndexOptionsResponse].
   /// [expireAfterSeconds] Expire after seconds
   /// [unique] Is unique or not
-  MongoIndexOptionsResponse({
-    this.expireAfterSeconds,
-    this.unique,
-  });
+  MongoIndexOptionsResponse({this.expireAfterSeconds, this.unique});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class MongoIndexOptionsResponse {
 
   factory MongoIndexOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MongoIndexOptionsResponse(
-      expireAfterSeconds: map['expireAfterSeconds'] == null ? null : (map['expireAfterSeconds']! as int).input(),
-      unique: map['unique'] == null ? null : (map['unique']! as bool).input(),
+      expireAfterSeconds: (() {
+        final guardedValue = map['expireAfterSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      unique: (() {
+        final guardedValue = map['unique'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

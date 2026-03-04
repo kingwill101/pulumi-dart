@@ -9,14 +9,19 @@ import 'date_shift_config.dart';
 class InfoTypeTransformation {
   /// Config for character mask.
   final pulumi.Input<CharacterMaskConfig>? characterMaskConfig;
+
   /// Config for crypto hash.
   final pulumi.Input<CryptoHashConfig>? cryptoHashConfig;
+
   /// Config for date shift.
   final pulumi.Input<DateShiftConfig>? dateShiftConfig;
+
   /// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
   final pulumi.Input<List<String>>? infoTypes;
+
   /// Config for text redaction.
   final pulumi.Input<Map<String, dynamic>>? redactConfig;
+
   /// Config for replace with InfoType.
   final pulumi.Input<Map<String, dynamic>>? replaceWithInfoTypeConfig;
 
@@ -38,9 +43,21 @@ class InfoTypeTransformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'characterMaskConfig': ?pulumi.Input.mapOptionalInputValue<CharacterMaskConfig, Map<String, dynamic>>(characterMaskConfig, (value) => value.toMap()),
-      'cryptoHashConfig': ?pulumi.Input.mapOptionalInputValue<CryptoHashConfig, Map<String, dynamic>>(cryptoHashConfig, (value) => value.toMap()),
-      'dateShiftConfig': ?pulumi.Input.mapOptionalInputValue<DateShiftConfig, Map<String, dynamic>>(dateShiftConfig, (value) => value.toMap()),
+      'characterMaskConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CharacterMaskConfig,
+            Map<String, dynamic>
+          >(characterMaskConfig, (value) => value.toMap()),
+      'cryptoHashConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CryptoHashConfig,
+            Map<String, dynamic>
+          >(cryptoHashConfig, (value) => value.toMap()),
+      'dateShiftConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DateShiftConfig,
+            Map<String, dynamic>
+          >(dateShiftConfig, (value) => value.toMap()),
       'infoTypes': ?infoTypes,
       'redactConfig': ?redactConfig,
       'replaceWithInfoTypeConfig': ?replaceWithInfoTypeConfig,
@@ -49,13 +66,52 @@ class InfoTypeTransformation {
 
   factory InfoTypeTransformation.fromMap(Map<String, dynamic> map) {
     return InfoTypeTransformation(
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfig.fromMap((map['characterMaskConfig']! as Map).cast<String, dynamic>())).input(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfig.fromMap((map['cryptoHashConfig']! as Map).cast<String, dynamic>())).input(),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfig.fromMap((map['dateShiftConfig']! as Map).cast<String, dynamic>())).input(),
-      infoTypes: map['infoTypes'] == null ? null : ((map['infoTypes']! as List).cast<String>()).input(),
-      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig']! as Map).cast<String, dynamic>()).input(),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig']! as Map).cast<String, dynamic>()).input(),
+      characterMaskConfig: (() {
+        final guardedValue = map['characterMaskConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CharacterMaskConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cryptoHashConfig: (() {
+        final guardedValue = map['cryptoHashConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CryptoHashConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dateShiftConfig: (() {
+        final guardedValue = map['dateShiftConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DateShiftConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      infoTypes: (() {
+        final guardedValue = map['infoTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      redactConfig: (() {
+        final guardedValue = map['redactConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      replaceWithInfoTypeConfig: (() {
+        final guardedValue = map['replaceWithInfoTypeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum PoolManagementType {
   valueManual("Manual"),
   valueDynamic("Dynamic");
 
-  const PoolManagementType(this.value);
-  final String value;
+  const PoolManagementType(this.wireValue);
+  final String wireValue;
 
   static PoolManagementType fromValue(String value) {
     for (final item in PoolManagementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PoolManagementType value: $value');
   }
 }
-

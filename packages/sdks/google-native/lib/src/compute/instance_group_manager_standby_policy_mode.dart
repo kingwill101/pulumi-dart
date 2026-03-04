@@ -3,16 +3,17 @@ enum InstanceGroupManagerStandbyPolicyMode {
   manual("MANUAL"),
   scaleOutPool("SCALE_OUT_POOL");
 
-  const InstanceGroupManagerStandbyPolicyMode(this.value);
-  final String value;
+  const InstanceGroupManagerStandbyPolicyMode(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerStandbyPolicyMode fromValue(String value) {
     for (final item in InstanceGroupManagerStandbyPolicyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerStandbyPolicyMode value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerStandbyPolicyMode value: $value',
+    );
   }
 }
-

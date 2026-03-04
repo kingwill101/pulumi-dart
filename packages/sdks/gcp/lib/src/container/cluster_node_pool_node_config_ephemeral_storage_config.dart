@@ -13,15 +13,14 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'localSsdCount': localSsdCount,
-    };
+    return <String, dynamic>{'localSsdCount': localSsdCount};
   }
 
-  factory ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolNodeConfigEphemeralStorageConfig(
-      localSsdCount: (map['localSsdCount'] as int).input(),
+      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
-

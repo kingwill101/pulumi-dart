@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatGatewayRegionalNatGatewayAddress {
   /// Allocation ID of the Elastic IP address.
   final pulumi.Input<String> allocationId;
+
   /// Association ID of the Elastic IP address.
   final pulumi.Input<String> associationId;
+
   /// Availability Zone where this specific NAT gateway configuration is active.
   final pulumi.Input<String> availabilityZone;
+
   /// Availability Zone ID where this specific NAT gateway configuration is active
   final pulumi.Input<String> availabilityZoneId;
+
   /// ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
+
   /// Public IP address.
   final pulumi.Input<String> publicIp;
+
   /// Status of the NAT gateway address.
   final pulumi.Input<String> status;
 
@@ -48,16 +54,23 @@ class GetNatGatewayRegionalNatGatewayAddress {
     };
   }
 
-  factory GetNatGatewayRegionalNatGatewayAddress.fromMap(Map<String, dynamic> map) {
+  factory GetNatGatewayRegionalNatGatewayAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNatGatewayRegionalNatGatewayAddress(
-      allocationId: (map['allocationId'] as String).input(),
-      associationId: (map['associationId'] as String).input(),
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      publicIp: (map['publicIp'] as String).input(),
-      status: (map['status'] as String).input(),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      associationId: pulumi.Input.fromValue(map['associationId'] as String),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      availabilityZoneId: pulumi.Input.fromValue(
+        map['availabilityZoneId'] as String,
+      ),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      publicIp: pulumi.Input.fromValue(map['publicIp'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

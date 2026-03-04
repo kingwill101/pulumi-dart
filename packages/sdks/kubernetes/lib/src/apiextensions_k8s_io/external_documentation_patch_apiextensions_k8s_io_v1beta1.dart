@@ -16,17 +16,23 @@ class ExternalDocumentationPatchApiextensionsK8sIoV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'url': ?url,
-    };
+    return <String, dynamic>{'description': ?description, 'url': ?url};
   }
 
-  factory ExternalDocumentationPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ExternalDocumentationPatchApiextensionsK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExternalDocumentationPatchApiextensionsK8sIoV1beta1(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

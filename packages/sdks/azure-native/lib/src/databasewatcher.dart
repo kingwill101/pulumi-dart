@@ -1,5 +1,3 @@
-library module_databasewatcher;
-
 export 'databasewatcher/alert_rule_creation_properties.dart';
 export 'databasewatcher/alert_rule_resource.dart';
 export 'databasewatcher/alert_rule_resource_args.dart';

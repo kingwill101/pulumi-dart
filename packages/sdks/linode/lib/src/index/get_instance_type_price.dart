@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypePrice {
   /// Cost (in US dollars) per hour.
   final pulumi.Input<double> hourly;
+
   /// Cost (in US dollars) per month.
   final pulumi.Input<double> monthly;
 
   /// Creates a new [GetInstanceTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetInstanceTypePrice({
-    required this.hourly,
-    required this.monthly,
-  });
+  GetInstanceTypePrice({required this.hourly, required this.monthly});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hourly': hourly,
-      'monthly': monthly,
-    };
+    return <String, dynamic>{'hourly': hourly, 'monthly': monthly};
   }
 
   factory GetInstanceTypePrice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypePrice(
-      hourly: (map['hourly'] as double).input(),
-      monthly: (map['monthly'] as double).input(),
+      hourly: pulumi.Input.fromValue(map['hourly'] as double),
+      monthly: pulumi.Input.fromValue(map['monthly'] as double),
     );
   }
 }
-

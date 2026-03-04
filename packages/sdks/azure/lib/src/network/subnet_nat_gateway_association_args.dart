@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetNatGatewayAssociationArgs {
   /// The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> natGatewayId;
+
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 
@@ -29,9 +30,8 @@ class SubnetNatGatewayAssociationArgs {
 
   factory SubnetNatGatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SubnetNatGatewayAssociationArgs(
-      natGatewayId: (map['natGatewayId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

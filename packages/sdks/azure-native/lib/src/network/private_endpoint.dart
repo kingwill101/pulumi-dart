@@ -1,11 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_security_group_response.dart';
-import 'custom_dns_config_properties_format_response.dart';
 import 'extended_location_response.dart';
-import 'network_interface_response.dart';
 import 'private_endpoint_args.dart';
-import 'private_endpoint_ipconfiguration_response.dart';
-import 'private_link_service_connection_response.dart';
 import 'subnet_response.dart';
 
 /// Private endpoint resource.
@@ -669,35 +664,53 @@ import 'subnet_response.dart';
 /// ```
 class PrivateEndpoint extends pulumi.CustomResource {
   /// Application security groups in which the private endpoint IP configuration is included.
-  late final pulumi.Output<List<ApplicationSecurityGroupResponse>?> applicationSecurityGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  applicationSecurityGroups;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An array of custom dns configurations.
-  late final pulumi.Output<List<CustomDnsConfigPropertiesFormatResponse>?> customDnsConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customDnsConfigs;
+
   /// The custom name of the network interface attached to the private endpoint.
   late final pulumi.Output<String?> customNetworkInterfaceName;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the load balancer.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
-  late final pulumi.Output<List<PrivateEndpointIPConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
-  late final pulumi.Output<List<PrivateLinkServiceConnectionResponse>?> manualPrivateLinkServiceConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  manualPrivateLinkServiceConnections;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// An array of references to the network interfaces created for this private endpoint.
-  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// A grouping of information about the connection to the remote resource.
-  late final pulumi.Output<List<PrivateLinkServiceConnectionResponse>?> privateLinkServiceConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateLinkServiceConnections;
+
   /// The provisioning state of the private endpoint resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The ID of the subnet from which the private IP will be allocated.
   late final pulumi.Output<SubnetResponse?> subnet;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -710,26 +723,43 @@ class PrivateEndpoint extends pulumi.CustomResource {
     PrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:PrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationSecurityGroups = registerOutput<List<ApplicationSecurityGroupResponse>?>('applicationSecurityGroups');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customDnsConfigs = registerOutput<List<CustomDnsConfigPropertiesFormatResponse>?>('customDnsConfigs');
-    this.customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.ipConfigurations = registerOutput<List<PrivateEndpointIPConfigurationResponse>?>('ipConfigurations');
-    this.location = registerOutput<String?>('location');
-    this.manualPrivateLinkServiceConnections = registerOutput<List<PrivateLinkServiceConnectionResponse>?>('manualPrivateLinkServiceConnections');
+         'azure-native:network:PrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationSecurityGroups',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDnsConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'customDnsConfigs',
+    );
+    customNetworkInterfaceName = registerOutput<String?>(
+      'customNetworkInterfaceName',
+    );
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String?>('location');
+    manualPrivateLinkServiceConnections =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'manualPrivateLinkServiceConnections',
+        );
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces');
-    this.privateLinkServiceConnections = registerOutput<List<PrivateLinkServiceConnectionResponse>?>('privateLinkServiceConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.subnet = registerOutput<SubnetResponse?>('subnet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    privateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkServiceConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    subnet = registerOutput<SubnetResponse?>('subnet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

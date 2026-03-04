@@ -14,15 +14,18 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'phoneNumber': ?phoneNumber,
-    };
+    return <String, dynamic>{'phoneNumber': ?phoneNumber};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall(
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

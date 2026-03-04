@@ -13,15 +13,14 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'days': days,
-    };
+    return <String, dynamic>{'days': days};
   }
 
-  factory ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
+  factory ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration(
-      days: (map['days'] as int).input(),
+      days: pulumi.Input.fromValue(map['days'] as int),
     );
   }
 }
-

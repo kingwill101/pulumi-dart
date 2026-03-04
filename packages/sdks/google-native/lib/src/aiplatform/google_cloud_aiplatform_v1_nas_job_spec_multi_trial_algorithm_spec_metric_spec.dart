@@ -6,7 +6,11 @@ import 'google_cloud_aiplatform_v1_nas_job_spec_multi_trial_algorithm_spec_metri
 /// Represents a metric to optimize.
 class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec {
   /// The optimization goal of the metric.
-  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal> goal;
+  final pulumi.Input<
+    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal
+  >
+  goal;
+
   /// The ID of the metric. Must not contain whitespaces.
   final pulumi.Input<String> metricId;
 
@@ -20,16 +24,25 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'goal': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal, String>(goal, (value) => value.value),
+      'goal':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal,
+            String
+          >(goal, (value) => value.wireValue),
       'metricId': metricId,
     };
   }
 
-  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec(
-      goal: (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal.fromValue(map['goal'] as String)).input(),
-      metricId: (map['metricId'] as String).input(),
+      goal: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal.fromValue(
+          map['goal']! as String,
+        ),
+      ),
+      metricId: pulumi.Input.fromValue(map['metricId'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum AndroidInstrumentationTestOrchestratorOption {
   useOrchestrator("USE_ORCHESTRATOR"),
   doNotUseOrchestrator("DO_NOT_USE_ORCHESTRATOR");
 
-  const AndroidInstrumentationTestOrchestratorOption(this.value);
-  final String value;
+  const AndroidInstrumentationTestOrchestratorOption(this.wireValue);
+  final String wireValue;
 
   static AndroidInstrumentationTestOrchestratorOption fromValue(String value) {
     for (final item in AndroidInstrumentationTestOrchestratorOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AndroidInstrumentationTestOrchestratorOption value: $value');
+    throw ArgumentError(
+      'Unknown AndroidInstrumentationTestOrchestratorOption value: $value',
+    );
   }
 }
-

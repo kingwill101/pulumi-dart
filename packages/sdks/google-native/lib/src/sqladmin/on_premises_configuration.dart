@@ -7,20 +7,28 @@ import 'instance_reference.dart';
 class OnPremisesConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
   final pulumi.Input<String>? caCertificate;
+
   /// PEM representation of the replica's x509 certificate.
   final pulumi.Input<String>? clientCertificate;
+
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
   final pulumi.Input<String>? clientKey;
+
   /// The dump file to create the Cloud SQL replica.
   final pulumi.Input<String>? dumpFilePath;
+
   /// The host and port of the on-premises instance in host:port format
   final pulumi.Input<String>? hostPort;
+
   /// This is always `sql#onPremisesConfiguration`.
   final pulumi.Input<String>? kind;
+
   /// The password for connecting to on-premises instance.
   final pulumi.Input<String>? password;
+
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
   final pulumi.Input<InstanceReference>? sourceInstance;
+
   /// The username for connecting to on-premises instance.
   final pulumi.Input<String>? username;
 
@@ -55,23 +63,66 @@ class OnPremisesConfiguration {
       'hostPort': ?hostPort,
       'kind': ?kind,
       'password': ?password,
-      'sourceInstance': ?pulumi.Input.mapOptionalInputValue<InstanceReference, Map<String, dynamic>>(sourceInstance, (value) => value.toMap()),
+      'sourceInstance':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceReference,
+            Map<String, dynamic>
+          >(sourceInstance, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory OnPremisesConfiguration.fromMap(Map<String, dynamic> map) {
     return OnPremisesConfiguration(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
-      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath']! as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      sourceInstance: map['sourceInstance'] == null ? null : (InstanceReference.fromMap((map['sourceInstance']! as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      caCertificate: (() {
+        final guardedValue = map['caCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCertificate: (() {
+        final guardedValue = map['clientCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientKey: (() {
+        final guardedValue = map['clientKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dumpFilePath: (() {
+        final guardedValue = map['dumpFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostPort: (() {
+        final guardedValue = map['hostPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceInstance: (() {
+        final guardedValue = map['sourceInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -31,18 +31,24 @@ import 'endpoint_attachment_state.dart';
 class EndpointAttachment extends pulumi.CustomResource {
   /// State of the endpoint attachment connection to the service attachment.
   late final pulumi.Output<String> connectionState;
+
   /// ID of the endpoint attachment.
   late final pulumi.Output<String> endpointAttachmentId;
+
   /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
   late final pulumi.Output<String> host;
+
   /// Location of the endpoint attachment.
   late final pulumi.Output<String> location;
+
   /// Name of the Endpoint Attachment in the following format:
   /// organizations/{organization}/endpointAttachments/{endpointAttachment}.
   late final pulumi.Output<String> name;
+
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
+
   /// Format: projects/*/regions/*/serviceAttachments/*
   late final pulumi.Output<String> serviceAttachment;
 
@@ -55,18 +61,18 @@ class EndpointAttachment extends pulumi.CustomResource {
     EndpointAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/endpointAttachment:EndpointAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
-    this.host = registerOutput<String>('host');
-    this.location = registerOutput<String>('location');
+         'gcp:apigee/endpointAttachment:EndpointAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
+    host = registerOutput<String>('host');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.serviceAttachment = registerOutput<String>('serviceAttachment');
+    orgId = registerOutput<String>('orgId');
+    serviceAttachment = registerOutput<String>('serviceAttachment');
   }
 
   /// Gets an existing [EndpointAttachment] resource's state with the given [name] and [id].
@@ -87,17 +93,17 @@ class EndpointAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/endpointAttachment:EndpointAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
-    this.host = registerOutput<String>('host');
-    this.location = registerOutput<String>('location');
+         'gcp:apigee/endpointAttachment:EndpointAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
+    host = registerOutput<String>('host');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.serviceAttachment = registerOutput<String>('serviceAttachment');
+    orgId = registerOutput<String>('orgId');
+    serviceAttachment = registerOutput<String>('serviceAttachment');
   }
 }

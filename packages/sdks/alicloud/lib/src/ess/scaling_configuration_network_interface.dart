@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingConfigurationNetworkInterface {
   /// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
   final pulumi.Input<String>? instanceType;
+
   /// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
   final pulumi.Input<int>? ipv6AddressCount;
+
   /// The communication mode of the ENI. Valid values: Standard, HighPerformance.
   final pulumi.Input<String>? networkInterfaceTrafficMode;
+
   /// The ID of security group N to which ENI N belongs.
   final pulumi.Input<List<String>>? securityGroupIds;
 
@@ -33,13 +36,30 @@ class ScalingConfigurationNetworkInterface {
     };
   }
 
-  factory ScalingConfigurationNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory ScalingConfigurationNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScalingConfigurationNetworkInterface(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      ipv6AddressCount: map['ipv6AddressCount'] == null ? null : (map['ipv6AddressCount']! as int).input(),
-      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : (map['networkInterfaceTrafficMode']! as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AddressCount: (() {
+        final guardedValue = map['ipv6AddressCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkInterfaceTrafficMode: (() {
+        final guardedValue = map['networkInterfaceTrafficMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

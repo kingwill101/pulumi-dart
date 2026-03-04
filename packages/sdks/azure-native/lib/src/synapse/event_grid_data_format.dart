@@ -17,16 +17,15 @@ enum EventGridDataFormat {
   valueAPACHEAVRO("APACHEAVRO"),
   valueW3CLOGFILE("W3CLOGFILE");
 
-  const EventGridDataFormat(this.value);
-  final String value;
+  const EventGridDataFormat(this.wireValue);
+  final String wireValue;
 
   static EventGridDataFormat fromValue(String value) {
     for (final item in EventGridDataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventGridDataFormat value: $value');
   }
 }
-

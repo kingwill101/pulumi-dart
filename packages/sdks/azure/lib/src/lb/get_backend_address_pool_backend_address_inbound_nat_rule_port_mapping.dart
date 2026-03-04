@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendAddressPoolBackendAddressInboundNatRulePortMapping {
   /// The Backend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<int> backendPort;
+
   /// The Frontend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<int> frontendPort;
+
   /// The name of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<String> inboundNatRuleName;
 
@@ -28,12 +30,15 @@ class GetBackendAddressPoolBackendAddressInboundNatRulePortMapping {
     };
   }
 
-  factory GetBackendAddressPoolBackendAddressInboundNatRulePortMapping.fromMap(Map<String, dynamic> map) {
+  factory GetBackendAddressPoolBackendAddressInboundNatRulePortMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackendAddressPoolBackendAddressInboundNatRulePortMapping(
-      backendPort: (map['backendPort'] as int).input(),
-      frontendPort: (map['frontendPort'] as int).input(),
-      inboundNatRuleName: (map['inboundNatRuleName'] as String).input(),
+      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
+      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
+      inboundNatRuleName: pulumi.Input.fromValue(
+        map['inboundNatRuleName'] as String,
+      ),
     );
   }
 }
-

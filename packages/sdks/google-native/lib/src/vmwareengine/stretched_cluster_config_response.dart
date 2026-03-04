@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StretchedClusterConfigResponse {
   /// Zone that will remain operational when connection between the two zones is lost. Specify the resource name of a zone that belongs to the region of the private cloud. For example: `projects/{project}/locations/europe-west3-a` where `{project}` can either be a project number or a project ID.
   final pulumi.Input<String> preferredLocation;
+
   /// Additional zone for a higher level of availability and load balancing. Specify the resource name of a zone that belongs to the region of the private cloud. For example: `projects/{project}/locations/europe-west3-b` where `{project}` can either be a project number or a project ID.
   final pulumi.Input<String> secondaryLocation;
 
@@ -26,9 +27,12 @@ class StretchedClusterConfigResponse {
 
   factory StretchedClusterConfigResponse.fromMap(Map<String, dynamic> map) {
     return StretchedClusterConfigResponse(
-      preferredLocation: (map['preferredLocation'] as String).input(),
-      secondaryLocation: (map['secondaryLocation'] as String).input(),
+      preferredLocation: pulumi.Input.fromValue(
+        map['preferredLocation'] as String,
+      ),
+      secondaryLocation: pulumi.Input.fromValue(
+        map['secondaryLocation'] as String,
+      ),
     );
   }
 }
-

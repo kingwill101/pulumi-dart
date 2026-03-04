@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterCustomerManagedKeyState {
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? clusterId;
+
   /// The name of Key Vault Key.
   final pulumi.Input<String>? keyName;
+
   /// The ID of the Key Vault for CMK encryption.
   final pulumi.Input<String>? keyVaultId;
+
   /// The version of Key Vault Key.
   final pulumi.Input<String>? keyVersion;
+
   /// The Managed HSM Key ID for CMK encryption.
   ///
-  /// > **Note:** Exactly one of `managed_hsm_key_id` or `key_vault_id` must be specified.
+  /// &gt; **Note:** Exactly one of `managed_hsm_key_id` or `key_vault_id` must be specified.
   final pulumi.Input<String>? managedHsmKeyId;
+
   /// The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
   final pulumi.Input<String>? userIdentity;
 
@@ -48,13 +53,36 @@ class ClusterCustomerManagedKeyState {
 
   factory ClusterCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
-      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedHsmKeyId: (() {
+        final guardedValue = map['managedHsmKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userIdentity: (() {
+        final guardedValue = map['userIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

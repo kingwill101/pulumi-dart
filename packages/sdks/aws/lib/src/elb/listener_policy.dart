@@ -596,12 +596,16 @@ import 'listener_policy_state.dart';
 class ListenerPolicy extends pulumi.CustomResource {
   /// The load balancer to attach the policy to.
   late final pulumi.Output<String> loadBalancerName;
+
   /// The load balancer listener port to apply the policy to.
   late final pulumi.Output<int> loadBalancerPort;
+
   /// List of Policy Names to apply to the backend server.
   late final pulumi.Output<List<String>?> policyNames;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of arbitrary keys and values that, when changed, will trigger an update.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -614,16 +618,16 @@ class ListenerPolicy extends pulumi.CustomResource {
     ListenerPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/listenerPolicy:ListenerPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loadBalancerName = registerOutput<String>('loadBalancerName');
-    this.loadBalancerPort = registerOutput<int>('loadBalancerPort');
-    this.policyNames = registerOutput<List<String>?>('policyNames');
-    this.region = registerOutput<String>('region');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'aws:elb/listenerPolicy:ListenerPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loadBalancerName = registerOutput<String>('loadBalancerName');
+    loadBalancerPort = registerOutput<int>('loadBalancerPort');
+    policyNames = registerOutput<List<String>?>('policyNames');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
   /// Gets an existing [ListenerPolicy] resource's state with the given [name] and [id].
@@ -644,15 +648,15 @@ class ListenerPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/listenerPolicy:ListenerPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loadBalancerName = registerOutput<String>('loadBalancerName');
-    this.loadBalancerPort = registerOutput<int>('loadBalancerPort');
-    this.policyNames = registerOutput<List<String>?>('policyNames');
-    this.region = registerOutput<String>('region');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'aws:elb/listenerPolicy:ListenerPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loadBalancerName = registerOutput<String>('loadBalancerName');
+    loadBalancerPort = registerOutput<int>('loadBalancerPort');
+    policyNames = registerOutput<List<String>?>('policyNames');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

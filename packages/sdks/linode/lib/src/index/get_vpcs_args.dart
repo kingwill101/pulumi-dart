@@ -12,20 +12,38 @@ class GetVpcsArgs {
 
   /// Creates a new [GetVpcsArgs].
   /// [filters] Optional.
-  GetVpcsArgs({
-    this.filters,
-  });
+  GetVpcsArgs({this.filters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetVpcsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GetVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcsFilter>(map['filters']!, (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetVpcsFilter>(
+            guardedValue,
+            (value) =>
+                GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadTargetResourceGcpResource {
   /// Output only. Name of the Google Cloud resource.
   final pulumi.Input<String>? gcpResourcename;
+
   /// Required. The location for the backup vault.
   final pulumi.Input<String>? location;
+
   /// Output only. Type of the resource.
   final pulumi.Input<String>? type;
 
@@ -28,12 +30,25 @@ class RestoreWorkloadTargetResourceGcpResource {
     };
   }
 
-  factory RestoreWorkloadTargetResourceGcpResource.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadTargetResourceGcpResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadTargetResourceGcpResource(
-      gcpResourcename: map['gcpResourcename'] == null ? null : (map['gcpResourcename']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      gcpResourcename: (() {
+        final guardedValue = map['gcpResourcename'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum RatePlanConsumptionPricingType {
   tiered("TIERED"),
   stairstep("STAIRSTEP");
 
-  const RatePlanConsumptionPricingType(this.value);
-  final String value;
+  const RatePlanConsumptionPricingType(this.wireValue);
+  final String wireValue;
 
   static RatePlanConsumptionPricingType fromValue(String value) {
     for (final item in RatePlanConsumptionPricingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RatePlanConsumptionPricingType value: $value');
   }
 }
-

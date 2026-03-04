@@ -1,5 +1,3 @@
-library module_servicedirectory;
-
 export 'servicedirectory/binding.dart';
 export 'servicedirectory/binding_response.dart';
 export 'servicedirectory/binding_response_servicedirectory_v1beta1.dart';

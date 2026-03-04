@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicySetDefinitionVersionAtManagementGroupArgs {
   /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   final pulumi.Input<String>? expand;
+
   /// The name of the management group. The name is case insensitive.
   final pulumi.Input<String> managementGroupName;
+
   /// The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   final pulumi.Input<String> policyDefinitionVersion;
+
   /// The name of the policy set definition.
   final pulumi.Input<String> policySetDefinitionName;
 
@@ -37,13 +40,24 @@ class GetPolicySetDefinitionVersionAtManagementGroupArgs {
     };
   }
 
-  factory GetPolicySetDefinitionVersionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPolicySetDefinitionVersionAtManagementGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicySetDefinitionVersionAtManagementGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      managementGroupName: (map['managementGroupName'] as String).input(),
-      policyDefinitionVersion: (map['policyDefinitionVersion'] as String).input(),
-      policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroupName: pulumi.Input.fromValue(
+        map['managementGroupName'] as String,
+      ),
+      policyDefinitionVersion: pulumi.Input.fromValue(
+        map['policyDefinitionVersion'] as String,
+      ),
+      policySetDefinitionName: pulumi.Input.fromValue(
+        map['policySetDefinitionName'] as String,
+      ),
     );
   }
 }
-

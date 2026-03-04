@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedQueryTemplateState {
   /// Distinguish whether the current template is a simple query
   final pulumi.Input<bool>? simpleQuery;
+
   /// The name of the resource
   final pulumi.Input<String>? templateName;
+
   /// SQL content saved on behalf of the current template
   final pulumi.Input<String>? templateSql;
 
@@ -31,10 +33,21 @@ class AdvancedQueryTemplateState {
 
   factory AdvancedQueryTemplateState.fromMap(Map<String, dynamic> map) {
     return AdvancedQueryTemplateState(
-      simpleQuery: map['simpleQuery'] == null ? null : (map['simpleQuery']! as bool).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
-      templateSql: map['templateSql'] == null ? null : (map['templateSql']! as String).input(),
+      simpleQuery: (() {
+        final guardedValue = map['simpleQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      templateName: (() {
+        final guardedValue = map['templateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateSql: (() {
+        final guardedValue = map['templateSql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

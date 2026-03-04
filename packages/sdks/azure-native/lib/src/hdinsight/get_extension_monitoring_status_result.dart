@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getExtensionMonitoringStatus.
 class GetExtensionMonitoringStatusResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The status of the monitor on the HDInsight cluster.
   final bool? clusterMonitoringEnabled;
+
   /// The workspace ID of the monitor on the HDInsight cluster.
   final String? workspaceId;
 
@@ -31,9 +32,16 @@ class GetExtensionMonitoringStatusResult {
   factory GetExtensionMonitoringStatusResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionMonitoringStatusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterMonitoringEnabled: map['clusterMonitoringEnabled'] == null ? null : map['clusterMonitoringEnabled']! as bool,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
+      clusterMonitoringEnabled: (() {
+        final guardedValue = map['clusterMonitoringEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

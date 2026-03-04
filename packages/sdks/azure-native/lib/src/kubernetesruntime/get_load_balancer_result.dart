@@ -6,22 +6,31 @@ import 'system_data_response.dart';
 class GetLoadBalancerResult {
   /// IP Range
   final List<String> addresses;
+
   /// Advertise Mode
   final String advertiseMode;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
   final List<String>? bgpPeers;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Resource provision state
   final String provisioningState;
+
   /// A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
   final Map<String, String>? serviceSelector;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,14 +78,23 @@ class GetLoadBalancerResult {
       addresses: (map['addresses'] as List).cast<String>(),
       advertiseMode: map['advertiseMode'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      bgpPeers: map['bgpPeers'] == null ? null : (map['bgpPeers']! as List).cast<String>(),
+      bgpPeers: (() {
+        final guardedValue = map['bgpPeers'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceSelector: map['serviceSelector'] == null ? null : (map['serviceSelector']! as Map).cast<String, String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      serviceSelector: (() {
+        final guardedValue = map['serviceSelector'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

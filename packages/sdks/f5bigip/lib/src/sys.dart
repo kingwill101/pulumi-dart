@@ -1,5 +1,3 @@
-library module_sys;
-
 export 'sys/big_ip_license.dart';
 export 'sys/big_ip_license_args.dart';
 export 'sys/big_ip_license_state.dart';

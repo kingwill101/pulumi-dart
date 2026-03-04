@@ -10,14 +10,19 @@ import 'extension.dart';
 class PricingArgs {
   /// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
   final pulumi.Input<String>? enforce;
+
   /// Optional. List of extensions offered under a plan.
   final pulumi.Input<List<Extension>>? extensions;
+
   /// name of the pricing configuration
   final pulumi.Input<String>? pricingName;
+
   /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
   final pulumi.Input<String> pricingTier;
+
   /// The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
   final pulumi.Input<String> scopeId;
+
   /// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   final pulumi.Input<String>? subPlan;
 
@@ -40,7 +45,17 @@ class PricingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enforce': ?enforce,
-      'extensions': ?pulumi.Input.mapOptionalInputValue<List<Extension>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<Extension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Extension>,
+            List<Map<String, dynamic>>
+          >(
+            extensions,
+            (value) => pulumi.Input.encodeList<Extension, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'pricingName': ?pricingName,
       'pricingTier': pricingTier,
       'scopeId': scopeId,
@@ -50,13 +65,34 @@ class PricingArgs {
 
   factory PricingArgs.fromMap(Map<String, dynamic> map) {
     return PricingArgs(
-      enforce: map['enforce'] == null ? null : (map['enforce']! as String).input(),
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions']!, (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pricingName: map['pricingName'] == null ? null : (map['pricingName']! as String).input(),
-      pricingTier: (map['pricingTier'] as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
-      subPlan: map['subPlan'] == null ? null : (map['subPlan']! as String).input(),
+      enforce: (() {
+        final guardedValue = map['enforce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensions: (() {
+        final guardedValue = map['extensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Extension>(
+            guardedValue,
+            (value) =>
+                Extension.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      pricingName: (() {
+        final guardedValue = map['pricingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pricingTier: pulumi.Input.fromValue(map['pricingTier'] as String),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
+      subPlan: (() {
+        final guardedValue = map['subPlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

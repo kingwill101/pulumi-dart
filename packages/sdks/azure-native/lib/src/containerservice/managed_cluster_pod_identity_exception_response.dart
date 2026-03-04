@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterPodIdentityExceptionResponse {
   /// The name of the pod identity exception.
   final pulumi.Input<String> name;
+
   /// The namespace of the pod identity exception.
   final pulumi.Input<String> namespace;
+
   /// The pod labels to match.
   final pulumi.Input<Map<String, String>> podLabels;
 
@@ -29,12 +31,15 @@ class ManagedClusterPodIdentityExceptionResponse {
     };
   }
 
-  factory ManagedClusterPodIdentityExceptionResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterPodIdentityExceptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterPodIdentityExceptionResponse(
-      name: (map['name'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      podLabels: ((map['podLabels'] as Map).cast<String, String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      podLabels: pulumi.Input.fromValue(
+        (map['podLabels'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

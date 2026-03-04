@@ -4,16 +4,15 @@ enum DedicatedHostLicenseTypes {
   valueWindowsServerHybrid("Windows_Server_Hybrid"),
   valueWindowsServerPerpetual("Windows_Server_Perpetual");
 
-  const DedicatedHostLicenseTypes(this.value);
-  final String value;
+  const DedicatedHostLicenseTypes(this.wireValue);
+  final String wireValue;
 
   static DedicatedHostLicenseTypes fromValue(String value) {
     for (final item in DedicatedHostLicenseTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DedicatedHostLicenseTypes value: $value');
   }
 }
-

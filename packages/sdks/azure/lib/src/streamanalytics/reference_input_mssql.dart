@@ -326,7 +326,7 @@ import 'reference_input_mssql_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2020-03-01
@@ -341,26 +341,37 @@ import 'reference_input_mssql_state.dart';
 class ReferenceInputMssql extends pulumi.CustomResource {
   /// The MS SQL database name where the reference data exists.
   late final pulumi.Output<String> database;
+
   /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refresh_type` is `Static`.
   late final pulumi.Output<String?> deltaSnapshotQuery;
+
   /// The query used to retrieve the reference data from the MS SQL database.
   late final pulumi.Output<String> fullSnapshotQuery;
+
   /// The name of the Reference Input MS SQL data. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The password to connect to the MS SQL database.
   late final pulumi.Output<String> password;
+
   /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refresh_type` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
   late final pulumi.Output<String?> refreshIntervalDuration;
+
   /// Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
   late final pulumi.Output<String> refreshType;
+
   /// The name of the Resource Group where the Stream Analytics Job should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The fully qualified domain name of the MS SQL server.
   late final pulumi.Output<String> server;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
+
   /// The name of the table in the Azure SQL database.
   late final pulumi.Output<String?> table;
+
   /// The username to connect to the MS SQL database.
   late final pulumi.Output<String> username;
 
@@ -373,23 +384,25 @@ class ReferenceInputMssql extends pulumi.CustomResource {
     ReferenceInputMssqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.database = registerOutput<String>('database');
-    this.deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
-    this.fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
+         'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    database = registerOutput<String>('database');
+    deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
+    fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.refreshIntervalDuration = registerOutput<String?>('refreshIntervalDuration');
-    this.refreshType = registerOutput<String>('refreshType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String?>('table');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    refreshIntervalDuration = registerOutput<String?>(
+      'refreshIntervalDuration',
+    );
+    refreshType = registerOutput<String>('refreshType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String?>('table');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [ReferenceInputMssql] resource's state with the given [name] and [id].
@@ -410,22 +423,24 @@ class ReferenceInputMssql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.database = registerOutput<String>('database');
-    this.deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
-    this.fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
+         'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    database = registerOutput<String>('database');
+    deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
+    fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.refreshIntervalDuration = registerOutput<String?>('refreshIntervalDuration');
-    this.refreshType = registerOutput<String>('refreshType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String?>('table');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    refreshIntervalDuration = registerOutput<String?>(
+      'refreshIntervalDuration',
+    );
+    refreshType = registerOutput<String>('refreshType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String?>('table');
+    username = registerOutput<String>('username');
   }
 }

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointResponseServicedirectoryV1beta1 {
   /// Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
   final pulumi.Input<String> address;
+
   /// The timestamp when the endpoint was created.
   final pulumi.Input<String> createTime;
+
   /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
   final pulumi.Input<Map<String, String>> metadata;
+
   /// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
   final pulumi.Input<String> name;
+
   /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
   final pulumi.Input<String> network;
+
   /// Optional. Service Directory rejects values outside of `[0, 65535]`.
   final pulumi.Input<int> port;
+
   /// A globally unique identifier (in UUID4 format) for this endpoint.
   final pulumi.Input<String> uid;
+
   /// The timestamp when the endpoint was last updated.
   final pulumi.Input<String> updateTime;
 
@@ -54,17 +61,20 @@ class EndpointResponseServicedirectoryV1beta1 {
     };
   }
 
-  factory EndpointResponseServicedirectoryV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EndpointResponseServicedirectoryV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointResponseServicedirectoryV1beta1(
-      address: (map['address'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
-      network: (map['network'] as String).input(),
-      port: (map['port'] as int).input(),
-      uid: (map['uid'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      metadata: pulumi.Input.fromValue(
+        (map['metadata'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      uid: pulumi.Input.fromValue(map['uid'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

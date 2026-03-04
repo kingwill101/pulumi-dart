@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageValidationResultResponse {
   /// Error information.
   final pulumi.Input<List<String>> errors;
+
   /// Indicates whether the package passed the validation.
   final pulumi.Input<bool> isValid;
+
   /// Validation name.
   final pulumi.Input<String> validationName;
 
@@ -31,10 +33,9 @@ class PackageValidationResultResponse {
 
   factory PackageValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return PackageValidationResultResponse(
-      errors: ((map['errors'] as List).cast<String>()).input(),
-      isValid: (map['isValid'] as bool).input(),
-      validationName: (map['validationName'] as String).input(),
+      errors: pulumi.Input.fromValue((map['errors'] as List).cast<String>()),
+      isValid: pulumi.Input.fromValue(map['isValid'] as bool),
+      validationName: pulumi.Input.fromValue(map['validationName'] as String),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayServerPropertiesResponse {
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
+
   /// Gateway Port.
   final pulumi.Input<double> port;
 
   /// Creates a new [GatewayServerPropertiesResponse].
   /// [health] Defines the health of SAP Instances.
   /// [port] Gateway Port.
-  GatewayServerPropertiesResponse({
-    required this.health,
-    required this.port,
-  });
+  GatewayServerPropertiesResponse({required this.health, required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'health': health,
-      'port': port,
-    };
+    return <String, dynamic>{'health': health, 'port': port};
   }
 
   factory GatewayServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayServerPropertiesResponse(
-      health: (map['health'] as String).input(),
-      port: (map['port'] as double).input(),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      port: pulumi.Input.fromValue(map['port'] as double),
     );
   }
 }
-

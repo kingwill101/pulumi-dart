@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatGatewayArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the nat gateway.
   final pulumi.Input<String> natGatewayName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetNatGatewayArgs {
 
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      natGatewayName: (map['natGatewayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natGatewayName: pulumi.Input.fromValue(map['natGatewayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

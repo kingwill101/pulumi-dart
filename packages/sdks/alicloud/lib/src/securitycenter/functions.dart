@@ -4,7 +4,7 @@ import 'get_groups_result.dart';
 
 /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///

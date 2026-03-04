@@ -7,15 +7,18 @@ class GetRouterNatRuleAction {
   /// These IP addresses must be valid static external IP addresses assigned to the project.
   /// This field is used for public NAT.
   final pulumi.Input<List<String>> sourceNatActiveIps;
+
   /// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
   /// These subnetworks must have purpose set to PRIVATE_NAT.
   /// This field is used for private NAT.
   final pulumi.Input<List<String>> sourceNatActiveRanges;
+
   /// A list of URLs of the IP resources to be drained.
   /// These IPs must be valid static external IPs that have been assigned to the NAT.
   /// These IPs should be used for updating/patching a NAT rule only.
   /// This field is used for public NAT.
   final pulumi.Input<List<String>> sourceNatDrainIps;
+
   /// A list of URLs of subnetworks representing source ranges to be drained.
   /// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
   /// This field is used for private NAT.
@@ -44,11 +47,18 @@ class GetRouterNatRuleAction {
 
   factory GetRouterNatRuleAction.fromMap(Map<String, dynamic> map) {
     return GetRouterNatRuleAction(
-      sourceNatActiveIps: ((map['sourceNatActiveIps'] as List).cast<String>()).input(),
-      sourceNatActiveRanges: ((map['sourceNatActiveRanges'] as List).cast<String>()).input(),
-      sourceNatDrainIps: ((map['sourceNatDrainIps'] as List).cast<String>()).input(),
-      sourceNatDrainRanges: ((map['sourceNatDrainRanges'] as List).cast<String>()).input(),
+      sourceNatActiveIps: pulumi.Input.fromValue(
+        (map['sourceNatActiveIps'] as List).cast<String>(),
+      ),
+      sourceNatActiveRanges: pulumi.Input.fromValue(
+        (map['sourceNatActiveRanges'] as List).cast<String>(),
+      ),
+      sourceNatDrainIps: pulumi.Input.fromValue(
+        (map['sourceNatDrainIps'] as List).cast<String>(),
+      ),
+      sourceNatDrainRanges: pulumi.Input.fromValue(
+        (map['sourceNatDrainRanges'] as List).cast<String>(),
+      ),
     );
   }
 }
-

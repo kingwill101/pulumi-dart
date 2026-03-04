@@ -7,16 +7,17 @@ enum BackendServiceLoadBalancingSchemeComputeV1 {
   internalSelfManaged("INTERNAL_SELF_MANAGED"),
   invalidLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME");
 
-  const BackendServiceLoadBalancingSchemeComputeV1(this.value);
-  final String value;
+  const BackendServiceLoadBalancingSchemeComputeV1(this.wireValue);
+  final String wireValue;
 
   static BackendServiceLoadBalancingSchemeComputeV1 fromValue(String value) {
     for (final item in BackendServiceLoadBalancingSchemeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceLoadBalancingSchemeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceLoadBalancingSchemeComputeV1 value: $value',
+    );
   }
 }
-

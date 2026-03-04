@@ -5,34 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlarmsAlarm {
   /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
   final pulumi.Input<List<String>> alarmActions;
+
   /// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
   final pulumi.Input<int> cloudMonitorGroupId;
+
   /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
   final pulumi.Input<String> comparisonOperator;
+
   /// The description for the alarm.
   final pulumi.Input<String> description;
+
   /// The dimension map for the alarm's associated metric.
   final pulumi.Input<Map<String, String>> dimensions;
+
   /// Whether to enable specific ess alarm.
   final pulumi.Input<bool> enable;
+
   /// The number of times that needs to satisfies comparison condition before transition into ALARM state.
   final pulumi.Input<int> evaluationCount;
+
   /// The id of alarm.
   final pulumi.Input<String> id;
+
   /// The name for the alarm's associated metric.
   final pulumi.Input<String> metricName;
+
   /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
   final pulumi.Input<String> metricType;
+
   /// The name for ess alarm.
   final pulumi.Input<String> name;
+
   /// The period in seconds over which the specified statistic is applied.
   final pulumi.Input<int> period;
+
   /// Scaling group id the alarms belong to.
   final pulumi.Input<String> scalingGroupId;
+
   /// The state of alarm task.
   final pulumi.Input<String> state;
+
   /// The statistic to apply to the alarm's associated metric.
   final pulumi.Input<String> statistics;
+
   /// The value against which the specified statistics is compared.
   final pulumi.Input<String> threshold;
 
@@ -95,23 +110,30 @@ class GetAlarmsAlarm {
 
   factory GetAlarmsAlarm.fromMap(Map<String, dynamic> map) {
     return GetAlarmsAlarm(
-      alarmActions: ((map['alarmActions'] as List).cast<String>()).input(),
-      cloudMonitorGroupId: (map['cloudMonitorGroupId'] as int).input(),
-      comparisonOperator: (map['comparisonOperator'] as String).input(),
-      description: (map['description'] as String).input(),
-      dimensions: ((map['dimensions'] as Map).cast<String, String>()).input(),
-      enable: (map['enable'] as bool).input(),
-      evaluationCount: (map['evaluationCount'] as int).input(),
-      id: (map['id'] as String).input(),
-      metricName: (map['metricName'] as String).input(),
-      metricType: (map['metricType'] as String).input(),
-      name: (map['name'] as String).input(),
-      period: (map['period'] as int).input(),
-      scalingGroupId: (map['scalingGroupId'] as String).input(),
-      state: (map['state'] as String).input(),
-      statistics: (map['statistics'] as String).input(),
-      threshold: (map['threshold'] as String).input(),
+      alarmActions: pulumi.Input.fromValue(
+        (map['alarmActions'] as List).cast<String>(),
+      ),
+      cloudMonitorGroupId: pulumi.Input.fromValue(
+        map['cloudMonitorGroupId'] as int,
+      ),
+      comparisonOperator: pulumi.Input.fromValue(
+        map['comparisonOperator'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      dimensions: pulumi.Input.fromValue(
+        (map['dimensions'] as Map).cast<String, String>(),
+      ),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      evaluationCount: pulumi.Input.fromValue(map['evaluationCount'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      metricType: pulumi.Input.fromValue(map['metricType'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      period: pulumi.Input.fromValue(map['period'] as int),
+      scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      statistics: pulumi.Input.fromValue(map['statistics'] as String),
+      threshold: pulumi.Input.fromValue(map['threshold'] as String),
     );
   }
 }
-

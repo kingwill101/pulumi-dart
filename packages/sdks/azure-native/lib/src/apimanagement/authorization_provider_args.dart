@@ -10,14 +10,19 @@ import 'authorization_provider_oauth2_settings.dart';
 class AuthorizationProviderArgs {
   /// Identifier of the authorization provider.
   final pulumi.Input<String>? authorizationProviderId;
+
   /// Authorization Provider name. Must be 1 to 300 characters long.
   final pulumi.Input<String>? displayName;
+
   /// Identity provider name. Must be 1 to 300 characters long.
   final pulumi.Input<String>? identityProvider;
+
   /// OAuth2 settings
   final pulumi.Input<AuthorizationProviderOAuth2Settings>? oauth2;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -42,7 +47,11 @@ class AuthorizationProviderArgs {
       'authorizationProviderId': ?authorizationProviderId,
       'displayName': ?displayName,
       'identityProvider': ?identityProvider,
-      'oauth2': ?pulumi.Input.mapOptionalInputValue<AuthorizationProviderOAuth2Settings, Map<String, dynamic>>(oauth2, (value) => value.toMap()),
+      'oauth2':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthorizationProviderOAuth2Settings,
+            Map<String, dynamic>
+          >(oauth2, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -50,13 +59,34 @@ class AuthorizationProviderArgs {
 
   factory AuthorizationProviderArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationProviderArgs(
-      authorizationProviderId: map['authorizationProviderId'] == null ? null : (map['authorizationProviderId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider']! as String).input(),
-      oauth2: map['oauth2'] == null ? null : (AuthorizationProviderOAuth2Settings.fromMap((map['oauth2']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      authorizationProviderId: (() {
+        final guardedValue = map['authorizationProviderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityProvider: (() {
+        final guardedValue = map['identityProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauth2: (() {
+        final guardedValue = map['oauth2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthorizationProviderOAuth2Settings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

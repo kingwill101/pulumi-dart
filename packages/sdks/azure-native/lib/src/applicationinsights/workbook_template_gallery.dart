@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkbookTemplateGallery {
   /// Category for the gallery.
   final pulumi.Input<String>? category;
+
   /// Name of the workbook template in the gallery.
   final pulumi.Input<String>? name;
+
   /// Order of the template within the gallery.
   final pulumi.Input<int>? order;
+
   /// Azure resource type supported by the gallery.
   final pulumi.Input<String>? resourceType;
+
   /// Type of workbook supported by the workbook template.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,31 @@ class WorkbookTemplateGallery {
 
   factory WorkbookTemplateGallery.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateGallery(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      order: map['order'] == null ? null : (map['order']! as int).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

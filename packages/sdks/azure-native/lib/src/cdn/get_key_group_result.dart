@@ -9,16 +9,22 @@ class GetKeyGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String deploymentStatus;
+
   /// Resource ID.
   final String id;
+
   /// Names of UrlSigningKey type secret objects
   final List<ResourceReferenceResponse>? keyReferences;
+
   /// Resource name.
   final String name;
+
   /// Provisioning status
   final String provisioningState;
+
   /// Read only system data
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -47,7 +53,14 @@ class GetKeyGroupResult {
       'azureApiVersion': azureApiVersion,
       'deploymentStatus': deploymentStatus,
       'id': id,
-      'keyReferences': ?keyReferences == null ? null : pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(keyReferences!, (value) => value.toMap()),
+      'keyReferences': ?(() {
+        final guardedValue = keyReferences;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ResourceReferenceResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
@@ -60,12 +73,22 @@ class GetKeyGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
       id: map['id'] as String,
-      keyReferences: map['keyReferences'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['keyReferences']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keyReferences: (() {
+        final guardedValue = map['keyReferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ResourceReferenceResponse>(
+          guardedValue,
+          (value) => ResourceReferenceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

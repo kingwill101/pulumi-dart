@@ -9,23 +9,16 @@ class InsightFiltersProductArn {
   /// Creates a new [InsightFiltersProductArn].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersProductArn({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersProductArn({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersProductArn.fromMap(Map<String, dynamic> map) {
     return InsightFiltersProductArn(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

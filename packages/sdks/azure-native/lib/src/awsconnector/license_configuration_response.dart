@@ -4,14 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LicenseConfiguration
 class LicenseConfigurationResponse {
-  /// <p>The Amazon Resource Name (ARN) of the license configuration.</p>
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;
   final pulumi.Input<String>? licenseConfigurationArn;
 
   /// Creates a new [LicenseConfigurationResponse].
-  /// [licenseConfigurationArn] <p>The Amazon Resource Name (ARN) of the license configuration.</p>
-  LicenseConfigurationResponse({
-    this.licenseConfigurationArn,
-  });
+  /// [licenseConfigurationArn] &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;
+  LicenseConfigurationResponse({this.licenseConfigurationArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class LicenseConfigurationResponse {
 
   factory LicenseConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LicenseConfigurationResponse(
-      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : (map['licenseConfigurationArn']! as String).input(),
+      licenseConfigurationArn: (() {
+        final guardedValue = map['licenseConfigurationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

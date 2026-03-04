@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
   /// This parameter is not available for use.
   final pulumi.Input<String>? fieldRefFieldPath;
+
   /// The name of the environment variable.
   final pulumi.Input<String>? key;
+
   /// The value of the environment variable.
   final pulumi.Input<String>? value;
 
@@ -28,12 +30,25 @@ class InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
     };
   }
 
-  factory InstanceRefreshDesiredConfigurationContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
+  factory InstanceRefreshDesiredConfigurationContainerEnvironmentVar.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceRefreshDesiredConfigurationContainerEnvironmentVar(
-      fieldRefFieldPath: map['fieldRefFieldPath'] == null ? null : (map['fieldRefFieldPath']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      fieldRefFieldPath: (() {
+        final guardedValue = map['fieldRefFieldPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

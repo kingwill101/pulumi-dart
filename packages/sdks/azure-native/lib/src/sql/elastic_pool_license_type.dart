@@ -3,16 +3,15 @@ enum ElasticPoolLicenseType {
   valueLicenseIncluded("LicenseIncluded"),
   valueBasePrice("BasePrice");
 
-  const ElasticPoolLicenseType(this.value);
-  final String value;
+  const ElasticPoolLicenseType(this.wireValue);
+  final String wireValue;
 
   static ElasticPoolLicenseType fromValue(String value) {
     for (final item in ElasticPoolLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticPoolLicenseType value: $value');
   }
 }
-

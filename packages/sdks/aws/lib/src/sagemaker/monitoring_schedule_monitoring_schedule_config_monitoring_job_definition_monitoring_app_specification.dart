@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification {
   /// List of arguments for the container used to run the monitoring job.
   final pulumi.Input<List<String>>? containerArguments;
+
   /// Entrypoint for the container used to run the monitoring job.
   final pulumi.Input<List<String>>? containerEntrypoints;
+
   /// Container image to be run by the monitoring job.
   final pulumi.Input<String> imageUri;
+
   /// Script that is called after analysis has been performed.
   final pulumi.Input<String>? postAnalyticsProcessorSourceUri;
+
   /// Script that is called per row prior to running analysis.
   final pulumi.Input<String>? recordPreprocessorSourceUri;
 
@@ -38,14 +42,31 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap(Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification(
-      containerArguments: map['containerArguments'] == null ? null : (((map['containerArguments'] as List).cast<String>()).input()).input(),
-      containerEntrypoints: map['containerEntrypoints'] == null ? null : (((map['containerEntrypoints'] as List).cast<String>()).input()).input(),
-      imageUri: (map['imageUri'] as String).input(),
-      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : ((map['postAnalyticsProcessorSourceUri'] as String).input()).input(),
-      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : ((map['recordPreprocessorSourceUri'] as String).input()).input(),
+      containerArguments: (() {
+        final guardedValue = map['containerArguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      containerEntrypoints: (() {
+        final guardedValue = map['containerEntrypoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      imageUri: pulumi.Input.fromValue(map['imageUri'] as String),
+      postAnalyticsProcessorSourceUri: (() {
+        final guardedValue = map['postAnalyticsProcessorSourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordPreprocessorSourceUri: (() {
+        final guardedValue = map['recordPreprocessorSourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

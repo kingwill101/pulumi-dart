@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_mysql_flexible_server_args.dart';
 import 'backup_policy_mysql_flexible_server_default_retention_rule.dart';
-import 'backup_policy_mysql_flexible_server_retention_rule.dart';
 import 'backup_policy_mysql_flexible_server_state.dart';
 
 /// Manages a Backup Policy to back up MySQL Flexible Server.
@@ -550,7 +549,7 @@ import 'backup_policy_mysql_flexible_server_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataProtection` - 2024-04-01
@@ -565,14 +564,20 @@ import 'backup_policy_mysql_flexible_server_state.dart';
 class BackupPolicyMysqlFlexibleServer extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> backupRepeatingTimeIntervals;
+
   /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<BackupPolicyMysqlFlexibleServerDefaultRetentionRule> defaultRetentionRule;
+  late final pulumi.Output<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>
+  defaultRetentionRule;
+
   /// Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<BackupPolicyMysqlFlexibleServerRetentionRule>?> retentionRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
+
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeZone;
+
   /// The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -585,17 +590,24 @@ class BackupPolicyMysqlFlexibleServer extends pulumi.CustomResource {
     BackupPolicyMysqlFlexibleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupPolicyMysqlFlexibleServer:BackupPolicyMysqlFlexibleServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
-    this.defaultRetentionRule = registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>('defaultRetentionRule');
+         'azure:dataprotection/backupPolicyMysqlFlexibleServer:BackupPolicyMysqlFlexibleServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>(
+      'backupRepeatingTimeIntervals',
+    );
+    defaultRetentionRule =
+        registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>(
+          'defaultRetentionRule',
+        );
     this.name = registerOutput<String>('name');
-    this.retentionRules = registerOutput<List<BackupPolicyMysqlFlexibleServerRetentionRule>?>('retentionRules');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.vaultId = registerOutput<String>('vaultId');
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
+      'retentionRules',
+    );
+    timeZone = registerOutput<String?>('timeZone');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [BackupPolicyMysqlFlexibleServer] resource's state with the given [name] and [id].
@@ -616,16 +628,23 @@ class BackupPolicyMysqlFlexibleServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupPolicyMysqlFlexibleServer:BackupPolicyMysqlFlexibleServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
-    this.defaultRetentionRule = registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>('defaultRetentionRule');
+         'azure:dataprotection/backupPolicyMysqlFlexibleServer:BackupPolicyMysqlFlexibleServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>(
+      'backupRepeatingTimeIntervals',
+    );
+    defaultRetentionRule =
+        registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>(
+          'defaultRetentionRule',
+        );
     this.name = registerOutput<String>('name');
-    this.retentionRules = registerOutput<List<BackupPolicyMysqlFlexibleServerRetentionRule>?>('retentionRules');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.vaultId = registerOutput<String>('vaultId');
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
+      'retentionRules',
+    );
+    timeZone = registerOutput<String?>('timeZone');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

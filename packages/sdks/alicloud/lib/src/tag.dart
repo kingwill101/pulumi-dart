@@ -1,5 +1,3 @@
-library module_tag;
-
 export 'tag/associated_rule.dart';
 export 'tag/associated_rule_args.dart';
 export 'tag/associated_rule_state.dart';

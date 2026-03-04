@@ -7,6 +7,7 @@ class CorsSettingsResponse {
   /// Gets or sets the list of origins that should be allowed to make cross-origin
   /// calls (for example: http://example.com:12345). Use "*" to allow all.
   final pulumi.Input<List<String>>? allowedOrigins;
+
   /// Gets or sets whether CORS requests with credentials are allowed. See
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
   /// for more details.
@@ -15,10 +16,7 @@ class CorsSettingsResponse {
   /// Creates a new [CorsSettingsResponse].
   /// [allowedOrigins] Gets or sets the list of origins that should be allowed to make cross-origin
   /// [supportCredentials] Gets or sets whether CORS requests with credentials are allowed. See
-  CorsSettingsResponse({
-    this.allowedOrigins,
-    this.supportCredentials,
-  });
+  CorsSettingsResponse({this.allowedOrigins, this.supportCredentials});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class CorsSettingsResponse {
 
   factory CorsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CorsSettingsResponse(
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
+      allowedOrigins: (() {
+        final guardedValue = map['allowedOrigins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      supportCredentials: (() {
+        final guardedValue = map['supportCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

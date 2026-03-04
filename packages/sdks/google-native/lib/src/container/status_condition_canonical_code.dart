@@ -18,16 +18,15 @@ enum StatusConditionCanonicalCode {
   unavailable("UNAVAILABLE"),
   dataLoss("DATA_LOSS");
 
-  const StatusConditionCanonicalCode(this.value);
-  final String value;
+  const StatusConditionCanonicalCode(this.wireValue);
+  final String wireValue;
 
   static StatusConditionCanonicalCode fromValue(String value) {
     for (final item in StatusConditionCanonicalCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StatusConditionCanonicalCode value: $value');
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceArgs {
   /// Description of the workspace.
   final pulumi.Input<String>? description;
+
   /// Name of the workspace.
   final pulumi.Input<String> displayName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? workspaceId;
 
@@ -44,12 +48,21 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

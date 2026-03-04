@@ -7,19 +7,26 @@ import 'label_response.dart';
 class VmwareFirewallLicensePropertiesResponse {
   /// The Broadcom contract number associated with the license.
   final pulumi.Input<String>? broadcomContractNumber;
+
   /// The Broadcom site ID associated with the license.
   final pulumi.Input<String>? broadcomSiteId;
+
   /// Number of cores included in the license, measured per hour
   final pulumi.Input<int> cores;
+
   /// UTC datetime when the license expires
   final pulumi.Input<String> endDate;
+
   /// The kind of license.
   /// Expected value is 'VmwareFirewall'.
   final pulumi.Input<String> kind;
+
   /// Additional labels passed through for license reporting.
   final pulumi.Input<List<LabelResponse>>? labels;
+
   /// License key
   final pulumi.Input<String>? licenseKey;
+
   /// The state of the license provisioning
   final pulumi.Input<String> provisioningState;
 
@@ -50,23 +57,59 @@ class VmwareFirewallLicensePropertiesResponse {
       'cores': cores,
       'endDate': endDate,
       'kind': kind,
-      'labels': ?pulumi.Input.mapOptionalInputValue<List<LabelResponse>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<LabelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LabelResponse>,
+            List<Map<String, dynamic>>
+          >(
+            labels,
+            (value) =>
+                pulumi.Input.encodeList<LabelResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'licenseKey': ?licenseKey,
       'provisioningState': provisioningState,
     };
   }
 
-  factory VmwareFirewallLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VmwareFirewallLicensePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareFirewallLicensePropertiesResponse(
-      broadcomContractNumber: map['broadcomContractNumber'] == null ? null : (map['broadcomContractNumber']! as String).input(),
-      broadcomSiteId: map['broadcomSiteId'] == null ? null : (map['broadcomSiteId']! as String).input(),
-      cores: (map['cores'] as int).input(),
-      endDate: (map['endDate'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelResponse>(map['labels']!, (value) => LabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      broadcomContractNumber: (() {
+        final guardedValue = map['broadcomContractNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      broadcomSiteId: (() {
+        final guardedValue = map['broadcomSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cores: pulumi.Input.fromValue(map['cores'] as int),
+      endDate: pulumi.Input.fromValue(map['endDate'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LabelResponse>(
+            guardedValue,
+            (value) =>
+                LabelResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      licenseKey: (() {
+        final guardedValue = map['licenseKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

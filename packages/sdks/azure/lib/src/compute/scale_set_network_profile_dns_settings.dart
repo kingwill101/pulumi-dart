@@ -8,20 +8,17 @@ class ScaleSetNetworkProfileDnsSettings {
 
   /// Creates a new [ScaleSetNetworkProfileDnsSettings].
   /// [dnsServers] Specifies an array of DNS servers.
-  ScaleSetNetworkProfileDnsSettings({
-    required this.dnsServers,
-  });
+  ScaleSetNetworkProfileDnsSettings({required this.dnsServers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dnsServers': dnsServers,
-    };
+    return <String, dynamic>{'dnsServers': dnsServers};
   }
 
   factory ScaleSetNetworkProfileDnsSettings.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfileDnsSettings(
-      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: pulumi.Input.fromValue(
+        (map['dnsServers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateSyncCompleteCommandInputResponse {
   /// Time stamp to complete
   final pulumi.Input<String>? commitTimeStamp;
+
   /// Name of database
   final pulumi.Input<String> databaseName;
 
@@ -24,11 +25,16 @@ class MigrateSyncCompleteCommandInputResponse {
     };
   }
 
-  factory MigrateSyncCompleteCommandInputResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateSyncCompleteCommandInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateSyncCompleteCommandInputResponse(
-      commitTimeStamp: map['commitTimeStamp'] == null ? null : (map['commitTimeStamp']! as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
+      commitTimeStamp: (() {
+        final guardedValue = map['commitTimeStamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
     );
   }
 }
-

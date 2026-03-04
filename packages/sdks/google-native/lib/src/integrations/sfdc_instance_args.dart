@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SfdcInstanceArgs {
   /// A list of AuthConfigs that can be tried to open the channel to SFDC
   final pulumi.Input<List<String>>? authConfigId;
+
   /// A description of the sfdc instance.
   final pulumi.Input<String>? description;
+
   /// User selected unique name/alias to easily reference an instance.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<String>? location;
+
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> productId;
   final pulumi.Input<String>? project;
+
   /// URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
   final pulumi.Input<String>? serviceAuthority;
+
   /// The SFDC Org Id. This is defined in salesforce.
   final pulumi.Input<String>? sfdcOrgId;
 
@@ -61,16 +66,47 @@ class SfdcInstanceArgs {
 
   factory SfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SfdcInstanceArgs(
-      authConfigId: map['authConfigId'] == null ? null : ((map['authConfigId']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceAuthority: map['serviceAuthority'] == null ? null : (map['serviceAuthority']! as String).input(),
-      sfdcOrgId: map['sfdcOrgId'] == null ? null : (map['sfdcOrgId']! as String).input(),
+      authConfigId: (() {
+        final guardedValue = map['authConfigId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAuthority: (() {
+        final guardedValue = map['serviceAuthority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sfdcOrgId: (() {
+        final guardedValue = map['sfdcOrgId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

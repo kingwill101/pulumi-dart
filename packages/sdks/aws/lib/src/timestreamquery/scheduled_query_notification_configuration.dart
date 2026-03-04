@@ -5,24 +5,32 @@ import 'scheduled_query_notification_configuration_sns_configuration.dart';
 
 class ScheduledQueryNotificationConfiguration {
   /// Configuration block for details about the Amazon Simple Notification Service (SNS) configuration. See below.
-  final pulumi.Input<ScheduledQueryNotificationConfigurationSnsConfiguration> snsConfiguration;
+  final pulumi.Input<ScheduledQueryNotificationConfigurationSnsConfiguration>
+  snsConfiguration;
 
   /// Creates a new [ScheduledQueryNotificationConfiguration].
   /// [snsConfiguration] Configuration block for details about the Amazon Simple Notification Service (SNS) configuration. See below.
-  ScheduledQueryNotificationConfiguration({
-    required this.snsConfiguration,
-  });
+  ScheduledQueryNotificationConfiguration({required this.snsConfiguration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'snsConfiguration': pulumi.Input.mapInputValue<ScheduledQueryNotificationConfigurationSnsConfiguration, Map<String, dynamic>>(snsConfiguration, (value) => value.toMap()),
+      'snsConfiguration':
+          pulumi.Input.mapInputValue<
+            ScheduledQueryNotificationConfigurationSnsConfiguration,
+            Map<String, dynamic>
+          >(snsConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory ScheduledQueryNotificationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryNotificationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryNotificationConfiguration(
-      snsConfiguration: (ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap((map['snsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      snsConfiguration: pulumi.Input.fromValue(
+        ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(
+          (map['snsConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

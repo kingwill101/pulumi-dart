@@ -10,21 +10,29 @@ import 'key_vault_properties.dart';
 class ReadWriteDatabaseArgs {
   /// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
   final pulumi.Input<String>? callerRole;
+
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String>? databaseName;
+
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   final pulumi.Input<String>? hotCachePeriod;
+
   /// KeyVault properties for the database encryption.
   final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   final pulumi.Input<String> kind;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   final pulumi.Input<String>? softDeletePeriod;
 
@@ -56,7 +64,11 @@ class ReadWriteDatabaseArgs {
       'clusterName': clusterName,
       'databaseName': ?databaseName,
       'hotCachePeriod': ?hotCachePeriod,
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
       'kind': kind,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -66,16 +78,45 @@ class ReadWriteDatabaseArgs {
 
   factory ReadWriteDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteDatabaseArgs(
-      callerRole: map['callerRole'] == null ? null : (map['callerRole']! as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod']! as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
-      kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod']! as String).input(),
+      callerRole: (() {
+        final guardedValue = map['callerRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hotCachePeriod: (() {
+        final guardedValue = map['hotCachePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      softDeletePeriod: (() {
+        final guardedValue = map['softDeletePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

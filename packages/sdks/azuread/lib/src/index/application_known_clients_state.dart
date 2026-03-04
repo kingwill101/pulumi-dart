@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationKnownClientsState {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationId;
+
   /// A set of client IDs for the known applications.
   final pulumi.Input<List<String>>? knownClientIds;
 
   /// Creates a new [ApplicationKnownClientsState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [knownClientIds] A set of client IDs for the known applications.
-  ApplicationKnownClientsState({
-    this.applicationId,
-    this.knownClientIds,
-  });
+  ApplicationKnownClientsState({this.applicationId, this.knownClientIds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ApplicationKnownClientsState {
 
   factory ApplicationKnownClientsState.fromMap(Map<String, dynamic> map) {
     return ApplicationKnownClientsState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      knownClientIds: map['knownClientIds'] == null ? null : ((map['knownClientIds']! as List).cast<String>()).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      knownClientIds: (() {
+        final guardedValue = map['knownClientIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

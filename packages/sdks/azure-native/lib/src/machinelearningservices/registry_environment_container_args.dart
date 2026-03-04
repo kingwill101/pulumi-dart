@@ -9,11 +9,15 @@ import 'environment_container_machinelearningservices.dart';
 /// {@macro pulumi_machinelearningservices_registry_environment_container_args_doc}
 class RegistryEnvironmentContainerArgs {
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<EnvironmentContainerMachinelearningservices> environmentContainerProperties;
+  final pulumi.Input<EnvironmentContainerMachinelearningservices>
+  environmentContainerProperties;
+
   /// Container name.
   final pulumi.Input<String>? environmentName;
+
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,11 +44,19 @@ class RegistryEnvironmentContainerArgs {
 
   factory RegistryEnvironmentContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnvironmentContainerArgs(
-      environmentContainerProperties: (map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentContainerProperties: pulumi.Input.fromValue(
+        map['environmentContainerProperties']
+            as EnvironmentContainerMachinelearningservices,
+      ),
+      environmentName: (() {
+        final guardedValue = map['environmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

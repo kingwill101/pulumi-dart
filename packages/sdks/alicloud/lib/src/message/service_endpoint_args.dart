@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceEndpointArgs {
   /// Specifies whether the endpoint is enabled. Valid values:
   final pulumi.Input<bool> endpointEnabled;
+
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   final pulumi.Input<String> endpointType;
@@ -30,9 +31,8 @@ class ServiceEndpointArgs {
 
   factory ServiceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointArgs(
-      endpointEnabled: (map['endpointEnabled'] as bool).input(),
-      endpointType: (map['endpointType'] as String).input(),
+      endpointEnabled: pulumi.Input.fromValue(map['endpointEnabled'] as bool),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
     );
   }
 }
-

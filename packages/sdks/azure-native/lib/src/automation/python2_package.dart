@@ -192,34 +192,49 @@ import 'python2_package_args.dart';
 class Python2Package extends pulumi.CustomResource {
   /// Gets the activity count of the module.
   late final pulumi.Output<int?> activityCount;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the creation time.
   late final pulumi.Output<String?> creationTime;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Gets the error info of the module.
   late final pulumi.Output<ModuleErrorInfoResponse?> error;
+
   /// Gets the etag of the resource.
   late final pulumi.Output<String?> etag;
+
   /// Gets type of module, if its composite or not.
   late final pulumi.Output<bool?> isComposite;
+
   /// Gets the isGlobal flag of the module.
   late final pulumi.Output<bool?> isGlobal;
+
   /// Gets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
+
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the provisioning state of the module.
   late final pulumi.Output<String?> provisioningState;
+
   /// Gets the size in bytes of the module.
   late final pulumi.Output<double?> sizeInBytes;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets the version of the module.
   late final pulumi.Output<String?> version;
 
@@ -232,26 +247,26 @@ class Python2Package extends pulumi.CustomResource {
     Python2PackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:Python2Package',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activityCount = registerOutput<int?>('activityCount');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String?>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.error = registerOutput<ModuleErrorInfoResponse?>('error');
-    this.etag = registerOutput<String?>('etag');
-    this.isComposite = registerOutput<bool?>('isComposite');
-    this.isGlobal = registerOutput<bool?>('isGlobal');
-    this.lastModifiedTime = registerOutput<String?>('lastModifiedTime');
-    this.location = registerOutput<String?>('location');
+         'azure-native:automation:Python2Package',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activityCount = registerOutput<int?>('activityCount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    error = registerOutput<ModuleErrorInfoResponse?>('error');
+    etag = registerOutput<String?>('etag');
+    isComposite = registerOutput<bool?>('isComposite');
+    isGlobal = registerOutput<bool?>('isGlobal');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.sizeInBytes = registerOutput<double?>('sizeInBytes');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    provisioningState = registerOutput<String?>('provisioningState');
+    sizeInBytes = registerOutput<double?>('sizeInBytes');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

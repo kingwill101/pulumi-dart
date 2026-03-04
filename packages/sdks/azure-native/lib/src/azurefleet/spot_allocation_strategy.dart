@@ -4,16 +4,15 @@ enum SpotAllocationStrategy {
   lowestPrice("LowestPrice"),
   capacityOptimized("CapacityOptimized");
 
-  const SpotAllocationStrategy(this.value);
-  final String value;
+  const SpotAllocationStrategy(this.wireValue);
+  final String wireValue;
 
   static SpotAllocationStrategy fromValue(String value) {
     for (final item in SpotAllocationStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SpotAllocationStrategy value: $value');
   }
 }
-

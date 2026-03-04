@@ -10,16 +10,15 @@ enum AutoTuneState {
   eNABLEINPROGRESS("ENABLE_IN_PROGRESS"),
   eRROR("ERROR");
 
-  const AutoTuneState(this.value);
-  final String value;
+  const AutoTuneState(this.wireValue);
+  final String wireValue;
 
   static AutoTuneState fromValue(String value) {
     for (final item in AutoTuneState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoTuneState value: $value');
   }
 }
-

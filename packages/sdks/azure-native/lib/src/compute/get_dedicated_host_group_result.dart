@@ -9,29 +9,42 @@ import 'system_data_response.dart';
 /// Result data returned by getDedicatedHostGroup.
 class GetDedicatedHostGroupResult {
   /// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
-  final DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse? additionalCapabilities;
+  final DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
+  additionalCapabilities;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A list of references to all dedicated hosts in the dedicated host group.
   final List<SubResourceReadOnlyResponse> hosts;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
   final DedicatedHostGroupInstanceViewResponse instanceView;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Number of fault domains that the host group can span.
   final int platformFaultDomainCount;
+
   /// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
   final bool? supportAutomaticPlacement;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The availability zones.
   final List<String>? zones;
 
@@ -67,9 +80,13 @@ class GetDedicatedHostGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCapabilities': ?additionalCapabilities == null ? null : additionalCapabilities!.toMap(),
+      'additionalCapabilities': ?additionalCapabilities?.toMap(),
       'azureApiVersion': azureApiVersion,
-      'hosts': pulumi.Input.encodeList<SubResourceReadOnlyResponse, Map<String, dynamic>>(hosts, (value) => value.toMap()),
+      'hosts':
+          pulumi.Input.encodeList<
+            SubResourceReadOnlyResponse,
+            Map<String, dynamic>
+          >(hosts, (value) => value.toMap()),
       'id': id,
       'instanceView': instanceView.toMap(),
       'location': location,
@@ -85,20 +102,46 @@ class GetDedicatedHostGroupResult {
 
   factory GetDedicatedHostGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupResult(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((map['additionalCapabilities']! as Map).cast<String, dynamic>()),
+      additionalCapabilities: (() {
+        final guardedValue = map['additionalCapabilities'];
+        if (guardedValue == null) return null;
+        return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      hosts: pulumi.Input.decodeList<SubResourceReadOnlyResponse>(map['hosts'], (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      hosts: pulumi.Input.decodeList<SubResourceReadOnlyResponse>(
+        map['hosts']!,
+        (value) => SubResourceReadOnlyResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      instanceView: DedicatedHostGroupInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
+      instanceView: DedicatedHostGroupInstanceViewResponse.fromMap(
+        (map['instanceView']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       platformFaultDomainCount: map['platformFaultDomainCount'] as int,
-      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : map['supportAutomaticPlacement']! as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      supportAutomaticPlacement: (() {
+        final guardedValue = map['supportAutomaticPlacement'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

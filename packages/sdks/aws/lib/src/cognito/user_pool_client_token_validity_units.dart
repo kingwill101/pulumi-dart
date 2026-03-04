@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoolClientTokenValidityUnits {
   /// Time unit in for the value in `access_token_validity`, defaults to `hours`.
   final pulumi.Input<String>? accessToken;
+
   /// Time unit in for the value in `id_token_validity`, defaults to `hours`.
   final pulumi.Input<String>? idToken;
+
   /// Time unit in for the value in `refresh_token_validity`, defaults to `days`.
   final pulumi.Input<String>? refreshToken;
 
@@ -30,10 +32,21 @@ class UserPoolClientTokenValidityUnits {
 
   factory UserPoolClientTokenValidityUnits.fromMap(Map<String, dynamic> map) {
     return UserPoolClientTokenValidityUnits(
-      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
-      idToken: map['idToken'] == null ? null : ((map['idToken'] as String).input()).input(),
-      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idToken: (() {
+        final guardedValue = map['idToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

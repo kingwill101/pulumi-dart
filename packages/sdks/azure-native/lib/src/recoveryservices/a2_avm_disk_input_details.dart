@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class A2AVmDiskInputDetails {
   /// The disk Uri.
   final pulumi.Input<String> diskUri;
+
   /// The primary staging storage account Id.
   final pulumi.Input<String> primaryStagingAzureStorageAccountId;
+
   /// The recovery VHD storage account Id.
   final pulumi.Input<String> recoveryAzureStorageAccountId;
 
@@ -24,17 +26,21 @@ class A2AVmDiskInputDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'diskUri': diskUri,
-      'primaryStagingAzureStorageAccountId': primaryStagingAzureStorageAccountId,
+      'primaryStagingAzureStorageAccountId':
+          primaryStagingAzureStorageAccountId,
       'recoveryAzureStorageAccountId': recoveryAzureStorageAccountId,
     };
   }
 
   factory A2AVmDiskInputDetails.fromMap(Map<String, dynamic> map) {
     return A2AVmDiskInputDetails(
-      diskUri: (map['diskUri'] as String).input(),
-      primaryStagingAzureStorageAccountId: (map['primaryStagingAzureStorageAccountId'] as String).input(),
-      recoveryAzureStorageAccountId: (map['recoveryAzureStorageAccountId'] as String).input(),
+      diskUri: pulumi.Input.fromValue(map['diskUri'] as String),
+      primaryStagingAzureStorageAccountId: pulumi.Input.fromValue(
+        map['primaryStagingAzureStorageAccountId'] as String,
+      ),
+      recoveryAzureStorageAccountId: pulumi.Input.fromValue(
+        map['recoveryAzureStorageAccountId'] as String,
+      ),
     );
   }
 }
-

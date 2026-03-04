@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyDefinitionGroupResponse {
   /// A resource ID of a resource that contains additional metadata about the group.
   final pulumi.Input<String>? additionalMetadataId;
+
   /// The group's category.
   final pulumi.Input<String>? category;
+
   /// The group's description.
   final pulumi.Input<String>? description;
+
   /// The group's display name.
   final pulumi.Input<String>? displayName;
+
   /// The name of the group.
   final pulumi.Input<String> name;
 
@@ -41,12 +45,27 @@ class PolicyDefinitionGroupResponse {
 
   factory PolicyDefinitionGroupResponse.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionGroupResponse(
-      additionalMetadataId: map['additionalMetadataId'] == null ? null : (map['additionalMetadataId']! as String).input(),
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: (map['name'] as String).input(),
+      additionalMetadataId: (() {
+        final guardedValue = map['additionalMetadataId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

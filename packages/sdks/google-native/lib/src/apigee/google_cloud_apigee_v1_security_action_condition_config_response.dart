@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityActionConditionConfigResponse {
   /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
   final pulumi.Input<List<String>> botReasons;
+
   /// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
   final pulumi.Input<List<String>> ipAddressRanges;
 
@@ -24,11 +25,16 @@ class GoogleCloudApigeeV1SecurityActionConditionConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityActionConditionConfigResponse(
-      botReasons: ((map['botReasons'] as List).cast<String>()).input(),
-      ipAddressRanges: ((map['ipAddressRanges'] as List).cast<String>()).input(),
+      botReasons: pulumi.Input.fromValue(
+        (map['botReasons'] as List).cast<String>(),
+      ),
+      ipAddressRanges: pulumi.Input.fromValue(
+        (map['ipAddressRanges'] as List).cast<String>(),
+      ),
     );
   }
 }
-

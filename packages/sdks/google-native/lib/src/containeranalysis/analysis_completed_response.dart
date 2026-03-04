@@ -8,20 +8,17 @@ class AnalysisCompletedResponse {
 
   /// Creates a new [AnalysisCompletedResponse].
   /// [analysisType] Required.
-  AnalysisCompletedResponse({
-    required this.analysisType,
-  });
+  AnalysisCompletedResponse({required this.analysisType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'analysisType': analysisType,
-    };
+    return <String, dynamic>{'analysisType': analysisType};
   }
 
   factory AnalysisCompletedResponse.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedResponse(
-      analysisType: ((map['analysisType'] as List).cast<String>()).input(),
+      analysisType: pulumi.Input.fromValue(
+        (map['analysisType'] as List).cast<String>(),
+      ),
     );
   }
 }
-

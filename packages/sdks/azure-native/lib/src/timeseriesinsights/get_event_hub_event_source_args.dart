@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventHubEventSourceArgs {
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
+
   /// The name of the Time Series Insights event source associated with the specified environment.
   final pulumi.Input<String> eventSourceName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetEventHubEventSourceArgs {
 
   factory GetEventHubEventSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetEventHubEventSourceArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      eventSourceName: (map['eventSourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      eventSourceName: pulumi.Input.fromValue(map['eventSourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

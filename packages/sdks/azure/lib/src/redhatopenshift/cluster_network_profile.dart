@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworkProfile {
   /// The outbound (egress) routing method. Possible values are `Loadbalancer` and `UserDefinedRouting`. Defaults to `Loadbalancer`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? outboundType;
+
   /// The CIDR to use for pod IP addresses. Changing this forces a new resource to be created.
   final pulumi.Input<String> podCidr;
+
   /// Whether a preconfigured network security group is being used on the subnets. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? preconfiguredNetworkSecurityGroupEnabled;
+
   /// The network range used by the OpenShift service. Changing this forces a new resource to be created.
   final pulumi.Input<String> serviceCidr;
 
@@ -28,18 +31,26 @@ class ClusterNetworkProfile {
     return <String, dynamic>{
       'outboundType': ?outboundType,
       'podCidr': podCidr,
-      'preconfiguredNetworkSecurityGroupEnabled': ?preconfiguredNetworkSecurityGroupEnabled,
+      'preconfiguredNetworkSecurityGroupEnabled':
+          ?preconfiguredNetworkSecurityGroupEnabled,
       'serviceCidr': serviceCidr,
     };
   }
 
   factory ClusterNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkProfile(
-      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
-      podCidr: (map['podCidr'] as String).input(),
-      preconfiguredNetworkSecurityGroupEnabled: map['preconfiguredNetworkSecurityGroupEnabled'] == null ? null : (map['preconfiguredNetworkSecurityGroupEnabled']! as bool).input(),
-      serviceCidr: (map['serviceCidr'] as String).input(),
+      outboundType: (() {
+        final guardedValue = map['outboundType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      podCidr: pulumi.Input.fromValue(map['podCidr'] as String),
+      preconfiguredNetworkSecurityGroupEnabled: (() {
+        final guardedValue = map['preconfiguredNetworkSecurityGroupEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceCidr: pulumi.Input.fromValue(map['serviceCidr'] as String),
     );
   }
 }
-

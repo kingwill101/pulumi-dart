@@ -22,30 +22,27 @@ class Subnet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Subnet]. {@macro pulumi_vpc_subnet_subnet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Subnet(
-    String name, {
-    SubnetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:vpc/subnet:Subnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.enableIpv6 = registerOutput<bool?>('enableIpv6');
-    this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    this.ipv6CidrBlockMask = registerOutput<int>('ipv6CidrBlockMask');
-    this.isDefault = registerOutput<bool?>('isDefault');
+  Subnet(String name, {SubnetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:vpc/subnet:Subnet',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    enableIpv6 = registerOutput<bool?>('enableIpv6');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6CidrBlockMask = registerOutput<int>('ipv6CidrBlockMask');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchName = registerOutput<String>('vswitchName');
-    this.zoneId = registerOutput<String>('zoneId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchName = registerOutput<String>('vswitchName');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Subnet] resource's state with the given [name] and [id].
@@ -66,24 +63,24 @@ class Subnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/subnet:Subnet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.enableIpv6 = registerOutput<bool?>('enableIpv6');
-    this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    this.ipv6CidrBlockMask = registerOutput<int>('ipv6CidrBlockMask');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'alicloud:vpc/subnet:Subnet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    enableIpv6 = registerOutput<bool?>('enableIpv6');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6CidrBlockMask = registerOutput<int>('ipv6CidrBlockMask');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchName = registerOutput<String>('vswitchName');
-    this.zoneId = registerOutput<String>('zoneId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchName = registerOutput<String>('vswitchName');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -9,20 +9,15 @@ class IdentityServiceConfigResponse {
 
   /// Creates a new [IdentityServiceConfigResponse].
   /// [enabled] Whether to enable the Identity Service component
-  IdentityServiceConfigResponse({
-    required this.enabled,
-  });
+  IdentityServiceConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory IdentityServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return IdentityServiceConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

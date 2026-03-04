@@ -6,16 +6,15 @@ enum InvoiceSectionStateReasonCode {
   valueSpendingLimitReached("SpendingLimitReached"),
   valueSpendingLimitExpired("SpendingLimitExpired");
 
-  const InvoiceSectionStateReasonCode(this.value);
-  final String value;
+  const InvoiceSectionStateReasonCode(this.wireValue);
+  final String wireValue;
 
   static InvoiceSectionStateReasonCode fromValue(String value) {
     for (final item in InvoiceSectionStateReasonCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InvoiceSectionStateReasonCode value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResultStatisticsResponse {
   /// The number of rows that were returned by the search job.
   final pulumi.Input<int> ingestedRecords;
+
   /// Search job completion percentage.
   final pulumi.Input<double> progress;
+
   /// Search job: Amount of scanned data.
   final pulumi.Input<double> scannedGb;
 
@@ -31,10 +33,9 @@ class ResultStatisticsResponse {
 
   factory ResultStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ResultStatisticsResponse(
-      ingestedRecords: (map['ingestedRecords'] as int).input(),
-      progress: (map['progress'] as double).input(),
-      scannedGb: (map['scannedGb'] as double).input(),
+      ingestedRecords: pulumi.Input.fromValue(map['ingestedRecords'] as int),
+      progress: pulumi.Input.fromValue(map['progress'] as double),
+      scannedGb: pulumi.Input.fromValue(map['scannedGb'] as double),
     );
   }
 }
-

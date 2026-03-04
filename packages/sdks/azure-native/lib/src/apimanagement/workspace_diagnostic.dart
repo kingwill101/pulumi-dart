@@ -375,30 +375,43 @@ import 'workspace_diagnostic_args.dart';
 class WorkspaceDiagnostic extends pulumi.CustomResource {
   /// Specifies for what type of messages sampling settings should not apply.
   late final pulumi.Output<String?> alwaysLog;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
   late final pulumi.Output<PipelineDiagnosticSettingsResponse?> backend;
+
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
   late final pulumi.Output<PipelineDiagnosticSettingsResponse?> frontend;
+
   /// Sets correlation protocol to use for Application Insights diagnostics.
   late final pulumi.Output<String?> httpCorrelationProtocol;
+
   /// Large Language Models diagnostic settings
   late final pulumi.Output<LLMDiagnosticSettingsResponse?> largeLanguageModel;
+
   /// Log the ClientIP. Default is false.
   late final pulumi.Output<bool?> logClientIp;
+
   /// Resource Id of a target logger.
   late final pulumi.Output<String> loggerId;
+
   /// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
   late final pulumi.Output<bool?> metrics;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The format of the Operation Name for Application Insights telemetries. Default is Name.
   late final pulumi.Output<String?> operationNameFormat;
+
   /// Sampling settings for Diagnostic.
   late final pulumi.Output<SamplingSettingsResponse?> sampling;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The verbosity level applied to traces emitted by trace policies.
   late final pulumi.Output<String?> verbosity;
 
@@ -411,24 +424,28 @@ class WorkspaceDiagnostic extends pulumi.CustomResource {
     WorkspaceDiagnosticArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceDiagnostic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alwaysLog = registerOutput<String?>('alwaysLog');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backend = registerOutput<PipelineDiagnosticSettingsResponse?>('backend');
-    this.frontend = registerOutput<PipelineDiagnosticSettingsResponse?>('frontend');
-    this.httpCorrelationProtocol = registerOutput<String?>('httpCorrelationProtocol');
-    this.largeLanguageModel = registerOutput<LLMDiagnosticSettingsResponse?>('largeLanguageModel');
-    this.logClientIp = registerOutput<bool?>('logClientIp');
-    this.loggerId = registerOutput<String>('loggerId');
-    this.metrics = registerOutput<bool?>('metrics');
+         'azure-native:apimanagement:WorkspaceDiagnostic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alwaysLog = registerOutput<String?>('alwaysLog');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backend = registerOutput<PipelineDiagnosticSettingsResponse?>('backend');
+    frontend = registerOutput<PipelineDiagnosticSettingsResponse?>('frontend');
+    httpCorrelationProtocol = registerOutput<String?>(
+      'httpCorrelationProtocol',
+    );
+    largeLanguageModel = registerOutput<LLMDiagnosticSettingsResponse?>(
+      'largeLanguageModel',
+    );
+    logClientIp = registerOutput<bool?>('logClientIp');
+    loggerId = registerOutput<String>('loggerId');
+    metrics = registerOutput<bool?>('metrics');
     this.name = registerOutput<String>('name');
-    this.operationNameFormat = registerOutput<String?>('operationNameFormat');
-    this.sampling = registerOutput<SamplingSettingsResponse?>('sampling');
-    this.type = registerOutput<String>('type');
-    this.verbosity = registerOutput<String?>('verbosity');
+    operationNameFormat = registerOutput<String?>('operationNameFormat');
+    sampling = registerOutput<SamplingSettingsResponse?>('sampling');
+    type = registerOutput<String>('type');
+    verbosity = registerOutput<String?>('verbosity');
   }
 }

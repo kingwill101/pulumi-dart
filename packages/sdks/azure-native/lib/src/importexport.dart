@@ -1,5 +1,3 @@
-library module_importexport;
-
 export 'importexport/delivery_package_information.dart';
 export 'importexport/delivery_package_information_response.dart';
 export 'importexport/drive_bit_locker_key_response.dart';

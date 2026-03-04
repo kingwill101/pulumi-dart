@@ -10,12 +10,19 @@ import 'api_event_config_log_config.dart';
 class ApiEventConfig {
   /// List of authentication providers. See Auth Providers below.
   final pulumi.Input<List<ApiEventConfigAuthProvider>> authProviders;
+
   /// List of authentication modes for connections. See Auth Modes below.
-  final pulumi.Input<List<ApiEventConfigConnectionAuthMode>> connectionAuthModes;
+  final pulumi.Input<List<ApiEventConfigConnectionAuthMode>>
+  connectionAuthModes;
+
   /// List of default authentication modes for publishing. See Auth Modes below.
-  final pulumi.Input<List<ApiEventConfigDefaultPublishAuthMode>> defaultPublishAuthModes;
+  final pulumi.Input<List<ApiEventConfigDefaultPublishAuthMode>>
+  defaultPublishAuthModes;
+
   /// List of default authentication modes for subscribing. See Auth Modes below.
-  final pulumi.Input<List<ApiEventConfigDefaultSubscribeAuthMode>> defaultSubscribeAuthModes;
+  final pulumi.Input<List<ApiEventConfigDefaultSubscribeAuthMode>>
+  defaultSubscribeAuthModes;
+
   /// Logging configuration. See Log Config below.
   final pulumi.Input<ApiEventConfigLogConfig>? logConfig;
 
@@ -35,22 +42,105 @@ class ApiEventConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authProviders': pulumi.Input.mapInputValue<List<ApiEventConfigAuthProvider>, List<Map<String, dynamic>>>(authProviders, (value) => pulumi.Input.encodeList<ApiEventConfigAuthProvider, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'connectionAuthModes': pulumi.Input.mapInputValue<List<ApiEventConfigConnectionAuthMode>, List<Map<String, dynamic>>>(connectionAuthModes, (value) => pulumi.Input.encodeList<ApiEventConfigConnectionAuthMode, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultPublishAuthModes': pulumi.Input.mapInputValue<List<ApiEventConfigDefaultPublishAuthMode>, List<Map<String, dynamic>>>(defaultPublishAuthModes, (value) => pulumi.Input.encodeList<ApiEventConfigDefaultPublishAuthMode, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultSubscribeAuthModes': pulumi.Input.mapInputValue<List<ApiEventConfigDefaultSubscribeAuthMode>, List<Map<String, dynamic>>>(defaultSubscribeAuthModes, (value) => pulumi.Input.encodeList<ApiEventConfigDefaultSubscribeAuthMode, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'logConfig': ?pulumi.Input.mapOptionalInputValue<ApiEventConfigLogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
+      'authProviders':
+          pulumi.Input.mapInputValue<
+            List<ApiEventConfigAuthProvider>,
+            List<Map<String, dynamic>>
+          >(
+            authProviders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiEventConfigAuthProvider,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'connectionAuthModes':
+          pulumi.Input.mapInputValue<
+            List<ApiEventConfigConnectionAuthMode>,
+            List<Map<String, dynamic>>
+          >(
+            connectionAuthModes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiEventConfigConnectionAuthMode,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'defaultPublishAuthModes':
+          pulumi.Input.mapInputValue<
+            List<ApiEventConfigDefaultPublishAuthMode>,
+            List<Map<String, dynamic>>
+          >(
+            defaultPublishAuthModes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiEventConfigDefaultPublishAuthMode,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'defaultSubscribeAuthModes':
+          pulumi.Input.mapInputValue<
+            List<ApiEventConfigDefaultSubscribeAuthMode>,
+            List<Map<String, dynamic>>
+          >(
+            defaultSubscribeAuthModes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiEventConfigDefaultSubscribeAuthMode,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'logConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiEventConfigLogConfig,
+            Map<String, dynamic>
+          >(logConfig, (value) => value.toMap()),
     };
   }
 
   factory ApiEventConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfig(
-      authProviders: (pulumi.Input.decodeList<ApiEventConfigAuthProvider>(map['authProviders']!, (value) => ApiEventConfigAuthProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectionAuthModes: (pulumi.Input.decodeList<ApiEventConfigConnectionAuthMode>(map['connectionAuthModes']!, (value) => ApiEventConfigConnectionAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultPublishAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultPublishAuthMode>(map['defaultPublishAuthModes']!, (value) => ApiEventConfigDefaultPublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSubscribeAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultSubscribeAuthMode>(map['defaultSubscribeAuthModes']!, (value) => ApiEventConfigDefaultSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logConfig: map['logConfig'] == null ? null : ((ApiEventConfigLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      authProviders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApiEventConfigAuthProvider>(
+          map['authProviders']!,
+          (value) => ApiEventConfigAuthProvider.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      connectionAuthModes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApiEventConfigConnectionAuthMode>(
+          map['connectionAuthModes']!,
+          (value) => ApiEventConfigConnectionAuthMode.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      defaultPublishAuthModes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApiEventConfigDefaultPublishAuthMode>(
+          map['defaultPublishAuthModes']!,
+          (value) => ApiEventConfigDefaultPublishAuthMode.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      defaultSubscribeAuthModes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApiEventConfigDefaultSubscribeAuthMode>(
+          map['defaultSubscribeAuthModes']!,
+          (value) => ApiEventConfigDefaultSubscribeAuthMode.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      logConfig: (() {
+        final guardedValue = map['logConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiEventConfigLogConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

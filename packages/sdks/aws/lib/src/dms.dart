@@ -1,5 +1,3 @@
-library module_dms;
-
 export 'dms/certificate.dart';
 export 'dms/certificate_args.dart';
 export 'dms/certificate_state.dart';

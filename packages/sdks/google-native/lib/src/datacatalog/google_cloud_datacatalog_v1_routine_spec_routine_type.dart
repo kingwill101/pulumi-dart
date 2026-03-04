@@ -4,16 +4,19 @@ enum GoogleCloudDatacatalogV1RoutineSpecRoutineType {
   scalarFunction("SCALAR_FUNCTION"),
   procedure("PROCEDURE");
 
-  const GoogleCloudDatacatalogV1RoutineSpecRoutineType(this.value);
-  final String value;
+  const GoogleCloudDatacatalogV1RoutineSpecRoutineType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatacatalogV1RoutineSpecRoutineType fromValue(String value) {
+  static GoogleCloudDatacatalogV1RoutineSpecRoutineType fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDatacatalogV1RoutineSpecRoutineType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1RoutineSpecRoutineType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1RoutineSpecRoutineType value: $value',
+    );
   }
 }
-

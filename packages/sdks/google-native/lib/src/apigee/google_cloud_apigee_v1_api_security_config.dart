@@ -9,20 +9,21 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
 
   /// Creates a new [GoogleCloudApigeeV1ApiSecurityConfig].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.
-  GoogleCloudApigeeV1ApiSecurityConfig({
-    this.enabled,
-  });
+  GoogleCloudApigeeV1ApiSecurityConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory GoogleCloudApigeeV1ApiSecurityConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiSecurityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ApiSecurityConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

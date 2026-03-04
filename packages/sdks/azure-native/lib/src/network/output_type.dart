@@ -2,16 +2,15 @@
 enum OutputType {
   valueWorkspace("Workspace");
 
-  const OutputType(this.value);
-  final String value;
+  const OutputType(this.wireValue);
+  final String wireValue;
 
   static OutputType fromValue(String value) {
     for (final item in OutputType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutputType value: $value');
   }
 }
-

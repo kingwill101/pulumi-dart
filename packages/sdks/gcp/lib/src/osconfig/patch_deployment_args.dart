@@ -14,18 +14,23 @@ import 'patch_deployment_rollout.dart';
 class PatchDeploymentArgs {
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Duration of the patch. After the duration ends, the patch times out.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   final pulumi.Input<String>? duration;
+
   /// VM instances to patch.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentInstanceFilter> instanceFilter;
+
   /// Schedule a one-time execution.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentOneTimeSchedule>? oneTimeSchedule;
+
   /// Patch configuration that is applied.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentPatchConfig>? patchConfig;
+
   /// A name for the patch deployment in the project. When creating a name the following rules apply:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -33,12 +38,15 @@ class PatchDeploymentArgs {
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
   final pulumi.Input<String> patchDeploymentId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Schedule recurring executions.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentRecurringSchedule>? recurringSchedule;
+
   /// Rollout strategy of the patch job.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentRollout>? rollout;
@@ -69,28 +77,97 @@ class PatchDeploymentArgs {
     return <String, dynamic>{
       'description': ?description,
       'duration': ?duration,
-      'instanceFilter': pulumi.Input.mapInputValue<PatchDeploymentInstanceFilter, Map<String, dynamic>>(instanceFilter, (value) => value.toMap()),
-      'oneTimeSchedule': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentOneTimeSchedule, Map<String, dynamic>>(oneTimeSchedule, (value) => value.toMap()),
-      'patchConfig': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentPatchConfig, Map<String, dynamic>>(patchConfig, (value) => value.toMap()),
+      'instanceFilter':
+          pulumi.Input.mapInputValue<
+            PatchDeploymentInstanceFilter,
+            Map<String, dynamic>
+          >(instanceFilter, (value) => value.toMap()),
+      'oneTimeSchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            PatchDeploymentOneTimeSchedule,
+            Map<String, dynamic>
+          >(oneTimeSchedule, (value) => value.toMap()),
+      'patchConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PatchDeploymentPatchConfig,
+            Map<String, dynamic>
+          >(patchConfig, (value) => value.toMap()),
       'patchDeploymentId': patchDeploymentId,
       'project': ?project,
-      'recurringSchedule': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentRecurringSchedule, Map<String, dynamic>>(recurringSchedule, (value) => value.toMap()),
-      'rollout': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentRollout, Map<String, dynamic>>(rollout, (value) => value.toMap()),
+      'recurringSchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            PatchDeploymentRecurringSchedule,
+            Map<String, dynamic>
+          >(recurringSchedule, (value) => value.toMap()),
+      'rollout':
+          ?pulumi.Input.mapOptionalInputValue<
+            PatchDeploymentRollout,
+            Map<String, dynamic>
+          >(rollout, (value) => value.toMap()),
     };
   }
 
   factory PatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
-      instanceFilter: (PatchDeploymentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      oneTimeSchedule: map['oneTimeSchedule'] == null ? null : (PatchDeploymentOneTimeSchedule.fromMap((map['oneTimeSchedule']! as Map).cast<String, dynamic>())).input(),
-      patchConfig: map['patchConfig'] == null ? null : (PatchDeploymentPatchConfig.fromMap((map['patchConfig']! as Map).cast<String, dynamic>())).input(),
-      patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      recurringSchedule: map['recurringSchedule'] == null ? null : (PatchDeploymentRecurringSchedule.fromMap((map['recurringSchedule']! as Map).cast<String, dynamic>())).input(),
-      rollout: map['rollout'] == null ? null : (PatchDeploymentRollout.fromMap((map['rollout']! as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceFilter: pulumi.Input.fromValue(
+        PatchDeploymentInstanceFilter.fromMap(
+          (map['instanceFilter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      oneTimeSchedule: (() {
+        final guardedValue = map['oneTimeSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PatchDeploymentOneTimeSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      patchConfig: (() {
+        final guardedValue = map['patchConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PatchDeploymentPatchConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      patchDeploymentId: pulumi.Input.fromValue(
+        map['patchDeploymentId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recurringSchedule: (() {
+        final guardedValue = map['recurringSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PatchDeploymentRecurringSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rollout: (() {
+        final guardedValue = map['rollout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PatchDeploymentRollout.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

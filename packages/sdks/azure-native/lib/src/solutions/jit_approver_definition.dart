@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JitApproverDefinition {
   /// The approver display name.
   final pulumi.Input<String>? displayName;
+
   /// The approver service principal Id.
   final pulumi.Input<String> id;
+
   /// The approver type.
   final pulumi.Input<String>? type;
 
@@ -15,11 +17,7 @@ class JitApproverDefinition {
   /// [displayName] The approver display name.
   /// [id] The approver service principal Id.
   /// [type] The approver type.
-  JitApproverDefinition({
-    this.displayName,
-    required this.id,
-    this.type,
-  });
+  JitApproverDefinition({this.displayName, required this.id, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class JitApproverDefinition {
 
   factory JitApproverDefinition.fromMap(Map<String, dynamic> map) {
     return JitApproverDefinition(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum IpConfigurationSslMode {
   encryptedOnly("ENCRYPTED_ONLY"),
   trustedClientCertificateRequired("TRUSTED_CLIENT_CERTIFICATE_REQUIRED");
 
-  const IpConfigurationSslMode(this.value);
-  final String value;
+  const IpConfigurationSslMode(this.wireValue);
+  final String wireValue;
 
   static IpConfigurationSslMode fromValue(String value) {
     for (final item in IpConfigurationSslMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpConfigurationSslMode value: $value');
   }
 }
-

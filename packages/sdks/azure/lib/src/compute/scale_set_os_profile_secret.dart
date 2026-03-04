@@ -6,8 +6,10 @@ import 'scale_set_os_profile_secret_vault_certificate.dart';
 class ScaleSetOsProfileSecret {
   /// Specifies the key vault to use.
   final pulumi.Input<String> sourceVaultId;
+
   /// (Required, on Windows machines) One or more `vault_certificates` blocks as defined below.
-  final pulumi.Input<List<ScaleSetOsProfileSecretVaultCertificate>>? vaultCertificates;
+  final pulumi.Input<List<ScaleSetOsProfileSecretVaultCertificate>>?
+  vaultCertificates;
 
   /// Creates a new [ScaleSetOsProfileSecret].
   /// [sourceVaultId] Specifies the key vault to use.
@@ -20,15 +22,36 @@ class ScaleSetOsProfileSecret {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'sourceVaultId': sourceVaultId,
-      'vaultCertificates': ?pulumi.Input.mapOptionalInputValue<List<ScaleSetOsProfileSecretVaultCertificate>, List<Map<String, dynamic>>>(vaultCertificates, (value) => pulumi.Input.encodeList<ScaleSetOsProfileSecretVaultCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vaultCertificates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ScaleSetOsProfileSecretVaultCertificate>,
+            List<Map<String, dynamic>>
+          >(
+            vaultCertificates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ScaleSetOsProfileSecretVaultCertificate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ScaleSetOsProfileSecret.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileSecret(
-      sourceVaultId: (map['sourceVaultId'] as String).input(),
-      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileSecretVaultCertificate>(map['vaultCertificates']!, (value) => ScaleSetOsProfileSecretVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceVaultId: pulumi.Input.fromValue(map['sourceVaultId'] as String),
+      vaultCertificates: (() {
+        final guardedValue = map['vaultCertificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ScaleSetOsProfileSecretVaultCertificate>(
+            guardedValue,
+            (value) => ScaleSetOsProfileSecretVaultCertificate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

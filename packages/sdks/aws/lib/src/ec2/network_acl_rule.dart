@@ -4,7 +4,7 @@ import 'network_acl_rule_state.dart';
 
 /// Creates an entry (a rule) in a network ACL with the specified rule number.
 ///
-/// > **NOTE on Network ACLs and Network ACL Rules:** This provider currently
+/// &gt; **NOTE on Network ACLs and Network ACL Rules:** This provider currently
 /// provides both a standalone Network ACL Rule resource and a Network ACL resource with rules
 /// defined in-line. At this time you cannot use a Network ACL with in-line rules
 /// in conjunction with any Network ACL Rule resources. Doing so will cause
@@ -166,7 +166,7 @@ import 'network_acl_rule_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** One of either `cidr_block` or `ipv6_cidr_block` is required.
+/// &gt; **Note:** One of either `cidr_block` or `ipv6_cidr_block` is required.
 ///
 /// ## Import
 ///
@@ -189,32 +189,43 @@ import 'network_acl_rule_state.dart';
 class NetworkAclRule extends pulumi.CustomResource {
   /// The network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
   late final pulumi.Output<String?> cidrBlock;
+
   /// Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet). Default `false`.
   late final pulumi.Output<bool?> egress;
+
   /// The from port to match.
   late final pulumi.Output<int?> fromPort;
+
   /// ICMP protocol: The ICMP code. Required if specifying ICMP for the protocolE.g., -1
   ///
-  /// > **NOTE:** If the value of `protocol` is `-1` or `all`, the `from_port` and `to_port` values will be ignored and the rule will apply to all ports.
+  /// &gt; **NOTE:** If the value of `protocol` is `-1` or `all`, the `from_port` and `to_port` values will be ignored and the rule will apply to all ports.
   ///
-  /// > **NOTE:** If the value of `icmp_type` is `-1` (which results in a wildcard ICMP type), the `icmp_code` must also be set to `-1` (wildcard ICMP code).
+  /// &gt; **NOTE:** If the value of `icmp_type` is `-1` (which results in a wildcard ICMP type), the `icmp_code` must also be set to `-1` (wildcard ICMP code).
   ///
-  /// > Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
+  /// &gt; Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
   late final pulumi.Output<int?> icmpCode;
+
   /// ICMP protocol: The ICMP type. Required if specifying ICMP for the protocolE.g., -1
   late final pulumi.Output<int?> icmpType;
+
   /// The IPv6 CIDR block to allow or deny.
   late final pulumi.Output<String?> ipv6CidrBlock;
+
   /// The ID of the network ACL.
   late final pulumi.Output<String> networkAclId;
+
   /// The protocol. A value of -1 means all protocols.
   late final pulumi.Output<String> protocol;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Indicates whether to allow or deny the traffic that matches the rule. Accepted values: `allow` | `deny`
   late final pulumi.Output<String> ruleAction;
+
   /// The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
   late final pulumi.Output<int> ruleNumber;
+
   /// The to port to match.
   late final pulumi.Output<int?> toPort;
 
@@ -227,23 +238,23 @@ class NetworkAclRule extends pulumi.CustomResource {
     NetworkAclRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkAclRule:NetworkAclRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String?>('cidrBlock');
-    this.egress = registerOutput<bool?>('egress');
-    this.fromPort = registerOutput<int?>('fromPort');
-    this.icmpCode = registerOutput<int?>('icmpCode');
-    this.icmpType = registerOutput<int?>('icmpType');
-    this.ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.ruleAction = registerOutput<String>('ruleAction');
-    this.ruleNumber = registerOutput<int>('ruleNumber');
-    this.toPort = registerOutput<int?>('toPort');
+         'aws:ec2/networkAclRule:NetworkAclRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String?>('cidrBlock');
+    egress = registerOutput<bool?>('egress');
+    fromPort = registerOutput<int?>('fromPort');
+    icmpCode = registerOutput<int?>('icmpCode');
+    icmpType = registerOutput<int?>('icmpType');
+    ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
+    networkAclId = registerOutput<String>('networkAclId');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleNumber = registerOutput<int>('ruleNumber');
+    toPort = registerOutput<int?>('toPort');
   }
 
   /// Gets an existing [NetworkAclRule] resource's state with the given [name] and [id].
@@ -264,22 +275,22 @@ class NetworkAclRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkAclRule:NetworkAclRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String?>('cidrBlock');
-    this.egress = registerOutput<bool?>('egress');
-    this.fromPort = registerOutput<int?>('fromPort');
-    this.icmpCode = registerOutput<int?>('icmpCode');
-    this.icmpType = registerOutput<int?>('icmpType');
-    this.ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.ruleAction = registerOutput<String>('ruleAction');
-    this.ruleNumber = registerOutput<int>('ruleNumber');
-    this.toPort = registerOutput<int?>('toPort');
+         'aws:ec2/networkAclRule:NetworkAclRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String?>('cidrBlock');
+    egress = registerOutput<bool?>('egress');
+    fromPort = registerOutput<int?>('fromPort');
+    icmpCode = registerOutput<int?>('icmpCode');
+    icmpType = registerOutput<int?>('icmpType');
+    ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
+    networkAclId = registerOutput<String>('networkAclId');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleNumber = registerOutput<int>('ruleNumber');
+    toPort = registerOutput<int?>('toPort');
   }
 }

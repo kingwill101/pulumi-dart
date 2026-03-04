@@ -21,8 +21,9 @@ class BareMetalAdminPortConfigResponse {
 
   factory BareMetalAdminPortConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminPortConfigResponse(
-      controlPlaneLoadBalancerPort: (map['controlPlaneLoadBalancerPort'] as int).input(),
+      controlPlaneLoadBalancerPort: pulumi.Input.fromValue(
+        map['controlPlaneLoadBalancerPort'] as int,
+      ),
     );
   }
 }
-

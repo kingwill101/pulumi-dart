@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFilesetsFileset {
   /// The time when Fileset was created.
   final pulumi.Input<String> createTime;
+
   /// Description of Fileset.
   final pulumi.Input<String> description;
+
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
+
   /// The path of Fileset.
   final pulumi.Input<String> fileSystemPath;
+
   /// The first ID of the resource.
   final pulumi.Input<String> filesetId;
+
   /// The ID of the Fileset.
   final pulumi.Input<String> id;
+
   /// The status of the fileset.
   final pulumi.Input<String> status;
+
   /// The latest update time of Fileset.
   final pulumi.Input<String> updateTime;
 
@@ -55,15 +62,14 @@ class GetFilesetsFileset {
 
   factory GetFilesetsFileset.fromMap(Map<String, dynamic> map) {
     return GetFilesetsFileset(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      fileSystemPath: (map['fileSystemPath'] as String).input(),
-      filesetId: (map['filesetId'] as String).input(),
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      fileSystemPath: pulumi.Input.fromValue(map['fileSystemPath'] as String),
+      filesetId: pulumi.Input.fromValue(map['filesetId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

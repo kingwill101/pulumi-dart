@@ -11,10 +11,13 @@ class GetAuthorizationRuleArgs {
   final pulumi.Input<String> eventhubName;
   final pulumi.Input<bool>? listen;
   final pulumi.Input<bool>? manage;
+
   /// Specifies the name of the EventHub Authorization Rule resource. be created.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the grandparent EventHub Namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<bool>? send;
@@ -51,14 +54,27 @@ class GetAuthorizationRuleArgs {
 
   factory GetAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationRuleArgs(
-      eventhubName: (map['eventhubName'] as String).input(),
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: (map['name'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
+      eventhubName: pulumi.Input.fromValue(map['eventhubName'] as String),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

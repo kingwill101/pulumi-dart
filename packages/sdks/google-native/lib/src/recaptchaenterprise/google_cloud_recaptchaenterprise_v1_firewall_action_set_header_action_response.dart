@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse {
   /// Optional. The header key to set in the request to the backend server.
   final pulumi.Input<String> key;
+
   /// Optional. The header value to set in the request to the backend server.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

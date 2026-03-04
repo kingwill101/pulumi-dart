@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pulumi Preview (Attach Debugger Program)",
+      "type": "shell",
+      "command": "pulumi preview --attach-debugger=program",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Pulumi Up (Attach Debugger Program, Skip Preview)",
+      "type": "shell",
+      "command": "pulumi up --skip-preview --attach-debugger=program",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

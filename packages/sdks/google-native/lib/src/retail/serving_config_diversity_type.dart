@@ -4,16 +4,15 @@ enum ServingConfigDiversityType {
   ruleBasedDiversity("RULE_BASED_DIVERSITY"),
   dataDrivenDiversity("DATA_DRIVEN_DIVERSITY");
 
-  const ServingConfigDiversityType(this.value);
-  final String value;
+  const ServingConfigDiversityType(this.wireValue);
+  final String wireValue;
 
   static ServingConfigDiversityType fromValue(String value) {
     for (final item in ServingConfigDiversityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServingConfigDiversityType value: $value');
   }
 }
-

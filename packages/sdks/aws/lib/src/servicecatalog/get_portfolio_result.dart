@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPortfolio.
 class GetPortfolioResult {
   final String? acceptLanguage;
+
   /// Portfolio ARN.
   final String arn;
+
   /// Time the portfolio was created.
   final String createdTime;
+
   /// Description of the portfolio
   final String description;
   final String id;
+
   /// Portfolio name.
   final String name;
+
   /// Name of the person or organization who owns the portfolio.
   final String providerName;
   final String region;
+
   /// Tags applied to the portfolio.
   final Map<String, String> tags;
 
@@ -57,7 +62,11 @@ class GetPortfolioResult {
 
   factory GetPortfolioResult.fromMap(Map<String, dynamic> map) {
     return GetPortfolioResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       arn: map['arn'] as String,
       createdTime: map['createdTime'] as String,
       description: map['description'] as String,
@@ -69,4 +78,3 @@ class GetPortfolioResult {
     );
   }
 }
-

@@ -197,24 +197,36 @@ import 'pipeline_state.dart';
 class Pipeline extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Pipeline.
   late final pulumi.Output<String> arn;
+
   /// This is the configuration that controls the parallelism of the pipeline. If specified, it applies to all runs of this pipeline by default. see Parallelism Configuration details below.
-  late final pulumi.Output<PipelineParallelismConfiguration?> parallelismConfiguration;
+  late final pulumi.Output<PipelineParallelismConfiguration?>
+  parallelismConfiguration;
+
   /// The [JSON pipeline definition](https://aws-sagemaker-mlops.github.io/sagemaker-model-building-pipeline-definition-JSON-schema/) of the pipeline.
   late final pulumi.Output<String?> pipelineDefinition;
+
   /// The location of the pipeline definition stored in Amazon S3. If specified, SageMaker AI will retrieve the pipeline definition from this location. see Pipeline Definition S3 Location details below.
-  late final pulumi.Output<PipelinePipelineDefinitionS3Location?> pipelineDefinitionS3Location;
+  late final pulumi.Output<PipelinePipelineDefinitionS3Location?>
+  pipelineDefinitionS3Location;
+
   /// A description of the pipeline.
   late final pulumi.Output<String?> pipelineDescription;
+
   /// The display name of the pipeline.
   late final pulumi.Output<String> pipelineDisplayName;
+
   /// The name of the pipeline.
   late final pulumi.Output<String> pipelineName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ARN of the IAM role the pipeline will execute as.
   late final pulumi.Output<String?> roleArn;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -227,22 +239,28 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/pipeline:Pipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.parallelismConfiguration = registerOutput<PipelineParallelismConfiguration?>('parallelismConfiguration');
-    this.pipelineDefinition = registerOutput<String?>('pipelineDefinition');
-    this.pipelineDefinitionS3Location = registerOutput<PipelinePipelineDefinitionS3Location?>('pipelineDefinitionS3Location');
-    this.pipelineDescription = registerOutput<String?>('pipelineDescription');
-    this.pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
-    this.pipelineName = registerOutput<String>('pipelineName');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:sagemaker/pipeline:Pipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    parallelismConfiguration =
+        registerOutput<PipelineParallelismConfiguration?>(
+          'parallelismConfiguration',
+        );
+    pipelineDefinition = registerOutput<String?>('pipelineDefinition');
+    pipelineDefinitionS3Location =
+        registerOutput<PipelinePipelineDefinitionS3Location?>(
+          'pipelineDefinitionS3Location',
+        );
+    pipelineDescription = registerOutput<String?>('pipelineDescription');
+    pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
+    pipelineName = registerOutput<String>('pipelineName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -263,21 +281,27 @@ class Pipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/pipeline:Pipeline',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.parallelismConfiguration = registerOutput<PipelineParallelismConfiguration?>('parallelismConfiguration');
-    this.pipelineDefinition = registerOutput<String?>('pipelineDefinition');
-    this.pipelineDefinitionS3Location = registerOutput<PipelinePipelineDefinitionS3Location?>('pipelineDefinitionS3Location');
-    this.pipelineDescription = registerOutput<String?>('pipelineDescription');
-    this.pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
-    this.pipelineName = registerOutput<String>('pipelineName');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:sagemaker/pipeline:Pipeline',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    parallelismConfiguration =
+        registerOutput<PipelineParallelismConfiguration?>(
+          'parallelismConfiguration',
+        );
+    pipelineDefinition = registerOutput<String?>('pipelineDefinition');
+    pipelineDefinitionS3Location =
+        registerOutput<PipelinePipelineDefinitionS3Location?>(
+          'pipelineDefinitionS3Location',
+        );
+    pipelineDescription = registerOutput<String?>('pipelineDescription');
+    pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
+    pipelineName = registerOutput<String>('pipelineName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

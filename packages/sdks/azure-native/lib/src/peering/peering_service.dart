@@ -160,26 +160,38 @@ import 'peering_service_sku_response.dart';
 class PeeringService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location of the resource.
   late final pulumi.Output<String> location;
+
   /// The Log Analytics Workspace Properties
-  late final pulumi.Output<LogAnalyticsWorkspacePropertiesResponse?> logAnalyticsWorkspaceProperties;
+  late final pulumi.Output<LogAnalyticsWorkspacePropertiesResponse?>
+  logAnalyticsWorkspaceProperties;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The location (state/province) of the customer.
   late final pulumi.Output<String?> peeringServiceLocation;
+
   /// The name of the service provider.
   late final pulumi.Output<String?> peeringServiceProvider;
+
   /// The backup peering (Microsoft/service provider) location to be used for customer traffic.
   late final pulumi.Output<String?> providerBackupPeeringLocation;
+
   /// The primary peering (Microsoft/service provider) location to be used for customer traffic.
   late final pulumi.Output<String?> providerPrimaryPeeringLocation;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU that defines the type of the peering service.
   late final pulumi.Output<PeeringServiceSkuResponse?> sku;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -192,22 +204,29 @@ class PeeringService extends pulumi.CustomResource {
     PeeringServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:peering:PeeringService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
-    this.logAnalyticsWorkspaceProperties = registerOutput<LogAnalyticsWorkspacePropertiesResponse?>('logAnalyticsWorkspaceProperties');
+         'azure-native:peering:PeeringService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    logAnalyticsWorkspaceProperties =
+        registerOutput<LogAnalyticsWorkspacePropertiesResponse?>(
+          'logAnalyticsWorkspaceProperties',
+        );
     this.name = registerOutput<String>('name');
-    this.peeringServiceLocation = registerOutput<String?>('peeringServiceLocation');
-    this.peeringServiceProvider = registerOutput<String?>('peeringServiceProvider');
-    this.providerBackupPeeringLocation = registerOutput<String?>('providerBackupPeeringLocation');
-    this.providerPrimaryPeeringLocation = registerOutput<String?>('providerPrimaryPeeringLocation');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<PeeringServiceSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    peeringServiceLocation = registerOutput<String?>('peeringServiceLocation');
+    peeringServiceProvider = registerOutput<String?>('peeringServiceProvider');
+    providerBackupPeeringLocation = registerOutput<String?>(
+      'providerBackupPeeringLocation',
+    );
+    providerPrimaryPeeringLocation = registerOutput<String?>(
+      'providerPrimaryPeeringLocation',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<PeeringServiceSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

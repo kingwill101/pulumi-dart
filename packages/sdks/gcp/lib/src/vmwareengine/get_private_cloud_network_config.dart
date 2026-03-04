@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateCloudNetworkConfig {
   /// DNS Server IP of the Private Cloud.
   final pulumi.Input<String> dnsServerIp;
+
   /// Management CIDR used by VMware management appliances.
   final pulumi.Input<String> managementCidr;
+
   /// The IP address layout version of the management IP address range.
   /// Possible versions include:
   /// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
@@ -14,10 +16,12 @@ class GetPrivateCloudNetworkConfig {
   /// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
   /// used by all newly created private clouds. This version supports all current features.
   final pulumi.Input<int> managementIpAddressLayoutVersion;
+
   /// The relative resource name of the VMware Engine network attached to the private cloud.
   /// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
   /// where {project} can either be a project number or a project ID.
   final pulumi.Input<String> vmwareEngineNetwork;
+
   /// The canonical name of the VMware Engine network in
   /// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
   final pulumi.Input<String> vmwareEngineNetworkCanonical;
@@ -48,12 +52,17 @@ class GetPrivateCloudNetworkConfig {
 
   factory GetPrivateCloudNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudNetworkConfig(
-      dnsServerIp: (map['dnsServerIp'] as String).input(),
-      managementCidr: (map['managementCidr'] as String).input(),
-      managementIpAddressLayoutVersion: (map['managementIpAddressLayoutVersion'] as int).input(),
-      vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
-      vmwareEngineNetworkCanonical: (map['vmwareEngineNetworkCanonical'] as String).input(),
+      dnsServerIp: pulumi.Input.fromValue(map['dnsServerIp'] as String),
+      managementCidr: pulumi.Input.fromValue(map['managementCidr'] as String),
+      managementIpAddressLayoutVersion: pulumi.Input.fromValue(
+        map['managementIpAddressLayoutVersion'] as int,
+      ),
+      vmwareEngineNetwork: pulumi.Input.fromValue(
+        map['vmwareEngineNetwork'] as String,
+      ),
+      vmwareEngineNetworkCanonical: pulumi.Input.fromValue(
+        map['vmwareEngineNetworkCanonical'] as String,
+      ),
     );
   }
 }
-

@@ -8,6 +8,7 @@ class GetAlertContactsResult {
   final String? alertContactName;
   final List<GetAlertContactsContact> contacts;
   final String? email;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,7 +42,11 @@ class GetAlertContactsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertContactName': ?alertContactName,
-      'contacts': pulumi.Input.encodeList<GetAlertContactsContact, Map<String, dynamic>>(contacts, (value) => value.toMap()),
+      'contacts':
+          pulumi.Input.encodeList<
+            GetAlertContactsContact,
+            Map<String, dynamic>
+          >(contacts, (value) => value.toMap()),
       'email': ?email,
       'id': id,
       'ids': ids,
@@ -54,16 +59,40 @@ class GetAlertContactsResult {
 
   factory GetAlertContactsResult.fromMap(Map<String, dynamic> map) {
     return GetAlertContactsResult(
-      alertContactName: map['alertContactName'] == null ? null : map['alertContactName']! as String,
-      contacts: pulumi.Input.decodeList<GetAlertContactsContact>(map['contacts'], (value) => GetAlertContactsContact.fromMap((value as Map).cast<String, dynamic>())),
-      email: map['email'] == null ? null : map['email']! as String,
+      alertContactName: (() {
+        final guardedValue = map['alertContactName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      contacts: pulumi.Input.decodeList<GetAlertContactsContact>(
+        map['contacts']!,
+        (value) => GetAlertContactsContact.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      phoneNum: map['phoneNum'] == null ? null : map['phoneNum']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      phoneNum: (() {
+        final guardedValue = map['phoneNum'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

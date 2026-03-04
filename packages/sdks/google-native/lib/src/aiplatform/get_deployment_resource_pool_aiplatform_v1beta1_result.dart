@@ -6,8 +6,11 @@ import 'google_cloud_aiplatform_v1beta1_dedicated_resources_response.dart';
 class GetDeploymentResourcePoolAiplatformV1beta1Result {
   /// Timestamp when this DeploymentResourcePool was created.
   final String createTime;
+
   /// The underlying DedicatedResources that the DeploymentResourcePool uses.
-  final GoogleCloudAiplatformV1beta1DedicatedResourcesResponse dedicatedResources;
+  final GoogleCloudAiplatformV1beta1DedicatedResourcesResponse
+  dedicatedResources;
+
   /// Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   final String name;
 
@@ -29,12 +32,16 @@ class GetDeploymentResourcePoolAiplatformV1beta1Result {
     };
   }
 
-  factory GetDeploymentResourcePoolAiplatformV1beta1Result.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentResourcePoolAiplatformV1beta1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentResourcePoolAiplatformV1beta1Result(
       createTime: map['createTime'] as String,
-      dedicatedResources: GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>()),
+      dedicatedResources:
+          GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap(
+            (map['dedicatedResources']! as Map).cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
     );
   }
 }
-

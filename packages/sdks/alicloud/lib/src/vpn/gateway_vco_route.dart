@@ -6,7 +6,7 @@ import 'gateway_vco_route_state.dart';
 ///
 /// For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
 ///
-/// > **NOTE:** Available since v1.183.0.
+/// &gt; **NOTE:** Available since v1.183.0.
 ///
 /// ## Example Usage
 ///
@@ -670,14 +670,19 @@ import 'gateway_vco_route_state.dart';
 class GatewayVcoRoute extends pulumi.CustomResource {
   /// The next hop of the destination route.
   late final pulumi.Output<String> nextHop;
+
   /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
   late final pulumi.Output<String?> overlayMode;
+
   /// The destination network segment of the destination route.
   late final pulumi.Output<String> routeDest;
+
   /// The status of the vpn route entry.
   late final pulumi.Output<String> status;
+
   /// The id of the vpn attachment.
   late final pulumi.Output<String> vpnConnectionId;
+
   /// The weight value of the destination route. Valid values: `0`, `100`.
   late final pulumi.Output<int> weight;
 
@@ -690,17 +695,17 @@ class GatewayVcoRoute extends pulumi.CustomResource {
     GatewayVcoRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nextHop = registerOutput<String>('nextHop');
-    this.overlayMode = registerOutput<String?>('overlayMode');
-    this.routeDest = registerOutput<String>('routeDest');
-    this.status = registerOutput<String>('status');
-    this.vpnConnectionId = registerOutput<String>('vpnConnectionId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nextHop = registerOutput<String>('nextHop');
+    overlayMode = registerOutput<String?>('overlayMode');
+    routeDest = registerOutput<String>('routeDest');
+    status = registerOutput<String>('status');
+    vpnConnectionId = registerOutput<String>('vpnConnectionId');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [GatewayVcoRoute] resource's state with the given [name] and [id].
@@ -721,16 +726,16 @@ class GatewayVcoRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nextHop = registerOutput<String>('nextHop');
-    this.overlayMode = registerOutput<String?>('overlayMode');
-    this.routeDest = registerOutput<String>('routeDest');
-    this.status = registerOutput<String>('status');
-    this.vpnConnectionId = registerOutput<String>('vpnConnectionId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nextHop = registerOutput<String>('nextHop');
+    overlayMode = registerOutput<String?>('overlayMode');
+    routeDest = registerOutput<String>('routeDest');
+    status = registerOutput<String>('status');
+    vpnConnectionId = registerOutput<String>('vpnConnectionId');
+    weight = registerOutput<int>('weight');
   }
 }

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentPath {
   /// The actual path value.
   final pulumi.Input<String> path;
+
   /// The type of the path.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentPath].
   /// [path] The actual path value.
   /// [type] The type of the path.
-  AgentPath({
-    required this.path,
-    required this.type,
-  });
+  AgentPath({required this.path, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'type': type,
-    };
+    return <String, dynamic>{'path': path, 'type': type};
   }
 
   factory AgentPath.fromMap(Map<String, dynamic> map) {
     return AgentPath(
-      path: (map['path'] as String).input(),
-      type: (map['type'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

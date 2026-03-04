@@ -7,10 +7,13 @@ import 'nat_gateway_status_provisioning_status_response.dart';
 class NatGatewayStatusResponse {
   /// NatGateway provisioning error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
+
   /// NatGateway provisioning status
-  final pulumi.Input<NatGatewayStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<NatGatewayStatusProvisioningStatusResponse>?
+  provisioningStatus;
 
   /// Creates a new [NatGatewayStatusResponse].
   /// [errorCode] NatGateway provisioning error code
@@ -26,16 +29,35 @@ class NatGatewayStatusResponse {
     return <String, dynamic>{
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<NatGatewayStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            NatGatewayStatusProvisioningStatusResponse,
+            Map<String, dynamic>
+          >(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory NatGatewayStatusResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewayStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (NatGatewayStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatus: (() {
+        final guardedValue = map['provisioningStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NatGatewayStatusProvisioningStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

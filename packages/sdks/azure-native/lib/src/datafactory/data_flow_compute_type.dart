@@ -4,16 +4,15 @@ enum DataFlowComputeType {
   valueMemoryOptimized("MemoryOptimized"),
   valueComputeOptimized("ComputeOptimized");
 
-  const DataFlowComputeType(this.value);
-  final String value;
+  const DataFlowComputeType(this.wireValue);
+  final String wireValue;
 
   static DataFlowComputeType fromValue(String value) {
     for (final item in DataFlowComputeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataFlowComputeType value: $value');
   }
 }
-

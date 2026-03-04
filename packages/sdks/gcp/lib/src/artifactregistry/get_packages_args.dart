@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPackagesArgs {
   /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `annotations`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages/list#query-parameters).
   final pulumi.Input<String>? filter;
+
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
+
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 
@@ -39,11 +42,18 @@ class GetPackagesArgs {
 
   factory GetPackagesArgs.fromMap(Map<String, dynamic> map) {
     return GetPackagesArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
-

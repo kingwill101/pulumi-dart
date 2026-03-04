@@ -6,29 +6,41 @@ import 'system_data_response.dart';
 class GetBlobContainerDataSetMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// BLOB Container name.
   final String containerName;
+
   /// The id of the source data set.
   final String dataSetId;
+
   /// Gets the status of the data set mapping.
   final String dataSetMappingStatus;
+
   /// The resource id of the azure resource
   final String id;
+
   /// Kind of data set mapping.
   /// Expected value is 'Container'.
   final String kind;
+
   /// Name of the azure resource
   final String name;
+
   /// Provisioning state of the data set mapping.
   final String provisioningState;
+
   /// Resource group of storage account.
   final String resourceGroup;
+
   /// Storage account name of the source data set.
   final String storageAccountName;
+
   /// Subscription id of storage account.
   final String subscriptionId;
+
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
+
   /// Type of the azure resource
   final String type;
 
@@ -80,7 +92,9 @@ class GetBlobContainerDataSetMappingResult {
     };
   }
 
-  factory GetBlobContainerDataSetMappingResult.fromMap(Map<String, dynamic> map) {
+  factory GetBlobContainerDataSetMappingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBlobContainerDataSetMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       containerName: map['containerName'] as String,
@@ -93,9 +107,10 @@ class GetBlobContainerDataSetMappingResult {
       resourceGroup: map['resourceGroup'] as String,
       storageAccountName: map['storageAccountName'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

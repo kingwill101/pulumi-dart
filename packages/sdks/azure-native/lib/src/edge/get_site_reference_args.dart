@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteReferenceArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the SiteReference
   final pulumi.Input<String> siteReferenceName;
 
@@ -34,10 +36,13 @@ class GetSiteReferenceArgs {
 
   factory GetSiteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteReferenceArgs(
-      contextName: (map['contextName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteReferenceName: (map['siteReferenceName'] as String).input(),
+      contextName: pulumi.Input.fromValue(map['contextName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteReferenceName: pulumi.Input.fromValue(
+        map['siteReferenceName'] as String,
+      ),
     );
   }
 }
-

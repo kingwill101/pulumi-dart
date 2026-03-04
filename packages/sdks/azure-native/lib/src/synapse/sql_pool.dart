@@ -209,32 +209,46 @@ import 'sql_pool_args.dart';
 class SqlPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collation mode
   late final pulumi.Output<String?> collation;
+
   /// Date the SQL pool was created
   late final pulumi.Output<String> creationDate;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Maximum size in bytes
   late final pulumi.Output<double?> maxSizeBytes;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Resource state
   late final pulumi.Output<String?> provisioningState;
+
   /// Backup database to restore from
   late final pulumi.Output<String?> recoverableDatabaseId;
+
   /// Snapshot time to restore
   late final pulumi.Output<String?> restorePointInTime;
+
   /// SQL pool SKU
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Specifies the time that the sql pool was deleted
   late final pulumi.Output<String?> sourceDatabaseDeletionDate;
+
   /// Resource status
   late final pulumi.Output<String> status;
+
   /// The storage account type used to store backups for this sql pool.
   late final pulumi.Output<String?> storageAccountType;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,25 +261,27 @@ class SqlPool extends pulumi.CustomResource {
     SqlPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:SqlPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collation = registerOutput<String?>('collation');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.location = registerOutput<String>('location');
-    this.maxSizeBytes = registerOutput<double?>('maxSizeBytes');
+         'azure-native:synapse:SqlPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collation = registerOutput<String?>('collation');
+    creationDate = registerOutput<String>('creationDate');
+    location = registerOutput<String>('location');
+    maxSizeBytes = registerOutput<double?>('maxSizeBytes');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.recoverableDatabaseId = registerOutput<String?>('recoverableDatabaseId');
-    this.restorePointInTime = registerOutput<String?>('restorePointInTime');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.sourceDatabaseDeletionDate = registerOutput<String?>('sourceDatabaseDeletionDate');
-    this.status = registerOutput<String>('status');
-    this.storageAccountType = registerOutput<String?>('storageAccountType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String?>('provisioningState');
+    recoverableDatabaseId = registerOutput<String?>('recoverableDatabaseId');
+    restorePointInTime = registerOutput<String?>('restorePointInTime');
+    sku = registerOutput<SkuResponse?>('sku');
+    sourceDatabaseDeletionDate = registerOutput<String?>(
+      'sourceDatabaseDeletionDate',
+    );
+    status = registerOutput<String>('status');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

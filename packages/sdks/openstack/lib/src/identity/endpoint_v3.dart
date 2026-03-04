@@ -4,7 +4,7 @@ import 'endpoint_v3_state.dart';
 
 /// Manages a V3 Endpoint resource within OpenStack Keystone.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 /// ## Example Usage
 ///
@@ -159,20 +159,27 @@ class EndpointV3 extends pulumi.CustomResource {
   /// The endpoint region. The `region` and
   /// `endpoint_region` can be different.
   late final pulumi.Output<String> endpointRegion;
+
   /// The endpoint interface. Valid values are `public`,
   /// `internal` and `admin`. Default value is `public`
   late final pulumi.Output<String?> interface;
+
   /// The endpoint name.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used.
   late final pulumi.Output<String> region;
+
   /// The endpoint service ID.
   late final pulumi.Output<String> serviceId;
+
   /// The service name of the endpoint.
   late final pulumi.Output<String> serviceName;
+
   /// The service type of the endpoint.
   late final pulumi.Output<String> serviceType;
+
   /// The endpoint url.
   late final pulumi.Output<String> url;
 
@@ -185,19 +192,19 @@ class EndpointV3 extends pulumi.CustomResource {
     EndpointV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/endpointV3:EndpointV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpointRegion = registerOutput<String>('endpointRegion');
-    this.interface = registerOutput<String?>('interface');
+         'openstack:identity/endpointV3:EndpointV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpointRegion = registerOutput<String>('endpointRegion');
+    interface = registerOutput<String?>('interface');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.url = registerOutput<String>('url');
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [EndpointV3] resource's state with the given [name] and [id].
@@ -218,18 +225,18 @@ class EndpointV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/endpointV3:EndpointV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpointRegion = registerOutput<String>('endpointRegion');
-    this.interface = registerOutput<String?>('interface');
+         'openstack:identity/endpointV3:EndpointV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpointRegion = registerOutput<String>('endpointRegion');
+    interface = registerOutput<String?>('interface');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.url = registerOutput<String>('url');
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
+    url = registerOutput<String>('url');
   }
 }

@@ -14,15 +14,14 @@ class PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1beta3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
+  factory PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1beta3(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

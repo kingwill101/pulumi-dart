@@ -10,11 +10,14 @@ class GetRouterNatArgs {
   /// Name of the NAT service. The name must be 1-63 characters long and
   /// comply with RFC1035.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Region where the router and NAT reside.
   final pulumi.Input<String>? region;
+
   /// The name of the Cloud Router in which this NAT will be configured.
   ///
   /// - - -
@@ -43,11 +46,18 @@ class GetRouterNatArgs {
 
   factory GetRouterNatArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterNatArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      router: (map['router'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      router: pulumi.Input.fromValue(map['router'] as String),
     );
   }
 }
-

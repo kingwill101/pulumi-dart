@@ -6,11 +6,14 @@ import 'default_route_table_propagation_timeouts.dart';
 /// Input properties used for looking up and filtering DefaultRouteTablePropagation resources.
 class DefaultRouteTablePropagationState {
   final pulumi.Input<String>? originalDefaultRouteTableId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<DefaultRouteTablePropagationTimeouts>? timeouts;
+
   /// ID of the Transit Gateway to change the default association route table on.
   final pulumi.Input<String>? transitGatewayId;
+
   /// ID of the Transit Gateway Route Table to be made the default association route table.
   final pulumi.Input<String>? transitGatewayRouteTableId;
 
@@ -32,7 +35,11 @@ class DefaultRouteTablePropagationState {
     return <String, dynamic>{
       'originalDefaultRouteTableId': ?originalDefaultRouteTableId,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<DefaultRouteTablePropagationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRouteTablePropagationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'transitGatewayId': ?transitGatewayId,
       'transitGatewayRouteTableId': ?transitGatewayRouteTableId,
     };
@@ -40,12 +47,35 @@ class DefaultRouteTablePropagationState {
 
   factory DefaultRouteTablePropagationState.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTablePropagationState(
-      originalDefaultRouteTableId: map['originalDefaultRouteTableId'] == null ? null : ((map['originalDefaultRouteTableId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : ((map['transitGatewayRouteTableId'] as String).input()).input(),
+      originalDefaultRouteTableId: (() {
+        final guardedValue = map['originalDefaultRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRouteTablePropagationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      transitGatewayId: (() {
+        final guardedValue = map['transitGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayRouteTableId: (() {
+        final guardedValue = map['transitGatewayRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

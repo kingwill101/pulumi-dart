@@ -22103,73 +22103,111 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 class VirtualMachineScaleSet extends pulumi.CustomResource {
   /// Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
-  late final pulumi.Output<AdditionalCapabilitiesResponse?> additionalCapabilities;
+  late final pulumi.Output<AdditionalCapabilitiesResponse?>
+  additionalCapabilities;
+
   /// Policy for automatic repairs.
-  late final pulumi.Output<AutomaticRepairsPolicyResponse?> automaticRepairsPolicy;
+  late final pulumi.Output<AutomaticRepairsPolicyResponse?>
+  automaticRepairsPolicy;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Optional property which must either be set to True or omitted.
   late final pulumi.Output<bool?> constrainedMaximumCapacity;
+
   /// When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
   late final pulumi.Output<bool?> doNotRunExtensionsOnOverprovisionedVMs;
+
   /// Etag is property returned in Create/Update/Get response of the VMSS, so that customer can supply it in the header to ensure optimistic updates
   late final pulumi.Output<String> etag;
+
   /// The extended location of the Virtual Machine Scale Set.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
   late final pulumi.Output<SubResourceResponse?> hostGroup;
+
   /// The identity of the virtual machine scale set, if configured.
   late final pulumi.Output<VirtualMachineScaleSetIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the orchestration mode for the virtual machine scale set.
   late final pulumi.Output<String?> orchestrationMode;
+
   /// Specifies whether the Virtual Machine Scale Set should be overprovisioned.
   late final pulumi.Output<bool?> overprovision;
-  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
+
+  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// Fault Domain count for each placement group.
   late final pulumi.Output<int?> platformFaultDomainCount;
+
   /// Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
   late final pulumi.Output<PriorityMixPolicyResponse?> priorityMixPolicy;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
   late final pulumi.Output<SubResourceResponse?> proximityPlacementGroup;
+
   /// Policy for Resiliency
   late final pulumi.Output<ResiliencyPolicyResponse?> resiliencyPolicy;
+
   /// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
   late final pulumi.Output<ScaleInPolicyResponse?> scaleInPolicy;
+
   /// The ScheduledEventsPolicy.
-  late final pulumi.Output<ScheduledEventsPolicyResponse?> scheduledEventsPolicy;
+  late final pulumi.Output<ScheduledEventsPolicyResponse?>
+  scheduledEventsPolicy;
+
   /// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
   late final pulumi.Output<bool?> singlePlacementGroup;
+
   /// The virtual machine scale set sku.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Specifies the sku profile for the virtual machine scale set.
   late final pulumi.Output<SkuProfileResponse?> skuProfile;
+
   /// Specifies the Spot Restore properties for the virtual machine scale set.
   late final pulumi.Output<SpotRestorePolicyResponse?> spotRestorePolicy;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the time at which the Virtual Machine Scale Set resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Specifies the ID which uniquely identifies a Virtual Machine Scale Set.
   late final pulumi.Output<String> uniqueId;
+
   /// The upgrade policy.
   late final pulumi.Output<UpgradePolicyResponse?> upgradePolicy;
+
   /// The virtual machine profile.
-  late final pulumi.Output<VirtualMachineScaleSetVMProfileResponse?> virtualMachineProfile;
+  late final pulumi.Output<VirtualMachineScaleSetVMProfileResponse?>
+  virtualMachineProfile;
+
   /// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
   late final pulumi.Output<String?> zonalPlatformFaultDomainAlignMode;
+
   /// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
   late final pulumi.Output<bool?> zoneBalance;
+
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -22182,45 +22220,72 @@ class VirtualMachineScaleSet extends pulumi.CustomResource {
     VirtualMachineScaleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:VirtualMachineScaleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>('additionalCapabilities');
-    this.automaticRepairsPolicy = registerOutput<AutomaticRepairsPolicyResponse?>('automaticRepairsPolicy');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.constrainedMaximumCapacity = registerOutput<bool?>('constrainedMaximumCapacity');
-    this.doNotRunExtensionsOnOverprovisionedVMs = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedVMs');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.hostGroup = registerOutput<SubResourceResponse?>('hostGroup');
-    this.identity = registerOutput<VirtualMachineScaleSetIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:VirtualMachineScaleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>(
+      'additionalCapabilities',
+    );
+    automaticRepairsPolicy = registerOutput<AutomaticRepairsPolicyResponse?>(
+      'automaticRepairsPolicy',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    constrainedMaximumCapacity = registerOutput<bool?>(
+      'constrainedMaximumCapacity',
+    );
+    doNotRunExtensionsOnOverprovisionedVMs = registerOutput<bool?>(
+      'doNotRunExtensionsOnOverprovisionedVMs',
+    );
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    hostGroup = registerOutput<SubResourceResponse?>('hostGroup');
+    identity = registerOutput<VirtualMachineScaleSetIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.orchestrationMode = registerOutput<String?>('orchestrationMode');
-    this.overprovision = registerOutput<bool?>('overprovision');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
-    this.priorityMixPolicy = registerOutput<PriorityMixPolicyResponse?>('priorityMixPolicy');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup');
-    this.resiliencyPolicy = registerOutput<ResiliencyPolicyResponse?>('resiliencyPolicy');
-    this.scaleInPolicy = registerOutput<ScaleInPolicyResponse?>('scaleInPolicy');
-    this.scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy');
-    this.singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.skuProfile = registerOutput<SkuProfileResponse?>('skuProfile');
-    this.spotRestorePolicy = registerOutput<SpotRestorePolicyResponse?>('spotRestorePolicy');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.type = registerOutput<String>('type');
-    this.uniqueId = registerOutput<String>('uniqueId');
-    this.upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy');
-    this.virtualMachineProfile = registerOutput<VirtualMachineScaleSetVMProfileResponse?>('virtualMachineProfile');
-    this.zonalPlatformFaultDomainAlignMode = registerOutput<String?>('zonalPlatformFaultDomainAlignMode');
-    this.zoneBalance = registerOutput<bool?>('zoneBalance');
-    this.zones = registerOutput<List<String>?>('zones');
+    orchestrationMode = registerOutput<String?>('orchestrationMode');
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<PlanResponse?>('plan');
+    platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
+    priorityMixPolicy = registerOutput<PriorityMixPolicyResponse?>(
+      'priorityMixPolicy',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>(
+      'proximityPlacementGroup',
+    );
+    resiliencyPolicy = registerOutput<ResiliencyPolicyResponse?>(
+      'resiliencyPolicy',
+    );
+    scaleInPolicy = registerOutput<ScaleInPolicyResponse?>('scaleInPolicy');
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>(
+      'scheduledEventsPolicy',
+    );
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<SkuResponse?>('sku');
+    skuProfile = registerOutput<SkuProfileResponse?>('skuProfile');
+    spotRestorePolicy = registerOutput<SpotRestorePolicyResponse?>(
+      'spotRestorePolicy',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy');
+    virtualMachineProfile =
+        registerOutput<VirtualMachineScaleSetVMProfileResponse?>(
+          'virtualMachineProfile',
+        );
+    zonalPlatformFaultDomainAlignMode = registerOutput<String?>(
+      'zonalPlatformFaultDomainAlignMode',
+    );
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_args.dart';
-import 'firewall_ip_configuration.dart';
 import 'firewall_management_ip_configuration.dart';
 import 'firewall_state.dart';
 import 'firewall_virtual_hub.dart';
@@ -346,7 +345,7 @@ import 'firewall_virtual_hub.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -361,35 +360,50 @@ import 'firewall_virtual_hub.dart';
 class Firewall extends pulumi.CustomResource {
   /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when set to `true`. It will be set to `true` if `dns_servers` provided with a not empty list.
   late final pulumi.Output<bool> dnsProxyEnabled;
+
   /// A list of DNS servers that the Azure Firewall will direct DNS traffic to the for name resolution.
   late final pulumi.Output<List<String>?> dnsServers;
+
   /// The ID of the Firewall Policy applied to this Firewall.
   late final pulumi.Output<String?> firewallPolicyId;
+
   /// An `ip_configuration` block as documented below.
-  late final pulumi.Output<List<FirewallIpConfiguration>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `management_ip_configuration` block as documented below, which allows force-tunnelling of traffic to be performed by the firewall. Adding or removing this block or changing the `subnet_id` in an existing block forces a new resource to be created. Changing this forces a new resource to be created.
-  late final pulumi.Output<FirewallManagementIpConfiguration?> managementIpConfiguration;
+  late final pulumi.Output<FirewallManagementIpConfiguration?>
+  managementIpConfiguration;
+
   /// Specifies the name of the Firewall. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of SNAT private CIDR IP ranges, or the special string `IANAPrivateRanges`, which indicates Azure Firewall does not SNAT when the destination IP address is a private range per IANA RFC 1918.
   late final pulumi.Output<List<String>?> privateIpRanges;
+
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// SKU name of the Firewall. Possible values are `AZFW_Hub` and `AZFW_VNet`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
+
   /// SKU tier of the Firewall. Possible values are `Premium`, `Standard` and `Basic`.
   late final pulumi.Output<String> skuTier;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`.
   late final pulumi.Output<String> threatIntelMode;
+
   /// A `virtual_hub` block as documented below.
   late final pulumi.Output<FirewallVirtualHub?> virtualHub;
+
   /// Specifies a list of Availability Zones in which this Azure Firewall should be located. Changing this forces a new Azure Firewall to be created.
   ///
-  /// > **Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
+  /// &gt; **Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
   late final pulumi.Output<List<String>?> zones;
 
   /// Creates a new [Firewall].
@@ -401,26 +415,31 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewall:Firewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    this.ipConfigurations = registerOutput<List<FirewallIpConfiguration>?>('ipConfigurations');
-    this.location = registerOutput<String>('location');
-    this.managementIpConfiguration = registerOutput<FirewallManagementIpConfiguration?>('managementIpConfiguration');
+         'azure:network/firewall:Firewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    firewallPolicyId = registerOutput<String?>('firewallPolicyId');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
+    managementIpConfiguration =
+        registerOutput<FirewallManagementIpConfiguration?>(
+          'managementIpConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.skuTier = registerOutput<String>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatIntelMode = registerOutput<String>('threatIntelMode');
-    this.virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
-    this.zones = registerOutput<List<String>?>('zones');
+    privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    skuTier = registerOutput<String>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatIntelMode = registerOutput<String>('threatIntelMode');
+    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [Firewall] resource's state with the given [name] and [id].
@@ -441,25 +460,30 @@ class Firewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewall:Firewall',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    this.ipConfigurations = registerOutput<List<FirewallIpConfiguration>?>('ipConfigurations');
-    this.location = registerOutput<String>('location');
-    this.managementIpConfiguration = registerOutput<FirewallManagementIpConfiguration?>('managementIpConfiguration');
+         'azure:network/firewall:Firewall',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    firewallPolicyId = registerOutput<String?>('firewallPolicyId');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
+    managementIpConfiguration =
+        registerOutput<FirewallManagementIpConfiguration?>(
+          'managementIpConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.skuTier = registerOutput<String>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatIntelMode = registerOutput<String>('threatIntelMode');
-    this.virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
-    this.zones = registerOutput<List<String>?>('zones');
+    privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    skuTier = registerOutput<String>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatIntelMode = registerOutput<String>('threatIntelMode');
+    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

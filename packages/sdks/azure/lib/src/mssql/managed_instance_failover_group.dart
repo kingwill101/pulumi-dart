@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_failover_group_args.dart';
-import 'managed_instance_failover_group_partner_region.dart';
 import 'managed_instance_failover_group_read_write_endpoint_failover_policy.dart';
 import 'managed_instance_failover_group_state.dart';
 
@@ -8,7 +7,7 @@ import 'managed_instance_failover_group_state.dart';
 ///
 /// ## Example Usage
 ///
-/// > **Note:** For a more complete example, see the `./examples/sql-azure/managed_instance_failover_group` directory within the GitHub Repository.
+/// &gt; **Note:** For a more complete example, see the `./examples/sql-azure/managed_instance_failover_group` directory within the GitHub Repository.
 ///
 ///
 /// ```typescript
@@ -1394,11 +1393,11 @@ import 'managed_instance_failover_group_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** There are many prerequisites that must be in place before creating the failover group. To see them all, refer to [Configure a failover group for Azure SQL Managed Instance](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/failover-group-configure-sql-mi).
+/// &gt; **Note:** There are many prerequisites that must be in place before creating the failover group. To see them all, refer to [Configure a failover group for Azure SQL Managed Instance](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/failover-group-configure-sql-mi).
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -1413,20 +1412,31 @@ import 'managed_instance_failover_group_state.dart';
 class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
   /// The Azure Region where the Managed Instance Failover Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Azure SQL Managed Instance which will be replicated using a Managed Instance Failover Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceId;
+
   /// The name which should be used for this Managed Instance Failover Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partnerManagedInstanceId;
+
   /// A `partner_region` block as defined below.
-  late final pulumi.Output<List<ManagedInstanceFailoverGroupPartnerRegion>> partnerRegions;
+  late final pulumi.Output<List<Map<String, dynamic>>> partnerRegions;
+
   /// A `read_write_endpoint_failover_policy` block as defined below.
-  late final pulumi.Output<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
+  late final pulumi.Output<
+    ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy
+  >
+  readWriteEndpointFailoverPolicy;
+
   /// Failover policy for the read-only endpoint. Defaults to `true`.
   late final pulumi.Output<bool?> readonlyEndpointFailoverPolicyEnabled;
+
   /// The partner replication role of the Managed Instance Failover Group.
   late final pulumi.Output<String> role;
+
   /// The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
   late final pulumi.Output<String?> secondaryType;
 
@@ -1439,20 +1449,29 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     ManagedInstanceFailoverGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
+         'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
-    this.partnerManagedInstanceId = registerOutput<String>('partnerManagedInstanceId');
-    this.partnerRegions = registerOutput<List<ManagedInstanceFailoverGroupPartnerRegion>>('partnerRegions');
-    this.readWriteEndpointFailoverPolicy = registerOutput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy');
-    this.readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>('readonlyEndpointFailoverPolicyEnabled');
-    this.role = registerOutput<String>('role');
-    this.secondaryType = registerOutput<String?>('secondaryType');
+    partnerManagedInstanceId = registerOutput<String>(
+      'partnerManagedInstanceId',
+    );
+    partnerRegions = registerOutput<List<Map<String, dynamic>>>(
+      'partnerRegions',
+    );
+    readWriteEndpointFailoverPolicy =
+        registerOutput<
+          ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy
+        >('readWriteEndpointFailoverPolicy');
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>(
+      'readonlyEndpointFailoverPolicyEnabled',
+    );
+    role = registerOutput<String>('role');
+    secondaryType = registerOutput<String?>('secondaryType');
   }
 
   /// Gets an existing [ManagedInstanceFailoverGroup] resource's state with the given [name] and [id].
@@ -1473,19 +1492,28 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
+         'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
-    this.partnerManagedInstanceId = registerOutput<String>('partnerManagedInstanceId');
-    this.partnerRegions = registerOutput<List<ManagedInstanceFailoverGroupPartnerRegion>>('partnerRegions');
-    this.readWriteEndpointFailoverPolicy = registerOutput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy');
-    this.readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>('readonlyEndpointFailoverPolicyEnabled');
-    this.role = registerOutput<String>('role');
-    this.secondaryType = registerOutput<String?>('secondaryType');
+    partnerManagedInstanceId = registerOutput<String>(
+      'partnerManagedInstanceId',
+    );
+    partnerRegions = registerOutput<List<Map<String, dynamic>>>(
+      'partnerRegions',
+    );
+    readWriteEndpointFailoverPolicy =
+        registerOutput<
+          ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy
+        >('readWriteEndpointFailoverPolicy');
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>(
+      'readonlyEndpointFailoverPolicyEnabled',
+    );
+    role = registerOutput<String>('role');
+    secondaryType = registerOutput<String?>('secondaryType');
   }
 }

@@ -8,6 +8,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
   /// You may specify up to 3 signature algorithms to use.
   /// Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
   final pulumi.Input<List<String>>? allowedSignatureAlgorithms;
+
   /// The query parameter in which to find the token.
   /// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
   /// Defaults to `edge-cache-token`.
@@ -28,11 +29,20 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions(
-      allowedSignatureAlgorithms: map['allowedSignatureAlgorithms'] == null ? null : ((map['allowedSignatureAlgorithms']! as List).cast<String>()).input(),
-      tokenQueryParameter: map['tokenQueryParameter'] == null ? null : (map['tokenQueryParameter']! as String).input(),
+      allowedSignatureAlgorithms: (() {
+        final guardedValue = map['allowedSignatureAlgorithms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tokenQueryParameter: (() {
+        final guardedValue = map['tokenQueryParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

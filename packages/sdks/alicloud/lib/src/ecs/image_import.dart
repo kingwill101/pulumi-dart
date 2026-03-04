@@ -1,17 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_import_args.dart';
-import 'image_import_disk_device_mapping.dart';
 import 'image_import_state.dart';
 
 /// Provides a ECS Image Import resource.
 ///
 /// For information about ECS Image Import and how to use it, see [What is Image Import](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-importimage).
 ///
-/// > **NOTE:** Available since v1.69.0.
+/// &gt; **NOTE:** Available since v1.69.0.
 ///
-/// > **NOTE:** You must upload the image file to the object storage OSS in advance.
+/// &gt; **NOTE:** You must upload the image file to the object storage OSS in advance.
 ///
-/// > **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
+/// &gt; **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
 ///
 /// ## Example Usage
 ///
@@ -328,20 +327,27 @@ import 'image_import_state.dart';
 class ImageImport extends pulumi.CustomResource {
   /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
   late final pulumi.Output<String?> architecture;
+
   /// The boot mode of the image. Valid values: `BIOS`, `UEFI`.
   late final pulumi.Output<String> bootMode;
+
   /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
+
   /// The information about the custom image. See `disk_device_mapping` below.
-  late final pulumi.Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> diskDeviceMappings;
+
   /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> imageName;
+
   /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
   late final pulumi.Output<String?> licenseType;
+
   /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
   late final pulumi.Output<String?> osType;
+
   /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-  /// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
+  /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
   late final pulumi.Output<String> platform;
 
   /// Creates a new [ImageImport].
@@ -353,19 +359,21 @@ class ImageImport extends pulumi.CustomResource {
     ImageImportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageImport:ImageImport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.architecture = registerOutput<String?>('architecture');
-    this.bootMode = registerOutput<String>('bootMode');
-    this.description = registerOutput<String?>('description');
-    this.diskDeviceMappings = registerOutput<List<ImageImportDiskDeviceMapping>>('diskDeviceMappings');
-    this.imageName = registerOutput<String>('imageName');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.osType = registerOutput<String?>('osType');
-    this.platform = registerOutput<String>('platform');
+         'alicloud:ecs/imageImport:ImageImport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    architecture = registerOutput<String?>('architecture');
+    bootMode = registerOutput<String>('bootMode');
+    description = registerOutput<String?>('description');
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
+      'diskDeviceMappings',
+    );
+    imageName = registerOutput<String>('imageName');
+    licenseType = registerOutput<String?>('licenseType');
+    osType = registerOutput<String?>('osType');
+    platform = registerOutput<String>('platform');
   }
 
   /// Gets an existing [ImageImport] resource's state with the given [name] and [id].
@@ -386,18 +394,20 @@ class ImageImport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageImport:ImageImport',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.architecture = registerOutput<String?>('architecture');
-    this.bootMode = registerOutput<String>('bootMode');
-    this.description = registerOutput<String?>('description');
-    this.diskDeviceMappings = registerOutput<List<ImageImportDiskDeviceMapping>>('diskDeviceMappings');
-    this.imageName = registerOutput<String>('imageName');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.osType = registerOutput<String?>('osType');
-    this.platform = registerOutput<String>('platform');
+         'alicloud:ecs/imageImport:ImageImport',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    architecture = registerOutput<String?>('architecture');
+    bootMode = registerOutput<String>('bootMode');
+    description = registerOutput<String?>('description');
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
+      'diskDeviceMappings',
+    );
+    imageName = registerOutput<String>('imageName');
+    licenseType = registerOutput<String?>('licenseType');
+    osType = registerOutput<String?>('osType');
+    platform = registerOutput<String>('platform');
   }
 }

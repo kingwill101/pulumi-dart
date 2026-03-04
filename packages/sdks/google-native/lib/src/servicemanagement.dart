@@ -1,5 +1,3 @@
-library module_servicemanagement;
-
 export 'servicemanagement/api.dart';
 export 'servicemanagement/api_response.dart';
 export 'servicemanagement/api_syntax.dart';

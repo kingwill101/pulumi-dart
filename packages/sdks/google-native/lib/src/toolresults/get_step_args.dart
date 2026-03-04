@@ -35,11 +35,14 @@ class GetStepArgs {
 
   factory GetStepArgs.fromMap(Map<String, dynamic> map) {
     return GetStepArgs(
-      executionId: (map['executionId'] as String).input(),
-      historyId: (map['historyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      stepId: (map['stepId'] as String).input(),
+      executionId: pulumi.Input.fromValue(map['executionId'] as String),
+      historyId: pulumi.Input.fromValue(map['historyId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stepId: pulumi.Input.fromValue(map['stepId'] as String),
     );
   }
 }
-

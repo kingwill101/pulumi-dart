@@ -7,38 +7,53 @@ import 'get_node_balancer_config_node_status.dart';
 class GetNodeBalancerConfigResult {
   /// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
   final String algorithm;
+
   /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
   final String check;
+
   /// How many times to attempt a check before considering a backend to be down. (1-30)
   final int checkAttempts;
   final String checkBody;
+
   /// How often, in seconds, to check that backends are up and serving requests.
   final int checkInterval;
+
   /// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
   final bool checkPassive;
+
   /// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
   final String checkPath;
+
   /// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
   final int checkTimeout;
+
   /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
   final String cipherSuite;
   final int id;
   final List<GetNodeBalancerConfigNodeStatus> nodeStatuses;
   final int nodebalancerId;
+
   /// The TCP port this Config is for.
   final int port;
+
   /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
   final String protocol;
+
   /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
   final String proxyProtocol;
+
   /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
   final String sslCommonname;
+
   /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
   final String sslFingerprint;
+
   /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
   final String stickiness;
+
   /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
   final int udpCheckPort;
+
   /// The idle time in seconds after which a session that hasn’t received packets is destroyed.
   final int udpSessionTimeout;
 
@@ -98,7 +113,11 @@ class GetNodeBalancerConfigResult {
       'checkTimeout': checkTimeout,
       'cipherSuite': cipherSuite,
       'id': id,
-      'nodeStatuses': pulumi.Input.encodeList<GetNodeBalancerConfigNodeStatus, Map<String, dynamic>>(nodeStatuses, (value) => value.toMap()),
+      'nodeStatuses':
+          pulumi.Input.encodeList<
+            GetNodeBalancerConfigNodeStatus,
+            Map<String, dynamic>
+          >(nodeStatuses, (value) => value.toMap()),
       'nodebalancerId': nodebalancerId,
       'port': port,
       'protocol': protocol,
@@ -123,7 +142,12 @@ class GetNodeBalancerConfigResult {
       checkTimeout: map['checkTimeout'] as int,
       cipherSuite: map['cipherSuite'] as String,
       id: map['id'] as int,
-      nodeStatuses: pulumi.Input.decodeList<GetNodeBalancerConfigNodeStatus>(map['nodeStatuses'], (value) => GetNodeBalancerConfigNodeStatus.fromMap((value as Map).cast<String, dynamic>())),
+      nodeStatuses: pulumi.Input.decodeList<GetNodeBalancerConfigNodeStatus>(
+        map['nodeStatuses']!,
+        (value) => GetNodeBalancerConfigNodeStatus.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       nodebalancerId: map['nodebalancerId'] as int,
       port: map['port'] as int,
       protocol: map['protocol'] as String,
@@ -136,4 +160,3 @@ class GetNodeBalancerConfigResult {
     );
   }
 }
-

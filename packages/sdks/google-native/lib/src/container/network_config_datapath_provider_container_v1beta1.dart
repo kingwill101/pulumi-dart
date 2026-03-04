@@ -4,16 +4,17 @@ enum NetworkConfigDatapathProviderContainerV1beta1 {
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
-  const NetworkConfigDatapathProviderContainerV1beta1(this.value);
-  final String value;
+  const NetworkConfigDatapathProviderContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigDatapathProviderContainerV1beta1 fromValue(String value) {
     for (final item in NetworkConfigDatapathProviderContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkConfigDatapathProviderContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkConfigDatapathProviderContainerV1beta1 value: $value',
+    );
   }
 }
-

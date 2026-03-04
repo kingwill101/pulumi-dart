@@ -5,8 +5,10 @@ import 'provider_args.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
   late final pulumi.Output<String?> project;
+
   /// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
   late final pulumi.Output<String?> region;
+
   /// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
   late final pulumi.Output<String?> zone;
 
@@ -19,13 +21,13 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.project = registerOutput<String?>('project');
-    this.region = registerOutput<String?>('region');
-    this.zone = registerOutput<String?>('zone');
+         'google-native',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    project = registerOutput<String?>('project');
+    region = registerOutput<String?>('region');
+    zone = registerOutput<String?>('zone');
   }
 }

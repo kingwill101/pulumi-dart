@@ -10,20 +10,39 @@ class NodeSelectorPatch {
 
   /// Creates a new [NodeSelectorPatch].
   /// [nodeSelectorTerms] Required. A list of node selector terms. The terms are ORed.
-  NodeSelectorPatch({
-    this.nodeSelectorTerms,
-  });
+  NodeSelectorPatch({this.nodeSelectorTerms});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSelectorTerms': ?pulumi.Input.mapOptionalInputValue<List<NodeSelectorTermPatch>, List<Map<String, dynamic>>>(nodeSelectorTerms, (value) => pulumi.Input.encodeList<NodeSelectorTermPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeSelectorTerms':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeSelectorTermPatch>,
+            List<Map<String, dynamic>>
+          >(
+            nodeSelectorTerms,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodeSelectorTermPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NodeSelectorPatch.fromMap(Map<String, dynamic> map) {
     return NodeSelectorPatch(
-      nodeSelectorTerms: map['nodeSelectorTerms'] == null ? null : (pulumi.Input.decodeList<NodeSelectorTermPatch>(map['nodeSelectorTerms']!, (value) => NodeSelectorTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelectorTerms: (() {
+        final guardedValue = map['nodeSelectorTerms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeSelectorTermPatch>(
+            guardedValue,
+            (value) => NodeSelectorTermPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

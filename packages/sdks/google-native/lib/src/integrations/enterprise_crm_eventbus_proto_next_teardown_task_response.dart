@@ -9,20 +9,17 @@ class EnterpriseCrmEventbusProtoNextTeardownTaskResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoNextTeardownTaskResponse].
   /// [name] Name of the next teardown task.
-  EnterpriseCrmEventbusProtoNextTeardownTaskResponse({
-    required this.name,
-  });
+  EnterpriseCrmEventbusProtoNextTeardownTaskResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory EnterpriseCrmEventbusProtoNextTeardownTaskResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoNextTeardownTaskResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoNextTeardownTaskResponse(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

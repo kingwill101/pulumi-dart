@@ -8,22 +8,31 @@ import 'system_data_response.dart';
 class GetACSSBackupConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Information about the recovery services vault and backup policy used for backup.
   final HanaBackupDataResponse? backupData;
+
   /// Defines the errors related to backup connection resource of virtual instance for SAP.
   final ConnectorErrorDefinitionResponse errors;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Defines the provisioning states.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -54,7 +63,7 @@ class GetACSSBackupConnectionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'backupData': ?backupData == null ? null : backupData!.toMap(),
+      'backupData': ?backupData?.toMap(),
       'errors': errors.toMap(),
       'id': id,
       'location': location,
@@ -69,16 +78,29 @@ class GetACSSBackupConnectionResult {
   factory GetACSSBackupConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetACSSBackupConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupData: map['backupData'] == null ? null : HanaBackupDataResponse.fromMap((map['backupData']! as Map).cast<String, dynamic>()),
-      errors: ConnectorErrorDefinitionResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
+      backupData: (() {
+        final guardedValue = map['backupData'];
+        if (guardedValue == null) return null;
+        return HanaBackupDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      errors: ConnectorErrorDefinitionResponse.fromMap(
+        (map['errors']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

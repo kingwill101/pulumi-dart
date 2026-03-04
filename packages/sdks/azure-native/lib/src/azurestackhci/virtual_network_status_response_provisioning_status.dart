@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkStatusResponseProvisioningStatus {
   /// The ID of the operation performed on the virtual network
   final pulumi.Input<String>? operationId;
+
   /// The status of the operation performed on the virtual network [Succeeded, Failed, InProgress]
   final pulumi.Input<String>? status;
 
@@ -17,17 +18,23 @@ class VirtualNetworkStatusResponseProvisioningStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operationId': ?operationId,
-      'status': ?status,
-    };
+    return <String, dynamic>{'operationId': ?operationId, 'status': ?status};
   }
 
-  factory VirtualNetworkStatusResponseProvisioningStatus.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkStatusResponseProvisioningStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkStatusResponseProvisioningStatus(
-      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      operationId: (() {
+        final guardedValue = map['operationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,17 +7,23 @@ import 'get_instance_attachments_attachment.dart';
 class GetInstanceAttachmentsResult {
   /// A list of CEN Instance Attachments. Each element contains the following attributes:
   final List<GetInstanceAttachmentsAttachment> attachments;
+
   /// The ID of the region to which the network belongs.
   final String? childInstanceRegionId;
+
   /// The type of the associated network.
   final String? childInstanceType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of CEN Instance Attachment IDs.
   final List<String> ids;
+
   /// The ID of the CEN instance.
   final String instanceId;
   final String? outputFile;
+
   /// The status of the network.
   final String? status;
 
@@ -43,7 +49,11 @@ class GetInstanceAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetInstanceAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetInstanceAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'childInstanceRegionId': ?childInstanceRegionId,
       'childInstanceType': ?childInstanceType,
       'id': id,
@@ -56,15 +66,35 @@ class GetInstanceAttachmentsResult {
 
   factory GetInstanceAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(map['attachments'], (value) => GetInstanceAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : map['childInstanceRegionId']! as String,
-      childInstanceType: map['childInstanceType'] == null ? null : map['childInstanceType']! as String,
+      attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(
+        map['attachments']!,
+        (value) => GetInstanceAttachmentsAttachment.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      childInstanceRegionId: (() {
+        final guardedValue = map['childInstanceRegionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      childInstanceType: (() {
+        final guardedValue = map['childInstanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -15,6 +15,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// FAILED_DISABLING
   /// FAILED_UPDATING
   final pulumi.Input<String>? managementState;
+
   /// (Output)
   /// The Database Management type.
   /// Possible values:
@@ -37,11 +38,20 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
     };
   }
 
-  factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(Map<String, dynamic> map) {
+  factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig(
-      managementState: map['managementState'] == null ? null : (map['managementState']! as String).input(),
-      managementType: map['managementType'] == null ? null : (map['managementType']! as String).input(),
+      managementState: (() {
+        final guardedValue = map['managementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementType: (() {
+        final guardedValue = map['managementType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

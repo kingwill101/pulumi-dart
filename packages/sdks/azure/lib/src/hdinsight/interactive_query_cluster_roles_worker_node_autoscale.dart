@@ -5,24 +5,36 @@ import 'interactive_query_cluster_roles_worker_node_autoscale_recurrence.dart';
 
 class InteractiveQueryClusterRolesWorkerNodeAutoscale {
   /// A `recurrence` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
+  final pulumi.Input<InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence>?
+  recurrence;
 
   /// Creates a new [InteractiveQueryClusterRolesWorkerNodeAutoscale].
   /// [recurrence] A `recurrence` block as defined below.
-  InteractiveQueryClusterRolesWorkerNodeAutoscale({
-    this.recurrence,
-  });
+  InteractiveQueryClusterRolesWorkerNodeAutoscale({this.recurrence});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recurrence': ?pulumi.Input.mapOptionalInputValue<InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
+      'recurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence,
+            Map<String, dynamic>
+          >(recurrence, (value) => value.toMap()),
     };
   }
 
-  factory InteractiveQueryClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
+  factory InteractiveQueryClusterRolesWorkerNodeAutoscale.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InteractiveQueryClusterRolesWorkerNodeAutoscale(
-      recurrence: map['recurrence'] == null ? null : (InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      recurrence: (() {
+        final guardedValue = map['recurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

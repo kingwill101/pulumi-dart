@@ -16,14 +16,23 @@ class ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'document': pulumi.Input.mapInputValue<ApigatewayApiConfigFileResponseApigatewayV1beta, Map<String, dynamic>>(document, (value) => value.toMap()),
+      'document':
+          pulumi.Input.mapInputValue<
+            ApigatewayApiConfigFileResponseApigatewayV1beta,
+            Map<String, dynamic>
+          >(document, (value) => value.toMap()),
     };
   }
 
-  factory ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta(
-      document: (ApigatewayApiConfigFileResponseApigatewayV1beta.fromMap((map['document'] as Map).cast<String, dynamic>())).input(),
+      document: pulumi.Input.fromValue(
+        ApigatewayApiConfigFileResponseApigatewayV1beta.fromMap(
+          (map['document']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

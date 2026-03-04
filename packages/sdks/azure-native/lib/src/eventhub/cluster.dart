@@ -185,28 +185,40 @@ import 'system_data_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The UTC time when the Event Hubs Cluster was created.
   late final pulumi.Output<String> createdAt;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The metric ID of the cluster resource. Provided by the service and not modifiable by the user.
   late final pulumi.Output<String> metricId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the Cluster.
   late final pulumi.Output<String> provisioningState;
+
   /// Properties of the cluster SKU.
   late final pulumi.Output<ClusterSkuResponse?> sku;
+
   /// Status of the Cluster resource
   late final pulumi.Output<String> status;
+
   /// A value that indicates whether Scaling is Supported.
   late final pulumi.Output<bool?> supportsScaling;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The UTC time when the Event Hubs Cluster was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -219,23 +231,23 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventhub:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.location = registerOutput<String?>('location');
-    this.metricId = registerOutput<String>('metricId');
+         'azure-native:eventhub:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    location = registerOutput<String?>('location');
+    metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<ClusterSkuResponse?>('sku');
-    this.status = registerOutput<String>('status');
-    this.supportsScaling = registerOutput<bool?>('supportsScaling');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<ClusterSkuResponse?>('sku');
+    status = registerOutput<String>('status');
+    supportsScaling = registerOutput<bool?>('supportsScaling');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

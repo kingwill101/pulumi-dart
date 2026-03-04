@@ -7,26 +7,36 @@ import 'workbook_identity.dart';
 class WorkbookState {
   /// Workbook category, as defined by the user at creation time. There may be additional category types beyond the following: `workbook`, `sentinel`. Defaults to `workbook`.
   final pulumi.Input<String>? category;
+
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON.
   final pulumi.Input<String>? dataJson;
+
   /// Specifies the description of the workbook.
   final pulumi.Input<String>? description;
+
   /// Specifies the user-defined name (display name) of the workbook.
   final pulumi.Input<String>? displayName;
+
   /// An `identity` block as defined below. Changing this forces a new Workbook to be created.
   final pulumi.Input<WorkbookIdentity>? identity;
+
   /// Specifies the Azure Region where the Workbook should exist. Changing this forces a new Workbook to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of this Workbook as a UUID/GUID. It should not contain any uppercase letters. Changing this forces a new Workbook to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group where the Workbook should exist. Changing this forces a new Workbook to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Resource ID for a source resource. It should not contain any uppercase letters. Defaults to `azure monitor`.
   final pulumi.Input<String>? sourceId;
+
   /// Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   ///
-  /// > **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
+  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
   final pulumi.Input<String>? storageContainerId;
+
   /// A mapping of tags which should be assigned to the Workbook.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -62,7 +72,11 @@ class WorkbookState {
       'dataJson': ?dataJson,
       'description': ?description,
       'displayName': ?displayName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<WorkbookIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkbookIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
@@ -74,18 +88,67 @@ class WorkbookState {
 
   factory WorkbookState.fromMap(Map<String, dynamic> map) {
     return WorkbookState(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      dataJson: map['dataJson'] == null ? null : (map['dataJson']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identity: map['identity'] == null ? null : (WorkbookIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataJson: (() {
+        final guardedValue = map['dataJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkbookIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceId: (() {
+        final guardedValue = map['sourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageContainerId: (() {
+        final guardedValue = map['storageContainerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

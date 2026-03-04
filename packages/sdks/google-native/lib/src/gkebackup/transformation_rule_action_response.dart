@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransformationRuleActionResponse {
   /// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
   final pulumi.Input<String> fromPath;
+
   /// op specifies the operation to perform.
   final pulumi.Input<String> op;
+
   /// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
   final pulumi.Input<String> path;
+
   /// Optional. A string that specifies the desired value in string format to use for transformation.
   final pulumi.Input<String> value;
 
@@ -36,11 +39,10 @@ class TransformationRuleActionResponse {
 
   factory TransformationRuleActionResponse.fromMap(Map<String, dynamic> map) {
     return TransformationRuleActionResponse(
-      fromPath: (map['fromPath'] as String).input(),
-      op: (map['op'] as String).input(),
-      path: (map['path'] as String).input(),
-      value: (map['value'] as String).input(),
+      fromPath: pulumi.Input.fromValue(map['fromPath'] as String),
+      op: pulumi.Input.fromValue(map['op'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -11,16 +11,22 @@ import 'identity_properties.dart';
 class ExportPipelineArgs {
   /// The name of the export pipeline.
   final pulumi.Input<String>? exportPipelineName;
+
   /// The identity of the export pipeline.
   final pulumi.Input<IdentityProperties>? identity;
+
   /// The location of the export pipeline.
   final pulumi.Input<String>? location;
+
   /// The list of all options configured for the pipeline.
   final pulumi.Input<List<String>>? options;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The target properties of the export pipeline.
   final pulumi.Input<ExportPipelineTargetProperties> target;
 
@@ -45,25 +51,58 @@ class ExportPipelineArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exportPipelineName': ?exportPipelineName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityProperties,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'options': ?options,
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
-      'target': pulumi.Input.mapInputValue<ExportPipelineTargetProperties, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            ExportPipelineTargetProperties,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory ExportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ExportPipelineArgs(
-      exportPipelineName: map['exportPipelineName'] == null ? null : (map['exportPipelineName']! as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      target: (ExportPipelineTargetProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      exportPipelineName: (() {
+        final guardedValue = map['exportPipelineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      target: pulumi.Input.fromValue(
+        ExportPipelineTargetProperties.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

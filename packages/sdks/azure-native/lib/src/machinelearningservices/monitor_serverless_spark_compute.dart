@@ -7,11 +7,14 @@ import 'aml_token_compute_identity.dart';
 class MonitorServerlessSparkCompute {
   /// [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
   final pulumi.Input<AmlTokenComputeIdentity> computeIdentity;
+
   /// Monitor compute type enum.
   /// Expected value is 'ServerlessSpark'.
   final pulumi.Input<String> computeType;
+
   /// [Required] The instance type running the Spark job.
   final pulumi.Input<String> instanceType;
+
   /// [Required] The Spark runtime version.
   final pulumi.Input<String> runtimeVersion;
 
@@ -29,7 +32,11 @@ class MonitorServerlessSparkCompute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeIdentity': pulumi.Input.mapInputValue<AmlTokenComputeIdentity, Map<String, dynamic>>(computeIdentity, (value) => value.toMap()),
+      'computeIdentity':
+          pulumi.Input.mapInputValue<
+            AmlTokenComputeIdentity,
+            Map<String, dynamic>
+          >(computeIdentity, (value) => value.toMap()),
       'computeType': computeType,
       'instanceType': instanceType,
       'runtimeVersion': runtimeVersion,
@@ -38,11 +45,14 @@ class MonitorServerlessSparkCompute {
 
   factory MonitorServerlessSparkCompute.fromMap(Map<String, dynamic> map) {
     return MonitorServerlessSparkCompute(
-      computeIdentity: (AmlTokenComputeIdentity.fromMap((map['computeIdentity'] as Map).cast<String, dynamic>())).input(),
-      computeType: (map['computeType'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      runtimeVersion: (map['runtimeVersion'] as String).input(),
+      computeIdentity: pulumi.Input.fromValue(
+        AmlTokenComputeIdentity.fromMap(
+          (map['computeIdentity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      computeType: pulumi.Input.fromValue(map['computeType'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
     );
   }
 }
-

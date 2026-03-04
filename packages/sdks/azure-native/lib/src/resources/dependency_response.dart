@@ -7,10 +7,13 @@ import 'basic_dependency_response.dart';
 class DependencyResponse {
   /// The list of dependencies.
   final pulumi.Input<List<BasicDependencyResponse>>? dependsOn;
+
   /// The ID of the dependency.
   final pulumi.Input<String>? id;
+
   /// The dependency resource name.
   final pulumi.Input<String>? resourceName;
+
   /// The dependency resource type.
   final pulumi.Input<String>? resourceType;
 
@@ -28,7 +31,18 @@ class DependencyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<BasicDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<BasicDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BasicDependencyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BasicDependencyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'resourceName': ?resourceName,
       'resourceType': ?resourceType,
@@ -37,11 +51,33 @@ class DependencyResponse {
 
   factory DependencyResponse.fromMap(Map<String, dynamic> map) {
     return DependencyResponse(
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<BasicDependencyResponse>(map['dependsOn']!, (value) => BasicDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BasicDependencyResponse>(
+            guardedValue,
+            (value) => BasicDependencyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

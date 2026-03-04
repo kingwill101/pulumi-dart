@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
   /// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
   final pulumi.Input<double>? confidenceThreshold;
+
   /// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
   final pulumi.Input<int>? expirationSec;
+
   /// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
   final pulumi.Input<double>? impactedBaselineThreshold;
+
   /// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
   final pulumi.Input<double>? loadThreshold;
 
@@ -33,13 +36,30 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold']! as double).input(),
-      expirationSec: map['expirationSec'] == null ? null : (map['expirationSec']! as int).input(),
-      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : (map['impactedBaselineThreshold']! as double).input(),
-      loadThreshold: map['loadThreshold'] == null ? null : (map['loadThreshold']! as double).input(),
+      confidenceThreshold: (() {
+        final guardedValue = map['confidenceThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      expirationSec: (() {
+        final guardedValue = map['expirationSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      impactedBaselineThreshold: (() {
+        final guardedValue = map['impactedBaselineThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      loadThreshold: (() {
+        final guardedValue = map['loadThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

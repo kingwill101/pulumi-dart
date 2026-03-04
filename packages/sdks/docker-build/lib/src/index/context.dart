@@ -15,20 +15,13 @@ class Context {
 
   /// Creates a new [Context].
   /// [location] Resources to use for build context.
-  Context({
-    required this.location,
-  });
+  Context({required this.location});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-    };
+    return <String, dynamic>{'location': location};
   }
 
   factory Context.fromMap(Map<String, dynamic> map) {
-    return Context(
-      location: (map['location'] as String).input(),
-    );
+    return Context(location: pulumi.Input.fromValue(map['location'] as String));
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'setting_args.dart';
-import 'settings_properties_response_cache.dart';
 
 /// State of the myscope setting.
 ///
@@ -187,16 +186,22 @@ import 'settings_properties_response_cache.dart';
 class Setting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Array of scopes with additional details used by Cost Management in the Azure portal.
-  late final pulumi.Output<List<SettingsPropertiesResponseCache>?> cache;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cache;
+
   /// Resource kind.
   late final pulumi.Output<String> kind;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
   late final pulumi.Output<String> scope;
+
   /// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   late final pulumi.Output<String?> startOn;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -209,17 +214,17 @@ class Setting extends pulumi.CustomResource {
     SettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:costmanagement:Setting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cache = registerOutput<List<SettingsPropertiesResponseCache>?>('cache');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:costmanagement:Setting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cache = registerOutput<List<Map<String, dynamic>>?>('cache');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<String>('scope');
-    this.startOn = registerOutput<String?>('startOn');
-    this.type = registerOutput<String>('type');
+    scope = registerOutput<String>('scope');
+    startOn = registerOutput<String?>('startOn');
+    type = registerOutput<String>('type');
   }
 }

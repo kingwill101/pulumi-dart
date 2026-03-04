@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProducerImageShareGroupMemberState {
   /// When the member was created.
   final pulumi.Input<String>? created;
+
   /// When the member will expire.
   final pulumi.Input<String>? expiry;
+
   /// A label for the member.
   final pulumi.Input<String>? label;
+
   /// The ID of the Image Share Group to which the member will be added.
   final pulumi.Input<int>? sharegroupId;
+
   /// The status of the member.
   final pulumi.Input<String>? status;
+
   /// The token of the prospective member.
   final pulumi.Input<String>? token;
+
   /// The UUID of member's token.
   final pulumi.Input<String>? tokenUuid;
+
   /// When the member was last updated.
   final pulumi.Input<String>? updated;
 
@@ -56,15 +63,46 @@ class ProducerImageShareGroupMemberState {
 
   factory ProducerImageShareGroupMemberState.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupMemberState(
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      token: map['token'] == null ? null : (map['token']! as String).input(),
-      tokenUuid: map['tokenUuid'] == null ? null : (map['tokenUuid']! as String).input(),
-      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiry: (() {
+        final guardedValue = map['expiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharegroupId: (() {
+        final guardedValue = map['sharegroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenUuid: (() {
+        final guardedValue = map['tokenUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

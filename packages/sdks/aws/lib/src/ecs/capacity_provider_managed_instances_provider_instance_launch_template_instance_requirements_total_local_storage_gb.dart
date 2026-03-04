@@ -15,17 +15,23 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb(
-      max: map['max'] == null ? null : ((map['max'] as double).input()).input(),
-      min: map['min'] == null ? null : ((map['min'] as double).input()).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

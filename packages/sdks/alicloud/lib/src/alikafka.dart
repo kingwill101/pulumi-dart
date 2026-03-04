@@ -1,5 +1,3 @@
-library module_alikafka;
-
 export 'alikafka/consumer_group.dart';
 export 'alikafka/consumer_group_args.dart';
 export 'alikafka/consumer_group_state.dart';

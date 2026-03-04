@@ -7,8 +7,10 @@ import 'volume_attachment_source.dart';
 class VolumeAttachmentSpec {
   /// attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
   final pulumi.Input<String> attacher;
+
   /// nodeName represents the node that the volume should be attached to.
   final pulumi.Input<String> nodeName;
+
   /// source represents the volume that should be attached.
   final pulumi.Input<VolumeAttachmentSource> source;
 
@@ -26,16 +28,23 @@ class VolumeAttachmentSpec {
     return <String, dynamic>{
       'attacher': attacher,
       'nodeName': nodeName,
-      'source': pulumi.Input.mapInputValue<VolumeAttachmentSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            VolumeAttachmentSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory VolumeAttachmentSpec.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentSpec(
-      attacher: (map['attacher'] as String).input(),
-      nodeName: (map['nodeName'] as String).input(),
-      source: (VolumeAttachmentSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      attacher: pulumi.Input.fromValue(map['attacher'] as String),
+      nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
+      source: pulumi.Input.fromValue(
+        VolumeAttachmentSource.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

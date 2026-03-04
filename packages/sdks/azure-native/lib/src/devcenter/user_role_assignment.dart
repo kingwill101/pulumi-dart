@@ -9,20 +9,19 @@ class UserRoleAssignment {
 
   /// Creates a new [UserRoleAssignment].
   /// [roles] A map of roles to assign to the parent user.
-  UserRoleAssignment({
-    this.roles,
-  });
+  UserRoleAssignment({this.roles});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'roles': ?roles,
-    };
+    return <String, dynamic>{'roles': ?roles};
   }
 
   factory UserRoleAssignment.fromMap(Map<String, dynamic> map) {
     return UserRoleAssignment(
-      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

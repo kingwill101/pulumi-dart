@@ -15,20 +15,15 @@ class GetFhirStoreIamPolicyArgs {
 
   /// Creates a new [GetFhirStoreIamPolicyArgs].
   /// [fhirStoreId] The FHIR store ID, in the form
-  GetFhirStoreIamPolicyArgs({
-    required this.fhirStoreId,
-  });
+  GetFhirStoreIamPolicyArgs({required this.fhirStoreId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fhirStoreId': fhirStoreId,
-    };
+    return <String, dynamic>{'fhirStoreId': fhirStoreId};
   }
 
   factory GetFhirStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirStoreIamPolicyArgs(
-      fhirStoreId: (map['fhirStoreId'] as String).input(),
+      fhirStoreId: pulumi.Input.fromValue(map['fhirStoreId'] as String),
     );
   }
 }
-

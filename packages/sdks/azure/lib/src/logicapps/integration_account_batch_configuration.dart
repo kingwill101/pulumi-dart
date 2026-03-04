@@ -213,7 +213,7 @@ import 'integration_account_batch_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -228,14 +228,20 @@ import 'integration_account_batch_configuration_state.dart';
 class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
   /// The batch group name of the Logic App Integration Batch Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> batchGroupName;
+
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// A JSON mapping of any Metadata for this Logic App Integration Account Batch Configuration.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Batch Configuration. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
-  late final pulumi.Output<IntegrationAccountBatchConfigurationReleaseCriteria> releaseCriteria;
+  late final pulumi.Output<IntegrationAccountBatchConfigurationReleaseCriteria>
+  releaseCriteria;
+
   /// The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -248,17 +254,20 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
     IntegrationAccountBatchConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.batchGroupName = registerOutput<String>('batchGroupName');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    batchGroupName = registerOutput<String>('batchGroupName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.releaseCriteria = registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>('releaseCriteria');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    releaseCriteria =
+        registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>(
+          'releaseCriteria',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountBatchConfiguration] resource's state with the given [name] and [id].
@@ -279,16 +288,19 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.batchGroupName = registerOutput<String>('batchGroupName');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    batchGroupName = registerOutput<String>('batchGroupName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.releaseCriteria = registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>('releaseCriteria');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    releaseCriteria =
+        registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>(
+          'releaseCriteria',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

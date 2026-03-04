@@ -27,9 +27,8 @@ class GetSourceSecuritycenterV1beta1Args {
 
   factory GetSourceSecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSourceSecuritycenterV1beta1Args(
-      organizationId: (map['organizationId'] as String).input(),
-      sourceId: (map['sourceId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
-

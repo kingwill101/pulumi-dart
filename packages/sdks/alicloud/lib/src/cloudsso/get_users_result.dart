@@ -7,6 +7,7 @@ import 'get_users_user.dart';
 class GetUsersResult {
   final String directoryId;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -52,23 +53,48 @@ class GetUsersResult {
       'outputFile': ?outputFile,
       'provisionType': ?provisionType,
       'status': ?status,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(
+        users,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetUsersResult.fromMap(Map<String, dynamic> map) {
     return GetUsersResult(
       directoryId: map['directoryId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      provisionType: map['provisionType'] == null ? null : map['provisionType']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      provisionType: (() {
+        final guardedValue = map['provisionType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      users: pulumi.Input.decodeList<GetUsersUser>(
+        map['users']!,
+        (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

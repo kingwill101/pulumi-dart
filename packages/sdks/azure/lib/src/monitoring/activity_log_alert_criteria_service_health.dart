@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActivityLogAlertCriteriaServiceHealth {
   /// Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.
   final pulumi.Input<List<String>>? events;
+
   /// Locations this alert will monitor. For example, `West Europe`.
   final pulumi.Input<List<String>>? locations;
+
   /// Services this alert will monitor. For example, `Activity Logs & Alerts`, `Action Groups`. Defaults to all Services.
   final pulumi.Input<List<String>>? services;
 
@@ -28,12 +30,25 @@ class ActivityLogAlertCriteriaServiceHealth {
     };
   }
 
-  factory ActivityLogAlertCriteriaServiceHealth.fromMap(Map<String, dynamic> map) {
+  factory ActivityLogAlertCriteriaServiceHealth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ActivityLogAlertCriteriaServiceHealth(
-      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
-      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
-      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
+      events: (() {
+        final guardedValue = map['events'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

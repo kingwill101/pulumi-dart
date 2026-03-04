@@ -7,29 +7,56 @@ import 'restore_workload_compute_instance_restore_properties_network_interface_i
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>>? accessConfigs;
+  final pulumi.Input<
+    List<
+      RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig
+    >
+  >?
+  accessConfigs;
+
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>>? aliasIpRanges;
+  final pulumi.Input<
+    List<
+      RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange
+    >
+  >?
+  aliasIpRanges;
+
   /// Optional. The prefix length of the primary internal IPv6 range.
   final pulumi.Input<int>? internalIpv6PrefixLength;
+
   /// Optional. An IPv4 internal IP address to assign to the instance.
   final pulumi.Input<String>? ipAddress;
+
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>>? ipv6AccessConfigs;
+  final pulumi.Input<
+    List<
+      RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig
+    >
+  >?
+  ipv6AccessConfigs;
+
   /// Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
   final pulumi.Input<String>? ipv6AccessType;
+
   /// Optional. An IPv6 internal network address for this network interface.
   final pulumi.Input<String>? ipv6Address;
+
   /// Optional. URL of the VPC network resource for this instance.
   final pulumi.Input<String>? network;
+
   /// (Optional)
   final pulumi.Input<String>? networkAttachment;
+
   /// Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
   final pulumi.Input<String>? nicType;
+
   /// (Optional)
   final pulumi.Input<int>? queueCount;
+
   /// Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
   final pulumi.Input<String>? stackType;
+
   /// Optional. The URL of the Subnetwork resource for this instance.
   final pulumi.Input<String>? subnetwork;
 
@@ -65,11 +92,50 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'aliasIpRanges': ?pulumi.Input.mapOptionalInputValue<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            accessConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'aliasIpRanges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange
+            >,
+            List<Map<String, dynamic>>
+          >(
+            aliasIpRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'internalIpv6PrefixLength': ?internalIpv6PrefixLength,
       'ipAddress': ?ipAddress,
-      'ipv6AccessConfigs': ?pulumi.Input.mapOptionalInputValue<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv6AccessConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            ipv6AccessConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ipv6AccessType': ?ipv6AccessType,
       'ipv6Address': ?ipv6Address,
       'network': ?network,
@@ -81,22 +147,105 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength']! as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
-      queueCount: map['queueCount'] == null ? null : (map['queueCount']! as int).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      accessConfigs: (() {
+        final guardedValue = map['accessConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig
+          >(
+            guardedValue,
+            (value) =>
+                RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      aliasIpRanges: (() {
+        final guardedValue = map['aliasIpRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange
+          >(
+            guardedValue,
+            (value) =>
+                RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      internalIpv6PrefixLength: (() {
+        final guardedValue = map['internalIpv6PrefixLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AccessConfigs: (() {
+        final guardedValue = map['ipv6AccessConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig
+          >(
+            guardedValue,
+            (value) =>
+                RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      ipv6AccessType: (() {
+        final guardedValue = map['ipv6AccessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Address: (() {
+        final guardedValue = map['ipv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAttachment: (() {
+        final guardedValue = map['networkAttachment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nicType: (() {
+        final guardedValue = map['nicType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueCount: (() {
+        final guardedValue = map['queueCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stackType: (() {
+        final guardedValue = map['stackType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultProperties {
   /// Name of Key Vault key.
   final pulumi.Input<String> keyName;
+
   /// Uri of the key vault.
   final pulumi.Input<String> keyVaultUri;
+
   /// Version of Key Vault key.
   final pulumi.Input<String> keyVersion;
 
@@ -31,10 +33,9 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      keyName: (map['keyName'] as String).input(),
-      keyVaultUri: (map['keyVaultUri'] as String).input(),
-      keyVersion: (map['keyVersion'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
+      keyVersion: pulumi.Input.fromValue(map['keyVersion'] as String),
     );
   }
 }
-

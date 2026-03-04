@@ -4,16 +4,15 @@ enum NodeGroupStatusComputeV1 {
   invalid("INVALID"),
   ready("READY");
 
-  const NodeGroupStatusComputeV1(this.value);
-  final String value;
+  const NodeGroupStatusComputeV1(this.wireValue);
+  final String wireValue;
 
   static NodeGroupStatusComputeV1 fromValue(String value) {
     for (final item in NodeGroupStatusComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeGroupStatusComputeV1 value: $value');
   }
 }
-

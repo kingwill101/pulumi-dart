@@ -9,8 +9,10 @@ import 'table_iam_binding_condition.dart';
 /// {@macro pulumi_bigtable_table_iam_binding_table_iam_binding_args_doc}
 class TableIamBindingArgs {
   final pulumi.Input<TableIamBindingCondition>? condition;
+
   /// The name or relative resource id of the instance that owns the table.
   final pulumi.Input<String> instanceName;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -20,15 +22,18 @@ class TableIamBindingArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>> members;
+
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
   final pulumi.Input<String>? project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.bigtable.TableIamPolicy` only:
   final pulumi.Input<String> role;
+
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
@@ -52,7 +57,11 @@ class TableIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<TableIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            TableIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'instanceName': instanceName,
       'members': members,
       'project': ?project,
@@ -63,13 +72,24 @@ class TableIamBindingArgs {
 
   factory TableIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TableIamBindingArgs(
-      condition: map['condition'] == null ? null : (TableIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      role: (map['role'] as String).input(),
-      table: (map['table'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
-

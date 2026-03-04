@@ -7,20 +7,17 @@ class PlanWorkflowStepDocumentDbConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepDocumentDbConfigUngraceful].
   /// [ungraceful] Required.
-  PlanWorkflowStepDocumentDbConfigUngraceful({
-    required this.ungraceful,
-  });
+  PlanWorkflowStepDocumentDbConfigUngraceful({required this.ungraceful});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ungraceful': ungraceful,
-    };
+    return <String, dynamic>{'ungraceful': ungraceful};
   }
 
-  factory PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepDocumentDbConfigUngraceful(
-      ungraceful: (map['ungraceful'] as String).input(),
+      ungraceful: pulumi.Input.fromValue(map['ungraceful'] as String),
     );
   }
 }
-

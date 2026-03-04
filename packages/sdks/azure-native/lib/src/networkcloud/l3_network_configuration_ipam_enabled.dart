@@ -3,16 +3,17 @@ enum L3NetworkConfigurationIpamEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const L3NetworkConfigurationIpamEnabled(this.value);
-  final String value;
+  const L3NetworkConfigurationIpamEnabled(this.wireValue);
+  final String wireValue;
 
   static L3NetworkConfigurationIpamEnabled fromValue(String value) {
     for (final item in L3NetworkConfigurationIpamEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown L3NetworkConfigurationIpamEnabled value: $value');
+    throw ArgumentError(
+      'Unknown L3NetworkConfigurationIpamEnabled value: $value',
+    );
   }
 }
-

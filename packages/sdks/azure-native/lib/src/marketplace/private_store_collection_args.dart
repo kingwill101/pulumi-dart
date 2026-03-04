@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateStoreCollectionArgs {
   /// Indicating whether all subscriptions are selected (=true) or not (=false).
   final pulumi.Input<bool>? allSubscriptions;
+
   /// Gets or sets the association with Commercial's Billing Account.
   final pulumi.Input<String>? claim;
+
   /// The collection ID
   final pulumi.Input<String>? collectionId;
+
   /// Gets or sets collection name.
   final pulumi.Input<String>? collectionName;
+
   /// Indicating whether the collection is enabled or disabled.
   final pulumi.Input<bool>? enabled;
+
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
+
   /// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
   final pulumi.Input<List<String>>? subscriptionsList;
 
@@ -54,14 +60,37 @@ class PrivateStoreCollectionArgs {
 
   factory PrivateStoreCollectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionArgs(
-      allSubscriptions: map['allSubscriptions'] == null ? null : (map['allSubscriptions']! as bool).input(),
-      claim: map['claim'] == null ? null : (map['claim']! as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
-      collectionName: map['collectionName'] == null ? null : (map['collectionName']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      privateStoreId: (map['privateStoreId'] as String).input(),
-      subscriptionsList: map['subscriptionsList'] == null ? null : ((map['subscriptionsList']! as List).cast<String>()).input(),
+      allSubscriptions: (() {
+        final guardedValue = map['allSubscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      claim: (() {
+        final guardedValue = map['claim'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      collectionId: (() {
+        final guardedValue = map['collectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      collectionName: (() {
+        final guardedValue = map['collectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
+      subscriptionsList: (() {
+        final guardedValue = map['subscriptionsList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_sourcerepo;
-
 export 'sourcerepo/functions.dart';
 export 'sourcerepo/get_repository_args.dart';
 export 'sourcerepo/get_repository_iam_policy_args.dart';

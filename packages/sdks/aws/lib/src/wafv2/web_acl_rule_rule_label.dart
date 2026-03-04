@@ -8,20 +8,15 @@ class WebAclRuleRuleLabel {
 
   /// Creates a new [WebAclRuleRuleLabel].
   /// [name] Label string.
-  WebAclRuleRuleLabel({
-    required this.name,
-  });
+  WebAclRuleRuleLabel({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory WebAclRuleRuleLabel.fromMap(Map<String, dynamic> map) {
     return WebAclRuleRuleLabel(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

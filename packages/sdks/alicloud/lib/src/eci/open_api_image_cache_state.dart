@@ -9,7 +9,8 @@ class OpenApiImageCacheState {
   final pulumi.Input<String>? eipInstanceId;
   final pulumi.Input<String>? imageCacheName;
   final pulumi.Input<int>? imageCacheSize;
-  final pulumi.Input<List<OpenApiImageCacheImageRegistryCredential>>? imageRegistryCredentials;
+  final pulumi.Input<List<OpenApiImageCacheImageRegistryCredential>>?
+  imageRegistryCredentials;
   final pulumi.Input<List<String>>? images;
   final pulumi.Input<String>? resourceGroupId;
   final pulumi.Input<int>? retentionDays;
@@ -52,7 +53,18 @@ class OpenApiImageCacheState {
       'eipInstanceId': ?eipInstanceId,
       'imageCacheName': ?imageCacheName,
       'imageCacheSize': ?imageCacheSize,
-      'imageRegistryCredentials': ?pulumi.Input.mapOptionalInputValue<List<OpenApiImageCacheImageRegistryCredential>, List<Map<String, dynamic>>>(imageRegistryCredentials, (value) => pulumi.Input.encodeList<OpenApiImageCacheImageRegistryCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'imageRegistryCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OpenApiImageCacheImageRegistryCredential>,
+            List<Map<String, dynamic>>
+          >(
+            imageRegistryCredentials,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OpenApiImageCacheImageRegistryCredential,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'images': ?images,
       'resourceGroupId': ?resourceGroupId,
       'retentionDays': ?retentionDays,
@@ -65,19 +77,73 @@ class OpenApiImageCacheState {
 
   factory OpenApiImageCacheState.fromMap(Map<String, dynamic> map) {
     return OpenApiImageCacheState(
-      containerGroupId: map['containerGroupId'] == null ? null : (map['containerGroupId']! as String).input(),
-      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId']! as String).input(),
-      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName']! as String).input(),
-      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize']! as int).input(),
-      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(map['imageRegistryCredentials']!, (value) => OpenApiImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      containerGroupId: (() {
+        final guardedValue = map['containerGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eipInstanceId: (() {
+        final guardedValue = map['eipInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageCacheName: (() {
+        final guardedValue = map['imageCacheName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageCacheSize: (() {
+        final guardedValue = map['imageCacheSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      imageRegistryCredentials: (() {
+        final guardedValue = map['imageRegistryCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(
+            guardedValue,
+            (value) => OpenApiImageCacheImageRegistryCredential.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      images: (() {
+        final guardedValue = map['images'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionDays: (() {
+        final guardedValue = map['retentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

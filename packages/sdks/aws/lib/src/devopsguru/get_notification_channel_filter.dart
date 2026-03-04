@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationChannelFilter {
   /// Events to receive notifications for.
   final pulumi.Input<List<String>> messageTypes;
+
   /// Severity levels to receive notifications for.
   final pulumi.Input<List<String>> severities;
 
@@ -25,9 +26,12 @@ class GetNotificationChannelFilter {
 
   factory GetNotificationChannelFilter.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelFilter(
-      messageTypes: ((map['messageTypes'] as List).cast<String>()).input(),
-      severities: ((map['severities'] as List).cast<String>()).input(),
+      messageTypes: pulumi.Input.fromValue(
+        (map['messageTypes'] as List).cast<String>(),
+      ),
+      severities: pulumi.Input.fromValue(
+        (map['severities'] as List).cast<String>(),
+      ),
     );
   }
 }
-

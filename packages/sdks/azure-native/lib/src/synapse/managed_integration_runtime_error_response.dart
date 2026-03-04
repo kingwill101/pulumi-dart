@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIntegrationRuntimeErrorResponse {
   /// Error code.
   final pulumi.Input<String> code;
+
   /// Error message.
   final pulumi.Input<String> message;
+
   /// Managed integration runtime error parameters.
   final pulumi.Input<List<String>> parameters;
+
   /// The time when the error occurred.
   final pulumi.Input<String> time;
 
@@ -34,13 +37,16 @@ class ManagedIntegrationRuntimeErrorResponse {
     };
   }
 
-  factory ManagedIntegrationRuntimeErrorResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedIntegrationRuntimeErrorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedIntegrationRuntimeErrorResponse(
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
-      parameters: ((map['parameters'] as List).cast<String>()).input(),
-      time: (map['time'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      parameters: pulumi.Input.fromValue(
+        (map['parameters'] as List).cast<String>(),
+      ),
+      time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
-

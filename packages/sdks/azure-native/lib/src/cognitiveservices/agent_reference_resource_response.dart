@@ -8,12 +8,16 @@ import 'system_data_response.dart';
 class AgentReferenceResourceResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<AgentReferenceResponse> properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -35,20 +39,35 @@ class AgentReferenceResourceResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'properties': pulumi.Input.mapInputValue<AgentReferenceResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            AgentReferenceResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory AgentReferenceResourceResponse.fromMap(Map<String, dynamic> map) {
     return AgentReferenceResourceResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: (AgentReferenceResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        AgentReferenceResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

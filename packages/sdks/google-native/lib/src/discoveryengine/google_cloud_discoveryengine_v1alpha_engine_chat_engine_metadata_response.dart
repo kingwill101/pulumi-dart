@@ -14,15 +14,14 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dialogflowAgent': dialogflowAgent,
-    };
+    return <String, dynamic>{'dialogflowAgent': dialogflowAgent};
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse(
-      dialogflowAgent: (map['dialogflowAgent'] as String).input(),
+      dialogflowAgent: pulumi.Input.fromValue(map['dialogflowAgent'] as String),
     );
   }
 }
-

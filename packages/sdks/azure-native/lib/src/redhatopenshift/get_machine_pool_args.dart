@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachinePoolArgs {
   /// The name of the MachinePool resource.
   final pulumi.Input<String> childResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -34,10 +36,13 @@ class GetMachinePoolArgs {
 
   factory GetMachinePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetMachinePoolArgs(
-      childResourceName: (map['childResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      childResourceName: pulumi.Input.fromValue(
+        map['childResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

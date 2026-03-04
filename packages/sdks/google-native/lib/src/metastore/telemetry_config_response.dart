@@ -9,20 +9,15 @@ class TelemetryConfigResponse {
 
   /// Creates a new [TelemetryConfigResponse].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
-  TelemetryConfigResponse({
-    required this.logFormat,
-  });
+  TelemetryConfigResponse({required this.logFormat});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logFormat': logFormat,
-    };
+    return <String, dynamic>{'logFormat': logFormat};
   }
 
   factory TelemetryConfigResponse.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigResponse(
-      logFormat: (map['logFormat'] as String).input(),
+      logFormat: pulumi.Input.fromValue(map['logFormat'] as String),
     );
   }
 }
-

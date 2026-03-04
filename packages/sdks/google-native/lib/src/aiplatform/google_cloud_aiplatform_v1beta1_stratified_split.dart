@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1StratifiedSplit {
   /// The key is a name of one of the Dataset's data columns. The key provided must be for a categorical column.
   final pulumi.Input<String> key;
+
   /// The fraction of the input data that is to be used to evaluate the Model.
   final pulumi.Input<double>? testFraction;
+
   /// The fraction of the input data that is to be used to train the Model.
   final pulumi.Input<double>? trainingFraction;
+
   /// The fraction of the input data that is to be used to validate the Model.
   final pulumi.Input<double>? validationFraction;
 
@@ -34,13 +37,26 @@ class GoogleCloudAiplatformV1beta1StratifiedSplit {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1StratifiedSplit.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1StratifiedSplit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1StratifiedSplit(
-      key: (map['key'] as String).input(),
-      testFraction: map['testFraction'] == null ? null : (map['testFraction']! as double).input(),
-      trainingFraction: map['trainingFraction'] == null ? null : (map['trainingFraction']! as double).input(),
-      validationFraction: map['validationFraction'] == null ? null : (map['validationFraction']! as double).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      testFraction: (() {
+        final guardedValue = map['testFraction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      trainingFraction: (() {
+        final guardedValue = map['trainingFraction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      validationFraction: (() {
+        final guardedValue = map['validationFraction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class GrafeasV1beta1DiscoveryDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1DiscoveryDetailsResponse].
   /// [discovered] Analysis status for the discovered resource.
-  GrafeasV1beta1DiscoveryDetailsResponse({
-    required this.discovered,
-  });
+  GrafeasV1beta1DiscoveryDetailsResponse({required this.discovered});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'discovered': pulumi.Input.mapInputValue<DiscoveredResponseContaineranalysisV1beta1, Map<String, dynamic>>(discovered, (value) => value.toMap()),
+      'discovered':
+          pulumi.Input.mapInputValue<
+            DiscoveredResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(discovered, (value) => value.toMap()),
     };
   }
 
-  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1beta1DiscoveryDetailsResponse(
-      discovered: (DiscoveredResponseContaineranalysisV1beta1.fromMap((map['discovered'] as Map).cast<String, dynamic>())).input(),
+      discovered: pulumi.Input.fromValue(
+        DiscoveredResponseContaineranalysisV1beta1.fromMap(
+          (map['discovered']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

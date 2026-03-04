@@ -7,10 +7,13 @@ import 'user_assigned_managed_identity_details.dart';
 class SnapshotBackupAdditionalDetails {
   /// Instant RP details for the snapshot.
   final pulumi.Input<String>? instantRPDetails;
+
   /// Retention range for instant Rp in days.
   final pulumi.Input<int>? instantRpRetentionRangeInDays;
+
   /// User Assigned managed identity details used for snapshot policy.
-  final pulumi.Input<UserAssignedManagedIdentityDetails>? userAssignedManagedIdentityDetails;
+  final pulumi.Input<UserAssignedManagedIdentityDetails>?
+  userAssignedManagedIdentityDetails;
 
   /// Creates a new [SnapshotBackupAdditionalDetails].
   /// [instantRPDetails] Instant RP details for the snapshot.
@@ -26,16 +29,35 @@ class SnapshotBackupAdditionalDetails {
     return <String, dynamic>{
       'instantRPDetails': ?instantRPDetails,
       'instantRpRetentionRangeInDays': ?instantRpRetentionRangeInDays,
-      'userAssignedManagedIdentityDetails': ?pulumi.Input.mapOptionalInputValue<UserAssignedManagedIdentityDetails, Map<String, dynamic>>(userAssignedManagedIdentityDetails, (value) => value.toMap()),
+      'userAssignedManagedIdentityDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserAssignedManagedIdentityDetails,
+            Map<String, dynamic>
+          >(userAssignedManagedIdentityDetails, (value) => value.toMap()),
     };
   }
 
   factory SnapshotBackupAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return SnapshotBackupAdditionalDetails(
-      instantRPDetails: map['instantRPDetails'] == null ? null : (map['instantRPDetails']! as String).input(),
-      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays']! as int).input(),
-      userAssignedManagedIdentityDetails: map['userAssignedManagedIdentityDetails'] == null ? null : (UserAssignedManagedIdentityDetails.fromMap((map['userAssignedManagedIdentityDetails']! as Map).cast<String, dynamic>())).input(),
+      instantRPDetails: (() {
+        final guardedValue = map['instantRPDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instantRpRetentionRangeInDays: (() {
+        final guardedValue = map['instantRpRetentionRangeInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      userAssignedManagedIdentityDetails: (() {
+        final guardedValue = map['userAssignedManagedIdentityDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserAssignedManagedIdentityDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,20 +8,17 @@ class ClusterAnonymousAuthenticationConfig {
 
   /// Creates a new [ClusterAnonymousAuthenticationConfig].
   /// [mode] Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
-  ClusterAnonymousAuthenticationConfig({
-    required this.mode,
-  });
+  ClusterAnonymousAuthenticationConfig({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory ClusterAnonymousAuthenticationConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterAnonymousAuthenticationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAnonymousAuthenticationConfig(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

@@ -2,16 +2,15 @@ enum PossibleOperationsDirections {
   valuePrimaryToRecovery("PrimaryToRecovery"),
   valueRecoveryToPrimary("RecoveryToPrimary");
 
-  const PossibleOperationsDirections(this.value);
-  final String value;
+  const PossibleOperationsDirections(this.wireValue);
+  final String wireValue;
 
   static PossibleOperationsDirections fromValue(String value) {
     for (final item in PossibleOperationsDirections.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PossibleOperationsDirections value: $value');
   }
 }
-

@@ -7,15 +7,19 @@ import 'get_scheduled_tasks_task.dart';
 class GetScheduledTasksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of scheduled task ids.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of scheduled task names.
   final List<String> names;
   final String? outputFile;
+
   /// The operation to be performed when a scheduled task is triggered.
   final String? scheduledAction;
   final String? scheduledTaskId;
+
   /// A list of scheduled tasks. Each element contains the following attributes:
   final List<GetScheduledTasksTask> tasks;
 
@@ -48,7 +52,11 @@ class GetScheduledTasksResult {
       'outputFile': ?outputFile,
       'scheduledAction': ?scheduledAction,
       'scheduledTaskId': ?scheduledTaskId,
-      'tasks': pulumi.Input.encodeList<GetScheduledTasksTask, Map<String, dynamic>>(tasks, (value) => value.toMap()),
+      'tasks':
+          pulumi.Input.encodeList<GetScheduledTasksTask, Map<String, dynamic>>(
+            tasks,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -56,13 +64,33 @@ class GetScheduledTasksResult {
     return GetScheduledTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      scheduledAction: map['scheduledAction'] == null ? null : map['scheduledAction']! as String,
-      scheduledTaskId: map['scheduledTaskId'] == null ? null : map['scheduledTaskId']! as String,
-      tasks: pulumi.Input.decodeList<GetScheduledTasksTask>(map['tasks'], (value) => GetScheduledTasksTask.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      scheduledAction: (() {
+        final guardedValue = map['scheduledAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      scheduledTaskId: (() {
+        final guardedValue = map['scheduledTaskId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tasks: pulumi.Input.decodeList<GetScheduledTasksTask>(
+        map['tasks']!,
+        (value) => GetScheduledTasksTask.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,41 +1,56 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_kubernetes;
+import 'package:pulumi_kubernetes/admissionregistration_k8s_io.dart'
+    as module_admissionregistration_k8s_io;
+import 'package:pulumi_kubernetes/apiextensions_k8s_io.dart'
+    as module_apiextensions_k8s_io;
+import 'package:pulumi_kubernetes/apiregistration_k8s_io.dart'
+    as module_apiregistration_k8s_io;
+import 'package:pulumi_kubernetes/apps.dart' as module_apps;
+import 'package:pulumi_kubernetes/auditregistration_k8s_io.dart'
+    as module_auditregistration_k8s_io;
+import 'package:pulumi_kubernetes/authentication_k8s_io.dart'
+    as module_authentication_k8s_io;
+import 'package:pulumi_kubernetes/authorization_k8s_io.dart'
+    as module_authorization_k8s_io;
+import 'package:pulumi_kubernetes/autoscaling.dart' as module_autoscaling;
+import 'package:pulumi_kubernetes/batch.dart' as module_batch;
+import 'package:pulumi_kubernetes/certificates_k8s_io.dart'
+    as module_certificates_k8s_io;
+import 'package:pulumi_kubernetes/coordination_k8s_io.dart'
+    as module_coordination_k8s_io;
+import 'package:pulumi_kubernetes/core.dart' as module_core;
+import 'package:pulumi_kubernetes/discovery_k8s_io.dart'
+    as module_discovery_k8s_io;
+import 'package:pulumi_kubernetes/events_k8s_io.dart' as module_events_k8s_io;
+import 'package:pulumi_kubernetes/extensions.dart' as module_extensions;
+import 'package:pulumi_kubernetes/flowcontrol_apiserver_k8s_io.dart'
+    as module_flowcontrol_apiserver_k8s_io;
+import 'package:pulumi_kubernetes/helm_sh.dart' as module_helm_sh;
+import 'package:pulumi_kubernetes/index.dart' as module_index;
+import 'package:pulumi_kubernetes/kustomize.dart' as module_kustomize;
+import 'package:pulumi_kubernetes/meta.dart' as module_meta;
+import 'package:pulumi_kubernetes/networking_k8s_io.dart'
+    as module_networking_k8s_io;
+import 'package:pulumi_kubernetes/node_k8s_io.dart' as module_node_k8s_io;
+import 'package:pulumi_kubernetes/pkg.dart' as module_pkg;
+import 'package:pulumi_kubernetes/policy.dart' as module_policy;
+import 'package:pulumi_kubernetes/providers.dart' as module_providers;
+import 'package:pulumi_kubernetes/rbac_authorization_k8s_io.dart'
+    as module_rbac_authorization_k8s_io;
+import 'package:pulumi_kubernetes/resource_k8s_io.dart'
+    as module_resource_k8s_io;
+import 'package:pulumi_kubernetes/scheduling_k8s_io.dart'
+    as module_scheduling_k8s_io;
+import 'package:pulumi_kubernetes/settings_k8s_io.dart'
+    as module_settings_k8s_io;
+import 'package:pulumi_kubernetes/storage_k8s_io.dart' as module_storage_k8s_io;
+import 'package:pulumi_kubernetes/storagemigration_k8s_io.dart'
+    as module_storagemigration_k8s_io;
+import 'package:pulumi_kubernetes/yaml.dart' as module_yaml;
 
-import 'package:pulumi_kubernetes/admissionregistration_k8s_io.dart' as _admissionregistration_k8s_io;
-import 'package:pulumi_kubernetes/apiextensions_k8s_io.dart' as _apiextensions_k8s_io;
-import 'package:pulumi_kubernetes/apiregistration_k8s_io.dart' as _apiregistration_k8s_io;
-import 'package:pulumi_kubernetes/apps.dart' as _apps;
-import 'package:pulumi_kubernetes/auditregistration_k8s_io.dart' as _auditregistration_k8s_io;
-import 'package:pulumi_kubernetes/authentication_k8s_io.dart' as _authentication_k8s_io;
-import 'package:pulumi_kubernetes/authorization_k8s_io.dart' as _authorization_k8s_io;
-import 'package:pulumi_kubernetes/autoscaling.dart' as _autoscaling;
-import 'package:pulumi_kubernetes/batch.dart' as _batch;
-import 'package:pulumi_kubernetes/certificates_k8s_io.dart' as _certificates_k8s_io;
-import 'package:pulumi_kubernetes/coordination_k8s_io.dart' as _coordination_k8s_io;
-import 'package:pulumi_kubernetes/core.dart' as _core;
-import 'package:pulumi_kubernetes/discovery_k8s_io.dart' as _discovery_k8s_io;
-import 'package:pulumi_kubernetes/events_k8s_io.dart' as _events_k8s_io;
-import 'package:pulumi_kubernetes/extensions.dart' as _extensions;
-import 'package:pulumi_kubernetes/flowcontrol_apiserver_k8s_io.dart' as _flowcontrol_apiserver_k8s_io;
-import 'package:pulumi_kubernetes/helm_sh.dart' as _helm_sh;
-import 'package:pulumi_kubernetes/index.dart' as _index;
-import 'package:pulumi_kubernetes/kustomize.dart' as _kustomize;
-import 'package:pulumi_kubernetes/meta.dart' as _meta;
-import 'package:pulumi_kubernetes/networking_k8s_io.dart' as _networking_k8s_io;
-import 'package:pulumi_kubernetes/node_k8s_io.dart' as _node_k8s_io;
-import 'package:pulumi_kubernetes/pkg.dart' as _pkg;
-import 'package:pulumi_kubernetes/policy.dart' as _policy;
-import 'package:pulumi_kubernetes/providers.dart' as _providers;
-import 'package:pulumi_kubernetes/rbac_authorization_k8s_io.dart' as _rbac_authorization_k8s_io;
-import 'package:pulumi_kubernetes/resource_k8s_io.dart' as _resource_k8s_io;
-import 'package:pulumi_kubernetes/scheduling_k8s_io.dart' as _scheduling_k8s_io;
-import 'package:pulumi_kubernetes/settings_k8s_io.dart' as _settings_k8s_io;
-import 'package:pulumi_kubernetes/storage_k8s_io.dart' as _storage_k8s_io;
-import 'package:pulumi_kubernetes/storagemigration_k8s_io.dart' as _storagemigration_k8s_io;
-import 'package:pulumi_kubernetes/yaml.dart' as _yaml;
-
-final admissionregistration_k8s_io = _AdmissionregistrationK8sIoModuleNamespace();
+final admissionregistration_k8s_io =
+    _AdmissionregistrationK8sIoModuleNamespace();
 final apiextensions_k8s_io = _ApiextensionsK8sIoModuleNamespace();
 final apiregistration_k8s_io = _ApiregistrationK8sIoModuleNamespace();
 final apps = _AppsModuleNamespace();
@@ -50,7 +65,8 @@ final core = _CoreModuleNamespace();
 final discovery_k8s_io = _DiscoveryK8sIoModuleNamespace();
 final events_k8s_io = _EventsK8sIoModuleNamespace();
 final extensions = _ExtensionsModuleNamespace();
-final flowcontrol_apiserver_k8s_io = _FlowcontrolApiserverK8sIoModuleNamespace();
+final flowcontrol_apiserver_k8s_io =
+    _FlowcontrolApiserverK8sIoModuleNamespace();
 final helm_sh = _HelmShModuleNamespace();
 final index = _IndexModuleNamespace();
 final kustomize = _KustomizeModuleNamespace();
@@ -70,2859 +86,3990 @@ final yaml = _YamlModuleNamespace();
 
 class _AdmissionregistrationK8sIoModuleNamespace {
   _AdmissionregistrationK8sIoModuleNamespace();
-  final ApplyConfiguration = _admissionregistration_k8s_io.ApplyConfiguration.new;
-  final ApplyConfigurationArgs = _admissionregistration_k8s_io.ApplyConfiguration.new;
-  final ApplyConfigurationPatch = _admissionregistration_k8s_io.ApplyConfigurationPatch.new;
-  final ApplyConfigurationPatchArgs = _admissionregistration_k8s_io.ApplyConfigurationPatch.new;
-  final AuditAnnotation = _admissionregistration_k8s_io.AuditAnnotation.new;
-  final AuditAnnotationArgs = _admissionregistration_k8s_io.AuditAnnotation.new;
-  final AuditAnnotationPatch = _admissionregistration_k8s_io.AuditAnnotationPatch.new;
-  final AuditAnnotationPatchArgs = _admissionregistration_k8s_io.AuditAnnotationPatch.new;
-  final ExpressionWarning = _admissionregistration_k8s_io.ExpressionWarning.new;
-  final ExpressionWarningArgs = _admissionregistration_k8s_io.ExpressionWarning.new;
-  final ExpressionWarningPatch = _admissionregistration_k8s_io.ExpressionWarningPatch.new;
-  final ExpressionWarningPatchArgs = _admissionregistration_k8s_io.ExpressionWarningPatch.new;
-  final JSONPatch = _admissionregistration_k8s_io.JSONPatch.new;
-  final JSONPatchArgs = _admissionregistration_k8s_io.JSONPatch.new;
-  final JSONPatchPatch = _admissionregistration_k8s_io.JSONPatchPatch.new;
-  final JSONPatchPatchArgs = _admissionregistration_k8s_io.JSONPatchPatch.new;
-  final MatchCondition = _admissionregistration_k8s_io.MatchCondition.new;
-  final MatchConditionArgs = _admissionregistration_k8s_io.MatchCondition.new;
-  final MatchConditionPatch = _admissionregistration_k8s_io.MatchConditionPatch.new;
-  final MatchConditionPatchArgs = _admissionregistration_k8s_io.MatchConditionPatch.new;
-  final MatchResources = _admissionregistration_k8s_io.MatchResources.new;
-  final MatchResourcesArgs = _admissionregistration_k8s_io.MatchResources.new;
-  final MatchResourcesPatch = _admissionregistration_k8s_io.MatchResourcesPatch.new;
-  final MatchResourcesPatchArgs = _admissionregistration_k8s_io.MatchResourcesPatch.new;
-  final MutatingAdmissionPolicy = _admissionregistration_k8s_io.MutatingAdmissionPolicy.new;
-  final MutatingAdmissionPolicyArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicy.new;
-  final MutatingAdmissionPolicyBinding = _admissionregistration_k8s_io.MutatingAdmissionPolicyBinding.new;
-  final MutatingAdmissionPolicyBindingArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyBinding.new;
-  final MutatingAdmissionPolicyBindingList = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingList.new;
-  final MutatingAdmissionPolicyBindingListArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingList.new;
-  final MutatingAdmissionPolicyBindingPatch = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingPatch.new;
-  final MutatingAdmissionPolicyBindingPatchArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingPatch.new;
-  final MutatingAdmissionPolicyBindingSpec = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingSpec.new;
-  final MutatingAdmissionPolicyBindingSpecArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingSpec.new;
-  final MutatingAdmissionPolicyBindingSpecPatch = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingSpecPatch.new;
-  final MutatingAdmissionPolicyBindingSpecPatchArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyBindingSpecPatch.new;
-  final MutatingAdmissionPolicyList = _admissionregistration_k8s_io.MutatingAdmissionPolicyList.new;
-  final MutatingAdmissionPolicyListArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyList.new;
-  final MutatingAdmissionPolicyPatch = _admissionregistration_k8s_io.MutatingAdmissionPolicyPatch.new;
-  final MutatingAdmissionPolicyPatchArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicyPatch.new;
-  final MutatingAdmissionPolicySpec = _admissionregistration_k8s_io.MutatingAdmissionPolicySpec.new;
-  final MutatingAdmissionPolicySpecArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicySpec.new;
-  final MutatingAdmissionPolicySpecPatch = _admissionregistration_k8s_io.MutatingAdmissionPolicySpecPatch.new;
-  final MutatingAdmissionPolicySpecPatchArgs = _admissionregistration_k8s_io.MutatingAdmissionPolicySpecPatch.new;
-  final MutatingWebhook = _admissionregistration_k8s_io.MutatingWebhook.new;
-  final MutatingWebhookArgs = _admissionregistration_k8s_io.MutatingWebhook.new;
-  final MutatingWebhookConfiguration = _admissionregistration_k8s_io.MutatingWebhookConfiguration.new;
-  final MutatingWebhookConfigurationArgs = _admissionregistration_k8s_io.MutatingWebhookConfiguration.new;
-  final MutatingWebhookConfigurationList = _admissionregistration_k8s_io.MutatingWebhookConfigurationList.new;
-  final MutatingWebhookConfigurationListArgs = _admissionregistration_k8s_io.MutatingWebhookConfigurationList.new;
-  final MutatingWebhookConfigurationPatch = _admissionregistration_k8s_io.MutatingWebhookConfigurationPatch.new;
-  final MutatingWebhookConfigurationPatchArgs = _admissionregistration_k8s_io.MutatingWebhookConfigurationPatch.new;
-  final MutatingWebhookPatch = _admissionregistration_k8s_io.MutatingWebhookPatch.new;
-  final MutatingWebhookPatchArgs = _admissionregistration_k8s_io.MutatingWebhookPatch.new;
-  final Mutation = _admissionregistration_k8s_io.Mutation.new;
-  final MutationArgs = _admissionregistration_k8s_io.Mutation.new;
-  final MutationPatch = _admissionregistration_k8s_io.MutationPatch.new;
-  final MutationPatchArgs = _admissionregistration_k8s_io.MutationPatch.new;
-  final NamedRuleWithOperations = _admissionregistration_k8s_io.NamedRuleWithOperations.new;
-  final NamedRuleWithOperationsArgs = _admissionregistration_k8s_io.NamedRuleWithOperations.new;
-  final NamedRuleWithOperationsPatch = _admissionregistration_k8s_io.NamedRuleWithOperationsPatch.new;
-  final NamedRuleWithOperationsPatchArgs = _admissionregistration_k8s_io.NamedRuleWithOperationsPatch.new;
-  final ParamKind = _admissionregistration_k8s_io.ParamKind.new;
-  final ParamKindArgs = _admissionregistration_k8s_io.ParamKind.new;
-  final ParamKindPatch = _admissionregistration_k8s_io.ParamKindPatch.new;
-  final ParamKindPatchArgs = _admissionregistration_k8s_io.ParamKindPatch.new;
-  final ParamRef = _admissionregistration_k8s_io.ParamRef.new;
-  final ParamRefArgs = _admissionregistration_k8s_io.ParamRef.new;
-  final ParamRefPatch = _admissionregistration_k8s_io.ParamRefPatch.new;
-  final ParamRefPatchArgs = _admissionregistration_k8s_io.ParamRefPatch.new;
-  final RuleWithOperations = _admissionregistration_k8s_io.RuleWithOperations.new;
-  final RuleWithOperationsArgs = _admissionregistration_k8s_io.RuleWithOperations.new;
-  final RuleWithOperationsPatch = _admissionregistration_k8s_io.RuleWithOperationsPatch.new;
-  final RuleWithOperationsPatchArgs = _admissionregistration_k8s_io.RuleWithOperationsPatch.new;
-  final ServiceReference = _admissionregistration_k8s_io.ServiceReference.new;
-  final ServiceReferenceArgs = _admissionregistration_k8s_io.ServiceReference.new;
-  final ServiceReferencePatch = _admissionregistration_k8s_io.ServiceReferencePatch.new;
-  final ServiceReferencePatchArgs = _admissionregistration_k8s_io.ServiceReferencePatch.new;
-  final TypeChecking = _admissionregistration_k8s_io.TypeChecking.new;
-  final TypeCheckingArgs = _admissionregistration_k8s_io.TypeChecking.new;
-  final TypeCheckingPatch = _admissionregistration_k8s_io.TypeCheckingPatch.new;
-  final TypeCheckingPatchArgs = _admissionregistration_k8s_io.TypeCheckingPatch.new;
-  final ValidatingAdmissionPolicy = _admissionregistration_k8s_io.ValidatingAdmissionPolicy.new;
-  final ValidatingAdmissionPolicyArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicy.new;
-  final ValidatingAdmissionPolicyBinding = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBinding.new;
-  final ValidatingAdmissionPolicyBindingArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBinding.new;
-  final ValidatingAdmissionPolicyBindingList = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingList.new;
-  final ValidatingAdmissionPolicyBindingListArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingList.new;
-  final ValidatingAdmissionPolicyBindingPatch = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingPatch.new;
-  final ValidatingAdmissionPolicyBindingPatchArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingPatch.new;
-  final ValidatingAdmissionPolicyBindingSpec = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingSpec.new;
-  final ValidatingAdmissionPolicyBindingSpecArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingSpec.new;
-  final ValidatingAdmissionPolicyBindingSpecPatch = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingSpecPatch.new;
-  final ValidatingAdmissionPolicyBindingSpecPatchArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyBindingSpecPatch.new;
-  final ValidatingAdmissionPolicyList = _admissionregistration_k8s_io.ValidatingAdmissionPolicyList.new;
-  final ValidatingAdmissionPolicyListArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyList.new;
-  final ValidatingAdmissionPolicyPatch = _admissionregistration_k8s_io.ValidatingAdmissionPolicyPatch.new;
-  final ValidatingAdmissionPolicyPatchArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyPatch.new;
-  final ValidatingAdmissionPolicySpec = _admissionregistration_k8s_io.ValidatingAdmissionPolicySpec.new;
-  final ValidatingAdmissionPolicySpecArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicySpec.new;
-  final ValidatingAdmissionPolicySpecPatch = _admissionregistration_k8s_io.ValidatingAdmissionPolicySpecPatch.new;
-  final ValidatingAdmissionPolicySpecPatchArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicySpecPatch.new;
-  final ValidatingAdmissionPolicyStatus = _admissionregistration_k8s_io.ValidatingAdmissionPolicyStatus.new;
-  final ValidatingAdmissionPolicyStatusArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyStatus.new;
-  final ValidatingAdmissionPolicyStatusPatch = _admissionregistration_k8s_io.ValidatingAdmissionPolicyStatusPatch.new;
-  final ValidatingAdmissionPolicyStatusPatchArgs = _admissionregistration_k8s_io.ValidatingAdmissionPolicyStatusPatch.new;
-  final ValidatingWebhook = _admissionregistration_k8s_io.ValidatingWebhook.new;
-  final ValidatingWebhookArgs = _admissionregistration_k8s_io.ValidatingWebhook.new;
-  final ValidatingWebhookConfiguration = _admissionregistration_k8s_io.ValidatingWebhookConfiguration.new;
-  final ValidatingWebhookConfigurationArgs = _admissionregistration_k8s_io.ValidatingWebhookConfiguration.new;
-  final ValidatingWebhookConfigurationList = _admissionregistration_k8s_io.ValidatingWebhookConfigurationList.new;
-  final ValidatingWebhookConfigurationListArgs = _admissionregistration_k8s_io.ValidatingWebhookConfigurationList.new;
-  final ValidatingWebhookConfigurationPatch = _admissionregistration_k8s_io.ValidatingWebhookConfigurationPatch.new;
-  final ValidatingWebhookConfigurationPatchArgs = _admissionregistration_k8s_io.ValidatingWebhookConfigurationPatch.new;
-  final ValidatingWebhookPatch = _admissionregistration_k8s_io.ValidatingWebhookPatch.new;
-  final ValidatingWebhookPatchArgs = _admissionregistration_k8s_io.ValidatingWebhookPatch.new;
-  final Validation = _admissionregistration_k8s_io.Validation.new;
-  final ValidationArgs = _admissionregistration_k8s_io.Validation.new;
-  final ValidationPatch = _admissionregistration_k8s_io.ValidationPatch.new;
-  final ValidationPatchArgs = _admissionregistration_k8s_io.ValidationPatch.new;
-  final Variable = _admissionregistration_k8s_io.Variable.new;
-  final VariableArgs = _admissionregistration_k8s_io.Variable.new;
-  final VariablePatch = _admissionregistration_k8s_io.VariablePatch.new;
-  final VariablePatchArgs = _admissionregistration_k8s_io.VariablePatch.new;
-  final WebhookClientConfig = _admissionregistration_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigArgs = _admissionregistration_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigPatch = _admissionregistration_k8s_io.WebhookClientConfigPatch.new;
-  final WebhookClientConfigPatchArgs = _admissionregistration_k8s_io.WebhookClientConfigPatch.new;
+  final ApplyConfiguration =
+      module_admissionregistration_k8s_io.ApplyConfiguration.new;
+  final ApplyConfigurationArgs =
+      module_admissionregistration_k8s_io.ApplyConfiguration.new;
+  final ApplyConfigurationPatch =
+      module_admissionregistration_k8s_io.ApplyConfigurationPatch.new;
+  final ApplyConfigurationPatchArgs =
+      module_admissionregistration_k8s_io.ApplyConfigurationPatch.new;
+  final AuditAnnotation =
+      module_admissionregistration_k8s_io.AuditAnnotation.new;
+  final AuditAnnotationArgs =
+      module_admissionregistration_k8s_io.AuditAnnotation.new;
+  final AuditAnnotationPatch =
+      module_admissionregistration_k8s_io.AuditAnnotationPatch.new;
+  final AuditAnnotationPatchArgs =
+      module_admissionregistration_k8s_io.AuditAnnotationPatch.new;
+  final ExpressionWarning =
+      module_admissionregistration_k8s_io.ExpressionWarning.new;
+  final ExpressionWarningArgs =
+      module_admissionregistration_k8s_io.ExpressionWarning.new;
+  final ExpressionWarningPatch =
+      module_admissionregistration_k8s_io.ExpressionWarningPatch.new;
+  final ExpressionWarningPatchArgs =
+      module_admissionregistration_k8s_io.ExpressionWarningPatch.new;
+  final JSONPatch = module_admissionregistration_k8s_io.JSONPatch.new;
+  final JSONPatchArgs = module_admissionregistration_k8s_io.JSONPatch.new;
+  final JSONPatchPatch = module_admissionregistration_k8s_io.JSONPatchPatch.new;
+  final JSONPatchPatchArgs =
+      module_admissionregistration_k8s_io.JSONPatchPatch.new;
+  final MatchCondition = module_admissionregistration_k8s_io.MatchCondition.new;
+  final MatchConditionArgs =
+      module_admissionregistration_k8s_io.MatchCondition.new;
+  final MatchConditionPatch =
+      module_admissionregistration_k8s_io.MatchConditionPatch.new;
+  final MatchConditionPatchArgs =
+      module_admissionregistration_k8s_io.MatchConditionPatch.new;
+  final MatchResources = module_admissionregistration_k8s_io.MatchResources.new;
+  final MatchResourcesArgs =
+      module_admissionregistration_k8s_io.MatchResources.new;
+  final MatchResourcesPatch =
+      module_admissionregistration_k8s_io.MatchResourcesPatch.new;
+  final MatchResourcesPatchArgs =
+      module_admissionregistration_k8s_io.MatchResourcesPatch.new;
+  final MutatingAdmissionPolicy =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicy.new;
+  final MutatingAdmissionPolicyArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicy.new;
+  final MutatingAdmissionPolicyBinding =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyBinding.new;
+  final MutatingAdmissionPolicyBindingArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyBinding.new;
+  final MutatingAdmissionPolicyBindingList = module_admissionregistration_k8s_io
+      .MutatingAdmissionPolicyBindingList
+      .new;
+  final MutatingAdmissionPolicyBindingListArgs =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingList
+          .new;
+  final MutatingAdmissionPolicyBindingPatch =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingPatch
+          .new;
+  final MutatingAdmissionPolicyBindingPatchArgs =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingPatch
+          .new;
+  final MutatingAdmissionPolicyBindingSpec = module_admissionregistration_k8s_io
+      .MutatingAdmissionPolicyBindingSpec
+      .new;
+  final MutatingAdmissionPolicyBindingSpecArgs =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingSpec
+          .new;
+  final MutatingAdmissionPolicyBindingSpecPatch =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingSpecPatch
+          .new;
+  final MutatingAdmissionPolicyBindingSpecPatchArgs =
+      module_admissionregistration_k8s_io
+          .MutatingAdmissionPolicyBindingSpecPatch
+          .new;
+  final MutatingAdmissionPolicyList =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyList.new;
+  final MutatingAdmissionPolicyListArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyList.new;
+  final MutatingAdmissionPolicyPatch =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyPatch.new;
+  final MutatingAdmissionPolicyPatchArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicyPatch.new;
+  final MutatingAdmissionPolicySpec =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicySpec.new;
+  final MutatingAdmissionPolicySpecArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicySpec.new;
+  final MutatingAdmissionPolicySpecPatch =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicySpecPatch.new;
+  final MutatingAdmissionPolicySpecPatchArgs =
+      module_admissionregistration_k8s_io.MutatingAdmissionPolicySpecPatch.new;
+  final MutatingWebhook =
+      module_admissionregistration_k8s_io.MutatingWebhook.new;
+  final MutatingWebhookArgs =
+      module_admissionregistration_k8s_io.MutatingWebhook.new;
+  final MutatingWebhookConfiguration =
+      module_admissionregistration_k8s_io.MutatingWebhookConfiguration.new;
+  final MutatingWebhookConfigurationArgs =
+      module_admissionregistration_k8s_io.MutatingWebhookConfiguration.new;
+  final MutatingWebhookConfigurationList =
+      module_admissionregistration_k8s_io.MutatingWebhookConfigurationList.new;
+  final MutatingWebhookConfigurationListArgs =
+      module_admissionregistration_k8s_io.MutatingWebhookConfigurationList.new;
+  final MutatingWebhookConfigurationPatch =
+      module_admissionregistration_k8s_io.MutatingWebhookConfigurationPatch.new;
+  final MutatingWebhookConfigurationPatchArgs =
+      module_admissionregistration_k8s_io.MutatingWebhookConfigurationPatch.new;
+  final MutatingWebhookPatch =
+      module_admissionregistration_k8s_io.MutatingWebhookPatch.new;
+  final MutatingWebhookPatchArgs =
+      module_admissionregistration_k8s_io.MutatingWebhookPatch.new;
+  final Mutation = module_admissionregistration_k8s_io.Mutation.new;
+  final MutationArgs = module_admissionregistration_k8s_io.Mutation.new;
+  final MutationPatch = module_admissionregistration_k8s_io.MutationPatch.new;
+  final MutationPatchArgs =
+      module_admissionregistration_k8s_io.MutationPatch.new;
+  final NamedRuleWithOperations =
+      module_admissionregistration_k8s_io.NamedRuleWithOperations.new;
+  final NamedRuleWithOperationsArgs =
+      module_admissionregistration_k8s_io.NamedRuleWithOperations.new;
+  final NamedRuleWithOperationsPatch =
+      module_admissionregistration_k8s_io.NamedRuleWithOperationsPatch.new;
+  final NamedRuleWithOperationsPatchArgs =
+      module_admissionregistration_k8s_io.NamedRuleWithOperationsPatch.new;
+  final ParamKind = module_admissionregistration_k8s_io.ParamKind.new;
+  final ParamKindArgs = module_admissionregistration_k8s_io.ParamKind.new;
+  final ParamKindPatch = module_admissionregistration_k8s_io.ParamKindPatch.new;
+  final ParamKindPatchArgs =
+      module_admissionregistration_k8s_io.ParamKindPatch.new;
+  final ParamRef = module_admissionregistration_k8s_io.ParamRef.new;
+  final ParamRefArgs = module_admissionregistration_k8s_io.ParamRef.new;
+  final ParamRefPatch = module_admissionregistration_k8s_io.ParamRefPatch.new;
+  final ParamRefPatchArgs =
+      module_admissionregistration_k8s_io.ParamRefPatch.new;
+  final RuleWithOperations =
+      module_admissionregistration_k8s_io.RuleWithOperations.new;
+  final RuleWithOperationsArgs =
+      module_admissionregistration_k8s_io.RuleWithOperations.new;
+  final RuleWithOperationsPatch =
+      module_admissionregistration_k8s_io.RuleWithOperationsPatch.new;
+  final RuleWithOperationsPatchArgs =
+      module_admissionregistration_k8s_io.RuleWithOperationsPatch.new;
+  final ServiceReference =
+      module_admissionregistration_k8s_io.ServiceReference.new;
+  final ServiceReferenceArgs =
+      module_admissionregistration_k8s_io.ServiceReference.new;
+  final ServiceReferencePatch =
+      module_admissionregistration_k8s_io.ServiceReferencePatch.new;
+  final ServiceReferencePatchArgs =
+      module_admissionregistration_k8s_io.ServiceReferencePatch.new;
+  final TypeChecking = module_admissionregistration_k8s_io.TypeChecking.new;
+  final TypeCheckingArgs = module_admissionregistration_k8s_io.TypeChecking.new;
+  final TypeCheckingPatch =
+      module_admissionregistration_k8s_io.TypeCheckingPatch.new;
+  final TypeCheckingPatchArgs =
+      module_admissionregistration_k8s_io.TypeCheckingPatch.new;
+  final ValidatingAdmissionPolicy =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicy.new;
+  final ValidatingAdmissionPolicyArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicy.new;
+  final ValidatingAdmissionPolicyBinding =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyBinding.new;
+  final ValidatingAdmissionPolicyBindingArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyBinding.new;
+  final ValidatingAdmissionPolicyBindingList =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingList
+          .new;
+  final ValidatingAdmissionPolicyBindingListArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingList
+          .new;
+  final ValidatingAdmissionPolicyBindingPatch =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingPatch
+          .new;
+  final ValidatingAdmissionPolicyBindingPatchArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingPatch
+          .new;
+  final ValidatingAdmissionPolicyBindingSpec =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingSpec
+          .new;
+  final ValidatingAdmissionPolicyBindingSpecArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingSpec
+          .new;
+  final ValidatingAdmissionPolicyBindingSpecPatch =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingSpecPatch
+          .new;
+  final ValidatingAdmissionPolicyBindingSpecPatchArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyBindingSpecPatch
+          .new;
+  final ValidatingAdmissionPolicyList =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyList.new;
+  final ValidatingAdmissionPolicyListArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyList.new;
+  final ValidatingAdmissionPolicyPatch =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyPatch.new;
+  final ValidatingAdmissionPolicyPatchArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyPatch.new;
+  final ValidatingAdmissionPolicySpec =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicySpec.new;
+  final ValidatingAdmissionPolicySpecArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicySpec.new;
+  final ValidatingAdmissionPolicySpecPatch = module_admissionregistration_k8s_io
+      .ValidatingAdmissionPolicySpecPatch
+      .new;
+  final ValidatingAdmissionPolicySpecPatchArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicySpecPatch
+          .new;
+  final ValidatingAdmissionPolicyStatus =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyStatus.new;
+  final ValidatingAdmissionPolicyStatusArgs =
+      module_admissionregistration_k8s_io.ValidatingAdmissionPolicyStatus.new;
+  final ValidatingAdmissionPolicyStatusPatch =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyStatusPatch
+          .new;
+  final ValidatingAdmissionPolicyStatusPatchArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingAdmissionPolicyStatusPatch
+          .new;
+  final ValidatingWebhook =
+      module_admissionregistration_k8s_io.ValidatingWebhook.new;
+  final ValidatingWebhookArgs =
+      module_admissionregistration_k8s_io.ValidatingWebhook.new;
+  final ValidatingWebhookConfiguration =
+      module_admissionregistration_k8s_io.ValidatingWebhookConfiguration.new;
+  final ValidatingWebhookConfigurationArgs =
+      module_admissionregistration_k8s_io.ValidatingWebhookConfiguration.new;
+  final ValidatingWebhookConfigurationList = module_admissionregistration_k8s_io
+      .ValidatingWebhookConfigurationList
+      .new;
+  final ValidatingWebhookConfigurationListArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingWebhookConfigurationList
+          .new;
+  final ValidatingWebhookConfigurationPatch =
+      module_admissionregistration_k8s_io
+          .ValidatingWebhookConfigurationPatch
+          .new;
+  final ValidatingWebhookConfigurationPatchArgs =
+      module_admissionregistration_k8s_io
+          .ValidatingWebhookConfigurationPatch
+          .new;
+  final ValidatingWebhookPatch =
+      module_admissionregistration_k8s_io.ValidatingWebhookPatch.new;
+  final ValidatingWebhookPatchArgs =
+      module_admissionregistration_k8s_io.ValidatingWebhookPatch.new;
+  final Validation = module_admissionregistration_k8s_io.Validation.new;
+  final ValidationArgs = module_admissionregistration_k8s_io.Validation.new;
+  final ValidationPatch =
+      module_admissionregistration_k8s_io.ValidationPatch.new;
+  final ValidationPatchArgs =
+      module_admissionregistration_k8s_io.ValidationPatch.new;
+  final Variable = module_admissionregistration_k8s_io.Variable.new;
+  final VariableArgs = module_admissionregistration_k8s_io.Variable.new;
+  final VariablePatch = module_admissionregistration_k8s_io.VariablePatch.new;
+  final VariablePatchArgs =
+      module_admissionregistration_k8s_io.VariablePatch.new;
+  final WebhookClientConfig =
+      module_admissionregistration_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigArgs =
+      module_admissionregistration_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigPatch =
+      module_admissionregistration_k8s_io.WebhookClientConfigPatch.new;
+  final WebhookClientConfigPatchArgs =
+      module_admissionregistration_k8s_io.WebhookClientConfigPatch.new;
 }
 
 class _ApiextensionsK8sIoModuleNamespace {
   _ApiextensionsK8sIoModuleNamespace();
-  final CustomResourceArgs = _apiextensions_k8s_io.CustomResourceArgs.new;
-  final CustomResourceColumnDefinition = _apiextensions_k8s_io.CustomResourceColumnDefinition.new;
-  final CustomResourceColumnDefinitionArgs = _apiextensions_k8s_io.CustomResourceColumnDefinition.new;
-  final CustomResourceColumnDefinitionPatch = _apiextensions_k8s_io.CustomResourceColumnDefinitionPatch.new;
-  final CustomResourceColumnDefinitionPatchArgs = _apiextensions_k8s_io.CustomResourceColumnDefinitionPatch.new;
-  final CustomResourceConversion = _apiextensions_k8s_io.CustomResourceConversion.new;
-  final CustomResourceConversionArgs = _apiextensions_k8s_io.CustomResourceConversion.new;
-  final CustomResourceConversionPatch = _apiextensions_k8s_io.CustomResourceConversionPatch.new;
-  final CustomResourceConversionPatchArgs = _apiextensions_k8s_io.CustomResourceConversionPatch.new;
-  final CustomResourceDefinition = _apiextensions_k8s_io.CustomResourceDefinition.new;
-  final CustomResourceDefinitionArgs = _apiextensions_k8s_io.CustomResourceDefinition.new;
-  final CustomResourceDefinitionCondition = _apiextensions_k8s_io.CustomResourceDefinitionCondition.new;
-  final CustomResourceDefinitionConditionArgs = _apiextensions_k8s_io.CustomResourceDefinitionCondition.new;
-  final CustomResourceDefinitionConditionPatch = _apiextensions_k8s_io.CustomResourceDefinitionConditionPatch.new;
-  final CustomResourceDefinitionConditionPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionConditionPatch.new;
-  final CustomResourceDefinitionList = _apiextensions_k8s_io.CustomResourceDefinitionList.new;
-  final CustomResourceDefinitionListArgs = _apiextensions_k8s_io.CustomResourceDefinitionList.new;
-  final CustomResourceDefinitionNames = _apiextensions_k8s_io.CustomResourceDefinitionNames.new;
-  final CustomResourceDefinitionNamesArgs = _apiextensions_k8s_io.CustomResourceDefinitionNames.new;
-  final CustomResourceDefinitionNamesPatch = _apiextensions_k8s_io.CustomResourceDefinitionNamesPatch.new;
-  final CustomResourceDefinitionNamesPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionNamesPatch.new;
-  final CustomResourceDefinitionPatch = _apiextensions_k8s_io.CustomResourceDefinitionPatch.new;
-  final CustomResourceDefinitionPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionPatch.new;
-  final CustomResourceDefinitionSpec = _apiextensions_k8s_io.CustomResourceDefinitionSpec.new;
-  final CustomResourceDefinitionSpecArgs = _apiextensions_k8s_io.CustomResourceDefinitionSpec.new;
-  final CustomResourceDefinitionSpecPatch = _apiextensions_k8s_io.CustomResourceDefinitionSpecPatch.new;
-  final CustomResourceDefinitionSpecPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionSpecPatch.new;
-  final CustomResourceDefinitionStatus = _apiextensions_k8s_io.CustomResourceDefinitionStatus.new;
-  final CustomResourceDefinitionStatusArgs = _apiextensions_k8s_io.CustomResourceDefinitionStatus.new;
-  final CustomResourceDefinitionStatusPatch = _apiextensions_k8s_io.CustomResourceDefinitionStatusPatch.new;
-  final CustomResourceDefinitionStatusPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionStatusPatch.new;
-  final CustomResourceDefinitionVersion = _apiextensions_k8s_io.CustomResourceDefinitionVersion.new;
-  final CustomResourceDefinitionVersionArgs = _apiextensions_k8s_io.CustomResourceDefinitionVersion.new;
-  final CustomResourceDefinitionVersionPatch = _apiextensions_k8s_io.CustomResourceDefinitionVersionPatch.new;
-  final CustomResourceDefinitionVersionPatchArgs = _apiextensions_k8s_io.CustomResourceDefinitionVersionPatch.new;
-  final CustomResourcePatch = _apiextensions_k8s_io.CustomResourcePatch.new;
-  final CustomResourcePatchArgs = _apiextensions_k8s_io.CustomResourcePatchArgs.new;
-  final CustomResourceSubresourceScale = _apiextensions_k8s_io.CustomResourceSubresourceScale.new;
-  final CustomResourceSubresourceScaleArgs = _apiextensions_k8s_io.CustomResourceSubresourceScale.new;
-  final CustomResourceSubresourceScalePatch = _apiextensions_k8s_io.CustomResourceSubresourceScalePatch.new;
-  final CustomResourceSubresourceScalePatchArgs = _apiextensions_k8s_io.CustomResourceSubresourceScalePatch.new;
-  final CustomResourceSubresources = _apiextensions_k8s_io.CustomResourceSubresources.new;
-  final CustomResourceSubresourcesArgs = _apiextensions_k8s_io.CustomResourceSubresources.new;
-  final CustomResourceSubresourcesPatch = _apiextensions_k8s_io.CustomResourceSubresourcesPatch.new;
-  final CustomResourceSubresourcesPatchArgs = _apiextensions_k8s_io.CustomResourceSubresourcesPatch.new;
-  final CustomResourceType = _apiextensions_k8s_io.CustomResourceType.new;
-  final CustomResourceValidation = _apiextensions_k8s_io.CustomResourceValidation.new;
-  final CustomResourceValidationArgs = _apiextensions_k8s_io.CustomResourceValidation.new;
-  final CustomResourceValidationPatch = _apiextensions_k8s_io.CustomResourceValidationPatch.new;
-  final CustomResourceValidationPatchArgs = _apiextensions_k8s_io.CustomResourceValidationPatch.new;
-  final ExternalDocumentation = _apiextensions_k8s_io.ExternalDocumentation.new;
-  final ExternalDocumentationArgs = _apiextensions_k8s_io.ExternalDocumentation.new;
-  final ExternalDocumentationPatch = _apiextensions_k8s_io.ExternalDocumentationPatch.new;
-  final ExternalDocumentationPatchArgs = _apiextensions_k8s_io.ExternalDocumentationPatch.new;
-  final JSONSchemaProps = _apiextensions_k8s_io.JSONSchemaProps.new;
-  final JSONSchemaPropsArgs = _apiextensions_k8s_io.JSONSchemaProps.new;
-  final JSONSchemaPropsPatch = _apiextensions_k8s_io.JSONSchemaPropsPatch.new;
-  final JSONSchemaPropsPatchArgs = _apiextensions_k8s_io.JSONSchemaPropsPatch.new;
-  final SelectableField = _apiextensions_k8s_io.SelectableField.new;
-  final SelectableFieldArgs = _apiextensions_k8s_io.SelectableField.new;
-  final SelectableFieldPatch = _apiextensions_k8s_io.SelectableFieldPatch.new;
-  final SelectableFieldPatchArgs = _apiextensions_k8s_io.SelectableFieldPatch.new;
-  final ServiceReference = _apiextensions_k8s_io.ServiceReference.new;
-  final ServiceReferenceArgs = _apiextensions_k8s_io.ServiceReference.new;
-  final ServiceReferencePatch = _apiextensions_k8s_io.ServiceReferencePatch.new;
-  final ServiceReferencePatchArgs = _apiextensions_k8s_io.ServiceReferencePatch.new;
-  final ValidationRule = _apiextensions_k8s_io.ValidationRule.new;
-  final ValidationRuleArgs = _apiextensions_k8s_io.ValidationRule.new;
-  final ValidationRulePatch = _apiextensions_k8s_io.ValidationRulePatch.new;
-  final ValidationRulePatchArgs = _apiextensions_k8s_io.ValidationRulePatch.new;
-  final WebhookClientConfig = _apiextensions_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigArgs = _apiextensions_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigPatch = _apiextensions_k8s_io.WebhookClientConfigPatch.new;
-  final WebhookClientConfigPatchArgs = _apiextensions_k8s_io.WebhookClientConfigPatch.new;
-  final WebhookConversion = _apiextensions_k8s_io.WebhookConversion.new;
-  final WebhookConversionArgs = _apiextensions_k8s_io.WebhookConversion.new;
-  final WebhookConversionPatch = _apiextensions_k8s_io.WebhookConversionPatch.new;
-  final WebhookConversionPatchArgs = _apiextensions_k8s_io.WebhookConversionPatch.new;
+  final CustomResourceArgs = module_apiextensions_k8s_io.CustomResourceArgs.new;
+  final CustomResourceColumnDefinition =
+      module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
+  final CustomResourceColumnDefinitionArgs =
+      module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
+  final CustomResourceColumnDefinitionPatch =
+      module_apiextensions_k8s_io.CustomResourceColumnDefinitionPatch.new;
+  final CustomResourceColumnDefinitionPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceColumnDefinitionPatch.new;
+  final CustomResourceConversion =
+      module_apiextensions_k8s_io.CustomResourceConversion.new;
+  final CustomResourceConversionArgs =
+      module_apiextensions_k8s_io.CustomResourceConversion.new;
+  final CustomResourceConversionPatch =
+      module_apiextensions_k8s_io.CustomResourceConversionPatch.new;
+  final CustomResourceConversionPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceConversionPatch.new;
+  final CustomResourceDefinition =
+      module_apiextensions_k8s_io.CustomResourceDefinition.new;
+  final CustomResourceDefinitionArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinition.new;
+  final CustomResourceDefinitionCondition =
+      module_apiextensions_k8s_io.CustomResourceDefinitionCondition.new;
+  final CustomResourceDefinitionConditionArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionCondition.new;
+  final CustomResourceDefinitionConditionPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionConditionPatch.new;
+  final CustomResourceDefinitionConditionPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionConditionPatch.new;
+  final CustomResourceDefinitionList =
+      module_apiextensions_k8s_io.CustomResourceDefinitionList.new;
+  final CustomResourceDefinitionListArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionList.new;
+  final CustomResourceDefinitionNames =
+      module_apiextensions_k8s_io.CustomResourceDefinitionNames.new;
+  final CustomResourceDefinitionNamesArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionNames.new;
+  final CustomResourceDefinitionNamesPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionNamesPatch.new;
+  final CustomResourceDefinitionNamesPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionNamesPatch.new;
+  final CustomResourceDefinitionPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionPatch.new;
+  final CustomResourceDefinitionPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionPatch.new;
+  final CustomResourceDefinitionSpec =
+      module_apiextensions_k8s_io.CustomResourceDefinitionSpec.new;
+  final CustomResourceDefinitionSpecArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionSpec.new;
+  final CustomResourceDefinitionSpecPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionSpecPatch.new;
+  final CustomResourceDefinitionSpecPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionSpecPatch.new;
+  final CustomResourceDefinitionStatus =
+      module_apiextensions_k8s_io.CustomResourceDefinitionStatus.new;
+  final CustomResourceDefinitionStatusArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionStatus.new;
+  final CustomResourceDefinitionStatusPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionStatusPatch.new;
+  final CustomResourceDefinitionStatusPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionStatusPatch.new;
+  final CustomResourceDefinitionVersion =
+      module_apiextensions_k8s_io.CustomResourceDefinitionVersion.new;
+  final CustomResourceDefinitionVersionArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionVersion.new;
+  final CustomResourceDefinitionVersionPatch =
+      module_apiextensions_k8s_io.CustomResourceDefinitionVersionPatch.new;
+  final CustomResourceDefinitionVersionPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceDefinitionVersionPatch.new;
+  final CustomResourcePatch =
+      module_apiextensions_k8s_io.CustomResourcePatch.new;
+  final CustomResourcePatchArgs =
+      module_apiextensions_k8s_io.CustomResourcePatchArgs.new;
+  final CustomResourceSubresourceScale =
+      module_apiextensions_k8s_io.CustomResourceSubresourceScale.new;
+  final CustomResourceSubresourceScaleArgs =
+      module_apiextensions_k8s_io.CustomResourceSubresourceScale.new;
+  final CustomResourceSubresourceScalePatch =
+      module_apiextensions_k8s_io.CustomResourceSubresourceScalePatch.new;
+  final CustomResourceSubresourceScalePatchArgs =
+      module_apiextensions_k8s_io.CustomResourceSubresourceScalePatch.new;
+  final CustomResourceSubresources =
+      module_apiextensions_k8s_io.CustomResourceSubresources.new;
+  final CustomResourceSubresourcesArgs =
+      module_apiextensions_k8s_io.CustomResourceSubresources.new;
+  final CustomResourceSubresourcesPatch =
+      module_apiextensions_k8s_io.CustomResourceSubresourcesPatch.new;
+  final CustomResourceSubresourcesPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceSubresourcesPatch.new;
+  final CustomResourceType = module_apiextensions_k8s_io.CustomResourceType.new;
+  final CustomResourceValidation =
+      module_apiextensions_k8s_io.CustomResourceValidation.new;
+  final CustomResourceValidationArgs =
+      module_apiextensions_k8s_io.CustomResourceValidation.new;
+  final CustomResourceValidationPatch =
+      module_apiextensions_k8s_io.CustomResourceValidationPatch.new;
+  final CustomResourceValidationPatchArgs =
+      module_apiextensions_k8s_io.CustomResourceValidationPatch.new;
+  final ExternalDocumentation =
+      module_apiextensions_k8s_io.ExternalDocumentation.new;
+  final ExternalDocumentationArgs =
+      module_apiextensions_k8s_io.ExternalDocumentation.new;
+  final ExternalDocumentationPatch =
+      module_apiextensions_k8s_io.ExternalDocumentationPatch.new;
+  final ExternalDocumentationPatchArgs =
+      module_apiextensions_k8s_io.ExternalDocumentationPatch.new;
+  final JSONSchemaProps = module_apiextensions_k8s_io.JSONSchemaProps.new;
+  final JSONSchemaPropsArgs = module_apiextensions_k8s_io.JSONSchemaProps.new;
+  final JSONSchemaPropsPatch =
+      module_apiextensions_k8s_io.JSONSchemaPropsPatch.new;
+  final JSONSchemaPropsPatchArgs =
+      module_apiextensions_k8s_io.JSONSchemaPropsPatch.new;
+  final SelectableField = module_apiextensions_k8s_io.SelectableField.new;
+  final SelectableFieldArgs = module_apiextensions_k8s_io.SelectableField.new;
+  final SelectableFieldPatch =
+      module_apiextensions_k8s_io.SelectableFieldPatch.new;
+  final SelectableFieldPatchArgs =
+      module_apiextensions_k8s_io.SelectableFieldPatch.new;
+  final ServiceReference = module_apiextensions_k8s_io.ServiceReference.new;
+  final ServiceReferenceArgs = module_apiextensions_k8s_io.ServiceReference.new;
+  final ServiceReferencePatch =
+      module_apiextensions_k8s_io.ServiceReferencePatch.new;
+  final ServiceReferencePatchArgs =
+      module_apiextensions_k8s_io.ServiceReferencePatch.new;
+  final ValidationRule = module_apiextensions_k8s_io.ValidationRule.new;
+  final ValidationRuleArgs = module_apiextensions_k8s_io.ValidationRule.new;
+  final ValidationRulePatch =
+      module_apiextensions_k8s_io.ValidationRulePatch.new;
+  final ValidationRulePatchArgs =
+      module_apiextensions_k8s_io.ValidationRulePatch.new;
+  final WebhookClientConfig =
+      module_apiextensions_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigArgs =
+      module_apiextensions_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigPatch =
+      module_apiextensions_k8s_io.WebhookClientConfigPatch.new;
+  final WebhookClientConfigPatchArgs =
+      module_apiextensions_k8s_io.WebhookClientConfigPatch.new;
+  final WebhookConversion = module_apiextensions_k8s_io.WebhookConversion.new;
+  final WebhookConversionArgs =
+      module_apiextensions_k8s_io.WebhookConversion.new;
+  final WebhookConversionPatch =
+      module_apiextensions_k8s_io.WebhookConversionPatch.new;
+  final WebhookConversionPatchArgs =
+      module_apiextensions_k8s_io.WebhookConversionPatch.new;
 }
 
 class _ApiregistrationK8sIoModuleNamespace {
   _ApiregistrationK8sIoModuleNamespace();
-  final APIService = _apiregistration_k8s_io.APIService.new;
-  final APIServiceArgs = _apiregistration_k8s_io.APIService.new;
-  final APIServiceCondition = _apiregistration_k8s_io.APIServiceCondition.new;
-  final APIServiceConditionArgs = _apiregistration_k8s_io.APIServiceCondition.new;
-  final APIServiceConditionPatch = _apiregistration_k8s_io.APIServiceConditionPatch.new;
-  final APIServiceConditionPatchArgs = _apiregistration_k8s_io.APIServiceConditionPatch.new;
-  final APIServiceList = _apiregistration_k8s_io.APIServiceList.new;
-  final APIServiceListArgs = _apiregistration_k8s_io.APIServiceList.new;
-  final APIServicePatch = _apiregistration_k8s_io.APIServicePatch.new;
-  final APIServicePatchArgs = _apiregistration_k8s_io.APIServicePatch.new;
-  final APIServiceSpec = _apiregistration_k8s_io.APIServiceSpec.new;
-  final APIServiceSpecArgs = _apiregistration_k8s_io.APIServiceSpec.new;
-  final APIServiceSpecPatch = _apiregistration_k8s_io.APIServiceSpecPatch.new;
-  final APIServiceSpecPatchArgs = _apiregistration_k8s_io.APIServiceSpecPatch.new;
-  final APIServiceStatus = _apiregistration_k8s_io.APIServiceStatus.new;
-  final APIServiceStatusArgs = _apiregistration_k8s_io.APIServiceStatus.new;
-  final APIServiceStatusPatch = _apiregistration_k8s_io.APIServiceStatusPatch.new;
-  final APIServiceStatusPatchArgs = _apiregistration_k8s_io.APIServiceStatusPatch.new;
-  final ServiceReference = _apiregistration_k8s_io.ServiceReference.new;
-  final ServiceReferenceArgs = _apiregistration_k8s_io.ServiceReference.new;
-  final ServiceReferencePatch = _apiregistration_k8s_io.ServiceReferencePatch.new;
-  final ServiceReferencePatchArgs = _apiregistration_k8s_io.ServiceReferencePatch.new;
+  final APIService = module_apiregistration_k8s_io.APIService.new;
+  final APIServiceArgs = module_apiregistration_k8s_io.APIService.new;
+  final APIServiceCondition =
+      module_apiregistration_k8s_io.APIServiceCondition.new;
+  final APIServiceConditionArgs =
+      module_apiregistration_k8s_io.APIServiceCondition.new;
+  final APIServiceConditionPatch =
+      module_apiregistration_k8s_io.APIServiceConditionPatch.new;
+  final APIServiceConditionPatchArgs =
+      module_apiregistration_k8s_io.APIServiceConditionPatch.new;
+  final APIServiceList = module_apiregistration_k8s_io.APIServiceList.new;
+  final APIServiceListArgs = module_apiregistration_k8s_io.APIServiceList.new;
+  final APIServicePatch = module_apiregistration_k8s_io.APIServicePatch.new;
+  final APIServicePatchArgs = module_apiregistration_k8s_io.APIServicePatch.new;
+  final APIServiceSpec = module_apiregistration_k8s_io.APIServiceSpec.new;
+  final APIServiceSpecArgs = module_apiregistration_k8s_io.APIServiceSpec.new;
+  final APIServiceSpecPatch =
+      module_apiregistration_k8s_io.APIServiceSpecPatch.new;
+  final APIServiceSpecPatchArgs =
+      module_apiregistration_k8s_io.APIServiceSpecPatch.new;
+  final APIServiceStatus = module_apiregistration_k8s_io.APIServiceStatus.new;
+  final APIServiceStatusArgs =
+      module_apiregistration_k8s_io.APIServiceStatus.new;
+  final APIServiceStatusPatch =
+      module_apiregistration_k8s_io.APIServiceStatusPatch.new;
+  final APIServiceStatusPatchArgs =
+      module_apiregistration_k8s_io.APIServiceStatusPatch.new;
+  final ServiceReference = module_apiregistration_k8s_io.ServiceReference.new;
+  final ServiceReferenceArgs =
+      module_apiregistration_k8s_io.ServiceReference.new;
+  final ServiceReferencePatch =
+      module_apiregistration_k8s_io.ServiceReferencePatch.new;
+  final ServiceReferencePatchArgs =
+      module_apiregistration_k8s_io.ServiceReferencePatch.new;
 }
 
 class _AppsModuleNamespace {
   _AppsModuleNamespace();
-  final ControllerRevision = _apps.ControllerRevision.new;
-  final ControllerRevisionArgs = _apps.ControllerRevision.new;
-  final ControllerRevisionList = _apps.ControllerRevisionList.new;
-  final ControllerRevisionListArgs = _apps.ControllerRevisionList.new;
-  final ControllerRevisionPatch = _apps.ControllerRevisionPatch.new;
-  final ControllerRevisionPatchArgs = _apps.ControllerRevisionPatch.new;
-  final DaemonSet = _apps.DaemonSet.new;
-  final DaemonSetArgs = _apps.DaemonSet.new;
-  final DaemonSetCondition = _apps.DaemonSetCondition.new;
-  final DaemonSetConditionArgs = _apps.DaemonSetCondition.new;
-  final DaemonSetConditionPatch = _apps.DaemonSetConditionPatch.new;
-  final DaemonSetConditionPatchArgs = _apps.DaemonSetConditionPatch.new;
-  final DaemonSetList = _apps.DaemonSetList.new;
-  final DaemonSetListArgs = _apps.DaemonSetList.new;
-  final DaemonSetPatch = _apps.DaemonSetPatch.new;
-  final DaemonSetPatchArgs = _apps.DaemonSetPatch.new;
-  final DaemonSetSpec = _apps.DaemonSetSpec.new;
-  final DaemonSetSpecArgs = _apps.DaemonSetSpec.new;
-  final DaemonSetSpecPatch = _apps.DaemonSetSpecPatch.new;
-  final DaemonSetSpecPatchArgs = _apps.DaemonSetSpecPatch.new;
-  final DaemonSetStatus = _apps.DaemonSetStatus.new;
-  final DaemonSetStatusArgs = _apps.DaemonSetStatus.new;
-  final DaemonSetStatusPatch = _apps.DaemonSetStatusPatch.new;
-  final DaemonSetStatusPatchArgs = _apps.DaemonSetStatusPatch.new;
-  final DaemonSetUpdateStrategy = _apps.DaemonSetUpdateStrategy.new;
-  final DaemonSetUpdateStrategyArgs = _apps.DaemonSetUpdateStrategy.new;
-  final DaemonSetUpdateStrategyPatch = _apps.DaemonSetUpdateStrategyPatch.new;
-  final DaemonSetUpdateStrategyPatchArgs = _apps.DaemonSetUpdateStrategyPatch.new;
-  final DeploymentArgs = _apps.DeploymentAppsV1beta1Args.new;
-  final DeploymentCondition = _apps.DeploymentCondition.new;
-  final DeploymentConditionArgs = _apps.DeploymentCondition.new;
-  final DeploymentConditionPatch = _apps.DeploymentConditionPatch.new;
-  final DeploymentConditionPatchArgs = _apps.DeploymentConditionPatch.new;
-  final DeploymentList = _apps.DeploymentList.new;
-  final DeploymentListArgs = _apps.DeploymentList.new;
-  final DeploymentPatch = _apps.DeploymentPatch.new;
-  final DeploymentPatchArgs = _apps.DeploymentPatch.new;
-  final DeploymentRollback = _apps.DeploymentRollback.new;
-  final DeploymentRollbackArgs = _apps.DeploymentRollback.new;
-  final DeploymentRollbackPatch = _apps.DeploymentRollbackPatch.new;
-  final DeploymentRollbackPatchArgs = _apps.DeploymentRollbackPatch.new;
-  final DeploymentSpec = _apps.DeploymentSpec.new;
-  final DeploymentSpecArgs = _apps.DeploymentSpec.new;
-  final DeploymentSpecPatch = _apps.DeploymentSpecPatch.new;
-  final DeploymentSpecPatchArgs = _apps.DeploymentSpecPatch.new;
-  final DeploymentStatus = _apps.DeploymentStatus.new;
-  final DeploymentStatusArgs = _apps.DeploymentStatus.new;
-  final DeploymentStatusPatch = _apps.DeploymentStatusPatch.new;
-  final DeploymentStatusPatchArgs = _apps.DeploymentStatusPatch.new;
-  final DeploymentStrategy = _apps.DeploymentStrategy.new;
-  final DeploymentStrategyArgs = _apps.DeploymentStrategy.new;
-  final DeploymentStrategyPatch = _apps.DeploymentStrategyPatch.new;
-  final DeploymentStrategyPatchArgs = _apps.DeploymentStrategyPatch.new;
-  final DeploymentType = _apps.DeploymentAppsV1beta1.new;
-  final DeploymentTypeArgs = _apps.DeploymentAppsV1beta1.new;
-  final ReplicaSet = _apps.ReplicaSet.new;
-  final ReplicaSetArgs = _apps.ReplicaSet.new;
-  final ReplicaSetCondition = _apps.ReplicaSetCondition.new;
-  final ReplicaSetConditionArgs = _apps.ReplicaSetCondition.new;
-  final ReplicaSetConditionPatch = _apps.ReplicaSetConditionPatch.new;
-  final ReplicaSetConditionPatchArgs = _apps.ReplicaSetConditionPatch.new;
-  final ReplicaSetList = _apps.ReplicaSetList.new;
-  final ReplicaSetListArgs = _apps.ReplicaSetList.new;
-  final ReplicaSetPatch = _apps.ReplicaSetPatch.new;
-  final ReplicaSetPatchArgs = _apps.ReplicaSetPatch.new;
-  final ReplicaSetSpec = _apps.ReplicaSetSpec.new;
-  final ReplicaSetSpecArgs = _apps.ReplicaSetSpec.new;
-  final ReplicaSetSpecPatch = _apps.ReplicaSetSpecPatch.new;
-  final ReplicaSetSpecPatchArgs = _apps.ReplicaSetSpecPatch.new;
-  final ReplicaSetStatus = _apps.ReplicaSetStatus.new;
-  final ReplicaSetStatusArgs = _apps.ReplicaSetStatus.new;
-  final ReplicaSetStatusPatch = _apps.ReplicaSetStatusPatch.new;
-  final ReplicaSetStatusPatchArgs = _apps.ReplicaSetStatusPatch.new;
-  final RollbackConfig = _apps.RollbackConfig.new;
-  final RollbackConfigArgs = _apps.RollbackConfig.new;
-  final RollbackConfigPatch = _apps.RollbackConfigPatch.new;
-  final RollbackConfigPatchArgs = _apps.RollbackConfigPatch.new;
-  final RollingUpdateDaemonSet = _apps.RollingUpdateDaemonSet.new;
-  final RollingUpdateDaemonSetArgs = _apps.RollingUpdateDaemonSet.new;
-  final RollingUpdateDaemonSetPatch = _apps.RollingUpdateDaemonSetPatch.new;
-  final RollingUpdateDaemonSetPatchArgs = _apps.RollingUpdateDaemonSetPatch.new;
-  final RollingUpdateDeployment = _apps.RollingUpdateDeployment.new;
-  final RollingUpdateDeploymentArgs = _apps.RollingUpdateDeployment.new;
-  final RollingUpdateDeploymentPatch = _apps.RollingUpdateDeploymentPatch.new;
-  final RollingUpdateDeploymentPatchArgs = _apps.RollingUpdateDeploymentPatch.new;
-  final RollingUpdateStatefulSetStrategy = _apps.RollingUpdateStatefulSetStrategy.new;
-  final RollingUpdateStatefulSetStrategyArgs = _apps.RollingUpdateStatefulSetStrategy.new;
-  final RollingUpdateStatefulSetStrategyPatch = _apps.RollingUpdateStatefulSetStrategyPatch.new;
-  final RollingUpdateStatefulSetStrategyPatchArgs = _apps.RollingUpdateStatefulSetStrategyPatch.new;
-  final Scale = _apps.Scale.new;
-  final ScaleArgs = _apps.Scale.new;
-  final ScalePatch = _apps.ScalePatch.new;
-  final ScalePatchArgs = _apps.ScalePatch.new;
-  final ScaleSpec = _apps.ScaleSpec.new;
-  final ScaleSpecArgs = _apps.ScaleSpec.new;
-  final ScaleSpecPatch = _apps.ScaleSpecPatch.new;
-  final ScaleSpecPatchArgs = _apps.ScaleSpecPatch.new;
-  final ScaleStatus = _apps.ScaleStatus.new;
-  final ScaleStatusArgs = _apps.ScaleStatus.new;
-  final ScaleStatusPatch = _apps.ScaleStatusPatch.new;
-  final ScaleStatusPatchArgs = _apps.ScaleStatusPatch.new;
-  final StatefulSet = _apps.StatefulSet.new;
-  final StatefulSetArgs = _apps.StatefulSet.new;
-  final StatefulSetCondition = _apps.StatefulSetCondition.new;
-  final StatefulSetConditionArgs = _apps.StatefulSetCondition.new;
-  final StatefulSetConditionPatch = _apps.StatefulSetConditionPatch.new;
-  final StatefulSetConditionPatchArgs = _apps.StatefulSetConditionPatch.new;
-  final StatefulSetList = _apps.StatefulSetList.new;
-  final StatefulSetListArgs = _apps.StatefulSetList.new;
-  final StatefulSetOrdinals = _apps.StatefulSetOrdinals.new;
-  final StatefulSetOrdinalsArgs = _apps.StatefulSetOrdinals.new;
-  final StatefulSetOrdinalsPatch = _apps.StatefulSetOrdinalsPatch.new;
-  final StatefulSetOrdinalsPatchArgs = _apps.StatefulSetOrdinalsPatch.new;
-  final StatefulSetPatch = _apps.StatefulSetPatch.new;
-  final StatefulSetPatchArgs = _apps.StatefulSetPatch.new;
-  final StatefulSetPersistentVolumeClaimRetentionPolicy = _apps.StatefulSetPersistentVolumeClaimRetentionPolicy.new;
-  final StatefulSetPersistentVolumeClaimRetentionPolicyArgs = _apps.StatefulSetPersistentVolumeClaimRetentionPolicy.new;
-  final StatefulSetPersistentVolumeClaimRetentionPolicyPatch = _apps.StatefulSetPersistentVolumeClaimRetentionPolicyPatch.new;
-  final StatefulSetPersistentVolumeClaimRetentionPolicyPatchArgs = _apps.StatefulSetPersistentVolumeClaimRetentionPolicyPatch.new;
-  final StatefulSetSpec = _apps.StatefulSetSpec.new;
-  final StatefulSetSpecArgs = _apps.StatefulSetSpec.new;
-  final StatefulSetSpecPatch = _apps.StatefulSetSpecPatch.new;
-  final StatefulSetSpecPatchArgs = _apps.StatefulSetSpecPatch.new;
-  final StatefulSetStatus = _apps.StatefulSetStatus.new;
-  final StatefulSetStatusArgs = _apps.StatefulSetStatus.new;
-  final StatefulSetStatusPatch = _apps.StatefulSetStatusPatch.new;
-  final StatefulSetStatusPatchArgs = _apps.StatefulSetStatusPatch.new;
-  final StatefulSetUpdateStrategy = _apps.StatefulSetUpdateStrategy.new;
-  final StatefulSetUpdateStrategyArgs = _apps.StatefulSetUpdateStrategy.new;
-  final StatefulSetUpdateStrategyPatch = _apps.StatefulSetUpdateStrategyPatch.new;
-  final StatefulSetUpdateStrategyPatchArgs = _apps.StatefulSetUpdateStrategyPatch.new;
+  final ControllerRevision = module_apps.ControllerRevision.new;
+  final ControllerRevisionArgs = module_apps.ControllerRevision.new;
+  final ControllerRevisionList = module_apps.ControllerRevisionList.new;
+  final ControllerRevisionListArgs = module_apps.ControllerRevisionList.new;
+  final ControllerRevisionPatch = module_apps.ControllerRevisionPatch.new;
+  final ControllerRevisionPatchArgs = module_apps.ControllerRevisionPatch.new;
+  final DaemonSet = module_apps.DaemonSet.new;
+  final DaemonSetArgs = module_apps.DaemonSet.new;
+  final DaemonSetCondition = module_apps.DaemonSetCondition.new;
+  final DaemonSetConditionArgs = module_apps.DaemonSetCondition.new;
+  final DaemonSetConditionPatch = module_apps.DaemonSetConditionPatch.new;
+  final DaemonSetConditionPatchArgs = module_apps.DaemonSetConditionPatch.new;
+  final DaemonSetList = module_apps.DaemonSetList.new;
+  final DaemonSetListArgs = module_apps.DaemonSetList.new;
+  final DaemonSetPatch = module_apps.DaemonSetPatch.new;
+  final DaemonSetPatchArgs = module_apps.DaemonSetPatch.new;
+  final DaemonSetSpec = module_apps.DaemonSetSpec.new;
+  final DaemonSetSpecArgs = module_apps.DaemonSetSpec.new;
+  final DaemonSetSpecPatch = module_apps.DaemonSetSpecPatch.new;
+  final DaemonSetSpecPatchArgs = module_apps.DaemonSetSpecPatch.new;
+  final DaemonSetStatus = module_apps.DaemonSetStatus.new;
+  final DaemonSetStatusArgs = module_apps.DaemonSetStatus.new;
+  final DaemonSetStatusPatch = module_apps.DaemonSetStatusPatch.new;
+  final DaemonSetStatusPatchArgs = module_apps.DaemonSetStatusPatch.new;
+  final DaemonSetUpdateStrategy = module_apps.DaemonSetUpdateStrategy.new;
+  final DaemonSetUpdateStrategyArgs = module_apps.DaemonSetUpdateStrategy.new;
+  final DaemonSetUpdateStrategyPatch =
+      module_apps.DaemonSetUpdateStrategyPatch.new;
+  final DaemonSetUpdateStrategyPatchArgs =
+      module_apps.DaemonSetUpdateStrategyPatch.new;
+  final DeploymentArgs = module_apps.DeploymentAppsV1beta1Args.new;
+  final DeploymentCondition = module_apps.DeploymentCondition.new;
+  final DeploymentConditionArgs = module_apps.DeploymentCondition.new;
+  final DeploymentConditionPatch = module_apps.DeploymentConditionPatch.new;
+  final DeploymentConditionPatchArgs = module_apps.DeploymentConditionPatch.new;
+  final DeploymentList = module_apps.DeploymentList.new;
+  final DeploymentListArgs = module_apps.DeploymentList.new;
+  final DeploymentPatch = module_apps.DeploymentPatch.new;
+  final DeploymentPatchArgs = module_apps.DeploymentPatch.new;
+  final DeploymentRollback = module_apps.DeploymentRollback.new;
+  final DeploymentRollbackArgs = module_apps.DeploymentRollback.new;
+  final DeploymentRollbackPatch = module_apps.DeploymentRollbackPatch.new;
+  final DeploymentRollbackPatchArgs = module_apps.DeploymentRollbackPatch.new;
+  final DeploymentSpec = module_apps.DeploymentSpec.new;
+  final DeploymentSpecArgs = module_apps.DeploymentSpec.new;
+  final DeploymentSpecPatch = module_apps.DeploymentSpecPatch.new;
+  final DeploymentSpecPatchArgs = module_apps.DeploymentSpecPatch.new;
+  final DeploymentStatus = module_apps.DeploymentStatus.new;
+  final DeploymentStatusArgs = module_apps.DeploymentStatus.new;
+  final DeploymentStatusPatch = module_apps.DeploymentStatusPatch.new;
+  final DeploymentStatusPatchArgs = module_apps.DeploymentStatusPatch.new;
+  final DeploymentStrategy = module_apps.DeploymentStrategy.new;
+  final DeploymentStrategyArgs = module_apps.DeploymentStrategy.new;
+  final DeploymentStrategyPatch = module_apps.DeploymentStrategyPatch.new;
+  final DeploymentStrategyPatchArgs = module_apps.DeploymentStrategyPatch.new;
+  final DeploymentType = module_apps.DeploymentAppsV1beta1.new;
+  final DeploymentTypeArgs = module_apps.DeploymentAppsV1beta1.new;
+  final ReplicaSet = module_apps.ReplicaSet.new;
+  final ReplicaSetArgs = module_apps.ReplicaSet.new;
+  final ReplicaSetCondition = module_apps.ReplicaSetCondition.new;
+  final ReplicaSetConditionArgs = module_apps.ReplicaSetCondition.new;
+  final ReplicaSetConditionPatch = module_apps.ReplicaSetConditionPatch.new;
+  final ReplicaSetConditionPatchArgs = module_apps.ReplicaSetConditionPatch.new;
+  final ReplicaSetList = module_apps.ReplicaSetList.new;
+  final ReplicaSetListArgs = module_apps.ReplicaSetList.new;
+  final ReplicaSetPatch = module_apps.ReplicaSetPatch.new;
+  final ReplicaSetPatchArgs = module_apps.ReplicaSetPatch.new;
+  final ReplicaSetSpec = module_apps.ReplicaSetSpec.new;
+  final ReplicaSetSpecArgs = module_apps.ReplicaSetSpec.new;
+  final ReplicaSetSpecPatch = module_apps.ReplicaSetSpecPatch.new;
+  final ReplicaSetSpecPatchArgs = module_apps.ReplicaSetSpecPatch.new;
+  final ReplicaSetStatus = module_apps.ReplicaSetStatus.new;
+  final ReplicaSetStatusArgs = module_apps.ReplicaSetStatus.new;
+  final ReplicaSetStatusPatch = module_apps.ReplicaSetStatusPatch.new;
+  final ReplicaSetStatusPatchArgs = module_apps.ReplicaSetStatusPatch.new;
+  final RollbackConfig = module_apps.RollbackConfig.new;
+  final RollbackConfigArgs = module_apps.RollbackConfig.new;
+  final RollbackConfigPatch = module_apps.RollbackConfigPatch.new;
+  final RollbackConfigPatchArgs = module_apps.RollbackConfigPatch.new;
+  final RollingUpdateDaemonSet = module_apps.RollingUpdateDaemonSet.new;
+  final RollingUpdateDaemonSetArgs = module_apps.RollingUpdateDaemonSet.new;
+  final RollingUpdateDaemonSetPatch =
+      module_apps.RollingUpdateDaemonSetPatch.new;
+  final RollingUpdateDaemonSetPatchArgs =
+      module_apps.RollingUpdateDaemonSetPatch.new;
+  final RollingUpdateDeployment = module_apps.RollingUpdateDeployment.new;
+  final RollingUpdateDeploymentArgs = module_apps.RollingUpdateDeployment.new;
+  final RollingUpdateDeploymentPatch =
+      module_apps.RollingUpdateDeploymentPatch.new;
+  final RollingUpdateDeploymentPatchArgs =
+      module_apps.RollingUpdateDeploymentPatch.new;
+  final RollingUpdateStatefulSetStrategy =
+      module_apps.RollingUpdateStatefulSetStrategy.new;
+  final RollingUpdateStatefulSetStrategyArgs =
+      module_apps.RollingUpdateStatefulSetStrategy.new;
+  final RollingUpdateStatefulSetStrategyPatch =
+      module_apps.RollingUpdateStatefulSetStrategyPatch.new;
+  final RollingUpdateStatefulSetStrategyPatchArgs =
+      module_apps.RollingUpdateStatefulSetStrategyPatch.new;
+  final Scale = module_apps.Scale.new;
+  final ScaleArgs = module_apps.Scale.new;
+  final ScalePatch = module_apps.ScalePatch.new;
+  final ScalePatchArgs = module_apps.ScalePatch.new;
+  final ScaleSpec = module_apps.ScaleSpec.new;
+  final ScaleSpecArgs = module_apps.ScaleSpec.new;
+  final ScaleSpecPatch = module_apps.ScaleSpecPatch.new;
+  final ScaleSpecPatchArgs = module_apps.ScaleSpecPatch.new;
+  final ScaleStatus = module_apps.ScaleStatus.new;
+  final ScaleStatusArgs = module_apps.ScaleStatus.new;
+  final ScaleStatusPatch = module_apps.ScaleStatusPatch.new;
+  final ScaleStatusPatchArgs = module_apps.ScaleStatusPatch.new;
+  final StatefulSet = module_apps.StatefulSet.new;
+  final StatefulSetArgs = module_apps.StatefulSet.new;
+  final StatefulSetCondition = module_apps.StatefulSetCondition.new;
+  final StatefulSetConditionArgs = module_apps.StatefulSetCondition.new;
+  final StatefulSetConditionPatch = module_apps.StatefulSetConditionPatch.new;
+  final StatefulSetConditionPatchArgs =
+      module_apps.StatefulSetConditionPatch.new;
+  final StatefulSetList = module_apps.StatefulSetList.new;
+  final StatefulSetListArgs = module_apps.StatefulSetList.new;
+  final StatefulSetOrdinals = module_apps.StatefulSetOrdinals.new;
+  final StatefulSetOrdinalsArgs = module_apps.StatefulSetOrdinals.new;
+  final StatefulSetOrdinalsPatch = module_apps.StatefulSetOrdinalsPatch.new;
+  final StatefulSetOrdinalsPatchArgs = module_apps.StatefulSetOrdinalsPatch.new;
+  final StatefulSetPatch = module_apps.StatefulSetPatch.new;
+  final StatefulSetPatchArgs = module_apps.StatefulSetPatch.new;
+  final StatefulSetPersistentVolumeClaimRetentionPolicy =
+      module_apps.StatefulSetPersistentVolumeClaimRetentionPolicy.new;
+  final StatefulSetPersistentVolumeClaimRetentionPolicyArgs =
+      module_apps.StatefulSetPersistentVolumeClaimRetentionPolicy.new;
+  final StatefulSetPersistentVolumeClaimRetentionPolicyPatch =
+      module_apps.StatefulSetPersistentVolumeClaimRetentionPolicyPatch.new;
+  final StatefulSetPersistentVolumeClaimRetentionPolicyPatchArgs =
+      module_apps.StatefulSetPersistentVolumeClaimRetentionPolicyPatch.new;
+  final StatefulSetSpec = module_apps.StatefulSetSpec.new;
+  final StatefulSetSpecArgs = module_apps.StatefulSetSpec.new;
+  final StatefulSetSpecPatch = module_apps.StatefulSetSpecPatch.new;
+  final StatefulSetSpecPatchArgs = module_apps.StatefulSetSpecPatch.new;
+  final StatefulSetStatus = module_apps.StatefulSetStatus.new;
+  final StatefulSetStatusArgs = module_apps.StatefulSetStatus.new;
+  final StatefulSetStatusPatch = module_apps.StatefulSetStatusPatch.new;
+  final StatefulSetStatusPatchArgs = module_apps.StatefulSetStatusPatch.new;
+  final StatefulSetUpdateStrategy = module_apps.StatefulSetUpdateStrategy.new;
+  final StatefulSetUpdateStrategyArgs =
+      module_apps.StatefulSetUpdateStrategy.new;
+  final StatefulSetUpdateStrategyPatch =
+      module_apps.StatefulSetUpdateStrategyPatch.new;
+  final StatefulSetUpdateStrategyPatchArgs =
+      module_apps.StatefulSetUpdateStrategyPatch.new;
 }
 
 class _AuditregistrationK8sIoModuleNamespace {
   _AuditregistrationK8sIoModuleNamespace();
-  final AuditSink = _auditregistration_k8s_io.AuditSink.new;
-  final AuditSinkArgs = _auditregistration_k8s_io.AuditSink.new;
-  final AuditSinkList = _auditregistration_k8s_io.AuditSinkList.new;
-  final AuditSinkListArgs = _auditregistration_k8s_io.AuditSinkList.new;
-  final AuditSinkPatch = _auditregistration_k8s_io.AuditSinkPatch.new;
-  final AuditSinkPatchArgs = _auditregistration_k8s_io.AuditSinkPatch.new;
-  final AuditSinkSpec = _auditregistration_k8s_io.AuditSinkSpec.new;
-  final AuditSinkSpecArgs = _auditregistration_k8s_io.AuditSinkSpec.new;
-  final AuditSinkSpecPatch = _auditregistration_k8s_io.AuditSinkSpecPatch.new;
-  final AuditSinkSpecPatchArgs = _auditregistration_k8s_io.AuditSinkSpecPatch.new;
-  final Policy = _auditregistration_k8s_io.Policy.new;
-  final PolicyArgs = _auditregistration_k8s_io.Policy.new;
-  final PolicyPatch = _auditregistration_k8s_io.PolicyPatch.new;
-  final PolicyPatchArgs = _auditregistration_k8s_io.PolicyPatch.new;
-  final ServiceReference = _auditregistration_k8s_io.ServiceReference.new;
-  final ServiceReferenceArgs = _auditregistration_k8s_io.ServiceReference.new;
-  final ServiceReferencePatch = _auditregistration_k8s_io.ServiceReferencePatch.new;
-  final ServiceReferencePatchArgs = _auditregistration_k8s_io.ServiceReferencePatch.new;
-  final Webhook = _auditregistration_k8s_io.Webhook.new;
-  final WebhookArgs = _auditregistration_k8s_io.Webhook.new;
-  final WebhookClientConfig = _auditregistration_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigArgs = _auditregistration_k8s_io.WebhookClientConfig.new;
-  final WebhookClientConfigPatch = _auditregistration_k8s_io.WebhookClientConfigPatch.new;
-  final WebhookClientConfigPatchArgs = _auditregistration_k8s_io.WebhookClientConfigPatch.new;
-  final WebhookPatch = _auditregistration_k8s_io.WebhookPatch.new;
-  final WebhookPatchArgs = _auditregistration_k8s_io.WebhookPatch.new;
-  final WebhookThrottleConfig = _auditregistration_k8s_io.WebhookThrottleConfig.new;
-  final WebhookThrottleConfigArgs = _auditregistration_k8s_io.WebhookThrottleConfig.new;
-  final WebhookThrottleConfigPatch = _auditregistration_k8s_io.WebhookThrottleConfigPatch.new;
-  final WebhookThrottleConfigPatchArgs = _auditregistration_k8s_io.WebhookThrottleConfigPatch.new;
+  final AuditSink = module_auditregistration_k8s_io.AuditSink.new;
+  final AuditSinkArgs = module_auditregistration_k8s_io.AuditSink.new;
+  final AuditSinkList = module_auditregistration_k8s_io.AuditSinkList.new;
+  final AuditSinkListArgs = module_auditregistration_k8s_io.AuditSinkList.new;
+  final AuditSinkPatch = module_auditregistration_k8s_io.AuditSinkPatch.new;
+  final AuditSinkPatchArgs = module_auditregistration_k8s_io.AuditSinkPatch.new;
+  final AuditSinkSpec = module_auditregistration_k8s_io.AuditSinkSpec.new;
+  final AuditSinkSpecArgs = module_auditregistration_k8s_io.AuditSinkSpec.new;
+  final AuditSinkSpecPatch =
+      module_auditregistration_k8s_io.AuditSinkSpecPatch.new;
+  final AuditSinkSpecPatchArgs =
+      module_auditregistration_k8s_io.AuditSinkSpecPatch.new;
+  final Policy = module_auditregistration_k8s_io.Policy.new;
+  final PolicyArgs = module_auditregistration_k8s_io.Policy.new;
+  final PolicyPatch = module_auditregistration_k8s_io.PolicyPatch.new;
+  final PolicyPatchArgs = module_auditregistration_k8s_io.PolicyPatch.new;
+  final ServiceReference = module_auditregistration_k8s_io.ServiceReference.new;
+  final ServiceReferenceArgs =
+      module_auditregistration_k8s_io.ServiceReference.new;
+  final ServiceReferencePatch =
+      module_auditregistration_k8s_io.ServiceReferencePatch.new;
+  final ServiceReferencePatchArgs =
+      module_auditregistration_k8s_io.ServiceReferencePatch.new;
+  final Webhook = module_auditregistration_k8s_io.Webhook.new;
+  final WebhookArgs = module_auditregistration_k8s_io.Webhook.new;
+  final WebhookClientConfig =
+      module_auditregistration_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigArgs =
+      module_auditregistration_k8s_io.WebhookClientConfig.new;
+  final WebhookClientConfigPatch =
+      module_auditregistration_k8s_io.WebhookClientConfigPatch.new;
+  final WebhookClientConfigPatchArgs =
+      module_auditregistration_k8s_io.WebhookClientConfigPatch.new;
+  final WebhookPatch = module_auditregistration_k8s_io.WebhookPatch.new;
+  final WebhookPatchArgs = module_auditregistration_k8s_io.WebhookPatch.new;
+  final WebhookThrottleConfig =
+      module_auditregistration_k8s_io.WebhookThrottleConfig.new;
+  final WebhookThrottleConfigArgs =
+      module_auditregistration_k8s_io.WebhookThrottleConfig.new;
+  final WebhookThrottleConfigPatch =
+      module_auditregistration_k8s_io.WebhookThrottleConfigPatch.new;
+  final WebhookThrottleConfigPatchArgs =
+      module_auditregistration_k8s_io.WebhookThrottleConfigPatch.new;
 }
 
 class _AuthenticationK8sIoModuleNamespace {
   _AuthenticationK8sIoModuleNamespace();
-  final BoundObjectReference = _authentication_k8s_io.BoundObjectReference.new;
-  final BoundObjectReferenceArgs = _authentication_k8s_io.BoundObjectReference.new;
-  final BoundObjectReferencePatch = _authentication_k8s_io.BoundObjectReferencePatch.new;
-  final BoundObjectReferencePatchArgs = _authentication_k8s_io.BoundObjectReferencePatch.new;
-  final SelfSubjectReview = _authentication_k8s_io.SelfSubjectReview.new;
-  final SelfSubjectReviewArgs = _authentication_k8s_io.SelfSubjectReview.new;
-  final SelfSubjectReviewPatch = _authentication_k8s_io.SelfSubjectReviewPatch.new;
-  final SelfSubjectReviewPatchArgs = _authentication_k8s_io.SelfSubjectReviewPatch.new;
-  final SelfSubjectReviewStatus = _authentication_k8s_io.SelfSubjectReviewStatus.new;
-  final SelfSubjectReviewStatusArgs = _authentication_k8s_io.SelfSubjectReviewStatus.new;
-  final SelfSubjectReviewStatusPatch = _authentication_k8s_io.SelfSubjectReviewStatusPatch.new;
-  final SelfSubjectReviewStatusPatchArgs = _authentication_k8s_io.SelfSubjectReviewStatusPatch.new;
-  final TokenRequest = _authentication_k8s_io.TokenRequest.new;
-  final TokenRequestArgs = _authentication_k8s_io.TokenRequest.new;
-  final TokenRequestPatch = _authentication_k8s_io.TokenRequestPatch.new;
-  final TokenRequestPatchArgs = _authentication_k8s_io.TokenRequestPatch.new;
-  final TokenRequestSpec = _authentication_k8s_io.TokenRequestSpec.new;
-  final TokenRequestSpecArgs = _authentication_k8s_io.TokenRequestSpec.new;
-  final TokenRequestSpecPatch = _authentication_k8s_io.TokenRequestSpecPatch.new;
-  final TokenRequestSpecPatchArgs = _authentication_k8s_io.TokenRequestSpecPatch.new;
-  final TokenRequestStatus = _authentication_k8s_io.TokenRequestStatus.new;
-  final TokenRequestStatusArgs = _authentication_k8s_io.TokenRequestStatus.new;
-  final TokenRequestStatusPatch = _authentication_k8s_io.TokenRequestStatusPatch.new;
-  final TokenRequestStatusPatchArgs = _authentication_k8s_io.TokenRequestStatusPatch.new;
-  final TokenReview = _authentication_k8s_io.TokenReview.new;
-  final TokenReviewArgs = _authentication_k8s_io.TokenReview.new;
-  final TokenReviewPatch = _authentication_k8s_io.TokenReviewPatch.new;
-  final TokenReviewPatchArgs = _authentication_k8s_io.TokenReviewPatch.new;
-  final TokenReviewSpec = _authentication_k8s_io.TokenReviewSpec.new;
-  final TokenReviewSpecArgs = _authentication_k8s_io.TokenReviewSpec.new;
-  final TokenReviewSpecPatch = _authentication_k8s_io.TokenReviewSpecPatch.new;
-  final TokenReviewSpecPatchArgs = _authentication_k8s_io.TokenReviewSpecPatch.new;
-  final TokenReviewStatus = _authentication_k8s_io.TokenReviewStatus.new;
-  final TokenReviewStatusArgs = _authentication_k8s_io.TokenReviewStatus.new;
-  final TokenReviewStatusPatch = _authentication_k8s_io.TokenReviewStatusPatch.new;
-  final TokenReviewStatusPatchArgs = _authentication_k8s_io.TokenReviewStatusPatch.new;
-  final UserInfo = _authentication_k8s_io.UserInfo.new;
-  final UserInfoArgs = _authentication_k8s_io.UserInfo.new;
-  final UserInfoPatch = _authentication_k8s_io.UserInfoPatch.new;
-  final UserInfoPatchArgs = _authentication_k8s_io.UserInfoPatch.new;
+  final BoundObjectReference =
+      module_authentication_k8s_io.BoundObjectReference.new;
+  final BoundObjectReferenceArgs =
+      module_authentication_k8s_io.BoundObjectReference.new;
+  final BoundObjectReferencePatch =
+      module_authentication_k8s_io.BoundObjectReferencePatch.new;
+  final BoundObjectReferencePatchArgs =
+      module_authentication_k8s_io.BoundObjectReferencePatch.new;
+  final SelfSubjectReview = module_authentication_k8s_io.SelfSubjectReview.new;
+  final SelfSubjectReviewArgs =
+      module_authentication_k8s_io.SelfSubjectReview.new;
+  final SelfSubjectReviewPatch =
+      module_authentication_k8s_io.SelfSubjectReviewPatch.new;
+  final SelfSubjectReviewPatchArgs =
+      module_authentication_k8s_io.SelfSubjectReviewPatch.new;
+  final SelfSubjectReviewStatus =
+      module_authentication_k8s_io.SelfSubjectReviewStatus.new;
+  final SelfSubjectReviewStatusArgs =
+      module_authentication_k8s_io.SelfSubjectReviewStatus.new;
+  final SelfSubjectReviewStatusPatch =
+      module_authentication_k8s_io.SelfSubjectReviewStatusPatch.new;
+  final SelfSubjectReviewStatusPatchArgs =
+      module_authentication_k8s_io.SelfSubjectReviewStatusPatch.new;
+  final TokenRequest = module_authentication_k8s_io.TokenRequest.new;
+  final TokenRequestArgs = module_authentication_k8s_io.TokenRequest.new;
+  final TokenRequestPatch = module_authentication_k8s_io.TokenRequestPatch.new;
+  final TokenRequestPatchArgs =
+      module_authentication_k8s_io.TokenRequestPatch.new;
+  final TokenRequestSpec = module_authentication_k8s_io.TokenRequestSpec.new;
+  final TokenRequestSpecArgs =
+      module_authentication_k8s_io.TokenRequestSpec.new;
+  final TokenRequestSpecPatch =
+      module_authentication_k8s_io.TokenRequestSpecPatch.new;
+  final TokenRequestSpecPatchArgs =
+      module_authentication_k8s_io.TokenRequestSpecPatch.new;
+  final TokenRequestStatus =
+      module_authentication_k8s_io.TokenRequestStatus.new;
+  final TokenRequestStatusArgs =
+      module_authentication_k8s_io.TokenRequestStatus.new;
+  final TokenRequestStatusPatch =
+      module_authentication_k8s_io.TokenRequestStatusPatch.new;
+  final TokenRequestStatusPatchArgs =
+      module_authentication_k8s_io.TokenRequestStatusPatch.new;
+  final TokenReview = module_authentication_k8s_io.TokenReview.new;
+  final TokenReviewArgs = module_authentication_k8s_io.TokenReview.new;
+  final TokenReviewPatch = module_authentication_k8s_io.TokenReviewPatch.new;
+  final TokenReviewPatchArgs =
+      module_authentication_k8s_io.TokenReviewPatch.new;
+  final TokenReviewSpec = module_authentication_k8s_io.TokenReviewSpec.new;
+  final TokenReviewSpecArgs = module_authentication_k8s_io.TokenReviewSpec.new;
+  final TokenReviewSpecPatch =
+      module_authentication_k8s_io.TokenReviewSpecPatch.new;
+  final TokenReviewSpecPatchArgs =
+      module_authentication_k8s_io.TokenReviewSpecPatch.new;
+  final TokenReviewStatus = module_authentication_k8s_io.TokenReviewStatus.new;
+  final TokenReviewStatusArgs =
+      module_authentication_k8s_io.TokenReviewStatus.new;
+  final TokenReviewStatusPatch =
+      module_authentication_k8s_io.TokenReviewStatusPatch.new;
+  final TokenReviewStatusPatchArgs =
+      module_authentication_k8s_io.TokenReviewStatusPatch.new;
+  final UserInfo = module_authentication_k8s_io.UserInfo.new;
+  final UserInfoArgs = module_authentication_k8s_io.UserInfo.new;
+  final UserInfoPatch = module_authentication_k8s_io.UserInfoPatch.new;
+  final UserInfoPatchArgs = module_authentication_k8s_io.UserInfoPatch.new;
 }
 
 class _AuthorizationK8sIoModuleNamespace {
   _AuthorizationK8sIoModuleNamespace();
-  final FieldSelectorAttributes = _authorization_k8s_io.FieldSelectorAttributes.new;
-  final FieldSelectorAttributesArgs = _authorization_k8s_io.FieldSelectorAttributes.new;
-  final FieldSelectorAttributesPatch = _authorization_k8s_io.FieldSelectorAttributesPatch.new;
-  final FieldSelectorAttributesPatchArgs = _authorization_k8s_io.FieldSelectorAttributesPatch.new;
-  final LabelSelectorAttributes = _authorization_k8s_io.LabelSelectorAttributes.new;
-  final LabelSelectorAttributesArgs = _authorization_k8s_io.LabelSelectorAttributes.new;
-  final LabelSelectorAttributesPatch = _authorization_k8s_io.LabelSelectorAttributesPatch.new;
-  final LabelSelectorAttributesPatchArgs = _authorization_k8s_io.LabelSelectorAttributesPatch.new;
-  final LocalSubjectAccessReview = _authorization_k8s_io.LocalSubjectAccessReview.new;
-  final LocalSubjectAccessReviewArgs = _authorization_k8s_io.LocalSubjectAccessReview.new;
-  final LocalSubjectAccessReviewPatch = _authorization_k8s_io.LocalSubjectAccessReviewPatch.new;
-  final LocalSubjectAccessReviewPatchArgs = _authorization_k8s_io.LocalSubjectAccessReviewPatch.new;
-  final NonResourceAttributes = _authorization_k8s_io.NonResourceAttributes.new;
-  final NonResourceAttributesArgs = _authorization_k8s_io.NonResourceAttributes.new;
-  final NonResourceAttributesPatch = _authorization_k8s_io.NonResourceAttributesPatch.new;
-  final NonResourceAttributesPatchArgs = _authorization_k8s_io.NonResourceAttributesPatch.new;
-  final NonResourceRule = _authorization_k8s_io.NonResourceRule.new;
-  final NonResourceRuleArgs = _authorization_k8s_io.NonResourceRule.new;
-  final NonResourceRulePatch = _authorization_k8s_io.NonResourceRulePatch.new;
-  final NonResourceRulePatchArgs = _authorization_k8s_io.NonResourceRulePatch.new;
-  final ResourceAttributes = _authorization_k8s_io.ResourceAttributes.new;
-  final ResourceAttributesArgs = _authorization_k8s_io.ResourceAttributes.new;
-  final ResourceAttributesPatch = _authorization_k8s_io.ResourceAttributesPatch.new;
-  final ResourceAttributesPatchArgs = _authorization_k8s_io.ResourceAttributesPatch.new;
-  final ResourceRule = _authorization_k8s_io.ResourceRule.new;
-  final ResourceRuleArgs = _authorization_k8s_io.ResourceRule.new;
-  final ResourceRulePatch = _authorization_k8s_io.ResourceRulePatch.new;
-  final ResourceRulePatchArgs = _authorization_k8s_io.ResourceRulePatch.new;
-  final SelfSubjectAccessReview = _authorization_k8s_io.SelfSubjectAccessReview.new;
-  final SelfSubjectAccessReviewArgs = _authorization_k8s_io.SelfSubjectAccessReview.new;
-  final SelfSubjectAccessReviewPatch = _authorization_k8s_io.SelfSubjectAccessReviewPatch.new;
-  final SelfSubjectAccessReviewPatchArgs = _authorization_k8s_io.SelfSubjectAccessReviewPatch.new;
-  final SelfSubjectAccessReviewSpec = _authorization_k8s_io.SelfSubjectAccessReviewSpec.new;
-  final SelfSubjectAccessReviewSpecArgs = _authorization_k8s_io.SelfSubjectAccessReviewSpec.new;
-  final SelfSubjectAccessReviewSpecPatch = _authorization_k8s_io.SelfSubjectAccessReviewSpecPatch.new;
-  final SelfSubjectAccessReviewSpecPatchArgs = _authorization_k8s_io.SelfSubjectAccessReviewSpecPatch.new;
-  final SelfSubjectRulesReview = _authorization_k8s_io.SelfSubjectRulesReview.new;
-  final SelfSubjectRulesReviewArgs = _authorization_k8s_io.SelfSubjectRulesReview.new;
-  final SelfSubjectRulesReviewPatch = _authorization_k8s_io.SelfSubjectRulesReviewPatch.new;
-  final SelfSubjectRulesReviewPatchArgs = _authorization_k8s_io.SelfSubjectRulesReviewPatch.new;
-  final SelfSubjectRulesReviewSpec = _authorization_k8s_io.SelfSubjectRulesReviewSpec.new;
-  final SelfSubjectRulesReviewSpecArgs = _authorization_k8s_io.SelfSubjectRulesReviewSpec.new;
-  final SelfSubjectRulesReviewSpecPatch = _authorization_k8s_io.SelfSubjectRulesReviewSpecPatch.new;
-  final SelfSubjectRulesReviewSpecPatchArgs = _authorization_k8s_io.SelfSubjectRulesReviewSpecPatch.new;
-  final SubjectAccessReview = _authorization_k8s_io.SubjectAccessReview.new;
-  final SubjectAccessReviewArgs = _authorization_k8s_io.SubjectAccessReview.new;
-  final SubjectAccessReviewPatch = _authorization_k8s_io.SubjectAccessReviewPatch.new;
-  final SubjectAccessReviewPatchArgs = _authorization_k8s_io.SubjectAccessReviewPatch.new;
-  final SubjectAccessReviewSpec = _authorization_k8s_io.SubjectAccessReviewSpec.new;
-  final SubjectAccessReviewSpecArgs = _authorization_k8s_io.SubjectAccessReviewSpec.new;
-  final SubjectAccessReviewSpecPatch = _authorization_k8s_io.SubjectAccessReviewSpecPatch.new;
-  final SubjectAccessReviewSpecPatchArgs = _authorization_k8s_io.SubjectAccessReviewSpecPatch.new;
-  final SubjectAccessReviewStatus = _authorization_k8s_io.SubjectAccessReviewStatus.new;
-  final SubjectAccessReviewStatusArgs = _authorization_k8s_io.SubjectAccessReviewStatus.new;
-  final SubjectAccessReviewStatusPatch = _authorization_k8s_io.SubjectAccessReviewStatusPatch.new;
-  final SubjectAccessReviewStatusPatchArgs = _authorization_k8s_io.SubjectAccessReviewStatusPatch.new;
-  final SubjectRulesReviewStatus = _authorization_k8s_io.SubjectRulesReviewStatus.new;
-  final SubjectRulesReviewStatusArgs = _authorization_k8s_io.SubjectRulesReviewStatus.new;
-  final SubjectRulesReviewStatusPatch = _authorization_k8s_io.SubjectRulesReviewStatusPatch.new;
-  final SubjectRulesReviewStatusPatchArgs = _authorization_k8s_io.SubjectRulesReviewStatusPatch.new;
+  final FieldSelectorAttributes =
+      module_authorization_k8s_io.FieldSelectorAttributes.new;
+  final FieldSelectorAttributesArgs =
+      module_authorization_k8s_io.FieldSelectorAttributes.new;
+  final FieldSelectorAttributesPatch =
+      module_authorization_k8s_io.FieldSelectorAttributesPatch.new;
+  final FieldSelectorAttributesPatchArgs =
+      module_authorization_k8s_io.FieldSelectorAttributesPatch.new;
+  final LabelSelectorAttributes =
+      module_authorization_k8s_io.LabelSelectorAttributes.new;
+  final LabelSelectorAttributesArgs =
+      module_authorization_k8s_io.LabelSelectorAttributes.new;
+  final LabelSelectorAttributesPatch =
+      module_authorization_k8s_io.LabelSelectorAttributesPatch.new;
+  final LabelSelectorAttributesPatchArgs =
+      module_authorization_k8s_io.LabelSelectorAttributesPatch.new;
+  final LocalSubjectAccessReview =
+      module_authorization_k8s_io.LocalSubjectAccessReview.new;
+  final LocalSubjectAccessReviewArgs =
+      module_authorization_k8s_io.LocalSubjectAccessReview.new;
+  final LocalSubjectAccessReviewPatch =
+      module_authorization_k8s_io.LocalSubjectAccessReviewPatch.new;
+  final LocalSubjectAccessReviewPatchArgs =
+      module_authorization_k8s_io.LocalSubjectAccessReviewPatch.new;
+  final NonResourceAttributes =
+      module_authorization_k8s_io.NonResourceAttributes.new;
+  final NonResourceAttributesArgs =
+      module_authorization_k8s_io.NonResourceAttributes.new;
+  final NonResourceAttributesPatch =
+      module_authorization_k8s_io.NonResourceAttributesPatch.new;
+  final NonResourceAttributesPatchArgs =
+      module_authorization_k8s_io.NonResourceAttributesPatch.new;
+  final NonResourceRule = module_authorization_k8s_io.NonResourceRule.new;
+  final NonResourceRuleArgs = module_authorization_k8s_io.NonResourceRule.new;
+  final NonResourceRulePatch =
+      module_authorization_k8s_io.NonResourceRulePatch.new;
+  final NonResourceRulePatchArgs =
+      module_authorization_k8s_io.NonResourceRulePatch.new;
+  final ResourceAttributes = module_authorization_k8s_io.ResourceAttributes.new;
+  final ResourceAttributesArgs =
+      module_authorization_k8s_io.ResourceAttributes.new;
+  final ResourceAttributesPatch =
+      module_authorization_k8s_io.ResourceAttributesPatch.new;
+  final ResourceAttributesPatchArgs =
+      module_authorization_k8s_io.ResourceAttributesPatch.new;
+  final ResourceRule = module_authorization_k8s_io.ResourceRule.new;
+  final ResourceRuleArgs = module_authorization_k8s_io.ResourceRule.new;
+  final ResourceRulePatch = module_authorization_k8s_io.ResourceRulePatch.new;
+  final ResourceRulePatchArgs =
+      module_authorization_k8s_io.ResourceRulePatch.new;
+  final SelfSubjectAccessReview =
+      module_authorization_k8s_io.SelfSubjectAccessReview.new;
+  final SelfSubjectAccessReviewArgs =
+      module_authorization_k8s_io.SelfSubjectAccessReview.new;
+  final SelfSubjectAccessReviewPatch =
+      module_authorization_k8s_io.SelfSubjectAccessReviewPatch.new;
+  final SelfSubjectAccessReviewPatchArgs =
+      module_authorization_k8s_io.SelfSubjectAccessReviewPatch.new;
+  final SelfSubjectAccessReviewSpec =
+      module_authorization_k8s_io.SelfSubjectAccessReviewSpec.new;
+  final SelfSubjectAccessReviewSpecArgs =
+      module_authorization_k8s_io.SelfSubjectAccessReviewSpec.new;
+  final SelfSubjectAccessReviewSpecPatch =
+      module_authorization_k8s_io.SelfSubjectAccessReviewSpecPatch.new;
+  final SelfSubjectAccessReviewSpecPatchArgs =
+      module_authorization_k8s_io.SelfSubjectAccessReviewSpecPatch.new;
+  final SelfSubjectRulesReview =
+      module_authorization_k8s_io.SelfSubjectRulesReview.new;
+  final SelfSubjectRulesReviewArgs =
+      module_authorization_k8s_io.SelfSubjectRulesReview.new;
+  final SelfSubjectRulesReviewPatch =
+      module_authorization_k8s_io.SelfSubjectRulesReviewPatch.new;
+  final SelfSubjectRulesReviewPatchArgs =
+      module_authorization_k8s_io.SelfSubjectRulesReviewPatch.new;
+  final SelfSubjectRulesReviewSpec =
+      module_authorization_k8s_io.SelfSubjectRulesReviewSpec.new;
+  final SelfSubjectRulesReviewSpecArgs =
+      module_authorization_k8s_io.SelfSubjectRulesReviewSpec.new;
+  final SelfSubjectRulesReviewSpecPatch =
+      module_authorization_k8s_io.SelfSubjectRulesReviewSpecPatch.new;
+  final SelfSubjectRulesReviewSpecPatchArgs =
+      module_authorization_k8s_io.SelfSubjectRulesReviewSpecPatch.new;
+  final SubjectAccessReview =
+      module_authorization_k8s_io.SubjectAccessReview.new;
+  final SubjectAccessReviewArgs =
+      module_authorization_k8s_io.SubjectAccessReview.new;
+  final SubjectAccessReviewPatch =
+      module_authorization_k8s_io.SubjectAccessReviewPatch.new;
+  final SubjectAccessReviewPatchArgs =
+      module_authorization_k8s_io.SubjectAccessReviewPatch.new;
+  final SubjectAccessReviewSpec =
+      module_authorization_k8s_io.SubjectAccessReviewSpec.new;
+  final SubjectAccessReviewSpecArgs =
+      module_authorization_k8s_io.SubjectAccessReviewSpec.new;
+  final SubjectAccessReviewSpecPatch =
+      module_authorization_k8s_io.SubjectAccessReviewSpecPatch.new;
+  final SubjectAccessReviewSpecPatchArgs =
+      module_authorization_k8s_io.SubjectAccessReviewSpecPatch.new;
+  final SubjectAccessReviewStatus =
+      module_authorization_k8s_io.SubjectAccessReviewStatus.new;
+  final SubjectAccessReviewStatusArgs =
+      module_authorization_k8s_io.SubjectAccessReviewStatus.new;
+  final SubjectAccessReviewStatusPatch =
+      module_authorization_k8s_io.SubjectAccessReviewStatusPatch.new;
+  final SubjectAccessReviewStatusPatchArgs =
+      module_authorization_k8s_io.SubjectAccessReviewStatusPatch.new;
+  final SubjectRulesReviewStatus =
+      module_authorization_k8s_io.SubjectRulesReviewStatus.new;
+  final SubjectRulesReviewStatusArgs =
+      module_authorization_k8s_io.SubjectRulesReviewStatus.new;
+  final SubjectRulesReviewStatusPatch =
+      module_authorization_k8s_io.SubjectRulesReviewStatusPatch.new;
+  final SubjectRulesReviewStatusPatchArgs =
+      module_authorization_k8s_io.SubjectRulesReviewStatusPatch.new;
 }
 
 class _AutoscalingModuleNamespace {
   _AutoscalingModuleNamespace();
-  final ContainerResourceMetricSource = _autoscaling.ContainerResourceMetricSource.new;
-  final ContainerResourceMetricSourceArgs = _autoscaling.ContainerResourceMetricSource.new;
-  final ContainerResourceMetricSourcePatch = _autoscaling.ContainerResourceMetricSourcePatch.new;
-  final ContainerResourceMetricSourcePatchArgs = _autoscaling.ContainerResourceMetricSourcePatch.new;
-  final ContainerResourceMetricStatus = _autoscaling.ContainerResourceMetricStatus.new;
-  final ContainerResourceMetricStatusArgs = _autoscaling.ContainerResourceMetricStatus.new;
-  final ContainerResourceMetricStatusPatch = _autoscaling.ContainerResourceMetricStatusPatch.new;
-  final ContainerResourceMetricStatusPatchArgs = _autoscaling.ContainerResourceMetricStatusPatch.new;
-  final CrossVersionObjectReference = _autoscaling.CrossVersionObjectReference.new;
-  final CrossVersionObjectReferenceArgs = _autoscaling.CrossVersionObjectReference.new;
-  final CrossVersionObjectReferencePatch = _autoscaling.CrossVersionObjectReferencePatch.new;
-  final CrossVersionObjectReferencePatchArgs = _autoscaling.CrossVersionObjectReferencePatch.new;
-  final ExternalMetricSource = _autoscaling.ExternalMetricSource.new;
-  final ExternalMetricSourceArgs = _autoscaling.ExternalMetricSource.new;
-  final ExternalMetricSourcePatch = _autoscaling.ExternalMetricSourcePatch.new;
-  final ExternalMetricSourcePatchArgs = _autoscaling.ExternalMetricSourcePatch.new;
-  final ExternalMetricStatus = _autoscaling.ExternalMetricStatus.new;
-  final ExternalMetricStatusArgs = _autoscaling.ExternalMetricStatus.new;
-  final ExternalMetricStatusPatch = _autoscaling.ExternalMetricStatusPatch.new;
-  final ExternalMetricStatusPatchArgs = _autoscaling.ExternalMetricStatusPatch.new;
-  final HPAScalingPolicy = _autoscaling.HPAScalingPolicy.new;
-  final HPAScalingPolicyArgs = _autoscaling.HPAScalingPolicy.new;
-  final HPAScalingPolicyPatch = _autoscaling.HPAScalingPolicyPatch.new;
-  final HPAScalingPolicyPatchArgs = _autoscaling.HPAScalingPolicyPatch.new;
-  final HPAScalingRules = _autoscaling.HPAScalingRules.new;
-  final HPAScalingRulesArgs = _autoscaling.HPAScalingRules.new;
-  final HPAScalingRulesPatch = _autoscaling.HPAScalingRulesPatch.new;
-  final HPAScalingRulesPatchArgs = _autoscaling.HPAScalingRulesPatch.new;
-  final HorizontalPodAutoscaler = _autoscaling.HorizontalPodAutoscaler.new;
-  final HorizontalPodAutoscalerArgs = _autoscaling.HorizontalPodAutoscaler.new;
-  final HorizontalPodAutoscalerBehavior = _autoscaling.HorizontalPodAutoscalerBehavior.new;
-  final HorizontalPodAutoscalerBehaviorArgs = _autoscaling.HorizontalPodAutoscalerBehavior.new;
-  final HorizontalPodAutoscalerBehaviorPatch = _autoscaling.HorizontalPodAutoscalerBehaviorPatch.new;
-  final HorizontalPodAutoscalerBehaviorPatchArgs = _autoscaling.HorizontalPodAutoscalerBehaviorPatch.new;
-  final HorizontalPodAutoscalerCondition = _autoscaling.HorizontalPodAutoscalerCondition.new;
-  final HorizontalPodAutoscalerConditionArgs = _autoscaling.HorizontalPodAutoscalerCondition.new;
-  final HorizontalPodAutoscalerConditionPatch = _autoscaling.HorizontalPodAutoscalerConditionPatch.new;
-  final HorizontalPodAutoscalerConditionPatchArgs = _autoscaling.HorizontalPodAutoscalerConditionPatch.new;
-  final HorizontalPodAutoscalerList = _autoscaling.HorizontalPodAutoscalerList.new;
-  final HorizontalPodAutoscalerListArgs = _autoscaling.HorizontalPodAutoscalerList.new;
-  final HorizontalPodAutoscalerPatch = _autoscaling.HorizontalPodAutoscalerPatch.new;
-  final HorizontalPodAutoscalerPatchArgs = _autoscaling.HorizontalPodAutoscalerPatch.new;
-  final HorizontalPodAutoscalerSpec = _autoscaling.HorizontalPodAutoscalerSpec.new;
-  final HorizontalPodAutoscalerSpecArgs = _autoscaling.HorizontalPodAutoscalerSpec.new;
-  final HorizontalPodAutoscalerSpecPatch = _autoscaling.HorizontalPodAutoscalerSpecPatch.new;
-  final HorizontalPodAutoscalerSpecPatchArgs = _autoscaling.HorizontalPodAutoscalerSpecPatch.new;
-  final HorizontalPodAutoscalerStatus = _autoscaling.HorizontalPodAutoscalerStatus.new;
-  final HorizontalPodAutoscalerStatusArgs = _autoscaling.HorizontalPodAutoscalerStatus.new;
-  final HorizontalPodAutoscalerStatusPatch = _autoscaling.HorizontalPodAutoscalerStatusPatch.new;
-  final HorizontalPodAutoscalerStatusPatchArgs = _autoscaling.HorizontalPodAutoscalerStatusPatch.new;
-  final MetricIdentifier = _autoscaling.MetricIdentifier.new;
-  final MetricIdentifierArgs = _autoscaling.MetricIdentifier.new;
-  final MetricIdentifierPatch = _autoscaling.MetricIdentifierPatch.new;
-  final MetricIdentifierPatchArgs = _autoscaling.MetricIdentifierPatch.new;
-  final MetricSpec = _autoscaling.MetricSpec.new;
-  final MetricSpecArgs = _autoscaling.MetricSpec.new;
-  final MetricSpecPatch = _autoscaling.MetricSpecPatch.new;
-  final MetricSpecPatchArgs = _autoscaling.MetricSpecPatch.new;
-  final MetricStatus = _autoscaling.MetricStatus.new;
-  final MetricStatusArgs = _autoscaling.MetricStatus.new;
-  final MetricStatusPatch = _autoscaling.MetricStatusPatch.new;
-  final MetricStatusPatchArgs = _autoscaling.MetricStatusPatch.new;
-  final MetricTarget = _autoscaling.MetricTarget.new;
-  final MetricTargetArgs = _autoscaling.MetricTarget.new;
-  final MetricTargetPatch = _autoscaling.MetricTargetPatch.new;
-  final MetricTargetPatchArgs = _autoscaling.MetricTargetPatch.new;
-  final MetricValueStatus = _autoscaling.MetricValueStatus.new;
-  final MetricValueStatusArgs = _autoscaling.MetricValueStatus.new;
-  final MetricValueStatusPatch = _autoscaling.MetricValueStatusPatch.new;
-  final MetricValueStatusPatchArgs = _autoscaling.MetricValueStatusPatch.new;
-  final ObjectMetricSource = _autoscaling.ObjectMetricSource.new;
-  final ObjectMetricSourceArgs = _autoscaling.ObjectMetricSource.new;
-  final ObjectMetricSourcePatch = _autoscaling.ObjectMetricSourcePatch.new;
-  final ObjectMetricSourcePatchArgs = _autoscaling.ObjectMetricSourcePatch.new;
-  final ObjectMetricStatus = _autoscaling.ObjectMetricStatus.new;
-  final ObjectMetricStatusArgs = _autoscaling.ObjectMetricStatus.new;
-  final ObjectMetricStatusPatch = _autoscaling.ObjectMetricStatusPatch.new;
-  final ObjectMetricStatusPatchArgs = _autoscaling.ObjectMetricStatusPatch.new;
-  final PodsMetricSource = _autoscaling.PodsMetricSource.new;
-  final PodsMetricSourceArgs = _autoscaling.PodsMetricSource.new;
-  final PodsMetricSourcePatch = _autoscaling.PodsMetricSourcePatch.new;
-  final PodsMetricSourcePatchArgs = _autoscaling.PodsMetricSourcePatch.new;
-  final PodsMetricStatus = _autoscaling.PodsMetricStatus.new;
-  final PodsMetricStatusArgs = _autoscaling.PodsMetricStatus.new;
-  final PodsMetricStatusPatch = _autoscaling.PodsMetricStatusPatch.new;
-  final PodsMetricStatusPatchArgs = _autoscaling.PodsMetricStatusPatch.new;
-  final ResourceMetricSource = _autoscaling.ResourceMetricSource.new;
-  final ResourceMetricSourceArgs = _autoscaling.ResourceMetricSource.new;
-  final ResourceMetricSourcePatch = _autoscaling.ResourceMetricSourcePatch.new;
-  final ResourceMetricSourcePatchArgs = _autoscaling.ResourceMetricSourcePatch.new;
-  final ResourceMetricStatus = _autoscaling.ResourceMetricStatus.new;
-  final ResourceMetricStatusArgs = _autoscaling.ResourceMetricStatus.new;
-  final ResourceMetricStatusPatch = _autoscaling.ResourceMetricStatusPatch.new;
-  final ResourceMetricStatusPatchArgs = _autoscaling.ResourceMetricStatusPatch.new;
-  final Scale = _autoscaling.Scale.new;
-  final ScaleArgs = _autoscaling.Scale.new;
-  final ScalePatch = _autoscaling.ScalePatch.new;
-  final ScalePatchArgs = _autoscaling.ScalePatch.new;
-  final ScaleSpec = _autoscaling.ScaleSpec.new;
-  final ScaleSpecArgs = _autoscaling.ScaleSpec.new;
-  final ScaleSpecPatch = _autoscaling.ScaleSpecPatch.new;
-  final ScaleSpecPatchArgs = _autoscaling.ScaleSpecPatch.new;
-  final ScaleStatus = _autoscaling.ScaleStatus.new;
-  final ScaleStatusArgs = _autoscaling.ScaleStatus.new;
-  final ScaleStatusPatch = _autoscaling.ScaleStatusPatch.new;
-  final ScaleStatusPatchArgs = _autoscaling.ScaleStatusPatch.new;
+  final ContainerResourceMetricSource =
+      module_autoscaling.ContainerResourceMetricSource.new;
+  final ContainerResourceMetricSourceArgs =
+      module_autoscaling.ContainerResourceMetricSource.new;
+  final ContainerResourceMetricSourcePatch =
+      module_autoscaling.ContainerResourceMetricSourcePatch.new;
+  final ContainerResourceMetricSourcePatchArgs =
+      module_autoscaling.ContainerResourceMetricSourcePatch.new;
+  final ContainerResourceMetricStatus =
+      module_autoscaling.ContainerResourceMetricStatus.new;
+  final ContainerResourceMetricStatusArgs =
+      module_autoscaling.ContainerResourceMetricStatus.new;
+  final ContainerResourceMetricStatusPatch =
+      module_autoscaling.ContainerResourceMetricStatusPatch.new;
+  final ContainerResourceMetricStatusPatchArgs =
+      module_autoscaling.ContainerResourceMetricStatusPatch.new;
+  final CrossVersionObjectReference =
+      module_autoscaling.CrossVersionObjectReference.new;
+  final CrossVersionObjectReferenceArgs =
+      module_autoscaling.CrossVersionObjectReference.new;
+  final CrossVersionObjectReferencePatch =
+      module_autoscaling.CrossVersionObjectReferencePatch.new;
+  final CrossVersionObjectReferencePatchArgs =
+      module_autoscaling.CrossVersionObjectReferencePatch.new;
+  final ExternalMetricSource = module_autoscaling.ExternalMetricSource.new;
+  final ExternalMetricSourceArgs = module_autoscaling.ExternalMetricSource.new;
+  final ExternalMetricSourcePatch =
+      module_autoscaling.ExternalMetricSourcePatch.new;
+  final ExternalMetricSourcePatchArgs =
+      module_autoscaling.ExternalMetricSourcePatch.new;
+  final ExternalMetricStatus = module_autoscaling.ExternalMetricStatus.new;
+  final ExternalMetricStatusArgs = module_autoscaling.ExternalMetricStatus.new;
+  final ExternalMetricStatusPatch =
+      module_autoscaling.ExternalMetricStatusPatch.new;
+  final ExternalMetricStatusPatchArgs =
+      module_autoscaling.ExternalMetricStatusPatch.new;
+  final HPAScalingPolicy = module_autoscaling.HPAScalingPolicy.new;
+  final HPAScalingPolicyArgs = module_autoscaling.HPAScalingPolicy.new;
+  final HPAScalingPolicyPatch = module_autoscaling.HPAScalingPolicyPatch.new;
+  final HPAScalingPolicyPatchArgs =
+      module_autoscaling.HPAScalingPolicyPatch.new;
+  final HPAScalingRules = module_autoscaling.HPAScalingRules.new;
+  final HPAScalingRulesArgs = module_autoscaling.HPAScalingRules.new;
+  final HPAScalingRulesPatch = module_autoscaling.HPAScalingRulesPatch.new;
+  final HPAScalingRulesPatchArgs = module_autoscaling.HPAScalingRulesPatch.new;
+  final HorizontalPodAutoscaler =
+      module_autoscaling.HorizontalPodAutoscaler.new;
+  final HorizontalPodAutoscalerArgs =
+      module_autoscaling.HorizontalPodAutoscaler.new;
+  final HorizontalPodAutoscalerBehavior =
+      module_autoscaling.HorizontalPodAutoscalerBehavior.new;
+  final HorizontalPodAutoscalerBehaviorArgs =
+      module_autoscaling.HorizontalPodAutoscalerBehavior.new;
+  final HorizontalPodAutoscalerBehaviorPatch =
+      module_autoscaling.HorizontalPodAutoscalerBehaviorPatch.new;
+  final HorizontalPodAutoscalerBehaviorPatchArgs =
+      module_autoscaling.HorizontalPodAutoscalerBehaviorPatch.new;
+  final HorizontalPodAutoscalerCondition =
+      module_autoscaling.HorizontalPodAutoscalerCondition.new;
+  final HorizontalPodAutoscalerConditionArgs =
+      module_autoscaling.HorizontalPodAutoscalerCondition.new;
+  final HorizontalPodAutoscalerConditionPatch =
+      module_autoscaling.HorizontalPodAutoscalerConditionPatch.new;
+  final HorizontalPodAutoscalerConditionPatchArgs =
+      module_autoscaling.HorizontalPodAutoscalerConditionPatch.new;
+  final HorizontalPodAutoscalerList =
+      module_autoscaling.HorizontalPodAutoscalerList.new;
+  final HorizontalPodAutoscalerListArgs =
+      module_autoscaling.HorizontalPodAutoscalerList.new;
+  final HorizontalPodAutoscalerPatch =
+      module_autoscaling.HorizontalPodAutoscalerPatch.new;
+  final HorizontalPodAutoscalerPatchArgs =
+      module_autoscaling.HorizontalPodAutoscalerPatch.new;
+  final HorizontalPodAutoscalerSpec =
+      module_autoscaling.HorizontalPodAutoscalerSpec.new;
+  final HorizontalPodAutoscalerSpecArgs =
+      module_autoscaling.HorizontalPodAutoscalerSpec.new;
+  final HorizontalPodAutoscalerSpecPatch =
+      module_autoscaling.HorizontalPodAutoscalerSpecPatch.new;
+  final HorizontalPodAutoscalerSpecPatchArgs =
+      module_autoscaling.HorizontalPodAutoscalerSpecPatch.new;
+  final HorizontalPodAutoscalerStatus =
+      module_autoscaling.HorizontalPodAutoscalerStatus.new;
+  final HorizontalPodAutoscalerStatusArgs =
+      module_autoscaling.HorizontalPodAutoscalerStatus.new;
+  final HorizontalPodAutoscalerStatusPatch =
+      module_autoscaling.HorizontalPodAutoscalerStatusPatch.new;
+  final HorizontalPodAutoscalerStatusPatchArgs =
+      module_autoscaling.HorizontalPodAutoscalerStatusPatch.new;
+  final MetricIdentifier = module_autoscaling.MetricIdentifier.new;
+  final MetricIdentifierArgs = module_autoscaling.MetricIdentifier.new;
+  final MetricIdentifierPatch = module_autoscaling.MetricIdentifierPatch.new;
+  final MetricIdentifierPatchArgs =
+      module_autoscaling.MetricIdentifierPatch.new;
+  final MetricSpec = module_autoscaling.MetricSpec.new;
+  final MetricSpecArgs = module_autoscaling.MetricSpec.new;
+  final MetricSpecPatch = module_autoscaling.MetricSpecPatch.new;
+  final MetricSpecPatchArgs = module_autoscaling.MetricSpecPatch.new;
+  final MetricStatus = module_autoscaling.MetricStatus.new;
+  final MetricStatusArgs = module_autoscaling.MetricStatus.new;
+  final MetricStatusPatch = module_autoscaling.MetricStatusPatch.new;
+  final MetricStatusPatchArgs = module_autoscaling.MetricStatusPatch.new;
+  final MetricTarget = module_autoscaling.MetricTarget.new;
+  final MetricTargetArgs = module_autoscaling.MetricTarget.new;
+  final MetricTargetPatch = module_autoscaling.MetricTargetPatch.new;
+  final MetricTargetPatchArgs = module_autoscaling.MetricTargetPatch.new;
+  final MetricValueStatus = module_autoscaling.MetricValueStatus.new;
+  final MetricValueStatusArgs = module_autoscaling.MetricValueStatus.new;
+  final MetricValueStatusPatch = module_autoscaling.MetricValueStatusPatch.new;
+  final MetricValueStatusPatchArgs =
+      module_autoscaling.MetricValueStatusPatch.new;
+  final ObjectMetricSource = module_autoscaling.ObjectMetricSource.new;
+  final ObjectMetricSourceArgs = module_autoscaling.ObjectMetricSource.new;
+  final ObjectMetricSourcePatch =
+      module_autoscaling.ObjectMetricSourcePatch.new;
+  final ObjectMetricSourcePatchArgs =
+      module_autoscaling.ObjectMetricSourcePatch.new;
+  final ObjectMetricStatus = module_autoscaling.ObjectMetricStatus.new;
+  final ObjectMetricStatusArgs = module_autoscaling.ObjectMetricStatus.new;
+  final ObjectMetricStatusPatch =
+      module_autoscaling.ObjectMetricStatusPatch.new;
+  final ObjectMetricStatusPatchArgs =
+      module_autoscaling.ObjectMetricStatusPatch.new;
+  final PodsMetricSource = module_autoscaling.PodsMetricSource.new;
+  final PodsMetricSourceArgs = module_autoscaling.PodsMetricSource.new;
+  final PodsMetricSourcePatch = module_autoscaling.PodsMetricSourcePatch.new;
+  final PodsMetricSourcePatchArgs =
+      module_autoscaling.PodsMetricSourcePatch.new;
+  final PodsMetricStatus = module_autoscaling.PodsMetricStatus.new;
+  final PodsMetricStatusArgs = module_autoscaling.PodsMetricStatus.new;
+  final PodsMetricStatusPatch = module_autoscaling.PodsMetricStatusPatch.new;
+  final PodsMetricStatusPatchArgs =
+      module_autoscaling.PodsMetricStatusPatch.new;
+  final ResourceMetricSource = module_autoscaling.ResourceMetricSource.new;
+  final ResourceMetricSourceArgs = module_autoscaling.ResourceMetricSource.new;
+  final ResourceMetricSourcePatch =
+      module_autoscaling.ResourceMetricSourcePatch.new;
+  final ResourceMetricSourcePatchArgs =
+      module_autoscaling.ResourceMetricSourcePatch.new;
+  final ResourceMetricStatus = module_autoscaling.ResourceMetricStatus.new;
+  final ResourceMetricStatusArgs = module_autoscaling.ResourceMetricStatus.new;
+  final ResourceMetricStatusPatch =
+      module_autoscaling.ResourceMetricStatusPatch.new;
+  final ResourceMetricStatusPatchArgs =
+      module_autoscaling.ResourceMetricStatusPatch.new;
+  final Scale = module_autoscaling.Scale.new;
+  final ScaleArgs = module_autoscaling.Scale.new;
+  final ScalePatch = module_autoscaling.ScalePatch.new;
+  final ScalePatchArgs = module_autoscaling.ScalePatch.new;
+  final ScaleSpec = module_autoscaling.ScaleSpec.new;
+  final ScaleSpecArgs = module_autoscaling.ScaleSpec.new;
+  final ScaleSpecPatch = module_autoscaling.ScaleSpecPatch.new;
+  final ScaleSpecPatchArgs = module_autoscaling.ScaleSpecPatch.new;
+  final ScaleStatus = module_autoscaling.ScaleStatus.new;
+  final ScaleStatusArgs = module_autoscaling.ScaleStatus.new;
+  final ScaleStatusPatch = module_autoscaling.ScaleStatusPatch.new;
+  final ScaleStatusPatchArgs = module_autoscaling.ScaleStatusPatch.new;
 }
 
 class _BatchModuleNamespace {
   _BatchModuleNamespace();
-  final CronJob = _batch.CronJob.new;
-  final CronJobArgs = _batch.CronJob.new;
-  final CronJobList = _batch.CronJobList.new;
-  final CronJobListArgs = _batch.CronJobList.new;
-  final CronJobPatch = _batch.CronJobPatch.new;
-  final CronJobPatchArgs = _batch.CronJobPatch.new;
-  final CronJobSpec = _batch.CronJobSpec.new;
-  final CronJobSpecArgs = _batch.CronJobSpec.new;
-  final CronJobSpecPatch = _batch.CronJobSpecPatch.new;
-  final CronJobSpecPatchArgs = _batch.CronJobSpecPatch.new;
-  final CronJobStatus = _batch.CronJobStatus.new;
-  final CronJobStatusArgs = _batch.CronJobStatus.new;
-  final CronJobStatusPatch = _batch.CronJobStatusPatch.new;
-  final CronJobStatusPatchArgs = _batch.CronJobStatusPatch.new;
-  final Job = _batch.Job.new;
-  final JobArgs = _batch.Job.new;
-  final JobCondition = _batch.JobCondition.new;
-  final JobConditionArgs = _batch.JobCondition.new;
-  final JobConditionPatch = _batch.JobConditionPatch.new;
-  final JobConditionPatchArgs = _batch.JobConditionPatch.new;
-  final JobList = _batch.JobList.new;
-  final JobListArgs = _batch.JobList.new;
-  final JobPatch = _batch.JobPatch.new;
-  final JobPatchArgs = _batch.JobPatch.new;
-  final JobSpec = _batch.JobSpec.new;
-  final JobSpecArgs = _batch.JobSpec.new;
-  final JobSpecPatch = _batch.JobSpecPatch.new;
-  final JobSpecPatchArgs = _batch.JobSpecPatch.new;
-  final JobStatus = _batch.JobStatus.new;
-  final JobStatusArgs = _batch.JobStatus.new;
-  final JobStatusPatch = _batch.JobStatusPatch.new;
-  final JobStatusPatchArgs = _batch.JobStatusPatch.new;
-  final JobTemplateSpec = _batch.JobTemplateSpec.new;
-  final JobTemplateSpecArgs = _batch.JobTemplateSpec.new;
-  final JobTemplateSpecPatch = _batch.JobTemplateSpecPatch.new;
-  final JobTemplateSpecPatchArgs = _batch.JobTemplateSpecPatch.new;
-  final PodFailurePolicy = _batch.PodFailurePolicy.new;
-  final PodFailurePolicyArgs = _batch.PodFailurePolicy.new;
-  final PodFailurePolicyOnExitCodesRequirement = _batch.PodFailurePolicyOnExitCodesRequirement.new;
-  final PodFailurePolicyOnExitCodesRequirementArgs = _batch.PodFailurePolicyOnExitCodesRequirement.new;
-  final PodFailurePolicyOnExitCodesRequirementPatch = _batch.PodFailurePolicyOnExitCodesRequirementPatch.new;
-  final PodFailurePolicyOnExitCodesRequirementPatchArgs = _batch.PodFailurePolicyOnExitCodesRequirementPatch.new;
-  final PodFailurePolicyOnPodConditionsPattern = _batch.PodFailurePolicyOnPodConditionsPattern.new;
-  final PodFailurePolicyOnPodConditionsPatternArgs = _batch.PodFailurePolicyOnPodConditionsPattern.new;
-  final PodFailurePolicyOnPodConditionsPatternPatch = _batch.PodFailurePolicyOnPodConditionsPatternPatch.new;
-  final PodFailurePolicyOnPodConditionsPatternPatchArgs = _batch.PodFailurePolicyOnPodConditionsPatternPatch.new;
-  final PodFailurePolicyPatch = _batch.PodFailurePolicyPatch.new;
-  final PodFailurePolicyPatchArgs = _batch.PodFailurePolicyPatch.new;
-  final PodFailurePolicyRule = _batch.PodFailurePolicyRule.new;
-  final PodFailurePolicyRuleArgs = _batch.PodFailurePolicyRule.new;
-  final PodFailurePolicyRulePatch = _batch.PodFailurePolicyRulePatch.new;
-  final PodFailurePolicyRulePatchArgs = _batch.PodFailurePolicyRulePatch.new;
-  final SuccessPolicy = _batch.SuccessPolicy.new;
-  final SuccessPolicyArgs = _batch.SuccessPolicy.new;
-  final SuccessPolicyPatch = _batch.SuccessPolicyPatch.new;
-  final SuccessPolicyPatchArgs = _batch.SuccessPolicyPatch.new;
-  final SuccessPolicyRule = _batch.SuccessPolicyRule.new;
-  final SuccessPolicyRuleArgs = _batch.SuccessPolicyRule.new;
-  final SuccessPolicyRulePatch = _batch.SuccessPolicyRulePatch.new;
-  final SuccessPolicyRulePatchArgs = _batch.SuccessPolicyRulePatch.new;
-  final UncountedTerminatedPods = _batch.UncountedTerminatedPods.new;
-  final UncountedTerminatedPodsArgs = _batch.UncountedTerminatedPods.new;
-  final UncountedTerminatedPodsPatch = _batch.UncountedTerminatedPodsPatch.new;
-  final UncountedTerminatedPodsPatchArgs = _batch.UncountedTerminatedPodsPatch.new;
+  final CronJob = module_batch.CronJob.new;
+  final CronJobArgs = module_batch.CronJob.new;
+  final CronJobList = module_batch.CronJobList.new;
+  final CronJobListArgs = module_batch.CronJobList.new;
+  final CronJobPatch = module_batch.CronJobPatch.new;
+  final CronJobPatchArgs = module_batch.CronJobPatch.new;
+  final CronJobSpec = module_batch.CronJobSpec.new;
+  final CronJobSpecArgs = module_batch.CronJobSpec.new;
+  final CronJobSpecPatch = module_batch.CronJobSpecPatch.new;
+  final CronJobSpecPatchArgs = module_batch.CronJobSpecPatch.new;
+  final CronJobStatus = module_batch.CronJobStatus.new;
+  final CronJobStatusArgs = module_batch.CronJobStatus.new;
+  final CronJobStatusPatch = module_batch.CronJobStatusPatch.new;
+  final CronJobStatusPatchArgs = module_batch.CronJobStatusPatch.new;
+  final Job = module_batch.Job.new;
+  final JobArgs = module_batch.Job.new;
+  final JobCondition = module_batch.JobCondition.new;
+  final JobConditionArgs = module_batch.JobCondition.new;
+  final JobConditionPatch = module_batch.JobConditionPatch.new;
+  final JobConditionPatchArgs = module_batch.JobConditionPatch.new;
+  final JobList = module_batch.JobList.new;
+  final JobListArgs = module_batch.JobList.new;
+  final JobPatch = module_batch.JobPatch.new;
+  final JobPatchArgs = module_batch.JobPatch.new;
+  final JobSpec = module_batch.JobSpec.new;
+  final JobSpecArgs = module_batch.JobSpec.new;
+  final JobSpecPatch = module_batch.JobSpecPatch.new;
+  final JobSpecPatchArgs = module_batch.JobSpecPatch.new;
+  final JobStatus = module_batch.JobStatus.new;
+  final JobStatusArgs = module_batch.JobStatus.new;
+  final JobStatusPatch = module_batch.JobStatusPatch.new;
+  final JobStatusPatchArgs = module_batch.JobStatusPatch.new;
+  final JobTemplateSpec = module_batch.JobTemplateSpec.new;
+  final JobTemplateSpecArgs = module_batch.JobTemplateSpec.new;
+  final JobTemplateSpecPatch = module_batch.JobTemplateSpecPatch.new;
+  final JobTemplateSpecPatchArgs = module_batch.JobTemplateSpecPatch.new;
+  final PodFailurePolicy = module_batch.PodFailurePolicy.new;
+  final PodFailurePolicyArgs = module_batch.PodFailurePolicy.new;
+  final PodFailurePolicyOnExitCodesRequirement =
+      module_batch.PodFailurePolicyOnExitCodesRequirement.new;
+  final PodFailurePolicyOnExitCodesRequirementArgs =
+      module_batch.PodFailurePolicyOnExitCodesRequirement.new;
+  final PodFailurePolicyOnExitCodesRequirementPatch =
+      module_batch.PodFailurePolicyOnExitCodesRequirementPatch.new;
+  final PodFailurePolicyOnExitCodesRequirementPatchArgs =
+      module_batch.PodFailurePolicyOnExitCodesRequirementPatch.new;
+  final PodFailurePolicyOnPodConditionsPattern =
+      module_batch.PodFailurePolicyOnPodConditionsPattern.new;
+  final PodFailurePolicyOnPodConditionsPatternArgs =
+      module_batch.PodFailurePolicyOnPodConditionsPattern.new;
+  final PodFailurePolicyOnPodConditionsPatternPatch =
+      module_batch.PodFailurePolicyOnPodConditionsPatternPatch.new;
+  final PodFailurePolicyOnPodConditionsPatternPatchArgs =
+      module_batch.PodFailurePolicyOnPodConditionsPatternPatch.new;
+  final PodFailurePolicyPatch = module_batch.PodFailurePolicyPatch.new;
+  final PodFailurePolicyPatchArgs = module_batch.PodFailurePolicyPatch.new;
+  final PodFailurePolicyRule = module_batch.PodFailurePolicyRule.new;
+  final PodFailurePolicyRuleArgs = module_batch.PodFailurePolicyRule.new;
+  final PodFailurePolicyRulePatch = module_batch.PodFailurePolicyRulePatch.new;
+  final PodFailurePolicyRulePatchArgs =
+      module_batch.PodFailurePolicyRulePatch.new;
+  final SuccessPolicy = module_batch.SuccessPolicy.new;
+  final SuccessPolicyArgs = module_batch.SuccessPolicy.new;
+  final SuccessPolicyPatch = module_batch.SuccessPolicyPatch.new;
+  final SuccessPolicyPatchArgs = module_batch.SuccessPolicyPatch.new;
+  final SuccessPolicyRule = module_batch.SuccessPolicyRule.new;
+  final SuccessPolicyRuleArgs = module_batch.SuccessPolicyRule.new;
+  final SuccessPolicyRulePatch = module_batch.SuccessPolicyRulePatch.new;
+  final SuccessPolicyRulePatchArgs = module_batch.SuccessPolicyRulePatch.new;
+  final UncountedTerminatedPods = module_batch.UncountedTerminatedPods.new;
+  final UncountedTerminatedPodsArgs = module_batch.UncountedTerminatedPods.new;
+  final UncountedTerminatedPodsPatch =
+      module_batch.UncountedTerminatedPodsPatch.new;
+  final UncountedTerminatedPodsPatchArgs =
+      module_batch.UncountedTerminatedPodsPatch.new;
 }
 
 class _CertificatesK8sIoModuleNamespace {
   _CertificatesK8sIoModuleNamespace();
-  final CertificateSigningRequest = _certificates_k8s_io.CertificateSigningRequest.new;
-  final CertificateSigningRequestArgs = _certificates_k8s_io.CertificateSigningRequest.new;
-  final CertificateSigningRequestCondition = _certificates_k8s_io.CertificateSigningRequestCondition.new;
-  final CertificateSigningRequestConditionArgs = _certificates_k8s_io.CertificateSigningRequestCondition.new;
-  final CertificateSigningRequestConditionPatch = _certificates_k8s_io.CertificateSigningRequestConditionPatch.new;
-  final CertificateSigningRequestConditionPatchArgs = _certificates_k8s_io.CertificateSigningRequestConditionPatch.new;
-  final CertificateSigningRequestList = _certificates_k8s_io.CertificateSigningRequestList.new;
-  final CertificateSigningRequestListArgs = _certificates_k8s_io.CertificateSigningRequestList.new;
-  final CertificateSigningRequestPatch = _certificates_k8s_io.CertificateSigningRequestPatch.new;
-  final CertificateSigningRequestPatchArgs = _certificates_k8s_io.CertificateSigningRequestPatch.new;
-  final CertificateSigningRequestSpec = _certificates_k8s_io.CertificateSigningRequestSpec.new;
-  final CertificateSigningRequestSpecArgs = _certificates_k8s_io.CertificateSigningRequestSpec.new;
-  final CertificateSigningRequestSpecPatch = _certificates_k8s_io.CertificateSigningRequestSpecPatch.new;
-  final CertificateSigningRequestSpecPatchArgs = _certificates_k8s_io.CertificateSigningRequestSpecPatch.new;
-  final CertificateSigningRequestStatus = _certificates_k8s_io.CertificateSigningRequestStatus.new;
-  final CertificateSigningRequestStatusArgs = _certificates_k8s_io.CertificateSigningRequestStatus.new;
-  final CertificateSigningRequestStatusPatch = _certificates_k8s_io.CertificateSigningRequestStatusPatch.new;
-  final CertificateSigningRequestStatusPatchArgs = _certificates_k8s_io.CertificateSigningRequestStatusPatch.new;
-  final ClusterTrustBundle = _certificates_k8s_io.ClusterTrustBundle.new;
-  final ClusterTrustBundleArgs = _certificates_k8s_io.ClusterTrustBundle.new;
-  final ClusterTrustBundleList = _certificates_k8s_io.ClusterTrustBundleList.new;
-  final ClusterTrustBundleListArgs = _certificates_k8s_io.ClusterTrustBundleList.new;
-  final ClusterTrustBundlePatch = _certificates_k8s_io.ClusterTrustBundlePatch.new;
-  final ClusterTrustBundlePatchArgs = _certificates_k8s_io.ClusterTrustBundlePatch.new;
-  final ClusterTrustBundleSpec = _certificates_k8s_io.ClusterTrustBundleSpec.new;
-  final ClusterTrustBundleSpecArgs = _certificates_k8s_io.ClusterTrustBundleSpec.new;
-  final ClusterTrustBundleSpecPatch = _certificates_k8s_io.ClusterTrustBundleSpecPatch.new;
-  final ClusterTrustBundleSpecPatchArgs = _certificates_k8s_io.ClusterTrustBundleSpecPatch.new;
-  final PodCertificateRequest = _certificates_k8s_io.PodCertificateRequest.new;
-  final PodCertificateRequestArgs = _certificates_k8s_io.PodCertificateRequest.new;
-  final PodCertificateRequestList = _certificates_k8s_io.PodCertificateRequestList.new;
-  final PodCertificateRequestListArgs = _certificates_k8s_io.PodCertificateRequestList.new;
-  final PodCertificateRequestPatch = _certificates_k8s_io.PodCertificateRequestPatch.new;
-  final PodCertificateRequestPatchArgs = _certificates_k8s_io.PodCertificateRequestPatch.new;
-  final PodCertificateRequestSpec = _certificates_k8s_io.PodCertificateRequestSpec.new;
-  final PodCertificateRequestSpecArgs = _certificates_k8s_io.PodCertificateRequestSpec.new;
-  final PodCertificateRequestSpecPatch = _certificates_k8s_io.PodCertificateRequestSpecPatch.new;
-  final PodCertificateRequestSpecPatchArgs = _certificates_k8s_io.PodCertificateRequestSpecPatch.new;
-  final PodCertificateRequestStatus = _certificates_k8s_io.PodCertificateRequestStatus.new;
-  final PodCertificateRequestStatusArgs = _certificates_k8s_io.PodCertificateRequestStatus.new;
-  final PodCertificateRequestStatusPatch = _certificates_k8s_io.PodCertificateRequestStatusPatch.new;
-  final PodCertificateRequestStatusPatchArgs = _certificates_k8s_io.PodCertificateRequestStatusPatch.new;
+  final CertificateSigningRequest =
+      module_certificates_k8s_io.CertificateSigningRequest.new;
+  final CertificateSigningRequestArgs =
+      module_certificates_k8s_io.CertificateSigningRequest.new;
+  final CertificateSigningRequestCondition =
+      module_certificates_k8s_io.CertificateSigningRequestCondition.new;
+  final CertificateSigningRequestConditionArgs =
+      module_certificates_k8s_io.CertificateSigningRequestCondition.new;
+  final CertificateSigningRequestConditionPatch =
+      module_certificates_k8s_io.CertificateSigningRequestConditionPatch.new;
+  final CertificateSigningRequestConditionPatchArgs =
+      module_certificates_k8s_io.CertificateSigningRequestConditionPatch.new;
+  final CertificateSigningRequestList =
+      module_certificates_k8s_io.CertificateSigningRequestList.new;
+  final CertificateSigningRequestListArgs =
+      module_certificates_k8s_io.CertificateSigningRequestList.new;
+  final CertificateSigningRequestPatch =
+      module_certificates_k8s_io.CertificateSigningRequestPatch.new;
+  final CertificateSigningRequestPatchArgs =
+      module_certificates_k8s_io.CertificateSigningRequestPatch.new;
+  final CertificateSigningRequestSpec =
+      module_certificates_k8s_io.CertificateSigningRequestSpec.new;
+  final CertificateSigningRequestSpecArgs =
+      module_certificates_k8s_io.CertificateSigningRequestSpec.new;
+  final CertificateSigningRequestSpecPatch =
+      module_certificates_k8s_io.CertificateSigningRequestSpecPatch.new;
+  final CertificateSigningRequestSpecPatchArgs =
+      module_certificates_k8s_io.CertificateSigningRequestSpecPatch.new;
+  final CertificateSigningRequestStatus =
+      module_certificates_k8s_io.CertificateSigningRequestStatus.new;
+  final CertificateSigningRequestStatusArgs =
+      module_certificates_k8s_io.CertificateSigningRequestStatus.new;
+  final CertificateSigningRequestStatusPatch =
+      module_certificates_k8s_io.CertificateSigningRequestStatusPatch.new;
+  final CertificateSigningRequestStatusPatchArgs =
+      module_certificates_k8s_io.CertificateSigningRequestStatusPatch.new;
+  final ClusterTrustBundle = module_certificates_k8s_io.ClusterTrustBundle.new;
+  final ClusterTrustBundleArgs =
+      module_certificates_k8s_io.ClusterTrustBundle.new;
+  final ClusterTrustBundleList =
+      module_certificates_k8s_io.ClusterTrustBundleList.new;
+  final ClusterTrustBundleListArgs =
+      module_certificates_k8s_io.ClusterTrustBundleList.new;
+  final ClusterTrustBundlePatch =
+      module_certificates_k8s_io.ClusterTrustBundlePatch.new;
+  final ClusterTrustBundlePatchArgs =
+      module_certificates_k8s_io.ClusterTrustBundlePatch.new;
+  final ClusterTrustBundleSpec =
+      module_certificates_k8s_io.ClusterTrustBundleSpec.new;
+  final ClusterTrustBundleSpecArgs =
+      module_certificates_k8s_io.ClusterTrustBundleSpec.new;
+  final ClusterTrustBundleSpecPatch =
+      module_certificates_k8s_io.ClusterTrustBundleSpecPatch.new;
+  final ClusterTrustBundleSpecPatchArgs =
+      module_certificates_k8s_io.ClusterTrustBundleSpecPatch.new;
+  final PodCertificateRequest =
+      module_certificates_k8s_io.PodCertificateRequest.new;
+  final PodCertificateRequestArgs =
+      module_certificates_k8s_io.PodCertificateRequest.new;
+  final PodCertificateRequestList =
+      module_certificates_k8s_io.PodCertificateRequestList.new;
+  final PodCertificateRequestListArgs =
+      module_certificates_k8s_io.PodCertificateRequestList.new;
+  final PodCertificateRequestPatch =
+      module_certificates_k8s_io.PodCertificateRequestPatch.new;
+  final PodCertificateRequestPatchArgs =
+      module_certificates_k8s_io.PodCertificateRequestPatch.new;
+  final PodCertificateRequestSpec =
+      module_certificates_k8s_io.PodCertificateRequestSpec.new;
+  final PodCertificateRequestSpecArgs =
+      module_certificates_k8s_io.PodCertificateRequestSpec.new;
+  final PodCertificateRequestSpecPatch =
+      module_certificates_k8s_io.PodCertificateRequestSpecPatch.new;
+  final PodCertificateRequestSpecPatchArgs =
+      module_certificates_k8s_io.PodCertificateRequestSpecPatch.new;
+  final PodCertificateRequestStatus =
+      module_certificates_k8s_io.PodCertificateRequestStatus.new;
+  final PodCertificateRequestStatusArgs =
+      module_certificates_k8s_io.PodCertificateRequestStatus.new;
+  final PodCertificateRequestStatusPatch =
+      module_certificates_k8s_io.PodCertificateRequestStatusPatch.new;
+  final PodCertificateRequestStatusPatchArgs =
+      module_certificates_k8s_io.PodCertificateRequestStatusPatch.new;
 }
 
 class _CoordinationK8sIoModuleNamespace {
   _CoordinationK8sIoModuleNamespace();
-  final Lease = _coordination_k8s_io.Lease.new;
-  final LeaseArgs = _coordination_k8s_io.Lease.new;
-  final LeaseCandidate = _coordination_k8s_io.LeaseCandidate.new;
-  final LeaseCandidateArgs = _coordination_k8s_io.LeaseCandidate.new;
-  final LeaseCandidateList = _coordination_k8s_io.LeaseCandidateList.new;
-  final LeaseCandidateListArgs = _coordination_k8s_io.LeaseCandidateList.new;
-  final LeaseCandidatePatch = _coordination_k8s_io.LeaseCandidatePatch.new;
-  final LeaseCandidatePatchArgs = _coordination_k8s_io.LeaseCandidatePatch.new;
-  final LeaseCandidateSpec = _coordination_k8s_io.LeaseCandidateSpec.new;
-  final LeaseCandidateSpecArgs = _coordination_k8s_io.LeaseCandidateSpec.new;
-  final LeaseCandidateSpecPatch = _coordination_k8s_io.LeaseCandidateSpecPatch.new;
-  final LeaseCandidateSpecPatchArgs = _coordination_k8s_io.LeaseCandidateSpecPatch.new;
-  final LeaseList = _coordination_k8s_io.LeaseList.new;
-  final LeaseListArgs = _coordination_k8s_io.LeaseList.new;
-  final LeasePatch = _coordination_k8s_io.LeasePatch.new;
-  final LeasePatchArgs = _coordination_k8s_io.LeasePatch.new;
-  final LeaseSpec = _coordination_k8s_io.LeaseSpec.new;
-  final LeaseSpecArgs = _coordination_k8s_io.LeaseSpec.new;
-  final LeaseSpecPatch = _coordination_k8s_io.LeaseSpecPatch.new;
-  final LeaseSpecPatchArgs = _coordination_k8s_io.LeaseSpecPatch.new;
+  final Lease = module_coordination_k8s_io.Lease.new;
+  final LeaseArgs = module_coordination_k8s_io.Lease.new;
+  final LeaseCandidate = module_coordination_k8s_io.LeaseCandidate.new;
+  final LeaseCandidateArgs = module_coordination_k8s_io.LeaseCandidate.new;
+  final LeaseCandidateList = module_coordination_k8s_io.LeaseCandidateList.new;
+  final LeaseCandidateListArgs =
+      module_coordination_k8s_io.LeaseCandidateList.new;
+  final LeaseCandidatePatch =
+      module_coordination_k8s_io.LeaseCandidatePatch.new;
+  final LeaseCandidatePatchArgs =
+      module_coordination_k8s_io.LeaseCandidatePatch.new;
+  final LeaseCandidateSpec = module_coordination_k8s_io.LeaseCandidateSpec.new;
+  final LeaseCandidateSpecArgs =
+      module_coordination_k8s_io.LeaseCandidateSpec.new;
+  final LeaseCandidateSpecPatch =
+      module_coordination_k8s_io.LeaseCandidateSpecPatch.new;
+  final LeaseCandidateSpecPatchArgs =
+      module_coordination_k8s_io.LeaseCandidateSpecPatch.new;
+  final LeaseList = module_coordination_k8s_io.LeaseList.new;
+  final LeaseListArgs = module_coordination_k8s_io.LeaseList.new;
+  final LeasePatch = module_coordination_k8s_io.LeasePatch.new;
+  final LeasePatchArgs = module_coordination_k8s_io.LeasePatch.new;
+  final LeaseSpec = module_coordination_k8s_io.LeaseSpec.new;
+  final LeaseSpecArgs = module_coordination_k8s_io.LeaseSpec.new;
+  final LeaseSpecPatch = module_coordination_k8s_io.LeaseSpecPatch.new;
+  final LeaseSpecPatchArgs = module_coordination_k8s_io.LeaseSpecPatch.new;
 }
 
 class _CoreModuleNamespace {
   _CoreModuleNamespace();
-  final AWSElasticBlockStoreVolumeSource = _core.AWSElasticBlockStoreVolumeSource.new;
-  final AWSElasticBlockStoreVolumeSourceArgs = _core.AWSElasticBlockStoreVolumeSource.new;
-  final AWSElasticBlockStoreVolumeSourcePatch = _core.AWSElasticBlockStoreVolumeSourcePatch.new;
-  final AWSElasticBlockStoreVolumeSourcePatchArgs = _core.AWSElasticBlockStoreVolumeSourcePatch.new;
-  final Affinity = _core.Affinity.new;
-  final AffinityArgs = _core.Affinity.new;
-  final AffinityPatch = _core.AffinityPatch.new;
-  final AffinityPatchArgs = _core.AffinityPatch.new;
-  final AppArmorProfile = _core.AppArmorProfile.new;
-  final AppArmorProfileArgs = _core.AppArmorProfile.new;
-  final AppArmorProfilePatch = _core.AppArmorProfilePatch.new;
-  final AppArmorProfilePatchArgs = _core.AppArmorProfilePatch.new;
-  final AttachedVolume = _core.AttachedVolume.new;
-  final AttachedVolumeArgs = _core.AttachedVolume.new;
-  final AttachedVolumePatch = _core.AttachedVolumePatch.new;
-  final AttachedVolumePatchArgs = _core.AttachedVolumePatch.new;
-  final AzureDiskVolumeSource = _core.AzureDiskVolumeSource.new;
-  final AzureDiskVolumeSourceArgs = _core.AzureDiskVolumeSource.new;
-  final AzureDiskVolumeSourcePatch = _core.AzureDiskVolumeSourcePatch.new;
-  final AzureDiskVolumeSourcePatchArgs = _core.AzureDiskVolumeSourcePatch.new;
-  final AzureFilePersistentVolumeSource = _core.AzureFilePersistentVolumeSource.new;
-  final AzureFilePersistentVolumeSourceArgs = _core.AzureFilePersistentVolumeSource.new;
-  final AzureFilePersistentVolumeSourcePatch = _core.AzureFilePersistentVolumeSourcePatch.new;
-  final AzureFilePersistentVolumeSourcePatchArgs = _core.AzureFilePersistentVolumeSourcePatch.new;
-  final AzureFileVolumeSource = _core.AzureFileVolumeSource.new;
-  final AzureFileVolumeSourceArgs = _core.AzureFileVolumeSource.new;
-  final AzureFileVolumeSourcePatch = _core.AzureFileVolumeSourcePatch.new;
-  final AzureFileVolumeSourcePatchArgs = _core.AzureFileVolumeSourcePatch.new;
-  final Binding = _core.Binding.new;
-  final BindingArgs = _core.Binding.new;
-  final BindingPatch = _core.BindingPatch.new;
-  final BindingPatchArgs = _core.BindingPatch.new;
-  final CSIPersistentVolumeSource = _core.CSIPersistentVolumeSource.new;
-  final CSIPersistentVolumeSourceArgs = _core.CSIPersistentVolumeSource.new;
-  final CSIPersistentVolumeSourcePatch = _core.CSIPersistentVolumeSourcePatch.new;
-  final CSIPersistentVolumeSourcePatchArgs = _core.CSIPersistentVolumeSourcePatch.new;
-  final CSIVolumeSource = _core.CSIVolumeSource.new;
-  final CSIVolumeSourceArgs = _core.CSIVolumeSource.new;
-  final CSIVolumeSourcePatch = _core.CSIVolumeSourcePatch.new;
-  final CSIVolumeSourcePatchArgs = _core.CSIVolumeSourcePatch.new;
-  final Capabilities = _core.Capabilities.new;
-  final CapabilitiesArgs = _core.Capabilities.new;
-  final CapabilitiesPatch = _core.CapabilitiesPatch.new;
-  final CapabilitiesPatchArgs = _core.CapabilitiesPatch.new;
-  final CephFSPersistentVolumeSource = _core.CephFSPersistentVolumeSource.new;
-  final CephFSPersistentVolumeSourceArgs = _core.CephFSPersistentVolumeSource.new;
-  final CephFSPersistentVolumeSourcePatch = _core.CephFSPersistentVolumeSourcePatch.new;
-  final CephFSPersistentVolumeSourcePatchArgs = _core.CephFSPersistentVolumeSourcePatch.new;
-  final CephFSVolumeSource = _core.CephFSVolumeSource.new;
-  final CephFSVolumeSourceArgs = _core.CephFSVolumeSource.new;
-  final CephFSVolumeSourcePatch = _core.CephFSVolumeSourcePatch.new;
-  final CephFSVolumeSourcePatchArgs = _core.CephFSVolumeSourcePatch.new;
-  final CinderPersistentVolumeSource = _core.CinderPersistentVolumeSource.new;
-  final CinderPersistentVolumeSourceArgs = _core.CinderPersistentVolumeSource.new;
-  final CinderPersistentVolumeSourcePatch = _core.CinderPersistentVolumeSourcePatch.new;
-  final CinderPersistentVolumeSourcePatchArgs = _core.CinderPersistentVolumeSourcePatch.new;
-  final CinderVolumeSource = _core.CinderVolumeSource.new;
-  final CinderVolumeSourceArgs = _core.CinderVolumeSource.new;
-  final CinderVolumeSourcePatch = _core.CinderVolumeSourcePatch.new;
-  final CinderVolumeSourcePatchArgs = _core.CinderVolumeSourcePatch.new;
-  final ClaimSource = _core.ClaimSource.new;
-  final ClaimSourceArgs = _core.ClaimSource.new;
-  final ClaimSourcePatch = _core.ClaimSourcePatch.new;
-  final ClaimSourcePatchArgs = _core.ClaimSourcePatch.new;
-  final ClientIPConfig = _core.ClientIPConfig.new;
-  final ClientIPConfigArgs = _core.ClientIPConfig.new;
-  final ClientIPConfigPatch = _core.ClientIPConfigPatch.new;
-  final ClientIPConfigPatchArgs = _core.ClientIPConfigPatch.new;
-  final ClusterTrustBundleProjection = _core.ClusterTrustBundleProjection.new;
-  final ClusterTrustBundleProjectionArgs = _core.ClusterTrustBundleProjection.new;
-  final ClusterTrustBundleProjectionPatch = _core.ClusterTrustBundleProjectionPatch.new;
-  final ClusterTrustBundleProjectionPatchArgs = _core.ClusterTrustBundleProjectionPatch.new;
-  final ComponentCondition = _core.ComponentCondition.new;
-  final ComponentConditionArgs = _core.ComponentCondition.new;
-  final ComponentConditionPatch = _core.ComponentConditionPatch.new;
-  final ComponentConditionPatchArgs = _core.ComponentConditionPatch.new;
-  final ComponentStatus = _core.ComponentStatus.new;
-  final ComponentStatusArgs = _core.ComponentStatus.new;
-  final ComponentStatusList = _core.ComponentStatusList.new;
-  final ComponentStatusListArgs = _core.ComponentStatusList.new;
-  final ComponentStatusPatch = _core.ComponentStatusPatch.new;
-  final ComponentStatusPatchArgs = _core.ComponentStatusPatch.new;
-  final ConfigMap = _core.ConfigMap.new;
-  final ConfigMapArgs = _core.ConfigMap.new;
-  final ConfigMapEnvSource = _core.ConfigMapEnvSource.new;
-  final ConfigMapEnvSourceArgs = _core.ConfigMapEnvSource.new;
-  final ConfigMapEnvSourcePatch = _core.ConfigMapEnvSourcePatch.new;
-  final ConfigMapEnvSourcePatchArgs = _core.ConfigMapEnvSourcePatch.new;
-  final ConfigMapKeySelector = _core.ConfigMapKeySelector.new;
-  final ConfigMapKeySelectorArgs = _core.ConfigMapKeySelector.new;
-  final ConfigMapKeySelectorPatch = _core.ConfigMapKeySelectorPatch.new;
-  final ConfigMapKeySelectorPatchArgs = _core.ConfigMapKeySelectorPatch.new;
-  final ConfigMapList = _core.ConfigMapList.new;
-  final ConfigMapListArgs = _core.ConfigMapList.new;
-  final ConfigMapNodeConfigSource = _core.ConfigMapNodeConfigSource.new;
-  final ConfigMapNodeConfigSourceArgs = _core.ConfigMapNodeConfigSource.new;
-  final ConfigMapNodeConfigSourcePatch = _core.ConfigMapNodeConfigSourcePatch.new;
-  final ConfigMapNodeConfigSourcePatchArgs = _core.ConfigMapNodeConfigSourcePatch.new;
-  final ConfigMapPatch = _core.ConfigMapPatch.new;
-  final ConfigMapPatchArgs = _core.ConfigMapPatch.new;
-  final ConfigMapProjection = _core.ConfigMapProjection.new;
-  final ConfigMapProjectionArgs = _core.ConfigMapProjection.new;
-  final ConfigMapProjectionPatch = _core.ConfigMapProjectionPatch.new;
-  final ConfigMapProjectionPatchArgs = _core.ConfigMapProjectionPatch.new;
-  final ConfigMapVolumeSource = _core.ConfigMapVolumeSource.new;
-  final ConfigMapVolumeSourceArgs = _core.ConfigMapVolumeSource.new;
-  final ConfigMapVolumeSourcePatch = _core.ConfigMapVolumeSourcePatch.new;
-  final ConfigMapVolumeSourcePatchArgs = _core.ConfigMapVolumeSourcePatch.new;
-  final Container = _core.Container.new;
-  final ContainerArgs = _core.Container.new;
-  final ContainerExtendedResourceRequest = _core.ContainerExtendedResourceRequest.new;
-  final ContainerExtendedResourceRequestArgs = _core.ContainerExtendedResourceRequest.new;
-  final ContainerExtendedResourceRequestPatch = _core.ContainerExtendedResourceRequestPatch.new;
-  final ContainerExtendedResourceRequestPatchArgs = _core.ContainerExtendedResourceRequestPatch.new;
-  final ContainerImage = _core.ContainerImage.new;
-  final ContainerImageArgs = _core.ContainerImage.new;
-  final ContainerImagePatch = _core.ContainerImagePatch.new;
-  final ContainerImagePatchArgs = _core.ContainerImagePatch.new;
-  final ContainerPatch = _core.ContainerPatch.new;
-  final ContainerPatchArgs = _core.ContainerPatch.new;
-  final ContainerPort = _core.ContainerPort.new;
-  final ContainerPortArgs = _core.ContainerPort.new;
-  final ContainerPortPatch = _core.ContainerPortPatch.new;
-  final ContainerPortPatchArgs = _core.ContainerPortPatch.new;
-  final ContainerResizePolicy = _core.ContainerResizePolicy.new;
-  final ContainerResizePolicyArgs = _core.ContainerResizePolicy.new;
-  final ContainerResizePolicyPatch = _core.ContainerResizePolicyPatch.new;
-  final ContainerResizePolicyPatchArgs = _core.ContainerResizePolicyPatch.new;
-  final ContainerRestartRule = _core.ContainerRestartRule.new;
-  final ContainerRestartRuleArgs = _core.ContainerRestartRule.new;
-  final ContainerRestartRuleOnExitCodes = _core.ContainerRestartRuleOnExitCodes.new;
-  final ContainerRestartRuleOnExitCodesArgs = _core.ContainerRestartRuleOnExitCodes.new;
-  final ContainerRestartRuleOnExitCodesPatch = _core.ContainerRestartRuleOnExitCodesPatch.new;
-  final ContainerRestartRuleOnExitCodesPatchArgs = _core.ContainerRestartRuleOnExitCodesPatch.new;
-  final ContainerRestartRulePatch = _core.ContainerRestartRulePatch.new;
-  final ContainerRestartRulePatchArgs = _core.ContainerRestartRulePatch.new;
-  final ContainerState = _core.ContainerState.new;
-  final ContainerStateArgs = _core.ContainerState.new;
-  final ContainerStatePatch = _core.ContainerStatePatch.new;
-  final ContainerStatePatchArgs = _core.ContainerStatePatch.new;
-  final ContainerStateRunning = _core.ContainerStateRunning.new;
-  final ContainerStateRunningArgs = _core.ContainerStateRunning.new;
-  final ContainerStateRunningPatch = _core.ContainerStateRunningPatch.new;
-  final ContainerStateRunningPatchArgs = _core.ContainerStateRunningPatch.new;
-  final ContainerStateTerminated = _core.ContainerStateTerminated.new;
-  final ContainerStateTerminatedArgs = _core.ContainerStateTerminated.new;
-  final ContainerStateTerminatedPatch = _core.ContainerStateTerminatedPatch.new;
-  final ContainerStateTerminatedPatchArgs = _core.ContainerStateTerminatedPatch.new;
-  final ContainerStateWaiting = _core.ContainerStateWaiting.new;
-  final ContainerStateWaitingArgs = _core.ContainerStateWaiting.new;
-  final ContainerStateWaitingPatch = _core.ContainerStateWaitingPatch.new;
-  final ContainerStateWaitingPatchArgs = _core.ContainerStateWaitingPatch.new;
-  final ContainerStatus = _core.ContainerStatus.new;
-  final ContainerStatusArgs = _core.ContainerStatus.new;
-  final ContainerStatusPatch = _core.ContainerStatusPatch.new;
-  final ContainerStatusPatchArgs = _core.ContainerStatusPatch.new;
-  final ContainerUser = _core.ContainerUser.new;
-  final ContainerUserArgs = _core.ContainerUser.new;
-  final ContainerUserPatch = _core.ContainerUserPatch.new;
-  final ContainerUserPatchArgs = _core.ContainerUserPatch.new;
-  final DaemonEndpoint = _core.DaemonEndpoint.new;
-  final DaemonEndpointArgs = _core.DaemonEndpoint.new;
-  final DaemonEndpointPatch = _core.DaemonEndpointPatch.new;
-  final DaemonEndpointPatchArgs = _core.DaemonEndpointPatch.new;
-  final DownwardAPIProjection = _core.DownwardAPIProjection.new;
-  final DownwardAPIProjectionArgs = _core.DownwardAPIProjection.new;
-  final DownwardAPIProjectionPatch = _core.DownwardAPIProjectionPatch.new;
-  final DownwardAPIProjectionPatchArgs = _core.DownwardAPIProjectionPatch.new;
-  final DownwardAPIVolumeFile = _core.DownwardAPIVolumeFile.new;
-  final DownwardAPIVolumeFileArgs = _core.DownwardAPIVolumeFile.new;
-  final DownwardAPIVolumeFilePatch = _core.DownwardAPIVolumeFilePatch.new;
-  final DownwardAPIVolumeFilePatchArgs = _core.DownwardAPIVolumeFilePatch.new;
-  final DownwardAPIVolumeSource = _core.DownwardAPIVolumeSource.new;
-  final DownwardAPIVolumeSourceArgs = _core.DownwardAPIVolumeSource.new;
-  final DownwardAPIVolumeSourcePatch = _core.DownwardAPIVolumeSourcePatch.new;
-  final DownwardAPIVolumeSourcePatchArgs = _core.DownwardAPIVolumeSourcePatch.new;
-  final EmptyDirVolumeSource = _core.EmptyDirVolumeSource.new;
-  final EmptyDirVolumeSourceArgs = _core.EmptyDirVolumeSource.new;
-  final EmptyDirVolumeSourcePatch = _core.EmptyDirVolumeSourcePatch.new;
-  final EmptyDirVolumeSourcePatchArgs = _core.EmptyDirVolumeSourcePatch.new;
-  final EndpointAddress = _core.EndpointAddress.new;
-  final EndpointAddressArgs = _core.EndpointAddress.new;
-  final EndpointAddressPatch = _core.EndpointAddressPatch.new;
-  final EndpointAddressPatchArgs = _core.EndpointAddressPatch.new;
-  final EndpointPort = _core.EndpointPort.new;
-  final EndpointPortArgs = _core.EndpointPort.new;
-  final EndpointPortPatch = _core.EndpointPortPatch.new;
-  final EndpointPortPatchArgs = _core.EndpointPortPatch.new;
-  final EndpointSubset = _core.EndpointSubset.new;
-  final EndpointSubsetArgs = _core.EndpointSubset.new;
-  final EndpointSubsetPatch = _core.EndpointSubsetPatch.new;
-  final EndpointSubsetPatchArgs = _core.EndpointSubsetPatch.new;
-  final Endpoints = _core.Endpoints.new;
-  final EndpointsArgs = _core.Endpoints.new;
-  final EndpointsList = _core.EndpointsList.new;
-  final EndpointsListArgs = _core.EndpointsList.new;
-  final EndpointsPatch = _core.EndpointsPatch.new;
-  final EndpointsPatchArgs = _core.EndpointsPatch.new;
-  final EnvFromSource = _core.EnvFromSource.new;
-  final EnvFromSourceArgs = _core.EnvFromSource.new;
-  final EnvFromSourcePatch = _core.EnvFromSourcePatch.new;
-  final EnvFromSourcePatchArgs = _core.EnvFromSourcePatch.new;
-  final EnvVar = _core.EnvVar.new;
-  final EnvVarArgs = _core.EnvVar.new;
-  final EnvVarPatch = _core.EnvVarPatch.new;
-  final EnvVarPatchArgs = _core.EnvVarPatch.new;
-  final EnvVarSource = _core.EnvVarSource.new;
-  final EnvVarSourceArgs = _core.EnvVarSource.new;
-  final EnvVarSourcePatch = _core.EnvVarSourcePatch.new;
-  final EnvVarSourcePatchArgs = _core.EnvVarSourcePatch.new;
-  final EphemeralContainer = _core.EphemeralContainer.new;
-  final EphemeralContainerArgs = _core.EphemeralContainer.new;
-  final EphemeralContainerPatch = _core.EphemeralContainerPatch.new;
-  final EphemeralContainerPatchArgs = _core.EphemeralContainerPatch.new;
-  final EphemeralVolumeSource = _core.EphemeralVolumeSource.new;
-  final EphemeralVolumeSourceArgs = _core.EphemeralVolumeSource.new;
-  final EphemeralVolumeSourcePatch = _core.EphemeralVolumeSourcePatch.new;
-  final EphemeralVolumeSourcePatchArgs = _core.EphemeralVolumeSourcePatch.new;
-  final Event = _core.Event.new;
-  final EventArgs = _core.Event.new;
-  final EventList = _core.EventList.new;
-  final EventListArgs = _core.EventList.new;
-  final EventPatch = _core.EventPatch.new;
-  final EventPatchArgs = _core.EventPatch.new;
-  final EventSeries = _core.EventSeries.new;
-  final EventSeriesArgs = _core.EventSeries.new;
-  final EventSeriesPatch = _core.EventSeriesPatch.new;
-  final EventSeriesPatchArgs = _core.EventSeriesPatch.new;
-  final EventSource = _core.EventSource.new;
-  final EventSourceArgs = _core.EventSource.new;
-  final EventSourcePatch = _core.EventSourcePatch.new;
-  final EventSourcePatchArgs = _core.EventSourcePatch.new;
-  final ExecAction = _core.ExecAction.new;
-  final ExecActionArgs = _core.ExecAction.new;
-  final ExecActionPatch = _core.ExecActionPatch.new;
-  final ExecActionPatchArgs = _core.ExecActionPatch.new;
-  final FCVolumeSource = _core.FCVolumeSource.new;
-  final FCVolumeSourceArgs = _core.FCVolumeSource.new;
-  final FCVolumeSourcePatch = _core.FCVolumeSourcePatch.new;
-  final FCVolumeSourcePatchArgs = _core.FCVolumeSourcePatch.new;
-  final FileKeySelector = _core.FileKeySelector.new;
-  final FileKeySelectorArgs = _core.FileKeySelector.new;
-  final FileKeySelectorPatch = _core.FileKeySelectorPatch.new;
-  final FileKeySelectorPatchArgs = _core.FileKeySelectorPatch.new;
-  final FlexPersistentVolumeSource = _core.FlexPersistentVolumeSource.new;
-  final FlexPersistentVolumeSourceArgs = _core.FlexPersistentVolumeSource.new;
-  final FlexPersistentVolumeSourcePatch = _core.FlexPersistentVolumeSourcePatch.new;
-  final FlexPersistentVolumeSourcePatchArgs = _core.FlexPersistentVolumeSourcePatch.new;
-  final FlexVolumeSource = _core.FlexVolumeSource.new;
-  final FlexVolumeSourceArgs = _core.FlexVolumeSource.new;
-  final FlexVolumeSourcePatch = _core.FlexVolumeSourcePatch.new;
-  final FlexVolumeSourcePatchArgs = _core.FlexVolumeSourcePatch.new;
-  final FlockerVolumeSource = _core.FlockerVolumeSource.new;
-  final FlockerVolumeSourceArgs = _core.FlockerVolumeSource.new;
-  final FlockerVolumeSourcePatch = _core.FlockerVolumeSourcePatch.new;
-  final FlockerVolumeSourcePatchArgs = _core.FlockerVolumeSourcePatch.new;
-  final GCEPersistentDiskVolumeSource = _core.GCEPersistentDiskVolumeSource.new;
-  final GCEPersistentDiskVolumeSourceArgs = _core.GCEPersistentDiskVolumeSource.new;
-  final GCEPersistentDiskVolumeSourcePatch = _core.GCEPersistentDiskVolumeSourcePatch.new;
-  final GCEPersistentDiskVolumeSourcePatchArgs = _core.GCEPersistentDiskVolumeSourcePatch.new;
-  final GRPCAction = _core.GRPCAction.new;
-  final GRPCActionArgs = _core.GRPCAction.new;
-  final GRPCActionPatch = _core.GRPCActionPatch.new;
-  final GRPCActionPatchArgs = _core.GRPCActionPatch.new;
-  final GitRepoVolumeSource = _core.GitRepoVolumeSource.new;
-  final GitRepoVolumeSourceArgs = _core.GitRepoVolumeSource.new;
-  final GitRepoVolumeSourcePatch = _core.GitRepoVolumeSourcePatch.new;
-  final GitRepoVolumeSourcePatchArgs = _core.GitRepoVolumeSourcePatch.new;
-  final GlusterfsPersistentVolumeSource = _core.GlusterfsPersistentVolumeSource.new;
-  final GlusterfsPersistentVolumeSourceArgs = _core.GlusterfsPersistentVolumeSource.new;
-  final GlusterfsPersistentVolumeSourcePatch = _core.GlusterfsPersistentVolumeSourcePatch.new;
-  final GlusterfsPersistentVolumeSourcePatchArgs = _core.GlusterfsPersistentVolumeSourcePatch.new;
-  final GlusterfsVolumeSource = _core.GlusterfsVolumeSource.new;
-  final GlusterfsVolumeSourceArgs = _core.GlusterfsVolumeSource.new;
-  final GlusterfsVolumeSourcePatch = _core.GlusterfsVolumeSourcePatch.new;
-  final GlusterfsVolumeSourcePatchArgs = _core.GlusterfsVolumeSourcePatch.new;
-  final HTTPGetAction = _core.HTTPGetAction.new;
-  final HTTPGetActionArgs = _core.HTTPGetAction.new;
-  final HTTPGetActionPatch = _core.HTTPGetActionPatch.new;
-  final HTTPGetActionPatchArgs = _core.HTTPGetActionPatch.new;
-  final HTTPHeader = _core.HTTPHeader.new;
-  final HTTPHeaderArgs = _core.HTTPHeader.new;
-  final HTTPHeaderPatch = _core.HTTPHeaderPatch.new;
-  final HTTPHeaderPatchArgs = _core.HTTPHeaderPatch.new;
-  final Handler = _core.Handler.new;
-  final HandlerArgs = _core.Handler.new;
-  final HandlerPatch = _core.HandlerPatch.new;
-  final HandlerPatchArgs = _core.HandlerPatch.new;
-  final HostAlias = _core.HostAlias.new;
-  final HostAliasArgs = _core.HostAlias.new;
-  final HostAliasPatch = _core.HostAliasPatch.new;
-  final HostAliasPatchArgs = _core.HostAliasPatch.new;
-  final HostIP = _core.HostIP.new;
-  final HostIPArgs = _core.HostIP.new;
-  final HostIPPatch = _core.HostIPPatch.new;
-  final HostIPPatchArgs = _core.HostIPPatch.new;
-  final HostPathVolumeSource = _core.HostPathVolumeSource.new;
-  final HostPathVolumeSourceArgs = _core.HostPathVolumeSource.new;
-  final HostPathVolumeSourcePatch = _core.HostPathVolumeSourcePatch.new;
-  final HostPathVolumeSourcePatchArgs = _core.HostPathVolumeSourcePatch.new;
-  final ISCSIPersistentVolumeSource = _core.ISCSIPersistentVolumeSource.new;
-  final ISCSIPersistentVolumeSourceArgs = _core.ISCSIPersistentVolumeSource.new;
-  final ISCSIPersistentVolumeSourcePatch = _core.ISCSIPersistentVolumeSourcePatch.new;
-  final ISCSIPersistentVolumeSourcePatchArgs = _core.ISCSIPersistentVolumeSourcePatch.new;
-  final ISCSIVolumeSource = _core.ISCSIVolumeSource.new;
-  final ISCSIVolumeSourceArgs = _core.ISCSIVolumeSource.new;
-  final ISCSIVolumeSourcePatch = _core.ISCSIVolumeSourcePatch.new;
-  final ISCSIVolumeSourcePatchArgs = _core.ISCSIVolumeSourcePatch.new;
-  final ImageVolumeSource = _core.ImageVolumeSource.new;
-  final ImageVolumeSourceArgs = _core.ImageVolumeSource.new;
-  final ImageVolumeSourcePatch = _core.ImageVolumeSourcePatch.new;
-  final ImageVolumeSourcePatchArgs = _core.ImageVolumeSourcePatch.new;
-  final KeyToPath = _core.KeyToPath.new;
-  final KeyToPathArgs = _core.KeyToPath.new;
-  final KeyToPathPatch = _core.KeyToPathPatch.new;
-  final KeyToPathPatchArgs = _core.KeyToPathPatch.new;
-  final Lifecycle = _core.Lifecycle.new;
-  final LifecycleArgs = _core.Lifecycle.new;
-  final LifecycleHandler = _core.LifecycleHandler.new;
-  final LifecycleHandlerArgs = _core.LifecycleHandler.new;
-  final LifecycleHandlerPatch = _core.LifecycleHandlerPatch.new;
-  final LifecycleHandlerPatchArgs = _core.LifecycleHandlerPatch.new;
-  final LifecyclePatch = _core.LifecyclePatch.new;
-  final LifecyclePatchArgs = _core.LifecyclePatch.new;
-  final LimitRange = _core.LimitRange.new;
-  final LimitRangeArgs = _core.LimitRange.new;
-  final LimitRangeItem = _core.LimitRangeItem.new;
-  final LimitRangeItemArgs = _core.LimitRangeItem.new;
-  final LimitRangeItemPatch = _core.LimitRangeItemPatch.new;
-  final LimitRangeItemPatchArgs = _core.LimitRangeItemPatch.new;
-  final LimitRangeList = _core.LimitRangeList.new;
-  final LimitRangeListArgs = _core.LimitRangeList.new;
-  final LimitRangePatch = _core.LimitRangePatch.new;
-  final LimitRangePatchArgs = _core.LimitRangePatch.new;
-  final LimitRangeSpec = _core.LimitRangeSpec.new;
-  final LimitRangeSpecArgs = _core.LimitRangeSpec.new;
-  final LimitRangeSpecPatch = _core.LimitRangeSpecPatch.new;
-  final LimitRangeSpecPatchArgs = _core.LimitRangeSpecPatch.new;
-  final LinuxContainerUser = _core.LinuxContainerUser.new;
-  final LinuxContainerUserArgs = _core.LinuxContainerUser.new;
-  final LinuxContainerUserPatch = _core.LinuxContainerUserPatch.new;
-  final LinuxContainerUserPatchArgs = _core.LinuxContainerUserPatch.new;
-  final LoadBalancerIngress = _core.LoadBalancerIngress.new;
-  final LoadBalancerIngressArgs = _core.LoadBalancerIngress.new;
-  final LoadBalancerIngressPatch = _core.LoadBalancerIngressPatch.new;
-  final LoadBalancerIngressPatchArgs = _core.LoadBalancerIngressPatch.new;
-  final LoadBalancerStatus = _core.LoadBalancerStatus.new;
-  final LoadBalancerStatusArgs = _core.LoadBalancerStatus.new;
-  final LoadBalancerStatusPatch = _core.LoadBalancerStatusPatch.new;
-  final LoadBalancerStatusPatchArgs = _core.LoadBalancerStatusPatch.new;
-  final LocalObjectReference = _core.LocalObjectReference.new;
-  final LocalObjectReferenceArgs = _core.LocalObjectReference.new;
-  final LocalObjectReferencePatch = _core.LocalObjectReferencePatch.new;
-  final LocalObjectReferencePatchArgs = _core.LocalObjectReferencePatch.new;
-  final LocalVolumeSource = _core.LocalVolumeSource.new;
-  final LocalVolumeSourceArgs = _core.LocalVolumeSource.new;
-  final LocalVolumeSourcePatch = _core.LocalVolumeSourcePatch.new;
-  final LocalVolumeSourcePatchArgs = _core.LocalVolumeSourcePatch.new;
-  final ModifyVolumeStatus = _core.ModifyVolumeStatus.new;
-  final ModifyVolumeStatusArgs = _core.ModifyVolumeStatus.new;
-  final ModifyVolumeStatusPatch = _core.ModifyVolumeStatusPatch.new;
-  final ModifyVolumeStatusPatchArgs = _core.ModifyVolumeStatusPatch.new;
-  final NFSVolumeSource = _core.NFSVolumeSource.new;
-  final NFSVolumeSourceArgs = _core.NFSVolumeSource.new;
-  final NFSVolumeSourcePatch = _core.NFSVolumeSourcePatch.new;
-  final NFSVolumeSourcePatchArgs = _core.NFSVolumeSourcePatch.new;
-  final Namespace = _core.Namespace.new;
-  final NamespaceArgs = _core.Namespace.new;
-  final NamespaceCondition = _core.NamespaceCondition.new;
-  final NamespaceConditionArgs = _core.NamespaceCondition.new;
-  final NamespaceConditionPatch = _core.NamespaceConditionPatch.new;
-  final NamespaceConditionPatchArgs = _core.NamespaceConditionPatch.new;
-  final NamespaceList = _core.NamespaceList.new;
-  final NamespaceListArgs = _core.NamespaceList.new;
-  final NamespacePatch = _core.NamespacePatch.new;
-  final NamespacePatchArgs = _core.NamespacePatch.new;
-  final NamespaceSpec = _core.NamespaceSpec.new;
-  final NamespaceSpecArgs = _core.NamespaceSpec.new;
-  final NamespaceSpecPatch = _core.NamespaceSpecPatch.new;
-  final NamespaceSpecPatchArgs = _core.NamespaceSpecPatch.new;
-  final NamespaceStatus = _core.NamespaceStatus.new;
-  final NamespaceStatusArgs = _core.NamespaceStatus.new;
-  final NamespaceStatusPatch = _core.NamespaceStatusPatch.new;
-  final NamespaceStatusPatchArgs = _core.NamespaceStatusPatch.new;
-  final Node = _core.Node.new;
-  final NodeAddress = _core.NodeAddress.new;
-  final NodeAddressArgs = _core.NodeAddress.new;
-  final NodeAddressPatch = _core.NodeAddressPatch.new;
-  final NodeAddressPatchArgs = _core.NodeAddressPatch.new;
-  final NodeAffinity = _core.NodeAffinity.new;
-  final NodeAffinityArgs = _core.NodeAffinity.new;
-  final NodeAffinityPatch = _core.NodeAffinityPatch.new;
-  final NodeAffinityPatchArgs = _core.NodeAffinityPatch.new;
-  final NodeArgs = _core.Node.new;
-  final NodeCondition = _core.NodeCondition.new;
-  final NodeConditionArgs = _core.NodeCondition.new;
-  final NodeConditionPatch = _core.NodeConditionPatch.new;
-  final NodeConditionPatchArgs = _core.NodeConditionPatch.new;
-  final NodeConfigSource = _core.NodeConfigSource.new;
-  final NodeConfigSourceArgs = _core.NodeConfigSource.new;
-  final NodeConfigSourcePatch = _core.NodeConfigSourcePatch.new;
-  final NodeConfigSourcePatchArgs = _core.NodeConfigSourcePatch.new;
-  final NodeConfigStatus = _core.NodeConfigStatus.new;
-  final NodeConfigStatusArgs = _core.NodeConfigStatus.new;
-  final NodeConfigStatusPatch = _core.NodeConfigStatusPatch.new;
-  final NodeConfigStatusPatchArgs = _core.NodeConfigStatusPatch.new;
-  final NodeDaemonEndpoints = _core.NodeDaemonEndpoints.new;
-  final NodeDaemonEndpointsArgs = _core.NodeDaemonEndpoints.new;
-  final NodeDaemonEndpointsPatch = _core.NodeDaemonEndpointsPatch.new;
-  final NodeDaemonEndpointsPatchArgs = _core.NodeDaemonEndpointsPatch.new;
-  final NodeFeatures = _core.NodeFeatures.new;
-  final NodeFeaturesArgs = _core.NodeFeatures.new;
-  final NodeFeaturesPatch = _core.NodeFeaturesPatch.new;
-  final NodeFeaturesPatchArgs = _core.NodeFeaturesPatch.new;
-  final NodeList = _core.NodeList.new;
-  final NodeListArgs = _core.NodeList.new;
-  final NodePatch = _core.NodePatch.new;
-  final NodePatchArgs = _core.NodePatch.new;
-  final NodeRuntimeHandler = _core.NodeRuntimeHandler.new;
-  final NodeRuntimeHandlerArgs = _core.NodeRuntimeHandler.new;
-  final NodeRuntimeHandlerFeatures = _core.NodeRuntimeHandlerFeatures.new;
-  final NodeRuntimeHandlerFeaturesArgs = _core.NodeRuntimeHandlerFeatures.new;
-  final NodeRuntimeHandlerFeaturesPatch = _core.NodeRuntimeHandlerFeaturesPatch.new;
-  final NodeRuntimeHandlerFeaturesPatchArgs = _core.NodeRuntimeHandlerFeaturesPatch.new;
-  final NodeRuntimeHandlerPatch = _core.NodeRuntimeHandlerPatch.new;
-  final NodeRuntimeHandlerPatchArgs = _core.NodeRuntimeHandlerPatch.new;
-  final NodeSelector = _core.NodeSelector.new;
-  final NodeSelectorArgs = _core.NodeSelector.new;
-  final NodeSelectorPatch = _core.NodeSelectorPatch.new;
-  final NodeSelectorPatchArgs = _core.NodeSelectorPatch.new;
-  final NodeSelectorRequirement = _core.NodeSelectorRequirement.new;
-  final NodeSelectorRequirementArgs = _core.NodeSelectorRequirement.new;
-  final NodeSelectorRequirementPatch = _core.NodeSelectorRequirementPatch.new;
-  final NodeSelectorRequirementPatchArgs = _core.NodeSelectorRequirementPatch.new;
-  final NodeSelectorTerm = _core.NodeSelectorTerm.new;
-  final NodeSelectorTermArgs = _core.NodeSelectorTerm.new;
-  final NodeSelectorTermPatch = _core.NodeSelectorTermPatch.new;
-  final NodeSelectorTermPatchArgs = _core.NodeSelectorTermPatch.new;
-  final NodeSpec = _core.NodeSpec.new;
-  final NodeSpecArgs = _core.NodeSpec.new;
-  final NodeSpecPatch = _core.NodeSpecPatch.new;
-  final NodeSpecPatchArgs = _core.NodeSpecPatch.new;
-  final NodeStatus = _core.NodeStatus.new;
-  final NodeStatusArgs = _core.NodeStatus.new;
-  final NodeStatusPatch = _core.NodeStatusPatch.new;
-  final NodeStatusPatchArgs = _core.NodeStatusPatch.new;
-  final NodeSwapStatus = _core.NodeSwapStatus.new;
-  final NodeSwapStatusArgs = _core.NodeSwapStatus.new;
-  final NodeSwapStatusPatch = _core.NodeSwapStatusPatch.new;
-  final NodeSwapStatusPatchArgs = _core.NodeSwapStatusPatch.new;
-  final NodeSystemInfo = _core.NodeSystemInfo.new;
-  final NodeSystemInfoArgs = _core.NodeSystemInfo.new;
-  final NodeSystemInfoPatch = _core.NodeSystemInfoPatch.new;
-  final NodeSystemInfoPatchArgs = _core.NodeSystemInfoPatch.new;
-  final ObjectFieldSelector = _core.ObjectFieldSelector.new;
-  final ObjectFieldSelectorArgs = _core.ObjectFieldSelector.new;
-  final ObjectFieldSelectorPatch = _core.ObjectFieldSelectorPatch.new;
-  final ObjectFieldSelectorPatchArgs = _core.ObjectFieldSelectorPatch.new;
-  final ObjectReference = _core.ObjectReference.new;
-  final ObjectReferenceArgs = _core.ObjectReference.new;
-  final ObjectReferencePatch = _core.ObjectReferencePatch.new;
-  final ObjectReferencePatchArgs = _core.ObjectReferencePatch.new;
-  final PersistentVolume = _core.PersistentVolume.new;
-  final PersistentVolumeArgs = _core.PersistentVolume.new;
-  final PersistentVolumeClaim = _core.PersistentVolumeClaim.new;
-  final PersistentVolumeClaimArgs = _core.PersistentVolumeClaim.new;
-  final PersistentVolumeClaimCondition = _core.PersistentVolumeClaimCondition.new;
-  final PersistentVolumeClaimConditionArgs = _core.PersistentVolumeClaimCondition.new;
-  final PersistentVolumeClaimConditionPatch = _core.PersistentVolumeClaimConditionPatch.new;
-  final PersistentVolumeClaimConditionPatchArgs = _core.PersistentVolumeClaimConditionPatch.new;
-  final PersistentVolumeClaimList = _core.PersistentVolumeClaimList.new;
-  final PersistentVolumeClaimListArgs = _core.PersistentVolumeClaimList.new;
-  final PersistentVolumeClaimPatch = _core.PersistentVolumeClaimPatch.new;
-  final PersistentVolumeClaimPatchArgs = _core.PersistentVolumeClaimPatch.new;
-  final PersistentVolumeClaimSpec = _core.PersistentVolumeClaimSpec.new;
-  final PersistentVolumeClaimSpecArgs = _core.PersistentVolumeClaimSpec.new;
-  final PersistentVolumeClaimSpecPatch = _core.PersistentVolumeClaimSpecPatch.new;
-  final PersistentVolumeClaimSpecPatchArgs = _core.PersistentVolumeClaimSpecPatch.new;
-  final PersistentVolumeClaimStatus = _core.PersistentVolumeClaimStatus.new;
-  final PersistentVolumeClaimStatusArgs = _core.PersistentVolumeClaimStatus.new;
-  final PersistentVolumeClaimStatusPatch = _core.PersistentVolumeClaimStatusPatch.new;
-  final PersistentVolumeClaimStatusPatchArgs = _core.PersistentVolumeClaimStatusPatch.new;
-  final PersistentVolumeClaimTemplate = _core.PersistentVolumeClaimTemplate.new;
-  final PersistentVolumeClaimTemplateArgs = _core.PersistentVolumeClaimTemplate.new;
-  final PersistentVolumeClaimTemplatePatch = _core.PersistentVolumeClaimTemplatePatch.new;
-  final PersistentVolumeClaimTemplatePatchArgs = _core.PersistentVolumeClaimTemplatePatch.new;
-  final PersistentVolumeClaimVolumeSource = _core.PersistentVolumeClaimVolumeSource.new;
-  final PersistentVolumeClaimVolumeSourceArgs = _core.PersistentVolumeClaimVolumeSource.new;
-  final PersistentVolumeClaimVolumeSourcePatch = _core.PersistentVolumeClaimVolumeSourcePatch.new;
-  final PersistentVolumeClaimVolumeSourcePatchArgs = _core.PersistentVolumeClaimVolumeSourcePatch.new;
-  final PersistentVolumeList = _core.PersistentVolumeList.new;
-  final PersistentVolumeListArgs = _core.PersistentVolumeList.new;
-  final PersistentVolumePatch = _core.PersistentVolumePatch.new;
-  final PersistentVolumePatchArgs = _core.PersistentVolumePatch.new;
-  final PersistentVolumeSpec = _core.PersistentVolumeSpec.new;
-  final PersistentVolumeSpecArgs = _core.PersistentVolumeSpec.new;
-  final PersistentVolumeSpecPatch = _core.PersistentVolumeSpecPatch.new;
-  final PersistentVolumeSpecPatchArgs = _core.PersistentVolumeSpecPatch.new;
-  final PersistentVolumeStatus = _core.PersistentVolumeStatus.new;
-  final PersistentVolumeStatusArgs = _core.PersistentVolumeStatus.new;
-  final PersistentVolumeStatusPatch = _core.PersistentVolumeStatusPatch.new;
-  final PersistentVolumeStatusPatchArgs = _core.PersistentVolumeStatusPatch.new;
-  final PhotonPersistentDiskVolumeSource = _core.PhotonPersistentDiskVolumeSource.new;
-  final PhotonPersistentDiskVolumeSourceArgs = _core.PhotonPersistentDiskVolumeSource.new;
-  final PhotonPersistentDiskVolumeSourcePatch = _core.PhotonPersistentDiskVolumeSourcePatch.new;
-  final PhotonPersistentDiskVolumeSourcePatchArgs = _core.PhotonPersistentDiskVolumeSourcePatch.new;
-  final Pod = _core.Pod.new;
-  final PodAffinity = _core.PodAffinity.new;
-  final PodAffinityArgs = _core.PodAffinity.new;
-  final PodAffinityPatch = _core.PodAffinityPatch.new;
-  final PodAffinityPatchArgs = _core.PodAffinityPatch.new;
-  final PodAffinityTerm = _core.PodAffinityTerm.new;
-  final PodAffinityTermArgs = _core.PodAffinityTerm.new;
-  final PodAffinityTermPatch = _core.PodAffinityTermPatch.new;
-  final PodAffinityTermPatchArgs = _core.PodAffinityTermPatch.new;
-  final PodAntiAffinity = _core.PodAntiAffinity.new;
-  final PodAntiAffinityArgs = _core.PodAntiAffinity.new;
-  final PodAntiAffinityPatch = _core.PodAntiAffinityPatch.new;
-  final PodAntiAffinityPatchArgs = _core.PodAntiAffinityPatch.new;
-  final PodArgs = _core.Pod.new;
-  final PodCertificateProjection = _core.PodCertificateProjection.new;
-  final PodCertificateProjectionArgs = _core.PodCertificateProjection.new;
-  final PodCertificateProjectionPatch = _core.PodCertificateProjectionPatch.new;
-  final PodCertificateProjectionPatchArgs = _core.PodCertificateProjectionPatch.new;
-  final PodCondition = _core.PodCondition.new;
-  final PodConditionArgs = _core.PodCondition.new;
-  final PodConditionPatch = _core.PodConditionPatch.new;
-  final PodConditionPatchArgs = _core.PodConditionPatch.new;
-  final PodDNSConfig = _core.PodDNSConfig.new;
-  final PodDNSConfigArgs = _core.PodDNSConfig.new;
-  final PodDNSConfigOption = _core.PodDNSConfigOption.new;
-  final PodDNSConfigOptionArgs = _core.PodDNSConfigOption.new;
-  final PodDNSConfigOptionPatch = _core.PodDNSConfigOptionPatch.new;
-  final PodDNSConfigOptionPatchArgs = _core.PodDNSConfigOptionPatch.new;
-  final PodDNSConfigPatch = _core.PodDNSConfigPatch.new;
-  final PodDNSConfigPatchArgs = _core.PodDNSConfigPatch.new;
-  final PodExtendedResourceClaimStatus = _core.PodExtendedResourceClaimStatus.new;
-  final PodExtendedResourceClaimStatusArgs = _core.PodExtendedResourceClaimStatus.new;
-  final PodExtendedResourceClaimStatusPatch = _core.PodExtendedResourceClaimStatusPatch.new;
-  final PodExtendedResourceClaimStatusPatchArgs = _core.PodExtendedResourceClaimStatusPatch.new;
-  final PodIP = _core.PodIP.new;
-  final PodIPArgs = _core.PodIP.new;
-  final PodIPPatch = _core.PodIPPatch.new;
-  final PodIPPatchArgs = _core.PodIPPatch.new;
-  final PodList = _core.PodList.new;
-  final PodListArgs = _core.PodList.new;
-  final PodOS = _core.PodOS.new;
-  final PodOSArgs = _core.PodOS.new;
-  final PodOSPatch = _core.PodOSPatch.new;
-  final PodOSPatchArgs = _core.PodOSPatch.new;
-  final PodPatch = _core.PodPatch.new;
-  final PodPatchArgs = _core.PodPatch.new;
-  final PodReadinessGate = _core.PodReadinessGate.new;
-  final PodReadinessGateArgs = _core.PodReadinessGate.new;
-  final PodReadinessGatePatch = _core.PodReadinessGatePatch.new;
-  final PodReadinessGatePatchArgs = _core.PodReadinessGatePatch.new;
-  final PodResourceClaim = _core.PodResourceClaim.new;
-  final PodResourceClaimArgs = _core.PodResourceClaim.new;
-  final PodResourceClaimPatch = _core.PodResourceClaimPatch.new;
-  final PodResourceClaimPatchArgs = _core.PodResourceClaimPatch.new;
-  final PodResourceClaimStatus = _core.PodResourceClaimStatus.new;
-  final PodResourceClaimStatusArgs = _core.PodResourceClaimStatus.new;
-  final PodResourceClaimStatusPatch = _core.PodResourceClaimStatusPatch.new;
-  final PodResourceClaimStatusPatchArgs = _core.PodResourceClaimStatusPatch.new;
-  final PodSchedulingGate = _core.PodSchedulingGate.new;
-  final PodSchedulingGateArgs = _core.PodSchedulingGate.new;
-  final PodSchedulingGatePatch = _core.PodSchedulingGatePatch.new;
-  final PodSchedulingGatePatchArgs = _core.PodSchedulingGatePatch.new;
-  final PodSecurityContext = _core.PodSecurityContext.new;
-  final PodSecurityContextArgs = _core.PodSecurityContext.new;
-  final PodSecurityContextPatch = _core.PodSecurityContextPatch.new;
-  final PodSecurityContextPatchArgs = _core.PodSecurityContextPatch.new;
-  final PodSpec = _core.PodSpec.new;
-  final PodSpecArgs = _core.PodSpec.new;
-  final PodSpecPatch = _core.PodSpecPatch.new;
-  final PodSpecPatchArgs = _core.PodSpecPatch.new;
-  final PodStatus = _core.PodStatus.new;
-  final PodStatusArgs = _core.PodStatus.new;
-  final PodStatusPatch = _core.PodStatusPatch.new;
-  final PodStatusPatchArgs = _core.PodStatusPatch.new;
-  final PodTemplate = _core.PodTemplate.new;
-  final PodTemplateArgs = _core.PodTemplate.new;
-  final PodTemplateList = _core.PodTemplateList.new;
-  final PodTemplateListArgs = _core.PodTemplateList.new;
-  final PodTemplatePatch = _core.PodTemplatePatch.new;
-  final PodTemplatePatchArgs = _core.PodTemplatePatch.new;
-  final PodTemplateSpec = _core.PodTemplateSpec.new;
-  final PodTemplateSpecArgs = _core.PodTemplateSpec.new;
-  final PodTemplateSpecPatch = _core.PodTemplateSpecPatch.new;
-  final PodTemplateSpecPatchArgs = _core.PodTemplateSpecPatch.new;
-  final PortStatus = _core.PortStatus.new;
-  final PortStatusArgs = _core.PortStatus.new;
-  final PortStatusPatch = _core.PortStatusPatch.new;
-  final PortStatusPatchArgs = _core.PortStatusPatch.new;
-  final PortworxVolumeSource = _core.PortworxVolumeSource.new;
-  final PortworxVolumeSourceArgs = _core.PortworxVolumeSource.new;
-  final PortworxVolumeSourcePatch = _core.PortworxVolumeSourcePatch.new;
-  final PortworxVolumeSourcePatchArgs = _core.PortworxVolumeSourcePatch.new;
-  final PreferredSchedulingTerm = _core.PreferredSchedulingTerm.new;
-  final PreferredSchedulingTermArgs = _core.PreferredSchedulingTerm.new;
-  final PreferredSchedulingTermPatch = _core.PreferredSchedulingTermPatch.new;
-  final PreferredSchedulingTermPatchArgs = _core.PreferredSchedulingTermPatch.new;
-  final Probe = _core.Probe.new;
-  final ProbeArgs = _core.Probe.new;
-  final ProbePatch = _core.ProbePatch.new;
-  final ProbePatchArgs = _core.ProbePatch.new;
-  final ProjectedVolumeSource = _core.ProjectedVolumeSource.new;
-  final ProjectedVolumeSourceArgs = _core.ProjectedVolumeSource.new;
-  final ProjectedVolumeSourcePatch = _core.ProjectedVolumeSourcePatch.new;
-  final ProjectedVolumeSourcePatchArgs = _core.ProjectedVolumeSourcePatch.new;
-  final QuobyteVolumeSource = _core.QuobyteVolumeSource.new;
-  final QuobyteVolumeSourceArgs = _core.QuobyteVolumeSource.new;
-  final QuobyteVolumeSourcePatch = _core.QuobyteVolumeSourcePatch.new;
-  final QuobyteVolumeSourcePatchArgs = _core.QuobyteVolumeSourcePatch.new;
-  final RBDPersistentVolumeSource = _core.RBDPersistentVolumeSource.new;
-  final RBDPersistentVolumeSourceArgs = _core.RBDPersistentVolumeSource.new;
-  final RBDPersistentVolumeSourcePatch = _core.RBDPersistentVolumeSourcePatch.new;
-  final RBDPersistentVolumeSourcePatchArgs = _core.RBDPersistentVolumeSourcePatch.new;
-  final RBDVolumeSource = _core.RBDVolumeSource.new;
-  final RBDVolumeSourceArgs = _core.RBDVolumeSource.new;
-  final RBDVolumeSourcePatch = _core.RBDVolumeSourcePatch.new;
-  final RBDVolumeSourcePatchArgs = _core.RBDVolumeSourcePatch.new;
-  final ReplicationController = _core.ReplicationController.new;
-  final ReplicationControllerArgs = _core.ReplicationController.new;
-  final ReplicationControllerCondition = _core.ReplicationControllerCondition.new;
-  final ReplicationControllerConditionArgs = _core.ReplicationControllerCondition.new;
-  final ReplicationControllerConditionPatch = _core.ReplicationControllerConditionPatch.new;
-  final ReplicationControllerConditionPatchArgs = _core.ReplicationControllerConditionPatch.new;
-  final ReplicationControllerList = _core.ReplicationControllerList.new;
-  final ReplicationControllerListArgs = _core.ReplicationControllerList.new;
-  final ReplicationControllerPatch = _core.ReplicationControllerPatch.new;
-  final ReplicationControllerPatchArgs = _core.ReplicationControllerPatch.new;
-  final ReplicationControllerSpec = _core.ReplicationControllerSpec.new;
-  final ReplicationControllerSpecArgs = _core.ReplicationControllerSpec.new;
-  final ReplicationControllerSpecPatch = _core.ReplicationControllerSpecPatch.new;
-  final ReplicationControllerSpecPatchArgs = _core.ReplicationControllerSpecPatch.new;
-  final ReplicationControllerStatus = _core.ReplicationControllerStatus.new;
-  final ReplicationControllerStatusArgs = _core.ReplicationControllerStatus.new;
-  final ReplicationControllerStatusPatch = _core.ReplicationControllerStatusPatch.new;
-  final ReplicationControllerStatusPatchArgs = _core.ReplicationControllerStatusPatch.new;
-  final ResourceClaim = _core.ResourceClaim.new;
-  final ResourceClaimArgs = _core.ResourceClaim.new;
-  final ResourceClaimPatch = _core.ResourceClaimPatch.new;
-  final ResourceClaimPatchArgs = _core.ResourceClaimPatch.new;
-  final ResourceFieldSelector = _core.ResourceFieldSelector.new;
-  final ResourceFieldSelectorArgs = _core.ResourceFieldSelector.new;
-  final ResourceFieldSelectorPatch = _core.ResourceFieldSelectorPatch.new;
-  final ResourceFieldSelectorPatchArgs = _core.ResourceFieldSelectorPatch.new;
-  final ResourceHealth = _core.ResourceHealth.new;
-  final ResourceHealthArgs = _core.ResourceHealth.new;
-  final ResourceHealthPatch = _core.ResourceHealthPatch.new;
-  final ResourceHealthPatchArgs = _core.ResourceHealthPatch.new;
-  final ResourceQuota = _core.ResourceQuota.new;
-  final ResourceQuotaArgs = _core.ResourceQuota.new;
-  final ResourceQuotaList = _core.ResourceQuotaList.new;
-  final ResourceQuotaListArgs = _core.ResourceQuotaList.new;
-  final ResourceQuotaPatch = _core.ResourceQuotaPatch.new;
-  final ResourceQuotaPatchArgs = _core.ResourceQuotaPatch.new;
-  final ResourceQuotaSpec = _core.ResourceQuotaSpec.new;
-  final ResourceQuotaSpecArgs = _core.ResourceQuotaSpec.new;
-  final ResourceQuotaSpecPatch = _core.ResourceQuotaSpecPatch.new;
-  final ResourceQuotaSpecPatchArgs = _core.ResourceQuotaSpecPatch.new;
-  final ResourceQuotaStatus = _core.ResourceQuotaStatus.new;
-  final ResourceQuotaStatusArgs = _core.ResourceQuotaStatus.new;
-  final ResourceQuotaStatusPatch = _core.ResourceQuotaStatusPatch.new;
-  final ResourceQuotaStatusPatchArgs = _core.ResourceQuotaStatusPatch.new;
-  final ResourceRequirements = _core.ResourceRequirements.new;
-  final ResourceRequirementsArgs = _core.ResourceRequirements.new;
-  final ResourceRequirementsPatch = _core.ResourceRequirementsPatch.new;
-  final ResourceRequirementsPatchArgs = _core.ResourceRequirementsPatch.new;
-  final ResourceStatus = _core.ResourceStatus.new;
-  final ResourceStatusArgs = _core.ResourceStatus.new;
-  final ResourceStatusPatch = _core.ResourceStatusPatch.new;
-  final ResourceStatusPatchArgs = _core.ResourceStatusPatch.new;
-  final SELinuxOptions = _core.SELinuxOptions.new;
-  final SELinuxOptionsArgs = _core.SELinuxOptions.new;
-  final SELinuxOptionsPatch = _core.SELinuxOptionsPatch.new;
-  final SELinuxOptionsPatchArgs = _core.SELinuxOptionsPatch.new;
-  final ScaleIOPersistentVolumeSource = _core.ScaleIOPersistentVolumeSource.new;
-  final ScaleIOPersistentVolumeSourceArgs = _core.ScaleIOPersistentVolumeSource.new;
-  final ScaleIOPersistentVolumeSourcePatch = _core.ScaleIOPersistentVolumeSourcePatch.new;
-  final ScaleIOPersistentVolumeSourcePatchArgs = _core.ScaleIOPersistentVolumeSourcePatch.new;
-  final ScaleIOVolumeSource = _core.ScaleIOVolumeSource.new;
-  final ScaleIOVolumeSourceArgs = _core.ScaleIOVolumeSource.new;
-  final ScaleIOVolumeSourcePatch = _core.ScaleIOVolumeSourcePatch.new;
-  final ScaleIOVolumeSourcePatchArgs = _core.ScaleIOVolumeSourcePatch.new;
-  final ScopeSelector = _core.ScopeSelector.new;
-  final ScopeSelectorArgs = _core.ScopeSelector.new;
-  final ScopeSelectorPatch = _core.ScopeSelectorPatch.new;
-  final ScopeSelectorPatchArgs = _core.ScopeSelectorPatch.new;
-  final ScopedResourceSelectorRequirement = _core.ScopedResourceSelectorRequirement.new;
-  final ScopedResourceSelectorRequirementArgs = _core.ScopedResourceSelectorRequirement.new;
-  final ScopedResourceSelectorRequirementPatch = _core.ScopedResourceSelectorRequirementPatch.new;
-  final ScopedResourceSelectorRequirementPatchArgs = _core.ScopedResourceSelectorRequirementPatch.new;
-  final SeccompProfile = _core.SeccompProfile.new;
-  final SeccompProfileArgs = _core.SeccompProfile.new;
-  final SeccompProfilePatch = _core.SeccompProfilePatch.new;
-  final SeccompProfilePatchArgs = _core.SeccompProfilePatch.new;
-  final Secret = _core.Secret.new;
-  final SecretArgs = _core.Secret.new;
-  final SecretEnvSource = _core.SecretEnvSource.new;
-  final SecretEnvSourceArgs = _core.SecretEnvSource.new;
-  final SecretEnvSourcePatch = _core.SecretEnvSourcePatch.new;
-  final SecretEnvSourcePatchArgs = _core.SecretEnvSourcePatch.new;
-  final SecretKeySelector = _core.SecretKeySelector.new;
-  final SecretKeySelectorArgs = _core.SecretKeySelector.new;
-  final SecretKeySelectorPatch = _core.SecretKeySelectorPatch.new;
-  final SecretKeySelectorPatchArgs = _core.SecretKeySelectorPatch.new;
-  final SecretList = _core.SecretList.new;
-  final SecretListArgs = _core.SecretList.new;
-  final SecretPatch = _core.SecretPatch.new;
-  final SecretPatchArgs = _core.SecretPatch.new;
-  final SecretProjection = _core.SecretProjection.new;
-  final SecretProjectionArgs = _core.SecretProjection.new;
-  final SecretProjectionPatch = _core.SecretProjectionPatch.new;
-  final SecretProjectionPatchArgs = _core.SecretProjectionPatch.new;
-  final SecretReference = _core.SecretReference.new;
-  final SecretReferenceArgs = _core.SecretReference.new;
-  final SecretReferencePatch = _core.SecretReferencePatch.new;
-  final SecretReferencePatchArgs = _core.SecretReferencePatch.new;
-  final SecretVolumeSource = _core.SecretVolumeSource.new;
-  final SecretVolumeSourceArgs = _core.SecretVolumeSource.new;
-  final SecretVolumeSourcePatch = _core.SecretVolumeSourcePatch.new;
-  final SecretVolumeSourcePatchArgs = _core.SecretVolumeSourcePatch.new;
-  final SecurityContext = _core.SecurityContext.new;
-  final SecurityContextArgs = _core.SecurityContext.new;
-  final SecurityContextPatch = _core.SecurityContextPatch.new;
-  final SecurityContextPatchArgs = _core.SecurityContextPatch.new;
-  final Service = _core.Service.new;
-  final ServiceAccount = _core.ServiceAccount.new;
-  final ServiceAccountArgs = _core.ServiceAccount.new;
-  final ServiceAccountList = _core.ServiceAccountList.new;
-  final ServiceAccountListArgs = _core.ServiceAccountList.new;
-  final ServiceAccountPatch = _core.ServiceAccountPatch.new;
-  final ServiceAccountPatchArgs = _core.ServiceAccountPatch.new;
-  final ServiceAccountTokenProjection = _core.ServiceAccountTokenProjection.new;
-  final ServiceAccountTokenProjectionArgs = _core.ServiceAccountTokenProjection.new;
-  final ServiceAccountTokenProjectionPatch = _core.ServiceAccountTokenProjectionPatch.new;
-  final ServiceAccountTokenProjectionPatchArgs = _core.ServiceAccountTokenProjectionPatch.new;
-  final ServiceArgs = _core.Service.new;
-  final ServiceList = _core.ServiceList.new;
-  final ServiceListArgs = _core.ServiceList.new;
-  final ServicePatch = _core.ServicePatch.new;
-  final ServicePatchArgs = _core.ServicePatch.new;
-  final ServicePort = _core.ServicePort.new;
-  final ServicePortArgs = _core.ServicePort.new;
-  final ServicePortPatch = _core.ServicePortPatch.new;
-  final ServicePortPatchArgs = _core.ServicePortPatch.new;
-  final ServiceSpec = _core.ServiceSpec.new;
-  final ServiceSpecArgs = _core.ServiceSpec.new;
-  final ServiceSpecPatch = _core.ServiceSpecPatch.new;
-  final ServiceSpecPatchArgs = _core.ServiceSpecPatch.new;
-  final ServiceSpecType = _core.ServiceSpecType.values;
-  final ServiceStatus = _core.ServiceStatus.new;
-  final ServiceStatusArgs = _core.ServiceStatus.new;
-  final ServiceStatusPatch = _core.ServiceStatusPatch.new;
-  final ServiceStatusPatchArgs = _core.ServiceStatusPatch.new;
-  final SessionAffinityConfig = _core.SessionAffinityConfig.new;
-  final SessionAffinityConfigArgs = _core.SessionAffinityConfig.new;
-  final SessionAffinityConfigPatch = _core.SessionAffinityConfigPatch.new;
-  final SessionAffinityConfigPatchArgs = _core.SessionAffinityConfigPatch.new;
-  final SleepAction = _core.SleepAction.new;
-  final SleepActionArgs = _core.SleepAction.new;
-  final SleepActionPatch = _core.SleepActionPatch.new;
-  final SleepActionPatchArgs = _core.SleepActionPatch.new;
-  final StorageOSPersistentVolumeSource = _core.StorageOSPersistentVolumeSource.new;
-  final StorageOSPersistentVolumeSourceArgs = _core.StorageOSPersistentVolumeSource.new;
-  final StorageOSPersistentVolumeSourcePatch = _core.StorageOSPersistentVolumeSourcePatch.new;
-  final StorageOSPersistentVolumeSourcePatchArgs = _core.StorageOSPersistentVolumeSourcePatch.new;
-  final StorageOSVolumeSource = _core.StorageOSVolumeSource.new;
-  final StorageOSVolumeSourceArgs = _core.StorageOSVolumeSource.new;
-  final StorageOSVolumeSourcePatch = _core.StorageOSVolumeSourcePatch.new;
-  final StorageOSVolumeSourcePatchArgs = _core.StorageOSVolumeSourcePatch.new;
-  final Sysctl = _core.Sysctl.new;
-  final SysctlArgs = _core.Sysctl.new;
-  final SysctlPatch = _core.SysctlPatch.new;
-  final SysctlPatchArgs = _core.SysctlPatch.new;
-  final TCPSocketAction = _core.TCPSocketAction.new;
-  final TCPSocketActionArgs = _core.TCPSocketAction.new;
-  final TCPSocketActionPatch = _core.TCPSocketActionPatch.new;
-  final TCPSocketActionPatchArgs = _core.TCPSocketActionPatch.new;
-  final Taint = _core.Taint.new;
-  final TaintArgs = _core.Taint.new;
-  final TaintPatch = _core.TaintPatch.new;
-  final TaintPatchArgs = _core.TaintPatch.new;
-  final Toleration = _core.Toleration.new;
-  final TolerationArgs = _core.Toleration.new;
-  final TolerationPatch = _core.TolerationPatch.new;
-  final TolerationPatchArgs = _core.TolerationPatch.new;
-  final TopologySelectorLabelRequirement = _core.TopologySelectorLabelRequirement.new;
-  final TopologySelectorLabelRequirementArgs = _core.TopologySelectorLabelRequirement.new;
-  final TopologySelectorLabelRequirementPatch = _core.TopologySelectorLabelRequirementPatch.new;
-  final TopologySelectorLabelRequirementPatchArgs = _core.TopologySelectorLabelRequirementPatch.new;
-  final TopologySelectorTerm = _core.TopologySelectorTerm.new;
-  final TopologySelectorTermArgs = _core.TopologySelectorTerm.new;
-  final TopologySelectorTermPatch = _core.TopologySelectorTermPatch.new;
-  final TopologySelectorTermPatchArgs = _core.TopologySelectorTermPatch.new;
-  final TopologySpreadConstraint = _core.TopologySpreadConstraint.new;
-  final TopologySpreadConstraintArgs = _core.TopologySpreadConstraint.new;
-  final TopologySpreadConstraintPatch = _core.TopologySpreadConstraintPatch.new;
-  final TopologySpreadConstraintPatchArgs = _core.TopologySpreadConstraintPatch.new;
-  final TypedLocalObjectReference = _core.TypedLocalObjectReference.new;
-  final TypedLocalObjectReferenceArgs = _core.TypedLocalObjectReference.new;
-  final TypedLocalObjectReferencePatch = _core.TypedLocalObjectReferencePatch.new;
-  final TypedLocalObjectReferencePatchArgs = _core.TypedLocalObjectReferencePatch.new;
-  final TypedObjectReference = _core.TypedObjectReference.new;
-  final TypedObjectReferenceArgs = _core.TypedObjectReference.new;
-  final TypedObjectReferencePatch = _core.TypedObjectReferencePatch.new;
-  final TypedObjectReferencePatchArgs = _core.TypedObjectReferencePatch.new;
-  final Volume = _core.Volume.new;
-  final VolumeArgs = _core.Volume.new;
-  final VolumeDevice = _core.VolumeDevice.new;
-  final VolumeDeviceArgs = _core.VolumeDevice.new;
-  final VolumeDevicePatch = _core.VolumeDevicePatch.new;
-  final VolumeDevicePatchArgs = _core.VolumeDevicePatch.new;
-  final VolumeMount = _core.VolumeMount.new;
-  final VolumeMountArgs = _core.VolumeMount.new;
-  final VolumeMountPatch = _core.VolumeMountPatch.new;
-  final VolumeMountPatchArgs = _core.VolumeMountPatch.new;
-  final VolumeMountStatus = _core.VolumeMountStatus.new;
-  final VolumeMountStatusArgs = _core.VolumeMountStatus.new;
-  final VolumeMountStatusPatch = _core.VolumeMountStatusPatch.new;
-  final VolumeMountStatusPatchArgs = _core.VolumeMountStatusPatch.new;
-  final VolumeNodeAffinity = _core.VolumeNodeAffinity.new;
-  final VolumeNodeAffinityArgs = _core.VolumeNodeAffinity.new;
-  final VolumeNodeAffinityPatch = _core.VolumeNodeAffinityPatch.new;
-  final VolumeNodeAffinityPatchArgs = _core.VolumeNodeAffinityPatch.new;
-  final VolumePatch = _core.VolumePatch.new;
-  final VolumePatchArgs = _core.VolumePatch.new;
-  final VolumeProjection = _core.VolumeProjection.new;
-  final VolumeProjectionArgs = _core.VolumeProjection.new;
-  final VolumeProjectionPatch = _core.VolumeProjectionPatch.new;
-  final VolumeProjectionPatchArgs = _core.VolumeProjectionPatch.new;
-  final VolumeResourceRequirements = _core.VolumeResourceRequirements.new;
-  final VolumeResourceRequirementsArgs = _core.VolumeResourceRequirements.new;
-  final VolumeResourceRequirementsPatch = _core.VolumeResourceRequirementsPatch.new;
-  final VolumeResourceRequirementsPatchArgs = _core.VolumeResourceRequirementsPatch.new;
-  final VsphereVirtualDiskVolumeSource = _core.VsphereVirtualDiskVolumeSource.new;
-  final VsphereVirtualDiskVolumeSourceArgs = _core.VsphereVirtualDiskVolumeSource.new;
-  final VsphereVirtualDiskVolumeSourcePatch = _core.VsphereVirtualDiskVolumeSourcePatch.new;
-  final VsphereVirtualDiskVolumeSourcePatchArgs = _core.VsphereVirtualDiskVolumeSourcePatch.new;
-  final WeightedPodAffinityTerm = _core.WeightedPodAffinityTerm.new;
-  final WeightedPodAffinityTermArgs = _core.WeightedPodAffinityTerm.new;
-  final WeightedPodAffinityTermPatch = _core.WeightedPodAffinityTermPatch.new;
-  final WeightedPodAffinityTermPatchArgs = _core.WeightedPodAffinityTermPatch.new;
-  final WindowsSecurityContextOptions = _core.WindowsSecurityContextOptions.new;
-  final WindowsSecurityContextOptionsArgs = _core.WindowsSecurityContextOptions.new;
-  final WindowsSecurityContextOptionsPatch = _core.WindowsSecurityContextOptionsPatch.new;
-  final WindowsSecurityContextOptionsPatchArgs = _core.WindowsSecurityContextOptionsPatch.new;
-  final WorkloadReference = _core.WorkloadReference.new;
-  final WorkloadReferenceArgs = _core.WorkloadReference.new;
-  final WorkloadReferencePatch = _core.WorkloadReferencePatch.new;
-  final WorkloadReferencePatchArgs = _core.WorkloadReferencePatch.new;
+  final AWSElasticBlockStoreVolumeSource =
+      module_core.AWSElasticBlockStoreVolumeSource.new;
+  final AWSElasticBlockStoreVolumeSourceArgs =
+      module_core.AWSElasticBlockStoreVolumeSource.new;
+  final AWSElasticBlockStoreVolumeSourcePatch =
+      module_core.AWSElasticBlockStoreVolumeSourcePatch.new;
+  final AWSElasticBlockStoreVolumeSourcePatchArgs =
+      module_core.AWSElasticBlockStoreVolumeSourcePatch.new;
+  final Affinity = module_core.Affinity.new;
+  final AffinityArgs = module_core.Affinity.new;
+  final AffinityPatch = module_core.AffinityPatch.new;
+  final AffinityPatchArgs = module_core.AffinityPatch.new;
+  final AppArmorProfile = module_core.AppArmorProfile.new;
+  final AppArmorProfileArgs = module_core.AppArmorProfile.new;
+  final AppArmorProfilePatch = module_core.AppArmorProfilePatch.new;
+  final AppArmorProfilePatchArgs = module_core.AppArmorProfilePatch.new;
+  final AttachedVolume = module_core.AttachedVolume.new;
+  final AttachedVolumeArgs = module_core.AttachedVolume.new;
+  final AttachedVolumePatch = module_core.AttachedVolumePatch.new;
+  final AttachedVolumePatchArgs = module_core.AttachedVolumePatch.new;
+  final AzureDiskVolumeSource = module_core.AzureDiskVolumeSource.new;
+  final AzureDiskVolumeSourceArgs = module_core.AzureDiskVolumeSource.new;
+  final AzureDiskVolumeSourcePatch = module_core.AzureDiskVolumeSourcePatch.new;
+  final AzureDiskVolumeSourcePatchArgs =
+      module_core.AzureDiskVolumeSourcePatch.new;
+  final AzureFilePersistentVolumeSource =
+      module_core.AzureFilePersistentVolumeSource.new;
+  final AzureFilePersistentVolumeSourceArgs =
+      module_core.AzureFilePersistentVolumeSource.new;
+  final AzureFilePersistentVolumeSourcePatch =
+      module_core.AzureFilePersistentVolumeSourcePatch.new;
+  final AzureFilePersistentVolumeSourcePatchArgs =
+      module_core.AzureFilePersistentVolumeSourcePatch.new;
+  final AzureFileVolumeSource = module_core.AzureFileVolumeSource.new;
+  final AzureFileVolumeSourceArgs = module_core.AzureFileVolumeSource.new;
+  final AzureFileVolumeSourcePatch = module_core.AzureFileVolumeSourcePatch.new;
+  final AzureFileVolumeSourcePatchArgs =
+      module_core.AzureFileVolumeSourcePatch.new;
+  final Binding = module_core.Binding.new;
+  final BindingArgs = module_core.Binding.new;
+  final BindingPatch = module_core.BindingPatch.new;
+  final BindingPatchArgs = module_core.BindingPatch.new;
+  final CSIPersistentVolumeSource = module_core.CSIPersistentVolumeSource.new;
+  final CSIPersistentVolumeSourceArgs =
+      module_core.CSIPersistentVolumeSource.new;
+  final CSIPersistentVolumeSourcePatch =
+      module_core.CSIPersistentVolumeSourcePatch.new;
+  final CSIPersistentVolumeSourcePatchArgs =
+      module_core.CSIPersistentVolumeSourcePatch.new;
+  final CSIVolumeSource = module_core.CSIVolumeSource.new;
+  final CSIVolumeSourceArgs = module_core.CSIVolumeSource.new;
+  final CSIVolumeSourcePatch = module_core.CSIVolumeSourcePatch.new;
+  final CSIVolumeSourcePatchArgs = module_core.CSIVolumeSourcePatch.new;
+  final Capabilities = module_core.Capabilities.new;
+  final CapabilitiesArgs = module_core.Capabilities.new;
+  final CapabilitiesPatch = module_core.CapabilitiesPatch.new;
+  final CapabilitiesPatchArgs = module_core.CapabilitiesPatch.new;
+  final CephFSPersistentVolumeSource =
+      module_core.CephFSPersistentVolumeSource.new;
+  final CephFSPersistentVolumeSourceArgs =
+      module_core.CephFSPersistentVolumeSource.new;
+  final CephFSPersistentVolumeSourcePatch =
+      module_core.CephFSPersistentVolumeSourcePatch.new;
+  final CephFSPersistentVolumeSourcePatchArgs =
+      module_core.CephFSPersistentVolumeSourcePatch.new;
+  final CephFSVolumeSource = module_core.CephFSVolumeSource.new;
+  final CephFSVolumeSourceArgs = module_core.CephFSVolumeSource.new;
+  final CephFSVolumeSourcePatch = module_core.CephFSVolumeSourcePatch.new;
+  final CephFSVolumeSourcePatchArgs = module_core.CephFSVolumeSourcePatch.new;
+  final CinderPersistentVolumeSource =
+      module_core.CinderPersistentVolumeSource.new;
+  final CinderPersistentVolumeSourceArgs =
+      module_core.CinderPersistentVolumeSource.new;
+  final CinderPersistentVolumeSourcePatch =
+      module_core.CinderPersistentVolumeSourcePatch.new;
+  final CinderPersistentVolumeSourcePatchArgs =
+      module_core.CinderPersistentVolumeSourcePatch.new;
+  final CinderVolumeSource = module_core.CinderVolumeSource.new;
+  final CinderVolumeSourceArgs = module_core.CinderVolumeSource.new;
+  final CinderVolumeSourcePatch = module_core.CinderVolumeSourcePatch.new;
+  final CinderVolumeSourcePatchArgs = module_core.CinderVolumeSourcePatch.new;
+  final ClaimSource = module_core.ClaimSource.new;
+  final ClaimSourceArgs = module_core.ClaimSource.new;
+  final ClaimSourcePatch = module_core.ClaimSourcePatch.new;
+  final ClaimSourcePatchArgs = module_core.ClaimSourcePatch.new;
+  final ClientIPConfig = module_core.ClientIPConfig.new;
+  final ClientIPConfigArgs = module_core.ClientIPConfig.new;
+  final ClientIPConfigPatch = module_core.ClientIPConfigPatch.new;
+  final ClientIPConfigPatchArgs = module_core.ClientIPConfigPatch.new;
+  final ClusterTrustBundleProjection =
+      module_core.ClusterTrustBundleProjection.new;
+  final ClusterTrustBundleProjectionArgs =
+      module_core.ClusterTrustBundleProjection.new;
+  final ClusterTrustBundleProjectionPatch =
+      module_core.ClusterTrustBundleProjectionPatch.new;
+  final ClusterTrustBundleProjectionPatchArgs =
+      module_core.ClusterTrustBundleProjectionPatch.new;
+  final ComponentCondition = module_core.ComponentCondition.new;
+  final ComponentConditionArgs = module_core.ComponentCondition.new;
+  final ComponentConditionPatch = module_core.ComponentConditionPatch.new;
+  final ComponentConditionPatchArgs = module_core.ComponentConditionPatch.new;
+  final ComponentStatus = module_core.ComponentStatus.new;
+  final ComponentStatusArgs = module_core.ComponentStatus.new;
+  final ComponentStatusList = module_core.ComponentStatusList.new;
+  final ComponentStatusListArgs = module_core.ComponentStatusList.new;
+  final ComponentStatusPatch = module_core.ComponentStatusPatch.new;
+  final ComponentStatusPatchArgs = module_core.ComponentStatusPatch.new;
+  final ConfigMap = module_core.ConfigMap.new;
+  final ConfigMapArgs = module_core.ConfigMap.new;
+  final ConfigMapEnvSource = module_core.ConfigMapEnvSource.new;
+  final ConfigMapEnvSourceArgs = module_core.ConfigMapEnvSource.new;
+  final ConfigMapEnvSourcePatch = module_core.ConfigMapEnvSourcePatch.new;
+  final ConfigMapEnvSourcePatchArgs = module_core.ConfigMapEnvSourcePatch.new;
+  final ConfigMapKeySelector = module_core.ConfigMapKeySelector.new;
+  final ConfigMapKeySelectorArgs = module_core.ConfigMapKeySelector.new;
+  final ConfigMapKeySelectorPatch = module_core.ConfigMapKeySelectorPatch.new;
+  final ConfigMapKeySelectorPatchArgs =
+      module_core.ConfigMapKeySelectorPatch.new;
+  final ConfigMapList = module_core.ConfigMapList.new;
+  final ConfigMapListArgs = module_core.ConfigMapList.new;
+  final ConfigMapNodeConfigSource = module_core.ConfigMapNodeConfigSource.new;
+  final ConfigMapNodeConfigSourceArgs =
+      module_core.ConfigMapNodeConfigSource.new;
+  final ConfigMapNodeConfigSourcePatch =
+      module_core.ConfigMapNodeConfigSourcePatch.new;
+  final ConfigMapNodeConfigSourcePatchArgs =
+      module_core.ConfigMapNodeConfigSourcePatch.new;
+  final ConfigMapPatch = module_core.ConfigMapPatch.new;
+  final ConfigMapPatchArgs = module_core.ConfigMapPatch.new;
+  final ConfigMapProjection = module_core.ConfigMapProjection.new;
+  final ConfigMapProjectionArgs = module_core.ConfigMapProjection.new;
+  final ConfigMapProjectionPatch = module_core.ConfigMapProjectionPatch.new;
+  final ConfigMapProjectionPatchArgs = module_core.ConfigMapProjectionPatch.new;
+  final ConfigMapVolumeSource = module_core.ConfigMapVolumeSource.new;
+  final ConfigMapVolumeSourceArgs = module_core.ConfigMapVolumeSource.new;
+  final ConfigMapVolumeSourcePatch = module_core.ConfigMapVolumeSourcePatch.new;
+  final ConfigMapVolumeSourcePatchArgs =
+      module_core.ConfigMapVolumeSourcePatch.new;
+  final Container = module_core.Container.new;
+  final ContainerArgs = module_core.Container.new;
+  final ContainerExtendedResourceRequest =
+      module_core.ContainerExtendedResourceRequest.new;
+  final ContainerExtendedResourceRequestArgs =
+      module_core.ContainerExtendedResourceRequest.new;
+  final ContainerExtendedResourceRequestPatch =
+      module_core.ContainerExtendedResourceRequestPatch.new;
+  final ContainerExtendedResourceRequestPatchArgs =
+      module_core.ContainerExtendedResourceRequestPatch.new;
+  final ContainerImage = module_core.ContainerImage.new;
+  final ContainerImageArgs = module_core.ContainerImage.new;
+  final ContainerImagePatch = module_core.ContainerImagePatch.new;
+  final ContainerImagePatchArgs = module_core.ContainerImagePatch.new;
+  final ContainerPatch = module_core.ContainerPatch.new;
+  final ContainerPatchArgs = module_core.ContainerPatch.new;
+  final ContainerPort = module_core.ContainerPort.new;
+  final ContainerPortArgs = module_core.ContainerPort.new;
+  final ContainerPortPatch = module_core.ContainerPortPatch.new;
+  final ContainerPortPatchArgs = module_core.ContainerPortPatch.new;
+  final ContainerResizePolicy = module_core.ContainerResizePolicy.new;
+  final ContainerResizePolicyArgs = module_core.ContainerResizePolicy.new;
+  final ContainerResizePolicyPatch = module_core.ContainerResizePolicyPatch.new;
+  final ContainerResizePolicyPatchArgs =
+      module_core.ContainerResizePolicyPatch.new;
+  final ContainerRestartRule = module_core.ContainerRestartRule.new;
+  final ContainerRestartRuleArgs = module_core.ContainerRestartRule.new;
+  final ContainerRestartRuleOnExitCodes =
+      module_core.ContainerRestartRuleOnExitCodes.new;
+  final ContainerRestartRuleOnExitCodesArgs =
+      module_core.ContainerRestartRuleOnExitCodes.new;
+  final ContainerRestartRuleOnExitCodesPatch =
+      module_core.ContainerRestartRuleOnExitCodesPatch.new;
+  final ContainerRestartRuleOnExitCodesPatchArgs =
+      module_core.ContainerRestartRuleOnExitCodesPatch.new;
+  final ContainerRestartRulePatch = module_core.ContainerRestartRulePatch.new;
+  final ContainerRestartRulePatchArgs =
+      module_core.ContainerRestartRulePatch.new;
+  final ContainerState = module_core.ContainerState.new;
+  final ContainerStateArgs = module_core.ContainerState.new;
+  final ContainerStatePatch = module_core.ContainerStatePatch.new;
+  final ContainerStatePatchArgs = module_core.ContainerStatePatch.new;
+  final ContainerStateRunning = module_core.ContainerStateRunning.new;
+  final ContainerStateRunningArgs = module_core.ContainerStateRunning.new;
+  final ContainerStateRunningPatch = module_core.ContainerStateRunningPatch.new;
+  final ContainerStateRunningPatchArgs =
+      module_core.ContainerStateRunningPatch.new;
+  final ContainerStateTerminated = module_core.ContainerStateTerminated.new;
+  final ContainerStateTerminatedArgs = module_core.ContainerStateTerminated.new;
+  final ContainerStateTerminatedPatch =
+      module_core.ContainerStateTerminatedPatch.new;
+  final ContainerStateTerminatedPatchArgs =
+      module_core.ContainerStateTerminatedPatch.new;
+  final ContainerStateWaiting = module_core.ContainerStateWaiting.new;
+  final ContainerStateWaitingArgs = module_core.ContainerStateWaiting.new;
+  final ContainerStateWaitingPatch = module_core.ContainerStateWaitingPatch.new;
+  final ContainerStateWaitingPatchArgs =
+      module_core.ContainerStateWaitingPatch.new;
+  final ContainerStatus = module_core.ContainerStatus.new;
+  final ContainerStatusArgs = module_core.ContainerStatus.new;
+  final ContainerStatusPatch = module_core.ContainerStatusPatch.new;
+  final ContainerStatusPatchArgs = module_core.ContainerStatusPatch.new;
+  final ContainerUser = module_core.ContainerUser.new;
+  final ContainerUserArgs = module_core.ContainerUser.new;
+  final ContainerUserPatch = module_core.ContainerUserPatch.new;
+  final ContainerUserPatchArgs = module_core.ContainerUserPatch.new;
+  final DaemonEndpoint = module_core.DaemonEndpoint.new;
+  final DaemonEndpointArgs = module_core.DaemonEndpoint.new;
+  final DaemonEndpointPatch = module_core.DaemonEndpointPatch.new;
+  final DaemonEndpointPatchArgs = module_core.DaemonEndpointPatch.new;
+  final DownwardAPIProjection = module_core.DownwardAPIProjection.new;
+  final DownwardAPIProjectionArgs = module_core.DownwardAPIProjection.new;
+  final DownwardAPIProjectionPatch = module_core.DownwardAPIProjectionPatch.new;
+  final DownwardAPIProjectionPatchArgs =
+      module_core.DownwardAPIProjectionPatch.new;
+  final DownwardAPIVolumeFile = module_core.DownwardAPIVolumeFile.new;
+  final DownwardAPIVolumeFileArgs = module_core.DownwardAPIVolumeFile.new;
+  final DownwardAPIVolumeFilePatch = module_core.DownwardAPIVolumeFilePatch.new;
+  final DownwardAPIVolumeFilePatchArgs =
+      module_core.DownwardAPIVolumeFilePatch.new;
+  final DownwardAPIVolumeSource = module_core.DownwardAPIVolumeSource.new;
+  final DownwardAPIVolumeSourceArgs = module_core.DownwardAPIVolumeSource.new;
+  final DownwardAPIVolumeSourcePatch =
+      module_core.DownwardAPIVolumeSourcePatch.new;
+  final DownwardAPIVolumeSourcePatchArgs =
+      module_core.DownwardAPIVolumeSourcePatch.new;
+  final EmptyDirVolumeSource = module_core.EmptyDirVolumeSource.new;
+  final EmptyDirVolumeSourceArgs = module_core.EmptyDirVolumeSource.new;
+  final EmptyDirVolumeSourcePatch = module_core.EmptyDirVolumeSourcePatch.new;
+  final EmptyDirVolumeSourcePatchArgs =
+      module_core.EmptyDirVolumeSourcePatch.new;
+  final EndpointAddress = module_core.EndpointAddress.new;
+  final EndpointAddressArgs = module_core.EndpointAddress.new;
+  final EndpointAddressPatch = module_core.EndpointAddressPatch.new;
+  final EndpointAddressPatchArgs = module_core.EndpointAddressPatch.new;
+  final EndpointPort = module_core.EndpointPort.new;
+  final EndpointPortArgs = module_core.EndpointPort.new;
+  final EndpointPortPatch = module_core.EndpointPortPatch.new;
+  final EndpointPortPatchArgs = module_core.EndpointPortPatch.new;
+  final EndpointSubset = module_core.EndpointSubset.new;
+  final EndpointSubsetArgs = module_core.EndpointSubset.new;
+  final EndpointSubsetPatch = module_core.EndpointSubsetPatch.new;
+  final EndpointSubsetPatchArgs = module_core.EndpointSubsetPatch.new;
+  final Endpoints = module_core.Endpoints.new;
+  final EndpointsArgs = module_core.Endpoints.new;
+  final EndpointsList = module_core.EndpointsList.new;
+  final EndpointsListArgs = module_core.EndpointsList.new;
+  final EndpointsPatch = module_core.EndpointsPatch.new;
+  final EndpointsPatchArgs = module_core.EndpointsPatch.new;
+  final EnvFromSource = module_core.EnvFromSource.new;
+  final EnvFromSourceArgs = module_core.EnvFromSource.new;
+  final EnvFromSourcePatch = module_core.EnvFromSourcePatch.new;
+  final EnvFromSourcePatchArgs = module_core.EnvFromSourcePatch.new;
+  final EnvVar = module_core.EnvVar.new;
+  final EnvVarArgs = module_core.EnvVar.new;
+  final EnvVarPatch = module_core.EnvVarPatch.new;
+  final EnvVarPatchArgs = module_core.EnvVarPatch.new;
+  final EnvVarSource = module_core.EnvVarSource.new;
+  final EnvVarSourceArgs = module_core.EnvVarSource.new;
+  final EnvVarSourcePatch = module_core.EnvVarSourcePatch.new;
+  final EnvVarSourcePatchArgs = module_core.EnvVarSourcePatch.new;
+  final EphemeralContainer = module_core.EphemeralContainer.new;
+  final EphemeralContainerArgs = module_core.EphemeralContainer.new;
+  final EphemeralContainerPatch = module_core.EphemeralContainerPatch.new;
+  final EphemeralContainerPatchArgs = module_core.EphemeralContainerPatch.new;
+  final EphemeralVolumeSource = module_core.EphemeralVolumeSource.new;
+  final EphemeralVolumeSourceArgs = module_core.EphemeralVolumeSource.new;
+  final EphemeralVolumeSourcePatch = module_core.EphemeralVolumeSourcePatch.new;
+  final EphemeralVolumeSourcePatchArgs =
+      module_core.EphemeralVolumeSourcePatch.new;
+  final Event = module_core.Event.new;
+  final EventArgs = module_core.Event.new;
+  final EventList = module_core.EventList.new;
+  final EventListArgs = module_core.EventList.new;
+  final EventPatch = module_core.EventPatch.new;
+  final EventPatchArgs = module_core.EventPatch.new;
+  final EventSeries = module_core.EventSeries.new;
+  final EventSeriesArgs = module_core.EventSeries.new;
+  final EventSeriesPatch = module_core.EventSeriesPatch.new;
+  final EventSeriesPatchArgs = module_core.EventSeriesPatch.new;
+  final EventSource = module_core.EventSource.new;
+  final EventSourceArgs = module_core.EventSource.new;
+  final EventSourcePatch = module_core.EventSourcePatch.new;
+  final EventSourcePatchArgs = module_core.EventSourcePatch.new;
+  final ExecAction = module_core.ExecAction.new;
+  final ExecActionArgs = module_core.ExecAction.new;
+  final ExecActionPatch = module_core.ExecActionPatch.new;
+  final ExecActionPatchArgs = module_core.ExecActionPatch.new;
+  final FCVolumeSource = module_core.FCVolumeSource.new;
+  final FCVolumeSourceArgs = module_core.FCVolumeSource.new;
+  final FCVolumeSourcePatch = module_core.FCVolumeSourcePatch.new;
+  final FCVolumeSourcePatchArgs = module_core.FCVolumeSourcePatch.new;
+  final FileKeySelector = module_core.FileKeySelector.new;
+  final FileKeySelectorArgs = module_core.FileKeySelector.new;
+  final FileKeySelectorPatch = module_core.FileKeySelectorPatch.new;
+  final FileKeySelectorPatchArgs = module_core.FileKeySelectorPatch.new;
+  final FlexPersistentVolumeSource = module_core.FlexPersistentVolumeSource.new;
+  final FlexPersistentVolumeSourceArgs =
+      module_core.FlexPersistentVolumeSource.new;
+  final FlexPersistentVolumeSourcePatch =
+      module_core.FlexPersistentVolumeSourcePatch.new;
+  final FlexPersistentVolumeSourcePatchArgs =
+      module_core.FlexPersistentVolumeSourcePatch.new;
+  final FlexVolumeSource = module_core.FlexVolumeSource.new;
+  final FlexVolumeSourceArgs = module_core.FlexVolumeSource.new;
+  final FlexVolumeSourcePatch = module_core.FlexVolumeSourcePatch.new;
+  final FlexVolumeSourcePatchArgs = module_core.FlexVolumeSourcePatch.new;
+  final FlockerVolumeSource = module_core.FlockerVolumeSource.new;
+  final FlockerVolumeSourceArgs = module_core.FlockerVolumeSource.new;
+  final FlockerVolumeSourcePatch = module_core.FlockerVolumeSourcePatch.new;
+  final FlockerVolumeSourcePatchArgs = module_core.FlockerVolumeSourcePatch.new;
+  final GCEPersistentDiskVolumeSource =
+      module_core.GCEPersistentDiskVolumeSource.new;
+  final GCEPersistentDiskVolumeSourceArgs =
+      module_core.GCEPersistentDiskVolumeSource.new;
+  final GCEPersistentDiskVolumeSourcePatch =
+      module_core.GCEPersistentDiskVolumeSourcePatch.new;
+  final GCEPersistentDiskVolumeSourcePatchArgs =
+      module_core.GCEPersistentDiskVolumeSourcePatch.new;
+  final GRPCAction = module_core.GRPCAction.new;
+  final GRPCActionArgs = module_core.GRPCAction.new;
+  final GRPCActionPatch = module_core.GRPCActionPatch.new;
+  final GRPCActionPatchArgs = module_core.GRPCActionPatch.new;
+  final GitRepoVolumeSource = module_core.GitRepoVolumeSource.new;
+  final GitRepoVolumeSourceArgs = module_core.GitRepoVolumeSource.new;
+  final GitRepoVolumeSourcePatch = module_core.GitRepoVolumeSourcePatch.new;
+  final GitRepoVolumeSourcePatchArgs = module_core.GitRepoVolumeSourcePatch.new;
+  final GlusterfsPersistentVolumeSource =
+      module_core.GlusterfsPersistentVolumeSource.new;
+  final GlusterfsPersistentVolumeSourceArgs =
+      module_core.GlusterfsPersistentVolumeSource.new;
+  final GlusterfsPersistentVolumeSourcePatch =
+      module_core.GlusterfsPersistentVolumeSourcePatch.new;
+  final GlusterfsPersistentVolumeSourcePatchArgs =
+      module_core.GlusterfsPersistentVolumeSourcePatch.new;
+  final GlusterfsVolumeSource = module_core.GlusterfsVolumeSource.new;
+  final GlusterfsVolumeSourceArgs = module_core.GlusterfsVolumeSource.new;
+  final GlusterfsVolumeSourcePatch = module_core.GlusterfsVolumeSourcePatch.new;
+  final GlusterfsVolumeSourcePatchArgs =
+      module_core.GlusterfsVolumeSourcePatch.new;
+  final HTTPGetAction = module_core.HTTPGetAction.new;
+  final HTTPGetActionArgs = module_core.HTTPGetAction.new;
+  final HTTPGetActionPatch = module_core.HTTPGetActionPatch.new;
+  final HTTPGetActionPatchArgs = module_core.HTTPGetActionPatch.new;
+  final HTTPHeader = module_core.HTTPHeader.new;
+  final HTTPHeaderArgs = module_core.HTTPHeader.new;
+  final HTTPHeaderPatch = module_core.HTTPHeaderPatch.new;
+  final HTTPHeaderPatchArgs = module_core.HTTPHeaderPatch.new;
+  final Handler = module_core.Handler.new;
+  final HandlerArgs = module_core.Handler.new;
+  final HandlerPatch = module_core.HandlerPatch.new;
+  final HandlerPatchArgs = module_core.HandlerPatch.new;
+  final HostAlias = module_core.HostAlias.new;
+  final HostAliasArgs = module_core.HostAlias.new;
+  final HostAliasPatch = module_core.HostAliasPatch.new;
+  final HostAliasPatchArgs = module_core.HostAliasPatch.new;
+  final HostIP = module_core.HostIP.new;
+  final HostIPArgs = module_core.HostIP.new;
+  final HostIPPatch = module_core.HostIPPatch.new;
+  final HostIPPatchArgs = module_core.HostIPPatch.new;
+  final HostPathVolumeSource = module_core.HostPathVolumeSource.new;
+  final HostPathVolumeSourceArgs = module_core.HostPathVolumeSource.new;
+  final HostPathVolumeSourcePatch = module_core.HostPathVolumeSourcePatch.new;
+  final HostPathVolumeSourcePatchArgs =
+      module_core.HostPathVolumeSourcePatch.new;
+  final ISCSIPersistentVolumeSource =
+      module_core.ISCSIPersistentVolumeSource.new;
+  final ISCSIPersistentVolumeSourceArgs =
+      module_core.ISCSIPersistentVolumeSource.new;
+  final ISCSIPersistentVolumeSourcePatch =
+      module_core.ISCSIPersistentVolumeSourcePatch.new;
+  final ISCSIPersistentVolumeSourcePatchArgs =
+      module_core.ISCSIPersistentVolumeSourcePatch.new;
+  final ISCSIVolumeSource = module_core.ISCSIVolumeSource.new;
+  final ISCSIVolumeSourceArgs = module_core.ISCSIVolumeSource.new;
+  final ISCSIVolumeSourcePatch = module_core.ISCSIVolumeSourcePatch.new;
+  final ISCSIVolumeSourcePatchArgs = module_core.ISCSIVolumeSourcePatch.new;
+  final ImageVolumeSource = module_core.ImageVolumeSource.new;
+  final ImageVolumeSourceArgs = module_core.ImageVolumeSource.new;
+  final ImageVolumeSourcePatch = module_core.ImageVolumeSourcePatch.new;
+  final ImageVolumeSourcePatchArgs = module_core.ImageVolumeSourcePatch.new;
+  final KeyToPath = module_core.KeyToPath.new;
+  final KeyToPathArgs = module_core.KeyToPath.new;
+  final KeyToPathPatch = module_core.KeyToPathPatch.new;
+  final KeyToPathPatchArgs = module_core.KeyToPathPatch.new;
+  final Lifecycle = module_core.Lifecycle.new;
+  final LifecycleArgs = module_core.Lifecycle.new;
+  final LifecycleHandler = module_core.LifecycleHandler.new;
+  final LifecycleHandlerArgs = module_core.LifecycleHandler.new;
+  final LifecycleHandlerPatch = module_core.LifecycleHandlerPatch.new;
+  final LifecycleHandlerPatchArgs = module_core.LifecycleHandlerPatch.new;
+  final LifecyclePatch = module_core.LifecyclePatch.new;
+  final LifecyclePatchArgs = module_core.LifecyclePatch.new;
+  final LimitRange = module_core.LimitRange.new;
+  final LimitRangeArgs = module_core.LimitRange.new;
+  final LimitRangeItem = module_core.LimitRangeItem.new;
+  final LimitRangeItemArgs = module_core.LimitRangeItem.new;
+  final LimitRangeItemPatch = module_core.LimitRangeItemPatch.new;
+  final LimitRangeItemPatchArgs = module_core.LimitRangeItemPatch.new;
+  final LimitRangeList = module_core.LimitRangeList.new;
+  final LimitRangeListArgs = module_core.LimitRangeList.new;
+  final LimitRangePatch = module_core.LimitRangePatch.new;
+  final LimitRangePatchArgs = module_core.LimitRangePatch.new;
+  final LimitRangeSpec = module_core.LimitRangeSpec.new;
+  final LimitRangeSpecArgs = module_core.LimitRangeSpec.new;
+  final LimitRangeSpecPatch = module_core.LimitRangeSpecPatch.new;
+  final LimitRangeSpecPatchArgs = module_core.LimitRangeSpecPatch.new;
+  final LinuxContainerUser = module_core.LinuxContainerUser.new;
+  final LinuxContainerUserArgs = module_core.LinuxContainerUser.new;
+  final LinuxContainerUserPatch = module_core.LinuxContainerUserPatch.new;
+  final LinuxContainerUserPatchArgs = module_core.LinuxContainerUserPatch.new;
+  final LoadBalancerIngress = module_core.LoadBalancerIngress.new;
+  final LoadBalancerIngressArgs = module_core.LoadBalancerIngress.new;
+  final LoadBalancerIngressPatch = module_core.LoadBalancerIngressPatch.new;
+  final LoadBalancerIngressPatchArgs = module_core.LoadBalancerIngressPatch.new;
+  final LoadBalancerStatus = module_core.LoadBalancerStatus.new;
+  final LoadBalancerStatusArgs = module_core.LoadBalancerStatus.new;
+  final LoadBalancerStatusPatch = module_core.LoadBalancerStatusPatch.new;
+  final LoadBalancerStatusPatchArgs = module_core.LoadBalancerStatusPatch.new;
+  final LocalObjectReference = module_core.LocalObjectReference.new;
+  final LocalObjectReferenceArgs = module_core.LocalObjectReference.new;
+  final LocalObjectReferencePatch = module_core.LocalObjectReferencePatch.new;
+  final LocalObjectReferencePatchArgs =
+      module_core.LocalObjectReferencePatch.new;
+  final LocalVolumeSource = module_core.LocalVolumeSource.new;
+  final LocalVolumeSourceArgs = module_core.LocalVolumeSource.new;
+  final LocalVolumeSourcePatch = module_core.LocalVolumeSourcePatch.new;
+  final LocalVolumeSourcePatchArgs = module_core.LocalVolumeSourcePatch.new;
+  final ModifyVolumeStatus = module_core.ModifyVolumeStatus.new;
+  final ModifyVolumeStatusArgs = module_core.ModifyVolumeStatus.new;
+  final ModifyVolumeStatusPatch = module_core.ModifyVolumeStatusPatch.new;
+  final ModifyVolumeStatusPatchArgs = module_core.ModifyVolumeStatusPatch.new;
+  final NFSVolumeSource = module_core.NFSVolumeSource.new;
+  final NFSVolumeSourceArgs = module_core.NFSVolumeSource.new;
+  final NFSVolumeSourcePatch = module_core.NFSVolumeSourcePatch.new;
+  final NFSVolumeSourcePatchArgs = module_core.NFSVolumeSourcePatch.new;
+  final Namespace = module_core.Namespace.new;
+  final NamespaceArgs = module_core.Namespace.new;
+  final NamespaceCondition = module_core.NamespaceCondition.new;
+  final NamespaceConditionArgs = module_core.NamespaceCondition.new;
+  final NamespaceConditionPatch = module_core.NamespaceConditionPatch.new;
+  final NamespaceConditionPatchArgs = module_core.NamespaceConditionPatch.new;
+  final NamespaceList = module_core.NamespaceList.new;
+  final NamespaceListArgs = module_core.NamespaceList.new;
+  final NamespacePatch = module_core.NamespacePatch.new;
+  final NamespacePatchArgs = module_core.NamespacePatch.new;
+  final NamespaceSpec = module_core.NamespaceSpec.new;
+  final NamespaceSpecArgs = module_core.NamespaceSpec.new;
+  final NamespaceSpecPatch = module_core.NamespaceSpecPatch.new;
+  final NamespaceSpecPatchArgs = module_core.NamespaceSpecPatch.new;
+  final NamespaceStatus = module_core.NamespaceStatus.new;
+  final NamespaceStatusArgs = module_core.NamespaceStatus.new;
+  final NamespaceStatusPatch = module_core.NamespaceStatusPatch.new;
+  final NamespaceStatusPatchArgs = module_core.NamespaceStatusPatch.new;
+  final Node = module_core.Node.new;
+  final NodeAddress = module_core.NodeAddress.new;
+  final NodeAddressArgs = module_core.NodeAddress.new;
+  final NodeAddressPatch = module_core.NodeAddressPatch.new;
+  final NodeAddressPatchArgs = module_core.NodeAddressPatch.new;
+  final NodeAffinity = module_core.NodeAffinity.new;
+  final NodeAffinityArgs = module_core.NodeAffinity.new;
+  final NodeAffinityPatch = module_core.NodeAffinityPatch.new;
+  final NodeAffinityPatchArgs = module_core.NodeAffinityPatch.new;
+  final NodeArgs = module_core.Node.new;
+  final NodeCondition = module_core.NodeCondition.new;
+  final NodeConditionArgs = module_core.NodeCondition.new;
+  final NodeConditionPatch = module_core.NodeConditionPatch.new;
+  final NodeConditionPatchArgs = module_core.NodeConditionPatch.new;
+  final NodeConfigSource = module_core.NodeConfigSource.new;
+  final NodeConfigSourceArgs = module_core.NodeConfigSource.new;
+  final NodeConfigSourcePatch = module_core.NodeConfigSourcePatch.new;
+  final NodeConfigSourcePatchArgs = module_core.NodeConfigSourcePatch.new;
+  final NodeConfigStatus = module_core.NodeConfigStatus.new;
+  final NodeConfigStatusArgs = module_core.NodeConfigStatus.new;
+  final NodeConfigStatusPatch = module_core.NodeConfigStatusPatch.new;
+  final NodeConfigStatusPatchArgs = module_core.NodeConfigStatusPatch.new;
+  final NodeDaemonEndpoints = module_core.NodeDaemonEndpoints.new;
+  final NodeDaemonEndpointsArgs = module_core.NodeDaemonEndpoints.new;
+  final NodeDaemonEndpointsPatch = module_core.NodeDaemonEndpointsPatch.new;
+  final NodeDaemonEndpointsPatchArgs = module_core.NodeDaemonEndpointsPatch.new;
+  final NodeFeatures = module_core.NodeFeatures.new;
+  final NodeFeaturesArgs = module_core.NodeFeatures.new;
+  final NodeFeaturesPatch = module_core.NodeFeaturesPatch.new;
+  final NodeFeaturesPatchArgs = module_core.NodeFeaturesPatch.new;
+  final NodeList = module_core.NodeList.new;
+  final NodeListArgs = module_core.NodeList.new;
+  final NodePatch = module_core.NodePatch.new;
+  final NodePatchArgs = module_core.NodePatch.new;
+  final NodeRuntimeHandler = module_core.NodeRuntimeHandler.new;
+  final NodeRuntimeHandlerArgs = module_core.NodeRuntimeHandler.new;
+  final NodeRuntimeHandlerFeatures = module_core.NodeRuntimeHandlerFeatures.new;
+  final NodeRuntimeHandlerFeaturesArgs =
+      module_core.NodeRuntimeHandlerFeatures.new;
+  final NodeRuntimeHandlerFeaturesPatch =
+      module_core.NodeRuntimeHandlerFeaturesPatch.new;
+  final NodeRuntimeHandlerFeaturesPatchArgs =
+      module_core.NodeRuntimeHandlerFeaturesPatch.new;
+  final NodeRuntimeHandlerPatch = module_core.NodeRuntimeHandlerPatch.new;
+  final NodeRuntimeHandlerPatchArgs = module_core.NodeRuntimeHandlerPatch.new;
+  final NodeSelector = module_core.NodeSelector.new;
+  final NodeSelectorArgs = module_core.NodeSelector.new;
+  final NodeSelectorPatch = module_core.NodeSelectorPatch.new;
+  final NodeSelectorPatchArgs = module_core.NodeSelectorPatch.new;
+  final NodeSelectorRequirement = module_core.NodeSelectorRequirement.new;
+  final NodeSelectorRequirementArgs = module_core.NodeSelectorRequirement.new;
+  final NodeSelectorRequirementPatch =
+      module_core.NodeSelectorRequirementPatch.new;
+  final NodeSelectorRequirementPatchArgs =
+      module_core.NodeSelectorRequirementPatch.new;
+  final NodeSelectorTerm = module_core.NodeSelectorTerm.new;
+  final NodeSelectorTermArgs = module_core.NodeSelectorTerm.new;
+  final NodeSelectorTermPatch = module_core.NodeSelectorTermPatch.new;
+  final NodeSelectorTermPatchArgs = module_core.NodeSelectorTermPatch.new;
+  final NodeSpec = module_core.NodeSpec.new;
+  final NodeSpecArgs = module_core.NodeSpec.new;
+  final NodeSpecPatch = module_core.NodeSpecPatch.new;
+  final NodeSpecPatchArgs = module_core.NodeSpecPatch.new;
+  final NodeStatus = module_core.NodeStatus.new;
+  final NodeStatusArgs = module_core.NodeStatus.new;
+  final NodeStatusPatch = module_core.NodeStatusPatch.new;
+  final NodeStatusPatchArgs = module_core.NodeStatusPatch.new;
+  final NodeSwapStatus = module_core.NodeSwapStatus.new;
+  final NodeSwapStatusArgs = module_core.NodeSwapStatus.new;
+  final NodeSwapStatusPatch = module_core.NodeSwapStatusPatch.new;
+  final NodeSwapStatusPatchArgs = module_core.NodeSwapStatusPatch.new;
+  final NodeSystemInfo = module_core.NodeSystemInfo.new;
+  final NodeSystemInfoArgs = module_core.NodeSystemInfo.new;
+  final NodeSystemInfoPatch = module_core.NodeSystemInfoPatch.new;
+  final NodeSystemInfoPatchArgs = module_core.NodeSystemInfoPatch.new;
+  final ObjectFieldSelector = module_core.ObjectFieldSelector.new;
+  final ObjectFieldSelectorArgs = module_core.ObjectFieldSelector.new;
+  final ObjectFieldSelectorPatch = module_core.ObjectFieldSelectorPatch.new;
+  final ObjectFieldSelectorPatchArgs = module_core.ObjectFieldSelectorPatch.new;
+  final ObjectReference = module_core.ObjectReference.new;
+  final ObjectReferenceArgs = module_core.ObjectReference.new;
+  final ObjectReferencePatch = module_core.ObjectReferencePatch.new;
+  final ObjectReferencePatchArgs = module_core.ObjectReferencePatch.new;
+  final PersistentVolume = module_core.PersistentVolume.new;
+  final PersistentVolumeArgs = module_core.PersistentVolume.new;
+  final PersistentVolumeClaim = module_core.PersistentVolumeClaim.new;
+  final PersistentVolumeClaimArgs = module_core.PersistentVolumeClaim.new;
+  final PersistentVolumeClaimCondition =
+      module_core.PersistentVolumeClaimCondition.new;
+  final PersistentVolumeClaimConditionArgs =
+      module_core.PersistentVolumeClaimCondition.new;
+  final PersistentVolumeClaimConditionPatch =
+      module_core.PersistentVolumeClaimConditionPatch.new;
+  final PersistentVolumeClaimConditionPatchArgs =
+      module_core.PersistentVolumeClaimConditionPatch.new;
+  final PersistentVolumeClaimList = module_core.PersistentVolumeClaimList.new;
+  final PersistentVolumeClaimListArgs =
+      module_core.PersistentVolumeClaimList.new;
+  final PersistentVolumeClaimPatch = module_core.PersistentVolumeClaimPatch.new;
+  final PersistentVolumeClaimPatchArgs =
+      module_core.PersistentVolumeClaimPatch.new;
+  final PersistentVolumeClaimSpec = module_core.PersistentVolumeClaimSpec.new;
+  final PersistentVolumeClaimSpecArgs =
+      module_core.PersistentVolumeClaimSpec.new;
+  final PersistentVolumeClaimSpecPatch =
+      module_core.PersistentVolumeClaimSpecPatch.new;
+  final PersistentVolumeClaimSpecPatchArgs =
+      module_core.PersistentVolumeClaimSpecPatch.new;
+  final PersistentVolumeClaimStatus =
+      module_core.PersistentVolumeClaimStatus.new;
+  final PersistentVolumeClaimStatusArgs =
+      module_core.PersistentVolumeClaimStatus.new;
+  final PersistentVolumeClaimStatusPatch =
+      module_core.PersistentVolumeClaimStatusPatch.new;
+  final PersistentVolumeClaimStatusPatchArgs =
+      module_core.PersistentVolumeClaimStatusPatch.new;
+  final PersistentVolumeClaimTemplate =
+      module_core.PersistentVolumeClaimTemplate.new;
+  final PersistentVolumeClaimTemplateArgs =
+      module_core.PersistentVolumeClaimTemplate.new;
+  final PersistentVolumeClaimTemplatePatch =
+      module_core.PersistentVolumeClaimTemplatePatch.new;
+  final PersistentVolumeClaimTemplatePatchArgs =
+      module_core.PersistentVolumeClaimTemplatePatch.new;
+  final PersistentVolumeClaimVolumeSource =
+      module_core.PersistentVolumeClaimVolumeSource.new;
+  final PersistentVolumeClaimVolumeSourceArgs =
+      module_core.PersistentVolumeClaimVolumeSource.new;
+  final PersistentVolumeClaimVolumeSourcePatch =
+      module_core.PersistentVolumeClaimVolumeSourcePatch.new;
+  final PersistentVolumeClaimVolumeSourcePatchArgs =
+      module_core.PersistentVolumeClaimVolumeSourcePatch.new;
+  final PersistentVolumeList = module_core.PersistentVolumeList.new;
+  final PersistentVolumeListArgs = module_core.PersistentVolumeList.new;
+  final PersistentVolumePatch = module_core.PersistentVolumePatch.new;
+  final PersistentVolumePatchArgs = module_core.PersistentVolumePatch.new;
+  final PersistentVolumeSpec = module_core.PersistentVolumeSpec.new;
+  final PersistentVolumeSpecArgs = module_core.PersistentVolumeSpec.new;
+  final PersistentVolumeSpecPatch = module_core.PersistentVolumeSpecPatch.new;
+  final PersistentVolumeSpecPatchArgs =
+      module_core.PersistentVolumeSpecPatch.new;
+  final PersistentVolumeStatus = module_core.PersistentVolumeStatus.new;
+  final PersistentVolumeStatusArgs = module_core.PersistentVolumeStatus.new;
+  final PersistentVolumeStatusPatch =
+      module_core.PersistentVolumeStatusPatch.new;
+  final PersistentVolumeStatusPatchArgs =
+      module_core.PersistentVolumeStatusPatch.new;
+  final PhotonPersistentDiskVolumeSource =
+      module_core.PhotonPersistentDiskVolumeSource.new;
+  final PhotonPersistentDiskVolumeSourceArgs =
+      module_core.PhotonPersistentDiskVolumeSource.new;
+  final PhotonPersistentDiskVolumeSourcePatch =
+      module_core.PhotonPersistentDiskVolumeSourcePatch.new;
+  final PhotonPersistentDiskVolumeSourcePatchArgs =
+      module_core.PhotonPersistentDiskVolumeSourcePatch.new;
+  final Pod = module_core.Pod.new;
+  final PodAffinity = module_core.PodAffinity.new;
+  final PodAffinityArgs = module_core.PodAffinity.new;
+  final PodAffinityPatch = module_core.PodAffinityPatch.new;
+  final PodAffinityPatchArgs = module_core.PodAffinityPatch.new;
+  final PodAffinityTerm = module_core.PodAffinityTerm.new;
+  final PodAffinityTermArgs = module_core.PodAffinityTerm.new;
+  final PodAffinityTermPatch = module_core.PodAffinityTermPatch.new;
+  final PodAffinityTermPatchArgs = module_core.PodAffinityTermPatch.new;
+  final PodAntiAffinity = module_core.PodAntiAffinity.new;
+  final PodAntiAffinityArgs = module_core.PodAntiAffinity.new;
+  final PodAntiAffinityPatch = module_core.PodAntiAffinityPatch.new;
+  final PodAntiAffinityPatchArgs = module_core.PodAntiAffinityPatch.new;
+  final PodArgs = module_core.Pod.new;
+  final PodCertificateProjection = module_core.PodCertificateProjection.new;
+  final PodCertificateProjectionArgs = module_core.PodCertificateProjection.new;
+  final PodCertificateProjectionPatch =
+      module_core.PodCertificateProjectionPatch.new;
+  final PodCertificateProjectionPatchArgs =
+      module_core.PodCertificateProjectionPatch.new;
+  final PodCondition = module_core.PodCondition.new;
+  final PodConditionArgs = module_core.PodCondition.new;
+  final PodConditionPatch = module_core.PodConditionPatch.new;
+  final PodConditionPatchArgs = module_core.PodConditionPatch.new;
+  final PodDNSConfig = module_core.PodDNSConfig.new;
+  final PodDNSConfigArgs = module_core.PodDNSConfig.new;
+  final PodDNSConfigOption = module_core.PodDNSConfigOption.new;
+  final PodDNSConfigOptionArgs = module_core.PodDNSConfigOption.new;
+  final PodDNSConfigOptionPatch = module_core.PodDNSConfigOptionPatch.new;
+  final PodDNSConfigOptionPatchArgs = module_core.PodDNSConfigOptionPatch.new;
+  final PodDNSConfigPatch = module_core.PodDNSConfigPatch.new;
+  final PodDNSConfigPatchArgs = module_core.PodDNSConfigPatch.new;
+  final PodExtendedResourceClaimStatus =
+      module_core.PodExtendedResourceClaimStatus.new;
+  final PodExtendedResourceClaimStatusArgs =
+      module_core.PodExtendedResourceClaimStatus.new;
+  final PodExtendedResourceClaimStatusPatch =
+      module_core.PodExtendedResourceClaimStatusPatch.new;
+  final PodExtendedResourceClaimStatusPatchArgs =
+      module_core.PodExtendedResourceClaimStatusPatch.new;
+  final PodIP = module_core.PodIP.new;
+  final PodIPArgs = module_core.PodIP.new;
+  final PodIPPatch = module_core.PodIPPatch.new;
+  final PodIPPatchArgs = module_core.PodIPPatch.new;
+  final PodList = module_core.PodList.new;
+  final PodListArgs = module_core.PodList.new;
+  final PodOS = module_core.PodOS.new;
+  final PodOSArgs = module_core.PodOS.new;
+  final PodOSPatch = module_core.PodOSPatch.new;
+  final PodOSPatchArgs = module_core.PodOSPatch.new;
+  final PodPatch = module_core.PodPatch.new;
+  final PodPatchArgs = module_core.PodPatch.new;
+  final PodReadinessGate = module_core.PodReadinessGate.new;
+  final PodReadinessGateArgs = module_core.PodReadinessGate.new;
+  final PodReadinessGatePatch = module_core.PodReadinessGatePatch.new;
+  final PodReadinessGatePatchArgs = module_core.PodReadinessGatePatch.new;
+  final PodResourceClaim = module_core.PodResourceClaim.new;
+  final PodResourceClaimArgs = module_core.PodResourceClaim.new;
+  final PodResourceClaimPatch = module_core.PodResourceClaimPatch.new;
+  final PodResourceClaimPatchArgs = module_core.PodResourceClaimPatch.new;
+  final PodResourceClaimStatus = module_core.PodResourceClaimStatus.new;
+  final PodResourceClaimStatusArgs = module_core.PodResourceClaimStatus.new;
+  final PodResourceClaimStatusPatch =
+      module_core.PodResourceClaimStatusPatch.new;
+  final PodResourceClaimStatusPatchArgs =
+      module_core.PodResourceClaimStatusPatch.new;
+  final PodSchedulingGate = module_core.PodSchedulingGate.new;
+  final PodSchedulingGateArgs = module_core.PodSchedulingGate.new;
+  final PodSchedulingGatePatch = module_core.PodSchedulingGatePatch.new;
+  final PodSchedulingGatePatchArgs = module_core.PodSchedulingGatePatch.new;
+  final PodSecurityContext = module_core.PodSecurityContext.new;
+  final PodSecurityContextArgs = module_core.PodSecurityContext.new;
+  final PodSecurityContextPatch = module_core.PodSecurityContextPatch.new;
+  final PodSecurityContextPatchArgs = module_core.PodSecurityContextPatch.new;
+  final PodSpec = module_core.PodSpec.new;
+  final PodSpecArgs = module_core.PodSpec.new;
+  final PodSpecPatch = module_core.PodSpecPatch.new;
+  final PodSpecPatchArgs = module_core.PodSpecPatch.new;
+  final PodStatus = module_core.PodStatus.new;
+  final PodStatusArgs = module_core.PodStatus.new;
+  final PodStatusPatch = module_core.PodStatusPatch.new;
+  final PodStatusPatchArgs = module_core.PodStatusPatch.new;
+  final PodTemplate = module_core.PodTemplate.new;
+  final PodTemplateArgs = module_core.PodTemplate.new;
+  final PodTemplateList = module_core.PodTemplateList.new;
+  final PodTemplateListArgs = module_core.PodTemplateList.new;
+  final PodTemplatePatch = module_core.PodTemplatePatch.new;
+  final PodTemplatePatchArgs = module_core.PodTemplatePatch.new;
+  final PodTemplateSpec = module_core.PodTemplateSpec.new;
+  final PodTemplateSpecArgs = module_core.PodTemplateSpec.new;
+  final PodTemplateSpecPatch = module_core.PodTemplateSpecPatch.new;
+  final PodTemplateSpecPatchArgs = module_core.PodTemplateSpecPatch.new;
+  final PortStatus = module_core.PortStatus.new;
+  final PortStatusArgs = module_core.PortStatus.new;
+  final PortStatusPatch = module_core.PortStatusPatch.new;
+  final PortStatusPatchArgs = module_core.PortStatusPatch.new;
+  final PortworxVolumeSource = module_core.PortworxVolumeSource.new;
+  final PortworxVolumeSourceArgs = module_core.PortworxVolumeSource.new;
+  final PortworxVolumeSourcePatch = module_core.PortworxVolumeSourcePatch.new;
+  final PortworxVolumeSourcePatchArgs =
+      module_core.PortworxVolumeSourcePatch.new;
+  final PreferredSchedulingTerm = module_core.PreferredSchedulingTerm.new;
+  final PreferredSchedulingTermArgs = module_core.PreferredSchedulingTerm.new;
+  final PreferredSchedulingTermPatch =
+      module_core.PreferredSchedulingTermPatch.new;
+  final PreferredSchedulingTermPatchArgs =
+      module_core.PreferredSchedulingTermPatch.new;
+  final Probe = module_core.Probe.new;
+  final ProbeArgs = module_core.Probe.new;
+  final ProbePatch = module_core.ProbePatch.new;
+  final ProbePatchArgs = module_core.ProbePatch.new;
+  final ProjectedVolumeSource = module_core.ProjectedVolumeSource.new;
+  final ProjectedVolumeSourceArgs = module_core.ProjectedVolumeSource.new;
+  final ProjectedVolumeSourcePatch = module_core.ProjectedVolumeSourcePatch.new;
+  final ProjectedVolumeSourcePatchArgs =
+      module_core.ProjectedVolumeSourcePatch.new;
+  final QuobyteVolumeSource = module_core.QuobyteVolumeSource.new;
+  final QuobyteVolumeSourceArgs = module_core.QuobyteVolumeSource.new;
+  final QuobyteVolumeSourcePatch = module_core.QuobyteVolumeSourcePatch.new;
+  final QuobyteVolumeSourcePatchArgs = module_core.QuobyteVolumeSourcePatch.new;
+  final RBDPersistentVolumeSource = module_core.RBDPersistentVolumeSource.new;
+  final RBDPersistentVolumeSourceArgs =
+      module_core.RBDPersistentVolumeSource.new;
+  final RBDPersistentVolumeSourcePatch =
+      module_core.RBDPersistentVolumeSourcePatch.new;
+  final RBDPersistentVolumeSourcePatchArgs =
+      module_core.RBDPersistentVolumeSourcePatch.new;
+  final RBDVolumeSource = module_core.RBDVolumeSource.new;
+  final RBDVolumeSourceArgs = module_core.RBDVolumeSource.new;
+  final RBDVolumeSourcePatch = module_core.RBDVolumeSourcePatch.new;
+  final RBDVolumeSourcePatchArgs = module_core.RBDVolumeSourcePatch.new;
+  final ReplicationController = module_core.ReplicationController.new;
+  final ReplicationControllerArgs = module_core.ReplicationController.new;
+  final ReplicationControllerCondition =
+      module_core.ReplicationControllerCondition.new;
+  final ReplicationControllerConditionArgs =
+      module_core.ReplicationControllerCondition.new;
+  final ReplicationControllerConditionPatch =
+      module_core.ReplicationControllerConditionPatch.new;
+  final ReplicationControllerConditionPatchArgs =
+      module_core.ReplicationControllerConditionPatch.new;
+  final ReplicationControllerList = module_core.ReplicationControllerList.new;
+  final ReplicationControllerListArgs =
+      module_core.ReplicationControllerList.new;
+  final ReplicationControllerPatch = module_core.ReplicationControllerPatch.new;
+  final ReplicationControllerPatchArgs =
+      module_core.ReplicationControllerPatch.new;
+  final ReplicationControllerSpec = module_core.ReplicationControllerSpec.new;
+  final ReplicationControllerSpecArgs =
+      module_core.ReplicationControllerSpec.new;
+  final ReplicationControllerSpecPatch =
+      module_core.ReplicationControllerSpecPatch.new;
+  final ReplicationControllerSpecPatchArgs =
+      module_core.ReplicationControllerSpecPatch.new;
+  final ReplicationControllerStatus =
+      module_core.ReplicationControllerStatus.new;
+  final ReplicationControllerStatusArgs =
+      module_core.ReplicationControllerStatus.new;
+  final ReplicationControllerStatusPatch =
+      module_core.ReplicationControllerStatusPatch.new;
+  final ReplicationControllerStatusPatchArgs =
+      module_core.ReplicationControllerStatusPatch.new;
+  final ResourceClaim = module_core.ResourceClaim.new;
+  final ResourceClaimArgs = module_core.ResourceClaim.new;
+  final ResourceClaimPatch = module_core.ResourceClaimPatch.new;
+  final ResourceClaimPatchArgs = module_core.ResourceClaimPatch.new;
+  final ResourceFieldSelector = module_core.ResourceFieldSelector.new;
+  final ResourceFieldSelectorArgs = module_core.ResourceFieldSelector.new;
+  final ResourceFieldSelectorPatch = module_core.ResourceFieldSelectorPatch.new;
+  final ResourceFieldSelectorPatchArgs =
+      module_core.ResourceFieldSelectorPatch.new;
+  final ResourceHealth = module_core.ResourceHealth.new;
+  final ResourceHealthArgs = module_core.ResourceHealth.new;
+  final ResourceHealthPatch = module_core.ResourceHealthPatch.new;
+  final ResourceHealthPatchArgs = module_core.ResourceHealthPatch.new;
+  final ResourceQuota = module_core.ResourceQuota.new;
+  final ResourceQuotaArgs = module_core.ResourceQuota.new;
+  final ResourceQuotaList = module_core.ResourceQuotaList.new;
+  final ResourceQuotaListArgs = module_core.ResourceQuotaList.new;
+  final ResourceQuotaPatch = module_core.ResourceQuotaPatch.new;
+  final ResourceQuotaPatchArgs = module_core.ResourceQuotaPatch.new;
+  final ResourceQuotaSpec = module_core.ResourceQuotaSpec.new;
+  final ResourceQuotaSpecArgs = module_core.ResourceQuotaSpec.new;
+  final ResourceQuotaSpecPatch = module_core.ResourceQuotaSpecPatch.new;
+  final ResourceQuotaSpecPatchArgs = module_core.ResourceQuotaSpecPatch.new;
+  final ResourceQuotaStatus = module_core.ResourceQuotaStatus.new;
+  final ResourceQuotaStatusArgs = module_core.ResourceQuotaStatus.new;
+  final ResourceQuotaStatusPatch = module_core.ResourceQuotaStatusPatch.new;
+  final ResourceQuotaStatusPatchArgs = module_core.ResourceQuotaStatusPatch.new;
+  final ResourceRequirements = module_core.ResourceRequirements.new;
+  final ResourceRequirementsArgs = module_core.ResourceRequirements.new;
+  final ResourceRequirementsPatch = module_core.ResourceRequirementsPatch.new;
+  final ResourceRequirementsPatchArgs =
+      module_core.ResourceRequirementsPatch.new;
+  final ResourceStatus = module_core.ResourceStatus.new;
+  final ResourceStatusArgs = module_core.ResourceStatus.new;
+  final ResourceStatusPatch = module_core.ResourceStatusPatch.new;
+  final ResourceStatusPatchArgs = module_core.ResourceStatusPatch.new;
+  final SELinuxOptions = module_core.SELinuxOptions.new;
+  final SELinuxOptionsArgs = module_core.SELinuxOptions.new;
+  final SELinuxOptionsPatch = module_core.SELinuxOptionsPatch.new;
+  final SELinuxOptionsPatchArgs = module_core.SELinuxOptionsPatch.new;
+  final ScaleIOPersistentVolumeSource =
+      module_core.ScaleIOPersistentVolumeSource.new;
+  final ScaleIOPersistentVolumeSourceArgs =
+      module_core.ScaleIOPersistentVolumeSource.new;
+  final ScaleIOPersistentVolumeSourcePatch =
+      module_core.ScaleIOPersistentVolumeSourcePatch.new;
+  final ScaleIOPersistentVolumeSourcePatchArgs =
+      module_core.ScaleIOPersistentVolumeSourcePatch.new;
+  final ScaleIOVolumeSource = module_core.ScaleIOVolumeSource.new;
+  final ScaleIOVolumeSourceArgs = module_core.ScaleIOVolumeSource.new;
+  final ScaleIOVolumeSourcePatch = module_core.ScaleIOVolumeSourcePatch.new;
+  final ScaleIOVolumeSourcePatchArgs = module_core.ScaleIOVolumeSourcePatch.new;
+  final ScopeSelector = module_core.ScopeSelector.new;
+  final ScopeSelectorArgs = module_core.ScopeSelector.new;
+  final ScopeSelectorPatch = module_core.ScopeSelectorPatch.new;
+  final ScopeSelectorPatchArgs = module_core.ScopeSelectorPatch.new;
+  final ScopedResourceSelectorRequirement =
+      module_core.ScopedResourceSelectorRequirement.new;
+  final ScopedResourceSelectorRequirementArgs =
+      module_core.ScopedResourceSelectorRequirement.new;
+  final ScopedResourceSelectorRequirementPatch =
+      module_core.ScopedResourceSelectorRequirementPatch.new;
+  final ScopedResourceSelectorRequirementPatchArgs =
+      module_core.ScopedResourceSelectorRequirementPatch.new;
+  final SeccompProfile = module_core.SeccompProfile.new;
+  final SeccompProfileArgs = module_core.SeccompProfile.new;
+  final SeccompProfilePatch = module_core.SeccompProfilePatch.new;
+  final SeccompProfilePatchArgs = module_core.SeccompProfilePatch.new;
+  final Secret = module_core.Secret.new;
+  final SecretArgs = module_core.Secret.new;
+  final SecretEnvSource = module_core.SecretEnvSource.new;
+  final SecretEnvSourceArgs = module_core.SecretEnvSource.new;
+  final SecretEnvSourcePatch = module_core.SecretEnvSourcePatch.new;
+  final SecretEnvSourcePatchArgs = module_core.SecretEnvSourcePatch.new;
+  final SecretKeySelector = module_core.SecretKeySelector.new;
+  final SecretKeySelectorArgs = module_core.SecretKeySelector.new;
+  final SecretKeySelectorPatch = module_core.SecretKeySelectorPatch.new;
+  final SecretKeySelectorPatchArgs = module_core.SecretKeySelectorPatch.new;
+  final SecretList = module_core.SecretList.new;
+  final SecretListArgs = module_core.SecretList.new;
+  final SecretPatch = module_core.SecretPatch.new;
+  final SecretPatchArgs = module_core.SecretPatch.new;
+  final SecretProjection = module_core.SecretProjection.new;
+  final SecretProjectionArgs = module_core.SecretProjection.new;
+  final SecretProjectionPatch = module_core.SecretProjectionPatch.new;
+  final SecretProjectionPatchArgs = module_core.SecretProjectionPatch.new;
+  final SecretReference = module_core.SecretReference.new;
+  final SecretReferenceArgs = module_core.SecretReference.new;
+  final SecretReferencePatch = module_core.SecretReferencePatch.new;
+  final SecretReferencePatchArgs = module_core.SecretReferencePatch.new;
+  final SecretVolumeSource = module_core.SecretVolumeSource.new;
+  final SecretVolumeSourceArgs = module_core.SecretVolumeSource.new;
+  final SecretVolumeSourcePatch = module_core.SecretVolumeSourcePatch.new;
+  final SecretVolumeSourcePatchArgs = module_core.SecretVolumeSourcePatch.new;
+  final SecurityContext = module_core.SecurityContext.new;
+  final SecurityContextArgs = module_core.SecurityContext.new;
+  final SecurityContextPatch = module_core.SecurityContextPatch.new;
+  final SecurityContextPatchArgs = module_core.SecurityContextPatch.new;
+  final Service = module_core.Service.new;
+  final ServiceAccount = module_core.ServiceAccount.new;
+  final ServiceAccountArgs = module_core.ServiceAccount.new;
+  final ServiceAccountList = module_core.ServiceAccountList.new;
+  final ServiceAccountListArgs = module_core.ServiceAccountList.new;
+  final ServiceAccountPatch = module_core.ServiceAccountPatch.new;
+  final ServiceAccountPatchArgs = module_core.ServiceAccountPatch.new;
+  final ServiceAccountTokenProjection =
+      module_core.ServiceAccountTokenProjection.new;
+  final ServiceAccountTokenProjectionArgs =
+      module_core.ServiceAccountTokenProjection.new;
+  final ServiceAccountTokenProjectionPatch =
+      module_core.ServiceAccountTokenProjectionPatch.new;
+  final ServiceAccountTokenProjectionPatchArgs =
+      module_core.ServiceAccountTokenProjectionPatch.new;
+  final ServiceArgs = module_core.Service.new;
+  final ServiceList = module_core.ServiceList.new;
+  final ServiceListArgs = module_core.ServiceList.new;
+  final ServicePatch = module_core.ServicePatch.new;
+  final ServicePatchArgs = module_core.ServicePatch.new;
+  final ServicePort = module_core.ServicePort.new;
+  final ServicePortArgs = module_core.ServicePort.new;
+  final ServicePortPatch = module_core.ServicePortPatch.new;
+  final ServicePortPatchArgs = module_core.ServicePortPatch.new;
+  final ServiceSpec = module_core.ServiceSpec.new;
+  final ServiceSpecArgs = module_core.ServiceSpec.new;
+  final ServiceSpecPatch = module_core.ServiceSpecPatch.new;
+  final ServiceSpecPatchArgs = module_core.ServiceSpecPatch.new;
+  final ServiceSpecType = module_core.ServiceSpecType.values;
+  final ServiceStatus = module_core.ServiceStatus.new;
+  final ServiceStatusArgs = module_core.ServiceStatus.new;
+  final ServiceStatusPatch = module_core.ServiceStatusPatch.new;
+  final ServiceStatusPatchArgs = module_core.ServiceStatusPatch.new;
+  final SessionAffinityConfig = module_core.SessionAffinityConfig.new;
+  final SessionAffinityConfigArgs = module_core.SessionAffinityConfig.new;
+  final SessionAffinityConfigPatch = module_core.SessionAffinityConfigPatch.new;
+  final SessionAffinityConfigPatchArgs =
+      module_core.SessionAffinityConfigPatch.new;
+  final SleepAction = module_core.SleepAction.new;
+  final SleepActionArgs = module_core.SleepAction.new;
+  final SleepActionPatch = module_core.SleepActionPatch.new;
+  final SleepActionPatchArgs = module_core.SleepActionPatch.new;
+  final StorageOSPersistentVolumeSource =
+      module_core.StorageOSPersistentVolumeSource.new;
+  final StorageOSPersistentVolumeSourceArgs =
+      module_core.StorageOSPersistentVolumeSource.new;
+  final StorageOSPersistentVolumeSourcePatch =
+      module_core.StorageOSPersistentVolumeSourcePatch.new;
+  final StorageOSPersistentVolumeSourcePatchArgs =
+      module_core.StorageOSPersistentVolumeSourcePatch.new;
+  final StorageOSVolumeSource = module_core.StorageOSVolumeSource.new;
+  final StorageOSVolumeSourceArgs = module_core.StorageOSVolumeSource.new;
+  final StorageOSVolumeSourcePatch = module_core.StorageOSVolumeSourcePatch.new;
+  final StorageOSVolumeSourcePatchArgs =
+      module_core.StorageOSVolumeSourcePatch.new;
+  final Sysctl = module_core.Sysctl.new;
+  final SysctlArgs = module_core.Sysctl.new;
+  final SysctlPatch = module_core.SysctlPatch.new;
+  final SysctlPatchArgs = module_core.SysctlPatch.new;
+  final TCPSocketAction = module_core.TCPSocketAction.new;
+  final TCPSocketActionArgs = module_core.TCPSocketAction.new;
+  final TCPSocketActionPatch = module_core.TCPSocketActionPatch.new;
+  final TCPSocketActionPatchArgs = module_core.TCPSocketActionPatch.new;
+  final Taint = module_core.Taint.new;
+  final TaintArgs = module_core.Taint.new;
+  final TaintPatch = module_core.TaintPatch.new;
+  final TaintPatchArgs = module_core.TaintPatch.new;
+  final Toleration = module_core.Toleration.new;
+  final TolerationArgs = module_core.Toleration.new;
+  final TolerationPatch = module_core.TolerationPatch.new;
+  final TolerationPatchArgs = module_core.TolerationPatch.new;
+  final TopologySelectorLabelRequirement =
+      module_core.TopologySelectorLabelRequirement.new;
+  final TopologySelectorLabelRequirementArgs =
+      module_core.TopologySelectorLabelRequirement.new;
+  final TopologySelectorLabelRequirementPatch =
+      module_core.TopologySelectorLabelRequirementPatch.new;
+  final TopologySelectorLabelRequirementPatchArgs =
+      module_core.TopologySelectorLabelRequirementPatch.new;
+  final TopologySelectorTerm = module_core.TopologySelectorTerm.new;
+  final TopologySelectorTermArgs = module_core.TopologySelectorTerm.new;
+  final TopologySelectorTermPatch = module_core.TopologySelectorTermPatch.new;
+  final TopologySelectorTermPatchArgs =
+      module_core.TopologySelectorTermPatch.new;
+  final TopologySpreadConstraint = module_core.TopologySpreadConstraint.new;
+  final TopologySpreadConstraintArgs = module_core.TopologySpreadConstraint.new;
+  final TopologySpreadConstraintPatch =
+      module_core.TopologySpreadConstraintPatch.new;
+  final TopologySpreadConstraintPatchArgs =
+      module_core.TopologySpreadConstraintPatch.new;
+  final TypedLocalObjectReference = module_core.TypedLocalObjectReference.new;
+  final TypedLocalObjectReferenceArgs =
+      module_core.TypedLocalObjectReference.new;
+  final TypedLocalObjectReferencePatch =
+      module_core.TypedLocalObjectReferencePatch.new;
+  final TypedLocalObjectReferencePatchArgs =
+      module_core.TypedLocalObjectReferencePatch.new;
+  final TypedObjectReference = module_core.TypedObjectReference.new;
+  final TypedObjectReferenceArgs = module_core.TypedObjectReference.new;
+  final TypedObjectReferencePatch = module_core.TypedObjectReferencePatch.new;
+  final TypedObjectReferencePatchArgs =
+      module_core.TypedObjectReferencePatch.new;
+  final Volume = module_core.Volume.new;
+  final VolumeArgs = module_core.Volume.new;
+  final VolumeDevice = module_core.VolumeDevice.new;
+  final VolumeDeviceArgs = module_core.VolumeDevice.new;
+  final VolumeDevicePatch = module_core.VolumeDevicePatch.new;
+  final VolumeDevicePatchArgs = module_core.VolumeDevicePatch.new;
+  final VolumeMount = module_core.VolumeMount.new;
+  final VolumeMountArgs = module_core.VolumeMount.new;
+  final VolumeMountPatch = module_core.VolumeMountPatch.new;
+  final VolumeMountPatchArgs = module_core.VolumeMountPatch.new;
+  final VolumeMountStatus = module_core.VolumeMountStatus.new;
+  final VolumeMountStatusArgs = module_core.VolumeMountStatus.new;
+  final VolumeMountStatusPatch = module_core.VolumeMountStatusPatch.new;
+  final VolumeMountStatusPatchArgs = module_core.VolumeMountStatusPatch.new;
+  final VolumeNodeAffinity = module_core.VolumeNodeAffinity.new;
+  final VolumeNodeAffinityArgs = module_core.VolumeNodeAffinity.new;
+  final VolumeNodeAffinityPatch = module_core.VolumeNodeAffinityPatch.new;
+  final VolumeNodeAffinityPatchArgs = module_core.VolumeNodeAffinityPatch.new;
+  final VolumePatch = module_core.VolumePatch.new;
+  final VolumePatchArgs = module_core.VolumePatch.new;
+  final VolumeProjection = module_core.VolumeProjection.new;
+  final VolumeProjectionArgs = module_core.VolumeProjection.new;
+  final VolumeProjectionPatch = module_core.VolumeProjectionPatch.new;
+  final VolumeProjectionPatchArgs = module_core.VolumeProjectionPatch.new;
+  final VolumeResourceRequirements = module_core.VolumeResourceRequirements.new;
+  final VolumeResourceRequirementsArgs =
+      module_core.VolumeResourceRequirements.new;
+  final VolumeResourceRequirementsPatch =
+      module_core.VolumeResourceRequirementsPatch.new;
+  final VolumeResourceRequirementsPatchArgs =
+      module_core.VolumeResourceRequirementsPatch.new;
+  final VsphereVirtualDiskVolumeSource =
+      module_core.VsphereVirtualDiskVolumeSource.new;
+  final VsphereVirtualDiskVolumeSourceArgs =
+      module_core.VsphereVirtualDiskVolumeSource.new;
+  final VsphereVirtualDiskVolumeSourcePatch =
+      module_core.VsphereVirtualDiskVolumeSourcePatch.new;
+  final VsphereVirtualDiskVolumeSourcePatchArgs =
+      module_core.VsphereVirtualDiskVolumeSourcePatch.new;
+  final WeightedPodAffinityTerm = module_core.WeightedPodAffinityTerm.new;
+  final WeightedPodAffinityTermArgs = module_core.WeightedPodAffinityTerm.new;
+  final WeightedPodAffinityTermPatch =
+      module_core.WeightedPodAffinityTermPatch.new;
+  final WeightedPodAffinityTermPatchArgs =
+      module_core.WeightedPodAffinityTermPatch.new;
+  final WindowsSecurityContextOptions =
+      module_core.WindowsSecurityContextOptions.new;
+  final WindowsSecurityContextOptionsArgs =
+      module_core.WindowsSecurityContextOptions.new;
+  final WindowsSecurityContextOptionsPatch =
+      module_core.WindowsSecurityContextOptionsPatch.new;
+  final WindowsSecurityContextOptionsPatchArgs =
+      module_core.WindowsSecurityContextOptionsPatch.new;
+  final WorkloadReference = module_core.WorkloadReference.new;
+  final WorkloadReferenceArgs = module_core.WorkloadReference.new;
+  final WorkloadReferencePatch = module_core.WorkloadReferencePatch.new;
+  final WorkloadReferencePatchArgs = module_core.WorkloadReferencePatch.new;
 }
 
 class _DiscoveryK8sIoModuleNamespace {
   _DiscoveryK8sIoModuleNamespace();
-  final Endpoint = _discovery_k8s_io.Endpoint.new;
-  final EndpointArgs = _discovery_k8s_io.Endpoint.new;
-  final EndpointConditions = _discovery_k8s_io.EndpointConditions.new;
-  final EndpointConditionsArgs = _discovery_k8s_io.EndpointConditions.new;
-  final EndpointConditionsPatch = _discovery_k8s_io.EndpointConditionsPatch.new;
-  final EndpointConditionsPatchArgs = _discovery_k8s_io.EndpointConditionsPatch.new;
-  final EndpointHints = _discovery_k8s_io.EndpointHints.new;
-  final EndpointHintsArgs = _discovery_k8s_io.EndpointHints.new;
-  final EndpointHintsPatch = _discovery_k8s_io.EndpointHintsPatch.new;
-  final EndpointHintsPatchArgs = _discovery_k8s_io.EndpointHintsPatch.new;
-  final EndpointPatch = _discovery_k8s_io.EndpointPatch.new;
-  final EndpointPatchArgs = _discovery_k8s_io.EndpointPatch.new;
-  final EndpointPort = _discovery_k8s_io.EndpointPort.new;
-  final EndpointPortArgs = _discovery_k8s_io.EndpointPort.new;
-  final EndpointPortPatch = _discovery_k8s_io.EndpointPortPatch.new;
-  final EndpointPortPatchArgs = _discovery_k8s_io.EndpointPortPatch.new;
-  final EndpointSlice = _discovery_k8s_io.EndpointSlice.new;
-  final EndpointSliceArgs = _discovery_k8s_io.EndpointSlice.new;
-  final EndpointSliceList = _discovery_k8s_io.EndpointSliceList.new;
-  final EndpointSliceListArgs = _discovery_k8s_io.EndpointSliceList.new;
-  final EndpointSlicePatch = _discovery_k8s_io.EndpointSlicePatch.new;
-  final EndpointSlicePatchArgs = _discovery_k8s_io.EndpointSlicePatch.new;
-  final ForNode = _discovery_k8s_io.ForNode.new;
-  final ForNodeArgs = _discovery_k8s_io.ForNode.new;
-  final ForNodePatch = _discovery_k8s_io.ForNodePatch.new;
-  final ForNodePatchArgs = _discovery_k8s_io.ForNodePatch.new;
-  final ForZone = _discovery_k8s_io.ForZone.new;
-  final ForZoneArgs = _discovery_k8s_io.ForZone.new;
-  final ForZonePatch = _discovery_k8s_io.ForZonePatch.new;
-  final ForZonePatchArgs = _discovery_k8s_io.ForZonePatch.new;
+  final Endpoint = module_discovery_k8s_io.Endpoint.new;
+  final EndpointArgs = module_discovery_k8s_io.Endpoint.new;
+  final EndpointConditions = module_discovery_k8s_io.EndpointConditions.new;
+  final EndpointConditionsArgs = module_discovery_k8s_io.EndpointConditions.new;
+  final EndpointConditionsPatch =
+      module_discovery_k8s_io.EndpointConditionsPatch.new;
+  final EndpointConditionsPatchArgs =
+      module_discovery_k8s_io.EndpointConditionsPatch.new;
+  final EndpointHints = module_discovery_k8s_io.EndpointHints.new;
+  final EndpointHintsArgs = module_discovery_k8s_io.EndpointHints.new;
+  final EndpointHintsPatch = module_discovery_k8s_io.EndpointHintsPatch.new;
+  final EndpointHintsPatchArgs = module_discovery_k8s_io.EndpointHintsPatch.new;
+  final EndpointPatch = module_discovery_k8s_io.EndpointPatch.new;
+  final EndpointPatchArgs = module_discovery_k8s_io.EndpointPatch.new;
+  final EndpointPort = module_discovery_k8s_io.EndpointPort.new;
+  final EndpointPortArgs = module_discovery_k8s_io.EndpointPort.new;
+  final EndpointPortPatch = module_discovery_k8s_io.EndpointPortPatch.new;
+  final EndpointPortPatchArgs = module_discovery_k8s_io.EndpointPortPatch.new;
+  final EndpointSlice = module_discovery_k8s_io.EndpointSlice.new;
+  final EndpointSliceArgs = module_discovery_k8s_io.EndpointSlice.new;
+  final EndpointSliceList = module_discovery_k8s_io.EndpointSliceList.new;
+  final EndpointSliceListArgs = module_discovery_k8s_io.EndpointSliceList.new;
+  final EndpointSlicePatch = module_discovery_k8s_io.EndpointSlicePatch.new;
+  final EndpointSlicePatchArgs = module_discovery_k8s_io.EndpointSlicePatch.new;
+  final ForNode = module_discovery_k8s_io.ForNode.new;
+  final ForNodeArgs = module_discovery_k8s_io.ForNode.new;
+  final ForNodePatch = module_discovery_k8s_io.ForNodePatch.new;
+  final ForNodePatchArgs = module_discovery_k8s_io.ForNodePatch.new;
+  final ForZone = module_discovery_k8s_io.ForZone.new;
+  final ForZoneArgs = module_discovery_k8s_io.ForZone.new;
+  final ForZonePatch = module_discovery_k8s_io.ForZonePatch.new;
+  final ForZonePatchArgs = module_discovery_k8s_io.ForZonePatch.new;
 }
 
 class _EventsK8sIoModuleNamespace {
   _EventsK8sIoModuleNamespace();
-  final Event = _events_k8s_io.Event.new;
-  final EventArgs = _events_k8s_io.Event.new;
-  final EventList = _events_k8s_io.EventList.new;
-  final EventListArgs = _events_k8s_io.EventList.new;
-  final EventPatch = _events_k8s_io.EventPatch.new;
-  final EventPatchArgs = _events_k8s_io.EventPatch.new;
-  final EventSeries = _events_k8s_io.EventSeries.new;
-  final EventSeriesArgs = _events_k8s_io.EventSeries.new;
-  final EventSeriesPatch = _events_k8s_io.EventSeriesPatch.new;
-  final EventSeriesPatchArgs = _events_k8s_io.EventSeriesPatch.new;
+  final Event = module_events_k8s_io.Event.new;
+  final EventArgs = module_events_k8s_io.Event.new;
+  final EventList = module_events_k8s_io.EventList.new;
+  final EventListArgs = module_events_k8s_io.EventList.new;
+  final EventPatch = module_events_k8s_io.EventPatch.new;
+  final EventPatchArgs = module_events_k8s_io.EventPatch.new;
+  final EventSeries = module_events_k8s_io.EventSeries.new;
+  final EventSeriesArgs = module_events_k8s_io.EventSeries.new;
+  final EventSeriesPatch = module_events_k8s_io.EventSeriesPatch.new;
+  final EventSeriesPatchArgs = module_events_k8s_io.EventSeriesPatch.new;
 }
 
 class _ExtensionsModuleNamespace {
   _ExtensionsModuleNamespace();
-  final AllowedCSIDriver = _extensions.AllowedCSIDriver.new;
-  final AllowedCSIDriverArgs = _extensions.AllowedCSIDriver.new;
-  final AllowedCSIDriverPatch = _extensions.AllowedCSIDriverPatch.new;
-  final AllowedCSIDriverPatchArgs = _extensions.AllowedCSIDriverPatch.new;
-  final AllowedFlexVolume = _extensions.AllowedFlexVolume.new;
-  final AllowedFlexVolumeArgs = _extensions.AllowedFlexVolume.new;
-  final AllowedFlexVolumePatch = _extensions.AllowedFlexVolumePatch.new;
-  final AllowedFlexVolumePatchArgs = _extensions.AllowedFlexVolumePatch.new;
-  final AllowedHostPath = _extensions.AllowedHostPath.new;
-  final AllowedHostPathArgs = _extensions.AllowedHostPath.new;
-  final AllowedHostPathPatch = _extensions.AllowedHostPathPatch.new;
-  final AllowedHostPathPatchArgs = _extensions.AllowedHostPathPatch.new;
-  final DaemonSet = _extensions.DaemonSet.new;
-  final DaemonSetArgs = _extensions.DaemonSet.new;
-  final DaemonSetCondition = _extensions.DaemonSetCondition.new;
-  final DaemonSetConditionArgs = _extensions.DaemonSetCondition.new;
-  final DaemonSetConditionPatch = _extensions.DaemonSetConditionPatch.new;
-  final DaemonSetConditionPatchArgs = _extensions.DaemonSetConditionPatch.new;
-  final DaemonSetList = _extensions.DaemonSetList.new;
-  final DaemonSetListArgs = _extensions.DaemonSetList.new;
-  final DaemonSetPatch = _extensions.DaemonSetPatch.new;
-  final DaemonSetPatchArgs = _extensions.DaemonSetPatch.new;
-  final DaemonSetSpec = _extensions.DaemonSetSpec.new;
-  final DaemonSetSpecArgs = _extensions.DaemonSetSpec.new;
-  final DaemonSetSpecPatch = _extensions.DaemonSetSpecPatch.new;
-  final DaemonSetSpecPatchArgs = _extensions.DaemonSetSpecPatch.new;
-  final DaemonSetStatus = _extensions.DaemonSetStatus.new;
-  final DaemonSetStatusArgs = _extensions.DaemonSetStatus.new;
-  final DaemonSetStatusPatch = _extensions.DaemonSetStatusPatch.new;
-  final DaemonSetStatusPatchArgs = _extensions.DaemonSetStatusPatch.new;
-  final DaemonSetUpdateStrategy = _extensions.DaemonSetUpdateStrategy.new;
-  final DaemonSetUpdateStrategyArgs = _extensions.DaemonSetUpdateStrategy.new;
-  final DaemonSetUpdateStrategyPatch = _extensions.DaemonSetUpdateStrategyPatch.new;
-  final DaemonSetUpdateStrategyPatchArgs = _extensions.DaemonSetUpdateStrategyPatch.new;
-  final DeploymentArgs = _extensions.DeploymentArgs.new;
-  final DeploymentCondition = _extensions.DeploymentCondition.new;
-  final DeploymentConditionArgs = _extensions.DeploymentCondition.new;
-  final DeploymentConditionPatch = _extensions.DeploymentConditionPatch.new;
-  final DeploymentConditionPatchArgs = _extensions.DeploymentConditionPatch.new;
-  final DeploymentList = _extensions.DeploymentList.new;
-  final DeploymentListArgs = _extensions.DeploymentList.new;
-  final DeploymentPatch = _extensions.DeploymentPatch.new;
-  final DeploymentPatchArgs = _extensions.DeploymentPatch.new;
-  final DeploymentRollback = _extensions.DeploymentRollback.new;
-  final DeploymentRollbackArgs = _extensions.DeploymentRollback.new;
-  final DeploymentRollbackPatch = _extensions.DeploymentRollbackPatch.new;
-  final DeploymentRollbackPatchArgs = _extensions.DeploymentRollbackPatch.new;
-  final DeploymentSpec = _extensions.DeploymentSpec.new;
-  final DeploymentSpecArgs = _extensions.DeploymentSpec.new;
-  final DeploymentSpecPatch = _extensions.DeploymentSpecPatch.new;
-  final DeploymentSpecPatchArgs = _extensions.DeploymentSpecPatch.new;
-  final DeploymentStatus = _extensions.DeploymentStatus.new;
-  final DeploymentStatusArgs = _extensions.DeploymentStatus.new;
-  final DeploymentStatusPatch = _extensions.DeploymentStatusPatch.new;
-  final DeploymentStatusPatchArgs = _extensions.DeploymentStatusPatch.new;
-  final DeploymentStrategy = _extensions.DeploymentStrategy.new;
-  final DeploymentStrategyArgs = _extensions.DeploymentStrategy.new;
-  final DeploymentStrategyPatch = _extensions.DeploymentStrategyPatch.new;
-  final DeploymentStrategyPatchArgs = _extensions.DeploymentStrategyPatch.new;
-  final DeploymentType = _extensions.DeploymentType.new;
-  final DeploymentTypeArgs = _extensions.DeploymentType.new;
-  final FSGroupStrategyOptions = _extensions.FSGroupStrategyOptions.new;
-  final FSGroupStrategyOptionsArgs = _extensions.FSGroupStrategyOptions.new;
-  final FSGroupStrategyOptionsPatch = _extensions.FSGroupStrategyOptionsPatch.new;
-  final FSGroupStrategyOptionsPatchArgs = _extensions.FSGroupStrategyOptionsPatch.new;
-  final HTTPIngressPath = _extensions.HTTPIngressPath.new;
-  final HTTPIngressPathArgs = _extensions.HTTPIngressPath.new;
-  final HTTPIngressPathPatch = _extensions.HTTPIngressPathPatch.new;
-  final HTTPIngressPathPatchArgs = _extensions.HTTPIngressPathPatch.new;
-  final HTTPIngressRuleValue = _extensions.HTTPIngressRuleValue.new;
-  final HTTPIngressRuleValueArgs = _extensions.HTTPIngressRuleValue.new;
-  final HTTPIngressRuleValuePatch = _extensions.HTTPIngressRuleValuePatch.new;
-  final HTTPIngressRuleValuePatchArgs = _extensions.HTTPIngressRuleValuePatch.new;
-  final HostPortRange = _extensions.HostPortRange.new;
-  final HostPortRangeArgs = _extensions.HostPortRange.new;
-  final HostPortRangePatch = _extensions.HostPortRangePatch.new;
-  final HostPortRangePatchArgs = _extensions.HostPortRangePatch.new;
-  final IDRange = _extensions.IDRange.new;
-  final IDRangeArgs = _extensions.IDRange.new;
-  final IDRangePatch = _extensions.IDRangePatch.new;
-  final IDRangePatchArgs = _extensions.IDRangePatch.new;
-  final IPBlock = _extensions.IPBlock.new;
-  final IPBlockArgs = _extensions.IPBlock.new;
-  final IPBlockPatch = _extensions.IPBlockPatch.new;
-  final IPBlockPatchArgs = _extensions.IPBlockPatch.new;
-  final Ingress = _extensions.Ingress.new;
-  final IngressArgs = _extensions.Ingress.new;
-  final IngressBackend = _extensions.IngressBackend.new;
-  final IngressBackendArgs = _extensions.IngressBackend.new;
-  final IngressBackendPatch = _extensions.IngressBackendPatch.new;
-  final IngressBackendPatchArgs = _extensions.IngressBackendPatch.new;
-  final IngressList = _extensions.IngressList.new;
-  final IngressListArgs = _extensions.IngressList.new;
-  final IngressPatch = _extensions.IngressPatch.new;
-  final IngressPatchArgs = _extensions.IngressPatch.new;
-  final IngressRule = _extensions.IngressRule.new;
-  final IngressRuleArgs = _extensions.IngressRule.new;
-  final IngressRulePatch = _extensions.IngressRulePatch.new;
-  final IngressRulePatchArgs = _extensions.IngressRulePatch.new;
-  final IngressSpec = _extensions.IngressSpec.new;
-  final IngressSpecArgs = _extensions.IngressSpec.new;
-  final IngressSpecPatch = _extensions.IngressSpecPatch.new;
-  final IngressSpecPatchArgs = _extensions.IngressSpecPatch.new;
-  final IngressStatus = _extensions.IngressStatus.new;
-  final IngressStatusArgs = _extensions.IngressStatus.new;
-  final IngressStatusPatch = _extensions.IngressStatusPatch.new;
-  final IngressStatusPatchArgs = _extensions.IngressStatusPatch.new;
-  final IngressTLS = _extensions.IngressTLS.new;
-  final IngressTLSArgs = _extensions.IngressTLS.new;
-  final IngressTLSPatch = _extensions.IngressTLSPatch.new;
-  final IngressTLSPatchArgs = _extensions.IngressTLSPatch.new;
-  final NetworkPolicy = _extensions.NetworkPolicy.new;
-  final NetworkPolicyArgs = _extensions.NetworkPolicy.new;
-  final NetworkPolicyEgressRule = _extensions.NetworkPolicyEgressRule.new;
-  final NetworkPolicyEgressRuleArgs = _extensions.NetworkPolicyEgressRule.new;
-  final NetworkPolicyEgressRulePatch = _extensions.NetworkPolicyEgressRulePatch.new;
-  final NetworkPolicyEgressRulePatchArgs = _extensions.NetworkPolicyEgressRulePatch.new;
-  final NetworkPolicyIngressRule = _extensions.NetworkPolicyIngressRule.new;
-  final NetworkPolicyIngressRuleArgs = _extensions.NetworkPolicyIngressRule.new;
-  final NetworkPolicyIngressRulePatch = _extensions.NetworkPolicyIngressRulePatch.new;
-  final NetworkPolicyIngressRulePatchArgs = _extensions.NetworkPolicyIngressRulePatch.new;
-  final NetworkPolicyList = _extensions.NetworkPolicyList.new;
-  final NetworkPolicyListArgs = _extensions.NetworkPolicyList.new;
-  final NetworkPolicyPatch = _extensions.NetworkPolicyPatch.new;
-  final NetworkPolicyPatchArgs = _extensions.NetworkPolicyPatch.new;
-  final NetworkPolicyPeer = _extensions.NetworkPolicyPeer.new;
-  final NetworkPolicyPeerArgs = _extensions.NetworkPolicyPeer.new;
-  final NetworkPolicyPeerPatch = _extensions.NetworkPolicyPeerPatch.new;
-  final NetworkPolicyPeerPatchArgs = _extensions.NetworkPolicyPeerPatch.new;
-  final NetworkPolicyPort = _extensions.NetworkPolicyPort.new;
-  final NetworkPolicyPortArgs = _extensions.NetworkPolicyPort.new;
-  final NetworkPolicyPortPatch = _extensions.NetworkPolicyPortPatch.new;
-  final NetworkPolicyPortPatchArgs = _extensions.NetworkPolicyPortPatch.new;
-  final NetworkPolicySpec = _extensions.NetworkPolicySpec.new;
-  final NetworkPolicySpecArgs = _extensions.NetworkPolicySpec.new;
-  final NetworkPolicySpecPatch = _extensions.NetworkPolicySpecPatch.new;
-  final NetworkPolicySpecPatchArgs = _extensions.NetworkPolicySpecPatch.new;
-  final PodSecurityPolicy = _extensions.PodSecurityPolicy.new;
-  final PodSecurityPolicyArgs = _extensions.PodSecurityPolicy.new;
-  final PodSecurityPolicyList = _extensions.PodSecurityPolicyList.new;
-  final PodSecurityPolicyListArgs = _extensions.PodSecurityPolicyList.new;
-  final PodSecurityPolicyPatch = _extensions.PodSecurityPolicyPatch.new;
-  final PodSecurityPolicyPatchArgs = _extensions.PodSecurityPolicyPatch.new;
-  final PodSecurityPolicySpec = _extensions.PodSecurityPolicySpec.new;
-  final PodSecurityPolicySpecArgs = _extensions.PodSecurityPolicySpec.new;
-  final PodSecurityPolicySpecPatch = _extensions.PodSecurityPolicySpecPatch.new;
-  final PodSecurityPolicySpecPatchArgs = _extensions.PodSecurityPolicySpecPatch.new;
-  final ReplicaSet = _extensions.ReplicaSet.new;
-  final ReplicaSetArgs = _extensions.ReplicaSet.new;
-  final ReplicaSetCondition = _extensions.ReplicaSetCondition.new;
-  final ReplicaSetConditionArgs = _extensions.ReplicaSetCondition.new;
-  final ReplicaSetConditionPatch = _extensions.ReplicaSetConditionPatch.new;
-  final ReplicaSetConditionPatchArgs = _extensions.ReplicaSetConditionPatch.new;
-  final ReplicaSetList = _extensions.ReplicaSetList.new;
-  final ReplicaSetListArgs = _extensions.ReplicaSetList.new;
-  final ReplicaSetPatch = _extensions.ReplicaSetPatch.new;
-  final ReplicaSetPatchArgs = _extensions.ReplicaSetPatch.new;
-  final ReplicaSetSpec = _extensions.ReplicaSetSpec.new;
-  final ReplicaSetSpecArgs = _extensions.ReplicaSetSpec.new;
-  final ReplicaSetSpecPatch = _extensions.ReplicaSetSpecPatch.new;
-  final ReplicaSetSpecPatchArgs = _extensions.ReplicaSetSpecPatch.new;
-  final ReplicaSetStatus = _extensions.ReplicaSetStatus.new;
-  final ReplicaSetStatusArgs = _extensions.ReplicaSetStatus.new;
-  final ReplicaSetStatusPatch = _extensions.ReplicaSetStatusPatch.new;
-  final ReplicaSetStatusPatchArgs = _extensions.ReplicaSetStatusPatch.new;
-  final RollbackConfig = _extensions.RollbackConfig.new;
-  final RollbackConfigArgs = _extensions.RollbackConfig.new;
-  final RollbackConfigPatch = _extensions.RollbackConfigPatch.new;
-  final RollbackConfigPatchArgs = _extensions.RollbackConfigPatch.new;
-  final RollingUpdateDaemonSet = _extensions.RollingUpdateDaemonSet.new;
-  final RollingUpdateDaemonSetArgs = _extensions.RollingUpdateDaemonSet.new;
-  final RollingUpdateDaemonSetPatch = _extensions.RollingUpdateDaemonSetPatch.new;
-  final RollingUpdateDaemonSetPatchArgs = _extensions.RollingUpdateDaemonSetPatch.new;
-  final RollingUpdateDeployment = _extensions.RollingUpdateDeployment.new;
-  final RollingUpdateDeploymentArgs = _extensions.RollingUpdateDeployment.new;
-  final RollingUpdateDeploymentPatch = _extensions.RollingUpdateDeploymentPatch.new;
-  final RollingUpdateDeploymentPatchArgs = _extensions.RollingUpdateDeploymentPatch.new;
-  final RunAsGroupStrategyOptions = _extensions.RunAsGroupStrategyOptions.new;
-  final RunAsGroupStrategyOptionsArgs = _extensions.RunAsGroupStrategyOptions.new;
-  final RunAsGroupStrategyOptionsPatch = _extensions.RunAsGroupStrategyOptionsPatch.new;
-  final RunAsGroupStrategyOptionsPatchArgs = _extensions.RunAsGroupStrategyOptionsPatch.new;
-  final RunAsUserStrategyOptions = _extensions.RunAsUserStrategyOptions.new;
-  final RunAsUserStrategyOptionsArgs = _extensions.RunAsUserStrategyOptions.new;
-  final RunAsUserStrategyOptionsPatch = _extensions.RunAsUserStrategyOptionsPatch.new;
-  final RunAsUserStrategyOptionsPatchArgs = _extensions.RunAsUserStrategyOptionsPatch.new;
-  final RuntimeClassStrategyOptions = _extensions.RuntimeClassStrategyOptions.new;
-  final RuntimeClassStrategyOptionsArgs = _extensions.RuntimeClassStrategyOptions.new;
-  final RuntimeClassStrategyOptionsPatch = _extensions.RuntimeClassStrategyOptionsPatch.new;
-  final RuntimeClassStrategyOptionsPatchArgs = _extensions.RuntimeClassStrategyOptionsPatch.new;
-  final SELinuxStrategyOptions = _extensions.SELinuxStrategyOptions.new;
-  final SELinuxStrategyOptionsArgs = _extensions.SELinuxStrategyOptions.new;
-  final SELinuxStrategyOptionsPatch = _extensions.SELinuxStrategyOptionsPatch.new;
-  final SELinuxStrategyOptionsPatchArgs = _extensions.SELinuxStrategyOptionsPatch.new;
-  final Scale = _extensions.Scale.new;
-  final ScaleArgs = _extensions.Scale.new;
-  final ScalePatch = _extensions.ScalePatch.new;
-  final ScalePatchArgs = _extensions.ScalePatch.new;
-  final ScaleSpec = _extensions.ScaleSpec.new;
-  final ScaleSpecArgs = _extensions.ScaleSpec.new;
-  final ScaleSpecPatch = _extensions.ScaleSpecPatch.new;
-  final ScaleSpecPatchArgs = _extensions.ScaleSpecPatch.new;
-  final ScaleStatus = _extensions.ScaleStatus.new;
-  final ScaleStatusArgs = _extensions.ScaleStatus.new;
-  final ScaleStatusPatch = _extensions.ScaleStatusPatch.new;
-  final ScaleStatusPatchArgs = _extensions.ScaleStatusPatch.new;
-  final SupplementalGroupsStrategyOptions = _extensions.SupplementalGroupsStrategyOptions.new;
-  final SupplementalGroupsStrategyOptionsArgs = _extensions.SupplementalGroupsStrategyOptions.new;
-  final SupplementalGroupsStrategyOptionsPatch = _extensions.SupplementalGroupsStrategyOptionsPatch.new;
-  final SupplementalGroupsStrategyOptionsPatchArgs = _extensions.SupplementalGroupsStrategyOptionsPatch.new;
+  final AllowedCSIDriver = module_extensions.AllowedCSIDriver.new;
+  final AllowedCSIDriverArgs = module_extensions.AllowedCSIDriver.new;
+  final AllowedCSIDriverPatch = module_extensions.AllowedCSIDriverPatch.new;
+  final AllowedCSIDriverPatchArgs = module_extensions.AllowedCSIDriverPatch.new;
+  final AllowedFlexVolume = module_extensions.AllowedFlexVolume.new;
+  final AllowedFlexVolumeArgs = module_extensions.AllowedFlexVolume.new;
+  final AllowedFlexVolumePatch = module_extensions.AllowedFlexVolumePatch.new;
+  final AllowedFlexVolumePatchArgs =
+      module_extensions.AllowedFlexVolumePatch.new;
+  final AllowedHostPath = module_extensions.AllowedHostPath.new;
+  final AllowedHostPathArgs = module_extensions.AllowedHostPath.new;
+  final AllowedHostPathPatch = module_extensions.AllowedHostPathPatch.new;
+  final AllowedHostPathPatchArgs = module_extensions.AllowedHostPathPatch.new;
+  final DaemonSet = module_extensions.DaemonSet.new;
+  final DaemonSetArgs = module_extensions.DaemonSet.new;
+  final DaemonSetCondition = module_extensions.DaemonSetCondition.new;
+  final DaemonSetConditionArgs = module_extensions.DaemonSetCondition.new;
+  final DaemonSetConditionPatch = module_extensions.DaemonSetConditionPatch.new;
+  final DaemonSetConditionPatchArgs =
+      module_extensions.DaemonSetConditionPatch.new;
+  final DaemonSetList = module_extensions.DaemonSetList.new;
+  final DaemonSetListArgs = module_extensions.DaemonSetList.new;
+  final DaemonSetPatch = module_extensions.DaemonSetPatch.new;
+  final DaemonSetPatchArgs = module_extensions.DaemonSetPatch.new;
+  final DaemonSetSpec = module_extensions.DaemonSetSpec.new;
+  final DaemonSetSpecArgs = module_extensions.DaemonSetSpec.new;
+  final DaemonSetSpecPatch = module_extensions.DaemonSetSpecPatch.new;
+  final DaemonSetSpecPatchArgs = module_extensions.DaemonSetSpecPatch.new;
+  final DaemonSetStatus = module_extensions.DaemonSetStatus.new;
+  final DaemonSetStatusArgs = module_extensions.DaemonSetStatus.new;
+  final DaemonSetStatusPatch = module_extensions.DaemonSetStatusPatch.new;
+  final DaemonSetStatusPatchArgs = module_extensions.DaemonSetStatusPatch.new;
+  final DaemonSetUpdateStrategy = module_extensions.DaemonSetUpdateStrategy.new;
+  final DaemonSetUpdateStrategyArgs =
+      module_extensions.DaemonSetUpdateStrategy.new;
+  final DaemonSetUpdateStrategyPatch =
+      module_extensions.DaemonSetUpdateStrategyPatch.new;
+  final DaemonSetUpdateStrategyPatchArgs =
+      module_extensions.DaemonSetUpdateStrategyPatch.new;
+  final DeploymentArgs = module_extensions.DeploymentArgs.new;
+  final DeploymentCondition = module_extensions.DeploymentCondition.new;
+  final DeploymentConditionArgs = module_extensions.DeploymentCondition.new;
+  final DeploymentConditionPatch =
+      module_extensions.DeploymentConditionPatch.new;
+  final DeploymentConditionPatchArgs =
+      module_extensions.DeploymentConditionPatch.new;
+  final DeploymentList = module_extensions.DeploymentList.new;
+  final DeploymentListArgs = module_extensions.DeploymentList.new;
+  final DeploymentPatch = module_extensions.DeploymentPatch.new;
+  final DeploymentPatchArgs = module_extensions.DeploymentPatch.new;
+  final DeploymentRollback = module_extensions.DeploymentRollback.new;
+  final DeploymentRollbackArgs = module_extensions.DeploymentRollback.new;
+  final DeploymentRollbackPatch = module_extensions.DeploymentRollbackPatch.new;
+  final DeploymentRollbackPatchArgs =
+      module_extensions.DeploymentRollbackPatch.new;
+  final DeploymentSpec = module_extensions.DeploymentSpec.new;
+  final DeploymentSpecArgs = module_extensions.DeploymentSpec.new;
+  final DeploymentSpecPatch = module_extensions.DeploymentSpecPatch.new;
+  final DeploymentSpecPatchArgs = module_extensions.DeploymentSpecPatch.new;
+  final DeploymentStatus = module_extensions.DeploymentStatus.new;
+  final DeploymentStatusArgs = module_extensions.DeploymentStatus.new;
+  final DeploymentStatusPatch = module_extensions.DeploymentStatusPatch.new;
+  final DeploymentStatusPatchArgs = module_extensions.DeploymentStatusPatch.new;
+  final DeploymentStrategy = module_extensions.DeploymentStrategy.new;
+  final DeploymentStrategyArgs = module_extensions.DeploymentStrategy.new;
+  final DeploymentStrategyPatch = module_extensions.DeploymentStrategyPatch.new;
+  final DeploymentStrategyPatchArgs =
+      module_extensions.DeploymentStrategyPatch.new;
+  final DeploymentType = module_extensions.DeploymentType.new;
+  final DeploymentTypeArgs = module_extensions.DeploymentType.new;
+  final FSGroupStrategyOptions = module_extensions.FSGroupStrategyOptions.new;
+  final FSGroupStrategyOptionsArgs =
+      module_extensions.FSGroupStrategyOptions.new;
+  final FSGroupStrategyOptionsPatch =
+      module_extensions.FSGroupStrategyOptionsPatch.new;
+  final FSGroupStrategyOptionsPatchArgs =
+      module_extensions.FSGroupStrategyOptionsPatch.new;
+  final HTTPIngressPath = module_extensions.HTTPIngressPath.new;
+  final HTTPIngressPathArgs = module_extensions.HTTPIngressPath.new;
+  final HTTPIngressPathPatch = module_extensions.HTTPIngressPathPatch.new;
+  final HTTPIngressPathPatchArgs = module_extensions.HTTPIngressPathPatch.new;
+  final HTTPIngressRuleValue = module_extensions.HTTPIngressRuleValue.new;
+  final HTTPIngressRuleValueArgs = module_extensions.HTTPIngressRuleValue.new;
+  final HTTPIngressRuleValuePatch =
+      module_extensions.HTTPIngressRuleValuePatch.new;
+  final HTTPIngressRuleValuePatchArgs =
+      module_extensions.HTTPIngressRuleValuePatch.new;
+  final HostPortRange = module_extensions.HostPortRange.new;
+  final HostPortRangeArgs = module_extensions.HostPortRange.new;
+  final HostPortRangePatch = module_extensions.HostPortRangePatch.new;
+  final HostPortRangePatchArgs = module_extensions.HostPortRangePatch.new;
+  final IDRange = module_extensions.IDRange.new;
+  final IDRangeArgs = module_extensions.IDRange.new;
+  final IDRangePatch = module_extensions.IDRangePatch.new;
+  final IDRangePatchArgs = module_extensions.IDRangePatch.new;
+  final IPBlock = module_extensions.IPBlock.new;
+  final IPBlockArgs = module_extensions.IPBlock.new;
+  final IPBlockPatch = module_extensions.IPBlockPatch.new;
+  final IPBlockPatchArgs = module_extensions.IPBlockPatch.new;
+  final Ingress = module_extensions.Ingress.new;
+  final IngressArgs = module_extensions.Ingress.new;
+  final IngressBackend = module_extensions.IngressBackend.new;
+  final IngressBackendArgs = module_extensions.IngressBackend.new;
+  final IngressBackendPatch = module_extensions.IngressBackendPatch.new;
+  final IngressBackendPatchArgs = module_extensions.IngressBackendPatch.new;
+  final IngressList = module_extensions.IngressList.new;
+  final IngressListArgs = module_extensions.IngressList.new;
+  final IngressPatch = module_extensions.IngressPatch.new;
+  final IngressPatchArgs = module_extensions.IngressPatch.new;
+  final IngressRule = module_extensions.IngressRule.new;
+  final IngressRuleArgs = module_extensions.IngressRule.new;
+  final IngressRulePatch = module_extensions.IngressRulePatch.new;
+  final IngressRulePatchArgs = module_extensions.IngressRulePatch.new;
+  final IngressSpec = module_extensions.IngressSpec.new;
+  final IngressSpecArgs = module_extensions.IngressSpec.new;
+  final IngressSpecPatch = module_extensions.IngressSpecPatch.new;
+  final IngressSpecPatchArgs = module_extensions.IngressSpecPatch.new;
+  final IngressStatus = module_extensions.IngressStatus.new;
+  final IngressStatusArgs = module_extensions.IngressStatus.new;
+  final IngressStatusPatch = module_extensions.IngressStatusPatch.new;
+  final IngressStatusPatchArgs = module_extensions.IngressStatusPatch.new;
+  final IngressTLS = module_extensions.IngressTLS.new;
+  final IngressTLSArgs = module_extensions.IngressTLS.new;
+  final IngressTLSPatch = module_extensions.IngressTLSPatch.new;
+  final IngressTLSPatchArgs = module_extensions.IngressTLSPatch.new;
+  final NetworkPolicy = module_extensions.NetworkPolicy.new;
+  final NetworkPolicyArgs = module_extensions.NetworkPolicy.new;
+  final NetworkPolicyEgressRule = module_extensions.NetworkPolicyEgressRule.new;
+  final NetworkPolicyEgressRuleArgs =
+      module_extensions.NetworkPolicyEgressRule.new;
+  final NetworkPolicyEgressRulePatch =
+      module_extensions.NetworkPolicyEgressRulePatch.new;
+  final NetworkPolicyEgressRulePatchArgs =
+      module_extensions.NetworkPolicyEgressRulePatch.new;
+  final NetworkPolicyIngressRule =
+      module_extensions.NetworkPolicyIngressRule.new;
+  final NetworkPolicyIngressRuleArgs =
+      module_extensions.NetworkPolicyIngressRule.new;
+  final NetworkPolicyIngressRulePatch =
+      module_extensions.NetworkPolicyIngressRulePatch.new;
+  final NetworkPolicyIngressRulePatchArgs =
+      module_extensions.NetworkPolicyIngressRulePatch.new;
+  final NetworkPolicyList = module_extensions.NetworkPolicyList.new;
+  final NetworkPolicyListArgs = module_extensions.NetworkPolicyList.new;
+  final NetworkPolicyPatch = module_extensions.NetworkPolicyPatch.new;
+  final NetworkPolicyPatchArgs = module_extensions.NetworkPolicyPatch.new;
+  final NetworkPolicyPeer = module_extensions.NetworkPolicyPeer.new;
+  final NetworkPolicyPeerArgs = module_extensions.NetworkPolicyPeer.new;
+  final NetworkPolicyPeerPatch = module_extensions.NetworkPolicyPeerPatch.new;
+  final NetworkPolicyPeerPatchArgs =
+      module_extensions.NetworkPolicyPeerPatch.new;
+  final NetworkPolicyPort = module_extensions.NetworkPolicyPort.new;
+  final NetworkPolicyPortArgs = module_extensions.NetworkPolicyPort.new;
+  final NetworkPolicyPortPatch = module_extensions.NetworkPolicyPortPatch.new;
+  final NetworkPolicyPortPatchArgs =
+      module_extensions.NetworkPolicyPortPatch.new;
+  final NetworkPolicySpec = module_extensions.NetworkPolicySpec.new;
+  final NetworkPolicySpecArgs = module_extensions.NetworkPolicySpec.new;
+  final NetworkPolicySpecPatch = module_extensions.NetworkPolicySpecPatch.new;
+  final NetworkPolicySpecPatchArgs =
+      module_extensions.NetworkPolicySpecPatch.new;
+  final PodSecurityPolicy = module_extensions.PodSecurityPolicy.new;
+  final PodSecurityPolicyArgs = module_extensions.PodSecurityPolicy.new;
+  final PodSecurityPolicyList = module_extensions.PodSecurityPolicyList.new;
+  final PodSecurityPolicyListArgs = module_extensions.PodSecurityPolicyList.new;
+  final PodSecurityPolicyPatch = module_extensions.PodSecurityPolicyPatch.new;
+  final PodSecurityPolicyPatchArgs =
+      module_extensions.PodSecurityPolicyPatch.new;
+  final PodSecurityPolicySpec = module_extensions.PodSecurityPolicySpec.new;
+  final PodSecurityPolicySpecArgs = module_extensions.PodSecurityPolicySpec.new;
+  final PodSecurityPolicySpecPatch =
+      module_extensions.PodSecurityPolicySpecPatch.new;
+  final PodSecurityPolicySpecPatchArgs =
+      module_extensions.PodSecurityPolicySpecPatch.new;
+  final ReplicaSet = module_extensions.ReplicaSet.new;
+  final ReplicaSetArgs = module_extensions.ReplicaSet.new;
+  final ReplicaSetCondition = module_extensions.ReplicaSetCondition.new;
+  final ReplicaSetConditionArgs = module_extensions.ReplicaSetCondition.new;
+  final ReplicaSetConditionPatch =
+      module_extensions.ReplicaSetConditionPatch.new;
+  final ReplicaSetConditionPatchArgs =
+      module_extensions.ReplicaSetConditionPatch.new;
+  final ReplicaSetList = module_extensions.ReplicaSetList.new;
+  final ReplicaSetListArgs = module_extensions.ReplicaSetList.new;
+  final ReplicaSetPatch = module_extensions.ReplicaSetPatch.new;
+  final ReplicaSetPatchArgs = module_extensions.ReplicaSetPatch.new;
+  final ReplicaSetSpec = module_extensions.ReplicaSetSpec.new;
+  final ReplicaSetSpecArgs = module_extensions.ReplicaSetSpec.new;
+  final ReplicaSetSpecPatch = module_extensions.ReplicaSetSpecPatch.new;
+  final ReplicaSetSpecPatchArgs = module_extensions.ReplicaSetSpecPatch.new;
+  final ReplicaSetStatus = module_extensions.ReplicaSetStatus.new;
+  final ReplicaSetStatusArgs = module_extensions.ReplicaSetStatus.new;
+  final ReplicaSetStatusPatch = module_extensions.ReplicaSetStatusPatch.new;
+  final ReplicaSetStatusPatchArgs = module_extensions.ReplicaSetStatusPatch.new;
+  final RollbackConfig = module_extensions.RollbackConfig.new;
+  final RollbackConfigArgs = module_extensions.RollbackConfig.new;
+  final RollbackConfigPatch = module_extensions.RollbackConfigPatch.new;
+  final RollbackConfigPatchArgs = module_extensions.RollbackConfigPatch.new;
+  final RollingUpdateDaemonSet = module_extensions.RollingUpdateDaemonSet.new;
+  final RollingUpdateDaemonSetArgs =
+      module_extensions.RollingUpdateDaemonSet.new;
+  final RollingUpdateDaemonSetPatch =
+      module_extensions.RollingUpdateDaemonSetPatch.new;
+  final RollingUpdateDaemonSetPatchArgs =
+      module_extensions.RollingUpdateDaemonSetPatch.new;
+  final RollingUpdateDeployment = module_extensions.RollingUpdateDeployment.new;
+  final RollingUpdateDeploymentArgs =
+      module_extensions.RollingUpdateDeployment.new;
+  final RollingUpdateDeploymentPatch =
+      module_extensions.RollingUpdateDeploymentPatch.new;
+  final RollingUpdateDeploymentPatchArgs =
+      module_extensions.RollingUpdateDeploymentPatch.new;
+  final RunAsGroupStrategyOptions =
+      module_extensions.RunAsGroupStrategyOptions.new;
+  final RunAsGroupStrategyOptionsArgs =
+      module_extensions.RunAsGroupStrategyOptions.new;
+  final RunAsGroupStrategyOptionsPatch =
+      module_extensions.RunAsGroupStrategyOptionsPatch.new;
+  final RunAsGroupStrategyOptionsPatchArgs =
+      module_extensions.RunAsGroupStrategyOptionsPatch.new;
+  final RunAsUserStrategyOptions =
+      module_extensions.RunAsUserStrategyOptions.new;
+  final RunAsUserStrategyOptionsArgs =
+      module_extensions.RunAsUserStrategyOptions.new;
+  final RunAsUserStrategyOptionsPatch =
+      module_extensions.RunAsUserStrategyOptionsPatch.new;
+  final RunAsUserStrategyOptionsPatchArgs =
+      module_extensions.RunAsUserStrategyOptionsPatch.new;
+  final RuntimeClassStrategyOptions =
+      module_extensions.RuntimeClassStrategyOptions.new;
+  final RuntimeClassStrategyOptionsArgs =
+      module_extensions.RuntimeClassStrategyOptions.new;
+  final RuntimeClassStrategyOptionsPatch =
+      module_extensions.RuntimeClassStrategyOptionsPatch.new;
+  final RuntimeClassStrategyOptionsPatchArgs =
+      module_extensions.RuntimeClassStrategyOptionsPatch.new;
+  final SELinuxStrategyOptions = module_extensions.SELinuxStrategyOptions.new;
+  final SELinuxStrategyOptionsArgs =
+      module_extensions.SELinuxStrategyOptions.new;
+  final SELinuxStrategyOptionsPatch =
+      module_extensions.SELinuxStrategyOptionsPatch.new;
+  final SELinuxStrategyOptionsPatchArgs =
+      module_extensions.SELinuxStrategyOptionsPatch.new;
+  final Scale = module_extensions.Scale.new;
+  final ScaleArgs = module_extensions.Scale.new;
+  final ScalePatch = module_extensions.ScalePatch.new;
+  final ScalePatchArgs = module_extensions.ScalePatch.new;
+  final ScaleSpec = module_extensions.ScaleSpec.new;
+  final ScaleSpecArgs = module_extensions.ScaleSpec.new;
+  final ScaleSpecPatch = module_extensions.ScaleSpecPatch.new;
+  final ScaleSpecPatchArgs = module_extensions.ScaleSpecPatch.new;
+  final ScaleStatus = module_extensions.ScaleStatus.new;
+  final ScaleStatusArgs = module_extensions.ScaleStatus.new;
+  final ScaleStatusPatch = module_extensions.ScaleStatusPatch.new;
+  final ScaleStatusPatchArgs = module_extensions.ScaleStatusPatch.new;
+  final SupplementalGroupsStrategyOptions =
+      module_extensions.SupplementalGroupsStrategyOptions.new;
+  final SupplementalGroupsStrategyOptionsArgs =
+      module_extensions.SupplementalGroupsStrategyOptions.new;
+  final SupplementalGroupsStrategyOptionsPatch =
+      module_extensions.SupplementalGroupsStrategyOptionsPatch.new;
+  final SupplementalGroupsStrategyOptionsPatchArgs =
+      module_extensions.SupplementalGroupsStrategyOptionsPatch.new;
 }
 
 class _FlowcontrolApiserverK8sIoModuleNamespace {
   _FlowcontrolApiserverK8sIoModuleNamespace();
-  final ExemptPriorityLevelConfiguration = _flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
-  final ExemptPriorityLevelConfigurationArgs = _flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
-  final ExemptPriorityLevelConfigurationPatch = _flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfigurationPatch.new;
-  final ExemptPriorityLevelConfigurationPatchArgs = _flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfigurationPatch.new;
-  final FlowDistinguisherMethod = _flowcontrol_apiserver_k8s_io.FlowDistinguisherMethod.new;
-  final FlowDistinguisherMethodArgs = _flowcontrol_apiserver_k8s_io.FlowDistinguisherMethod.new;
-  final FlowDistinguisherMethodPatch = _flowcontrol_apiserver_k8s_io.FlowDistinguisherMethodPatch.new;
-  final FlowDistinguisherMethodPatchArgs = _flowcontrol_apiserver_k8s_io.FlowDistinguisherMethodPatch.new;
-  final FlowSchema = _flowcontrol_apiserver_k8s_io.FlowSchema.new;
-  final FlowSchemaArgs = _flowcontrol_apiserver_k8s_io.FlowSchema.new;
-  final FlowSchemaCondition = _flowcontrol_apiserver_k8s_io.FlowSchemaCondition.new;
-  final FlowSchemaConditionArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaCondition.new;
-  final FlowSchemaConditionPatch = _flowcontrol_apiserver_k8s_io.FlowSchemaConditionPatch.new;
-  final FlowSchemaConditionPatchArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaConditionPatch.new;
-  final FlowSchemaList = _flowcontrol_apiserver_k8s_io.FlowSchemaList.new;
-  final FlowSchemaListArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaList.new;
-  final FlowSchemaPatch = _flowcontrol_apiserver_k8s_io.FlowSchemaPatch.new;
-  final FlowSchemaPatchArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaPatch.new;
-  final FlowSchemaSpec = _flowcontrol_apiserver_k8s_io.FlowSchemaSpec.new;
-  final FlowSchemaSpecArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaSpec.new;
-  final FlowSchemaSpecPatch = _flowcontrol_apiserver_k8s_io.FlowSchemaSpecPatch.new;
-  final FlowSchemaSpecPatchArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaSpecPatch.new;
-  final FlowSchemaStatus = _flowcontrol_apiserver_k8s_io.FlowSchemaStatus.new;
-  final FlowSchemaStatusArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaStatus.new;
-  final FlowSchemaStatusPatch = _flowcontrol_apiserver_k8s_io.FlowSchemaStatusPatch.new;
-  final FlowSchemaStatusPatchArgs = _flowcontrol_apiserver_k8s_io.FlowSchemaStatusPatch.new;
-  final GroupSubject = _flowcontrol_apiserver_k8s_io.GroupSubject.new;
-  final GroupSubjectArgs = _flowcontrol_apiserver_k8s_io.GroupSubject.new;
-  final GroupSubjectPatch = _flowcontrol_apiserver_k8s_io.GroupSubjectPatch.new;
-  final GroupSubjectPatchArgs = _flowcontrol_apiserver_k8s_io.GroupSubjectPatch.new;
-  final LimitResponse = _flowcontrol_apiserver_k8s_io.LimitResponse.new;
-  final LimitResponseArgs = _flowcontrol_apiserver_k8s_io.LimitResponse.new;
-  final LimitResponsePatch = _flowcontrol_apiserver_k8s_io.LimitResponsePatch.new;
-  final LimitResponsePatchArgs = _flowcontrol_apiserver_k8s_io.LimitResponsePatch.new;
-  final LimitedPriorityLevelConfiguration = _flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfiguration.new;
-  final LimitedPriorityLevelConfigurationArgs = _flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfiguration.new;
-  final LimitedPriorityLevelConfigurationPatch = _flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfigurationPatch.new;
-  final LimitedPriorityLevelConfigurationPatchArgs = _flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfigurationPatch.new;
-  final NonResourcePolicyRule = _flowcontrol_apiserver_k8s_io.NonResourcePolicyRule.new;
-  final NonResourcePolicyRuleArgs = _flowcontrol_apiserver_k8s_io.NonResourcePolicyRule.new;
-  final NonResourcePolicyRulePatch = _flowcontrol_apiserver_k8s_io.NonResourcePolicyRulePatch.new;
-  final NonResourcePolicyRulePatchArgs = _flowcontrol_apiserver_k8s_io.NonResourcePolicyRulePatch.new;
-  final PolicyRulesWithSubjects = _flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjects.new;
-  final PolicyRulesWithSubjectsArgs = _flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjects.new;
-  final PolicyRulesWithSubjectsPatch = _flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjectsPatch.new;
-  final PolicyRulesWithSubjectsPatchArgs = _flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjectsPatch.new;
-  final PriorityLevelConfiguration = _flowcontrol_apiserver_k8s_io.PriorityLevelConfiguration.new;
-  final PriorityLevelConfigurationArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfiguration.new;
-  final PriorityLevelConfigurationCondition = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationCondition.new;
-  final PriorityLevelConfigurationConditionArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationCondition.new;
-  final PriorityLevelConfigurationConditionPatch = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationConditionPatch.new;
-  final PriorityLevelConfigurationConditionPatchArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationConditionPatch.new;
-  final PriorityLevelConfigurationList = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationList.new;
-  final PriorityLevelConfigurationListArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationList.new;
-  final PriorityLevelConfigurationPatch = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationPatch.new;
-  final PriorityLevelConfigurationPatchArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationPatch.new;
-  final PriorityLevelConfigurationReference = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationReference.new;
-  final PriorityLevelConfigurationReferenceArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationReference.new;
-  final PriorityLevelConfigurationReferencePatch = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationReferencePatch.new;
-  final PriorityLevelConfigurationReferencePatchArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationReferencePatch.new;
-  final PriorityLevelConfigurationSpec = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpec.new;
-  final PriorityLevelConfigurationSpecArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpec.new;
-  final PriorityLevelConfigurationSpecPatch = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpecPatch.new;
-  final PriorityLevelConfigurationSpecPatchArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpecPatch.new;
-  final PriorityLevelConfigurationStatus = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatus.new;
-  final PriorityLevelConfigurationStatusArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatus.new;
-  final PriorityLevelConfigurationStatusPatch = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatusPatch.new;
-  final PriorityLevelConfigurationStatusPatchArgs = _flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatusPatch.new;
-  final QueuingConfiguration = _flowcontrol_apiserver_k8s_io.QueuingConfiguration.new;
-  final QueuingConfigurationArgs = _flowcontrol_apiserver_k8s_io.QueuingConfiguration.new;
-  final QueuingConfigurationPatch = _flowcontrol_apiserver_k8s_io.QueuingConfigurationPatch.new;
-  final QueuingConfigurationPatchArgs = _flowcontrol_apiserver_k8s_io.QueuingConfigurationPatch.new;
-  final ResourcePolicyRule = _flowcontrol_apiserver_k8s_io.ResourcePolicyRule.new;
-  final ResourcePolicyRuleArgs = _flowcontrol_apiserver_k8s_io.ResourcePolicyRule.new;
-  final ResourcePolicyRulePatch = _flowcontrol_apiserver_k8s_io.ResourcePolicyRulePatch.new;
-  final ResourcePolicyRulePatchArgs = _flowcontrol_apiserver_k8s_io.ResourcePolicyRulePatch.new;
-  final ServiceAccountSubject = _flowcontrol_apiserver_k8s_io.ServiceAccountSubject.new;
-  final ServiceAccountSubjectArgs = _flowcontrol_apiserver_k8s_io.ServiceAccountSubject.new;
-  final ServiceAccountSubjectPatch = _flowcontrol_apiserver_k8s_io.ServiceAccountSubjectPatch.new;
-  final ServiceAccountSubjectPatchArgs = _flowcontrol_apiserver_k8s_io.ServiceAccountSubjectPatch.new;
-  final Subject = _flowcontrol_apiserver_k8s_io.Subject.new;
-  final SubjectArgs = _flowcontrol_apiserver_k8s_io.Subject.new;
-  final SubjectPatch = _flowcontrol_apiserver_k8s_io.SubjectPatch.new;
-  final SubjectPatchArgs = _flowcontrol_apiserver_k8s_io.SubjectPatch.new;
-  final UserSubject = _flowcontrol_apiserver_k8s_io.UserSubject.new;
-  final UserSubjectArgs = _flowcontrol_apiserver_k8s_io.UserSubject.new;
-  final UserSubjectPatch = _flowcontrol_apiserver_k8s_io.UserSubjectPatch.new;
-  final UserSubjectPatchArgs = _flowcontrol_apiserver_k8s_io.UserSubjectPatch.new;
+  final ExemptPriorityLevelConfiguration =
+      module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
+  final ExemptPriorityLevelConfigurationArgs =
+      module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
+  final ExemptPriorityLevelConfigurationPatch =
+      module_flowcontrol_apiserver_k8s_io
+          .ExemptPriorityLevelConfigurationPatch
+          .new;
+  final ExemptPriorityLevelConfigurationPatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .ExemptPriorityLevelConfigurationPatch
+          .new;
+  final FlowDistinguisherMethod =
+      module_flowcontrol_apiserver_k8s_io.FlowDistinguisherMethod.new;
+  final FlowDistinguisherMethodArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowDistinguisherMethod.new;
+  final FlowDistinguisherMethodPatch =
+      module_flowcontrol_apiserver_k8s_io.FlowDistinguisherMethodPatch.new;
+  final FlowDistinguisherMethodPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowDistinguisherMethodPatch.new;
+  final FlowSchema = module_flowcontrol_apiserver_k8s_io.FlowSchema.new;
+  final FlowSchemaArgs = module_flowcontrol_apiserver_k8s_io.FlowSchema.new;
+  final FlowSchemaCondition =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaCondition.new;
+  final FlowSchemaConditionArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaCondition.new;
+  final FlowSchemaConditionPatch =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaConditionPatch.new;
+  final FlowSchemaConditionPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaConditionPatch.new;
+  final FlowSchemaList = module_flowcontrol_apiserver_k8s_io.FlowSchemaList.new;
+  final FlowSchemaListArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaList.new;
+  final FlowSchemaPatch =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaPatch.new;
+  final FlowSchemaPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaPatch.new;
+  final FlowSchemaSpec = module_flowcontrol_apiserver_k8s_io.FlowSchemaSpec.new;
+  final FlowSchemaSpecArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaSpec.new;
+  final FlowSchemaSpecPatch =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaSpecPatch.new;
+  final FlowSchemaSpecPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaSpecPatch.new;
+  final FlowSchemaStatus =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaStatus.new;
+  final FlowSchemaStatusArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaStatus.new;
+  final FlowSchemaStatusPatch =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaStatusPatch.new;
+  final FlowSchemaStatusPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.FlowSchemaStatusPatch.new;
+  final GroupSubject = module_flowcontrol_apiserver_k8s_io.GroupSubject.new;
+  final GroupSubjectArgs = module_flowcontrol_apiserver_k8s_io.GroupSubject.new;
+  final GroupSubjectPatch =
+      module_flowcontrol_apiserver_k8s_io.GroupSubjectPatch.new;
+  final GroupSubjectPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.GroupSubjectPatch.new;
+  final LimitResponse = module_flowcontrol_apiserver_k8s_io.LimitResponse.new;
+  final LimitResponseArgs =
+      module_flowcontrol_apiserver_k8s_io.LimitResponse.new;
+  final LimitResponsePatch =
+      module_flowcontrol_apiserver_k8s_io.LimitResponsePatch.new;
+  final LimitResponsePatchArgs =
+      module_flowcontrol_apiserver_k8s_io.LimitResponsePatch.new;
+  final LimitedPriorityLevelConfiguration =
+      module_flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfiguration.new;
+  final LimitedPriorityLevelConfigurationArgs =
+      module_flowcontrol_apiserver_k8s_io.LimitedPriorityLevelConfiguration.new;
+  final LimitedPriorityLevelConfigurationPatch =
+      module_flowcontrol_apiserver_k8s_io
+          .LimitedPriorityLevelConfigurationPatch
+          .new;
+  final LimitedPriorityLevelConfigurationPatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .LimitedPriorityLevelConfigurationPatch
+          .new;
+  final NonResourcePolicyRule =
+      module_flowcontrol_apiserver_k8s_io.NonResourcePolicyRule.new;
+  final NonResourcePolicyRuleArgs =
+      module_flowcontrol_apiserver_k8s_io.NonResourcePolicyRule.new;
+  final NonResourcePolicyRulePatch =
+      module_flowcontrol_apiserver_k8s_io.NonResourcePolicyRulePatch.new;
+  final NonResourcePolicyRulePatchArgs =
+      module_flowcontrol_apiserver_k8s_io.NonResourcePolicyRulePatch.new;
+  final PolicyRulesWithSubjects =
+      module_flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjects.new;
+  final PolicyRulesWithSubjectsArgs =
+      module_flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjects.new;
+  final PolicyRulesWithSubjectsPatch =
+      module_flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjectsPatch.new;
+  final PolicyRulesWithSubjectsPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.PolicyRulesWithSubjectsPatch.new;
+  final PriorityLevelConfiguration =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfiguration.new;
+  final PriorityLevelConfigurationArgs =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfiguration.new;
+  final PriorityLevelConfigurationCondition =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationCondition
+          .new;
+  final PriorityLevelConfigurationConditionArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationCondition
+          .new;
+  final PriorityLevelConfigurationConditionPatch =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationConditionPatch
+          .new;
+  final PriorityLevelConfigurationConditionPatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationConditionPatch
+          .new;
+  final PriorityLevelConfigurationList =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationList.new;
+  final PriorityLevelConfigurationListArgs =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationList.new;
+  final PriorityLevelConfigurationPatch =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationPatch.new;
+  final PriorityLevelConfigurationPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationPatch.new;
+  final PriorityLevelConfigurationReference =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationReference
+          .new;
+  final PriorityLevelConfigurationReferenceArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationReference
+          .new;
+  final PriorityLevelConfigurationReferencePatch =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationReferencePatch
+          .new;
+  final PriorityLevelConfigurationReferencePatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationReferencePatch
+          .new;
+  final PriorityLevelConfigurationSpec =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpec.new;
+  final PriorityLevelConfigurationSpecArgs =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationSpec.new;
+  final PriorityLevelConfigurationSpecPatch =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationSpecPatch
+          .new;
+  final PriorityLevelConfigurationSpecPatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationSpecPatch
+          .new;
+  final PriorityLevelConfigurationStatus =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatus.new;
+  final PriorityLevelConfigurationStatusArgs =
+      module_flowcontrol_apiserver_k8s_io.PriorityLevelConfigurationStatus.new;
+  final PriorityLevelConfigurationStatusPatch =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationStatusPatch
+          .new;
+  final PriorityLevelConfigurationStatusPatchArgs =
+      module_flowcontrol_apiserver_k8s_io
+          .PriorityLevelConfigurationStatusPatch
+          .new;
+  final QueuingConfiguration =
+      module_flowcontrol_apiserver_k8s_io.QueuingConfiguration.new;
+  final QueuingConfigurationArgs =
+      module_flowcontrol_apiserver_k8s_io.QueuingConfiguration.new;
+  final QueuingConfigurationPatch =
+      module_flowcontrol_apiserver_k8s_io.QueuingConfigurationPatch.new;
+  final QueuingConfigurationPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.QueuingConfigurationPatch.new;
+  final ResourcePolicyRule =
+      module_flowcontrol_apiserver_k8s_io.ResourcePolicyRule.new;
+  final ResourcePolicyRuleArgs =
+      module_flowcontrol_apiserver_k8s_io.ResourcePolicyRule.new;
+  final ResourcePolicyRulePatch =
+      module_flowcontrol_apiserver_k8s_io.ResourcePolicyRulePatch.new;
+  final ResourcePolicyRulePatchArgs =
+      module_flowcontrol_apiserver_k8s_io.ResourcePolicyRulePatch.new;
+  final ServiceAccountSubject =
+      module_flowcontrol_apiserver_k8s_io.ServiceAccountSubject.new;
+  final ServiceAccountSubjectArgs =
+      module_flowcontrol_apiserver_k8s_io.ServiceAccountSubject.new;
+  final ServiceAccountSubjectPatch =
+      module_flowcontrol_apiserver_k8s_io.ServiceAccountSubjectPatch.new;
+  final ServiceAccountSubjectPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.ServiceAccountSubjectPatch.new;
+  final Subject = module_flowcontrol_apiserver_k8s_io.Subject.new;
+  final SubjectArgs = module_flowcontrol_apiserver_k8s_io.Subject.new;
+  final SubjectPatch = module_flowcontrol_apiserver_k8s_io.SubjectPatch.new;
+  final SubjectPatchArgs = module_flowcontrol_apiserver_k8s_io.SubjectPatch.new;
+  final UserSubject = module_flowcontrol_apiserver_k8s_io.UserSubject.new;
+  final UserSubjectArgs = module_flowcontrol_apiserver_k8s_io.UserSubject.new;
+  final UserSubjectPatch =
+      module_flowcontrol_apiserver_k8s_io.UserSubjectPatch.new;
+  final UserSubjectPatchArgs =
+      module_flowcontrol_apiserver_k8s_io.UserSubjectPatch.new;
 }
 
 class _HelmShModuleNamespace {
   _HelmShModuleNamespace();
-  final Chart = _helm_sh.Chart.new;
-  final ChartArgs = _helm_sh.ChartArgs.new;
-  final FetchOpts = _helm_sh.FetchOpts.new;
-  final FetchOptsArgs = _helm_sh.FetchOpts.new;
-  final PostRenderer = _helm_sh.PostRenderer.new;
-  final PostRendererArgs = _helm_sh.PostRenderer.new;
-  final Release = _helm_sh.Release.new;
-  final ReleaseArgs = _helm_sh.ReleaseArgs.new;
-  final ReleaseStatus = _helm_sh.ReleaseStatus.new;
-  final ReleaseStatusArgs = _helm_sh.ReleaseStatus.new;
-  final RepositoryOpts = _helm_sh.RepositoryOpts.new;
-  final RepositoryOptsArgs = _helm_sh.RepositoryOpts.new;
+  final Chart = module_helm_sh.Chart.new;
+  final ChartArgs = module_helm_sh.ChartArgs.new;
+  final FetchOpts = module_helm_sh.FetchOpts.new;
+  final FetchOptsArgs = module_helm_sh.FetchOpts.new;
+  final PostRenderer = module_helm_sh.PostRenderer.new;
+  final PostRendererArgs = module_helm_sh.PostRenderer.new;
+  final Release = module_helm_sh.Release.new;
+  final ReleaseArgs = module_helm_sh.ReleaseArgs.new;
+  final ReleaseStatus = module_helm_sh.ReleaseStatus.new;
+  final ReleaseStatusArgs = module_helm_sh.ReleaseStatus.new;
+  final RepositoryOpts = module_helm_sh.RepositoryOpts.new;
+  final RepositoryOptsArgs = module_helm_sh.RepositoryOpts.new;
 }
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final HelmReleaseSettings = _index.HelmReleaseSettings.new;
-  final HelmReleaseSettingsArgs = _index.HelmReleaseSettings.new;
-  final KubeClientSettings = _index.KubeClientSettings.new;
-  final KubeClientSettingsArgs = _index.KubeClientSettings.new;
+  final HelmReleaseSettings = module_index.HelmReleaseSettings.new;
+  final HelmReleaseSettingsArgs = module_index.HelmReleaseSettings.new;
+  final KubeClientSettings = module_index.KubeClientSettings.new;
+  final KubeClientSettingsArgs = module_index.KubeClientSettings.new;
 }
 
 class _KustomizeModuleNamespace {
   _KustomizeModuleNamespace();
-  final Directory = _kustomize.Directory.new;
-  final DirectoryArgs = _kustomize.DirectoryArgs.new;
+  final Directory = module_kustomize.Directory.new;
+  final DirectoryArgs = module_kustomize.DirectoryArgs.new;
 }
 
 class _MetaModuleNamespace {
   _MetaModuleNamespace();
-  final APIGroup = _meta.APIGroup.new;
-  final APIGroupArgs = _meta.APIGroup.new;
-  final APIGroupList = _meta.APIGroupList.new;
-  final APIGroupListArgs = _meta.APIGroupList.new;
-  final APIGroupPatch = _meta.APIGroupPatch.new;
-  final APIGroupPatchArgs = _meta.APIGroupPatch.new;
-  final APIResource = _meta.APIResource.new;
-  final APIResourceArgs = _meta.APIResource.new;
-  final APIResourceList = _meta.APIResourceList.new;
-  final APIResourceListArgs = _meta.APIResourceList.new;
-  final APIResourcePatch = _meta.APIResourcePatch.new;
-  final APIResourcePatchArgs = _meta.APIResourcePatch.new;
-  final APIVersions = _meta.APIVersions.new;
-  final APIVersionsArgs = _meta.APIVersions.new;
-  final APIVersionsPatch = _meta.APIVersionsPatch.new;
-  final APIVersionsPatchArgs = _meta.APIVersionsPatch.new;
-  final Condition = _meta.Condition.new;
-  final ConditionArgs = _meta.Condition.new;
-  final ConditionPatch = _meta.ConditionPatch.new;
-  final ConditionPatchArgs = _meta.ConditionPatch.new;
-  final DeleteOptions = _meta.DeleteOptions.new;
-  final DeleteOptionsArgs = _meta.DeleteOptions.new;
-  final DeleteOptionsPatch = _meta.DeleteOptionsPatch.new;
-  final DeleteOptionsPatchArgs = _meta.DeleteOptionsPatch.new;
-  final FieldSelectorRequirement = _meta.FieldSelectorRequirement.new;
-  final FieldSelectorRequirementArgs = _meta.FieldSelectorRequirement.new;
-  final FieldSelectorRequirementPatch = _meta.FieldSelectorRequirementPatch.new;
-  final FieldSelectorRequirementPatchArgs = _meta.FieldSelectorRequirementPatch.new;
-  final GroupResource = _meta.GroupResource.new;
-  final GroupResourceArgs = _meta.GroupResource.new;
-  final GroupResourcePatch = _meta.GroupResourcePatch.new;
-  final GroupResourcePatchArgs = _meta.GroupResourcePatch.new;
-  final GroupVersionForDiscovery = _meta.GroupVersionForDiscovery.new;
-  final GroupVersionForDiscoveryArgs = _meta.GroupVersionForDiscovery.new;
-  final GroupVersionForDiscoveryPatch = _meta.GroupVersionForDiscoveryPatch.new;
-  final GroupVersionForDiscoveryPatchArgs = _meta.GroupVersionForDiscoveryPatch.new;
-  final LabelSelector = _meta.LabelSelector.new;
-  final LabelSelectorArgs = _meta.LabelSelector.new;
-  final LabelSelectorPatch = _meta.LabelSelectorPatch.new;
-  final LabelSelectorPatchArgs = _meta.LabelSelectorPatch.new;
-  final LabelSelectorRequirement = _meta.LabelSelectorRequirement.new;
-  final LabelSelectorRequirementArgs = _meta.LabelSelectorRequirement.new;
-  final LabelSelectorRequirementPatch = _meta.LabelSelectorRequirementPatch.new;
-  final LabelSelectorRequirementPatchArgs = _meta.LabelSelectorRequirementPatch.new;
-  final ListMeta = _meta.ListMeta.new;
-  final ListMetaArgs = _meta.ListMeta.new;
-  final ListMetaPatch = _meta.ListMetaPatch.new;
-  final ListMetaPatchArgs = _meta.ListMetaPatch.new;
-  final ManagedFieldsEntry = _meta.ManagedFieldsEntry.new;
-  final ManagedFieldsEntryArgs = _meta.ManagedFieldsEntry.new;
-  final ManagedFieldsEntryPatch = _meta.ManagedFieldsEntryPatch.new;
-  final ManagedFieldsEntryPatchArgs = _meta.ManagedFieldsEntryPatch.new;
-  final ObjectMeta = _meta.ObjectMeta.new;
-  final ObjectMetaArgs = _meta.ObjectMeta.new;
-  final ObjectMetaPatch = _meta.ObjectMetaPatch.new;
-  final ObjectMetaPatchArgs = _meta.ObjectMetaPatch.new;
-  final OwnerReference = _meta.OwnerReference.new;
-  final OwnerReferenceArgs = _meta.OwnerReference.new;
-  final OwnerReferencePatch = _meta.OwnerReferencePatch.new;
-  final OwnerReferencePatchArgs = _meta.OwnerReferencePatch.new;
-  final Preconditions = _meta.Preconditions.new;
-  final PreconditionsArgs = _meta.Preconditions.new;
-  final PreconditionsPatch = _meta.PreconditionsPatch.new;
-  final PreconditionsPatchArgs = _meta.PreconditionsPatch.new;
-  final ServerAddressByClientCIDR = _meta.ServerAddressByClientCIDR.new;
-  final ServerAddressByClientCIDRArgs = _meta.ServerAddressByClientCIDR.new;
-  final ServerAddressByClientCIDRPatch = _meta.ServerAddressByClientCIDRPatch.new;
-  final ServerAddressByClientCIDRPatchArgs = _meta.ServerAddressByClientCIDRPatch.new;
-  final Status = _meta.Status.new;
-  final StatusArgs = _meta.Status.new;
-  final StatusCause = _meta.StatusCause.new;
-  final StatusCauseArgs = _meta.StatusCause.new;
-  final StatusCausePatch = _meta.StatusCausePatch.new;
-  final StatusCausePatchArgs = _meta.StatusCausePatch.new;
-  final StatusDetails = _meta.StatusDetails.new;
-  final StatusDetailsArgs = _meta.StatusDetails.new;
-  final StatusDetailsPatch = _meta.StatusDetailsPatch.new;
-  final StatusDetailsPatchArgs = _meta.StatusDetailsPatch.new;
-  final StatusPatch = _meta.StatusPatch.new;
-  final StatusPatchArgs = _meta.StatusPatch.new;
-  final WatchEvent = _meta.WatchEvent.new;
-  final WatchEventArgs = _meta.WatchEvent.new;
-  final WatchEventPatch = _meta.WatchEventPatch.new;
-  final WatchEventPatchArgs = _meta.WatchEventPatch.new;
+  final APIGroup = module_meta.APIGroup.new;
+  final APIGroupArgs = module_meta.APIGroup.new;
+  final APIGroupList = module_meta.APIGroupList.new;
+  final APIGroupListArgs = module_meta.APIGroupList.new;
+  final APIGroupPatch = module_meta.APIGroupPatch.new;
+  final APIGroupPatchArgs = module_meta.APIGroupPatch.new;
+  final APIResource = module_meta.APIResource.new;
+  final APIResourceArgs = module_meta.APIResource.new;
+  final APIResourceList = module_meta.APIResourceList.new;
+  final APIResourceListArgs = module_meta.APIResourceList.new;
+  final APIResourcePatch = module_meta.APIResourcePatch.new;
+  final APIResourcePatchArgs = module_meta.APIResourcePatch.new;
+  final APIVersions = module_meta.APIVersions.new;
+  final APIVersionsArgs = module_meta.APIVersions.new;
+  final APIVersionsPatch = module_meta.APIVersionsPatch.new;
+  final APIVersionsPatchArgs = module_meta.APIVersionsPatch.new;
+  final Condition = module_meta.Condition.new;
+  final ConditionArgs = module_meta.Condition.new;
+  final ConditionPatch = module_meta.ConditionPatch.new;
+  final ConditionPatchArgs = module_meta.ConditionPatch.new;
+  final DeleteOptions = module_meta.DeleteOptions.new;
+  final DeleteOptionsArgs = module_meta.DeleteOptions.new;
+  final DeleteOptionsPatch = module_meta.DeleteOptionsPatch.new;
+  final DeleteOptionsPatchArgs = module_meta.DeleteOptionsPatch.new;
+  final FieldSelectorRequirement = module_meta.FieldSelectorRequirement.new;
+  final FieldSelectorRequirementArgs = module_meta.FieldSelectorRequirement.new;
+  final FieldSelectorRequirementPatch =
+      module_meta.FieldSelectorRequirementPatch.new;
+  final FieldSelectorRequirementPatchArgs =
+      module_meta.FieldSelectorRequirementPatch.new;
+  final GroupResource = module_meta.GroupResource.new;
+  final GroupResourceArgs = module_meta.GroupResource.new;
+  final GroupResourcePatch = module_meta.GroupResourcePatch.new;
+  final GroupResourcePatchArgs = module_meta.GroupResourcePatch.new;
+  final GroupVersionForDiscovery = module_meta.GroupVersionForDiscovery.new;
+  final GroupVersionForDiscoveryArgs = module_meta.GroupVersionForDiscovery.new;
+  final GroupVersionForDiscoveryPatch =
+      module_meta.GroupVersionForDiscoveryPatch.new;
+  final GroupVersionForDiscoveryPatchArgs =
+      module_meta.GroupVersionForDiscoveryPatch.new;
+  final LabelSelector = module_meta.LabelSelector.new;
+  final LabelSelectorArgs = module_meta.LabelSelector.new;
+  final LabelSelectorPatch = module_meta.LabelSelectorPatch.new;
+  final LabelSelectorPatchArgs = module_meta.LabelSelectorPatch.new;
+  final LabelSelectorRequirement = module_meta.LabelSelectorRequirement.new;
+  final LabelSelectorRequirementArgs = module_meta.LabelSelectorRequirement.new;
+  final LabelSelectorRequirementPatch =
+      module_meta.LabelSelectorRequirementPatch.new;
+  final LabelSelectorRequirementPatchArgs =
+      module_meta.LabelSelectorRequirementPatch.new;
+  final ListMeta = module_meta.ListMeta.new;
+  final ListMetaArgs = module_meta.ListMeta.new;
+  final ListMetaPatch = module_meta.ListMetaPatch.new;
+  final ListMetaPatchArgs = module_meta.ListMetaPatch.new;
+  final ManagedFieldsEntry = module_meta.ManagedFieldsEntry.new;
+  final ManagedFieldsEntryArgs = module_meta.ManagedFieldsEntry.new;
+  final ManagedFieldsEntryPatch = module_meta.ManagedFieldsEntryPatch.new;
+  final ManagedFieldsEntryPatchArgs = module_meta.ManagedFieldsEntryPatch.new;
+  final ObjectMeta = module_meta.ObjectMeta.new;
+  final ObjectMetaArgs = module_meta.ObjectMeta.new;
+  final ObjectMetaPatch = module_meta.ObjectMetaPatch.new;
+  final ObjectMetaPatchArgs = module_meta.ObjectMetaPatch.new;
+  final OwnerReference = module_meta.OwnerReference.new;
+  final OwnerReferenceArgs = module_meta.OwnerReference.new;
+  final OwnerReferencePatch = module_meta.OwnerReferencePatch.new;
+  final OwnerReferencePatchArgs = module_meta.OwnerReferencePatch.new;
+  final Preconditions = module_meta.Preconditions.new;
+  final PreconditionsArgs = module_meta.Preconditions.new;
+  final PreconditionsPatch = module_meta.PreconditionsPatch.new;
+  final PreconditionsPatchArgs = module_meta.PreconditionsPatch.new;
+  final ServerAddressByClientCIDR = module_meta.ServerAddressByClientCIDR.new;
+  final ServerAddressByClientCIDRArgs =
+      module_meta.ServerAddressByClientCIDR.new;
+  final ServerAddressByClientCIDRPatch =
+      module_meta.ServerAddressByClientCIDRPatch.new;
+  final ServerAddressByClientCIDRPatchArgs =
+      module_meta.ServerAddressByClientCIDRPatch.new;
+  final Status = module_meta.Status.new;
+  final StatusArgs = module_meta.Status.new;
+  final StatusCause = module_meta.StatusCause.new;
+  final StatusCauseArgs = module_meta.StatusCause.new;
+  final StatusCausePatch = module_meta.StatusCausePatch.new;
+  final StatusCausePatchArgs = module_meta.StatusCausePatch.new;
+  final StatusDetails = module_meta.StatusDetails.new;
+  final StatusDetailsArgs = module_meta.StatusDetails.new;
+  final StatusDetailsPatch = module_meta.StatusDetailsPatch.new;
+  final StatusDetailsPatchArgs = module_meta.StatusDetailsPatch.new;
+  final StatusPatch = module_meta.StatusPatch.new;
+  final StatusPatchArgs = module_meta.StatusPatch.new;
+  final WatchEvent = module_meta.WatchEvent.new;
+  final WatchEventArgs = module_meta.WatchEvent.new;
+  final WatchEventPatch = module_meta.WatchEventPatch.new;
+  final WatchEventPatchArgs = module_meta.WatchEventPatch.new;
 }
 
 class _NetworkingK8sIoModuleNamespace {
   _NetworkingK8sIoModuleNamespace();
-  final ClusterCIDR = _networking_k8s_io.ClusterCIDR.new;
-  final ClusterCIDRArgs = _networking_k8s_io.ClusterCIDR.new;
-  final ClusterCIDRList = _networking_k8s_io.ClusterCIDRList.new;
-  final ClusterCIDRListArgs = _networking_k8s_io.ClusterCIDRList.new;
-  final ClusterCIDRPatch = _networking_k8s_io.ClusterCIDRPatch.new;
-  final ClusterCIDRPatchArgs = _networking_k8s_io.ClusterCIDRPatch.new;
-  final ClusterCIDRSpec = _networking_k8s_io.ClusterCIDRSpec.new;
-  final ClusterCIDRSpecArgs = _networking_k8s_io.ClusterCIDRSpec.new;
-  final ClusterCIDRSpecPatch = _networking_k8s_io.ClusterCIDRSpecPatch.new;
-  final ClusterCIDRSpecPatchArgs = _networking_k8s_io.ClusterCIDRSpecPatch.new;
-  final HTTPIngressPath = _networking_k8s_io.HTTPIngressPath.new;
-  final HTTPIngressPathArgs = _networking_k8s_io.HTTPIngressPath.new;
-  final HTTPIngressPathPatch = _networking_k8s_io.HTTPIngressPathPatch.new;
-  final HTTPIngressPathPatchArgs = _networking_k8s_io.HTTPIngressPathPatch.new;
-  final HTTPIngressRuleValue = _networking_k8s_io.HTTPIngressRuleValue.new;
-  final HTTPIngressRuleValueArgs = _networking_k8s_io.HTTPIngressRuleValue.new;
-  final HTTPIngressRuleValuePatch = _networking_k8s_io.HTTPIngressRuleValuePatch.new;
-  final HTTPIngressRuleValuePatchArgs = _networking_k8s_io.HTTPIngressRuleValuePatch.new;
-  final IPAddress = _networking_k8s_io.IPAddress.new;
-  final IPAddressArgs = _networking_k8s_io.IPAddress.new;
-  final IPAddressList = _networking_k8s_io.IPAddressList.new;
-  final IPAddressListArgs = _networking_k8s_io.IPAddressList.new;
-  final IPAddressPatch = _networking_k8s_io.IPAddressPatch.new;
-  final IPAddressPatchArgs = _networking_k8s_io.IPAddressPatch.new;
-  final IPAddressSpec = _networking_k8s_io.IPAddressSpec.new;
-  final IPAddressSpecArgs = _networking_k8s_io.IPAddressSpec.new;
-  final IPAddressSpecPatch = _networking_k8s_io.IPAddressSpecPatch.new;
-  final IPAddressSpecPatchArgs = _networking_k8s_io.IPAddressSpecPatch.new;
-  final IPBlock = _networking_k8s_io.IPBlock.new;
-  final IPBlockArgs = _networking_k8s_io.IPBlock.new;
-  final IPBlockPatch = _networking_k8s_io.IPBlockPatch.new;
-  final IPBlockPatchArgs = _networking_k8s_io.IPBlockPatch.new;
-  final Ingress = _networking_k8s_io.Ingress.new;
-  final IngressArgs = _networking_k8s_io.Ingress.new;
-  final IngressBackend = _networking_k8s_io.IngressBackend.new;
-  final IngressBackendArgs = _networking_k8s_io.IngressBackend.new;
-  final IngressBackendPatch = _networking_k8s_io.IngressBackendPatch.new;
-  final IngressBackendPatchArgs = _networking_k8s_io.IngressBackendPatch.new;
-  final IngressClass = _networking_k8s_io.IngressClass.new;
-  final IngressClassArgs = _networking_k8s_io.IngressClass.new;
-  final IngressClassList = _networking_k8s_io.IngressClassList.new;
-  final IngressClassListArgs = _networking_k8s_io.IngressClassList.new;
-  final IngressClassParametersReference = _networking_k8s_io.IngressClassParametersReference.new;
-  final IngressClassParametersReferenceArgs = _networking_k8s_io.IngressClassParametersReference.new;
-  final IngressClassParametersReferencePatch = _networking_k8s_io.IngressClassParametersReferencePatch.new;
-  final IngressClassParametersReferencePatchArgs = _networking_k8s_io.IngressClassParametersReferencePatch.new;
-  final IngressClassPatch = _networking_k8s_io.IngressClassPatch.new;
-  final IngressClassPatchArgs = _networking_k8s_io.IngressClassPatch.new;
-  final IngressClassSpec = _networking_k8s_io.IngressClassSpec.new;
-  final IngressClassSpecArgs = _networking_k8s_io.IngressClassSpec.new;
-  final IngressClassSpecPatch = _networking_k8s_io.IngressClassSpecPatch.new;
-  final IngressClassSpecPatchArgs = _networking_k8s_io.IngressClassSpecPatch.new;
-  final IngressList = _networking_k8s_io.IngressList.new;
-  final IngressListArgs = _networking_k8s_io.IngressList.new;
-  final IngressLoadBalancerIngress = _networking_k8s_io.IngressLoadBalancerIngress.new;
-  final IngressLoadBalancerIngressArgs = _networking_k8s_io.IngressLoadBalancerIngress.new;
-  final IngressLoadBalancerIngressPatch = _networking_k8s_io.IngressLoadBalancerIngressPatch.new;
-  final IngressLoadBalancerIngressPatchArgs = _networking_k8s_io.IngressLoadBalancerIngressPatch.new;
-  final IngressLoadBalancerStatus = _networking_k8s_io.IngressLoadBalancerStatus.new;
-  final IngressLoadBalancerStatusArgs = _networking_k8s_io.IngressLoadBalancerStatus.new;
-  final IngressLoadBalancerStatusPatch = _networking_k8s_io.IngressLoadBalancerStatusPatch.new;
-  final IngressLoadBalancerStatusPatchArgs = _networking_k8s_io.IngressLoadBalancerStatusPatch.new;
-  final IngressPatch = _networking_k8s_io.IngressPatch.new;
-  final IngressPatchArgs = _networking_k8s_io.IngressPatch.new;
-  final IngressPortStatus = _networking_k8s_io.IngressPortStatus.new;
-  final IngressPortStatusArgs = _networking_k8s_io.IngressPortStatus.new;
-  final IngressPortStatusPatch = _networking_k8s_io.IngressPortStatusPatch.new;
-  final IngressPortStatusPatchArgs = _networking_k8s_io.IngressPortStatusPatch.new;
-  final IngressRule = _networking_k8s_io.IngressRule.new;
-  final IngressRuleArgs = _networking_k8s_io.IngressRule.new;
-  final IngressRulePatch = _networking_k8s_io.IngressRulePatch.new;
-  final IngressRulePatchArgs = _networking_k8s_io.IngressRulePatch.new;
-  final IngressServiceBackend = _networking_k8s_io.IngressServiceBackend.new;
-  final IngressServiceBackendArgs = _networking_k8s_io.IngressServiceBackend.new;
-  final IngressServiceBackendPatch = _networking_k8s_io.IngressServiceBackendPatch.new;
-  final IngressServiceBackendPatchArgs = _networking_k8s_io.IngressServiceBackendPatch.new;
-  final IngressSpec = _networking_k8s_io.IngressSpec.new;
-  final IngressSpecArgs = _networking_k8s_io.IngressSpec.new;
-  final IngressSpecPatch = _networking_k8s_io.IngressSpecPatch.new;
-  final IngressSpecPatchArgs = _networking_k8s_io.IngressSpecPatch.new;
-  final IngressStatus = _networking_k8s_io.IngressStatus.new;
-  final IngressStatusArgs = _networking_k8s_io.IngressStatus.new;
-  final IngressStatusPatch = _networking_k8s_io.IngressStatusPatch.new;
-  final IngressStatusPatchArgs = _networking_k8s_io.IngressStatusPatch.new;
-  final IngressTLS = _networking_k8s_io.IngressTLS.new;
-  final IngressTLSArgs = _networking_k8s_io.IngressTLS.new;
-  final IngressTLSPatch = _networking_k8s_io.IngressTLSPatch.new;
-  final IngressTLSPatchArgs = _networking_k8s_io.IngressTLSPatch.new;
-  final NetworkPolicy = _networking_k8s_io.NetworkPolicy.new;
-  final NetworkPolicyArgs = _networking_k8s_io.NetworkPolicy.new;
-  final NetworkPolicyEgressRule = _networking_k8s_io.NetworkPolicyEgressRule.new;
-  final NetworkPolicyEgressRuleArgs = _networking_k8s_io.NetworkPolicyEgressRule.new;
-  final NetworkPolicyEgressRulePatch = _networking_k8s_io.NetworkPolicyEgressRulePatch.new;
-  final NetworkPolicyEgressRulePatchArgs = _networking_k8s_io.NetworkPolicyEgressRulePatch.new;
-  final NetworkPolicyIngressRule = _networking_k8s_io.NetworkPolicyIngressRule.new;
-  final NetworkPolicyIngressRuleArgs = _networking_k8s_io.NetworkPolicyIngressRule.new;
-  final NetworkPolicyIngressRulePatch = _networking_k8s_io.NetworkPolicyIngressRulePatch.new;
-  final NetworkPolicyIngressRulePatchArgs = _networking_k8s_io.NetworkPolicyIngressRulePatch.new;
-  final NetworkPolicyList = _networking_k8s_io.NetworkPolicyList.new;
-  final NetworkPolicyListArgs = _networking_k8s_io.NetworkPolicyList.new;
-  final NetworkPolicyPatch = _networking_k8s_io.NetworkPolicyPatch.new;
-  final NetworkPolicyPatchArgs = _networking_k8s_io.NetworkPolicyPatch.new;
-  final NetworkPolicyPeer = _networking_k8s_io.NetworkPolicyPeer.new;
-  final NetworkPolicyPeerArgs = _networking_k8s_io.NetworkPolicyPeer.new;
-  final NetworkPolicyPeerPatch = _networking_k8s_io.NetworkPolicyPeerPatch.new;
-  final NetworkPolicyPeerPatchArgs = _networking_k8s_io.NetworkPolicyPeerPatch.new;
-  final NetworkPolicyPort = _networking_k8s_io.NetworkPolicyPort.new;
-  final NetworkPolicyPortArgs = _networking_k8s_io.NetworkPolicyPort.new;
-  final NetworkPolicyPortPatch = _networking_k8s_io.NetworkPolicyPortPatch.new;
-  final NetworkPolicyPortPatchArgs = _networking_k8s_io.NetworkPolicyPortPatch.new;
-  final NetworkPolicySpec = _networking_k8s_io.NetworkPolicySpec.new;
-  final NetworkPolicySpecArgs = _networking_k8s_io.NetworkPolicySpec.new;
-  final NetworkPolicySpecPatch = _networking_k8s_io.NetworkPolicySpecPatch.new;
-  final NetworkPolicySpecPatchArgs = _networking_k8s_io.NetworkPolicySpecPatch.new;
-  final NetworkPolicyStatus = _networking_k8s_io.NetworkPolicyStatus.new;
-  final NetworkPolicyStatusArgs = _networking_k8s_io.NetworkPolicyStatus.new;
-  final NetworkPolicyStatusPatch = _networking_k8s_io.NetworkPolicyStatusPatch.new;
-  final NetworkPolicyStatusPatchArgs = _networking_k8s_io.NetworkPolicyStatusPatch.new;
-  final ParentReference = _networking_k8s_io.ParentReference.new;
-  final ParentReferenceArgs = _networking_k8s_io.ParentReference.new;
-  final ParentReferencePatch = _networking_k8s_io.ParentReferencePatch.new;
-  final ParentReferencePatchArgs = _networking_k8s_io.ParentReferencePatch.new;
-  final ServiceBackendPort = _networking_k8s_io.ServiceBackendPort.new;
-  final ServiceBackendPortArgs = _networking_k8s_io.ServiceBackendPort.new;
-  final ServiceBackendPortPatch = _networking_k8s_io.ServiceBackendPortPatch.new;
-  final ServiceBackendPortPatchArgs = _networking_k8s_io.ServiceBackendPortPatch.new;
-  final ServiceCIDR = _networking_k8s_io.ServiceCIDR.new;
-  final ServiceCIDRArgs = _networking_k8s_io.ServiceCIDR.new;
-  final ServiceCIDRList = _networking_k8s_io.ServiceCIDRList.new;
-  final ServiceCIDRListArgs = _networking_k8s_io.ServiceCIDRList.new;
-  final ServiceCIDRPatch = _networking_k8s_io.ServiceCIDRPatch.new;
-  final ServiceCIDRPatchArgs = _networking_k8s_io.ServiceCIDRPatch.new;
-  final ServiceCIDRSpec = _networking_k8s_io.ServiceCIDRSpec.new;
-  final ServiceCIDRSpecArgs = _networking_k8s_io.ServiceCIDRSpec.new;
-  final ServiceCIDRSpecPatch = _networking_k8s_io.ServiceCIDRSpecPatch.new;
-  final ServiceCIDRSpecPatchArgs = _networking_k8s_io.ServiceCIDRSpecPatch.new;
-  final ServiceCIDRStatus = _networking_k8s_io.ServiceCIDRStatus.new;
-  final ServiceCIDRStatusArgs = _networking_k8s_io.ServiceCIDRStatus.new;
-  final ServiceCIDRStatusPatch = _networking_k8s_io.ServiceCIDRStatusPatch.new;
-  final ServiceCIDRStatusPatchArgs = _networking_k8s_io.ServiceCIDRStatusPatch.new;
+  final ClusterCIDR = module_networking_k8s_io.ClusterCIDR.new;
+  final ClusterCIDRArgs = module_networking_k8s_io.ClusterCIDR.new;
+  final ClusterCIDRList = module_networking_k8s_io.ClusterCIDRList.new;
+  final ClusterCIDRListArgs = module_networking_k8s_io.ClusterCIDRList.new;
+  final ClusterCIDRPatch = module_networking_k8s_io.ClusterCIDRPatch.new;
+  final ClusterCIDRPatchArgs = module_networking_k8s_io.ClusterCIDRPatch.new;
+  final ClusterCIDRSpec = module_networking_k8s_io.ClusterCIDRSpec.new;
+  final ClusterCIDRSpecArgs = module_networking_k8s_io.ClusterCIDRSpec.new;
+  final ClusterCIDRSpecPatch =
+      module_networking_k8s_io.ClusterCIDRSpecPatch.new;
+  final ClusterCIDRSpecPatchArgs =
+      module_networking_k8s_io.ClusterCIDRSpecPatch.new;
+  final HTTPIngressPath = module_networking_k8s_io.HTTPIngressPath.new;
+  final HTTPIngressPathArgs = module_networking_k8s_io.HTTPIngressPath.new;
+  final HTTPIngressPathPatch =
+      module_networking_k8s_io.HTTPIngressPathPatch.new;
+  final HTTPIngressPathPatchArgs =
+      module_networking_k8s_io.HTTPIngressPathPatch.new;
+  final HTTPIngressRuleValue =
+      module_networking_k8s_io.HTTPIngressRuleValue.new;
+  final HTTPIngressRuleValueArgs =
+      module_networking_k8s_io.HTTPIngressRuleValue.new;
+  final HTTPIngressRuleValuePatch =
+      module_networking_k8s_io.HTTPIngressRuleValuePatch.new;
+  final HTTPIngressRuleValuePatchArgs =
+      module_networking_k8s_io.HTTPIngressRuleValuePatch.new;
+  final IPAddress = module_networking_k8s_io.IPAddress.new;
+  final IPAddressArgs = module_networking_k8s_io.IPAddress.new;
+  final IPAddressList = module_networking_k8s_io.IPAddressList.new;
+  final IPAddressListArgs = module_networking_k8s_io.IPAddressList.new;
+  final IPAddressPatch = module_networking_k8s_io.IPAddressPatch.new;
+  final IPAddressPatchArgs = module_networking_k8s_io.IPAddressPatch.new;
+  final IPAddressSpec = module_networking_k8s_io.IPAddressSpec.new;
+  final IPAddressSpecArgs = module_networking_k8s_io.IPAddressSpec.new;
+  final IPAddressSpecPatch = module_networking_k8s_io.IPAddressSpecPatch.new;
+  final IPAddressSpecPatchArgs =
+      module_networking_k8s_io.IPAddressSpecPatch.new;
+  final IPBlock = module_networking_k8s_io.IPBlock.new;
+  final IPBlockArgs = module_networking_k8s_io.IPBlock.new;
+  final IPBlockPatch = module_networking_k8s_io.IPBlockPatch.new;
+  final IPBlockPatchArgs = module_networking_k8s_io.IPBlockPatch.new;
+  final Ingress = module_networking_k8s_io.Ingress.new;
+  final IngressArgs = module_networking_k8s_io.Ingress.new;
+  final IngressBackend = module_networking_k8s_io.IngressBackend.new;
+  final IngressBackendArgs = module_networking_k8s_io.IngressBackend.new;
+  final IngressBackendPatch = module_networking_k8s_io.IngressBackendPatch.new;
+  final IngressBackendPatchArgs =
+      module_networking_k8s_io.IngressBackendPatch.new;
+  final IngressClass = module_networking_k8s_io.IngressClass.new;
+  final IngressClassArgs = module_networking_k8s_io.IngressClass.new;
+  final IngressClassList = module_networking_k8s_io.IngressClassList.new;
+  final IngressClassListArgs = module_networking_k8s_io.IngressClassList.new;
+  final IngressClassParametersReference =
+      module_networking_k8s_io.IngressClassParametersReference.new;
+  final IngressClassParametersReferenceArgs =
+      module_networking_k8s_io.IngressClassParametersReference.new;
+  final IngressClassParametersReferencePatch =
+      module_networking_k8s_io.IngressClassParametersReferencePatch.new;
+  final IngressClassParametersReferencePatchArgs =
+      module_networking_k8s_io.IngressClassParametersReferencePatch.new;
+  final IngressClassPatch = module_networking_k8s_io.IngressClassPatch.new;
+  final IngressClassPatchArgs = module_networking_k8s_io.IngressClassPatch.new;
+  final IngressClassSpec = module_networking_k8s_io.IngressClassSpec.new;
+  final IngressClassSpecArgs = module_networking_k8s_io.IngressClassSpec.new;
+  final IngressClassSpecPatch =
+      module_networking_k8s_io.IngressClassSpecPatch.new;
+  final IngressClassSpecPatchArgs =
+      module_networking_k8s_io.IngressClassSpecPatch.new;
+  final IngressList = module_networking_k8s_io.IngressList.new;
+  final IngressListArgs = module_networking_k8s_io.IngressList.new;
+  final IngressLoadBalancerIngress =
+      module_networking_k8s_io.IngressLoadBalancerIngress.new;
+  final IngressLoadBalancerIngressArgs =
+      module_networking_k8s_io.IngressLoadBalancerIngress.new;
+  final IngressLoadBalancerIngressPatch =
+      module_networking_k8s_io.IngressLoadBalancerIngressPatch.new;
+  final IngressLoadBalancerIngressPatchArgs =
+      module_networking_k8s_io.IngressLoadBalancerIngressPatch.new;
+  final IngressLoadBalancerStatus =
+      module_networking_k8s_io.IngressLoadBalancerStatus.new;
+  final IngressLoadBalancerStatusArgs =
+      module_networking_k8s_io.IngressLoadBalancerStatus.new;
+  final IngressLoadBalancerStatusPatch =
+      module_networking_k8s_io.IngressLoadBalancerStatusPatch.new;
+  final IngressLoadBalancerStatusPatchArgs =
+      module_networking_k8s_io.IngressLoadBalancerStatusPatch.new;
+  final IngressPatch = module_networking_k8s_io.IngressPatch.new;
+  final IngressPatchArgs = module_networking_k8s_io.IngressPatch.new;
+  final IngressPortStatus = module_networking_k8s_io.IngressPortStatus.new;
+  final IngressPortStatusArgs = module_networking_k8s_io.IngressPortStatus.new;
+  final IngressPortStatusPatch =
+      module_networking_k8s_io.IngressPortStatusPatch.new;
+  final IngressPortStatusPatchArgs =
+      module_networking_k8s_io.IngressPortStatusPatch.new;
+  final IngressRule = module_networking_k8s_io.IngressRule.new;
+  final IngressRuleArgs = module_networking_k8s_io.IngressRule.new;
+  final IngressRulePatch = module_networking_k8s_io.IngressRulePatch.new;
+  final IngressRulePatchArgs = module_networking_k8s_io.IngressRulePatch.new;
+  final IngressServiceBackend =
+      module_networking_k8s_io.IngressServiceBackend.new;
+  final IngressServiceBackendArgs =
+      module_networking_k8s_io.IngressServiceBackend.new;
+  final IngressServiceBackendPatch =
+      module_networking_k8s_io.IngressServiceBackendPatch.new;
+  final IngressServiceBackendPatchArgs =
+      module_networking_k8s_io.IngressServiceBackendPatch.new;
+  final IngressSpec = module_networking_k8s_io.IngressSpec.new;
+  final IngressSpecArgs = module_networking_k8s_io.IngressSpec.new;
+  final IngressSpecPatch = module_networking_k8s_io.IngressSpecPatch.new;
+  final IngressSpecPatchArgs = module_networking_k8s_io.IngressSpecPatch.new;
+  final IngressStatus = module_networking_k8s_io.IngressStatus.new;
+  final IngressStatusArgs = module_networking_k8s_io.IngressStatus.new;
+  final IngressStatusPatch = module_networking_k8s_io.IngressStatusPatch.new;
+  final IngressStatusPatchArgs =
+      module_networking_k8s_io.IngressStatusPatch.new;
+  final IngressTLS = module_networking_k8s_io.IngressTLS.new;
+  final IngressTLSArgs = module_networking_k8s_io.IngressTLS.new;
+  final IngressTLSPatch = module_networking_k8s_io.IngressTLSPatch.new;
+  final IngressTLSPatchArgs = module_networking_k8s_io.IngressTLSPatch.new;
+  final NetworkPolicy = module_networking_k8s_io.NetworkPolicy.new;
+  final NetworkPolicyArgs = module_networking_k8s_io.NetworkPolicy.new;
+  final NetworkPolicyEgressRule =
+      module_networking_k8s_io.NetworkPolicyEgressRule.new;
+  final NetworkPolicyEgressRuleArgs =
+      module_networking_k8s_io.NetworkPolicyEgressRule.new;
+  final NetworkPolicyEgressRulePatch =
+      module_networking_k8s_io.NetworkPolicyEgressRulePatch.new;
+  final NetworkPolicyEgressRulePatchArgs =
+      module_networking_k8s_io.NetworkPolicyEgressRulePatch.new;
+  final NetworkPolicyIngressRule =
+      module_networking_k8s_io.NetworkPolicyIngressRule.new;
+  final NetworkPolicyIngressRuleArgs =
+      module_networking_k8s_io.NetworkPolicyIngressRule.new;
+  final NetworkPolicyIngressRulePatch =
+      module_networking_k8s_io.NetworkPolicyIngressRulePatch.new;
+  final NetworkPolicyIngressRulePatchArgs =
+      module_networking_k8s_io.NetworkPolicyIngressRulePatch.new;
+  final NetworkPolicyList = module_networking_k8s_io.NetworkPolicyList.new;
+  final NetworkPolicyListArgs = module_networking_k8s_io.NetworkPolicyList.new;
+  final NetworkPolicyPatch = module_networking_k8s_io.NetworkPolicyPatch.new;
+  final NetworkPolicyPatchArgs =
+      module_networking_k8s_io.NetworkPolicyPatch.new;
+  final NetworkPolicyPeer = module_networking_k8s_io.NetworkPolicyPeer.new;
+  final NetworkPolicyPeerArgs = module_networking_k8s_io.NetworkPolicyPeer.new;
+  final NetworkPolicyPeerPatch =
+      module_networking_k8s_io.NetworkPolicyPeerPatch.new;
+  final NetworkPolicyPeerPatchArgs =
+      module_networking_k8s_io.NetworkPolicyPeerPatch.new;
+  final NetworkPolicyPort = module_networking_k8s_io.NetworkPolicyPort.new;
+  final NetworkPolicyPortArgs = module_networking_k8s_io.NetworkPolicyPort.new;
+  final NetworkPolicyPortPatch =
+      module_networking_k8s_io.NetworkPolicyPortPatch.new;
+  final NetworkPolicyPortPatchArgs =
+      module_networking_k8s_io.NetworkPolicyPortPatch.new;
+  final NetworkPolicySpec = module_networking_k8s_io.NetworkPolicySpec.new;
+  final NetworkPolicySpecArgs = module_networking_k8s_io.NetworkPolicySpec.new;
+  final NetworkPolicySpecPatch =
+      module_networking_k8s_io.NetworkPolicySpecPatch.new;
+  final NetworkPolicySpecPatchArgs =
+      module_networking_k8s_io.NetworkPolicySpecPatch.new;
+  final NetworkPolicyStatus = module_networking_k8s_io.NetworkPolicyStatus.new;
+  final NetworkPolicyStatusArgs =
+      module_networking_k8s_io.NetworkPolicyStatus.new;
+  final NetworkPolicyStatusPatch =
+      module_networking_k8s_io.NetworkPolicyStatusPatch.new;
+  final NetworkPolicyStatusPatchArgs =
+      module_networking_k8s_io.NetworkPolicyStatusPatch.new;
+  final ParentReference = module_networking_k8s_io.ParentReference.new;
+  final ParentReferenceArgs = module_networking_k8s_io.ParentReference.new;
+  final ParentReferencePatch =
+      module_networking_k8s_io.ParentReferencePatch.new;
+  final ParentReferencePatchArgs =
+      module_networking_k8s_io.ParentReferencePatch.new;
+  final ServiceBackendPort = module_networking_k8s_io.ServiceBackendPort.new;
+  final ServiceBackendPortArgs =
+      module_networking_k8s_io.ServiceBackendPort.new;
+  final ServiceBackendPortPatch =
+      module_networking_k8s_io.ServiceBackendPortPatch.new;
+  final ServiceBackendPortPatchArgs =
+      module_networking_k8s_io.ServiceBackendPortPatch.new;
+  final ServiceCIDR = module_networking_k8s_io.ServiceCIDR.new;
+  final ServiceCIDRArgs = module_networking_k8s_io.ServiceCIDR.new;
+  final ServiceCIDRList = module_networking_k8s_io.ServiceCIDRList.new;
+  final ServiceCIDRListArgs = module_networking_k8s_io.ServiceCIDRList.new;
+  final ServiceCIDRPatch = module_networking_k8s_io.ServiceCIDRPatch.new;
+  final ServiceCIDRPatchArgs = module_networking_k8s_io.ServiceCIDRPatch.new;
+  final ServiceCIDRSpec = module_networking_k8s_io.ServiceCIDRSpec.new;
+  final ServiceCIDRSpecArgs = module_networking_k8s_io.ServiceCIDRSpec.new;
+  final ServiceCIDRSpecPatch =
+      module_networking_k8s_io.ServiceCIDRSpecPatch.new;
+  final ServiceCIDRSpecPatchArgs =
+      module_networking_k8s_io.ServiceCIDRSpecPatch.new;
+  final ServiceCIDRStatus = module_networking_k8s_io.ServiceCIDRStatus.new;
+  final ServiceCIDRStatusArgs = module_networking_k8s_io.ServiceCIDRStatus.new;
+  final ServiceCIDRStatusPatch =
+      module_networking_k8s_io.ServiceCIDRStatusPatch.new;
+  final ServiceCIDRStatusPatchArgs =
+      module_networking_k8s_io.ServiceCIDRStatusPatch.new;
 }
 
 class _NodeK8sIoModuleNamespace {
   _NodeK8sIoModuleNamespace();
-  final Overhead = _node_k8s_io.Overhead.new;
-  final OverheadArgs = _node_k8s_io.Overhead.new;
-  final OverheadPatch = _node_k8s_io.OverheadPatch.new;
-  final OverheadPatchArgs = _node_k8s_io.OverheadPatch.new;
-  final RuntimeClass = _node_k8s_io.RuntimeClass.new;
-  final RuntimeClassArgs = _node_k8s_io.RuntimeClass.new;
-  final RuntimeClassList = _node_k8s_io.RuntimeClassList.new;
-  final RuntimeClassListArgs = _node_k8s_io.RuntimeClassList.new;
-  final RuntimeClassPatch = _node_k8s_io.RuntimeClassPatch.new;
-  final RuntimeClassPatchArgs = _node_k8s_io.RuntimeClassPatch.new;
-  final RuntimeClassSpec = _node_k8s_io.RuntimeClassSpec.new;
-  final RuntimeClassSpecArgs = _node_k8s_io.RuntimeClassSpec.new;
-  final RuntimeClassSpecPatch = _node_k8s_io.RuntimeClassSpecPatch.new;
-  final RuntimeClassSpecPatchArgs = _node_k8s_io.RuntimeClassSpecPatch.new;
-  final Scheduling = _node_k8s_io.Scheduling.new;
-  final SchedulingArgs = _node_k8s_io.Scheduling.new;
-  final SchedulingPatch = _node_k8s_io.SchedulingPatch.new;
-  final SchedulingPatchArgs = _node_k8s_io.SchedulingPatch.new;
+  final Overhead = module_node_k8s_io.Overhead.new;
+  final OverheadArgs = module_node_k8s_io.Overhead.new;
+  final OverheadPatch = module_node_k8s_io.OverheadPatch.new;
+  final OverheadPatchArgs = module_node_k8s_io.OverheadPatch.new;
+  final RuntimeClass = module_node_k8s_io.RuntimeClass.new;
+  final RuntimeClassArgs = module_node_k8s_io.RuntimeClass.new;
+  final RuntimeClassList = module_node_k8s_io.RuntimeClassList.new;
+  final RuntimeClassListArgs = module_node_k8s_io.RuntimeClassList.new;
+  final RuntimeClassPatch = module_node_k8s_io.RuntimeClassPatch.new;
+  final RuntimeClassPatchArgs = module_node_k8s_io.RuntimeClassPatch.new;
+  final RuntimeClassSpec = module_node_k8s_io.RuntimeClassSpec.new;
+  final RuntimeClassSpecArgs = module_node_k8s_io.RuntimeClassSpec.new;
+  final RuntimeClassSpecPatch = module_node_k8s_io.RuntimeClassSpecPatch.new;
+  final RuntimeClassSpecPatchArgs =
+      module_node_k8s_io.RuntimeClassSpecPatch.new;
+  final Scheduling = module_node_k8s_io.Scheduling.new;
+  final SchedulingArgs = module_node_k8s_io.Scheduling.new;
+  final SchedulingPatch = module_node_k8s_io.SchedulingPatch.new;
+  final SchedulingPatchArgs = module_node_k8s_io.SchedulingPatch.new;
 }
 
 class _PkgModuleNamespace {
   _PkgModuleNamespace();
-  final Info = _pkg.Info.new;
-  final InfoArgs = _pkg.Info.new;
-  final InfoPatch = _pkg.InfoPatch.new;
-  final InfoPatchArgs = _pkg.InfoPatch.new;
+  final Info = module_pkg.Info.new;
+  final InfoArgs = module_pkg.Info.new;
+  final InfoPatch = module_pkg.InfoPatch.new;
+  final InfoPatchArgs = module_pkg.InfoPatch.new;
 }
 
 class _PolicyModuleNamespace {
   _PolicyModuleNamespace();
-  final AllowedCSIDriver = _policy.AllowedCSIDriver.new;
-  final AllowedCSIDriverArgs = _policy.AllowedCSIDriver.new;
-  final AllowedCSIDriverPatch = _policy.AllowedCSIDriverPatch.new;
-  final AllowedCSIDriverPatchArgs = _policy.AllowedCSIDriverPatch.new;
-  final AllowedFlexVolume = _policy.AllowedFlexVolume.new;
-  final AllowedFlexVolumeArgs = _policy.AllowedFlexVolume.new;
-  final AllowedFlexVolumePatch = _policy.AllowedFlexVolumePatch.new;
-  final AllowedFlexVolumePatchArgs = _policy.AllowedFlexVolumePatch.new;
-  final AllowedHostPath = _policy.AllowedHostPath.new;
-  final AllowedHostPathArgs = _policy.AllowedHostPath.new;
-  final AllowedHostPathPatch = _policy.AllowedHostPathPatch.new;
-  final AllowedHostPathPatchArgs = _policy.AllowedHostPathPatch.new;
-  final Eviction = _policy.Eviction.new;
-  final EvictionArgs = _policy.Eviction.new;
-  final EvictionPatch = _policy.EvictionPatch.new;
-  final EvictionPatchArgs = _policy.EvictionPatch.new;
-  final FSGroupStrategyOptions = _policy.FSGroupStrategyOptions.new;
-  final FSGroupStrategyOptionsArgs = _policy.FSGroupStrategyOptions.new;
-  final FSGroupStrategyOptionsPatch = _policy.FSGroupStrategyOptionsPatch.new;
-  final FSGroupStrategyOptionsPatchArgs = _policy.FSGroupStrategyOptionsPatch.new;
-  final HostPortRange = _policy.HostPortRange.new;
-  final HostPortRangeArgs = _policy.HostPortRange.new;
-  final HostPortRangePatch = _policy.HostPortRangePatch.new;
-  final HostPortRangePatchArgs = _policy.HostPortRangePatch.new;
-  final IDRange = _policy.IDRange.new;
-  final IDRangeArgs = _policy.IDRange.new;
-  final IDRangePatch = _policy.IDRangePatch.new;
-  final IDRangePatchArgs = _policy.IDRangePatch.new;
-  final PodDisruptionBudget = _policy.PodDisruptionBudget.new;
-  final PodDisruptionBudgetArgs = _policy.PodDisruptionBudget.new;
-  final PodDisruptionBudgetList = _policy.PodDisruptionBudgetList.new;
-  final PodDisruptionBudgetListArgs = _policy.PodDisruptionBudgetList.new;
-  final PodDisruptionBudgetPatch = _policy.PodDisruptionBudgetPatch.new;
-  final PodDisruptionBudgetPatchArgs = _policy.PodDisruptionBudgetPatch.new;
-  final PodDisruptionBudgetSpec = _policy.PodDisruptionBudgetSpec.new;
-  final PodDisruptionBudgetSpecArgs = _policy.PodDisruptionBudgetSpec.new;
-  final PodDisruptionBudgetSpecPatch = _policy.PodDisruptionBudgetSpecPatch.new;
-  final PodDisruptionBudgetSpecPatchArgs = _policy.PodDisruptionBudgetSpecPatch.new;
-  final PodDisruptionBudgetStatus = _policy.PodDisruptionBudgetStatus.new;
-  final PodDisruptionBudgetStatusArgs = _policy.PodDisruptionBudgetStatus.new;
-  final PodDisruptionBudgetStatusPatch = _policy.PodDisruptionBudgetStatusPatch.new;
-  final PodDisruptionBudgetStatusPatchArgs = _policy.PodDisruptionBudgetStatusPatch.new;
-  final PodSecurityPolicy = _policy.PodSecurityPolicy.new;
-  final PodSecurityPolicyArgs = _policy.PodSecurityPolicy.new;
-  final PodSecurityPolicyList = _policy.PodSecurityPolicyList.new;
-  final PodSecurityPolicyListArgs = _policy.PodSecurityPolicyList.new;
-  final PodSecurityPolicyPatch = _policy.PodSecurityPolicyPatch.new;
-  final PodSecurityPolicyPatchArgs = _policy.PodSecurityPolicyPatch.new;
-  final PodSecurityPolicySpec = _policy.PodSecurityPolicySpec.new;
-  final PodSecurityPolicySpecArgs = _policy.PodSecurityPolicySpec.new;
-  final PodSecurityPolicySpecPatch = _policy.PodSecurityPolicySpecPatch.new;
-  final PodSecurityPolicySpecPatchArgs = _policy.PodSecurityPolicySpecPatch.new;
-  final RunAsGroupStrategyOptions = _policy.RunAsGroupStrategyOptions.new;
-  final RunAsGroupStrategyOptionsArgs = _policy.RunAsGroupStrategyOptions.new;
-  final RunAsGroupStrategyOptionsPatch = _policy.RunAsGroupStrategyOptionsPatch.new;
-  final RunAsGroupStrategyOptionsPatchArgs = _policy.RunAsGroupStrategyOptionsPatch.new;
-  final RunAsUserStrategyOptions = _policy.RunAsUserStrategyOptions.new;
-  final RunAsUserStrategyOptionsArgs = _policy.RunAsUserStrategyOptions.new;
-  final RunAsUserStrategyOptionsPatch = _policy.RunAsUserStrategyOptionsPatch.new;
-  final RunAsUserStrategyOptionsPatchArgs = _policy.RunAsUserStrategyOptionsPatch.new;
-  final RuntimeClassStrategyOptions = _policy.RuntimeClassStrategyOptions.new;
-  final RuntimeClassStrategyOptionsArgs = _policy.RuntimeClassStrategyOptions.new;
-  final RuntimeClassStrategyOptionsPatch = _policy.RuntimeClassStrategyOptionsPatch.new;
-  final RuntimeClassStrategyOptionsPatchArgs = _policy.RuntimeClassStrategyOptionsPatch.new;
-  final SELinuxStrategyOptions = _policy.SELinuxStrategyOptions.new;
-  final SELinuxStrategyOptionsArgs = _policy.SELinuxStrategyOptions.new;
-  final SELinuxStrategyOptionsPatch = _policy.SELinuxStrategyOptionsPatch.new;
-  final SELinuxStrategyOptionsPatchArgs = _policy.SELinuxStrategyOptionsPatch.new;
-  final SupplementalGroupsStrategyOptions = _policy.SupplementalGroupsStrategyOptions.new;
-  final SupplementalGroupsStrategyOptionsArgs = _policy.SupplementalGroupsStrategyOptions.new;
-  final SupplementalGroupsStrategyOptionsPatch = _policy.SupplementalGroupsStrategyOptionsPatch.new;
-  final SupplementalGroupsStrategyOptionsPatchArgs = _policy.SupplementalGroupsStrategyOptionsPatch.new;
+  final AllowedCSIDriver = module_policy.AllowedCSIDriver.new;
+  final AllowedCSIDriverArgs = module_policy.AllowedCSIDriver.new;
+  final AllowedCSIDriverPatch = module_policy.AllowedCSIDriverPatch.new;
+  final AllowedCSIDriverPatchArgs = module_policy.AllowedCSIDriverPatch.new;
+  final AllowedFlexVolume = module_policy.AllowedFlexVolume.new;
+  final AllowedFlexVolumeArgs = module_policy.AllowedFlexVolume.new;
+  final AllowedFlexVolumePatch = module_policy.AllowedFlexVolumePatch.new;
+  final AllowedFlexVolumePatchArgs = module_policy.AllowedFlexVolumePatch.new;
+  final AllowedHostPath = module_policy.AllowedHostPath.new;
+  final AllowedHostPathArgs = module_policy.AllowedHostPath.new;
+  final AllowedHostPathPatch = module_policy.AllowedHostPathPatch.new;
+  final AllowedHostPathPatchArgs = module_policy.AllowedHostPathPatch.new;
+  final Eviction = module_policy.Eviction.new;
+  final EvictionArgs = module_policy.Eviction.new;
+  final EvictionPatch = module_policy.EvictionPatch.new;
+  final EvictionPatchArgs = module_policy.EvictionPatch.new;
+  final FSGroupStrategyOptions = module_policy.FSGroupStrategyOptions.new;
+  final FSGroupStrategyOptionsArgs = module_policy.FSGroupStrategyOptions.new;
+  final FSGroupStrategyOptionsPatch =
+      module_policy.FSGroupStrategyOptionsPatch.new;
+  final FSGroupStrategyOptionsPatchArgs =
+      module_policy.FSGroupStrategyOptionsPatch.new;
+  final HostPortRange = module_policy.HostPortRange.new;
+  final HostPortRangeArgs = module_policy.HostPortRange.new;
+  final HostPortRangePatch = module_policy.HostPortRangePatch.new;
+  final HostPortRangePatchArgs = module_policy.HostPortRangePatch.new;
+  final IDRange = module_policy.IDRange.new;
+  final IDRangeArgs = module_policy.IDRange.new;
+  final IDRangePatch = module_policy.IDRangePatch.new;
+  final IDRangePatchArgs = module_policy.IDRangePatch.new;
+  final PodDisruptionBudget = module_policy.PodDisruptionBudget.new;
+  final PodDisruptionBudgetArgs = module_policy.PodDisruptionBudget.new;
+  final PodDisruptionBudgetList = module_policy.PodDisruptionBudgetList.new;
+  final PodDisruptionBudgetListArgs = module_policy.PodDisruptionBudgetList.new;
+  final PodDisruptionBudgetPatch = module_policy.PodDisruptionBudgetPatch.new;
+  final PodDisruptionBudgetPatchArgs =
+      module_policy.PodDisruptionBudgetPatch.new;
+  final PodDisruptionBudgetSpec = module_policy.PodDisruptionBudgetSpec.new;
+  final PodDisruptionBudgetSpecArgs = module_policy.PodDisruptionBudgetSpec.new;
+  final PodDisruptionBudgetSpecPatch =
+      module_policy.PodDisruptionBudgetSpecPatch.new;
+  final PodDisruptionBudgetSpecPatchArgs =
+      module_policy.PodDisruptionBudgetSpecPatch.new;
+  final PodDisruptionBudgetStatus = module_policy.PodDisruptionBudgetStatus.new;
+  final PodDisruptionBudgetStatusArgs =
+      module_policy.PodDisruptionBudgetStatus.new;
+  final PodDisruptionBudgetStatusPatch =
+      module_policy.PodDisruptionBudgetStatusPatch.new;
+  final PodDisruptionBudgetStatusPatchArgs =
+      module_policy.PodDisruptionBudgetStatusPatch.new;
+  final PodSecurityPolicy = module_policy.PodSecurityPolicy.new;
+  final PodSecurityPolicyArgs = module_policy.PodSecurityPolicy.new;
+  final PodSecurityPolicyList = module_policy.PodSecurityPolicyList.new;
+  final PodSecurityPolicyListArgs = module_policy.PodSecurityPolicyList.new;
+  final PodSecurityPolicyPatch = module_policy.PodSecurityPolicyPatch.new;
+  final PodSecurityPolicyPatchArgs = module_policy.PodSecurityPolicyPatch.new;
+  final PodSecurityPolicySpec = module_policy.PodSecurityPolicySpec.new;
+  final PodSecurityPolicySpecArgs = module_policy.PodSecurityPolicySpec.new;
+  final PodSecurityPolicySpecPatch =
+      module_policy.PodSecurityPolicySpecPatch.new;
+  final PodSecurityPolicySpecPatchArgs =
+      module_policy.PodSecurityPolicySpecPatch.new;
+  final RunAsGroupStrategyOptions = module_policy.RunAsGroupStrategyOptions.new;
+  final RunAsGroupStrategyOptionsArgs =
+      module_policy.RunAsGroupStrategyOptions.new;
+  final RunAsGroupStrategyOptionsPatch =
+      module_policy.RunAsGroupStrategyOptionsPatch.new;
+  final RunAsGroupStrategyOptionsPatchArgs =
+      module_policy.RunAsGroupStrategyOptionsPatch.new;
+  final RunAsUserStrategyOptions = module_policy.RunAsUserStrategyOptions.new;
+  final RunAsUserStrategyOptionsArgs =
+      module_policy.RunAsUserStrategyOptions.new;
+  final RunAsUserStrategyOptionsPatch =
+      module_policy.RunAsUserStrategyOptionsPatch.new;
+  final RunAsUserStrategyOptionsPatchArgs =
+      module_policy.RunAsUserStrategyOptionsPatch.new;
+  final RuntimeClassStrategyOptions =
+      module_policy.RuntimeClassStrategyOptions.new;
+  final RuntimeClassStrategyOptionsArgs =
+      module_policy.RuntimeClassStrategyOptions.new;
+  final RuntimeClassStrategyOptionsPatch =
+      module_policy.RuntimeClassStrategyOptionsPatch.new;
+  final RuntimeClassStrategyOptionsPatchArgs =
+      module_policy.RuntimeClassStrategyOptionsPatch.new;
+  final SELinuxStrategyOptions = module_policy.SELinuxStrategyOptions.new;
+  final SELinuxStrategyOptionsArgs = module_policy.SELinuxStrategyOptions.new;
+  final SELinuxStrategyOptionsPatch =
+      module_policy.SELinuxStrategyOptionsPatch.new;
+  final SELinuxStrategyOptionsPatchArgs =
+      module_policy.SELinuxStrategyOptionsPatch.new;
+  final SupplementalGroupsStrategyOptions =
+      module_policy.SupplementalGroupsStrategyOptions.new;
+  final SupplementalGroupsStrategyOptionsArgs =
+      module_policy.SupplementalGroupsStrategyOptions.new;
+  final SupplementalGroupsStrategyOptionsPatch =
+      module_policy.SupplementalGroupsStrategyOptionsPatch.new;
+  final SupplementalGroupsStrategyOptionsPatchArgs =
+      module_policy.SupplementalGroupsStrategyOptionsPatch.new;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Kubernetes = _providers.ProviderProvider.new;
-  final KubernetesArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
+  final Kubernetes = module_providers.ProviderProvider.new;
+  final KubernetesArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
 }
 
 class _RbacAuthorizationK8sIoModuleNamespace {
   _RbacAuthorizationK8sIoModuleNamespace();
-  final AggregationRule = _rbac_authorization_k8s_io.AggregationRule.new;
-  final AggregationRuleArgs = _rbac_authorization_k8s_io.AggregationRule.new;
-  final AggregationRulePatch = _rbac_authorization_k8s_io.AggregationRulePatch.new;
-  final AggregationRulePatchArgs = _rbac_authorization_k8s_io.AggregationRulePatch.new;
-  final ClusterRole = _rbac_authorization_k8s_io.ClusterRole.new;
-  final ClusterRoleArgs = _rbac_authorization_k8s_io.ClusterRole.new;
-  final ClusterRoleBinding = _rbac_authorization_k8s_io.ClusterRoleBinding.new;
-  final ClusterRoleBindingArgs = _rbac_authorization_k8s_io.ClusterRoleBinding.new;
-  final ClusterRoleBindingList = _rbac_authorization_k8s_io.ClusterRoleBindingList.new;
-  final ClusterRoleBindingListArgs = _rbac_authorization_k8s_io.ClusterRoleBindingList.new;
-  final ClusterRoleBindingPatch = _rbac_authorization_k8s_io.ClusterRoleBindingPatch.new;
-  final ClusterRoleBindingPatchArgs = _rbac_authorization_k8s_io.ClusterRoleBindingPatch.new;
-  final ClusterRoleList = _rbac_authorization_k8s_io.ClusterRoleList.new;
-  final ClusterRoleListArgs = _rbac_authorization_k8s_io.ClusterRoleList.new;
-  final ClusterRolePatch = _rbac_authorization_k8s_io.ClusterRolePatch.new;
-  final ClusterRolePatchArgs = _rbac_authorization_k8s_io.ClusterRolePatch.new;
-  final PolicyRule = _rbac_authorization_k8s_io.PolicyRule.new;
-  final PolicyRuleArgs = _rbac_authorization_k8s_io.PolicyRule.new;
-  final PolicyRulePatch = _rbac_authorization_k8s_io.PolicyRulePatch.new;
-  final PolicyRulePatchArgs = _rbac_authorization_k8s_io.PolicyRulePatch.new;
-  final Role = _rbac_authorization_k8s_io.Role.new;
-  final RoleArgs = _rbac_authorization_k8s_io.Role.new;
-  final RoleBinding = _rbac_authorization_k8s_io.RoleBinding.new;
-  final RoleBindingArgs = _rbac_authorization_k8s_io.RoleBinding.new;
-  final RoleBindingList = _rbac_authorization_k8s_io.RoleBindingList.new;
-  final RoleBindingListArgs = _rbac_authorization_k8s_io.RoleBindingList.new;
-  final RoleBindingPatch = _rbac_authorization_k8s_io.RoleBindingPatch.new;
-  final RoleBindingPatchArgs = _rbac_authorization_k8s_io.RoleBindingPatch.new;
-  final RoleList = _rbac_authorization_k8s_io.RoleList.new;
-  final RoleListArgs = _rbac_authorization_k8s_io.RoleList.new;
-  final RolePatch = _rbac_authorization_k8s_io.RolePatch.new;
-  final RolePatchArgs = _rbac_authorization_k8s_io.RolePatch.new;
-  final RoleRef = _rbac_authorization_k8s_io.RoleRef.new;
-  final RoleRefArgs = _rbac_authorization_k8s_io.RoleRef.new;
-  final RoleRefPatch = _rbac_authorization_k8s_io.RoleRefPatch.new;
-  final RoleRefPatchArgs = _rbac_authorization_k8s_io.RoleRefPatch.new;
-  final Subject = _rbac_authorization_k8s_io.Subject.new;
-  final SubjectArgs = _rbac_authorization_k8s_io.Subject.new;
-  final SubjectPatch = _rbac_authorization_k8s_io.SubjectPatch.new;
-  final SubjectPatchArgs = _rbac_authorization_k8s_io.SubjectPatch.new;
+  final AggregationRule = module_rbac_authorization_k8s_io.AggregationRule.new;
+  final AggregationRuleArgs =
+      module_rbac_authorization_k8s_io.AggregationRule.new;
+  final AggregationRulePatch =
+      module_rbac_authorization_k8s_io.AggregationRulePatch.new;
+  final AggregationRulePatchArgs =
+      module_rbac_authorization_k8s_io.AggregationRulePatch.new;
+  final ClusterRole = module_rbac_authorization_k8s_io.ClusterRole.new;
+  final ClusterRoleArgs = module_rbac_authorization_k8s_io.ClusterRole.new;
+  final ClusterRoleBinding =
+      module_rbac_authorization_k8s_io.ClusterRoleBinding.new;
+  final ClusterRoleBindingArgs =
+      module_rbac_authorization_k8s_io.ClusterRoleBinding.new;
+  final ClusterRoleBindingList =
+      module_rbac_authorization_k8s_io.ClusterRoleBindingList.new;
+  final ClusterRoleBindingListArgs =
+      module_rbac_authorization_k8s_io.ClusterRoleBindingList.new;
+  final ClusterRoleBindingPatch =
+      module_rbac_authorization_k8s_io.ClusterRoleBindingPatch.new;
+  final ClusterRoleBindingPatchArgs =
+      module_rbac_authorization_k8s_io.ClusterRoleBindingPatch.new;
+  final ClusterRoleList = module_rbac_authorization_k8s_io.ClusterRoleList.new;
+  final ClusterRoleListArgs =
+      module_rbac_authorization_k8s_io.ClusterRoleList.new;
+  final ClusterRolePatch =
+      module_rbac_authorization_k8s_io.ClusterRolePatch.new;
+  final ClusterRolePatchArgs =
+      module_rbac_authorization_k8s_io.ClusterRolePatch.new;
+  final PolicyRule = module_rbac_authorization_k8s_io.PolicyRule.new;
+  final PolicyRuleArgs = module_rbac_authorization_k8s_io.PolicyRule.new;
+  final PolicyRulePatch = module_rbac_authorization_k8s_io.PolicyRulePatch.new;
+  final PolicyRulePatchArgs =
+      module_rbac_authorization_k8s_io.PolicyRulePatch.new;
+  final Role = module_rbac_authorization_k8s_io.Role.new;
+  final RoleArgs = module_rbac_authorization_k8s_io.Role.new;
+  final RoleBinding = module_rbac_authorization_k8s_io.RoleBinding.new;
+  final RoleBindingArgs = module_rbac_authorization_k8s_io.RoleBinding.new;
+  final RoleBindingList = module_rbac_authorization_k8s_io.RoleBindingList.new;
+  final RoleBindingListArgs =
+      module_rbac_authorization_k8s_io.RoleBindingList.new;
+  final RoleBindingPatch =
+      module_rbac_authorization_k8s_io.RoleBindingPatch.new;
+  final RoleBindingPatchArgs =
+      module_rbac_authorization_k8s_io.RoleBindingPatch.new;
+  final RoleList = module_rbac_authorization_k8s_io.RoleList.new;
+  final RoleListArgs = module_rbac_authorization_k8s_io.RoleList.new;
+  final RolePatch = module_rbac_authorization_k8s_io.RolePatch.new;
+  final RolePatchArgs = module_rbac_authorization_k8s_io.RolePatch.new;
+  final RoleRef = module_rbac_authorization_k8s_io.RoleRef.new;
+  final RoleRefArgs = module_rbac_authorization_k8s_io.RoleRef.new;
+  final RoleRefPatch = module_rbac_authorization_k8s_io.RoleRefPatch.new;
+  final RoleRefPatchArgs = module_rbac_authorization_k8s_io.RoleRefPatch.new;
+  final Subject = module_rbac_authorization_k8s_io.Subject.new;
+  final SubjectArgs = module_rbac_authorization_k8s_io.Subject.new;
+  final SubjectPatch = module_rbac_authorization_k8s_io.SubjectPatch.new;
+  final SubjectPatchArgs = module_rbac_authorization_k8s_io.SubjectPatch.new;
 }
 
 class _ResourceK8sIoModuleNamespace {
   _ResourceK8sIoModuleNamespace();
-  final AllocatedDeviceStatus = _resource_k8s_io.AllocatedDeviceStatus.new;
-  final AllocatedDeviceStatusArgs = _resource_k8s_io.AllocatedDeviceStatus.new;
-  final AllocatedDeviceStatusPatch = _resource_k8s_io.AllocatedDeviceStatusPatch.new;
-  final AllocatedDeviceStatusPatchArgs = _resource_k8s_io.AllocatedDeviceStatusPatch.new;
-  final AllocationResult = _resource_k8s_io.AllocationResult.new;
-  final AllocationResultArgs = _resource_k8s_io.AllocationResult.new;
-  final AllocationResultPatch = _resource_k8s_io.AllocationResultPatch.new;
-  final AllocationResultPatchArgs = _resource_k8s_io.AllocationResultPatch.new;
-  final BasicDevice = _resource_k8s_io.BasicDevice.new;
-  final BasicDeviceArgs = _resource_k8s_io.BasicDevice.new;
-  final BasicDevicePatch = _resource_k8s_io.BasicDevicePatch.new;
-  final BasicDevicePatchArgs = _resource_k8s_io.BasicDevicePatch.new;
-  final CELDeviceSelector = _resource_k8s_io.CELDeviceSelector.new;
-  final CELDeviceSelectorArgs = _resource_k8s_io.CELDeviceSelector.new;
-  final CELDeviceSelectorPatch = _resource_k8s_io.CELDeviceSelectorPatch.new;
-  final CELDeviceSelectorPatchArgs = _resource_k8s_io.CELDeviceSelectorPatch.new;
-  final CapacityRequestPolicy = _resource_k8s_io.CapacityRequestPolicy.new;
-  final CapacityRequestPolicyArgs = _resource_k8s_io.CapacityRequestPolicy.new;
-  final CapacityRequestPolicyPatch = _resource_k8s_io.CapacityRequestPolicyPatch.new;
-  final CapacityRequestPolicyPatchArgs = _resource_k8s_io.CapacityRequestPolicyPatch.new;
-  final CapacityRequestPolicyRange = _resource_k8s_io.CapacityRequestPolicyRange.new;
-  final CapacityRequestPolicyRangeArgs = _resource_k8s_io.CapacityRequestPolicyRange.new;
-  final CapacityRequestPolicyRangePatch = _resource_k8s_io.CapacityRequestPolicyRangePatch.new;
-  final CapacityRequestPolicyRangePatchArgs = _resource_k8s_io.CapacityRequestPolicyRangePatch.new;
-  final CapacityRequirements = _resource_k8s_io.CapacityRequirements.new;
-  final CapacityRequirementsArgs = _resource_k8s_io.CapacityRequirements.new;
-  final CapacityRequirementsPatch = _resource_k8s_io.CapacityRequirementsPatch.new;
-  final CapacityRequirementsPatchArgs = _resource_k8s_io.CapacityRequirementsPatch.new;
-  final Counter = _resource_k8s_io.Counter.new;
-  final CounterArgs = _resource_k8s_io.Counter.new;
-  final CounterPatch = _resource_k8s_io.CounterPatch.new;
-  final CounterPatchArgs = _resource_k8s_io.CounterPatch.new;
-  final CounterSet = _resource_k8s_io.CounterSet.new;
-  final CounterSetArgs = _resource_k8s_io.CounterSet.new;
-  final CounterSetPatch = _resource_k8s_io.CounterSetPatch.new;
-  final CounterSetPatchArgs = _resource_k8s_io.CounterSetPatch.new;
-  final Device = _resource_k8s_io.Device.new;
-  final DeviceAllocationConfiguration = _resource_k8s_io.DeviceAllocationConfiguration.new;
-  final DeviceAllocationConfigurationArgs = _resource_k8s_io.DeviceAllocationConfiguration.new;
-  final DeviceAllocationConfigurationPatch = _resource_k8s_io.DeviceAllocationConfigurationPatch.new;
-  final DeviceAllocationConfigurationPatchArgs = _resource_k8s_io.DeviceAllocationConfigurationPatch.new;
-  final DeviceAllocationResult = _resource_k8s_io.DeviceAllocationResult.new;
-  final DeviceAllocationResultArgs = _resource_k8s_io.DeviceAllocationResult.new;
-  final DeviceAllocationResultPatch = _resource_k8s_io.DeviceAllocationResultPatch.new;
-  final DeviceAllocationResultPatchArgs = _resource_k8s_io.DeviceAllocationResultPatch.new;
-  final DeviceArgs = _resource_k8s_io.Device.new;
-  final DeviceAttribute = _resource_k8s_io.DeviceAttribute.new;
-  final DeviceAttributeArgs = _resource_k8s_io.DeviceAttribute.new;
-  final DeviceAttributePatch = _resource_k8s_io.DeviceAttributePatch.new;
-  final DeviceAttributePatchArgs = _resource_k8s_io.DeviceAttributePatch.new;
-  final DeviceCapacity = _resource_k8s_io.DeviceCapacity.new;
-  final DeviceCapacityArgs = _resource_k8s_io.DeviceCapacity.new;
-  final DeviceCapacityPatch = _resource_k8s_io.DeviceCapacityPatch.new;
-  final DeviceCapacityPatchArgs = _resource_k8s_io.DeviceCapacityPatch.new;
-  final DeviceClaim = _resource_k8s_io.DeviceClaim.new;
-  final DeviceClaimArgs = _resource_k8s_io.DeviceClaim.new;
-  final DeviceClaimConfiguration = _resource_k8s_io.DeviceClaimConfiguration.new;
-  final DeviceClaimConfigurationArgs = _resource_k8s_io.DeviceClaimConfiguration.new;
-  final DeviceClaimConfigurationPatch = _resource_k8s_io.DeviceClaimConfigurationPatch.new;
-  final DeviceClaimConfigurationPatchArgs = _resource_k8s_io.DeviceClaimConfigurationPatch.new;
-  final DeviceClaimPatch = _resource_k8s_io.DeviceClaimPatch.new;
-  final DeviceClaimPatchArgs = _resource_k8s_io.DeviceClaimPatch.new;
-  final DeviceClass = _resource_k8s_io.DeviceClass.new;
-  final DeviceClassArgs = _resource_k8s_io.DeviceClass.new;
-  final DeviceClassConfiguration = _resource_k8s_io.DeviceClassConfiguration.new;
-  final DeviceClassConfigurationArgs = _resource_k8s_io.DeviceClassConfiguration.new;
-  final DeviceClassConfigurationPatch = _resource_k8s_io.DeviceClassConfigurationPatch.new;
-  final DeviceClassConfigurationPatchArgs = _resource_k8s_io.DeviceClassConfigurationPatch.new;
-  final DeviceClassList = _resource_k8s_io.DeviceClassList.new;
-  final DeviceClassListArgs = _resource_k8s_io.DeviceClassList.new;
-  final DeviceClassPatch = _resource_k8s_io.DeviceClassPatch.new;
-  final DeviceClassPatchArgs = _resource_k8s_io.DeviceClassPatch.new;
-  final DeviceClassSpec = _resource_k8s_io.DeviceClassSpec.new;
-  final DeviceClassSpecArgs = _resource_k8s_io.DeviceClassSpec.new;
-  final DeviceClassSpecPatch = _resource_k8s_io.DeviceClassSpecPatch.new;
-  final DeviceClassSpecPatchArgs = _resource_k8s_io.DeviceClassSpecPatch.new;
-  final DeviceConstraint = _resource_k8s_io.DeviceConstraint.new;
-  final DeviceConstraintArgs = _resource_k8s_io.DeviceConstraint.new;
-  final DeviceConstraintPatch = _resource_k8s_io.DeviceConstraintPatch.new;
-  final DeviceConstraintPatchArgs = _resource_k8s_io.DeviceConstraintPatch.new;
-  final DeviceCounterConsumption = _resource_k8s_io.DeviceCounterConsumption.new;
-  final DeviceCounterConsumptionArgs = _resource_k8s_io.DeviceCounterConsumption.new;
-  final DeviceCounterConsumptionPatch = _resource_k8s_io.DeviceCounterConsumptionPatch.new;
-  final DeviceCounterConsumptionPatchArgs = _resource_k8s_io.DeviceCounterConsumptionPatch.new;
-  final DevicePatch = _resource_k8s_io.DevicePatch.new;
-  final DevicePatchArgs = _resource_k8s_io.DevicePatch.new;
-  final DeviceRequest = _resource_k8s_io.DeviceRequest.new;
-  final DeviceRequestAllocationResult = _resource_k8s_io.DeviceRequestAllocationResult.new;
-  final DeviceRequestAllocationResultArgs = _resource_k8s_io.DeviceRequestAllocationResult.new;
-  final DeviceRequestAllocationResultPatch = _resource_k8s_io.DeviceRequestAllocationResultPatch.new;
-  final DeviceRequestAllocationResultPatchArgs = _resource_k8s_io.DeviceRequestAllocationResultPatch.new;
-  final DeviceRequestArgs = _resource_k8s_io.DeviceRequest.new;
-  final DeviceRequestPatch = _resource_k8s_io.DeviceRequestPatch.new;
-  final DeviceRequestPatchArgs = _resource_k8s_io.DeviceRequestPatch.new;
-  final DeviceSelector = _resource_k8s_io.DeviceSelector.new;
-  final DeviceSelectorArgs = _resource_k8s_io.DeviceSelector.new;
-  final DeviceSelectorPatch = _resource_k8s_io.DeviceSelectorPatch.new;
-  final DeviceSelectorPatchArgs = _resource_k8s_io.DeviceSelectorPatch.new;
-  final DeviceSubRequest = _resource_k8s_io.DeviceSubRequest.new;
-  final DeviceSubRequestArgs = _resource_k8s_io.DeviceSubRequest.new;
-  final DeviceSubRequestPatch = _resource_k8s_io.DeviceSubRequestPatch.new;
-  final DeviceSubRequestPatchArgs = _resource_k8s_io.DeviceSubRequestPatch.new;
-  final DeviceTaint = _resource_k8s_io.DeviceTaint.new;
-  final DeviceTaintArgs = _resource_k8s_io.DeviceTaint.new;
-  final DeviceTaintPatch = _resource_k8s_io.DeviceTaintPatch.new;
-  final DeviceTaintPatchArgs = _resource_k8s_io.DeviceTaintPatch.new;
-  final DeviceTaintRule = _resource_k8s_io.DeviceTaintRule.new;
-  final DeviceTaintRuleArgs = _resource_k8s_io.DeviceTaintRule.new;
-  final DeviceTaintRuleList = _resource_k8s_io.DeviceTaintRuleList.new;
-  final DeviceTaintRuleListArgs = _resource_k8s_io.DeviceTaintRuleList.new;
-  final DeviceTaintRulePatch = _resource_k8s_io.DeviceTaintRulePatch.new;
-  final DeviceTaintRulePatchArgs = _resource_k8s_io.DeviceTaintRulePatch.new;
-  final DeviceTaintRuleSpec = _resource_k8s_io.DeviceTaintRuleSpec.new;
-  final DeviceTaintRuleSpecArgs = _resource_k8s_io.DeviceTaintRuleSpec.new;
-  final DeviceTaintRuleSpecPatch = _resource_k8s_io.DeviceTaintRuleSpecPatch.new;
-  final DeviceTaintRuleSpecPatchArgs = _resource_k8s_io.DeviceTaintRuleSpecPatch.new;
-  final DeviceTaintRuleStatus = _resource_k8s_io.DeviceTaintRuleStatus.new;
-  final DeviceTaintRuleStatusArgs = _resource_k8s_io.DeviceTaintRuleStatus.new;
-  final DeviceTaintRuleStatusPatch = _resource_k8s_io.DeviceTaintRuleStatusPatch.new;
-  final DeviceTaintRuleStatusPatchArgs = _resource_k8s_io.DeviceTaintRuleStatusPatch.new;
-  final DeviceTaintSelector = _resource_k8s_io.DeviceTaintSelector.new;
-  final DeviceTaintSelectorArgs = _resource_k8s_io.DeviceTaintSelector.new;
-  final DeviceTaintSelectorPatch = _resource_k8s_io.DeviceTaintSelectorPatch.new;
-  final DeviceTaintSelectorPatchArgs = _resource_k8s_io.DeviceTaintSelectorPatch.new;
-  final DeviceToleration = _resource_k8s_io.DeviceToleration.new;
-  final DeviceTolerationArgs = _resource_k8s_io.DeviceToleration.new;
-  final DeviceTolerationPatch = _resource_k8s_io.DeviceTolerationPatch.new;
-  final DeviceTolerationPatchArgs = _resource_k8s_io.DeviceTolerationPatch.new;
-  final DriverAllocationResult = _resource_k8s_io.DriverAllocationResult.new;
-  final DriverAllocationResultArgs = _resource_k8s_io.DriverAllocationResult.new;
-  final DriverAllocationResultPatch = _resource_k8s_io.DriverAllocationResultPatch.new;
-  final DriverAllocationResultPatchArgs = _resource_k8s_io.DriverAllocationResultPatch.new;
-  final DriverRequests = _resource_k8s_io.DriverRequests.new;
-  final DriverRequestsArgs = _resource_k8s_io.DriverRequests.new;
-  final DriverRequestsPatch = _resource_k8s_io.DriverRequestsPatch.new;
-  final DriverRequestsPatchArgs = _resource_k8s_io.DriverRequestsPatch.new;
-  final ExactDeviceRequest = _resource_k8s_io.ExactDeviceRequest.new;
-  final ExactDeviceRequestArgs = _resource_k8s_io.ExactDeviceRequest.new;
-  final ExactDeviceRequestPatch = _resource_k8s_io.ExactDeviceRequestPatch.new;
-  final ExactDeviceRequestPatchArgs = _resource_k8s_io.ExactDeviceRequestPatch.new;
-  final NamedResourcesAllocationResult = _resource_k8s_io.NamedResourcesAllocationResult.new;
-  final NamedResourcesAllocationResultArgs = _resource_k8s_io.NamedResourcesAllocationResult.new;
-  final NamedResourcesAllocationResultPatch = _resource_k8s_io.NamedResourcesAllocationResultPatch.new;
-  final NamedResourcesAllocationResultPatchArgs = _resource_k8s_io.NamedResourcesAllocationResultPatch.new;
-  final NamedResourcesAttribute = _resource_k8s_io.NamedResourcesAttribute.new;
-  final NamedResourcesAttributeArgs = _resource_k8s_io.NamedResourcesAttribute.new;
-  final NamedResourcesAttributePatch = _resource_k8s_io.NamedResourcesAttributePatch.new;
-  final NamedResourcesAttributePatchArgs = _resource_k8s_io.NamedResourcesAttributePatch.new;
-  final NamedResourcesFilter = _resource_k8s_io.NamedResourcesFilter.new;
-  final NamedResourcesFilterArgs = _resource_k8s_io.NamedResourcesFilter.new;
-  final NamedResourcesFilterPatch = _resource_k8s_io.NamedResourcesFilterPatch.new;
-  final NamedResourcesFilterPatchArgs = _resource_k8s_io.NamedResourcesFilterPatch.new;
-  final NamedResourcesInstance = _resource_k8s_io.NamedResourcesInstance.new;
-  final NamedResourcesInstanceArgs = _resource_k8s_io.NamedResourcesInstance.new;
-  final NamedResourcesInstancePatch = _resource_k8s_io.NamedResourcesInstancePatch.new;
-  final NamedResourcesInstancePatchArgs = _resource_k8s_io.NamedResourcesInstancePatch.new;
-  final NamedResourcesIntSlice = _resource_k8s_io.NamedResourcesIntSlice.new;
-  final NamedResourcesIntSliceArgs = _resource_k8s_io.NamedResourcesIntSlice.new;
-  final NamedResourcesIntSlicePatch = _resource_k8s_io.NamedResourcesIntSlicePatch.new;
-  final NamedResourcesIntSlicePatchArgs = _resource_k8s_io.NamedResourcesIntSlicePatch.new;
-  final NamedResourcesRequest = _resource_k8s_io.NamedResourcesRequest.new;
-  final NamedResourcesRequestArgs = _resource_k8s_io.NamedResourcesRequest.new;
-  final NamedResourcesRequestPatch = _resource_k8s_io.NamedResourcesRequestPatch.new;
-  final NamedResourcesRequestPatchArgs = _resource_k8s_io.NamedResourcesRequestPatch.new;
-  final NamedResourcesResources = _resource_k8s_io.NamedResourcesResources.new;
-  final NamedResourcesResourcesArgs = _resource_k8s_io.NamedResourcesResources.new;
-  final NamedResourcesResourcesPatch = _resource_k8s_io.NamedResourcesResourcesPatch.new;
-  final NamedResourcesResourcesPatchArgs = _resource_k8s_io.NamedResourcesResourcesPatch.new;
-  final NamedResourcesStringSlice = _resource_k8s_io.NamedResourcesStringSlice.new;
-  final NamedResourcesStringSliceArgs = _resource_k8s_io.NamedResourcesStringSlice.new;
-  final NamedResourcesStringSlicePatch = _resource_k8s_io.NamedResourcesStringSlicePatch.new;
-  final NamedResourcesStringSlicePatchArgs = _resource_k8s_io.NamedResourcesStringSlicePatch.new;
-  final NetworkDeviceData = _resource_k8s_io.NetworkDeviceData.new;
-  final NetworkDeviceDataArgs = _resource_k8s_io.NetworkDeviceData.new;
-  final NetworkDeviceDataPatch = _resource_k8s_io.NetworkDeviceDataPatch.new;
-  final NetworkDeviceDataPatchArgs = _resource_k8s_io.NetworkDeviceDataPatch.new;
-  final OpaqueDeviceConfiguration = _resource_k8s_io.OpaqueDeviceConfiguration.new;
-  final OpaqueDeviceConfigurationArgs = _resource_k8s_io.OpaqueDeviceConfiguration.new;
-  final OpaqueDeviceConfigurationPatch = _resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
-  final OpaqueDeviceConfigurationPatchArgs = _resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
-  final PodScheduling = _resource_k8s_io.PodScheduling.new;
-  final PodSchedulingArgs = _resource_k8s_io.PodScheduling.new;
-  final PodSchedulingContext = _resource_k8s_io.PodSchedulingContext.new;
-  final PodSchedulingContextArgs = _resource_k8s_io.PodSchedulingContext.new;
-  final PodSchedulingContextList = _resource_k8s_io.PodSchedulingContextList.new;
-  final PodSchedulingContextListArgs = _resource_k8s_io.PodSchedulingContextList.new;
-  final PodSchedulingContextPatch = _resource_k8s_io.PodSchedulingContextPatch.new;
-  final PodSchedulingContextPatchArgs = _resource_k8s_io.PodSchedulingContextPatch.new;
-  final PodSchedulingContextSpec = _resource_k8s_io.PodSchedulingContextSpec.new;
-  final PodSchedulingContextSpecArgs = _resource_k8s_io.PodSchedulingContextSpec.new;
-  final PodSchedulingContextSpecPatch = _resource_k8s_io.PodSchedulingContextSpecPatch.new;
-  final PodSchedulingContextSpecPatchArgs = _resource_k8s_io.PodSchedulingContextSpecPatch.new;
-  final PodSchedulingContextStatus = _resource_k8s_io.PodSchedulingContextStatus.new;
-  final PodSchedulingContextStatusArgs = _resource_k8s_io.PodSchedulingContextStatus.new;
-  final PodSchedulingContextStatusPatch = _resource_k8s_io.PodSchedulingContextStatusPatch.new;
-  final PodSchedulingContextStatusPatchArgs = _resource_k8s_io.PodSchedulingContextStatusPatch.new;
-  final PodSchedulingList = _resource_k8s_io.PodSchedulingList.new;
-  final PodSchedulingListArgs = _resource_k8s_io.PodSchedulingList.new;
-  final PodSchedulingPatch = _resource_k8s_io.PodSchedulingPatch.new;
-  final PodSchedulingPatchArgs = _resource_k8s_io.PodSchedulingPatch.new;
-  final PodSchedulingSpec = _resource_k8s_io.PodSchedulingSpec.new;
-  final PodSchedulingSpecArgs = _resource_k8s_io.PodSchedulingSpec.new;
-  final PodSchedulingSpecPatch = _resource_k8s_io.PodSchedulingSpecPatch.new;
-  final PodSchedulingSpecPatchArgs = _resource_k8s_io.PodSchedulingSpecPatch.new;
-  final PodSchedulingStatus = _resource_k8s_io.PodSchedulingStatus.new;
-  final PodSchedulingStatusArgs = _resource_k8s_io.PodSchedulingStatus.new;
-  final PodSchedulingStatusPatch = _resource_k8s_io.PodSchedulingStatusPatch.new;
-  final PodSchedulingStatusPatchArgs = _resource_k8s_io.PodSchedulingStatusPatch.new;
-  final ResourceClaim = _resource_k8s_io.ResourceClaim.new;
-  final ResourceClaimArgs = _resource_k8s_io.ResourceClaim.new;
-  final ResourceClaimConsumerReference = _resource_k8s_io.ResourceClaimConsumerReference.new;
-  final ResourceClaimConsumerReferenceArgs = _resource_k8s_io.ResourceClaimConsumerReference.new;
-  final ResourceClaimConsumerReferencePatch = _resource_k8s_io.ResourceClaimConsumerReferencePatch.new;
-  final ResourceClaimConsumerReferencePatchArgs = _resource_k8s_io.ResourceClaimConsumerReferencePatch.new;
-  final ResourceClaimList = _resource_k8s_io.ResourceClaimList.new;
-  final ResourceClaimListArgs = _resource_k8s_io.ResourceClaimList.new;
-  final ResourceClaimParameters = _resource_k8s_io.ResourceClaimParameters.new;
-  final ResourceClaimParametersArgs = _resource_k8s_io.ResourceClaimParameters.new;
-  final ResourceClaimParametersList = _resource_k8s_io.ResourceClaimParametersList.new;
-  final ResourceClaimParametersListArgs = _resource_k8s_io.ResourceClaimParametersList.new;
-  final ResourceClaimParametersPatch = _resource_k8s_io.ResourceClaimParametersPatch.new;
-  final ResourceClaimParametersPatchArgs = _resource_k8s_io.ResourceClaimParametersPatch.new;
-  final ResourceClaimParametersReference = _resource_k8s_io.ResourceClaimParametersReference.new;
-  final ResourceClaimParametersReferenceArgs = _resource_k8s_io.ResourceClaimParametersReference.new;
-  final ResourceClaimParametersReferencePatch = _resource_k8s_io.ResourceClaimParametersReferencePatch.new;
-  final ResourceClaimParametersReferencePatchArgs = _resource_k8s_io.ResourceClaimParametersReferencePatch.new;
-  final ResourceClaimPatch = _resource_k8s_io.ResourceClaimPatch.new;
-  final ResourceClaimPatchArgs = _resource_k8s_io.ResourceClaimPatch.new;
-  final ResourceClaimSchedulingStatus = _resource_k8s_io.ResourceClaimSchedulingStatus.new;
-  final ResourceClaimSchedulingStatusArgs = _resource_k8s_io.ResourceClaimSchedulingStatus.new;
-  final ResourceClaimSchedulingStatusPatch = _resource_k8s_io.ResourceClaimSchedulingStatusPatch.new;
-  final ResourceClaimSchedulingStatusPatchArgs = _resource_k8s_io.ResourceClaimSchedulingStatusPatch.new;
-  final ResourceClaimSpec = _resource_k8s_io.ResourceClaimSpec.new;
-  final ResourceClaimSpecArgs = _resource_k8s_io.ResourceClaimSpec.new;
-  final ResourceClaimSpecPatch = _resource_k8s_io.ResourceClaimSpecPatch.new;
-  final ResourceClaimSpecPatchArgs = _resource_k8s_io.ResourceClaimSpecPatch.new;
-  final ResourceClaimStatus = _resource_k8s_io.ResourceClaimStatus.new;
-  final ResourceClaimStatusArgs = _resource_k8s_io.ResourceClaimStatus.new;
-  final ResourceClaimStatusPatch = _resource_k8s_io.ResourceClaimStatusPatch.new;
-  final ResourceClaimStatusPatchArgs = _resource_k8s_io.ResourceClaimStatusPatch.new;
-  final ResourceClaimTemplate = _resource_k8s_io.ResourceClaimTemplate.new;
-  final ResourceClaimTemplateArgs = _resource_k8s_io.ResourceClaimTemplate.new;
-  final ResourceClaimTemplateList = _resource_k8s_io.ResourceClaimTemplateList.new;
-  final ResourceClaimTemplateListArgs = _resource_k8s_io.ResourceClaimTemplateList.new;
-  final ResourceClaimTemplatePatch = _resource_k8s_io.ResourceClaimTemplatePatch.new;
-  final ResourceClaimTemplatePatchArgs = _resource_k8s_io.ResourceClaimTemplatePatch.new;
-  final ResourceClaimTemplateSpec = _resource_k8s_io.ResourceClaimTemplateSpec.new;
-  final ResourceClaimTemplateSpecArgs = _resource_k8s_io.ResourceClaimTemplateSpec.new;
-  final ResourceClaimTemplateSpecPatch = _resource_k8s_io.ResourceClaimTemplateSpecPatch.new;
-  final ResourceClaimTemplateSpecPatchArgs = _resource_k8s_io.ResourceClaimTemplateSpecPatch.new;
-  final ResourceClass = _resource_k8s_io.ResourceClass.new;
-  final ResourceClassArgs = _resource_k8s_io.ResourceClass.new;
-  final ResourceClassList = _resource_k8s_io.ResourceClassList.new;
-  final ResourceClassListArgs = _resource_k8s_io.ResourceClassList.new;
-  final ResourceClassParameters = _resource_k8s_io.ResourceClassParameters.new;
-  final ResourceClassParametersArgs = _resource_k8s_io.ResourceClassParameters.new;
-  final ResourceClassParametersList = _resource_k8s_io.ResourceClassParametersList.new;
-  final ResourceClassParametersListArgs = _resource_k8s_io.ResourceClassParametersList.new;
-  final ResourceClassParametersPatch = _resource_k8s_io.ResourceClassParametersPatch.new;
-  final ResourceClassParametersPatchArgs = _resource_k8s_io.ResourceClassParametersPatch.new;
-  final ResourceClassParametersReference = _resource_k8s_io.ResourceClassParametersReference.new;
-  final ResourceClassParametersReferenceArgs = _resource_k8s_io.ResourceClassParametersReference.new;
-  final ResourceClassParametersReferencePatch = _resource_k8s_io.ResourceClassParametersReferencePatch.new;
-  final ResourceClassParametersReferencePatchArgs = _resource_k8s_io.ResourceClassParametersReferencePatch.new;
-  final ResourceClassPatch = _resource_k8s_io.ResourceClassPatch.new;
-  final ResourceClassPatchArgs = _resource_k8s_io.ResourceClassPatch.new;
-  final ResourceFilter = _resource_k8s_io.ResourceFilter.new;
-  final ResourceFilterArgs = _resource_k8s_io.ResourceFilter.new;
-  final ResourceFilterPatch = _resource_k8s_io.ResourceFilterPatch.new;
-  final ResourceFilterPatchArgs = _resource_k8s_io.ResourceFilterPatch.new;
-  final ResourceHandle = _resource_k8s_io.ResourceHandle.new;
-  final ResourceHandleArgs = _resource_k8s_io.ResourceHandle.new;
-  final ResourceHandlePatch = _resource_k8s_io.ResourceHandlePatch.new;
-  final ResourceHandlePatchArgs = _resource_k8s_io.ResourceHandlePatch.new;
-  final ResourcePool = _resource_k8s_io.ResourcePool.new;
-  final ResourcePoolArgs = _resource_k8s_io.ResourcePool.new;
-  final ResourcePoolPatch = _resource_k8s_io.ResourcePoolPatch.new;
-  final ResourcePoolPatchArgs = _resource_k8s_io.ResourcePoolPatch.new;
-  final ResourceRequest = _resource_k8s_io.ResourceRequest.new;
-  final ResourceRequestArgs = _resource_k8s_io.ResourceRequest.new;
-  final ResourceRequestPatch = _resource_k8s_io.ResourceRequestPatch.new;
-  final ResourceRequestPatchArgs = _resource_k8s_io.ResourceRequestPatch.new;
-  final ResourceSlice = _resource_k8s_io.ResourceSlice.new;
-  final ResourceSliceArgs = _resource_k8s_io.ResourceSlice.new;
-  final ResourceSliceList = _resource_k8s_io.ResourceSliceList.new;
-  final ResourceSliceListArgs = _resource_k8s_io.ResourceSliceList.new;
-  final ResourceSlicePatch = _resource_k8s_io.ResourceSlicePatch.new;
-  final ResourceSlicePatchArgs = _resource_k8s_io.ResourceSlicePatch.new;
-  final ResourceSliceSpec = _resource_k8s_io.ResourceSliceSpec.new;
-  final ResourceSliceSpecArgs = _resource_k8s_io.ResourceSliceSpec.new;
-  final ResourceSliceSpecPatch = _resource_k8s_io.ResourceSliceSpecPatch.new;
-  final ResourceSliceSpecPatchArgs = _resource_k8s_io.ResourceSliceSpecPatch.new;
-  final StructuredResourceHandle = _resource_k8s_io.StructuredResourceHandle.new;
-  final StructuredResourceHandleArgs = _resource_k8s_io.StructuredResourceHandle.new;
-  final StructuredResourceHandlePatch = _resource_k8s_io.StructuredResourceHandlePatch.new;
-  final StructuredResourceHandlePatchArgs = _resource_k8s_io.StructuredResourceHandlePatch.new;
-  final VendorParameters = _resource_k8s_io.VendorParameters.new;
-  final VendorParametersArgs = _resource_k8s_io.VendorParameters.new;
-  final VendorParametersPatch = _resource_k8s_io.VendorParametersPatch.new;
-  final VendorParametersPatchArgs = _resource_k8s_io.VendorParametersPatch.new;
+  final AllocatedDeviceStatus =
+      module_resource_k8s_io.AllocatedDeviceStatus.new;
+  final AllocatedDeviceStatusArgs =
+      module_resource_k8s_io.AllocatedDeviceStatus.new;
+  final AllocatedDeviceStatusPatch =
+      module_resource_k8s_io.AllocatedDeviceStatusPatch.new;
+  final AllocatedDeviceStatusPatchArgs =
+      module_resource_k8s_io.AllocatedDeviceStatusPatch.new;
+  final AllocationResult = module_resource_k8s_io.AllocationResult.new;
+  final AllocationResultArgs = module_resource_k8s_io.AllocationResult.new;
+  final AllocationResultPatch =
+      module_resource_k8s_io.AllocationResultPatch.new;
+  final AllocationResultPatchArgs =
+      module_resource_k8s_io.AllocationResultPatch.new;
+  final BasicDevice = module_resource_k8s_io.BasicDevice.new;
+  final BasicDeviceArgs = module_resource_k8s_io.BasicDevice.new;
+  final BasicDevicePatch = module_resource_k8s_io.BasicDevicePatch.new;
+  final BasicDevicePatchArgs = module_resource_k8s_io.BasicDevicePatch.new;
+  final CELDeviceSelector = module_resource_k8s_io.CELDeviceSelector.new;
+  final CELDeviceSelectorArgs = module_resource_k8s_io.CELDeviceSelector.new;
+  final CELDeviceSelectorPatch =
+      module_resource_k8s_io.CELDeviceSelectorPatch.new;
+  final CELDeviceSelectorPatchArgs =
+      module_resource_k8s_io.CELDeviceSelectorPatch.new;
+  final CapacityRequestPolicy =
+      module_resource_k8s_io.CapacityRequestPolicy.new;
+  final CapacityRequestPolicyArgs =
+      module_resource_k8s_io.CapacityRequestPolicy.new;
+  final CapacityRequestPolicyPatch =
+      module_resource_k8s_io.CapacityRequestPolicyPatch.new;
+  final CapacityRequestPolicyPatchArgs =
+      module_resource_k8s_io.CapacityRequestPolicyPatch.new;
+  final CapacityRequestPolicyRange =
+      module_resource_k8s_io.CapacityRequestPolicyRange.new;
+  final CapacityRequestPolicyRangeArgs =
+      module_resource_k8s_io.CapacityRequestPolicyRange.new;
+  final CapacityRequestPolicyRangePatch =
+      module_resource_k8s_io.CapacityRequestPolicyRangePatch.new;
+  final CapacityRequestPolicyRangePatchArgs =
+      module_resource_k8s_io.CapacityRequestPolicyRangePatch.new;
+  final CapacityRequirements = module_resource_k8s_io.CapacityRequirements.new;
+  final CapacityRequirementsArgs =
+      module_resource_k8s_io.CapacityRequirements.new;
+  final CapacityRequirementsPatch =
+      module_resource_k8s_io.CapacityRequirementsPatch.new;
+  final CapacityRequirementsPatchArgs =
+      module_resource_k8s_io.CapacityRequirementsPatch.new;
+  final Counter = module_resource_k8s_io.Counter.new;
+  final CounterArgs = module_resource_k8s_io.Counter.new;
+  final CounterPatch = module_resource_k8s_io.CounterPatch.new;
+  final CounterPatchArgs = module_resource_k8s_io.CounterPatch.new;
+  final CounterSet = module_resource_k8s_io.CounterSet.new;
+  final CounterSetArgs = module_resource_k8s_io.CounterSet.new;
+  final CounterSetPatch = module_resource_k8s_io.CounterSetPatch.new;
+  final CounterSetPatchArgs = module_resource_k8s_io.CounterSetPatch.new;
+  final Device = module_resource_k8s_io.Device.new;
+  final DeviceAllocationConfiguration =
+      module_resource_k8s_io.DeviceAllocationConfiguration.new;
+  final DeviceAllocationConfigurationArgs =
+      module_resource_k8s_io.DeviceAllocationConfiguration.new;
+  final DeviceAllocationConfigurationPatch =
+      module_resource_k8s_io.DeviceAllocationConfigurationPatch.new;
+  final DeviceAllocationConfigurationPatchArgs =
+      module_resource_k8s_io.DeviceAllocationConfigurationPatch.new;
+  final DeviceAllocationResult =
+      module_resource_k8s_io.DeviceAllocationResult.new;
+  final DeviceAllocationResultArgs =
+      module_resource_k8s_io.DeviceAllocationResult.new;
+  final DeviceAllocationResultPatch =
+      module_resource_k8s_io.DeviceAllocationResultPatch.new;
+  final DeviceAllocationResultPatchArgs =
+      module_resource_k8s_io.DeviceAllocationResultPatch.new;
+  final DeviceArgs = module_resource_k8s_io.Device.new;
+  final DeviceAttribute = module_resource_k8s_io.DeviceAttribute.new;
+  final DeviceAttributeArgs = module_resource_k8s_io.DeviceAttribute.new;
+  final DeviceAttributePatch = module_resource_k8s_io.DeviceAttributePatch.new;
+  final DeviceAttributePatchArgs =
+      module_resource_k8s_io.DeviceAttributePatch.new;
+  final DeviceCapacity = module_resource_k8s_io.DeviceCapacity.new;
+  final DeviceCapacityArgs = module_resource_k8s_io.DeviceCapacity.new;
+  final DeviceCapacityPatch = module_resource_k8s_io.DeviceCapacityPatch.new;
+  final DeviceCapacityPatchArgs =
+      module_resource_k8s_io.DeviceCapacityPatch.new;
+  final DeviceClaim = module_resource_k8s_io.DeviceClaim.new;
+  final DeviceClaimArgs = module_resource_k8s_io.DeviceClaim.new;
+  final DeviceClaimConfiguration =
+      module_resource_k8s_io.DeviceClaimConfiguration.new;
+  final DeviceClaimConfigurationArgs =
+      module_resource_k8s_io.DeviceClaimConfiguration.new;
+  final DeviceClaimConfigurationPatch =
+      module_resource_k8s_io.DeviceClaimConfigurationPatch.new;
+  final DeviceClaimConfigurationPatchArgs =
+      module_resource_k8s_io.DeviceClaimConfigurationPatch.new;
+  final DeviceClaimPatch = module_resource_k8s_io.DeviceClaimPatch.new;
+  final DeviceClaimPatchArgs = module_resource_k8s_io.DeviceClaimPatch.new;
+  final DeviceClass = module_resource_k8s_io.DeviceClass.new;
+  final DeviceClassArgs = module_resource_k8s_io.DeviceClass.new;
+  final DeviceClassConfiguration =
+      module_resource_k8s_io.DeviceClassConfiguration.new;
+  final DeviceClassConfigurationArgs =
+      module_resource_k8s_io.DeviceClassConfiguration.new;
+  final DeviceClassConfigurationPatch =
+      module_resource_k8s_io.DeviceClassConfigurationPatch.new;
+  final DeviceClassConfigurationPatchArgs =
+      module_resource_k8s_io.DeviceClassConfigurationPatch.new;
+  final DeviceClassList = module_resource_k8s_io.DeviceClassList.new;
+  final DeviceClassListArgs = module_resource_k8s_io.DeviceClassList.new;
+  final DeviceClassPatch = module_resource_k8s_io.DeviceClassPatch.new;
+  final DeviceClassPatchArgs = module_resource_k8s_io.DeviceClassPatch.new;
+  final DeviceClassSpec = module_resource_k8s_io.DeviceClassSpec.new;
+  final DeviceClassSpecArgs = module_resource_k8s_io.DeviceClassSpec.new;
+  final DeviceClassSpecPatch = module_resource_k8s_io.DeviceClassSpecPatch.new;
+  final DeviceClassSpecPatchArgs =
+      module_resource_k8s_io.DeviceClassSpecPatch.new;
+  final DeviceConstraint = module_resource_k8s_io.DeviceConstraint.new;
+  final DeviceConstraintArgs = module_resource_k8s_io.DeviceConstraint.new;
+  final DeviceConstraintPatch =
+      module_resource_k8s_io.DeviceConstraintPatch.new;
+  final DeviceConstraintPatchArgs =
+      module_resource_k8s_io.DeviceConstraintPatch.new;
+  final DeviceCounterConsumption =
+      module_resource_k8s_io.DeviceCounterConsumption.new;
+  final DeviceCounterConsumptionArgs =
+      module_resource_k8s_io.DeviceCounterConsumption.new;
+  final DeviceCounterConsumptionPatch =
+      module_resource_k8s_io.DeviceCounterConsumptionPatch.new;
+  final DeviceCounterConsumptionPatchArgs =
+      module_resource_k8s_io.DeviceCounterConsumptionPatch.new;
+  final DevicePatch = module_resource_k8s_io.DevicePatch.new;
+  final DevicePatchArgs = module_resource_k8s_io.DevicePatch.new;
+  final DeviceRequest = module_resource_k8s_io.DeviceRequest.new;
+  final DeviceRequestAllocationResult =
+      module_resource_k8s_io.DeviceRequestAllocationResult.new;
+  final DeviceRequestAllocationResultArgs =
+      module_resource_k8s_io.DeviceRequestAllocationResult.new;
+  final DeviceRequestAllocationResultPatch =
+      module_resource_k8s_io.DeviceRequestAllocationResultPatch.new;
+  final DeviceRequestAllocationResultPatchArgs =
+      module_resource_k8s_io.DeviceRequestAllocationResultPatch.new;
+  final DeviceRequestArgs = module_resource_k8s_io.DeviceRequest.new;
+  final DeviceRequestPatch = module_resource_k8s_io.DeviceRequestPatch.new;
+  final DeviceRequestPatchArgs = module_resource_k8s_io.DeviceRequestPatch.new;
+  final DeviceSelector = module_resource_k8s_io.DeviceSelector.new;
+  final DeviceSelectorArgs = module_resource_k8s_io.DeviceSelector.new;
+  final DeviceSelectorPatch = module_resource_k8s_io.DeviceSelectorPatch.new;
+  final DeviceSelectorPatchArgs =
+      module_resource_k8s_io.DeviceSelectorPatch.new;
+  final DeviceSubRequest = module_resource_k8s_io.DeviceSubRequest.new;
+  final DeviceSubRequestArgs = module_resource_k8s_io.DeviceSubRequest.new;
+  final DeviceSubRequestPatch =
+      module_resource_k8s_io.DeviceSubRequestPatch.new;
+  final DeviceSubRequestPatchArgs =
+      module_resource_k8s_io.DeviceSubRequestPatch.new;
+  final DeviceTaint = module_resource_k8s_io.DeviceTaint.new;
+  final DeviceTaintArgs = module_resource_k8s_io.DeviceTaint.new;
+  final DeviceTaintPatch = module_resource_k8s_io.DeviceTaintPatch.new;
+  final DeviceTaintPatchArgs = module_resource_k8s_io.DeviceTaintPatch.new;
+  final DeviceTaintRule = module_resource_k8s_io.DeviceTaintRule.new;
+  final DeviceTaintRuleArgs = module_resource_k8s_io.DeviceTaintRule.new;
+  final DeviceTaintRuleList = module_resource_k8s_io.DeviceTaintRuleList.new;
+  final DeviceTaintRuleListArgs =
+      module_resource_k8s_io.DeviceTaintRuleList.new;
+  final DeviceTaintRulePatch = module_resource_k8s_io.DeviceTaintRulePatch.new;
+  final DeviceTaintRulePatchArgs =
+      module_resource_k8s_io.DeviceTaintRulePatch.new;
+  final DeviceTaintRuleSpec = module_resource_k8s_io.DeviceTaintRuleSpec.new;
+  final DeviceTaintRuleSpecArgs =
+      module_resource_k8s_io.DeviceTaintRuleSpec.new;
+  final DeviceTaintRuleSpecPatch =
+      module_resource_k8s_io.DeviceTaintRuleSpecPatch.new;
+  final DeviceTaintRuleSpecPatchArgs =
+      module_resource_k8s_io.DeviceTaintRuleSpecPatch.new;
+  final DeviceTaintRuleStatus =
+      module_resource_k8s_io.DeviceTaintRuleStatus.new;
+  final DeviceTaintRuleStatusArgs =
+      module_resource_k8s_io.DeviceTaintRuleStatus.new;
+  final DeviceTaintRuleStatusPatch =
+      module_resource_k8s_io.DeviceTaintRuleStatusPatch.new;
+  final DeviceTaintRuleStatusPatchArgs =
+      module_resource_k8s_io.DeviceTaintRuleStatusPatch.new;
+  final DeviceTaintSelector = module_resource_k8s_io.DeviceTaintSelector.new;
+  final DeviceTaintSelectorArgs =
+      module_resource_k8s_io.DeviceTaintSelector.new;
+  final DeviceTaintSelectorPatch =
+      module_resource_k8s_io.DeviceTaintSelectorPatch.new;
+  final DeviceTaintSelectorPatchArgs =
+      module_resource_k8s_io.DeviceTaintSelectorPatch.new;
+  final DeviceToleration = module_resource_k8s_io.DeviceToleration.new;
+  final DeviceTolerationArgs = module_resource_k8s_io.DeviceToleration.new;
+  final DeviceTolerationPatch =
+      module_resource_k8s_io.DeviceTolerationPatch.new;
+  final DeviceTolerationPatchArgs =
+      module_resource_k8s_io.DeviceTolerationPatch.new;
+  final DriverAllocationResult =
+      module_resource_k8s_io.DriverAllocationResult.new;
+  final DriverAllocationResultArgs =
+      module_resource_k8s_io.DriverAllocationResult.new;
+  final DriverAllocationResultPatch =
+      module_resource_k8s_io.DriverAllocationResultPatch.new;
+  final DriverAllocationResultPatchArgs =
+      module_resource_k8s_io.DriverAllocationResultPatch.new;
+  final DriverRequests = module_resource_k8s_io.DriverRequests.new;
+  final DriverRequestsArgs = module_resource_k8s_io.DriverRequests.new;
+  final DriverRequestsPatch = module_resource_k8s_io.DriverRequestsPatch.new;
+  final DriverRequestsPatchArgs =
+      module_resource_k8s_io.DriverRequestsPatch.new;
+  final ExactDeviceRequest = module_resource_k8s_io.ExactDeviceRequest.new;
+  final ExactDeviceRequestArgs = module_resource_k8s_io.ExactDeviceRequest.new;
+  final ExactDeviceRequestPatch =
+      module_resource_k8s_io.ExactDeviceRequestPatch.new;
+  final ExactDeviceRequestPatchArgs =
+      module_resource_k8s_io.ExactDeviceRequestPatch.new;
+  final NamedResourcesAllocationResult =
+      module_resource_k8s_io.NamedResourcesAllocationResult.new;
+  final NamedResourcesAllocationResultArgs =
+      module_resource_k8s_io.NamedResourcesAllocationResult.new;
+  final NamedResourcesAllocationResultPatch =
+      module_resource_k8s_io.NamedResourcesAllocationResultPatch.new;
+  final NamedResourcesAllocationResultPatchArgs =
+      module_resource_k8s_io.NamedResourcesAllocationResultPatch.new;
+  final NamedResourcesAttribute =
+      module_resource_k8s_io.NamedResourcesAttribute.new;
+  final NamedResourcesAttributeArgs =
+      module_resource_k8s_io.NamedResourcesAttribute.new;
+  final NamedResourcesAttributePatch =
+      module_resource_k8s_io.NamedResourcesAttributePatch.new;
+  final NamedResourcesAttributePatchArgs =
+      module_resource_k8s_io.NamedResourcesAttributePatch.new;
+  final NamedResourcesFilter = module_resource_k8s_io.NamedResourcesFilter.new;
+  final NamedResourcesFilterArgs =
+      module_resource_k8s_io.NamedResourcesFilter.new;
+  final NamedResourcesFilterPatch =
+      module_resource_k8s_io.NamedResourcesFilterPatch.new;
+  final NamedResourcesFilterPatchArgs =
+      module_resource_k8s_io.NamedResourcesFilterPatch.new;
+  final NamedResourcesInstance =
+      module_resource_k8s_io.NamedResourcesInstance.new;
+  final NamedResourcesInstanceArgs =
+      module_resource_k8s_io.NamedResourcesInstance.new;
+  final NamedResourcesInstancePatch =
+      module_resource_k8s_io.NamedResourcesInstancePatch.new;
+  final NamedResourcesInstancePatchArgs =
+      module_resource_k8s_io.NamedResourcesInstancePatch.new;
+  final NamedResourcesIntSlice =
+      module_resource_k8s_io.NamedResourcesIntSlice.new;
+  final NamedResourcesIntSliceArgs =
+      module_resource_k8s_io.NamedResourcesIntSlice.new;
+  final NamedResourcesIntSlicePatch =
+      module_resource_k8s_io.NamedResourcesIntSlicePatch.new;
+  final NamedResourcesIntSlicePatchArgs =
+      module_resource_k8s_io.NamedResourcesIntSlicePatch.new;
+  final NamedResourcesRequest =
+      module_resource_k8s_io.NamedResourcesRequest.new;
+  final NamedResourcesRequestArgs =
+      module_resource_k8s_io.NamedResourcesRequest.new;
+  final NamedResourcesRequestPatch =
+      module_resource_k8s_io.NamedResourcesRequestPatch.new;
+  final NamedResourcesRequestPatchArgs =
+      module_resource_k8s_io.NamedResourcesRequestPatch.new;
+  final NamedResourcesResources =
+      module_resource_k8s_io.NamedResourcesResources.new;
+  final NamedResourcesResourcesArgs =
+      module_resource_k8s_io.NamedResourcesResources.new;
+  final NamedResourcesResourcesPatch =
+      module_resource_k8s_io.NamedResourcesResourcesPatch.new;
+  final NamedResourcesResourcesPatchArgs =
+      module_resource_k8s_io.NamedResourcesResourcesPatch.new;
+  final NamedResourcesStringSlice =
+      module_resource_k8s_io.NamedResourcesStringSlice.new;
+  final NamedResourcesStringSliceArgs =
+      module_resource_k8s_io.NamedResourcesStringSlice.new;
+  final NamedResourcesStringSlicePatch =
+      module_resource_k8s_io.NamedResourcesStringSlicePatch.new;
+  final NamedResourcesStringSlicePatchArgs =
+      module_resource_k8s_io.NamedResourcesStringSlicePatch.new;
+  final NetworkDeviceData = module_resource_k8s_io.NetworkDeviceData.new;
+  final NetworkDeviceDataArgs = module_resource_k8s_io.NetworkDeviceData.new;
+  final NetworkDeviceDataPatch =
+      module_resource_k8s_io.NetworkDeviceDataPatch.new;
+  final NetworkDeviceDataPatchArgs =
+      module_resource_k8s_io.NetworkDeviceDataPatch.new;
+  final OpaqueDeviceConfiguration =
+      module_resource_k8s_io.OpaqueDeviceConfiguration.new;
+  final OpaqueDeviceConfigurationArgs =
+      module_resource_k8s_io.OpaqueDeviceConfiguration.new;
+  final OpaqueDeviceConfigurationPatch =
+      module_resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
+  final OpaqueDeviceConfigurationPatchArgs =
+      module_resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
+  final PodScheduling = module_resource_k8s_io.PodScheduling.new;
+  final PodSchedulingArgs = module_resource_k8s_io.PodScheduling.new;
+  final PodSchedulingContext = module_resource_k8s_io.PodSchedulingContext.new;
+  final PodSchedulingContextArgs =
+      module_resource_k8s_io.PodSchedulingContext.new;
+  final PodSchedulingContextList =
+      module_resource_k8s_io.PodSchedulingContextList.new;
+  final PodSchedulingContextListArgs =
+      module_resource_k8s_io.PodSchedulingContextList.new;
+  final PodSchedulingContextPatch =
+      module_resource_k8s_io.PodSchedulingContextPatch.new;
+  final PodSchedulingContextPatchArgs =
+      module_resource_k8s_io.PodSchedulingContextPatch.new;
+  final PodSchedulingContextSpec =
+      module_resource_k8s_io.PodSchedulingContextSpec.new;
+  final PodSchedulingContextSpecArgs =
+      module_resource_k8s_io.PodSchedulingContextSpec.new;
+  final PodSchedulingContextSpecPatch =
+      module_resource_k8s_io.PodSchedulingContextSpecPatch.new;
+  final PodSchedulingContextSpecPatchArgs =
+      module_resource_k8s_io.PodSchedulingContextSpecPatch.new;
+  final PodSchedulingContextStatus =
+      module_resource_k8s_io.PodSchedulingContextStatus.new;
+  final PodSchedulingContextStatusArgs =
+      module_resource_k8s_io.PodSchedulingContextStatus.new;
+  final PodSchedulingContextStatusPatch =
+      module_resource_k8s_io.PodSchedulingContextStatusPatch.new;
+  final PodSchedulingContextStatusPatchArgs =
+      module_resource_k8s_io.PodSchedulingContextStatusPatch.new;
+  final PodSchedulingList = module_resource_k8s_io.PodSchedulingList.new;
+  final PodSchedulingListArgs = module_resource_k8s_io.PodSchedulingList.new;
+  final PodSchedulingPatch = module_resource_k8s_io.PodSchedulingPatch.new;
+  final PodSchedulingPatchArgs = module_resource_k8s_io.PodSchedulingPatch.new;
+  final PodSchedulingSpec = module_resource_k8s_io.PodSchedulingSpec.new;
+  final PodSchedulingSpecArgs = module_resource_k8s_io.PodSchedulingSpec.new;
+  final PodSchedulingSpecPatch =
+      module_resource_k8s_io.PodSchedulingSpecPatch.new;
+  final PodSchedulingSpecPatchArgs =
+      module_resource_k8s_io.PodSchedulingSpecPatch.new;
+  final PodSchedulingStatus = module_resource_k8s_io.PodSchedulingStatus.new;
+  final PodSchedulingStatusArgs =
+      module_resource_k8s_io.PodSchedulingStatus.new;
+  final PodSchedulingStatusPatch =
+      module_resource_k8s_io.PodSchedulingStatusPatch.new;
+  final PodSchedulingStatusPatchArgs =
+      module_resource_k8s_io.PodSchedulingStatusPatch.new;
+  final ResourceClaim = module_resource_k8s_io.ResourceClaim.new;
+  final ResourceClaimArgs = module_resource_k8s_io.ResourceClaim.new;
+  final ResourceClaimConsumerReference =
+      module_resource_k8s_io.ResourceClaimConsumerReference.new;
+  final ResourceClaimConsumerReferenceArgs =
+      module_resource_k8s_io.ResourceClaimConsumerReference.new;
+  final ResourceClaimConsumerReferencePatch =
+      module_resource_k8s_io.ResourceClaimConsumerReferencePatch.new;
+  final ResourceClaimConsumerReferencePatchArgs =
+      module_resource_k8s_io.ResourceClaimConsumerReferencePatch.new;
+  final ResourceClaimList = module_resource_k8s_io.ResourceClaimList.new;
+  final ResourceClaimListArgs = module_resource_k8s_io.ResourceClaimList.new;
+  final ResourceClaimParameters =
+      module_resource_k8s_io.ResourceClaimParameters.new;
+  final ResourceClaimParametersArgs =
+      module_resource_k8s_io.ResourceClaimParameters.new;
+  final ResourceClaimParametersList =
+      module_resource_k8s_io.ResourceClaimParametersList.new;
+  final ResourceClaimParametersListArgs =
+      module_resource_k8s_io.ResourceClaimParametersList.new;
+  final ResourceClaimParametersPatch =
+      module_resource_k8s_io.ResourceClaimParametersPatch.new;
+  final ResourceClaimParametersPatchArgs =
+      module_resource_k8s_io.ResourceClaimParametersPatch.new;
+  final ResourceClaimParametersReference =
+      module_resource_k8s_io.ResourceClaimParametersReference.new;
+  final ResourceClaimParametersReferenceArgs =
+      module_resource_k8s_io.ResourceClaimParametersReference.new;
+  final ResourceClaimParametersReferencePatch =
+      module_resource_k8s_io.ResourceClaimParametersReferencePatch.new;
+  final ResourceClaimParametersReferencePatchArgs =
+      module_resource_k8s_io.ResourceClaimParametersReferencePatch.new;
+  final ResourceClaimPatch = module_resource_k8s_io.ResourceClaimPatch.new;
+  final ResourceClaimPatchArgs = module_resource_k8s_io.ResourceClaimPatch.new;
+  final ResourceClaimSchedulingStatus =
+      module_resource_k8s_io.ResourceClaimSchedulingStatus.new;
+  final ResourceClaimSchedulingStatusArgs =
+      module_resource_k8s_io.ResourceClaimSchedulingStatus.new;
+  final ResourceClaimSchedulingStatusPatch =
+      module_resource_k8s_io.ResourceClaimSchedulingStatusPatch.new;
+  final ResourceClaimSchedulingStatusPatchArgs =
+      module_resource_k8s_io.ResourceClaimSchedulingStatusPatch.new;
+  final ResourceClaimSpec = module_resource_k8s_io.ResourceClaimSpec.new;
+  final ResourceClaimSpecArgs = module_resource_k8s_io.ResourceClaimSpec.new;
+  final ResourceClaimSpecPatch =
+      module_resource_k8s_io.ResourceClaimSpecPatch.new;
+  final ResourceClaimSpecPatchArgs =
+      module_resource_k8s_io.ResourceClaimSpecPatch.new;
+  final ResourceClaimStatus = module_resource_k8s_io.ResourceClaimStatus.new;
+  final ResourceClaimStatusArgs =
+      module_resource_k8s_io.ResourceClaimStatus.new;
+  final ResourceClaimStatusPatch =
+      module_resource_k8s_io.ResourceClaimStatusPatch.new;
+  final ResourceClaimStatusPatchArgs =
+      module_resource_k8s_io.ResourceClaimStatusPatch.new;
+  final ResourceClaimTemplate =
+      module_resource_k8s_io.ResourceClaimTemplate.new;
+  final ResourceClaimTemplateArgs =
+      module_resource_k8s_io.ResourceClaimTemplate.new;
+  final ResourceClaimTemplateList =
+      module_resource_k8s_io.ResourceClaimTemplateList.new;
+  final ResourceClaimTemplateListArgs =
+      module_resource_k8s_io.ResourceClaimTemplateList.new;
+  final ResourceClaimTemplatePatch =
+      module_resource_k8s_io.ResourceClaimTemplatePatch.new;
+  final ResourceClaimTemplatePatchArgs =
+      module_resource_k8s_io.ResourceClaimTemplatePatch.new;
+  final ResourceClaimTemplateSpec =
+      module_resource_k8s_io.ResourceClaimTemplateSpec.new;
+  final ResourceClaimTemplateSpecArgs =
+      module_resource_k8s_io.ResourceClaimTemplateSpec.new;
+  final ResourceClaimTemplateSpecPatch =
+      module_resource_k8s_io.ResourceClaimTemplateSpecPatch.new;
+  final ResourceClaimTemplateSpecPatchArgs =
+      module_resource_k8s_io.ResourceClaimTemplateSpecPatch.new;
+  final ResourceClass = module_resource_k8s_io.ResourceClass.new;
+  final ResourceClassArgs = module_resource_k8s_io.ResourceClass.new;
+  final ResourceClassList = module_resource_k8s_io.ResourceClassList.new;
+  final ResourceClassListArgs = module_resource_k8s_io.ResourceClassList.new;
+  final ResourceClassParameters =
+      module_resource_k8s_io.ResourceClassParameters.new;
+  final ResourceClassParametersArgs =
+      module_resource_k8s_io.ResourceClassParameters.new;
+  final ResourceClassParametersList =
+      module_resource_k8s_io.ResourceClassParametersList.new;
+  final ResourceClassParametersListArgs =
+      module_resource_k8s_io.ResourceClassParametersList.new;
+  final ResourceClassParametersPatch =
+      module_resource_k8s_io.ResourceClassParametersPatch.new;
+  final ResourceClassParametersPatchArgs =
+      module_resource_k8s_io.ResourceClassParametersPatch.new;
+  final ResourceClassParametersReference =
+      module_resource_k8s_io.ResourceClassParametersReference.new;
+  final ResourceClassParametersReferenceArgs =
+      module_resource_k8s_io.ResourceClassParametersReference.new;
+  final ResourceClassParametersReferencePatch =
+      module_resource_k8s_io.ResourceClassParametersReferencePatch.new;
+  final ResourceClassParametersReferencePatchArgs =
+      module_resource_k8s_io.ResourceClassParametersReferencePatch.new;
+  final ResourceClassPatch = module_resource_k8s_io.ResourceClassPatch.new;
+  final ResourceClassPatchArgs = module_resource_k8s_io.ResourceClassPatch.new;
+  final ResourceFilter = module_resource_k8s_io.ResourceFilter.new;
+  final ResourceFilterArgs = module_resource_k8s_io.ResourceFilter.new;
+  final ResourceFilterPatch = module_resource_k8s_io.ResourceFilterPatch.new;
+  final ResourceFilterPatchArgs =
+      module_resource_k8s_io.ResourceFilterPatch.new;
+  final ResourceHandle = module_resource_k8s_io.ResourceHandle.new;
+  final ResourceHandleArgs = module_resource_k8s_io.ResourceHandle.new;
+  final ResourceHandlePatch = module_resource_k8s_io.ResourceHandlePatch.new;
+  final ResourceHandlePatchArgs =
+      module_resource_k8s_io.ResourceHandlePatch.new;
+  final ResourcePool = module_resource_k8s_io.ResourcePool.new;
+  final ResourcePoolArgs = module_resource_k8s_io.ResourcePool.new;
+  final ResourcePoolPatch = module_resource_k8s_io.ResourcePoolPatch.new;
+  final ResourcePoolPatchArgs = module_resource_k8s_io.ResourcePoolPatch.new;
+  final ResourceRequest = module_resource_k8s_io.ResourceRequest.new;
+  final ResourceRequestArgs = module_resource_k8s_io.ResourceRequest.new;
+  final ResourceRequestPatch = module_resource_k8s_io.ResourceRequestPatch.new;
+  final ResourceRequestPatchArgs =
+      module_resource_k8s_io.ResourceRequestPatch.new;
+  final ResourceSlice = module_resource_k8s_io.ResourceSlice.new;
+  final ResourceSliceArgs = module_resource_k8s_io.ResourceSlice.new;
+  final ResourceSliceList = module_resource_k8s_io.ResourceSliceList.new;
+  final ResourceSliceListArgs = module_resource_k8s_io.ResourceSliceList.new;
+  final ResourceSlicePatch = module_resource_k8s_io.ResourceSlicePatch.new;
+  final ResourceSlicePatchArgs = module_resource_k8s_io.ResourceSlicePatch.new;
+  final ResourceSliceSpec = module_resource_k8s_io.ResourceSliceSpec.new;
+  final ResourceSliceSpecArgs = module_resource_k8s_io.ResourceSliceSpec.new;
+  final ResourceSliceSpecPatch =
+      module_resource_k8s_io.ResourceSliceSpecPatch.new;
+  final ResourceSliceSpecPatchArgs =
+      module_resource_k8s_io.ResourceSliceSpecPatch.new;
+  final StructuredResourceHandle =
+      module_resource_k8s_io.StructuredResourceHandle.new;
+  final StructuredResourceHandleArgs =
+      module_resource_k8s_io.StructuredResourceHandle.new;
+  final StructuredResourceHandlePatch =
+      module_resource_k8s_io.StructuredResourceHandlePatch.new;
+  final StructuredResourceHandlePatchArgs =
+      module_resource_k8s_io.StructuredResourceHandlePatch.new;
+  final VendorParameters = module_resource_k8s_io.VendorParameters.new;
+  final VendorParametersArgs = module_resource_k8s_io.VendorParameters.new;
+  final VendorParametersPatch =
+      module_resource_k8s_io.VendorParametersPatch.new;
+  final VendorParametersPatchArgs =
+      module_resource_k8s_io.VendorParametersPatch.new;
 }
 
 class _SchedulingK8sIoModuleNamespace {
   _SchedulingK8sIoModuleNamespace();
-  final GangSchedulingPolicy = _scheduling_k8s_io.GangSchedulingPolicy.new;
-  final GangSchedulingPolicyArgs = _scheduling_k8s_io.GangSchedulingPolicy.new;
-  final GangSchedulingPolicyPatch = _scheduling_k8s_io.GangSchedulingPolicyPatch.new;
-  final GangSchedulingPolicyPatchArgs = _scheduling_k8s_io.GangSchedulingPolicyPatch.new;
-  final PodGroup = _scheduling_k8s_io.PodGroup.new;
-  final PodGroupArgs = _scheduling_k8s_io.PodGroup.new;
-  final PodGroupPatch = _scheduling_k8s_io.PodGroupPatch.new;
-  final PodGroupPatchArgs = _scheduling_k8s_io.PodGroupPatch.new;
-  final PodGroupPolicy = _scheduling_k8s_io.PodGroupPolicy.new;
-  final PodGroupPolicyArgs = _scheduling_k8s_io.PodGroupPolicy.new;
-  final PodGroupPolicyPatch = _scheduling_k8s_io.PodGroupPolicyPatch.new;
-  final PodGroupPolicyPatchArgs = _scheduling_k8s_io.PodGroupPolicyPatch.new;
-  final PriorityClass = _scheduling_k8s_io.PriorityClass.new;
-  final PriorityClassArgs = _scheduling_k8s_io.PriorityClass.new;
-  final PriorityClassList = _scheduling_k8s_io.PriorityClassList.new;
-  final PriorityClassListArgs = _scheduling_k8s_io.PriorityClassList.new;
-  final PriorityClassPatch = _scheduling_k8s_io.PriorityClassPatch.new;
-  final PriorityClassPatchArgs = _scheduling_k8s_io.PriorityClassPatch.new;
-  final TypedLocalObjectReference = _scheduling_k8s_io.TypedLocalObjectReference.new;
-  final TypedLocalObjectReferenceArgs = _scheduling_k8s_io.TypedLocalObjectReference.new;
-  final TypedLocalObjectReferencePatch = _scheduling_k8s_io.TypedLocalObjectReferencePatch.new;
-  final TypedLocalObjectReferencePatchArgs = _scheduling_k8s_io.TypedLocalObjectReferencePatch.new;
-  final Workload = _scheduling_k8s_io.Workload.new;
-  final WorkloadArgs = _scheduling_k8s_io.Workload.new;
-  final WorkloadList = _scheduling_k8s_io.WorkloadList.new;
-  final WorkloadListArgs = _scheduling_k8s_io.WorkloadList.new;
-  final WorkloadPatch = _scheduling_k8s_io.WorkloadPatch.new;
-  final WorkloadPatchArgs = _scheduling_k8s_io.WorkloadPatch.new;
-  final WorkloadSpec = _scheduling_k8s_io.WorkloadSpec.new;
-  final WorkloadSpecArgs = _scheduling_k8s_io.WorkloadSpec.new;
-  final WorkloadSpecPatch = _scheduling_k8s_io.WorkloadSpecPatch.new;
-  final WorkloadSpecPatchArgs = _scheduling_k8s_io.WorkloadSpecPatch.new;
+  final GangSchedulingPolicy =
+      module_scheduling_k8s_io.GangSchedulingPolicy.new;
+  final GangSchedulingPolicyArgs =
+      module_scheduling_k8s_io.GangSchedulingPolicy.new;
+  final GangSchedulingPolicyPatch =
+      module_scheduling_k8s_io.GangSchedulingPolicyPatch.new;
+  final GangSchedulingPolicyPatchArgs =
+      module_scheduling_k8s_io.GangSchedulingPolicyPatch.new;
+  final PodGroup = module_scheduling_k8s_io.PodGroup.new;
+  final PodGroupArgs = module_scheduling_k8s_io.PodGroup.new;
+  final PodGroupPatch = module_scheduling_k8s_io.PodGroupPatch.new;
+  final PodGroupPatchArgs = module_scheduling_k8s_io.PodGroupPatch.new;
+  final PodGroupPolicy = module_scheduling_k8s_io.PodGroupPolicy.new;
+  final PodGroupPolicyArgs = module_scheduling_k8s_io.PodGroupPolicy.new;
+  final PodGroupPolicyPatch = module_scheduling_k8s_io.PodGroupPolicyPatch.new;
+  final PodGroupPolicyPatchArgs =
+      module_scheduling_k8s_io.PodGroupPolicyPatch.new;
+  final PriorityClass = module_scheduling_k8s_io.PriorityClass.new;
+  final PriorityClassArgs = module_scheduling_k8s_io.PriorityClass.new;
+  final PriorityClassList = module_scheduling_k8s_io.PriorityClassList.new;
+  final PriorityClassListArgs = module_scheduling_k8s_io.PriorityClassList.new;
+  final PriorityClassPatch = module_scheduling_k8s_io.PriorityClassPatch.new;
+  final PriorityClassPatchArgs =
+      module_scheduling_k8s_io.PriorityClassPatch.new;
+  final TypedLocalObjectReference =
+      module_scheduling_k8s_io.TypedLocalObjectReference.new;
+  final TypedLocalObjectReferenceArgs =
+      module_scheduling_k8s_io.TypedLocalObjectReference.new;
+  final TypedLocalObjectReferencePatch =
+      module_scheduling_k8s_io.TypedLocalObjectReferencePatch.new;
+  final TypedLocalObjectReferencePatchArgs =
+      module_scheduling_k8s_io.TypedLocalObjectReferencePatch.new;
+  final Workload = module_scheduling_k8s_io.Workload.new;
+  final WorkloadArgs = module_scheduling_k8s_io.Workload.new;
+  final WorkloadList = module_scheduling_k8s_io.WorkloadList.new;
+  final WorkloadListArgs = module_scheduling_k8s_io.WorkloadList.new;
+  final WorkloadPatch = module_scheduling_k8s_io.WorkloadPatch.new;
+  final WorkloadPatchArgs = module_scheduling_k8s_io.WorkloadPatch.new;
+  final WorkloadSpec = module_scheduling_k8s_io.WorkloadSpec.new;
+  final WorkloadSpecArgs = module_scheduling_k8s_io.WorkloadSpec.new;
+  final WorkloadSpecPatch = module_scheduling_k8s_io.WorkloadSpecPatch.new;
+  final WorkloadSpecPatchArgs = module_scheduling_k8s_io.WorkloadSpecPatch.new;
 }
 
 class _SettingsK8sIoModuleNamespace {
   _SettingsK8sIoModuleNamespace();
-  final PodPreset = _settings_k8s_io.PodPreset.new;
-  final PodPresetArgs = _settings_k8s_io.PodPreset.new;
-  final PodPresetList = _settings_k8s_io.PodPresetList.new;
-  final PodPresetListArgs = _settings_k8s_io.PodPresetList.new;
-  final PodPresetPatch = _settings_k8s_io.PodPresetPatch.new;
-  final PodPresetPatchArgs = _settings_k8s_io.PodPresetPatch.new;
-  final PodPresetSpec = _settings_k8s_io.PodPresetSpec.new;
-  final PodPresetSpecArgs = _settings_k8s_io.PodPresetSpec.new;
-  final PodPresetSpecPatch = _settings_k8s_io.PodPresetSpecPatch.new;
-  final PodPresetSpecPatchArgs = _settings_k8s_io.PodPresetSpecPatch.new;
+  final PodPreset = module_settings_k8s_io.PodPreset.new;
+  final PodPresetArgs = module_settings_k8s_io.PodPreset.new;
+  final PodPresetList = module_settings_k8s_io.PodPresetList.new;
+  final PodPresetListArgs = module_settings_k8s_io.PodPresetList.new;
+  final PodPresetPatch = module_settings_k8s_io.PodPresetPatch.new;
+  final PodPresetPatchArgs = module_settings_k8s_io.PodPresetPatch.new;
+  final PodPresetSpec = module_settings_k8s_io.PodPresetSpec.new;
+  final PodPresetSpecArgs = module_settings_k8s_io.PodPresetSpec.new;
+  final PodPresetSpecPatch = module_settings_k8s_io.PodPresetSpecPatch.new;
+  final PodPresetSpecPatchArgs = module_settings_k8s_io.PodPresetSpecPatch.new;
 }
 
 class _StorageK8sIoModuleNamespace {
   _StorageK8sIoModuleNamespace();
-  final CSIDriver = _storage_k8s_io.CSIDriver.new;
-  final CSIDriverArgs = _storage_k8s_io.CSIDriver.new;
-  final CSIDriverList = _storage_k8s_io.CSIDriverList.new;
-  final CSIDriverListArgs = _storage_k8s_io.CSIDriverList.new;
-  final CSIDriverPatch = _storage_k8s_io.CSIDriverPatch.new;
-  final CSIDriverPatchArgs = _storage_k8s_io.CSIDriverPatch.new;
-  final CSIDriverSpec = _storage_k8s_io.CSIDriverSpec.new;
-  final CSIDriverSpecArgs = _storage_k8s_io.CSIDriverSpec.new;
-  final CSIDriverSpecPatch = _storage_k8s_io.CSIDriverSpecPatch.new;
-  final CSIDriverSpecPatchArgs = _storage_k8s_io.CSIDriverSpecPatch.new;
-  final CSINode = _storage_k8s_io.CSINode.new;
-  final CSINodeArgs = _storage_k8s_io.CSINode.new;
-  final CSINodeDriver = _storage_k8s_io.CSINodeDriver.new;
-  final CSINodeDriverArgs = _storage_k8s_io.CSINodeDriver.new;
-  final CSINodeDriverPatch = _storage_k8s_io.CSINodeDriverPatch.new;
-  final CSINodeDriverPatchArgs = _storage_k8s_io.CSINodeDriverPatch.new;
-  final CSINodeList = _storage_k8s_io.CSINodeList.new;
-  final CSINodeListArgs = _storage_k8s_io.CSINodeList.new;
-  final CSINodePatch = _storage_k8s_io.CSINodePatch.new;
-  final CSINodePatchArgs = _storage_k8s_io.CSINodePatch.new;
-  final CSINodeSpec = _storage_k8s_io.CSINodeSpec.new;
-  final CSINodeSpecArgs = _storage_k8s_io.CSINodeSpec.new;
-  final CSINodeSpecPatch = _storage_k8s_io.CSINodeSpecPatch.new;
-  final CSINodeSpecPatchArgs = _storage_k8s_io.CSINodeSpecPatch.new;
-  final CSIStorageCapacity = _storage_k8s_io.CSIStorageCapacity.new;
-  final CSIStorageCapacityArgs = _storage_k8s_io.CSIStorageCapacity.new;
-  final CSIStorageCapacityList = _storage_k8s_io.CSIStorageCapacityList.new;
-  final CSIStorageCapacityListArgs = _storage_k8s_io.CSIStorageCapacityList.new;
-  final CSIStorageCapacityPatch = _storage_k8s_io.CSIStorageCapacityPatch.new;
-  final CSIStorageCapacityPatchArgs = _storage_k8s_io.CSIStorageCapacityPatch.new;
-  final StorageClass = _storage_k8s_io.StorageClass.new;
-  final StorageClassArgs = _storage_k8s_io.StorageClass.new;
-  final StorageClassList = _storage_k8s_io.StorageClassList.new;
-  final StorageClassListArgs = _storage_k8s_io.StorageClassList.new;
-  final StorageClassPatch = _storage_k8s_io.StorageClassPatch.new;
-  final StorageClassPatchArgs = _storage_k8s_io.StorageClassPatch.new;
-  final TokenRequest = _storage_k8s_io.TokenRequest.new;
-  final TokenRequestArgs = _storage_k8s_io.TokenRequest.new;
-  final TokenRequestPatch = _storage_k8s_io.TokenRequestPatch.new;
-  final TokenRequestPatchArgs = _storage_k8s_io.TokenRequestPatch.new;
-  final VolumeAttachment = _storage_k8s_io.VolumeAttachment.new;
-  final VolumeAttachmentArgs = _storage_k8s_io.VolumeAttachment.new;
-  final VolumeAttachmentList = _storage_k8s_io.VolumeAttachmentList.new;
-  final VolumeAttachmentListArgs = _storage_k8s_io.VolumeAttachmentList.new;
-  final VolumeAttachmentPatch = _storage_k8s_io.VolumeAttachmentPatch.new;
-  final VolumeAttachmentPatchArgs = _storage_k8s_io.VolumeAttachmentPatch.new;
-  final VolumeAttachmentSource = _storage_k8s_io.VolumeAttachmentSource.new;
-  final VolumeAttachmentSourceArgs = _storage_k8s_io.VolumeAttachmentSource.new;
-  final VolumeAttachmentSourcePatch = _storage_k8s_io.VolumeAttachmentSourcePatch.new;
-  final VolumeAttachmentSourcePatchArgs = _storage_k8s_io.VolumeAttachmentSourcePatch.new;
-  final VolumeAttachmentSpec = _storage_k8s_io.VolumeAttachmentSpec.new;
-  final VolumeAttachmentSpecArgs = _storage_k8s_io.VolumeAttachmentSpec.new;
-  final VolumeAttachmentSpecPatch = _storage_k8s_io.VolumeAttachmentSpecPatch.new;
-  final VolumeAttachmentSpecPatchArgs = _storage_k8s_io.VolumeAttachmentSpecPatch.new;
-  final VolumeAttachmentStatus = _storage_k8s_io.VolumeAttachmentStatus.new;
-  final VolumeAttachmentStatusArgs = _storage_k8s_io.VolumeAttachmentStatus.new;
-  final VolumeAttachmentStatusPatch = _storage_k8s_io.VolumeAttachmentStatusPatch.new;
-  final VolumeAttachmentStatusPatchArgs = _storage_k8s_io.VolumeAttachmentStatusPatch.new;
-  final VolumeAttributesClass = _storage_k8s_io.VolumeAttributesClass.new;
-  final VolumeAttributesClassArgs = _storage_k8s_io.VolumeAttributesClass.new;
-  final VolumeAttributesClassList = _storage_k8s_io.VolumeAttributesClassList.new;
-  final VolumeAttributesClassListArgs = _storage_k8s_io.VolumeAttributesClassList.new;
-  final VolumeAttributesClassPatch = _storage_k8s_io.VolumeAttributesClassPatch.new;
-  final VolumeAttributesClassPatchArgs = _storage_k8s_io.VolumeAttributesClassPatch.new;
-  final VolumeError = _storage_k8s_io.VolumeError.new;
-  final VolumeErrorArgs = _storage_k8s_io.VolumeError.new;
-  final VolumeErrorPatch = _storage_k8s_io.VolumeErrorPatch.new;
-  final VolumeErrorPatchArgs = _storage_k8s_io.VolumeErrorPatch.new;
-  final VolumeNodeResources = _storage_k8s_io.VolumeNodeResources.new;
-  final VolumeNodeResourcesArgs = _storage_k8s_io.VolumeNodeResources.new;
-  final VolumeNodeResourcesPatch = _storage_k8s_io.VolumeNodeResourcesPatch.new;
-  final VolumeNodeResourcesPatchArgs = _storage_k8s_io.VolumeNodeResourcesPatch.new;
+  final CSIDriver = module_storage_k8s_io.CSIDriver.new;
+  final CSIDriverArgs = module_storage_k8s_io.CSIDriver.new;
+  final CSIDriverList = module_storage_k8s_io.CSIDriverList.new;
+  final CSIDriverListArgs = module_storage_k8s_io.CSIDriverList.new;
+  final CSIDriverPatch = module_storage_k8s_io.CSIDriverPatch.new;
+  final CSIDriverPatchArgs = module_storage_k8s_io.CSIDriverPatch.new;
+  final CSIDriverSpec = module_storage_k8s_io.CSIDriverSpec.new;
+  final CSIDriverSpecArgs = module_storage_k8s_io.CSIDriverSpec.new;
+  final CSIDriverSpecPatch = module_storage_k8s_io.CSIDriverSpecPatch.new;
+  final CSIDriverSpecPatchArgs = module_storage_k8s_io.CSIDriverSpecPatch.new;
+  final CSINode = module_storage_k8s_io.CSINode.new;
+  final CSINodeArgs = module_storage_k8s_io.CSINode.new;
+  final CSINodeDriver = module_storage_k8s_io.CSINodeDriver.new;
+  final CSINodeDriverArgs = module_storage_k8s_io.CSINodeDriver.new;
+  final CSINodeDriverPatch = module_storage_k8s_io.CSINodeDriverPatch.new;
+  final CSINodeDriverPatchArgs = module_storage_k8s_io.CSINodeDriverPatch.new;
+  final CSINodeList = module_storage_k8s_io.CSINodeList.new;
+  final CSINodeListArgs = module_storage_k8s_io.CSINodeList.new;
+  final CSINodePatch = module_storage_k8s_io.CSINodePatch.new;
+  final CSINodePatchArgs = module_storage_k8s_io.CSINodePatch.new;
+  final CSINodeSpec = module_storage_k8s_io.CSINodeSpec.new;
+  final CSINodeSpecArgs = module_storage_k8s_io.CSINodeSpec.new;
+  final CSINodeSpecPatch = module_storage_k8s_io.CSINodeSpecPatch.new;
+  final CSINodeSpecPatchArgs = module_storage_k8s_io.CSINodeSpecPatch.new;
+  final CSIStorageCapacity = module_storage_k8s_io.CSIStorageCapacity.new;
+  final CSIStorageCapacityArgs = module_storage_k8s_io.CSIStorageCapacity.new;
+  final CSIStorageCapacityList =
+      module_storage_k8s_io.CSIStorageCapacityList.new;
+  final CSIStorageCapacityListArgs =
+      module_storage_k8s_io.CSIStorageCapacityList.new;
+  final CSIStorageCapacityPatch =
+      module_storage_k8s_io.CSIStorageCapacityPatch.new;
+  final CSIStorageCapacityPatchArgs =
+      module_storage_k8s_io.CSIStorageCapacityPatch.new;
+  final StorageClass = module_storage_k8s_io.StorageClass.new;
+  final StorageClassArgs = module_storage_k8s_io.StorageClass.new;
+  final StorageClassList = module_storage_k8s_io.StorageClassList.new;
+  final StorageClassListArgs = module_storage_k8s_io.StorageClassList.new;
+  final StorageClassPatch = module_storage_k8s_io.StorageClassPatch.new;
+  final StorageClassPatchArgs = module_storage_k8s_io.StorageClassPatch.new;
+  final TokenRequest = module_storage_k8s_io.TokenRequest.new;
+  final TokenRequestArgs = module_storage_k8s_io.TokenRequest.new;
+  final TokenRequestPatch = module_storage_k8s_io.TokenRequestPatch.new;
+  final TokenRequestPatchArgs = module_storage_k8s_io.TokenRequestPatch.new;
+  final VolumeAttachment = module_storage_k8s_io.VolumeAttachment.new;
+  final VolumeAttachmentArgs = module_storage_k8s_io.VolumeAttachment.new;
+  final VolumeAttachmentList = module_storage_k8s_io.VolumeAttachmentList.new;
+  final VolumeAttachmentListArgs =
+      module_storage_k8s_io.VolumeAttachmentList.new;
+  final VolumeAttachmentPatch = module_storage_k8s_io.VolumeAttachmentPatch.new;
+  final VolumeAttachmentPatchArgs =
+      module_storage_k8s_io.VolumeAttachmentPatch.new;
+  final VolumeAttachmentSource =
+      module_storage_k8s_io.VolumeAttachmentSource.new;
+  final VolumeAttachmentSourceArgs =
+      module_storage_k8s_io.VolumeAttachmentSource.new;
+  final VolumeAttachmentSourcePatch =
+      module_storage_k8s_io.VolumeAttachmentSourcePatch.new;
+  final VolumeAttachmentSourcePatchArgs =
+      module_storage_k8s_io.VolumeAttachmentSourcePatch.new;
+  final VolumeAttachmentSpec = module_storage_k8s_io.VolumeAttachmentSpec.new;
+  final VolumeAttachmentSpecArgs =
+      module_storage_k8s_io.VolumeAttachmentSpec.new;
+  final VolumeAttachmentSpecPatch =
+      module_storage_k8s_io.VolumeAttachmentSpecPatch.new;
+  final VolumeAttachmentSpecPatchArgs =
+      module_storage_k8s_io.VolumeAttachmentSpecPatch.new;
+  final VolumeAttachmentStatus =
+      module_storage_k8s_io.VolumeAttachmentStatus.new;
+  final VolumeAttachmentStatusArgs =
+      module_storage_k8s_io.VolumeAttachmentStatus.new;
+  final VolumeAttachmentStatusPatch =
+      module_storage_k8s_io.VolumeAttachmentStatusPatch.new;
+  final VolumeAttachmentStatusPatchArgs =
+      module_storage_k8s_io.VolumeAttachmentStatusPatch.new;
+  final VolumeAttributesClass = module_storage_k8s_io.VolumeAttributesClass.new;
+  final VolumeAttributesClassArgs =
+      module_storage_k8s_io.VolumeAttributesClass.new;
+  final VolumeAttributesClassList =
+      module_storage_k8s_io.VolumeAttributesClassList.new;
+  final VolumeAttributesClassListArgs =
+      module_storage_k8s_io.VolumeAttributesClassList.new;
+  final VolumeAttributesClassPatch =
+      module_storage_k8s_io.VolumeAttributesClassPatch.new;
+  final VolumeAttributesClassPatchArgs =
+      module_storage_k8s_io.VolumeAttributesClassPatch.new;
+  final VolumeError = module_storage_k8s_io.VolumeError.new;
+  final VolumeErrorArgs = module_storage_k8s_io.VolumeError.new;
+  final VolumeErrorPatch = module_storage_k8s_io.VolumeErrorPatch.new;
+  final VolumeErrorPatchArgs = module_storage_k8s_io.VolumeErrorPatch.new;
+  final VolumeNodeResources = module_storage_k8s_io.VolumeNodeResources.new;
+  final VolumeNodeResourcesArgs = module_storage_k8s_io.VolumeNodeResources.new;
+  final VolumeNodeResourcesPatch =
+      module_storage_k8s_io.VolumeNodeResourcesPatch.new;
+  final VolumeNodeResourcesPatchArgs =
+      module_storage_k8s_io.VolumeNodeResourcesPatch.new;
 }
 
 class _StoragemigrationK8sIoModuleNamespace {
   _StoragemigrationK8sIoModuleNamespace();
-  final GroupVersionResource = _storagemigration_k8s_io.GroupVersionResource.new;
-  final GroupVersionResourceArgs = _storagemigration_k8s_io.GroupVersionResource.new;
-  final GroupVersionResourcePatch = _storagemigration_k8s_io.GroupVersionResourcePatch.new;
-  final GroupVersionResourcePatchArgs = _storagemigration_k8s_io.GroupVersionResourcePatch.new;
-  final MigrationCondition = _storagemigration_k8s_io.MigrationCondition.new;
-  final MigrationConditionArgs = _storagemigration_k8s_io.MigrationCondition.new;
-  final MigrationConditionPatch = _storagemigration_k8s_io.MigrationConditionPatch.new;
-  final MigrationConditionPatchArgs = _storagemigration_k8s_io.MigrationConditionPatch.new;
-  final StorageVersionMigration = _storagemigration_k8s_io.StorageVersionMigration.new;
-  final StorageVersionMigrationArgs = _storagemigration_k8s_io.StorageVersionMigration.new;
-  final StorageVersionMigrationList = _storagemigration_k8s_io.StorageVersionMigrationList.new;
-  final StorageVersionMigrationListArgs = _storagemigration_k8s_io.StorageVersionMigrationList.new;
-  final StorageVersionMigrationPatch = _storagemigration_k8s_io.StorageVersionMigrationPatch.new;
-  final StorageVersionMigrationPatchArgs = _storagemigration_k8s_io.StorageVersionMigrationPatch.new;
-  final StorageVersionMigrationSpec = _storagemigration_k8s_io.StorageVersionMigrationSpec.new;
-  final StorageVersionMigrationSpecArgs = _storagemigration_k8s_io.StorageVersionMigrationSpec.new;
-  final StorageVersionMigrationSpecPatch = _storagemigration_k8s_io.StorageVersionMigrationSpecPatch.new;
-  final StorageVersionMigrationSpecPatchArgs = _storagemigration_k8s_io.StorageVersionMigrationSpecPatch.new;
-  final StorageVersionMigrationStatus = _storagemigration_k8s_io.StorageVersionMigrationStatus.new;
-  final StorageVersionMigrationStatusArgs = _storagemigration_k8s_io.StorageVersionMigrationStatus.new;
-  final StorageVersionMigrationStatusPatch = _storagemigration_k8s_io.StorageVersionMigrationStatusPatch.new;
-  final StorageVersionMigrationStatusPatchArgs = _storagemigration_k8s_io.StorageVersionMigrationStatusPatch.new;
+  final GroupVersionResource =
+      module_storagemigration_k8s_io.GroupVersionResource.new;
+  final GroupVersionResourceArgs =
+      module_storagemigration_k8s_io.GroupVersionResource.new;
+  final GroupVersionResourcePatch =
+      module_storagemigration_k8s_io.GroupVersionResourcePatch.new;
+  final GroupVersionResourcePatchArgs =
+      module_storagemigration_k8s_io.GroupVersionResourcePatch.new;
+  final MigrationCondition =
+      module_storagemigration_k8s_io.MigrationCondition.new;
+  final MigrationConditionArgs =
+      module_storagemigration_k8s_io.MigrationCondition.new;
+  final MigrationConditionPatch =
+      module_storagemigration_k8s_io.MigrationConditionPatch.new;
+  final MigrationConditionPatchArgs =
+      module_storagemigration_k8s_io.MigrationConditionPatch.new;
+  final StorageVersionMigration =
+      module_storagemigration_k8s_io.StorageVersionMigration.new;
+  final StorageVersionMigrationArgs =
+      module_storagemigration_k8s_io.StorageVersionMigration.new;
+  final StorageVersionMigrationList =
+      module_storagemigration_k8s_io.StorageVersionMigrationList.new;
+  final StorageVersionMigrationListArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationList.new;
+  final StorageVersionMigrationPatch =
+      module_storagemigration_k8s_io.StorageVersionMigrationPatch.new;
+  final StorageVersionMigrationPatchArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationPatch.new;
+  final StorageVersionMigrationSpec =
+      module_storagemigration_k8s_io.StorageVersionMigrationSpec.new;
+  final StorageVersionMigrationSpecArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationSpec.new;
+  final StorageVersionMigrationSpecPatch =
+      module_storagemigration_k8s_io.StorageVersionMigrationSpecPatch.new;
+  final StorageVersionMigrationSpecPatchArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationSpecPatch.new;
+  final StorageVersionMigrationStatus =
+      module_storagemigration_k8s_io.StorageVersionMigrationStatus.new;
+  final StorageVersionMigrationStatusArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationStatus.new;
+  final StorageVersionMigrationStatusPatch =
+      module_storagemigration_k8s_io.StorageVersionMigrationStatusPatch.new;
+  final StorageVersionMigrationStatusPatchArgs =
+      module_storagemigration_k8s_io.StorageVersionMigrationStatusPatch.new;
 }
 
 class _YamlModuleNamespace {
   _YamlModuleNamespace();
-  final ConfigFile = _yaml.ConfigFile.new;
-  final ConfigFileArgs = _yaml.ConfigFileArgs.new;
-  final ConfigGroup = _yaml.ConfigGroup.new;
-  final ConfigGroupArgs = _yaml.ConfigGroupArgs.new;
+  final ConfigFile = module_yaml.ConfigFile.new;
+  final ConfigFileArgs = module_yaml.ConfigFileArgs.new;
+  final ConfigGroup = module_yaml.ConfigGroup.new;
+  final ConfigGroupArgs = module_yaml.ConfigGroupArgs.new;
 }
-

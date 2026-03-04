@@ -9,20 +9,21 @@ class ManagedClusterNodeResourceGroupProfileResponse {
 
   /// Creates a new [ManagedClusterNodeResourceGroupProfileResponse].
   /// [restrictionLevel] The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-  ManagedClusterNodeResourceGroupProfileResponse({
-    this.restrictionLevel,
-  });
+  ManagedClusterNodeResourceGroupProfileResponse({this.restrictionLevel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'restrictionLevel': ?restrictionLevel,
-    };
+    return <String, dynamic>{'restrictionLevel': ?restrictionLevel};
   }
 
-  factory ManagedClusterNodeResourceGroupProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterNodeResourceGroupProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterNodeResourceGroupProfileResponse(
-      restrictionLevel: map['restrictionLevel'] == null ? null : (map['restrictionLevel']! as String).input(),
+      restrictionLevel: (() {
+        final guardedValue = map['restrictionLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

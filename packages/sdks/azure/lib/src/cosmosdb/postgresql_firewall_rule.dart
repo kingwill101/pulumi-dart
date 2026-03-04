@@ -211,7 +211,7 @@ import 'postgresql_firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2022-11-08
@@ -226,10 +226,13 @@ import 'postgresql_firewall_rule_state.dart';
 class PostgresqlFirewallRule extends pulumi.CustomResource {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterId;
+
   /// The end IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   late final pulumi.Output<String> endIpAddress;
+
   /// The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   late final pulumi.Output<String> startIpAddress;
 
@@ -242,15 +245,15 @@ class PostgresqlFirewallRule extends pulumi.CustomResource {
     PostgresqlFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/postgresqlFirewallRule:PostgresqlFirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:cosmosdb/postgresqlFirewallRule:PostgresqlFirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 
   /// Gets an existing [PostgresqlFirewallRule] resource's state with the given [name] and [id].
@@ -271,14 +274,14 @@ class PostgresqlFirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/postgresqlFirewallRule:PostgresqlFirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:cosmosdb/postgresqlFirewallRule:PostgresqlFirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 }

@@ -1,5 +1,3 @@
-library module_app;
-
 export 'app/access_mode.dart';
 export 'app/action.dart';
 export 'app/active_revisions_mode.dart';

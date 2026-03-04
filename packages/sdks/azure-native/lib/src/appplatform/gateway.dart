@@ -265,14 +265,19 @@ import 'system_data_response.dart';
 class Gateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Spring Cloud Gateway properties payload
   late final pulumi.Output<GatewayPropertiesResponse> properties;
+
   /// Sku of the Spring Cloud Gateway resource
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -285,16 +290,16 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appplatform:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:appplatform:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<GatewayPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<GatewayPropertiesResponse>('properties');
+    sku = registerOutput<SkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

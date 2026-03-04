@@ -31,10 +31,13 @@ class GetStudyAiplatformV1beta1Args {
 
   factory GetStudyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetStudyAiplatformV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      studyId: (map['studyId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      studyId: pulumi.Input.fromValue(map['studyId'] as String),
     );
   }
 }
-

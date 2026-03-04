@@ -13,16 +13,20 @@ enum GoogleCloudIntegrationsV1alphaCredentialCredentialType {
   clientCertificateOnly("CLIENT_CERTIFICATE_ONLY"),
   oidcToken("OIDC_TOKEN");
 
-  const GoogleCloudIntegrationsV1alphaCredentialCredentialType(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaCredentialCredentialType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaCredentialCredentialType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaCredentialCredentialType.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaCredentialCredentialType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaCredentialCredentialType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaCredentialCredentialType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaCredentialCredentialType value: $value',
+    );
   }
 }
-

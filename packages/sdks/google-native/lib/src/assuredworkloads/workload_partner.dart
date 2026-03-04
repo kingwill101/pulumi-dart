@@ -6,16 +6,15 @@ enum WorkloadPartner {
   sovereignControlsBySiaMinsait("SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"),
   sovereignControlsByPsn("SOVEREIGN_CONTROLS_BY_PSN");
 
-  const WorkloadPartner(this.value);
-  final String value;
+  const WorkloadPartner(this.wireValue);
+  final String wireValue;
 
   static WorkloadPartner fromValue(String value) {
     for (final item in WorkloadPartner.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadPartner value: $value');
   }
 }
-

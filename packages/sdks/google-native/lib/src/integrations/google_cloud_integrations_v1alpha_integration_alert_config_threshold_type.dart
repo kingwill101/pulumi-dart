@@ -4,16 +4,22 @@ enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType {
   expectedMin("EXPECTED_MIN"),
   expectedMax("EXPECTED_MAX");
 
-  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType value: $value',
+    );
   }
 }
-

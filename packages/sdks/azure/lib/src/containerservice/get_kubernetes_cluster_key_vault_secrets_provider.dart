@@ -5,9 +5,14 @@ import 'get_kubernetes_cluster_key_vault_secrets_provider_secret_identity.dart';
 
 class GetKubernetesClusterKeyVaultSecretsProvider {
   /// A `secret_identity` block as documented below.
-  final pulumi.Input<List<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>> secretIdentities;
+  final pulumi.Input<
+    List<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>
+  >
+  secretIdentities;
+
   /// Is secret rotation enabled?
   final pulumi.Input<bool> secretRotationEnabled;
+
   /// The interval to poll for secret rotation.
   final pulumi.Input<String> secretRotationInterval;
 
@@ -23,18 +28,44 @@ class GetKubernetesClusterKeyVaultSecretsProvider {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretIdentities': pulumi.Input.mapInputValue<List<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>, List<Map<String, dynamic>>>(secretIdentities, (value) => pulumi.Input.encodeList<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secretIdentities':
+          pulumi.Input.mapInputValue<
+            List<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>,
+            List<Map<String, dynamic>>
+          >(
+            secretIdentities,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'secretRotationEnabled': secretRotationEnabled,
       'secretRotationInterval': secretRotationInterval,
     };
   }
 
-  factory GetKubernetesClusterKeyVaultSecretsProvider.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterKeyVaultSecretsProvider.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterKeyVaultSecretsProvider(
-      secretIdentities: (pulumi.Input.decodeList<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>(map['secretIdentities'], (value) => GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretRotationEnabled: (map['secretRotationEnabled'] as bool).input(),
-      secretRotationInterval: (map['secretRotationInterval'] as String).input(),
+      secretIdentities: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity
+        >(
+          map['secretIdentities']!,
+          (value) =>
+              GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      secretRotationEnabled: pulumi.Input.fromValue(
+        map['secretRotationEnabled'] as bool,
+      ),
+      secretRotationInterval: pulumi.Input.fromValue(
+        map['secretRotationInterval'] as String,
+      ),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleServerServerAdministratorArgs {
   /// The type of administrator.
   final pulumi.Input<String> administratorType;
+
   /// The server administrator login account name.
   final pulumi.Input<String> login;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The server administrator Sid (Secure ID).
   final pulumi.Input<String> sid;
+
   /// The server Active Directory Administrator tenant id.
   final pulumi.Input<String> tenantId;
 
@@ -47,15 +52,20 @@ class SingleServerServerAdministratorArgs {
     };
   }
 
-  factory SingleServerServerAdministratorArgs.fromMap(Map<String, dynamic> map) {
+  factory SingleServerServerAdministratorArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SingleServerServerAdministratorArgs(
-      administratorType: (map['administratorType'] as String).input(),
-      login: (map['login'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      sid: (map['sid'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      administratorType: pulumi.Input.fromValue(
+        map['administratorType'] as String,
+      ),
+      login: pulumi.Input.fromValue(map['login'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      sid: pulumi.Input.fromValue(map['sid'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

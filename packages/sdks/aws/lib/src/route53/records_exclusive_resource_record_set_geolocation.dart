@@ -25,12 +25,25 @@ class RecordsExclusiveResourceRecordSetGeolocation {
     };
   }
 
-  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
+  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordsExclusiveResourceRecordSetGeolocation(
-      continentCode: map['continentCode'] == null ? null : ((map['continentCode'] as String).input()).input(),
-      countryCode: map['countryCode'] == null ? null : ((map['countryCode'] as String).input()).input(),
-      subdivisionCode: map['subdivisionCode'] == null ? null : ((map['subdivisionCode'] as String).input()).input(),
+      continentCode: (() {
+        final guardedValue = map['continentCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryCode: (() {
+        final guardedValue = map['countryCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subdivisionCode: (() {
+        final guardedValue = map['subdivisionCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

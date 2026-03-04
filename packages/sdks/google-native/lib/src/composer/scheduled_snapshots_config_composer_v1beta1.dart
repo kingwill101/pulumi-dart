@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledSnapshotsConfigComposerV1beta1 {
   /// Optional. Whether scheduled snapshots creation is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
   final pulumi.Input<String>? snapshotCreationSchedule;
+
   /// Optional. The Cloud Storage location for storing automatically created snapshots.
   final pulumi.Input<String>? snapshotLocation;
+
   /// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
   final pulumi.Input<String>? timeZone;
 
@@ -34,13 +37,30 @@ class ScheduledSnapshotsConfigComposerV1beta1 {
     };
   }
 
-  factory ScheduledSnapshotsConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ScheduledSnapshotsConfigComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledSnapshotsConfigComposerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule']! as String).input(),
-      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation']! as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      snapshotCreationSchedule: (() {
+        final guardedValue = map['snapshotCreationSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotLocation: (() {
+        final guardedValue = map['snapshotLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

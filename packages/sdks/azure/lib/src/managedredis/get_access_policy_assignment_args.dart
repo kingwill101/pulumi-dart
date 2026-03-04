@@ -9,11 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPolicyAssignmentArgs {
   /// The name of the Managed Redis instance.
   final pulumi.Input<String> managedRedisName;
+
   /// The object ID of the Azure Active Directory user, group, service principal, or managed identity.
   final pulumi.Input<String> objectId;
+
   /// The name of the Resource Group where the Managed Redis instance exists.
   ///
-  /// > **Note:** This data source retrieves Access Policy Assignments from the `default` database of the Managed Redis instance.
+  /// &gt; **Note:** This data source retrieves Access Policy Assignments from the `default` database of the Managed Redis instance.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccessPolicyAssignmentArgs].
@@ -36,10 +38,13 @@ class GetAccessPolicyAssignmentArgs {
 
   factory GetAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAssignmentArgs(
-      managedRedisName: (map['managedRedisName'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      managedRedisName: pulumi.Input.fromValue(
+        map['managedRedisName'] as String,
+      ),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MembershipAttachmentArgs {
   /// The ID of the cluster to which the membership is being attached.
   final pulumi.Input<String> clusterId;
+
   /// The ID of the member being attached to the cluster.
   final pulumi.Input<String> subClusterId;
 
@@ -29,9 +30,8 @@ class MembershipAttachmentArgs {
 
   factory MembershipAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return MembershipAttachmentArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      subClusterId: (map['subClusterId'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      subClusterId: pulumi.Input.fromValue(map['subClusterId'] as String),
     );
   }
 }
-

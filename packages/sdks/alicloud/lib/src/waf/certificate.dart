@@ -6,7 +6,7 @@ import 'certificate_state.dart';
 ///
 /// For information about WAF Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -173,14 +173,19 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Certificate file content.
   late final pulumi.Output<String?> certificate;
+
   /// The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
   late final pulumi.Output<String> certificateId;
+
   /// Certificate file name.
   late final pulumi.Output<String> certificateName;
+
   /// The domain that you want to add to WAF.
   late final pulumi.Output<String> domain;
+
   /// The ID of the WAF instance.
   late final pulumi.Output<String> instanceId;
+
   /// The private key.
   late final pulumi.Output<String?> privateKey;
 
@@ -193,17 +198,17 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:waf/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String?>('certificate');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.domain = registerOutput<String>('domain');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.privateKey = registerOutput<String?>('privateKey');
+         'alicloud:waf/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String?>('certificate');
+    certificateId = registerOutput<String>('certificateId');
+    certificateName = registerOutput<String>('certificateName');
+    domain = registerOutput<String>('domain');
+    instanceId = registerOutput<String>('instanceId');
+    privateKey = registerOutput<String?>('privateKey');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -224,16 +229,16 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:waf/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String?>('certificate');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.domain = registerOutput<String>('domain');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.privateKey = registerOutput<String?>('privateKey');
+         'alicloud:waf/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String?>('certificate');
+    certificateId = registerOutput<String>('certificateId');
+    certificateName = registerOutput<String>('certificateName');
+    domain = registerOutput<String>('domain');
+    instanceId = registerOutput<String>('instanceId');
+    privateKey = registerOutput<String?>('privateKey');
   }
 }

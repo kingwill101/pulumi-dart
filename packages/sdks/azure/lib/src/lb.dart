@@ -1,5 +1,3 @@
-library module_lb;
-
 export 'lb/backend_address_pool.dart';
 export 'lb/backend_address_pool_address.dart';
 export 'lb/backend_address_pool_address_args.dart';

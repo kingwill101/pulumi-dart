@@ -6,9 +6,17 @@ import 'channel_encoder_settings_output_group_output_group_settings_archive_grou
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
   /// Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings>? archiveCdnSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings
+  >?
+  archiveCdnSettings;
+
   /// A director and base filename where archive files should be written. See Destination for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination> destination;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination
+  >
+  destination;
+
   /// Number of seconds to write to archive file before closing and starting a new one.
   final pulumi.Input<int>? rolloverInterval;
 
@@ -24,18 +32,43 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveCdnSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings, Map<String, dynamic>>(archiveCdnSettings, (value) => value.toMap()),
-      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'archiveCdnSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings,
+            Map<String, dynamic>
+          >(archiveCdnSettings, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'rolloverInterval': ?rolloverInterval,
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
-      archiveCdnSettings: map['archiveCdnSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((map['archiveCdnSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      rolloverInterval: map['rolloverInterval'] == null ? null : ((map['rolloverInterval'] as int).input()).input(),
+      archiveCdnSettings: (() {
+        final guardedValue = map['archiveCdnSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destination: pulumi.Input.fromValue(
+        ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      rolloverInterval: (() {
+        final guardedValue = map['rolloverInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

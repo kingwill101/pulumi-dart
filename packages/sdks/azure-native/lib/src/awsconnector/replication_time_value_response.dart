@@ -9,20 +9,19 @@ class ReplicationTimeValueResponse {
 
   /// Creates a new [ReplicationTimeValueResponse].
   /// [minutes] Contains an integer specifying time in minutes.   Valid value: 15
-  ReplicationTimeValueResponse({
-    this.minutes,
-  });
+  ReplicationTimeValueResponse({this.minutes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minutes': ?minutes,
-    };
+    return <String, dynamic>{'minutes': ?minutes};
   }
 
   factory ReplicationTimeValueResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationTimeValueResponse(
-      minutes: map['minutes'] == null ? null : (map['minutes']! as int).input(),
+      minutes: (() {
+        final guardedValue = map['minutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

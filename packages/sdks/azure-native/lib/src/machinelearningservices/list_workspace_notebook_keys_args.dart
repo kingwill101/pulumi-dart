@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceNotebookKeysArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -29,9 +30,10 @@ class ListWorkspaceNotebookKeysArgs {
 
   factory ListWorkspaceNotebookKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceNotebookKeysArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

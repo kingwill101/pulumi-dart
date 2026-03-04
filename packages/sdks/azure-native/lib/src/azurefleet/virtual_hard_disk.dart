@@ -9,20 +9,19 @@ class VirtualHardDisk {
 
   /// Creates a new [VirtualHardDisk].
   /// [uri] Specifies the virtual hard disk's uri.
-  VirtualHardDisk({
-    this.uri,
-  });
+  VirtualHardDisk({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory VirtualHardDisk.fromMap(Map<String, dynamic> map) {
     return VirtualHardDisk(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

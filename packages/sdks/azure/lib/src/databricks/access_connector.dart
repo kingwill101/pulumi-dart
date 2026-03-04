@@ -178,7 +178,7 @@ import 'access_connector_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2022-10-01-preview
@@ -193,12 +193,16 @@ import 'access_connector_state.dart';
 class AccessConnector extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<AccessConnectorIdentity?> identity;
+
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Databricks Access Connector resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group in which the Databricks Access Connector should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -211,16 +215,16 @@ class AccessConnector extends pulumi.CustomResource {
     AccessConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/accessConnector:AccessConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccessConnectorIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:databricks/accessConnector:AccessConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccessConnectorIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AccessConnector] resource's state with the given [name] and [id].
@@ -241,15 +245,15 @@ class AccessConnector extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/accessConnector:AccessConnector',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccessConnectorIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:databricks/accessConnector:AccessConnector',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccessConnectorIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

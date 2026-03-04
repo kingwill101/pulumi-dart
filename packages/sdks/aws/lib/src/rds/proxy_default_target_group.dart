@@ -7,7 +7,7 @@ import 'proxy_default_target_group_state.dart';
 ///
 /// The `aws.rds.ProxyDefaultTargetGroup` behaves differently from normal resources, in that the provider does not _create_ or _destroy_ this resource, since it implicitly exists as part of an RDS DB Proxy. On the provider resource creation it is automatically imported and on resource destruction, the provider performs no actions in RDS.
 ///
-/// > **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replace_triggered_by` referencing the `aws.rds.Proxy` resource's `id` attribute.
+/// &gt; **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replace_triggered_by` referencing the `aws.rds.Proxy` resource's `id` attribute.
 ///
 /// ## Import
 ///
@@ -19,12 +19,17 @@ import 'proxy_default_target_group_state.dart';
 class ProxyDefaultTargetGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) representing the target group.
   late final pulumi.Output<String> arn;
+
   /// The settings that determine the size and behavior of the connection pool for the target group.
-  late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig> connectionPoolConfig;
+  late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig>
+  connectionPoolConfig;
+
   /// Name of the RDS DB Proxy.
   late final pulumi.Output<String> dbProxyName;
+
   /// The name of the default target group.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -37,16 +42,19 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     ProxyDefaultTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig');
-    this.dbProxyName = registerOutput<String>('dbProxyName');
+         'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectionPoolConfig =
+        registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
+          'connectionPoolConfig',
+        );
+    dbProxyName = registerOutput<String>('dbProxyName');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ProxyDefaultTargetGroup] resource's state with the given [name] and [id].
@@ -67,15 +75,18 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig');
-    this.dbProxyName = registerOutput<String>('dbProxyName');
+         'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectionPoolConfig =
+        registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
+          'connectionPoolConfig',
+        );
+    dbProxyName = registerOutput<String>('dbProxyName');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

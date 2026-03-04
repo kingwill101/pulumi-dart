@@ -4,7 +4,7 @@ import 'sync_cloud_endpoint_state.dart';
 
 /// Manages a Storage Sync Cloud Endpoint.
 ///
-/// > **Note:** Please ensure Azure File Sync has access to the storage account in your subscription, which indicates that `Microsoft.StorageSync` is assigned role `Reader and Data Access` ( refer to details [here](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-troubleshooting-steps)).
+/// &gt; **Note:** Please ensure Azure File Sync has access to the storage account in your subscription, which indicates that `Microsoft.StorageSync` is assigned role `Reader and Data Access` ( refer to details [here](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-troubleshooting-steps)).
 ///
 /// ## Example Usage
 ///
@@ -359,7 +359,7 @@ import 'sync_cloud_endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageSync` - 2020-03-01
@@ -374,12 +374,16 @@ import 'sync_cloud_endpoint_state.dart';
 class SyncCloudEndpoint extends pulumi.CustomResource {
   /// The Storage Share name to be synchronized in this Storage Sync Cloud Endpoint. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   late final pulumi.Output<String> fileShareName;
+
   /// The name which should be used for this Storage Sync Cloud Endpoint. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   late final pulumi.Output<String> storageAccountId;
+
   /// The Tenant ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created. Defaults to the current tenant id.
   late final pulumi.Output<String> storageAccountTenantId;
+
   /// The ID of the Storage Sync Group where this Cloud Endpoint should be created. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   late final pulumi.Output<String> storageSyncGroupId;
 
@@ -392,16 +396,16 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
     SyncCloudEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileShareName = registerOutput<String>('fileShareName');
+         'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileShareName = registerOutput<String>('fileShareName');
     this.name = registerOutput<String>('name');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.storageAccountTenantId = registerOutput<String>('storageAccountTenantId');
-    this.storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountTenantId = registerOutput<String>('storageAccountTenantId');
+    storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
   }
 
   /// Gets an existing [SyncCloudEndpoint] resource's state with the given [name] and [id].
@@ -422,15 +426,15 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileShareName = registerOutput<String>('fileShareName');
+         'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileShareName = registerOutput<String>('fileShareName');
     this.name = registerOutput<String>('name');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.storageAccountTenantId = registerOutput<String>('storageAccountTenantId');
-    this.storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountTenantId = registerOutput<String>('storageAccountTenantId');
+    storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
   }
 }

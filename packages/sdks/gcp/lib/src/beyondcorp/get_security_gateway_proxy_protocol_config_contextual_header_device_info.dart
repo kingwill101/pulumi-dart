@@ -13,15 +13,14 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputType': outputType,
-    };
+    return <String, dynamic>{'outputType': outputType};
   }
 
-  factory GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo.fromMap(Map<String, dynamic> map) {
+  factory GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo(
-      outputType: (map['outputType'] as String).input(),
+      outputType: pulumi.Input.fromValue(map['outputType'] as String),
     );
   }
 }
-

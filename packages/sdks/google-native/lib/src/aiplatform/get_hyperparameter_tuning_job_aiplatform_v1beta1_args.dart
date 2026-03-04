@@ -29,12 +29,19 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetHyperparameterTuningJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetHyperparameterTuningJobAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHyperparameterTuningJobAiplatformV1beta1Args(
-      hyperparameterTuningJobId: (map['hyperparameterTuningJobId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      hyperparameterTuningJobId: pulumi.Input.fromValue(
+        map['hyperparameterTuningJobId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

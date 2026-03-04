@@ -2,16 +2,15 @@
 enum InventoryRuleType {
   valueInventory("Inventory");
 
-  const InventoryRuleType(this.value);
-  final String value;
+  const InventoryRuleType(this.wireValue);
+  final String wireValue;
 
   static InventoryRuleType fromValue(String value) {
     for (final item in InventoryRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InventoryRuleType value: $value');
   }
 }
-

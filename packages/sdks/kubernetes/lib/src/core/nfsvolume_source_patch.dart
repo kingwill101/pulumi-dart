@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NFSVolumeSourcePatch {
   /// path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
   final pulumi.Input<String>? path;
+
   /// readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
   final pulumi.Input<bool>? readOnly;
+
   /// server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
   final pulumi.Input<String>? server;
 
@@ -15,11 +17,7 @@ class NFSVolumeSourcePatch {
   /// [path] path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
   /// [readOnly] readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
   /// [server] server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
-  NFSVolumeSourcePatch({
-    this.path,
-    this.readOnly,
-    this.server,
-  });
+  NFSVolumeSourcePatch({this.path, this.readOnly, this.server});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class NFSVolumeSourcePatch {
 
   factory NFSVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return NFSVolumeSourcePatch(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

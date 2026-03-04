@@ -8,20 +8,15 @@ class GetRegionalSecretsSecretTopic {
 
   /// Creates a new [GetRegionalSecretsSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to.
-  GetRegionalSecretsSecretTopic({
-    required this.name,
-  });
+  GetRegionalSecretsSecretTopic({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GetRegionalSecretsSecretTopic.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretsSecretTopic(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -14,15 +14,18 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotific
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pendingApproval': ?pendingApproval,
-    };
+    return <String, dynamic>{'pendingApproval': ?pendingApproval};
   }
 
-  factory SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap(Map<String, dynamic> map) {
+  factory SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications(
-      pendingApproval: map['pendingApproval'] == null ? null : (map['pendingApproval']! as String).input(),
+      pendingApproval: (() {
+        final guardedValue = map['pendingApproval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

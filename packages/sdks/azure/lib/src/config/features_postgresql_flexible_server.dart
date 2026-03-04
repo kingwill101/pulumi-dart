@@ -13,14 +13,18 @@ class FeaturesPostgresqlFlexibleServer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'restartServerOnConfigurationValueChange': ?restartServerOnConfigurationValueChange,
+      'restartServerOnConfigurationValueChange':
+          ?restartServerOnConfigurationValueChange,
     };
   }
 
   factory FeaturesPostgresqlFlexibleServer.fromMap(Map<String, dynamic> map) {
     return FeaturesPostgresqlFlexibleServer(
-      restartServerOnConfigurationValueChange: map['restartServerOnConfigurationValueChange'] == null ? null : (map['restartServerOnConfigurationValueChange']! as bool).input(),
+      restartServerOnConfigurationValueChange: (() {
+        final guardedValue = map['restartServerOnConfigurationValueChange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

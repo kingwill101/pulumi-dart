@@ -4,16 +4,17 @@ enum LbRouteExtensionLoadBalancingScheme {
   internalManaged("INTERNAL_MANAGED"),
   externalManaged("EXTERNAL_MANAGED");
 
-  const LbRouteExtensionLoadBalancingScheme(this.value);
-  final String value;
+  const LbRouteExtensionLoadBalancingScheme(this.wireValue);
+  final String wireValue;
 
   static LbRouteExtensionLoadBalancingScheme fromValue(String value) {
     for (final item in LbRouteExtensionLoadBalancingScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LbRouteExtensionLoadBalancingScheme value: $value');
+    throw ArgumentError(
+      'Unknown LbRouteExtensionLoadBalancingScheme value: $value',
+    );
   }
 }
-

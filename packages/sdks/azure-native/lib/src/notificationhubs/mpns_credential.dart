@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MpnsCredential {
   /// Gets or sets the certificate key for this credential.
   final pulumi.Input<String> certificateKey;
+
   /// Gets or sets the MPNS certificate.
   final pulumi.Input<String> mpnsCertificate;
+
   /// Gets or sets the MPNS certificate Thumbprint
   final pulumi.Input<String> thumbprint;
 
@@ -31,10 +33,9 @@ class MpnsCredential {
 
   factory MpnsCredential.fromMap(Map<String, dynamic> map) {
     return MpnsCredential(
-      certificateKey: (map['certificateKey'] as String).input(),
-      mpnsCertificate: (map['mpnsCertificate'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
+      certificateKey: pulumi.Input.fromValue(map['certificateKey'] as String),
+      mpnsCertificate: pulumi.Input.fromValue(map['mpnsCertificate'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
-

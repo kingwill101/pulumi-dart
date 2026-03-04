@@ -4,16 +4,17 @@ enum ScriptActivityParameterDirection {
   valueOutput("Output"),
   valueInputOutput("InputOutput");
 
-  const ScriptActivityParameterDirection(this.value);
-  final String value;
+  const ScriptActivityParameterDirection(this.wireValue);
+  final String wireValue;
 
   static ScriptActivityParameterDirection fromValue(String value) {
     for (final item in ScriptActivityParameterDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScriptActivityParameterDirection value: $value');
+    throw ArgumentError(
+      'Unknown ScriptActivityParameterDirection value: $value',
+    );
   }
 }
-

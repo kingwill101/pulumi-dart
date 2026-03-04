@@ -11,16 +11,15 @@ enum BackupRunStatusSqladminV1beta4 {
   deletionFailed("DELETION_FAILED"),
   deleted("DELETED");
 
-  const BackupRunStatusSqladminV1beta4(this.value);
-  final String value;
+  const BackupRunStatusSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static BackupRunStatusSqladminV1beta4 fromValue(String value) {
     for (final item in BackupRunStatusSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupRunStatusSqladminV1beta4 value: $value');
   }
 }
-

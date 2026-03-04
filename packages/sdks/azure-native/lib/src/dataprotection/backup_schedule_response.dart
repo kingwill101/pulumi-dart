@@ -28,6 +28,7 @@ class BackupScheduleResponse {
   /// - T24:00:00 (invalid)
   /// - T23:59:60 (leap second)
   final pulumi.Input<List<String>> repeatingTimeIntervals;
+
   /// Time Zone for a schedule.
   ///
   /// Supported timezone indicators include:
@@ -45,10 +46,7 @@ class BackupScheduleResponse {
   /// Creates a new [BackupScheduleResponse].
   /// [repeatingTimeIntervals] Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
   /// [timeZone] Time Zone for a schedule.
-  BackupScheduleResponse({
-    required this.repeatingTimeIntervals,
-    this.timeZone,
-  });
+  BackupScheduleResponse({required this.repeatingTimeIntervals, this.timeZone});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,9 +57,14 @@ class BackupScheduleResponse {
 
   factory BackupScheduleResponse.fromMap(Map<String, dynamic> map) {
     return BackupScheduleResponse(
-      repeatingTimeIntervals: ((map['repeatingTimeIntervals'] as List).cast<String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      repeatingTimeIntervals: pulumi.Input.fromValue(
+        (map['repeatingTimeIntervals'] as List).cast<String>(),
+      ),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

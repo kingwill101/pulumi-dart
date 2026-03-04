@@ -3,16 +3,15 @@ enum KubeletDiskType {
   valueOS("OS"),
   valueTemporary("Temporary");
 
-  const KubeletDiskType(this.value);
-  final String value;
+  const KubeletDiskType(this.wireValue);
+  final String wireValue;
 
   static KubeletDiskType fromValue(String value) {
     for (final item in KubeletDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KubeletDiskType value: $value');
   }
 }
-

@@ -1,0 +1,6 @@
+name: awsx-dart-ts-ecr-registry-image
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ECR registry image tagging example in Dart.

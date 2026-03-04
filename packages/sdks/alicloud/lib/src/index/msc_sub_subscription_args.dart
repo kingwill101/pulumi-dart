@@ -12,18 +12,25 @@ class MscSubSubscriptionArgs {
   /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
   /// and you can use tolist to convert it to a list.
   final pulumi.Input<List<String>>? contactIds;
+
   /// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int>? emailStatus;
+
   /// The name of the Subscription. **NOTE:**  You should use the `alicloud.getMscSubSubscriptions` to query the available subscription item name.
   final pulumi.Input<String> itemName;
+
   /// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int>? pmsgStatus;
+
   /// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int>? smsStatus;
+
   /// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int>? ttsStatus;
+
   /// The ids of subscribed webhooks.
   final pulumi.Input<List<String>>? webhookIds;
+
   /// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int>? webhookStatus;
 
@@ -62,15 +69,42 @@ class MscSubSubscriptionArgs {
 
   factory MscSubSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MscSubSubscriptionArgs(
-      contactIds: map['contactIds'] == null ? null : ((map['contactIds']! as List).cast<String>()).input(),
-      emailStatus: map['emailStatus'] == null ? null : (map['emailStatus']! as int).input(),
-      itemName: (map['itemName'] as String).input(),
-      pmsgStatus: map['pmsgStatus'] == null ? null : (map['pmsgStatus']! as int).input(),
-      smsStatus: map['smsStatus'] == null ? null : (map['smsStatus']! as int).input(),
-      ttsStatus: map['ttsStatus'] == null ? null : (map['ttsStatus']! as int).input(),
-      webhookIds: map['webhookIds'] == null ? null : ((map['webhookIds']! as List).cast<String>()).input(),
-      webhookStatus: map['webhookStatus'] == null ? null : (map['webhookStatus']! as int).input(),
+      contactIds: (() {
+        final guardedValue = map['contactIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      emailStatus: (() {
+        final guardedValue = map['emailStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      itemName: pulumi.Input.fromValue(map['itemName'] as String),
+      pmsgStatus: (() {
+        final guardedValue = map['pmsgStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      smsStatus: (() {
+        final guardedValue = map['smsStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ttsStatus: (() {
+        final guardedValue = map['ttsStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webhookIds: (() {
+        final guardedValue = map['webhookIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      webhookStatus: (() {
+        final guardedValue = map['webhookStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

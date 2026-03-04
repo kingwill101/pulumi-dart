@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseProxiesArgs {
   /// A list of Proxy IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the tenant.
   final pulumi.Input<String>? tid;
 
@@ -18,11 +20,7 @@ class GetEnterpriseProxiesArgs {
   /// [ids] A list of Proxy IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tid] The ID of the tenant.
-  GetEnterpriseProxiesArgs({
-    this.ids,
-    this.outputFile,
-    this.tid,
-  });
+  GetEnterpriseProxiesArgs({this.ids, this.outputFile, this.tid});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class GetEnterpriseProxiesArgs {
 
   factory GetEnterpriseProxiesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxiesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      tid: map['tid'] == null ? null : (map['tid']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

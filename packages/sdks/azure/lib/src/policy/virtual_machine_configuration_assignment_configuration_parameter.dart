@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineConfigurationAssignmentConfigurationParameter {
   /// The name of the configuration parameter to check.
   final pulumi.Input<String> name;
+
   /// The value to check the configuration parameter with.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class VirtualMachineConfigurationAssignmentConfigurationParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineConfigurationAssignmentConfigurationParameter(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

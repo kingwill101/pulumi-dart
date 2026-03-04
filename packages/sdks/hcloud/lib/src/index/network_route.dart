@@ -141,7 +141,7 @@ import 'network_route_state.dart';
 /// ## Import
 ///
 /// Network Route entries can be imported using a compound ID with the following format:
-/// `<network-id>-<destination>`
+/// `&lt;network-id&gt;-&lt;destination&gt;`
 ///
 /// ```sh
 /// $ pulumi import hcloud:index/networkRoute:NetworkRoute example "$NETWORK_ID-$DESTINATION"
@@ -149,8 +149,10 @@ import 'network_route_state.dart';
 class NetworkRoute extends pulumi.CustomResource {
   /// Destination network or host of this route. Must be a subnet of the ip_range of the Network. Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first ip of the networks ip_range or with 172.31.1.1.
   late final pulumi.Output<String> destination;
+
   /// Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   late final pulumi.Output<String> gateway;
+
   /// ID of the Network the route should be added to.
   late final pulumi.Output<int> networkId;
 
@@ -163,14 +165,14 @@ class NetworkRoute extends pulumi.CustomResource {
     NetworkRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/networkRoute:NetworkRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destination = registerOutput<String>('destination');
-    this.gateway = registerOutput<String>('gateway');
-    this.networkId = registerOutput<int>('networkId');
+         'hcloud:index/networkRoute:NetworkRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destination = registerOutput<String>('destination');
+    gateway = registerOutput<String>('gateway');
+    networkId = registerOutput<int>('networkId');
   }
 
   /// Gets an existing [NetworkRoute] resource's state with the given [name] and [id].
@@ -191,13 +193,13 @@ class NetworkRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/networkRoute:NetworkRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destination = registerOutput<String>('destination');
-    this.gateway = registerOutput<String>('gateway');
-    this.networkId = registerOutput<int>('networkId');
+         'hcloud:index/networkRoute:NetworkRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destination = registerOutput<String>('destination');
+    gateway = registerOutput<String>('gateway');
+    networkId = registerOutput<int>('networkId');
   }
 }

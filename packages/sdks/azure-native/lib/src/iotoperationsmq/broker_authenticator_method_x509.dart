@@ -7,6 +7,7 @@ import 'broker_authenticator_method_x509_attributes.dart';
 class BrokerAuthenticatorMethodX509 {
   /// K8S Secret name to mount for username and password.
   final pulumi.Input<BrokerAuthenticatorMethodX509Attributes>? attributes;
+
   /// Trusted client ca cert config map.
   final pulumi.Input<String>? trustedClientCaCertConfigMap;
 
@@ -20,16 +21,31 @@ class BrokerAuthenticatorMethodX509 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodX509Attributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            BrokerAuthenticatorMethodX509Attributes,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'trustedClientCaCertConfigMap': ?trustedClientCaCertConfigMap,
     };
   }
 
   factory BrokerAuthenticatorMethodX509.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509(
-      attributes: map['attributes'] == null ? null : (BrokerAuthenticatorMethodX509Attributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
-      trustedClientCaCertConfigMap: map['trustedClientCaCertConfigMap'] == null ? null : (map['trustedClientCaCertConfigMap']! as String).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BrokerAuthenticatorMethodX509Attributes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trustedClientCaCertConfigMap: (() {
+        final guardedValue = map['trustedClientCaCertConfigMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

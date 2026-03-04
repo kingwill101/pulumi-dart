@@ -122,16 +122,22 @@ import 'partner_state.dart';
 class Partner extends pulumi.CustomResource {
   /// The Amazon Web Services account ID that owns the cluster.
   late final pulumi.Output<String> accountId;
+
   /// The cluster identifier of the cluster that receives data from the partner.
   late final pulumi.Output<String> clusterIdentifier;
+
   /// The name of the database that receives data from the partner.
   late final pulumi.Output<String> databaseName;
+
   /// The name of the partner that is authorized to send data.
   late final pulumi.Output<String> partnerName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// (Optional) The partner integration status.
   late final pulumi.Output<String> status;
+
   /// (Optional) The status message provided by the partner.
   late final pulumi.Output<String> statusMessage;
 
@@ -144,18 +150,18 @@ class Partner extends pulumi.CustomResource {
     PartnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/partner:Partner',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.partnerName = registerOutput<String>('partnerName');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
+         'aws:redshift/partner:Partner',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    databaseName = registerOutput<String>('databaseName');
+    partnerName = registerOutput<String>('partnerName');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
   }
 
   /// Gets an existing [Partner] resource's state with the given [name] and [id].
@@ -176,17 +182,17 @@ class Partner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/partner:Partner',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.partnerName = registerOutput<String>('partnerName');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
+         'aws:redshift/partner:Partner',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    databaseName = registerOutput<String>('databaseName');
+    partnerName = registerOutput<String>('partnerName');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
   }
 }

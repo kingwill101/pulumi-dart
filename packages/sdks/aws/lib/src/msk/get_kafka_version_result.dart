@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKafkaVersion.
 class GetKafkaVersionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String>? preferredVersions;
   final String region;
+
   /// Status of the MSK Kafka version eg. `ACTIVE` or `DEPRECATED`.
   final String status;
   final String version;
@@ -38,11 +38,14 @@ class GetKafkaVersionResult {
   factory GetKafkaVersionResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaVersionResult(
       id: map['id'] as String,
-      preferredVersions: map['preferredVersions'] == null ? null : (map['preferredVersions'] as List).cast<String>(),
+      preferredVersions: (() {
+        final guardedValue = map['preferredVersions'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       region: map['region'] as String,
       status: map['status'] as String,
       version: map['version'] as String,
     );
   }
 }
-

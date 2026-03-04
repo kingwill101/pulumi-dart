@@ -12,15 +12,14 @@ class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'applicationArn': applicationArn,
-    };
+    return <String, dynamic>{'applicationArn': applicationArn};
   }
 
-  factory ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationSetEventDestinationEventDestinationPinpointDestination(
-      applicationArn: (map['applicationArn'] as String).input(),
+      applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
     );
   }
 }
-

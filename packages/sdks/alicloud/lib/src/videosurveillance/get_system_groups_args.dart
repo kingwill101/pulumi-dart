@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemGroupsArgs {
   /// A list of Group IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
   final pulumi.Input<String>? inProtocol;
+
   /// The name.
   final pulumi.Input<String>? name;
+
   /// A regex string to filter results by Group name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status. Valid values: `on`,`off`.
   final pulumi.Input<String>? status;
 
@@ -49,13 +54,36 @@ class GetSystemGroupsArgs {
 
   factory GetSystemGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetSystemGroupsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      inProtocol: map['inProtocol'] == null ? null : (map['inProtocol']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      inProtocol: (() {
+        final guardedValue = map['inProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

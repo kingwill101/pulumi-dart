@@ -6,10 +6,13 @@ import 'domain_devices_controller_pci_model.dart';
 class DomainDevicesControllerPci {
   /// Indicates whether the PCI controller device supports a 64-bit hole for PCI address space.
   final pulumi.Input<double>? hole64;
+
   /// Specifies the unit for the 64-bit hole in the PCI address space for the device.
   final pulumi.Input<String>? hole64Unit;
+
   /// Configures the model for the PCI controller device.
   final pulumi.Input<DomainDevicesControllerPciModel>? model;
+
   /// Sets the target configuration for the PCI controller device.
   final pulumi.Input<Map<String, dynamic>>? target;
 
@@ -29,18 +32,43 @@ class DomainDevicesControllerPci {
     return <String, dynamic>{
       'hole64': ?hole64,
       'hole64Unit': ?hole64Unit,
-      'model': ?pulumi.Input.mapOptionalInputValue<DomainDevicesControllerPciModel, Map<String, dynamic>>(model, (value) => value.toMap()),
+      'model':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesControllerPciModel,
+            Map<String, dynamic>
+          >(model, (value) => value.toMap()),
       'target': ?target,
     };
   }
 
   factory DomainDevicesControllerPci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerPci(
-      hole64: map['hole64'] == null ? null : (map['hole64']! as double).input(),
-      hole64Unit: map['hole64Unit'] == null ? null : (map['hole64Unit']! as String).input(),
-      model: map['model'] == null ? null : (DomainDevicesControllerPciModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : ((map['target']! as Map).cast<String, dynamic>()).input(),
+      hole64: (() {
+        final guardedValue = map['hole64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      hole64Unit: (() {
+        final guardedValue = map['hole64Unit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesControllerPciModel.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,28 +9,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// Specifies whether auto resolve best voices is enabled. Defaults to `true`.
   final pulumi.Input<bool>? autoResolveBestVoicesEnabled;
+
   /// Specifies whether contact flow logs are enabled. Defaults to `false`.
   final pulumi.Input<bool>? contactFlowLogsEnabled;
+
   /// Specifies whether contact lens is enabled. Defaults to `true`.
   final pulumi.Input<bool>? contactLensEnabled;
+
   /// The identifier for the directory if identity_management_type is `EXISTING_DIRECTORY`.
   final pulumi.Input<String>? directoryId;
+
   /// Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
   final pulumi.Input<bool>? earlyMediaEnabled;
+
   /// Specifies the identity management type attached to the instance. Allowed Values are: `SAML`, `CONNECT_MANAGED`, `EXISTING_DIRECTORY`.
   final pulumi.Input<String> identityManagementType;
+
   /// Specifies whether inbound calls are enabled.
   final pulumi.Input<bool> inboundCallsEnabled;
+
   /// Specifies the name of the instance. Required if `directory_id` not specified.
   final pulumi.Input<String>? instanceAlias;
+
   /// Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
   final pulumi.Input<bool>? multiPartyConferenceEnabled;
+
   /// Specifies whether outbound calls are enabled.
   final pulumi.Input<bool> outboundCallsEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// <!-- * `use_custom_tts_voices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` -->
+  /// &lt;!-- * `use_custom_tts_voices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [InstanceArgs].
@@ -80,19 +91,62 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] == null ? null : ((map['autoResolveBestVoicesEnabled'] as bool).input()).input(),
-      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] == null ? null : ((map['contactFlowLogsEnabled'] as bool).input()).input(),
-      contactLensEnabled: map['contactLensEnabled'] == null ? null : ((map['contactLensEnabled'] as bool).input()).input(),
-      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
-      earlyMediaEnabled: map['earlyMediaEnabled'] == null ? null : ((map['earlyMediaEnabled'] as bool).input()).input(),
-      identityManagementType: (map['identityManagementType'] as String).input(),
-      inboundCallsEnabled: (map['inboundCallsEnabled'] as bool).input(),
-      instanceAlias: map['instanceAlias'] == null ? null : ((map['instanceAlias'] as String).input()).input(),
-      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] == null ? null : ((map['multiPartyConferenceEnabled'] as bool).input()).input(),
-      outboundCallsEnabled: (map['outboundCallsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      autoResolveBestVoicesEnabled: (() {
+        final guardedValue = map['autoResolveBestVoicesEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      contactFlowLogsEnabled: (() {
+        final guardedValue = map['contactFlowLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      contactLensEnabled: (() {
+        final guardedValue = map['contactLensEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      directoryId: (() {
+        final guardedValue = map['directoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      earlyMediaEnabled: (() {
+        final guardedValue = map['earlyMediaEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identityManagementType: pulumi.Input.fromValue(
+        map['identityManagementType'] as String,
+      ),
+      inboundCallsEnabled: pulumi.Input.fromValue(
+        map['inboundCallsEnabled'] as bool,
+      ),
+      instanceAlias: (() {
+        final guardedValue = map['instanceAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiPartyConferenceEnabled: (() {
+        final guardedValue = map['multiPartyConferenceEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      outboundCallsEnabled: pulumi.Input.fromValue(
+        map['outboundCallsEnabled'] as bool,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

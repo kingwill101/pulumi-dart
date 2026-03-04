@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrowserSettingsState {
   /// Additional encryption context for the browser settings.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+
   /// List of web portal ARNs to associate with the browser settings.
   final pulumi.Input<List<String>>? associatedPortalArns;
+
   /// Browser policy for the browser settings. This is a JSON string that defines the browser settings policy.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? browserPolicy;
+
   /// ARN of the browser settings resource.
   final pulumi.Input<String>? browserSettingsArn;
+
   /// ARN of the customer managed KMS key.
   final pulumi.Input<String>? customerManagedKey;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -58,15 +65,52 @@ class BrowserSettingsState {
 
   factory BrowserSettingsState.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
-      browserPolicy: map['browserPolicy'] == null ? null : ((map['browserPolicy'] as String).input()).input(),
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : ((map['browserSettingsArn'] as String).input()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      additionalEncryptionContext: (() {
+        final guardedValue = map['additionalEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      associatedPortalArns: (() {
+        final guardedValue = map['associatedPortalArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      browserPolicy: (() {
+        final guardedValue = map['browserPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      browserSettingsArn: (() {
+        final guardedValue = map['browserSettingsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerManagedKey: (() {
+        final guardedValue = map['customerManagedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

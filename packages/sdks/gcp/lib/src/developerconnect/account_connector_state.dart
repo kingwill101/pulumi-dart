@@ -10,35 +10,46 @@ class AccountConnectorState {
   /// to https://google.aip.dev/122#resource-id-segments Names must be unique
   /// per-project per-location.
   final pulumi.Input<String>? accountConnectorId;
+
   /// Optional. Allows users to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Output only. The timestamp when the userConnection was created.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// Identifier. The resource name of the userConnection, in the format
   /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
   final pulumi.Input<String>? name;
+
   /// Output only. Start OAuth flow by clicking on this URL.
   final pulumi.Input<String>? oauthStartUri;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// ProviderOAuthConfig is the OAuth config for a provider.
   /// Structure is documented below.
   final pulumi.Input<AccountConnectorProviderOauthConfig>? providerOauthConfig;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Output only. The timestamp when the userConnection was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -84,7 +95,11 @@ class AccountConnectorState {
       'name': ?name,
       'oauthStartUri': ?oauthStartUri,
       'project': ?project,
-      'providerOauthConfig': ?pulumi.Input.mapOptionalInputValue<AccountConnectorProviderOauthConfig, Map<String, dynamic>>(providerOauthConfig, (value) => value.toMap()),
+      'providerOauthConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccountConnectorProviderOauthConfig,
+            Map<String, dynamic>
+          >(providerOauthConfig, (value) => value.toMap()),
       'pulumiLabels': ?pulumiLabels,
       'updateTime': ?updateTime,
     };
@@ -92,20 +107,85 @@ class AccountConnectorState {
 
   factory AccountConnectorState.fromMap(Map<String, dynamic> map) {
     return AccountConnectorState(
-      accountConnectorId: map['accountConnectorId'] == null ? null : (map['accountConnectorId']! as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      oauthStartUri: map['oauthStartUri'] == null ? null : (map['oauthStartUri']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      providerOauthConfig: map['providerOauthConfig'] == null ? null : (AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig']! as Map).cast<String, dynamic>())).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      accountConnectorId: (() {
+        final guardedValue = map['accountConnectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthStartUri: (() {
+        final guardedValue = map['oauthStartUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerOauthConfig: (() {
+        final guardedValue = map['providerOauthConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccountConnectorProviderOauthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

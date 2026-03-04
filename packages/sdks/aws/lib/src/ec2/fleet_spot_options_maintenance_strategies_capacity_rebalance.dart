@@ -22,11 +22,20 @@ class FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
     };
   }
 
-  factory FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
+  factory FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetSpotOptionsMaintenanceStrategiesCapacityRebalance(
-      replacementStrategy: map['replacementStrategy'] == null ? null : ((map['replacementStrategy'] as String).input()).input(),
-      terminationDelay: map['terminationDelay'] == null ? null : ((map['terminationDelay'] as int).input()).input(),
+      replacementStrategy: (() {
+        final guardedValue = map['replacementStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      terminationDelay: (() {
+        final guardedValue = map['terminationDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

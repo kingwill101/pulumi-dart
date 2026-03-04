@@ -8,9 +8,7 @@ class RowLevelSecurityStatisticsResponse {
 
   /// Creates a new [RowLevelSecurityStatisticsResponse].
   /// [rowLevelSecurityApplied] [Preview] Whether any accessed data was protected by row access policies.
-  RowLevelSecurityStatisticsResponse({
-    required this.rowLevelSecurityApplied,
-  });
+  RowLevelSecurityStatisticsResponse({required this.rowLevelSecurityApplied});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class RowLevelSecurityStatisticsResponse {
 
   factory RowLevelSecurityStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return RowLevelSecurityStatisticsResponse(
-      rowLevelSecurityApplied: (map['rowLevelSecurityApplied'] as bool).input(),
+      rowLevelSecurityApplied: pulumi.Input.fromValue(
+        map['rowLevelSecurityApplied'] as bool,
+      ),
     );
   }
 }
-

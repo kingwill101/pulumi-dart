@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerAppsSessionPoolArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the session pool.
   final pulumi.Input<String> sessionPoolName;
 
@@ -29,9 +30,10 @@ class GetContainerAppsSessionPoolArgs {
 
   factory GetContainerAppsSessionPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSessionPoolArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sessionPoolName: (map['sessionPoolName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sessionPoolName: pulumi.Input.fromValue(map['sessionPoolName'] as String),
     );
   }
 }
-

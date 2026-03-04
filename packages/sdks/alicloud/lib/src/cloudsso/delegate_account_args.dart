@@ -12,20 +12,15 @@ class DelegateAccountArgs {
 
   /// Creates a new [DelegateAccountArgs].
   /// [accountId] Delegate administrator account Id
-  DelegateAccountArgs({
-    required this.accountId,
-  });
+  DelegateAccountArgs({required this.accountId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-    };
+    return <String, dynamic>{'accountId': accountId};
   }
 
   factory DelegateAccountArgs.fromMap(Map<String, dynamic> map) {
     return DelegateAccountArgs(
-      accountId: (map['accountId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
     );
   }
 }
-

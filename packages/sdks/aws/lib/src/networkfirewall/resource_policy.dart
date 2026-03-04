@@ -415,8 +415,10 @@ import 'resource_policy_state.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// JSON formatted policy document that controls access to the Network Firewall resource. The policy must be provided **without whitespaces**.  We recommend using jsonencode for formatting as seen in the examples above. For more details, including available policy statement Actions, see the [Policy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PutResourcePolicy.html#API_PutResourcePolicy_RequestSyntax) parameter in the AWS API documentation.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the rule group or firewall policy.
   late final pulumi.Output<String> resourceArn;
 
@@ -429,14 +431,14 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:networkfirewall/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 
   /// Gets an existing [ResourcePolicy] resource's state with the given [name] and [id].
@@ -457,13 +459,13 @@ class ResourcePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkfirewall/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:networkfirewall/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 }

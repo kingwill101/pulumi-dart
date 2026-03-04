@@ -6,16 +6,15 @@ enum InstanceDataDiskType {
   pdBalanced("PD_BALANCED"),
   pdExtreme("PD_EXTREME");
 
-  const InstanceDataDiskType(this.value);
-  final String value;
+  const InstanceDataDiskType(this.wireValue);
+  final String wireValue;
 
   static InstanceDataDiskType fromValue(String value) {
     for (final item in InstanceDataDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceDataDiskType value: $value');
   }
 }
-

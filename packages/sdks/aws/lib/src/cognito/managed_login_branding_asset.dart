@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedLoginBrandingAsset {
   /// Image file, in Base64-encoded binary.
   final pulumi.Input<String>? bytes;
+
   /// Category that the image corresponds to. See [AWS documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssetType.html#CognitoUserPools-Type-AssetType-Category) for valid values.
   final pulumi.Input<String> category;
+
   /// Display-mode target of the asset. Valid values: `LIGHT`, `DARK`, `DYNAMIC`.
   final pulumi.Input<String> colorMode;
   final pulumi.Input<String> extension;
+
   /// Asset ID.
   final pulumi.Input<String>? resourceId;
 
@@ -39,12 +42,19 @@ class ManagedLoginBrandingAsset {
 
   factory ManagedLoginBrandingAsset.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingAsset(
-      bytes: map['bytes'] == null ? null : ((map['bytes'] as String).input()).input(),
-      category: (map['category'] as String).input(),
-      colorMode: (map['colorMode'] as String).input(),
-      extension: (map['extension'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      bytes: (() {
+        final guardedValue = map['bytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      colorMode: pulumi.Input.fromValue(map['colorMode'] as String),
+      extension: pulumi.Input.fromValue(map['extension'] as String),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

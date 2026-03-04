@@ -13,15 +13,18 @@ class InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceType': ?instanceType,
-    };
+    return <String, dynamic>{'instanceType': ?instanceType};
   }
 
-  factory InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
+  factory InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceRefreshDesiredConfigurationLaunchTemplateOverride(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

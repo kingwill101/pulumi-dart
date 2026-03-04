@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TextMappingResponse {
   /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
   final pulumi.Input<String> atomKey;
+
   /// The Input.key that identifies the input file.
   final pulumi.Input<String> inputKey;
+
   /// The zero-based index of the track in the input file.
   final pulumi.Input<int> inputTrack;
 
@@ -31,10 +33,9 @@ class TextMappingResponse {
 
   factory TextMappingResponse.fromMap(Map<String, dynamic> map) {
     return TextMappingResponse(
-      atomKey: (map['atomKey'] as String).input(),
-      inputKey: (map['inputKey'] as String).input(),
-      inputTrack: (map['inputTrack'] as int).input(),
+      atomKey: pulumi.Input.fromValue(map['atomKey'] as String),
+      inputKey: pulumi.Input.fromValue(map['inputKey'] as String),
+      inputTrack: pulumi.Input.fromValue(map['inputTrack'] as int),
     );
   }
 }
-

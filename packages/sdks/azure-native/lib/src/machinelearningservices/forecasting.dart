@@ -12,41 +12,56 @@ import 'table_vertical_limit_settings.dart';
 class Forecasting {
   /// Columns to use for CVSplit data.
   final pulumi.Input<List<String>>? cvSplitColumnNames;
+
   /// Featurization inputs needed for AutoML job.
   final pulumi.Input<TableVerticalFeaturizationSettings>? featurizationSettings;
+
   /// Forecasting task specific inputs.
   final pulumi.Input<ForecastingSettings>? forecastingSettings;
+
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<TableVerticalLimitSettings>? limitSettings;
+
   /// Log verbosity for the job.
   final pulumi.Input<String>? logVerbosity;
+
   /// Number of cross validation folds to be applied on training dataset
   /// when validation dataset is not provided.
   final pulumi.Input<AutoNCrossValidations>? nCrossValidations;
+
   /// Primary metric for forecasting task.
   final pulumi.Input<String>? primaryMetric;
+
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
   final pulumi.Input<String>? targetColumnName;
+
   /// AutoMLJob Task type.
   /// Expected value is 'Forecasting'.
   final pulumi.Input<String> taskType;
+
   /// Test data input.
   final pulumi.Input<MLTableJobInput>? testData;
+
   /// The fraction of test dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
   final pulumi.Input<double>? testDataSize;
+
   /// [Required] Training data input.
   final pulumi.Input<MLTableJobInput> trainingData;
+
   /// Inputs for training phase for an AutoML Job.
   final pulumi.Input<ForecastingTrainingSettings>? trainingSettings;
+
   /// Validation data inputs.
   final pulumi.Input<MLTableJobInput>? validationData;
+
   /// The fraction of training dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
   final pulumi.Input<double>? validationDataSize;
+
   /// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
   final pulumi.Input<String>? weightColumnName;
 
@@ -89,19 +104,51 @@ class Forecasting {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cvSplitColumnNames': ?cvSplitColumnNames,
-      'featurizationSettings': ?pulumi.Input.mapOptionalInputValue<TableVerticalFeaturizationSettings, Map<String, dynamic>>(featurizationSettings, (value) => value.toMap()),
-      'forecastingSettings': ?pulumi.Input.mapOptionalInputValue<ForecastingSettings, Map<String, dynamic>>(forecastingSettings, (value) => value.toMap()),
-      'limitSettings': ?pulumi.Input.mapOptionalInputValue<TableVerticalLimitSettings, Map<String, dynamic>>(limitSettings, (value) => value.toMap()),
+      'featurizationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TableVerticalFeaturizationSettings,
+            Map<String, dynamic>
+          >(featurizationSettings, (value) => value.toMap()),
+      'forecastingSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ForecastingSettings,
+            Map<String, dynamic>
+          >(forecastingSettings, (value) => value.toMap()),
+      'limitSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TableVerticalLimitSettings,
+            Map<String, dynamic>
+          >(limitSettings, (value) => value.toMap()),
       'logVerbosity': ?logVerbosity,
-      'nCrossValidations': ?pulumi.Input.mapOptionalInputValue<AutoNCrossValidations, Map<String, dynamic>>(nCrossValidations, (value) => value.toMap()),
+      'nCrossValidations':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoNCrossValidations,
+            Map<String, dynamic>
+          >(nCrossValidations, (value) => value.toMap()),
       'primaryMetric': ?primaryMetric,
       'targetColumnName': ?targetColumnName,
       'taskType': taskType,
-      'testData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInput, Map<String, dynamic>>(testData, (value) => value.toMap()),
+      'testData':
+          ?pulumi.Input.mapOptionalInputValue<
+            MLTableJobInput,
+            Map<String, dynamic>
+          >(testData, (value) => value.toMap()),
       'testDataSize': ?testDataSize,
-      'trainingData': pulumi.Input.mapInputValue<MLTableJobInput, Map<String, dynamic>>(trainingData, (value) => value.toMap()),
-      'trainingSettings': ?pulumi.Input.mapOptionalInputValue<ForecastingTrainingSettings, Map<String, dynamic>>(trainingSettings, (value) => value.toMap()),
-      'validationData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInput, Map<String, dynamic>>(validationData, (value) => value.toMap()),
+      'trainingData':
+          pulumi.Input.mapInputValue<MLTableJobInput, Map<String, dynamic>>(
+            trainingData,
+            (value) => value.toMap(),
+          ),
+      'trainingSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ForecastingTrainingSettings,
+            Map<String, dynamic>
+          >(trainingSettings, (value) => value.toMap()),
+      'validationData':
+          ?pulumi.Input.mapOptionalInputValue<
+            MLTableJobInput,
+            Map<String, dynamic>
+          >(validationData, (value) => value.toMap()),
       'validationDataSize': ?validationDataSize,
       'weightColumnName': ?weightColumnName,
     };
@@ -109,23 +156,110 @@ class Forecasting {
 
   factory Forecasting.fromMap(Map<String, dynamic> map) {
     return Forecasting(
-      cvSplitColumnNames: map['cvSplitColumnNames'] == null ? null : ((map['cvSplitColumnNames']! as List).cast<String>()).input(),
-      featurizationSettings: map['featurizationSettings'] == null ? null : (TableVerticalFeaturizationSettings.fromMap((map['featurizationSettings']! as Map).cast<String, dynamic>())).input(),
-      forecastingSettings: map['forecastingSettings'] == null ? null : (ForecastingSettings.fromMap((map['forecastingSettings']! as Map).cast<String, dynamic>())).input(),
-      limitSettings: map['limitSettings'] == null ? null : (TableVerticalLimitSettings.fromMap((map['limitSettings']! as Map).cast<String, dynamic>())).input(),
-      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity']! as String).input(),
-      nCrossValidations: map['nCrossValidations'] == null ? null : (AutoNCrossValidations.fromMap((map['nCrossValidations']! as Map).cast<String, dynamic>())).input(),
-      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric']! as String).input(),
-      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName']! as String).input(),
-      taskType: (map['taskType'] as String).input(),
-      testData: map['testData'] == null ? null : (MLTableJobInput.fromMap((map['testData']! as Map).cast<String, dynamic>())).input(),
-      testDataSize: map['testDataSize'] == null ? null : (map['testDataSize']! as double).input(),
-      trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
-      trainingSettings: map['trainingSettings'] == null ? null : (ForecastingTrainingSettings.fromMap((map['trainingSettings']! as Map).cast<String, dynamic>())).input(),
-      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData']! as Map).cast<String, dynamic>())).input(),
-      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize']! as double).input(),
-      weightColumnName: map['weightColumnName'] == null ? null : (map['weightColumnName']! as String).input(),
+      cvSplitColumnNames: (() {
+        final guardedValue = map['cvSplitColumnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      featurizationSettings: (() {
+        final guardedValue = map['featurizationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableVerticalFeaturizationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      forecastingSettings: (() {
+        final guardedValue = map['forecastingSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ForecastingSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      limitSettings: (() {
+        final guardedValue = map['limitSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableVerticalLimitSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logVerbosity: (() {
+        final guardedValue = map['logVerbosity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nCrossValidations: (() {
+        final guardedValue = map['nCrossValidations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoNCrossValidations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primaryMetric: (() {
+        final guardedValue = map['primaryMetric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetColumnName: (() {
+        final guardedValue = map['targetColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
+      testData: (() {
+        final guardedValue = map['testData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MLTableJobInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      testDataSize: (() {
+        final guardedValue = map['testDataSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      trainingData: pulumi.Input.fromValue(
+        MLTableJobInput.fromMap(
+          (map['trainingData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      trainingSettings: (() {
+        final guardedValue = map['trainingSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ForecastingTrainingSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      validationData: (() {
+        final guardedValue = map['validationData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MLTableJobInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      validationDataSize: (() {
+        final guardedValue = map['validationDataSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      weightColumnName: (() {
+        final guardedValue = map['weightColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

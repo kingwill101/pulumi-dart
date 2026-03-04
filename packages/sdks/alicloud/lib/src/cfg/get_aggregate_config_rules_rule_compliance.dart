@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAggregateConfigRulesRuleCompliance {
   /// The Compliance Type.
   final pulumi.Input<String> complianceType;
+
   /// The Count.
   final pulumi.Input<int> count;
 
@@ -17,17 +18,15 @@ class GetAggregateConfigRulesRuleCompliance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'complianceType': complianceType,
-      'count': count,
-    };
+    return <String, dynamic>{'complianceType': complianceType, 'count': count};
   }
 
-  factory GetAggregateConfigRulesRuleCompliance.fromMap(Map<String, dynamic> map) {
+  factory GetAggregateConfigRulesRuleCompliance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAggregateConfigRulesRuleCompliance(
-      complianceType: (map['complianceType'] as String).input(),
-      count: (map['count'] as int).input(),
+      complianceType: pulumi.Input.fromValue(map['complianceType'] as String),
+      count: pulumi.Input.fromValue(map['count'] as int),
     );
   }
 }
-

@@ -34,13 +34,24 @@ class ListGlobalRulestackSecurityServicesArgs {
     };
   }
 
-  factory ListGlobalRulestackSecurityServicesArgs.fromMap(Map<String, dynamic> map) {
+  factory ListGlobalRulestackSecurityServicesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListGlobalRulestackSecurityServicesArgs(
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
-      top: map['top'] == null ? null : (map['top']! as int).input(),
-      type: (map['type'] as String).input(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      top: (() {
+        final guardedValue = map['top'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

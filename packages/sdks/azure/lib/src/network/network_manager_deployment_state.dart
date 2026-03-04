@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerDeploymentState {
   /// A list of Network Manager Configuration IDs which should be aligned with `scope_access`.
   final pulumi.Input<List<String>>? configurationIds;
+
   /// Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String>? networkManagerId;
+
   /// Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String>? scopeAccess;
+
   /// A mapping of key values pairs that can be used to keep the deployment up with the Network Manager configurations and rules.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -41,12 +45,33 @@ class NetworkManagerDeploymentState {
 
   factory NetworkManagerDeploymentState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentState(
-      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
-      scopeAccess: map['scopeAccess'] == null ? null : (map['scopeAccess']! as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
+      configurationIds: (() {
+        final guardedValue = map['configurationIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: (() {
+        final guardedValue = map['networkManagerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeAccess: (() {
+        final guardedValue = map['scopeAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

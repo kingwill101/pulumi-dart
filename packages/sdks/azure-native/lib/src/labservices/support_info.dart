@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SupportInfo {
   /// Support contact email address.
   final pulumi.Input<String>? email;
+
   /// Support instructions.
   final pulumi.Input<String>? instructions;
+
   /// Support contact phone number.
   final pulumi.Input<String>? phone;
+
   /// Support web address.
   final pulumi.Input<String>? url;
 
@@ -18,12 +21,7 @@ class SupportInfo {
   /// [instructions] Support instructions.
   /// [phone] Support contact phone number.
   /// [url] Support web address.
-  SupportInfo({
-    this.email,
-    this.instructions,
-    this.phone,
-    this.url,
-  });
+  SupportInfo({this.email, this.instructions, this.phone, this.url});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class SupportInfo {
 
   factory SupportInfo.fromMap(Map<String, dynamic> map) {
     return SupportInfo(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      instructions: map['instructions'] == null ? null : (map['instructions']! as String).input(),
-      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instructions: (() {
+        final guardedValue = map['instructions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phone: (() {
+        final guardedValue = map['phone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

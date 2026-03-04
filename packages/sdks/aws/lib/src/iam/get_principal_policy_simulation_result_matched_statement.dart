@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrincipalPolicySimulationResultMatchedStatement {
   /// Identifier of one of the policies used as input to the simulation.
   final pulumi.Input<String> sourcePolicyId;
+
   /// The type of the policy identified in source_policy_id.
   final pulumi.Input<String> sourcePolicyType;
 
@@ -23,11 +24,14 @@ class GetPrincipalPolicySimulationResultMatchedStatement {
     };
   }
 
-  factory GetPrincipalPolicySimulationResultMatchedStatement.fromMap(Map<String, dynamic> map) {
+  factory GetPrincipalPolicySimulationResultMatchedStatement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrincipalPolicySimulationResultMatchedStatement(
-      sourcePolicyId: (map['sourcePolicyId'] as String).input(),
-      sourcePolicyType: (map['sourcePolicyType'] as String).input(),
+      sourcePolicyId: pulumi.Input.fromValue(map['sourcePolicyId'] as String),
+      sourcePolicyType: pulumi.Input.fromValue(
+        map['sourcePolicyType'] as String,
+      ),
     );
   }
 }
-

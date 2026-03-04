@@ -9,20 +9,17 @@ class GoogleCloudContentwarehouseV1FloatArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1FloatArrayResponse].
   /// [values] List of float values.
-  GoogleCloudContentwarehouseV1FloatArrayResponse({
-    required this.values,
-  });
+  GoogleCloudContentwarehouseV1FloatArrayResponse({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory GoogleCloudContentwarehouseV1FloatArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1FloatArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1FloatArrayResponse(
-      values: ((map['values'] as List).cast<double>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<double>()),
     );
   }
 }
-

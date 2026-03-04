@@ -1,5 +1,3 @@
-library module_cfg;
-
 export 'cfg/aggregate_compliance_pack.dart';
 export 'cfg/aggregate_compliance_pack_args.dart';
 export 'cfg/aggregate_compliance_pack_config_rule.dart';

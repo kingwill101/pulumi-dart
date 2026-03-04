@@ -6,9 +6,6 @@ import 'deployment_stack_at_resource_group_args.dart';
 import 'deployment_stacks_debug_setting_response.dart';
 import 'deployment_stacks_parameters_link_response.dart';
 import 'error_detail_response.dart';
-import 'managed_resource_reference_response.dart';
-import 'resource_reference_extended_response.dart';
-import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 
 /// Deployment stack object.
@@ -268,48 +265,72 @@ import 'system_data_response.dart';
 class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
   late final pulumi.Output<ActionOnUnmanageResponse> actionOnUnmanage;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
   late final pulumi.Output<String> correlationId;
+
   /// The debug setting of the deployment.
   late final pulumi.Output<DeploymentStacksDebugSettingResponse?> debugSetting;
+
   /// An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified.
-  late final pulumi.Output<List<ResourceReferenceResponse>> deletedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>> deletedResources;
+
   /// Defines how resources deployed by the stack are locked.
   late final pulumi.Output<DenySettingsResponse> denySettings;
+
   /// The resourceId of the deployment resource created by the deployment stack.
   late final pulumi.Output<String> deploymentId;
+
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
   late final pulumi.Output<String?> deploymentScope;
+
   /// Deployment stack description. Max length of 4096 characters.
   late final pulumi.Output<String?> description;
+
   /// An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack.
-  late final pulumi.Output<List<ResourceReferenceResponse>> detachedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>> detachedResources;
+
   /// The duration of the last successful Deployment stack update.
   late final pulumi.Output<String> duration;
+
   /// The error detail.
   late final pulumi.Output<ErrorDetailResponse?> error;
+
   /// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
-  late final pulumi.Output<List<ResourceReferenceExtendedResponse>> failedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>> failedResources;
+
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The outputs of the deployment resource created by the deployment stack.
   late final pulumi.Output<dynamic> outputs;
+
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-  late final pulumi.Output<Map<String, DeploymentParameterResponse>?> parameters;
+  late final pulumi.Output<Map<String, DeploymentParameterResponse>?>
+  parameters;
+
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  late final pulumi.Output<DeploymentStacksParametersLinkResponse?> parametersLink;
+  late final pulumi.Output<DeploymentStacksParametersLinkResponse?>
+  parametersLink;
+
   /// State of the deployment stack.
   late final pulumi.Output<String> provisioningState;
+
   /// An array of resources currently managed by the deployment stack.
-  late final pulumi.Output<List<ManagedResourceReferenceResponse>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -322,33 +343,47 @@ class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     DeploymentStackAtResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resources:DeploymentStackAtResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionOnUnmanage = registerOutput<ActionOnUnmanageResponse>('actionOnUnmanage');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.correlationId = registerOutput<String>('correlationId');
-    this.debugSetting = registerOutput<DeploymentStacksDebugSettingResponse?>('debugSetting');
-    this.deletedResources = registerOutput<List<ResourceReferenceResponse>>('deletedResources');
-    this.denySettings = registerOutput<DenySettingsResponse>('denySettings');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.deploymentScope = registerOutput<String?>('deploymentScope');
-    this.description = registerOutput<String?>('description');
-    this.detachedResources = registerOutput<List<ResourceReferenceResponse>>('detachedResources');
-    this.duration = registerOutput<String>('duration');
-    this.error = registerOutput<ErrorDetailResponse?>('error');
-    this.failedResources = registerOutput<List<ResourceReferenceExtendedResponse>>('failedResources');
-    this.location = registerOutput<String?>('location');
+         'azure-native:resources:DeploymentStackAtResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionOnUnmanage = registerOutput<ActionOnUnmanageResponse>(
+      'actionOnUnmanage',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    correlationId = registerOutput<String>('correlationId');
+    debugSetting = registerOutput<DeploymentStacksDebugSettingResponse?>(
+      'debugSetting',
+    );
+    deletedResources = registerOutput<List<Map<String, dynamic>>>(
+      'deletedResources',
+    );
+    denySettings = registerOutput<DenySettingsResponse>('denySettings');
+    deploymentId = registerOutput<String>('deploymentId');
+    deploymentScope = registerOutput<String?>('deploymentScope');
+    description = registerOutput<String?>('description');
+    detachedResources = registerOutput<List<Map<String, dynamic>>>(
+      'detachedResources',
+    );
+    duration = registerOutput<String>('duration');
+    error = registerOutput<ErrorDetailResponse?>('error');
+    failedResources = registerOutput<List<Map<String, dynamic>>>(
+      'failedResources',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<dynamic>('outputs');
-    this.parameters = registerOutput<Map<String, DeploymentParameterResponse>?>('parameters');
-    this.parametersLink = registerOutput<DeploymentStacksParametersLinkResponse?>('parametersLink');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resources = registerOutput<List<ManagedResourceReferenceResponse>>('resources');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    outputs = registerOutput<dynamic>('outputs');
+    parameters = registerOutput<Map<String, DeploymentParameterResponse>?>(
+      'parameters',
+    );
+    parametersLink = registerOutput<DeploymentStacksParametersLinkResponse?>(
+      'parametersLink',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

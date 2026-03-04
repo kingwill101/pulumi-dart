@@ -2,12 +2,14 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
+/// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): offset + (width * i).Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
 class LinearResponse {
   /// Must be greater than 0.
   final pulumi.Input<int> numFiniteBuckets;
+
   /// Lower bound of the first bucket.
   final pulumi.Input<double> offset;
+
   /// Must be greater than 0.
   final pulumi.Input<double> width;
 
@@ -31,10 +33,9 @@ class LinearResponse {
 
   factory LinearResponse.fromMap(Map<String, dynamic> map) {
     return LinearResponse(
-      numFiniteBuckets: (map['numFiniteBuckets'] as int).input(),
-      offset: (map['offset'] as double).input(),
-      width: (map['width'] as double).input(),
+      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
+      offset: pulumi.Input.fromValue(map['offset'] as double),
+      width: pulumi.Input.fromValue(map['width'] as double),
     );
   }
 }
-

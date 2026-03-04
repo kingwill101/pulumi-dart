@@ -4,7 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bucket_replication_configuration_rule_destination_metric_event_threshold.dart';
 
 class GetBucketReplicationConfigurationRuleDestinationMetric {
-  final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>> eventThresholds;
+  final pulumi.Input<
+    List<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>
+  >
+  eventThresholds;
   final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetric].
@@ -17,16 +20,40 @@ class GetBucketReplicationConfigurationRuleDestinationMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventThresholds': pulumi.Input.mapInputValue<List<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>, List<Map<String, dynamic>>>(eventThresholds, (value) => pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'eventThresholds':
+          pulumi.Input.mapInputValue<
+            List<
+              GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold
+            >,
+            List<Map<String, dynamic>>
+          >(
+            eventThresholds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
     };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketReplicationConfigurationRuleDestinationMetric(
-      eventThresholds: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>(map['eventThresholds']!, (value) => GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
+      eventThresholds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold
+        >(
+          map['eventThresholds']!,
+          (value) =>
+              GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

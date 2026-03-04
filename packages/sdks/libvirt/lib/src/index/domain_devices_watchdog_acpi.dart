@@ -8,20 +8,19 @@ class DomainDevicesWatchdogAcpi {
 
   /// Creates a new [DomainDevicesWatchdogAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesWatchdogAcpi({
-    this.index,
-  });
+  DomainDevicesWatchdogAcpi({this.index});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'index': ?index,
-    };
+    return <String, dynamic>{'index': ?index};
   }
 
   factory DomainDevicesWatchdogAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesWatchdogAcpi(
-      index: map['index'] == null ? null : (map['index']! as double).input(),
+      index: (() {
+        final guardedValue = map['index'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum KerberosState {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const KerberosState(this.value);
-  final String value;
+  const KerberosState(this.wireValue);
+  final String wireValue;
 
   static KerberosState fromValue(String value) {
     for (final item in KerberosState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KerberosState value: $value');
   }
 }
-

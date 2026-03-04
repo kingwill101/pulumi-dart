@@ -6,6 +6,7 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
   /// A PEM-encoded public key, as described in
   /// `https://tools.ietf.org/html/rfc7468#section-13`
   final pulumi.Input<String>? publicKeyPem;
+
   /// The signature algorithm used to verify a message against
   /// a signature using this key. These signature algorithm must
   /// match the structure and any object identifiers encoded in
@@ -28,11 +29,20 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
     };
   }
 
-  factory AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(Map<String, dynamic> map) {
+  factory AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(
-      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem']! as String).input(),
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (map['signatureAlgorithm']! as String).input(),
+      publicKeyPem: (() {
+        final guardedValue = map['publicKeyPem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signatureAlgorithm: (() {
+        final guardedValue = map['signatureAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

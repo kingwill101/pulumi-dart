@@ -10,20 +10,29 @@ class AccessDeterminationLogConfig {
 
   /// Creates a new [AccessDeterminationLogConfig].
   /// [logLevel] Optional. Controls the amount of detail to include as part of the audit logs.
-  AccessDeterminationLogConfig({
-    this.logLevel,
-  });
+  AccessDeterminationLogConfig({this.logLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logLevel': ?pulumi.Input.mapOptionalInputValue<AccessDeterminationLogConfigLogLevel, String>(logLevel, (value) => value.value),
+      'logLevel':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessDeterminationLogConfigLogLevel,
+            String
+          >(logLevel, (value) => value.wireValue),
     };
   }
 
   factory AccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return AccessDeterminationLogConfig(
-      logLevel: map['logLevel'] == null ? null : (AccessDeterminationLogConfigLogLevel.fromValue(map['logLevel']! as String)).input(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessDeterminationLogConfigLogLevel.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

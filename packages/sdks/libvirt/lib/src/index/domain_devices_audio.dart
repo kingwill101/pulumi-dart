@@ -16,28 +16,40 @@ import 'domain_devices_audio_spice.dart';
 class DomainDevicesAudio {
   /// Configures ALSA audio settings for the domain, enabling audio playback and recording using the ALSA framework.
   final pulumi.Input<DomainDevicesAudioAlsa>? alsa;
+
   /// Configures the CoreAudio audio device for the guest.
   final pulumi.Input<DomainDevicesAudioCoreAudio>? coreAudio;
+
   /// Configures the D-Bus audio device for the guest.
   final pulumi.Input<DomainDevicesAudioDbus>? dbus;
+
   /// Configures the file-based audio device for the guest.
   final pulumi.Input<DomainDevicesAudioFile>? file;
+
   /// Assigns a unique identifier to the audio device.
   final pulumi.Input<double>? id;
+
   /// Configures the Jack audio device for the guest.
   final pulumi.Input<DomainDevicesAudioJack>? jack;
+
   /// Configures the None audio device for the guest.
   final pulumi.Input<DomainDevicesAudioNone>? none;
+
   /// Configures the OSS audio device for the guest.
   final pulumi.Input<DomainDevicesAudioOss>? oss;
+
   /// Configures the PipeWire audio device for the guest.
   final pulumi.Input<DomainDevicesAudioPipeWire>? pipeWire;
+
   /// Configures the PulseAudio audio backend for the virtual machine.
   final pulumi.Input<DomainDevicesAudioPulseAudio>? pulseAudio;
+
   /// Configures the SDL audio backend for the virtual machine.
   final pulumi.Input<DomainDevicesAudioSdl>? sdl;
+
   /// Configures the SPICE audio backend for the virtual machine.
   final pulumi.Input<DomainDevicesAudioSpice>? spice;
+
   /// Sets the timer period for the audio devices in the configuration.
   final pulumi.Input<double>? timerPeriod;
 
@@ -73,38 +85,177 @@ class DomainDevicesAudio {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alsa': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioAlsa, Map<String, dynamic>>(alsa, (value) => value.toMap()),
-      'coreAudio': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioCoreAudio, Map<String, dynamic>>(coreAudio, (value) => value.toMap()),
-      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
-      'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'alsa':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioAlsa,
+            Map<String, dynamic>
+          >(alsa, (value) => value.toMap()),
+      'coreAudio':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioCoreAudio,
+            Map<String, dynamic>
+          >(coreAudio, (value) => value.toMap()),
+      'dbus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioDbus,
+            Map<String, dynamic>
+          >(dbus, (value) => value.toMap()),
+      'file':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioFile,
+            Map<String, dynamic>
+          >(file, (value) => value.toMap()),
       'id': ?id,
-      'jack': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioJack, Map<String, dynamic>>(jack, (value) => value.toMap()),
-      'none': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioNone, Map<String, dynamic>>(none, (value) => value.toMap()),
-      'oss': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOss, Map<String, dynamic>>(oss, (value) => value.toMap()),
-      'pipeWire': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPipeWire, Map<String, dynamic>>(pipeWire, (value) => value.toMap()),
-      'pulseAudio': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPulseAudio, Map<String, dynamic>>(pulseAudio, (value) => value.toMap()),
-      'sdl': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioSdl, Map<String, dynamic>>(sdl, (value) => value.toMap()),
-      'spice': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioSpice, Map<String, dynamic>>(spice, (value) => value.toMap()),
+      'jack':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioJack,
+            Map<String, dynamic>
+          >(jack, (value) => value.toMap()),
+      'none':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioNone,
+            Map<String, dynamic>
+          >(none, (value) => value.toMap()),
+      'oss':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioOss,
+            Map<String, dynamic>
+          >(oss, (value) => value.toMap()),
+      'pipeWire':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioPipeWire,
+            Map<String, dynamic>
+          >(pipeWire, (value) => value.toMap()),
+      'pulseAudio':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioPulseAudio,
+            Map<String, dynamic>
+          >(pulseAudio, (value) => value.toMap()),
+      'sdl':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioSdl,
+            Map<String, dynamic>
+          >(sdl, (value) => value.toMap()),
+      'spice':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesAudioSpice,
+            Map<String, dynamic>
+          >(spice, (value) => value.toMap()),
       'timerPeriod': ?timerPeriod,
     };
   }
 
   factory DomainDevicesAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudio(
-      alsa: map['alsa'] == null ? null : (DomainDevicesAudioAlsa.fromMap((map['alsa']! as Map).cast<String, dynamic>())).input(),
-      coreAudio: map['coreAudio'] == null ? null : (DomainDevicesAudioCoreAudio.fromMap((map['coreAudio']! as Map).cast<String, dynamic>())).input(),
-      dbus: map['dbus'] == null ? null : (DomainDevicesAudioDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesAudioFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as double).input(),
-      jack: map['jack'] == null ? null : (DomainDevicesAudioJack.fromMap((map['jack']! as Map).cast<String, dynamic>())).input(),
-      none: map['none'] == null ? null : (DomainDevicesAudioNone.fromMap((map['none']! as Map).cast<String, dynamic>())).input(),
-      oss: map['oss'] == null ? null : (DomainDevicesAudioOss.fromMap((map['oss']! as Map).cast<String, dynamic>())).input(),
-      pipeWire: map['pipeWire'] == null ? null : (DomainDevicesAudioPipeWire.fromMap((map['pipeWire']! as Map).cast<String, dynamic>())).input(),
-      pulseAudio: map['pulseAudio'] == null ? null : (DomainDevicesAudioPulseAudio.fromMap((map['pulseAudio']! as Map).cast<String, dynamic>())).input(),
-      sdl: map['sdl'] == null ? null : (DomainDevicesAudioSdl.fromMap((map['sdl']! as Map).cast<String, dynamic>())).input(),
-      spice: map['spice'] == null ? null : (DomainDevicesAudioSpice.fromMap((map['spice']! as Map).cast<String, dynamic>())).input(),
-      timerPeriod: map['timerPeriod'] == null ? null : (map['timerPeriod']! as double).input(),
+      alsa: (() {
+        final guardedValue = map['alsa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioAlsa.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      coreAudio: (() {
+        final guardedValue = map['coreAudio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioCoreAudio.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dbus: (() {
+        final guardedValue = map['dbus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioDbus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      file: (() {
+        final guardedValue = map['file'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioFile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      jack: (() {
+        final guardedValue = map['jack'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioJack.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      none: (() {
+        final guardedValue = map['none'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioNone.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      oss: (() {
+        final guardedValue = map['oss'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioOss.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pipeWire: (() {
+        final guardedValue = map['pipeWire'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioPipeWire.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pulseAudio: (() {
+        final guardedValue = map['pulseAudio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioPulseAudio.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sdl: (() {
+        final guardedValue = map['sdl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioSdl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spice: (() {
+        final guardedValue = map['spice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesAudioSpice.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timerPeriod: (() {
+        final guardedValue = map['timerPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

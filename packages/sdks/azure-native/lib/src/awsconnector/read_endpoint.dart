@@ -9,20 +9,19 @@ class ReadEndpoint {
 
   /// Creates a new [ReadEndpoint].
   /// [address] The reader endpoint for the DB cluster.
-  ReadEndpoint({
-    this.address,
-  });
+  ReadEndpoint({this.address});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': ?address,
-    };
+    return <String, dynamic>{'address': ?address};
   }
 
   factory ReadEndpoint.fromMap(Map<String, dynamic> map) {
     return ReadEndpoint(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

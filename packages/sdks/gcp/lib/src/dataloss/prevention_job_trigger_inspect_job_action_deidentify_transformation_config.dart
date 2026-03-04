@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
   /// If this template is specified, it will serve as the default de-identify template.
   final pulumi.Input<String>? deidentifyTemplate;
+
   /// If this template is specified, it will serve as the de-identify template for images.
   final pulumi.Input<String>? imageRedactTemplate;
+
   /// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
   final pulumi.Input<String>? structuredDeidentifyTemplate;
 
@@ -28,12 +30,25 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
     };
   }
 
-  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
-      imageRedactTemplate: map['imageRedactTemplate'] == null ? null : (map['imageRedactTemplate']! as String).input(),
-      structuredDeidentifyTemplate: map['structuredDeidentifyTemplate'] == null ? null : (map['structuredDeidentifyTemplate']! as String).input(),
+      deidentifyTemplate: (() {
+        final guardedValue = map['deidentifyTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageRedactTemplate: (() {
+        final guardedValue = map['imageRedactTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      structuredDeidentifyTemplate: (() {
+        final guardedValue = map['structuredDeidentifyTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

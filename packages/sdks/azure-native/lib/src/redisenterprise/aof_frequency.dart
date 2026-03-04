@@ -3,16 +3,15 @@ enum AofFrequency {
   value1s("1s"),
   valueAlways("always");
 
-  const AofFrequency(this.value);
-  final String value;
+  const AofFrequency(this.wireValue);
+  final String wireValue;
 
   static AofFrequency fromValue(String value) {
     for (final item in AofFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AofFrequency value: $value');
   }
 }
-

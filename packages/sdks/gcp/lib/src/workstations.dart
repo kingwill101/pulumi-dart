@@ -1,5 +1,3 @@
-library module_workstations;
-
 export 'workstations/functions.dart';
 export 'workstations/get_workstation_config_iam_policy_args.dart';
 export 'workstations/get_workstation_config_iam_policy_result.dart';

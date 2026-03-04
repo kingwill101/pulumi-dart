@@ -250,7 +250,7 @@ import 'virtual_machine_manager_cloud_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ScVmm` - 2023-10-07
@@ -265,14 +265,20 @@ import 'virtual_machine_manager_cloud_state.dart';
 class VirtualMachineManagerCloud extends pulumi.CustomResource {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Cloud. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
+
   /// The Azure Region where the System Center Virtual Machine Manager Cloud should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the System Center Virtual Machine Manager Cloud. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the System Center Virtual Machine Cloud should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
-  late final pulumi.Output<String> systemCenterVirtualMachineManagerServerInventoryItemId;
+  late final pulumi.Output<String>
+  systemCenterVirtualMachineManagerServerInventoryItemId;
+
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Cloud.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -285,17 +291,20 @@ class VirtualMachineManagerCloud extends pulumi.CustomResource {
     VirtualMachineManagerCloudArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerCloud:VirtualMachineManagerCloud',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.location = registerOutput<String>('location');
+         'azure:systemcenter/virtualMachineManagerCloud:VirtualMachineManagerCloud',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.systemCenterVirtualMachineManagerServerInventoryItemId = registerOutput<String>('systemCenterVirtualMachineManagerServerInventoryItemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    systemCenterVirtualMachineManagerServerInventoryItemId =
+        registerOutput<String>(
+          'systemCenterVirtualMachineManagerServerInventoryItemId',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [VirtualMachineManagerCloud] resource's state with the given [name] and [id].
@@ -316,16 +325,19 @@ class VirtualMachineManagerCloud extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerCloud:VirtualMachineManagerCloud',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.location = registerOutput<String>('location');
+         'azure:systemcenter/virtualMachineManagerCloud:VirtualMachineManagerCloud',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.systemCenterVirtualMachineManagerServerInventoryItemId = registerOutput<String>('systemCenterVirtualMachineManagerServerInventoryItemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    systemCenterVirtualMachineManagerServerInventoryItemId =
+        registerOutput<String>(
+          'systemCenterVirtualMachineManagerServerInventoryItemId',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

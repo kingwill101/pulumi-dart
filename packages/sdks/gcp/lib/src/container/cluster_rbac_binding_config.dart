@@ -11,6 +11,7 @@ class ClusterRbacBindingConfig {
   /// In addition to the arguments listed above, the following computed attributes are
   /// exported:
   final pulumi.Input<bool>? enableInsecureBindingSystemAuthenticated;
+
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
   final pulumi.Input<bool>? enableInsecureBindingSystemUnauthenticated;
 
@@ -24,16 +25,25 @@ class ClusterRbacBindingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableInsecureBindingSystemAuthenticated': ?enableInsecureBindingSystemAuthenticated,
-      'enableInsecureBindingSystemUnauthenticated': ?enableInsecureBindingSystemUnauthenticated,
+      'enableInsecureBindingSystemAuthenticated':
+          ?enableInsecureBindingSystemAuthenticated,
+      'enableInsecureBindingSystemUnauthenticated':
+          ?enableInsecureBindingSystemUnauthenticated,
     };
   }
 
   factory ClusterRbacBindingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRbacBindingConfig(
-      enableInsecureBindingSystemAuthenticated: map['enableInsecureBindingSystemAuthenticated'] == null ? null : (map['enableInsecureBindingSystemAuthenticated']! as bool).input(),
-      enableInsecureBindingSystemUnauthenticated: map['enableInsecureBindingSystemUnauthenticated'] == null ? null : (map['enableInsecureBindingSystemUnauthenticated']! as bool).input(),
+      enableInsecureBindingSystemAuthenticated: (() {
+        final guardedValue = map['enableInsecureBindingSystemAuthenticated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableInsecureBindingSystemUnauthenticated: (() {
+        final guardedValue = map['enableInsecureBindingSystemUnauthenticated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupRetentionSettingsResponseSqladminV1beta4 {
   /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
   final pulumi.Input<int> retainedBackups;
+
   /// The unit that 'retained_backups' represents.
   final pulumi.Input<String> retentionUnit;
 
@@ -24,11 +25,12 @@ class BackupRetentionSettingsResponseSqladminV1beta4 {
     };
   }
 
-  factory BackupRetentionSettingsResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory BackupRetentionSettingsResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupRetentionSettingsResponseSqladminV1beta4(
-      retainedBackups: (map['retainedBackups'] as int).input(),
-      retentionUnit: (map['retentionUnit'] as String).input(),
+      retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
+      retentionUnit: pulumi.Input.fromValue(map['retentionUnit'] as String),
     );
   }
 }
-

@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolutionLinesLine {
   final pulumi.Input<String> lineCode;
+
   /// Line display name.
   final pulumi.Input<String> lineDisplayName;
+
   /// Line name.
   final pulumi.Input<String> lineName;
 
@@ -29,10 +31,9 @@ class GetResolutionLinesLine {
 
   factory GetResolutionLinesLine.fromMap(Map<String, dynamic> map) {
     return GetResolutionLinesLine(
-      lineCode: (map['lineCode'] as String).input(),
-      lineDisplayName: (map['lineDisplayName'] as String).input(),
-      lineName: (map['lineName'] as String).input(),
+      lineCode: pulumi.Input.fromValue(map['lineCode'] as String),
+      lineDisplayName: pulumi.Input.fromValue(map['lineDisplayName'] as String),
+      lineName: pulumi.Input.fromValue(map['lineName'] as String),
     );
   }
 }
-

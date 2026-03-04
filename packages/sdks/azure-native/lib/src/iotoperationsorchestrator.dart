@@ -1,5 +1,3 @@
-library module_iotoperationsorchestrator;
-
 export 'iotoperationsorchestrator/binding_properties.dart';
 export 'iotoperationsorchestrator/binding_properties_response.dart';
 export 'iotoperationsorchestrator/component_properties.dart';

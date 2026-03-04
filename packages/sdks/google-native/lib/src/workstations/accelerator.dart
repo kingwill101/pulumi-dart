@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Accelerator {
   /// Optional. Number of accelerator cards exposed to the instance.
   final pulumi.Input<int>? count;
+
   /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [Accelerator].
   /// [count] Optional. Number of accelerator cards exposed to the instance.
   /// [type] Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
-  Accelerator({
-    this.count,
-    this.type,
-  });
+  Accelerator({this.count, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': ?count,
-      'type': ?type,
-    };
+    return <String, dynamic>{'count': ?count, 'type': ?type};
   }
 
   factory Accelerator.fromMap(Map<String, dynamic> map) {
     return Accelerator(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

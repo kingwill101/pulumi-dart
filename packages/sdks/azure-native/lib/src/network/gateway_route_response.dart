@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteResponse {
   /// The route's AS path sequence.
   final pulumi.Input<String> asPath;
+
   /// The gateway's local address.
   final pulumi.Input<String> localAddress;
+
   /// The route's network prefix.
   final pulumi.Input<String> network;
+
   /// The route's next hop.
   final pulumi.Input<String> nextHop;
+
   /// The source this route was learned from.
   final pulumi.Input<String> origin;
+
   /// The peer this route was learned from.
   final pulumi.Input<String> sourcePeer;
+
   /// The route's weight.
   final pulumi.Input<int> weight;
 
@@ -51,14 +57,13 @@ class GatewayRouteResponse {
 
   factory GatewayRouteResponse.fromMap(Map<String, dynamic> map) {
     return GatewayRouteResponse(
-      asPath: (map['asPath'] as String).input(),
-      localAddress: (map['localAddress'] as String).input(),
-      network: (map['network'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
-      origin: (map['origin'] as String).input(),
-      sourcePeer: (map['sourcePeer'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      asPath: pulumi.Input.fromValue(map['asPath'] as String),
+      localAddress: pulumi.Input.fromValue(map['localAddress'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      origin: pulumi.Input.fromValue(map['origin'] as String),
+      sourcePeer: pulumi.Input.fromValue(map['sourcePeer'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

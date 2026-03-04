@@ -5,14 +5,18 @@ import 'snapshot_args.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The creation time of the snapshot.
   late final pulumi.Output<String> createTime;
+
   /// The description of the snapshot.
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> location;
+
   /// The name of the snapshot.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// The name of the volume which this snapshot belongs to.
   late final pulumi.Output<String> storageVolume;
+
   /// The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
   late final pulumi.Output<String> type;
   late final pulumi.Output<String> volumeId;
@@ -26,18 +30,18 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:baremetalsolution/v2:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.location = registerOutput<String>('location');
+         'google-native:baremetalsolution/v2:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.storageVolume = registerOutput<String>('storageVolume');
-    this.type = registerOutput<String>('type');
-    this.volumeId = registerOutput<String>('volumeId');
+    project = registerOutput<String>('project');
+    storageVolume = registerOutput<String>('storageVolume');
+    type = registerOutput<String>('type');
+    volumeId = registerOutput<String>('volumeId');
   }
 }

@@ -5,11 +5,14 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// Provides a Network Load Balancer resource with listeners and default target group.
 class NetworkLoadBalancer extends pulumi.ComponentResource {
   /// Default target group, if auto-created
-  late final pulumi.Output<pulumi_aws_lb.TargetGroup> defaultTargetGroup;
+  late final pulumi.Output<pulumi_aws_lb.TargetGroup?> defaultTargetGroup;
+
   /// Listeners created as part of this load balancer
-  late final pulumi.Output<List<pulumi_aws_lb.Listener>?> listeners;
+  late final pulumi.Output<List<Map<String, dynamic>>?> listeners;
+
   /// Underlying Load Balancer resource
-  late final pulumi.Output<pulumi_aws_lb.LoadBalancer> loadBalancer;
+  late final pulumi.Output<pulumi_aws_lb.LoadBalancer?> loadBalancer;
+
   /// Id of the VPC in which this load balancer is operating
   late final pulumi.Output<String?> vpcId;
 
@@ -22,14 +25,17 @@ class NetworkLoadBalancer extends pulumi.ComponentResource {
     NetworkLoadBalancerArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'awsx:lb:NetworkLoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup>('defaultTargetGroup');
-    this.listeners = registerOutput<List<pulumi_aws_lb.Listener>?>('listeners');
-    this.loadBalancer = registerOutput<pulumi_aws_lb.LoadBalancer>('loadBalancer');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'awsx:lb:NetworkLoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup?>(
+      'defaultTargetGroup',
+    );
+    listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
+    loadBalancer = registerOutput<pulumi_aws_lb.LoadBalancer?>('loadBalancer');
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

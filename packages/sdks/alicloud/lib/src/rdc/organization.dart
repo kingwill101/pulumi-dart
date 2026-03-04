@@ -6,9 +6,9 @@ import 'organization_state.dart';
 ///
 /// For information about RDC Organization and how to use it, see [What is Organization](https://www.alibabacloud.com/help/en/yunxiao/product-overview/what-is-cloud-effect).
 ///
-/// > **NOTE:** Available since v1.137.0.
+/// &gt; **NOTE:** Available since v1.137.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.238.0`.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.238.0`.
 ///
 /// ## Example Usage
 ///
@@ -120,10 +120,13 @@ import 'organization_state.dart';
 class Organization extends pulumi.CustomResource {
   /// The desired member count.
   late final pulumi.Output<int?> desiredMemberCount;
+
   /// Company name.
   late final pulumi.Output<String> organizationName;
+
   /// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
   late final pulumi.Output<String?> realPk;
+
   /// This is organization source information
   late final pulumi.Output<String> source;
 
@@ -136,15 +139,15 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rdc/organization:Organization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desiredMemberCount = registerOutput<int?>('desiredMemberCount');
-    this.organizationName = registerOutput<String>('organizationName');
-    this.realPk = registerOutput<String?>('realPk');
-    this.source = registerOutput<String>('source');
+         'alicloud:rdc/organization:Organization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desiredMemberCount = registerOutput<int?>('desiredMemberCount');
+    organizationName = registerOutput<String>('organizationName');
+    realPk = registerOutput<String?>('realPk');
+    source = registerOutput<String>('source');
   }
 
   /// Gets an existing [Organization] resource's state with the given [name] and [id].
@@ -165,14 +168,14 @@ class Organization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rdc/organization:Organization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desiredMemberCount = registerOutput<int?>('desiredMemberCount');
-    this.organizationName = registerOutput<String>('organizationName');
-    this.realPk = registerOutput<String?>('realPk');
-    this.source = registerOutput<String>('source');
+         'alicloud:rdc/organization:Organization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desiredMemberCount = registerOutput<int?>('desiredMemberCount');
+    organizationName = registerOutput<String>('organizationName');
+    realPk = registerOutput<String?>('realPk');
+    source = registerOutput<String>('source');
   }
 }

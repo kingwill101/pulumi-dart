@@ -4,16 +4,15 @@ enum KeyKeyAlgorithm {
   keyAlgRsa1024("KEY_ALG_RSA_1024"),
   keyAlgRsa2048("KEY_ALG_RSA_2048");
 
-  const KeyKeyAlgorithm(this.value);
-  final String value;
+  const KeyKeyAlgorithm(this.wireValue);
+  final String wireValue;
 
   static KeyKeyAlgorithm fromValue(String value) {
     for (final item in KeyKeyAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyKeyAlgorithm value: $value');
   }
 }
-

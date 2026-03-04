@@ -10,20 +10,15 @@ class AcceleratorSshSettingResponse {
 
   /// Creates a new [AcceleratorSshSettingResponse].
   /// [authType] The type of the auth setting.
-  AcceleratorSshSettingResponse({
-    required this.authType,
-  });
+  AcceleratorSshSettingResponse({required this.authType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authType': authType,
-    };
+    return <String, dynamic>{'authType': authType};
   }
 
   factory AcceleratorSshSettingResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorSshSettingResponse(
-      authType: (map['authType'] as String).input(),
+      authType: pulumi.Input.fromValue(map['authType'] as String),
     );
   }
 }
-

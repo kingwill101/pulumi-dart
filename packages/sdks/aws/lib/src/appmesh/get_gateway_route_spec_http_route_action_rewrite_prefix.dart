@@ -15,17 +15,15 @@ class GetGatewayRouteSpecHttpRouteActionRewritePrefix {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultPrefix': defaultPrefix,
-      'value': value,
-    };
+    return <String, dynamic>{'defaultPrefix': defaultPrefix, 'value': value};
   }
 
-  factory GetGatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayRouteSpecHttpRouteActionRewritePrefix(
-      defaultPrefix: (map['defaultPrefix'] as String).input(),
-      value: (map['value'] as String).input(),
+      defaultPrefix: pulumi.Input.fromValue(map['defaultPrefix'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

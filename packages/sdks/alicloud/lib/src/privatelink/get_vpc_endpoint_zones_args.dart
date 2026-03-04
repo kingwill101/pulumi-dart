@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointZonesArgs {
   /// The ID of the Vpc Endpoint.
   final pulumi.Input<String> endpointId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
   final pulumi.Input<String>? status;
 
@@ -34,10 +36,17 @@ class GetVpcEndpointZonesArgs {
 
   factory GetVpcEndpointZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointZonesArgs(
-      endpointId: (map['endpointId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -64,16 +64,15 @@ enum ResourceSpecInstanceType {
   mlTrn1n32xlarge("ml.trn1n.32xlarge"),
   system("system");
 
-  const ResourceSpecInstanceType(this.value);
-  final String value;
+  const ResourceSpecInstanceType(this.wireValue);
+  final String wireValue;
 
   static ResourceSpecInstanceType fromValue(String value) {
     for (final item in ResourceSpecInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceSpecInstanceType value: $value');
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultCredentialSettingsResponse {
   /// Azure Key Vault url.
   final pulumi.Input<String>? azureKeyVaultUrl;
+
   /// Credential name.
   final pulumi.Input<String>? credentialName;
+
   /// Enable or disable key vault credential setting.
   final pulumi.Input<bool>? enable;
+
   /// Service principal name to access key vault.
   final pulumi.Input<String>? servicePrincipalName;
 
@@ -36,11 +39,26 @@ class KeyVaultCredentialSettingsResponse {
 
   factory KeyVaultCredentialSettingsResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCredentialSettingsResponse(
-      azureKeyVaultUrl: map['azureKeyVaultUrl'] == null ? null : (map['azureKeyVaultUrl']! as String).input(),
-      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      servicePrincipalName: map['servicePrincipalName'] == null ? null : (map['servicePrincipalName']! as String).input(),
+      azureKeyVaultUrl: (() {
+        final guardedValue = map['azureKeyVaultUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialName: (() {
+        final guardedValue = map['credentialName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      servicePrincipalName: (() {
+        final guardedValue = map['servicePrincipalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

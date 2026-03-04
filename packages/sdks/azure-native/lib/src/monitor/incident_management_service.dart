@@ -2,16 +2,15 @@
 enum IncidentManagementService {
   valueIcm("Icm");
 
-  const IncidentManagementService(this.value);
-  final String value;
+  const IncidentManagementService(this.wireValue);
+  final String wireValue;
 
   static IncidentManagementService fromValue(String value) {
     for (final item in IncidentManagementService.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentManagementService value: $value');
   }
 }
-

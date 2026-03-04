@@ -7,16 +7,23 @@ import 'private_link_service_connection_response.dart';
 class GetPrivateEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The date when this private endpoint was created.
   final String createdDate;
+
   /// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
   final String etag;
+
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// A list of connections to the remote resource. Immutable after it is set.
-  final List<PrivateLinkServiceConnectionResponse>? manualPrivateLinkServiceConnections;
+  final List<PrivateLinkServiceConnectionResponse>?
+  manualPrivateLinkServiceConnections;
+
   /// The name of the resource
   final String name;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final String type;
 
@@ -44,7 +51,14 @@ class GetPrivateEndpointResult {
       'createdDate': createdDate,
       'etag': etag,
       'id': id,
-      'manualPrivateLinkServiceConnections': ?manualPrivateLinkServiceConnections == null ? null : pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(manualPrivateLinkServiceConnections!, (value) => value.toMap()),
+      'manualPrivateLinkServiceConnections': ?(() {
+        final guardedValue = manualPrivateLinkServiceConnections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateLinkServiceConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'type': type,
     };
@@ -56,10 +70,18 @@ class GetPrivateEndpointResult {
       createdDate: map['createdDate'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      manualPrivateLinkServiceConnections: (() {
+        final guardedValue = map['manualPrivateLinkServiceConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(
+          guardedValue,
+          (value) => PrivateLinkServiceConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

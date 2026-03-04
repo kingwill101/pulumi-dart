@@ -3,16 +3,15 @@ enum BfdEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const BfdEnabled(this.value);
-  final String value;
+  const BfdEnabled(this.wireValue);
+  final String wireValue;
 
   static BfdEnabled fromValue(String value) {
     for (final item in BfdEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BfdEnabled value: $value');
   }
 }
-

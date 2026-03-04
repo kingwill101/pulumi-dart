@@ -8,20 +8,15 @@ class GetAiIndexEncryptionSpec {
 
   /// Creates a new [GetAiIndexEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'. The key needs to be in the same region as where the compute resource is created.
-  GetAiIndexEncryptionSpec({
-    required this.kmsKeyName,
-  });
+  GetAiIndexEncryptionSpec({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
   factory GetAiIndexEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return GetAiIndexEncryptionSpec(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

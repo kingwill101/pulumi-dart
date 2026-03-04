@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_application_insights_application_performance_monitoring_args.dart';
 import 'spring_cloud_application_insights_application_performance_monitoring_state.dart';
 
-/// > **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
+/// &gt; **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for Application Insights.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -267,7 +267,7 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AppPlatform` - 2024-01-01-preview
@@ -279,21 +279,29 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pulumi.CustomResource {
+class SpringCloudApplicationInsightsApplicationPerformanceMonitoring
+    extends pulumi.CustomResource {
   /// The instrumentation key used to push data to Application Insights.
   late final pulumi.Output<String?> connectionString;
+
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
+
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Application Insights. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the cloud role instance.
   late final pulumi.Output<String?> roleInstance;
+
   /// Specifies the cloud role name used to label the component on the application map.
   late final pulumi.Output<String?> roleName;
+
   /// Specifies the percentage for fixed-percentage sampling.
   late final pulumi.Output<int?> samplingPercentage;
+
   /// Specifies the number of requests per second for the rate-limited sampling.
   late final pulumi.Output<int?> samplingRequestsPerSecond;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -306,19 +314,21 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
     SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String?>('connectionString');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.roleInstance = registerOutput<String?>('roleInstance');
-    this.roleName = registerOutput<String?>('roleName');
-    this.samplingPercentage = registerOutput<int?>('samplingPercentage');
-    this.samplingRequestsPerSecond = registerOutput<int?>('samplingRequestsPerSecond');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    roleInstance = registerOutput<String?>('roleInstance');
+    roleName = registerOutput<String?>('roleName');
+    samplingPercentage = registerOutput<int?>('samplingPercentage');
+    samplingRequestsPerSecond = registerOutput<int?>(
+      'samplingRequestsPerSecond',
+    );
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
   /// Gets an existing [SpringCloudApplicationInsightsApplicationPerformanceMonitoring] resource's state with the given [name] and [id].
@@ -339,18 +349,20 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String?>('connectionString');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.roleInstance = registerOutput<String?>('roleInstance');
-    this.roleName = registerOutput<String?>('roleName');
-    this.samplingPercentage = registerOutput<int?>('samplingPercentage');
-    this.samplingRequestsPerSecond = registerOutput<int?>('samplingRequestsPerSecond');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    roleInstance = registerOutput<String?>('roleInstance');
+    roleName = registerOutput<String?>('roleName');
+    samplingPercentage = registerOutput<int?>('samplingPercentage');
+    samplingRequestsPerSecond = registerOutput<int?>(
+      'samplingRequestsPerSecond',
+    );
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

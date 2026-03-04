@@ -10,20 +10,26 @@ class ListNamespaceCredentialResult {
 
   /// Creates a new [ListNamespaceCredentialResult].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListNamespaceCredentialResult({
-    required this.kubeconfigs,
-  });
+  ListNamespaceCredentialResult({required this.kubeconfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeconfigs': pulumi.Input.encodeList<CredentialResultResponse, Map<String, dynamic>>(kubeconfigs, (value) => value.toMap()),
+      'kubeconfigs':
+          pulumi.Input.encodeList<
+            CredentialResultResponse,
+            Map<String, dynamic>
+          >(kubeconfigs, (value) => value.toMap()),
     };
   }
 
   factory ListNamespaceCredentialResult.fromMap(Map<String, dynamic> map) {
     return ListNamespaceCredentialResult(
-      kubeconfigs: pulumi.Input.decodeList<CredentialResultResponse>(map['kubeconfigs'], (value) => CredentialResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kubeconfigs: pulumi.Input.decodeList<CredentialResultResponse>(
+        map['kubeconfigs']!,
+        (value) => CredentialResultResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

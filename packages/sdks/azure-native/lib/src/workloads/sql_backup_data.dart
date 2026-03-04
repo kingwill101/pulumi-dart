@@ -8,9 +8,11 @@ import 'existing_recovery_services_vault.dart';
 class SqlBackupData {
   /// Defines the policy properties for database backup.
   final pulumi.Input<DBBackupPolicyProperties> backupPolicy;
+
   /// The type of backup, VM, SQL or HANA.
   /// Expected value is 'SQL'.
   final pulumi.Input<String> backupType;
+
   /// The properties of the recovery services vault used for backup.
   final pulumi.Input<ExistingRecoveryServicesVault> recoveryServicesVault;
 
@@ -26,18 +28,33 @@ class SqlBackupData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupPolicy': pulumi.Input.mapInputValue<DBBackupPolicyProperties, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
+      'backupPolicy':
+          pulumi.Input.mapInputValue<
+            DBBackupPolicyProperties,
+            Map<String, dynamic>
+          >(backupPolicy, (value) => value.toMap()),
       'backupType': backupType,
-      'recoveryServicesVault': pulumi.Input.mapInputValue<ExistingRecoveryServicesVault, Map<String, dynamic>>(recoveryServicesVault, (value) => value.toMap()),
+      'recoveryServicesVault':
+          pulumi.Input.mapInputValue<
+            ExistingRecoveryServicesVault,
+            Map<String, dynamic>
+          >(recoveryServicesVault, (value) => value.toMap()),
     };
   }
 
   factory SqlBackupData.fromMap(Map<String, dynamic> map) {
     return SqlBackupData(
-      backupPolicy: (DBBackupPolicyProperties.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      backupType: (map['backupType'] as String).input(),
-      recoveryServicesVault: (ExistingRecoveryServicesVault.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>())).input(),
+      backupPolicy: pulumi.Input.fromValue(
+        DBBackupPolicyProperties.fromMap(
+          (map['backupPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      backupType: pulumi.Input.fromValue(map['backupType'] as String),
+      recoveryServicesVault: pulumi.Input.fromValue(
+        ExistingRecoveryServicesVault.fromMap(
+          (map['recoveryServicesVault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

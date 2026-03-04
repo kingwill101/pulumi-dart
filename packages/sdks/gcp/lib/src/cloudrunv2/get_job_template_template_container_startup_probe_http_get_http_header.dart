@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
   /// The name of the Cloud Run v2 Job.
   final pulumi.Input<String> name;
+
   /// The header field value.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
+  factory GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

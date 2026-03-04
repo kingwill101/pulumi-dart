@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointsPointAccessPointFeatureModel {
   /// The Access Point Properties.
   final pulumi.Input<String> featureKey;
+
   /// The Access Point Characteristic Value.
   final pulumi.Input<String> featureValue;
 
@@ -23,11 +24,12 @@ class GetAccessPointsPointAccessPointFeatureModel {
     };
   }
 
-  factory GetAccessPointsPointAccessPointFeatureModel.fromMap(Map<String, dynamic> map) {
+  factory GetAccessPointsPointAccessPointFeatureModel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessPointsPointAccessPointFeatureModel(
-      featureKey: (map['featureKey'] as String).input(),
-      featureValue: (map['featureValue'] as String).input(),
+      featureKey: pulumi.Input.fromValue(map['featureKey'] as String),
+      featureValue: pulumi.Input.fromValue(map['featureValue'] as String),
     );
   }
 }
-

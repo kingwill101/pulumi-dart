@@ -298,7 +298,7 @@ import 'network_manager_ipam_pool_static_cidr_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -313,15 +313,18 @@ import 'network_manager_ipam_pool_static_cidr_state.dart';
 class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes which will be allocated to the Static CIDR.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
   late final pulumi.Output<List<String>?> addressPrefixes;
+
   /// The ID of the Network Manager IP Address Management (IPAM) Pool. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   late final pulumi.Output<String> ipamPoolId;
+
   /// The name which should be used for this Network Manager IPAM Pool Static CIDR. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   late final pulumi.Output<String> name;
+
   /// The number of IP addresses to allocate to the Static CIDR. The value must be a string representing a positive integer which is a positive power of 2, e.g., `"16"`.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
   late final pulumi.Output<String?> numberOfIpAddressesToAllocate;
 
   /// Creates a new [NetworkManagerIpamPoolStaticCidr].
@@ -333,15 +336,17 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
     NetworkManagerIpamPoolStaticCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+         'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
     this.name = registerOutput<String>('name');
-    this.numberOfIpAddressesToAllocate = registerOutput<String?>('numberOfIpAddressesToAllocate');
+    numberOfIpAddressesToAllocate = registerOutput<String?>(
+      'numberOfIpAddressesToAllocate',
+    );
   }
 
   /// Gets an existing [NetworkManagerIpamPoolStaticCidr] resource's state with the given [name] and [id].
@@ -362,14 +367,16 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+         'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
     this.name = registerOutput<String>('name');
-    this.numberOfIpAddressesToAllocate = registerOutput<String?>('numberOfIpAddressesToAllocate');
+    numberOfIpAddressesToAllocate = registerOutput<String?>(
+      'numberOfIpAddressesToAllocate',
+    );
   }
 }

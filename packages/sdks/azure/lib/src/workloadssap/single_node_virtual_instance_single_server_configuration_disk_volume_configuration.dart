@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration {
   /// The total number of disks required for the concerned volume. Possible values are at least `1`. Changing this forces a new resource to be created.
   final pulumi.Input<int> numberOfDisks;
+
   /// The size of the Disk in GB. Changing this forces a new resource to be created.
   final pulumi.Input<int> sizeInGb;
+
   /// The name of the Disk SKU. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
   final pulumi.Input<String> skuName;
+
   /// Specifies the volumn name of the database disk. Possible values are `backup`, `hana/data`, `hana/log`, `hana/shared`, `os` and `usr/sap`. Changing this forces a new resource to be created.
   final pulumi.Input<String> volumeName;
 
@@ -33,13 +36,14 @@ class SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration 
     };
   }
 
-  factory SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration(
-      numberOfDisks: (map['numberOfDisks'] as int).input(),
-      sizeInGb: (map['sizeInGb'] as int).input(),
-      skuName: (map['skuName'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      numberOfDisks: pulumi.Input.fromValue(map['numberOfDisks'] as int),
+      sizeInGb: pulumi.Input.fromValue(map['sizeInGb'] as int),
+      skuName: pulumi.Input.fromValue(map['skuName'] as String),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

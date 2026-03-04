@@ -10,20 +10,29 @@ class EncryptionProperties {
 
   /// Creates a new [EncryptionProperties].
   /// [keyVaultProperties] Key vault properties.
-  EncryptionProperties({
-    this.keyVaultProperties,
-  });
+  EncryptionProperties({this.keyVaultProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

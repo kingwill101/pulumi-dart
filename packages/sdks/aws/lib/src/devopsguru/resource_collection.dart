@@ -6,7 +6,7 @@ import 'resource_collection_tags.dart';
 
 /// Resource for managing an AWS DevOps Guru Resource Collection.
 ///
-/// > Only one type of resource collection (All Account Resources, CloudFormation, or Tags) can be enabled in an account at a time. To avoid persistent differences, this resource should be defined only once.
+/// &gt; Only one type of resource collection (All Account Resources, CloudFormation, or Tags) can be enabled in an account at a time. To avoid persistent differences, this resource should be defined only once.
 ///
 /// ## Example Usage
 ///
@@ -494,10 +494,13 @@ import 'resource_collection_tags.dart';
 class ResourceCollection extends pulumi.CustomResource {
   /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
   late final pulumi.Output<ResourceCollectionCloudformation?> cloudformation;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   late final pulumi.Output<ResourceCollectionTags?> tags;
+
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   ///
   /// The following arguments are optional:
@@ -512,15 +515,17 @@ class ResourceCollection extends pulumi.CustomResource {
     ResourceCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/resourceCollection:ResourceCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<ResourceCollectionTags?>('tags');
-    this.type = registerOutput<String>('type');
+         'aws:devopsguru/resourceCollection:ResourceCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudformation = registerOutput<ResourceCollectionCloudformation?>(
+      'cloudformation',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<ResourceCollectionTags?>('tags');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [ResourceCollection] resource's state with the given [name] and [id].
@@ -541,14 +546,16 @@ class ResourceCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/resourceCollection:ResourceCollection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<ResourceCollectionTags?>('tags');
-    this.type = registerOutput<String>('type');
+         'aws:devopsguru/resourceCollection:ResourceCollection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudformation = registerOutput<ResourceCollectionCloudformation?>(
+      'cloudformation',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<ResourceCollectionTags?>('tags');
+    type = registerOutput<String>('type');
   }
 }

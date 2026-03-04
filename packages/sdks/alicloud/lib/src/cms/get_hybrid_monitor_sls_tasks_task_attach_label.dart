@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridMonitorSlsTasksTaskAttachLabel {
   /// The key of the tag.
   final pulumi.Input<String> name;
+
   /// The value of the tag.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetHybridMonitorSlsTasksTaskAttachLabel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetHybridMonitorSlsTasksTaskAttachLabel.fromMap(Map<String, dynamic> map) {
+  factory GetHybridMonitorSlsTasksTaskAttachLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHybridMonitorSlsTasksTaskAttachLabel(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

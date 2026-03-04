@@ -4,16 +4,15 @@ enum FileShareConfigurationType {
   createAndMount("CreateAndMount"),
   mount("Mount");
 
-  const FileShareConfigurationType(this.value);
-  final String value;
+  const FileShareConfigurationType(this.wireValue);
+  final String wireValue;
 
   static FileShareConfigurationType fromValue(String value) {
     for (final item in FileShareConfigurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FileShareConfigurationType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_diagflow;
-
 export 'diagflow/agent.dart';
 export 'diagflow/agent_args.dart';
 export 'diagflow/agent_state.dart';

@@ -13,23 +13,20 @@ class GetDeploymentArgs {
   /// Creates a new [GetDeploymentArgs].
   /// [deployment] Required.
   /// [project] Optional.
-  GetDeploymentArgs({
-    required this.deployment,
-    this.project,
-  });
+  GetDeploymentArgs({required this.deployment, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deployment': deployment,
-      'project': ?project,
-    };
+    return <String, dynamic>{'deployment': deployment, 'project': ?project};
   }
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArgs(
-      deployment: (map['deployment'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      deployment: pulumi.Input.fromValue(map['deployment'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

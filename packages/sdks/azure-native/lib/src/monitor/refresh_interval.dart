@@ -7,16 +7,15 @@ enum RefreshInterval {
   pT1H("PT1H"),
   pT2H("PT2H");
 
-  const RefreshInterval(this.value);
-  final String value;
+  const RefreshInterval(this.wireValue);
+  final String wireValue;
 
   static RefreshInterval fromValue(String value) {
     for (final item in RefreshInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RefreshInterval value: $value');
   }
 }
-

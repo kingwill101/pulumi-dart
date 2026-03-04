@@ -6,12 +6,15 @@ class EciScalingConfigurationAcrRegistryInfo {
   /// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
   /// when `acr_registry_info` is configured.
   final pulumi.Input<List<String>>? domains;
+
   /// The ID of Container Registry Enterprise Edition instance. It is required
   /// when `acr_registry_info` is configured.
   final pulumi.Input<String>? instanceId;
+
   /// The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
   /// configured.
   final pulumi.Input<String>? instanceName;
+
   /// The region ID of Container Registry Enterprise Edition instance. It is required
   /// when `acr_registry_info` is configured.
   final pulumi.Input<String>? regionId;
@@ -37,13 +40,30 @@ class EciScalingConfigurationAcrRegistryInfo {
     };
   }
 
-  factory EciScalingConfigurationAcrRegistryInfo.fromMap(Map<String, dynamic> map) {
+  factory EciScalingConfigurationAcrRegistryInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EciScalingConfigurationAcrRegistryInfo(
-      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      domains: (() {
+        final guardedValue = map['domains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

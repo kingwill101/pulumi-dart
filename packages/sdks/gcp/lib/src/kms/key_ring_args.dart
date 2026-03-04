@@ -10,8 +10,10 @@ class KeyRingArgs {
   /// The location for the KeyRing.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   final pulumi.Input<String> location;
+
   /// The resource name for the KeyRing.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,11 +22,7 @@ class KeyRingArgs {
   /// [location] The location for the KeyRing.
   /// [name] The resource name for the KeyRing.
   /// [project] The ID of the project in which the resource belongs.
-  KeyRingArgs({
-    required this.location,
-    this.name,
-    this.project,
-  });
+  KeyRingArgs({required this.location, this.name, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,17 @@ class KeyRingArgs {
 
   factory KeyRingArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingArgs(
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

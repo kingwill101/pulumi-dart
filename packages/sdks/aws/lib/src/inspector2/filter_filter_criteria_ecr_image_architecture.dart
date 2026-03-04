@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaEcrImageArchitecture {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final pulumi.Input<String> comparison;
+
   /// (Required) The value to filter on.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class FilterFilterCriteriaEcrImageArchitecture {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory FilterFilterCriteriaEcrImageArchitecture.fromMap(Map<String, dynamic> map) {
+  factory FilterFilterCriteriaEcrImageArchitecture.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FilterFilterCriteriaEcrImageArchitecture(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

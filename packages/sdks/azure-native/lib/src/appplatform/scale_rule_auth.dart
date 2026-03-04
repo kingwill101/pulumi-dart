@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleRuleAuth {
   /// Name of the Azure Spring Apps App Instance secret from which to pull the auth params.
   final pulumi.Input<String>? secretRef;
+
   /// Trigger Parameter that uses the secret
   final pulumi.Input<String>? triggerParameter;
 
   /// Creates a new [ScaleRuleAuth].
   /// [secretRef] Name of the Azure Spring Apps App Instance secret from which to pull the auth params.
   /// [triggerParameter] Trigger Parameter that uses the secret
-  ScaleRuleAuth({
-    this.secretRef,
-    this.triggerParameter,
-  });
+  ScaleRuleAuth({this.secretRef, this.triggerParameter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ScaleRuleAuth {
 
   factory ScaleRuleAuth.fromMap(Map<String, dynamic> map) {
     return ScaleRuleAuth(
-      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
-      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter']! as String).input(),
+      secretRef: (() {
+        final guardedValue = map['secretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerParameter: (() {
+        final guardedValue = map['triggerParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

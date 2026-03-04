@@ -3,16 +3,15 @@ enum SharingScope {
   valueTenant("Tenant"),
   valueDelegatedServices("DelegatedServices");
 
-  const SharingScope(this.value);
-  final String value;
+  const SharingScope(this.wireValue);
+  final String wireValue;
 
   static SharingScope fromValue(String value) {
     for (final item in SharingScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SharingScope value: $value');
   }
 }
-

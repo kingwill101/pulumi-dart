@@ -3,16 +3,15 @@ enum AdditionalVmPatch {
   notSet("NotSet"),
   microsoftUpdate("MicrosoftUpdate");
 
-  const AdditionalVmPatch(this.value);
-  final String value;
+  const AdditionalVmPatch(this.wireValue);
+  final String wireValue;
 
   static AdditionalVmPatch fromValue(String value) {
     for (final item in AdditionalVmPatch.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdditionalVmPatch value: $value');
   }
 }
-

@@ -7,12 +7,16 @@ import 'update_status_response.dart';
 class MemberUpdateStatusResponse {
   /// The Azure resource id of the target Kubernetes cluster.
   final pulumi.Input<String> clusterResourceId;
+
   /// The status message after processing the member update operation.
   final pulumi.Input<String> message;
+
   /// The name of the FleetMember.
   final pulumi.Input<String> name;
+
   /// The operation resource id of the latest attempt to perform the operation.
   final pulumi.Input<String> operationId;
+
   /// The status of the MemberUpdate operation.
   final pulumi.Input<UpdateStatusResponse> status;
 
@@ -36,18 +40,27 @@ class MemberUpdateStatusResponse {
       'message': message,
       'name': name,
       'operationId': operationId,
-      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            UpdateStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory MemberUpdateStatusResponse.fromMap(Map<String, dynamic> map) {
     return MemberUpdateStatusResponse(
-      clusterResourceId: (map['clusterResourceId'] as String).input(),
-      message: (map['message'] as String).input(),
-      name: (map['name'] as String).input(),
-      operationId: (map['operationId'] as String).input(),
-      status: (UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      clusterResourceId: pulumi.Input.fromValue(
+        map['clusterResourceId'] as String,
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operationId: pulumi.Input.fromValue(map['operationId'] as String),
+      status: pulumi.Input.fromValue(
+        UpdateStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

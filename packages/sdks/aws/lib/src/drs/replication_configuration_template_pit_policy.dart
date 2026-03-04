@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationConfigurationTemplatePitPolicy {
   /// Whether this rule is enabled or not.
   final pulumi.Input<bool>? enabled;
+
   /// How often, in the chosen units, a snapshot should be taken.
   final pulumi.Input<int> interval;
+
   /// Duration to retain a snapshot for, in the chosen `units`.
   final pulumi.Input<int> retentionDuration;
+
   /// ID of the rule. Valid values are integers.
   final pulumi.Input<int>? ruleId;
+
   /// Units used to measure the `interval` and `retention_duration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
   final pulumi.Input<String> units;
 
@@ -38,14 +42,25 @@ class ReplicationConfigurationTemplatePitPolicy {
     };
   }
 
-  factory ReplicationConfigurationTemplatePitPolicy.fromMap(Map<String, dynamic> map) {
+  factory ReplicationConfigurationTemplatePitPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationConfigurationTemplatePitPolicy(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      interval: (map['interval'] as int).input(),
-      retentionDuration: (map['retentionDuration'] as int).input(),
-      ruleId: map['ruleId'] == null ? null : ((map['ruleId'] as int).input()).input(),
-      units: (map['units'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
+      retentionDuration: pulumi.Input.fromValue(
+        map['retentionDuration'] as int,
+      ),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      units: pulumi.Input.fromValue(map['units'] as String),
     );
   }
 }
-

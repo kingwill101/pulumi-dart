@@ -8,20 +8,15 @@ class ConfigFileResponse {
 
   /// Creates a new [ConfigFileResponse].
   /// [content] The contents of the file.
-  ConfigFileResponse({
-    required this.content,
-  });
+  ConfigFileResponse({required this.content});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-    };
+    return <String, dynamic>{'content': content};
   }
 
   factory ConfigFileResponse.fromMap(Map<String, dynamic> map) {
     return ConfigFileResponse(
-      content: (map['content'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
     );
   }
 }
-

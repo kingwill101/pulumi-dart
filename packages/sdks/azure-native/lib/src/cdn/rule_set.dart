@@ -136,14 +136,19 @@ class RuleSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The name of the profile which holds the rule set.
   late final pulumi.Output<String> profileName;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -156,17 +161,17 @@ class RuleSet extends pulumi.CustomResource {
     RuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:RuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
+         'azure-native:cdn:RuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
     this.name = registerOutput<String>('name');
-    this.profileName = registerOutput<String>('profileName');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    profileName = registerOutput<String>('profileName');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

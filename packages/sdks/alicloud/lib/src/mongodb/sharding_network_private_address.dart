@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sharding_network_private_address_args.dart';
-import 'sharding_network_private_address_network_address.dart';
 import 'sharding_network_private_address_state.dart';
 
 /// Provides a MongoDB Sharding Network Private Address resource.
 ///
 /// For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 ///
-/// > **NOTE:** Available since v1.157.0.
+/// &gt; **NOTE:** Available since v1.157.0.
 ///
 /// ## Example Usage
 ///
@@ -416,16 +415,21 @@ class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
   /// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
   /// - The permissions of this account are fixed to read-only.
   late final pulumi.Output<String?> accountName;
+
   /// The password for the account.
   /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
   /// - The password must be 8 to 32 characters in length.
   late final pulumi.Output<String?> accountPassword;
+
   /// The ID of the sharded cluster instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The connection string of the instance.
-  late final pulumi.Output<List<ShardingNetworkPrivateAddressNetworkAddress>> networkAddresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkAddresses;
+
   /// The ID of the Shard node or ConfigServer node.
   late final pulumi.Output<String> nodeId;
+
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -438,17 +442,19 @@ class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
     ShardingNetworkPrivateAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String?>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkAddresses = registerOutput<List<ShardingNetworkPrivateAddressNetworkAddress>>('networkAddresses');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String?>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
+      'networkAddresses',
+    );
+    nodeId = registerOutput<String>('nodeId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ShardingNetworkPrivateAddress] resource's state with the given [name] and [id].
@@ -469,16 +475,18 @@ class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String?>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkAddresses = registerOutput<List<ShardingNetworkPrivateAddressNetworkAddress>>('networkAddresses');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String?>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
+      'networkAddresses',
+    );
+    nodeId = registerOutput<String>('nodeId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

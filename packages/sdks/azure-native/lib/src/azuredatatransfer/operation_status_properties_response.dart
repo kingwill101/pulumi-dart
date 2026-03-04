@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OperationStatusPropertiesResponse {
   /// Operation status ID of the last patch request for this connection.
   final pulumi.Input<String> id;
+
   /// Message for the operation for the last patch request for this connection.
   final pulumi.Input<String> message;
+
   /// Operation status for the last patch request for this connection.
   final pulumi.Input<String> status;
 
@@ -22,19 +24,14 @@ class OperationStatusPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'message': message,
-      'status': status,
-    };
+    return <String, dynamic>{'id': id, 'message': message, 'status': status};
   }
 
   factory OperationStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OperationStatusPropertiesResponse(
-      id: (map['id'] as String).input(),
-      message: (map['message'] as String).input(),
-      status: (map['status'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

@@ -10,8 +10,10 @@ import 'monitoring_subscription_monitoring_subscription.dart';
 class MonitoringSubscriptionArgs {
   /// The ID of the distribution that you are enabling metrics for.
   final pulumi.Input<String> distributionId;
+
   /// A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  final pulumi.Input<MonitoringSubscriptionMonitoringSubscription> monitoringSubscription;
+  final pulumi.Input<MonitoringSubscriptionMonitoringSubscription>
+  monitoringSubscription;
 
   /// Creates a new [MonitoringSubscriptionArgs].
   /// [distributionId] The ID of the distribution that you are enabling metrics for.
@@ -24,15 +26,22 @@ class MonitoringSubscriptionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'distributionId': distributionId,
-      'monitoringSubscription': pulumi.Input.mapInputValue<MonitoringSubscriptionMonitoringSubscription, Map<String, dynamic>>(monitoringSubscription, (value) => value.toMap()),
+      'monitoringSubscription':
+          pulumi.Input.mapInputValue<
+            MonitoringSubscriptionMonitoringSubscription,
+            Map<String, dynamic>
+          >(monitoringSubscription, (value) => value.toMap()),
     };
   }
 
   factory MonitoringSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionArgs(
-      distributionId: (map['distributionId'] as String).input(),
-      monitoringSubscription: (MonitoringSubscriptionMonitoringSubscription.fromMap((map['monitoringSubscription']! as Map).cast<String, dynamic>())).input(),
+      distributionId: pulumi.Input.fromValue(map['distributionId'] as String),
+      monitoringSubscription: pulumi.Input.fromValue(
+        MonitoringSubscriptionMonitoringSubscription.fromMap(
+          (map['monitoringSubscription']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

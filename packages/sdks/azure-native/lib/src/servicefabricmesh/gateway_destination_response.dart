@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayDestinationResponse {
   /// Name of the service fabric Mesh application.
   final pulumi.Input<String> applicationName;
+
   /// name of the endpoint in the service.
   final pulumi.Input<String> endpointName;
+
   /// service that contains the endpoint.
   final pulumi.Input<String> serviceName;
 
@@ -31,10 +33,9 @@ class GatewayDestinationResponse {
 
   factory GatewayDestinationResponse.fromMap(Map<String, dynamic> map) {
     return GatewayDestinationResponse(
-      applicationName: (map['applicationName'] as String).input(),
-      endpointName: (map['endpointName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

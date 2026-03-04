@@ -8,20 +8,17 @@ class EntitlementEligibleUser {
 
   /// Creates a new [EntitlementEligibleUser].
   /// [principals] Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
-  EntitlementEligibleUser({
-    required this.principals,
-  });
+  EntitlementEligibleUser({required this.principals});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'principals': principals,
-    };
+    return <String, dynamic>{'principals': principals};
   }
 
   factory EntitlementEligibleUser.fromMap(Map<String, dynamic> map) {
     return EntitlementEligibleUser(
-      principals: ((map['principals'] as List).cast<String>()).input(),
+      principals: pulumi.Input.fromValue(
+        (map['principals'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ServiceDataAccessAuthIdentity {
   valueWorkspaceSystemAssignedIdentity("WorkspaceSystemAssignedIdentity"),
   valueWorkspaceUserAssignedIdentity("WorkspaceUserAssignedIdentity");
 
-  const ServiceDataAccessAuthIdentity(this.value);
-  final String value;
+  const ServiceDataAccessAuthIdentity(this.wireValue);
+  final String wireValue;
 
   static ServiceDataAccessAuthIdentity fromValue(String value) {
     for (final item in ServiceDataAccessAuthIdentity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceDataAccessAuthIdentity value: $value');
   }
 }
-

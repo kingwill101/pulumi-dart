@@ -31,10 +31,13 @@ class GetPhraseMatcherArgs {
 
   factory GetPhraseMatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetPhraseMatcherArgs(
-      location: (map['location'] as String).input(),
-      phraseMatcherId: (map['phraseMatcherId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      phraseMatcherId: pulumi.Input.fromValue(map['phraseMatcherId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

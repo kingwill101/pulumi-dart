@@ -254,11 +254,13 @@ import 'user_mapping_state.dart';
 class UserMapping extends pulumi.CustomResource {
   /// This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
   late final pulumi.Output<Map<String, String>?> options;
+
   /// The name of an existing server for which the user mapping is to be created.
   /// Changing this value
   /// will force the creation of a new resource as this value can only be set
   /// when the user mapping is created.
   late final pulumi.Output<String> serverName;
+
   /// The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.
   /// Changing this value
   /// will force the creation of a new resource as this value can only be set
@@ -274,14 +276,14 @@ class UserMapping extends pulumi.CustomResource {
     UserMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/userMapping:UserMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'postgresql:index/userMapping:UserMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.options = registerOutput<Map<String, String>?>('options');
-    this.serverName = registerOutput<String>('serverName');
-    this.userName = registerOutput<String>('userName');
+    serverName = registerOutput<String>('serverName');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [UserMapping] resource's state with the given [name] and [id].
@@ -302,13 +304,13 @@ class UserMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/userMapping:UserMapping',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'postgresql:index/userMapping:UserMapping',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.options = registerOutput<Map<String, String>?>('options');
-    this.serverName = registerOutput<String>('serverName');
-    this.userName = registerOutput<String>('userName');
+    serverName = registerOutput<String>('serverName');
+    userName = registerOutput<String>('userName');
   }
 }

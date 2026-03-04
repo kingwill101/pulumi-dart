@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStreamKeyArgs {
   /// ARN of the Channel.
   final pulumi.Input<String> channelArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class GetStreamKeyArgs {
   /// [channelArn] ARN of the Channel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource.
-  GetStreamKeyArgs({
-    required this.channelArn,
-    this.region,
-    this.tags,
-  });
+  GetStreamKeyArgs({required this.channelArn, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class GetStreamKeyArgs {
 
   factory GetStreamKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamKeyArgs(
-      channelArn: (map['channelArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      channelArn: pulumi.Input.fromValue(map['channelArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ class GenericServiceBasicService {
   /// Labels that specify the resource that emits the monitoring data
   /// which is used for SLO reporting of this `Service`.
   final pulumi.Input<Map<String, String>>? serviceLabels;
+
   /// The type of service that this basic service defines, e.g.
   /// APP_ENGINE service type
   final pulumi.Input<String>? serviceType;
@@ -13,10 +14,7 @@ class GenericServiceBasicService {
   /// Creates a new [GenericServiceBasicService].
   /// [serviceLabels] Labels that specify the resource that emits the monitoring data
   /// [serviceType] The type of service that this basic service defines, e.g.
-  GenericServiceBasicService({
-    this.serviceLabels,
-    this.serviceType,
-  });
+  GenericServiceBasicService({this.serviceLabels, this.serviceType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,18 @@ class GenericServiceBasicService {
 
   factory GenericServiceBasicService.fromMap(Map<String, dynamic> map) {
     return GenericServiceBasicService(
-      serviceLabels: map['serviceLabels'] == null ? null : ((map['serviceLabels']! as Map).cast<String, String>()).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
+      serviceLabels: (() {
+        final guardedValue = map['serviceLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serviceType: (() {
+        final guardedValue = map['serviceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

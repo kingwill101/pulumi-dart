@@ -3,16 +3,15 @@ enum LocalDNSForwardDestination {
   valueClusterCoreDNS("ClusterCoreDNS"),
   valueVnetDNS("VnetDNS");
 
-  const LocalDNSForwardDestination(this.value);
-  final String value;
+  const LocalDNSForwardDestination(this.wireValue);
+  final String wireValue;
 
   static LocalDNSForwardDestination fromValue(String value) {
     for (final item in LocalDNSForwardDestination.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalDNSForwardDestination value: $value');
   }
 }
-

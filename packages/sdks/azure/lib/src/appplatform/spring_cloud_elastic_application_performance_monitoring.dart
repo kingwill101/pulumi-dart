@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_elastic_application_performance_monitoring_args.dart';
 import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 
-/// > **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
+/// &gt; **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for Elastic.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -226,7 +226,7 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AppPlatform` - 2024-01-01-preview
@@ -238,17 +238,23 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomResource {
+class SpringCloudElasticApplicationPerformanceMonitoring
+    extends pulumi.CustomResource {
   /// Specifies a list of the packages which should be used to determine whether a stack trace frame is an in-app frame or a library frame. This is a comma separated list of package names.
   late final pulumi.Output<List<String>> applicationPackages;
+
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
+
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Elastic. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the server URL. The URL must be fully qualified, including protocol (http or https) and port.
   late final pulumi.Output<String> serverUrl;
+
   /// Specifies the service name which is used to keep all the errors and transactions of your service together and is the primary filter in the Elastic APM user interface.
   late final pulumi.Output<String> serviceName;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -261,17 +267,17 @@ class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomRe
     SpringCloudElasticApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationPackages = registerOutput<List<String>>('applicationPackages');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationPackages = registerOutput<List<String>>('applicationPackages');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    serverUrl = registerOutput<String>('serverUrl');
+    serviceName = registerOutput<String>('serviceName');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
   /// Gets an existing [SpringCloudElasticApplicationPerformanceMonitoring] resource's state with the given [name] and [id].
@@ -292,16 +298,16 @@ class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomRe
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationPackages = registerOutput<List<String>>('applicationPackages');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationPackages = registerOutput<List<String>>('applicationPackages');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    serverUrl = registerOutput<String>('serverUrl');
+    serviceName = registerOutput<String>('serviceName');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

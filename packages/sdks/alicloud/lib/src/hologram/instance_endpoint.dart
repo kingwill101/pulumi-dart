@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceEndpoint {
   /// Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
   final pulumi.Input<String>? alternativeEndpoints;
+
   /// Whether to turn on the network.
   final pulumi.Input<bool>? enabled;
+
   /// Domain name.
   final pulumi.Input<String>? endpoint;
+
   /// The network type.
   final pulumi.Input<String>? type;
+
   /// VPC primary key.
   final pulumi.Input<String>? vpcId;
+
   /// The vpc instance ID.
   final pulumi.Input<String>? vpcInstanceId;
+
   /// The ID of the virtual switch.
   final pulumi.Input<String>? vswitchId;
 
@@ -50,14 +56,41 @@ class InstanceEndpoint {
 
   factory InstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceEndpoint(
-      alternativeEndpoints: map['alternativeEndpoints'] == null ? null : (map['alternativeEndpoints']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      alternativeEndpoints: (() {
+        final guardedValue = map['alternativeEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcInstanceId: (() {
+        final guardedValue = map['vpcInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

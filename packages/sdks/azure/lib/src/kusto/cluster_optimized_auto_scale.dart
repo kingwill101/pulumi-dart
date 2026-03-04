@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterOptimizedAutoScale {
   /// The maximum number of allowed instances. Possible values range between `0` and `1000`.
   final pulumi.Input<int> maximumInstances;
+
   /// The minimum number of allowed instances. Possible values range between `0` and `1000`.
   final pulumi.Input<int> minimumInstances;
 
@@ -25,9 +26,8 @@ class ClusterOptimizedAutoScale {
 
   factory ClusterOptimizedAutoScale.fromMap(Map<String, dynamic> map) {
     return ClusterOptimizedAutoScale(
-      maximumInstances: (map['maximumInstances'] as int).input(),
-      minimumInstances: (map['minimumInstances'] as int).input(),
+      maximumInstances: pulumi.Input.fromValue(map['maximumInstances'] as int),
+      minimumInstances: pulumi.Input.fromValue(map['minimumInstances'] as int),
     );
   }
 }
-

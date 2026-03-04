@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'index_args.dart';
-import 'index_field.dart';
 import 'index_state.dart';
 
 /// Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -15,7 +14,7 @@ import 'index_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 ///
-/// > **Warning:** This resource creates a Firestore Index on a project that already has
+/// &gt; **Warning:** This resource creates a Firestore Index on a project that already has
 /// a Firestore database. If you haven't already created it, you may
 /// create a `gcp.firestore.Database` resource and `location_id` set
 /// to your chosen location. If you wish to use App Engine, you may
@@ -1683,13 +1682,17 @@ class Index extends pulumi.CustomResource {
   /// Default value is `ANY_API`.
   /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
   late final pulumi.Output<String?> apiScope;
+
   /// The collection being indexed.
   late final pulumi.Output<String> collection;
+
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
+
   /// The density configuration for this index.
   /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
   late final pulumi.Output<String> density;
+
   /// The fields supported by this index. The last non-stored field entry is
   /// always for the field path `__name__`. If, on creation, `__name__` was not
   /// specified as the last field, it will be added automatically with the same
@@ -1697,19 +1700,24 @@ class Index extends pulumi.CustomResource {
   /// composite index is not directional, the `__name__` will be ordered
   /// `"ASCENDING"` (unless explicitly specified otherwise).
   /// Structure is documented below.
-  late final pulumi.Output<List<IndexField>> fields;
+  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+
   /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
   late final pulumi.Output<bool?> multikey;
+
   /// A server defined name for this index. Format:
   /// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The scope at which a query is run.
   /// Default value is `COLLECTION`.
   /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
   late final pulumi.Output<String?> queryScope;
+
   /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
   late final pulumi.Output<bool> unique;
 
@@ -1717,34 +1725,27 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_firestore_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(
-    String name, {
-    IndexArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:firestore/index:Index',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiScope = registerOutput<String?>('apiScope');
-    this.collection = registerOutput<String>('collection');
-    this.database = registerOutput<String?>('database');
-    this.density = registerOutput<String>('density');
-    this.fields = registerOutput<List<IndexField>>('fields');
-    this.multikey = registerOutput<bool?>('multikey');
+  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:firestore/index:Index',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiScope = registerOutput<String?>('apiScope');
+    collection = registerOutput<String>('collection');
+    database = registerOutput<String?>('database');
+    density = registerOutput<String>('density');
+    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    multikey = registerOutput<bool?>('multikey');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.queryScope = registerOutput<String?>('queryScope');
-    this.unique = registerOutput<bool>('unique');
+    project = registerOutput<String>('project');
+    queryScope = registerOutput<String?>('queryScope');
+    unique = registerOutput<bool>('unique');
   }
 
   /// Gets an existing [Index] resource's state with the given [name] and [id].
-  static Index get(
-    String name,
-    pulumi.Input<String> id, {
-    IndexState? state,
-  }) {
+  static Index get(String name, pulumi.Input<String> id, {IndexState? state}) {
     return Index._get(
       name,
       state: state?.toMap(),
@@ -1757,20 +1758,20 @@ class Index extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firestore/index:Index',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiScope = registerOutput<String?>('apiScope');
-    this.collection = registerOutput<String>('collection');
-    this.database = registerOutput<String?>('database');
-    this.density = registerOutput<String>('density');
-    this.fields = registerOutput<List<IndexField>>('fields');
-    this.multikey = registerOutput<bool?>('multikey');
+         'gcp:firestore/index:Index',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiScope = registerOutput<String?>('apiScope');
+    collection = registerOutput<String>('collection');
+    database = registerOutput<String?>('database');
+    density = registerOutput<String>('density');
+    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    multikey = registerOutput<bool?>('multikey');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.queryScope = registerOutput<String?>('queryScope');
-    this.unique = registerOutput<bool>('unique');
+    project = registerOutput<String>('project');
+    queryScope = registerOutput<String?>('queryScope');
+    unique = registerOutput<bool>('unique');
   }
 }

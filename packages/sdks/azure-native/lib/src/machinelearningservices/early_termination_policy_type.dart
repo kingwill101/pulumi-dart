@@ -4,16 +4,15 @@ enum EarlyTerminationPolicyType {
   valueMedianStopping("MedianStopping"),
   valueTruncationSelection("TruncationSelection");
 
-  const EarlyTerminationPolicyType(this.value);
-  final String value;
+  const EarlyTerminationPolicyType(this.wireValue);
+  final String wireValue;
 
   static EarlyTerminationPolicyType fromValue(String value) {
     for (final item in EarlyTerminationPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EarlyTerminationPolicyType value: $value');
   }
 }
-

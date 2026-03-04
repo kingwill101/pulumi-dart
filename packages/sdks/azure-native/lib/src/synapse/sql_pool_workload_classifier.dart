@@ -313,20 +313,28 @@ import 'sql_pool_workload_classifier_args.dart';
 class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The workload classifier context.
   late final pulumi.Output<String?> context;
+
   /// The workload classifier end time for classification.
   late final pulumi.Output<String?> endTime;
+
   /// The workload classifier importance.
   late final pulumi.Output<String?> importance;
+
   /// The workload classifier label.
   late final pulumi.Output<String?> label;
+
   /// The workload classifier member name.
   late final pulumi.Output<String> memberName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The workload classifier start time for classification.
   late final pulumi.Output<String?> startTime;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -339,19 +347,19 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     SqlPoolWorkloadClassifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:SqlPoolWorkloadClassifier',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.context = registerOutput<String?>('context');
-    this.endTime = registerOutput<String?>('endTime');
-    this.importance = registerOutput<String?>('importance');
-    this.label = registerOutput<String?>('label');
-    this.memberName = registerOutput<String>('memberName');
+         'azure-native:synapse:SqlPoolWorkloadClassifier',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    context = registerOutput<String?>('context');
+    endTime = registerOutput<String?>('endTime');
+    importance = registerOutput<String?>('importance');
+    label = registerOutput<String?>('label');
+    memberName = registerOutput<String>('memberName');
     this.name = registerOutput<String>('name');
-    this.startTime = registerOutput<String?>('startTime');
-    this.type = registerOutput<String>('type');
+    startTime = registerOutput<String?>('startTime');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,20 +9,21 @@ class VirtualNetworkSubnetIpConfigurationReferenceResponse {
 
   /// Creates a new [VirtualNetworkSubnetIpConfigurationReferenceResponse].
   /// [id] The Azure Resource ID for a Network Interface.
-  VirtualNetworkSubnetIpConfigurationReferenceResponse({
-    this.id,
-  });
+  VirtualNetworkSubnetIpConfigurationReferenceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkSubnetIpConfigurationReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

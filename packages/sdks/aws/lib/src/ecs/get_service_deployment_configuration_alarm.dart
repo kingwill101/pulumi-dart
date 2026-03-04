@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceDeploymentConfigurationAlarm {
   /// List of CloudWatch alarm names
   final pulumi.Input<List<String>> alarmNames;
+
   /// Whether circuit breaker is enabled
   final pulumi.Input<bool> enable;
+
   /// Whether to rollback on failure
   final pulumi.Input<bool> rollback;
 
@@ -28,12 +30,15 @@ class GetServiceDeploymentConfigurationAlarm {
     };
   }
 
-  factory GetServiceDeploymentConfigurationAlarm.fromMap(Map<String, dynamic> map) {
+  factory GetServiceDeploymentConfigurationAlarm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceDeploymentConfigurationAlarm(
-      alarmNames: ((map['alarmNames'] as List).cast<String>()).input(),
-      enable: (map['enable'] as bool).input(),
-      rollback: (map['rollback'] as bool).input(),
+      alarmNames: pulumi.Input.fromValue(
+        (map['alarmNames'] as List).cast<String>(),
+      ),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      rollback: pulumi.Input.fromValue(map['rollback'] as bool),
     );
   }
 }
-

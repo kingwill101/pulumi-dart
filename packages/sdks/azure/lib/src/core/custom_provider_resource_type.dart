@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomProviderResourceType {
   /// Specifies the endpoint of the route definition.
   final pulumi.Input<String> endpoint;
+
   /// Specifies the name of the route definition.
   final pulumi.Input<String> name;
+
   /// The routing type that is supported for the resource request. Valid values are `Proxy` and `Proxy,Cache`. Defaults to `Proxy`.
   final pulumi.Input<String>? routingType;
 
@@ -30,10 +32,13 @@ class CustomProviderResourceType {
 
   factory CustomProviderResourceType.fromMap(Map<String, dynamic> map) {
     return CustomProviderResourceType(
-      endpoint: (map['endpoint'] as String).input(),
-      name: (map['name'] as String).input(),
-      routingType: map['routingType'] == null ? null : (map['routingType']! as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      routingType: (() {
+        final guardedValue = map['routingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -433,28 +433,40 @@ import 'queue_state.dart';
 class Queue extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Queue.
   late final pulumi.Output<String> arn;
+
   /// Specifies the description of the Queue.
   late final pulumi.Output<String?> description;
+
   /// Specifies the identifier of the Hours of Operation.
   late final pulumi.Output<String> hoursOfOperationId;
+
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
+
   /// Specifies the maximum number of contacts that can be in the queue before it is considered full. Minimum value of 0.
   late final pulumi.Output<int?> maxContacts;
+
   /// Specifies the name of the Queue.
   late final pulumi.Output<String> name;
+
   /// A block that defines the outbound caller ID name, number, and outbound whisper flow. The Outbound Caller Config block is documented below.
   late final pulumi.Output<QueueOutboundCallerConfig?> outboundCallerConfig;
+
   /// The identifier for the Queue.
   late final pulumi.Output<String> queueId;
+
   /// Specifies a list of quick connects ids that determine the quick connects available to agents who are working the queue.
   late final pulumi.Output<List<String>?> quickConnectIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> status;
+
   /// Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -462,37 +474,32 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_connect_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(
-    String name, {
-    QueueArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:connect/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxContacts = registerOutput<int?>('maxContacts');
+  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:connect/queue:Queue',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
+    instanceId = registerOutput<String>('instanceId');
+    maxContacts = registerOutput<int?>('maxContacts');
     this.name = registerOutput<String>('name');
-    this.outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>('outboundCallerConfig');
-    this.queueId = registerOutput<String>('queueId');
-    this.quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>(
+      'outboundCallerConfig',
+    );
+    queueId = registerOutput<String>('queueId');
+    quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(
-    String name,
-    pulumi.Input<String> id, {
-    QueueState? state,
-  }) {
+  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -505,23 +512,25 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxContacts = registerOutput<int?>('maxContacts');
+         'aws:connect/queue:Queue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
+    instanceId = registerOutput<String>('instanceId');
+    maxContacts = registerOutput<int?>('maxContacts');
     this.name = registerOutput<String>('name');
-    this.outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>('outboundCallerConfig');
-    this.queueId = registerOutput<String>('queueId');
-    this.quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>(
+      'outboundCallerConfig',
+    );
+    queueId = registerOutput<String>('queueId');
+    quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

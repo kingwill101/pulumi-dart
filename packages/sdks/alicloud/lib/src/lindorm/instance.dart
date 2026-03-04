@@ -6,9 +6,9 @@ import 'instance_state.dart';
 ///
 /// For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
-/// > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
+/// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 ///
 /// ## Example Usage
 ///
@@ -286,106 +286,156 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> arbiterVswitchId;
+
   /// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> arbiterZoneId;
+
   /// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
   late final pulumi.Output<String> archVersion;
+
   /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
   late final pulumi.Output<String?> autoRenew;
+
   /// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
   late final pulumi.Output<String?> autoRenewPeriod;
+
   /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
   late final pulumi.Output<int> coldStorage;
+
   /// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
   late final pulumi.Output<int?> coreSingleStorage;
+
   /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
   /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
   /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
   late final pulumi.Output<String> coreSpec;
+
   /// The deletion protection of instance.
   late final pulumi.Output<bool> deletionProection;
+
   /// The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
   late final pulumi.Output<String> diskCategory;
+
   /// The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
   late final pulumi.Output<String?> duration;
+
   /// (Available since v1.163.0) Whether to enable file engine.
   late final pulumi.Output<bool> enabledFileEngine;
+
   /// (Available since v1.163.0) Whether to enable lts engine.
   late final pulumi.Output<bool> enabledLtsEngine;
+
   /// (Available since v1.163.0) Whether to enable search engine.
   late final pulumi.Output<bool> enabledSearchEngine;
+
   /// (Available since v1.211.0) Whether to enable streaming engine.
   late final pulumi.Output<bool> enabledStreamEngine;
+
   /// (Available since v1.163.0) Whether to enable table engine.
   late final pulumi.Output<bool> enabledTableEngine;
+
   /// (Available since v1.163.0) Whether to enable time serires engine.
   late final pulumi.Output<bool> enabledTimeSeriresEngine;
+
   /// The count of file engine.
   late final pulumi.Output<int> fileEngineNodeCount;
+
   /// The specification of file engine. Valid values: `lindorm.c.xlarge`.
   late final pulumi.Output<String> fileEngineSpecification;
+
   /// The name of the instance.
   late final pulumi.Output<String?> instanceName;
+
   /// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
   late final pulumi.Output<String> instanceStorage;
+
   /// The ip white list of instance.
   late final pulumi.Output<List<String>?> ipWhiteLists;
+
   /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
   late final pulumi.Output<String?> logDiskCategory;
+
   /// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
   late final pulumi.Output<int?> logNum;
+
   /// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
   late final pulumi.Output<int?> logSingleStorage;
+
   /// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
   late final pulumi.Output<String?> logSpec;
+
   /// The count of lindorm tunnel service.
   late final pulumi.Output<int> ltsNodeCount;
+
   /// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
   late final pulumi.Output<String> ltsNodeSpecification;
+
   /// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
   late final pulumi.Output<String?> multiZoneCombination;
+
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
   late final pulumi.Output<String?> pricingCycle;
+
   /// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> primaryVswitchId;
+
   /// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> primaryZoneId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The count of search engine.
   late final pulumi.Output<int> searchEngineNodeCount;
+
   /// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
   late final pulumi.Output<String> searchEngineSpecification;
+
   /// (Available since v1.196.0) The instance type.
   late final pulumi.Output<String> serviceType;
+
   /// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> standbyVswitchId;
+
   /// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
   late final pulumi.Output<String?> standbyZoneId;
+
   /// The status of Instance.
   late final pulumi.Output<String> status;
+
   /// The number of LindormStream nodes in the instance.
   late final pulumi.Output<int> streamEngineNodeCount;
+
   /// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
   late final pulumi.Output<String> streamEngineSpecification;
+
   /// The count of table engine.
   late final pulumi.Output<int> tableEngineNodeCount;
+
   /// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
   late final pulumi.Output<String> tableEngineSpecification;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The count of time series engine.
   late final pulumi.Output<int> timeSeriesEngineNodeCount;
+
   /// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
   late final pulumi.Output<String> timeSeriesEngineSpecification;
+
   /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
   late final pulumi.Output<String> timeSeriresEngineSpecification;
+
   /// The VPC ID of the instance.
   late final pulumi.Output<String> vpcId;
+
   /// The vswitch id.
   late final pulumi.Output<String> vswitchId;
+
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -398,62 +448,74 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:lindorm/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
-    this.arbiterZoneId = registerOutput<String?>('arbiterZoneId');
-    this.archVersion = registerOutput<String>('archVersion');
-    this.autoRenew = registerOutput<String?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<String?>('autoRenewPeriod');
-    this.coldStorage = registerOutput<int>('coldStorage');
-    this.coreSingleStorage = registerOutput<int?>('coreSingleStorage');
-    this.coreSpec = registerOutput<String>('coreSpec');
-    this.deletionProection = registerOutput<bool>('deletionProection');
-    this.diskCategory = registerOutput<String>('diskCategory');
-    this.duration = registerOutput<String?>('duration');
-    this.enabledFileEngine = registerOutput<bool>('enabledFileEngine');
-    this.enabledLtsEngine = registerOutput<bool>('enabledLtsEngine');
-    this.enabledSearchEngine = registerOutput<bool>('enabledSearchEngine');
-    this.enabledStreamEngine = registerOutput<bool>('enabledStreamEngine');
-    this.enabledTableEngine = registerOutput<bool>('enabledTableEngine');
-    this.enabledTimeSeriresEngine = registerOutput<bool>('enabledTimeSeriresEngine');
-    this.fileEngineNodeCount = registerOutput<int>('fileEngineNodeCount');
-    this.fileEngineSpecification = registerOutput<String>('fileEngineSpecification');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.instanceStorage = registerOutput<String>('instanceStorage');
-    this.ipWhiteLists = registerOutput<List<String>?>('ipWhiteLists');
-    this.logDiskCategory = registerOutput<String?>('logDiskCategory');
-    this.logNum = registerOutput<int?>('logNum');
-    this.logSingleStorage = registerOutput<int?>('logSingleStorage');
-    this.logSpec = registerOutput<String?>('logSpec');
-    this.ltsNodeCount = registerOutput<int>('ltsNodeCount');
-    this.ltsNodeSpecification = registerOutput<String>('ltsNodeSpecification');
-    this.multiZoneCombination = registerOutput<String?>('multiZoneCombination');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryZoneId = registerOutput<String?>('primaryZoneId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.searchEngineNodeCount = registerOutput<int>('searchEngineNodeCount');
-    this.searchEngineSpecification = registerOutput<String>('searchEngineSpecification');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyZoneId = registerOutput<String?>('standbyZoneId');
-    this.status = registerOutput<String>('status');
-    this.streamEngineNodeCount = registerOutput<int>('streamEngineNodeCount');
-    this.streamEngineSpecification = registerOutput<String>('streamEngineSpecification');
-    this.tableEngineNodeCount = registerOutput<int>('tableEngineNodeCount');
-    this.tableEngineSpecification = registerOutput<String>('tableEngineSpecification');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeSeriesEngineNodeCount = registerOutput<int>('timeSeriesEngineNodeCount');
-    this.timeSeriesEngineSpecification = registerOutput<String>('timeSeriesEngineSpecification');
-    this.timeSeriresEngineSpecification = registerOutput<String>('timeSeriresEngineSpecification');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:lindorm/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
+    arbiterZoneId = registerOutput<String?>('arbiterZoneId');
+    archVersion = registerOutput<String>('archVersion');
+    autoRenew = registerOutput<String?>('autoRenew');
+    autoRenewPeriod = registerOutput<String?>('autoRenewPeriod');
+    coldStorage = registerOutput<int>('coldStorage');
+    coreSingleStorage = registerOutput<int?>('coreSingleStorage');
+    coreSpec = registerOutput<String>('coreSpec');
+    deletionProection = registerOutput<bool>('deletionProection');
+    diskCategory = registerOutput<String>('diskCategory');
+    duration = registerOutput<String?>('duration');
+    enabledFileEngine = registerOutput<bool>('enabledFileEngine');
+    enabledLtsEngine = registerOutput<bool>('enabledLtsEngine');
+    enabledSearchEngine = registerOutput<bool>('enabledSearchEngine');
+    enabledStreamEngine = registerOutput<bool>('enabledStreamEngine');
+    enabledTableEngine = registerOutput<bool>('enabledTableEngine');
+    enabledTimeSeriresEngine = registerOutput<bool>('enabledTimeSeriresEngine');
+    fileEngineNodeCount = registerOutput<int>('fileEngineNodeCount');
+    fileEngineSpecification = registerOutput<String>('fileEngineSpecification');
+    instanceName = registerOutput<String?>('instanceName');
+    instanceStorage = registerOutput<String>('instanceStorage');
+    ipWhiteLists = registerOutput<List<String>?>('ipWhiteLists');
+    logDiskCategory = registerOutput<String?>('logDiskCategory');
+    logNum = registerOutput<int?>('logNum');
+    logSingleStorage = registerOutput<int?>('logSingleStorage');
+    logSpec = registerOutput<String?>('logSpec');
+    ltsNodeCount = registerOutput<int>('ltsNodeCount');
+    ltsNodeSpecification = registerOutput<String>('ltsNodeSpecification');
+    multiZoneCombination = registerOutput<String?>('multiZoneCombination');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryZoneId = registerOutput<String?>('primaryZoneId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    searchEngineNodeCount = registerOutput<int>('searchEngineNodeCount');
+    searchEngineSpecification = registerOutput<String>(
+      'searchEngineSpecification',
+    );
+    serviceType = registerOutput<String>('serviceType');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyZoneId = registerOutput<String?>('standbyZoneId');
+    status = registerOutput<String>('status');
+    streamEngineNodeCount = registerOutput<int>('streamEngineNodeCount');
+    streamEngineSpecification = registerOutput<String>(
+      'streamEngineSpecification',
+    );
+    tableEngineNodeCount = registerOutput<int>('tableEngineNodeCount');
+    tableEngineSpecification = registerOutput<String>(
+      'tableEngineSpecification',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeSeriesEngineNodeCount = registerOutput<int>(
+      'timeSeriesEngineNodeCount',
+    );
+    timeSeriesEngineSpecification = registerOutput<String>(
+      'timeSeriesEngineSpecification',
+    );
+    timeSeriresEngineSpecification = registerOutput<String>(
+      'timeSeriresEngineSpecification',
+    );
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -474,61 +536,73 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:lindorm/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
-    this.arbiterZoneId = registerOutput<String?>('arbiterZoneId');
-    this.archVersion = registerOutput<String>('archVersion');
-    this.autoRenew = registerOutput<String?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<String?>('autoRenewPeriod');
-    this.coldStorage = registerOutput<int>('coldStorage');
-    this.coreSingleStorage = registerOutput<int?>('coreSingleStorage');
-    this.coreSpec = registerOutput<String>('coreSpec');
-    this.deletionProection = registerOutput<bool>('deletionProection');
-    this.diskCategory = registerOutput<String>('diskCategory');
-    this.duration = registerOutput<String?>('duration');
-    this.enabledFileEngine = registerOutput<bool>('enabledFileEngine');
-    this.enabledLtsEngine = registerOutput<bool>('enabledLtsEngine');
-    this.enabledSearchEngine = registerOutput<bool>('enabledSearchEngine');
-    this.enabledStreamEngine = registerOutput<bool>('enabledStreamEngine');
-    this.enabledTableEngine = registerOutput<bool>('enabledTableEngine');
-    this.enabledTimeSeriresEngine = registerOutput<bool>('enabledTimeSeriresEngine');
-    this.fileEngineNodeCount = registerOutput<int>('fileEngineNodeCount');
-    this.fileEngineSpecification = registerOutput<String>('fileEngineSpecification');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.instanceStorage = registerOutput<String>('instanceStorage');
-    this.ipWhiteLists = registerOutput<List<String>?>('ipWhiteLists');
-    this.logDiskCategory = registerOutput<String?>('logDiskCategory');
-    this.logNum = registerOutput<int?>('logNum');
-    this.logSingleStorage = registerOutput<int?>('logSingleStorage');
-    this.logSpec = registerOutput<String?>('logSpec');
-    this.ltsNodeCount = registerOutput<int>('ltsNodeCount');
-    this.ltsNodeSpecification = registerOutput<String>('ltsNodeSpecification');
-    this.multiZoneCombination = registerOutput<String?>('multiZoneCombination');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryZoneId = registerOutput<String?>('primaryZoneId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.searchEngineNodeCount = registerOutput<int>('searchEngineNodeCount');
-    this.searchEngineSpecification = registerOutput<String>('searchEngineSpecification');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyZoneId = registerOutput<String?>('standbyZoneId');
-    this.status = registerOutput<String>('status');
-    this.streamEngineNodeCount = registerOutput<int>('streamEngineNodeCount');
-    this.streamEngineSpecification = registerOutput<String>('streamEngineSpecification');
-    this.tableEngineNodeCount = registerOutput<int>('tableEngineNodeCount');
-    this.tableEngineSpecification = registerOutput<String>('tableEngineSpecification');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeSeriesEngineNodeCount = registerOutput<int>('timeSeriesEngineNodeCount');
-    this.timeSeriesEngineSpecification = registerOutput<String>('timeSeriesEngineSpecification');
-    this.timeSeriresEngineSpecification = registerOutput<String>('timeSeriresEngineSpecification');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:lindorm/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
+    arbiterZoneId = registerOutput<String?>('arbiterZoneId');
+    archVersion = registerOutput<String>('archVersion');
+    autoRenew = registerOutput<String?>('autoRenew');
+    autoRenewPeriod = registerOutput<String?>('autoRenewPeriod');
+    coldStorage = registerOutput<int>('coldStorage');
+    coreSingleStorage = registerOutput<int?>('coreSingleStorage');
+    coreSpec = registerOutput<String>('coreSpec');
+    deletionProection = registerOutput<bool>('deletionProection');
+    diskCategory = registerOutput<String>('diskCategory');
+    duration = registerOutput<String?>('duration');
+    enabledFileEngine = registerOutput<bool>('enabledFileEngine');
+    enabledLtsEngine = registerOutput<bool>('enabledLtsEngine');
+    enabledSearchEngine = registerOutput<bool>('enabledSearchEngine');
+    enabledStreamEngine = registerOutput<bool>('enabledStreamEngine');
+    enabledTableEngine = registerOutput<bool>('enabledTableEngine');
+    enabledTimeSeriresEngine = registerOutput<bool>('enabledTimeSeriresEngine');
+    fileEngineNodeCount = registerOutput<int>('fileEngineNodeCount');
+    fileEngineSpecification = registerOutput<String>('fileEngineSpecification');
+    instanceName = registerOutput<String?>('instanceName');
+    instanceStorage = registerOutput<String>('instanceStorage');
+    ipWhiteLists = registerOutput<List<String>?>('ipWhiteLists');
+    logDiskCategory = registerOutput<String?>('logDiskCategory');
+    logNum = registerOutput<int?>('logNum');
+    logSingleStorage = registerOutput<int?>('logSingleStorage');
+    logSpec = registerOutput<String?>('logSpec');
+    ltsNodeCount = registerOutput<int>('ltsNodeCount');
+    ltsNodeSpecification = registerOutput<String>('ltsNodeSpecification');
+    multiZoneCombination = registerOutput<String?>('multiZoneCombination');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryZoneId = registerOutput<String?>('primaryZoneId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    searchEngineNodeCount = registerOutput<int>('searchEngineNodeCount');
+    searchEngineSpecification = registerOutput<String>(
+      'searchEngineSpecification',
+    );
+    serviceType = registerOutput<String>('serviceType');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyZoneId = registerOutput<String?>('standbyZoneId');
+    status = registerOutput<String>('status');
+    streamEngineNodeCount = registerOutput<int>('streamEngineNodeCount');
+    streamEngineSpecification = registerOutput<String>(
+      'streamEngineSpecification',
+    );
+    tableEngineNodeCount = registerOutput<int>('tableEngineNodeCount');
+    tableEngineSpecification = registerOutput<String>(
+      'tableEngineSpecification',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeSeriesEngineNodeCount = registerOutput<int>(
+      'timeSeriesEngineNodeCount',
+    );
+    timeSeriesEngineSpecification = registerOutput<String>(
+      'timeSeriesEngineSpecification',
+    );
+    timeSeriresEngineSpecification = registerOutput<String>(
+      'timeSeriresEngineSpecification',
+    );
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

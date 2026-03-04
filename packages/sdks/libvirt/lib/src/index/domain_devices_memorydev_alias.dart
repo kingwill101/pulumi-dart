@@ -8,20 +8,15 @@ class DomainDevicesMemorydevAlias {
 
   /// Creates a new [DomainDevicesMemorydevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesMemorydevAlias({
-    required this.name,
-  });
+  DomainDevicesMemorydevAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesMemorydevAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

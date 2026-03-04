@@ -4,16 +4,17 @@ enum MaintenanceExclusionOptionsScope {
   noMinorUpgrades("NO_MINOR_UPGRADES"),
   noMinorOrNodeUpgrades("NO_MINOR_OR_NODE_UPGRADES");
 
-  const MaintenanceExclusionOptionsScope(this.value);
-  final String value;
+  const MaintenanceExclusionOptionsScope(this.wireValue);
+  final String wireValue;
 
   static MaintenanceExclusionOptionsScope fromValue(String value) {
     for (final item in MaintenanceExclusionOptionsScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MaintenanceExclusionOptionsScope value: $value');
+    throw ArgumentError(
+      'Unknown MaintenanceExclusionOptionsScope value: $value',
+    );
   }
 }
-

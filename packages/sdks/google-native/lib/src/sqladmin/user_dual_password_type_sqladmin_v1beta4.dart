@@ -5,16 +5,17 @@ enum UserDualPasswordTypeSqladminV1beta4 {
   noDualPassword("NO_DUAL_PASSWORD"),
   dualPassword("DUAL_PASSWORD");
 
-  const UserDualPasswordTypeSqladminV1beta4(this.value);
-  final String value;
+  const UserDualPasswordTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static UserDualPasswordTypeSqladminV1beta4 fromValue(String value) {
     for (final item in UserDualPasswordTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UserDualPasswordTypeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown UserDualPasswordTypeSqladminV1beta4 value: $value',
+    );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_authorization;
-
 export 'authorization/access_review_history_definition_by_id.dart';
 export 'authorization/access_review_history_definition_by_id_args.dart';
 export 'authorization/access_review_history_instance.dart';

@@ -5,16 +5,15 @@ enum LogLevel {
   valueWarn("warn"),
   valueError("error");
 
-  const LogLevel(this.value);
-  final String value;
+  const LogLevel(this.wireValue);
+  final String wireValue;
 
   static LogLevel fromValue(String value) {
     for (final item in LogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogLevel value: $value');
   }
 }
-

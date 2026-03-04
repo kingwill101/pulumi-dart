@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLogging {
   /// The destination bucket where the current bucket's logs should be placed.
   final pulumi.Input<String>? logBucket;
+
   /// A prefix for log object names.
   final pulumi.Input<String>? logObjectPrefix;
 
   /// Creates a new [BucketLogging].
   /// [logBucket] The destination bucket where the current bucket's logs should be placed.
   /// [logObjectPrefix] A prefix for log object names.
-  BucketLogging({
-    this.logBucket,
-    this.logObjectPrefix,
-  });
+  BucketLogging({this.logBucket, this.logObjectPrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BucketLogging {
 
   factory BucketLogging.fromMap(Map<String, dynamic> map) {
     return BucketLogging(
-      logBucket: map['logBucket'] == null ? null : (map['logBucket']! as String).input(),
-      logObjectPrefix: map['logObjectPrefix'] == null ? null : (map['logObjectPrefix']! as String).input(),
+      logBucket: (() {
+        final guardedValue = map['logBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logObjectPrefix: (() {
+        final guardedValue = map['logObjectPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

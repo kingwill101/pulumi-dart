@@ -13,15 +13,14 @@ class AgentPromptVariantTemplateConfigurationChatSystemCachePoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatSystemCachePoint.fromMap(Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatSystemCachePoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentPromptVariantTemplateConfigurationChatSystemCachePoint(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

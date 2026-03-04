@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MABContainerHealthDetails {
   /// Health Code
   final pulumi.Input<int>? code;
+
   /// Health Message
   final pulumi.Input<String>? message;
+
   /// Health Recommended Actions
   final pulumi.Input<List<String>>? recommendations;
+
   /// Health Title
   final pulumi.Input<String>? title;
 
@@ -36,11 +39,26 @@ class MABContainerHealthDetails {
 
   factory MABContainerHealthDetails.fromMap(Map<String, dynamic> map) {
     return MABContainerHealthDetails(
-      code: map['code'] == null ? null : (map['code']! as int).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      recommendations: map['recommendations'] == null ? null : ((map['recommendations']! as List).cast<String>()).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendations: (() {
+        final guardedValue = map['recommendations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

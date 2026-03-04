@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CopyCompletionErrorResponse {
   /// Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
   final pulumi.Input<String> errorCode;
+
   /// Indicates the error message if the background copy of a resource created via the CopyStart operation fails.
   final pulumi.Input<String> errorMessage;
 
@@ -26,9 +27,8 @@ class CopyCompletionErrorResponse {
 
   factory CopyCompletionErrorResponse.fromMap(Map<String, dynamic> map) {
     return CopyCompletionErrorResponse(
-      errorCode: (map['errorCode'] as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
     );
   }
 }
-

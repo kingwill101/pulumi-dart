@@ -4,16 +4,15 @@ enum NodeImageSelectionType {
   consistent("Consistent"),
   custom("Custom");
 
-  const NodeImageSelectionType(this.value);
-  final String value;
+  const NodeImageSelectionType(this.wireValue);
+  final String wireValue;
 
   static NodeImageSelectionType fromValue(String value) {
     for (final item in NodeImageSelectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeImageSelectionType value: $value');
   }
 }
-

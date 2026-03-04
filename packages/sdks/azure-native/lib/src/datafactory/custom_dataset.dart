@@ -9,18 +9,25 @@ import 'parameter_specification.dart';
 class CustomDataset {
   /// List of tags that can be used for describing the Dataset.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// Dataset description.
   final pulumi.Input<String>? description;
+
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
   final pulumi.Input<DatasetFolder>? folder;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
+
   /// Parameters for dataset.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
+
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   final pulumi.Input<dynamic>? structure;
+
   /// Type of dataset.
   /// Expected value is 'CustomDataset'.
   final pulumi.Input<String> type;
@@ -49,9 +56,28 @@ class CustomDataset {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
-      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'folder':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatasetFolder,
+            Map<String, dynamic>
+          >(folder, (value) => value.toMap()),
+      'linkedServiceName':
+          pulumi.Input.mapInputValue<
+            LinkedServiceReference,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecification>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schema': ?schema,
       'structure': ?structure,
       'type': type,
@@ -60,15 +86,51 @@ class CustomDataset {
 
   factory CustomDataset.fromMap(Map<String, dynamic> map) {
     return CustomDataset(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
-      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: map['schema'] == null ? null : (map['schema']!).input(),
-      structure: map['structure'] == null ? null : (map['structure']!).input(),
-      type: (map['type'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatasetFolder.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      linkedServiceName: pulumi.Input.fromValue(
+        LinkedServiceReference.fromMap(
+          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecification>(
+            guardedValue,
+            (value) => ParameterSpecification.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      structure: (() {
+        final guardedValue = map['structure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

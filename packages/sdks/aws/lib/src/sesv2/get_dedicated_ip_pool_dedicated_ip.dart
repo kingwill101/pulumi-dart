@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedIpPoolDedicatedIp {
   /// IPv4 address.
   final pulumi.Input<String> ip;
+
   /// Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   final pulumi.Input<int> warmupPercentage;
+
   /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
   final pulumi.Input<String> warmupStatus;
 
@@ -30,10 +32,9 @@ class GetDedicatedIpPoolDedicatedIp {
 
   factory GetDedicatedIpPoolDedicatedIp.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolDedicatedIp(
-      ip: (map['ip'] as String).input(),
-      warmupPercentage: (map['warmupPercentage'] as int).input(),
-      warmupStatus: (map['warmupStatus'] as String).input(),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      warmupPercentage: pulumi.Input.fromValue(map['warmupPercentage'] as int),
+      warmupStatus: pulumi.Input.fromValue(map['warmupStatus'] as String),
     );
   }
 }
-

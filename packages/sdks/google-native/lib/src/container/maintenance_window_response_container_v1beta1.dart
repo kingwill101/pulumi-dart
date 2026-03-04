@@ -7,11 +7,15 @@ import 'recurring_time_window_response_container_v1beta1.dart';
 /// MaintenanceWindow defines the maintenance window to be used for the cluster.
 class MaintenanceWindowResponseContainerV1beta1 {
   /// DailyMaintenanceWindow specifies a daily maintenance operation window.
-  final pulumi.Input<DailyMaintenanceWindowResponseContainerV1beta1> dailyMaintenanceWindow;
+  final pulumi.Input<DailyMaintenanceWindowResponseContainerV1beta1>
+  dailyMaintenanceWindow;
+
   /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
   final pulumi.Input<Map<String, String>> maintenanceExclusions;
+
   /// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
-  final pulumi.Input<RecurringTimeWindowResponseContainerV1beta1> recurringWindow;
+  final pulumi.Input<RecurringTimeWindowResponseContainerV1beta1>
+  recurringWindow;
 
   /// Creates a new [MaintenanceWindowResponseContainerV1beta1].
   /// [dailyMaintenanceWindow] DailyMaintenanceWindow specifies a daily maintenance operation window.
@@ -25,18 +29,37 @@ class MaintenanceWindowResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailyMaintenanceWindow': pulumi.Input.mapInputValue<DailyMaintenanceWindowResponseContainerV1beta1, Map<String, dynamic>>(dailyMaintenanceWindow, (value) => value.toMap()),
+      'dailyMaintenanceWindow':
+          pulumi.Input.mapInputValue<
+            DailyMaintenanceWindowResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(dailyMaintenanceWindow, (value) => value.toMap()),
       'maintenanceExclusions': maintenanceExclusions,
-      'recurringWindow': pulumi.Input.mapInputValue<RecurringTimeWindowResponseContainerV1beta1, Map<String, dynamic>>(recurringWindow, (value) => value.toMap()),
+      'recurringWindow':
+          pulumi.Input.mapInputValue<
+            RecurringTimeWindowResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(recurringWindow, (value) => value.toMap()),
     };
   }
 
-  factory MaintenanceWindowResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceWindowResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceWindowResponseContainerV1beta1(
-      dailyMaintenanceWindow: (DailyMaintenanceWindowResponseContainerV1beta1.fromMap((map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      maintenanceExclusions: ((map['maintenanceExclusions'] as Map).cast<String, String>()).input(),
-      recurringWindow: (RecurringTimeWindowResponseContainerV1beta1.fromMap((map['recurringWindow'] as Map).cast<String, dynamic>())).input(),
+      dailyMaintenanceWindow: pulumi.Input.fromValue(
+        DailyMaintenanceWindowResponseContainerV1beta1.fromMap(
+          (map['dailyMaintenanceWindow']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maintenanceExclusions: pulumi.Input.fromValue(
+        (map['maintenanceExclusions'] as Map).cast<String, String>(),
+      ),
+      recurringWindow: pulumi.Input.fromValue(
+        RecurringTimeWindowResponseContainerV1beta1.fromMap(
+          (map['recurringWindow']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

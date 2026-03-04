@@ -1,5 +1,3 @@
-library module_admissionregistration_k8s_io;
-
 export 'admissionregistration_k8s_io/apply_configuration.dart';
 export 'admissionregistration_k8s_io/apply_configuration_admissionregistration_k8s_io_v1beta1.dart';
 export 'admissionregistration_k8s_io/apply_configuration_patch.dart';

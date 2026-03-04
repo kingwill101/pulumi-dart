@@ -12,6 +12,7 @@ import 'bucket_access_monitor_state.dart';
 class BucketAccessMonitorOss extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
   late final pulumi.Output<String> status;
 
@@ -24,13 +25,13 @@ class BucketAccessMonitorOss extends pulumi.CustomResource {
     BucketAccessMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketAccessMonitor:BucketAccessMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketAccessMonitor:BucketAccessMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BucketAccessMonitorOss] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class BucketAccessMonitorOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketAccessMonitor:BucketAccessMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketAccessMonitor:BucketAccessMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    status = registerOutput<String>('status');
   }
 }

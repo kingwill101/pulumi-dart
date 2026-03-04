@@ -10,23 +10,26 @@ class ExternalDocumentationApiextensionsK8sIoV1beta1 {
   /// Creates a new [ExternalDocumentationApiextensionsK8sIoV1beta1].
   /// [description] Optional.
   /// [url] Optional.
-  ExternalDocumentationApiextensionsK8sIoV1beta1({
-    this.description,
-    this.url,
-  });
+  ExternalDocumentationApiextensionsK8sIoV1beta1({this.description, this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'url': ?url,
-    };
+    return <String, dynamic>{'description': ?description, 'url': ?url};
   }
 
-  factory ExternalDocumentationApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ExternalDocumentationApiextensionsK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExternalDocumentationApiextensionsK8sIoV1beta1(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

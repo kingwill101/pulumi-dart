@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEc2RouteTableArgs {
   /// Name of Ec2RouteTable
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEc2RouteTableArgs].
   /// [name] Name of Ec2RouteTable
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2RouteTableArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetEc2RouteTableArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetEc2RouteTableArgs {
 
   factory GetEc2RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetEc2RouteTableArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

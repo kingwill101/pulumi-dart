@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointArgs {
   /// The name of the Endpoint resource.
   final pulumi.Input<String> endpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Storage Mover resource.
   final pulumi.Input<String> storageMoverName;
 
@@ -34,10 +36,13 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageMoverName: (map['storageMoverName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageMoverName: pulumi.Input.fromValue(
+        map['storageMoverName'] as String,
+      ),
     );
   }
 }
-

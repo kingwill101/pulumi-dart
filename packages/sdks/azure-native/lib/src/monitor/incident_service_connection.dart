@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IncidentServiceConnection {
   /// GUID value representing the connection ID for the incident management service.
   final pulumi.Input<String> id;
+
   /// The name of the connection.
   final pulumi.Input<String> name;
 
   /// Creates a new [IncidentServiceConnection].
   /// [id] GUID value representing the connection ID for the incident management service.
   /// [name] The name of the connection.
-  IncidentServiceConnection({
-    required this.id,
-    required this.name,
-  });
+  IncidentServiceConnection({required this.id, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'id': id, 'name': name};
   }
 
   factory IncidentServiceConnection.fromMap(Map<String, dynamic> map) {
     return IncidentServiceConnection(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

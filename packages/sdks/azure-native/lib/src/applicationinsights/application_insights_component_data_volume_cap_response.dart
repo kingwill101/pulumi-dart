@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationInsightsComponentDataVolumeCapResponse {
   /// Daily data volume cap in GB.
   final pulumi.Input<double>? cap;
+
   /// Maximum daily data volume cap that the user can set for this component.
   final pulumi.Input<double> maxHistoryCap;
+
   /// Daily data volume cap UTC reset hour.
   final pulumi.Input<int> resetTime;
+
   /// Do not send a notification email when the daily data volume cap is met.
   final pulumi.Input<bool>? stopSendNotificationWhenHitCap;
+
   /// Reserved, not used for now.
   final pulumi.Input<bool>? stopSendNotificationWhenHitThreshold;
+
   /// Reserved, not used for now.
   final pulumi.Input<int>? warningThreshold;
 
@@ -39,20 +44,38 @@ class ApplicationInsightsComponentDataVolumeCapResponse {
       'maxHistoryCap': maxHistoryCap,
       'resetTime': resetTime,
       'stopSendNotificationWhenHitCap': ?stopSendNotificationWhenHitCap,
-      'stopSendNotificationWhenHitThreshold': ?stopSendNotificationWhenHitThreshold,
+      'stopSendNotificationWhenHitThreshold':
+          ?stopSendNotificationWhenHitThreshold,
       'warningThreshold': ?warningThreshold,
     };
   }
 
-  factory ApplicationInsightsComponentDataVolumeCapResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationInsightsComponentDataVolumeCapResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationInsightsComponentDataVolumeCapResponse(
-      cap: map['cap'] == null ? null : (map['cap']! as double).input(),
-      maxHistoryCap: (map['maxHistoryCap'] as double).input(),
-      resetTime: (map['resetTime'] as int).input(),
-      stopSendNotificationWhenHitCap: map['stopSendNotificationWhenHitCap'] == null ? null : (map['stopSendNotificationWhenHitCap']! as bool).input(),
-      stopSendNotificationWhenHitThreshold: map['stopSendNotificationWhenHitThreshold'] == null ? null : (map['stopSendNotificationWhenHitThreshold']! as bool).input(),
-      warningThreshold: map['warningThreshold'] == null ? null : (map['warningThreshold']! as int).input(),
+      cap: (() {
+        final guardedValue = map['cap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxHistoryCap: pulumi.Input.fromValue(map['maxHistoryCap'] as double),
+      resetTime: pulumi.Input.fromValue(map['resetTime'] as int),
+      stopSendNotificationWhenHitCap: (() {
+        final guardedValue = map['stopSendNotificationWhenHitCap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      stopSendNotificationWhenHitThreshold: (() {
+        final guardedValue = map['stopSendNotificationWhenHitThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      warningThreshold: (() {
+        final guardedValue = map['warningThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

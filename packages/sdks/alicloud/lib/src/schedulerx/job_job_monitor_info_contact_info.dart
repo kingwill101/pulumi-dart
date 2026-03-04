@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobJobMonitorInfoContactInfo {
   /// DingTalk swarm robot webhook address
   final pulumi.Input<String>? ding;
+
   /// User Email Address
   final pulumi.Input<String>? userMail;
+
   /// The user name
   final pulumi.Input<String>? userName;
+
   /// The user's mobile phone number
   final pulumi.Input<String>? userPhone;
 
@@ -35,11 +38,26 @@ class JobJobMonitorInfoContactInfo {
 
   factory JobJobMonitorInfoContactInfo.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoContactInfo(
-      ding: map['ding'] == null ? null : (map['ding']! as String).input(),
-      userMail: map['userMail'] == null ? null : (map['userMail']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
-      userPhone: map['userPhone'] == null ? null : (map['userPhone']! as String).input(),
+      ding: (() {
+        final guardedValue = map['ding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userMail: (() {
+        final guardedValue = map['userMail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPhone: (() {
+        final guardedValue = map['userPhone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

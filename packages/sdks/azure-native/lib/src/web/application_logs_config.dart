@@ -9,8 +9,10 @@ import 'file_system_application_logs_config.dart';
 class ApplicationLogsConfig {
   /// Application logs to blob storage configuration.
   final pulumi.Input<AzureBlobStorageApplicationLogsConfig>? azureBlobStorage;
+
   /// Application logs to azure table storage configuration.
   final pulumi.Input<AzureTableStorageApplicationLogsConfig>? azureTableStorage;
+
   /// Application logs to file system configuration.
   final pulumi.Input<FileSystemApplicationLogsConfig>? fileSystem;
 
@@ -26,18 +28,53 @@ class ApplicationLogsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<AzureBlobStorageApplicationLogsConfig, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
-      'azureTableStorage': ?pulumi.Input.mapOptionalInputValue<AzureTableStorageApplicationLogsConfig, Map<String, dynamic>>(azureTableStorage, (value) => value.toMap()),
-      'fileSystem': ?pulumi.Input.mapOptionalInputValue<FileSystemApplicationLogsConfig, Map<String, dynamic>>(fileSystem, (value) => value.toMap()),
+      'azureBlobStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureBlobStorageApplicationLogsConfig,
+            Map<String, dynamic>
+          >(azureBlobStorage, (value) => value.toMap()),
+      'azureTableStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureTableStorageApplicationLogsConfig,
+            Map<String, dynamic>
+          >(azureTableStorage, (value) => value.toMap()),
+      'fileSystem':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemApplicationLogsConfig,
+            Map<String, dynamic>
+          >(fileSystem, (value) => value.toMap()),
     };
   }
 
   factory ApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationLogsConfig(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageApplicationLogsConfig.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
-      azureTableStorage: map['azureTableStorage'] == null ? null : (AzureTableStorageApplicationLogsConfig.fromMap((map['azureTableStorage']! as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (FileSystemApplicationLogsConfig.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: (() {
+        final guardedValue = map['azureBlobStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureBlobStorageApplicationLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azureTableStorage: (() {
+        final guardedValue = map['azureTableStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureTableStorageApplicationLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fileSystem: (() {
+        final guardedValue = map['fileSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemApplicationLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

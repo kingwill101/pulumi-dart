@@ -16,40 +16,53 @@ import 'registry_task_timer_trigger.dart';
 class RegistryTaskState {
   /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
   final pulumi.Input<String>? agentPoolName;
+
   /// A `agent_setting` block as defined below.
   ///
-  /// > **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
+  /// &gt; **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
   final pulumi.Input<RegistryTaskAgentSetting>? agentSetting;
+
   /// A `base_image_trigger` block as defined below.
   final pulumi.Input<RegistryTaskBaseImageTrigger>? baseImageTrigger;
+
   /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
   final pulumi.Input<String>? containerRegistryId;
+
   /// A `docker_step` block as defined below.
   final pulumi.Input<RegistryTaskDockerStep>? dockerStep;
+
   /// Should this Container Registry Task be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// A `encoded_step` block as defined below.
   final pulumi.Input<RegistryTaskEncodedStep>? encodedStep;
+
   /// A `file_step` block as defined below.
   ///
-  /// > **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
+  /// &gt; **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
   final pulumi.Input<RegistryTaskFileStep>? fileStep;
+
   /// An `identity` block as defined below.
   final pulumi.Input<RegistryTaskIdentity>? identity;
+
   /// Whether this Container Registry Task is a system task. Changing this forces a new Container Registry Task to be created. Defaults to `false`.
   final pulumi.Input<bool>? isSystemTask;
   final pulumi.Input<String>? logTemplate;
+
   /// The name which should be used for this Container Registry Task. Changing this forces a new Container Registry Task to be created.
   final pulumi.Input<String>? name;
+
   /// A `platform` block as defined below.
   ///
-  /// > **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
+  /// &gt; **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
   final pulumi.Input<RegistryTaskPlatform>? platform;
   final pulumi.Input<RegistryTaskRegistryCredential>? registryCredential;
+
   /// One or more `source_trigger` blocks as defined below.
   final pulumi.Input<List<RegistryTaskSourceTrigger>>? sourceTriggers;
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<int>? timeoutInSeconds;
+
   /// One or more `timer_trigger` blocks as defined below.
   final pulumi.Input<List<RegistryTaskTimerTrigger>>? timerTriggers;
 
@@ -96,47 +109,220 @@ class RegistryTaskState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentPoolName': ?agentPoolName,
-      'agentSetting': ?pulumi.Input.mapOptionalInputValue<RegistryTaskAgentSetting, Map<String, dynamic>>(agentSetting, (value) => value.toMap()),
-      'baseImageTrigger': ?pulumi.Input.mapOptionalInputValue<RegistryTaskBaseImageTrigger, Map<String, dynamic>>(baseImageTrigger, (value) => value.toMap()),
+      'agentSetting':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskAgentSetting,
+            Map<String, dynamic>
+          >(agentSetting, (value) => value.toMap()),
+      'baseImageTrigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskBaseImageTrigger,
+            Map<String, dynamic>
+          >(baseImageTrigger, (value) => value.toMap()),
       'containerRegistryId': ?containerRegistryId,
-      'dockerStep': ?pulumi.Input.mapOptionalInputValue<RegistryTaskDockerStep, Map<String, dynamic>>(dockerStep, (value) => value.toMap()),
+      'dockerStep':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskDockerStep,
+            Map<String, dynamic>
+          >(dockerStep, (value) => value.toMap()),
       'enabled': ?enabled,
-      'encodedStep': ?pulumi.Input.mapOptionalInputValue<RegistryTaskEncodedStep, Map<String, dynamic>>(encodedStep, (value) => value.toMap()),
-      'fileStep': ?pulumi.Input.mapOptionalInputValue<RegistryTaskFileStep, Map<String, dynamic>>(fileStep, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<RegistryTaskIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'encodedStep':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskEncodedStep,
+            Map<String, dynamic>
+          >(encodedStep, (value) => value.toMap()),
+      'fileStep':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskFileStep,
+            Map<String, dynamic>
+          >(fileStep, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'isSystemTask': ?isSystemTask,
       'logTemplate': ?logTemplate,
       'name': ?name,
-      'platform': ?pulumi.Input.mapOptionalInputValue<RegistryTaskPlatform, Map<String, dynamic>>(platform, (value) => value.toMap()),
-      'registryCredential': ?pulumi.Input.mapOptionalInputValue<RegistryTaskRegistryCredential, Map<String, dynamic>>(registryCredential, (value) => value.toMap()),
-      'sourceTriggers': ?pulumi.Input.mapOptionalInputValue<List<RegistryTaskSourceTrigger>, List<Map<String, dynamic>>>(sourceTriggers, (value) => pulumi.Input.encodeList<RegistryTaskSourceTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskPlatform,
+            Map<String, dynamic>
+          >(platform, (value) => value.toMap()),
+      'registryCredential':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryTaskRegistryCredential,
+            Map<String, dynamic>
+          >(registryCredential, (value) => value.toMap()),
+      'sourceTriggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegistryTaskSourceTrigger>,
+            List<Map<String, dynamic>>
+          >(
+            sourceTriggers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegistryTaskSourceTrigger,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
       'timeoutInSeconds': ?timeoutInSeconds,
-      'timerTriggers': ?pulumi.Input.mapOptionalInputValue<List<RegistryTaskTimerTrigger>, List<Map<String, dynamic>>>(timerTriggers, (value) => pulumi.Input.encodeList<RegistryTaskTimerTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'timerTriggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegistryTaskTimerTrigger>,
+            List<Map<String, dynamic>>
+          >(
+            timerTriggers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegistryTaskTimerTrigger,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RegistryTaskState.fromMap(Map<String, dynamic> map) {
     return RegistryTaskState(
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
-      agentSetting: map['agentSetting'] == null ? null : (RegistryTaskAgentSetting.fromMap((map['agentSetting']! as Map).cast<String, dynamic>())).input(),
-      baseImageTrigger: map['baseImageTrigger'] == null ? null : (RegistryTaskBaseImageTrigger.fromMap((map['baseImageTrigger']! as Map).cast<String, dynamic>())).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
-      dockerStep: map['dockerStep'] == null ? null : (RegistryTaskDockerStep.fromMap((map['dockerStep']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      encodedStep: map['encodedStep'] == null ? null : (RegistryTaskEncodedStep.fromMap((map['encodedStep']! as Map).cast<String, dynamic>())).input(),
-      fileStep: map['fileStep'] == null ? null : (RegistryTaskFileStep.fromMap((map['fileStep']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (RegistryTaskIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      isSystemTask: map['isSystemTask'] == null ? null : (map['isSystemTask']! as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      platform: map['platform'] == null ? null : (RegistryTaskPlatform.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
-      registryCredential: map['registryCredential'] == null ? null : (RegistryTaskRegistryCredential.fromMap((map['registryCredential']! as Map).cast<String, dynamic>())).input(),
-      sourceTriggers: map['sourceTriggers'] == null ? null : (pulumi.Input.decodeList<RegistryTaskSourceTrigger>(map['sourceTriggers']!, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
-      timerTriggers: map['timerTriggers'] == null ? null : (pulumi.Input.decodeList<RegistryTaskTimerTrigger>(map['timerTriggers']!, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentPoolName: (() {
+        final guardedValue = map['agentPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentSetting: (() {
+        final guardedValue = map['agentSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskAgentSetting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      baseImageTrigger: (() {
+        final guardedValue = map['baseImageTrigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskBaseImageTrigger.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerRegistryId: (() {
+        final guardedValue = map['containerRegistryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerStep: (() {
+        final guardedValue = map['dockerStep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskDockerStep.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encodedStep: (() {
+        final guardedValue = map['encodedStep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskEncodedStep.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fileStep: (() {
+        final guardedValue = map['fileStep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskFileStep.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isSystemTask: (() {
+        final guardedValue = map['isSystemTask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logTemplate: (() {
+        final guardedValue = map['logTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskPlatform.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      registryCredential: (() {
+        final guardedValue = map['registryCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryTaskRegistryCredential.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceTriggers: (() {
+        final guardedValue = map['sourceTriggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegistryTaskSourceTrigger>(
+            guardedValue,
+            (value) => RegistryTaskSourceTrigger.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeoutInSeconds: (() {
+        final guardedValue = map['timeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timerTriggers: (() {
+        final guardedValue = map['timerTriggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegistryTaskTimerTrigger>(
+            guardedValue,
+            (value) => RegistryTaskTimerTrigger.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

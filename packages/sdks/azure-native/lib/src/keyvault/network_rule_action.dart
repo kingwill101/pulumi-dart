@@ -3,16 +3,15 @@ enum NetworkRuleAction {
   valueAllow("Allow"),
   valueDeny("Deny");
 
-  const NetworkRuleAction(this.value);
-  final String value;
+  const NetworkRuleAction(this.wireValue);
+  final String wireValue;
 
   static NetworkRuleAction fromValue(String value) {
     for (final item in NetworkRuleAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkRuleAction value: $value');
   }
 }
-

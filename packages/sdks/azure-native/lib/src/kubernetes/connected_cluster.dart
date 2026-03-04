@@ -629,56 +629,82 @@ import 'system_data_response.dart';
 class ConnectedCluster extends pulumi.CustomResource {
   /// AAD profile for the connected cluster.
   late final pulumi.Output<AadProfileResponse?> aadProfile;
+
   /// Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
   late final pulumi.Output<String> agentPublicKeyCertificate;
+
   /// Version of the agent running on the connected cluster resource
   late final pulumi.Output<String> agentVersion;
+
   /// Arc agentry configuration for the provisioned cluster.
   late final pulumi.Output<ArcAgentProfileResponse?> arcAgentProfile;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates whether Azure Hybrid Benefit is opted in
   late final pulumi.Output<String?> azureHybridBenefit;
+
   /// Represents the connectivity status of the connected cluster.
   late final pulumi.Output<String> connectivityStatus;
+
   /// The Kubernetes distribution running on this connected cluster.
   late final pulumi.Output<String?> distribution;
+
   /// The Kubernetes distribution version on this connected cluster.
   late final pulumi.Output<String?> distributionVersion;
+
   /// The identity of the connected cluster.
   late final pulumi.Output<ConnectedClusterIdentityResponse> identity;
+
   /// The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
   late final pulumi.Output<String?> infrastructure;
+
   /// The kind of connected cluster.
   late final pulumi.Output<String?> kind;
+
   /// The Kubernetes version of the connected cluster resource
   late final pulumi.Output<String> kubernetesVersion;
+
   /// Time representing the last instance when heart beat was received from the cluster
   late final pulumi.Output<String> lastConnectivityTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Expiration time of the managed identity certificate
   late final pulumi.Output<String> managedIdentityCertificateExpirationTime;
+
   /// More properties related to the Connected Cluster
   late final pulumi.Output<Map<String, String>> miscellaneousProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Connected cluster offering
   late final pulumi.Output<String> offering;
+
   /// The resource id of the private link scope this connected cluster is assigned to, if any.
   late final pulumi.Output<String?> privateLinkScopeResourceId;
+
   /// Property which describes the state of private link on a connected cluster resource.
   late final pulumi.Output<String?> privateLinkState;
+
   /// Provisioning state of the connected cluster resource.
   late final pulumi.Output<String?> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Number of CPU cores present in the connected cluster resource
   late final pulumi.Output<int> totalCoreCount;
+
   /// Number of nodes present in the connected cluster resource
   late final pulumi.Output<int> totalNodeCount;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -691,37 +717,47 @@ class ConnectedCluster extends pulumi.CustomResource {
     ConnectedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kubernetes:ConnectedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadProfile = registerOutput<AadProfileResponse?>('aadProfile');
-    this.agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.arcAgentProfile = registerOutput<ArcAgentProfileResponse?>('arcAgentProfile');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureHybridBenefit = registerOutput<String?>('azureHybridBenefit');
-    this.connectivityStatus = registerOutput<String>('connectivityStatus');
-    this.distribution = registerOutput<String?>('distribution');
-    this.distributionVersion = registerOutput<String?>('distributionVersion');
-    this.identity = registerOutput<ConnectedClusterIdentityResponse>('identity');
-    this.infrastructure = registerOutput<String?>('infrastructure');
-    this.kind = registerOutput<String?>('kind');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.lastConnectivityTime = registerOutput<String>('lastConnectivityTime');
-    this.location = registerOutput<String>('location');
-    this.managedIdentityCertificateExpirationTime = registerOutput<String>('managedIdentityCertificateExpirationTime');
-    this.miscellaneousProperties = registerOutput<Map<String, String>>('miscellaneousProperties');
+         'azure-native:kubernetes:ConnectedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadProfile = registerOutput<AadProfileResponse?>('aadProfile');
+    agentPublicKeyCertificate = registerOutput<String>(
+      'agentPublicKeyCertificate',
+    );
+    agentVersion = registerOutput<String>('agentVersion');
+    arcAgentProfile = registerOutput<ArcAgentProfileResponse?>(
+      'arcAgentProfile',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureHybridBenefit = registerOutput<String?>('azureHybridBenefit');
+    connectivityStatus = registerOutput<String>('connectivityStatus');
+    distribution = registerOutput<String?>('distribution');
+    distributionVersion = registerOutput<String?>('distributionVersion');
+    identity = registerOutput<ConnectedClusterIdentityResponse>('identity');
+    infrastructure = registerOutput<String?>('infrastructure');
+    kind = registerOutput<String?>('kind');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    lastConnectivityTime = registerOutput<String>('lastConnectivityTime');
+    location = registerOutput<String>('location');
+    managedIdentityCertificateExpirationTime = registerOutput<String>(
+      'managedIdentityCertificateExpirationTime',
+    );
+    miscellaneousProperties = registerOutput<Map<String, String>>(
+      'miscellaneousProperties',
+    );
     this.name = registerOutput<String>('name');
-    this.offering = registerOutput<String>('offering');
-    this.privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
-    this.privateLinkState = registerOutput<String?>('privateLinkState');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCoreCount = registerOutput<int>('totalCoreCount');
-    this.totalNodeCount = registerOutput<int>('totalNodeCount');
-    this.type = registerOutput<String>('type');
+    offering = registerOutput<String>('offering');
+    privateLinkScopeResourceId = registerOutput<String?>(
+      'privateLinkScopeResourceId',
+    );
+    privateLinkState = registerOutput<String?>('privateLinkState');
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
+    type = registerOutput<String>('type');
   }
 }

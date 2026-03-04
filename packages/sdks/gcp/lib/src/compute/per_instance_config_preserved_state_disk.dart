@@ -11,12 +11,15 @@ class PerInstanceConfigPreservedStateDisk {
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
   final pulumi.Input<String>? deleteRule;
+
   /// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
   final pulumi.Input<String> deviceName;
+
   /// The mode of the disk.
   /// Default value is `READ_WRITE`.
   /// Possible values are: `READ_ONLY`, `READ_WRITE`.
   final pulumi.Input<String>? mode;
+
   /// The URI of an existing persistent disk to attach under the specified device-name in the format
   /// `projects/project-id/zones/zone/disks/disk-name`.
   final pulumi.Input<String> source;
@@ -42,13 +45,22 @@ class PerInstanceConfigPreservedStateDisk {
     };
   }
 
-  factory PerInstanceConfigPreservedStateDisk.fromMap(Map<String, dynamic> map) {
+  factory PerInstanceConfigPreservedStateDisk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PerInstanceConfigPreservedStateDisk(
-      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule']! as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      source: (map['source'] as String).input(),
+      deleteRule: (() {
+        final guardedValue = map['deleteRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

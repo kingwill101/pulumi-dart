@@ -10,11 +10,14 @@ import 'get_instance_v2_network.dart';
 class GetInstanceV2Args {
   /// The UUID of the instance
   final pulumi.Input<String> id;
+
   /// An array of maps, detailed below.
   final pulumi.Input<List<GetInstanceV2Network>>? networks;
+
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The user data added when the server was created.
   final pulumi.Input<String>? userData;
 
@@ -33,7 +36,18 @@ class GetInstanceV2Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'networks': ?pulumi.Input.mapOptionalInputValue<List<GetInstanceV2Network>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<GetInstanceV2Network, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetInstanceV2Network>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstanceV2Network,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'userData': ?userData,
     };
@@ -41,11 +55,29 @@ class GetInstanceV2Args {
 
   factory GetInstanceV2Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceV2Args(
-      id: (map['id'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetInstanceV2Network>(map['networks']!, (value) => GetInstanceV2Network.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      networks: (() {
+        final guardedValue = map['networks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetInstanceV2Network>(
+            guardedValue,
+            (value) => GetInstanceV2Network.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

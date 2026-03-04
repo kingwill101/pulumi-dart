@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableGlobalSecondaryIndexOnDemandThroughput {
   /// Maximum number of read request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
   final pulumi.Input<int>? maxReadRequestUnits;
+
   /// Maximum number of write request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
   final pulumi.Input<int>? maxWriteRequestUnits;
 
@@ -23,11 +24,20 @@ class TableGlobalSecondaryIndexOnDemandThroughput {
     };
   }
 
-  factory TableGlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
+  factory TableGlobalSecondaryIndexOnDemandThroughput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableGlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : ((map['maxReadRequestUnits'] as int).input()).input(),
-      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : ((map['maxWriteRequestUnits'] as int).input()).input(),
+      maxReadRequestUnits: (() {
+        final guardedValue = map['maxReadRequestUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxWriteRequestUnits: (() {
+        final guardedValue = map['maxWriteRequestUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'google_cloud_dataplex_v1_trigger_schedule_response.dart';
 class GoogleCloudDataplexV1TriggerResponse {
   /// The scan runs once via RunDataScan API.
   final pulumi.Input<Map<String, dynamic>> onDemand;
+
   /// The scan is scheduled to run periodically.
   final pulumi.Input<GoogleCloudDataplexV1TriggerScheduleResponse> schedule;
 
@@ -21,15 +22,26 @@ class GoogleCloudDataplexV1TriggerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'onDemand': onDemand,
-      'schedule': pulumi.Input.mapInputValue<GoogleCloudDataplexV1TriggerScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1TriggerScheduleResponse,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDataplexV1TriggerResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1TriggerResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1TriggerResponse(
-      onDemand: ((map['onDemand'] as Map).cast<String, dynamic>()).input(),
-      schedule: (GoogleCloudDataplexV1TriggerScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      onDemand: pulumi.Input.fromValue(
+        (map['onDemand']! as Map).cast<String, dynamic>(),
+      ),
+      schedule: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1TriggerScheduleResponse.fromMap(
+          (map['schedule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

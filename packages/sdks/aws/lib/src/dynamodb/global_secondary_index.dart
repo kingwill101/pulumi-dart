@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_secondary_index_args.dart';
-import 'global_secondary_index_key_schema.dart';
 import 'global_secondary_index_on_demand_throughput.dart';
 import 'global_secondary_index_projection.dart';
 import 'global_secondary_index_provisioned_throughput.dart';
@@ -8,13 +7,13 @@ import 'global_secondary_index_state.dart';
 import 'global_secondary_index_timeouts.dart';
 import 'global_secondary_index_warm_throughput.dart';
 
-/// !> The resource type `aws.dynamodb.GlobalSecondaryIndex` is an experimental feature. The schema or behavior may change without notice, and it is not subject to the backwards compatibility guarantee of the provider.
+/// !&gt; The resource type `aws.dynamodb.GlobalSecondaryIndex` is an experimental feature. The schema or behavior may change without notice, and it is not subject to the backwards compatibility guarantee of the provider.
 ///
-/// > The resource type `aws.dynamodb.GlobalSecondaryIndex` can be enabled by setting the environment variable `TF_AWS_EXPERIMENT_dynamodb_global_secondary_index` to any value. If not enabled, use of `aws.dynamodb.GlobalSecondaryIndex` will result in an error when running Terraform.
+/// &gt; The resource type `aws.dynamodb.GlobalSecondaryIndex` can be enabled by setting the environment variable `TF_AWS_EXPERIMENT_dynamodb_global_secondary_index` to any value. If not enabled, use of `aws.dynamodb.GlobalSecondaryIndex` will result in an error when running Terraform.
 ///
-/// > Please provide feedback, positive or negative, at https://github.com/hashicorp/terraform-provider-aws/issues/45640. User feedback will determine if this experiment is a success.
+/// &gt; Please provide feedback, positive or negative, at https://github.com/hashicorp/terraform-provider-aws/issues/45640. User feedback will determine if this experiment is a success.
 ///
-/// !> **WARNING:** Do not combine `aws.dynamodb.GlobalSecondaryIndex` resources in conjunction with `global_secondary_index` on `aws.dynamodb.Table`. Doing so may cause conflicts, perpertual differences, and Global Secondary Indexes being overwritten.
+/// !&gt; **WARNING:** Do not combine `aws.dynamodb.GlobalSecondaryIndex` resources in conjunction with `global_secondary_index` on `aws.dynamodb.Table`. Doing so may cause conflicts, perpertual differences, and Global Secondary Indexes being overwritten.
 ///
 /// ## Example Usage
 ///
@@ -626,32 +625,42 @@ import 'global_secondary_index_warm_throughput.dart';
 class GlobalSecondaryIndex extends pulumi.CustomResource {
   /// ARN of the GSI.
   late final pulumi.Output<String> arn;
+
   /// Name of the index.
   late final pulumi.Output<String> indexName;
+
   /// Set of nested attribute definitions.
   /// At least 1 element defining a `HASH` is required.
   /// All elements with the `key_type` of `HASH` must precede elements with `key_type` of `RANGE`.
   /// Changing any values in `key_schema` will re-create the resource.
   /// See `key_schema` below.
-  late final pulumi.Output<List<GlobalSecondaryIndexKeySchema>?> keySchemas;
+  late final pulumi.Output<List<Map<String, dynamic>>?> keySchemas;
+
   /// Sets the maximum number of read and write units for the index.
   /// See `on_demand_throughput` below.
   /// Only valid if the table's `billing_mode` is `PAY_PER_REQUEST`.
-  late final pulumi.Output<GlobalSecondaryIndexOnDemandThroughput?> onDemandThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexOnDemandThroughput?>
+  onDemandThroughput;
+
   /// Describes which attributes from the table are represented in the index.
   /// See `projection` below.
   late final pulumi.Output<GlobalSecondaryIndexProjection?> projection;
+
   /// Provisioned throughput for the index.
   /// See `provisioned_throughput` below.
   /// Required if the table's `billing_mode` is `PROVISIONED`.
-  late final pulumi.Output<GlobalSecondaryIndexProvisionedThroughput?> provisionedThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexProvisionedThroughput?>
+  provisionedThroughput;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the table this index belongs to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> tableName;
   late final pulumi.Output<GlobalSecondaryIndexTimeouts?> timeouts;
+
   /// Sets the number of warm read and write units for this index.
   /// See `warm_throughput` below.
   late final pulumi.Output<GlobalSecondaryIndexWarmThroughput> warmThroughput;
@@ -665,21 +674,29 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     GlobalSecondaryIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.indexName = registerOutput<String>('indexName');
-    this.keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>?>('keySchemas');
-    this.onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput');
-    this.projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
-    this.provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput');
-    this.region = registerOutput<String>('region');
-    this.tableName = registerOutput<String>('tableName');
-    this.timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
-    this.warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>('warmThroughput');
+         'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    indexName = registerOutput<String>('indexName');
+    keySchemas = registerOutput<List<Map<String, dynamic>>?>('keySchemas');
+    onDemandThroughput =
+        registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
+          'onDemandThroughput',
+        );
+    projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
+    provisionedThroughput =
+        registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
+          'provisionedThroughput',
+        );
+    region = registerOutput<String>('region');
+    tableName = registerOutput<String>('tableName');
+    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
+    warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>(
+      'warmThroughput',
+    );
   }
 
   /// Gets an existing [GlobalSecondaryIndex] resource's state with the given [name] and [id].
@@ -700,20 +717,28 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.indexName = registerOutput<String>('indexName');
-    this.keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>?>('keySchemas');
-    this.onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput');
-    this.projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
-    this.provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput');
-    this.region = registerOutput<String>('region');
-    this.tableName = registerOutput<String>('tableName');
-    this.timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
-    this.warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>('warmThroughput');
+         'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    indexName = registerOutput<String>('indexName');
+    keySchemas = registerOutput<List<Map<String, dynamic>>?>('keySchemas');
+    onDemandThroughput =
+        registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
+          'onDemandThroughput',
+        );
+    projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
+    provisionedThroughput =
+        registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
+          'provisionedThroughput',
+        );
+    region = registerOutput<String>('region');
+    tableName = registerOutput<String>('tableName');
+    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
+    warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>(
+      'warmThroughput',
+    );
   }
 }

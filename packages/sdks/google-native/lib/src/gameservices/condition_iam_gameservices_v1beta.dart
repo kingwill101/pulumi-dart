@@ -9,16 +9,15 @@ enum ConditionIamGameservicesV1beta {
   credentialsType("CREDENTIALS_TYPE"),
   credsAssertion("CREDS_ASSERTION");
 
-  const ConditionIamGameservicesV1beta(this.value);
-  final String value;
+  const ConditionIamGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static ConditionIamGameservicesV1beta fromValue(String value) {
     for (final item in ConditionIamGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionIamGameservicesV1beta value: $value');
   }
 }
-

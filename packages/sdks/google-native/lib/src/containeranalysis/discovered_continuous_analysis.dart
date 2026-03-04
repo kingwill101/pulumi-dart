@@ -4,16 +4,15 @@ enum DiscoveredContinuousAnalysis {
   active("ACTIVE"),
   inactive("INACTIVE");
 
-  const DiscoveredContinuousAnalysis(this.value);
-  final String value;
+  const DiscoveredContinuousAnalysis(this.wireValue);
+  final String wireValue;
 
   static DiscoveredContinuousAnalysis fromValue(String value) {
     for (final item in DiscoveredContinuousAnalysis.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscoveredContinuousAnalysis value: $value');
   }
 }
-

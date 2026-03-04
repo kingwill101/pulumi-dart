@@ -9,20 +9,15 @@ class WeeklyScheduleResponse {
 
   /// Creates a new [WeeklyScheduleResponse].
   /// [dayOfWeek] Day of the week.
-  WeeklyScheduleResponse({
-    required this.dayOfWeek,
-  });
+  WeeklyScheduleResponse({required this.dayOfWeek});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek};
   }
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
     );
   }
 }
-

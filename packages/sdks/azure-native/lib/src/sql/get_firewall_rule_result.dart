@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFirewallRule.
 class GetFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress. Use value '0.0.0.0' for all Azure-internal IP addresses.
   final String? endIpAddress;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String? name;
+
   /// The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
   final String? startIpAddress;
+
   /// Resource type.
   final String type;
 
@@ -46,12 +50,23 @@ class GetFirewallRuleResult {
   factory GetFirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endIpAddress: map['endIpAddress'] == null ? null : map['endIpAddress']! as String,
+      endIpAddress: (() {
+        final guardedValue = map['endIpAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      startIpAddress: map['startIpAddress'] == null ? null : map['startIpAddress']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      startIpAddress: (() {
+        final guardedValue = map['startIpAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

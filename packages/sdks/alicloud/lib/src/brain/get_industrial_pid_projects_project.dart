@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndustrialPidProjectsProject {
   /// The ID of the Pid Project.
   final pulumi.Input<String> id;
+
   /// The ID of Pid Organization.
   final pulumi.Input<String> pidOrganizationId;
+
   /// The description of Pid Project.
   final pulumi.Input<String> pidProjectDesc;
+
   /// The ID of Pid Project.
   final pulumi.Input<String> pidProjectId;
+
   /// The name of Pid Project.
   final pulumi.Input<String> pidProjectName;
 
@@ -40,12 +44,13 @@ class GetIndustrialPidProjectsProject {
 
   factory GetIndustrialPidProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidProjectsProject(
-      id: (map['id'] as String).input(),
-      pidOrganizationId: (map['pidOrganizationId'] as String).input(),
-      pidProjectDesc: (map['pidProjectDesc'] as String).input(),
-      pidProjectId: (map['pidProjectId'] as String).input(),
-      pidProjectName: (map['pidProjectName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pidOrganizationId: pulumi.Input.fromValue(
+        map['pidOrganizationId'] as String,
+      ),
+      pidProjectDesc: pulumi.Input.fromValue(map['pidProjectDesc'] as String),
+      pidProjectId: pulumi.Input.fromValue(map['pidProjectId'] as String),
+      pidProjectName: pulumi.Input.fromValue(map['pidProjectName'] as String),
     );
   }
 }
-

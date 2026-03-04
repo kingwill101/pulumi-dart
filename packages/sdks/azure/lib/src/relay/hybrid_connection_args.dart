@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridConnectionArgs {
   /// Specifies the name of the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Azure Relay in which to create the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> relayNamespaceName;
+
   /// Specify if client authorization is needed for this hybrid connection. Changing this forces a new resource to be created. Defaults to `true`.
   final pulumi.Input<bool>? requiresClientAuthorization;
+
   /// The name of the resource group in which to create the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
   final pulumi.Input<String>? userMetadata;
 
@@ -44,12 +48,27 @@ class HybridConnectionArgs {
 
   factory HybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      relayNamespaceName: (map['relayNamespaceName'] as String).input(),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relayNamespaceName: pulumi.Input.fromValue(
+        map['relayNamespaceName'] as String,
+      ),
+      requiresClientAuthorization: (() {
+        final guardedValue = map['requiresClientAuthorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      userMetadata: (() {
+        final guardedValue = map['userMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

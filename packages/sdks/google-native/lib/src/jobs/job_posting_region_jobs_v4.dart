@@ -5,16 +5,15 @@ enum JobPostingRegionJobsV4 {
   nation("NATION"),
   telecommute("TELECOMMUTE");
 
-  const JobPostingRegionJobsV4(this.value);
-  final String value;
+  const JobPostingRegionJobsV4(this.wireValue);
+  final String wireValue;
 
   static JobPostingRegionJobsV4 fromValue(String value) {
     for (final item in JobPostingRegionJobsV4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobPostingRegionJobsV4 value: $value');
   }
 }
-

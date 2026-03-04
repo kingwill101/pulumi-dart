@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceRegistryResourceRequestsResponse {
   /// Cpu allocated to each Service Registry instance
   final pulumi.Input<String> cpu;
+
   /// Instance count of the Service Registry
   final pulumi.Input<int> instanceCount;
+
   /// Memory allocated to each Service Registry instance
   final pulumi.Input<String> memory;
 
@@ -29,12 +31,13 @@ class ServiceRegistryResourceRequestsResponse {
     };
   }
 
-  factory ServiceRegistryResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
+  factory ServiceRegistryResourceRequestsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceRegistryResourceRequestsResponse(
-      cpu: (map['cpu'] as String).input(),
-      instanceCount: (map['instanceCount'] as int).input(),
-      memory: (map['memory'] as String).input(),
+      cpu: pulumi.Input.fromValue(map['cpu'] as String),
+      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      memory: pulumi.Input.fromValue(map['memory'] as String),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class EntityRecognizerInputDataConfigEntityType {
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityType].
   /// [type] An entity type to be matched by the Entity Recognizer.
-  EntityRecognizerInputDataConfigEntityType({
-    required this.type,
-  });
+  EntityRecognizerInputDataConfigEntityType({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory EntityRecognizerInputDataConfigEntityType.fromMap(Map<String, dynamic> map) {
+  factory EntityRecognizerInputDataConfigEntityType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntityRecognizerInputDataConfigEntityType(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

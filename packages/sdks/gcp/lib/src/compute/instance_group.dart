@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_args.dart';
-import 'instance_group_named_port.dart';
 import 'instance_group_state.dart';
 
 /// Creates a group of dissimilar Compute Engine virtual machine instances.
@@ -328,29 +327,37 @@ class InstanceGroup extends pulumi.CustomResource {
   /// An optional textual description of the instance
   /// group.
   late final pulumi.Output<String?> description;
+
   /// The list of instances in the group, in `self_link` format.
   /// When adding instances they must all be in the same network and zone as the instance group.
   late final pulumi.Output<List<String>> instances;
+
   /// The name of the instance group. Must be 1-63
   /// characters long and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
   /// include lowercase letters, numbers, and hyphens.
   late final pulumi.Output<String> name;
+
   /// The named port configuration. See the section below
   /// for details on configuration. Structure is documented below.
-  late final pulumi.Output<List<InstanceGroupNamedPort>?> namedPorts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> namedPorts;
+
   /// The URL of the network the instance group is in. If
   /// this is different from the network where the instances are in, the creation
   /// fails. Defaults to the network where the instances are in (if neither
   /// `network` nor `instances` is specified, this field will be blank).
   late final pulumi.Output<String> network;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The number of instances in the group.
   late final pulumi.Output<int> size;
+
   /// The zone that this instance group should be created in.
   ///
   /// - - -
@@ -365,20 +372,20 @@ class InstanceGroup extends pulumi.CustomResource {
     InstanceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/instanceGroup:InstanceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.instances = registerOutput<List<String>>('instances');
+         'gcp:compute/instanceGroup:InstanceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    instances = registerOutput<List<String>>('instances');
     this.name = registerOutput<String>('name');
-    this.namedPorts = registerOutput<List<InstanceGroupNamedPort>?>('namedPorts');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.size = registerOutput<int>('size');
-    this.zone = registerOutput<String>('zone');
+    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [InstanceGroup] resource's state with the given [name] and [id].
@@ -399,19 +406,19 @@ class InstanceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/instanceGroup:InstanceGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.instances = registerOutput<List<String>>('instances');
+         'gcp:compute/instanceGroup:InstanceGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    instances = registerOutput<List<String>>('instances');
     this.name = registerOutput<String>('name');
-    this.namedPorts = registerOutput<List<InstanceGroupNamedPort>?>('namedPorts');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.size = registerOutput<int>('size');
-    this.zone = registerOutput<String>('zone');
+    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
   }
 }

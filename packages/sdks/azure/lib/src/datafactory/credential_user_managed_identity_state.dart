@@ -6,16 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CredentialUserManagedIdentityState {
   /// List of tags that can be used for describing the Data Factory Credential.
   ///
-  /// > **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
+  /// &gt; **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
   final pulumi.Input<List<String>>? annotations;
+
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
+
   /// The description for the Data Factory Credential.
   final pulumi.Input<String>? description;
+
   /// The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
+  /// &gt; **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
   final pulumi.Input<String>? identityId;
+
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
 
@@ -45,12 +49,31 @@ class CredentialUserManagedIdentityState {
 
   factory CredentialUserManagedIdentityState.fromMap(Map<String, dynamic> map) {
     return CredentialUserManagedIdentityState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityId: (() {
+        final guardedValue = map['identityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,29 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolKubeletConfigurationReservedMemory {
   /// Memory resource limit.
   final pulumi.Input<Map<String, String>>? limits;
+
   /// The NUMA node.
   final pulumi.Input<int>? numaNode;
 
   /// Creates a new [NodePoolKubeletConfigurationReservedMemory].
   /// [limits] Memory resource limit.
   /// [numaNode] The NUMA node.
-  NodePoolKubeletConfigurationReservedMemory({
-    this.limits,
-    this.numaNode,
-  });
+  NodePoolKubeletConfigurationReservedMemory({this.limits, this.numaNode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limits': ?limits,
-      'numaNode': ?numaNode,
-    };
+    return <String, dynamic>{'limits': ?limits, 'numaNode': ?numaNode};
   }
 
-  factory NodePoolKubeletConfigurationReservedMemory.fromMap(Map<String, dynamic> map) {
+  factory NodePoolKubeletConfigurationReservedMemory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolKubeletConfigurationReservedMemory(
-      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
-      numaNode: map['numaNode'] == null ? null : (map['numaNode']! as int).input(),
+      limits: (() {
+        final guardedValue = map['limits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      numaNode: (() {
+        final guardedValue = map['numaNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

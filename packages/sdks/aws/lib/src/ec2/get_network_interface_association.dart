@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceAssociation {
   /// Allocation ID.
   final pulumi.Input<String> allocationId;
+
   /// Association ID.
   final pulumi.Input<String> associationId;
+
   /// Carrier IP address associated with the network interface. This attribute is only set when the network interface is in a subnet which is associated with a Wavelength Zone.
   final pulumi.Input<String> carrierIp;
+
   /// Customer-owned IP address.
   final pulumi.Input<String> customerOwnedIp;
+
   /// ID of the Elastic IP address owner.
   final pulumi.Input<String> ipOwnerId;
+
   /// Public DNS name.
   final pulumi.Input<String> publicDnsName;
+
   /// Address of the Elastic IP address bound to the network interface.
   final pulumi.Input<String> publicIp;
 
@@ -50,14 +56,13 @@ class GetNetworkInterfaceAssociation {
 
   factory GetNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceAssociation(
-      allocationId: (map['allocationId'] as String).input(),
-      associationId: (map['associationId'] as String).input(),
-      carrierIp: (map['carrierIp'] as String).input(),
-      customerOwnedIp: (map['customerOwnedIp'] as String).input(),
-      ipOwnerId: (map['ipOwnerId'] as String).input(),
-      publicDnsName: (map['publicDnsName'] as String).input(),
-      publicIp: (map['publicIp'] as String).input(),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      associationId: pulumi.Input.fromValue(map['associationId'] as String),
+      carrierIp: pulumi.Input.fromValue(map['carrierIp'] as String),
+      customerOwnedIp: pulumi.Input.fromValue(map['customerOwnedIp'] as String),
+      ipOwnerId: pulumi.Input.fromValue(map['ipOwnerId'] as String),
+      publicDnsName: pulumi.Input.fromValue(map['publicDnsName'] as String),
+      publicIp: pulumi.Input.fromValue(map['publicIp'] as String),
     );
   }
 }
-

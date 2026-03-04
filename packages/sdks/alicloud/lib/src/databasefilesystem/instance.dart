@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
-import 'instance_ecs_list.dart';
 import 'instance_state.dart';
 
 /// Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
 ///
 /// For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 ///
-/// > **NOTE:** Need to contact us open whitelist before you can use the resource.
+/// &gt; **NOTE:** Need to contact us open whitelist before you can use the resource.
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -160,52 +159,70 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The number of CPU cores and the upper limit of memory used by the database file storage instance.
   late final pulumi.Output<String> advancedFeatures;
+
   /// Category of database file system.
   late final pulumi.Output<String> category;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Whether to delete the original snapshot after creating DBFS using the snapshot.
   late final pulumi.Output<bool?> deleteSnapshot;
+
   /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
-  late final pulumi.Output<List<InstanceEcsList>?> ecsLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ecsLists;
+
   /// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
   late final pulumi.Output<bool?> enableRaid;
+
   /// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
   late final pulumi.Output<bool?> encryption;
+
   /// Database file system name.
   late final pulumi.Output<String> fsName;
+
   /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
   late final pulumi.Output<String> instanceName;
+
   /// Instance type. Value range:
   /// - dbfs.small
   /// - dbfs.medium
   /// - dbfs.large (default)
   late final pulumi.Output<String?> instanceType;
+
   /// The ID of the KMS key used by DBFS.
   late final pulumi.Output<String?> kmsKeyId;
+
   /// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
   /// - PL0: single disk maximum random read-write IOPS 10000
   /// - PL1: highest random read-write IOPS 50000 per disk (default)
   /// - PL2: single disk maximum random read-write IOPS 100000
   /// - PL3: single disk maximum random read-write IOPS 1 million.
   late final pulumi.Output<String> performanceLevel;
+
   /// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
   late final pulumi.Output<int?> raidStripeUnitNumber;
+
   /// Size of database file system, unit GiB.
   late final pulumi.Output<int> size;
+
   /// The ID of the snapshot used to create the DBFS instance.
   late final pulumi.Output<String> snapshotId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The usage scenario of DBFS. Value range:
   /// - MySQL 5.7
   /// - PostgreSQL
   /// - MongoDB.
   late final pulumi.Output<String?> usedScene;
+
   /// The ID of the zone to which the database file system belongs.
   late final pulumi.Output<String> zoneId;
 
@@ -218,30 +235,30 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFeatures = registerOutput<String>('advancedFeatures');
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteSnapshot = registerOutput<bool?>('deleteSnapshot');
-    this.ecsLists = registerOutput<List<InstanceEcsList>?>('ecsLists');
-    this.enableRaid = registerOutput<bool?>('enableRaid');
-    this.encryption = registerOutput<bool?>('encryption');
-    this.fsName = registerOutput<String>('fsName');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceType = registerOutput<String?>('instanceType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.raidStripeUnitNumber = registerOutput<int?>('raidStripeUnitNumber');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.usedScene = registerOutput<String?>('usedScene');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:databasefilesystem/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advancedFeatures = registerOutput<String>('advancedFeatures');
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    deleteSnapshot = registerOutput<bool?>('deleteSnapshot');
+    ecsLists = registerOutput<List<Map<String, dynamic>>?>('ecsLists');
+    enableRaid = registerOutput<bool?>('enableRaid');
+    encryption = registerOutput<bool?>('encryption');
+    fsName = registerOutput<String>('fsName');
+    instanceName = registerOutput<String>('instanceName');
+    instanceType = registerOutput<String?>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    raidStripeUnitNumber = registerOutput<int?>('raidStripeUnitNumber');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    usedScene = registerOutput<String?>('usedScene');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -262,29 +279,29 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFeatures = registerOutput<String>('advancedFeatures');
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteSnapshot = registerOutput<bool?>('deleteSnapshot');
-    this.ecsLists = registerOutput<List<InstanceEcsList>?>('ecsLists');
-    this.enableRaid = registerOutput<bool?>('enableRaid');
-    this.encryption = registerOutput<bool?>('encryption');
-    this.fsName = registerOutput<String>('fsName');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceType = registerOutput<String?>('instanceType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.raidStripeUnitNumber = registerOutput<int?>('raidStripeUnitNumber');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.usedScene = registerOutput<String?>('usedScene');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:databasefilesystem/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advancedFeatures = registerOutput<String>('advancedFeatures');
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    deleteSnapshot = registerOutput<bool?>('deleteSnapshot');
+    ecsLists = registerOutput<List<Map<String, dynamic>>?>('ecsLists');
+    enableRaid = registerOutput<bool?>('enableRaid');
+    encryption = registerOutput<bool?>('encryption');
+    fsName = registerOutput<String>('fsName');
+    instanceName = registerOutput<String>('instanceName');
+    instanceType = registerOutput<String?>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    raidStripeUnitNumber = registerOutput<int?>('raidStripeUnitNumber');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    usedScene = registerOutput<String?>('usedScene');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

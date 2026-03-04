@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppAuthSettingActiveDirectory {
   /// The list of Allowed Audiences that are be requested as part of Microsoft Sign-In authentication.
   final pulumi.Input<List<String>> allowedAudiences;
+
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
+
   /// The OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecret;
+
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecretSettingName;
 
@@ -33,13 +36,18 @@ class GetWindowsFunctionAppAuthSettingActiveDirectory {
     };
   }
 
-  factory GetWindowsFunctionAppAuthSettingActiveDirectory.fromMap(Map<String, dynamic> map) {
+  factory GetWindowsFunctionAppAuthSettingActiveDirectory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWindowsFunctionAppAuthSettingActiveDirectory(
-      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
+      allowedAudiences: pulumi.Input.fromValue(
+        (map['allowedAudiences'] as List).cast<String>(),
+      ),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      clientSecretSettingName: pulumi.Input.fromValue(
+        map['clientSecretSettingName'] as String,
+      ),
     );
   }
 }
-

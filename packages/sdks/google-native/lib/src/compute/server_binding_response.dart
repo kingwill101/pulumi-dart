@@ -7,20 +7,15 @@ class ServerBindingResponse {
 
   /// Creates a new [ServerBindingResponse].
   /// [type] Required.
-  ServerBindingResponse({
-    required this.type,
-  });
+  ServerBindingResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ServerBindingResponse.fromMap(Map<String, dynamic> map) {
     return ServerBindingResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

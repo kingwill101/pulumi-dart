@@ -4,16 +4,17 @@ enum AccessReviewRecurrenceRangeType {
   valueNoEnd("noEnd"),
   valueNumbered("numbered");
 
-  const AccessReviewRecurrenceRangeType(this.value);
-  final String value;
+  const AccessReviewRecurrenceRangeType(this.wireValue);
+  final String wireValue;
 
   static AccessReviewRecurrenceRangeType fromValue(String value) {
     for (final item in AccessReviewRecurrenceRangeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessReviewRecurrenceRangeType value: $value');
+    throw ArgumentError(
+      'Unknown AccessReviewRecurrenceRangeType value: $value',
+    );
   }
 }
-

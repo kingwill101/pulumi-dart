@@ -11,6 +11,7 @@ import (
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 func writeExecutableScript(t *testing.T, contents string) string {
@@ -28,15 +29,41 @@ func readFileString(t *testing.T, path string) string {
 	return string(data)
 }
 
+func writeFakeDartCompilerScript(t *testing.T, tracePath string) string {
+	t.Helper()
+	path := filepath.Join(t.TempDir(), "dart.sh")
+	contents := fmt.Sprintf(`#!/usr/bin/env bash
+set -euo pipefail
+trace=%q
+
+if [ "$1" = "compile" ] && [ "$2" = "exe" ]; then
+  entry="$3"
+  if [ "$4" != "-o" ]; then
+    exit 97
+  fi
+  out="$5"
+  echo "COMPILE_PWD=$(pwd)" >> "$trace"
+  echo "COMPILE_ARGS=$*" >> "$trace"
+  mkdir -p "$(dirname "$out")"
+  cat > "$out" <<EOF
+#!/usr/bin/env bash
+echo "RUN_PWD=\$(pwd)" >> %q
+echo "RUN_ARGS=\$*" >> %q
+EOF
+  chmod +x "$out"
+  exit 0
+fi
+
+echo "DART_ARGS=$*" >> "$trace"
+`, tracePath, tracePath, tracePath)
+	require.NoError(t, os.WriteFile(path, []byte(contents), 0o700))
+	return path
+}
+
 func TestRunUsesProgramDirectoryFromInfoAndEntryPoint(t *testing.T) {
 	runDir := t.TempDir()
 	tracePath := filepath.Join(runDir, "run.trace")
-	scriptPath := writeExecutableScript(t, fmt.Sprintf(
-		"#!/usr/bin/env bash\n"+
-			"echo \"PWD=$(pwd)\" > %q\n"+
-			"echo \"ARGS=$*\" >> %q\n",
-		tracePath, tracePath,
-	))
+	scriptPath := writeFakeDartCompilerScript(t, tracePath)
 
 	host := &dartLanguageHost{
 		exec:          scriptPath,
@@ -57,19 +84,16 @@ func TestRunUsesProgramDirectoryFromInfoAndEntryPoint(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
-	assert.Contains(t, trace, "ARGS=run bin/app.dart --flag value")
+	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/app.dart -o ")
+	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assert.Contains(t, trace, "RUN_ARGS=--flag value")
 }
 
 func TestRunFallsBackToLegacyProgramAndPwd(t *testing.T) {
 	runDir := t.TempDir()
 	tracePath := filepath.Join(runDir, "run.trace")
-	scriptPath := writeExecutableScript(t, fmt.Sprintf(
-		"#!/usr/bin/env bash\n"+
-			"echo \"PWD=$(pwd)\" > %q\n"+
-			"echo \"ARGS=$*\" >> %q\n",
-		tracePath, tracePath,
-	))
+	scriptPath := writeFakeDartCompilerScript(t, tracePath)
 
 	host := &dartLanguageHost{
 		exec:          scriptPath,
@@ -85,19 +109,16 @@ func TestRunFallsBackToLegacyProgramAndPwd(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
-	assert.Contains(t, trace, "ARGS=run bin/legacy.dart")
+	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/legacy.dart -o ")
+	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assert.Contains(t, trace, "RUN_ARGS=")
 }
 
 func TestRunResolvesSimpleEntrypointToBinDart(t *testing.T) {
 	runDir := t.TempDir()
 	tracePath := filepath.Join(runDir, "run.trace")
-	scriptPath := writeExecutableScript(t, fmt.Sprintf(
-		"#!/usr/bin/env bash\n"+
-			"echo \"PWD=$(pwd)\" > %q\n"+
-			"echo \"ARGS=$*\" >> %q\n",
-		tracePath, tracePath,
-	))
+	scriptPath := writeFakeDartCompilerScript(t, tracePath)
 
 	binDir := filepath.Join(runDir, "bin")
 	require.NoError(t, os.MkdirAll(binDir, 0o700))
@@ -121,19 +142,16 @@ func TestRunResolvesSimpleEntrypointToBinDart(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
-	assert.Contains(t, trace, "ARGS=run bin/infra.dart")
+	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/infra.dart -o ")
+	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assert.Contains(t, trace, "RUN_ARGS=")
 }
 
 func TestRunFallsBackToMainDartWhenDot(t *testing.T) {
 	runDir := t.TempDir()
 	tracePath := filepath.Join(runDir, "run.trace")
-	scriptPath := writeExecutableScript(t, fmt.Sprintf(
-		"#!/usr/bin/env bash\n"+
-			"echo \"PWD=$(pwd)\" > %q\n"+
-			"echo \"ARGS=$*\" >> %q\n",
-		tracePath, tracePath,
-	))
+	scriptPath := writeFakeDartCompilerScript(t, tracePath)
 
 	binDir := filepath.Join(runDir, "bin")
 	require.NoError(t, os.MkdirAll(binDir, 0o700))
@@ -157,8 +175,42 @@ func TestRunFallsBackToMainDartWhenDot(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
-	assert.Contains(t, trace, "ARGS=run bin/main.dart")
+	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/main.dart -o ")
+	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assert.Contains(t, trace, "RUN_ARGS=")
+}
+
+func TestRunTreatsEmptyProgramAsDotForEntrypointResolution(t *testing.T) {
+	runDir := t.TempDir()
+	tracePath := filepath.Join(runDir, "run-empty-program.trace")
+	scriptPath := writeFakeDartCompilerScript(t, tracePath)
+
+	binDir := filepath.Join(runDir, "bin")
+	require.NoError(t, os.MkdirAll(binDir, 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(binDir, "main.dart"), []byte(""), 0o600))
+
+	host := &dartLanguageHost{
+		exec:          scriptPath,
+		engineAddress: "127.0.0.1:0",
+	}
+
+	resp, err := host.Run(context.Background(), &pulumirpc.RunRequest{
+		Pwd:     t.TempDir(),
+		Program: "",
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: runDir,
+			EntryPoint:       ".",
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	trace := readFileString(t, tracePath)
+	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/main.dart -o ")
+	assert.Contains(t, trace, "RUN_PWD="+runDir)
 }
 
 func TestRunBinaryHonorsArgsAndProgramDirectory(t *testing.T) {
@@ -190,6 +242,100 @@ func TestRunBinaryHonorsArgsAndProgramDirectory(t *testing.T) {
 	trace := readFileString(t, tracePath)
 	assert.Contains(t, trace, "PWD="+runDir)
 	assert.Contains(t, trace, "ARGS=--mode smoke")
+}
+
+func TestRunUsesRuntimeOptionBinary(t *testing.T) {
+	runDir := t.TempDir()
+	tracePath := filepath.Join(runDir, "runtime-binary.trace")
+	scriptPath := writeExecutableScript(t, fmt.Sprintf(
+		"#!/usr/bin/env bash\n"+
+			"echo \"PWD=$(pwd)\" > %q\n"+
+			"echo \"ARGS=$*\" >> %q\n",
+		tracePath, tracePath,
+	))
+
+	options, err := structpb.NewStruct(map[string]interface{}{
+		"binary": scriptPath,
+	})
+	require.NoError(t, err)
+
+	host := &dartLanguageHost{
+		exec:          "dart",
+		engineAddress: "127.0.0.1:0",
+	}
+
+	resp, err := host.Run(context.Background(), &pulumirpc.RunRequest{
+		Args: []string{"--mode", "runtime"},
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: runDir,
+			Options:          options,
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	trace := readFileString(t, tracePath)
+	assert.Contains(t, trace, "PWD="+runDir)
+	assert.Contains(t, trace, "ARGS=--mode runtime")
+}
+
+func TestRunRejectsBinaryAndBuildTargetRuntimeOptions(t *testing.T) {
+	options, err := structpb.NewStruct(map[string]interface{}{
+		"binary":      "./bin/program",
+		"buildTarget": ".dart_tool/pulumi/program",
+	})
+	require.NoError(t, err)
+
+	host := &dartLanguageHost{
+		exec:          "dart",
+		engineAddress: "127.0.0.1:0",
+	}
+
+	_, err = host.Run(context.Background(), &pulumirpc.RunRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: t.TempDir(),
+			EntryPoint:       "bin/main.dart",
+			Options:          options,
+		},
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "binary and buildTarget cannot both be specified")
+}
+
+func TestRunReusesCompiledCacheWhenProgramUnchanged(t *testing.T) {
+	runDir := t.TempDir()
+	binDir := filepath.Join(runDir, "bin")
+	require.NoError(t, os.MkdirAll(binDir, 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(binDir, "main.dart"), []byte("void main() {}"), 0o600))
+
+	tracePath := filepath.Join(runDir, "cache.trace")
+	dartPath := writeFakeDartCompilerScript(t, tracePath)
+	host := &dartLanguageHost{
+		exec:          dartPath,
+		engineAddress: "127.0.0.1:0",
+	}
+
+	req := &pulumirpc.RunRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: runDir,
+			EntryPoint:       "bin/main.dart",
+		},
+	}
+
+	resp, err := host.Run(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	resp, err = host.Run(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	trace := readFileString(t, tracePath)
+	assert.Equal(t, 1, strings.Count(trace, "COMPILE_ARGS=compile exe bin/main.dart -o "))
+	assert.Equal(t, 2, strings.Count(trace, "RUN_PWD="+runDir))
 }
 
 func TestAboutCapturesVersionFromStderr(t *testing.T) {

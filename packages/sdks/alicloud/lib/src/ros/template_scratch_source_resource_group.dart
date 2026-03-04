@@ -24,9 +24,12 @@ class TemplateScratchSourceResourceGroup {
 
   factory TemplateScratchSourceResourceGroup.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceResourceGroup(
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters']! as List).cast<String>()).input(),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      resourceTypeFilters: (() {
+        final guardedValue = map['resourceTypeFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataDependencies {
   /// Id of the content item we depend on
   final pulumi.Input<String>? contentId;
+
   /// This is the list of dependencies we must fulfill, according to the AND/OR operator
   final pulumi.Input<List<MetadataDependencies>>? criteria;
+
   /// Type of the content item we depend on
   final pulumi.Input<String>? kind;
+
   /// Name of the content item
   final pulumi.Input<String>? name;
+
   /// Operator used for list of dependencies in criteria array.
   final pulumi.Input<String>? operator;
+
   /// Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
   final pulumi.Input<String>? version;
 
@@ -36,7 +41,18 @@ class MetadataDependencies {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contentId': ?contentId,
-      'criteria': ?pulumi.Input.mapOptionalInputValue<List<MetadataDependencies>, List<Map<String, dynamic>>>(criteria, (value) => pulumi.Input.encodeList<MetadataDependencies, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'criteria':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MetadataDependencies>,
+            List<Map<String, dynamic>>
+          >(
+            criteria,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MetadataDependencies,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': ?kind,
       'name': ?name,
       'operator': ?operator,
@@ -46,13 +62,43 @@ class MetadataDependencies {
 
   factory MetadataDependencies.fromMap(Map<String, dynamic> map) {
     return MetadataDependencies(
-      contentId: map['contentId'] == null ? null : (map['contentId']! as String).input(),
-      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<MetadataDependencies>(map['criteria']!, (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      contentId: (() {
+        final guardedValue = map['contentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      criteria: (() {
+        final guardedValue = map['criteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MetadataDependencies>(
+            guardedValue,
+            (value) => MetadataDependencies.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

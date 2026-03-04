@@ -10,20 +10,27 @@ class GethDetails {
 
   /// Creates a new [GethDetails].
   /// [garbageCollectionMode] Immutable. Blockchain garbage collection mode.
-  GethDetails({
-    this.garbageCollectionMode,
-  });
+  GethDetails({this.garbageCollectionMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'garbageCollectionMode': ?pulumi.Input.mapOptionalInputValue<GethDetailsGarbageCollectionMode, String>(garbageCollectionMode, (value) => value.value),
+      'garbageCollectionMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            GethDetailsGarbageCollectionMode,
+            String
+          >(garbageCollectionMode, (value) => value.wireValue),
     };
   }
 
   factory GethDetails.fromMap(Map<String, dynamic> map) {
     return GethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : (GethDetailsGarbageCollectionMode.fromValue(map['garbageCollectionMode']! as String)).input(),
+      garbageCollectionMode: (() {
+        final guardedValue = map['garbageCollectionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GethDetailsGarbageCollectionMode.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

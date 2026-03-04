@@ -31,10 +31,13 @@ class GetMeshNetworkservicesV1beta1Args {
 
   factory GetMeshNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetMeshNetworkservicesV1beta1Args(
-      location: (map['location'] as String).input(),
-      meshId: (map['meshId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      meshId: pulumi.Input.fromValue(map['meshId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -153,18 +153,25 @@ import 'system_data_response.dart';
 class ScopeConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description of the scope connection.
   late final pulumi.Output<String?> description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource ID.
   late final pulumi.Output<String?> resourceId;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tenant ID.
   late final pulumi.Output<String?> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -177,18 +184,18 @@ class ScopeConnection extends pulumi.CustomResource {
     ScopeConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ScopeConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:ScopeConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    resourceId = registerOutput<String?>('resourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

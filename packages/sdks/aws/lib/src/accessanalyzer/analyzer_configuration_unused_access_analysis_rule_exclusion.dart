@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
   /// List of AWS account IDs to apply to the analysis rule criteria. The accounts cannot include the organization analyzer owner account. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
   final pulumi.Input<List<String>>? accountIds;
+
   /// List of key-value pairs for resource tags to exclude from the analysis.
   final pulumi.Input<List<Map<String, String>>>? resourceTags;
 
@@ -23,11 +24,22 @@ class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
     };
   }
 
-  factory AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap(Map<String, dynamic> map) {
+  factory AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion(
-      accountIds: map['accountIds'] == null ? null : (((map['accountIds'] as List).cast<String>()).input()).input(),
-      resourceTags: map['resourceTags'] == null ? null : (((map['resourceTags'] as List).cast<Map<String, String>>()).input()).input(),
+      accountIds: (() {
+        final guardedValue = map['accountIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceTags: (() {
+        final guardedValue = map['resourceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<Map<String, String>>(),
+        );
+      })(),
     );
   }
 }
-

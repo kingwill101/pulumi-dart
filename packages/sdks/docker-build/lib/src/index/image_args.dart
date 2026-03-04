@@ -21,6 +21,7 @@ class ImageArgs {
   ///
   /// Equivalent to Docker's `--add-host` flag.
   final pulumi.Input<List<String>>? addHosts;
+
   /// `ARG` names and values to set during the build.
   ///
   /// These variables are accessed like environment variables inside `RUN`
@@ -31,6 +32,7 @@ class ImageArgs {
   ///
   /// Equivalent to Docker's `--build-arg` flag.
   final pulumi.Input<Map<String, String>>? buildArgs;
+
   /// Setting this to `false` will always skip image builds during previews,
   /// and setting it to `true` will always build images during previews.
   ///
@@ -43,24 +45,30 @@ class ImageArgs {
   /// Defaults to `true` as a safeguard against broken images merging as part
   /// of CI pipelines.
   final pulumi.Input<bool>? buildOnPreview;
+
   /// Builder configuration.
   final pulumi.Input<BuilderConfig>? builder;
+
   /// Cache export configuration.
   ///
   /// Equivalent to Docker's `--cache-from` flag.
   final pulumi.Input<List<CacheFrom>>? cacheFrom;
+
   /// Cache import configuration.
   ///
   /// Equivalent to Docker's `--cache-to` flag.
   final pulumi.Input<List<CacheTo>>? cacheTo;
+
   /// Build context settings. Defaults to the current directory.
   ///
   /// Equivalent to Docker's `PATH | URL | -` positional argument.
   final pulumi.Input<BuildContext>? context;
+
   /// Dockerfile settings.
   ///
   /// Equivalent to Docker's `--file` flag.
   final pulumi.Input<Dockerfile>? dockerfile;
+
   /// Use `exec` mode to build this image.
   ///
   /// By default the provider embeds a v25 Docker client with v0.12 buildx
@@ -82,6 +90,7 @@ class ImageArgs {
   /// are temporarily written to disk in order to provide them to the
   /// `docker-buildx` binary.
   final pulumi.Input<bool>? exec;
+
   /// Controls where images are persisted after building.
   ///
   /// Images are only stored in the local cache unless `exports` are
@@ -92,40 +101,48 @@ class ImageArgs {
   ///
   /// Equivalent to Docker's `--output` flag.
   final pulumi.Input<List<Export>>? exports;
+
   /// Attach arbitrary key/value metadata to the image.
   ///
   /// Equivalent to Docker's `--label` flag.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// When `true` the build will automatically include a `docker` export.
   ///
   /// Defaults to `false`.
   ///
   /// Equivalent to Docker's `--load` flag.
   final pulumi.Input<bool>? load;
+
   /// Set the network mode for `RUN` instructions. Defaults to `default`.
   ///
   /// For custom networks, configure your builder with `--driver-opt network=...`.
   ///
   /// Equivalent to Docker's `--network` flag.
   final pulumi.Input<NetworkMode>? network;
+
   /// Do not import cache manifests when building the image.
   ///
   /// Equivalent to Docker's `--no-cache` flag.
   final pulumi.Input<bool>? noCache;
+
   /// Set target platform(s) for the build. Defaults to the host's platform.
   ///
   /// Equivalent to Docker's `--platform` flag.
   final pulumi.Input<List<Platform>>? platforms;
+
   /// Always pull referenced images.
   ///
   /// Equivalent to Docker's `--pull` flag.
   final pulumi.Input<bool>? pull;
+
   /// When `true` the build will automatically include a `registry` export.
   ///
   /// Defaults to `false`.
   ///
   /// Equivalent to Docker's `--push` flag.
   final pulumi.Input<bool> push;
+
   /// Registry credentials. Required if reading or exporting to private
   /// repositories.
   ///
@@ -134,6 +151,7 @@ class ImageArgs {
   ///
   /// Similar to `docker login`.
   final pulumi.Input<List<Registry>>? registries;
+
   /// A mapping of secret names to their corresponding values.
   ///
   /// Unlike the Docker CLI, these can be passed by value and do not need to
@@ -144,10 +162,12 @@ class ImageArgs {
   ///
   /// Similar to Docker's `--secret` flag.
   final pulumi.Input<Map<String, String>>? secrets;
+
   /// SSH agent socket or keys to expose to the build.
   ///
   /// Equivalent to Docker's `--ssh` flag.
   final pulumi.Input<List<SSH>>? ssh;
+
   /// Name and optionally a tag (format: `name:tag`).
   ///
   /// If exporting to a registry, the name should include the fully qualified
@@ -155,6 +175,7 @@ class ImageArgs {
   ///
   /// Equivalent to Docker's `--tag` flag.
   final pulumi.Input<List<String>>? tags;
+
   /// Set the target build stage(s) to build.
   ///
   /// If not specified all targets will be built by default.
@@ -215,23 +236,95 @@ class ImageArgs {
       'addHosts': ?addHosts,
       'buildArgs': ?buildArgs,
       'buildOnPreview': ?buildOnPreview,
-      'builder': ?pulumi.Input.mapOptionalInputValue<BuilderConfig, Map<String, dynamic>>(builder, (value) => value.toMap()),
-      'cacheFrom': ?pulumi.Input.mapOptionalInputValue<List<CacheFrom>, List<Map<String, dynamic>>>(cacheFrom, (value) => pulumi.Input.encodeList<CacheFrom, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'cacheTo': ?pulumi.Input.mapOptionalInputValue<List<CacheTo>, List<Map<String, dynamic>>>(cacheTo, (value) => pulumi.Input.encodeList<CacheTo, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'context': ?pulumi.Input.mapOptionalInputValue<BuildContext, Map<String, dynamic>>(context, (value) => value.toMap()),
-      'dockerfile': ?pulumi.Input.mapOptionalInputValue<Dockerfile, Map<String, dynamic>>(dockerfile, (value) => value.toMap()),
+      'builder':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuilderConfig,
+            Map<String, dynamic>
+          >(builder, (value) => value.toMap()),
+      'cacheFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CacheFrom>,
+            List<Map<String, dynamic>>
+          >(
+            cacheFrom,
+            (value) => pulumi.Input.encodeList<CacheFrom, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'cacheTo':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CacheTo>,
+            List<Map<String, dynamic>>
+          >(
+            cacheTo,
+            (value) => pulumi.Input.encodeList<CacheTo, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'context':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildContext,
+            Map<String, dynamic>
+          >(context, (value) => value.toMap()),
+      'dockerfile':
+          ?pulumi.Input.mapOptionalInputValue<Dockerfile, Map<String, dynamic>>(
+            dockerfile,
+            (value) => value.toMap(),
+          ),
       'exec': ?exec,
-      'exports': ?pulumi.Input.mapOptionalInputValue<List<Export>, List<Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeList<Export, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exports':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Export>,
+            List<Map<String, dynamic>>
+          >(
+            exports,
+            (value) => pulumi.Input.encodeList<Export, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'labels': ?labels,
       'load': ?load,
-      'network': ?pulumi.Input.mapOptionalInputValue<NetworkMode, String>(network, (value) => value.value),
+      'network': ?pulumi.Input.mapOptionalInputValue<NetworkMode, String>(
+        network,
+        (value) => value.wireValue,
+      ),
       'noCache': ?noCache,
-      'platforms': ?pulumi.Input.mapOptionalInputValue<List<Platform>, List<String>>(platforms, (value) => pulumi.Input.encodeList<Platform, String>(value, (value) => value.value)),
+      'platforms':
+          ?pulumi.Input.mapOptionalInputValue<List<Platform>, List<String>>(
+            platforms,
+            (value) => pulumi.Input.encodeList<Platform, String>(
+              value,
+              (value) => value.wireValue,
+            ),
+          ),
       'pull': ?pull,
       'push': push,
-      'registries': ?pulumi.Input.mapOptionalInputValue<List<Registry>, List<Map<String, dynamic>>>(registries, (value) => pulumi.Input.encodeList<Registry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'registries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Registry>,
+            List<Map<String, dynamic>>
+          >(
+            registries,
+            (value) => pulumi.Input.encodeList<Registry, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'secrets': ?secrets,
-      'ssh': ?pulumi.Input.mapOptionalInputValue<List<SSH>, List<Map<String, dynamic>>>(ssh, (value) => pulumi.Input.encodeList<SSH, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ssh':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SSH>,
+            List<Map<String, dynamic>>
+          >(
+            ssh,
+            (value) => pulumi.Input.encodeList<SSH, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'tags': ?tags,
       'target': ?target,
     };
@@ -239,29 +332,157 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      addHosts: map['addHosts'] == null ? null : ((map['addHosts']! as List).cast<String>()).input(),
-      buildArgs: map['buildArgs'] == null ? null : ((map['buildArgs']! as Map).cast<String, String>()).input(),
-      buildOnPreview: map['buildOnPreview'] == null ? null : (map['buildOnPreview']! as bool).input(),
-      builder: map['builder'] == null ? null : (BuilderConfig.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
-      cacheFrom: map['cacheFrom'] == null ? null : (pulumi.Input.decodeList<CacheFrom>(map['cacheFrom']!, (value) => CacheFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cacheTo: map['cacheTo'] == null ? null : (pulumi.Input.decodeList<CacheTo>(map['cacheTo']!, (value) => CacheTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      context: map['context'] == null ? null : (BuildContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
-      dockerfile: map['dockerfile'] == null ? null : (Dockerfile.fromMap((map['dockerfile']! as Map).cast<String, dynamic>())).input(),
-      exec: map['exec'] == null ? null : (map['exec']! as bool).input(),
-      exports: map['exports'] == null ? null : (pulumi.Input.decodeList<Export>(map['exports']!, (value) => Export.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      load: map['load'] == null ? null : (map['load']! as bool).input(),
-      network: map['network'] == null ? null : (NetworkMode.fromValue(map['network']! as String)).input(),
-      noCache: map['noCache'] == null ? null : (map['noCache']! as bool).input(),
-      platforms: map['platforms'] == null ? null : (pulumi.Input.decodeList<Platform>(map['platforms']!, (value) => Platform.fromValue(value as String))).input(),
-      pull: map['pull'] == null ? null : (map['pull']! as bool).input(),
-      push: (map['push'] as bool).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<Registry>(map['registries']!, (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets']! as Map).cast<String, String>()).input(),
-      ssh: map['ssh'] == null ? null : (pulumi.Input.decodeList<SSH>(map['ssh']!, (value) => SSH.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      addHosts: (() {
+        final guardedValue = map['addHosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      buildArgs: (() {
+        final guardedValue = map['buildArgs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      buildOnPreview: (() {
+        final guardedValue = map['buildOnPreview'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      builder: (() {
+        final guardedValue = map['builder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuilderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      cacheFrom: (() {
+        final guardedValue = map['cacheFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CacheFrom>(
+            guardedValue,
+            (value) =>
+                CacheFrom.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      cacheTo: (() {
+        final guardedValue = map['cacheTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CacheTo>(
+            guardedValue,
+            (value) => CacheTo.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      context: (() {
+        final guardedValue = map['context'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildContext.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      dockerfile: (() {
+        final guardedValue = map['dockerfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Dockerfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      exec: (() {
+        final guardedValue = map['exec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      exports: (() {
+        final guardedValue = map['exports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Export>(
+            guardedValue,
+            (value) => Export.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      load: (() {
+        final guardedValue = map['load'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkMode.fromValue(guardedValue as String),
+        );
+      })(),
+      noCache: (() {
+        final guardedValue = map['noCache'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      platforms: (() {
+        final guardedValue = map['platforms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Platform>(
+            guardedValue,
+            (value) => Platform.fromValue(value as String),
+          ),
+        );
+      })(),
+      pull: (() {
+        final guardedValue = map['pull'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      push: pulumi.Input.fromValue(map['push'] as bool),
+      registries: (() {
+        final guardedValue = map['registries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Registry>(
+            guardedValue,
+            (value) => Registry.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      ssh: (() {
+        final guardedValue = map['ssh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SSH>(
+            guardedValue,
+            (value) => SSH.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,8 +8,10 @@ class DeliveryRuleUrlFileExtensionConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'UrlFileExtension'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
-  final pulumi.Input<UrlFileExtensionMatchConditionParametersResponse> parameters;
+  final pulumi.Input<UrlFileExtensionMatchConditionParametersResponse>
+  parameters;
 
   /// Creates a new [DeliveryRuleUrlFileExtensionConditionResponse].
   /// [name] Request variable to compare with.
@@ -22,15 +24,24 @@ class DeliveryRuleUrlFileExtensionConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<UrlFileExtensionMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            UrlFileExtensionMatchConditionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleUrlFileExtensionConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleUrlFileExtensionConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleUrlFileExtensionConditionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (UrlFileExtensionMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        UrlFileExtensionMatchConditionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

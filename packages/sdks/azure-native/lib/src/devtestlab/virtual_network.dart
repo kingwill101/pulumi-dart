@@ -1,7 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'external_subnet_response.dart';
-import 'subnet_override_response.dart';
-import 'subnet_response.dart';
 import 'virtual_network_args.dart';
 
 /// A virtual network.
@@ -192,29 +189,41 @@ import 'virtual_network_args.dart';
 /// ```
 class VirtualNetwork extends pulumi.CustomResource {
   /// The allowed subnets of the virtual network.
-  late final pulumi.Output<List<SubnetResponse>?> allowedSubnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> allowedSubnets;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of the virtual network.
   late final pulumi.Output<String> createdDate;
+
   /// The description of the virtual network.
   late final pulumi.Output<String?> description;
+
   /// The Microsoft.Network resource identifier of the virtual network.
   late final pulumi.Output<String?> externalProviderResourceId;
+
   /// The external subnet properties.
-  late final pulumi.Output<List<ExternalSubnetResponse>> externalSubnets;
+  late final pulumi.Output<List<Map<String, dynamic>>> externalSubnets;
+
   /// The location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The subnet overrides of the virtual network.
-  late final pulumi.Output<List<SubnetOverrideResponse>?> subnetOverrides;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnetOverrides;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -227,23 +236,31 @@ class VirtualNetwork extends pulumi.CustomResource {
     VirtualNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devtestlab:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedSubnets = registerOutput<List<SubnetResponse>?>('allowedSubnets');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.externalProviderResourceId = registerOutput<String?>('externalProviderResourceId');
-    this.externalSubnets = registerOutput<List<ExternalSubnetResponse>>('externalSubnets');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devtestlab:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedSubnets = registerOutput<List<Map<String, dynamic>>?>(
+      'allowedSubnets',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    externalProviderResourceId = registerOutput<String?>(
+      'externalProviderResourceId',
+    );
+    externalSubnets = registerOutput<List<Map<String, dynamic>>>(
+      'externalSubnets',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.subnetOverrides = registerOutput<List<SubnetOverrideResponse>?>('subnetOverrides');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    provisioningState = registerOutput<String>('provisioningState');
+    subnetOverrides = registerOutput<List<Map<String, dynamic>>?>(
+      'subnetOverrides',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

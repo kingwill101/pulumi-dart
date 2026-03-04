@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlRoleArgs {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
+
   /// The name which should be used for this Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The password of the Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   final pulumi.Input<String> password;
 
@@ -34,10 +36,13 @@ class PostgresqlRoleArgs {
 
   factory PostgresqlRoleArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlRoleArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: (map['password'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
     );
   }
 }
-

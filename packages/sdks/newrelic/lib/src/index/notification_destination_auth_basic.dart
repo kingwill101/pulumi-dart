@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationDestinationAuthBasic {
   /// Specifies an authentication password for use with a destination.
   final pulumi.Input<String> password;
+
   /// The username of the basic auth.
   final pulumi.Input<String> user;
 
@@ -17,17 +18,13 @@ class NotificationDestinationAuthBasic {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'user': user,
-    };
+    return <String, dynamic>{'password': password, 'user': user};
   }
 
   factory NotificationDestinationAuthBasic.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationAuthBasic(
-      password: (map['password'] as String).input(),
-      user: (map['user'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

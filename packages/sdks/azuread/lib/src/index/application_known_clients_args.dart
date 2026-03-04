@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationKnownClientsArgs {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
+
   /// A set of client IDs for the known applications.
   final pulumi.Input<List<String>> knownClientIds;
 
@@ -29,9 +30,10 @@ class ApplicationKnownClientsArgs {
 
   factory ApplicationKnownClientsArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationKnownClientsArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      knownClientIds: ((map['knownClientIds'] as List).cast<String>()).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      knownClientIds: pulumi.Input.fromValue(
+        (map['knownClientIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

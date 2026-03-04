@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
-import 'cluster_component.dart';
 import 'cluster_networks.dart';
-import 'cluster_node_group.dart';
 import 'cluster_state.dart';
 
 /// Provides a Eflo Cluster resource.
@@ -11,7 +9,7 @@ import 'cluster_state.dart';
 ///
 /// For information about Eflo Cluster and how to use it, see [What is Cluster](https://next.api.alibabacloud.com/document/eflo-controller/2022-12-15/CreateCluster).
 ///
-/// > **NOTE:** Available since v1.246.0.
+/// &gt; **NOTE:** Available since v1.246.0.
 ///
 /// ## Example Usage
 ///
@@ -706,30 +704,43 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// cluster description
   late final pulumi.Output<String?> clusterDescription;
+
   /// ClusterName
   late final pulumi.Output<String?> clusterName;
+
   /// cluster type
   late final pulumi.Output<String?> clusterType;
+
   /// Component (software instance) See `components` below.
-  late final pulumi.Output<List<ClusterComponent>?> components;
+  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Cluster Number
   late final pulumi.Output<String?> hpnZone;
+
   /// Whether to allow skipping failed nodes. Default value: False
   late final pulumi.Output<bool?> ignoreFailedNodeTasks;
+
   /// Network Information See `networks` below.
   late final pulumi.Output<ClusterNetworks?> networks;
+
   /// Node virtual switch
   late final pulumi.Output<List<String>?> nimizVswitches;
+
   /// Node Group List See `node_groups` below.
-  late final pulumi.Output<List<ClusterNodeGroup>?> nodeGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> nodeGroups;
+
   /// Whether the network interface supports jumbo frames
   late final pulumi.Output<bool?> openEniJumboFrame;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// tag
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -742,25 +753,25 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterDescription = registerOutput<String?>('clusterDescription');
-    this.clusterName = registerOutput<String?>('clusterName');
-    this.clusterType = registerOutput<String?>('clusterType');
-    this.components = registerOutput<List<ClusterComponent>?>('components');
-    this.createTime = registerOutput<String>('createTime');
-    this.hpnZone = registerOutput<String?>('hpnZone');
-    this.ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    this.networks = registerOutput<ClusterNetworks?>('networks');
-    this.nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
-    this.nodeGroups = registerOutput<List<ClusterNodeGroup>?>('nodeGroups');
-    this.openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:eflo/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterDescription = registerOutput<String?>('clusterDescription');
+    clusterName = registerOutput<String?>('clusterName');
+    clusterType = registerOutput<String?>('clusterType');
+    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    createTime = registerOutput<String>('createTime');
+    hpnZone = registerOutput<String?>('hpnZone');
+    ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
+    networks = registerOutput<ClusterNetworks?>('networks');
+    nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
+    nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
+    openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -781,24 +792,24 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterDescription = registerOutput<String?>('clusterDescription');
-    this.clusterName = registerOutput<String?>('clusterName');
-    this.clusterType = registerOutput<String?>('clusterType');
-    this.components = registerOutput<List<ClusterComponent>?>('components');
-    this.createTime = registerOutput<String>('createTime');
-    this.hpnZone = registerOutput<String?>('hpnZone');
-    this.ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    this.networks = registerOutput<ClusterNetworks?>('networks');
-    this.nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
-    this.nodeGroups = registerOutput<List<ClusterNodeGroup>?>('nodeGroups');
-    this.openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:eflo/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterDescription = registerOutput<String?>('clusterDescription');
+    clusterName = registerOutput<String?>('clusterName');
+    clusterType = registerOutput<String?>('clusterType');
+    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    createTime = registerOutput<String>('createTime');
+    hpnZone = registerOutput<String?>('hpnZone');
+    ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
+    networks = registerOutput<ClusterNetworks?>('networks');
+    nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
+    nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
+    openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -7,12 +7,17 @@ import 'placement_key_value_pairs_response.dart';
 class VolumeGroupMetaDataResponse {
   /// Application specific identifier
   final pulumi.Input<String>? applicationIdentifier;
+
   /// Application Type
   final pulumi.Input<String>? applicationType;
+
   /// Application specific placement rules for the volume group
-  final pulumi.Input<List<PlacementKeyValuePairsResponse>>? globalPlacementRules;
+  final pulumi.Input<List<PlacementKeyValuePairsResponse>>?
+  globalPlacementRules;
+
   /// Group Description
   final pulumi.Input<String>? groupDescription;
+
   /// Number of volumes in volume group
   final pulumi.Input<double> volumesCount;
 
@@ -34,7 +39,18 @@ class VolumeGroupMetaDataResponse {
     return <String, dynamic>{
       'applicationIdentifier': ?applicationIdentifier,
       'applicationType': ?applicationType,
-      'globalPlacementRules': ?pulumi.Input.mapOptionalInputValue<List<PlacementKeyValuePairsResponse>, List<Map<String, dynamic>>>(globalPlacementRules, (value) => pulumi.Input.encodeList<PlacementKeyValuePairsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'globalPlacementRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PlacementKeyValuePairsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            globalPlacementRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlacementKeyValuePairsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'groupDescription': ?groupDescription,
       'volumesCount': volumesCount,
     };
@@ -42,12 +58,34 @@ class VolumeGroupMetaDataResponse {
 
   factory VolumeGroupMetaDataResponse.fromMap(Map<String, dynamic> map) {
     return VolumeGroupMetaDataResponse(
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier']! as String).input(),
-      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
-      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(map['globalPlacementRules']!, (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription']! as String).input(),
-      volumesCount: (map['volumesCount'] as double).input(),
+      applicationIdentifier: (() {
+        final guardedValue = map['applicationIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationType: (() {
+        final guardedValue = map['applicationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalPlacementRules: (() {
+        final guardedValue = map['globalPlacementRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(
+            guardedValue,
+            (value) => PlacementKeyValuePairsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      groupDescription: (() {
+        final guardedValue = map['groupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumesCount: pulumi.Input.fromValue(map['volumesCount'] as double),
     );
   }
 }
-

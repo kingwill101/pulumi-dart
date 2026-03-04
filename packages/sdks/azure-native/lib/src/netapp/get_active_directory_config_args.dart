@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActiveDirectoryConfigArgs {
   /// The name of the ActiveDirectoryConfig
   final pulumi.Input<String> activeDirectoryConfigName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetActiveDirectoryConfigArgs {
 
   factory GetActiveDirectoryConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveDirectoryConfigArgs(
-      activeDirectoryConfigName: (map['activeDirectoryConfigName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      activeDirectoryConfigName: pulumi.Input.fromValue(
+        map['activeDirectoryConfigName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

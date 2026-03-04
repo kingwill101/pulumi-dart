@@ -1,38 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getReplicationLink.
 class GetReplicationLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Whether the user is currently allowed to terminate the link.
   final bool isTerminationAllowed;
+
   /// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   final String? linkType;
+
   /// Resource name.
   final String name;
+
   /// Resource partner database.
   final String partnerDatabase;
+
   /// Resource partner database Id.
   final String partnerDatabaseId;
+
   /// Resource partner location.
   final String partnerLocation;
+
   /// Partner replication role.
   final String partnerRole;
+
   /// Resource partner server.
   final String partnerServer;
+
   /// Seeding completion percentage for the link.
   final int percentComplete;
+
   /// Replication mode.
   final String replicationMode;
+
   /// Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED).
   final String replicationState;
+
   /// Local replication role.
   final String role;
+
   /// Time at which the link was created.
   final String startTime;
+
   /// Resource type.
   final String type;
 
@@ -98,7 +112,11 @@ class GetReplicationLinkResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       isTerminationAllowed: map['isTerminationAllowed'] as bool,
-      linkType: map['linkType'] == null ? null : map['linkType']! as String,
+      linkType: (() {
+        final guardedValue = map['linkType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       partnerDatabase: map['partnerDatabase'] as String,
       partnerDatabaseId: map['partnerDatabaseId'] as String,
@@ -114,4 +132,3 @@ class GetReplicationLinkResult {
     );
   }
 }
-

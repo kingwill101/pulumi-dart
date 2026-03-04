@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'block_public_access_configuration_args.dart';
-import 'block_public_access_configuration_permitted_public_security_group_rule_range.dart';
 import 'block_public_access_configuration_state.dart';
 
 /// Resource for managing an AWS EMR block public access configuration. This region level security configuration restricts the launch of EMR clusters that have associated security groups permitting public access on unspecified ports. See the [EMR Block Public Access Configuration](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-block-public-access.html) documentation for further information.
@@ -216,7 +215,7 @@ import 'block_public_access_configuration_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** If an `aws.emr.BlockPublicAccessConfiguration` resource is destroyed, the configuration will reset to this default configuration.
+/// &gt; **NOTE:** If an `aws.emr.BlockPublicAccessConfiguration` resource is destroyed, the configuration will reset to this default configuration.
 ///
 /// ### Multiple Permitted Public Security Group Rule Ranges
 ///
@@ -469,8 +468,11 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<bool> blockPublicSecurityGroupRules;
+
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
-  late final pulumi.Output<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?> permittedPublicSecurityGroupRuleRanges;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  permittedPublicSecurityGroupRuleRanges;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -483,14 +485,19 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
     BlockPublicAccessConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
-    this.permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges');
-    this.region = registerOutput<String>('region');
+         'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicSecurityGroupRules = registerOutput<bool>(
+      'blockPublicSecurityGroupRules',
+    );
+    permittedPublicSecurityGroupRuleRanges =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'permittedPublicSecurityGroupRuleRanges',
+        );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BlockPublicAccessConfiguration] resource's state with the given [name] and [id].
@@ -511,13 +518,18 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
-    this.permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges');
-    this.region = registerOutput<String>('region');
+         'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicSecurityGroupRules = registerOutput<bool>(
+      'blockPublicSecurityGroupRules',
+    );
+    permittedPublicSecurityGroupRuleRanges =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'permittedPublicSecurityGroupRuleRanges',
+        );
+    region = registerOutput<String>('region');
   }
 }

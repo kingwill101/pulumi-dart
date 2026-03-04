@@ -10,8 +10,10 @@ import 'agentcore_token_vault_cmk_kms_configuration.dart';
 class AgentcoreTokenVaultCmkArgs {
   /// KMS configuration for the token vault. See `kms_configuration` below.
   final pulumi.Input<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Token vault ID. Defaults to `default`.
   final pulumi.Input<String>? tokenVaultId;
 
@@ -27,7 +29,11 @@ class AgentcoreTokenVaultCmkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsConfiguration': pulumi.Input.mapInputValue<AgentcoreTokenVaultCmkKmsConfiguration, Map<String, dynamic>>(kmsConfiguration, (value) => value.toMap()),
+      'kmsConfiguration':
+          pulumi.Input.mapInputValue<
+            AgentcoreTokenVaultCmkKmsConfiguration,
+            Map<String, dynamic>
+          >(kmsConfiguration, (value) => value.toMap()),
       'region': ?region,
       'tokenVaultId': ?tokenVaultId,
     };
@@ -35,10 +41,21 @@ class AgentcoreTokenVaultCmkArgs {
 
   factory AgentcoreTokenVaultCmkArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkArgs(
-      kmsConfiguration: (AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tokenVaultId: map['tokenVaultId'] == null ? null : ((map['tokenVaultId'] as String).input()).input(),
+      kmsConfiguration: pulumi.Input.fromValue(
+        AgentcoreTokenVaultCmkKmsConfiguration.fromMap(
+          (map['kmsConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenVaultId: (() {
+        final guardedValue = map['tokenVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

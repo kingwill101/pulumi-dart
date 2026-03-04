@@ -7,16 +7,14 @@ class AzureFabricCreationInput {
   /// Gets the class type.
   /// Expected value is 'Azure'.
   final pulumi.Input<String> instanceType;
+
   /// The Location.
   final pulumi.Input<String>? location;
 
   /// Creates a new [AzureFabricCreationInput].
   /// [instanceType] Gets the class type.
   /// [location] The Location.
-  AzureFabricCreationInput({
-    required this.instanceType,
-    this.location,
-  });
+  AzureFabricCreationInput({required this.instanceType, this.location});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class AzureFabricCreationInput {
 
   factory AzureFabricCreationInput.fromMap(Map<String, dynamic> map) {
     return AzureFabricCreationInput(
-      instanceType: (map['instanceType'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

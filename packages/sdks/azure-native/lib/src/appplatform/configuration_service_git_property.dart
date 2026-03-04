@@ -10,20 +10,39 @@ class ConfigurationServiceGitProperty {
 
   /// Creates a new [ConfigurationServiceGitProperty].
   /// [repositories] Repositories of Application Configuration Service git property.
-  ConfigurationServiceGitProperty({
-    this.repositories,
-  });
+  ConfigurationServiceGitProperty({this.repositories});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'repositories': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationServiceGitRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<ConfigurationServiceGitRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationServiceGitRepository>,
+            List<Map<String, dynamic>>
+          >(
+            repositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationServiceGitRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ConfigurationServiceGitProperty.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceGitProperty(
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<ConfigurationServiceGitRepository>(map['repositories']!, (value) => ConfigurationServiceGitRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositories: (() {
+        final guardedValue = map['repositories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationServiceGitRepository>(
+            guardedValue,
+            (value) => ConfigurationServiceGitRepository.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

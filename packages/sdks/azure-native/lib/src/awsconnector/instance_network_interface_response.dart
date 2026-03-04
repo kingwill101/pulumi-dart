@@ -13,65 +13,85 @@ import 'network_interface_status_enum_value_response.dart';
 
 /// Definition of InstanceNetworkInterface
 class InstanceNetworkInterfaceResponse {
-  /// <p>The association information for an Elastic IPv4 associated with the network interface.</p>
+  /// &lt;p&gt;The association information for an Elastic IPv4 associated with the network interface.&lt;/p&gt;
   final pulumi.Input<InstanceNetworkInterfaceAssociationResponse>? association;
-  /// <p>The network interface attachment.</p>
+
+  /// &lt;p&gt;The network interface attachment.&lt;/p&gt;
   final pulumi.Input<InstanceNetworkInterfaceAttachmentResponse>? attachment;
-  /// <p>A security group connection tracking configuration that enables you to set the timeout for connection tracking on an Elastic network interface. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#connection-tracking-timeouts'>Connection tracking timeouts</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-  final pulumi.Input<ConnectionTrackingSpecificationResponseResponse>? connectionTrackingConfiguration;
-  /// <p>The description.</p>
+
+  /// &lt;p&gt;A security group connection tracking configuration that enables you to set the timeout for connection tracking on an Elastic network interface. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#connection-tracking-timeouts'&gt;Connection tracking timeouts&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
+  final pulumi.Input<ConnectionTrackingSpecificationResponseResponse>?
+  connectionTrackingConfiguration;
+
+  /// &lt;p&gt;The description.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>The security groups.</p>
+
+  /// &lt;p&gt;The security groups.&lt;/p&gt;
   final pulumi.Input<List<GroupIdentifierResponse>>? groups;
-  /// <p>The type of network interface.</p> <p>Valid values: <code>interface</code> | <code>efa</code> | <code>trunk</code> </p>
+
+  /// &lt;p&gt;The type of network interface.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;interface&lt;/code&gt; | &lt;code&gt;efa&lt;/code&gt; | &lt;code&gt;trunk&lt;/code&gt; &lt;/p&gt;
   final pulumi.Input<String>? interfaceType;
-  /// <p>The IPv4 delegated prefixes that are assigned to the network interface.</p>
+
+  /// &lt;p&gt;The IPv4 delegated prefixes that are assigned to the network interface.&lt;/p&gt;
   final pulumi.Input<List<InstanceIpv4PrefixResponse>>? ipv4Prefixes;
-  /// <p>The IPv6 addresses associated with the network interface.</p>
+
+  /// &lt;p&gt;The IPv6 addresses associated with the network interface.&lt;/p&gt;
   final pulumi.Input<List<InstanceIpv6AddressResponse>>? ipv6Addresses;
-  /// <p>The IPv6 delegated prefixes that are assigned to the network interface.</p>
+
+  /// &lt;p&gt;The IPv6 delegated prefixes that are assigned to the network interface.&lt;/p&gt;
   final pulumi.Input<List<InstanceIpv6PrefixResponse>>? ipv6Prefixes;
-  /// <p>The MAC address.</p>
+
+  /// &lt;p&gt;The MAC address.&lt;/p&gt;
   final pulumi.Input<String>? macAddress;
-  /// <p>The ID of the network interface.</p>
+
+  /// &lt;p&gt;The ID of the network interface.&lt;/p&gt;
   final pulumi.Input<String>? networkInterfaceId;
-  /// <p>The ID of the Amazon Web Services account that created the network interface.</p>
+
+  /// &lt;p&gt;The ID of the Amazon Web Services account that created the network interface.&lt;/p&gt;
   final pulumi.Input<String>? ownerId;
-  /// <p>The private DNS name.</p>
+
+  /// &lt;p&gt;The private DNS name.&lt;/p&gt;
   final pulumi.Input<String>? privateDnsName;
-  /// <p>The IPv4 address of the network interface within the subnet.</p>
+
+  /// &lt;p&gt;The IPv4 address of the network interface within the subnet.&lt;/p&gt;
   final pulumi.Input<String>? privateIpAddress;
-  /// <p>The private IPv4 addresses associated with the network interface.</p>
-  final pulumi.Input<List<InstancePrivateIpAddressResponse>>? privateIpAddresses;
-  /// <p>Indicates whether source/destination checking is enabled.</p>
+
+  /// &lt;p&gt;The private IPv4 addresses associated with the network interface.&lt;/p&gt;
+  final pulumi.Input<List<InstancePrivateIpAddressResponse>>?
+  privateIpAddresses;
+
+  /// &lt;p&gt;Indicates whether source/destination checking is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? sourceDestCheck;
-  /// <p>The status of the network interface.</p>
+
+  /// &lt;p&gt;The status of the network interface.&lt;/p&gt;
   final pulumi.Input<NetworkInterfaceStatusEnumValueResponse>? status;
-  /// <p>The ID of the subnet.</p>
+
+  /// &lt;p&gt;The ID of the subnet.&lt;/p&gt;
   final pulumi.Input<String>? subnetId;
-  /// <p>The ID of the VPC.</p>
+
+  /// &lt;p&gt;The ID of the VPC.&lt;/p&gt;
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [InstanceNetworkInterfaceResponse].
-  /// [association] <p>The association information for an Elastic IPv4 associated with the network interface.</p>
-  /// [attachment] <p>The network interface attachment.</p>
-  /// [connectionTrackingConfiguration] <p>A security group connection tracking configuration that enables you to set the timeout for connection tracking on an Elastic network interface. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#connection-tracking-timeouts'>Connection tracking timeouts</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-  /// [description] <p>The description.</p>
-  /// [groups] <p>The security groups.</p>
-  /// [interfaceType] <p>The type of network interface.</p> <p>Valid values: <code>interface</code> | <code>efa</code> | <code>trunk</code> </p>
-  /// [ipv4Prefixes] <p>The IPv4 delegated prefixes that are assigned to the network interface.</p>
-  /// [ipv6Addresses] <p>The IPv6 addresses associated with the network interface.</p>
-  /// [ipv6Prefixes] <p>The IPv6 delegated prefixes that are assigned to the network interface.</p>
-  /// [macAddress] <p>The MAC address.</p>
-  /// [networkInterfaceId] <p>The ID of the network interface.</p>
-  /// [ownerId] <p>The ID of the Amazon Web Services account that created the network interface.</p>
-  /// [privateDnsName] <p>The private DNS name.</p>
-  /// [privateIpAddress] <p>The IPv4 address of the network interface within the subnet.</p>
-  /// [privateIpAddresses] <p>The private IPv4 addresses associated with the network interface.</p>
-  /// [sourceDestCheck] <p>Indicates whether source/destination checking is enabled.</p>
-  /// [status] <p>The status of the network interface.</p>
-  /// [subnetId] <p>The ID of the subnet.</p>
-  /// [vpcId] <p>The ID of the VPC.</p>
+  /// [association] &lt;p&gt;The association information for an Elastic IPv4 associated with the network interface.&lt;/p&gt;
+  /// [attachment] &lt;p&gt;The network interface attachment.&lt;/p&gt;
+  /// [connectionTrackingConfiguration] &lt;p&gt;A security group connection tracking configuration that enables you to set the timeout for connection tracking on an Elastic network interface. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#connection-tracking-timeouts'&gt;Connection tracking timeouts&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [description] &lt;p&gt;The description.&lt;/p&gt;
+  /// [groups] &lt;p&gt;The security groups.&lt;/p&gt;
+  /// [interfaceType] &lt;p&gt;The type of network interface.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;interface&lt;/code&gt; | &lt;code&gt;efa&lt;/code&gt; | &lt;code&gt;trunk&lt;/code&gt; &lt;/p&gt;
+  /// [ipv4Prefixes] &lt;p&gt;The IPv4 delegated prefixes that are assigned to the network interface.&lt;/p&gt;
+  /// [ipv6Addresses] &lt;p&gt;The IPv6 addresses associated with the network interface.&lt;/p&gt;
+  /// [ipv6Prefixes] &lt;p&gt;The IPv6 delegated prefixes that are assigned to the network interface.&lt;/p&gt;
+  /// [macAddress] &lt;p&gt;The MAC address.&lt;/p&gt;
+  /// [networkInterfaceId] &lt;p&gt;The ID of the network interface.&lt;/p&gt;
+  /// [ownerId] &lt;p&gt;The ID of the Amazon Web Services account that created the network interface.&lt;/p&gt;
+  /// [privateDnsName] &lt;p&gt;The private DNS name.&lt;/p&gt;
+  /// [privateIpAddress] &lt;p&gt;The IPv4 address of the network interface within the subnet.&lt;/p&gt;
+  /// [privateIpAddresses] &lt;p&gt;The private IPv4 addresses associated with the network interface.&lt;/p&gt;
+  /// [sourceDestCheck] &lt;p&gt;Indicates whether source/destination checking is enabled.&lt;/p&gt;
+  /// [status] &lt;p&gt;The status of the network interface.&lt;/p&gt;
+  /// [subnetId] &lt;p&gt;The ID of the subnet.&lt;/p&gt;
+  /// [vpcId] &lt;p&gt;The ID of the VPC.&lt;/p&gt;
   InstanceNetworkInterfaceResponse({
     this.association,
     this.attachment,
@@ -96,23 +116,94 @@ class InstanceNetworkInterfaceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'association': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkInterfaceAssociationResponse, Map<String, dynamic>>(association, (value) => value.toMap()),
-      'attachment': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkInterfaceAttachmentResponse, Map<String, dynamic>>(attachment, (value) => value.toMap()),
-      'connectionTrackingConfiguration': ?pulumi.Input.mapOptionalInputValue<ConnectionTrackingSpecificationResponseResponse, Map<String, dynamic>>(connectionTrackingConfiguration, (value) => value.toMap()),
+      'association':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceNetworkInterfaceAssociationResponse,
+            Map<String, dynamic>
+          >(association, (value) => value.toMap()),
+      'attachment':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceNetworkInterfaceAttachmentResponse,
+            Map<String, dynamic>
+          >(attachment, (value) => value.toMap()),
+      'connectionTrackingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionTrackingSpecificationResponseResponse,
+            Map<String, dynamic>
+          >(connectionTrackingConfiguration, (value) => value.toMap()),
       'description': ?description,
-      'groups': ?pulumi.Input.mapOptionalInputValue<List<GroupIdentifierResponse>, List<Map<String, dynamic>>>(groups, (value) => pulumi.Input.encodeList<GroupIdentifierResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupIdentifierResponse>,
+            List<Map<String, dynamic>>
+          >(
+            groups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GroupIdentifierResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'interfaceType': ?interfaceType,
-      'ipv4Prefixes': ?pulumi.Input.mapOptionalInputValue<List<InstanceIpv4PrefixResponse>, List<Map<String, dynamic>>>(ipv4Prefixes, (value) => pulumi.Input.encodeList<InstanceIpv4PrefixResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ipv6Addresses': ?pulumi.Input.mapOptionalInputValue<List<InstanceIpv6AddressResponse>, List<Map<String, dynamic>>>(ipv6Addresses, (value) => pulumi.Input.encodeList<InstanceIpv6AddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ipv6Prefixes': ?pulumi.Input.mapOptionalInputValue<List<InstanceIpv6PrefixResponse>, List<Map<String, dynamic>>>(ipv6Prefixes, (value) => pulumi.Input.encodeList<InstanceIpv6PrefixResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv4Prefixes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceIpv4PrefixResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipv4Prefixes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceIpv4PrefixResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ipv6Addresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceIpv6AddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipv6Addresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceIpv6AddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ipv6Prefixes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceIpv6PrefixResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipv6Prefixes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceIpv6PrefixResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'macAddress': ?macAddress,
       'networkInterfaceId': ?networkInterfaceId,
       'ownerId': ?ownerId,
       'privateDnsName': ?privateDnsName,
       'privateIpAddress': ?privateIpAddress,
-      'privateIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<InstancePrivateIpAddressResponse>, List<Map<String, dynamic>>>(privateIpAddresses, (value) => pulumi.Input.encodeList<InstancePrivateIpAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateIpAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstancePrivateIpAddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateIpAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstancePrivateIpAddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sourceDestCheck': ?sourceDestCheck,
-      'status': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkInterfaceStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'subnetId': ?subnetId,
       'vpcId': ?vpcId,
     };
@@ -120,26 +211,152 @@ class InstanceNetworkInterfaceResponse {
 
   factory InstanceNetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaceResponse(
-      association: map['association'] == null ? null : (InstanceNetworkInterfaceAssociationResponse.fromMap((map['association']! as Map).cast<String, dynamic>())).input(),
-      attachment: map['attachment'] == null ? null : (InstanceNetworkInterfaceAttachmentResponse.fromMap((map['attachment']! as Map).cast<String, dynamic>())).input(),
-      connectionTrackingConfiguration: map['connectionTrackingConfiguration'] == null ? null : (ConnectionTrackingSpecificationResponseResponse.fromMap((map['connectionTrackingConfiguration']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<GroupIdentifierResponse>(map['groups']!, (value) => GroupIdentifierResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interfaceType: map['interfaceType'] == null ? null : (map['interfaceType']! as String).input(),
-      ipv4Prefixes: map['ipv4Prefixes'] == null ? null : (pulumi.Input.decodeList<InstanceIpv4PrefixResponse>(map['ipv4Prefixes']!, (value) => InstanceIpv4PrefixResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Addresses: map['ipv6Addresses'] == null ? null : (pulumi.Input.decodeList<InstanceIpv6AddressResponse>(map['ipv6Addresses']!, (value) => InstanceIpv6AddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Prefixes: map['ipv6Prefixes'] == null ? null : (pulumi.Input.decodeList<InstanceIpv6PrefixResponse>(map['ipv6Prefixes']!, (value) => InstanceIpv6PrefixResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
-      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName']! as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : (pulumi.Input.decodeList<InstancePrivateIpAddressResponse>(map['privateIpAddresses']!, (value) => InstancePrivateIpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDestCheck: map['sourceDestCheck'] == null ? null : (map['sourceDestCheck']! as bool).input(),
-      status: map['status'] == null ? null : (NetworkInterfaceStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      association: (() {
+        final guardedValue = map['association'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceNetworkInterfaceAssociationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      attachment: (() {
+        final guardedValue = map['attachment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceNetworkInterfaceAttachmentResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionTrackingConfiguration: (() {
+        final guardedValue = map['connectionTrackingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionTrackingSpecificationResponseResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupIdentifierResponse>(
+            guardedValue,
+            (value) => GroupIdentifierResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      interfaceType: (() {
+        final guardedValue = map['interfaceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4Prefixes: (() {
+        final guardedValue = map['ipv4Prefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceIpv4PrefixResponse>(
+            guardedValue,
+            (value) => InstanceIpv4PrefixResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ipv6Addresses: (() {
+        final guardedValue = map['ipv6Addresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceIpv6AddressResponse>(
+            guardedValue,
+            (value) => InstanceIpv6AddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ipv6Prefixes: (() {
+        final guardedValue = map['ipv6Prefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceIpv6PrefixResponse>(
+            guardedValue,
+            (value) => InstanceIpv6PrefixResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      macAddress: (() {
+        final guardedValue = map['macAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsName: (() {
+        final guardedValue = map['privateDnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAddresses: (() {
+        final guardedValue = map['privateIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstancePrivateIpAddressResponse>(
+            guardedValue,
+            (value) => InstancePrivateIpAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sourceDestCheck: (() {
+        final guardedValue = map['sourceDestCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkInterfaceStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

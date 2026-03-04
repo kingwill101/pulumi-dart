@@ -5,16 +5,17 @@ enum ComputeEngineTargetDefaultsDiskType {
   computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
   computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
 
-  const ComputeEngineTargetDefaultsDiskType(this.value);
-  final String value;
+  const ComputeEngineTargetDefaultsDiskType(this.wireValue);
+  final String wireValue;
 
   static ComputeEngineTargetDefaultsDiskType fromValue(String value) {
     for (final item in ComputeEngineTargetDefaultsDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeEngineTargetDefaultsDiskType value: $value');
+    throw ArgumentError(
+      'Unknown ComputeEngineTargetDefaultsDiskType value: $value',
+    );
   }
 }
-

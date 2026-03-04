@@ -11,9 +11,11 @@ class OverrideArgs {
   /// ID of the API proxy that will have its trace configuration overridden.
   final pulumi.Input<String>? apiProxy;
   final pulumi.Input<String> environmentId;
+
   /// ID of the trace configuration override specified as a system-generated UUID.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Trace configuration to override.
   final pulumi.Input<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig;
 
@@ -37,18 +39,37 @@ class OverrideArgs {
       'environmentId': environmentId,
       'name': ?name,
       'organizationId': organizationId,
-      'samplingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudApigeeV1TraceSamplingConfig, Map<String, dynamic>>(samplingConfig, (value) => value.toMap()),
+      'samplingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudApigeeV1TraceSamplingConfig,
+            Map<String, dynamic>
+          >(samplingConfig, (value) => value.toMap()),
     };
   }
 
   factory OverrideArgs.fromMap(Map<String, dynamic> map) {
     return OverrideArgs(
-      apiProxy: map['apiProxy'] == null ? null : (map['apiProxy']! as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      samplingConfig: map['samplingConfig'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig']! as Map).cast<String, dynamic>())).input(),
+      apiProxy: (() {
+        final guardedValue = map['apiProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      samplingConfig: (() {
+        final guardedValue = map['samplingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudApigeeV1TraceSamplingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

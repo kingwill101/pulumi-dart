@@ -6,16 +6,15 @@ enum DatabaseTypeProvider {
   aurora("AURORA"),
   alloydb("ALLOYDB");
 
-  const DatabaseTypeProvider(this.value);
-  final String value;
+  const DatabaseTypeProvider(this.wireValue);
+  final String wireValue;
 
   static DatabaseTypeProvider fromValue(String value) {
     for (final item in DatabaseTypeProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseTypeProvider value: $value');
   }
 }
-

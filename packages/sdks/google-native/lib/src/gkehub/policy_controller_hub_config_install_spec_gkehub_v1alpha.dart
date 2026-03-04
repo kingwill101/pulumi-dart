@@ -6,16 +6,20 @@ enum PolicyControllerHubConfigInstallSpecGkehubV1alpha {
   installSpecSuspended("INSTALL_SPEC_SUSPENDED"),
   installSpecDetached("INSTALL_SPEC_DETACHED");
 
-  const PolicyControllerHubConfigInstallSpecGkehubV1alpha(this.value);
-  final String value;
+  const PolicyControllerHubConfigInstallSpecGkehubV1alpha(this.wireValue);
+  final String wireValue;
 
-  static PolicyControllerHubConfigInstallSpecGkehubV1alpha fromValue(String value) {
-    for (final item in PolicyControllerHubConfigInstallSpecGkehubV1alpha.values) {
-      if (item.value == value) {
+  static PolicyControllerHubConfigInstallSpecGkehubV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in PolicyControllerHubConfigInstallSpecGkehubV1alpha.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerHubConfigInstallSpecGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerHubConfigInstallSpecGkehubV1alpha value: $value',
+    );
   }
 }
-

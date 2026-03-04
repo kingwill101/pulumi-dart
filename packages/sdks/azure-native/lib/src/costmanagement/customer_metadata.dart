@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerMetadata {
   /// Customer billing account id
   final pulumi.Input<String> billingAccountId;
+
   /// Customer billing profile id
   final pulumi.Input<String> billingProfileId;
 
@@ -26,9 +27,12 @@ class CustomerMetadata {
 
   factory CustomerMetadata.fromMap(Map<String, dynamic> map) {
     return CustomerMetadata(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      billingProfileId: (map['billingProfileId'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      billingProfileId: pulumi.Input.fromValue(
+        map['billingProfileId'] as String,
+      ),
     );
   }
 }
-

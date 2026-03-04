@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AbortInfoResponse {
   /// Causes that the analysis is aborted.
   final pulumi.Input<String> cause;
+
   /// List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
   final pulumi.Input<List<String>> projectsMissingPermission;
+
   /// URI of the resource that caused the abort.
   final pulumi.Input<String> resourceUri;
 
@@ -31,10 +33,11 @@ class AbortInfoResponse {
 
   factory AbortInfoResponse.fromMap(Map<String, dynamic> map) {
     return AbortInfoResponse(
-      cause: (map['cause'] as String).input(),
-      projectsMissingPermission: ((map['projectsMissingPermission'] as List).cast<String>()).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      cause: pulumi.Input.fromValue(map['cause'] as String),
+      projectsMissingPermission: pulumi.Input.fromValue(
+        (map['projectsMissingPermission'] as List).cast<String>(),
+      ),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

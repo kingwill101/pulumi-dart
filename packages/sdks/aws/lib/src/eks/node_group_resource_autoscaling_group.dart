@@ -8,20 +8,19 @@ class NodeGroupResourceAutoscalingGroup {
 
   /// Creates a new [NodeGroupResourceAutoscalingGroup].
   /// [name] Name of the AutoScaling Group.
-  NodeGroupResourceAutoscalingGroup({
-    this.name,
-  });
+  NodeGroupResourceAutoscalingGroup({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory NodeGroupResourceAutoscalingGroup.fromMap(Map<String, dynamic> map) {
     return NodeGroupResourceAutoscalingGroup(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

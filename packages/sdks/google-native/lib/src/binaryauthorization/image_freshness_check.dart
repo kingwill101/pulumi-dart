@@ -9,20 +9,15 @@ class ImageFreshnessCheck {
 
   /// Creates a new [ImageFreshnessCheck].
   /// [maxUploadAgeDays] The max number of days that is allowed since the image was uploaded. Must be greater than zero.
-  ImageFreshnessCheck({
-    required this.maxUploadAgeDays,
-  });
+  ImageFreshnessCheck({required this.maxUploadAgeDays});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxUploadAgeDays': maxUploadAgeDays,
-    };
+    return <String, dynamic>{'maxUploadAgeDays': maxUploadAgeDays};
   }
 
   factory ImageFreshnessCheck.fromMap(Map<String, dynamic> map) {
     return ImageFreshnessCheck(
-      maxUploadAgeDays: (map['maxUploadAgeDays'] as int).input(),
+      maxUploadAgeDays: pulumi.Input.fromValue(map['maxUploadAgeDays'] as int),
     );
   }
 }
-

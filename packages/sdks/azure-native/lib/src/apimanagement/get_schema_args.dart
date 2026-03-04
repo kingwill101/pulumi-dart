@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchemaArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schema id identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> schemaId;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,11 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaId: (map['schemaId'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

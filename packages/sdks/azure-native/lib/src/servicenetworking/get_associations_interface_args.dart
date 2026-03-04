@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssociationsInterfaceArgs {
   /// Name of Association
   final pulumi.Input<String> associationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -34,10 +36,13 @@ class GetAssociationsInterfaceArgs {
 
   factory GetAssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetAssociationsInterfaceArgs(
-      associationName: (map['associationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trafficControllerName: (map['trafficControllerName'] as String).input(),
+      associationName: pulumi.Input.fromValue(map['associationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      trafficControllerName: pulumi.Input.fromValue(
+        map['trafficControllerName'] as String,
+      ),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum ZonePlacementPolicyType {
   any("Any");
 
-  const ZonePlacementPolicyType(this.value);
-  final String value;
+  const ZonePlacementPolicyType(this.wireValue);
+  final String wireValue;
 
   static ZonePlacementPolicyType fromValue(String value) {
     for (final item in ZonePlacementPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ZonePlacementPolicyType value: $value');
   }
 }
-

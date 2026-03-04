@@ -12,20 +12,15 @@ class GetCryptoKeyIamPolicyArgs {
 
   /// Creates a new [GetCryptoKeyIamPolicyArgs].
   /// [cryptoKeyId] The crypto key ID, in the form
-  GetCryptoKeyIamPolicyArgs({
-    required this.cryptoKeyId,
-  });
+  GetCryptoKeyIamPolicyArgs({required this.cryptoKeyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cryptoKeyId': cryptoKeyId,
-    };
+    return <String, dynamic>{'cryptoKeyId': cryptoKeyId};
   }
 
   factory GetCryptoKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyIamPolicyArgs(
-      cryptoKeyId: (map['cryptoKeyId'] as String).input(),
+      cryptoKeyId: pulumi.Input.fromValue(map['cryptoKeyId'] as String),
     );
   }
 }
-

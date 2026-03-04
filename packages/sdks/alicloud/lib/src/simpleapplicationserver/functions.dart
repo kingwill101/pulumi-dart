@@ -16,7 +16,7 @@ import 'get_server_snapshots_result.dart';
 
 /// This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -60,7 +60,7 @@ Future<GetImagesResult> getImages(
 
 /// This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -215,7 +215,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -370,7 +370,7 @@ Future<GetServerCustomImagesResult> getServerCustomImages(
 
 /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -615,7 +615,7 @@ Future<GetServerDisksResult> getServerDisks(
 
 /// This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -757,7 +757,7 @@ Future<GetServerFirewallRulesResult> getServerFirewallRules(
 
 /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -900,7 +900,7 @@ Future<GetServerPlansResult> getServerPlans(
 
 /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///

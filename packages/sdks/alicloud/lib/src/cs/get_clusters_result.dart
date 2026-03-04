@@ -7,23 +7,31 @@ import 'get_clusters_cluster.dart';
 class GetClustersResult {
   /// The cluster ID.
   final String? clusterId;
+
   /// Custom cluster name.
   final String? clusterName;
+
   /// After you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
   final String? clusterSpec;
+
   /// The cluster type.
   final String? clusterType;
+
   /// A list of Cluster Entries. Each element contains the following attributes:
   final List<GetClustersCluster> clusters;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Cluster IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of name of Clusters.
   final List<String> names;
   final String? outputFile;
+
   /// ACK managed cluster profile.
   final String? profile;
 
@@ -61,7 +69,11 @@ class GetClustersResult {
       'clusterName': ?clusterName,
       'clusterSpec': ?clusterSpec,
       'clusterType': ?clusterType,
-      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
+      'clusters':
+          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
+            clusters,
+            (value) => value.toMap(),
+          ),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -74,19 +86,54 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterId: map['clusterId'] == null ? null : map['clusterId']! as String,
-      clusterName: map['clusterName'] == null ? null : map['clusterName']! as String,
-      clusterSpec: map['clusterSpec'] == null ? null : map['clusterSpec']! as String,
-      clusterType: map['clusterType'] == null ? null : map['clusterType']! as String,
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusterSpec: (() {
+        final guardedValue = map['clusterSpec'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusterType: (() {
+        final guardedValue = map['clusterType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(
+        map['clusters']!,
+        (value) =>
+            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      profile: map['profile'] == null ? null : map['profile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

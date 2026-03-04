@@ -553,7 +553,7 @@ import 'service_custom_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -568,15 +568,18 @@ import 'service_custom_certificate_state.dart';
 class ServiceCustomCertificate extends pulumi.CustomResource {
   /// The certificate version of the SignalR Custom Certificate service.
   late final pulumi.Output<String> certificateVersion;
+
   /// The certificate id of the SignalR Custom Certificate service. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Self assigned certificate is not supported and the provisioning status will fail.
+  /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   late final pulumi.Output<String> customCertificateId;
+
   /// The name of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The SignalR ID of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Custom Certificate is only available for SignalR Premium tier. Please enable managed identity in the corresponding SignalR Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
+  /// &gt; **Note:** Custom Certificate is only available for SignalR Premium tier. Please enable managed identity in the corresponding SignalR Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
   late final pulumi.Output<String> signalrServiceId;
 
   /// Creates a new [ServiceCustomCertificate].
@@ -588,15 +591,15 @@ class ServiceCustomCertificate extends pulumi.CustomResource {
     ServiceCustomCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVersion = registerOutput<String>('certificateVersion');
-    this.customCertificateId = registerOutput<String>('customCertificateId');
+         'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVersion = registerOutput<String>('certificateVersion');
+    customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 
   /// Gets an existing [ServiceCustomCertificate] resource's state with the given [name] and [id].
@@ -617,14 +620,14 @@ class ServiceCustomCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVersion = registerOutput<String>('certificateVersion');
-    this.customCertificateId = registerOutput<String>('customCertificateId');
+         'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVersion = registerOutput<String>('certificateVersion');
+    customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 }

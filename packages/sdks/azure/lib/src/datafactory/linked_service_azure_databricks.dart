@@ -687,31 +687,47 @@ import 'linked_service_azure_databricks_state.dart';
 class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
   /// Authenticate to ADB via an access token.
   late final pulumi.Output<String?> accessToken;
+
   /// The domain URL of the databricks instance.
   late final pulumi.Output<String> adbDomain;
+
   /// A map of additional properties to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The cluster_id of an existing cluster within the linked ADB instance.
   late final pulumi.Output<String?> existingClusterId;
+
   /// Leverages an instance pool within the linked ADB instance as one `instance_pool` block defined below.
-  late final pulumi.Output<LinkedServiceAzureDatabricksInstancePool?> instancePool;
+  late final pulumi.Output<LinkedServiceAzureDatabricksInstancePool?>
+  instancePool;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
+
   /// Authenticate to ADB via Azure Key Vault Linked Service as defined in the `key_vault_password` block below.
-  late final pulumi.Output<LinkedServiceAzureDatabricksKeyVaultPassword?> keyVaultPassword;
+  late final pulumi.Output<LinkedServiceAzureDatabricksKeyVaultPassword?>
+  keyVaultPassword;
   late final pulumi.Output<String> msiWorkSpaceResourceId;
+
   /// Authenticate to ADB via managed service identity.
   late final pulumi.Output<String> msiWorkspaceId;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// Creates new clusters within the linked ADB instance as defined in the `new_cluster_config` block below.
-  late final pulumi.Output<LinkedServiceAzureDatabricksNewClusterConfig?> newClusterConfig;
+  late final pulumi.Output<LinkedServiceAzureDatabricksNewClusterConfig?>
+  newClusterConfig;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
 
@@ -724,26 +740,36 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     LinkedServiceAzureDatabricksArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessToken = registerOutput<String?>('accessToken');
-    this.adbDomain = registerOutput<String>('adbDomain');
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.existingClusterId = registerOutput<String?>('existingClusterId');
-    this.instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>('instancePool');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPassword = registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>('keyVaultPassword');
-    this.msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
-    this.msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
+         'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessToken = registerOutput<String?>('accessToken');
+    adbDomain = registerOutput<String>('adbDomain');
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    existingClusterId = registerOutput<String?>('existingClusterId');
+    instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>(
+      'instancePool',
+    );
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword =
+        registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>(
+          'keyVaultPassword',
+        );
+    msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
+    msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.newClusterConfig = registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>('newClusterConfig');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    newClusterConfig =
+        registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>(
+          'newClusterConfig',
+        );
+    parameters = registerOutput<Map<String, String>?>('parameters');
   }
 
   /// Gets an existing [LinkedServiceAzureDatabricks] resource's state with the given [name] and [id].
@@ -764,25 +790,35 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessToken = registerOutput<String?>('accessToken');
-    this.adbDomain = registerOutput<String>('adbDomain');
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.existingClusterId = registerOutput<String?>('existingClusterId');
-    this.instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>('instancePool');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPassword = registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>('keyVaultPassword');
-    this.msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
-    this.msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
+         'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessToken = registerOutput<String?>('accessToken');
+    adbDomain = registerOutput<String>('adbDomain');
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    existingClusterId = registerOutput<String?>('existingClusterId');
+    instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>(
+      'instancePool',
+    );
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword =
+        registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>(
+          'keyVaultPassword',
+        );
+    msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
+    msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.newClusterConfig = registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>('newClusterConfig');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    newClusterConfig =
+        registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>(
+          'newClusterConfig',
+        );
+    parameters = registerOutput<Map<String, String>?>('parameters');
   }
 }

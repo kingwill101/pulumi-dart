@@ -9,14 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0`.
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0`.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
   final pulumi.Input<String> endIpAddress;
+
   /// The Name of the firewall rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The starting IP address to allow through the firewall for this rule.
   final pulumi.Input<String> startIpAddress;
+
   /// The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String> synapseWorkspaceId;
 
@@ -43,11 +46,16 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
-      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
+      synapseWorkspaceId: pulumi.Input.fromValue(
+        map['synapseWorkspaceId'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,19 @@ enum RegionNetworkEndpointGroupClientPortMappingMode {
   clientPortPerEndpoint("CLIENT_PORT_PER_ENDPOINT"),
   portMappingDisabled("PORT_MAPPING_DISABLED");
 
-  const RegionNetworkEndpointGroupClientPortMappingMode(this.value);
-  final String value;
+  const RegionNetworkEndpointGroupClientPortMappingMode(this.wireValue);
+  final String wireValue;
 
-  static RegionNetworkEndpointGroupClientPortMappingMode fromValue(String value) {
+  static RegionNetworkEndpointGroupClientPortMappingMode fromValue(
+    String value,
+  ) {
     for (final item in RegionNetworkEndpointGroupClientPortMappingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionNetworkEndpointGroupClientPortMappingMode value: $value');
+    throw ArgumentError(
+      'Unknown RegionNetworkEndpointGroupClientPortMappingMode value: $value',
+    );
   }
 }
-

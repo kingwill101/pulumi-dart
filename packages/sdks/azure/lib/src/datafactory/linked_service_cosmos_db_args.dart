@@ -9,26 +9,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceCosmosDbArgs {
   /// The endpoint of the Azure CosmosDB account. Required if `connection_string` is unspecified.
   final pulumi.Input<String>? accountEndpoint;
+
   /// The account key of the Azure Cosmos DB account. Required if `connection_string` is unspecified.
   final pulumi.Input<String>? accountKey;
+
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to CosmosDB Linked Service:
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
+
   /// The connection string. Required if `account_endpoint`, `account_key`, and `database` are unspecified.
   final pulumi.Input<String>? connectionString;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
+
   /// The name of the database. Required if `connection_string` is unspecified.
   final pulumi.Input<String>? database;
+
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -76,18 +86,61 @@ class LinkedServiceCosmosDbArgs {
 
   factory LinkedServiceCosmosDbArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceCosmosDbArgs(
-      accountEndpoint: map['accountEndpoint'] == null ? null : (map['accountEndpoint']! as String).input(),
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      dataFactoryId: (map['dataFactoryId'] as String).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      accountEndpoint: (() {
+        final guardedValue = map['accountEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

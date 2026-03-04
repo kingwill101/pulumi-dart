@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class APIServerAccessProfile {
   /// Whether to create the Fleet hub as a private cluster or not.
   final pulumi.Input<bool>? enablePrivateCluster;
+
   /// Whether to enable apiserver vnet integration for the Fleet hub or not.
   final pulumi.Input<bool>? enableVnetIntegration;
+
   /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
   final pulumi.Input<String>? subnetId;
 
@@ -31,10 +33,21 @@ class APIServerAccessProfile {
 
   factory APIServerAccessProfile.fromMap(Map<String, dynamic> map) {
     return APIServerAccessProfile(
-      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster']! as bool).input(),
-      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration']! as bool).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      enablePrivateCluster: (() {
+        final guardedValue = map['enablePrivateCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableVnetIntegration: (() {
+        final guardedValue = map['enableVnetIntegration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

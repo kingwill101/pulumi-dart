@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStudioApplicationsApplication {
   /// The ID of the Application.
   final pulumi.Input<String> applicationId;
+
   /// The name of the Application.
   final pulumi.Input<String> applicationName;
+
   /// The creation time of the Application.
   final pulumi.Input<String> createTime;
+
   /// The ID of the Application.
   final pulumi.Input<String> id;
+
   /// The image url of the Application.
   final pulumi.Input<String> imageUrl;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The status of the Application. Valid values: `success`, `release`.
   final pulumi.Input<String> status;
+
   /// The topo url of the Application.
   final pulumi.Input<String> topoUrl;
 
@@ -55,15 +62,14 @@ class GetStudioApplicationsApplication {
 
   factory GetStudioApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsApplication(
-      applicationId: (map['applicationId'] as String).input(),
-      applicationName: (map['applicationName'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      imageUrl: (map['imageUrl'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      status: (map['status'] as String).input(),
-      topoUrl: (map['topoUrl'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imageUrl: pulumi.Input.fromValue(map['imageUrl'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      topoUrl: pulumi.Input.fromValue(map['topoUrl'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationServiceArgs {
   /// The name of Application Configuration Service.
   final pulumi.Input<String> configurationServiceName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,13 @@ class GetConfigurationServiceArgs {
 
   factory GetConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationServiceArgs(
-      configurationServiceName: (map['configurationServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      configurationServiceName: pulumi.Input.fromValue(
+        map['configurationServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

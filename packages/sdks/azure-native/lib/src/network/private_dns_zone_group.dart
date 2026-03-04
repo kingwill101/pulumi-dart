@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'private_dns_zone_config_response.dart';
 import 'private_dns_zone_group_args.dart';
 
 /// Private dns zone group resource.
@@ -159,12 +158,16 @@ import 'private_dns_zone_group_args.dart';
 class PrivateDnsZoneGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// A collection of private dns zone configurations of the private dns zone group.
-  late final pulumi.Output<List<PrivateDnsZoneConfigResponse>?> privateDnsZoneConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateDnsZoneConfigs;
+
   /// The provisioning state of the private dns zone group resource.
   late final pulumi.Output<String> provisioningState;
 
@@ -177,15 +180,17 @@ class PrivateDnsZoneGroup extends pulumi.CustomResource {
     PrivateDnsZoneGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:PrivateDnsZoneGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:PrivateDnsZoneGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.privateDnsZoneConfigs = registerOutput<List<PrivateDnsZoneConfigResponse>?>('privateDnsZoneConfigs');
-    this.provisioningState = registerOutput<String>('provisioningState');
+    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'privateDnsZoneConfigs',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
   }
 }

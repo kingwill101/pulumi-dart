@@ -5,16 +5,15 @@ enum ArcSqlServerFailoverMode {
   valueEXTERNAL("EXTERNAL"),
   valueNONE("NONE");
 
-  const ArcSqlServerFailoverMode(this.value);
-  final String value;
+  const ArcSqlServerFailoverMode(this.wireValue);
+  final String wireValue;
 
   static ArcSqlServerFailoverMode fromValue(String value) {
     for (final item in ArcSqlServerFailoverMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArcSqlServerFailoverMode value: $value');
   }
 }
-

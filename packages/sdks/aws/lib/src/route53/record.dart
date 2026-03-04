@@ -1,13 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'record_alias.dart';
 import 'record_args.dart';
 import 'record_cidr_routing_policy.dart';
-import 'record_failover_routing_policy.dart';
-import 'record_geolocation_routing_policy.dart';
 import 'record_geoproximity_routing_policy.dart';
-import 'record_latency_routing_policy.dart';
 import 'record_state.dart';
-import 'record_weighted_routing_policy.dart';
 
 /// Provides a Route53 record resource.
 ///
@@ -1159,39 +1154,57 @@ import 'record_weighted_routing_policy.dart';
 class Record extends pulumi.CustomResource {
   /// An alias block. Conflicts with `ttl` & `records`.
   /// Documented below.
-  late final pulumi.Output<List<RecordAlias>?> aliases;
+  late final pulumi.Output<List<Map<String, dynamic>>?> aliases;
+
   /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
   ///
   /// Exactly one of `records` or `alias` must be specified: this determines whether it's an alias record.
   late final pulumi.Output<bool> allowOverwrite;
+
   /// A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
   late final pulumi.Output<RecordCidrRoutingPolicy?> cidrRoutingPolicy;
+
   /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<RecordFailoverRoutingPolicy>?> failoverRoutingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> failoverRoutingPolicies;
+
   /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`.
   late final pulumi.Output<String> fqdn;
+
   /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<RecordGeolocationRoutingPolicy>?> geolocationRoutingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  geolocationRoutingPolicies;
+
   /// A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<RecordGeoproximityRoutingPolicy?> geoproximityRoutingPolicy;
+  late final pulumi.Output<RecordGeoproximityRoutingPolicy?>
+  geoproximityRoutingPolicy;
+
   /// The health check the record should be associated with.
   late final pulumi.Output<String?> healthCheckId;
+
   /// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<RecordLatencyRoutingPolicy>?> latencyRoutingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> latencyRoutingPolicies;
+
   /// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
   late final pulumi.Output<bool?> multivalueAnswerRoutingPolicy;
+
   /// The name of the record.
   late final pulumi.Output<String> name;
+
   /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
   late final pulumi.Output<List<String>?> records;
+
   /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
   late final pulumi.Output<String?> setIdentifier;
+
   /// The TTL of the record.
   late final pulumi.Output<int?> ttl;
+
   /// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
   late final pulumi.Output<String> type;
+
   /// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<RecordWeightedRoutingPolicy>?> weightedRoutingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> weightedRoutingPolicies;
+
   /// The ID of the hosted zone to contain this record.
   late final pulumi.Output<String> zoneId;
 
@@ -1199,33 +1212,45 @@ class Record extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Record]. {@macro pulumi_route53_record_record_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Record(
-    String name, {
-    RecordArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:route53/record:Record',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliases = registerOutput<List<RecordAlias>?>('aliases');
-    this.allowOverwrite = registerOutput<bool>('allowOverwrite');
-    this.cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy');
-    this.failoverRoutingPolicies = registerOutput<List<RecordFailoverRoutingPolicy>?>('failoverRoutingPolicies');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.geolocationRoutingPolicies = registerOutput<List<RecordGeolocationRoutingPolicy>?>('geolocationRoutingPolicies');
-    this.geoproximityRoutingPolicy = registerOutput<RecordGeoproximityRoutingPolicy?>('geoproximityRoutingPolicy');
-    this.healthCheckId = registerOutput<String?>('healthCheckId');
-    this.latencyRoutingPolicies = registerOutput<List<RecordLatencyRoutingPolicy>?>('latencyRoutingPolicies');
-    this.multivalueAnswerRoutingPolicy = registerOutput<bool?>('multivalueAnswerRoutingPolicy');
+  Record(String name, {RecordArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:route53/record:Record',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
+    allowOverwrite = registerOutput<bool>('allowOverwrite');
+    cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>(
+      'cidrRoutingPolicy',
+    );
+    failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'failoverRoutingPolicies',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    geolocationRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'geolocationRoutingPolicies',
+    );
+    geoproximityRoutingPolicy =
+        registerOutput<RecordGeoproximityRoutingPolicy?>(
+          'geoproximityRoutingPolicy',
+        );
+    healthCheckId = registerOutput<String?>('healthCheckId');
+    latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'latencyRoutingPolicies',
+    );
+    multivalueAnswerRoutingPolicy = registerOutput<bool?>(
+      'multivalueAnswerRoutingPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>?>('records');
-    this.setIdentifier = registerOutput<String?>('setIdentifier');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.weightedRoutingPolicies = registerOutput<List<RecordWeightedRoutingPolicy>?>('weightedRoutingPolicies');
-    this.zoneId = registerOutput<String>('zoneId');
+    records = registerOutput<List<String>?>('records');
+    setIdentifier = registerOutput<String?>('setIdentifier');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    weightedRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'weightedRoutingPolicies',
+    );
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Record] resource's state with the given [name] and [id].
@@ -1246,27 +1271,42 @@ class Record extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/record:Record',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliases = registerOutput<List<RecordAlias>?>('aliases');
-    this.allowOverwrite = registerOutput<bool>('allowOverwrite');
-    this.cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy');
-    this.failoverRoutingPolicies = registerOutput<List<RecordFailoverRoutingPolicy>?>('failoverRoutingPolicies');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.geolocationRoutingPolicies = registerOutput<List<RecordGeolocationRoutingPolicy>?>('geolocationRoutingPolicies');
-    this.geoproximityRoutingPolicy = registerOutput<RecordGeoproximityRoutingPolicy?>('geoproximityRoutingPolicy');
-    this.healthCheckId = registerOutput<String?>('healthCheckId');
-    this.latencyRoutingPolicies = registerOutput<List<RecordLatencyRoutingPolicy>?>('latencyRoutingPolicies');
-    this.multivalueAnswerRoutingPolicy = registerOutput<bool?>('multivalueAnswerRoutingPolicy');
+         'aws:route53/record:Record',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
+    allowOverwrite = registerOutput<bool>('allowOverwrite');
+    cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>(
+      'cidrRoutingPolicy',
+    );
+    failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'failoverRoutingPolicies',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    geolocationRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'geolocationRoutingPolicies',
+    );
+    geoproximityRoutingPolicy =
+        registerOutput<RecordGeoproximityRoutingPolicy?>(
+          'geoproximityRoutingPolicy',
+        );
+    healthCheckId = registerOutput<String?>('healthCheckId');
+    latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'latencyRoutingPolicies',
+    );
+    multivalueAnswerRoutingPolicy = registerOutput<bool?>(
+      'multivalueAnswerRoutingPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>?>('records');
-    this.setIdentifier = registerOutput<String?>('setIdentifier');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.weightedRoutingPolicies = registerOutput<List<RecordWeightedRoutingPolicy>?>('weightedRoutingPolicies');
-    this.zoneId = registerOutput<String>('zoneId');
+    records = registerOutput<List<String>?>('records');
+    setIdentifier = registerOutput<String?>('setIdentifier');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    weightedRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'weightedRoutingPolicies',
+    );
+    zoneId = registerOutput<String>('zoneId');
   }
 }

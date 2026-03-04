@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// The name of certificate.
   final pulumi.Input<String> certificateName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      certificateName: (map['certificateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

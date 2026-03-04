@@ -9,20 +9,13 @@ class Identity {
 
   /// Creates a new [Identity].
   /// [type] The type of managed service identity.
-  Identity({
-    required this.type,
-  });
+  Identity({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory Identity.fromMap(Map<String, dynamic> map) {
-    return Identity(
-      type: (map['type'] as String).input(),
-    );
+    return Identity(type: pulumi.Input.fromValue(map['type'] as String));
   }
 }
-

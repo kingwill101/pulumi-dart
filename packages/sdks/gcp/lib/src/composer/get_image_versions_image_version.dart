@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageVersionsImageVersion {
   /// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
   final pulumi.Input<String> imageVersionId;
+
   /// Supported python versions for this image version
   final pulumi.Input<List<String>> supportedPythonVersions;
 
@@ -25,9 +26,10 @@ class GetImageVersionsImageVersion {
 
   factory GetImageVersionsImageVersion.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsImageVersion(
-      imageVersionId: (map['imageVersionId'] as String).input(),
-      supportedPythonVersions: ((map['supportedPythonVersions'] as List).cast<String>()).input(),
+      imageVersionId: pulumi.Input.fromValue(map['imageVersionId'] as String),
+      supportedPythonVersions: pulumi.Input.fromValue(
+        (map['supportedPythonVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

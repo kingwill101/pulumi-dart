@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
   /// The ID of the destination server group to which requests are forwarded.
   final pulumi.Input<String> serverGroupId;
+
   /// The Weight of server group.
   final pulumi.Input<int> weight;
 
@@ -17,17 +18,15 @@ class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serverGroupId': serverGroupId,
-      'weight': weight,
-    };
+    return <String, dynamic>{'serverGroupId': serverGroupId, 'weight': weight};
   }
 
-  factory GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
+  factory GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple(
-      serverGroupId: (map['serverGroupId'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

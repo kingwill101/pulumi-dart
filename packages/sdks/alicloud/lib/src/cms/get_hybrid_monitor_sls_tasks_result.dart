@@ -44,7 +44,11 @@ class GetHybridMonitorSlsTasksResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'tasks': pulumi.Input.encodeList<GetHybridMonitorSlsTasksTask, Map<String, dynamic>>(tasks, (value) => value.toMap()),
+      'tasks':
+          pulumi.Input.encodeList<
+            GetHybridMonitorSlsTasksTask,
+            Map<String, dynamic>
+          >(tasks, (value) => value.toMap()),
     };
   }
 
@@ -52,13 +56,37 @@ class GetHybridMonitorSlsTasksResult {
     return GetHybridMonitorSlsTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      namespace: map['namespace'] == null ? null : map['namespace']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      tasks: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTask>(map['tasks'], (value) => GetHybridMonitorSlsTasksTask.fromMap((value as Map).cast<String, dynamic>())),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      tasks: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTask>(
+        map['tasks']!,
+        (value) => GetHybridMonitorSlsTasksTask.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

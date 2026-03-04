@@ -192,39 +192,57 @@ import 'system_data_response.dart';
 class ApplicationGroup extends pulumi.CustomResource {
   /// Resource Type of ApplicationGroup.
   late final pulumi.Output<String> applicationGroupType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Is cloud pc resource.
   late final pulumi.Output<bool> cloudPcResource;
+
   /// Description of ApplicationGroup.
   late final pulumi.Output<String?> description;
+
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
+
   /// Friendly name of ApplicationGroup.
   late final pulumi.Output<String?> friendlyName;
+
   /// HostPool arm path of ApplicationGroup.
   late final pulumi.Output<String> hostPoolArmPath;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?> identity;
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?>
+  identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ObjectId of ApplicationGroup. (internal use)
   late final pulumi.Output<String> objectId;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?> plan;
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?>
+  plan;
+
   /// Boolean representing whether the applicationGroup is show in the feed.
   late final pulumi.Output<bool?> showInFeed;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseSku?> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Workspace arm path of ApplicationGroup.
   late final pulumi.Output<String> workspaceArmPath;
 
@@ -237,30 +255,37 @@ class ApplicationGroup extends pulumi.CustomResource {
     ApplicationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:desktopvirtualization:ApplicationGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGroupType = registerOutput<String>('applicationGroupType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cloudPcResource = registerOutput<bool>('cloudPcResource');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.hostPoolArmPath = registerOutput<String>('hostPoolArmPath');
-    this.identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
+         'azure-native:desktopvirtualization:ApplicationGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGroupType = registerOutput<String>('applicationGroupType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudPcResource = registerOutput<bool>('cloudPcResource');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPoolArmPath = registerOutput<String>('hostPoolArmPath');
+    identity =
+        registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
+          'identity',
+        );
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String>('objectId');
-    this.plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan');
-    this.showInFeed = registerOutput<bool?>('showInFeed');
-    this.sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.workspaceArmPath = registerOutput<String>('workspaceArmPath');
+    objectId = registerOutput<String>('objectId');
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
+      'plan',
+    );
+    showInFeed = registerOutput<bool?>('showInFeed');
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
+      'sku',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    workspaceArmPath = registerOutput<String>('workspaceArmPath');
   }
 }

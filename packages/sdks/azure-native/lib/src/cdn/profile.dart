@@ -157,32 +157,46 @@ import 'system_data_response.dart';
 class Profile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Key-Value pair representing additional properties for profiles.
   late final pulumi.Output<Map<String, String>> extendedProperties;
+
   /// The Id of the frontdoor.
   late final pulumi.Output<String> frontDoorId;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
   late final pulumi.Output<String> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
   late final pulumi.Output<ProfileLogScrubbingResponse?> logScrubbing;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
   late final pulumi.Output<int?> originResponseTimeoutSeconds;
+
   /// Provisioning status of the profile.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource status of the profile.
   late final pulumi.Output<String> resourceState;
+
   /// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -195,25 +209,29 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:Profile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedProperties = registerOutput<Map<String, String>>('extendedProperties');
-    this.frontDoorId = registerOutput<String>('frontDoorId');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.logScrubbing = registerOutput<ProfileLogScrubbingResponse?>('logScrubbing');
+         'azure-native:cdn:Profile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedProperties = registerOutput<Map<String, String>>(
+      'extendedProperties',
+    );
+    frontDoorId = registerOutput<String>('frontDoorId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    logScrubbing = registerOutput<ProfileLogScrubbingResponse?>('logScrubbing');
     this.name = registerOutput<String>('name');
-    this.originResponseTimeoutSeconds = registerOutput<int?>('originResponseTimeoutSeconds');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    originResponseTimeoutSeconds = registerOutput<int?>(
+      'originResponseTimeoutSeconds',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'access_levels_access_level.dart';
 import 'access_levels_args.dart';
 import 'access_levels_state.dart';
 
@@ -413,7 +412,8 @@ import 'access_levels_state.dart';
 class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<AccessLevelsAccessLevel>?> accessLevels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> accessLevels;
+
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
@@ -427,13 +427,13 @@ class AccessLevels extends pulumi.CustomResource {
     AccessLevelsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessLevels:AccessLevels',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');
-    this.parent = registerOutput<String>('parent');
+         'gcp:accesscontextmanager/accessLevels:AccessLevels',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    parent = registerOutput<String>('parent');
   }
 
   /// Gets an existing [AccessLevels] resource's state with the given [name] and [id].
@@ -454,12 +454,12 @@ class AccessLevels extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessLevels:AccessLevels',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');
-    this.parent = registerOutput<String>('parent');
+         'gcp:accesscontextmanager/accessLevels:AccessLevels',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    parent = registerOutput<String>('parent');
   }
 }

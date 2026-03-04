@@ -3,16 +3,15 @@ enum ScrubbingRuleEntryState {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ScrubbingRuleEntryState(this.value);
-  final String value;
+  const ScrubbingRuleEntryState(this.wireValue);
+  final String wireValue;
 
   static ScrubbingRuleEntryState fromValue(String value) {
     for (final item in ScrubbingRuleEntryState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScrubbingRuleEntryState value: $value');
   }
 }
-

@@ -10,20 +10,19 @@ class KeyRingImportJobPublicKey {
 
   /// Creates a new [KeyRingImportJobPublicKey].
   /// [pem] (Output)
-  KeyRingImportJobPublicKey({
-    this.pem,
-  });
+  KeyRingImportJobPublicKey({this.pem});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pem': ?pem,
-    };
+    return <String, dynamic>{'pem': ?pem};
   }
 
   factory KeyRingImportJobPublicKey.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobPublicKey(
-      pem: map['pem'] == null ? null : (map['pem']! as String).input(),
+      pem: (() {
+        final guardedValue = map['pem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

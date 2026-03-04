@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegion {
   /// The name of the region.
   final pulumi.Input<String> localName;
+
   /// The endpoint of the region.
   final pulumi.Input<String> regionEndpoint;
+
   /// The ID of the region.
   final pulumi.Input<String> regionId;
 
@@ -30,10 +32,9 @@ class GetRegionsRegion {
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
-      localName: (map['localName'] as String).input(),
-      regionEndpoint: (map['regionEndpoint'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      localName: pulumi.Input.fromValue(map['localName'] as String),
+      regionEndpoint: pulumi.Input.fromValue(map['regionEndpoint'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum SharedPrivateLinkResourceStatus {
   rejected("Rejected"),
   disconnected("Disconnected");
 
-  const SharedPrivateLinkResourceStatus(this.value);
-  final String value;
+  const SharedPrivateLinkResourceStatus(this.wireValue);
+  final String wireValue;
 
   static SharedPrivateLinkResourceStatus fromValue(String value) {
     for (final item in SharedPrivateLinkResourceStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SharedPrivateLinkResourceStatus value: $value');
+    throw ArgumentError(
+      'Unknown SharedPrivateLinkResourceStatus value: $value',
+    );
   }
 }
-

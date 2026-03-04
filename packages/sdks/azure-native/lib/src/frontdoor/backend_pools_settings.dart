@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendPoolsSettings {
   /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
   final pulumi.Input<String>? enforceCertificateNameCheck;
+
   /// Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
   final pulumi.Input<int>? sendRecvTimeoutSeconds;
 
@@ -26,9 +27,16 @@ class BackendPoolsSettings {
 
   factory BackendPoolsSettings.fromMap(Map<String, dynamic> map) {
     return BackendPoolsSettings(
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck']! as String).input(),
-      sendRecvTimeoutSeconds: map['sendRecvTimeoutSeconds'] == null ? null : (map['sendRecvTimeoutSeconds']! as int).input(),
+      enforceCertificateNameCheck: (() {
+        final guardedValue = map['enforceCertificateNameCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendRecvTimeoutSeconds: (() {
+        final guardedValue = map['sendRecvTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

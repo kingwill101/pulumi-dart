@@ -8,7 +8,7 @@ import 'streaming_data_source_state.dart';
 ///
 /// For information about GPDB Streaming Data Source and how to use it, see [What is Streaming Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdatasource).
 ///
-/// > **NOTE:** Available since v1.227.0.
+/// &gt; **NOTE:** Available since v1.227.0.
 ///
 /// ## Example Usage
 ///
@@ -516,22 +516,30 @@ import 'streaming_data_source_state.dart';
 class StreamingDataSource extends pulumi.CustomResource {
   /// Creation time
   late final pulumi.Output<String> createTime;
+
   /// The configurations of the data source.
   late final pulumi.Output<String> dataSourceConfig;
+
   /// The description of the data source.
   late final pulumi.Output<String?> dataSourceDescription;
+
   /// The data source ID.
   late final pulumi.Output<String> dataSourceId;
+
   /// Data Source Name
   late final pulumi.Output<String> dataSourceName;
+
   /// Data Source Type
   late final pulumi.Output<String> dataSourceType;
+
   /// The instance ID.
   ///
-  /// > **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+  /// &gt; **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The real-time data service ID.
   late final pulumi.Output<int> serviceId;
+
   /// Service Status:
   late final pulumi.Output<String> status;
 
@@ -544,20 +552,20 @@ class StreamingDataSource extends pulumi.CustomResource {
     StreamingDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingDataSource:StreamingDataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceConfig = registerOutput<String>('dataSourceConfig');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dataSourceName = registerOutput<String>('dataSourceName');
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceId = registerOutput<int>('serviceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/streamingDataSource:StreamingDataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceConfig = registerOutput<String>('dataSourceConfig');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dataSourceName = registerOutput<String>('dataSourceName');
+    dataSourceType = registerOutput<String>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceId = registerOutput<int>('serviceId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [StreamingDataSource] resource's state with the given [name] and [id].
@@ -578,19 +586,19 @@ class StreamingDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingDataSource:StreamingDataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceConfig = registerOutput<String>('dataSourceConfig');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.dataSourceName = registerOutput<String>('dataSourceName');
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceId = registerOutput<int>('serviceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/streamingDataSource:StreamingDataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceConfig = registerOutput<String>('dataSourceConfig');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    dataSourceName = registerOutput<String>('dataSourceName');
+    dataSourceType = registerOutput<String>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceId = registerOutput<int>('serviceId');
+    status = registerOutput<String>('status');
   }
 }

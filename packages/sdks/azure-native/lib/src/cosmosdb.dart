@@ -1,5 +1,3 @@
-library module_cosmosdb;
-
 export 'cosmosdb/account_key_metadata_response.dart';
 export 'cosmosdb/allocation_state.dart';
 export 'cosmosdb/analytical_storage_configuration.dart';

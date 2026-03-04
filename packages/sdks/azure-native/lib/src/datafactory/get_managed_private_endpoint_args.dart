@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedPrivateEndpointArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// Managed private endpoint name
   final pulumi.Input<String> managedPrivateEndpointName;
+
   /// Managed virtual network name
   final pulumi.Input<String> managedVirtualNetworkName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,16 @@ class GetManagedPrivateEndpointArgs {
 
   factory GetManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      managedPrivateEndpointName: (map['managedPrivateEndpointName'] as String).input(),
-      managedVirtualNetworkName: (map['managedVirtualNetworkName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      managedPrivateEndpointName: pulumi.Input.fromValue(
+        map['managedPrivateEndpointName'] as String,
+      ),
+      managedVirtualNetworkName: pulumi.Input.fromValue(
+        map['managedVirtualNetworkName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

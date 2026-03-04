@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberState {
   /// AWS account ID for member account.
   final pulumi.Input<String>? accountId;
+
   /// The detector ID of the GuardDuty account where you want to create member accounts.
   final pulumi.Input<String>? detectorId;
+
   /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   final pulumi.Input<bool>? disableEmailNotification;
+
   /// Email address for member account.
   final pulumi.Input<String>? email;
+
   /// Message for invitation.
   final pulumi.Input<String>? invitationMessage;
+
   /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
   final pulumi.Input<bool>? invite;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
   final pulumi.Input<String>? relationshipStatus;
 
@@ -56,15 +63,46 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
-      disableEmailNotification: map['disableEmailNotification'] == null ? null : ((map['disableEmailNotification'] as bool).input()).input(),
-      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
-      invitationMessage: map['invitationMessage'] == null ? null : ((map['invitationMessage'] as String).input()).input(),
-      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      relationshipStatus: map['relationshipStatus'] == null ? null : ((map['relationshipStatus'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      detectorId: (() {
+        final guardedValue = map['detectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableEmailNotification: (() {
+        final guardedValue = map['disableEmailNotification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invitationMessage: (() {
+        final guardedValue = map['invitationMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invite: (() {
+        final guardedValue = map['invite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relationshipStatus: (() {
+        final guardedValue = map['relationshipStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

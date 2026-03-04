@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterLogDeliveryConfiguration {
   /// Name of either the CloudWatch Logs LogGroup or Kinesis Data Firehose resource.
   final pulumi.Input<String> destination;
+
   /// For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   final pulumi.Input<String> destinationType;
+
   /// Valid values are `json` or `text`
   final pulumi.Input<String> logFormat;
+
   /// Valid values are  `slow-log` or `engine-log`. Max 1 of each.
   final pulumi.Input<String> logType;
 
@@ -35,11 +38,10 @@ class ClusterLogDeliveryConfiguration {
 
   factory ClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterLogDeliveryConfiguration(
-      destination: (map['destination'] as String).input(),
-      destinationType: (map['destinationType'] as String).input(),
-      logFormat: (map['logFormat'] as String).input(),
-      logType: (map['logType'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      logFormat: pulumi.Input.fromValue(map['logFormat'] as String),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

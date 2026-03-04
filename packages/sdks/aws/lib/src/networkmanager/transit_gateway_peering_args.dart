@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayPeeringArgs {
   /// ID of a core network.
   final pulumi.Input<String> coreNetworkId;
+
   /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
@@ -36,10 +38,17 @@ class TransitGatewayPeeringArgs {
 
   factory TransitGatewayPeeringArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringArgs(
-      coreNetworkId: (map['coreNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transitGatewayArn: (map['transitGatewayArn'] as String).input(),
+      coreNetworkId: pulumi.Input.fromValue(map['coreNetworkId'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitGatewayArn: pulumi.Input.fromValue(
+        map['transitGatewayArn'] as String,
+      ),
     );
   }
 }
-

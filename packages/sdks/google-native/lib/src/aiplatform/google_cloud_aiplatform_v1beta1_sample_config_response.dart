@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1SampleConfigResponse {
   /// The percentage of data needed to be labeled in each following batch (except the first batch).
   final pulumi.Input<int> followingBatchSamplePercentage;
+
   /// The percentage of data needed to be labeled in the first batch.
   final pulumi.Input<int> initialBatchSamplePercentage;
+
   /// Field to choose sampling strategy. Sampling strategy will decide which data should be selected for human labeling in every batch.
   final pulumi.Input<String> sampleStrategy;
 
@@ -29,12 +31,17 @@ class GoogleCloudAiplatformV1beta1SampleConfigResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1SampleConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SampleConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1SampleConfigResponse(
-      followingBatchSamplePercentage: (map['followingBatchSamplePercentage'] as int).input(),
-      initialBatchSamplePercentage: (map['initialBatchSamplePercentage'] as int).input(),
-      sampleStrategy: (map['sampleStrategy'] as String).input(),
+      followingBatchSamplePercentage: pulumi.Input.fromValue(
+        map['followingBatchSamplePercentage'] as int,
+      ),
+      initialBatchSamplePercentage: pulumi.Input.fromValue(
+        map['initialBatchSamplePercentage'] as int,
+      ),
+      sampleStrategy: pulumi.Input.fromValue(map['sampleStrategy'] as String),
     );
   }
 }
-

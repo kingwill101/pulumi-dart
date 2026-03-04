@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentAiplatformV1beta1Args {
   /// Description of this TensorboardExperiment.
   final pulumi.Input<String>? description;
+
   /// User provided name of this TensorboardExperiment.
   final pulumi.Input<String>? displayName;
+
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
+
   /// The labels with user-defined metadata to organize your TensorboardExperiment. Label keys and values cannot be longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `aiplatform.googleapis.com/` and are immutable. The following system labels exist for each Dataset: * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its value is the metadata_schema's title.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Immutable. Source of the TensorboardExperiment. Example: a custom training job.
   final pulumi.Input<String>? source;
+
   /// Required. The ID to use for the Tensorboard experiment, which becomes the final component of the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
   final pulumi.Input<String> tensorboardExperimentId;
   final pulumi.Input<String> tensorboardId;
@@ -61,16 +66,47 @@ class ExperimentAiplatformV1beta1Args {
 
   factory ExperimentAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ExperimentAiplatformV1beta1Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      tensorboardExperimentId: (map['tensorboardExperimentId'] as String).input(),
-      tensorboardId: (map['tensorboardId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tensorboardExperimentId: pulumi.Input.fromValue(
+        map['tensorboardExperimentId'] as String,
+      ),
+      tensorboardId: pulumi.Input.fromValue(map['tensorboardId'] as String),
     );
   }
 }
-

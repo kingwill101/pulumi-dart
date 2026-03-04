@@ -11,22 +11,27 @@ class DatabaseArgs {
   /// The App Engine integration mode to use for this database.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? appEngineIntegrationMode;
+
   /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
   /// database. If not present, the database is secured by the default Google
   /// encryption key.
   /// Structure is documented below.
   final pulumi.Input<DatabaseCmekConfig>? cmekConfig;
+
   /// The concurrency control mode to use for this database.
   /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
   final pulumi.Input<String>? concurrencyMode;
+
   /// The database edition.
   /// Possible values are: `STANDARD`, `ENTERPRISE`.
   final pulumi.Input<String>? databaseEdition;
   final pulumi.Input<String>? deleteProtectionState;
   final pulumi.Input<String>? deletionPolicy;
+
   /// The location of the database. Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
   final pulumi.Input<String> locationId;
+
   /// The ID to use for the database, which will become the final
   /// component of the database's resource name. This value should be 4-63
   /// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -34,6 +39,7 @@ class DatabaseArgs {
   /// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
   /// "(default)" database id is also valid.
   final pulumi.Input<String>? name;
+
   /// Whether to enable the PITR feature on this database.
   /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
   /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
@@ -42,9 +48,11 @@ class DatabaseArgs {
   /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
   /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
   final pulumi.Input<String>? pointInTimeRecoveryEnablement;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Input only. A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -52,6 +60,7 @@ class DatabaseArgs {
   /// resource replacement when mutated. To apply tags to an existing resource, see
   /// the `gcp.tags.TagValue` resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the database.
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
   /// for information about how to choose.
@@ -89,7 +98,11 @@ class DatabaseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appEngineIntegrationMode': ?appEngineIntegrationMode,
-      'cmekConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseCmekConfig, Map<String, dynamic>>(cmekConfig, (value) => value.toMap()),
+      'cmekConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseCmekConfig,
+            Map<String, dynamic>
+          >(cmekConfig, (value) => value.toMap()),
       'concurrencyMode': ?concurrencyMode,
       'databaseEdition': ?databaseEdition,
       'deleteProtectionState': ?deleteProtectionState,
@@ -105,19 +118,64 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (map['appEngineIntegrationMode']! as String).input(),
-      cmekConfig: map['cmekConfig'] == null ? null : (DatabaseCmekConfig.fromMap((map['cmekConfig']! as Map).cast<String, dynamic>())).input(),
-      concurrencyMode: map['concurrencyMode'] == null ? null : (map['concurrencyMode']! as String).input(),
-      databaseEdition: map['databaseEdition'] == null ? null : (map['databaseEdition']! as String).input(),
-      deleteProtectionState: map['deleteProtectionState'] == null ? null : (map['deleteProtectionState']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      locationId: (map['locationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (map['pointInTimeRecoveryEnablement']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      appEngineIntegrationMode: (() {
+        final guardedValue = map['appEngineIntegrationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cmekConfig: (() {
+        final guardedValue = map['cmekConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseCmekConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      concurrencyMode: (() {
+        final guardedValue = map['concurrencyMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseEdition: (() {
+        final guardedValue = map['databaseEdition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteProtectionState: (() {
+        final guardedValue = map['deleteProtectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locationId: pulumi.Input.fromValue(map['locationId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pointInTimeRecoveryEnablement: (() {
+        final guardedValue = map['pointInTimeRecoveryEnablement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,24 +5,34 @@ import 'partner_attachment_state.dart';
 
 class PartnerAttachment extends pulumi.CustomResource {
   late final pulumi.Output<PartnerAttachmentBgp> bgp;
+
   /// The children uuids of Partner Attachment
   late final pulumi.Output<List<String>> childrens;
+
   /// The connection bandwidth in Mbps
   late final pulumi.Output<int> connectionBandwidthInMbps;
+
   /// The date and time when the Partner Attachment was created
   late final pulumi.Output<String> createdAt;
+
   /// The NaaS provider
   late final pulumi.Output<String> naasProvider;
+
   /// The name of the Partner Attachment
   late final pulumi.Output<String> name;
+
   /// The UUID of the Parent Partner Attachment
   late final pulumi.Output<String?> parentUuid;
+
   /// The redundancy zone for the NaaS
   late final pulumi.Output<String> redundancyZone;
+
   /// The region where the Partner Attachment will be created
   late final pulumi.Output<String> region;
+
   /// The state of the Partner Attachment
   late final pulumi.Output<String> state;
+
   /// The list of VPC IDs to attach the Partner Attachment to
   late final pulumi.Output<List<String>> vpcIds;
 
@@ -35,22 +45,24 @@ class PartnerAttachment extends pulumi.CustomResource {
     PartnerAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/partnerAttachment:PartnerAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgp = registerOutput<PartnerAttachmentBgp>('bgp');
-    this.childrens = registerOutput<List<String>>('childrens');
-    this.connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.naasProvider = registerOutput<String>('naasProvider');
+         'digitalocean:index/partnerAttachment:PartnerAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgp = registerOutput<PartnerAttachmentBgp>('bgp');
+    childrens = registerOutput<List<String>>('childrens');
+    connectionBandwidthInMbps = registerOutput<int>(
+      'connectionBandwidthInMbps',
+    );
+    createdAt = registerOutput<String>('createdAt');
+    naasProvider = registerOutput<String>('naasProvider');
     this.name = registerOutput<String>('name');
-    this.parentUuid = registerOutput<String?>('parentUuid');
-    this.redundancyZone = registerOutput<String>('redundancyZone');
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
-    this.vpcIds = registerOutput<List<String>>('vpcIds');
+    parentUuid = registerOutput<String?>('parentUuid');
+    redundancyZone = registerOutput<String>('redundancyZone');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    vpcIds = registerOutput<List<String>>('vpcIds');
   }
 
   /// Gets an existing [PartnerAttachment] resource's state with the given [name] and [id].
@@ -71,21 +83,23 @@ class PartnerAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/partnerAttachment:PartnerAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgp = registerOutput<PartnerAttachmentBgp>('bgp');
-    this.childrens = registerOutput<List<String>>('childrens');
-    this.connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.naasProvider = registerOutput<String>('naasProvider');
+         'digitalocean:index/partnerAttachment:PartnerAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgp = registerOutput<PartnerAttachmentBgp>('bgp');
+    childrens = registerOutput<List<String>>('childrens');
+    connectionBandwidthInMbps = registerOutput<int>(
+      'connectionBandwidthInMbps',
+    );
+    createdAt = registerOutput<String>('createdAt');
+    naasProvider = registerOutput<String>('naasProvider');
     this.name = registerOutput<String>('name');
-    this.parentUuid = registerOutput<String?>('parentUuid');
-    this.redundancyZone = registerOutput<String>('redundancyZone');
-    this.region = registerOutput<String>('region');
+    parentUuid = registerOutput<String?>('parentUuid');
+    redundancyZone = registerOutput<String>('redundancyZone');
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    this.vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds');
   }
 }

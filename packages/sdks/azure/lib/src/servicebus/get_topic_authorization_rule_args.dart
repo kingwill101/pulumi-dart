@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicAuthorizationRuleArgs {
   /// The name of the ServiceBus Topic Authorization Rule resource.
   final pulumi.Input<String> name;
+
   /// The name of the ServiceBus Namespace.
   final pulumi.Input<String>? namespaceName;
   final pulumi.Input<String>? queueName;
+
   /// The name of the resource group in which the ServiceBus Namespace exists.
   final pulumi.Input<String>? resourceGroupName;
   final pulumi.Input<String>? topicId;
+
   /// The name of the ServiceBus Topic.
   final pulumi.Input<String>? topicName;
 
@@ -47,13 +50,32 @@ class GetTopicAuthorizationRuleArgs {
 
   factory GetTopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicAuthorizationRuleArgs(
-      name: (map['name'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicId: (() {
+        final guardedValue = map['topicId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicName: (() {
+        final guardedValue = map['topicName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

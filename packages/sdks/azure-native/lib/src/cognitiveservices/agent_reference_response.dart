@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentReferenceResponse {
   /// Gets the agent's unique identifier within the organization (subscription).
   final pulumi.Input<String>? agentId;
+
   /// Gets the agent's name (unique within the project/app).
   final pulumi.Input<String>? agentName;
 
   /// Creates a new [AgentReferenceResponse].
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
-  AgentReferenceResponse({
-    this.agentId,
-    this.agentName,
-  });
+  AgentReferenceResponse({this.agentId, this.agentName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agentId': ?agentId,
-      'agentName': ?agentName,
-    };
+    return <String, dynamic>{'agentId': ?agentId, 'agentName': ?agentName};
   }
 
   factory AgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AgentReferenceResponse(
-      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
-      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
+      agentId: (() {
+        final guardedValue = map['agentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentName: (() {
+        final guardedValue = map['agentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

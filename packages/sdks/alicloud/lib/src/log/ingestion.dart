@@ -4,7 +4,7 @@ import 'ingestion_state.dart';
 
 /// Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
 ///
-/// > **NOTE:** Available since v1.161.0.
+/// &gt; **NOTE:** Available since v1.161.0.
 ///
 /// ## Example Usage
 ///
@@ -450,20 +450,28 @@ import 'ingestion_state.dart';
 class Ingestion extends pulumi.CustomResource {
   /// Ingestion job description.
   late final pulumi.Output<String?> description;
+
   /// The name displayed on the web page.
   late final pulumi.Output<String> displayName;
+
   /// Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
   late final pulumi.Output<String> ingestionName;
+
   /// Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
   late final pulumi.Output<String> interval;
+
   /// The name of the target logstore.
   late final pulumi.Output<String> logstore;
+
   /// The name of the log project. It is the only in one Alicloud account.
   late final pulumi.Output<String> project;
+
   /// Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
   late final pulumi.Output<bool> runImmediately;
+
   /// Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
   late final pulumi.Output<String> source;
+
   /// Which time zone is the log time imported in, e.g. `+0800`.
   late final pulumi.Output<String?> timeZone;
 
@@ -476,20 +484,20 @@ class Ingestion extends pulumi.CustomResource {
     IngestionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/ingestion:Ingestion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.ingestionName = registerOutput<String>('ingestionName');
-    this.interval = registerOutput<String>('interval');
-    this.logstore = registerOutput<String>('logstore');
-    this.project = registerOutput<String>('project');
-    this.runImmediately = registerOutput<bool>('runImmediately');
-    this.source = registerOutput<String>('source');
-    this.timeZone = registerOutput<String?>('timeZone');
+         'alicloud:log/ingestion:Ingestion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    ingestionName = registerOutput<String>('ingestionName');
+    interval = registerOutput<String>('interval');
+    logstore = registerOutput<String>('logstore');
+    project = registerOutput<String>('project');
+    runImmediately = registerOutput<bool>('runImmediately');
+    source = registerOutput<String>('source');
+    timeZone = registerOutput<String?>('timeZone');
   }
 
   /// Gets an existing [Ingestion] resource's state with the given [name] and [id].
@@ -510,19 +518,19 @@ class Ingestion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/ingestion:Ingestion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.ingestionName = registerOutput<String>('ingestionName');
-    this.interval = registerOutput<String>('interval');
-    this.logstore = registerOutput<String>('logstore');
-    this.project = registerOutput<String>('project');
-    this.runImmediately = registerOutput<bool>('runImmediately');
-    this.source = registerOutput<String>('source');
-    this.timeZone = registerOutput<String?>('timeZone');
+         'alicloud:log/ingestion:Ingestion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    ingestionName = registerOutput<String>('ingestionName');
+    interval = registerOutput<String>('interval');
+    logstore = registerOutput<String>('logstore');
+    project = registerOutput<String>('project');
+    runImmediately = registerOutput<bool>('runImmediately');
+    source = registerOutput<String>('source');
+    timeZone = registerOutput<String?>('timeZone');
   }
 }

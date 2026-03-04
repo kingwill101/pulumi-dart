@@ -5,16 +5,17 @@ enum MetricThresholdEvaluationMissingData {
   evaluationMissingDataActive("EVALUATION_MISSING_DATA_ACTIVE"),
   evaluationMissingDataNoOp("EVALUATION_MISSING_DATA_NO_OP");
 
-  const MetricThresholdEvaluationMissingData(this.value);
-  final String value;
+  const MetricThresholdEvaluationMissingData(this.wireValue);
+  final String wireValue;
 
   static MetricThresholdEvaluationMissingData fromValue(String value) {
     for (final item in MetricThresholdEvaluationMissingData.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetricThresholdEvaluationMissingData value: $value');
+    throw ArgumentError(
+      'Unknown MetricThresholdEvaluationMissingData value: $value',
+    );
   }
 }
-

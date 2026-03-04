@@ -6,18 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteServiceState {
   /// The region of the network instances that access the cloud services.
   final pulumi.Input<String>? accessRegionId;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// The description of the cloud service.
   final pulumi.Input<String>? description;
+
   /// The domain name or IP address of the cloud service.
   final pulumi.Input<String>? host;
+
   /// The region of the cloud service.
   final pulumi.Input<String>? hostRegionId;
+
   /// The VPC associated with the cloud service.
   ///
-  /// > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+  /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
   final pulumi.Input<String>? hostVpcId;
+
   /// The status of the cloud service.
   final pulumi.Input<String>? status;
 
@@ -53,14 +59,41 @@ class RouteServiceState {
 
   factory RouteServiceState.fromMap(Map<String, dynamic> map) {
     return RouteServiceState(
-      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId']! as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accessRegionId: (() {
+        final guardedValue = map['accessRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostRegionId: (() {
+        final guardedValue = map['hostRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostVpcId: (() {
+        final guardedValue = map['hostVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

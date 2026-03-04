@@ -10,16 +10,22 @@ import 'volume_group_oracle_volume.dart';
 class VolumeGroupOracleArgs {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> accountName;
+
   /// The SAP System ID, maximum 3 characters, e.g. `OR1`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> applicationIdentifier;
+
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> groupDescription;
+
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> resourceGroupName;
+
   /// One or more `volume` blocks as defined below.
   final pulumi.Input<List<VolumeGroupOracleVolume>> volumes;
 
@@ -49,20 +55,51 @@ class VolumeGroupOracleArgs {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'volumes': pulumi.Input.mapInputValue<List<VolumeGroupOracleVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeGroupOracleVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          pulumi.Input.mapInputValue<
+            List<VolumeGroupOracleVolume>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VolumeGroupOracleVolume,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory VolumeGroupOracleArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupOracleArgs(
-      accountName: (map['accountName'] as String).input(),
-      applicationIdentifier: (map['applicationIdentifier'] as String).input(),
-      groupDescription: (map['groupDescription'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumes: (pulumi.Input.decodeList<VolumeGroupOracleVolume>(map['volumes'], (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      applicationIdentifier: pulumi.Input.fromValue(
+        map['applicationIdentifier'] as String,
+      ),
+      groupDescription: pulumi.Input.fromValue(
+        map['groupDescription'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      volumes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VolumeGroupOracleVolume>(
+          map['volumes']!,
+          (value) => VolumeGroupOracleVolume.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

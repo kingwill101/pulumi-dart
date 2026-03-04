@@ -10,20 +10,35 @@ class ServiceMeshFeatureStateResponse {
 
   /// Creates a new [ServiceMeshFeatureStateResponse].
   /// [analysisMessages] Results of running Service Mesh analyzers.
-  ServiceMeshFeatureStateResponse({
-    required this.analysisMessages,
-  });
+  ServiceMeshFeatureStateResponse({required this.analysisMessages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analysisMessages': pulumi.Input.mapInputValue<List<ServiceMeshAnalysisMessageResponse>, List<Map<String, dynamic>>>(analysisMessages, (value) => pulumi.Input.encodeList<ServiceMeshAnalysisMessageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'analysisMessages':
+          pulumi.Input.mapInputValue<
+            List<ServiceMeshAnalysisMessageResponse>,
+            List<Map<String, dynamic>>
+          >(
+            analysisMessages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceMeshAnalysisMessageResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ServiceMeshFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return ServiceMeshFeatureStateResponse(
-      analysisMessages: (pulumi.Input.decodeList<ServiceMeshAnalysisMessageResponse>(map['analysisMessages'], (value) => ServiceMeshAnalysisMessageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      analysisMessages: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ServiceMeshAnalysisMessageResponse>(
+          map['analysisMessages']!,
+          (value) => ServiceMeshAnalysisMessageResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

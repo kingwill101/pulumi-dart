@@ -21,11 +21,14 @@ class GetDistributionTenantCustomizationGeoRestriction {
     };
   }
 
-  factory GetDistributionTenantCustomizationGeoRestriction.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionTenantCustomizationGeoRestriction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionTenantCustomizationGeoRestriction(
-      locations: ((map['locations'] as List).cast<String>()).input(),
-      restrictionType: (map['restrictionType'] as String).input(),
+      locations: pulumi.Input.fromValue(
+        (map['locations'] as List).cast<String>(),
+      ),
+      restrictionType: pulumi.Input.fromValue(map['restrictionType'] as String),
     );
   }
 }
-

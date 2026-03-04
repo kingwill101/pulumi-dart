@@ -10,20 +10,29 @@ class ReleaseChannelContainerV1beta1 {
 
   /// Creates a new [ReleaseChannelContainerV1beta1].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannelContainerV1beta1({
-    this.channel,
-  });
+  ReleaseChannelContainerV1beta1({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channel': ?pulumi.Input.mapOptionalInputValue<ReleaseChannelChannelContainerV1beta1, String>(channel, (value) => value.value),
+      'channel':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReleaseChannelChannelContainerV1beta1,
+            String
+          >(channel, (value) => value.wireValue),
     };
   }
 
   factory ReleaseChannelContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelContainerV1beta1(
-      channel: map['channel'] == null ? null : (ReleaseChannelChannelContainerV1beta1.fromValue(map['channel']! as String)).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReleaseChannelChannelContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -31,10 +31,13 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
 
   factory GetAppGatewayBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayBeyondcorpV1alphaArgs(
-      appGatewayId: (map['appGatewayId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      appGatewayId: pulumi.Input.fromValue(map['appGatewayId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

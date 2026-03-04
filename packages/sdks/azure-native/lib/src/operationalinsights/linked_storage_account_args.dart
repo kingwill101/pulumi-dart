@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedStorageAccountArgs {
   /// Linked storage accounts type.
   final pulumi.Input<String>? dataSourceType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Linked storage accounts resources ids.
   final pulumi.Input<List<String>>? storageAccountIds;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,20 @@ class LinkedStorageAccountArgs {
 
   factory LinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return LinkedStorageAccountArgs(
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds']! as List).cast<String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      dataSourceType: (() {
+        final guardedValue = map['dataSourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageAccountIds: (() {
+        final guardedValue = map['storageAccountIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

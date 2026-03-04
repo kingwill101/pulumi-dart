@@ -12,15 +12,16 @@ class GetGatewayRouteSpecHttp2RouteActionRewriteHostname {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultTargetHostname': defaultTargetHostname,
-    };
+    return <String, dynamic>{'defaultTargetHostname': defaultTargetHostname};
   }
 
-  factory GetGatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayRouteSpecHttp2RouteActionRewriteHostname(
-      defaultTargetHostname: (map['defaultTargetHostname'] as String).input(),
+      defaultTargetHostname: pulumi.Input.fromValue(
+        map['defaultTargetHostname'] as String,
+      ),
     );
   }
 }
-

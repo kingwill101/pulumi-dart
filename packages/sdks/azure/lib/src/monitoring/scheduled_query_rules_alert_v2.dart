@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_rules_alert_v2_action.dart';
 import 'scheduled_query_rules_alert_v2_args.dart';
-import 'scheduled_query_rules_alert_v2_criteria.dart';
 import 'scheduled_query_rules_alert_v2_identity.dart';
 import 'scheduled_query_rules_alert_v2_state.dart';
 
@@ -627,7 +626,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2023-03-15-preview
@@ -642,56 +641,78 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
   /// An `action` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertV2Action?> action;
+
   /// Specifies the flag that indicates whether the alert should be automatically resolved or not. Value should be `true` or `false`. The default is `false`.
   late final pulumi.Output<bool?> autoMitigationEnabled;
+
   /// The api-version used when creating this alert rule.
   late final pulumi.Output<String> createdWithApiVersion;
+
   /// A `criteria` block as defined below.
-  late final pulumi.Output<List<ScheduledQueryRulesAlertV2Criteria>> criterias;
+  late final pulumi.Output<List<Map<String, dynamic>>> criterias;
+
   /// Specifies the description of the scheduled query rule.
   late final pulumi.Output<String?> description;
+
   /// Specifies the display name of the alert rule.
   late final pulumi.Output<String?> displayName;
+
   /// Specifies the flag which indicates whether this scheduled query rule is enabled. Value should be `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`.
   ///
-  /// > **Note:** `evaluation_frequency` cannot be greater than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the query look back which is `window_duration`*`number_of_evaluation_periods`.
   ///
-  /// > **Note:** `evaluation_frequency` cannot be greater than the `mute_actions_after_alert_duration`.
+  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the `mute_actions_after_alert_duration`.
   late final pulumi.Output<String> evaluationFrequency;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertV2Identity?> identity;
+
   /// True if this alert rule is a legacy Log Analytic Rule.
   late final pulumi.Output<bool> isALegacyLogAnalyticsRule;
+
   /// The flag indicates whether this Scheduled Query Rule has been configured to be stored in the customer's storage.
   late final pulumi.Output<bool> isWorkspaceAlertsStorageConfigured;
+
   /// Specifies the Azure Region where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Mute actions for the chosen period of time in ISO 8601 duration format after the alert is fired. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// > **Note:** `auto_mitigation_enabled` and `mute_actions_after_alert_duration` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `auto_mitigation_enabled` and `mute_actions_after_alert_duration` are mutually exclusive and cannot both be set.
   late final pulumi.Output<String?> muteActionsAfterAlertDuration;
+
   /// Specifies the name which should be used for this Monitor Scheduled Query Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `window_duration`*`number_of_evaluation_periods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// > **Note:** `query_time_range_override` cannot be less than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `query_time_range_override` cannot be less than the query look back which is `window_duration`*`number_of_evaluation_periods`.
   late final pulumi.Output<String?> queryTimeRangeOverride;
+
   /// Specifies the name of the Resource Group where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the list of resource IDs that this scheduled query rule is scoped to. Changing this forces a new resource to be created. Currently, the API supports exactly 1 resource ID in the scopes list.
   late final pulumi.Output<String> scopes;
+
   /// Severity of the alert. Should be an integer between 0 and 4. Value of 0 is severest.
   late final pulumi.Output<int> severity;
+
   /// Specifies the flag which indicates whether the provided query should be validated or not. The default is false.
   late final pulumi.Output<bool?> skipQueryValidation;
+
   /// A mapping of tags which should be assigned to the Monitor Scheduled Query Rule.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is `Microsoft.Compute/virtualMachines`, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria.
   late final pulumi.Output<List<String>?> targetResourceTypes;
+
   /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluation_frequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
   late final pulumi.Output<String> windowDuration;
+
   /// Specifies the flag which indicates whether this scheduled query rule check if storage is configured. Value should be `true` or `false`. The default is `false`.
   late final pulumi.Output<bool?> workspaceAlertsStorageEnabled;
 
@@ -704,34 +725,42 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     ScheduledQueryRulesAlertV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
-    this.autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
-    this.createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    this.criterias = registerOutput<List<ScheduledQueryRulesAlertV2Criteria>>('criterias');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.evaluationFrequency = registerOutput<String>('evaluationFrequency');
-    this.identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
-    this.isALegacyLogAnalyticsRule = registerOutput<bool>('isALegacyLogAnalyticsRule');
-    this.isWorkspaceAlertsStorageConfigured = registerOutput<bool>('isWorkspaceAlertsStorageConfigured');
-    this.location = registerOutput<String>('location');
-    this.muteActionsAfterAlertDuration = registerOutput<String?>('muteActionsAfterAlertDuration');
+         'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
+    criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    evaluationFrequency = registerOutput<String>('evaluationFrequency');
+    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
+    isALegacyLogAnalyticsRule = registerOutput<bool>(
+      'isALegacyLogAnalyticsRule',
+    );
+    isWorkspaceAlertsStorageConfigured = registerOutput<bool>(
+      'isWorkspaceAlertsStorageConfigured',
+    );
+    location = registerOutput<String>('location');
+    muteActionsAfterAlertDuration = registerOutput<String?>(
+      'muteActionsAfterAlertDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.queryTimeRangeOverride = registerOutput<String?>('queryTimeRangeOverride');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopes = registerOutput<String>('scopes');
-    this.severity = registerOutput<int>('severity');
-    this.skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
-    this.windowDuration = registerOutput<String>('windowDuration');
-    this.workspaceAlertsStorageEnabled = registerOutput<bool?>('workspaceAlertsStorageEnabled');
+    queryTimeRangeOverride = registerOutput<String?>('queryTimeRangeOverride');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopes = registerOutput<String>('scopes');
+    severity = registerOutput<int>('severity');
+    skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
+    windowDuration = registerOutput<String>('windowDuration');
+    workspaceAlertsStorageEnabled = registerOutput<bool?>(
+      'workspaceAlertsStorageEnabled',
+    );
   }
 
   /// Gets an existing [ScheduledQueryRulesAlertV2] resource's state with the given [name] and [id].
@@ -752,33 +781,41 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
-    this.autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
-    this.createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    this.criterias = registerOutput<List<ScheduledQueryRulesAlertV2Criteria>>('criterias');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.evaluationFrequency = registerOutput<String>('evaluationFrequency');
-    this.identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
-    this.isALegacyLogAnalyticsRule = registerOutput<bool>('isALegacyLogAnalyticsRule');
-    this.isWorkspaceAlertsStorageConfigured = registerOutput<bool>('isWorkspaceAlertsStorageConfigured');
-    this.location = registerOutput<String>('location');
-    this.muteActionsAfterAlertDuration = registerOutput<String?>('muteActionsAfterAlertDuration');
+         'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
+    criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    evaluationFrequency = registerOutput<String>('evaluationFrequency');
+    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
+    isALegacyLogAnalyticsRule = registerOutput<bool>(
+      'isALegacyLogAnalyticsRule',
+    );
+    isWorkspaceAlertsStorageConfigured = registerOutput<bool>(
+      'isWorkspaceAlertsStorageConfigured',
+    );
+    location = registerOutput<String>('location');
+    muteActionsAfterAlertDuration = registerOutput<String?>(
+      'muteActionsAfterAlertDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.queryTimeRangeOverride = registerOutput<String?>('queryTimeRangeOverride');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopes = registerOutput<String>('scopes');
-    this.severity = registerOutput<int>('severity');
-    this.skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
-    this.windowDuration = registerOutput<String>('windowDuration');
-    this.workspaceAlertsStorageEnabled = registerOutput<bool?>('workspaceAlertsStorageEnabled');
+    queryTimeRangeOverride = registerOutput<String?>('queryTimeRangeOverride');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopes = registerOutput<String>('scopes');
+    severity = registerOutput<int>('severity');
+    skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
+    windowDuration = registerOutput<String>('windowDuration');
+    workspaceAlertsStorageEnabled = registerOutput<bool?>(
+      'workspaceAlertsStorageEnabled',
+    );
   }
 }

@@ -7,8 +7,10 @@ class EnablerState {
   /// Set of account IDs.
   /// Can contain one of: the Organization's Administrator Account, or one or more Member Accounts.
   final pulumi.Input<List<String>>? accountIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of resources to scan.
   /// Valid values are `EC2`, `ECR`, `LAMBDA`, `LAMBDA_CODE` and `CODE_REPOSITORY`.
   /// At least one item is required.
@@ -18,11 +20,7 @@ class EnablerState {
   /// [accountIds] Set of account IDs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTypes] Type of resources to scan.
-  EnablerState({
-    this.accountIds,
-    this.region,
-    this.resourceTypes,
-  });
+  EnablerState({this.accountIds, this.region, this.resourceTypes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class EnablerState {
 
   factory EnablerState.fromMap(Map<String, dynamic> map) {
     return EnablerState(
-      accountIds: map['accountIds'] == null ? null : (((map['accountIds'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
+      accountIds: (() {
+        final guardedValue = map['accountIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceTypes: (() {
+        final guardedValue = map['resourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

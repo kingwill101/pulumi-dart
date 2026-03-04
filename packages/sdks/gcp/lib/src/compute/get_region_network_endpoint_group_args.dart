@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name. Provide either this or a `self_link`.
   final pulumi.Input<String>? name;
+
   /// The ID of the project to list versions in. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
   final pulumi.Input<String>? region;
+
   /// The Network Endpoint Group self_link.
   final pulumi.Input<String>? selfLink;
 
@@ -39,11 +42,26 @@ class GetRegionNetworkEndpointGroupArgs {
 
   factory GetRegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

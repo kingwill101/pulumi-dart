@@ -8,11 +8,11 @@ import 'access_key_state.dart';
 ///
 /// For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
-/// > **NOTE:**  You should set the `secret_file` if you want to get the access key.
+/// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
 ///
-/// > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+/// &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
 ///
 ///
 /// ## Example Usage
@@ -581,21 +581,27 @@ class AccessKey extends pulumi.CustomResource {
   /// (Available since v1.246.0) The create time of the AccessKey.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> encryptedSecret;
+
   /// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
   late final pulumi.Output<String> keyFingerprint;
+
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
   late final pulumi.Output<String?> pgpKey;
+
   /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
   /// If you use this, please protect your backend state file judiciously.
   /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
   /// at the cost of preventing the use of the secret key in automation.
   late final pulumi.Output<String> secret;
+
   /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   late final pulumi.Output<String?> secretFile;
+
   /// The status of the AccessKey. Value:
   /// - Active: Activated.
   /// - Inactive: Disabled.
   late final pulumi.Output<String> status;
+
   /// The RAM user name.
   late final pulumi.Output<String?> userName;
 
@@ -608,19 +614,19 @@ class AccessKey extends pulumi.CustomResource {
     AccessKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accessKey:AccessKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.encryptedSecret = registerOutput<String>('encryptedSecret');
-    this.keyFingerprint = registerOutput<String>('keyFingerprint');
-    this.pgpKey = registerOutput<String?>('pgpKey');
-    this.secret = registerOutput<String>('secret');
-    this.secretFile = registerOutput<String?>('secretFile');
-    this.status = registerOutput<String>('status');
-    this.userName = registerOutput<String?>('userName');
+         'alicloud:ram/accessKey:AccessKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    encryptedSecret = registerOutput<String>('encryptedSecret');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String?>('pgpKey');
+    secret = registerOutput<String>('secret');
+    secretFile = registerOutput<String?>('secretFile');
+    status = registerOutput<String>('status');
+    userName = registerOutput<String?>('userName');
   }
 
   /// Gets an existing [AccessKey] resource's state with the given [name] and [id].
@@ -641,18 +647,18 @@ class AccessKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accessKey:AccessKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.encryptedSecret = registerOutput<String>('encryptedSecret');
-    this.keyFingerprint = registerOutput<String>('keyFingerprint');
-    this.pgpKey = registerOutput<String?>('pgpKey');
-    this.secret = registerOutput<String>('secret');
-    this.secretFile = registerOutput<String?>('secretFile');
-    this.status = registerOutput<String>('status');
-    this.userName = registerOutput<String?>('userName');
+         'alicloud:ram/accessKey:AccessKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    encryptedSecret = registerOutput<String>('encryptedSecret');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String?>('pgpKey');
+    secret = registerOutput<String>('secret');
+    secretFile = registerOutput<String?>('secretFile');
+    status = registerOutput<String>('status');
+    userName = registerOutput<String?>('userName');
   }
 }

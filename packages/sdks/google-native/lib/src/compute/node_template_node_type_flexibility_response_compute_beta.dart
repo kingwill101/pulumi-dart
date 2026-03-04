@@ -25,12 +25,13 @@ class NodeTemplateNodeTypeFlexibilityResponseComputeBeta {
     };
   }
 
-  factory NodeTemplateNodeTypeFlexibilityResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory NodeTemplateNodeTypeFlexibilityResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodeTemplateNodeTypeFlexibilityResponseComputeBeta(
-      cpus: (map['cpus'] as String).input(),
-      localSsd: (map['localSsd'] as String).input(),
-      memory: (map['memory'] as String).input(),
+      cpus: pulumi.Input.fromValue(map['cpus'] as String),
+      localSsd: pulumi.Input.fromValue(map['localSsd'] as String),
+      memory: pulumi.Input.fromValue(map['memory'] as String),
     );
   }
 }
-

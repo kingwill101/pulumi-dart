@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiResourceDefinitionsResponse {
   /// The modified swagger URL
   final pulumi.Input<String>? modifiedSwaggerUrl;
+
   /// The original swagger URL
   final pulumi.Input<String>? originalSwaggerUrl;
 
@@ -26,9 +27,16 @@ class ApiResourceDefinitionsResponse {
 
   factory ApiResourceDefinitionsResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceDefinitionsResponse(
-      modifiedSwaggerUrl: map['modifiedSwaggerUrl'] == null ? null : (map['modifiedSwaggerUrl']! as String).input(),
-      originalSwaggerUrl: map['originalSwaggerUrl'] == null ? null : (map['originalSwaggerUrl']! as String).input(),
+      modifiedSwaggerUrl: (() {
+        final guardedValue = map['modifiedSwaggerUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originalSwaggerUrl: (() {
+        final guardedValue = map['originalSwaggerUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

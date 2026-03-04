@@ -134,12 +134,16 @@ import 'notebook_workspace_args.dart';
 class NotebookWorkspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// Specifies the endpoint of Notebook server.
   late final pulumi.Output<String> notebookServerEndpoint;
+
   /// Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
   late final pulumi.Output<String> status;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -152,15 +156,15 @@ class NotebookWorkspace extends pulumi.CustomResource {
     NotebookWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:NotebookWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cosmosdb:NotebookWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.notebookServerEndpoint = registerOutput<String>('notebookServerEndpoint');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    notebookServerEndpoint = registerOutput<String>('notebookServerEndpoint');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

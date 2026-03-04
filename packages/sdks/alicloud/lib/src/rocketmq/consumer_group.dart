@@ -7,7 +7,7 @@ import 'consumer_group_state.dart';
 ///
 /// For information about RocketMQ Consumer Group and how to use it, see [What is Consumer Group](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createconsumergroup).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -540,20 +540,28 @@ import 'consumer_group_state.dart';
 class ConsumerGroup extends pulumi.CustomResource {
   /// Consumption retry strategy. See `consume_retry_policy` below.
   late final pulumi.Output<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy;
+
   /// The first ID of the resource.
   late final pulumi.Output<String> consumerGroupId;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Delivery order.
   late final pulumi.Output<String?> deliveryOrderType;
+
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// Maximum received message tps.
   late final pulumi.Output<int?> maxReceiveTps;
+
   /// (Available since v1.247.0) The ID of the region in which the instance resides.
   late final pulumi.Output<String> regionId;
+
   /// Custom remarks.
   late final pulumi.Output<String?> remark;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -566,20 +574,22 @@ class ConsumerGroup extends pulumi.CustomResource {
     ConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/consumerGroup:ConsumerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>('consumeRetryPolicy');
-    this.consumerGroupId = registerOutput<String>('consumerGroupId');
-    this.createTime = registerOutput<String>('createTime');
-    this.deliveryOrderType = registerOutput<String?>('deliveryOrderType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxReceiveTps = registerOutput<int?>('maxReceiveTps');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.status = registerOutput<String>('status');
+         'alicloud:rocketmq/consumerGroup:ConsumerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
+      'consumeRetryPolicy',
+    );
+    consumerGroupId = registerOutput<String>('consumerGroupId');
+    createTime = registerOutput<String>('createTime');
+    deliveryOrderType = registerOutput<String?>('deliveryOrderType');
+    instanceId = registerOutput<String>('instanceId');
+    maxReceiveTps = registerOutput<int?>('maxReceiveTps');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ConsumerGroup] resource's state with the given [name] and [id].
@@ -600,19 +610,21 @@ class ConsumerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/consumerGroup:ConsumerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>('consumeRetryPolicy');
-    this.consumerGroupId = registerOutput<String>('consumerGroupId');
-    this.createTime = registerOutput<String>('createTime');
-    this.deliveryOrderType = registerOutput<String?>('deliveryOrderType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxReceiveTps = registerOutput<int?>('maxReceiveTps');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.status = registerOutput<String>('status');
+         'alicloud:rocketmq/consumerGroup:ConsumerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
+      'consumeRetryPolicy',
+    );
+    consumerGroupId = registerOutput<String>('consumerGroupId');
+    createTime = registerOutput<String>('createTime');
+    deliveryOrderType = registerOutput<String?>('deliveryOrderType');
+    instanceId = registerOutput<String>('instanceId');
+    maxReceiveTps = registerOutput<int?>('maxReceiveTps');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    status = registerOutput<String>('status');
   }
 }

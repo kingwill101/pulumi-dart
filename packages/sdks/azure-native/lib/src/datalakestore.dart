@@ -1,5 +1,3 @@
-library module_datalakestore;
-
 export 'datalakestore/account.dart';
 export 'datalakestore/account_args.dart';
 export 'datalakestore/create_firewall_rule_with_account_parameters.dart';

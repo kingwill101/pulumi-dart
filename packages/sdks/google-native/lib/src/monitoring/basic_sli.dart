@@ -7,12 +7,16 @@ import 'latency_criteria.dart';
 class BasicSli {
   /// Good service is defined to be the count of requests made to this service that return successfully.
   final pulumi.Input<Map<String, dynamic>>? availability;
+
   /// Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold.
   final pulumi.Input<LatencyCriteria>? latency;
+
   /// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error.
   final pulumi.Input<List<String>>? location;
+
   /// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error.
   final pulumi.Input<List<String>>? method;
+
   /// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
   final pulumi.Input<List<String>>? version;
 
@@ -33,7 +37,11 @@ class BasicSli {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availability': ?availability,
-      'latency': ?pulumi.Input.mapOptionalInputValue<LatencyCriteria, Map<String, dynamic>>(latency, (value) => value.toMap()),
+      'latency':
+          ?pulumi.Input.mapOptionalInputValue<
+            LatencyCriteria,
+            Map<String, dynamic>
+          >(latency, (value) => value.toMap()),
       'location': ?location,
       'method': ?method,
       'version': ?version,
@@ -42,12 +50,37 @@ class BasicSli {
 
   factory BasicSli.fromMap(Map<String, dynamic> map) {
     return BasicSli(
-      availability: map['availability'] == null ? null : ((map['availability']! as Map).cast<String, dynamic>()).input(),
-      latency: map['latency'] == null ? null : (LatencyCriteria.fromMap((map['latency']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : ((map['location']! as List).cast<String>()).input(),
-      method: map['method'] == null ? null : ((map['method']! as List).cast<String>()).input(),
-      version: map['version'] == null ? null : ((map['version']! as List).cast<String>()).input(),
+      availability: (() {
+        final guardedValue = map['availability'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      latency: (() {
+        final guardedValue = map['latency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LatencyCriteria.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -7,11 +7,14 @@ import 'resource_reference.dart';
 class CustomerCertificateParameters {
   /// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   final pulumi.Input<ResourceReference> secretSource;
+
   /// Version of the secret to be used
   final pulumi.Input<String>? secretVersion;
+
   /// The type of the secret resource.
   /// Expected value is 'CustomerCertificate'.
   final pulumi.Input<String> type;
+
   /// Whether to use the latest version for the certificate
   final pulumi.Input<bool>? useLatestVersion;
 
@@ -29,7 +32,11 @@ class CustomerCertificateParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretSource': pulumi.Input.mapInputValue<ResourceReference, Map<String, dynamic>>(secretSource, (value) => value.toMap()),
+      'secretSource':
+          pulumi.Input.mapInputValue<ResourceReference, Map<String, dynamic>>(
+            secretSource,
+            (value) => value.toMap(),
+          ),
       'secretVersion': ?secretVersion,
       'type': type,
       'useLatestVersion': ?useLatestVersion,
@@ -38,11 +45,22 @@ class CustomerCertificateParameters {
 
   factory CustomerCertificateParameters.fromMap(Map<String, dynamic> map) {
     return CustomerCertificateParameters(
-      secretSource: (ResourceReference.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
-      type: (map['type'] as String).input(),
-      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion']! as bool).input(),
+      secretSource: pulumi.Input.fromValue(
+        ResourceReference.fromMap(
+          (map['secretSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secretVersion: (() {
+        final guardedValue = map['secretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      useLatestVersion: (() {
+        final guardedValue = map['useLatestVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

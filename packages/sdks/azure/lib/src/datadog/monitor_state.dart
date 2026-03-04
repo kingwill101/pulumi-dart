@@ -9,22 +9,31 @@ import 'monitor_user.dart';
 class MonitorState {
   /// A `datadog_organization` block as defined below.
   final pulumi.Input<MonitorDatadogOrganization>? datadogOrganization;
+
   /// A `identity` block as defined below.
   final pulumi.Input<MonitorIdentity>? identity;
+
   /// The Azure Region where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   final pulumi.Input<String>? location;
+
   /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
   final pulumi.Input<String>? marketplaceSubscriptionStatus;
+
   /// Is monitoring enabled? Defaults to `true`.
   final pulumi.Input<bool>? monitoringEnabled;
+
   /// The name of the user that will be associated with the Datadog Monitor. Changing this forces a new Datadog Monitor to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The name which should be used for this sku.
   final pulumi.Input<String>? skuName;
+
   /// A mapping of tags which should be assigned to the Datadog Monitor.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A `user` block as defined below.
   final pulumi.Input<MonitorUser>? user;
 
@@ -54,8 +63,16 @@ class MonitorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datadogOrganization': ?pulumi.Input.mapOptionalInputValue<MonitorDatadogOrganization, Map<String, dynamic>>(datadogOrganization, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<MonitorIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'datadogOrganization':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitorDatadogOrganization,
+            Map<String, dynamic>
+          >(datadogOrganization, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitorIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'marketplaceSubscriptionStatus': ?marketplaceSubscriptionStatus,
       'monitoringEnabled': ?monitoringEnabled,
@@ -63,23 +80,78 @@ class MonitorState {
       'resourceGroupName': ?resourceGroupName,
       'skuName': ?skuName,
       'tags': ?tags,
-      'user': ?pulumi.Input.mapOptionalInputValue<MonitorUser, Map<String, dynamic>>(user, (value) => value.toMap()),
+      'user':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitorUser,
+            Map<String, dynamic>
+          >(user, (value) => value.toMap()),
     };
   }
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      datadogOrganization: map['datadogOrganization'] == null ? null : (MonitorDatadogOrganization.fromMap((map['datadogOrganization']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus']! as String).input(),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
+      datadogOrganization: (() {
+        final guardedValue = map['datadogOrganization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitorDatadogOrganization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitorIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      marketplaceSubscriptionStatus: (() {
+        final guardedValue = map['marketplaceSubscriptionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoringEnabled: (() {
+        final guardedValue = map['monitoringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

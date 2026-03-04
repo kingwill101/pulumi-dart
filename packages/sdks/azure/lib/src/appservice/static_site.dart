@@ -5,9 +5,9 @@ import 'static_site_state.dart';
 
 /// Manages an App Service Static Site.
 ///
-/// > **Note:** The `azure.appservice.StaticSite` resource is deprecated in favour of `azure.appservice.StaticWebApp` and will be removed in a future major release.
+/// &gt; **Note:** The `azure.appservice.StaticSite` resource is deprecated in favour of `azure.appservice.StaticWebApp` and will be removed in a future major release.
 ///
-/// > **Note:** After the Static Site is provisioned, you'll need to associate your target repository, which contains your web app, to the Static Site, by following the [Azure Static Site document](https://docs.microsoft.com/azure/static-web-apps/github-actions-workflow).
+/// &gt; **Note:** After the Static Site is provisioned, you'll need to associate your target repository, which contains your web app, to the Static Site, by following the [Azure Static Site document](https://docs.microsoft.com/azure/static-web-apps/github-actions-workflow).
 ///
 /// ## Example Usage
 ///
@@ -155,22 +155,31 @@ import 'static_site_state.dart';
 class StaticSite extends pulumi.CustomResource {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   late final pulumi.Output<String> apiKey;
+
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>?> appSettings;
+
   /// The default host name of the Static Web App.
   late final pulumi.Output<String> defaultHostName;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<StaticSiteIdentity?> identity;
+
   /// The Azure Region where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuSize;
+
   /// Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuTier;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -183,21 +192,21 @@ class StaticSite extends pulumi.CustomResource {
     StaticSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticSite:StaticSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKey = registerOutput<String>('apiKey');
-    this.appSettings = registerOutput<Map<String, String>?>('appSettings');
-    this.defaultHostName = registerOutput<String>('defaultHostName');
-    this.identity = registerOutput<StaticSiteIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/staticSite:StaticSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKey = registerOutput<String>('apiKey');
+    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    defaultHostName = registerOutput<String>('defaultHostName');
+    identity = registerOutput<StaticSiteIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuSize = registerOutput<String?>('skuSize');
-    this.skuTier = registerOutput<String?>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuSize = registerOutput<String?>('skuSize');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [StaticSite] resource's state with the given [name] and [id].
@@ -218,20 +227,20 @@ class StaticSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticSite:StaticSite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKey = registerOutput<String>('apiKey');
-    this.appSettings = registerOutput<Map<String, String>?>('appSettings');
-    this.defaultHostName = registerOutput<String>('defaultHostName');
-    this.identity = registerOutput<StaticSiteIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/staticSite:StaticSite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKey = registerOutput<String>('apiKey');
+    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    defaultHostName = registerOutput<String>('defaultHostName');
+    identity = registerOutput<StaticSiteIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuSize = registerOutput<String?>('skuSize');
-    this.skuTier = registerOutput<String?>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuSize = registerOutput<String?>('skuSize');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

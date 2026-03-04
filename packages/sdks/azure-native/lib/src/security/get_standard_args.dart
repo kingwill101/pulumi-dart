@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardArgs {
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String> standardId;
 
   /// Creates a new [GetStandardArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [standardId] The Security Standard key - unique key for the standard type
-  GetStandardArgs({
-    required this.resourceGroupName,
-    required this.standardId,
-  });
+  GetStandardArgs({required this.resourceGroupName, required this.standardId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetStandardArgs {
 
   factory GetStandardArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      standardId: (map['standardId'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      standardId: pulumi.Input.fromValue(map['standardId'] as String),
     );
   }
 }
-

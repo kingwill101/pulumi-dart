@@ -6,12 +6,16 @@ import 'domain_os_nv_ram_source.dart';
 class DomainOsNvRam {
   /// Sets the format type of the NVRAM storage.
   final pulumi.Input<String>? format;
+
   /// Specifies the non-volatile RAM configuration for the domain's NVRAM.
   final pulumi.Input<String> nvRam;
+
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
   final pulumi.Input<DomainOsNvRamSource>? source;
+
   /// Defines the template configuration for the NVRAM.
   final pulumi.Input<String>? template;
+
   /// Specifies the format of the template for the NVRAM.
   final pulumi.Input<String>? templateFormat;
 
@@ -33,7 +37,11 @@ class DomainOsNvRam {
     return <String, dynamic>{
       'format': ?format,
       'nvRam': nvRam,
-      'source': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainOsNvRamSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
       'template': ?template,
       'templateFormat': ?templateFormat,
     };
@@ -41,12 +49,31 @@ class DomainOsNvRam {
 
   factory DomainOsNvRam.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRam(
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      nvRam: (map['nvRam'] as String).input(),
-      source: map['source'] == null ? null : (DomainOsNvRamSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (map['template']! as String).input(),
-      templateFormat: map['templateFormat'] == null ? null : (map['templateFormat']! as String).input(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nvRam: pulumi.Input.fromValue(map['nvRam'] as String),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainOsNvRamSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateFormat: (() {
+        final guardedValue = map['templateFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

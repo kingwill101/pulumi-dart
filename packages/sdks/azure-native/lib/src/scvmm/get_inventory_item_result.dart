@@ -6,24 +6,34 @@ import 'system_data_response.dart';
 class GetInventoryItemResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Gets the Managed Object name in VMM for the inventory item.
   final String inventoryItemName;
+
   /// They inventory type.
   final String inventoryType;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
+
   /// Gets the tracked resource id corresponding to the inventory resource.
   final String managedResourceId;
+
   /// The name of the resource
   final String name;
+
   /// Gets the provisioning state.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Gets the UUID (which is assigned by VMM) for the inventory item.
   final String uuid;
 
@@ -75,14 +85,19 @@ class GetInventoryItemResult {
       id: map['id'] as String,
       inventoryItemName: map['inventoryItemName'] as String,
       inventoryType: map['inventoryType'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       managedResourceId: map['managedResourceId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
-

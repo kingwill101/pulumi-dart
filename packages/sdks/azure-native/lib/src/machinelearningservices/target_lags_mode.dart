@@ -3,16 +3,15 @@ enum TargetLagsMode {
   valueAuto("Auto"),
   valueCustom("Custom");
 
-  const TargetLagsMode(this.value);
-  final String value;
+  const TargetLagsMode(this.wireValue);
+  final String wireValue;
 
   static TargetLagsMode fromValue(String value) {
     for (final item in TargetLagsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetLagsMode value: $value');
   }
 }
-

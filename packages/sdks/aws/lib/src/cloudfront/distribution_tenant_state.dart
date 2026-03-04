@@ -11,31 +11,45 @@ import 'distribution_tenant_timeouts.dart';
 class DistributionTenantState {
   /// ARN of the distribution tenant.
   final pulumi.Input<String>? arn;
+
   /// ID of the connection group for the distribution tenant. If not specified, CloudFront uses the default connection group.
   final pulumi.Input<String>? connectionGroupId;
+
   /// Customizations for the distribution tenant (maximum one).
   final pulumi.Input<DistributionTenantCustomizations>? customizations;
+
   /// ID of the multi-tenant distribution.
   final pulumi.Input<String>? distributionId;
+
   /// Set of domains associated with the distribution tenant.
   final pulumi.Input<List<DistributionTenantDomain>>? domains;
+
   /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Current version of the distribution tenant.
   final pulumi.Input<String>? etag;
+
   /// Managed certificate request for CloudFront managed ACM certificate (maximum one).
-  final pulumi.Input<DistributionTenantManagedCertificateRequest>? managedCertificateRequest;
+  final pulumi.Input<DistributionTenantManagedCertificateRequest>?
+  managedCertificateRequest;
+
   /// Name of the distribution tenant.
   final pulumi.Input<String>? name;
+
   /// Set of parameter values for the distribution tenant.
   final pulumi.Input<List<DistributionTenantParameter>>? parameters;
+
   /// Current status of the distribution tenant.
   final pulumi.Input<String>? status;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<DistributionTenantTimeouts>? timeouts;
+
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
   final pulumi.Input<bool>? waitForDeployment;
 
@@ -77,40 +91,163 @@ class DistributionTenantState {
     return <String, dynamic>{
       'arn': ?arn,
       'connectionGroupId': ?connectionGroupId,
-      'customizations': ?pulumi.Input.mapOptionalInputValue<DistributionTenantCustomizations, Map<String, dynamic>>(customizations, (value) => value.toMap()),
+      'customizations':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributionTenantCustomizations,
+            Map<String, dynamic>
+          >(customizations, (value) => value.toMap()),
       'distributionId': ?distributionId,
-      'domains': ?pulumi.Input.mapOptionalInputValue<List<DistributionTenantDomain>, List<Map<String, dynamic>>>(domains, (value) => pulumi.Input.encodeList<DistributionTenantDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'domains':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DistributionTenantDomain>,
+            List<Map<String, dynamic>>
+          >(
+            domains,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DistributionTenantDomain,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': ?enabled,
       'etag': ?etag,
-      'managedCertificateRequest': ?pulumi.Input.mapOptionalInputValue<DistributionTenantManagedCertificateRequest, Map<String, dynamic>>(managedCertificateRequest, (value) => value.toMap()),
+      'managedCertificateRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributionTenantManagedCertificateRequest,
+            Map<String, dynamic>
+          >(managedCertificateRequest, (value) => value.toMap()),
       'name': ?name,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<DistributionTenantParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<DistributionTenantParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DistributionTenantParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DistributionTenantParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<DistributionTenantTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributionTenantTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'waitForDeployment': ?waitForDeployment,
     };
   }
 
   factory DistributionTenantState.fromMap(Map<String, dynamic> map) {
     return DistributionTenantState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      connectionGroupId: map['connectionGroupId'] == null ? null : ((map['connectionGroupId'] as String).input()).input(),
-      customizations: map['customizations'] == null ? null : ((DistributionTenantCustomizations.fromMap((map['customizations']! as Map).cast<String, dynamic>())).input()).input(),
-      distributionId: map['distributionId'] == null ? null : ((map['distributionId'] as String).input()).input(),
-      domains: map['domains'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantDomain>(map['domains']!, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
-      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : ((DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters']!, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((DistributionTenantTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionGroupId: (() {
+        final guardedValue = map['connectionGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customizations: (() {
+        final guardedValue = map['customizations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DistributionTenantCustomizations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      distributionId: (() {
+        final guardedValue = map['distributionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domains: (() {
+        final guardedValue = map['domains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DistributionTenantDomain>(
+            guardedValue,
+            (value) => DistributionTenantDomain.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedCertificateRequest: (() {
+        final guardedValue = map['managedCertificateRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DistributionTenantManagedCertificateRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DistributionTenantParameter>(
+            guardedValue,
+            (value) => DistributionTenantParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DistributionTenantTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      waitForDeployment: (() {
+        final guardedValue = map['waitForDeployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

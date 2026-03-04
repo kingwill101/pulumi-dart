@@ -2,13 +2,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_state.dart';
 import 'instance_to_connect_vpc_ip_block.dart';
-import 'instance_zone_vswitch_security_group.dart';
 
 /// Provides a Api Gateway Instance resource.
 ///
 /// For information about Api Gateway Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/api-gateway/product-overview/dedicated-instances).
 ///
-/// > **NOTE:** Available since v1.218.0.
+/// &gt; **NOTE:** Available since v1.218.0.
 ///
 /// ## Example Usage
 ///
@@ -550,58 +549,82 @@ import 'instance_zone_vswitch_security_group.dart';
 class Instance extends pulumi.CustomResource {
   /// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
   late final pulumi.Output<String> connectCidrBlocks;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
   late final pulumi.Output<String?> deleteVpcIpBlock;
+
   /// The time of the instance package. Valid values:
   /// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
   /// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
   ///
-  /// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
+  /// When the value of&gt; ChargeType is **PrePaid**, this parameter is available and must be passed in.
   late final pulumi.Output<int?> duration;
+
   /// Specifies whether IPv6 egress capability is enabled.
   late final pulumi.Output<bool?> egressIpv6Enable;
+
   /// Https policy.
   late final pulumi.Output<String> httpsPolicy;
+
   /// The VpcID which the client at.
   late final pulumi.Output<String?> ingressVpcId;
+
   /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
   late final pulumi.Output<String?> ingressVpcOwnerId;
+
   /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
   late final pulumi.Output<String?> ingressVswitchId;
+
   /// The CIDR block for the instance deployment. Valid values are:
   /// - `192.168.0.0/16`.
   /// - `172.16.0.0/12`.
   late final pulumi.Output<String> instanceCidr;
+
   /// Instance name.
   late final pulumi.Output<String> instanceName;
+
   /// Instance spec.
   late final pulumi.Output<String> instanceSpec;
+
   /// The type of the instance. Valid values are:
   late final pulumi.Output<String> instanceType;
+
   /// Specifies whether IPv6 ingress capability is enabled.
   late final pulumi.Output<bool?> ipv6Enabled;
+
   /// The payment type of the resource.
   late final pulumi.Output<String> paymentType;
+
   /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
   late final pulumi.Output<String?> pricingCycle;
+
   /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
   late final pulumi.Output<bool?> skipWaitSwitch;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Does ipv6 support.
   late final pulumi.Output<bool> supportIpv6;
+
   /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
   late final pulumi.Output<InstanceToConnectVpcIpBlock?> toConnectVpcIpBlock;
+
   /// User's VpcID.
   late final pulumi.Output<String?> userVpcId;
+
   /// Whether the slb of the Vpc supports.
   late final pulumi.Output<bool?> vpcSlbIntranetEnable;
+
   /// The zone where the instance is deployed.
   late final pulumi.Output<String> zoneId;
+
   /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
-  late final pulumi.Output<List<InstanceZoneVswitchSecurityGroup>?> zoneVswitchSecurityGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  zoneVswitchSecurityGroups;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -612,35 +635,39 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
-    this.duration = registerOutput<int?>('duration');
-    this.egressIpv6Enable = registerOutput<bool?>('egressIpv6Enable');
-    this.httpsPolicy = registerOutput<String>('httpsPolicy');
-    this.ingressVpcId = registerOutput<String?>('ingressVpcId');
-    this.ingressVpcOwnerId = registerOutput<String?>('ingressVpcOwnerId');
-    this.ingressVswitchId = registerOutput<String?>('ingressVswitchId');
-    this.instanceCidr = registerOutput<String>('instanceCidr');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceSpec = registerOutput<String>('instanceSpec');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
-    this.status = registerOutput<String>('status');
-    this.supportIpv6 = registerOutput<bool>('supportIpv6');
-    this.toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>('toConnectVpcIpBlock');
-    this.userVpcId = registerOutput<String?>('userVpcId');
-    this.vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
-    this.zoneId = registerOutput<String>('zoneId');
-    this.zoneVswitchSecurityGroups = registerOutput<List<InstanceZoneVswitchSecurityGroup>?>('zoneVswitchSecurityGroups');
+         'alicloud:apigateway/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
+    createTime = registerOutput<String>('createTime');
+    deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
+    duration = registerOutput<int?>('duration');
+    egressIpv6Enable = registerOutput<bool?>('egressIpv6Enable');
+    httpsPolicy = registerOutput<String>('httpsPolicy');
+    ingressVpcId = registerOutput<String?>('ingressVpcId');
+    ingressVpcOwnerId = registerOutput<String?>('ingressVpcOwnerId');
+    ingressVswitchId = registerOutput<String?>('ingressVswitchId');
+    instanceCidr = registerOutput<String>('instanceCidr');
+    instanceName = registerOutput<String>('instanceName');
+    instanceSpec = registerOutput<String>('instanceSpec');
+    instanceType = registerOutput<String>('instanceType');
+    ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
+    status = registerOutput<String>('status');
+    supportIpv6 = registerOutput<bool>('supportIpv6');
+    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
+      'toConnectVpcIpBlock',
+    );
+    userVpcId = registerOutput<String?>('userVpcId');
+    vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
+    zoneId = registerOutput<String>('zoneId');
+    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'zoneVswitchSecurityGroups',
+    );
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -661,34 +688,38 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
-    this.duration = registerOutput<int?>('duration');
-    this.egressIpv6Enable = registerOutput<bool?>('egressIpv6Enable');
-    this.httpsPolicy = registerOutput<String>('httpsPolicy');
-    this.ingressVpcId = registerOutput<String?>('ingressVpcId');
-    this.ingressVpcOwnerId = registerOutput<String?>('ingressVpcOwnerId');
-    this.ingressVswitchId = registerOutput<String?>('ingressVswitchId');
-    this.instanceCidr = registerOutput<String>('instanceCidr');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceSpec = registerOutput<String>('instanceSpec');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
-    this.status = registerOutput<String>('status');
-    this.supportIpv6 = registerOutput<bool>('supportIpv6');
-    this.toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>('toConnectVpcIpBlock');
-    this.userVpcId = registerOutput<String?>('userVpcId');
-    this.vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
-    this.zoneId = registerOutput<String>('zoneId');
-    this.zoneVswitchSecurityGroups = registerOutput<List<InstanceZoneVswitchSecurityGroup>?>('zoneVswitchSecurityGroups');
+         'alicloud:apigateway/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
+    createTime = registerOutput<String>('createTime');
+    deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
+    duration = registerOutput<int?>('duration');
+    egressIpv6Enable = registerOutput<bool?>('egressIpv6Enable');
+    httpsPolicy = registerOutput<String>('httpsPolicy');
+    ingressVpcId = registerOutput<String?>('ingressVpcId');
+    ingressVpcOwnerId = registerOutput<String?>('ingressVpcOwnerId');
+    ingressVswitchId = registerOutput<String?>('ingressVswitchId');
+    instanceCidr = registerOutput<String>('instanceCidr');
+    instanceName = registerOutput<String>('instanceName');
+    instanceSpec = registerOutput<String>('instanceSpec');
+    instanceType = registerOutput<String>('instanceType');
+    ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
+    status = registerOutput<String>('status');
+    supportIpv6 = registerOutput<bool>('supportIpv6');
+    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
+      'toConnectVpcIpBlock',
+    );
+    userVpcId = registerOutput<String?>('userVpcId');
+    vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
+    zoneId = registerOutput<String>('zoneId');
+    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'zoneVswitchSecurityGroups',
+    );
   }
 }

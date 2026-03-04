@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShieldedInstanceConfig {
   /// Optional. Defines whether instances have integrity monitoring enabled.
   final pulumi.Input<bool>? enableIntegrityMonitoring;
+
   /// Optional. Defines whether instances have Secure Boot enabled.
   final pulumi.Input<bool>? enableSecureBoot;
+
   /// Optional. Defines whether instances have the vTPM enabled.
   final pulumi.Input<bool>? enableVtpm;
 
@@ -31,10 +33,21 @@ class ShieldedInstanceConfig {
 
   factory ShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring']! as bool).input(),
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
-      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm']! as bool).input(),
+      enableIntegrityMonitoring: (() {
+        final guardedValue = map['enableIntegrityMonitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableSecureBoot: (() {
+        final guardedValue = map['enableSecureBoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableVtpm: (() {
+        final guardedValue = map['enableVtpm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

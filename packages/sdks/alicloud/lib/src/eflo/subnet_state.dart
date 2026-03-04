@@ -6,27 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetState {
   /// CIDR network segment.
   final pulumi.Input<String>? cidr;
+
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// Modification time.
   final pulumi.Input<String>? gmtModified;
+
   /// Error message.
   final pulumi.Input<String>? message;
+
   /// Resource Group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
+
   /// The id of the subnet.
   final pulumi.Input<String>? subnetId;
+
   /// The Subnet name.
   final pulumi.Input<String>? subnetName;
+
   /// Eflo subnet usage type. optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   final pulumi.Input<String>? type;
+
   /// The Eflo VPD ID.
   final pulumi.Input<String>? vpdId;
+
   /// The zone ID  of the resource.
   final pulumi.Input<String>? zoneId;
 
@@ -74,18 +84,61 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      subnetName: map['subnetName'] == null ? null : (map['subnetName']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpdId: map['vpdId'] == null ? null : (map['vpdId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtModified: (() {
+        final guardedValue = map['gmtModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetName: (() {
+        final guardedValue = map['subnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpdId: (() {
+        final guardedValue = map['vpdId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

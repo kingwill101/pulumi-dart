@@ -18,16 +18,16 @@ class TargetIamPolicy extends pulumi.CustomResource {
     TargetIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [TargetIamPolicy] resource's state with the given [name] and [id].
@@ -48,15 +48,15 @@ class TargetIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:clouddeploy/targetIamPolicy:TargetIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 }

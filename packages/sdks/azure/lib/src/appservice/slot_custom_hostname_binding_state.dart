@@ -6,16 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlotCustomHostnameBindingState {
   /// The ID of the App Service Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String>? appServiceSlotId;
+
   /// Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
+  /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
   final pulumi.Input<String>? hostname;
+
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sslState;
+
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `thumbprint` must be specified when `ssl_state` is set.
+  /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
   final pulumi.Input<String>? thumbprint;
+
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   final pulumi.Input<String>? virtualIp;
 
@@ -45,12 +49,31 @@ class SlotCustomHostnameBindingState {
 
   factory SlotCustomHostnameBindingState.fromMap(Map<String, dynamic> map) {
     return SlotCustomHostnameBindingState(
-      appServiceSlotId: map['appServiceSlotId'] == null ? null : (map['appServiceSlotId']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
-      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp']! as String).input(),
+      appServiceSlotId: (() {
+        final guardedValue = map['appServiceSlotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslState: (() {
+        final guardedValue = map['sslState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualIp: (() {
+        final guardedValue = map['virtualIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetResourceGroupNotification {
   /// A list of email addresses to send the budget notification to when the threshold is exceeded.
   final pulumi.Input<List<String>> contactEmails;
+
   /// A list of Action Group IDs to send the budget notification to when the threshold is exceeded.
   final pulumi.Input<List<String>> contactGroups;
+
   /// A list of contact roles to send the budget notification to when the threshold is exceeded.
   final pulumi.Input<List<String>> contactRoles;
+
   /// Whether the notification is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The operator used for comparison.
   final pulumi.Input<String> operator;
+
   /// Threshold value associated with the notification.
   final pulumi.Input<int> threshold;
   final pulumi.Input<String> thresholdType;
@@ -49,14 +54,19 @@ class GetBudgetResourceGroupNotification {
 
   factory GetBudgetResourceGroupNotification.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupNotification(
-      contactEmails: ((map['contactEmails'] as List).cast<String>()).input(),
-      contactGroups: ((map['contactGroups'] as List).cast<String>()).input(),
-      contactRoles: ((map['contactRoles'] as List).cast<String>()).input(),
-      enabled: (map['enabled'] as bool).input(),
-      operator: (map['operator'] as String).input(),
-      threshold: (map['threshold'] as int).input(),
-      thresholdType: (map['thresholdType'] as String).input(),
+      contactEmails: pulumi.Input.fromValue(
+        (map['contactEmails'] as List).cast<String>(),
+      ),
+      contactGroups: pulumi.Input.fromValue(
+        (map['contactGroups'] as List).cast<String>(),
+      ),
+      contactRoles: pulumi.Input.fromValue(
+        (map['contactRoles'] as List).cast<String>(),
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      threshold: pulumi.Input.fromValue(map['threshold'] as int),
+      thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
     );
   }
 }
-

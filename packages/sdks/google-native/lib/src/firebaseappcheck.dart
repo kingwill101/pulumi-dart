@@ -1,5 +1,3 @@
-library module_firebaseappcheck;
-
 export 'firebaseappcheck/debug_token.dart';
 export 'firebaseappcheck/debug_token_args.dart';
 export 'firebaseappcheck/debug_token_firebaseappcheck_v1beta.dart';

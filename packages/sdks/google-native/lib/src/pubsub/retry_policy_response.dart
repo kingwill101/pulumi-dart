@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetryPolicyResponse {
   /// Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
   final pulumi.Input<String> maximumBackoff;
+
   /// Optional. The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
   final pulumi.Input<String> minimumBackoff;
 
@@ -26,9 +27,8 @@ class RetryPolicyResponse {
 
   factory RetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetryPolicyResponse(
-      maximumBackoff: (map['maximumBackoff'] as String).input(),
-      minimumBackoff: (map['minimumBackoff'] as String).input(),
+      maximumBackoff: pulumi.Input.fromValue(map['maximumBackoff'] as String),
+      minimumBackoff: pulumi.Input.fromValue(map['minimumBackoff'] as String),
     );
   }
 }
-

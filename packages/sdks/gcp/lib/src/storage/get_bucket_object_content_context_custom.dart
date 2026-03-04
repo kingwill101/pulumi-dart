@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectContentContextCustom {
   /// The time when context was first added to the storage#object in RFC 3339 format.
   final pulumi.Input<String> createTime;
+
   /// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
   final pulumi.Input<String> key;
+
   /// The time when context was last updated in RFC 3339 format.
   final pulumi.Input<String> updateTime;
+
   /// The value associated with this context. This field holds the primary information for the given context key.
   final pulumi.Input<String> value;
 
@@ -33,13 +36,14 @@ class GetBucketObjectContentContextCustom {
     };
   }
 
-  factory GetBucketObjectContentContextCustom.fromMap(Map<String, dynamic> map) {
+  factory GetBucketObjectContentContextCustom.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketObjectContentContextCustom(
-      createTime: (map['createTime'] as String).input(),
-      key: (map['key'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
-      value: (map['value'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

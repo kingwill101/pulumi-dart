@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegationSignerInfoResponse {
   /// The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
   final pulumi.Input<int> digestAlgorithmType;
+
   /// The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
   final pulumi.Input<String> digestValue;
+
   /// The record represents a delegation signer (DS) record.
   final pulumi.Input<String> record;
 
@@ -31,10 +33,11 @@ class DelegationSignerInfoResponse {
 
   factory DelegationSignerInfoResponse.fromMap(Map<String, dynamic> map) {
     return DelegationSignerInfoResponse(
-      digestAlgorithmType: (map['digestAlgorithmType'] as int).input(),
-      digestValue: (map['digestValue'] as String).input(),
-      record: (map['record'] as String).input(),
+      digestAlgorithmType: pulumi.Input.fromValue(
+        map['digestAlgorithmType'] as int,
+      ),
+      digestValue: pulumi.Input.fromValue(map['digestValue'] as String),
+      record: pulumi.Input.fromValue(map['record'] as String),
     );
   }
 }
-

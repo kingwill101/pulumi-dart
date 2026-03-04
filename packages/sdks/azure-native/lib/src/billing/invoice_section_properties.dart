@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvoiceSectionProperties {
   /// The name of the invoice section.
   final pulumi.Input<String>? displayName;
+
   /// Reason for the specified invoice section status.
   final pulumi.Input<String>? reasonCode;
+
   /// Identifies the status of an invoice section.
   final pulumi.Input<String>? state;
-  /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+
+  /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
   final pulumi.Input<String>? targetCloud;
 
@@ -19,7 +23,7 @@ class InvoiceSectionProperties {
   /// [displayName] The name of the invoice section.
   /// [reasonCode] Reason for the specified invoice section status.
   /// [state] Identifies the status of an invoice section.
-  /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+  /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   /// [targetCloud] Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
   InvoiceSectionProperties({
     this.displayName,
@@ -41,12 +45,33 @@ class InvoiceSectionProperties {
 
   factory InvoiceSectionProperties.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reasonCode: (() {
+        final guardedValue = map['reasonCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetCloud: (() {
+        final guardedValue = map['targetCloud'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

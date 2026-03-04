@@ -1,5 +1,3 @@
-library module_redis;
-
 export 'redis/cluster.dart';
 export 'redis/cluster_args.dart';
 export 'redis/cluster_authorization_mode.dart';

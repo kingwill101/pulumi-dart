@@ -12,23 +12,37 @@ class CustomRolloutSpecificationProviderRegistration {
   /// Creates a new [CustomRolloutSpecificationProviderRegistration].
   /// [kind] Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
-  CustomRolloutSpecificationProviderRegistration({
-    this.kind,
-    this.properties,
-  });
+  CustomRolloutSpecificationProviderRegistration({this.kind, this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderRegistrationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory CustomRolloutSpecificationProviderRegistration.fromMap(Map<String, dynamic> map) {
+  factory CustomRolloutSpecificationProviderRegistration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomRolloutSpecificationProviderRegistration(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderRegistrationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

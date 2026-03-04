@@ -9,20 +9,15 @@ class AkriConnectorsImagePullSecret {
 
   /// Creates a new [AkriConnectorsImagePullSecret].
   /// [secretRef] The name of the image pull secret.
-  AkriConnectorsImagePullSecret({
-    required this.secretRef,
-  });
+  AkriConnectorsImagePullSecret({required this.secretRef});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretRef': secretRef,
-    };
+    return <String, dynamic>{'secretRef': secretRef};
   }
 
   factory AkriConnectorsImagePullSecret.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsImagePullSecret(
-      secretRef: (map['secretRef'] as String).input(),
+      secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
     );
   }
 }
-

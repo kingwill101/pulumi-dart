@@ -5,16 +5,15 @@ enum SensitivityLabelRank {
   valueHigh("High"),
   valueCritical("Critical");
 
-  const SensitivityLabelRank(this.value);
-  final String value;
+  const SensitivityLabelRank(this.wireValue);
+  final String wireValue;
 
   static SensitivityLabelRank fromValue(String value) {
     for (final item in SensitivityLabelRank.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SensitivityLabelRank value: $value');
   }
 }
-

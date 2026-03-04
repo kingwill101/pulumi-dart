@@ -1,5 +1,3 @@
-library module_storagesync;
-
 export 'storagesync/cloud_endpoint.dart';
 export 'storagesync/cloud_endpoint_args.dart';
 export 'storagesync/cloud_endpoint_change_enumeration_activity_response.dart';

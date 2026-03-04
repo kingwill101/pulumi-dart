@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMigrationArgs {
   /// Name of migration.
   final pulumi.Input<String> migrationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -34,10 +36,11 @@ class GetMigrationArgs {
 
   factory GetMigrationArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrationArgs(
-      migrationName: (map['migrationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      migrationName: pulumi.Input.fromValue(map['migrationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

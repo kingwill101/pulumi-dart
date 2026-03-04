@@ -1,5 +1,3 @@
-library module_digitaltwins;
-
 export 'digitaltwins/authentication_type.dart';
 export 'digitaltwins/azure_data_explorer_connection_properties.dart';
 export 'digitaltwins/azure_data_explorer_connection_properties_response.dart';

@@ -9,20 +9,17 @@ class CorsRuleResponse {
 
   /// Creates a new [CorsRuleResponse].
   /// [allowedOrigins] Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
-  CorsRuleResponse({
-    required this.allowedOrigins,
-  });
+  CorsRuleResponse({required this.allowedOrigins});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedOrigins': allowedOrigins,
-    };
+    return <String, dynamic>{'allowedOrigins': allowedOrigins};
   }
 
   factory CorsRuleResponse.fromMap(Map<String, dynamic> map) {
     return CorsRuleResponse(
-      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      allowedOrigins: pulumi.Input.fromValue(
+        (map['allowedOrigins'] as List).cast<String>(),
+      ),
     );
   }
 }
-

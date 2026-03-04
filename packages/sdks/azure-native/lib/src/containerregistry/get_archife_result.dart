@@ -7,20 +7,27 @@ import 'system_data_response.dart';
 class GetArchifeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource ID.
   final String id;
+
   /// The name of the resource.
   final String name;
+
   /// The package source of the archive.
   final ArchivePackageSourcePropertiesResponse? packageSource;
+
   /// The provisioning state of the archive at the time the operation was called.
   final String provisioningState;
+
   /// The published version of the archive.
   final String? publishedVersion;
   final String repositoryEndpoint;
   final String? repositoryEndpointPrefix;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The type of the resource.
   final String type;
 
@@ -53,7 +60,7 @@ class GetArchifeResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'packageSource': ?packageSource == null ? null : packageSource!.toMap(),
+      'packageSource': ?packageSource?.toMap(),
       'provisioningState': provisioningState,
       'publishedVersion': ?publishedVersion,
       'repositoryEndpoint': repositoryEndpoint,
@@ -68,14 +75,29 @@ class GetArchifeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      packageSource: map['packageSource'] == null ? null : ArchivePackageSourcePropertiesResponse.fromMap((map['packageSource']! as Map).cast<String, dynamic>()),
+      packageSource: (() {
+        final guardedValue = map['packageSource'];
+        if (guardedValue == null) return null;
+        return ArchivePackageSourcePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publishedVersion: map['publishedVersion'] == null ? null : map['publishedVersion']! as String,
+      publishedVersion: (() {
+        final guardedValue = map['publishedVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       repositoryEndpoint: map['repositoryEndpoint'] as String,
-      repositoryEndpointPrefix: map['repositoryEndpointPrefix'] == null ? null : map['repositoryEndpointPrefix']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      repositoryEndpointPrefix: (() {
+        final guardedValue = map['repositoryEndpointPrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

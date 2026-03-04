@@ -6,16 +6,15 @@ enum InputMappingLocation {
   body("BODY"),
   header("HEADER");
 
-  const InputMappingLocation(this.value);
-  final String value;
+  const InputMappingLocation(this.wireValue);
+  final String wireValue;
 
   static InputMappingLocation fromValue(String value) {
     for (final item in InputMappingLocation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InputMappingLocation value: $value');
   }
 }
-

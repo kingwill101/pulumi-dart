@@ -10,20 +10,27 @@ class PeerAuthenticationMethod {
 
   /// Creates a new [PeerAuthenticationMethod].
   /// [mtls] Set if mTLS is used for peer authentication.
-  PeerAuthenticationMethod({
-    this.mtls,
-  });
+  PeerAuthenticationMethod({this.mtls});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mtls': ?pulumi.Input.mapOptionalInputValue<MutualTls, Map<String, dynamic>>(mtls, (value) => value.toMap()),
+      'mtls':
+          ?pulumi.Input.mapOptionalInputValue<MutualTls, Map<String, dynamic>>(
+            mtls,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory PeerAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethod(
-      mtls: map['mtls'] == null ? null : (MutualTls.fromMap((map['mtls']! as Map).cast<String, dynamic>())).input(),
+      mtls: (() {
+        final guardedValue = map['mtls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MutualTls.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

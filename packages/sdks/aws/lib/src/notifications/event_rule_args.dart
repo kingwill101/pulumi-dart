@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventRuleArgs {
   /// JSON string defining the event pattern to match. Maximum length is 4096 characters.
   final pulumi.Input<String>? eventPattern;
+
   /// Type of event to match. Must be between 1 and 128 characters, and match the pattern `([a-zA-Z0-9 \-\(\)])+`.
   final pulumi.Input<String> eventType;
+
   /// ARN of the notification configuration to associate with this event rule. Must match the pattern `arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}`.
   final pulumi.Input<String> notificationConfigurationArn;
+
   /// Set of AWS regions where the event rule will be applied. Each region must be between 2 and 25 characters, and match the pattern `([a-z]{1,2})-([a-z]{1,15}-)+([0-9])`.
   final pulumi.Input<List<String>> regions;
+
   /// Source of the event. Must be between 1 and 36 characters, and match the pattern `aws.([a-z0-9\-])+`.
   ///
   /// The following arguments are optional:
@@ -46,12 +50,17 @@ class EventRuleArgs {
 
   factory EventRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventRuleArgs(
-      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
-      eventType: (map['eventType'] as String).input(),
-      notificationConfigurationArn: (map['notificationConfigurationArn'] as String).input(),
-      regions: ((map['regions'] as List).cast<String>()).input(),
-      source: (map['source'] as String).input(),
+      eventPattern: (() {
+        final guardedValue = map['eventPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventType: pulumi.Input.fromValue(map['eventType'] as String),
+      notificationConfigurationArn: pulumi.Input.fromValue(
+        map['notificationConfigurationArn'] as String,
+      ),
+      regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

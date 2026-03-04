@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedResourceReferenceResponse {
   /// denyAssignment settings applied to the resource.
   final pulumi.Input<String>? denyStatus;
+
   /// The ARM Resource ID of a resource managed by the deployment stack.
   final pulumi.Input<String> id;
+
   /// Current management state of the resource in the deployment stack.
   final pulumi.Input<String>? status;
 
@@ -31,10 +33,17 @@ class ManagedResourceReferenceResponse {
 
   factory ManagedResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceReferenceResponse(
-      denyStatus: map['denyStatus'] == null ? null : (map['denyStatus']! as String).input(),
-      id: (map['id'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      denyStatus: (() {
+        final guardedValue = map['denyStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

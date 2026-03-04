@@ -774,16 +774,22 @@ import 'vault_properties_response.dart';
 class Vault extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure location of the key vault resource.
   late final pulumi.Output<String?> location;
+
   /// Name of the key vault resource.
   late final pulumi.Output<String> name;
+
   /// Properties of the vault
   late final pulumi.Output<VaultPropertiesResponse> properties;
+
   /// System metadata for the key vault.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags assigned to the key vault resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type of the key vault resource.
   late final pulumi.Output<String> type;
 
@@ -791,22 +797,19 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_keyvault_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(
-    String name, {
-    VaultArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:keyvault:Vault',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:keyvault:Vault',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<VaultPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<VaultPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

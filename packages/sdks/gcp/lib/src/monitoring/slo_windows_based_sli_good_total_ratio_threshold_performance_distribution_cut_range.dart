@@ -5,11 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
   /// max value for the range (inclusive). If not given,
   /// will be set to "infinity", defining an open range
-  /// ">= range.min"
+  /// "&gt;= range.min"
   final pulumi.Input<double>? max;
+
   /// Min value for the range (inclusive). If not given,
   /// will be set to "-infinity", defining an open range
-  /// "< range.max"
+  /// "&lt; range.max"
   final pulumi.Input<double>? min;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange].
@@ -21,17 +22,23 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(
-      max: map['max'] == null ? null : (map['max']! as double).input(),
-      min: map['min'] == null ? null : (map['min']! as double).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

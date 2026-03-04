@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHcVpnGatewayVpnInterface {
   /// The numeric ID of this VPN gateway interface.
   final pulumi.Input<int> id;
+
   /// URL of the interconnect attachment resource. When the value
   /// of this field is present, the VPN Gateway will be used for
   /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
@@ -13,6 +14,7 @@ class GetHcVpnGatewayVpnInterface {
   ///
   /// Not currently available publicly.
   final pulumi.Input<String> interconnectAttachment;
+
   /// The external IP address for this VPN gateway interface.
   final pulumi.Input<String> ipAddress;
 
@@ -36,10 +38,11 @@ class GetHcVpnGatewayVpnInterface {
 
   factory GetHcVpnGatewayVpnInterface.fromMap(Map<String, dynamic> map) {
     return GetHcVpnGatewayVpnInterface(
-      id: (map['id'] as int).input(),
-      interconnectAttachment: (map['interconnectAttachment'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      interconnectAttachment: pulumi.Input.fromValue(
+        map['interconnectAttachment'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

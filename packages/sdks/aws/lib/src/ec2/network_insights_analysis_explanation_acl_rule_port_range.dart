@@ -9,23 +9,26 @@ class NetworkInsightsAnalysisExplanationAclRulePortRange {
   /// Creates a new [NetworkInsightsAnalysisExplanationAclRulePortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisExplanationAclRulePortRange({
-    this.from,
-    this.to,
-  });
+  NetworkInsightsAnalysisExplanationAclRulePortRange({this.from, this.to});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'from': ?from,
-      'to': ?to,
-    };
+    return <String, dynamic>{'from': ?from, 'to': ?to};
   }
 
-  factory NetworkInsightsAnalysisExplanationAclRulePortRange.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisExplanationAclRulePortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisExplanationAclRulePortRange(
-      from: map['from'] == null ? null : ((map['from'] as int).input()).input(),
-      to: map['to'] == null ? null : ((map['to'] as int).input()).input(),
+      from: (() {
+        final guardedValue = map['from'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      to: (() {
+        final guardedValue = map['to'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

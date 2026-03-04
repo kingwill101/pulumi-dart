@@ -6,12 +6,16 @@ import 'folder_args.dart';
 class Folder extends pulumi.CustomResource {
   /// Timestamp when the Folder was created. Assigned by the server.
   late final pulumi.Output<String> createTime;
+
   /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
   late final pulumi.Output<String> displayName;
+
   /// The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
   late final pulumi.Output<String> lifecycleState;
+
   /// The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
   late final pulumi.Output<String> name;
+
   /// Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
   late final pulumi.Output<String> parent;
 
@@ -19,20 +23,17 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_cloudresourcemanager_v2_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(
-    String name, {
-    FolderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'google-native:cloudresourcemanager/v2:Folder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.displayName = registerOutput<String>('displayName');
-    this.lifecycleState = registerOutput<String>('lifecycleState');
+  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'google-native:cloudresourcemanager/v2:Folder',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    lifecycleState = registerOutput<String>('lifecycleState');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
+    parent = registerOutput<String>('parent');
   }
 }

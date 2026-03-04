@@ -31,10 +31,9 @@ class GetTargetServerArgs {
 
   factory GetTargetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetServerArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      targetserverId: (map['targetserverId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      targetserverId: pulumi.Input.fromValue(map['targetserverId'] as String),
     );
   }
 }
-

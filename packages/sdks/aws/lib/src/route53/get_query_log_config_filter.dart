@@ -10,23 +10,16 @@ class GetQueryLogConfigFilter {
   /// Creates a new [GetQueryLogConfigFilter].
   /// [name] The name of the query logging configuration.
   /// [values] Required.
-  GetQueryLogConfigFilter({
-    required this.name,
-    required this.values,
-  });
+  GetQueryLogConfigFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetQueryLogConfigFilter.fromMap(Map<String, dynamic> map) {
     return GetQueryLogConfigFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

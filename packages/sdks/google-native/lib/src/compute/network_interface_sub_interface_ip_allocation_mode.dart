@@ -3,16 +3,17 @@ enum NetworkInterfaceSubInterfaceIpAllocationMode {
   doNotAllocateIp("DO_NOT_ALLOCATE_IP"),
   unspecified("UNSPECIFIED");
 
-  const NetworkInterfaceSubInterfaceIpAllocationMode(this.value);
-  final String value;
+  const NetworkInterfaceSubInterfaceIpAllocationMode(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceSubInterfaceIpAllocationMode fromValue(String value) {
     for (final item in NetworkInterfaceSubInterfaceIpAllocationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkInterfaceSubInterfaceIpAllocationMode value: $value');
+    throw ArgumentError(
+      'Unknown NetworkInterfaceSubInterfaceIpAllocationMode value: $value',
+    );
   }
 }
-

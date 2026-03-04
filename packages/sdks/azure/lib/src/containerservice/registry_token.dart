@@ -307,7 +307,7 @@ import 'registry_token_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01
@@ -322,12 +322,16 @@ import 'registry_token_state.dart';
 class RegistryToken extends pulumi.CustomResource {
   /// The name of the Container Registry. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerRegistryName;
+
   /// Should the Container Registry token be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Specifies the name of the token. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Container Registry Scope Map associated with the token.
   late final pulumi.Output<String> scopeMapId;
 
@@ -340,16 +344,16 @@ class RegistryToken extends pulumi.CustomResource {
     RegistryTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryToken:RegistryToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryName = registerOutput<String>('containerRegistryName');
-    this.enabled = registerOutput<bool?>('enabled');
+         'azure:containerservice/registryToken:RegistryToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryName = registerOutput<String>('containerRegistryName');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopeMapId = registerOutput<String>('scopeMapId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeMapId = registerOutput<String>('scopeMapId');
   }
 
   /// Gets an existing [RegistryToken] resource's state with the given [name] and [id].
@@ -370,15 +374,15 @@ class RegistryToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryToken:RegistryToken',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryName = registerOutput<String>('containerRegistryName');
-    this.enabled = registerOutput<bool?>('enabled');
+         'azure:containerservice/registryToken:RegistryToken',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryName = registerOutput<String>('containerRegistryName');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopeMapId = registerOutput<String>('scopeMapId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeMapId = registerOutput<String>('scopeMapId');
   }
 }

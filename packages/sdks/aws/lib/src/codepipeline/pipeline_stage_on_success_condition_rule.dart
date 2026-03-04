@@ -6,18 +6,25 @@ import 'pipeline_stage_on_success_condition_rule_rule_type_id.dart';
 class PipelineStageOnSuccessConditionRule {
   /// The shell commands to run with your commands rule in CodePipeline. All commands are supported except multi-line formats.
   final pulumi.Input<List<String>>? commands;
+
   /// The action configuration fields for the rule. Configurations options for rule types and providers can be found in the [Rule structure reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
   final pulumi.Input<Map<String, String>>? configuration;
+
   /// The list of the input artifacts fields for the rule, such as specifying an input file for the rule.
   final pulumi.Input<List<String>>? inputArtifacts;
+
   /// The name of the rule that is created for the condition, such as `VariableCheck`.
   final pulumi.Input<String> name;
+
   /// The Region for the condition associated with the rule.
   final pulumi.Input<String>? region;
+
   /// The pipeline role ARN associated with the rule.
   final pulumi.Input<String>? roleArn;
+
   /// The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
   final pulumi.Input<PipelineStageOnSuccessConditionRuleRuleTypeId> ruleTypeId;
+
   /// The action timeout for the rule.
   final pulumi.Input<int>? timeoutInMinutes;
 
@@ -49,22 +56,57 @@ class PipelineStageOnSuccessConditionRule {
       'name': name,
       'region': ?region,
       'roleArn': ?roleArn,
-      'ruleTypeId': pulumi.Input.mapInputValue<PipelineStageOnSuccessConditionRuleRuleTypeId, Map<String, dynamic>>(ruleTypeId, (value) => value.toMap()),
+      'ruleTypeId':
+          pulumi.Input.mapInputValue<
+            PipelineStageOnSuccessConditionRuleRuleTypeId,
+            Map<String, dynamic>
+          >(ruleTypeId, (value) => value.toMap()),
       'timeoutInMinutes': ?timeoutInMinutes,
     };
   }
 
-  factory PipelineStageOnSuccessConditionRule.fromMap(Map<String, dynamic> map) {
+  factory PipelineStageOnSuccessConditionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineStageOnSuccessConditionRule(
-      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
-      configuration: map['configuration'] == null ? null : (((map['configuration'] as Map).cast<String, String>()).input()).input(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : (((map['inputArtifacts'] as List).cast<String>()).input()).input(),
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      ruleTypeId: (PipelineStageOnSuccessConditionRuleRuleTypeId.fromMap((map['ruleTypeId']! as Map).cast<String, dynamic>())).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : ((map['timeoutInMinutes'] as int).input()).input(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      inputArtifacts: (() {
+        final guardedValue = map['inputArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleTypeId: pulumi.Input.fromValue(
+        PipelineStageOnSuccessConditionRuleRuleTypeId.fromMap(
+          (map['ruleTypeId']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      timeoutInMinutes: (() {
+        final guardedValue = map['timeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

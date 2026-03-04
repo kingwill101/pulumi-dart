@@ -10,24 +10,35 @@ import 'weekly_maintenance_schedule_configuration_response.dart';
 class ClusterResourcePropertiesResponse {
   /// Fully qualified dns name of the service instance
   final pulumi.Input<String> fqdn;
+
   /// The name of the resource group that contains the infrastructure resources
   final pulumi.Input<String>? infraResourceGroup;
+
   /// Additional Service settings for planned maintenance
-  final pulumi.Input<WeeklyMaintenanceScheduleConfigurationResponse>? maintenanceScheduleConfiguration;
+  final pulumi.Input<WeeklyMaintenanceScheduleConfigurationResponse>?
+  maintenanceScheduleConfiguration;
+
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on
   final pulumi.Input<String>? managedEnvironmentId;
+
   /// Purchasing 3rd party product of the Service resource.
   final pulumi.Input<MarketplaceResourceResponse>? marketplaceResource;
+
   /// Network profile of the Service
   final pulumi.Input<NetworkProfileResponse>? networkProfile;
+
   /// Power state of the Service
   final pulumi.Input<String> powerState;
+
   /// Provisioning state of the Service
   final pulumi.Input<String> provisioningState;
+
   /// ServiceInstanceEntity Id which uniquely identifies a created resource
   final pulumi.Input<String> serviceId;
+
   /// Version of the Service
   final pulumi.Input<int> version;
+
   /// Additional Service settings in vnet injection instance
   final pulumi.Input<ServiceVNetAddonsResponse>? vnetAddons;
   final pulumi.Input<bool>? zoneRedundant;
@@ -64,34 +75,95 @@ class ClusterResourcePropertiesResponse {
     return <String, dynamic>{
       'fqdn': fqdn,
       'infraResourceGroup': ?infraResourceGroup,
-      'maintenanceScheduleConfiguration': ?pulumi.Input.mapOptionalInputValue<WeeklyMaintenanceScheduleConfigurationResponse, Map<String, dynamic>>(maintenanceScheduleConfiguration, (value) => value.toMap()),
+      'maintenanceScheduleConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WeeklyMaintenanceScheduleConfigurationResponse,
+            Map<String, dynamic>
+          >(maintenanceScheduleConfiguration, (value) => value.toMap()),
       'managedEnvironmentId': ?managedEnvironmentId,
-      'marketplaceResource': ?pulumi.Input.mapOptionalInputValue<MarketplaceResourceResponse, Map<String, dynamic>>(marketplaceResource, (value) => value.toMap()),
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'marketplaceResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            MarketplaceResourceResponse,
+            Map<String, dynamic>
+          >(marketplaceResource, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkProfileResponse,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
       'powerState': powerState,
       'provisioningState': provisioningState,
       'serviceId': serviceId,
       'version': version,
-      'vnetAddons': ?pulumi.Input.mapOptionalInputValue<ServiceVNetAddonsResponse, Map<String, dynamic>>(vnetAddons, (value) => value.toMap()),
+      'vnetAddons':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceVNetAddonsResponse,
+            Map<String, dynamic>
+          >(vnetAddons, (value) => value.toMap()),
       'zoneRedundant': ?zoneRedundant,
     };
   }
 
   factory ClusterResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ClusterResourcePropertiesResponse(
-      fqdn: (map['fqdn'] as String).input(),
-      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup']! as String).input(),
-      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfigurationResponse.fromMap((map['maintenanceScheduleConfiguration']! as Map).cast<String, dynamic>())).input(),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId']! as String).input(),
-      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResourceResponse.fromMap((map['marketplaceResource']! as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      powerState: (map['powerState'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      version: (map['version'] as int).input(),
-      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddonsResponse.fromMap((map['vnetAddons']! as Map).cast<String, dynamic>())).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      infraResourceGroup: (() {
+        final guardedValue = map['infraResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceScheduleConfiguration: (() {
+        final guardedValue = map['maintenanceScheduleConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WeeklyMaintenanceScheduleConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedEnvironmentId: (() {
+        final guardedValue = map['managedEnvironmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      marketplaceResource: (() {
+        final guardedValue = map['marketplaceResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MarketplaceResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      powerState: pulumi.Input.fromValue(map['powerState'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      version: pulumi.Input.fromValue(map['version'] as int),
+      vnetAddons: (() {
+        final guardedValue = map['vnetAddons'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceVNetAddonsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zoneRedundant: (() {
+        final guardedValue = map['zoneRedundant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

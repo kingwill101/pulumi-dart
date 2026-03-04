@@ -5,7 +5,7 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 
 /// Provides a VPC Endpoint resource.
 ///
-/// > **NOTE on VPC Endpoints and VPC Endpoint Associations:** The provider provides both standalone VPC Endpoint Associations for
+/// &gt; **NOTE on VPC Endpoints and VPC Endpoint Associations:** The provider provides both standalone VPC Endpoint Associations for
 /// Route Tables - (an association between a VPC endpoint and a single `route_table_id`),
 /// Security Groups - (an association between a VPC endpoint and a single `security_group_id`),
 /// and Subnets - (an association between a VPC endpoint and a single `subnet_id`) and
@@ -1295,7 +1295,7 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 /// ```
 ///
 ///
-/// > **NOTE The `dns_entry` output is a list of maps:** This provider interpolation support for lists of maps requires the `lookup` and `[]` until full support of lists of maps is available
+/// &gt; **NOTE The `dns_entry` output is a list of maps:** This provider interpolation support for lists of maps requires the `lookup` and `[]` until full support of lists of maps is available
 ///
 /// ## Import
 ///
@@ -1317,35 +1317,51 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 class VpcEndpointSpec {
   /// Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
   final pulumi.Input<bool>? autoAccept;
+
   /// The DNS options for the endpoint. See dns_options below.
   final pulumi.Input<pulumi_aws_ec2.VpcEndpointDnsOptions>? dnsOptions;
+
   /// The IP address type for the endpoint. Valid values are `ipv4`, `dualstack`, and `ipv6`.
   final pulumi.Input<String>? ipAddressType;
+
   /// A policy to attach to the endpoint that controls access to the service. This is a JSON formatted string. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
   final pulumi.Input<String>? policy;
+
   /// Whether or not to associate a private hosted zone with the specified VPC. Applicable for endpoints of type Interface. Defaults to `false`.
   final pulumi.Input<bool>? privateDnsEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resource_configuration_arn`, `service_name` or `service_network_arn` is required.
   final pulumi.Input<String>? resourceConfigurationArn;
+
   /// One or more route table IDs. Applicable for endpoints of type `Gateway`.
   final pulumi.Input<List<String>>? routeTableIds;
+
   /// The ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`.
   /// If no security groups are specified, the VPC's [default security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup) is associated with the endpoint.
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// The service name. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
+
+  /// The service name. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
   final pulumi.Input<String> serviceName;
+
   /// The ARN of a Service Network to connect this VPC Endpoint to. Exactly one of `resource_configuration_arn`, `service_name` or `service_network_arn` is required.
   final pulumi.Input<String>? serviceNetworkArn;
+
   /// The AWS region of the VPC Endpoint Service. If specified, the VPC endpoint will connect to the service in the provided region. Applicable for endpoints of type `Interface`.
   final pulumi.Input<String>? serviceRegion;
+
   /// Subnet configuration for the endpoint, used to select specific IPv4 and/or IPv6 addresses to the endpoint. See subnet_configuration below.
-  final pulumi.Input<List<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>>? subnetConfigurations;
+  final pulumi.Input<List<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>>?
+  subnetConfigurations;
+
   /// The ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`. Interface type endpoints cannot function without being assigned to a subnet.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
   final pulumi.Input<String>? vpcEndpointType;
 
@@ -1359,7 +1375,7 @@ class VpcEndpointSpec {
   /// [resourceConfigurationArn] The ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resource_configuration_arn`, `service_name` or `service_network_arn` is required.
   /// [routeTableIds] One or more route table IDs. Applicable for endpoints of type `Gateway`.
   /// [securityGroupIds] The ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`.
-  /// [serviceName] The service name. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
+  /// [serviceName] The service name. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
   /// [serviceNetworkArn] The ARN of a Service Network to connect this VPC Endpoint to. Exactly one of `resource_configuration_arn`, `service_name` or `service_network_arn` is required.
   /// [serviceRegion] The AWS region of the VPC Endpoint Service. If specified, the VPC endpoint will connect to the service in the provided region. Applicable for endpoints of type `Interface`.
   /// [subnetConfigurations] Subnet configuration for the endpoint, used to select specific IPv4 and/or IPv6 addresses to the endpoint. See subnet_configuration below.
@@ -1388,7 +1404,11 @@ class VpcEndpointSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoAccept': ?autoAccept,
-      'dnsOptions': ?pulumi.Input.mapOptionalInputValue<pulumi_aws_ec2.VpcEndpointDnsOptions, Map<String, dynamic>>(dnsOptions, (value) => value.toMap()),
+      'dnsOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            pulumi_aws_ec2.VpcEndpointDnsOptions,
+            Map<String, dynamic>
+          >(dnsOptions, (value) => value.toMap()),
       'ipAddressType': ?ipAddressType,
       'policy': ?policy,
       'privateDnsEnabled': ?privateDnsEnabled,
@@ -1399,7 +1419,18 @@ class VpcEndpointSpec {
       'serviceName': serviceName,
       'serviceNetworkArn': ?serviceNetworkArn,
       'serviceRegion': ?serviceRegion,
-      'subnetConfigurations': ?pulumi.Input.mapOptionalInputValue<List<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>, List<Map<String, dynamic>>>(subnetConfigurations, (value) => pulumi.Input.encodeList<pulumi_aws_ec2.VpcEndpointSubnetConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            subnetConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  pulumi_aws_ec2.VpcEndpointSubnetConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'subnetIds': ?subnetIds,
       'tags': ?tags,
       'vpcEndpointType': ?vpcEndpointType,
@@ -1408,23 +1439,96 @@ class VpcEndpointSpec {
 
   factory VpcEndpointSpec.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSpec(
-      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept']! as bool).input(),
-      dnsOptions: map['dnsOptions'] == null ? null : (pulumi_aws_ec2.VpcEndpointDnsOptions.fromMap((map['dnsOptions']! as Map).cast<String, dynamic>())).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled']! as bool).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      resourceConfigurationArn: map['resourceConfigurationArn'] == null ? null : (map['resourceConfigurationArn']! as String).input(),
-      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds']! as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      serviceNetworkArn: map['serviceNetworkArn'] == null ? null : (map['serviceNetworkArn']! as String).input(),
-      serviceRegion: map['serviceRegion'] == null ? null : (map['serviceRegion']! as String).input(),
-      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>(map['subnetConfigurations']!, (value) => pulumi_aws_ec2.VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType']! as String).input(),
+      autoAccept: (() {
+        final guardedValue = map['autoAccept'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsOptions: (() {
+        final guardedValue = map['dnsOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi_aws_ec2.VpcEndpointDnsOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsEnabled: (() {
+        final guardedValue = map['privateDnsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceConfigurationArn: (() {
+        final guardedValue = map['resourceConfigurationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableIds: (() {
+        final guardedValue = map['routeTableIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      serviceNetworkArn: (() {
+        final guardedValue = map['serviceNetworkArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceRegion: (() {
+        final guardedValue = map['serviceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetConfigurations: (() {
+        final guardedValue = map['subnetConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>(
+            guardedValue,
+            (value) => pulumi_aws_ec2.VpcEndpointSubnetConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcEndpointType: (() {
+        final guardedValue = map['vpcEndpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

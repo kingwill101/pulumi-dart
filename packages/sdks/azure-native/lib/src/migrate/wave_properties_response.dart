@@ -7,20 +7,28 @@ import 'arg_response.dart';
 class WavePropertiesResponse {
   /// Actual start date of the wave.
   final pulumi.Input<String> actualStartDate;
+
   /// ARG query and other details to create workloads within a wave
   final pulumi.Input<ArgResponse> arg;
+
   /// Description of the wave.
   final pulumi.Input<String>? description;
+
   /// Display Name of the wave.
   final pulumi.Input<String> displayName;
+
   /// Planned completion date of the wave.
   final pulumi.Input<String>? plannedCompletionDate;
+
   /// Planned start date of the wave.
   final pulumi.Input<String> plannedStartDate;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// The current stage of the wave.
   final pulumi.Input<String> stage;
+
   /// The status of the wave.
   final pulumi.Input<String> status;
 
@@ -49,7 +57,10 @@ class WavePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actualStartDate': actualStartDate,
-      'arg': pulumi.Input.mapInputValue<ArgResponse, Map<String, dynamic>>(arg, (value) => value.toMap()),
+      'arg': pulumi.Input.mapInputValue<ArgResponse, Map<String, dynamic>>(
+        arg,
+        (value) => value.toMap(),
+      ),
       'description': ?description,
       'displayName': displayName,
       'plannedCompletionDate': ?plannedCompletionDate,
@@ -62,16 +73,29 @@ class WavePropertiesResponse {
 
   factory WavePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WavePropertiesResponse(
-      actualStartDate: (map['actualStartDate'] as String).input(),
-      arg: (ArgResponse.fromMap((map['arg'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate']! as String).input(),
-      plannedStartDate: (map['plannedStartDate'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      stage: (map['stage'] as String).input(),
-      status: (map['status'] as String).input(),
+      actualStartDate: pulumi.Input.fromValue(map['actualStartDate'] as String),
+      arg: pulumi.Input.fromValue(
+        ArgResponse.fromMap((map['arg']! as Map).cast<String, dynamic>()),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      plannedCompletionDate: (() {
+        final guardedValue = map['plannedCompletionDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plannedStartDate: pulumi.Input.fromValue(
+        map['plannedStartDate'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      stage: pulumi.Input.fromValue(map['stage'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

@@ -10,14 +10,19 @@ import 'configuration_group_schema_properties_format.dart';
 class ConfigurationGroupSchemaArgs {
   /// The name of the configuration group schema.
   final pulumi.Input<String>? configurationGroupSchemaName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Configuration group schema properties.
   final pulumi.Input<ConfigurationGroupSchemaPropertiesFormat>? properties;
+
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,7 +46,11 @@ class ConfigurationGroupSchemaArgs {
     return <String, dynamic>{
       'configurationGroupSchemaName': ?configurationGroupSchemaName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigurationGroupSchemaPropertiesFormat, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationGroupSchemaPropertiesFormat,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'publisherName': publisherName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -50,13 +59,36 @@ class ConfigurationGroupSchemaArgs {
 
   factory ConfigurationGroupSchemaArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaArgs(
-      configurationGroupSchemaName: map['configurationGroupSchemaName'] == null ? null : (map['configurationGroupSchemaName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationGroupSchemaPropertiesFormat.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      publisherName: (map['publisherName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      configurationGroupSchemaName: (() {
+        final guardedValue = map['configurationGroupSchemaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationGroupSchemaPropertiesFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

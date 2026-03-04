@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
   /// The description of protocol.
   final pulumi.Input<String> description;
+
   /// The forward port.
   final pulumi.Input<int> forwardPort;
+
   /// The listener forward.
   final pulumi.Input<String> listenerForward;
+
   /// The listener port.
   final pulumi.Input<int> listenerPort;
+
   /// The listener protocol.
   final pulumi.Input<String> listenerProtocol;
 
@@ -38,14 +42,17 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
     };
   }
 
-  factory GetApplicationLoadBalancersBalancerListenerPortsAndProtocol.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationLoadBalancersBalancerListenerPortsAndProtocol.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationLoadBalancersBalancerListenerPortsAndProtocol(
-      description: (map['description'] as String).input(),
-      forwardPort: (map['forwardPort'] as int).input(),
-      listenerForward: (map['listenerForward'] as String).input(),
-      listenerPort: (map['listenerPort'] as int).input(),
-      listenerProtocol: (map['listenerProtocol'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      forwardPort: pulumi.Input.fromValue(map['forwardPort'] as int),
+      listenerForward: pulumi.Input.fromValue(map['listenerForward'] as String),
+      listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
+      listenerProtocol: pulumi.Input.fromValue(
+        map['listenerProtocol'] as String,
+      ),
     );
   }
 }
-

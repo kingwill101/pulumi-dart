@@ -1,5 +1,3 @@
-library module_node_k8s_io;
-
 export 'node_k8s_io/overhead.dart';
 export 'node_k8s_io/overhead_node_k8s_io_v1alpha1.dart';
 export 'node_k8s_io/overhead_node_k8s_io_v1beta1.dart';

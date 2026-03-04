@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_cors.dart';
-import 'account_data_store.dart';
 import 'account_identity.dart';
 import 'account_state.dart';
 
@@ -167,7 +166,7 @@ import 'account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Maps` - 2023-06-01
@@ -182,28 +181,39 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// A `cors` block as defined below
   late final pulumi.Output<AccountCors?> cors;
+
   /// One or more `data_store` blocks as defined below.
-  late final pulumi.Output<List<AccountDataStore>?> dataStores;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataStores;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
+
   /// Is local authentication enabled for this Azure Maps Account? When `false`, all authentication to the Azure Maps data-plane REST API is disabled, except Azure AD authentication. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
+
   /// The Location in which the Azure Maps Account should be provisioned. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Azure Maps Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary key used to authenticate and authorize access to the Maps REST APIs.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// The name of the Resource Group in which the Azure Maps Account should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary key used to authenticate and authorize access to the Maps REST APIs.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// The SKU of the Azure Maps Account. Possible values are `S0`, `S1` and `G2`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Gen1 SKUs (`S0` and `S1`) are deprecated and can no longer be used for new deployments, which should instead use a Gen2 SKU (`G2`) - more information can be found [in the Azure documentation](https://learn.microsoft.com/azure/azure-maps/how-to-manage-pricing-tier).
+  /// &gt; **Note:** Gen1 SKUs (`S0` and `S1`) are deprecated and can no longer be used for new deployments, which should instead use a Gen2 SKU (`G2`) - more information can be found [in the Azure documentation](https://learn.microsoft.com/azure/azure-maps/how-to-manage-pricing-tier).
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags to assign to the Azure Maps Account.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A unique identifier for the Maps Account.
   late final pulumi.Output<String> xMsClientId;
 
@@ -216,23 +226,25 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maps/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cors = registerOutput<AccountCors?>('cors');
-    this.dataStores = registerOutput<List<AccountDataStore>?>('dataStores');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:maps/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cors = registerOutput<AccountCors?>('cors');
+    dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
+    identity = registerOutput<AccountIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.xMsClientId = registerOutput<String>('xMsClientId');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    xMsClientId = registerOutput<String>('xMsClientId');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -253,22 +265,24 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maps/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cors = registerOutput<AccountCors?>('cors');
-    this.dataStores = registerOutput<List<AccountDataStore>?>('dataStores');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:maps/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cors = registerOutput<AccountCors?>('cors');
+    dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
+    identity = registerOutput<AccountIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.xMsClientId = registerOutput<String>('xMsClientId');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    xMsClientId = registerOutput<String>('xMsClientId');
   }
 }

@@ -27,16 +27,15 @@ enum Currency {
   valueAUD("AUD"),
   valueCNY("CNY");
 
-  const Currency(this.value);
-  final String value;
+  const Currency(this.wireValue);
+  final String wireValue;
 
   static Currency fromValue(String value) {
     for (final item in Currency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Currency value: $value');
   }
 }
-

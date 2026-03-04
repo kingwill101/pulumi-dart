@@ -8,20 +8,15 @@ class DataSourceLambdaConfig {
 
   /// Creates a new [DataSourceLambdaConfig].
   /// [functionArn] ARN for the Lambda function.
-  DataSourceLambdaConfig({
-    required this.functionArn,
-  });
+  DataSourceLambdaConfig({required this.functionArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'functionArn': functionArn,
-    };
+    return <String, dynamic>{'functionArn': functionArn};
   }
 
   factory DataSourceLambdaConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceLambdaConfig(
-      functionArn: (map['functionArn'] as String).input(),
+      functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
     );
   }
 }
-

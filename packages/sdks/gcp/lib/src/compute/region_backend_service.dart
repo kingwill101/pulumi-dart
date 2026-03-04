@@ -1,11 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_backend_service_args.dart';
-import 'region_backend_service_backend.dart';
 import 'region_backend_service_cdn_policy.dart';
 import 'region_backend_service_circuit_breakers.dart';
 import 'region_backend_service_connection_tracking_policy.dart';
 import 'region_backend_service_consistent_hash.dart';
-import 'region_backend_service_custom_metric.dart';
 import 'region_backend_service_dynamic_forwarding.dart';
 import 'region_backend_service_failover_policy.dart';
 import 'region_backend_service_ha_policy.dart';
@@ -22,7 +20,7 @@ import 'region_backend_service_tls_settings.dart';
 /// A Region Backend Service defines a regionally-scoped group of virtual
 /// machines that will serve traffic for load balancing.
 ///
-/// > **Note:** Recreating a `gcp.compute.RegionBackendService` that references other dependent resources like `gcp.compute.InstanceGroup` will give a `resourceInUseByAnotherResource` error, when decreasing the number of other dependent resources.
+/// &gt; **Note:** Recreating a `gcp.compute.RegionBackendService` that references other dependent resources like `gcp.compute.InstanceGroup` will give a `resourceInUseByAnotherResource` error, when decreasing the number of other dependent resources.
 /// Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backend Count example.
 ///
 ///
@@ -3950,25 +3948,33 @@ class RegionBackendService extends pulumi.CustomResource {
   /// maximum allowed value for TTL is one day.
   /// When the load balancing scheme is INTERNAL, this field is not used.
   late final pulumi.Output<int?> affinityCookieTtlSec;
+
   /// The set of backends that serve this RegionBackendService.
   /// Structure is documented below.
-  late final pulumi.Output<List<RegionBackendServiceBackend>?> backends;
+  late final pulumi.Output<List<Map<String, dynamic>>?> backends;
+
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceCdnPolicy> cdnPolicy;
+
   /// Settings controlling the volume of connections to a backend service. This field
   /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
   /// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceCircuitBreakers?> circuitBreakers;
+  late final pulumi.Output<RegionBackendServiceCircuitBreakers?>
+  circuitBreakers;
+
   /// Time for which instance will be drained (not accept new
   /// connections, but still work to finish started).
   late final pulumi.Output<int?> connectionDrainingTimeoutSec;
+
   /// Connection Tracking configuration for this BackendService.
   /// This is available only for Layer 4 Internal Load Balancing and
   /// Network Load Balancing.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceConnectionTrackingPolicy?> connectionTrackingPolicy;
+  late final pulumi.Output<RegionBackendServiceConnectionTrackingPolicy?>
+  connectionTrackingPolicy;
+
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties. This load balancing
   /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -3977,27 +3983,37 @@ class RegionBackendService extends pulumi.CustomResource {
   /// hashing.
   /// This field only applies when all of the following are true -
   late final pulumi.Output<RegionBackendServiceConsistentHash?> consistentHash;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<RegionBackendServiceCustomMetric>?> customMetrics;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customMetrics;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceDynamicForwarding?> dynamicForwarding;
+  late final pulumi.Output<RegionBackendServiceDynamicForwarding?>
+  dynamicForwarding;
+
   /// If true, enable Cloud CDN for this RegionBackendService.
   late final pulumi.Output<bool?> enableCdn;
+
   /// Policy for failovers.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceFailoverPolicy?> failoverPolicy;
+
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
   late final pulumi.Output<String> fingerprint;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> generatedId;
+
   /// Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
   /// The backends of this regional backend service must only specify zonal network endpoint groups
   /// (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
@@ -4008,19 +4024,23 @@ class RegionBackendService extends pulumi.CustomResource {
   /// Passthrough Network Load Balancers.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceHaPolicy?> haPolicy;
+
   /// The set of URLs to HealthCheck resources for health checking
   /// this RegionBackendService. Currently at most one health
   /// check can be specified.
   /// A health check must be specified unless the backend service uses an internet
   /// or serverless NEG as a backend.
   late final pulumi.Output<String?> healthChecks;
+
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, Google-managed OAuth client is used.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceIap> iap;
+
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
   late final pulumi.Output<String?> ipAddressSelectionPolicy;
+
   /// Indicates what kind of load balancing this regional backend service
   /// will be used for. A backend service created for one type of load
   /// balancing cannot be used with the other(s). For more information, refer to
@@ -4028,6 +4048,7 @@ class RegionBackendService extends pulumi.CustomResource {
   /// Default value is `INTERNAL`.
   /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
+
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
   /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -4081,10 +4102,12 @@ class RegionBackendService extends pulumi.CustomResource {
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   late final pulumi.Output<String?> localityLbPolicy;
+
   /// This field denotes the logging options for the load balancer traffic served by this backend service.
   /// If logging is enabled, logs will be exported to Stackdriver.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceLogConfig> logConfig;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -4093,22 +4116,31 @@ class RegionBackendService extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The URL of the network to which this backend service belongs.
   /// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
   /// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
   /// Changes to this field force recreation of the resource.
   late final pulumi.Output<String?> network;
+
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?> networkPassThroughLbTrafficPolicy;
+  late final pulumi.Output<
+    RegionBackendServiceNetworkPassThroughLbTrafficPolicy?
+  >
+  networkPassThroughLbTrafficPolicy;
+
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// This field is applicable only when the `load_balancing_scheme` is set
   /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceOutlierDetection?> outlierDetection;
+  late final pulumi.Output<RegionBackendServiceOutlierDetection?>
+  outlierDetection;
+
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceParams?> params;
+
   /// A named port on a backend instance group representing the port for
   /// communication to the backend VMs in that group. Required when the
   /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -4117,37 +4149,48 @@ class RegionBackendService extends pulumi.CustomResource {
   /// default of "http" if not given.
   /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
   late final pulumi.Output<String> portName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The protocol this BackendService uses to communicate with backends.
   /// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
   /// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
   /// for more information.
   /// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
   late final pulumi.Output<String> protocol;
+
   /// The Region in which the created backend service should reside.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
+
   /// The security policy associated with this backend service.
   late final pulumi.Output<String?> securityPolicy;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
   late final pulumi.Output<String> sessionAffinity;
+
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
-  late final pulumi.Output<RegionBackendServiceStrongSessionAffinityCookie?> strongSessionAffinityCookie;
+  late final pulumi.Output<RegionBackendServiceStrongSessionAffinityCookie?>
+  strongSessionAffinityCookie;
+
   /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceSubsetting?> subsetting;
+
   /// The backend service timeout has a different meaning depending on the type of load balancer.
   /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// The default is 30 seconds.
   /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
   late final pulumi.Output<int> timeoutSec;
+
   /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceTlsSettings?> tlsSettings;
@@ -4161,49 +4204,76 @@ class RegionBackendService extends pulumi.CustomResource {
     RegionBackendServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionBackendService:RegionBackendService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    this.backends = registerOutput<List<RegionBackendServiceBackend>?>('backends');
-    this.cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy');
-    this.circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers');
-    this.connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
-    this.connectionTrackingPolicy = registerOutput<RegionBackendServiceConnectionTrackingPolicy?>('connectionTrackingPolicy');
-    this.consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customMetrics = registerOutput<List<RegionBackendServiceCustomMetric>?>('customMetrics');
-    this.description = registerOutput<String?>('description');
-    this.dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding');
-    this.enableCdn = registerOutput<bool?>('enableCdn');
-    this.failoverPolicy = registerOutput<RegionBackendServiceFailoverPolicy?>('failoverPolicy');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.generatedId = registerOutput<int>('generatedId');
-    this.haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy');
-    this.healthChecks = registerOutput<String?>('healthChecks');
-    this.iap = registerOutput<RegionBackendServiceIap>('iap');
-    this.ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
-    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
-    this.logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig');
+         'gcp:compute/regionBackendService:RegionBackendService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy');
+    circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>(
+      'circuitBreakers',
+    );
+    connectionDrainingTimeoutSec = registerOutput<int?>(
+      'connectionDrainingTimeoutSec',
+    );
+    connectionTrackingPolicy =
+        registerOutput<RegionBackendServiceConnectionTrackingPolicy?>(
+          'connectionTrackingPolicy',
+        );
+    consistentHash = registerOutput<RegionBackendServiceConsistentHash?>(
+      'consistentHash',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'customMetrics',
+    );
+    description = registerOutput<String?>('description');
+    dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>(
+      'dynamicForwarding',
+    );
+    enableCdn = registerOutput<bool?>('enableCdn');
+    failoverPolicy = registerOutput<RegionBackendServiceFailoverPolicy?>(
+      'failoverPolicy',
+    );
+    fingerprint = registerOutput<String>('fingerprint');
+    generatedId = registerOutput<int>('generatedId');
+    haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy');
+    healthChecks = registerOutput<String?>('healthChecks');
+    iap = registerOutput<RegionBackendServiceIap>('iap');
+    ipAddressSelectionPolicy = registerOutput<String?>(
+      'ipAddressSelectionPolicy',
+    );
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String?>('network');
-    this.networkPassThroughLbTrafficPolicy = registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>('networkPassThroughLbTrafficPolicy');
-    this.outlierDetection = registerOutput<RegionBackendServiceOutlierDetection?>('outlierDetection');
-    this.params = registerOutput<RegionBackendServiceParams?>('params');
-    this.portName = registerOutput<String>('portName');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.securityPolicy = registerOutput<String?>('securityPolicy');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sessionAffinity = registerOutput<String>('sessionAffinity');
-    this.strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie');
-    this.subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting');
-    this.timeoutSec = registerOutput<int>('timeoutSec');
-    this.tlsSettings = registerOutput<RegionBackendServiceTlsSettings?>('tlsSettings');
+    network = registerOutput<String?>('network');
+    networkPassThroughLbTrafficPolicy =
+        registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>(
+          'networkPassThroughLbTrafficPolicy',
+        );
+    outlierDetection = registerOutput<RegionBackendServiceOutlierDetection?>(
+      'outlierDetection',
+    );
+    params = registerOutput<RegionBackendServiceParams?>('params');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    strongSessionAffinityCookie =
+        registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>(
+          'strongSessionAffinityCookie',
+        );
+    subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting');
+    timeoutSec = registerOutput<int>('timeoutSec');
+    tlsSettings = registerOutput<RegionBackendServiceTlsSettings?>(
+      'tlsSettings',
+    );
   }
 
   /// Gets an existing [RegionBackendService] resource's state with the given [name] and [id].
@@ -4224,48 +4294,75 @@ class RegionBackendService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionBackendService:RegionBackendService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    this.backends = registerOutput<List<RegionBackendServiceBackend>?>('backends');
-    this.cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy');
-    this.circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers');
-    this.connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
-    this.connectionTrackingPolicy = registerOutput<RegionBackendServiceConnectionTrackingPolicy?>('connectionTrackingPolicy');
-    this.consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customMetrics = registerOutput<List<RegionBackendServiceCustomMetric>?>('customMetrics');
-    this.description = registerOutput<String?>('description');
-    this.dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding');
-    this.enableCdn = registerOutput<bool?>('enableCdn');
-    this.failoverPolicy = registerOutput<RegionBackendServiceFailoverPolicy?>('failoverPolicy');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.generatedId = registerOutput<int>('generatedId');
-    this.haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy');
-    this.healthChecks = registerOutput<String?>('healthChecks');
-    this.iap = registerOutput<RegionBackendServiceIap>('iap');
-    this.ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
-    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
-    this.logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig');
+         'gcp:compute/regionBackendService:RegionBackendService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy');
+    circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>(
+      'circuitBreakers',
+    );
+    connectionDrainingTimeoutSec = registerOutput<int?>(
+      'connectionDrainingTimeoutSec',
+    );
+    connectionTrackingPolicy =
+        registerOutput<RegionBackendServiceConnectionTrackingPolicy?>(
+          'connectionTrackingPolicy',
+        );
+    consistentHash = registerOutput<RegionBackendServiceConsistentHash?>(
+      'consistentHash',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'customMetrics',
+    );
+    description = registerOutput<String?>('description');
+    dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>(
+      'dynamicForwarding',
+    );
+    enableCdn = registerOutput<bool?>('enableCdn');
+    failoverPolicy = registerOutput<RegionBackendServiceFailoverPolicy?>(
+      'failoverPolicy',
+    );
+    fingerprint = registerOutput<String>('fingerprint');
+    generatedId = registerOutput<int>('generatedId');
+    haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy');
+    healthChecks = registerOutput<String?>('healthChecks');
+    iap = registerOutput<RegionBackendServiceIap>('iap');
+    ipAddressSelectionPolicy = registerOutput<String?>(
+      'ipAddressSelectionPolicy',
+    );
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String?>('network');
-    this.networkPassThroughLbTrafficPolicy = registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>('networkPassThroughLbTrafficPolicy');
-    this.outlierDetection = registerOutput<RegionBackendServiceOutlierDetection?>('outlierDetection');
-    this.params = registerOutput<RegionBackendServiceParams?>('params');
-    this.portName = registerOutput<String>('portName');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.securityPolicy = registerOutput<String?>('securityPolicy');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sessionAffinity = registerOutput<String>('sessionAffinity');
-    this.strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie');
-    this.subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting');
-    this.timeoutSec = registerOutput<int>('timeoutSec');
-    this.tlsSettings = registerOutput<RegionBackendServiceTlsSettings?>('tlsSettings');
+    network = registerOutput<String?>('network');
+    networkPassThroughLbTrafficPolicy =
+        registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>(
+          'networkPassThroughLbTrafficPolicy',
+        );
+    outlierDetection = registerOutput<RegionBackendServiceOutlierDetection?>(
+      'outlierDetection',
+    );
+    params = registerOutput<RegionBackendServiceParams?>('params');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    strongSessionAffinityCookie =
+        registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>(
+          'strongSessionAffinityCookie',
+        );
+    subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting');
+    timeoutSec = registerOutput<int>('timeoutSec');
+    tlsSettings = registerOutput<RegionBackendServiceTlsSettings?>(
+      'tlsSettings',
+    );
   }
 }

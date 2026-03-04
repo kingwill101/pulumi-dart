@@ -1,5 +1,3 @@
-library module_appcomplianceautomation;
-
 export 'appcomplianceautomation/cert_sync_record_response.dart';
 export 'appcomplianceautomation/content_type.dart';
 export 'appcomplianceautomation/control_sync_record_response.dart';

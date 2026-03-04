@@ -7,9 +7,9 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldType {
   int32("INT32"),
   int64("INT64"),
   float("FLOAT"),
-  double("DOUBLE"),
+  double_("DOUBLE"),
   decimal("DECIMAL"),
-  string("STRING"),
+  string_("STRING"),
   binary("BINARY"),
   timestamp("TIMESTAMP"),
   date("DATE"),
@@ -17,16 +17,17 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldType {
   record("RECORD"),
   null_("NULL");
 
-  const GoogleCloudDataplexV1SchemaSchemaFieldType(this.value);
-  final String value;
+  const GoogleCloudDataplexV1SchemaSchemaFieldType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDataplexV1SchemaSchemaFieldType fromValue(String value) {
     for (final item in GoogleCloudDataplexV1SchemaSchemaFieldType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaSchemaFieldType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1SchemaSchemaFieldType value: $value',
+    );
   }
 }
-

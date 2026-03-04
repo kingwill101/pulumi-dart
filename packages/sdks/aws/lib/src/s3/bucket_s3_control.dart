@@ -4,7 +4,7 @@ import 'bucket_s3_control_state.dart';
 
 /// Provides a resource to manage an S3 Control Bucket.
 ///
-/// > This functionality is for managing [S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html). To manage S3 Buckets in an AWS Partition, see the `aws.s3.Bucket` resource.
+/// &gt; This functionality is for managing [S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html). To manage S3 Buckets in an AWS Partition, see the `aws.s3.Bucket` resource.
 ///
 /// ## Example Usage
 ///
@@ -119,18 +119,25 @@ import 'bucket_s3_control_state.dart';
 class BucketS3Control extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the bucket.
   late final pulumi.Output<String> arn;
+
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// UTC creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> creationDate;
+
   /// Identifier of the Outpost to contain this bucket.
   late final pulumi.Output<String> outpostId;
+
   /// Boolean whether Public Access Block is enabled.
   late final pulumi.Output<bool> publicAccessBlockEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -143,19 +150,19 @@ class BucketS3Control extends pulumi.CustomResource {
     BucketS3ControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/bucket:Bucket',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bucket = registerOutput<String>('bucket');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.outpostId = registerOutput<String>('outpostId');
-    this.publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/bucket:Bucket',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    creationDate = registerOutput<String>('creationDate');
+    outpostId = registerOutput<String>('outpostId');
+    publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [BucketS3Control] resource's state with the given [name] and [id].
@@ -176,18 +183,18 @@ class BucketS3Control extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/bucket:Bucket',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bucket = registerOutput<String>('bucket');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.outpostId = registerOutput<String>('outpostId');
-    this.publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/bucket:Bucket',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    creationDate = registerOutput<String>('creationDate');
+    outpostId = registerOutput<String>('outpostId');
+    publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

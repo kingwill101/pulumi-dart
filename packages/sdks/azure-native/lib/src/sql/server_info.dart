@@ -9,20 +9,15 @@ class ServerInfo {
 
   /// Creates a new [ServerInfo].
   /// [serverId] Server Id.
-  ServerInfo({
-    required this.serverId,
-  });
+  ServerInfo({required this.serverId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serverId': serverId,
-    };
+    return <String, dynamic>{'serverId': serverId};
   }
 
   factory ServerInfo.fromMap(Map<String, dynamic> map) {
     return ServerInfo(
-      serverId: (map['serverId'] as String).input(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
     );
   }
 }
-

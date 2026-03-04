@@ -649,36 +649,53 @@ import 'governance_rule_owner_source_response.dart';
 class GovernanceRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the governance rule
   late final pulumi.Output<String?> description;
+
   /// Display name of the governance rule
   late final pulumi.Output<String> displayName;
+
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   late final pulumi.Output<List<String>?> excludedScopes;
+
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  late final pulumi.Output<GovernanceRuleEmailNotificationResponse?> governanceEmailNotification;
+  late final pulumi.Output<GovernanceRuleEmailNotificationResponse?>
+  governanceEmailNotification;
+
   /// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
   late final pulumi.Output<bool?> includeMemberScopes;
+
   /// Defines whether the rule is active/inactive
   late final pulumi.Output<bool?> isDisabled;
+
   /// Defines whether there is a grace period on the governance rule
   late final pulumi.Output<bool?> isGracePeriod;
+
   /// The governance rule metadata
   late final pulumi.Output<GovernanceRuleMetadataResponse?> metadata;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   late final pulumi.Output<GovernanceRuleOwnerSourceResponse> ownerSource;
+
   /// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
   late final pulumi.Output<String?> remediationTimeframe;
+
   /// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
   late final pulumi.Output<int> rulePriority;
+
   /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
   late final pulumi.Output<String> ruleType;
+
   /// The governance rule source, what the rule affects, e.g. Assessments
   late final pulumi.Output<String> sourceResourceType;
+
   /// The tenantId (GUID)
   late final pulumi.Output<String> tenantId;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -691,27 +708,32 @@ class GovernanceRule extends pulumi.CustomResource {
     GovernanceRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:GovernanceRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.excludedScopes = registerOutput<List<String>?>('excludedScopes');
-    this.governanceEmailNotification = registerOutput<GovernanceRuleEmailNotificationResponse?>('governanceEmailNotification');
-    this.includeMemberScopes = registerOutput<bool?>('includeMemberScopes');
-    this.isDisabled = registerOutput<bool?>('isDisabled');
-    this.isGracePeriod = registerOutput<bool?>('isGracePeriod');
-    this.metadata = registerOutput<GovernanceRuleMetadataResponse?>('metadata');
+         'azure-native:security:GovernanceRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes');
+    governanceEmailNotification =
+        registerOutput<GovernanceRuleEmailNotificationResponse?>(
+          'governanceEmailNotification',
+        );
+    includeMemberScopes = registerOutput<bool?>('includeMemberScopes');
+    isDisabled = registerOutput<bool?>('isDisabled');
+    isGracePeriod = registerOutput<bool?>('isGracePeriod');
+    metadata = registerOutput<GovernanceRuleMetadataResponse?>('metadata');
     this.name = registerOutput<String>('name');
-    this.ownerSource = registerOutput<GovernanceRuleOwnerSourceResponse>('ownerSource');
-    this.remediationTimeframe = registerOutput<String?>('remediationTimeframe');
-    this.rulePriority = registerOutput<int>('rulePriority');
-    this.ruleType = registerOutput<String>('ruleType');
-    this.sourceResourceType = registerOutput<String>('sourceResourceType');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    ownerSource = registerOutput<GovernanceRuleOwnerSourceResponse>(
+      'ownerSource',
+    );
+    remediationTimeframe = registerOutput<String?>('remediationTimeframe');
+    rulePriority = registerOutput<int>('rulePriority');
+    ruleType = registerOutput<String>('ruleType');
+    sourceResourceType = registerOutput<String>('sourceResourceType');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

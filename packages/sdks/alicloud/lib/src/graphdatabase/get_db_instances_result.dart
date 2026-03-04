@@ -7,6 +7,7 @@ import 'get_db_instances_instance.dart';
 class GetDbInstancesResult {
   final String? dbInstanceDescription;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -38,7 +39,11 @@ class GetDbInstancesResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetDbInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<GetDbInstancesInstance, Map<String, dynamic>>(
+            instances,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'status': ?status,
     };
@@ -46,14 +51,34 @@ class GetDbInstancesResult {
 
   factory GetDbInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetDbInstancesResult(
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : map['dbInstanceDescription']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      dbInstanceDescription: (() {
+        final guardedValue = map['dbInstanceDescription'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetDbInstancesInstance>(map['instances'], (value) => GetDbInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      instances: pulumi.Input.decodeList<GetDbInstancesInstance>(
+        map['instances']!,
+        (value) => GetDbInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

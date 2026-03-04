@@ -13,15 +13,14 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lambdaArn': lambdaArn,
-    };
+    return <String, dynamic>{'lambdaArn': lambdaArn};
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration(
-      lambdaArn: (map['lambdaArn'] as String).input(),
+      lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
     );
   }
 }
-

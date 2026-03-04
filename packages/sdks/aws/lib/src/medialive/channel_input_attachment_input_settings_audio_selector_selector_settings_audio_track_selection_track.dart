@@ -13,15 +13,14 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'track': track,
-    };
+    return <String, dynamic>{'track': track};
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack(
-      track: (map['track'] as int).input(),
+      track: pulumi.Input.fromValue(map['track'] as int),
     );
   }
 }
-

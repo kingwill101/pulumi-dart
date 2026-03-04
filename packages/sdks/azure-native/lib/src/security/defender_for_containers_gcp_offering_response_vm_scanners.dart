@@ -7,6 +7,7 @@ import 'vm_scanners_base_response_configuration.dart';
 class DefenderForContainersGcpOfferingResponseVmScanners {
   /// Configuration for VM scanning
   final pulumi.Input<VmScannersBaseResponseConfiguration>? configuration;
+
   /// Is VM scanning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -20,16 +21,33 @@ class DefenderForContainersGcpOfferingResponseVmScanners {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<VmScannersBaseResponseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmScannersBaseResponseConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderForContainersGcpOfferingResponseVmScanners.fromMap(Map<String, dynamic> map) {
+  factory DefenderForContainersGcpOfferingResponseVmScanners.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForContainersGcpOfferingResponseVmScanners(
-      configuration: map['configuration'] == null ? null : (VmScannersBaseResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmScannersBaseResponseConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

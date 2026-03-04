@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_args.dart';
 import 'volume_group_meta_data_response.dart';
-import 'volume_group_volume_properties_response.dart';
 
 /// Volume group resource for create
 ///
@@ -3651,18 +3650,24 @@ import 'volume_group_volume_properties_response.dart';
 class VolumeGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Volume group details
   late final pulumi.Output<VolumeGroupMetaDataResponse?> groupMetaData;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// List of volumes from group
-  late final pulumi.Output<List<VolumeGroupVolumePropertiesResponse>?> volumes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
 
   /// Creates a new [VolumeGroup].
   /// [name] The Pulumi resource name.
@@ -3673,17 +3678,19 @@ class VolumeGroup extends pulumi.CustomResource {
     VolumeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:VolumeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>('groupMetaData');
-    this.location = registerOutput<String?>('location');
+         'azure-native:netapp:VolumeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>(
+      'groupMetaData',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
-    this.volumes = registerOutput<List<VolumeGroupVolumePropertiesResponse>?>('volumes');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
   }
 }

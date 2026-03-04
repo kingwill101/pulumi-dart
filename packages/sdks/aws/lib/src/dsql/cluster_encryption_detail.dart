@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterEncryptionDetail {
   /// The status of encryption for the DSQL Cluster.
   final pulumi.Input<String> encryptionStatus;
+
   /// The type of encryption that protects the data on the DSQL Cluster.
   final pulumi.Input<String> encryptionType;
 
@@ -25,9 +26,10 @@ class ClusterEncryptionDetail {
 
   factory ClusterEncryptionDetail.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionDetail(
-      encryptionStatus: (map['encryptionStatus'] as String).input(),
-      encryptionType: (map['encryptionType'] as String).input(),
+      encryptionStatus: pulumi.Input.fromValue(
+        map['encryptionStatus'] as String,
+      ),
+      encryptionType: pulumi.Input.fromValue(map['encryptionType'] as String),
     );
   }
 }
-

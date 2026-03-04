@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_provider_registration_args.dart';
-import 'resource_provider_registration_feature.dart';
 import 'resource_provider_registration_state.dart';
 
 /// Manages the registration of a Resource Provider - which allows access to the API's supported by this Resource Provider.
 ///
-/// > **Note:** The Azure Provider will automatically register all of the Resource Providers which it supports on launch (unless opted-out using the `skip_provider_registration` field within the provider block).
+/// &gt; **Note:** The Azure Provider will automatically register all of the Resource Providers which it supports on launch (unless opted-out using the `skip_provider_registration` field within the provider block).
 ///
-/// !> **Note:** The errors returned from the Azure API when a Resource Provider is unregistered are unclear (example `API version '2019-01-01' was not found for 'Microsoft.Foo'`) - please ensure that all of the necessary Resource Providers you're using are registered - if in doubt **we strongly recommend letting the provider register these for you**.
+/// !&gt; **Note:** The errors returned from the Azure API when a Resource Provider is unregistered are unclear (example `API version '2019-01-01' was not found for 'Microsoft.Foo'`) - please ensure that all of the necessary Resource Providers you're using are registered - if in doubt **we strongly recommend letting the provider register these for you**.
 ///
-/// > **Note:** Adding or Removing a Preview Feature will re-register the Resource Provider.
+/// &gt; **Note:** Adding or Removing a Preview Feature will re-register the Resource Provider.
 ///
 /// ## Example Usage
 ///
@@ -221,7 +220,7 @@ import 'resource_provider_registration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Features` - 2021-07-01
@@ -236,8 +235,9 @@ import 'resource_provider_registration_state.dart';
 class ResourceProviderRegistration extends pulumi.CustomResource {
   /// A list of `feature` blocks as defined below.
   ///
-  /// > **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
-  late final pulumi.Output<List<ResourceProviderRegistrationFeature>?> features;
+  /// &gt; **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
+  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+
   /// The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -250,12 +250,12 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
     ResourceProviderRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features');
+         'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
     this.name = registerOutput<String>('name');
   }
 
@@ -277,12 +277,12 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features');
+         'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
     this.name = registerOutput<String>('name');
   }
 }

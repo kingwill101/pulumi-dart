@@ -4,16 +4,15 @@ enum OSPolicyModeOsconfigV1alpha {
   validation("VALIDATION"),
   enforcement("ENFORCEMENT");
 
-  const OSPolicyModeOsconfigV1alpha(this.value);
-  final String value;
+  const OSPolicyModeOsconfigV1alpha(this.wireValue);
+  final String wireValue;
 
   static OSPolicyModeOsconfigV1alpha fromValue(String value) {
     for (final item in OSPolicyModeOsconfigV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OSPolicyModeOsconfigV1alpha value: $value');
   }
 }
-

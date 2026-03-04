@@ -4,25 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolOpenApiToolApiAuthenticationBearerTokenConfig {
   /// (Output)
-  /// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+  /// The bearer token. Must be in the format $context.variables.&lt;name_of_variable&gt;.
   final pulumi.Input<String>? token;
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationBearerTokenConfig].
   /// [token] (Output)
-  ToolOpenApiToolApiAuthenticationBearerTokenConfig({
-    this.token,
-  });
+  ToolOpenApiToolApiAuthenticationBearerTokenConfig({this.token});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'token': ?token,
-    };
+    return <String, dynamic>{'token': ?token};
   }
 
-  factory ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolOpenApiToolApiAuthenticationBearerTokenConfig(
-      token: map['token'] == null ? null : (map['token']! as String).input(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

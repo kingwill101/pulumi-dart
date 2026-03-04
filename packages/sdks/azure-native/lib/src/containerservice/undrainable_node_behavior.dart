@@ -3,16 +3,15 @@ enum UndrainableNodeBehavior {
   valueCordon("Cordon"),
   valueSchedule("Schedule");
 
-  const UndrainableNodeBehavior(this.value);
-  final String value;
+  const UndrainableNodeBehavior(this.wireValue);
+  final String wireValue;
 
   static UndrainableNodeBehavior fromValue(String value) {
     for (final item in UndrainableNodeBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UndrainableNodeBehavior value: $value');
   }
 }
-

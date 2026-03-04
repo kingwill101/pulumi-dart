@@ -6,8 +6,10 @@ import 'cluster_discovery_endpoint_psc_config.dart';
 class ClusterDiscoveryEndpoint {
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   final pulumi.Input<String>? address;
+
   /// Output only. The port number of the exposed Redis endpoint.
   final pulumi.Input<int>? port;
+
   /// Output only. Customer configuration for where the endpoint
   /// is created and accessed from.
   /// Structure is documented below.
@@ -17,26 +19,41 @@ class ClusterDiscoveryEndpoint {
   /// [address] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   /// [port] Output only. The port number of the exposed Redis endpoint.
   /// [pscConfig] Output only. Customer configuration for where the endpoint
-  ClusterDiscoveryEndpoint({
-    this.address,
-    this.port,
-    this.pscConfig,
-  });
+  ClusterDiscoveryEndpoint({this.address, this.port, this.pscConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
       'port': ?port,
-      'pscConfig': ?pulumi.Input.mapOptionalInputValue<ClusterDiscoveryEndpointPscConfig, Map<String, dynamic>>(pscConfig, (value) => value.toMap()),
+      'pscConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterDiscoveryEndpointPscConfig,
+            Map<String, dynamic>
+          >(pscConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterDiscoveryEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterDiscoveryEndpoint(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      pscConfig: map['pscConfig'] == null ? null : (ClusterDiscoveryEndpointPscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pscConfig: (() {
+        final guardedValue = map['pscConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterDiscoveryEndpointPscConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

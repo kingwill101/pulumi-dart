@@ -3,16 +3,15 @@ enum HybridSecondaryUsage {
   valueActive("Active"),
   valuePassive("Passive");
 
-  const HybridSecondaryUsage(this.value);
-  final String value;
+  const HybridSecondaryUsage(this.wireValue);
+  final String wireValue;
 
   static HybridSecondaryUsage fromValue(String value) {
     for (final item in HybridSecondaryUsage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HybridSecondaryUsage value: $value');
   }
 }
-

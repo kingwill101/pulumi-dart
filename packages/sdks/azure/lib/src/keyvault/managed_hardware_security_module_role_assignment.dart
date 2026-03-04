@@ -158,17 +158,23 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// ```sh
 /// $ pulumi import azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment example https://0000.managedhsm.azure.net///RoleAssignment/00000000-0000-0000-0000-000000000000
 /// ```
-class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource {
+class ManagedHardwareSecurityModuleRoleAssignment
+    extends pulumi.CustomResource {
   /// The ID of a Managed Hardware Security Module resource. Changing this forces a new Managed Hardware Security Module to be created.
   late final pulumi.Output<String> managedHsmId;
+
   /// The name in GUID notation which should be used for this Managed Hardware Security Module Role Assignment. Changing this forces a new Managed Hardware Security Module to be created.
   late final pulumi.Output<String> name;
+
   /// The principal ID to be assigned to this role. It can point to a user, service principal, or security group. Changing this forces a new Managed Hardware Security Module to be created.
   late final pulumi.Output<String> principalId;
+
   /// (Deprecated) The resource id of created assignment resource.
   late final pulumi.Output<String> resourceId;
+
   /// The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
   late final pulumi.Output<String> scope;
 
@@ -181,17 +187,17 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
     ManagedHardwareSecurityModuleRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedHsmId = registerOutput<String>('managedHsmId');
+         'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.scope = registerOutput<String>('scope');
+    principalId = registerOutput<String>('principalId');
+    resourceId = registerOutput<String>('resourceId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [ManagedHardwareSecurityModuleRoleAssignment] resource's state with the given [name] and [id].
@@ -212,16 +218,16 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedHsmId = registerOutput<String>('managedHsmId');
+         'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.scope = registerOutput<String>('scope');
+    principalId = registerOutput<String>('principalId');
+    resourceId = registerOutput<String>('resourceId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
   }
 }

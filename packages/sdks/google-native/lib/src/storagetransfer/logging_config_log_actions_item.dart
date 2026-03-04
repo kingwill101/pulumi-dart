@@ -4,16 +4,15 @@ enum LoggingConfigLogActionsItem {
   delete("DELETE"),
   copy("COPY");
 
-  const LoggingConfigLogActionsItem(this.value);
-  final String value;
+  const LoggingConfigLogActionsItem(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigLogActionsItem fromValue(String value) {
     for (final item in LoggingConfigLogActionsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingConfigLogActionsItem value: $value');
   }
 }
-

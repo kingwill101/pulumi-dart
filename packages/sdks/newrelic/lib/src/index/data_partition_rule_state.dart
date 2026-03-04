@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPartitionRuleState {
   /// The account id associated with the data partition rule.
   final pulumi.Input<String>? accountId;
+
   /// Whether or not this data partition rule is deleted. Deleting a data partition rule does not delete the already persisted data. This data will be retained for a given period of time specified in the retention policy field.
   final pulumi.Input<bool>? deleted;
+
   /// The description of the data partition rule.
   final pulumi.Input<String>? description;
+
   /// Whether or not this data partition rule is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// The NRQL to match events for this data partition rule. Logs matching this criteria will be routed to the specified data partition.
   final pulumi.Input<String>? nrql;
+
   /// The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   final pulumi.Input<String>? retentionPolicy;
+
   /// The name of the data partition where logs will be allocated once the rule is enabled.
   final pulumi.Input<String>? targetDataPartition;
 
@@ -51,14 +57,41 @@ class DataPartitionRuleState {
 
   factory DataPartitionRuleState.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (map['retentionPolicy']! as String).input(),
-      targetDataPartition: map['targetDataPartition'] == null ? null : (map['targetDataPartition']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleted: (() {
+        final guardedValue = map['deleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nrql: (() {
+        final guardedValue = map['nrql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionPolicy: (() {
+        final guardedValue = map['retentionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetDataPartition: (() {
+        final guardedValue = map['targetDataPartition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

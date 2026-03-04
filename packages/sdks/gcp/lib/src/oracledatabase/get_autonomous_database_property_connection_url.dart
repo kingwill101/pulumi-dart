@@ -5,20 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabasePropertyConnectionUrl {
   /// Oracle Application Express (APEX) URL.
   final pulumi.Input<String> apexUri;
+
   /// The URL of the Database Transforms for the Autonomous Database.
   final pulumi.Input<String> databaseTransformsUri;
+
   /// The URL of the Graph Studio for the Autonomous Database.
   final pulumi.Input<String> graphStudioUri;
+
   /// The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous
   /// Database.
   final pulumi.Input<String> machineLearningNotebookUri;
+
   /// The URL of Machine Learning user management the Autonomous Database.
   final pulumi.Input<String> machineLearningUserManagementUri;
+
   /// The URL of the MongoDB API for the Autonomous Database.
   final pulumi.Input<String> mongoDbUri;
+
   /// The Oracle REST Data Services (ORDS) URL of the Web Access for the
   /// Autonomous Database.
   final pulumi.Input<String> ordsUri;
+
   /// The URL of the Oracle SQL Developer Web for the Autonomous Database.
   final pulumi.Input<String> sqlDevWebUri;
 
@@ -55,17 +62,24 @@ class GetAutonomousDatabasePropertyConnectionUrl {
     };
   }
 
-  factory GetAutonomousDatabasePropertyConnectionUrl.fromMap(Map<String, dynamic> map) {
+  factory GetAutonomousDatabasePropertyConnectionUrl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAutonomousDatabasePropertyConnectionUrl(
-      apexUri: (map['apexUri'] as String).input(),
-      databaseTransformsUri: (map['databaseTransformsUri'] as String).input(),
-      graphStudioUri: (map['graphStudioUri'] as String).input(),
-      machineLearningNotebookUri: (map['machineLearningNotebookUri'] as String).input(),
-      machineLearningUserManagementUri: (map['machineLearningUserManagementUri'] as String).input(),
-      mongoDbUri: (map['mongoDbUri'] as String).input(),
-      ordsUri: (map['ordsUri'] as String).input(),
-      sqlDevWebUri: (map['sqlDevWebUri'] as String).input(),
+      apexUri: pulumi.Input.fromValue(map['apexUri'] as String),
+      databaseTransformsUri: pulumi.Input.fromValue(
+        map['databaseTransformsUri'] as String,
+      ),
+      graphStudioUri: pulumi.Input.fromValue(map['graphStudioUri'] as String),
+      machineLearningNotebookUri: pulumi.Input.fromValue(
+        map['machineLearningNotebookUri'] as String,
+      ),
+      machineLearningUserManagementUri: pulumi.Input.fromValue(
+        map['machineLearningUserManagementUri'] as String,
+      ),
+      mongoDbUri: pulumi.Input.fromValue(map['mongoDbUri'] as String),
+      ordsUri: pulumi.Input.fromValue(map['ordsUri'] as String),
+      sqlDevWebUri: pulumi.Input.fromValue(map['sqlDevWebUri'] as String),
     );
   }
 }
-

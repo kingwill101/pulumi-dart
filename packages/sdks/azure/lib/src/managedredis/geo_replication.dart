@@ -4,7 +4,7 @@ import 'geo_replication_state.dart';
 
 /// Manages Managed Redis Geo-Replication by linking and unlinking databases in a geo-replication group.
 ///
-/// > **Note:** This resource manages the geo-replication group membership for Managed Redis databases. All databases to be linked must have `geo_replication_group_name` provided with the same value. Linking will [discard cache data and cause temporary outage](https://learn.microsoft.com/azure/redis/how-to-active-geo-replication#add-an-existing-instance-to-an-active-geo-replication-group).
+/// &gt; **Note:** This resource manages the geo-replication group membership for Managed Redis databases. All databases to be linked must have `geo_replication_group_name` provided with the same value. Linking will [discard cache data and cause temporary outage](https://learn.microsoft.com/azure/redis/how-to-active-geo-replication#add-an-existing-instance-to-an-active-geo-replication-group).
 ///
 /// ## Example Usage
 ///
@@ -267,7 +267,7 @@ import 'geo_replication_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2025-07-01
@@ -282,6 +282,7 @@ import 'geo_replication_state.dart';
 class GeoReplication extends pulumi.CustomResource {
   /// A set of other Managed Redis IDs to link together in the geo-replication group. The ID of this Managed Redis is always included by default and does not need to be provided here. Can contain up to 4 Managed Redis IDs, making up a group of 5 in total. All Managed Redis must have the same `geo_replication_group_name` configured. Once linked, the geo-replication state of all Managed Redis will be updated.
   late final pulumi.Output<List<String>> linkedManagedRedisIds;
+
   /// The ID of the Managed Redis through which geo-replication group will be managed. Linking is reciprocal, if A is linked to B, both A and B will have the same linking state. There is no need to have duplicate `azure.managedredis.GeoReplication` resources for each. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedRedisId;
 
@@ -294,13 +295,15 @@ class GeoReplication extends pulumi.CustomResource {
     GeoReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedredis/geoReplication:GeoReplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds');
-    this.managedRedisId = registerOutput<String>('managedRedisId');
+         'azure:managedredis/geoReplication:GeoReplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedManagedRedisIds = registerOutput<List<String>>(
+      'linkedManagedRedisIds',
+    );
+    managedRedisId = registerOutput<String>('managedRedisId');
   }
 
   /// Gets an existing [GeoReplication] resource's state with the given [name] and [id].
@@ -321,12 +324,14 @@ class GeoReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedredis/geoReplication:GeoReplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds');
-    this.managedRedisId = registerOutput<String>('managedRedisId');
+         'azure:managedredis/geoReplication:GeoReplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedManagedRedisIds = registerOutput<List<String>>(
+      'linkedManagedRedisIds',
+    );
+    managedRedisId = registerOutput<String>('managedRedisId');
   }
 }

@@ -1,5 +1,3 @@
-library module_essentialcontacts;
-
 export 'essentialcontacts/contact.dart';
 export 'essentialcontacts/contact_args.dart';
 export 'essentialcontacts/contact_notification_category_subscriptions_item.dart';

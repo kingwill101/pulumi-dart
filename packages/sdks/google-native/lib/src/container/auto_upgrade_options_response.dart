@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoUpgradeOptionsResponse {
   /// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final pulumi.Input<String> autoUpgradeStartTime;
+
   /// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
   final pulumi.Input<String> description;
 
@@ -26,9 +27,10 @@ class AutoUpgradeOptionsResponse {
 
   factory AutoUpgradeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeOptionsResponse(
-      autoUpgradeStartTime: (map['autoUpgradeStartTime'] as String).input(),
-      description: (map['description'] as String).input(),
+      autoUpgradeStartTime: pulumi.Input.fromValue(
+        map['autoUpgradeStartTime'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

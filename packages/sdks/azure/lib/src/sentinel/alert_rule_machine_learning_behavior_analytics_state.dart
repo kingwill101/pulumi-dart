@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleMachineLearningBehaviorAnalyticsState {
   /// The GUID of the alert rule template which is used for this Sentinel Machine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   final pulumi.Input<String>? alertRuleTemplateGuid;
+
   /// Should this Sentinel Machine Learning Behavior Analytics Alert Rule be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The ID of the Log Analytics Workspace this SentinelMachine Learning Behavior Analytics Alert Rule belongs to. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
+
   /// The name which should be used for this SentinelMachine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   final pulumi.Input<String>? name;
 
@@ -34,13 +37,30 @@ class AlertRuleMachineLearningBehaviorAnalyticsState {
     };
   }
 
-  factory AlertRuleMachineLearningBehaviorAnalyticsState.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleMachineLearningBehaviorAnalyticsState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleMachineLearningBehaviorAnalyticsState(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      alertRuleTemplateGuid: (() {
+        final guardedValue = map['alertRuleTemplateGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logAnalyticsWorkspaceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum EnforceCertificateNameCheckEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const EnforceCertificateNameCheckEnabledState(this.value);
-  final String value;
+  const EnforceCertificateNameCheckEnabledState(this.wireValue);
+  final String wireValue;
 
   static EnforceCertificateNameCheckEnabledState fromValue(String value) {
     for (final item in EnforceCertificateNameCheckEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnforceCertificateNameCheckEnabledState value: $value');
+    throw ArgumentError(
+      'Unknown EnforceCertificateNameCheckEnabledState value: $value',
+    );
   }
 }
-

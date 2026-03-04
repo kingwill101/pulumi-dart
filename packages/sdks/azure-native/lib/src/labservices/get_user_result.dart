@@ -7,30 +7,43 @@ import 'system_data_response.dart';
 class GetUserResult {
   /// The amount of usage quota time the user gets in addition to the lab usage quota.
   final String? additionalUsageQuota;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Display name of the user, for example user's full name.
   final String displayName;
+
   /// Email address of the user.
   final String email;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Date and time when the invitation message was sent to the user.
   final String invitationSent;
+
   /// State of the invitation message for the user.
   final String invitationState;
+
   /// The name of the resource
   final String name;
+
   /// Current provisioning state of the user resource.
   final String provisioningState;
+
   /// State of the user's registration within the lab.
   final String registrationState;
+
   /// Error details of last operation done on lab plan.
   final ResourceOperationErrorResponse resourceOperationError;
+
   /// Metadata pertaining to creation and last modification of the user resource.
   final SystemDataResponse systemData;
+
   /// How long the user has used their virtual machines in this lab.
   final String totalUsage;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -87,7 +100,11 @@ class GetUserResult {
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : map['additionalUsageQuota']! as String,
+      additionalUsageQuota: (() {
+        final guardedValue = map['additionalUsageQuota'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       email: map['email'] as String,
@@ -97,11 +114,14 @@ class GetUserResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       registrationState: map['registrationState'] as String,
-      resourceOperationError: ResourceOperationErrorResponse.fromMap((map['resourceOperationError'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      resourceOperationError: ResourceOperationErrorResponse.fromMap(
+        (map['resourceOperationError']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       totalUsage: map['totalUsage'] as String,
       type: map['type'] as String,
     );
   }
 }
-

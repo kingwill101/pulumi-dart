@@ -13,15 +13,14 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationCustomPayload.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationCustomPayload.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationCustomPayload(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

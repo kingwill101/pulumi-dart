@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerArgs {
   /// The container name.
   final pulumi.Input<String>? containerName;
+
   /// DataFormat for Container
   final pulumi.Input<String> dataFormat;
+
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Storage Account Name
   final pulumi.Input<String> storageAccountName;
 
@@ -44,12 +48,19 @@ class ContainerArgs {
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      dataFormat: (map['dataFormat'] as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataFormat: pulumi.Input.fromValue(map['dataFormat'] as String),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
     );
   }
 }
-

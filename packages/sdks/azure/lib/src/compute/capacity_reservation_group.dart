@@ -142,7 +142,7 @@ import 'capacity_reservation_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-01
@@ -157,12 +157,16 @@ import 'capacity_reservation_group_state.dart';
 class CapacityReservationGroup extends pulumi.CustomResource {
   /// The Azure location where the Capacity Reservation Group exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Capacity Reservation Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the resource group the Capacity Reservation Group is located in. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies a list of Availability Zones for this Capacity Reservation Group. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -175,16 +179,16 @@ class CapacityReservationGroup extends pulumi.CustomResource {
     CapacityReservationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/capacityReservationGroup:CapacityReservationGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:compute/capacityReservationGroup:CapacityReservationGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [CapacityReservationGroup] resource's state with the given [name] and [id].
@@ -205,15 +209,15 @@ class CapacityReservationGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/capacityReservationGroup:CapacityReservationGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:compute/capacityReservationGroup:CapacityReservationGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

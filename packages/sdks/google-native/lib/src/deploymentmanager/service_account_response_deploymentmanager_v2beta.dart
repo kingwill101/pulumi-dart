@@ -9,20 +9,17 @@ class ServiceAccountResponseDeploymentmanagerV2beta {
 
   /// Creates a new [ServiceAccountResponseDeploymentmanagerV2beta].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  ServiceAccountResponseDeploymentmanagerV2beta({
-    required this.email,
-  });
+  ServiceAccountResponseDeploymentmanagerV2beta({required this.email});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
-  factory ServiceAccountResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory ServiceAccountResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceAccountResponseDeploymentmanagerV2beta(
-      email: (map['email'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
-

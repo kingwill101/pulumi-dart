@@ -7,20 +7,17 @@ class GetKubernetesClusterAmdGpuDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterAmdGpuDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterAmdGpuDevicePlugin({
-    required this.enabled,
-  });
+  GetKubernetesClusterAmdGpuDevicePlugin({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetKubernetesClusterAmdGpuDevicePlugin.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterAmdGpuDevicePlugin.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterAmdGpuDevicePlugin(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

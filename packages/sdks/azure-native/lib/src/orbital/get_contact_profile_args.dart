@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContactProfileArgs {
   /// Contact Profile name.
   final pulumi.Input<String> contactProfileName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetContactProfileArgs {
 
   factory GetContactProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetContactProfileArgs(
-      contactProfileName: (map['contactProfileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      contactProfileName: pulumi.Input.fromValue(
+        map['contactProfileName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

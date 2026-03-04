@@ -2432,21 +2432,26 @@ class TargetHttpsProxy extends pulumi.CustomResource {
   /// sslCertificates and certificateManagerCertificates fields can not be defined together.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
   late final pulumi.Output<List<String>?> certificateManagerCertificates;
+
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
   /// For INTERNAL_MANAGED, use certificate_manager_certificates instead.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
   late final pulumi.Output<String?> certificateMap;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
   /// This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
   /// patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
   /// To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
   /// A base64-encoded string.
   late final pulumi.Output<String> fingerprint;
+
   /// Specifies how long to keep a connection open, after completing a response,
   /// while there is no matching traffic (in seconds). If an HTTP keepalive is
   /// not specified, a default value will be used. For Global
@@ -2457,6 +2462,7 @@ class TargetHttpsProxy extends pulumi.CustomResource {
   /// maximum allowed value is 600 seconds. For Global external HTTP(S) load
   /// balancer (classic), this option is not available publicly.
   late final pulumi.Output<int?> httpKeepAliveTimeoutSec;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2465,14 +2471,18 @@ class TargetHttpsProxy extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// This field only applies when the forwarding rule that references
   /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   late final pulumi.Output<bool> proxyBind;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> proxyId;
+
   /// Specifies the QUIC override policy for this resource. This determines
   /// whether the load balancer will attempt to negotiate QUIC with clients
   /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
@@ -2480,8 +2490,10 @@ class TargetHttpsProxy extends pulumi.CustomResource {
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
   late final pulumi.Output<String?> quicOverride;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// A URL referring to a networksecurity.ServerTlsPolicy
   /// resource that describes how the proxy should authenticate inbound
   /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
@@ -2496,20 +2508,24 @@ class TargetHttpsProxy extends pulumi.CustomResource {
   /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
   /// within the ServerTlsPolicy resource to avoid this.
   late final pulumi.Output<String?> serverTlsPolicy;
+
   /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
   /// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
   /// sslCertificates and certificateManagerCertificates can not be defined together.
   late final pulumi.Output<List<String>?> sslCertificates;
+
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
   /// resource will not have any SSL policy configured.
   late final pulumi.Output<String?> sslPolicy;
+
   /// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
   /// Early Data allows a TLS resumption handshake to include the initial application payload
   /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
   /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
   /// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
   late final pulumi.Output<String> tlsEarlyData;
+
   /// A reference to the UrlMap resource that defines the mapping from URL
   /// to the BackendService.
   late final pulumi.Output<String> urlMap;
@@ -2523,28 +2539,30 @@ class TargetHttpsProxy extends pulumi.CustomResource {
     TargetHttpsProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
-    this.certificateMap = registerOutput<String?>('certificateMap');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
+         'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateManagerCertificates = registerOutput<List<String>?>(
+      'certificateManagerCertificates',
+    );
+    certificateMap = registerOutput<String?>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.proxyBind = registerOutput<bool>('proxyBind');
-    this.proxyId = registerOutput<int>('proxyId');
-    this.quicOverride = registerOutput<String?>('quicOverride');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    this.sslCertificates = registerOutput<List<String>?>('sslCertificates');
-    this.sslPolicy = registerOutput<String?>('sslPolicy');
-    this.tlsEarlyData = registerOutput<String>('tlsEarlyData');
-    this.urlMap = registerOutput<String>('urlMap');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyId = registerOutput<int>('proxyId');
+    quicOverride = registerOutput<String?>('quicOverride');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslPolicy = registerOutput<String?>('sslPolicy');
+    tlsEarlyData = registerOutput<String>('tlsEarlyData');
+    urlMap = registerOutput<String>('urlMap');
   }
 
   /// Gets an existing [TargetHttpsProxy] resource's state with the given [name] and [id].
@@ -2565,27 +2583,29 @@ class TargetHttpsProxy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
-    this.certificateMap = registerOutput<String?>('certificateMap');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
+         'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateManagerCertificates = registerOutput<List<String>?>(
+      'certificateManagerCertificates',
+    );
+    certificateMap = registerOutput<String?>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.proxyBind = registerOutput<bool>('proxyBind');
-    this.proxyId = registerOutput<int>('proxyId');
-    this.quicOverride = registerOutput<String?>('quicOverride');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    this.sslCertificates = registerOutput<List<String>?>('sslCertificates');
-    this.sslPolicy = registerOutput<String?>('sslPolicy');
-    this.tlsEarlyData = registerOutput<String>('tlsEarlyData');
-    this.urlMap = registerOutput<String>('urlMap');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyId = registerOutput<int>('proxyId');
+    quicOverride = registerOutput<String?>('quicOverride');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslPolicy = registerOutput<String?>('sslPolicy');
+    tlsEarlyData = registerOutput<String>('tlsEarlyData');
+    urlMap = registerOutput<String>('urlMap');
   }
 }

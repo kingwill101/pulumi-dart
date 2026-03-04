@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
   /// Whether or not to enable advanced datapath metrics.
   final pulumi.Input<bool> enableMetrics;
+
   /// Whether or not Relay is enabled.
   final pulumi.Input<bool> enableRelay;
 
@@ -23,11 +24,12 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
     };
   }
 
-  factory ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(
-      enableMetrics: (map['enableMetrics'] as bool).input(),
-      enableRelay: (map['enableRelay'] as bool).input(),
+      enableMetrics: pulumi.Input.fromValue(map['enableMetrics'] as bool),
+      enableRelay: pulumi.Input.fromValue(map['enableRelay'] as bool),
     );
   }
 }
-

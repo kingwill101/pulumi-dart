@@ -7,8 +7,10 @@ import 'pie_chart_data_set_response.dart';
 class PieChartResponse {
   /// Indicates the visualization type for the PieChart.
   final pulumi.Input<String> chartType;
+
   /// The queries for the chart's data.
   final pulumi.Input<List<PieChartDataSetResponse>> dataSets;
+
   /// Optional. Indicates whether or not the pie chart should show slices' labels
   final pulumi.Input<bool> showLabels;
 
@@ -25,17 +27,34 @@ class PieChartResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chartType': chartType,
-      'dataSets': pulumi.Input.mapInputValue<List<PieChartDataSetResponse>, List<Map<String, dynamic>>>(dataSets, (value) => pulumi.Input.encodeList<PieChartDataSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataSets':
+          pulumi.Input.mapInputValue<
+            List<PieChartDataSetResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dataSets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PieChartDataSetResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'showLabels': showLabels,
     };
   }
 
   factory PieChartResponse.fromMap(Map<String, dynamic> map) {
     return PieChartResponse(
-      chartType: (map['chartType'] as String).input(),
-      dataSets: (pulumi.Input.decodeList<PieChartDataSetResponse>(map['dataSets'], (value) => PieChartDataSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      showLabels: (map['showLabels'] as bool).input(),
+      chartType: pulumi.Input.fromValue(map['chartType'] as String),
+      dataSets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PieChartDataSetResponse>(
+          map['dataSets']!,
+          (value) => PieChartDataSetResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      showLabels: pulumi.Input.fromValue(map['showLabels'] as bool),
     );
   }
 }
-

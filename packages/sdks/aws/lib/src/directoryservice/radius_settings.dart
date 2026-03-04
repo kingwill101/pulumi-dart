@@ -152,22 +152,31 @@ import 'radius_settings_state.dart';
 class RadiusSettings extends pulumi.CustomResource {
   /// The protocol specified for your RADIUS endpoints. Valid values: `PAP`, `CHAP`, `MS-CHAPv1`, `MS-CHAPv2`.
   late final pulumi.Output<String> authenticationProtocol;
+
   /// The identifier of the directory for which you want to manager RADIUS settings.
   late final pulumi.Output<String> directoryId;
+
   /// Display label.
   late final pulumi.Output<String> displayLabel;
+
   /// The port that your RADIUS server is using for communications. Your self-managed network must allow inbound traffic over this port from the AWS Directory Service servers.
   late final pulumi.Output<int> radiusPort;
+
   /// The maximum number of times that communication with the RADIUS server is attempted. Minimum value of `0`. Maximum value of `10`.
   late final pulumi.Output<int> radiusRetries;
+
   /// An array of strings that contains the fully qualified domain name (FQDN) or IP addresses of the RADIUS server endpoints, or the FQDN or IP addresses of your RADIUS server load balancer.
   late final pulumi.Output<List<String>> radiusServers;
+
   /// The amount of time, in seconds, to wait for the RADIUS server to respond. Minimum value of `1`. Maximum value of `50`.
   late final pulumi.Output<int> radiusTimeout;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Required for enabling RADIUS on the directory.
   late final pulumi.Output<String> sharedSecret;
+
   /// Not currently used.
   late final pulumi.Output<bool?> useSameUsername;
 
@@ -180,21 +189,21 @@ class RadiusSettings extends pulumi.CustomResource {
     RadiusSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directoryservice/radiusSettings:RadiusSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationProtocol = registerOutput<String>('authenticationProtocol');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.displayLabel = registerOutput<String>('displayLabel');
-    this.radiusPort = registerOutput<int>('radiusPort');
-    this.radiusRetries = registerOutput<int>('radiusRetries');
-    this.radiusServers = registerOutput<List<String>>('radiusServers');
-    this.radiusTimeout = registerOutput<int>('radiusTimeout');
-    this.region = registerOutput<String>('region');
-    this.sharedSecret = registerOutput<String>('sharedSecret');
-    this.useSameUsername = registerOutput<bool?>('useSameUsername');
+         'aws:directoryservice/radiusSettings:RadiusSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationProtocol = registerOutput<String>('authenticationProtocol');
+    directoryId = registerOutput<String>('directoryId');
+    displayLabel = registerOutput<String>('displayLabel');
+    radiusPort = registerOutput<int>('radiusPort');
+    radiusRetries = registerOutput<int>('radiusRetries');
+    radiusServers = registerOutput<List<String>>('radiusServers');
+    radiusTimeout = registerOutput<int>('radiusTimeout');
+    region = registerOutput<String>('region');
+    sharedSecret = registerOutput<String>('sharedSecret');
+    useSameUsername = registerOutput<bool?>('useSameUsername');
   }
 
   /// Gets an existing [RadiusSettings] resource's state with the given [name] and [id].
@@ -215,20 +224,20 @@ class RadiusSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directoryservice/radiusSettings:RadiusSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationProtocol = registerOutput<String>('authenticationProtocol');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.displayLabel = registerOutput<String>('displayLabel');
-    this.radiusPort = registerOutput<int>('radiusPort');
-    this.radiusRetries = registerOutput<int>('radiusRetries');
-    this.radiusServers = registerOutput<List<String>>('radiusServers');
-    this.radiusTimeout = registerOutput<int>('radiusTimeout');
-    this.region = registerOutput<String>('region');
-    this.sharedSecret = registerOutput<String>('sharedSecret');
-    this.useSameUsername = registerOutput<bool?>('useSameUsername');
+         'aws:directoryservice/radiusSettings:RadiusSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationProtocol = registerOutput<String>('authenticationProtocol');
+    directoryId = registerOutput<String>('directoryId');
+    displayLabel = registerOutput<String>('displayLabel');
+    radiusPort = registerOutput<int>('radiusPort');
+    radiusRetries = registerOutput<int>('radiusRetries');
+    radiusServers = registerOutput<List<String>>('radiusServers');
+    radiusTimeout = registerOutput<int>('radiusTimeout');
+    region = registerOutput<String>('region');
+    sharedSecret = registerOutput<String>('sharedSecret');
+    useSameUsername = registerOutput<bool?>('useSameUsername');
   }
 }

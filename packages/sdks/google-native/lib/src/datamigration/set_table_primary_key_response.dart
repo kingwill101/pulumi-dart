@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SetTablePrimaryKeyResponse {
   /// Optional. Name for the primary key
   final pulumi.Input<String> primaryKey;
+
   /// List of column names for the primary key
   final pulumi.Input<List<String>> primaryKeyColumns;
 
@@ -26,9 +27,10 @@ class SetTablePrimaryKeyResponse {
 
   factory SetTablePrimaryKeyResponse.fromMap(Map<String, dynamic> map) {
     return SetTablePrimaryKeyResponse(
-      primaryKey: (map['primaryKey'] as String).input(),
-      primaryKeyColumns: ((map['primaryKeyColumns'] as List).cast<String>()).input(),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
+      primaryKeyColumns: pulumi.Input.fromValue(
+        (map['primaryKeyColumns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

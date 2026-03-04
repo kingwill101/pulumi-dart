@@ -10,12 +10,22 @@ enum ScanConfigErrorCode {
   cannotUseOwnerAccount("CANNOT_USE_OWNER_ACCOUNT"),
   computeApiBackendError("COMPUTE_API_BACKEND_ERROR"),
   computeApiNotAccessible("COMPUTE_API_NOT_ACCESSIBLE"),
-  customLoginUrlDoesNotBelongToCurrentProject("CUSTOM_LOGIN_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT"),
+  customLoginUrlDoesNotBelongToCurrentProject(
+    "CUSTOM_LOGIN_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT",
+  ),
   customLoginUrlMalformed("CUSTOM_LOGIN_URL_MALFORMED"),
-  customLoginUrlMappedToNonRoutableAddress("CUSTOM_LOGIN_URL_MAPPED_TO_NON_ROUTABLE_ADDRESS"),
-  customLoginUrlMappedToUnreservedAddress("CUSTOM_LOGIN_URL_MAPPED_TO_UNRESERVED_ADDRESS"),
-  customLoginUrlHasNonRoutableIpAddress("CUSTOM_LOGIN_URL_HAS_NON_ROUTABLE_IP_ADDRESS"),
-  customLoginUrlHasUnreservedIpAddress("CUSTOM_LOGIN_URL_HAS_UNRESERVED_IP_ADDRESS"),
+  customLoginUrlMappedToNonRoutableAddress(
+    "CUSTOM_LOGIN_URL_MAPPED_TO_NON_ROUTABLE_ADDRESS",
+  ),
+  customLoginUrlMappedToUnreservedAddress(
+    "CUSTOM_LOGIN_URL_MAPPED_TO_UNRESERVED_ADDRESS",
+  ),
+  customLoginUrlHasNonRoutableIpAddress(
+    "CUSTOM_LOGIN_URL_HAS_NON_ROUTABLE_IP_ADDRESS",
+  ),
+  customLoginUrlHasUnreservedIpAddress(
+    "CUSTOM_LOGIN_URL_HAS_UNRESERVED_IP_ADDRESS",
+  ),
   duplicateScanName("DUPLICATE_SCAN_NAME"),
   invalidFieldValue("INVALID_FIELD_VALUE"),
   failedToAuthenticateToTarget("FAILED_TO_AUTHENTICATE_TO_TARGET"),
@@ -29,7 +39,9 @@ enum ScanConfigErrorCode {
   resourceNameInconsistent("RESOURCE_NAME_INCONSISTENT"),
   scanAlreadyRunning("SCAN_ALREADY_RUNNING"),
   scanNotRunning("SCAN_NOT_RUNNING"),
-  seedUrlDoesNotBelongToCurrentProject("SEED_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT"),
+  seedUrlDoesNotBelongToCurrentProject(
+    "SEED_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT",
+  ),
   seedUrlMalformed("SEED_URL_MALFORMED"),
   seedUrlMappedToNonRoutableAddress("SEED_URL_MAPPED_TO_NON_ROUTABLE_ADDRESS"),
   seedUrlMappedToUnreservedAddress("SEED_URL_MAPPED_TO_UNRESERVED_ADDRESS"),
@@ -44,16 +56,15 @@ enum ScanConfigErrorCode {
   unsupportedUrlScheme("UNSUPPORTED_URL_SCHEME"),
   cloudAssetInventoryAssetNotFound("CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND");
 
-  const ScanConfigErrorCode(this.value);
-  final String value;
+  const ScanConfigErrorCode(this.wireValue);
+  final String wireValue;
 
   static ScanConfigErrorCode fromValue(String value) {
     for (final item in ScanConfigErrorCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanConfigErrorCode value: $value');
   }
 }
-

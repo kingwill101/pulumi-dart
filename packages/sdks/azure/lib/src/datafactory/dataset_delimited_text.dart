@@ -3,7 +3,6 @@ import 'dataset_delimited_text_args.dart';
 import 'dataset_delimited_text_azure_blob_fs_location.dart';
 import 'dataset_delimited_text_azure_blob_storage_location.dart';
 import 'dataset_delimited_text_http_server_location.dart';
-import 'dataset_delimited_text_schema_column.dart';
 import 'dataset_delimited_text_state.dart';
 
 /// Manages an Azure Delimited Text Dataset inside an Azure Data Factory.
@@ -313,48 +312,71 @@ class DatasetDelimitedText extends pulumi.CustomResource {
   ///
   /// The following supported locations for a Delimited Text Dataset (exactly one of them must be set):
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// An `azure_blob_fs_location` block as defined below.
-  late final pulumi.Output<DatasetDelimitedTextAzureBlobFsLocation?> azureBlobFsLocation;
+  late final pulumi.Output<DatasetDelimitedTextAzureBlobFsLocation?>
+  azureBlobFsLocation;
+
   /// An `azure_blob_storage_location` block as defined below.
-  late final pulumi.Output<DatasetDelimitedTextAzureBlobStorageLocation?> azureBlobStorageLocation;
+  late final pulumi.Output<DatasetDelimitedTextAzureBlobStorageLocation?>
+  azureBlobStorageLocation;
+
   /// The column delimiter. Defaults to `,`.
   late final pulumi.Output<String?> columnDelimiter;
+
   /// The compression codec used to read/write text files. Valid values are `None`, `bzip2`, `gzip`, `deflate`, `ZipDeflate`, `TarGzip`, `Tar`, `snappy` and `lz4`. Please note these values are case sensitive.
   late final pulumi.Output<String?> compressionCodec;
+
   /// The compression ratio for the Data Factory Dataset. Valid values are `Fastest` or `Optimal`. Please note these values are case sensitive.
   late final pulumi.Output<String?> compressionLevel;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// The encoding format for the file.
   late final pulumi.Output<String?> encoding;
+
   /// The escape character. Defaults to `\`.
   late final pulumi.Output<String?> escapeCharacter;
+
   /// When used as input, treat the first row of data as headers. When used as output, write the headers into the output as the first row of data. Defaults to `false`.
   late final pulumi.Output<bool?> firstRowAsHeader;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// A `http_server_location` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
-  late final pulumi.Output<DatasetDelimitedTextHttpServerLocation?> httpServerLocation;
+  late final pulumi.Output<DatasetDelimitedTextHttpServerLocation?>
+  httpServerLocation;
+
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
+
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// The null value string. Defaults to `""`.
   late final pulumi.Output<String?> nullValue;
+
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The quote character. Defaults to `"`.
   late final pulumi.Output<String?> quoteCharacter;
+
   /// The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
   late final pulumi.Output<String?> rowDelimiter;
+
   /// A `schema_column` block as defined below.
-  late final pulumi.Output<List<DatasetDelimitedTextSchemaColumn>?> schemaColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetDelimitedText].
   /// [name] The Pulumi resource name.
@@ -365,32 +387,45 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     DatasetDelimitedTextArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobFsLocation = registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>('azureBlobFsLocation');
-    this.azureBlobStorageLocation = registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.columnDelimiter = registerOutput<String?>('columnDelimiter');
-    this.compressionCodec = registerOutput<String?>('compressionCodec');
-    this.compressionLevel = registerOutput<String?>('compressionLevel');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.encoding = registerOutput<String?>('encoding');
-    this.escapeCharacter = registerOutput<String?>('escapeCharacter');
-    this.firstRowAsHeader = registerOutput<bool?>('firstRowAsHeader');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetDelimitedTextHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobFsLocation =
+        registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>(
+          'azureBlobFsLocation',
+        );
+    azureBlobStorageLocation =
+        registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    columnDelimiter = registerOutput<String?>('columnDelimiter');
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    escapeCharacter = registerOutput<String?>('escapeCharacter');
+    firstRowAsHeader = registerOutput<bool?>('firstRowAsHeader');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation =
+        registerOutput<DatasetDelimitedTextHttpServerLocation?>(
+          'httpServerLocation',
+        );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.nullValue = registerOutput<String?>('nullValue');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.quoteCharacter = registerOutput<String?>('quoteCharacter');
-    this.rowDelimiter = registerOutput<String?>('rowDelimiter');
-    this.schemaColumns = registerOutput<List<DatasetDelimitedTextSchemaColumn>?>('schemaColumns');
+    nullValue = registerOutput<String?>('nullValue');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    quoteCharacter = registerOutput<String?>('quoteCharacter');
+    rowDelimiter = registerOutput<String?>('rowDelimiter');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 
   /// Gets an existing [DatasetDelimitedText] resource's state with the given [name] and [id].
@@ -411,31 +446,44 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobFsLocation = registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>('azureBlobFsLocation');
-    this.azureBlobStorageLocation = registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.columnDelimiter = registerOutput<String?>('columnDelimiter');
-    this.compressionCodec = registerOutput<String?>('compressionCodec');
-    this.compressionLevel = registerOutput<String?>('compressionLevel');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.encoding = registerOutput<String?>('encoding');
-    this.escapeCharacter = registerOutput<String?>('escapeCharacter');
-    this.firstRowAsHeader = registerOutput<bool?>('firstRowAsHeader');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetDelimitedTextHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobFsLocation =
+        registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>(
+          'azureBlobFsLocation',
+        );
+    azureBlobStorageLocation =
+        registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    columnDelimiter = registerOutput<String?>('columnDelimiter');
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    escapeCharacter = registerOutput<String?>('escapeCharacter');
+    firstRowAsHeader = registerOutput<bool?>('firstRowAsHeader');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation =
+        registerOutput<DatasetDelimitedTextHttpServerLocation?>(
+          'httpServerLocation',
+        );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.nullValue = registerOutput<String?>('nullValue');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.quoteCharacter = registerOutput<String?>('quoteCharacter');
-    this.rowDelimiter = registerOutput<String?>('rowDelimiter');
-    this.schemaColumns = registerOutput<List<DatasetDelimitedTextSchemaColumn>?>('schemaColumns');
+    nullValue = registerOutput<String?>('nullValue');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    quoteCharacter = registerOutput<String?>('quoteCharacter');
+    rowDelimiter = registerOutput<String?>('rowDelimiter');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 }

@@ -8,10 +8,13 @@ class DeviceTaintPatch {
   ///
   /// Valid effects are None, NoSchedule and NoExecute. PreferNoSchedule as used for nodes is not valid here. More effects may get added in the future. Consumers must treat unknown effects like None.
   final pulumi.Input<String>? effect;
+
   /// The taint key to be applied to a device. Must be a label name.
   final pulumi.Input<String>? key;
+
   /// TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.
   final pulumi.Input<String>? timeAdded;
+
   /// The taint value corresponding to the taint key. Must be a label value.
   final pulumi.Input<String>? value;
 
@@ -20,12 +23,7 @@ class DeviceTaintPatch {
   /// [key] The taint key to be applied to a device. Must be a label name.
   /// [timeAdded] TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.
   /// [value] The taint value corresponding to the taint key. Must be a label value.
-  DeviceTaintPatch({
-    this.effect,
-    this.key,
-    this.timeAdded,
-    this.value,
-  });
+  DeviceTaintPatch({this.effect, this.key, this.timeAdded, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,11 +36,26 @@ class DeviceTaintPatch {
 
   factory DeviceTaintPatch.fromMap(Map<String, dynamic> map) {
     return DeviceTaintPatch(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeAdded: (() {
+        final guardedValue = map['timeAdded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

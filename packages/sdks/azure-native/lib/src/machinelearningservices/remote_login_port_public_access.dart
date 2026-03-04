@@ -4,16 +4,15 @@ enum RemoteLoginPortPublicAccess {
   valueDisabled("Disabled"),
   valueNotSpecified("NotSpecified");
 
-  const RemoteLoginPortPublicAccess(this.value);
-  final String value;
+  const RemoteLoginPortPublicAccess(this.wireValue);
+  final String wireValue;
 
   static RemoteLoginPortPublicAccess fromValue(String value) {
     for (final item in RemoteLoginPortPublicAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RemoteLoginPortPublicAccess value: $value');
   }
 }
-

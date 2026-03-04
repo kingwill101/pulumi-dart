@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/access_control_rules.dart';
 export 'compute/access_control_rules_identity.dart';
 export 'compute/access_control_rules_identity_response.dart';

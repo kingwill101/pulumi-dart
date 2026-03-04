@@ -5,7 +5,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 
 /// Applies a Guest Configuration Policy to a Virtual Machine.
 ///
-/// > **Note:** You can create Guest Configuration Policies without defining a `azure.compute.Extension` resource, however the policies will not be executed until a `azure.compute.Extension` has been provisioned to the virtual machine.
+/// &gt; **Note:** You can create Guest Configuration Policies without defining a `azure.compute.Extension` resource, however the policies will not be executed until a `azure.compute.Extension` has been provisioned to the virtual machine.
 ///
 /// ## Example Usage
 ///
@@ -682,7 +682,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-04-05
@@ -696,11 +696,15 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// ```
 class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
   /// A `configuration` block as defined below.
-  late final pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration> configuration;
+  late final pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration>
+  configuration;
+
   /// The Azure location where the Policy Virtual Machine Configuration Assignment should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Guest Configuration that will be assigned in this Guest Configuration Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the Policy Virtual Machine which this Guest Configuration Assignment should apply to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -713,15 +717,18 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     VirtualMachineConfigurationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration');
-    this.location = registerOutput<String>('location');
+         'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configuration =
+        registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
+          'configuration',
+        );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [VirtualMachineConfigurationAssignment] resource's state with the given [name] and [id].
@@ -742,14 +749,17 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration');
-    this.location = registerOutput<String>('location');
+         'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configuration =
+        registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
+          'configuration',
+        );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

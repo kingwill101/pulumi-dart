@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String>? bucketPrefix;
+
   /// The unique ID that's assigned to an Amazon Redshift cluster.
   final pulumi.Input<String>? clusterIdentifier;
+
   /// ARN of the IAM role that permits AppFlow to access the database through Data API.
   final pulumi.Input<String>? dataApiRoleArn;
+
   /// The name of an Amazon Redshift database.
   final pulumi.Input<String>? databaseName;
+
   /// The JDBC URL of the Amazon Redshift cluster.
   final pulumi.Input<String>? databaseUrl;
+
   /// ARN of the IAM role.
   final pulumi.Input<String> roleArn;
 
@@ -46,16 +51,37 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
-      dataApiRoleArn: map['dataApiRoleArn'] == null ? null : ((map['dataApiRoleArn'] as String).input()).input(),
-      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
-      databaseUrl: map['databaseUrl'] == null ? null : ((map['databaseUrl'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterIdentifier: (() {
+        final guardedValue = map['clusterIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataApiRoleArn: (() {
+        final guardedValue = map['dataApiRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseUrl: (() {
+        final guardedValue = map['databaseUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

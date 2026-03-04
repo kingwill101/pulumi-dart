@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationTypeVersionArgs {
   /// The URL to the application package
   final pulumi.Input<String> appPackageUrl;
+
   /// The name of the application type name resource.
   final pulumi.Input<String> applicationTypeName;
+
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The application type version.
   final pulumi.Input<String>? version;
 
@@ -54,14 +60,31 @@ class ApplicationTypeVersionArgs {
 
   factory ApplicationTypeVersionArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationTypeVersionArgs(
-      appPackageUrl: (map['appPackageUrl'] as String).input(),
-      applicationTypeName: (map['applicationTypeName'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      appPackageUrl: pulumi.Input.fromValue(map['appPackageUrl'] as String),
+      applicationTypeName: pulumi.Input.fromValue(
+        map['applicationTypeName'] as String,
+      ),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

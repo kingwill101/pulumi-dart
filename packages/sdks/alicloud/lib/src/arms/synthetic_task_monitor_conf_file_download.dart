@@ -5,48 +5,65 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskMonitorConfFileDownload {
   /// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
   final pulumi.Input<int>? connectionTimeout;
+
   /// Custom header, in JSON Map format.
   final pulumi.Input<Map<String, String>>? customHeaderContent;
+
   /// Download the kernel.
   /// - 1:curl
   /// - 0:WinInet
   /// Default 1.
   final pulumi.Input<int>? downloadKernel;
+
   /// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
   final pulumi.Input<int>? ignoreCertificateAuthError;
+
   /// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
   final pulumi.Input<int>? ignoreCertificateCanceledError;
+
   /// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
   final pulumi.Input<int>? ignoreCertificateOutOfDateError;
+
   /// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
   final pulumi.Input<int>? ignoreCertificateStatusError;
+
   /// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
   final pulumi.Input<int>? ignoreCertificateUntrustworthyError;
+
   /// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
   final pulumi.Input<int>? ignoreCertificateUsingError;
+
   /// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
   final pulumi.Input<int>? ignoreInvalidHostError;
+
   /// Monitoring timeout, in ms. Not required, 20000 by default.
   final pulumi.Input<int>? monitorTimeout;
+
   /// Quick agreement
   /// - 1:http1
   /// - 2:http2
   /// - 3:http3
   /// Default 1.
   final pulumi.Input<int>? quickProtocol;
+
   /// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
   final pulumi.Input<int>? redirection;
+
   /// The target URL.
   final pulumi.Input<String> targetUrl;
+
   /// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
   final pulumi.Input<int>? transmissionSize;
+
   /// Verify keywords.
   final pulumi.Input<String>? validateKeywords;
+
   /// The verification method.
   /// - 0: Do not validate
   /// - 1: Validation string
   /// - 2:MD5 validation.
   final pulumi.Input<int>? verifyWay;
+
   /// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
   final pulumi.Input<String>? whiteList;
 
@@ -99,7 +116,8 @@ class SyntheticTaskMonitorConfFileDownload {
       'ignoreCertificateCanceledError': ?ignoreCertificateCanceledError,
       'ignoreCertificateOutOfDateError': ?ignoreCertificateOutOfDateError,
       'ignoreCertificateStatusError': ?ignoreCertificateStatusError,
-      'ignoreCertificateUntrustworthyError': ?ignoreCertificateUntrustworthyError,
+      'ignoreCertificateUntrustworthyError':
+          ?ignoreCertificateUntrustworthyError,
       'ignoreCertificateUsingError': ?ignoreCertificateUsingError,
       'ignoreInvalidHostError': ?ignoreInvalidHostError,
       'monitorTimeout': ?monitorTimeout,
@@ -113,27 +131,98 @@ class SyntheticTaskMonitorConfFileDownload {
     };
   }
 
-  factory SyntheticTaskMonitorConfFileDownload.fromMap(Map<String, dynamic> map) {
+  factory SyntheticTaskMonitorConfFileDownload.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SyntheticTaskMonitorConfFileDownload(
-      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout']! as int).input(),
-      customHeaderContent: map['customHeaderContent'] == null ? null : ((map['customHeaderContent']! as Map).cast<String, String>()).input(),
-      downloadKernel: map['downloadKernel'] == null ? null : (map['downloadKernel']! as int).input(),
-      ignoreCertificateAuthError: map['ignoreCertificateAuthError'] == null ? null : (map['ignoreCertificateAuthError']! as int).input(),
-      ignoreCertificateCanceledError: map['ignoreCertificateCanceledError'] == null ? null : (map['ignoreCertificateCanceledError']! as int).input(),
-      ignoreCertificateOutOfDateError: map['ignoreCertificateOutOfDateError'] == null ? null : (map['ignoreCertificateOutOfDateError']! as int).input(),
-      ignoreCertificateStatusError: map['ignoreCertificateStatusError'] == null ? null : (map['ignoreCertificateStatusError']! as int).input(),
-      ignoreCertificateUntrustworthyError: map['ignoreCertificateUntrustworthyError'] == null ? null : (map['ignoreCertificateUntrustworthyError']! as int).input(),
-      ignoreCertificateUsingError: map['ignoreCertificateUsingError'] == null ? null : (map['ignoreCertificateUsingError']! as int).input(),
-      ignoreInvalidHostError: map['ignoreInvalidHostError'] == null ? null : (map['ignoreInvalidHostError']! as int).input(),
-      monitorTimeout: map['monitorTimeout'] == null ? null : (map['monitorTimeout']! as int).input(),
-      quickProtocol: map['quickProtocol'] == null ? null : (map['quickProtocol']! as int).input(),
-      redirection: map['redirection'] == null ? null : (map['redirection']! as int).input(),
-      targetUrl: (map['targetUrl'] as String).input(),
-      transmissionSize: map['transmissionSize'] == null ? null : (map['transmissionSize']! as int).input(),
-      validateKeywords: map['validateKeywords'] == null ? null : (map['validateKeywords']! as String).input(),
-      verifyWay: map['verifyWay'] == null ? null : (map['verifyWay']! as int).input(),
-      whiteList: map['whiteList'] == null ? null : (map['whiteList']! as String).input(),
+      connectionTimeout: (() {
+        final guardedValue = map['connectionTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      customHeaderContent: (() {
+        final guardedValue = map['customHeaderContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      downloadKernel: (() {
+        final guardedValue = map['downloadKernel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateAuthError: (() {
+        final guardedValue = map['ignoreCertificateAuthError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateCanceledError: (() {
+        final guardedValue = map['ignoreCertificateCanceledError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateOutOfDateError: (() {
+        final guardedValue = map['ignoreCertificateOutOfDateError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateStatusError: (() {
+        final guardedValue = map['ignoreCertificateStatusError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateUntrustworthyError: (() {
+        final guardedValue = map['ignoreCertificateUntrustworthyError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreCertificateUsingError: (() {
+        final guardedValue = map['ignoreCertificateUsingError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ignoreInvalidHostError: (() {
+        final guardedValue = map['ignoreInvalidHostError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      monitorTimeout: (() {
+        final guardedValue = map['monitorTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      quickProtocol: (() {
+        final guardedValue = map['quickProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      redirection: (() {
+        final guardedValue = map['redirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetUrl: pulumi.Input.fromValue(map['targetUrl'] as String),
+      transmissionSize: (() {
+        final guardedValue = map['transmissionSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      validateKeywords: (() {
+        final guardedValue = map['validateKeywords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifyWay: (() {
+        final guardedValue = map['verifyWay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      whiteList: (() {
+        final guardedValue = map['whiteList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

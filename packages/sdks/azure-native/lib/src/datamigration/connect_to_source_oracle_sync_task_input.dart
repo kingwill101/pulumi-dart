@@ -10,20 +10,25 @@ class ConnectToSourceOracleSyncTaskInput {
 
   /// Creates a new [ConnectToSourceOracleSyncTaskInput].
   /// [sourceConnectionInfo] Information for connecting to Oracle source
-  ConnectToSourceOracleSyncTaskInput({
-    required this.sourceConnectionInfo,
-  });
+  ConnectToSourceOracleSyncTaskInput({required this.sourceConnectionInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            OracleConnectionInfo,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToSourceOracleSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceOracleSyncTaskInput(
-      sourceConnectionInfo: (OracleConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        OracleConnectionInfo.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

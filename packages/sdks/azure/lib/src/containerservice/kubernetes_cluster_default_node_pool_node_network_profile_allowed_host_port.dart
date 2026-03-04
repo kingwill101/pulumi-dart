@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort {
   /// Specifies the end of the port range.
   final pulumi.Input<int>? portEnd;
+
   /// Specifies the start of the port range.
   final pulumi.Input<int>? portStart;
+
   /// Specifies the protocol of the port range. Possible values are `TCP` and `UDP`.
   final pulumi.Input<String>? protocol;
 
@@ -28,12 +30,25 @@ class KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort {
     };
   }
 
-  factory KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort(
-      portEnd: map['portEnd'] == null ? null : (map['portEnd']! as int).input(),
-      portStart: map['portStart'] == null ? null : (map['portStart']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      portEnd: (() {
+        final guardedValue = map['portEnd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      portStart: (() {
+        final guardedValue = map['portStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

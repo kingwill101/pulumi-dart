@@ -7,6 +7,7 @@ import 'endpoint_info_response.dart';
 class ConnectionInfoResponse {
   /// The endpoint information through which to interact with a blockchain node.
   final pulumi.Input<EndpointInfoResponse> endpointInfo;
+
   /// A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
   final pulumi.Input<String> serviceAttachment;
 
@@ -20,16 +21,25 @@ class ConnectionInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointInfo': pulumi.Input.mapInputValue<EndpointInfoResponse, Map<String, dynamic>>(endpointInfo, (value) => value.toMap()),
+      'endpointInfo':
+          pulumi.Input.mapInputValue<
+            EndpointInfoResponse,
+            Map<String, dynamic>
+          >(endpointInfo, (value) => value.toMap()),
       'serviceAttachment': serviceAttachment,
     };
   }
 
   factory ConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionInfoResponse(
-      endpointInfo: (EndpointInfoResponse.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>())).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      endpointInfo: pulumi.Input.fromValue(
+        EndpointInfoResponse.fromMap(
+          (map['endpointInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedIdentityArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the Resource Group to which the identity belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the identity resource.
   final pulumi.Input<String>? resourceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,26 @@ class UserAssignedIdentityArgs {
 
   factory UserAssignedIdentityArgs.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

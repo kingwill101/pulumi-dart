@@ -591,24 +591,35 @@ import 'system_data_response.dart';
 class DaprSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Bulk subscription options
-  late final pulumi.Output<DaprSubscriptionBulkSubscribeOptionsResponse?> bulkSubscribe;
+  late final pulumi.Output<DaprSubscriptionBulkSubscribeOptionsResponse?>
+  bulkSubscribe;
+
   /// Deadletter topic name
   late final pulumi.Output<String?> deadLetterTopic;
+
   /// Subscription metadata
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Dapr PubSub component name
   late final pulumi.Output<String?> pubsubName;
+
   /// Subscription routes
   late final pulumi.Output<DaprSubscriptionRoutesResponse?> routes;
+
   /// Application scopes to restrict the subscription to specific apps.
   late final pulumi.Output<List<String>?> scopes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Topic name
   late final pulumi.Output<String?> topic;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -621,21 +632,24 @@ class DaprSubscription extends pulumi.CustomResource {
     DaprSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:DaprSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bulkSubscribe = registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>('bulkSubscribe');
-    this.deadLetterTopic = registerOutput<String?>('deadLetterTopic');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure-native:app:DaprSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bulkSubscribe =
+        registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>(
+          'bulkSubscribe',
+        );
+    deadLetterTopic = registerOutput<String?>('deadLetterTopic');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.pubsubName = registerOutput<String?>('pubsubName');
-    this.routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes');
-    this.scopes = registerOutput<List<String>?>('scopes');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.topic = registerOutput<String?>('topic');
-    this.type = registerOutput<String>('type');
+    pubsubName = registerOutput<String?>('pubsubName');
+    routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes');
+    scopes = registerOutput<List<String>?>('scopes');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    topic = registerOutput<String?>('topic');
+    type = registerOutput<String>('type');
   }
 }

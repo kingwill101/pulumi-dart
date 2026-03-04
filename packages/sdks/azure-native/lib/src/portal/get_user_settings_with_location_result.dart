@@ -6,6 +6,7 @@ import 'user_properties_response.dart';
 class GetUserSettingsWithLocationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The cloud shell user settings properties.
   final UserPropertiesResponse properties;
 
@@ -27,8 +28,9 @@ class GetUserSettingsWithLocationResult {
   factory GetUserSettingsWithLocationResult.fromMap(Map<String, dynamic> map) {
     return GetUserSettingsWithLocationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      properties: UserPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: UserPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

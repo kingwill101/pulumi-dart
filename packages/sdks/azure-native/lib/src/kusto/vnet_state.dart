@@ -3,16 +3,15 @@ enum VnetState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const VnetState(this.value);
-  final String value;
+  const VnetState(this.wireValue);
+  final String wireValue;
 
   static VnetState fromValue(String value) {
     for (final item in VnetState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VnetState value: $value');
   }
 }
-

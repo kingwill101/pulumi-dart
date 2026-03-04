@@ -6,7 +6,7 @@ import 'nas_file_system_state.dart';
 ///
 /// For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
 ///
-/// > **NOTE:** Available since v1.141.0.
+/// &gt; **NOTE:** Available since v1.141.0.
 ///
 /// ## Example Usage
 ///
@@ -228,16 +228,22 @@ import 'nas_file_system_state.dart';
 class NasFileSystem extends pulumi.CustomResource {
   /// The description of nas file system.
   late final pulumi.Output<String?> description;
+
   /// The filesystem id of nas file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The domain of mount target.
   late final pulumi.Output<String> mountTargetDomain;
+
   /// The name of nas file system.
   late final pulumi.Output<String?> nasFileSystemName;
+
   /// The ID of office site.
   late final pulumi.Output<String> officeSiteId;
+
   /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
   late final pulumi.Output<bool?> reset;
+
   /// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
   late final pulumi.Output<String> status;
 
@@ -250,18 +256,18 @@ class NasFileSystem extends pulumi.CustomResource {
     NasFileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/nasFileSystem:NasFileSystem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountTargetDomain = registerOutput<String>('mountTargetDomain');
-    this.nasFileSystemName = registerOutput<String?>('nasFileSystemName');
-    this.officeSiteId = registerOutput<String>('officeSiteId');
-    this.reset = registerOutput<bool?>('reset');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/nasFileSystem:NasFileSystem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountTargetDomain = registerOutput<String>('mountTargetDomain');
+    nasFileSystemName = registerOutput<String?>('nasFileSystemName');
+    officeSiteId = registerOutput<String>('officeSiteId');
+    reset = registerOutput<bool?>('reset');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NasFileSystem] resource's state with the given [name] and [id].
@@ -282,17 +288,17 @@ class NasFileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/nasFileSystem:NasFileSystem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountTargetDomain = registerOutput<String>('mountTargetDomain');
-    this.nasFileSystemName = registerOutput<String?>('nasFileSystemName');
-    this.officeSiteId = registerOutput<String>('officeSiteId');
-    this.reset = registerOutput<bool?>('reset');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/nasFileSystem:NasFileSystem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountTargetDomain = registerOutput<String>('mountTargetDomain');
+    nasFileSystemName = registerOutput<String?>('nasFileSystemName');
+    officeSiteId = registerOutput<String>('officeSiteId');
+    reset = registerOutput<bool?>('reset');
+    status = registerOutput<String>('status');
   }
 }

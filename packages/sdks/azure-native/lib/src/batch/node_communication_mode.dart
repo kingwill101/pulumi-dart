@@ -4,16 +4,15 @@ enum NodeCommunicationMode {
   classic("Classic"),
   simplified("Simplified");
 
-  const NodeCommunicationMode(this.value);
-  final String value;
+  const NodeCommunicationMode(this.wireValue);
+  final String wireValue;
 
   static NodeCommunicationMode fromValue(String value) {
     for (final item in NodeCommunicationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeCommunicationMode value: $value');
   }
 }
-

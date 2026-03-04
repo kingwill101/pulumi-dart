@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kafka_cluster_args.dart';
 import 'kafka_cluster_component_version.dart';
 import 'kafka_cluster_compute_isolation.dart';
-import 'kafka_cluster_disk_encryption.dart';
 import 'kafka_cluster_extension.dart';
 import 'kafka_cluster_gateway.dart';
 import 'kafka_cluster_metastores.dart';
@@ -13,7 +12,6 @@ import 'kafka_cluster_rest_proxy.dart';
 import 'kafka_cluster_roles.dart';
 import 'kafka_cluster_security_profile.dart';
 import 'kafka_cluster_state.dart';
-import 'kafka_cluster_storage_account.dart';
 import 'kafka_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight Kafka Cluster.
@@ -457,7 +455,7 @@ import 'kafka_cluster_storage_account_gen2.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HDInsight` - 2021-06-01
@@ -472,54 +470,79 @@ import 'kafka_cluster_storage_account_gen2.dart';
 class KafkaCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
+
   /// A `component_version` block as defined below.
   late final pulumi.Output<KafkaClusterComponentVersion> componentVersion;
+
   /// A `compute_isolation` block as defined below.
   late final pulumi.Output<KafkaClusterComputeIsolation?> computeIsolation;
+
   /// One or more `disk_encryption` block as defined below.
   ///
-  /// > **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  late final pulumi.Output<List<KafkaClusterDiskEncryption>?> diskEncryptions;
+  /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
+  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+
   /// Whether encryption in transit is enabled for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionInTransitEnabled;
+
   /// An `extension` block as defined below.
   late final pulumi.Output<KafkaClusterExtension?> extension;
+
   /// A `gateway` block as defined below.
   late final pulumi.Output<KafkaClusterGateway> gateway;
+
   /// The HTTPS Connectivity Endpoint for this HDInsight Kafka Cluster.
   late final pulumi.Output<String> httpsEndpoint;
+
   /// The Kafka Rest Proxy Endpoint for this HDInsight Kafka Cluster.
   late final pulumi.Output<String> kafkaRestProxyEndpoint;
+
   /// Specifies the Azure Region which this HDInsight Kafka Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `metastores` block as defined below.
   late final pulumi.Output<KafkaClusterMetastores?> metastores;
+
   /// A `monitor` block as defined below.
   late final pulumi.Output<KafkaClusterMonitor?> monitor;
+
   /// Specifies the name for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network` block as defined below.
   late final pulumi.Output<KafkaClusterNetwork?> network;
+
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<KafkaClusterPrivateLinkConfiguration?> privateLinkConfiguration;
+  late final pulumi.Output<KafkaClusterPrivateLinkConfiguration?>
+  privateLinkConfiguration;
+
   /// Specifies the name of the Resource Group in which this HDInsight Kafka Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `rest_proxy` block as defined below.
   late final pulumi.Output<KafkaClusterRestProxy?> restProxy;
+
   /// A `roles` block as defined below.
   late final pulumi.Output<KafkaClusterRoles> roles;
+
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<KafkaClusterSecurityProfile?> securityProfile;
+
   /// The SSH Connectivity Endpoint for this HDInsight Kafka Cluster.
   late final pulumi.Output<String> sshEndpoint;
+
   /// A `storage_account_gen2` block as defined below.
   late final pulumi.Output<KafkaClusterStorageAccountGen2?> storageAccountGen2;
+
   /// One or more `storage_account` block as defined below.
-  late final pulumi.Output<List<KafkaClusterStorageAccount>?> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+
   /// A map of Tags which should be assigned to this HDInsight Kafka Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Tier which should be used for this HDInsight Kafka Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
+
   /// The minimal supported TLS version. Possible values are `1.0`, `1.1` or `1.2`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> tlsMinVersion;
 
@@ -532,36 +555,53 @@ class KafkaCluster extends pulumi.CustomResource {
     KafkaClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/kafkaCluster:KafkaCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<KafkaClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<KafkaClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<KafkaClusterDiskEncryption>?>('diskEncryptions');
-    this.encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
-    this.extension = registerOutput<KafkaClusterExtension?>('extension');
-    this.gateway = registerOutput<KafkaClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<KafkaClusterMetastores?>('metastores');
-    this.monitor = registerOutput<KafkaClusterMonitor?>('monitor');
+         'azure:hdinsight/kafkaCluster:KafkaCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<KafkaClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<KafkaClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    encryptionInTransitEnabled = registerOutput<bool?>(
+      'encryptionInTransitEnabled',
+    );
+    extension = registerOutput<KafkaClusterExtension?>('extension');
+    gateway = registerOutput<KafkaClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<KafkaClusterMetastores?>('metastores');
+    monitor = registerOutput<KafkaClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<KafkaClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<KafkaClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
-    this.roles = registerOutput<KafkaClusterRoles>('roles');
-    this.securityProfile = registerOutput<KafkaClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<KafkaClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<KafkaClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<KafkaClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
+    roles = registerOutput<KafkaClusterRoles>('roles');
+    securityProfile = registerOutput<KafkaClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 
   /// Gets an existing [KafkaCluster] resource's state with the given [name] and [id].
@@ -582,35 +622,52 @@ class KafkaCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/kafkaCluster:KafkaCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<KafkaClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<KafkaClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<KafkaClusterDiskEncryption>?>('diskEncryptions');
-    this.encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
-    this.extension = registerOutput<KafkaClusterExtension?>('extension');
-    this.gateway = registerOutput<KafkaClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<KafkaClusterMetastores?>('metastores');
-    this.monitor = registerOutput<KafkaClusterMonitor?>('monitor');
+         'azure:hdinsight/kafkaCluster:KafkaCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<KafkaClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<KafkaClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    encryptionInTransitEnabled = registerOutput<bool?>(
+      'encryptionInTransitEnabled',
+    );
+    extension = registerOutput<KafkaClusterExtension?>('extension');
+    gateway = registerOutput<KafkaClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<KafkaClusterMetastores?>('metastores');
+    monitor = registerOutput<KafkaClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<KafkaClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<KafkaClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
-    this.roles = registerOutput<KafkaClusterRoles>('roles');
-    this.securityProfile = registerOutput<KafkaClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<KafkaClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<KafkaClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<KafkaClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
+    roles = registerOutput<KafkaClusterRoles>('roles');
+    securityProfile = registerOutput<KafkaClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 }

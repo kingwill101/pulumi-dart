@@ -1,5 +1,3 @@
-library module_azurestackhci;
-
 export 'azurestackhci/adapter_property_overrides.dart';
 export 'azurestackhci/adapter_property_overrides_response.dart';
 export 'azurestackhci/arc_connectivity_properties.dart';

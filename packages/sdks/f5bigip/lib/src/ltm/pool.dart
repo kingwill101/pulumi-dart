@@ -164,22 +164,31 @@ import 'pool_state.dart';
 class Pool extends pulumi.CustomResource {
   /// Specifies whether NATs are automatically enabled or disabled for any connections using this pool, [ Default : `yes`, Possible Values `yes` or `no`].
   late final pulumi.Output<String> allowNat;
+
   /// Specifies whether SNATs are automatically enabled or disabled for any connections using this pool,[ Default : `yes`, Possible Values `yes` or `no`].
   late final pulumi.Output<String> allowSnat;
+
   /// Specifies descriptive text that identifies the pool.
   late final pulumi.Output<String?> description;
+
   /// Specifies the load balancing method. The default is `round-robin`. Possible options: [`dynamic-ratio-member`,`dynamic-ratio-node`, `fastest-app-response`,`fastest-node`, `least-connections-members`,`least-connections-node`,`least-sessions`,`observed-member`,`observed-node`,`predictive-member`,`predictive-node`,`ratio-least-connections-member`,`ratio-least-connections-node`,`ratio-member`,`ratio-node`,`ratio-session`,`round-robin`,`weighted-least-connections-member`,`weighted-least-connections-node`]
   late final pulumi.Output<String> loadBalancingMode;
+
   /// Specifies whether the system load balances traffic according to the priority number assigned to the pool member,Default Value is `0` meaning `disabled`.
   late final pulumi.Output<int> minimumActiveMembers;
+
   /// List of monitor names to associate with the pool
   late final pulumi.Output<List<String>> monitors;
+
   /// Name of the pool,it should be `full path`.The full path is the combination of the `partition + name` of the pool.(For example `/Common/my-pool`)
   late final pulumi.Output<String> name;
+
   /// Specifies the number of times the system tries to contact a new pool member after a passive failure.
   late final pulumi.Output<int> reselectTries;
+
   /// Specifies how the system should respond when the target pool member becomes unavailable. The default is `None`, Possible values: `[none, reset, reselect, drop]`.
   late final pulumi.Output<String> serviceDownAction;
+
   /// Specifies the duration during which the system sends less traffic to a newly-enabled pool member.
   late final pulumi.Output<int> slowRampTime;
 
@@ -187,34 +196,27 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_ltm_pool_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:ltm/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowNat = registerOutput<String>('allowNat');
-    this.allowSnat = registerOutput<String>('allowSnat');
-    this.description = registerOutput<String?>('description');
-    this.loadBalancingMode = registerOutput<String>('loadBalancingMode');
-    this.minimumActiveMembers = registerOutput<int>('minimumActiveMembers');
-    this.monitors = registerOutput<List<String>>('monitors');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:ltm/pool:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allowNat = registerOutput<String>('allowNat');
+    allowSnat = registerOutput<String>('allowSnat');
+    description = registerOutput<String?>('description');
+    loadBalancingMode = registerOutput<String>('loadBalancingMode');
+    minimumActiveMembers = registerOutput<int>('minimumActiveMembers');
+    monitors = registerOutput<List<String>>('monitors');
     this.name = registerOutput<String>('name');
-    this.reselectTries = registerOutput<int>('reselectTries');
-    this.serviceDownAction = registerOutput<String>('serviceDownAction');
-    this.slowRampTime = registerOutput<int>('slowRampTime');
+    reselectTries = registerOutput<int>('reselectTries');
+    serviceDownAction = registerOutput<String>('serviceDownAction');
+    slowRampTime = registerOutput<int>('slowRampTime');
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
-  static Pool get(
-    String name,
-    pulumi.Input<String> id, {
-    PoolState? state,
-  }) {
+  static Pool get(String name, pulumi.Input<String> id, {PoolState? state}) {
     return Pool._get(
       name,
       state: state?.toMap(),
@@ -227,20 +229,20 @@ class Pool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowNat = registerOutput<String>('allowNat');
-    this.allowSnat = registerOutput<String>('allowSnat');
-    this.description = registerOutput<String?>('description');
-    this.loadBalancingMode = registerOutput<String>('loadBalancingMode');
-    this.minimumActiveMembers = registerOutput<int>('minimumActiveMembers');
-    this.monitors = registerOutput<List<String>>('monitors');
+         'f5bigip:ltm/pool:Pool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowNat = registerOutput<String>('allowNat');
+    allowSnat = registerOutput<String>('allowSnat');
+    description = registerOutput<String?>('description');
+    loadBalancingMode = registerOutput<String>('loadBalancingMode');
+    minimumActiveMembers = registerOutput<int>('minimumActiveMembers');
+    monitors = registerOutput<List<String>>('monitors');
     this.name = registerOutput<String>('name');
-    this.reselectTries = registerOutput<int>('reselectTries');
-    this.serviceDownAction = registerOutput<String>('serviceDownAction');
-    this.slowRampTime = registerOutput<int>('slowRampTime');
+    reselectTries = registerOutput<int>('reselectTries');
+    serviceDownAction = registerOutput<String>('serviceDownAction');
+    slowRampTime = registerOutput<int>('slowRampTime');
   }
 }

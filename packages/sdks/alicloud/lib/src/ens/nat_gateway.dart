@@ -8,7 +8,7 @@ import 'nat_gateway_state.dart';
 ///
 /// For information about ENS Nat Gateway and how to use it, see [What is Nat Gateway](https://next.api.alibabacloud.com/document/Ens/2017-11-10/CreateNatGateway).
 ///
-/// > **NOTE:** Available since v1.227.0.
+/// &gt; **NOTE:** Available since v1.227.0.
 ///
 /// ## Example Usage
 ///
@@ -260,14 +260,19 @@ import 'nat_gateway_state.dart';
 class NatGateway extends pulumi.CustomResource {
   /// Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the ENS node.
   late final pulumi.Output<String> ensRegionId;
+
   /// NAT specifications. Value: `enat.default`.
   late final pulumi.Output<String> instanceType;
+
   /// The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> natName;
+
   /// The network ID.
   late final pulumi.Output<String> networkId;
+
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
 
@@ -280,17 +285,17 @@ class NatGateway extends pulumi.CustomResource {
     NatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/natGateway:NatGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.natName = registerOutput<String?>('natName');
-    this.networkId = registerOutput<String>('networkId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ens/natGateway:NatGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    instanceType = registerOutput<String>('instanceType');
+    natName = registerOutput<String?>('natName');
+    networkId = registerOutput<String>('networkId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [NatGateway] resource's state with the given [name] and [id].
@@ -311,16 +316,16 @@ class NatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/natGateway:NatGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.natName = registerOutput<String?>('natName');
-    this.networkId = registerOutput<String>('networkId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ens/natGateway:NatGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    instanceType = registerOutput<String>('instanceType');
+    natName = registerOutput<String?>('natName');
+    networkId = registerOutput<String>('networkId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

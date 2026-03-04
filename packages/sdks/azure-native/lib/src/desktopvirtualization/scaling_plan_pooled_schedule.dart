@@ -340,44 +340,64 @@ import 'time_response.dart';
 class ScalingPlanPooledSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Set of days of the week on which this schedule is active.
   late final pulumi.Output<List<String>?> daysOfWeek;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Load balancing algorithm for off-peak period.
   late final pulumi.Output<String?> offPeakLoadBalancingAlgorithm;
+
   /// Starting time for off-peak period.
   late final pulumi.Output<TimeResponse?> offPeakStartTime;
+
   /// Load balancing algorithm for peak period.
   late final pulumi.Output<String?> peakLoadBalancingAlgorithm;
+
   /// Starting time for peak period.
   late final pulumi.Output<TimeResponse?> peakStartTime;
+
   /// Capacity threshold for ramp down period.
   late final pulumi.Output<int?> rampDownCapacityThresholdPct;
+
   /// Should users be logged off forcefully from hosts.
   late final pulumi.Output<bool?> rampDownForceLogoffUsers;
+
   /// Load balancing algorithm for ramp down period.
   late final pulumi.Output<String?> rampDownLoadBalancingAlgorithm;
+
   /// Minimum host percentage for ramp down period.
   late final pulumi.Output<int?> rampDownMinimumHostsPct;
+
   /// Notification message for users during ramp down period.
   late final pulumi.Output<String?> rampDownNotificationMessage;
+
   /// Starting time for ramp down period.
   late final pulumi.Output<TimeResponse?> rampDownStartTime;
+
   /// Specifies when to stop hosts during ramp down period.
   late final pulumi.Output<String?> rampDownStopHostsWhen;
+
   /// Number of minutes to wait to stop hosts during ramp down period.
   late final pulumi.Output<int?> rampDownWaitTimeMinutes;
+
   /// Capacity threshold for ramp up period.
   late final pulumi.Output<int?> rampUpCapacityThresholdPct;
+
   /// Load balancing algorithm for ramp up period.
   late final pulumi.Output<String?> rampUpLoadBalancingAlgorithm;
+
   /// Minimum host percentage for ramp up period.
   late final pulumi.Output<int?> rampUpMinimumHostsPct;
+
   /// Starting time for ramp up period.
   late final pulumi.Output<TimeResponse?> rampUpStartTime;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -390,31 +410,47 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     ScalingPlanPooledScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:desktopvirtualization:ScalingPlanPooledSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
+         'azure-native:desktopvirtualization:ScalingPlanPooledSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
     this.name = registerOutput<String>('name');
-    this.offPeakLoadBalancingAlgorithm = registerOutput<String?>('offPeakLoadBalancingAlgorithm');
-    this.offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime');
-    this.peakLoadBalancingAlgorithm = registerOutput<String?>('peakLoadBalancingAlgorithm');
-    this.peakStartTime = registerOutput<TimeResponse?>('peakStartTime');
-    this.rampDownCapacityThresholdPct = registerOutput<int?>('rampDownCapacityThresholdPct');
-    this.rampDownForceLogoffUsers = registerOutput<bool?>('rampDownForceLogoffUsers');
-    this.rampDownLoadBalancingAlgorithm = registerOutput<String?>('rampDownLoadBalancingAlgorithm');
-    this.rampDownMinimumHostsPct = registerOutput<int?>('rampDownMinimumHostsPct');
-    this.rampDownNotificationMessage = registerOutput<String?>('rampDownNotificationMessage');
-    this.rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime');
-    this.rampDownStopHostsWhen = registerOutput<String?>('rampDownStopHostsWhen');
-    this.rampDownWaitTimeMinutes = registerOutput<int?>('rampDownWaitTimeMinutes');
-    this.rampUpCapacityThresholdPct = registerOutput<int?>('rampUpCapacityThresholdPct');
-    this.rampUpLoadBalancingAlgorithm = registerOutput<String?>('rampUpLoadBalancingAlgorithm');
-    this.rampUpMinimumHostsPct = registerOutput<int?>('rampUpMinimumHostsPct');
-    this.rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    offPeakLoadBalancingAlgorithm = registerOutput<String?>(
+      'offPeakLoadBalancingAlgorithm',
+    );
+    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime');
+    peakLoadBalancingAlgorithm = registerOutput<String?>(
+      'peakLoadBalancingAlgorithm',
+    );
+    peakStartTime = registerOutput<TimeResponse?>('peakStartTime');
+    rampDownCapacityThresholdPct = registerOutput<int?>(
+      'rampDownCapacityThresholdPct',
+    );
+    rampDownForceLogoffUsers = registerOutput<bool?>(
+      'rampDownForceLogoffUsers',
+    );
+    rampDownLoadBalancingAlgorithm = registerOutput<String?>(
+      'rampDownLoadBalancingAlgorithm',
+    );
+    rampDownMinimumHostsPct = registerOutput<int?>('rampDownMinimumHostsPct');
+    rampDownNotificationMessage = registerOutput<String?>(
+      'rampDownNotificationMessage',
+    );
+    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime');
+    rampDownStopHostsWhen = registerOutput<String?>('rampDownStopHostsWhen');
+    rampDownWaitTimeMinutes = registerOutput<int?>('rampDownWaitTimeMinutes');
+    rampUpCapacityThresholdPct = registerOutput<int?>(
+      'rampUpCapacityThresholdPct',
+    );
+    rampUpLoadBalancingAlgorithm = registerOutput<String?>(
+      'rampUpLoadBalancingAlgorithm',
+    );
+    rampUpMinimumHostsPct = registerOutput<int?>('rampUpMinimumHostsPct');
+    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

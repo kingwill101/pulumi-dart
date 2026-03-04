@@ -3,16 +3,15 @@ enum AdditionalWorkspaceDataType {
   valueAlerts("Alerts"),
   valueRawEvents("RawEvents");
 
-  const AdditionalWorkspaceDataType(this.value);
-  final String value;
+  const AdditionalWorkspaceDataType(this.wireValue);
+  final String wireValue;
 
   static AdditionalWorkspaceDataType fromValue(String value) {
     for (final item in AdditionalWorkspaceDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdditionalWorkspaceDataType value: $value');
   }
 }
-

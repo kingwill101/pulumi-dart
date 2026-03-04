@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeliveryPipelineSerialPipelineStageDeployParameter {
   /// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
   final pulumi.Input<Map<String, String>>? matchTargetLabels;
+
   /// Required. Values are deploy parameters in key-value pairs.
   final pulumi.Input<Map<String, String>> values;
 
@@ -23,11 +24,20 @@ class DeliveryPipelineSerialPipelineStageDeployParameter {
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageDeployParameter.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageDeployParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageDeployParameter(
-      matchTargetLabels: map['matchTargetLabels'] == null ? null : ((map['matchTargetLabels']! as Map).cast<String, String>()).input(),
-      values: ((map['values'] as Map).cast<String, String>()).input(),
+      matchTargetLabels: (() {
+        final guardedValue = map['matchTargetLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      values: pulumi.Input.fromValue(
+        (map['values'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

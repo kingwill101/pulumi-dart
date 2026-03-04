@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBatchEndpointArgs {
   /// Name for the Batch Endpoint.
   final pulumi.Input<String> endpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,11 @@ class GetBatchEndpointArgs {
 
   factory GetBatchEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetBatchEndpointArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

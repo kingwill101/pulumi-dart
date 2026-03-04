@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportCollectorsOperationArgs {
   /// Gets the discovery site id.
   final pulumi.Input<String>? discoverySiteId;
+
   /// Import collector ARM name
   final pulumi.Input<String>? importCollectorName;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The status of the last operation.
   final pulumi.Input<String>? provisioningState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,25 @@ class ImportCollectorsOperationArgs {
 
   factory ImportCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImportCollectorsOperationArgs(
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
-      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      discoverySiteId: (() {
+        final guardedValue = map['discoverySiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      importCollectorName: (() {
+        final guardedValue = map['importCollectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

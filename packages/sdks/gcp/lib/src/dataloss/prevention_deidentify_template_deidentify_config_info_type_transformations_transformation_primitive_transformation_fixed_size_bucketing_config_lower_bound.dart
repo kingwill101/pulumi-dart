@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound {
   /// A float value.
   final pulumi.Input<double>? floatValue;
+
   /// An integer value (int64 format)
   final pulumi.Input<String>? integerValue;
 
@@ -23,11 +24,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound(
-      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as String).input(),
+      floatValue: (() {
+        final guardedValue = map['floatValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      integerValue: (() {
+        final guardedValue = map['integerValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

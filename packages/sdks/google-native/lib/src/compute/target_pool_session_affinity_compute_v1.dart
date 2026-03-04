@@ -9,16 +9,17 @@ enum TargetPoolSessionAffinityComputeV1 {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const TargetPoolSessionAffinityComputeV1(this.value);
-  final String value;
+  const TargetPoolSessionAffinityComputeV1(this.wireValue);
+  final String wireValue;
 
   static TargetPoolSessionAffinityComputeV1 fromValue(String value) {
     for (final item in TargetPoolSessionAffinityComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetPoolSessionAffinityComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown TargetPoolSessionAffinityComputeV1 value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum IsolationMode {
   valueAllowInternetOutbound("AllowInternetOutbound"),
   valueAllowOnlyApprovedOutbound("AllowOnlyApprovedOutbound");
 
-  const IsolationMode(this.value);
-  final String value;
+  const IsolationMode(this.wireValue);
+  final String wireValue;
 
   static IsolationMode fromValue(String value) {
     for (final item in IsolationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IsolationMode value: $value');
   }
 }
-

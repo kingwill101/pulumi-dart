@@ -15,11 +15,7 @@ class GetAgentArgs {
   /// [agentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAgentArgs({
-    required this.agentId,
-    required this.location,
-    this.project,
-  });
+  GetAgentArgs({required this.agentId, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetAgentArgs {
 
   factory GetAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentArgs(
-      agentId: (map['agentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

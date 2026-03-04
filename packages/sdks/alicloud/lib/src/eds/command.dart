@@ -6,7 +6,7 @@ import 'command_state.dart';
 ///
 /// For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-runcommand).
 ///
-/// > **NOTE:** Available since v1.146.0.
+/// &gt; **NOTE:** Available since v1.146.0.
 ///
 /// ## Example Usage
 ///
@@ -466,14 +466,19 @@ import 'command_state.dart';
 class Command extends pulumi.CustomResource {
   /// The Contents of the Script to Base64 Encoded Transmission.
   late final pulumi.Output<String> commandContent;
+
   /// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
   late final pulumi.Output<String> commandType;
+
   /// That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
   late final pulumi.Output<String?> contentEncoding;
+
   /// The desktop id of the Desktop.
   late final pulumi.Output<String> desktopId;
+
   /// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
   late final pulumi.Output<String> status;
+
   /// The timeout period for script execution the unit is seconds. Default to: `60`.
   late final pulumi.Output<String?> timeout;
 
@@ -486,17 +491,17 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/command:Command',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandContent = registerOutput<String>('commandContent');
-    this.commandType = registerOutput<String>('commandType');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.desktopId = registerOutput<String>('desktopId');
-    this.status = registerOutput<String>('status');
-    this.timeout = registerOutput<String?>('timeout');
+         'alicloud:eds/command:Command',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandContent = registerOutput<String>('commandContent');
+    commandType = registerOutput<String>('commandType');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    desktopId = registerOutput<String>('desktopId');
+    status = registerOutput<String>('status');
+    timeout = registerOutput<String?>('timeout');
   }
 
   /// Gets an existing [Command] resource's state with the given [name] and [id].
@@ -517,16 +522,16 @@ class Command extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/command:Command',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandContent = registerOutput<String>('commandContent');
-    this.commandType = registerOutput<String>('commandType');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.desktopId = registerOutput<String>('desktopId');
-    this.status = registerOutput<String>('status');
-    this.timeout = registerOutput<String?>('timeout');
+         'alicloud:eds/command:Command',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandContent = registerOutput<String>('commandContent');
+    commandType = registerOutput<String>('commandType');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    desktopId = registerOutput<String>('desktopId');
+    status = registerOutput<String>('status');
+    timeout = registerOutput<String?>('timeout');
   }
 }

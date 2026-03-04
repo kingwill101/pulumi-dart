@@ -4,9 +4,9 @@ import 'account_privilege_state.dart';
 
 /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
 ///
-/// > **NOTE:** At present, a database can only have one database owner.
+/// &gt; **NOTE:** At present, a database can only have one database owner.
 ///
-/// > **NOTE:** Available since v1.5.0.
+/// &gt; **NOTE:** Available since v1.5.0.
 ///
 /// ## Example Usage
 ///
@@ -367,10 +367,13 @@ import 'account_privilege_state.dart';
 class AccountPrivilege extends pulumi.CustomResource {
   /// A specified account name.
   late final pulumi.Output<String> accountName;
+
   /// List of specified database name.
   late final pulumi.Output<List<String>> dbNames;
+
   /// The Id of instance in which account belongs.
   late final pulumi.Output<String> instanceId;
+
   /// The privilege of one account access database. Valid values:
   /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
   /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
@@ -389,15 +392,15 @@ class AccountPrivilege extends pulumi.CustomResource {
     AccountPrivilegeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/accountPrivilege:AccountPrivilege',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dbNames = registerOutput<List<String>>('dbNames');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.privilege = registerOutput<String?>('privilege');
+         'alicloud:rds/accountPrivilege:AccountPrivilege',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dbNames = registerOutput<List<String>>('dbNames');
+    instanceId = registerOutput<String>('instanceId');
+    privilege = registerOutput<String?>('privilege');
   }
 
   /// Gets an existing [AccountPrivilege] resource's state with the given [name] and [id].
@@ -418,14 +421,14 @@ class AccountPrivilege extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/accountPrivilege:AccountPrivilege',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dbNames = registerOutput<List<String>>('dbNames');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.privilege = registerOutput<String?>('privilege');
+         'alicloud:rds/accountPrivilege:AccountPrivilege',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dbNames = registerOutput<List<String>>('dbNames');
+    instanceId = registerOutput<String>('instanceId');
+    privilege = registerOutput<String?>('privilege');
   }
 }

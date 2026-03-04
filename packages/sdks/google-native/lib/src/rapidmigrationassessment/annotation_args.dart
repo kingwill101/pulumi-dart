@@ -11,11 +11,14 @@ class AnnotationArgs {
   /// Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// name of resource.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Optional. An optional request ID to identify requests.
   final pulumi.Input<String>? requestId;
+
   /// Type of an annotation.
   final pulumi.Input<AnnotationType>? type;
 
@@ -42,19 +45,49 @@ class AnnotationArgs {
       'name': ?name,
       'project': ?project,
       'requestId': ?requestId,
-      'type': ?pulumi.Input.mapOptionalInputValue<AnnotationType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<AnnotationType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory AnnotationArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      type: map['type'] == null ? null : (AnnotationType.fromValue(map['type']! as String)).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnnotationType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

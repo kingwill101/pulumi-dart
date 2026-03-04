@@ -5,11 +5,11 @@ import 'instance_shared_ips_state.dart';
 /// Manages IPs shared to a Linode instance.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-share-ips).
 ///
-/// > **Beta Notice** IPv6 sharing is currently available through early access.
+/// &gt; **Beta Notice** IPv6 sharing is currently available through early access.
 /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
 /// To learn more, see the early access documentation.
 ///
-/// > **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.
+/// &gt; **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.
 ///
 /// ## Example Usage
 ///
@@ -236,6 +236,7 @@ import 'instance_shared_ips_state.dart';
 class InstanceSharedIps extends pulumi.CustomResource {
   /// The set of IPs to share with the Linode.
   late final pulumi.Output<List<String>> addresses;
+
   /// The ID of the Linode to share the IPs to.
   late final pulumi.Output<int> linodeId;
 
@@ -248,13 +249,13 @@ class InstanceSharedIps extends pulumi.CustomResource {
     InstanceSharedIpsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/instanceSharedIps:InstanceSharedIps',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.linodeId = registerOutput<int>('linodeId');
+         'linode:index/instanceSharedIps:InstanceSharedIps',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    linodeId = registerOutput<int>('linodeId');
   }
 
   /// Gets an existing [InstanceSharedIps] resource's state with the given [name] and [id].
@@ -275,12 +276,12 @@ class InstanceSharedIps extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/instanceSharedIps:InstanceSharedIps',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.linodeId = registerOutput<int>('linodeId');
+         'linode:index/instanceSharedIps:InstanceSharedIps',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    linodeId = registerOutput<int>('linodeId');
   }
 }

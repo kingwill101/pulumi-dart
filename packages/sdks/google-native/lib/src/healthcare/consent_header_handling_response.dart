@@ -9,20 +9,15 @@ class ConsentHeaderHandlingResponse {
 
   /// Creates a new [ConsentHeaderHandlingResponse].
   /// [profile] Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  ConsentHeaderHandlingResponse({
-    required this.profile,
-  });
+  ConsentHeaderHandlingResponse({required this.profile});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'profile': profile,
-    };
+    return <String, dynamic>{'profile': profile};
   }
 
   factory ConsentHeaderHandlingResponse.fromMap(Map<String, dynamic> map) {
     return ConsentHeaderHandlingResponse(
-      profile: (map['profile'] as String).input(),
+      profile: pulumi.Input.fromValue(map['profile'] as String),
     );
   }
 }
-

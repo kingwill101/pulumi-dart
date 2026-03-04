@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsResourceRecordSetGeolocation {
   /// The two-letter code for the continent.
   final pulumi.Input<String> continentCode;
+
   /// The two-letter code for a country.
   final pulumi.Input<String> countryCode;
+
   /// The two-letter code for a state of the United States.
   final pulumi.Input<String> subdivisionCode;
 
@@ -28,12 +30,13 @@ class GetRecordsResourceRecordSetGeolocation {
     };
   }
 
-  factory GetRecordsResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetGeolocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRecordsResourceRecordSetGeolocation(
-      continentCode: (map['continentCode'] as String).input(),
-      countryCode: (map['countryCode'] as String).input(),
-      subdivisionCode: (map['subdivisionCode'] as String).input(),
+      continentCode: pulumi.Input.fromValue(map['continentCode'] as String),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      subdivisionCode: pulumi.Input.fromValue(map['subdivisionCode'] as String),
     );
   }
 }
-

@@ -167,16 +167,22 @@ import 'system_data_response.dart';
 class RaiBlocklistItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Etag.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Properties of Cognitive Services RaiBlocklist Item.
   late final pulumi.Output<RaiBlocklistItemPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -189,17 +195,19 @@ class RaiBlocklistItem extends pulumi.CustomResource {
     RaiBlocklistItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cognitiveservices:RaiBlocklistItem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:cognitiveservices:RaiBlocklistItem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<RaiBlocklistItemPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<RaiBlocklistItemPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

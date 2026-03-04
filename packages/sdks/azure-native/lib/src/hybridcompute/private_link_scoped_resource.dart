@@ -138,12 +138,16 @@ import 'private_link_scoped_resource_args.dart';
 class PrivateLinkScopedResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource id of the scoped Azure monitor resource.
   late final pulumi.Output<String?> linkedResourceId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the private endpoint connection.
   late final pulumi.Output<String> provisioningState;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -156,15 +160,15 @@ class PrivateLinkScopedResource extends pulumi.CustomResource {
     PrivateLinkScopedResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:PrivateLinkScopedResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.linkedResourceId = registerOutput<String?>('linkedResourceId');
+         'azure-native:hybridcompute:PrivateLinkScopedResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    linkedResourceId = registerOutput<String?>('linkedResourceId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

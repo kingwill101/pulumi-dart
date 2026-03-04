@@ -355,14 +355,18 @@ import 'standards_control_association_state.dart';
 class StandardsControlAssociation extends pulumi.CustomResource {
   /// The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> associationStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The unique identifier for the security control whose enablement status you want to update.
   late final pulumi.Output<String> securityControlId;
+
   /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> standardsArn;
+
   /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
   late final pulumi.Output<String?> updatedReason;
 
@@ -375,16 +379,16 @@ class StandardsControlAssociation extends pulumi.CustomResource {
     StandardsControlAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associationStatus = registerOutput<String>('associationStatus');
-    this.region = registerOutput<String>('region');
-    this.securityControlId = registerOutput<String>('securityControlId');
-    this.standardsArn = registerOutput<String>('standardsArn');
-    this.updatedReason = registerOutput<String?>('updatedReason');
+         'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associationStatus = registerOutput<String>('associationStatus');
+    region = registerOutput<String>('region');
+    securityControlId = registerOutput<String>('securityControlId');
+    standardsArn = registerOutput<String>('standardsArn');
+    updatedReason = registerOutput<String?>('updatedReason');
   }
 
   /// Gets an existing [StandardsControlAssociation] resource's state with the given [name] and [id].
@@ -405,15 +409,15 @@ class StandardsControlAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associationStatus = registerOutput<String>('associationStatus');
-    this.region = registerOutput<String>('region');
-    this.securityControlId = registerOutput<String>('securityControlId');
-    this.standardsArn = registerOutput<String>('standardsArn');
-    this.updatedReason = registerOutput<String?>('updatedReason');
+         'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associationStatus = registerOutput<String>('associationStatus');
+    region = registerOutput<String>('region');
+    securityControlId = registerOutput<String>('securityControlId');
+    standardsArn = registerOutput<String>('standardsArn');
+    updatedReason = registerOutput<String?>('updatedReason');
   }
 }

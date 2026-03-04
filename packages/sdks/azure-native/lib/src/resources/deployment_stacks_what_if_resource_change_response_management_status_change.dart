@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
   /// The predicted value after the deployment is executed.
   final pulumi.Input<String>? after;
+
   /// The predicted value before the deployment is executed.
   final pulumi.Input<String>? before;
 
@@ -18,17 +19,23 @@ class DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'after': ?after,
-      'before': ?before,
-    };
+    return <String, dynamic>{'after': ?after, 'before': ?before};
   }
 
-  factory DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap(Map<String, dynamic> map) {
+  factory DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange(
-      after: map['after'] == null ? null : (map['after']! as String).input(),
-      before: map['before'] == null ? null : (map['before']! as String).input(),
+      after: (() {
+        final guardedValue = map['after'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      before: (() {
+        final guardedValue = map['before'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

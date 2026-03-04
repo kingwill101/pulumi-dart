@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Cardinality {
   /// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
   final pulumi.Input<int>? number;
+
   /// The root of the variable subtree to monitor. For example, `/foo`.
   final pulumi.Input<String>? path;
 
   /// Creates a new [Cardinality].
   /// [number] The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
   /// [path] The root of the variable subtree to monitor. For example, `/foo`.
-  Cardinality({
-    this.number,
-    this.path,
-  });
+  Cardinality({this.number, this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'number': ?number,
-      'path': ?path,
-    };
+    return <String, dynamic>{'number': ?number, 'path': ?path};
   }
 
   factory Cardinality.fromMap(Map<String, dynamic> map) {
     return Cardinality(
-      number: map['number'] == null ? null : (map['number']! as int).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      number: (() {
+        final guardedValue = map['number'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

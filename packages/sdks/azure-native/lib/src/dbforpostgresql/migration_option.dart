@@ -4,16 +4,15 @@ enum MigrationOption {
   migrate("Migrate"),
   validateAndMigrate("ValidateAndMigrate");
 
-  const MigrationOption(this.value);
-  final String value;
+  const MigrationOption(this.wireValue);
+  final String wireValue;
 
   static MigrationOption fromValue(String value) {
     for (final item in MigrationOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MigrationOption value: $value');
   }
 }
-

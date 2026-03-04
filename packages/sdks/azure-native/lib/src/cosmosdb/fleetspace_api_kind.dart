@@ -2,16 +2,15 @@
 enum FleetspaceApiKind {
   valueNoSQL("NoSQL");
 
-  const FleetspaceApiKind(this.value);
-  final String value;
+  const FleetspaceApiKind(this.wireValue);
+  final String wireValue;
 
   static FleetspaceApiKind fromValue(String value) {
     for (final item in FleetspaceApiKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FleetspaceApiKind value: $value');
   }
 }
-

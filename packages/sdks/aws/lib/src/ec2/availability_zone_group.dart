@@ -4,7 +4,7 @@ import 'availability_zone_group_state.dart';
 
 /// Manages an EC2 Availability Zone Group, such as updating its opt-in status.
 ///
-/// > **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
+/// &gt; **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
 ///
 /// ## Example Usage
 ///
@@ -112,8 +112,10 @@ import 'availability_zone_group_state.dart';
 class AvailabilityZoneGroup extends pulumi.CustomResource {
   /// Name of the Availability Zone Group.
   late final pulumi.Output<String> groupName;
+
   /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   late final pulumi.Output<String> optInStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -126,14 +128,14 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
     AvailabilityZoneGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.optInStatus = registerOutput<String>('optInStatus');
-    this.region = registerOutput<String>('region');
+         'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    optInStatus = registerOutput<String>('optInStatus');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [AvailabilityZoneGroup] resource's state with the given [name] and [id].
@@ -154,13 +156,13 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.optInStatus = registerOutput<String>('optInStatus');
-    this.region = registerOutput<String>('region');
+         'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    optInStatus = registerOutput<String>('optInStatus');
+    region = registerOutput<String>('region');
   }
 }

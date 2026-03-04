@@ -3,16 +3,15 @@ enum StorageTier {
   archive("archive"),
   standard("standard");
 
-  const StorageTier(this.value);
-  final String value;
+  const StorageTier(this.wireValue);
+  final String wireValue;
 
   static StorageTier fromValue(String value) {
     for (final item in StorageTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageTier value: $value');
   }
 }
-

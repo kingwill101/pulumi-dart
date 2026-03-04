@@ -156,16 +156,23 @@ import 'system_data_response.dart';
 class OrganizationEnvironmentById extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of environment
   late final pulumi.Output<String?> kind;
+
   /// Metadata of the record
   late final pulumi.Output<SCMetadataEntityResponse?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Stream governance configuration
-  late final pulumi.Output<StreamGovernanceConfigResponse?> streamGovernanceConfig;
+  late final pulumi.Output<StreamGovernanceConfigResponse?>
+  streamGovernanceConfig;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,17 +185,19 @@ class OrganizationEnvironmentById extends pulumi.CustomResource {
     OrganizationEnvironmentByIdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:confluent:OrganizationEnvironmentById',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<SCMetadataEntityResponse?>('metadata');
+         'azure-native:confluent:OrganizationEnvironmentById',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<SCMetadataEntityResponse?>('metadata');
     this.name = registerOutput<String>('name');
-    this.streamGovernanceConfig = registerOutput<StreamGovernanceConfigResponse?>('streamGovernanceConfig');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    streamGovernanceConfig = registerOutput<StreamGovernanceConfigResponse?>(
+      'streamGovernanceConfig',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -12,6 +12,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource {
   /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
   /// If * is specified, then all IngressSources will be allowed.
   final pulumi.Input<String>? accessLevel;
+
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   /// Requests from these resources will be allowed to access perimeter data.
   /// Currently only projects are allowed. Format `projects/{project_number}`
@@ -35,11 +36,20 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource {
     };
   }
 
-  factory ServicePerimeterDryRunIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterDryRunIngressPolicyIngressFromSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterDryRunIngressPolicyIngressFromSource(
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      accessLevel: (() {
+        final guardedValue = map['accessLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

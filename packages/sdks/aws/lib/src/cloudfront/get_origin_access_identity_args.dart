@@ -12,20 +12,15 @@ class GetOriginAccessIdentityArgs {
 
   /// Creates a new [GetOriginAccessIdentityArgs].
   /// [id] The identifier for the origin access identity. For example: `E1ZAKK699EOLAL`.
-  GetOriginAccessIdentityArgs({
-    required this.id,
-  });
+  GetOriginAccessIdentityArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetOriginAccessIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentityArgs(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

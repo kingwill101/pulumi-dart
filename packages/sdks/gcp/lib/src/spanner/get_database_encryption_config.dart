@@ -6,6 +6,7 @@ class GetDatabaseEncryptionConfig {
   /// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
   /// in the same location as the Spanner Database.
   final pulumi.Input<String> kmsKeyName;
+
   /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
   /// in the same locations as the Spanner Database.
   final pulumi.Input<List<String>> kmsKeyNames;
@@ -27,9 +28,10 @@ class GetDatabaseEncryptionConfig {
 
   factory GetDatabaseEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseEncryptionConfig(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
-      kmsKeyNames: ((map['kmsKeyNames'] as List).cast<String>()).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
+      kmsKeyNames: pulumi.Input.fromValue(
+        (map['kmsKeyNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

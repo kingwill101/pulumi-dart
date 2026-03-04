@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23.
   final pulumi.Input<int> hours;
+
   /// Minutes of hour of day. Currently, only the value 0 is supported.
   final pulumi.Input<int> minutes;
+
   /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
   final pulumi.Input<int> nanos;
+
   /// Seconds of minutes of the time. Currently, only the value 0 is supported.
   final pulumi.Input<int> seconds;
 
@@ -33,13 +36,14 @@ class GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
     };
   }
 
-  factory GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
+  factory GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(
-      hours: (map['hours'] as int).input(),
-      minutes: (map['minutes'] as int).input(),
-      nanos: (map['nanos'] as int).input(),
-      seconds: (map['seconds'] as int).input(),
+      hours: pulumi.Input.fromValue(map['hours'] as int),
+      minutes: pulumi.Input.fromValue(map['minutes'] as int),
+      nanos: pulumi.Input.fromValue(map['nanos'] as int),
+      seconds: pulumi.Input.fromValue(map['seconds'] as int),
     );
   }
 }
-

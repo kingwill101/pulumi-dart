@@ -10,10 +10,12 @@ class IdentityCenterConfigurationArgs {
   /// Identifier for the Data Catalog.
   /// By default, the account ID.
   final pulumi.Input<String>? catalogId;
+
   /// ARN of the IAM Identity Center Instance to associate.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> instanceArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -37,10 +39,17 @@ class IdentityCenterConfigurationArgs {
 
   factory IdentityCenterConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IdentityCenterConfigurationArgs(
-      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
-      instanceArn: (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceArn: pulumi.Input.fromValue(map['instanceArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

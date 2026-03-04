@@ -1,5 +1,3 @@
-library module_powerbi;
-
 export 'powerbi/azure_sku.dart';
 export 'powerbi/azure_sku_name.dart';
 export 'powerbi/azure_sku_response.dart';

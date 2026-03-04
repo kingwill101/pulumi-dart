@@ -1,5 +1,3 @@
-library module_sag;
-
 export 'sag/acl.dart';
 export 'sag/acl_args.dart';
 export 'sag/acl_rule.dart';

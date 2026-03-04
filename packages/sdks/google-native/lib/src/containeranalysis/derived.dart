@@ -8,29 +8,60 @@ import 'layer_containeranalysis_v1alpha1.dart';
 class Derived {
   /// The fingerprint of the derived image.
   final pulumi.Input<FingerprintContaineranalysisV1alpha1>? fingerprint;
+
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
   final pulumi.Input<List<LayerContaineranalysisV1alpha1>>? layerInfo;
 
   /// Creates a new [Derived].
   /// [fingerprint] The fingerprint of the derived image.
   /// [layerInfo] This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  Derived({
-    this.fingerprint,
-    this.layerInfo,
-  });
+  Derived({this.fingerprint, this.layerInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fingerprint': ?pulumi.Input.mapOptionalInputValue<FingerprintContaineranalysisV1alpha1, Map<String, dynamic>>(fingerprint, (value) => value.toMap()),
-      'layerInfo': ?pulumi.Input.mapOptionalInputValue<List<LayerContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(layerInfo, (value) => pulumi.Input.encodeList<LayerContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fingerprint':
+          ?pulumi.Input.mapOptionalInputValue<
+            FingerprintContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(fingerprint, (value) => value.toMap()),
+      'layerInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LayerContaineranalysisV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            layerInfo,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LayerContaineranalysisV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory Derived.fromMap(Map<String, dynamic> map) {
     return Derived(
-      fingerprint: map['fingerprint'] == null ? null : (FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint']! as Map).cast<String, dynamic>())).input(),
-      layerInfo: map['layerInfo'] == null ? null : (pulumi.Input.decodeList<LayerContaineranalysisV1alpha1>(map['layerInfo']!, (value) => LayerContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FingerprintContaineranalysisV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      layerInfo: (() {
+        final guardedValue = map['layerInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LayerContaineranalysisV1alpha1>(
+            guardedValue,
+            (value) => LayerContaineranalysisV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

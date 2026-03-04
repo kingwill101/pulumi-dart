@@ -4,16 +4,15 @@ enum FailoverDeploymentModel {
   valueClassic("Classic"),
   valueResourceManager("ResourceManager");
 
-  const FailoverDeploymentModel(this.value);
-  final String value;
+  const FailoverDeploymentModel(this.wireValue);
+  final String wireValue;
 
   static FailoverDeploymentModel fromValue(String value) {
     for (final item in FailoverDeploymentModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FailoverDeploymentModel value: $value');
   }
 }
-

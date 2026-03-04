@@ -7,8 +7,10 @@ import 'plan_stage.dart';
 class PlanState {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   final pulumi.Input<String>? contactId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
   final pulumi.Input<List<PlanStage>>? stages;
 
@@ -16,26 +18,49 @@ class PlanState {
   /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stages] One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
-  PlanState({
-    this.contactId,
-    this.region,
-    this.stages,
-  });
+  PlanState({this.contactId, this.region, this.stages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contactId': ?contactId,
       'region': ?region,
-      'stages': ?pulumi.Input.mapOptionalInputValue<List<PlanStage>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<PlanStage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PlanStage>,
+            List<Map<String, dynamic>>
+          >(
+            stages,
+            (value) => pulumi.Input.encodeList<PlanStage, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      contactId: map['contactId'] == null ? null : ((map['contactId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      stages: map['stages'] == null ? null : ((pulumi.Input.decodeList<PlanStage>(map['stages']!, (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      contactId: (() {
+        final guardedValue = map['contactId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stages: (() {
+        final guardedValue = map['stages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PlanStage>(
+            guardedValue,
+            (value) =>
+                PlanStage.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

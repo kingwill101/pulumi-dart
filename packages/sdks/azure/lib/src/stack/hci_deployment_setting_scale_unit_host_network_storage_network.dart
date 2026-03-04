@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciDeploymentSettingScaleUnitHostNetworkStorageNetwork {
   /// The name of the storage network. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> name;
+
   /// The name of the network adapter. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> networkAdapterName;
+
   /// Specifies the ID for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> vlanId;
 
@@ -28,12 +30,15 @@ class HciDeploymentSettingScaleUnitHostNetworkStorageNetwork {
     };
   }
 
-  factory HciDeploymentSettingScaleUnitHostNetworkStorageNetwork.fromMap(Map<String, dynamic> map) {
+  factory HciDeploymentSettingScaleUnitHostNetworkStorageNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HciDeploymentSettingScaleUnitHostNetworkStorageNetwork(
-      name: (map['name'] as String).input(),
-      networkAdapterName: (map['networkAdapterName'] as String).input(),
-      vlanId: (map['vlanId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkAdapterName: pulumi.Input.fromValue(
+        map['networkAdapterName'] as String,
+      ),
+      vlanId: pulumi.Input.fromValue(map['vlanId'] as String),
     );
   }
 }
-

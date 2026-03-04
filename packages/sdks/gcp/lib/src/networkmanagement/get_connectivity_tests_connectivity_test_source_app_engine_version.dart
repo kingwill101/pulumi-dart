@@ -13,15 +13,14 @@ class GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetConnectivityTestsConnectivityTestSourceAppEngineVersion.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestSourceAppEngineVersion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestsConnectivityTestSourceAppEngineVersion(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

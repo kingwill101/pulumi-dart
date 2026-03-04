@@ -10,8 +10,10 @@ import 'bucket_ownership_controls_rule.dart';
 class BucketOwnershipControlsArgs {
   /// Name of the bucket that you want to associate this access point with.
   final pulumi.Input<String> bucket;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block(s) with Ownership Controls rules. Detailed below.
   final pulumi.Input<BucketOwnershipControlsRule> rule;
 
@@ -29,16 +31,27 @@ class BucketOwnershipControlsArgs {
     return <String, dynamic>{
       'bucket': bucket,
       'region': ?region,
-      'rule': pulumi.Input.mapInputValue<BucketOwnershipControlsRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
+      'rule':
+          pulumi.Input.mapInputValue<
+            BucketOwnershipControlsRule,
+            Map<String, dynamic>
+          >(rule, (value) => value.toMap()),
     };
   }
 
   factory BucketOwnershipControlsArgs.fromMap(Map<String, dynamic> map) {
     return BucketOwnershipControlsArgs(
-      bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      rule: (BucketOwnershipControlsRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rule: pulumi.Input.fromValue(
+        BucketOwnershipControlsRule.fromMap(
+          (map['rule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

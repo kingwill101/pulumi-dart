@@ -8,12 +8,16 @@ class GetAccessPointsResult {
   /// A list of access points matching the search criteria. See `access_points` below.
   final List<GetAccessPointsAccessPoint> accessPoints;
   final String? accountId;
+
   /// Name of the bucket associated with the access point.
   final String? bucket;
+
   /// Unique identifier for the data source of the access point.
   final String? dataSourceId;
+
   /// Type of the data source that the access point is attached to.
   final String? dataSourceType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -38,7 +42,11 @@ class GetAccessPointsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPoints': pulumi.Input.encodeList<GetAccessPointsAccessPoint, Map<String, dynamic>>(accessPoints, (value) => value.toMap()),
+      'accessPoints':
+          pulumi.Input.encodeList<
+            GetAccessPointsAccessPoint,
+            Map<String, dynamic>
+          >(accessPoints, (value) => value.toMap()),
       'accountId': ?accountId,
       'bucket': ?bucket,
       'dataSourceId': ?dataSourceId,
@@ -50,14 +58,34 @@ class GetAccessPointsResult {
 
   factory GetAccessPointsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsResult(
-      accessPoints: pulumi.Input.decodeList<GetAccessPointsAccessPoint>(map['accessPoints']!, (value) => GetAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      dataSourceId: map['dataSourceId'] == null ? null : map['dataSourceId'] as String,
-      dataSourceType: map['dataSourceType'] == null ? null : map['dataSourceType'] as String,
+      accessPoints: pulumi.Input.decodeList<GetAccessPointsAccessPoint>(
+        map['accessPoints']!,
+        (value) => GetAccessPointsAccessPoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dataSourceId: (() {
+        final guardedValue = map['dataSourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dataSourceType: (() {
+        final guardedValue = map['dataSourceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
-

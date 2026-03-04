@@ -7,10 +7,13 @@ import 'key_vault_private_endpoint_response.dart';
 class GetAccountKeyVaultStatusResult {
   /// The name of the key that should be used for encryption.
   final String? keyName;
+
   /// Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
   final List<KeyVaultPrivateEndpointResponse>? keyVaultPrivateEndpoints;
+
   /// Azure resource ID of the key vault/managed HSM that should be used for encryption.
   final String? keyVaultResourceId;
+
   /// The URI of the key vault/managed HSM that should be used for encryption.
   final String? keyVaultUri;
 
@@ -29,7 +32,14 @@ class GetAccountKeyVaultStatusResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyName': ?keyName,
-      'keyVaultPrivateEndpoints': ?keyVaultPrivateEndpoints == null ? null : pulumi.Input.encodeList<KeyVaultPrivateEndpointResponse, Map<String, dynamic>>(keyVaultPrivateEndpoints!, (value) => value.toMap()),
+      'keyVaultPrivateEndpoints': ?(() {
+        final guardedValue = keyVaultPrivateEndpoints;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          KeyVaultPrivateEndpointResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'keyVaultResourceId': ?keyVaultResourceId,
       'keyVaultUri': ?keyVaultUri,
     };
@@ -37,11 +47,31 @@ class GetAccountKeyVaultStatusResult {
 
   factory GetAccountKeyVaultStatusResult.fromMap(Map<String, dynamic> map) {
     return GetAccountKeyVaultStatusResult(
-      keyName: map['keyName'] == null ? null : map['keyName']! as String,
-      keyVaultPrivateEndpoints: map['keyVaultPrivateEndpoints'] == null ? null : pulumi.Input.decodeList<KeyVaultPrivateEndpointResponse>(map['keyVaultPrivateEndpoints']!, (value) => KeyVaultPrivateEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId']! as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri']! as String,
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      keyVaultPrivateEndpoints: (() {
+        final guardedValue = map['keyVaultPrivateEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<KeyVaultPrivateEndpointResponse>(
+          guardedValue,
+          (value) => KeyVaultPrivateEndpointResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultResourceId: (() {
+        final guardedValue = map['keyVaultResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

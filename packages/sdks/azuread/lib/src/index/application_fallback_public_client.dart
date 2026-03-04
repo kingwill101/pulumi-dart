@@ -4,7 +4,7 @@ import 'application_fallback_public_client_state.dart';
 
 /// Manages the Fallback Public Client setting for an application registration.
 ///
-/// > This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
+/// &gt; This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
 ///
 /// ## API Permissions
 ///
@@ -12,7 +12,7 @@ import 'application_fallback_public_client_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -146,9 +146,10 @@ import 'application_fallback_public_client_state.dart';
 class ApplicationFallbackPublicClient extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// Whether to enable the application as a fallback public client.
   ///
-  /// > Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
+  /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
   late final pulumi.Output<bool?> enabled;
 
   /// Creates a new [ApplicationFallbackPublicClient].
@@ -160,13 +161,13 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     ApplicationFallbackPublicClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.enabled = registerOutput<bool?>('enabled');
+         'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
   }
 
   /// Gets an existing [ApplicationFallbackPublicClient] resource's state with the given [name] and [id].
@@ -187,12 +188,12 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.enabled = registerOutput<bool?>('enabled');
+         'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
   }
 }

@@ -201,8 +201,10 @@ import 'administrative_unit_role_member_state.dart';
 class AdministrativeUnitRoleMember extends pulumi.CustomResource {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> administrativeUnitObjectId;
+
   /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   late final pulumi.Output<String> memberObjectId;
+
   /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleObjectId;
 
@@ -215,14 +217,16 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     AdministrativeUnitRoleMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
-    this.memberObjectId = registerOutput<String>('memberObjectId');
-    this.roleObjectId = registerOutput<String>('roleObjectId');
+         'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeUnitObjectId = registerOutput<String>(
+      'administrativeUnitObjectId',
+    );
+    memberObjectId = registerOutput<String>('memberObjectId');
+    roleObjectId = registerOutput<String>('roleObjectId');
   }
 
   /// Gets an existing [AdministrativeUnitRoleMember] resource's state with the given [name] and [id].
@@ -243,13 +247,15 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
-    this.memberObjectId = registerOutput<String>('memberObjectId');
-    this.roleObjectId = registerOutput<String>('roleObjectId');
+         'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeUnitObjectId = registerOutput<String>(
+      'administrativeUnitObjectId',
+    );
+    memberObjectId = registerOutput<String>('memberObjectId');
+    roleObjectId = registerOutput<String>('roleObjectId');
   }
 }

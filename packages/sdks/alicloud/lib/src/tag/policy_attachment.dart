@@ -6,7 +6,7 @@ import 'policy_attachment_state.dart';
 /// For information about Tag Policy Attachment and how to use it,
 /// see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
 /// ## Example Usage
 ///
@@ -211,8 +211,10 @@ import 'policy_attachment_state.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// The ID of the tag policy.
   late final pulumi.Output<String> policyId;
+
   /// The ID of the object.
   late final pulumi.Output<String> targetId;
+
   /// The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   late final pulumi.Output<String> targetType;
 
@@ -225,14 +227,14 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/policyAttachment:PolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:tag/policyAttachment:PolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
   }
 
   /// Gets an existing [PolicyAttachment] resource's state with the given [name] and [id].
@@ -253,13 +255,13 @@ class PolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/policyAttachment:PolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:tag/policyAttachment:PolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
   }
 }

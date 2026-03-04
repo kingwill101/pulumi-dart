@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceReferenceResponse {
   /// The resource id.
   final pulumi.Input<String>? id;
+
   /// Gets the resource name.
   final pulumi.Input<String> name;
+
   /// Gets the resource type.
   final pulumi.Input<String> type;
 
@@ -15,26 +17,21 @@ class ResourceReferenceResponse {
   /// [id] The resource id.
   /// [name] Gets the resource name.
   /// [type] Gets the resource type.
-  ResourceReferenceResponse({
-    this.id,
-    required this.name,
-    required this.type,
-  });
+  ResourceReferenceResponse({this.id, required this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'id': ?id, 'name': name, 'type': type};
   }
 
   factory ResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ResourceReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

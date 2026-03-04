@@ -7,22 +7,31 @@ import 'auto_scale_properties_response.dart';
 class SynapseSparkResponseProperties {
   /// Auto pause properties.
   final pulumi.Input<AutoPausePropertiesResponse>? autoPauseProperties;
+
   /// Auto scale properties.
   final pulumi.Input<AutoScalePropertiesResponse>? autoScaleProperties;
+
   /// The number of compute nodes currently assigned to the compute.
   final pulumi.Input<int>? nodeCount;
+
   /// Node size.
   final pulumi.Input<String>? nodeSize;
+
   /// Node size family.
   final pulumi.Input<String>? nodeSizeFamily;
+
   /// Pool name.
   final pulumi.Input<String>? poolName;
+
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String>? resourceGroup;
+
   /// Spark version.
   final pulumi.Input<String>? sparkVersion;
+
   /// Azure subscription identifier.
   final pulumi.Input<String>? subscriptionId;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String>? workspaceName;
 
@@ -52,8 +61,16 @@ class SynapseSparkResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoPauseProperties': ?pulumi.Input.mapOptionalInputValue<AutoPausePropertiesResponse, Map<String, dynamic>>(autoPauseProperties, (value) => value.toMap()),
-      'autoScaleProperties': ?pulumi.Input.mapOptionalInputValue<AutoScalePropertiesResponse, Map<String, dynamic>>(autoScaleProperties, (value) => value.toMap()),
+      'autoPauseProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoPausePropertiesResponse,
+            Map<String, dynamic>
+          >(autoPauseProperties, (value) => value.toMap()),
+      'autoScaleProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoScalePropertiesResponse,
+            Map<String, dynamic>
+          >(autoScaleProperties, (value) => value.toMap()),
       'nodeCount': ?nodeCount,
       'nodeSize': ?nodeSize,
       'nodeSizeFamily': ?nodeSizeFamily,
@@ -67,17 +84,64 @@ class SynapseSparkResponseProperties {
 
   factory SynapseSparkResponseProperties.fromMap(Map<String, dynamic> map) {
     return SynapseSparkResponseProperties(
-      autoPauseProperties: map['autoPauseProperties'] == null ? null : (AutoPausePropertiesResponse.fromMap((map['autoPauseProperties']! as Map).cast<String, dynamic>())).input(),
-      autoScaleProperties: map['autoScaleProperties'] == null ? null : (AutoScalePropertiesResponse.fromMap((map['autoScaleProperties']! as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize']! as String).input(),
-      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : (map['nodeSizeFamily']! as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      sparkVersion: map['sparkVersion'] == null ? null : (map['sparkVersion']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
+      autoPauseProperties: (() {
+        final guardedValue = map['autoPauseProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoPausePropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      autoScaleProperties: (() {
+        final guardedValue = map['autoScaleProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoScalePropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeSize: (() {
+        final guardedValue = map['nodeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeSizeFamily: (() {
+        final guardedValue = map['nodeSizeFamily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      poolName: (() {
+        final guardedValue = map['poolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sparkVersion: (() {
+        final guardedValue = map['sparkVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: (() {
+        final guardedValue = map['workspaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

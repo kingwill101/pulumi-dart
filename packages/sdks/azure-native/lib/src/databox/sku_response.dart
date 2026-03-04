@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuResponse {
   /// The display name of the sku.
   final pulumi.Input<String>? displayName;
+
   /// The sku family.
   final pulumi.Input<String>? family;
+
   /// The model name.
   final pulumi.Input<String> model;
+
   /// The sku name.
   final pulumi.Input<String> name;
 
@@ -36,11 +39,18 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      model: (map['model'] as String).input(),
-      name: (map['name'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      model: pulumi.Input.fromValue(map['model'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

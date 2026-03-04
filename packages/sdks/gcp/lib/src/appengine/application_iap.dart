@@ -6,11 +6,14 @@ class ApplicationIap {
   /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
   /// (default is false)
   final pulumi.Input<bool>? enabled;
+
   /// OAuth2 client ID to use for the authentication flow.
   final pulumi.Input<String> oauth2ClientId;
+
   /// OAuth2 client secret to use for the authentication flow.
   /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
   final pulumi.Input<String> oauth2ClientSecret;
+
   /// Hex-encoded SHA-256 hash of the client secret.
   final pulumi.Input<String>? oauth2ClientSecretSha256;
 
@@ -37,11 +40,20 @@ class ApplicationIap {
 
   factory ApplicationIap.fromMap(Map<String, dynamic> map) {
     return ApplicationIap(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      oauth2ClientId: (map['oauth2ClientId'] as String).input(),
-      oauth2ClientSecret: (map['oauth2ClientSecret'] as String).input(),
-      oauth2ClientSecretSha256: map['oauth2ClientSecretSha256'] == null ? null : (map['oauth2ClientSecretSha256']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      oauth2ClientId: pulumi.Input.fromValue(map['oauth2ClientId'] as String),
+      oauth2ClientSecret: pulumi.Input.fromValue(
+        map['oauth2ClientSecret'] as String,
+      ),
+      oauth2ClientSecretSha256: (() {
+        final guardedValue = map['oauth2ClientSecretSha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

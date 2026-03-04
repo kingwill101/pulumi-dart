@@ -27,10 +27,9 @@ class GetNetworkSegment {
 
   factory GetNetworkSegment.fromMap(Map<String, dynamic> map) {
     return GetNetworkSegment(
-      networkType: (map['networkType'] as String).input(),
-      physicalNetwork: (map['physicalNetwork'] as String).input(),
-      segmentationId: (map['segmentationId'] as int).input(),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      physicalNetwork: pulumi.Input.fromValue(map['physicalNetwork'] as String),
+      segmentationId: pulumi.Input.fromValue(map['segmentationId'] as int),
     );
   }
 }
-

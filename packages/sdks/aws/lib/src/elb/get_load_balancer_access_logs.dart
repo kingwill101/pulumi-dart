@@ -31,11 +31,10 @@ class GetLoadBalancerAccessLogs {
 
   factory GetLoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerAccessLogs(
-      bucket: (map['bucket'] as String).input(),
-      bucketPrefix: (map['bucketPrefix'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      interval: (map['interval'] as int).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bucketPrefix: pulumi.Input.fromValue(map['bucketPrefix'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
     );
   }
 }
-

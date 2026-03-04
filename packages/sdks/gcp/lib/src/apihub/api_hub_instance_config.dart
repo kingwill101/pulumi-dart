@@ -9,9 +9,11 @@ class ApiHubInstanceConfig {
   /// where the location must match the instance location.
   /// If the CMEK is not provided, a GMEK will be created for the instance.
   final pulumi.Input<String>? cmekKeyName;
+
   /// Optional. If true, the search will be disabled for the instance. The default value
   /// is false.
   final pulumi.Input<bool>? disableSearch;
+
   /// Optional. Encryption type for the region. If the encryption type is CMEK, the
   /// cmek_key_name must be provided. If no encryption type is provided,
   /// GMEK will be used.
@@ -20,6 +22,7 @@ class ApiHubInstanceConfig {
   /// GMEK
   /// CMEK
   final pulumi.Input<String>? encryptionType;
+
   /// Optional. The name of the Vertex AI location where the data store is stored.
   final pulumi.Input<String>? vertexLocation;
 
@@ -46,11 +49,26 @@ class ApiHubInstanceConfig {
 
   factory ApiHubInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceConfig(
-      cmekKeyName: map['cmekKeyName'] == null ? null : (map['cmekKeyName']! as String).input(),
-      disableSearch: map['disableSearch'] == null ? null : (map['disableSearch']! as bool).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
-      vertexLocation: map['vertexLocation'] == null ? null : (map['vertexLocation']! as String).input(),
+      cmekKeyName: (() {
+        final guardedValue = map['cmekKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableSearch: (() {
+        final guardedValue = map['disableSearch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionType: (() {
+        final guardedValue = map['encryptionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vertexLocation: (() {
+        final guardedValue = map['vertexLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

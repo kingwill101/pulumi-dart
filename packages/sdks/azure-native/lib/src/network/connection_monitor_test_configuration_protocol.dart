@@ -4,16 +4,17 @@ enum ConnectionMonitorTestConfigurationProtocol {
   valueHttp("Http"),
   valueIcmp("Icmp");
 
-  const ConnectionMonitorTestConfigurationProtocol(this.value);
-  final String value;
+  const ConnectionMonitorTestConfigurationProtocol(this.wireValue);
+  final String wireValue;
 
   static ConnectionMonitorTestConfigurationProtocol fromValue(String value) {
     for (final item in ConnectionMonitorTestConfigurationProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConnectionMonitorTestConfigurationProtocol value: $value');
+    throw ArgumentError(
+      'Unknown ConnectionMonitorTestConfigurationProtocol value: $value',
+    );
   }
 }
-

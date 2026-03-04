@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityLabelState {
   /// The value of the security label.
   final pulumi.Input<String>? label;
+
   /// The name of the provider with which this label is to be associated.
   final pulumi.Input<String>? labelProvider;
+
   /// The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   final pulumi.Input<String>? objectName;
+
   /// The PostgreSQL object type to apply this security label to.
   final pulumi.Input<String>? objectType;
 
@@ -36,11 +39,26 @@ class SecurityLabelState {
 
   factory SecurityLabelState.fromMap(Map<String, dynamic> map) {
     return SecurityLabelState(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      labelProvider: map['labelProvider'] == null ? null : (map['labelProvider']! as String).input(),
-      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labelProvider: (() {
+        final guardedValue = map['labelProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectName: (() {
+        final guardedValue = map['objectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectType: (() {
+        final guardedValue = map['objectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

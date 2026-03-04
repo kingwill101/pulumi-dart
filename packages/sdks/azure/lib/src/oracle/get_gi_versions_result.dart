@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGiVersions.
 class GetGiVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String? shape;
+
   /// A list of valid GI software versions.
   final List<String> versions;
   final String? zone;
@@ -39,10 +39,17 @@ class GetGiVersionsResult {
     return GetGiVersionsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      shape: map['shape'] == null ? null : map['shape']! as String,
+      shape: (() {
+        final guardedValue = map['shape'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       versions: (map['versions'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone']! as String,
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

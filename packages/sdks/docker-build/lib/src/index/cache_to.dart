@@ -10,25 +10,32 @@ import 'cache_to_s3.dart';
 class CacheTo {
   /// Push cache to Azure's blob storage service.
   final pulumi.Input<CacheToAzureBlob>? azblob;
+
   /// When `true` this entry will be excluded. Defaults to `false`.
   final pulumi.Input<bool>? disabled;
+
   /// Recommended for use with GitHub Actions workflows.
   ///
   /// An action like `crazy-max/ghaction-github-runtime` is recommended to
   /// expose appropriate credentials to your GitHub workflow.
   final pulumi.Input<CacheToGitHubActions>? gha;
+
   /// The inline cache storage backend is the simplest implementation to get
   /// started with, but it does not handle multi-stage builds. Consider the
   /// `registry` cache backend instead.
   final pulumi.Input<Map<String, dynamic>>? inline;
+
   /// A simple backend which caches imagines on your local filesystem.
   final pulumi.Input<CacheToLocal>? local;
+
   /// A raw string as you would provide it to the Docker CLI (e.g.,
   /// `type=inline`)
   final pulumi.Input<String>? raw;
+
   /// Push caches to remote registries. Incompatible with the `docker` build
   /// driver.
   final pulumi.Input<CacheToRegistry>? registry;
+
   /// Push cache to AWS S3 or S3-compatible services such as MinIO.
   final pulumi.Input<CacheToS3>? s3;
 
@@ -54,28 +61,97 @@ class CacheTo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azblob': ?pulumi.Input.mapOptionalInputValue<CacheToAzureBlob, Map<String, dynamic>>(azblob, (value) => value.toMap()),
+      'azblob':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheToAzureBlob,
+            Map<String, dynamic>
+          >(azblob, (value) => value.toMap()),
       'disabled': ?disabled,
-      'gha': ?pulumi.Input.mapOptionalInputValue<CacheToGitHubActions, Map<String, dynamic>>(gha, (value) => value.toMap()),
+      'gha':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheToGitHubActions,
+            Map<String, dynamic>
+          >(gha, (value) => value.toMap()),
       'inline': ?inline,
-      'local': ?pulumi.Input.mapOptionalInputValue<CacheToLocal, Map<String, dynamic>>(local, (value) => value.toMap()),
+      'local':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheToLocal,
+            Map<String, dynamic>
+          >(local, (value) => value.toMap()),
       'raw': ?raw,
-      'registry': ?pulumi.Input.mapOptionalInputValue<CacheToRegistry, Map<String, dynamic>>(registry, (value) => value.toMap()),
-      's3': ?pulumi.Input.mapOptionalInputValue<CacheToS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
+      'registry':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheToRegistry,
+            Map<String, dynamic>
+          >(registry, (value) => value.toMap()),
+      's3':
+          ?pulumi.Input.mapOptionalInputValue<CacheToS3, Map<String, dynamic>>(
+            s3,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CacheTo.fromMap(Map<String, dynamic> map) {
     return CacheTo(
-      azblob: map['azblob'] == null ? null : (CacheToAzureBlob.fromMap((map['azblob']! as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      gha: map['gha'] == null ? null : (CacheToGitHubActions.fromMap((map['gha']! as Map).cast<String, dynamic>())).input(),
-      inline: map['inline'] == null ? null : ((map['inline']! as Map).cast<String, dynamic>()).input(),
-      local: map['local'] == null ? null : (CacheToLocal.fromMap((map['local']! as Map).cast<String, dynamic>())).input(),
-      raw: map['raw'] == null ? null : (map['raw']! as String).input(),
-      registry: map['registry'] == null ? null : (CacheToRegistry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (CacheToS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
+      azblob: (() {
+        final guardedValue = map['azblob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheToAzureBlob.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gha: (() {
+        final guardedValue = map['gha'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheToGitHubActions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inline: (() {
+        final guardedValue = map['inline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      local: (() {
+        final guardedValue = map['local'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheToLocal.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      raw: (() {
+        final guardedValue = map['raw'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registry: (() {
+        final guardedValue = map['registry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheToRegistry.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3: (() {
+        final guardedValue = map['s3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheToS3.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

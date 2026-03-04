@@ -18,20 +18,19 @@ class BackupScheduleSpecCronSpec {
 
   /// Creates a new [BackupScheduleSpecCronSpec].
   /// [text] Textual representation of the crontab. User can customize the
-  BackupScheduleSpecCronSpec({
-    this.text,
-  });
+  BackupScheduleSpecCronSpec({this.text});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': ?text,
-    };
+    return <String, dynamic>{'text': ?text};
   }
 
   factory BackupScheduleSpecCronSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpecCronSpec(
-      text: map['text'] == null ? null : (map['text']! as String).input(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

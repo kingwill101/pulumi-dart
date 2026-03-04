@@ -8,20 +8,19 @@ class EndpointNetworkInterface {
 
   /// Creates a new [EndpointNetworkInterface].
   /// [networkInterfaceId] Identifier of the Elastic Network Interface (ENI).
-  EndpointNetworkInterface({
-    this.networkInterfaceId,
-  });
+  EndpointNetworkInterface({this.networkInterfaceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkInterfaceId': ?networkInterfaceId,
-    };
+    return <String, dynamic>{'networkInterfaceId': ?networkInterfaceId};
   }
 
   factory EndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterface(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

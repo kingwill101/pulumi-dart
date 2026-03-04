@@ -6,7 +6,7 @@ import 'alert_robot_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Alert Robot and how to use it, see [What is Alert Robot](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateOrUpdateIMRobot).
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -233,12 +233,16 @@ import 'alert_robot_state.dart';
 class AlertRobot extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> alertRobotName;
+
   /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
   late final pulumi.Output<bool?> dailyNoc;
+
   /// The time of the daily notification.
   late final pulumi.Output<String?> dailyNocTime;
+
   /// The webhook url of the robot.
   late final pulumi.Output<String> robotAddr;
+
   /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
   late final pulumi.Output<String> robotType;
 
@@ -251,16 +255,16 @@ class AlertRobot extends pulumi.CustomResource {
     AlertRobotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/alertRobot:AlertRobot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRobotName = registerOutput<String>('alertRobotName');
-    this.dailyNoc = registerOutput<bool?>('dailyNoc');
-    this.dailyNocTime = registerOutput<String?>('dailyNocTime');
-    this.robotAddr = registerOutput<String>('robotAddr');
-    this.robotType = registerOutput<String>('robotType');
+         'alicloud:arms/alertRobot:AlertRobot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRobotName = registerOutput<String>('alertRobotName');
+    dailyNoc = registerOutput<bool?>('dailyNoc');
+    dailyNocTime = registerOutput<String?>('dailyNocTime');
+    robotAddr = registerOutput<String>('robotAddr');
+    robotType = registerOutput<String>('robotType');
   }
 
   /// Gets an existing [AlertRobot] resource's state with the given [name] and [id].
@@ -281,15 +285,15 @@ class AlertRobot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/alertRobot:AlertRobot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRobotName = registerOutput<String>('alertRobotName');
-    this.dailyNoc = registerOutput<bool?>('dailyNoc');
-    this.dailyNocTime = registerOutput<String?>('dailyNocTime');
-    this.robotAddr = registerOutput<String>('robotAddr');
-    this.robotType = registerOutput<String>('robotType');
+         'alicloud:arms/alertRobot:AlertRobot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRobotName = registerOutput<String>('alertRobotName');
+    dailyNoc = registerOutput<bool?>('dailyNoc');
+    dailyNocTime = registerOutput<String?>('dailyNocTime');
+    robotAddr = registerOutput<String>('robotAddr');
+    robotType = registerOutput<String>('robotType');
   }
 }

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBlobArgs {
   /// A map of custom blob metadata.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The name of the Blob.
   final pulumi.Input<String> name;
+
   /// The name of the Storage Account where the Container exists.
   final pulumi.Input<String> storageAccountName;
+
   /// The name of the Storage Container where the Blob exists.
   final pulumi.Input<String> storageContainerName;
 
@@ -39,11 +42,20 @@ class GetBlobArgs {
 
   factory GetBlobArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobArgs(
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      storageContainerName: (map['storageContainerName'] as String).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      storageContainerName: pulumi.Input.fromValue(
+        map['storageContainerName'] as String,
+      ),
     );
   }
 }
-

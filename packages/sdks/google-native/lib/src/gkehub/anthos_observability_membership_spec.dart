@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnthosObservabilityMembershipSpec {
   /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
   final pulumi.Input<bool>? doNotOptimizeMetrics;
+
   /// Enable collecting and reporting metrics and logs from user apps.
   final pulumi.Input<bool>? enableStackdriverOnApplications;
+
   /// the version of stackdriver operator used by this feature
   final pulumi.Input<String>? version;
 
@@ -31,10 +33,21 @@ class AnthosObservabilityMembershipSpec {
 
   factory AnthosObservabilityMembershipSpec.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityMembershipSpec(
-      doNotOptimizeMetrics: map['doNotOptimizeMetrics'] == null ? null : (map['doNotOptimizeMetrics']! as bool).input(),
-      enableStackdriverOnApplications: map['enableStackdriverOnApplications'] == null ? null : (map['enableStackdriverOnApplications']! as bool).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      doNotOptimizeMetrics: (() {
+        final guardedValue = map['doNotOptimizeMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStackdriverOnApplications: (() {
+        final guardedValue = map['enableStackdriverOnApplications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

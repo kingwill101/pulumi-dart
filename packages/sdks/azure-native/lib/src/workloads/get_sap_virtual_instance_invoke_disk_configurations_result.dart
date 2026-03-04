@@ -16,14 +16,31 @@ class GetSapVirtualInstanceInvokeDiskConfigurationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'volumeConfigurations': ?volumeConfigurations == null ? null : pulumi.Input.encodeMapValues<SAPDiskConfigurationResponse, Map<String, dynamic>>(volumeConfigurations!, (value) => value.toMap()),
+      'volumeConfigurations': ?(() {
+        final guardedValue = volumeConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          SAPDiskConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory GetSapVirtualInstanceInvokeDiskConfigurationsResult.fromMap(Map<String, dynamic> map) {
+  factory GetSapVirtualInstanceInvokeDiskConfigurationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSapVirtualInstanceInvokeDiskConfigurationsResult(
-      volumeConfigurations: map['volumeConfigurations'] == null ? null : pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(map['volumeConfigurations']!, (value) => SAPDiskConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      volumeConfigurations: (() {
+        final guardedValue = map['volumeConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(
+          guardedValue,
+          (value) => SAPDiskConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

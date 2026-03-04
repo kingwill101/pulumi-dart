@@ -1,5 +1,3 @@
-library module_iot;
-
 export 'iot/authorizer.dart';
 export 'iot/authorizer_args.dart';
 export 'iot/authorizer_state.dart';

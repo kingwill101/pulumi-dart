@@ -4,29 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AsyncTimeoutRule {
   final pulumi.Input<String>? actionName;
+
   /// This is a TimeSpan property
   final pulumi.Input<String>? timeout;
 
   /// Creates a new [AsyncTimeoutRule].
   /// [actionName] Optional.
   /// [timeout] This is a TimeSpan property
-  AsyncTimeoutRule({
-    this.actionName,
-    this.timeout,
-  });
+  AsyncTimeoutRule({this.actionName, this.timeout});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'actionName': ?actionName,
-      'timeout': ?timeout,
-    };
+    return <String, dynamic>{'actionName': ?actionName, 'timeout': ?timeout};
   }
 
   factory AsyncTimeoutRule.fromMap(Map<String, dynamic> map) {
     return AsyncTimeoutRule(
-      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      actionName: (() {
+        final guardedValue = map['actionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

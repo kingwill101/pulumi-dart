@@ -9,20 +9,21 @@ class ManagedClusterManagedOutboundIPProfile {
 
   /// Creates a new [ManagedClusterManagedOutboundIPProfile].
   /// [count] The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1.
-  ManagedClusterManagedOutboundIPProfile({
-    this.count,
-  });
+  ManagedClusterManagedOutboundIPProfile({this.count});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': ?count,
-    };
+    return <String, dynamic>{'count': ?count};
   }
 
-  factory ManagedClusterManagedOutboundIPProfile.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterManagedOutboundIPProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterManagedOutboundIPProfile(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

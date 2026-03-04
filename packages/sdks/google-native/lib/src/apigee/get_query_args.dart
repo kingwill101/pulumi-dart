@@ -31,10 +31,9 @@ class GetQueryArgs {
 
   factory GetQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      queryId: (map['queryId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      queryId: pulumi.Input.fromValue(map['queryId'] as String),
     );
   }
 }
-

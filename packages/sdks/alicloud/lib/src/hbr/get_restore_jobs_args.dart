@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestoreJobsArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The list of restore job IDs.
   final pulumi.Input<List<String>>? restoreIds;
+
   /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
   final pulumi.Input<String> restoreType;
+
   /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
   final pulumi.Input<List<String>>? sourceTypes;
+
   /// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
   final pulumi.Input<String>? status;
+
   /// The name of target OSS bucket.
   final pulumi.Input<List<String>>? targetBuckets;
+
   /// Valid while source_type equals `NAS`. The list of destination File System IDs.
   final pulumi.Input<List<String>>? targetFileSystemIds;
+
   /// The ID of target ECS instance.
   final pulumi.Input<List<String>>? targetInstanceIds;
+
   /// The list of backup vault IDs.
   final pulumi.Input<List<String>>? vaultIds;
 
@@ -64,16 +72,47 @@ class GetRestoreJobsArgs {
 
   factory GetRestoreJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetRestoreJobsArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      restoreIds: map['restoreIds'] == null ? null : ((map['restoreIds']! as List).cast<String>()).input(),
-      restoreType: (map['restoreType'] as String).input(),
-      sourceTypes: map['sourceTypes'] == null ? null : ((map['sourceTypes']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      targetBuckets: map['targetBuckets'] == null ? null : ((map['targetBuckets']! as List).cast<String>()).input(),
-      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : ((map['targetFileSystemIds']! as List).cast<String>()).input(),
-      targetInstanceIds: map['targetInstanceIds'] == null ? null : ((map['targetInstanceIds']! as List).cast<String>()).input(),
-      vaultIds: map['vaultIds'] == null ? null : ((map['vaultIds']! as List).cast<String>()).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restoreIds: (() {
+        final guardedValue = map['restoreIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      restoreType: pulumi.Input.fromValue(map['restoreType'] as String),
+      sourceTypes: (() {
+        final guardedValue = map['sourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetBuckets: (() {
+        final guardedValue = map['targetBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetFileSystemIds: (() {
+        final guardedValue = map['targetFileSystemIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetInstanceIds: (() {
+        final guardedValue = map['targetInstanceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vaultIds: (() {
+        final guardedValue = map['vaultIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

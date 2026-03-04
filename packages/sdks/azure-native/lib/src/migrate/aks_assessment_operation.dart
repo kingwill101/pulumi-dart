@@ -273,20 +273,28 @@ import 'system_data_response.dart';
 class AksAssessmentOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets AKS Assessment Details.
   late final pulumi.Output<AKSAssessmentDetailsResponse> details;
+
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Gets or sets scope parameters to identify inventory items for assessment.
   late final pulumi.Output<AssessmentScopeParametersResponse?> scope;
+
   /// Gets or sets AKS Assessment Settings.
   late final pulumi.Output<AKSAssessmentSettingsResponse> settings;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -299,19 +307,19 @@ class AksAssessmentOperation extends pulumi.CustomResource {
     AksAssessmentOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:AksAssessmentOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.details = registerOutput<AKSAssessmentDetailsResponse>('details');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:migrate:AksAssessmentOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    details = registerOutput<AKSAssessmentDetailsResponse>('details');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scope = registerOutput<AssessmentScopeParametersResponse?>('scope');
-    this.settings = registerOutput<AKSAssessmentSettingsResponse>('settings');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<AssessmentScopeParametersResponse?>('scope');
+    settings = registerOutput<AKSAssessmentSettingsResponse>('settings');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

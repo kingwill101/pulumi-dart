@@ -1,5 +1,3 @@
-library module_rbin;
-
 export 'rbin/rule.dart';
 export 'rbin/rule_args.dart';
 export 'rbin/rule_exclude_resource_tag.dart';

@@ -3,16 +3,17 @@ enum RegionTargetTcpProxyProxyHeader {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const RegionTargetTcpProxyProxyHeader(this.value);
-  final String value;
+  const RegionTargetTcpProxyProxyHeader(this.wireValue);
+  final String wireValue;
 
   static RegionTargetTcpProxyProxyHeader fromValue(String value) {
     for (final item in RegionTargetTcpProxyProxyHeader.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionTargetTcpProxyProxyHeader value: $value');
+    throw ArgumentError(
+      'Unknown RegionTargetTcpProxyProxyHeader value: $value',
+    );
   }
 }
-

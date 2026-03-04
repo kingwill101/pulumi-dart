@@ -8,40 +8,58 @@ import 'user_info_response.dart';
 class GetBookmarkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The time the bookmark was created
   final String? created;
+
   /// Describes a user that created the bookmark
   final UserInfoResponse? createdBy;
+
   /// The display name of the bookmark
   final String displayName;
+
   /// Etag of the azure resource
   final String? etag;
+
   /// The bookmark event time
   final String? eventTime;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Describes an incident that relates to bookmark
   final IncidentInfoResponse? incidentInfo;
+
   /// List of labels relevant to this bookmark
   final List<String>? labels;
+
   /// The name of the resource
   final String name;
+
   /// The notes of the bookmark
   final String? notes;
+
   /// The query of the bookmark.
   final String query;
+
   /// The end time for the query
   final String? queryEndTime;
+
   /// The query result of the bookmark.
   final String? queryResult;
+
   /// The start time for the query
   final String? queryStartTime;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The last time the bookmark was updated
   final String? updated;
+
   /// Describes a user that updated the bookmark
   final UserInfoResponse? updatedBy;
 
@@ -91,12 +109,12 @@ class GetBookmarkResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'created': ?created,
-      'createdBy': ?createdBy == null ? null : createdBy!.toMap(),
+      'createdBy': ?createdBy?.toMap(),
       'displayName': displayName,
       'etag': ?etag,
       'eventTime': ?eventTime,
       'id': id,
-      'incidentInfo': ?incidentInfo == null ? null : incidentInfo!.toMap(),
+      'incidentInfo': ?incidentInfo?.toMap(),
       'labels': ?labels,
       'name': name,
       'notes': ?notes,
@@ -107,32 +125,87 @@ class GetBookmarkResult {
       'systemData': systemData.toMap(),
       'type': type,
       'updated': ?updated,
-      'updatedBy': ?updatedBy == null ? null : updatedBy!.toMap(),
+      'updatedBy': ?updatedBy?.toMap(),
     };
   }
 
   factory GetBookmarkResult.fromMap(Map<String, dynamic> map) {
     return GetBookmarkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      created: map['created'] == null ? null : map['created']! as String,
-      createdBy: map['createdBy'] == null ? null : UserInfoResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>()),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return UserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
-      eventTime: map['eventTime'] == null ? null : map['eventTime']! as String,
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventTime: (() {
+        final guardedValue = map['eventTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      incidentInfo: map['incidentInfo'] == null ? null : IncidentInfoResponse.fromMap((map['incidentInfo']! as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels']! as List).cast<String>(),
+      incidentInfo: (() {
+        final guardedValue = map['incidentInfo'];
+        if (guardedValue == null) return null;
+        return IncidentInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       name: map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes']! as String,
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       query: map['query'] as String,
-      queryEndTime: map['queryEndTime'] == null ? null : map['queryEndTime']! as String,
-      queryResult: map['queryResult'] == null ? null : map['queryResult']! as String,
-      queryStartTime: map['queryStartTime'] == null ? null : map['queryStartTime']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      queryEndTime: (() {
+        final guardedValue = map['queryEndTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      queryResult: (() {
+        final guardedValue = map['queryResult'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      queryStartTime: (() {
+        final guardedValue = map['queryStartTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      updated: map['updated'] == null ? null : map['updated']! as String,
-      updatedBy: map['updatedBy'] == null ? null : UserInfoResponse.fromMap((map['updatedBy']! as Map).cast<String, dynamic>()),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      updatedBy: (() {
+        final guardedValue = map['updatedBy'];
+        if (guardedValue == null) return null;
+        return UserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

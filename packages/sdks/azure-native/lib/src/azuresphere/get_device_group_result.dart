@@ -6,26 +6,37 @@ import 'system_data_response.dart';
 class GetDeviceGroupResult {
   /// Flag to define if the user allows for crash dump collection.
   final String? allowCrashDumpsCollection;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description of the device group.
   final String? description;
+
   /// Deployment status for the device group.
   final bool hasDeployment;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Operating system feed type of the device group.
   final String? osFeedType;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// Regional data boundary for the device group.
   final String? regionalDataBoundary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Update policy of the device group.
   final String? updatePolicy;
 
@@ -76,19 +87,40 @@ class GetDeviceGroupResult {
 
   factory GetDeviceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupResult(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : map['allowCrashDumpsCollection']! as String,
+      allowCrashDumpsCollection: (() {
+        final guardedValue = map['allowCrashDumpsCollection'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       hasDeployment: map['hasDeployment'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      osFeedType: map['osFeedType'] == null ? null : map['osFeedType']! as String,
+      osFeedType: (() {
+        final guardedValue = map['osFeedType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      regionalDataBoundary: (() {
+        final guardedValue = map['regionalDataBoundary'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      updatePolicy: map['updatePolicy'] == null ? null : map['updatePolicy']! as String,
+      updatePolicy: (() {
+        final guardedValue = map['updatePolicy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

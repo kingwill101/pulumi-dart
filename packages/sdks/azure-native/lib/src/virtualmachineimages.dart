@@ -1,5 +1,3 @@
-library module_virtualmachineimages;
-
 export 'virtualmachineimages/auto_run_state.dart';
 export 'virtualmachineimages/distribute_versioner_latest.dart';
 export 'virtualmachineimages/distribute_versioner_latest_response.dart';

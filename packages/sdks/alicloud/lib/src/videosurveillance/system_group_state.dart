@@ -6,32 +6,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemGroupState {
   /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
   final pulumi.Input<String>? callback;
+
   /// The capture image.
   final pulumi.Input<int>? captureImage;
+
   /// The capture interval.
   final pulumi.Input<int>? captureInterval;
+
   /// The capture oss bucket.
   final pulumi.Input<String>? captureOssBucket;
+
   /// The capture oss path.
   final pulumi.Input<String>? captureOssPath;
+
   /// The capture video.
   final pulumi.Input<int>? captureVideo;
+
   /// The description of Group.
   final pulumi.Input<String>? description;
+
   /// Whether to open Group.
   final pulumi.Input<bool>? enabled;
+
   /// The Group Name.
   final pulumi.Input<String>? groupName;
+
   /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
   final pulumi.Input<String>? inProtocol;
+
   /// Whether to enable on-demand streaming. Default value:`false`.
   final pulumi.Input<bool>? lazyPull;
+
   /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
   final pulumi.Input<String>? outProtocol;
+
   /// The domain name of plan streaming used by the group.
   final pulumi.Input<String>? playDomain;
+
   /// The domain name of push streaming used by the group.
   final pulumi.Input<String>? pushDomain;
+
   /// Whether to open Group. Valid values: `on`,`off`.
   final pulumi.Input<bool>? status;
 
@@ -91,22 +105,81 @@ class SystemGroupState {
 
   factory SystemGroupState.fromMap(Map<String, dynamic> map) {
     return SystemGroupState(
-      callback: map['callback'] == null ? null : (map['callback']! as String).input(),
-      captureImage: map['captureImage'] == null ? null : (map['captureImage']! as int).input(),
-      captureInterval: map['captureInterval'] == null ? null : (map['captureInterval']! as int).input(),
-      captureOssBucket: map['captureOssBucket'] == null ? null : (map['captureOssBucket']! as String).input(),
-      captureOssPath: map['captureOssPath'] == null ? null : (map['captureOssPath']! as String).input(),
-      captureVideo: map['captureVideo'] == null ? null : (map['captureVideo']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      inProtocol: map['inProtocol'] == null ? null : (map['inProtocol']! as String).input(),
-      lazyPull: map['lazyPull'] == null ? null : (map['lazyPull']! as bool).input(),
-      outProtocol: map['outProtocol'] == null ? null : (map['outProtocol']! as String).input(),
-      playDomain: map['playDomain'] == null ? null : (map['playDomain']! as String).input(),
-      pushDomain: map['pushDomain'] == null ? null : (map['pushDomain']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as bool).input(),
+      callback: (() {
+        final guardedValue = map['callback'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      captureImage: (() {
+        final guardedValue = map['captureImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      captureInterval: (() {
+        final guardedValue = map['captureInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      captureOssBucket: (() {
+        final guardedValue = map['captureOssBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      captureOssPath: (() {
+        final guardedValue = map['captureOssPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      captureVideo: (() {
+        final guardedValue = map['captureVideo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inProtocol: (() {
+        final guardedValue = map['inProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lazyPull: (() {
+        final guardedValue = map['lazyPull'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      outProtocol: (() {
+        final guardedValue = map['outProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      playDomain: (() {
+        final guardedValue = map['playDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pushDomain: (() {
+        final guardedValue = map['pushDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

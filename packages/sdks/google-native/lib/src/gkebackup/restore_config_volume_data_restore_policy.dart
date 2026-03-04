@@ -5,16 +5,17 @@ enum RestoreConfigVolumeDataRestorePolicy {
   reuseVolumeHandleFromBackup("REUSE_VOLUME_HANDLE_FROM_BACKUP"),
   noVolumeDataRestoration("NO_VOLUME_DATA_RESTORATION");
 
-  const RestoreConfigVolumeDataRestorePolicy(this.value);
-  final String value;
+  const RestoreConfigVolumeDataRestorePolicy(this.wireValue);
+  final String wireValue;
 
   static RestoreConfigVolumeDataRestorePolicy fromValue(String value) {
     for (final item in RestoreConfigVolumeDataRestorePolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RestoreConfigVolumeDataRestorePolicy value: $value');
+    throw ArgumentError(
+      'Unknown RestoreConfigVolumeDataRestorePolicy value: $value',
+    );
   }
 }
-

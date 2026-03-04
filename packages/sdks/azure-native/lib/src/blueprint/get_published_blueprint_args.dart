@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublishedBlueprintArgs {
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
+
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
+
   /// Version of the published blueprint definition.
   final pulumi.Input<String> versionId;
 
@@ -34,10 +36,9 @@ class GetPublishedBlueprintArgs {
 
   factory GetPublishedBlueprintArgs.fromMap(Map<String, dynamic> map) {
     return GetPublishedBlueprintArgs(
-      blueprintName: (map['blueprintName'] as String).input(),
-      resourceScope: (map['resourceScope'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      blueprintName: pulumi.Input.fromValue(map['blueprintName'] as String),
+      resourceScope: pulumi.Input.fromValue(map['resourceScope'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

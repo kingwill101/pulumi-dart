@@ -6,21 +6,31 @@ import 'v3_function_custom_container_config_health_check_config.dart';
 
 class V3FunctionCustomContainerConfig {
   /// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
-  final pulumi.Input<V3FunctionCustomContainerConfigAccelerationInfo>? accelerationInfo;
+  final pulumi.Input<V3FunctionCustomContainerConfigAccelerationInfo>?
+  accelerationInfo;
+
   /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
   final pulumi.Input<String>? accelerationType;
+
   /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
   final pulumi.Input<String>? acrInstanceId;
+
   /// Container startup parameters.
   final pulumi.Input<List<String>>? commands;
+
   /// Container start command.
   final pulumi.Input<List<String>>? entrypoints;
+
   /// Function custom health check configuration See `health_check_config` below.
-  final pulumi.Input<V3FunctionCustomContainerConfigHealthCheckConfig>? healthCheckConfig;
+  final pulumi.Input<V3FunctionCustomContainerConfigHealthCheckConfig>?
+  healthCheckConfig;
+
   /// The container Image address.
   final pulumi.Input<String>? image;
+
   /// The listening port of the HTTP Server when the custom container runs.
   final pulumi.Input<int>? port;
+
   /// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
   final pulumi.Input<String>? resolvedImageUri;
 
@@ -48,12 +58,20 @@ class V3FunctionCustomContainerConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerationInfo': ?pulumi.Input.mapOptionalInputValue<V3FunctionCustomContainerConfigAccelerationInfo, Map<String, dynamic>>(accelerationInfo, (value) => value.toMap()),
+      'accelerationInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3FunctionCustomContainerConfigAccelerationInfo,
+            Map<String, dynamic>
+          >(accelerationInfo, (value) => value.toMap()),
       'accelerationType': ?accelerationType,
       'acrInstanceId': ?acrInstanceId,
       'commands': ?commands,
       'entrypoints': ?entrypoints,
-      'healthCheckConfig': ?pulumi.Input.mapOptionalInputValue<V3FunctionCustomContainerConfigHealthCheckConfig, Map<String, dynamic>>(healthCheckConfig, (value) => value.toMap()),
+      'healthCheckConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3FunctionCustomContainerConfigHealthCheckConfig,
+            Map<String, dynamic>
+          >(healthCheckConfig, (value) => value.toMap()),
       'image': ?image,
       'port': ?port,
       'resolvedImageUri': ?resolvedImageUri,
@@ -62,16 +80,59 @@ class V3FunctionCustomContainerConfig {
 
   factory V3FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomContainerConfig(
-      accelerationInfo: map['accelerationInfo'] == null ? null : (V3FunctionCustomContainerConfigAccelerationInfo.fromMap((map['accelerationInfo']! as Map).cast<String, dynamic>())).input(),
-      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType']! as String).input(),
-      acrInstanceId: map['acrInstanceId'] == null ? null : (map['acrInstanceId']! as String).input(),
-      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
-      entrypoints: map['entrypoints'] == null ? null : ((map['entrypoints']! as List).cast<String>()).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomContainerConfigHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri']! as String).input(),
+      accelerationInfo: (() {
+        final guardedValue = map['accelerationInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3FunctionCustomContainerConfigAccelerationInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      accelerationType: (() {
+        final guardedValue = map['accelerationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acrInstanceId: (() {
+        final guardedValue = map['acrInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      entrypoints: (() {
+        final guardedValue = map['entrypoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      healthCheckConfig: (() {
+        final guardedValue = map['healthCheckConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3FunctionCustomContainerConfigHealthCheckConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resolvedImageUri: (() {
+        final guardedValue = map['resolvedImageUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketUserDefinedLogFieldsState {
   /// The name of the bucket.
   final pulumi.Input<String>? bucket;
+
   /// Container for custom request header configuration information.
   final pulumi.Input<List<String>>? headerSets;
+
   /// Container for custom request parameters configuration information.
   final pulumi.Input<List<String>>? paramSets;
 
@@ -31,10 +33,21 @@ class BucketUserDefinedLogFieldsState {
 
   factory BucketUserDefinedLogFieldsState.fromMap(Map<String, dynamic> map) {
     return BucketUserDefinedLogFieldsState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      headerSets: map['headerSets'] == null ? null : ((map['headerSets']! as List).cast<String>()).input(),
-      paramSets: map['paramSets'] == null ? null : ((map['paramSets']! as List).cast<String>()).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerSets: (() {
+        final guardedValue = map['headerSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      paramSets: (() {
+        final guardedValue = map['paramSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

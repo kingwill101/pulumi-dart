@@ -7,8 +7,10 @@ import 'version_response.dart';
 class LocationResponse {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   final pulumi.Input<String> cpeUri;
+
   /// The path from which we gathered that this package/version is installed.
   final pulumi.Input<String> path;
+
   /// Deprecated. The version installed at this location.
   final pulumi.Input<VersionResponse> version;
 
@@ -26,16 +28,23 @@ class LocationResponse {
     return <String, dynamic>{
       'cpeUri': cpeUri,
       'path': path,
-      'version': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
+      'version':
+          pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(
+            version,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory LocationResponse.fromMap(Map<String, dynamic> map) {
     return LocationResponse(
-      cpeUri: (map['cpeUri'] as String).input(),
-      path: (map['path'] as String).input(),
-      version: (VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      version: pulumi.Input.fromValue(
+        VersionResponse.fromMap(
+          (map['version']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

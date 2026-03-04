@@ -10,20 +10,33 @@ class ListClusterZonesResult {
 
   /// Creates a new [ListClusterZonesResult].
   /// [zones] Zone and associated hosts info
-  ListClusterZonesResult({
-    this.zones,
-  });
+  ListClusterZonesResult({this.zones});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'zones': ?zones == null ? null : pulumi.Input.encodeList<ClusterZoneResponse, Map<String, dynamic>>(zones!, (value) => value.toMap()),
+      'zones': ?(() {
+        final guardedValue = zones;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ClusterZoneResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListClusterZonesResult.fromMap(Map<String, dynamic> map) {
     return ListClusterZonesResult(
-      zones: map['zones'] == null ? null : pulumi.Input.decodeList<ClusterZoneResponse>(map['zones']!, (value) => ClusterZoneResponse.fromMap((value as Map).cast<String, dynamic>())),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ClusterZoneResponse>(
+          guardedValue,
+          (value) => ClusterZoneResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

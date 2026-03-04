@@ -10,14 +10,19 @@ import 'firewall_nat_rule_collection_rule.dart';
 class FirewallNatRuleCollectionArgs {
   /// Specifies the action the rule will apply to matching traffic. Possible values are `Dnat` and `Snat`.
   final pulumi.Input<String> action;
+
   /// Specifies the name of the Firewall in which the NAT Rule Collection should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> azureFirewallName;
+
   /// Specifies the name of the NAT Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
   final pulumi.Input<int> priority;
+
   /// Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// One or more `rule` blocks as defined below.
   final pulumi.Input<List<FirewallNatRuleCollectionRule>> rules;
 
@@ -44,19 +49,44 @@ class FirewallNatRuleCollectionArgs {
       'name': ?name,
       'priority': priority,
       'resourceGroupName': resourceGroupName,
-      'rules': pulumi.Input.mapInputValue<List<FirewallNatRuleCollectionRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallNatRuleCollectionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<FirewallNatRuleCollectionRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallNatRuleCollectionRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory FirewallNatRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return FirewallNatRuleCollectionArgs(
-      action: (map['action'] as String).input(),
-      azureFirewallName: (map['azureFirewallName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: (map['priority'] as int).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rules: (pulumi.Input.decodeList<FirewallNatRuleCollectionRule>(map['rules'], (value) => FirewallNatRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      azureFirewallName: pulumi.Input.fromValue(
+        map['azureFirewallName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<FirewallNatRuleCollectionRule>(
+          map['rules']!,
+          (value) => FirewallNatRuleCollectionRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

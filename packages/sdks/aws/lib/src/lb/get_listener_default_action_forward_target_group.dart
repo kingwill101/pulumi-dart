@@ -16,17 +16,15 @@ class GetListenerDefaultActionForwardTargetGroup {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'weight': weight,
-    };
+    return <String, dynamic>{'arn': arn, 'weight': weight};
   }
 
-  factory GetListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionForwardTargetGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionForwardTargetGroup(
-      arn: (map['arn'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

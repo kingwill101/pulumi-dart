@@ -9,20 +9,21 @@ class FirewallPolicyNatRuleCollectionActionResponse {
 
   /// Creates a new [FirewallPolicyNatRuleCollectionActionResponse].
   /// [type] The type of action.
-  FirewallPolicyNatRuleCollectionActionResponse({
-    this.type,
-  });
+  FirewallPolicyNatRuleCollectionActionResponse({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory FirewallPolicyNatRuleCollectionActionResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyNatRuleCollectionActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyNatRuleCollectionActionResponse(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

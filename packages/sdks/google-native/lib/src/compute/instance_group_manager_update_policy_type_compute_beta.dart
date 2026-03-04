@@ -3,16 +3,19 @@ enum InstanceGroupManagerUpdatePolicyTypeComputeBeta {
   opportunistic("OPPORTUNISTIC"),
   proactive("PROACTIVE");
 
-  const InstanceGroupManagerUpdatePolicyTypeComputeBeta(this.value);
-  final String value;
+  const InstanceGroupManagerUpdatePolicyTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyTypeComputeBeta fromValue(String value) {
+  static InstanceGroupManagerUpdatePolicyTypeComputeBeta fromValue(
+    String value,
+  ) {
     for (final item in InstanceGroupManagerUpdatePolicyTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyTypeComputeBeta value: $value',
+    );
   }
 }
-

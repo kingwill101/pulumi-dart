@@ -1,5 +1,3 @@
-library module_servicenetworking;
-
 export 'servicenetworking/association_subnet.dart';
 export 'servicenetworking/association_subnet_response.dart';
 export 'servicenetworking/association_type.dart';

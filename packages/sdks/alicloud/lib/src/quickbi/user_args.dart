@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArgs {
   /// Alibaba Cloud account ID.
   final pulumi.Input<String>? accountId;
+
   /// An Alibaba Cloud account, Alibaba Cloud name.
   final pulumi.Input<String> accountName;
+
   /// Whether it is the administrator. Valid values: `true` and `false`.
   final pulumi.Input<bool> adminUser;
+
   /// Whether this is a permissions administrator. Valid values: `false`, `true`.
   final pulumi.Input<bool> authAdminUser;
+
   /// The nickname of the user.
   final pulumi.Input<String> nickName;
+
   /// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   final pulumi.Input<String> userType;
 
@@ -49,13 +54,16 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      adminUser: (map['adminUser'] as bool).input(),
-      authAdminUser: (map['authAdminUser'] as bool).input(),
-      nickName: (map['nickName'] as String).input(),
-      userType: (map['userType'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      adminUser: pulumi.Input.fromValue(map['adminUser'] as bool),
+      authAdminUser: pulumi.Input.fromValue(map['authAdminUser'] as bool),
+      nickName: pulumi.Input.fromValue(map['nickName'] as String),
+      userType: pulumi.Input.fromValue(map['userType'] as String),
     );
   }
 }
-

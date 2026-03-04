@@ -254,7 +254,7 @@ import 'container_immutability_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -269,14 +269,18 @@ import 'container_immutability_policy_state.dart';
 class ContainerImmutabilityPolicy extends pulumi.CustomResource {
   /// The time interval in days that the data needs to be kept in a non-erasable and non-modifiable state.
   late final pulumi.Output<int> immutabilityPeriodInDays;
+
   /// Whether to lock this immutability policy. Cannot be set to `false` once the policy has been locked.
   ///
-  /// !> **Note:** Once an Immutability Policy has been locked, it cannot be unlocked. After locking, it will only be possible to increase the value for `retention_period_in_days` up to 5 times for the lifetime of the policy. No other properties will be updateable. Furthermore, the Storage Container and the Storage Account in which it resides will become protected by the policy. It will no longer be possible to delete the Storage Container or the Storage Account. Please refer to [official documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-container-scope?tabs=azure-portal#lock-a-time-based-retention-policy) for more information.
+  /// !&gt; **Note:** Once an Immutability Policy has been locked, it cannot be unlocked. After locking, it will only be possible to increase the value for `retention_period_in_days` up to 5 times for the lifetime of the policy. No other properties will be updateable. Furthermore, the Storage Container and the Storage Account in which it resides will become protected by the policy. It will no longer be possible to delete the Storage Container or the Storage Account. Please refer to [official documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-container-scope?tabs=azure-portal#lock-a-time-based-retention-policy) for more information.
   late final pulumi.Output<bool?> locked;
+
   /// Whether to allow protected append writes to block and append blobs to the container. Defaults to `false`. Cannot be set with `protected_append_writes_enabled`.
   late final pulumi.Output<bool?> protectedAppendWritesAllEnabled;
+
   /// Whether to allow protected append writes to append blobs to the container. Defaults to `false`. Cannot be set with `protected_append_writes_all_enabled`.
   late final pulumi.Output<bool?> protectedAppendWritesEnabled;
+
   /// The Resource Manager ID of the Storage Container where this Immutability Policy should be applied. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageContainerResourceManagerId;
 
@@ -289,16 +293,22 @@ class ContainerImmutabilityPolicy extends pulumi.CustomResource {
     ContainerImmutabilityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
-    this.locked = registerOutput<bool?>('locked');
-    this.protectedAppendWritesAllEnabled = registerOutput<bool?>('protectedAppendWritesAllEnabled');
-    this.protectedAppendWritesEnabled = registerOutput<bool?>('protectedAppendWritesEnabled');
-    this.storageContainerResourceManagerId = registerOutput<String>('storageContainerResourceManagerId');
+         'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
+    locked = registerOutput<bool?>('locked');
+    protectedAppendWritesAllEnabled = registerOutput<bool?>(
+      'protectedAppendWritesAllEnabled',
+    );
+    protectedAppendWritesEnabled = registerOutput<bool?>(
+      'protectedAppendWritesEnabled',
+    );
+    storageContainerResourceManagerId = registerOutput<String>(
+      'storageContainerResourceManagerId',
+    );
   }
 
   /// Gets an existing [ContainerImmutabilityPolicy] resource's state with the given [name] and [id].
@@ -319,15 +329,21 @@ class ContainerImmutabilityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
-    this.locked = registerOutput<bool?>('locked');
-    this.protectedAppendWritesAllEnabled = registerOutput<bool?>('protectedAppendWritesAllEnabled');
-    this.protectedAppendWritesEnabled = registerOutput<bool?>('protectedAppendWritesEnabled');
-    this.storageContainerResourceManagerId = registerOutput<String>('storageContainerResourceManagerId');
+         'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
+    locked = registerOutput<bool?>('locked');
+    protectedAppendWritesAllEnabled = registerOutput<bool?>(
+      'protectedAppendWritesAllEnabled',
+    );
+    protectedAppendWritesEnabled = registerOutput<bool?>(
+      'protectedAppendWritesEnabled',
+    );
+    storageContainerResourceManagerId = registerOutput<String>(
+      'storageContainerResourceManagerId',
+    );
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceDiscoveredAssetArgs {
   /// The name of the discovered asset.
   final pulumi.Input<String> discoveredAssetName;
+
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetNamespaceDiscoveredAssetArgs {
 
   factory GetNamespaceDiscoveredAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDiscoveredAssetArgs(
-      discoveredAssetName: (map['discoveredAssetName'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      discoveredAssetName: pulumi.Input.fromValue(
+        map['discoveredAssetName'] as String,
+      ),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

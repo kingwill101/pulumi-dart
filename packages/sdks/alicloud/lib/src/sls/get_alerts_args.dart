@@ -7,17 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sls_get_alerts_get_alerts_args_doc}
 class GetAlertsArgs {
-  /// A list of Alert IDs. The value is formulated as `<project_name>:<alert_name>`.
+  /// A list of Alert IDs. The value is formulated as `&lt;project_name&gt;:&lt;alert_name&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Project Name
   final pulumi.Input<String> projectName;
 
   /// Creates a new [GetAlertsArgs].
-  /// [ids] A list of Alert IDs. The value is formulated as `<project_name>:<alert_name>`.
+  /// [ids] A list of Alert IDs. The value is formulated as `&lt;project_name&gt;:&lt;alert_name&gt;`.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project Name
@@ -39,11 +42,22 @@ class GetAlertsArgs {
 
   factory GetAlertsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketPolicyState {
   /// The name of the bucket to which to apply the policy.
   final pulumi.Input<String>? bucket;
+
   /// The text of the policy.
   final pulumi.Input<String>? policy;
+
   /// The region where the bucket resides.
   final pulumi.Input<String>? region;
 
@@ -15,11 +17,7 @@ class SpacesBucketPolicyState {
   /// [bucket] The name of the bucket to which to apply the policy.
   /// [policy] The text of the policy.
   /// [region] The region where the bucket resides.
-  SpacesBucketPolicyState({
-    this.bucket,
-    this.policy,
-    this.region,
-  });
+  SpacesBucketPolicyState({this.bucket, this.policy, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SpacesBucketPolicyState {
 
   factory SpacesBucketPolicyState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

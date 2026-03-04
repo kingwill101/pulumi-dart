@@ -39,12 +39,21 @@ class GetVmwareNodePoolArgs {
 
   factory GetVmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareNodePoolArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
-      vmwareClusterId: (map['vmwareClusterId'] as String).input(),
-      vmwareNodePoolId: (map['vmwareNodePoolId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareClusterId: pulumi.Input.fromValue(map['vmwareClusterId'] as String),
+      vmwareNodePoolId: pulumi.Input.fromValue(
+        map['vmwareNodePoolId'] as String,
+      ),
     );
   }
 }
-

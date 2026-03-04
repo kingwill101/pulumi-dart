@@ -10,20 +10,21 @@ class AutomaticResolutionPropertiesResponse {
 
   /// Creates a new [AutomaticResolutionPropertiesResponse].
   /// [moveResourceId] Gets the MoveResource ARM ID of
-  AutomaticResolutionPropertiesResponse({
-    this.moveResourceId,
-  });
+  AutomaticResolutionPropertiesResponse({this.moveResourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'moveResourceId': ?moveResourceId,
-    };
+    return <String, dynamic>{'moveResourceId': ?moveResourceId};
   }
 
-  factory AutomaticResolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AutomaticResolutionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomaticResolutionPropertiesResponse(
-      moveResourceId: map['moveResourceId'] == null ? null : (map['moveResourceId']! as String).input(),
+      moveResourceId: (() {
+        final guardedValue = map['moveResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,12 +7,16 @@ import 'apt_repository_archive_type.dart';
 class AptRepository {
   /// Type of archive files in this repository. The default behavior is DEB.
   final pulumi.Input<AptRepositoryArchiveType>? archiveType;
+
   /// List of components for this repository. Must contain at least one item.
   final pulumi.Input<List<String>> components;
+
   /// Distribution of this repository.
   final pulumi.Input<String> distribution;
+
   /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
   final pulumi.Input<String>? gpgKey;
+
   /// URI for this repository.
   final pulumi.Input<String> uri;
 
@@ -32,7 +36,11 @@ class AptRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveType': ?pulumi.Input.mapOptionalInputValue<AptRepositoryArchiveType, String>(archiveType, (value) => value.value),
+      'archiveType':
+          ?pulumi.Input.mapOptionalInputValue<AptRepositoryArchiveType, String>(
+            archiveType,
+            (value) => value.wireValue,
+          ),
       'components': components,
       'distribution': distribution,
       'gpgKey': ?gpgKey,
@@ -42,12 +50,23 @@ class AptRepository {
 
   factory AptRepository.fromMap(Map<String, dynamic> map) {
     return AptRepository(
-      archiveType: map['archiveType'] == null ? null : (AptRepositoryArchiveType.fromValue(map['archiveType']! as String)).input(),
-      components: ((map['components'] as List).cast<String>()).input(),
-      distribution: (map['distribution'] as String).input(),
-      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey']! as String).input(),
-      uri: (map['uri'] as String).input(),
+      archiveType: (() {
+        final guardedValue = map['archiveType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AptRepositoryArchiveType.fromValue(guardedValue as String),
+        );
+      })(),
+      components: pulumi.Input.fromValue(
+        (map['components'] as List).cast<String>(),
+      ),
+      distribution: pulumi.Input.fromValue(map['distribution'] as String),
+      gpgKey: (() {
+        final guardedValue = map['gpgKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

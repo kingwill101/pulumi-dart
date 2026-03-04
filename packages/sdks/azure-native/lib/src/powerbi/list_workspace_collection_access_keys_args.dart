@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceCollectionAccessKeysArgs {
   /// Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Power BI Embedded Workspace Collection name
   final pulumi.Input<String> workspaceCollectionName;
 
@@ -27,11 +28,16 @@ class ListWorkspaceCollectionAccessKeysArgs {
     };
   }
 
-  factory ListWorkspaceCollectionAccessKeysArgs.fromMap(Map<String, dynamic> map) {
+  factory ListWorkspaceCollectionAccessKeysArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWorkspaceCollectionAccessKeysArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceCollectionName: (map['workspaceCollectionName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceCollectionName: pulumi.Input.fromValue(
+        map['workspaceCollectionName'] as String,
+      ),
     );
   }
 }
-

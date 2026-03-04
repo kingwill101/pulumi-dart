@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationAzureActiveDirectoryAuthentication {
   /// The Audience which should be used for authentication.
   final pulumi.Input<String> audience;
+
   /// The Issuer which should be used for authentication.
   final pulumi.Input<String> issuer;
+
   /// The Tenant which should be used for authentication.
   final pulumi.Input<String> tenant;
 
@@ -28,12 +30,13 @@ class VpnServerConfigurationAzureActiveDirectoryAuthentication {
     };
   }
 
-  factory VpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap(Map<String, dynamic> map) {
+  factory VpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnServerConfigurationAzureActiveDirectoryAuthentication(
-      audience: (map['audience'] as String).input(),
-      issuer: (map['issuer'] as String).input(),
-      tenant: (map['tenant'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      tenant: pulumi.Input.fromValue(map['tenant'] as String),
     );
   }
 }
-

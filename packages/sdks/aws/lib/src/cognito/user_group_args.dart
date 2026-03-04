@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupArgs {
   /// The description of the user group.
   final pulumi.Input<String>? description;
+
   /// The name of the user group.
   final pulumi.Input<String>? name;
+
   /// The precedence of the user group.
   final pulumi.Input<int>? precedence;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the IAM role to be associated with the user group.
   final pulumi.Input<String>? roleArn;
+
   /// The user pool ID.
   final pulumi.Input<String> userPoolId;
 
@@ -49,13 +54,32 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      precedence: map['precedence'] == null ? null : ((map['precedence'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      precedence: (() {
+        final guardedValue = map['precedence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

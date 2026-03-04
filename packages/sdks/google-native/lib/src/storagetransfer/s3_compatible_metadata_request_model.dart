@@ -4,16 +4,17 @@ enum S3CompatibleMetadataRequestModel {
   requestModelVirtualHostedStyle("REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"),
   requestModelPathStyle("REQUEST_MODEL_PATH_STYLE");
 
-  const S3CompatibleMetadataRequestModel(this.value);
-  final String value;
+  const S3CompatibleMetadataRequestModel(this.wireValue);
+  final String wireValue;
 
   static S3CompatibleMetadataRequestModel fromValue(String value) {
     for (final item in S3CompatibleMetadataRequestModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown S3CompatibleMetadataRequestModel value: $value');
+    throw ArgumentError(
+      'Unknown S3CompatibleMetadataRequestModel value: $value',
+    );
   }
 }
-

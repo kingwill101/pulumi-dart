@@ -11,6 +11,7 @@ class DatabaseArgs {
   /// database. The default is `true`, allowing connections (except as restricted by
   /// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
   final pulumi.Input<bool>? allowConnections;
+
   /// If `true`, the change of the database
   /// `owner` will also include a reassignment of the ownership of preexisting
   /// objects like tables or sequences from the previous owner to the new one.
@@ -19,33 +20,42 @@ class DatabaseArgs {
   /// the database, you must be a direct or indirect member of the specified role, or
   /// the username in the provider must be superuser.
   final pulumi.Input<bool>? alterObjectOwnership;
+
   /// How many concurrent connections can be
   /// established to this database. `-1` (the default) means no limit.
   final pulumi.Input<int>? connectionLimit;
+
   /// Character set encoding to use in the new database
   final pulumi.Input<String>? encoding;
+
   /// If `true`, then this database can be cloned by any
   /// user with `CREATEDB` privileges; if `false` (the default), then only
   /// superusers or the owner of the database can clone it.
   final pulumi.Input<bool>? isTemplate;
+
   /// Collation order (LC_COLLATE) to use in the new database
   final pulumi.Input<String>? lcCollate;
+
   /// Character classification (LC_CTYPE) to use in the new database
   final pulumi.Input<String>? lcCtype;
+
   /// The name of the database. Must be unique on the PostgreSQL
   /// server instance where it is configured.
   final pulumi.Input<String>? name;
+
   /// The role name of the user who will own the database, or
   /// `DEFAULT` to use the default (namely, the user executing the command). To
   /// create a database owned by another role or to change the owner of an existing
   /// database, you must be a direct or indirect member of the specified role, or
   /// the username in the provider is a superuser.
   final pulumi.Input<String>? owner;
+
   /// The name of the tablespace that will be
   /// associated with the database, or `DEFAULT` to use the template database's
   /// tablespace.  This tablespace will be the default tablespace used for objects
   /// created in this database.
   final pulumi.Input<String>? tablespaceName;
+
   /// The name of the template from which to create the new database
   final pulumi.Input<String>? template;
 
@@ -93,18 +103,61 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      allowConnections: map['allowConnections'] == null ? null : (map['allowConnections']! as bool).input(),
-      alterObjectOwnership: map['alterObjectOwnership'] == null ? null : (map['alterObjectOwnership']! as bool).input(),
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      isTemplate: map['isTemplate'] == null ? null : (map['isTemplate']! as bool).input(),
-      lcCollate: map['lcCollate'] == null ? null : (map['lcCollate']! as String).input(),
-      lcCtype: map['lcCtype'] == null ? null : (map['lcCtype']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      tablespaceName: map['tablespaceName'] == null ? null : (map['tablespaceName']! as String).input(),
-      template: map['template'] == null ? null : (map['template']! as String).input(),
+      allowConnections: (() {
+        final guardedValue = map['allowConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      alterObjectOwnership: (() {
+        final guardedValue = map['alterObjectOwnership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      connectionLimit: (() {
+        final guardedValue = map['connectionLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isTemplate: (() {
+        final guardedValue = map['isTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lcCollate: (() {
+        final guardedValue = map['lcCollate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lcCtype: (() {
+        final guardedValue = map['lcCtype'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tablespaceName: (() {
+        final guardedValue = map['tablespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

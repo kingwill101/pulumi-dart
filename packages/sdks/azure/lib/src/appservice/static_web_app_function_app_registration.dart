@@ -4,7 +4,7 @@ import 'static_web_app_function_app_registration_state.dart';
 
 /// Manages an App Service Static Web App Function App Registration.
 ///
-/// > **Note:** This resource registers the specified Function App to the `Production` build of the Static Web App.
+/// &gt; **Note:** This resource registers the specified Function App to the `Production` build of the Static Web App.
 ///
 /// ## Example Usage
 ///
@@ -345,7 +345,7 @@ import 'static_web_app_function_app_registration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01, 2023-01-01
@@ -360,10 +360,11 @@ import 'static_web_app_function_app_registration_state.dart';
 class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
   /// The ID of a Linux or Windows Function App to connect to the Static Web App as a Backend. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one Function App can be connected to a Static Web App. Multiple Function Apps are not currently supported.
+  /// &gt; **Note:** Only one Function App can be connected to a Static Web App. Multiple Function Apps are not currently supported.
   ///
-  /// > **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
+  /// &gt; **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
   late final pulumi.Output<String> functionAppId;
+
   /// The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
   late final pulumi.Output<String> staticWebAppId;
 
@@ -376,13 +377,13 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
     StaticWebAppFunctionAppRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionAppId = registerOutput<String>('functionAppId');
-    this.staticWebAppId = registerOutput<String>('staticWebAppId');
+         'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionAppId = registerOutput<String>('functionAppId');
+    staticWebAppId = registerOutput<String>('staticWebAppId');
   }
 
   /// Gets an existing [StaticWebAppFunctionAppRegistration] resource's state with the given [name] and [id].
@@ -403,12 +404,12 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionAppId = registerOutput<String>('functionAppId');
-    this.staticWebAppId = registerOutput<String>('staticWebAppId');
+         'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionAppId = registerOutput<String>('functionAppId');
+    staticWebAppId = registerOutput<String>('staticWebAppId');
   }
 }

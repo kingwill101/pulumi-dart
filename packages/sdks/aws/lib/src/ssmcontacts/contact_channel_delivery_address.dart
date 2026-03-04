@@ -8,20 +8,15 @@ class ContactChannelDeliveryAddress {
 
   /// Creates a new [ContactChannelDeliveryAddress].
   /// [simpleAddress] Details to engage this contact channel. The expected format depends on the contact channel type and is described in the [`ContactChannelAddress` section of the SSM Contacts API Reference](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_SSMContacts_ContactChannelAddress.html).
-  ContactChannelDeliveryAddress({
-    required this.simpleAddress,
-  });
+  ContactChannelDeliveryAddress({required this.simpleAddress});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'simpleAddress': simpleAddress,
-    };
+    return <String, dynamic>{'simpleAddress': simpleAddress};
   }
 
   factory ContactChannelDeliveryAddress.fromMap(Map<String, dynamic> map) {
     return ContactChannelDeliveryAddress(
-      simpleAddress: (map['simpleAddress'] as String).input(),
+      simpleAddress: pulumi.Input.fromValue(map['simpleAddress'] as String),
     );
   }
 }
-

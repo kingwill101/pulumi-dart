@@ -10,20 +10,29 @@ class IstioCertificateAuthority {
 
   /// Creates a new [IstioCertificateAuthority].
   /// [plugin] Plugin certificates information for Service Mesh.
-  IstioCertificateAuthority({
-    this.plugin,
-  });
+  IstioCertificateAuthority({this.plugin});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'plugin': ?pulumi.Input.mapOptionalInputValue<IstioPluginCertificateAuthority, Map<String, dynamic>>(plugin, (value) => value.toMap()),
+      'plugin':
+          ?pulumi.Input.mapOptionalInputValue<
+            IstioPluginCertificateAuthority,
+            Map<String, dynamic>
+          >(plugin, (value) => value.toMap()),
     };
   }
 
   factory IstioCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return IstioCertificateAuthority(
-      plugin: map['plugin'] == null ? null : (IstioPluginCertificateAuthority.fromMap((map['plugin']! as Map).cast<String, dynamic>())).input(),
+      plugin: (() {
+        final guardedValue = map['plugin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IstioPluginCertificateAuthority.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

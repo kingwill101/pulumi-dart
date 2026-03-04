@@ -4,13 +4,13 @@ import 'image_export_state.dart';
 
 /// Export a custom image to the OSS bucket in the same region as the custom image.
 ///
-/// > **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.
+/// &gt; **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.
 ///
-/// > **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.
+/// &gt; **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.
 ///
-/// > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
+/// &gt; **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
 ///
-/// > **NOTE:** Available since v1.68.0.
+/// &gt; **NOTE:** Available since v1.68.0.
 ///
 /// ## Example Usage
 ///
@@ -489,8 +489,10 @@ import 'image_export_state.dart';
 class ImageExport extends pulumi.CustomResource {
   /// The source image ID.
   late final pulumi.Output<String> imageId;
+
   /// Save the exported OSS bucket.
   late final pulumi.Output<String> ossBucket;
+
   /// The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
   late final pulumi.Output<String?> ossPrefix;
 
@@ -503,14 +505,14 @@ class ImageExport extends pulumi.CustomResource {
     ImageExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageExport:ImageExport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.imageId = registerOutput<String>('imageId');
-    this.ossBucket = registerOutput<String>('ossBucket');
-    this.ossPrefix = registerOutput<String?>('ossPrefix');
+         'alicloud:ecs/imageExport:ImageExport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    imageId = registerOutput<String>('imageId');
+    ossBucket = registerOutput<String>('ossBucket');
+    ossPrefix = registerOutput<String?>('ossPrefix');
   }
 
   /// Gets an existing [ImageExport] resource's state with the given [name] and [id].
@@ -531,13 +533,13 @@ class ImageExport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/imageExport:ImageExport',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.imageId = registerOutput<String>('imageId');
-    this.ossBucket = registerOutput<String>('ossBucket');
-    this.ossPrefix = registerOutput<String?>('ossPrefix');
+         'alicloud:ecs/imageExport:ImageExport',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    imageId = registerOutput<String>('imageId');
+    ossBucket = registerOutput<String>('ossBucket');
+    ossPrefix = registerOutput<String?>('ossPrefix');
   }
 }

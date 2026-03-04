@@ -7,7 +7,8 @@ import 'google_cloud_identitytoolkit_admin_v2_code_flow_config_response.dart';
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse {
   /// A list of Bundle ID's usable by this project
   final pulumi.Input<List<String>> bundleIds;
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse> codeFlowConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse>
+  codeFlowConfig;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse].
   /// [bundleIds] A list of Bundle ID's usable by this project
@@ -20,15 +21,26 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bundleIds': bundleIds,
-      'codeFlowConfig': pulumi.Input.mapInputValue<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse, Map<String, dynamic>>(codeFlowConfig, (value) => value.toMap()),
+      'codeFlowConfig':
+          pulumi.Input.mapInputValue<
+            GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse,
+            Map<String, dynamic>
+          >(codeFlowConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse(
-      bundleIds: ((map['bundleIds'] as List).cast<String>()).input(),
-      codeFlowConfig: (GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap((map['codeFlowConfig'] as Map).cast<String, dynamic>())).input(),
+      bundleIds: pulumi.Input.fromValue(
+        (map['bundleIds'] as List).cast<String>(),
+      ),
+      codeFlowConfig: pulumi.Input.fromValue(
+        GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap(
+          (map['codeFlowConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

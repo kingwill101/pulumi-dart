@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserManagedOpenAIProfile {
   /// Embedding Model Deployment Name
   final pulumi.Input<String> embeddingModelDeploymentName;
+
   /// GPT Model Deployment Name
   final pulumi.Input<String> gptModelDeploymentName;
+
   /// Resource Id of OpenAI Resource
   final pulumi.Input<String> id;
 
@@ -31,10 +33,13 @@ class UserManagedOpenAIProfile {
 
   factory UserManagedOpenAIProfile.fromMap(Map<String, dynamic> map) {
     return UserManagedOpenAIProfile(
-      embeddingModelDeploymentName: (map['embeddingModelDeploymentName'] as String).input(),
-      gptModelDeploymentName: (map['gptModelDeploymentName'] as String).input(),
-      id: (map['id'] as String).input(),
+      embeddingModelDeploymentName: pulumi.Input.fromValue(
+        map['embeddingModelDeploymentName'] as String,
+      ),
+      gptModelDeploymentName: pulumi.Input.fromValue(
+        map['gptModelDeploymentName'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

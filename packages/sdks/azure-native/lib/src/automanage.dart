@@ -1,5 +1,3 @@
-library module_automanage;
-
 export 'automanage/configuration_profile.dart';
 export 'automanage/configuration_profile_args.dart';
 export 'automanage/configuration_profile_assignment.dart';

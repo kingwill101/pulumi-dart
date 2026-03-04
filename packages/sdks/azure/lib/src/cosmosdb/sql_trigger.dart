@@ -258,12 +258,16 @@ import 'sql_trigger_state.dart';
 class SqlTrigger extends pulumi.CustomResource {
   /// Body of the Trigger.
   late final pulumi.Output<String> body;
+
   /// The id of the Cosmos DB SQL Container to create the SQL Trigger within. Changing this forces a new SQL Trigger to be created.
   late final pulumi.Output<String> containerId;
+
   /// The name which should be used for this SQL Trigger. Changing this forces a new SQL Trigger to be created.
   late final pulumi.Output<String> name;
+
   /// The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   late final pulumi.Output<String> operation;
+
   /// Type of the Trigger. Possible values are `Pre` and `Post`.
   late final pulumi.Output<String> type;
 
@@ -276,16 +280,16 @@ class SqlTrigger extends pulumi.CustomResource {
     SqlTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/sqlTrigger:SqlTrigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.containerId = registerOutput<String>('containerId');
+         'azure:cosmosdb/sqlTrigger:SqlTrigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');
-    this.operation = registerOutput<String>('operation');
-    this.type = registerOutput<String>('type');
+    operation = registerOutput<String>('operation');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [SqlTrigger] resource's state with the given [name] and [id].
@@ -306,15 +310,15 @@ class SqlTrigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/sqlTrigger:SqlTrigger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.containerId = registerOutput<String>('containerId');
+         'azure:cosmosdb/sqlTrigger:SqlTrigger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');
-    this.operation = registerOutput<String>('operation');
-    this.type = registerOutput<String>('type');
+    operation = registerOutput<String>('operation');
+    type = registerOutput<String>('type');
   }
 }

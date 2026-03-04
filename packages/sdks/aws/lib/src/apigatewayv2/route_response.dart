@@ -125,14 +125,19 @@ import 'route_response_state.dart';
 class RouteResponse extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
+
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
   late final pulumi.Output<String?> modelSelectionExpression;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Response models for the route response.
   late final pulumi.Output<Map<String, String>?> responseModels;
+
   /// Identifier of the `aws.apigatewayv2.Route`.
   late final pulumi.Output<String> routeId;
+
   /// Route response key.
   late final pulumi.Output<String> routeResponseKey;
 
@@ -145,17 +150,19 @@ class RouteResponse extends pulumi.CustomResource {
     RouteResponseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/routeResponse:RouteResponse',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
-    this.region = registerOutput<String>('region');
-    this.responseModels = registerOutput<Map<String, String>?>('responseModels');
-    this.routeId = registerOutput<String>('routeId');
-    this.routeResponseKey = registerOutput<String>('routeResponseKey');
+         'aws:apigatewayv2/routeResponse:RouteResponse',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    modelSelectionExpression = registerOutput<String?>(
+      'modelSelectionExpression',
+    );
+    region = registerOutput<String>('region');
+    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    routeId = registerOutput<String>('routeId');
+    routeResponseKey = registerOutput<String>('routeResponseKey');
   }
 
   /// Gets an existing [RouteResponse] resource's state with the given [name] and [id].
@@ -176,16 +183,18 @@ class RouteResponse extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/routeResponse:RouteResponse',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
-    this.region = registerOutput<String>('region');
-    this.responseModels = registerOutput<Map<String, String>?>('responseModels');
-    this.routeId = registerOutput<String>('routeId');
-    this.routeResponseKey = registerOutput<String>('routeResponseKey');
+         'aws:apigatewayv2/routeResponse:RouteResponse',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    modelSelectionExpression = registerOutput<String?>(
+      'modelSelectionExpression',
+    );
+    region = registerOutput<String>('region');
+    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    routeId = registerOutput<String>('routeId');
+    routeResponseKey = registerOutput<String>('routeResponseKey');
   }
 }

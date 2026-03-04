@@ -376,7 +376,7 @@ import 'application_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Solutions` - 2021-07-01
@@ -391,22 +391,31 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// The application definition ID to deploy.
   late final pulumi.Output<String?> applicationDefinitionId;
+
   /// The kind of the managed application to deploy. Possible values are `MarketPlace` and `ServiceCatalog`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedResourceGroupName;
+
   /// Specifies the name of the Managed Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name and value pairs that define the managed application outputs.
   late final pulumi.Output<Map<String, String>> outputs;
+
   /// The parameter values to pass to the Managed Application. This field is a JSON object that allows you to assign parameters to this Managed Application.
   late final pulumi.Output<String> parameterValues;
+
   /// One `plan` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ApplicationPlan?> plan;
+
   /// The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -419,21 +428,25 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedapplication/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+         'azure:managedapplication/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationDefinitionId = registerOutput<String?>(
+      'applicationDefinitionId',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<Map<String, String>>('outputs');
-    this.parameterValues = registerOutput<String>('parameterValues');
-    this.plan = registerOutput<ApplicationPlan?>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    outputs = registerOutput<Map<String, String>>('outputs');
+    parameterValues = registerOutput<String>('parameterValues');
+    plan = registerOutput<ApplicationPlan?>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -454,20 +467,24 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedapplication/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+         'azure:managedapplication/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationDefinitionId = registerOutput<String?>(
+      'applicationDefinitionId',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<Map<String, String>>('outputs');
-    this.parameterValues = registerOutput<String>('parameterValues');
-    this.plan = registerOutput<ApplicationPlan?>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    outputs = registerOutput<Map<String, String>>('outputs');
+    parameterValues = registerOutput<String>('parameterValues');
+    plan = registerOutput<ApplicationPlan?>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -8,7 +8,7 @@ import 'router_grant_association_state.dart';
 ///
 /// For information about Express Connect Router Grant Association and how to use it, see [What is Grant Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-grantinstancetoexpressconnectrouter).
 ///
-/// > **NOTE:** Available since v1.239.0.
+/// &gt; **NOTE:** Available since v1.239.0.
 ///
 /// ## Example Usage
 ///
@@ -211,16 +211,21 @@ import 'router_grant_association_state.dart';
 class RouterGrantAssociation extends pulumi.CustomResource {
   /// The ID of the associated Leased Line Gateway instance.
   late final pulumi.Output<String> ecrId;
+
   /// The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
   late final pulumi.Output<int> ecrOwnerAliUid;
+
   /// The ID of the network instance.
   late final pulumi.Output<String> instanceId;
+
   /// The ID of the region where the authorized network instance is located.
   late final pulumi.Output<String> instanceRegionId;
+
   /// The type of the network instance. Value:
   /// - `VBR`: the VBR instance.
   /// - `VPC`: VPC instance.
   late final pulumi.Output<String> instanceType;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -233,17 +238,17 @@ class RouterGrantAssociation extends pulumi.CustomResource {
     RouterGrantAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ecrId = registerOutput<String>('ecrId');
-    this.ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceRegionId = registerOutput<String>('instanceRegionId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ecrId = registerOutput<String>('ecrId');
+    ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
+    instanceId = registerOutput<String>('instanceId');
+    instanceRegionId = registerOutput<String>('instanceRegionId');
+    instanceType = registerOutput<String>('instanceType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [RouterGrantAssociation] resource's state with the given [name] and [id].
@@ -264,16 +269,16 @@ class RouterGrantAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ecrId = registerOutput<String>('ecrId');
-    this.ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceRegionId = registerOutput<String>('instanceRegionId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ecrId = registerOutput<String>('ecrId');
+    ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
+    instanceId = registerOutput<String>('instanceId');
+    instanceRegionId = registerOutput<String>('instanceRegionId');
+    instanceType = registerOutput<String>('instanceType');
+    status = registerOutput<String>('status');
   }
 }

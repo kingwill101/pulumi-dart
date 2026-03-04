@@ -35,11 +35,10 @@ class GetOrganizationBucketLinkArgs {
 
   factory GetOrganizationBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBucketLinkArgs(
-      bucketId: (map['bucketId'] as String).input(),
-      linkId: (map['linkId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      linkId: pulumi.Input.fromValue(map['linkId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

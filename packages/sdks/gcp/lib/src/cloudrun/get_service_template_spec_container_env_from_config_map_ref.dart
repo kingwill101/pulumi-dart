@@ -5,7 +5,11 @@ import 'get_service_template_spec_container_env_from_config_map_ref_local_object
 
 class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
   /// The ConfigMap to select from.
-  final pulumi.Input<List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>> localObjectReferences;
+  final pulumi.Input<
+    List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>
+  >
+  localObjectReferences;
+
   /// Specify whether the ConfigMap must be defined
   final pulumi.Input<bool> optional;
 
@@ -19,16 +23,40 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localObjectReferences': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>, List<Map<String, dynamic>>>(localObjectReferences, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'localObjectReferences':
+          pulumi.Input.mapInputValue<
+            List<
+              GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference
+            >,
+            List<Map<String, dynamic>>
+          >(
+            localObjectReferences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'optional': optional,
     };
   }
 
-  factory GetServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerEnvFromConfigMapRef(
-      localObjectReferences: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>(map['localObjectReferences'], (value) => GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      optional: (map['optional'] as bool).input(),
+      localObjectReferences: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference
+        >(
+          map['localObjectReferences']!,
+          (value) =>
+              GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      optional: pulumi.Input.fromValue(map['optional'] as bool),
     );
   }
 }
-

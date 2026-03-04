@@ -9,8 +9,10 @@ import 'uniform_sharding_response.dart';
 class ShardingOptionResponse {
   /// Shards test cases into the specified groups of packages, classes, and/or methods.
   final pulumi.Input<ManualShardingResponse> manualSharding;
+
   /// Shards test based on previous test case timing records.
   final pulumi.Input<SmartShardingResponse> smartSharding;
+
   /// Uniformly shards test cases given a total number of shards.
   final pulumi.Input<UniformShardingResponse> uniformSharding;
 
@@ -26,18 +28,41 @@ class ShardingOptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualSharding': pulumi.Input.mapInputValue<ManualShardingResponse, Map<String, dynamic>>(manualSharding, (value) => value.toMap()),
-      'smartSharding': pulumi.Input.mapInputValue<SmartShardingResponse, Map<String, dynamic>>(smartSharding, (value) => value.toMap()),
-      'uniformSharding': pulumi.Input.mapInputValue<UniformShardingResponse, Map<String, dynamic>>(uniformSharding, (value) => value.toMap()),
+      'manualSharding':
+          pulumi.Input.mapInputValue<
+            ManualShardingResponse,
+            Map<String, dynamic>
+          >(manualSharding, (value) => value.toMap()),
+      'smartSharding':
+          pulumi.Input.mapInputValue<
+            SmartShardingResponse,
+            Map<String, dynamic>
+          >(smartSharding, (value) => value.toMap()),
+      'uniformSharding':
+          pulumi.Input.mapInputValue<
+            UniformShardingResponse,
+            Map<String, dynamic>
+          >(uniformSharding, (value) => value.toMap()),
     };
   }
 
   factory ShardingOptionResponse.fromMap(Map<String, dynamic> map) {
     return ShardingOptionResponse(
-      manualSharding: (ManualShardingResponse.fromMap((map['manualSharding'] as Map).cast<String, dynamic>())).input(),
-      smartSharding: (SmartShardingResponse.fromMap((map['smartSharding'] as Map).cast<String, dynamic>())).input(),
-      uniformSharding: (UniformShardingResponse.fromMap((map['uniformSharding'] as Map).cast<String, dynamic>())).input(),
+      manualSharding: pulumi.Input.fromValue(
+        ManualShardingResponse.fromMap(
+          (map['manualSharding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      smartSharding: pulumi.Input.fromValue(
+        SmartShardingResponse.fromMap(
+          (map['smartSharding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      uniformSharding: pulumi.Input.fromValue(
+        UniformShardingResponse.fromMap(
+          (map['uniformSharding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

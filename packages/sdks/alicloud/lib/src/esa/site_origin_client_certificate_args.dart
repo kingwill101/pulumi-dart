@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteOriginClientCertificateArgs {
   /// The certificate content.
   final pulumi.Input<String> certificate;
+
   /// The private key of the certificate.
   final pulumi.Input<String> privateKey;
+
   /// Site ID.
   final pulumi.Input<String> siteId;
+
   /// The certificate name.
   final pulumi.Input<String>? siteOriginClientCertificateName;
 
@@ -39,11 +42,14 @@ class SiteOriginClientCertificateArgs {
 
   factory SiteOriginClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SiteOriginClientCertificateArgs(
-      certificate: (map['certificate'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName']! as String).input(),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      siteOriginClientCertificateName: (() {
+        final guardedValue = map['siteOriginClientCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

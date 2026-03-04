@@ -421,15 +421,20 @@ class Dataset extends pulumi.CustomResource {
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<DatasetEncryptionSpec> encryptionSpec;
+
   /// The location for the Dataset.
   late final pulumi.Output<String> location;
+
   /// The resource name for the Dataset.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The fully qualified name of this dataset
   late final pulumi.Output<String> selfLink;
+
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
   /// (e.g., HL7 messages) where no explicit timezone is specified.
@@ -444,17 +449,17 @@ class Dataset extends pulumi.CustomResource {
     DatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/dataset:Dataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec');
-    this.location = registerOutput<String>('location');
+         'gcp:healthcare/dataset:Dataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.timeZone = registerOutput<String>('timeZone');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    timeZone = registerOutput<String>('timeZone');
   }
 
   /// Gets an existing [Dataset] resource's state with the given [name] and [id].
@@ -475,16 +480,16 @@ class Dataset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/dataset:Dataset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec');
-    this.location = registerOutput<String>('location');
+         'gcp:healthcare/dataset:Dataset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.timeZone = registerOutput<String>('timeZone');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    timeZone = registerOutput<String>('timeZone');
   }
 }

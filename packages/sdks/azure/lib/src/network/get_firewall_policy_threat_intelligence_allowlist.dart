@@ -15,17 +15,17 @@ class GetFirewallPolicyThreatIntelligenceAllowlist {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fqdns': fqdns,
-      'ipAddresses': ipAddresses,
-    };
+    return <String, dynamic>{'fqdns': fqdns, 'ipAddresses': ipAddresses};
   }
 
-  factory GetFirewallPolicyThreatIntelligenceAllowlist.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyThreatIntelligenceAllowlist.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyThreatIntelligenceAllowlist(
-      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
     );
   }
 }
-

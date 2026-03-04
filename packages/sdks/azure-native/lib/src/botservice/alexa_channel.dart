@@ -8,10 +8,13 @@ class AlexaChannel {
   /// The channel name
   /// Expected value is 'AlexaChannel'.
   final pulumi.Input<String> channelName;
+
   /// Entity Tag of the resource
   final pulumi.Input<String>? etag;
+
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
+
   /// The set of properties specific to Alexa channel resource
   final pulumi.Input<AlexaChannelProperties>? properties;
 
@@ -32,17 +35,36 @@ class AlexaChannel {
       'channelName': channelName,
       'etag': ?etag,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AlexaChannelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlexaChannelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory AlexaChannel.fromMap(Map<String, dynamic> map) {
     return AlexaChannel(
-      channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (AlexaChannelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      channelName: pulumi.Input.fromValue(map['channelName'] as String),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlexaChannelProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,17 @@ enum TemplateDeploymentPreflightOptions {
   testOnly("TestOnly"),
   registeredOnly("RegisteredOnly");
 
-  const TemplateDeploymentPreflightOptions(this.value);
-  final String value;
+  const TemplateDeploymentPreflightOptions(this.wireValue);
+  final String wireValue;
 
   static TemplateDeploymentPreflightOptions fromValue(String value) {
     for (final item in TemplateDeploymentPreflightOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TemplateDeploymentPreflightOptions value: $value');
+    throw ArgumentError(
+      'Unknown TemplateDeploymentPreflightOptions value: $value',
+    );
   }
 }
-

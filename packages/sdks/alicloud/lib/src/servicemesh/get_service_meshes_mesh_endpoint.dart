@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshEndpoint {
   /// The internal address of the API Server.
   final pulumi.Input<String> intranetApiServerEndpoint;
+
   /// The internal address of the Istio Pilot.
   final pulumi.Input<String> intranetPilotEndpoint;
+
   /// The public address of the API Server.
   final pulumi.Input<String> publicApiServerEndpoint;
+
   /// The public address of the Istio Pilot.
   final pulumi.Input<String> publicPilotEndpoint;
 
@@ -35,11 +38,18 @@ class GetServiceMeshesMeshEndpoint {
 
   factory GetServiceMeshesMeshEndpoint.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshEndpoint(
-      intranetApiServerEndpoint: (map['intranetApiServerEndpoint'] as String).input(),
-      intranetPilotEndpoint: (map['intranetPilotEndpoint'] as String).input(),
-      publicApiServerEndpoint: (map['publicApiServerEndpoint'] as String).input(),
-      publicPilotEndpoint: (map['publicPilotEndpoint'] as String).input(),
+      intranetApiServerEndpoint: pulumi.Input.fromValue(
+        map['intranetApiServerEndpoint'] as String,
+      ),
+      intranetPilotEndpoint: pulumi.Input.fromValue(
+        map['intranetPilotEndpoint'] as String,
+      ),
+      publicApiServerEndpoint: pulumi.Input.fromValue(
+        map['publicApiServerEndpoint'] as String,
+      ),
+      publicPilotEndpoint: pulumi.Input.fromValue(
+        map['publicPilotEndpoint'] as String,
+      ),
     );
   }
 }
-

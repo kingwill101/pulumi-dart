@@ -6,21 +6,29 @@ import 'system_data_response.dart';
 class GetNamespaceTopicResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Event retention for the namespace topic expressed in days. The property default value is 1 day.
   /// Min event retention duration value is 1 day and max event retention duration value is 1 day.
   final int? eventRetentionInDays;
+
   /// Fully qualified identifier of the resource.
   final String id;
+
   /// This determines the format that is expected for incoming events published to the topic.
   final String? inputSchema;
+
   /// Name of the resource.
   final String name;
+
   /// Provisioning state of the namespace topic.
   final String provisioningState;
+
   /// Publisher type of the namespace topic.
   final String? publisherType;
+
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
+
   /// Type of the resource.
   final String type;
 
@@ -63,15 +71,28 @@ class GetNamespaceTopicResult {
   factory GetNamespaceTopicResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : map['eventRetentionInDays']! as int,
+      eventRetentionInDays: (() {
+        final guardedValue = map['eventRetentionInDays'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
-      inputSchema: map['inputSchema'] == null ? null : map['inputSchema']! as String,
+      inputSchema: (() {
+        final guardedValue = map['inputSchema'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publisherType: map['publisherType'] == null ? null : map['publisherType']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      publisherType: (() {
+        final guardedValue = map['publisherType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

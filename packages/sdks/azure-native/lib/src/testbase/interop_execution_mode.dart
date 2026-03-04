@@ -3,16 +3,15 @@ enum InteropExecutionMode {
   valueFirstPartyAppWithTests("firstPartyAppWithTests"),
   valueFirstPartyApp("firstPartyApp");
 
-  const InteropExecutionMode(this.value);
-  final String value;
+  const InteropExecutionMode(this.wireValue);
+  final String wireValue;
 
   static InteropExecutionMode fromValue(String value) {
     for (final item in InteropExecutionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InteropExecutionMode value: $value');
   }
 }
-

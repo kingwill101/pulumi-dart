@@ -37,15 +37,40 @@ class BillingHubFreeHourIncrementEntryResponse {
     };
   }
 
-  factory BillingHubFreeHourIncrementEntryResponse.fromMap(Map<String, dynamic> map) {
+  factory BillingHubFreeHourIncrementEntryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BillingHubFreeHourIncrementEntryResponse(
-      createTimeStamp: map['createTimeStamp'] == null ? null : (map['createTimeStamp']! as String).input(),
-      expirationTimeStamp: map['expirationTimeStamp'] == null ? null : (map['expirationTimeStamp']! as String).input(),
-      freeHourStatus: map['freeHourStatus'] == null ? null : (map['freeHourStatus']! as String).input(),
-      freeHourType: map['freeHourType'] == null ? null : (map['freeHourType']! as String).input(),
-      incrementalFreeHours: map['incrementalFreeHours'] == null ? null : (map['incrementalFreeHours']! as double).input(),
-      remainingFreeHours: map['remainingFreeHours'] == null ? null : (map['remainingFreeHours']! as double).input(),
+      createTimeStamp: (() {
+        final guardedValue = map['createTimeStamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationTimeStamp: (() {
+        final guardedValue = map['expirationTimeStamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      freeHourStatus: (() {
+        final guardedValue = map['freeHourStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      freeHourType: (() {
+        final guardedValue = map['freeHourType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      incrementalFreeHours: (() {
+        final guardedValue = map['incrementalFreeHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      remainingFreeHours: (() {
+        final guardedValue = map['remainingFreeHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -1,0 +1,10 @@
+name: awsx-dart-vpc-ipam-ipv4-auto-cidrblock
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC IPv4 IPAM auto CIDR allocation example in Dart.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

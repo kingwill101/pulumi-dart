@@ -11,18 +11,25 @@ import 'dsc_configuration_association_property.dart';
 class DscNodeConfigurationArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the configuration of the node.
   final pulumi.Input<DscConfigurationAssociationProperty> configuration;
+
   /// If a new build version of NodeConfiguration is required.
   final pulumi.Input<bool>? incrementNodeConfigurationBuild;
+
   /// Name of the node configuration.
   final pulumi.Input<String>? name;
+
   /// The Dsc node configuration name.
   final pulumi.Input<String>? nodeConfigurationName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the source.
   final pulumi.Input<ContentSource> source;
+
   /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,27 +56,61 @@ class DscNodeConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
-      'configuration': pulumi.Input.mapInputValue<DscConfigurationAssociationProperty, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          pulumi.Input.mapInputValue<
+            DscConfigurationAssociationProperty,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'incrementNodeConfigurationBuild': ?incrementNodeConfigurationBuild,
       'name': ?name,
       'nodeConfigurationName': ?nodeConfigurationName,
       'resourceGroupName': resourceGroupName,
-      'source': pulumi.Input.mapInputValue<ContentSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<ContentSource, Map<String, dynamic>>(
+        source,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory DscNodeConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      configuration: (DscConfigurationAssociationProperty.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : (map['incrementNodeConfigurationBuild']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodeConfigurationName: map['nodeConfigurationName'] == null ? null : (map['nodeConfigurationName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: (ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      configuration: pulumi.Input.fromValue(
+        DscConfigurationAssociationProperty.fromMap(
+          (map['configuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      incrementNodeConfigurationBuild: (() {
+        final guardedValue = map['incrementNodeConfigurationBuild'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeConfigurationName: (() {
+        final guardedValue = map['nodeConfigurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      source: pulumi.Input.fromValue(
+        ContentSource.fromMap((map['source']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

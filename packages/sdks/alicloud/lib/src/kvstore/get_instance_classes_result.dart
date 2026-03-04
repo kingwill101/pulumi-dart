@@ -6,14 +6,17 @@ import 'get_instance_classes_class.dart';
 /// Result data returned by getInstanceClasses.
 class GetInstanceClassesResult {
   final String? architecture;
+
   /// A list of KVStore available instance classes when the `sorted_by` is "Price". include:
   final List<GetInstanceClassesClass> classes;
   final String? editionType;
   final String? engine;
   final String? engineVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? instanceChargeType;
+
   /// A list of KVStore available instance classes.
   final List<String> instanceClasses;
   final String? nodeType;
@@ -70,7 +73,11 @@ class GetInstanceClassesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'architecture': ?architecture,
-      'classes': pulumi.Input.encodeList<GetInstanceClassesClass, Map<String, dynamic>>(classes, (value) => value.toMap()),
+      'classes':
+          pulumi.Input.encodeList<
+            GetInstanceClassesClass,
+            Map<String, dynamic>
+          >(classes, (value) => value.toMap()),
       'editionType': ?editionType,
       'engine': ?engine,
       'engineVersion': ?engineVersion,
@@ -92,25 +99,85 @@ class GetInstanceClassesResult {
 
   factory GetInstanceClassesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesResult(
-      architecture: map['architecture'] == null ? null : map['architecture']! as String,
-      classes: pulumi.Input.decodeList<GetInstanceClassesClass>(map['classes'], (value) => GetInstanceClassesClass.fromMap((value as Map).cast<String, dynamic>())),
-      editionType: map['editionType'] == null ? null : map['editionType']! as String,
-      engine: map['engine'] == null ? null : map['engine']! as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      classes: pulumi.Input.decodeList<GetInstanceClassesClass>(
+        map['classes']!,
+        (value) => GetInstanceClassesClass.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      editionType: (() {
+        final guardedValue = map['editionType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       instanceClasses: (map['instanceClasses'] as List).cast<String>(),
-      nodeType: map['nodeType'] == null ? null : map['nodeType']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      packageType: map['packageType'] == null ? null : map['packageType']! as String,
-      performanceType: map['performanceType'] == null ? null : map['performanceType']! as String,
-      productType: map['productType'] == null ? null : map['productType']! as String,
-      seriesType: map['seriesType'] == null ? null : map['seriesType']! as String,
-      shardNumber: map['shardNumber'] == null ? null : map['shardNumber']! as int,
-      sortedBy: map['sortedBy'] == null ? null : map['sortedBy']! as String,
-      storageType: map['storageType'] == null ? null : map['storageType']! as String,
+      nodeType: (() {
+        final guardedValue = map['nodeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packageType: (() {
+        final guardedValue = map['packageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      performanceType: (() {
+        final guardedValue = map['performanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      productType: (() {
+        final guardedValue = map['productType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      seriesType: (() {
+        final guardedValue = map['seriesType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      shardNumber: (() {
+        final guardedValue = map['shardNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      sortedBy: (() {
+        final guardedValue = map['sortedBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       zoneId: map['zoneId'] as String,
     );
   }
 }
-

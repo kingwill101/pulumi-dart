@@ -10,20 +10,31 @@ class DSSEAttestationNoteContaineranalysisV1alpha1 {
 
   /// Creates a new [DSSEAttestationNoteContaineranalysisV1alpha1].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNoteContaineranalysisV1alpha1({
-    this.hint,
-  });
+  DSSEAttestationNoteContaineranalysisV1alpha1({this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': ?pulumi.Input.mapOptionalInputValue<DSSEHintContaineranalysisV1alpha1, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint':
+          ?pulumi.Input.mapOptionalInputValue<
+            DSSEHintContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(hint, (value) => value.toMap()),
     };
   }
 
-  factory DSSEAttestationNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DSSEAttestationNoteContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DSSEAttestationNoteContaineranalysisV1alpha1(
-      hint: map['hint'] == null ? null : (DSSEHintContaineranalysisV1alpha1.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
+      hint: (() {
+        final guardedValue = map['hint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DSSEHintContaineranalysisV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

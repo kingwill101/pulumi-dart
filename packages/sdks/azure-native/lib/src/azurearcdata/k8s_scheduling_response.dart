@@ -10,20 +10,29 @@ class K8sSchedulingResponse {
 
   /// Creates a new [K8sSchedulingResponse].
   /// [default_] The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
-  K8sSchedulingResponse({
-    this.default_,
-  });
+  K8sSchedulingResponse({this.default_});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'default': ?pulumi.Input.mapOptionalInputValue<K8sSchedulingOptionsResponse, Map<String, dynamic>>(default_, (value) => value.toMap()),
+      'default':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sSchedulingOptionsResponse,
+            Map<String, dynamic>
+          >(default_, (value) => value.toMap()),
     };
   }
 
   factory K8sSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return K8sSchedulingResponse(
-      default_: map['default'] == null ? null : (K8sSchedulingOptionsResponse.fromMap((map['default']! as Map).cast<String, dynamic>())).input(),
+      default_: (() {
+        final guardedValue = map['default'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sSchedulingOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

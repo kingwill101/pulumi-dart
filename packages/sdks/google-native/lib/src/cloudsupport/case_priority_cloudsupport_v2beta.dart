@@ -7,16 +7,15 @@ enum CasePriorityCloudsupportV2beta {
   p3("P3"),
   p4("P4");
 
-  const CasePriorityCloudsupportV2beta(this.value);
-  final String value;
+  const CasePriorityCloudsupportV2beta(this.wireValue);
+  final String wireValue;
 
   static CasePriorityCloudsupportV2beta fromValue(String value) {
     for (final item in CasePriorityCloudsupportV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CasePriorityCloudsupportV2beta value: $value');
   }
 }
-

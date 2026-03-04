@@ -4,16 +4,17 @@ enum ProcessingOptionsHtmlSanitization {
   htmlSanitizationDisabled("HTML_SANITIZATION_DISABLED"),
   simpleFormattingOnly("SIMPLE_FORMATTING_ONLY");
 
-  const ProcessingOptionsHtmlSanitization(this.value);
-  final String value;
+  const ProcessingOptionsHtmlSanitization(this.wireValue);
+  final String wireValue;
 
   static ProcessingOptionsHtmlSanitization fromValue(String value) {
     for (final item in ProcessingOptionsHtmlSanitization.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProcessingOptionsHtmlSanitization value: $value');
+    throw ArgumentError(
+      'Unknown ProcessingOptionsHtmlSanitization value: $value',
+    );
   }
 }
-

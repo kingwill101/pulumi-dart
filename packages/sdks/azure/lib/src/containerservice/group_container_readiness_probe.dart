@@ -6,16 +6,22 @@ import 'group_container_readiness_probe_http_get.dart';
 class GroupContainerReadinessProbe {
   /// Commands to be run to validate container readiness. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? execs;
+
   /// How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). Changing this forces a new resource to be created.
   final pulumi.Input<int>? failureThreshold;
+
   /// The definition of the http_get for this container as documented in the `http_get` block below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GroupContainerReadinessProbeHttpGet>>? httpGets;
+
   /// Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
   final pulumi.Input<int>? initialDelaySeconds;
+
   /// How often (in seconds) to perform the probe. Changing this forces a new resource to be created.
   final pulumi.Input<int>? periodSeconds;
+
   /// Minimum consecutive successes for the probe to be considered successful after having failed. Changing this forces a new resource to be created.
   final pulumi.Input<int>? successThreshold;
+
   /// Number of seconds after which the probe times out. Changing this forces a new resource to be created.
   final pulumi.Input<int>? timeoutSeconds;
 
@@ -41,7 +47,18 @@ class GroupContainerReadinessProbe {
     return <String, dynamic>{
       'execs': ?execs,
       'failureThreshold': ?failureThreshold,
-      'httpGets': ?pulumi.Input.mapOptionalInputValue<List<GroupContainerReadinessProbeHttpGet>, List<Map<String, dynamic>>>(httpGets, (value) => pulumi.Input.encodeList<GroupContainerReadinessProbeHttpGet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpGets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupContainerReadinessProbeHttpGet>,
+            List<Map<String, dynamic>>
+          >(
+            httpGets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GroupContainerReadinessProbeHttpGet,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
@@ -51,14 +68,48 @@ class GroupContainerReadinessProbe {
 
   factory GroupContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GroupContainerReadinessProbe(
-      execs: map['execs'] == null ? null : ((map['execs']! as List).cast<String>()).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
-      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(map['httpGets']!, (value) => GroupContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
+      execs: (() {
+        final guardedValue = map['execs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      failureThreshold: (() {
+        final guardedValue = map['failureThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpGets: (() {
+        final guardedValue = map['httpGets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(
+            guardedValue,
+            (value) => GroupContainerReadinessProbeHttpGet.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      initialDelaySeconds: (() {
+        final guardedValue = map['initialDelaySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodSeconds: (() {
+        final guardedValue = map['periodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      successThreshold: (() {
+        final guardedValue = map['successThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeoutSeconds: (() {
+        final guardedValue = map['timeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

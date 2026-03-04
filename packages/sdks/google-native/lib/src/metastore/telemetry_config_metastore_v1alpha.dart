@@ -10,20 +10,29 @@ class TelemetryConfigMetastoreV1alpha {
 
   /// Creates a new [TelemetryConfigMetastoreV1alpha].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
-  TelemetryConfigMetastoreV1alpha({
-    this.logFormat,
-  });
+  TelemetryConfigMetastoreV1alpha({this.logFormat});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logFormat': ?pulumi.Input.mapOptionalInputValue<TelemetryConfigLogFormatMetastoreV1alpha, String>(logFormat, (value) => value.value),
+      'logFormat':
+          ?pulumi.Input.mapOptionalInputValue<
+            TelemetryConfigLogFormatMetastoreV1alpha,
+            String
+          >(logFormat, (value) => value.wireValue),
     };
   }
 
   factory TelemetryConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigMetastoreV1alpha(
-      logFormat: map['logFormat'] == null ? null : (TelemetryConfigLogFormatMetastoreV1alpha.fromValue(map['logFormat']! as String)).input(),
+      logFormat: (() {
+        final guardedValue = map['logFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TelemetryConfigLogFormatMetastoreV1alpha.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

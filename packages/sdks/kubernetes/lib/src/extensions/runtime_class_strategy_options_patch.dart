@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeClassStrategyOptionsPatch {
   /// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
   final pulumi.Input<List<String>>? allowedRuntimeClassNames;
+
   /// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
   final pulumi.Input<String>? defaultRuntimeClassName;
 
@@ -26,9 +27,16 @@ class RuntimeClassStrategyOptionsPatch {
 
   factory RuntimeClassStrategyOptionsPatch.fromMap(Map<String, dynamic> map) {
     return RuntimeClassStrategyOptionsPatch(
-      allowedRuntimeClassNames: map['allowedRuntimeClassNames'] == null ? null : ((map['allowedRuntimeClassNames']! as List).cast<String>()).input(),
-      defaultRuntimeClassName: map['defaultRuntimeClassName'] == null ? null : (map['defaultRuntimeClassName']! as String).input(),
+      allowedRuntimeClassNames: (() {
+        final guardedValue = map['allowedRuntimeClassNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      defaultRuntimeClassName: (() {
+        final guardedValue = map['defaultRuntimeClassName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

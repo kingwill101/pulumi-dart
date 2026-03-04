@@ -7,14 +7,19 @@ import 'operating_system_types.dart';
 class GalleryScriptProperties {
   /// The description of this gallery script definition resource. This property is updatable.
   final pulumi.Input<String>? description;
+
   /// The end of life date of the gallery Script Definition. This property can be used for decommissioning purposes. This property is updatable.
   final pulumi.Input<String>? endOfLifeDate;
+
   /// The Eula agreement (End User License Agreement) for the gallery Script Definition.
   final pulumi.Input<String>? eula;
+
   /// The privacy statement uri.
   final pulumi.Input<String>? privacyStatementUri;
+
   /// The release note uri.
   final pulumi.Input<String>? releaseNoteUri;
+
   /// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   final pulumi.Input<OperatingSystemTypes> supportedOSType;
 
@@ -41,19 +46,44 @@ class GalleryScriptProperties {
       'eula': ?eula,
       'privacyStatementUri': ?privacyStatementUri,
       'releaseNoteUri': ?releaseNoteUri,
-      'supportedOSType': pulumi.Input.mapInputValue<OperatingSystemTypes, String>(supportedOSType, (value) => value.value),
+      'supportedOSType':
+          pulumi.Input.mapInputValue<OperatingSystemTypes, String>(
+            supportedOSType,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory GalleryScriptProperties.fromMap(Map<String, dynamic> map) {
     return GalleryScriptProperties(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
-      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
-      supportedOSType: (OperatingSystemTypes.fromValue(map['supportedOSType'] as String)).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endOfLifeDate: (() {
+        final guardedValue = map['endOfLifeDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eula: (() {
+        final guardedValue = map['eula'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privacyStatementUri: (() {
+        final guardedValue = map['privacyStatementUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseNoteUri: (() {
+        final guardedValue = map['releaseNoteUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportedOSType: pulumi.Input.fromValue(
+        OperatingSystemTypes.fromValue(map['supportedOSType']! as String),
+      ),
     );
   }
 }
-

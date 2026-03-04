@@ -9,32 +9,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListShareSynchronizationDetailsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// Email of the user who created the synchronization
   final pulumi.Input<String>? consumerEmail;
+
   /// Name of the user who created the synchronization
   final pulumi.Input<String>? consumerName;
+
   /// Tenant name of the consumer who created the synchronization
   final pulumi.Input<String>? consumerTenantName;
+
   /// synchronization duration
   final pulumi.Input<int>? durationMs;
+
   /// End time of synchronization
   final pulumi.Input<String>? endTime;
+
   /// Filters the results using OData syntax.
   final pulumi.Input<String>? filter;
+
   /// message of synchronization
   final pulumi.Input<String>? message;
+
   /// Sorts the results using OData syntax.
   final pulumi.Input<String>? orderby;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the share.
   final pulumi.Input<String> shareName;
+
   /// Continuation token
   final pulumi.Input<String>? skipToken;
+
   /// start time of synchronization
   final pulumi.Input<String>? startTime;
+
   /// Raw Status
   final pulumi.Input<String>? status;
+
   /// Synchronization id
   final pulumi.Input<String>? synchronizationId;
 
@@ -92,24 +106,75 @@ class ListShareSynchronizationDetailsArgs {
     };
   }
 
-  factory ListShareSynchronizationDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListShareSynchronizationDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListShareSynchronizationDetailsArgs(
-      accountName: (map['accountName'] as String).input(),
-      consumerEmail: map['consumerEmail'] == null ? null : (map['consumerEmail']! as String).input(),
-      consumerName: map['consumerName'] == null ? null : (map['consumerName']! as String).input(),
-      consumerTenantName: map['consumerTenantName'] == null ? null : (map['consumerTenantName']! as String).input(),
-      durationMs: map['durationMs'] == null ? null : (map['durationMs']! as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      orderby: map['orderby'] == null ? null : (map['orderby']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      synchronizationId: map['synchronizationId'] == null ? null : (map['synchronizationId']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      consumerEmail: (() {
+        final guardedValue = map['consumerEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerName: (() {
+        final guardedValue = map['consumerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerTenantName: (() {
+        final guardedValue = map['consumerTenantName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      durationMs: (() {
+        final guardedValue = map['durationMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderby: (() {
+        final guardedValue = map['orderby'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      synchronizationId: (() {
+        final guardedValue = map['synchronizationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

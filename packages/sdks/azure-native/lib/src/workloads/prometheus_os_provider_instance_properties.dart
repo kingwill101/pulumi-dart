@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrometheusOsProviderInstanceProperties {
   /// URL of the Node Exporter endpoint
   final pulumi.Input<String>? prometheusUrl;
+
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusOS'.
   final pulumi.Input<String> providerType;
+
   /// Gets or sets the SAP System Identifier
   final pulumi.Input<String>? sapSid;
+
   /// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
   final pulumi.Input<String>? sslCertificateUri;
+
   /// Gets or sets certificate preference if secure communication is enabled.
   final pulumi.Input<String>? sslPreference;
 
@@ -40,14 +44,31 @@ class PrometheusOsProviderInstanceProperties {
     };
   }
 
-  factory PrometheusOsProviderInstanceProperties.fromMap(Map<String, dynamic> map) {
+  factory PrometheusOsProviderInstanceProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrometheusOsProviderInstanceProperties(
-      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl']! as String).input(),
-      providerType: (map['providerType'] as String).input(),
-      sapSid: map['sapSid'] == null ? null : (map['sapSid']! as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
+      prometheusUrl: (() {
+        final guardedValue = map['prometheusUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerType: pulumi.Input.fromValue(map['providerType'] as String),
+      sapSid: (() {
+        final guardedValue = map['sapSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslCertificateUri: (() {
+        final guardedValue = map['sslCertificateUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslPreference: (() {
+        final guardedValue = map['sslPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

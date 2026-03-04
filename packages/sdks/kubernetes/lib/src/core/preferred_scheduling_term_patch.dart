@@ -7,29 +7,42 @@ import 'node_selector_term_patch.dart';
 class PreferredSchedulingTermPatch {
   /// A node selector term, associated with the corresponding weight.
   final pulumi.Input<NodeSelectorTermPatch>? preference;
+
   /// Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
   final pulumi.Input<int>? weight;
 
   /// Creates a new [PreferredSchedulingTermPatch].
   /// [preference] A node selector term, associated with the corresponding weight.
   /// [weight] Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-  PreferredSchedulingTermPatch({
-    this.preference,
-    this.weight,
-  });
+  PreferredSchedulingTermPatch({this.preference, this.weight});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preference': ?pulumi.Input.mapOptionalInputValue<NodeSelectorTermPatch, Map<String, dynamic>>(preference, (value) => value.toMap()),
+      'preference':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodeSelectorTermPatch,
+            Map<String, dynamic>
+          >(preference, (value) => value.toMap()),
       'weight': ?weight,
     };
   }
 
   factory PreferredSchedulingTermPatch.fromMap(Map<String, dynamic> map) {
     return PreferredSchedulingTermPatch(
-      preference: map['preference'] == null ? null : (NodeSelectorTermPatch.fromMap((map['preference']! as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      preference: (() {
+        final guardedValue = map['preference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeSelectorTermPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

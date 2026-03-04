@@ -7,20 +7,19 @@ class BuilderConfig {
 
   /// Creates a new [BuilderConfig].
   /// [id] Optional.
-  BuilderConfig({
-    this.id,
-  });
+  BuilderConfig({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory BuilderConfig.fromMap(Map<String, dynamic> map) {
     return BuilderConfig(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,16 +10,15 @@ enum TransformSummaryKind {
   singletonKind("SINGLETON_KIND"),
   shuffleKind("SHUFFLE_KIND");
 
-  const TransformSummaryKind(this.value);
-  final String value;
+  const TransformSummaryKind(this.wireValue);
+  final String wireValue;
 
   static TransformSummaryKind fromValue(String value) {
     for (final item in TransformSummaryKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransformSummaryKind value: $value');
   }
 }
-

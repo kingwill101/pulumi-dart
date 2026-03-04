@@ -7,20 +7,29 @@ import 'market_place_offer_details_response.dart';
 class DataManagerForAgricultureSolutionResponse {
   /// Entra application Id used to access azure data manager for agriculture instance.
   final pulumi.Input<String> accessAzureDataManagerForAgricultureApplicationId;
+
   /// Entra application name used to access azure data manager for agriculture instance.
-  final pulumi.Input<String> accessAzureDataManagerForAgricultureApplicationName;
+  final pulumi.Input<String>
+  accessAzureDataManagerForAgricultureApplicationName;
+
   /// Data access scopes.
   final pulumi.Input<List<String>> dataAccessScopes;
+
   /// Whether solution inference will validate input.
   final pulumi.Input<bool> isValidateInput;
+
   /// Marketplace offer details.
   final pulumi.Input<MarketPlaceOfferDetailsResponse> marketPlaceOfferDetails;
+
   /// Partner Id.
   final pulumi.Input<String> partnerId;
+
   /// Partner tenant Id.
   final pulumi.Input<String> partnerTenantId;
+
   /// Saas application Id.
   final pulumi.Input<String> saasApplicationId;
+
   /// Solution Id.
   final pulumi.Input<String> solutionId;
 
@@ -48,11 +57,17 @@ class DataManagerForAgricultureSolutionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessAzureDataManagerForAgricultureApplicationId': accessAzureDataManagerForAgricultureApplicationId,
-      'accessAzureDataManagerForAgricultureApplicationName': accessAzureDataManagerForAgricultureApplicationName,
+      'accessAzureDataManagerForAgricultureApplicationId':
+          accessAzureDataManagerForAgricultureApplicationId,
+      'accessAzureDataManagerForAgricultureApplicationName':
+          accessAzureDataManagerForAgricultureApplicationName,
       'dataAccessScopes': dataAccessScopes,
       'isValidateInput': isValidateInput,
-      'marketPlaceOfferDetails': pulumi.Input.mapInputValue<MarketPlaceOfferDetailsResponse, Map<String, dynamic>>(marketPlaceOfferDetails, (value) => value.toMap()),
+      'marketPlaceOfferDetails':
+          pulumi.Input.mapInputValue<
+            MarketPlaceOfferDetailsResponse,
+            Map<String, dynamic>
+          >(marketPlaceOfferDetails, (value) => value.toMap()),
       'partnerId': partnerId,
       'partnerTenantId': partnerTenantId,
       'saasApplicationId': saasApplicationId,
@@ -60,18 +75,33 @@ class DataManagerForAgricultureSolutionResponse {
     };
   }
 
-  factory DataManagerForAgricultureSolutionResponse.fromMap(Map<String, dynamic> map) {
+  factory DataManagerForAgricultureSolutionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataManagerForAgricultureSolutionResponse(
-      accessAzureDataManagerForAgricultureApplicationId: (map['accessAzureDataManagerForAgricultureApplicationId'] as String).input(),
-      accessAzureDataManagerForAgricultureApplicationName: (map['accessAzureDataManagerForAgricultureApplicationName'] as String).input(),
-      dataAccessScopes: ((map['dataAccessScopes'] as List).cast<String>()).input(),
-      isValidateInput: (map['isValidateInput'] as bool).input(),
-      marketPlaceOfferDetails: (MarketPlaceOfferDetailsResponse.fromMap((map['marketPlaceOfferDetails'] as Map).cast<String, dynamic>())).input(),
-      partnerId: (map['partnerId'] as String).input(),
-      partnerTenantId: (map['partnerTenantId'] as String).input(),
-      saasApplicationId: (map['saasApplicationId'] as String).input(),
-      solutionId: (map['solutionId'] as String).input(),
+      accessAzureDataManagerForAgricultureApplicationId: pulumi.Input.fromValue(
+        map['accessAzureDataManagerForAgricultureApplicationId'] as String,
+      ),
+      accessAzureDataManagerForAgricultureApplicationName:
+          pulumi.Input.fromValue(
+            map['accessAzureDataManagerForAgricultureApplicationName']
+                as String,
+          ),
+      dataAccessScopes: pulumi.Input.fromValue(
+        (map['dataAccessScopes'] as List).cast<String>(),
+      ),
+      isValidateInput: pulumi.Input.fromValue(map['isValidateInput'] as bool),
+      marketPlaceOfferDetails: pulumi.Input.fromValue(
+        MarketPlaceOfferDetailsResponse.fromMap(
+          (map['marketPlaceOfferDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      partnerId: pulumi.Input.fromValue(map['partnerId'] as String),
+      partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
+      saasApplicationId: pulumi.Input.fromValue(
+        map['saasApplicationId'] as String,
+      ),
+      solutionId: pulumi.Input.fromValue(map['solutionId'] as String),
     );
   }
 }
-

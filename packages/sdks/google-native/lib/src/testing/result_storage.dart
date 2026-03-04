@@ -8,29 +8,46 @@ import 'tool_results_history.dart';
 class ResultStorage {
   /// Required.
   final pulumi.Input<GoogleCloudStorage> googleCloudStorage;
+
   /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
   final pulumi.Input<ToolResultsHistory>? toolResultsHistory;
 
   /// Creates a new [ResultStorage].
   /// [googleCloudStorage] Required.
   /// [toolResultsHistory] The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-  ResultStorage({
-    required this.googleCloudStorage,
-    this.toolResultsHistory,
-  });
+  ResultStorage({required this.googleCloudStorage, this.toolResultsHistory});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'googleCloudStorage': pulumi.Input.mapInputValue<GoogleCloudStorage, Map<String, dynamic>>(googleCloudStorage, (value) => value.toMap()),
-      'toolResultsHistory': ?pulumi.Input.mapOptionalInputValue<ToolResultsHistory, Map<String, dynamic>>(toolResultsHistory, (value) => value.toMap()),
+      'googleCloudStorage':
+          pulumi.Input.mapInputValue<GoogleCloudStorage, Map<String, dynamic>>(
+            googleCloudStorage,
+            (value) => value.toMap(),
+          ),
+      'toolResultsHistory':
+          ?pulumi.Input.mapOptionalInputValue<
+            ToolResultsHistory,
+            Map<String, dynamic>
+          >(toolResultsHistory, (value) => value.toMap()),
     };
   }
 
   factory ResultStorage.fromMap(Map<String, dynamic> map) {
     return ResultStorage(
-      googleCloudStorage: (GoogleCloudStorage.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>())).input(),
-      toolResultsHistory: map['toolResultsHistory'] == null ? null : (ToolResultsHistory.fromMap((map['toolResultsHistory']! as Map).cast<String, dynamic>())).input(),
+      googleCloudStorage: pulumi.Input.fromValue(
+        GoogleCloudStorage.fromMap(
+          (map['googleCloudStorage']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      toolResultsHistory: (() {
+        final guardedValue = map['toolResultsHistory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ToolResultsHistory.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

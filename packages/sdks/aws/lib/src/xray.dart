@@ -1,5 +1,3 @@
-library module_xray;
-
 export 'xray/encryption_config.dart';
 export 'xray/encryption_config_args.dart';
 export 'xray/encryption_config_state.dart';

@@ -7,12 +7,16 @@ import 'content_path_map_response.dart';
 class RepositoryResponse {
   /// Branch name of repository.
   final pulumi.Input<String>? branch;
+
   /// Url to access repository action logs.
   final pulumi.Input<String>? deploymentLogsUrl;
+
   /// Display url of repository.
   final pulumi.Input<String>? displayUrl;
+
   /// Dictionary of source control content type and path mapping.
   final pulumi.Input<List<ContentPathMapResponse>>? pathMapping;
+
   /// Url of repository.
   final pulumi.Input<String>? url;
 
@@ -35,19 +39,56 @@ class RepositoryResponse {
       'branch': ?branch,
       'deploymentLogsUrl': ?deploymentLogsUrl,
       'displayUrl': ?displayUrl,
-      'pathMapping': ?pulumi.Input.mapOptionalInputValue<List<ContentPathMapResponse>, List<Map<String, dynamic>>>(pathMapping, (value) => pulumi.Input.encodeList<ContentPathMapResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pathMapping':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContentPathMapResponse>,
+            List<Map<String, dynamic>>
+          >(
+            pathMapping,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContentPathMapResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'url': ?url,
     };
   }
 
   factory RepositoryResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryResponse(
-      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl']! as String).input(),
-      displayUrl: map['displayUrl'] == null ? null : (map['displayUrl']! as String).input(),
-      pathMapping: map['pathMapping'] == null ? null : (pulumi.Input.decodeList<ContentPathMapResponse>(map['pathMapping']!, (value) => ContentPathMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentLogsUrl: (() {
+        final guardedValue = map['deploymentLogsUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayUrl: (() {
+        final guardedValue = map['displayUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathMapping: (() {
+        final guardedValue = map['pathMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContentPathMapResponse>(
+            guardedValue,
+            (value) => ContentPathMapResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

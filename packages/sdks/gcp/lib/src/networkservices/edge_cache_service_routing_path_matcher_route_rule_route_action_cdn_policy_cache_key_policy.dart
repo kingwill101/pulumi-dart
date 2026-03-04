@@ -6,6 +6,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
   /// If true, requests to different hosts will be cached separately.
   /// Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
   final pulumi.Input<bool>? excludeHost;
+
   /// If true, exclude query string parameters from the cache key
   /// If false (the default), include the query string parameters in
   /// the cache key according to includeQueryParameters and
@@ -13,11 +14,14 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
   /// excludeQueryParameters is set, the entire query string will be
   /// included.
   final pulumi.Input<bool>? excludeQueryString;
+
   /// Names of query string parameters to exclude from cache keys. All other parameters will be included.
   /// Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
   final pulumi.Input<List<String>>? excludedQueryParameters;
+
   /// If true, http and https requests will be cached separately.
   final pulumi.Input<bool>? includeProtocol;
+
   /// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
   /// Cookie names:
   /// - must be valid RFC 6265 "cookie-name" tokens
@@ -26,12 +30,14 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
   /// Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
   /// You may specify up to three cookie names.
   final pulumi.Input<List<String>>? includedCookieNames;
+
   /// Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
   /// - Header names must be valid HTTP RFC 7230 header field values.
   /// - Header field names are case insensitive
   /// - To include the HTTP method, use ":method"
   /// Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
   final pulumi.Input<List<String>>? includedHeaderNames;
+
   /// Names of query string parameters to include in cache keys. All other parameters will be excluded.
   /// Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
   final pulumi.Input<List<String>>? includedQueryParameters;
@@ -66,16 +72,45 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(
-      excludeHost: map['excludeHost'] == null ? null : (map['excludeHost']! as bool).input(),
-      excludeQueryString: map['excludeQueryString'] == null ? null : (map['excludeQueryString']! as bool).input(),
-      excludedQueryParameters: map['excludedQueryParameters'] == null ? null : ((map['excludedQueryParameters']! as List).cast<String>()).input(),
-      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol']! as bool).input(),
-      includedCookieNames: map['includedCookieNames'] == null ? null : ((map['includedCookieNames']! as List).cast<String>()).input(),
-      includedHeaderNames: map['includedHeaderNames'] == null ? null : ((map['includedHeaderNames']! as List).cast<String>()).input(),
-      includedQueryParameters: map['includedQueryParameters'] == null ? null : ((map['includedQueryParameters']! as List).cast<String>()).input(),
+      excludeHost: (() {
+        final guardedValue = map['excludeHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      excludeQueryString: (() {
+        final guardedValue = map['excludeQueryString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      excludedQueryParameters: (() {
+        final guardedValue = map['excludedQueryParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeProtocol: (() {
+        final guardedValue = map['includeProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includedCookieNames: (() {
+        final guardedValue = map['includedCookieNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedHeaderNames: (() {
+        final guardedValue = map['includedHeaderNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedQueryParameters: (() {
+        final guardedValue = map['includedQueryParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

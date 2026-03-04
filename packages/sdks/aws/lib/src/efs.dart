@@ -1,5 +1,3 @@
-library module_efs;
-
 export 'efs/access_point.dart';
 export 'efs/access_point_args.dart';
 export 'efs/access_point_posix_user.dart';

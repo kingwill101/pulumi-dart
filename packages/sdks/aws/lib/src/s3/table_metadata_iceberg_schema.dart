@@ -10,20 +10,35 @@ class TableMetadataIcebergSchema {
 
   /// Creates a new [TableMetadataIcebergSchema].
   /// [fields] List of schema fields for the Iceberg table. Each field defines a column in the table schema.
-  TableMetadataIcebergSchema({
-    required this.fields,
-  });
+  TableMetadataIcebergSchema({required this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': pulumi.Input.mapInputValue<List<TableMetadataIcebergSchemaField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<TableMetadataIcebergSchemaField, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fields':
+          pulumi.Input.mapInputValue<
+            List<TableMetadataIcebergSchemaField>,
+            List<Map<String, dynamic>>
+          >(
+            fields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TableMetadataIcebergSchemaField,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TableMetadataIcebergSchema.fromMap(Map<String, dynamic> map) {
     return TableMetadataIcebergSchema(
-      fields: (pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(map['fields']!, (value) => TableMetadataIcebergSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fields: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(
+          map['fields']!,
+          (value) => TableMetadataIcebergSchemaField.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

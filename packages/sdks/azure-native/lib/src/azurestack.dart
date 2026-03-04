@@ -1,5 +1,3 @@
-library module_azurestack;
-
 export 'azurestack/compatibility_response.dart';
 export 'azurestack/customer_subscription.dart';
 export 'azurestack/customer_subscription_args.dart';

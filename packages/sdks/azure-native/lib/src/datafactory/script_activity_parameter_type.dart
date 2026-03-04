@@ -13,16 +13,15 @@ enum ScriptActivityParameterType {
   valueString("String"),
   valueTimespan("Timespan");
 
-  const ScriptActivityParameterType(this.value);
-  final String value;
+  const ScriptActivityParameterType(this.wireValue);
+  final String wireValue;
 
   static ScriptActivityParameterType fromValue(String value) {
     for (final item in ScriptActivityParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScriptActivityParameterType value: $value');
   }
 }
-

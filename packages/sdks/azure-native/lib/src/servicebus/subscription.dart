@@ -149,50 +149,74 @@ import 'system_data_response.dart';
 class Subscription extends pulumi.CustomResource {
   /// Last time there was a receive request to this subscription.
   late final pulumi.Output<String> accessedAt;
+
   /// ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
   late final pulumi.Output<String?> autoDeleteOnIdle;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Properties specific to client affine subscriptions.
-  late final pulumi.Output<SBClientAffinePropertiesResponse?> clientAffineProperties;
+  late final pulumi.Output<SBClientAffinePropertiesResponse?>
+  clientAffineProperties;
+
   /// Message count details
   late final pulumi.Output<MessageCountDetailsResponse> countDetails;
+
   /// Exact time the message was created.
   late final pulumi.Output<String> createdAt;
+
   /// Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
   late final pulumi.Output<bool?> deadLetteringOnFilterEvaluationExceptions;
+
   /// Value that indicates whether a subscription has dead letter support when a message expires.
   late final pulumi.Output<bool?> deadLetteringOnMessageExpiration;
+
   /// ISO 8061 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
   late final pulumi.Output<String?> defaultMessageTimeToLive;
+
   /// ISO 8601 timeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
   late final pulumi.Output<String?> duplicateDetectionHistoryTimeWindow;
+
   /// Value that indicates whether server-side batched operations are enabled.
   late final pulumi.Output<bool?> enableBatchedOperations;
+
   /// Queue/Topic name to forward the Dead Letter message
   late final pulumi.Output<String?> forwardDeadLetteredMessagesTo;
+
   /// Queue/Topic name to forward the messages
   late final pulumi.Output<String?> forwardTo;
+
   /// Value that indicates whether the subscription has an affinity to the client id.
   late final pulumi.Output<bool?> isClientAffine;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
   late final pulumi.Output<String?> lockDuration;
+
   /// Number of maximum deliveries.
   late final pulumi.Output<int?> maxDeliveryCount;
+
   /// Number of messages.
   late final pulumi.Output<double> messageCount;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Value indicating if a subscription supports the concept of sessions.
   late final pulumi.Output<bool?> requiresSession;
+
   /// Enumerates the possible values for the status of a messaging entity.
   late final pulumi.Output<String?> status;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
+
   /// The exact time the message was updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -205,34 +229,46 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicebus:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessedAt = registerOutput<String>('accessedAt');
-    this.autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientAffineProperties = registerOutput<SBClientAffinePropertiesResponse?>('clientAffineProperties');
-    this.countDetails = registerOutput<MessageCountDetailsResponse>('countDetails');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.deadLetteringOnFilterEvaluationExceptions = registerOutput<bool?>('deadLetteringOnFilterEvaluationExceptions');
-    this.deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
-    this.defaultMessageTimeToLive = registerOutput<String?>('defaultMessageTimeToLive');
-    this.duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
-    this.enableBatchedOperations = registerOutput<bool?>('enableBatchedOperations');
-    this.forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
-    this.forwardTo = registerOutput<String?>('forwardTo');
-    this.isClientAffine = registerOutput<bool?>('isClientAffine');
-    this.location = registerOutput<String>('location');
-    this.lockDuration = registerOutput<String?>('lockDuration');
-    this.maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
-    this.messageCount = registerOutput<double>('messageCount');
+         'azure-native:servicebus:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessedAt = registerOutput<String>('accessedAt');
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientAffineProperties = registerOutput<SBClientAffinePropertiesResponse?>(
+      'clientAffineProperties',
+    );
+    countDetails = registerOutput<MessageCountDetailsResponse>('countDetails');
+    createdAt = registerOutput<String>('createdAt');
+    deadLetteringOnFilterEvaluationExceptions = registerOutput<bool?>(
+      'deadLetteringOnFilterEvaluationExceptions',
+    );
+    deadLetteringOnMessageExpiration = registerOutput<bool?>(
+      'deadLetteringOnMessageExpiration',
+    );
+    defaultMessageTimeToLive = registerOutput<String?>(
+      'defaultMessageTimeToLive',
+    );
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>(
+      'duplicateDetectionHistoryTimeWindow',
+    );
+    enableBatchedOperations = registerOutput<bool?>('enableBatchedOperations');
+    forwardDeadLetteredMessagesTo = registerOutput<String?>(
+      'forwardDeadLetteredMessagesTo',
+    );
+    forwardTo = registerOutput<String?>('forwardTo');
+    isClientAffine = registerOutput<bool?>('isClientAffine');
+    location = registerOutput<String>('location');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
+    messageCount = registerOutput<double>('messageCount');
     this.name = registerOutput<String>('name');
-    this.requiresSession = registerOutput<bool?>('requiresSession');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    requiresSession = registerOutput<bool?>('requiresSession');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

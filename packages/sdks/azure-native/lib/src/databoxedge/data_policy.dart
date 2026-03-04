@@ -3,16 +3,15 @@ enum DataPolicy {
   valueCloud("Cloud"),
   valueLocal("Local");
 
-  const DataPolicy(this.value);
-  final String value;
+  const DataPolicy(this.wireValue);
+  final String wireValue;
 
   static DataPolicy fromValue(String value) {
     for (final item in DataPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataPolicy value: $value');
   }
 }
-

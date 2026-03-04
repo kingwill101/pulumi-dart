@@ -236,7 +236,7 @@ import 'iot_hub_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Devices` - 2022-02-05
@@ -251,12 +251,16 @@ import 'iot_hub_certificate_state.dart';
 class IotHubCertificate extends pulumi.CustomResource {
   /// The Base-64 representation of the X509 leaf certificate .cer file or just a .pem file content.
   late final pulumi.Output<String> certificateContent;
+
   /// The name of the IoT Device Provisioning Service that this certificate will be attached to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotDpsName;
+
   /// Specifies if the certificate is created in verified state. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> isVerified;
+
   /// Specifies the name of the Iot Device Provisioning Service Certificate resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group under which the Iot Device Provisioning Service Certificate resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -269,16 +273,16 @@ class IotHubCertificate extends pulumi.CustomResource {
     IotHubCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubCertificate:IotHubCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateContent = registerOutput<String>('certificateContent');
-    this.iotDpsName = registerOutput<String>('iotDpsName');
-    this.isVerified = registerOutput<bool?>('isVerified');
+         'azure:iot/iotHubCertificate:IotHubCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateContent = registerOutput<String>('certificateContent');
+    iotDpsName = registerOutput<String>('iotDpsName');
+    isVerified = registerOutput<bool?>('isVerified');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IotHubCertificate] resource's state with the given [name] and [id].
@@ -299,15 +303,15 @@ class IotHubCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubCertificate:IotHubCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateContent = registerOutput<String>('certificateContent');
-    this.iotDpsName = registerOutput<String>('iotDpsName');
-    this.isVerified = registerOutput<bool?>('isVerified');
+         'azure:iot/iotHubCertificate:IotHubCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateContent = registerOutput<String>('certificateContent');
+    iotDpsName = registerOutput<String>('iotDpsName');
+    isVerified = registerOutput<bool?>('isVerified');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

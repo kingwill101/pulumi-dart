@@ -419,7 +419,7 @@ import 'integration_account_agreement_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -434,22 +434,33 @@ import 'integration_account_agreement_state.dart';
 class IntegrationAccountAgreement extends pulumi.CustomResource {
   /// The type of the Logic App Integration Account Agreement. Possible values are `AS2`, `X12` and `Edifact`.
   late final pulumi.Output<String> agreementType;
+
   /// The content of the Logic App Integration Account Agreement.
   late final pulumi.Output<String> content;
+
   /// A `guest_identity` block as documented below.
-  late final pulumi.Output<IntegrationAccountAgreementGuestIdentity> guestIdentity;
+  late final pulumi.Output<IntegrationAccountAgreementGuestIdentity>
+  guestIdentity;
+
   /// The name of the guest Logic App Integration Account Partner.
   late final pulumi.Output<String> guestPartnerName;
+
   /// A `host_identity` block as documented below.
-  late final pulumi.Output<IntegrationAccountAgreementHostIdentity> hostIdentity;
+  late final pulumi.Output<IntegrationAccountAgreementHostIdentity>
+  hostIdentity;
+
   /// The name of the host Logic App Integration Account Partner.
   late final pulumi.Output<String> hostPartnerName;
+
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// The metadata of the Logic App Integration Account Agreement.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Agreement. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Logic App Integration Account Agreement should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -462,21 +473,25 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     IntegrationAccountAgreementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agreementType = registerOutput<String>('agreementType');
-    this.content = registerOutput<String>('content');
-    this.guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>('guestIdentity');
-    this.guestPartnerName = registerOutput<String>('guestPartnerName');
-    this.hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>('hostIdentity');
-    this.hostPartnerName = registerOutput<String>('hostPartnerName');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agreementType = registerOutput<String>('agreementType');
+    content = registerOutput<String>('content');
+    guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>(
+      'guestIdentity',
+    );
+    guestPartnerName = registerOutput<String>('guestPartnerName');
+    hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>(
+      'hostIdentity',
+    );
+    hostPartnerName = registerOutput<String>('hostPartnerName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountAgreement] resource's state with the given [name] and [id].
@@ -497,20 +512,24 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agreementType = registerOutput<String>('agreementType');
-    this.content = registerOutput<String>('content');
-    this.guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>('guestIdentity');
-    this.guestPartnerName = registerOutput<String>('guestPartnerName');
-    this.hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>('hostIdentity');
-    this.hostPartnerName = registerOutput<String>('hostPartnerName');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agreementType = registerOutput<String>('agreementType');
+    content = registerOutput<String>('content');
+    guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>(
+      'guestIdentity',
+    );
+    guestPartnerName = registerOutput<String>('guestPartnerName');
+    hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>(
+      'hostIdentity',
+    );
+    hostPartnerName = registerOutput<String>('hostPartnerName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

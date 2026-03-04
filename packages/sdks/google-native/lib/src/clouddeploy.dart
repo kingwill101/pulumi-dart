@@ -1,5 +1,3 @@
-library module_clouddeploy;
-
 export 'clouddeploy/advance_rollout_rule.dart';
 export 'clouddeploy/advance_rollout_rule_response.dart';
 export 'clouddeploy/anthos_cluster.dart';

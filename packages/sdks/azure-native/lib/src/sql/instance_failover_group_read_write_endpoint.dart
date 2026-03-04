@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceFailoverGroupReadWriteEndpoint {
   /// Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
   final pulumi.Input<String> failoverPolicy;
+
   /// Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
   final pulumi.Input<int>? failoverWithDataLossGracePeriodMinutes;
 
@@ -20,15 +21,21 @@ class InstanceFailoverGroupReadWriteEndpoint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failoverPolicy': failoverPolicy,
-      'failoverWithDataLossGracePeriodMinutes': ?failoverWithDataLossGracePeriodMinutes,
+      'failoverWithDataLossGracePeriodMinutes':
+          ?failoverWithDataLossGracePeriodMinutes,
     };
   }
 
-  factory InstanceFailoverGroupReadWriteEndpoint.fromMap(Map<String, dynamic> map) {
+  factory InstanceFailoverGroupReadWriteEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFailoverGroupReadWriteEndpoint(
-      failoverPolicy: (map['failoverPolicy'] as String).input(),
-      failoverWithDataLossGracePeriodMinutes: map['failoverWithDataLossGracePeriodMinutes'] == null ? null : (map['failoverWithDataLossGracePeriodMinutes']! as int).input(),
+      failoverPolicy: pulumi.Input.fromValue(map['failoverPolicy'] as String),
+      failoverWithDataLossGracePeriodMinutes: (() {
+        final guardedValue = map['failoverWithDataLossGracePeriodMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

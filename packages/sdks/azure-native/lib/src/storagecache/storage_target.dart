@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_nfs_target_response.dart';
 import 'clfs_target_response.dart';
-import 'namespace_junction_response.dart';
 import 'nfs3_target_response.dart';
 import 'storage_target_args.dart';
 import 'system_data_response.dart';
@@ -589,30 +588,43 @@ import 'unknown_target_response.dart';
 class StorageTarget extends pulumi.CustomResource {
   /// The percentage of cache space allocated for this storage target
   late final pulumi.Output<int> allocationPercentage;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Properties when targetType is blobNfs.
   late final pulumi.Output<BlobNfsTargetResponse?> blobNfs;
+
   /// Properties when targetType is clfs.
   late final pulumi.Output<ClfsTargetResponse?> clfs;
+
   /// List of cache namespace junctions to target for namespace associations.
-  late final pulumi.Output<List<NamespaceJunctionResponse>?> junctions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> junctions;
+
   /// Region name string.
   late final pulumi.Output<String> location;
+
   /// Name of the Storage Target.
   late final pulumi.Output<String> name;
+
   /// Properties when targetType is nfs3.
   late final pulumi.Output<Nfs3TargetResponse?> nfs3;
+
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
   late final pulumi.Output<String> provisioningState;
+
   /// Storage target operational state.
   late final pulumi.Output<String?> state;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the Storage Target.
   late final pulumi.Output<String> targetType;
+
   /// Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
   late final pulumi.Output<String> type;
+
   /// Properties when targetType is unknown.
   late final pulumi.Output<UnknownTargetResponse?> unknown;
 
@@ -625,24 +637,24 @@ class StorageTarget extends pulumi.CustomResource {
     StorageTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagecache:StorageTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPercentage = registerOutput<int>('allocationPercentage');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs');
-    this.clfs = registerOutput<ClfsTargetResponse?>('clfs');
-    this.junctions = registerOutput<List<NamespaceJunctionResponse>?>('junctions');
-    this.location = registerOutput<String>('location');
+         'azure-native:storagecache:StorageTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationPercentage = registerOutput<int>('allocationPercentage');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs');
+    clfs = registerOutput<ClfsTargetResponse?>('clfs');
+    junctions = registerOutput<List<Map<String, dynamic>>?>('junctions');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetType = registerOutput<String>('targetType');
-    this.type = registerOutput<String>('type');
-    this.unknown = registerOutput<UnknownTargetResponse?>('unknown');
+    nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetType = registerOutput<String>('targetType');
+    type = registerOutput<String>('type');
+    unknown = registerOutput<UnknownTargetResponse?>('unknown');
   }
 }

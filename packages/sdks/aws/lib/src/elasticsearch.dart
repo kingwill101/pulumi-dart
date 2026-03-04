@@ -1,5 +1,3 @@
-library module_elasticsearch;
-
 export 'elasticsearch/domain.dart';
 export 'elasticsearch/domain_advanced_security_options.dart';
 export 'elasticsearch/domain_advanced_security_options_master_user_options.dart';

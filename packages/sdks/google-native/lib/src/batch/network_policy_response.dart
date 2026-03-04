@@ -10,20 +10,35 @@ class NetworkPolicyResponse {
 
   /// Creates a new [NetworkPolicyResponse].
   /// [networkInterfaces] Network configurations.
-  NetworkPolicyResponse({
-    required this.networkInterfaces,
-  });
+  NetworkPolicyResponse({required this.networkInterfaces});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': pulumi.Input.mapInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          pulumi.Input.mapInputValue<
+            List<NetworkInterfaceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkInterfaceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkPolicyResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyResponse(
-      networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NetworkInterfaceResponse>(
+          map['networkInterfaces']!,
+          (value) => NetworkInterfaceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

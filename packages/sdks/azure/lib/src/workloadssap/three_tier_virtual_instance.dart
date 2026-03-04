@@ -6,7 +6,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 
 /// Manages an SAP Three Tier Virtual Instance with a new SAP System.
 ///
-/// > **Note:** Before using this resource, it's required to submit the request of registering the Resource Provider with Azure CLI `az provider register --namespace "Microsoft.Workloads"`. The Resource Provider can take a while to register, you can check the status by running `az provider show --namespace "Microsoft.Workloads" --query "registrationState"`. Once this outputs "Registered" the Resource Provider is available for use.
+/// &gt; **Note:** Before using this resource, it's required to submit the request of registering the Resource Provider with Azure CLI `az provider register --namespace "Microsoft.Workloads"`. The Resource Provider can take a while to register, you can check the status by running `az provider show --namespace "Microsoft.Workloads" --query "registrationState"`. Once this outputs "Registered" the Resource Provider is available for use.
 ///
 /// ## Example Usage
 ///
@@ -1794,7 +1794,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Workloads` - 2024-09-01
@@ -1809,28 +1809,40 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 class ThreeTierVirtualInstance extends pulumi.CustomResource {
   /// The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appLocation;
+
   /// The environment type for the SAP Three Tier Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> environment;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ThreeTierVirtualInstanceIdentity?> identity;
+
   /// The Azure Region where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the managed Resource Group for the SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> managedResourceGroupName;
+
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   late final pulumi.Output<String?> managedResourcesNetworkAccessType;
+
   /// Specifies the name of this SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The FQDN of the SAP system. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapFqdn;
+
   /// The SAP Product type for the SAP Three Tier Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapProduct;
+
   /// A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<ThreeTierVirtualInstanceThreeTierConfiguration> threeTierConfiguration;
+  late final pulumi.Output<ThreeTierVirtualInstanceThreeTierConfiguration>
+  threeTierConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstance].
   /// [name] The Pulumi resource name.
@@ -1841,23 +1853,30 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     ThreeTierVirtualInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appLocation = registerOutput<String>('appLocation');
-    this.environment = registerOutput<String>('environment');
-    this.identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
-    this.managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+         'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appLocation = registerOutput<String>('appLocation');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>(
+      'managedResourceGroupName',
+    );
+    managedResourcesNetworkAccessType = registerOutput<String?>(
+      'managedResourcesNetworkAccessType',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sapFqdn = registerOutput<String>('sapFqdn');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threeTierConfiguration = registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>('threeTierConfiguration');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapFqdn = registerOutput<String>('sapFqdn');
+    sapProduct = registerOutput<String>('sapProduct');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threeTierConfiguration =
+        registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>(
+          'threeTierConfiguration',
+        );
   }
 
   /// Gets an existing [ThreeTierVirtualInstance] resource's state with the given [name] and [id].
@@ -1878,22 +1897,29 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appLocation = registerOutput<String>('appLocation');
-    this.environment = registerOutput<String>('environment');
-    this.identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
-    this.managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+         'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appLocation = registerOutput<String>('appLocation');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>(
+      'managedResourceGroupName',
+    );
+    managedResourcesNetworkAccessType = registerOutput<String?>(
+      'managedResourcesNetworkAccessType',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sapFqdn = registerOutput<String>('sapFqdn');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threeTierConfiguration = registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>('threeTierConfiguration');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapFqdn = registerOutput<String>('sapFqdn');
+    sapProduct = registerOutput<String>('sapProduct');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threeTierConfiguration =
+        registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>(
+          'threeTierConfiguration',
+        );
   }
 }

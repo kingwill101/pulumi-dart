@@ -1,5 +1,3 @@
-library module_cloudphone;
-
 export 'cloudphone/image.dart';
 export 'cloudphone/image_args.dart';
 export 'cloudphone/image_state.dart';

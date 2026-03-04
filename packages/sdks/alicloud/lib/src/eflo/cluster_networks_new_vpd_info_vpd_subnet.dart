@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworksNewVpdInfoVpdSubnet {
   /// Subnet cidr
   final pulumi.Input<String>? subnetCidr;
+
   /// Subnet Type
   final pulumi.Input<String>? subnetType;
   final pulumi.Input<String>? zoneId;
@@ -29,10 +30,21 @@ class ClusterNetworksNewVpdInfoVpdSubnet {
 
   factory ClusterNetworksNewVpdInfoVpdSubnet.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksNewVpdInfoVpdSubnet(
-      subnetCidr: map['subnetCidr'] == null ? null : (map['subnetCidr']! as String).input(),
-      subnetType: map['subnetType'] == null ? null : (map['subnetType']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      subnetCidr: (() {
+        final guardedValue = map['subnetCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetType: (() {
+        final guardedValue = map['subnetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

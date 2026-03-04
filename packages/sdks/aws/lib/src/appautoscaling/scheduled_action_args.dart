@@ -10,22 +10,31 @@ import 'scheduled_action_scalable_target_action.dart';
 class ScheduledActionArgs {
   /// Date and time for the scheduled action to end in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   final pulumi.Input<String>? endTime;
+
   /// Name of the scheduled action.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the resource associated with the scheduled action. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html)
   final pulumi.Input<String> resourceId;
+
   /// Scalable dimension. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs:service:DesiredCount
   final pulumi.Input<String> scalableDimension;
+
   /// New minimum and maximum capacity. You can set both values or just one. See below
   final pulumi.Input<ScheduledActionScalableTargetAction> scalableTargetAction;
+
   /// Schedule for this action. The following formats are supported: At expressions - at(yyyy-mm-ddThh:mm:ss), Rate expressions - rate(valueunit), Cron expressions - cron(fields). Times for at expressions and cron expressions are evaluated using the time zone configured in `timezone`. Documentation can be found in the `Timezone` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html)
   final pulumi.Input<String> schedule;
+
   /// Namespace of the AWS service. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs
   final pulumi.Input<String> serviceNamespace;
+
   /// Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   final pulumi.Input<String>? startTime;
+
   /// Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `start_time` and `end_time`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
   final pulumi.Input<String>? timezone;
 
@@ -60,7 +69,11 @@ class ScheduledActionArgs {
       'region': ?region,
       'resourceId': resourceId,
       'scalableDimension': scalableDimension,
-      'scalableTargetAction': pulumi.Input.mapInputValue<ScheduledActionScalableTargetAction, Map<String, dynamic>>(scalableTargetAction, (value) => value.toMap()),
+      'scalableTargetAction':
+          pulumi.Input.mapInputValue<
+            ScheduledActionScalableTargetAction,
+            Map<String, dynamic>
+          >(scalableTargetAction, (value) => value.toMap()),
       'schedule': schedule,
       'serviceNamespace': serviceNamespace,
       'startTime': ?startTime,
@@ -70,17 +83,44 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      scalableDimension: (map['scalableDimension'] as String).input(),
-      scalableTargetAction: (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction']! as Map).cast<String, dynamic>())).input(),
-      schedule: (map['schedule'] as String).input(),
-      serviceNamespace: (map['serviceNamespace'] as String).input(),
-      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
-      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      scalableDimension: pulumi.Input.fromValue(
+        map['scalableDimension'] as String,
+      ),
+      scalableTargetAction: pulumi.Input.fromValue(
+        ScheduledActionScalableTargetAction.fromMap(
+          (map['scalableTargetAction']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      serviceNamespace: pulumi.Input.fromValue(
+        map['serviceNamespace'] as String,
+      ),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

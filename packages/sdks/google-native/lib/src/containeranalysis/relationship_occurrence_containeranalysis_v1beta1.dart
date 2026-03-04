@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipOccurrenceContaineranalysisV1beta1 {
   /// A place for the SPDX file creator to record any general comments about the relationship
   final pulumi.Input<String>? comment;
+
   /// Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
   final pulumi.Input<String>? source;
+
   /// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
   final pulumi.Input<String>? target;
 
@@ -29,12 +31,25 @@ class RelationshipOccurrenceContaineranalysisV1beta1 {
     };
   }
 
-  factory RelationshipOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory RelationshipOccurrenceContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelationshipOccurrenceContaineranalysisV1beta1(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

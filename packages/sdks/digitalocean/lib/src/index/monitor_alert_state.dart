@@ -9,17 +9,23 @@ class MonitorAlertState {
   /// Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
   /// read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
   final pulumi.Input<MonitorAlertAlerts>? alerts;
+
   /// The comparison for `value`.
   /// This may be either `GreaterThan` or `LessThan`.
   final pulumi.Input<String>? compare;
+
   /// The description of the alert.
   final pulumi.Input<String>? description;
+
   /// The status of the alert.
   final pulumi.Input<bool>? enabled;
+
   /// A list of IDs for the resources to which the alert policy applies.
   final pulumi.Input<List<String>>? entities;
+
   /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
   final pulumi.Input<List<String>>? tags;
+
   /// The type of the alert.
   /// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
   /// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
@@ -35,11 +41,14 @@ class MonitorAlertState {
   /// `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
   /// `v1/dbaas/alerts/disk_utilization_alerts`.
   final pulumi.Input<String>? type;
+
   /// The uuid of the alert.
   final pulumi.Input<String>? uuid;
+
   /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
   /// DigitalOcean will show the correct unit in the web panel.
   final pulumi.Input<double>? value;
+
   /// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
   final pulumi.Input<String>? window;
 
@@ -69,7 +78,11 @@ class MonitorAlertState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': ?pulumi.Input.mapOptionalInputValue<MonitorAlertAlerts, Map<String, dynamic>>(alerts, (value) => value.toMap()),
+      'alerts':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitorAlertAlerts,
+            Map<String, dynamic>
+          >(alerts, (value) => value.toMap()),
       'compare': ?compare,
       'description': ?description,
       'enabled': ?enabled,
@@ -84,17 +97,60 @@ class MonitorAlertState {
 
   factory MonitorAlertState.fromMap(Map<String, dynamic> map) {
     return MonitorAlertState(
-      alerts: map['alerts'] == null ? null : (MonitorAlertAlerts.fromMap((map['alerts']! as Map).cast<String, dynamic>())).input(),
-      compare: map['compare'] == null ? null : (map['compare']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      entities: map['entities'] == null ? null : ((map['entities']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as double).input(),
-      window: map['window'] == null ? null : (map['window']! as String).input(),
+      alerts: (() {
+        final guardedValue = map['alerts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitorAlertAlerts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      compare: (() {
+        final guardedValue = map['compare'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      entities: (() {
+        final guardedValue = map['entities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      window: (() {
+        final guardedValue = map['window'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

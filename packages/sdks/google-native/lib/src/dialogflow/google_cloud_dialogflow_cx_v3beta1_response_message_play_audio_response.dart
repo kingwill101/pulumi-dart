@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final pulumi.Input<bool> allowPlaybackInterruption;
+
   /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
   final pulumi.Input<String> audioUri;
 
@@ -24,11 +25,14 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse(
-      allowPlaybackInterruption: (map['allowPlaybackInterruption'] as bool).input(),
-      audioUri: (map['audioUri'] as String).input(),
+      allowPlaybackInterruption: pulumi.Input.fromValue(
+        map['allowPlaybackInterruption'] as bool,
+      ),
+      audioUri: pulumi.Input.fromValue(map['audioUri'] as String),
     );
   }
 }
-

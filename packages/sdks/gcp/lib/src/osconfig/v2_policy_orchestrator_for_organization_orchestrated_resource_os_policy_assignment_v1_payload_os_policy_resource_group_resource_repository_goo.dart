@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
   /// Required. The name of the repository.
   final pulumi.Input<String> name;
+
   /// Required. The url of the repository.
   final pulumi.Input<String> url;
 
@@ -17,17 +18,15 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'url': url,
-    };
+    return <String, dynamic>{'name': name, 'url': url};
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo(
-      name: (map['name'] as String).input(),
-      url: (map['url'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

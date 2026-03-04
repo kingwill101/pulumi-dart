@@ -221,30 +221,46 @@ import 'system_data_response.dart';
 class GroundStation extends pulumi.CustomResource {
   /// Altitude of the ground station.
   late final pulumi.Output<double?> altitudeMeters;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Ground station capabilities.
   late final pulumi.Output<List<String>> capabilities;
+
   /// City of ground station.
   late final pulumi.Output<String?> city;
+
   /// A reference to global communications site.
-  late final pulumi.Output<GroundStationsPropertiesResponseGlobalCommunicationsSite> globalCommunicationsSite;
+  late final pulumi.Output<
+    GroundStationsPropertiesResponseGlobalCommunicationsSite
+  >
+  globalCommunicationsSite;
+
   /// Latitude of the ground station in decimal degrees.
   late final pulumi.Output<double?> latitudeDegrees;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Longitude of the ground station in decimal degrees.
   late final pulumi.Output<double?> longitudeDegrees;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Ground station provider name.
   late final pulumi.Output<String?> providerName;
+
   /// Release Status of a ground station.
   late final pulumi.Output<String> releaseMode;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -257,24 +273,27 @@ class GroundStation extends pulumi.CustomResource {
     GroundStationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:orbital:GroundStation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.altitudeMeters = registerOutput<double?>('altitudeMeters');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capabilities = registerOutput<List<String>>('capabilities');
-    this.city = registerOutput<String?>('city');
-    this.globalCommunicationsSite = registerOutput<GroundStationsPropertiesResponseGlobalCommunicationsSite>('globalCommunicationsSite');
-    this.latitudeDegrees = registerOutput<double?>('latitudeDegrees');
-    this.location = registerOutput<String>('location');
-    this.longitudeDegrees = registerOutput<double?>('longitudeDegrees');
+         'azure-native:orbital:GroundStation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    altitudeMeters = registerOutput<double?>('altitudeMeters');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capabilities = registerOutput<List<String>>('capabilities');
+    city = registerOutput<String?>('city');
+    globalCommunicationsSite =
+        registerOutput<
+          GroundStationsPropertiesResponseGlobalCommunicationsSite
+        >('globalCommunicationsSite');
+    latitudeDegrees = registerOutput<double?>('latitudeDegrees');
+    location = registerOutput<String>('location');
+    longitudeDegrees = registerOutput<double?>('longitudeDegrees');
     this.name = registerOutput<String>('name');
-    this.providerName = registerOutput<String?>('providerName');
-    this.releaseMode = registerOutput<String>('releaseMode');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    providerName = registerOutput<String?>('providerName');
+    releaseMode = registerOutput<String>('releaseMode');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

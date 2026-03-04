@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureResponse {
   /// Specifies type
   final pulumi.Input<String>? dataType;
+
   /// Specifies description
   final pulumi.Input<String>? description;
+
   /// Specifies name
   final pulumi.Input<String>? featureName;
+
   /// Specifies tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,11 +39,28 @@ class FeatureResponse {
 
   factory FeatureResponse.fromMap(Map<String, dynamic> map) {
     return FeatureResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

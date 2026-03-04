@@ -8,30 +8,43 @@ import 'system_data_response.dart';
 class GetHypervClusterControllerClusterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets the timestamp marking Hyper-V cluster creation.
   final String createdTimestamp;
+
   /// Gets the errors.
   final List<HealthErrorDetailsResponse> errors;
+
   /// Gets or sets the FQDN/IPAddress of the Hyper-V cluster.
   final String? fqdn;
+
   /// Gets the functional level of the Hyper-V cluster.
   final int functionalLevel;
+
   /// Gets or sets list of hosts (FQDN) currently being tracked by the cluster.
   final List<String>? hostFqdnList;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The status of the last operation.
   final String? provisioningState;
+
   /// Gets or sets Run as account ID of the Hyper-V cluster.
   final String? runAsAccountId;
+
   /// Gets the status of the Hyper-V cluster.
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Gets the timestamp marking last updated on the Hyper-V cluster.
   final String updatedTimestamp;
 
@@ -71,7 +84,11 @@ class GetHypervClusterControllerClusterResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'createdTimestamp': createdTimestamp,
-      'errors': pulumi.Input.encodeList<HealthErrorDetailsResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            HealthErrorDetailsResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
       'fqdn': ?fqdn,
       'functionalLevel': functionalLevel,
       'hostFqdnList': ?hostFqdnList,
@@ -86,23 +103,47 @@ class GetHypervClusterControllerClusterResult {
     };
   }
 
-  factory GetHypervClusterControllerClusterResult.fromMap(Map<String, dynamic> map) {
+  factory GetHypervClusterControllerClusterResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHypervClusterControllerClusterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdTimestamp: map['createdTimestamp'] as String,
-      errors: pulumi.Input.decodeList<HealthErrorDetailsResponse>(map['errors'], (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fqdn: map['fqdn'] == null ? null : map['fqdn']! as String,
+      errors: pulumi.Input.decodeList<HealthErrorDetailsResponse>(
+        map['errors']!,
+        (value) => HealthErrorDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       functionalLevel: map['functionalLevel'] as int,
-      hostFqdnList: map['hostFqdnList'] == null ? null : (map['hostFqdnList']! as List).cast<String>(),
+      hostFqdnList: (() {
+        final guardedValue = map['hostFqdnList'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      runAsAccountId: map['runAsAccountId'] == null ? null : map['runAsAccountId']! as String,
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      runAsAccountId: (() {
+        final guardedValue = map['runAsAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       updatedTimestamp: map['updatedTimestamp'] as String,
     );
   }
 }
-

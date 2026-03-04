@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkTapRuleArgs {
   /// Name of the Network Tap Rule.
   final pulumi.Input<String> networkTapRuleName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkTapRuleArgs {
 
   factory GetNetworkTapRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapRuleArgs(
-      networkTapRuleName: (map['networkTapRuleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkTapRuleName: pulumi.Input.fromValue(
+        map['networkTapRuleName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

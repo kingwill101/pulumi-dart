@@ -3,16 +3,15 @@ enum NetworkConfigPeeringMode {
   peeringModeUnspecified("PEERING_MODE_UNSPECIFIED"),
   privateServiceAccess("PRIVATE_SERVICE_ACCESS");
 
-  const NetworkConfigPeeringMode(this.value);
-  final String value;
+  const NetworkConfigPeeringMode(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigPeeringMode fromValue(String value) {
     for (final item in NetworkConfigPeeringMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkConfigPeeringMode value: $value');
   }
 }
-

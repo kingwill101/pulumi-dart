@@ -157,20 +157,28 @@ import 'volume_type_response.dart';
 class Volume extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Requested capacity in GiB
   late final pulumi.Output<double> capacityGiB;
+
   /// String KV pairs indicating labels
   late final pulumi.Output<Map<String, String>> labels;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// The status of the resource.
   late final pulumi.Output<ResourceOperationalStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Properties of the volume
   late final pulumi.Output<VolumeTypeResponse> volumeType;
 
@@ -178,24 +186,21 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_containerstorage_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:containerstorage:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capacityGiB = registerOutput<double>('capacityGiB');
-    this.labels = registerOutput<Map<String, String>>('labels');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:containerstorage:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacityGiB = registerOutput<double>('capacityGiB');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<ResourceOperationalStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.volumeType = registerOutput<VolumeTypeResponse>('volumeType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<ResourceOperationalStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    volumeType = registerOutput<VolumeTypeResponse>('volumeType');
   }
 }

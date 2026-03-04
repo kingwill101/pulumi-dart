@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetFabricCapacityResult {
   /// The capacity administration
   final CapacityAdministrationResponse administration;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The current deployment state of Microsoft Fabric resource. The provisioningState is to indicate states for resource provisioning.
   final String provisioningState;
+
   /// The SKU details
   final RpSkuResponse sku;
+
   /// The current state of Microsoft Fabric resource. The state is to indicate more states outside of resource provisioning.
   final String state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -73,18 +83,25 @@ class GetFabricCapacityResult {
 
   factory GetFabricCapacityResult.fromMap(Map<String, dynamic> map) {
     return GetFabricCapacityResult(
-      administration: CapacityAdministrationResponse.fromMap((map['administration'] as Map).cast<String, dynamic>()),
+      administration: CapacityAdministrationResponse.fromMap(
+        (map['administration']! as Map).cast<String, dynamic>(),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: RpSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: RpSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -13,15 +13,14 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'behavior': behavior,
-    };
+    return <String, dynamic>{'behavior': behavior};
   }
 
-  factory PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful(
-      behavior: (map['behavior'] as String).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
     );
   }
 }
-

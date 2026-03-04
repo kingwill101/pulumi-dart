@@ -1,5 +1,3 @@
-library module_firebase;
-
 export 'firebase/ai_logic_config.dart';
 export 'firebase/ai_logic_config_args.dart';
 export 'firebase/ai_logic_config_generative_language_config.dart';

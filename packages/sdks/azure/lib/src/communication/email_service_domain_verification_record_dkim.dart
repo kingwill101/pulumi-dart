@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailServiceDomainVerificationRecordDkim {
   /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
+
   /// Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   final pulumi.Input<int>? ttl;
+
   /// Type of the DNS record. Example: TXT
   final pulumi.Input<String>? type;
+
   /// Value of the DNS record.
   final pulumi.Input<String>? value;
 
@@ -33,13 +36,30 @@ class EmailServiceDomainVerificationRecordDkim {
     };
   }
 
-  factory EmailServiceDomainVerificationRecordDkim.fromMap(Map<String, dynamic> map) {
+  factory EmailServiceDomainVerificationRecordDkim.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EmailServiceDomainVerificationRecordDkim(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

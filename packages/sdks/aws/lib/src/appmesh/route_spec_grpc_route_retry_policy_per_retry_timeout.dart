@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   /// Retry unit. Valid values: `ms`, `s`.
   final pulumi.Input<String> unit;
+
   /// Retry value.
   final pulumi.Input<int> value;
 
@@ -17,17 +18,15 @@ class RouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
-  factory RouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap(Map<String, dynamic> map) {
+  factory RouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RouteSpecGrpcRouteRetryPolicyPerRetryTimeout(
-      unit: (map['unit'] as String).input(),
-      value: (map['value'] as int).input(),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

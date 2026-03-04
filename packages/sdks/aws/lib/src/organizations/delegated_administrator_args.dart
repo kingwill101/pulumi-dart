@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedAdministratorArgs {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
   final pulumi.Input<String> accountId;
+
   /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
   final pulumi.Input<String> servicePrincipal;
 
@@ -29,9 +30,10 @@ class DelegatedAdministratorArgs {
 
   factory DelegatedAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorArgs(
-      accountId: (map['accountId'] as String).input(),
-      servicePrincipal: (map['servicePrincipal'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      servicePrincipal: pulumi.Input.fromValue(
+        map['servicePrincipal'] as String,
+      ),
     );
   }
 }
-

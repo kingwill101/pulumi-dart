@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityBindingManagedIdentityProfileResponse {
   /// The client ID of the managed identity.
   final pulumi.Input<String> clientId;
+
   /// The object ID of the managed identity.
   final pulumi.Input<String> objectId;
+
   /// The resource ID of the managed identity.
   final pulumi.Input<String> resourceId;
+
   /// The tenant ID of the managed identity.
   final pulumi.Input<String> tenantId;
 
@@ -34,13 +37,14 @@ class IdentityBindingManagedIdentityProfileResponse {
     };
   }
 
-  factory IdentityBindingManagedIdentityProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory IdentityBindingManagedIdentityProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityBindingManagedIdentityProfileResponse(
-      clientId: (map['clientId'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

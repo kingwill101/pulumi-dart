@@ -31,10 +31,13 @@ class GetRegionSnapshotArgs {
 
   factory GetRegionSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSnapshotArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      snapshot: (map['snapshot'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      snapshot: pulumi.Input.fromValue(map['snapshot'] as String),
     );
   }
 }
-

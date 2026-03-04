@@ -35,11 +35,18 @@ class GetMeshIamPolicyArgs {
 
   factory GetMeshIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMeshIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      meshId: (map['meshId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      meshId: pulumi.Input.fromValue(map['meshId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

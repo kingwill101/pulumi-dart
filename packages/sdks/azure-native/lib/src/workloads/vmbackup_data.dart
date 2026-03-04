@@ -9,11 +9,14 @@ import 'vmbackup_policy_properties.dart';
 class VMBackupData {
   /// Defines the policy properties for virtual machine backup.
   final pulumi.Input<VMBackupPolicyProperties> backupPolicy;
+
   /// The type of backup, VM, SQL or HANA.
   /// Expected value is 'VM'.
   final pulumi.Input<String> backupType;
+
   /// Defines the disk exclusion properties for virtual machine backup.
   final pulumi.Input<DiskExclusionProperties>? diskExclusionProperties;
+
   /// The properties of the recovery services vault used for backup.
   final pulumi.Input<ExistingRecoveryServicesVault> recoveryServicesVault;
 
@@ -31,20 +34,47 @@ class VMBackupData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupPolicy': pulumi.Input.mapInputValue<VMBackupPolicyProperties, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
+      'backupPolicy':
+          pulumi.Input.mapInputValue<
+            VMBackupPolicyProperties,
+            Map<String, dynamic>
+          >(backupPolicy, (value) => value.toMap()),
       'backupType': backupType,
-      'diskExclusionProperties': ?pulumi.Input.mapOptionalInputValue<DiskExclusionProperties, Map<String, dynamic>>(diskExclusionProperties, (value) => value.toMap()),
-      'recoveryServicesVault': pulumi.Input.mapInputValue<ExistingRecoveryServicesVault, Map<String, dynamic>>(recoveryServicesVault, (value) => value.toMap()),
+      'diskExclusionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskExclusionProperties,
+            Map<String, dynamic>
+          >(diskExclusionProperties, (value) => value.toMap()),
+      'recoveryServicesVault':
+          pulumi.Input.mapInputValue<
+            ExistingRecoveryServicesVault,
+            Map<String, dynamic>
+          >(recoveryServicesVault, (value) => value.toMap()),
     };
   }
 
   factory VMBackupData.fromMap(Map<String, dynamic> map) {
     return VMBackupData(
-      backupPolicy: (VMBackupPolicyProperties.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      backupType: (map['backupType'] as String).input(),
-      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionProperties.fromMap((map['diskExclusionProperties']! as Map).cast<String, dynamic>())).input(),
-      recoveryServicesVault: (ExistingRecoveryServicesVault.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>())).input(),
+      backupPolicy: pulumi.Input.fromValue(
+        VMBackupPolicyProperties.fromMap(
+          (map['backupPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      backupType: pulumi.Input.fromValue(map['backupType'] as String),
+      diskExclusionProperties: (() {
+        final guardedValue = map['diskExclusionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskExclusionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recoveryServicesVault: pulumi.Input.fromValue(
+        ExistingRecoveryServicesVault.fromMap(
+          (map['recoveryServicesVault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

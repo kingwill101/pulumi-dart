@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PatchDeploymentPatchConfigApt {
   /// List of packages to exclude from update. These packages will be excluded.
   final pulumi.Input<List<String>>? excludes;
+
   /// An exclusive list of packages to be updated. These are the only packages that will be updated.
   /// If these packages are not installed, they will be ignored. This field cannot be specified with
   /// any other patch configuration fields.
   final pulumi.Input<List<String>>? exclusivePackages;
+
   /// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
   /// Possible values are: `DIST`, `UPGRADE`.
   final pulumi.Input<String>? type;
@@ -33,10 +35,21 @@ class PatchDeploymentPatchConfigApt {
 
   factory PatchDeploymentPatchConfigApt.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigApt(
-      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
-      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      excludes: (() {
+        final guardedValue = map['excludes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      exclusivePackages: (() {
+        final guardedValue = map['exclusivePackages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

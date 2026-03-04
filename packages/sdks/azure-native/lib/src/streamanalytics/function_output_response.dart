@@ -9,20 +9,19 @@ class FunctionOutputResponse {
 
   /// Creates a new [FunctionOutputResponse].
   /// [dataType] The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  FunctionOutputResponse({
-    this.dataType,
-  });
+  FunctionOutputResponse({this.dataType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataType': ?dataType,
-    };
+    return <String, dynamic>{'dataType': ?dataType};
   }
 
   factory FunctionOutputResponse.fromMap(Map<String, dynamic> map) {
     return FunctionOutputResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,9 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate {
   /// The certificate store on the Virtual Machine where the certificate should be added.
   final pulumi.Input<String> store;
+
   /// The Secret URL of a Key Vault Certificate.
   ///
-  /// > **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
+  /// &gt; **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
   final pulumi.Input<String> url;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate].
@@ -19,17 +20,15 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCerti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'store': store,
-      'url': url,
-    };
+    return <String, dynamic>{'store': store, 'url': url};
   }
 
-  factory OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate.fromMap(Map<String, dynamic> map) {
+  factory OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate(
-      store: (map['store'] as String).input(),
-      url: (map['url'] as String).input(),
+      store: pulumi.Input.fromValue(map['store'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

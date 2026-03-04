@@ -7,6 +7,7 @@ import 'ospolicy_resource_file_response.dart';
 class OSPolicyResourcePackageResourceMSIResponse {
   /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
   final pulumi.Input<List<String>> properties;
+
   /// The MSI package.
   final pulumi.Input<OSPolicyResourceFileResponse> source;
 
@@ -21,15 +22,26 @@ class OSPolicyResourcePackageResourceMSIResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'properties': properties,
-      'source': pulumi.Input.mapInputValue<OSPolicyResourceFileResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourceFileResponse,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory OSPolicyResourcePackageResourceMSIResponse.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceMSIResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceMSIResponse(
-      properties: ((map['properties'] as List).cast<String>()).input(),
-      source: (OSPolicyResourceFileResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      properties: pulumi.Input.fromValue(
+        (map['properties'] as List).cast<String>(),
+      ),
+      source: pulumi.Input.fromValue(
+        OSPolicyResourceFileResponse.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

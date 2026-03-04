@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteOriginClientCertificateState {
   /// The certificate content.
   final pulumi.Input<String>? certificate;
+
   /// The time when the certificate was created.
   final pulumi.Input<String>? createTime;
+
   /// The private key of the certificate.
   final pulumi.Input<String>? privateKey;
+
   /// Site ID.
   final pulumi.Input<String>? siteId;
+
   /// The certificate ID on ESA.
   final pulumi.Input<String>? siteOriginClientCertificateId;
+
   /// The certificate name.
   final pulumi.Input<String>? siteOriginClientCertificateName;
+
   /// The status of the certificate.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class SiteOriginClientCertificateState {
 
   factory SiteOriginClientCertificateState.fromMap(Map<String, dynamic> map) {
     return SiteOriginClientCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      siteOriginClientCertificateId: map['siteOriginClientCertificateId'] == null ? null : (map['siteOriginClientCertificateId']! as String).input(),
-      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteOriginClientCertificateId: (() {
+        final guardedValue = map['siteOriginClientCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteOriginClientCertificateName: (() {
+        final guardedValue = map['siteOriginClientCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

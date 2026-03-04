@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiplexMultiplexSettings {
   /// Maximum video buffer delay.
   final pulumi.Input<int>? maximumVideoBufferDelayMilliseconds;
+
   /// Transport stream bit rate.
   final pulumi.Input<int> transportStreamBitrate;
+
   /// Unique ID for each multiplex.
   final pulumi.Input<int> transportStreamId;
+
   /// Transport stream reserved bit rate.
   final pulumi.Input<int>? transportStreamReservedBitrate;
 
@@ -26,7 +29,8 @@ class MultiplexMultiplexSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maximumVideoBufferDelayMilliseconds': ?maximumVideoBufferDelayMilliseconds,
+      'maximumVideoBufferDelayMilliseconds':
+          ?maximumVideoBufferDelayMilliseconds,
       'transportStreamBitrate': transportStreamBitrate,
       'transportStreamId': transportStreamId,
       'transportStreamReservedBitrate': ?transportStreamReservedBitrate,
@@ -35,11 +39,22 @@ class MultiplexMultiplexSettings {
 
   factory MultiplexMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexMultiplexSettings(
-      maximumVideoBufferDelayMilliseconds: map['maximumVideoBufferDelayMilliseconds'] == null ? null : ((map['maximumVideoBufferDelayMilliseconds'] as int).input()).input(),
-      transportStreamBitrate: (map['transportStreamBitrate'] as int).input(),
-      transportStreamId: (map['transportStreamId'] as int).input(),
-      transportStreamReservedBitrate: map['transportStreamReservedBitrate'] == null ? null : ((map['transportStreamReservedBitrate'] as int).input()).input(),
+      maximumVideoBufferDelayMilliseconds: (() {
+        final guardedValue = map['maximumVideoBufferDelayMilliseconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      transportStreamBitrate: pulumi.Input.fromValue(
+        map['transportStreamBitrate'] as int,
+      ),
+      transportStreamId: pulumi.Input.fromValue(
+        map['transportStreamId'] as int,
+      ),
+      transportStreamReservedBitrate: (() {
+        final guardedValue = map['transportStreamReservedBitrate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

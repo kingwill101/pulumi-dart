@@ -8,8 +8,10 @@ class GetTransitRouterAvailableResourcesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
+
   /// A list of Cen Transit Router Available Resources. Each element contains the following attributes:
   final List<GetTransitRouterAvailableResourcesResource> resources;
+
   /// (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
   final bool? supportMulticast;
 
@@ -29,18 +31,37 @@ class GetTransitRouterAvailableResourcesResult {
     return <String, dynamic>{
       'id': id,
       'outputFile': ?outputFile,
-      'resources': pulumi.Input.encodeList<GetTransitRouterAvailableResourcesResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'resources':
+          pulumi.Input.encodeList<
+            GetTransitRouterAvailableResourcesResource,
+            Map<String, dynamic>
+          >(resources, (value) => value.toMap()),
       'supportMulticast': ?supportMulticast,
     };
   }
 
-  factory GetTransitRouterAvailableResourcesResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterAvailableResourcesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterAvailableResourcesResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      resources: pulumi.Input.decodeList<GetTransitRouterAvailableResourcesResource>(map['resources'], (value) => GetTransitRouterAvailableResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
-      supportMulticast: map['supportMulticast'] == null ? null : map['supportMulticast']! as bool,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resources:
+          pulumi.Input.decodeList<GetTransitRouterAvailableResourcesResource>(
+            map['resources']!,
+            (value) => GetTransitRouterAvailableResourcesResource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      supportMulticast: (() {
+        final guardedValue = map['supportMulticast'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptRuleAddHeaderAction {
   /// The name of the header to add
   final pulumi.Input<String> headerName;
+
   /// The value of the header to add
   final pulumi.Input<String> headerValue;
+
   /// The position of the action in the receipt rule
   final pulumi.Input<int> position;
 
@@ -30,10 +32,9 @@ class ReceiptRuleAddHeaderAction {
 
   factory ReceiptRuleAddHeaderAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleAddHeaderAction(
-      headerName: (map['headerName'] as String).input(),
-      headerValue: (map['headerValue'] as String).input(),
-      position: (map['position'] as int).input(),
+      headerName: pulumi.Input.fromValue(map['headerName'] as String),
+      headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
+      position: pulumi.Input.fromValue(map['position'] as int),
     );
   }
 }
-

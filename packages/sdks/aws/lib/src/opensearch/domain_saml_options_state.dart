@@ -9,8 +9,10 @@ class DomainSamlOptionsState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? domainName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// SAML authentication options for an AWS OpenSearch Domain.
   final pulumi.Input<DomainSamlOptionsSamlOptions>? samlOptions;
 
@@ -18,26 +20,41 @@ class DomainSamlOptionsState {
   /// [domainName] Name of the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [samlOptions] SAML authentication options for an AWS OpenSearch Domain.
-  DomainSamlOptionsState({
-    this.domainName,
-    this.region,
-    this.samlOptions,
-  });
+  DomainSamlOptionsState({this.domainName, this.region, this.samlOptions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainName': ?domainName,
       'region': ?region,
-      'samlOptions': ?pulumi.Input.mapOptionalInputValue<DomainSamlOptionsSamlOptions, Map<String, dynamic>>(samlOptions, (value) => value.toMap()),
+      'samlOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainSamlOptionsSamlOptions,
+            Map<String, dynamic>
+          >(samlOptions, (value) => value.toMap()),
     };
   }
 
   factory DomainSamlOptionsState.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsState(
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      samlOptions: map['samlOptions'] == null ? null : ((DomainSamlOptionsSamlOptions.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      samlOptions: (() {
+        final guardedValue = map['samlOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainSamlOptionsSamlOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

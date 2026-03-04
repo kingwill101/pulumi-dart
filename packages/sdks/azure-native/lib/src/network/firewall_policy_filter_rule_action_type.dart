@@ -3,16 +3,17 @@ enum FirewallPolicyFilterRuleActionType {
   valueAllow("Allow"),
   valueDeny("Deny");
 
-  const FirewallPolicyFilterRuleActionType(this.value);
-  final String value;
+  const FirewallPolicyFilterRuleActionType(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyFilterRuleActionType fromValue(String value) {
     for (final item in FirewallPolicyFilterRuleActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyFilterRuleActionType value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyFilterRuleActionType value: $value',
+    );
   }
 }
-

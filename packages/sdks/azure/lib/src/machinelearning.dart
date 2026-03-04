@@ -1,5 +1,3 @@
-library module_machinelearning;
-
 export 'machinelearning/compute_cluster.dart';
 export 'machinelearning/compute_cluster_args.dart';
 export 'machinelearning/compute_cluster_identity.dart';

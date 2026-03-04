@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseIdentityResponse {
   /// Client Id of the database identity.
   final pulumi.Input<String>? clientId;
+
   /// Principal Id of the database identity.
   final pulumi.Input<String>? principalId;
+
   /// Resource Id of the database identity.
   final pulumi.Input<String>? resourceId;
 
@@ -15,11 +17,7 @@ class DatabaseIdentityResponse {
   /// [clientId] Client Id of the database identity.
   /// [principalId] Principal Id of the database identity.
   /// [resourceId] Resource Id of the database identity.
-  DatabaseIdentityResponse({
-    this.clientId,
-    this.principalId,
-    this.resourceId,
-  });
+  DatabaseIdentityResponse({this.clientId, this.principalId, this.resourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class DatabaseIdentityResponse {
 
   factory DatabaseIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentityResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,17 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The timestamp (in seconds) indicating when the WAF instance expires.
   final pulumi.Input<int> endDate;
+
   /// The ID of the WAF instance.
   final pulumi.Input<String> id;
+
   /// Indicates whether the WAF instance has overdue payments.
   final pulumi.Input<int> inDebt;
+
   /// The ID of WAF the instance.
   final pulumi.Input<String> instanceId;
+
   /// The number of days before the trial period of the WAF instance expires.
   final pulumi.Input<int> remainDay;
+
   /// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
   final pulumi.Input<int> status;
   final pulumi.Input<String> subscriptionType;
+
   /// Indicates whether this is a trial instance.
   final pulumi.Input<int> trial;
 
@@ -54,15 +60,16 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      endDate: (map['endDate'] as int).input(),
-      id: (map['id'] as String).input(),
-      inDebt: (map['inDebt'] as int).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      remainDay: (map['remainDay'] as int).input(),
-      status: (map['status'] as int).input(),
-      subscriptionType: (map['subscriptionType'] as String).input(),
-      trial: (map['trial'] as int).input(),
+      endDate: pulumi.Input.fromValue(map['endDate'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      inDebt: pulumi.Input.fromValue(map['inDebt'] as int),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      remainDay: pulumi.Input.fromValue(map['remainDay'] as int),
+      status: pulumi.Input.fromValue(map['status'] as int),
+      subscriptionType: pulumi.Input.fromValue(
+        map['subscriptionType'] as String,
+      ),
+      trial: pulumi.Input.fromValue(map['trial'] as int),
     );
   }
 }
-

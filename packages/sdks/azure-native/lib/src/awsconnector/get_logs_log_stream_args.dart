@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogsLogStreamArgs {
   /// Name of LogsLogStream
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLogsLogStreamArgs].
   /// [name] Name of LogsLogStream
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogsLogStreamArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetLogsLogStreamArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetLogsLogStreamArgs {
 
   factory GetLogsLogStreamArgs.fromMap(Map<String, dynamic> map) {
     return GetLogsLogStreamArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

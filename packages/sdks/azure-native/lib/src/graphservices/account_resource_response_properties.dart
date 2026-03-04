@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountResourceResponseProperties {
   /// Customer owned application ID
   final pulumi.Input<String> appId;
+
   /// Billing Plan Id
   final pulumi.Input<String> billingPlanId;
+
   /// Provisioning state.
   final pulumi.Input<String> provisioningState;
 
@@ -31,10 +33,11 @@ class AccountResourceResponseProperties {
 
   factory AccountResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseProperties(
-      appId: (map['appId'] as String).input(),
-      billingPlanId: (map['billingPlanId'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      billingPlanId: pulumi.Input.fromValue(map['billingPlanId'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

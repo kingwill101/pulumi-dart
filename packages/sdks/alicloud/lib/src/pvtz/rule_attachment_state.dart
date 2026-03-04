@@ -7,29 +7,52 @@ import 'rule_attachment_vpc.dart';
 class RuleAttachmentState {
   /// The ID of the rule.
   final pulumi.Input<String>? ruleId;
+
   /// The List of the VPC. See `vpcs` below.
   final pulumi.Input<List<RuleAttachmentVpc>>? vpcs;
 
   /// Creates a new [RuleAttachmentState].
   /// [ruleId] The ID of the rule.
   /// [vpcs] The List of the VPC. See `vpcs` below.
-  RuleAttachmentState({
-    this.ruleId,
-    this.vpcs,
-  });
+  RuleAttachmentState({this.ruleId, this.vpcs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ruleId': ?ruleId,
-      'vpcs': ?pulumi.Input.mapOptionalInputValue<List<RuleAttachmentVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<RuleAttachmentVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RuleAttachmentVpc>,
+            List<Map<String, dynamic>>
+          >(
+            vpcs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleAttachmentVpc,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RuleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RuleAttachmentState(
-      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<RuleAttachmentVpc>(map['vpcs']!, (value) => RuleAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcs: (() {
+        final guardedValue = map['vpcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RuleAttachmentVpc>(
+            guardedValue,
+            (value) => RuleAttachmentVpc.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

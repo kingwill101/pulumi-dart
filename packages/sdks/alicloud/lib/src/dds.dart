@@ -1,5 +1,3 @@
-library module_dds;
-
 export 'dds/functions.dart';
 export 'dds/get_mongo_instances_args.dart';
 export 'dds/get_mongo_instances_instance.dart';

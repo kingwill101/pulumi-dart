@@ -9,11 +9,14 @@ class ResourcePolicyState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? policyDocument;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The revision ID of the current resource-based policy.
   final pulumi.Input<String>? revisionId;
   final pulumi.Input<ResourcePolicyTimeouts>? timeouts;
+
   /// The ID of the workspace to attach the resource-based policy to.
   final pulumi.Input<String>? workspaceId;
 
@@ -36,19 +39,46 @@ class ResourcePolicyState {
       'policyDocument': ?policyDocument,
       'region': ?region,
       'revisionId': ?revisionId,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicyTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'workspaceId': ?workspaceId,
     };
   }
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      revisionId: map['revisionId'] == null ? null : ((map['revisionId'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ResourcePolicyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revisionId: (() {
+        final guardedValue = map['revisionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicyTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppPublicCertificateSlot.
 class GetWebAppPublicCertificateSlotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Public Certificate byte array
   final String? blob;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Public Certificate Location
   final String? publicCertificateLocation;
+
   /// Certificate Thumbprint
   final String thumbprint;
+
   /// Resource type.
   final String type;
 
@@ -53,17 +59,30 @@ class GetWebAppPublicCertificateSlotResult {
     };
   }
 
-  factory GetWebAppPublicCertificateSlotResult.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppPublicCertificateSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppPublicCertificateSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      blob: map['blob'] == null ? null : map['blob']! as String,
+      blob: (() {
+        final guardedValue = map['blob'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : map['publicCertificateLocation']! as String,
+      publicCertificateLocation: (() {
+        final guardedValue = map['publicCertificateLocation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
     );
   }
 }
-

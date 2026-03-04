@@ -8,8 +8,10 @@ import 'repo_id_response_containeranalysis_v1beta1.dart';
 class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
   /// An alias, which may be a branch or tag.
   final pulumi.Input<AliasContextResponseContaineranalysisV1beta1> aliasContext;
+
   /// The ID of the repo.
   final pulumi.Input<RepoIdResponseContaineranalysisV1beta1> repoId;
+
   /// A revision ID.
   final pulumi.Input<String> revisionId;
 
@@ -25,18 +27,35 @@ class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': pulumi.Input.mapInputValue<AliasContextResponseContaineranalysisV1beta1, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
-      'repoId': pulumi.Input.mapInputValue<RepoIdResponseContaineranalysisV1beta1, Map<String, dynamic>>(repoId, (value) => value.toMap()),
+      'aliasContext':
+          pulumi.Input.mapInputValue<
+            AliasContextResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(aliasContext, (value) => value.toMap()),
+      'repoId':
+          pulumi.Input.mapInputValue<
+            RepoIdResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(repoId, (value) => value.toMap()),
       'revisionId': revisionId,
     };
   }
 
-  factory CloudRepoSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudRepoSourceContextResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudRepoSourceContextResponseContaineranalysisV1beta1(
-      aliasContext: (AliasContextResponseContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      repoId: (RepoIdResponseContaineranalysisV1beta1.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
-      revisionId: (map['revisionId'] as String).input(),
+      aliasContext: pulumi.Input.fromValue(
+        AliasContextResponseContaineranalysisV1beta1.fromMap(
+          (map['aliasContext']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      repoId: pulumi.Input.fromValue(
+        RepoIdResponseContaineranalysisV1beta1.fromMap(
+          (map['repoId']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      revisionId: pulumi.Input.fromValue(map['revisionId'] as String),
     );
   }
 }
-

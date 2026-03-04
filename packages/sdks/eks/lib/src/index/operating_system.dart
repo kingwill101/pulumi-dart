@@ -8,16 +8,15 @@ enum OperatingSystem {
   bottlerocket("Bottlerocket"),
   rECOMMENDED("AL2023");
 
-  const OperatingSystem(this.value);
-  final String value;
+  const OperatingSystem(this.wireValue);
+  final String wireValue;
 
   static OperatingSystem fromValue(String value) {
     for (final item in OperatingSystem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperatingSystem value: $value');
   }
 }
-

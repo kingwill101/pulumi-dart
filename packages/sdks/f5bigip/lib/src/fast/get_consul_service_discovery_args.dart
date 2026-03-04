@@ -9,25 +9,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsulServiceDiscoveryArgs {
   /// Specifies whether to look for public or private IP addresses,default `private`.
   final pulumi.Input<String>? addressRealm;
+
   /// Specifies whether you are updating your credentials,default `false`.
   final pulumi.Input<bool>? credentialUpdate;
+
   /// Base 64 encoded bearer token to make requests to the Consul API. Will be stored in the declaration in an encrypted format.
   final pulumi.Input<String>? encodedToken;
+
   /// Custom JMESPath Query.
   final pulumi.Input<String>? jmesPathQuery;
+
   /// Member is down when fewer than minimum monitors report it healthy.
   final pulumi.Input<String>? minimumMonitors;
+
   /// Port to be used for AWS service discovery,default `80`.
   final pulumi.Input<int> port;
+
   /// If true, the server certificate is verified against the list of supplied/default CAs when making requests to the Consul API.
   final pulumi.Input<bool>? rejectUnauthorized;
+
   /// CA Bundle to validate server certificates.
   final pulumi.Input<String>? trustCa;
   final pulumi.Input<String>? type;
+
   /// Action to take when node cannot be detected,default `remove`.
   final pulumi.Input<String>? undetectableAction;
+
   /// Update interval for service discovery.
   final pulumi.Input<String>? updateInterval;
+
   /// The location of the node data.
   final pulumi.Input<String> uri;
 
@@ -78,19 +88,58 @@ class GetConsulServiceDiscoveryArgs {
 
   factory GetConsulServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetConsulServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
-      encodedToken: map['encodedToken'] == null ? null : (map['encodedToken']! as String).input(),
-      jmesPathQuery: map['jmesPathQuery'] == null ? null : (map['jmesPathQuery']! as String).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
-      port: (map['port'] as int).input(),
-      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : (map['rejectUnauthorized']! as bool).input(),
-      trustCa: map['trustCa'] == null ? null : (map['trustCa']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
-      uri: (map['uri'] as String).input(),
+      addressRealm: (() {
+        final guardedValue = map['addressRealm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialUpdate: (() {
+        final guardedValue = map['credentialUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encodedToken: (() {
+        final guardedValue = map['encodedToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jmesPathQuery: (() {
+        final guardedValue = map['jmesPathQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumMonitors: (() {
+        final guardedValue = map['minimumMonitors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      rejectUnauthorized: (() {
+        final guardedValue = map['rejectUnauthorized'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      trustCa: (() {
+        final guardedValue = map['trustCa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      undetectableAction: (() {
+        final guardedValue = map['undetectableAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateInterval: (() {
+        final guardedValue = map['updateInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

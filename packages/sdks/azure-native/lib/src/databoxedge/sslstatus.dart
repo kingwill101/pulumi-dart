@@ -3,16 +3,15 @@ enum SSLStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SSLStatus(this.value);
-  final String value;
+  const SSLStatus(this.wireValue);
+  final String wireValue;
 
   static SSLStatus fromValue(String value) {
     for (final item in SSLStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SSLStatus value: $value');
   }
 }
-

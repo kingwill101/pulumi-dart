@@ -873,7 +873,7 @@ import 'environment_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -888,30 +888,41 @@ import 'environment_certificate_state.dart';
 class EnvironmentCertificate extends pulumi.CustomResource {
   /// The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** One of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  /// &gt; **Note:** One of `certificate_blob_base64` and `certificate_key_vault` must be set.
   late final pulumi.Output<String?> certificateBlobBase64;
+
   /// A `certificate_key_vault` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** one of `certificate_blob_base64` and `certificate_key_vault` must be set.
-  late final pulumi.Output<EnvironmentCertificateCertificateKeyVault?> certificateKeyVault;
+  /// &gt; **Note:** one of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  late final pulumi.Output<EnvironmentCertificateCertificateKeyVault?>
+  certificateKeyVault;
+
   /// The password for the Certificate. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** required if `certificate_blob_base64` is specified.
+  /// &gt; **Note:** required if `certificate_blob_base64` is specified.
   late final pulumi.Output<String?> certificatePassword;
+
   /// The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
+
   /// The expiration date for the Certificate.
   late final pulumi.Output<String> expirationDate;
+
   /// The date of issue for the Certificate.
   late final pulumi.Output<String> issueDate;
+
   /// The Certificate Issuer.
   late final pulumi.Output<String> issuer;
+
   /// The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Subject Name for the Certificate.
   late final pulumi.Output<String> subjectName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Thumbprint of the Certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -924,22 +935,27 @@ class EnvironmentCertificate extends pulumi.CustomResource {
     EnvironmentCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentCertificate:EnvironmentCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
-    this.certificateKeyVault = registerOutput<EnvironmentCertificateCertificateKeyVault?>('certificateKeyVault');
-    this.certificatePassword = registerOutput<String?>('certificatePassword');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.issueDate = registerOutput<String>('issueDate');
-    this.issuer = registerOutput<String>('issuer');
+         'azure:containerapp/environmentCertificate:EnvironmentCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
+    certificateKeyVault =
+        registerOutput<EnvironmentCertificateCertificateKeyVault?>(
+          'certificateKeyVault',
+        );
+    certificatePassword = registerOutput<String?>('certificatePassword');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    expirationDate = registerOutput<String>('expirationDate');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
-    this.subjectName = registerOutput<String>('subjectName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 
   /// Gets an existing [EnvironmentCertificate] resource's state with the given [name] and [id].
@@ -960,21 +976,26 @@ class EnvironmentCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentCertificate:EnvironmentCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
-    this.certificateKeyVault = registerOutput<EnvironmentCertificateCertificateKeyVault?>('certificateKeyVault');
-    this.certificatePassword = registerOutput<String?>('certificatePassword');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.issueDate = registerOutput<String>('issueDate');
-    this.issuer = registerOutput<String>('issuer');
+         'azure:containerapp/environmentCertificate:EnvironmentCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
+    certificateKeyVault =
+        registerOutput<EnvironmentCertificateCertificateKeyVault?>(
+          'certificateKeyVault',
+        );
+    certificatePassword = registerOutput<String?>('certificatePassword');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    expirationDate = registerOutput<String>('expirationDate');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
-    this.subjectName = registerOutput<String>('subjectName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 }

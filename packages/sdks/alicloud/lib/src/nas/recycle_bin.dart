@@ -6,7 +6,7 @@ import 'recycle_bin_state.dart';
 ///
 /// For information about File Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
 ///
-/// > **NOTE:** Available in v1.155.0+.
+/// &gt; **NOTE:** Available in v1.155.0+.
 ///
 /// ## Example Usage
 ///
@@ -198,8 +198,10 @@ import 'recycle_bin_state.dart';
 class RecycleBin extends pulumi.CustomResource {
   /// The ID of the file system for which you want to enable the recycle bin feature.
   late final pulumi.Output<String> fileSystemId;
+
   /// The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
   late final pulumi.Output<int> reservedDays;
+
   /// The status of the recycle bin.
   late final pulumi.Output<String> status;
 
@@ -212,14 +214,14 @@ class RecycleBin extends pulumi.CustomResource {
     RecycleBinArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/recycleBin:RecycleBin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.reservedDays = registerOutput<int>('reservedDays');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/recycleBin:RecycleBin',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileSystemId = registerOutput<String>('fileSystemId');
+    reservedDays = registerOutput<int>('reservedDays');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [RecycleBin] resource's state with the given [name] and [id].
@@ -240,13 +242,13 @@ class RecycleBin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/recycleBin:RecycleBin',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.reservedDays = registerOutput<int>('reservedDays');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/recycleBin:RecycleBin',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileSystemId = registerOutput<String>('fileSystemId');
+    reservedDays = registerOutput<int>('reservedDays');
+    status = registerOutput<String>('status');
   }
 }

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessAssignmentsArgs {
   /// Access configuration ID.
   final pulumi.Input<String>? accessConfigurationId;
+
   /// Directory ID.
   final pulumi.Input<String> directoryId;
+
   /// A list of Access Assignment IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
   final pulumi.Input<String>? principalType;
+
   /// The ID of the target to create the resource range.
   final pulumi.Input<String>? targetId;
+
   /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
   final pulumi.Input<String>? targetType;
 
@@ -54,14 +60,37 @@ class GetAccessAssignmentsArgs {
 
   factory GetAccessAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessAssignmentsArgs(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId']! as String).input(),
-      directoryId: (map['directoryId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      accessConfigurationId: (() {
+        final guardedValue = map['accessConfigurationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetId: (() {
+        final guardedValue = map['targetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

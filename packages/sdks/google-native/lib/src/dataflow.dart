@@ -1,5 +1,3 @@
-library module_dataflow;
-
 export 'dataflow/autoscaling_settings.dart';
 export 'dataflow/autoscaling_settings_algorithm.dart';
 export 'dataflow/autoscaling_settings_response.dart';

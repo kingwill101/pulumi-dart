@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewaySlbList {
   /// The associate id.
   final pulumi.Input<String>? associateId;
+
   /// The Mode of the gateway slb.
   final pulumi.Input<String>? gatewaySlbMode;
+
   /// The Status of the gateway slb.
   final pulumi.Input<String>? gatewaySlbStatus;
+
   /// The creation time of the gateway slb.
   final pulumi.Input<String>? gmtCreate;
+
   /// The ID of the gateway slb.
   final pulumi.Input<String>? slbId;
+
   /// The ip of the gateway slb.
   final pulumi.Input<String>? slbIp;
+
   /// The port of the gateway slb.
   final pulumi.Input<String>? slbPort;
+
   /// The type of the gateway slb.
   final pulumi.Input<String>? type;
 
@@ -55,15 +62,46 @@ class GatewaySlbList {
 
   factory GatewaySlbList.fromMap(Map<String, dynamic> map) {
     return GatewaySlbList(
-      associateId: map['associateId'] == null ? null : (map['associateId']! as String).input(),
-      gatewaySlbMode: map['gatewaySlbMode'] == null ? null : (map['gatewaySlbMode']! as String).input(),
-      gatewaySlbStatus: map['gatewaySlbStatus'] == null ? null : (map['gatewaySlbStatus']! as String).input(),
-      gmtCreate: map['gmtCreate'] == null ? null : (map['gmtCreate']! as String).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
-      slbIp: map['slbIp'] == null ? null : (map['slbIp']! as String).input(),
-      slbPort: map['slbPort'] == null ? null : (map['slbPort']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      associateId: (() {
+        final guardedValue = map['associateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewaySlbMode: (() {
+        final guardedValue = map['gatewaySlbMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewaySlbStatus: (() {
+        final guardedValue = map['gatewaySlbStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtCreate: (() {
+        final guardedValue = map['gmtCreate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbId: (() {
+        final guardedValue = map['slbId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbIp: (() {
+        final guardedValue = map['slbIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbPort: (() {
+        final guardedValue = map['slbPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

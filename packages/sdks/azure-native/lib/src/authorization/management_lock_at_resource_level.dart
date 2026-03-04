@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_lock_at_resource_level_args.dart';
-import 'management_lock_owner_response.dart';
 import 'system_data_response.dart';
 
 /// The lock information.
@@ -158,16 +157,22 @@ import 'system_data_response.dart';
 class ManagementLockAtResourceLevel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
   late final pulumi.Output<String> level;
+
   /// The name of the lock.
   late final pulumi.Output<String> name;
+
   /// Notes about the lock. Maximum of 512 characters.
   late final pulumi.Output<String?> notes;
+
   /// The owners of the lock.
-  late final pulumi.Output<List<ManagementLockOwnerResponse>?> owners;
+  late final pulumi.Output<List<Map<String, dynamic>>?> owners;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource type of the lock - Microsoft.Authorization/locks.
   late final pulumi.Output<String> type;
 
@@ -180,17 +185,17 @@ class ManagementLockAtResourceLevel extends pulumi.CustomResource {
     ManagementLockAtResourceLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:ManagementLockAtResourceLevel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.level = registerOutput<String>('level');
+         'azure-native:authorization:ManagementLockAtResourceLevel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    level = registerOutput<String>('level');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.owners = registerOutput<List<ManagementLockOwnerResponse>?>('owners');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    notes = registerOutput<String?>('notes');
+    owners = registerOutput<List<Map<String, dynamic>>?>('owners');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

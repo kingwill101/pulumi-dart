@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayOperationDetailsResponse {
   /// A value indicating the datastore collection.
   final pulumi.Input<List<String>> dataStores;
+
   /// A value indicating the ESXi host name.
   final pulumi.Input<String> hostName;
+
   /// A value indicating the progress percentage of gateway operation.
   final pulumi.Input<int> progressPercentage;
+
   /// A value indicating the state of gateway operation.
   final pulumi.Input<String> state;
+
   /// A value indicating the time elapsed for the operation in milliseconds.
   final pulumi.Input<double> timeElapsed;
+
   /// A value indicating the time remaining for the operation in milliseconds.
   final pulumi.Input<double> timeRemaining;
+
   /// A value indicating the upload speed in bytes per second.
   final pulumi.Input<double> uploadSpeed;
+
   /// A value indicating the VMware read throughput in bytes per second.
   final pulumi.Input<double> vmwareReadThroughput;
 
@@ -56,15 +63,20 @@ class GatewayOperationDetailsResponse {
 
   factory GatewayOperationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GatewayOperationDetailsResponse(
-      dataStores: ((map['dataStores'] as List).cast<String>()).input(),
-      hostName: (map['hostName'] as String).input(),
-      progressPercentage: (map['progressPercentage'] as int).input(),
-      state: (map['state'] as String).input(),
-      timeElapsed: (map['timeElapsed'] as double).input(),
-      timeRemaining: (map['timeRemaining'] as double).input(),
-      uploadSpeed: (map['uploadSpeed'] as double).input(),
-      vmwareReadThroughput: (map['vmwareReadThroughput'] as double).input(),
+      dataStores: pulumi.Input.fromValue(
+        (map['dataStores'] as List).cast<String>(),
+      ),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      progressPercentage: pulumi.Input.fromValue(
+        map['progressPercentage'] as int,
+      ),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      timeElapsed: pulumi.Input.fromValue(map['timeElapsed'] as double),
+      timeRemaining: pulumi.Input.fromValue(map['timeRemaining'] as double),
+      uploadSpeed: pulumi.Input.fromValue(map['uploadSpeed'] as double),
+      vmwareReadThroughput: pulumi.Input.fromValue(
+        map['vmwareReadThroughput'] as double,
+      ),
     );
   }
 }
-

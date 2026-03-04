@@ -4,31 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LogSetup
 class LogSetup {
-  /// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
+  /// &lt;p&gt;If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
-  /// <p>The available cluster control plane log types.</p>
+
+  /// &lt;p&gt;The available cluster control plane log types.&lt;/p&gt;
   final pulumi.Input<List<String>>? types;
 
   /// Creates a new [LogSetup].
-  /// [enabled] <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-  /// [types] <p>The available cluster control plane log types.</p>
-  LogSetup({
-    this.enabled,
-    this.types,
-  });
+  /// [enabled] &lt;p&gt;If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.&lt;/p&gt;
+  /// [types] &lt;p&gt;The available cluster control plane log types.&lt;/p&gt;
+  LogSetup({this.enabled, this.types});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-      'types': ?types,
-    };
+    return <String, dynamic>{'enabled': ?enabled, 'types': ?types};
   }
 
   factory LogSetup.fromMap(Map<String, dynamic> map) {
     return LogSetup(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      types: (() {
+        final guardedValue = map['types'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

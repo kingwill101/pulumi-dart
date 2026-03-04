@@ -8,20 +8,15 @@ class BucketHierarchicalNamespace {
 
   /// Creates a new [BucketHierarchicalNamespace].
   /// [enabled] Enables hierarchical namespace for the bucket.
-  BucketHierarchicalNamespace({
-    required this.enabled,
-  });
+  BucketHierarchicalNamespace({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory BucketHierarchicalNamespace.fromMap(Map<String, dynamic> map) {
     return BucketHierarchicalNamespace(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

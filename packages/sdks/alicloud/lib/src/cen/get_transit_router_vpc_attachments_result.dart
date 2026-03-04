@@ -7,21 +7,28 @@ import 'get_transit_router_vpc_attachments_attachment.dart';
 class GetTransitRouterVpcAttachmentsResult {
   /// A list of Transit Router VPC Attachments. Each element contains the following attributes:
   final List<GetTransitRouterVpcAttachmentsAttachment> attachments;
+
   /// (Available since v1.224.0) The ID of the CEN instance.
   final String cenId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Transit Router VPC Attachment names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the Transit Router VPC Attachment.
   final String? status;
+
   /// The ID of the Transit Router VPC Attachment.
   final String? transitRouterAttachmentId;
+
   /// (Available since v1.224.0) The ID of the transit router.
   final String? transitRouterId;
+
   /// The ID of the VPC.
   final String? vpcId;
 
@@ -53,7 +60,11 @@ class GetTransitRouterVpcAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetTransitRouterVpcAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetTransitRouterVpcAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'cenId': cenId,
       'id': id,
       'ids': ids,
@@ -67,20 +78,51 @@ class GetTransitRouterVpcAttachmentsResult {
     };
   }
 
-  factory GetTransitRouterVpcAttachmentsResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterVpcAttachmentsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterVpcAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetTransitRouterVpcAttachmentsAttachment>(map['attachments'], (value) => GetTransitRouterVpcAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      attachments:
+          pulumi.Input.decodeList<GetTransitRouterVpcAttachmentsAttachment>(
+            map['attachments']!,
+            (value) => GetTransitRouterVpcAttachmentsAttachment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       cenId: map['cenId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterAttachmentId: (() {
+        final guardedValue = map['transitRouterAttachmentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

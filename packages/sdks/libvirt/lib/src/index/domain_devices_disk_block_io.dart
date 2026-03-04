@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskBlockIo {
   /// Sets the granularity for discard operations performed by the disk.
   final pulumi.Input<double>? discardGranularity;
+
   /// Specifies the logical block size of the disk, affecting read/write operations.
   final pulumi.Input<double>? logicalBlockSize;
+
   /// Configures the physical block size of the disk.
   final pulumi.Input<double>? physicalBlockSize;
 
@@ -30,10 +32,21 @@ class DomainDevicesDiskBlockIo {
 
   factory DomainDevicesDiskBlockIo.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBlockIo(
-      discardGranularity: map['discardGranularity'] == null ? null : (map['discardGranularity']! as double).input(),
-      logicalBlockSize: map['logicalBlockSize'] == null ? null : (map['logicalBlockSize']! as double).input(),
-      physicalBlockSize: map['physicalBlockSize'] == null ? null : (map['physicalBlockSize']! as double).input(),
+      discardGranularity: (() {
+        final guardedValue = map['discardGranularity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      logicalBlockSize: (() {
+        final guardedValue = map['logicalBlockSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      physicalBlockSize: (() {
+        final guardedValue = map['physicalBlockSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

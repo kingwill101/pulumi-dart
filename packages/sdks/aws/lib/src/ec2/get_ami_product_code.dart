@@ -23,9 +23,8 @@ class GetAmiProductCode {
 
   factory GetAmiProductCode.fromMap(Map<String, dynamic> map) {
     return GetAmiProductCode(
-      productCodeId: (map['productCodeId'] as String).input(),
-      productCodeType: (map['productCodeType'] as String).input(),
+      productCodeId: pulumi.Input.fromValue(map['productCodeId'] as String),
+      productCodeType: pulumi.Input.fromValue(map['productCodeType'] as String),
     );
   }
 }
-

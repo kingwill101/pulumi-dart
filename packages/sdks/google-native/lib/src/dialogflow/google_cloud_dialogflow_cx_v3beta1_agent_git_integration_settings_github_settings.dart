@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings {
   /// The access token used to authenticate the access to the GitHub repository.
   final pulumi.Input<String>? accessToken;
+
   /// A list of branches configured to be used from Dialogflow.
   final pulumi.Input<List<String>>? branches;
+
   /// The unique repository display name for the GitHub repository.
   final pulumi.Input<String>? displayName;
+
   /// The GitHub repository URI related to the agent.
   final pulumi.Input<String>? repositoryUri;
+
   /// The branch of the GitHub repository tracked for this agent.
   final pulumi.Input<String>? trackingBranch;
 
@@ -39,14 +43,35 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      branches: map['branches'] == null ? null : ((map['branches']! as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri']! as String).input(),
-      trackingBranch: map['trackingBranch'] == null ? null : (map['trackingBranch']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      branches: (() {
+        final guardedValue = map['branches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryUri: (() {
+        final guardedValue = map['repositoryUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trackingBranch: (() {
+        final guardedValue = map['trackingBranch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

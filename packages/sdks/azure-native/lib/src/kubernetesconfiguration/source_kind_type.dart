@@ -4,16 +4,15 @@ enum SourceKindType {
   valueBucket("Bucket"),
   valueAzureBlob("AzureBlob");
 
-  const SourceKindType(this.value);
-  final String value;
+  const SourceKindType(this.wireValue);
+  final String wireValue;
 
   static SourceKindType fromValue(String value) {
     for (final item in SourceKindType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourceKindType value: $value');
   }
 }
-

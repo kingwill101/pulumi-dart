@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCertificatePathsResponse {
   /// The path to the file holding the client or server TLS certificate to use.
   final pulumi.Input<String> certificatePath;
+
   /// The path to the file holding the client or server private key.
   final pulumi.Input<String> privateKeyPath;
 
@@ -26,9 +27,8 @@ class TlsCertificatePathsResponse {
 
   factory TlsCertificatePathsResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertificatePathsResponse(
-      certificatePath: (map['certificatePath'] as String).input(),
-      privateKeyPath: (map['privateKeyPath'] as String).input(),
+      certificatePath: pulumi.Input.fromValue(map['certificatePath'] as String),
+      privateKeyPath: pulumi.Input.fromValue(map['privateKeyPath'] as String),
     );
   }
 }
-

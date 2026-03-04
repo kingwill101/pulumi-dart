@@ -126,74 +126,87 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// Volume ARN (e.g., arn:aws:ec2:us-east-1:123456789012:volume/vol-59fcb34e).
   late final pulumi.Output<String> arn;
+
   /// Availability zone where the EBS volume will exist.
   late final pulumi.Output<String> availabilityZone;
+
   /// Timestamp when volume creation was initiated.
   late final pulumi.Output<String> createTime;
+
   /// If true, the disk will be encrypted.
   late final pulumi.Output<bool> encrypted;
+
   /// If true, snapshot will be created before volume deletion. Any tags on the volume will be migrated to the snapshot. By default set to false
   late final pulumi.Output<bool?> finalSnapshot;
+
   /// Amount of IOPS to provision for the disk. Only valid for `type` of `io1`, `io2` or `gp3`.
   late final pulumi.Output<int> iops;
+
   /// ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true. Note: The provider must be running with credentials which have the `GenerateDataKeyWithoutPlaintext` permission on the specified KMS key as required by the [EBS KMS CMK volume provisioning process](https://docs.aws.amazon.com/kms/latest/developerguide/services-ebs.html#ebs-cmk) to prevent a volume from being created and almost immediately deleted.
   late final pulumi.Output<String> kmsKeyId;
+
   /// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported on `io1` and `io2` volumes.
   late final pulumi.Output<bool?> multiAttachEnabled;
+
   /// Amazon Resource Name (ARN) of the Outpost.
   late final pulumi.Output<String?> outpostArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Size of the drive in GiBs.
   late final pulumi.Output<int> size;
+
   /// A snapshot to base the EBS volume off of.
   late final pulumi.Output<String> snapshotId;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Throughput that the volume supports, in MiB/s. Only valid for `type` of `gp3`.
   late final pulumi.Output<int> throughput;
+
   /// Type of EBS volume. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `gp2`).
   late final pulumi.Output<String> type;
+
   /// EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This argument can only be set if `snapshot_id` is specified.
   ///
-  /// > **NOTE:** At least one of `size` or `snapshot_id` is required.
+  /// &gt; **NOTE:** At least one of `size` or `snapshot_id` is required.
   ///
-  /// > **NOTE:** When changing the `size`, `iops` or `type` of an instance, there are [considerations](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/considerations.html) to be aware of.
+  /// &gt; **NOTE:** When changing the `size`, `iops` or `type` of an instance, there are [considerations](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/considerations.html) to be aware of.
   late final pulumi.Output<int?> volumeInitializationRate;
 
   /// Creates a new [Volume].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_ebs_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:ebs/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.createTime = registerOutput<String>('createTime');
-    this.encrypted = registerOutput<bool>('encrypted');
-    this.finalSnapshot = registerOutput<bool?>('finalSnapshot');
-    this.iops = registerOutput<int>('iops');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
-    this.outpostArn = registerOutput<String?>('outpostArn');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.throughput = registerOutput<int>('throughput');
-    this.type = registerOutput<String>('type');
-    this.volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:ebs/volume:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    createTime = registerOutput<String>('createTime');
+    encrypted = registerOutput<bool>('encrypted');
+    finalSnapshot = registerOutput<bool?>('finalSnapshot');
+    iops = registerOutput<int>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
+    outpostArn = registerOutput<String?>('outpostArn');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    throughput = registerOutput<int>('throughput');
+    type = registerOutput<String>('type');
+    volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
   }
 
   /// Gets an existing [Volume] resource's state with the given [name] and [id].
@@ -214,27 +227,27 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ebs/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.createTime = registerOutput<String>('createTime');
-    this.encrypted = registerOutput<bool>('encrypted');
-    this.finalSnapshot = registerOutput<bool?>('finalSnapshot');
-    this.iops = registerOutput<int>('iops');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
-    this.outpostArn = registerOutput<String?>('outpostArn');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.throughput = registerOutput<int>('throughput');
-    this.type = registerOutput<String>('type');
-    this.volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
+         'aws:ebs/volume:Volume',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    createTime = registerOutput<String>('createTime');
+    encrypted = registerOutput<bool>('encrypted');
+    finalSnapshot = registerOutput<bool?>('finalSnapshot');
+    iops = registerOutput<int>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
+    outpostArn = registerOutput<String?>('outpostArn');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    throughput = registerOutput<int>('throughput');
+    type = registerOutput<String>('type');
+    volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
   }
 }

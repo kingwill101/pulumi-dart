@@ -6,16 +6,15 @@ enum DataPointObservabilityMode {
   histogram("Histogram"),
   log("Log");
 
-  const DataPointObservabilityMode(this.value);
-  final String value;
+  const DataPointObservabilityMode(this.wireValue);
+  final String wireValue;
 
   static DataPointObservabilityMode fromValue(String value) {
     for (final item in DataPointObservabilityMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataPointObservabilityMode value: $value');
   }
 }
-

@@ -7,16 +7,22 @@ import 'connection_config_variable_secret_value.dart';
 class ConnectionConfigVariable {
   /// Boolean Value of configVariable
   final pulumi.Input<bool>? booleanValue;
+
   /// Encryption key value of configVariable.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfigVariableEncryptionKeyValue>? encryptionKeyValue;
+  final pulumi.Input<ConnectionConfigVariableEncryptionKeyValue>?
+  encryptionKeyValue;
+
   /// Integer Value of configVariable
   final pulumi.Input<int>? integerValue;
+
   /// Key for the configVariable
   final pulumi.Input<String> key;
+
   /// Secret value of configVariable.
   /// Structure is documented below.
   final pulumi.Input<ConnectionConfigVariableSecretValue>? secretValue;
+
   /// String Value of configVariabley
   final pulumi.Input<String>? stringValue;
 
@@ -39,23 +45,58 @@ class ConnectionConfigVariable {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': ?booleanValue,
-      'encryptionKeyValue': ?pulumi.Input.mapOptionalInputValue<ConnectionConfigVariableEncryptionKeyValue, Map<String, dynamic>>(encryptionKeyValue, (value) => value.toMap()),
+      'encryptionKeyValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionConfigVariableEncryptionKeyValue,
+            Map<String, dynamic>
+          >(encryptionKeyValue, (value) => value.toMap()),
       'integerValue': ?integerValue,
       'key': key,
-      'secretValue': ?pulumi.Input.mapOptionalInputValue<ConnectionConfigVariableSecretValue, Map<String, dynamic>>(secretValue, (value) => value.toMap()),
+      'secretValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionConfigVariableSecretValue,
+            Map<String, dynamic>
+          >(secretValue, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
   factory ConnectionConfigVariable.fromMap(Map<String, dynamic> map) {
     return ConnectionConfigVariable(
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
-      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (ConnectionConfigVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue']! as Map).cast<String, dynamic>())).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as int).input(),
-      key: (map['key'] as String).input(),
-      secretValue: map['secretValue'] == null ? null : (ConnectionConfigVariableSecretValue.fromMap((map['secretValue']! as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      booleanValue: (() {
+        final guardedValue = map['booleanValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionKeyValue: (() {
+        final guardedValue = map['encryptionKeyValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionConfigVariableEncryptionKeyValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      integerValue: (() {
+        final guardedValue = map['integerValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      secretValue: (() {
+        final guardedValue = map['secretValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionConfigVariableSecretValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stringValue: (() {
+        final guardedValue = map['stringValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

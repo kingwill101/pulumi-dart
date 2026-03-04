@@ -9,16 +9,15 @@ enum CommissionedState {
   valueDeprovisioning("Deprovisioning"),
   valueDeprovisioned("Deprovisioned");
 
-  const CommissionedState(this.value);
-  final String value;
+  const CommissionedState(this.wireValue);
+  final String wireValue;
 
   static CommissionedState fromValue(String value) {
     for (final item in CommissionedState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CommissionedState value: $value');
   }
 }
-

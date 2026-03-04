@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupManagerInstanceFlexibilityPolicy {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
   final pulumi.Input<Map<String, String>>? instanceSelectionLists;
+
   /// Named instance selections configuring properties that the group will use when creating new VMs.
   final pulumi.Input<Map<String, String>>? instanceSelections;
 
@@ -23,11 +24,24 @@ class InstanceGroupManagerInstanceFlexibilityPolicy {
     };
   }
 
-  factory InstanceGroupManagerInstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerInstanceFlexibilityPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerInstanceFlexibilityPolicy(
-      instanceSelectionLists: map['instanceSelectionLists'] == null ? null : ((map['instanceSelectionLists']! as Map).cast<String, String>()).input(),
-      instanceSelections: map['instanceSelections'] == null ? null : ((map['instanceSelections']! as Map).cast<String, String>()).input(),
+      instanceSelectionLists: (() {
+        final guardedValue = map['instanceSelectionLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      instanceSelections: (() {
+        final guardedValue = map['instanceSelections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

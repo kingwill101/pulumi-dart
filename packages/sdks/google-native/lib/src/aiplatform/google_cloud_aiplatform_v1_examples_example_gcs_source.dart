@@ -7,7 +7,9 @@ import 'google_cloud_aiplatform_v1_gcs_source.dart';
 /// The Cloud Storage input instances.
 class GoogleCloudAiplatformV1ExamplesExampleGcsSource {
   /// The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
-  final pulumi.Input<GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat>? dataFormat;
+  final pulumi.Input<GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat>?
+  dataFormat;
+
   /// The Cloud Storage location for the input instances.
   final pulumi.Input<GoogleCloudAiplatformV1GcsSource>? gcsSource;
 
@@ -21,16 +23,41 @@ class GoogleCloudAiplatformV1ExamplesExampleGcsSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataFormat': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat, String>(dataFormat, (value) => value.value),
-      'gcsSource': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1GcsSource, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
+      'dataFormat':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat,
+            String
+          >(dataFormat, (value) => value.wireValue),
+      'gcsSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1GcsSource,
+            Map<String, dynamic>
+          >(gcsSource, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ExamplesExampleGcsSource(
-      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat']! as String)).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
+      dataFormat: (() {
+        final guardedValue = map['dataFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      gcsSource: (() {
+        final guardedValue = map['gcsSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1GcsSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

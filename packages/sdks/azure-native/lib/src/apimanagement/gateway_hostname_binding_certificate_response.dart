@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayHostnameBindingCertificateResponse {
   /// The expiration date of the certificate.
   final pulumi.Input<String> expiry;
+
   /// The subject of the certificate.
   final pulumi.Input<String> subject;
+
   /// The thumbprint of the certificate.
   final pulumi.Input<String> thumbprint;
 
@@ -28,12 +30,13 @@ class GatewayHostnameBindingCertificateResponse {
     };
   }
 
-  factory GatewayHostnameBindingCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory GatewayHostnameBindingCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayHostnameBindingCertificateResponse(
-      expiry: (map['expiry'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
-

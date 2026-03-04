@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataTransferConfigSensitiveParams {
   /// The Secret Access Key of the AWS account transferring data from.
   final pulumi.Input<String>? secretAccessKey;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The Secret Access Key of the AWS account transferring data from.
   final pulumi.Input<String>? secretAccessKeyWo;
+
   /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<int>? secretAccessKeyWoVersion;
 
@@ -31,10 +33,21 @@ class DataTransferConfigSensitiveParams {
 
   factory DataTransferConfigSensitiveParams.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigSensitiveParams(
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
-      secretAccessKeyWo: map['secretAccessKeyWo'] == null ? null : (map['secretAccessKeyWo']! as String).input(),
-      secretAccessKeyWoVersion: map['secretAccessKeyWoVersion'] == null ? null : (map['secretAccessKeyWoVersion']! as int).input(),
+      secretAccessKey: (() {
+        final guardedValue = map['secretAccessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretAccessKeyWo: (() {
+        final guardedValue = map['secretAccessKeyWo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretAccessKeyWoVersion: (() {
+        final guardedValue = map['secretAccessKeyWoVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

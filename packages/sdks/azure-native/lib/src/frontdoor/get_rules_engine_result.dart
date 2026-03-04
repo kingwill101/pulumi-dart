@@ -7,14 +7,19 @@ import 'rules_engine_rule_response.dart';
 class GetRulesEngineResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Resource status.
   final String resourceState;
+
   /// A list of rules that define a particular Rules Engine Configuration.
   final List<RulesEngineRuleResponse>? rules;
+
   /// Resource type.
   final String type;
 
@@ -40,7 +45,14 @@ class GetRulesEngineResult {
       'id': id,
       'name': name,
       'resourceState': resourceState,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<RulesEngineRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?(() {
+        final guardedValue = rules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          RulesEngineRuleResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'type': type,
     };
   }
@@ -51,9 +63,17 @@ class GetRulesEngineResult {
       id: map['id'] as String,
       name: map['name'] as String,
       resourceState: map['resourceState'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules']!, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<RulesEngineRuleResponse>(
+          guardedValue,
+          (value) => RulesEngineRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

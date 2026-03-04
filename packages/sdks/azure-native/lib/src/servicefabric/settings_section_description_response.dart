@@ -7,6 +7,7 @@ import 'settings_parameter_description_response.dart';
 class SettingsSectionDescriptionResponse {
   /// The section name of the fabric settings.
   final pulumi.Input<String> name;
+
   /// The collection of parameters in the section.
   final pulumi.Input<List<SettingsParameterDescriptionResponse>> parameters;
 
@@ -21,15 +22,32 @@ class SettingsSectionDescriptionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<List<SettingsParameterDescriptionResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<SettingsParameterDescriptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            List<SettingsParameterDescriptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SettingsParameterDescriptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SettingsSectionDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return SettingsSectionDescriptionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (pulumi.Input.decodeList<SettingsParameterDescriptionResponse>(map['parameters'], (value) => SettingsParameterDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SettingsParameterDescriptionResponse>(
+          map['parameters']!,
+          (value) => SettingsParameterDescriptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

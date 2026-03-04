@@ -667,48 +667,73 @@ import 'sub_resource_response.dart';
 class FirewallPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The parent firewall policy from which rules are inherited.
   late final pulumi.Output<SubResourceResponse?> basePolicy;
+
   /// List of references to Child Firewall Policies.
-  late final pulumi.Output<List<SubResourceResponse>> childPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> childPolicies;
+
   /// DNS Proxy Settings definition.
   late final pulumi.Output<DnsSettingsResponse?> dnsSettings;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Explicit Proxy Settings definition.
   late final pulumi.Output<ExplicitProxyResponse?> explicitProxy;
+
   /// List of references to Azure Firewalls that this Firewall Policy is associated with.
-  late final pulumi.Output<List<SubResourceResponse>> firewalls;
+  late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
+
   /// The identity of the firewall policy.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Insights on Firewall Policy.
   late final pulumi.Output<FirewallPolicyInsightsResponse?> insights;
+
   /// The configuration for Intrusion detection.
-  late final pulumi.Output<FirewallPolicyIntrusionDetectionResponse?> intrusionDetection;
+  late final pulumi.Output<FirewallPolicyIntrusionDetectionResponse?>
+  intrusionDetection;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the firewall policy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of references to FirewallPolicyRuleCollectionGroups.
-  late final pulumi.Output<List<SubResourceResponse>> ruleCollectionGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> ruleCollectionGroups;
+
   /// A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
   late final pulumi.Output<String> size;
+
   /// The Firewall Policy SKU.
   late final pulumi.Output<FirewallPolicySkuResponse?> sku;
+
   /// The private IP addresses/IP ranges to which traffic will not be SNAT.
   late final pulumi.Output<FirewallPolicySNATResponse?> snat;
+
   /// SQL Settings definition.
   late final pulumi.Output<FirewallPolicySQLResponse?> sql;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The operation mode for Threat Intelligence.
   late final pulumi.Output<String?> threatIntelMode;
+
   /// ThreatIntel Whitelist for Firewall Policy.
-  late final pulumi.Output<FirewallPolicyThreatIntelWhitelistResponse?> threatIntelWhitelist;
+  late final pulumi.Output<FirewallPolicyThreatIntelWhitelistResponse?>
+  threatIntelWhitelist;
+
   /// TLS Configuration definition.
-  late final pulumi.Output<FirewallPolicyTransportSecurityResponse?> transportSecurity;
+  late final pulumi.Output<FirewallPolicyTransportSecurityResponse?>
+  transportSecurity;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -721,33 +746,44 @@ class FirewallPolicy extends pulumi.CustomResource {
     FirewallPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:FirewallPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.basePolicy = registerOutput<SubResourceResponse?>('basePolicy');
-    this.childPolicies = registerOutput<List<SubResourceResponse>>('childPolicies');
-    this.dnsSettings = registerOutput<DnsSettingsResponse?>('dnsSettings');
-    this.etag = registerOutput<String>('etag');
-    this.explicitProxy = registerOutput<ExplicitProxyResponse?>('explicitProxy');
-    this.firewalls = registerOutput<List<SubResourceResponse>>('firewalls');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.insights = registerOutput<FirewallPolicyInsightsResponse?>('insights');
-    this.intrusionDetection = registerOutput<FirewallPolicyIntrusionDetectionResponse?>('intrusionDetection');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:FirewallPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    basePolicy = registerOutput<SubResourceResponse?>('basePolicy');
+    childPolicies = registerOutput<List<Map<String, dynamic>>>('childPolicies');
+    dnsSettings = registerOutput<DnsSettingsResponse?>('dnsSettings');
+    etag = registerOutput<String>('etag');
+    explicitProxy = registerOutput<ExplicitProxyResponse?>('explicitProxy');
+    firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    insights = registerOutput<FirewallPolicyInsightsResponse?>('insights');
+    intrusionDetection =
+        registerOutput<FirewallPolicyIntrusionDetectionResponse?>(
+          'intrusionDetection',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ruleCollectionGroups = registerOutput<List<SubResourceResponse>>('ruleCollectionGroups');
-    this.size = registerOutput<String>('size');
-    this.sku = registerOutput<FirewallPolicySkuResponse?>('sku');
-    this.snat = registerOutput<FirewallPolicySNATResponse?>('snat');
-    this.sql = registerOutput<FirewallPolicySQLResponse?>('sql');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatIntelMode = registerOutput<String?>('threatIntelMode');
-    this.threatIntelWhitelist = registerOutput<FirewallPolicyThreatIntelWhitelistResponse?>('threatIntelWhitelist');
-    this.transportSecurity = registerOutput<FirewallPolicyTransportSecurityResponse?>('transportSecurity');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleCollectionGroups = registerOutput<List<Map<String, dynamic>>>(
+      'ruleCollectionGroups',
+    );
+    size = registerOutput<String>('size');
+    sku = registerOutput<FirewallPolicySkuResponse?>('sku');
+    snat = registerOutput<FirewallPolicySNATResponse?>('snat');
+    sql = registerOutput<FirewallPolicySQLResponse?>('sql');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatIntelMode = registerOutput<String?>('threatIntelMode');
+    threatIntelWhitelist =
+        registerOutput<FirewallPolicyThreatIntelWhitelistResponse?>(
+          'threatIntelWhitelist',
+        );
+    transportSecurity =
+        registerOutput<FirewallPolicyTransportSecurityResponse?>(
+          'transportSecurity',
+        );
+    type = registerOutput<String>('type');
   }
 }

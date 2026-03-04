@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTemplateReservationAffinitySpecificReservation {
   /// The key for the node affinity label.
   final pulumi.Input<String> key;
+
   /// Corresponds to the label values of a reservation resource.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class GetInstanceTemplateReservationAffinitySpecificReservation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory GetInstanceTemplateReservationAffinitySpecificReservation.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTemplateReservationAffinitySpecificReservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTemplateReservationAffinitySpecificReservation(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

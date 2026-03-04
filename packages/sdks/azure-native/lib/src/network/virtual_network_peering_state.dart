@@ -4,16 +4,15 @@ enum VirtualNetworkPeeringState {
   valueConnected("Connected"),
   valueDisconnected("Disconnected");
 
-  const VirtualNetworkPeeringState(this.value);
-  final String value;
+  const VirtualNetworkPeeringState(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkPeeringState fromValue(String value) {
     for (final item in VirtualNetworkPeeringState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualNetworkPeeringState value: $value');
   }
 }
-

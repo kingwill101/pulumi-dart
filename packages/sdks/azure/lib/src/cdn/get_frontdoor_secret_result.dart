@@ -7,11 +7,13 @@ import 'get_frontdoor_secret_secret.dart';
 class GetFrontdoorSecretResult {
   /// Specifies the ID of the Front Door Profile within which this Front Door Secret exists.
   final String cdnFrontdoorProfileId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String profileName;
   final String resourceGroupName;
+
   /// A `secret` block as defined below.
   final List<GetFrontdoorSecretSecret> secrets;
 
@@ -38,7 +40,11 @@ class GetFrontdoorSecretResult {
       'name': name,
       'profileName': profileName,
       'resourceGroupName': resourceGroupName,
-      'secrets': pulumi.Input.encodeList<GetFrontdoorSecretSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.encodeList<
+            GetFrontdoorSecretSecret,
+            Map<String, dynamic>
+          >(secrets, (value) => value.toMap()),
     };
   }
 
@@ -49,8 +55,12 @@ class GetFrontdoorSecretResult {
       name: map['name'] as String,
       profileName: map['profileName'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      secrets: pulumi.Input.decodeList<GetFrontdoorSecretSecret>(map['secrets'], (value) => GetFrontdoorSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetFrontdoorSecretSecret>(
+        map['secrets']!,
+        (value) => GetFrontdoorSecretSecret.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

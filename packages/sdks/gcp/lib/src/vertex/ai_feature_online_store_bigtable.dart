@@ -7,8 +7,10 @@ class AiFeatureOnlineStoreBigtable {
   /// Autoscaling config applied to Bigtable Instance.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreBigtableAutoScaling> autoScaling;
+
   /// Optional. If true, enable direct access to the Bigtable instance.
   final pulumi.Input<bool>? enableDirectBigtableAccess;
+
   /// The zone where the Bigtable instance will be created.
   final pulumi.Input<String>? zone;
 
@@ -24,7 +26,11 @@ class AiFeatureOnlineStoreBigtable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoScaling': pulumi.Input.mapInputValue<AiFeatureOnlineStoreBigtableAutoScaling, Map<String, dynamic>>(autoScaling, (value) => value.toMap()),
+      'autoScaling':
+          pulumi.Input.mapInputValue<
+            AiFeatureOnlineStoreBigtableAutoScaling,
+            Map<String, dynamic>
+          >(autoScaling, (value) => value.toMap()),
       'enableDirectBigtableAccess': ?enableDirectBigtableAccess,
       'zone': ?zone,
     };
@@ -32,10 +38,21 @@ class AiFeatureOnlineStoreBigtable {
 
   factory AiFeatureOnlineStoreBigtable.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtable(
-      autoScaling: (AiFeatureOnlineStoreBigtableAutoScaling.fromMap((map['autoScaling'] as Map).cast<String, dynamic>())).input(),
-      enableDirectBigtableAccess: map['enableDirectBigtableAccess'] == null ? null : (map['enableDirectBigtableAccess']! as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      autoScaling: pulumi.Input.fromValue(
+        AiFeatureOnlineStoreBigtableAutoScaling.fromMap(
+          (map['autoScaling']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enableDirectBigtableAccess: (() {
+        final guardedValue = map['enableDirectBigtableAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

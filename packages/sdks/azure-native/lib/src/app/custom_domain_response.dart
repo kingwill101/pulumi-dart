@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainResponse {
   /// Custom Domain binding type.
   final pulumi.Input<String>? bindingType;
+
   /// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
   final pulumi.Input<String>? certificateId;
+
   /// Hostname.
   final pulumi.Input<String> name;
 
@@ -31,10 +33,17 @@ class CustomDomainResponse {
 
   factory CustomDomainResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainResponse(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
-      name: (map['name'] as String).input(),
+      bindingType: (() {
+        final guardedValue = map['bindingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

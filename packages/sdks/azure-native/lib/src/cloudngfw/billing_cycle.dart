@@ -3,16 +3,15 @@ enum BillingCycle {
   valueWEEKLY("WEEKLY"),
   valueMONTHLY("MONTHLY");
 
-  const BillingCycle(this.value);
-  final String value;
+  const BillingCycle(this.wireValue);
+  final String wireValue;
 
   static BillingCycle fromValue(String value) {
     for (final item in BillingCycle.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BillingCycle value: $value');
   }
 }
-

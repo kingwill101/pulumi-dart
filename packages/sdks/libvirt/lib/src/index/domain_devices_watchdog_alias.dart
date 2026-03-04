@@ -8,20 +8,15 @@ class DomainDevicesWatchdogAlias {
 
   /// Creates a new [DomainDevicesWatchdogAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesWatchdogAlias({
-    required this.name,
-  });
+  DomainDevicesWatchdogAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesWatchdogAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesWatchdogAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

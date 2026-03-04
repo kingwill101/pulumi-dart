@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse {
   /// The ip address used to send match gRPC requests.
   final pulumi.Input<String> matchGrpcAddress;
+
   /// The name of the service attachment resource. Populated if private service connect is enabled.
   final pulumi.Input<String> serviceAttachment;
 
@@ -24,11 +25,16 @@ class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse(
-      matchGrpcAddress: (map['matchGrpcAddress'] as String).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      matchGrpcAddress: pulumi.Input.fromValue(
+        map['matchGrpcAddress'] as String,
+      ),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

@@ -16,17 +16,25 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'all': ?all,
-      'includedPaths': ?includedPaths,
-    };
+    return <String, dynamic>{'all': ?all, 'includedPaths': ?includedPaths};
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern(
-      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
-      includedPaths: map['includedPaths'] == null ? null : (((map['includedPaths'] as List).cast<String>()).input()).input(),
+      all: (() {
+        final guardedValue = map['all'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      includedPaths: (() {
+        final guardedValue = map['includedPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

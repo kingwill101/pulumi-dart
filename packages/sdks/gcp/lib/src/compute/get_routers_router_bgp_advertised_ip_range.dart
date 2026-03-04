@@ -15,17 +15,15 @@ class GetRoutersRouterBgpAdvertisedIpRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'range': range,
-    };
+    return <String, dynamic>{'description': description, 'range': range};
   }
 
-  factory GetRoutersRouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
+  factory GetRoutersRouterBgpAdvertisedIpRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRoutersRouterBgpAdvertisedIpRange(
-      description: (map['description'] as String).input(),
-      range: (map['range'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      range: pulumi.Input.fromValue(map['range'] as String),
     );
   }
 }
-

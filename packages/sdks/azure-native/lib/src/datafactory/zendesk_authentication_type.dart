@@ -3,16 +3,15 @@ enum ZendeskAuthenticationType {
   valueBasic("Basic"),
   valueToken("Token");
 
-  const ZendeskAuthenticationType(this.value);
-  final String value;
+  const ZendeskAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static ZendeskAuthenticationType fromValue(String value) {
     for (final item in ZendeskAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ZendeskAuthenticationType value: $value');
   }
 }
-

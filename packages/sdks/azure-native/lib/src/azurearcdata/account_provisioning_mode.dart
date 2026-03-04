@@ -3,16 +3,15 @@ enum AccountProvisioningMode {
   valueAutomatic("automatic"),
   valueManual("manual");
 
-  const AccountProvisioningMode(this.value);
-  final String value;
+  const AccountProvisioningMode(this.wireValue);
+  final String wireValue;
 
   static AccountProvisioningMode fromValue(String value) {
     for (final item in AccountProvisioningMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccountProvisioningMode value: $value');
   }
 }
-

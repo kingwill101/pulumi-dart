@@ -1,5 +1,3 @@
-library module_apigateway;
-
 export 'apigateway/access_control_list.dart';
 export 'apigateway/access_control_list_acl_entry.dart';
 export 'apigateway/access_control_list_args.dart';

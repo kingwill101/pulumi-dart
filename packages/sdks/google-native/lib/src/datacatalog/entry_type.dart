@@ -17,16 +17,15 @@ enum EntryType {
   explore("EXPLORE"),
   look("LOOK");
 
-  const EntryType(this.value);
-  final String value;
+  const EntryType(this.wireValue);
+  final String wireValue;
 
   static EntryType fromValue(String value) {
     for (final item in EntryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntryType value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum AgentProtocol {
   valueA2A("A2A"),
   valueResponses("Responses");
 
-  const AgentProtocol(this.value);
-  final String value;
+  const AgentProtocol(this.wireValue);
+  final String wireValue;
 
   static AgentProtocol fromValue(String value) {
     for (final item in AgentProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentProtocol value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum UrlMapAuthFailAction {
   authFailActionRedirect("AUTH_FAIL_ACTION_REDIRECT"),
   authFailActionUnauthorized("AUTH_FAIL_ACTION_UNAUTHORIZED");
 
-  const UrlMapAuthFailAction(this.value);
-  final String value;
+  const UrlMapAuthFailAction(this.wireValue);
+  final String wireValue;
 
   static UrlMapAuthFailAction fromValue(String value) {
     for (final item in UrlMapAuthFailAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UrlMapAuthFailAction value: $value');
   }
 }
-

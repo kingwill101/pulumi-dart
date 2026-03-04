@@ -15,11 +15,7 @@ class GetCaPoolArgs {
   /// [caPoolId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCaPoolArgs({
-    required this.caPoolId,
-    required this.location,
-    this.project,
-  });
+  GetCaPoolArgs({required this.caPoolId, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetCaPoolArgs {
 
   factory GetCaPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetCaPoolArgs(
-      caPoolId: (map['caPoolId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      caPoolId: pulumi.Input.fromValue(map['caPoolId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

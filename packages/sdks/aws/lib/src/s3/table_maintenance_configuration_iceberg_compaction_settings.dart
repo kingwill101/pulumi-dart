@@ -14,15 +14,14 @@ class TableMaintenanceConfigurationIcebergCompactionSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetFileSizeMb': targetFileSizeMb,
-    };
+    return <String, dynamic>{'targetFileSizeMb': targetFileSizeMb};
   }
 
-  factory TableMaintenanceConfigurationIcebergCompactionSettings.fromMap(Map<String, dynamic> map) {
+  factory TableMaintenanceConfigurationIcebergCompactionSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableMaintenanceConfigurationIcebergCompactionSettings(
-      targetFileSizeMb: (map['targetFileSizeMb'] as int).input(),
+      targetFileSizeMb: pulumi.Input.fromValue(map['targetFileSizeMb'] as int),
     );
   }
 }
-

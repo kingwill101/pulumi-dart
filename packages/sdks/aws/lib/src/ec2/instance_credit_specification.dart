@@ -8,20 +8,19 @@ class InstanceCreditSpecification {
 
   /// Creates a new [InstanceCreditSpecification].
   /// [cpuCredits] Credit option for CPU usage. Valid values include `standard` or `unlimited`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-  InstanceCreditSpecification({
-    this.cpuCredits,
-  });
+  InstanceCreditSpecification({this.cpuCredits});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCredits': ?cpuCredits,
-    };
+    return <String, dynamic>{'cpuCredits': ?cpuCredits};
   }
 
   factory InstanceCreditSpecification.fromMap(Map<String, dynamic> map) {
     return InstanceCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
+      cpuCredits: (() {
+        final guardedValue = map['cpuCredits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeTargetParametersBatchJobParametersContainerOverridesEnvironment {
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
+
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.
   final pulumi.Input<String>? value;
 
@@ -17,17 +18,23 @@ class PipeTargetParametersBatchJobParametersContainerOverridesEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
-  factory PipeTargetParametersBatchJobParametersContainerOverridesEnvironment.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersBatchJobParametersContainerOverridesEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersBatchJobParametersContainerOverridesEnvironment(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

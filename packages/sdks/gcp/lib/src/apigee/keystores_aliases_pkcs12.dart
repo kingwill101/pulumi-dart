@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keystores_aliases_pkcs12_args.dart';
-import 'keystores_aliases_pkcs12_certs_info.dart';
 import 'keystores_aliases_pkcs12_state.dart';
 
 /// An alias from a pkcs12 file.
@@ -31,23 +30,31 @@ import 'keystores_aliases_pkcs12_state.dart';
 class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
   /// Alias Name
   late final pulumi.Output<String> alias;
+
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<KeystoresAliasesPkcs12CertsInfo>> certsInfos;
+  late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+
   /// Environment associated with the alias
   late final pulumi.Output<String> environment;
+
   /// PKCS12 file content
   ///
   /// - - -
   late final pulumi.Output<String> file;
+
   /// Hash of the pkcs file
   late final pulumi.Output<String> filehash;
+
   /// Keystore Name
   late final pulumi.Output<String> keystore;
+
   /// Organization ID associated with the alias, without organization/ prefix
   late final pulumi.Output<String> orgId;
+
   /// Password for the PKCS12 file if it's encrypted
   late final pulumi.Output<String> password;
+
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -60,20 +67,20 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     KeystoresAliasesPkcs12Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos');
-    this.environment = registerOutput<String>('environment');
-    this.file = registerOutput<String>('file');
-    this.filehash = registerOutput<String>('filehash');
-    this.keystore = registerOutput<String>('keystore');
-    this.orgId = registerOutput<String>('orgId');
-    this.password = registerOutput<String>('password');
-    this.type = registerOutput<String>('type');
+         'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    environment = registerOutput<String>('environment');
+    file = registerOutput<String>('file');
+    filehash = registerOutput<String>('filehash');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    password = registerOutput<String>('password');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [KeystoresAliasesPkcs12] resource's state with the given [name] and [id].
@@ -94,19 +101,19 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos');
-    this.environment = registerOutput<String>('environment');
-    this.file = registerOutput<String>('file');
-    this.filehash = registerOutput<String>('filehash');
-    this.keystore = registerOutput<String>('keystore');
-    this.orgId = registerOutput<String>('orgId');
-    this.password = registerOutput<String>('password');
-    this.type = registerOutput<String>('type');
+         'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    environment = registerOutput<String>('environment');
+    file = registerOutput<String>('file');
+    filehash = registerOutput<String>('filehash');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    password = registerOutput<String>('password');
+    type = registerOutput<String>('type');
   }
 }

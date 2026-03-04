@@ -13,32 +13,46 @@ import 'sub_resource_response.dart';
 class GetFirewallPolicyDraftResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The parent firewall policy from which rules are inherited.
   final SubResourceResponse? basePolicy;
+
   /// DNS Proxy Settings definition.
   final DnsSettingsResponse? dnsSettings;
+
   /// Explicit Proxy Settings definition.
   final ExplicitProxyResponse? explicitProxy;
+
   /// Resource ID.
   final String? id;
+
   /// Insights on Firewall Policy.
   final FirewallPolicyInsightsResponse? insights;
+
   /// The configuration for Intrusion detection.
   final FirewallPolicyIntrusionDetectionResponse? intrusionDetection;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// The private IP addresses/IP ranges to which traffic will not be SNAT.
   final FirewallPolicySNATResponse? snat;
+
   /// SQL Settings definition.
   final FirewallPolicySQLResponse? sql;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The operation mode for Threat Intelligence.
   final String? threatIntelMode;
+
   /// ThreatIntel Whitelist for Firewall Policy.
   final FirewallPolicyThreatIntelWhitelistResponse? threatIntelWhitelist;
+
   /// Resource type.
   final String type;
 
@@ -79,19 +93,19 @@ class GetFirewallPolicyDraftResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'basePolicy': ?basePolicy == null ? null : basePolicy!.toMap(),
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
-      'explicitProxy': ?explicitProxy == null ? null : explicitProxy!.toMap(),
+      'basePolicy': ?basePolicy?.toMap(),
+      'dnsSettings': ?dnsSettings?.toMap(),
+      'explicitProxy': ?explicitProxy?.toMap(),
       'id': ?id,
-      'insights': ?insights == null ? null : insights!.toMap(),
-      'intrusionDetection': ?intrusionDetection == null ? null : intrusionDetection!.toMap(),
+      'insights': ?insights?.toMap(),
+      'intrusionDetection': ?intrusionDetection?.toMap(),
       'location': ?location,
       'name': name,
-      'snat': ?snat == null ? null : snat!.toMap(),
-      'sql': ?sql == null ? null : sql!.toMap(),
+      'snat': ?snat?.toMap(),
+      'sql': ?sql?.toMap(),
       'tags': ?tags,
       'threatIntelMode': ?threatIntelMode,
-      'threatIntelWhitelist': ?threatIntelWhitelist == null ? null : threatIntelWhitelist!.toMap(),
+      'threatIntelWhitelist': ?threatIntelWhitelist?.toMap(),
       'type': type,
     };
   }
@@ -99,21 +113,84 @@ class GetFirewallPolicyDraftResult {
   factory GetFirewallPolicyDraftResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyDraftResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      basePolicy: map['basePolicy'] == null ? null : SubResourceResponse.fromMap((map['basePolicy']! as Map).cast<String, dynamic>()),
-      dnsSettings: map['dnsSettings'] == null ? null : DnsSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>()),
-      explicitProxy: map['explicitProxy'] == null ? null : ExplicitProxyResponse.fromMap((map['explicitProxy']! as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id']! as String,
-      insights: map['insights'] == null ? null : FirewallPolicyInsightsResponse.fromMap((map['insights']! as Map).cast<String, dynamic>()),
-      intrusionDetection: map['intrusionDetection'] == null ? null : FirewallPolicyIntrusionDetectionResponse.fromMap((map['intrusionDetection']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      basePolicy: (() {
+        final guardedValue = map['basePolicy'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      dnsSettings: (() {
+        final guardedValue = map['dnsSettings'];
+        if (guardedValue == null) return null;
+        return DnsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      explicitProxy: (() {
+        final guardedValue = map['explicitProxy'];
+        if (guardedValue == null) return null;
+        return ExplicitProxyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      insights: (() {
+        final guardedValue = map['insights'];
+        if (guardedValue == null) return null;
+        return FirewallPolicyInsightsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      intrusionDetection: (() {
+        final guardedValue = map['intrusionDetection'];
+        if (guardedValue == null) return null;
+        return FirewallPolicyIntrusionDetectionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      snat: map['snat'] == null ? null : FirewallPolicySNATResponse.fromMap((map['snat']! as Map).cast<String, dynamic>()),
-      sql: map['sql'] == null ? null : FirewallPolicySQLResponse.fromMap((map['sql']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      threatIntelMode: map['threatIntelMode'] == null ? null : map['threatIntelMode']! as String,
-      threatIntelWhitelist: map['threatIntelWhitelist'] == null ? null : FirewallPolicyThreatIntelWhitelistResponse.fromMap((map['threatIntelWhitelist']! as Map).cast<String, dynamic>()),
+      snat: (() {
+        final guardedValue = map['snat'];
+        if (guardedValue == null) return null;
+        return FirewallPolicySNATResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      sql: (() {
+        final guardedValue = map['sql'];
+        if (guardedValue == null) return null;
+        return FirewallPolicySQLResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      threatIntelMode: (() {
+        final guardedValue = map['threatIntelMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      threatIntelWhitelist: (() {
+        final guardedValue = map['threatIntelWhitelist'];
+        if (guardedValue == null) return null;
+        return FirewallPolicyThreatIntelWhitelistResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ConfidenceLevel {
   medium("Medium"),
   high("High");
 
-  const ConfidenceLevel(this.value);
-  final String value;
+  const ConfidenceLevel(this.wireValue);
+  final String wireValue;
 
   static ConfidenceLevel fromValue(String value) {
     for (final item in ConfidenceLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConfidenceLevel value: $value');
   }
 }
-

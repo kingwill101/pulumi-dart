@@ -6,7 +6,7 @@ import 'acl_entry_attachment_state.dart';
 ///
 /// For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
 ///
-/// > **NOTE:** Available since v1.190.0.
+/// &gt; **NOTE:** Available since v1.190.0.
 ///
 /// ## Example Usage
 ///
@@ -178,10 +178,13 @@ import 'acl_entry_attachment_state.dart';
 class AclEntryAttachment extends pulumi.CustomResource {
   /// The ID of the Acl.
   late final pulumi.Output<String> aclId;
+
   /// The entry (IP address or CIDR block) that you want to add.
   late final pulumi.Output<String> entry;
+
   /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
   late final pulumi.Output<String?> entryDescription;
+
   /// The status of the Acl Entry Attachment.
   late final pulumi.Output<String> status;
 
@@ -194,15 +197,15 @@ class AclEntryAttachment extends pulumi.CustomResource {
     AclEntryAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.entry = registerOutput<String>('entry');
-    this.entryDescription = registerOutput<String?>('entryDescription');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    entry = registerOutput<String>('entry');
+    entryDescription = registerOutput<String?>('entryDescription');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AclEntryAttachment] resource's state with the given [name] and [id].
@@ -223,14 +226,14 @@ class AclEntryAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.entry = registerOutput<String>('entry');
-    this.entryDescription = registerOutput<String?>('entryDescription');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    entry = registerOutput<String>('entry');
+    entryDescription = registerOutput<String?>('entryDescription');
+    status = registerOutput<String>('status');
   }
 }

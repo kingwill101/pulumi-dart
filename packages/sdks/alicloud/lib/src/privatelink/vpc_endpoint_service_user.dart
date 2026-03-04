@@ -8,7 +8,7 @@ import 'vpc_endpoint_service_user_state.dart';
 ///
 /// For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 ///
-/// > **NOTE:** Available since v1.110.0.
+/// &gt; **NOTE:** Available since v1.110.0.
 ///
 /// ## Example Usage
 ///
@@ -232,10 +232,13 @@ import 'vpc_endpoint_service_user_state.dart';
 class VpcEndpointServiceUser extends pulumi.CustomResource {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The endpoint service ID.
   late final pulumi.Output<String> serviceId;
+
   /// The whitelist in the format of ARN.
   late final pulumi.Output<String?> userArn;
+
   /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
   late final pulumi.Output<String> userId;
 
@@ -248,15 +251,15 @@ class VpcEndpointServiceUser extends pulumi.CustomResource {
     VpcEndpointServiceUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.userArn = registerOutput<String?>('userArn');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    serviceId = registerOutput<String>('serviceId');
+    userArn = registerOutput<String?>('userArn');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [VpcEndpointServiceUser] resource's state with the given [name] and [id].
@@ -277,14 +280,14 @@ class VpcEndpointServiceUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.userArn = registerOutput<String?>('userArn');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    serviceId = registerOutput<String>('serviceId');
+    userArn = registerOutput<String?>('userArn');
+    userId = registerOutput<String>('userId');
   }
 }

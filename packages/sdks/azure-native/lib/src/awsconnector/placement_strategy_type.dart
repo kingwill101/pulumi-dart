@@ -4,16 +4,15 @@ enum PlacementStrategyType {
   random("random"),
   spread("spread");
 
-  const PlacementStrategyType(this.value);
-  final String value;
+  const PlacementStrategyType(this.wireValue);
+  final String wireValue;
 
   static PlacementStrategyType fromValue(String value) {
     for (final item in PlacementStrategyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementStrategyType value: $value');
   }
 }
-

@@ -6,7 +6,9 @@ import 'iisaksworkload_deployment_response.dart';
 /// IIS workload instance model custom properties.
 class IISAKSWorkloadDeploymentModelCustomPropertiesResponse {
   /// IIS AKS workload deployment.
-  final pulumi.Input<IISAKSWorkloadDeploymentResponse>? iisAksWorkloadDeploymentProperties;
+  final pulumi.Input<IISAKSWorkloadDeploymentResponse>?
+  iisAksWorkloadDeploymentProperties;
+
   /// Gets or sets the instance type.
   /// Expected value is 'IISAKSWorkloadDeploymentModelCustomProperties'.
   final pulumi.Input<String> instanceType;
@@ -21,16 +23,29 @@ class IISAKSWorkloadDeploymentModelCustomPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iisAksWorkloadDeploymentProperties': ?pulumi.Input.mapOptionalInputValue<IISAKSWorkloadDeploymentResponse, Map<String, dynamic>>(iisAksWorkloadDeploymentProperties, (value) => value.toMap()),
+      'iisAksWorkloadDeploymentProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IISAKSWorkloadDeploymentResponse,
+            Map<String, dynamic>
+          >(iisAksWorkloadDeploymentProperties, (value) => value.toMap()),
       'instanceType': instanceType,
     };
   }
 
-  factory IISAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory IISAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IISAKSWorkloadDeploymentModelCustomPropertiesResponse(
-      iisAksWorkloadDeploymentProperties: map['iisAksWorkloadDeploymentProperties'] == null ? null : (IISAKSWorkloadDeploymentResponse.fromMap((map['iisAksWorkloadDeploymentProperties']! as Map).cast<String, dynamic>())).input(),
-      instanceType: (map['instanceType'] as String).input(),
+      iisAksWorkloadDeploymentProperties: (() {
+        final guardedValue = map['iisAksWorkloadDeploymentProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IISAKSWorkloadDeploymentResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

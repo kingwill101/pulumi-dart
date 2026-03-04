@@ -7,11 +7,14 @@ import 'batch_release_criteria.dart';
 class BatchConfigurationProperties {
   /// The name of the batch group.
   final pulumi.Input<String> batchGroupName;
+
   /// The artifact changed time.
   final pulumi.Input<String>? changedTime;
+
   /// The artifact creation time.
   final pulumi.Input<String>? createdTime;
   final pulumi.Input<dynamic>? metadata;
+
   /// The batch release criteria.
   final pulumi.Input<BatchReleaseCriteria> releaseCriteria;
 
@@ -35,18 +38,37 @@ class BatchConfigurationProperties {
       'changedTime': ?changedTime,
       'createdTime': ?createdTime,
       'metadata': ?metadata,
-      'releaseCriteria': pulumi.Input.mapInputValue<BatchReleaseCriteria, Map<String, dynamic>>(releaseCriteria, (value) => value.toMap()),
+      'releaseCriteria':
+          pulumi.Input.mapInputValue<
+            BatchReleaseCriteria,
+            Map<String, dynamic>
+          >(releaseCriteria, (value) => value.toMap()),
     };
   }
 
   factory BatchConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return BatchConfigurationProperties(
-      batchGroupName: (map['batchGroupName'] as String).input(),
-      changedTime: map['changedTime'] == null ? null : (map['changedTime']! as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
-      releaseCriteria: (BatchReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
+      batchGroupName: pulumi.Input.fromValue(map['batchGroupName'] as String),
+      changedTime: (() {
+        final guardedValue = map['changedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      releaseCriteria: pulumi.Input.fromValue(
+        BatchReleaseCriteria.fromMap(
+          (map['releaseCriteria']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

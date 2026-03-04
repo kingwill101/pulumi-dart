@@ -104,14 +104,20 @@ import 'keyspace_state.dart';
 class Keyspace extends pulumi.CustomResource {
   /// The ARN of the keyspace.
   late final pulumi.Output<String> arn;
+
   /// The name of the keyspace to be created.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The replication specification of the keyspace.
-  late final pulumi.Output<KeyspaceReplicationSpecification> replicationSpecification;
+  late final pulumi.Output<KeyspaceReplicationSpecification>
+  replicationSpecification;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -124,17 +130,19 @@ class Keyspace extends pulumi.CustomResource {
     KeyspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:keyspaces/keyspace:Keyspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:keyspaces/keyspace:Keyspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicationSpecification = registerOutput<KeyspaceReplicationSpecification>('replicationSpecification');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    replicationSpecification = registerOutput<KeyspaceReplicationSpecification>(
+      'replicationSpecification',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Keyspace] resource's state with the given [name] and [id].
@@ -155,16 +163,18 @@ class Keyspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:keyspaces/keyspace:Keyspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:keyspaces/keyspace:Keyspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicationSpecification = registerOutput<KeyspaceReplicationSpecification>('replicationSpecification');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    replicationSpecification = registerOutput<KeyspaceReplicationSpecification>(
+      'replicationSpecification',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -7,9 +7,11 @@ import 'access_token_authentication_response.dart';
 class DockerHubEnvironmentDataResponse {
   /// The Docker Hub organization authentication details
   final pulumi.Input<AccessTokenAuthenticationResponse>? authentication;
+
   /// The type of the environment data.
   /// Expected value is 'DockerHubOrganization'.
   final pulumi.Input<String> environmentType;
+
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
   final pulumi.Input<double>? scanInterval;
 
@@ -25,7 +27,11 @@ class DockerHubEnvironmentDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?pulumi.Input.mapOptionalInputValue<AccessTokenAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'authentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessTokenAuthenticationResponse,
+            Map<String, dynamic>
+          >(authentication, (value) => value.toMap()),
       'environmentType': environmentType,
       'scanInterval': ?scanInterval,
     };
@@ -33,10 +39,21 @@ class DockerHubEnvironmentDataResponse {
 
   factory DockerHubEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return DockerHubEnvironmentDataResponse(
-      authentication: map['authentication'] == null ? null : (AccessTokenAuthenticationResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
-      environmentType: (map['environmentType'] as String).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessTokenAuthenticationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
+      scanInterval: (() {
+        final guardedValue = map['scanInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

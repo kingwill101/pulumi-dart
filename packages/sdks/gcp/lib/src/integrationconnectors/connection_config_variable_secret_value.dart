@@ -8,20 +8,17 @@ class ConnectionConfigVariableSecretValue {
 
   /// Creates a new [ConnectionConfigVariableSecretValue].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionConfigVariableSecretValue({
-    required this.secretVersion,
-  });
+  ConnectionConfigVariableSecretValue({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionConfigVariableSecretValue.fromMap(Map<String, dynamic> map) {
+  factory ConnectionConfigVariableSecretValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionConfigVariableSecretValue(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

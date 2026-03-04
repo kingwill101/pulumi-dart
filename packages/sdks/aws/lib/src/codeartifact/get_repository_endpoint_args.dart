@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryEndpointArgs {
   /// Name of the domain that contains the repository.
   final pulumi.Input<String> domain;
+
   /// Account number of the AWS account that owns the domain.
   final pulumi.Input<String>? domainOwner;
+
   /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
   final pulumi.Input<String> format;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the repository.
   final pulumi.Input<String> repository;
 
@@ -44,12 +48,19 @@ class GetRepositoryEndpointArgs {
 
   factory GetRepositoryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEndpointArgs(
-      domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
-      format: (map['format'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      repository: (map['repository'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      domainOwner: (() {
+        final guardedValue = map['domainOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum ForwardingRuleIpVersionComputeBeta {
   ipv6("IPV6"),
   unspecifiedVersion("UNSPECIFIED_VERSION");
 
-  const ForwardingRuleIpVersionComputeBeta(this.value);
-  final String value;
+  const ForwardingRuleIpVersionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleIpVersionComputeBeta fromValue(String value) {
     for (final item in ForwardingRuleIpVersionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ForwardingRuleIpVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ForwardingRuleIpVersionComputeBeta value: $value',
+    );
   }
 }
-

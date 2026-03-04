@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_config_args.dart';
-import 'domain_config_function_arg.dart';
 import 'domain_config_state.dart';
 
 /// Provides a Cdn Domain Config resource.
 ///
 /// For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
 /// ## Example Usage
 ///
@@ -284,14 +283,19 @@ import 'domain_config_state.dart';
 class DomainConfig extends pulumi.CustomResource {
   /// (Available since v1.132.0) The ID of the domain config function.
   late final pulumi.Output<String> configId;
+
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
+
   /// The args of the domain config. See `function_args` below.
-  late final pulumi.Output<List<DomainConfigFunctionArg>> functionArgs;
+  late final pulumi.Output<List<Map<String, dynamic>>> functionArgs;
+
   /// The name of the domain config.
   late final pulumi.Output<String> functionName;
+
   /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
   late final pulumi.Output<String> parentId;
+
   /// (Available since v1.132.0) The Status of the function.
   late final pulumi.Output<String> status;
 
@@ -304,17 +308,17 @@ class DomainConfig extends pulumi.CustomResource {
     DomainConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cdn/domainConfig:DomainConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<String>('configId');
-    this.domainName = registerOutput<String>('domainName');
-    this.functionArgs = registerOutput<List<DomainConfigFunctionArg>>('functionArgs');
-    this.functionName = registerOutput<String>('functionName');
-    this.parentId = registerOutput<String>('parentId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cdn/domainConfig:DomainConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<String>('configId');
+    domainName = registerOutput<String>('domainName');
+    functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');
+    functionName = registerOutput<String>('functionName');
+    parentId = registerOutput<String>('parentId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [DomainConfig] resource's state with the given [name] and [id].
@@ -335,16 +339,16 @@ class DomainConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cdn/domainConfig:DomainConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<String>('configId');
-    this.domainName = registerOutput<String>('domainName');
-    this.functionArgs = registerOutput<List<DomainConfigFunctionArg>>('functionArgs');
-    this.functionName = registerOutput<String>('functionName');
-    this.parentId = registerOutput<String>('parentId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cdn/domainConfig:DomainConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<String>('configId');
+    domainName = registerOutput<String>('domainName');
+    functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');
+    functionName = registerOutput<String>('functionName');
+    parentId = registerOutput<String>('parentId');
+    status = registerOutput<String>('status');
   }
 }

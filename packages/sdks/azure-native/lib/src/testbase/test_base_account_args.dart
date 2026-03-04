@@ -11,16 +11,22 @@ import 'test_base_account_sku.dart';
 class TestBaseAccountArgs {
   /// The identity of the testBaseAccount.
   final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The flag indicating if we would like to restore the Test Base Accounts which were soft deleted before.
   final pulumi.Input<bool>? restore;
+
   /// The SKU of the Test Base Account.
   final pulumi.Input<TestBaseAccountSKU> sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The resource name of the Test Base Account.
   final pulumi.Input<String>? testBaseAccountName;
 
@@ -44,11 +50,19 @@ class TestBaseAccountArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<SystemAssignedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SystemAssignedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'restore': ?restore,
-      'sku': pulumi.Input.mapInputValue<TestBaseAccountSKU, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          pulumi.Input.mapInputValue<TestBaseAccountSKU, Map<String, dynamic>>(
+            sku,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'testBaseAccountName': ?testBaseAccountName,
     };
@@ -56,14 +70,45 @@ class TestBaseAccountArgs {
 
   factory TestBaseAccountArgs.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountArgs(
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restore: map['restore'] == null ? null : (map['restore']! as bool).input(),
-      sku: (TestBaseAccountSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      testBaseAccountName: map['testBaseAccountName'] == null ? null : (map['testBaseAccountName']! as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SystemAssignedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      restore: (() {
+        final guardedValue = map['restore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sku: pulumi.Input.fromValue(
+        TestBaseAccountSKU.fromMap(
+          (map['sku']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      testBaseAccountName: (() {
+        final guardedValue = map['testBaseAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

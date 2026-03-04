@@ -1,5 +1,3 @@
-library module_evidently;
-
 export 'evidently/feature.dart';
 export 'evidently/feature_args.dart';
 export 'evidently/feature_evaluation_rule.dart';

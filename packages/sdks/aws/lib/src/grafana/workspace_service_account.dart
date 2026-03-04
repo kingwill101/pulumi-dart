@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_service_account_args.dart';
 import 'workspace_service_account_state.dart';
 
-/// > **Note:** You cannot update a service account. If you change any attribute, Terraform
+/// &gt; **Note:** You cannot update a service account. If you change any attribute, Terraform
 /// will delete the current and create a new one.
 ///
 /// Read about Service Accounts in the [Amazon Managed Grafana user guide](https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html).
@@ -121,12 +121,16 @@ import 'workspace_service_account_state.dart';
 class WorkspaceServiceAccount extends pulumi.CustomResource {
   /// The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
   late final pulumi.Output<String> grafanaRole;
+
   /// A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Identifier of the service account in the given Grafana workspace
   late final pulumi.Output<String> serviceAccountId;
+
   /// The Grafana workspace with which the service account is associated.
   late final pulumi.Output<String> workspaceId;
 
@@ -139,16 +143,16 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
     WorkspaceServiceAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grafanaRole = registerOutput<String>('grafanaRole');
+         'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serviceAccountId = registerOutput<String>('serviceAccountId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    region = registerOutput<String>('region');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceServiceAccount] resource's state with the given [name] and [id].
@@ -169,15 +173,15 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grafanaRole = registerOutput<String>('grafanaRole');
+         'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serviceAccountId = registerOutput<String>('serviceAccountId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    region = registerOutput<String>('region');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

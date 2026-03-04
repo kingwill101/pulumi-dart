@@ -10,20 +10,35 @@ class AssetEndpointProfileStatusResponse {
 
   /// Creates a new [AssetEndpointProfileStatusResponse].
   /// [errors] Array object to transfer and persist errors that originate from the Edge.
-  AssetEndpointProfileStatusResponse({
-    required this.errors,
-  });
+  AssetEndpointProfileStatusResponse({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.mapInputValue<List<AssetEndpointProfileStatusErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<AssetEndpointProfileStatusErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors':
+          pulumi.Input.mapInputValue<
+            List<AssetEndpointProfileStatusErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AssetEndpointProfileStatusErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AssetEndpointProfileStatusResponse.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileStatusResponse(
-      errors: (pulumi.Input.decodeList<AssetEndpointProfileStatusErrorResponse>(map['errors'], (value) => AssetEndpointProfileStatusErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AssetEndpointProfileStatusErrorResponse>(
+          map['errors']!,
+          (value) => AssetEndpointProfileStatusErrorResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

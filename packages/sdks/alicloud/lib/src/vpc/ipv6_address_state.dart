@@ -8,20 +8,28 @@ class Ipv6AddressState {
   /// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
   /// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
   final pulumi.Input<String>? addressType;
+
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// IPv6 address
   final pulumi.Input<String>? ipv6Address;
+
   /// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
   final pulumi.Input<String>? ipv6AddressDescription;
+
   /// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
   final pulumi.Input<String>? ipv6AddressName;
+
   /// The ID of the resource group to which the instance belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the resource.  Available, Pending and Deleting.
   final pulumi.Input<String>? status;
+
   /// The tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The VSwitchId of the IPv6 address.
   final pulumi.Input<String>? vswitchId;
 
@@ -63,16 +71,53 @@ class Ipv6AddressState {
 
   factory Ipv6AddressState.fromMap(Map<String, dynamic> map) {
     return Ipv6AddressState(
-      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
-      ipv6AddressDescription: map['ipv6AddressDescription'] == null ? null : (map['ipv6AddressDescription']! as String).input(),
-      ipv6AddressName: map['ipv6AddressName'] == null ? null : (map['ipv6AddressName']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      addressType: (() {
+        final guardedValue = map['addressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Address: (() {
+        final guardedValue = map['ipv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AddressDescription: (() {
+        final guardedValue = map['ipv6AddressDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AddressName: (() {
+        final guardedValue = map['ipv6AddressName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter {
   /// The Parameter Name.
   final pulumi.Input<String> parameterName;
+
   /// The Parameter Value.
   final pulumi.Input<String> parameterValue;
+
   /// Required.
   final pulumi.Input<bool> required;
 
@@ -28,12 +30,13 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter {
     };
   }
 
-  factory GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter.fromMap(Map<String, dynamic> map) {
+  factory GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter(
-      parameterName: (map['parameterName'] as String).input(),
-      parameterValue: (map['parameterValue'] as String).input(),
-      required: (map['required'] as bool).input(),
+      parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
+      parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
+      required: pulumi.Input.fromValue(map['required'] as bool),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class InterconnectAttachmentPrivateInfoResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tag8021q': tag8021q,
-    };
+    return <String, dynamic>{'tag8021q': tag8021q};
   }
 
-  factory InterconnectAttachmentPrivateInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InterconnectAttachmentPrivateInfoResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectAttachmentPrivateInfoResponseComputeBeta(
-      tag8021q: (map['tag8021q'] as int).input(),
+      tag8021q: pulumi.Input.fromValue(map['tag8021q'] as int),
     );
   }
 }
-

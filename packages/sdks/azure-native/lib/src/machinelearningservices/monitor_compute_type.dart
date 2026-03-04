@@ -2,16 +2,15 @@
 enum MonitorComputeType {
   valueServerlessSpark("ServerlessSpark");
 
-  const MonitorComputeType(this.value);
-  final String value;
+  const MonitorComputeType(this.wireValue);
+  final String wireValue;
 
   static MonitorComputeType fromValue(String value) {
     for (final item in MonitorComputeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitorComputeType value: $value');
   }
 }
-

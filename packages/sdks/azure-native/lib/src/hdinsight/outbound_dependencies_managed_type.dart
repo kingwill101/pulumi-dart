@@ -3,16 +3,17 @@ enum OutboundDependenciesManagedType {
   valueManaged("Managed"),
   valueExternal("External");
 
-  const OutboundDependenciesManagedType(this.value);
-  final String value;
+  const OutboundDependenciesManagedType(this.wireValue);
+  final String wireValue;
 
   static OutboundDependenciesManagedType fromValue(String value) {
     for (final item in OutboundDependenciesManagedType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OutboundDependenciesManagedType value: $value');
+    throw ArgumentError(
+      'Unknown OutboundDependenciesManagedType value: $value',
+    );
   }
 }
-

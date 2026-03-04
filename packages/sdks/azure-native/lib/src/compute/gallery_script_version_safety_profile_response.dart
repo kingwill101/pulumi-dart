@@ -19,10 +19,15 @@ class GalleryScriptVersionSafetyProfileResponse {
     };
   }
 
-  factory GalleryScriptVersionSafetyProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory GalleryScriptVersionSafetyProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryScriptVersionSafetyProfileResponse(
-      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations']! as bool).input(),
+      allowDeletionOfReplicatedLocations: (() {
+        final guardedValue = map['allowDeletionOfReplicatedLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

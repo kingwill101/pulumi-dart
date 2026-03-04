@@ -7,6 +7,7 @@ import 'get_groups_group.dart';
 class GetGroupsResult {
   final String directoryId;
   final List<GetGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -38,7 +39,10 @@ class GetGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'directoryId': directoryId,
-      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
+        groups,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -51,14 +55,29 @@ class GetGroupsResult {
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
       directoryId: map['directoryId'] as String,
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(
+        map['groups']!,
+        (value) =>
+            GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      provisionType: map['provisionType'] == null ? null : map['provisionType']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      provisionType: (() {
+        final guardedValue = map['provisionType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

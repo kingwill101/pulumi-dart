@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainCertConfig {
   /// The name of the certificate, used to distinguish different certificates.
   final pulumi.Input<String> certName;
+
   /// Certificate data of the HTTPS certificates, follow the 'pem' format.
   final pulumi.Input<String> certificate;
+
   /// Private key of the HTTPS certificates, follow the 'pem' format.
   final pulumi.Input<String> privateKey;
 
@@ -30,10 +32,9 @@ class CustomDomainCertConfig {
 
   factory CustomDomainCertConfig.fromMap(Map<String, dynamic> map) {
     return CustomDomainCertConfig(
-      certName: (map['certName'] as String).input(),
-      certificate: (map['certificate'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
+      certName: pulumi.Input.fromValue(map['certName'] as String),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
-

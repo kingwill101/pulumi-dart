@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12FramingSettingsResponse {
   /// The X12 character set.
   final pulumi.Input<String> characterSet;
+
   /// The component separator.
   final pulumi.Input<int> componentSeparator;
+
   /// The data element separator.
   final pulumi.Input<int> dataElementSeparator;
+
   /// The replacement character.
   final pulumi.Input<int> replaceCharacter;
+
   /// The value indicating whether to replace separators in payload.
   final pulumi.Input<bool> replaceSeparatorsInPayload;
+
   /// The segment terminator.
   final pulumi.Input<int> segmentTerminator;
+
   /// The segment terminator suffix.
   final pulumi.Input<String> segmentTerminatorSuffix;
 
@@ -51,14 +57,23 @@ class X12FramingSettingsResponse {
 
   factory X12FramingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12FramingSettingsResponse(
-      characterSet: (map['characterSet'] as String).input(),
-      componentSeparator: (map['componentSeparator'] as int).input(),
-      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
-      replaceCharacter: (map['replaceCharacter'] as int).input(),
-      replaceSeparatorsInPayload: (map['replaceSeparatorsInPayload'] as bool).input(),
-      segmentTerminator: (map['segmentTerminator'] as int).input(),
-      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
+      characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
+      componentSeparator: pulumi.Input.fromValue(
+        map['componentSeparator'] as int,
+      ),
+      dataElementSeparator: pulumi.Input.fromValue(
+        map['dataElementSeparator'] as int,
+      ),
+      replaceCharacter: pulumi.Input.fromValue(map['replaceCharacter'] as int),
+      replaceSeparatorsInPayload: pulumi.Input.fromValue(
+        map['replaceSeparatorsInPayload'] as bool,
+      ),
+      segmentTerminator: pulumi.Input.fromValue(
+        map['segmentTerminator'] as int,
+      ),
+      segmentTerminatorSuffix: pulumi.Input.fromValue(
+        map['segmentTerminatorSuffix'] as String,
+      ),
     );
   }
 }
-

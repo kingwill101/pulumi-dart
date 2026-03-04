@@ -5,7 +5,7 @@ import 'alert_channel_state.dart';
 
 /// Use this resource to create and manage New Relic alert channels.
 ///
-/// > **WARNING:** The `newrelic.AlertChannel` resource is **deprecated** and will be **removed in a future major release**. As an alternative, you can set up channels using a combination of the newer resources `newrelic.NotificationDestination` and `newrelic.NotificationChannel`. We **strongly recommend** migrating to these new resources at the earliest. Please refer to this example for a detailed illustration on setting up channels with these resources.
+/// &gt; **WARNING:** The `newrelic.AlertChannel` resource is **deprecated** and will be **removed in a future major release**. As an alternative, you can set up channels using a combination of the newer resources `newrelic.NotificationDestination` and `newrelic.NotificationChannel`. We **strongly recommend** migrating to these new resources at the earliest. Please refer to this example for a detailed illustration on setting up channels with these resources.
 ///
 /// ## Example Usage
 ///
@@ -252,7 +252,7 @@ import 'alert_channel_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** For instructions on setting up Webhooks with Slack, please visit the article linked under the argument `slack` in the aforementioned configuration, or [this article](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-notifications/notification-channels-control-where-send-alerts/#slack) in New Relic's docs for additional details on setting up the `New Relic Alerts` Slack application, and subsequently using the generated Webhook URL.
+/// &gt; **NOTE:** For instructions on setting up Webhooks with Slack, please visit the article linked under the argument `slack` in the aforementioned configuration, or [this article](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-notifications/notification-channels-control-where-send-alerts/#slack) in New Relic's docs for additional details on setting up the `New Relic Alerts` Slack application, and subsequently using the generated Webhook URL.
 ///
 /// ##### OpsGenie
 ///
@@ -959,14 +959,17 @@ import 'alert_channel_state.dart';
 /// $ terraform import newrelic_alert_channel.main <id>
 /// ```
 ///
-/// > **NOTE:** Sensitive data such as channel API keys, service keys, etc are not returned from the underlying API for security reasons and may not be set in state when importing.
+/// &gt; **NOTE:** Sensitive data such as channel API keys, service keys, etc are not returned from the underlying API for security reasons and may not be set in state when importing.
 class AlertChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the alert channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// A nested block that describes an alert channel configuration.  Only one config block is permitted per alert channel definition.  See Nested config blocks below for details.
   late final pulumi.Output<AlertChannelConfig?> config;
+
   /// The name of the channel.
   late final pulumi.Output<String> name;
+
   /// The type of channel.  One of: `email`, `slack`, `opsgenie`, `pagerduty`, `victorops`, or `webhook`.
   late final pulumi.Output<String> type;
 
@@ -979,15 +982,15 @@ class AlertChannel extends pulumi.CustomResource {
     AlertChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertChannel:AlertChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.config = registerOutput<AlertChannelConfig?>('config');
+         'newrelic:index/alertChannel:AlertChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    config = registerOutput<AlertChannelConfig?>('config');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [AlertChannel] resource's state with the given [name] and [id].
@@ -1008,14 +1011,14 @@ class AlertChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertChannel:AlertChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.config = registerOutput<AlertChannelConfig?>('config');
+         'newrelic:index/alertChannel:AlertChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    config = registerOutput<AlertChannelConfig?>('config');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

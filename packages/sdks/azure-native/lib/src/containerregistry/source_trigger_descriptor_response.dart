@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceTriggerDescriptorResponse {
   /// The branch name in the repository.
   final pulumi.Input<String>? branchName;
+
   /// The unique ID that identifies a commit.
   final pulumi.Input<String>? commitId;
+
   /// The event type of the trigger.
   final pulumi.Input<String>? eventType;
+
   /// The unique ID of the trigger.
   final pulumi.Input<String>? id;
+
   /// The source control provider type.
   final pulumi.Input<String>? providerType;
+
   /// The unique ID that identifies pull request.
   final pulumi.Input<String>? pullRequestId;
+
   /// The repository URL.
   final pulumi.Input<String>? repositoryUrl;
 
@@ -51,14 +57,41 @@ class SourceTriggerDescriptorResponse {
 
   factory SourceTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return SourceTriggerDescriptorResponse(
-      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
-      commitId: map['commitId'] == null ? null : (map['commitId']! as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType']! as String).input(),
-      pullRequestId: map['pullRequestId'] == null ? null : (map['pullRequestId']! as String).input(),
-      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl']! as String).input(),
+      branchName: (() {
+        final guardedValue = map['branchName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      commitId: (() {
+        final guardedValue = map['commitId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventType: (() {
+        final guardedValue = map['eventType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerType: (() {
+        final guardedValue = map['providerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pullRequestId: (() {
+        final guardedValue = map['pullRequestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryUrl: (() {
+        final guardedValue = map['repositoryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

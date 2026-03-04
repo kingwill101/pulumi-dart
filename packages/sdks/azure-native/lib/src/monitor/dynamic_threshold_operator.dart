@@ -4,16 +4,15 @@ enum DynamicThresholdOperator {
   valueLessThan("LessThan"),
   valueGreaterOrLessThan("GreaterOrLessThan");
 
-  const DynamicThresholdOperator(this.value);
-  final String value;
+  const DynamicThresholdOperator(this.wireValue);
+  final String wireValue;
 
   static DynamicThresholdOperator fromValue(String value) {
     for (final item in DynamicThresholdOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicThresholdOperator value: $value');
   }
 }
-

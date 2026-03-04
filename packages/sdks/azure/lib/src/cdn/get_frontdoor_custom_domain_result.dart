@@ -8,17 +8,22 @@ class GetFrontdoorCustomDomainResult {
   /// The ID of the Front Door Profile which the Front Door Custom Domain is bound to.
   final String cdnFrontdoorProfileId;
   final String dnsZoneId;
+
   /// The date time that the token expires.
   final String expirationDate;
+
   /// The host name of the domain.
   final String hostName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String profileName;
   final String resourceGroupName;
+
   /// A `tls` block as defined below.
   final List<GetFrontdoorCustomDomainTl> tls;
+
   /// The challenge used for DNS TXT record or file based validation.
   final String validationToken;
 
@@ -56,7 +61,11 @@ class GetFrontdoorCustomDomainResult {
       'name': name,
       'profileName': profileName,
       'resourceGroupName': resourceGroupName,
-      'tls': pulumi.Input.encodeList<GetFrontdoorCustomDomainTl, Map<String, dynamic>>(tls, (value) => value.toMap()),
+      'tls':
+          pulumi.Input.encodeList<
+            GetFrontdoorCustomDomainTl,
+            Map<String, dynamic>
+          >(tls, (value) => value.toMap()),
       'validationToken': validationToken,
     };
   }
@@ -71,9 +80,13 @@ class GetFrontdoorCustomDomainResult {
       name: map['name'] as String,
       profileName: map['profileName'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tls: pulumi.Input.decodeList<GetFrontdoorCustomDomainTl>(map['tls'], (value) => GetFrontdoorCustomDomainTl.fromMap((value as Map).cast<String, dynamic>())),
+      tls: pulumi.Input.decodeList<GetFrontdoorCustomDomainTl>(
+        map['tls']!,
+        (value) => GetFrontdoorCustomDomainTl.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       validationToken: map['validationToken'] as String,
     );
   }
 }
-

@@ -10,23 +10,31 @@ import 'rule_basic_profile.dart';
 class RuleArgs {
   /// Optional. CEL expression for matching on L7/application level criteria.
   final pulumi.Input<String>? applicationMatcher;
+
   /// Profile which tells what the primitive action should be.
   final pulumi.Input<RuleBasicProfile> basicProfile;
+
   /// Optional. Free-text description of the resource.
   final pulumi.Input<String>? description;
+
   /// Whether the rule is enforced.
   final pulumi.Input<bool> enabled;
   final pulumi.Input<String> gatewaySecurityPolicyId;
+
   /// The ID to use for the rule, which will become the final component of the rule's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
   final pulumi.Input<String>? gatewaySecurityPolicyRuleId;
   final pulumi.Input<String>? location;
+
   /// Immutable. Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule} rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   final pulumi.Input<String> name;
+
   /// Priority of the rule. Lower number corresponds to higher precedence.
   final pulumi.Input<int> priority;
   final pulumi.Input<String>? project;
+
   /// CEL expression for matching on session criteria.
   final pulumi.Input<String> sessionMatcher;
+
   /// Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
   final pulumi.Input<bool>? tlsInspectionEnabled;
 
@@ -61,7 +69,10 @@ class RuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationMatcher': ?applicationMatcher,
-      'basicProfile': pulumi.Input.mapInputValue<RuleBasicProfile, String>(basicProfile, (value) => value.value),
+      'basicProfile': pulumi.Input.mapInputValue<RuleBasicProfile, String>(
+        basicProfile,
+        (value) => value.wireValue,
+      ),
       'description': ?description,
       'enabled': enabled,
       'gatewaySecurityPolicyId': gatewaySecurityPolicyId,
@@ -77,19 +88,46 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher']! as String).input(),
-      basicProfile: (RuleBasicProfile.fromValue(map['basicProfile'] as String)).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
-      gatewaySecurityPolicyRuleId: map['gatewaySecurityPolicyRuleId'] == null ? null : (map['gatewaySecurityPolicyRuleId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sessionMatcher: (map['sessionMatcher'] as String).input(),
-      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled']! as bool).input(),
+      applicationMatcher: (() {
+        final guardedValue = map['applicationMatcher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      basicProfile: pulumi.Input.fromValue(
+        RuleBasicProfile.fromValue(map['basicProfile']! as String),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      gatewaySecurityPolicyId: pulumi.Input.fromValue(
+        map['gatewaySecurityPolicyId'] as String,
+      ),
+      gatewaySecurityPolicyRuleId: (() {
+        final guardedValue = map['gatewaySecurityPolicyRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionMatcher: pulumi.Input.fromValue(map['sessionMatcher'] as String),
+      tlsInspectionEnabled: (() {
+        final guardedValue = map['tlsInspectionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

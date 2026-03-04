@@ -13,15 +13,18 @@ class InstanceFromMachineImageSchedulingOnInstanceStopAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discardLocalSsd': ?discardLocalSsd,
-    };
+    return <String, dynamic>{'discardLocalSsd': ?discardLocalSsd};
   }
 
-  factory InstanceFromMachineImageSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageSchedulingOnInstanceStopAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
+      discardLocalSsd: (() {
+        final guardedValue = map['discardLocalSsd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

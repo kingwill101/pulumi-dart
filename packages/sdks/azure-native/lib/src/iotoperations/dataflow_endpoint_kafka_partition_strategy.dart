@@ -5,16 +5,17 @@ enum DataflowEndpointKafkaPartitionStrategy {
   topic("Topic"),
   property("Property");
 
-  const DataflowEndpointKafkaPartitionStrategy(this.value);
-  final String value;
+  const DataflowEndpointKafkaPartitionStrategy(this.wireValue);
+  final String wireValue;
 
   static DataflowEndpointKafkaPartitionStrategy fromValue(String value) {
     for (final item in DataflowEndpointKafkaPartitionStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataflowEndpointKafkaPartitionStrategy value: $value');
+    throw ArgumentError(
+      'Unknown DataflowEndpointKafkaPartitionStrategy value: $value',
+    );
   }
 }
-

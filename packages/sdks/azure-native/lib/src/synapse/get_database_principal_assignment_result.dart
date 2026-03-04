@@ -6,26 +6,37 @@ import 'system_data_response.dart';
 class GetDatabasePrincipalAssignmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
   final String principalId;
+
   /// The principal name
   final String principalName;
+
   /// Principal type.
   final String principalType;
+
   /// The provisioned state of the resource.
   final String provisioningState;
+
   /// Database principal role.
   final String role;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The tenant id of the principal
   final String? tenantId;
+
   /// The tenant name of the principal
   final String tenantName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -74,7 +85,9 @@ class GetDatabasePrincipalAssignmentResult {
     };
   }
 
-  factory GetDatabasePrincipalAssignmentResult.fromMap(Map<String, dynamic> map) {
+  factory GetDatabasePrincipalAssignmentResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabasePrincipalAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
@@ -84,11 +97,16 @@ class GetDatabasePrincipalAssignmentResult {
       principalType: map['principalType'] as String,
       provisioningState: map['provisioningState'] as String,
       role: map['role'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tenantName: map['tenantName'] as String,
       type: map['type'] as String,
     );
   }
 }
-

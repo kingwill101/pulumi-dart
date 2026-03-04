@@ -9,20 +9,19 @@ class IPSetReference {
 
   /// Creates a new [IPSetReference].
   /// [referenceArn] A resource ARN.
-  IPSetReference({
-    this.referenceArn,
-  });
+  IPSetReference({this.referenceArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'referenceArn': ?referenceArn,
-    };
+    return <String, dynamic>{'referenceArn': ?referenceArn};
   }
 
   factory IPSetReference.fromMap(Map<String, dynamic> map) {
     return IPSetReference(
-      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn']! as String).input(),
+      referenceArn: (() {
+        final guardedValue = map['referenceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

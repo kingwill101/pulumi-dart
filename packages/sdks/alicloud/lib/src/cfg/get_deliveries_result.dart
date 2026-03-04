@@ -7,13 +7,16 @@ import 'get_deliveries_delivery.dart';
 class GetDeliveriesResult {
   /// A list of Config Deliveries. Each element contains the following attributes:
   final List<GetDeliveriesDelivery> deliveries;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Config Delivery names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
   final int? status;
 
@@ -37,7 +40,11 @@ class GetDeliveriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveries': pulumi.Input.encodeList<GetDeliveriesDelivery, Map<String, dynamic>>(deliveries, (value) => value.toMap()),
+      'deliveries':
+          pulumi.Input.encodeList<GetDeliveriesDelivery, Map<String, dynamic>>(
+            deliveries,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -49,14 +56,30 @@ class GetDeliveriesResult {
 
   factory GetDeliveriesResult.fromMap(Map<String, dynamic> map) {
     return GetDeliveriesResult(
-      deliveries: pulumi.Input.decodeList<GetDeliveriesDelivery>(map['deliveries'], (value) => GetDeliveriesDelivery.fromMap((value as Map).cast<String, dynamic>())),
+      deliveries: pulumi.Input.decodeList<GetDeliveriesDelivery>(
+        map['deliveries']!,
+        (value) => GetDeliveriesDelivery.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

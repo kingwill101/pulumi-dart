@@ -11,32 +11,46 @@ import 'messaging_endpoints.dart';
 class NamespaceDeviceArgs {
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final pulumi.Input<dynamic>? attributes;
+
   /// The name of the device.
   final pulumi.Input<String>? deviceName;
+
   /// Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided.
   final pulumi.Input<String>? discoveredDeviceRef;
+
   /// Indicates if the resource is enabled or not.
   final pulumi.Input<bool>? enabled;
+
   /// Property bag containing the device's unassigned and assigned endpoints.
   final pulumi.Input<MessagingEndpoints>? endpoints;
+
   /// The extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// The Device ID provided by the customer.
   final pulumi.Input<String>? externalDeviceId;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Device manufacturer.
   final pulumi.Input<String>? manufacturer;
+
   /// Device model.
   final pulumi.Input<String>? model;
+
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// Device operating system.
   final pulumi.Input<String>? operatingSystem;
+
   /// Device operating system version.
   final pulumi.Input<String>? operatingSystemVersion;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -80,8 +94,16 @@ class NamespaceDeviceArgs {
       'deviceName': ?deviceName,
       'discoveredDeviceRef': ?discoveredDeviceRef,
       'enabled': ?enabled,
-      'endpoints': ?pulumi.Input.mapOptionalInputValue<MessagingEndpoints, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'endpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            MessagingEndpoints,
+            Map<String, dynamic>
+          >(endpoints, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'externalDeviceId': ?externalDeviceId,
       'location': ?location,
       'manufacturer': ?manufacturer,
@@ -96,22 +118,85 @@ class NamespaceDeviceArgs {
 
   factory NamespaceDeviceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceDeviceArgs(
-      attributes: map['attributes'] == null ? null : (map['attributes']!).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
-      discoveredDeviceRef: map['discoveredDeviceRef'] == null ? null : (map['discoveredDeviceRef']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endpoints: map['endpoints'] == null ? null : (MessagingEndpoints.fromMap((map['endpoints']! as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      externalDeviceId: map['externalDeviceId'] == null ? null : (map['externalDeviceId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      manufacturer: map['manufacturer'] == null ? null : (map['manufacturer']! as String).input(),
-      model: map['model'] == null ? null : (map['model']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
-      operatingSystemVersion: map['operatingSystemVersion'] == null ? null : (map['operatingSystemVersion']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      deviceName: (() {
+        final guardedValue = map['deviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoveredDeviceRef: (() {
+        final guardedValue = map['discoveredDeviceRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpoints: (() {
+        final guardedValue = map['endpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MessagingEndpoints.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      externalDeviceId: (() {
+        final guardedValue = map['externalDeviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manufacturer: (() {
+        final guardedValue = map['manufacturer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      operatingSystem: (() {
+        final guardedValue = map['operatingSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingSystemVersion: (() {
+        final guardedValue = map['operatingSystemVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

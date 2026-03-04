@@ -9,20 +9,19 @@ class AssignedStandardItemResponse {
 
   /// Creates a new [AssignedStandardItemResponse].
   /// [id] Full resourceId of the Microsoft.Security/standard object
-  AssignedStandardItemResponse({
-    this.id,
-  });
+  AssignedStandardItemResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory AssignedStandardItemResponse.fromMap(Map<String, dynamic> map) {
     return AssignedStandardItemResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

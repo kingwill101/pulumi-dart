@@ -7,8 +7,10 @@ import 'ip_community_id_list.dart';
 class ActionIpCommunityProperties {
   /// List of IP Community IDs.
   final pulumi.Input<IpCommunityIdList>? add;
+
   /// List of IP Community IDs.
   final pulumi.Input<IpCommunityIdList>? delete;
+
   /// List of IP Community IDs.
   final pulumi.Input<IpCommunityIdList>? set;
 
@@ -16,26 +18,57 @@ class ActionIpCommunityProperties {
   /// [add] List of IP Community IDs.
   /// [delete] List of IP Community IDs.
   /// [set] List of IP Community IDs.
-  ActionIpCommunityProperties({
-    this.add,
-    this.delete,
-    this.set,
-  });
+  ActionIpCommunityProperties({this.add, this.delete, this.set});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'add': ?pulumi.Input.mapOptionalInputValue<IpCommunityIdList, Map<String, dynamic>>(add, (value) => value.toMap()),
-      'delete': ?pulumi.Input.mapOptionalInputValue<IpCommunityIdList, Map<String, dynamic>>(delete, (value) => value.toMap()),
-      'set': ?pulumi.Input.mapOptionalInputValue<IpCommunityIdList, Map<String, dynamic>>(set, (value) => value.toMap()),
+      'add':
+          ?pulumi.Input.mapOptionalInputValue<
+            IpCommunityIdList,
+            Map<String, dynamic>
+          >(add, (value) => value.toMap()),
+      'delete':
+          ?pulumi.Input.mapOptionalInputValue<
+            IpCommunityIdList,
+            Map<String, dynamic>
+          >(delete, (value) => value.toMap()),
+      'set':
+          ?pulumi.Input.mapOptionalInputValue<
+            IpCommunityIdList,
+            Map<String, dynamic>
+          >(set, (value) => value.toMap()),
     };
   }
 
   factory ActionIpCommunityProperties.fromMap(Map<String, dynamic> map) {
     return ActionIpCommunityProperties(
-      add: map['add'] == null ? null : (IpCommunityIdList.fromMap((map['add']! as Map).cast<String, dynamic>())).input(),
-      delete: map['delete'] == null ? null : (IpCommunityIdList.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
-      set: map['set'] == null ? null : (IpCommunityIdList.fromMap((map['set']! as Map).cast<String, dynamic>())).input(),
+      add: (() {
+        final guardedValue = map['add'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpCommunityIdList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      delete: (() {
+        final guardedValue = map['delete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpCommunityIdList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      set: (() {
+        final guardedValue = map['set'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpCommunityIdList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

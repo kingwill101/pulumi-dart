@@ -1,5 +1,3 @@
-library module_servicefabric;
-
 export 'servicefabric/cluster.dart';
 export 'servicefabric/cluster_args.dart';
 export 'servicefabric/cluster_azure_active_directory.dart';

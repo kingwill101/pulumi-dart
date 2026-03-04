@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossAccountArgs {
   /// Backup account alias
   final pulumi.Input<String>? alias;
+
   /// The name of RAM role that the backup account authorizes the management account to manage its resources
   final pulumi.Input<String> crossAccountRoleName;
+
   /// The uid of the backup account.
   final pulumi.Input<int> crossAccountUserId;
 
@@ -34,10 +36,17 @@ class CrossAccountArgs {
 
   factory CrossAccountArgs.fromMap(Map<String, dynamic> map) {
     return CrossAccountArgs(
-      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
-      crossAccountRoleName: (map['crossAccountRoleName'] as String).input(),
-      crossAccountUserId: (map['crossAccountUserId'] as int).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossAccountRoleName: pulumi.Input.fromValue(
+        map['crossAccountRoleName'] as String,
+      ),
+      crossAccountUserId: pulumi.Input.fromValue(
+        map['crossAccountUserId'] as int,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_billingbudgets;
-
 export 'billingbudgets/budget.dart';
 export 'billingbudgets/budget_args.dart';
 export 'billingbudgets/budget_billingbudgets_v1beta1.dart';

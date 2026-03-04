@@ -9,20 +9,19 @@ class Security {
 
   /// Creates a new [Security].
   /// [csrfAlwaysCheck] Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
-  Security({
-    this.csrfAlwaysCheck,
-  });
+  Security({this.csrfAlwaysCheck});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'csrfAlwaysCheck': ?csrfAlwaysCheck,
-    };
+    return <String, dynamic>{'csrfAlwaysCheck': ?csrfAlwaysCheck};
   }
 
   factory Security.fromMap(Map<String, dynamic> map) {
     return Security(
-      csrfAlwaysCheck: map['csrfAlwaysCheck'] == null ? null : (map['csrfAlwaysCheck']! as bool).input(),
+      csrfAlwaysCheck: (() {
+        final guardedValue = map['csrfAlwaysCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

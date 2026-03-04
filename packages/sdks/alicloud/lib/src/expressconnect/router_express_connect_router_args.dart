@@ -10,15 +10,20 @@ import 'router_express_connect_router_region.dart';
 class RouterExpressConnectRouterArgs {
   /// ASN representing resources.
   final pulumi.Input<int> alibabaSideAsn;
+
   /// Represents the description of the leased line gateway.
   final pulumi.Input<String>? description;
+
   /// Name of the Gateway representing the leased line.
   final pulumi.Input<String>? ecrName;
+
   /// List of regions representing leased line gateways. See `regions` below.
   final pulumi.Input<List<RouterExpressConnectRouterRegion>>? regions;
+
   /// The ID of the resource group to which the ECR instance belongs.
   /// - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,7 +48,18 @@ class RouterExpressConnectRouterArgs {
       'alibabaSideAsn': alibabaSideAsn,
       'description': ?description,
       'ecrName': ?ecrName,
-      'regions': ?pulumi.Input.mapOptionalInputValue<List<RouterExpressConnectRouterRegion>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<RouterExpressConnectRouterRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouterExpressConnectRouterRegion>,
+            List<Map<String, dynamic>>
+          >(
+            regions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RouterExpressConnectRouterRegion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupId': ?resourceGroupId,
       'tags': ?tags,
     };
@@ -51,13 +67,41 @@ class RouterExpressConnectRouterArgs {
 
   factory RouterExpressConnectRouterArgs.fromMap(Map<String, dynamic> map) {
     return RouterExpressConnectRouterArgs(
-      alibabaSideAsn: (map['alibabaSideAsn'] as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ecrName: map['ecrName'] == null ? null : (map['ecrName']! as String).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(map['regions']!, (value) => RouterExpressConnectRouterRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      alibabaSideAsn: pulumi.Input.fromValue(map['alibabaSideAsn'] as int),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecrName: (() {
+        final guardedValue = map['ecrName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(
+            guardedValue,
+            (value) => RouterExpressConnectRouterRegion.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

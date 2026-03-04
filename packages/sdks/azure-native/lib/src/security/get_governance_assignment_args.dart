@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGovernanceAssignmentArgs {
   /// The Assessment Key - A unique key for the assessment type
   final pulumi.Input<String> assessmentName;
+
   /// The governance assignment key - the assessment key of the required governance assignment
   final pulumi.Input<String> assignmentKey;
+
   /// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   final pulumi.Input<String> scope;
 
@@ -34,10 +36,9 @@ class GetGovernanceAssignmentArgs {
 
   factory GetGovernanceAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGovernanceAssignmentArgs(
-      assessmentName: (map['assessmentName'] as String).input(),
-      assignmentKey: (map['assignmentKey'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
+      assignmentKey: pulumi.Input.fromValue(map['assignmentKey'] as String),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

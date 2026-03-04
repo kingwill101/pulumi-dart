@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentOsType {
   /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
   final pulumi.Input<String>? osArchitecture;
+
   /// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
   final pulumi.Input<String>? osShortName;
+
   /// Targets VM instances with OS Inventory enabled and having the following following OS version.
   final pulumi.Input<String>? osVersion;
 
@@ -15,11 +17,7 @@ class AssignmentOsType {
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.
   /// [osShortName] Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
   /// [osVersion] Targets VM instances with OS Inventory enabled and having the following following OS version.
-  AssignmentOsType({
-    this.osArchitecture,
-    this.osShortName,
-    this.osVersion,
-  });
+  AssignmentOsType({this.osArchitecture, this.osShortName, this.osVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class AssignmentOsType {
 
   factory AssignmentOsType.fromMap(Map<String, dynamic> map) {
     return AssignmentOsType(
-      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture']! as String).input(),
-      osShortName: map['osShortName'] == null ? null : (map['osShortName']! as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
+      osArchitecture: (() {
+        final guardedValue = map['osArchitecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osShortName: (() {
+        final guardedValue = map['osShortName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osVersion: (() {
+        final guardedValue = map['osVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -38,16 +38,17 @@ enum InstanceDatabaseVersionSqladminV1beta4 {
   sqlserver2022Express("SQLSERVER_2022_EXPRESS"),
   sqlserver2022Web("SQLSERVER_2022_WEB");
 
-  const InstanceDatabaseVersionSqladminV1beta4(this.value);
-  final String value;
+  const InstanceDatabaseVersionSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static InstanceDatabaseVersionSqladminV1beta4 fromValue(String value) {
     for (final item in InstanceDatabaseVersionSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceDatabaseVersionSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceDatabaseVersionSqladminV1beta4 value: $value',
+    );
   }
 }
-

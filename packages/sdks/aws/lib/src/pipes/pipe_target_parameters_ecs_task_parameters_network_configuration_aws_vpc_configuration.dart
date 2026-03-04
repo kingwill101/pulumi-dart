@@ -26,12 +26,25 @@ class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfigurati
     };
   }
 
-  factory PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration(
-      assignPublicIp: map['assignPublicIp'] == null ? null : ((map['assignPublicIp'] as String).input()).input(),
-      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
-      subnets: map['subnets'] == null ? null : (((map['subnets'] as List).cast<String>()).input()).input(),
+      assignPublicIp: (() {
+        final guardedValue = map['assignPublicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

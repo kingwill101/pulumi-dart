@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRequiredTagsRequiredTag {
   /// CloudFormation resource types assigned the required tag keys.
   final pulumi.Input<List<String>> cloudFormationResourceTypes;
+
   /// Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
   final pulumi.Input<List<String>> reportingTagKeys;
+
   /// Resource type for the required tag keys.
   final pulumi.Input<String> resourceType;
 
@@ -30,10 +32,13 @@ class GetRequiredTagsRequiredTag {
 
   factory GetRequiredTagsRequiredTag.fromMap(Map<String, dynamic> map) {
     return GetRequiredTagsRequiredTag(
-      cloudFormationResourceTypes: ((map['cloudFormationResourceTypes'] as List).cast<String>()).input(),
-      reportingTagKeys: ((map['reportingTagKeys'] as List).cast<String>()).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      cloudFormationResourceTypes: pulumi.Input.fromValue(
+        (map['cloudFormationResourceTypes'] as List).cast<String>(),
+      ),
+      reportingTagKeys: pulumi.Input.fromValue(
+        (map['reportingTagKeys'] as List).cast<String>(),
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

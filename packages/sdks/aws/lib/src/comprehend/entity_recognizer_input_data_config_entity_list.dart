@@ -8,20 +8,17 @@ class EntityRecognizerInputDataConfigEntityList {
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityList].
   /// [s3Uri] Location of entity list.
-  EntityRecognizerInputDataConfigEntityList({
-    required this.s3Uri,
-  });
+  EntityRecognizerInputDataConfigEntityList({required this.s3Uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Uri': s3Uri,
-    };
+    return <String, dynamic>{'s3Uri': s3Uri};
   }
 
-  factory EntityRecognizerInputDataConfigEntityList.fromMap(Map<String, dynamic> map) {
+  factory EntityRecognizerInputDataConfigEntityList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntityRecognizerInputDataConfigEntityList(
-      s3Uri: (map['s3Uri'] as String).input(),
+      s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
     );
   }
 }
-

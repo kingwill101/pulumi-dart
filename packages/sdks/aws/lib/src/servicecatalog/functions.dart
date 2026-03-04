@@ -326,7 +326,8 @@ Future<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroup(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicecatalog_get_appregistry_attribute_group_associations_get_appregistry_attribute_group_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGroupAssociations(
+Future<GetAppregistryAttributeGroupAssociationsResult>
+getAppregistryAttributeGroupAssociations(
   GetAppregistryAttributeGroupAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -773,7 +774,7 @@ Future<GetPortfolioConstraintsResult> getPortfolioConstraints(
 
 /// Use this data source to retrieve information about a Service Catalog product.
 ///
-/// > **NOTE:** A "provisioning artifact" is also known as a "version," and a "distributor" is also known as a "vendor."
+/// &gt; **NOTE:** A "provisioning artifact" is also known as a "version," and a "distributor" is also known as a "vendor."
 ///
 /// ## Example Usage
 ///

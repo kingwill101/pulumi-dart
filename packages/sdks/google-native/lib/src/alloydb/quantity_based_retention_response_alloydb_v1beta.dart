@@ -9,20 +9,17 @@ class QuantityBasedRetentionResponseAlloydbV1beta {
 
   /// Creates a new [QuantityBasedRetentionResponseAlloydbV1beta].
   /// [count] The number of backups to retain.
-  QuantityBasedRetentionResponseAlloydbV1beta({
-    required this.count,
-  });
+  QuantityBasedRetentionResponseAlloydbV1beta({required this.count});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-    };
+    return <String, dynamic>{'count': count};
   }
 
-  factory QuantityBasedRetentionResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory QuantityBasedRetentionResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return QuantityBasedRetentionResponseAlloydbV1beta(
-      count: (map['count'] as int).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
     );
   }
 }
-

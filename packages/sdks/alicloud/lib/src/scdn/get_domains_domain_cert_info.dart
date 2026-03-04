@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomainCertInfo {
   /// If You Enable HTTPS Here Certificate Name.
   final pulumi.Input<String> certName;
+
   /// Certificate Type. Value Range: Upload: Certificate. CAS: Certificate Authority Certificate. Free: Free Certificate.
   final pulumi.Input<String> certType;
+
   /// Whether to Enable SSL Certificate. Valid Values: on, off.
   final pulumi.Input<String> sslProtocol;
+
   /// If You Enable HTTPS Here Key.
   final pulumi.Input<String> sslPub;
 
@@ -35,11 +38,10 @@ class GetDomainsDomainCertInfo {
 
   factory GetDomainsDomainCertInfo.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainCertInfo(
-      certName: (map['certName'] as String).input(),
-      certType: (map['certType'] as String).input(),
-      sslProtocol: (map['sslProtocol'] as String).input(),
-      sslPub: (map['sslPub'] as String).input(),
+      certName: pulumi.Input.fromValue(map['certName'] as String),
+      certType: pulumi.Input.fromValue(map['certType'] as String),
+      sslProtocol: pulumi.Input.fromValue(map['sslProtocol'] as String),
+      sslPub: pulumi.Input.fromValue(map['sslPub'] as String),
     );
   }
 }
-

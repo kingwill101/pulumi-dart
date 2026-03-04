@@ -7,10 +7,13 @@ class VMwareV2FabricCreationInput {
   /// Gets the class type.
   /// Expected value is 'VMwareV2'.
   final pulumi.Input<String> instanceType;
+
   /// The ARM Id of the migration solution.
   final pulumi.Input<String> migrationSolutionId;
+
   /// The ARM Id of the physical site.
   final pulumi.Input<String>? physicalSiteId;
+
   /// The ARM Id of the VMware site.
   final pulumi.Input<String>? vmwareSiteId;
 
@@ -37,11 +40,20 @@ class VMwareV2FabricCreationInput {
 
   factory VMwareV2FabricCreationInput.fromMap(Map<String, dynamic> map) {
     return VMwareV2FabricCreationInput(
-      instanceType: (map['instanceType'] as String).input(),
-      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
-      physicalSiteId: map['physicalSiteId'] == null ? null : (map['physicalSiteId']! as String).input(),
-      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId']! as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      migrationSolutionId: pulumi.Input.fromValue(
+        map['migrationSolutionId'] as String,
+      ),
+      physicalSiteId: (() {
+        final guardedValue = map['physicalSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareSiteId: (() {
+        final guardedValue = map['vmwareSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum GlobalAddressIpVersionComputeBeta {
   ipv6("IPV6"),
   unspecifiedVersion("UNSPECIFIED_VERSION");
 
-  const GlobalAddressIpVersionComputeBeta(this.value);
-  final String value;
+  const GlobalAddressIpVersionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressIpVersionComputeBeta fromValue(String value) {
     for (final item in GlobalAddressIpVersionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressIpVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressIpVersionComputeBeta value: $value',
+    );
   }
 }
-

@@ -7,13 +7,17 @@ import 'get_user_tenants_tenant.dart';
 class GetUserTenantsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of DMS User Tenant IDs (UID).
   final List<String> ids;
+
   /// A list of DMS User Tenant names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the user tenant.
   final String? status;
+
   /// A list of DMS User Tenants. Each element contains the following attributes:
   final List<GetUserTenantsTenant> tenants;
 
@@ -40,7 +44,11 @@ class GetUserTenantsResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'tenants': pulumi.Input.encodeList<GetUserTenantsTenant, Map<String, dynamic>>(tenants, (value) => value.toMap()),
+      'tenants':
+          pulumi.Input.encodeList<GetUserTenantsTenant, Map<String, dynamic>>(
+            tenants,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -49,10 +57,22 @@ class GetUserTenantsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tenants: pulumi.Input.decodeList<GetUserTenantsTenant>(map['tenants'], (value) => GetUserTenantsTenant.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tenants: pulumi.Input.decodeList<GetUserTenantsTenant>(
+        map['tenants']!,
+        (value) => GetUserTenantsTenant.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

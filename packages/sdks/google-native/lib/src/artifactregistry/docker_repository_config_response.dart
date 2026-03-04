@@ -9,20 +9,15 @@ class DockerRepositoryConfigResponse {
 
   /// Creates a new [DockerRepositoryConfigResponse].
   /// [immutableTags] The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
-  DockerRepositoryConfigResponse({
-    required this.immutableTags,
-  });
+  DockerRepositoryConfigResponse({required this.immutableTags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'immutableTags': immutableTags,
-    };
+    return <String, dynamic>{'immutableTags': immutableTags};
   }
 
   factory DockerRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return DockerRepositoryConfigResponse(
-      immutableTags: (map['immutableTags'] as bool).input(),
+      immutableTags: pulumi.Input.fromValue(map['immutableTags'] as bool),
     );
   }
 }
-

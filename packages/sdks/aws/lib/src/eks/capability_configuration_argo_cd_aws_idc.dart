@@ -6,6 +6,7 @@ class CapabilityConfigurationArgoCdAwsIdc {
   /// ARN of the IAM Identity Center instance.
   final pulumi.Input<String> idcInstanceArn;
   final pulumi.Input<String>? idcManagedApplicationArn;
+
   /// Region of the IAM Identity Center instance.
   final pulumi.Input<String>? idcRegion;
 
@@ -27,12 +28,21 @@ class CapabilityConfigurationArgoCdAwsIdc {
     };
   }
 
-  factory CapabilityConfigurationArgoCdAwsIdc.fromMap(Map<String, dynamic> map) {
+  factory CapabilityConfigurationArgoCdAwsIdc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapabilityConfigurationArgoCdAwsIdc(
-      idcInstanceArn: (map['idcInstanceArn'] as String).input(),
-      idcManagedApplicationArn: map['idcManagedApplicationArn'] == null ? null : ((map['idcManagedApplicationArn'] as String).input()).input(),
-      idcRegion: map['idcRegion'] == null ? null : ((map['idcRegion'] as String).input()).input(),
+      idcInstanceArn: pulumi.Input.fromValue(map['idcInstanceArn'] as String),
+      idcManagedApplicationArn: (() {
+        final guardedValue = map['idcManagedApplicationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idcRegion: (() {
+        final guardedValue = map['idcRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

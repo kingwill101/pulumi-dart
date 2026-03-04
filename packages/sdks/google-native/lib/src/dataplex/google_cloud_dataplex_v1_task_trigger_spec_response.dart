@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1TaskTriggerSpecResponse {
   /// Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
   final pulumi.Input<bool> disabled;
+
   /// Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
   final pulumi.Input<int> maxRetries;
+
   /// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
   final pulumi.Input<String> schedule;
+
   /// Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
   final pulumi.Input<String> startTime;
+
   /// Immutable. Trigger type of the user-specified Task.
   final pulumi.Input<String> type;
 
@@ -39,14 +43,15 @@ class GoogleCloudDataplexV1TaskTriggerSpecResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1TaskTriggerSpecResponse(
-      disabled: (map['disabled'] as bool).input(),
-      maxRetries: (map['maxRetries'] as int).input(),
-      schedule: (map['schedule'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      type: (map['type'] as String).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

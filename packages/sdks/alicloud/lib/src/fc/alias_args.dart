@@ -10,12 +10,16 @@ import 'alias_routing_config.dart';
 class AliasArgs {
   /// Name for the alias you are creating.
   final pulumi.Input<String> aliasName;
+
   /// Description of the alias.
   final pulumi.Input<String>? description;
+
   /// The Function Compute alias' route configuration settings. See `routing_config` below.
   final pulumi.Input<AliasRoutingConfig>? routingConfig;
+
   /// The Function Compute service name.
   final pulumi.Input<String> serviceName;
+
   /// The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
   final pulumi.Input<String> serviceVersion;
 
@@ -37,7 +41,11 @@ class AliasArgs {
     return <String, dynamic>{
       'aliasName': aliasName,
       'description': ?description,
-      'routingConfig': ?pulumi.Input.mapOptionalInputValue<AliasRoutingConfig, Map<String, dynamic>>(routingConfig, (value) => value.toMap()),
+      'routingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AliasRoutingConfig,
+            Map<String, dynamic>
+          >(routingConfig, (value) => value.toMap()),
       'serviceName': serviceName,
       'serviceVersion': serviceVersion,
     };
@@ -45,12 +53,23 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      aliasName: (map['aliasName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      serviceVersion: (map['serviceVersion'] as String).input(),
+      aliasName: pulumi.Input.fromValue(map['aliasName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingConfig: (() {
+        final guardedValue = map['routingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AliasRoutingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      serviceVersion: pulumi.Input.fromValue(map['serviceVersion'] as String),
     );
   }
 }
-

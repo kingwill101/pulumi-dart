@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledQueryRecentlyFailedRunExecutionStat {
   /// Bytes metered for a single scheduled query run.
   final pulumi.Input<int>? bytesMetered;
+
   /// Bytes scanned for a single scheduled query run.
   final pulumi.Input<int>? cumulativeBytesScanned;
+
   /// Data writes metered for records ingested in a single scheduled query run.
   final pulumi.Input<int>? dataWrites;
+
   /// Total time, measured in milliseconds, that was needed for the scheduled query run to complete.
   final pulumi.Input<int>? executionTimeInMillis;
+
   /// Number of rows present in the output from running a query before ingestion to destination data source.
   final pulumi.Input<int>? queryResultRows;
+
   /// Number of records ingested for a single scheduled query run.
   final pulumi.Input<int>? recordsIngested;
 
@@ -43,15 +48,40 @@ class ScheduledQueryRecentlyFailedRunExecutionStat {
     };
   }
 
-  factory ScheduledQueryRecentlyFailedRunExecutionStat.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryRecentlyFailedRunExecutionStat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryRecentlyFailedRunExecutionStat(
-      bytesMetered: map['bytesMetered'] == null ? null : ((map['bytesMetered'] as int).input()).input(),
-      cumulativeBytesScanned: map['cumulativeBytesScanned'] == null ? null : ((map['cumulativeBytesScanned'] as int).input()).input(),
-      dataWrites: map['dataWrites'] == null ? null : ((map['dataWrites'] as int).input()).input(),
-      executionTimeInMillis: map['executionTimeInMillis'] == null ? null : ((map['executionTimeInMillis'] as int).input()).input(),
-      queryResultRows: map['queryResultRows'] == null ? null : ((map['queryResultRows'] as int).input()).input(),
-      recordsIngested: map['recordsIngested'] == null ? null : ((map['recordsIngested'] as int).input()).input(),
+      bytesMetered: (() {
+        final guardedValue = map['bytesMetered'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cumulativeBytesScanned: (() {
+        final guardedValue = map['cumulativeBytesScanned'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataWrites: (() {
+        final guardedValue = map['dataWrites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      executionTimeInMillis: (() {
+        final guardedValue = map['executionTimeInMillis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queryResultRows: (() {
+        final guardedValue = map['queryResultRows'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recordsIngested: (() {
+        final guardedValue = map['recordsIngested'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

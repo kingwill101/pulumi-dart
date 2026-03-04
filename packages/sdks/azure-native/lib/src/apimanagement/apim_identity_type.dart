@@ -5,16 +5,15 @@ enum ApimIdentityType {
   valueSystemAssignedUserAssigned("SystemAssigned, UserAssigned"),
   valueNone("None");
 
-  const ApimIdentityType(this.value);
-  final String value;
+  const ApimIdentityType(this.wireValue);
+  final String wireValue;
 
   static ApimIdentityType fromValue(String value) {
     for (final item in ApimIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApimIdentityType value: $value');
   }
 }
-

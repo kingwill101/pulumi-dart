@@ -1,5 +1,3 @@
-library module_storage;
-
 export 'storage/bucket.dart';
 export 'storage/bucket_access_control.dart';
 export 'storage/bucket_access_control_args.dart';

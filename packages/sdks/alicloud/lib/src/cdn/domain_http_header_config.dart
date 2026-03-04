@@ -27,10 +27,13 @@ class DomainHttpHeaderConfig {
 
   factory DomainHttpHeaderConfig.fromMap(Map<String, dynamic> map) {
     return DomainHttpHeaderConfig(
-      headerId: map['headerId'] == null ? null : (map['headerId']! as String).input(),
-      headerKey: (map['headerKey'] as String).input(),
-      headerValue: (map['headerValue'] as String).input(),
+      headerId: (() {
+        final guardedValue = map['headerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerKey: pulumi.Input.fromValue(map['headerKey'] as String),
+      headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
     );
   }
 }
-

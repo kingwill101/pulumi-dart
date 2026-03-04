@@ -3,16 +3,15 @@ enum PricingTier {
   valueFree("Free"),
   valueStandard("Standard");
 
-  const PricingTier(this.value);
-  final String value;
+  const PricingTier(this.wireValue);
+  final String wireValue;
 
   static PricingTier fromValue(String value) {
     for (final item in PricingTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PricingTier value: $value');
   }
 }
-

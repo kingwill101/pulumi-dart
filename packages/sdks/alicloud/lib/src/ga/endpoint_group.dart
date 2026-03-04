@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_group_args.dart';
-import 'endpoint_group_endpoint_configuration.dart';
 import 'endpoint_group_port_overrides.dart';
 import 'endpoint_group_state.dart';
 
@@ -475,50 +474,69 @@ import 'endpoint_group_state.dart';
 class EndpointGroup extends pulumi.CustomResource {
   /// The ID of the Global Accelerator instance to which the endpoint group will be added.
   late final pulumi.Output<String> acceleratorId;
+
   /// The description of the endpoint group.
   late final pulumi.Output<String?> description;
+
   /// The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
-  late final pulumi.Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> endpointConfigurations;
+
   /// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
   late final pulumi.Output<List<String>> endpointGroupIpLists;
+
   /// The ID of the region where the endpoint group is deployed.
   late final pulumi.Output<String> endpointGroupRegion;
+
   /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-  /// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
+  /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
   late final pulumi.Output<String> endpointGroupType;
+
   /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
-  /// > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+  /// &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
   late final pulumi.Output<String> endpointProtocolVersion;
+
   /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
-  /// > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
+  /// &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
   late final pulumi.Output<String> endpointRequestProtocol;
+
   /// Specifies whether to enable the health check feature. Valid values:
   late final pulumi.Output<bool?> healthCheckEnabled;
+
   /// The interval between two consecutive health checks. Unit: seconds.
   late final pulumi.Output<int?> healthCheckIntervalSeconds;
+
   /// The path specified as the destination of the targets for health checks.
   late final pulumi.Output<String?> healthCheckPath;
+
   /// The port that is used for health checks.
   late final pulumi.Output<int?> healthCheckPort;
+
   /// The protocol that is used to connect to the targets for health checks. Valid values:
   /// - `TCP` or `tcp`: TCP protocol.
   /// - `HTTP` or `http`: HTTP protocol.
   /// - `HTTPS` or `https`: HTTPS protocol.
-  /// > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
+  /// &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
   late final pulumi.Output<String?> healthCheckProtocol;
+
   /// The ID of the listener that is associated with the endpoint group.
   late final pulumi.Output<String> listenerId;
+
   /// The name of the endpoint group.
   late final pulumi.Output<String> name;
+
   /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-  /// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
+  /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
   late final pulumi.Output<EndpointGroupPortOverrides?> portOverrides;
+
   /// The status of the endpoint group.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
   late final pulumi.Output<int> thresholdCount;
+
   /// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
   late final pulumi.Output<int?> trafficPercentage;
 
@@ -531,31 +549,37 @@ class EndpointGroup extends pulumi.CustomResource {
     EndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/endpointGroup:EndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.description = registerOutput<String?>('description');
-    this.endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>>('endpointConfigurations');
-    this.endpointGroupIpLists = registerOutput<List<String>>('endpointGroupIpLists');
-    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
-    this.endpointGroupType = registerOutput<String>('endpointGroupType');
-    this.endpointProtocolVersion = registerOutput<String>('endpointProtocolVersion');
-    this.endpointRequestProtocol = registerOutput<String>('endpointRequestProtocol');
-    this.healthCheckEnabled = registerOutput<bool?>('healthCheckEnabled');
-    this.healthCheckIntervalSeconds = registerOutput<int?>('healthCheckIntervalSeconds');
-    this.healthCheckPath = registerOutput<String?>('healthCheckPath');
-    this.healthCheckPort = registerOutput<int?>('healthCheckPort');
-    this.healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
-    this.listenerId = registerOutput<String>('listenerId');
+         'alicloud:ga/endpointGroup:EndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    description = registerOutput<String?>('description');
+    endpointConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'endpointConfigurations',
+    );
+    endpointGroupIpLists = registerOutput<List<String>>('endpointGroupIpLists');
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    endpointGroupType = registerOutput<String>('endpointGroupType');
+    endpointProtocolVersion = registerOutput<String>('endpointProtocolVersion');
+    endpointRequestProtocol = registerOutput<String>('endpointRequestProtocol');
+    healthCheckEnabled = registerOutput<bool?>('healthCheckEnabled');
+    healthCheckIntervalSeconds = registerOutput<int?>(
+      'healthCheckIntervalSeconds',
+    );
+    healthCheckPath = registerOutput<String?>('healthCheckPath');
+    healthCheckPort = registerOutput<int?>('healthCheckPort');
+    healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
+    listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');
-    this.portOverrides = registerOutput<EndpointGroupPortOverrides?>('portOverrides');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thresholdCount = registerOutput<int>('thresholdCount');
-    this.trafficPercentage = registerOutput<int?>('trafficPercentage');
+    portOverrides = registerOutput<EndpointGroupPortOverrides?>(
+      'portOverrides',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thresholdCount = registerOutput<int>('thresholdCount');
+    trafficPercentage = registerOutput<int?>('trafficPercentage');
   }
 
   /// Gets an existing [EndpointGroup] resource's state with the given [name] and [id].
@@ -576,30 +600,36 @@ class EndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/endpointGroup:EndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.description = registerOutput<String?>('description');
-    this.endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>>('endpointConfigurations');
-    this.endpointGroupIpLists = registerOutput<List<String>>('endpointGroupIpLists');
-    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
-    this.endpointGroupType = registerOutput<String>('endpointGroupType');
-    this.endpointProtocolVersion = registerOutput<String>('endpointProtocolVersion');
-    this.endpointRequestProtocol = registerOutput<String>('endpointRequestProtocol');
-    this.healthCheckEnabled = registerOutput<bool?>('healthCheckEnabled');
-    this.healthCheckIntervalSeconds = registerOutput<int?>('healthCheckIntervalSeconds');
-    this.healthCheckPath = registerOutput<String?>('healthCheckPath');
-    this.healthCheckPort = registerOutput<int?>('healthCheckPort');
-    this.healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
-    this.listenerId = registerOutput<String>('listenerId');
+         'alicloud:ga/endpointGroup:EndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    description = registerOutput<String?>('description');
+    endpointConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'endpointConfigurations',
+    );
+    endpointGroupIpLists = registerOutput<List<String>>('endpointGroupIpLists');
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    endpointGroupType = registerOutput<String>('endpointGroupType');
+    endpointProtocolVersion = registerOutput<String>('endpointProtocolVersion');
+    endpointRequestProtocol = registerOutput<String>('endpointRequestProtocol');
+    healthCheckEnabled = registerOutput<bool?>('healthCheckEnabled');
+    healthCheckIntervalSeconds = registerOutput<int?>(
+      'healthCheckIntervalSeconds',
+    );
+    healthCheckPath = registerOutput<String?>('healthCheckPath');
+    healthCheckPort = registerOutput<int?>('healthCheckPort');
+    healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
+    listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');
-    this.portOverrides = registerOutput<EndpointGroupPortOverrides?>('portOverrides');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thresholdCount = registerOutput<int>('thresholdCount');
-    this.trafficPercentage = registerOutput<int?>('trafficPercentage');
+    portOverrides = registerOutput<EndpointGroupPortOverrides?>(
+      'portOverrides',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thresholdCount = registerOutput<int>('thresholdCount');
+    trafficPercentage = registerOutput<int?>('trafficPercentage');
   }
 }

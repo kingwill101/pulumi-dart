@@ -29,12 +29,17 @@ class GetNamespaceServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetNamespaceServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetNamespaceServicedirectoryV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNamespaceServicedirectoryV1beta1Args(
-      location: (map['location'] as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

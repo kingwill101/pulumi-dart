@@ -1,5 +1,3 @@
-library module_networkconnectivity;
-
 export 'networkconnectivity/audit_config.dart';
 export 'networkconnectivity/audit_config_networkconnectivity_v1alpha1.dart';
 export 'networkconnectivity/audit_config_response.dart';

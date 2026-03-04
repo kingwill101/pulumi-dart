@@ -1,0 +1,6 @@
+name: awsx-dart-cloudtrail-nodejs
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX CloudTrail encryption options example in Dart.

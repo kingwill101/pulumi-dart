@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSuppressionListAddressArgs {
   /// The id of the address in a suppression list.
   final pulumi.Input<String> addressId;
+
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
+
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the suppression list.
   final pulumi.Input<String> suppressionListName;
 
@@ -44,12 +48,17 @@ class GetSuppressionListAddressArgs {
 
   factory GetSuppressionListAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetSuppressionListAddressArgs(
-      addressId: (map['addressId'] as String).input(),
-      domainName: (map['domainName'] as String).input(),
-      emailServiceName: (map['emailServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      suppressionListName: (map['suppressionListName'] as String).input(),
+      addressId: pulumi.Input.fromValue(map['addressId'] as String),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      emailServiceName: pulumi.Input.fromValue(
+        map['emailServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      suppressionListName: pulumi.Input.fromValue(
+        map['suppressionListName'] as String,
+      ),
     );
   }
 }
-

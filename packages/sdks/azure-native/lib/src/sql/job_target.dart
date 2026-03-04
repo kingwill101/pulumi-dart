@@ -7,16 +7,22 @@ import 'job_target_group_membership_type.dart';
 class JobTarget {
   /// The target database name.
   final pulumi.Input<String>? databaseName;
+
   /// The target elastic pool name.
   final pulumi.Input<String>? elasticPoolName;
+
   /// Whether the target is included or excluded from the group.
   final pulumi.Input<JobTargetGroupMembershipType>? membershipType;
+
   /// The resource ID of the credential that is used during job execution to connect to the target and determine the list of databases inside the target.
   final pulumi.Input<String>? refreshCredential;
+
   /// The target server name.
   final pulumi.Input<String>? serverName;
+
   /// The target shard map.
   final pulumi.Input<String>? shardMapName;
+
   /// The target type.
   final pulumi.Input<String> type;
 
@@ -42,7 +48,11 @@ class JobTarget {
     return <String, dynamic>{
       'databaseName': ?databaseName,
       'elasticPoolName': ?elasticPoolName,
-      'membershipType': ?pulumi.Input.mapOptionalInputValue<JobTargetGroupMembershipType, String>(membershipType, (value) => value.value),
+      'membershipType':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTargetGroupMembershipType,
+            String
+          >(membershipType, (value) => value.wireValue),
       'refreshCredential': ?refreshCredential,
       'serverName': ?serverName,
       'shardMapName': ?shardMapName,
@@ -52,14 +62,39 @@ class JobTarget {
 
   factory JobTarget.fromMap(Map<String, dynamic> map) {
     return JobTarget(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
-      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName']! as String).input(),
-      membershipType: map['membershipType'] == null ? null : (JobTargetGroupMembershipType.fromValue(map['membershipType']! as String)).input(),
-      refreshCredential: map['refreshCredential'] == null ? null : (map['refreshCredential']! as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
-      shardMapName: map['shardMapName'] == null ? null : (map['shardMapName']! as String).input(),
-      type: (map['type'] as String).input(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticPoolName: (() {
+        final guardedValue = map['elasticPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      membershipType: (() {
+        final guardedValue = map['membershipType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTargetGroupMembershipType.fromValue(guardedValue as String),
+        );
+      })(),
+      refreshCredential: (() {
+        final guardedValue = map['refreshCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverName: (() {
+        final guardedValue = map['serverName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shardMapName: (() {
+        final guardedValue = map['shardMapName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

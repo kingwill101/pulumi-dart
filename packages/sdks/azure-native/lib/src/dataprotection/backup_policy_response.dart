@@ -7,8 +7,10 @@ import 'azure_backup_rule_response.dart';
 class BackupPolicyResponse {
   /// Type of datasource for the backup management
   final pulumi.Input<List<String>> datasourceTypes;
+
   /// Expected value is 'BackupPolicy'.
   final pulumi.Input<String> objectType;
+
   /// Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
   final pulumi.Input<List<AzureBackupRuleResponse>> policyRules;
 
@@ -26,16 +28,35 @@ class BackupPolicyResponse {
     return <String, dynamic>{
       'datasourceTypes': datasourceTypes,
       'objectType': objectType,
-      'policyRules': pulumi.Input.mapInputValue<List<AzureBackupRuleResponse>, List<Map<String, dynamic>>>(policyRules, (value) => pulumi.Input.encodeList<AzureBackupRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyRules':
+          pulumi.Input.mapInputValue<
+            List<AzureBackupRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            policyRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AzureBackupRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BackupPolicyResponse(
-      datasourceTypes: ((map['datasourceTypes'] as List).cast<String>()).input(),
-      objectType: (map['objectType'] as String).input(),
-      policyRules: (pulumi.Input.decodeList<AzureBackupRuleResponse>(map['policyRules'], (value) => AzureBackupRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasourceTypes: pulumi.Input.fromValue(
+        (map['datasourceTypes'] as List).cast<String>(),
+      ),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      policyRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AzureBackupRuleResponse>(
+          map['policyRules']!,
+          (value) => AzureBackupRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -18,16 +18,15 @@ enum AttackTactic {
   valueImpairProcessControl("ImpairProcessControl"),
   valueInhibitResponseFunction("InhibitResponseFunction");
 
-  const AttackTactic(this.value);
-  final String value;
+  const AttackTactic(this.wireValue);
+  final String wireValue;
 
   static AttackTactic fromValue(String value) {
     for (final item in AttackTactic.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttackTactic value: $value');
   }
 }
-

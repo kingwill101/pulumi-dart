@@ -4,16 +4,15 @@ enum DistributionType {
   valueTensorFlow("TensorFlow"),
   valueMpi("Mpi");
 
-  const DistributionType(this.value);
-  final String value;
+  const DistributionType(this.wireValue);
+  final String wireValue;
 
   static DistributionType fromValue(String value) {
     for (final item in DistributionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DistributionType value: $value');
   }
 }
-

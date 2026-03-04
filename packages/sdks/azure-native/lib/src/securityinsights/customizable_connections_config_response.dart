@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomizableConnectionsConfigResponse {
   /// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
   final pulumi.Input<String> templateSpecName;
+
   /// Gets or sets the template version.
   final pulumi.Input<String> templateSpecVersion;
 
@@ -24,11 +25,16 @@ class CustomizableConnectionsConfigResponse {
     };
   }
 
-  factory CustomizableConnectionsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory CustomizableConnectionsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomizableConnectionsConfigResponse(
-      templateSpecName: (map['templateSpecName'] as String).input(),
-      templateSpecVersion: (map['templateSpecVersion'] as String).input(),
+      templateSpecName: pulumi.Input.fromValue(
+        map['templateSpecName'] as String,
+      ),
+      templateSpecVersion: pulumi.Input.fromValue(
+        map['templateSpecVersion'] as String,
+      ),
     );
   }
 }
-

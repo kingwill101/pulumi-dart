@@ -3,16 +3,20 @@ enum RegionInstanceGroupManagerFailoverActionComputeBeta {
   noFailover("NO_FAILOVER"),
   unknown("UNKNOWN");
 
-  const RegionInstanceGroupManagerFailoverActionComputeBeta(this.value);
-  final String value;
+  const RegionInstanceGroupManagerFailoverActionComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static RegionInstanceGroupManagerFailoverActionComputeBeta fromValue(String value) {
-    for (final item in RegionInstanceGroupManagerFailoverActionComputeBeta.values) {
-      if (item.value == value) {
+  static RegionInstanceGroupManagerFailoverActionComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionInstanceGroupManagerFailoverActionComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionInstanceGroupManagerFailoverActionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionInstanceGroupManagerFailoverActionComputeBeta value: $value',
+    );
   }
 }
-

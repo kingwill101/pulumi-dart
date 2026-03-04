@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestMetadataResponse {
   /// Payload to be sent upon any action on approval request
   final pulumi.Input<String>? approvalCallbackPayload;
+
   /// Route name for the approval callback
   final pulumi.Input<String>? approvalCallbackRoute;
+
   /// Status of the approval. Uses ApprovalStatus enum.
   final pulumi.Input<String>? approvalStatus;
+
   /// Resource Action of the item being approved or declined.
   final pulumi.Input<String> resourceAction;
 
@@ -36,11 +39,22 @@ class RequestMetadataResponse {
 
   factory RequestMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RequestMetadataResponse(
-      approvalCallbackPayload: map['approvalCallbackPayload'] == null ? null : (map['approvalCallbackPayload']! as String).input(),
-      approvalCallbackRoute: map['approvalCallbackRoute'] == null ? null : (map['approvalCallbackRoute']! as String).input(),
-      approvalStatus: map['approvalStatus'] == null ? null : (map['approvalStatus']! as String).input(),
-      resourceAction: (map['resourceAction'] as String).input(),
+      approvalCallbackPayload: (() {
+        final guardedValue = map['approvalCallbackPayload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      approvalCallbackRoute: (() {
+        final guardedValue = map['approvalCallbackRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      approvalStatus: (() {
+        final guardedValue = map['approvalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceAction: pulumi.Input.fromValue(map['resourceAction'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamedPartitionScheme {
   /// Array for the names of the partitions.
   final pulumi.Input<List<String>> names;
+
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'Named'.
   final pulumi.Input<String> partitionScheme;
@@ -13,10 +14,7 @@ class NamedPartitionScheme {
   /// Creates a new [NamedPartitionScheme].
   /// [names] Array for the names of the partitions.
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  NamedPartitionScheme({
-    required this.names,
-    required this.partitionScheme,
-  });
+  NamedPartitionScheme({required this.names, required this.partitionScheme});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,8 @@ class NamedPartitionScheme {
 
   factory NamedPartitionScheme.fromMap(Map<String, dynamic> map) {
     return NamedPartitionScheme(
-      names: ((map['names'] as List).cast<String>()).input(),
-      partitionScheme: (map['partitionScheme'] as String).input(),
+      names: pulumi.Input.fromValue((map['names'] as List).cast<String>()),
+      partitionScheme: pulumi.Input.fromValue(map['partitionScheme'] as String),
     );
   }
 }
-

@@ -13,15 +13,18 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'field': ?field,
-    };
+    return <String, dynamic>{'field': ?field};
   }
 
-  factory StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField(
-      field: map['field'] == null ? null : (map['field']! as String).input(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

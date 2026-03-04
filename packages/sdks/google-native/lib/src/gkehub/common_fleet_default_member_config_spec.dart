@@ -10,10 +10,13 @@ import 'service_mesh_membership_spec.dart';
 class CommonFleetDefaultMemberConfigSpec {
   /// Config Management-specific spec.
   final pulumi.Input<ConfigManagementMembershipSpec>? configmanagement;
+
   /// Identity Service-specific spec.
   final pulumi.Input<IdentityServiceMembershipSpec>? identityservice;
+
   /// Anthos Service Mesh-specific spec
   final pulumi.Input<ServiceMeshMembershipSpec>? mesh;
+
   /// Policy Controller spec.
   final pulumi.Input<PolicyControllerMembershipSpec>? policycontroller;
 
@@ -31,20 +34,67 @@ class CommonFleetDefaultMemberConfigSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configmanagement': ?pulumi.Input.mapOptionalInputValue<ConfigManagementMembershipSpec, Map<String, dynamic>>(configmanagement, (value) => value.toMap()),
-      'identityservice': ?pulumi.Input.mapOptionalInputValue<IdentityServiceMembershipSpec, Map<String, dynamic>>(identityservice, (value) => value.toMap()),
-      'mesh': ?pulumi.Input.mapOptionalInputValue<ServiceMeshMembershipSpec, Map<String, dynamic>>(mesh, (value) => value.toMap()),
-      'policycontroller': ?pulumi.Input.mapOptionalInputValue<PolicyControllerMembershipSpec, Map<String, dynamic>>(policycontroller, (value) => value.toMap()),
+      'configmanagement':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigManagementMembershipSpec,
+            Map<String, dynamic>
+          >(configmanagement, (value) => value.toMap()),
+      'identityservice':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityServiceMembershipSpec,
+            Map<String, dynamic>
+          >(identityservice, (value) => value.toMap()),
+      'mesh':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceMeshMembershipSpec,
+            Map<String, dynamic>
+          >(mesh, (value) => value.toMap()),
+      'policycontroller':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyControllerMembershipSpec,
+            Map<String, dynamic>
+          >(policycontroller, (value) => value.toMap()),
     };
   }
 
   factory CommonFleetDefaultMemberConfigSpec.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpec(
-      configmanagement: map['configmanagement'] == null ? null : (ConfigManagementMembershipSpec.fromMap((map['configmanagement']! as Map).cast<String, dynamic>())).input(),
-      identityservice: map['identityservice'] == null ? null : (IdentityServiceMembershipSpec.fromMap((map['identityservice']! as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (ServiceMeshMembershipSpec.fromMap((map['mesh']! as Map).cast<String, dynamic>())).input(),
-      policycontroller: map['policycontroller'] == null ? null : (PolicyControllerMembershipSpec.fromMap((map['policycontroller']! as Map).cast<String, dynamic>())).input(),
+      configmanagement: (() {
+        final guardedValue = map['configmanagement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigManagementMembershipSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identityservice: (() {
+        final guardedValue = map['identityservice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityServiceMembershipSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mesh: (() {
+        final guardedValue = map['mesh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceMeshMembershipSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policycontroller: (() {
+        final guardedValue = map['policycontroller'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyControllerMembershipSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

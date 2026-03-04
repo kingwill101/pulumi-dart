@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MabFileFolderProtectedItemExtendedInfo {
   /// Last time when the agent data synced to service.
   final pulumi.Input<String>? lastRefreshedAt;
+
   /// The oldest backup copy available.
   final pulumi.Input<String>? oldestRecoveryPoint;
+
   /// Number of backup copies associated with the backup item.
   final pulumi.Input<int>? recoveryPointCount;
 
@@ -29,12 +31,25 @@ class MabFileFolderProtectedItemExtendedInfo {
     };
   }
 
-  factory MabFileFolderProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
+  factory MabFileFolderProtectedItemExtendedInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MabFileFolderProtectedItemExtendedInfo(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
+      lastRefreshedAt: (() {
+        final guardedValue = map['lastRefreshedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oldestRecoveryPoint: (() {
+        final guardedValue = map['oldestRecoveryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryPointCount: (() {
+        final guardedValue = map['recoveryPointCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

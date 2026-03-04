@@ -12,20 +12,19 @@ class GetOrganizationApiKeyArgs {
 
   /// Creates a new [GetOrganizationApiKeyArgs].
   /// [emailId] The User email Id
-  GetOrganizationApiKeyArgs({
-    this.emailId,
-  });
+  GetOrganizationApiKeyArgs({this.emailId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'emailId': ?emailId,
-    };
+    return <String, dynamic>{'emailId': ?emailId};
   }
 
   factory GetOrganizationApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationApiKeyArgs(
-      emailId: map['emailId'] == null ? null : (map['emailId']! as String).input(),
+      emailId: (() {
+        final guardedValue = map['emailId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

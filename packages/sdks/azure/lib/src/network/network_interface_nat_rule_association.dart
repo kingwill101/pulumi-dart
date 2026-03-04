@@ -497,7 +497,7 @@ import 'network_interface_nat_rule_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -510,12 +510,14 @@ import 'network_interface_nat_rule_association_state.dart';
 /// $ pulumi import azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/example|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule1
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{natRuleId}`.
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{natRuleId}`.
 class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
   /// The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ipConfigurationName;
+
   /// The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natRuleId;
+
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
 
@@ -528,14 +530,14 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     NetworkInterfaceNatRuleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipConfigurationName = registerOutput<String>('ipConfigurationName');
-    this.natRuleId = registerOutput<String>('natRuleId');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    natRuleId = registerOutput<String>('natRuleId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 
   /// Gets an existing [NetworkInterfaceNatRuleAssociation] resource's state with the given [name] and [id].
@@ -556,13 +558,13 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipConfigurationName = registerOutput<String>('ipConfigurationName');
-    this.natRuleId = registerOutput<String>('natRuleId');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    natRuleId = registerOutput<String>('natRuleId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 }

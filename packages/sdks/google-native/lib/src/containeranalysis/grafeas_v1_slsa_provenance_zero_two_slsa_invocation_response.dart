@@ -5,7 +5,8 @@ import 'grafeas_v1_slsa_provenance_zero_two_slsa_config_source_response.dart';
 
 /// Identifies the event that kicked off the build.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse> configSource;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse>
+  configSource;
   final pulumi.Input<Map<String, String>> environment;
   final pulumi.Input<Map<String, String>> parameters;
 
@@ -21,18 +22,31 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configSource': pulumi.Input.mapInputValue<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse, Map<String, dynamic>>(configSource, (value) => value.toMap()),
+      'configSource':
+          pulumi.Input.mapInputValue<
+            GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse,
+            Map<String, dynamic>
+          >(configSource, (value) => value.toMap()),
       'environment': environment,
       'parameters': parameters,
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(
-      configSource: (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
-      environment: ((map['environment'] as Map).cast<String, String>()).input(),
-      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      configSource: pulumi.Input.fromValue(
+        GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(
+          (map['configSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      environment: pulumi.Input.fromValue(
+        (map['environment'] as Map).cast<String, String>(),
+      ),
+      parameters: pulumi.Input.fromValue(
+        (map['parameters'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

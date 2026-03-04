@@ -30,7 +30,11 @@ class KeyVaultSecretStoreProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyvaultName': ?keyvaultName,
-      'managedIdentityProperties': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityProperties, Map<String, dynamic>>(managedIdentityProperties, (value) => value.toMap()),
+      'managedIdentityProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedIdentityProperties,
+            Map<String, dynamic>
+          >(managedIdentityProperties, (value) => value.toMap()),
       'resourceGroup': ?resourceGroup,
       'secretStoreId': ?secretStoreId,
       'subscriptionId': ?subscriptionId,
@@ -40,13 +44,40 @@ class KeyVaultSecretStoreProperties {
 
   factory KeyVaultSecretStoreProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretStoreProperties(
-      keyvaultName: map['keyvaultName'] == null ? null : (map['keyvaultName']! as String).input(),
-      managedIdentityProperties: map['managedIdentityProperties'] == null ? null : (ManagedIdentityProperties.fromMap((map['managedIdentityProperties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      keyvaultName: (() {
+        final guardedValue = map['keyvaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedIdentityProperties: (() {
+        final guardedValue = map['managedIdentityProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedIdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretStoreId: (() {
+        final guardedValue = map['secretStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

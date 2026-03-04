@@ -1,5 +1,3 @@
-library module_transcoder;
-
 export 'transcoder/job.dart';
 export 'transcoder/job_args.dart';
 export 'transcoder/job_config.dart';

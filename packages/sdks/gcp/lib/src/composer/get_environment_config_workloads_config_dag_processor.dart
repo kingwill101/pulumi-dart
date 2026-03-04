@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigWorkloadsConfigDagProcessor {
   /// Number of DAG processors.
   final pulumi.Input<int> count;
+
   /// CPU request and limit for DAG processor.
   final pulumi.Input<double> cpu;
+
   /// Memory (GB) request and limit for DAG processor.
   final pulumi.Input<double> memoryGb;
+
   /// Storage (GB) request and limit for DAG processor.
   final pulumi.Input<double> storageGb;
 
@@ -33,13 +36,14 @@ class GetEnvironmentConfigWorkloadsConfigDagProcessor {
     };
   }
 
-  factory GetEnvironmentConfigWorkloadsConfigDagProcessor.fromMap(Map<String, dynamic> map) {
+  factory GetEnvironmentConfigWorkloadsConfigDagProcessor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEnvironmentConfigWorkloadsConfigDagProcessor(
-      count: (map['count'] as int).input(),
-      cpu: (map['cpu'] as double).input(),
-      memoryGb: (map['memoryGb'] as double).input(),
-      storageGb: (map['storageGb'] as double).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      storageGb: pulumi.Input.fromValue(map['storageGb'] as double),
     );
   }
 }
-

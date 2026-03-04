@@ -10,20 +10,39 @@ class SystemParameters {
 
   /// Creates a new [SystemParameters].
   /// [rules] Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
-  SystemParameters({
-    this.rules,
-  });
+  SystemParameters({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<SystemParameterRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<SystemParameterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SystemParameterRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SystemParameterRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SystemParameters.fromMap(Map<String, dynamic> map) {
     return SystemParameters(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SystemParameterRule>(map['rules']!, (value) => SystemParameterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SystemParameterRule>(
+            guardedValue,
+            (value) => SystemParameterRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

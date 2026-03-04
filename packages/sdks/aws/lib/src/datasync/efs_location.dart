@@ -5,7 +5,7 @@ import 'efs_location_state.dart';
 
 /// Manages an AWS DataSync EFS Location.
 ///
-/// > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
+/// &gt; **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
 ///
 /// ## Example Usage
 ///
@@ -145,22 +145,31 @@ import 'efs_location_state.dart';
 class EfsLocation extends pulumi.CustomResource {
   /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses to access the Amazon EFS file system.
   late final pulumi.Output<String?> accessPointArn;
+
   /// Amazon Resource Name (ARN) of the DataSync Location.
   late final pulumi.Output<String> arn;
+
   /// Configuration block containing EC2 configurations for connecting to the EFS File System.
   late final pulumi.Output<EfsLocationEc2Config> ec2Config;
+
   /// Amazon Resource Name (ARN) of EFS File System.
   late final pulumi.Output<String> efsFileSystemArn;
+
   /// Specifies an Identity and Access Management (IAM) role that DataSync assumes when mounting the Amazon EFS file system.
   late final pulumi.Output<String?> fileSystemAccessRoleArn;
+
   /// Specifies whether you want DataSync to use TLS encryption when transferring data to or from your Amazon EFS file system. Valid values are `NONE` and `TLS1_2`.
   late final pulumi.Output<String?> inTransitEncryption;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Subdirectory to perform actions as source or destination. Default `/`.
   late final pulumi.Output<String?> subdirectory;
+
   /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> uri;
@@ -174,22 +183,24 @@ class EfsLocation extends pulumi.CustomResource {
     EfsLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datasync/efsLocation:EfsLocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointArn = registerOutput<String?>('accessPointArn');
-    this.arn = registerOutput<String>('arn');
-    this.ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
-    this.efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
-    this.fileSystemAccessRoleArn = registerOutput<String?>('fileSystemAccessRoleArn');
-    this.inTransitEncryption = registerOutput<String?>('inTransitEncryption');
-    this.region = registerOutput<String>('region');
-    this.subdirectory = registerOutput<String?>('subdirectory');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.uri = registerOutput<String>('uri');
+         'aws:datasync/efsLocation:EfsLocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointArn = registerOutput<String?>('accessPointArn');
+    arn = registerOutput<String>('arn');
+    ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
+    efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
+    fileSystemAccessRoleArn = registerOutput<String?>(
+      'fileSystemAccessRoleArn',
+    );
+    inTransitEncryption = registerOutput<String?>('inTransitEncryption');
+    region = registerOutput<String>('region');
+    subdirectory = registerOutput<String?>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    uri = registerOutput<String>('uri');
   }
 
   /// Gets an existing [EfsLocation] resource's state with the given [name] and [id].
@@ -210,21 +221,23 @@ class EfsLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datasync/efsLocation:EfsLocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointArn = registerOutput<String?>('accessPointArn');
-    this.arn = registerOutput<String>('arn');
-    this.ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
-    this.efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
-    this.fileSystemAccessRoleArn = registerOutput<String?>('fileSystemAccessRoleArn');
-    this.inTransitEncryption = registerOutput<String?>('inTransitEncryption');
-    this.region = registerOutput<String>('region');
-    this.subdirectory = registerOutput<String?>('subdirectory');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.uri = registerOutput<String>('uri');
+         'aws:datasync/efsLocation:EfsLocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointArn = registerOutput<String?>('accessPointArn');
+    arn = registerOutput<String>('arn');
+    ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
+    efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
+    fileSystemAccessRoleArn = registerOutput<String?>(
+      'fileSystemAccessRoleArn',
+    );
+    inTransitEncryption = registerOutput<String?>('inTransitEncryption');
+    region = registerOutput<String>('region');
+    subdirectory = registerOutput<String?>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    uri = registerOutput<String>('uri');
   }
 }

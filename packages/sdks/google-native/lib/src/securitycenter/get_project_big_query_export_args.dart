@@ -13,10 +13,7 @@ class GetProjectBigQueryExportArgs {
   /// Creates a new [GetProjectBigQueryExportArgs].
   /// [bigQueryExportId] Required.
   /// [project] Optional.
-  GetProjectBigQueryExportArgs({
-    required this.bigQueryExportId,
-    this.project,
-  });
+  GetProjectBigQueryExportArgs({required this.bigQueryExportId, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,14 @@ class GetProjectBigQueryExportArgs {
 
   factory GetProjectBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectBigQueryExportArgs(
-      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      bigQueryExportId: pulumi.Input.fromValue(
+        map['bigQueryExportId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

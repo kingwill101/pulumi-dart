@@ -3,16 +3,15 @@ enum DeleteOptions {
   delete("Delete"),
   detach("Detach");
 
-  const DeleteOptions(this.value);
-  final String value;
+  const DeleteOptions(this.wireValue);
+  final String wireValue;
 
   static DeleteOptions fromValue(String value) {
     for (final item in DeleteOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeleteOptions value: $value');
   }
 }
-

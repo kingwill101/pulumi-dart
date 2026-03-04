@@ -5,29 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EciScalingConfigurationSecurityContextSysctl {
   /// The system name of the security context in which the elastic container instance is run.
   final pulumi.Input<String>? name;
+
   /// The system value of the security context in which the elastic container instance is run.
   final pulumi.Input<String>? value;
 
   /// Creates a new [EciScalingConfigurationSecurityContextSysctl].
   /// [name] The system name of the security context in which the elastic container instance is run.
   /// [value] The system value of the security context in which the elastic container instance is run.
-  EciScalingConfigurationSecurityContextSysctl({
-    this.name,
-    this.value,
-  });
+  EciScalingConfigurationSecurityContextSysctl({this.name, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
-  factory EciScalingConfigurationSecurityContextSysctl.fromMap(Map<String, dynamic> map) {
+  factory EciScalingConfigurationSecurityContextSysctl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EciScalingConfigurationSecurityContextSysctl(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

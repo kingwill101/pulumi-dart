@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CollaborationDataEncryptionMetadata {
   /// Whether encrypted tables can contain cleartext data. This is a boolean field.
   final pulumi.Input<bool> allowClearText;
+
   /// Whether Fingerprint columns can contain duplicate entries. This is a boolean field.
   final pulumi.Input<bool> allowDuplicates;
+
   /// Whether Fingerprint columns can be joined on any other Fingerprint column with a different name. This is a boolean field.
   final pulumi.Input<bool> allowJoinsOnColumnsWithDifferentNames;
+
   /// Whether NULL values are to be copied as NULL to encrypted tables (true) or cryptographically processed (false).
   final pulumi.Input<bool> preserveNulls;
 
@@ -28,18 +31,22 @@ class CollaborationDataEncryptionMetadata {
     return <String, dynamic>{
       'allowClearText': allowClearText,
       'allowDuplicates': allowDuplicates,
-      'allowJoinsOnColumnsWithDifferentNames': allowJoinsOnColumnsWithDifferentNames,
+      'allowJoinsOnColumnsWithDifferentNames':
+          allowJoinsOnColumnsWithDifferentNames,
       'preserveNulls': preserveNulls,
     };
   }
 
-  factory CollaborationDataEncryptionMetadata.fromMap(Map<String, dynamic> map) {
+  factory CollaborationDataEncryptionMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CollaborationDataEncryptionMetadata(
-      allowClearText: (map['allowClearText'] as bool).input(),
-      allowDuplicates: (map['allowDuplicates'] as bool).input(),
-      allowJoinsOnColumnsWithDifferentNames: (map['allowJoinsOnColumnsWithDifferentNames'] as bool).input(),
-      preserveNulls: (map['preserveNulls'] as bool).input(),
+      allowClearText: pulumi.Input.fromValue(map['allowClearText'] as bool),
+      allowDuplicates: pulumi.Input.fromValue(map['allowDuplicates'] as bool),
+      allowJoinsOnColumnsWithDifferentNames: pulumi.Input.fromValue(
+        map['allowJoinsOnColumnsWithDifferentNames'] as bool,
+      ),
+      preserveNulls: pulumi.Input.fromValue(map['preserveNulls'] as bool),
     );
   }
 }
-

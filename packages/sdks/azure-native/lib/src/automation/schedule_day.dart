@@ -8,16 +8,15 @@ enum ScheduleDay {
   valueSaturday("Saturday"),
   valueSunday("Sunday");
 
-  const ScheduleDay(this.value);
-  final String value;
+  const ScheduleDay(this.wireValue);
+  final String wireValue;
 
   static ScheduleDay fromValue(String value) {
     for (final item in ScheduleDay.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleDay value: $value');
   }
 }
-

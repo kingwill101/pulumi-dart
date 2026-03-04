@@ -4,16 +4,17 @@ enum AzureFirewallApplicationRuleProtocolType {
   valueHttps("Https"),
   valueMssql("Mssql");
 
-  const AzureFirewallApplicationRuleProtocolType(this.value);
-  final String value;
+  const AzureFirewallApplicationRuleProtocolType(this.wireValue);
+  final String wireValue;
 
   static AzureFirewallApplicationRuleProtocolType fromValue(String value) {
     for (final item in AzureFirewallApplicationRuleProtocolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureFirewallApplicationRuleProtocolType value: $value');
+    throw ArgumentError(
+      'Unknown AzureFirewallApplicationRuleProtocolType value: $value',
+    );
   }
 }
-

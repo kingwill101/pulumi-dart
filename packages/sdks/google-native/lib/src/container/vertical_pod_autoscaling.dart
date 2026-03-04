@@ -9,20 +9,19 @@ class VerticalPodAutoscaling {
 
   /// Creates a new [VerticalPodAutoscaling].
   /// [enabled] Enables vertical pod autoscaling.
-  VerticalPodAutoscaling({
-    this.enabled,
-  });
+  VerticalPodAutoscaling({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory VerticalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return VerticalPodAutoscaling(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

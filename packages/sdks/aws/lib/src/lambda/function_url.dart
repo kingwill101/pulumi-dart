@@ -5,7 +5,7 @@ import 'function_url_state.dart';
 
 /// Manages a Lambda function URL. Creates a dedicated HTTP(S) endpoint for a Lambda function to enable direct invocation via HTTP requests.
 ///
-/// > **NOTE:** When [`authorization_type` is `"NONE"`](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html#urls-auth-none) the `lambda:InvokeFunctionUrl` permission allowing a public endpoint and `lambda:InvokeFunction` permission with the `InvokedViaFunctionUrl` flag set to `true` are automatically added to the Lambda function on creation. These policies are NOT removed from AWS when the resource is destroyed.
+/// &gt; **NOTE:** When [`authorization_type` is `"NONE"`](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html#urls-auth-none) the `lambda:InvokeFunctionUrl` permission allowing a public endpoint and `lambda:InvokeFunction` permission with the `InvokedViaFunctionUrl` flag set to `true` are automatically added to the Lambda function on creation. These policies are NOT removed from AWS when the resource is destroyed.
 ///
 /// ## Example Usage
 ///
@@ -329,22 +329,30 @@ import 'function_url_state.dart';
 class FunctionUrl extends pulumi.CustomResource {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
   late final pulumi.Output<String> authorizationType;
+
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
   late final pulumi.Output<FunctionUrlCors?> cors;
+
   /// ARN of the Lambda function.
   late final pulumi.Output<String> functionArn;
+
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> functionName;
-  /// HTTP URL endpoint for the function in the format `https://<url_id>.lambda-url.<region>.on.aws/`.
+
+  /// HTTP URL endpoint for the function in the format `https://&lt;url_id&gt;.lambda-url.&lt;region&gt;.on.aws/`.
   late final pulumi.Output<String> functionUrl;
+
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
   late final pulumi.Output<String?> invokeMode;
+
   /// Alias name or `$LATEST`.
   late final pulumi.Output<String?> qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Generated ID for the endpoint.
   late final pulumi.Output<String> urlId;
 
@@ -357,20 +365,20 @@ class FunctionUrl extends pulumi.CustomResource {
     FunctionUrlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/functionUrl:FunctionUrl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationType = registerOutput<String>('authorizationType');
-    this.cors = registerOutput<FunctionUrlCors?>('cors');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.functionUrl = registerOutput<String>('functionUrl');
-    this.invokeMode = registerOutput<String?>('invokeMode');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.region = registerOutput<String>('region');
-    this.urlId = registerOutput<String>('urlId');
+         'aws:lambda/functionUrl:FunctionUrl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationType = registerOutput<String>('authorizationType');
+    cors = registerOutput<FunctionUrlCors?>('cors');
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    functionUrl = registerOutput<String>('functionUrl');
+    invokeMode = registerOutput<String?>('invokeMode');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    urlId = registerOutput<String>('urlId');
   }
 
   /// Gets an existing [FunctionUrl] resource's state with the given [name] and [id].
@@ -391,19 +399,19 @@ class FunctionUrl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/functionUrl:FunctionUrl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationType = registerOutput<String>('authorizationType');
-    this.cors = registerOutput<FunctionUrlCors?>('cors');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.functionUrl = registerOutput<String>('functionUrl');
-    this.invokeMode = registerOutput<String?>('invokeMode');
-    this.qualifier = registerOutput<String?>('qualifier');
-    this.region = registerOutput<String>('region');
-    this.urlId = registerOutput<String>('urlId');
+         'aws:lambda/functionUrl:FunctionUrl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationType = registerOutput<String>('authorizationType');
+    cors = registerOutput<FunctionUrlCors?>('cors');
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    functionUrl = registerOutput<String>('functionUrl');
+    invokeMode = registerOutput<String?>('invokeMode');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    urlId = registerOutput<String>('urlId');
   }
 }

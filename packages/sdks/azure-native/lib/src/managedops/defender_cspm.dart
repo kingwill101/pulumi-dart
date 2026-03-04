@@ -3,16 +3,15 @@ enum DefenderCspm {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const DefenderCspm(this.value);
-  final String value;
+  const DefenderCspm(this.wireValue);
+  final String wireValue;
 
   static DefenderCspm fromValue(String value) {
     for (final item in DefenderCspm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefenderCspm value: $value');
   }
 }
-

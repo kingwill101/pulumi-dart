@@ -10,8 +10,10 @@ import 'retention_policy_properties.dart';
 class RetentionPolicyArgs {
   /// The resource-specific properties for this resource.
   final pulumi.Input<RetentionPolicyProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Scheduler
   final pulumi.Input<String> schedulerName;
 
@@ -27,7 +29,11 @@ class RetentionPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<RetentionPolicyProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionPolicyProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'schedulerName': schedulerName,
     };
@@ -35,10 +41,19 @@ class RetentionPolicyArgs {
 
   factory RetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyArgs(
-      properties: map['properties'] == null ? null : (RetentionPolicyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schedulerName: (map['schedulerName'] as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetentionPolicyProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schedulerName: pulumi.Input.fromValue(map['schedulerName'] as String),
     );
   }
 }
-

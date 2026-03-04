@@ -164,24 +164,35 @@ import 'environment_deployment_properties_response.dart';
 class Environment extends pulumi.CustomResource {
   /// The display name of the Azure Resource Manager template that produced the environment.
   late final pulumi.Output<String?> armTemplateDisplayName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creator of the environment.
   late final pulumi.Output<String> createdByUser;
+
   /// The deployment properties of the environment.
-  late final pulumi.Output<EnvironmentDeploymentPropertiesResponse?> deploymentProperties;
+  late final pulumi.Output<EnvironmentDeploymentPropertiesResponse?>
+  deploymentProperties;
+
   /// The location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The identifier of the resource group containing the environment's resources.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -194,21 +205,24 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devtestlab:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.armTemplateDisplayName = registerOutput<String?>('armTemplateDisplayName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdByUser = registerOutput<String>('createdByUser');
-    this.deploymentProperties = registerOutput<EnvironmentDeploymentPropertiesResponse?>('deploymentProperties');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devtestlab:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    armTemplateDisplayName = registerOutput<String?>('armTemplateDisplayName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdByUser = registerOutput<String>('createdByUser');
+    deploymentProperties =
+        registerOutput<EnvironmentDeploymentPropertiesResponse?>(
+          'deploymentProperties',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

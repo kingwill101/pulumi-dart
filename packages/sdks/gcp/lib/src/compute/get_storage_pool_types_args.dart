@@ -31,10 +31,13 @@ class GetStoragePoolTypesArgs {
 
   factory GetStoragePoolTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      storagePoolType: (map['storagePoolType'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePoolType: pulumi.Input.fromValue(map['storagePoolType'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

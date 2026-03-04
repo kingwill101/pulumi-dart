@@ -2,16 +2,15 @@
 enum FeatureAttributionMetric {
   valueNormalizedDiscountedCumulativeGain("NormalizedDiscountedCumulativeGain");
 
-  const FeatureAttributionMetric(this.value);
-  final String value;
+  const FeatureAttributionMetric(this.wireValue);
+  final String wireValue;
 
   static FeatureAttributionMetric fromValue(String value) {
     for (final item in FeatureAttributionMetric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureAttributionMetric value: $value');
   }
 }
-

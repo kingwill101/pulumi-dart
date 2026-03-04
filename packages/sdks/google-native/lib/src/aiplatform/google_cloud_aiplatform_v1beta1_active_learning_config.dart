@@ -8,12 +8,16 @@ import 'google_cloud_aiplatform_v1beta1_training_config.dart';
 class GoogleCloudAiplatformV1beta1ActiveLearningConfig {
   /// Max number of human labeled DataItems.
   final pulumi.Input<String>? maxDataItemCount;
+
   /// Max percent of total DataItems for human labeling.
   final pulumi.Input<int>? maxDataItemPercentage;
+
   /// Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
   final pulumi.Input<GoogleCloudAiplatformV1beta1SampleConfig>? sampleConfig;
+
   /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1TrainingConfig>? trainingConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1TrainingConfig>?
+  trainingConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ActiveLearningConfig].
   /// [maxDataItemCount] Max number of human labeled DataItems.
@@ -31,18 +35,51 @@ class GoogleCloudAiplatformV1beta1ActiveLearningConfig {
     return <String, dynamic>{
       'maxDataItemCount': ?maxDataItemCount,
       'maxDataItemPercentage': ?maxDataItemPercentage,
-      'sampleConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1SampleConfig, Map<String, dynamic>>(sampleConfig, (value) => value.toMap()),
-      'trainingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1TrainingConfig, Map<String, dynamic>>(trainingConfig, (value) => value.toMap()),
+      'sampleConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1SampleConfig,
+            Map<String, dynamic>
+          >(sampleConfig, (value) => value.toMap()),
+      'trainingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1TrainingConfig,
+            Map<String, dynamic>
+          >(trainingConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ActiveLearningConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ActiveLearningConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ActiveLearningConfig(
-      maxDataItemCount: map['maxDataItemCount'] == null ? null : (map['maxDataItemCount']! as String).input(),
-      maxDataItemPercentage: map['maxDataItemPercentage'] == null ? null : (map['maxDataItemPercentage']! as int).input(),
-      sampleConfig: map['sampleConfig'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfig.fromMap((map['sampleConfig']! as Map).cast<String, dynamic>())).input(),
-      trainingConfig: map['trainingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1TrainingConfig.fromMap((map['trainingConfig']! as Map).cast<String, dynamic>())).input(),
+      maxDataItemCount: (() {
+        final guardedValue = map['maxDataItemCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxDataItemPercentage: (() {
+        final guardedValue = map['maxDataItemPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sampleConfig: (() {
+        final guardedValue = map['sampleConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1SampleConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trainingConfig: (() {
+        final guardedValue = map['trainingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1TrainingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

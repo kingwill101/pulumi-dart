@@ -1,5 +1,3 @@
-library module_retail;
-
 export 'retail/control.dart';
 export 'retail/control_args.dart';
 export 'retail/control_retail_v2alpha.dart';

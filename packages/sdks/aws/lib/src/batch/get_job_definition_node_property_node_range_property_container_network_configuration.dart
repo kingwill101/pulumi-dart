@@ -13,15 +13,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assignPublicIp': assignPublicIp,
-    };
+    return <String, dynamic>{'assignPublicIp': assignPublicIp};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration(
-      assignPublicIp: (map['assignPublicIp'] as bool).input(),
+      assignPublicIp: pulumi.Input.fromValue(map['assignPublicIp'] as bool),
     );
   }
 }
-

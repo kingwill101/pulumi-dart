@@ -6,7 +6,11 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
   /// Conditions to apply to the expression.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions>? conditions;
+  final pulumi.Input<
+    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions
+  >?
+  conditions;
+
   /// The operator to apply to the result of conditions. Default and currently only supported value is AND.
   /// Default value is `AND`.
   /// Possible values are: `AND`.
@@ -22,16 +26,33 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'logicalOperator': ?logicalOperator,
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(
-      conditions: map['conditions'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator']! as String).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logicalOperator: (() {
+        final guardedValue = map['logicalOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

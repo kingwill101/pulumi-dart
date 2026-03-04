@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessageStoragePolicyResponse {
   /// Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
   final pulumi.Input<List<String>> allowedPersistenceRegions;
+
   /// Optional. If true, `allowed_persistence_regions` is also used to enforce in-transit guarantees for messages. That is, Pub/Sub will fail Publish operations on this topic and subscribe operations on any subscription attached to this topic in any region that is not in `allowed_persistence_regions`.
   final pulumi.Input<bool> enforceInTransit;
 
@@ -26,9 +27,10 @@ class MessageStoragePolicyResponse {
 
   factory MessageStoragePolicyResponse.fromMap(Map<String, dynamic> map) {
     return MessageStoragePolicyResponse(
-      allowedPersistenceRegions: ((map['allowedPersistenceRegions'] as List).cast<String>()).input(),
-      enforceInTransit: (map['enforceInTransit'] as bool).input(),
+      allowedPersistenceRegions: pulumi.Input.fromValue(
+        (map['allowedPersistenceRegions'] as List).cast<String>(),
+      ),
+      enforceInTransit: pulumi.Input.fromValue(map['enforceInTransit'] as bool),
     );
   }
 }
-

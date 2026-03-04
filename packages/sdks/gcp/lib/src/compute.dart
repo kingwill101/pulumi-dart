@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/address.dart';
 export 'compute/address_args.dart';
 export 'compute/address_state.dart';

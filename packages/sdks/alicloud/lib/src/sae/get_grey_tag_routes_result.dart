@@ -6,6 +6,7 @@ import 'get_grey_tag_routes_route.dart';
 /// Result data returned by getGreyTagRoutes.
 class GetGreyTagRoutesResult {
   final String appId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -40,7 +41,11 @@ class GetGreyTagRoutesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'routes': pulumi.Input.encodeList<GetGreyTagRoutesRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes':
+          pulumi.Input.encodeList<GetGreyTagRoutesRoute, Map<String, dynamic>>(
+            routes,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -49,11 +54,23 @@ class GetGreyTagRoutesResult {
       appId: map['appId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      routes: pulumi.Input.decodeList<GetGreyTagRoutesRoute>(map['routes'], (value) => GetGreyTagRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routes: pulumi.Input.decodeList<GetGreyTagRoutesRoute>(
+        map['routes']!,
+        (value) => GetGreyTagRoutesRoute.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

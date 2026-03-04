@@ -21,11 +21,14 @@ class GetListenerDefaultActionForwardTargetGroup {
     };
   }
 
-  factory GetListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionForwardTargetGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionForwardTargetGroup(
-      targetGroupIdentifier: (map['targetGroupIdentifier'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      targetGroupIdentifier: pulumi.Input.fromValue(
+        map['targetGroupIdentifier'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

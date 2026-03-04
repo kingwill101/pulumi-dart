@@ -4,16 +4,15 @@ enum JobOptimization {
   autodetect("AUTODETECT"),
   disabled("DISABLED");
 
-  const JobOptimization(this.value);
-  final String value;
+  const JobOptimization(this.wireValue);
+  final String wireValue;
 
   static JobOptimization fromValue(String value) {
     for (final item in JobOptimization.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobOptimization value: $value');
   }
 }
-

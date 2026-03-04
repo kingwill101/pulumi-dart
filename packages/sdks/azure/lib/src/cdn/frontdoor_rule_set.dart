@@ -175,7 +175,7 @@ import 'frontdoor_rule_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01
@@ -190,6 +190,7 @@ import 'frontdoor_rule_set_state.dart';
 class FrontdoorRuleSet extends pulumi.CustomResource {
   /// The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// The name which should be used for this Front Door Rule Set. Changing this forces a new Front Door Rule Set to be created.
   late final pulumi.Output<String> name;
 
@@ -202,12 +203,12 @@ class FrontdoorRuleSet extends pulumi.CustomResource {
     FrontdoorRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorRuleSet:FrontdoorRuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+         'azure:cdn/frontdoorRuleSet:FrontdoorRuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
   }
 
@@ -229,12 +230,12 @@ class FrontdoorRuleSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorRuleSet:FrontdoorRuleSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+         'azure:cdn/frontdoorRuleSet:FrontdoorRuleSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
   }
 }

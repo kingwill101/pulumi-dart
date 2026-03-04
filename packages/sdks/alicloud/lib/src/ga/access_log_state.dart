@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessLogState {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String>? acceleratorId;
+
   /// The ID of the endpoint group instance.
   final pulumi.Input<String>? endpointGroupId;
+
   /// The ID of the listener.
   final pulumi.Input<String>? listenerId;
+
   /// The name of the Log Store.
   final pulumi.Input<String>? slsLogStoreName;
+
   /// The name of the Log Service project.
   final pulumi.Input<String>? slsProjectName;
+
   /// The region ID of the Log Service project.
   final pulumi.Input<String>? slsRegionId;
+
   /// Whether access log is enabled.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class AccessLogState {
 
   factory AccessLogState.fromMap(Map<String, dynamic> map) {
     return AccessLogState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
-      slsLogStoreName: map['slsLogStoreName'] == null ? null : (map['slsLogStoreName']! as String).input(),
-      slsProjectName: map['slsProjectName'] == null ? null : (map['slsProjectName']! as String).input(),
-      slsRegionId: map['slsRegionId'] == null ? null : (map['slsRegionId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      acceleratorId: (() {
+        final guardedValue = map['acceleratorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointGroupId: (() {
+        final guardedValue = map['endpointGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listenerId: (() {
+        final guardedValue = map['listenerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsLogStoreName: (() {
+        final guardedValue = map['slsLogStoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsProjectName: (() {
+        final guardedValue = map['slsProjectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsRegionId: (() {
+        final guardedValue = map['slsRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

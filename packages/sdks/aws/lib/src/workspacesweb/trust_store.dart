@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store_args.dart';
-import 'trust_store_certificate.dart';
 import 'trust_store_state.dart';
 
 /// Resource for managing an AWS WorkSpaces Web Trust Store.
@@ -334,14 +333,19 @@ import 'trust_store_state.dart';
 class TrustStore extends pulumi.CustomResource {
   /// List of ARNs of the web portals associated with the trust store.
   late final pulumi.Output<List<String>> associatedPortalArns;
+
   /// Set of certificates to include in the trust store. See Certificate below.
-  late final pulumi.Output<List<TrustStoreCertificate>?> certificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// ARN of the trust store.
   late final pulumi.Output<String> trustStoreArn;
 
@@ -354,17 +358,17 @@ class TrustStore extends pulumi.CustomResource {
     TrustStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/trustStore:TrustStore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    this.certificates = registerOutput<List<TrustStoreCertificate>?>('certificates');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.trustStoreArn = registerOutput<String>('trustStoreArn');
+         'aws:workspacesweb/trustStore:TrustStore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 
   /// Gets an existing [TrustStore] resource's state with the given [name] and [id].
@@ -385,16 +389,16 @@ class TrustStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/trustStore:TrustStore',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    this.certificates = registerOutput<List<TrustStoreCertificate>?>('certificates');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.trustStoreArn = registerOutput<String>('trustStoreArn');
+         'aws:workspacesweb/trustStore:TrustStore',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 }

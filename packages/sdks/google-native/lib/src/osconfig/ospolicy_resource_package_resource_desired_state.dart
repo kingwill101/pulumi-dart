@@ -4,16 +4,17 @@ enum OSPolicyResourcePackageResourceDesiredState {
   installed("INSTALLED"),
   removed("REMOVED");
 
-  const OSPolicyResourcePackageResourceDesiredState(this.value);
-  final String value;
+  const OSPolicyResourcePackageResourceDesiredState(this.wireValue);
+  final String wireValue;
 
   static OSPolicyResourcePackageResourceDesiredState fromValue(String value) {
     for (final item in OSPolicyResourcePackageResourceDesiredState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourcePackageResourceDesiredState value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourcePackageResourceDesiredState value: $value',
+    );
   }
 }
-

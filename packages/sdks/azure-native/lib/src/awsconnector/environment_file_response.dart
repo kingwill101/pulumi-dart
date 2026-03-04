@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentFileResponse {
   /// The file type to use. Environment files are objects in Amazon S3. The only supported value is ``s3``.
   final pulumi.Input<String>? type;
+
   /// The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
   final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentFileResponse].
   /// [type] The file type to use. Environment files are objects in Amazon S3. The only supported value is ``s3``.
   /// [value] The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
-  EnvironmentFileResponse({
-    this.type,
-    this.value,
-  });
+  EnvironmentFileResponse({this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'type': ?type, 'value': ?value};
   }
 
   factory EnvironmentFileResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentFileResponse(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

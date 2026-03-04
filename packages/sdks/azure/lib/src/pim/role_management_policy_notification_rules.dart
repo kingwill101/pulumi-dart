@@ -7,11 +7,16 @@ import 'role_management_policy_notification_rules_eligible_assignments.dart';
 
 class RoleManagementPolicyNotificationRules {
   /// A `notification_target` block as defined below to configure notfications on active role assignments.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignments>? activeAssignments;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignments>?
+  activeAssignments;
+
   /// A `notification_target` block as defined below for configuring notifications on activation of eligible role.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivations>? eligibleActivations;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivations>?
+  eligibleActivations;
+
   /// A `notification_target` block as defined below to configure notification on eligible role assignments.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleAssignments>? eligibleAssignments;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleAssignments>?
+  eligibleAssignments;
 
   /// Creates a new [RoleManagementPolicyNotificationRules].
   /// [activeAssignments] A `notification_target` block as defined below to configure notfications on active role assignments.
@@ -25,18 +30,55 @@ class RoleManagementPolicyNotificationRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeAssignments': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyNotificationRulesActiveAssignments, Map<String, dynamic>>(activeAssignments, (value) => value.toMap()),
-      'eligibleActivations': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyNotificationRulesEligibleActivations, Map<String, dynamic>>(eligibleActivations, (value) => value.toMap()),
-      'eligibleAssignments': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyNotificationRulesEligibleAssignments, Map<String, dynamic>>(eligibleAssignments, (value) => value.toMap()),
+      'activeAssignments':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoleManagementPolicyNotificationRulesActiveAssignments,
+            Map<String, dynamic>
+          >(activeAssignments, (value) => value.toMap()),
+      'eligibleActivations':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoleManagementPolicyNotificationRulesEligibleActivations,
+            Map<String, dynamic>
+          >(eligibleActivations, (value) => value.toMap()),
+      'eligibleAssignments':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoleManagementPolicyNotificationRulesEligibleAssignments,
+            Map<String, dynamic>
+          >(eligibleAssignments, (value) => value.toMap()),
     };
   }
 
-  factory RoleManagementPolicyNotificationRules.fromMap(Map<String, dynamic> map) {
+  factory RoleManagementPolicyNotificationRules.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RoleManagementPolicyNotificationRules(
-      activeAssignments: map['activeAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesActiveAssignments.fromMap((map['activeAssignments']! as Map).cast<String, dynamic>())).input(),
-      eligibleActivations: map['eligibleActivations'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivations.fromMap((map['eligibleActivations']! as Map).cast<String, dynamic>())).input(),
-      eligibleAssignments: map['eligibleAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleAssignments.fromMap((map['eligibleAssignments']! as Map).cast<String, dynamic>())).input(),
+      activeAssignments: (() {
+        final guardedValue = map['activeAssignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoleManagementPolicyNotificationRulesActiveAssignments.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eligibleActivations: (() {
+        final guardedValue = map['eligibleActivations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoleManagementPolicyNotificationRulesEligibleActivations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eligibleAssignments: (() {
+        final guardedValue = map['eligibleAssignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoleManagementPolicyNotificationRulesEligibleAssignments.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

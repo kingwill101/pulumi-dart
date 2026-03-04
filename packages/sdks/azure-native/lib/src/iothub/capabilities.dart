@@ -3,16 +3,15 @@ enum Capabilities {
   valueNone("None"),
   valueDeviceManagement("DeviceManagement");
 
-  const Capabilities(this.value);
-  final String value;
+  const Capabilities(this.wireValue);
+  final String wireValue;
 
   static Capabilities fromValue(String value) {
     for (final item in Capabilities.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Capabilities value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeTypeNatConfigResponse {
   /// The internal port for the NAT configuration.
   final pulumi.Input<int>? backendPort;
+
   /// The port range end for the external endpoint.
   final pulumi.Input<int>? frontendPortRangeEnd;
+
   /// The port range start for the external endpoint.
   final pulumi.Input<int>? frontendPortRangeStart;
 
@@ -31,10 +33,21 @@ class NodeTypeNatConfigResponse {
 
   factory NodeTypeNatConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeTypeNatConfigResponse(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd']! as int).input(),
-      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart']! as int).input(),
+      backendPort: (() {
+        final guardedValue = map['backendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      frontendPortRangeEnd: (() {
+        final guardedValue = map['frontendPortRangeEnd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      frontendPortRangeStart: (() {
+        final guardedValue = map['frontendPortRangeStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum FunctionType {
   valueSum("Sum");
 
-  const FunctionType(this.value);
-  final String value;
+  const FunctionType(this.wireValue);
+  final String wireValue;
 
   static FunctionType fromValue(String value) {
     for (final item in FunctionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FunctionType value: $value');
   }
 }
-

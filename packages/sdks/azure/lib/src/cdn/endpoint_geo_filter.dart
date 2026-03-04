@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointGeoFilter {
   /// The Action of the Geo Filter. Possible values include `Allow` and `Block`.
   final pulumi.Input<String> action;
+
   /// A List of two letter country codes (e.g. `US`, `GB`) to be associated with this Geo Filter.
   final pulumi.Input<List<String>> countryCodes;
+
   /// The relative path applicable to geo filter.
   final pulumi.Input<String> relativePath;
 
@@ -30,10 +32,11 @@ class EndpointGeoFilter {
 
   factory EndpointGeoFilter.fromMap(Map<String, dynamic> map) {
     return EndpointGeoFilter(
-      action: (map['action'] as String).input(),
-      countryCodes: ((map['countryCodes'] as List).cast<String>()).input(),
-      relativePath: (map['relativePath'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      countryCodes: pulumi.Input.fromValue(
+        (map['countryCodes'] as List).cast<String>(),
+      ),
+      relativePath: pulumi.Input.fromValue(map['relativePath'] as String),
     );
   }
 }
-

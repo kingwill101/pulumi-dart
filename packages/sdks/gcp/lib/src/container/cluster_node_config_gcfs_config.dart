@@ -8,20 +8,15 @@ class ClusterNodeConfigGcfsConfig {
 
   /// Creates a new [ClusterNodeConfigGcfsConfig].
   /// [enabled] Whether or not the Google Container Filesystem (GCFS) is enabled
-  ClusterNodeConfigGcfsConfig({
-    required this.enabled,
-  });
+  ClusterNodeConfigGcfsConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory ClusterNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigGcfsConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

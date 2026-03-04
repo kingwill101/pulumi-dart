@@ -31,10 +31,13 @@ class GetGrpcRouteArgs {
 
   factory GetGrpcRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetGrpcRouteArgs(
-      grpcRouteId: (map['grpcRouteId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      grpcRouteId: pulumi.Input.fromValue(map['grpcRouteId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

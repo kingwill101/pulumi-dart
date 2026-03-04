@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMqttBridgeConnectorArgs {
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// Name of MQ mqttBridgeConnector resource
   final pulumi.Input<String> mqttBridgeConnectorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetMqttBridgeConnectorArgs {
 
   factory GetMqttBridgeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetMqttBridgeConnectorArgs(
-      mqName: (map['mqName'] as String).input(),
-      mqttBridgeConnectorName: (map['mqttBridgeConnectorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      mqttBridgeConnectorName: pulumi.Input.fromValue(
+        map['mqttBridgeConnectorName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

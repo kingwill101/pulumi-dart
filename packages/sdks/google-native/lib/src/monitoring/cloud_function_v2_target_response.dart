@@ -7,6 +7,7 @@ import 'monitored_resource_response_monitoring_v3.dart';
 class CloudFunctionV2TargetResponse {
   /// The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is output only.
   final pulumi.Input<MonitoredResourceResponseMonitoringV3> cloudRunRevision;
+
   /// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
   final pulumi.Input<String> name;
 
@@ -20,16 +21,23 @@ class CloudFunctionV2TargetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRunRevision': pulumi.Input.mapInputValue<MonitoredResourceResponseMonitoringV3, Map<String, dynamic>>(cloudRunRevision, (value) => value.toMap()),
+      'cloudRunRevision':
+          pulumi.Input.mapInputValue<
+            MonitoredResourceResponseMonitoringV3,
+            Map<String, dynamic>
+          >(cloudRunRevision, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory CloudFunctionV2TargetResponse.fromMap(Map<String, dynamic> map) {
     return CloudFunctionV2TargetResponse(
-      cloudRunRevision: (MonitoredResourceResponseMonitoringV3.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      cloudRunRevision: pulumi.Input.fromValue(
+        MonitoredResourceResponseMonitoringV3.fromMap(
+          (map['cloudRunRevision']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

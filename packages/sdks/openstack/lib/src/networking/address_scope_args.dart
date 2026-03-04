@@ -10,18 +10,22 @@ class AddressScopeArgs {
   /// IP version, either 4 (default) or 6. Changing this
   /// creates a new address-scope.
   final pulumi.Input<int>? ipVersion;
+
   /// The name of the address-scope. Changing this updates the
   /// name of the existing address-scope.
   final pulumi.Input<String>? name;
+
   /// The owner of the address-scope. Required if admin
   /// wants to create a address-scope for another project. Changing this creates a
   /// new address-scope.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron address-scope. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
   /// address-scope.
   final pulumi.Input<String>? region;
+
   /// Indicates whether this address-scope is shared across
   /// all projects. Changing this updates the shared status of the existing
   /// address-scope.
@@ -53,12 +57,31 @@ class AddressScopeArgs {
 
   factory AddressScopeArgs.fromMap(Map<String, dynamic> map) {
     return AddressScopeArgs(
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

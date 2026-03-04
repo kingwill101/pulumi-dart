@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DimensionsResponse {
   /// Depth of the device.
   final pulumi.Input<double> depth;
+
   /// Height of the device.
   final pulumi.Input<double> height;
+
   /// Length of the device.
   final pulumi.Input<double> length;
+
   /// Unit for the dimensions of length, height and width.
   final pulumi.Input<String> lengthHeightUnit;
+
   /// Weight of the device.
   final pulumi.Input<double> weight;
+
   /// Unit for the dimensions of weight.
   final pulumi.Input<String> weightUnit;
+
   /// Width of the device.
   final pulumi.Input<double> width;
 
@@ -51,14 +57,15 @@ class DimensionsResponse {
 
   factory DimensionsResponse.fromMap(Map<String, dynamic> map) {
     return DimensionsResponse(
-      depth: (map['depth'] as double).input(),
-      height: (map['height'] as double).input(),
-      length: (map['length'] as double).input(),
-      lengthHeightUnit: (map['lengthHeightUnit'] as String).input(),
-      weight: (map['weight'] as double).input(),
-      weightUnit: (map['weightUnit'] as String).input(),
-      width: (map['width'] as double).input(),
+      depth: pulumi.Input.fromValue(map['depth'] as double),
+      height: pulumi.Input.fromValue(map['height'] as double),
+      length: pulumi.Input.fromValue(map['length'] as double),
+      lengthHeightUnit: pulumi.Input.fromValue(
+        map['lengthHeightUnit'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as double),
+      weightUnit: pulumi.Input.fromValue(map['weightUnit'] as String),
+      width: pulumi.Input.fromValue(map['width'] as double),
     );
   }
 }
-

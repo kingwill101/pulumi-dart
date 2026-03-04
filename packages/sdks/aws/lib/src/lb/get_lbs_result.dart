@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLbs.
 class GetLbsResult {
   /// Set of Load Balancer ARNs.
   final List<String> arns;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -36,8 +36,11 @@ class GetLbsResult {
       arns: (map['arns'] as List).cast<String>(),
       id: map['id'] as String,
       region: map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

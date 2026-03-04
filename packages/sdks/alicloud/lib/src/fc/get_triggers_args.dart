@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggersArgs {
   /// FC function name.
   final pulumi.Input<String> functionName;
+
   /// A list of FC triggers ids.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by FC trigger name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// FC service name.
   final pulumi.Input<String> serviceName;
 
@@ -44,12 +48,23 @@ class GetTriggersArgs {
 
   factory GetTriggersArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggersArgs(
-      functionName: (map['functionName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

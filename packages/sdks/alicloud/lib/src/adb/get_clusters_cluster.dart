@@ -5,12 +5,15 @@ import 'get_clusters_cluster_available_kernel_version.dart';
 
 class GetClustersCluster {
   final pulumi.Input<int> autoRenewPeriod;
-  final pulumi.Input<List<GetClustersClusterAvailableKernelVersion>> availableKernelVersions;
+  final pulumi.Input<List<GetClustersClusterAvailableKernelVersion>>
+  availableKernelVersions;
+
   /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
   final pulumi.Input<String> chargeType;
   final pulumi.Input<String> commodityCode;
   final pulumi.Input<String> computeResource;
   final pulumi.Input<String> connectionString;
+
   /// The CreateTime of the ADB cluster.
   final pulumi.Input<String> createTime;
   final pulumi.Input<String> dbClusterCategory;
@@ -18,12 +21,16 @@ class GetClustersCluster {
   final pulumi.Input<String> dbClusterNetworkType;
   final pulumi.Input<String> dbClusterType;
   final pulumi.Input<String> dbClusterVersion;
+
   /// The DBNodeClass of the ADB cluster.
   final pulumi.Input<String> dbNodeClass;
+
   /// The DBNodeCount of the ADB cluster.
   final pulumi.Input<int> dbNodeCount;
+
   /// The DBNodeStorage of the ADB cluster.
   final pulumi.Input<int> dbNodeStorage;
+
   /// The description of the ADB cluster.
   final pulumi.Input<String> description;
   final pulumi.Input<String> diskType;
@@ -32,39 +39,49 @@ class GetClustersCluster {
   final pulumi.Input<String> engine;
   final pulumi.Input<String> engineVersion;
   final pulumi.Input<String> executorCount;
+
   /// Expiration time. Pay-As-You-Go clusters never expire.
   final pulumi.Input<String> expireTime;
+
   /// The expired of the ADB cluster.
   final pulumi.Input<String> expired;
+
   /// The ID of the ADB cluster.
   final pulumi.Input<String> id;
   final pulumi.Input<String> kernelVersion;
+
   /// The LockMode of the ADB cluster.
   final pulumi.Input<String> lockMode;
   final pulumi.Input<String> lockReason;
   final pulumi.Input<String> maintainTime;
   final pulumi.Input<String> mode;
+
   /// The DBClusterNetworkType of the ADB cluster.
   final pulumi.Input<String> networkType;
   final pulumi.Input<String> paymentType;
   final pulumi.Input<int> port;
   final pulumi.Input<String> rdsInstanceId;
+
   /// Region ID the cluster belongs to.
   final pulumi.Input<String> regionId;
   final pulumi.Input<String> renewalStatus;
   final pulumi.Input<String> resourceGroupId;
   final pulumi.Input<List<String>> securityIps;
+
   /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
   final pulumi.Input<String> status;
   final pulumi.Input<String> storageResource;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   final pulumi.Input<Map<String, String>> tags;
   final pulumi.Input<String> vpcCloudInstanceId;
+
   /// ID of the VPC the cluster belongs to.
   final pulumi.Input<String> vpcId;
   final pulumi.Input<String> vswitchId;
+
   /// The ZoneId of the ADB cluster.
   final pulumi.Input<String> zoneId;
 
@@ -165,7 +182,18 @@ class GetClustersCluster {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoRenewPeriod': autoRenewPeriod,
-      'availableKernelVersions': pulumi.Input.mapInputValue<List<GetClustersClusterAvailableKernelVersion>, List<Map<String, dynamic>>>(availableKernelVersions, (value) => pulumi.Input.encodeList<GetClustersClusterAvailableKernelVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'availableKernelVersions':
+          pulumi.Input.mapInputValue<
+            List<GetClustersClusterAvailableKernelVersion>,
+            List<Map<String, dynamic>>
+          >(
+            availableKernelVersions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClustersClusterAvailableKernelVersion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'chargeType': chargeType,
       'commodityCode': commodityCode,
       'computeResource': computeResource,
@@ -214,52 +242,72 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      autoRenewPeriod: (map['autoRenewPeriod'] as int).input(),
-      availableKernelVersions: (pulumi.Input.decodeList<GetClustersClusterAvailableKernelVersion>(map['availableKernelVersions'], (value) => GetClustersClusterAvailableKernelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chargeType: (map['chargeType'] as String).input(),
-      commodityCode: (map['commodityCode'] as String).input(),
-      computeResource: (map['computeResource'] as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dbClusterCategory: (map['dbClusterCategory'] as String).input(),
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      dbClusterNetworkType: (map['dbClusterNetworkType'] as String).input(),
-      dbClusterType: (map['dbClusterType'] as String).input(),
-      dbClusterVersion: (map['dbClusterVersion'] as String).input(),
-      dbNodeClass: (map['dbNodeClass'] as String).input(),
-      dbNodeCount: (map['dbNodeCount'] as int).input(),
-      dbNodeStorage: (map['dbNodeStorage'] as int).input(),
-      description: (map['description'] as String).input(),
-      diskType: (map['diskType'] as String).input(),
-      dtsJobId: (map['dtsJobId'] as String).input(),
-      elasticIoResource: (map['elasticIoResource'] as int).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      executorCount: (map['executorCount'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      expired: (map['expired'] as String).input(),
-      id: (map['id'] as String).input(),
-      kernelVersion: (map['kernelVersion'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      lockReason: (map['lockReason'] as String).input(),
-      maintainTime: (map['maintainTime'] as String).input(),
-      mode: (map['mode'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      port: (map['port'] as int).input(),
-      rdsInstanceId: (map['rdsInstanceId'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      renewalStatus: (map['renewalStatus'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      securityIps: ((map['securityIps'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      storageResource: (map['storageResource'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcCloudInstanceId: (map['vpcCloudInstanceId'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      autoRenewPeriod: pulumi.Input.fromValue(map['autoRenewPeriod'] as int),
+      availableKernelVersions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClustersClusterAvailableKernelVersion>(
+          map['availableKernelVersions']!,
+          (value) => GetClustersClusterAvailableKernelVersion.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
+      commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
+      computeResource: pulumi.Input.fromValue(map['computeResource'] as String),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dbClusterCategory: pulumi.Input.fromValue(
+        map['dbClusterCategory'] as String,
+      ),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      dbClusterNetworkType: pulumi.Input.fromValue(
+        map['dbClusterNetworkType'] as String,
+      ),
+      dbClusterType: pulumi.Input.fromValue(map['dbClusterType'] as String),
+      dbClusterVersion: pulumi.Input.fromValue(
+        map['dbClusterVersion'] as String,
+      ),
+      dbNodeClass: pulumi.Input.fromValue(map['dbNodeClass'] as String),
+      dbNodeCount: pulumi.Input.fromValue(map['dbNodeCount'] as int),
+      dbNodeStorage: pulumi.Input.fromValue(map['dbNodeStorage'] as int),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
+      dtsJobId: pulumi.Input.fromValue(map['dtsJobId'] as String),
+      elasticIoResource: pulumi.Input.fromValue(
+        map['elasticIoResource'] as int,
+      ),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      executorCount: pulumi.Input.fromValue(map['executorCount'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      expired: pulumi.Input.fromValue(map['expired'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kernelVersion: pulumi.Input.fromValue(map['kernelVersion'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      lockReason: pulumi.Input.fromValue(map['lockReason'] as String),
+      maintainTime: pulumi.Input.fromValue(map['maintainTime'] as String),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      rdsInstanceId: pulumi.Input.fromValue(map['rdsInstanceId'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      renewalStatus: pulumi.Input.fromValue(map['renewalStatus'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      securityIps: pulumi.Input.fromValue(
+        (map['securityIps'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageResource: pulumi.Input.fromValue(map['storageResource'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      vpcCloudInstanceId: pulumi.Input.fromValue(
+        map['vpcCloudInstanceId'] as String,
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

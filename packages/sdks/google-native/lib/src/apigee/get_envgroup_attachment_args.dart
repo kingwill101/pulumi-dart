@@ -31,10 +31,9 @@ class GetEnvgroupAttachmentArgs {
 
   factory GetEnvgroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupAttachmentArgs(
-      attachmentId: (map['attachmentId'] as String).input(),
-      envgroupId: (map['envgroupId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      envgroupId: pulumi.Input.fromValue(map['envgroupId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

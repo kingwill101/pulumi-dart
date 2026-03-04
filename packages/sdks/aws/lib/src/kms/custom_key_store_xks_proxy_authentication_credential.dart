@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomKeyStoreXksProxyAuthenticationCredential {
   /// A unique identifier for the raw secret access key.
   final pulumi.Input<String> accessKeyId;
+
   /// A secret string of 43-64 characters.
   final pulumi.Input<String> rawSecretAccessKey;
 
@@ -23,11 +24,14 @@ class CustomKeyStoreXksProxyAuthenticationCredential {
     };
   }
 
-  factory CustomKeyStoreXksProxyAuthenticationCredential.fromMap(Map<String, dynamic> map) {
+  factory CustomKeyStoreXksProxyAuthenticationCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomKeyStoreXksProxyAuthenticationCredential(
-      accessKeyId: (map['accessKeyId'] as String).input(),
-      rawSecretAccessKey: (map['rawSecretAccessKey'] as String).input(),
+      accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
+      rawSecretAccessKey: pulumi.Input.fromValue(
+        map['rawSecretAccessKey'] as String,
+      ),
     );
   }
 }
-

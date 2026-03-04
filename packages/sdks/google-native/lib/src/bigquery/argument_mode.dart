@@ -5,16 +5,15 @@ enum ArgumentMode {
   out("OUT"),
   inout("INOUT");
 
-  const ArgumentMode(this.value);
-  final String value;
+  const ArgumentMode(this.wireValue);
+  final String wireValue;
 
   static ArgumentMode fromValue(String value) {
     for (final item in ArgumentMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArgumentMode value: $value');
   }
 }
-

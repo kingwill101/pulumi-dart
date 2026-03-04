@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionArgs {
   /// Comment of the datahub subscription. It cannot be longer than 255 characters.
   final pulumi.Input<String>? comment;
+
   /// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   final pulumi.Input<String> projectName;
+
   /// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   final pulumi.Input<String> topicName;
 
@@ -34,10 +36,13 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      topicName: (map['topicName'] as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
-

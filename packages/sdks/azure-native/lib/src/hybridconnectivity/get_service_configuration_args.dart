@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceConfigurationArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The service name.
   final pulumi.Input<String> serviceConfigurationName;
 
@@ -34,10 +36,11 @@ class GetServiceConfigurationArgs {
 
   factory GetServiceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConfigurationArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      serviceConfigurationName: (map['serviceConfigurationName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      serviceConfigurationName: pulumi.Input.fromValue(
+        map['serviceConfigurationName'] as String,
+      ),
     );
   }
 }
-

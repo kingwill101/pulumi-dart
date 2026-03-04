@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupTemplateDeploymentArgs {
   /// The ID of the Management Group to which this template was applied.
   final pulumi.Input<String> managementGroupId;
+
   /// The name of this Management Group Template Deployment.
   final pulumi.Input<String> name;
 
@@ -29,9 +30,10 @@ class GetGroupTemplateDeploymentArgs {
 
   factory GetGroupTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupTemplateDeploymentArgs(
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      name: (map['name'] as String).input(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

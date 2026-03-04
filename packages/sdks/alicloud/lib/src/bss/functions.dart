@@ -6,7 +6,7 @@ import 'get_open_api_products_result.dart';
 
 /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ Future<GetOpenApiPricingModulesResult> getOpenApiPricingModules(
 
 /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bss_get_open_api_products_get_open_api_products_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOpenApiProductsResult> getOpenApiProducts(

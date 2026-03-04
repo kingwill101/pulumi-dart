@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileMetadata {
   /// The format of the file
   final pulumi.Input<String>? fileFormat;
+
   /// The name of the file.
   final pulumi.Input<String>? fileName;
+
   /// The size of the file.
   final pulumi.Input<int>? fileSize;
 
@@ -15,11 +17,7 @@ class FileMetadata {
   /// [fileFormat] The format of the file
   /// [fileName] The name of the file.
   /// [fileSize] The size of the file.
-  FileMetadata({
-    this.fileFormat,
-    this.fileName,
-    this.fileSize,
-  });
+  FileMetadata({this.fileFormat, this.fileName, this.fileSize});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class FileMetadata {
 
   factory FileMetadata.fromMap(Map<String, dynamic> map) {
     return FileMetadata(
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
-      fileSize: map['fileSize'] == null ? null : (map['fileSize']! as int).input(),
+      fileFormat: (() {
+        final guardedValue = map['fileFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileSize: (() {
+        final guardedValue = map['fileSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

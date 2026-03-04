@@ -9,20 +9,17 @@ class StorageTaskAssignmentReportResponse {
 
   /// Creates a new [StorageTaskAssignmentReportResponse].
   /// [prefix] The container prefix for the location of storage task assignment report
-  StorageTaskAssignmentReportResponse({
-    required this.prefix,
-  });
+  StorageTaskAssignmentReportResponse({required this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prefix': prefix,
-    };
+    return <String, dynamic>{'prefix': prefix};
   }
 
-  factory StorageTaskAssignmentReportResponse.fromMap(Map<String, dynamic> map) {
+  factory StorageTaskAssignmentReportResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageTaskAssignmentReportResponse(
-      prefix: (map['prefix'] as String).input(),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

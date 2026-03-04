@@ -166,8 +166,10 @@ import 'log_index_policy_state.dart';
 class LogIndexPolicy extends pulumi.CustomResource {
   /// Log group name to set the policy for.
   late final pulumi.Output<String> logGroupName;
+
   /// JSON policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policyDocument;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -180,14 +182,14 @@ class LogIndexPolicy extends pulumi.CustomResource {
     LogIndexPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logGroupName = registerOutput<String>('logGroupName');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logGroupName = registerOutput<String>('logGroupName');
+    policyDocument = registerOutput<String>('policyDocument');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LogIndexPolicy] resource's state with the given [name] and [id].
@@ -208,13 +210,13 @@ class LogIndexPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logGroupName = registerOutput<String>('logGroupName');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logGroupName = registerOutput<String>('logGroupName');
+    policyDocument = registerOutput<String>('policyDocument');
+    region = registerOutput<String>('region');
   }
 }

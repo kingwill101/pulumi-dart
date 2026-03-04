@@ -11,6 +11,7 @@ class GetBackupPlanResult {
   final String backupVaultServiceAccount;
   final String createTime;
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -59,7 +60,11 @@ class GetBackupPlanResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupPlanId': backupPlanId,
-      'backupRules': pulumi.Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(backupRules, (value) => value.toMap()),
+      'backupRules':
+          pulumi.Input.encodeList<
+            GetBackupPlanBackupRule,
+            Map<String, dynamic>
+          >(backupRules, (value) => value.toMap()),
       'backupVault': backupVault,
       'backupVaultServiceAccount': backupVaultServiceAccount,
       'createTime': createTime,
@@ -79,7 +84,12 @@ class GetBackupPlanResult {
   factory GetBackupPlanResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanResult(
       backupPlanId: map['backupPlanId'] as String,
-      backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(map['backupRules'], (value) => GetBackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())),
+      backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(
+        map['backupRules']!,
+        (value) => GetBackupPlanBackupRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       backupVault: map['backupVault'] as String,
       backupVaultServiceAccount: map['backupVaultServiceAccount'] as String,
       createTime: map['createTime'] as String,
@@ -87,13 +97,18 @@ class GetBackupPlanResult {
       id: map['id'] as String,
       location: map['location'] as String,
       logRetentionDays: map['logRetentionDays'] as int,
-      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] as int,
+      maxCustomOnDemandRetentionDays:
+          map['maxCustomOnDemandRetentionDays'] as int,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       resourceType: map['resourceType'] as String,
-      supportedResourceTypes: (map['supportedResourceTypes'] as List).cast<String>(),
+      supportedResourceTypes: (map['supportedResourceTypes'] as List)
+          .cast<String>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

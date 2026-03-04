@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1 {
   /// Extra information about the requesting user. See user.Info interface for details.
   final pulumi.Input<Map<String, List<String>>>? extra;
+
   /// Group information about the requesting user. See user.Info interface for details.
   final pulumi.Input<List<String>>? groups;
+
   /// Base64-encoded PKCS#10 CSR data
   final pulumi.Input<String>? request;
+
   /// Requested signer for the request. It is a qualified name in the form: `scope-hostname.io/name`. If empty, it will be defaulted:
   /// 1. If it's a kubelet client certificate, it is assigned
   /// "kubernetes.io/kube-apiserver-client-kubelet".
@@ -18,11 +21,14 @@ class CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1 {
   /// 3. Otherwise, it is assigned "kubernetes.io/legacy-unknown".
   /// Distribution of trust for signers happens out of band. You can select on this field using `spec.signerName`.
   final pulumi.Input<String>? signerName;
+
   /// UID information about the requesting user. See user.Info interface for details.
   final pulumi.Input<String>? uid;
+
   /// allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12
   final pulumi.Input<List<String>>? usages;
+
   /// Information about the requesting user. See user.Info interface for details.
   final pulumi.Input<String>? username;
 
@@ -56,16 +62,47 @@ class CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1 {
     };
   }
 
-  factory CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1(
-      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
-      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
-      request: map['request'] == null ? null : (map['request']! as String).input(),
-      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      usages: map['usages'] == null ? null : ((map['usages']! as List).cast<String>()).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      extra: (() {
+        final guardedValue = map['extra'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, List<String>>(),
+        );
+      })(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signerName: (() {
+        final guardedValue = map['signerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usages: (() {
+        final guardedValue = map['usages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

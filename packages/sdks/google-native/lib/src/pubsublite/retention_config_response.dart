@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionConfigResponse {
   /// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
   final pulumi.Input<String> perPartitionBytes;
+
   /// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
   final pulumi.Input<String> period;
 
@@ -26,9 +27,10 @@ class RetentionConfigResponse {
 
   factory RetentionConfigResponse.fromMap(Map<String, dynamic> map) {
     return RetentionConfigResponse(
-      perPartitionBytes: (map['perPartitionBytes'] as String).input(),
-      period: (map['period'] as String).input(),
+      perPartitionBytes: pulumi.Input.fromValue(
+        map['perPartitionBytes'] as String,
+      ),
+      period: pulumi.Input.fromValue(map['period'] as String),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterManagedPrivateEndpointState {
   /// The name of the Kusto Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? clusterName;
+
   /// The group id in which the managed private endpoint is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? groupId;
+
   /// The name of the Managed Private Endpoints to create. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The ARM resource ID of the resource for which the managed private endpoint is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privateLinkResourceId;
+
   /// The region of the resource to which the managed private endpoint is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privateLinkResourceRegion;
+
   /// The user request message.
   final pulumi.Input<String>? requestMessage;
+
   /// Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -51,14 +57,41 @@ class ClusterManagedPrivateEndpointState {
 
   factory ClusterManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ClusterManagedPrivateEndpointState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion']! as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkResourceId: (() {
+        final guardedValue = map['privateLinkResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkResourceRegion: (() {
+        final guardedValue = map['privateLinkResourceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestMessage: (() {
+        final guardedValue = map['requestMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

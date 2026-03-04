@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_args.dart';
-import 'server_network.dart';
-import 'server_public_net.dart';
 import 'server_state.dart';
 
 /// Provides an Hetzner Cloud server resource. This can be used to create, modify, and delete servers. Servers also support provisioning.
@@ -14,7 +12,7 @@ import 'server_state.dart';
 ///
 /// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
 ///
-/// > Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
+/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
 /// and returns the `datacenter` attribute. This version of the provider remains backward compatible by preserving
 /// the `datacenter` value in the state and by extracting the `location` name from the `datacenter` attribute when
 /// communicating with the API.
@@ -838,61 +836,87 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
   late final pulumi.Output<bool?> allowDeprecatedImages;
+
   /// (string) The backup window of the server, if enabled.
   late final pulumi.Output<String> backupWindow;
+
   /// Enable or disable backups.
   late final pulumi.Output<bool?> backups;
+
   /// The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
+
   /// Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
+
   /// Firewall IDs the server should be attached to on creation.
   late final pulumi.Output<List<int>> firewallIds;
+
   /// Ignores any updates
   /// to the `firewall_ids` argument which were received from the server.
   /// This should not be used in normal cases. See the documentation of the
   /// `hcloud.FirewallAttachment` resource for a reason to use this
   /// argument.
   late final pulumi.Output<bool?> ignoreRemoteFirewallIds;
+
   /// Name or ID of the image the server is created from. **Note** the `image` property is only required when using the resource to create servers. As the Hetzner Cloud API may return servers without an image ID set it is not marked as required in the Terraform Provider itself. Thus, users will get an error from the underlying client library if they forget to set the property and try to create a server.
   late final pulumi.Output<String?> image;
+
   /// (string) The IPv4 address.
   late final pulumi.Output<String> ipv4Address;
+
   /// (string) The first IPv6 address of the assigned network.
   late final pulumi.Output<String> ipv6Address;
+
   /// (string) The IPv6 network.
   late final pulumi.Output<String> ipv6Network;
+
   /// ID or Name of an ISO image to mount.
   late final pulumi.Output<String?> iso;
+
   /// If true, do not upgrade the disk. This allows downgrading the server type later.
   late final pulumi.Output<bool?> keepDisk;
+
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
+
   /// Name of the server to create (must be unique per project and a valid hostname as per RFC 1123).
   late final pulumi.Output<String> name;
+
   /// Network the server should be attached to on creation. (Can be specified multiple times)
-  late final pulumi.Output<List<ServerNetwork>?> networks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+
   /// Placement Group ID the server added to on creation.
   late final pulumi.Output<int?> placementGroupId;
+
   /// (int) The size of the primary disk in GB.
   late final pulumi.Output<int> primaryDiskSize;
+
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
-  late final pulumi.Output<List<ServerPublicNet>?> publicNets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> publicNets;
+
   /// Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
   late final pulumi.Output<bool?> rebuildProtection;
+
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   late final pulumi.Output<String?> rescue;
+
   /// Name of the server type this server should be created with.
   late final pulumi.Output<String> serverType;
+
   /// Whether to try shutting the server down gracefully before deleting it.
   late final pulumi.Output<bool?> shutdownBeforeDeletion;
+
   /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
   late final pulumi.Output<List<String>?> sshKeys;
+
   /// (string) The status of the server.
   late final pulumi.Output<String> status;
+
   /// Cloud-Init user data to use during server creation
   late final pulumi.Output<String?> userData;
 
@@ -900,43 +924,40 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_index_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'hcloud:index/server:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
-    this.backupWindow = registerOutput<String>('backupWindow');
-    this.backups = registerOutput<bool?>('backups');
-    this.datacenter = registerOutput<String>('datacenter');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.firewallIds = registerOutput<List<int>>('firewallIds');
-    this.ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
-    this.image = registerOutput<String?>('image');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.ipv6Address = registerOutput<String>('ipv6Address');
-    this.ipv6Network = registerOutput<String>('ipv6Network');
-    this.iso = registerOutput<String?>('iso');
-    this.keepDisk = registerOutput<bool?>('keepDisk');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'hcloud:index/server:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
+    backupWindow = registerOutput<String>('backupWindow');
+    backups = registerOutput<bool?>('backups');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    firewallIds = registerOutput<List<int>>('firewallIds');
+    ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
+    image = registerOutput<String?>('image');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    ipv6Network = registerOutput<String>('ipv6Network');
+    iso = registerOutput<String?>('iso');
+    keepDisk = registerOutput<bool?>('keepDisk');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<ServerNetwork>?>('networks');
-    this.placementGroupId = registerOutput<int?>('placementGroupId');
-    this.primaryDiskSize = registerOutput<int>('primaryDiskSize');
-    this.publicNets = registerOutput<List<ServerPublicNet>?>('publicNets');
-    this.rebuildProtection = registerOutput<bool?>('rebuildProtection');
-    this.rescue = registerOutput<String?>('rescue');
-    this.serverType = registerOutput<String>('serverType');
-    this.shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
-    this.sshKeys = registerOutput<List<String>?>('sshKeys');
-    this.status = registerOutput<String>('status');
-    this.userData = registerOutput<String?>('userData');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    placementGroupId = registerOutput<int?>('placementGroupId');
+    primaryDiskSize = registerOutput<int>('primaryDiskSize');
+    publicNets = registerOutput<List<Map<String, dynamic>>?>('publicNets');
+    rebuildProtection = registerOutput<bool?>('rebuildProtection');
+    rescue = registerOutput<String?>('rescue');
+    serverType = registerOutput<String>('serverType');
+    shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
+    sshKeys = registerOutput<List<String>?>('sshKeys');
+    status = registerOutput<String>('status');
+    userData = registerOutput<String?>('userData');
   }
 
   /// Gets an existing [Server] resource's state with the given [name] and [id].
@@ -957,37 +978,37 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/server:Server',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
-    this.backupWindow = registerOutput<String>('backupWindow');
-    this.backups = registerOutput<bool?>('backups');
-    this.datacenter = registerOutput<String>('datacenter');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.firewallIds = registerOutput<List<int>>('firewallIds');
-    this.ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
-    this.image = registerOutput<String?>('image');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.ipv6Address = registerOutput<String>('ipv6Address');
-    this.ipv6Network = registerOutput<String>('ipv6Network');
-    this.iso = registerOutput<String?>('iso');
-    this.keepDisk = registerOutput<bool?>('keepDisk');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/server:Server',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
+    backupWindow = registerOutput<String>('backupWindow');
+    backups = registerOutput<bool?>('backups');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    firewallIds = registerOutput<List<int>>('firewallIds');
+    ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
+    image = registerOutput<String?>('image');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    ipv6Network = registerOutput<String>('ipv6Network');
+    iso = registerOutput<String?>('iso');
+    keepDisk = registerOutput<bool?>('keepDisk');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<ServerNetwork>?>('networks');
-    this.placementGroupId = registerOutput<int?>('placementGroupId');
-    this.primaryDiskSize = registerOutput<int>('primaryDiskSize');
-    this.publicNets = registerOutput<List<ServerPublicNet>?>('publicNets');
-    this.rebuildProtection = registerOutput<bool?>('rebuildProtection');
-    this.rescue = registerOutput<String?>('rescue');
-    this.serverType = registerOutput<String>('serverType');
-    this.shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
-    this.sshKeys = registerOutput<List<String>?>('sshKeys');
-    this.status = registerOutput<String>('status');
-    this.userData = registerOutput<String?>('userData');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    placementGroupId = registerOutput<int?>('placementGroupId');
+    primaryDiskSize = registerOutput<int>('primaryDiskSize');
+    publicNets = registerOutput<List<Map<String, dynamic>>?>('publicNets');
+    rebuildProtection = registerOutput<bool?>('rebuildProtection');
+    rescue = registerOutput<String?>('rescue');
+    serverType = registerOutput<String>('serverType');
+    shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
+    sshKeys = registerOutput<List<String>?>('sshKeys');
+    status = registerOutput<String>('status');
+    userData = registerOutput<String?>('userData');
   }
 }

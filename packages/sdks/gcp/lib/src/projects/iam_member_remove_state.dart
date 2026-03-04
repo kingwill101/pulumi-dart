@@ -11,8 +11,10 @@ class IamMemberRemoveState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String>? member;
+
   /// The project id of the target project.
   final pulumi.Input<String>? project;
+
   /// The target role that should be removed.
   final pulumi.Input<String>? role;
 
@@ -20,11 +22,7 @@ class IamMemberRemoveState {
   /// [member] The IAM principal that should not have the target role.
   /// [project] The project id of the target project.
   /// [role] The target role that should be removed.
-  IamMemberRemoveState({
-    this.member,
-    this.project,
-    this.role,
-  });
+  IamMemberRemoveState({this.member, this.project, this.role});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,21 @@ class IamMemberRemoveState {
 
   factory IamMemberRemoveState.fromMap(Map<String, dynamic> map) {
     return IamMemberRemoveState(
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

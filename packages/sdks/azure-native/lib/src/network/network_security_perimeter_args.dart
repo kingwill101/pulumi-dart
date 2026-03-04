@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSecurityPerimeterArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String>? networkSecurityPerimeterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,31 @@ class NetworkSecurityPerimeterArgs {
 
   factory NetworkSecurityPerimeterArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkSecurityPerimeterName: map['networkSecurityPerimeterName'] == null ? null : (map['networkSecurityPerimeterName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityPerimeterName: (() {
+        final guardedValue = map['networkSecurityPerimeterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

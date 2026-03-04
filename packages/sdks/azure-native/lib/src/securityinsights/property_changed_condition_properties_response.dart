@@ -5,7 +5,9 @@ import 'automation_rule_property_values_changed_condition_response.dart';
 
 /// Describes an automation rule condition that evaluates a property's value change
 class PropertyChangedConditionPropertiesResponse {
-  final pulumi.Input<AutomationRulePropertyValuesChangedConditionResponse>? conditionProperties;
+  final pulumi.Input<AutomationRulePropertyValuesChangedConditionResponse>?
+  conditionProperties;
+
   /// Expected value is 'PropertyChanged'.
   final pulumi.Input<String> conditionType;
 
@@ -19,16 +21,29 @@ class PropertyChangedConditionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionProperties': ?pulumi.Input.mapOptionalInputValue<AutomationRulePropertyValuesChangedConditionResponse, Map<String, dynamic>>(conditionProperties, (value) => value.toMap()),
+      'conditionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutomationRulePropertyValuesChangedConditionResponse,
+            Map<String, dynamic>
+          >(conditionProperties, (value) => value.toMap()),
       'conditionType': conditionType,
     };
   }
 
-  factory PropertyChangedConditionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory PropertyChangedConditionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PropertyChangedConditionPropertiesResponse(
-      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRulePropertyValuesChangedConditionResponse.fromMap((map['conditionProperties']! as Map).cast<String, dynamic>())).input(),
-      conditionType: (map['conditionType'] as String).input(),
+      conditionProperties: (() {
+        final guardedValue = map['conditionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutomationRulePropertyValuesChangedConditionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      conditionType: pulumi.Input.fromValue(map['conditionType'] as String),
     );
   }
 }
-

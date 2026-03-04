@@ -1,18 +1,21 @@
 /// The additional options.
 enum AdditionalOptionsAsyncOperation {
   protectedAsyncOperationPolling("ProtectedAsyncOperationPolling"),
-  protectedAsyncOperationPollingAuditOnly("ProtectedAsyncOperationPollingAuditOnly");
+  protectedAsyncOperationPollingAuditOnly(
+    "ProtectedAsyncOperationPollingAuditOnly",
+  );
 
-  const AdditionalOptionsAsyncOperation(this.value);
-  final String value;
+  const AdditionalOptionsAsyncOperation(this.wireValue);
+  final String wireValue;
 
   static AdditionalOptionsAsyncOperation fromValue(String value) {
     for (final item in AdditionalOptionsAsyncOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AdditionalOptionsAsyncOperation value: $value');
+    throw ArgumentError(
+      'Unknown AdditionalOptionsAsyncOperation value: $value',
+    );
   }
 }
-

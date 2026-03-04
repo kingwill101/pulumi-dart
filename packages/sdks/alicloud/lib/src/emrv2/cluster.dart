@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cluster_application_config.dart';
 import 'cluster_args.dart';
-import 'cluster_bootstrap_script.dart';
-import 'cluster_node_attribute.dart';
-import 'cluster_node_group.dart';
 import 'cluster_state.dart';
 import 'cluster_subscription_config.dart';
 
@@ -11,7 +7,7 @@ import 'cluster_subscription_config.dart';
 ///
 /// For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 ///
-/// > **NOTE:** Available since v1.199.0.
+/// &gt; **NOTE:** Available since v1.199.0.
 ///
 /// ## Example Usage
 ///
@@ -997,35 +993,50 @@ import 'cluster_subscription_config.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// The application configurations of EMR cluster. See `application_configs` below.
-  late final pulumi.Output<List<ClusterApplicationConfig>?> applicationConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> applicationConfigs;
+
   /// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
   late final pulumi.Output<List<String>> applications;
+
   /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
-  late final pulumi.Output<List<ClusterBootstrapScript>?> bootstrapScripts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> bootstrapScripts;
+
   /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
   late final pulumi.Output<String> clusterName;
+
   /// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
   late final pulumi.Output<String> clusterType;
+
   /// The deletion protection of EMR cluster.
   late final pulumi.Output<bool?> deletionProtection;
+
   /// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
   late final pulumi.Output<String> deployMode;
+
   /// The log collect strategy of EMR cluster.
   late final pulumi.Output<String> logCollectStrategy;
+
   /// The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-  late final pulumi.Output<List<ClusterNodeAttribute>> nodeAttributes;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodeAttributes;
+
   /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
-  late final pulumi.Output<List<ClusterNodeGroup>> nodeGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodeGroups;
+
   /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
   late final pulumi.Output<String> paymentType;
+
   /// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
   late final pulumi.Output<String> releaseVersion;
+
   /// The Id of resource group which the emr-cluster belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
   late final pulumi.Output<String> securityMode;
+
   /// The detail configuration of subscription payment type. See `subscription_config` below.
   late final pulumi.Output<ClusterSubscriptionConfig?> subscriptionConfig;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1038,27 +1049,35 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:emrv2/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationConfigs = registerOutput<List<ClusterApplicationConfig>?>('applicationConfigs');
-    this.applications = registerOutput<List<String>>('applications');
-    this.bootstrapScripts = registerOutput<List<ClusterBootstrapScript>?>('bootstrapScripts');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.deployMode = registerOutput<String>('deployMode');
-    this.logCollectStrategy = registerOutput<String>('logCollectStrategy');
-    this.nodeAttributes = registerOutput<List<ClusterNodeAttribute>>('nodeAttributes');
-    this.nodeGroups = registerOutput<List<ClusterNodeGroup>>('nodeGroups');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.releaseVersion = registerOutput<String>('releaseVersion');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityMode = registerOutput<String>('securityMode');
-    this.subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>('subscriptionConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:emrv2/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationConfigs',
+    );
+    applications = registerOutput<List<String>>('applications');
+    bootstrapScripts = registerOutput<List<Map<String, dynamic>>?>(
+      'bootstrapScripts',
+    );
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<String>('clusterType');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    deployMode = registerOutput<String>('deployMode');
+    logCollectStrategy = registerOutput<String>('logCollectStrategy');
+    nodeAttributes = registerOutput<List<Map<String, dynamic>>>(
+      'nodeAttributes',
+    );
+    nodeGroups = registerOutput<List<Map<String, dynamic>>>('nodeGroups');
+    paymentType = registerOutput<String>('paymentType');
+    releaseVersion = registerOutput<String>('releaseVersion');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityMode = registerOutput<String>('securityMode');
+    subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>(
+      'subscriptionConfig',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -1079,26 +1098,34 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:emrv2/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationConfigs = registerOutput<List<ClusterApplicationConfig>?>('applicationConfigs');
-    this.applications = registerOutput<List<String>>('applications');
-    this.bootstrapScripts = registerOutput<List<ClusterBootstrapScript>?>('bootstrapScripts');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.deployMode = registerOutput<String>('deployMode');
-    this.logCollectStrategy = registerOutput<String>('logCollectStrategy');
-    this.nodeAttributes = registerOutput<List<ClusterNodeAttribute>>('nodeAttributes');
-    this.nodeGroups = registerOutput<List<ClusterNodeGroup>>('nodeGroups');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.releaseVersion = registerOutput<String>('releaseVersion');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityMode = registerOutput<String>('securityMode');
-    this.subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>('subscriptionConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:emrv2/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationConfigs',
+    );
+    applications = registerOutput<List<String>>('applications');
+    bootstrapScripts = registerOutput<List<Map<String, dynamic>>?>(
+      'bootstrapScripts',
+    );
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<String>('clusterType');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    deployMode = registerOutput<String>('deployMode');
+    logCollectStrategy = registerOutput<String>('logCollectStrategy');
+    nodeAttributes = registerOutput<List<Map<String, dynamic>>>(
+      'nodeAttributes',
+    );
+    nodeGroups = registerOutput<List<Map<String, dynamic>>>('nodeGroups');
+    paymentType = registerOutput<String>('paymentType');
+    releaseVersion = registerOutput<String>('releaseVersion');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityMode = registerOutput<String>('securityMode');
+    subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>(
+      'subscriptionConfig',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

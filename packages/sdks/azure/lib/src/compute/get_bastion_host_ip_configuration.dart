@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBastionHostIpConfiguration {
   /// The name of the Bastion Host.
   final pulumi.Input<String> name;
+
   /// Reference to a Public IP Address associated to this Bastion Host.
   final pulumi.Input<String> publicIpAddressId;
+
   /// Reference to the subnet in which this Bastion Host has been created.
   final pulumi.Input<String> subnetId;
 
@@ -30,10 +32,11 @@ class GetBastionHostIpConfiguration {
 
   factory GetBastionHostIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBastionHostIpConfiguration(
-      name: (map['name'] as String).input(),
-      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicIpAddressId: pulumi.Input.fromValue(
+        map['publicIpAddressId'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

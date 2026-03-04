@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoutingProfileQueueConfig {
   /// Channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`.
   final pulumi.Input<String> channel;
+
   /// Delay, in seconds, that a contact should be in the queue before they are routed to an available agent
   final pulumi.Input<int> delay;
+
   /// Order in which contacts are to be handled for the queue.
   final pulumi.Input<int> priority;
+
   /// ARN for the queue.
   final pulumi.Input<String> queueArn;
+
   /// Identifier for the queue.
   final pulumi.Input<String> queueId;
+
   /// Name for the queue.
   final pulumi.Input<String> queueName;
 
@@ -45,13 +50,12 @@ class GetRoutingProfileQueueConfig {
 
   factory GetRoutingProfileQueueConfig.fromMap(Map<String, dynamic> map) {
     return GetRoutingProfileQueueConfig(
-      channel: (map['channel'] as String).input(),
-      delay: (map['delay'] as int).input(),
-      priority: (map['priority'] as int).input(),
-      queueArn: (map['queueArn'] as String).input(),
-      queueId: (map['queueId'] as String).input(),
-      queueName: (map['queueName'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
+      delay: pulumi.Input.fromValue(map['delay'] as int),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      queueArn: pulumi.Input.fromValue(map['queueArn'] as String),
+      queueId: pulumi.Input.fromValue(map['queueId'] as String),
+      queueName: pulumi.Input.fromValue(map['queueName'] as String),
     );
   }
 }
-

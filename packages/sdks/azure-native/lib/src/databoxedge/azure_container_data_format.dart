@@ -4,16 +4,15 @@ enum AzureContainerDataFormat {
   valuePageBlob("PageBlob"),
   valueAzureFile("AzureFile");
 
-  const AzureContainerDataFormat(this.value);
-  final String value;
+  const AzureContainerDataFormat(this.wireValue);
+  final String wireValue;
 
   static AzureContainerDataFormat fromValue(String value) {
     for (final item in AzureContainerDataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureContainerDataFormat value: $value');
   }
 }
-

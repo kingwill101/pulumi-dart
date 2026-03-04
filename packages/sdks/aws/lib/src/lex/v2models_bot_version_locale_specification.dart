@@ -7,20 +7,19 @@ class V2modelsBotVersionLocaleSpecification {
 
   /// Creates a new [V2modelsBotVersionLocaleSpecification].
   /// [sourceBotVersion] Required.
-  V2modelsBotVersionLocaleSpecification({
-    required this.sourceBotVersion,
-  });
+  V2modelsBotVersionLocaleSpecification({required this.sourceBotVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourceBotVersion': sourceBotVersion,
-    };
+    return <String, dynamic>{'sourceBotVersion': sourceBotVersion};
   }
 
-  factory V2modelsBotVersionLocaleSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsBotVersionLocaleSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsBotVersionLocaleSpecification(
-      sourceBotVersion: (map['sourceBotVersion'] as String).input(),
+      sourceBotVersion: pulumi.Input.fromValue(
+        map['sourceBotVersion'] as String,
+      ),
     );
   }
 }
-

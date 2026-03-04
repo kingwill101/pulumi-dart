@@ -10,20 +10,25 @@ class AgentPoolStatusResponse {
 
   /// Creates a new [AgentPoolStatusResponse].
   /// [provisioningError] The error detail information of the agent pool. Preserves the detailed info of failure. If there was no error, this field is omitted.
-  AgentPoolStatusResponse({
-    required this.provisioningError,
-  });
+  AgentPoolStatusResponse({required this.provisioningError});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'provisioningError': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(provisioningError, (value) => value.toMap()),
+      'provisioningError':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            provisioningError,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AgentPoolStatusResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolStatusResponse(
-      provisioningError: (ErrorDetailResponse.fromMap((map['provisioningError'] as Map).cast<String, dynamic>())).input(),
+      provisioningError: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['provisioningError']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum NetworkRuleBypassOptions {
   valueAzureServices("AzureServices"),
   valueNone("None");
 
-  const NetworkRuleBypassOptions(this.value);
-  final String value;
+  const NetworkRuleBypassOptions(this.wireValue);
+  final String wireValue;
 
   static NetworkRuleBypassOptions fromValue(String value) {
     for (final item in NetworkRuleBypassOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkRuleBypassOptions value: $value');
   }
 }
-

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControllerArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
+
   /// Resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetControllerArgs].
   /// [name] Name of the resource.
   /// [resourceGroupName] Resource group to which the resource belongs.
-  GetControllerArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetControllerArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetControllerArgs {
 
   factory GetControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetControllerArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_database;
-
 export 'database/configuration.dart';
 export 'database/configuration_args.dart';
 export 'database/configuration_configuration.dart';

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PageArgs {
   /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
   final pulumi.Input<String>? content;
+
   /// The Content-Type field in the HTTP header.
   final pulumi.Input<String> contentType;
+
   /// The description of the custom error page.
   final pulumi.Input<String>? description;
+
   /// The name of the custom response page.
   final pulumi.Input<String> pageName;
 
@@ -39,11 +42,18 @@ class PageArgs {
 
   factory PageArgs.fromMap(Map<String, dynamic> map) {
     return PageArgs(
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      contentType: (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      pageName: (map['pageName'] as String).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageName: pulumi.Input.fromValue(map['pageName'] as String),
     );
   }
 }
-

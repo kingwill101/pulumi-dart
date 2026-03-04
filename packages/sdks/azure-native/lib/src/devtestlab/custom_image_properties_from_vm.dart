@@ -8,8 +8,10 @@ import 'windows_os_info.dart';
 class CustomImagePropertiesFromVm {
   /// The Linux OS information of the VM.
   final pulumi.Input<LinuxOsInfo>? linuxOsInfo;
+
   /// The source vm identifier.
   final pulumi.Input<String>? sourceVmId;
+
   /// The Windows OS information of the VM.
   final pulumi.Input<WindowsOsInfo>? windowsOsInfo;
 
@@ -25,18 +27,41 @@ class CustomImagePropertiesFromVm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxOsInfo': ?pulumi.Input.mapOptionalInputValue<LinuxOsInfo, Map<String, dynamic>>(linuxOsInfo, (value) => value.toMap()),
+      'linuxOsInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinuxOsInfo,
+            Map<String, dynamic>
+          >(linuxOsInfo, (value) => value.toMap()),
       'sourceVmId': ?sourceVmId,
-      'windowsOsInfo': ?pulumi.Input.mapOptionalInputValue<WindowsOsInfo, Map<String, dynamic>>(windowsOsInfo, (value) => value.toMap()),
+      'windowsOsInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            WindowsOsInfo,
+            Map<String, dynamic>
+          >(windowsOsInfo, (value) => value.toMap()),
     };
   }
 
   factory CustomImagePropertiesFromVm.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesFromVm(
-      linuxOsInfo: map['linuxOsInfo'] == null ? null : (LinuxOsInfo.fromMap((map['linuxOsInfo']! as Map).cast<String, dynamic>())).input(),
-      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId']! as String).input(),
-      windowsOsInfo: map['windowsOsInfo'] == null ? null : (WindowsOsInfo.fromMap((map['windowsOsInfo']! as Map).cast<String, dynamic>())).input(),
+      linuxOsInfo: (() {
+        final guardedValue = map['linuxOsInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinuxOsInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sourceVmId: (() {
+        final guardedValue = map['sourceVmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowsOsInfo: (() {
+        final guardedValue = map['windowsOsInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WindowsOsInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

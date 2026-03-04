@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StepResponseWorkflowexecutionsV1beta {
   /// Name of a routine within the workflow.
   final pulumi.Input<String> routine;
+
   /// Name of a step within the routine.
   final pulumi.Input<String> step;
 
@@ -18,17 +19,15 @@ class StepResponseWorkflowexecutionsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'routine': routine,
-      'step': step,
-    };
+    return <String, dynamic>{'routine': routine, 'step': step};
   }
 
-  factory StepResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
+  factory StepResponseWorkflowexecutionsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StepResponseWorkflowexecutionsV1beta(
-      routine: (map['routine'] as String).input(),
-      step: (map['step'] as String).input(),
+      routine: pulumi.Input.fromValue(map['routine'] as String),
+      step: pulumi.Input.fromValue(map['step'] as String),
     );
   }
 }
-

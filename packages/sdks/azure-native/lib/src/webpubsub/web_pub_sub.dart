@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'live_trace_configuration_response.dart';
 import 'managed_identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'resource_log_configuration_response.dart';
 import 'resource_sku_response.dart';
-import 'shared_private_link_resource_response.dart';
 import 'system_data_response.dart';
 import 'web_pub_sub_args.dart';
 import 'web_pub_sub_network_acls_response.dart';
@@ -399,68 +397,99 @@ import 'web_pub_sub_tls_settings_response.dart';
 class WebPubSub extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// DisableLocalAuth
   /// Enable or disable aad auth
   /// When set as true, connection with AuthType=aad won't work.
   late final pulumi.Output<bool?> disableAadAuth;
+
   /// DisableLocalAuth
   /// Enable or disable local auth with AccessKey
   /// When set as true, connection with AccessKey=xxx won't work.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// The publicly accessible IP of the resource.
   late final pulumi.Output<String> externalIP;
+
   /// FQDN of the service instance.
   late final pulumi.Output<String> hostName;
+
   /// Deprecated.
   late final pulumi.Output<String> hostNamePrefix;
+
   /// A class represent managed identities used for request and response
   late final pulumi.Output<ManagedIdentityResponse?> identity;
+
   /// The kind of the service
   late final pulumi.Output<String?> kind;
+
   /// Live trace configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<LiveTraceConfigurationResponse?> liveTraceConfiguration;
+  late final pulumi.Output<LiveTraceConfigurationResponse?>
+  liveTraceConfiguration;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network ACLs for the resource
   late final pulumi.Output<WebPubSubNetworkACLsResponse?> networkACLs;
+
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Enable or disable public network access. Default to "Enabled".
   /// When it's Enabled, network ACLs still apply.
   /// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The publicly accessible port of the resource which is designed for browser/client side usage.
   late final pulumi.Output<int> publicPort;
+
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
   /// This property is replica specific. Disable the regional endpoint without replica is not allowed.
   late final pulumi.Output<String?> regionEndpointEnabled;
+
   /// Resource log configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<ResourceLogConfigurationResponse?> resourceLogConfiguration;
+  late final pulumi.Output<ResourceLogConfigurationResponse?>
+  resourceLogConfiguration;
+
   /// Stop or start the resource.  Default to "False".
   /// When it's true, the data plane of the resource is shutdown.
   /// When it's false, the data plane of the resource is started.
   late final pulumi.Output<String?> resourceStopped;
+
   /// The publicly accessible port of the resource which is designed for customer server side usage.
   late final pulumi.Output<int> serverPort;
+
   /// The list of shared private link resources.
-  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>> sharedPrivateLinkResources;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  sharedPrivateLinkResources;
+
   /// The billing information of the resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
+
   /// SocketIO settings for the resource
   late final pulumi.Output<WebPubSubSocketIOSettingsResponse?> socketIO;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// TLS settings for the resource
   late final pulumi.Output<WebPubSubTlsSettingsResponse?> tls;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the resource. Probably you need the same or higher version of client SDKs.
   late final pulumi.Output<String> version;
 
@@ -473,38 +502,47 @@ class WebPubSub extends pulumi.CustomResource {
     WebPubSubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:webpubsub:WebPubSub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disableAadAuth = registerOutput<bool?>('disableAadAuth');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.externalIP = registerOutput<String>('externalIP');
-    this.hostName = registerOutput<String>('hostName');
-    this.hostNamePrefix = registerOutput<String>('hostNamePrefix');
-    this.identity = registerOutput<ManagedIdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>('liveTraceConfiguration');
-    this.location = registerOutput<String>('location');
+         'azure-native:webpubsub:WebPubSub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableAadAuth = registerOutput<bool?>('disableAadAuth');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    externalIP = registerOutput<String>('externalIP');
+    hostName = registerOutput<String>('hostName');
+    hostNamePrefix = registerOutput<String>('hostNamePrefix');
+    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>(
+      'liveTraceConfiguration',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>('networkACLs');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
-    this.resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration');
-    this.resourceStopped = registerOutput<String?>('resourceStopped');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources');
-    this.sku = registerOutput<ResourceSkuResponse?>('sku');
-    this.socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>('socketIO');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tls = registerOutput<WebPubSubTlsSettingsResponse?>('tls');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>('networkACLs');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publicPort = registerOutput<int>('publicPort');
+    regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
+    resourceLogConfiguration =
+        registerOutput<ResourceLogConfigurationResponse?>(
+          'resourceLogConfiguration',
+        );
+    resourceStopped = registerOutput<String?>('resourceStopped');
+    serverPort = registerOutput<int>('serverPort');
+    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
+      'sharedPrivateLinkResources',
+    );
+    sku = registerOutput<ResourceSkuResponse?>('sku');
+    socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>('socketIO');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tls = registerOutput<WebPubSubTlsSettingsResponse?>('tls');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

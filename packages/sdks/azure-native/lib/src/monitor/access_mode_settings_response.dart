@@ -7,8 +7,10 @@ import 'access_mode_settings_exclusion_response.dart';
 class AccessModeSettingsResponse {
   /// List of exclusions that override the default access mode settings for specific private endpoint connections.
   final pulumi.Input<List<AccessModeSettingsExclusionResponse>>? exclusions;
+
   /// Specifies the default access mode of ingestion through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
   final pulumi.Input<String> ingestionAccessMode;
+
   /// Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
   final pulumi.Input<String> queryAccessMode;
 
@@ -24,7 +26,18 @@ class AccessModeSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<AccessModeSettingsExclusionResponse>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<AccessModeSettingsExclusionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exclusions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AccessModeSettingsExclusionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            exclusions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AccessModeSettingsExclusionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ingestionAccessMode': ingestionAccessMode,
       'queryAccessMode': queryAccessMode,
     };
@@ -32,10 +45,22 @@ class AccessModeSettingsResponse {
 
   factory AccessModeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AccessModeSettingsResponse(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<AccessModeSettingsExclusionResponse>(map['exclusions']!, (value) => AccessModeSettingsExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingestionAccessMode: (map['ingestionAccessMode'] as String).input(),
-      queryAccessMode: (map['queryAccessMode'] as String).input(),
+      exclusions: (() {
+        final guardedValue = map['exclusions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AccessModeSettingsExclusionResponse>(
+            guardedValue,
+            (value) => AccessModeSettingsExclusionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ingestionAccessMode: pulumi.Input.fromValue(
+        map['ingestionAccessMode'] as String,
+      ),
+      queryAccessMode: pulumi.Input.fromValue(map['queryAccessMode'] as String),
     );
   }
 }
-

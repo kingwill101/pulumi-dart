@@ -7,10 +7,13 @@ import 'schema_map.dart';
 class AzureMonitorWorkspaceLogsApiConfig {
   /// Data collection endpoint ingestion url.
   final pulumi.Input<String> dataCollectionEndpointUrl;
+
   /// Data Collection Rule (DCR) immutable id.
   final pulumi.Input<String> dataCollectionRule;
+
   /// The schema mapping for incoming data.
   final pulumi.Input<SchemaMap> schema;
+
   /// Stream name in destination. Azure Monitor stream is related to the destination table.
   final pulumi.Input<String> stream;
 
@@ -30,18 +33,26 @@ class AzureMonitorWorkspaceLogsApiConfig {
     return <String, dynamic>{
       'dataCollectionEndpointUrl': dataCollectionEndpointUrl,
       'dataCollectionRule': dataCollectionRule,
-      'schema': pulumi.Input.mapInputValue<SchemaMap, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'schema': pulumi.Input.mapInputValue<SchemaMap, Map<String, dynamic>>(
+        schema,
+        (value) => value.toMap(),
+      ),
       'stream': stream,
     };
   }
 
   factory AzureMonitorWorkspaceLogsApiConfig.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsApiConfig(
-      dataCollectionEndpointUrl: (map['dataCollectionEndpointUrl'] as String).input(),
-      dataCollectionRule: (map['dataCollectionRule'] as String).input(),
-      schema: (SchemaMap.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      stream: (map['stream'] as String).input(),
+      dataCollectionEndpointUrl: pulumi.Input.fromValue(
+        map['dataCollectionEndpointUrl'] as String,
+      ),
+      dataCollectionRule: pulumi.Input.fromValue(
+        map['dataCollectionRule'] as String,
+      ),
+      schema: pulumi.Input.fromValue(
+        SchemaMap.fromMap((map['schema']! as Map).cast<String, dynamic>()),
+      ),
+      stream: pulumi.Input.fromValue(map['stream'] as String),
     );
   }
 }
-

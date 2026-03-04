@@ -1,5 +1,3 @@
-library module_appinsights;
-
 export 'appinsights/analytics_item.dart';
 export 'appinsights/analytics_item_args.dart';
 export 'appinsights/analytics_item_state.dart';

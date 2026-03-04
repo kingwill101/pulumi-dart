@@ -6,16 +6,15 @@ enum GPUInstanceProfile {
   valueMIG4g("MIG4g"),
   valueMIG7g("MIG7g");
 
-  const GPUInstanceProfile(this.value);
-  final String value;
+  const GPUInstanceProfile(this.wireValue);
+  final String wireValue;
 
   static GPUInstanceProfile fromValue(String value) {
     for (final item in GPUInstanceProfile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GPUInstanceProfile value: $value');
   }
 }
-

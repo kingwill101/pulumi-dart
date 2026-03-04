@@ -6,16 +6,15 @@ enum RegistryLogLevel {
   info("INFO"),
   debug("DEBUG");
 
-  const RegistryLogLevel(this.value);
-  final String value;
+  const RegistryLogLevel(this.wireValue);
+  final String wireValue;
 
   static RegistryLogLevel fromValue(String value) {
     for (final item in RegistryLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegistryLogLevel value: $value');
   }
 }
-

@@ -14,15 +14,14 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'headerName': headerName,
-    };
+    return <String, dynamic>{'headerName': headerName};
   }
 
-  factory BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta(
-      headerName: (map['headerName'] as String).input(),
+      headerName: pulumi.Input.fromValue(map['headerName'] as String),
     );
   }
 }
-

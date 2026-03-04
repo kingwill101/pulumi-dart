@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
   /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
   final pulumi.Input<String>? internalTenantId;
+
   /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
   final pulumi.Input<String>? partnerTenantId;
 
@@ -24,11 +25,20 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
     };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata(
-      internalTenantId: map['internalTenantId'] == null ? null : (map['internalTenantId']! as String).input(),
-      partnerTenantId: map['partnerTenantId'] == null ? null : (map['partnerTenantId']! as String).input(),
+      internalTenantId: (() {
+        final guardedValue = map['internalTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerTenantId: (() {
+        final guardedValue = map['partnerTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

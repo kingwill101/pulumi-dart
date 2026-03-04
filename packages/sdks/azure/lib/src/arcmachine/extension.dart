@@ -187,7 +187,7 @@ import 'extension_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HybridCompute` - 2022-11-10
@@ -202,31 +202,41 @@ import 'extension_state.dart';
 class Extension extends pulumi.CustomResource {
   /// The ID of the Hybrid Compute Machine Extension. Changing this forces a new Hybrid Compute Machine Extension to be created.
   late final pulumi.Output<String> arcMachineId;
+
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. Supported values are `true` and `false`. Defaults to `true`.
   ///
-  /// > **Note:** When `automatic_upgrade_enabled` can only be set during creation. Any later change will be ignored.
+  /// &gt; **Note:** When `automatic_upgrade_enabled` can only be set during creation. Any later change will be ignored.
   ///
-  /// > **Note:** When `automatic_upgrade_enabled` is set to `true`, the `type_handler_version` is automatically updated by the Azure platform when a new version is available and any change in `type_handler_version` will be automatically ignored.
+  /// &gt; **Note:** When `automatic_upgrade_enabled` is set to `true`, the `type_handler_version` is automatically updated by the Azure platform when a new version is available and any change in `type_handler_version` will be automatically ignored.
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
+
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// The Azure Region where the Hybrid Compute Machine Extension should exist. Changing this forces a new Hybrid Compute Machine Extension to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Hybrid Compute Machine Extension. Changing this forces a new Hybrid Compute Machine Extension to be created.
   late final pulumi.Output<String> name;
+
   /// Json formatted protected settings for the extension.
   late final pulumi.Output<String?> protectedSettings;
+
   /// The name of the extension handler publisher, such as `Microsoft.Azure.Monitor`. Changing this forces a new Hybrid Compute Machine Extension to be created.
   late final pulumi.Output<String> publisher;
+
   /// Json formatted public settings for the extension.
   late final pulumi.Output<String?> settings;
+
   /// A mapping of tags which should be assigned to the Hybrid Compute Machine Extension.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new Hybrid Compute Machine Extension to be created.
   late final pulumi.Output<String> type;
+
   /// Specifies the version of the script handler.
   ///
-  /// > **Note:** 1. When `automatic_upgrade_enabled` is set to `false` and no `type_handler_version` is specified, the `type_handler_version` change should be manually ignored by `ignore_changes` lifecycle block. This is because the `type_handler_version` is set by the Azure platform when the extension is created. 2. When `automatic_upgrade_enabled` is set to `false` and `type_handler_version` is specified, the provider will check whether the version prefix is aligned with user input. For example, if user specifies `1.24` in `type_handler_version`, `1.24.1` will be considered as no diff.
+  /// &gt; **Note:** 1. When `automatic_upgrade_enabled` is set to `false` and no `type_handler_version` is specified, the `type_handler_version` change should be manually ignored by `ignore_changes` lifecycle block. This is because the `type_handler_version` is set by the Azure platform when the extension is created. 2. When `automatic_upgrade_enabled` is set to `false` and `type_handler_version` is specified, the provider will check whether the version prefix is aligned with user input. For example, if user specifies `1.24` in `type_handler_version`, `1.24.1` will be considered as no diff.
   late final pulumi.Output<String?> typeHandlerVersion;
 
   /// Creates a new [Extension].
@@ -238,22 +248,22 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arcmachine/extension:Extension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcMachineId = registerOutput<String>('arcMachineId');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.location = registerOutput<String>('location');
+         'azure:arcmachine/extension:Extension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcMachineId = registerOutput<String>('arcMachineId');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }
 
   /// Gets an existing [Extension] resource's state with the given [name] and [id].
@@ -274,21 +284,21 @@ class Extension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arcmachine/extension:Extension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcMachineId = registerOutput<String>('arcMachineId');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.location = registerOutput<String>('location');
+         'azure:arcmachine/extension:Extension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcMachineId = registerOutput<String>('arcMachineId');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }
 }

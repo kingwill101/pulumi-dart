@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkstationConfigEncryptionKey {
   /// The name of the Google Cloud KMS encryption key.
   final pulumi.Input<String> kmsKey;
+
   /// The service account to use with the specified KMS key.
   final pulumi.Input<String> kmsKeyServiceAccount;
 
@@ -25,9 +26,10 @@ class WorkstationConfigEncryptionKey {
 
   factory WorkstationConfigEncryptionKey.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigEncryptionKey(
-      kmsKey: (map['kmsKey'] as String).input(),
-      kmsKeyServiceAccount: (map['kmsKeyServiceAccount'] as String).input(),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
+      kmsKeyServiceAccount: pulumi.Input.fromValue(
+        map['kmsKeyServiceAccount'] as String,
+      ),
     );
   }
 }
-

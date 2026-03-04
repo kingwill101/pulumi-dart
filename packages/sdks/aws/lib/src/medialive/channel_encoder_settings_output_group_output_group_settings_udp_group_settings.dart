@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
   /// Specifies behavior of last resort when input video os lost.
   final pulumi.Input<String>? inputLossAction;
+
   /// Indicates ID3 frame that has the timecode.
   final pulumi.Input<String>? timedMetadataId3Frame;
   final pulumi.Input<int>? timedMetadataId3Period;
@@ -27,12 +28,25 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings(
-      inputLossAction: map['inputLossAction'] == null ? null : ((map['inputLossAction'] as String).input()).input(),
-      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null ? null : ((map['timedMetadataId3Frame'] as String).input()).input(),
-      timedMetadataId3Period: map['timedMetadataId3Period'] == null ? null : ((map['timedMetadataId3Period'] as int).input()).input(),
+      inputLossAction: (() {
+        final guardedValue = map['inputLossAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataId3Frame: (() {
+        final guardedValue = map['timedMetadataId3Frame'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataId3Period: (() {
+        final guardedValue = map['timedMetadataId3Period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

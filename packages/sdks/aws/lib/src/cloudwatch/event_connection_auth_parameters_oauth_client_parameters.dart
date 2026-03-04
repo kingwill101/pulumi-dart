@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventConnectionAuthParametersOauthClientParameters {
   /// The client ID for the credentials to use for authorization. Created and stored in AWS Secrets Manager.
   final pulumi.Input<String> clientId;
+
   /// The client secret for the credentials to use for authorization. Created and stored in AWS Secrets Manager.
   final pulumi.Input<String> clientSecret;
 
@@ -23,11 +24,12 @@ class EventConnectionAuthParametersOauthClientParameters {
     };
   }
 
-  factory EventConnectionAuthParametersOauthClientParameters.fromMap(Map<String, dynamic> map) {
+  factory EventConnectionAuthParametersOauthClientParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventConnectionAuthParametersOauthClientParameters(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
     );
   }
 }
-

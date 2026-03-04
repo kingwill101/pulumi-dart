@@ -6,16 +6,17 @@ enum TlsInspectionPolicyMinTlsVersion {
   tls12("TLS_1_2"),
   tls13("TLS_1_3");
 
-  const TlsInspectionPolicyMinTlsVersion(this.value);
-  final String value;
+  const TlsInspectionPolicyMinTlsVersion(this.wireValue);
+  final String wireValue;
 
   static TlsInspectionPolicyMinTlsVersion fromValue(String value) {
     for (final item in TlsInspectionPolicyMinTlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TlsInspectionPolicyMinTlsVersion value: $value');
+    throw ArgumentError(
+      'Unknown TlsInspectionPolicyMinTlsVersion value: $value',
+    );
   }
 }
-

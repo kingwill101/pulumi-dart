@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudHsmClusterSkuResponse {
   /// Sku capacity
   final pulumi.Input<int>? capacity;
+
   /// Sku family of the Cloud HSM Cluster
   final pulumi.Input<String> family;
+
   /// Sku name of the Cloud HSM Cluster
   final pulumi.Input<String> name;
 
@@ -31,10 +33,13 @@ class CloudHsmClusterSkuResponse {
 
   factory CloudHsmClusterSkuResponse.fromMap(Map<String, dynamic> map) {
     return CloudHsmClusterSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      family: (map['family'] as String).input(),
-      name: (map['name'] as String).input(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      family: pulumi.Input.fromValue(map['family'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

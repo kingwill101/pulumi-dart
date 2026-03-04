@@ -9,20 +9,15 @@ class PolicyVariableColumn {
 
   /// Creates a new [PolicyVariableColumn].
   /// [columnName] The name of this policy variable column.
-  PolicyVariableColumn({
-    required this.columnName,
-  });
+  PolicyVariableColumn({required this.columnName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'columnName': columnName,
-    };
+    return <String, dynamic>{'columnName': columnName};
   }
 
   factory PolicyVariableColumn.fromMap(Map<String, dynamic> map) {
     return PolicyVariableColumn(
-      columnName: (map['columnName'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
     );
   }
 }
-

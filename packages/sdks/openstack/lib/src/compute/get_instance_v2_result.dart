@@ -7,38 +7,54 @@ import 'get_instance_v2_network.dart';
 class GetInstanceV2Result {
   /// The first IPv4 address assigned to this server.
   final String accessIpV4;
+
   /// The first IPv6 address assigned to this server.
   final String accessIpV6;
+
   /// The availability zone of this server.
   final String availabilityZone;
+
   /// The creation time of the instance.
   final String created;
+
   /// The flavor ID used to create the server.
   final String flavorId;
+
   /// The flavor name used to create the server.
   final String flavorName;
   final String id;
+
   /// The image ID used to create the server.
   final String imageId;
+
   /// The image name used to create the server.
   final String imageName;
+
   /// The name of the key pair assigned to this server.
   final String keyPair;
+
   /// A set of key/value pairs made available to the server.
   final Map<String, String> metadata;
+
   /// The name of the network
   final String name;
+
   /// An array of maps, detailed below.
   final List<GetInstanceV2Network> networks;
   final String powerState;
+
   /// See Argument Reference above.
   final String region;
+
   /// An array of security group names associated with this server.
   final List<String> securityGroups;
+
   /// A set of string tags assigned to this server.
   final List<String> tags;
+
   /// The time when the instance was last updated.
   final String updated;
+
   /// The user data added when the server was created.
   final String userData;
 
@@ -98,7 +114,11 @@ class GetInstanceV2Result {
       'keyPair': keyPair,
       'metadata': metadata,
       'name': name,
-      'networks': pulumi.Input.encodeList<GetInstanceV2Network, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'networks':
+          pulumi.Input.encodeList<GetInstanceV2Network, Map<String, dynamic>>(
+            networks,
+            (value) => value.toMap(),
+          ),
       'powerState': powerState,
       'region': region,
       'securityGroups': securityGroups,
@@ -122,7 +142,12 @@ class GetInstanceV2Result {
       keyPair: map['keyPair'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      networks: pulumi.Input.decodeList<GetInstanceV2Network>(map['networks'], (value) => GetInstanceV2Network.fromMap((value as Map).cast<String, dynamic>())),
+      networks: pulumi.Input.decodeList<GetInstanceV2Network>(
+        map['networks']!,
+        (value) => GetInstanceV2Network.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       powerState: map['powerState'] as String,
       region: map['region'] as String,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
@@ -132,4 +157,3 @@ class GetInstanceV2Result {
     );
   }
 }
-

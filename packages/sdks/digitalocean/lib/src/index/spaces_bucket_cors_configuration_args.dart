@@ -10,8 +10,10 @@ import 'spaces_bucket_cors_configuration_cors_rule.dart';
 class SpacesBucketCorsConfigurationArgs {
   /// The name of the bucket to which to apply the CORS configuration.
   final pulumi.Input<String> bucket;
+
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   final pulumi.Input<List<SpacesBucketCorsConfigurationCorsRule>> corsRules;
+
   /// The region where the bucket resides.
   final pulumi.Input<String> region;
 
@@ -28,17 +30,34 @@ class SpacesBucketCorsConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'corsRules': pulumi.Input.mapInputValue<List<SpacesBucketCorsConfigurationCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<SpacesBucketCorsConfigurationCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'corsRules':
+          pulumi.Input.mapInputValue<
+            List<SpacesBucketCorsConfigurationCorsRule>,
+            List<Map<String, dynamic>>
+          >(
+            corsRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpacesBucketCorsConfigurationCorsRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': region,
     };
   }
 
   factory SpacesBucketCorsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsConfigurationArgs(
-      bucket: (map['bucket'] as String).input(),
-      corsRules: (pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(map['corsRules'], (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: (map['region'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      corsRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(
+          map['corsRules']!,
+          (value) => SpacesBucketCorsConfigurationCorsRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

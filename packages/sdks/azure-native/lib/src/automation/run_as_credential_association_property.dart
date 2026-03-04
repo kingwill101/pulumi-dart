@@ -9,20 +9,19 @@ class RunAsCredentialAssociationProperty {
 
   /// Creates a new [RunAsCredentialAssociationProperty].
   /// [name] Gets or sets the name of the credential.
-  RunAsCredentialAssociationProperty({
-    this.name,
-  });
+  RunAsCredentialAssociationProperty({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory RunAsCredentialAssociationProperty.fromMap(Map<String, dynamic> map) {
     return RunAsCredentialAssociationProperty(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

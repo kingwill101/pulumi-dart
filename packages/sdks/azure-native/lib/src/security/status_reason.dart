@@ -4,16 +4,15 @@ enum StatusReason {
   valueUserRequested("UserRequested"),
   valueNewerRequestInitiated("NewerRequestInitiated");
 
-  const StatusReason(this.value);
-  final String value;
+  const StatusReason(this.wireValue);
+  final String wireValue;
 
   static StatusReason fromValue(String value) {
     for (final item in StatusReason.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StatusReason value: $value');
   }
 }
-

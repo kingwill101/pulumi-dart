@@ -7,15 +7,18 @@ class GetTopicIngestionDataSourceSettingAwsKinese {
   /// Kinesis. Check the Pub/Sub docs for how to set up this role and the
   /// required permissions that need to be attached to it.
   final pulumi.Input<String> awsRoleArn;
+
   /// The Kinesis consumer ARN to used for ingestion in
   /// Enhanced Fan-Out mode. The consumer must be already
   /// created and ready to be used.
   final pulumi.Input<String> consumerArn;
+
   /// The GCP service account to be used for Federated Identity authentication
   /// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
   /// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
   /// equals to this service account number.
   final pulumi.Input<String> gcpServiceAccount;
+
   /// The Kinesis stream ARN to ingest data from.
   final pulumi.Input<String> streamArn;
 
@@ -40,13 +43,16 @@ class GetTopicIngestionDataSourceSettingAwsKinese {
     };
   }
 
-  factory GetTopicIngestionDataSourceSettingAwsKinese.fromMap(Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingAwsKinese.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTopicIngestionDataSourceSettingAwsKinese(
-      awsRoleArn: (map['awsRoleArn'] as String).input(),
-      consumerArn: (map['consumerArn'] as String).input(),
-      gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
-      streamArn: (map['streamArn'] as String).input(),
+      awsRoleArn: pulumi.Input.fromValue(map['awsRoleArn'] as String),
+      consumerArn: pulumi.Input.fromValue(map['consumerArn'] as String),
+      gcpServiceAccount: pulumi.Input.fromValue(
+        map['gcpServiceAccount'] as String,
+      ),
+      streamArn: pulumi.Input.fromValue(map['streamArn'] as String),
     );
   }
 }
-

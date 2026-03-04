@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cluster_v2_addon.dart';
 import 'cluster_v2_args.dart';
 import 'cluster_v2_cluster_credentials.dart';
 import 'cluster_v2_manager.dart';
-import 'cluster_v2_shared_storage.dart';
 import 'cluster_v2_state.dart';
 
 /// Provides a Ehpc Cluster V2 resource.
@@ -12,7 +10,7 @@ import 'cluster_v2_state.dart';
 ///
 /// For information about Ehpc Cluster V2 and how to use it, see [What is Cluster V2](https://next.api.alibabacloud.com/document/EHPC/2024-07-30/CreateCluster).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -875,45 +873,58 @@ import 'cluster_v2_state.dart';
 /// ```
 class ClusterV2 extends pulumi.CustomResource {
   /// The cluster custom service component configuration. Only one component is supported. See `addons` below.
-  late final pulumi.Output<List<ClusterV2Addon>?> addons;
+  late final pulumi.Output<List<Map<String, dynamic>>?> addons;
+
   /// Specifies whether to enable auto scale-out for the cluster. Valid values:
   ///
   /// - true
   /// - false
   late final pulumi.Output<String> clientVersion;
+
   /// The cluster type. Valid values:
   ///
   /// - Standard
   /// - Serverless
   late final pulumi.Output<String?> clusterCategory;
+
   /// Security credentials for the cluster. See `cluster_credentials` below.
   late final pulumi.Output<ClusterV2ClusterCredentials> clusterCredentials;
+
   /// The deployment mode of the cluster. Valid values:
   ///
   /// - Integrated
   /// - Hybrid
   /// - Custom
   late final pulumi.Output<String?> clusterMode;
+
   /// The post-processing script of the cluster.
   late final pulumi.Output<String?> clusterName;
+
   /// The ID of the virtual private cloud (VPC) in which the cluster resides.
   late final pulumi.Output<String?> clusterVpcId;
+
   /// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
   /// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
   late final pulumi.Output<String?> clusterVswitchId;
+
   /// The time when the cluster was created.
   late final pulumi.Output<String> createTime;
+
   /// The idle duration of the compute nodes allowed by the cluster.
   late final pulumi.Output<bool?> deletionProtection;
+
   /// The configurations of the cluster management node. See `manager` below.
   late final pulumi.Output<ClusterV2Manager?> manager;
+
   /// The ID of the resource group to which the cluster belongs.
   /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The security group ID.
   late final pulumi.Output<String?> securityGroupId;
+
   /// List of cluster shared storage configurations. See `shared_storages` below.
-  late final pulumi.Output<List<ClusterV2SharedStorage>> sharedStorages;
+  late final pulumi.Output<List<Map<String, dynamic>>> sharedStorages;
 
   /// Creates a new [ClusterV2].
   /// [name] The Pulumi resource name.
@@ -924,25 +935,29 @@ class ClusterV2 extends pulumi.CustomResource {
     ClusterV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ehpc/clusterV2:ClusterV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addons = registerOutput<List<ClusterV2Addon>?>('addons');
-    this.clientVersion = registerOutput<String>('clientVersion');
-    this.clusterCategory = registerOutput<String?>('clusterCategory');
-    this.clusterCredentials = registerOutput<ClusterV2ClusterCredentials>('clusterCredentials');
-    this.clusterMode = registerOutput<String?>('clusterMode');
-    this.clusterName = registerOutput<String?>('clusterName');
-    this.clusterVpcId = registerOutput<String?>('clusterVpcId');
-    this.clusterVswitchId = registerOutput<String?>('clusterVswitchId');
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.manager = registerOutput<ClusterV2Manager?>('manager');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.sharedStorages = registerOutput<List<ClusterV2SharedStorage>>('sharedStorages');
+         'alicloud:ehpc/clusterV2:ClusterV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addons = registerOutput<List<Map<String, dynamic>>?>('addons');
+    clientVersion = registerOutput<String>('clientVersion');
+    clusterCategory = registerOutput<String?>('clusterCategory');
+    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
+      'clusterCredentials',
+    );
+    clusterMode = registerOutput<String?>('clusterMode');
+    clusterName = registerOutput<String?>('clusterName');
+    clusterVpcId = registerOutput<String?>('clusterVpcId');
+    clusterVswitchId = registerOutput<String?>('clusterVswitchId');
+    createTime = registerOutput<String>('createTime');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    manager = registerOutput<ClusterV2Manager?>('manager');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    sharedStorages = registerOutput<List<Map<String, dynamic>>>(
+      'sharedStorages',
+    );
   }
 
   /// Gets an existing [ClusterV2] resource's state with the given [name] and [id].
@@ -963,24 +978,28 @@ class ClusterV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ehpc/clusterV2:ClusterV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addons = registerOutput<List<ClusterV2Addon>?>('addons');
-    this.clientVersion = registerOutput<String>('clientVersion');
-    this.clusterCategory = registerOutput<String?>('clusterCategory');
-    this.clusterCredentials = registerOutput<ClusterV2ClusterCredentials>('clusterCredentials');
-    this.clusterMode = registerOutput<String?>('clusterMode');
-    this.clusterName = registerOutput<String?>('clusterName');
-    this.clusterVpcId = registerOutput<String?>('clusterVpcId');
-    this.clusterVswitchId = registerOutput<String?>('clusterVswitchId');
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.manager = registerOutput<ClusterV2Manager?>('manager');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.sharedStorages = registerOutput<List<ClusterV2SharedStorage>>('sharedStorages');
+         'alicloud:ehpc/clusterV2:ClusterV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addons = registerOutput<List<Map<String, dynamic>>?>('addons');
+    clientVersion = registerOutput<String>('clientVersion');
+    clusterCategory = registerOutput<String?>('clusterCategory');
+    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
+      'clusterCredentials',
+    );
+    clusterMode = registerOutput<String?>('clusterMode');
+    clusterName = registerOutput<String?>('clusterName');
+    clusterVpcId = registerOutput<String?>('clusterVpcId');
+    clusterVswitchId = registerOutput<String?>('clusterVswitchId');
+    createTime = registerOutput<String>('createTime');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    manager = registerOutput<ClusterV2Manager?>('manager');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    sharedStorages = registerOutput<List<Map<String, dynamic>>>(
+      'sharedStorages',
+    );
   }
 }

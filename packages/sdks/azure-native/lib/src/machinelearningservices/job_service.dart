@@ -7,13 +7,17 @@ import 'all_nodes.dart';
 class JobService {
   /// Url for endpoint.
   final pulumi.Input<String>? endpoint;
+
   /// Endpoint type.
   final pulumi.Input<String>? jobServiceType;
+
   /// Nodes that user would like to start the service on.
   /// If Nodes is not set or set to null, the service will only be started on leader node.
   final pulumi.Input<AllNodes>? nodes;
+
   /// Port for endpoint.
   final pulumi.Input<int>? port;
+
   /// Additional properties to set on the endpoint.
   final pulumi.Input<Map<String, String>>? properties;
 
@@ -35,7 +39,11 @@ class JobService {
     return <String, dynamic>{
       'endpoint': ?endpoint,
       'jobServiceType': ?jobServiceType,
-      'nodes': ?pulumi.Input.mapOptionalInputValue<AllNodes, Map<String, dynamic>>(nodes, (value) => value.toMap()),
+      'nodes':
+          ?pulumi.Input.mapOptionalInputValue<AllNodes, Map<String, dynamic>>(
+            nodes,
+            (value) => value.toMap(),
+          ),
       'port': ?port,
       'properties': ?properties,
     };
@@ -43,12 +51,35 @@ class JobService {
 
   factory JobService.fromMap(Map<String, dynamic> map) {
     return JobService(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType']! as String).input(),
-      nodes: map['nodes'] == null ? null : (AllNodes.fromMap((map['nodes']! as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobServiceType: (() {
+        final guardedValue = map['jobServiceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodes: (() {
+        final guardedValue = map['nodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllNodes.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

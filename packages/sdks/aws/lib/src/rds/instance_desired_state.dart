@@ -5,7 +5,7 @@ import 'instance_desired_state_timeouts.dart';
 
 /// Resource for managing an AWS RDS (Relational Database) RDS Instance State.
 ///
-/// > Destruction of this resource is a no-op and **will not** modify the instance state
+/// &gt; Destruction of this resource is a no-op and **will not** modify the instance state
 ///
 /// ## Example Usage
 ///
@@ -115,8 +115,10 @@ import 'instance_desired_state_timeouts.dart';
 class InstanceDesiredState extends pulumi.CustomResource {
   /// DB Instance Identifier
   late final pulumi.Output<String> identifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
   late final pulumi.Output<String> state;
   late final pulumi.Output<InstanceDesiredStateTimeouts?> timeouts;
@@ -130,15 +132,15 @@ class InstanceDesiredState extends pulumi.CustomResource {
     InstanceDesiredStateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/instanceDesiredState:InstanceDesiredState',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identifier = registerOutput<String>('identifier');
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
-    this.timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
+         'aws:rds/instanceDesiredState:InstanceDesiredState',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identifier = registerOutput<String>('identifier');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
   }
 
   /// Gets an existing [InstanceDesiredState] resource's state with the given [name] and [id].
@@ -159,14 +161,14 @@ class InstanceDesiredState extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/instanceDesiredState:InstanceDesiredState',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identifier = registerOutput<String>('identifier');
-    this.region = registerOutput<String>('region');
+         'aws:rds/instanceDesiredState:InstanceDesiredState',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identifier = registerOutput<String>('identifier');
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    this.timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
   }
 }

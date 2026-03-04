@@ -35,11 +35,20 @@ class GetRegionInstanceTemplateArgs {
 
   factory GetRegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateArgs(
-      instanceTemplate: (map['instanceTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      instanceTemplate: pulumi.Input.fromValue(
+        map['instanceTemplate'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

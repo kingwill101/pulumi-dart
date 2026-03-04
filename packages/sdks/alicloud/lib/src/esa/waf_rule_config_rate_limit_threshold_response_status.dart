@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleConfigRateLimitThresholdResponseStatus {
   final pulumi.Input<int>? code;
+
   /// The maximum number of times the specified status code can be returned.
   final pulumi.Input<int>? count;
+
   /// The upper limit of the percentage of occurrences of the specified status code among all responses.
   final pulumi.Input<int>? ratio;
 
@@ -20,19 +22,28 @@ class WafRuleConfigRateLimitThresholdResponseStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-      'count': ?count,
-      'ratio': ?ratio,
-    };
+    return <String, dynamic>{'code': ?code, 'count': ?count, 'ratio': ?ratio};
   }
 
-  factory WafRuleConfigRateLimitThresholdResponseStatus.fromMap(Map<String, dynamic> map) {
+  factory WafRuleConfigRateLimitThresholdResponseStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WafRuleConfigRateLimitThresholdResponseStatus(
-      code: map['code'] == null ? null : (map['code']! as int).input(),
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio']! as int).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ratio: (() {
+        final guardedValue = map['ratio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

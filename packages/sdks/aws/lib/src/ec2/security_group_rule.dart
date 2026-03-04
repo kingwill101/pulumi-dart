@@ -4,13 +4,13 @@ import 'security_group_rule_state.dart';
 
 /// Provides a security group rule resource. Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
 ///
-/// > **NOTE:** Avoid using the `aws.ec2.SecurityGroupRule` resource, as it struggles with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
+/// &gt; **NOTE:** Avoid using the `aws.ec2.SecurityGroupRule` resource, as it struggles with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
 ///
-/// !> **WARNING:** You should not use the `aws.ec2.SecurityGroupRule` resource in conjunction with `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or with an `aws.ec2.SecurityGroup` resource that has in-line rules. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
+/// !&gt; **WARNING:** You should not use the `aws.ec2.SecurityGroupRule` resource in conjunction with `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or with an `aws.ec2.SecurityGroup` resource that has in-line rules. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
 ///
-/// > **NOTE:** Setting `protocol = "all"` or `protocol = -1` with `from_port` and `to_port` will result in the EC2 API creating a security group rule with all ports open. This API behavior cannot be controlled by this provider and may generate warnings in the future.
+/// &gt; **NOTE:** Setting `protocol = "all"` or `protocol = -1` with `from_port` and `to_port` will result in the EC2 API creating a security group rule with all ports open. This API behavior cannot be controlled by this provider and may generate warnings in the future.
 ///
-/// > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
+/// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
 ///
 /// ## Example Usage
 ///
@@ -554,29 +554,41 @@ import 'security_group_rule_state.dart';
 class SecurityGroupRule extends pulumi.CustomResource {
   /// List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
   late final pulumi.Output<List<String>?> cidrBlocks;
+
   /// Description of the rule.
   late final pulumi.Output<String?> description;
+
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
   late final pulumi.Output<int> fromPort;
+
   /// List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
   late final pulumi.Output<List<String>?> ipv6CidrBlocks;
+
   /// List of Prefix List IDs.
   late final pulumi.Output<List<String>?> prefixListIds;
+
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
   late final pulumi.Output<String> protocol;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// > **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
+  /// &gt; **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
   late final pulumi.Output<String> region;
+
   /// Security group to apply this rule to.
   late final pulumi.Output<String> securityGroupId;
+
   /// If the `aws.ec2.SecurityGroupRule` resource has a single source or destination then this is the AWS Security Group Rule resource ID. Otherwise it is empty.
   late final pulumi.Output<String> securityGroupRuleId;
+
   /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
   late final pulumi.Output<bool?> self;
+
   /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
   late final pulumi.Output<String> sourceSecurityGroupId;
+
   /// End port (or ICMP code if protocol is "icmp").
   late final pulumi.Output<int> toPort;
+
   /// Type of rule being created. Valid options are `ingress` (inbound)
   /// or `egress` (outbound).
   ///
@@ -592,24 +604,24 @@ class SecurityGroupRule extends pulumi.CustomResource {
     SecurityGroupRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/securityGroupRule:SecurityGroupRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
-    this.description = registerOutput<String?>('description');
-    this.fromPort = registerOutput<int>('fromPort');
-    this.ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
-    this.prefixListIds = registerOutput<List<String>?>('prefixListIds');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    this.self = registerOutput<bool?>('self');
-    this.sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
-    this.toPort = registerOutput<int>('toPort');
-    this.type = registerOutput<String>('type');
+         'aws:ec2/securityGroupRule:SecurityGroupRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
+    description = registerOutput<String?>('description');
+    fromPort = registerOutput<int>('fromPort');
+    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
+    prefixListIds = registerOutput<List<String>?>('prefixListIds');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    self = registerOutput<bool?>('self');
+    sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
+    toPort = registerOutput<int>('toPort');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [SecurityGroupRule] resource's state with the given [name] and [id].
@@ -630,23 +642,23 @@ class SecurityGroupRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/securityGroupRule:SecurityGroupRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
-    this.description = registerOutput<String?>('description');
-    this.fromPort = registerOutput<int>('fromPort');
-    this.ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
-    this.prefixListIds = registerOutput<List<String>?>('prefixListIds');
-    this.protocol = registerOutput<String>('protocol');
-    this.region = registerOutput<String>('region');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    this.self = registerOutput<bool?>('self');
-    this.sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
-    this.toPort = registerOutput<int>('toPort');
-    this.type = registerOutput<String>('type');
+         'aws:ec2/securityGroupRule:SecurityGroupRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
+    description = registerOutput<String?>('description');
+    fromPort = registerOutput<int>('fromPort');
+    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
+    prefixListIds = registerOutput<List<String>?>('prefixListIds');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    self = registerOutput<bool?>('self');
+    sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
+    toPort = registerOutput<int>('toPort');
+    type = registerOutput<String>('type');
   }
 }

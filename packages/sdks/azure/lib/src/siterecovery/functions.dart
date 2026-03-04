@@ -114,7 +114,7 @@ import 'get_replication_recovery_plan_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -245,7 +245,7 @@ Future<GetFabricResult> getFabric(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -370,7 +370,7 @@ Future<GetProtectionContainerResult> getProtectionContainer(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -522,7 +522,7 @@ Future<GetReplicationPolicyResult> getReplicationPolicy(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01

@@ -27,9 +27,12 @@ class GetTargetGrpcProxyComputeBetaArgs {
 
   factory GetTargetGrpcProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetGrpcProxyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetGrpcProxy: (map['targetGrpcProxy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetGrpcProxy: pulumi.Input.fromValue(map['targetGrpcProxy'] as String),
     );
   }
 }
-

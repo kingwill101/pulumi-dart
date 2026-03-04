@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskAttachmentArgs {
   final pulumi.Input<bool>? bootable;
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// ID of the Disk to be attached.
   final pulumi.Input<String> diskId;
+
   /// ID of the Instance to attach to.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String>? keyPairName;
@@ -45,13 +47,28 @@ class DiskAttachmentArgs {
 
   factory DiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentArgs(
-      bootable: map['bootable'] == null ? null : (map['bootable']! as bool).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      diskId: (map['diskId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
+      bootable: (() {
+        final guardedValue = map['bootable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

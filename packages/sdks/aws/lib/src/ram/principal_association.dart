@@ -242,8 +242,10 @@ import 'principal_association_state.dart';
 class PrincipalAssociation extends pulumi.CustomResource {
   /// The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
   late final pulumi.Output<String> principal;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the resource share.
   late final pulumi.Output<String> resourceShareArn;
 
@@ -256,14 +258,14 @@ class PrincipalAssociation extends pulumi.CustomResource {
     PrincipalAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/principalAssociation:PrincipalAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+         'aws:ram/principalAssociation:PrincipalAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 
   /// Gets an existing [PrincipalAssociation] resource's state with the given [name] and [id].
@@ -284,13 +286,13 @@ class PrincipalAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/principalAssociation:PrincipalAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+         'aws:ram/principalAssociation:PrincipalAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 }

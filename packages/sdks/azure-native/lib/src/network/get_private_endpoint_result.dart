@@ -13,36 +13,54 @@ import 'subnet_response.dart';
 class GetPrivateEndpointResult {
   /// Application security groups in which the private endpoint IP configuration is included.
   final List<ApplicationSecurityGroupResponse>? applicationSecurityGroups;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// An array of custom dns configurations.
   final List<CustomDnsConfigPropertiesFormatResponse>? customDnsConfigs;
+
   /// The custom name of the network interface attached to the private endpoint.
   final String? customNetworkInterfaceName;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// The extended location of the load balancer.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Resource ID.
   final String? id;
+
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
   final List<PrivateEndpointIPConfigurationResponse>? ipConfigurations;
+
   /// Resource location.
   final String? location;
+
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
-  final List<PrivateLinkServiceConnectionResponse>? manualPrivateLinkServiceConnections;
+  final List<PrivateLinkServiceConnectionResponse>?
+  manualPrivateLinkServiceConnections;
+
   /// Resource name.
   final String name;
+
   /// An array of references to the network interfaces created for this private endpoint.
   final List<NetworkInterfaceResponse> networkInterfaces;
+
   /// A grouping of information about the connection to the remote resource.
-  final List<PrivateLinkServiceConnectionResponse>? privateLinkServiceConnections;
+  final List<PrivateLinkServiceConnectionResponse>?
+  privateLinkServiceConnections;
+
   /// The provisioning state of the private endpoint resource.
   final String provisioningState;
+
   /// The ID of the subnet from which the private IP will be allocated.
   final SubnetResponse? subnet;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -86,21 +104,60 @@ class GetPrivateEndpointResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationSecurityGroups': ?applicationSecurityGroups == null ? null : pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(applicationSecurityGroups!, (value) => value.toMap()),
+      'applicationSecurityGroups': ?(() {
+        final guardedValue = applicationSecurityGroups;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ApplicationSecurityGroupResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
-      'customDnsConfigs': ?customDnsConfigs == null ? null : pulumi.Input.encodeList<CustomDnsConfigPropertiesFormatResponse, Map<String, dynamic>>(customDnsConfigs!, (value) => value.toMap()),
+      'customDnsConfigs': ?(() {
+        final guardedValue = customDnsConfigs;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          CustomDnsConfigPropertiesFormatResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'customNetworkInterfaceName': ?customNetworkInterfaceName,
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': ?id,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<PrivateEndpointIPConfigurationResponse, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?(() {
+        final guardedValue = ipConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateEndpointIPConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'location': ?location,
-      'manualPrivateLinkServiceConnections': ?manualPrivateLinkServiceConnections == null ? null : pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(manualPrivateLinkServiceConnections!, (value) => value.toMap()),
+      'manualPrivateLinkServiceConnections': ?(() {
+        final guardedValue = manualPrivateLinkServiceConnections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateLinkServiceConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
-      'privateLinkServiceConnections': ?privateLinkServiceConnections == null ? null : pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(privateLinkServiceConnections!, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            NetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
+      'privateLinkServiceConnections': ?(() {
+        final guardedValue = privateLinkServiceConnections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateLinkServiceConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': provisioningState,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?subnet?.toMap(),
       'tags': ?tags,
       'type': type,
     };
@@ -108,24 +165,101 @@ class GetPrivateEndpointResult {
 
   factory GetPrivateEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointResult(
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['applicationSecurityGroups']!, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      applicationSecurityGroups: (() {
+        final guardedValue = map['applicationSecurityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(
+          guardedValue,
+          (value) => ApplicationSecurityGroupResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      customDnsConfigs: map['customDnsConfigs'] == null ? null : pulumi.Input.decodeList<CustomDnsConfigPropertiesFormatResponse>(map['customDnsConfigs']!, (value) => CustomDnsConfigPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : map['customNetworkInterfaceName']! as String,
+      customDnsConfigs: (() {
+        final guardedValue = map['customDnsConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<CustomDnsConfigPropertiesFormatResponse>(
+          guardedValue,
+          (value) => CustomDnsConfigPropertiesFormatResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      customNetworkInterfaceName: (() {
+        final guardedValue = map['customNetworkInterfaceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id']! as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<PrivateEndpointIPConfigurationResponse>(map['ipConfigurations']!, (value) => PrivateEndpointIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location']! as String,
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ipConfigurations: (() {
+        final guardedValue = map['ipConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateEndpointIPConfigurationResponse>(
+          guardedValue,
+          (value) => PrivateEndpointIPConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      manualPrivateLinkServiceConnections: (() {
+        final guardedValue = map['manualPrivateLinkServiceConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(
+          guardedValue,
+          (value) => PrivateLinkServiceConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['privateLinkServiceConnections']!, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
+        map['networkInterfaces']!,
+        (value) => NetworkInterfaceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      privateLinkServiceConnections: (() {
+        final guardedValue = map['privateLinkServiceConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(
+          guardedValue,
+          (value) => PrivateLinkServiceConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

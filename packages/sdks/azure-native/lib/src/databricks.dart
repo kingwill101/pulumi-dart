@@ -1,5 +1,3 @@
-library module_databricks;
-
 export 'databricks/access_connector.dart';
 export 'databricks/access_connector_args.dart';
 export 'databricks/access_connector_properties_response.dart';

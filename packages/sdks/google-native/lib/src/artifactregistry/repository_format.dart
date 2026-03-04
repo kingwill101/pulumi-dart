@@ -11,16 +11,15 @@ enum RepositoryFormat {
   kfp("KFP"),
   go("GO");
 
-  const RepositoryFormat(this.value);
-  final String value;
+  const RepositoryFormat(this.wireValue);
+  final String wireValue;
 
   static RepositoryFormat fromValue(String value) {
     for (final item in RepositoryFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RepositoryFormat value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CryptoKeyVersionTemplateResponse {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
   final pulumi.Input<String> algorithm;
+
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
   final pulumi.Input<String> protectionLevel;
 
@@ -26,9 +27,8 @@ class CryptoKeyVersionTemplateResponse {
 
   factory CryptoKeyVersionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplateResponse(
-      algorithm: (map['algorithm'] as String).input(),
-      protectionLevel: (map['protectionLevel'] as String).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      protectionLevel: pulumi.Input.fromValue(map['protectionLevel'] as String),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'segment_state.dart';
 
 /// Provides a CloudWatch Evidently Segment resource.
 ///
-/// > **Warning:** This resource is deprecated. Use [AWS AppConfig feature flags](https://aws.amazon.com/blogs/mt/using-aws-appconfig-feature-flags/) instead.
+/// &gt; **Warning:** This resource is deprecated. Use [AWS AppConfig feature flags](https://aws.amazon.com/blogs/mt/using-aws-appconfig-feature-flags/) instead.
 ///
 /// ## Example Usage
 ///
@@ -387,24 +387,34 @@ import 'segment_state.dart';
 class Segment extends pulumi.CustomResource {
   /// The ARN of the segment.
   late final pulumi.Output<String> arn;
+
   /// The date and time that the segment is created.
   late final pulumi.Output<String> createdTime;
+
   /// Specifies the description of the segment.
   late final pulumi.Output<String?> description;
+
   /// The number of experiments that this segment is used in. This count includes all current experiments, not just those that are currently running.
   late final pulumi.Output<int> experimentCount;
+
   /// The date and time that this segment was most recently updated.
   late final pulumi.Output<String> lastUpdatedTime;
+
   /// The number of launches that this segment is used in. This count includes all current launches, not just those that are currently running.
   late final pulumi.Output<int> launchCount;
+
   /// A name for the segment.
   late final pulumi.Output<String> name;
+
   /// The pattern to use for the segment. For more information about pattern syntax, see [Segment rule pattern syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html).
   late final pulumi.Output<String> pattern;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Tags to apply to the segment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -417,22 +427,22 @@ class Segment extends pulumi.CustomResource {
     SegmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:evidently/segment:Segment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.description = registerOutput<String?>('description');
-    this.experimentCount = registerOutput<int>('experimentCount');
-    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    this.launchCount = registerOutput<int>('launchCount');
+         'aws:evidently/segment:Segment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    experimentCount = registerOutput<int>('experimentCount');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    launchCount = registerOutput<int>('launchCount');
     this.name = registerOutput<String>('name');
-    this.pattern = registerOutput<String>('pattern');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Segment] resource's state with the given [name] and [id].
@@ -453,21 +463,21 @@ class Segment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:evidently/segment:Segment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.description = registerOutput<String?>('description');
-    this.experimentCount = registerOutput<int>('experimentCount');
-    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    this.launchCount = registerOutput<int>('launchCount');
+         'aws:evidently/segment:Segment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    experimentCount = registerOutput<int>('experimentCount');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    launchCount = registerOutput<int>('launchCount');
     this.name = registerOutput<String>('name');
-    this.pattern = registerOutput<String>('pattern');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
-import 'policy_rule_patch_rbac_authorization_k8s_io_v1alpha1.dart';
 import 'role_patch_rbac_authorization_k8s_io_v1alpha1_args.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
@@ -13,12 +12,15 @@ import 'role_patch_rbac_authorization_k8s_io_v1alpha1_args.dart';
 class RolePatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Rules holds all the PolicyRules for this Role
-  late final pulumi.Output<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
   /// Creates a new [RolePatchResource].
   /// [name] The Pulumi resource name.
@@ -29,14 +31,14 @@ class RolePatchResource extends pulumi.CustomResource {
     RolePatchRbacAuthorizationK8sIoV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.rules = registerOutput<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?>('rules');
+         'kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 }

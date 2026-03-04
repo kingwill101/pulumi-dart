@@ -10,29 +10,41 @@ import 'address_prefix_item.dart';
 class UserRuleArgs {
   /// The name of the network manager Security Configuration.
   final pulumi.Input<String> configurationName;
+
   /// A description for this rule.
   final pulumi.Input<String>? description;
+
   /// The destination port ranges.
   final pulumi.Input<List<String>>? destinationPortRanges;
+
   /// The destination address prefixes. CIDR or destination IP ranges.
   final pulumi.Input<List<AddressPrefixItem>>? destinations;
+
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final pulumi.Input<String> direction;
+
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> kind;
+
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// Network protocol this rule applies to.
   final pulumi.Input<String> protocol;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the network manager security Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
+
   /// The name of the rule.
   final pulumi.Input<String>? ruleName;
+
   /// The source port ranges.
   final pulumi.Input<List<String>>? sourcePortRanges;
+
   /// The CIDR or source IP ranges.
   final pulumi.Input<List<AddressPrefixItem>>? sources;
 
@@ -71,7 +83,18 @@ class UserRuleArgs {
       'configurationName': configurationName,
       'description': ?description,
       'destinationPortRanges': ?destinationPortRanges,
-      'destinations': ?pulumi.Input.mapOptionalInputValue<List<AddressPrefixItem>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<AddressPrefixItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AddressPrefixItem>,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AddressPrefixItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'direction': direction,
       'kind': kind,
       'networkManagerName': networkManagerName,
@@ -80,26 +103,82 @@ class UserRuleArgs {
       'ruleCollectionName': ruleCollectionName,
       'ruleName': ?ruleName,
       'sourcePortRanges': ?sourcePortRanges,
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<AddressPrefixItem>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<AddressPrefixItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AddressPrefixItem>,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AddressPrefixItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory UserRuleArgs.fromMap(Map<String, dynamic> map) {
     return UserRuleArgs(
-      configurationName: (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges']! as List).cast<String>()).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['destinations']!, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      direction: (map['direction'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['sources']!, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationName: pulumi.Input.fromValue(
+        map['configurationName'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationPortRanges: (() {
+        final guardedValue = map['destinationPortRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AddressPrefixItem>(
+            guardedValue,
+            (value) => AddressPrefixItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleCollectionName: pulumi.Input.fromValue(
+        map['ruleCollectionName'] as String,
+      ),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourcePortRanges: (() {
+        final guardedValue = map['sourcePortRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AddressPrefixItem>(
+            guardedValue,
+            (value) => AddressPrefixItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

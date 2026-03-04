@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_group_diagnostic_setting_args.dart';
-import 'management_group_log_settings_response.dart';
 import 'system_data_response.dart';
 
 /// The management group diagnostic setting resource.
@@ -383,24 +382,34 @@ import 'system_data_response.dart';
 class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource Id for the event hub authorization rule.
   late final pulumi.Output<String?> eventHubAuthorizationRuleId;
+
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   late final pulumi.Output<String?> eventHubName;
+
   /// The list of logs settings.
-  late final pulumi.Output<List<ManagementGroupLogSettingsResponse>?> logs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> logs;
+
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> marketplacePartnerId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   late final pulumi.Output<String?> serviceBusRuleId;
+
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> storageAccountId;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   late final pulumi.Output<String?> workspaceId;
 
@@ -413,21 +422,23 @@ class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
     ManagementGroupDiagnosticSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:ManagementGroupDiagnosticSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
-    this.eventHubName = registerOutput<String?>('eventHubName');
-    this.logs = registerOutput<List<ManagementGroupLogSettingsResponse>?>('logs');
-    this.marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
+         'azure-native:monitor:ManagementGroupDiagnosticSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventHubAuthorizationRuleId = registerOutput<String?>(
+      'eventHubAuthorizationRuleId',
+    );
+    eventHubName = registerOutput<String?>('eventHubName');
+    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
+    marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
     this.name = registerOutput<String>('name');
-    this.serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.workspaceId = registerOutput<String?>('workspaceId');
+    serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    workspaceId = registerOutput<String?>('workspaceId');
   }
 }

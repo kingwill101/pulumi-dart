@@ -9,31 +9,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationArgs {
   /// The domain name of the Organization.
   ///
-  /// > **NOTE:** One of `organization` or `domain` must be specified.
+  /// &gt; **NOTE:** One of `organization` or `domain` must be specified.
   final pulumi.Input<String>? domain;
+
   /// The Organization's numeric ID, including an optional `organizations/` prefix.
   final pulumi.Input<String>? organization;
 
   /// Creates a new [GetOrganizationArgs].
   /// [domain] The domain name of the Organization.
   /// [organization] The Organization's numeric ID, including an optional `organizations/` prefix.
-  GetOrganizationArgs({
-    this.domain,
-    this.organization,
-  });
+  GetOrganizationArgs({this.domain, this.organization});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-      'organization': ?organization,
-    };
+    return <String, dynamic>{'domain': ?domain, 'organization': ?organization};
   }
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

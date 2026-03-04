@@ -1,10 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_gateway_for_containers_reference_definition_response.dart';
-import 'application_gateway_response.dart';
 import 'managed_rules_definition_response.dart';
 import 'policy_settings_response.dart';
-import 'sub_resource_response.dart';
-import 'web_application_firewall_custom_rule_response.dart';
 import 'web_application_firewall_policy_args.dart';
 
 /// Defines web application firewall policy.
@@ -1731,33 +1727,48 @@ import 'web_application_firewall_policy_args.dart';
 /// ```
 class WebApplicationFirewallPolicy extends pulumi.CustomResource {
   /// A collection of references to application gateway for containers.
-  late final pulumi.Output<List<ApplicationGatewayForContainersReferenceDefinitionResponse>> applicationGatewayForContainers;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  applicationGatewayForContainers;
+
   /// A collection of references to application gateways.
-  late final pulumi.Output<List<ApplicationGatewayResponse>> applicationGateways;
+  late final pulumi.Output<List<Map<String, dynamic>>> applicationGateways;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The custom rules inside the policy.
-  late final pulumi.Output<List<WebApplicationFirewallCustomRuleResponse>?> customRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// A collection of references to application gateway http listeners.
-  late final pulumi.Output<List<SubResourceResponse>> httpListeners;
+  late final pulumi.Output<List<Map<String, dynamic>>> httpListeners;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Describes the managedRules structure.
   late final pulumi.Output<ManagedRulesDefinitionResponse> managedRules;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// A collection of references to application gateway path rules.
-  late final pulumi.Output<List<SubResourceResponse>> pathBasedRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> pathBasedRules;
+
   /// The PolicySettings for policy.
   late final pulumi.Output<PolicySettingsResponse?> policySettings;
+
   /// The provisioning state of the web application firewall policy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource status of the policy.
   late final pulumi.Output<String> resourceState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -1770,25 +1781,34 @@ class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     WebApplicationFirewallPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:WebApplicationFirewallPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationGatewayForContainers = registerOutput<List<ApplicationGatewayForContainersReferenceDefinitionResponse>>('applicationGatewayForContainers');
-    this.applicationGateways = registerOutput<List<ApplicationGatewayResponse>>('applicationGateways');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customRules = registerOutput<List<WebApplicationFirewallCustomRuleResponse>?>('customRules');
-    this.etag = registerOutput<String>('etag');
-    this.httpListeners = registerOutput<List<SubResourceResponse>>('httpListeners');
-    this.location = registerOutput<String?>('location');
-    this.managedRules = registerOutput<ManagedRulesDefinitionResponse>('managedRules');
+         'azure-native:network:WebApplicationFirewallPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationGatewayForContainers =
+        registerOutput<List<Map<String, dynamic>>>(
+          'applicationGatewayForContainers',
+        );
+    applicationGateways = registerOutput<List<Map<String, dynamic>>>(
+      'applicationGateways',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    etag = registerOutput<String>('etag');
+    httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
+    location = registerOutput<String?>('location');
+    managedRules = registerOutput<ManagedRulesDefinitionResponse>(
+      'managedRules',
+    );
     this.name = registerOutput<String>('name');
-    this.pathBasedRules = registerOutput<List<SubResourceResponse>>('pathBasedRules');
-    this.policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    pathBasedRules = registerOutput<List<Map<String, dynamic>>>(
+      'pathBasedRules',
+    );
+    policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

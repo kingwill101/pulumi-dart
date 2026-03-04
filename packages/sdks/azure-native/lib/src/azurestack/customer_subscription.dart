@@ -140,12 +140,16 @@ import 'customer_subscription_args.dart';
 class CustomerSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The entity tag used for optimistic concurrency when modifying the resource.
   late final pulumi.Output<String?> etag;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Tenant Id.
   late final pulumi.Output<String?> tenantId;
+
   /// Type of Resource.
   late final pulumi.Output<String> type;
 
@@ -158,15 +162,15 @@ class CustomerSubscription extends pulumi.CustomResource {
     CustomerSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestack:CustomerSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:azurestack:CustomerSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

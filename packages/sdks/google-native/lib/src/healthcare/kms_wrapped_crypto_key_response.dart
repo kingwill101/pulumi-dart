@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KmsWrappedCryptoKeyResponse {
   /// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
   final pulumi.Input<String> cryptoKey;
+
   /// The wrapped data crypto key.
   final pulumi.Input<String> wrappedKey;
 
@@ -18,17 +19,13 @@ class KmsWrappedCryptoKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cryptoKey': cryptoKey,
-      'wrappedKey': wrappedKey,
-    };
+    return <String, dynamic>{'cryptoKey': cryptoKey, 'wrappedKey': wrappedKey};
   }
 
   factory KmsWrappedCryptoKeyResponse.fromMap(Map<String, dynamic> map) {
     return KmsWrappedCryptoKeyResponse(
-      cryptoKey: (map['cryptoKey'] as String).input(),
-      wrappedKey: (map['wrappedKey'] as String).input(),
+      cryptoKey: pulumi.Input.fromValue(map['cryptoKey'] as String),
+      wrappedKey: pulumi.Input.fromValue(map['wrappedKey'] as String),
     );
   }
 }
-

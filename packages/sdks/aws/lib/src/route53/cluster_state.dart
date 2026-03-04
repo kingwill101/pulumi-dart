@@ -7,18 +7,24 @@ import 'cluster_cluster_endpoint.dart';
 class ClusterState {
   /// ARN of the cluster
   final pulumi.Input<String>? arn;
+
   /// List of 5 endpoints in 5 regions that can be used to talk to the cluster. See below.
   final pulumi.Input<List<ClusterClusterEndpoint>>? clusterEndpoints;
+
   /// Unique name describing the cluster.
   final pulumi.Input<String>? name;
+
   /// Network type of cluster. Valid values are `IPV4` and `DUALSTACK`. Defaults to `IPV4`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? networkType;
+
   /// Status of cluster. `PENDING` when it is being created, `PENDING_DELETION` when it is being deleted and `DEPLOYED` otherwise.
   final pulumi.Input<String>? status;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -43,7 +49,18 @@ class ClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'clusterEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterEndpoint>, List<Map<String, dynamic>>>(clusterEndpoints, (value) => pulumi.Input.encodeList<ClusterClusterEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clusterEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterClusterEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            clusterEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterClusterEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'networkType': ?networkType,
       'status': ?status,
@@ -54,14 +71,52 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      clusterEndpoints: map['clusterEndpoints'] == null ? null : ((pulumi.Input.decodeList<ClusterClusterEndpoint>(map['clusterEndpoints']!, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      networkType: map['networkType'] == null ? null : ((map['networkType'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterEndpoints: (() {
+        final guardedValue = map['clusterEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterClusterEndpoint>(
+            guardedValue,
+            (value) => ClusterClusterEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

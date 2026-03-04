@@ -10,20 +10,29 @@ class AmlFilesystemHsm {
 
   /// Creates a new [AmlFilesystemHsm].
   /// [settings] Specifies HSM settings of the AML file system.
-  AmlFilesystemHsm({
-    this.settings,
-  });
+  AmlFilesystemHsm({this.settings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': ?pulumi.Input.mapOptionalInputValue<AmlFilesystemHsmSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AmlFilesystemHsmSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory AmlFilesystemHsm.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemHsm(
-      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AmlFilesystemHsmSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWhoisByDomainArgs {
   /// The domain name
   final pulumi.Input<String>? domain;
+
   /// Enrichment type
   final pulumi.Input<String> enrichmentType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,16 @@ class ListWhoisByDomainArgs {
 
   factory ListWhoisByDomainArgs.fromMap(Map<String, dynamic> map) {
     return ListWhoisByDomainArgs(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      enrichmentType: (map['enrichmentType'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enrichmentType: pulumi.Input.fromValue(map['enrichmentType'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -7,16 +7,23 @@ import 'google_cloud_dialogflow_v2_text_to_speech_settings_response.dart';
 class GetEnvironmentResult {
   /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
   final String agentVersion;
+
   /// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
   final String description;
+
   /// Optional. The fulfillment settings to use for this environment.
   final GoogleCloudDialogflowV2FulfillmentResponse fulfillment;
+
   /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
   final String name;
+
   /// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
   final String state;
+
   /// Optional. Text to speech settings for this environment.
-  final GoogleCloudDialogflowV2TextToSpeechSettingsResponse textToSpeechSettings;
+  final GoogleCloudDialogflowV2TextToSpeechSettingsResponse
+  textToSpeechSettings;
+
   /// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
   final String updateTime;
 
@@ -54,12 +61,16 @@ class GetEnvironmentResult {
     return GetEnvironmentResult(
       agentVersion: map['agentVersion'] as String,
       description: map['description'] as String,
-      fulfillment: GoogleCloudDialogflowV2FulfillmentResponse.fromMap((map['fulfillment'] as Map).cast<String, dynamic>()),
+      fulfillment: GoogleCloudDialogflowV2FulfillmentResponse.fromMap(
+        (map['fulfillment']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       state: map['state'] as String,
-      textToSpeechSettings: GoogleCloudDialogflowV2TextToSpeechSettingsResponse.fromMap((map['textToSpeechSettings'] as Map).cast<String, dynamic>()),
+      textToSpeechSettings:
+          GoogleCloudDialogflowV2TextToSpeechSettingsResponse.fromMap(
+            (map['textToSpeechSettings']! as Map).cast<String, dynamic>(),
+          ),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

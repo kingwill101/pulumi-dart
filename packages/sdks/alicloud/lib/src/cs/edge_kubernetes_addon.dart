@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeKubernetesAddon {
   /// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
   final pulumi.Input<String>? config;
+
   /// Disables the automatic installation of a component. Default is `false`.
   ///
   /// The following example is the definition of addons block, The type of this field is list:
@@ -20,8 +21,10 @@ class EdgeKubernetesAddon {
   /// }
   /// ```
   final pulumi.Input<bool>? disabled;
+
   /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
   final pulumi.Input<String>? name;
+
   /// It specifies the version of the component.
   final pulumi.Input<String>? version;
 
@@ -30,12 +33,7 @@ class EdgeKubernetesAddon {
   /// [disabled] Disables the automatic installation of a component. Default is `false`.
   /// [name] Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
   /// [version] It specifies the version of the component.
-  EdgeKubernetesAddon({
-    this.config,
-    this.disabled,
-    this.name,
-    this.version,
-  });
+  EdgeKubernetesAddon({this.config, this.disabled, this.name, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +46,26 @@ class EdgeKubernetesAddon {
 
   factory EdgeKubernetesAddon.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesAddon(
-      config: map['config'] == null ? null : (map['config']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

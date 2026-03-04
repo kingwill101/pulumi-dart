@@ -14,15 +14,14 @@ class StackdriverLoggingConfigResponseCloudtasksV2beta3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'samplingRatio': samplingRatio,
-    };
+    return <String, dynamic>{'samplingRatio': samplingRatio};
   }
 
-  factory StackdriverLoggingConfigResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
+  factory StackdriverLoggingConfigResponseCloudtasksV2beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StackdriverLoggingConfigResponseCloudtasksV2beta3(
-      samplingRatio: (map['samplingRatio'] as double).input(),
+      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
     );
   }
 }
-

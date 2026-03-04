@@ -10,20 +10,27 @@ class AppBundle {
 
   /// Creates a new [AppBundle].
   /// [bundleLocation] .aab file representing the app bundle under test.
-  AppBundle({
-    this.bundleLocation,
-  });
+  AppBundle({this.bundleLocation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bundleLocation': ?pulumi.Input.mapOptionalInputValue<FileReference, Map<String, dynamic>>(bundleLocation, (value) => value.toMap()),
+      'bundleLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileReference,
+            Map<String, dynamic>
+          >(bundleLocation, (value) => value.toMap()),
     };
   }
 
   factory AppBundle.fromMap(Map<String, dynamic> map) {
     return AppBundle(
-      bundleLocation: map['bundleLocation'] == null ? null : (FileReference.fromMap((map['bundleLocation']! as Map).cast<String, dynamic>())).input(),
+      bundleLocation: (() {
+        final guardedValue = map['bundleLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileReference.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

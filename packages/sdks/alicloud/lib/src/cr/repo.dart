@@ -5,9 +5,9 @@ import 'repo_state.dart';
 
 /// This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
 ///
-/// > **NOTE:** Available since v1.35.0.
+/// &gt; **NOTE:** Available since v1.35.0.
 ///
-/// > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+/// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 ///
 /// ## Example Usage
 ///
@@ -197,14 +197,19 @@ import 'repo_state.dart';
 class Repo extends pulumi.CustomResource {
   /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
   late final pulumi.Output<String?> detail;
+
   /// (Optional) The repository domain list.
   late final pulumi.Output<RepoDomainList> domainList;
+
   /// Name of container registry repository.
   late final pulumi.Output<String> name;
+
   /// Name of container registry namespace where repository is located.
   late final pulumi.Output<String> namespace;
+
   /// `PUBLIC` or `PRIVATE`, repo's visibility.
   late final pulumi.Output<String> repoType;
+
   /// The repository general information. It can contain 1 to 80 characters.
   late final pulumi.Output<String> summary;
 
@@ -212,30 +217,23 @@ class Repo extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Repo]. {@macro pulumi_cr_repo_repo_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Repo(
-    String name, {
-    RepoArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cr/repo:Repo',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.detail = registerOutput<String?>('detail');
-    this.domainList = registerOutput<RepoDomainList>('domainList');
+  Repo(String name, {RepoArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cr/repo:Repo',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    detail = registerOutput<String?>('detail');
+    domainList = registerOutput<RepoDomainList>('domainList');
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String>('namespace');
-    this.repoType = registerOutput<String>('repoType');
-    this.summary = registerOutput<String>('summary');
+    namespace = registerOutput<String>('namespace');
+    repoType = registerOutput<String>('repoType');
+    summary = registerOutput<String>('summary');
   }
 
   /// Gets an existing [Repo] resource's state with the given [name] and [id].
-  static Repo get(
-    String name,
-    pulumi.Input<String> id, {
-    RepoState? state,
-  }) {
+  static Repo get(String name, pulumi.Input<String> id, {RepoState? state}) {
     return Repo._get(
       name,
       state: state?.toMap(),
@@ -248,16 +246,16 @@ class Repo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/repo:Repo',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.detail = registerOutput<String?>('detail');
-    this.domainList = registerOutput<RepoDomainList>('domainList');
+         'alicloud:cr/repo:Repo',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    detail = registerOutput<String?>('detail');
+    domainList = registerOutput<RepoDomainList>('domainList');
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String>('namespace');
-    this.repoType = registerOutput<String>('repoType');
-    this.summary = registerOutput<String>('summary');
+    namespace = registerOutput<String>('namespace');
+    repoType = registerOutput<String>('repoType');
+    summary = registerOutput<String>('summary');
   }
 }

@@ -9,20 +9,25 @@ class FsxOpenZfsFileSystemProtocolNfs {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocolNfs].
   /// [mountOptions] Represents the mount options that are available for DataSync to access an NFS location. See below.
-  FsxOpenZfsFileSystemProtocolNfs({
-    required this.mountOptions,
-  });
+  FsxOpenZfsFileSystemProtocolNfs({required this.mountOptions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mountOptions': pulumi.Input.mapInputValue<FsxOpenZfsFileSystemProtocolNfsMountOptions, Map<String, dynamic>>(mountOptions, (value) => value.toMap()),
+      'mountOptions':
+          pulumi.Input.mapInputValue<
+            FsxOpenZfsFileSystemProtocolNfsMountOptions,
+            Map<String, dynamic>
+          >(mountOptions, (value) => value.toMap()),
     };
   }
 
   factory FsxOpenZfsFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemProtocolNfs(
-      mountOptions: (FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input(),
+      mountOptions: pulumi.Input.fromValue(
+        FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap(
+          (map['mountOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

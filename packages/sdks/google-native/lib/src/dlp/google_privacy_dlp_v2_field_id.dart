@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2FieldId {
 
   /// Creates a new [GooglePrivacyDlpV2FieldId].
   /// [name] Name describing the field.
-  GooglePrivacyDlpV2FieldId({
-    this.name,
-  });
+  GooglePrivacyDlpV2FieldId({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory GooglePrivacyDlpV2FieldId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldId(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

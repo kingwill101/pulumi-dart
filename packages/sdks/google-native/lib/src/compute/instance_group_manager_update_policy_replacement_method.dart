@@ -3,16 +3,20 @@ enum InstanceGroupManagerUpdatePolicyReplacementMethod {
   recreate("RECREATE"),
   substitute("SUBSTITUTE");
 
-  const InstanceGroupManagerUpdatePolicyReplacementMethod(this.value);
-  final String value;
+  const InstanceGroupManagerUpdatePolicyReplacementMethod(this.wireValue);
+  final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyReplacementMethod fromValue(String value) {
-    for (final item in InstanceGroupManagerUpdatePolicyReplacementMethod.values) {
-      if (item.value == value) {
+  static InstanceGroupManagerUpdatePolicyReplacementMethod fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupManagerUpdatePolicyReplacementMethod.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyReplacementMethod value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyReplacementMethod value: $value',
+    );
   }
 }
-

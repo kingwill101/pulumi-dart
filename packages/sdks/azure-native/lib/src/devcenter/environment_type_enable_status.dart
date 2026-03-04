@@ -3,16 +3,15 @@ enum EnvironmentTypeEnableStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const EnvironmentTypeEnableStatus(this.value);
-  final String value;
+  const EnvironmentTypeEnableStatus(this.wireValue);
+  final String wireValue;
 
   static EnvironmentTypeEnableStatus fromValue(String value) {
     for (final item in EnvironmentTypeEnableStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentTypeEnableStatus value: $value');
   }
 }
-

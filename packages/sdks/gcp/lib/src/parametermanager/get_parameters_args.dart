@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParametersArgs {
   /// Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
   final pulumi.Input<String>? filter;
+
   /// The ID of the project.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetParametersArgs].
   /// [filter] Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
   /// [project] The ID of the project.
-  GetParametersArgs({
-    this.filter,
-    this.project,
-  });
+  GetParametersArgs({this.filter, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-      'project': ?project,
-    };
+    return <String, dynamic>{'filter': ?filter, 'project': ?project};
   }
 
   factory GetParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetParametersArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

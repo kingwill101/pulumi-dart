@@ -15,23 +15,42 @@ class ProviderArgs {
   /// Creates a new [ProviderArgs].
   /// [host] The build daemon's address.
   /// [registries] Optional.
-  ProviderArgs({
-    this.host,
-    this.registries,
-  });
+  ProviderArgs({this.host, this.registries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'registries': ?pulumi.Input.mapOptionalInputValue<List<Registry>, List<Map<String, dynamic>>>(registries, (value) => pulumi.Input.encodeList<Registry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'registries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Registry>,
+            List<Map<String, dynamic>>
+          >(
+            registries,
+            (value) => pulumi.Input.encodeList<Registry, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<Registry>(map['registries']!, (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registries: (() {
+        final guardedValue = map['registries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Registry>(
+            guardedValue,
+            (value) => Registry.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

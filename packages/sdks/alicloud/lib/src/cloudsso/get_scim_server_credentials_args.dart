@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScimServerCredentialsArgs {
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
+
   /// A list of SCIM Server Credential IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
   final pulumi.Input<String>? status;
 
@@ -39,11 +42,22 @@ class GetScimServerCredentialsArgs {
 
   factory GetScimServerCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetScimServerCredentialsArgs(
-      directoryId: (map['directoryId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

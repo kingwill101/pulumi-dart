@@ -44,7 +44,10 @@ class GetVaultsResult {
       'outputFile': ?outputFile,
       'status': ?status,
       'vaultType': ?vaultType,
-      'vaults': pulumi.Input.encodeList<GetVaultsVault, Map<String, dynamic>>(vaults, (value) => value.toMap()),
+      'vaults': pulumi.Input.encodeList<GetVaultsVault, Map<String, dynamic>>(
+        vaults,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -52,13 +55,32 @@ class GetVaultsResult {
     return GetVaultsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      vaultType: map['vaultType'] == null ? null : map['vaultType']! as String,
-      vaults: pulumi.Input.decodeList<GetVaultsVault>(map['vaults'], (value) => GetVaultsVault.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vaultType: (() {
+        final guardedValue = map['vaultType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vaults: pulumi.Input.decodeList<GetVaultsVault>(
+        map['vaults']!,
+        (value) =>
+            GetVaultsVault.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

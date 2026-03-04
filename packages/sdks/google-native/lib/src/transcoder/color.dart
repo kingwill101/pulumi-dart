@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Color {
   /// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
   final pulumi.Input<double>? brightness;
+
   /// Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
   final pulumi.Input<double>? contrast;
+
   /// Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
   final pulumi.Input<double>? saturation;
 
@@ -15,11 +17,7 @@ class Color {
   /// [brightness] Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
   /// [contrast] Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
   /// [saturation] Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
-  Color({
-    this.brightness,
-    this.contrast,
-    this.saturation,
-  });
+  Color({this.brightness, this.contrast, this.saturation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class Color {
 
   factory Color.fromMap(Map<String, dynamic> map) {
     return Color(
-      brightness: map['brightness'] == null ? null : (map['brightness']! as double).input(),
-      contrast: map['contrast'] == null ? null : (map['contrast']! as double).input(),
-      saturation: map['saturation'] == null ? null : (map['saturation']! as double).input(),
+      brightness: (() {
+        final guardedValue = map['brightness'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      contrast: (() {
+        final guardedValue = map['contrast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      saturation: (() {
+        final guardedValue = map['saturation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

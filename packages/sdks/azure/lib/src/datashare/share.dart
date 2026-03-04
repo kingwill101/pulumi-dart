@@ -260,7 +260,7 @@ import 'share_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -275,14 +275,19 @@ import 'share_state.dart';
 class Share extends pulumi.CustomResource {
   /// The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.
   late final pulumi.Output<String> accountId;
+
   /// The Data Share's description.
   late final pulumi.Output<String?> description;
+
   /// The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
   late final pulumi.Output<String> kind;
+
   /// The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   late final pulumi.Output<String> name;
+
   /// A `snapshot_schedule` block as defined below.
   late final pulumi.Output<ShareSnapshotSchedule?> snapshotSchedule;
+
   /// The terms of the Data Share.
   late final pulumi.Output<String?> terms;
 
@@ -290,30 +295,25 @@ class Share extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_datashare_share_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(
-    String name, {
-    ShareArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:datashare/share:Share',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.kind = registerOutput<String>('kind');
+  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:datashare/share:Share',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.snapshotSchedule = registerOutput<ShareSnapshotSchedule?>('snapshotSchedule');
-    this.terms = registerOutput<String?>('terms');
+    snapshotSchedule = registerOutput<ShareSnapshotSchedule?>(
+      'snapshotSchedule',
+    );
+    terms = registerOutput<String?>('terms');
   }
 
   /// Gets an existing [Share] resource's state with the given [name] and [id].
-  static Share get(
-    String name,
-    pulumi.Input<String> id, {
-    ShareState? state,
-  }) {
+  static Share get(String name, pulumi.Input<String> id, {ShareState? state}) {
     return Share._get(
       name,
       state: state?.toMap(),
@@ -326,16 +326,18 @@ class Share extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datashare/share:Share',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.kind = registerOutput<String>('kind');
+         'azure:datashare/share:Share',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.snapshotSchedule = registerOutput<ShareSnapshotSchedule?>('snapshotSchedule');
-    this.terms = registerOutput<String?>('terms');
+    snapshotSchedule = registerOutput<ShareSnapshotSchedule?>(
+      'snapshotSchedule',
+    );
+    terms = registerOutput<String?>('terms');
   }
 }

@@ -14,29 +14,37 @@ class PluginArgs {
   /// The configuration of actions supported by the plugin.
   /// Structure is documented below.
   final pulumi.Input<List<PluginActionsConfig>>? actionsConfigs;
+
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
   final pulumi.Input<PluginConfigTemplate>? configTemplate;
+
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
   final pulumi.Input<String>? description;
+
   /// The display name of the plugin. Max length is 50 characters (Unicode code
   /// points).
   final pulumi.Input<String> displayName;
+
   /// Documentation details.
   /// Structure is documented below.
   final pulumi.Input<PluginDocumentation>? documentation;
+
   /// The information related to the service implemented by the plugin
   /// developer, used to invoke the plugin's functionality.
   /// Structure is documented below.
   final pulumi.Input<PluginHostingService>? hostingService;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// Possible values:
   /// PLUGIN_CATEGORY_UNSPECIFIED
   /// API_GATEWAY
   /// API_PRODUCER
   final pulumi.Input<String>? pluginCategory;
+
   /// The ID to use for the Plugin resource, which will become the final
   /// component of the Plugin's resource name. This field is optional.
   /// * If provided, the same will be used. The service will throw an error if
@@ -49,6 +57,7 @@ class PluginArgs {
   /// its length is limited to 1000 characters and valid characters are
   /// /a-z[0-9]-_/.
   final pulumi.Input<String> pluginId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -79,12 +88,35 @@ class PluginArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionsConfigs': ?pulumi.Input.mapOptionalInputValue<List<PluginActionsConfig>, List<Map<String, dynamic>>>(actionsConfigs, (value) => pulumi.Input.encodeList<PluginActionsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'configTemplate': ?pulumi.Input.mapOptionalInputValue<PluginConfigTemplate, Map<String, dynamic>>(configTemplate, (value) => value.toMap()),
+      'actionsConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PluginActionsConfig>,
+            List<Map<String, dynamic>>
+          >(
+            actionsConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PluginActionsConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'configTemplate':
+          ?pulumi.Input.mapOptionalInputValue<
+            PluginConfigTemplate,
+            Map<String, dynamic>
+          >(configTemplate, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
-      'documentation': ?pulumi.Input.mapOptionalInputValue<PluginDocumentation, Map<String, dynamic>>(documentation, (value) => value.toMap()),
-      'hostingService': ?pulumi.Input.mapOptionalInputValue<PluginHostingService, Map<String, dynamic>>(hostingService, (value) => value.toMap()),
+      'documentation':
+          ?pulumi.Input.mapOptionalInputValue<
+            PluginDocumentation,
+            Map<String, dynamic>
+          >(documentation, (value) => value.toMap()),
+      'hostingService':
+          ?pulumi.Input.mapOptionalInputValue<
+            PluginHostingService,
+            Map<String, dynamic>
+          >(hostingService, (value) => value.toMap()),
       'location': location,
       'pluginCategory': ?pluginCategory,
       'pluginId': pluginId,
@@ -94,17 +126,63 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs']!, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation']! as Map).cast<String, dynamic>())).input(),
-      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService']! as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory']! as String).input(),
-      pluginId: (map['pluginId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      actionsConfigs: (() {
+        final guardedValue = map['actionsConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PluginActionsConfig>(
+            guardedValue,
+            (value) => PluginActionsConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      configTemplate: (() {
+        final guardedValue = map['configTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PluginConfigTemplate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      documentation: (() {
+        final guardedValue = map['documentation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PluginDocumentation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hostingService: (() {
+        final guardedValue = map['hostingService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PluginHostingService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      pluginCategory: (() {
+        final guardedValue = map['pluginCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginId: pulumi.Input.fromValue(map['pluginId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

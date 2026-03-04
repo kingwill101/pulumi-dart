@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listEndpointIngressGatewayCredentials.
 class ListEndpointIngressGatewayCredentialsResult {
   /// Access key for hybrid connection.
   final String accessKey;
+
   /// The expiration of access key in unix time.
   final double? expiresOn;
+
   /// The ingress hostname.
   final String hostname;
+
   /// Azure Relay hybrid connection name for the resource.
   final String hybridConnectionName;
+
   /// The namespace name.
   final String namespaceName;
+
   /// The suffix domain name of relay namespace.
   final String namespaceNameSuffix;
+
   /// The arc ingress gateway server app id.
   final String serverId;
+
   /// The token to access the enabled service.
   final String? serviceConfigurationToken;
+
   /// The target resource home tenant id.
   final String tenantId;
 
@@ -58,18 +65,27 @@ class ListEndpointIngressGatewayCredentialsResult {
     };
   }
 
-  factory ListEndpointIngressGatewayCredentialsResult.fromMap(Map<String, dynamic> map) {
+  factory ListEndpointIngressGatewayCredentialsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListEndpointIngressGatewayCredentialsResult(
       accessKey: map['accessKey'] as String,
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as double,
+      expiresOn: (() {
+        final guardedValue = map['expiresOn'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
       hostname: map['hostname'] as String,
       hybridConnectionName: map['hybridConnectionName'] as String,
       namespaceName: map['namespaceName'] as String,
       namespaceNameSuffix: map['namespaceNameSuffix'] as String,
       serverId: map['serverId'] as String,
-      serviceConfigurationToken: map['serviceConfigurationToken'] == null ? null : map['serviceConfigurationToken']! as String,
+      serviceConfigurationToken: (() {
+        final guardedValue = map['serviceConfigurationToken'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tenantId: map['tenantId'] as String,
     );
   }
 }
-

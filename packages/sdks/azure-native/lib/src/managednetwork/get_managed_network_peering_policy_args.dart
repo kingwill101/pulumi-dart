@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedNetworkPeeringPolicyArgs {
   /// The name of the Managed Network.
   final pulumi.Input<String> managedNetworkName;
+
   /// The name of the Managed Network Peering Policy.
   final pulumi.Input<String> managedNetworkPeeringPolicyName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetManagedNetworkPeeringPolicyArgs {
 
   factory GetManagedNetworkPeeringPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedNetworkPeeringPolicyArgs(
-      managedNetworkName: (map['managedNetworkName'] as String).input(),
-      managedNetworkPeeringPolicyName: (map['managedNetworkPeeringPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      managedNetworkName: pulumi.Input.fromValue(
+        map['managedNetworkName'] as String,
+      ),
+      managedNetworkPeeringPolicyName: pulumi.Input.fromValue(
+        map['managedNetworkPeeringPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

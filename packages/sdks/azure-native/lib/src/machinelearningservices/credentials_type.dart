@@ -6,16 +6,15 @@ enum CredentialsType {
   valueSas("Sas"),
   valueServicePrincipal("ServicePrincipal");
 
-  const CredentialsType(this.value);
-  final String value;
+  const CredentialsType(this.wireValue);
+  final String wireValue;
 
   static CredentialsType fromValue(String value) {
     for (final item in CredentialsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CredentialsType value: $value');
   }
 }
-

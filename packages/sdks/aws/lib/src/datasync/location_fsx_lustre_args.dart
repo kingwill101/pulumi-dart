@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationFsxLustreArgs {
   /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
   final pulumi.Input<String> fsxFilesystemArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
   final pulumi.Input<List<String>> securityGroupArns;
+
   /// Subdirectory to perform actions as source or destination.
   final pulumi.Input<String>? subdirectory;
+
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,29 @@ class LocationFsxLustreArgs {
 
   factory LocationFsxLustreArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxLustreArgs(
-      fsxFilesystemArn: (map['fsxFilesystemArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      fsxFilesystemArn: pulumi.Input.fromValue(
+        map['fsxFilesystemArn'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupArns: pulumi.Input.fromValue(
+        (map['securityGroupArns'] as List).cast<String>(),
+      ),
+      subdirectory: (() {
+        final guardedValue = map['subdirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

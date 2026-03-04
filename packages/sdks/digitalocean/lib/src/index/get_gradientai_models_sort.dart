@@ -9,23 +9,20 @@ class GetGradientaiModelsSort {
   /// Creates a new [GetGradientaiModelsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiModelsSort({
-    this.direction,
-    required this.key,
-  });
+  GetGradientaiModelsSort({this.direction, required this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'direction': ?direction,
-      'key': key,
-    };
+    return <String, dynamic>{'direction': ?direction, 'key': key};
   }
 
   factory GetGradientaiModelsSort.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsSort(
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      key: (map['key'] as String).input(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

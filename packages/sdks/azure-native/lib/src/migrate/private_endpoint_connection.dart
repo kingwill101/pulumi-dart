@@ -177,12 +177,17 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
+
   /// Name of the private endpoint endpoint connection.
   late final pulumi.Output<String> name;
+
   /// Properties of the private endpoint endpoint connection.
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
+  properties;
+
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
   late final pulumi.Output<String> type;
 
@@ -195,15 +200,17 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
+         'azure-native:migrate:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

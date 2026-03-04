@@ -171,22 +171,31 @@ import 'system_data_response.dart';
 class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the status of the VolumeQuotaRule at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Size of quota
   late final pulumi.Output<double?> quotaSizeInKiBs;
-  /// UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>
+
+  /// UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running &lt;wmic useraccount where name='user-name' get sid&gt;
   late final pulumi.Output<String?> quotaTarget;
+
   /// Type of quota
   late final pulumi.Output<String?> quotaType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -199,20 +208,20 @@ class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     CapacityPoolVolumeQuotaRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPoolVolumeQuotaRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:netapp:CapacityPoolVolumeQuotaRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.quotaSizeInKiBs = registerOutput<double?>('quotaSizeInKiBs');
-    this.quotaTarget = registerOutput<String?>('quotaTarget');
-    this.quotaType = registerOutput<String?>('quotaType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    quotaSizeInKiBs = registerOutput<double?>('quotaSizeInKiBs');
+    quotaTarget = registerOutput<String?>('quotaTarget');
+    quotaType = registerOutput<String?>('quotaType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

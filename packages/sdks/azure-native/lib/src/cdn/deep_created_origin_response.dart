@@ -6,28 +6,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeepCreatedOriginResponse {
   /// Origin is enabled for load balancing or not. By default, origin is always enabled.
   final pulumi.Input<bool>? enabled;
+
   /// The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
   final pulumi.Input<String> hostName;
+
   /// The value of the HTTP port. Must be between 1 and 65535.
   final pulumi.Input<int>? httpPort;
+
   /// The value of the HTTPS port. Must be between 1 and 65535.
   final pulumi.Input<int>? httpsPort;
+
   /// Origin name which must be unique within the endpoint.
   final pulumi.Input<String> name;
+
   /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
   final pulumi.Input<String>? originHostHeader;
+
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5.
   final pulumi.Input<int>? priority;
+
   /// The approval status for the connection to the Private Link
   final pulumi.Input<String> privateEndpointStatus;
+
   /// The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'
   final pulumi.Input<String>? privateLinkAlias;
+
   /// A custom message to be included in the approval request to connect to the Private Link.
   final pulumi.Input<String>? privateLinkApprovalMessage;
+
   /// The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
   final pulumi.Input<String>? privateLinkLocation;
+
   /// The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   final pulumi.Input<String>? privateLinkResourceId;
+
   /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
   final pulumi.Input<int>? weight;
 
@@ -81,20 +93,61 @@ class DeepCreatedOriginResponse {
 
   factory DeepCreatedOriginResponse.fromMap(Map<String, dynamic> map) {
     return DeepCreatedOriginResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      hostName: (map['hostName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
-      name: (map['name'] as String).input(),
-      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader']! as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      privateEndpointStatus: (map['privateEndpointStatus'] as String).input(),
-      privateLinkAlias: map['privateLinkAlias'] == null ? null : (map['privateLinkAlias']! as String).input(),
-      privateLinkApprovalMessage: map['privateLinkApprovalMessage'] == null ? null : (map['privateLinkApprovalMessage']! as String).input(),
-      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation']! as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      httpPort: (() {
+        final guardedValue = map['httpPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpsPort: (() {
+        final guardedValue = map['httpsPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      originHostHeader: (() {
+        final guardedValue = map['originHostHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      privateEndpointStatus: pulumi.Input.fromValue(
+        map['privateEndpointStatus'] as String,
+      ),
+      privateLinkAlias: (() {
+        final guardedValue = map['privateLinkAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkApprovalMessage: (() {
+        final guardedValue = map['privateLinkApprovalMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkLocation: (() {
+        final guardedValue = map['privateLinkLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkResourceId: (() {
+        final guardedValue = map['privateLinkResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

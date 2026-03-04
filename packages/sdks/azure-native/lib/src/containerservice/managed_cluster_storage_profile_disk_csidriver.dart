@@ -9,20 +9,21 @@ class ManagedClusterStorageProfileDiskCSIDriver {
 
   /// Creates a new [ManagedClusterStorageProfileDiskCSIDriver].
   /// [enabled] Whether to enable AzureDisk CSI Driver. The default value is true.
-  ManagedClusterStorageProfileDiskCSIDriver({
-    this.enabled,
-  });
+  ManagedClusterStorageProfileDiskCSIDriver({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterStorageProfileDiskCSIDriver.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterStorageProfileDiskCSIDriver.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterStorageProfileDiskCSIDriver(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class IapTestServiceAccountInfoResponse {
 
   /// Creates a new [IapTestServiceAccountInfoResponse].
   /// [targetAudienceClientId] Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
-  IapTestServiceAccountInfoResponse({
-    required this.targetAudienceClientId,
-  });
+  IapTestServiceAccountInfoResponse({required this.targetAudienceClientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetAudienceClientId': targetAudienceClientId,
-    };
+    return <String, dynamic>{'targetAudienceClientId': targetAudienceClientId};
   }
 
   factory IapTestServiceAccountInfoResponse.fromMap(Map<String, dynamic> map) {
     return IapTestServiceAccountInfoResponse(
-      targetAudienceClientId: (map['targetAudienceClientId'] as String).input(),
+      targetAudienceClientId: pulumi.Input.fromValue(
+        map['targetAudienceClientId'] as String,
+      ),
     );
   }
 }
-

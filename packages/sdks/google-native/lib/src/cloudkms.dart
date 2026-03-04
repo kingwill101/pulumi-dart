@@ -1,5 +1,3 @@
-library module_cloudkms;
-
 export 'cloudkms/audit_config.dart';
 export 'cloudkms/audit_config_response.dart';
 export 'cloudkms/audit_log_config.dart';

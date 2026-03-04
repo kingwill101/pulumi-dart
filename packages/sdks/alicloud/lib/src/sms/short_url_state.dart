@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShortUrlState {
   /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
   final pulumi.Input<int>? effectiveDays;
+
   /// The name of the resource.
   final pulumi.Input<String>? shortUrlName;
+
   /// The original link address.
   final pulumi.Input<String>? sourceUrl;
+
   /// Short chain status.
   final pulumi.Input<String>? status;
 
@@ -36,11 +39,26 @@ class ShortUrlState {
 
   factory ShortUrlState.fromMap(Map<String, dynamic> map) {
     return ShortUrlState(
-      effectiveDays: map['effectiveDays'] == null ? null : (map['effectiveDays']! as int).input(),
-      shortUrlName: map['shortUrlName'] == null ? null : (map['shortUrlName']! as String).input(),
-      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      effectiveDays: (() {
+        final guardedValue = map['effectiveDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      shortUrlName: (() {
+        final guardedValue = map['shortUrlName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUrl: (() {
+        final guardedValue = map['sourceUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

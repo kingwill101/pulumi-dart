@@ -3,16 +3,17 @@ enum InventoryConfigurationIncludedObjectVersions {
   all("All"),
   current("Current");
 
-  const InventoryConfigurationIncludedObjectVersions(this.value);
-  final String value;
+  const InventoryConfigurationIncludedObjectVersions(this.wireValue);
+  final String wireValue;
 
   static InventoryConfigurationIncludedObjectVersions fromValue(String value) {
     for (final item in InventoryConfigurationIncludedObjectVersions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InventoryConfigurationIncludedObjectVersions value: $value');
+    throw ArgumentError(
+      'Unknown InventoryConfigurationIncludedObjectVersions value: $value',
+    );
   }
 }
-

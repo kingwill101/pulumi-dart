@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScgRouteResponse {
   /// Filters of the route
   final pulumi.Input<List<String>>? filters;
+
   /// Id of the route
   final pulumi.Input<String> id;
+
   /// Order of the route
   final pulumi.Input<double>? order;
+
   /// Predicates of the route
   final pulumi.Input<List<String>>? predicates;
+
   /// Uri of the route
   final pulumi.Input<String> uri;
 
@@ -41,12 +45,23 @@ class ScgRouteResponse {
 
   factory ScgRouteResponse.fromMap(Map<String, dynamic> map) {
     return ScgRouteResponse(
-      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      order: map['order'] == null ? null : (map['order']! as double).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
-      uri: (map['uri'] as String).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      predicates: (() {
+        final guardedValue = map['predicates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationProviderAuthorization {
   /// The managed by role definition ID for the application.
   final pulumi.Input<String>? managedByRoleDefinitionId;
+
   /// The role definition ID for the application.
   final pulumi.Input<String>? roleDefinitionId;
 
@@ -25,9 +26,16 @@ class ApplicationProviderAuthorization {
 
   factory ApplicationProviderAuthorization.fromMap(Map<String, dynamic> map) {
     return ApplicationProviderAuthorization(
-      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId']! as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      managedByRoleDefinitionId: (() {
+        final guardedValue = map['managedByRoleDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleDefinitionId: (() {
+        final guardedValue = map['roleDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,10 +10,13 @@ import 'saml_idp_config.dart';
 class InboundSamlSsoProfileArgs {
   /// Immutable. The customer. For example: `customers/C0123abc`.
   final pulumi.Input<String>? customer;
+
   /// Human-readable name of the SAML SSO profile.
   final pulumi.Input<String>? displayName;
+
   /// SAML identity provider configuration.
   final pulumi.Input<SamlIdpConfig>? idpConfig;
+
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   final pulumi.Input<Map<String, dynamic>>? spConfig;
 
@@ -33,18 +36,41 @@ class InboundSamlSsoProfileArgs {
     return <String, dynamic>{
       'customer': ?customer,
       'displayName': ?displayName,
-      'idpConfig': ?pulumi.Input.mapOptionalInputValue<SamlIdpConfig, Map<String, dynamic>>(idpConfig, (value) => value.toMap()),
+      'idpConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            SamlIdpConfig,
+            Map<String, dynamic>
+          >(idpConfig, (value) => value.toMap()),
       'spConfig': ?spConfig,
     };
   }
 
   factory InboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileArgs(
-      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
-      spConfig: map['spConfig'] == null ? null : ((map['spConfig']! as Map).cast<String, dynamic>()).input(),
+      customer: (() {
+        final guardedValue = map['customer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idpConfig: (() {
+        final guardedValue = map['idpConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SamlIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spConfig: (() {
+        final guardedValue = map['spConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

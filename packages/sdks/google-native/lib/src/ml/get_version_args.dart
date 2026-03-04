@@ -31,10 +31,13 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

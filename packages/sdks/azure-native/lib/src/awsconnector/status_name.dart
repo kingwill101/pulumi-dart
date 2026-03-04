@@ -2,16 +2,15 @@
 enum StatusName {
   reachability("reachability");
 
-  const StatusName(this.value);
-  final String value;
+  const StatusName(this.wireValue);
+  final String wireValue;
 
   static StatusName fromValue(String value) {
     for (final item in StatusName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StatusName value: $value');
   }
 }
-

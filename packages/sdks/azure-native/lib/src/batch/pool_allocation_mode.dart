@@ -3,16 +3,15 @@ enum PoolAllocationMode {
   batchService("BatchService"),
   userSubscription("UserSubscription");
 
-  const PoolAllocationMode(this.value);
-  final String value;
+  const PoolAllocationMode(this.wireValue);
+  final String wireValue;
 
   static PoolAllocationMode fromValue(String value) {
     for (final item in PoolAllocationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PoolAllocationMode value: $value');
   }
 }
-

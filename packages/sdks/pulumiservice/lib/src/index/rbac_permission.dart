@@ -7,16 +7,15 @@ enum RbacPermission {
   clone("environment:clone"),
   rotate("environment:rotate");
 
-  const RbacPermission(this.value);
-  final String value;
+  const RbacPermission(this.wireValue);
+  final String wireValue;
 
   static RbacPermission fromValue(String value) {
     for (final item in RbacPermission.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RbacPermission value: $value');
   }
 }
-

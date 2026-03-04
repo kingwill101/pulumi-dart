@@ -12,8 +12,10 @@ class ProducerImageShareGroupArgs {
   ///
   /// * `images` - (Optional) A list of Images to include in the Image Share Group.
   final pulumi.Input<String>? description;
+
   /// The images to be shared using this Image Share Group.
   final pulumi.Input<List<ProducerImageShareGroupImage>>? images;
+
   /// The label of the Image Share Group.
   final pulumi.Input<String> label;
 
@@ -30,17 +32,42 @@ class ProducerImageShareGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'images': ?pulumi.Input.mapOptionalInputValue<List<ProducerImageShareGroupImage>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<ProducerImageShareGroupImage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'images':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProducerImageShareGroupImage>,
+            List<Map<String, dynamic>>
+          >(
+            images,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProducerImageShareGroupImage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'label': label,
     };
   }
 
   factory ProducerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images']!, (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: (map['label'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      images: (() {
+        final guardedValue = map['images'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProducerImageShareGroupImage>(
+            guardedValue,
+            (value) => ProducerImageShareGroupImage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
     );
   }
 }
-

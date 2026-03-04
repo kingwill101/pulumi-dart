@@ -5,17 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayRedirectConfiguration {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// Whether the path is included in the redirected URL.
   final pulumi.Input<bool> includePath;
+
   /// Whether to include the query string in the redirected URL.
   final pulumi.Input<bool> includeQueryString;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
+
   /// The type of redirect.
   final pulumi.Input<String> redirectType;
   final pulumi.Input<String> targetListenerId;
+
   /// The name of the listener to redirect to.
   final pulumi.Input<String> targetListenerName;
+
   /// The URL to redirect the request to.
   final pulumi.Input<String> targetUrl;
 
@@ -52,17 +58,24 @@ class GetApplicationGatewayRedirectConfiguration {
     };
   }
 
-  factory GetApplicationGatewayRedirectConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayRedirectConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayRedirectConfiguration(
-      id: (map['id'] as String).input(),
-      includePath: (map['includePath'] as bool).input(),
-      includeQueryString: (map['includeQueryString'] as bool).input(),
-      name: (map['name'] as String).input(),
-      redirectType: (map['redirectType'] as String).input(),
-      targetListenerId: (map['targetListenerId'] as String).input(),
-      targetListenerName: (map['targetListenerName'] as String).input(),
-      targetUrl: (map['targetUrl'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      includePath: pulumi.Input.fromValue(map['includePath'] as bool),
+      includeQueryString: pulumi.Input.fromValue(
+        map['includeQueryString'] as bool,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      redirectType: pulumi.Input.fromValue(map['redirectType'] as String),
+      targetListenerId: pulumi.Input.fromValue(
+        map['targetListenerId'] as String,
+      ),
+      targetListenerName: pulumi.Input.fromValue(
+        map['targetListenerName'] as String,
+      ),
+      targetUrl: pulumi.Input.fromValue(map['targetUrl'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupInsightsConfiguration {
   /// Specifies whether insights are enabled.
   final pulumi.Input<bool> insightsEnabled;
+
   /// Specifies whether insight notifications are enabled.
   final pulumi.Input<bool>? notificationsEnabled;
 
@@ -25,9 +26,12 @@ class GroupInsightsConfiguration {
 
   factory GroupInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupInsightsConfiguration(
-      insightsEnabled: (map['insightsEnabled'] as bool).input(),
-      notificationsEnabled: map['notificationsEnabled'] == null ? null : ((map['notificationsEnabled'] as bool).input()).input(),
+      insightsEnabled: pulumi.Input.fromValue(map['insightsEnabled'] as bool),
+      notificationsEnabled: (() {
+        final guardedValue = map['notificationsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

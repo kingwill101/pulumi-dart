@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationPolicyArgs {
   /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   final pulumi.Input<String> constraint;
+
   /// The project ID.
   final pulumi.Input<String> project;
 
   /// Creates a new [GetOrganizationPolicyArgs].
   /// [constraint] (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   /// [project] The project ID.
-  GetOrganizationPolicyArgs({
-    required this.constraint,
-    required this.project,
-  });
+  GetOrganizationPolicyArgs({required this.constraint, required this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'constraint': constraint,
-      'project': project,
-    };
+    return <String, dynamic>{'constraint': constraint, 'project': project};
   }
 
   factory GetOrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyArgs(
-      constraint: (map['constraint'] as String).input(),
-      project: (map['project'] as String).input(),
+      constraint: pulumi.Input.fromValue(map['constraint'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

@@ -33,13 +33,20 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs(
-      browserDlpRuleId: (map['browserDlpRuleId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      browserDlpRuleId: pulumi.Input.fromValue(
+        map['browserDlpRuleId'] as String,
+      ),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );
   }
 }
-

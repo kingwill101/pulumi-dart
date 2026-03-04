@@ -5,25 +5,32 @@ import 'google_type_decimal_response.dart';
 
 /// An adjustment that applies a flat markup or markdown to an entire bill.
 class GoogleCloudChannelV1PercentageAdjustmentResponse {
-  /// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+  /// The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
   final pulumi.Input<GoogleTypeDecimalResponse> percentage;
 
   /// Creates a new [GoogleCloudChannelV1PercentageAdjustmentResponse].
-  /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
-  GoogleCloudChannelV1PercentageAdjustmentResponse({
-    required this.percentage,
-  });
+  /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
+  GoogleCloudChannelV1PercentageAdjustmentResponse({required this.percentage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'percentage': pulumi.Input.mapInputValue<GoogleTypeDecimalResponse, Map<String, dynamic>>(percentage, (value) => value.toMap()),
+      'percentage':
+          pulumi.Input.mapInputValue<
+            GoogleTypeDecimalResponse,
+            Map<String, dynamic>
+          >(percentage, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1PercentageAdjustmentResponse(
-      percentage: (GoogleTypeDecimalResponse.fromMap((map['percentage'] as Map).cast<String, dynamic>())).input(),
+      percentage: pulumi.Input.fromValue(
+        GoogleTypeDecimalResponse.fromMap(
+          (map['percentage']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

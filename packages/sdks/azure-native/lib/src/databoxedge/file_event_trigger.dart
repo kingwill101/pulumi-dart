@@ -185,19 +185,26 @@ import 'system_data_response.dart';
 class FileEventTrigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
   late final pulumi.Output<String?> customContextTag;
+
   /// Trigger Kind.
   /// Expected value is 'FileEvent'.
   late final pulumi.Output<String> kind;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Role sink info.
   late final pulumi.Output<RoleSinkInfoResponse> sinkInfo;
+
   /// File event source details.
   late final pulumi.Output<FileSourceInfoResponse> sourceInfo;
+
   /// Metadata pertaining to creation and last modification of Trigger
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -210,18 +217,18 @@ class FileEventTrigger extends pulumi.CustomResource {
     FileEventTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:FileEventTrigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customContextTag = registerOutput<String?>('customContextTag');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:databoxedge:FileEventTrigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customContextTag = registerOutput<String?>('customContextTag');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.sinkInfo = registerOutput<RoleSinkInfoResponse>('sinkInfo');
-    this.sourceInfo = registerOutput<FileSourceInfoResponse>('sourceInfo');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    sinkInfo = registerOutput<RoleSinkInfoResponse>('sinkInfo');
+    sourceInfo = registerOutput<FileSourceInfoResponse>('sourceInfo');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

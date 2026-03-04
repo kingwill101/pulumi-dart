@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetGrpcProxyState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Fingerprint of this resource. A hash of the contents stored in
   /// this object. This field is used in optimistic locking. This field
   /// will be ignored when inserting a TargetGrpcProxy. An up-to-date
@@ -16,6 +18,7 @@ class TargetGrpcProxyState {
   /// 412 conditionNotMet. To see the latest fingerprint, make a get()
   /// request to retrieve the TargetGrpcProxy. A base64-encoded string.
   final pulumi.Input<String>? fingerprint;
+
   /// Name of the resource. Provided by the client when the resource
   /// is created. The name must be 1-63 characters long, and comply
   /// with RFC1035. Specifically, the name must be 1-63 characters long
@@ -24,17 +27,22 @@ class TargetGrpcProxyState {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The URI of the created resource.
   final pulumi.Input<String>? selfLink;
+
   /// Server-defined URL with id for the resource.
   final pulumi.Input<String>? selfLinkWithId;
+
   /// URL to the UrlMap resource that defines the mapping from URL to
   /// the BackendService. The protocol field in the BackendService
   /// must be set to GRPC.
   final pulumi.Input<String>? urlMap;
+
   /// If true, indicates that the BackendServices referenced by
   /// the urlMap may be accessed by gRPC applications without using
   /// a sidecar proxy. This will enable configuration checks on urlMap
@@ -85,16 +93,51 @@ class TargetGrpcProxyState {
 
   factory TargetGrpcProxyState.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
-      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless']! as bool).input(),
+      creationTimestamp: (() {
+        final guardedValue = map['creationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLinkWithId: (() {
+        final guardedValue = map['selfLinkWithId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlMap: (() {
+        final guardedValue = map['urlMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validateForProxyless: (() {
+        final guardedValue = map['validateForProxyless'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPatchScheduleArgs {
   /// The name of the RedisPatchSchedule
   final pulumi.Input<String> default_;
+
   /// The name of the redis cache.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetPatchScheduleArgs {
 
   factory GetPatchScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchScheduleArgs(
-      default_: (map['default'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      default_: pulumi.Input.fromValue(map['default'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

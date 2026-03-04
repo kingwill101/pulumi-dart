@@ -4,16 +4,15 @@ enum IngressRuleAction {
   allow("ALLOW"),
   deny("DENY");
 
-  const IngressRuleAction(this.value);
-  final String value;
+  const IngressRuleAction(this.wireValue);
+  final String wireValue;
 
   static IngressRuleAction fromValue(String value) {
     for (final item in IngressRuleAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IngressRuleAction value: $value');
   }
 }
-

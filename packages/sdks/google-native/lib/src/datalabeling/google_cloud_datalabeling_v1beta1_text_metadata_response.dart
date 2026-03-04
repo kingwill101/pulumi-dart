@@ -14,15 +14,14 @@ class GoogleCloudDatalabelingV1beta1TextMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'languageCode': languageCode,
-    };
+    return <String, dynamic>{'languageCode': languageCode};
   }
 
-  factory GoogleCloudDatalabelingV1beta1TextMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1TextMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1TextMetadataResponse(
-      languageCode: (map['languageCode'] as String).input(),
+      languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
     );
   }
 }
-

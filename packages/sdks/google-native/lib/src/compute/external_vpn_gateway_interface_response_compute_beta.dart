@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalVpnGatewayInterfaceResponseComputeBeta {
   /// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
   final pulumi.Input<String> ipAddress;
+
   /// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
   final pulumi.Input<String> ipv6Address;
 
@@ -24,11 +25,12 @@ class ExternalVpnGatewayInterfaceResponseComputeBeta {
     };
   }
 
-  factory ExternalVpnGatewayInterfaceResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ExternalVpnGatewayInterfaceResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExternalVpnGatewayInterfaceResponseComputeBeta(
-      ipAddress: (map['ipAddress'] as String).input(),
-      ipv6Address: (map['ipv6Address'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
     );
   }
 }
-

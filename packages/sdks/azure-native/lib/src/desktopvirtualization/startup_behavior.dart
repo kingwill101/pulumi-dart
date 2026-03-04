@@ -4,16 +4,15 @@ enum StartupBehavior {
   valueWithAssignedUser("WithAssignedUser"),
   valueAll("All");
 
-  const StartupBehavior(this.value);
-  final String value;
+  const StartupBehavior(this.wireValue);
+  final String wireValue;
 
   static StartupBehavior fromValue(String value) {
     for (final item in StartupBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StartupBehavior value: $value');
   }
 }
-

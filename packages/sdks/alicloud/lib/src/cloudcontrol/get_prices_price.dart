@@ -7,14 +7,19 @@ import 'get_prices_price_promotion_detail.dart';
 class GetPricesPrice {
   /// Currency. Value range: CNY: RMB. USD: USD. JPY: Japanese yen.
   final pulumi.Input<String> currency;
+
   /// Discount
   final pulumi.Input<double> discountPrice;
+
   /// Pricing Module Price Details
   final pulumi.Input<List<GetPricesPriceModuleDetail>> moduleDetails;
+
   /// Original Price
   final pulumi.Input<double> originalPrice;
+
   /// Offer Details
   final pulumi.Input<List<GetPricesPricePromotionDetail>> promotionDetails;
+
   /// Preferential price
   final pulumi.Input<double> tradePrice;
 
@@ -38,22 +43,57 @@ class GetPricesPrice {
     return <String, dynamic>{
       'currency': currency,
       'discountPrice': discountPrice,
-      'moduleDetails': pulumi.Input.mapInputValue<List<GetPricesPriceModuleDetail>, List<Map<String, dynamic>>>(moduleDetails, (value) => pulumi.Input.encodeList<GetPricesPriceModuleDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'moduleDetails':
+          pulumi.Input.mapInputValue<
+            List<GetPricesPriceModuleDetail>,
+            List<Map<String, dynamic>>
+          >(
+            moduleDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPricesPriceModuleDetail,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'originalPrice': originalPrice,
-      'promotionDetails': pulumi.Input.mapInputValue<List<GetPricesPricePromotionDetail>, List<Map<String, dynamic>>>(promotionDetails, (value) => pulumi.Input.encodeList<GetPricesPricePromotionDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'promotionDetails':
+          pulumi.Input.mapInputValue<
+            List<GetPricesPricePromotionDetail>,
+            List<Map<String, dynamic>>
+          >(
+            promotionDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPricesPricePromotionDetail,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tradePrice': tradePrice,
     };
   }
 
   factory GetPricesPrice.fromMap(Map<String, dynamic> map) {
     return GetPricesPrice(
-      currency: (map['currency'] as String).input(),
-      discountPrice: (map['discountPrice'] as double).input(),
-      moduleDetails: (pulumi.Input.decodeList<GetPricesPriceModuleDetail>(map['moduleDetails'], (value) => GetPricesPriceModuleDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originalPrice: (map['originalPrice'] as double).input(),
-      promotionDetails: (pulumi.Input.decodeList<GetPricesPricePromotionDetail>(map['promotionDetails'], (value) => GetPricesPricePromotionDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tradePrice: (map['tradePrice'] as double).input(),
+      currency: pulumi.Input.fromValue(map['currency'] as String),
+      discountPrice: pulumi.Input.fromValue(map['discountPrice'] as double),
+      moduleDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetPricesPriceModuleDetail>(
+          map['moduleDetails']!,
+          (value) => GetPricesPriceModuleDetail.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      originalPrice: pulumi.Input.fromValue(map['originalPrice'] as double),
+      promotionDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetPricesPricePromotionDetail>(
+          map['promotionDetails']!,
+          (value) => GetPricesPricePromotionDetail.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      tradePrice: pulumi.Input.fromValue(map['tradePrice'] as double),
     );
   }
 }
-

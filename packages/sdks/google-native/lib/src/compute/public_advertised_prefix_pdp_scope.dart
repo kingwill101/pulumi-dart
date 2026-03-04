@@ -4,16 +4,15 @@ enum PublicAdvertisedPrefixPdpScope {
   globalAndRegional("GLOBAL_AND_REGIONAL"),
   regional("REGIONAL");
 
-  const PublicAdvertisedPrefixPdpScope(this.value);
-  final String value;
+  const PublicAdvertisedPrefixPdpScope(this.wireValue);
+  final String wireValue;
 
   static PublicAdvertisedPrefixPdpScope fromValue(String value) {
     for (final item in PublicAdvertisedPrefixPdpScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicAdvertisedPrefixPdpScope value: $value');
   }
 }
-

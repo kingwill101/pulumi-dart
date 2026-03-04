@@ -13,40 +13,52 @@ import 'cluster_v2_shared_storage.dart';
 class ClusterV2Args {
   /// The cluster custom service component configuration. Only one component is supported. See `addons` below.
   final pulumi.Input<List<ClusterV2Addon>>? addons;
+
   /// Specifies whether to enable auto scale-out for the cluster. Valid values:
   ///
   /// - true
   /// - false
   final pulumi.Input<String>? clientVersion;
+
   /// The cluster type. Valid values:
   ///
   /// - Standard
   /// - Serverless
   final pulumi.Input<String>? clusterCategory;
+
   /// Security credentials for the cluster. See `cluster_credentials` below.
   final pulumi.Input<ClusterV2ClusterCredentials> clusterCredentials;
+
   /// The deployment mode of the cluster. Valid values:
   ///
   /// - Integrated
   /// - Hybrid
   /// - Custom
   final pulumi.Input<String>? clusterMode;
+
   /// The post-processing script of the cluster.
   final pulumi.Input<String>? clusterName;
+
   /// The ID of the virtual private cloud (VPC) in which the cluster resides.
   final pulumi.Input<String>? clusterVpcId;
+
   /// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
   /// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
   final pulumi.Input<String>? clusterVswitchId;
+
   /// The idle duration of the compute nodes allowed by the cluster.
   final pulumi.Input<bool>? deletionProtection;
+
   /// The configurations of the cluster management node. See `manager` below.
   final pulumi.Input<ClusterV2Manager>? manager;
+
   /// The ID of the resource group to which the cluster belongs.
   /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The security group ID.
   final pulumi.Input<String>? securityGroupId;
+
   /// List of cluster shared storage configurations. See `shared_storages` below.
   final pulumi.Input<List<ClusterV2SharedStorage>> sharedStorages;
 
@@ -82,38 +94,132 @@ class ClusterV2Args {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addons': ?pulumi.Input.mapOptionalInputValue<List<ClusterV2Addon>, List<Map<String, dynamic>>>(addons, (value) => pulumi.Input.encodeList<ClusterV2Addon, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'addons':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterV2Addon>,
+            List<Map<String, dynamic>>
+          >(
+            addons,
+            (value) =>
+                pulumi.Input.encodeList<ClusterV2Addon, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'clientVersion': ?clientVersion,
       'clusterCategory': ?clusterCategory,
-      'clusterCredentials': pulumi.Input.mapInputValue<ClusterV2ClusterCredentials, Map<String, dynamic>>(clusterCredentials, (value) => value.toMap()),
+      'clusterCredentials':
+          pulumi.Input.mapInputValue<
+            ClusterV2ClusterCredentials,
+            Map<String, dynamic>
+          >(clusterCredentials, (value) => value.toMap()),
       'clusterMode': ?clusterMode,
       'clusterName': ?clusterName,
       'clusterVpcId': ?clusterVpcId,
       'clusterVswitchId': ?clusterVswitchId,
       'deletionProtection': ?deletionProtection,
-      'manager': ?pulumi.Input.mapOptionalInputValue<ClusterV2Manager, Map<String, dynamic>>(manager, (value) => value.toMap()),
+      'manager':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterV2Manager,
+            Map<String, dynamic>
+          >(manager, (value) => value.toMap()),
       'resourceGroupId': ?resourceGroupId,
       'securityGroupId': ?securityGroupId,
-      'sharedStorages': pulumi.Input.mapInputValue<List<ClusterV2SharedStorage>, List<Map<String, dynamic>>>(sharedStorages, (value) => pulumi.Input.encodeList<ClusterV2SharedStorage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sharedStorages':
+          pulumi.Input.mapInputValue<
+            List<ClusterV2SharedStorage>,
+            List<Map<String, dynamic>>
+          >(
+            sharedStorages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterV2SharedStorage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ClusterV2Args.fromMap(Map<String, dynamic> map) {
     return ClusterV2Args(
-      addons: map['addons'] == null ? null : (pulumi.Input.decodeList<ClusterV2Addon>(map['addons']!, (value) => ClusterV2Addon.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
-      clusterCategory: map['clusterCategory'] == null ? null : (map['clusterCategory']! as String).input(),
-      clusterCredentials: (ClusterV2ClusterCredentials.fromMap((map['clusterCredentials'] as Map).cast<String, dynamic>())).input(),
-      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode']! as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      clusterVpcId: map['clusterVpcId'] == null ? null : (map['clusterVpcId']! as String).input(),
-      clusterVswitchId: map['clusterVswitchId'] == null ? null : (map['clusterVswitchId']! as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      manager: map['manager'] == null ? null : (ClusterV2Manager.fromMap((map['manager']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      sharedStorages: (pulumi.Input.decodeList<ClusterV2SharedStorage>(map['sharedStorages'], (value) => ClusterV2SharedStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addons: (() {
+        final guardedValue = map['addons'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterV2Addon>(
+            guardedValue,
+            (value) =>
+                ClusterV2Addon.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      clientVersion: (() {
+        final guardedValue = map['clientVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterCategory: (() {
+        final guardedValue = map['clusterCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterCredentials: pulumi.Input.fromValue(
+        ClusterV2ClusterCredentials.fromMap(
+          (map['clusterCredentials']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      clusterMode: (() {
+        final guardedValue = map['clusterMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterVpcId: (() {
+        final guardedValue = map['clusterVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterVswitchId: (() {
+        final guardedValue = map['clusterVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manager: (() {
+        final guardedValue = map['manager'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterV2Manager.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedStorages: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ClusterV2SharedStorage>(
+          map['sharedStorages']!,
+          (value) => ClusterV2SharedStorage.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

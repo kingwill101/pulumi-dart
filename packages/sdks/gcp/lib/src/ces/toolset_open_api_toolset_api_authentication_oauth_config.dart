@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// The client ID from the OAuth provider.
   final pulumi.Input<String> clientId;
+
   /// The name of the SecretManager secret version resource storing the
   /// client secret.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
@@ -12,12 +13,15 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String> clientSecretVersion;
+
   /// OAuth grant types.
   /// Possible values:
   /// CLIENT_CREDENTIAL
   final pulumi.Input<String> oauthGrantType;
+
   /// The OAuth scopes to grant.
   final pulumi.Input<List<String>>? scopes;
+
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final pulumi.Input<String> tokenEndpoint;
 
@@ -45,14 +49,21 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
     };
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolsetOpenApiToolsetApiAuthenticationOauthConfig(
-      clientId: (map['clientId'] as String).input(),
-      clientSecretVersion: (map['clientSecretVersion'] as String).input(),
-      oauthGrantType: (map['oauthGrantType'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecretVersion: pulumi.Input.fromValue(
+        map['clientSecretVersion'] as String,
+      ),
+      oauthGrantType: pulumi.Input.fromValue(map['oauthGrantType'] as String),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
     );
   }
 }
-

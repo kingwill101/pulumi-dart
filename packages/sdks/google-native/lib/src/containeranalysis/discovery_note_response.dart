@@ -9,20 +9,15 @@ class DiscoveryNoteResponse {
 
   /// Creates a new [DiscoveryNoteResponse].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryNoteResponse({
-    required this.analysisKind,
-  });
+  DiscoveryNoteResponse({required this.analysisKind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'analysisKind': analysisKind,
-    };
+    return <String, dynamic>{'analysisKind': analysisKind};
   }
 
   factory DiscoveryNoteResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryNoteResponse(
-      analysisKind: (map['analysisKind'] as String).input(),
+      analysisKind: pulumi.Input.fromValue(map['analysisKind'] as String),
     );
   }
 }
-

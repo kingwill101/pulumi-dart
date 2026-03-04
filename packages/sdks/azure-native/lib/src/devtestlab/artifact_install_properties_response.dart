@@ -7,16 +7,22 @@ import 'artifact_parameter_properties_response.dart';
 class ArtifactInstallPropertiesResponse {
   /// The artifact's identifier.
   final pulumi.Input<String>? artifactId;
+
   /// The artifact's title.
   final pulumi.Input<String>? artifactTitle;
+
   /// The status message from the deployment.
   final pulumi.Input<String>? deploymentStatusMessage;
+
   /// The time that the artifact starts to install on the virtual machine.
   final pulumi.Input<String>? installTime;
+
   /// The parameters of the artifact.
   final pulumi.Input<List<ArtifactParameterPropertiesResponse>>? parameters;
+
   /// The status of the artifact.
   final pulumi.Input<String>? status;
+
   /// The status message from the virtual machine extension.
   final pulumi.Input<String>? vmExtensionStatusMessage;
 
@@ -44,7 +50,18 @@ class ArtifactInstallPropertiesResponse {
       'artifactTitle': ?artifactTitle,
       'deploymentStatusMessage': ?deploymentStatusMessage,
       'installTime': ?installTime,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ArtifactParameterPropertiesResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ArtifactParameterPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ArtifactParameterPropertiesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ArtifactParameterPropertiesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': ?status,
       'vmExtensionStatusMessage': ?vmExtensionStatusMessage,
     };
@@ -52,14 +69,48 @@ class ArtifactInstallPropertiesResponse {
 
   factory ArtifactInstallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactInstallPropertiesResponse(
-      artifactId: map['artifactId'] == null ? null : (map['artifactId']! as String).input(),
-      artifactTitle: map['artifactTitle'] == null ? null : (map['artifactTitle']! as String).input(),
-      deploymentStatusMessage: map['deploymentStatusMessage'] == null ? null : (map['deploymentStatusMessage']! as String).input(),
-      installTime: map['installTime'] == null ? null : (map['installTime']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArtifactParameterPropertiesResponse>(map['parameters']!, (value) => ArtifactParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vmExtensionStatusMessage: map['vmExtensionStatusMessage'] == null ? null : (map['vmExtensionStatusMessage']! as String).input(),
+      artifactId: (() {
+        final guardedValue = map['artifactId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactTitle: (() {
+        final guardedValue = map['artifactTitle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentStatusMessage: (() {
+        final guardedValue = map['deploymentStatusMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      installTime: (() {
+        final guardedValue = map['installTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ArtifactParameterPropertiesResponse>(
+            guardedValue,
+            (value) => ArtifactParameterPropertiesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmExtensionStatusMessage: (() {
+        final guardedValue = map['vmExtensionStatusMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

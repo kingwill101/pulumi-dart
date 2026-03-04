@@ -4,16 +4,19 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedScope {
   timePeriod("TIME_PERIOD"),
   paramName("PARAM_NAME");
 
-  const EnterpriseCrmEventbusProtoLogSettingsSeedScope(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoLogSettingsSeedScope(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoLogSettingsSeedScope fromValue(String value) {
+  static EnterpriseCrmEventbusProtoLogSettingsSeedScope fromValue(
+    String value,
+  ) {
     for (final item in EnterpriseCrmEventbusProtoLogSettingsSeedScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedScope value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoLogSettingsSeedScope value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum OrganizationAddressGroupType {
   ipv4("IPV4"),
   ipv6("IPV6");
 
-  const OrganizationAddressGroupType(this.value);
-  final String value;
+  const OrganizationAddressGroupType(this.wireValue);
+  final String wireValue;
 
   static OrganizationAddressGroupType fromValue(String value) {
     for (final item in OrganizationAddressGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationAddressGroupType value: $value');
   }
 }
-

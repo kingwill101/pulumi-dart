@@ -4,16 +4,15 @@ enum AzureDevOpsPermissionType {
   creatorOnly("CreatorOnly"),
   specificAccounts("SpecificAccounts");
 
-  const AzureDevOpsPermissionType(this.value);
-  final String value;
+  const AzureDevOpsPermissionType(this.wireValue);
+  final String wireValue;
 
   static AzureDevOpsPermissionType fromValue(String value) {
     for (final item in AzureDevOpsPermissionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureDevOpsPermissionType value: $value');
   }
 }
-

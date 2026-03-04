@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileScrubbingRules {
   /// The variable to be scrubbed from the logs.
   final pulumi.Input<String> matchVariable;
+
   /// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
   final pulumi.Input<String>? selector;
+
   /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
   final pulumi.Input<String> selectorMatchOperator;
+
   /// Defines the state of a log scrubbing rule. Default value is enabled.
   final pulumi.Input<String>? state;
 
@@ -36,11 +39,20 @@ class ProfileScrubbingRules {
 
   factory ProfileScrubbingRules.fromMap(Map<String, dynamic> map) {
     return ProfileScrubbingRules(
-      matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selectorMatchOperator: pulumi.Input.fromValue(
+        map['selectorMatchOperator'] as String,
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,12 +7,16 @@ import 'wiki_documentation_contract_response.dart';
 class GetProductWikiResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Collection wiki documents included into this wiki.
   final List<WikiDocumentationContractResponse>? documents;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -33,7 +37,14 @@ class GetProductWikiResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'documents': ?documents == null ? null : pulumi.Input.encodeList<WikiDocumentationContractResponse, Map<String, dynamic>>(documents!, (value) => value.toMap()),
+      'documents': ?(() {
+        final guardedValue = documents;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          WikiDocumentationContractResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'name': name,
       'type': type,
@@ -43,11 +54,19 @@ class GetProductWikiResult {
   factory GetProductWikiResult.fromMap(Map<String, dynamic> map) {
     return GetProductWikiResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      documents: map['documents'] == null ? null : pulumi.Input.decodeList<WikiDocumentationContractResponse>(map['documents']!, (value) => WikiDocumentationContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      documents: (() {
+        final guardedValue = map['documents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<WikiDocumentationContractResponse>(
+          guardedValue,
+          (value) => WikiDocumentationContractResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

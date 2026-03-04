@@ -8,26 +8,37 @@ import 'bgp_settings_response.dart';
 class LocalNetworkGatewayResponse {
   /// Local network gateway's BGP speaker settings.
   final pulumi.Input<BgpSettingsResponse>? bgpSettings;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// FQDN of local network gateway.
   final pulumi.Input<String>? fqdn;
+
   /// IP address of local network gateway.
   final pulumi.Input<String>? gatewayIpAddress;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Local network site address space.
   final pulumi.Input<AddressSpaceResponse>? localNetworkAddressSpace;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// Resource name.
   final pulumi.Input<String> name;
+
   /// The provisioning state of the local network gateway resource.
   final pulumi.Input<String> provisioningState;
+
   /// The resource GUID property of the local network gateway resource.
   final pulumi.Input<String> resourceGuid;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -61,12 +72,20 @@ class LocalNetworkGatewayResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpSettings': ?pulumi.Input.mapOptionalInputValue<BgpSettingsResponse, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
+      'bgpSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            BgpSettingsResponse,
+            Map<String, dynamic>
+          >(bgpSettings, (value) => value.toMap()),
       'etag': etag,
       'fqdn': ?fqdn,
       'gatewayIpAddress': ?gatewayIpAddress,
       'id': ?id,
-      'localNetworkAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(localNetworkAddressSpace, (value) => value.toMap()),
+      'localNetworkAddressSpace':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddressSpaceResponse,
+            Map<String, dynamic>
+          >(localNetworkAddressSpace, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
@@ -78,19 +97,58 @@ class LocalNetworkGatewayResponse {
 
   factory LocalNetworkGatewayResponse.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayResponse(
-      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettingsResponse.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>())).input(),
-      etag: (map['etag'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : (map['gatewayIpAddress']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : (AddressSpaceResponse.fromMap((map['localNetworkAddressSpace']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceGuid: (map['resourceGuid'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      bgpSettings: (() {
+        final guardedValue = map['bgpSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BgpSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayIpAddress: (() {
+        final guardedValue = map['gatewayIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localNetworkAddressSpace: (() {
+        final guardedValue = map['localNetworkAddressSpace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddressSpaceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

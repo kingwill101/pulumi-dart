@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloneStepResponse {
   /// Adapting OS step.
   final pulumi.Input<Map<String, dynamic>> adaptingOs;
+
   /// The time the step has ended.
   final pulumi.Input<String> endTime;
+
   /// Instantiating migrated VM step.
   final pulumi.Input<Map<String, dynamic>> instantiatingMigratedVm;
+
   /// Preparing VM disks step.
   final pulumi.Input<Map<String, dynamic>> preparingVmDisks;
+
   /// The time the step has started.
   final pulumi.Input<String> startTime;
 
@@ -41,12 +45,17 @@ class CloneStepResponse {
 
   factory CloneStepResponse.fromMap(Map<String, dynamic> map) {
     return CloneStepResponse(
-      adaptingOs: ((map['adaptingOs'] as Map).cast<String, dynamic>()).input(),
-      endTime: (map['endTime'] as String).input(),
-      instantiatingMigratedVm: ((map['instantiatingMigratedVm'] as Map).cast<String, dynamic>()).input(),
-      preparingVmDisks: ((map['preparingVmDisks'] as Map).cast<String, dynamic>()).input(),
-      startTime: (map['startTime'] as String).input(),
+      adaptingOs: pulumi.Input.fromValue(
+        (map['adaptingOs']! as Map).cast<String, dynamic>(),
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      instantiatingMigratedVm: pulumi.Input.fromValue(
+        (map['instantiatingMigratedVm']! as Map).cast<String, dynamic>(),
+      ),
+      preparingVmDisks: pulumi.Input.fromValue(
+        (map['preparingVmDisks']! as Map).cast<String, dynamic>(),
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

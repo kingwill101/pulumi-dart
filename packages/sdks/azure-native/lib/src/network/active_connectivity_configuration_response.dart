@@ -9,28 +9,40 @@ import 'hub_response.dart';
 class ActiveConnectivityConfigurationResponse {
   /// Groups for configuration
   final pulumi.Input<List<ConnectivityGroupItemResponse>> appliesToGroups;
+
   /// Deployment time string.
   final pulumi.Input<String>? commitTime;
+
   /// Effective configuration groups.
   final pulumi.Input<List<ConfigurationGroupResponse>>? configurationGroups;
+
   /// Connectivity topology type.
   final pulumi.Input<String> connectivityTopology;
+
   /// Flag if need to remove current existing peerings.
   final pulumi.Input<String>? deleteExistingPeering;
+
   /// A description of the connectivity configuration.
   final pulumi.Input<String>? description;
+
   /// A friendly name for the resource.
   final pulumi.Input<String>? displayName;
+
   /// List of hubItems
   final pulumi.Input<List<HubResponse>>? hubs;
+
   /// Connectivity configuration ID.
   final pulumi.Input<String>? id;
+
   /// Flag if global mesh is supported.
   final pulumi.Input<String>? isGlobal;
+
   /// The provisioning state of the connectivity configuration resource.
   final pulumi.Input<String> provisioningState;
+
   /// Deployment region.
   final pulumi.Input<String>? region;
+
   /// Unique identifier for this resource.
   final pulumi.Input<String> resourceGuid;
 
@@ -66,14 +78,47 @@ class ActiveConnectivityConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.mapInputValue<List<ConnectivityGroupItemResponse>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<ConnectivityGroupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'appliesToGroups':
+          pulumi.Input.mapInputValue<
+            List<ConnectivityGroupItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            appliesToGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConnectivityGroupItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'commitTime': ?commitTime,
-      'configurationGroups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationGroupResponse>, List<Map<String, dynamic>>>(configurationGroups, (value) => pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configurationGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationGroupResponse>,
+            List<Map<String, dynamic>>
+          >(
+            configurationGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationGroupResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'connectivityTopology': connectivityTopology,
       'deleteExistingPeering': ?deleteExistingPeering,
       'description': ?description,
       'displayName': ?displayName,
-      'hubs': ?pulumi.Input.mapOptionalInputValue<List<HubResponse>, List<Map<String, dynamic>>>(hubs, (value) => pulumi.Input.encodeList<HubResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hubs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HubResponse>,
+            List<Map<String, dynamic>>
+          >(
+            hubs,
+            (value) =>
+                pulumi.Input.encodeList<HubResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'id': ?id,
       'isGlobal': ?isGlobal,
       'provisioningState': provisioningState,
@@ -82,22 +127,83 @@ class ActiveConnectivityConfigurationResponse {
     };
   }
 
-  factory ActiveConnectivityConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ActiveConnectivityConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ActiveConnectivityConfigurationResponse(
-      appliesToGroups: (pulumi.Input.decodeList<ConnectivityGroupItemResponse>(map['appliesToGroups'], (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commitTime: map['commitTime'] == null ? null : (map['commitTime']! as String).input(),
-      configurationGroups: map['configurationGroups'] == null ? null : (pulumi.Input.decodeList<ConfigurationGroupResponse>(map['configurationGroups']!, (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectivityTopology: (map['connectivityTopology'] as String).input(),
-      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<HubResponse>(map['hubs']!, (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      resourceGuid: (map['resourceGuid'] as String).input(),
+      appliesToGroups: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ConnectivityGroupItemResponse>(
+          map['appliesToGroups']!,
+          (value) => ConnectivityGroupItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      commitTime: (() {
+        final guardedValue = map['commitTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationGroups: (() {
+        final guardedValue = map['configurationGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationGroupResponse>(
+            guardedValue,
+            (value) => ConfigurationGroupResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      connectivityTopology: pulumi.Input.fromValue(
+        map['connectivityTopology'] as String,
+      ),
+      deleteExistingPeering: (() {
+        final guardedValue = map['deleteExistingPeering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hubs: (() {
+        final guardedValue = map['hubs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HubResponse>(
+            guardedValue,
+            (value) =>
+                HubResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isGlobal: (() {
+        final guardedValue = map['isGlobal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
     );
   }
 }
-

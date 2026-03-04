@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceReferenceResponse {
   /// The unique identifier of the Compute Engine instance.
   final pulumi.Input<String> instanceId;
+
   /// The user-friendly name of the Compute Engine instance.
   final pulumi.Input<String> instanceName;
+
   /// The public ECIES key used for sharing data with this instance.
   final pulumi.Input<String> publicEciesKey;
+
   /// The public RSA key used for sharing data with this instance.
   final pulumi.Input<String> publicKey;
 
@@ -36,11 +39,10 @@ class InstanceReferenceResponse {
 
   factory InstanceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return InstanceReferenceResponse(
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      publicEciesKey: (map['publicEciesKey'] as String).input(),
-      publicKey: (map['publicKey'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      publicEciesKey: pulumi.Input.fromValue(map['publicEciesKey'] as String),
+      publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
-

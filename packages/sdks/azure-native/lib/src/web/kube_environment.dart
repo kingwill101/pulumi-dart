@@ -143,40 +143,57 @@ import 'kube_environment_args.dart';
 /// ```
 class KubeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String?> aksResourceID;
+
   /// Cluster configuration which enables the log daemon to export
   /// app logs to a destination. Currently only "log-analytics" is
   /// supported
   late final pulumi.Output<AppLogsConfigurationResponse?> appLogsConfiguration;
+
   /// Cluster configuration which determines the ARC cluster
   /// components types. Eg: Choosing between BuildService kind,
   /// FrontEnd Service ArtifactsStorageType etc.
   late final pulumi.Output<ArcConfigurationResponse?> arcConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
-  late final pulumi.Output<ContainerAppsConfigurationResponse?> containerAppsConfiguration;
+  late final pulumi.Output<ContainerAppsConfigurationResponse?>
+  containerAppsConfiguration;
+
   /// Default Domain Name for the cluster
   late final pulumi.Output<String> defaultDomain;
+
   /// Any errors that occurred during deployment or deployment validation
   late final pulumi.Output<String> deploymentErrors;
+
   /// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
   late final pulumi.Output<String?> environmentType;
+
   /// Extended Location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Only visible within Vnet/Subnet
   late final pulumi.Output<bool?> internalLoadBalancerEnabled;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
+
   /// Resource Location.
   late final pulumi.Output<String> location;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the Kubernetes Environment.
   late final pulumi.Output<String> provisioningState;
+
   /// Static IP of the KubeEnvironment
   late final pulumi.Output<String?> staticIp;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -189,27 +206,38 @@ class KubeEnvironment extends pulumi.CustomResource {
     KubeEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:KubeEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aksResourceID = registerOutput<String?>('aksResourceID');
-    this.appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>('appLogsConfiguration');
-    this.arcConfiguration = registerOutput<ArcConfigurationResponse?>('arcConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerAppsConfiguration = registerOutput<ContainerAppsConfigurationResponse?>('containerAppsConfiguration');
-    this.defaultDomain = registerOutput<String>('defaultDomain');
-    this.deploymentErrors = registerOutput<String>('deploymentErrors');
-    this.environmentType = registerOutput<String?>('environmentType');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.internalLoadBalancerEnabled = registerOutput<bool?>('internalLoadBalancerEnabled');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:web:KubeEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aksResourceID = registerOutput<String?>('aksResourceID');
+    appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>(
+      'appLogsConfiguration',
+    );
+    arcConfiguration = registerOutput<ArcConfigurationResponse?>(
+      'arcConfiguration',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerAppsConfiguration =
+        registerOutput<ContainerAppsConfigurationResponse?>(
+          'containerAppsConfiguration',
+        );
+    defaultDomain = registerOutput<String>('defaultDomain');
+    deploymentErrors = registerOutput<String>('deploymentErrors');
+    environmentType = registerOutput<String?>('environmentType');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    internalLoadBalancerEnabled = registerOutput<bool?>(
+      'internalLoadBalancerEnabled',
+    );
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.staticIp = registerOutput<String?>('staticIp');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    staticIp = registerOutput<String?>('staticIp');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

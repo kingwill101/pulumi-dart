@@ -1,5 +1,3 @@
-library module_iothub;
-
 export 'iothub/access_rights.dart';
 export 'iothub/arm_identity.dart';
 export 'iothub/arm_identity_response.dart';

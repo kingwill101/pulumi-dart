@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPrivateLocation.
 class GetPrivateLocationResult {
   final String? accountId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The key of the private location.
   final List<String> keys;
   final String name;
@@ -33,11 +34,14 @@ class GetPrivateLocationResult {
 
   factory GetPrivateLocationResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLocationResult(
-      accountId: map['accountId'] == null ? null : map['accountId']! as String,
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       keys: (map['keys'] as List).cast<String>(),
       name: map['name'] as String,
     );
   }
 }
-

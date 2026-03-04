@@ -7,24 +7,34 @@ import 'domain_devices_video_model_resolution.dart';
 class DomainDevicesVideoModel {
   /// Configures acceleration features for the video device model.
   final pulumi.Input<DomainDevicesVideoModelAccel>? accel;
+
   /// Configures the blob attribute for the video device model.
   final pulumi.Input<String>? blob;
+
   /// Specifies the Extended Display Identification Data (EDID) for the video device model.
   final pulumi.Input<String>? edid;
+
   /// Sets the number of heads for the video device model, which may define multiple display outputs.
   final pulumi.Input<double>? heads;
+
   /// Marks the video device as the primary display output for the virtual machine.
   final pulumi.Input<String>? primary;
+
   /// Defines the memory allocation for the video device model.
   final pulumi.Input<double>? ram;
+
   /// Specifies the resolution settings for the video device model.
   final pulumi.Input<DomainDevicesVideoModelResolution>? resolution;
+
   /// Defines the type of video device being configured.
   final pulumi.Input<String>? type;
+
   /// Configures the amount of memory allocated for the video graphics array (VGA) for the video device model.
   final pulumi.Input<double>? vgaMem;
+
   /// Specifies the video RAM allocation for the video device model.
   final pulumi.Input<double>? vram;
+
   /// Specifies the 64-bit video RAM configuration for the video device model.
   final pulumi.Input<double>? vram64;
 
@@ -56,13 +66,21 @@ class DomainDevicesVideoModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accel': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVideoModelAccel, Map<String, dynamic>>(accel, (value) => value.toMap()),
+      'accel':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVideoModelAccel,
+            Map<String, dynamic>
+          >(accel, (value) => value.toMap()),
       'blob': ?blob,
       'edid': ?edid,
       'heads': ?heads,
       'primary': ?primary,
       'ram': ?ram,
-      'resolution': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVideoModelResolution, Map<String, dynamic>>(resolution, (value) => value.toMap()),
+      'resolution':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesVideoModelResolution,
+            Map<String, dynamic>
+          >(resolution, (value) => value.toMap()),
       'type': ?type,
       'vgaMem': ?vgaMem,
       'vram': ?vram,
@@ -72,18 +90,69 @@ class DomainDevicesVideoModel {
 
   factory DomainDevicesVideoModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoModel(
-      accel: map['accel'] == null ? null : (DomainDevicesVideoModelAccel.fromMap((map['accel']! as Map).cast<String, dynamic>())).input(),
-      blob: map['blob'] == null ? null : (map['blob']! as String).input(),
-      edid: map['edid'] == null ? null : (map['edid']! as String).input(),
-      heads: map['heads'] == null ? null : (map['heads']! as double).input(),
-      primary: map['primary'] == null ? null : (map['primary']! as String).input(),
-      ram: map['ram'] == null ? null : (map['ram']! as double).input(),
-      resolution: map['resolution'] == null ? null : (DomainDevicesVideoModelResolution.fromMap((map['resolution']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vgaMem: map['vgaMem'] == null ? null : (map['vgaMem']! as double).input(),
-      vram: map['vram'] == null ? null : (map['vram']! as double).input(),
-      vram64: map['vram64'] == null ? null : (map['vram64']! as double).input(),
+      accel: (() {
+        final guardedValue = map['accel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVideoModelAccel.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blob: (() {
+        final guardedValue = map['blob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edid: (() {
+        final guardedValue = map['edid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      heads: (() {
+        final guardedValue = map['heads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ram: (() {
+        final guardedValue = map['ram'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      resolution: (() {
+        final guardedValue = map['resolution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesVideoModelResolution.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vgaMem: (() {
+        final guardedValue = map['vgaMem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      vram: (() {
+        final guardedValue = map['vram'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      vram64: (() {
+        final guardedValue = map['vram64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

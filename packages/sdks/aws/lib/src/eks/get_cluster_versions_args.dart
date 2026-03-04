@@ -11,12 +11,16 @@ class GetClusterVersionsArgs {
   /// Currently, the only valid value is `eks`.
   final pulumi.Input<String>? clusterType;
   final pulumi.Input<List<String>>? clusterVersionsOnlies;
+
   /// Whether to show only the default versions of Kubernetes supported by EKS.
   final pulumi.Input<bool>? defaultOnly;
+
   /// Whether to include all kubernetes versions in the response.
   final pulumi.Input<bool>? includeAll;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Status of the EKS cluster versions to list.
   /// Valid values are `STANDARD_SUPPORT` or `UNSUPPORTED` or `EXTENDED_SUPPORT`.
   final pulumi.Input<String>? versionStatus;
@@ -50,13 +54,36 @@ class GetClusterVersionsArgs {
 
   factory GetClusterVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsArgs(
-      clusterType: map['clusterType'] == null ? null : ((map['clusterType'] as String).input()).input(),
-      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : (((map['clusterVersionsOnlies'] as List).cast<String>()).input()).input(),
-      defaultOnly: map['defaultOnly'] == null ? null : ((map['defaultOnly'] as bool).input()).input(),
-      includeAll: map['includeAll'] == null ? null : ((map['includeAll'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      versionStatus: map['versionStatus'] == null ? null : ((map['versionStatus'] as String).input()).input(),
+      clusterType: (() {
+        final guardedValue = map['clusterType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterVersionsOnlies: (() {
+        final guardedValue = map['clusterVersionsOnlies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      defaultOnly: (() {
+        final guardedValue = map['defaultOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeAll: (() {
+        final guardedValue = map['includeAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionStatus: (() {
+        final guardedValue = map['versionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

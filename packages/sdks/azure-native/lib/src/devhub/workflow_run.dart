@@ -8,20 +8,19 @@ class WorkflowRun {
 
   /// Creates a new [WorkflowRun].
   /// [workflowRunStatus] Describes the status of the workflow run
-  WorkflowRun({
-    this.workflowRunStatus,
-  });
+  WorkflowRun({this.workflowRunStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workflowRunStatus': ?workflowRunStatus,
-    };
+    return <String, dynamic>{'workflowRunStatus': ?workflowRunStatus};
   }
 
   factory WorkflowRun.fromMap(Map<String, dynamic> map) {
     return WorkflowRun(
-      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus']! as String).input(),
+      workflowRunStatus: (() {
+        final guardedValue = map['workflowRunStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_dataloss;
-
 export 'dataloss/prevention_deidentify_template.dart';
 export 'dataloss/prevention_deidentify_template_args.dart';
 export 'dataloss/prevention_deidentify_template_deidentify_config.dart';

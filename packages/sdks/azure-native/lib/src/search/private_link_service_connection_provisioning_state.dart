@@ -7,16 +7,17 @@ enum PrivateLinkServiceConnectionProvisioningState {
   incomplete("Incomplete"),
   canceled("Canceled");
 
-  const PrivateLinkServiceConnectionProvisioningState(this.value);
-  final String value;
+  const PrivateLinkServiceConnectionProvisioningState(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkServiceConnectionProvisioningState fromValue(String value) {
     for (final item in PrivateLinkServiceConnectionProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateLinkServiceConnectionProvisioningState value: $value');
+    throw ArgumentError(
+      'Unknown PrivateLinkServiceConnectionProvisioningState value: $value',
+    );
   }
 }
-

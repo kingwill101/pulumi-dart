@@ -9,20 +9,21 @@ class GraphQLApiIntrospectionConfigEnumValueResponse {
 
   /// Creates a new [GraphQLApiIntrospectionConfigEnumValueResponse].
   /// [value] Property value
-  GraphQLApiIntrospectionConfigEnumValueResponse({
-    this.value,
-  });
+  GraphQLApiIntrospectionConfigEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory GraphQLApiIntrospectionConfigEnumValueResponse.fromMap(Map<String, dynamic> map) {
+  factory GraphQLApiIntrospectionConfigEnumValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GraphQLApiIntrospectionConfigEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

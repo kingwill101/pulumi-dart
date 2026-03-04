@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataQualityJobDefinitionJobResourcesClusterConfig {
   /// The number of ML compute instances to use in the model monitoring job. For distributed processing jobs, specify a value greater than 1.
   final pulumi.Input<int> instanceCount;
+
   /// The ML compute instance type for the processing job.
   final pulumi.Input<String> instanceType;
+
   /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the model monitoring job.
   final pulumi.Input<String>? volumeKmsKeyId;
+
   /// The size of the ML storage volume, in gigabytes, that you want to provision. You must specify sufficient ML storage for your scenario.
   final pulumi.Input<int> volumeSizeInGb;
 
@@ -33,13 +36,18 @@ class DataQualityJobDefinitionJobResourcesClusterConfig {
     };
   }
 
-  factory DataQualityJobDefinitionJobResourcesClusterConfig.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionJobResourcesClusterConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionJobResourcesClusterConfig(
-      instanceCount: (map['instanceCount'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : ((map['volumeKmsKeyId'] as String).input()).input(),
-      volumeSizeInGb: (map['volumeSizeInGb'] as int).input(),
+      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      volumeKmsKeyId: (() {
+        final guardedValue = map['volumeKmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeSizeInGb: pulumi.Input.fromValue(map['volumeSizeInGb'] as int),
     );
   }
 }
-

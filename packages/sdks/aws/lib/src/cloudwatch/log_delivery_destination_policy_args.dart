@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogDeliveryDestinationPolicyArgs {
   /// The name of the delivery destination to assign this policy to.
   final pulumi.Input<String> deliveryDestinationName;
+
   /// The contents of the policy.
   final pulumi.Input<String> deliveryDestinationPolicy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,17 @@ class LogDeliveryDestinationPolicyArgs {
 
   factory LogDeliveryDestinationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationPolicyArgs(
-      deliveryDestinationName: (map['deliveryDestinationName'] as String).input(),
-      deliveryDestinationPolicy: (map['deliveryDestinationPolicy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      deliveryDestinationName: pulumi.Input.fromValue(
+        map['deliveryDestinationName'] as String,
+      ),
+      deliveryDestinationPolicy: pulumi.Input.fromValue(
+        map['deliveryDestinationPolicy'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_remote;
-
 export 'remote/command.dart';
 export 'remote/command_args.dart';
 export 'remote/connection.dart';

@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogicalViewArgs {
   /// Set to true to make the logical view protected against deletion.
   final pulumi.Input<bool>? deletionProtection;
+
   /// The name of the instance to create the logical view within.
   final pulumi.Input<String>? instance;
+
   /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   final pulumi.Input<String> logicalViewId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The logical view's select query.
   final pulumi.Input<String> query;
 
@@ -45,12 +49,23 @@ class LogicalViewArgs {
 
   factory LogicalViewArgs.fromMap(Map<String, dynamic> map) {
     return LogicalViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      logicalViewId: (map['logicalViewId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      query: (map['query'] as String).input(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logicalViewId: pulumi.Input.fromValue(map['logicalViewId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
-

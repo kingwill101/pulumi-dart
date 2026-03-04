@@ -7,6 +7,7 @@ class AcceleratorPublicSettingResponse {
   /// The type of the auth setting.
   /// Expected value is 'Public'.
   final pulumi.Input<String> authType;
+
   /// Resource Id of CA certificate for https URL of Git repository.
   final pulumi.Input<String>? caCertResourceId;
 
@@ -27,9 +28,12 @@ class AcceleratorPublicSettingResponse {
 
   factory AcceleratorPublicSettingResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorPublicSettingResponse(
-      authType: (map['authType'] as String).input(),
-      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId']! as String).input(),
+      authType: pulumi.Input.fromValue(map['authType'] as String),
+      caCertResourceId: (() {
+        final guardedValue = map['caCertResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

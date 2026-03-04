@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEncryptionScopeArgs {
   /// The name of this Storage Encryption Scope.
   final pulumi.Input<String> name;
+
   /// The ID of the Storage Account where this Storage Encryption Scope exists.
   final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [GetEncryptionScopeArgs].
   /// [name] The name of this Storage Encryption Scope.
   /// [storageAccountId] The ID of the Storage Account where this Storage Encryption Scope exists.
-  GetEncryptionScopeArgs({
-    required this.name,
-    required this.storageAccountId,
-  });
+  GetEncryptionScopeArgs({required this.name, required this.storageAccountId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetEncryptionScopeArgs {
 
   factory GetEncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionScopeArgs(
-      name: (map['name'] as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
     );
   }
 }
-

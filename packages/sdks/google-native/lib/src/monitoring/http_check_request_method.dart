@@ -4,16 +4,15 @@ enum HttpCheckRequestMethod {
   get("GET"),
   post("POST");
 
-  const HttpCheckRequestMethod(this.value);
-  final String value;
+  const HttpCheckRequestMethod(this.wireValue);
+  final String wireValue;
 
   static HttpCheckRequestMethod fromValue(String value) {
     for (final item in HttpCheckRequestMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpCheckRequestMethod value: $value');
   }
 }
-

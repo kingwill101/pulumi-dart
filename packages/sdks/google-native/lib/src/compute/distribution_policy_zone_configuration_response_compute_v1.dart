@@ -8,20 +8,17 @@ class DistributionPolicyZoneConfigurationResponseComputeV1 {
 
   /// Creates a new [DistributionPolicyZoneConfigurationResponseComputeV1].
   /// [zone] The URL of the zone. The zone must exist in the region where the managed instance group is located.
-  DistributionPolicyZoneConfigurationResponseComputeV1({
-    required this.zone,
-  });
+  DistributionPolicyZoneConfigurationResponseComputeV1({required this.zone});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'zone': zone,
-    };
+    return <String, dynamic>{'zone': zone};
   }
 
-  factory DistributionPolicyZoneConfigurationResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory DistributionPolicyZoneConfigurationResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionPolicyZoneConfigurationResponseComputeV1(
-      zone: (map['zone'] as String).input(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

@@ -8,20 +8,17 @@ class GetSqlRoleDefinitionPermission {
 
   /// Creates a new [GetSqlRoleDefinitionPermission].
   /// [dataActions] A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
-  GetSqlRoleDefinitionPermission({
-    required this.dataActions,
-  });
+  GetSqlRoleDefinitionPermission({required this.dataActions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataActions': dataActions,
-    };
+    return <String, dynamic>{'dataActions': dataActions};
   }
 
   factory GetSqlRoleDefinitionPermission.fromMap(Map<String, dynamic> map) {
     return GetSqlRoleDefinitionPermission(
-      dataActions: ((map['dataActions'] as List).cast<String>()).input(),
+      dataActions: pulumi.Input.fromValue(
+        (map['dataActions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

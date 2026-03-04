@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'txt_record_args.dart';
-import 'txt_record_record.dart';
 import 'txt_record_state.dart';
 
 /// Enables you to manage DNS TXT Records within Azure DNS.
 ///
-/// > **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
+/// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
 ///
 /// ## Example Usage
 ///
@@ -246,7 +245,7 @@ import 'txt_record_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2018-05-01
@@ -261,16 +260,22 @@ import 'txt_record_state.dart';
 class TxtRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS TXT Record.
   late final pulumi.Output<String> fqdn;
+
   /// The name of the DNS TXT Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of values that make up the txt record. Each `record` block supports fields documented below.
-  late final pulumi.Output<List<TxtRecordRecord>> records;
+  late final pulumi.Output<List<Map<String, dynamic>>> records;
+
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
+
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -283,18 +288,18 @@ class TxtRecord extends pulumi.CustomResource {
     TxtRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dns/txtRecord:TxtRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:dns/txtRecord:TxtRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<TxtRecordRecord>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 
   /// Gets an existing [TxtRecord] resource's state with the given [name] and [id].
@@ -315,17 +320,17 @@ class TxtRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dns/txtRecord:TxtRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:dns/txtRecord:TxtRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<TxtRecordRecord>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 }

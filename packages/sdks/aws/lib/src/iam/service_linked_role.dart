@@ -108,22 +108,31 @@ import 'service_linked_role_state.dart';
 class ServiceLinkedRole extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the role.
   late final pulumi.Output<String> arn;
+
   /// The AWS service to which this role is attached. You use a string similar to a URL but without the `http://` in front. For example: `elasticbeanstalk.amazonaws.com`. To find the full list of services that support service-linked roles, check [the docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html).
   late final pulumi.Output<String> awsServiceName;
+
   /// The creation date of the IAM role.
   late final pulumi.Output<String> createDate;
+
   /// Additional string appended to the role name. Not all AWS services support custom suffixes.
   late final pulumi.Output<String?> customSuffix;
+
   /// The description of the role.
   late final pulumi.Output<String?> description;
+
   /// The name of the role.
   late final pulumi.Output<String> name;
+
   /// The path of the role.
   late final pulumi.Output<String> path;
+
   /// Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The stable and unique string identifying the role.
   late final pulumi.Output<String> uniqueId;
 
@@ -136,21 +145,21 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     ServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsServiceName = registerOutput<String>('awsServiceName');
-    this.createDate = registerOutput<String>('createDate');
-    this.customSuffix = registerOutput<String?>('customSuffix');
-    this.description = registerOutput<String?>('description');
+         'aws:iam/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsServiceName = registerOutput<String>('awsServiceName');
+    createDate = registerOutput<String>('createDate');
+    customSuffix = registerOutput<String?>('customSuffix');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.uniqueId = registerOutput<String>('uniqueId');
+    path = registerOutput<String>('path');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    uniqueId = registerOutput<String>('uniqueId');
   }
 
   /// Gets an existing [ServiceLinkedRole] resource's state with the given [name] and [id].
@@ -171,20 +180,20 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsServiceName = registerOutput<String>('awsServiceName');
-    this.createDate = registerOutput<String>('createDate');
-    this.customSuffix = registerOutput<String?>('customSuffix');
-    this.description = registerOutput<String?>('description');
+         'aws:iam/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsServiceName = registerOutput<String>('awsServiceName');
+    createDate = registerOutput<String>('createDate');
+    customSuffix = registerOutput<String?>('customSuffix');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.uniqueId = registerOutput<String>('uniqueId');
+    path = registerOutput<String>('path');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    uniqueId = registerOutput<String>('uniqueId');
   }
 }

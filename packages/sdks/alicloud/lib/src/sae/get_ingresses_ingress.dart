@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIngressesIngress {
   /// Cert Id.
   final pulumi.Input<String> certId;
+
   /// Default Rule.
   final pulumi.Input<String> defaultRule;
+
   /// Description.
   final pulumi.Input<String> description;
+
   /// The ID of the Ingress.
   final pulumi.Input<String> id;
+
   /// The first ID of the resource.
   final pulumi.Input<String> ingressId;
+
   /// SLB listening port.
   final pulumi.Input<int> listenerPort;
+
   /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
   final pulumi.Input<String> namespaceId;
+
   /// SLB ID.
   final pulumi.Input<String> slbId;
 
@@ -55,15 +62,14 @@ class GetIngressesIngress {
 
   factory GetIngressesIngress.fromMap(Map<String, dynamic> map) {
     return GetIngressesIngress(
-      certId: (map['certId'] as String).input(),
-      defaultRule: (map['defaultRule'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      ingressId: (map['ingressId'] as String).input(),
-      listenerPort: (map['listenerPort'] as int).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      slbId: (map['slbId'] as String).input(),
+      certId: pulumi.Input.fromValue(map['certId'] as String),
+      defaultRule: pulumi.Input.fromValue(map['defaultRule'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ingressId: pulumi.Input.fromValue(map['ingressId'] as String),
+      listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      slbId: pulumi.Input.fromValue(map['slbId'] as String),
     );
   }
 }
-

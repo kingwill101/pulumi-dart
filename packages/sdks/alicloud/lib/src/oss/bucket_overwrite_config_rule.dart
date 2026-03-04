@@ -6,12 +6,16 @@ import 'bucket_overwrite_config_rule_principals.dart';
 class BucketOverwriteConfigRule {
   /// The operation type. Currently, only "forbid" is supported.
   final pulumi.Input<String>? action;
+
   /// Rule ID
   final pulumi.Input<String>? id;
+
   /// The prefix of the Object name, which is used to filter objects to be processed.
   final pulumi.Input<String>? prefix;
+
   /// A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
   final pulumi.Input<BucketOverwriteConfigRulePrincipals>? principals;
+
   /// The suffix of the Object name, which is used to filter objects to be processed.
   final pulumi.Input<String>? suffix;
 
@@ -34,19 +38,46 @@ class BucketOverwriteConfigRule {
       'action': ?action,
       'id': ?id,
       'prefix': ?prefix,
-      'principals': ?pulumi.Input.mapOptionalInputValue<BucketOverwriteConfigRulePrincipals, Map<String, dynamic>>(principals, (value) => value.toMap()),
+      'principals':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketOverwriteConfigRulePrincipals,
+            Map<String, dynamic>
+          >(principals, (value) => value.toMap()),
       'suffix': ?suffix,
     };
   }
 
   factory BucketOverwriteConfigRule.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigRule(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      principals: map['principals'] == null ? null : (BucketOverwriteConfigRulePrincipals.fromMap((map['principals']! as Map).cast<String, dynamic>())).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principals: (() {
+        final guardedValue = map['principals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BucketOverwriteConfigRulePrincipals.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      suffix: (() {
+        final guardedValue = map['suffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

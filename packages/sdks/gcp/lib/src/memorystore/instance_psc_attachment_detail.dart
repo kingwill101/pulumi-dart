@@ -10,6 +10,7 @@ class InstancePscAttachmentDetail {
   /// CONNECTION_TYPE_PRIMARY
   /// CONNECTION_TYPE_READER
   final pulumi.Input<String>? connectionType;
+
   /// (Output)
   /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
   final pulumi.Input<String>? serviceAttachment;
@@ -17,10 +18,7 @@ class InstancePscAttachmentDetail {
   /// Creates a new [InstancePscAttachmentDetail].
   /// [connectionType] (Output)
   /// [serviceAttachment] (Output)
-  InstancePscAttachmentDetail({
-    this.connectionType,
-    this.serviceAttachment,
-  });
+  InstancePscAttachmentDetail({this.connectionType, this.serviceAttachment});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,16 @@ class InstancePscAttachmentDetail {
 
   factory InstancePscAttachmentDetail.fromMap(Map<String, dynamic> map) {
     return InstancePscAttachmentDetail(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
+      connectionType: (() {
+        final guardedValue = map['connectionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAttachment: (() {
+        final guardedValue = map['serviceAttachment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

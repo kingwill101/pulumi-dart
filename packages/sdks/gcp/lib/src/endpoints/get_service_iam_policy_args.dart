@@ -12,20 +12,15 @@ class GetServiceIamPolicyArgs {
 
   /// Creates a new [GetServiceIamPolicyArgs].
   /// [serviceName] Used to find the parent resource to bind the IAM policy to
-  GetServiceIamPolicyArgs({
-    required this.serviceName,
-  });
+  GetServiceIamPolicyArgs({required this.serviceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceName': serviceName,
-    };
+    return <String, dynamic>{'serviceName': serviceName};
   }
 
   factory GetServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceIamPolicyArgs(
-      serviceName: (map['serviceName'] as String).input(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -12,20 +12,19 @@ class GetMscSubSubscriptionsArgs {
 
   /// Creates a new [GetMscSubSubscriptionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMscSubSubscriptionsArgs({
-    this.outputFile,
-  });
+  GetMscSubSubscriptionsArgs({this.outputFile});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputFile': ?outputFile,
-    };
+    return <String, dynamic>{'outputFile': ?outputFile};
   }
 
   factory GetMscSubSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -51,16 +51,23 @@ class GetDBAuditInstanceInstance {
 
   factory GetDBAuditInstanceInstance.fromMap(Map<String, dynamic> map) {
     return GetDBAuditInstanceInstance(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceStatus: (map['instanceStatus'] as String).input(),
-      licenseCode: (map['licenseCode'] as String).input(),
-      privateDomain: (map['privateDomain'] as String).input(),
-      publicDomain: (map['publicDomain'] as String).input(),
-      publicNetworkAccess: (map['publicNetworkAccess'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      userVswitchId: (map['userVswitchId'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceStatus: pulumi.Input.fromValue(map['instanceStatus'] as String),
+      licenseCode: pulumi.Input.fromValue(map['licenseCode'] as String),
+      privateDomain: pulumi.Input.fromValue(map['privateDomain'] as String),
+      publicDomain: pulumi.Input.fromValue(map['publicDomain'] as String),
+      publicNetworkAccess: pulumi.Input.fromValue(
+        map['publicNetworkAccess'] as bool,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userVswitchId: pulumi.Input.fromValue(map['userVswitchId'] as String),
     );
   }
 }
-

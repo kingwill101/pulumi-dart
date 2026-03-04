@@ -690,7 +690,7 @@ import 'publishing_destination_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** Please do not use this simple example for Bucket-Policy and KMS Key Policy in a production environment. It is much too open for such a use-case. Refer to the AWS documentation here: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html
+/// &gt; **Note:** Please do not use this simple example for Bucket-Policy and KMS Key Policy in a production environment. It is much too open for such a use-case. Refer to the AWS documentation here: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_exportfindings.html
 ///
 /// ## Import
 ///
@@ -702,14 +702,18 @@ import 'publishing_destination_state.dart';
 class PublishingDestination extends pulumi.CustomResource {
   /// The bucket arn and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
   late final pulumi.Output<String> destinationArn;
+
   /// Currently there is only "S3" available as destination type which is also the default value
   ///
-  /// > **Note:** In case of missing permissions (S3 Bucket Policy _or_ KMS Key permissions) the resource will fail to create. If the permissions are changed after resource creation, this can be asked from the AWS API via the "DescribePublishingDestination" call (https://docs.aws.amazon.com/cli/latest/reference/guardduty/describe-publishing-destination.html).
+  /// &gt; **Note:** In case of missing permissions (S3 Bucket Policy _or_ KMS Key permissions) the resource will fail to create. If the permissions are changed after resource creation, this can be asked from the AWS API via the "DescribePublishingDestination" call (https://docs.aws.amazon.com/cli/latest/reference/guardduty/describe-publishing-destination.html).
   late final pulumi.Output<String?> destinationType;
+
   /// The detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
+
   /// The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   late final pulumi.Output<String> kmsKeyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -722,16 +726,16 @@ class PublishingDestination extends pulumi.CustomResource {
     PublishingDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/publishingDestination:PublishingDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationArn = registerOutput<String>('destinationArn');
-    this.destinationType = registerOutput<String?>('destinationType');
-    this.detectorId = registerOutput<String>('detectorId');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    this.region = registerOutput<String>('region');
+         'aws:guardduty/publishingDestination:PublishingDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationArn = registerOutput<String>('destinationArn');
+    destinationType = registerOutput<String?>('destinationType');
+    detectorId = registerOutput<String>('detectorId');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PublishingDestination] resource's state with the given [name] and [id].
@@ -752,15 +756,15 @@ class PublishingDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/publishingDestination:PublishingDestination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationArn = registerOutput<String>('destinationArn');
-    this.destinationType = registerOutput<String?>('destinationType');
-    this.detectorId = registerOutput<String>('detectorId');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    this.region = registerOutput<String>('region');
+         'aws:guardduty/publishingDestination:PublishingDestination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationArn = registerOutput<String>('destinationArn');
+    destinationType = registerOutput<String?>('destinationType');
+    detectorId = registerOutput<String>('detectorId');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    region = registerOutput<String>('region');
   }
 }

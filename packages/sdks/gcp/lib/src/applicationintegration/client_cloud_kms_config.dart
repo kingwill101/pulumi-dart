@@ -7,18 +7,22 @@ class ClientCloudKmsConfig {
   /// with metadata for the key. A key exists on exactly one key ring tied to a
   /// specific location.
   final pulumi.Input<String> key;
+
   /// Each version of a key contains key material used for encryption or signing.
   /// A key's version is represented by an integer, starting at 1. To decrypt data
   /// or verify a signature, you must use the same key version that was used to
   /// encrypt or sign the data.
   final pulumi.Input<String>? keyVersion;
+
   /// Location name of the key ring, e.g. "us-west1".
   final pulumi.Input<String> kmsLocation;
+
   /// The Google Cloud project id of the project where the kms key stored. If empty,
   /// the kms key is stored at the same project as customer's project and ecrypted
   /// with CMEK, otherwise, the kms key is stored in the tenant project and
   /// encrypted with GMEK.
   final pulumi.Input<String>? kmsProjectId;
+
   /// A key ring organizes keys in a specific Google Cloud location and allows you to
   /// manage access control on groups of keys. A key ring's name does not need to be
   /// unique across a Google Cloud project, but must be unique within a given location.
@@ -50,12 +54,19 @@ class ClientCloudKmsConfig {
 
   factory ClientCloudKmsConfig.fromMap(Map<String, dynamic> map) {
     return ClientCloudKmsConfig(
-      key: (map['key'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
-      kmsLocation: (map['kmsLocation'] as String).input(),
-      kmsProjectId: map['kmsProjectId'] == null ? null : (map['kmsProjectId']! as String).input(),
-      kmsRing: (map['kmsRing'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsLocation: pulumi.Input.fromValue(map['kmsLocation'] as String),
+      kmsProjectId: (() {
+        final guardedValue = map['kmsProjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsRing: pulumi.Input.fromValue(map['kmsRing'] as String),
     );
   }
 }
-

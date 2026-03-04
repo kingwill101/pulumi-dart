@@ -19,7 +19,7 @@ import 'get_zones_result.dart';
 /// The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
 /// Filters support regular expression for the account name, searches by clusterId.
 ///
-/// > **NOTE:** Available since v1.70.0+.
+/// &gt; **NOTE:** Available since v1.70.0+.
 ///
 /// ## Example Usage
 ///
@@ -416,7 +416,7 @@ Future<GetAccountsResult> getAccounts(
 /// The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
 /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 ///
-/// > **NOTE:** Available since v1.66.0+.
+/// &gt; **NOTE:** Available since v1.66.0+.
 ///
 /// ## Example Usage
 ///
@@ -717,7 +717,7 @@ Future<GetClustersResult> getClusters(
 /// The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
 /// Filters support regular expression for the database name, searches by clusterId.
 ///
-/// > **NOTE:** Available since v1.70.0+.
+/// &gt; **NOTE:** Available since v1.70.0+.
 ///
 /// ## Example Usage
 ///
@@ -1103,7 +1103,7 @@ Future<GetDatabasesResult> getDatabases(
 /// The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
 /// Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
 ///
-/// > **NOTE:** Available since v1.68.0+.
+/// &gt; **NOTE:** Available since v1.68.0+.
 ///
 /// ## Example Usage
 ///
@@ -1427,7 +1427,7 @@ Future<GetEndpointsResult> getEndpoints(
 
 /// This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.181.0+.
+/// &gt; **NOTE:** Available since v1.181.0+.
 ///
 /// ## Example Usage
 ///
@@ -1791,7 +1791,7 @@ Future<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(
 
 /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.81.0+
+/// &gt; **NOTE:** Available since v1.81.0+
 ///
 /// ## Example Usage
 ///
@@ -1926,7 +1926,7 @@ Future<GetNodeClassesResult> getNodeClasses(
 
 /// This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.183.0+.
+/// &gt; **NOTE:** Available since v1.183.0+.
 ///
 /// ## Example Usage
 ///
@@ -2110,7 +2110,7 @@ Future<GetParameterGroupsResult> getParameterGroups(
 
 /// This data source provides availability zones for PolarDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.74.0+.
+/// &gt; **NOTE:** Available in v1.74.0+.
 ///
 /// ## Example Usage
 ///

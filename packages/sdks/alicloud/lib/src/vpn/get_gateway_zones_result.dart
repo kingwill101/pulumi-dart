@@ -7,10 +7,12 @@ import 'get_gateway_zones_zone.dart';
 class GetGatewayZonesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Zone IDs.
   final List<String> ids;
   final String? outputFile;
   final String spec;
+
   /// A list of Zone Entries. Each element contains the following attributes:
   final List<GetGatewayZonesZone> zones;
 
@@ -34,7 +36,11 @@ class GetGatewayZonesResult {
       'ids': ids,
       'outputFile': ?outputFile,
       'spec': spec,
-      'zones': pulumi.Input.encodeList<GetGatewayZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones':
+          pulumi.Input.encodeList<GetGatewayZonesZone, Map<String, dynamic>>(
+            zones,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -42,10 +48,17 @@ class GetGatewayZonesResult {
     return GetGatewayZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       spec: map['spec'] as String,
-      zones: pulumi.Input.decodeList<GetGatewayZonesZone>(map['zones'], (value) => GetGatewayZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      zones: pulumi.Input.decodeList<GetGatewayZonesZone>(
+        map['zones']!,
+        (value) =>
+            GetGatewayZonesZone.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

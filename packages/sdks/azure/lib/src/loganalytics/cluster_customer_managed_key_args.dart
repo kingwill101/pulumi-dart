@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterCustomerManagedKeyArgs {
   /// The ID of the Key Vault Key to use for encryption.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The ID of the Log Analytics Cluster. Changing this forces a new Log Analytics Cluster Customer Managed Key to be created.
   final pulumi.Input<String> logAnalyticsClusterId;
 
@@ -29,9 +30,10 @@ class ClusterCustomerManagedKeyArgs {
 
   factory ClusterCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyArgs(
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      logAnalyticsClusterId: (map['logAnalyticsClusterId'] as String).input(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      logAnalyticsClusterId: pulumi.Input.fromValue(
+        map['logAnalyticsClusterId'] as String,
+      ),
     );
   }
 }
-

@@ -10,20 +10,31 @@ class TransferConfigurationTransferAllDetails {
 
   /// Creates a new [TransferConfigurationTransferAllDetails].
   /// [include] Details to transfer all data.
-  TransferConfigurationTransferAllDetails({
-    this.include,
-  });
+  TransferConfigurationTransferAllDetails({this.include});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'include': ?pulumi.Input.mapOptionalInputValue<TransferAllDetails, Map<String, dynamic>>(include, (value) => value.toMap()),
+      'include':
+          ?pulumi.Input.mapOptionalInputValue<
+            TransferAllDetails,
+            Map<String, dynamic>
+          >(include, (value) => value.toMap()),
     };
   }
 
-  factory TransferConfigurationTransferAllDetails.fromMap(Map<String, dynamic> map) {
+  factory TransferConfigurationTransferAllDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransferConfigurationTransferAllDetails(
-      include: map['include'] == null ? null : (TransferAllDetails.fromMap((map['include']! as Map).cast<String, dynamic>())).input(),
+      include: (() {
+        final guardedValue = map['include'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TransferAllDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

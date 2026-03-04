@@ -9,20 +9,15 @@ class GatewayConfigurationApiResponse {
 
   /// Creates a new [GatewayConfigurationApiResponse].
   /// [hostname] Hostname to which the agent connects to propagate configuration to the cloud.
-  GatewayConfigurationApiResponse({
-    required this.hostname,
-  });
+  GatewayConfigurationApiResponse({required this.hostname});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': hostname,
-    };
+    return <String, dynamic>{'hostname': hostname};
   }
 
   factory GatewayConfigurationApiResponse.fromMap(Map<String, dynamic> map) {
     return GatewayConfigurationApiResponse(
-      hostname: (map['hostname'] as String).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
     );
   }
 }
-

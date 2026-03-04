@@ -7,7 +7,6 @@ import 'maintenance_window_response.dart';
 import 'my_sqlserver_identity_response.dart';
 import 'my_sqlserver_sku_response.dart';
 import 'network_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'server_args.dart';
 import 'storage_response.dart';
 import 'system_data_response.dart';
@@ -606,50 +605,75 @@ import 'system_data_response.dart';
 class Server extends pulumi.CustomResource {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   late final pulumi.Output<String?> administratorLogin;
+
   /// availability Zone information of the server.
   late final pulumi.Output<String?> availabilityZone;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Backup related properties of a server.
   late final pulumi.Output<BackupResponse?> backup;
+
   /// The Data Encryption for CMK.
   late final pulumi.Output<DataEncryptionResponse?> dataEncryption;
+
   /// The fully qualified domain name of a server.
   late final pulumi.Output<String> fullyQualifiedDomainName;
+
   /// High availability related properties of a server.
   late final pulumi.Output<HighAvailabilityResponse?> highAvailability;
+
   /// The cmk identity for the server.
   late final pulumi.Output<MySQLServerIdentityResponse?> identity;
+
   /// Source properties for import from storage.
-  late final pulumi.Output<ImportSourcePropertiesResponse?> importSourceProperties;
+  late final pulumi.Output<ImportSourcePropertiesResponse?>
+  importSourceProperties;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Maintenance window of a server.
   late final pulumi.Output<MaintenanceWindowResponse?> maintenanceWindow;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network related properties of a server.
   late final pulumi.Output<NetworkResponse?> network;
+
   /// PrivateEndpointConnections related properties of a server.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The maximum number of replicas that a primary server can have.
   late final pulumi.Output<int> replicaCapacity;
+
   /// The replication role.
   late final pulumi.Output<String?> replicationRole;
+
   /// The SKU (pricing tier) of the server.
   late final pulumi.Output<MySQLServerSkuResponse?> sku;
+
   /// The source MySQL server id.
   late final pulumi.Output<String?> sourceServerResourceId;
+
   /// The state of a server.
   late final pulumi.Output<String> state;
+
   /// Storage related properties of a server.
   late final pulumi.Output<StorageResponse?> storage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Server version.
   late final pulumi.Output<String?> version;
 
@@ -657,39 +681,46 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_dbformysql_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:dbformysql:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.availabilityZone = registerOutput<String?>('availabilityZone');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backup = registerOutput<BackupResponse?>('backup');
-    this.dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.highAvailability = registerOutput<HighAvailabilityResponse?>('highAvailability');
-    this.identity = registerOutput<MySQLServerIdentityResponse?>('identity');
-    this.importSourceProperties = registerOutput<ImportSourcePropertiesResponse?>('importSourceProperties');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:dbformysql:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backup = registerOutput<BackupResponse?>('backup');
+    dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    highAvailability = registerOutput<HighAvailabilityResponse?>(
+      'highAvailability',
+    );
+    identity = registerOutput<MySQLServerIdentityResponse?>('identity');
+    importSourceProperties = registerOutput<ImportSourcePropertiesResponse?>(
+      'importSourceProperties',
+    );
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<NetworkResponse?>('network');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.replicaCapacity = registerOutput<int>('replicaCapacity');
-    this.replicationRole = registerOutput<String?>('replicationRole');
-    this.sku = registerOutput<MySQLServerSkuResponse?>('sku');
-    this.sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
-    this.state = registerOutput<String>('state');
-    this.storage = registerOutput<StorageResponse?>('storage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    network = registerOutput<NetworkResponse?>('network');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String?>('replicationRole');
+    sku = registerOutput<MySQLServerSkuResponse?>('sku');
+    sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
+    state = registerOutput<String>('state');
+    storage = registerOutput<StorageResponse?>('storage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

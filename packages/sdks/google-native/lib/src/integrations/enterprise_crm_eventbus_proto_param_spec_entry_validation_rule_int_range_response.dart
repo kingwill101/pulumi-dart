@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse {
   /// The inclusive maximum of the acceptable range.
   final pulumi.Input<String> max;
+
   /// The inclusive minimum of the acceptable range.
   final pulumi.Input<String> min;
 
@@ -18,17 +19,15 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse(
-      max: (map['max'] as String).input(),
-      min: (map['min'] as String).input(),
+      max: pulumi.Input.fromValue(map['max'] as String),
+      min: pulumi.Input.fromValue(map['min'] as String),
     );
   }
 }
-

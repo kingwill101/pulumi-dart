@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkStateResponse {
   /// The timestamp of the last update of the link state.
   final pulumi.Input<String> lastUpdatedOn;
+
   /// The state message.
   final pulumi.Input<String>? message;
+
   /// The state of the link.
   final pulumi.Input<String>? state;
 
@@ -15,11 +17,7 @@ class LinkStateResponse {
   /// [lastUpdatedOn] The timestamp of the last update of the link state.
   /// [message] The state message.
   /// [state] The state of the link.
-  LinkStateResponse({
-    required this.lastUpdatedOn,
-    this.message,
-    this.state,
-  });
+  LinkStateResponse({required this.lastUpdatedOn, this.message, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class LinkStateResponse {
 
   factory LinkStateResponse.fromMap(Map<String, dynamic> map) {
     return LinkStateResponse(
-      lastUpdatedOn: (map['lastUpdatedOn'] as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      lastUpdatedOn: pulumi.Input.fromValue(map['lastUpdatedOn'] as String),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

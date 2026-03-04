@@ -8,12 +8,16 @@ import 'recurrence_trigger_response.dart';
 class MaterializationSettingsResponse {
   /// Specifies the notification details
   final pulumi.Input<NotificationSettingResponse>? notification;
+
   /// Specifies the compute resource settings
   final pulumi.Input<MaterializationComputeResourceResponse>? resource;
+
   /// Specifies the schedule details
   final pulumi.Input<RecurrenceTriggerResponse>? schedule;
+
   /// Specifies the spark compute settings
   final pulumi.Input<Map<String, String>>? sparkConfiguration;
+
   /// Specifies the stores to which materialization should happen
   final pulumi.Input<String>? storeType;
 
@@ -33,9 +37,21 @@ class MaterializationSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notification': ?pulumi.Input.mapOptionalInputValue<NotificationSettingResponse, Map<String, dynamic>>(notification, (value) => value.toMap()),
-      'resource': ?pulumi.Input.mapOptionalInputValue<MaterializationComputeResourceResponse, Map<String, dynamic>>(resource, (value) => value.toMap()),
-      'schedule': ?pulumi.Input.mapOptionalInputValue<RecurrenceTriggerResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'notification':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotificationSettingResponse,
+            Map<String, dynamic>
+          >(notification, (value) => value.toMap()),
+      'resource':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaterializationComputeResourceResponse,
+            Map<String, dynamic>
+          >(resource, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            RecurrenceTriggerResponse,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'sparkConfiguration': ?sparkConfiguration,
       'storeType': ?storeType,
     };
@@ -43,12 +59,45 @@ class MaterializationSettingsResponse {
 
   factory MaterializationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MaterializationSettingsResponse(
-      notification: map['notification'] == null ? null : (NotificationSettingResponse.fromMap((map['notification']! as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (MaterializationComputeResourceResponse.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (RecurrenceTriggerResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      sparkConfiguration: map['sparkConfiguration'] == null ? null : ((map['sparkConfiguration']! as Map).cast<String, String>()).input(),
-      storeType: map['storeType'] == null ? null : (map['storeType']! as String).input(),
+      notification: (() {
+        final guardedValue = map['notification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotificationSettingResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaterializationComputeResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RecurrenceTriggerResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sparkConfiguration: (() {
+        final guardedValue = map['sparkConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      storeType: (() {
+        final guardedValue = map['storeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_managedkafka;
-
 export 'managedkafka/acl.dart';
 export 'managedkafka/acl_acl_entry.dart';
 export 'managedkafka/acl_args.dart';

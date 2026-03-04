@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerSecurityGroupAttachmentState {
   /// Whether to PreCheck only this request. Value:
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the Application Load Balancer.
   final pulumi.Input<String>? loadBalancerId;
+
   /// The ID of the security group.
   final pulumi.Input<String>? securityGroupId;
 
@@ -29,12 +31,25 @@ class LoadBalancerSecurityGroupAttachmentState {
     };
   }
 
-  factory LoadBalancerSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerSecurityGroupAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerSecurityGroupAttachmentState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

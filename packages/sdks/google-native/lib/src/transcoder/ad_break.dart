@@ -9,20 +9,19 @@ class AdBreak {
 
   /// Creates a new [AdBreak].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
-  AdBreak({
-    this.startTimeOffset,
-  });
+  AdBreak({this.startTimeOffset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeOffset': ?startTimeOffset,
-    };
+    return <String, dynamic>{'startTimeOffset': ?startTimeOffset};
   }
 
   factory AdBreak.fromMap(Map<String, dynamic> map) {
     return AdBreak(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      startTimeOffset: (() {
+        final guardedValue = map['startTimeOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

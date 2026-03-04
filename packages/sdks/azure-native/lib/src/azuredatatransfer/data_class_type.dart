@@ -7,16 +7,15 @@ enum DataClassType {
   softwareArtifacts("SoftwareArtifacts"),
   complex("Complex");
 
-  const DataClassType(this.value);
-  final String value;
+  const DataClassType(this.wireValue);
+  final String wireValue;
 
   static DataClassType fromValue(String value) {
     for (final item in DataClassType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataClassType value: $value');
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntityInsightsArgs {
   /// Indicates if query time range should be extended with default time range of the query. Default value is false
   final pulumi.Input<bool>? addDefaultExtendedTimeRange;
+
   /// The end timeline date, so the results returned are before this date.
   final pulumi.Input<String> endTime;
+
   /// entity ID
   final pulumi.Input<String> entityId;
+
   /// List of Insights Query Id. If empty, default value is all insights of this entity
   final pulumi.Input<List<String>>? insightQueryIds;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The start timeline date, so the results returned are after this date.
   final pulumi.Input<String> startTime;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -54,14 +60,23 @@ class GetEntityInsightsArgs {
 
   factory GetEntityInsightsArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityInsightsArgs(
-      addDefaultExtendedTimeRange: map['addDefaultExtendedTimeRange'] == null ? null : (map['addDefaultExtendedTimeRange']! as bool).input(),
-      endTime: (map['endTime'] as String).input(),
-      entityId: (map['entityId'] as String).input(),
-      insightQueryIds: map['insightQueryIds'] == null ? null : ((map['insightQueryIds']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      addDefaultExtendedTimeRange: (() {
+        final guardedValue = map['addDefaultExtendedTimeRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      insightQueryIds: (() {
+        final guardedValue = map['insightQueryIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

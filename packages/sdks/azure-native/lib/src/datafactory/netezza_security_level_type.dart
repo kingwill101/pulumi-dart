@@ -3,16 +3,15 @@ enum NetezzaSecurityLevelType {
   valuePreferredUnSecured("PreferredUnSecured"),
   valueOnlyUnSecured("OnlyUnSecured");
 
-  const NetezzaSecurityLevelType(this.value);
-  final String value;
+  const NetezzaSecurityLevelType(this.wireValue);
+  final String wireValue;
 
   static NetezzaSecurityLevelType fromValue(String value) {
     for (final item in NetezzaSecurityLevelType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetezzaSecurityLevelType value: $value');
   }
 }
-

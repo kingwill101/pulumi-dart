@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationHdfsQopConfiguration {
   /// The data transfer protection setting configured on the HDFS cluster. This setting corresponds to your dfs.data.transfer.protection setting in the hdfs-site.xml file on your Hadoop cluster. Valid values are `DISABLED`, `AUTHENTICATION`, `INTEGRITY` and `PRIVACY`.
   final pulumi.Input<String>? dataTransferProtection;
+
   /// The RPC protection setting configured on the HDFS cluster. This setting corresponds to your hadoop.rpc.protection setting in your core-site.xml file on your Hadoop cluster. Valid values are `DISABLED`, `AUTHENTICATION`, `INTEGRITY` and `PRIVACY`.
   final pulumi.Input<String>? rpcProtection;
 
@@ -25,9 +26,16 @@ class LocationHdfsQopConfiguration {
 
   factory LocationHdfsQopConfiguration.fromMap(Map<String, dynamic> map) {
     return LocationHdfsQopConfiguration(
-      dataTransferProtection: map['dataTransferProtection'] == null ? null : ((map['dataTransferProtection'] as String).input()).input(),
-      rpcProtection: map['rpcProtection'] == null ? null : ((map['rpcProtection'] as String).input()).input(),
+      dataTransferProtection: (() {
+        final guardedValue = map['dataTransferProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rpcProtection: (() {
+        final guardedValue = map['rpcProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

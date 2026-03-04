@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDiskDetailsResponseVmmigrationV1alpha1 {
   /// Azure disk ID.
   final pulumi.Input<String> diskId;
+
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
+
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
 
@@ -29,12 +31,13 @@ class AzureDiskDetailsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory AzureDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AzureDiskDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureDiskDetailsResponseVmmigrationV1alpha1(
-      diskId: (map['diskId'] as String).input(),
-      diskNumber: (map['diskNumber'] as int).input(),
-      sizeGb: (map['sizeGb'] as String).input(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      diskNumber: pulumi.Input.fromValue(map['diskNumber'] as int),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as String),
     );
   }
 }
-

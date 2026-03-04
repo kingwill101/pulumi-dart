@@ -149,10 +149,13 @@ import 'table_bucket_replication_state.dart';
 class TableBucketReplication extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN referencing the IAM role assumed by S3 when replicating tables in this bucket.
   late final pulumi.Output<String> role;
+
   /// Replication rules. See Rule below for more details.
   late final pulumi.Output<TableBucketReplicationRule?> rule;
+
   /// ARN referencing the Table Bucket that owns this replication configuration.
   late final pulumi.Output<String> tableBucketArn;
   late final pulumi.Output<String> versionToken;
@@ -166,16 +169,16 @@ class TableBucketReplication extends pulumi.CustomResource {
     TableBucketReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableBucketReplication:TableBucketReplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.rule = registerOutput<TableBucketReplicationRule?>('rule');
-    this.tableBucketArn = registerOutput<String>('tableBucketArn');
-    this.versionToken = registerOutput<String>('versionToken');
+         'aws:s3tables/tableBucketReplication:TableBucketReplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    rule = registerOutput<TableBucketReplicationRule?>('rule');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
+    versionToken = registerOutput<String>('versionToken');
   }
 
   /// Gets an existing [TableBucketReplication] resource's state with the given [name] and [id].
@@ -196,15 +199,15 @@ class TableBucketReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableBucketReplication:TableBucketReplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.rule = registerOutput<TableBucketReplicationRule?>('rule');
-    this.tableBucketArn = registerOutput<String>('tableBucketArn');
-    this.versionToken = registerOutput<String>('versionToken');
+         'aws:s3tables/tableBucketReplication:TableBucketReplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    rule = registerOutput<TableBucketReplicationRule?>('rule');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
+    versionToken = registerOutput<String>('versionToken');
   }
 }

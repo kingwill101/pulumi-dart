@@ -18,19 +18,24 @@ class ResourcePolicyAssignmentResourceSelectorSelector {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ins': ?ins,
-      'kind': kind,
-      'notIns': ?notIns,
-    };
+    return <String, dynamic>{'ins': ?ins, 'kind': kind, 'notIns': ?notIns};
   }
 
-  factory ResourcePolicyAssignmentResourceSelectorSelector.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyAssignmentResourceSelectorSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyAssignmentResourceSelectorSelector(
-      ins: map['ins'] == null ? null : ((map['ins']! as List).cast<String>()).input(),
-      kind: (map['kind'] as String).input(),
-      notIns: map['notIns'] == null ? null : ((map['notIns']! as List).cast<String>()).input(),
+      ins: (() {
+        final guardedValue = map['ins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      notIns: (() {
+        final guardedValue = map['notIns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

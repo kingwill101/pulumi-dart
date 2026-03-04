@@ -6,9 +6,9 @@ import 'backup_plan_state.dart';
 ///
 /// For information about Cassandra Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/doc-detail/157522.htm).
 ///
-/// > **NOTE:** Available in v1.128.0+.
+/// &gt; **NOTE:** Available in v1.128.0+.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 ///
 /// ## Import
 ///
@@ -20,14 +20,19 @@ import 'backup_plan_state.dart';
 class BackupPlan extends pulumi.CustomResource {
   /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
   late final pulumi.Output<bool> active;
+
   /// The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
   late final pulumi.Output<String> backupPeriod;
+
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
   late final pulumi.Output<String> backupTime;
+
   /// The ID of the cluster for the backup.
   late final pulumi.Output<String> clusterId;
+
   /// The ID of the data center for the backup in the cluster.
   late final pulumi.Output<String> dataCenterId;
+
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
   late final pulumi.Output<int> retentionPeriod;
 
@@ -40,17 +45,17 @@ class BackupPlan extends pulumi.CustomResource {
     BackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cassandra/backupPlan:BackupPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool>('active');
-    this.backupPeriod = registerOutput<String>('backupPeriod');
-    this.backupTime = registerOutput<String>('backupTime');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dataCenterId = registerOutput<String>('dataCenterId');
-    this.retentionPeriod = registerOutput<int>('retentionPeriod');
+         'alicloud:cassandra/backupPlan:BackupPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool>('active');
+    backupPeriod = registerOutput<String>('backupPeriod');
+    backupTime = registerOutput<String>('backupTime');
+    clusterId = registerOutput<String>('clusterId');
+    dataCenterId = registerOutput<String>('dataCenterId');
+    retentionPeriod = registerOutput<int>('retentionPeriod');
   }
 
   /// Gets an existing [BackupPlan] resource's state with the given [name] and [id].
@@ -71,16 +76,16 @@ class BackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cassandra/backupPlan:BackupPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool>('active');
-    this.backupPeriod = registerOutput<String>('backupPeriod');
-    this.backupTime = registerOutput<String>('backupTime');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dataCenterId = registerOutput<String>('dataCenterId');
-    this.retentionPeriod = registerOutput<int>('retentionPeriod');
+         'alicloud:cassandra/backupPlan:BackupPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool>('active');
+    backupPeriod = registerOutput<String>('backupPeriod');
+    backupTime = registerOutput<String>('backupTime');
+    clusterId = registerOutput<String>('clusterId');
+    dataCenterId = registerOutput<String>('dataCenterId');
+    retentionPeriod = registerOutput<int>('retentionPeriod');
   }
 }

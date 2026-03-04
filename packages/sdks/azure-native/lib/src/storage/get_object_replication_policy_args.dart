@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectReplicationPolicyArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
+
   /// For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   final pulumi.Input<String> objectReplicationPolicyId;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetObjectReplicationPolicyArgs {
 
   factory GetObjectReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectReplicationPolicyArgs(
-      accountName: (map['accountName'] as String).input(),
-      objectReplicationPolicyId: (map['objectReplicationPolicyId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      objectReplicationPolicyId: pulumi.Input.fromValue(
+        map['objectReplicationPolicyId'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

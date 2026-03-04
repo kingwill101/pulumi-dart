@@ -8,20 +8,19 @@ class ServiceHealthCheckCustomConfig {
 
   /// Creates a new [ServiceHealthCheckCustomConfig].
   /// [failureThreshold] The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Value is always set to 1.
-  ServiceHealthCheckCustomConfig({
-    this.failureThreshold,
-  });
+  ServiceHealthCheckCustomConfig({this.failureThreshold});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'failureThreshold': ?failureThreshold,
-    };
+    return <String, dynamic>{'failureThreshold': ?failureThreshold};
   }
 
   factory ServiceHealthCheckCustomConfig.fromMap(Map<String, dynamic> map) {
     return ServiceHealthCheckCustomConfig(
-      failureThreshold: map['failureThreshold'] == null ? null : ((map['failureThreshold'] as int).input()).input(),
+      failureThreshold: (() {
+        final guardedValue = map['failureThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

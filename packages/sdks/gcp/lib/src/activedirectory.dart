@@ -1,5 +1,3 @@
-library module_activedirectory;
-
 export 'activedirectory/domain.dart';
 export 'activedirectory/domain_args.dart';
 export 'activedirectory/domain_state.dart';

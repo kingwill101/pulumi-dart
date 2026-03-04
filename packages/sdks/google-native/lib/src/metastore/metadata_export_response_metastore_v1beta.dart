@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataExportResponseMetastoreV1beta {
   /// The type of the database dump.
   final pulumi.Input<String> databaseDumpType;
+
   /// A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
   final pulumi.Input<String> destinationGcsUri;
+
   /// The time when the export ended.
   final pulumi.Input<String> endTime;
+
   /// The time when the export started.
   final pulumi.Input<String> startTime;
+
   /// The current state of the export.
   final pulumi.Input<String> state;
 
@@ -39,14 +43,19 @@ class MetadataExportResponseMetastoreV1beta {
     };
   }
 
-  factory MetadataExportResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
+  factory MetadataExportResponseMetastoreV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetadataExportResponseMetastoreV1beta(
-      databaseDumpType: (map['databaseDumpType'] as String).input(),
-      destinationGcsUri: (map['destinationGcsUri'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
+      databaseDumpType: pulumi.Input.fromValue(
+        map['databaseDumpType'] as String,
+      ),
+      destinationGcsUri: pulumi.Input.fromValue(
+        map['destinationGcsUri'] as String,
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

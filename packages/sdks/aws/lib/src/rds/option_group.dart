@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'option_group_args.dart';
-import 'option_group_option.dart';
 import 'option_group_state.dart';
 
 /// Provides an RDS DB option group resource. Documentation of the available options for various RDS engines can be found at:
@@ -239,13 +238,13 @@ import 'option_group_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** Any modifications to the `aws.rds.OptionGroup` are set to happen immediately as we default to applying immediately.
+/// &gt; **Note:** Any modifications to the `aws.rds.OptionGroup` are set to happen immediately as we default to applying immediately.
 ///
-/// > **WARNING:** You can perform a destroy on a `aws.rds.OptionGroup`, as long as it is not associated with any Amazon RDS resource. An option group can be associated with a DB instance, a manual DB snapshot, or an automated DB snapshot.
+/// &gt; **WARNING:** You can perform a destroy on a `aws.rds.OptionGroup`, as long as it is not associated with any Amazon RDS resource. An option group can be associated with a DB instance, a manual DB snapshot, or an automated DB snapshot.
 ///
 /// If you try to delete an option group that is associated with an Amazon RDS resource, an error similar to the following is returned:
 ///
-/// > An error occurred (InvalidOptionGroupStateFault) when calling the DeleteOptionGroup operation: The option group 'optionGroupName' cannot be deleted because it is in use.
+/// &gt; An error occurred (InvalidOptionGroupStateFault) when calling the DeleteOptionGroup operation: The option group 'optionGroupName' cannot be deleted because it is in use.
 ///
 /// More information about this can be found [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html#USER_WorkingWithOptionGroups.Delete).
 ///
@@ -259,24 +258,34 @@ import 'option_group_state.dart';
 class OptionGroup extends pulumi.CustomResource {
   /// ARN of the DB option group.
   late final pulumi.Output<String> arn;
+
   /// Specifies the name of the engine that this option group should be associated with.
   late final pulumi.Output<String> engineName;
+
   /// Specifies the major version of the engine that this option group should be associated with.
   late final pulumi.Output<String> majorEngineVersion;
+
   /// Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
   late final pulumi.Output<String> namePrefix;
+
   /// Description of the option group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> optionGroupDescription;
+
   /// The options to apply. See `option` Block below for more details.
-  late final pulumi.Output<List<OptionGroupOption>?> options;
+  late final pulumi.Output<List<Map<String, dynamic>>?> options;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
   late final pulumi.Output<bool?> skipDestroy;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -289,22 +298,22 @@ class OptionGroup extends pulumi.CustomResource {
     OptionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/optionGroup:OptionGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.engineName = registerOutput<String>('engineName');
-    this.majorEngineVersion = registerOutput<String>('majorEngineVersion');
+         'aws:rds/optionGroup:OptionGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    engineName = registerOutput<String>('engineName');
+    majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.optionGroupDescription = registerOutput<String>('optionGroupDescription');
-    this.options = registerOutput<List<OptionGroupOption>?>('options');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    optionGroupDescription = registerOutput<String>('optionGroupDescription');
+    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [OptionGroup] resource's state with the given [name] and [id].
@@ -325,21 +334,21 @@ class OptionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/optionGroup:OptionGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.engineName = registerOutput<String>('engineName');
-    this.majorEngineVersion = registerOutput<String>('majorEngineVersion');
+         'aws:rds/optionGroup:OptionGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    engineName = registerOutput<String>('engineName');
+    majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.optionGroupDescription = registerOutput<String>('optionGroupDescription');
-    this.options = registerOutput<List<OptionGroupOption>?>('options');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    optionGroupDescription = registerOutput<String>('optionGroupDescription');
+    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

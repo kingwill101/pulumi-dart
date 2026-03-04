@@ -9,7 +9,7 @@ import 'machine_group_state.dart';
 ///
 /// For information about Log Service (SLS) Machine Group and how to use it, see [What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup).
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -232,6 +232,7 @@ import 'machine_group_state.dart';
 class MachineGroup extends pulumi.CustomResource {
   /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
   late final pulumi.Output<MachineGroupGroupAttribute?> groupAttribute;
+
   /// The name of the machine group. The name must meet the following requirements:
   ///
   /// - The name of each machine group in a project must be unique.
@@ -239,17 +240,21 @@ class MachineGroup extends pulumi.CustomResource {
   /// - It must start and end with a lowercase letter or a digit.
   /// - It must be 3 to 128 characters in length.
   late final pulumi.Output<String> groupName;
+
   /// The type of the machine group. Set the value to an empty string.
   late final pulumi.Output<String?> groupType;
+
   /// The identifier type of the machine group. Valid values:
   ///
   /// - ip: The machine group uses IP addresses as identifiers.
   /// - userdefined: The machine group uses custom identifiers.
   late final pulumi.Output<String> machineIdentifyType;
+
   /// The identification information of the machine group.
   /// - If machineidentifiytype is configured to ip, enter the ip address of the server.
   /// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
   late final pulumi.Output<List<String>> machineLists;
+
   /// The name of the project.
   late final pulumi.Output<String> projectName;
 
@@ -262,17 +267,19 @@ class MachineGroup extends pulumi.CustomResource {
     MachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/machineGroup:MachineGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupAttribute = registerOutput<MachineGroupGroupAttribute?>('groupAttribute');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String?>('groupType');
-    this.machineIdentifyType = registerOutput<String>('machineIdentifyType');
-    this.machineLists = registerOutput<List<String>>('machineLists');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:sls/machineGroup:MachineGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
+      'groupAttribute',
+    );
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String?>('groupType');
+    machineIdentifyType = registerOutput<String>('machineIdentifyType');
+    machineLists = registerOutput<List<String>>('machineLists');
+    projectName = registerOutput<String>('projectName');
   }
 
   /// Gets an existing [MachineGroup] resource's state with the given [name] and [id].
@@ -293,16 +300,18 @@ class MachineGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/machineGroup:MachineGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupAttribute = registerOutput<MachineGroupGroupAttribute?>('groupAttribute');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String?>('groupType');
-    this.machineIdentifyType = registerOutput<String>('machineIdentifyType');
-    this.machineLists = registerOutput<List<String>>('machineLists');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:sls/machineGroup:MachineGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
+      'groupAttribute',
+    );
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String?>('groupType');
+    machineIdentifyType = registerOutput<String>('machineIdentifyType');
+    machineLists = registerOutput<List<String>>('machineLists');
+    projectName = registerOutput<String>('projectName');
   }
 }

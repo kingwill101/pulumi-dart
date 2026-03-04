@@ -5,16 +5,15 @@ enum NFVIType {
   valueAzureCore("AzureCore"),
   valueAzureOperatorNexus("AzureOperatorNexus");
 
-  const NFVIType(this.value);
-  final String value;
+  const NFVIType(this.wireValue);
+  final String wireValue;
 
   static NFVIType fromValue(String value) {
     for (final item in NFVIType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NFVIType value: $value');
   }
 }
-

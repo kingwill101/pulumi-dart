@@ -2,16 +2,15 @@
 enum ChannelType {
   valuePartnerTopic("PartnerTopic");
 
-  const ChannelType(this.value);
-  final String value;
+  const ChannelType(this.wireValue);
+  final String wireValue;
 
   static ChannelType fromValue(String value) {
     for (final item in ChannelType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChannelType value: $value');
   }
 }
-

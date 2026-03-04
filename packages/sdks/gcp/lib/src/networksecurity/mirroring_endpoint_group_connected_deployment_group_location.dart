@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   /// The cloud location of the endpoint group, currently restricted to `global`.
   final pulumi.Input<String>? location;
+
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -22,17 +23,23 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': ?location,
-      'state': ?state,
-    };
+    return <String, dynamic>{'location': ?location, 'state': ?state};
   }
 
-  factory MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(Map<String, dynamic> map) {
+  factory MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MirroringEndpointGroupConnectedDeploymentGroupLocation(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

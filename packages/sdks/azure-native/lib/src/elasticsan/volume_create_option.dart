@@ -6,16 +6,15 @@ enum VolumeCreateOption {
   valueDisk("Disk"),
   valueDiskRestorePoint("DiskRestorePoint");
 
-  const VolumeCreateOption(this.value);
-  final String value;
+  const VolumeCreateOption(this.wireValue);
+  final String wireValue;
 
   static VolumeCreateOption fromValue(String value) {
     for (final item in VolumeCreateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeCreateOption value: $value');
   }
 }
-

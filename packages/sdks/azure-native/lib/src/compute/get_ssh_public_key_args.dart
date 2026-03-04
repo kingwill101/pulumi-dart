@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshPublicKeyArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the SSH public key.
   final pulumi.Input<String> sshPublicKeyName;
 
@@ -29,9 +30,12 @@ class GetSshPublicKeyArgs {
 
   factory GetSshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshPublicKeyArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sshPublicKeyName: (map['sshPublicKeyName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sshPublicKeyName: pulumi.Input.fromValue(
+        map['sshPublicKeyName'] as String,
+      ),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'event_hub_consumer_group_name.dart';
 class IotHubResourceEventHubConsumerGroupArgs {
   /// The name of the Event Hub-compatible endpoint in the IoT hub.
   final pulumi.Input<String> eventHubEndpointName;
+
   /// The name of the consumer group to add.
   final pulumi.Input<String>? name;
+
   /// The EventHub consumer group name.
   final pulumi.Input<EventHubConsumerGroupName> properties;
+
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the IoT hub.
   final pulumi.Input<String> resourceName;
 
@@ -37,20 +41,37 @@ class IotHubResourceEventHubConsumerGroupArgs {
     return <String, dynamic>{
       'eventHubEndpointName': eventHubEndpointName,
       'name': ?name,
-      'properties': pulumi.Input.mapInputValue<EventHubConsumerGroupName, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            EventHubConsumerGroupName,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
   }
 
-  factory IotHubResourceEventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory IotHubResourceEventHubConsumerGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IotHubResourceEventHubConsumerGroupArgs(
-      eventHubEndpointName: (map['eventHubEndpointName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: (EventHubConsumerGroupName.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      eventHubEndpointName: pulumi.Input.fromValue(
+        map['eventHubEndpointName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        EventHubConsumerGroupName.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

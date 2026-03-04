@@ -9,16 +9,15 @@ enum CloudName {
   valueDockerHub("DockerHub"),
   valueJFrog("JFrog");
 
-  const CloudName(this.value);
-  final String value;
+  const CloudName(this.wireValue);
+  final String wireValue;
 
   static CloudName fromValue(String value) {
     for (final item in CloudName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudName value: $value');
   }
 }
-

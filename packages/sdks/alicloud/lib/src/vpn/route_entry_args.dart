@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteEntryArgs {
   /// The next hop of the destination route.
   final pulumi.Input<String> nextHop;
+
   /// Whether to issue the destination route to the VPC.
   final pulumi.Input<bool> publishVpc;
+
   /// The destination network segment of the destination route.
   final pulumi.Input<String> routeDest;
+
   /// The id of the vpn gateway.
   final pulumi.Input<String> vpnGatewayId;
+
   /// The value should be 0 or 100.
   final pulumi.Input<int> weight;
 
@@ -44,12 +48,11 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      nextHop: (map['nextHop'] as String).input(),
-      publishVpc: (map['publishVpc'] as bool).input(),
-      routeDest: (map['routeDest'] as String).input(),
-      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      publishVpc: pulumi.Input.fromValue(map['publishVpc'] as bool),
+      routeDest: pulumi.Input.fromValue(map['routeDest'] as String),
+      vpnGatewayId: pulumi.Input.fromValue(map['vpnGatewayId'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

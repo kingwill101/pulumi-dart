@@ -9,20 +9,15 @@ class GoogleCloudStorageResponse {
 
   /// Creates a new [GoogleCloudStorageResponse].
   /// [gcsPath] The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-  GoogleCloudStorageResponse({
-    required this.gcsPath,
-  });
+  GoogleCloudStorageResponse({required this.gcsPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcsPath': gcsPath,
-    };
+    return <String, dynamic>{'gcsPath': gcsPath};
   }
 
   factory GoogleCloudStorageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudStorageResponse(
-      gcsPath: (map['gcsPath'] as String).input(),
+      gcsPath: pulumi.Input.fromValue(map['gcsPath'] as String),
     );
   }
 }
-

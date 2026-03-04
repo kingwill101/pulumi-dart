@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCircuitArgs {
   /// The name of the ExpressRoute circuit.
   final pulumi.Input<String> name;
+
   /// The Name of the Resource Group where the ExpressRoute circuit exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetExpressRouteCircuitArgs {
 
   factory GetExpressRouteCircuitArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

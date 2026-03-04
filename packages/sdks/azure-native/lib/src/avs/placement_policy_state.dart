@@ -3,16 +3,15 @@ enum PlacementPolicyState {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const PlacementPolicyState(this.value);
-  final String value;
+  const PlacementPolicyState(this.wireValue);
+  final String wireValue;
 
   static PlacementPolicyState fromValue(String value) {
     for (final item in PlacementPolicyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementPolicyState value: $value');
   }
 }
-

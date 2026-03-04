@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetHybridIdentityMetadatumResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The identity of the resource.
   final IdentityResponse identity;
+
   /// The name of the resource
   final String name;
+
   /// Gets the provisioning state.
   final String provisioningState;
+
   /// Gets or sets the Public Key.
   final String? publicKey;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Gets or sets the Vm Id.
   final String? vmId;
 
@@ -64,14 +72,25 @@ class GetHybridIdentityMetadatumResult {
     return GetHybridIdentityMetadatumResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: IdentityResponse.fromMap(
+        (map['identity']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      vmId: map['vmId'] == null ? null : map['vmId']! as String,
+      vmId: (() {
+        final guardedValue = map['vmId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

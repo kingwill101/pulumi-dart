@@ -4,7 +4,7 @@ import 'topic_state.dart';
 
 /// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
 ///
-/// > **NOTE:** Available since v1.19.0.
+/// &gt; **NOTE:** Available since v1.19.0.
 ///
 /// ## Example Usage
 ///
@@ -295,16 +295,22 @@ class Topic extends pulumi.CustomResource {
   ///
   /// **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
   late final pulumi.Output<String?> comment;
+
   /// Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> createTime;
+
   /// Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> lastModifyTime;
+
   /// How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
   late final pulumi.Output<int?> lifeCycle;
+
   /// The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   late final pulumi.Output<String> name;
+
   /// The name of the datahub project that this topic belongs to. It is case-insensitive.
   late final pulumi.Output<String> projectName;
+
   /// Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
   /// - BIGINT
   /// - STRING
@@ -312,8 +318,10 @@ class Topic extends pulumi.CustomResource {
   /// - DOUBLE
   /// - TIMESTAMP
   late final pulumi.Output<Map<String, String>?> recordSchema;
+
   /// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
   late final pulumi.Output<String?> recordType;
+
   /// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
   late final pulumi.Output<int?> shardCount;
 
@@ -321,33 +329,26 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_datahub_topic_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(
-    String name, {
-    TopicArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:datahub/topic:Topic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.createTime = registerOutput<String>('createTime');
-    this.lastModifyTime = registerOutput<String>('lastModifyTime');
-    this.lifeCycle = registerOutput<int?>('lifeCycle');
+  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:datahub/topic:Topic',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    comment = registerOutput<String?>('comment');
+    createTime = registerOutput<String>('createTime');
+    lastModifyTime = registerOutput<String>('lastModifyTime');
+    lifeCycle = registerOutput<int?>('lifeCycle');
     this.name = registerOutput<String>('name');
-    this.projectName = registerOutput<String>('projectName');
-    this.recordSchema = registerOutput<Map<String, String>?>('recordSchema');
-    this.recordType = registerOutput<String?>('recordType');
-    this.shardCount = registerOutput<int?>('shardCount');
+    projectName = registerOutput<String>('projectName');
+    recordSchema = registerOutput<Map<String, String>?>('recordSchema');
+    recordType = registerOutput<String?>('recordType');
+    shardCount = registerOutput<int?>('shardCount');
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
-  static Topic get(
-    String name,
-    pulumi.Input<String> id, {
-    TopicState? state,
-  }) {
+  static Topic get(String name, pulumi.Input<String> id, {TopicState? state}) {
     return Topic._get(
       name,
       state: state?.toMap(),
@@ -360,19 +361,19 @@ class Topic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:datahub/topic:Topic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.createTime = registerOutput<String>('createTime');
-    this.lastModifyTime = registerOutput<String>('lastModifyTime');
-    this.lifeCycle = registerOutput<int?>('lifeCycle');
+         'alicloud:datahub/topic:Topic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String?>('comment');
+    createTime = registerOutput<String>('createTime');
+    lastModifyTime = registerOutput<String>('lastModifyTime');
+    lifeCycle = registerOutput<int?>('lifeCycle');
     this.name = registerOutput<String>('name');
-    this.projectName = registerOutput<String>('projectName');
-    this.recordSchema = registerOutput<Map<String, String>?>('recordSchema');
-    this.recordType = registerOutput<String?>('recordType');
-    this.shardCount = registerOutput<int?>('shardCount');
+    projectName = registerOutput<String>('projectName');
+    recordSchema = registerOutput<Map<String, String>?>('recordSchema');
+    recordType = registerOutput<String?>('recordType');
+    shardCount = registerOutput<int?>('shardCount');
   }
 }

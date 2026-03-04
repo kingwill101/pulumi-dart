@@ -4,16 +4,15 @@ enum SchedulingNodeAffinityOperator {
   notIn("NOT_IN"),
   operatorUnspecified("OPERATOR_UNSPECIFIED");
 
-  const SchedulingNodeAffinityOperator(this.value);
-  final String value;
+  const SchedulingNodeAffinityOperator(this.wireValue);
+  final String wireValue;
 
   static SchedulingNodeAffinityOperator fromValue(String value) {
     for (final item in SchedulingNodeAffinityOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchedulingNodeAffinityOperator value: $value');
   }
 }
-

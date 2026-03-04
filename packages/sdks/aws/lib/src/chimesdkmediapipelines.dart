@@ -1,5 +1,3 @@
-library module_chimesdkmediapipelines;
-
 export 'chimesdkmediapipelines/media_insights_pipeline_configuration.dart';
 export 'chimesdkmediapipelines/media_insights_pipeline_configuration_args.dart';
 export 'chimesdkmediapipelines/media_insights_pipeline_configuration_element.dart';

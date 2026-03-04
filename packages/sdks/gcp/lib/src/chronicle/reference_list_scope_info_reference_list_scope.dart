@@ -10,20 +10,21 @@ class ReferenceListScopeInfoReferenceListScope {
 
   /// Creates a new [ReferenceListScopeInfoReferenceListScope].
   /// [scopeNames] Optional. The list of scope names of the reference list. The scope names should be
-  ReferenceListScopeInfoReferenceListScope({
-    this.scopeNames,
-  });
+  ReferenceListScopeInfoReferenceListScope({this.scopeNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scopeNames': ?scopeNames,
-    };
+    return <String, dynamic>{'scopeNames': ?scopeNames};
   }
 
-  factory ReferenceListScopeInfoReferenceListScope.fromMap(Map<String, dynamic> map) {
+  factory ReferenceListScopeInfoReferenceListScope.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReferenceListScopeInfoReferenceListScope(
-      scopeNames: map['scopeNames'] == null ? null : ((map['scopeNames']! as List).cast<String>()).input(),
+      scopeNames: (() {
+        final guardedValue = map['scopeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParametersArgs {
   /// Whether to query the detailed list of resource attributes. Default value: `false`.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Parameter IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Parameter name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
   final pulumi.Input<String>? parameterName;
+
   /// The ID of the Resource Group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
   final pulumi.Input<String>? sortField;
+
   /// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
   final pulumi.Input<String>? sortOrder;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The data type of the common parameter. Valid values: `String`, `StringList`.
   final pulumi.Input<String>? type;
 
@@ -69,17 +78,58 @@ class GetParametersArgs {
 
   factory GetParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetParametersArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      sortField: map['sortField'] == null ? null : (map['sortField']! as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterName: (() {
+        final guardedValue = map['parameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortField: (() {
+        final guardedValue = map['sortField'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortOrder: (() {
+        final guardedValue = map['sortOrder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

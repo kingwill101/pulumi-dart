@@ -4,16 +4,17 @@ enum HiveMetastoreConfigEndpointProtocol {
   thrift("THRIFT"),
   grpc("GRPC");
 
-  const HiveMetastoreConfigEndpointProtocol(this.value);
-  final String value;
+  const HiveMetastoreConfigEndpointProtocol(this.wireValue);
+  final String wireValue;
 
   static HiveMetastoreConfigEndpointProtocol fromValue(String value) {
     for (final item in HiveMetastoreConfigEndpointProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HiveMetastoreConfigEndpointProtocol value: $value');
+    throw ArgumentError(
+      'Unknown HiveMetastoreConfigEndpointProtocol value: $value',
+    );
   }
 }
-

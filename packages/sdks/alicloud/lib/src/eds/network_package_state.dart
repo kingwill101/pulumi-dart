@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPackageState {
   /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   final pulumi.Input<int>? bandwidth;
+
   /// The internet charge type  of  package.
   final pulumi.Input<String>? internetChargeType;
+
   /// The ID of office site.
   final pulumi.Input<String>? officeSiteId;
+
   /// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
   final pulumi.Input<String>? status;
 
@@ -36,11 +39,26 @@ class NetworkPackageState {
 
   factory NetworkPackageState.fromMap(Map<String, dynamic> map) {
     return NetworkPackageState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
-      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      internetChargeType: (() {
+        final guardedValue = map['internetChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      officeSiteId: (() {
+        final guardedValue = map['officeSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

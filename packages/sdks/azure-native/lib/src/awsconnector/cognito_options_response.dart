@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CognitoOptions
 class CognitoOptionsResponse {
-  /// <p>Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.</p>
+  /// &lt;p&gt;Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
-  /// <p>The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.</p>
+
+  /// &lt;p&gt;The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
   final pulumi.Input<String>? identityPoolId;
-  /// <p>The <code>AmazonOpenSearchServiceCognitoAccess</code> role that allows OpenSearch Service to configure your user pool and identity pool.</p>
+
+  /// &lt;p&gt;The &lt;code&gt;AmazonOpenSearchServiceCognitoAccess&lt;/code&gt; role that allows OpenSearch Service to configure your user pool and identity pool.&lt;/p&gt;
   final pulumi.Input<String>? roleArn;
-  /// <p>The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.</p>
+
+  /// &lt;p&gt;The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
   final pulumi.Input<String>? userPoolId;
 
   /// Creates a new [CognitoOptionsResponse].
-  /// [enabled] <p>Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.</p>
-  /// [identityPoolId] <p>The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.</p>
-  /// [roleArn] <p>The <code>AmazonOpenSearchServiceCognitoAccess</code> role that allows OpenSearch Service to configure your user pool and identity pool.</p>
-  /// [userPoolId] <p>The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.</p>
+  /// [enabled] &lt;p&gt;Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.&lt;/p&gt;
+  /// [identityPoolId] &lt;p&gt;The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
+  /// [roleArn] &lt;p&gt;The &lt;code&gt;AmazonOpenSearchServiceCognitoAccess&lt;/code&gt; role that allows OpenSearch Service to configure your user pool and identity pool.&lt;/p&gt;
+  /// [userPoolId] &lt;p&gt;The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
   CognitoOptionsResponse({
     this.enabled,
     this.identityPoolId,
@@ -36,11 +39,26 @@ class CognitoOptionsResponse {
 
   factory CognitoOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CognitoOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identityPoolId: (() {
+        final guardedValue = map['identityPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: (() {
+        final guardedValue = map['userPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

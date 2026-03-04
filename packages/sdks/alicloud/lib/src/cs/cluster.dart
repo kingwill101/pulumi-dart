@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
-import 'cluster_node.dart';
 import 'cluster_state.dart';
 
 class Cluster extends pulumi.CustomResource {
@@ -15,7 +14,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> namePrefix;
   late final pulumi.Output<bool?> needSlb;
   late final pulumi.Output<int?> nodeNumber;
-  late final pulumi.Output<List<ClusterNode>> nodes;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
   late final pulumi.Output<String> password;
   late final pulumi.Output<bool?> releaseEip;
   late final pulumi.Output<String> securityGroupId;
@@ -33,30 +32,30 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.diskCategory = registerOutput<String?>('diskCategory');
-    this.diskSize = registerOutput<int?>('diskSize');
-    this.imageId = registerOutput<String?>('imageId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.isOutdated = registerOutput<bool?>('isOutdated');
+         'alicloud:cs/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    diskCategory = registerOutput<String?>('diskCategory');
+    diskSize = registerOutput<int?>('diskSize');
+    imageId = registerOutput<String?>('imageId');
+    instanceType = registerOutput<String>('instanceType');
+    isOutdated = registerOutput<bool?>('isOutdated');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.needSlb = registerOutput<bool?>('needSlb');
-    this.nodeNumber = registerOutput<int?>('nodeNumber');
-    this.nodes = registerOutput<List<ClusterNode>>('nodes');
-    this.password = registerOutput<String>('password');
-    this.releaseEip = registerOutput<bool?>('releaseEip');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.size = registerOutput<int?>('size');
-    this.slbId = registerOutput<String>('slbId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+    namePrefix = registerOutput<String?>('namePrefix');
+    needSlb = registerOutput<bool?>('needSlb');
+    nodeNumber = registerOutput<int?>('nodeNumber');
+    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    password = registerOutput<String>('password');
+    releaseEip = registerOutput<bool?>('releaseEip');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    size = registerOutput<int?>('size');
+    slbId = registerOutput<String>('slbId');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -77,29 +76,29 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.diskCategory = registerOutput<String?>('diskCategory');
-    this.diskSize = registerOutput<int?>('diskSize');
-    this.imageId = registerOutput<String?>('imageId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.isOutdated = registerOutput<bool?>('isOutdated');
+         'alicloud:cs/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    diskCategory = registerOutput<String?>('diskCategory');
+    diskSize = registerOutput<int?>('diskSize');
+    imageId = registerOutput<String?>('imageId');
+    instanceType = registerOutput<String>('instanceType');
+    isOutdated = registerOutput<bool?>('isOutdated');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.needSlb = registerOutput<bool?>('needSlb');
-    this.nodeNumber = registerOutput<int?>('nodeNumber');
-    this.nodes = registerOutput<List<ClusterNode>>('nodes');
-    this.password = registerOutput<String>('password');
-    this.releaseEip = registerOutput<bool?>('releaseEip');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.size = registerOutput<int?>('size');
-    this.slbId = registerOutput<String>('slbId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+    namePrefix = registerOutput<String?>('namePrefix');
+    needSlb = registerOutput<bool?>('needSlb');
+    nodeNumber = registerOutput<int?>('nodeNumber');
+    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    password = registerOutput<String>('password');
+    releaseEip = registerOutput<bool?>('releaseEip');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    size = registerOutput<int?>('size');
+    slbId = registerOutput<String>('slbId');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppServicePlanSku {
   /// Specifies the number of workers associated with this App Service Plan.
   final pulumi.Input<int> capacity;
+
   /// Specifies the plan's instance size.
   final pulumi.Input<String> size;
+
   /// Specifies the plan's pricing tier.
   final pulumi.Input<String> tier;
 
@@ -21,19 +23,14 @@ class GetAppServicePlanSku {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'capacity': capacity,
-      'size': size,
-      'tier': tier,
-    };
+    return <String, dynamic>{'capacity': capacity, 'size': size, 'tier': tier};
   }
 
   factory GetAppServicePlanSku.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanSku(
-      capacity: (map['capacity'] as int).input(),
-      size: (map['size'] as String).input(),
-      tier: (map['tier'] as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      size: pulumi.Input.fromValue(map['size'] as String),
+      tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
-

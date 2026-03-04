@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -42,6 +44,7 @@ func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Quick:                true,
 		SkipRefresh:          true,
 		ExpectRefreshChanges: true,
+		Env:                  getDartTestEnv(t),
 	}
 
 	return baseJS
@@ -80,4 +83,32 @@ func createEcrClient(t *testing.T) *ecr.Client {
 	client := ecr.NewFromConfig(loadAwsDefaultConfig(t))
 	require.NotNil(t, client, "failed to create ECR client")
 	return client
+}
+
+func getDartTestEnv(t *testing.T) []string {
+	t.Helper()
+	languagePluginPath, err := filepath.Abs("../../pulumi-language-dart")
+	require.NoError(t, err)
+
+	return []string{
+		getProviderPath(languagePluginPath),
+		"PULUMI_CONFIG_PASSPHRASE=pulumi-dart-test-passphrase",
+	}
+}
+
+func getProviderPath(providerDir string) string {
+	environ := os.Environ()
+	for _, env := range environ {
+		split := strings.SplitN(env, "=", 2)
+		if len(split) != 2 {
+			continue
+		}
+		key, value := split[0], split[1]
+
+		if strings.EqualFold(key, "PATH") {
+			return fmt.Sprintf("%s=%s%s%s", key, providerDir, string(os.PathListSeparator), value)
+		}
+	}
+
+	return fmt.Sprintf("PATH=%s", providerDir)
 }

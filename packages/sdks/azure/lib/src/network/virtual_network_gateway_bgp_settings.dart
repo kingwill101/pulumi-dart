@@ -6,10 +6,13 @@ import 'virtual_network_gateway_bgp_settings_peering_address.dart';
 class VirtualNetworkGatewayBgpSettings {
   /// The Autonomous System Number (ASN) to use as part of the BGP.
   final pulumi.Input<int>? asn;
+
   /// The weight added to routes which have been learned through BGP peering. Valid values can be between `0` and `100`.
   final pulumi.Input<int>? peerWeight;
+
   /// A list of `peering_addresses` blocks as defined below. Only one `peering_addresses` block can be specified except when `active_active` of this Virtual Network Gateway is `true`.
-  final pulumi.Input<List<VirtualNetworkGatewayBgpSettingsPeeringAddress>>? peeringAddresses;
+  final pulumi.Input<List<VirtualNetworkGatewayBgpSettingsPeeringAddress>>?
+  peeringAddresses;
 
   /// Creates a new [VirtualNetworkGatewayBgpSettings].
   /// [asn] The Autonomous System Number (ASN) to use as part of the BGP.
@@ -25,16 +28,46 @@ class VirtualNetworkGatewayBgpSettings {
     return <String, dynamic>{
       'asn': ?asn,
       'peerWeight': ?peerWeight,
-      'peeringAddresses': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkGatewayBgpSettingsPeeringAddress>, List<Map<String, dynamic>>>(peeringAddresses, (value) => pulumi.Input.encodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'peeringAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualNetworkGatewayBgpSettingsPeeringAddress>,
+            List<Map<String, dynamic>>
+          >(
+            peeringAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualNetworkGatewayBgpSettingsPeeringAddress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory VirtualNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayBgpSettings(
-      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
-      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight']! as int).input(),
-      peeringAddresses: map['peeringAddresses'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress>(map['peeringAddresses']!, (value) => VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: (() {
+        final guardedValue = map['asn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      peerWeight: (() {
+        final guardedValue = map['peerWeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      peeringAddresses: (() {
+        final guardedValue = map['peeringAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress>(
+            guardedValue,
+            (value) => VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

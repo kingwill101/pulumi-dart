@@ -21,11 +21,14 @@ class GetClusterAddonsConfigCloudrunConfig {
     };
   }
 
-  factory GetClusterAddonsConfigCloudrunConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigCloudrunConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAddonsConfigCloudrunConfig(
-      disabled: (map['disabled'] as bool).input(),
-      loadBalancerType: (map['loadBalancerType'] as String).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      loadBalancerType: pulumi.Input.fromValue(
+        map['loadBalancerType'] as String,
+      ),
     );
   }
 }
-

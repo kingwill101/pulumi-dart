@@ -4,16 +4,20 @@ enum SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4 {
   normal("NORMAL"),
   softShutdown("SOFT_SHUTDOWN");
 
-  const SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4(this.value);
-  final String value;
+  const SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
-  static SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4 fromValue(String value) {
-    for (final item in SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4.values) {
-      if (item.value == value) {
+  static SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4 fromValue(
+    String value,
+  ) {
+    for (final item
+        in SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4 value: $value',
+    );
   }
 }
-

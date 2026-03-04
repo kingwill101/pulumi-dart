@@ -8,29 +8,58 @@ import 'sub_resource.dart';
 class PeeringPropertiesExchange {
   /// The set of connections that constitute an exchange peering.
   final pulumi.Input<List<ExchangeConnection>>? connections;
+
   /// The reference of the peer ASN.
   final pulumi.Input<SubResource>? peerAsn;
 
   /// Creates a new [PeeringPropertiesExchange].
   /// [connections] The set of connections that constitute an exchange peering.
   /// [peerAsn] The reference of the peer ASN.
-  PeeringPropertiesExchange({
-    this.connections,
-    this.peerAsn,
-  });
+  PeeringPropertiesExchange({this.connections, this.peerAsn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': ?pulumi.Input.mapOptionalInputValue<List<ExchangeConnection>, List<Map<String, dynamic>>>(connections, (value) => pulumi.Input.encodeList<ExchangeConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'peerAsn': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(peerAsn, (value) => value.toMap()),
+      'connections':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExchangeConnection>,
+            List<Map<String, dynamic>>
+          >(
+            connections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExchangeConnection,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'peerAsn':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(peerAsn, (value) => value.toMap()),
     };
   }
 
   factory PeeringPropertiesExchange.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesExchange(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<ExchangeConnection>(map['connections']!, (value) => ExchangeConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      peerAsn: map['peerAsn'] == null ? null : (SubResource.fromMap((map['peerAsn']! as Map).cast<String, dynamic>())).input(),
+      connections: (() {
+        final guardedValue = map['connections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExchangeConnection>(
+            guardedValue,
+            (value) => ExchangeConnection.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      peerAsn: (() {
+        final guardedValue = map['peerAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

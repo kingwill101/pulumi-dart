@@ -4,16 +4,15 @@ enum IntentWebhookState {
   webhookStateEnabled("WEBHOOK_STATE_ENABLED"),
   webhookStateEnabledForSlotFilling("WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING");
 
-  const IntentWebhookState(this.value);
-  final String value;
+  const IntentWebhookState(this.wireValue);
+  final String wireValue;
 
   static IntentWebhookState fromValue(String value) {
     for (final item in IntentWebhookState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntentWebhookState value: $value');
   }
 }
-

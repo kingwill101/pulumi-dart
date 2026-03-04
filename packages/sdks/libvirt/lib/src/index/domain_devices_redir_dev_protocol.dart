@@ -8,20 +8,15 @@ class DomainDevicesRedirDevProtocol {
 
   /// Creates a new [DomainDevicesRedirDevProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesRedirDevProtocol({
-    required this.type,
-  });
+  DomainDevicesRedirDevProtocol({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory DomainDevicesRedirDevProtocol.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirDevProtocol(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

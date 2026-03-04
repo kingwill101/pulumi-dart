@@ -25,12 +25,15 @@ class GetCommonBandwidthPackagesPackagePublicIpAddress {
     };
   }
 
-  factory GetCommonBandwidthPackagesPackagePublicIpAddress.fromMap(Map<String, dynamic> map) {
+  factory GetCommonBandwidthPackagesPackagePublicIpAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCommonBandwidthPackagesPackagePublicIpAddress(
-      allocationId: (map['allocationId'] as String).input(),
-      bandwidthPackageIpRelationStatus: (map['bandwidthPackageIpRelationStatus'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      bandwidthPackageIpRelationStatus: pulumi.Input.fromValue(
+        map['bandwidthPackageIpRelationStatus'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineStorageConfigurationTempDbSettings {
   /// The SQL Server default file count. This value defaults to `8`
   final pulumi.Input<int>? dataFileCount;
+
   /// The SQL Server default file size - This value defaults to `512`
   final pulumi.Input<int>? dataFileGrowthInMb;
+
   /// The SQL Server default file size - This value defaults to `256`
   final pulumi.Input<int>? dataFileSizeMb;
+
   /// The SQL Server default path
   final pulumi.Input<String> defaultFilePath;
+
   /// The SQL Server default file size - This value defaults to `512`
   final pulumi.Input<int>? logFileGrowthMb;
+
   /// The SQL Server default file size - This value defaults to `256`
   final pulumi.Input<int>? logFileSizeMb;
+
   /// A list of Logical Unit Numbers for the disks.
   final pulumi.Input<List<int>> luns;
 
@@ -48,16 +54,37 @@ class VirtualMachineStorageConfigurationTempDbSettings {
     };
   }
 
-  factory VirtualMachineStorageConfigurationTempDbSettings.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineStorageConfigurationTempDbSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineStorageConfigurationTempDbSettings(
-      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount']! as int).input(),
-      dataFileGrowthInMb: map['dataFileGrowthInMb'] == null ? null : (map['dataFileGrowthInMb']! as int).input(),
-      dataFileSizeMb: map['dataFileSizeMb'] == null ? null : (map['dataFileSizeMb']! as int).input(),
-      defaultFilePath: (map['defaultFilePath'] as String).input(),
-      logFileGrowthMb: map['logFileGrowthMb'] == null ? null : (map['logFileGrowthMb']! as int).input(),
-      logFileSizeMb: map['logFileSizeMb'] == null ? null : (map['logFileSizeMb']! as int).input(),
-      luns: ((map['luns'] as List).cast<int>()).input(),
+      dataFileCount: (() {
+        final guardedValue = map['dataFileCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataFileGrowthInMb: (() {
+        final guardedValue = map['dataFileGrowthInMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataFileSizeMb: (() {
+        final guardedValue = map['dataFileSizeMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultFilePath: pulumi.Input.fromValue(map['defaultFilePath'] as String),
+      logFileGrowthMb: (() {
+        final guardedValue = map['logFileGrowthMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logFileSizeMb: (() {
+        final guardedValue = map['logFileSizeMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      luns: pulumi.Input.fromValue((map['luns'] as List).cast<int>()),
     );
   }
 }
-

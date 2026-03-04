@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/account_management.dart';
 export 'index/account_management_args.dart';
 export 'index/account_management_state.dart';

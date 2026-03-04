@@ -4,16 +4,15 @@ enum AnimationFadeFadeType {
   fadeIn("FADE_IN"),
   fadeOut("FADE_OUT");
 
-  const AnimationFadeFadeType(this.value);
-  final String value;
+  const AnimationFadeFadeType(this.wireValue);
+  final String wireValue;
 
   static AnimationFadeFadeType fromValue(String value) {
     for (final item in AnimationFadeFadeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AnimationFadeFadeType value: $value');
   }
 }
-

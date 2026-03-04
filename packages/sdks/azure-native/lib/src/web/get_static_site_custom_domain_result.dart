@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getStaticSiteCustomDomain.
 class GetStaticSiteCustomDomainResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The date and time on which the custom domain was created for the static site.
   final String createdOn;
+
   /// The domain name for the static site custom domain.
   final String domainName;
   final String errorMessage;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// The status of the custom domain
   final String status;
+
   /// Resource type.
   final String type;
+
   /// The TXT record validation token
   final String validationToken;
 
@@ -69,7 +76,11 @@ class GetStaticSiteCustomDomainResult {
       domainName: map['domainName'] as String,
       errorMessage: map['errorMessage'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       status: map['status'] as String,
       type: map['type'] as String,
@@ -77,4 +88,3 @@ class GetStaticSiteCustomDomainResult {
     );
   }
 }
-

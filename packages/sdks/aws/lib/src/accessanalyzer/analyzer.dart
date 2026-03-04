@@ -845,16 +845,22 @@ class Analyzer extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> analyzerName;
+
   /// ARN of the Analyzer.
   late final pulumi.Output<String> arn;
+
   /// A block that specifies the configuration of the analyzer. See `configuration` Block for details.
   late final pulumi.Output<AnalyzerConfiguration?> configuration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Type that represents the zone of trust or scope for the analyzer. Valid values are `ACCOUNT`, `ACCOUNT_INTERNAL_ACCESS`, `ACCOUNT_UNUSED_ACCESS`, `ORGANIZATION`, `ORGANIZATION_INTERNAL_ACCESS`, `ORGANIZATION_UNUSED_ACCESS`. Defaults to `ACCOUNT`.
   late final pulumi.Output<String?> type;
 
@@ -867,18 +873,18 @@ class Analyzer extends pulumi.CustomResource {
     AnalyzerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:accessanalyzer/analyzer:Analyzer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyzerName = registerOutput<String>('analyzerName');
-    this.arn = registerOutput<String>('arn');
-    this.configuration = registerOutput<AnalyzerConfiguration?>('configuration');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
+         'aws:accessanalyzer/analyzer:Analyzer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<AnalyzerConfiguration?>('configuration');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [Analyzer] resource's state with the given [name] and [id].
@@ -899,17 +905,17 @@ class Analyzer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:accessanalyzer/analyzer:Analyzer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyzerName = registerOutput<String>('analyzerName');
-    this.arn = registerOutput<String>('arn');
-    this.configuration = registerOutput<AnalyzerConfiguration?>('configuration');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
+         'aws:accessanalyzer/analyzer:Analyzer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<AnalyzerConfiguration?>('configuration');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
   }
 }

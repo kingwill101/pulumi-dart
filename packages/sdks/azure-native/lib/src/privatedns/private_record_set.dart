@@ -1,14 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aaaa_record_response.dart';
-import 'arecord_response.dart';
 import 'cname_record_response.dart';
-import 'mx_record_response.dart';
 import 'private_record_set_args.dart';
-import 'ptr_record_response.dart';
 import 'soa_record_response.dart';
-import 'srv_record_response.dart';
 import 'system_data_response.dart';
-import 'txt_record_response.dart';
 
 /// Describes a DNS record set (a collection of DNS records with the same name and type) in a Private DNS zone.
 ///
@@ -1416,37 +1410,53 @@ import 'txt_record_response.dart';
 /// ```
 class PrivateRecordSet extends pulumi.CustomResource {
   /// The list of A records in the record set.
-  late final pulumi.Output<List<ARecordResponse>?> aRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> aRecords;
+
   /// The list of AAAA records in the record set.
-  late final pulumi.Output<List<AaaaRecordResponse>?> aaaaRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> aaaaRecords;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The CNAME record in the record set.
   late final pulumi.Output<CnameRecordResponse?> cnameRecord;
+
   /// The ETag of the record set.
   late final pulumi.Output<String?> etag;
+
   /// Fully qualified domain name of the record set.
   late final pulumi.Output<String> fqdn;
+
   /// Is the record set auto-registered in the Private DNS zone through a virtual network link?
   late final pulumi.Output<bool> isAutoRegistered;
+
   /// The metadata attached to the record set.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The list of MX records in the record set.
-  late final pulumi.Output<List<MxRecordResponse>?> mxRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mxRecords;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The list of PTR records in the record set.
-  late final pulumi.Output<List<PtrRecordResponse>?> ptrRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ptrRecords;
+
   /// The SOA record in the record set.
   late final pulumi.Output<SoaRecordResponse?> soaRecord;
+
   /// The list of SRV records in the record set.
-  late final pulumi.Output<List<SrvRecordResponse>?> srvRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> srvRecords;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The TTL (time-to-live) of the records in the record set.
   late final pulumi.Output<double?> ttl;
+
   /// The list of TXT records in the record set.
-  late final pulumi.Output<List<TxtRecordResponse>?> txtRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>?> txtRecords;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1459,27 +1469,27 @@ class PrivateRecordSet extends pulumi.CustomResource {
     PrivateRecordSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:privatedns:PrivateRecordSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aRecords = registerOutput<List<ARecordResponse>?>('aRecords');
-    this.aaaaRecords = registerOutput<List<AaaaRecordResponse>?>('aaaaRecords');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
-    this.etag = registerOutput<String?>('etag');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.isAutoRegistered = registerOutput<bool>('isAutoRegistered');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mxRecords = registerOutput<List<MxRecordResponse>?>('mxRecords');
+         'azure-native:privatedns:PrivateRecordSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aRecords = registerOutput<List<Map<String, dynamic>>?>('aRecords');
+    aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
+    etag = registerOutput<String?>('etag');
+    fqdn = registerOutput<String>('fqdn');
+    isAutoRegistered = registerOutput<bool>('isAutoRegistered');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mxRecords = registerOutput<List<Map<String, dynamic>>?>('mxRecords');
     this.name = registerOutput<String>('name');
-    this.ptrRecords = registerOutput<List<PtrRecordResponse>?>('ptrRecords');
-    this.soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
-    this.srvRecords = registerOutput<List<SrvRecordResponse>?>('srvRecords');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.ttl = registerOutput<double?>('ttl');
-    this.txtRecords = registerOutput<List<TxtRecordResponse>?>('txtRecords');
-    this.type = registerOutput<String>('type');
+    ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
+    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
+    srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    ttl = registerOutput<double?>('ttl');
+    txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');
+    type = registerOutput<String>('type');
   }
 }

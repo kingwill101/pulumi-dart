@@ -482,34 +482,44 @@ import 'share_network_state.dart';
 class ShareNetwork extends pulumi.CustomResource {
   /// The share network CIDR.
   late final pulumi.Output<String> cidr;
+
   /// The human-readable description for the share network.
   /// Changing this updates the description of the existing share network.
   late final pulumi.Output<String?> description;
+
   /// The IP version of the share network. Can either be 4 or 6.
   late final pulumi.Output<int> ipVersion;
+
   /// The name for the share network. Changing this updates the name
   /// of the existing share network.
   late final pulumi.Output<String> name;
+
   /// The share network type. Can either be VLAN, VXLAN, GRE, or flat.
   late final pulumi.Output<String> networkType;
+
   /// The UUID of a neutron network when setting up or updating
   /// a share network. Changing this updates the existing share network if it's not used by
   /// shares.
   late final pulumi.Output<String> neutronNetId;
+
   /// The UUID of the neutron subnet when setting up or
   /// updating a share network. Changing this updates the existing share network if it's
   /// not used by shares.
   late final pulumi.Output<String> neutronSubnetId;
+
   /// The owner of the Share Network.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Shared File System client.
   /// A Shared File System client is needed to create a share network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// share network.
   late final pulumi.Output<String> region;
+
   /// The list of security service IDs to associate with
   /// the share network. The security service must be specified by ID and not name.
   late final pulumi.Output<List<String>?> securityServiceIds;
+
   /// The share network segmentation ID.
   late final pulumi.Output<int> segmentationId;
 
@@ -522,22 +532,22 @@ class ShareNetwork extends pulumi.CustomResource {
     ShareNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.ipVersion = registerOutput<int>('ipVersion');
+         'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    ipVersion = registerOutput<int>('ipVersion');
     this.name = registerOutput<String>('name');
-    this.networkType = registerOutput<String>('networkType');
-    this.neutronNetId = registerOutput<String>('neutronNetId');
-    this.neutronSubnetId = registerOutput<String>('neutronSubnetId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.securityServiceIds = registerOutput<List<String>?>('securityServiceIds');
-    this.segmentationId = registerOutput<int>('segmentationId');
+    networkType = registerOutput<String>('networkType');
+    neutronNetId = registerOutput<String>('neutronNetId');
+    neutronSubnetId = registerOutput<String>('neutronSubnetId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    securityServiceIds = registerOutput<List<String>?>('securityServiceIds');
+    segmentationId = registerOutput<int>('segmentationId');
   }
 
   /// Gets an existing [ShareNetwork] resource's state with the given [name] and [id].
@@ -558,21 +568,21 @@ class ShareNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.ipVersion = registerOutput<int>('ipVersion');
+         'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    ipVersion = registerOutput<int>('ipVersion');
     this.name = registerOutput<String>('name');
-    this.networkType = registerOutput<String>('networkType');
-    this.neutronNetId = registerOutput<String>('neutronNetId');
-    this.neutronSubnetId = registerOutput<String>('neutronSubnetId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.securityServiceIds = registerOutput<List<String>?>('securityServiceIds');
-    this.segmentationId = registerOutput<int>('segmentationId');
+    networkType = registerOutput<String>('networkType');
+    neutronNetId = registerOutput<String>('neutronNetId');
+    neutronSubnetId = registerOutput<String>('neutronSubnetId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    securityServiceIds = registerOutput<List<String>?>('securityServiceIds');
+    segmentationId = registerOutput<int>('segmentationId');
   }
 }

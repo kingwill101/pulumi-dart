@@ -5,35 +5,43 @@ import 'tenancy_enum_value_response.dart';
 
 /// Definition of Placement
 class PlacementResponse {
-  /// <p>The affinity setting for the instance on the Dedicated Host.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a> or <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a>.</p>
+  /// &lt;p&gt;The affinity setting for the instance on the Dedicated Host.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? affinity;
-  /// <p>The Availability Zone of the instance.</p> <p>If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
+
+  /// &lt;p&gt;The Availability Zone of the instance.&lt;/p&gt; &lt;p&gt;If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? availabilityZone;
-  /// <p>The ID of the placement group that the instance is in. If you specify <code>GroupId</code>, you can't specify <code>GroupName</code>.</p>
+
+  /// &lt;p&gt;The ID of the placement group that the instance is in. If you specify &lt;code&gt;GroupId&lt;/code&gt;, you can't specify &lt;code&gt;GroupName&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? groupId;
-  /// <p>The name of the placement group that the instance is in. If you specify <code>GroupName</code>, you can't specify <code>GroupId</code>.</p>
+
+  /// &lt;p&gt;The name of the placement group that the instance is in. If you specify &lt;code&gt;GroupName&lt;/code&gt;, you can't specify &lt;code&gt;GroupId&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? groupName;
-  /// <p>The ID of the Dedicated Host on which the instance resides.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a> or <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a>.</p>
+
+  /// &lt;p&gt;The ID of the Dedicated Host on which the instance resides.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? hostId;
-  /// <p>The ARN of the host resource group in which to launch the instances.</p> <p>If you specify this parameter, either omit the <b>Tenancy</b> parameter or set it to <code>host</code>.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
+
+  /// &lt;p&gt;The ARN of the host resource group in which to launch the instances.&lt;/p&gt; &lt;p&gt;If you specify this parameter, either omit the &lt;b&gt;Tenancy&lt;/b&gt; parameter or set it to &lt;code&gt;host&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? hostResourceGroupArn;
-  /// <p>The number of the partition that the instance is in. Valid only if the placement group strategy is set to <code>partition</code>.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
+
+  /// &lt;p&gt;The number of the partition that the instance is in. Valid only if the placement group strategy is set to &lt;code&gt;partition&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<int>? partitionNumber;
-  /// <p>Reserved for future use.</p>
+
+  /// &lt;p&gt;Reserved for future use.&lt;/p&gt;
   final pulumi.Input<String>? spreadDomain;
-  /// <p>The tenancy of the instance. An instance with a tenancy of <code>dedicated</code> runs on single-tenant hardware.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>. The <code>host</code> tenancy is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a> or for T3 instances that are configured for the <code>unlimited</code> CPU credit option.</p>
+
+  /// &lt;p&gt;The tenancy of the instance. An instance with a tenancy of &lt;code&gt;dedicated&lt;/code&gt; runs on single-tenant hardware.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;. The &lt;code&gt;host&lt;/code&gt; tenancy is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt; or for T3 instances that are configured for the &lt;code&gt;unlimited&lt;/code&gt; CPU credit option.&lt;/p&gt;
   final pulumi.Input<TenancyEnumValueResponse>? tenancy;
 
   /// Creates a new [PlacementResponse].
-  /// [affinity] <p>The affinity setting for the instance on the Dedicated Host.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a> or <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a>.</p>
-  /// [availabilityZone] <p>The Availability Zone of the instance.</p> <p>If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
-  /// [groupId] <p>The ID of the placement group that the instance is in. If you specify <code>GroupId</code>, you can't specify <code>GroupName</code>.</p>
-  /// [groupName] <p>The name of the placement group that the instance is in. If you specify <code>GroupName</code>, you can't specify <code>GroupId</code>.</p>
-  /// [hostId] <p>The ID of the Dedicated Host on which the instance resides.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a> or <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a>.</p>
-  /// [hostResourceGroupArn] <p>The ARN of the host resource group in which to launch the instances.</p> <p>If you specify this parameter, either omit the <b>Tenancy</b> parameter or set it to <code>host</code>.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
-  /// [partitionNumber] <p>The number of the partition that the instance is in. Valid only if the placement group strategy is set to <code>partition</code>.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>.</p>
-  /// [spreadDomain] <p>Reserved for future use.</p>
-  /// [tenancy] <p>The tenancy of the instance. An instance with a tenancy of <code>dedicated</code> runs on single-tenant hardware.</p> <p>This parameter is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'>CreateFleet</a>. The <code>host</code> tenancy is not supported for <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'>ImportInstance</a> or for T3 instances that are configured for the <code>unlimited</code> CPU credit option.</p>
+  /// [affinity] &lt;p&gt;The affinity setting for the instance on the Dedicated Host.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt;.&lt;/p&gt;
+  /// [availabilityZone] &lt;p&gt;The Availability Zone of the instance.&lt;/p&gt; &lt;p&gt;If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
+  /// [groupId] &lt;p&gt;The ID of the placement group that the instance is in. If you specify &lt;code&gt;GroupId&lt;/code&gt;, you can't specify &lt;code&gt;GroupName&lt;/code&gt;.&lt;/p&gt;
+  /// [groupName] &lt;p&gt;The name of the placement group that the instance is in. If you specify &lt;code&gt;GroupName&lt;/code&gt;, you can't specify &lt;code&gt;GroupId&lt;/code&gt;.&lt;/p&gt;
+  /// [hostId] &lt;p&gt;The ID of the Dedicated Host on which the instance resides.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt;.&lt;/p&gt;
+  /// [hostResourceGroupArn] &lt;p&gt;The ARN of the host resource group in which to launch the instances.&lt;/p&gt; &lt;p&gt;If you specify this parameter, either omit the &lt;b&gt;Tenancy&lt;/b&gt; parameter or set it to &lt;code&gt;host&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
+  /// [partitionNumber] &lt;p&gt;The number of the partition that the instance is in. Valid only if the placement group strategy is set to &lt;code&gt;partition&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
+  /// [spreadDomain] &lt;p&gt;Reserved for future use.&lt;/p&gt;
+  /// [tenancy] &lt;p&gt;The tenancy of the instance. An instance with a tenancy of &lt;code&gt;dedicated&lt;/code&gt; runs on single-tenant hardware.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;. The &lt;code&gt;host&lt;/code&gt; tenancy is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt; or for T3 instances that are configured for the &lt;code&gt;unlimited&lt;/code&gt; CPU credit option.&lt;/p&gt;
   PlacementResponse({
     this.affinity,
     this.availabilityZone,
@@ -56,22 +64,65 @@ class PlacementResponse {
       'hostResourceGroupArn': ?hostResourceGroupArn,
       'partitionNumber': ?partitionNumber,
       'spreadDomain': ?spreadDomain,
-      'tenancy': ?pulumi.Input.mapOptionalInputValue<TenancyEnumValueResponse, Map<String, dynamic>>(tenancy, (value) => value.toMap()),
+      'tenancy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TenancyEnumValueResponse,
+            Map<String, dynamic>
+          >(tenancy, (value) => value.toMap()),
     };
   }
 
   factory PlacementResponse.fromMap(Map<String, dynamic> map) {
     return PlacementResponse(
-      affinity: map['affinity'] == null ? null : (map['affinity']! as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : (map['hostResourceGroupArn']! as String).input(),
-      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber']! as int).input(),
-      spreadDomain: map['spreadDomain'] == null ? null : (map['spreadDomain']! as String).input(),
-      tenancy: map['tenancy'] == null ? null : (TenancyEnumValueResponse.fromMap((map['tenancy']! as Map).cast<String, dynamic>())).input(),
+      affinity: (() {
+        final guardedValue = map['affinity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostId: (() {
+        final guardedValue = map['hostId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostResourceGroupArn: (() {
+        final guardedValue = map['hostResourceGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionNumber: (() {
+        final guardedValue = map['partitionNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      spreadDomain: (() {
+        final guardedValue = map['spreadDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenancy: (() {
+        final guardedValue = map['tenancy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TenancyEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

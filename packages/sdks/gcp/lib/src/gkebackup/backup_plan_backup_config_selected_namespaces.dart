@@ -8,20 +8,19 @@ class BackupPlanBackupConfigSelectedNamespaces {
 
   /// Creates a new [BackupPlanBackupConfigSelectedNamespaces].
   /// [namespaces] A list of Kubernetes Namespaces.
-  BackupPlanBackupConfigSelectedNamespaces({
-    required this.namespaces,
-  });
+  BackupPlanBackupConfigSelectedNamespaces({required this.namespaces});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespaces': namespaces,
-    };
+    return <String, dynamic>{'namespaces': namespaces};
   }
 
-  factory BackupPlanBackupConfigSelectedNamespaces.fromMap(Map<String, dynamic> map) {
+  factory BackupPlanBackupConfigSelectedNamespaces.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPlanBackupConfigSelectedNamespaces(
-      namespaces: ((map['namespaces'] as List).cast<String>()).input(),
+      namespaces: pulumi.Input.fromValue(
+        (map['namespaces'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -9,25 +9,35 @@ import 'connector_sftp_config.dart';
 class ConnectorState {
   /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   final pulumi.Input<String>? accessRole;
+
   /// The ARN of the connector.
   final pulumi.Input<String>? arn;
+
   /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
   final pulumi.Input<ConnectorAs2Config>? as2Config;
+
   /// The unique identifier for the AS2 profile or SFTP Profile.
   final pulumi.Input<String>? connectorId;
+
   /// Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
   final pulumi.Input<ConnectorEgressConfig>? egressConfig;
+
   /// The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   final pulumi.Input<String>? loggingRole;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the security policy for the connector.
   final pulumi.Input<String>? securityPolicyName;
+
   /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
   final pulumi.Input<ConnectorSftpConfig>? sftpConfig;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   final pulumi.Input<String>? url;
 
@@ -63,13 +73,25 @@ class ConnectorState {
     return <String, dynamic>{
       'accessRole': ?accessRole,
       'arn': ?arn,
-      'as2Config': ?pulumi.Input.mapOptionalInputValue<ConnectorAs2Config, Map<String, dynamic>>(as2Config, (value) => value.toMap()),
+      'as2Config':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorAs2Config,
+            Map<String, dynamic>
+          >(as2Config, (value) => value.toMap()),
       'connectorId': ?connectorId,
-      'egressConfig': ?pulumi.Input.mapOptionalInputValue<ConnectorEgressConfig, Map<String, dynamic>>(egressConfig, (value) => value.toMap()),
+      'egressConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorEgressConfig,
+            Map<String, dynamic>
+          >(egressConfig, (value) => value.toMap()),
       'loggingRole': ?loggingRole,
       'region': ?region,
       'securityPolicyName': ?securityPolicyName,
-      'sftpConfig': ?pulumi.Input.mapOptionalInputValue<ConnectorSftpConfig, Map<String, dynamic>>(sftpConfig, (value) => value.toMap()),
+      'sftpConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorSftpConfig,
+            Map<String, dynamic>
+          >(sftpConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'url': ?url,
@@ -78,19 +100,82 @@ class ConnectorState {
 
   factory ConnectorState.fromMap(Map<String, dynamic> map) {
     return ConnectorState(
-      accessRole: map['accessRole'] == null ? null : ((map['accessRole'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      as2Config: map['as2Config'] == null ? null : ((ConnectorAs2Config.fromMap((map['as2Config']! as Map).cast<String, dynamic>())).input()).input(),
-      connectorId: map['connectorId'] == null ? null : ((map['connectorId'] as String).input()).input(),
-      egressConfig: map['egressConfig'] == null ? null : ((ConnectorEgressConfig.fromMap((map['egressConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      loggingRole: map['loggingRole'] == null ? null : ((map['loggingRole'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : ((map['securityPolicyName'] as String).input()).input(),
-      sftpConfig: map['sftpConfig'] == null ? null : ((ConnectorSftpConfig.fromMap((map['sftpConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
+      accessRole: (() {
+        final guardedValue = map['accessRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      as2Config: (() {
+        final guardedValue = map['as2Config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorAs2Config.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectorId: (() {
+        final guardedValue = map['connectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      egressConfig: (() {
+        final guardedValue = map['egressConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorEgressConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loggingRole: (() {
+        final guardedValue = map['loggingRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityPolicyName: (() {
+        final guardedValue = map['securityPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sftpConfig: (() {
+        final guardedValue = map['sftpConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorSftpConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

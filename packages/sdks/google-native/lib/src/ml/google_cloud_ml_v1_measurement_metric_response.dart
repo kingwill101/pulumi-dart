@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1MeasurementMetricResponse {
   /// Metric name.
   final pulumi.Input<String> metric;
+
   /// The value for this metric.
   final pulumi.Input<double> value;
 
@@ -18,17 +19,15 @@ class GoogleCloudMlV1MeasurementMetricResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metric': metric,
-      'value': value,
-    };
+    return <String, dynamic>{'metric': metric, 'value': value};
   }
 
-  factory GoogleCloudMlV1MeasurementMetricResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1MeasurementMetricResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1MeasurementMetricResponse(
-      metric: (map['metric'] as String).input(),
-      value: (map['value'] as double).input(),
+      metric: pulumi.Input.fromValue(map['metric'] as String),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

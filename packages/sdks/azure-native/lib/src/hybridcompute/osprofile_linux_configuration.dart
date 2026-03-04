@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSProfileLinuxConfiguration {
   /// Specifies the assessment mode.
   final pulumi.Input<String>? assessmentMode;
+
   /// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
   final pulumi.Input<bool>? enableHotpatching;
+
   /// Specifies the patch mode.
   final pulumi.Input<String>? patchMode;
 
@@ -31,10 +33,21 @@ class OSProfileLinuxConfiguration {
 
   factory OSProfileLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return OSProfileLinuxConfiguration(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
-      enableHotpatching: map['enableHotpatching'] == null ? null : (map['enableHotpatching']! as bool).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
+      assessmentMode: (() {
+        final guardedValue = map['assessmentMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableHotpatching: (() {
+        final guardedValue = map['enableHotpatching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      patchMode: (() {
+        final guardedValue = map['patchMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

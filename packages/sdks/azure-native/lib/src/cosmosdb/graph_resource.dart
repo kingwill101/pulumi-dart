@@ -9,20 +9,13 @@ class GraphResource {
 
   /// Creates a new [GraphResource].
   /// [id] Name of the Cosmos DB Graph
-  GraphResource({
-    required this.id,
-  });
+  GraphResource({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GraphResource.fromMap(Map<String, dynamic> map) {
-    return GraphResource(
-      id: (map['id'] as String).input(),
-    );
+    return GraphResource(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

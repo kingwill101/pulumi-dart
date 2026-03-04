@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventBusState {
   /// The description of event bus.
   final pulumi.Input<String>? description;
+
   /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
   final pulumi.Input<String>? eventBusName;
 
   /// Creates a new [EventBusState].
   /// [description] The description of event bus.
   /// [eventBusName] The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
-  EventBusState({
-    this.description,
-    this.eventBusName,
-  });
+  EventBusState({this.description, this.eventBusName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EventBusState {
 
   factory EventBusState.fromMap(Map<String, dynamic> map) {
     return EventBusState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventBusName: (() {
+        final guardedValue = map['eventBusName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

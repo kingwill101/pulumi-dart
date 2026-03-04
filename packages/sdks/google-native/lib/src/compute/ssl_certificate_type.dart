@@ -4,16 +4,15 @@ enum SslCertificateType {
   selfManaged("SELF_MANAGED"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
-  const SslCertificateType(this.value);
-  final String value;
+  const SslCertificateType(this.wireValue);
+  final String wireValue;
 
   static SslCertificateType fromValue(String value) {
     for (final item in SslCertificateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslCertificateType value: $value');
   }
 }
-

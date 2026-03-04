@@ -2,16 +2,15 @@
 enum RuleTypeEnum {
   valueUser("User");
 
-  const RuleTypeEnum(this.value);
-  final String value;
+  const RuleTypeEnum(this.wireValue);
+  final String wireValue;
 
   static RuleTypeEnum fromValue(String value) {
     for (final item in RuleTypeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleTypeEnum value: $value');
   }
 }
-

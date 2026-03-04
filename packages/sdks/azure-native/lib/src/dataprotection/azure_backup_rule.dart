@@ -9,11 +9,14 @@ import 'data_store_info_base.dart';
 class AzureBackupRule {
   /// BackupParameters base
   final pulumi.Input<AzureBackupParams>? backupParameters;
+
   /// DataStoreInfo base
   final pulumi.Input<DataStoreInfoBase> dataStore;
   final pulumi.Input<String> name;
+
   /// Expected value is 'AzureBackupRule'.
   final pulumi.Input<String> objectType;
+
   /// Trigger context
   final pulumi.Input<AdhocBasedTriggerContext> trigger;
 
@@ -33,22 +36,49 @@ class AzureBackupRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupParameters': ?pulumi.Input.mapOptionalInputValue<AzureBackupParams, Map<String, dynamic>>(backupParameters, (value) => value.toMap()),
-      'dataStore': pulumi.Input.mapInputValue<DataStoreInfoBase, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
+      'backupParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureBackupParams,
+            Map<String, dynamic>
+          >(backupParameters, (value) => value.toMap()),
+      'dataStore':
+          pulumi.Input.mapInputValue<DataStoreInfoBase, Map<String, dynamic>>(
+            dataStore,
+            (value) => value.toMap(),
+          ),
       'name': name,
       'objectType': objectType,
-      'trigger': pulumi.Input.mapInputValue<AdhocBasedTriggerContext, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'trigger':
+          pulumi.Input.mapInputValue<
+            AdhocBasedTriggerContext,
+            Map<String, dynamic>
+          >(trigger, (value) => value.toMap()),
     };
   }
 
   factory AzureBackupRule.fromMap(Map<String, dynamic> map) {
     return AzureBackupRule(
-      backupParameters: map['backupParameters'] == null ? null : (AzureBackupParams.fromMap((map['backupParameters']! as Map).cast<String, dynamic>())).input(),
-      dataStore: (DataStoreInfoBase.fromMap((map['dataStore'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      objectType: (map['objectType'] as String).input(),
-      trigger: (AdhocBasedTriggerContext.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      backupParameters: (() {
+        final guardedValue = map['backupParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureBackupParams.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataStore: pulumi.Input.fromValue(
+        DataStoreInfoBase.fromMap(
+          (map['dataStore']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      trigger: pulumi.Input.fromValue(
+        AdhocBasedTriggerContext.fromMap(
+          (map['trigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ImmutabilityState {
   valueUnlocked("Unlocked"),
   valueLocked("Locked");
 
-  const ImmutabilityState(this.value);
-  final String value;
+  const ImmutabilityState(this.wireValue);
+  final String wireValue;
 
   static ImmutabilityState fromValue(String value) {
     for (final item in ImmutabilityState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImmutabilityState value: $value');
   }
 }
-

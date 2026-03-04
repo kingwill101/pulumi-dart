@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
   final pulumi.Input<String> availabilityZone;
+
   /// ID of the Dedicated Host on which build and test instances run.
   final pulumi.Input<String> hostId;
+
   /// ARN of the host resource group in which to launch build and test instances.
   final pulumi.Input<String> hostResourceGroupArn;
+
   /// Placement tenancy of the instance.
   final pulumi.Input<String> tenancy;
 
@@ -33,13 +36,18 @@ class GetInfrastructureConfigurationPlacement {
     };
   }
 
-  factory GetInfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
+  factory GetInfrastructureConfigurationPlacement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInfrastructureConfigurationPlacement(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      hostId: (map['hostId'] as String).input(),
-      hostResourceGroupArn: (map['hostResourceGroupArn'] as String).input(),
-      tenancy: (map['tenancy'] as String).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      hostId: pulumi.Input.fromValue(map['hostId'] as String),
+      hostResourceGroupArn: pulumi.Input.fromValue(
+        map['hostResourceGroupArn'] as String,
+      ),
+      tenancy: pulumi.Input.fromValue(map['tenancy'] as String),
     );
   }
 }
-

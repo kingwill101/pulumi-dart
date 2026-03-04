@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomPluginLocationS3 {
   /// The Amazon Resource Name (ARN) of an S3 bucket.
   final pulumi.Input<String> bucketArn;
+
   /// The file key for an object in an S3 bucket.
   final pulumi.Input<String> fileKey;
+
   /// The version of an object in an S3 bucket.
   final pulumi.Input<String>? objectVersion;
 
@@ -30,10 +32,13 @@ class CustomPluginLocationS3 {
 
   factory CustomPluginLocationS3.fromMap(Map<String, dynamic> map) {
     return CustomPluginLocationS3(
-      bucketArn: (map['bucketArn'] as String).input(),
-      fileKey: (map['fileKey'] as String).input(),
-      objectVersion: map['objectVersion'] == null ? null : ((map['objectVersion'] as String).input()).input(),
+      bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
+      fileKey: pulumi.Input.fromValue(map['fileKey'] as String),
+      objectVersion: (() {
+        final guardedValue = map['objectVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

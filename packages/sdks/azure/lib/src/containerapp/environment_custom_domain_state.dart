@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentCustomDomainState {
   /// The bundle of Private Key and Certificate for the Custom DNS Suffix as a base64 encoded PFX or PEM.
   final pulumi.Input<String>? certificateBlobBase64;
+
   /// The password for the Certificate bundle.
   final pulumi.Input<String>? certificatePassword;
+
   /// The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? containerAppEnvironmentId;
+
   /// Custom DNS Suffix for the Container App Environment.
   final pulumi.Input<String>? dnsSuffix;
 
@@ -36,11 +39,26 @@ class EnvironmentCustomDomainState {
 
   factory EnvironmentCustomDomainState.fromMap(Map<String, dynamic> map) {
     return EnvironmentCustomDomainState(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64']! as String).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId']! as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
+      certificateBlobBase64: (() {
+        final guardedValue = map['certificateBlobBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificatePassword: (() {
+        final guardedValue = map['certificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAppEnvironmentId: (() {
+        final guardedValue = map['containerAppEnvironmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSuffix: (() {
+        final guardedValue = map['dnsSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

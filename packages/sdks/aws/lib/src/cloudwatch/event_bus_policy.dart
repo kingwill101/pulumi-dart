@@ -4,9 +4,9 @@ import 'event_bus_policy_state.dart';
 
 /// Provides a resource to create an EventBridge resource policy to support cross-account events.
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
-/// > **Note:** The EventBridge bus policy resource  (`aws.cloudwatch.EventBusPolicy`) is incompatible with the EventBridge permission resource (`aws.cloudwatch.EventPermission`) and will overwrite permissions.
+/// &gt; **Note:** The EventBridge bus policy resource  (`aws.cloudwatch.EventBusPolicy`) is incompatible with the EventBridge permission resource (`aws.cloudwatch.EventPermission`) and will overwrite permissions.
 ///
 /// ## Example Usage
 ///
@@ -877,8 +877,10 @@ class EventBusPolicy extends pulumi.CustomResource {
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
   late final pulumi.Output<String?> eventBusName;
+
   /// The text of the policy.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -891,14 +893,14 @@ class EventBusPolicy extends pulumi.CustomResource {
     EventBusPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventBusName = registerOutput<String?>('eventBusName');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventBusName = registerOutput<String?>('eventBusName');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [EventBusPolicy] resource's state with the given [name] and [id].
@@ -919,13 +921,13 @@ class EventBusPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventBusName = registerOutput<String?>('eventBusName');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventBusName = registerOutput<String?>('eventBusName');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

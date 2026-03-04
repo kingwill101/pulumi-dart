@@ -8,11 +8,16 @@ import 'monitoring_target_response.dart';
 
 class MonitorDefinitionResponse {
   /// The monitor's notification settings.
-  final pulumi.Input<MonitorNotificationSettingsResponse>? alertNotificationSettings;
+  final pulumi.Input<MonitorNotificationSettingsResponse>?
+  alertNotificationSettings;
+
   /// [Required] The ARM resource ID of the compute resource to run the monitoring job on.
-  final pulumi.Input<MonitorServerlessSparkComputeResponse> computeConfiguration;
+  final pulumi.Input<MonitorServerlessSparkComputeResponse>
+  computeConfiguration;
+
   /// The entities targeted by the monitor.
   final pulumi.Input<MonitoringTargetResponse>? monitoringTarget;
+
   /// [Required] The signals to monitor.
   final pulumi.Input<Map<String, CustomMonitoringSignalResponse>> signals;
 
@@ -30,20 +35,69 @@ class MonitorDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertNotificationSettings': ?pulumi.Input.mapOptionalInputValue<MonitorNotificationSettingsResponse, Map<String, dynamic>>(alertNotificationSettings, (value) => value.toMap()),
-      'computeConfiguration': pulumi.Input.mapInputValue<MonitorServerlessSparkComputeResponse, Map<String, dynamic>>(computeConfiguration, (value) => value.toMap()),
-      'monitoringTarget': ?pulumi.Input.mapOptionalInputValue<MonitoringTargetResponse, Map<String, dynamic>>(monitoringTarget, (value) => value.toMap()),
-      'signals': pulumi.Input.mapInputValue<Map<String, CustomMonitoringSignalResponse>, Map<String, Map<String, dynamic>>>(signals, (value) => pulumi.Input.encodeMapValues<CustomMonitoringSignalResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'alertNotificationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitorNotificationSettingsResponse,
+            Map<String, dynamic>
+          >(alertNotificationSettings, (value) => value.toMap()),
+      'computeConfiguration':
+          pulumi.Input.mapInputValue<
+            MonitorServerlessSparkComputeResponse,
+            Map<String, dynamic>
+          >(computeConfiguration, (value) => value.toMap()),
+      'monitoringTarget':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringTargetResponse,
+            Map<String, dynamic>
+          >(monitoringTarget, (value) => value.toMap()),
+      'signals':
+          pulumi.Input.mapInputValue<
+            Map<String, CustomMonitoringSignalResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            signals,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  CustomMonitoringSignalResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory MonitorDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return MonitorDefinitionResponse(
-      alertNotificationSettings: map['alertNotificationSettings'] == null ? null : (MonitorNotificationSettingsResponse.fromMap((map['alertNotificationSettings']! as Map).cast<String, dynamic>())).input(),
-      computeConfiguration: (MonitorServerlessSparkComputeResponse.fromMap((map['computeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      monitoringTarget: map['monitoringTarget'] == null ? null : (MonitoringTargetResponse.fromMap((map['monitoringTarget']! as Map).cast<String, dynamic>())).input(),
-      signals: (pulumi.Input.decodeMapValues<CustomMonitoringSignalResponse>(map['signals'], (value) => CustomMonitoringSignalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alertNotificationSettings: (() {
+        final guardedValue = map['alertNotificationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitorNotificationSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      computeConfiguration: pulumi.Input.fromValue(
+        MonitorServerlessSparkComputeResponse.fromMap(
+          (map['computeConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monitoringTarget: (() {
+        final guardedValue = map['monitoringTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringTargetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      signals: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<CustomMonitoringSignalResponse>(
+          map['signals']!,
+          (value) => CustomMonitoringSignalResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

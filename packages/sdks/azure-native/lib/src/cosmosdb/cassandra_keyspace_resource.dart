@@ -9,20 +9,15 @@ class CassandraKeyspaceResource {
 
   /// Creates a new [CassandraKeyspaceResource].
   /// [id] Name of the Cosmos DB Cassandra keyspace
-  CassandraKeyspaceResource({
-    required this.id,
-  });
+  CassandraKeyspaceResource({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory CassandraKeyspaceResource.fromMap(Map<String, dynamic> map) {
     return CassandraKeyspaceResource(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

@@ -116,16 +116,22 @@ import 'network_interface_attachment_state.dart';
 class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
   /// The ENI Attachment ID.
   late final pulumi.Output<String> attachmentId;
+
   /// Network interface index (int).
   late final pulumi.Output<int> deviceIndex;
+
   /// Instance ID to attach.
   late final pulumi.Output<String> instanceId;
+
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   late final pulumi.Output<int> networkCardIndex;
+
   /// ENI ID to attach.
   late final pulumi.Output<String> networkInterfaceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The status of the Network Interface Attachment.
   late final pulumi.Output<String> status;
 
@@ -138,18 +144,18 @@ class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
     NetworkInterfaceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.deviceIndex = registerOutput<int>('deviceIndex');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.networkCardIndex = registerOutput<int>('networkCardIndex');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    deviceIndex = registerOutput<int>('deviceIndex');
+    instanceId = registerOutput<String>('instanceId');
+    networkCardIndex = registerOutput<int>('networkCardIndex');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NetworkInterfaceAttachmentEc2] resource's state with the given [name] and [id].
@@ -170,17 +176,17 @@ class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.deviceIndex = registerOutput<int>('deviceIndex');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.networkCardIndex = registerOutput<int>('networkCardIndex');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    deviceIndex = registerOutput<int>('deviceIndex');
+    instanceId = registerOutput<String>('instanceId');
+    networkCardIndex = registerOutput<int>('networkCardIndex');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 }

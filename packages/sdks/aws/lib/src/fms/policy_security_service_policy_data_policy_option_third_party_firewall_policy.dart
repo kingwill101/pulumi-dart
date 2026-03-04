@@ -18,10 +18,15 @@ class PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy {
     };
   }
 
-  factory PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap(Map<String, dynamic> map) {
+  factory PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy(
-      firewallDeploymentModel: map['firewallDeploymentModel'] == null ? null : ((map['firewallDeploymentModel'] as String).input()).input(),
+      firewallDeploymentModel: (() {
+        final guardedValue = map['firewallDeploymentModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

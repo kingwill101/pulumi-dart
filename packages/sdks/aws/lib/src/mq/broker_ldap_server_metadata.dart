@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerLdapServerMetadata {
   /// List of fully qualified domain names of the LDAP server and optional failover server.
   final pulumi.Input<List<String>>? hosts;
+
   /// Fully qualified name of the directory to search for a user's groups.
   final pulumi.Input<String>? roleBase;
+
   /// LDAP attribute that identifies the group name attribute in the object returned from the group membership query.
   final pulumi.Input<String>? roleName;
+
   /// Search criteria for groups.
   final pulumi.Input<String>? roleSearchMatching;
+
   /// Whether the directory search scope is the entire sub-tree.
   final pulumi.Input<bool>? roleSearchSubtree;
+
   /// Service account password.
   final pulumi.Input<String>? serviceAccountPassword;
+
   /// Service account username.
   final pulumi.Input<String>? serviceAccountUsername;
+
   /// Fully qualified name of the directory where you want to search for users.
   final pulumi.Input<String>? userBase;
+
   /// Name of the LDAP attribute for the user group membership.
   final pulumi.Input<String>? userRoleName;
+
   /// Search criteria for users.
   final pulumi.Input<String>? userSearchMatching;
+
   /// Whether the directory search scope is the entire sub-tree.
   final pulumi.Input<bool>? userSearchSubtree;
 
@@ -70,18 +80,61 @@ class BrokerLdapServerMetadata {
 
   factory BrokerLdapServerMetadata.fromMap(Map<String, dynamic> map) {
     return BrokerLdapServerMetadata(
-      hosts: map['hosts'] == null ? null : (((map['hosts'] as List).cast<String>()).input()).input(),
-      roleBase: map['roleBase'] == null ? null : ((map['roleBase'] as String).input()).input(),
-      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
-      roleSearchMatching: map['roleSearchMatching'] == null ? null : ((map['roleSearchMatching'] as String).input()).input(),
-      roleSearchSubtree: map['roleSearchSubtree'] == null ? null : ((map['roleSearchSubtree'] as bool).input()).input(),
-      serviceAccountPassword: map['serviceAccountPassword'] == null ? null : ((map['serviceAccountPassword'] as String).input()).input(),
-      serviceAccountUsername: map['serviceAccountUsername'] == null ? null : ((map['serviceAccountUsername'] as String).input()).input(),
-      userBase: map['userBase'] == null ? null : ((map['userBase'] as String).input()).input(),
-      userRoleName: map['userRoleName'] == null ? null : ((map['userRoleName'] as String).input()).input(),
-      userSearchMatching: map['userSearchMatching'] == null ? null : ((map['userSearchMatching'] as String).input()).input(),
-      userSearchSubtree: map['userSearchSubtree'] == null ? null : ((map['userSearchSubtree'] as bool).input()).input(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roleBase: (() {
+        final guardedValue = map['roleBase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleSearchMatching: (() {
+        final guardedValue = map['roleSearchMatching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleSearchSubtree: (() {
+        final guardedValue = map['roleSearchSubtree'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceAccountPassword: (() {
+        final guardedValue = map['serviceAccountPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountUsername: (() {
+        final guardedValue = map['serviceAccountUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userBase: (() {
+        final guardedValue = map['userBase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userRoleName: (() {
+        final guardedValue = map['userRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userSearchMatching: (() {
+        final guardedValue = map['userSearchMatching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userSearchSubtree: (() {
+        final guardedValue = map['userSearchSubtree'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

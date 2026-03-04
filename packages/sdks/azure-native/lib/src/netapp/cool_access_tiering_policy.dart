@@ -3,16 +3,15 @@ enum CoolAccessTieringPolicy {
   valueAuto("Auto"),
   valueSnapshotOnly("SnapshotOnly");
 
-  const CoolAccessTieringPolicy(this.value);
-  final String value;
+  const CoolAccessTieringPolicy(this.wireValue);
+  final String wireValue;
 
   static CoolAccessTieringPolicy fromValue(String value) {
     for (final item in CoolAccessTieringPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CoolAccessTieringPolicy value: $value');
   }
 }
-

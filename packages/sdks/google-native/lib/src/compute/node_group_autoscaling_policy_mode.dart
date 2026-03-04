@@ -5,16 +5,15 @@ enum NodeGroupAutoscalingPolicyMode {
   on("ON"),
   onlyScaleOut("ONLY_SCALE_OUT");
 
-  const NodeGroupAutoscalingPolicyMode(this.value);
-  final String value;
+  const NodeGroupAutoscalingPolicyMode(this.wireValue);
+  final String wireValue;
 
   static NodeGroupAutoscalingPolicyMode fromValue(String value) {
     for (final item in NodeGroupAutoscalingPolicyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeGroupAutoscalingPolicyMode value: $value');
   }
 }
-

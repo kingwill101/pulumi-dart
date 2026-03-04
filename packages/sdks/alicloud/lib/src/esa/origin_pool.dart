@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_pool_args.dart';
-import 'origin_pool_origin.dart';
 import 'origin_pool_state.dart';
 
 /// Provides a ESA Origin Pool resource.
@@ -9,7 +8,7 @@ import 'origin_pool_state.dart';
 ///
 /// For information about ESA Origin Pool and how to use it, see [What is Origin Pool](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateOriginPool).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -508,12 +507,16 @@ import 'origin_pool_state.dart';
 class OriginPool extends pulumi.CustomResource {
   /// Whether the source address pool is enabled:
   late final pulumi.Output<bool?> enabled;
+
   /// OriginPool Id
   late final pulumi.Output<int> originPoolId;
+
   /// The source address pool name.
   late final pulumi.Output<String> originPoolName;
+
   /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
-  late final pulumi.Output<List<OriginPoolOrigin>?> origins;
+  late final pulumi.Output<List<Map<String, dynamic>>?> origins;
+
   /// The site ID.
   late final pulumi.Output<String> siteId;
 
@@ -526,16 +529,16 @@ class OriginPool extends pulumi.CustomResource {
     OriginPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originPool:OriginPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.originPoolId = registerOutput<int>('originPoolId');
-    this.originPoolName = registerOutput<String>('originPoolName');
-    this.origins = registerOutput<List<OriginPoolOrigin>?>('origins');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/originPool:OriginPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    originPoolId = registerOutput<int>('originPoolId');
+    originPoolName = registerOutput<String>('originPoolName');
+    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    siteId = registerOutput<String>('siteId');
   }
 
   /// Gets an existing [OriginPool] resource's state with the given [name] and [id].
@@ -556,15 +559,15 @@ class OriginPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originPool:OriginPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.originPoolId = registerOutput<int>('originPoolId');
-    this.originPoolName = registerOutput<String>('originPoolName');
-    this.origins = registerOutput<List<OriginPoolOrigin>?>('origins');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/originPool:OriginPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    originPoolId = registerOutput<int>('originPoolId');
+    originPoolName = registerOutput<String>('originPoolName');
+    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    siteId = registerOutput<String>('siteId');
   }
 }

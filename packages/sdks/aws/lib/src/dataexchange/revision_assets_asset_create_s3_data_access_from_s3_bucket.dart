@@ -6,8 +6,12 @@ import 'revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source.
 class RevisionAssetsAssetCreateS3DataAccessFromS3Bucket {
   final pulumi.Input<String>? accessPointAlias;
   final pulumi.Input<String>? accessPointArn;
+
   /// A block specifying the source bucket for the asset. This block supports the following:
-  final pulumi.Input<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource>? assetSource;
+  final pulumi.Input<
+    RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource
+  >?
+  assetSource;
 
   /// Creates a new [RevisionAssetsAssetCreateS3DataAccessFromS3Bucket].
   /// [accessPointAlias] Optional.
@@ -23,16 +27,37 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3Bucket {
     return <String, dynamic>{
       'accessPointAlias': ?accessPointAlias,
       'accessPointArn': ?accessPointArn,
-      'assetSource': ?pulumi.Input.mapOptionalInputValue<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource, Map<String, dynamic>>(assetSource, (value) => value.toMap()),
+      'assetSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource,
+            Map<String, dynamic>
+          >(assetSource, (value) => value.toMap()),
     };
   }
 
-  factory RevisionAssetsAssetCreateS3DataAccessFromS3Bucket.fromMap(Map<String, dynamic> map) {
+  factory RevisionAssetsAssetCreateS3DataAccessFromS3Bucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RevisionAssetsAssetCreateS3DataAccessFromS3Bucket(
-      accessPointAlias: map['accessPointAlias'] == null ? null : ((map['accessPointAlias'] as String).input()).input(),
-      accessPointArn: map['accessPointArn'] == null ? null : ((map['accessPointArn'] as String).input()).input(),
-      assetSource: map['assetSource'] == null ? null : ((RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource.fromMap((map['assetSource']! as Map).cast<String, dynamic>())).input()).input(),
+      accessPointAlias: (() {
+        final guardedValue = map['accessPointAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessPointArn: (() {
+        final guardedValue = map['accessPointArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assetSource: (() {
+        final guardedValue = map['assetSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

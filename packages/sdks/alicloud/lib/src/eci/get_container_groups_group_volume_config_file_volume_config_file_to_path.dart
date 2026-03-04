@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath {
   /// The content of the configuration file. Maximum size: 32 KB.
   final pulumi.Input<String> content;
+
   /// The relative file path.
   final pulumi.Input<String> path;
 
@@ -17,17 +18,15 @@ class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-      'path': path,
-    };
+    return <String, dynamic>{'content': content, 'path': path};
   }
 
-  factory GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(Map<String, dynamic> map) {
+  factory GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath(
-      content: (map['content'] as String).input(),
-      path: (map['path'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

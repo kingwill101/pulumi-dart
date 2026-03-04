@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesRngBackendEgdSourceNmdm {
   /// Specifies the master device in a master-slave NMDM configuration for the EGD backend.
   final pulumi.Input<String> master;
+
   /// Specifies the slave device in a master-slave NMDM configuration for the EGD backend.
   final pulumi.Input<String> slave;
 
@@ -17,17 +18,15 @@ class DomainDevicesRngBackendEgdSourceNmdm {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'master': master,
-      'slave': slave,
-    };
+    return <String, dynamic>{'master': master, 'slave': slave};
   }
 
-  factory DomainDevicesRngBackendEgdSourceNmdm.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesRngBackendEgdSourceNmdm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesRngBackendEgdSourceNmdm(
-      master: (map['master'] as String).input(),
-      slave: (map['slave'] as String).input(),
+      master: pulumi.Input.fromValue(map['master'] as String),
+      slave: pulumi.Input.fromValue(map['slave'] as String),
     );
   }
 }
-

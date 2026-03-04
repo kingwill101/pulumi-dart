@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLambdaFunctionAssociationArgs {
   /// ARN of the Lambda Function, omitting any version or alias qualifier.
   final pulumi.Input<String> functionArn;
+
   /// Identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   final pulumi.Input<String> instanceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,13 @@ class GetLambdaFunctionAssociationArgs {
 
   factory GetLambdaFunctionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetLambdaFunctionAssociationArgs(
-      functionArn: (map['functionArn'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

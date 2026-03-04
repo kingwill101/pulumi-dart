@@ -7,6 +7,7 @@ import 'get_sharding_network_public_addresses_address.dart';
 class GetShardingNetworkPublicAddressesResult {
   final List<GetShardingNetworkPublicAddressesAddress> addresses;
   final String dbInstanceId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nodeId;
@@ -31,7 +32,11 @@ class GetShardingNetworkPublicAddressesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': pulumi.Input.encodeList<GetShardingNetworkPublicAddressesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
+      'addresses':
+          pulumi.Input.encodeList<
+            GetShardingNetworkPublicAddressesAddress,
+            Map<String, dynamic>
+          >(addresses, (value) => value.toMap()),
       'dbInstanceId': dbInstanceId,
       'id': id,
       'nodeId': ?nodeId,
@@ -40,15 +45,34 @@ class GetShardingNetworkPublicAddressesResult {
     };
   }
 
-  factory GetShardingNetworkPublicAddressesResult.fromMap(Map<String, dynamic> map) {
+  factory GetShardingNetworkPublicAddressesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetShardingNetworkPublicAddressesResult(
-      addresses: pulumi.Input.decodeList<GetShardingNetworkPublicAddressesAddress>(map['addresses'], (value) => GetShardingNetworkPublicAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
+      addresses:
+          pulumi.Input.decodeList<GetShardingNetworkPublicAddressesAddress>(
+            map['addresses']!,
+            (value) => GetShardingNetworkPublicAddressesAddress.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      role: map['role'] == null ? null : map['role']! as String,
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

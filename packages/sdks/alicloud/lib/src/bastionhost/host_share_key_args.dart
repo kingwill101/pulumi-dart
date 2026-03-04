@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostShareKeyArgs {
   /// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
   final pulumi.Input<String> hostShareKeyName;
+
   /// The ID of the Bastion instance.
   final pulumi.Input<String> instanceId;
+
   /// The password of the private key. The value is a Base64-encoded string.
   final pulumi.Input<String>? passPhrase;
+
   /// The private key. The value is a Base64-encoded string.
   final pulumi.Input<String> privateKey;
 
@@ -39,11 +42,16 @@ class HostShareKeyArgs {
 
   factory HostShareKeyArgs.fromMap(Map<String, dynamic> map) {
     return HostShareKeyArgs(
-      hostShareKeyName: (map['hostShareKeyName'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase']! as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
+      hostShareKeyName: pulumi.Input.fromValue(
+        map['hostShareKeyName'] as String,
+      ),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      passPhrase: (() {
+        final guardedValue = map['passPhrase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
-

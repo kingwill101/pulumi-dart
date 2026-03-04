@@ -1,5 +1,3 @@
-library module_storagemigration_k8s_io;
-
 export 'storagemigration_k8s_io/group_version_resource.dart';
 export 'storagemigration_k8s_io/group_version_resource_patch.dart';
 export 'storagemigration_k8s_io/migration_condition.dart';

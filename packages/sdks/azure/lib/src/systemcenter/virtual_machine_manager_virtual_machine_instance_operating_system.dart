@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineManagerVirtualMachineInstanceOperatingSystem {
   /// The admin password of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? adminPassword;
+
   /// The computer name of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? computerName;
 
@@ -23,11 +24,20 @@ class VirtualMachineManagerVirtualMachineInstanceOperatingSystem {
     };
   }
 
-  factory VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineManagerVirtualMachineInstanceOperatingSystem(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

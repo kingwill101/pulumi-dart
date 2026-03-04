@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HypervLicenseResponse {
   /// Cost of a licence.
   final pulumi.Input<double> licenseCost;
+
   /// HyperV licence type.
   final pulumi.Input<String> licenseType;
 
   /// Creates a new [HypervLicenseResponse].
   /// [licenseCost] Cost of a licence.
   /// [licenseType] HyperV licence type.
-  HypervLicenseResponse({
-    required this.licenseCost,
-    required this.licenseType,
-  });
+  HypervLicenseResponse({required this.licenseCost, required this.licenseType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class HypervLicenseResponse {
 
   factory HypervLicenseResponse.fromMap(Map<String, dynamic> map) {
     return HypervLicenseResponse(
-      licenseCost: (map['licenseCost'] as double).input(),
-      licenseType: (map['licenseType'] as String).input(),
+      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
+      licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
     );
   }
 }
-

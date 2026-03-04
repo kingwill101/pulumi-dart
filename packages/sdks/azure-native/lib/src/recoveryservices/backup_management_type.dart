@@ -10,16 +10,15 @@ enum BackupManagementType {
   valueAzureWorkload("AzureWorkload"),
   valueDefaultBackup("DefaultBackup");
 
-  const BackupManagementType(this.value);
-  final String value;
+  const BackupManagementType(this.wireValue);
+  final String wireValue;
 
   static BackupManagementType fromValue(String value) {
     for (final item in BackupManagementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupManagementType value: $value');
   }
 }
-

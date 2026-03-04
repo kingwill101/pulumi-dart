@@ -5,16 +5,15 @@ enum AttachmentStatus {
   detached("detached"),
   detaching("detaching");
 
-  const AttachmentStatus(this.value);
-  final String value;
+  const AttachmentStatus(this.wireValue);
+  final String wireValue;
 
   static AttachmentStatus fromValue(String value) {
     for (final item in AttachmentStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachmentStatus value: $value');
   }
 }
-

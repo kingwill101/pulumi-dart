@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafDomainState {
   /// The client ip tag.
   final pulumi.Input<String>? clientIpTag;
+
   /// The accelerated domain name.
   final pulumi.Input<String>? domainName;
 
   /// Creates a new [WafDomainState].
   /// [clientIpTag] The client ip tag.
   /// [domainName] The accelerated domain name.
-  WafDomainState({
-    this.clientIpTag,
-    this.domainName,
-  });
+  WafDomainState({this.clientIpTag, this.domainName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class WafDomainState {
 
   factory WafDomainState.fromMap(Map<String, dynamic> map) {
     return WafDomainState(
-      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      clientIpTag: (() {
+        final guardedValue = map['clientIpTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

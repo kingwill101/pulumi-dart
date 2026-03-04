@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddStorageAccountWithAccountParameters {
   /// The access key associated with this Azure Storage account that will be used to connect to it.
   final pulumi.Input<String> accessKey;
+
   /// The unique name of the Azure Storage account to add.
   final pulumi.Input<String> name;
+
   /// The optional suffix for the storage account.
   final pulumi.Input<String>? suffix;
 
@@ -29,12 +31,17 @@ class AddStorageAccountWithAccountParameters {
     };
   }
 
-  factory AddStorageAccountWithAccountParameters.fromMap(Map<String, dynamic> map) {
+  factory AddStorageAccountWithAccountParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AddStorageAccountWithAccountParameters(
-      accessKey: (map['accessKey'] as String).input(),
-      name: (map['name'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
+      accessKey: pulumi.Input.fromValue(map['accessKey'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      suffix: (() {
+        final guardedValue = map['suffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,15 +13,16 @@ class OrganizationConfigurationOrganizationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configurationType': configurationType,
-    };
+    return <String, dynamic>{'configurationType': configurationType};
   }
 
-  factory OrganizationConfigurationOrganizationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory OrganizationConfigurationOrganizationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationConfigurationOrganizationConfiguration(
-      configurationType: (map['configurationType'] as String).input(),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
     );
   }
 }
-

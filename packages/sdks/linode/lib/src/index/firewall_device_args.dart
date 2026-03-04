@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallDeviceArgs {
   /// The unique ID of the entity to attach.
   final pulumi.Input<int> entityId;
+
   /// The type of the entity to attach. (default: `linode`)
   final pulumi.Input<String>? entityType;
+
   /// The unique ID of the target Firewall.
   final pulumi.Input<int> firewallId;
 
@@ -34,10 +36,13 @@ class FirewallDeviceArgs {
 
   factory FirewallDeviceArgs.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceArgs(
-      entityId: (map['entityId'] as int).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
-      firewallId: (map['firewallId'] as int).input(),
+      entityId: pulumi.Input.fromValue(map['entityId'] as int),
+      entityType: (() {
+        final guardedValue = map['entityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallId: pulumi.Input.fromValue(map['firewallId'] as int),
     );
   }
 }
-

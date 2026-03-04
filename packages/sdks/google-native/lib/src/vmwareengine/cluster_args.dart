@@ -11,12 +11,15 @@ class ClusterArgs {
   /// Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> clusterId;
   final pulumi.Input<String>? location;
+
   /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
   final pulumi.Input<Map<String, String>> nodeTypeConfigs;
   final pulumi.Input<String> privateCloudId;
   final pulumi.Input<String>? project;
+
   /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
   final pulumi.Input<StretchedClusterConfig>? stretchedClusterConfig;
 
@@ -46,20 +49,45 @@ class ClusterArgs {
       'privateCloudId': privateCloudId,
       'project': ?project,
       'requestId': ?requestId,
-      'stretchedClusterConfig': ?pulumi.Input.mapOptionalInputValue<StretchedClusterConfig, Map<String, dynamic>>(stretchedClusterConfig, (value) => value.toMap()),
+      'stretchedClusterConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            StretchedClusterConfig,
+            Map<String, dynamic>
+          >(stretchedClusterConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
-      privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeTypeConfigs: pulumi.Input.fromValue(
+        (map['nodeTypeConfigs'] as Map).cast<String, String>(),
+      ),
+      privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stretchedClusterConfig: (() {
+        final guardedValue = map['stretchedClusterConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StretchedClusterConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

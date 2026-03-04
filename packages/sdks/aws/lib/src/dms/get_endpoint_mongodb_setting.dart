@@ -39,13 +39,14 @@ class GetEndpointMongodbSetting {
 
   factory GetEndpointMongodbSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointMongodbSetting(
-      authMechanism: (map['authMechanism'] as String).input(),
-      authSource: (map['authSource'] as String).input(),
-      authType: (map['authType'] as String).input(),
-      docsToInvestigate: (map['docsToInvestigate'] as String).input(),
-      extractDocId: (map['extractDocId'] as String).input(),
-      nestingLevel: (map['nestingLevel'] as String).input(),
+      authMechanism: pulumi.Input.fromValue(map['authMechanism'] as String),
+      authSource: pulumi.Input.fromValue(map['authSource'] as String),
+      authType: pulumi.Input.fromValue(map['authType'] as String),
+      docsToInvestigate: pulumi.Input.fromValue(
+        map['docsToInvestigate'] as String,
+      ),
+      extractDocId: pulumi.Input.fromValue(map['extractDocId'] as String),
+      nestingLevel: pulumi.Input.fromValue(map['nestingLevel'] as String),
     );
   }
 }
-

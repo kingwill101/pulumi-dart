@@ -157,8 +157,10 @@ import 'cidr_location_state.dart';
 class CidrLocation extends pulumi.CustomResource {
   /// CIDR blocks for the location.
   late final pulumi.Output<List<String>> cidrBlocks;
+
   /// The ID of the CIDR collection to update.
   late final pulumi.Output<String> cidrCollectionId;
+
   /// Name for the CIDR location.
   late final pulumi.Output<String> name;
 
@@ -171,13 +173,13 @@ class CidrLocation extends pulumi.CustomResource {
     CidrLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/cidrLocation:CidrLocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlocks = registerOutput<List<String>>('cidrBlocks');
-    this.cidrCollectionId = registerOutput<String>('cidrCollectionId');
+         'aws:route53/cidrLocation:CidrLocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    cidrCollectionId = registerOutput<String>('cidrCollectionId');
     this.name = registerOutput<String>('name');
   }
 
@@ -199,13 +201,13 @@ class CidrLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/cidrLocation:CidrLocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlocks = registerOutput<List<String>>('cidrBlocks');
-    this.cidrCollectionId = registerOutput<String>('cidrCollectionId');
+         'aws:route53/cidrLocation:CidrLocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    cidrCollectionId = registerOutput<String>('cidrCollectionId');
     this.name = registerOutput<String>('name');
   }
 }

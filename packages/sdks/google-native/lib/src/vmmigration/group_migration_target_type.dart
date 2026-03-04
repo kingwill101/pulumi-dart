@@ -4,16 +4,15 @@ enum GroupMigrationTargetType {
   migrationTargetTypeGce("MIGRATION_TARGET_TYPE_GCE"),
   migrationTargetTypeDisks("MIGRATION_TARGET_TYPE_DISKS");
 
-  const GroupMigrationTargetType(this.value);
-  final String value;
+  const GroupMigrationTargetType(this.wireValue);
+  final String wireValue;
 
   static GroupMigrationTargetType fromValue(String value) {
     for (final item in GroupMigrationTargetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GroupMigrationTargetType value: $value');
   }
 }
-

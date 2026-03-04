@@ -1,5 +1,3 @@
-library module_hybridcompute;
-
 export 'hybridcompute/agent_configuration_response.dart';
 export 'hybridcompute/agent_upgrade.dart';
 export 'hybridcompute/agent_upgrade_response.dart';

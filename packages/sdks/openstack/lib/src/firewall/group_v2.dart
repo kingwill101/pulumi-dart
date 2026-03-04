@@ -4,7 +4,7 @@ import 'group_v2_state.dart';
 
 /// Manages a v2 firewall group resource within OpenStack.
 ///
-/// > **Note:** Firewall v2 has no support for OVN currently.
+/// &gt; **Note:** Firewall v2 has no support for OVN currently.
 ///
 /// ## Example Usage
 ///
@@ -309,42 +309,52 @@ class GroupV2 extends pulumi.CustomResource {
   /// group (must be "true" or "false" if provided - defaults to "true").
   /// Changing this updates the `admin_state_up` of an existing firewall group.
   late final pulumi.Output<bool?> adminStateUp;
+
   /// A description for the firewall group. Changing this
   /// updates the `description` of an existing firewall group.
   late final pulumi.Output<String?> description;
+
   /// The egress firewall policy resource
   /// id for the firewall group. Changing this updates the
   /// `egress_firewall_policy_id` of an existing firewall group.
   late final pulumi.Output<String?> egressFirewallPolicyId;
+
   /// The ingress firewall policy resource
   /// id for the firewall group. Changing this updates the
   /// `ingress_firewall_policy_id` of an existing firewall group.
   late final pulumi.Output<String?> ingressFirewallPolicyId;
+
   /// A name for the firewall group. Changing this
   /// updates the `name` of an existing firewall.
   late final pulumi.Output<String> name;
+
   /// Port(s) to associate this firewall group
   /// with. Must be a list of strings. Changing this updates the associated ports
   /// of an existing firewall group.
   late final pulumi.Output<List<String>?> ports;
+
   /// This argument conflicts and  is interchangeable
   /// with `tenant_id`. The owner of the firewall group. Required if admin wants
   /// to create a firewall group for another project. Changing this creates a new
   /// firewall group.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the v2 networking client.
   /// A networking client is needed to create a firewall group. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// firewall group.
   late final pulumi.Output<String> region;
+
   /// Sharing status of the firewall group (must be "true"
   /// or "false" if provided). If this is "true" the firewall group is visible to,
   /// and can be used in, firewalls in other tenants. Changing this updates the
   /// `shared` status of an existing firewall group. Only administrative users
   /// can specify if the firewall group should be shared.
   late final pulumi.Output<bool?> shared;
+
   /// The status of the firewall group.
   late final pulumi.Output<String> status;
+
   /// This argument conflicts and is interchangeable with
   /// `project_id`. The owner of the firewall group. Required if admin wants to
   /// create a firewall group for another tenant. Changing this creates a new
@@ -360,22 +370,24 @@ class GroupV2 extends pulumi.CustomResource {
     GroupV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:firewall/groupV2:GroupV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.description = registerOutput<String?>('description');
-    this.egressFirewallPolicyId = registerOutput<String?>('egressFirewallPolicyId');
-    this.ingressFirewallPolicyId = registerOutput<String?>('ingressFirewallPolicyId');
+         'openstack:firewall/groupV2:GroupV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    description = registerOutput<String?>('description');
+    egressFirewallPolicyId = registerOutput<String?>('egressFirewallPolicyId');
+    ingressFirewallPolicyId = registerOutput<String?>(
+      'ingressFirewallPolicyId',
+    );
     this.name = registerOutput<String>('name');
-    this.ports = registerOutput<List<String>?>('ports');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.shared = registerOutput<bool?>('shared');
-    this.status = registerOutput<String>('status');
-    this.tenantId = registerOutput<String>('tenantId');
+    ports = registerOutput<List<String>?>('ports');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    shared = registerOutput<bool?>('shared');
+    status = registerOutput<String>('status');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [GroupV2] resource's state with the given [name] and [id].
@@ -396,21 +408,23 @@ class GroupV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:firewall/groupV2:GroupV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.description = registerOutput<String?>('description');
-    this.egressFirewallPolicyId = registerOutput<String?>('egressFirewallPolicyId');
-    this.ingressFirewallPolicyId = registerOutput<String?>('ingressFirewallPolicyId');
+         'openstack:firewall/groupV2:GroupV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    description = registerOutput<String?>('description');
+    egressFirewallPolicyId = registerOutput<String?>('egressFirewallPolicyId');
+    ingressFirewallPolicyId = registerOutput<String?>(
+      'ingressFirewallPolicyId',
+    );
     this.name = registerOutput<String>('name');
-    this.ports = registerOutput<List<String>?>('ports');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.shared = registerOutput<bool?>('shared');
-    this.status = registerOutput<String>('status');
-    this.tenantId = registerOutput<String>('tenantId');
+    ports = registerOutput<List<String>?>('ports');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    shared = registerOutput<bool?>('shared');
+    status = registerOutput<String>('status');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

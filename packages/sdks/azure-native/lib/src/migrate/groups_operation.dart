@@ -147,28 +147,40 @@ import 'system_data_response.dart';
 class GroupsOperation extends pulumi.CustomResource {
   /// If the assessments are in running state.
   late final pulumi.Output<bool> areAssessmentsRunning;
+
   /// List of References to Assessments created on this group.
   late final pulumi.Output<List<String>> assessments;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time when this group was created. Date-Time represented in ISO-8601 format.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Whether the group has been created and is valid.
   late final pulumi.Output<String> groupStatus;
+
   /// The type of group.
   late final pulumi.Output<String?> groupType;
+
   /// Number of machines part of this group.
   late final pulumi.Output<int> machineCount;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// List of assessment types supported on this group.
   late final pulumi.Output<List<String>?> supportedAssessmentTypes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Time when this group was last updated. Date-Time represented in ISO-8601 format.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -181,23 +193,25 @@ class GroupsOperation extends pulumi.CustomResource {
     GroupsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:GroupsOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.areAssessmentsRunning = registerOutput<bool>('areAssessmentsRunning');
-    this.assessments = registerOutput<List<String>>('assessments');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.groupStatus = registerOutput<String>('groupStatus');
-    this.groupType = registerOutput<String?>('groupType');
-    this.machineCount = registerOutput<int>('machineCount');
+         'azure-native:migrate:GroupsOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    areAssessmentsRunning = registerOutput<bool>('areAssessmentsRunning');
+    assessments = registerOutput<List<String>>('assessments');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    groupStatus = registerOutput<String>('groupStatus');
+    groupType = registerOutput<String?>('groupType');
+    machineCount = registerOutput<int>('machineCount');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.supportedAssessmentTypes = registerOutput<List<String>?>('supportedAssessmentTypes');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    supportedAssessmentTypes = registerOutput<List<String>?>(
+      'supportedAssessmentTypes',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
 }

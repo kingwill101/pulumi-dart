@@ -8,7 +8,7 @@ import 'value_added_service_state.dart';
 ///
 /// For information about KMS Value Added Service and how to use it, see [What is Value Added Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
 ///
-/// > **NOTE:** Available since v1.267.0.
+/// &gt; **NOTE:** Available since v1.267.0.
 ///
 /// ## Example Usage
 ///
@@ -160,26 +160,32 @@ import 'value_added_service_state.dart';
 class ValueAddedService extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
   late final pulumi.Output<int?> period;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// Automatic renewal period, in years.
   ///
-  /// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
+  /// &gt; **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
   late final pulumi.Output<int?> renewPeriod;
+
   /// The renewal status of the specified instance. Valid values:
   ///
   /// - AutoRenewal: The instance is automatically renewed.
   /// - ManualRenewal: The instance is manually renewed.
   /// - NotRenewal: The instance is not renewed.
   late final pulumi.Output<String?> renewStatus;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> valueAddedService;
 
   /// Creates a new [ValueAddedService].
@@ -191,19 +197,19 @@ class ValueAddedService extends pulumi.CustomResource {
     ValueAddedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/valueAddedService:ValueAddedService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.regionId = registerOutput<String>('regionId');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewStatus = registerOutput<String?>('renewStatus');
-    this.status = registerOutput<String>('status');
-    this.valueAddedService = registerOutput<String?>('valueAddedService');
+         'alicloud:kms/valueAddedService:ValueAddedService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    regionId = registerOutput<String>('regionId');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewStatus = registerOutput<String?>('renewStatus');
+    status = registerOutput<String>('status');
+    valueAddedService = registerOutput<String?>('valueAddedService');
   }
 
   /// Gets an existing [ValueAddedService] resource's state with the given [name] and [id].
@@ -224,18 +230,18 @@ class ValueAddedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/valueAddedService:ValueAddedService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.regionId = registerOutput<String>('regionId');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewStatus = registerOutput<String?>('renewStatus');
-    this.status = registerOutput<String>('status');
-    this.valueAddedService = registerOutput<String?>('valueAddedService');
+         'alicloud:kms/valueAddedService:ValueAddedService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    regionId = registerOutput<String>('regionId');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewStatus = registerOutput<String?>('renewStatus');
+    status = registerOutput<String>('status');
+    valueAddedService = registerOutput<String?>('valueAddedService');
   }
 }

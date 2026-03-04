@@ -1,5 +1,3 @@
-library module_controltower;
-
 export 'controltower/baseline.dart';
 export 'controltower/baseline_args.dart';
 export 'controltower/baseline_parameters.dart';

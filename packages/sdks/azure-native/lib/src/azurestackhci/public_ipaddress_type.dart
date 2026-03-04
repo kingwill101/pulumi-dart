@@ -3,16 +3,15 @@ enum PublicIPAddressType {
   iPv4("IPv4"),
   iPv6("IPv6");
 
-  const PublicIPAddressType(this.value);
-  final String value;
+  const PublicIPAddressType(this.wireValue);
+  final String wireValue;
 
   static PublicIPAddressType fromValue(String value) {
     for (final item in PublicIPAddressType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPAddressType value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'google_cloud_apigee_v1_trace_sampling_config_response.dart';
 class GetOverrideResult {
   /// ID of the API proxy that will have its trace configuration overridden.
   final String apiProxy;
+
   /// ID of the trace configuration override specified as a system-generated UUID.
   final String name;
+
   /// Trace configuration to override.
   final GoogleCloudApigeeV1TraceSamplingConfigResponse samplingConfig;
 
@@ -33,8 +35,9 @@ class GetOverrideResult {
     return GetOverrideResult(
       apiProxy: map['apiProxy'] as String,
       name: map['name'] as String,
-      samplingConfig: GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap((map['samplingConfig'] as Map).cast<String, dynamic>()),
+      samplingConfig: GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(
+        (map['samplingConfig']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

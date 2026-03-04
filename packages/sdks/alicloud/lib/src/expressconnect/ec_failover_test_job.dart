@@ -6,7 +6,7 @@ import 'ec_failover_test_job_state.dart';
 ///
 /// For information about Express Connect Ec Failover Test Job and how to use it, see [What is Ec Failover Test Job](https://www.alibabacloud.com/help/zh/express-connect/developer-reference/api-vpc-2016-04-28-createfailovertestjob-efficiency-channels).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -208,16 +208,22 @@ import 'ec_failover_test_job_state.dart';
 class EcFailoverTestJob extends pulumi.CustomResource {
   /// Job description.
   late final pulumi.Output<String?> description;
+
   /// Job name.
   late final pulumi.Output<String?> ecFailoverTestJobName;
+
   /// Job duration.
   late final pulumi.Output<int> jobDuration;
+
   /// Job type.
   late final pulumi.Output<String> jobType;
+
   /// Resource id list.
   late final pulumi.Output<List<String>> resourceIds;
+
   /// Resource type.
   late final pulumi.Output<String> resourceType;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -230,18 +236,18 @@ class EcFailoverTestJob extends pulumi.CustomResource {
     EcFailoverTestJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
-    this.jobDuration = registerOutput<int>('jobDuration');
-    this.jobType = registerOutput<String>('jobType');
-    this.resourceIds = registerOutput<List<String>>('resourceIds');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
+    jobDuration = registerOutput<int>('jobDuration');
+    jobType = registerOutput<String>('jobType');
+    resourceIds = registerOutput<List<String>>('resourceIds');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EcFailoverTestJob] resource's state with the given [name] and [id].
@@ -262,17 +268,17 @@ class EcFailoverTestJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
-    this.jobDuration = registerOutput<int>('jobDuration');
-    this.jobType = registerOutput<String>('jobType');
-    this.resourceIds = registerOutput<List<String>>('resourceIds');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
+    jobDuration = registerOutput<int>('jobDuration');
+    jobType = registerOutput<String>('jobType');
+    resourceIds = registerOutput<List<String>>('resourceIds');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
   }
 }

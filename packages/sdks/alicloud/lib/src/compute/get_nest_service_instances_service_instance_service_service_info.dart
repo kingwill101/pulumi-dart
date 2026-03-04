@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
   /// The image of the service.
   final pulumi.Input<String> image;
+
   /// The locale of the service.
   final pulumi.Input<String> locale;
+
   /// The name of the service.
   final pulumi.Input<String> name;
+
   /// The short description of the service.
   final pulumi.Input<String> shortDescription;
 
@@ -33,13 +36,16 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
     };
   }
 
-  factory GetNestServiceInstancesServiceInstanceServiceServiceInfo.fromMap(Map<String, dynamic> map) {
+  factory GetNestServiceInstancesServiceInstanceServiceServiceInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNestServiceInstancesServiceInstanceServiceServiceInfo(
-      image: (map['image'] as String).input(),
-      locale: (map['locale'] as String).input(),
-      name: (map['name'] as String).input(),
-      shortDescription: (map['shortDescription'] as String).input(),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      locale: pulumi.Input.fromValue(map['locale'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      shortDescription: pulumi.Input.fromValue(
+        map['shortDescription'] as String,
+      ),
     );
   }
 }
-

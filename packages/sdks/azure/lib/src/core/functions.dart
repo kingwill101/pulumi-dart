@@ -113,8 +113,7 @@ import 'get_user_assigned_identity_result.dart';
 ///   accountId: ${current.clientId}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetClientConfigResult> getClientConfig(
-  {
+Future<GetClientConfigResult> getClientConfig({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -585,7 +584,8 @@ Future<GetResourceGroupResult> getResourceGroup(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_core_get_resource_group_template_deployment_get_resource_group_template_deployment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResourceGroupTemplateDeploymentResult> getResourceGroupTemplateDeployment(
+Future<GetResourceGroupTemplateDeploymentResult>
+getResourceGroupTemplateDeployment(
   GetResourceGroupTemplateDeploymentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -848,7 +848,8 @@ Future<GetSubscriptionResult> getSubscription(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_core_get_subscription_template_deployment_get_subscription_template_deployment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDeployment(
+Future<GetSubscriptionTemplateDeploymentResult>
+getSubscriptionTemplateDeployment(
   GetSubscriptionTemplateDeploymentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1089,7 +1090,7 @@ Future<GetSubscriptionsResult> getSubscriptions(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Resources` - 2022-02-01
@@ -1373,7 +1374,7 @@ Future<GetTenantTemplateDeploymentResult> getTenantTemplateDeployment(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ManagedIdentity` - 2024-11-30

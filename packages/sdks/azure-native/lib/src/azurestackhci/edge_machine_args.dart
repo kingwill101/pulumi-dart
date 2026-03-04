@@ -11,14 +11,19 @@ import 'managed_service_identity.dart';
 class EdgeMachineArgs {
   /// Name of Device
   final pulumi.Input<String>? edgeMachineName;
+
   /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<EdgeMachineProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,9 +46,17 @@ class EdgeMachineArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'edgeMachineName': ?edgeMachineName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<EdgeMachineProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeMachineProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -51,13 +64,44 @@ class EdgeMachineArgs {
 
   factory EdgeMachineArgs.fromMap(Map<String, dynamic> map) {
     return EdgeMachineArgs(
-      edgeMachineName: map['edgeMachineName'] == null ? null : (map['edgeMachineName']! as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (EdgeMachineProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      edgeMachineName: (() {
+        final guardedValue = map['edgeMachineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeMachineProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_response.dart';
-import 'private_link_scoped_resource_response.dart';
 import 'system_data_response.dart';
 import 'workspace_args.dart';
 import 'workspace_capping_response.dart';
@@ -181,44 +180,65 @@ import 'workspace_sku_response.dart';
 class Workspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Workspace creation date.
   late final pulumi.Output<String> createdDate;
+
   /// This is a read-only property. Represents the ID associated with the workspace.
   late final pulumi.Output<String> customerId;
+
   /// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
   late final pulumi.Output<String?> defaultDataCollectionRuleResourceId;
+
   /// The etag of the workspace.
   late final pulumi.Output<String?> etag;
+
   /// Workspace features.
   late final pulumi.Output<WorkspaceFeaturesResponse?> features;
+
   /// Indicates whether customer managed storage is mandatory for query management.
   late final pulumi.Output<bool?> forceCmkForQuery;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Workspace modification date.
   late final pulumi.Output<String> modifiedDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of linked private link scope resources.
-  late final pulumi.Output<List<PrivateLinkScopedResourceResponse>> privateLinkScopedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateLinkScopedResources;
+
   /// The provisioning state of the workspace.
   late final pulumi.Output<String> provisioningState;
+
   /// The network access type for accessing Log Analytics ingestion.
   late final pulumi.Output<String?> publicNetworkAccessForIngestion;
+
   /// The network access type for accessing Log Analytics query.
   late final pulumi.Output<String?> publicNetworkAccessForQuery;
+
   /// The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.
   late final pulumi.Output<int?> retentionInDays;
+
   /// The SKU of the workspace.
   late final pulumi.Output<WorkspaceSkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The daily volume cap for ingestion.
   late final pulumi.Output<WorkspaceCappingResponse?> workspaceCapping;
 
@@ -231,31 +251,41 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.customerId = registerOutput<String>('customerId');
-    this.defaultDataCollectionRuleResourceId = registerOutput<String?>('defaultDataCollectionRuleResourceId');
-    this.etag = registerOutput<String?>('etag');
-    this.features = registerOutput<WorkspaceFeaturesResponse?>('features');
-    this.forceCmkForQuery = registerOutput<bool?>('forceCmkForQuery');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.modifiedDate = registerOutput<String>('modifiedDate');
+         'azure-native:operationalinsights:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    customerId = registerOutput<String>('customerId');
+    defaultDataCollectionRuleResourceId = registerOutput<String?>(
+      'defaultDataCollectionRuleResourceId',
+    );
+    etag = registerOutput<String?>('etag');
+    features = registerOutput<WorkspaceFeaturesResponse?>('features');
+    forceCmkForQuery = registerOutput<bool?>('forceCmkForQuery');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    modifiedDate = registerOutput<String>('modifiedDate');
     this.name = registerOutput<String>('name');
-    this.privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
-    this.publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.sku = registerOutput<WorkspaceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.workspaceCapping = registerOutput<WorkspaceCappingResponse?>('workspaceCapping');
+    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>(
+      'privateLinkScopedResources',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccessForIngestion = registerOutput<String?>(
+      'publicNetworkAccessForIngestion',
+    );
+    publicNetworkAccessForQuery = registerOutput<String?>(
+      'publicNetworkAccessForQuery',
+    );
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    sku = registerOutput<WorkspaceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    workspaceCapping = registerOutput<WorkspaceCappingResponse?>(
+      'workspaceCapping',
+    );
   }
 }

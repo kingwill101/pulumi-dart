@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_attachment_args.dart';
 import 'zone_attachment_state.dart';
-import 'zone_attachment_vpc.dart';
 
 /// ## Example Usage
 ///
@@ -717,12 +716,16 @@ import 'zone_attachment_vpc.dart';
 class ZoneAttachment extends pulumi.CustomResource {
   /// The language of code.
   late final pulumi.Output<String?> lang;
+
   /// The user custom IP address.
   late final pulumi.Output<String?> userClientIp;
+
   /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
   late final pulumi.Output<List<String>> vpcIds;
+
   /// See `vpcs` below.Recommend to use `vpcs`.
-  late final pulumi.Output<List<ZoneAttachmentVpc>> vpcs;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
+
   /// The name of the Private Zone Record.
   late final pulumi.Output<String> zoneId;
 
@@ -735,16 +738,16 @@ class ZoneAttachment extends pulumi.CustomResource {
     ZoneAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/zoneAttachment:ZoneAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.userClientIp = registerOutput<String?>('userClientIp');
-    this.vpcIds = registerOutput<List<String>>('vpcIds');
-    this.vpcs = registerOutput<List<ZoneAttachmentVpc>>('vpcs');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:pvtz/zoneAttachment:ZoneAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    userClientIp = registerOutput<String?>('userClientIp');
+    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ZoneAttachment] resource's state with the given [name] and [id].
@@ -765,15 +768,15 @@ class ZoneAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/zoneAttachment:ZoneAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.userClientIp = registerOutput<String?>('userClientIp');
-    this.vpcIds = registerOutput<List<String>>('vpcIds');
-    this.vpcs = registerOutput<List<ZoneAttachmentVpc>>('vpcs');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:pvtz/zoneAttachment:ZoneAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    userClientIp = registerOutput<String?>('userClientIp');
+    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

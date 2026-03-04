@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
   /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
   final pulumi.Input<bool>? isCloudFunction;
+
   /// The password for HTTP Basic authentication.
   final pulumi.Input<String>? password;
+
   /// The HTTP request headers to send together with fulfillment requests.
   final pulumi.Input<Map<String, String>>? requestHeaders;
+
   /// The fulfillment URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
+
   /// The user name for HTTP Basic authentication.
   final pulumi.Input<String>? username;
 
@@ -39,14 +43,33 @@ class GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1FulfillmentGenericWebService.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1FulfillmentGenericWebService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1FulfillmentGenericWebService(
-      isCloudFunction: map['isCloudFunction'] == null ? null : (map['isCloudFunction']! as bool).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
-      uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      isCloudFunction: (() {
+        final guardedValue = map['isCloudFunction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestHeaders: (() {
+        final guardedValue = map['requestHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

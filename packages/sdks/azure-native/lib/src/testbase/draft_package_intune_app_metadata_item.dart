@@ -6,34 +6,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DraftPackageIntuneAppMetadataItem {
   /// Intune app id.
   final pulumi.Input<String>? appId;
+
   /// Intune app name.
   final pulumi.Input<String>? appName;
+
   /// Creation date of the app.
   final pulumi.Input<String>? createDate;
+
   /// Ids of dependency apps.
   final pulumi.Input<List<String>>? dependencyIds;
+
   /// Count of dependency apps.
   final pulumi.Input<int>? dependentAppCount;
+
   /// Description of the app.
   final pulumi.Input<String>? description;
+
   /// Expected exit codes returned from Intune App.
   final pulumi.Input<List<String>>? expectedExitCodes;
+
   /// Install command.
   final pulumi.Input<String>? installCommand;
+
   /// last processed time tickets.
   final pulumi.Input<double>? lastProcessed;
+
   /// Minimum supported OS. The OS version must be greater than this version to run this app.
   final pulumi.Input<String>? minimumSupportedOS;
+
   /// Owner of the app.
   final pulumi.Input<String>? owner;
+
   /// Publisher of the app.
   final pulumi.Input<String>? publisher;
+
   /// Setup file path.
   final pulumi.Input<String>? setupFile;
+
   /// Extract status.
   final pulumi.Input<String>? status;
+
   /// Uninstall command.
   final pulumi.Input<String>? uninstallCommand;
+
   /// Intune app version.
   final pulumi.Input<String>? version;
 
@@ -96,23 +111,86 @@ class DraftPackageIntuneAppMetadataItem {
 
   factory DraftPackageIntuneAppMetadataItem.fromMap(Map<String, dynamic> map) {
     return DraftPackageIntuneAppMetadataItem(
-      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
-      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
-      dependencyIds: map['dependencyIds'] == null ? null : ((map['dependencyIds']! as List).cast<String>()).input(),
-      dependentAppCount: map['dependentAppCount'] == null ? null : (map['dependentAppCount']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expectedExitCodes: map['expectedExitCodes'] == null ? null : ((map['expectedExitCodes']! as List).cast<String>()).input(),
-      installCommand: map['installCommand'] == null ? null : (map['installCommand']! as String).input(),
-      lastProcessed: map['lastProcessed'] == null ? null : (map['lastProcessed']! as double).input(),
-      minimumSupportedOS: map['minimumSupportedOS'] == null ? null : (map['minimumSupportedOS']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      setupFile: map['setupFile'] == null ? null : (map['setupFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      uninstallCommand: map['uninstallCommand'] == null ? null : (map['uninstallCommand']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appName: (() {
+        final guardedValue = map['appName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createDate: (() {
+        final guardedValue = map['createDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dependencyIds: (() {
+        final guardedValue = map['dependencyIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dependentAppCount: (() {
+        final guardedValue = map['dependentAppCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expectedExitCodes: (() {
+        final guardedValue = map['expectedExitCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      installCommand: (() {
+        final guardedValue = map['installCommand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastProcessed: (() {
+        final guardedValue = map['lastProcessed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minimumSupportedOS: (() {
+        final guardedValue = map['minimumSupportedOS'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      setupFile: (() {
+        final guardedValue = map['setupFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uninstallCommand: (() {
+        final guardedValue = map['uninstallCommand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

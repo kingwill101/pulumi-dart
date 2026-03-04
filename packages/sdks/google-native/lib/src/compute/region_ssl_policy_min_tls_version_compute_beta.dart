@@ -4,16 +4,17 @@ enum RegionSslPolicyMinTlsVersionComputeBeta {
   tls11("TLS_1_1"),
   tls12("TLS_1_2");
 
-  const RegionSslPolicyMinTlsVersionComputeBeta(this.value);
-  final String value;
+  const RegionSslPolicyMinTlsVersionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionSslPolicyMinTlsVersionComputeBeta fromValue(String value) {
     for (final item in RegionSslPolicyMinTlsVersionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslPolicyMinTlsVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslPolicyMinTlsVersionComputeBeta value: $value',
+    );
   }
 }
-

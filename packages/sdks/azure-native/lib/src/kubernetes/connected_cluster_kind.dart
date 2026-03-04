@@ -2,16 +2,15 @@
 enum ConnectedClusterKind {
   valueProvisionedCluster("ProvisionedCluster");
 
-  const ConnectedClusterKind(this.value);
-  final String value;
+  const ConnectedClusterKind(this.wireValue);
+  final String wireValue;
 
   static ConnectedClusterKind fromValue(String value) {
     for (final item in ConnectedClusterKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectedClusterKind value: $value');
   }
 }
-

@@ -155,16 +155,22 @@ import 'system_data_response.dart';
 class MeshMembership extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
   late final pulumi.Output<String> eTag;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Mesh membership properties of a managed cluster.
   late final pulumi.Output<MeshMembershipPropertiesResponse> properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,17 +183,17 @@ class MeshMembership extends pulumi.CustomResource {
     MeshMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:MeshMembership',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
-    this.managedBy = registerOutput<String?>('managedBy');
+         'azure-native:containerservice:MeshMembership',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MeshMembershipPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MeshMembershipPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

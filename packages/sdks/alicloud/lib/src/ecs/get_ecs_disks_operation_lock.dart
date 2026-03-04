@@ -8,20 +8,19 @@ class GetEcsDisksOperationLock {
 
   /// Creates a new [GetEcsDisksOperationLock].
   /// [lockReason] The reason why the disk was locked.
-  GetEcsDisksOperationLock({
-    this.lockReason,
-  });
+  GetEcsDisksOperationLock({this.lockReason});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lockReason': ?lockReason,
-    };
+    return <String, dynamic>{'lockReason': ?lockReason};
   }
 
   factory GetEcsDisksOperationLock.fromMap(Map<String, dynamic> map) {
     return GetEcsDisksOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
+      lockReason: (() {
+        final guardedValue = map['lockReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

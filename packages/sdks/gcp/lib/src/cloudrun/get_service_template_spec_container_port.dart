@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateSpecContainerPort {
   /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
   final pulumi.Input<int> containerPort;
+
   /// The name of the Cloud Run Service.
   final pulumi.Input<String> name;
+
   /// Protocol for port. Must be "TCP". Defaults to "TCP".
   final pulumi.Input<String> protocol;
 
@@ -28,12 +30,13 @@ class GetServiceTemplateSpecContainerPort {
     };
   }
 
-  factory GetServiceTemplateSpecContainerPort.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerPort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerPort(
-      containerPort: (map['containerPort'] as int).input(),
-      name: (map['name'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

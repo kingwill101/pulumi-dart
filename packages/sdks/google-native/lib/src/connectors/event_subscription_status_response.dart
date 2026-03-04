@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionStatusResponse {
   /// Description of the state.
   final pulumi.Input<String> description;
+
   /// State of Event Subscription resource.
   final pulumi.Input<String> state;
 
@@ -18,17 +19,13 @@ class EventSubscriptionStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'state': state,
-    };
+    return <String, dynamic>{'description': description, 'state': state};
   }
 
   factory EventSubscriptionStatusResponse.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStatusResponse(
-      description: (map['description'] as String).input(),
-      state: (map['state'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

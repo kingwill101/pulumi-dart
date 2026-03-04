@@ -10,20 +10,26 @@ class ListStorageAccountKeysResult {
 
   /// Creates a new [ListStorageAccountKeysResult].
   /// [keys] Gets the list of storage account keys and their properties for the specified storage account.
-  ListStorageAccountKeysResult({
-    required this.keys,
-  });
+  ListStorageAccountKeysResult({required this.keys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keys': pulumi.Input.encodeList<StorageAccountKeyResponse, Map<String, dynamic>>(keys, (value) => value.toMap()),
+      'keys':
+          pulumi.Input.encodeList<
+            StorageAccountKeyResponse,
+            Map<String, dynamic>
+          >(keys, (value) => value.toMap()),
     };
   }
 
   factory ListStorageAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountKeysResult(
-      keys: pulumi.Input.decodeList<StorageAccountKeyResponse>(map['keys'], (value) => StorageAccountKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keys: pulumi.Input.decodeList<StorageAccountKeyResponse>(
+        map['keys']!,
+        (value) => StorageAccountKeyResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

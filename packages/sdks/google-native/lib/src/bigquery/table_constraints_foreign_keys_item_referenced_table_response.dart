@@ -25,12 +25,13 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
     };
   }
 
-  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableConstraintsForeignKeysItemReferencedTableResponse(
-      datasetId: (map['datasetId'] as String).input(),
-      project: (map['project'] as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

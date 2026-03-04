@@ -5,16 +5,15 @@ enum DiskType {
   persistentSsd("PERSISTENT_SSD"),
   localSsd("LOCAL_SSD");
 
-  const DiskType(this.value);
-  final String value;
+  const DiskType(this.wireValue);
+  final String wireValue;
 
   static DiskType fromValue(String value) {
     for (final item in DiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskType value: $value');
   }
 }
-

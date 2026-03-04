@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedIpPoolArgs {
   /// Name of the dedicated IP pool.
   final pulumi.Input<String> poolName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags attached to the pool.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class GetDedicatedIpPoolArgs {
   /// [poolName] Name of the dedicated IP pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags attached to the pool.
-  GetDedicatedIpPoolArgs({
-    required this.poolName,
-    this.region,
-    this.tags,
-  });
+  GetDedicatedIpPoolArgs({required this.poolName, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class GetDedicatedIpPoolArgs {
 
   factory GetDedicatedIpPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolArgs(
-      poolName: (map['poolName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

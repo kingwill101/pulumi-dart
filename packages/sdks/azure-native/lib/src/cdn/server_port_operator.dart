@@ -11,16 +11,15 @@ enum ServerPortOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const ServerPortOperator(this.value);
-  final String value;
+  const ServerPortOperator(this.wireValue);
+  final String wireValue;
 
   static ServerPortOperator fromValue(String value) {
     for (final item in ServerPortOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerPortOperator value: $value');
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionResponse {
   /// The endpoint that receives notifications from the SNS topic. The endpoint value depends on the protocol that you specify. For more information, see the ``Endpoint`` parameter of the ``Subscribe`` action in the *API Reference*.
   final pulumi.Input<String>? endpoint;
+
   /// The subscription's protocol. For more information, see the ``Protocol`` parameter of the ``Subscribe`` action in the *API Reference*.
   final pulumi.Input<String>? protocol;
 
   /// Creates a new [SubscriptionResponse].
   /// [endpoint] The endpoint that receives notifications from the SNS topic. The endpoint value depends on the protocol that you specify. For more information, see the ``Endpoint`` parameter of the ``Subscribe`` action in the *API Reference*.
   /// [protocol] The subscription's protocol. For more information, see the ``Protocol`` parameter of the ``Subscribe`` action in the *API Reference*.
-  SubscriptionResponse({
-    this.endpoint,
-    this.protocol,
-  });
+  SubscriptionResponse({this.endpoint, this.protocol});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpoint': ?endpoint,
-      'protocol': ?protocol,
-    };
+    return <String, dynamic>{'endpoint': ?endpoint, 'protocol': ?protocol};
   }
 
   factory SubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

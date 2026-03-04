@@ -3,16 +3,15 @@ enum LdapSigning {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const LdapSigning(this.value);
-  final String value;
+  const LdapSigning(this.wireValue);
+  final String wireValue;
 
   static LdapSigning fromValue(String value) {
     for (final item in LdapSigning.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LdapSigning value: $value');
   }
 }
-

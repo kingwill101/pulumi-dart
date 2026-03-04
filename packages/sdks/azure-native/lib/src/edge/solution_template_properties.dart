@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionTemplateProperties {
   /// List of capabilities
   final pulumi.Input<List<String>> capabilities;
+
   /// Description of Solution template
   final pulumi.Input<String> description;
+
   /// Flag to enable external validation
   final pulumi.Input<bool>? enableExternalValidation;
+
   /// State of resource
   final pulumi.Input<String>? state;
 
@@ -36,11 +39,20 @@ class SolutionTemplateProperties {
 
   factory SolutionTemplateProperties.fromMap(Map<String, dynamic> map) {
     return SolutionTemplateProperties(
-      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      capabilities: pulumi.Input.fromValue(
+        (map['capabilities'] as List).cast<String>(),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      enableExternalValidation: (() {
+        final guardedValue = map['enableExternalValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

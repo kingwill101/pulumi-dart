@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
   /// Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
   final pulumi.Input<String>? hostRewrite;
+
   /// Prior to forwarding the request to the selected origin, the matching portion of the request's path is replaced by pathPrefixRewrite.
   final pulumi.Input<String>? pathPrefixRewrite;
+
   /// Prior to forwarding the request to the selected origin, if the
   /// request matched a pathTemplateMatch, the matching portion of the
   /// request's path is replaced re-written using the pattern specified
@@ -38,12 +40,25 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
-      pathTemplateRewrite: map['pathTemplateRewrite'] == null ? null : (map['pathTemplateRewrite']! as String).input(),
+      hostRewrite: (() {
+        final guardedValue = map['hostRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathPrefixRewrite: (() {
+        final guardedValue = map['pathPrefixRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathTemplateRewrite: (() {
+        final guardedValue = map['pathTemplateRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

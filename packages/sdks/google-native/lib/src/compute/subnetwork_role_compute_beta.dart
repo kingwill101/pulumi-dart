@@ -3,16 +3,15 @@ enum SubnetworkRoleComputeBeta {
   active("ACTIVE"),
   backup("BACKUP");
 
-  const SubnetworkRoleComputeBeta(this.value);
-  final String value;
+  const SubnetworkRoleComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SubnetworkRoleComputeBeta fromValue(String value) {
     for (final item in SubnetworkRoleComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkRoleComputeBeta value: $value');
   }
 }
-

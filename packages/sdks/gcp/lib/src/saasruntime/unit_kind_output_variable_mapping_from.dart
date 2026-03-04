@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitKindOutputVariableMappingFrom {
   /// Alias of the dependency that the outputVariable will pass its value to
   final pulumi.Input<String> dependency;
+
   /// Name of the outputVariable on the dependency
   final pulumi.Input<String> outputVariable;
 
@@ -25,9 +26,8 @@ class UnitKindOutputVariableMappingFrom {
 
   factory UnitKindOutputVariableMappingFrom.fromMap(Map<String, dynamic> map) {
     return UnitKindOutputVariableMappingFrom(
-      dependency: (map['dependency'] as String).input(),
-      outputVariable: (map['outputVariable'] as String).input(),
+      dependency: pulumi.Input.fromValue(map['dependency'] as String),
+      outputVariable: pulumi.Input.fromValue(map['outputVariable'] as String),
     );
   }
 }
-

@@ -3,16 +3,22 @@ enum PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha {
   prometheus("PROMETHEUS"),
   cloudMonitoring("CLOUD_MONITORING");
 
-  const PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha(this.value);
-  final String value;
+  const PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha fromValue(String value) {
-    for (final item in PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha.values) {
-      if (item.value == value) {
+  static PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha value: $value',
+    );
   }
 }
-

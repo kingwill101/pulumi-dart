@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProximityPlacementGroupArgs {
   /// includeColocationStatus=true enables fetching the colocation status of all the resources in the proximity placement group.
   final pulumi.Input<String>? includeColocationStatus;
+
   /// The name of the proximity placement group.
   final pulumi.Input<String> proximityPlacementGroupName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetProximityPlacementGroupArgs {
 
   factory GetProximityPlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetProximityPlacementGroupArgs(
-      includeColocationStatus: map['includeColocationStatus'] == null ? null : (map['includeColocationStatus']! as String).input(),
-      proximityPlacementGroupName: (map['proximityPlacementGroupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      includeColocationStatus: (() {
+        final guardedValue = map['includeColocationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proximityPlacementGroupName: pulumi.Input.fromValue(
+        map['proximityPlacementGroupName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

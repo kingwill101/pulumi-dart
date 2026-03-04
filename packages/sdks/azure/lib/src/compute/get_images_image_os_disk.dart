@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImageOsDisk {
   /// the URI in Azure storage of the blob used to create the image.
   final pulumi.Input<String> blobUri;
+
   /// the caching mode for the Data Disk.
   final pulumi.Input<String> caching;
+
   /// the ID of the Disk Encryption Set used to encrypt this image.
   final pulumi.Input<String> diskEncryptionSetId;
+
   /// the ID of the Managed Disk used as the Data Disk Image.
   final pulumi.Input<String> managedDiskId;
+
   /// the State of the OS used in the Image.
   final pulumi.Input<String> osState;
+
   /// the type of Operating System used on the OS Disk.
   final pulumi.Input<String> osType;
+
   /// the size of this Data Disk in GB.
   final pulumi.Input<int> sizeGb;
 
@@ -50,14 +56,15 @@ class GetImagesImageOsDisk {
 
   factory GetImagesImageOsDisk.fromMap(Map<String, dynamic> map) {
     return GetImagesImageOsDisk(
-      blobUri: (map['blobUri'] as String).input(),
-      caching: (map['caching'] as String).input(),
-      diskEncryptionSetId: (map['diskEncryptionSetId'] as String).input(),
-      managedDiskId: (map['managedDiskId'] as String).input(),
-      osState: (map['osState'] as String).input(),
-      osType: (map['osType'] as String).input(),
-      sizeGb: (map['sizeGb'] as int).input(),
+      blobUri: pulumi.Input.fromValue(map['blobUri'] as String),
+      caching: pulumi.Input.fromValue(map['caching'] as String),
+      diskEncryptionSetId: pulumi.Input.fromValue(
+        map['diskEncryptionSetId'] as String,
+      ),
+      managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
+      osState: pulumi.Input.fromValue(map['osState'] as String),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
     );
   }
 }
-

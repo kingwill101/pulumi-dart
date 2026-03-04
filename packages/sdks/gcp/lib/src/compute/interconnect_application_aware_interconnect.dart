@@ -8,13 +8,22 @@ class InterconnectApplicationAwareInterconnect {
   /// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
   /// bandwidth is utilized among your workloads mapping to different traffic classes.
   /// Structure is documented below.
-  final pulumi.Input<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy>? bandwidthPercentagePolicy;
+  final pulumi.Input<
+    InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+  >?
+  bandwidthPercentagePolicy;
+
   /// A description for the AAI profile on this interconnect.
   final pulumi.Input<String>? profileDescription;
+
   /// Optional field to specify a list of shape average percentages to be
   /// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>>? shapeAveragePercentages;
+  final pulumi.Input<
+    List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>
+  >?
+  shapeAveragePercentages;
+
   /// Specify configuration for StrictPriorityPolicy.
   final pulumi.Input<Map<String, dynamic>>? strictPriorityPolicy;
 
@@ -32,20 +41,70 @@ class InterconnectApplicationAwareInterconnect {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bandwidthPercentagePolicy': ?pulumi.Input.mapOptionalInputValue<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, Map<String, dynamic>>(bandwidthPercentagePolicy, (value) => value.toMap()),
+      'bandwidthPercentagePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy,
+            Map<String, dynamic>
+          >(bandwidthPercentagePolicy, (value) => value.toMap()),
       'profileDescription': ?profileDescription,
-      'shapeAveragePercentages': ?pulumi.Input.mapOptionalInputValue<List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>, List<Map<String, dynamic>>>(shapeAveragePercentages, (value) => pulumi.Input.encodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'shapeAveragePercentages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              InterconnectApplicationAwareInterconnectShapeAveragePercentage
+            >,
+            List<Map<String, dynamic>>
+          >(
+            shapeAveragePercentages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InterconnectApplicationAwareInterconnectShapeAveragePercentage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'strictPriorityPolicy': ?strictPriorityPolicy,
     };
   }
 
-  factory InterconnectApplicationAwareInterconnect.fromMap(Map<String, dynamic> map) {
+  factory InterconnectApplicationAwareInterconnect.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectApplicationAwareInterconnect(
-      bandwidthPercentagePolicy: map['bandwidthPercentagePolicy'] == null ? null : (InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap((map['bandwidthPercentagePolicy']! as Map).cast<String, dynamic>())).input(),
-      profileDescription: map['profileDescription'] == null ? null : (map['profileDescription']! as String).input(),
-      shapeAveragePercentages: map['shapeAveragePercentages'] == null ? null : (pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage>(map['shapeAveragePercentages']!, (value) => InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      strictPriorityPolicy: map['strictPriorityPolicy'] == null ? null : ((map['strictPriorityPolicy']! as Map).cast<String, dynamic>()).input(),
+      bandwidthPercentagePolicy: (() {
+        final guardedValue = map['bandwidthPercentagePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      profileDescription: (() {
+        final guardedValue = map['profileDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shapeAveragePercentages: (() {
+        final guardedValue = map['shapeAveragePercentages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            InterconnectApplicationAwareInterconnectShapeAveragePercentage
+          >(
+            guardedValue,
+            (value) =>
+                InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      strictPriorityPolicy: (() {
+        final guardedValue = map['strictPriorityPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

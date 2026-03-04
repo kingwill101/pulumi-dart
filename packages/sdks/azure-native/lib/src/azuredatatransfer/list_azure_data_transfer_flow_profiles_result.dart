@@ -10,20 +10,35 @@ class ListAzureDataTransferFlowProfilesResult {
 
   /// Creates a new [ListAzureDataTransferFlowProfilesResult].
   /// [value] FlowProfileMetadata array.
-  ListAzureDataTransferFlowProfilesResult({
-    this.value,
-  });
+  ListAzureDataTransferFlowProfilesResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<FlowProfileMetadataResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          FlowProfileMetadataResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListAzureDataTransferFlowProfilesResult.fromMap(Map<String, dynamic> map) {
+  factory ListAzureDataTransferFlowProfilesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListAzureDataTransferFlowProfilesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<FlowProfileMetadataResponse>(map['value']!, (value) => FlowProfileMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<FlowProfileMetadataResponse>(
+          guardedValue,
+          (value) => FlowProfileMetadataResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

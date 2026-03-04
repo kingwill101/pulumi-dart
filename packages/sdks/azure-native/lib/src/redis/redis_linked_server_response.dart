@@ -9,20 +9,15 @@ class RedisLinkedServerResponse {
 
   /// Creates a new [RedisLinkedServerResponse].
   /// [id] Linked server Id.
-  RedisLinkedServerResponse({
-    required this.id,
-  });
+  RedisLinkedServerResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory RedisLinkedServerResponse.fromMap(Map<String, dynamic> map) {
     return RedisLinkedServerResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

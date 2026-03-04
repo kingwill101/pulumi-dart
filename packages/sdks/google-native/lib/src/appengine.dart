@@ -1,5 +1,3 @@
-library module_appengine;
-
 export 'appengine/api_config_handler.dart';
 export 'appengine/api_config_handler_appengine_v1beta.dart';
 export 'appengine/api_config_handler_auth_fail_action.dart';

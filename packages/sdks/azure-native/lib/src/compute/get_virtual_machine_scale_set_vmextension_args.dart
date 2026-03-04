@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineScaleSetVMExtensionArgs {
   /// The expand expression to apply on the operation.
   final pulumi.Input<String>? expand;
+
   /// The instance ID of the virtual machine.
   final pulumi.Input<String> instanceId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the virtual machine extension.
   final pulumi.Input<String> vmExtensionName;
+
   /// The name of the VM scale set.
   final pulumi.Input<String> vmScaleSetName;
 
@@ -42,14 +46,21 @@ class GetVirtualMachineScaleSetVMExtensionArgs {
     };
   }
 
-  factory GetVirtualMachineScaleSetVMExtensionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualMachineScaleSetVMExtensionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualMachineScaleSetVMExtensionArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmExtensionName: (map['vmExtensionName'] as String).input(),
-      vmScaleSetName: (map['vmScaleSetName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmExtensionName: pulumi.Input.fromValue(map['vmExtensionName'] as String),
+      vmScaleSetName: pulumi.Input.fromValue(map['vmScaleSetName'] as String),
     );
   }
 }
-

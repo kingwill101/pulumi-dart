@@ -4,16 +4,15 @@ enum GrpcRouteMethodMatchType {
   exact("EXACT"),
   regularExpression("REGULAR_EXPRESSION");
 
-  const GrpcRouteMethodMatchType(this.value);
-  final String value;
+  const GrpcRouteMethodMatchType(this.wireValue);
+  final String wireValue;
 
   static GrpcRouteMethodMatchType fromValue(String value) {
     for (final item in GrpcRouteMethodMatchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GrpcRouteMethodMatchType value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class TableFieldSchemaRangeElementType {
 
   /// Creates a new [TableFieldSchemaRangeElementType].
   /// [type] The field element type of a RANGE
-  TableFieldSchemaRangeElementType({
-    this.type,
-  });
+  TableFieldSchemaRangeElementType({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
   factory TableFieldSchemaRangeElementType.fromMap(Map<String, dynamic> map) {
     return TableFieldSchemaRangeElementType(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

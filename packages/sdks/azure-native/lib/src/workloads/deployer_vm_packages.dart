@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeployerVmPackages {
   /// The deployer VM packages storage account id
   final pulumi.Input<String>? storageAccountId;
+
   /// The URL to the deployer VM packages file.
   final pulumi.Input<String>? url;
 
   /// Creates a new [DeployerVmPackages].
   /// [storageAccountId] The deployer VM packages storage account id
   /// [url] The URL to the deployer VM packages file.
-  DeployerVmPackages({
-    this.storageAccountId,
-    this.url,
-  });
+  DeployerVmPackages({this.storageAccountId, this.url});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DeployerVmPackages {
 
   factory DeployerVmPackages.fromMap(Map<String, dynamic> map) {
     return DeployerVmPackages(
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

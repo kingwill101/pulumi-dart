@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadIdentityConfigResponseContainerV1beta1 {
   /// IAM Identity Namespace to attach all Kubernetes Service Accounts to.
   final pulumi.Input<String> identityNamespace;
+
   /// identity provider is the third party identity provider.
   final pulumi.Input<String> identityProvider;
+
   /// The workload pool to attach all Kubernetes service accounts to.
   final pulumi.Input<String> workloadPool;
 
@@ -29,12 +31,17 @@ class WorkloadIdentityConfigResponseContainerV1beta1 {
     };
   }
 
-  factory WorkloadIdentityConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkloadIdentityConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadIdentityConfigResponseContainerV1beta1(
-      identityNamespace: (map['identityNamespace'] as String).input(),
-      identityProvider: (map['identityProvider'] as String).input(),
-      workloadPool: (map['workloadPool'] as String).input(),
+      identityNamespace: pulumi.Input.fromValue(
+        map['identityNamespace'] as String,
+      ),
+      identityProvider: pulumi.Input.fromValue(
+        map['identityProvider'] as String,
+      ),
+      workloadPool: pulumi.Input.fromValue(map['workloadPool'] as String),
     );
   }
 }
-

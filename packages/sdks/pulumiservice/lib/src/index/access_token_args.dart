@@ -12,20 +12,15 @@ class AccessTokenArgs {
 
   /// Creates a new [AccessTokenArgs].
   /// [description] Description of the access token.
-  AccessTokenArgs({
-    required this.description,
-  });
+  AccessTokenArgs({required this.description});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-    };
+    return <String, dynamic>{'description': description};
   }
 
   factory AccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return AccessTokenArgs(
-      description: (map['description'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

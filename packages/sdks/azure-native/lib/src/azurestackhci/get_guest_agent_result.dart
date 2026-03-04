@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetGuestAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Username / Password Credentials to provision guest agent.
   final GuestCredentialResponse? credentials;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The guest agent provisioning action.
   final String? provisioningAction;
+
   /// Provisioning state of the virtual machine instance.
   final String provisioningState;
+
   /// The guest agent status.
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -49,7 +57,7 @@ class GetGuestAgentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?credentials?.toMap(),
       'id': id,
       'name': name,
       'provisioningAction': ?provisioningAction,
@@ -63,15 +71,26 @@ class GetGuestAgentResult {
   factory GetGuestAgentResult.fromMap(Map<String, dynamic> map) {
     return GetGuestAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credentials: map['credentials'] == null ? null : GuestCredentialResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>()),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return GuestCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningAction: map['provisioningAction'] == null ? null : map['provisioningAction']! as String,
+      provisioningAction: (() {
+        final guardedValue = map['provisioningAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

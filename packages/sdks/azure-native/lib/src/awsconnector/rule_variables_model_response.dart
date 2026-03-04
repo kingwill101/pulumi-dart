@@ -10,20 +10,38 @@ class RuleVariablesModelResponse {
 
   /// Creates a new [RuleVariablesModelResponse].
   /// [ruleVariables] Property ruleVariables
-  RuleVariablesModelResponse({
-    this.ruleVariables,
-  });
+  RuleVariablesModelResponse({this.ruleVariables});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleVariables': ?pulumi.Input.mapOptionalInputValue<Map<String, IPSetResponse>, Map<String, Map<String, dynamic>>>(ruleVariables, (value) => pulumi.Input.encodeMapValues<IPSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, IPSetResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            ruleVariables,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  IPSetResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RuleVariablesModelResponse.fromMap(Map<String, dynamic> map) {
     return RuleVariablesModelResponse(
-      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeMapValues<IPSetResponse>(map['ruleVariables']!, (value) => IPSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleVariables: (() {
+        final guardedValue = map['ruleVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<IPSetResponse>(
+            guardedValue,
+            (value) =>
+                IPSetResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

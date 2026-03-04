@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsSecretsManagerResourcePolicyProperties {
   /// Property blockPublicPolicy
   final pulumi.Input<bool>? blockPublicPolicy;
+
   /// Property id
   final pulumi.Input<String>? id;
+
   /// Property resourcePolicy
   final pulumi.Input<dynamic>? resourcePolicy;
+
   /// Property secretId
   final pulumi.Input<String>? secretId;
 
@@ -34,13 +37,30 @@ class AwsSecretsManagerResourcePolicyProperties {
     };
   }
 
-  factory AwsSecretsManagerResourcePolicyProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsSecretsManagerResourcePolicyProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsSecretsManagerResourcePolicyProperties(
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy']! as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy']!).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
+      blockPublicPolicy: (() {
+        final guardedValue = map['blockPublicPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourcePolicy: (() {
+        final guardedValue = map['resourcePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      secretId: (() {
+        final guardedValue = map['secretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

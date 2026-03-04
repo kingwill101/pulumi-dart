@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenersArgs {
   /// A regex string to filter results by SLB listener description.
   final pulumi.Input<String>? descriptionRegex;
+
   /// Filter listeners by the specified frontend port.
   final pulumi.Input<int>? frontendPort;
+
   /// ID of the SLB with listeners.
   final pulumi.Input<String> loadBalancerId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
   final pulumi.Input<String>? protocol;
 
@@ -44,12 +48,27 @@ class GetListenersArgs {
 
   factory GetListenersArgs.fromMap(Map<String, dynamic> map) {
     return GetListenersArgs(
-      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex']! as String).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      descriptionRegex: (() {
+        final guardedValue = map['descriptionRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frontendPort: (() {
+        final guardedValue = map['frontendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

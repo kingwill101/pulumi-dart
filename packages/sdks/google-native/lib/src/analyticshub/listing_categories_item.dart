@@ -20,16 +20,15 @@ enum ListingCategoriesItem {
   categoryTransportationAndLogistics("CATEGORY_TRANSPORTATION_AND_LOGISTICS"),
   categoryTravelAndTourism("CATEGORY_TRAVEL_AND_TOURISM");
 
-  const ListingCategoriesItem(this.value);
-  final String value;
+  const ListingCategoriesItem(this.wireValue);
+  final String wireValue;
 
   static ListingCategoriesItem fromValue(String value) {
     for (final item in ListingCategoriesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ListingCategoriesItem value: $value');
   }
 }
-

@@ -3,13 +3,10 @@ import 'linux_web_app_slot_args.dart';
 import 'linux_web_app_slot_auth_settings.dart';
 import 'linux_web_app_slot_auth_settings_v2.dart';
 import 'linux_web_app_slot_backup.dart';
-import 'linux_web_app_slot_connection_string.dart';
 import 'linux_web_app_slot_identity.dart';
 import 'linux_web_app_slot_logs.dart';
 import 'linux_web_app_slot_site_config.dart';
-import 'linux_web_app_slot_site_credential.dart';
 import 'linux_web_app_slot_state.dart';
-import 'linux_web_app_slot_storage_account.dart';
 
 /// Manages a Linux Web App Slot.
 ///
@@ -257,7 +254,7 @@ import 'linux_web_app_slot_storage_account.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -272,91 +269,127 @@ import 'linux_web_app_slot_storage_account.dart';
 class LinuxWebAppSlot extends pulumi.CustomResource {
   /// A `app_metadata`.
   late final pulumi.Output<Map<String, String>> appMetadata;
+
   /// The ID of the Linux Web App this Deployment Slot will be part of.
   late final pulumi.Output<String> appServiceId;
+
   /// A map of key-value pairs of App Settings.
   late final pulumi.Output<Map<String, String>?> appSettings;
+
   /// An `auth_settings` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotAuthSettings?> authSettings;
+
   /// An `auth_settings_v2` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotAuthSettingsV2?> authSettingsV2;
+
   /// A `backup` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotBackup?> backup;
+
   /// Should Client Affinity be enabled?
   late final pulumi.Output<bool?> clientAffinityEnabled;
+
   /// Should Client Certificates be enabled?
   late final pulumi.Output<bool?> clientCertificateEnabled;
+
   /// Paths to exclude when using client certificates, separated by ;
   late final pulumi.Output<String?> clientCertificateExclusionPaths;
+
   /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `client_cert_enabled` is `false`. Defaults to `Required`.
   late final pulumi.Output<String?> clientCertificateMode;
+
   /// One or more `connection_string` blocks as defined below.
-  late final pulumi.Output<List<LinuxWebAppSlotConnectionString>?> connectionStrings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
+
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
+
   /// The default hostname of the Linux Web App.
   late final pulumi.Output<String> defaultHostname;
+
   /// Should the Linux Web App be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Should the default FTP Basic Authentication publishing profile be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> ftpPublishBasicAuthenticationEnabled;
+
   /// The ID of the App Service Environment used by App Service Slot.
   late final pulumi.Output<String> hostingEnvironmentId;
+
   /// Should the Linux Web App require HTTPS connections. Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotIdentity?> identity;
+
   /// The User Assigned Identity ID used for accessing KeyVault secrets. The identity must be assigned to the application in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity).
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
+
   /// The Kind value for this Linux Web App.
   late final pulumi.Output<String> kind;
+
   /// A `logs` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotLogs?> logs;
+
   /// The name which should be used for this Linux Web App Slot. Changing this forces a new Linux Web App Slot to be created.
   ///
-  /// > **Note:** Terraform will perform a name availability check as part of the creation progress, if this Web App is part of an App Service Environment terraform will require Read permission on the ASE for this to complete reliably.
+  /// &gt; **Note:** Terraform will perform a name availability check as part of the creation progress, if this Web App is part of an App Service Environment terraform will require Read permission on the ASE for this to complete reliably.
   late final pulumi.Output<String> name;
+
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   late final pulumi.Output<List<String>> outboundIpAddressLists;
+
   /// A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   late final pulumi.Output<String> outboundIpAddresses;
+
   /// A `possible_outbound_ip_address_list`.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
+
   /// A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
+
   /// Should public network access be enabled for the Web App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Web App will be used.
   ///
-  /// > **Note:** `service_plan_id` should only be specified if it differs from the Service Plan of the associated Linux Web App.
+  /// &gt; **Note:** `service_plan_id` should only be specified if it differs from the Service Plan of the associated Linux Web App.
   late final pulumi.Output<String?> servicePlanId;
+
   /// A `site_config` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotSiteConfig> siteConfig;
+
   /// A `site_credential` block as defined below.
-  late final pulumi.Output<List<LinuxWebAppSlotSiteCredential>> siteCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+
   /// One or more `storage_account` blocks as defined below.
-  late final pulumi.Output<List<LinuxWebAppSlotStorageAccount>?> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+
   /// A mapping of tags that should be assigned to the Linux Web App.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
   late final pulumi.Output<bool?> virtualNetworkBackupRestoreEnabled;
+
   /// The subnet id which will be used by this Web App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// > **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the web app slot configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the web app slot configuration.
   ///
-  /// > **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   late final pulumi.Output<String?> virtualNetworkSubnetId;
+
   /// Should the traffic for the image pull be routed over virtual network enabled. Defaults to `false`.
   ///
-  /// > **Note:** The feature can also be enabled via the app setting `WEBSITE_PULL_IMAGE_OVER_VNET`. Must be set to `true` when running in an App Service Environment.
+  /// &gt; **Note:** The feature can also be enabled via the app setting `WEBSITE_PULL_IMAGE_OVER_VNET`. Must be set to `true` when running in an App Service Environment.
   late final pulumi.Output<bool?> vnetImagePullEnabled;
+
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
-  /// > **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
+  /// &gt; **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
   late final pulumi.Output<bool?> webdeployPublishBasicAuthenticationEnabled;
+
   /// The local path and filename of the Zip packaged application to deploy to this Linux Web App.
   ///
-  /// > **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `app_settings`. Refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/app-service/deploy-run-package) for further details.
+  /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `app_settings`. Refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/app-service/deploy-run-package) for further details.
   late final pulumi.Output<String> zipDeployFile;
 
   /// Creates a new [LinuxWebAppSlot].
@@ -368,48 +401,78 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     LinuxWebAppSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appMetadata = registerOutput<Map<String, String>>('appMetadata');
-    this.appServiceId = registerOutput<String>('appServiceId');
-    this.appSettings = registerOutput<Map<String, String>?>('appSettings');
-    this.authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings');
-    this.authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>('authSettingsV2');
-    this.backup = registerOutput<LinuxWebAppSlotBackup?>('backup');
-    this.clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    this.clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
-    this.clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
-    this.clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    this.connectionStrings = registerOutput<List<LinuxWebAppSlotConnectionString>?>('connectionStrings');
-    this.customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    this.defaultHostname = registerOutput<String>('defaultHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
-    this.hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<LinuxWebAppSlotIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.kind = registerOutput<String>('kind');
-    this.logs = registerOutput<LinuxWebAppSlotLogs?>('logs');
+         'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appMetadata = registerOutput<Map<String, String>>('appMetadata');
+    appServiceId = registerOutput<String>('appServiceId');
+    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings');
+    authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>(
+      'authSettingsV2',
+    );
+    backup = registerOutput<LinuxWebAppSlotBackup?>('backup');
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertificateEnabled = registerOutput<bool?>(
+      'clientCertificateEnabled',
+    );
+    clientCertificateExclusionPaths = registerOutput<String?>(
+      'clientCertificateExclusionPaths',
+    );
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>?>(
+      'connectionStrings',
+    );
+    customDomainVerificationId = registerOutput<String>(
+      'customDomainVerificationId',
+    );
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>(
+      'ftpPublishBasicAuthenticationEnabled',
+    );
+    hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<LinuxWebAppSlotIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    kind = registerOutput<String>('kind');
+    logs = registerOutput<LinuxWebAppSlotLogs?>('logs');
     this.name = registerOutput<String>('name');
-    this.outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.servicePlanId = registerOutput<String?>('servicePlanId');
-    this.siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<LinuxWebAppSlotSiteCredential>>('siteCredentials');
-    this.storageAccounts = registerOutput<List<LinuxWebAppSlotStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
-    this.virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
-    this.vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
-    this.webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
-    this.zipDeployFile = registerOutput<String>('zipDeployFile');
+    outboundIpAddressLists = registerOutput<List<String>>(
+      'outboundIpAddressLists',
+    );
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>(
+      'possibleOutboundIpAddressLists',
+    );
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    servicePlanId = registerOutput<String?>('servicePlanId');
+    siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>(
+      'virtualNetworkBackupRestoreEnabled',
+    );
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>(
+      'webdeployPublishBasicAuthenticationEnabled',
+    );
+    zipDeployFile = registerOutput<String>('zipDeployFile');
   }
 
   /// Gets an existing [LinuxWebAppSlot] resource's state with the given [name] and [id].
@@ -430,47 +493,77 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appMetadata = registerOutput<Map<String, String>>('appMetadata');
-    this.appServiceId = registerOutput<String>('appServiceId');
-    this.appSettings = registerOutput<Map<String, String>?>('appSettings');
-    this.authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings');
-    this.authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>('authSettingsV2');
-    this.backup = registerOutput<LinuxWebAppSlotBackup?>('backup');
-    this.clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    this.clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
-    this.clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
-    this.clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    this.connectionStrings = registerOutput<List<LinuxWebAppSlotConnectionString>?>('connectionStrings');
-    this.customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    this.defaultHostname = registerOutput<String>('defaultHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
-    this.hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<LinuxWebAppSlotIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.kind = registerOutput<String>('kind');
-    this.logs = registerOutput<LinuxWebAppSlotLogs?>('logs');
+         'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appMetadata = registerOutput<Map<String, String>>('appMetadata');
+    appServiceId = registerOutput<String>('appServiceId');
+    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings');
+    authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>(
+      'authSettingsV2',
+    );
+    backup = registerOutput<LinuxWebAppSlotBackup?>('backup');
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertificateEnabled = registerOutput<bool?>(
+      'clientCertificateEnabled',
+    );
+    clientCertificateExclusionPaths = registerOutput<String?>(
+      'clientCertificateExclusionPaths',
+    );
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>?>(
+      'connectionStrings',
+    );
+    customDomainVerificationId = registerOutput<String>(
+      'customDomainVerificationId',
+    );
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>(
+      'ftpPublishBasicAuthenticationEnabled',
+    );
+    hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<LinuxWebAppSlotIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    kind = registerOutput<String>('kind');
+    logs = registerOutput<LinuxWebAppSlotLogs?>('logs');
     this.name = registerOutput<String>('name');
-    this.outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.servicePlanId = registerOutput<String?>('servicePlanId');
-    this.siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<LinuxWebAppSlotSiteCredential>>('siteCredentials');
-    this.storageAccounts = registerOutput<List<LinuxWebAppSlotStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
-    this.virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
-    this.vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
-    this.webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
-    this.zipDeployFile = registerOutput<String>('zipDeployFile');
+    outboundIpAddressLists = registerOutput<List<String>>(
+      'outboundIpAddressLists',
+    );
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>(
+      'possibleOutboundIpAddressLists',
+    );
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    servicePlanId = registerOutput<String?>('servicePlanId');
+    siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>(
+      'virtualNetworkBackupRestoreEnabled',
+    );
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>(
+      'webdeployPublishBasicAuthenticationEnabled',
+    );
+    zipDeployFile = registerOutput<String>('zipDeployFile');
   }
 }

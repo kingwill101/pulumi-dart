@@ -15,17 +15,15 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'alias': alias,
-      'express': express,
-    };
+    return <String, dynamic>{'alias': alias, 'express': express};
   }
 
-  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress.fromMap(Map<String, dynamic> map) {
+  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress(
-      alias: (map['alias'] as String).input(),
-      express: (map['express'] as String).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      express: pulumi.Input.fromValue(map['express'] as String),
     );
   }
 }
-

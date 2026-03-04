@@ -12,20 +12,19 @@ class GetDeploymentStackAtSubscriptionArgs {
 
   /// Creates a new [GetDeploymentStackAtSubscriptionArgs].
   /// [deploymentStackName] Name of the deployment stack.
-  GetDeploymentStackAtSubscriptionArgs({
-    required this.deploymentStackName,
-  });
+  GetDeploymentStackAtSubscriptionArgs({required this.deploymentStackName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deploymentStackName': deploymentStackName,
-    };
+    return <String, dynamic>{'deploymentStackName': deploymentStackName};
   }
 
-  factory GetDeploymentStackAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentStackAtSubscriptionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentStackAtSubscriptionArgs(
-      deploymentStackName: (map['deploymentStackName'] as String).input(),
+      deploymentStackName: pulumi.Input.fromValue(
+        map['deploymentStackName'] as String,
+      ),
     );
   }
 }
-

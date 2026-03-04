@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getImageUploadUrlForData.
 class GetImageUploadUrlForDataResult {
   /// Content URL for the image blob.
   final String? contentUrl;
+
   /// Whether image exists already.
   final bool? imageExists;
+
   /// Relative path of the image.
   final String? relativePath;
 
@@ -30,10 +31,21 @@ class GetImageUploadUrlForDataResult {
 
   factory GetImageUploadUrlForDataResult.fromMap(Map<String, dynamic> map) {
     return GetImageUploadUrlForDataResult(
-      contentUrl: map['contentUrl'] == null ? null : map['contentUrl']! as String,
-      imageExists: map['imageExists'] == null ? null : map['imageExists']! as bool,
-      relativePath: map['relativePath'] == null ? null : map['relativePath']! as String,
+      contentUrl: (() {
+        final guardedValue = map['contentUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      imageExists: (() {
+        final guardedValue = map['imageExists'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      relativePath: (() {
+        final guardedValue = map['relativePath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -9,18 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryRoleArgs {
   /// The display name of the directory role to activate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? displayName;
+
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
-  /// > Either `display_name` or `template_id` must be specified.
+  /// &gt; Either `display_name` or `template_id` must be specified.
   final pulumi.Input<String>? templateId;
 
   /// Creates a new [DirectoryRoleArgs].
   /// [displayName] The display name of the directory role to activate. Changing this forces a new resource to be created.
   /// [templateId] The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-  DirectoryRoleArgs({
-    this.displayName,
-    this.templateId,
-  });
+  DirectoryRoleArgs({this.displayName, this.templateId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,16 @@ class DirectoryRoleArgs {
 
   factory DirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

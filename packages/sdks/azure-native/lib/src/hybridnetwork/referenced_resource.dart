@@ -9,20 +9,19 @@ class ReferencedResource {
 
   /// Creates a new [ReferencedResource].
   /// [id] Resource ID.
-  ReferencedResource({
-    this.id,
-  });
+  ReferencedResource({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ReferencedResource.fromMap(Map<String, dynamic> map) {
     return ReferencedResource(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

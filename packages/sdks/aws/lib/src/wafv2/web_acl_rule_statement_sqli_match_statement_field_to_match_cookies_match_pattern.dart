@@ -26,12 +26,27 @@ class WebAclRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern {
     };
   }
 
-  factory WebAclRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern(
-      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
-      excludedCookies: map['excludedCookies'] == null ? null : (((map['excludedCookies'] as List).cast<String>()).input()).input(),
-      includedCookies: map['includedCookies'] == null ? null : (((map['includedCookies'] as List).cast<String>()).input()).input(),
+      all: (() {
+        final guardedValue = map['all'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      excludedCookies: (() {
+        final guardedValue = map['excludedCookies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedCookies: (() {
+        final guardedValue = map['includedCookies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

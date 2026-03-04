@@ -8,6 +8,7 @@ class GetDbInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// A list of SelectDB DBInstance. Each element contains the following attributes:
   final List<GetDbInstancesInstance> instances;
   final String? outputFile;
@@ -31,7 +32,11 @@ class GetDbInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetDbInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<GetDbInstancesInstance, Map<String, dynamic>>(
+            instances,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'tags': ?tags,
     };
@@ -41,10 +46,22 @@ class GetDbInstancesResult {
     return GetDbInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetDbInstancesInstance>(map['instances'], (value) => GetDbInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      instances: pulumi.Input.decodeList<GetDbInstancesInstance>(
+        map['instances']!,
+        (value) => GetDbInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

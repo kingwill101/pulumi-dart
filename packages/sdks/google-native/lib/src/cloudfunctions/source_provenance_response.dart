@@ -8,8 +8,10 @@ import 'storage_source_response.dart';
 class SourceProvenanceResponse {
   /// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
   final pulumi.Input<String> gitUri;
+
   /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
   final pulumi.Input<RepoSourceResponse> resolvedRepoSource;
+
   /// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
   final pulumi.Input<StorageSourceResponse> resolvedStorageSource;
 
@@ -26,17 +28,32 @@ class SourceProvenanceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gitUri': gitUri,
-      'resolvedRepoSource': pulumi.Input.mapInputValue<RepoSourceResponse, Map<String, dynamic>>(resolvedRepoSource, (value) => value.toMap()),
-      'resolvedStorageSource': pulumi.Input.mapInputValue<StorageSourceResponse, Map<String, dynamic>>(resolvedStorageSource, (value) => value.toMap()),
+      'resolvedRepoSource':
+          pulumi.Input.mapInputValue<RepoSourceResponse, Map<String, dynamic>>(
+            resolvedRepoSource,
+            (value) => value.toMap(),
+          ),
+      'resolvedStorageSource':
+          pulumi.Input.mapInputValue<
+            StorageSourceResponse,
+            Map<String, dynamic>
+          >(resolvedStorageSource, (value) => value.toMap()),
     };
   }
 
   factory SourceProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return SourceProvenanceResponse(
-      gitUri: (map['gitUri'] as String).input(),
-      resolvedRepoSource: (RepoSourceResponse.fromMap((map['resolvedRepoSource'] as Map).cast<String, dynamic>())).input(),
-      resolvedStorageSource: (StorageSourceResponse.fromMap((map['resolvedStorageSource'] as Map).cast<String, dynamic>())).input(),
+      gitUri: pulumi.Input.fromValue(map['gitUri'] as String),
+      resolvedRepoSource: pulumi.Input.fromValue(
+        RepoSourceResponse.fromMap(
+          (map['resolvedRepoSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resolvedStorageSource: pulumi.Input.fromValue(
+        StorageSourceResponse.fromMap(
+          (map['resolvedStorageSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

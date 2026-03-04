@@ -6,7 +6,7 @@ import 'saved_query_state.dart';
 ///
 /// For information about Resource Manager Saved Query and how to use it, see [What is Saved Query](https://www.alibabacloud.com/help/zh/resource-management/developer-reference/api-resourcecenter-2022-12-01-createsavedquery).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -145,10 +145,13 @@ import 'saved_query_state.dart';
 class SavedQuery extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Query Description.
   late final pulumi.Output<String?> description;
+
   /// Query Expression.
   late final pulumi.Output<String> expression;
+
   /// The name of the resource.
   late final pulumi.Output<String> savedQueryName;
 
@@ -161,15 +164,15 @@ class SavedQuery extends pulumi.CustomResource {
     SavedQueryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/savedQuery:SavedQuery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expression = registerOutput<String>('expression');
-    this.savedQueryName = registerOutput<String>('savedQueryName');
+         'alicloud:resourcemanager/savedQuery:SavedQuery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expression = registerOutput<String>('expression');
+    savedQueryName = registerOutput<String>('savedQueryName');
   }
 
   /// Gets an existing [SavedQuery] resource's state with the given [name] and [id].
@@ -190,14 +193,14 @@ class SavedQuery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/savedQuery:SavedQuery',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expression = registerOutput<String>('expression');
-    this.savedQueryName = registerOutput<String>('savedQueryName');
+         'alicloud:resourcemanager/savedQuery:SavedQuery',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expression = registerOutput<String>('expression');
+    savedQueryName = registerOutput<String>('savedQueryName');
   }
 }

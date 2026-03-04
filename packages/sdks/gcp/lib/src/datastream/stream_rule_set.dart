@@ -8,6 +8,7 @@ class StreamRuleSet {
   /// List of customization rules to apply.
   /// Structure is documented below.
   final pulumi.Input<List<StreamRuleSetCustomizationRule>> customizationRules;
+
   /// Object filter to apply the customization rules to.
   /// Structure is documented below.
   final pulumi.Input<StreamRuleSetObjectFilter> objectFilter;
@@ -15,23 +16,45 @@ class StreamRuleSet {
   /// Creates a new [StreamRuleSet].
   /// [customizationRules] List of customization rules to apply.
   /// [objectFilter] Object filter to apply the customization rules to.
-  StreamRuleSet({
-    required this.customizationRules,
-    required this.objectFilter,
-  });
+  StreamRuleSet({required this.customizationRules, required this.objectFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizationRules': pulumi.Input.mapInputValue<List<StreamRuleSetCustomizationRule>, List<Map<String, dynamic>>>(customizationRules, (value) => pulumi.Input.encodeList<StreamRuleSetCustomizationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'objectFilter': pulumi.Input.mapInputValue<StreamRuleSetObjectFilter, Map<String, dynamic>>(objectFilter, (value) => value.toMap()),
+      'customizationRules':
+          pulumi.Input.mapInputValue<
+            List<StreamRuleSetCustomizationRule>,
+            List<Map<String, dynamic>>
+          >(
+            customizationRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamRuleSetCustomizationRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'objectFilter':
+          pulumi.Input.mapInputValue<
+            StreamRuleSetObjectFilter,
+            Map<String, dynamic>
+          >(objectFilter, (value) => value.toMap()),
     };
   }
 
   factory StreamRuleSet.fromMap(Map<String, dynamic> map) {
     return StreamRuleSet(
-      customizationRules: (pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(map['customizationRules'], (value) => StreamRuleSetCustomizationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objectFilter: (StreamRuleSetObjectFilter.fromMap((map['objectFilter'] as Map).cast<String, dynamic>())).input(),
+      customizationRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(
+          map['customizationRules']!,
+          (value) => StreamRuleSetCustomizationRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      objectFilter: pulumi.Input.fromValue(
+        StreamRuleSetObjectFilter.fromMap(
+          (map['objectFilter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -29,12 +29,17 @@ class GetAccessLevelAccesscontextmanagerV1betaArgs {
     };
   }
 
-  factory GetAccessLevelAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAccessLevelAccesscontextmanagerV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessLevelAccesscontextmanagerV1betaArgs(
-      accessLevelFormat: map['accessLevelFormat'] == null ? null : (map['accessLevelFormat']! as String).input(),
-      accessLevelId: (map['accessLevelId'] as String).input(),
-      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      accessLevelFormat: (() {
+        final guardedValue = map['accessLevelFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessLevelId: pulumi.Input.fromValue(map['accessLevelId'] as String),
+      accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
     );
   }
 }
-

@@ -223,7 +223,7 @@ import 'integration_account_assembly_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -238,18 +238,25 @@ import 'integration_account_assembly_state.dart';
 class IntegrationAccountAssembly extends pulumi.CustomResource {
   /// The name of the Logic App Integration Account Assembly.
   late final pulumi.Output<String> assemblyName;
+
   /// The version of the Logic App Integration Account Assembly. Defaults to `0.0.0.0`.
   late final pulumi.Output<String?> assemblyVersion;
+
   /// The content of the Logic App Integration Account Assembly.
   late final pulumi.Output<String?> content;
+
   /// The content link URI of the Logic App Integration Account Assembly.
   late final pulumi.Output<String?> contentLinkUri;
+
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// The metadata of the Logic App Integration Account Assembly.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Assembly Artifact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Logic App Integration Account Assembly Artifact should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -262,19 +269,19 @@ class IntegrationAccountAssembly extends pulumi.CustomResource {
     IntegrationAccountAssemblyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assemblyName = registerOutput<String>('assemblyName');
-    this.assemblyVersion = registerOutput<String?>('assemblyVersion');
-    this.content = registerOutput<String?>('content');
-    this.contentLinkUri = registerOutput<String?>('contentLinkUri');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assemblyName = registerOutput<String>('assemblyName');
+    assemblyVersion = registerOutput<String?>('assemblyVersion');
+    content = registerOutput<String?>('content');
+    contentLinkUri = registerOutput<String?>('contentLinkUri');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountAssembly] resource's state with the given [name] and [id].
@@ -295,18 +302,18 @@ class IntegrationAccountAssembly extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assemblyName = registerOutput<String>('assemblyName');
-    this.assemblyVersion = registerOutput<String?>('assemblyVersion');
-    this.content = registerOutput<String?>('content');
-    this.contentLinkUri = registerOutput<String?>('contentLinkUri');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assemblyName = registerOutput<String>('assemblyName');
+    assemblyVersion = registerOutput<String?>('assemblyVersion');
+    content = registerOutput<String?>('content');
+    contentLinkUri = registerOutput<String?>('contentLinkUri');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

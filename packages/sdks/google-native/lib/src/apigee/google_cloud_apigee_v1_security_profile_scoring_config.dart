@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityProfileScoringConfig {
   /// Description of the config.
   final pulumi.Input<String>? description;
+
   /// Path of the component config used for scoring.
   final pulumi.Input<String>? scorePath;
+
   /// Title of the config.
   final pulumi.Input<String>? title;
 
@@ -29,12 +31,25 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfig {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityProfileScoringConfig(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      scorePath: map['scorePath'] == null ? null : (map['scorePath']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scorePath: (() {
+        final guardedValue = map['scorePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

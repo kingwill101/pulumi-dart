@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGrantState {
   /// The ID of the CEN.
   final pulumi.Input<String>? cenId;
+
   /// The owner UID of the  CEN which the child instance granted to.
   final pulumi.Input<String>? cenOwnerId;
+
   /// The ID of the child instance to grant.
   final pulumi.Input<String>? childInstanceId;
 
@@ -15,11 +17,7 @@ class InstanceGrantState {
   /// [cenId] The ID of the CEN.
   /// [cenOwnerId] The owner UID of the  CEN which the child instance granted to.
   /// [childInstanceId] The ID of the child instance to grant.
-  InstanceGrantState({
-    this.cenId,
-    this.cenOwnerId,
-    this.childInstanceId,
-  });
+  InstanceGrantState({this.cenId, this.cenOwnerId, this.childInstanceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class InstanceGrantState {
 
   factory InstanceGrantState.fromMap(Map<String, dynamic> map) {
     return InstanceGrantState(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
-      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenOwnerId: (() {
+        final guardedValue = map['cenOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      childInstanceId: (() {
+        final guardedValue = map['childInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

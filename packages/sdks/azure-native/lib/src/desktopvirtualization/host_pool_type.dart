@@ -4,16 +4,15 @@ enum HostPoolType {
   valuePooled("Pooled"),
   valueBYODesktop("BYODesktop");
 
-  const HostPoolType(this.value);
-  final String value;
+  const HostPoolType(this.wireValue);
+  final String wireValue;
 
   static HostPoolType fromValue(String value) {
     for (final item in HostPoolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostPoolType value: $value');
   }
 }
-

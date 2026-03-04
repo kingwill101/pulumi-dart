@@ -7,20 +7,27 @@ import 'zone_soa_record.dart';
 class ZoneState {
   /// The maximum number of record sets that can be created in this Private DNS zone.
   final pulumi.Input<int>? maxNumberOfRecordSets;
+
   /// The maximum number of virtual networks that can be linked to this Private DNS zone.
   final pulumi.Input<int>? maxNumberOfVirtualNetworkLinks;
+
   /// The maximum number of virtual networks that can be linked to this Private DNS zone with registration enabled.
   final pulumi.Input<int>? maxNumberOfVirtualNetworkLinksWithRegistration;
+
   /// The name of the Private DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** If you are going to be using the Private DNS Zone with a Private Endpoint the name of the Private DNS Zone must follow the **Private DNS Zone name** schema in the [product documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#virtual-network-and-on-premises-workloads-using-a-dns-forwarder) in order for the two resources to be connected successfully.
+  /// &gt; **Note:** If you are going to be using the Private DNS Zone with a Private Endpoint the name of the Private DNS Zone must follow the **Private DNS Zone name** schema in the [product documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#virtual-network-and-on-premises-workloads-using-a-dns-forwarder) in order for the two resources to be connected successfully.
   final pulumi.Input<String>? name;
+
   /// The current number of record sets in this Private DNS zone.
   final pulumi.Input<int>? numberOfRecordSets;
+
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// An `soa_record` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ZoneSoaRecord>? soaRecord;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,26 +55,67 @@ class ZoneState {
     return <String, dynamic>{
       'maxNumberOfRecordSets': ?maxNumberOfRecordSets,
       'maxNumberOfVirtualNetworkLinks': ?maxNumberOfVirtualNetworkLinks,
-      'maxNumberOfVirtualNetworkLinksWithRegistration': ?maxNumberOfVirtualNetworkLinksWithRegistration,
+      'maxNumberOfVirtualNetworkLinksWithRegistration':
+          ?maxNumberOfVirtualNetworkLinksWithRegistration,
       'name': ?name,
       'numberOfRecordSets': ?numberOfRecordSets,
       'resourceGroupName': ?resourceGroupName,
-      'soaRecord': ?pulumi.Input.mapOptionalInputValue<ZoneSoaRecord, Map<String, dynamic>>(soaRecord, (value) => value.toMap()),
+      'soaRecord':
+          ?pulumi.Input.mapOptionalInputValue<
+            ZoneSoaRecord,
+            Map<String, dynamic>
+          >(soaRecord, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets']! as int).input(),
-      maxNumberOfVirtualNetworkLinks: map['maxNumberOfVirtualNetworkLinks'] == null ? null : (map['maxNumberOfVirtualNetworkLinks']! as int).input(),
-      maxNumberOfVirtualNetworkLinksWithRegistration: map['maxNumberOfVirtualNetworkLinksWithRegistration'] == null ? null : (map['maxNumberOfVirtualNetworkLinksWithRegistration']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets']! as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      maxNumberOfRecordSets: (() {
+        final guardedValue = map['maxNumberOfRecordSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxNumberOfVirtualNetworkLinks: (() {
+        final guardedValue = map['maxNumberOfVirtualNetworkLinks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxNumberOfVirtualNetworkLinksWithRegistration: (() {
+        final guardedValue =
+            map['maxNumberOfVirtualNetworkLinksWithRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfRecordSets: (() {
+        final guardedValue = map['numberOfRecordSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      soaRecord: (() {
+        final guardedValue = map['soaRecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

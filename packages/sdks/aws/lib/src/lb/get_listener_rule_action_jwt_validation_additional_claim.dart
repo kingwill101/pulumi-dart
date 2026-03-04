@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleActionJwtValidationAdditionalClaim {
   /// Format of the claim value.
   final pulumi.Input<String> format;
+
   /// Name of the claim to validate.
   final pulumi.Input<String> name;
+
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final pulumi.Input<List<String>> values;
 
@@ -21,19 +23,16 @@ class GetListenerRuleActionJwtValidationAdditionalClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'format': format,
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'format': format, 'name': name, 'values': values};
   }
 
-  factory GetListenerRuleActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
+  factory GetListenerRuleActionJwtValidationAdditionalClaim.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerRuleActionJwtValidationAdditionalClaim(
-      format: (map['format'] as String).input(),
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

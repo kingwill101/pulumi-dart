@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaComparisonValidationResultTypeResponse {
   /// Name of the object that has the difference
   final pulumi.Input<String>? objectName;
+
   /// Type of the object that has the difference. e.g (Table/View/StoredProcedure)
   final pulumi.Input<String>? objectType;
+
   /// Update action type with respect to target
   final pulumi.Input<String>? updateAction;
 
@@ -29,12 +31,25 @@ class SchemaComparisonValidationResultTypeResponse {
     };
   }
 
-  factory SchemaComparisonValidationResultTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory SchemaComparisonValidationResultTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SchemaComparisonValidationResultTypeResponse(
-      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
-      updateAction: map['updateAction'] == null ? null : (map['updateAction']! as String).input(),
+      objectName: (() {
+        final guardedValue = map['objectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectType: (() {
+        final guardedValue = map['objectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateAction: (() {
+        final guardedValue = map['updateAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

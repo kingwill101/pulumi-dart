@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecommendedActionMetricInfoResponse {
   /// Gets the name of the metric. e.g., CPU, Number of Queries.
   final pulumi.Input<String> metricName;
+
   /// Gets the start time of time interval given by this MetricInfo.
   final pulumi.Input<String> startTime;
+
   /// Gets the duration of time interval for the value given by this MetricInfo. e.g., PT1H (1 hour)
   final pulumi.Input<String> timeGrain;
+
   /// Gets the unit in which metric is measured. e.g., DTU, Frequency
   final pulumi.Input<String> unit;
+
   /// Gets the value of the metric in the time interval given by this MetricInfo.
   final pulumi.Input<double> value;
 
@@ -39,14 +43,15 @@ class RecommendedActionMetricInfoResponse {
     };
   }
 
-  factory RecommendedActionMetricInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory RecommendedActionMetricInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecommendedActionMetricInfoResponse(
-      metricName: (map['metricName'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      timeGrain: (map['timeGrain'] as String).input(),
-      unit: (map['unit'] as String).input(),
-      value: (map['value'] as double).input(),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

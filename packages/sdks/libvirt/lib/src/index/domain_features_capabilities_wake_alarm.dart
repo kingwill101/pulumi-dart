@@ -8,20 +8,21 @@ class DomainFeaturesCapabilitiesWakeAlarm {
 
   /// Creates a new [DomainFeaturesCapabilitiesWakeAlarm].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesWakeAlarm({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesWakeAlarm({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
-  factory DomainFeaturesCapabilitiesWakeAlarm.fromMap(Map<String, dynamic> map) {
+  factory DomainFeaturesCapabilitiesWakeAlarm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainFeaturesCapabilitiesWakeAlarm(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

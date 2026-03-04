@@ -35,11 +35,14 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      location: (map['location'] as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
-

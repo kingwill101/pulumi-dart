@@ -9,20 +9,29 @@ class DomainDevicesInterfaceCoalesceRx {
 
   /// Creates a new [DomainDevicesInterfaceCoalesceRx].
   /// [frames] Configures frame settings for received packets in coalescing, impacting how received packets are grouped for processing.
-  DomainDevicesInterfaceCoalesceRx({
-    this.frames,
-  });
+  DomainDevicesInterfaceCoalesceRx({this.frames});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'frames': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceCoalesceRxFrames, Map<String, dynamic>>(frames, (value) => value.toMap()),
+      'frames':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesInterfaceCoalesceRxFrames,
+            Map<String, dynamic>
+          >(frames, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesInterfaceCoalesceRx.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceCoalesceRx(
-      frames: map['frames'] == null ? null : (DomainDevicesInterfaceCoalesceRxFrames.fromMap((map['frames']! as Map).cast<String, dynamic>())).input(),
+      frames: (() {
+        final guardedValue = map['frames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesInterfaceCoalesceRxFrames.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

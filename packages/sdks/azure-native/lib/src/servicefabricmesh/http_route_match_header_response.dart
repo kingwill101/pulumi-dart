@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteMatchHeaderResponse {
   /// Name of header to match in request.
   final pulumi.Input<String> name;
+
   /// how to match header value
   final pulumi.Input<String>? type;
+
   /// Value of header to match in request.
   final pulumi.Input<String>? value;
 
@@ -15,26 +17,25 @@ class HttpRouteMatchHeaderResponse {
   /// [name] Name of header to match in request.
   /// [type] how to match header value
   /// [value] Value of header to match in request.
-  HttpRouteMatchHeaderResponse({
-    required this.name,
-    this.type,
-    this.value,
-  });
+  HttpRouteMatchHeaderResponse({required this.name, this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': name, 'type': ?type, 'value': ?value};
   }
 
   factory HttpRouteMatchHeaderResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchHeaderResponse(
-      name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

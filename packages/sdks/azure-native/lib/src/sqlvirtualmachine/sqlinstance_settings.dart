@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SQLInstanceSettings {
   /// SQL Server Collation.
   final pulumi.Input<String>? collation;
+
   /// SQL Server IFI.
   final pulumi.Input<bool>? isIfiEnabled;
+
   /// SQL Server LPIM.
   final pulumi.Input<bool>? isLpimEnabled;
+
   /// SQL Server Optimize for Adhoc workloads.
   final pulumi.Input<bool>? isOptimizeForAdHocWorkloadsEnabled;
+
   /// SQL Server MAXDOP.
   final pulumi.Input<int>? maxDop;
+
   /// SQL Server maximum memory.
   final pulumi.Input<int>? maxServerMemoryMB;
+
   /// SQL Server minimum memory.
   final pulumi.Input<int>? minServerMemoryMB;
 
@@ -51,14 +57,41 @@ class SQLInstanceSettings {
 
   factory SQLInstanceSettings.fromMap(Map<String, dynamic> map) {
     return SQLInstanceSettings(
-      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
-      isIfiEnabled: map['isIfiEnabled'] == null ? null : (map['isIfiEnabled']! as bool).input(),
-      isLpimEnabled: map['isLpimEnabled'] == null ? null : (map['isLpimEnabled']! as bool).input(),
-      isOptimizeForAdHocWorkloadsEnabled: map['isOptimizeForAdHocWorkloadsEnabled'] == null ? null : (map['isOptimizeForAdHocWorkloadsEnabled']! as bool).input(),
-      maxDop: map['maxDop'] == null ? null : (map['maxDop']! as int).input(),
-      maxServerMemoryMB: map['maxServerMemoryMB'] == null ? null : (map['maxServerMemoryMB']! as int).input(),
-      minServerMemoryMB: map['minServerMemoryMB'] == null ? null : (map['minServerMemoryMB']! as int).input(),
+      collation: (() {
+        final guardedValue = map['collation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isIfiEnabled: (() {
+        final guardedValue = map['isIfiEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isLpimEnabled: (() {
+        final guardedValue = map['isLpimEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isOptimizeForAdHocWorkloadsEnabled: (() {
+        final guardedValue = map['isOptimizeForAdHocWorkloadsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxDop: (() {
+        final guardedValue = map['maxDop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxServerMemoryMB: (() {
+        final guardedValue = map['maxServerMemoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minServerMemoryMB: (() {
+        final guardedValue = map['minServerMemoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

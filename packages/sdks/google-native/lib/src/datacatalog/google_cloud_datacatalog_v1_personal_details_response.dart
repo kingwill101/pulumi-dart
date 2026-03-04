@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1PersonalDetailsResponse {
   /// Set if the entry is starred; unset otherwise.
   final pulumi.Input<String> starTime;
+
   /// True if the entry is starred by the user; false otherwise.
   final pulumi.Input<bool> starred;
 
@@ -18,17 +19,15 @@ class GoogleCloudDatacatalogV1PersonalDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'starTime': starTime,
-      'starred': starred,
-    };
+    return <String, dynamic>{'starTime': starTime, 'starred': starred};
   }
 
-  factory GoogleCloudDatacatalogV1PersonalDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PersonalDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1PersonalDetailsResponse(
-      starTime: (map['starTime'] as String).input(),
-      starred: (map['starred'] as bool).input(),
+      starTime: pulumi.Input.fromValue(map['starTime'] as String),
+      starred: pulumi.Input.fromValue(map['starred'] as bool),
     );
   }
 }
-

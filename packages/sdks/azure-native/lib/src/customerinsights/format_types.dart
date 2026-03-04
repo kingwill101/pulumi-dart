@@ -2,16 +2,15 @@
 enum FormatTypes {
   valueTextFormat("TextFormat");
 
-  const FormatTypes(this.value);
-  final String value;
+  const FormatTypes(this.wireValue);
+  final String wireValue;
 
   static FormatTypes fromValue(String value) {
     for (final item in FormatTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FormatTypes value: $value');
   }
 }
-

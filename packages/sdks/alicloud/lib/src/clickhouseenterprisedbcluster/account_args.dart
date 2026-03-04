@@ -10,16 +10,21 @@ import 'account_dml_auth_setting.dart';
 class AccountArgs {
   /// The name of the database account.
   final pulumi.Input<String> account;
+
   /// The type of the database account. Valid values:
   /// - `NormalAccount`: Normal account number.
   /// - `SuperAccount`: The privileged account.
   final pulumi.Input<String> accountType;
+
   /// The cluster ID.
   final pulumi.Input<String> dbInstanceId;
+
   /// Note information.
   final pulumi.Input<String>? description;
+
   /// Authorization information. See `dml_auth_setting` below.
   final pulumi.Input<AccountDmlAuthSetting>? dmlAuthSetting;
+
   /// Database account password. Set the following rules.
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
@@ -48,20 +53,35 @@ class AccountArgs {
       'accountType': accountType,
       'dbInstanceId': dbInstanceId,
       'description': ?description,
-      'dmlAuthSetting': ?pulumi.Input.mapOptionalInputValue<AccountDmlAuthSetting, Map<String, dynamic>>(dmlAuthSetting, (value) => value.toMap()),
+      'dmlAuthSetting':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccountDmlAuthSetting,
+            Map<String, dynamic>
+          >(dmlAuthSetting, (value) => value.toMap()),
       'password': password,
     };
   }
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      account: (map['account'] as String).input(),
-      accountType: (map['accountType'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting']! as Map).cast<String, dynamic>())).input(),
-      password: (map['password'] as String).input(),
+      account: pulumi.Input.fromValue(map['account'] as String),
+      accountType: pulumi.Input.fromValue(map['accountType'] as String),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dmlAuthSetting: (() {
+        final guardedValue = map['dmlAuthSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccountDmlAuthSetting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
     );
   }
 }
-

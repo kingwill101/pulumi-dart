@@ -42,7 +42,7 @@ import 'get_listeners_result.dart';
 
 /// This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.167.0.
+/// &gt; **NOTE:** Available since v1.167.0.
 ///
 /// ## Example Usage
 ///
@@ -184,7 +184,7 @@ Future<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(
 
 /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -303,7 +303,7 @@ Future<GetAcceleratorsResult> getAccelerators(
 
 /// This data source provides the Ga Acls of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.150.0.
+/// &gt; **NOTE:** Available since v1.150.0.
 ///
 /// ## Example Usage
 ///
@@ -443,7 +443,7 @@ Future<GetAclsResult> getAcls(
 
 /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.150.0.
+/// &gt; **NOTE:** Available since v1.150.0.
 ///
 /// ## Example Usage
 ///
@@ -591,7 +591,7 @@ Future<GetAdditionalCertificatesResult> getAdditionalCertificates(
 
 /// This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.112.0.
+/// &gt; **NOTE:** Available since v1.112.0.
 ///
 /// ## Example Usage
 ///
@@ -722,7 +722,7 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 
 /// This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -838,7 +838,8 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_basic_accelerate_ip_endpoint_relations_get_basic_accelerate_ip_endpoint_relations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelations(
+Future<GetBasicAccelerateIpEndpointRelationsResult>
+getBasicAccelerateIpEndpointRelations(
   GetBasicAccelerateIpEndpointRelationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -853,7 +854,7 @@ Future<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpoint
 
 /// This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -984,7 +985,7 @@ Future<GetBasicAccelerateIpsResult> getBasicAccelerateIps(
 
 /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -1103,7 +1104,7 @@ Future<GetBasicAcceleratorsResult> getBasicAccelerators(
 
 /// This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -1270,7 +1271,7 @@ Future<GetBasicEndpointsResult> getBasicEndpoints(
 
 /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -1386,7 +1387,8 @@ Future<GetBasicEndpointsResult> getBasicEndpoints(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_custom_routing_endpoint_group_destinations_get_custom_routing_endpoint_group_destinations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(
+Future<GetCustomRoutingEndpointGroupDestinationsResult>
+getCustomRoutingEndpointGroupDestinations(
   GetCustomRoutingEndpointGroupDestinationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1401,7 +1403,7 @@ Future<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpoint
 
 /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -1568,7 +1570,7 @@ Future<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(
 
 /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -1684,7 +1686,8 @@ Future<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_custom_routing_endpoint_traffic_policies_get_custom_routing_endpoint_traffic_policies_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(
+Future<GetCustomRoutingEndpointTrafficPoliciesResult>
+getCustomRoutingEndpointTrafficPolicies(
   GetCustomRoutingEndpointTrafficPoliciesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1699,7 +1702,7 @@ Future<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTr
 
 /// This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -1830,7 +1833,7 @@ Future<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(
 
 /// This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -1949,7 +1952,7 @@ Future<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(
 
 /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -2176,7 +2179,7 @@ Future<GetDomainsResult> getDomains(
 
 /// This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -2280,7 +2283,8 @@ Future<GetDomainsResult> getDomains(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_endpoint_group_ip_address_cidr_blocks_get_endpoint_group_ip_address_cidr_blocks_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(
+Future<GetEndpointGroupIpAddressCidrBlocksResult>
+getEndpointGroupIpAddressCidrBlocks(
   GetEndpointGroupIpAddressCidrBlocksArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2295,7 +2299,7 @@ Future<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrB
 
 /// This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
 /// ## Example Usage
 ///
@@ -2855,7 +2859,7 @@ Future<GetEndpointGroupsResult> getEndpointGroups(
 
 /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -2992,7 +2996,7 @@ Future<GetForwardingRulesResult> getForwardingRules(
 
 /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
 /// ## Example Usage
 ///
@@ -3123,7 +3127,7 @@ Future<GetIpSetsResult> getIpSets(
 
 /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///

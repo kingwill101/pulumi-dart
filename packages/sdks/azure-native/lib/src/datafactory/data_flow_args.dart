@@ -10,10 +10,13 @@ import 'flowlet.dart';
 class DataFlowArgs {
   /// The data flow name.
   final pulumi.Input<String>? dataFlowName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// Data flow properties.
   final pulumi.Input<Flowlet> properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,28 @@ class DataFlowArgs {
     return <String, dynamic>{
       'dataFlowName': ?dataFlowName,
       'factoryName': factoryName,
-      'properties': pulumi.Input.mapInputValue<Flowlet, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<Flowlet, Map<String, dynamic>>(
+        properties,
+        (value) => value.toMap(),
+      ),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      dataFlowName: map['dataFlowName'] == null ? null : (map['dataFlowName']! as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      properties: (Flowlet.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dataFlowName: (() {
+        final guardedValue = map['dataFlowName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      properties: pulumi.Input.fromValue(
+        Flowlet.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

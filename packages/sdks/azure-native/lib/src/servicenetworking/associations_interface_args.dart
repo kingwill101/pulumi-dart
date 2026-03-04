@@ -10,16 +10,22 @@ import 'association_subnet.dart';
 class AssociationsInterfaceArgs {
   /// Name of Association
   final pulumi.Input<String>? associationName;
+
   /// Association Type
   final pulumi.Input<String> associationType;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Association Subnet
   final pulumi.Input<AssociationSubnet>? subnet;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -47,7 +53,11 @@ class AssociationsInterfaceArgs {
       'associationType': associationType,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'subnet': ?pulumi.Input.mapOptionalInputValue<AssociationSubnet, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssociationSubnet,
+            Map<String, dynamic>
+          >(subnet, (value) => value.toMap()),
       'tags': ?tags,
       'trafficControllerName': trafficControllerName,
     };
@@ -55,14 +65,39 @@ class AssociationsInterfaceArgs {
 
   factory AssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return AssociationsInterfaceArgs(
-      associationName: map['associationName'] == null ? null : (map['associationName']! as String).input(),
-      associationType: (map['associationType'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (AssociationSubnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      trafficControllerName: (map['trafficControllerName'] as String).input(),
+      associationName: (() {
+        final guardedValue = map['associationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associationType: pulumi.Input.fromValue(map['associationType'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssociationSubnet.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      trafficControllerName: pulumi.Input.fromValue(
+        map['trafficControllerName'] as String,
+      ),
     );
   }
 }
-

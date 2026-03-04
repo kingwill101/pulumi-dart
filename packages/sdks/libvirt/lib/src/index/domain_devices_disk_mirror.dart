@@ -8,12 +8,16 @@ import 'domain_devices_disk_mirror_source.dart';
 class DomainDevicesDiskMirror {
   /// Specifies the backing store settings for the mirrored disk, determining its source and configuration.
   final pulumi.Input<DomainDevicesDiskMirrorBackingStore>? backingStore;
+
   /// Defines the format of the data store used in the backing store source configuration.
   final pulumi.Input<DomainDevicesDiskMirrorFormat>? format;
+
   /// Configures the job identifier associated with the disk mirror operation.
   final pulumi.Input<String>? job;
+
   /// Indicates whether the disk mirror is ready for use.
   final pulumi.Input<String>? ready;
+
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
   final pulumi.Input<DomainDevicesDiskMirrorSource>? source;
 
@@ -33,22 +37,65 @@ class DomainDevicesDiskMirror {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backingStore': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStore, Map<String, dynamic>>(backingStore, (value) => value.toMap()),
-      'format': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'backingStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStore,
+            Map<String, dynamic>
+          >(backingStore, (value) => value.toMap()),
+      'format':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorFormat,
+            Map<String, dynamic>
+          >(format, (value) => value.toMap()),
       'job': ?job,
       'ready': ?ready,
-      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesDiskMirror.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirror(
-      backingStore: map['backingStore'] == null ? null : (DomainDevicesDiskMirrorBackingStore.fromMap((map['backingStore']! as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (DomainDevicesDiskMirrorFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
-      job: map['job'] == null ? null : (map['job']! as String).input(),
-      ready: map['ready'] == null ? null : (map['ready']! as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesDiskMirrorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      backingStore: (() {
+        final guardedValue = map['backingStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStore.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      job: (() {
+        final guardedValue = map['job'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ready: (() {
+        final guardedValue = map['ready'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,6 +8,7 @@ import 'get_genai_models_sort.dart';
 /// Result data returned by getGenaiModels.
 class GetGenaiModelsResult {
   final List<GetGenaiModelsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetGenaiModelsModel> models;
@@ -27,20 +28,59 @@ class GetGenaiModelsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetGenaiModelsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetGenaiModelsFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
-      'models': pulumi.Input.encodeList<GetGenaiModelsModel, Map<String, dynamic>>(models, (value) => value.toMap()),
-      'sorts': ?sorts == null ? null : pulumi.Input.encodeList<GetGenaiModelsSort, Map<String, dynamic>>(sorts!, (value) => value.toMap()),
+      'models':
+          pulumi.Input.encodeList<GetGenaiModelsModel, Map<String, dynamic>>(
+            models,
+            (value) => value.toMap(),
+          ),
+      'sorts': ?(() {
+        final guardedValue = sorts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetGenaiModelsSort,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetGenaiModelsResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiModelsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsFilter>(map['filters']!, (value) => GetGenaiModelsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetGenaiModelsFilter>(
+          guardedValue,
+          (value) => GetGenaiModelsFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      models: pulumi.Input.decodeList<GetGenaiModelsModel>(map['models'], (value) => GetGenaiModelsModel.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsSort>(map['sorts']!, (value) => GetGenaiModelsSort.fromMap((value as Map).cast<String, dynamic>())),
+      models: pulumi.Input.decodeList<GetGenaiModelsModel>(
+        map['models']!,
+        (value) =>
+            GetGenaiModelsModel.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetGenaiModelsSort>(
+          guardedValue,
+          (value) => GetGenaiModelsSort.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

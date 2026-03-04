@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlackChannelProperties {
   /// The Slack client id
   final pulumi.Input<String>? clientId;
+
   /// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String>? clientSecret;
+
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
+
   /// The Slack landing page Url
   final pulumi.Input<String>? landingPageUrl;
+
   /// Whether to register the settings before OAuth validation is performed. Recommended to True.
   final pulumi.Input<bool>? registerBeforeOAuthFlow;
+
   /// The Slack permission scopes.
   final pulumi.Input<String>? scopes;
+
   /// The Slack signing secret.
   final pulumi.Input<String>? signingSecret;
+
   /// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String>? verificationToken;
 
@@ -56,15 +63,42 @@ class SlackChannelProperties {
 
   factory SlackChannelProperties.fromMap(Map<String, dynamic> map) {
     return SlackChannelProperties(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl']! as String).input(),
-      registerBeforeOAuthFlow: map['registerBeforeOAuthFlow'] == null ? null : (map['registerBeforeOAuthFlow']! as bool).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
-      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret']! as String).input(),
-      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      landingPageUrl: (() {
+        final guardedValue = map['landingPageUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registerBeforeOAuthFlow: (() {
+        final guardedValue = map['registerBeforeOAuthFlow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingSecret: (() {
+        final guardedValue = map['signingSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verificationToken: (() {
+        final guardedValue = map['verificationToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

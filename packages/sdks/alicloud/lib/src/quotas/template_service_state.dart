@@ -10,20 +10,19 @@ class TemplateServiceState {
 
   /// Creates a new [TemplateServiceState].
   /// [serviceStatus] Status of the quota template. Valid values:
-  TemplateServiceState({
-    this.serviceStatus,
-  });
+  TemplateServiceState({this.serviceStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceStatus': ?serviceStatus,
-    };
+    return <String, dynamic>{'serviceStatus': ?serviceStatus};
   }
 
   factory TemplateServiceState.fromMap(Map<String, dynamic> map) {
     return TemplateServiceState(
-      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus']! as int).input(),
+      serviceStatus: (() {
+        final guardedValue = map['serviceStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

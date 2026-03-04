@@ -9,16 +9,15 @@ enum ConnectionProfileState {
   deleted("DELETED"),
   failed("FAILED");
 
-  const ConnectionProfileState(this.value);
-  final String value;
+  const ConnectionProfileState(this.wireValue);
+  final String wireValue;
 
   static ConnectionProfileState fromValue(String value) {
     for (final item in ConnectionProfileState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionProfileState value: $value');
   }
 }
-

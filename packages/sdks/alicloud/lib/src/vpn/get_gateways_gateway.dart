@@ -5,50 +5,73 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaysGateway {
   /// Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
   final pulumi.Input<String> autoPropagate;
+
   /// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
   final pulumi.Input<String> businessStatus;
+
   /// The creation time of the VPN gateway.
   final pulumi.Input<String> createTime;
+
   /// The description of the VPN
   final pulumi.Input<String> description;
+
   /// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
   final pulumi.Input<String> disasterRecoveryInternetIp;
+
   /// - The ID of the backup vSwitch to which the VPN gateway is attached.
   final pulumi.Input<String> disasterRecoveryVswitchId;
+
   /// Indicates whether the IPsec-VPN feature is enabled.
   final pulumi.Input<String> enableIpsec;
+
   /// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
   final pulumi.Input<String> enableSsl;
+
   /// The expiration time of the VPN gateway.
   final pulumi.Input<String> endTime;
+
   /// ID of the VPN.
   final pulumi.Input<String> id;
+
   /// The charge type of the VPN gateway.
   final pulumi.Input<String> instanceChargeType;
+
   /// The internet ip of the VPN.
   final pulumi.Input<String> internetIp;
+
   /// The name of the VPN.
   final pulumi.Input<String> name;
+
   /// The network type of the VPN gateway.
   final pulumi.Input<String> networkType;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The Specification of the VPN
   final pulumi.Input<String> specification;
+
   /// Total count of ssl vpn connections.
   final pulumi.Input<int> sslConnections;
+
   /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
   final pulumi.Input<String> sslVpn;
+
   /// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
   final pulumi.Input<String> sslVpnInternetIp;
+
   /// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
   final pulumi.Input<String> status;
+
   /// The Tag of.
   final pulumi.Input<Map<String, String>> tags;
+
   /// Use the VPC ID as the search key.
   final pulumi.Input<String> vpcId;
+
   /// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
   final pulumi.Input<String> vpnType;
+
   /// - The ID of the vSwitch to which the VPN gateway is attached.
   final pulumi.Input<String> vswitchId;
 
@@ -135,31 +158,38 @@ class GetGatewaysGateway {
 
   factory GetGatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGateway(
-      autoPropagate: (map['autoPropagate'] as String).input(),
-      businessStatus: (map['businessStatus'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      disasterRecoveryInternetIp: (map['disasterRecoveryInternetIp'] as String).input(),
-      disasterRecoveryVswitchId: (map['disasterRecoveryVswitchId'] as String).input(),
-      enableIpsec: (map['enableIpsec'] as String).input(),
-      enableSsl: (map['enableSsl'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceChargeType: (map['instanceChargeType'] as String).input(),
-      internetIp: (map['internetIp'] as String).input(),
-      name: (map['name'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      specification: (map['specification'] as String).input(),
-      sslConnections: (map['sslConnections'] as int).input(),
-      sslVpn: (map['sslVpn'] as String).input(),
-      sslVpnInternetIp: (map['sslVpnInternetIp'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vpnType: (map['vpnType'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      autoPropagate: pulumi.Input.fromValue(map['autoPropagate'] as String),
+      businessStatus: pulumi.Input.fromValue(map['businessStatus'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      disasterRecoveryInternetIp: pulumi.Input.fromValue(
+        map['disasterRecoveryInternetIp'] as String,
+      ),
+      disasterRecoveryVswitchId: pulumi.Input.fromValue(
+        map['disasterRecoveryVswitchId'] as String,
+      ),
+      enableIpsec: pulumi.Input.fromValue(map['enableIpsec'] as String),
+      enableSsl: pulumi.Input.fromValue(map['enableSsl'] as String),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceChargeType: pulumi.Input.fromValue(
+        map['instanceChargeType'] as String,
+      ),
+      internetIp: pulumi.Input.fromValue(map['internetIp'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      specification: pulumi.Input.fromValue(map['specification'] as String),
+      sslConnections: pulumi.Input.fromValue(map['sslConnections'] as int),
+      sslVpn: pulumi.Input.fromValue(map['sslVpn'] as String),
+      sslVpnInternetIp: pulumi.Input.fromValue(
+        map['sslVpnInternetIp'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vpnType: pulumi.Input.fromValue(map['vpnType'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

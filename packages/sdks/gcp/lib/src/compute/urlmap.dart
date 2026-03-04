@@ -4,10 +4,7 @@ import 'urlmap_default_custom_error_response_policy.dart';
 import 'urlmap_default_route_action.dart';
 import 'urlmap_default_url_redirect.dart';
 import 'urlmap_header_action.dart';
-import 'urlmap_host_rule.dart';
-import 'urlmap_path_matcher.dart';
 import 'urlmap_state.dart';
-import 'urlmap_test.dart';
 
 /// UrlMaps are used to route requests to a backend service based on rules
 /// that you define for the host and path of an incoming URL.
@@ -9196,6 +9193,7 @@ import 'urlmap_test.dart';
 class URLMap extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
   /// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
   /// For example, consider a UrlMap with the following configuration:
@@ -9205,7 +9203,9 @@ class URLMap extends pulumi.CustomResource {
   /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
   /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  late final pulumi.Output<URLMapDefaultCustomErrorResponsePolicy?> defaultCustomErrorResponsePolicy;
+  late final pulumi.Output<URLMapDefaultCustomErrorResponsePolicy?>
+  defaultCustomErrorResponsePolicy;
+
   /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
   /// like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
   /// If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -9213,29 +9213,37 @@ class URLMap extends pulumi.CustomResource {
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// Structure is documented below.
   late final pulumi.Output<URLMapDefaultRouteAction?> defaultRouteAction;
+
   /// The backend service or backend bucket to use when none of the given rules match.
   late final pulumi.Output<String?> defaultService;
+
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   late final pulumi.Output<URLMapDefaultUrlRedirect?> defaultUrlRedirect;
+
   /// An optional description of this resource. Provide this property when you create
   /// the resource.
   late final pulumi.Output<String?> description;
+
   /// Fingerprint of this resource. A hash of the contents stored in this object. This
   /// field is used in optimistic locking.
   late final pulumi.Output<String> fingerprint;
+
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. The headerAction specified here take effect after
   /// headerAction specified under pathMatcher.
   /// Structure is documented below.
   late final pulumi.Output<URLMapHeaderAction?> headerAction;
+
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<URLMapHostRule>?> hostRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hostRules;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> mapId;
+
   /// Name of the resource. Provided by the client when the resource is created. The
   /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
   /// name must be 1-63 characters long and match the regular expression
@@ -9243,49 +9251,57 @@ class URLMap extends pulumi.CustomResource {
   /// letter, and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<URLMapPathMatcher>?> pathMatchers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> pathMatchers;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The list of expected URL mapping tests. Request to update this UrlMap will
   /// succeed only if all of the test cases pass. You can specify a maximum of 100
   /// tests per UrlMap.
   /// Structure is documented below.
-  late final pulumi.Output<List<URLMapTest>?> tests;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
 
   /// Creates a new [URLMap].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [URLMap]. {@macro pulumi_compute_u_rlmap_urlmap_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  URLMap(
-    String name, {
-    URLMapArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:compute/uRLMap:URLMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.defaultCustomErrorResponsePolicy = registerOutput<URLMapDefaultCustomErrorResponsePolicy?>('defaultCustomErrorResponsePolicy');
-    this.defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>('defaultRouteAction');
-    this.defaultService = registerOutput<String?>('defaultService');
-    this.defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>('defaultUrlRedirect');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
-    this.hostRules = registerOutput<List<URLMapHostRule>?>('hostRules');
-    this.mapId = registerOutput<int>('mapId');
+  URLMap(String name, {URLMapArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:compute/uRLMap:URLMap',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultCustomErrorResponsePolicy =
+        registerOutput<URLMapDefaultCustomErrorResponsePolicy?>(
+          'defaultCustomErrorResponsePolicy',
+        );
+    defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>(
+      'defaultRouteAction',
+    );
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>(
+      'defaultUrlRedirect',
+    );
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
+    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    this.pathMatchers = registerOutput<List<URLMapPathMatcher>?>('pathMatchers');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tests = registerOutput<List<URLMapTest>?>('tests');
+    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
   }
 
   /// Gets an existing [URLMap] resource's state with the given [name] and [id].
@@ -9306,25 +9322,32 @@ class URLMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/uRLMap:URLMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.defaultCustomErrorResponsePolicy = registerOutput<URLMapDefaultCustomErrorResponsePolicy?>('defaultCustomErrorResponsePolicy');
-    this.defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>('defaultRouteAction');
-    this.defaultService = registerOutput<String?>('defaultService');
-    this.defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>('defaultUrlRedirect');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
-    this.hostRules = registerOutput<List<URLMapHostRule>?>('hostRules');
-    this.mapId = registerOutput<int>('mapId');
+         'gcp:compute/uRLMap:URLMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultCustomErrorResponsePolicy =
+        registerOutput<URLMapDefaultCustomErrorResponsePolicy?>(
+          'defaultCustomErrorResponsePolicy',
+        );
+    defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>(
+      'defaultRouteAction',
+    );
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>(
+      'defaultUrlRedirect',
+    );
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
+    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    this.pathMatchers = registerOutput<List<URLMapPathMatcher>?>('pathMatchers');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tests = registerOutput<List<URLMapTest>?>('tests');
+    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
   }
 }

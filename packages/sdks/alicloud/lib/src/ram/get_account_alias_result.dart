@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountAlias.
 class GetAccountAliasResult {
   /// Alias of the account.
   final String accountAlias;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -31,8 +31,11 @@ class GetAccountAliasResult {
     return GetAccountAliasResult(
       accountAlias: map['accountAlias'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

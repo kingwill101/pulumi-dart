@@ -1,5 +1,3 @@
-library module_bigtable;
-
 export 'bigtable/app_profile.dart';
 export 'bigtable/app_profile_args.dart';
 export 'bigtable/app_profile_data_boost_isolation_read_only.dart';

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_update_properties_response.dart';
 import 'host_pool_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'registration_info_response.dart';
 import 'resource_model_with_allowed_property_set_response_identity.dart';
 import 'resource_model_with_allowed_property_set_response_plan.dart';
@@ -356,71 +355,106 @@ import 'system_data_response.dart';
 class HostPool extends pulumi.CustomResource {
   /// The session host configuration for updating agent, monitoring agent, and stack component.
   late final pulumi.Output<AgentUpdatePropertiesResponse?> agentUpdate;
+
   /// List of App Attach Package links.
   late final pulumi.Output<List<String>> appAttachPackageReferences;
+
   /// List of applicationGroup links.
   late final pulumi.Output<List<String>> applicationGroupReferences;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Is cloud pc resource.
   late final pulumi.Output<bool> cloudPcResource;
+
   /// Custom rdp property of HostPool.
   late final pulumi.Output<String?> customRdpProperty;
+
   /// Description of HostPool.
   late final pulumi.Output<String?> description;
+
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
+
   /// Friendly name of HostPool.
   late final pulumi.Output<String?> friendlyName;
+
   /// HostPool type for desktop.
   late final pulumi.Output<String> hostPoolType;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?> identity;
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?>
+  identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// The type of the load balancer.
   late final pulumi.Output<String> loadBalancerType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The max session limit of HostPool.
   late final pulumi.Output<int?> maxSessionLimit;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ObjectId of HostPool. (internal use)
   late final pulumi.Output<String> objectId;
+
   /// PersonalDesktopAssignment type for HostPool.
   late final pulumi.Output<String?> personalDesktopAssignmentType;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?> plan;
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?>
+  plan;
+
   /// The type of preferred application group type, default to Desktop Application Group
   late final pulumi.Output<String> preferredAppGroupType;
+
   /// List of private endpoint connection associated with the specified resource
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The registration info of HostPool.
   late final pulumi.Output<RegistrationInfoResponse?> registrationInfo;
+
   /// The ring number of HostPool.
   late final pulumi.Output<int?> ring;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseSku?> sku;
+
   /// ClientId for the registered Relying Party used to issue WVD SSO certificates.
   late final pulumi.Output<String?> ssoClientId;
+
   /// Path to Azure KeyVault storing the secret used for communication to ADFS.
   late final pulumi.Output<String?> ssoClientSecretKeyVaultPath;
+
   /// The type of single sign on Secret Type.
   late final pulumi.Output<String?> ssoSecretType;
+
   /// URL to customer ADFS server for signing WVD SSO certificates.
   late final pulumi.Output<String?> ssoadfsAuthority;
+
   /// The flag to turn on/off StartVMOnConnect feature.
   late final pulumi.Output<bool?> startVMOnConnect;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Is validation environment.
   late final pulumi.Output<bool?> validationEnvironment;
+
   /// VM template for sessionhosts configuration within hostpool.
   late final pulumi.Output<String?> vmTemplate;
 
@@ -433,46 +467,65 @@ class HostPool extends pulumi.CustomResource {
     HostPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:desktopvirtualization:HostPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>('agentUpdate');
-    this.appAttachPackageReferences = registerOutput<List<String>>('appAttachPackageReferences');
-    this.applicationGroupReferences = registerOutput<List<String>>('applicationGroupReferences');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cloudPcResource = registerOutput<bool>('cloudPcResource');
-    this.customRdpProperty = registerOutput<String?>('customRdpProperty');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.hostPoolType = registerOutput<String>('hostPoolType');
-    this.identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.loadBalancerType = registerOutput<String>('loadBalancerType');
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
-    this.maxSessionLimit = registerOutput<int?>('maxSessionLimit');
+         'azure-native:desktopvirtualization:HostPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>('agentUpdate');
+    appAttachPackageReferences = registerOutput<List<String>>(
+      'appAttachPackageReferences',
+    );
+    applicationGroupReferences = registerOutput<List<String>>(
+      'applicationGroupReferences',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudPcResource = registerOutput<bool>('cloudPcResource');
+    customRdpProperty = registerOutput<String?>('customRdpProperty');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPoolType = registerOutput<String>('hostPoolType');
+    identity =
+        registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
+          'identity',
+        );
+    kind = registerOutput<String?>('kind');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    maxSessionLimit = registerOutput<int?>('maxSessionLimit');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String>('objectId');
-    this.personalDesktopAssignmentType = registerOutput<String?>('personalDesktopAssignmentType');
-    this.plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan');
-    this.preferredAppGroupType = registerOutput<String>('preferredAppGroupType');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.registrationInfo = registerOutput<RegistrationInfoResponse?>('registrationInfo');
-    this.ring = registerOutput<int?>('ring');
-    this.sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku');
-    this.ssoClientId = registerOutput<String?>('ssoClientId');
-    this.ssoClientSecretKeyVaultPath = registerOutput<String?>('ssoClientSecretKeyVaultPath');
-    this.ssoSecretType = registerOutput<String?>('ssoSecretType');
-    this.ssoadfsAuthority = registerOutput<String?>('ssoadfsAuthority');
-    this.startVMOnConnect = registerOutput<bool?>('startVMOnConnect');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validationEnvironment = registerOutput<bool?>('validationEnvironment');
-    this.vmTemplate = registerOutput<String?>('vmTemplate');
+    objectId = registerOutput<String>('objectId');
+    personalDesktopAssignmentType = registerOutput<String?>(
+      'personalDesktopAssignmentType',
+    );
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
+      'plan',
+    );
+    preferredAppGroupType = registerOutput<String>('preferredAppGroupType');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    registrationInfo = registerOutput<RegistrationInfoResponse?>(
+      'registrationInfo',
+    );
+    ring = registerOutput<int?>('ring');
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
+      'sku',
+    );
+    ssoClientId = registerOutput<String?>('ssoClientId');
+    ssoClientSecretKeyVaultPath = registerOutput<String?>(
+      'ssoClientSecretKeyVaultPath',
+    );
+    ssoSecretType = registerOutput<String?>('ssoSecretType');
+    ssoadfsAuthority = registerOutput<String?>('ssoadfsAuthority');
+    startVMOnConnect = registerOutput<bool?>('startVMOnConnect');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validationEnvironment = registerOutput<bool?>('validationEnvironment');
+    vmTemplate = registerOutput<String?>('vmTemplate');
   }
 }

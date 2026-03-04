@@ -8,8 +8,10 @@ import 'google_cloud_aiplatform_v1beta1_explanation_parameters.dart';
 class GoogleCloudAiplatformV1beta1ExplanationSpec {
   /// Optional. Metadata describing the Model's input and output for explanation.
   final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationMetadata>? metadata;
+
   /// Parameters that configure explaining of the Model's predictions.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationParameters> parameters;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ExplanationParameters>
+  parameters;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ExplanationSpec].
   /// [metadata] Optional. Metadata describing the Model's input and output for explanation.
@@ -21,16 +23,37 @@ class GoogleCloudAiplatformV1beta1ExplanationSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1ExplanationMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'parameters': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ExplanationParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1ExplanationMetadata,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1ExplanationParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ExplanationSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ExplanationSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ExplanationSpec(
-      metadata: map['metadata'] == null ? null : (GoogleCloudAiplatformV1beta1ExplanationMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      parameters: (GoogleCloudAiplatformV1beta1ExplanationParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1ExplanationMetadata.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      parameters: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1beta1ExplanationParameters.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletAutoscaleDropletTemplate {
   /// Droplet image
   final pulumi.Input<String> image;
+
   /// Enable droplet IPv6
   final pulumi.Input<bool> ipv6;
+
   /// Droplet project ID
   final pulumi.Input<String> projectId;
+
   /// Droplet region
   final pulumi.Input<String> region;
+
   /// Droplet size
   final pulumi.Input<String> size;
+
   /// Droplet SSH keys
   final pulumi.Input<List<String>> sshKeys;
+
   /// Droplet tags
   final pulumi.Input<List<String>> tags;
+
   /// Droplet user data
   final pulumi.Input<String> userData;
+
   /// Droplet VPC UUID
   final pulumi.Input<String> vpcUuid;
+
   /// Enable droplet agent
   final pulumi.Input<bool> withDropletAgent;
 
@@ -65,17 +74,16 @@ class GetDropletAutoscaleDropletTemplate {
 
   factory GetDropletAutoscaleDropletTemplate.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleDropletTemplate(
-      image: (map['image'] as String).input(),
-      ipv6: (map['ipv6'] as bool).input(),
-      projectId: (map['projectId'] as String).input(),
-      region: (map['region'] as String).input(),
-      size: (map['size'] as String).input(),
-      sshKeys: ((map['sshKeys'] as List).cast<String>()).input(),
-      tags: ((map['tags'] as List).cast<String>()).input(),
-      userData: (map['userData'] as String).input(),
-      vpcUuid: (map['vpcUuid'] as String).input(),
-      withDropletAgent: (map['withDropletAgent'] as bool).input(),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      ipv6: pulumi.Input.fromValue(map['ipv6'] as bool),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      size: pulumi.Input.fromValue(map['size'] as String),
+      sshKeys: pulumi.Input.fromValue((map['sshKeys'] as List).cast<String>()),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      userData: pulumi.Input.fromValue(map['userData'] as String),
+      vpcUuid: pulumi.Input.fromValue(map['vpcUuid'] as String),
+      withDropletAgent: pulumi.Input.fromValue(map['withDropletAgent'] as bool),
     );
   }
 }
-

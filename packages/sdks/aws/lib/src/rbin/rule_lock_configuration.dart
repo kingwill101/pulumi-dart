@@ -9,20 +9,25 @@ class RuleLockConfiguration {
 
   /// Creates a new [RuleLockConfiguration].
   /// [unlockDelay] Information about the retention rule unlock delay. See `unlock_delay` below.
-  RuleLockConfiguration({
-    required this.unlockDelay,
-  });
+  RuleLockConfiguration({required this.unlockDelay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'unlockDelay': pulumi.Input.mapInputValue<RuleLockConfigurationUnlockDelay, Map<String, dynamic>>(unlockDelay, (value) => value.toMap()),
+      'unlockDelay':
+          pulumi.Input.mapInputValue<
+            RuleLockConfigurationUnlockDelay,
+            Map<String, dynamic>
+          >(unlockDelay, (value) => value.toMap()),
     };
   }
 
   factory RuleLockConfiguration.fromMap(Map<String, dynamic> map) {
     return RuleLockConfiguration(
-      unlockDelay: (RuleLockConfigurationUnlockDelay.fromMap((map['unlockDelay']! as Map).cast<String, dynamic>())).input(),
+      unlockDelay: pulumi.Input.fromValue(
+        RuleLockConfigurationUnlockDelay.fromMap(
+          (map['unlockDelay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

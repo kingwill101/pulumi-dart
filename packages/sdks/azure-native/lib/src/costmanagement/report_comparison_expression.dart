@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportComparisonExpression {
   /// The name of the column to use in comparison.
   final pulumi.Input<String> name;
+
   /// The operator to use for comparison.
   final pulumi.Input<String> operator;
+
   /// Array of values to use for comparison
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,9 @@ class ReportComparisonExpression {
 
   factory ReportComparisonExpression.fromMap(Map<String, dynamic> map) {
     return ReportComparisonExpression(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

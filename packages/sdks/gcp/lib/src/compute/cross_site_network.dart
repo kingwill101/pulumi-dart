@@ -155,12 +155,14 @@ import 'cross_site_network_state.dart';
 class CrossSiteNetwork extends pulumi.CustomResource {
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -174,14 +176,14 @@ class CrossSiteNetwork extends pulumi.CustomResource {
     CrossSiteNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [CrossSiteNetwork] resource's state with the given [name] and [id].
@@ -202,13 +204,13 @@ class CrossSiteNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

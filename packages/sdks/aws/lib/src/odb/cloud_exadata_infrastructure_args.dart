@@ -12,28 +12,43 @@ import 'cloud_exadata_infrastructure_timeouts.dart';
 class CloudExadataInfrastructureArgs {
   /// The name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? availabilityZone;
+
   /// The AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> availabilityZoneId;
+
   /// The number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? computeCount;
+
   /// The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  final pulumi.Input<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>? customerContactsToSendToOcis;
+  final pulumi.Input<
+    List<CloudExadataInfrastructureCustomerContactsToSendToOci>
+  >?
+  customerContactsToSendToOcis;
+
   /// The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? databaseServerType;
+
   /// The user-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
   final pulumi.Input<String> displayName;
+
   /// The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window
-  final pulumi.Input<CloudExadataInfrastructureMaintenanceWindow> maintenanceWindow;
+  final pulumi.Input<CloudExadataInfrastructureMaintenanceWindow>
+  maintenanceWindow;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
   final pulumi.Input<String> shape;
+
   /// The number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? storageCount;
+
   /// The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? storageServerType;
+
   /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<CloudExadataInfrastructureTimeouts>? timeouts;
@@ -73,35 +88,111 @@ class CloudExadataInfrastructureArgs {
       'availabilityZone': ?availabilityZone,
       'availabilityZoneId': availabilityZoneId,
       'computeCount': ?computeCount,
-      'customerContactsToSendToOcis': ?pulumi.Input.mapOptionalInputValue<List<CloudExadataInfrastructureCustomerContactsToSendToOci>, List<Map<String, dynamic>>>(customerContactsToSendToOcis, (value) => pulumi.Input.encodeList<CloudExadataInfrastructureCustomerContactsToSendToOci, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customerContactsToSendToOcis':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CloudExadataInfrastructureCustomerContactsToSendToOci>,
+            List<Map<String, dynamic>>
+          >(
+            customerContactsToSendToOcis,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CloudExadataInfrastructureCustomerContactsToSendToOci,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'databaseServerType': ?databaseServerType,
       'displayName': displayName,
-      'maintenanceWindow': pulumi.Input.mapInputValue<CloudExadataInfrastructureMaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'maintenanceWindow':
+          pulumi.Input.mapInputValue<
+            CloudExadataInfrastructureMaintenanceWindow,
+            Map<String, dynamic>
+          >(maintenanceWindow, (value) => value.toMap()),
       'region': ?region,
       'shape': shape,
       'storageCount': ?storageCount,
       'storageServerType': ?storageServerType,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<CloudExadataInfrastructureTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudExadataInfrastructureTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory CloudExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
-      computeCount: map['computeCount'] == null ? null : ((map['computeCount'] as int).input()).input(),
-      customerContactsToSendToOcis: map['customerContactsToSendToOcis'] == null ? null : ((pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(map['customerContactsToSendToOcis']!, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      databaseServerType: map['databaseServerType'] == null ? null : ((map['databaseServerType'] as String).input()).input(),
-      displayName: (map['displayName'] as String).input(),
-      maintenanceWindow: (CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      shape: (map['shape'] as String).input(),
-      storageCount: map['storageCount'] == null ? null : ((map['storageCount'] as int).input()).input(),
-      storageServerType: map['storageServerType'] == null ? null : ((map['storageServerType'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((CloudExadataInfrastructureTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: pulumi.Input.fromValue(
+        map['availabilityZoneId'] as String,
+      ),
+      computeCount: (() {
+        final guardedValue = map['computeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      customerContactsToSendToOcis: (() {
+        final guardedValue = map['customerContactsToSendToOcis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            CloudExadataInfrastructureCustomerContactsToSendToOci
+          >(
+            guardedValue,
+            (value) =>
+                CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      databaseServerType: (() {
+        final guardedValue = map['databaseServerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      maintenanceWindow: pulumi.Input.fromValue(
+        CloudExadataInfrastructureMaintenanceWindow.fromMap(
+          (map['maintenanceWindow']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shape: pulumi.Input.fromValue(map['shape'] as String),
+      storageCount: (() {
+        final guardedValue = map['storageCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      storageServerType: (() {
+        final guardedValue = map['storageServerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudExadataInfrastructureTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ContentSafetyStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ContentSafetyStatus(this.value);
-  final String value;
+  const ContentSafetyStatus(this.wireValue);
+  final String wireValue;
 
   static ContentSafetyStatus fromValue(String value) {
     for (final item in ContentSafetyStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContentSafetyStatus value: $value');
   }
 }
-

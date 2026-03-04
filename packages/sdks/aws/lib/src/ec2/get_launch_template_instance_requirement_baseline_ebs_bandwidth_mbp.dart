@@ -15,17 +15,15 @@ class GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp(
-      max: (map['max'] as int).input(),
-      min: (map['min'] as int).input(),
+      max: pulumi.Input.fromValue(map['max'] as int),
+      min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
-

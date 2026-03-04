@@ -8,20 +8,19 @@ class PlaceIndexDataSourceConfiguration {
 
   /// Creates a new [PlaceIndexDataSourceConfiguration].
   /// [intendedUse] Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
-  PlaceIndexDataSourceConfiguration({
-    this.intendedUse,
-  });
+  PlaceIndexDataSourceConfiguration({this.intendedUse});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'intendedUse': ?intendedUse,
-    };
+    return <String, dynamic>{'intendedUse': ?intendedUse};
   }
 
   factory PlaceIndexDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return PlaceIndexDataSourceConfiguration(
-      intendedUse: map['intendedUse'] == null ? null : ((map['intendedUse'] as String).input()).input(),
+      intendedUse: (() {
+        final guardedValue = map['intendedUse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

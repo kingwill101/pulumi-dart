@@ -1,5 +1,3 @@
-library module_systemcenter;
-
 export 'systemcenter/functions.dart';
 export 'systemcenter/get_virtual_machine_manager_inventory_items_args.dart';
 export 'systemcenter/get_virtual_machine_manager_inventory_items_inventory_item.dart';

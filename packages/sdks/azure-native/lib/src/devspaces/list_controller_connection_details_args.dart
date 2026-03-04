@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListControllerConnectionDetailsArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
+
   /// Resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource ID of the target container host mapped to the Azure Dev Spaces Controller.
   final pulumi.Input<String> targetContainerHostResourceId;
 
@@ -32,12 +34,17 @@ class ListControllerConnectionDetailsArgs {
     };
   }
 
-  factory ListControllerConnectionDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListControllerConnectionDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListControllerConnectionDetailsArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetContainerHostResourceId: (map['targetContainerHostResourceId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetContainerHostResourceId: pulumi.Input.fromValue(
+        map['targetContainerHostResourceId'] as String,
+      ),
     );
   }
 }
-

@@ -9,24 +9,34 @@ import 'registry_info.dart';
 class GithubActionConfiguration {
   /// AzureCredentials configurations.
   final pulumi.Input<AzureCredentials>? azureCredentials;
+
   /// List of environment variables to be passed to the build.
   final pulumi.Input<List<EnvironmentVariable>>? buildEnvironmentVariables;
+
   /// Context path
   final pulumi.Input<String>? contextPath;
+
   /// Dockerfile path
   final pulumi.Input<String>? dockerfilePath;
+
   /// One time Github PAT to configure github environment
   final pulumi.Input<String>? githubPersonalAccessToken;
+
   /// Image name
   final pulumi.Input<String>? image;
+
   /// Operation system
   final pulumi.Input<String>? os;
+
   /// Code or Image
   final pulumi.Input<String>? publishType;
+
   /// Registry configurations.
   final pulumi.Input<RegistryInfo>? registryInfo;
+
   /// Runtime stack
   final pulumi.Input<String>? runtimeStack;
+
   /// Runtime version
   final pulumi.Input<String>? runtimeVersion;
 
@@ -58,15 +68,34 @@ class GithubActionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureCredentials': ?pulumi.Input.mapOptionalInputValue<AzureCredentials, Map<String, dynamic>>(azureCredentials, (value) => value.toMap()),
-      'buildEnvironmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariable>, List<Map<String, dynamic>>>(buildEnvironmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureCredentials,
+            Map<String, dynamic>
+          >(azureCredentials, (value) => value.toMap()),
+      'buildEnvironmentVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvironmentVariable>,
+            List<Map<String, dynamic>>
+          >(
+            buildEnvironmentVariables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvironmentVariable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'contextPath': ?contextPath,
       'dockerfilePath': ?dockerfilePath,
       'githubPersonalAccessToken': ?githubPersonalAccessToken,
       'image': ?image,
       'os': ?os,
       'publishType': ?publishType,
-      'registryInfo': ?pulumi.Input.mapOptionalInputValue<RegistryInfo, Map<String, dynamic>>(registryInfo, (value) => value.toMap()),
+      'registryInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryInfo,
+            Map<String, dynamic>
+          >(registryInfo, (value) => value.toMap()),
       'runtimeStack': ?runtimeStack,
       'runtimeVersion': ?runtimeVersion,
     };
@@ -74,18 +103,74 @@ class GithubActionConfiguration {
 
   factory GithubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return GithubActionConfiguration(
-      azureCredentials: map['azureCredentials'] == null ? null : (AzureCredentials.fromMap((map['azureCredentials']! as Map).cast<String, dynamic>())).input(),
-      buildEnvironmentVariables: map['buildEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['buildEnvironmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
-      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath']! as String).input(),
-      githubPersonalAccessToken: map['githubPersonalAccessToken'] == null ? null : (map['githubPersonalAccessToken']! as String).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      os: map['os'] == null ? null : (map['os']! as String).input(),
-      publishType: map['publishType'] == null ? null : (map['publishType']! as String).input(),
-      registryInfo: map['registryInfo'] == null ? null : (RegistryInfo.fromMap((map['registryInfo']! as Map).cast<String, dynamic>())).input(),
-      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack']! as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      azureCredentials: (() {
+        final guardedValue = map['azureCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      buildEnvironmentVariables: (() {
+        final guardedValue = map['buildEnvironmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvironmentVariable>(
+            guardedValue,
+            (value) => EnvironmentVariable.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      contextPath: (() {
+        final guardedValue = map['contextPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerfilePath: (() {
+        final guardedValue = map['dockerfilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      githubPersonalAccessToken: (() {
+        final guardedValue = map['githubPersonalAccessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      os: (() {
+        final guardedValue = map['os'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publishType: (() {
+        final guardedValue = map['publishType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryInfo: (() {
+        final guardedValue = map['registryInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      runtimeStack: (() {
+        final guardedValue = map['runtimeStack'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeVersion: (() {
+        final guardedValue = map['runtimeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

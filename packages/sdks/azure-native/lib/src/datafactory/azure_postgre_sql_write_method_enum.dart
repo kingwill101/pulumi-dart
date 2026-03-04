@@ -4,16 +4,15 @@ enum AzurePostgreSqlWriteMethodEnum {
   valueCopyCommand("CopyCommand"),
   valueUpsert("Upsert");
 
-  const AzurePostgreSqlWriteMethodEnum(this.value);
-  final String value;
+  const AzurePostgreSqlWriteMethodEnum(this.wireValue);
+  final String wireValue;
 
   static AzurePostgreSqlWriteMethodEnum fromValue(String value) {
     for (final item in AzurePostgreSqlWriteMethodEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzurePostgreSqlWriteMethodEnum value: $value');
   }
 }
-

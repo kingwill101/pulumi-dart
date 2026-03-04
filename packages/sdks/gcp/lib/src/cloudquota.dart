@@ -1,5 +1,3 @@
-library module_cloudquota;
-
 export 'cloudquota/functions.dart';
 export 'cloudquota/get_squota_info_args.dart';
 export 'cloudquota/get_squota_info_dimensions_info.dart';

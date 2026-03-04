@@ -4,16 +4,15 @@ enum ServiceTierMetastoreV1alpha {
   developer("DEVELOPER"),
   enterprise("ENTERPRISE");
 
-  const ServiceTierMetastoreV1alpha(this.value);
-  final String value;
+  const ServiceTierMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static ServiceTierMetastoreV1alpha fromValue(String value) {
     for (final item in ServiceTierMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceTierMetastoreV1alpha value: $value');
   }
 }
-

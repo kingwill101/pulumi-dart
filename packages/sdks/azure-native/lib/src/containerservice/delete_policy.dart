@@ -3,16 +3,15 @@ enum DeletePolicy {
   valueKeep("Keep"),
   valueDelete("Delete");
 
-  const DeletePolicy(this.value);
-  final String value;
+  const DeletePolicy(this.wireValue);
+  final String wireValue;
 
   static DeletePolicy fromValue(String value) {
     for (final item in DeletePolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeletePolicy value: $value');
   }
 }
-

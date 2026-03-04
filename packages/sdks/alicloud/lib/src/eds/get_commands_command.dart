@@ -6,16 +6,22 @@ import 'get_commands_command_invoke_desktop.dart';
 class GetCommandsCommand {
   /// The Contents of the Script to Base64 Encoded Transmission.
   final pulumi.Input<String> commandContent;
+
   /// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
   final pulumi.Input<String> commandType;
+
   /// The Task of Creation Time.
   final pulumi.Input<String> createTime;
+
   /// The ID of the Command.
   final pulumi.Input<String> id;
+
   /// The Implementation of the Target Cloud Desktop Collection.
   final pulumi.Input<List<GetCommandsCommandInvokeDesktop>> invokeDesktops;
+
   /// The invoke id of the Command.
   final pulumi.Input<String> invokeId;
+
   /// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
   final pulumi.Input<String> status;
 
@@ -43,7 +49,18 @@ class GetCommandsCommand {
       'commandType': commandType,
       'createTime': createTime,
       'id': id,
-      'invokeDesktops': pulumi.Input.mapInputValue<List<GetCommandsCommandInvokeDesktop>, List<Map<String, dynamic>>>(invokeDesktops, (value) => pulumi.Input.encodeList<GetCommandsCommandInvokeDesktop, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'invokeDesktops':
+          pulumi.Input.mapInputValue<
+            List<GetCommandsCommandInvokeDesktop>,
+            List<Map<String, dynamic>>
+          >(
+            invokeDesktops,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCommandsCommandInvokeDesktop,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'invokeId': invokeId,
       'status': status,
     };
@@ -51,14 +68,20 @@ class GetCommandsCommand {
 
   factory GetCommandsCommand.fromMap(Map<String, dynamic> map) {
     return GetCommandsCommand(
-      commandContent: (map['commandContent'] as String).input(),
-      commandType: (map['commandType'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      invokeDesktops: (pulumi.Input.decodeList<GetCommandsCommandInvokeDesktop>(map['invokeDesktops'], (value) => GetCommandsCommandInvokeDesktop.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      invokeId: (map['invokeId'] as String).input(),
-      status: (map['status'] as String).input(),
+      commandContent: pulumi.Input.fromValue(map['commandContent'] as String),
+      commandType: pulumi.Input.fromValue(map['commandType'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      invokeDesktops: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetCommandsCommandInvokeDesktop>(
+          map['invokeDesktops']!,
+          (value) => GetCommandsCommandInvokeDesktop.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      invokeId: pulumi.Input.fromValue(map['invokeId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

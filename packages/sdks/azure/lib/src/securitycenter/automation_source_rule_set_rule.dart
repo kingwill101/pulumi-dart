@@ -5,13 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationSourceRuleSetRule {
   /// A value that will be compared with the value in `property_path`.
   final pulumi.Input<String> expectedValue;
+
   /// The comparison operator to use, must be one of: `Contains`, `EndsWith`, `Equals`, `GreaterThan`, `GreaterThanOrEqualTo`, `LesserThan`, `LesserThanOrEqualTo`, `NotEquals`, `StartsWith`
   final pulumi.Input<String> operator;
+
   /// The JPath of the entity model property that should be checked.
   final pulumi.Input<String> propertyPath;
+
   /// The data type of the compared operands, must be one of: `Integer`, `String`, `Boolean` or `Number`.
   ///
-  /// > **Note:** The schema for Security Center alerts (when `event_source` is "Alerts") [can be found here](https://docs.microsoft.com/azure/security-center/alerts-schemas?tabs=schema-continuousexport)
+  /// &gt; **Note:** The schema for Security Center alerts (when `event_source` is "Alerts") [can be found here](https://docs.microsoft.com/azure/security-center/alerts-schemas?tabs=schema-continuousexport)
   final pulumi.Input<String> propertyType;
 
   /// Creates a new [AutomationSourceRuleSetRule].
@@ -37,11 +40,10 @@ class AutomationSourceRuleSetRule {
 
   factory AutomationSourceRuleSetRule.fromMap(Map<String, dynamic> map) {
     return AutomationSourceRuleSetRule(
-      expectedValue: (map['expectedValue'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      propertyPath: (map['propertyPath'] as String).input(),
-      propertyType: (map['propertyType'] as String).input(),
+      expectedValue: pulumi.Input.fromValue(map['expectedValue'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      propertyPath: pulumi.Input.fromValue(map['propertyPath'] as String),
+      propertyType: pulumi.Input.fromValue(map['propertyType'] as String),
     );
   }
 }
-

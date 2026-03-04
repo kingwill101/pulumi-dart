@@ -9,12 +9,16 @@ import 'get_coip_pool_filter.dart';
 /// {@macro pulumi_ec2_get_coip_pool_get_coip_pool_args_doc}
 class GetCoipPoolArgs {
   final pulumi.Input<List<GetCoipPoolFilter>>? filters;
+
   /// Local Gateway Route Table Id assigned to desired COIP Pool
   final pulumi.Input<String>? localGatewayRouteTableId;
+
   /// ID of the specific COIP Pool to retrieve.
   final pulumi.Input<String>? poolId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired COIP Pool.
   ///
@@ -38,7 +42,18 @@ class GetCoipPoolArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetCoipPoolFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetCoipPoolFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetCoipPoolFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCoipPoolFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'localGatewayRouteTableId': ?localGatewayRouteTableId,
       'poolId': ?poolId,
       'region': ?region,
@@ -48,12 +63,40 @@ class GetCoipPoolArgs {
 
   factory GetCoipPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters']!, (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : ((map['localGatewayRouteTableId'] as String).input()).input(),
-      poolId: map['poolId'] == null ? null : ((map['poolId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetCoipPoolFilter>(
+            guardedValue,
+            (value) => GetCoipPoolFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      localGatewayRouteTableId: (() {
+        final guardedValue = map['localGatewayRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      poolId: (() {
+        final guardedValue = map['poolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

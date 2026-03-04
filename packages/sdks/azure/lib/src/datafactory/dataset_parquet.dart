@@ -3,7 +3,6 @@ import 'dataset_parquet_args.dart';
 import 'dataset_parquet_azure_blob_fs_location.dart';
 import 'dataset_parquet_azure_blob_storage_location.dart';
 import 'dataset_parquet_http_server_location.dart';
-import 'dataset_parquet_schema_column.dart';
 import 'dataset_parquet_state.dart';
 
 /// Manages an Azure Parquet Dataset inside an Azure Data Factory.
@@ -271,34 +270,50 @@ class DatasetParquet extends pulumi.CustomResource {
   ///
   /// The following supported locations for a Parquet Dataset:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// A `azure_blob_fs_location` block as defined below.
-  late final pulumi.Output<DatasetParquetAzureBlobFsLocation?> azureBlobFsLocation;
+  late final pulumi.Output<DatasetParquetAzureBlobFsLocation?>
+  azureBlobFsLocation;
+
   /// A `azure_blob_storage_location` block as defined below.
   ///
   /// The following supported arguments are specific to Parquet Dataset:
-  late final pulumi.Output<DatasetParquetAzureBlobStorageLocation?> azureBlobStorageLocation;
+  late final pulumi.Output<DatasetParquetAzureBlobStorageLocation?>
+  azureBlobStorageLocation;
+
   /// The compression codec used to read/write text files. Valid values are `bzip2`, `gzip`, `deflate`, `ZipDeflate`, `TarGzip`, `Tar`, `snappy`, or `lz4`. Please note these values are case-sensitive.
   late final pulumi.Output<String?> compressionCodec;
+
   /// Specifies the compression level. Possible values are `Optimal` and `Fastest`,
   late final pulumi.Output<String?> compressionLevel;
+
   /// The Data Factory ID in which to associate the Dataset with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// A `http_server_location` block as defined below.
-  late final pulumi.Output<DatasetParquetHttpServerLocation?> httpServerLocation;
+  late final pulumi.Output<DatasetParquetHttpServerLocation?>
+  httpServerLocation;
+
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
+
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A `schema_column` block as defined below.
-  late final pulumi.Output<List<DatasetParquetSchemaColumn>?> schemaColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetParquet].
   /// [name] The Pulumi resource name.
@@ -309,25 +324,36 @@ class DatasetParquet extends pulumi.CustomResource {
     DatasetParquetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetParquet:DatasetParquet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>('azureBlobFsLocation');
-    this.azureBlobStorageLocation = registerOutput<DatasetParquetAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.compressionCodec = registerOutput<String?>('compressionCodec');
-    this.compressionLevel = registerOutput<String?>('compressionLevel');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetParquet:DatasetParquet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>(
+      'azureBlobFsLocation',
+    );
+    azureBlobStorageLocation =
+        registerOutput<DatasetParquetAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaColumns = registerOutput<List<DatasetParquetSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 
   /// Gets an existing [DatasetParquet] resource's state with the given [name] and [id].
@@ -348,24 +374,35 @@ class DatasetParquet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetParquet:DatasetParquet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>('azureBlobFsLocation');
-    this.azureBlobStorageLocation = registerOutput<DatasetParquetAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.compressionCodec = registerOutput<String?>('compressionCodec');
-    this.compressionLevel = registerOutput<String?>('compressionLevel');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetParquet:DatasetParquet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>(
+      'azureBlobFsLocation',
+    );
+    azureBlobStorageLocation =
+        registerOutput<DatasetParquetAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaColumns = registerOutput<List<DatasetParquetSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 }

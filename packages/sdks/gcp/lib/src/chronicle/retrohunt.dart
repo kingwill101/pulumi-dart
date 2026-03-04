@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'retrohunt_args.dart';
-import 'retrohunt_execution_interval.dart';
 import 'retrohunt_process_interval.dart';
 import 'retrohunt_state.dart';
 
@@ -244,23 +243,28 @@ import 'retrohunt_state.dart';
 class Retrohunt extends pulumi.CustomResource {
   /// The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
   late final pulumi.Output<String> retrohuntId;
+
   /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// Timestamp end (exclusive).
   /// The start must be less than or equal to the end.
   /// When the start equals the end, the interval is empty (matches no time).
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
-  late final pulumi.Output<List<RetrohuntExecutionInterval>> executionIntervals;
+  late final pulumi.Output<List<Map<String, dynamic>>> executionIntervals;
+
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
+
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
+
   /// The resource name of the retrohunt.
   /// Retrohunt is the child of a rule revision. {rule} in the format below is
   /// structured as {rule_id@revision_id}.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/retrohunts/{retrohunt}
   late final pulumi.Output<String> name;
+
   /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// Timestamp end (exclusive).
   /// The start must be less than or equal to the end.
@@ -268,13 +272,17 @@ class Retrohunt extends pulumi.CustomResource {
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
   late final pulumi.Output<RetrohuntProcessInterval> processInterval;
+
   /// Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
   late final pulumi.Output<double> progressPercentage;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The Rule ID of the rule.
   late final pulumi.Output<String> rule;
+
   /// Output only. The state of the retrohunt.
   /// Possible values:
   /// RUNNING
@@ -292,21 +300,25 @@ class Retrohunt extends pulumi.CustomResource {
     RetrohuntArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/retrohunt:Retrohunt',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.retrohuntId = registerOutput<String>('RetrohuntId');
-    this.executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
+         'gcp:chronicle/retrohunt:Retrohunt',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    retrohuntId = registerOutput<String>('RetrohuntId');
+    executionIntervals = registerOutput<List<Map<String, dynamic>>>(
+      'executionIntervals',
+    );
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.processInterval = registerOutput<RetrohuntProcessInterval>('processInterval');
-    this.progressPercentage = registerOutput<double>('progressPercentage');
-    this.project = registerOutput<String>('project');
-    this.rule = registerOutput<String>('rule');
-    this.state = registerOutput<String>('state');
+    processInterval = registerOutput<RetrohuntProcessInterval>(
+      'processInterval',
+    );
+    progressPercentage = registerOutput<double>('progressPercentage');
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [Retrohunt] resource's state with the given [name] and [id].
@@ -327,20 +339,24 @@ class Retrohunt extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/retrohunt:Retrohunt',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.retrohuntId = registerOutput<String>('RetrohuntId');
-    this.executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
+         'gcp:chronicle/retrohunt:Retrohunt',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    retrohuntId = registerOutput<String>('RetrohuntId');
+    executionIntervals = registerOutput<List<Map<String, dynamic>>>(
+      'executionIntervals',
+    );
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.processInterval = registerOutput<RetrohuntProcessInterval>('processInterval');
-    this.progressPercentage = registerOutput<double>('progressPercentage');
-    this.project = registerOutput<String>('project');
-    this.rule = registerOutput<String>('rule');
+    processInterval = registerOutput<RetrohuntProcessInterval>(
+      'processInterval',
+    );
+    progressPercentage = registerOutput<double>('progressPercentage');
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
     this.state = registerOutput<String>('state');
   }
 }

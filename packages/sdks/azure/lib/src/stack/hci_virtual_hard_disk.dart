@@ -243,7 +243,7 @@ import 'hci_virtual_hard_disk_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AzureStackHCI` - 2024-01-01
@@ -258,30 +258,42 @@ import 'hci_virtual_hard_disk_state.dart';
 class HciVirtualHardDisk extends pulumi.CustomResource {
   /// The block size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<int?> blockSizeInBytes;
+
   /// The ID of the Custom Location where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String> customLocationId;
+
   /// The format of the disk file. Possible values are `vhdx` and `vhd`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String?> diskFileFormat;
+
   /// The size of the disk in GB. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<int> diskSizeInGb;
+
   /// Whether to enable dynamic sizing for the Azure Stack HCI Virtual Hard Disk. Defaults to `false`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<bool?> dynamicEnabled;
+
   /// The hypervisor generation of the Azure Stack HCI Virtual Hard Disk. Possible values are `V1` and `V2`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String?> hypervGeneration;
+
   /// The Azure Region where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String> location;
+
   /// The logical sector size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<int?> logicalSectorInBytes;
+
   /// The name which should be used for this Azure Stack HCI Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String> name;
+
   /// The physical sector size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<int?> physicalSectorInBytes;
+
   /// The name of the Resource Group where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   ///
-  /// > **Note:** If `storage_path_id` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `storage_path_id` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignore_changes`.
   late final pulumi.Output<String?> storagePathId;
+
   /// A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -294,24 +306,24 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
     HciVirtualHardDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.diskFileFormat = registerOutput<String?>('diskFileFormat');
-    this.diskSizeInGb = registerOutput<int>('diskSizeInGb');
-    this.dynamicEnabled = registerOutput<bool?>('dynamicEnabled');
-    this.hypervGeneration = registerOutput<String?>('hypervGeneration');
-    this.location = registerOutput<String>('location');
-    this.logicalSectorInBytes = registerOutput<int?>('logicalSectorInBytes');
+         'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
+    customLocationId = registerOutput<String>('customLocationId');
+    diskFileFormat = registerOutput<String?>('diskFileFormat');
+    diskSizeInGb = registerOutput<int>('diskSizeInGb');
+    dynamicEnabled = registerOutput<bool?>('dynamicEnabled');
+    hypervGeneration = registerOutput<String?>('hypervGeneration');
+    location = registerOutput<String>('location');
+    logicalSectorInBytes = registerOutput<int?>('logicalSectorInBytes');
     this.name = registerOutput<String>('name');
-    this.physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storagePathId = registerOutput<String?>('storagePathId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storagePathId = registerOutput<String?>('storagePathId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [HciVirtualHardDisk] resource's state with the given [name] and [id].
@@ -332,23 +344,23 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.diskFileFormat = registerOutput<String?>('diskFileFormat');
-    this.diskSizeInGb = registerOutput<int>('diskSizeInGb');
-    this.dynamicEnabled = registerOutput<bool?>('dynamicEnabled');
-    this.hypervGeneration = registerOutput<String?>('hypervGeneration');
-    this.location = registerOutput<String>('location');
-    this.logicalSectorInBytes = registerOutput<int?>('logicalSectorInBytes');
+         'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
+    customLocationId = registerOutput<String>('customLocationId');
+    diskFileFormat = registerOutput<String?>('diskFileFormat');
+    diskSizeInGb = registerOutput<int>('diskSizeInGb');
+    dynamicEnabled = registerOutput<bool?>('dynamicEnabled');
+    hypervGeneration = registerOutput<String?>('hypervGeneration');
+    location = registerOutput<String>('location');
+    logicalSectorInBytes = registerOutput<int?>('logicalSectorInBytes');
     this.name = registerOutput<String>('name');
-    this.physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storagePathId = registerOutput<String?>('storagePathId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storagePathId = registerOutput<String?>('storagePathId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

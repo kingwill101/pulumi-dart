@@ -8,10 +8,13 @@ import 'ipaddress_space_response.dart';
 class VnetConfigurationResponse {
   /// IP of trust subnet for UDR
   final pulumi.Input<IPAddressResponse>? ipOfTrustSubnetForUdr;
+
   /// Trust Subnet
   final pulumi.Input<IPAddressSpaceResponse> trustSubnet;
+
   /// Untrust Subnet
   final pulumi.Input<IPAddressSpaceResponse> unTrustSubnet;
+
   /// Azure Virtual Network
   final pulumi.Input<IPAddressSpaceResponse> vnet;
 
@@ -29,20 +32,55 @@ class VnetConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipOfTrustSubnetForUdr': ?pulumi.Input.mapOptionalInputValue<IPAddressResponse, Map<String, dynamic>>(ipOfTrustSubnetForUdr, (value) => value.toMap()),
-      'trustSubnet': pulumi.Input.mapInputValue<IPAddressSpaceResponse, Map<String, dynamic>>(trustSubnet, (value) => value.toMap()),
-      'unTrustSubnet': pulumi.Input.mapInputValue<IPAddressSpaceResponse, Map<String, dynamic>>(unTrustSubnet, (value) => value.toMap()),
-      'vnet': pulumi.Input.mapInputValue<IPAddressSpaceResponse, Map<String, dynamic>>(vnet, (value) => value.toMap()),
+      'ipOfTrustSubnetForUdr':
+          ?pulumi.Input.mapOptionalInputValue<
+            IPAddressResponse,
+            Map<String, dynamic>
+          >(ipOfTrustSubnetForUdr, (value) => value.toMap()),
+      'trustSubnet':
+          pulumi.Input.mapInputValue<
+            IPAddressSpaceResponse,
+            Map<String, dynamic>
+          >(trustSubnet, (value) => value.toMap()),
+      'unTrustSubnet':
+          pulumi.Input.mapInputValue<
+            IPAddressSpaceResponse,
+            Map<String, dynamic>
+          >(unTrustSubnet, (value) => value.toMap()),
+      'vnet':
+          pulumi.Input.mapInputValue<
+            IPAddressSpaceResponse,
+            Map<String, dynamic>
+          >(vnet, (value) => value.toMap()),
     };
   }
 
   factory VnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VnetConfigurationResponse(
-      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddressResponse.fromMap((map['ipOfTrustSubnetForUdr']! as Map).cast<String, dynamic>())).input(),
-      trustSubnet: (IPAddressSpaceResponse.fromMap((map['trustSubnet'] as Map).cast<String, dynamic>())).input(),
-      unTrustSubnet: (IPAddressSpaceResponse.fromMap((map['unTrustSubnet'] as Map).cast<String, dynamic>())).input(),
-      vnet: (IPAddressSpaceResponse.fromMap((map['vnet'] as Map).cast<String, dynamic>())).input(),
+      ipOfTrustSubnetForUdr: (() {
+        final guardedValue = map['ipOfTrustSubnetForUdr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IPAddressResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trustSubnet: pulumi.Input.fromValue(
+        IPAddressSpaceResponse.fromMap(
+          (map['trustSubnet']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      unTrustSubnet: pulumi.Input.fromValue(
+        IPAddressSpaceResponse.fromMap(
+          (map['unTrustSubnet']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vnet: pulumi.Input.fromValue(
+        IPAddressSpaceResponse.fromMap(
+          (map['vnet']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

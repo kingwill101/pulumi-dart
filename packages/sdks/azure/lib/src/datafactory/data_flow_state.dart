@@ -9,24 +9,33 @@ import 'data_flow_transformation.dart';
 class DataFlowState {
   /// List of tags that can be used for describing the Data Factory Data Flow.
   final pulumi.Input<List<String>>? annotations;
+
   /// The ID of Data Factory in which to associate the Data Flow with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
+
   /// The description for the Data Factory Data Flow.
   final pulumi.Input<String>? description;
+
   /// The folder that this Data Flow is in. If not specified, the Data Flow will appear at the root level.
   final pulumi.Input<String>? folder;
+
   /// Specifies the name of the Data Factory Data Flow. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The script for the Data Factory Data Flow.
   final pulumi.Input<String>? script;
+
   /// The script lines for the Data Factory Data Flow.
   final pulumi.Input<List<String>>? scriptLines;
+
   /// One or more `sink` blocks as defined below.
   final pulumi.Input<List<DataFlowSink>>? sinks;
+
   /// One or more `source` blocks as defined below.
   final pulumi.Input<List<DataFlowSource>>? sources;
+
   /// One or more `transformation` blocks as defined below.
-  final pulumi.Input<List<DataFlowTransformation>>? transformations;
+  final pulumi.Input<List<DataFlowTransformation>>? transformations_;
 
   /// Creates a new [DataFlowState].
   /// [annotations] List of tags that can be used for describing the Data Factory Data Flow.
@@ -38,7 +47,7 @@ class DataFlowState {
   /// [scriptLines] The script lines for the Data Factory Data Flow.
   /// [sinks] One or more `sink` blocks as defined below.
   /// [sources] One or more `source` blocks as defined below.
-  /// [transformations] One or more `transformation` blocks as defined below.
+  /// [transformations_] One or more `transformation` blocks as defined below.
   DataFlowState({
     this.annotations,
     this.dataFactoryId,
@@ -49,7 +58,7 @@ class DataFlowState {
     this.scriptLines,
     this.sinks,
     this.sources,
-    this.transformations,
+    this.transformations_,
   });
 
   Map<String, dynamic> toMap() {
@@ -61,25 +70,116 @@ class DataFlowState {
       'name': ?name,
       'script': ?script,
       'scriptLines': ?scriptLines,
-      'sinks': ?pulumi.Input.mapOptionalInputValue<List<DataFlowSink>, List<Map<String, dynamic>>>(sinks, (value) => pulumi.Input.encodeList<DataFlowSink, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<DataFlowSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<DataFlowSource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'transformations': ?pulumi.Input.mapOptionalInputValue<List<DataFlowTransformation>, List<Map<String, dynamic>>>(transformations, (value) => pulumi.Input.encodeList<DataFlowTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sinks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataFlowSink>,
+            List<Map<String, dynamic>>
+          >(
+            sinks,
+            (value) =>
+                pulumi.Input.encodeList<DataFlowSink, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataFlowSource>,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<DataFlowSource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'transformations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataFlowTransformation>,
+            List<Map<String, dynamic>>
+          >(
+            transformations_,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataFlowTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DataFlowState.fromMap(Map<String, dynamic> map) {
     return DataFlowState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      script: map['script'] == null ? null : (map['script']! as String).input(),
-      scriptLines: map['scriptLines'] == null ? null : ((map['scriptLines']! as List).cast<String>()).input(),
-      sinks: map['sinks'] == null ? null : (pulumi.Input.decodeList<DataFlowSink>(map['sinks']!, (value) => DataFlowSink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DataFlowSource>(map['sources']!, (value) => DataFlowSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<DataFlowTransformation>(map['transformations']!, (value) => DataFlowTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      script: (() {
+        final guardedValue = map['script'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scriptLines: (() {
+        final guardedValue = map['scriptLines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sinks: (() {
+        final guardedValue = map['sinks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataFlowSink>(
+            guardedValue,
+            (value) =>
+                DataFlowSink.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataFlowSource>(
+            guardedValue,
+            (value) =>
+                DataFlowSource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      transformations_: (() {
+        final guardedValue = map['transformations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataFlowTransformation>(
+            guardedValue,
+            (value) => DataFlowTransformation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

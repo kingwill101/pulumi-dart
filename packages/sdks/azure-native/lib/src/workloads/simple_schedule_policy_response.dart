@@ -7,15 +7,20 @@ import 'hourly_schedule_response.dart';
 class SimpleSchedulePolicyResponse {
   /// Hourly Schedule of this Policy
   final pulumi.Input<HourlyScheduleResponse>? hourlySchedule;
+
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleSchedulePolicy'.
   final pulumi.Input<String> schedulePolicyType;
+
   /// List of days of week this schedule has to be run.
   final pulumi.Input<List<String>>? scheduleRunDays;
+
   /// Frequency of the schedule operation of this policy.
   final pulumi.Input<String>? scheduleRunFrequency;
+
   /// List of times of day this schedule has to be run.
   final pulumi.Input<List<String>>? scheduleRunTimes;
+
   /// At every number weeks this schedule has to be run.
   final pulumi.Input<int>? scheduleWeeklyFrequency;
 
@@ -37,7 +42,11 @@ class SimpleSchedulePolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hourlySchedule': ?pulumi.Input.mapOptionalInputValue<HourlyScheduleResponse, Map<String, dynamic>>(hourlySchedule, (value) => value.toMap()),
+      'hourlySchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            HourlyScheduleResponse,
+            Map<String, dynamic>
+          >(hourlySchedule, (value) => value.toMap()),
       'schedulePolicyType': schedulePolicyType,
       'scheduleRunDays': ?scheduleRunDays,
       'scheduleRunFrequency': ?scheduleRunFrequency,
@@ -48,13 +57,38 @@ class SimpleSchedulePolicyResponse {
 
   factory SimpleSchedulePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SimpleSchedulePolicyResponse(
-      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlyScheduleResponse.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
-      schedulePolicyType: (map['schedulePolicyType'] as String).input(),
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays']! as List).cast<String>()).input(),
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency']! as String).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
-      scheduleWeeklyFrequency: map['scheduleWeeklyFrequency'] == null ? null : (map['scheduleWeeklyFrequency']! as int).input(),
+      hourlySchedule: (() {
+        final guardedValue = map['hourlySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HourlyScheduleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      schedulePolicyType: pulumi.Input.fromValue(
+        map['schedulePolicyType'] as String,
+      ),
+      scheduleRunDays: (() {
+        final guardedValue = map['scheduleRunDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scheduleRunFrequency: (() {
+        final guardedValue = map['scheduleRunFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleRunTimes: (() {
+        final guardedValue = map['scheduleRunTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scheduleWeeklyFrequency: (() {
+        final guardedValue = map['scheduleWeeklyFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

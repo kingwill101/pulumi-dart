@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_state.dart';
-import 'account_throttle_setting.dart';
 
 /// Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
 ///
@@ -372,14 +371,18 @@ import 'account_throttle_setting.dart';
 class Account extends pulumi.CustomResource {
   /// The version of the API keys used for the account.
   late final pulumi.Output<String> apiKeyVersion;
+
   /// ARN of an IAM role for CloudWatch (to allow logging & monitoring). See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console). Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
   late final pulumi.Output<String> cloudwatchRoleArn;
+
   /// A list of features supported for the account.
   late final pulumi.Output<List<String>> features;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Account-Level throttle settings. See exported fields below.
-  late final pulumi.Output<List<AccountThrottleSetting>> throttleSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>> throttleSettings;
 
   /// Creates a new [Account].
   /// [name] The Pulumi resource name.
@@ -390,16 +393,18 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKeyVersion = registerOutput<String>('apiKeyVersion');
-    this.cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
-    this.features = registerOutput<List<String>>('features');
-    this.region = registerOutput<String>('region');
-    this.throttleSettings = registerOutput<List<AccountThrottleSetting>>('throttleSettings');
+         'aws:apigateway/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKeyVersion = registerOutput<String>('apiKeyVersion');
+    cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
+    features = registerOutput<List<String>>('features');
+    region = registerOutput<String>('region');
+    throttleSettings = registerOutput<List<Map<String, dynamic>>>(
+      'throttleSettings',
+    );
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -420,15 +425,17 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKeyVersion = registerOutput<String>('apiKeyVersion');
-    this.cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
-    this.features = registerOutput<List<String>>('features');
-    this.region = registerOutput<String>('region');
-    this.throttleSettings = registerOutput<List<AccountThrottleSetting>>('throttleSettings');
+         'aws:apigateway/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKeyVersion = registerOutput<String>('apiKeyVersion');
+    cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
+    features = registerOutput<List<String>>('features');
+    region = registerOutput<String>('region');
+    throttleSettings = registerOutput<List<Map<String, dynamic>>>(
+      'throttleSettings',
+    );
   }
 }

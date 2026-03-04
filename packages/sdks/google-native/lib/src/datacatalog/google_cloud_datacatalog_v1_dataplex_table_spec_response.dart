@@ -8,8 +8,13 @@ import 'google_cloud_datacatalog_v1_dataplex_spec_response.dart';
 class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
   /// Common Dataplex fields.
   final pulumi.Input<GoogleCloudDatacatalogV1DataplexSpecResponse> dataplexSpec;
+
   /// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1DataplexExternalTableResponse>> externalTables;
+  final pulumi.Input<
+    List<GoogleCloudDatacatalogV1DataplexExternalTableResponse>
+  >
+  externalTables;
+
   /// Indicates if the table schema is managed by the user or not.
   final pulumi.Input<bool> userManaged;
 
@@ -25,18 +30,48 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataplexSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1DataplexSpecResponse, Map<String, dynamic>>(dataplexSpec, (value) => value.toMap()),
-      'externalTables': pulumi.Input.mapInputValue<List<GoogleCloudDatacatalogV1DataplexExternalTableResponse>, List<Map<String, dynamic>>>(externalTables, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogV1DataplexExternalTableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataplexSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1DataplexSpecResponse,
+            Map<String, dynamic>
+          >(dataplexSpec, (value) => value.toMap()),
+      'externalTables':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudDatacatalogV1DataplexExternalTableResponse>,
+            List<Map<String, dynamic>>
+          >(
+            externalTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDatacatalogV1DataplexExternalTableResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'userManaged': userManaged,
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DataplexTableSpecResponse(
-      dataplexSpec: (GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap((map['dataplexSpec'] as Map).cast<String, dynamic>())).input(),
-      externalTables: (pulumi.Input.decodeList<GoogleCloudDatacatalogV1DataplexExternalTableResponse>(map['externalTables'], (value) => GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userManaged: (map['userManaged'] as bool).input(),
+      dataplexSpec: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
+          (map['dataplexSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      externalTables: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudDatacatalogV1DataplexExternalTableResponse
+        >(
+          map['externalTables']!,
+          (value) =>
+              GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      userManaged: pulumi.Input.fromValue(map['userManaged'] as bool),
     );
   }
 }
-

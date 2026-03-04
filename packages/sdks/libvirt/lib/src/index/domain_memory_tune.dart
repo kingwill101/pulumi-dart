@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainMemoryTune {
   /// Specifies the hard limit for memory allocation, influencing how much memory the domain can consume.
   final pulumi.Input<double>? hardLimit;
+
   /// Defines the unit used for specifying the hard limit on memory allocation.
   final pulumi.Input<String>? hardLimitUnit;
+
   /// Sets the minimum guaranteed memory allocation for the domain, ensuring it has sufficient resources.
   final pulumi.Input<double>? minGuarantee;
+
   /// Specifies the unit for the minimum guaranteed memory allocation.
   final pulumi.Input<String>? minGuaranteeUnit;
+
   /// Configures the soft limit for memory usage, allowing for temporary increases beyond this point, if necessary.
   final pulumi.Input<double>? softLimit;
+
   /// Sets the unit for the specified soft limit on memory allocation.
   final pulumi.Input<String>? softLimitUnit;
+
   /// Defines the hard limit for swap usage, controlling the maximum amount of swapped memory allowed.
   final pulumi.Input<double>? swapHardLimit;
+
   /// Specifies the unit for the swap hard limit configuration.
   final pulumi.Input<String>? swapHardLimitUnit;
 
@@ -55,15 +62,46 @@ class DomainMemoryTune {
 
   factory DomainMemoryTune.fromMap(Map<String, dynamic> map) {
     return DomainMemoryTune(
-      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit']! as double).input(),
-      hardLimitUnit: map['hardLimitUnit'] == null ? null : (map['hardLimitUnit']! as String).input(),
-      minGuarantee: map['minGuarantee'] == null ? null : (map['minGuarantee']! as double).input(),
-      minGuaranteeUnit: map['minGuaranteeUnit'] == null ? null : (map['minGuaranteeUnit']! as String).input(),
-      softLimit: map['softLimit'] == null ? null : (map['softLimit']! as double).input(),
-      softLimitUnit: map['softLimitUnit'] == null ? null : (map['softLimitUnit']! as String).input(),
-      swapHardLimit: map['swapHardLimit'] == null ? null : (map['swapHardLimit']! as double).input(),
-      swapHardLimitUnit: map['swapHardLimitUnit'] == null ? null : (map['swapHardLimitUnit']! as String).input(),
+      hardLimit: (() {
+        final guardedValue = map['hardLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      hardLimitUnit: (() {
+        final guardedValue = map['hardLimitUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minGuarantee: (() {
+        final guardedValue = map['minGuarantee'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minGuaranteeUnit: (() {
+        final guardedValue = map['minGuaranteeUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softLimit: (() {
+        final guardedValue = map['softLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      softLimitUnit: (() {
+        final guardedValue = map['softLimitUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      swapHardLimit: (() {
+        final guardedValue = map['swapHardLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      swapHardLimitUnit: (() {
+        final guardedValue = map['swapHardLimitUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

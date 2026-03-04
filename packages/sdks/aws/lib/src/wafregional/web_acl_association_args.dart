@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
   final pulumi.Input<String> resourceArn;
+
   /// The ID of the WAF Regional WebACL to create an association.
   final pulumi.Input<String> webAclId;
 
@@ -34,10 +36,13 @@ class WebAclAssociationArgs {
 
   factory WebAclAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
-      webAclId: (map['webAclId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
+      webAclId: pulumi.Input.fromValue(map['webAclId'] as String),
     );
   }
 }
-

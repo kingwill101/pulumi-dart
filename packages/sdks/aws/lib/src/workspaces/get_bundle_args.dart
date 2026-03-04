@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBundleArgs {
   /// ID of the bundle.
   final pulumi.Input<String>? bundleId;
+
   /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? name;
+
   /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? owner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -21,12 +24,7 @@ class GetBundleArgs {
   /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
   /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBundleArgs({
-    this.bundleId,
-    this.name,
-    this.owner,
-    this.region,
-  });
+  GetBundleArgs({this.bundleId, this.name, this.owner, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +37,26 @@ class GetBundleArgs {
 
   factory GetBundleArgs.fromMap(Map<String, dynamic> map) {
     return GetBundleArgs(
-      bundleId: map['bundleId'] == null ? null : ((map['bundleId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      bundleId: (() {
+        final guardedValue = map['bundleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

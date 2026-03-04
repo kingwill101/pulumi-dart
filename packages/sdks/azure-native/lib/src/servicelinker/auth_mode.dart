@@ -3,16 +3,15 @@ enum AuthMode {
   valueOptInAllAuth("optInAllAuth"),
   valueOptOutAllAuth("optOutAllAuth");
 
-  const AuthMode(this.value);
-  final String value;
+  const AuthMode(this.wireValue);
+  final String wireValue;
 
   static AuthMode fromValue(String value) {
     for (final item in AuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthMode value: $value');
   }
 }
-

@@ -18,10 +18,13 @@ class FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig
     };
   }
 
-  factory FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig(
-      humanLoopActivationConditions: (map['humanLoopActivationConditions'] as String).input(),
+      humanLoopActivationConditions: pulumi.Input.fromValue(
+        map['humanLoopActivationConditions'] as String,
+      ),
     );
   }
 }
-

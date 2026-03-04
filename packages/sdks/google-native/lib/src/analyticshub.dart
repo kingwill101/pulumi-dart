@@ -1,5 +1,3 @@
-library module_analyticshub;
-
 export 'analyticshub/audit_config.dart';
 export 'analyticshub/audit_config_analyticshub_v1beta1.dart';
 export 'analyticshub/audit_config_response.dart';

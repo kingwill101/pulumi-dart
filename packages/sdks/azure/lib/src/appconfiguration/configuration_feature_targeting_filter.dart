@@ -6,8 +6,10 @@ import 'configuration_feature_targeting_filter_group.dart';
 class ConfigurationFeatureTargetingFilter {
   /// A number representing the percentage of the entire user base.
   final pulumi.Input<int> defaultRolloutPercentage;
+
   /// One or more `groups` blocks as defined below.
   final pulumi.Input<List<ConfigurationFeatureTargetingFilterGroup>>? groups;
+
   /// A list of users to target for this feature.
   final pulumi.Input<List<String>>? users;
 
@@ -24,17 +26,46 @@ class ConfigurationFeatureTargetingFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultRolloutPercentage': defaultRolloutPercentage,
-      'groups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationFeatureTargetingFilterGroup>, List<Map<String, dynamic>>>(groups, (value) => pulumi.Input.encodeList<ConfigurationFeatureTargetingFilterGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationFeatureTargetingFilterGroup>,
+            List<Map<String, dynamic>>
+          >(
+            groups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationFeatureTargetingFilterGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'users': ?users,
     };
   }
 
-  factory ConfigurationFeatureTargetingFilter.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationFeatureTargetingFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationFeatureTargetingFilter(
-      defaultRolloutPercentage: (map['defaultRolloutPercentage'] as int).input(),
-      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<ConfigurationFeatureTargetingFilterGroup>(map['groups']!, (value) => ConfigurationFeatureTargetingFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
+      defaultRolloutPercentage: pulumi.Input.fromValue(
+        map['defaultRolloutPercentage'] as int,
+      ),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationFeatureTargetingFilterGroup>(
+            guardedValue,
+            (value) => ConfigurationFeatureTargetingFilterGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      users: (() {
+        final guardedValue = map['users'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

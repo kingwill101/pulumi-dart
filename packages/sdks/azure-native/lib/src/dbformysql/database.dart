@@ -147,14 +147,19 @@ import 'system_data_response.dart';
 class Database extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The charset of the database.
   late final pulumi.Output<String?> charset;
+
   /// The collation of the database.
   late final pulumi.Output<String?> collation;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -167,16 +172,16 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbformysql:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.charset = registerOutput<String?>('charset');
-    this.collation = registerOutput<String?>('collation');
+         'azure-native:dbformysql:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    charset = registerOutput<String?>('charset');
+    collation = registerOutput<String?>('collation');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

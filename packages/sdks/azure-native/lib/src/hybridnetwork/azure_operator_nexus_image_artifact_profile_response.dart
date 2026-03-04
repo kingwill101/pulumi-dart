@@ -8,6 +8,7 @@ import 'referenced_resource_response.dart';
 class AzureOperatorNexusImageArtifactProfileResponse {
   /// The reference to artifact store.
   final pulumi.Input<ReferencedResourceResponse>? artifactStore;
+
   /// Image artifact profile.
   final pulumi.Input<ImageArtifactProfileResponse>? imageArtifactProfile;
 
@@ -21,16 +22,41 @@ class AzureOperatorNexusImageArtifactProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
-      'imageArtifactProfile': ?pulumi.Input.mapOptionalInputValue<ImageArtifactProfileResponse, Map<String, dynamic>>(imageArtifactProfile, (value) => value.toMap()),
+      'artifactStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResourceResponse,
+            Map<String, dynamic>
+          >(artifactStore, (value) => value.toMap()),
+      'imageArtifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageArtifactProfileResponse,
+            Map<String, dynamic>
+          >(imageArtifactProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureOperatorNexusImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureOperatorNexusImageArtifactProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureOperatorNexusImageArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
-      imageArtifactProfile: map['imageArtifactProfile'] == null ? null : (ImageArtifactProfileResponse.fromMap((map['imageArtifactProfile']! as Map).cast<String, dynamic>())).input(),
+      artifactStore: (() {
+        final guardedValue = map['artifactStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageArtifactProfile: (() {
+        final guardedValue = map['imageArtifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageArtifactProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

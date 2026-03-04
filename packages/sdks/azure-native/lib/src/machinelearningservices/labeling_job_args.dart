@@ -10,10 +10,13 @@ import 'labeling_job_machinelearningservices.dart';
 class LabelingJobArgs {
   /// The name and identifier for the LabelingJob.
   final pulumi.Input<String>? id;
+
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<LabelingJobMachinelearningservices> labelingJobProperties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -40,11 +43,18 @@ class LabelingJobArgs {
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      labelingJobProperties: (map['labelingJobProperties'] as LabelingJobMachinelearningservices).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labelingJobProperties: pulumi.Input.fromValue(
+        map['labelingJobProperties'] as LabelingJobMachinelearningservices,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

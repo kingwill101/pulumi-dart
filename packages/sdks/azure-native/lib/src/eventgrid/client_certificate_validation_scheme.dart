@@ -7,16 +7,17 @@ enum ClientCertificateValidationScheme {
   valueEmailMatchesAuthenticationName("EmailMatchesAuthenticationName"),
   valueThumbprintMatch("ThumbprintMatch");
 
-  const ClientCertificateValidationScheme(this.value);
-  final String value;
+  const ClientCertificateValidationScheme(this.wireValue);
+  final String wireValue;
 
   static ClientCertificateValidationScheme fromValue(String value) {
     for (final item in ClientCertificateValidationScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClientCertificateValidationScheme value: $value');
+    throw ArgumentError(
+      'Unknown ClientCertificateValidationScheme value: $value',
+    );
   }
 }
-

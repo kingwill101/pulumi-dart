@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueueAuthorizationRuleArgs {
   /// The name of this ServiceBus Queue Authorisation Rule.
   final pulumi.Input<String> name;
+
   /// The name of the ServiceBus Namespace.
   final pulumi.Input<String>? namespaceName;
   final pulumi.Input<String>? queueId;
+
   /// The name of the ServiceBus Queue.
   final pulumi.Input<String>? queueName;
+
   /// The name of the Resource Group where the ServiceBus Queue Authorisation Rule exists.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -43,12 +46,27 @@ class GetQueueAuthorizationRuleArgs {
 
   factory GetQueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueAuthorizationRuleArgs(
-      name: (map['name'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      queueId: map['queueId'] == null ? null : (map['queueId']! as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: (() {
+        final guardedValue = map['queueId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

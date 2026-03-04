@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CombustionState {
   /// Combustion script content (shell script)
   final pulumi.Input<String>? content;
+
   /// Name for this combustion resource
   final pulumi.Input<String>? name;
+
   /// Full path to the generated combustion script file
   final pulumi.Input<String>? path;
+
   /// Size of the file in bytes
   final pulumi.Input<double>? size;
 
@@ -18,12 +21,7 @@ class CombustionState {
   /// [name] Name for this combustion resource
   /// [path] Full path to the generated combustion script file
   /// [size] Size of the file in bytes
-  CombustionState({
-    this.content,
-    this.name,
-    this.path,
-    this.size,
-  });
+  CombustionState({this.content, this.name, this.path, this.size});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class CombustionState {
 
   factory CombustionState.fromMap(Map<String, dynamic> map) {
     return CombustionState(
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as double).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

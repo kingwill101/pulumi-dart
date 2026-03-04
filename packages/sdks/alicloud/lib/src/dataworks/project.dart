@@ -8,7 +8,7 @@ import 'project_state.dart';
 ///
 /// For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createproject).
 ///
-/// > **NOTE:** Available since v1.229.0.
+/// &gt; **NOTE:** Available since v1.229.0.
 ///
 /// ## Example Usage
 ///
@@ -235,20 +235,28 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Workspace Description
   late final pulumi.Output<String?> description;
+
   /// Is Development Environment Enabled
   late final pulumi.Output<bool> devEnvironmentEnabled;
+
   /// Is Development Role Disabled
   late final pulumi.Output<bool> devRoleDisabled;
+
   /// Workspace Display Name
   late final pulumi.Output<String> displayName;
+
   /// Create PAI Workspace Together
   late final pulumi.Output<bool> paiTaskEnabled;
+
   /// Workspace Name
   late final pulumi.Output<String> projectName;
+
   /// Aliyun Resource Group Id
   late final pulumi.Output<String> resourceGroupId;
+
   /// Workspace Status
   late final pulumi.Output<String> status;
+
   /// Aliyun Resource Tag
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -261,20 +269,20 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
-    this.devRoleDisabled = registerOutput<bool>('devRoleDisabled');
-    this.displayName = registerOutput<String>('displayName');
-    this.paiTaskEnabled = registerOutput<bool>('paiTaskEnabled');
-    this.projectName = registerOutput<String>('projectName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dataworks/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
+    devRoleDisabled = registerOutput<bool>('devRoleDisabled');
+    displayName = registerOutput<String>('displayName');
+    paiTaskEnabled = registerOutput<bool>('paiTaskEnabled');
+    projectName = registerOutput<String>('projectName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -295,19 +303,19 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
-    this.devRoleDisabled = registerOutput<bool>('devRoleDisabled');
-    this.displayName = registerOutput<String>('displayName');
-    this.paiTaskEnabled = registerOutput<bool>('paiTaskEnabled');
-    this.projectName = registerOutput<String>('projectName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dataworks/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
+    devRoleDisabled = registerOutput<bool>('devRoleDisabled');
+    displayName = registerOutput<String>('displayName');
+    paiTaskEnabled = registerOutput<bool>('paiTaskEnabled');
+    projectName = registerOutput<String>('projectName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

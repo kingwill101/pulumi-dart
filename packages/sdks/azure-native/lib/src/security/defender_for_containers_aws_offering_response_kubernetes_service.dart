@@ -14,15 +14,18 @@ class DefenderForContainersAwsOfferingResponseKubernetesService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudRoleArn': ?cloudRoleArn,
-    };
+    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
   }
 
-  factory DefenderForContainersAwsOfferingResponseKubernetesService.fromMap(Map<String, dynamic> map) {
+  factory DefenderForContainersAwsOfferingResponseKubernetesService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForContainersAwsOfferingResponseKubernetesService(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

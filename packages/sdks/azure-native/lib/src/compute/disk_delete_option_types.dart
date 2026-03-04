@@ -3,16 +3,15 @@ enum DiskDeleteOptionTypes {
   delete("Delete"),
   detach("Detach");
 
-  const DiskDeleteOptionTypes(this.value);
-  final String value;
+  const DiskDeleteOptionTypes(this.wireValue);
+  final String wireValue;
 
   static DiskDeleteOptionTypes fromValue(String value) {
     for (final item in DiskDeleteOptionTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskDeleteOptionTypes value: $value');
   }
 }
-

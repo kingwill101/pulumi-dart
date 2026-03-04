@@ -8,20 +8,21 @@ class AccessGrantAccessGrantsLocationConfiguration {
 
   /// Creates a new [AccessGrantAccessGrantsLocationConfiguration].
   /// [s3SubPrefix] Sub-prefix.
-  AccessGrantAccessGrantsLocationConfiguration({
-    this.s3SubPrefix,
-  });
+  AccessGrantAccessGrantsLocationConfiguration({this.s3SubPrefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3SubPrefix': ?s3SubPrefix,
-    };
+    return <String, dynamic>{'s3SubPrefix': ?s3SubPrefix};
   }
 
-  factory AccessGrantAccessGrantsLocationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AccessGrantAccessGrantsLocationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessGrantAccessGrantsLocationConfiguration(
-      s3SubPrefix: map['s3SubPrefix'] == null ? null : ((map['s3SubPrefix'] as String).input()).input(),
+      s3SubPrefix: (() {
+        final guardedValue = map['s3SubPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

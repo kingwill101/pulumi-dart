@@ -9,20 +9,19 @@ class VolumeTypeEnumValue {
 
   /// Creates a new [VolumeTypeEnumValue].
   /// [value] Property value
-  VolumeTypeEnumValue({
-    this.value,
-  });
+  VolumeTypeEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory VolumeTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return VolumeTypeEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

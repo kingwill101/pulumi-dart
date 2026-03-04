@@ -10,6 +10,7 @@ class GetDedicatedHostsResult {
   final bool? enableDetails;
   final String? hostType;
   final List<GetDedicatedHostsHost> hosts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -53,7 +54,11 @@ class GetDedicatedHostsResult {
       'dedicatedHostGroupId': dedicatedHostGroupId,
       'enableDetails': ?enableDetails,
       'hostType': ?hostType,
-      'hosts': pulumi.Input.encodeList<GetDedicatedHostsHost, Map<String, dynamic>>(hosts, (value) => value.toMap()),
+      'hosts':
+          pulumi.Input.encodeList<GetDedicatedHostsHost, Map<String, dynamic>>(
+            hosts,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'orderId': ?orderId,
@@ -66,19 +71,55 @@ class GetDedicatedHostsResult {
 
   factory GetDedicatedHostsResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsResult(
-      allocationStatus: map['allocationStatus'] == null ? null : map['allocationStatus']! as String,
+      allocationStatus: (() {
+        final guardedValue = map['allocationStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       dedicatedHostGroupId: map['dedicatedHostGroupId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      hostType: map['hostType'] == null ? null : map['hostType']! as String,
-      hosts: pulumi.Input.decodeList<GetDedicatedHostsHost>(map['hosts'], (value) => GetDedicatedHostsHost.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      hostType: (() {
+        final guardedValue = map['hostType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      hosts: pulumi.Input.decodeList<GetDedicatedHostsHost>(
+        map['hosts']!,
+        (value) => GetDedicatedHostsHost.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      orderId: map['orderId'] == null ? null : map['orderId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      orderId: (() {
+        final guardedValue = map['orderId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

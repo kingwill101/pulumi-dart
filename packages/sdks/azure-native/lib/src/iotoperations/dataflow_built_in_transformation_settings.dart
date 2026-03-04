@@ -9,12 +9,16 @@ import 'dataflow_built_in_transformation_map.dart';
 class DataflowBuiltInTransformationSettings {
   /// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
   final pulumi.Input<List<DataflowBuiltInTransformationDataset>>? datasets;
+
   /// Filters input record or datapoints based on condition.
   final pulumi.Input<List<DataflowBuiltInTransformationFilter>>? filter;
+
   /// Maps input to output message.
   final pulumi.Input<List<DataflowBuiltInTransformationMap>>? map;
+
   /// Reference to the schema that describes the output of the transformation.
   final pulumi.Input<String>? schemaRef;
+
   /// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
   final pulumi.Input<String>? serializationFormat;
 
@@ -34,22 +38,97 @@ class DataflowBuiltInTransformationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasets': ?pulumi.Input.mapOptionalInputValue<List<DataflowBuiltInTransformationDataset>, List<Map<String, dynamic>>>(datasets, (value) => pulumi.Input.encodeList<DataflowBuiltInTransformationDataset, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'filter': ?pulumi.Input.mapOptionalInputValue<List<DataflowBuiltInTransformationFilter>, List<Map<String, dynamic>>>(filter, (value) => pulumi.Input.encodeList<DataflowBuiltInTransformationFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'map': ?pulumi.Input.mapOptionalInputValue<List<DataflowBuiltInTransformationMap>, List<Map<String, dynamic>>>(map, (value) => pulumi.Input.encodeList<DataflowBuiltInTransformationMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'datasets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataflowBuiltInTransformationDataset>,
+            List<Map<String, dynamic>>
+          >(
+            datasets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataflowBuiltInTransformationDataset,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'filter':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataflowBuiltInTransformationFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filter,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataflowBuiltInTransformationFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'map':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataflowBuiltInTransformationMap>,
+            List<Map<String, dynamic>>
+          >(
+            map,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataflowBuiltInTransformationMap,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schemaRef': ?schemaRef,
       'serializationFormat': ?serializationFormat,
     };
   }
 
-  factory DataflowBuiltInTransformationSettings.fromMap(Map<String, dynamic> map) {
+  factory DataflowBuiltInTransformationSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowBuiltInTransformationSettings(
-      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationDataset>(map['datasets']!, (value) => DataflowBuiltInTransformationDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationFilter>(map['filter']!, (value) => DataflowBuiltInTransformationFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      map: map['map'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationMap>(map['map']!, (value) => DataflowBuiltInTransformationMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
-      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat']! as String).input(),
+      datasets: (() {
+        final guardedValue = map['datasets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataflowBuiltInTransformationDataset>(
+            guardedValue,
+            (value) => DataflowBuiltInTransformationDataset.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataflowBuiltInTransformationFilter>(
+            guardedValue,
+            (value) => DataflowBuiltInTransformationFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      map: (() {
+        final guardedValue = map['map'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataflowBuiltInTransformationMap>(
+            guardedValue,
+            (value) => DataflowBuiltInTransformationMap.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      schemaRef: (() {
+        final guardedValue = map['schemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serializationFormat: (() {
+        final guardedValue = map['serializationFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

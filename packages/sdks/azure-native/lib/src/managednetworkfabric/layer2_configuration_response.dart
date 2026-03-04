@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Layer2ConfigurationResponse {
   /// List of network device interfaces resource IDs.
   final pulumi.Input<List<String>>? interfaces;
+
   /// MTU of the packets between PE & CE.
   final pulumi.Input<int>? mtu;
 
   /// Creates a new [Layer2ConfigurationResponse].
   /// [interfaces] List of network device interfaces resource IDs.
   /// [mtu] MTU of the packets between PE & CE.
-  Layer2ConfigurationResponse({
-    this.interfaces,
-    this.mtu,
-  });
+  Layer2ConfigurationResponse({this.interfaces, this.mtu});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interfaces': ?interfaces,
-      'mtu': ?mtu,
-    };
+    return <String, dynamic>{'interfaces': ?interfaces, 'mtu': ?mtu};
   }
 
   factory Layer2ConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return Layer2ConfigurationResponse(
-      interfaces: map['interfaces'] == null ? null : ((map['interfaces']! as List).cast<String>()).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      interfaces: (() {
+        final guardedValue = map['interfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mtu: (() {
+        final guardedValue = map['mtu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

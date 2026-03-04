@@ -47,7 +47,11 @@ class GetResourceSharesResult {
       'outputFile': ?outputFile,
       'resourceShareName': ?resourceShareName,
       'resourceShareOwner': resourceShareOwner,
-      'shares': pulumi.Input.encodeList<GetResourceSharesShare, Map<String, dynamic>>(shares, (value) => value.toMap()),
+      'shares':
+          pulumi.Input.encodeList<GetResourceSharesShare, Map<String, dynamic>>(
+            shares,
+            (value) => value.toMap(),
+          ),
       'status': ?status,
     };
   }
@@ -56,14 +60,34 @@ class GetResourceSharesResult {
     return GetResourceSharesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      resourceShareName: map['resourceShareName'] == null ? null : map['resourceShareName']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceShareName: (() {
+        final guardedValue = map['resourceShareName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       resourceShareOwner: map['resourceShareOwner'] as String,
-      shares: pulumi.Input.decodeList<GetResourceSharesShare>(map['shares'], (value) => GetResourceSharesShare.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      shares: pulumi.Input.decodeList<GetResourceSharesShare>(
+        map['shares']!,
+        (value) => GetResourceSharesShare.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

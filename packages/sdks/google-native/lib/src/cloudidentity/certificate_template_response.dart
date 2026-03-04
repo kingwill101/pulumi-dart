@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateTemplateResponse {
   /// The Major version of the template. Example: 100.
   final pulumi.Input<int> majorVersion;
+
   /// The minor version of the template. Example: 12.
   final pulumi.Input<int> minorVersion;
 
@@ -26,9 +27,8 @@ class CertificateTemplateResponse {
 
   factory CertificateTemplateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateResponse(
-      majorVersion: (map['majorVersion'] as int).input(),
-      minorVersion: (map['minorVersion'] as int).input(),
+      majorVersion: pulumi.Input.fromValue(map['majorVersion'] as int),
+      minorVersion: pulumi.Input.fromValue(map['minorVersion'] as int),
     );
   }
 }
-

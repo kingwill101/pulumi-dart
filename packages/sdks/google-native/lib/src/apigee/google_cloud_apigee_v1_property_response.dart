@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1PropertyResponse {
   /// The property key
   final pulumi.Input<String> name;
+
   /// The property value
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class GoogleCloudApigeeV1PropertyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GoogleCloudApigeeV1PropertyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1PropertyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1PropertyResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

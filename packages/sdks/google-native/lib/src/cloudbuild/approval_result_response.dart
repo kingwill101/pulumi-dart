@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalResultResponse {
   /// The time when the approval decision was made.
   final pulumi.Input<String> approvalTime;
+
   /// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
   final pulumi.Input<String> approverAccount;
+
   /// Optional. An optional comment for this manual approval result.
   final pulumi.Input<String> comment;
+
   /// The decision of this manual approval.
   final pulumi.Input<String> decision;
+
   /// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
   final pulumi.Input<String> url;
 
@@ -41,12 +45,11 @@ class ApprovalResultResponse {
 
   factory ApprovalResultResponse.fromMap(Map<String, dynamic> map) {
     return ApprovalResultResponse(
-      approvalTime: (map['approvalTime'] as String).input(),
-      approverAccount: (map['approverAccount'] as String).input(),
-      comment: (map['comment'] as String).input(),
-      decision: (map['decision'] as String).input(),
-      url: (map['url'] as String).input(),
+      approvalTime: pulumi.Input.fromValue(map['approvalTime'] as String),
+      approverAccount: pulumi.Input.fromValue(map['approverAccount'] as String),
+      comment: pulumi.Input.fromValue(map['comment'] as String),
+      decision: pulumi.Input.fromValue(map['decision'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

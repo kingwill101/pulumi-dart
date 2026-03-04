@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiProfileResponse {
   /// The API version.
   final pulumi.Input<String> apiVersion;
+
   /// The profile version.
   final pulumi.Input<String> profileVersion;
 
   /// Creates a new [ApiProfileResponse].
   /// [apiVersion] The API version.
   /// [profileVersion] The profile version.
-  ApiProfileResponse({
-    required this.apiVersion,
-    required this.profileVersion,
-  });
+  ApiProfileResponse({required this.apiVersion, required this.profileVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,8 @@ class ApiProfileResponse {
 
   factory ApiProfileResponse.fromMap(Map<String, dynamic> map) {
     return ApiProfileResponse(
-      apiVersion: (map['apiVersion'] as String).input(),
-      profileVersion: (map['profileVersion'] as String).input(),
+      apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
+      profileVersion: pulumi.Input.fromValue(map['profileVersion'] as String),
     );
   }
 }
-

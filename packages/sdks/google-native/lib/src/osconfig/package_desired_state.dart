@@ -5,16 +5,15 @@ enum PackageDesiredState {
   updated("UPDATED"),
   removed("REMOVED");
 
-  const PackageDesiredState(this.value);
-  final String value;
+  const PackageDesiredState(this.wireValue);
+  final String wireValue;
 
   static PackageDesiredState fromValue(String value) {
     for (final item in PackageDesiredState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageDesiredState value: $value');
   }
 }
-

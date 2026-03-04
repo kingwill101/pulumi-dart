@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThirdPartyManagementSettings {
   /// License Cost.
   final pulumi.Input<double> licenseCost;
+
   /// Support Cost.
   final pulumi.Input<double> supportCost;
 
@@ -26,9 +27,8 @@ class ThirdPartyManagementSettings {
 
   factory ThirdPartyManagementSettings.fromMap(Map<String, dynamic> map) {
     return ThirdPartyManagementSettings(
-      licenseCost: (map['licenseCost'] as double).input(),
-      supportCost: (map['supportCost'] as double).input(),
+      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
+      supportCost: pulumi.Input.fromValue(map['supportCost'] as double),
     );
   }
 }
-

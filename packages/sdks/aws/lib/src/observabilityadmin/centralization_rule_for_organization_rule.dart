@@ -6,7 +6,9 @@ import 'centralization_rule_for_organization_rule_source.dart';
 
 class CentralizationRuleForOrganizationRule {
   /// Configuration block for the destination where logs will be centralized. See `destination` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleDestination> destination;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestination>
+  destination;
+
   /// Configuration block for the source of logs to be centralized. See `source` below.
   final pulumi.Input<CentralizationRuleForOrganizationRuleSource> source;
 
@@ -20,16 +22,33 @@ class CentralizationRuleForOrganizationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': pulumi.Input.mapInputValue<CentralizationRuleForOrganizationRuleDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
-      'source': pulumi.Input.mapInputValue<CentralizationRuleForOrganizationRuleSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            CentralizationRuleForOrganizationRuleDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            CentralizationRuleForOrganizationRuleSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory CentralizationRuleForOrganizationRule.fromMap(Map<String, dynamic> map) {
+  factory CentralizationRuleForOrganizationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CentralizationRuleForOrganizationRule(
-      destination: (CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      source: (CentralizationRuleForOrganizationRuleSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      destination: pulumi.Input.fromValue(
+        CentralizationRuleForOrganizationRuleDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      source: pulumi.Input.fromValue(
+        CentralizationRuleForOrganizationRuleSource.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

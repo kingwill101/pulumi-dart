@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppSiteConfigApplicationStack {
   /// The version of .Net to use.
   final pulumi.Input<String> dotnetVersion;
+
   /// The version of Java to use.
   final pulumi.Input<String> javaVersion;
+
   /// The version of Node to use.
   final pulumi.Input<String> nodeVersion;
+
   /// The version of PowerShell Core to use.
   final pulumi.Input<String> powershellCoreVersion;
+
   /// Is the Windows Function App using a custom runtime?.
   final pulumi.Input<bool> useCustomRuntime;
   final pulumi.Input<bool> useDotnetIsolatedRuntime;
@@ -42,15 +46,20 @@ class GetWindowsFunctionAppSiteConfigApplicationStack {
     };
   }
 
-  factory GetWindowsFunctionAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
+  factory GetWindowsFunctionAppSiteConfigApplicationStack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWindowsFunctionAppSiteConfigApplicationStack(
-      dotnetVersion: (map['dotnetVersion'] as String).input(),
-      javaVersion: (map['javaVersion'] as String).input(),
-      nodeVersion: (map['nodeVersion'] as String).input(),
-      powershellCoreVersion: (map['powershellCoreVersion'] as String).input(),
-      useCustomRuntime: (map['useCustomRuntime'] as bool).input(),
-      useDotnetIsolatedRuntime: (map['useDotnetIsolatedRuntime'] as bool).input(),
+      dotnetVersion: pulumi.Input.fromValue(map['dotnetVersion'] as String),
+      javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
+      nodeVersion: pulumi.Input.fromValue(map['nodeVersion'] as String),
+      powershellCoreVersion: pulumi.Input.fromValue(
+        map['powershellCoreVersion'] as String,
+      ),
+      useCustomRuntime: pulumi.Input.fromValue(map['useCustomRuntime'] as bool),
+      useDotnetIsolatedRuntime: pulumi.Input.fromValue(
+        map['useDotnetIsolatedRuntime'] as bool,
+      ),
     );
   }
 }
-

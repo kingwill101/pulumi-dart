@@ -27,9 +27,10 @@ class GetAuthorizedOrgsDescArgs {
 
   factory GetAuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedOrgsDescArgs(
-      accessPolicyId: (map['accessPolicyId'] as String).input(),
-      authorizedOrgsDescId: (map['authorizedOrgsDescId'] as String).input(),
+      accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
+      authorizedOrgsDescId: pulumi.Input.fromValue(
+        map['authorizedOrgsDescId'] as String,
+      ),
     );
   }
 }
-

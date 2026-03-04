@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionArgs {
   /// The ID of the API Management Service in which this Subscription exists.
   final pulumi.Input<String> apiManagementId;
+
   /// The Identifier for the API Management Subscription.
   final pulumi.Input<String> subscriptionId;
 
@@ -29,9 +30,8 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      apiManagementId: (map['apiManagementId'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

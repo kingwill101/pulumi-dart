@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVCenterArgs {
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the vCenter.
   final pulumi.Input<String> vcenterName;
 
   /// Creates a new [GetVCenterArgs].
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
-  GetVCenterArgs({
-    required this.resourceGroupName,
-    required this.vcenterName,
-  });
+  GetVCenterArgs({required this.resourceGroupName, required this.vcenterName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetVCenterArgs {
 
   factory GetVCenterArgs.fromMap(Map<String, dynamic> map) {
     return GetVCenterArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vcenterName: (map['vcenterName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vcenterName: pulumi.Input.fromValue(map['vcenterName'] as String),
     );
   }
 }
-

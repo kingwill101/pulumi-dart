@@ -1,5 +1,3 @@
-library module_bedrock;
-
 export 'bedrock/agent_agent.dart';
 export 'bedrock/agent_agent_action_group.dart';
 export 'bedrock/agent_agent_action_group_action_group_executor.dart';

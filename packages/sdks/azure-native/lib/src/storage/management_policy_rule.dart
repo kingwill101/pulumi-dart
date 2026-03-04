@@ -7,10 +7,13 @@ import 'management_policy_definition.dart';
 class ManagementPolicyRule {
   /// An object that defines the Lifecycle rule.
   final pulumi.Input<ManagementPolicyDefinition> definition;
+
   /// Rule is enabled if set to true.
   final pulumi.Input<bool>? enabled;
+
   /// A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
   final pulumi.Input<String> name;
+
   /// The valid value is Lifecycle
   final pulumi.Input<String> type;
 
@@ -28,7 +31,11 @@ class ManagementPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition': pulumi.Input.mapInputValue<ManagementPolicyDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          pulumi.Input.mapInputValue<
+            ManagementPolicyDefinition,
+            Map<String, dynamic>
+          >(definition, (value) => value.toMap()),
       'enabled': ?enabled,
       'name': name,
       'type': type,
@@ -37,11 +44,18 @@ class ManagementPolicyRule {
 
   factory ManagementPolicyRule.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRule(
-      definition: (ManagementPolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      definition: pulumi.Input.fromValue(
+        ManagementPolicyDefinition.fromMap(
+          (map['definition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

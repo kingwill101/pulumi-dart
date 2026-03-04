@@ -7,8 +7,10 @@ import 'nsdartifact_profile_response.dart';
 class ArmResourceDefinitionResourceElementTemplateResponse {
   /// Artifact profile properties.
   final pulumi.Input<NSDArtifactProfileResponse>? artifactProfile;
+
   /// Name and value pairs that define the parameter values. It can be  a well formed escaped JSON string.
   final pulumi.Input<String>? parameterValues;
+
   /// The template type.
   final pulumi.Input<String>? templateType;
 
@@ -24,18 +26,39 @@ class ArmResourceDefinitionResourceElementTemplateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<NSDArtifactProfileResponse, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
+      'artifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            NSDArtifactProfileResponse,
+            Map<String, dynamic>
+          >(artifactProfile, (value) => value.toMap()),
       'parameterValues': ?parameterValues,
       'templateType': ?templateType,
     };
   }
 
-  factory ArmResourceDefinitionResourceElementTemplateResponse.fromMap(Map<String, dynamic> map) {
+  factory ArmResourceDefinitionResourceElementTemplateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ArmResourceDefinitionResourceElementTemplateResponse(
-      artifactProfile: map['artifactProfile'] == null ? null : (NSDArtifactProfileResponse.fromMap((map['artifactProfile']! as Map).cast<String, dynamic>())).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
-      templateType: map['templateType'] == null ? null : (map['templateType']! as String).input(),
+      artifactProfile: (() {
+        final guardedValue = map['artifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NSDArtifactProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      parameterValues: (() {
+        final guardedValue = map['parameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateType: (() {
+        final guardedValue = map['templateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsDiskAttachmentArgs {
   /// Whether to mount as a system disk. Default to: `false`.
   final pulumi.Input<bool>? bootable;
+
   /// Indicates whether the disk is released together with the instance. Default to: `false`.
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// ID of the Disk to be attached.
   final pulumi.Input<String> diskId;
+
   /// ID of the Instance to attach to.
   final pulumi.Input<String> instanceId;
+
   /// The name of key pair
   final pulumi.Input<String>? keyPairName;
+
   /// When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
   final pulumi.Input<String>? password;
 
@@ -49,13 +54,28 @@ class EcsDiskAttachmentArgs {
 
   factory EcsDiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EcsDiskAttachmentArgs(
-      bootable: map['bootable'] == null ? null : (map['bootable']! as bool).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      diskId: (map['diskId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
+      bootable: (() {
+        final guardedValue = map['bootable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

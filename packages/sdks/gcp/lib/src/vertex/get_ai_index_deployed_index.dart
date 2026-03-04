@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiIndexDeployedIndex {
   /// The ID of the DeployedIndex in the above IndexEndpoint.
   final pulumi.Input<String> deployedIndexId;
+
   /// A resource name of the IndexEndpoint.
   final pulumi.Input<String> indexEndpoint;
 
@@ -25,9 +26,8 @@ class GetAiIndexDeployedIndex {
 
   factory GetAiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
     return GetAiIndexDeployedIndex(
-      deployedIndexId: (map['deployedIndexId'] as String).input(),
-      indexEndpoint: (map['indexEndpoint'] as String).input(),
+      deployedIndexId: pulumi.Input.fromValue(map['deployedIndexId'] as String),
+      indexEndpoint: pulumi.Input.fromValue(map['indexEndpoint'] as String),
     );
   }
 }
-

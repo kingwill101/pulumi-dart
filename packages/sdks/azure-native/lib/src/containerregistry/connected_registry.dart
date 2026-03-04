@@ -5,7 +5,6 @@ import 'garbage_collection_properties_response.dart';
 import 'logging_properties_response.dart';
 import 'login_server_properties_response.dart';
 import 'parent_properties_response.dart';
-import 'status_detail_properties_response.dart';
 import 'system_data_response.dart';
 
 /// An object that represents a connected registry for a container registry.
@@ -257,36 +256,53 @@ import 'system_data_response.dart';
 class ConnectedRegistry extends pulumi.CustomResource {
   /// The activation properties of the connected registry.
   late final pulumi.Output<ActivationPropertiesResponse> activation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The list of the ACR token resource IDs used to authenticate clients to the connected registry.
   late final pulumi.Output<List<String>?> clientTokenIds;
+
   /// The current connection state of the connected registry.
   late final pulumi.Output<String> connectionState;
+
   /// The garbage collection properties of the connected registry.
-  late final pulumi.Output<GarbageCollectionPropertiesResponse?> garbageCollection;
+  late final pulumi.Output<GarbageCollectionPropertiesResponse?>
+  garbageCollection;
+
   /// The last activity time of the connected registry.
   late final pulumi.Output<String> lastActivityTime;
+
   /// The logging properties of the connected registry.
   late final pulumi.Output<LoggingPropertiesResponse?> logging;
+
   /// The login server properties of the connected registry.
   late final pulumi.Output<LoginServerPropertiesResponse?> loginServer;
+
   /// The mode of the connected registry resource that indicates the permissions of the registry.
   late final pulumi.Output<String> mode;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The list of notifications subscription information for the connected registry.
   late final pulumi.Output<List<String>?> notificationsList;
+
   /// The parent of the connected registry.
   late final pulumi.Output<ParentPropertiesResponse> parent;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The list of current statuses of the connected registry.
-  late final pulumi.Output<List<StatusDetailPropertiesResponse>> statusDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> statusDetails;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The current version of ACR runtime on the connected registry.
   late final pulumi.Output<String> version;
 
@@ -299,27 +315,29 @@ class ConnectedRegistry extends pulumi.CustomResource {
     ConnectedRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:ConnectedRegistry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activation = registerOutput<ActivationPropertiesResponse>('activation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
-    this.connectionState = registerOutput<String>('connectionState');
-    this.garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>('garbageCollection');
-    this.lastActivityTime = registerOutput<String>('lastActivityTime');
-    this.logging = registerOutput<LoggingPropertiesResponse?>('logging');
-    this.loginServer = registerOutput<LoginServerPropertiesResponse?>('loginServer');
-    this.mode = registerOutput<String>('mode');
+         'azure-native:containerregistry:ConnectedRegistry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activation = registerOutput<ActivationPropertiesResponse>('activation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    connectionState = registerOutput<String>('connectionState');
+    garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>(
+      'garbageCollection',
+    );
+    lastActivityTime = registerOutput<String>('lastActivityTime');
+    logging = registerOutput<LoggingPropertiesResponse?>('logging');
+    loginServer = registerOutput<LoginServerPropertiesResponse?>('loginServer');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.notificationsList = registerOutput<List<String>?>('notificationsList');
-    this.parent = registerOutput<ParentPropertiesResponse>('parent');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statusDetails = registerOutput<List<StatusDetailPropertiesResponse>>('statusDetails');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    notificationsList = registerOutput<List<String>?>('notificationsList');
+    parent = registerOutput<ParentPropertiesResponse>('parent');
+    provisioningState = registerOutput<String>('provisioningState');
+    statusDetails = registerOutput<List<Map<String, dynamic>>>('statusDetails');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

@@ -4,16 +4,15 @@ enum MutualTlsMode {
   permissive("PERMISSIVE"),
   strict("STRICT");
 
-  const MutualTlsMode(this.value);
-  final String value;
+  const MutualTlsMode(this.wireValue);
+  final String wireValue;
 
   static MutualTlsMode fromValue(String value) {
     for (final item in MutualTlsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MutualTlsMode value: $value');
   }
 }
-

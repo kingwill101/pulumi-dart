@@ -10,9 +10,11 @@ import 'security_group_vpc_association_timeouts.dart';
 class SecurityGroupVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
   final pulumi.Input<SecurityGroupVpcAssociationTimeouts>? timeouts;
+
   /// The ID of the VPC to make the association with.
   final pulumi.Input<String> vpcId;
 
@@ -32,18 +34,33 @@ class SecurityGroupVpcAssociationArgs {
     return <String, dynamic>{
       'region': ?region,
       'securityGroupId': securityGroupId,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<SecurityGroupVpcAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityGroupVpcAssociationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': vpcId,
     };
   }
 
   factory SecurityGroupVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : ((SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityGroupVpcAssociationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

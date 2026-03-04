@@ -4,16 +4,15 @@ enum TaskGroupSchedulingPolicy {
   asSoonAsPossible("AS_SOON_AS_POSSIBLE"),
   inOrder("IN_ORDER");
 
-  const TaskGroupSchedulingPolicy(this.value);
-  final String value;
+  const TaskGroupSchedulingPolicy(this.wireValue);
+  final String wireValue;
 
   static TaskGroupSchedulingPolicy fromValue(String value) {
     for (final item in TaskGroupSchedulingPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TaskGroupSchedulingPolicy value: $value');
   }
 }
-

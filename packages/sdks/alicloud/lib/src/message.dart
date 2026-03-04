@@ -1,5 +1,3 @@
-library module_message;
-
 export 'message/functions.dart';
 export 'message/get_service_queues_args.dart';
 export 'message/get_service_queues_queue.dart';

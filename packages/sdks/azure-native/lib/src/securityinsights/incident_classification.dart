@@ -5,16 +5,15 @@ enum IncidentClassification {
   valueBenignPositive("BenignPositive"),
   valueFalsePositive("FalsePositive");
 
-  const IncidentClassification(this.value);
-  final String value;
+  const IncidentClassification(this.wireValue);
+  final String wireValue;
 
   static IncidentClassification fromValue(String value) {
     for (final item in IncidentClassification.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentClassification value: $value');
   }
 }
-

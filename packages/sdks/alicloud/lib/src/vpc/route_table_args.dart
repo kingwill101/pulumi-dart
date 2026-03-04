@@ -11,16 +11,22 @@ class RouteTableArgs {
   /// - `VSwitch`: switch.
   /// - `Gateway`:IPv4 Gateway.
   final pulumi.Input<String>? associateType;
+
   /// Description of the routing table.
   final pulumi.Input<String>? description;
+
   /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
   final pulumi.Input<String>? name;
+
   /// Route Table Receive Propagate Route State
   final pulumi.Input<bool>? routePropagationEnable;
+
   /// The name of the routing table.
   final pulumi.Input<String>? routeTableName;
+
   /// The tag
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of VPC.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -58,14 +64,39 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      associateType: map['associateType'] == null ? null : (map['associateType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable']! as bool).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      associateType: (() {
+        final guardedValue = map['associateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routePropagationEnable: (() {
+        final guardedValue = map['routePropagationEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      routeTableName: (() {
+        final guardedValue = map['routeTableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

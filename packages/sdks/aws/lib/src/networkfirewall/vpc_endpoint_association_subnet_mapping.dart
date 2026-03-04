@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointAssociationSubnetMapping {
   /// The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
   final pulumi.Input<String>? ipAddressType;
+
   /// The unique identifier for the subnet.
   final pulumi.Input<String> subnetId;
 
@@ -23,11 +24,16 @@ class VpcEndpointAssociationSubnetMapping {
     };
   }
 
-  factory VpcEndpointAssociationSubnetMapping.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointAssociationSubnetMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointAssociationSubnetMapping(
-      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

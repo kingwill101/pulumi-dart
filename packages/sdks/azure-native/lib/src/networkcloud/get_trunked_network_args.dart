@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrunkedNetworkArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the trunked network.
   final pulumi.Input<String> trunkedNetworkName;
 
@@ -29,9 +30,12 @@ class GetTrunkedNetworkArgs {
 
   factory GetTrunkedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetTrunkedNetworkArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trunkedNetworkName: (map['trunkedNetworkName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      trunkedNetworkName: pulumi.Input.fromValue(
+        map['trunkedNetworkName'] as String,
+      ),
     );
   }
 }
-

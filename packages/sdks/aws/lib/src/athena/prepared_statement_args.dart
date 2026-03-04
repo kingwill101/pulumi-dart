@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreparedStatementArgs {
   /// Brief explanation of prepared statement. Maximum length of 1024.
   final pulumi.Input<String>? description;
+
   /// The name of the prepared statement. Maximum length of 256.
   final pulumi.Input<String>? name;
+
   /// The query string for the prepared statement.
   final pulumi.Input<String> queryStatement;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the workgroup to which the prepared statement belongs.
   final pulumi.Input<String> workgroup;
 
@@ -44,12 +48,23 @@ class PreparedStatementArgs {
 
   factory PreparedStatementArgs.fromMap(Map<String, dynamic> map) {
     return PreparedStatementArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      queryStatement: (map['queryStatement'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      workgroup: (map['workgroup'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryStatement: pulumi.Input.fromValue(map['queryStatement'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workgroup: pulumi.Input.fromValue(map['workgroup'] as String),
     );
   }
 }
-

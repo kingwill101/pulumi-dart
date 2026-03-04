@@ -3,16 +3,15 @@ enum SchedulingStrategy {
   dAEMON("DAEMON"),
   rEPLICA("REPLICA");
 
-  const SchedulingStrategy(this.value);
-  final String value;
+  const SchedulingStrategy(this.wireValue);
+  final String wireValue;
 
   static SchedulingStrategy fromValue(String value) {
     for (final item in SchedulingStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchedulingStrategy value: $value');
   }
 }
-

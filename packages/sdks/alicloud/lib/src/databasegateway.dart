@@ -1,5 +1,3 @@
-library module_databasegateway;
-
 export 'databasegateway/functions.dart';
 export 'databasegateway/gateway.dart';
 export 'databasegateway/gateway_args.dart';

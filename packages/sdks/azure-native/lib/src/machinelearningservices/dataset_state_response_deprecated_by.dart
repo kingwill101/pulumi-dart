@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetStateResponseDeprecatedBy {
   /// Unique Dataset identifier.
   final pulumi.Input<String> datasetId;
+
   /// Definition Version
   final pulumi.Input<String>? definitionVersion;
 
@@ -26,9 +27,12 @@ class DatasetStateResponseDeprecatedBy {
 
   factory DatasetStateResponseDeprecatedBy.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponseDeprecatedBy(
-      datasetId: (map['datasetId'] as String).input(),
-      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion']! as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      definitionVersion: (() {
+        final guardedValue = map['definitionVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

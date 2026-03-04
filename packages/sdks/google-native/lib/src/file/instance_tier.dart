@@ -10,16 +10,15 @@ enum InstanceTier {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const InstanceTier(this.value);
-  final String value;
+  const InstanceTier(this.wireValue);
+  final String wireValue;
 
   static InstanceTier fromValue(String value) {
     for (final item in InstanceTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceTier value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_containeranalysis;
-
 export 'containeranalysis/functions.dart';
 export 'containeranalysis/get_note_iam_policy_args.dart';
 export 'containeranalysis/get_note_iam_policy_result.dart';

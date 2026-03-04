@@ -33,13 +33,20 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
     };
   }
 
-  factory GetMembershipRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMembershipRbacRoleBindingGkehubV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMembershipRbacRoleBindingGkehubV1betaArgs(
-      location: (map['location'] as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rbacrolebindingId: pulumi.Input.fromValue(
+        map['rbacrolebindingId'] as String,
+      ),
     );
   }
 }
-

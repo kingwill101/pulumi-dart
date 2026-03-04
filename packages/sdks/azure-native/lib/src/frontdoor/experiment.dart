@@ -196,26 +196,37 @@ import 'experiment_args.dart';
 class Experiment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of the details or intents of the Experiment
   late final pulumi.Output<String?> description;
+
   /// The state of the Experiment
   late final pulumi.Output<String?> enabledState;
+
   /// The endpoint A of an experiment
   late final pulumi.Output<EndpointResponse?> endpointA;
+
   /// The endpoint B of an experiment
   late final pulumi.Output<EndpointResponse?> endpointB;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource status.
   late final pulumi.Output<String> resourceState;
+
   /// The uri to the Script used in the Experiment
   late final pulumi.Output<String> scriptFileUri;
+
   /// The description of Experiment status from the server side
   late final pulumi.Output<String> status;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -228,22 +239,22 @@ class Experiment extends pulumi.CustomResource {
     ExperimentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:frontdoor:Experiment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.enabledState = registerOutput<String?>('enabledState');
-    this.endpointA = registerOutput<EndpointResponse?>('endpointA');
-    this.endpointB = registerOutput<EndpointResponse?>('endpointB');
-    this.location = registerOutput<String?>('location');
+         'azure-native:frontdoor:Experiment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    enabledState = registerOutput<String?>('enabledState');
+    endpointA = registerOutput<EndpointResponse?>('endpointA');
+    endpointB = registerOutput<EndpointResponse?>('endpointB');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.scriptFileUri = registerOutput<String>('scriptFileUri');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    resourceState = registerOutput<String>('resourceState');
+    scriptFileUri = registerOutput<String>('scriptFileUri');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

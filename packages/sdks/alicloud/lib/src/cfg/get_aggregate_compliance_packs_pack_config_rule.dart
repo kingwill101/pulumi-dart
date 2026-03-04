@@ -6,8 +6,13 @@ import 'get_aggregate_compliance_packs_pack_config_rule_config_rule_parameter.da
 class GetAggregateCompliancePacksPackConfigRule {
   /// The ID of the rule.
   final pulumi.Input<String> configRuleId;
+
   /// A list of parameter rules.
-  final pulumi.Input<List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter>> configRuleParameters;
+  final pulumi.Input<
+    List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter>
+  >
+  configRuleParameters;
+
   /// Managed Rule Identifier.
   final pulumi.Input<String> managedRuleIdentifier;
 
@@ -24,17 +29,41 @@ class GetAggregateCompliancePacksPackConfigRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configRuleId': configRuleId,
-      'configRuleParameters': pulumi.Input.mapInputValue<List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter>, List<Map<String, dynamic>>>(configRuleParameters, (value) => pulumi.Input.encodeList<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configRuleParameters':
+          pulumi.Input.mapInputValue<
+            List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter>,
+            List<Map<String, dynamic>>
+          >(
+            configRuleParameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'managedRuleIdentifier': managedRuleIdentifier,
     };
   }
 
-  factory GetAggregateCompliancePacksPackConfigRule.fromMap(Map<String, dynamic> map) {
+  factory GetAggregateCompliancePacksPackConfigRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAggregateCompliancePacksPackConfigRule(
-      configRuleId: (map['configRuleId'] as String).input(),
-      configRuleParameters: (pulumi.Input.decodeList<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter>(map['configRuleParameters'], (value) => GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedRuleIdentifier: (map['managedRuleIdentifier'] as String).input(),
+      configRuleId: pulumi.Input.fromValue(map['configRuleId'] as String),
+      configRuleParameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter
+        >(
+          map['configRuleParameters']!,
+          (value) =>
+              GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      managedRuleIdentifier: pulumi.Input.fromValue(
+        map['managedRuleIdentifier'] as String,
+      ),
     );
   }
 }
-

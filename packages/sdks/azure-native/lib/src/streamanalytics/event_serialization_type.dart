@@ -5,16 +5,15 @@ enum EventSerializationType {
   valueJson("Json"),
   valueParquet("Parquet");
 
-  const EventSerializationType(this.value);
-  final String value;
+  const EventSerializationType(this.wireValue);
+  final String wireValue;
 
   static EventSerializationType fromValue(String value) {
     for (final item in EventSerializationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventSerializationType value: $value');
   }
 }
-

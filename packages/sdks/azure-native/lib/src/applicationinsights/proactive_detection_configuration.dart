@@ -243,12 +243,19 @@ import 'proactive_detection_configuration_args.dart';
 class ProactiveDetectionConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Azure resource name
   late final pulumi.Output<String?> name;
+
   /// Properties that define a ProactiveDetection configuration.
-  late final pulumi.Output<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse> properties;
+  late final pulumi.Output<
+    ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse
+  >
+  properties;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -261,15 +268,18 @@ class ProactiveDetectionConfiguration extends pulumi.CustomResource {
     ProactiveDetectionConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:applicationinsights:ProactiveDetectionConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:applicationinsights:ProactiveDetectionConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    this.properties = registerOutput<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties =
+        registerOutput<
+          ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse
+        >('properties');
+    type = registerOutput<String>('type');
   }
 }

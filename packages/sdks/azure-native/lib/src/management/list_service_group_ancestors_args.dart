@@ -12,20 +12,17 @@ class ListServiceGroupAncestorsArgs {
 
   /// Creates a new [ListServiceGroupAncestorsArgs].
   /// [serviceGroupName] ServiceGroup Name.
-  ListServiceGroupAncestorsArgs({
-    required this.serviceGroupName,
-  });
+  ListServiceGroupAncestorsArgs({required this.serviceGroupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceGroupName': serviceGroupName,
-    };
+    return <String, dynamic>{'serviceGroupName': serviceGroupName};
   }
 
   factory ListServiceGroupAncestorsArgs.fromMap(Map<String, dynamic> map) {
     return ListServiceGroupAncestorsArgs(
-      serviceGroupName: (map['serviceGroupName'] as String).input(),
+      serviceGroupName: pulumi.Input.fromValue(
+        map['serviceGroupName'] as String,
+      ),
     );
   }
 }
-

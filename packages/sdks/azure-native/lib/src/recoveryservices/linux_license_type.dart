@@ -4,16 +4,15 @@ enum LinuxLicenseType {
   valueNoLicenseType("NoLicenseType"),
   valueLinuxServer("LinuxServer");
 
-  const LinuxLicenseType(this.value);
-  final String value;
+  const LinuxLicenseType(this.wireValue);
+  final String wireValue;
 
   static LinuxLicenseType fromValue(String value) {
     for (final item in LinuxLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinuxLicenseType value: $value');
   }
 }
-

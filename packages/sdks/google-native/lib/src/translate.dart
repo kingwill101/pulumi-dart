@@ -1,5 +1,3 @@
-library module_translate;
-
 export 'translate/dataset.dart';
 export 'translate/dataset_args.dart';
 export 'translate/functions.dart';

@@ -12,20 +12,19 @@ class GetProjectArgs {
 
   /// Creates a new [GetProjectArgs].
   /// [projectId] The project ID. If it is not provided, the provider project is used.
-  GetProjectArgs({
-    this.projectId,
-  });
+  GetProjectArgs({this.projectId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'projectId': ?projectId,
-    };
+    return <String, dynamic>{'projectId': ?projectId};
   }
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

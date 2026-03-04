@@ -7,20 +7,15 @@ class BillingGroupMetadata {
 
   /// Creates a new [BillingGroupMetadata].
   /// [creationDate] Required.
-  BillingGroupMetadata({
-    required this.creationDate,
-  });
+  BillingGroupMetadata({required this.creationDate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'creationDate': creationDate,
-    };
+    return <String, dynamic>{'creationDate': creationDate};
   }
 
   factory BillingGroupMetadata.fromMap(Map<String, dynamic> map) {
     return BillingGroupMetadata(
-      creationDate: (map['creationDate'] as String).input(),
+      creationDate: pulumi.Input.fromValue(map['creationDate'] as String),
     );
   }
 }
-

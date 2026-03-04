@@ -1,5 +1,3 @@
-library module_appservice;
-
 export 'appservice/active_slot.dart';
 export 'appservice/active_slot_args.dart';
 export 'appservice/active_slot_state.dart';

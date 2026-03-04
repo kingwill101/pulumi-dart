@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentitySelectorResponse {
   /// The type of managed identity that is being selected.
   final pulumi.Input<String>? identityType;
+
   /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
@@ -25,9 +26,16 @@ class IdentitySelectorResponse {
 
   factory IdentitySelectorResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySelectorResponse(
-      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
+      identityType: (() {
+        final guardedValue = map['identityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityResourceId: (() {
+        final guardedValue = map['userAssignedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

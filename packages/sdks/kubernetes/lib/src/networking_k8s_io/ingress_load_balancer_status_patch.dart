@@ -10,20 +10,39 @@ class IngressLoadBalancerStatusPatch {
 
   /// Creates a new [IngressLoadBalancerStatusPatch].
   /// [ingress] ingress is a list containing ingress points for the load-balancer.
-  IngressLoadBalancerStatusPatch({
-    this.ingress,
-  });
+  IngressLoadBalancerStatusPatch({this.ingress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingress': ?pulumi.Input.mapOptionalInputValue<List<IngressLoadBalancerIngressPatch>, List<Map<String, dynamic>>>(ingress, (value) => pulumi.Input.encodeList<IngressLoadBalancerIngressPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ingress':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IngressLoadBalancerIngressPatch>,
+            List<Map<String, dynamic>>
+          >(
+            ingress,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IngressLoadBalancerIngressPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory IngressLoadBalancerStatusPatch.fromMap(Map<String, dynamic> map) {
     return IngressLoadBalancerStatusPatch(
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<IngressLoadBalancerIngressPatch>(map['ingress']!, (value) => IngressLoadBalancerIngressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: (() {
+        final guardedValue = map['ingress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IngressLoadBalancerIngressPatch>(
+            guardedValue,
+            (value) => IngressLoadBalancerIngressPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

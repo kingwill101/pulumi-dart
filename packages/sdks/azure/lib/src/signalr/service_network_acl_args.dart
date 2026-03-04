@@ -11,10 +11,13 @@ import 'service_network_acl_public_network.dart';
 class ServiceNetworkAclArgs {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
+
   /// A `private_endpoint` block as defined below.
   final pulumi.Input<List<ServiceNetworkAclPrivateEndpoint>>? privateEndpoints;
+
   /// A `public_network` block as defined below.
   final pulumi.Input<ServiceNetworkAclPublicNetwork> publicNetwork;
+
   /// The ID of the SignalR service. Changing this forces a new resource to be created.
   final pulumi.Input<String> signalrServiceId;
 
@@ -33,19 +36,50 @@ class ServiceNetworkAclArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultAction': defaultAction,
-      'privateEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ServiceNetworkAclPrivateEndpoint>, List<Map<String, dynamic>>>(privateEndpoints, (value) => pulumi.Input.encodeList<ServiceNetworkAclPrivateEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'publicNetwork': pulumi.Input.mapInputValue<ServiceNetworkAclPublicNetwork, Map<String, dynamic>>(publicNetwork, (value) => value.toMap()),
+      'privateEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceNetworkAclPrivateEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            privateEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceNetworkAclPrivateEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'publicNetwork':
+          pulumi.Input.mapInputValue<
+            ServiceNetworkAclPublicNetwork,
+            Map<String, dynamic>
+          >(publicNetwork, (value) => value.toMap()),
       'signalrServiceId': signalrServiceId,
     };
   }
 
   factory ServiceNetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclArgs(
-      defaultAction: (map['defaultAction'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(map['privateEndpoints']!, (value) => ServiceNetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetwork: (ServiceNetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
-      signalrServiceId: (map['signalrServiceId'] as String).input(),
+      defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
+      privateEndpoints: (() {
+        final guardedValue = map['privateEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(
+            guardedValue,
+            (value) => ServiceNetworkAclPrivateEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      publicNetwork: pulumi.Input.fromValue(
+        ServiceNetworkAclPublicNetwork.fromMap(
+          (map['publicNetwork']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      signalrServiceId: pulumi.Input.fromValue(
+        map['signalrServiceId'] as String,
+      ),
     );
   }
 }
-

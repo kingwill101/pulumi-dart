@@ -2,9 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'acl_entry_attachment_args.dart';
 import 'acl_entry_attachment_state.dart';
 
-/// > **NOTE:** Available since v1.162.0.
+/// &gt; **NOTE:** Available since v1.162.0.
 ///
-/// > **NOTE:** The maximum number of entries per acl is 300.
+/// &gt; **NOTE:** The maximum number of entries per acl is 300.
 ///
 /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
 ///
@@ -157,8 +157,10 @@ import 'acl_entry_attachment_state.dart';
 class AclEntryAttachment extends pulumi.CustomResource {
   /// The ID of the Acl.
   late final pulumi.Output<String> aclId;
+
   /// The comment of the entry.
   late final pulumi.Output<String?> comment;
+
   /// The CIDR blocks.
   late final pulumi.Output<String> entry;
 
@@ -171,14 +173,14 @@ class AclEntryAttachment extends pulumi.CustomResource {
     AclEntryAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.comment = registerOutput<String?>('comment');
-    this.entry = registerOutput<String>('entry');
+         'alicloud:slb/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    comment = registerOutput<String?>('comment');
+    entry = registerOutput<String>('entry');
   }
 
   /// Gets an existing [AclEntryAttachment] resource's state with the given [name] and [id].
@@ -199,13 +201,13 @@ class AclEntryAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.comment = registerOutput<String?>('comment');
-    this.entry = registerOutput<String>('entry');
+         'alicloud:slb/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    comment = registerOutput<String?>('comment');
+    entry = registerOutput<String>('entry');
   }
 }

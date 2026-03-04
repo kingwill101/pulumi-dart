@@ -1,5 +1,3 @@
-library module_bastionhost;
-
 export 'bastionhost/functions.dart';
 export 'bastionhost/get_host_accounts_account.dart';
 export 'bastionhost/get_host_accounts_args.dart';

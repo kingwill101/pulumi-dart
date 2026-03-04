@@ -5,15 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterNetworkProfile {
   /// IP address within the Kubernetes service address range used by cluster service discovery (kube-dns).
   final pulumi.Input<String> dnsServiceIp;
+
   /// IP address (in CIDR notation) used as the Docker bridge IP address on nodes.
   final pulumi.Input<String> dockerBridgeCidr;
   final pulumi.Input<String> loadBalancerSku;
+
   /// Network plugin used such as `azure` or `kubenet`.
   final pulumi.Input<String> networkPlugin;
+
   /// Network policy to be used with Azure CNI. e.g. `calico` or `azure`
   final pulumi.Input<String> networkPolicy;
+
   /// The CIDR used for pod IP addresses.
   final pulumi.Input<String> podCidr;
+
   /// Network range used by the Kubernetes service.
   final pulumi.Input<String> serviceCidr;
 
@@ -49,14 +54,15 @@ class GetKubernetesClusterNetworkProfile {
 
   factory GetKubernetesClusterNetworkProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNetworkProfile(
-      dnsServiceIp: (map['dnsServiceIp'] as String).input(),
-      dockerBridgeCidr: (map['dockerBridgeCidr'] as String).input(),
-      loadBalancerSku: (map['loadBalancerSku'] as String).input(),
-      networkPlugin: (map['networkPlugin'] as String).input(),
-      networkPolicy: (map['networkPolicy'] as String).input(),
-      podCidr: (map['podCidr'] as String).input(),
-      serviceCidr: (map['serviceCidr'] as String).input(),
+      dnsServiceIp: pulumi.Input.fromValue(map['dnsServiceIp'] as String),
+      dockerBridgeCidr: pulumi.Input.fromValue(
+        map['dockerBridgeCidr'] as String,
+      ),
+      loadBalancerSku: pulumi.Input.fromValue(map['loadBalancerSku'] as String),
+      networkPlugin: pulumi.Input.fromValue(map['networkPlugin'] as String),
+      networkPolicy: pulumi.Input.fromValue(map['networkPolicy'] as String),
+      podCidr: pulumi.Input.fromValue(map['podCidr'] as String),
+      serviceCidr: pulumi.Input.fromValue(map['serviceCidr'] as String),
     );
   }
 }
-

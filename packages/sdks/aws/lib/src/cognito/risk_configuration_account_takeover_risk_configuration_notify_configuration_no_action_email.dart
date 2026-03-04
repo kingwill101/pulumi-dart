@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail {
   /// The email HTML body.
   final pulumi.Input<String> htmlBody;
+
   /// The email subject.
   final pulumi.Input<String> subject;
+
   /// The email text body.
   final pulumi.Input<String> textBody;
 
@@ -28,12 +30,13 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActi
     };
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail.fromMap(Map<String, dynamic> map) {
+  factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail(
-      htmlBody: (map['htmlBody'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      textBody: (map['textBody'] as String).input(),
+      htmlBody: pulumi.Input.fromValue(map['htmlBody'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      textBody: pulumi.Input.fromValue(map['textBody'] as String),
     );
   }
 }
-

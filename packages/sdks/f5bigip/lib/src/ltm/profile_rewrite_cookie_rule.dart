@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileRewriteCookieRule {
   final pulumi.Input<String> clientDomain;
   final pulumi.Input<String> clientPath;
+
   /// Name of the cookie rewrite rule.
   final pulumi.Input<String> ruleName;
   final pulumi.Input<String> serverDomain;
@@ -36,12 +37,11 @@ class ProfileRewriteCookieRule {
 
   factory ProfileRewriteCookieRule.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteCookieRule(
-      clientDomain: (map['clientDomain'] as String).input(),
-      clientPath: (map['clientPath'] as String).input(),
-      ruleName: (map['ruleName'] as String).input(),
-      serverDomain: (map['serverDomain'] as String).input(),
-      serverPath: (map['serverPath'] as String).input(),
+      clientDomain: pulumi.Input.fromValue(map['clientDomain'] as String),
+      clientPath: pulumi.Input.fromValue(map['clientPath'] as String),
+      ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
+      serverDomain: pulumi.Input.fromValue(map['serverDomain'] as String),
+      serverPath: pulumi.Input.fromValue(map['serverPath'] as String),
     );
   }
 }
-

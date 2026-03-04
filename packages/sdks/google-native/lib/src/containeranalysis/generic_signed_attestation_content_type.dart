@@ -3,16 +3,17 @@ enum GenericSignedAttestationContentType {
   contentTypeUnspecified("CONTENT_TYPE_UNSPECIFIED"),
   simpleSigningJson("SIMPLE_SIGNING_JSON");
 
-  const GenericSignedAttestationContentType(this.value);
-  final String value;
+  const GenericSignedAttestationContentType(this.wireValue);
+  final String wireValue;
 
   static GenericSignedAttestationContentType fromValue(String value) {
     for (final item in GenericSignedAttestationContentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GenericSignedAttestationContentType value: $value');
+    throw ArgumentError(
+      'Unknown GenericSignedAttestationContentType value: $value',
+    );
   }
 }
-

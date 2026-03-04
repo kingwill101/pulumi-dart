@@ -1,5 +1,3 @@
-library module_domainregistration;
-
 export 'domainregistration/address.dart';
 export 'domainregistration/contact.dart';
 export 'domainregistration/dns_type.dart';

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_template_args.dart';
-import 'app_template_config_list.dart';
 import 'app_template_state.dart';
 
 /// Provides a Apsara Agile Live (IMP) App Template resource.
 ///
 /// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
 ///
-/// > **NOTE:** Available in v1.137.0+.
+/// &gt; **NOTE:** Available in v1.137.0+.
 ///
 /// ## Example Usage
 ///
@@ -149,16 +148,21 @@ import 'app_template_state.dart';
 class AppTemplate extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> appTemplateName;
+
   /// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
   late final pulumi.Output<List<String>> componentLists;
+
   /// Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
-  late final pulumi.Output<List<AppTemplateConfigList>> configLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> configLists;
+
   /// Integration mode. Valid values:
   /// * paasSDK: Integrated SDK.
   /// * standardRoom: Model Room.
   late final pulumi.Output<String?> integrationMode;
+
   /// Application Template scenario. Valid values: ["business", "classroom"].
   late final pulumi.Output<String?> scene;
+
   /// Application template usage status.
   late final pulumi.Output<String> status;
 
@@ -171,17 +175,17 @@ class AppTemplate extends pulumi.CustomResource {
     AppTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:imp/appTemplate:AppTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appTemplateName = registerOutput<String>('appTemplateName');
-    this.componentLists = registerOutput<List<String>>('componentLists');
-    this.configLists = registerOutput<List<AppTemplateConfigList>>('configLists');
-    this.integrationMode = registerOutput<String?>('integrationMode');
-    this.scene = registerOutput<String?>('scene');
-    this.status = registerOutput<String>('status');
+         'alicloud:imp/appTemplate:AppTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appTemplateName = registerOutput<String>('appTemplateName');
+    componentLists = registerOutput<List<String>>('componentLists');
+    configLists = registerOutput<List<Map<String, dynamic>>>('configLists');
+    integrationMode = registerOutput<String?>('integrationMode');
+    scene = registerOutput<String?>('scene');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AppTemplate] resource's state with the given [name] and [id].
@@ -202,16 +206,16 @@ class AppTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:imp/appTemplate:AppTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appTemplateName = registerOutput<String>('appTemplateName');
-    this.componentLists = registerOutput<List<String>>('componentLists');
-    this.configLists = registerOutput<List<AppTemplateConfigList>>('configLists');
-    this.integrationMode = registerOutput<String?>('integrationMode');
-    this.scene = registerOutput<String?>('scene');
-    this.status = registerOutput<String>('status');
+         'alicloud:imp/appTemplate:AppTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appTemplateName = registerOutput<String>('appTemplateName');
+    componentLists = registerOutput<List<String>>('componentLists');
+    configLists = registerOutput<List<Map<String, dynamic>>>('configLists');
+    integrationMode = registerOutput<String?>('integrationMode');
+    scene = registerOutput<String?>('scene');
+    status = registerOutput<String>('status');
   }
 }

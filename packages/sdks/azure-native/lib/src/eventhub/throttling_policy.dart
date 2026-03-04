@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThrottlingPolicy {
   /// Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
   final pulumi.Input<String> metricId;
+
   /// The Name of this policy
   final pulumi.Input<String> name;
+
   /// The Threshold limit above which the application group will be throttled.Rate limit is always per second.
   final pulumi.Input<double> rateLimitThreshold;
+
   /// Application Group Policy types
   /// Expected value is 'ThrottlingPolicy'.
   final pulumi.Input<String> type;
@@ -37,11 +40,12 @@ class ThrottlingPolicy {
 
   factory ThrottlingPolicy.fromMap(Map<String, dynamic> map) {
     return ThrottlingPolicy(
-      metricId: (map['metricId'] as String).input(),
-      name: (map['name'] as String).input(),
-      rateLimitThreshold: (map['rateLimitThreshold'] as double).input(),
-      type: (map['type'] as String).input(),
+      metricId: pulumi.Input.fromValue(map['metricId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      rateLimitThreshold: pulumi.Input.fromValue(
+        map['rateLimitThreshold'] as double,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

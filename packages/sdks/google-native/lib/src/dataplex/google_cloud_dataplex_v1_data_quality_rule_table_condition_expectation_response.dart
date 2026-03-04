@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+/// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) &gt;= 0
 class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse {
   /// Optional. The SQL expression.
   final pulumi.Input<String> sqlExpression;
@@ -14,15 +14,14 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sqlExpression': sqlExpression,
-    };
+    return <String, dynamic>{'sqlExpression': sqlExpression};
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse(
-      sqlExpression: (map['sqlExpression'] as String).input(),
+      sqlExpression: pulumi.Input.fromValue(map['sqlExpression'] as String),
     );
   }
 }
-

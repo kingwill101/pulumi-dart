@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelsArgs {
   /// Customization type to filter on. Valid values are `FINE_TUNING`.
   final pulumi.Input<String>? byCustomizationType;
+
   /// Inference type to filter on. Valid values are `ON_DEMAND` and `PROVISIONED`.
   final pulumi.Input<String>? byInferenceType;
+
   /// Output modality to filter on. Valid values are `TEXT`, `IMAGE`, and `EMBEDDING`.
   final pulumi.Input<String>? byOutputModality;
+
   /// Model provider to filter on.
   final pulumi.Input<String>? byProvider;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,12 +48,31 @@ class GetModelsArgs {
 
   factory GetModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetModelsArgs(
-      byCustomizationType: map['byCustomizationType'] == null ? null : ((map['byCustomizationType'] as String).input()).input(),
-      byInferenceType: map['byInferenceType'] == null ? null : ((map['byInferenceType'] as String).input()).input(),
-      byOutputModality: map['byOutputModality'] == null ? null : ((map['byOutputModality'] as String).input()).input(),
-      byProvider: map['byProvider'] == null ? null : ((map['byProvider'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      byCustomizationType: (() {
+        final guardedValue = map['byCustomizationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      byInferenceType: (() {
+        final guardedValue = map['byInferenceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      byOutputModality: (() {
+        final guardedValue = map['byOutputModality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      byProvider: (() {
+        final guardedValue = map['byProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

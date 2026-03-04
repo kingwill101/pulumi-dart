@@ -11,9 +11,11 @@ class GetAppConnectorArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -22,11 +24,7 @@ class GetAppConnectorArgs {
   /// [name] The name of the App Connector.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetAppConnectorArgs({
-    required this.name,
-    this.project,
-    this.region,
-  });
+  GetAppConnectorArgs({required this.name, this.project, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +36,17 @@ class GetAppConnectorArgs {
 
   factory GetAppConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

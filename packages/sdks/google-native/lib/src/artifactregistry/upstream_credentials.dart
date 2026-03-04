@@ -10,20 +10,29 @@ class UpstreamCredentials {
 
   /// Creates a new [UpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
-  UpstreamCredentials({
-    this.usernamePasswordCredentials,
-  });
+  UpstreamCredentials({this.usernamePasswordCredentials});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'usernamePasswordCredentials': ?pulumi.Input.mapOptionalInputValue<UsernamePasswordCredentials, Map<String, dynamic>>(usernamePasswordCredentials, (value) => value.toMap()),
+      'usernamePasswordCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            UsernamePasswordCredentials,
+            Map<String, dynamic>
+          >(usernamePasswordCredentials, (value) => value.toMap()),
     };
   }
 
   factory UpstreamCredentials.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentials(
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials']! as Map).cast<String, dynamic>())).input(),
+      usernamePasswordCredentials: (() {
+        final guardedValue = map['usernamePasswordCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UsernamePasswordCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

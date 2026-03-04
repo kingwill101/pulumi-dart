@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkConnectionMonitorTestConfigurationSuccessThreshold {
   /// The maximum percentage of failed checks permitted for a test to be successful.
   final pulumi.Input<int>? checksFailedPercent;
+
   /// The maximum round-trip time in milliseconds permitted for a test to be successful.
   final pulumi.Input<double>? roundTripTimeMs;
 
@@ -23,11 +24,20 @@ class NetworkConnectionMonitorTestConfigurationSuccessThreshold {
     };
   }
 
-  factory NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap(Map<String, dynamic> map) {
+  factory NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkConnectionMonitorTestConfigurationSuccessThreshold(
-      checksFailedPercent: map['checksFailedPercent'] == null ? null : (map['checksFailedPercent']! as int).input(),
-      roundTripTimeMs: map['roundTripTimeMs'] == null ? null : (map['roundTripTimeMs']! as double).input(),
+      checksFailedPercent: (() {
+        final guardedValue = map['checksFailedPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      roundTripTimeMs: (() {
+        final guardedValue = map['roundTripTimeMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

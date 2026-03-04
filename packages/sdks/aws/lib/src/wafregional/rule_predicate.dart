@@ -27,10 +27,9 @@ class RulePredicate {
 
   factory RulePredicate.fromMap(Map<String, dynamic> map) {
     return RulePredicate(
-      dataId: (map['dataId'] as String).input(),
-      negated: (map['negated'] as bool).input(),
-      type: (map['type'] as String).input(),
+      dataId: pulumi.Input.fromValue(map['dataId'] as String),
+      negated: pulumi.Input.fromValue(map['negated'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

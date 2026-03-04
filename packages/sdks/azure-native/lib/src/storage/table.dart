@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_args.dart';
-import 'table_signed_identifier_response.dart';
 
 /// Properties of the table, including Id, resource name, resource type.
 ///
@@ -355,12 +354,16 @@ import 'table_signed_identifier_response.dart';
 class Table extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of stored access policies specified on the table.
-  late final pulumi.Output<List<TableSignedIdentifierResponse>?> signedIdentifiers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> signedIdentifiers;
+
   /// Table name under the specified account
   late final pulumi.Output<String> tableName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -368,20 +371,19 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_storage_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:storage:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:storage:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.signedIdentifiers = registerOutput<List<TableSignedIdentifierResponse>?>('signedIdentifiers');
-    this.tableName = registerOutput<String>('tableName');
-    this.type = registerOutput<String>('type');
+    signedIdentifiers = registerOutput<List<Map<String, dynamic>>?>(
+      'signedIdentifiers',
+    );
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
   }
 }

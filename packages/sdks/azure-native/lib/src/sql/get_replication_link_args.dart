@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationLinkArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the replication link.
   final pulumi.Input<String> linkId;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -39,11 +42,12 @@ class GetReplicationLinkArgs {
 
   factory GetReplicationLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationLinkArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      linkId: (map['linkId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      linkId: pulumi.Input.fromValue(map['linkId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

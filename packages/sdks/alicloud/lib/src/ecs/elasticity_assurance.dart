@@ -8,7 +8,7 @@ import 'elasticity_assurance_state.dart';
 ///
 /// For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 ///
-/// > **NOTE:** Available since v1.196.0.
+/// &gt; **NOTE:** Available since v1.196.0.
 ///
 /// ## Example Usage
 ///
@@ -250,60 +250,81 @@ import 'elasticity_assurance_state.dart';
 class ElasticityAssurance extends pulumi.CustomResource {
   /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
   late final pulumi.Output<String> assuranceTimes;
+
   /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
   /// - true
   /// - false
   ///
   /// Default value: `false`.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
   /// - Default value when `PeriodUnit` is set to Month: 1.
   /// - Default value when `PeriodUnit` is set to Year: 12.
   ///
-  /// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+  /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
   late final pulumi.Output<int?> autoRenewPeriod;
+
   /// Unit of duration. Value range:
   /// - Month: Month
   /// - Year: Year
   ///
   /// Default value: Year
   late final pulumi.Output<String> autoRenewPeriodUnit;
+
   /// Description of flexible guarantee service.
   late final pulumi.Output<String?> description;
+
   /// The first ID of the resource
   late final pulumi.Output<String> elasticityAssuranceId;
+
   /// Flexible guarantee service failure time.
   late final pulumi.Output<String> endTime;
+
   /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
   late final pulumi.Output<int> instanceAmount;
+
   /// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
   late final pulumi.Output<String> instanceChargeType;
+
   /// Instance type. Currently, only one instance type is supported.
   late final pulumi.Output<String> instanceType;
+
   /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
   /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
   /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
   late final pulumi.Output<int?> period;
+
   /// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
   late final pulumi.Output<String?> periodUnit;
+
   /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
   late final pulumi.Output<String> privatePoolOptionsMatchCriteria;
+
   /// The name of the flexible protection service.
   late final pulumi.Output<String> privatePoolOptionsName;
+
   /// (Available since v1.261.0) The region ID of the elasticity assurance.
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Flexible guarantee service effective time.
   late final pulumi.Output<String> startTime;
+
   /// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
   late final pulumi.Output<String> startTimeType;
+
   /// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
   late final pulumi.Output<String> status;
+
   /// The tag key-value pair information bound by the elastic guarantee service.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// This parameter is not yet available.
   late final pulumi.Output<int> usedAssuranceTimes;
+
   /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
   late final pulumi.Output<List<String>> zoneIds;
 
@@ -316,33 +337,35 @@ class ElasticityAssurance extends pulumi.CustomResource {
     ElasticityAssuranceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/elasticityAssurance:ElasticityAssurance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assuranceTimes = registerOutput<String>('assuranceTimes');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
-    this.autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
-    this.description = registerOutput<String?>('description');
-    this.elasticityAssuranceId = registerOutput<String>('elasticityAssuranceId');
-    this.endTime = registerOutput<String>('endTime');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.privatePoolOptionsMatchCriteria = registerOutput<String>('privatePoolOptionsMatchCriteria');
-    this.privatePoolOptionsName = registerOutput<String>('privatePoolOptionsName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.startTime = registerOutput<String>('startTime');
-    this.startTimeType = registerOutput<String>('startTimeType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.usedAssuranceTimes = registerOutput<int>('usedAssuranceTimes');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:ecs/elasticityAssurance:ElasticityAssurance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assuranceTimes = registerOutput<String>('assuranceTimes');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
+    autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
+    description = registerOutput<String?>('description');
+    elasticityAssuranceId = registerOutput<String>('elasticityAssuranceId');
+    endTime = registerOutput<String>('endTime');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    instanceType = registerOutput<String>('instanceType');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    privatePoolOptionsMatchCriteria = registerOutput<String>(
+      'privatePoolOptionsMatchCriteria',
+    );
+    privatePoolOptionsName = registerOutput<String>('privatePoolOptionsName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    startTime = registerOutput<String>('startTime');
+    startTimeType = registerOutput<String>('startTimeType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    usedAssuranceTimes = registerOutput<int>('usedAssuranceTimes');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 
   /// Gets an existing [ElasticityAssurance] resource's state with the given [name] and [id].
@@ -363,32 +386,34 @@ class ElasticityAssurance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/elasticityAssurance:ElasticityAssurance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assuranceTimes = registerOutput<String>('assuranceTimes');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
-    this.autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
-    this.description = registerOutput<String?>('description');
-    this.elasticityAssuranceId = registerOutput<String>('elasticityAssuranceId');
-    this.endTime = registerOutput<String>('endTime');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.privatePoolOptionsMatchCriteria = registerOutput<String>('privatePoolOptionsMatchCriteria');
-    this.privatePoolOptionsName = registerOutput<String>('privatePoolOptionsName');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.startTime = registerOutput<String>('startTime');
-    this.startTimeType = registerOutput<String>('startTimeType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.usedAssuranceTimes = registerOutput<int>('usedAssuranceTimes');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:ecs/elasticityAssurance:ElasticityAssurance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assuranceTimes = registerOutput<String>('assuranceTimes');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
+    autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
+    description = registerOutput<String?>('description');
+    elasticityAssuranceId = registerOutput<String>('elasticityAssuranceId');
+    endTime = registerOutput<String>('endTime');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    instanceType = registerOutput<String>('instanceType');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    privatePoolOptionsMatchCriteria = registerOutput<String>(
+      'privatePoolOptionsMatchCriteria',
+    );
+    privatePoolOptionsName = registerOutput<String>('privatePoolOptionsName');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    startTime = registerOutput<String>('startTime');
+    startTimeType = registerOutput<String>('startTimeType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    usedAssuranceTimes = registerOutput<int>('usedAssuranceTimes');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 }

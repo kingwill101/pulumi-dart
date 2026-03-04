@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'share_args.dart';
-import 'share_export_location.dart';
 import 'share_state.dart';
 
 /// Use this resource to configure a share.
@@ -255,52 +254,69 @@ class Share extends pulumi.CustomResource {
   /// The map of metadata, assigned on the share, which has been
   /// explicitly and implicitly added.
   late final pulumi.Output<Map<String, String>> allMetadata;
+
   /// The share availability zone. Changing this creates a
   /// new share.
   late final pulumi.Output<String> availabilityZone;
+
   /// The human-readable description for the share.
   /// Changing this updates the description of the existing share.
   late final pulumi.Output<String?> description;
+
   /// A list of export locations. For example, when a share server
   /// has more than one network interface, it can have multiple export locations.
-  late final pulumi.Output<List<ShareExportLocation>> exportLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>> exportLocations;
+
   /// Indicates whether a share has replicas or not.
   late final pulumi.Output<bool> hasReplicas;
+
   /// The share host name.
   late final pulumi.Output<String> host;
+
   /// The level of visibility for the share. Set to true to make
   /// share public. Set to false to make it private. Default value is false. Changing this
   /// updates the existing share.
   late final pulumi.Output<bool?> isPublic;
+
   /// One or more metadata key and value pairs as a dictionary of
   /// strings.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the share. Changing this updates the name
   /// of the existing share.
   late final pulumi.Output<String> name;
+
   /// The owner of the Share.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Shared File System
   /// client. A Shared File System client is needed to create a share. Changing
   /// this creates a new share.
   late final pulumi.Output<String> region;
+
   /// The share replication type.
   late final pulumi.Output<String> replicationType;
+
   /// The UUID of a share network where the share server exists
   /// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
   /// the share_network_id value from the snapshot is used. Changing this creates a new share.
   late final pulumi.Output<String> shareNetworkId;
+
   /// The share protocol - can either be NFS, CIFS,
   /// CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
   late final pulumi.Output<String> shareProto;
+
   /// The UUID of the share server.
   late final pulumi.Output<String> shareServerId;
+
   /// The share type name. If you omit this parameter, the default
   /// share type is used.
   late final pulumi.Output<String> shareType;
+
   /// The share size, in GBs. The requested share size cannot be greater
   /// than the allowed GB quota. Changing this resizes the existing share.
   late final pulumi.Output<int> size;
+
   /// The UUID of the share's base snapshot. Changing this creates
   /// a new share.
   late final pulumi.Output<String?> snapshotId;
@@ -309,42 +325,37 @@ class Share extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_sharedfilesystem_share_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(
-    String name, {
-    ShareArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:sharedfilesystem/share:Share',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allMetadata = registerOutput<Map<String, String>>('allMetadata');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.description = registerOutput<String?>('description');
-    this.exportLocations = registerOutput<List<ShareExportLocation>>('exportLocations');
-    this.hasReplicas = registerOutput<bool>('hasReplicas');
-    this.host = registerOutput<String>('host');
-    this.isPublic = registerOutput<bool?>('isPublic');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:sharedfilesystem/share:Share',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allMetadata = registerOutput<Map<String, String>>('allMetadata');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    description = registerOutput<String?>('description');
+    exportLocations = registerOutput<List<Map<String, dynamic>>>(
+      'exportLocations',
+    );
+    hasReplicas = registerOutput<bool>('hasReplicas');
+    host = registerOutput<String>('host');
+    isPublic = registerOutput<bool?>('isPublic');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.replicationType = registerOutput<String>('replicationType');
-    this.shareNetworkId = registerOutput<String>('shareNetworkId');
-    this.shareProto = registerOutput<String>('shareProto');
-    this.shareServerId = registerOutput<String>('shareServerId');
-    this.shareType = registerOutput<String>('shareType');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String?>('snapshotId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    replicationType = registerOutput<String>('replicationType');
+    shareNetworkId = registerOutput<String>('shareNetworkId');
+    shareProto = registerOutput<String>('shareProto');
+    shareServerId = registerOutput<String>('shareServerId');
+    shareType = registerOutput<String>('shareType');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
   }
 
   /// Gets an existing [Share] resource's state with the given [name] and [id].
-  static Share get(
-    String name,
-    pulumi.Input<String> id, {
-    ShareState? state,
-  }) {
+  static Share get(String name, pulumi.Input<String> id, {ShareState? state}) {
     return Share._get(
       name,
       state: state?.toMap(),
@@ -357,28 +368,30 @@ class Share extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/share:Share',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allMetadata = registerOutput<Map<String, String>>('allMetadata');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.description = registerOutput<String?>('description');
-    this.exportLocations = registerOutput<List<ShareExportLocation>>('exportLocations');
-    this.hasReplicas = registerOutput<bool>('hasReplicas');
-    this.host = registerOutput<String>('host');
-    this.isPublic = registerOutput<bool?>('isPublic');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'openstack:sharedfilesystem/share:Share',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allMetadata = registerOutput<Map<String, String>>('allMetadata');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    description = registerOutput<String?>('description');
+    exportLocations = registerOutput<List<Map<String, dynamic>>>(
+      'exportLocations',
+    );
+    hasReplicas = registerOutput<bool>('hasReplicas');
+    host = registerOutput<String>('host');
+    isPublic = registerOutput<bool?>('isPublic');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.replicationType = registerOutput<String>('replicationType');
-    this.shareNetworkId = registerOutput<String>('shareNetworkId');
-    this.shareProto = registerOutput<String>('shareProto');
-    this.shareServerId = registerOutput<String>('shareServerId');
-    this.shareType = registerOutput<String>('shareType');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String?>('snapshotId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    replicationType = registerOutput<String>('replicationType');
+    shareNetworkId = registerOutput<String>('shareNetworkId');
+    shareProto = registerOutput<String>('shareProto');
+    shareServerId = registerOutput<String>('shareServerId');
+    shareType = registerOutput<String>('shareType');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
   }
 }

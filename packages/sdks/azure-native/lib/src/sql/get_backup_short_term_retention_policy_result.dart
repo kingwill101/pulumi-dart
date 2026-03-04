@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getBackupShortTermRetentionPolicy.
 class GetBackupShortTermRetentionPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
   final int? diffBackupIntervalInHours;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   final int? retentionDays;
+
   /// Resource type.
   final String type;
 
@@ -43,15 +47,24 @@ class GetBackupShortTermRetentionPolicyResult {
     };
   }
 
-  factory GetBackupShortTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
+  factory GetBackupShortTermRetentionPolicyResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackupShortTermRetentionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : map['diffBackupIntervalInHours']! as int,
+      diffBackupIntervalInHours: (() {
+        final guardedValue = map['diffBackupIntervalInHours'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
+      retentionDays: (() {
+        final guardedValue = map['retentionDays'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

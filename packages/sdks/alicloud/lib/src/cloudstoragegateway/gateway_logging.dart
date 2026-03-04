@@ -6,7 +6,7 @@ import 'gateway_logging_state.dart';
 ///
 /// For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaylogging).
 ///
-/// > **NOTE:** Available since v1.144.0.
+/// &gt; **NOTE:** Available since v1.144.0.
 ///
 /// ## Example Usage
 ///
@@ -594,10 +594,13 @@ import 'gateway_logging_state.dart';
 class GatewayLogging extends pulumi.CustomResource {
   /// The ID of the Gateway.
   late final pulumi.Output<String> gatewayId;
+
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogstore;
+
   /// The name of the Project.
   late final pulumi.Output<String> slsProject;
+
   /// The status of the resource. Valid values: `Enabled`, `Disable`.
   late final pulumi.Output<String> status;
 
@@ -610,15 +613,15 @@ class GatewayLogging extends pulumi.CustomResource {
     GatewayLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.slsLogstore = registerOutput<String>('slsLogstore');
-    this.slsProject = registerOutput<String>('slsProject');
-    this.status = registerOutput<String>('status');
+         'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayId = registerOutput<String>('gatewayId');
+    slsLogstore = registerOutput<String>('slsLogstore');
+    slsProject = registerOutput<String>('slsProject');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [GatewayLogging] resource's state with the given [name] and [id].
@@ -639,14 +642,14 @@ class GatewayLogging extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.slsLogstore = registerOutput<String>('slsLogstore');
-    this.slsProject = registerOutput<String>('slsProject');
-    this.status = registerOutput<String>('status');
+         'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayId = registerOutput<String>('gatewayId');
+    slsLogstore = registerOutput<String>('slsLogstore');
+    slsProject = registerOutput<String>('slsProject');
+    status = registerOutput<String>('status');
   }
 }

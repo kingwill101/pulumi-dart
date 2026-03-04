@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// ID of the instance.
   final pulumi.Input<String> id;
+
   /// The first ID of the resource
   final pulumi.Input<String> instanceId;
+
   /// The payment type of the resource.
   final pulumi.Input<String> paymentType;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -40,12 +44,11 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      status: (map['status'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

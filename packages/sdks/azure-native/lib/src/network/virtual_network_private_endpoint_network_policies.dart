@@ -5,16 +5,17 @@ enum VirtualNetworkPrivateEndpointNetworkPolicies {
   valueNetworkSecurityGroupEnabled("NetworkSecurityGroupEnabled"),
   valueRouteTableEnabled("RouteTableEnabled");
 
-  const VirtualNetworkPrivateEndpointNetworkPolicies(this.value);
-  final String value;
+  const VirtualNetworkPrivateEndpointNetworkPolicies(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkPrivateEndpointNetworkPolicies fromValue(String value) {
     for (final item in VirtualNetworkPrivateEndpointNetworkPolicies.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualNetworkPrivateEndpointNetworkPolicies value: $value');
+    throw ArgumentError(
+      'Unknown VirtualNetworkPrivateEndpointNetworkPolicies value: $value',
+    );
   }
 }
-

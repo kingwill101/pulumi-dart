@@ -11,16 +11,22 @@ import 'hybrid_monitor_sls_task_sls_process_config.dart';
 class HybridMonitorSlsTaskArgs {
   /// The label of the monitoring task. See `attach_labels` below.
   final pulumi.Input<List<HybridMonitorSlsTaskAttachLabel>>? attachLabels;
+
   /// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
   final pulumi.Input<int>? collectInterval;
+
   /// The type of the collection target, enter the name of the Logstore group.
   final pulumi.Input<String> collectTargetType;
+
   /// The description of the metric import task.
   final pulumi.Input<String>? description;
+
   /// The name of the namespace.
   final pulumi.Input<String> namespace;
+
   /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
   final pulumi.Input<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig;
+
   /// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
   final pulumi.Input<String> taskName;
 
@@ -44,26 +50,65 @@ class HybridMonitorSlsTaskArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachLabels': ?pulumi.Input.mapOptionalInputValue<List<HybridMonitorSlsTaskAttachLabel>, List<Map<String, dynamic>>>(attachLabels, (value) => pulumi.Input.encodeList<HybridMonitorSlsTaskAttachLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachLabels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HybridMonitorSlsTaskAttachLabel>,
+            List<Map<String, dynamic>>
+          >(
+            attachLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HybridMonitorSlsTaskAttachLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'collectInterval': ?collectInterval,
       'collectTargetType': collectTargetType,
       'description': ?description,
       'namespace': namespace,
-      'slsProcessConfig': pulumi.Input.mapInputValue<HybridMonitorSlsTaskSlsProcessConfig, Map<String, dynamic>>(slsProcessConfig, (value) => value.toMap()),
+      'slsProcessConfig':
+          pulumi.Input.mapInputValue<
+            HybridMonitorSlsTaskSlsProcessConfig,
+            Map<String, dynamic>
+          >(slsProcessConfig, (value) => value.toMap()),
       'taskName': taskName,
     };
   }
 
   factory HybridMonitorSlsTaskArgs.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskArgs(
-      attachLabels: map['attachLabels'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskAttachLabel>(map['attachLabels']!, (value) => HybridMonitorSlsTaskAttachLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      collectInterval: map['collectInterval'] == null ? null : (map['collectInterval']! as int).input(),
-      collectTargetType: (map['collectTargetType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      slsProcessConfig: (HybridMonitorSlsTaskSlsProcessConfig.fromMap((map['slsProcessConfig'] as Map).cast<String, dynamic>())).input(),
-      taskName: (map['taskName'] as String).input(),
+      attachLabels: (() {
+        final guardedValue = map['attachLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HybridMonitorSlsTaskAttachLabel>(
+            guardedValue,
+            (value) => HybridMonitorSlsTaskAttachLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      collectInterval: (() {
+        final guardedValue = map['collectInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      collectTargetType: pulumi.Input.fromValue(
+        map['collectTargetType'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      slsProcessConfig: pulumi.Input.fromValue(
+        HybridMonitorSlsTaskSlsProcessConfig.fromMap(
+          (map['slsProcessConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      taskName: pulumi.Input.fromValue(map['taskName'] as String),
     );
   }
 }
-

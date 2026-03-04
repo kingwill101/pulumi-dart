@@ -37,6 +37,7 @@ void main() {
     setUp(() {
       mockDeployment = MockDeploymentImpl();
       when(mockDeployment.stack).thenThrow(StateError('stack not set'));
+      when(mockDeployment.isDryRun).thenReturn(false);
       when(mockDeployment.registerResourceOperation(any)).thenAnswer((_) {});
       when(
         mockDeployment.readOrRegisterResource(
@@ -88,16 +89,34 @@ void main() {
       },
     );
 
-    test('missing output property resolves to known null default', () async {
-      final resource = _LateOutputResource('late');
-      final output = resource.createOutput<String?>('missing');
+    test(
+      'missing output property resolves to known null default outside preview',
+      () async {
+        final resource = _LateOutputResource('late');
+        final output = resource.createOutput<String?>('missing');
 
-      resource.resolveOutputs(Struct());
+        resource.resolveOutputs(Struct());
 
-      final data = await output.getData();
-      expect(data.isKnown, isTrue);
-      expect(data.value, isNull);
-    });
+        final data = await output.getData();
+        expect(data.isKnown, isTrue);
+        expect(data.value, isNull);
+      },
+    );
+
+    test(
+      'missing output property resolves to unknown during preview',
+      () async {
+        when(mockDeployment.isDryRun).thenReturn(true);
+        final resource = _LateOutputResource('late');
+        final output = resource.createOutput<String?>('missing');
+
+        resource.resolveOutputs(Struct());
+
+        final data = await output.getData();
+        expect(data.isKnown, isFalse);
+        expect(data.value, isNull);
+      },
+    );
   });
 
   group('resource serialization', () {

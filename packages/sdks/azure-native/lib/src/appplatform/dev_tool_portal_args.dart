@@ -10,10 +10,13 @@ import 'dev_tool_portal_properties.dart';
 class DevToolPortalArgs {
   /// The name of Dev Tool Portal.
   final pulumi.Input<String>? devToolPortalName;
+
   /// Dev Tool Portal properties payload
   final pulumi.Input<DevToolPortalProperties>? properties;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -32,7 +35,11 @@ class DevToolPortalArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'devToolPortalName': ?devToolPortalName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DevToolPortalProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DevToolPortalProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -40,11 +47,24 @@ class DevToolPortalArgs {
 
   factory DevToolPortalArgs.fromMap(Map<String, dynamic> map) {
     return DevToolPortalArgs(
-      devToolPortalName: map['devToolPortalName'] == null ? null : (map['devToolPortalName']! as String).input(),
-      properties: map['properties'] == null ? null : (DevToolPortalProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      devToolPortalName: (() {
+        final guardedValue = map['devToolPortalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DevToolPortalProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

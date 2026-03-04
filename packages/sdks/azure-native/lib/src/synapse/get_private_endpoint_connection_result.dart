@@ -7,16 +7,23 @@ import 'private_link_service_connection_state_response.dart';
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The private endpoint which the connection belongs to.
   final PrivateEndpointResponse? privateEndpoint;
+
   /// Connection state of the private endpoint connection.
-  final PrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
+  final PrivateLinkServiceConnectionStateResponse?
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint connection.
   final String provisioningState;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -43,8 +50,9 @@ class GetPrivateEndpointConnectionResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
+      'privateEndpoint': ?privateEndpoint?.toMap(),
+      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState
+          ?.toMap(),
       'provisioningState': provisioningState,
       'type': type,
     };
@@ -55,11 +63,22 @@ class GetPrivateEndpointConnectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
+      privateEndpoint: (() {
+        final guardedValue = map['privateEndpoint'];
+        if (guardedValue == null) return null;
+        return PrivateEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return PrivateLinkServiceConnectionStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
-

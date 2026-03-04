@@ -7,20 +7,26 @@ import 'workload_identity_pool_namespace_owner_service.dart';
 class WorkloadIdentityPoolNamespaceState {
   /// A description of the namespace. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
+
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
   final pulumi.Input<bool>? disabled;
+
   /// The resource name of the namespace as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
   final pulumi.Input<String>? name;
+
   /// Defines the owner that is allowed to mutate this resource. If present, this resource can only
   /// be mutated by the owner.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolNamespaceOwnerService>>? ownerServices;
+  final pulumi.Input<List<WorkloadIdentityPoolNamespaceOwnerService>>?
+  ownerServices;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The current state of the namespace.
   /// * `ACTIVE`: The namespace is active.
   /// * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
@@ -28,10 +34,12 @@ class WorkloadIdentityPoolNamespaceState {
   /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
   /// until it is permanently deleted.
   final pulumi.Input<String>? state;
+
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   final pulumi.Input<String>? workloadIdentityPoolId;
+
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -66,7 +74,18 @@ class WorkloadIdentityPoolNamespaceState {
       'description': ?description,
       'disabled': ?disabled,
       'name': ?name,
-      'ownerServices': ?pulumi.Input.mapOptionalInputValue<List<WorkloadIdentityPoolNamespaceOwnerService>, List<Map<String, dynamic>>>(ownerServices, (value) => pulumi.Input.encodeList<WorkloadIdentityPoolNamespaceOwnerService, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ownerServices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WorkloadIdentityPoolNamespaceOwnerService>,
+            List<Map<String, dynamic>>
+          >(
+            ownerServices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WorkloadIdentityPoolNamespaceOwnerService,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'state': ?state,
       'workloadIdentityPoolId': ?workloadIdentityPoolId,
@@ -76,15 +95,53 @@ class WorkloadIdentityPoolNamespaceState {
 
   factory WorkloadIdentityPoolNamespaceState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ownerServices: map['ownerServices'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(map['ownerServices']!, (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId']! as String).input(),
-      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerServices: (() {
+        final guardedValue = map['ownerServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(
+            guardedValue,
+            (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolId: (() {
+        final guardedValue = map['workloadIdentityPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolNamespaceId: (() {
+        final guardedValue = map['workloadIdentityPoolNamespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

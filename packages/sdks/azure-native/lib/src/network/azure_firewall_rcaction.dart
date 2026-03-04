@@ -9,20 +9,19 @@ class AzureFirewallRCAction {
 
   /// Creates a new [AzureFirewallRCAction].
   /// [type] The type of action.
-  AzureFirewallRCAction({
-    this.type,
-  });
+  AzureFirewallRCAction({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
   factory AzureFirewallRCAction.fromMap(Map<String, dynamic> map) {
     return AzureFirewallRCAction(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

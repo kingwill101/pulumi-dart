@@ -8,16 +8,22 @@ import 'os_profile_windows_configuration.dart';
 class OsProfile {
   /// Gets or sets administrator password.
   final pulumi.Input<String>? adminPassword;
+
   /// Gets or sets administrator username.
   final pulumi.Input<String>? adminUsername;
+
   /// Gets or sets computer name.
   final pulumi.Input<String>? computerName;
+
   /// Gets or sets the guestId.
   final pulumi.Input<String>? guestId;
+
   /// Specifies the linux configuration for update management.
   final pulumi.Input<OsProfileLinuxConfiguration>? linuxConfiguration;
+
   /// Gets or sets the type of the os.
   final pulumi.Input<String>? osType;
+
   /// Specifies the windows configuration for update management.
   final pulumi.Input<OsProfileWindowsConfiguration>? windowsConfiguration;
 
@@ -45,22 +51,65 @@ class OsProfile {
       'adminUsername': ?adminUsername,
       'computerName': ?computerName,
       'guestId': ?guestId,
-      'linuxConfiguration': ?pulumi.Input.mapOptionalInputValue<OsProfileLinuxConfiguration, Map<String, dynamic>>(linuxConfiguration, (value) => value.toMap()),
+      'linuxConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            OsProfileLinuxConfiguration,
+            Map<String, dynamic>
+          >(linuxConfiguration, (value) => value.toMap()),
       'osType': ?osType,
-      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<OsProfileWindowsConfiguration, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
+      'windowsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            OsProfileWindowsConfiguration,
+            Map<String, dynamic>
+          >(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
-      guestId: map['guestId'] == null ? null : (map['guestId']! as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OsProfileLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OsProfileWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminUsername: (() {
+        final guardedValue = map['adminUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      guestId: (() {
+        final guardedValue = map['guestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linuxConfiguration: (() {
+        final guardedValue = map['linuxConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OsProfileLinuxConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowsConfiguration: (() {
+        final guardedValue = map['windowsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OsProfileWindowsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

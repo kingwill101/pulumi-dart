@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaClusterStorageAccount {
   /// Is this the Default Storage Account for the HDInsight Hadoop Cluster? Changing this forces a new resource to be created.
   ///
-  /// > **Note:** One of the `storage_account` or `storage_account_gen2` blocks must be marked as the default.
+  /// &gt; **Note:** One of the `storage_account` or `storage_account_gen2` blocks must be marked as the default.
   final pulumi.Input<bool> isDefault;
+
   /// The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountKey;
+
   /// The ID of the Storage Container. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When the `azure.storage.Container` resource is created with `storage_account_name`, this can be obtained from the `id` of the `azure.storage.Container` resource. When the `azure.storage.Container` resource is created with `storage_account_id`, please use `azure.storage.getContainers` data source to get the `data_plane_id` of the `azure.storage.Container` resource for this field.
+  /// &gt; **Note:** When the `azure.storage.Container` resource is created with `storage_account_name`, this can be obtained from the `id` of the `azure.storage.Container` resource. When the `azure.storage.Container` resource is created with `storage_account_id`, please use `azure.storage.getContainers` data source to get the `data_plane_id` of the `azure.storage.Container` resource for this field.
   final pulumi.Input<String> storageContainerId;
+
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageResourceId;
 
@@ -39,11 +42,18 @@ class KafkaClusterStorageAccount {
 
   factory KafkaClusterStorageAccount.fromMap(Map<String, dynamic> map) {
     return KafkaClusterStorageAccount(
-      isDefault: (map['isDefault'] as bool).input(),
-      storageAccountKey: (map['storageAccountKey'] as String).input(),
-      storageContainerId: (map['storageContainerId'] as String).input(),
-      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId']! as String).input(),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      storageAccountKey: pulumi.Input.fromValue(
+        map['storageAccountKey'] as String,
+      ),
+      storageContainerId: pulumi.Input.fromValue(
+        map['storageContainerId'] as String,
+      ),
+      storageResourceId: (() {
+        final guardedValue = map['storageResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

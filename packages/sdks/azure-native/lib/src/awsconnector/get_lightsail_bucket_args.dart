@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLightsailBucketArgs {
   /// Name of LightsailBucket
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLightsailBucketArgs].
   /// [name] Name of LightsailBucket
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLightsailBucketArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetLightsailBucketArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetLightsailBucketArgs {
 
   factory GetLightsailBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetLightsailBucketArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

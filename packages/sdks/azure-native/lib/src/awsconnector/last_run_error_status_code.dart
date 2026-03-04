@@ -3,16 +3,15 @@ enum LastRunErrorStatusCode {
   eRROR("ERROR"),
   nONE("NONE");
 
-  const LastRunErrorStatusCode(this.value);
-  final String value;
+  const LastRunErrorStatusCode(this.wireValue);
+  final String wireValue;
 
   static LastRunErrorStatusCode fromValue(String value) {
     for (final item in LastRunErrorStatusCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LastRunErrorStatusCode value: $value');
   }
 }
-

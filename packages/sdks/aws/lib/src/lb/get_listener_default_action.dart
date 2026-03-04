@@ -9,11 +9,15 @@ import 'get_listener_default_action_jwt_validation.dart';
 import 'get_listener_default_action_redirect.dart';
 
 class GetListenerDefaultAction {
-  final pulumi.Input<List<GetListenerDefaultActionAuthenticateCognito>> authenticateCognitos;
-  final pulumi.Input<List<GetListenerDefaultActionAuthenticateOidc>> authenticateOidcs;
-  final pulumi.Input<List<GetListenerDefaultActionFixedResponse>> fixedResponses;
+  final pulumi.Input<List<GetListenerDefaultActionAuthenticateCognito>>
+  authenticateCognitos;
+  final pulumi.Input<List<GetListenerDefaultActionAuthenticateOidc>>
+  authenticateOidcs;
+  final pulumi.Input<List<GetListenerDefaultActionFixedResponse>>
+  fixedResponses;
   final pulumi.Input<List<GetListenerDefaultActionForward>> forwards;
-  final pulumi.Input<List<GetListenerDefaultActionJwtValidation>> jwtValidations;
+  final pulumi.Input<List<GetListenerDefaultActionJwtValidation>>
+  jwtValidations;
   final pulumi.Input<int> order;
   final pulumi.Input<List<GetListenerDefaultActionRedirect>> redirects;
   final pulumi.Input<String> targetGroupArn;
@@ -43,13 +47,79 @@ class GetListenerDefaultAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticateCognitos': pulumi.Input.mapInputValue<List<GetListenerDefaultActionAuthenticateCognito>, List<Map<String, dynamic>>>(authenticateCognitos, (value) => pulumi.Input.encodeList<GetListenerDefaultActionAuthenticateCognito, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'authenticateOidcs': pulumi.Input.mapInputValue<List<GetListenerDefaultActionAuthenticateOidc>, List<Map<String, dynamic>>>(authenticateOidcs, (value) => pulumi.Input.encodeList<GetListenerDefaultActionAuthenticateOidc, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'fixedResponses': pulumi.Input.mapInputValue<List<GetListenerDefaultActionFixedResponse>, List<Map<String, dynamic>>>(fixedResponses, (value) => pulumi.Input.encodeList<GetListenerDefaultActionFixedResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'forwards': pulumi.Input.mapInputValue<List<GetListenerDefaultActionForward>, List<Map<String, dynamic>>>(forwards, (value) => pulumi.Input.encodeList<GetListenerDefaultActionForward, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'jwtValidations': pulumi.Input.mapInputValue<List<GetListenerDefaultActionJwtValidation>, List<Map<String, dynamic>>>(jwtValidations, (value) => pulumi.Input.encodeList<GetListenerDefaultActionJwtValidation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authenticateCognitos':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionAuthenticateCognito>,
+            List<Map<String, dynamic>>
+          >(
+            authenticateCognitos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionAuthenticateCognito,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'authenticateOidcs':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionAuthenticateOidc>,
+            List<Map<String, dynamic>>
+          >(
+            authenticateOidcs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionAuthenticateOidc,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'fixedResponses':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionFixedResponse>,
+            List<Map<String, dynamic>>
+          >(
+            fixedResponses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionFixedResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'forwards':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionForward>,
+            List<Map<String, dynamic>>
+          >(
+            forwards,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionForward,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'jwtValidations':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionJwtValidation>,
+            List<Map<String, dynamic>>
+          >(
+            jwtValidations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionJwtValidation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'order': order,
-      'redirects': pulumi.Input.mapInputValue<List<GetListenerDefaultActionRedirect>, List<Map<String, dynamic>>>(redirects, (value) => pulumi.Input.encodeList<GetListenerDefaultActionRedirect, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'redirects':
+          pulumi.Input.mapInputValue<
+            List<GetListenerDefaultActionRedirect>,
+            List<Map<String, dynamic>>
+          >(
+            redirects,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetListenerDefaultActionRedirect,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'targetGroupArn': targetGroupArn,
       'type': type,
     };
@@ -57,16 +127,57 @@ class GetListenerDefaultAction {
 
   factory GetListenerDefaultAction.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultAction(
-      authenticateCognitos: (pulumi.Input.decodeList<GetListenerDefaultActionAuthenticateCognito>(map['authenticateCognitos']!, (value) => GetListenerDefaultActionAuthenticateCognito.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authenticateOidcs: (pulumi.Input.decodeList<GetListenerDefaultActionAuthenticateOidc>(map['authenticateOidcs']!, (value) => GetListenerDefaultActionAuthenticateOidc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fixedResponses: (pulumi.Input.decodeList<GetListenerDefaultActionFixedResponse>(map['fixedResponses']!, (value) => GetListenerDefaultActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forwards: (pulumi.Input.decodeList<GetListenerDefaultActionForward>(map['forwards']!, (value) => GetListenerDefaultActionForward.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jwtValidations: (pulumi.Input.decodeList<GetListenerDefaultActionJwtValidation>(map['jwtValidations']!, (value) => GetListenerDefaultActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      order: (map['order'] as int).input(),
-      redirects: (pulumi.Input.decodeList<GetListenerDefaultActionRedirect>(map['redirects']!, (value) => GetListenerDefaultActionRedirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetGroupArn: (map['targetGroupArn'] as String).input(),
-      type: (map['type'] as String).input(),
+      authenticateCognitos: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionAuthenticateCognito>(
+          map['authenticateCognitos']!,
+          (value) => GetListenerDefaultActionAuthenticateCognito.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      authenticateOidcs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionAuthenticateOidc>(
+          map['authenticateOidcs']!,
+          (value) => GetListenerDefaultActionAuthenticateOidc.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      fixedResponses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionFixedResponse>(
+          map['fixedResponses']!,
+          (value) => GetListenerDefaultActionFixedResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      forwards: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionForward>(
+          map['forwards']!,
+          (value) => GetListenerDefaultActionForward.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      jwtValidations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionJwtValidation>(
+          map['jwtValidations']!,
+          (value) => GetListenerDefaultActionJwtValidation.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      order: pulumi.Input.fromValue(map['order'] as int),
+      redirects: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetListenerDefaultActionRedirect>(
+          map['redirects']!,
+          (value) => GetListenerDefaultActionRedirect.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      targetGroupArn: pulumi.Input.fromValue(map['targetGroupArn'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

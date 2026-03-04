@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableAccessPolicyResponse {
   /// Expiry time of the access policy
   final pulumi.Input<String>? expiryTime;
+
   /// Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d'
   final pulumi.Input<String> permission;
+
   /// Start time of the access policy
   final pulumi.Input<String>? startTime;
 
@@ -31,10 +33,17 @@ class TableAccessPolicyResponse {
 
   factory TableAccessPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TableAccessPolicyResponse(
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
-      permission: (map['permission'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      expiryTime: (() {
+        final guardedValue = map['expiryTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

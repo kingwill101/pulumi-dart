@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_tenant_args.dart';
 import 'distribution_tenant_customizations.dart';
-import 'distribution_tenant_domain.dart';
 import 'distribution_tenant_managed_certificate_request.dart';
-import 'distribution_tenant_parameter.dart';
 import 'distribution_tenant_state.dart';
 import 'distribution_tenant_timeouts.dart';
 
@@ -416,31 +414,45 @@ import 'distribution_tenant_timeouts.dart';
 class DistributionTenant extends pulumi.CustomResource {
   /// ARN of the distribution tenant.
   late final pulumi.Output<String> arn;
+
   /// ID of the connection group for the distribution tenant. If not specified, CloudFront uses the default connection group.
   late final pulumi.Output<String> connectionGroupId;
+
   /// Customizations for the distribution tenant (maximum one).
   late final pulumi.Output<DistributionTenantCustomizations?> customizations;
+
   /// ID of the multi-tenant distribution.
   late final pulumi.Output<String> distributionId;
+
   /// Set of domains associated with the distribution tenant.
-  late final pulumi.Output<List<DistributionTenantDomain>?> domains;
+  late final pulumi.Output<List<Map<String, dynamic>>?> domains;
+
   /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
   late final pulumi.Output<bool> enabled;
+
   /// Current version of the distribution tenant.
   late final pulumi.Output<String> etag;
+
   /// Managed certificate request for CloudFront managed ACM certificate (maximum one).
-  late final pulumi.Output<DistributionTenantManagedCertificateRequest?> managedCertificateRequest;
+  late final pulumi.Output<DistributionTenantManagedCertificateRequest?>
+  managedCertificateRequest;
+
   /// Name of the distribution tenant.
   late final pulumi.Output<String> name;
+
   /// Set of parameter values for the distribution tenant.
-  late final pulumi.Output<List<DistributionTenantParameter>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// Current status of the distribution tenant.
   late final pulumi.Output<String> status;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DistributionTenantTimeouts?> timeouts;
+
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
   late final pulumi.Output<bool> waitForDeployment;
 
@@ -453,26 +465,31 @@ class DistributionTenant extends pulumi.CustomResource {
     DistributionTenantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/distributionTenant:DistributionTenant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectionGroupId = registerOutput<String>('connectionGroupId');
-    this.customizations = registerOutput<DistributionTenantCustomizations?>('customizations');
-    this.distributionId = registerOutput<String>('distributionId');
-    this.domains = registerOutput<List<DistributionTenantDomain>?>('domains');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.managedCertificateRequest = registerOutput<DistributionTenantManagedCertificateRequest?>('managedCertificateRequest');
+         'aws:cloudfront/distributionTenant:DistributionTenant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectionGroupId = registerOutput<String>('connectionGroupId');
+    customizations = registerOutput<DistributionTenantCustomizations?>(
+      'customizations',
+    );
+    distributionId = registerOutput<String>('distributionId');
+    domains = registerOutput<List<Map<String, dynamic>>?>('domains');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    managedCertificateRequest =
+        registerOutput<DistributionTenantManagedCertificateRequest?>(
+          'managedCertificateRequest',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<List<DistributionTenantParameter>?>('parameters');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
-    this.waitForDeployment = registerOutput<bool>('waitForDeployment');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
+    waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 
   /// Gets an existing [DistributionTenant] resource's state with the given [name] and [id].
@@ -493,25 +510,30 @@ class DistributionTenant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/distributionTenant:DistributionTenant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.connectionGroupId = registerOutput<String>('connectionGroupId');
-    this.customizations = registerOutput<DistributionTenantCustomizations?>('customizations');
-    this.distributionId = registerOutput<String>('distributionId');
-    this.domains = registerOutput<List<DistributionTenantDomain>?>('domains');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.managedCertificateRequest = registerOutput<DistributionTenantManagedCertificateRequest?>('managedCertificateRequest');
+         'aws:cloudfront/distributionTenant:DistributionTenant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    connectionGroupId = registerOutput<String>('connectionGroupId');
+    customizations = registerOutput<DistributionTenantCustomizations?>(
+      'customizations',
+    );
+    distributionId = registerOutput<String>('distributionId');
+    domains = registerOutput<List<Map<String, dynamic>>?>('domains');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    managedCertificateRequest =
+        registerOutput<DistributionTenantManagedCertificateRequest?>(
+          'managedCertificateRequest',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<List<DistributionTenantParameter>?>('parameters');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
-    this.waitForDeployment = registerOutput<bool>('waitForDeployment');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
+    waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AvailabilityZone
 class AvailabilityZoneResponse {
-  /// <p>The name of the Availability Zone.</p>
+  /// &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
   final pulumi.Input<String>? name;
 
   /// Creates a new [AvailabilityZoneResponse].
-  /// [name] <p>The name of the Availability Zone.</p>
-  AvailabilityZoneResponse({
-    this.name,
-  });
+  /// [name] &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
+  AvailabilityZoneResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory AvailabilityZoneResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityZoneResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

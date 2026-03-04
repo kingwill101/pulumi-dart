@@ -3,14 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertConfigurationConditionConfiguration {
-  /// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+  /// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
   final pulumi.Input<String>? condition;
-  /// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+
+  /// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
   final pulumi.Input<String>? countCondition;
 
   /// Creates a new [AlertConfigurationConditionConfiguration].
-  /// [condition] Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
-  /// [countCondition] The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+  /// [condition] Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+  /// [countCondition] The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
   AlertConfigurationConditionConfiguration({
     this.condition,
     this.countCondition,
@@ -23,11 +24,20 @@ class AlertConfigurationConditionConfiguration {
     };
   }
 
-  factory AlertConfigurationConditionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AlertConfigurationConditionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertConfigurationConditionConfiguration(
-      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
-      countCondition: map['countCondition'] == null ? null : (map['countCondition']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countCondition: (() {
+        final guardedValue = map['countCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

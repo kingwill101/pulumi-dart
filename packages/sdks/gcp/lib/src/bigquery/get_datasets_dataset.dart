@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetsDataset {
   /// The id of the dataset.
   final pulumi.Input<String> datasetId;
+
   /// The friendly name of the dataset.
   final pulumi.Input<String> friendlyName;
+
   /// User-provided dataset labels, in key/value pairs.
   final pulumi.Input<Map<String, String>> labels;
+
   /// The geographic location of the dataset.
   final pulumi.Input<String> location;
 
@@ -35,11 +38,12 @@ class GetDatasetsDataset {
 
   factory GetDatasetsDataset.fromMap(Map<String, dynamic> map) {
     return GetDatasetsDataset(
-      datasetId: (map['datasetId'] as String).input(),
-      friendlyName: (map['friendlyName'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      friendlyName: pulumi.Input.fromValue(map['friendlyName'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

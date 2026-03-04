@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPolicyArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
+
   /// Backup policy Name which uniquely identify backup policy.
   final pulumi.Input<String> backupPolicyName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetBackupPolicyArgs {
 
   factory GetBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPolicyArgs(
-      accountName: (map['accountName'] as String).input(),
-      backupPolicyName: (map['backupPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      backupPolicyName: pulumi.Input.fromValue(
+        map['backupPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

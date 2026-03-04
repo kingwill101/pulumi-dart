@@ -6,14 +6,19 @@ import 'upload_file_info_response.dart';
 class GetImportDataFileResult {
   /// The timestamp when the file was created.
   final String createTime;
+
   /// User-friendly display name. Maximum length is 63 characters.
   final String displayName;
+
   /// The payload format.
   final String format;
+
   /// The name of the file.
   final String name;
+
   /// The state of the import data file.
   final String state;
+
   /// Information about a file that is uploaded to a storage service.
   final UploadFileInfoResponse uploadFileInfo;
 
@@ -51,8 +56,9 @@ class GetImportDataFileResult {
       format: map['format'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      uploadFileInfo: UploadFileInfoResponse.fromMap((map['uploadFileInfo'] as Map).cast<String, dynamic>()),
+      uploadFileInfo: UploadFileInfoResponse.fromMap(
+        (map['uploadFileInfo']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

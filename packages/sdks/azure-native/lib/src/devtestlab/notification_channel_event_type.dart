@@ -3,16 +3,15 @@ enum NotificationChannelEventType {
   autoShutdown("AutoShutdown"),
   cost("Cost");
 
-  const NotificationChannelEventType(this.value);
-  final String value;
+  const NotificationChannelEventType(this.wireValue);
+  final String wireValue;
 
   static NotificationChannelEventType fromValue(String value) {
     for (final item in NotificationChannelEventType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotificationChannelEventType value: $value');
   }
 }
-

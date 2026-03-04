@@ -8,6 +8,7 @@ class ExtensionsInstanceRuntimeDataProcessingState {
   /// This information will be shown in the console on the detail page
   /// for the extension instance.
   final pulumi.Input<String>? detailMessage;
+
   /// The processing state of the extension instance.
   final pulumi.Input<String>? state;
 
@@ -20,17 +21,23 @@ class ExtensionsInstanceRuntimeDataProcessingState {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'detailMessage': ?detailMessage,
-      'state': ?state,
-    };
+    return <String, dynamic>{'detailMessage': ?detailMessage, 'state': ?state};
   }
 
-  factory ExtensionsInstanceRuntimeDataProcessingState.fromMap(Map<String, dynamic> map) {
+  factory ExtensionsInstanceRuntimeDataProcessingState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExtensionsInstanceRuntimeDataProcessingState(
-      detailMessage: map['detailMessage'] == null ? null : (map['detailMessage']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      detailMessage: (() {
+        final guardedValue = map['detailMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

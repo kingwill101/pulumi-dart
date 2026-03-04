@@ -163,29 +163,41 @@ import 'system_data_response.dart';
 class ArcAddon extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Host OS supported by the Arc addon.
   late final pulumi.Output<String> hostPlatform;
+
   /// Platform where the runtime is hosted.
   late final pulumi.Output<String> hostPlatformType;
+
   /// Addon type.
   /// Expected value is 'ArcForKubernetes'.
   late final pulumi.Output<String> kind;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Addon Provisioning State
   late final pulumi.Output<String> provisioningState;
+
   /// Arc resource group name
   late final pulumi.Output<String> resourceGroupName;
+
   /// Arc resource location
   late final pulumi.Output<String> resourceLocation;
+
   /// Arc resource Name
   late final pulumi.Output<String> resourceName;
+
   /// Arc resource subscription Id
   late final pulumi.Output<String> subscriptionId;
+
   /// Metadata pertaining to creation and last modification of Addon
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
+
   /// Arc resource version
   late final pulumi.Output<String> version;
 
@@ -198,23 +210,23 @@ class ArcAddon extends pulumi.CustomResource {
     ArcAddonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:ArcAddon',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hostPlatform = registerOutput<String>('hostPlatform');
-    this.hostPlatformType = registerOutput<String>('hostPlatformType');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:databoxedge:ArcAddon',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hostPlatform = registerOutput<String>('hostPlatform');
+    hostPlatformType = registerOutput<String>('hostPlatformType');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceLocation = registerOutput<String>('resourceLocation');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceLocation = registerOutput<String>('resourceLocation');
+    resourceName = registerOutput<String>('resourceName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

@@ -8,22 +8,30 @@ class RepositoryState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Output only. Server assigned timestamp for when the connection was created.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
+
   /// The location for the resource
   final pulumi.Input<String>? location;
+
   /// Name of the repository.
   final pulumi.Input<String>? name;
+
   /// The connection for the resource
   final pulumi.Input<String>? parentConnection;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Required. Git Clone HTTPS URI.
   final pulumi.Input<String>? remoteUri;
+
   /// Output only. Server assigned timestamp for when the connection was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -68,17 +76,60 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentConnection: map['parentConnection'] == null ? null : (map['parentConnection']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      remoteUri: map['remoteUri'] == null ? null : (map['remoteUri']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentConnection: (() {
+        final guardedValue = map['parentConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteUri: (() {
+        final guardedValue = map['remoteUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

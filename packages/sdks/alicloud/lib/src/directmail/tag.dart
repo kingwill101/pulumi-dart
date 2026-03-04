@@ -6,7 +6,7 @@ import 'tag_state.dart';
 ///
 /// For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/en/directmail/latest/createtag).
 ///
-/// > **NOTE:** Available since v1.144.0.
+/// &gt; **NOTE:** Available since v1.144.0.
 ///
 /// ## Example Usage
 ///
@@ -135,25 +135,18 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_directmail_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(
-    String name, {
-    TagArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:directmail/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.tagName = registerOutput<String>('tagName');
+  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:directmail/tag:Tag',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    tagName = registerOutput<String>('tagName');
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(
-    String name,
-    pulumi.Input<String> id, {
-    TagState? state,
-  }) {
+  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -166,11 +159,11 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.tagName = registerOutput<String>('tagName');
+         'alicloud:directmail/tag:Tag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    tagName = registerOutput<String>('tagName');
   }
 }

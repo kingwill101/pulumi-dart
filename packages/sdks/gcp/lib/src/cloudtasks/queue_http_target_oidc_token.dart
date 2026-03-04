@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueueHttpTargetOidcToken {
   /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   final pulumi.Input<String>? audience;
+
   /// Service account email to be used for generating OIDC token.
   /// The service account must be within the same project as the queue.
   /// The caller must have iam.serviceAccounts.actAs permission for the service account.
@@ -13,10 +14,7 @@ class QueueHttpTargetOidcToken {
   /// Creates a new [QueueHttpTargetOidcToken].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] Service account email to be used for generating OIDC token.
-  QueueHttpTargetOidcToken({
-    this.audience,
-    required this.serviceAccountEmail,
-  });
+  QueueHttpTargetOidcToken({this.audience, required this.serviceAccountEmail});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,14 @@ class QueueHttpTargetOidcToken {
 
   factory QueueHttpTargetOidcToken.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetOidcToken(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
     );
   }
 }
-

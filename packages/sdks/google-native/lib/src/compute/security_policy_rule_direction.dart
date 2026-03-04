@@ -3,16 +3,15 @@ enum SecurityPolicyRuleDirection {
   egress("EGRESS"),
   ingress("INGRESS");
 
-  const SecurityPolicyRuleDirection(this.value);
-  final String value;
+  const SecurityPolicyRuleDirection(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyRuleDirection fromValue(String value) {
     for (final item in SecurityPolicyRuleDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityPolicyRuleDirection value: $value');
   }
 }
-

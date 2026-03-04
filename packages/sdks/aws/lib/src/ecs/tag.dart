@@ -4,9 +4,9 @@ import 'tag_state.dart';
 
 /// Manages an individual ECS resource tag. This resource should only be used in cases where ECS resources are created outside the provider (e.g., ECS Clusters implicitly created by Batch Compute Environments).
 ///
-/// > **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.ecs.Cluster` and `aws.ecs.Tag` to manage tags of the same ECS Cluster will cause a perpetual difference where the `aws.ecs.Cluster` resource will try to remove the tag being added by the `aws.ecs.Tag` resource.
+/// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.ecs.Cluster` and `aws.ecs.Tag` to manage tags of the same ECS Cluster will cause a perpetual difference where the `aws.ecs.Cluster` resource will try to remove the tag being added by the `aws.ecs.Tag` resource.
 ///
-/// > **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -160,10 +160,13 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the ECS resource to tag.
   late final pulumi.Output<String> resourceArn;
+
   /// Tag value.
   late final pulumi.Output<String> value;
 
@@ -171,28 +174,21 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_ecs_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(
-    String name, {
-    TagArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:ecs/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.value = registerOutput<String>('value');
+  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:ecs/tag:Tag',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(
-    String name,
-    pulumi.Input<String> id, {
-    TagState? state,
-  }) {
+  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -205,14 +201,14 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecs/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.value = registerOutput<String>('value');
+         'aws:ecs/tag:Tag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    value = registerOutput<String>('value');
   }
 }

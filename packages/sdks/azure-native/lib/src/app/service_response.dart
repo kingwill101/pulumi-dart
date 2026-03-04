@@ -9,20 +9,13 @@ class ServiceResponse {
 
   /// Creates a new [ServiceResponse].
   /// [type] Dev ContainerApp service type
-  ServiceResponse({
-    required this.type,
-  });
+  ServiceResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ServiceResponse.fromMap(Map<String, dynamic> map) {
-    return ServiceResponse(
-      type: (map['type'] as String).input(),
-    );
+    return ServiceResponse(type: pulumi.Input.fromValue(map['type'] as String));
   }
 }
-

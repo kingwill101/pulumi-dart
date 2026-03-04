@@ -13,15 +13,14 @@ class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory GetForwardingRulesForwardingRuleRuleConditionPathConfig.fromMap(Map<String, dynamic> map) {
+  factory GetForwardingRulesForwardingRuleRuleConditionPathConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetForwardingRulesForwardingRuleRuleConditionPathConfig(
-      values: ((map['values'] as List).cast<String>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

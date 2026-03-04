@@ -10,10 +10,13 @@ import 'shared_private_link_resource_properties.dart';
 class SharedPrivateLinkResourceArgs {
   /// Describes the properties of a shared private link resource managed by the Azure AI Search service.
   final pulumi.Input<SharedPrivateLinkResourceProperties>? properties;
+
   /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String> searchServiceName;
+
   /// The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
   final pulumi.Input<String>? sharedPrivateLinkResourceName;
 
@@ -31,7 +34,11 @@ class SharedPrivateLinkResourceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<SharedPrivateLinkResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SharedPrivateLinkResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'searchServiceName': searchServiceName,
       'sharedPrivateLinkResourceName': ?sharedPrivateLinkResourceName,
@@ -40,11 +47,26 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      properties: map['properties'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      searchServiceName: (map['searchServiceName'] as String).input(),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName']! as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SharedPrivateLinkResourceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      searchServiceName: pulumi.Input.fromValue(
+        map['searchServiceName'] as String,
+      ),
+      sharedPrivateLinkResourceName: (() {
+        final guardedValue = map['sharedPrivateLinkResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

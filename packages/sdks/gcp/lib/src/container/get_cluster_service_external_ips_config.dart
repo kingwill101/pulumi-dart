@@ -8,20 +8,15 @@ class GetClusterServiceExternalIpsConfig {
 
   /// Creates a new [GetClusterServiceExternalIpsConfig].
   /// [enabled] When enabled, services with external ips specified will be allowed.
-  GetClusterServiceExternalIpsConfig({
-    required this.enabled,
-  });
+  GetClusterServiceExternalIpsConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GetClusterServiceExternalIpsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterServiceExternalIpsConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

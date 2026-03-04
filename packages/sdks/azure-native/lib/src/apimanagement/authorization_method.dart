@@ -8,16 +8,15 @@ enum AuthorizationMethod {
   valuePATCH("PATCH"),
   valueDELETE("DELETE");
 
-  const AuthorizationMethod(this.value);
-  final String value;
+  const AuthorizationMethod(this.wireValue);
+  final String wireValue;
 
   static AuthorizationMethod fromValue(String value) {
     for (final item in AuthorizationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthorizationMethod value: $value');
   }
 }
-

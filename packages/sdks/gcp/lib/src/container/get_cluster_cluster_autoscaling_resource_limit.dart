@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterClusterAutoscalingResourceLimit {
   /// Maximum amount of the resource in the cluster.
   final pulumi.Input<int> maximum;
+
   /// Minimum amount of the resource in the cluster.
   final pulumi.Input<int> minimum;
+
   /// The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
   final pulumi.Input<String> resourceType;
 
@@ -28,12 +30,13 @@ class GetClusterClusterAutoscalingResourceLimit {
     };
   }
 
-  factory GetClusterClusterAutoscalingResourceLimit.fromMap(Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingResourceLimit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterClusterAutoscalingResourceLimit(
-      maximum: (map['maximum'] as int).input(),
-      minimum: (map['minimum'] as int).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      maximum: pulumi.Input.fromValue(map['maximum'] as int),
+      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

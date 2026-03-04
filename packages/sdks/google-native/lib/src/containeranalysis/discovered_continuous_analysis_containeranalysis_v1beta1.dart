@@ -4,16 +4,20 @@ enum DiscoveredContinuousAnalysisContaineranalysisV1beta1 {
   active("ACTIVE"),
   inactive("INACTIVE");
 
-  const DiscoveredContinuousAnalysisContaineranalysisV1beta1(this.value);
-  final String value;
+  const DiscoveredContinuousAnalysisContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
-  static DiscoveredContinuousAnalysisContaineranalysisV1beta1 fromValue(String value) {
-    for (final item in DiscoveredContinuousAnalysisContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+  static DiscoveredContinuousAnalysisContaineranalysisV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in DiscoveredContinuousAnalysisContaineranalysisV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveredContinuousAnalysisContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveredContinuousAnalysisContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

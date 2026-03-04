@@ -4,16 +4,15 @@ enum ResourceOrigin {
   aWS("AWS"),
   gCP("GCP");
 
-  const ResourceOrigin(this.value);
-  final String value;
+  const ResourceOrigin(this.wireValue);
+  final String wireValue;
 
   static ResourceOrigin fromValue(String value) {
     for (final item in ResourceOrigin.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceOrigin value: $value');
   }
 }
-

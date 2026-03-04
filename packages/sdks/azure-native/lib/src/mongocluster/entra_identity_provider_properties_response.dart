@@ -9,20 +9,17 @@ class EntraIdentityProviderPropertiesResponse {
 
   /// Creates a new [EntraIdentityProviderPropertiesResponse].
   /// [principalType] The principal type of the user.
-  EntraIdentityProviderPropertiesResponse({
-    required this.principalType,
-  });
+  EntraIdentityProviderPropertiesResponse({required this.principalType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'principalType': principalType,
-    };
+    return <String, dynamic>{'principalType': principalType};
   }
 
-  factory EntraIdentityProviderPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory EntraIdentityProviderPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntraIdentityProviderPropertiesResponse(
-      principalType: (map['principalType'] as String).input(),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
     );
   }
 }
-

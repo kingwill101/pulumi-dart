@@ -8,7 +8,7 @@ import 'account_state.dart';
 ///
 /// For information about Resource Manager Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 ///
-/// > **NOTE:** Available since v1.83.0.
+/// &gt; **NOTE:** Available since v1.83.0.
 ///
 /// ## Example Usage
 ///
@@ -211,40 +211,54 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
   late final pulumi.Output<List<String>?> abandonAbleCheckIds;
+
   /// The ID of the check item that can choose to abandon and continue to perform member deletion.
   /// The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
   late final pulumi.Output<List<String>?> abandonableCheckIds;
+
   /// Account name prefix. Empty the system randomly generated.
   /// Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
-  /// The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+  /// The format of the full account name is @&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
   /// The account name must be unique in the resource directory.
   late final pulumi.Output<String?> accountNamePrefix;
+
   /// Member name
   late final pulumi.Output<String> displayName;
+
   /// The ID of the parent folder
   late final pulumi.Output<String> folderId;
+
   /// Whether to force delete the account.
   late final pulumi.Output<bool?> forceDelete;
+
   /// Ways for members to join the resource directory.  invited, created
   late final pulumi.Output<String> joinMethod;
+
   /// The time when the member joined the resource directory
   late final pulumi.Output<String> joinTime;
+
   /// The modification time of the invitation
   late final pulumi.Output<String> modifyTime;
+
   /// The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
   late final pulumi.Output<String?> payerAccountId;
+
   /// The identity type of the member. Valid values:
   /// - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
   /// - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
   ///
-  /// > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+  /// &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
   late final pulumi.Output<String?> resellAccountType;
+
   /// Resource directory ID
   late final pulumi.Output<String> resourceDirectoryId;
+
   /// Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Member type. The value of ResourceAccount indicates the resource account
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -259,26 +273,26 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.abandonAbleCheckIds = registerOutput<List<String>?>('abandonAbleCheckIds');
-    this.abandonableCheckIds = registerOutput<List<String>?>('abandonableCheckIds');
-    this.accountNamePrefix = registerOutput<String?>('accountNamePrefix');
-    this.displayName = registerOutput<String>('displayName');
-    this.folderId = registerOutput<String>('folderId');
-    this.forceDelete = registerOutput<bool?>('forceDelete');
-    this.joinMethod = registerOutput<String>('joinMethod');
-    this.joinTime = registerOutput<String>('joinTime');
-    this.modifyTime = registerOutput<String>('modifyTime');
-    this.payerAccountId = registerOutput<String?>('payerAccountId');
-    this.resellAccountType = registerOutput<String?>('resellAccountType');
-    this.resourceDirectoryId = registerOutput<String>('resourceDirectoryId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+         'alicloud:resourcemanager/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    abandonAbleCheckIds = registerOutput<List<String>?>('abandonAbleCheckIds');
+    abandonableCheckIds = registerOutput<List<String>?>('abandonableCheckIds');
+    accountNamePrefix = registerOutput<String?>('accountNamePrefix');
+    displayName = registerOutput<String>('displayName');
+    folderId = registerOutput<String>('folderId');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    joinMethod = registerOutput<String>('joinMethod');
+    joinTime = registerOutput<String>('joinTime');
+    modifyTime = registerOutput<String>('modifyTime');
+    payerAccountId = registerOutput<String?>('payerAccountId');
+    resellAccountType = registerOutput<String?>('resellAccountType');
+    resourceDirectoryId = registerOutput<String>('resourceDirectoryId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -299,25 +313,25 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.abandonAbleCheckIds = registerOutput<List<String>?>('abandonAbleCheckIds');
-    this.abandonableCheckIds = registerOutput<List<String>?>('abandonableCheckIds');
-    this.accountNamePrefix = registerOutput<String?>('accountNamePrefix');
-    this.displayName = registerOutput<String>('displayName');
-    this.folderId = registerOutput<String>('folderId');
-    this.forceDelete = registerOutput<bool?>('forceDelete');
-    this.joinMethod = registerOutput<String>('joinMethod');
-    this.joinTime = registerOutput<String>('joinTime');
-    this.modifyTime = registerOutput<String>('modifyTime');
-    this.payerAccountId = registerOutput<String?>('payerAccountId');
-    this.resellAccountType = registerOutput<String?>('resellAccountType');
-    this.resourceDirectoryId = registerOutput<String>('resourceDirectoryId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+         'alicloud:resourcemanager/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    abandonAbleCheckIds = registerOutput<List<String>?>('abandonAbleCheckIds');
+    abandonableCheckIds = registerOutput<List<String>?>('abandonableCheckIds');
+    accountNamePrefix = registerOutput<String?>('accountNamePrefix');
+    displayName = registerOutput<String>('displayName');
+    folderId = registerOutput<String>('folderId');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    joinMethod = registerOutput<String>('joinMethod');
+    joinTime = registerOutput<String>('joinTime');
+    modifyTime = registerOutput<String>('modifyTime');
+    payerAccountId = registerOutput<String?>('payerAccountId');
+    resellAccountType = registerOutput<String?>('resellAccountType');
+    resourceDirectoryId = registerOutput<String>('resourceDirectoryId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

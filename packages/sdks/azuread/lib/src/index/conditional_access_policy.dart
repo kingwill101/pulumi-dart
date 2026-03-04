@@ -7,9 +7,9 @@ import 'conditional_access_policy_state.dart';
 
 /// Manages a Conditional Access Policy within Azure Active Directory.
 ///
-/// > **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+/// &gt; **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
 ///
-/// > **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
+/// &gt; **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
 ///
 /// ## API Permissions
 ///
@@ -934,16 +934,22 @@ import 'conditional_access_policy_state.dart';
 class ConditionalAccessPolicy extends pulumi.CustomResource {
   /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
   late final pulumi.Output<ConditionalAccessPolicyConditions> conditions;
+
   /// The friendly name for this Conditional Access Policy.
   late final pulumi.Output<String> displayName;
+
   /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
   late final pulumi.Output<ConditionalAccessPolicyGrantControls?> grantControls;
+
   /// The object ID of the policy
   late final pulumi.Output<String> objectId;
+
   /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
   ///
-  /// > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
-  late final pulumi.Output<ConditionalAccessPolicySessionControls?> sessionControls;
+  /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+  late final pulumi.Output<ConditionalAccessPolicySessionControls?>
+  sessionControls;
+
   /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   late final pulumi.Output<String> state;
 
@@ -956,17 +962,23 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
     ConditionalAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.conditions = registerOutput<ConditionalAccessPolicyConditions>('conditions');
-    this.displayName = registerOutput<String>('displayName');
-    this.grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>('grantControls');
-    this.objectId = registerOutput<String>('objectId');
-    this.sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>('sessionControls');
-    this.state = registerOutput<String>('state');
+         'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    conditions = registerOutput<ConditionalAccessPolicyConditions>(
+      'conditions',
+    );
+    displayName = registerOutput<String>('displayName');
+    grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>(
+      'grantControls',
+    );
+    objectId = registerOutput<String>('objectId');
+    sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>(
+      'sessionControls',
+    );
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [ConditionalAccessPolicy] resource's state with the given [name] and [id].
@@ -987,16 +999,22 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.conditions = registerOutput<ConditionalAccessPolicyConditions>('conditions');
-    this.displayName = registerOutput<String>('displayName');
-    this.grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>('grantControls');
-    this.objectId = registerOutput<String>('objectId');
-    this.sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>('sessionControls');
+         'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    conditions = registerOutput<ConditionalAccessPolicyConditions>(
+      'conditions',
+    );
+    displayName = registerOutput<String>('displayName');
+    grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>(
+      'grantControls',
+    );
+    objectId = registerOutput<String>('objectId');
+    sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>(
+      'sessionControls',
+    );
     this.state = registerOutput<String>('state');
   }
 }

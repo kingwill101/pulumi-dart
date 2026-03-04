@@ -31,11 +31,10 @@ class GetDomainsDomainSource {
 
   factory GetDomainsDomainSource.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainSource(
-      sourceContent: (map['sourceContent'] as String).input(),
-      sourcePort: (map['sourcePort'] as String).input(),
-      sourcePriority: (map['sourcePriority'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
+      sourceContent: pulumi.Input.fromValue(map['sourceContent'] as String),
+      sourcePort: pulumi.Input.fromValue(map['sourcePort'] as String),
+      sourcePriority: pulumi.Input.fromValue(map['sourcePriority'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
-

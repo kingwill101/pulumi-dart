@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VerificationResultResponse {
   /// Message for clarification.
   final pulumi.Input<String>? message;
+
   /// Indicates if the validation or rule checking is passed.
   final pulumi.Input<String> result;
+
   /// The name of the verification rule.
   final pulumi.Input<String>? verificationName;
 
@@ -31,10 +33,17 @@ class VerificationResultResponse {
 
   factory VerificationResultResponse.fromMap(Map<String, dynamic> map) {
     return VerificationResultResponse(
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      result: (map['result'] as String).input(),
-      verificationName: map['verificationName'] == null ? null : (map['verificationName']! as String).input(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      result: pulumi.Input.fromValue(map['result'] as String),
+      verificationName: (() {
+        final guardedValue = map['verificationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

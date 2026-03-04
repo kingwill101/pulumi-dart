@@ -14,16 +14,15 @@ enum JobCurrentState {
   jobStateQueued("JOB_STATE_QUEUED"),
   jobStateResourceCleaningUp("JOB_STATE_RESOURCE_CLEANING_UP");
 
-  const JobCurrentState(this.value);
-  final String value;
+  const JobCurrentState(this.wireValue);
+  final String wireValue;
 
   static JobCurrentState fromValue(String value) {
     for (final item in JobCurrentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobCurrentState value: $value');
   }
 }
-

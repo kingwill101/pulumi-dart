@@ -9,10 +9,13 @@ import 'windows_update_response.dart';
 class UpgradeOccurrenceResponse {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
   final pulumi.Input<UpgradeDistributionResponse> distribution;
+
   /// Required for non-Windows OS. The package this Upgrade is for.
   final pulumi.Input<String> package;
+
   /// Required for non-Windows OS. The version of the package in a machine + human readable form.
   final pulumi.Input<VersionResponse> parsedVersion;
+
   /// Required for Windows OS. Represents the metadata about the Windows update.
   final pulumi.Input<WindowsUpdateResponse> windowsUpdate;
 
@@ -30,20 +33,43 @@ class UpgradeOccurrenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distribution': pulumi.Input.mapInputValue<UpgradeDistributionResponse, Map<String, dynamic>>(distribution, (value) => value.toMap()),
+      'distribution':
+          pulumi.Input.mapInputValue<
+            UpgradeDistributionResponse,
+            Map<String, dynamic>
+          >(distribution, (value) => value.toMap()),
       'package': package,
-      'parsedVersion': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(parsedVersion, (value) => value.toMap()),
-      'windowsUpdate': pulumi.Input.mapInputValue<WindowsUpdateResponse, Map<String, dynamic>>(windowsUpdate, (value) => value.toMap()),
+      'parsedVersion':
+          pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(
+            parsedVersion,
+            (value) => value.toMap(),
+          ),
+      'windowsUpdate':
+          pulumi.Input.mapInputValue<
+            WindowsUpdateResponse,
+            Map<String, dynamic>
+          >(windowsUpdate, (value) => value.toMap()),
     };
   }
 
   factory UpgradeOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrenceResponse(
-      distribution: (UpgradeDistributionResponse.fromMap((map['distribution'] as Map).cast<String, dynamic>())).input(),
-      package: (map['package'] as String).input(),
-      parsedVersion: (VersionResponse.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>())).input(),
-      windowsUpdate: (WindowsUpdateResponse.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
+      distribution: pulumi.Input.fromValue(
+        UpgradeDistributionResponse.fromMap(
+          (map['distribution']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      package: pulumi.Input.fromValue(map['package'] as String),
+      parsedVersion: pulumi.Input.fromValue(
+        VersionResponse.fromMap(
+          (map['parsedVersion']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      windowsUpdate: pulumi.Input.fromValue(
+        WindowsUpdateResponse.fromMap(
+          (map['windowsUpdate']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -28,42 +28,67 @@ import 'role_eligibility_schedule_request_properties_response_ticket_info.dart';
 class PimRoleEligibilitySchedule extends pulumi.CustomResource {
   /// The approvalId of the role eligibility schedule request.
   late final pulumi.Output<String> approvalId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
   late final pulumi.Output<String?> condition;
+
   /// Version of the condition. Currently accepted value is '2.0'
   late final pulumi.Output<String?> conditionVersion;
+
   /// DateTime when role eligibility schedule request was created
   late final pulumi.Output<String> createdOn;
+
   /// Additional properties of principal, scope and role definition
   late final pulumi.Output<ExpandedPropertiesResponse> expandedProperties;
+
   /// Justification for the role eligibility
   late final pulumi.Output<String?> justification;
+
   /// The role eligibility schedule request name.
   late final pulumi.Output<String> name;
+
   /// The principal ID.
   late final pulumi.Output<String> principalId;
+
   /// The principal type of the assigned principal ID.
   late final pulumi.Output<String> principalType;
+
   /// The type of the role assignment schedule request. Eg: SelfActivate, AdminAssign etc
   late final pulumi.Output<String?> requestType;
+
   /// Id of the user who created this request
   late final pulumi.Output<String> requestorId;
+
   /// The role definition ID.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// Schedule info of the role eligibility schedule
-  late final pulumi.Output<RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?> scheduleInfo;
+  late final pulumi.Output<
+    RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?
+  >
+  scheduleInfo;
+
   /// The role eligibility schedule request scope.
   late final pulumi.Output<String> scope;
+
   /// The status of the role eligibility schedule request.
   late final pulumi.Output<String> status;
+
   /// The resultant role eligibility schedule id or the role eligibility schedule id being updated
   late final pulumi.Output<String?> targetRoleEligibilityScheduleId;
+
   /// The role eligibility schedule instance id being updated
   late final pulumi.Output<String?> targetRoleEligibilityScheduleInstanceId;
+
   /// Ticket Info of the role eligibility
-  late final pulumi.Output<RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?> ticketInfo;
+  late final pulumi.Output<
+    RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?
+  >
+  ticketInfo;
+
   /// The role eligibility schedule request type.
   late final pulumi.Output<String> type;
 
@@ -76,30 +101,42 @@ class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     PimRoleEligibilityScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:PimRoleEligibilitySchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalId = registerOutput<String>('approvalId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.condition = registerOutput<String?>('condition');
-    this.conditionVersion = registerOutput<String?>('conditionVersion');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.expandedProperties = registerOutput<ExpandedPropertiesResponse>('expandedProperties');
-    this.justification = registerOutput<String?>('justification');
+         'azure-native:authorization:PimRoleEligibilitySchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalId = registerOutput<String>('approvalId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    createdOn = registerOutput<String>('createdOn');
+    expandedProperties = registerOutput<ExpandedPropertiesResponse>(
+      'expandedProperties',
+    );
+    justification = registerOutput<String?>('justification');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.requestType = registerOutput<String?>('requestType');
-    this.requestorId = registerOutput<String>('requestorId');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.scheduleInfo = registerOutput<RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?>('scheduleInfo');
-    this.scope = registerOutput<String>('scope');
-    this.status = registerOutput<String>('status');
-    this.targetRoleEligibilityScheduleId = registerOutput<String?>('targetRoleEligibilityScheduleId');
-    this.targetRoleEligibilityScheduleInstanceId = registerOutput<String?>('targetRoleEligibilityScheduleInstanceId');
-    this.ticketInfo = registerOutput<RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?>('ticketInfo');
-    this.type = registerOutput<String>('type');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    requestType = registerOutput<String?>('requestType');
+    requestorId = registerOutput<String>('requestorId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scheduleInfo =
+        registerOutput<
+          RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?
+        >('scheduleInfo');
+    scope = registerOutput<String>('scope');
+    status = registerOutput<String>('status');
+    targetRoleEligibilityScheduleId = registerOutput<String?>(
+      'targetRoleEligibilityScheduleId',
+    );
+    targetRoleEligibilityScheduleInstanceId = registerOutput<String?>(
+      'targetRoleEligibilityScheduleInstanceId',
+    );
+    ticketInfo =
+        registerOutput<
+          RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?
+        >('ticketInfo');
+    type = registerOutput<String>('type');
   }
 }

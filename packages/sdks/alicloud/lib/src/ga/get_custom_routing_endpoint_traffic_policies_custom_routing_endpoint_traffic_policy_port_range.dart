@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange {
   /// The first port of the port range.
   final pulumi.Input<int> fromPort;
+
   /// The last port of the port range.
   final pulumi.Input<int> toPort;
 
@@ -17,17 +18,15 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyP
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': fromPort,
-      'toPort': toPort,
-    };
+    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
   }
 
-  factory GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange.fromMap(Map<String, dynamic> map) {
+  factory GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange(
-      fromPort: (map['fromPort'] as int).input(),
-      toPort: (map['toPort'] as int).input(),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

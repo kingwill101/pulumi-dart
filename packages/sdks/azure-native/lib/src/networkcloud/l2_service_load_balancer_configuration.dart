@@ -9,20 +9,38 @@ class L2ServiceLoadBalancerConfiguration {
 
   /// Creates a new [L2ServiceLoadBalancerConfiguration].
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  L2ServiceLoadBalancerConfiguration({
-    this.ipAddressPools,
-  });
+  L2ServiceLoadBalancerConfiguration({this.ipAddressPools});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipAddressPools': ?pulumi.Input.mapOptionalInputValue<List<IpAddressPool>, List<Map<String, dynamic>>>(ipAddressPools, (value) => pulumi.Input.encodeList<IpAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipAddressPools':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressPool>,
+            List<Map<String, dynamic>>
+          >(
+            ipAddressPools,
+            (value) =>
+                pulumi.Input.encodeList<IpAddressPool, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory L2ServiceLoadBalancerConfiguration.fromMap(Map<String, dynamic> map) {
     return L2ServiceLoadBalancerConfiguration(
-      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPool>(map['ipAddressPools']!, (value) => IpAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressPools: (() {
+        final guardedValue = map['ipAddressPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressPool>(
+            guardedValue,
+            (value) =>
+                IpAddressPool.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

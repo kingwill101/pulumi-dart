@@ -3,16 +3,15 @@ enum PolicyStatementEffect {
   aLLOW("Allow"),
   dENY("Deny");
 
-  const PolicyStatementEffect(this.value);
-  final String value;
+  const PolicyStatementEffect(this.wireValue);
+  final String wireValue;
 
   static PolicyStatementEffect fromValue(String value) {
     for (final item in PolicyStatementEffect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyStatementEffect value: $value');
   }
 }
-

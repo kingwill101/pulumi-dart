@@ -3,16 +3,15 @@ enum SslEnforcementEnum {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SslEnforcementEnum(this.value);
-  final String value;
+  const SslEnforcementEnum(this.wireValue);
+  final String wireValue;
 
   static SslEnforcementEnum fromValue(String value) {
     for (final item in SslEnforcementEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslEnforcementEnum value: $value');
   }
 }
-

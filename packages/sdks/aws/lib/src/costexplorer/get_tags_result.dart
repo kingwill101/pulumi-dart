@@ -8,11 +8,13 @@ import 'get_tags_time_period.dart';
 /// Result data returned by getTags.
 class GetTagsResult {
   final GetTagsFilter? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? searchString;
   final List<GetTagsSortBy>? sortBies;
   final String? tagKey;
+
   /// Tags that match your request.
   final List<String> tags;
   final GetTagsTimePeriod timePeriod;
@@ -37,10 +39,17 @@ class GetTagsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'filter': ?filter?.toMap(),
       'id': id,
       'searchString': ?searchString,
-      'sortBies': ?sortBies == null ? null : pulumi.Input.encodeList<GetTagsSortBy, Map<String, dynamic>>(sortBies!, (value) => value.toMap()),
+      'sortBies': ?(() {
+        final guardedValue = sortBies;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetTagsSortBy, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'tagKey': ?tagKey,
       'tags': tags,
       'timePeriod': timePeriod.toMap(),
@@ -49,14 +58,37 @@ class GetTagsResult {
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
-      filter: map['filter'] == null ? null : GetTagsFilter.fromMap((map['filter']! as Map).cast<String, dynamic>()),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return GetTagsFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      searchString: map['searchString'] == null ? null : map['searchString'] as String,
-      sortBies: map['sortBies'] == null ? null : pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies']!, (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>())),
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
+      searchString: (() {
+        final guardedValue = map['searchString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortBies: (() {
+        final guardedValue = map['sortBies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetTagsSortBy>(
+          guardedValue,
+          (value) =>
+              GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tags: (map['tags'] as List).cast<String>(),
-      timePeriod: GetTagsTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>()),
+      timePeriod: GetTagsTimePeriod.fromMap(
+        (map['timePeriod']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

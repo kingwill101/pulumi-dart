@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolLambdaConfigCustomSmsSender {
   /// - ARN of the Lambda function.
   final pulumi.Input<String> lambdaArn;
+
   /// - Version of the Lambda function.
   final pulumi.Input<String> lambdaVersion;
 
@@ -23,11 +24,12 @@ class GetUserPoolLambdaConfigCustomSmsSender {
     };
   }
 
-  factory GetUserPoolLambdaConfigCustomSmsSender.fromMap(Map<String, dynamic> map) {
+  factory GetUserPoolLambdaConfigCustomSmsSender.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserPoolLambdaConfigCustomSmsSender(
-      lambdaArn: (map['lambdaArn'] as String).input(),
-      lambdaVersion: (map['lambdaVersion'] as String).input(),
+      lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
+      lambdaVersion: pulumi.Input.fromValue(map['lambdaVersion'] as String),
     );
   }
 }
-

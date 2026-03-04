@@ -4,16 +4,15 @@ enum RegionCommitmentCategory {
   license("LICENSE"),
   machine("MACHINE");
 
-  const RegionCommitmentCategory(this.value);
-  final String value;
+  const RegionCommitmentCategory(this.wireValue);
+  final String wireValue;
 
   static RegionCommitmentCategory fromValue(String value) {
     for (final item in RegionCommitmentCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionCommitmentCategory value: $value');
   }
 }
-

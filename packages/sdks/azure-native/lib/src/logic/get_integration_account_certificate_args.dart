@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationAccountCertificateArgs {
   /// The integration account certificate name.
   final pulumi.Input<String> certificateName;
+
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetIntegrationAccountCertificateArgs {
     };
   }
 
-  factory GetIntegrationAccountCertificateArgs.fromMap(Map<String, dynamic> map) {
+  factory GetIntegrationAccountCertificateArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIntegrationAccountCertificateArgs(
-      certificateName: (map['certificateName'] as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

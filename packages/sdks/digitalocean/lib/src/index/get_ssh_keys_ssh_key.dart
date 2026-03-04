@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeysSshKey {
   /// The fingerprint of the public key of the ssh key.
   final pulumi.Input<String> fingerprint;
+
   /// The ID of the ssh key.
   final pulumi.Input<int> id;
+
   /// The name of the ssh key.
   final pulumi.Input<String> name;
+
   /// The public key of the ssh key.
   final pulumi.Input<String> publicKey;
 
@@ -35,11 +38,10 @@ class GetSshKeysSshKey {
 
   factory GetSshKeysSshKey.fromMap(Map<String, dynamic> map) {
     return GetSshKeysSshKey(
-      fingerprint: (map['fingerprint'] as String).input(),
-      id: (map['id'] as int).input(),
-      name: (map['name'] as String).input(),
-      publicKey: (map['publicKey'] as String).input(),
+      fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
-

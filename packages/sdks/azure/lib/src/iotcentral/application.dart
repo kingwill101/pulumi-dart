@@ -183,7 +183,7 @@ import 'application_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.IoTCentral` - 2021-11-01-preview
@@ -198,24 +198,33 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// A `display_name` name. Custom display name for the IoT Central application. Default is resource name.
   ///
-  /// > **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
+  /// &gt; **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
   late final pulumi.Output<String> displayName;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ApplicationIdentity?> identity;
+
   /// Specifies the supported Azure location where the resource has to be create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether public network access is allowed for the IoT Central Application. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
   late final pulumi.Output<String?> sku;
+
   /// A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   late final pulumi.Output<String> subDomain;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> template;
 
@@ -228,21 +237,23 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iotcentral/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.identity = registerOutput<ApplicationIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:iotcentral/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<ApplicationIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.subDomain = registerOutput<String>('subDomain');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.template = registerOutput<String?>('template');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    subDomain = registerOutput<String>('subDomain');
+    tags = registerOutput<Map<String, String>?>('tags');
+    template = registerOutput<String?>('template');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -263,20 +274,22 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iotcentral/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.identity = registerOutput<ApplicationIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:iotcentral/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<ApplicationIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.subDomain = registerOutput<String>('subDomain');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.template = registerOutput<String?>('template');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    subDomain = registerOutput<String>('subDomain');
+    tags = registerOutput<Map<String, String>?>('tags');
+    template = registerOutput<String?>('template');
   }
 }

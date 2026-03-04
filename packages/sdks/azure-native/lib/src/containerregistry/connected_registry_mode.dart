@@ -5,16 +5,15 @@ enum ConnectedRegistryMode {
   valueRegistry("Registry"),
   valueMirror("Mirror");
 
-  const ConnectedRegistryMode(this.value);
-  final String value;
+  const ConnectedRegistryMode(this.wireValue);
+  final String wireValue;
 
   static ConnectedRegistryMode fromValue(String value) {
     for (final item in ConnectedRegistryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectedRegistryMode value: $value');
   }
 }
-

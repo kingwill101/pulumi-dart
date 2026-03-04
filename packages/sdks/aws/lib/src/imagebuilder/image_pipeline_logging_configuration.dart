@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImagePipelineLoggingConfiguration {
   /// Name of the CloudWatch Log Group to send image logs to.
   final pulumi.Input<String>? imageLogGroupName;
+
   /// Name of the CloudWatch Log Group to send pipeline logs to.
   final pulumi.Input<String>? pipelineLogGroupName;
 
@@ -25,9 +26,16 @@ class ImagePipelineLoggingConfiguration {
 
   factory ImagePipelineLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineLoggingConfiguration(
-      imageLogGroupName: map['imageLogGroupName'] == null ? null : ((map['imageLogGroupName'] as String).input()).input(),
-      pipelineLogGroupName: map['pipelineLogGroupName'] == null ? null : ((map['pipelineLogGroupName'] as String).input()).input(),
+      imageLogGroupName: (() {
+        final guardedValue = map['imageLogGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipelineLogGroupName: (() {
+        final guardedValue = map['pipelineLogGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

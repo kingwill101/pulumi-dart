@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerDefaultActionJwtValidationAdditionalClaim {
   /// Format of the claim value. Valid values are `single-string`, `string-array` and `space-separated-values`.
   final pulumi.Input<String> format;
+
   /// Name of the claim to validate. `exp`, `iss`, `nbf`, or `iat` cannot be specified because they are validated by default.
   final pulumi.Input<String> name;
+
   /// List of expected values of the claim.
   final pulumi.Input<List<String>> values;
 
@@ -21,19 +23,16 @@ class ListenerDefaultActionJwtValidationAdditionalClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'format': format,
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'format': format, 'name': name, 'values': values};
   }
 
-  factory ListenerDefaultActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
+  factory ListenerDefaultActionJwtValidationAdditionalClaim.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerDefaultActionJwtValidationAdditionalClaim(
-      format: (map['format'] as String).input(),
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

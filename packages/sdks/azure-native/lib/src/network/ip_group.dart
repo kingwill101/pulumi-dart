@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_group_args.dart';
-import 'sub_resource_response.dart';
 
 /// The IpGroups resource information.
 ///
@@ -180,22 +179,31 @@ import 'sub_resource_response.dart';
 class IpGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of references to Firewall Policies resources that this IpGroups is associated with.
-  late final pulumi.Output<List<SubResourceResponse>> firewallPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> firewallPolicies;
+
   /// List of references to Firewall resources that this IpGroups is associated with.
-  late final pulumi.Output<List<SubResourceResponse>> firewalls;
+  late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
+
   /// IpAddresses/IpAddressPrefixes in the IpGroups resource.
   late final pulumi.Output<List<String>?> ipAddresses;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the IpGroups resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -208,20 +216,22 @@ class IpGroup extends pulumi.CustomResource {
     IpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:IpGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.firewallPolicies = registerOutput<List<SubResourceResponse>>('firewallPolicies');
-    this.firewalls = registerOutput<List<SubResourceResponse>>('firewalls');
-    this.ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:IpGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    firewallPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'firewallPolicies',
+    );
+    firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

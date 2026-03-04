@@ -6,6 +6,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText {
   /// (Output)
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final pulumi.Input<bool>? allowPlaybackInterruption;
+
   /// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
   /// required: true
   final pulumi.Input<List<String>>? texts;
@@ -25,11 +26,20 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText {
     };
   }
 
-  factory CxFlowEventHandlerTriggerFulfillmentMessageText.fromMap(Map<String, dynamic> map) {
+  factory CxFlowEventHandlerTriggerFulfillmentMessageText.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowEventHandlerTriggerFulfillmentMessageText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
-      texts: map['texts'] == null ? null : ((map['texts']! as List).cast<String>()).input(),
+      allowPlaybackInterruption: (() {
+        final guardedValue = map['allowPlaybackInterruption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      texts: (() {
+        final guardedValue = map['texts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

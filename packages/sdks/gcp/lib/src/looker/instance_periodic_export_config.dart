@@ -7,10 +7,12 @@ class InstancePeriodicExportConfig {
   /// Cloud Storage bucket URI for periodic export.
   /// Format: gs://{bucket_name}
   final pulumi.Input<String> gcsUri;
+
   /// Name of the CMEK key in KMS.
   /// Format:
   /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
   final pulumi.Input<String> kmsKey;
+
   /// Time in UTC to start the periodic export job.
   /// Structure is documented below.
   final pulumi.Input<InstancePeriodicExportConfigStartTime> startTime;
@@ -29,16 +31,23 @@ class InstancePeriodicExportConfig {
     return <String, dynamic>{
       'gcsUri': gcsUri,
       'kmsKey': kmsKey,
-      'startTime': pulumi.Input.mapInputValue<InstancePeriodicExportConfigStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
+      'startTime':
+          pulumi.Input.mapInputValue<
+            InstancePeriodicExportConfigStartTime,
+            Map<String, dynamic>
+          >(startTime, (value) => value.toMap()),
     };
   }
 
   factory InstancePeriodicExportConfig.fromMap(Map<String, dynamic> map) {
     return InstancePeriodicExportConfig(
-      gcsUri: (map['gcsUri'] as String).input(),
-      kmsKey: (map['kmsKey'] as String).input(),
-      startTime: (InstancePeriodicExportConfigStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      gcsUri: pulumi.Input.fromValue(map['gcsUri'] as String),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
+      startTime: pulumi.Input.fromValue(
+        InstancePeriodicExportConfigStartTime.fromMap(
+          (map['startTime']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

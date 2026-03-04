@@ -8,6 +8,7 @@ import 'hybrid_connection_config_response.dart';
 class ListApplianceClusterUserCredentialResult {
   /// Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
   final HybridConnectionConfigResponse hybridConnectionConfig;
+
   /// The list of appliance kubeconfigs.
   final List<ApplianceCredentialKubeconfigResponse> kubeconfigs;
 
@@ -22,15 +23,28 @@ class ListApplianceClusterUserCredentialResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hybridConnectionConfig': hybridConnectionConfig.toMap(),
-      'kubeconfigs': pulumi.Input.encodeList<ApplianceCredentialKubeconfigResponse, Map<String, dynamic>>(kubeconfigs, (value) => value.toMap()),
+      'kubeconfigs':
+          pulumi.Input.encodeList<
+            ApplianceCredentialKubeconfigResponse,
+            Map<String, dynamic>
+          >(kubeconfigs, (value) => value.toMap()),
     };
   }
 
-  factory ListApplianceClusterUserCredentialResult.fromMap(Map<String, dynamic> map) {
+  factory ListApplianceClusterUserCredentialResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListApplianceClusterUserCredentialResult(
-      hybridConnectionConfig: HybridConnectionConfigResponse.fromMap((map['hybridConnectionConfig'] as Map).cast<String, dynamic>()),
-      kubeconfigs: pulumi.Input.decodeList<ApplianceCredentialKubeconfigResponse>(map['kubeconfigs'], (value) => ApplianceCredentialKubeconfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      hybridConnectionConfig: HybridConnectionConfigResponse.fromMap(
+        (map['hybridConnectionConfig']! as Map).cast<String, dynamic>(),
+      ),
+      kubeconfigs:
+          pulumi.Input.decodeList<ApplianceCredentialKubeconfigResponse>(
+            map['kubeconfigs']!,
+            (value) => ApplianceCredentialKubeconfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

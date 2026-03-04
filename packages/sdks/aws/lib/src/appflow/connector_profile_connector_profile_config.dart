@@ -6,9 +6,16 @@ import 'connector_profile_connector_profile_config_connector_profile_properties.
 
 class ConnectorProfileConnectorProfileConfig {
   /// The connector-specific credentials required by each connector. See Connector Profile Credentials for more details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentials> connectorProfileCredentials;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileCredentials
+  >
+  connectorProfileCredentials;
+
   /// The connector-specific properties of the profile configuration. See Connector Profile Properties for more details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileProperties> connectorProfileProperties;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileProperties
+  >
+  connectorProfileProperties;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfig].
   /// [connectorProfileCredentials] The connector-specific credentials required by each connector. See Connector Profile Credentials for more details.
@@ -20,16 +27,33 @@ class ConnectorProfileConnectorProfileConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectorProfileCredentials': pulumi.Input.mapInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentials, Map<String, dynamic>>(connectorProfileCredentials, (value) => value.toMap()),
-      'connectorProfileProperties': pulumi.Input.mapInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileProperties, Map<String, dynamic>>(connectorProfileProperties, (value) => value.toMap()),
+      'connectorProfileCredentials':
+          pulumi.Input.mapInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileCredentials,
+            Map<String, dynamic>
+          >(connectorProfileCredentials, (value) => value.toMap()),
+      'connectorProfileProperties':
+          pulumi.Input.mapInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileProperties,
+            Map<String, dynamic>
+          >(connectorProfileProperties, (value) => value.toMap()),
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfig.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfig(
-      connectorProfileCredentials: (ConnectorProfileConnectorProfileConfigConnectorProfileCredentials.fromMap((map['connectorProfileCredentials']! as Map).cast<String, dynamic>())).input(),
-      connectorProfileProperties: (ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap((map['connectorProfileProperties']! as Map).cast<String, dynamic>())).input(),
+      connectorProfileCredentials: pulumi.Input.fromValue(
+        ConnectorProfileConnectorProfileConfigConnectorProfileCredentials.fromMap(
+          (map['connectorProfileCredentials']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      connectorProfileProperties: pulumi.Input.fromValue(
+        ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap(
+          (map['connectorProfileProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

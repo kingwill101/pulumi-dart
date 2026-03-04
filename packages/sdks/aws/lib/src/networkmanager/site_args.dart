@@ -10,12 +10,15 @@ import 'site_location.dart';
 class SiteArgs {
   /// Description of the Site.
   final pulumi.Input<String>? description;
+
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
+
   /// Site location. See below.
   final pulumi.Input<SiteLocation>? location;
+
   /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,18 +38,37 @@ class SiteArgs {
     return <String, dynamic>{
       'description': ?description,
       'globalNetworkId': globalNetworkId,
-      'location': ?pulumi.Input.mapOptionalInputValue<SiteLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'location':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteLocation,
+            Map<String, dynamic>
+          >(location, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      globalNetworkId: (map['globalNetworkId'] as String).input(),
-      location: map['location'] == null ? null : ((SiteLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -8,19 +8,26 @@ import 'network_attachment_connection_preference_compute_beta.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_network_attachment_compute_beta_args_doc}
 class NetworkAttachmentComputeBetaArgs {
-  final pulumi.Input<NetworkAttachmentConnectionPreferenceComputeBeta>? connectionPreference;
+  final pulumi.Input<NetworkAttachmentConnectionPreferenceComputeBeta>?
+  connectionPreference;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
   final pulumi.Input<List<String>>? producerAcceptLists;
+
   /// Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number.
   final pulumi.Input<List<String>>? producerRejectLists;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> region;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder
   final pulumi.Input<String>? requestId;
+
   /// An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
   final pulumi.Input<List<String>>? subnetworks;
 
@@ -48,7 +55,11 @@ class NetworkAttachmentComputeBetaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPreference': ?pulumi.Input.mapOptionalInputValue<NetworkAttachmentConnectionPreferenceComputeBeta, String>(connectionPreference, (value) => value.value),
+      'connectionPreference':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkAttachmentConnectionPreferenceComputeBeta,
+            String
+          >(connectionPreference, (value) => value.wireValue),
       'description': ?description,
       'name': ?name,
       'producerAcceptLists': ?producerAcceptLists,
@@ -62,16 +73,51 @@ class NetworkAttachmentComputeBetaArgs {
 
   factory NetworkAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentComputeBetaArgs(
-      connectionPreference: map['connectionPreference'] == null ? null : (NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(map['connectionPreference']! as String)).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists']! as List).cast<String>()).input(),
-      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists']! as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks']! as List).cast<String>()).input(),
+      connectionPreference: (() {
+        final guardedValue = map['connectionPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      producerAcceptLists: (() {
+        final guardedValue = map['producerAcceptLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      producerRejectLists: (() {
+        final guardedValue = map['producerRejectLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetworks: (() {
+        final guardedValue = map['subnetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

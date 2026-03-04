@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustAnchorNotificationSetting {
   final pulumi.Input<String>? channel;
   final pulumi.Input<String>? configuredBy;
+
   /// Whether or not the Trust Anchor should be enabled.
   final pulumi.Input<bool>? enabled;
   final pulumi.Input<String>? event;
@@ -36,12 +37,31 @@ class TrustAnchorNotificationSetting {
 
   factory TrustAnchorNotificationSetting.fromMap(Map<String, dynamic> map) {
     return TrustAnchorNotificationSetting(
-      channel: map['channel'] == null ? null : ((map['channel'] as String).input()).input(),
-      configuredBy: map['configuredBy'] == null ? null : ((map['configuredBy'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      event: map['event'] == null ? null : ((map['event'] as String).input()).input(),
-      threshold: map['threshold'] == null ? null : ((map['threshold'] as int).input()).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configuredBy: (() {
+        final guardedValue = map['configuredBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

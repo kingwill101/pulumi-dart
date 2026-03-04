@@ -5,7 +5,11 @@ import 'subscriber_notification_configuration_https_notification_configuration.d
 
 class SubscriberNotificationConfiguration {
   /// The configurations for HTTPS subscriber notification.
-  final pulumi.Input<SubscriberNotificationConfigurationHttpsNotificationConfiguration>? httpsNotificationConfiguration;
+  final pulumi.Input<
+    SubscriberNotificationConfigurationHttpsNotificationConfiguration
+  >?
+  httpsNotificationConfiguration;
+
   /// The configurations for SQS subscriber notification.
   /// There are no parameters within `sqs_notification_configuration`.
   final pulumi.Input<Map<String, dynamic>>? sqsNotificationConfiguration;
@@ -20,16 +24,35 @@ class SubscriberNotificationConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpsNotificationConfiguration': ?pulumi.Input.mapOptionalInputValue<SubscriberNotificationConfigurationHttpsNotificationConfiguration, Map<String, dynamic>>(httpsNotificationConfiguration, (value) => value.toMap()),
+      'httpsNotificationConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubscriberNotificationConfigurationHttpsNotificationConfiguration,
+            Map<String, dynamic>
+          >(httpsNotificationConfiguration, (value) => value.toMap()),
       'sqsNotificationConfiguration': ?sqsNotificationConfiguration,
     };
   }
 
-  factory SubscriberNotificationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SubscriberNotificationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriberNotificationConfiguration(
-      httpsNotificationConfiguration: map['httpsNotificationConfiguration'] == null ? null : ((SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap((map['httpsNotificationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      sqsNotificationConfiguration: map['sqsNotificationConfiguration'] == null ? null : (((map['sqsNotificationConfiguration'] as Map).cast<String, dynamic>()).input()).input(),
+      httpsNotificationConfiguration: (() {
+        final guardedValue = map['httpsNotificationConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sqsNotificationConfiguration: (() {
+        final guardedValue = map['sqsNotificationConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

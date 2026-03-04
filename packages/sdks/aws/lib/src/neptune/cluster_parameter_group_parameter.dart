@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterParameterGroupParameter {
   /// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
   final pulumi.Input<String>? applyMethod;
+
   /// The name of the neptune parameter.
   final pulumi.Input<String> name;
+
   /// The value of the neptune parameter.
   final pulumi.Input<String> value;
 
@@ -30,10 +32,13 @@ class ClusterParameterGroupParameter {
 
   factory ClusterParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ClusterParameterGroupParameter(
-      applyMethod: map['applyMethod'] == null ? null : ((map['applyMethod'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      applyMethod: (() {
+        final guardedValue = map['applyMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

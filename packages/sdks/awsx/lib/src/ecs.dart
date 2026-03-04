@@ -1,5 +1,3 @@
-library module_ecs;
-
 export 'ecs/ec2_service.dart';
 export 'ecs/ec2_service_args.dart';
 export 'ecs/ec2_service_task_definition.dart';

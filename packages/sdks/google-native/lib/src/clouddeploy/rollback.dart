@@ -9,20 +9,19 @@ class Rollback {
 
   /// Creates a new [Rollback].
   /// [destinationPhase] Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
-  Rollback({
-    this.destinationPhase,
-  });
+  Rollback({this.destinationPhase});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinationPhase': ?destinationPhase,
-    };
+    return <String, dynamic>{'destinationPhase': ?destinationPhase};
   }
 
   factory Rollback.fromMap(Map<String, dynamic> map) {
     return Rollback(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
+      destinationPhase: (() {
+        final guardedValue = map['destinationPhase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

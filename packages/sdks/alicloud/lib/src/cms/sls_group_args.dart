@@ -10,8 +10,10 @@ import 'sls_group_sls_group_config.dart';
 class SlsGroupArgs {
   /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
   final pulumi.Input<List<SlsGroupSlsGroupConfig>> slsGroupConfigs;
+
   /// The Description of the Sls Group.
   final pulumi.Input<String>? slsGroupDescription;
+
   /// The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
   final pulumi.Input<String> slsGroupName;
 
@@ -27,7 +29,18 @@ class SlsGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'slsGroupConfigs': pulumi.Input.mapInputValue<List<SlsGroupSlsGroupConfig>, List<Map<String, dynamic>>>(slsGroupConfigs, (value) => pulumi.Input.encodeList<SlsGroupSlsGroupConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'slsGroupConfigs':
+          pulumi.Input.mapInputValue<
+            List<SlsGroupSlsGroupConfig>,
+            List<Map<String, dynamic>>
+          >(
+            slsGroupConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SlsGroupSlsGroupConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'slsGroupDescription': ?slsGroupDescription,
       'slsGroupName': slsGroupName,
     };
@@ -35,10 +48,20 @@ class SlsGroupArgs {
 
   factory SlsGroupArgs.fromMap(Map<String, dynamic> map) {
     return SlsGroupArgs(
-      slsGroupConfigs: (pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription']! as String).input(),
-      slsGroupName: (map['slsGroupName'] as String).input(),
+      slsGroupConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(
+          map['slsGroupConfigs']!,
+          (value) => SlsGroupSlsGroupConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      slsGroupDescription: (() {
+        final guardedValue = map['slsGroupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsGroupName: pulumi.Input.fromValue(map['slsGroupName'] as String),
     );
   }
 }
-

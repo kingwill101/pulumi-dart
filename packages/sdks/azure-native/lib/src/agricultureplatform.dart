@@ -1,5 +1,3 @@
-library module_agricultureplatform;
-
 export 'agricultureplatform/agri_service.dart';
 export 'agricultureplatform/agri_service_args.dart';
 export 'agricultureplatform/agri_service_config_response.dart';

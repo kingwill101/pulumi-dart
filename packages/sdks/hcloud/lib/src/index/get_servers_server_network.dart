@@ -31,11 +31,12 @@ class GetServersServerNetwork {
 
   factory GetServersServerNetwork.fromMap(Map<String, dynamic> map) {
     return GetServersServerNetwork(
-      aliasIps: ((map['aliasIps'] as List).cast<String>()).input(),
-      ip: (map['ip'] as String).input(),
-      macAddress: (map['macAddress'] as String).input(),
-      networkId: (map['networkId'] as int).input(),
+      aliasIps: pulumi.Input.fromValue(
+        (map['aliasIps'] as List).cast<String>(),
+      ),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
+      networkId: pulumi.Input.fromValue(map['networkId'] as int),
     );
   }
 }
-

@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMetricRulesArgs {
   /// The dimensions that specify the resources to be associated with the alert rule.
   final pulumi.Input<String>? dimensions;
+
   /// EnableState.
   final pulumi.Input<bool>? enableState;
+
   /// The ID of the application group.
   final pulumi.Input<String>? groupId;
+
   /// The name of the alert rule.
   final pulumi.Input<String>? groupMetricRuleName;
+
   /// A list of Group Metric Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The name of the metric.
   final pulumi.Input<String>? metricName;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// The namespace of the service.
   final pulumi.Input<String>? namespace;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of Group Metric Rule.
   final pulumi.Input<String>? status;
 
@@ -69,17 +78,56 @@ class GetGroupMetricRulesArgs {
 
   factory GetGroupMetricRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesArgs(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions']! as String).input(),
-      enableState: map['enableState'] == null ? null : (map['enableState']! as bool).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : (map['groupMetricRuleName']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableState: (() {
+        final guardedValue = map['enableState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupMetricRuleName: (() {
+        final guardedValue = map['groupMetricRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      metricName: (() {
+        final guardedValue = map['metricName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

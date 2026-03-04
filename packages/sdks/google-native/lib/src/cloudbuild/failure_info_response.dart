@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FailureInfoResponse {
   /// Explains the failure issue in more detail using hard-coded text.
   final pulumi.Input<String> detail;
+
   /// The name of the failure.
   final pulumi.Input<String> type;
 
   /// Creates a new [FailureInfoResponse].
   /// [detail] Explains the failure issue in more detail using hard-coded text.
   /// [type] The name of the failure.
-  FailureInfoResponse({
-    required this.detail,
-    required this.type,
-  });
+  FailureInfoResponse({required this.detail, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'detail': detail,
-      'type': type,
-    };
+    return <String, dynamic>{'detail': detail, 'type': type};
   }
 
   factory FailureInfoResponse.fromMap(Map<String, dynamic> map) {
     return FailureInfoResponse(
-      detail: (map['detail'] as String).input(),
-      type: (map['type'] as String).input(),
+      detail: pulumi.Input.fromValue(map['detail'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

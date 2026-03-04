@@ -39,12 +39,11 @@ class GetDebugSessionArgs {
 
   factory GetDebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetDebugSessionArgs(
-      apiId: (map['apiId'] as String).input(),
-      debugsessionId: (map['debugsessionId'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      revisionId: (map['revisionId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      debugsessionId: pulumi.Input.fromValue(map['debugsessionId'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      revisionId: pulumi.Input.fromValue(map['revisionId'] as String),
     );
   }
 }
-

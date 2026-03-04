@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentArgs {
   /// The name of the Agent resource.
   final pulumi.Input<String> agentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Storage Mover resource.
   final pulumi.Input<String> storageMoverName;
 
@@ -34,10 +36,13 @@ class GetAgentArgs {
 
   factory GetAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentArgs(
-      agentName: (map['agentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageMoverName: (map['storageMoverName'] as String).input(),
+      agentName: pulumi.Input.fromValue(map['agentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageMoverName: pulumi.Input.fromValue(
+        map['storageMoverName'] as String,
+      ),
     );
   }
 }
-

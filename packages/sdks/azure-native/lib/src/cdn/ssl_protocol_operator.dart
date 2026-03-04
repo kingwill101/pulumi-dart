@@ -2,16 +2,15 @@
 enum SslProtocolOperator {
   equal("Equal");
 
-  const SslProtocolOperator(this.value);
-  final String value;
+  const SslProtocolOperator(this.wireValue);
+  final String wireValue;
 
   static SslProtocolOperator fromValue(String value) {
     for (final item in SslProtocolOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslProtocolOperator value: $value');
   }
 }
-

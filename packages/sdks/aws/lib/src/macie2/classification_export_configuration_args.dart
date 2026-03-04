@@ -10,8 +10,10 @@ import 'classification_export_configuration_s3_destination.dart';
 class ClassificationExportConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block for a S3 Destination. Defined below
-  final pulumi.Input<ClassificationExportConfigurationS3Destination> s3Destination;
+  final pulumi.Input<ClassificationExportConfigurationS3Destination>
+  s3Destination;
 
   /// Creates a new [ClassificationExportConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -24,15 +26,28 @@ class ClassificationExportConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      's3Destination': pulumi.Input.mapInputValue<ClassificationExportConfigurationS3Destination, Map<String, dynamic>>(s3Destination, (value) => value.toMap()),
+      's3Destination':
+          pulumi.Input.mapInputValue<
+            ClassificationExportConfigurationS3Destination,
+            Map<String, dynamic>
+          >(s3Destination, (value) => value.toMap()),
     };
   }
 
-  factory ClassificationExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory ClassificationExportConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationExportConfigurationArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      s3Destination: (ClassificationExportConfigurationS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3Destination: pulumi.Input.fromValue(
+        ClassificationExportConfigurationS3Destination.fromMap(
+          (map['s3Destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

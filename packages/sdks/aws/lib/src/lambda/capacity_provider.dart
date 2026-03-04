@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_provider_args.dart';
-import 'capacity_provider_capacity_provider_scaling_config.dart';
-import 'capacity_provider_instance_requirement.dart';
 import 'capacity_provider_permissions_config.dart';
 import 'capacity_provider_state.dart';
 import 'capacity_provider_timeouts.dart';
@@ -368,24 +366,33 @@ import 'capacity_provider_vpc_config.dart';
 class CapacityProvider extends pulumi.CustomResource {
   /// ARN of the Capacity Provider.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for scaling policy settings. See Capacity Provider Scaling Config below.
-  late final pulumi.Output<List<CapacityProviderCapacityProviderScalingConfig>> capacityProviderScalingConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  capacityProviderScalingConfigs;
+
   /// Configuration block for instance requirements settings. See Instance Requirements below.
-  late final pulumi.Output<List<CapacityProviderInstanceRequirement>> instanceRequirements;
+  late final pulumi.Output<List<Map<String, dynamic>>> instanceRequirements;
   late final pulumi.Output<String?> kmsKeyArn;
+
   /// The name of the Capacity Provider.
   late final pulumi.Output<String> name;
+
   /// Configuration block for permissions settings. See Permissions Config below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<CapacityProviderPermissionsConfig> permissionsConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CapacityProviderTimeouts?> timeouts;
+
   /// Configuration block for VPC settings. See VPC Config below.
   late final pulumi.Output<CapacityProviderVpcConfig> vpcConfig;
 
@@ -398,22 +405,28 @@ class CapacityProvider extends pulumi.CustomResource {
     CapacityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/capacityProvider:CapacityProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.capacityProviderScalingConfigs = registerOutput<List<CapacityProviderCapacityProviderScalingConfig>>('capacityProviderScalingConfigs');
-    this.instanceRequirements = registerOutput<List<CapacityProviderInstanceRequirement>>('instanceRequirements');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:lambda/capacityProvider:CapacityProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'capacityProviderScalingConfigs',
+    );
+    instanceRequirements = registerOutput<List<Map<String, dynamic>>>(
+      'instanceRequirements',
+    );
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>('permissionsConfig');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
-    this.vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
+    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
+      'permissionsConfig',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
   }
 
   /// Gets an existing [CapacityProvider] resource's state with the given [name] and [id].
@@ -434,21 +447,27 @@ class CapacityProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/capacityProvider:CapacityProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.capacityProviderScalingConfigs = registerOutput<List<CapacityProviderCapacityProviderScalingConfig>>('capacityProviderScalingConfigs');
-    this.instanceRequirements = registerOutput<List<CapacityProviderInstanceRequirement>>('instanceRequirements');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:lambda/capacityProvider:CapacityProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'capacityProviderScalingConfigs',
+    );
+    instanceRequirements = registerOutput<List<Map<String, dynamic>>>(
+      'instanceRequirements',
+    );
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>('permissionsConfig');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
-    this.vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
+    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
+      'permissionsConfig',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
   }
 }

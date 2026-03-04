@@ -6,30 +6,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmNicDetailsResponse {
   /// A value indicating whether this is the primary NIC.
   final pulumi.Input<String>? isPrimaryNic;
+
   /// A value indicating whether this NIC is selected for failover.
   final pulumi.Input<String>? isSelectedForFailover;
+
   /// The NIC Id.
   final pulumi.Input<String> nicId;
+
   /// The source IP address.
   final pulumi.Input<String> sourceIPAddress;
+
   /// The source IP address type.
   final pulumi.Input<String> sourceIPAddressType;
+
   /// Source network Id.
   final pulumi.Input<String> sourceNetworkId;
+
   /// Source subnet name.
   final pulumi.Input<String> sourceSubnetName;
+
   /// The target IP address.
   final pulumi.Input<String>? targetIPAddress;
+
   /// The target IP address type.
   final pulumi.Input<String>? targetIPAddressType;
+
   /// The target NIC name.
   final pulumi.Input<String>? targetNicName;
+
   /// Target subnet name.
   final pulumi.Input<String>? targetSubnetName;
+
   /// The test IP address.
   final pulumi.Input<String>? testIPAddress;
+
   /// The test IP address type.
   final pulumi.Input<String>? testIPAddressType;
+
   /// Test subnet name.
   final pulumi.Input<String>? testSubnetName;
 
@@ -86,21 +99,60 @@ class InMageRcmNicDetailsResponse {
 
   factory InMageRcmNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmNicDetailsResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic']! as String).input(),
-      isSelectedForFailover: map['isSelectedForFailover'] == null ? null : (map['isSelectedForFailover']! as String).input(),
-      nicId: (map['nicId'] as String).input(),
-      sourceIPAddress: (map['sourceIPAddress'] as String).input(),
-      sourceIPAddressType: (map['sourceIPAddressType'] as String).input(),
-      sourceNetworkId: (map['sourceNetworkId'] as String).input(),
-      sourceSubnetName: (map['sourceSubnetName'] as String).input(),
-      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress']! as String).input(),
-      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType']! as String).input(),
-      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName']! as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
-      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress']! as String).input(),
-      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType']! as String).input(),
-      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName']! as String).input(),
+      isPrimaryNic: (() {
+        final guardedValue = map['isPrimaryNic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isSelectedForFailover: (() {
+        final guardedValue = map['isSelectedForFailover'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nicId: pulumi.Input.fromValue(map['nicId'] as String),
+      sourceIPAddress: pulumi.Input.fromValue(map['sourceIPAddress'] as String),
+      sourceIPAddressType: pulumi.Input.fromValue(
+        map['sourceIPAddressType'] as String,
+      ),
+      sourceNetworkId: pulumi.Input.fromValue(map['sourceNetworkId'] as String),
+      sourceSubnetName: pulumi.Input.fromValue(
+        map['sourceSubnetName'] as String,
+      ),
+      targetIPAddress: (() {
+        final guardedValue = map['targetIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetIPAddressType: (() {
+        final guardedValue = map['targetIPAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetNicName: (() {
+        final guardedValue = map['targetNicName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSubnetName: (() {
+        final guardedValue = map['targetSubnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testIPAddress: (() {
+        final guardedValue = map['testIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testIPAddressType: (() {
+        final guardedValue = map['testIPAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testSubnetName: (() {
+        final guardedValue = map['testSubnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MainPrincipal {
   /// Application Id of the main principal.
   final pulumi.Input<String>? applicationId;
+
   /// Login name of the main principal.
   final pulumi.Input<String>? login;
+
   /// Object Id of the main principal.
   final pulumi.Input<String>? objectId;
+
   /// Principal type of the main principal.
   final pulumi.Input<String>? principalType;
+
   /// Tenant Id of the main principal.
   final pulumi.Input<String>? tenantId;
 
@@ -41,12 +45,31 @@ class MainPrincipal {
 
   factory MainPrincipal.fromMap(Map<String, dynamic> map) {
     return MainPrincipal(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      login: map['login'] == null ? null : (map['login']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

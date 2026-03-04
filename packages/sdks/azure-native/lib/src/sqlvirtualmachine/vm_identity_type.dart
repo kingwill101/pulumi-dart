@@ -4,16 +4,15 @@ enum VmIdentityType {
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned");
 
-  const VmIdentityType(this.value);
-  final String value;
+  const VmIdentityType(this.wireValue);
+  final String wireValue;
 
   static VmIdentityType fromValue(String value) {
     for (final item in VmIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VmIdentityType value: $value');
   }
 }
-

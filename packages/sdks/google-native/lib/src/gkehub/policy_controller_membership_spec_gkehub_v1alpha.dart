@@ -6,7 +6,9 @@ import 'policy_controller_hub_config_gkehub_v1alpha.dart';
 /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
 class PolicyControllerMembershipSpecGkehubV1alpha {
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<PolicyControllerHubConfigGkehubV1alpha>? policyControllerHubConfig;
+  final pulumi.Input<PolicyControllerHubConfigGkehubV1alpha>?
+  policyControllerHubConfig;
+
   /// Version of Policy Controller installed.
   final pulumi.Input<String>? version;
 
@@ -20,16 +22,33 @@ class PolicyControllerMembershipSpecGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig': ?pulumi.Input.mapOptionalInputValue<PolicyControllerHubConfigGkehubV1alpha, Map<String, dynamic>>(policyControllerHubConfig, (value) => value.toMap()),
+      'policyControllerHubConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyControllerHubConfigGkehubV1alpha,
+            Map<String, dynamic>
+          >(policyControllerHubConfig, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
-  factory PolicyControllerMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerMembershipSpecGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerMembershipSpecGkehubV1alpha(
-      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : (PolicyControllerHubConfigGkehubV1alpha.fromMap((map['policyControllerHubConfig']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      policyControllerHubConfig: (() {
+        final guardedValue = map['policyControllerHubConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyControllerHubConfigGkehubV1alpha.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxPageSize': maxPageSize,
-    };
+    return <String, dynamic>{'maxPageSize': maxPageSize};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig(
-      maxPageSize: (map['maxPageSize'] as int).input(),
+      maxPageSize: pulumi.Input.fromValue(map['maxPageSize'] as int),
     );
   }
 }
-

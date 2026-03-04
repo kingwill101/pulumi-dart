@@ -8,50 +8,73 @@ import 'sub_resource_response.dart';
 class GetCustomIPPrefixResult {
   /// The ASN for CIDR advertising. Should be an integer as string.
   final String? asn;
+
   /// Authorization message for WAN validation.
   final String? authorizationMessage;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The list of all Children for IPv6 /48 CustomIpPrefix.
   final List<SubResourceResponse> childCustomIpPrefixes;
+
   /// The prefix range in CIDR notation. Should include the start address and the prefix length.
   final String? cidr;
+
   /// The commissioned state of the Custom IP Prefix.
   final String? commissionedState;
+
   /// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
   final SubResourceResponse? customIpPrefixParent;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Whether to do express route advertise.
   final bool? expressRouteAdvertise;
+
   /// The extended location of the custom IP prefix.
   final ExtendedLocationResponse? extendedLocation;
+
   /// The reason why resource is in failed state.
   final String failedReason;
+
   /// The Geo for CIDR advertising. Should be an Geo code.
   final String? geo;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// Whether to Advertise the range to Internet.
   final bool? noInternetAdvertise;
+
   /// Type of custom IP prefix. Should be Singular, Parent, or Child.
   final String? prefixType;
+
   /// The provisioning state of the custom IP prefix resource.
   final String provisioningState;
+
   /// The list of all referenced PublicIpPrefixes.
   final List<SubResourceResponse> publicIpPrefixes;
+
   /// The resource GUID property of the custom IP prefix resource.
   final String resourceGuid;
+
   /// Signed message for WAN validation.
   final String? signedMessage;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
+
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   final List<String>? zones;
 
@@ -112,13 +135,17 @@ class GetCustomIPPrefixResult {
       'asn': ?asn,
       'authorizationMessage': ?authorizationMessage,
       'azureApiVersion': azureApiVersion,
-      'childCustomIpPrefixes': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(childCustomIpPrefixes, (value) => value.toMap()),
+      'childCustomIpPrefixes':
+          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
+            childCustomIpPrefixes,
+            (value) => value.toMap(),
+          ),
       'cidr': ?cidr,
       'commissionedState': ?commissionedState,
-      'customIpPrefixParent': ?customIpPrefixParent == null ? null : customIpPrefixParent!.toMap(),
+      'customIpPrefixParent': ?customIpPrefixParent?.toMap(),
       'etag': etag,
       'expressRouteAdvertise': ?expressRouteAdvertise,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'failedReason': failedReason,
       'geo': ?geo,
       'id': ?id,
@@ -127,7 +154,11 @@ class GetCustomIPPrefixResult {
       'noInternetAdvertise': ?noInternetAdvertise,
       'prefixType': ?prefixType,
       'provisioningState': provisioningState,
-      'publicIpPrefixes': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(publicIpPrefixes, (value) => value.toMap()),
+      'publicIpPrefixes':
+          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
+            publicIpPrefixes,
+            (value) => value.toMap(),
+          ),
       'resourceGuid': resourceGuid,
       'signedMessage': ?signedMessage,
       'tags': ?tags,
@@ -138,31 +169,102 @@ class GetCustomIPPrefixResult {
 
   factory GetCustomIPPrefixResult.fromMap(Map<String, dynamic> map) {
     return GetCustomIPPrefixResult(
-      asn: map['asn'] == null ? null : map['asn']! as String,
-      authorizationMessage: map['authorizationMessage'] == null ? null : map['authorizationMessage']! as String,
+      asn: (() {
+        final guardedValue = map['asn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      authorizationMessage: (() {
+        final guardedValue = map['authorizationMessage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      childCustomIpPrefixes: pulumi.Input.decodeList<SubResourceResponse>(map['childCustomIpPrefixes'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      cidr: map['cidr'] == null ? null : map['cidr']! as String,
-      commissionedState: map['commissionedState'] == null ? null : map['commissionedState']! as String,
-      customIpPrefixParent: map['customIpPrefixParent'] == null ? null : SubResourceResponse.fromMap((map['customIpPrefixParent']! as Map).cast<String, dynamic>()),
+      childCustomIpPrefixes: pulumi.Input.decodeList<SubResourceResponse>(
+        map['childCustomIpPrefixes']!,
+        (value) =>
+            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      commissionedState: (() {
+        final guardedValue = map['commissionedState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      customIpPrefixParent: (() {
+        final guardedValue = map['customIpPrefixParent'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       etag: map['etag'] as String,
-      expressRouteAdvertise: map['expressRouteAdvertise'] == null ? null : map['expressRouteAdvertise']! as bool,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      expressRouteAdvertise: (() {
+        final guardedValue = map['expressRouteAdvertise'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       failedReason: map['failedReason'] as String,
-      geo: map['geo'] == null ? null : map['geo']! as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      geo: (() {
+        final guardedValue = map['geo'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      noInternetAdvertise: map['noInternetAdvertise'] == null ? null : map['noInternetAdvertise']! as bool,
-      prefixType: map['prefixType'] == null ? null : map['prefixType']! as String,
+      noInternetAdvertise: (() {
+        final guardedValue = map['noInternetAdvertise'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      prefixType: (() {
+        final guardedValue = map['prefixType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publicIpPrefixes: pulumi.Input.decodeList<SubResourceResponse>(map['publicIpPrefixes'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicIpPrefixes: pulumi.Input.decodeList<SubResourceResponse>(
+        map['publicIpPrefixes']!,
+        (value) =>
+            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       resourceGuid: map['resourceGuid'] as String,
-      signedMessage: map['signedMessage'] == null ? null : map['signedMessage']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      signedMessage: (() {
+        final guardedValue = map['signedMessage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

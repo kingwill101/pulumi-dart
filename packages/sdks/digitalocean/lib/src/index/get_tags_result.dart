@@ -8,6 +8,7 @@ import 'get_tags_tag.dart';
 /// Result data returned by getTags.
 class GetTagsResult {
   final List<GetTagsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetTagsSort>? sorts;
@@ -27,20 +28,55 @@ class GetTagsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetTagsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetTagsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
-      'sorts': ?sorts == null ? null : pulumi.Input.encodeList<GetTagsSort, Map<String, dynamic>>(sorts!, (value) => value.toMap()),
-      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'sorts': ?(() {
+        final guardedValue = sorts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetTagsSort, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
+      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(
+        tags,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTagsFilter>(map['filters']!, (value) => GetTagsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetTagsFilter>(
+          guardedValue,
+          (value) =>
+              GetTagsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetTagsSort>(map['sorts']!, (value) => GetTagsSort.fromMap((value as Map).cast<String, dynamic>())),
-      tags: pulumi.Input.decodeList<GetTagsTag>(map['tags'], (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetTagsSort>(
+          guardedValue,
+          (value) =>
+              GetTagsSort.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: pulumi.Input.decodeList<GetTagsTag>(
+        map['tags']!,
+        (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

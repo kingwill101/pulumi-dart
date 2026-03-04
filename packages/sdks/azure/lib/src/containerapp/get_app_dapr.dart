@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppDapr {
   /// The Dapr Application Identifier.
   final pulumi.Input<String> appId;
+
   /// The port which the application is listening on. This is the same as the `ingress` port.
   final pulumi.Input<int> appPort;
+
   /// The protocol for the app.
   final pulumi.Input<String> appProtocol;
 
@@ -30,10 +32,9 @@ class GetAppDapr {
 
   factory GetAppDapr.fromMap(Map<String, dynamic> map) {
     return GetAppDapr(
-      appId: (map['appId'] as String).input(),
-      appPort: (map['appPort'] as int).input(),
-      appProtocol: (map['appProtocol'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appPort: pulumi.Input.fromValue(map['appPort'] as int),
+      appProtocol: pulumi.Input.fromValue(map['appProtocol'] as String),
     );
   }
 }
-

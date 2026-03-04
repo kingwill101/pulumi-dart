@@ -1,13 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aad_configuration_response.dart';
 import 'administrator_configuration_response.dart';
-import 'available_upgrade_response.dart';
 import 'control_plane_node_configuration_response.dart';
 import 'extended_location_response.dart';
-import 'feature_status_response.dart';
-import 'initial_agent_pool_configuration_response.dart';
 import 'kubernetes_cluster_args.dart';
-import 'kubernetes_cluster_node_response.dart';
 import 'managed_resource_group_configuration_response.dart';
 import 'network_configuration_response.dart';
 import 'system_data_response.dart';
@@ -1950,52 +1946,80 @@ import 'system_data_response.dart';
 class KubernetesCluster extends pulumi.CustomResource {
   /// The Azure Active Directory Integration properties.
   late final pulumi.Output<AadConfigurationResponse?> aadConfiguration;
+
   /// The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
-  late final pulumi.Output<AdministratorConfigurationResponse?> administratorConfiguration;
+  late final pulumi.Output<AdministratorConfigurationResponse?>
+  administratorConfiguration;
+
   /// The full list of network resource IDs that are attached to this cluster, including those attached only to specific agent pools.
   late final pulumi.Output<List<String>> attachedNetworkIds;
+
   /// The list of versions that this Kubernetes cluster can be upgraded to.
-  late final pulumi.Output<List<AvailableUpgradeResponse>> availableUpgrades;
+  late final pulumi.Output<List<Map<String, dynamic>>> availableUpgrades;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the Network Cloud cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The resource ID of the connected cluster set up when this Kubernetes cluster is created.
   late final pulumi.Output<String> connectedClusterId;
+
   /// The current running version of Kubernetes on the control plane.
   late final pulumi.Output<String> controlPlaneKubernetesVersion;
+
   /// The defining characteristics of the control plane for this Kubernetes Cluster.
-  late final pulumi.Output<ControlPlaneNodeConfigurationResponse> controlPlaneNodeConfiguration;
+  late final pulumi.Output<ControlPlaneNodeConfigurationResponse>
+  controlPlaneNodeConfiguration;
+
   /// The current status of the Kubernetes cluster.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The current feature settings.
-  late final pulumi.Output<List<FeatureStatusResponse>> featureStatuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> featureStatuses;
+
   /// The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
-  late final pulumi.Output<List<InitialAgentPoolConfigurationResponse>> initialAgentPoolConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  initialAgentPoolConfigurations;
+
   /// The Kubernetes version for this cluster.
   late final pulumi.Output<String> kubernetesVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The configuration of the managed resource group associated with the resource.
-  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?> managedResourceGroupConfiguration;
+  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?>
+  managedResourceGroupConfiguration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
   late final pulumi.Output<NetworkConfigurationResponse> networkConfiguration;
+
   /// The details of the nodes in this cluster.
-  late final pulumi.Output<List<KubernetesClusterNodeResponse>> nodes;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+
   /// The provisioning state of the Kubernetes cluster resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -2008,35 +2032,58 @@ class KubernetesCluster extends pulumi.CustomResource {
     KubernetesClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:KubernetesCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadConfiguration = registerOutput<AadConfigurationResponse?>('aadConfiguration');
-    this.administratorConfiguration = registerOutput<AdministratorConfigurationResponse?>('administratorConfiguration');
-    this.attachedNetworkIds = registerOutput<List<String>>('attachedNetworkIds');
-    this.availableUpgrades = registerOutput<List<AvailableUpgradeResponse>>('availableUpgrades');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.connectedClusterId = registerOutput<String>('connectedClusterId');
-    this.controlPlaneKubernetesVersion = registerOutput<String>('controlPlaneKubernetesVersion');
-    this.controlPlaneNodeConfiguration = registerOutput<ControlPlaneNodeConfigurationResponse>('controlPlaneNodeConfiguration');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.featureStatuses = registerOutput<List<FeatureStatusResponse>>('featureStatuses');
-    this.initialAgentPoolConfigurations = registerOutput<List<InitialAgentPoolConfigurationResponse>>('initialAgentPoolConfigurations');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration');
+         'azure-native:networkcloud:KubernetesCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadConfiguration = registerOutput<AadConfigurationResponse?>(
+      'aadConfiguration',
+    );
+    administratorConfiguration =
+        registerOutput<AdministratorConfigurationResponse?>(
+          'administratorConfiguration',
+        );
+    attachedNetworkIds = registerOutput<List<String>>('attachedNetworkIds');
+    availableUpgrades = registerOutput<List<Map<String, dynamic>>>(
+      'availableUpgrades',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String>('clusterId');
+    connectedClusterId = registerOutput<String>('connectedClusterId');
+    controlPlaneKubernetesVersion = registerOutput<String>(
+      'controlPlaneKubernetesVersion',
+    );
+    controlPlaneNodeConfiguration =
+        registerOutput<ControlPlaneNodeConfigurationResponse>(
+          'controlPlaneNodeConfiguration',
+        );
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    featureStatuses = registerOutput<List<Map<String, dynamic>>>(
+      'featureStatuses',
+    );
+    initialAgentPoolConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'initialAgentPoolConfigurations',
+    );
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration =
+        registerOutput<ManagedResourceGroupConfigurationResponse?>(
+          'managedResourceGroupConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<NetworkConfigurationResponse>('networkConfiguration');
-    this.nodes = registerOutput<List<KubernetesClusterNodeResponse>>('nodes');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkConfiguration = registerOutput<NetworkConfigurationResponse>(
+      'networkConfiguration',
+    );
+    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

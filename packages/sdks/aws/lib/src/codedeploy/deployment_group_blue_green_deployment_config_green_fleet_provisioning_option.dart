@@ -15,15 +15,18 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-    };
+    return <String, dynamic>{'action': ?action};
   }
 
-  factory DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption(
-      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class ScanRunWarningTraceResponse {
 
   /// Creates a new [ScanRunWarningTraceResponse].
   /// [code] Indicates the warning code.
-  ScanRunWarningTraceResponse({
-    required this.code,
-  });
+  ScanRunWarningTraceResponse({required this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-    };
+    return <String, dynamic>{'code': code};
   }
 
   factory ScanRunWarningTraceResponse.fromMap(Map<String, dynamic> map) {
     return ScanRunWarningTraceResponse(
-      code: (map['code'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
-

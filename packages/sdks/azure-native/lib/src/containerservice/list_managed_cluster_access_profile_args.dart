@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListManagedClusterAccessProfileArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
+
   /// The name of the role for managed cluster accessProfile resource.
   final pulumi.Input<String> roleName;
 
@@ -32,12 +34,15 @@ class ListManagedClusterAccessProfileArgs {
     };
   }
 
-  factory ListManagedClusterAccessProfileArgs.fromMap(Map<String, dynamic> map) {
+  factory ListManagedClusterAccessProfileArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListManagedClusterAccessProfileArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      roleName: (map['roleName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      roleName: pulumi.Input.fromValue(map['roleName'] as String),
     );
   }
 }
-

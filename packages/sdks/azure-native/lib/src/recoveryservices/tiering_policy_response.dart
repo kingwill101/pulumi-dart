@@ -8,9 +8,11 @@ class TieringPolicyResponse {
   /// Number of days/weeks/months/years to retain backups in current tier before tiering.
   /// Used only if TieringMode is set to TierAfter
   final pulumi.Input<int>? duration;
+
   /// Retention duration type: days/weeks/months/years
   /// Used only if TieringMode is set to TierAfter
   final pulumi.Input<String>? durationType;
+
   /// Tiering Mode to control automatic tiering of recovery points. Supported values are:
   /// 1. TierRecommended: Tier all recovery points recommended to be tiered
   /// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
@@ -21,11 +23,7 @@ class TieringPolicyResponse {
   /// [duration] Number of days/weeks/months/years to retain backups in current tier before tiering.
   /// [durationType] Retention duration type: days/weeks/months/years
   /// [tieringMode] Tiering Mode to control automatic tiering of recovery points. Supported values are:
-  TieringPolicyResponse({
-    this.duration,
-    this.durationType,
-    this.tieringMode,
-  });
+  TieringPolicyResponse({this.duration, this.durationType, this.tieringMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,21 @@ class TieringPolicyResponse {
 
   factory TieringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TieringPolicyResponse(
-      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
-      durationType: map['durationType'] == null ? null : (map['durationType']! as String).input(),
-      tieringMode: map['tieringMode'] == null ? null : (map['tieringMode']! as String).input(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      durationType: (() {
+        final guardedValue = map['durationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tieringMode: (() {
+        final guardedValue = map['tieringMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

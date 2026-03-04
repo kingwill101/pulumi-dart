@@ -8,14 +8,19 @@ import 'query_list.dart';
 class SparkSqlJob {
   /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
   final pulumi.Input<List<String>>? jarFileUris;
+
   /// Optional. The runtime log config for job execution.
   final pulumi.Input<LoggingConfig>? loggingConfig;
+
   /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// The HCFS URI of the script that contains SQL queries.
   final pulumi.Input<String>? queryFileUri;
+
   /// A list of queries.
   final pulumi.Input<QueryList>? queryList;
+
   /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
   final pulumi.Input<Map<String, String>>? scriptVariables;
 
@@ -38,23 +43,62 @@ class SparkSqlJob {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jarFileUris': ?jarFileUris,
-      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<LoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            LoggingConfig,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
       'properties': ?properties,
       'queryFileUri': ?queryFileUri,
-      'queryList': ?pulumi.Input.mapOptionalInputValue<QueryList, Map<String, dynamic>>(queryList, (value) => value.toMap()),
+      'queryList':
+          ?pulumi.Input.mapOptionalInputValue<QueryList, Map<String, dynamic>>(
+            queryList,
+            (value) => value.toMap(),
+          ),
       'scriptVariables': ?scriptVariables,
     };
   }
 
   factory SparkSqlJob.fromMap(Map<String, dynamic> map) {
     return SparkSqlJob(
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri']! as String).input(),
-      queryList: map['queryList'] == null ? null : (QueryList.fromMap((map['queryList']! as Map).cast<String, dynamic>())).input(),
-      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables']! as Map).cast<String, String>()).input(),
+      jarFileUris: (() {
+        final guardedValue = map['jarFileUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      loggingConfig: (() {
+        final guardedValue = map['loggingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      queryFileUri: (() {
+        final guardedValue = map['queryFileUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryList: (() {
+        final guardedValue = map['queryList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QueryList.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      scriptVariables: (() {
+        final guardedValue = map['scriptVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,7 +5,11 @@ import 'get_repository_remote_repository_config_python_repository_custom_reposit
 
 class GetRepositoryRemoteRepositoryConfigPythonRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>> customRepositories;
+  final pulumi.Input<
+    List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>
+  >
+  customRepositories;
+
   /// Address of the remote repository. Possible values: ["PYPI"]
   final pulumi.Input<String> publicRepository;
 
@@ -19,16 +23,42 @@ class GetRepositoryRemoteRepositoryConfigPythonRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>, List<Map<String, dynamic>>>(customRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customRepositories':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+            >,
+            List<Map<String, dynamic>>
+          >(
+            customRepositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'publicRepository': publicRepository,
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigPythonRepository(
-      customRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>(map['customRepositories'], (value) => GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicRepository: (map['publicRepository'] as String).input(),
+      customRepositories: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+        >(
+          map['customRepositories']!,
+          (value) =>
+              GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      publicRepository: pulumi.Input.fromValue(
+        map['publicRepository'] as String,
+      ),
     );
   }
 }
-

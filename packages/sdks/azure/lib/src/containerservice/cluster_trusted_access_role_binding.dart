@@ -554,7 +554,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerService` - 2025-07-01
@@ -574,10 +574,13 @@ import 'cluster_trusted_access_role_binding_state.dart';
 class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
   /// Specifies the Kubernetes Cluster Id within which this Kubernetes Cluster Trusted Access Role Binding should exist. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
   late final pulumi.Output<String> kubernetesClusterId;
+
   /// Specifies the name of this Kubernetes Cluster Trusted Access Role Binding. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
   late final pulumi.Output<String> name;
+
   /// A list of roles to bind, each item is a resource type qualified role name.
   late final pulumi.Output<List<String>> roles;
+
   /// The ARM resource ID of source resource that trusted access is configured for. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
   late final pulumi.Output<String> sourceResourceId;
 
@@ -590,15 +593,15 @@ class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
     ClusterTrustedAccessRoleBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+         'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     this.name = registerOutput<String>('name');
-    this.roles = registerOutput<List<String>>('roles');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
+    roles = registerOutput<List<String>>('roles');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
   }
 
   /// Gets an existing [ClusterTrustedAccessRoleBinding] resource's state with the given [name] and [id].
@@ -619,14 +622,14 @@ class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+         'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     this.name = registerOutput<String>('name');
-    this.roles = registerOutput<List<String>>('roles');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
+    roles = registerOutput<List<String>>('roles');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
   }
 }

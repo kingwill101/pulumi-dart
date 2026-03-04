@@ -4,24 +4,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_spec_tcp_route_action_weighted_target.dart';
 
 class GetRouteSpecTcpRouteAction {
-  final pulumi.Input<List<GetRouteSpecTcpRouteActionWeightedTarget>> weightedTargets;
+  final pulumi.Input<List<GetRouteSpecTcpRouteActionWeightedTarget>>
+  weightedTargets;
 
   /// Creates a new [GetRouteSpecTcpRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecTcpRouteAction({
-    required this.weightedTargets,
-  });
+  GetRouteSpecTcpRouteAction({required this.weightedTargets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.mapInputValue<List<GetRouteSpecTcpRouteActionWeightedTarget>, List<Map<String, dynamic>>>(weightedTargets, (value) => pulumi.Input.encodeList<GetRouteSpecTcpRouteActionWeightedTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'weightedTargets':
+          pulumi.Input.mapInputValue<
+            List<GetRouteSpecTcpRouteActionWeightedTarget>,
+            List<Map<String, dynamic>>
+          >(
+            weightedTargets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRouteSpecTcpRouteActionWeightedTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetRouteSpecTcpRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteAction(
-      weightedTargets: (pulumi.Input.decodeList<GetRouteSpecTcpRouteActionWeightedTarget>(map['weightedTargets']!, (value) => GetRouteSpecTcpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weightedTargets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRouteSpecTcpRouteActionWeightedTarget>(
+          map['weightedTargets']!,
+          (value) => GetRouteSpecTcpRouteActionWeightedTarget.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

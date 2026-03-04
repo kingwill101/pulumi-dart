@@ -14,10 +14,13 @@ class GetNetworkInsightsPathArgs {
   /// Network Insights Paths. The given filters must match exactly one Network Insights Path
   /// whose data will be exported as attributes.
   final pulumi.Input<List<GetNetworkInsightsPathFilter>>? filters;
+
   /// ID of the Network Insights Path to select.
   final pulumi.Input<String>? networkInsightsPathId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +38,18 @@ class GetNetworkInsightsPathArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetNetworkInsightsPathFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetNetworkInsightsPathFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetNetworkInsightsPathFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNetworkInsightsPathFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'networkInsightsPathId': ?networkInsightsPathId,
       'region': ?region,
       'tags': ?tags,
@@ -44,11 +58,35 @@ class GetNetworkInsightsPathArgs {
 
   factory GetNetworkInsightsPathArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters']!, (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : ((map['networkInsightsPathId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(
+            guardedValue,
+            (value) => GetNetworkInsightsPathFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      networkInsightsPathId: (() {
+        final guardedValue = map['networkInsightsPathId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

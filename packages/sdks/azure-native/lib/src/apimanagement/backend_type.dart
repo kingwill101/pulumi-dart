@@ -3,16 +3,15 @@ enum BackendType {
   valueSingle("Single"),
   valuePool("Pool");
 
-  const BackendType(this.value);
-  final String value;
+  const BackendType(this.wireValue);
+  final String wireValue;
 
   static BackendType fromValue(String value) {
     for (final item in BackendType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendType value: $value');
   }
 }
-

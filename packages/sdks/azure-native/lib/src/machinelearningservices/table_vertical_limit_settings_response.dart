@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableVerticalLimitSettingsResponse {
   /// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
   final pulumi.Input<bool>? enableEarlyTermination;
+
   /// Exit score for the AutoML job.
   final pulumi.Input<double>? exitScore;
+
   /// Maximum Concurrent iterations.
   final pulumi.Input<int>? maxConcurrentTrials;
+
   /// Max cores per iteration.
   final pulumi.Input<int>? maxCoresPerTrial;
+
   /// Number of iterations.
   final pulumi.Input<int>? maxTrials;
+
   /// AutoML job timeout.
   final pulumi.Input<String>? timeout;
+
   /// Iteration timeout.
   final pulumi.Input<String>? trialTimeout;
 
@@ -51,14 +57,41 @@ class TableVerticalLimitSettingsResponse {
 
   factory TableVerticalLimitSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TableVerticalLimitSettingsResponse(
-      enableEarlyTermination: map['enableEarlyTermination'] == null ? null : (map['enableEarlyTermination']! as bool).input(),
-      exitScore: map['exitScore'] == null ? null : (map['exitScore']! as double).input(),
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials']! as int).input(),
-      maxCoresPerTrial: map['maxCoresPerTrial'] == null ? null : (map['maxCoresPerTrial']! as int).input(),
-      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
-      trialTimeout: map['trialTimeout'] == null ? null : (map['trialTimeout']! as String).input(),
+      enableEarlyTermination: (() {
+        final guardedValue = map['enableEarlyTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      exitScore: (() {
+        final guardedValue = map['exitScore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxConcurrentTrials: (() {
+        final guardedValue = map['maxConcurrentTrials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxCoresPerTrial: (() {
+        final guardedValue = map['maxCoresPerTrial'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxTrials: (() {
+        final guardedValue = map['maxTrials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trialTimeout: (() {
+        final guardedValue = map['trialTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

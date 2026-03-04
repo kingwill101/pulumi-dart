@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentVirtualMachineScaleSetArgs {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> maintenanceConfigurationId;
+
   /// Specifies the Virtual Machine Scale Set ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineScaleSetId;
 
@@ -32,12 +34,21 @@ class AssignmentVirtualMachineScaleSetArgs {
     };
   }
 
-  factory AssignmentVirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
+  factory AssignmentVirtualMachineScaleSetArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AssignmentVirtualMachineScaleSetArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      maintenanceConfigurationId: (map['maintenanceConfigurationId'] as String).input(),
-      virtualMachineScaleSetId: (map['virtualMachineScaleSetId'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceConfigurationId: pulumi.Input.fromValue(
+        map['maintenanceConfigurationId'] as String,
+      ),
+      virtualMachineScaleSetId: pulumi.Input.fromValue(
+        map['virtualMachineScaleSetId'] as String,
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerScheduleScheduleMonthly {
   /// The occurrence of the specified day during the month.
   final pulumi.Input<int> week;
+
   /// The day of the week on which the trigger runs.
   final pulumi.Input<String> weekday;
 
@@ -17,17 +18,13 @@ class GetTriggerScheduleScheduleMonthly {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'week': week,
-      'weekday': weekday,
-    };
+    return <String, dynamic>{'week': week, 'weekday': weekday};
   }
 
   factory GetTriggerScheduleScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return GetTriggerScheduleScheduleMonthly(
-      week: (map['week'] as int).input(),
-      weekday: (map['weekday'] as String).input(),
+      week: pulumi.Input.fromValue(map['week'] as int),
+      weekday: pulumi.Input.fromValue(map['weekday'] as String),
     );
   }
 }
-

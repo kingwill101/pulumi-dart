@@ -276,28 +276,41 @@ import 'system_data_response.dart';
 class Query extends pulumi.CustomResource {
   /// Object Id of user creating the query.
   late final pulumi.Output<String> author;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Body of the query.
   late final pulumi.Output<String> body;
+
   /// Description of the query.
   late final pulumi.Output<String?> description;
+
   /// Unique display name for your query within the Query Pack.
   late final pulumi.Output<String> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Additional properties that can be set for the query.
   late final pulumi.Output<dynamic> properties;
+
   /// The related metadata items for the function.
-  late final pulumi.Output<LogAnalyticsQueryPackQueryPropertiesResponseRelated?> related;
+  late final pulumi.Output<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>
+  related;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags associated with the query.
   late final pulumi.Output<Map<String, List<String>>?> tags;
+
   /// Creation Date for the Log Analytics Query, in ISO 8601 format.
   late final pulumi.Output<String> timeCreated;
+
   /// Last modified date of the Log Analytics Query, in ISO 8601 format.
   late final pulumi.Output<String> timeModified;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -305,28 +318,28 @@ class Query extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Query]. {@macro pulumi_operationalinsights_query_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Query(
-    String name, {
-    QueryArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:operationalinsights:Query',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.author = registerOutput<String>('author');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.body = registerOutput<String>('body');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+  Query(String name, {QueryArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:operationalinsights:Query',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    author = registerOutput<String>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    body = registerOutput<String>('body');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<dynamic>('properties');
-    this.related = registerOutput<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>('related');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, List<String>>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<dynamic>('properties');
+    related =
+        registerOutput<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>(
+          'related',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, List<String>>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
   }
 }

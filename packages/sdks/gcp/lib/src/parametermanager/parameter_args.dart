@@ -11,9 +11,11 @@ class ParameterArgs {
   /// Default value is `UNFORMATTED`.
   /// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
   final pulumi.Input<String>? format;
+
   /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
   final pulumi.Input<String>? kmsKey;
+
   /// The labels assigned to this Parameter.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
   /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -26,8 +28,10 @@ class ParameterArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// This must be unique within the project.
   final pulumi.Input<String> parameterId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -58,12 +62,29 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      parameterId: (map['parameterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      parameterId: pulumi.Input.fromValue(map['parameterId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

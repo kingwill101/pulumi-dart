@@ -6,16 +6,22 @@ import 'identity_properties_response.dart';
 class GetServiceRunnerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The identifier of the resource.
   final String id;
+
   /// The identity of the resource.
   final IdentityPropertiesResponse? identity;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
 
@@ -41,7 +47,7 @@ class GetServiceRunnerResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'tags': ?tags,
@@ -53,12 +59,25 @@ class GetServiceRunnerResult {
     return GetServiceRunnerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

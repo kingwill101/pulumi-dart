@@ -4,16 +4,20 @@ enum GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis {
   currentSpend("CURRENT_SPEND"),
   forecastedSpend("FORECASTED_SPEND");
 
-  const GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis(this.value);
-  final String value;
+  const GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis fromValue(String value) {
-    for (final item in GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis.values) {
-      if (item.value == value) {
+  static GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis value: $value',
+    );
   }
 }
-

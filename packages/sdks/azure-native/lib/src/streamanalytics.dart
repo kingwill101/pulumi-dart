@@ -1,5 +1,3 @@
-library module_streamanalytics;
-
 export 'streamanalytics/aggregate_function_properties.dart';
 export 'streamanalytics/aggregate_function_properties_response.dart';
 export 'streamanalytics/authentication_mode.dart';

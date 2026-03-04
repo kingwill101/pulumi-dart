@@ -12,7 +12,7 @@ import 'get_service_result.dart';
 
 /// This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.82.0+
+/// &gt; **NOTE:** Available in 1.82.0+
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ Future<GetApplicationsResult> getApplications(
 
 /// This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.82.0+
+/// &gt; **NOTE:** Available in 1.82.0+
 ///
 /// ## Example Usage
 ///
@@ -276,7 +276,7 @@ Future<GetClustersResult> getClusters(
 
 /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.82.0+
+/// &gt; **NOTE:** Available in 1.82.0+
 ///
 /// ## Example Usage
 ///
@@ -311,7 +311,7 @@ Future<GetDeployGroupsResult> getDeployGroups(
 
 /// This data source provides the Edas Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.173.0+.
+/// &gt; **NOTE:** Available in v1.173.0+.
 ///
 /// ## Example Usage
 ///
@@ -468,9 +468,9 @@ Future<GetNamespacesResult> getNamespaces(
 ///
 /// For information about EDAS and how to use it, see [What is EDAS](https://www.alibabacloud.com/help/product/29500.htm).
 ///
-/// > **NOTE:** Available in v1.98.0+
+/// &gt; **NOTE:** Available in v1.98.0+
 ///
-/// > **NOTE:** The EDAS service is not support to be open automatically in the international site.
+/// &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
 ///
 /// ## Example Usage
 ///

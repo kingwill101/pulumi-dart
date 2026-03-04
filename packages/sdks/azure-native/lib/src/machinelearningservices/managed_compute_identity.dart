@@ -8,29 +8,40 @@ class ManagedComputeIdentity {
   /// Monitor compute identity type enum.
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> computeIdentityType;
+
   /// The identity which will be leveraged by the monitoring jobs.
   final pulumi.Input<ManagedServiceIdentity>? identity;
 
   /// Creates a new [ManagedComputeIdentity].
   /// [computeIdentityType] Monitor compute identity type enum.
   /// [identity] The identity which will be leveraged by the monitoring jobs.
-  ManagedComputeIdentity({
-    required this.computeIdentityType,
-    this.identity,
-  });
+  ManagedComputeIdentity({required this.computeIdentityType, this.identity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'computeIdentityType': computeIdentityType,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
     };
   }
 
   factory ManagedComputeIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedComputeIdentity(
-      computeIdentityType: (map['computeIdentityType'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      computeIdentityType: pulumi.Input.fromValue(
+        map['computeIdentityType'] as String,
+      ),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,8 +6,11 @@ import 'spark_cluster_private_link_configuration_ip_configuration.dart';
 class SparkClusterPrivateLinkConfiguration {
   /// The ID of the private link service group.
   final pulumi.Input<String> groupId;
+
   /// An `ip_configuration` block as defined below.
-  final pulumi.Input<SparkClusterPrivateLinkConfigurationIpConfiguration> ipConfiguration;
+  final pulumi.Input<SparkClusterPrivateLinkConfigurationIpConfiguration>
+  ipConfiguration;
+
   /// The name of the private link configuration.
   final pulumi.Input<String> name;
 
@@ -24,17 +27,26 @@ class SparkClusterPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupId': groupId,
-      'ipConfiguration': pulumi.Input.mapInputValue<SparkClusterPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
+      'ipConfiguration':
+          pulumi.Input.mapInputValue<
+            SparkClusterPrivateLinkConfigurationIpConfiguration,
+            Map<String, dynamic>
+          >(ipConfiguration, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory SparkClusterPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SparkClusterPrivateLinkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SparkClusterPrivateLinkConfiguration(
-      groupId: (map['groupId'] as String).input(),
-      ipConfiguration: (SparkClusterPrivateLinkConfigurationIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      ipConfiguration: pulumi.Input.fromValue(
+        SparkClusterPrivateLinkConfigurationIpConfiguration.fromMap(
+          (map['ipConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

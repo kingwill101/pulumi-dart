@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_site_args.dart';
-import 'vpn_site_link.dart';
 import 'vpn_site_o365_policy.dart';
 import 'vpn_site_state.dart';
 
@@ -231,7 +230,7 @@ import 'vpn_site_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -246,24 +245,33 @@ import 'vpn_site_state.dart';
 class VpnSite extends pulumi.CustomResource {
   /// Specifies a list of IP address CIDRs that are located on your on-premises site. Traffic destined for these address spaces is routed to your local site.
   ///
-  /// > **Note:** The `address_cidrs` has to be set when the `link.bgp` isn't specified.
+  /// &gt; **Note:** The `address_cidrs` has to be set when the `link.bgp` isn't specified.
   late final pulumi.Output<List<String>?> addressCidrs;
+
   /// The model of the VPN device.
   late final pulumi.Output<String?> deviceModel;
+
   /// The name of the VPN device vendor.
   late final pulumi.Output<String?> deviceVendor;
+
   /// One or more `link` blocks as defined below.
-  late final pulumi.Output<List<VpnSiteLink>?> links;
+  late final pulumi.Output<List<Map<String, dynamic>>?> links;
+
   /// The Azure Region where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> name;
+
   /// An `o365_policy` block as defined below.
   late final pulumi.Output<VpnSiteO365Policy> o365Policy;
+
   /// The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the VPN Site.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Virtual Wan where this VPN site resides in. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> virtualWanId;
 
@@ -276,21 +284,21 @@ class VpnSite extends pulumi.CustomResource {
     VpnSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnSite:VpnSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressCidrs = registerOutput<List<String>?>('addressCidrs');
-    this.deviceModel = registerOutput<String?>('deviceModel');
-    this.deviceVendor = registerOutput<String?>('deviceVendor');
-    this.links = registerOutput<List<VpnSiteLink>?>('links');
-    this.location = registerOutput<String>('location');
+         'azure:network/vpnSite:VpnSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressCidrs = registerOutput<List<String>?>('addressCidrs');
+    deviceModel = registerOutput<String?>('deviceModel');
+    deviceVendor = registerOutput<String?>('deviceVendor');
+    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualWanId = registerOutput<String>('virtualWanId');
+    o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualWanId = registerOutput<String>('virtualWanId');
   }
 
   /// Gets an existing [VpnSite] resource's state with the given [name] and [id].
@@ -311,20 +319,20 @@ class VpnSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnSite:VpnSite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressCidrs = registerOutput<List<String>?>('addressCidrs');
-    this.deviceModel = registerOutput<String?>('deviceModel');
-    this.deviceVendor = registerOutput<String?>('deviceVendor');
-    this.links = registerOutput<List<VpnSiteLink>?>('links');
-    this.location = registerOutput<String>('location');
+         'azure:network/vpnSite:VpnSite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressCidrs = registerOutput<List<String>?>('addressCidrs');
+    deviceModel = registerOutput<String?>('deviceModel');
+    deviceVendor = registerOutput<String?>('deviceVendor');
+    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualWanId = registerOutput<String>('virtualWanId');
+    o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualWanId = registerOutput<String>('virtualWanId');
   }
 }

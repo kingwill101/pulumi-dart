@@ -1,5 +1,3 @@
-library module_siteverification;
-
 export 'siteverification/functions.dart';
 export 'siteverification/get_token_args.dart';
 export 'siteverification/get_token_result.dart';

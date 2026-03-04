@@ -6,20 +6,28 @@ import 'resource_provider_endpoint_features_rule.dart';
 class ResourceProviderEndpoint {
   /// The api versions.
   final pulumi.Input<List<String>>? apiVersions;
+
   /// Whether the endpoint is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// The endpoint type.
   final pulumi.Input<String>? endpointType;
+
   /// The endpoint uri.
   final pulumi.Input<String>? endpointUri;
+
   /// The feature rules.
   final pulumi.Input<ResourceProviderEndpointFeaturesRule>? featuresRule;
+
   /// The locations.
   final pulumi.Input<List<String>>? locations;
+
   /// The required features.
   final pulumi.Input<List<String>>? requiredFeatures;
+
   /// The sku link.
   final pulumi.Input<String>? skuLink;
+
   /// The timeout.
   final pulumi.Input<String>? timeout;
 
@@ -51,7 +59,11 @@ class ResourceProviderEndpoint {
       'enabled': ?enabled,
       'endpointType': ?endpointType,
       'endpointUri': ?endpointUri,
-      'featuresRule': ?pulumi.Input.mapOptionalInputValue<ResourceProviderEndpointFeaturesRule, Map<String, dynamic>>(featuresRule, (value) => value.toMap()),
+      'featuresRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceProviderEndpointFeaturesRule,
+            Map<String, dynamic>
+          >(featuresRule, (value) => value.toMap()),
       'locations': ?locations,
       'requiredFeatures': ?requiredFeatures,
       'skuLink': ?skuLink,
@@ -61,16 +73,55 @@ class ResourceProviderEndpoint {
 
   factory ResourceProviderEndpoint.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpoint(
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
-      featuresRule: map['featuresRule'] == null ? null : (ResourceProviderEndpointFeaturesRule.fromMap((map['featuresRule']! as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
-      skuLink: map['skuLink'] == null ? null : (map['skuLink']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      apiVersions: (() {
+        final guardedValue = map['apiVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointUri: (() {
+        final guardedValue = map['endpointUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featuresRule: (() {
+        final guardedValue = map['featuresRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceProviderEndpointFeaturesRule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      requiredFeatures: (() {
+        final guardedValue = map['requiredFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      skuLink: (() {
+        final guardedValue = map['skuLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

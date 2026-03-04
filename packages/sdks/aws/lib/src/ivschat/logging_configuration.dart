@@ -670,16 +670,23 @@ import 'logging_configuration_state.dart';
 class LoggingConfiguration extends pulumi.CustomResource {
   /// ARN of the Logging Configuration.
   late final pulumi.Output<String> arn;
+
   /// Object containing destination configuration for where chat activity will be logged. This object must contain exactly one of the following children arguments:
-  late final pulumi.Output<LoggingConfigurationDestinationConfiguration?> destinationConfiguration;
+  late final pulumi.Output<LoggingConfigurationDestinationConfiguration?>
+  destinationConfiguration;
+
   /// Logging Configuration name.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// State of the Logging Configuration.
   late final pulumi.Output<String> state;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -692,18 +699,21 @@ class LoggingConfiguration extends pulumi.CustomResource {
     LoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivschat/loggingConfiguration:LoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration');
+         'aws:ivschat/loggingConfiguration:LoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    destinationConfiguration =
+        registerOutput<LoggingConfigurationDestinationConfiguration?>(
+          'destinationConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [LoggingConfiguration] resource's state with the given [name] and [id].
@@ -724,17 +734,20 @@ class LoggingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivschat/loggingConfiguration:LoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration');
+         'aws:ivschat/loggingConfiguration:LoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    destinationConfiguration =
+        registerOutput<LoggingConfigurationDestinationConfiguration?>(
+          'destinationConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

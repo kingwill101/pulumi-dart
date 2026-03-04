@@ -9,20 +9,19 @@ class SignalRTlsSettings {
 
   /// Creates a new [SignalRTlsSettings].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  SignalRTlsSettings({
-    this.clientCertEnabled,
-  });
+  SignalRTlsSettings({this.clientCertEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientCertEnabled': ?clientCertEnabled,
-    };
+    return <String, dynamic>{'clientCertEnabled': ?clientCertEnabled};
   }
 
   factory SignalRTlsSettings.fromMap(Map<String, dynamic> map) {
     return SignalRTlsSettings(
-      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled']! as bool).input(),
+      clientCertEnabled: (() {
+        final guardedValue = map['clientCertEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class CertificateReferenceResponse {
 
   /// Creates a new [CertificateReferenceResponse].
   /// [resourceId] Resource Id of the certificate
-  CertificateReferenceResponse({
-    required this.resourceId,
-  });
+  CertificateReferenceResponse({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
   factory CertificateReferenceResponse.fromMap(Map<String, dynamic> map) {
     return CertificateReferenceResponse(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

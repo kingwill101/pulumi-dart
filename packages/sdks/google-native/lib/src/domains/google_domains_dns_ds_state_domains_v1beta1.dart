@@ -4,16 +4,17 @@ enum GoogleDomainsDnsDsStateDomainsV1beta1 {
   dsRecordsUnpublished("DS_RECORDS_UNPUBLISHED"),
   dsRecordsPublished("DS_RECORDS_PUBLISHED");
 
-  const GoogleDomainsDnsDsStateDomainsV1beta1(this.value);
-  final String value;
+  const GoogleDomainsDnsDsStateDomainsV1beta1(this.wireValue);
+  final String wireValue;
 
   static GoogleDomainsDnsDsStateDomainsV1beta1 fromValue(String value) {
     for (final item in GoogleDomainsDnsDsStateDomainsV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleDomainsDnsDsStateDomainsV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GoogleDomainsDnsDsStateDomainsV1beta1 value: $value',
+    );
   }
 }
-

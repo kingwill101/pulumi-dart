@@ -9,20 +9,19 @@ class AutoTuneStateEnumValueResponse {
 
   /// Creates a new [AutoTuneStateEnumValueResponse].
   /// [value] Property value
-  AutoTuneStateEnumValueResponse({
-    this.value,
-  });
+  AutoTuneStateEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory AutoTuneStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return AutoTuneStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

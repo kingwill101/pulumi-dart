@@ -8,20 +8,21 @@ class PacketMirroringNetworkInfoComputeV1 {
 
   /// Creates a new [PacketMirroringNetworkInfoComputeV1].
   /// [url] URL of the network resource.
-  PacketMirroringNetworkInfoComputeV1({
-    this.url,
-  });
+  PacketMirroringNetworkInfoComputeV1({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
-  factory PacketMirroringNetworkInfoComputeV1.fromMap(Map<String, dynamic> map) {
+  factory PacketMirroringNetworkInfoComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PacketMirroringNetworkInfoComputeV1(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

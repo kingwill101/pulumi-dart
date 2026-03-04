@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterStatusArgs {
   /// The name of the router.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource
   /// belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region this router has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
@@ -20,11 +22,7 @@ class RouterStatusArgs {
   /// [name] The name of the router.
   /// [project] The ID of the project in which the resource
   /// [region] The region this router has been created in. If
-  RouterStatusArgs({
-    required this.name,
-    this.project,
-    this.region,
-  });
+  RouterStatusArgs({required this.name, this.project, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,17 @@ class RouterStatusArgs {
 
   factory RouterStatusArgs.fromMap(Map<String, dynamic> map) {
     return RouterStatusArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,13 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEncryptedValueArgs {
   /// The Algorithm which should be used to Decrypt/Encrypt this Value. Possible values are `RSA1_5`, `RSA-OAEP` and `RSA-OAEP-256`.
   final pulumi.Input<String> algorithm;
+
   /// The Base64 URL Encoded Encrypted Data which should be decrypted into `plain_text_value`.
   final pulumi.Input<String>? encryptedData;
+
   /// The ID of the Key Vault Key which should be used to Decrypt/Encrypt this Value.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The plain-text value which should be Encrypted into `encrypted_data`.
   ///
-  /// > **Note:** One of either `encrypted_data` or `plain_text_value` must be specified and is used to populate the encrypted/decrypted value for the other field.
+  /// &gt; **Note:** One of either `encrypted_data` or `plain_text_value` must be specified and is used to populate the encrypted/decrypted value for the other field.
   final pulumi.Input<String>? plainTextValue;
 
   /// Creates a new [GetEncryptedValueArgs].
@@ -41,11 +44,18 @@ class GetEncryptedValueArgs {
 
   factory GetEncryptedValueArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptedValueArgs(
-      algorithm: (map['algorithm'] as String).input(),
-      encryptedData: map['encryptedData'] == null ? null : (map['encryptedData']! as String).input(),
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      plainTextValue: map['plainTextValue'] == null ? null : (map['plainTextValue']! as String).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      encryptedData: (() {
+        final guardedValue = map['encryptedData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      plainTextValue: (() {
+        final guardedValue = map['plainTextValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveDirectoryProperties {
   /// Specifies the Active Directory account type for Azure Storage.
   final pulumi.Input<String>? accountType;
+
   /// Specifies the security identifier (SID) for Azure Storage.
   final pulumi.Input<String>? azureStorageSid;
+
   /// Specifies the domain GUID.
   final pulumi.Input<String> domainGuid;
+
   /// Specifies the primary domain that the AD DNS server is authoritative for.
   final pulumi.Input<String> domainName;
+
   /// Specifies the security identifier (SID).
   final pulumi.Input<String>? domainSid;
+
   /// Specifies the Active Directory forest to get.
   final pulumi.Input<String>? forestName;
+
   /// Specifies the NetBIOS domain name.
   final pulumi.Input<String>? netBiosDomainName;
+
   /// Specifies the Active Directory SAMAccountName for Azure Storage.
   final pulumi.Input<String>? samAccountName;
 
@@ -56,15 +63,38 @@ class ActiveDirectoryProperties {
 
   factory ActiveDirectoryProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryProperties(
-      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
-      azureStorageSid: map['azureStorageSid'] == null ? null : (map['azureStorageSid']! as String).input(),
-      domainGuid: (map['domainGuid'] as String).input(),
-      domainName: (map['domainName'] as String).input(),
-      domainSid: map['domainSid'] == null ? null : (map['domainSid']! as String).input(),
-      forestName: map['forestName'] == null ? null : (map['forestName']! as String).input(),
-      netBiosDomainName: map['netBiosDomainName'] == null ? null : (map['netBiosDomainName']! as String).input(),
-      samAccountName: map['samAccountName'] == null ? null : (map['samAccountName']! as String).input(),
+      accountType: (() {
+        final guardedValue = map['accountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureStorageSid: (() {
+        final guardedValue = map['azureStorageSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainGuid: pulumi.Input.fromValue(map['domainGuid'] as String),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      domainSid: (() {
+        final guardedValue = map['domainSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forestName: (() {
+        final guardedValue = map['forestName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      netBiosDomainName: (() {
+        final guardedValue = map['netBiosDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      samAccountName: (() {
+        final guardedValue = map['samAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

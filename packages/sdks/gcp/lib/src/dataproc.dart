@@ -1,5 +1,3 @@
-library module_dataproc;
-
 export 'dataproc/autoscaling_policy.dart';
 export 'dataproc/autoscaling_policy_args.dart';
 export 'dataproc/autoscaling_policy_basic_algorithm.dart';

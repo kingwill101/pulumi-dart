@@ -8,16 +8,20 @@ enum NetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   serverless("SERVERLESS");
 
-  const NetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.value);
-  final String value;
+  const NetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static NetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
-    for (final item in NetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
-      if (item.value == value) {
+  static NetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in NetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value',
+    );
   }
 }
-

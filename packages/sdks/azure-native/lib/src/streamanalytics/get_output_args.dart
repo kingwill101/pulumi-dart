@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutputArgs {
   /// The name of the streaming job.
   final pulumi.Input<String> jobName;
+
   /// The name of the output.
   final pulumi.Input<String> outputName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetOutputArgs {
 
   factory GetOutputArgs.fromMap(Map<String, dynamic> map) {
     return GetOutputArgs(
-      jobName: (map['jobName'] as String).input(),
-      outputName: (map['outputName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      outputName: pulumi.Input.fromValue(map['outputName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

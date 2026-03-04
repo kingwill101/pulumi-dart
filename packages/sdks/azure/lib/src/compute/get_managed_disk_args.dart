@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedDiskArgs {
   /// Specifies the name of the Managed Disk.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the Resource Group where this Managed Disk exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetManagedDiskArgs].
   /// [name] Specifies the name of the Managed Disk.
   /// [resourceGroupName] Specifies the name of the Resource Group where this Managed Disk exists.
-  GetManagedDiskArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetManagedDiskArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetManagedDiskArgs {
 
   factory GetManagedDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDiskArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

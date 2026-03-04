@@ -11,6 +11,7 @@ class DeviceCapacityResourceK8sIoV1beta1 {
   ///
   /// If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value.
   final pulumi.Input<CapacityRequestPolicyResourceK8sIoV1beta1>? requestPolicy;
+
   /// Value defines how much of a certain capacity that device has.
   ///
   /// This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value.
@@ -19,23 +20,31 @@ class DeviceCapacityResourceK8sIoV1beta1 {
   /// Creates a new [DeviceCapacityResourceK8sIoV1beta1].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
   /// [value] Value defines how much of a certain capacity that device has.
-  DeviceCapacityResourceK8sIoV1beta1({
-    this.requestPolicy,
-    required this.value,
-  });
+  DeviceCapacityResourceK8sIoV1beta1({this.requestPolicy, required this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestPolicy': ?pulumi.Input.mapOptionalInputValue<CapacityRequestPolicyResourceK8sIoV1beta1, Map<String, dynamic>>(requestPolicy, (value) => value.toMap()),
+      'requestPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            CapacityRequestPolicyResourceK8sIoV1beta1,
+            Map<String, dynamic>
+          >(requestPolicy, (value) => value.toMap()),
       'value': value,
     };
   }
 
   factory DeviceCapacityResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceCapacityResourceK8sIoV1beta1(
-      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyResourceK8sIoV1beta1.fromMap((map['requestPolicy']! as Map).cast<String, dynamic>())).input(),
-      value: (map['value'] as String).input(),
+      requestPolicy: (() {
+        final guardedValue = map['requestPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CapacityRequestPolicyResourceK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

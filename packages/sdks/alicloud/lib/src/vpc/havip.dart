@@ -238,34 +238,48 @@ import 'havip_state.dart';
 class HAVip extends pulumi.CustomResource {
   /// The elastic IP address (EIP) associated with the HAVIP.
   late final pulumi.Output<List<String>> associatedEipAddresses;
+
   /// The type of the instance with which the HAVIP is associated. Valid values:
   /// - `EcsInstance`: an ECS instance.
   /// - `NetworkInterface`: an ENI.
   late final pulumi.Output<String> associatedInstanceType;
+
   /// The ID of the instance with which the HAVIP is associated.
   late final pulumi.Output<List<String>> associatedInstances;
+
   /// The time when the HAVIP was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of the HaVip instance.
   late final pulumi.Output<String?> description;
+
   /// The ID of the HAVIP.
   late final pulumi.Output<String> haVipId;
+
   /// The name of the HAVIP.
   late final pulumi.Output<String> haVipName;
+
   /// The name of the HaVip instance.
   late final pulumi.Output<String> havipName;
+
   /// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
   late final pulumi.Output<String> ipAddress;
+
   /// The ID of the active instance that is associated with the HAVIP.
   late final pulumi.Output<String> masterInstanceId;
+
   /// The ID of the resource group to which the HAVIP belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// (Available since v1.120.0) The status of the HaVip instance.
   late final pulumi.Output<String> status;
+
   /// The list of tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC to which the HAVIP belongs.
   late final pulumi.Output<String> vpcId;
+
   /// The vswitch_id of the HaVip, the field can't be changed.
   late final pulumi.Output<String> vswitchId;
 
@@ -273,39 +287,34 @@ class HAVip extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [HAVip]. {@macro pulumi_vpc_h_avip_havip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  HAVip(
-    String name, {
-    HAVipArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:vpc/hAVip:HAVip',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedEipAddresses = registerOutput<List<String>>('associatedEipAddresses');
-    this.associatedInstanceType = registerOutput<String>('associatedInstanceType');
-    this.associatedInstances = registerOutput<List<String>>('associatedInstances');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.haVipId = registerOutput<String>('haVipId');
-    this.haVipName = registerOutput<String>('haVipName');
-    this.havipName = registerOutput<String>('havipName');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.masterInstanceId = registerOutput<String>('masterInstanceId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+  HAVip(String name, {HAVipArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:vpc/hAVip:HAVip',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    associatedEipAddresses = registerOutput<List<String>>(
+      'associatedEipAddresses',
+    );
+    associatedInstanceType = registerOutput<String>('associatedInstanceType');
+    associatedInstances = registerOutput<List<String>>('associatedInstances');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    haVipId = registerOutput<String>('haVipId');
+    haVipName = registerOutput<String>('haVipName');
+    havipName = registerOutput<String>('havipName');
+    ipAddress = registerOutput<String>('ipAddress');
+    masterInstanceId = registerOutput<String>('masterInstanceId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [HAVip] resource's state with the given [name] and [id].
-  static HAVip get(
-    String name,
-    pulumi.Input<String> id, {
-    HAVipState? state,
-  }) {
+  static HAVip get(String name, pulumi.Input<String> id, {HAVipState? state}) {
     return HAVip._get(
       name,
       state: state?.toMap(),
@@ -318,25 +327,27 @@ class HAVip extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/hAVip:HAVip',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedEipAddresses = registerOutput<List<String>>('associatedEipAddresses');
-    this.associatedInstanceType = registerOutput<String>('associatedInstanceType');
-    this.associatedInstances = registerOutput<List<String>>('associatedInstances');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.haVipId = registerOutput<String>('haVipId');
-    this.haVipName = registerOutput<String>('haVipName');
-    this.havipName = registerOutput<String>('havipName');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.masterInstanceId = registerOutput<String>('masterInstanceId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:vpc/hAVip:HAVip',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedEipAddresses = registerOutput<List<String>>(
+      'associatedEipAddresses',
+    );
+    associatedInstanceType = registerOutput<String>('associatedInstanceType');
+    associatedInstances = registerOutput<List<String>>('associatedInstances');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    haVipId = registerOutput<String>('haVipId');
+    haVipName = registerOutput<String>('haVipName');
+    havipName = registerOutput<String>('havipName');
+    ipAddress = registerOutput<String>('ipAddress');
+    masterInstanceId = registerOutput<String>('masterInstanceId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

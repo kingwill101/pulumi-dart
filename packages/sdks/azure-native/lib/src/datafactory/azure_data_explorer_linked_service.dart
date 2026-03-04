@@ -10,27 +10,38 @@ import 'parameter_specification.dart';
 class AzureDataExplorerLinkedService {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+
   /// The credential reference containing authentication information.
   final pulumi.Input<CredentialReference>? credential;
+
   /// Database name for connection. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> database;
+
   /// Linked service description.
   final pulumi.Input<String>? description;
-  /// The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format https://<clusterName>.<regionName>.kusto.windows.net. Type: string (or Expression with resultType string)
+
+  /// The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format https://&lt;clusterName&gt;.&lt;regionName&gt;.kusto.windows.net. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic> endpoint;
+
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+
   /// The ID of the service principal used to authenticate against Azure Data Explorer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalId;
+
   /// The key of the service principal used to authenticate against Kusto.
   final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalKey;
+
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? tenant;
+
   /// Type of linked service.
   /// Expected value is 'AzureDataExplorer'.
   final pulumi.Input<String> type;
+
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -40,7 +51,7 @@ class AzureDataExplorerLinkedService {
   /// [credential] The credential reference containing authentication information.
   /// [database] Database name for connection. Type: string (or Expression with resultType string).
   /// [description] Linked service description.
-  /// [endpoint] The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format https://<clusterName>.<regionName>.kusto.windows.net. Type: string (or Expression with resultType string)
+  /// [endpoint] The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format https://&lt;clusterName&gt;.&lt;regionName&gt;.kusto.windows.net. Type: string (or Expression with resultType string)
   /// [parameters] Parameters for linked service.
   /// [servicePrincipalId] The ID of the service principal used to authenticate against Azure Data Explorer. Type: string (or Expression with resultType string).
   /// [servicePrincipalKey] The key of the service principal used to authenticate against Kusto.
@@ -65,14 +76,37 @@ class AzureDataExplorerLinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
-      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'connectVia':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeReference,
+            Map<String, dynamic>
+          >(connectVia, (value) => value.toMap()),
+      'credential':
+          ?pulumi.Input.mapOptionalInputValue<
+            CredentialReference,
+            Map<String, dynamic>
+          >(credential, (value) => value.toMap()),
       'database': database,
       'description': ?description,
       'endpoint': endpoint,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecification>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureKeyVaultSecretReference,
+            Map<String, dynamic>
+          >(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
       'version': ?version,
@@ -81,19 +115,73 @@ class AzureDataExplorerLinkedService {
 
   factory AzureDataExplorerLinkedService.fromMap(Map<String, dynamic> map) {
     return AzureDataExplorerLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
-      credential: map['credential'] == null ? null : (CredentialReference.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
-      database: (map['database']).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpoint: (map['endpoint']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']!).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant']!).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      connectVia: (() {
+        final guardedValue = map['connectVia'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CredentialReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      database: pulumi.Input.fromValue(map['database']),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: pulumi.Input.fromValue(map['endpoint']),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecification>(
+            guardedValue,
+            (value) => ParameterSpecification.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      servicePrincipalId: (() {
+        final guardedValue = map['servicePrincipalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      servicePrincipalKey: (() {
+        final guardedValue = map['servicePrincipalKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureKeyVaultSecretReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tenant: (() {
+        final guardedValue = map['tenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

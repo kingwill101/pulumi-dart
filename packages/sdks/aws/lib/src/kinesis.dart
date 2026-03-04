@@ -1,5 +1,3 @@
-library module_kinesis;
-
 export 'kinesis/analytics_application.dart';
 export 'kinesis/analytics_application_args.dart';
 export 'kinesis/analytics_application_cloudwatch_logging_options.dart';

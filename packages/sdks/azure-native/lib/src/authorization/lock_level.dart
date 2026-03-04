@@ -4,16 +4,15 @@ enum LockLevel {
   valueCanNotDelete("CanNotDelete"),
   valueReadOnly("ReadOnly");
 
-  const LockLevel(this.value);
-  final String value;
+  const LockLevel(this.wireValue);
+  final String wireValue;
 
   static LockLevel fromValue(String value) {
     for (final item in LockLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LockLevel value: $value');
   }
 }
-

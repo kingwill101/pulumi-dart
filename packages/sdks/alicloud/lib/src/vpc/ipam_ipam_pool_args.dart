@@ -10,33 +10,45 @@ class IpamIpamPoolArgs {
   /// The default network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   final pulumi.Input<int>? allocationDefaultCidrMask;
+
   /// The maximum network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   final pulumi.Input<int>? allocationMaxCidrMask;
+
   /// The minimum Network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   final pulumi.Input<int>? allocationMinCidrMask;
+
   /// Whether the automatic import function is enabled for the address pool.
   final pulumi.Input<bool>? autoImport;
+
   /// Whether to clear the default network mask of the IPAM address pool. Value:
   final pulumi.Input<bool>? clearAllocationDefaultCidrMask;
+
   /// The IP protocol version. Currently, only `IPv4` is supported * *.
   final pulumi.Input<String>? ipVersion;
+
   /// The description of the IPAM address pool.
   /// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   final pulumi.Input<String>? ipamPoolDescription;
+
   /// The name of the resource.
   final pulumi.Input<String>? ipamPoolName;
+
   /// Ipam scope id.
   final pulumi.Input<String> ipamScopeId;
+
   /// The effective region of the IPAM address pool.
   final pulumi.Input<String>? poolRegionId;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The instance ID of the source IPAM address pool.
   ///
-  /// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
+  /// &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
   final pulumi.Input<String>? sourceIpamPoolId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -90,20 +102,69 @@ class IpamIpamPoolArgs {
 
   factory IpamIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolArgs(
-      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] == null ? null : (map['allocationDefaultCidrMask']! as int).input(),
-      allocationMaxCidrMask: map['allocationMaxCidrMask'] == null ? null : (map['allocationMaxCidrMask']! as int).input(),
-      allocationMinCidrMask: map['allocationMinCidrMask'] == null ? null : (map['allocationMinCidrMask']! as int).input(),
-      autoImport: map['autoImport'] == null ? null : (map['autoImport']! as bool).input(),
-      clearAllocationDefaultCidrMask: map['clearAllocationDefaultCidrMask'] == null ? null : (map['clearAllocationDefaultCidrMask']! as bool).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      ipamPoolDescription: map['ipamPoolDescription'] == null ? null : (map['ipamPoolDescription']! as String).input(),
-      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName']! as String).input(),
-      ipamScopeId: (map['ipamScopeId'] as String).input(),
-      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      allocationDefaultCidrMask: (() {
+        final guardedValue = map['allocationDefaultCidrMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      allocationMaxCidrMask: (() {
+        final guardedValue = map['allocationMaxCidrMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      allocationMinCidrMask: (() {
+        final guardedValue = map['allocationMinCidrMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoImport: (() {
+        final guardedValue = map['autoImport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clearAllocationDefaultCidrMask: (() {
+        final guardedValue = map['clearAllocationDefaultCidrMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolDescription: (() {
+        final guardedValue = map['ipamPoolDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolName: (() {
+        final guardedValue = map['ipamPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamScopeId: pulumi.Input.fromValue(map['ipamScopeId'] as String),
+      poolRegionId: (() {
+        final guardedValue = map['poolRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceIpamPoolId: (() {
+        final guardedValue = map['sourceIpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

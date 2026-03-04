@@ -15,17 +15,15 @@ class GetSnapshotEncryptionSettingKeyEncryptionKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyUrl': keyUrl,
-      'sourceVaultId': sourceVaultId,
-    };
+    return <String, dynamic>{'keyUrl': keyUrl, 'sourceVaultId': sourceVaultId};
   }
 
-  factory GetSnapshotEncryptionSettingKeyEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory GetSnapshotEncryptionSettingKeyEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSnapshotEncryptionSettingKeyEncryptionKey(
-      keyUrl: (map['keyUrl'] as String).input(),
-      sourceVaultId: (map['sourceVaultId'] as String).input(),
+      keyUrl: pulumi.Input.fromValue(map['keyUrl'] as String),
+      sourceVaultId: pulumi.Input.fromValue(map['sourceVaultId'] as String),
     );
   }
 }
-

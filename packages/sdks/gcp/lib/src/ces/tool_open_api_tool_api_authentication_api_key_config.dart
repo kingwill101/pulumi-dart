@@ -8,12 +8,14 @@ class ToolOpenApiToolApiAuthenticationApiKeyConfig {
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   /// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
   /// service agent
-  /// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+  /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String>? apiKeySecretVersion;
+
   /// (Output)
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
   final pulumi.Input<String>? keyName;
+
   /// (Output)
   /// Key location in the request.
   /// Possible values:
@@ -39,12 +41,25 @@ class ToolOpenApiToolApiAuthenticationApiKeyConfig {
     };
   }
 
-  factory ToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolOpenApiToolApiAuthenticationApiKeyConfig(
-      apiKeySecretVersion: map['apiKeySecretVersion'] == null ? null : (map['apiKeySecretVersion']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      requestLocation: map['requestLocation'] == null ? null : (map['requestLocation']! as String).input(),
+      apiKeySecretVersion: (() {
+        final guardedValue = map['apiKeySecretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestLocation: (() {
+        final guardedValue = map['requestLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

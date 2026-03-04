@@ -10,10 +10,13 @@ import 'azure_data_explorer_connection_properties.dart';
 class TimeSeriesDatabaseConnectionArgs {
   /// Properties of a specific time series database connection.
   final pulumi.Input<AzureDataExplorerConnectionProperties>? properties;
+
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String> resourceName;
+
   /// Name of time series database connection.
   final pulumi.Input<String>? timeSeriesDatabaseConnectionName;
 
@@ -31,7 +34,11 @@ class TimeSeriesDatabaseConnectionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<AzureDataExplorerConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureDataExplorerConnectionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
       'timeSeriesDatabaseConnectionName': ?timeSeriesDatabaseConnectionName,
@@ -40,11 +47,24 @@ class TimeSeriesDatabaseConnectionArgs {
 
   factory TimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionArgs(
-      properties: map['properties'] == null ? null : (AzureDataExplorerConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      timeSeriesDatabaseConnectionName: map['timeSeriesDatabaseConnectionName'] == null ? null : (map['timeSeriesDatabaseConnectionName']! as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureDataExplorerConnectionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      timeSeriesDatabaseConnectionName: (() {
+        final guardedValue = map['timeSeriesDatabaseConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

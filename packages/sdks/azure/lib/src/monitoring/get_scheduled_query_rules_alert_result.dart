@@ -8,33 +8,46 @@ import 'get_scheduled_query_rules_alert_trigger.dart';
 class GetScheduledQueryRulesAlertResult {
   /// supports the following:
   final List<GetScheduledQueryRulesAlertAction> actions;
+
   /// The list of Resource IDs referred into query.
   final List<String> authorizedResourceIds;
+
   /// The resource URI over which log search query is to be run.
   final String dataSourceId;
+
   /// The description of the scheduled query rule.
   final String description;
+
   /// Whether this scheduled query rule is enabled.
   final bool enabled;
+
   /// Frequency at which rule condition should be evaluated.
   final int frequency;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Specifies the Azure Region where the resource should exist.
   final String location;
   final String name;
+
   /// Log search query.
   final String query;
+
   /// The type of query results.
   final String queryType;
   final String resourceGroupName;
+
   /// Severity of the alert.
   final int severity;
   final Map<String, String> tags;
+
   /// Time for which alerts should be throttled or suppressed.
   final int throttling;
+
   /// Time window for which data needs to be fetched for query.
   final int timeWindow;
+
   /// A `trigger` block as defined below.
   final List<GetScheduledQueryRulesAlertTrigger> triggers;
 
@@ -78,7 +91,11 @@ class GetScheduledQueryRulesAlertResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<GetScheduledQueryRulesAlertAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions':
+          pulumi.Input.encodeList<
+            GetScheduledQueryRulesAlertAction,
+            Map<String, dynamic>
+          >(actions, (value) => value.toMap()),
       'authorizedResourceIds': authorizedResourceIds,
       'dataSourceId': dataSourceId,
       'description': description,
@@ -94,14 +111,24 @@ class GetScheduledQueryRulesAlertResult {
       'tags': tags,
       'throttling': throttling,
       'timeWindow': timeWindow,
-      'triggers': pulumi.Input.encodeList<GetScheduledQueryRulesAlertTrigger, Map<String, dynamic>>(triggers, (value) => value.toMap()),
+      'triggers':
+          pulumi.Input.encodeList<
+            GetScheduledQueryRulesAlertTrigger,
+            Map<String, dynamic>
+          >(triggers, (value) => value.toMap()),
     };
   }
 
   factory GetScheduledQueryRulesAlertResult.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertResult(
-      actions: pulumi.Input.decodeList<GetScheduledQueryRulesAlertAction>(map['actions'], (value) => GetScheduledQueryRulesAlertAction.fromMap((value as Map).cast<String, dynamic>())),
-      authorizedResourceIds: (map['authorizedResourceIds'] as List).cast<String>(),
+      actions: pulumi.Input.decodeList<GetScheduledQueryRulesAlertAction>(
+        map['actions']!,
+        (value) => GetScheduledQueryRulesAlertAction.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      authorizedResourceIds: (map['authorizedResourceIds'] as List)
+          .cast<String>(),
       dataSourceId: map['dataSourceId'] as String,
       description: map['description'] as String,
       enabled: map['enabled'] as bool,
@@ -116,8 +143,12 @@ class GetScheduledQueryRulesAlertResult {
       tags: (map['tags'] as Map).cast<String, String>(),
       throttling: map['throttling'] as int,
       timeWindow: map['timeWindow'] as int,
-      triggers: pulumi.Input.decodeList<GetScheduledQueryRulesAlertTrigger>(map['triggers'], (value) => GetScheduledQueryRulesAlertTrigger.fromMap((value as Map).cast<String, dynamic>())),
+      triggers: pulumi.Input.decodeList<GetScheduledQueryRulesAlertTrigger>(
+        map['triggers']!,
+        (value) => GetScheduledQueryRulesAlertTrigger.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

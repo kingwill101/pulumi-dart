@@ -147,22 +147,31 @@ import 'system_data_response.dart';
 class HybridRunbookWorker extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the assigned machine IP address.
   late final pulumi.Output<String?> ip;
+
   /// Last Heartbeat from the Worker
   late final pulumi.Output<String?> lastSeenDateTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets the registration time of the worker machine.
   late final pulumi.Output<String?> registeredDateTime;
+
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Azure Resource Manager Id for a virtual machine.
   late final pulumi.Output<String?> vmResourceId;
+
   /// Name of the HybridWorker.
   late final pulumi.Output<String?> workerName;
+
   /// Type of the HybridWorker.
   late final pulumi.Output<String?> workerType;
 
@@ -175,20 +184,20 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     HybridRunbookWorkerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:HybridRunbookWorker',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.ip = registerOutput<String?>('ip');
-    this.lastSeenDateTime = registerOutput<String?>('lastSeenDateTime');
+         'azure-native:automation:HybridRunbookWorker',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ip = registerOutput<String?>('ip');
+    lastSeenDateTime = registerOutput<String?>('lastSeenDateTime');
     this.name = registerOutput<String>('name');
-    this.registeredDateTime = registerOutput<String?>('registeredDateTime');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.vmResourceId = registerOutput<String?>('vmResourceId');
-    this.workerName = registerOutput<String?>('workerName');
-    this.workerType = registerOutput<String?>('workerType');
+    registeredDateTime = registerOutput<String?>('registeredDateTime');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    vmResourceId = registerOutput<String?>('vmResourceId');
+    workerName = registerOutput<String?>('workerName');
+    workerType = registerOutput<String?>('workerType');
   }
 }

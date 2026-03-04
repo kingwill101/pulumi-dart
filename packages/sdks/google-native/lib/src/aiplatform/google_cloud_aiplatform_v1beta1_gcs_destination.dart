@@ -9,20 +9,17 @@ class GoogleCloudAiplatformV1beta1GcsDestination {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1GcsDestination].
   /// [outputUriPrefix] Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
-  GoogleCloudAiplatformV1beta1GcsDestination({
-    required this.outputUriPrefix,
-  });
+  GoogleCloudAiplatformV1beta1GcsDestination({required this.outputUriPrefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputUriPrefix': outputUriPrefix,
-    };
+    return <String, dynamic>{'outputUriPrefix': outputUriPrefix};
   }
 
-  factory GoogleCloudAiplatformV1beta1GcsDestination.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1GcsDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1GcsDestination(
-      outputUriPrefix: (map['outputUriPrefix'] as String).input(),
+      outputUriPrefix: pulumi.Input.fromValue(map['outputUriPrefix'] as String),
     );
   }
 }
-

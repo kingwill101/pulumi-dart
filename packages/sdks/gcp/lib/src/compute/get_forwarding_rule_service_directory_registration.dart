@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetForwardingRuleServiceDirectoryRegistration {
   /// Service Directory namespace to register the forwarding rule under.
   final pulumi.Input<String> namespace;
+
   /// Service Directory service to register the forwarding rule under.
   final pulumi.Input<String> service;
 
@@ -17,17 +18,15 @@ class GetForwardingRuleServiceDirectoryRegistration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace,
-      'service': service,
-    };
+    return <String, dynamic>{'namespace': namespace, 'service': service};
   }
 
-  factory GetForwardingRuleServiceDirectoryRegistration.fromMap(Map<String, dynamic> map) {
+  factory GetForwardingRuleServiceDirectoryRegistration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetForwardingRuleServiceDirectoryRegistration(
-      namespace: (map['namespace'] as String).input(),
-      service: (map['service'] as String).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

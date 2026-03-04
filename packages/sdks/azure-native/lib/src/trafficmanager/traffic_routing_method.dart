@@ -7,16 +7,15 @@ enum TrafficRoutingMethod {
   multiValue("MultiValue"),
   subnet("Subnet");
 
-  const TrafficRoutingMethod(this.value);
-  final String value;
+  const TrafficRoutingMethod(this.wireValue);
+  final String wireValue;
 
   static TrafficRoutingMethod fromValue(String value) {
     for (final item in TrafficRoutingMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrafficRoutingMethod value: $value');
   }
 }
-

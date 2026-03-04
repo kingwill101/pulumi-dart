@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceV3State {
   /// The service description.
   final pulumi.Input<String>? description;
+
   /// The service status. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The service name.
   final pulumi.Input<String>? name;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The service type.
   final pulumi.Input<String>? type;
 
@@ -42,12 +46,31 @@ class ServiceV3State {
 
   factory ServiceV3State.fromMap(Map<String, dynamic> map) {
     return ServiceV3State(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -147,20 +147,28 @@ import 'system_data_response.dart';
 class Application extends pulumi.CustomResource {
   /// A value indicating whether packages within the application may be overwritten using the same version string.
   late final pulumi.Output<bool?> allowUpdates;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
   late final pulumi.Output<String?> defaultVersion;
+
   /// The display name for the application.
   late final pulumi.Output<String?> displayName;
+
   /// The ETag of the resource, used for concurrency statements.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -173,19 +181,19 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:batch:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowUpdates = registerOutput<bool?>('allowUpdates');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultVersion = registerOutput<String?>('defaultVersion');
-    this.displayName = registerOutput<String?>('displayName');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:batch:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowUpdates = registerOutput<bool?>('allowUpdates');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultVersion = registerOutput<String?>('defaultVersion');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

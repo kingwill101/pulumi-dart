@@ -10,20 +10,28 @@ import 'vpc_nat_gateway_vpc.dart';
 class VpcNatGatewayArgs {
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   final pulumi.Input<int>? icmpTimeoutSeconds;
+
   /// The name of the VPC NAT Gateway.
   final pulumi.Input<String>? name;
+
   /// ID of the project to which the VPC NAT Gateway will be assigned.
   final pulumi.Input<String>? projectId;
+
   /// The region for the VPC NAT Gateway.
   final pulumi.Input<String> region;
+
   /// The size of the VPC NAT Gateway.
   final pulumi.Input<int> size;
+
   /// The egress timeout value for TCP connections of the VPC NAT Gateway.
   final pulumi.Input<int>? tcpTimeoutSeconds;
+
   /// The type of the VPC NAT Gateway.
   final pulumi.Input<String> type;
+
   /// The egress timeout value for UDP connections of the VPC NAT Gateway.
   final pulumi.Input<int>? udpTimeoutSeconds;
+
   /// The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   /// documented below.
   final pulumi.Input<List<VpcNatGatewayVpc>> vpcs;
@@ -60,22 +68,58 @@ class VpcNatGatewayArgs {
       'tcpTimeoutSeconds': ?tcpTimeoutSeconds,
       'type': type,
       'udpTimeoutSeconds': ?udpTimeoutSeconds,
-      'vpcs': pulumi.Input.mapInputValue<List<VpcNatGatewayVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<VpcNatGatewayVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcs':
+          pulumi.Input.mapInputValue<
+            List<VpcNatGatewayVpc>,
+            List<Map<String, dynamic>>
+          >(
+            vpcs,
+            (value) =>
+                pulumi.Input.encodeList<VpcNatGatewayVpc, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory VpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayArgs(
-      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: (map['region'] as String).input(),
-      size: (map['size'] as int).input(),
-      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds']! as int).input(),
-      type: (map['type'] as String).input(),
-      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds']! as int).input(),
-      vpcs: (pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs'], (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      icmpTimeoutSeconds: (() {
+        final guardedValue = map['icmpTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      size: pulumi.Input.fromValue(map['size'] as int),
+      tcpTimeoutSeconds: (() {
+        final guardedValue = map['tcpTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      udpTimeoutSeconds: (() {
+        final guardedValue = map['udpTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vpcs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VpcNatGatewayVpc>(
+          map['vpcs']!,
+          (value) =>
+              VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

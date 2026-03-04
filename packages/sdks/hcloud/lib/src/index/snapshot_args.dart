@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// Description of the snapshot.
   final pulumi.Input<String>? description;
+
   /// User-defined labels (key-value pairs) should be created with.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Server to the snapshot should be created from.
   final pulumi.Input<int> serverId;
 
@@ -18,11 +20,7 @@ class SnapshotArgs {
   /// [description] Description of the snapshot.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [serverId] Server to the snapshot should be created from.
-  SnapshotArgs({
-    this.description,
-    this.labels,
-    required this.serverId,
-  });
+  SnapshotArgs({this.description, this.labels, required this.serverId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      serverId: (map['serverId'] as int).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as int),
     );
   }
 }
-

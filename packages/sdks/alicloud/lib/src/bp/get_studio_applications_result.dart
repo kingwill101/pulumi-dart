@@ -7,18 +7,22 @@ import 'get_studio_applications_application.dart';
 class GetStudioApplicationsResult {
   /// A list of Cloud Architect Design Tools (BPStudio) Applications. Each element contains the following attributes:
   final List<GetStudioApplicationsApplication> applications;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? keyword;
   final int? maxResults;
   final String? nameRegex;
+
   /// A list of Application names.
   final List<String> names;
   final int? orderType;
   final String? outputFile;
+
   /// The ID of the resource group.
   final String? resourceGroupId;
+
   /// The status of the Application.
   final String? status;
 
@@ -50,7 +54,11 @@ class GetStudioApplicationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications': pulumi.Input.encodeList<GetStudioApplicationsApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
+      'applications':
+          pulumi.Input.encodeList<
+            GetStudioApplicationsApplication,
+            Map<String, dynamic>
+          >(applications, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'keyword': ?keyword,
@@ -66,18 +74,50 @@ class GetStudioApplicationsResult {
 
   factory GetStudioApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsResult(
-      applications: pulumi.Input.decodeList<GetStudioApplicationsApplication>(map['applications'], (value) => GetStudioApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
+      applications: pulumi.Input.decodeList<GetStudioApplicationsApplication>(
+        map['applications']!,
+        (value) => GetStudioApplicationsApplication.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      maxResults: map['maxResults'] == null ? null : map['maxResults']! as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      maxResults: (() {
+        final guardedValue = map['maxResults'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      orderType: map['orderType'] == null ? null : map['orderType']! as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

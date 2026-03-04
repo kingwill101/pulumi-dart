@@ -31,10 +31,19 @@ class GetPolicyBasedRouteIamPolicyArgs {
 
   factory GetPolicyBasedRouteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyBasedRouteIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      policyBasedRouteId: (map['policyBasedRouteId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      policyBasedRouteId: pulumi.Input.fromValue(
+        map['policyBasedRouteId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

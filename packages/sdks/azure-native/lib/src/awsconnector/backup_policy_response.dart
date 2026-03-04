@@ -9,20 +9,19 @@ class BackupPolicyResponse {
 
   /// Creates a new [BackupPolicyResponse].
   /// [status] Set the backup policy status for the file system.  +   *ENABLED* - Turns automatic backups on for the file system.   +   *DISABLED* - Turns automatic backups off for the file system.
-  BackupPolicyResponse({
-    this.status,
-  });
+  BackupPolicyResponse({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory BackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BackupPolicyResponse(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -199,20 +199,29 @@ import 'system_data_response.dart';
 class NamespaceTopicEventSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Information about the delivery configuration of the event subscription.
-  late final pulumi.Output<DeliveryConfigurationResponse?> deliveryConfiguration;
+  late final pulumi.Output<DeliveryConfigurationResponse?>
+  deliveryConfiguration;
+
   /// The event delivery schema for the event subscription.
   late final pulumi.Output<String?> eventDeliverySchema;
+
   /// Expiration time of the event subscription.
   late final pulumi.Output<String?> expirationTimeUtc;
+
   /// Information about the filter for the event subscription.
   late final pulumi.Output<FiltersConfigurationResponse?> filtersConfiguration;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the event subscription.
   late final pulumi.Output<String> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -225,19 +234,23 @@ class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     NamespaceTopicEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:NamespaceTopicEventSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deliveryConfiguration = registerOutput<DeliveryConfigurationResponse?>('deliveryConfiguration');
-    this.eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
-    this.expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    this.filtersConfiguration = registerOutput<FiltersConfigurationResponse?>('filtersConfiguration');
+         'azure-native:eventgrid:NamespaceTopicEventSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deliveryConfiguration = registerOutput<DeliveryConfigurationResponse?>(
+      'deliveryConfiguration',
+    );
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    filtersConfiguration = registerOutput<FiltersConfigurationResponse?>(
+      'filtersConfiguration',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

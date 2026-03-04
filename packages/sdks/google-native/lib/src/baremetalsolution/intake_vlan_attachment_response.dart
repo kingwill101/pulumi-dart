@@ -9,20 +9,15 @@ class IntakeVlanAttachmentResponse {
 
   /// Creates a new [IntakeVlanAttachmentResponse].
   /// [pairingKey] Attachment pairing key.
-  IntakeVlanAttachmentResponse({
-    required this.pairingKey,
-  });
+  IntakeVlanAttachmentResponse({required this.pairingKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pairingKey': pairingKey,
-    };
+    return <String, dynamic>{'pairingKey': pairingKey};
   }
 
   factory IntakeVlanAttachmentResponse.fromMap(Map<String, dynamic> map) {
     return IntakeVlanAttachmentResponse(
-      pairingKey: (map['pairingKey'] as String).input(),
+      pairingKey: pulumi.Input.fromValue(map['pairingKey'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicTagGroupMatchExpress {
   /// The tag values of the cloud resources.
   final pulumi.Input<String> tagValue;
+
   /// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
   final pulumi.Input<String> tagValueMatchFunction;
 
@@ -25,9 +26,10 @@ class DynamicTagGroupMatchExpress {
 
   factory DynamicTagGroupMatchExpress.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupMatchExpress(
-      tagValue: (map['tagValue'] as String).input(),
-      tagValueMatchFunction: (map['tagValueMatchFunction'] as String).input(),
+      tagValue: pulumi.Input.fromValue(map['tagValue'] as String),
+      tagValueMatchFunction: pulumi.Input.fromValue(
+        map['tagValueMatchFunction'] as String,
+      ),
     );
   }
 }
-

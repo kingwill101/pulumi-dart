@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig {
   /// The type of encryption. Valid Values: `KMS`.
   final pulumi.Input<String> encryptionType;
+
   /// The full ARN of the encryption key. Be sure to provide the full ARN of the encryption key, not just the ID.
   final pulumi.Input<String> keyId;
 
@@ -17,17 +18,15 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionCon
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'encryptionType': encryptionType,
-      'keyId': keyId,
-    };
+    return <String, dynamic>{'encryptionType': encryptionType, 'keyId': keyId};
   }
 
-  factory GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig(
-      encryptionType: (map['encryptionType'] as String).input(),
-      keyId: (map['keyId'] as String).input(),
+      encryptionType: pulumi.Input.fromValue(map['encryptionType'] as String),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
     );
   }
 }
-

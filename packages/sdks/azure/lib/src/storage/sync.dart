@@ -158,7 +158,7 @@ import 'sync_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageSync` - 2020-03-01
@@ -173,14 +173,19 @@ import 'sync_state.dart';
 class Sync extends pulumi.CustomResource {
   /// Incoming traffic policy. Possible values are `AllowAllTraffic` and `AllowVirtualNetworksOnly`. Defaults to `AllowAllTraffic`.
   late final pulumi.Output<String?> incomingTrafficPolicy;
+
   /// The Azure Region where the Storage Sync should exist. Changing this forces a new Storage Sync to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Storage Sync. Changing this forces a new Storage Sync to be created.
   late final pulumi.Output<String> name;
+
   /// A list of registered servers owned by this Storage Sync.
   late final pulumi.Output<List<String>> registeredServers;
+
   /// The name of the Resource Group where the Storage Sync should exist. Changing this forces a new Storage Sync to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Storage Sync.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -188,30 +193,23 @@ class Sync extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Sync]. {@macro pulumi_storage_sync_sync_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Sync(
-    String name, {
-    SyncArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:storage/sync:Sync',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
-    this.location = registerOutput<String>('location');
+  Sync(String name, {SyncArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:storage/sync:Sync',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.registeredServers = registerOutput<List<String>>('registeredServers');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    registeredServers = registerOutput<List<String>>('registeredServers');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Sync] resource's state with the given [name] and [id].
-  static Sync get(
-    String name,
-    pulumi.Input<String> id, {
-    SyncState? state,
-  }) {
+  static Sync get(String name, pulumi.Input<String> id, {SyncState? state}) {
     return Sync._get(
       name,
       state: state?.toMap(),
@@ -224,16 +222,16 @@ class Sync extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/sync:Sync',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
-    this.location = registerOutput<String>('location');
+         'azure:storage/sync:Sync',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.registeredServers = registerOutput<List<String>>('registeredServers');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    registeredServers = registerOutput<List<String>>('registeredServers');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

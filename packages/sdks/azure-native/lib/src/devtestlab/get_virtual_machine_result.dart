@@ -14,84 +14,124 @@ import 'schedule_creation_parameter_response.dart';
 class GetVirtualMachineResult {
   /// Indicates whether another user can take ownership of the virtual machine
   final bool? allowClaim;
+
   /// The applicable schedule for the virtual machine.
   final ApplicableScheduleResponse applicableSchedule;
+
   /// The artifact deployment status for the virtual machine.
   final ArtifactDeploymentStatusPropertiesResponse artifactDeploymentStatus;
+
   /// The artifacts to be installed on the virtual machine.
   final List<ArtifactInstallPropertiesResponse>? artifacts;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier (Microsoft.Compute) of the virtual machine.
   final String computeId;
+
   /// The compute virtual machine properties.
   final ComputeVmPropertiesResponse computeVm;
+
   /// The email address of creator of the virtual machine.
   final String createdByUser;
+
   /// The object identifier of the creator of the virtual machine.
   final String createdByUserId;
+
   /// The creation date of the virtual machine.
   final String? createdDate;
+
   /// The custom image identifier of the virtual machine.
   final String? customImageId;
+
   /// New or existing data disks to attach to the virtual machine after creation
   final List<DataDiskPropertiesResponse>? dataDiskParameters;
+
   /// Indicates whether the virtual machine is to be created without a public IP address.
   final bool? disallowPublicIpAddress;
+
   /// The resource ID of the environment that contains this virtual machine, if any.
   final String? environmentId;
+
   /// The expiration date for VM.
   final String? expirationDate;
+
   /// The fully-qualified domain name of the virtual machine.
   final String fqdn;
+
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
   final GalleryImageReferenceResponse? galleryImageReference;
+
   /// The identifier of the resource.
   final String id;
+
   /// Indicates whether this virtual machine uses an SSH key for authentication.
   final bool? isAuthenticationWithSshKey;
+
   /// The lab subnet name of the virtual machine.
   final String? labSubnetName;
+
   /// The lab virtual network identifier of the virtual machine.
   final String? labVirtualNetworkId;
+
   /// Last known compute power state captured in DTL
   final String lastKnownPowerState;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The network interface properties.
   final NetworkInterfacePropertiesResponse? networkInterface;
+
   /// The notes of the virtual machine.
   final String? notes;
+
   /// The OS type of the virtual machine.
   final String osType;
+
   /// The object identifier of the owner of the virtual machine.
   final String? ownerObjectId;
+
   /// The user principal name of the virtual machine owner.
   final String? ownerUserPrincipalName;
+
   /// The password of the virtual machine administrator.
   final String? password;
+
   /// The id of the plan associated with the virtual machine image
   final String? planId;
+
   /// The provisioning status of the resource.
   final String provisioningState;
+
   /// Virtual Machine schedules to be created
   final List<ScheduleCreationParameterResponse>? scheduleParameters;
+
   /// The size of the virtual machine.
   final String? size;
+
   /// The SSH key of the virtual machine administrator.
   final String? sshKey;
+
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   final String? storageType;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
+
   /// The user name of the virtual machine.
   final String? userName;
+
   /// Tells source of creation of lab virtual machine. Output property only.
   final String virtualMachineCreationSource;
 
@@ -186,7 +226,14 @@ class GetVirtualMachineResult {
       'allowClaim': ?allowClaim,
       'applicableSchedule': applicableSchedule.toMap(),
       'artifactDeploymentStatus': artifactDeploymentStatus.toMap(),
-      'artifacts': ?artifacts == null ? null : pulumi.Input.encodeList<ArtifactInstallPropertiesResponse, Map<String, dynamic>>(artifacts!, (value) => value.toMap()),
+      'artifacts': ?(() {
+        final guardedValue = artifacts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ArtifactInstallPropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
       'computeId': computeId,
       'computeVm': computeVm.toMap(),
@@ -194,12 +241,19 @@ class GetVirtualMachineResult {
       'createdByUserId': createdByUserId,
       'createdDate': ?createdDate,
       'customImageId': ?customImageId,
-      'dataDiskParameters': ?dataDiskParameters == null ? null : pulumi.Input.encodeList<DataDiskPropertiesResponse, Map<String, dynamic>>(dataDiskParameters!, (value) => value.toMap()),
+      'dataDiskParameters': ?(() {
+        final guardedValue = dataDiskParameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          DataDiskPropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'disallowPublicIpAddress': ?disallowPublicIpAddress,
       'environmentId': ?environmentId,
       'expirationDate': ?expirationDate,
       'fqdn': fqdn,
-      'galleryImageReference': ?galleryImageReference == null ? null : galleryImageReference!.toMap(),
+      'galleryImageReference': ?galleryImageReference?.toMap(),
       'id': id,
       'isAuthenticationWithSshKey': ?isAuthenticationWithSshKey,
       'labSubnetName': ?labSubnetName,
@@ -207,7 +261,7 @@ class GetVirtualMachineResult {
       'lastKnownPowerState': lastKnownPowerState,
       'location': ?location,
       'name': name,
-      'networkInterface': ?networkInterface == null ? null : networkInterface!.toMap(),
+      'networkInterface': ?networkInterface?.toMap(),
       'notes': ?notes,
       'osType': osType,
       'ownerObjectId': ?ownerObjectId,
@@ -215,7 +269,14 @@ class GetVirtualMachineResult {
       'password': ?password,
       'planId': ?planId,
       'provisioningState': provisioningState,
-      'scheduleParameters': ?scheduleParameters == null ? null : pulumi.Input.encodeList<ScheduleCreationParameterResponse, Map<String, dynamic>>(scheduleParameters!, (value) => value.toMap()),
+      'scheduleParameters': ?(() {
+        final guardedValue = scheduleParameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ScheduleCreationParameterResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'size': ?size,
       'sshKey': ?sshKey,
       'storageType': ?storageType,
@@ -229,48 +290,174 @@ class GetVirtualMachineResult {
 
   factory GetVirtualMachineResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineResult(
-      allowClaim: map['allowClaim'] == null ? null : map['allowClaim']! as bool,
-      applicableSchedule: ApplicableScheduleResponse.fromMap((map['applicableSchedule'] as Map).cast<String, dynamic>()),
-      artifactDeploymentStatus: ArtifactDeploymentStatusPropertiesResponse.fromMap((map['artifactDeploymentStatus'] as Map).cast<String, dynamic>()),
-      artifacts: map['artifacts'] == null ? null : pulumi.Input.decodeList<ArtifactInstallPropertiesResponse>(map['artifacts']!, (value) => ArtifactInstallPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowClaim: (() {
+        final guardedValue = map['allowClaim'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      applicableSchedule: ApplicableScheduleResponse.fromMap(
+        (map['applicableSchedule']! as Map).cast<String, dynamic>(),
+      ),
+      artifactDeploymentStatus:
+          ArtifactDeploymentStatusPropertiesResponse.fromMap(
+            (map['artifactDeploymentStatus']! as Map).cast<String, dynamic>(),
+          ),
+      artifacts: (() {
+        final guardedValue = map['artifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ArtifactInstallPropertiesResponse>(
+          guardedValue,
+          (value) => ArtifactInstallPropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       computeId: map['computeId'] as String,
-      computeVm: ComputeVmPropertiesResponse.fromMap((map['computeVm'] as Map).cast<String, dynamic>()),
+      computeVm: ComputeVmPropertiesResponse.fromMap(
+        (map['computeVm']! as Map).cast<String, dynamic>(),
+      ),
       createdByUser: map['createdByUser'] as String,
       createdByUserId: map['createdByUserId'] as String,
-      createdDate: map['createdDate'] == null ? null : map['createdDate']! as String,
-      customImageId: map['customImageId'] == null ? null : map['customImageId']! as String,
-      dataDiskParameters: map['dataDiskParameters'] == null ? null : pulumi.Input.decodeList<DataDiskPropertiesResponse>(map['dataDiskParameters']!, (value) => DataDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      disallowPublicIpAddress: map['disallowPublicIpAddress'] == null ? null : map['disallowPublicIpAddress']! as bool,
-      environmentId: map['environmentId'] == null ? null : map['environmentId']! as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate']! as String,
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      customImageId: (() {
+        final guardedValue = map['customImageId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dataDiskParameters: (() {
+        final guardedValue = map['dataDiskParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<DataDiskPropertiesResponse>(
+          guardedValue,
+          (value) => DataDiskPropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disallowPublicIpAddress: (() {
+        final guardedValue = map['disallowPublicIpAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       fqdn: map['fqdn'] as String,
-      galleryImageReference: map['galleryImageReference'] == null ? null : GalleryImageReferenceResponse.fromMap((map['galleryImageReference']! as Map).cast<String, dynamic>()),
+      galleryImageReference: (() {
+        final guardedValue = map['galleryImageReference'];
+        if (guardedValue == null) return null;
+        return GalleryImageReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      isAuthenticationWithSshKey: map['isAuthenticationWithSshKey'] == null ? null : map['isAuthenticationWithSshKey']! as bool,
-      labSubnetName: map['labSubnetName'] == null ? null : map['labSubnetName']! as String,
-      labVirtualNetworkId: map['labVirtualNetworkId'] == null ? null : map['labVirtualNetworkId']! as String,
+      isAuthenticationWithSshKey: (() {
+        final guardedValue = map['isAuthenticationWithSshKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      labSubnetName: (() {
+        final guardedValue = map['labSubnetName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      labVirtualNetworkId: (() {
+        final guardedValue = map['labVirtualNetworkId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       lastKnownPowerState: map['lastKnownPowerState'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      networkInterface: map['networkInterface'] == null ? null : NetworkInterfacePropertiesResponse.fromMap((map['networkInterface']! as Map).cast<String, dynamic>()),
-      notes: map['notes'] == null ? null : map['notes']! as String,
+      networkInterface: (() {
+        final guardedValue = map['networkInterface'];
+        if (guardedValue == null) return null;
+        return NetworkInterfacePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       osType: map['osType'] as String,
-      ownerObjectId: map['ownerObjectId'] == null ? null : map['ownerObjectId']! as String,
-      ownerUserPrincipalName: map['ownerUserPrincipalName'] == null ? null : map['ownerUserPrincipalName']! as String,
-      password: map['password'] == null ? null : map['password']! as String,
-      planId: map['planId'] == null ? null : map['planId']! as String,
+      ownerObjectId: (() {
+        final guardedValue = map['ownerObjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ownerUserPrincipalName: (() {
+        final guardedValue = map['ownerUserPrincipalName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      planId: (() {
+        final guardedValue = map['planId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      scheduleParameters: map['scheduleParameters'] == null ? null : pulumi.Input.decodeList<ScheduleCreationParameterResponse>(map['scheduleParameters']!, (value) => ScheduleCreationParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      size: map['size'] == null ? null : map['size']! as String,
-      sshKey: map['sshKey'] == null ? null : map['sshKey']! as String,
-      storageType: map['storageType'] == null ? null : map['storageType']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      scheduleParameters: (() {
+        final guardedValue = map['scheduleParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ScheduleCreationParameterResponse>(
+          guardedValue,
+          (value) => ScheduleCreationParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sshKey: (() {
+        final guardedValue = map['sshKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      userName: map['userName'] == null ? null : map['userName']! as String,
-      virtualMachineCreationSource: map['virtualMachineCreationSource'] as String,
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      virtualMachineCreationSource:
+          map['virtualMachineCreationSource'] as String,
     );
   }
 }
-

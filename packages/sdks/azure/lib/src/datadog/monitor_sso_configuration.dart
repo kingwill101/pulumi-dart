@@ -257,7 +257,7 @@ import 'monitor_sso_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Datadog` - 2021-03-01
@@ -272,12 +272,16 @@ import 'monitor_sso_configuration_state.dart';
 class MonitorSsoConfiguration extends pulumi.CustomResource {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor SSO Configuration. Changing this forces a new Datadog Monitor SSO Configuration to be created.
   late final pulumi.Output<String> datadogMonitorId;
+
   /// The application Id to perform SSO operation.
   late final pulumi.Output<String> enterpriseApplicationId;
+
   /// The SingleSignOn URL to login to Datadog org.
   late final pulumi.Output<String> loginUrl;
+
   /// The name of the SingleSignOn configuration. Defaults to `default`.
   late final pulumi.Output<String> name;
+
   /// The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
   late final pulumi.Output<String> singleSignOn;
   late final pulumi.Output<String> singleSignOnEnabled;
@@ -291,17 +295,17 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
     MonitorSsoConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.datadogMonitorId = registerOutput<String>('datadogMonitorId');
-    this.enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
-    this.loginUrl = registerOutput<String>('loginUrl');
+         'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    datadogMonitorId = registerOutput<String>('datadogMonitorId');
+    enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
+    loginUrl = registerOutput<String>('loginUrl');
     this.name = registerOutput<String>('name');
-    this.singleSignOn = registerOutput<String>('singleSignOn');
-    this.singleSignOnEnabled = registerOutput<String>('singleSignOnEnabled');
+    singleSignOn = registerOutput<String>('singleSignOn');
+    singleSignOnEnabled = registerOutput<String>('singleSignOnEnabled');
   }
 
   /// Gets an existing [MonitorSsoConfiguration] resource's state with the given [name] and [id].
@@ -322,16 +326,16 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.datadogMonitorId = registerOutput<String>('datadogMonitorId');
-    this.enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
-    this.loginUrl = registerOutput<String>('loginUrl');
+         'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    datadogMonitorId = registerOutput<String>('datadogMonitorId');
+    enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
+    loginUrl = registerOutput<String>('loginUrl');
     this.name = registerOutput<String>('name');
-    this.singleSignOn = registerOutput<String>('singleSignOn');
-    this.singleSignOnEnabled = registerOutput<String>('singleSignOnEnabled');
+    singleSignOn = registerOutput<String>('singleSignOn');
+    singleSignOnEnabled = registerOutput<String>('singleSignOnEnabled');
   }
 }

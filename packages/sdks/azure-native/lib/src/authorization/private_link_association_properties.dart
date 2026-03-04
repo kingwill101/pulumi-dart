@@ -24,9 +24,16 @@ class PrivateLinkAssociationProperties {
 
   factory PrivateLinkAssociationProperties.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationProperties(
-      privateLink: map['privateLink'] == null ? null : (map['privateLink']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      privateLink: (() {
+        final guardedValue = map['privateLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

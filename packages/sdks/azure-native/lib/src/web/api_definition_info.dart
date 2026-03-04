@@ -9,20 +9,19 @@ class ApiDefinitionInfo {
 
   /// Creates a new [ApiDefinitionInfo].
   /// [url] The URL of the API definition.
-  ApiDefinitionInfo({
-    this.url,
-  });
+  ApiDefinitionInfo({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
   factory ApiDefinitionInfo.fromMap(Map<String, dynamic> map) {
     return ApiDefinitionInfo(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

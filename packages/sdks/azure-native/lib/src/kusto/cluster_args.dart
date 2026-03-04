@@ -18,54 +18,79 @@ import 'virtual_network_configuration.dart';
 class ClusterArgs {
   /// The cluster's accepted audiences.
   final pulumi.Input<List<AcceptedAudiences>>? acceptedAudiences;
+
   /// List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
   final pulumi.Input<List<String>>? allowedFqdnList;
+
   /// The list of ips in the format of CIDR allowed to connect to the cluster.
   final pulumi.Input<List<String>>? allowedIpRangeList;
+
   /// List of callout policies for egress from Cluster.
   final pulumi.Input<List<CalloutPolicy>>? calloutPolicies;
+
   /// The name of the Kusto cluster.
   final pulumi.Input<String>? clusterName;
+
   /// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
   final pulumi.Input<bool>? enableAutoStop;
+
   /// A boolean value that indicates if the cluster's disks are encrypted.
   final pulumi.Input<bool>? enableDiskEncryption;
+
   /// A boolean value that indicates if double encryption is enabled.
   final pulumi.Input<bool>? enableDoubleEncryption;
+
   /// A boolean value that indicates if the purge operations are enabled.
   final pulumi.Input<bool>? enablePurge;
+
   /// A boolean value that indicates if the streaming ingest is enabled.
   final pulumi.Input<bool>? enableStreamingIngest;
+
   /// The engine type
   final pulumi.Input<String>? engineType;
+
   /// The identity of the cluster, if configured.
   final pulumi.Input<Identity>? identity;
+
   /// KeyVault properties for the cluster encryption.
   final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+
   /// List of the cluster's language extensions.
   final pulumi.Input<LanguageExtensionsList>? languageExtensions;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Optimized auto scale definition.
   final pulumi.Input<OptimizedAutoscale>? optimizedAutoscale;
+
   /// Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
   final pulumi.Input<String>? publicIPType;
+
   /// Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   final pulumi.Input<String>? restrictOutboundNetworkAccess;
+
   /// The SKU of the cluster.
   final pulumi.Input<AzureSku> sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The cluster's external tenants.
   final pulumi.Input<List<TrustedExternalTenant>>? trustedExternalTenants;
+
   /// Virtual Cluster graduation properties
   final pulumi.Input<String>? virtualClusterGraduationProperties;
+
   /// Virtual network definition.
   final pulumi.Input<VirtualNetworkConfiguration>? virtualNetworkConfiguration;
+
   /// The availability zones of the cluster.
   final pulumi.Input<List<String>>? zones;
 
@@ -127,10 +152,32 @@ class ClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acceptedAudiences': ?pulumi.Input.mapOptionalInputValue<List<AcceptedAudiences>, List<Map<String, dynamic>>>(acceptedAudiences, (value) => pulumi.Input.encodeList<AcceptedAudiences, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'acceptedAudiences':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AcceptedAudiences>,
+            List<Map<String, dynamic>>
+          >(
+            acceptedAudiences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AcceptedAudiences,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'allowedFqdnList': ?allowedFqdnList,
       'allowedIpRangeList': ?allowedIpRangeList,
-      'calloutPolicies': ?pulumi.Input.mapOptionalInputValue<List<CalloutPolicy>, List<Map<String, dynamic>>>(calloutPolicies, (value) => pulumi.Input.encodeList<CalloutPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'calloutPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CalloutPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            calloutPolicies,
+            (value) =>
+                pulumi.Input.encodeList<CalloutPolicy, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'clusterName': ?clusterName,
       'enableAutoStop': ?enableAutoStop,
       'enableDiskEncryption': ?enableDiskEncryption,
@@ -138,53 +185,226 @@ class ClusterArgs {
       'enablePurge': ?enablePurge,
       'enableStreamingIngest': ?enableStreamingIngest,
       'engineType': ?engineType,
-      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
-      'languageExtensions': ?pulumi.Input.mapOptionalInputValue<LanguageExtensionsList, Map<String, dynamic>>(languageExtensions, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(
+            identity,
+            (value) => value.toMap(),
+          ),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
+      'languageExtensions':
+          ?pulumi.Input.mapOptionalInputValue<
+            LanguageExtensionsList,
+            Map<String, dynamic>
+          >(languageExtensions, (value) => value.toMap()),
       'location': ?location,
-      'optimizedAutoscale': ?pulumi.Input.mapOptionalInputValue<OptimizedAutoscale, Map<String, dynamic>>(optimizedAutoscale, (value) => value.toMap()),
+      'optimizedAutoscale':
+          ?pulumi.Input.mapOptionalInputValue<
+            OptimizedAutoscale,
+            Map<String, dynamic>
+          >(optimizedAutoscale, (value) => value.toMap()),
       'publicIPType': ?publicIPType,
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
       'restrictOutboundNetworkAccess': ?restrictOutboundNetworkAccess,
-      'sku': pulumi.Input.mapInputValue<AzureSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<AzureSku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
-      'trustedExternalTenants': ?pulumi.Input.mapOptionalInputValue<List<TrustedExternalTenant>, List<Map<String, dynamic>>>(trustedExternalTenants, (value) => pulumi.Input.encodeList<TrustedExternalTenant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trustedExternalTenants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TrustedExternalTenant>,
+            List<Map<String, dynamic>>
+          >(
+            trustedExternalTenants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TrustedExternalTenant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'virtualClusterGraduationProperties': ?virtualClusterGraduationProperties,
-      'virtualNetworkConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkConfiguration, Map<String, dynamic>>(virtualNetworkConfiguration, (value) => value.toMap()),
+      'virtualNetworkConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNetworkConfiguration,
+            Map<String, dynamic>
+          >(virtualNetworkConfiguration, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      acceptedAudiences: map['acceptedAudiences'] == null ? null : (pulumi.Input.decodeList<AcceptedAudiences>(map['acceptedAudiences']!, (value) => AcceptedAudiences.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList']! as List).cast<String>()).input(),
-      allowedIpRangeList: map['allowedIpRangeList'] == null ? null : ((map['allowedIpRangeList']! as List).cast<String>()).input(),
-      calloutPolicies: map['calloutPolicies'] == null ? null : (pulumi.Input.decodeList<CalloutPolicy>(map['calloutPolicies']!, (value) => CalloutPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      enableAutoStop: map['enableAutoStop'] == null ? null : (map['enableAutoStop']! as bool).input(),
-      enableDiskEncryption: map['enableDiskEncryption'] == null ? null : (map['enableDiskEncryption']! as bool).input(),
-      enableDoubleEncryption: map['enableDoubleEncryption'] == null ? null : (map['enableDoubleEncryption']! as bool).input(),
-      enablePurge: map['enablePurge'] == null ? null : (map['enablePurge']! as bool).input(),
-      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : (map['enableStreamingIngest']! as bool).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
-      languageExtensions: map['languageExtensions'] == null ? null : (LanguageExtensionsList.fromMap((map['languageExtensions']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : (OptimizedAutoscale.fromMap((map['optimizedAutoscale']! as Map).cast<String, dynamic>())).input(),
-      publicIPType: map['publicIPType'] == null ? null : (map['publicIPType']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess']! as String).input(),
-      sku: (AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      trustedExternalTenants: map['trustedExternalTenants'] == null ? null : (pulumi.Input.decodeList<TrustedExternalTenant>(map['trustedExternalTenants']!, (value) => TrustedExternalTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualClusterGraduationProperties: map['virtualClusterGraduationProperties'] == null ? null : (map['virtualClusterGraduationProperties']! as String).input(),
-      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (VirtualNetworkConfiguration.fromMap((map['virtualNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      acceptedAudiences: (() {
+        final guardedValue = map['acceptedAudiences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AcceptedAudiences>(
+            guardedValue,
+            (value) => AcceptedAudiences.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      allowedFqdnList: (() {
+        final guardedValue = map['allowedFqdnList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowedIpRangeList: (() {
+        final guardedValue = map['allowedIpRangeList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      calloutPolicies: (() {
+        final guardedValue = map['calloutPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CalloutPolicy>(
+            guardedValue,
+            (value) =>
+                CalloutPolicy.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAutoStop: (() {
+        final guardedValue = map['enableAutoStop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDiskEncryption: (() {
+        final guardedValue = map['enableDiskEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDoubleEncryption: (() {
+        final guardedValue = map['enableDoubleEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePurge: (() {
+        final guardedValue = map['enablePurge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStreamingIngest: (() {
+        final guardedValue = map['enableStreamingIngest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engineType: (() {
+        final guardedValue = map['engineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Identity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      languageExtensions: (() {
+        final guardedValue = map['languageExtensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LanguageExtensionsList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optimizedAutoscale: (() {
+        final guardedValue = map['optimizedAutoscale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OptimizedAutoscale.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicIPType: (() {
+        final guardedValue = map['publicIPType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      restrictOutboundNetworkAccess: (() {
+        final guardedValue = map['restrictOutboundNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: pulumi.Input.fromValue(
+        AzureSku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      trustedExternalTenants: (() {
+        final guardedValue = map['trustedExternalTenants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TrustedExternalTenant>(
+            guardedValue,
+            (value) => TrustedExternalTenant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      virtualClusterGraduationProperties: (() {
+        final guardedValue = map['virtualClusterGraduationProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkConfiguration: (() {
+        final guardedValue = map['virtualNetworkConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNetworkConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

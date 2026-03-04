@@ -8,37 +8,53 @@ import 'system_data_response.dart';
 class GetAFDOriginResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource reference to the Azure origin resource.
   final ResourceReferenceResponse? azureOrigin;
   final String deploymentStatus;
+
   /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
   final String? enabledState;
+
   /// Whether to enable certificate name check at origin level
   final bool? enforceCertificateNameCheck;
+
   /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
   final String? hostName;
+
   /// The value of the HTTP port. Must be between 1 and 65535.
   final int? httpPort;
+
   /// The value of the HTTPS port. Must be between 1 and 65535.
   final int? httpsPort;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The name of the origin group which contains this origin.
   final String originGroupName;
+
   /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
   final String? originHostHeader;
+
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
   final int? priority;
+
   /// Provisioning status
   final String provisioningState;
+
   /// The properties of the private link resource for private origin.
   final SharedPrivateLinkResourcePropertiesResponse? sharedPrivateLinkResource;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
   final int? weight;
 
@@ -85,7 +101,7 @@ class GetAFDOriginResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'azureOrigin': ?azureOrigin == null ? null : azureOrigin!.toMap(),
+      'azureOrigin': ?azureOrigin?.toMap(),
       'deploymentStatus': deploymentStatus,
       'enabledState': ?enabledState,
       'enforceCertificateNameCheck': ?enforceCertificateNameCheck,
@@ -98,7 +114,7 @@ class GetAFDOriginResult {
       'originHostHeader': ?originHostHeader,
       'priority': ?priority,
       'provisioningState': provisioningState,
-      'sharedPrivateLinkResource': ?sharedPrivateLinkResource == null ? null : sharedPrivateLinkResource!.toMap(),
+      'sharedPrivateLinkResource': ?sharedPrivateLinkResource?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
       'weight': ?weight,
@@ -108,24 +124,69 @@ class GetAFDOriginResult {
   factory GetAFDOriginResult.fromMap(Map<String, dynamic> map) {
     return GetAFDOriginResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureOrigin: map['azureOrigin'] == null ? null : ResourceReferenceResponse.fromMap((map['azureOrigin']! as Map).cast<String, dynamic>()),
+      azureOrigin: (() {
+        final guardedValue = map['azureOrigin'];
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       deploymentStatus: map['deploymentStatus'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState']! as String,
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : map['enforceCertificateNameCheck']! as bool,
-      hostName: map['hostName'] == null ? null : map['hostName']! as String,
-      httpPort: map['httpPort'] == null ? null : map['httpPort']! as int,
-      httpsPort: map['httpsPort'] == null ? null : map['httpsPort']! as int,
+      enabledState: (() {
+        final guardedValue = map['enabledState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enforceCertificateNameCheck: (() {
+        final guardedValue = map['enforceCertificateNameCheck'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      httpPort: (() {
+        final guardedValue = map['httpPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      httpsPort: (() {
+        final guardedValue = map['httpsPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       originGroupName: map['originGroupName'] as String,
-      originHostHeader: map['originHostHeader'] == null ? null : map['originHostHeader']! as String,
-      priority: map['priority'] == null ? null : map['priority']! as int,
+      originHostHeader: (() {
+        final guardedValue = map['originHostHeader'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : SharedPrivateLinkResourcePropertiesResponse.fromMap((map['sharedPrivateLinkResource']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      sharedPrivateLinkResource: (() {
+        final guardedValue = map['sharedPrivateLinkResource'];
+        if (guardedValue == null) return null;
+        return SharedPrivateLinkResourcePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      weight: map['weight'] == null ? null : map['weight']! as int,
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

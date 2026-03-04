@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NspLoggingConfigurationPropertiesResponse {
   /// The log categories to enable in the NSP logging configuration.
   final pulumi.Input<List<String>>? enabledLogCategories;
+
   /// The version of the NSP logging configuration.
   final pulumi.Input<String>? version;
 
@@ -24,11 +25,20 @@ class NspLoggingConfigurationPropertiesResponse {
     };
   }
 
-  factory NspLoggingConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory NspLoggingConfigurationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NspLoggingConfigurationPropertiesResponse(
-      enabledLogCategories: map['enabledLogCategories'] == null ? null : ((map['enabledLogCategories']! as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      enabledLogCategories: (() {
+        final guardedValue = map['enabledLogCategories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

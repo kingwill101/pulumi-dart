@@ -1,29 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIntent.
 class GetIntentResult {
   /// ARN of the Lex intent.
   final String arn;
+
   /// Checksum identifying the version of the intent that was created. The checksum is not
   /// included as an argument because the resource will add it automatically when updating the intent.
   final String checksum;
+
   /// Date when the intent version was created.
   final String createdDate;
+
   /// Description of the intent.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Date when the $LATEST version of this intent was updated.
   final String lastUpdatedDate;
+
   /// Name of the intent, not case sensitive.
   final String name;
+
   /// A unique identifier for the built-in intent to base this
   /// intent on. To find the signature for an intent, see
   /// [Standard Built-in Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
   /// in the Alexa Skills Kit.
   final String parentIntentSignature;
   final String region;
+
   /// Version of the bot.
   final String? version;
 
@@ -77,8 +84,11 @@ class GetIntentResult {
       name: map['name'] as String,
       parentIntentSignature: map['parentIntentSignature'] as String,
       region: map['region'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

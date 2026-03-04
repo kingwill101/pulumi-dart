@@ -4,7 +4,7 @@ import 'msc_sub_contract_state.dart';
 
 /// Provides a Msc Sub Contact resource.
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///
@@ -149,13 +149,16 @@ import 'msc_sub_contract_state.dart';
 class MscSubContract extends pulumi.CustomResource {
   /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
   late final pulumi.Output<String> contactName;
+
   /// The User's Contact Email Address.
   late final pulumi.Output<String> email;
+
   /// The User's Telephone.
   late final pulumi.Output<String> mobile;
+
   /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   ///
-  /// > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+  /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
   late final pulumi.Output<String> position;
 
   /// Creates a new [MscSubContract].
@@ -167,15 +170,15 @@ class MscSubContract extends pulumi.CustomResource {
     MscSubContractArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/mscSubContract:MscSubContract',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactName = registerOutput<String>('contactName');
-    this.email = registerOutput<String>('email');
-    this.mobile = registerOutput<String>('mobile');
-    this.position = registerOutput<String>('position');
+         'alicloud:index/mscSubContract:MscSubContract',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactName = registerOutput<String>('contactName');
+    email = registerOutput<String>('email');
+    mobile = registerOutput<String>('mobile');
+    position = registerOutput<String>('position');
   }
 
   /// Gets an existing [MscSubContract] resource's state with the given [name] and [id].
@@ -196,14 +199,14 @@ class MscSubContract extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/mscSubContract:MscSubContract',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactName = registerOutput<String>('contactName');
-    this.email = registerOutput<String>('email');
-    this.mobile = registerOutput<String>('mobile');
-    this.position = registerOutput<String>('position');
+         'alicloud:index/mscSubContract:MscSubContract',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactName = registerOutput<String>('contactName');
+    email = registerOutput<String>('email');
+    mobile = registerOutput<String>('mobile');
+    position = registerOutput<String>('position');
   }
 }

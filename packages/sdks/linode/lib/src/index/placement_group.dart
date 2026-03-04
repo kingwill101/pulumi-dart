@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'placement_group_args.dart';
-import 'placement_group_member.dart';
 import 'placement_group_state.dart';
 
 /// Manages a Linode Placement Group.
@@ -118,14 +117,19 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// Whether this Linode is currently compliant with the group's placement group type.
   late final pulumi.Output<bool> isCompliant;
+
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
   late final pulumi.Output<String> label;
+
   /// A set of Linodes currently assigned to this Placement Group.
-  late final pulumi.Output<List<PlacementGroupMember>> members;
+  late final pulumi.Output<List<Map<String, dynamic>>> members;
+
   /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
   late final pulumi.Output<String> placementGroupPolicy;
+
   /// The placement group type to use when placing Linodes in this group.
   late final pulumi.Output<String> placementGroupType;
+
   /// The region of the Placement Group.
   late final pulumi.Output<String> region;
 
@@ -138,17 +142,17 @@ class PlacementGroup extends pulumi.CustomResource {
     PlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isCompliant = registerOutput<bool>('isCompliant');
-    this.label = registerOutput<String>('label');
-    this.members = registerOutput<List<PlacementGroupMember>>('members');
-    this.placementGroupPolicy = registerOutput<String>('placementGroupPolicy');
-    this.placementGroupType = registerOutput<String>('placementGroupType');
-    this.region = registerOutput<String>('region');
+         'linode:index/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isCompliant = registerOutput<bool>('isCompliant');
+    label = registerOutput<String>('label');
+    members = registerOutput<List<Map<String, dynamic>>>('members');
+    placementGroupPolicy = registerOutput<String>('placementGroupPolicy');
+    placementGroupType = registerOutput<String>('placementGroupType');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PlacementGroup] resource's state with the given [name] and [id].
@@ -169,16 +173,16 @@ class PlacementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isCompliant = registerOutput<bool>('isCompliant');
-    this.label = registerOutput<String>('label');
-    this.members = registerOutput<List<PlacementGroupMember>>('members');
-    this.placementGroupPolicy = registerOutput<String>('placementGroupPolicy');
-    this.placementGroupType = registerOutput<String>('placementGroupType');
-    this.region = registerOutput<String>('region');
+         'linode:index/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isCompliant = registerOutput<bool>('isCompliant');
+    label = registerOutput<String>('label');
+    members = registerOutput<List<Map<String, dynamic>>>('members');
+    placementGroupPolicy = registerOutput<String>('placementGroupPolicy');
+    placementGroupType = registerOutput<String>('placementGroupType');
+    region = registerOutput<String>('region');
   }
 }

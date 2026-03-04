@@ -6,31 +6,52 @@ import 's3_logs_config_response.dart';
 
 /// Definition of LogsConfig
 class LogsConfigResponse {
-  /// <p> Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. </p>
+  /// &lt;p&gt; Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. &lt;/p&gt;
   final pulumi.Input<CloudWatchLogsConfigResponse>? cloudWatchLogs;
-  /// <p> Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. </p>
+
+  /// &lt;p&gt; Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. &lt;/p&gt;
   final pulumi.Input<S3LogsConfigResponse>? s3Logs;
 
   /// Creates a new [LogsConfigResponse].
-  /// [cloudWatchLogs] <p> Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. </p>
-  /// [s3Logs] <p> Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. </p>
-  LogsConfigResponse({
-    this.cloudWatchLogs,
-    this.s3Logs,
-  });
+  /// [cloudWatchLogs] &lt;p&gt; Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. &lt;/p&gt;
+  /// [s3Logs] &lt;p&gt; Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. &lt;/p&gt;
+  LogsConfigResponse({this.cloudWatchLogs, this.s3Logs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudWatchLogs': ?pulumi.Input.mapOptionalInputValue<CloudWatchLogsConfigResponse, Map<String, dynamic>>(cloudWatchLogs, (value) => value.toMap()),
-      's3Logs': ?pulumi.Input.mapOptionalInputValue<S3LogsConfigResponse, Map<String, dynamic>>(s3Logs, (value) => value.toMap()),
+      'cloudWatchLogs':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudWatchLogsConfigResponse,
+            Map<String, dynamic>
+          >(cloudWatchLogs, (value) => value.toMap()),
+      's3Logs':
+          ?pulumi.Input.mapOptionalInputValue<
+            S3LogsConfigResponse,
+            Map<String, dynamic>
+          >(s3Logs, (value) => value.toMap()),
     };
   }
 
   factory LogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogsConfigResponse(
-      cloudWatchLogs: map['cloudWatchLogs'] == null ? null : (CloudWatchLogsConfigResponse.fromMap((map['cloudWatchLogs']! as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (S3LogsConfigResponse.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input(),
+      cloudWatchLogs: (() {
+        final guardedValue = map['cloudWatchLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudWatchLogsConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3Logs: (() {
+        final guardedValue = map['s3Logs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          S3LogsConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

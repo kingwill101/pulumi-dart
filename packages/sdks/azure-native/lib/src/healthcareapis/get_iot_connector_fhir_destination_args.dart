@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIotConnectorFhirDestinationArgs {
   /// The name of IoT Connector FHIR destination resource.
   final pulumi.Input<String> fhirDestinationName;
+
   /// The name of IoT Connector resource.
   final pulumi.Input<String> iotConnectorName;
+
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,16 @@ class GetIotConnectorFhirDestinationArgs {
 
   factory GetIotConnectorFhirDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetIotConnectorFhirDestinationArgs(
-      fhirDestinationName: (map['fhirDestinationName'] as String).input(),
-      iotConnectorName: (map['iotConnectorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      fhirDestinationName: pulumi.Input.fromValue(
+        map['fhirDestinationName'] as String,
+      ),
+      iotConnectorName: pulumi.Input.fromValue(
+        map['iotConnectorName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -6,28 +6,39 @@ import 'get_app_service_plan_sku.dart';
 class GetAppServicePlanResult {
   /// The ID of the App Service Environment where the App Service Plan is located.
   final String appServiceEnvironmentId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A flag that indicates if it's a xenon plan (support for Windows Container)
   final bool isXenon;
+
   /// The Operating System type of the App Service Plan
   final String kind;
+
   /// The Azure location where the App Service Plan exists
   final String location;
+
   /// The maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan.
   final int maximumElasticWorkerCount;
+
   /// The maximum number of workers supported with the App Service Plan's sku.
   final int maximumNumberOfWorkers;
   final String name;
+
   /// Can Apps assigned to this App Service Plan be scaled independently?
   final bool perSiteScaling;
+
   /// Is this App Service Plan `Reserved`?
   final bool reserved;
   final String resourceGroupName;
+
   /// A `sku` block as documented below.
   final GetAppServicePlanSku sku;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// App Service Plan perform availability zone balancing.
   final bool zoneRedundant;
 
@@ -95,10 +106,11 @@ class GetAppServicePlanResult {
       perSiteScaling: map['perSiteScaling'] as bool,
       reserved: map['reserved'] as bool,
       resourceGroupName: map['resourceGroupName'] as String,
-      sku: GetAppServicePlanSku.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: GetAppServicePlanSku.fromMap(
+        (map['sku']! as Map).cast<String, dynamic>(),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
       zoneRedundant: map['zoneRedundant'] as bool,
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ServerPublicNetworkAccessState {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ServerPublicNetworkAccessState(this.value);
-  final String value;
+  const ServerPublicNetworkAccessState(this.wireValue);
+  final String wireValue;
 
   static ServerPublicNetworkAccessState fromValue(String value) {
     for (final item in ServerPublicNetworkAccessState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerPublicNetworkAccessState value: $value');
   }
 }
-

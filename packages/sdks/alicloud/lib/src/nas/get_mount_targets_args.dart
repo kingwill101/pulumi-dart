@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMountTargetsArgs {
   /// Filter results by a specific AccessGroupName.
   final pulumi.Input<String>? accessGroupName;
+
   /// The ID of the FileSystem that owns the MountTarget.
   final pulumi.Input<String> fileSystemId;
+
   /// A list of MountTargetDomain.
   final pulumi.Input<List<String>>? ids;
+
   /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
   final pulumi.Input<String>? mountTargetDomain;
+
   /// Filter results by a specific NetworkType.
   final pulumi.Input<String>? networkType;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
   final pulumi.Input<String>? status;
+
   /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
   final pulumi.Input<String>? type;
+
   /// Filter results by a specific VpcId.
   final pulumi.Input<String>? vpcId;
+
   /// Filter results by a specific VSwitchId.
   final pulumi.Input<String>? vswitchId;
 
@@ -69,17 +78,52 @@ class GetMountTargetsArgs {
 
   factory GetMountTargetsArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetsArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      accessGroupName: (() {
+        final guardedValue = map['accessGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mountTargetDomain: (() {
+        final guardedValue = map['mountTargetDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

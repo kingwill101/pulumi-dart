@@ -1,40 +1,55 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFwRuleV2.
 class GetFwRuleV2Result {
   /// See Argument Reference above.
   final String? action;
+
   /// See Argument Reference above.
   final String? description;
+
   /// See Argument Reference above.
   final String? destinationIpAddress;
+
   /// See Argument Reference above.
   final String? destinationPort;
+
   /// See Argument Reference above.
   final bool enabled;
+
   /// The ID of the firewall policy the rule belongs to.
   final List<String> firewallPolicyIds;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final int? ipVersion;
+
   /// See Argument Reference above.
   final String? name;
+
   /// See Argument Reference above.
   final String projectId;
+
   /// See Argument Reference above.
   final String? protocol;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final String? ruleId;
+
   /// See Argument Reference above.
   final bool shared;
+
   /// See Argument Reference above.
   final String? sourceIpAddress;
+
   /// See Argument Reference above.
   final String? sourcePort;
+
   /// See Argument Reference above.
   final String tenantId;
 
@@ -100,24 +115,63 @@ class GetFwRuleV2Result {
 
   factory GetFwRuleV2Result.fromMap(Map<String, dynamic> map) {
     return GetFwRuleV2Result(
-      action: map['action'] == null ? null : map['action']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      destinationIpAddress: map['destinationIpAddress'] == null ? null : map['destinationIpAddress']! as String,
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort']! as String,
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      destinationIpAddress: (() {
+        final guardedValue = map['destinationIpAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      destinationPort: (() {
+        final guardedValue = map['destinationPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       enabled: map['enabled'] as bool,
       firewallPolicyIds: (map['firewallPolicyIds'] as List).cast<String>(),
       id: map['id'] as String,
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as int,
-      name: map['name'] == null ? null : map['name']! as String,
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       projectId: map['projectId'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol']! as String,
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
-      ruleId: map['ruleId'] == null ? null : map['ruleId']! as String,
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       shared: map['shared'] as bool,
-      sourceIpAddress: map['sourceIpAddress'] == null ? null : map['sourceIpAddress']! as String,
-      sourcePort: map['sourcePort'] == null ? null : map['sourcePort']! as String,
+      sourceIpAddress: (() {
+        final guardedValue = map['sourceIpAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sourcePort: (() {
+        final guardedValue = map['sourcePort'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tenantId: map['tenantId'] as String,
     );
   }
 }
-

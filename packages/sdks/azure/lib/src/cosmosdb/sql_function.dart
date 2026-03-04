@@ -246,8 +246,10 @@ import 'sql_function_state.dart';
 class SqlFunction extends pulumi.CustomResource {
   /// Body of the User Defined Function.
   late final pulumi.Output<String> body;
+
   /// The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   late final pulumi.Output<String> containerId;
+
   /// The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
   late final pulumi.Output<String> name;
 
@@ -260,13 +262,13 @@ class SqlFunction extends pulumi.CustomResource {
     SqlFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/sqlFunction:SqlFunction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.containerId = registerOutput<String>('containerId');
+         'azure:cosmosdb/sqlFunction:SqlFunction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');
   }
 
@@ -288,13 +290,13 @@ class SqlFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/sqlFunction:SqlFunction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.containerId = registerOutput<String>('containerId');
+         'azure:cosmosdb/sqlFunction:SqlFunction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');
   }
 }

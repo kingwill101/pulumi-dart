@@ -426,8 +426,10 @@ import 'resource_data_sync_state.dart';
 class ResourceDataSync extends pulumi.CustomResource {
   /// Name for the configuration.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon S3 configuration details for the sync.
   late final pulumi.Output<ResourceDataSyncS3Destination> s3Destination;
 
@@ -440,14 +442,16 @@ class ResourceDataSync extends pulumi.CustomResource {
     ResourceDataSyncArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/resourceDataSync:ResourceDataSync',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ssm/resourceDataSync:ResourceDataSync',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.s3Destination = registerOutput<ResourceDataSyncS3Destination>('s3Destination');
+    region = registerOutput<String>('region');
+    s3Destination = registerOutput<ResourceDataSyncS3Destination>(
+      's3Destination',
+    );
   }
 
   /// Gets an existing [ResourceDataSync] resource's state with the given [name] and [id].
@@ -468,13 +472,15 @@ class ResourceDataSync extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/resourceDataSync:ResourceDataSync',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ssm/resourceDataSync:ResourceDataSync',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.s3Destination = registerOutput<ResourceDataSyncS3Destination>('s3Destination');
+    region = registerOutput<String>('region');
+    s3Destination = registerOutput<ResourceDataSyncS3Destination>(
+      's3Destination',
+    );
   }
 }

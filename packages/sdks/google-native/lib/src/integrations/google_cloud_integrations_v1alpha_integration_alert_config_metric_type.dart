@@ -12,16 +12,22 @@ enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType {
   taskAverageDuration("TASK_AVERAGE_DURATION"),
   taskPercentileDuration("TASK_PERCENTILE_DURATION");
 
-  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType value: $value',
+    );
   }
 }
-

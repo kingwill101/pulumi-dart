@@ -14,15 +14,14 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resultsTable': resultsTable,
-    };
+    return <String, dynamic>{'resultsTable': resultsTable};
   }
 
-  factory GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse(
-      resultsTable: (map['resultsTable'] as String).input(),
+      resultsTable: pulumi.Input.fromValue(map['resultsTable'] as String),
     );
   }
 }
-

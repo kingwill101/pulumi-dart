@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerNamespaceArgs {
   /// Name of the partner namespace.
   final pulumi.Input<String> partnerNamespaceName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetPartnerNamespaceArgs {
 
   factory GetPartnerNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerNamespaceArgs(
-      partnerNamespaceName: (map['partnerNamespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      partnerNamespaceName: pulumi.Input.fromValue(
+        map['partnerNamespaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

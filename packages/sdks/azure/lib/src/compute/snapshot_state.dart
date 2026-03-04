@@ -7,36 +7,50 @@ import 'snapshot_encryption_settings.dart';
 class SnapshotState {
   /// Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`.
   ///
-  /// > **Note:** One of `source_uri`, `source_resource_id` or `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `source_uri`, `source_resource_id` or `storage_account_id` must be specified.
   final pulumi.Input<String>? createOption;
+
   /// Specifies the ID of the Disk Access which should be used for this Snapshot. This is used in conjunction with setting `network_access_policy` to `AllowPrivate`.
   final pulumi.Input<String>? diskAccessId;
+
   /// The size of the Snapshotted Disk in GB.
   final pulumi.Input<int>? diskSizeGb;
+
   /// A `encryption_settings` block as defined below.
   ///
-  /// > **Note:** Removing `encryption_settings` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryption_settings` forces a new resource to be created.
   final pulumi.Input<SnapshotEncryptionSettings>? encryptionSettings;
+
   /// Specifies if the Snapshot is incremental. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? incrementalEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Snapshot resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Policy for accessing the disk via network. Possible values are `AllowAll`, `AllowPrivate`, or `DenyAll`. Defaults to `AllowAll`.
   final pulumi.Input<String>? networkAccessPolicy;
+
   /// Policy for controlling export on the disk. Possible values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the Snapshot. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sourceResourceId;
+
   /// Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sourceUri;
+
   /// Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Whether Trusted Launch is enabled for the Snapshot.
   final pulumi.Input<bool>? trustedLaunchEnabled;
 
@@ -79,7 +93,11 @@ class SnapshotState {
       'createOption': ?createOption,
       'diskAccessId': ?diskAccessId,
       'diskSizeGb': ?diskSizeGb,
-      'encryptionSettings': ?pulumi.Input.mapOptionalInputValue<SnapshotEncryptionSettings, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
+      'encryptionSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SnapshotEncryptionSettings,
+            Map<String, dynamic>
+          >(encryptionSettings, (value) => value.toMap()),
       'incrementalEnabled': ?incrementalEnabled,
       'location': ?location,
       'name': ?name,
@@ -96,22 +114,87 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
-      diskAccessId: map['diskAccessId'] == null ? null : (map['diskAccessId']! as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (SnapshotEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
-      incrementalEnabled: map['incrementalEnabled'] == null ? null : (map['incrementalEnabled']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkAccessPolicy: map['networkAccessPolicy'] == null ? null : (map['networkAccessPolicy']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      trustedLaunchEnabled: map['trustedLaunchEnabled'] == null ? null : (map['trustedLaunchEnabled']! as bool).input(),
+      createOption: (() {
+        final guardedValue = map['createOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskAccessId: (() {
+        final guardedValue = map['diskAccessId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSizeGb: (() {
+        final guardedValue = map['diskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encryptionSettings: (() {
+        final guardedValue = map['encryptionSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SnapshotEncryptionSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      incrementalEnabled: (() {
+        final guardedValue = map['incrementalEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAccessPolicy: (() {
+        final guardedValue = map['networkAccessPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceResourceId: (() {
+        final guardedValue = map['sourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUri: (() {
+        final guardedValue = map['sourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      trustedLaunchEnabled: (() {
+        final guardedValue = map['trustedLaunchEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

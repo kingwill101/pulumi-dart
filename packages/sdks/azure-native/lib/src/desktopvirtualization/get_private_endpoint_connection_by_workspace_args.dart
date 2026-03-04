@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionByWorkspaceArgs {
   /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace
   final pulumi.Input<String> workspaceName;
 
@@ -32,12 +34,17 @@ class GetPrivateEndpointConnectionByWorkspaceArgs {
     };
   }
 
-  factory GetPrivateEndpointConnectionByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPrivateEndpointConnectionByWorkspaceArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrivateEndpointConnectionByWorkspaceArgs(
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -8,13 +8,16 @@ class CryptoKeyIAMMemberState {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<CryptoKeyIAMMemberCondition>? condition;
+
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
   /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
   /// the provider's project setting will be used as a fallback.
   final pulumi.Input<String>? cryptoKeyId;
+
   /// (Computed) The etag of the project's IAM policy.
   final pulumi.Input<String>? etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,6 +27,7 @@ class CryptoKeyIAMMemberState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String>? member;
+
   /// The role that should be applied. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String>? role;
@@ -44,7 +48,11 @@ class CryptoKeyIAMMemberState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<CryptoKeyIAMMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            CryptoKeyIAMMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'cryptoKeyId': ?cryptoKeyId,
       'etag': ?etag,
       'member': ?member,
@@ -54,12 +62,35 @@ class CryptoKeyIAMMemberState {
 
   factory CryptoKeyIAMMemberState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMMemberState(
-      condition: map['condition'] == null ? null : (CryptoKeyIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CryptoKeyIAMMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cryptoKeyId: (() {
+        final guardedValue = map['cryptoKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

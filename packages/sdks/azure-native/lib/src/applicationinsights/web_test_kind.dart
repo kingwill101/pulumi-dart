@@ -4,16 +4,15 @@ enum WebTestKind {
   valueMultistep("multistep"),
   valueStandard("standard");
 
-  const WebTestKind(this.value);
-  final String value;
+  const WebTestKind(this.wireValue);
+  final String wireValue;
 
   static WebTestKind fromValue(String value) {
     for (final item in WebTestKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebTestKind value: $value');
   }
 }
-

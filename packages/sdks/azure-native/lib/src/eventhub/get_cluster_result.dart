@@ -7,30 +7,43 @@ import 'system_data_response.dart';
 class GetClusterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The UTC time when the Event Hubs Cluster was created.
   final String createdAt;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Resource location.
   final String? location;
+
   /// The metric ID of the cluster resource. Provided by the service and not modifiable by the user.
   final String metricId;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state of the Cluster.
   final String provisioningState;
+
   /// Properties of the cluster SKU.
   final ClusterSkuResponse? sku;
+
   /// Status of the Cluster resource
   final String status;
+
   /// A value that indicates whether Scaling is Supported.
   final bool? supportsScaling;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The UTC time when the Event Hubs Cluster was last updated.
   final String updatedAt;
 
@@ -75,7 +88,7 @@ class GetClusterResult {
       'metricId': metricId,
       'name': name,
       'provisioningState': provisioningState,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'status': status,
       'supportsScaling': ?supportsScaling,
       'systemData': systemData.toMap(),
@@ -90,18 +103,37 @@ class GetClusterResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       metricId: map['metricId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : ClusterSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return ClusterSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       status: map['status'] as String,
-      supportsScaling: map['supportsScaling'] == null ? null : map['supportsScaling']! as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      supportsScaling: (() {
+        final guardedValue = map['supportsScaling'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
     );
   }
 }
-

@@ -8,18 +8,25 @@ import 'system_data_response.dart';
 class GetManagementLockAtResourceGroupLevelResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource ID of the lock.
   final String id;
+
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
   final String level;
+
   /// The name of the lock.
   final String name;
+
   /// Notes about the lock. Maximum of 512 characters.
   final String? notes;
+
   /// The owners of the lock.
   final List<ManagementLockOwnerResponse>? owners;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The resource type of the lock - Microsoft.Authorization/locks.
   final String type;
 
@@ -50,23 +57,46 @@ class GetManagementLockAtResourceGroupLevelResult {
       'level': level,
       'name': name,
       'notes': ?notes,
-      'owners': ?owners == null ? null : pulumi.Input.encodeList<ManagementLockOwnerResponse, Map<String, dynamic>>(owners!, (value) => value.toMap()),
+      'owners': ?(() {
+        final guardedValue = owners;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ManagementLockOwnerResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetManagementLockAtResourceGroupLevelResult.fromMap(Map<String, dynamic> map) {
+  factory GetManagementLockAtResourceGroupLevelResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagementLockAtResourceGroupLevelResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       level: map['level'] as String,
       name: map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes']! as String,
-      owners: map['owners'] == null ? null : pulumi.Input.decodeList<ManagementLockOwnerResponse>(map['owners']!, (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      owners: (() {
+        final guardedValue = map['owners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ManagementLockOwnerResponse>(
+          guardedValue,
+          (value) => ManagementLockOwnerResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

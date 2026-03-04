@@ -6,6 +6,7 @@ class InstanceNode {
   /// (Output)
   /// Node identifying string. e.g. 'node-0', 'node-1'
   final pulumi.Input<String>? id;
+
   /// (Output)
   /// Location of the node.
   final pulumi.Input<String>? zone;
@@ -13,23 +14,24 @@ class InstanceNode {
   /// Creates a new [InstanceNode].
   /// [id] (Output)
   /// [zone] (Output)
-  InstanceNode({
-    this.id,
-    this.zone,
-  });
+  InstanceNode({this.id, this.zone});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'zone': ?zone,
-    };
+    return <String, dynamic>{'id': ?id, 'zone': ?zone};
   }
 
   factory InstanceNode.fromMap(Map<String, dynamic> map) {
     return InstanceNode(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

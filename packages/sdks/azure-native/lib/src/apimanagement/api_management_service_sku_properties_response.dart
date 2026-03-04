@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiManagementServiceSkuPropertiesResponse {
   /// Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
   final pulumi.Input<int> capacity;
+
   /// Name of the Sku.
   final pulumi.Input<String> name;
 
@@ -18,17 +19,15 @@ class ApiManagementServiceSkuPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'capacity': capacity,
-      'name': name,
-    };
+    return <String, dynamic>{'capacity': capacity, 'name': name};
   }
 
-  factory ApiManagementServiceSkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ApiManagementServiceSkuPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiManagementServiceSkuPropertiesResponse(
-      capacity: (map['capacity'] as int).input(),
-      name: (map['name'] as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

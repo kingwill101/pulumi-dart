@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementGroupArgs {
   /// User-defined labels (key-value pairs) should be created with.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of the Placement Group.
   final pulumi.Input<String>? name;
+
   /// Type of the Placement Group.
   final pulumi.Input<String> type;
 
@@ -18,26 +20,27 @@ class PlacementGroupArgs {
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Placement Group.
   /// [type] Type of the Placement Group.
-  PlacementGroupArgs({
-    this.labels,
-    this.name,
-    required this.type,
-  });
+  PlacementGroupArgs({this.labels, this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-      'name': ?name,
-      'type': type,
-    };
+    return <String, dynamic>{'labels': ?labels, 'name': ?name, 'type': type};
   }
 
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

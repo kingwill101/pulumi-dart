@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverFirewallDomainListArgs {
   /// The ID of the domain list.
   final pulumi.Input<String> firewallDomainListId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,9 +30,14 @@ class GetResolverFirewallDomainListArgs {
 
   factory GetResolverFirewallDomainListArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallDomainListArgs(
-      firewallDomainListId: (map['firewallDomainListId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      firewallDomainListId: pulumi.Input.fromValue(
+        map['firewallDomainListId'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

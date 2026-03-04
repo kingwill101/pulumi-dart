@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSeriesPatch {
   /// Number of occurrences in this series up to the last heartbeat time
   final pulumi.Input<int>? count;
+
   /// Time of the last occurrence observed
   final pulumi.Input<String>? lastObservedTime;
+
   /// State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18
   final pulumi.Input<String>? state;
 
@@ -15,11 +17,7 @@ class EventSeriesPatch {
   /// [count] Number of occurrences in this series up to the last heartbeat time
   /// [lastObservedTime] Time of the last occurrence observed
   /// [state] State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18
-  EventSeriesPatch({
-    this.count,
-    this.lastObservedTime,
-    this.state,
-  });
+  EventSeriesPatch({this.count, this.lastObservedTime, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class EventSeriesPatch {
 
   factory EventSeriesPatch.fromMap(Map<String, dynamic> map) {
     return EventSeriesPatch(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      lastObservedTime: map['lastObservedTime'] == null ? null : (map['lastObservedTime']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lastObservedTime: (() {
+        final guardedValue = map['lastObservedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -266,32 +266,43 @@ import 'code_tools_setting_binding_state.dart';
 class CodeToolsSettingBinding extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> codeToolsSettingId;
+
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String?> location;
+
   /// Identifier. Name of the resource.
   /// Format:projects/{project}/locations/{location}/codeToolsSettings/{setting}/settingBindings/{setting_binding}
   late final pulumi.Output<String> name;
+
   /// Product type of the setting binding.
   /// Possible values are: `GEMINI_CODE_ASSIST`.
   late final pulumi.Output<String> product;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Id of the setting binding.
   late final pulumi.Output<String> settingBindingId;
+
   /// Target of the binding.
   late final pulumi.Output<String> target;
+
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
 
@@ -304,23 +315,23 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
     CodeToolsSettingBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String?>('location');
+         'gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.product = registerOutput<String>('product');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.settingBindingId = registerOutput<String>('settingBindingId');
-    this.target = registerOutput<String>('target');
-    this.updateTime = registerOutput<String>('updateTime');
+    product = registerOutput<String>('product');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    settingBindingId = registerOutput<String>('settingBindingId');
+    target = registerOutput<String>('target');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [CodeToolsSettingBinding] resource's state with the given [name] and [id].
@@ -341,22 +352,22 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String?>('location');
+         'gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.product = registerOutput<String>('product');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.settingBindingId = registerOutput<String>('settingBindingId');
-    this.target = registerOutput<String>('target');
-    this.updateTime = registerOutput<String>('updateTime');
+    product = registerOutput<String>('product');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    settingBindingId = registerOutput<String>('settingBindingId');
+    target = registerOutput<String>('target');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

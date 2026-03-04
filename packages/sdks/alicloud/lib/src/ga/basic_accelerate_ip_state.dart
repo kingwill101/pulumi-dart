@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAccelerateIpState {
   /// The address of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpAddress;
+
   /// The ID of the Basic GA instance.
   final pulumi.Input<String>? acceleratorId;
+
   /// The ID of the Basic Ip Set.
   final pulumi.Input<String>? ipSetId;
+
   /// The status of the Basic Accelerate IP instance.
   final pulumi.Input<String>? status;
 
@@ -36,11 +39,26 @@ class BasicAccelerateIpState {
 
   factory BasicAccelerateIpState.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpState(
-      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : (map['accelerateIpAddress']! as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
-      ipSetId: map['ipSetId'] == null ? null : (map['ipSetId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accelerateIpAddress: (() {
+        final guardedValue = map['accelerateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acceleratorId: (() {
+        final guardedValue = map['acceleratorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipSetId: (() {
+        final guardedValue = map['ipSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

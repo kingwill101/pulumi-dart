@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_optional_claims_access_token.dart';
 import 'application_optional_claims_args.dart';
-import 'application_optional_claims_id_token.dart';
-import 'application_optional_claims_saml2_token.dart';
 import 'application_optional_claims_state.dart';
 
 /// Manages optional claims for an application registration.
@@ -15,7 +12,7 @@ import 'application_optional_claims_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -260,15 +257,18 @@ import 'application_optional_claims_state.dart';
 /// ```
 class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
   /// One or more `access_token` blocks as documented below.
-  late final pulumi.Output<List<ApplicationOptionalClaimsAccessToken>?> accessTokens;
+  late final pulumi.Output<List<Map<String, dynamic>>?> accessTokens;
+
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// One or more `id_token` blocks as documented below.
-  late final pulumi.Output<List<ApplicationOptionalClaimsIdToken>?> idTokens;
+  late final pulumi.Output<List<Map<String, dynamic>>?> idTokens;
+
   /// One or more `saml2_token` blocks as documented below.
   ///
-  /// > At least one of `access_token`, `id_token` or `saml2_token` must be specified
-  late final pulumi.Output<List<ApplicationOptionalClaimsSaml2Token>?> saml2Tokens;
+  /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+  late final pulumi.Output<List<Map<String, dynamic>>?> saml2Tokens;
 
   /// Creates a new [ApplicationOptionalClaimsResource].
   /// [name] The Pulumi resource name.
@@ -279,15 +279,15 @@ class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
     ApplicationOptionalClaimsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTokens = registerOutput<List<ApplicationOptionalClaimsAccessToken>?>('accessTokens');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.idTokens = registerOutput<List<ApplicationOptionalClaimsIdToken>?>('idTokens');
-    this.saml2Tokens = registerOutput<List<ApplicationOptionalClaimsSaml2Token>?>('saml2Tokens');
+         'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTokens = registerOutput<List<Map<String, dynamic>>?>('accessTokens');
+    applicationId = registerOutput<String>('applicationId');
+    idTokens = registerOutput<List<Map<String, dynamic>>?>('idTokens');
+    saml2Tokens = registerOutput<List<Map<String, dynamic>>?>('saml2Tokens');
   }
 
   /// Gets an existing [ApplicationOptionalClaimsResource] resource's state with the given [name] and [id].
@@ -308,14 +308,14 @@ class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTokens = registerOutput<List<ApplicationOptionalClaimsAccessToken>?>('accessTokens');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.idTokens = registerOutput<List<ApplicationOptionalClaimsIdToken>?>('idTokens');
-    this.saml2Tokens = registerOutput<List<ApplicationOptionalClaimsSaml2Token>?>('saml2Tokens');
+         'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTokens = registerOutput<List<Map<String, dynamic>>?>('accessTokens');
+    applicationId = registerOutput<String>('applicationId');
+    idTokens = registerOutput<List<Map<String, dynamic>>?>('idTokens');
+    saml2Tokens = registerOutput<List<Map<String, dynamic>>?>('saml2Tokens');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetryResponse {
   /// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
   final pulumi.Input<String> attempts;
+
   /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
   final pulumi.Input<String> backoffMode;
+
   /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
   final pulumi.Input<String> wait;
 
@@ -31,10 +33,9 @@ class RetryResponse {
 
   factory RetryResponse.fromMap(Map<String, dynamic> map) {
     return RetryResponse(
-      attempts: (map['attempts'] as String).input(),
-      backoffMode: (map['backoffMode'] as String).input(),
-      wait: (map['wait'] as String).input(),
+      attempts: pulumi.Input.fromValue(map['attempts'] as String),
+      backoffMode: pulumi.Input.fromValue(map['backoffMode'] as String),
+      wait: pulumi.Input.fromValue(map['wait'] as String),
     );
   }
 }
-

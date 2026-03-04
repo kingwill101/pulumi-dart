@@ -108,7 +108,7 @@ import 'disk_access_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -123,10 +123,13 @@ import 'disk_access_state.dart';
 class DiskAccess extends pulumi.CustomResource {
   /// The Azure Region where the Disk Access should exist. Changing this forces a new Disk to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Disk Access. Changing this forces a new Disk Access to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Disk Access should exist. Changing this forces a new Disk Access to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Disk Access.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -139,15 +142,15 @@ class DiskAccess extends pulumi.CustomResource {
     DiskAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/diskAccess:DiskAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:compute/diskAccess:DiskAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DiskAccess] resource's state with the given [name] and [id].
@@ -168,14 +171,14 @@ class DiskAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/diskAccess:DiskAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:compute/diskAccess:DiskAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

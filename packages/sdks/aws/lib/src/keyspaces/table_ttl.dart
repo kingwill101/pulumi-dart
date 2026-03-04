@@ -8,20 +8,13 @@ class TableTtl {
 
   /// Creates a new [TableTtl].
   /// [status] Valid values: `ENABLED`.
-  TableTtl({
-    required this.status,
-  });
+  TableTtl({required this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': status,
-    };
+    return <String, dynamic>{'status': status};
   }
 
   factory TableTtl.fromMap(Map<String, dynamic> map) {
-    return TableTtl(
-      status: (map['status'] as String).input(),
-    );
+    return TableTtl(status: pulumi.Input.fromValue(map['status'] as String));
   }
 }
-

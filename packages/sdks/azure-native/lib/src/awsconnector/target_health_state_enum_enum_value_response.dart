@@ -9,20 +9,21 @@ class TargetHealthStateEnumEnumValueResponse {
 
   /// Creates a new [TargetHealthStateEnumEnumValueResponse].
   /// [value] Property value
-  TargetHealthStateEnumEnumValueResponse({
-    this.value,
-  });
+  TargetHealthStateEnumEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory TargetHealthStateEnumEnumValueResponse.fromMap(Map<String, dynamic> map) {
+  factory TargetHealthStateEnumEnumValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TargetHealthStateEnumEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

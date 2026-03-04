@@ -4,7 +4,7 @@ import 'channel_slack_state.dart';
 
 /// Manages a Slack integration for a Bot Channel
 ///
-/// > **Note:** A bot can only have a single Slack Channel associated with it.
+/// &gt; **Note:** A bot can only have a single Slack Channel associated with it.
 ///
 /// ## Example Usage
 ///
@@ -237,18 +237,25 @@ import 'channel_slack_state.dart';
 class ChannelSlack extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// The Client ID that will be used to authenticate with Slack.
   late final pulumi.Output<String> clientId;
+
   /// The Client Secret that will be used to authenticate with Slack.
   late final pulumi.Output<String> clientSecret;
+
   /// The Slack Landing Page URL.
   late final pulumi.Output<String?> landingPageUrl;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Signing Secret that will be used to sign the requests.
   late final pulumi.Output<String?> signingSecret;
+
   /// The Verification Token that will be used to authenticate with Slack.
   late final pulumi.Output<String> verificationToken;
 
@@ -261,19 +268,19 @@ class ChannelSlack extends pulumi.CustomResource {
     ChannelSlackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelSlack:ChannelSlack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.landingPageUrl = registerOutput<String?>('landingPageUrl');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.signingSecret = registerOutput<String?>('signingSecret');
-    this.verificationToken = registerOutput<String>('verificationToken');
+         'azure:bot/channelSlack:ChannelSlack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    landingPageUrl = registerOutput<String?>('landingPageUrl');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signingSecret = registerOutput<String?>('signingSecret');
+    verificationToken = registerOutput<String>('verificationToken');
   }
 
   /// Gets an existing [ChannelSlack] resource's state with the given [name] and [id].
@@ -294,18 +301,18 @@ class ChannelSlack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelSlack:ChannelSlack',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.landingPageUrl = registerOutput<String?>('landingPageUrl');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.signingSecret = registerOutput<String?>('signingSecret');
-    this.verificationToken = registerOutput<String>('verificationToken');
+         'azure:bot/channelSlack:ChannelSlack',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    landingPageUrl = registerOutput<String?>('landingPageUrl');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signingSecret = registerOutput<String?>('signingSecret');
+    verificationToken = registerOutput<String>('verificationToken');
   }
 }

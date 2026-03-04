@@ -12,25 +12,35 @@ import 'certificate_template_predefined_values.dart';
 class CertificateTemplateArgs {
   /// Optional. A human-readable description of scenarios this template is intended for.
   final pulumi.Input<String>? description;
+
   /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplateIdentityConstraints>? identityConstraints;
+  final pulumi.Input<CertificateTemplateIdentityConstraints>?
+  identityConstraints;
+
   /// Optional. Labels with user-defined metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location for the resource
   final pulumi.Input<String> location;
+
   /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
   final pulumi.Input<String>? maximumLifetime;
+
   /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
   final pulumi.Input<String>? name;
+
   /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePassthroughExtensions>? passthroughExtensions;
+  final pulumi.Input<CertificateTemplatePassthroughExtensions>?
+  passthroughExtensions;
+
   /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
   /// Structure is documented below.
   final pulumi.Input<CertificateTemplatePredefinedValues>? predefinedValues;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -60,29 +70,86 @@ class CertificateTemplateArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'identityConstraints': ?pulumi.Input.mapOptionalInputValue<CertificateTemplateIdentityConstraints, Map<String, dynamic>>(identityConstraints, (value) => value.toMap()),
+      'identityConstraints':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateTemplateIdentityConstraints,
+            Map<String, dynamic>
+          >(identityConstraints, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
       'maximumLifetime': ?maximumLifetime,
       'name': ?name,
-      'passthroughExtensions': ?pulumi.Input.mapOptionalInputValue<CertificateTemplatePassthroughExtensions, Map<String, dynamic>>(passthroughExtensions, (value) => value.toMap()),
-      'predefinedValues': ?pulumi.Input.mapOptionalInputValue<CertificateTemplatePredefinedValues, Map<String, dynamic>>(predefinedValues, (value) => value.toMap()),
+      'passthroughExtensions':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateTemplatePassthroughExtensions,
+            Map<String, dynamic>
+          >(passthroughExtensions, (value) => value.toMap()),
+      'predefinedValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateTemplatePredefinedValues,
+            Map<String, dynamic>
+          >(predefinedValues, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory CertificateTemplateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>())).input(),
-      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityConstraints: (() {
+        final guardedValue = map['identityConstraints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateTemplateIdentityConstraints.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      maximumLifetime: (() {
+        final guardedValue = map['maximumLifetime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passthroughExtensions: (() {
+        final guardedValue = map['passthroughExtensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateTemplatePassthroughExtensions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      predefinedValues: (() {
+        final guardedValue = map['predefinedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateTemplatePredefinedValues.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

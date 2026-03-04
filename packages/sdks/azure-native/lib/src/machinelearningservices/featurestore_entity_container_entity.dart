@@ -193,12 +193,17 @@ import 'system_data_response.dart';
 class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<FeaturestoreEntityContainerResponse> featurestoreEntityContainerProperties;
+  late final pulumi.Output<FeaturestoreEntityContainerResponse>
+  featurestoreEntityContainerProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -211,15 +216,18 @@ class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
     FeaturestoreEntityContainerEntityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:FeaturestoreEntityContainerEntity',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.featurestoreEntityContainerProperties = registerOutput<FeaturestoreEntityContainerResponse>('featurestoreEntityContainerProperties');
+         'azure-native:machinelearningservices:FeaturestoreEntityContainerEntity',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    featurestoreEntityContainerProperties =
+        registerOutput<FeaturestoreEntityContainerResponse>(
+          'featurestoreEntityContainerProperties',
+        );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,20 +9,19 @@ class PushConfigPubsubV1beta1a {
 
   /// Creates a new [PushConfigPubsubV1beta1a].
   /// [pushEndpoint] A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-  PushConfigPubsubV1beta1a({
-    this.pushEndpoint,
-  });
+  PushConfigPubsubV1beta1a({this.pushEndpoint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pushEndpoint': ?pushEndpoint,
-    };
+    return <String, dynamic>{'pushEndpoint': ?pushEndpoint};
   }
 
   factory PushConfigPubsubV1beta1a.fromMap(Map<String, dynamic> map) {
     return PushConfigPubsubV1beta1a(
-      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint']! as String).input(),
+      pushEndpoint: (() {
+        final guardedValue = map['pushEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

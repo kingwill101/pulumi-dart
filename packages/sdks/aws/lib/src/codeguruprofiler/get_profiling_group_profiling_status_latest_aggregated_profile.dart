@@ -15,17 +15,15 @@ class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'period': period,
-      'start': start,
-    };
+    return <String, dynamic>{'period': period, 'start': start};
   }
 
-  factory GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap(Map<String, dynamic> map) {
+  factory GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProfilingGroupProfilingStatusLatestAggregatedProfile(
-      period: (map['period'] as String).input(),
-      start: (map['start'] as String).input(),
+      period: pulumi.Input.fromValue(map['period'] as String),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

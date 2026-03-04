@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNspLinkArgs {
   /// The name of the NSP link.
   final pulumi.Input<String> linkName;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetNspLinkArgs {
 
   factory GetNspLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetNspLinkArgs(
-      linkName: (map['linkName'] as String).input(),
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      linkName: pulumi.Input.fromValue(map['linkName'] as String),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -25,12 +25,15 @@ class GetIdentityPoolCognitoIdentityProvider {
     };
   }
 
-  factory GetIdentityPoolCognitoIdentityProvider.fromMap(Map<String, dynamic> map) {
+  factory GetIdentityPoolCognitoIdentityProvider.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIdentityPoolCognitoIdentityProvider(
-      clientId: (map['clientId'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
-      serverSideTokenCheck: (map['serverSideTokenCheck'] as bool).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
+      serverSideTokenCheck: pulumi.Input.fromValue(
+        map['serverSideTokenCheck'] as bool,
+      ),
     );
   }
 }
-

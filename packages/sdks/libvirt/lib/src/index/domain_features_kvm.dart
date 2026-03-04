@@ -10,12 +10,16 @@ import 'domain_features_kvm_pvipi.dart';
 class DomainFeaturesKvm {
   /// Configures the dirty ring feature for KVM, which optimizes memory management during virtual machine execution.
   final pulumi.Input<DomainFeaturesKvmDirtyRing>? dirtyRing;
+
   /// Enables or disables support for PS/2 devices in the virtual machine.
   final pulumi.Input<DomainFeaturesKvmHidden>? hidden;
+
   /// Enables or disables support for PS/2 devices in the virtual machine.
   final pulumi.Input<DomainFeaturesKvmHintDedicated>? hintDedicated;
+
   /// Enables or disables support for PS/2 devices in the virtual machine.
   final pulumi.Input<DomainFeaturesKvmPollControl>? pollControl;
+
   /// Enables or disables support for PS/2 devices in the virtual machine.
   final pulumi.Input<DomainFeaturesKvmPvipi>? pvipi;
 
@@ -35,22 +39,81 @@ class DomainFeaturesKvm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dirtyRing': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvmDirtyRing, Map<String, dynamic>>(dirtyRing, (value) => value.toMap()),
-      'hidden': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvmHidden, Map<String, dynamic>>(hidden, (value) => value.toMap()),
-      'hintDedicated': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvmHintDedicated, Map<String, dynamic>>(hintDedicated, (value) => value.toMap()),
-      'pollControl': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvmPollControl, Map<String, dynamic>>(pollControl, (value) => value.toMap()),
-      'pvipi': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvmPvipi, Map<String, dynamic>>(pvipi, (value) => value.toMap()),
+      'dirtyRing':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesKvmDirtyRing,
+            Map<String, dynamic>
+          >(dirtyRing, (value) => value.toMap()),
+      'hidden':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesKvmHidden,
+            Map<String, dynamic>
+          >(hidden, (value) => value.toMap()),
+      'hintDedicated':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesKvmHintDedicated,
+            Map<String, dynamic>
+          >(hintDedicated, (value) => value.toMap()),
+      'pollControl':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesKvmPollControl,
+            Map<String, dynamic>
+          >(pollControl, (value) => value.toMap()),
+      'pvipi':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainFeaturesKvmPvipi,
+            Map<String, dynamic>
+          >(pvipi, (value) => value.toMap()),
     };
   }
 
   factory DomainFeaturesKvm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesKvm(
-      dirtyRing: map['dirtyRing'] == null ? null : (DomainFeaturesKvmDirtyRing.fromMap((map['dirtyRing']! as Map).cast<String, dynamic>())).input(),
-      hidden: map['hidden'] == null ? null : (DomainFeaturesKvmHidden.fromMap((map['hidden']! as Map).cast<String, dynamic>())).input(),
-      hintDedicated: map['hintDedicated'] == null ? null : (DomainFeaturesKvmHintDedicated.fromMap((map['hintDedicated']! as Map).cast<String, dynamic>())).input(),
-      pollControl: map['pollControl'] == null ? null : (DomainFeaturesKvmPollControl.fromMap((map['pollControl']! as Map).cast<String, dynamic>())).input(),
-      pvipi: map['pvipi'] == null ? null : (DomainFeaturesKvmPvipi.fromMap((map['pvipi']! as Map).cast<String, dynamic>())).input(),
+      dirtyRing: (() {
+        final guardedValue = map['dirtyRing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesKvmDirtyRing.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hidden: (() {
+        final guardedValue = map['hidden'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesKvmHidden.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hintDedicated: (() {
+        final guardedValue = map['hintDedicated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesKvmHintDedicated.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pollControl: (() {
+        final guardedValue = map['pollControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesKvmPollControl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pvipi: (() {
+        final guardedValue = map['pvipi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainFeaturesKvmPvipi.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

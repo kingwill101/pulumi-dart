@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'change_data_capture_args.dart';
 import 'change_data_capture_response_folder.dart';
 import 'mapper_policy_response.dart';
-import 'mapper_source_connections_info_response.dart';
-import 'mapper_target_connections_info_response.dart';
 
 /// Change data capture resource type.
 ///
@@ -7946,24 +7944,34 @@ import 'mapper_target_connections_info_response.dart';
 class ChangeDataCapture extends pulumi.CustomResource {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
   late final pulumi.Output<bool?> allowVNetOverride;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of the change data capture.
   late final pulumi.Output<String?> description;
+
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
+
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
   late final pulumi.Output<ChangeDataCaptureResponseFolder?> folder;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// CDC policy
   late final pulumi.Output<MapperPolicyResponse> policy;
+
   /// List of sources connections that can be used as sources in the CDC.
-  late final pulumi.Output<List<MapperSourceConnectionsInfoResponse>> sourceConnectionsInfo;
+  late final pulumi.Output<List<Map<String, dynamic>>> sourceConnectionsInfo;
+
   /// Status of the CDC as to if it is running or stopped.
   late final pulumi.Output<String?> status;
+
   /// List of target connections that can be used as sources in the CDC.
-  late final pulumi.Output<List<MapperTargetConnectionsInfoResponse>> targetConnectionsInfo;
+  late final pulumi.Output<List<Map<String, dynamic>>> targetConnectionsInfo;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -7976,21 +7984,25 @@ class ChangeDataCapture extends pulumi.CustomResource {
     ChangeDataCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datafactory:ChangeDataCapture',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowVNetOverride = registerOutput<bool?>('allowVNetOverride');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<ChangeDataCaptureResponseFolder?>('folder');
+         'azure-native:datafactory:ChangeDataCapture',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowVNetOverride = registerOutput<bool?>('allowVNetOverride');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<ChangeDataCaptureResponseFolder?>('folder');
     this.name = registerOutput<String>('name');
-    this.policy = registerOutput<MapperPolicyResponse>('policy');
-    this.sourceConnectionsInfo = registerOutput<List<MapperSourceConnectionsInfoResponse>>('sourceConnectionsInfo');
-    this.status = registerOutput<String?>('status');
-    this.targetConnectionsInfo = registerOutput<List<MapperTargetConnectionsInfoResponse>>('targetConnectionsInfo');
-    this.type = registerOutput<String>('type');
+    policy = registerOutput<MapperPolicyResponse>('policy');
+    sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>(
+      'sourceConnectionsInfo',
+    );
+    status = registerOutput<String?>('status');
+    targetConnectionsInfo = registerOutput<List<Map<String, dynamic>>>(
+      'targetConnectionsInfo',
+    );
+    type = registerOutput<String>('type');
   }
 }

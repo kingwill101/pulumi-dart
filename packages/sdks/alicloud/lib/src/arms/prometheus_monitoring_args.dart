@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrometheusMonitoringArgs {
   /// The ID of the prometheus instance.
   final pulumi.Input<String> clusterId;
+
   /// Yaml configuration for monitoring.
   final pulumi.Input<String> configYaml;
+
   /// Valid values: `stop`, `run`.
   final pulumi.Input<String>? status;
+
   /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   final pulumi.Input<String> type;
 
@@ -39,11 +42,14 @@ class PrometheusMonitoringArgs {
 
   factory PrometheusMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusMonitoringArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      configYaml: (map['configYaml'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: (map['type'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

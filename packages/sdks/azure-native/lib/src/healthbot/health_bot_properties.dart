@@ -10,20 +10,29 @@ class HealthBotProperties {
 
   /// Creates a new [HealthBotProperties].
   /// [keyVaultProperties] KeyVault properties for the resource encryption.
-  HealthBotProperties({
-    this.keyVaultProperties,
-  });
+  HealthBotProperties({this.keyVaultProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory HealthBotProperties.fromMap(Map<String, dynamic> map) {
     return HealthBotProperties(
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

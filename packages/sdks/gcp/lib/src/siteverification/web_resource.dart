@@ -7,7 +7,7 @@ import 'web_resource_state.dart';
 /// ownership is verified you will be able to manage your website in the
 /// [Google Search Console](https://www.google.com/webmasters/tools/).
 ///
-/// > **Note:** The verification data (DNS `TXT` record, HTML file, `meta` tag, etc.)
+/// &gt; **Note:** The verification data (DNS `TXT` record, HTML file, `meta` tag, etc.)
 /// must already exist before the web resource is created, and must be deleted before
 /// the web resource is destroyed. The Google Site Verification API checks that the
 /// verification data exists at creation time and does not exist at destruction time
@@ -273,13 +273,16 @@ class WebResource extends pulumi.CustomResource {
   /// The email addresses of all direct, verified owners of this exact property. Indirect owners —
   /// for example verified owners of the containing domain—are not included in this list.
   late final pulumi.Output<List<String>> owners;
+
   /// Container for the address and type of a site for which a verification token will be verified.
   /// Structure is documented below.
   late final pulumi.Output<WebResourceSite> site;
+
   /// The verification method for the Site Verification system to use to verify
   /// this site or domain.
   /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
   late final pulumi.Output<String> verificationMethod;
+
   /// The string used to identify this web resource.
   late final pulumi.Output<String> webResourceId;
 
@@ -292,15 +295,15 @@ class WebResource extends pulumi.CustomResource {
     WebResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:siteverification/webResource:WebResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.owners = registerOutput<List<String>>('owners');
-    this.site = registerOutput<WebResourceSite>('site');
-    this.verificationMethod = registerOutput<String>('verificationMethod');
-    this.webResourceId = registerOutput<String>('webResourceId');
+         'gcp:siteverification/webResource:WebResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    owners = registerOutput<List<String>>('owners');
+    site = registerOutput<WebResourceSite>('site');
+    verificationMethod = registerOutput<String>('verificationMethod');
+    webResourceId = registerOutput<String>('webResourceId');
   }
 
   /// Gets an existing [WebResource] resource's state with the given [name] and [id].
@@ -321,14 +324,14 @@ class WebResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:siteverification/webResource:WebResource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.owners = registerOutput<List<String>>('owners');
-    this.site = registerOutput<WebResourceSite>('site');
-    this.verificationMethod = registerOutput<String>('verificationMethod');
-    this.webResourceId = registerOutput<String>('webResourceId');
+         'gcp:siteverification/webResource:WebResource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    owners = registerOutput<List<String>>('owners');
+    site = registerOutput<WebResourceSite>('site');
+    verificationMethod = registerOutput<String>('verificationMethod');
+    webResourceId = registerOutput<String>('webResourceId');
   }
 }

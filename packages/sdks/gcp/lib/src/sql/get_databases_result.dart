@@ -6,6 +6,7 @@ import 'get_databases_database.dart';
 /// Result data returned by getDatabases.
 class GetDatabasesResult {
   final List<GetDatabasesDatabase> databases;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -25,7 +26,11 @@ class GetDatabasesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases':
+          pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(
+            databases,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'instance': instance,
       'project': ?project,
@@ -34,11 +39,19 @@ class GetDatabasesResult {
 
   factory GetDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabasesResult(
-      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(map['databases'], (value) => GetDatabasesDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(
+        map['databases']!,
+        (value) => GetDatabasesDatabase.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       instance: map['instance'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

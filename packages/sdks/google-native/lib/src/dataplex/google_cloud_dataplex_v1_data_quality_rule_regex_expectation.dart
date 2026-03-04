@@ -9,20 +9,21 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRegexExpectation].
   /// [regex] Optional. A regular expression the column value is expected to match.
-  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
-    this.regex,
-  });
+  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({this.regex});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regex': ?regex,
-    };
+    return <String, dynamic>{'regex': ?regex};
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityRuleRegexExpectation(
-      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
+      regex: (() {
+        final guardedValue = map['regex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

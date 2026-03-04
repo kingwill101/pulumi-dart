@@ -9,20 +9,19 @@ class GcfsConfig {
 
   /// Creates a new [GcfsConfig].
   /// [enabled] Whether to use GCFS.
-  GcfsConfig({
-    this.enabled,
-  });
+  GcfsConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory GcfsConfig.fromMap(Map<String, dynamic> map) {
     return GcfsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiagnosticStoragePropertiesResponse {
   /// Authentication Type
   final pulumi.Input<String> authenticationType;
+
   /// ConnectionString of the diagnostic storage account
   final pulumi.Input<String>? connectionString;
+
   /// ResourceId of the diagnostic storage account
   final pulumi.Input<String> resourceId;
 
@@ -29,12 +31,19 @@ class DiagnosticStoragePropertiesResponse {
     };
   }
 
-  factory DiagnosticStoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DiagnosticStoragePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiagnosticStoragePropertiesResponse(
-      authenticationType: (map['authenticationType'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

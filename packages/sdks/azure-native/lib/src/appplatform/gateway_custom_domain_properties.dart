@@ -9,20 +9,19 @@ class GatewayCustomDomainProperties {
 
   /// Creates a new [GatewayCustomDomainProperties].
   /// [thumbprint] The thumbprint of bound certificate.
-  GatewayCustomDomainProperties({
-    this.thumbprint,
-  });
+  GatewayCustomDomainProperties({this.thumbprint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'thumbprint': ?thumbprint,
-    };
+    return <String, dynamic>{'thumbprint': ?thumbprint};
   }
 
   factory GatewayCustomDomainProperties.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainProperties(
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

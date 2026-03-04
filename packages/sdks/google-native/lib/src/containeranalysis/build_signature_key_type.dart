@@ -4,16 +4,15 @@ enum BuildSignatureKeyType {
   pgpAsciiArmored("PGP_ASCII_ARMORED"),
   pkixPem("PKIX_PEM");
 
-  const BuildSignatureKeyType(this.value);
-  final String value;
+  const BuildSignatureKeyType(this.wireValue);
+  final String wireValue;
 
   static BuildSignatureKeyType fromValue(String value) {
     for (final item in BuildSignatureKeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildSignatureKeyType value: $value');
   }
 }
-

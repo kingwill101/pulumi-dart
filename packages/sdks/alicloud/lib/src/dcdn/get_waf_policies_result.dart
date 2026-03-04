@@ -11,9 +11,11 @@ class GetWafPoliciesResult {
   final String? nameRegex;
   final List<String> names;
   final String? outputFile;
+
   /// A list of Dcdn Waf Policies. Each element contains the following attributes:
   final List<GetWafPoliciesPolicy> policies;
   final String? queryArgs;
+
   /// The status of the resource.
   final String? status;
 
@@ -44,7 +46,11 @@ class GetWafPoliciesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policies': pulumi.Input.encodeList<GetWafPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          pulumi.Input.encodeList<GetWafPoliciesPolicy, Map<String, dynamic>>(
+            policies,
+            (value) => value.toMap(),
+          ),
       'queryArgs': ?queryArgs,
       'status': ?status,
     };
@@ -54,13 +60,33 @@ class GetWafPoliciesResult {
     return GetWafPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policies: pulumi.Input.decodeList<GetWafPoliciesPolicy>(map['policies'], (value) => GetWafPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      queryArgs: map['queryArgs'] == null ? null : map['queryArgs']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policies: pulumi.Input.decodeList<GetWafPoliciesPolicy>(
+        map['policies']!,
+        (value) => GetWafPoliciesPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      queryArgs: (() {
+        final guardedValue = map['queryArgs'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

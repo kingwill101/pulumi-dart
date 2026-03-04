@@ -8,20 +8,17 @@ class GetAppSpecIngressRuleMatchAuthority {
 
   /// Creates a new [GetAppSpecIngressRuleMatchAuthority].
   /// [exact] The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-  GetAppSpecIngressRuleMatchAuthority({
-    required this.exact,
-  });
+  GetAppSpecIngressRuleMatchAuthority({required this.exact});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exact': exact,
-    };
+    return <String, dynamic>{'exact': exact};
   }
 
-  factory GetAppSpecIngressRuleMatchAuthority.fromMap(Map<String, dynamic> map) {
+  factory GetAppSpecIngressRuleMatchAuthority.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppSpecIngressRuleMatchAuthority(
-      exact: (map['exact'] as String).input(),
+      exact: pulumi.Input.fromValue(map['exact'] as String),
     );
   }
 }
-

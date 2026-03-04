@@ -1,5 +1,3 @@
-library module_cloudidentity;
-
 export 'cloudidentity/android_attributes_response.dart';
 export 'cloudidentity/certificate_attributes_response.dart';
 export 'cloudidentity/certificate_template_response.dart';

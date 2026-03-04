@@ -3,16 +3,15 @@ enum ServerBindingType {
   restartNodeOnMinimalServers("RESTART_NODE_ON_MINIMAL_SERVERS"),
   serverBindingTypeUnspecified("SERVER_BINDING_TYPE_UNSPECIFIED");
 
-  const ServerBindingType(this.value);
-  final String value;
+  const ServerBindingType(this.wireValue);
+  final String wireValue;
 
   static ServerBindingType fromValue(String value) {
     for (final item in ServerBindingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerBindingType value: $value');
   }
 }
-

@@ -12,20 +12,19 @@ class GetFloatingIpsArgs {
 
   /// Creates a new [GetFloatingIpsArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFloatingIpsArgs({
-    this.withSelector,
-  });
+  GetFloatingIpsArgs({this.withSelector});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'withSelector': ?withSelector,
-    };
+    return <String, dynamic>{'withSelector': ?withSelector};
   }
 
   factory GetFloatingIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpsArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventConnectionInvocationConnectivityParametersResourceParameters {
   final pulumi.Input<String>? resourceAssociationArn;
+
   /// ARN of the Amazon VPC Lattice resource configuration for the resource endpoint.
   final pulumi.Input<String> resourceConfigurationArn;
 
@@ -22,11 +23,18 @@ class EventConnectionInvocationConnectivityParametersResourceParameters {
     };
   }
 
-  factory EventConnectionInvocationConnectivityParametersResourceParameters.fromMap(Map<String, dynamic> map) {
+  factory EventConnectionInvocationConnectivityParametersResourceParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventConnectionInvocationConnectivityParametersResourceParameters(
-      resourceAssociationArn: map['resourceAssociationArn'] == null ? null : ((map['resourceAssociationArn'] as String).input()).input(),
-      resourceConfigurationArn: (map['resourceConfigurationArn'] as String).input(),
+      resourceAssociationArn: (() {
+        final guardedValue = map['resourceAssociationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceConfigurationArn: pulumi.Input.fromValue(
+        map['resourceConfigurationArn'] as String,
+      ),
     );
   }
 }
-

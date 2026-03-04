@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_args.dart';
 import 'managed_instance_external_administrator_response.dart';
-import 'managed_instance_pec_property_response.dart';
 import 'resource_identity_response.dart';
 import 'service_principal_response.dart';
 import 'sku_response.dart';
@@ -524,78 +523,117 @@ import 'sku_response.dart';
 class ManagedInstance extends pulumi.CustomResource {
   /// Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).
   late final pulumi.Output<String?> administratorLogin;
+
   /// The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
-  late final pulumi.Output<ManagedInstanceExternalAdministratorResponse?> administrators;
+  late final pulumi.Output<ManagedInstanceExternalAdministratorResponse?>
+  administrators;
+
   /// The managed instance's authentication metadata lookup mode.
   late final pulumi.Output<String?> authenticationMetadata;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collation of the managed instance.
   late final pulumi.Output<String?> collation;
+
   /// Specifies the point in time (ISO8601 format) of the Managed Instance creation.
   late final pulumi.Output<String> createTime;
+
   /// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
   late final pulumi.Output<String> currentBackupStorageRedundancy;
+
   /// Specifies the internal format of instance databases specific to the SQL engine version.
   late final pulumi.Output<String?> databaseFormat;
+
   /// The Dns Zone that the managed instance is in.
   late final pulumi.Output<String> dnsZone;
+
   /// Status of external governance.
   late final pulumi.Output<String> externalGovernanceStatus;
+
   /// The fully qualified domain name of the managed instance.
   late final pulumi.Output<String> fullyQualifiedDomainName;
+
   /// Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
   late final pulumi.Output<String?> hybridSecondaryUsage;
+
   /// Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR).
   late final pulumi.Output<String> hybridSecondaryUsageDetected;
+
   /// The Azure Active Directory identity of the managed instance.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
+
   /// The Id of the instance pool this managed server belongs to.
   late final pulumi.Output<String?> instancePoolId;
+
   /// Whether or not this is a GPv2 variant of General Purpose edition.
   late final pulumi.Output<bool?> isGeneralPurposeV2;
+
   /// A CMK URI of the key to use for encryption.
   late final pulumi.Output<String?> keyId;
+
   /// The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
   late final pulumi.Output<String?> licenseType;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Specifies maintenance configuration id to apply to this managed instance.
   late final pulumi.Output<String?> maintenanceConfigurationId;
+
   /// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
   late final pulumi.Output<String?> minimalTlsVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Pricing model of Managed Instance.
   late final pulumi.Output<String?> pricingModel;
+
   /// The resource id of a user assigned identity to be used by default.
   late final pulumi.Output<String?> primaryUserAssignedIdentityId;
+
   /// List of private endpoint connections on a managed instance.
-  late final pulumi.Output<List<ManagedInstancePecPropertyResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Provisioning state of managed instance.
   late final pulumi.Output<String> provisioningState;
+
   /// Connection type used for connecting to the instance.
   late final pulumi.Output<String?> proxyOverride;
+
   /// Whether or not the public data endpoint is enabled.
   late final pulumi.Output<bool?> publicDataEndpointEnabled;
+
   /// The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
   late final pulumi.Output<String?> requestedBackupStorageRedundancy;
+
   /// The managed instance's service principal.
   late final pulumi.Output<ServicePrincipalResponse?> servicePrincipal;
+
   /// Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The state of the managed instance.
   late final pulumi.Output<String> state;
+
   /// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
   late final pulumi.Output<int?> storageIOps;
+
   /// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
   late final pulumi.Output<int?> storageSizeInGB;
+
   /// Storage throughput MBps parameter is not supported in the instance create/update operation.
   late final pulumi.Output<int?> storageThroughputMBps;
+
   /// Subnet resource ID for the managed instance.
   late final pulumi.Output<String?> subnetId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Id of the timezone. Allowed values are timezones supported by Windows.
   /// Windows keeps details on supported timezones, including the id, in registry under
   /// KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
@@ -603,12 +641,16 @@ class ManagedInstance extends pulumi.CustomResource {
   /// List of Ids can also be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time" or "W. Europe Standard Time".
   late final pulumi.Output<String?> timezoneId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
   late final pulumi.Output<int?> vCores;
+
   /// Virtual cluster resource id for the Managed Instance.
   late final pulumi.Output<String> virtualClusterId;
+
   /// Whether or not the multi-az is enabled.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -621,52 +663,75 @@ class ManagedInstance extends pulumi.CustomResource {
     ManagedInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ManagedInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.administrators = registerOutput<ManagedInstanceExternalAdministratorResponse?>('administrators');
-    this.authenticationMetadata = registerOutput<String?>('authenticationMetadata');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collation = registerOutput<String?>('collation');
-    this.createTime = registerOutput<String>('createTime');
-    this.currentBackupStorageRedundancy = registerOutput<String>('currentBackupStorageRedundancy');
-    this.databaseFormat = registerOutput<String?>('databaseFormat');
-    this.dnsZone = registerOutput<String>('dnsZone');
-    this.externalGovernanceStatus = registerOutput<String>('externalGovernanceStatus');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    this.hybridSecondaryUsageDetected = registerOutput<String>('hybridSecondaryUsageDetected');
-    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
-    this.instancePoolId = registerOutput<String?>('instancePoolId');
-    this.isGeneralPurposeV2 = registerOutput<bool?>('isGeneralPurposeV2');
-    this.keyId = registerOutput<String?>('keyId');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+         'azure-native:sql:ManagedInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    administrators =
+        registerOutput<ManagedInstanceExternalAdministratorResponse?>(
+          'administrators',
+        );
+    authenticationMetadata = registerOutput<String?>('authenticationMetadata');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collation = registerOutput<String?>('collation');
+    createTime = registerOutput<String>('createTime');
+    currentBackupStorageRedundancy = registerOutput<String>(
+      'currentBackupStorageRedundancy',
+    );
+    databaseFormat = registerOutput<String?>('databaseFormat');
+    dnsZone = registerOutput<String>('dnsZone');
+    externalGovernanceStatus = registerOutput<String>(
+      'externalGovernanceStatus',
+    );
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
+    hybridSecondaryUsageDetected = registerOutput<String>(
+      'hybridSecondaryUsageDetected',
+    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    instancePoolId = registerOutput<String?>('instancePoolId');
+    isGeneralPurposeV2 = registerOutput<bool?>('isGeneralPurposeV2');
+    keyId = registerOutput<String?>('keyId');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String?>(
+      'maintenanceConfigurationId',
+    );
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    this.pricingModel = registerOutput<String?>('pricingModel');
-    this.primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
-    this.privateEndpointConnections = registerOutput<List<ManagedInstancePecPropertyResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.proxyOverride = registerOutput<String?>('proxyOverride');
-    this.publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
-    this.requestedBackupStorageRedundancy = registerOutput<String?>('requestedBackupStorageRedundancy');
-    this.servicePrincipal = registerOutput<ServicePrincipalResponse?>('servicePrincipal');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.state = registerOutput<String>('state');
-    this.storageIOps = registerOutput<int?>('storageIOps');
-    this.storageSizeInGB = registerOutput<int?>('storageSizeInGB');
-    this.storageThroughputMBps = registerOutput<int?>('storageThroughputMBps');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezoneId = registerOutput<String?>('timezoneId');
-    this.type = registerOutput<String>('type');
-    this.vCores = registerOutput<int?>('vCores');
-    this.virtualClusterId = registerOutput<String>('virtualClusterId');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    pricingModel = registerOutput<String?>('pricingModel');
+    primaryUserAssignedIdentityId = registerOutput<String?>(
+      'primaryUserAssignedIdentityId',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    proxyOverride = registerOutput<String?>('proxyOverride');
+    publicDataEndpointEnabled = registerOutput<bool?>(
+      'publicDataEndpointEnabled',
+    );
+    requestedBackupStorageRedundancy = registerOutput<String?>(
+      'requestedBackupStorageRedundancy',
+    );
+    servicePrincipal = registerOutput<ServicePrincipalResponse?>(
+      'servicePrincipal',
+    );
+    sku = registerOutput<SkuResponse?>('sku');
+    state = registerOutput<String>('state');
+    storageIOps = registerOutput<int?>('storageIOps');
+    storageSizeInGB = registerOutput<int?>('storageSizeInGB');
+    storageThroughputMBps = registerOutput<int?>('storageThroughputMBps');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezoneId = registerOutput<String?>('timezoneId');
+    type = registerOutput<String>('type');
+    vCores = registerOutput<int?>('vCores');
+    virtualClusterId = registerOutput<String>('virtualClusterId');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityGroupsGroup {
   /// Creation time of the security group.
   final pulumi.Input<String> creationTime;
+
   /// The description of the security group.
   final pulumi.Input<String> description;
+
   /// The ID of the security group.
   final pulumi.Input<String> id;
+
   /// Whether to allow inner network access.
   final pulumi.Input<bool> innerAccess;
+
   /// The name of the security group.
   final pulumi.Input<String> name;
+
   /// The Id of resource group which the security_group belongs.
   final pulumi.Input<String> resourceGroupId;
+
   /// The type of the security group.
   final pulumi.Input<String> securityGroupType;
+
   /// A map of tags assigned to the ECS instances. It must be in the format:
   ///
   /// ```typescript
@@ -123,6 +130,7 @@ class GetSecurityGroupsGroup {
   ///           tagKey2: tagValue2
   /// ```
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Used to retrieve security groups that belong to the specified VPC ID.
   final pulumi.Input<String> vpcId;
 
@@ -164,16 +172,23 @@ class GetSecurityGroupsGroup {
 
   factory GetSecurityGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupsGroup(
-      creationTime: (map['creationTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      innerAccess: (map['innerAccess'] as bool).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      securityGroupType: (map['securityGroupType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      innerAccess: pulumi.Input.fromValue(map['innerAccess'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      securityGroupType: pulumi.Input.fromValue(
+        map['securityGroupType'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

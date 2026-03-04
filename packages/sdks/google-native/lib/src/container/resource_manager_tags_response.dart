@@ -9,20 +9,15 @@ class ResourceManagerTagsResponse {
 
   /// Creates a new [ResourceManagerTagsResponse].
   /// [tags] TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
-  ResourceManagerTagsResponse({
-    required this.tags,
-  });
+  ResourceManagerTagsResponse({required this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': tags,
-    };
+    return <String, dynamic>{'tags': tags};
   }
 
   factory ResourceManagerTagsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceManagerTagsResponse(
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

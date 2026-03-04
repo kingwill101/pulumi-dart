@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessKeyArgs {
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
   final pulumi.Input<String>? pgpKey;
+
   /// Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   final pulumi.Input<String>? status;
+
   /// IAM user to associate with this access key.
   final pulumi.Input<String> user;
 
@@ -18,11 +20,7 @@ class AccessKeyArgs {
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
   /// [status] Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   /// [user] IAM user to associate with this access key.
-  AccessKeyArgs({
-    this.pgpKey,
-    this.status,
-    required this.user,
-  });
+  AccessKeyArgs({this.pgpKey, this.status, required this.user});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      user: (map['user'] as String).input(),
+      pgpKey: (() {
+        final guardedValue = map['pgpKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

@@ -16,7 +16,7 @@ class GoogleNativeConfig {
     return deployment.isConfigSecret(key);
   }
 
-  /// Additional user-agent string to append to the default one (<prod_name>/<ver>).
+  /// Additional user-agent string to append to the default one (&lt;prod_name&gt;/&lt;ver&gt;).
   String? get appendUserAgent {
     final raw = _raw('appendUserAgent');
     return raw;
@@ -63,8 +63,6 @@ class GoogleNativeConfig {
   }
 
   bool get zoneIsSecret => _isSecret('zone');
-
 }
 
 final config = GoogleNativeConfig();
-

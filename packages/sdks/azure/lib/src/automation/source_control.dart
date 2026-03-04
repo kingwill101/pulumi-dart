@@ -231,7 +231,7 @@ import 'source_control_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -246,22 +246,31 @@ import 'source_control_state.dart';
 class SourceControl extends pulumi.CustomResource {
   /// Whether auto async the Source Control.
   late final pulumi.Output<bool?> automaticSync;
+
   /// The ID of Automation Account to manage this Source Control. Changing this forces a new Automation Source Control to be created.
   late final pulumi.Output<String> automationAccountId;
+
   /// Specify the repo branch of the Source Control. Empty value is valid only for `VsoTfvc`.
   late final pulumi.Output<String?> branch;
+
   /// A short description of the Source Control.
   late final pulumi.Output<String?> description;
+
   /// The folder path of the source control. This Path must be relative.
   late final pulumi.Output<String> folderPath;
+
   /// The name which should be used for this Automation Source Control. Changing this forces a new Automation Source Control to be created.
   late final pulumi.Output<String> name;
+
   /// Whether auto publish the Source Control. Defaults to `true`.
   late final pulumi.Output<bool?> publishRunbookEnabled;
+
   /// The Repository URL of the source control.
   late final pulumi.Output<String> repositoryUrl;
+
   /// A `security` block as defined below.
   late final pulumi.Output<SourceControlSecurity> security;
+
   /// The source type of Source Control, possible vaules are `VsoGit`, `VsoTfvc` and `GitHub`, and the value is case sensitive.
   late final pulumi.Output<String> sourceControlType;
 
@@ -274,21 +283,21 @@ class SourceControl extends pulumi.CustomResource {
     SourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/sourceControl:SourceControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticSync = registerOutput<bool?>('automaticSync');
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.branch = registerOutput<String?>('branch');
-    this.description = registerOutput<String?>('description');
-    this.folderPath = registerOutput<String>('folderPath');
+         'azure:automation/sourceControl:SourceControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticSync = registerOutput<bool?>('automaticSync');
+    automationAccountId = registerOutput<String>('automationAccountId');
+    branch = registerOutput<String?>('branch');
+    description = registerOutput<String?>('description');
+    folderPath = registerOutput<String>('folderPath');
     this.name = registerOutput<String>('name');
-    this.publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
-    this.repositoryUrl = registerOutput<String>('repositoryUrl');
-    this.security = registerOutput<SourceControlSecurity>('security');
-    this.sourceControlType = registerOutput<String>('sourceControlType');
+    publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
+    repositoryUrl = registerOutput<String>('repositoryUrl');
+    security = registerOutput<SourceControlSecurity>('security');
+    sourceControlType = registerOutput<String>('sourceControlType');
   }
 
   /// Gets an existing [SourceControl] resource's state with the given [name] and [id].
@@ -309,20 +318,20 @@ class SourceControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/sourceControl:SourceControl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticSync = registerOutput<bool?>('automaticSync');
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.branch = registerOutput<String?>('branch');
-    this.description = registerOutput<String?>('description');
-    this.folderPath = registerOutput<String>('folderPath');
+         'azure:automation/sourceControl:SourceControl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticSync = registerOutput<bool?>('automaticSync');
+    automationAccountId = registerOutput<String>('automationAccountId');
+    branch = registerOutput<String?>('branch');
+    description = registerOutput<String?>('description');
+    folderPath = registerOutput<String>('folderPath');
     this.name = registerOutput<String>('name');
-    this.publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
-    this.repositoryUrl = registerOutput<String>('repositoryUrl');
-    this.security = registerOutput<SourceControlSecurity>('security');
-    this.sourceControlType = registerOutput<String>('sourceControlType');
+    publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
+    repositoryUrl = registerOutput<String>('repositoryUrl');
+    security = registerOutput<SourceControlSecurity>('security');
+    sourceControlType = registerOutput<String>('sourceControlType');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanBackupConfigSelectedApplicationsNamespacedName {
   /// The name of a Kubernetes Resource.
   final pulumi.Input<String> name;
+
   /// The namespace of a Kubernetes Resource.
   final pulumi.Input<String> namespace;
 
@@ -17,17 +18,15 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedName {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'namespace': namespace,
-    };
+    return <String, dynamic>{'name': name, 'namespace': namespace};
   }
 
-  factory BackupPlanBackupConfigSelectedApplicationsNamespacedName.fromMap(Map<String, dynamic> map) {
+  factory BackupPlanBackupConfigSelectedApplicationsNamespacedName.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPlanBackupConfigSelectedApplicationsNamespacedName(
-      name: (map['name'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
-

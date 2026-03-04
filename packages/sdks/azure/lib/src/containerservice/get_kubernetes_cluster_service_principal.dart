@@ -8,20 +8,17 @@ class GetKubernetesClusterServicePrincipal {
 
   /// Creates a new [GetKubernetesClusterServicePrincipal].
   /// [clientId] The Client ID of the user-defined Managed Identity assigned to the Kubelets.
-  GetKubernetesClusterServicePrincipal({
-    required this.clientId,
-  });
+  GetKubernetesClusterServicePrincipal({required this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': clientId,
-    };
+    return <String, dynamic>{'clientId': clientId};
   }
 
-  factory GetKubernetesClusterServicePrincipal.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterServicePrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterServicePrincipal(
-      clientId: (map['clientId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
-

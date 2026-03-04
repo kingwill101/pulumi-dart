@@ -1,5 +1,3 @@
-library module_alertsmanagement;
-
 export 'alertsmanagement/action_group.dart';
 export 'alertsmanagement/action_group_response.dart';
 export 'alertsmanagement/action_groups_information.dart';

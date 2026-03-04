@@ -1,5 +1,3 @@
-library module_policy;
-
 export 'policy/definition.dart';
 export 'policy/definition_args.dart';
 export 'policy/definition_state.dart';

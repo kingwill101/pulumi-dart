@@ -11,20 +11,39 @@ class DestinationStateTimeline {
 
   /// Creates a new [DestinationStateTimeline].
   /// [states] (Output)
-  DestinationStateTimeline({
-    this.states,
-  });
+  DestinationStateTimeline({this.states});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': ?pulumi.Input.mapOptionalInputValue<List<DestinationStateTimelineState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'states':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DestinationStateTimelineState>,
+            List<Map<String, dynamic>>
+          >(
+            states,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DestinationStateTimelineState,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DestinationStateTimeline.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimeline(
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimelineState>(map['states']!, (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      states: (() {
+        final guardedValue = map['states'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DestinationStateTimelineState>(
+            guardedValue,
+            (value) => DestinationStateTimelineState.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

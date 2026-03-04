@@ -3,16 +3,17 @@ enum ApplicationGatewayFirewallRateLimitDuration {
   valueOneMin("OneMin"),
   valueFiveMins("FiveMins");
 
-  const ApplicationGatewayFirewallRateLimitDuration(this.value);
-  final String value;
+  const ApplicationGatewayFirewallRateLimitDuration(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayFirewallRateLimitDuration fromValue(String value) {
     for (final item in ApplicationGatewayFirewallRateLimitDuration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewayFirewallRateLimitDuration value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewayFirewallRateLimitDuration value: $value',
+    );
   }
 }
-

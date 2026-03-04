@@ -10,10 +10,13 @@ class FastApplicationState {
   ///
   /// * `FAST documentation` - https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
   final pulumi.Input<String>? application;
+
   /// Path/Filename of Declarative FAST JSON which is a json file used with builtin ```file``` function
   final pulumi.Input<String>? fastJson;
+
   /// Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
   final pulumi.Input<String>? template;
+
   /// A FAST tenant name on which you want to manage application.
   final pulumi.Input<String>? tenant;
 
@@ -40,11 +43,26 @@ class FastApplicationState {
 
   factory FastApplicationState.fromMap(Map<String, dynamic> map) {
     return FastApplicationState(
-      application: map['application'] == null ? null : (map['application']! as String).input(),
-      fastJson: map['fastJson'] == null ? null : (map['fastJson']! as String).input(),
-      template: map['template'] == null ? null : (map['template']! as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      application: (() {
+        final guardedValue = map['application'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fastJson: (() {
+        final guardedValue = map['fastJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenant: (() {
+        final guardedValue = map['tenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

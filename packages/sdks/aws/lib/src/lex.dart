@@ -1,5 +1,3 @@
-library module_lex;
-
 export 'lex/bot.dart';
 export 'lex/bot_abort_statement.dart';
 export 'lex/bot_abort_statement_message.dart';

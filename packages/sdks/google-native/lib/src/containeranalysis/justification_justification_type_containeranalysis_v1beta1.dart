@@ -4,19 +4,25 @@ enum JustificationJustificationTypeContaineranalysisV1beta1 {
   componentNotPresent("COMPONENT_NOT_PRESENT"),
   vulnerableCodeNotPresent("VULNERABLE_CODE_NOT_PRESENT"),
   vulnerableCodeNotInExecutePath("VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"),
-  vulnerableCodeCannotBeControlledByAdversary("VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"),
+  vulnerableCodeCannotBeControlledByAdversary(
+    "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY",
+  ),
   inlineMitigationsAlreadyExist("INLINE_MITIGATIONS_ALREADY_EXIST");
 
-  const JustificationJustificationTypeContaineranalysisV1beta1(this.value);
-  final String value;
+  const JustificationJustificationTypeContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
-  static JustificationJustificationTypeContaineranalysisV1beta1 fromValue(String value) {
-    for (final item in JustificationJustificationTypeContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+  static JustificationJustificationTypeContaineranalysisV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in JustificationJustificationTypeContaineranalysisV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown JustificationJustificationTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown JustificationJustificationTypeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

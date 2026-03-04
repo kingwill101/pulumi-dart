@@ -3,16 +3,15 @@ enum ContainerWorkingDirectory {
   taskWorkingDirectory("TaskWorkingDirectory"),
   containerImageDefault("ContainerImageDefault");
 
-  const ContainerWorkingDirectory(this.value);
-  final String value;
+  const ContainerWorkingDirectory(this.wireValue);
+  final String wireValue;
 
   static ContainerWorkingDirectory fromValue(String value) {
     for (final item in ContainerWorkingDirectory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContainerWorkingDirectory value: $value');
   }
 }
-

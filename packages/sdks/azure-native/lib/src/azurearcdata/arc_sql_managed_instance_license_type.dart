@@ -4,16 +4,17 @@ enum ArcSqlManagedInstanceLicenseType {
   valueLicenseIncluded("LicenseIncluded"),
   valueDisasterRecovery("DisasterRecovery");
 
-  const ArcSqlManagedInstanceLicenseType(this.value);
-  final String value;
+  const ArcSqlManagedInstanceLicenseType(this.wireValue);
+  final String wireValue;
 
   static ArcSqlManagedInstanceLicenseType fromValue(String value) {
     for (final item in ArcSqlManagedInstanceLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ArcSqlManagedInstanceLicenseType value: $value');
+    throw ArgumentError(
+      'Unknown ArcSqlManagedInstanceLicenseType value: $value',
+    );
   }
 }
-

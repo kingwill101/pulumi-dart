@@ -4,14 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceAggregatedAssociationOverview
 class InstanceAggregatedAssociationOverview {
-  /// <p>Detailed status information about the aggregated associations.</p>
+  /// &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
   final pulumi.Input<String>? detailedStatus;
-  /// <p>The number of associations for the managed nodes.</p>
-  final pulumi.Input<Map<String, int>>? instanceAssociationStatusAggregatedCount;
+
+  /// &lt;p&gt;The number of associations for the managed nodes.&lt;/p&gt;
+  final pulumi.Input<Map<String, int>>?
+  instanceAssociationStatusAggregatedCount;
 
   /// Creates a new [InstanceAggregatedAssociationOverview].
-  /// [detailedStatus] <p>Detailed status information about the aggregated associations.</p>
-  /// [instanceAssociationStatusAggregatedCount] <p>The number of associations for the managed nodes.</p>
+  /// [detailedStatus] &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
+  /// [instanceAssociationStatusAggregatedCount] &lt;p&gt;The number of associations for the managed nodes.&lt;/p&gt;
   InstanceAggregatedAssociationOverview({
     this.detailedStatus,
     this.instanceAssociationStatusAggregatedCount,
@@ -20,15 +22,27 @@ class InstanceAggregatedAssociationOverview {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'detailedStatus': ?detailedStatus,
-      'instanceAssociationStatusAggregatedCount': ?instanceAssociationStatusAggregatedCount,
+      'instanceAssociationStatusAggregatedCount':
+          ?instanceAssociationStatusAggregatedCount,
     };
   }
 
-  factory InstanceAggregatedAssociationOverview.fromMap(Map<String, dynamic> map) {
+  factory InstanceAggregatedAssociationOverview.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceAggregatedAssociationOverview(
-      detailedStatus: map['detailedStatus'] == null ? null : (map['detailedStatus']! as String).input(),
-      instanceAssociationStatusAggregatedCount: map['instanceAssociationStatusAggregatedCount'] == null ? null : ((map['instanceAssociationStatusAggregatedCount']! as Map).cast<String, int>()).input(),
+      detailedStatus: (() {
+        final guardedValue = map['detailedStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceAssociationStatusAggregatedCount: (() {
+        final guardedValue = map['instanceAssociationStatusAggregatedCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, int>(),
+        );
+      })(),
     );
   }
 }
-

@@ -3,7 +3,7 @@ import 'lite_subscription_args.dart';
 import 'lite_subscription_delivery_config.dart';
 import 'lite_subscription_state.dart';
 
-/// > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `gcp.pubsub.Subscription` instead.
+/// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `gcp.pubsub.Subscription` instead.
 ///
 /// A named resource representing the stream of messages from a single,
 /// specific topic, to be delivered to the subscribing application.
@@ -281,15 +281,20 @@ class LiteSubscription extends pulumi.CustomResource {
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
   late final pulumi.Output<LiteSubscriptionDeliveryConfig?> deliveryConfig;
+
   /// Name of the subscription.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the pubsub lite topic.
   late final pulumi.Output<String?> region;
+
   /// A reference to a Topic resource.
   late final pulumi.Output<String> topic;
+
   /// The zone of the pubsub lite topic.
   late final pulumi.Output<String?> zone;
 
@@ -302,17 +307,19 @@ class LiteSubscription extends pulumi.CustomResource {
     LiteSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteSubscription:LiteSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig');
+         'gcp:pubsub/liteSubscription:LiteSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>(
+      'deliveryConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.topic = registerOutput<String>('topic');
-    this.zone = registerOutput<String?>('zone');
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    topic = registerOutput<String>('topic');
+    zone = registerOutput<String?>('zone');
   }
 
   /// Gets an existing [LiteSubscription] resource's state with the given [name] and [id].
@@ -333,16 +340,18 @@ class LiteSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteSubscription:LiteSubscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig');
+         'gcp:pubsub/liteSubscription:LiteSubscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>(
+      'deliveryConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.topic = registerOutput<String>('topic');
-    this.zone = registerOutput<String?>('zone');
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    topic = registerOutput<String>('topic');
+    zone = registerOutput<String?>('zone');
   }
 }

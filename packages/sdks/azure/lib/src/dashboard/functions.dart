@@ -114,7 +114,7 @@ import 'get_grafana_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Portal` - 2019-01-01-preview
@@ -243,7 +243,7 @@ Future<AzurermPortalDashboardResult> azurermPortalDashboard(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Dashboard` - 2025-08-01

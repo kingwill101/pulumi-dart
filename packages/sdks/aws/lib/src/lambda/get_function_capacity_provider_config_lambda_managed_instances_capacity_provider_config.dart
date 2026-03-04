@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig {
   /// ARN of the Capacity Provider.
   final pulumi.Input<String> capacityProviderArn;
+
   /// Memory GiB per vCPU for the execution environment.
   final pulumi.Input<double> executionEnvironmentMemoryGibPerVcpu;
+
   /// Maximum concurrency per execution environment.
   final pulumi.Input<int> perExecutionEnvironmentMaxConcurrency;
 
@@ -23,17 +25,26 @@ class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderCon
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityProviderArn': capacityProviderArn,
-      'executionEnvironmentMemoryGibPerVcpu': executionEnvironmentMemoryGibPerVcpu,
-      'perExecutionEnvironmentMaxConcurrency': perExecutionEnvironmentMaxConcurrency,
+      'executionEnvironmentMemoryGibPerVcpu':
+          executionEnvironmentMemoryGibPerVcpu,
+      'perExecutionEnvironmentMaxConcurrency':
+          perExecutionEnvironmentMaxConcurrency,
     };
   }
 
-  factory GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
-      capacityProviderArn: (map['capacityProviderArn'] as String).input(),
-      executionEnvironmentMemoryGibPerVcpu: (map['executionEnvironmentMemoryGibPerVcpu'] as double).input(),
-      perExecutionEnvironmentMaxConcurrency: (map['perExecutionEnvironmentMaxConcurrency'] as int).input(),
+      capacityProviderArn: pulumi.Input.fromValue(
+        map['capacityProviderArn'] as String,
+      ),
+      executionEnvironmentMemoryGibPerVcpu: pulumi.Input.fromValue(
+        map['executionEnvironmentMemoryGibPerVcpu'] as double,
+      ),
+      perExecutionEnvironmentMaxConcurrency: pulumi.Input.fromValue(
+        map['perExecutionEnvironmentMaxConcurrency'] as int,
+      ),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
   /// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
   final pulumi.Input<String> consumerNetwork;
+
   /// (Output) The connection policy status of the consumer network.
   final pulumi.Input<String>? consumerNetworkStatus;
+
   /// The project ID of consumer service project of this consumer endpoint.
   final pulumi.Input<String>? consumerServiceProjectId;
+
   /// (Output) The IP address of the consumer endpoint.
   final pulumi.Input<String>? ipAddress;
+
   /// (Output) The connection status of the consumer endpoint.
   final pulumi.Input<String>? status;
 
@@ -38,14 +42,31 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
     };
   }
 
-  factory DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(
-      consumerNetwork: (map['consumerNetwork'] as String).input(),
-      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : (map['consumerNetworkStatus']! as String).input(),
-      consumerServiceProjectId: map['consumerServiceProjectId'] == null ? null : (map['consumerServiceProjectId']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      consumerNetwork: pulumi.Input.fromValue(map['consumerNetwork'] as String),
+      consumerNetworkStatus: (() {
+        final guardedValue = map['consumerNetworkStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerServiceProjectId: (() {
+        final guardedValue = map['consumerServiceProjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

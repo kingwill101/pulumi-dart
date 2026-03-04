@@ -7,17 +7,23 @@ import 'get_child_instance_route_entry_to_attachments_attachment.dart';
 class GetChildInstanceRouteEntryToAttachmentsResult {
   /// A list of Child Instance Route Entry To Attachment Entries. Each element contains the following attributes:
   final List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments;
+
   /// The ID of the CEN instance.
   final String? cenId;
+
   /// The first ID of the resource
   final String childInstanceRouteTableId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
+
+  /// Limit search to a list of specific IDs.The value is formulated as `&lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;`.
   final List<String> ids;
   final String? outputFile;
+
   /// ServiceType
   final String? serviceType;
+
   /// TransitRouterAttachmentId
   final String transitRouterAttachmentId;
 
@@ -26,7 +32,7 @@ class GetChildInstanceRouteEntryToAttachmentsResult {
   /// [cenId] The ID of the CEN instance.
   /// [childInstanceRouteTableId] The first ID of the resource
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
+  /// [ids] Limit search to a list of specific IDs.The value is formulated as `&lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;`.
   /// [outputFile] Optional.
   /// [serviceType] ServiceType
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
@@ -43,7 +49,11 @@ class GetChildInstanceRouteEntryToAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetChildInstanceRouteEntryToAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetChildInstanceRouteEntryToAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'cenId': ?cenId,
       'childInstanceRouteTableId': childInstanceRouteTableId,
       'id': id,
@@ -54,17 +64,39 @@ class GetChildInstanceRouteEntryToAttachmentsResult {
     };
   }
 
-  factory GetChildInstanceRouteEntryToAttachmentsResult.fromMap(Map<String, dynamic> map) {
+  factory GetChildInstanceRouteEntryToAttachmentsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetChildInstanceRouteEntryToAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetChildInstanceRouteEntryToAttachmentsAttachment>(map['attachments'], (value) => GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      cenId: map['cenId'] == null ? null : map['cenId']! as String,
+      attachments:
+          pulumi.Input.decodeList<
+            GetChildInstanceRouteEntryToAttachmentsAttachment
+          >(
+            map['attachments']!,
+            (value) =>
+                GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       childInstanceRouteTableId: map['childInstanceRouteTableId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceType: (() {
+        final guardedValue = map['serviceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
     );
   }
 }
-

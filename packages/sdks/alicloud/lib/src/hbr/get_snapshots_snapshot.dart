@@ -5,55 +5,80 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The actual data volume of the snapshot. Unit byte.
   final pulumi.Input<String> actualBytes;
+
   /// The actual number of items in the snapshot. (Currently only file backup is available).
   final pulumi.Input<String> actualItems;
+
   /// Backup type. Possible values: `COMPLETE` (full backup).
   final pulumi.Input<String> backupType;
+
   /// The name of OSS bucket.
   final pulumi.Input<String> bucket;
+
   /// The incremental amount of backup data. Unit byte.
   final pulumi.Input<String> bytesDone;
+
   /// The total amount of data sources. Unit byte.
   final pulumi.Input<String> bytesTotal;
+
   /// The ID of ECS backup client.
   final pulumi.Input<String> clientId;
+
   /// The time when the snapshot completed. UNIX time in seconds.
   final pulumi.Input<String> completeTime;
+
   /// File System Creation Time of Nas. Unix Time Seconds.
   final pulumi.Input<String> createTime;
+
   /// Snapshot creation time. UNIX time in seconds.
   final pulumi.Input<String> createdTime;
   final pulumi.Input<String> errorFile;
+
   /// The ID of NAS File system.
   final pulumi.Input<String> fileSystemId;
+
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
+
   /// The ID of ECS instance.
   final pulumi.Input<String> instanceId;
+
   /// The number of backup items. (Currently only file backup is available).
   final pulumi.Input<String> itemsDone;
+
   /// The total number of data source items. (Currently only file backup is available).
   final pulumi.Input<String> itemsTotal;
+
   /// The job ID of backup task.
   final pulumi.Input<String> jobId;
+
   /// The hashcode of parent backup snapshot.
   final pulumi.Input<String> parentSnapshotHash;
+
   /// Backup Path.
   final pulumi.Input<String> path;
+
   /// Backup file prefix.
   final pulumi.Input<String> prefix;
+
   /// The number of days to keep.
   final pulumi.Input<String> retention;
+
   /// The hashcode of Snapshot.
   final pulumi.Input<String> snapshotHash;
+
   /// The ID of the Snapshot.
   final pulumi.Input<String> snapshotId;
+
   /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
   final pulumi.Input<String> sourceType;
+
   /// The start time of the snapshot. UNIX time in seconds.
   final pulumi.Input<String> startTime;
+
   /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
   final pulumi.Input<String> status;
+
   /// The update time of snapshot. UNIX time in seconds.
   final pulumi.Input<String> updatedTime;
 
@@ -149,34 +174,35 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      actualBytes: (map['actualBytes'] as String).input(),
-      actualItems: (map['actualItems'] as String).input(),
-      backupType: (map['backupType'] as String).input(),
-      bucket: (map['bucket'] as String).input(),
-      bytesDone: (map['bytesDone'] as String).input(),
-      bytesTotal: (map['bytesTotal'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      completeTime: (map['completeTime'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      createdTime: (map['createdTime'] as String).input(),
-      errorFile: (map['errorFile'] as String).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      itemsDone: (map['itemsDone'] as String).input(),
-      itemsTotal: (map['itemsTotal'] as String).input(),
-      jobId: (map['jobId'] as String).input(),
-      parentSnapshotHash: (map['parentSnapshotHash'] as String).input(),
-      path: (map['path'] as String).input(),
-      prefix: (map['prefix'] as String).input(),
-      retention: (map['retention'] as String).input(),
-      snapshotHash: (map['snapshotHash'] as String).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      updatedTime: (map['updatedTime'] as String).input(),
+      actualBytes: pulumi.Input.fromValue(map['actualBytes'] as String),
+      actualItems: pulumi.Input.fromValue(map['actualItems'] as String),
+      backupType: pulumi.Input.fromValue(map['backupType'] as String),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bytesDone: pulumi.Input.fromValue(map['bytesDone'] as String),
+      bytesTotal: pulumi.Input.fromValue(map['bytesTotal'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      completeTime: pulumi.Input.fromValue(map['completeTime'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
+      errorFile: pulumi.Input.fromValue(map['errorFile'] as String),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      itemsDone: pulumi.Input.fromValue(map['itemsDone'] as String),
+      itemsTotal: pulumi.Input.fromValue(map['itemsTotal'] as String),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      parentSnapshotHash: pulumi.Input.fromValue(
+        map['parentSnapshotHash'] as String,
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      retention: pulumi.Input.fromValue(map['retention'] as String),
+      snapshotHash: pulumi.Input.fromValue(map['snapshotHash'] as String),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updatedTime: pulumi.Input.fromValue(map['updatedTime'] as String),
     );
   }
 }
-

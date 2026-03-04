@@ -5,24 +5,36 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi_initiator_iqn.dart';
 
 class DomainDevicesHostdevSubsysScsiSourceIscsiInitiator {
   /// Defines the IQN (iSCSI Qualified Name) for the iSCSI initiator.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn>? iqn;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn>?
+  iqn;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiInitiator].
   /// [iqn] Defines the IQN (iSCSI Qualified Name) for the iSCSI initiator.
-  DomainDevicesHostdevSubsysScsiSourceIscsiInitiator({
-    this.iqn,
-  });
+  DomainDevicesHostdevSubsysScsiSourceIscsiInitiator({this.iqn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iqn': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn, Map<String, dynamic>>(iqn, (value) => value.toMap()),
+      'iqn':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn,
+            Map<String, dynamic>
+          >(iqn, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesHostdevSubsysScsiSourceIscsiInitiator(
-      iqn: map['iqn'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap((map['iqn']! as Map).cast<String, dynamic>())).input(),
+      iqn: (() {
+        final guardedValue = map['iqn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

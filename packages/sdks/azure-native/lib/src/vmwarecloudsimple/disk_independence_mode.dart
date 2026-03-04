@@ -4,16 +4,15 @@ enum DiskIndependenceMode {
   valueIndependentPersistent("independent_persistent"),
   valueIndependentNonpersistent("independent_nonpersistent");
 
-  const DiskIndependenceMode(this.value);
-  final String value;
+  const DiskIndependenceMode(this.wireValue);
+  final String wireValue;
 
   static DiskIndependenceMode fromValue(String value) {
     for (final item in DiskIndependenceMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskIndependenceMode value: $value');
   }
 }
-

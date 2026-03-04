@@ -5,18 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxToolOpenApiSpecAuthenticationOauthConfig {
   /// The client ID from the OAuth provider.
   final pulumi.Input<String> clientId;
+
   /// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? clientSecret;
+
   /// OAuth grant types.
   /// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
   final pulumi.Input<String> oauthGrantType;
+
   /// Optional. The OAuth scopes to grant.
   final pulumi.Input<List<String>>? scopes;
+
   /// Optional. The name of the SecretManager secret version resource storing the client secret.
   /// If this field is set, the clientSecret field will be ignored.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}
   final pulumi.Input<String>? secretVersionForClientSecret;
+
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final pulumi.Input<String> tokenEndpoint;
 
@@ -47,15 +52,28 @@ class CxToolOpenApiSpecAuthenticationOauthConfig {
     };
   }
 
-  factory CxToolOpenApiSpecAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
+  factory CxToolOpenApiSpecAuthenticationOauthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxToolOpenApiSpecAuthenticationOauthConfig(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      oauthGrantType: (map['oauthGrantType'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      secretVersionForClientSecret: map['secretVersionForClientSecret'] == null ? null : (map['secretVersionForClientSecret']! as String).input(),
-      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthGrantType: pulumi.Input.fromValue(map['oauthGrantType'] as String),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secretVersionForClientSecret: (() {
+        final guardedValue = map['secretVersionForClientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
     );
   }
 }
-

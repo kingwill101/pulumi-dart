@@ -1,5 +1,3 @@
-library module_gkebackup;
-
 export 'gkebackup/audit_config.dart';
 export 'gkebackup/audit_config_response.dart';
 export 'gkebackup/audit_log_config.dart';

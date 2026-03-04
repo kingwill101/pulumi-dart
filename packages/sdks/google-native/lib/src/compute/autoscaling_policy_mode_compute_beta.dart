@@ -5,16 +5,17 @@ enum AutoscalingPolicyModeComputeBeta {
   onlyScaleOut("ONLY_SCALE_OUT"),
   onlyUp("ONLY_UP");
 
-  const AutoscalingPolicyModeComputeBeta(this.value);
-  final String value;
+  const AutoscalingPolicyModeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AutoscalingPolicyModeComputeBeta fromValue(String value) {
     for (final item in AutoscalingPolicyModeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutoscalingPolicyModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AutoscalingPolicyModeComputeBeta value: $value',
+    );
   }
 }
-

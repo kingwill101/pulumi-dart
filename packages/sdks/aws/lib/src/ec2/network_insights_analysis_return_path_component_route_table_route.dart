@@ -53,19 +53,60 @@ class NetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
     };
   }
 
-  factory NetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisReturnPathComponentRouteTableRoute(
-      destinationCidr: map['destinationCidr'] == null ? null : ((map['destinationCidr'] as String).input()).input(),
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : ((map['destinationPrefixListId'] as String).input()).input(),
-      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] == null ? null : ((map['egressOnlyInternetGatewayId'] as String).input()).input(),
-      gatewayId: map['gatewayId'] == null ? null : ((map['gatewayId'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
-      origin: map['origin'] == null ? null : ((map['origin'] as String).input()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : ((map['vpcPeeringConnectionId'] as String).input()).input(),
+      destinationCidr: (() {
+        final guardedValue = map['destinationCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationPrefixListId: (() {
+        final guardedValue = map['destinationPrefixListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      egressOnlyInternetGatewayId: (() {
+        final guardedValue = map['egressOnlyInternetGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natGatewayId: (() {
+        final guardedValue = map['natGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      origin: (() {
+        final guardedValue = map['origin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayId: (() {
+        final guardedValue = map['transitGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcPeeringConnectionId: (() {
+        final guardedValue = map['vpcPeeringConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

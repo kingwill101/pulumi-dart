@@ -8,20 +8,15 @@ class GetBucketHierarchicalNamespace {
 
   /// Creates a new [GetBucketHierarchicalNamespace].
   /// [enabled] Set this field true to organize bucket with logical file system structure.
-  GetBucketHierarchicalNamespace({
-    required this.enabled,
-  });
+  GetBucketHierarchicalNamespace({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GetBucketHierarchicalNamespace.fromMap(Map<String, dynamic> map) {
     return GetBucketHierarchicalNamespace(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

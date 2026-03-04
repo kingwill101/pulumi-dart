@@ -8,20 +8,21 @@ class OrchestratedVirtualMachineScaleSetBootDiagnostics {
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. By including a `boot_diagnostics` block without passing the `storage_account_uri` field will cause the API to utilize a Managed Storage Account to store the Boot Diagnostics output.
-  OrchestratedVirtualMachineScaleSetBootDiagnostics({
-    this.storageAccountUri,
-  });
+  OrchestratedVirtualMachineScaleSetBootDiagnostics({this.storageAccountUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageAccountUri': ?storageAccountUri,
-    };
+    return <String, dynamic>{'storageAccountUri': ?storageAccountUri};
   }
 
-  factory OrchestratedVirtualMachineScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
+  factory OrchestratedVirtualMachineScaleSetBootDiagnostics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrchestratedVirtualMachineScaleSetBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri']! as String).input(),
+      storageAccountUri: (() {
+        final guardedValue = map['storageAccountUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

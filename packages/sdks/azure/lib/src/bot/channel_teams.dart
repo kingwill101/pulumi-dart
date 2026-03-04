@@ -4,7 +4,7 @@ import 'channel_teams_state.dart';
 
 /// Manages a MS Teams integration for a Bot Channel
 ///
-/// > **Note:** A bot can only have a single MS Teams Channel associated with it.
+/// &gt; **Note:** A bot can only have a single MS Teams Channel associated with it.
 ///
 /// ## Example Usage
 ///
@@ -219,15 +219,20 @@ import 'channel_teams_state.dart';
 class ChannelTeams extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// Specifies whether to enable Microsoft Teams channel calls. This defaults to `false`.
   late final pulumi.Output<bool> callingEnabled;
+
   /// Specifies the webhook for Microsoft Teams channel calls.
   late final pulumi.Output<String> callingWebHook;
+
   /// The deployment environment for Microsoft Teams channel calls. Possible values are `CommercialDeployment` and `GCCModerateDeployment`. Defaults to `CommercialDeployment`.
   late final pulumi.Output<String?> deploymentEnvironment;
   late final pulumi.Output<bool> enableCalling;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -240,18 +245,18 @@ class ChannelTeams extends pulumi.CustomResource {
     ChannelTeamsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelTeams:ChannelTeams',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.callingEnabled = registerOutput<bool>('callingEnabled');
-    this.callingWebHook = registerOutput<String>('callingWebHook');
-    this.deploymentEnvironment = registerOutput<String?>('deploymentEnvironment');
-    this.enableCalling = registerOutput<bool>('enableCalling');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelTeams:ChannelTeams',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    callingEnabled = registerOutput<bool>('callingEnabled');
+    callingWebHook = registerOutput<String>('callingWebHook');
+    deploymentEnvironment = registerOutput<String?>('deploymentEnvironment');
+    enableCalling = registerOutput<bool>('enableCalling');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ChannelTeams] resource's state with the given [name] and [id].
@@ -272,17 +277,17 @@ class ChannelTeams extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelTeams:ChannelTeams',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.callingEnabled = registerOutput<bool>('callingEnabled');
-    this.callingWebHook = registerOutput<String>('callingWebHook');
-    this.deploymentEnvironment = registerOutput<String?>('deploymentEnvironment');
-    this.enableCalling = registerOutput<bool>('enableCalling');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelTeams:ChannelTeams',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    callingEnabled = registerOutput<bool>('callingEnabled');
+    callingWebHook = registerOutput<String>('callingWebHook');
+    deploymentEnvironment = registerOutput<String?>('deploymentEnvironment');
+    enableCalling = registerOutput<bool>('enableCalling');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortAllowedAddressPair {
   /// The additional IP address.
   final pulumi.Input<String> ipAddress;
+
   /// The MAC address of the port.
   final pulumi.Input<String> macAddress;
 
@@ -17,17 +18,13 @@ class GetPortAllowedAddressPair {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-      'macAddress': macAddress,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress, 'macAddress': macAddress};
   }
 
   factory GetPortAllowedAddressPair.fromMap(Map<String, dynamic> map) {
     return GetPortAllowedAddressPair(
-      ipAddress: (map['ipAddress'] as String).input(),
-      macAddress: (map['macAddress'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
     );
   }
 }
-

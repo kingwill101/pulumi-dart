@@ -3,14 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureNodePoolConfigProxyConfig {
-  /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+  /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
   final pulumi.Input<String> resourceGroupId;
-  /// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+
+  /// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:&lt;key-vault-name&gt;.vault.azure.net/secrets/&lt;secret-name&gt;/&lt;secret-version&gt;`.
   final pulumi.Input<String> secretId;
 
   /// Creates a new [AzureNodePoolConfigProxyConfig].
-  /// [resourceGroupId] The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
-  /// [secretId] The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+  /// [resourceGroupId] The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+  /// [secretId] The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:&lt;key-vault-name&gt;.vault.azure.net/secrets/&lt;secret-name&gt;/&lt;secret-version&gt;`.
   AzureNodePoolConfigProxyConfig({
     required this.resourceGroupId,
     required this.secretId,
@@ -25,9 +26,8 @@ class AzureNodePoolConfigProxyConfig {
 
   factory AzureNodePoolConfigProxyConfig.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolConfigProxyConfig(
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      secretId: (map['secretId'] as String).input(),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );
   }
 }
-

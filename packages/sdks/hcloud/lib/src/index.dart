@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/certificate.dart';
 export 'index/certificate_args.dart';
 export 'index/certificate_state.dart';

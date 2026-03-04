@@ -6,16 +6,15 @@ enum JavaComponentType {
   valueSpringCloudGateway("SpringCloudGateway"),
   valueNacos("Nacos");
 
-  const JavaComponentType(this.value);
-  final String value;
+  const JavaComponentType(this.wireValue);
+  final String wireValue;
 
   static JavaComponentType fromValue(String value) {
     for (final item in JavaComponentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JavaComponentType value: $value');
   }
 }
-

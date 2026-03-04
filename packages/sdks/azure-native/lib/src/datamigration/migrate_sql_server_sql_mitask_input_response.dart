@@ -10,24 +10,35 @@ import 'sql_connection_info_response.dart';
 class MigrateSqlServerSqlMITaskInputResponse {
   /// Azure Active Directory domain name in the format of 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for managed domain, required if and only if Windows logins are selected
   final pulumi.Input<String>? aadDomainName;
+
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
   final pulumi.Input<BlobShareResponse> backupBlobShare;
+
   /// Backup file share information for all selected databases.
   final pulumi.Input<FileShareResponse>? backupFileShare;
+
   /// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
   final pulumi.Input<String>? backupMode;
+
   /// encrypted key for secure fields
   final pulumi.Input<String>? encryptedKeyForSecureFields;
+
   /// Agent Jobs to migrate.
   final pulumi.Input<List<String>>? selectedAgentJobs;
+
   /// Databases to migrate
-  final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
+  final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>>
+  selectedDatabases;
+
   /// Logins to migrate.
   final pulumi.Input<List<String>>? selectedLogins;
+
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
+
   /// Date and time relative to UTC when the migration was started on
   final pulumi.Input<String>? startedOn;
+
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -60,33 +71,112 @@ class MigrateSqlServerSqlMITaskInputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aadDomainName': ?aadDomainName,
-      'backupBlobShare': pulumi.Input.mapInputValue<BlobShareResponse, Map<String, dynamic>>(backupBlobShare, (value) => value.toMap()),
-      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShareResponse, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
+      'backupBlobShare':
+          pulumi.Input.mapInputValue<BlobShareResponse, Map<String, dynamic>>(
+            backupBlobShare,
+            (value) => value.toMap(),
+          ),
+      'backupFileShare':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileShareResponse,
+            Map<String, dynamic>
+          >(backupFileShare, (value) => value.toMap()),
       'backupMode': ?backupMode,
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
       'selectedAgentJobs': ?selectedAgentJobs,
-      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlMIDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selectedDatabases':
+          pulumi.Input.mapInputValue<
+            List<MigrateSqlServerSqlMIDatabaseInputResponse>,
+            List<Map<String, dynamic>>
+          >(
+            selectedDatabases,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MigrateSqlServerSqlMIDatabaseInputResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'selectedLogins': ?selectedLogins,
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            SqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
       'startedOn': ?startedOn,
-      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo':
+          pulumi.Input.mapInputValue<
+            SqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory MigrateSqlServerSqlMITaskInputResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateSqlServerSqlMITaskInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateSqlServerSqlMITaskInputResponse(
-      aadDomainName: map['aadDomainName'] == null ? null : (map['aadDomainName']! as String).input(),
-      backupBlobShare: (BlobShareResponse.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>())).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
-      backupMode: map['backupMode'] == null ? null : (map['backupMode']! as String).input(),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
-      selectedAgentJobs: map['selectedAgentJobs'] == null ? null : ((map['selectedAgentJobs']! as List).cast<String>()).input(),
-      selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins']! as List).cast<String>()).input(),
-      sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
-      targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      aadDomainName: (() {
+        final guardedValue = map['aadDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupBlobShare: pulumi.Input.fromValue(
+        BlobShareResponse.fromMap(
+          (map['backupBlobShare']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      backupFileShare: (() {
+        final guardedValue = map['backupFileShare'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileShareResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      backupMode: (() {
+        final guardedValue = map['backupMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptedKeyForSecureFields: (() {
+        final guardedValue = map['encryptedKeyForSecureFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selectedAgentJobs: (() {
+        final guardedValue = map['selectedAgentJobs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      selectedDatabases: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(
+          map['selectedDatabases']!,
+          (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      selectedLogins: (() {
+        final guardedValue = map['selectedLogins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfoResponse.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startedOn: (() {
+        final guardedValue = map['startedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfoResponse.fromMap(
+          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_slb;
-
 export 'slb/acl.dart';
 export 'slb/acl_args.dart';
 export 'slb/acl_entry_attachment.dart';

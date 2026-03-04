@@ -9,18 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPackageCatalogArgs {
   /// The display name of the access package catalog.
   final pulumi.Input<String>? displayName;
+
   /// The ID of this access package catalog.
   ///
-  /// > One of `display_name` or `object_id` must be specified.
+  /// &gt; One of `display_name` or `object_id` must be specified.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [GetAccessPackageCatalogArgs].
   /// [displayName] The display name of the access package catalog.
   /// [objectId] The ID of this access package catalog.
-  GetAccessPackageCatalogArgs({
-    this.displayName,
-    this.objectId,
-  });
+  GetAccessPackageCatalogArgs({this.displayName, this.objectId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,16 @@ class GetAccessPackageCatalogArgs {
 
   factory GetAccessPackageCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageCatalogArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

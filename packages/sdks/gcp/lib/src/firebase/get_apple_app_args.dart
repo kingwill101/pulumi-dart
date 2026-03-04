@@ -12,6 +12,7 @@ class GetAppleAppArgs {
   ///
   /// - - -
   final pulumi.Input<String> appId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,23 +20,20 @@ class GetAppleAppArgs {
   /// Creates a new [GetAppleAppArgs].
   /// [appId] The app_id of name of the Firebase iosApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetAppleAppArgs({
-    required this.appId,
-    this.project,
-  });
+  GetAppleAppArgs({required this.appId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'appId': appId, 'project': ?project};
   }
 
   factory GetAppleAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppleAppArgs(
-      appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

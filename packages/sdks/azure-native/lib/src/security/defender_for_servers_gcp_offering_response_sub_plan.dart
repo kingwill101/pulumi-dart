@@ -9,20 +9,21 @@ class DefenderForServersGcpOfferingResponseSubPlan {
 
   /// Creates a new [DefenderForServersGcpOfferingResponseSubPlan].
   /// [type] The available sub plans
-  DefenderForServersGcpOfferingResponseSubPlan({
-    this.type,
-  });
+  DefenderForServersGcpOfferingResponseSubPlan({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory DefenderForServersGcpOfferingResponseSubPlan.fromMap(Map<String, dynamic> map) {
+  factory DefenderForServersGcpOfferingResponseSubPlan.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForServersGcpOfferingResponseSubPlan(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

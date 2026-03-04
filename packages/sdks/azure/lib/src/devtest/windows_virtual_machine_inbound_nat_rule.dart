@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineInboundNatRule {
   /// The Backend Port associated with this NAT Rule. Changing this forces a new resource to be created.
   final pulumi.Input<int> backendPort;
+
   /// The frontend port associated with this Inbound NAT Rule.
   final pulumi.Input<int>? frontendPort;
+
   /// The Protocol used for this NAT Rule. Possible values are `Tcp` and `Udp`.
   final pulumi.Input<String> protocol;
 
@@ -28,12 +30,17 @@ class WindowsVirtualMachineInboundNatRule {
     };
   }
 
-  factory WindowsVirtualMachineInboundNatRule.fromMap(Map<String, dynamic> map) {
+  factory WindowsVirtualMachineInboundNatRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsVirtualMachineInboundNatRule(
-      backendPort: (map['backendPort'] as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
-      protocol: (map['protocol'] as String).input(),
+      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
+      frontendPort: (() {
+        final guardedValue = map['frontendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

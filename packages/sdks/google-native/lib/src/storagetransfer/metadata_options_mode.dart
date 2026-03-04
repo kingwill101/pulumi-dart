@@ -4,16 +4,15 @@ enum MetadataOptionsMode {
   modeSkip("MODE_SKIP"),
   modePreserve("MODE_PRESERVE");
 
-  const MetadataOptionsMode(this.value);
-  final String value;
+  const MetadataOptionsMode(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsMode fromValue(String value) {
     for (final item in MetadataOptionsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsMode value: $value');
   }
 }
-

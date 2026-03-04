@@ -19,30 +19,51 @@ import 'network_policy_config_response_container_v1beta1.dart';
 class AddonsConfigResponseContainerV1beta1 {
   /// Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
   final pulumi.Input<CloudRunConfigResponseContainerV1beta1> cloudRunConfig;
+
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
-  final pulumi.Input<ConfigConnectorConfigResponseContainerV1beta1> configConnectorConfig;
+  final pulumi.Input<ConfigConnectorConfigResponseContainerV1beta1>
+  configConnectorConfig;
+
   /// Configuration for NodeLocalDNS, a dns cache running on cluster nodes
   final pulumi.Input<DnsCacheConfigResponseContainerV1beta1> dnsCacheConfig;
+
   /// Configuration for the Compute Engine Persistent Disk CSI driver.
-  final pulumi.Input<GcePersistentDiskCsiDriverConfigResponseContainerV1beta1> gcePersistentDiskCsiDriverConfig;
+  final pulumi.Input<GcePersistentDiskCsiDriverConfigResponseContainerV1beta1>
+  gcePersistentDiskCsiDriverConfig;
+
   /// Configuration for the GCP Filestore CSI driver.
-  final pulumi.Input<GcpFilestoreCsiDriverConfigResponseContainerV1beta1> gcpFilestoreCsiDriverConfig;
+  final pulumi.Input<GcpFilestoreCsiDriverConfigResponseContainerV1beta1>
+  gcpFilestoreCsiDriverConfig;
+
   /// Configuration for the Cloud Storage Fuse CSI driver.
-  final pulumi.Input<GcsFuseCsiDriverConfigResponseContainerV1beta1> gcsFuseCsiDriverConfig;
+  final pulumi.Input<GcsFuseCsiDriverConfigResponseContainerV1beta1>
+  gcsFuseCsiDriverConfig;
+
   /// Configuration for the Backup for GKE agent addon.
-  final pulumi.Input<GkeBackupAgentConfigResponseContainerV1beta1> gkeBackupAgentConfig;
+  final pulumi.Input<GkeBackupAgentConfigResponseContainerV1beta1>
+  gkeBackupAgentConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
-  final pulumi.Input<HorizontalPodAutoscalingResponseContainerV1beta1> horizontalPodAutoscaling;
+  final pulumi.Input<HorizontalPodAutoscalingResponseContainerV1beta1>
+  horizontalPodAutoscaling;
+
   /// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
-  final pulumi.Input<HttpLoadBalancingResponseContainerV1beta1> httpLoadBalancing;
+  final pulumi.Input<HttpLoadBalancingResponseContainerV1beta1>
+  httpLoadBalancing;
+
   /// Configuration for Istio, an open platform to connect, manage, and secure microservices.
   final pulumi.Input<IstioConfigResponse> istioConfig;
+
   /// Configuration for the KALM addon, which manages the lifecycle of k8s applications.
   final pulumi.Input<KalmConfigResponse> kalmConfig;
+
   /// Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
-  final pulumi.Input<KubernetesDashboardResponseContainerV1beta1> kubernetesDashboard;
+  final pulumi.Input<KubernetesDashboardResponseContainerV1beta1>
+  kubernetesDashboard;
+
   /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
-  final pulumi.Input<NetworkPolicyConfigResponseContainerV1beta1> networkPolicyConfig;
+  final pulumi.Input<NetworkPolicyConfigResponseContainerV1beta1>
+  networkPolicyConfig;
 
   /// Creates a new [AddonsConfigResponseContainerV1beta1].
   /// [cloudRunConfig] Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
@@ -76,38 +97,144 @@ class AddonsConfigResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRunConfig': pulumi.Input.mapInputValue<CloudRunConfigResponseContainerV1beta1, Map<String, dynamic>>(cloudRunConfig, (value) => value.toMap()),
-      'configConnectorConfig': pulumi.Input.mapInputValue<ConfigConnectorConfigResponseContainerV1beta1, Map<String, dynamic>>(configConnectorConfig, (value) => value.toMap()),
-      'dnsCacheConfig': pulumi.Input.mapInputValue<DnsCacheConfigResponseContainerV1beta1, Map<String, dynamic>>(dnsCacheConfig, (value) => value.toMap()),
-      'gcePersistentDiskCsiDriverConfig': pulumi.Input.mapInputValue<GcePersistentDiskCsiDriverConfigResponseContainerV1beta1, Map<String, dynamic>>(gcePersistentDiskCsiDriverConfig, (value) => value.toMap()),
-      'gcpFilestoreCsiDriverConfig': pulumi.Input.mapInputValue<GcpFilestoreCsiDriverConfigResponseContainerV1beta1, Map<String, dynamic>>(gcpFilestoreCsiDriverConfig, (value) => value.toMap()),
-      'gcsFuseCsiDriverConfig': pulumi.Input.mapInputValue<GcsFuseCsiDriverConfigResponseContainerV1beta1, Map<String, dynamic>>(gcsFuseCsiDriverConfig, (value) => value.toMap()),
-      'gkeBackupAgentConfig': pulumi.Input.mapInputValue<GkeBackupAgentConfigResponseContainerV1beta1, Map<String, dynamic>>(gkeBackupAgentConfig, (value) => value.toMap()),
-      'horizontalPodAutoscaling': pulumi.Input.mapInputValue<HorizontalPodAutoscalingResponseContainerV1beta1, Map<String, dynamic>>(horizontalPodAutoscaling, (value) => value.toMap()),
-      'httpLoadBalancing': pulumi.Input.mapInputValue<HttpLoadBalancingResponseContainerV1beta1, Map<String, dynamic>>(httpLoadBalancing, (value) => value.toMap()),
-      'istioConfig': pulumi.Input.mapInputValue<IstioConfigResponse, Map<String, dynamic>>(istioConfig, (value) => value.toMap()),
-      'kalmConfig': pulumi.Input.mapInputValue<KalmConfigResponse, Map<String, dynamic>>(kalmConfig, (value) => value.toMap()),
-      'kubernetesDashboard': pulumi.Input.mapInputValue<KubernetesDashboardResponseContainerV1beta1, Map<String, dynamic>>(kubernetesDashboard, (value) => value.toMap()),
-      'networkPolicyConfig': pulumi.Input.mapInputValue<NetworkPolicyConfigResponseContainerV1beta1, Map<String, dynamic>>(networkPolicyConfig, (value) => value.toMap()),
+      'cloudRunConfig':
+          pulumi.Input.mapInputValue<
+            CloudRunConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(cloudRunConfig, (value) => value.toMap()),
+      'configConnectorConfig':
+          pulumi.Input.mapInputValue<
+            ConfigConnectorConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(configConnectorConfig, (value) => value.toMap()),
+      'dnsCacheConfig':
+          pulumi.Input.mapInputValue<
+            DnsCacheConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(dnsCacheConfig, (value) => value.toMap()),
+      'gcePersistentDiskCsiDriverConfig':
+          pulumi.Input.mapInputValue<
+            GcePersistentDiskCsiDriverConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(gcePersistentDiskCsiDriverConfig, (value) => value.toMap()),
+      'gcpFilestoreCsiDriverConfig':
+          pulumi.Input.mapInputValue<
+            GcpFilestoreCsiDriverConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(gcpFilestoreCsiDriverConfig, (value) => value.toMap()),
+      'gcsFuseCsiDriverConfig':
+          pulumi.Input.mapInputValue<
+            GcsFuseCsiDriverConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(gcsFuseCsiDriverConfig, (value) => value.toMap()),
+      'gkeBackupAgentConfig':
+          pulumi.Input.mapInputValue<
+            GkeBackupAgentConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(gkeBackupAgentConfig, (value) => value.toMap()),
+      'horizontalPodAutoscaling':
+          pulumi.Input.mapInputValue<
+            HorizontalPodAutoscalingResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(horizontalPodAutoscaling, (value) => value.toMap()),
+      'httpLoadBalancing':
+          pulumi.Input.mapInputValue<
+            HttpLoadBalancingResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(httpLoadBalancing, (value) => value.toMap()),
+      'istioConfig':
+          pulumi.Input.mapInputValue<IstioConfigResponse, Map<String, dynamic>>(
+            istioConfig,
+            (value) => value.toMap(),
+          ),
+      'kalmConfig':
+          pulumi.Input.mapInputValue<KalmConfigResponse, Map<String, dynamic>>(
+            kalmConfig,
+            (value) => value.toMap(),
+          ),
+      'kubernetesDashboard':
+          pulumi.Input.mapInputValue<
+            KubernetesDashboardResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(kubernetesDashboard, (value) => value.toMap()),
+      'networkPolicyConfig':
+          pulumi.Input.mapInputValue<
+            NetworkPolicyConfigResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(networkPolicyConfig, (value) => value.toMap()),
     };
   }
 
-  factory AddonsConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AddonsConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AddonsConfigResponseContainerV1beta1(
-      cloudRunConfig: (CloudRunConfigResponseContainerV1beta1.fromMap((map['cloudRunConfig'] as Map).cast<String, dynamic>())).input(),
-      configConnectorConfig: (ConfigConnectorConfigResponseContainerV1beta1.fromMap((map['configConnectorConfig'] as Map).cast<String, dynamic>())).input(),
-      dnsCacheConfig: (DnsCacheConfigResponseContainerV1beta1.fromMap((map['dnsCacheConfig'] as Map).cast<String, dynamic>())).input(),
-      gcePersistentDiskCsiDriverConfig: (GcePersistentDiskCsiDriverConfigResponseContainerV1beta1.fromMap((map['gcePersistentDiskCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcpFilestoreCsiDriverConfig: (GcpFilestoreCsiDriverConfigResponseContainerV1beta1.fromMap((map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcsFuseCsiDriverConfig: (GcsFuseCsiDriverConfigResponseContainerV1beta1.fromMap((map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gkeBackupAgentConfig: (GkeBackupAgentConfigResponseContainerV1beta1.fromMap((map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>())).input(),
-      horizontalPodAutoscaling: (HorizontalPodAutoscalingResponseContainerV1beta1.fromMap((map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>())).input(),
-      httpLoadBalancing: (HttpLoadBalancingResponseContainerV1beta1.fromMap((map['httpLoadBalancing'] as Map).cast<String, dynamic>())).input(),
-      istioConfig: (IstioConfigResponse.fromMap((map['istioConfig'] as Map).cast<String, dynamic>())).input(),
-      kalmConfig: (KalmConfigResponse.fromMap((map['kalmConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesDashboard: (KubernetesDashboardResponseContainerV1beta1.fromMap((map['kubernetesDashboard'] as Map).cast<String, dynamic>())).input(),
-      networkPolicyConfig: (NetworkPolicyConfigResponseContainerV1beta1.fromMap((map['networkPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      cloudRunConfig: pulumi.Input.fromValue(
+        CloudRunConfigResponseContainerV1beta1.fromMap(
+          (map['cloudRunConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      configConnectorConfig: pulumi.Input.fromValue(
+        ConfigConnectorConfigResponseContainerV1beta1.fromMap(
+          (map['configConnectorConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dnsCacheConfig: pulumi.Input.fromValue(
+        DnsCacheConfigResponseContainerV1beta1.fromMap(
+          (map['dnsCacheConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      gcePersistentDiskCsiDriverConfig: pulumi.Input.fromValue(
+        GcePersistentDiskCsiDriverConfigResponseContainerV1beta1.fromMap(
+          (map['gcePersistentDiskCsiDriverConfig']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      gcpFilestoreCsiDriverConfig: pulumi.Input.fromValue(
+        GcpFilestoreCsiDriverConfigResponseContainerV1beta1.fromMap(
+          (map['gcpFilestoreCsiDriverConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      gcsFuseCsiDriverConfig: pulumi.Input.fromValue(
+        GcsFuseCsiDriverConfigResponseContainerV1beta1.fromMap(
+          (map['gcsFuseCsiDriverConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      gkeBackupAgentConfig: pulumi.Input.fromValue(
+        GkeBackupAgentConfigResponseContainerV1beta1.fromMap(
+          (map['gkeBackupAgentConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      horizontalPodAutoscaling: pulumi.Input.fromValue(
+        HorizontalPodAutoscalingResponseContainerV1beta1.fromMap(
+          (map['horizontalPodAutoscaling']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      httpLoadBalancing: pulumi.Input.fromValue(
+        HttpLoadBalancingResponseContainerV1beta1.fromMap(
+          (map['httpLoadBalancing']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      istioConfig: pulumi.Input.fromValue(
+        IstioConfigResponse.fromMap(
+          (map['istioConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kalmConfig: pulumi.Input.fromValue(
+        KalmConfigResponse.fromMap(
+          (map['kalmConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kubernetesDashboard: pulumi.Input.fromValue(
+        KubernetesDashboardResponseContainerV1beta1.fromMap(
+          (map['kubernetesDashboard']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      networkPolicyConfig: pulumi.Input.fromValue(
+        NetworkPolicyConfigResponseContainerV1beta1.fromMap(
+          (map['networkPolicyConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

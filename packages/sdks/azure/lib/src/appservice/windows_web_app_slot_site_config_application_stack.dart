@@ -5,43 +5,55 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppSlotSiteConfigApplicationStack {
   /// The Application Stack for the Windows Web App. Possible values include `dotnet`, `dotnetcore`, `node`, `python`, `php`, and `java`.
   ///
-  /// > **Note:** Whilst this property is Optional omitting it can cause unexpected behaviour, in particular for display of settings in the Azure Portal.
+  /// &gt; **Note:** Whilst this property is Optional omitting it can cause unexpected behaviour, in particular for display of settings in the Azure Portal.
   final pulumi.Input<String>? currentStack;
+
   /// The docker image, including tag, to be used. e.g. `azure-app-service/windows/parkingpage:latest`.
   final pulumi.Input<String>? dockerImageName;
+
   /// The User Name to use for authentication against the registry to pull the image.
   ///
-  /// > **Note:** `docker_registry_url`, `docker_registry_username`, and `docker_registry_password` replace the use of the `app_settings` values of `DOCKER_REGISTRY_SERVER_URL`, `DOCKER_REGISTRY_SERVER_USERNAME` and `DOCKER_REGISTRY_SERVER_PASSWORD` respectively, these values will be managed by the provider and should not be specified in the `app_settings` map.
+  /// &gt; **Note:** `docker_registry_url`, `docker_registry_username`, and `docker_registry_password` replace the use of the `app_settings` values of `DOCKER_REGISTRY_SERVER_URL`, `DOCKER_REGISTRY_SERVER_USERNAME` and `DOCKER_REGISTRY_SERVER_PASSWORD` respectively, these values will be managed by the provider and should not be specified in the `app_settings` map.
   final pulumi.Input<String>? dockerRegistryPassword;
+
   /// The URL of the container registry where the `docker_image_name` is located. e.g. `https://index.docker.io` or `https://mcr.microsoft.com`. This value is required with `docker_image_name`.
   final pulumi.Input<String>? dockerRegistryUrl;
+
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String>? dockerRegistryUsername;
+
   /// The version of .NET to use when `current_stack` is set to `dotnetcore`. Possible values include `v4.0`.
   final pulumi.Input<String>? dotnetCoreVersion;
+
   /// The version of .NET to use when `current_stack` is set to `dotnet`. Possible values include `v2.0`,`v3.0`, `v4.0`, `v5.0`, `v6.0`, `v7.0`, `v8.0`, `v9.0` and `v10.0`.
   final pulumi.Input<String>? dotnetVersion;
   final pulumi.Input<String>? javaContainer;
   final pulumi.Input<String>? javaContainerVersion;
+
   /// Should the Java Embedded Server (Java SE) be used to run the app.
   final pulumi.Input<bool>? javaEmbeddedServerEnabled;
+
   /// The version of Java to use when `current_stack` is set to `java`. Possible values include `1.7`, `1.8`, `11` and `17`. Required with `java_container` and `java_container_version`.
   ///
-  /// > **Note:** For compatible combinations of `java_version`, `java_container` and `java_container_version` users can use `az webapp list-runtimes` from command line.
+  /// &gt; **Note:** For compatible combinations of `java_version`, `java_container` and `java_container_version` users can use `az webapp list-runtimes` from command line.
   final pulumi.Input<String>? javaVersion;
+
   /// The version of node to use when `current_stack` is set to `node`. Possible values include `~12`, `~14`, `~16`, `~18`, `~20` and `~22`.
   ///
-  /// > **Note:** This property conflicts with `java_version`.
+  /// &gt; **Note:** This property conflicts with `java_version`.
   final pulumi.Input<String>? nodeVersion;
+
   /// The version of PHP to use when `current_stack` is set to `php`. Possible values are `7.1`, `7.4` and `Off`.
   ///
-  /// > **Note:** The value `Off` is used to signify latest supported by the service.
+  /// &gt; **Note:** The value `Off` is used to signify latest supported by the service.
   final pulumi.Input<String>? phpVersion;
+
   /// The app is a Python app. Defaults to `false`.
   final pulumi.Input<bool>? python;
+
   /// The version of Tomcat the Java App should use.
   ///
-  /// > **Note:** See the official documentation for current supported versions.
+  /// &gt; **Note:** See the official documentation for current supported versions.
   final pulumi.Input<String>? tomcatVersion;
 
   /// Creates a new [WindowsWebAppSlotSiteConfigApplicationStack].
@@ -98,24 +110,85 @@ class WindowsWebAppSlotSiteConfigApplicationStack {
     };
   }
 
-  factory WindowsWebAppSlotSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
+  factory WindowsWebAppSlotSiteConfigApplicationStack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsWebAppSlotSiteConfigApplicationStack(
-      currentStack: map['currentStack'] == null ? null : (map['currentStack']! as String).input(),
-      dockerImageName: map['dockerImageName'] == null ? null : (map['dockerImageName']! as String).input(),
-      dockerRegistryPassword: map['dockerRegistryPassword'] == null ? null : (map['dockerRegistryPassword']! as String).input(),
-      dockerRegistryUrl: map['dockerRegistryUrl'] == null ? null : (map['dockerRegistryUrl']! as String).input(),
-      dockerRegistryUsername: map['dockerRegistryUsername'] == null ? null : (map['dockerRegistryUsername']! as String).input(),
-      dotnetCoreVersion: map['dotnetCoreVersion'] == null ? null : (map['dotnetCoreVersion']! as String).input(),
-      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion']! as String).input(),
-      javaContainer: map['javaContainer'] == null ? null : (map['javaContainer']! as String).input(),
-      javaContainerVersion: map['javaContainerVersion'] == null ? null : (map['javaContainerVersion']! as String).input(),
-      javaEmbeddedServerEnabled: map['javaEmbeddedServerEnabled'] == null ? null : (map['javaEmbeddedServerEnabled']! as bool).input(),
-      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion']! as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
-      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion']! as String).input(),
-      python: map['python'] == null ? null : (map['python']! as bool).input(),
-      tomcatVersion: map['tomcatVersion'] == null ? null : (map['tomcatVersion']! as String).input(),
+      currentStack: (() {
+        final guardedValue = map['currentStack'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerImageName: (() {
+        final guardedValue = map['dockerImageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerRegistryPassword: (() {
+        final guardedValue = map['dockerRegistryPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerRegistryUrl: (() {
+        final guardedValue = map['dockerRegistryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerRegistryUsername: (() {
+        final guardedValue = map['dockerRegistryUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dotnetCoreVersion: (() {
+        final guardedValue = map['dotnetCoreVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dotnetVersion: (() {
+        final guardedValue = map['dotnetVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      javaContainer: (() {
+        final guardedValue = map['javaContainer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      javaContainerVersion: (() {
+        final guardedValue = map['javaContainerVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      javaEmbeddedServerEnabled: (() {
+        final guardedValue = map['javaEmbeddedServerEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      javaVersion: (() {
+        final guardedValue = map['javaVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeVersion: (() {
+        final guardedValue = map['nodeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phpVersion: (() {
+        final guardedValue = map['phpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      python: (() {
+        final guardedValue = map['python'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tomcatVersion: (() {
+        final guardedValue = map['tomcatVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

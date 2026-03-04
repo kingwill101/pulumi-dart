@@ -9,16 +9,15 @@ enum MetricDescriptorLaunchStage {
   ga("GA"),
   deprecated("DEPRECATED");
 
-  const MetricDescriptorLaunchStage(this.value);
-  final String value;
+  const MetricDescriptorLaunchStage(this.wireValue);
+  final String wireValue;
 
   static MetricDescriptorLaunchStage fromValue(String value) {
     for (final item in MetricDescriptorLaunchStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricDescriptorLaunchStage value: $value');
   }
 }
-

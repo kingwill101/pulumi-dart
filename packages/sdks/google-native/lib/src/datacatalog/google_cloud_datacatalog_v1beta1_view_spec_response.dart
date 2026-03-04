@@ -9,20 +9,17 @@ class GoogleCloudDatacatalogV1beta1ViewSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1ViewSpecResponse].
   /// [viewQuery] The query that defines the table view.
-  GoogleCloudDatacatalogV1beta1ViewSpecResponse({
-    required this.viewQuery,
-  });
+  GoogleCloudDatacatalogV1beta1ViewSpecResponse({required this.viewQuery});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'viewQuery': viewQuery,
-    };
+    return <String, dynamic>{'viewQuery': viewQuery};
   }
 
-  factory GoogleCloudDatacatalogV1beta1ViewSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1beta1ViewSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1beta1ViewSpecResponse(
-      viewQuery: (map['viewQuery'] as String).input(),
+      viewQuery: pulumi.Input.fromValue(map['viewQuery'] as String),
     );
   }
 }
-

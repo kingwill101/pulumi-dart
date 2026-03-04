@@ -5,15 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApisApi {
   /// The ID of the API.
   final pulumi.Input<String> apiId;
+
   /// The description of the API.
   final pulumi.Input<String> description;
+
   /// The ID of the API group.
   final pulumi.Input<String> groupId;
+
   /// The name of the API group.
   final pulumi.Input<String> groupName;
   final pulumi.Input<String> id;
+
   /// The name of the API.
   final pulumi.Input<String> name;
+
   /// The region ID of the API.
   final pulumi.Input<String> regionId;
 
@@ -49,14 +54,13 @@ class GetApisApi {
 
   factory GetApisApi.fromMap(Map<String, dynamic> map) {
     return GetApisApi(
-      apiId: (map['apiId'] as String).input(),
-      description: (map['description'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

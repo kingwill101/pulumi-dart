@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertNotificationList {
   /// Notice content of alarm.
   final pulumi.Input<String> content;
+
   /// Email address list.
   final pulumi.Input<List<String>>? emailLists;
+
   /// SMS sending mobile number.
   final pulumi.Input<List<String>>? mobileLists;
+
   /// Request address.
   final pulumi.Input<String>? serviceUri;
+
   /// Notification type. support Email, SMS, DingTalk, MessageCenter.
   final pulumi.Input<String> type;
 
@@ -40,12 +44,23 @@ class AlertNotificationList {
 
   factory AlertNotificationList.fromMap(Map<String, dynamic> map) {
     return AlertNotificationList(
-      content: (map['content'] as String).input(),
-      emailLists: map['emailLists'] == null ? null : ((map['emailLists']! as List).cast<String>()).input(),
-      mobileLists: map['mobileLists'] == null ? null : ((map['mobileLists']! as List).cast<String>()).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
-      type: (map['type'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      emailLists: (() {
+        final guardedValue = map['emailLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mobileLists: (() {
+        final guardedValue = map['mobileLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serviceUri: (() {
+        final guardedValue = map['serviceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

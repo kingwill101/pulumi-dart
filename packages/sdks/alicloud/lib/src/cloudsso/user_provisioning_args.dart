@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProvisioningArgs {
   /// The processing policy for users who have been synchronized when deleting synchronization
   final pulumi.Input<String> deletionStrategy;
+
   /// Description of User Synchronization
   final pulumi.Input<String>? description;
+
   /// The ID of the directory to which the synchronization belongs
   final pulumi.Input<String> directoryId;
+
   /// Processing Policy for Synchronization Conflicts
   final pulumi.Input<String> duplicationStrategy;
+
   /// The ID of the CloudSSO user/group associated with the synchronization.
   final pulumi.Input<String> principalId;
+
   /// The ID of the CloudSSO user/group associated with the synchronization.
   final pulumi.Input<String> principalType;
+
   /// The ID of the destination associated with the synchronization.
   final pulumi.Input<String> targetId;
+
   /// The target type associated with the synchronization
   final pulumi.Input<String> targetType;
 
@@ -59,15 +66,22 @@ class UserProvisioningArgs {
 
   factory UserProvisioningArgs.fromMap(Map<String, dynamic> map) {
     return UserProvisioningArgs(
-      deletionStrategy: (map['deletionStrategy'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      directoryId: (map['directoryId'] as String).input(),
-      duplicationStrategy: (map['duplicationStrategy'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
+      deletionStrategy: pulumi.Input.fromValue(
+        map['deletionStrategy'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      duplicationStrategy: pulumi.Input.fromValue(
+        map['duplicationStrategy'] as String,
+      ),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
-

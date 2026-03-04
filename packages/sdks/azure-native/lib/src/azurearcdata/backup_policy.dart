@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicy {
   /// The differential backup interval in hours.
   final pulumi.Input<int>? differentialBackupHours;
+
   /// The value indicating days between full backups.
   final pulumi.Input<int>? fullBackupDays;
+
   /// The retention period for all the databases in this managed instance.
   final pulumi.Input<int>? retentionPeriodDays;
+
   /// The value indicating minutes between transaction log backups.
   final pulumi.Input<int>? transactionLogBackupMinutes;
 
@@ -36,11 +39,26 @@ class BackupPolicy {
 
   factory BackupPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPolicy(
-      differentialBackupHours: map['differentialBackupHours'] == null ? null : (map['differentialBackupHours']! as int).input(),
-      fullBackupDays: map['fullBackupDays'] == null ? null : (map['fullBackupDays']! as int).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
-      transactionLogBackupMinutes: map['transactionLogBackupMinutes'] == null ? null : (map['transactionLogBackupMinutes']! as int).input(),
+      differentialBackupHours: (() {
+        final guardedValue = map['differentialBackupHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fullBackupDays: (() {
+        final guardedValue = map['fullBackupDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      retentionPeriodDays: (() {
+        final guardedValue = map['retentionPeriodDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      transactionLogBackupMinutes: (() {
+        final guardedValue = map['transactionLogBackupMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

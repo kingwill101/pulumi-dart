@@ -1,5 +1,3 @@
-library module_monitoring;
-
 export 'monitoring/aggregation.dart';
 export 'monitoring/aggregation_cross_series_reducer.dart';
 export 'monitoring/aggregation_cross_series_reducer_monitoring_v3.dart';

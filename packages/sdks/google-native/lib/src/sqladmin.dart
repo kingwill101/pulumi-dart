@@ -1,5 +1,3 @@
-library module_sqladmin;
-
 export 'sqladmin/acl_entry.dart';
 export 'sqladmin/acl_entry_response.dart';
 export 'sqladmin/acl_entry_response_sqladmin_v1beta4.dart';

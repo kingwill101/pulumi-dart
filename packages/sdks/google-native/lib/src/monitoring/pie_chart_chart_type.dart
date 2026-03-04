@@ -4,16 +4,15 @@ enum PieChartChartType {
   pie("PIE"),
   donut("DONUT");
 
-  const PieChartChartType(this.value);
-  final String value;
+  const PieChartChartType(this.wireValue);
+  final String wireValue;
 
   static PieChartChartType fromValue(String value) {
     for (final item in PieChartChartType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PieChartChartType value: $value');
   }
 }
-

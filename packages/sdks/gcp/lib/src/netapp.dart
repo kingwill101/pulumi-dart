@@ -1,5 +1,3 @@
-library module_netapp;
-
 export 'netapp/active_directory.dart';
 export 'netapp/active_directory_args.dart';
 export 'netapp/active_directory_state.dart';

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiConfigHandlerResponseAppengineV1beta {
   /// Action to take when users access resources that require authentication. Defaults to redirect.
   final pulumi.Input<String> authFailAction;
+
   /// Level of login required to access this resource. Defaults to optional.
   final pulumi.Input<String> login;
+
   /// Path to the script from the application root directory.
   final pulumi.Input<String> script;
+
   /// Security (HTTPS) enforcement for this URL.
   final pulumi.Input<String> securityLevel;
+
   /// URL to serve the endpoint at.
   final pulumi.Input<String> url;
 
@@ -39,14 +43,15 @@ class ApiConfigHandlerResponseAppengineV1beta {
     };
   }
 
-  factory ApiConfigHandlerResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApiConfigHandlerResponseAppengineV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiConfigHandlerResponseAppengineV1beta(
-      authFailAction: (map['authFailAction'] as String).input(),
-      login: (map['login'] as String).input(),
-      script: (map['script'] as String).input(),
-      securityLevel: (map['securityLevel'] as String).input(),
-      url: (map['url'] as String).input(),
+      authFailAction: pulumi.Input.fromValue(map['authFailAction'] as String),
+      login: pulumi.Input.fromValue(map['login'] as String),
+      script: pulumi.Input.fromValue(map['script'] as String),
+      securityLevel: pulumi.Input.fromValue(map['securityLevel'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

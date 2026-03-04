@@ -8,20 +8,17 @@ class GetResourceTypesTypeHandlersUpdate {
 
   /// Creates a new [GetResourceTypesTypeHandlersUpdate].
   /// [permissions] The collection of required RAM permission information.
-  GetResourceTypesTypeHandlersUpdate({
-    required this.permissions,
-  });
+  GetResourceTypesTypeHandlersUpdate({required this.permissions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'permissions': permissions,
-    };
+    return <String, dynamic>{'permissions': permissions};
   }
 
   factory GetResourceTypesTypeHandlersUpdate.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesTypeHandlersUpdate(
-      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      permissions: pulumi.Input.fromValue(
+        (map['permissions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

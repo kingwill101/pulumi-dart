@@ -39,13 +39,36 @@ class SystemDataResponse {
 
   factory SystemDataResponse.fromMap(Map<String, dynamic> map) {
     return SystemDataResponse(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
-      createdByType: map['createdByType'] == null ? null : (map['createdByType']! as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy']! as String).input(),
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdByType: (() {
+        final guardedValue = map['createdByType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedAt: (() {
+        final guardedValue = map['lastModifiedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedBy: (() {
+        final guardedValue = map['lastModifiedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedByType: (() {
+        final guardedValue = map['lastModifiedByType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

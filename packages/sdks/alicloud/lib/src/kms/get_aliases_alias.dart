@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAliasesAlias {
   /// The unique identifier of the alias.
   final pulumi.Input<String> aliasName;
+
   /// ID of the alias. The value is same as KMS alias_name.
   final pulumi.Input<String> id;
+
   /// ID of the key.
   final pulumi.Input<String> keyId;
 
@@ -21,19 +23,14 @@ class GetAliasesAlias {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aliasName': aliasName,
-      'id': id,
-      'keyId': keyId,
-    };
+    return <String, dynamic>{'aliasName': aliasName, 'id': id, 'keyId': keyId};
   }
 
   factory GetAliasesAlias.fromMap(Map<String, dynamic> map) {
     return GetAliasesAlias(
-      aliasName: (map['aliasName'] as String).input(),
-      id: (map['id'] as String).input(),
-      keyId: (map['keyId'] as String).input(),
+      aliasName: pulumi.Input.fromValue(map['aliasName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
     );
   }
 }
-

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_table_args.dart';
-import 'global_table_replica.dart';
 import 'global_table_state.dart';
 
 /// Manages [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html). These are layered on top of existing DynamoDB Tables.
 ///
-/// > **NOTE:** To instead manage [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html), use the `aws.dynamodb.Table` resource `replica` configuration block.
+/// &gt; **NOTE:** To instead manage [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html), use the `aws.dynamodb.Table` resource `replica` configuration block.
 ///
-/// > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
+/// &gt; Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
 ///
 /// ## Example Usage
 ///
@@ -352,12 +351,15 @@ import 'global_table_state.dart';
 class GlobalTable extends pulumi.CustomResource {
   /// The ARN of the DynamoDB Global Table
   late final pulumi.Output<String> arn;
+
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  late final pulumi.Output<List<GlobalTableReplica>> replicas;
+  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
 
   /// Creates a new [GlobalTable].
   /// [name] The Pulumi resource name.
@@ -368,15 +370,15 @@ class GlobalTable extends pulumi.CustomResource {
     GlobalTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/globalTable:GlobalTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:dynamodb/globalTable:GlobalTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicas = registerOutput<List<GlobalTableReplica>>('replicas');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
   }
 
   /// Gets an existing [GlobalTable] resource's state with the given [name] and [id].
@@ -397,14 +399,14 @@ class GlobalTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/globalTable:GlobalTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:dynamodb/globalTable:GlobalTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicas = registerOutput<List<GlobalTableReplica>>('replicas');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
   }
 }

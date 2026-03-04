@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsAutoSnapshotPolicyAttachmentArgs {
   /// The ID of the automatic snapshot policy that is applied to the cloud disk.
   final pulumi.Input<String> autoSnapshotPolicyId;
+
   /// The ID of the disk.
   final pulumi.Input<String> diskId;
 
@@ -27,11 +28,14 @@ class EcsAutoSnapshotPolicyAttachmentArgs {
     };
   }
 
-  factory EcsAutoSnapshotPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory EcsAutoSnapshotPolicyAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EcsAutoSnapshotPolicyAttachmentArgs(
-      autoSnapshotPolicyId: (map['autoSnapshotPolicyId'] as String).input(),
-      diskId: (map['diskId'] as String).input(),
+      autoSnapshotPolicyId: pulumi.Input.fromValue(
+        map['autoSnapshotPolicyId'] as String,
+      ),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
     );
   }
 }
-

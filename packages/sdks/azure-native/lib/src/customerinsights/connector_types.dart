@@ -7,16 +7,15 @@ enum ConnectorTypes {
   valueExchangeOnline("ExchangeOnline"),
   valueOutbound("Outbound");
 
-  const ConnectorTypes(this.value);
-  final String value;
+  const ConnectorTypes(this.wireValue);
+  final String wireValue;
 
   static ConnectorTypes fromValue(String value) {
     for (final item in ConnectorTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectorTypes value: $value');
   }
 }
-

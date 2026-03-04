@@ -4,16 +4,15 @@ enum AuthorizationPolicyAction {
   allow("ALLOW"),
   deny("DENY");
 
-  const AuthorizationPolicyAction(this.value);
-  final String value;
+  const AuthorizationPolicyAction(this.wireValue);
+  final String wireValue;
 
   static AuthorizationPolicyAction fromValue(String value) {
     for (final item in AuthorizationPolicyAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthorizationPolicyAction value: $value');
   }
 }
-

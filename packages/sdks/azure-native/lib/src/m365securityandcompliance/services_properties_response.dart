@@ -12,18 +12,29 @@ import 'service_export_configuration_info_response.dart';
 class ServicesPropertiesResponse {
   /// The access policies of the service instance.
   final pulumi.Input<List<ServiceAccessPolicyEntryResponse>>? accessPolicies;
+
   /// The authentication configuration for the service instance.
-  final pulumi.Input<ServiceAuthenticationConfigurationInfoResponse>? authenticationConfiguration;
+  final pulumi.Input<ServiceAuthenticationConfigurationInfoResponse>?
+  authenticationConfiguration;
+
   /// The settings for the CORS configuration of the service instance.
   final pulumi.Input<ServiceCorsConfigurationInfoResponse>? corsConfiguration;
+
   /// The settings for the Cosmos DB database backing the service.
-  final pulumi.Input<ServiceCosmosDbConfigurationInfoResponse>? cosmosDbConfiguration;
+  final pulumi.Input<ServiceCosmosDbConfigurationInfoResponse>?
+  cosmosDbConfiguration;
+
   /// The settings for the export operation of the service instance.
-  final pulumi.Input<ServiceExportConfigurationInfoResponse>? exportConfiguration;
+  final pulumi.Input<ServiceExportConfigurationInfoResponse>?
+  exportConfiguration;
+
   /// The list of private endpoint connections that are set up for this resource.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>>?
+  privateEndpointConnections;
+
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
+
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   final pulumi.Input<String>? publicNetworkAccess;
 
@@ -49,12 +60,50 @@ class ServicesPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServiceAccessPolicyEntryResponse>, List<Map<String, dynamic>>>(accessPolicies, (value) => pulumi.Input.encodeList<ServiceAccessPolicyEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'authenticationConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceAuthenticationConfigurationInfoResponse, Map<String, dynamic>>(authenticationConfiguration, (value) => value.toMap()),
-      'corsConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceCorsConfigurationInfoResponse, Map<String, dynamic>>(corsConfiguration, (value) => value.toMap()),
-      'cosmosDbConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceCosmosDbConfigurationInfoResponse, Map<String, dynamic>>(cosmosDbConfiguration, (value) => value.toMap()),
-      'exportConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceExportConfigurationInfoResponse, Map<String, dynamic>>(exportConfiguration, (value) => value.toMap()),
-      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceAccessPolicyEntryResponse>,
+            List<Map<String, dynamic>>
+          >(
+            accessPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceAccessPolicyEntryResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'authenticationConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceAuthenticationConfigurationInfoResponse,
+            Map<String, dynamic>
+          >(authenticationConfiguration, (value) => value.toMap()),
+      'corsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceCorsConfigurationInfoResponse,
+            Map<String, dynamic>
+          >(corsConfiguration, (value) => value.toMap()),
+      'cosmosDbConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceCosmosDbConfigurationInfoResponse,
+            Map<String, dynamic>
+          >(cosmosDbConfiguration, (value) => value.toMap()),
+      'exportConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceExportConfigurationInfoResponse,
+            Map<String, dynamic>
+          >(exportConfiguration, (value) => value.toMap()),
+      'privateEndpointConnections':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateEndpointConnectionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateEndpointConnections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateEndpointConnectionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
     };
@@ -62,15 +111,74 @@ class ServicesPropertiesResponse {
 
   factory ServicesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServicesPropertiesResponse(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ServiceAccessPolicyEntryResponse>(map['accessPolicies']!, (value) => ServiceAccessPolicyEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfigurationInfoResponse.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input(),
-      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfigurationInfoResponse.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
-      cosmosDbConfiguration: map['cosmosDbConfiguration'] == null ? null : (ServiceCosmosDbConfigurationInfoResponse.fromMap((map['cosmosDbConfiguration']! as Map).cast<String, dynamic>())).input(),
-      exportConfiguration: map['exportConfiguration'] == null ? null : (ServiceExportConfigurationInfoResponse.fromMap((map['exportConfiguration']! as Map).cast<String, dynamic>())).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      accessPolicies: (() {
+        final guardedValue = map['accessPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceAccessPolicyEntryResponse>(
+            guardedValue,
+            (value) => ServiceAccessPolicyEntryResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      authenticationConfiguration: (() {
+        final guardedValue = map['authenticationConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceAuthenticationConfigurationInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      corsConfiguration: (() {
+        final guardedValue = map['corsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceCorsConfigurationInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cosmosDbConfiguration: (() {
+        final guardedValue = map['cosmosDbConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceCosmosDbConfigurationInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      exportConfiguration: (() {
+        final guardedValue = map['exportConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceExportConfigurationInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+            guardedValue,
+            (value) => PrivateEndpointConnectionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesIdentityManagement {
   /// The application id.
   final pulumi.Input<String>? applicationId;
+
   /// The application ids.
   final pulumi.Input<List<String>>? applicationIds;
+
   /// The delegation app ids.
   final pulumi.Input<List<String>>? delegationAppIds;
+
   /// The type.
   final pulumi.Input<String>? type;
 
@@ -34,13 +37,30 @@ class ResourceTypeRegistrationPropertiesIdentityManagement {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesIdentityManagement.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeRegistrationPropertiesIdentityManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeRegistrationPropertiesIdentityManagement(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      applicationIds: map['applicationIds'] == null ? null : ((map['applicationIds']! as List).cast<String>()).input(),
-      delegationAppIds: map['delegationAppIds'] == null ? null : ((map['delegationAppIds']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationIds: (() {
+        final guardedValue = map['applicationIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      delegationAppIds: (() {
+        final guardedValue = map['delegationAppIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

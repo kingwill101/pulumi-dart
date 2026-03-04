@@ -1,13 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delegation_properties_response.dart';
-import 'internet_ingress_public_ips_properties_response.dart';
 import 'managed_service_identity_response.dart';
 import 'network_virtual_appliance_args.dart';
 import 'network_virtual_appliance_properties_format_response_network_profile.dart';
 import 'partner_managed_resource_properties_response.dart';
 import 'sub_resource_response.dart';
-import 'virtual_appliance_additional_nic_properties_response.dart';
-import 'virtual_appliance_nic_properties_response.dart';
 import 'virtual_appliance_sku_properties_response.dart';
 
 /// NetworkVirtualAppliance Resource.
@@ -196,55 +193,86 @@ import 'virtual_appliance_sku_properties_response.dart';
 /// ```
 class NetworkVirtualAppliance extends pulumi.CustomResource {
   /// Details required for Additional Network Interface.
-  late final pulumi.Output<List<VirtualApplianceAdditionalNicPropertiesResponse>?> additionalNics;
+  late final pulumi.Output<List<Map<String, dynamic>>?> additionalNics;
+
   /// Address Prefix.
   late final pulumi.Output<String> addressPrefix;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// BootStrapConfigurationBlobs storage URLs.
   late final pulumi.Output<List<String>?> bootStrapConfigurationBlobs;
+
   /// CloudInitConfiguration string in plain text.
   late final pulumi.Output<String?> cloudInitConfiguration;
+
   /// CloudInitConfigurationBlob storage URLs.
   late final pulumi.Output<List<String>?> cloudInitConfigurationBlobs;
+
   /// The delegation for the Virtual Appliance
   late final pulumi.Output<DelegationPropertiesResponse?> delegation;
+
   /// The deployment type. PartnerManaged for the SaaS NVA
   late final pulumi.Output<String> deploymentType;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The service principal that has read access to cloud-init and config blob.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// List of references to InboundSecurityRules.
-  late final pulumi.Output<List<SubResourceResponse>> inboundSecurityRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> inboundSecurityRules;
+
   /// List of Resource Uri of Public IPs for Internet Ingress Scenario.
-  late final pulumi.Output<List<InternetIngressPublicIpsPropertiesResponse>?> internetIngressPublicIps;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  internetIngressPublicIps;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Network Profile containing configurations for Public and Private NIC.
-  late final pulumi.Output<NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?> networkProfile;
+  late final pulumi.Output<
+    NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?
+  >
+  networkProfile;
+
   /// Network Virtual Appliance SKU.
   late final pulumi.Output<VirtualApplianceSkuPropertiesResponse?> nvaSku;
+
   /// The delegation for the Virtual Appliance
-  late final pulumi.Output<PartnerManagedResourcePropertiesResponse?> partnerManagedResource;
+  late final pulumi.Output<PartnerManagedResourcePropertiesResponse?>
+  partnerManagedResource;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Public key for SSH login.
   late final pulumi.Output<String?> sshPublicKey;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
   late final pulumi.Output<double?> virtualApplianceAsn;
+
   /// List of references to VirtualApplianceConnections.
-  late final pulumi.Output<List<SubResourceResponse>> virtualApplianceConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  virtualApplianceConnections;
+
   /// List of Virtual Appliance Network Interfaces.
-  late final pulumi.Output<List<VirtualApplianceNicPropertiesResponse>> virtualApplianceNics;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualApplianceNics;
+
   /// List of references to VirtualApplianceSite.
-  late final pulumi.Output<List<SubResourceResponse>> virtualApplianceSites;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualApplianceSites;
+
   /// The Virtual Hub where Network Virtual Appliance is being deployed.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
 
@@ -257,36 +285,58 @@ class NetworkVirtualAppliance extends pulumi.CustomResource {
     NetworkVirtualApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkVirtualAppliance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalNics = registerOutput<List<VirtualApplianceAdditionalNicPropertiesResponse>?>('additionalNics');
-    this.addressPrefix = registerOutput<String>('addressPrefix');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bootStrapConfigurationBlobs = registerOutput<List<String>?>('bootStrapConfigurationBlobs');
-    this.cloudInitConfiguration = registerOutput<String?>('cloudInitConfiguration');
-    this.cloudInitConfigurationBlobs = registerOutput<List<String>?>('cloudInitConfigurationBlobs');
-    this.delegation = registerOutput<DelegationPropertiesResponse?>('delegation');
-    this.deploymentType = registerOutput<String>('deploymentType');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.inboundSecurityRules = registerOutput<List<SubResourceResponse>>('inboundSecurityRules');
-    this.internetIngressPublicIps = registerOutput<List<InternetIngressPublicIpsPropertiesResponse>?>('internetIngressPublicIps');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:NetworkVirtualAppliance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalNics = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalNics',
+    );
+    addressPrefix = registerOutput<String>('addressPrefix');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bootStrapConfigurationBlobs = registerOutput<List<String>?>(
+      'bootStrapConfigurationBlobs',
+    );
+    cloudInitConfiguration = registerOutput<String?>('cloudInitConfiguration');
+    cloudInitConfigurationBlobs = registerOutput<List<String>?>(
+      'cloudInitConfigurationBlobs',
+    );
+    delegation = registerOutput<DelegationPropertiesResponse?>('delegation');
+    deploymentType = registerOutput<String>('deploymentType');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    inboundSecurityRules = registerOutput<List<Map<String, dynamic>>>(
+      'inboundSecurityRules',
+    );
+    internetIngressPublicIps = registerOutput<List<Map<String, dynamic>>?>(
+      'internetIngressPublicIps',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?>('networkProfile');
-    this.nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>('nvaSku');
-    this.partnerManagedResource = registerOutput<PartnerManagedResourcePropertiesResponse?>('partnerManagedResource');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sshPublicKey = registerOutput<String?>('sshPublicKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualApplianceAsn = registerOutput<double?>('virtualApplianceAsn');
-    this.virtualApplianceConnections = registerOutput<List<SubResourceResponse>>('virtualApplianceConnections');
-    this.virtualApplianceNics = registerOutput<List<VirtualApplianceNicPropertiesResponse>>('virtualApplianceNics');
-    this.virtualApplianceSites = registerOutput<List<SubResourceResponse>>('virtualApplianceSites');
-    this.virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    networkProfile =
+        registerOutput<
+          NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?
+        >('networkProfile');
+    nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>('nvaSku');
+    partnerManagedResource =
+        registerOutput<PartnerManagedResourcePropertiesResponse?>(
+          'partnerManagedResource',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    sshPublicKey = registerOutput<String?>('sshPublicKey');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualApplianceAsn = registerOutput<double?>('virtualApplianceAsn');
+    virtualApplianceConnections = registerOutput<List<Map<String, dynamic>>>(
+      'virtualApplianceConnections',
+    );
+    virtualApplianceNics = registerOutput<List<Map<String, dynamic>>>(
+      'virtualApplianceNics',
+    );
+    virtualApplianceSites = registerOutput<List<Map<String, dynamic>>>(
+      'virtualApplianceSites',
+    );
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
   }
 }

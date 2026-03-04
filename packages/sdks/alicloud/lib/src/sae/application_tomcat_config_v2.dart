@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationTomcatConfigV2 {
   /// The path.
   final pulumi.Input<String>? contextPath;
+
   /// The maximum number of connections in the connection pool.
   final pulumi.Input<int>? maxThreads;
+
   /// The port.
   final pulumi.Input<int>? port;
+
   /// The URI encoding scheme in the Tomcat container.
   final pulumi.Input<String>? uriEncoding;
+
   /// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
   final pulumi.Input<String>? useBodyEncodingForUri;
 
@@ -40,12 +44,31 @@ class ApplicationTomcatConfigV2 {
 
   factory ApplicationTomcatConfigV2.fromMap(Map<String, dynamic> map) {
     return ApplicationTomcatConfigV2(
-      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
-      maxThreads: map['maxThreads'] == null ? null : (map['maxThreads']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      uriEncoding: map['uriEncoding'] == null ? null : (map['uriEncoding']! as String).input(),
-      useBodyEncodingForUri: map['useBodyEncodingForUri'] == null ? null : (map['useBodyEncodingForUri']! as String).input(),
+      contextPath: (() {
+        final guardedValue = map['contextPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxThreads: (() {
+        final guardedValue = map['maxThreads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      uriEncoding: (() {
+        final guardedValue = map['uriEncoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useBodyEncodingForUri: (() {
+        final guardedValue = map['useBodyEncodingForUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMaintenanceConfigurationArgs {
   /// The name of the maintenance configuration.
   final pulumi.Input<String> configName;
+
   /// The name of the Managed Environment.
   final pulumi.Input<String> environmentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetMaintenanceConfigurationArgs {
 
   factory GetMaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetMaintenanceConfigurationArgs(
-      configName: (map['configName'] as String).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configName: pulumi.Input.fromValue(map['configName'] as String),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

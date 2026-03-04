@@ -2,16 +2,17 @@
 enum GovernanceRuleSourceResourceType {
   valueAssessments("Assessments");
 
-  const GovernanceRuleSourceResourceType(this.value);
-  final String value;
+  const GovernanceRuleSourceResourceType(this.wireValue);
+  final String wireValue;
 
   static GovernanceRuleSourceResourceType fromValue(String value) {
     for (final item in GovernanceRuleSourceResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GovernanceRuleSourceResourceType value: $value');
+    throw ArgumentError(
+      'Unknown GovernanceRuleSourceResourceType value: $value',
+    );
   }
 }
-

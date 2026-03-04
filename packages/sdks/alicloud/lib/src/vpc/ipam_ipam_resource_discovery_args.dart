@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamIpamResourceDiscoveryArgs {
   /// The description of resource discovery.
   final pulumi.Input<String>? ipamResourceDiscoveryDescription;
+
   /// The name of the resource
   final pulumi.Input<String>? ipamResourceDiscoveryName;
+
   /// The list of operating regions for resource discovery.
   final pulumi.Input<List<String>> operatingRegionLists;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// Label list information.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,31 @@ class IpamIpamResourceDiscoveryArgs {
 
   factory IpamIpamResourceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamResourceDiscoveryArgs(
-      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : (map['ipamResourceDiscoveryDescription']! as String).input(),
-      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : (map['ipamResourceDiscoveryName']! as String).input(),
-      operatingRegionLists: ((map['operatingRegionLists'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ipamResourceDiscoveryDescription: (() {
+        final guardedValue = map['ipamResourceDiscoveryDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamResourceDiscoveryName: (() {
+        final guardedValue = map['ipamResourceDiscoveryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingRegionLists: pulumi.Input.fromValue(
+        (map['operatingRegionLists'] as List).cast<String>(),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

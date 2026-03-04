@@ -1,5 +1,3 @@
-library module_redis;
-
 export 'redis/cache.dart';
 export 'redis/cache_access_policy.dart';
 export 'redis/cache_access_policy_args.dart';

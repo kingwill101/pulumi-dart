@@ -9,9 +9,7 @@ class RuntimeResponseDotnet {
 
   /// Creates a new [RuntimeResponseDotnet].
   /// [autoConfigureDataProtection] Auto configure the ASP.NET Core Data Protection feature
-  RuntimeResponseDotnet({
-    this.autoConfigureDataProtection,
-  });
+  RuntimeResponseDotnet({this.autoConfigureDataProtection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class RuntimeResponseDotnet {
 
   factory RuntimeResponseDotnet.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseDotnet(
-      autoConfigureDataProtection: map['autoConfigureDataProtection'] == null ? null : (map['autoConfigureDataProtection']! as bool).input(),
+      autoConfigureDataProtection: (() {
+        final guardedValue = map['autoConfigureDataProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

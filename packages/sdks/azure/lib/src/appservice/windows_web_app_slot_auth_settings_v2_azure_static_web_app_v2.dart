@@ -8,20 +8,17 @@ class WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2({
-    required this.clientId,
-  });
+  WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2({required this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': clientId,
-    };
+    return <String, dynamic>{'clientId': clientId};
   }
 
-  factory WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
+  factory WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsWebAppSlotAuthSettingsV2AzureStaticWebAppV2(
-      clientId: (map['clientId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
-

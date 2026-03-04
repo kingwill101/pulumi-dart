@@ -10,10 +10,13 @@ import 'managed_integration_runtime.dart';
 class IntegrationRuntimeArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The integration runtime name.
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// Integration runtime properties.
   final pulumi.Input<ManagedIntegrationRuntime> properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,31 @@ class IntegrationRuntimeArgs {
     return <String, dynamic>{
       'factoryName': factoryName,
       'integrationRuntimeName': ?integrationRuntimeName,
-      'properties': pulumi.Input.mapInputValue<ManagedIntegrationRuntime, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ManagedIntegrationRuntime,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory IntegrationRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      properties: (ManagedIntegrationRuntime.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        ManagedIntegrationRuntime.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

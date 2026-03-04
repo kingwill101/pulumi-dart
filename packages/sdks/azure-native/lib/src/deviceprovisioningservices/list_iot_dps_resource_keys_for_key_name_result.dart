@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listIotDpsResourceKeysForKeyName.
 class ListIotDpsResourceKeysForKeyNameResult {
   /// Name of the key.
   final String keyName;
+
   /// Primary SAS key value.
   final String? primaryKey;
+
   /// Rights that this key has.
   final String rights;
+
   /// Secondary SAS key value.
   final String? secondaryKey;
 
@@ -33,13 +35,22 @@ class ListIotDpsResourceKeysForKeyNameResult {
     };
   }
 
-  factory ListIotDpsResourceKeysForKeyNameResult.fromMap(Map<String, dynamic> map) {
+  factory ListIotDpsResourceKeysForKeyNameResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIotDpsResourceKeysForKeyNameResult(
       keyName: map['keyName'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       rights: map['rights'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

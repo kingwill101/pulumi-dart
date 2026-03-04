@@ -1,5 +1,3 @@
-library module_ids;
-
 export 'ids/audit_config.dart';
 export 'ids/audit_config_response.dart';
 export 'ids/audit_log_config.dart';

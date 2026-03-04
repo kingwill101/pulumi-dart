@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskEncryptionConfigurationResponse {
   /// This is always `sql#diskEncryptionConfiguration`.
   final pulumi.Input<String> kind;
+
   /// Resource name of KMS key for disk encryption
   final pulumi.Input<String> kmsKeyName;
 
@@ -18,17 +19,15 @@ class DiskEncryptionConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kind': kind,
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kind': kind, 'kmsKeyName': kmsKeyName};
   }
 
-  factory DiskEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DiskEncryptionConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiskEncryptionConfigurationResponse(
-      kind: (map['kind'] as String).input(),
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

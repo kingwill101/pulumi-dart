@@ -6,7 +6,7 @@ import 'get_job_templates_result.dart';
 
 /// This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.173.0.
+/// &gt; **NOTE:** Available since v1.173.0.
 ///
 /// ## Example Usage
 ///
@@ -161,7 +161,7 @@ Future<GetClustersResult> getClusters(
 
 /// This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///

@@ -3,16 +3,15 @@ enum SchemaType {
   valueXsd("Xsd"),
   valueZip("Zip");
 
-  const SchemaType(this.value);
-  final String value;
+  const SchemaType(this.wireValue);
+  final String wireValue;
 
   static SchemaType fromValue(String value) {
     for (final item in SchemaType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchemaType value: $value');
   }
 }
-

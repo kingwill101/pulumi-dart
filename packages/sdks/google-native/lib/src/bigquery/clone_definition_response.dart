@@ -6,6 +6,7 @@ import 'table_reference_response.dart';
 class CloneDefinitionResponse {
   /// [Required] Reference describing the ID of the table that was cloned.
   final pulumi.Input<TableReferenceResponse> baseTableReference;
+
   /// [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
   final pulumi.Input<String> cloneTime;
 
@@ -19,16 +20,23 @@ class CloneDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseTableReference': pulumi.Input.mapInputValue<TableReferenceResponse, Map<String, dynamic>>(baseTableReference, (value) => value.toMap()),
+      'baseTableReference':
+          pulumi.Input.mapInputValue<
+            TableReferenceResponse,
+            Map<String, dynamic>
+          >(baseTableReference, (value) => value.toMap()),
       'cloneTime': cloneTime,
     };
   }
 
   factory CloneDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return CloneDefinitionResponse(
-      baseTableReference: (TableReferenceResponse.fromMap((map['baseTableReference'] as Map).cast<String, dynamic>())).input(),
-      cloneTime: (map['cloneTime'] as String).input(),
+      baseTableReference: pulumi.Input.fromValue(
+        TableReferenceResponse.fromMap(
+          (map['baseTableReference']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      cloneTime: pulumi.Input.fromValue(map['cloneTime'] as String),
     );
   }
 }
-

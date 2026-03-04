@@ -6,6 +6,7 @@ import 'get_ai_index_metadata_config.dart';
 class GetAiIndexMetadata {
   /// The configuration of the Matching Engine Index.
   final pulumi.Input<List<GetAiIndexMetadataConfig>> configs;
+
   /// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
   /// The string must be a valid Cloud Storage directory path. If this
   /// field is set when calling IndexService.UpdateIndex, then no other
@@ -13,6 +14,7 @@ class GetAiIndexMetadata {
   /// The expected structure and format of the files this URI points to is
   /// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
   final pulumi.Input<String> contentsDeltaUri;
+
   /// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
   /// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
   final pulumi.Input<bool> isCompleteOverwrite;
@@ -29,7 +31,18 @@ class GetAiIndexMetadata {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.mapInputValue<List<GetAiIndexMetadataConfig>, List<Map<String, dynamic>>>(configs, (value) => pulumi.Input.encodeList<GetAiIndexMetadataConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configs':
+          pulumi.Input.mapInputValue<
+            List<GetAiIndexMetadataConfig>,
+            List<Map<String, dynamic>>
+          >(
+            configs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAiIndexMetadataConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'contentsDeltaUri': contentsDeltaUri,
       'isCompleteOverwrite': isCompleteOverwrite,
     };
@@ -37,10 +50,20 @@ class GetAiIndexMetadata {
 
   factory GetAiIndexMetadata.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadata(
-      configs: (pulumi.Input.decodeList<GetAiIndexMetadataConfig>(map['configs'], (value) => GetAiIndexMetadataConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentsDeltaUri: (map['contentsDeltaUri'] as String).input(),
-      isCompleteOverwrite: (map['isCompleteOverwrite'] as bool).input(),
+      configs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetAiIndexMetadataConfig>(
+          map['configs']!,
+          (value) => GetAiIndexMetadataConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      contentsDeltaUri: pulumi.Input.fromValue(
+        map['contentsDeltaUri'] as String,
+      ),
+      isCompleteOverwrite: pulumi.Input.fromValue(
+        map['isCompleteOverwrite'] as bool,
+      ),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectStorageKeyRegionsDetail {
   /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
   final pulumi.Input<String> endpointType;
+
   /// The ID of the region.
   final pulumi.Input<String> id;
+
   /// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
   final pulumi.Input<String> s3Endpoint;
 
@@ -30,10 +32,9 @@ class ObjectStorageKeyRegionsDetail {
 
   factory ObjectStorageKeyRegionsDetail.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyRegionsDetail(
-      endpointType: (map['endpointType'] as String).input(),
-      id: (map['id'] as String).input(),
-      s3Endpoint: (map['s3Endpoint'] as String).input(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      s3Endpoint: pulumi.Input.fromValue(map['s3Endpoint'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ModelingFeatures {
   valueStandard("Standard"),
   valuePremium("Premium");
 
-  const ModelingFeatures(this.value);
-  final String value;
+  const ModelingFeatures(this.wireValue);
+  final String wireValue;
 
   static ModelingFeatures fromValue(String value) {
     for (final item in ModelingFeatures.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelingFeatures value: $value');
   }
 }
-

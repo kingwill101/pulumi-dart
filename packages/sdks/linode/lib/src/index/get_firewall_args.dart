@@ -12,20 +12,13 @@ class GetFirewallArgs {
 
   /// Creates a new [GetFirewallArgs].
   /// [id] The Firewall's ID.
-  GetFirewallArgs({
-    required this.id,
-  });
+  GetFirewallArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
-    return GetFirewallArgs(
-      id: (map['id'] as int).input(),
-    );
+    return GetFirewallArgs(id: pulumi.Input.fromValue(map['id'] as int));
   }
 }
-

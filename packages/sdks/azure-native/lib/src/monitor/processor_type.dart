@@ -2,16 +2,15 @@
 enum ProcessorType {
   batch("Batch");
 
-  const ProcessorType(this.value);
-  final String value;
+  const ProcessorType(this.wireValue);
+  final String wireValue;
 
   static ProcessorType fromValue(String value) {
     for (final item in ProcessorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProcessorType value: $value');
   }
 }
-

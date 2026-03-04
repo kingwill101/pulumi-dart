@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IscsiLunResponse {
   /// Specifies the Logical Unit Number of the iSCSI LUN.
   final pulumi.Input<int> lun;
+
   /// Azure Resource ID of the Managed Disk.
   final pulumi.Input<String> managedDiskAzureResourceId;
+
   /// User defined name for iSCSI LUN; example: "lun0"
   final pulumi.Input<String> name;
 
@@ -31,10 +33,11 @@ class IscsiLunResponse {
 
   factory IscsiLunResponse.fromMap(Map<String, dynamic> map) {
     return IscsiLunResponse(
-      lun: (map['lun'] as int).input(),
-      managedDiskAzureResourceId: (map['managedDiskAzureResourceId'] as String).input(),
-      name: (map['name'] as String).input(),
+      lun: pulumi.Input.fromValue(map['lun'] as int),
+      managedDiskAzureResourceId: pulumi.Input.fromValue(
+        map['managedDiskAzureResourceId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

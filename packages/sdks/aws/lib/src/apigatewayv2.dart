@@ -1,5 +1,3 @@
-library module_apigatewayv2;
-
 export 'apigatewayv2/api.dart';
 export 'apigatewayv2/api_args.dart';
 export 'apigatewayv2/api_cors_configuration.dart';

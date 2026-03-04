@@ -1,5 +1,3 @@
-library module_dynatrace;
-
 export 'dynatrace/functions.dart';
 export 'dynatrace/get_monitor_args.dart';
 export 'dynatrace/get_monitor_environment_property.dart';

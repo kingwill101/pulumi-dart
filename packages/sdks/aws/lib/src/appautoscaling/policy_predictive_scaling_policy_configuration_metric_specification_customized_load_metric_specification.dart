@@ -5,7 +5,12 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification {
   /// One or more metric data queries to provide data points for a metric specification. See supported fields below.
-  final pulumi.Input<List<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery>> metricDataQueries;
+  final pulumi.Input<
+    List<
+      PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery
+    >
+  >
+  metricDataQueries;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification].
   /// [metricDataQueries] One or more metric data queries to provide data points for a metric specification. See supported fields below.
@@ -15,14 +20,38 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoa
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDataQueries': pulumi.Input.mapInputValue<List<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery>, List<Map<String, dynamic>>>(metricDataQueries, (value) => pulumi.Input.encodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metricDataQueries':
+          pulumi.Input.mapInputValue<
+            List<
+              PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery
+            >,
+            List<Map<String, dynamic>>
+          >(
+            metricDataQueries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification(
-      metricDataQueries: (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery>(map['metricDataQueries']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricDataQueries: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery
+        >(
+          map['metricDataQueries']!,
+          (value) =>
+              PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageLensConfigurationStorageLensConfigurationInclude {
   /// List of S3 bucket ARNs.
   final pulumi.Input<List<String>>? buckets;
+
   /// List of AWS Regions.
   final pulumi.Input<List<String>>? regions;
 
@@ -17,17 +18,23 @@ class StorageLensConfigurationStorageLensConfigurationInclude {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'buckets': ?buckets,
-      'regions': ?regions,
-    };
+    return <String, dynamic>{'buckets': ?buckets, 'regions': ?regions};
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationInclude.fromMap(Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationInclude.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageLensConfigurationStorageLensConfigurationInclude(
-      buckets: map['buckets'] == null ? null : (((map['buckets'] as List).cast<String>()).input()).input(),
-      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      buckets: (() {
+        final guardedValue = map['buckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

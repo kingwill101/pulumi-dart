@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesRoleStorageClassInfoResponse {
   /// Storage class name.
   final pulumi.Input<String> name;
+
   /// If provisioned storage is posix compliant.
   final pulumi.Input<String> posixCompliant;
+
   /// Storage class type.
   final pulumi.Input<String> type;
 
@@ -29,12 +31,13 @@ class KubernetesRoleStorageClassInfoResponse {
     };
   }
 
-  factory KubernetesRoleStorageClassInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory KubernetesRoleStorageClassInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesRoleStorageClassInfoResponse(
-      name: (map['name'] as String).input(),
-      posixCompliant: (map['posixCompliant'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      posixCompliant: pulumi.Input.fromValue(map['posixCompliant'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

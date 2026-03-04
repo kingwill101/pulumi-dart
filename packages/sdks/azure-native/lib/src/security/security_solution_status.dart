@@ -3,16 +3,15 @@ enum SecuritySolutionStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SecuritySolutionStatus(this.value);
-  final String value;
+  const SecuritySolutionStatus(this.wireValue);
+  final String wireValue;
 
   static SecuritySolutionStatus fromValue(String value) {
     for (final item in SecuritySolutionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecuritySolutionStatus value: $value');
   }
 }
-

@@ -7,16 +7,20 @@ enum GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
   punctuation("PUNCTUATION"),
   whitespace("WHITESPACE");
 
-  const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore(this.value);
-  final String value;
+  const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore(this.wireValue);
+  final String wireValue;
 
-  static GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore value: $value',
+    );
   }
 }
-

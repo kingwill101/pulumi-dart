@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrustedIdProviderArgs {
   /// The name of the Data Lake Store account.
   final pulumi.Input<String> accountName;
+
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the trusted identity provider to retrieve.
   final pulumi.Input<String> trustedIdProviderName;
 
@@ -34,10 +36,13 @@ class GetTrustedIdProviderArgs {
 
   factory GetTrustedIdProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustedIdProviderArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trustedIdProviderName: (map['trustedIdProviderName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      trustedIdProviderName: pulumi.Input.fromValue(
+        map['trustedIdProviderName'] as String,
+      ),
     );
   }
 }
-

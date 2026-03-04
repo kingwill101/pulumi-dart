@@ -24,16 +24,15 @@ enum VmSizeEnum {
   standardK8S5V1("Standard_K8S5_v1"),
   custom("Custom");
 
-  const VmSizeEnum(this.value);
-  final String value;
+  const VmSizeEnum(this.wireValue);
+  final String wireValue;
 
   static VmSizeEnum fromValue(String value) {
     for (final item in VmSizeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VmSizeEnum value: $value');
   }
 }
-

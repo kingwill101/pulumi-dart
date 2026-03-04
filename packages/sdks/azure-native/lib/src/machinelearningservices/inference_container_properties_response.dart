@@ -6,10 +6,13 @@ import 'route_response.dart';
 class InferenceContainerPropertiesResponse {
   /// The route to check the liveness of the inference server container.
   final pulumi.Input<RouteResponse>? livenessRoute;
+
   /// The route to check the readiness of the inference server container.
   final pulumi.Input<RouteResponse>? readinessRoute;
+
   /// The port to send the scoring requests to, within the inference server container.
   final pulumi.Input<RouteResponse>? scoringRoute;
+
   /// The route to check the startup of the application in the container.
   final pulumi.Input<RouteResponse>? startupRoute;
 
@@ -27,20 +30,61 @@ class InferenceContainerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'livenessRoute': ?pulumi.Input.mapOptionalInputValue<RouteResponse, Map<String, dynamic>>(livenessRoute, (value) => value.toMap()),
-      'readinessRoute': ?pulumi.Input.mapOptionalInputValue<RouteResponse, Map<String, dynamic>>(readinessRoute, (value) => value.toMap()),
-      'scoringRoute': ?pulumi.Input.mapOptionalInputValue<RouteResponse, Map<String, dynamic>>(scoringRoute, (value) => value.toMap()),
-      'startupRoute': ?pulumi.Input.mapOptionalInputValue<RouteResponse, Map<String, dynamic>>(startupRoute, (value) => value.toMap()),
+      'livenessRoute':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteResponse,
+            Map<String, dynamic>
+          >(livenessRoute, (value) => value.toMap()),
+      'readinessRoute':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteResponse,
+            Map<String, dynamic>
+          >(readinessRoute, (value) => value.toMap()),
+      'scoringRoute':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteResponse,
+            Map<String, dynamic>
+          >(scoringRoute, (value) => value.toMap()),
+      'startupRoute':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteResponse,
+            Map<String, dynamic>
+          >(startupRoute, (value) => value.toMap()),
     };
   }
 
-  factory InferenceContainerPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory InferenceContainerPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InferenceContainerPropertiesResponse(
-      livenessRoute: map['livenessRoute'] == null ? null : (RouteResponse.fromMap((map['livenessRoute']! as Map).cast<String, dynamic>())).input(),
-      readinessRoute: map['readinessRoute'] == null ? null : (RouteResponse.fromMap((map['readinessRoute']! as Map).cast<String, dynamic>())).input(),
-      scoringRoute: map['scoringRoute'] == null ? null : (RouteResponse.fromMap((map['scoringRoute']! as Map).cast<String, dynamic>())).input(),
-      startupRoute: map['startupRoute'] == null ? null : (RouteResponse.fromMap((map['startupRoute']! as Map).cast<String, dynamic>())).input(),
+      livenessRoute: (() {
+        final guardedValue = map['livenessRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      readinessRoute: (() {
+        final guardedValue = map['readinessRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      scoringRoute: (() {
+        final guardedValue = map['scoringRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      startupRoute: (() {
+        final guardedValue = map['startupRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -9,30 +9,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// The dataphin. Valid values: `yes`,`no`.
   final pulumi.Input<String>? dataphin;
+
   /// The dataphin count. Valid values: 1 to 20.
   final pulumi.Input<String>? dataphinCount;
+
   /// The logistics.
   final pulumi.Input<String>? logistics;
+
   /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
   final pulumi.Input<String>? modifyType;
+
   /// The OSS storage capacity.
   final pulumi.Input<String>? ossSize;
+
   /// The payment type of the resource. Valid values: `Subscription`.
   final pulumi.Input<String> paymentType;
+
   /// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
   final pulumi.Input<int> period;
+
   /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
   final pulumi.Input<int>? renewPeriod;
+
   /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
   final pulumi.Input<String>? renewalStatus;
+
   /// Whether to use the database. Valid values:`yes`,`no`.
   final pulumi.Input<String> sdCbool;
+
   /// The number of instances.
   final pulumi.Input<String> sdc;
+
   /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
   final pulumi.Input<String> sddpVersion;
+
   /// Whether to use OSS. Valid values: `yes`,`no`.
   final pulumi.Input<String> udCbool;
+
   /// OSS Size.
   final pulumi.Input<String> udc;
 
@@ -89,21 +102,48 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      dataphin: map['dataphin'] == null ? null : (map['dataphin']! as String).input(),
-      dataphinCount: map['dataphinCount'] == null ? null : (map['dataphinCount']! as String).input(),
-      logistics: map['logistics'] == null ? null : (map['logistics']! as String).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
-      ossSize: map['ossSize'] == null ? null : (map['ossSize']! as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      period: (map['period'] as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
-      sdCbool: (map['sdCbool'] as String).input(),
-      sdc: (map['sdc'] as String).input(),
-      sddpVersion: (map['sddpVersion'] as String).input(),
-      udCbool: (map['udCbool'] as String).input(),
-      udc: (map['udc'] as String).input(),
+      dataphin: (() {
+        final guardedValue = map['dataphin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataphinCount: (() {
+        final guardedValue = map['dataphinCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logistics: (() {
+        final guardedValue = map['logistics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modifyType: (() {
+        final guardedValue = map['modifyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ossSize: (() {
+        final guardedValue = map['ossSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      period: pulumi.Input.fromValue(map['period'] as int),
+      renewPeriod: (() {
+        final guardedValue = map['renewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sdCbool: pulumi.Input.fromValue(map['sdCbool'] as String),
+      sdc: pulumi.Input.fromValue(map['sdc'] as String),
+      sddpVersion: pulumi.Input.fromValue(map['sddpVersion'] as String),
+      udCbool: pulumi.Input.fromValue(map['udCbool'] as String),
+      udc: pulumi.Input.fromValue(map['udc'] as String),
     );
   }
 }
-

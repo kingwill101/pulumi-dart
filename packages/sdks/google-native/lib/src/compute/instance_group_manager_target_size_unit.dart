@@ -3,16 +3,17 @@ enum InstanceGroupManagerTargetSizeUnit {
   instance("INSTANCE"),
   vcpu("VCPU");
 
-  const InstanceGroupManagerTargetSizeUnit(this.value);
-  final String value;
+  const InstanceGroupManagerTargetSizeUnit(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerTargetSizeUnit fromValue(String value) {
     for (final item in InstanceGroupManagerTargetSizeUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerTargetSizeUnit value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerTargetSizeUnit value: $value',
+    );
   }
 }
-

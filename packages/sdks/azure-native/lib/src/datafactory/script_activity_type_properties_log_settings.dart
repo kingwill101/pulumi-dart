@@ -7,6 +7,7 @@ import 'log_location_settings.dart';
 class ScriptActivityTypePropertiesLogSettings {
   /// The destination of logs. Type: string.
   final pulumi.Input<String> logDestination;
+
   /// Log location settings customer needs to provide when enabling log.
   final pulumi.Input<LogLocationSettings>? logLocationSettings;
 
@@ -21,15 +22,28 @@ class ScriptActivityTypePropertiesLogSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logDestination': logDestination,
-      'logLocationSettings': ?pulumi.Input.mapOptionalInputValue<LogLocationSettings, Map<String, dynamic>>(logLocationSettings, (value) => value.toMap()),
+      'logLocationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogLocationSettings,
+            Map<String, dynamic>
+          >(logLocationSettings, (value) => value.toMap()),
     };
   }
 
-  factory ScriptActivityTypePropertiesLogSettings.fromMap(Map<String, dynamic> map) {
+  factory ScriptActivityTypePropertiesLogSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScriptActivityTypePropertiesLogSettings(
-      logDestination: (map['logDestination'] as String).input(),
-      logLocationSettings: map['logLocationSettings'] == null ? null : (LogLocationSettings.fromMap((map['logLocationSettings']! as Map).cast<String, dynamic>())).input(),
+      logDestination: pulumi.Input.fromValue(map['logDestination'] as String),
+      logLocationSettings: (() {
+        final guardedValue = map['logLocationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogLocationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

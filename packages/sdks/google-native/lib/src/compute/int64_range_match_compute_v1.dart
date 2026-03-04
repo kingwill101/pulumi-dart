@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Int64RangeMatchComputeV1 {
   /// The end of the range (exclusive) in signed long integer format.
   final pulumi.Input<String>? rangeEnd;
+
   /// The start of the range (inclusive) in signed long integer format.
   final pulumi.Input<String>? rangeStart;
 
   /// Creates a new [Int64RangeMatchComputeV1].
   /// [rangeEnd] The end of the range (exclusive) in signed long integer format.
   /// [rangeStart] The start of the range (inclusive) in signed long integer format.
-  Int64RangeMatchComputeV1({
-    this.rangeEnd,
-    this.rangeStart,
-  });
+  Int64RangeMatchComputeV1({this.rangeEnd, this.rangeStart});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'rangeEnd': ?rangeEnd,
-      'rangeStart': ?rangeStart,
-    };
+    return <String, dynamic>{'rangeEnd': ?rangeEnd, 'rangeStart': ?rangeStart};
   }
 
   factory Int64RangeMatchComputeV1.fromMap(Map<String, dynamic> map) {
     return Int64RangeMatchComputeV1(
-      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd']! as String).input(),
-      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart']! as String).input(),
+      rangeEnd: (() {
+        final guardedValue = map['rangeEnd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rangeStart: (() {
+        final guardedValue = map['rangeStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

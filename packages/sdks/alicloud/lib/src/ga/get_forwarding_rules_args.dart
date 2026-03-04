@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetForwardingRulesArgs {
   /// The ID of the Global Accelerator instance.
   final pulumi.Input<String> acceleratorId;
+
   /// A list of Forwarding Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the listener.
   final pulumi.Input<String> listenerId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the acceleration region. Valid values: `active`, `configuring`.
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,23 @@ class GetForwardingRulesArgs {
 
   factory GetForwardingRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      listenerId: (map['listenerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

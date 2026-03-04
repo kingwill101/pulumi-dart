@@ -7,10 +7,13 @@ import 'service_tag_destination.dart';
 class ServiceTagOutboundRule {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
   final pulumi.Input<String>? category;
+
   /// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
   final pulumi.Input<ServiceTagDestination>? destination;
+
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   final pulumi.Input<String>? status;
+
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'ServiceTag'.
   final pulumi.Input<String> type;
@@ -30,7 +33,11 @@ class ServiceTagOutboundRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': ?category,
-      'destination': ?pulumi.Input.mapOptionalInputValue<ServiceTagDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTagDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'status': ?status,
       'type': type,
     };
@@ -38,11 +45,26 @@ class ServiceTagOutboundRule {
 
   factory ServiceTagOutboundRule.fromMap(Map<String, dynamic> map) {
     return ServiceTagOutboundRule(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      destination: map['destination'] == null ? null : (ServiceTagDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: (map['type'] as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTagDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

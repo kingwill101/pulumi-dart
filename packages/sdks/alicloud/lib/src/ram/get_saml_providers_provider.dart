@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSamlProvidersProvider {
   /// The Alibaba Cloud Resource Name (ARN) of the IdP.
   final pulumi.Input<String> arn;
+
   /// The description of SAML Provider.
   final pulumi.Input<String> description;
+
   /// The encodedsaml metadata document.
   final pulumi.Input<String> encodedsamlMetadataDocument;
+
   /// The ID of the SAML Provider.
   final pulumi.Input<String> id;
+
   /// The saml provider name.
   final pulumi.Input<String> samlProviderName;
+
   /// The update time.
   final pulumi.Input<String> updateDate;
 
@@ -45,13 +50,16 @@ class GetSamlProvidersProvider {
 
   factory GetSamlProvidersProvider.fromMap(Map<String, dynamic> map) {
     return GetSamlProvidersProvider(
-      arn: (map['arn'] as String).input(),
-      description: (map['description'] as String).input(),
-      encodedsamlMetadataDocument: (map['encodedsamlMetadataDocument'] as String).input(),
-      id: (map['id'] as String).input(),
-      samlProviderName: (map['samlProviderName'] as String).input(),
-      updateDate: (map['updateDate'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      encodedsamlMetadataDocument: pulumi.Input.fromValue(
+        map['encodedsamlMetadataDocument'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      samlProviderName: pulumi.Input.fromValue(
+        map['samlProviderName'] as String,
+      ),
+      updateDate: pulumi.Input.fromValue(map['updateDate'] as String),
     );
   }
 }
-

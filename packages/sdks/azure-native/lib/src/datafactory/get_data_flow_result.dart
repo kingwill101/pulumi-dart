@@ -6,14 +6,19 @@ import 'flowlet_response.dart';
 class GetDataFlowResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Data flow properties.
   final FlowletResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetDataFlowResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: FlowletResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: FlowletResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

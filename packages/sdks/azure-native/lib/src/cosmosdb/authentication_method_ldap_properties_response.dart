@@ -7,17 +7,23 @@ import 'certificate_response.dart';
 class AuthenticationMethodLdapPropertiesResponse {
   /// Timeout for connecting to the LDAP server in miliseconds. The default is 5000 ms.
   final pulumi.Input<int>? connectionTimeoutInMs;
+
   /// Distinguished name of the object to start the recursive search of users from.
   final pulumi.Input<String>? searchBaseDistinguishedName;
+
   /// Template to use for searching. Defaults to (cn=%s) where %s will be replaced by the username used to login.
   final pulumi.Input<String>? searchFilterTemplate;
   final pulumi.Input<List<CertificateResponse>>? serverCertificates;
+
   /// Hostname of the LDAP server.
   final pulumi.Input<String>? serverHostname;
+
   /// Port of the LDAP server.
   final pulumi.Input<int>? serverPort;
+
   /// Distinguished name of the look up user account, who can look up user details on authentication.
   final pulumi.Input<String>? serviceUserDistinguishedName;
+
   /// Password of the look up user.
   final pulumi.Input<String>? serviceUserPassword;
 
@@ -46,7 +52,18 @@ class AuthenticationMethodLdapPropertiesResponse {
       'connectionTimeoutInMs': ?connectionTimeoutInMs,
       'searchBaseDistinguishedName': ?searchBaseDistinguishedName,
       'searchFilterTemplate': ?searchFilterTemplate,
-      'serverCertificates': ?pulumi.Input.mapOptionalInputValue<List<CertificateResponse>, List<Map<String, dynamic>>>(serverCertificates, (value) => pulumi.Input.encodeList<CertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serverCertificates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CertificateResponse>,
+            List<Map<String, dynamic>>
+          >(
+            serverCertificates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CertificateResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serverHostname': ?serverHostname,
       'serverPort': ?serverPort,
       'serviceUserDistinguishedName': ?serviceUserDistinguishedName,
@@ -54,17 +71,57 @@ class AuthenticationMethodLdapPropertiesResponse {
     };
   }
 
-  factory AuthenticationMethodLdapPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AuthenticationMethodLdapPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthenticationMethodLdapPropertiesResponse(
-      connectionTimeoutInMs: map['connectionTimeoutInMs'] == null ? null : (map['connectionTimeoutInMs']! as int).input(),
-      searchBaseDistinguishedName: map['searchBaseDistinguishedName'] == null ? null : (map['searchBaseDistinguishedName']! as String).input(),
-      searchFilterTemplate: map['searchFilterTemplate'] == null ? null : (map['searchFilterTemplate']! as String).input(),
-      serverCertificates: map['serverCertificates'] == null ? null : (pulumi.Input.decodeList<CertificateResponse>(map['serverCertificates']!, (value) => CertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname']! as String).input(),
-      serverPort: map['serverPort'] == null ? null : (map['serverPort']! as int).input(),
-      serviceUserDistinguishedName: map['serviceUserDistinguishedName'] == null ? null : (map['serviceUserDistinguishedName']! as String).input(),
-      serviceUserPassword: map['serviceUserPassword'] == null ? null : (map['serviceUserPassword']! as String).input(),
+      connectionTimeoutInMs: (() {
+        final guardedValue = map['connectionTimeoutInMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      searchBaseDistinguishedName: (() {
+        final guardedValue = map['searchBaseDistinguishedName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchFilterTemplate: (() {
+        final guardedValue = map['searchFilterTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverCertificates: (() {
+        final guardedValue = map['serverCertificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CertificateResponse>(
+            guardedValue,
+            (value) => CertificateResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      serverHostname: (() {
+        final guardedValue = map['serverHostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverPort: (() {
+        final guardedValue = map['serverPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serviceUserDistinguishedName: (() {
+        final guardedValue = map['serviceUserDistinguishedName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceUserPassword: (() {
+        final guardedValue = map['serviceUserPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

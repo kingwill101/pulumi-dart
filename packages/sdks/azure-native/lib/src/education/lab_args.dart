@@ -10,20 +10,28 @@ import 'amount.dart';
 class LabArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
+
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileName;
+
   /// Default monetary cap for each student in this lab
   final pulumi.Input<Amount> budgetPerStudent;
+
   /// The type of currency being used for the value.
   final pulumi.Input<String>? currency;
+
   /// Detail description of this lab
   final pulumi.Input<String> description;
+
   /// Lab Display Name
   final pulumi.Input<String> displayName;
+
   /// Default expiration date for each student in this lab
   final pulumi.Input<String> expirationDate;
+
   /// The ID that uniquely identifies an invoice section.
   final pulumi.Input<String> invoiceSectionName;
+
   /// Amount value.
   final pulumi.Input<double>? value;
 
@@ -53,7 +61,11 @@ class LabArgs {
     return <String, dynamic>{
       'billingAccountName': billingAccountName,
       'billingProfileName': billingProfileName,
-      'budgetPerStudent': pulumi.Input.mapInputValue<Amount, Map<String, dynamic>>(budgetPerStudent, (value) => value.toMap()),
+      'budgetPerStudent':
+          pulumi.Input.mapInputValue<Amount, Map<String, dynamic>>(
+            budgetPerStudent,
+            (value) => value.toMap(),
+          ),
       'currency': ?currency,
       'description': description,
       'displayName': displayName,
@@ -65,16 +77,33 @@ class LabArgs {
 
   factory LabArgs.fromMap(Map<String, dynamic> map) {
     return LabArgs(
-      billingAccountName: (map['billingAccountName'] as String).input(),
-      billingProfileName: (map['billingProfileName'] as String).input(),
-      budgetPerStudent: (Amount.fromMap((map['budgetPerStudent'] as Map).cast<String, dynamic>())).input(),
-      currency: map['currency'] == null ? null : (map['currency']! as String).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      expirationDate: (map['expirationDate'] as String).input(),
-      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as double).input(),
+      billingAccountName: pulumi.Input.fromValue(
+        map['billingAccountName'] as String,
+      ),
+      billingProfileName: pulumi.Input.fromValue(
+        map['billingProfileName'] as String,
+      ),
+      budgetPerStudent: pulumi.Input.fromValue(
+        Amount.fromMap(
+          (map['budgetPerStudent']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      currency: (() {
+        final guardedValue = map['currency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
+      invoiceSectionName: pulumi.Input.fromValue(
+        map['invoiceSectionName'] as String,
+      ),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

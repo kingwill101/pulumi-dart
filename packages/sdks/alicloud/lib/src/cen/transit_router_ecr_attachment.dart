@@ -8,7 +8,7 @@ import 'transit_router_ecr_attachment_state.dart';
 ///
 /// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
 ///
-/// > **NOTE:** Available since v1.235.0.
+/// &gt; **NOTE:** Available since v1.235.0.
 ///
 /// ## Example Usage
 ///
@@ -333,20 +333,28 @@ import 'transit_router_ecr_attachment_state.dart';
 class TransitRouterEcrAttachment extends pulumi.CustomResource {
   /// CenId
   late final pulumi.Output<String?> cenId;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// EcrId
   late final pulumi.Output<String> ecrId;
+
   /// EcrOwnerId
   late final pulumi.Output<int?> ecrOwnerId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// TransitRouterAttachmentDescription
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
+
   /// TransitRouterAttachmentName
   late final pulumi.Output<String?> transitRouterEcrAttachmentName;
+
   /// TransitRouterId
   late final pulumi.Output<String?> transitRouterId;
 
@@ -359,20 +367,24 @@ class TransitRouterEcrAttachment extends pulumi.CustomResource {
     TransitRouterEcrAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String?>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.ecrOwnerId = registerOutput<int?>('ecrOwnerId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
-    this.transitRouterEcrAttachmentName = registerOutput<String?>('transitRouterEcrAttachmentName');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
+         'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String?>('cenId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    ecrOwnerId = registerOutput<int?>('ecrOwnerId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentDescription = registerOutput<String?>(
+      'transitRouterAttachmentDescription',
+    );
+    transitRouterEcrAttachmentName = registerOutput<String?>(
+      'transitRouterEcrAttachmentName',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
   }
 
   /// Gets an existing [TransitRouterEcrAttachment] resource's state with the given [name] and [id].
@@ -393,19 +405,23 @@ class TransitRouterEcrAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String?>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.ecrOwnerId = registerOutput<int?>('ecrOwnerId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
-    this.transitRouterEcrAttachmentName = registerOutput<String?>('transitRouterEcrAttachmentName');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
+         'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String?>('cenId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    ecrOwnerId = registerOutput<int?>('ecrOwnerId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentDescription = registerOutput<String?>(
+      'transitRouterAttachmentDescription',
+    );
+    transitRouterEcrAttachmentName = registerOutput<String?>(
+      'transitRouterEcrAttachmentName',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BindingProperties {
   /// Configuration values for the binding.
   final pulumi.Input<dynamic> config;
+
   /// Name of the provider.
   final pulumi.Input<String> provider;
+
   /// Role that the provider binds to with the component.
   final pulumi.Input<String> role;
 
@@ -31,10 +33,9 @@ class BindingProperties {
 
   factory BindingProperties.fromMap(Map<String, dynamic> map) {
     return BindingProperties(
-      config: (map['config']).input(),
-      provider: (map['provider'] as String).input(),
-      role: (map['role'] as String).input(),
+      config: pulumi.Input.fromValue(map['config']),
+      provider: pulumi.Input.fromValue(map['provider'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

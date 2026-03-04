@@ -272,14 +272,18 @@ class Monitor extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
   late final pulumi.Output<String> location;
+
   /// Name of the monitor resource.
   late final pulumi.Output<String> name;
+
   /// Properties specific to the monitor resource.
   late final pulumi.Output<MonitorPropertiesResponse> properties;
   late final pulumi.Output<ResourceSkuResponse?> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the monitor resource.
   late final pulumi.Output<String> type;
 
@@ -292,19 +296,19 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datadog:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:datadog:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MonitorPropertiesResponse>('properties');
-    this.sku = registerOutput<ResourceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MonitorPropertiesResponse>('properties');
+    sku = registerOutput<ResourceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -8,24 +8,35 @@ import 'container_network_interface_response.dart';
 class GetNetworkProfileResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// List of chid container network interface configurations.
-  final List<ContainerNetworkInterfaceConfigurationResponse>? containerNetworkInterfaceConfigurations;
+  final List<ContainerNetworkInterfaceConfigurationResponse>?
+  containerNetworkInterfaceConfigurations;
+
   /// List of child container network interfaces.
   final List<ContainerNetworkInterfaceResponse> containerNetworkInterfaces;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the network profile resource.
   final String provisioningState;
+
   /// The resource GUID property of the network profile resource.
   final String resourceGuid;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -58,8 +69,19 @@ class GetNetworkProfileResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'containerNetworkInterfaceConfigurations': ?containerNetworkInterfaceConfigurations == null ? null : pulumi.Input.encodeList<ContainerNetworkInterfaceConfigurationResponse, Map<String, dynamic>>(containerNetworkInterfaceConfigurations!, (value) => value.toMap()),
-      'containerNetworkInterfaces': pulumi.Input.encodeList<ContainerNetworkInterfaceResponse, Map<String, dynamic>>(containerNetworkInterfaces, (value) => value.toMap()),
+      'containerNetworkInterfaceConfigurations': ?(() {
+        final guardedValue = containerNetworkInterfaceConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ContainerNetworkInterfaceConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'containerNetworkInterfaces':
+          pulumi.Input.encodeList<
+            ContainerNetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(containerNetworkInterfaces, (value) => value.toMap()),
       'etag': etag,
       'id': ?id,
       'location': ?location,
@@ -74,17 +96,44 @@ class GetNetworkProfileResult {
   factory GetNetworkProfileResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerNetworkInterfaceConfigurations: map['containerNetworkInterfaceConfigurations'] == null ? null : pulumi.Input.decodeList<ContainerNetworkInterfaceConfigurationResponse>(map['containerNetworkInterfaceConfigurations']!, (value) => ContainerNetworkInterfaceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      containerNetworkInterfaces: pulumi.Input.decodeList<ContainerNetworkInterfaceResponse>(map['containerNetworkInterfaces'], (value) => ContainerNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      containerNetworkInterfaceConfigurations: (() {
+        final guardedValue = map['containerNetworkInterfaceConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi
+            .Input.decodeList<ContainerNetworkInterfaceConfigurationResponse>(
+          guardedValue,
+          (value) => ContainerNetworkInterfaceConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerNetworkInterfaces:
+          pulumi.Input.decodeList<ContainerNetworkInterfaceResponse>(
+            map['containerNetworkInterfaces']!,
+            (value) => ContainerNetworkInterfaceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

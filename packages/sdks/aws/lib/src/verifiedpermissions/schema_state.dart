@@ -7,10 +7,13 @@ import 'schema_definition.dart';
 class SchemaState {
   /// The definition of the schema.
   final pulumi.Input<SchemaDefinition>? definition;
+
   /// (Optional) Identifies the namespaces of the entities referenced by this schema.
   final pulumi.Input<List<String>>? namespaces;
+
   /// The ID of the Policy Store.
   final pulumi.Input<String>? policyStoreId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -28,7 +31,11 @@ class SchemaState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition': ?pulumi.Input.mapOptionalInputValue<SchemaDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          ?pulumi.Input.mapOptionalInputValue<
+            SchemaDefinition,
+            Map<String, dynamic>
+          >(definition, (value) => value.toMap()),
       'namespaces': ?namespaces,
       'policyStoreId': ?policyStoreId,
       'region': ?region,
@@ -37,11 +44,30 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      definition: map['definition'] == null ? null : ((SchemaDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
-      namespaces: map['namespaces'] == null ? null : (((map['namespaces'] as List).cast<String>()).input()).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SchemaDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      policyStoreId: (() {
+        final guardedValue = map['policyStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

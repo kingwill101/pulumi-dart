@@ -6,10 +6,13 @@ import 'get_kubernetes_cluster_oms_agent_oms_agent_identity.dart';
 class GetKubernetesClusterOmsAgent {
   /// The ID of the Log Analytics Workspace to which the OMS Agent should send data.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// Is managed identity authentication for monitoring enabled?
   final pulumi.Input<bool> msiAuthForMonitoringEnabled;
+
   /// An `oms_agent_identity` block as defined below.
-  final pulumi.Input<List<GetKubernetesClusterOmsAgentOmsAgentIdentity>> omsAgentIdentities;
+  final pulumi.Input<List<GetKubernetesClusterOmsAgentOmsAgentIdentity>>
+  omsAgentIdentities;
 
   /// Creates a new [GetKubernetesClusterOmsAgent].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace to which the OMS Agent should send data.
@@ -25,16 +28,37 @@ class GetKubernetesClusterOmsAgent {
     return <String, dynamic>{
       'logAnalyticsWorkspaceId': logAnalyticsWorkspaceId,
       'msiAuthForMonitoringEnabled': msiAuthForMonitoringEnabled,
-      'omsAgentIdentities': pulumi.Input.mapInputValue<List<GetKubernetesClusterOmsAgentOmsAgentIdentity>, List<Map<String, dynamic>>>(omsAgentIdentities, (value) => pulumi.Input.encodeList<GetKubernetesClusterOmsAgentOmsAgentIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'omsAgentIdentities':
+          pulumi.Input.mapInputValue<
+            List<GetKubernetesClusterOmsAgentOmsAgentIdentity>,
+            List<Map<String, dynamic>>
+          >(
+            omsAgentIdentities,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetKubernetesClusterOmsAgentOmsAgentIdentity,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetKubernetesClusterOmsAgent.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterOmsAgent(
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      msiAuthForMonitoringEnabled: (map['msiAuthForMonitoringEnabled'] as bool).input(),
-      omsAgentIdentities: (pulumi.Input.decodeList<GetKubernetesClusterOmsAgentOmsAgentIdentity>(map['omsAgentIdentities'], (value) => GetKubernetesClusterOmsAgentOmsAgentIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      msiAuthForMonitoringEnabled: pulumi.Input.fromValue(
+        map['msiAuthForMonitoringEnabled'] as bool,
+      ),
+      omsAgentIdentities: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetKubernetesClusterOmsAgentOmsAgentIdentity>(
+          map['omsAgentIdentities']!,
+          (value) => GetKubernetesClusterOmsAgentOmsAgentIdentity.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

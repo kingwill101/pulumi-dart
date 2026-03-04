@@ -8,20 +8,15 @@ class SubsettingResponseComputeV1 {
 
   /// Creates a new [SubsettingResponseComputeV1].
   /// [policy] Required.
-  SubsettingResponseComputeV1({
-    required this.policy,
-  });
+  SubsettingResponseComputeV1({required this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': policy,
-    };
+    return <String, dynamic>{'policy': policy};
   }
 
   factory SubsettingResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SubsettingResponseComputeV1(
-      policy: (map['policy'] as String).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
-

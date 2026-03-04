@@ -5,13 +5,12 @@ import 'account_identity.dart';
 import 'account_network_acls.dart';
 import 'account_network_injection.dart';
 import 'account_state.dart';
-import 'account_storage.dart';
 
 /// Manages a Cognitive Services Account.
 ///
-/// > **Note:** The Cognitive Services Account manages the resource type for various Azure AI resource implementations, including Azure AI Foundry, Azure OpenAI, Azure Speech, Azure Vision and others. Each service shares the same control plane but exposes a different subset of developer APIs. Azure AI Foundry (kind = `AIServices`) provides the superset of capabilities. For more information, please see [Azure AI Foundry architecture](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/architecture).
+/// &gt; **Note:** The Cognitive Services Account manages the resource type for various Azure AI resource implementations, including Azure AI Foundry, Azure OpenAI, Azure Speech, Azure Vision and others. Each service shares the same control plane but exposes a different subset of developer APIs. Azure AI Foundry (kind = `AIServices`) provides the superset of capabilities. For more information, please see [Azure AI Foundry architecture](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/architecture).
 ///
-/// > **Note:** The Azure Provider will attempt to Purge the Cognitive Services Account during deletion. This feature can be disabled using the `features` block within the `provider` block, see the provider documentation on the features block for more information.
+/// &gt; **Note:** The Azure Provider will attempt to Purge the Cognitive Services Account during deletion. This feature can be disabled using the `features` block within the `provider` block, see the provider documentation on the features block for more information.
 ///
 /// ## Example Usage
 ///
@@ -179,7 +178,7 @@ import 'account_storage.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -196,70 +195,97 @@ import 'account_storage.dart';
 class Account extends pulumi.CustomResource {
   /// If `kind` is `TextAnalytics` this specifies the ID of the Search service.
   late final pulumi.Output<String?> customQuestionAnsweringSearchServiceId;
+
   /// If `kind` is `TextAnalytics` this specifies the key of the Search service.
   ///
-  /// > **Note:** `custom_question_answering_search_service_id` and `custom_question_answering_search_service_key` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qna_runtime_endpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
+  /// &gt; **Note:** `custom_question_answering_search_service_id` and `custom_question_answering_search_service_key` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qna_runtime_endpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
   late final pulumi.Output<String?> customQuestionAnsweringSearchServiceKey;
-  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `network_acls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://<custom_subdomain_name>.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
+
+  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `network_acls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
   ///
-  /// > **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
+  /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
   late final pulumi.Output<String?> customSubdomainName;
+
   /// A `customer_managed_key` block as documented below.
   late final pulumi.Output<AccountCustomerManagedKey?> customerManagedKey;
+
   /// Whether to enable the dynamic throttling for this Cognitive Service Account. This attribute cannot be set when the `kind` is `OpenAI` or `AIServices`.
   late final pulumi.Output<bool?> dynamicThrottlingEnabled;
+
   /// The endpoint used to connect to the Cognitive Service Account.
   late final pulumi.Output<String> endpoint;
+
   /// List of FQDNs allowed for the Cognitive Account.
   late final pulumi.Output<List<String>?> fqdns;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
+
   /// Specifies the type of Cognitive Service Account that should be created. Possible values are `Academic`, `AIServices`, `AnomalyDetector`, `Bing.Autosuggest`, `Bing.Autosuggest.v7`, `Bing.CustomSearch`, `Bing.Search`, `Bing.Search.v7`, `Bing.Speech`, `Bing.SpellCheck`, `Bing.SpellCheck.v7`, `CognitiveServices`, `ComputerVision`, `ContentModerator`, `ContentSafety`, `CustomSpeech`, `CustomVision.Prediction`, `CustomVision.Training`, `Emotion`, `Face`, `FormRecognizer`, `ImmersiveReader`, `LUIS`, `LUIS.Authoring`, `MetricsAdvisor`, `OpenAI`, `Personalizer`, `QnAMaker`, `Recommendations`, `SpeakerRecognition`, `Speech`, `SpeechServices`, `SpeechTranslation`, `TextAnalytics`, `TextTranslation` and `WebLM`. Changing this forces a new resource to be created except when upgrading the Cognitive Service Account from `OpenAI` to `AIServices` or rolling back from `AIServices` to `OpenAI`. More information on [upgrade and rollback scenario](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/upgrade-azure-openai?tabs=portal).
   ///
-  /// > **Note:** New Bing Search resources cannot be created as their APIs are moving from Cognitive Services Platform to new surface area under Microsoft.com. Starting from October 30, 2020, existing instances of Bing Search APIs provisioned via Cognitive Services will be continuously supported for next 3 years or till the end of respective Enterprise Agreement, whichever happens first.
+  /// &gt; **Note:** New Bing Search resources cannot be created as their APIs are moving from Cognitive Services Platform to new surface area under Microsoft.com. Starting from October 30, 2020, existing instances of Bing Search APIs provisioned via Cognitive Services will be continuously supported for next 3 years or till the end of respective Enterprise Agreement, whichever happens first.
   ///
-  /// > **Note:** You must create your first Face, Text Analytics, or Computer Vision resources from the Azure portal to review and acknowledge the terms and conditions. In Azure Portal, the checkbox to accept terms and conditions is only displayed when a US region is selected. More information on [Prerequisites](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows#prerequisites).
+  /// &gt; **Note:** You must create your first Face, Text Analytics, or Computer Vision resources from the Azure portal to review and acknowledge the terms and conditions. In Azure Portal, the checkbox to accept terms and conditions is only displayed when a US region is selected. More information on [Prerequisites](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows#prerequisites).
   late final pulumi.Output<String> kind;
+
   /// Whether local authentication methods is enabled for the Cognitive Account. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The Azure AD Client ID (Application ID). This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> metricsAdvisorAadClientId;
+
   /// The Azure AD Tenant ID. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> metricsAdvisorAadTenantId;
+
   /// The super user of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> metricsAdvisorSuperUserName;
+
   /// The website name of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This URL is mandatory if the `kind` is set to `QnAMaker`.
+  /// &gt; **Note:** This URL is mandatory if the `kind` is set to `QnAMaker`.
   late final pulumi.Output<String?> metricsAdvisorWebsiteName;
+
   /// Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
   late final pulumi.Output<AccountNetworkAcls?> networkAcls;
+
   /// A `network_injection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
   late final pulumi.Output<AccountNetworkInjection?> networkInjection;
+
   /// Whether outbound network access is restricted for the Cognitive Account. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
+
   /// A primary access key which can be used to connect to the Cognitive Service Account.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `project_management_enabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
   late final pulumi.Output<bool?> projectManagementEnabled;
+
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// A URL to link a QnAMaker cognitive account to a QnA runtime.
   late final pulumi.Output<String?> qnaRuntimeEndpoint;
+
   /// The name of the resource group in which the Cognitive Service Account is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary access key which can be used to connect to the Cognitive Service Account.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// Specifies the SKU Name for this Cognitive Service Account. Possible values are `C2`, `C3`, `C4`, `D3`, `DC0`, `E0`, `F0`, `F1`, `P0`, `P1`, `P2`, `S`, `S0`, `S1`, `S2`, `S3`, `S4`, `S5` and `S6`.
   ///
-  /// > **Note:** SKU `DC0` is the commitment tier for Cognitive Services containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
+  /// &gt; **Note:** SKU `DC0` is the commitment tier for Cognitive Services containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   late final pulumi.Output<String> skuName;
+
   /// A `storage` block as defined below.
-  late final pulumi.Output<List<AccountStorage>?> storages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storages;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -272,39 +298,63 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customQuestionAnsweringSearchServiceId = registerOutput<String?>('customQuestionAnsweringSearchServiceId');
-    this.customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey');
-    this.customSubdomainName = registerOutput<String?>('customSubdomainName');
-    this.customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey');
-    this.dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.metricsAdvisorAadClientId = registerOutput<String?>('metricsAdvisorAadClientId');
-    this.metricsAdvisorAadTenantId = registerOutput<String?>('metricsAdvisorAadTenantId');
-    this.metricsAdvisorSuperUserName = registerOutput<String?>('metricsAdvisorSuperUserName');
-    this.metricsAdvisorWebsiteName = registerOutput<String?>('metricsAdvisorWebsiteName');
+         'azure:cognitive/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customQuestionAnsweringSearchServiceId = registerOutput<String?>(
+      'customQuestionAnsweringSearchServiceId',
+    );
+    customQuestionAnsweringSearchServiceKey = registerOutput<String?>(
+      'customQuestionAnsweringSearchServiceKey',
+    );
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dynamicThrottlingEnabled = registerOutput<bool?>(
+      'dynamicThrottlingEnabled',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    identity = registerOutput<AccountIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    metricsAdvisorAadClientId = registerOutput<String?>(
+      'metricsAdvisorAadClientId',
+    );
+    metricsAdvisorAadTenantId = registerOutput<String?>(
+      'metricsAdvisorAadTenantId',
+    );
+    metricsAdvisorSuperUserName = registerOutput<String?>(
+      'metricsAdvisorSuperUserName',
+    );
+    metricsAdvisorWebsiteName = registerOutput<String?>(
+      'metricsAdvisorWebsiteName',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
-    this.networkInjection = registerOutput<AccountNetworkInjection?>('networkInjection');
-    this.outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.projectManagementEnabled = registerOutput<bool?>('projectManagementEnabled');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.storages = registerOutput<List<AccountStorage>?>('storages');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
+    networkInjection = registerOutput<AccountNetworkInjection?>(
+      'networkInjection',
+    );
+    outboundNetworkAccessRestricted = registerOutput<bool?>(
+      'outboundNetworkAccessRestricted',
+    );
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    projectManagementEnabled = registerOutput<bool?>(
+      'projectManagementEnabled',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -325,38 +375,62 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customQuestionAnsweringSearchServiceId = registerOutput<String?>('customQuestionAnsweringSearchServiceId');
-    this.customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey');
-    this.customSubdomainName = registerOutput<String?>('customSubdomainName');
-    this.customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey');
-    this.dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.metricsAdvisorAadClientId = registerOutput<String?>('metricsAdvisorAadClientId');
-    this.metricsAdvisorAadTenantId = registerOutput<String?>('metricsAdvisorAadTenantId');
-    this.metricsAdvisorSuperUserName = registerOutput<String?>('metricsAdvisorSuperUserName');
-    this.metricsAdvisorWebsiteName = registerOutput<String?>('metricsAdvisorWebsiteName');
+         'azure:cognitive/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customQuestionAnsweringSearchServiceId = registerOutput<String?>(
+      'customQuestionAnsweringSearchServiceId',
+    );
+    customQuestionAnsweringSearchServiceKey = registerOutput<String?>(
+      'customQuestionAnsweringSearchServiceKey',
+    );
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dynamicThrottlingEnabled = registerOutput<bool?>(
+      'dynamicThrottlingEnabled',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns');
+    identity = registerOutput<AccountIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    metricsAdvisorAadClientId = registerOutput<String?>(
+      'metricsAdvisorAadClientId',
+    );
+    metricsAdvisorAadTenantId = registerOutput<String?>(
+      'metricsAdvisorAadTenantId',
+    );
+    metricsAdvisorSuperUserName = registerOutput<String?>(
+      'metricsAdvisorSuperUserName',
+    );
+    metricsAdvisorWebsiteName = registerOutput<String?>(
+      'metricsAdvisorWebsiteName',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
-    this.networkInjection = registerOutput<AccountNetworkInjection?>('networkInjection');
-    this.outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.projectManagementEnabled = registerOutput<bool?>('projectManagementEnabled');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.storages = registerOutput<List<AccountStorage>?>('storages');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
+    networkInjection = registerOutput<AccountNetworkInjection?>(
+      'networkInjection',
+    );
+    outboundNetworkAccessRestricted = registerOutput<bool?>(
+      'outboundNetworkAccessRestricted',
+    );
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    projectManagementEnabled = registerOutput<bool?>(
+      'projectManagementEnabled',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

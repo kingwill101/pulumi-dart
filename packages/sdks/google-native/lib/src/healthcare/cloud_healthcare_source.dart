@@ -9,20 +9,19 @@ class CloudHealthcareSource {
 
   /// Creates a new [CloudHealthcareSource].
   /// [name] Full path of a Cloud Healthcare API resource.
-  CloudHealthcareSource({
-    this.name,
-  });
+  CloudHealthcareSource({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory CloudHealthcareSource.fromMap(Map<String, dynamic> map) {
     return CloudHealthcareSource(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

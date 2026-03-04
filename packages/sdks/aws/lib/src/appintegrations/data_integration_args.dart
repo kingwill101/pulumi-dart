@@ -10,16 +10,22 @@ import 'data_integration_schedule_config.dart';
 class DataIntegrationArgs {
   /// Specifies the description of the Data Integration.
   final pulumi.Input<String>? description;
+
   /// Specifies the KMS key Amazon Resource Name (ARN) for the Data Integration.
   final pulumi.Input<String> kmsKey;
+
   /// Specifies the name of the Data Integration.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
   final pulumi.Input<DataIntegrationScheduleConfig> scheduleConfig;
+
   /// Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   final pulumi.Input<String> sourceUri;
+
   /// Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,7 +53,11 @@ class DataIntegrationArgs {
       'kmsKey': kmsKey,
       'name': ?name,
       'region': ?region,
-      'scheduleConfig': pulumi.Input.mapInputValue<DataIntegrationScheduleConfig, Map<String, dynamic>>(scheduleConfig, (value) => value.toMap()),
+      'scheduleConfig':
+          pulumi.Input.mapInputValue<
+            DataIntegrationScheduleConfig,
+            Map<String, dynamic>
+          >(scheduleConfig, (value) => value.toMap()),
       'sourceUri': sourceUri,
       'tags': ?tags,
     };
@@ -55,14 +65,35 @@ class DataIntegrationArgs {
 
   factory DataIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return DataIntegrationArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      kmsKey: (map['kmsKey'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scheduleConfig: (DataIntegrationScheduleConfig.fromMap((map['scheduleConfig']! as Map).cast<String, dynamic>())).input(),
-      sourceUri: (map['sourceUri'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleConfig: pulumi.Input.fromValue(
+        DataIntegrationScheduleConfig.fromMap(
+          (map['scheduleConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sourceUri: pulumi.Input.fromValue(map['sourceUri'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

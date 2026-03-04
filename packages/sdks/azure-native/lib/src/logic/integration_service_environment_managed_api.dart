@@ -145,38 +145,60 @@ import 'resource_reference_response.dart';
 class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResource {
   /// The API definition.
   late final pulumi.Output<String> apiDefinitionUrl;
+
   /// The api definitions.
   late final pulumi.Output<ApiResourceDefinitionsResponse> apiDefinitions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The backend service.
   late final pulumi.Output<ApiResourceBackendServiceResponse> backendService;
+
   /// The capabilities.
   late final pulumi.Output<List<String>> capabilities;
+
   /// The category.
   late final pulumi.Output<String> category;
+
   /// The connection parameters.
   late final pulumi.Output<Map<String, dynamic>> connectionParameters;
+
   /// The integration service environment managed api deployment parameters.
-  late final pulumi.Output<IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?> deploymentParameters;
+  late final pulumi.Output<
+    IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?
+  >
+  deploymentParameters;
+
   /// The api general information.
-  late final pulumi.Output<ApiResourceGeneralInformationResponse> generalInformation;
+  late final pulumi.Output<ApiResourceGeneralInformationResponse>
+  generalInformation;
+
   /// The integration service environment reference.
-  late final pulumi.Output<ResourceReferenceResponse?> integrationServiceEnvironment;
+  late final pulumi.Output<ResourceReferenceResponse?>
+  integrationServiceEnvironment;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The metadata.
   late final pulumi.Output<ApiResourceMetadataResponse> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The policies for the API.
   late final pulumi.Output<ApiResourcePoliciesResponse> policies;
+
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The runtime urls.
   late final pulumi.Output<List<String>> runtimeUrls;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -189,28 +211,41 @@ class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResource {
     IntegrationServiceEnvironmentManagedApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationServiceEnvironmentManagedApi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiDefinitionUrl = registerOutput<String>('apiDefinitionUrl');
-    this.apiDefinitions = registerOutput<ApiResourceDefinitionsResponse>('apiDefinitions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backendService = registerOutput<ApiResourceBackendServiceResponse>('backendService');
-    this.capabilities = registerOutput<List<String>>('capabilities');
-    this.category = registerOutput<String>('category');
-    this.connectionParameters = registerOutput<Map<String, dynamic>>('connectionParameters');
-    this.deploymentParameters = registerOutput<IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?>('deploymentParameters');
-    this.generalInformation = registerOutput<ApiResourceGeneralInformationResponse>('generalInformation');
-    this.integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>('integrationServiceEnvironment');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<ApiResourceMetadataResponse>('metadata');
+         'azure-native:logic:IntegrationServiceEnvironmentManagedApi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiDefinitionUrl = registerOutput<String>('apiDefinitionUrl');
+    apiDefinitions = registerOutput<ApiResourceDefinitionsResponse>(
+      'apiDefinitions',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backendService = registerOutput<ApiResourceBackendServiceResponse>(
+      'backendService',
+    );
+    capabilities = registerOutput<List<String>>('capabilities');
+    category = registerOutput<String>('category');
+    connectionParameters = registerOutput<Map<String, dynamic>>(
+      'connectionParameters',
+    );
+    deploymentParameters =
+        registerOutput<
+          IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?
+        >('deploymentParameters');
+    generalInformation = registerOutput<ApiResourceGeneralInformationResponse>(
+      'generalInformation',
+    );
+    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
+      'integrationServiceEnvironment',
+    );
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<ApiResourceMetadataResponse>('metadata');
     this.name = registerOutput<String>('name');
-    this.policies = registerOutput<ApiResourcePoliciesResponse>('policies');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.runtimeUrls = registerOutput<List<String>>('runtimeUrls');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    policies = registerOutput<ApiResourcePoliciesResponse>('policies');
+    provisioningState = registerOutput<String>('provisioningState');
+    runtimeUrls = registerOutput<List<String>>('runtimeUrls');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

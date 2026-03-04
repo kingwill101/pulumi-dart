@@ -8,20 +8,17 @@ class GetOrganizationApiKeyResult {
 
   /// Creates a new [GetOrganizationApiKeyResult].
   /// [properties] Required.
-  GetOrganizationApiKeyResult({
-    required this.properties,
-  });
+  GetOrganizationApiKeyResult({required this.properties});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
   factory GetOrganizationApiKeyResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationApiKeyResult(
-      properties: UserApiKeyResponsePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: UserApiKeyResponsePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

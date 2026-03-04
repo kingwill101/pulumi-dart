@@ -3,16 +3,15 @@ enum ElasticRootAccess {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ElasticRootAccess(this.value);
-  final String value;
+  const ElasticRootAccess(this.wireValue);
+  final String wireValue;
 
   static ElasticRootAccess fromValue(String value) {
     for (final item in ElasticRootAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticRootAccess value: $value');
   }
 }
-

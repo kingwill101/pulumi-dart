@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostGroupState {
   /// Specify the New Host Group of Notes, Supports up to 500 Characters.
   final pulumi.Input<String>? comment;
+
   /// Host Group ID.
   final pulumi.Input<String>? hostGroupId;
+
   /// Specify the New Host Group Name, Supports up to 128 Characters.
   final pulumi.Input<String>? hostGroupName;
+
   /// Specify the New Host Group Where the Bastion Host ID of.
   final pulumi.Input<String>? instanceId;
 
@@ -36,11 +39,26 @@ class HostGroupState {
 
   factory HostGroupState.fromMap(Map<String, dynamic> map) {
     return HostGroupState(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
-      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostGroupId: (() {
+        final guardedValue = map['hostGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostGroupName: (() {
+        final guardedValue = map['hostGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

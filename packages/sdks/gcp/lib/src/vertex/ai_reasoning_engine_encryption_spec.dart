@@ -12,20 +12,15 @@ class AiReasoningEngineEncryptionSpec {
 
   /// Creates a new [AiReasoningEngineEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed
-  AiReasoningEngineEncryptionSpec({
-    required this.kmsKeyName,
-  });
+  AiReasoningEngineEncryptionSpec({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
   factory AiReasoningEngineEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineEncryptionSpec(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyAttachmentArgs {
   /// The name of the policy.
   final pulumi.Input<String> policyName;
+
   /// Permission policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
   final pulumi.Input<String> policyType;
+
   /// The name of the RAM user.
   final pulumi.Input<String> userName;
 
@@ -36,10 +38,9 @@ class UserPolicyAttachmentArgs {
 
   factory UserPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentArgs(
-      policyName: (map['policyName'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

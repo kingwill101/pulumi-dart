@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_facebook_args.dart';
-import 'channel_facebook_page.dart';
 import 'channel_facebook_state.dart';
 
 /// Manages a Facebook integration for a Bot Channel
 ///
-/// > **Note:** A bot can only have a single Facebook Channel associated with it.
+/// &gt; **Note:** A bot can only have a single Facebook Channel associated with it.
 ///
 /// ## Example Usage
 ///
@@ -262,14 +261,19 @@ import 'channel_facebook_state.dart';
 class ChannelFacebook extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// The Facebook Application ID for the Facebook Channel.
   late final pulumi.Output<String> facebookApplicationId;
+
   /// The Facebook Application Secret for the Facebook Channel.
   late final pulumi.Output<String> facebookApplicationSecret;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// One or more `page` blocks as defined below.
-  late final pulumi.Output<List<ChannelFacebookPage>> pages;
+  late final pulumi.Output<List<Map<String, dynamic>>> pages;
+
   /// The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -282,17 +286,19 @@ class ChannelFacebook extends pulumi.CustomResource {
     ChannelFacebookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelFacebook:ChannelFacebook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.facebookApplicationId = registerOutput<String>('facebookApplicationId');
-    this.facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret');
-    this.location = registerOutput<String>('location');
-    this.pages = registerOutput<List<ChannelFacebookPage>>('pages');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelFacebook:ChannelFacebook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    facebookApplicationId = registerOutput<String>('facebookApplicationId');
+    facebookApplicationSecret = registerOutput<String>(
+      'facebookApplicationSecret',
+    );
+    location = registerOutput<String>('location');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ChannelFacebook] resource's state with the given [name] and [id].
@@ -313,16 +319,18 @@ class ChannelFacebook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelFacebook:ChannelFacebook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.facebookApplicationId = registerOutput<String>('facebookApplicationId');
-    this.facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret');
-    this.location = registerOutput<String>('location');
-    this.pages = registerOutput<List<ChannelFacebookPage>>('pages');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelFacebook:ChannelFacebook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    facebookApplicationId = registerOutput<String>('facebookApplicationId');
+    facebookApplicationSecret = registerOutput<String>(
+      'facebookApplicationSecret',
+    );
+    location = registerOutput<String>('location');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

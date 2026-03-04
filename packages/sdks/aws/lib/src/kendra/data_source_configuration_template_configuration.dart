@@ -8,20 +8,17 @@ class DataSourceConfigurationTemplateConfiguration {
 
   /// Creates a new [DataSourceConfigurationTemplateConfiguration].
   /// [template] JSON string containing a [data source template schema](https://docs.aws.amazon.com/kendra/latest/dg/ds-schemas.html).
-  DataSourceConfigurationTemplateConfiguration({
-    required this.template,
-  });
+  DataSourceConfigurationTemplateConfiguration({required this.template});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'template': template,
-    };
+    return <String, dynamic>{'template': template};
   }
 
-  factory DataSourceConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataSourceConfigurationTemplateConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceConfigurationTemplateConfiguration(
-      template: (map['template'] as String).input(),
+      template: pulumi.Input.fromValue(map['template'] as String),
     );
   }
 }
-

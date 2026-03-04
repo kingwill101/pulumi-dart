@@ -408,37 +408,52 @@ import 'bucket_object_state.dart';
 class BucketObject extends pulumi.CustomResource {
   /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
   late final pulumi.Output<String?> acl;
+
   /// The name of the bucket to put the file in.
   late final pulumi.Output<String> bucket;
+
   /// Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
   late final pulumi.Output<String?> cacheControl;
+
   /// The literal content being uploaded to the bucket.
   late final pulumi.Output<String?> content;
+
   /// Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
   late final pulumi.Output<String?> contentDisposition;
+
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
   late final pulumi.Output<String?> contentEncoding;
+
   /// the content length of request.
   late final pulumi.Output<String> contentLength;
+
   /// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
   late final pulumi.Output<String?> contentMd5;
+
   /// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
   late final pulumi.Output<String> contentType;
+
   /// the ETag generated for the object (an MD5 sum of the object content).
   late final pulumi.Output<String> etag;
+
   /// Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
   late final pulumi.Output<String?> expires;
+
   /// The name of the object once it is in the bucket.
   late final pulumi.Output<String> key;
+
   /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
   ///
   /// Either `source` or `content` must be provided to specify the bucket content.
   /// These two arguments are mutually-exclusive.
   late final pulumi.Output<String?> kmsKeyId;
+
   /// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
   late final pulumi.Output<String?> serverSideEncryption;
+
   /// The path to the source file being uploaded to the bucket.
   late final pulumi.Output<String?> source;
+
   /// A unique version ID value for the object, if bucket versioning is enabled.
   late final pulumi.Output<String> versionId;
 
@@ -451,27 +466,27 @@ class BucketObject extends pulumi.CustomResource {
     BucketObjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketObject:BucketObject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.bucket = registerOutput<String>('bucket');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<String?>('content');
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLength = registerOutput<String>('contentLength');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String>('contentType');
-    this.etag = registerOutput<String>('etag');
-    this.expires = registerOutput<String?>('expires');
-    this.key = registerOutput<String>('key');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.serverSideEncryption = registerOutput<String?>('serverSideEncryption');
-    this.source = registerOutput<String?>('source');
-    this.versionId = registerOutput<String>('versionId');
+         'alicloud:oss/bucketObject:BucketObject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String?>('content');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLength = registerOutput<String>('contentLength');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String>('contentType');
+    etag = registerOutput<String>('etag');
+    expires = registerOutput<String?>('expires');
+    key = registerOutput<String>('key');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    serverSideEncryption = registerOutput<String?>('serverSideEncryption');
+    source = registerOutput<String?>('source');
+    versionId = registerOutput<String>('versionId');
   }
 
   /// Gets an existing [BucketObject] resource's state with the given [name] and [id].
@@ -492,26 +507,26 @@ class BucketObject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketObject:BucketObject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.bucket = registerOutput<String>('bucket');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<String?>('content');
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLength = registerOutput<String>('contentLength');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String>('contentType');
-    this.etag = registerOutput<String>('etag');
-    this.expires = registerOutput<String?>('expires');
-    this.key = registerOutput<String>('key');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.serverSideEncryption = registerOutput<String?>('serverSideEncryption');
-    this.source = registerOutput<String?>('source');
-    this.versionId = registerOutput<String>('versionId');
+         'alicloud:oss/bucketObject:BucketObject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String?>('content');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLength = registerOutput<String>('contentLength');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String>('contentType');
+    etag = registerOutput<String>('etag');
+    expires = registerOutput<String?>('expires');
+    key = registerOutput<String>('key');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    serverSideEncryption = registerOutput<String?>('serverSideEncryption');
+    source = registerOutput<String?>('source');
+    versionId = registerOutput<String>('versionId');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsBucketLogging {
   /// Bucket for storing access logs.
   final pulumi.Input<String> targetBucket;
+
   /// Prefix of the saved access log file paths.
   final pulumi.Input<String> targetPrefix;
 
@@ -25,9 +26,8 @@ class GetBucketsBucketLogging {
 
   factory GetBucketsBucketLogging.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketLogging(
-      targetBucket: (map['targetBucket'] as String).input(),
-      targetPrefix: (map['targetPrefix'] as String).input(),
+      targetBucket: pulumi.Input.fromValue(map['targetBucket'] as String),
+      targetPrefix: pulumi.Input.fromValue(map['targetPrefix'] as String),
     );
   }
 }
-

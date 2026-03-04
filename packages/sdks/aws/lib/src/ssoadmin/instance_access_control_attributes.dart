@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_access_control_attributes_args.dart';
-import 'instance_access_control_attributes_attribute.dart';
 import 'instance_access_control_attributes_state.dart';
 
 /// Provides a Single Sign-On (SSO) ABAC Resource: https://docs.aws.amazon.com/singlesignon/latest/userguide/abac.html
@@ -227,9 +226,11 @@ import 'instance_access_control_attributes_state.dart';
 /// ```
 class InstanceAccessControlAttributes extends pulumi.CustomResource {
   /// See AccessControlAttribute for more details.
-  late final pulumi.Output<List<InstanceAccessControlAttributesAttribute>> attributes;
+  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+
   /// The Amazon Resource Name (ARN) of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> status;
@@ -244,16 +245,16 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
     InstanceAccessControlAttributesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes');
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.statusReason = registerOutput<String>('statusReason');
+         'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    instanceArn = registerOutput<String>('instanceArn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
   }
 
   /// Gets an existing [InstanceAccessControlAttributes] resource's state with the given [name] and [id].
@@ -274,15 +275,15 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes');
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.statusReason = registerOutput<String>('statusReason');
+         'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    instanceArn = registerOutput<String>('instanceArn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
   }
 }

@@ -3,16 +3,15 @@ enum NetworkOrigin {
   internet("Internet"),
   vPC("VPC");
 
-  const NetworkOrigin(this.value);
-  final String value;
+  const NetworkOrigin(this.wireValue);
+  final String wireValue;
 
   static NetworkOrigin fromValue(String value) {
     for (final item in NetworkOrigin.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkOrigin value: $value');
   }
 }
-

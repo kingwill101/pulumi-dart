@@ -10,6 +10,7 @@ class SettingsAccessSettingsOauthSettings {
   /// since access behavior is managed by IAM policies.
   /// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
   final pulumi.Input<String>? loginHint;
+
   /// List of client ids allowed to use IAP programmatically.
   final pulumi.Input<List<String>>? programmaticClients;
 
@@ -28,11 +29,20 @@ class SettingsAccessSettingsOauthSettings {
     };
   }
 
-  factory SettingsAccessSettingsOauthSettings.fromMap(Map<String, dynamic> map) {
+  factory SettingsAccessSettingsOauthSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsAccessSettingsOauthSettings(
-      loginHint: map['loginHint'] == null ? null : (map['loginHint']! as String).input(),
-      programmaticClients: map['programmaticClients'] == null ? null : ((map['programmaticClients']! as List).cast<String>()).input(),
+      loginHint: (() {
+        final guardedValue = map['loginHint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      programmaticClients: (() {
+        final guardedValue = map['programmaticClients'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

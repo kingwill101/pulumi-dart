@@ -4,16 +4,15 @@ enum RatePlanRevenueShareType {
   fixed("FIXED"),
   volumeBanded("VOLUME_BANDED");
 
-  const RatePlanRevenueShareType(this.value);
-  final String value;
+  const RatePlanRevenueShareType(this.wireValue);
+  final String wireValue;
 
   static RatePlanRevenueShareType fromValue(String value) {
     for (final item in RatePlanRevenueShareType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RatePlanRevenueShareType value: $value');
   }
 }
-

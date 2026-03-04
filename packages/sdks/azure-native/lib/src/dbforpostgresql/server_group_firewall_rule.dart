@@ -147,16 +147,22 @@ import 'system_data_response.dart';
 class ServerGroupFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The end IP address of the cluster firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> endIpAddress;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the firewall rule.
   late final pulumi.Output<String> provisioningState;
+
   /// The start IP address of the cluster firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> startIpAddress;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -169,17 +175,17 @@ class ServerGroupFirewallRule extends pulumi.CustomResource {
     ServerGroupFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:ServerGroupFirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure-native:dbforpostgresql:ServerGroupFirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    startIpAddress = registerOutput<String>('startIpAddress');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

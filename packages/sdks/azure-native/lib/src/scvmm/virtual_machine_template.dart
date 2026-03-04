@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'network_interfaces_response.dart';
 import 'system_data_response.dart';
-import 'virtual_disk_response.dart';
 import 'virtual_machine_template_args.dart';
 
 /// The VirtualMachineTemplates resource definition.
@@ -175,52 +173,76 @@ import 'virtual_machine_template_args.dart';
 class VirtualMachineTemplate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets computer name.
   late final pulumi.Output<String> computerName;
+
   /// Gets or sets the desired number of vCPUs for the vm.
   late final pulumi.Output<int> cpuCount;
+
   /// Gets or sets the disks of the template.
-  late final pulumi.Output<List<VirtualDiskResponse>> disks;
+  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+
   /// Gets or sets a value indicating whether to enable dynamic memory or not.
   late final pulumi.Output<String> dynamicMemoryEnabled;
+
   /// Gets or sets the max dynamic memory for the vm.
   late final pulumi.Output<int> dynamicMemoryMaxMB;
+
   /// Gets or sets the min dynamic memory for the vm.
   late final pulumi.Output<int> dynamicMemoryMinMB;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Gets or sets the generation for the vm.
   late final pulumi.Output<int> generation;
+
   /// Gets or sets the inventory Item ID for the resource.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Gets or sets a value indicating whether the vm template is customizable or not.
   late final pulumi.Output<String> isCustomizable;
+
   /// Gets highly available property.
   late final pulumi.Output<String> isHighlyAvailable;
+
   /// Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
   late final pulumi.Output<String> limitCpuForMigration;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// MemoryMB is the desired size of a virtual machine's memory, in MB.
   late final pulumi.Output<int> memoryMB;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Gets or sets the network interfaces of the template.
-  late final pulumi.Output<List<NetworkInterfacesResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// Gets or sets os name.
   late final pulumi.Output<String> osName;
+
   /// Gets or sets the type of the os.
   late final pulumi.Output<String> osType;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// Unique ID of the virtual machine template.
   late final pulumi.Output<String?> uuid;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -233,35 +255,39 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     VirtualMachineTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scvmm:VirtualMachineTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.computerName = registerOutput<String>('computerName');
-    this.cpuCount = registerOutput<int>('cpuCount');
-    this.disks = registerOutput<List<VirtualDiskResponse>>('disks');
-    this.dynamicMemoryEnabled = registerOutput<String>('dynamicMemoryEnabled');
-    this.dynamicMemoryMaxMB = registerOutput<int>('dynamicMemoryMaxMB');
-    this.dynamicMemoryMinMB = registerOutput<int>('dynamicMemoryMinMB');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.generation = registerOutput<int>('generation');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.isCustomizable = registerOutput<String>('isCustomizable');
-    this.isHighlyAvailable = registerOutput<String>('isHighlyAvailable');
-    this.limitCpuForMigration = registerOutput<String>('limitCpuForMigration');
-    this.location = registerOutput<String>('location');
-    this.memoryMB = registerOutput<int>('memoryMB');
+         'azure-native:scvmm:VirtualMachineTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computerName = registerOutput<String>('computerName');
+    cpuCount = registerOutput<int>('cpuCount');
+    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    dynamicMemoryEnabled = registerOutput<String>('dynamicMemoryEnabled');
+    dynamicMemoryMaxMB = registerOutput<int>('dynamicMemoryMaxMB');
+    dynamicMemoryMinMB = registerOutput<int>('dynamicMemoryMinMB');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    generation = registerOutput<int>('generation');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    isCustomizable = registerOutput<String>('isCustomizable');
+    isHighlyAvailable = registerOutput<String>('isHighlyAvailable');
+    limitCpuForMigration = registerOutput<String>('limitCpuForMigration');
+    location = registerOutput<String>('location');
+    memoryMB = registerOutput<int>('memoryMB');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfacesResponse>>('networkInterfaces');
-    this.osName = registerOutput<String>('osName');
-    this.osType = registerOutput<String>('osType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vmmServerId = registerOutput<String?>('vmmServerId');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    osName = registerOutput<String>('osName');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmmServerId = registerOutput<String?>('vmmServerId');
   }
 }

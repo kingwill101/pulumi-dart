@@ -138,14 +138,18 @@ import 'web_app_scm_allowed_slot_args.dart';
 /// $ pulumi import azure-native:web:WebAppScmAllowedSlot myresource1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm
 /// ```
 class WebAppScmAllowedSlot extends pulumi.CustomResource {
-  /// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+  /// &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> allow;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -158,15 +162,15 @@ class WebAppScmAllowedSlot extends pulumi.CustomResource {
     WebAppScmAllowedSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppScmAllowedSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allow = registerOutput<bool>('allow');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppScmAllowedSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allow = registerOutput<bool>('allow');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

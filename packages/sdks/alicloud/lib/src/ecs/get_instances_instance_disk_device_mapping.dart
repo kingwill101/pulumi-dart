@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceDiskDeviceMapping {
   /// Cloud disk category.
   final pulumi.Input<String> category;
+
   /// Device information of the created disk: such as /dev/xvdb.
   final pulumi.Input<String> device;
+
   /// The ID of the Disk.
   final pulumi.Input<String> diskId;
+
   /// The name of the Disk.
   final pulumi.Input<String> diskName;
+
   /// Size of the created disk.
   final pulumi.Input<int> size;
+
   /// Cloud disk type: system disk or data disk.
   final pulumi.Input<String> type;
 
@@ -43,15 +48,16 @@ class GetInstancesInstanceDiskDeviceMapping {
     };
   }
 
-  factory GetInstancesInstanceDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
+  factory GetInstancesInstanceDiskDeviceMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstancesInstanceDiskDeviceMapping(
-      category: (map['category'] as String).input(),
-      device: (map['device'] as String).input(),
-      diskId: (map['diskId'] as String).input(),
-      diskName: (map['diskName'] as String).input(),
-      size: (map['size'] as int).input(),
-      type: (map['type'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      device: pulumi.Input.fromValue(map['device'] as String),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      diskName: pulumi.Input.fromValue(map['diskName'] as String),
+      size: pulumi.Input.fromValue(map['size'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

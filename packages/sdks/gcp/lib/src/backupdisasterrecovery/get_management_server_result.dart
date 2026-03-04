@@ -40,9 +40,17 @@ class GetManagementServerResult {
     return <String, dynamic>{
       'id': id,
       'location': location,
-      'managementUris': pulumi.Input.encodeList<GetManagementServerManagementUri, Map<String, dynamic>>(managementUris, (value) => value.toMap()),
+      'managementUris':
+          pulumi.Input.encodeList<
+            GetManagementServerManagementUri,
+            Map<String, dynamic>
+          >(managementUris, (value) => value.toMap()),
       'name': name,
-      'networks': pulumi.Input.encodeList<GetManagementServerNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'networks':
+          pulumi.Input.encodeList<
+            GetManagementServerNetwork,
+            Map<String, dynamic>
+          >(networks, (value) => value.toMap()),
       'oauth2ClientId': oauth2ClientId,
       'project': project,
       'type': type,
@@ -53,13 +61,22 @@ class GetManagementServerResult {
     return GetManagementServerResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(map['managementUris'], (value) => GetManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())),
+      managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(
+        map['managementUris']!,
+        (value) => GetManagementServerManagementUri.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
-      networks: pulumi.Input.decodeList<GetManagementServerNetwork>(map['networks'], (value) => GetManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      networks: pulumi.Input.decodeList<GetManagementServerNetwork>(
+        map['networks']!,
+        (value) => GetManagementServerNetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       oauth2ClientId: map['oauth2ClientId'] as String,
       project: map['project'] as String,
       type: map['type'] as String,
     );
   }
 }
-

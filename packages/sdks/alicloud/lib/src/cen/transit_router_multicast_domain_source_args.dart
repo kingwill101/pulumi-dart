@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterMulticastDomainSourceArgs {
   /// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
   final pulumi.Input<String> groupIpAddress;
+
   /// ENI ID of the multicast source.
   final pulumi.Input<String> networkInterfaceId;
+
   /// The ID of the multicast domain to which the multicast source belongs.
   final pulumi.Input<String> transitRouterMulticastDomainId;
+
   /// The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
   final pulumi.Input<String>? vpcId;
 
@@ -37,13 +40,22 @@ class TransitRouterMulticastDomainSourceArgs {
     };
   }
 
-  factory TransitRouterMulticastDomainSourceArgs.fromMap(Map<String, dynamic> map) {
+  factory TransitRouterMulticastDomainSourceArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitRouterMulticastDomainSourceArgs(
-      groupIpAddress: (map['groupIpAddress'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      groupIpAddress: pulumi.Input.fromValue(map['groupIpAddress'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainId'] as String,
+      ),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

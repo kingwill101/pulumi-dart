@@ -6,54 +6,79 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DevEndpointState {
   /// A map of arguments used to configure the endpoint.
   final pulumi.Input<Map<String, String>>? arguments;
+
   /// The ARN of the endpoint.
   final pulumi.Input<String>? arn;
+
   /// The AWS availability zone where this endpoint is located.
   final pulumi.Input<String>? availabilityZone;
+
   /// Path to one or more Java Jars in an S3 bucket that should be loaded in this endpoint.
   final pulumi.Input<String>? extraJarsS3Path;
+
   /// Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma.
   final pulumi.Input<String>? extraPythonLibsS3Path;
+
   /// The reason for a current failure in this endpoint.
   final pulumi.Input<String>? failureReason;
+
   /// Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
   final pulumi.Input<String>? glueVersion;
+
   /// The name of this endpoint. It must be unique in your account.
   final pulumi.Input<String>? name;
+
   /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
   final pulumi.Input<int>? numberOfNodes;
+
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   final pulumi.Input<int>? numberOfWorkers;
+
   /// A private IP address to access the endpoint within a VPC, if this endpoint is created within one.
   final pulumi.Input<String>? privateAddress;
+
   /// The public IP address used by this endpoint. The PublicAddress field is present only when you create a non-VPC endpoint.
   final pulumi.Input<String>? publicAddress;
+
   /// The public key to be used by this endpoint for authentication.
   final pulumi.Input<String>? publicKey;
+
   /// A list of public keys to be used by this endpoint for authentication.
   final pulumi.Input<List<String>>? publicKeys;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IAM role for this endpoint.
   final pulumi.Input<String>? roleArn;
+
   /// The name of the Security Configuration structure to be used with this endpoint.
   final pulumi.Input<String>? securityConfiguration;
+
   /// Security group IDs for the security groups to be used by this endpoint.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// The current status of this endpoint.
   final pulumi.Input<String>? status;
+
   /// The subnet ID for the new endpoint to use.
   final pulumi.Input<String>? subnetId;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// he ID of the VPC used by this endpoint.
   final pulumi.Input<String>? vpcId;
+
   /// The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
   final pulumi.Input<String>? workerType;
+
   /// The YARN endpoint address used by this endpoint.
   final pulumi.Input<String>? yarnEndpointAddress;
+
   /// The Apache Zeppelin port for the remote Apache Spark interpreter.
   final pulumi.Input<int>? zeppelinRemoteSparkInterpreterPort;
 
@@ -146,33 +171,142 @@ class DevEndpointState {
 
   factory DevEndpointState.fromMap(Map<String, dynamic> map) {
     return DevEndpointState(
-      arguments: map['arguments'] == null ? null : (((map['arguments'] as Map).cast<String, String>()).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      extraJarsS3Path: map['extraJarsS3Path'] == null ? null : ((map['extraJarsS3Path'] as String).input()).input(),
-      extraPythonLibsS3Path: map['extraPythonLibsS3Path'] == null ? null : ((map['extraPythonLibsS3Path'] as String).input()).input(),
-      failureReason: map['failureReason'] == null ? null : ((map['failureReason'] as String).input()).input(),
-      glueVersion: map['glueVersion'] == null ? null : ((map['glueVersion'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      numberOfNodes: map['numberOfNodes'] == null ? null : ((map['numberOfNodes'] as int).input()).input(),
-      numberOfWorkers: map['numberOfWorkers'] == null ? null : ((map['numberOfWorkers'] as int).input()).input(),
-      privateAddress: map['privateAddress'] == null ? null : ((map['privateAddress'] as String).input()).input(),
-      publicAddress: map['publicAddress'] == null ? null : ((map['publicAddress'] as String).input()).input(),
-      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
-      publicKeys: map['publicKeys'] == null ? null : (((map['publicKeys'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      securityConfiguration: map['securityConfiguration'] == null ? null : ((map['securityConfiguration'] as String).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
-      workerType: map['workerType'] == null ? null : ((map['workerType'] as String).input()).input(),
-      yarnEndpointAddress: map['yarnEndpointAddress'] == null ? null : ((map['yarnEndpointAddress'] as String).input()).input(),
-      zeppelinRemoteSparkInterpreterPort: map['zeppelinRemoteSparkInterpreterPort'] == null ? null : ((map['zeppelinRemoteSparkInterpreterPort'] as int).input()).input(),
+      arguments: (() {
+        final guardedValue = map['arguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extraJarsS3Path: (() {
+        final guardedValue = map['extraJarsS3Path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extraPythonLibsS3Path: (() {
+        final guardedValue = map['extraPythonLibsS3Path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failureReason: (() {
+        final guardedValue = map['failureReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      glueVersion: (() {
+        final guardedValue = map['glueVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfNodes: (() {
+        final guardedValue = map['numberOfNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      numberOfWorkers: (() {
+        final guardedValue = map['numberOfWorkers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      privateAddress: (() {
+        final guardedValue = map['privateAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicAddress: (() {
+        final guardedValue = map['publicAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKeys: (() {
+        final guardedValue = map['publicKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityConfiguration: (() {
+        final guardedValue = map['securityConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workerType: (() {
+        final guardedValue = map['workerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      yarnEndpointAddress: (() {
+        final guardedValue = map['yarnEndpointAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zeppelinRemoteSparkInterpreterPort: (() {
+        final guardedValue = map['zeppelinRemoteSparkInterpreterPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

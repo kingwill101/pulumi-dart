@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
   /// If true, the builder claims that invocation.environment is complete.
   final pulumi.Input<bool>? environment;
+
   /// If true, the builder claims that materials is complete.
   final pulumi.Input<bool>? materials;
+
   /// If true, the builder claims that invocation.parameters is complete.
   final pulumi.Input<bool>? parameters;
 
@@ -29,12 +31,25 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletene
     };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness(
-      environment: map['environment'] == null ? null : (map['environment']! as bool).input(),
-      materials: map['materials'] == null ? null : (map['materials']! as bool).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as bool).input(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      materials: (() {
+        final guardedValue = map['materials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

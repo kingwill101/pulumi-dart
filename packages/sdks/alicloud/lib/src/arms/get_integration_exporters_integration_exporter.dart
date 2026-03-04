@@ -5,27 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationExportersIntegrationExporter {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
+
   /// Integration Exporter Type.
   final pulumi.Input<String> exporterType;
-  /// The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+
+  /// The ID of the Integration Exporter. It formats as `&lt;cluster_id&gt;:&lt;integration_type&gt;:&lt;instance_id&gt;`.
   final pulumi.Input<String> id;
+
   /// The ID of the Integration Exporter instance.
   final pulumi.Input<int> instanceId;
+
   /// The name of the instance.
   final pulumi.Input<String> instanceName;
+
   /// The type of prometheus integration.
   final pulumi.Input<String> integrationType;
+
   /// Exporter configuration parameter json string.
   final pulumi.Input<String> param;
+
   /// Monitor the target address.
   final pulumi.Input<String> target;
+
   /// The version information.
   final pulumi.Input<String> version;
 
   /// Creates a new [GetIntegrationExportersIntegrationExporter].
   /// [clusterId] The ID of the Prometheus instance.
   /// [exporterType] Integration Exporter Type.
-  /// [id] The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+  /// [id] The ID of the Integration Exporter. It formats as `&lt;cluster_id&gt;:&lt;integration_type&gt;:&lt;instance_id&gt;`.
   /// [instanceId] The ID of the Integration Exporter instance.
   /// [instanceName] The name of the instance.
   /// [integrationType] The type of prometheus integration.
@@ -58,18 +66,19 @@ class GetIntegrationExportersIntegrationExporter {
     };
   }
 
-  factory GetIntegrationExportersIntegrationExporter.fromMap(Map<String, dynamic> map) {
+  factory GetIntegrationExportersIntegrationExporter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIntegrationExportersIntegrationExporter(
-      clusterId: (map['clusterId'] as String).input(),
-      exporterType: (map['exporterType'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as int).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      integrationType: (map['integrationType'] as String).input(),
-      param: (map['param'] as String).input(),
-      target: (map['target'] as String).input(),
-      version: (map['version'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      exporterType: pulumi.Input.fromValue(map['exporterType'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as int),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      integrationType: pulumi.Input.fromValue(map['integrationType'] as String),
+      param: pulumi.Input.fromValue(map['param'] as String),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

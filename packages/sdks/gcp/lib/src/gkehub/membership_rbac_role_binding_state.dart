@@ -9,20 +9,19 @@ class MembershipRbacRoleBindingState {
 
   /// Creates a new [MembershipRbacRoleBindingState].
   /// [code] (Output)
-  MembershipRbacRoleBindingState({
-    this.code,
-  });
+  MembershipRbacRoleBindingState({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
   factory MembershipRbacRoleBindingState.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingState(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

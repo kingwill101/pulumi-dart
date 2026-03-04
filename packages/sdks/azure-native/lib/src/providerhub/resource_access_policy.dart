@@ -4,16 +4,15 @@ enum ResourceAccessPolicy {
   valueAcisReadAllowed("AcisReadAllowed"),
   valueAcisActionAllowed("AcisActionAllowed");
 
-  const ResourceAccessPolicy(this.value);
-  final String value;
+  const ResourceAccessPolicy(this.wireValue);
+  final String wireValue;
 
   static ResourceAccessPolicy fromValue(String value) {
     for (final item in ResourceAccessPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceAccessPolicy value: $value');
   }
 }
-

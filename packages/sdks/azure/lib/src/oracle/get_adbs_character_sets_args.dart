@@ -12,20 +12,15 @@ class GetAdbsCharacterSetsArgs {
 
   /// Creates a new [GetAdbsCharacterSetsArgs].
   /// [location] The Azure Region to query for the character sets in.
-  GetAdbsCharacterSetsArgs({
-    required this.location,
-  });
+  GetAdbsCharacterSetsArgs({required this.location});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-    };
+    return <String, dynamic>{'location': location};
   }
 
   factory GetAdbsCharacterSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetAdbsCharacterSetsArgs(
-      location: (map['location'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum VaultType {
   valueExisting("Existing"),
   valueNew("New");
 
-  const VaultType(this.value);
-  final String value;
+  const VaultType(this.wireValue);
+  final String wireValue;
 
   static VaultType fromValue(String value) {
     for (final item in VaultType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VaultType value: $value');
   }
 }
-

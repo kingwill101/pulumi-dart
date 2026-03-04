@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnrollmentAccountScopeArgs {
   /// The Billing Account Name of the Enterprise Account.
   final pulumi.Input<String> billingAccountName;
+
   /// The Enrollment Account Name in the above Enterprise Account.
   final pulumi.Input<String> enrollmentAccountName;
 
@@ -29,9 +30,12 @@ class GetEnrollmentAccountScopeArgs {
 
   factory GetEnrollmentAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetEnrollmentAccountScopeArgs(
-      billingAccountName: (map['billingAccountName'] as String).input(),
-      enrollmentAccountName: (map['enrollmentAccountName'] as String).input(),
+      billingAccountName: pulumi.Input.fromValue(
+        map['billingAccountName'] as String,
+      ),
+      enrollmentAccountName: pulumi.Input.fromValue(
+        map['enrollmentAccountName'] as String,
+      ),
     );
   }
 }
-

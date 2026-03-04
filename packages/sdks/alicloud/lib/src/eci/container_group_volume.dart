@@ -5,26 +5,39 @@ import 'container_group_volume_config_file_volume_config_file_to_path.dart';
 
 class ContainerGroupVolume {
   /// The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
-  /// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
-  final pulumi.Input<List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>>? configFileVolumeConfigFileToPaths;
+  /// &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
+  final pulumi.Input<
+    List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>
+  >?
+  configFileVolumeConfigFileToPaths;
+
   /// The ID of DiskVolume.
   final pulumi.Input<String>? diskVolumeDiskId;
+
   /// The system type of DiskVolume.
   final pulumi.Input<String>? diskVolumeFsType;
+
   /// The name of the FlexVolume driver.
   final pulumi.Input<String>? flexVolumeDriver;
+
   /// The type of the mounted file system. The default value is determined by the script of FlexVolume.
   final pulumi.Input<String>? flexVolumeFsType;
+
   /// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
   final pulumi.Input<String>? flexVolumeOptions;
+
   /// The name of the volume.
   final pulumi.Input<String>? name;
+
   /// The path to the NFS volume.
   final pulumi.Input<String>? nfsVolumePath;
+
   /// The nfs volume read only. Default value: `false`.
   final pulumi.Input<bool>? nfsVolumeReadOnly;
+
   /// The address of the NFS server.
   final pulumi.Input<String>? nfsVolumeServer;
+
   /// The type of the volume.
   final pulumi.Input<String>? type;
 
@@ -56,7 +69,18 @@ class ContainerGroupVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configFileVolumeConfigFileToPaths': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>, List<Map<String, dynamic>>>(configFileVolumeConfigFileToPaths, (value) => pulumi.Input.encodeList<ContainerGroupVolumeConfigFileVolumeConfigFileToPath, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configFileVolumeConfigFileToPaths':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>,
+            List<Map<String, dynamic>>
+          >(
+            configFileVolumeConfigFileToPaths,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContainerGroupVolumeConfigFileVolumeConfigFileToPath,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'diskVolumeDiskId': ?diskVolumeDiskId,
       'diskVolumeFsType': ?diskVolumeFsType,
       'flexVolumeDriver': ?flexVolumeDriver,
@@ -72,18 +96,71 @@ class ContainerGroupVolume {
 
   factory ContainerGroupVolume.fromMap(Map<String, dynamic> map) {
     return ContainerGroupVolume(
-      configFileVolumeConfigFileToPaths: map['configFileVolumeConfigFileToPaths'] == null ? null : (pulumi.Input.decodeList<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>(map['configFileVolumeConfigFileToPaths']!, (value) => ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskVolumeDiskId: map['diskVolumeDiskId'] == null ? null : (map['diskVolumeDiskId']! as String).input(),
-      diskVolumeFsType: map['diskVolumeFsType'] == null ? null : (map['diskVolumeFsType']! as String).input(),
-      flexVolumeDriver: map['flexVolumeDriver'] == null ? null : (map['flexVolumeDriver']! as String).input(),
-      flexVolumeFsType: map['flexVolumeFsType'] == null ? null : (map['flexVolumeFsType']! as String).input(),
-      flexVolumeOptions: map['flexVolumeOptions'] == null ? null : (map['flexVolumeOptions']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nfsVolumePath: map['nfsVolumePath'] == null ? null : (map['nfsVolumePath']! as String).input(),
-      nfsVolumeReadOnly: map['nfsVolumeReadOnly'] == null ? null : (map['nfsVolumeReadOnly']! as bool).input(),
-      nfsVolumeServer: map['nfsVolumeServer'] == null ? null : (map['nfsVolumeServer']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      configFileVolumeConfigFileToPaths: (() {
+        final guardedValue = map['configFileVolumeConfigFileToPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ContainerGroupVolumeConfigFileVolumeConfigFileToPath
+          >(
+            guardedValue,
+            (value) =>
+                ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      diskVolumeDiskId: (() {
+        final guardedValue = map['diskVolumeDiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskVolumeFsType: (() {
+        final guardedValue = map['diskVolumeFsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flexVolumeDriver: (() {
+        final guardedValue = map['flexVolumeDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flexVolumeFsType: (() {
+        final guardedValue = map['flexVolumeFsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flexVolumeOptions: (() {
+        final guardedValue = map['flexVolumeOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfsVolumePath: (() {
+        final guardedValue = map['nfsVolumePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfsVolumeReadOnly: (() {
+        final guardedValue = map['nfsVolumeReadOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nfsVolumeServer: (() {
+        final guardedValue = map['nfsVolumeServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

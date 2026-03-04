@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'afdtarget_group_args.dart';
 import 'system_data_response.dart';
-import 'target_endpoint_response.dart';
 
 /// AFDTargetGroup comprises a list of Endpoints that is used for tunnelling protocols to allow certain traffic.
 ///
@@ -227,14 +226,19 @@ class AFDTargetGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// TargetEndpoint list referenced by this target group.
-  late final pulumi.Output<List<TargetEndpointResponse>> targetEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> targetEndpoints;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -247,17 +251,19 @@ class AFDTargetGroup extends pulumi.CustomResource {
     AFDTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:AFDTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
+         'azure-native:cdn:AFDTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetEndpoints = registerOutput<List<TargetEndpointResponse>>('targetEndpoints');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'targetEndpoints',
+    );
+    type = registerOutput<String>('type');
   }
 }

@@ -462,23 +462,31 @@ import 'workforce_pool_provider_scim_token_state.dart';
 class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
+
   /// The location for the resource.
   late final pulumi.Output<String> location;
+
   /// Identifier. The resource name of the scim token.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
   late final pulumi.Output<String> name;
+
   /// The ID of the Provider.
   late final pulumi.Output<String> providerId;
+
   /// The ID of the SCIM Tenant.
   late final pulumi.Output<String> scimTenantId;
+
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   late final pulumi.Output<String> scimTokenId;
+
   /// The token string provided to the IdP for authentication and will be set only during creation.
   late final pulumi.Output<String> securityToken;
+
   /// The current state of the scim token.
   /// * ACTIVE: The token is active and may be used to provision users and groups.
   /// * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
   late final pulumi.Output<String> state;
+
   /// The ID of the Workforce Pool.
   late final pulumi.Output<String> workforcePoolId;
 
@@ -491,20 +499,20 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     WorkforcePoolProviderScimTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.providerId = registerOutput<String>('providerId');
-    this.scimTenantId = registerOutput<String>('scimTenantId');
-    this.scimTokenId = registerOutput<String>('scimTokenId');
-    this.securityToken = registerOutput<String>('securityToken');
-    this.state = registerOutput<String>('state');
-    this.workforcePoolId = registerOutput<String>('workforcePoolId');
+    providerId = registerOutput<String>('providerId');
+    scimTenantId = registerOutput<String>('scimTenantId');
+    scimTokenId = registerOutput<String>('scimTokenId');
+    securityToken = registerOutput<String>('securityToken');
+    state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 
   /// Gets an existing [WorkforcePoolProviderScimToken] resource's state with the given [name] and [id].
@@ -525,19 +533,19 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.providerId = registerOutput<String>('providerId');
-    this.scimTenantId = registerOutput<String>('scimTenantId');
-    this.scimTokenId = registerOutput<String>('scimTokenId');
-    this.securityToken = registerOutput<String>('securityToken');
+    providerId = registerOutput<String>('providerId');
+    scimTenantId = registerOutput<String>('scimTenantId');
+    scimTokenId = registerOutput<String>('scimTokenId');
+    securityToken = registerOutput<String>('securityToken');
     this.state = registerOutput<String>('state');
-    this.workforcePoolId = registerOutput<String>('workforcePoolId');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

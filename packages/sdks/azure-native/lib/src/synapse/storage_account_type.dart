@@ -3,16 +3,15 @@ enum StorageAccountType {
   valueGRS("GRS"),
   valueLRS("LRS");
 
-  const StorageAccountType(this.value);
-  final String value;
+  const StorageAccountType(this.wireValue);
+  final String wireValue;
 
   static StorageAccountType fromValue(String value) {
     for (final item in StorageAccountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageAccountType value: $value');
   }
 }
-

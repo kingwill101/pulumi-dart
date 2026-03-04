@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityResponse {
   /// Description of Capability
   final pulumi.Input<String> description;
+
   /// Name of Capability
   final pulumi.Input<String> name;
+
   /// State of resource
   final pulumi.Input<String>? state;
 
@@ -31,10 +33,13 @@ class CapabilityResponse {
 
   factory CapabilityResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityResponse(
-      description: (map['description'] as String).input(),
-      name: (map['name'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

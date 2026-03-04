@@ -8,10 +8,13 @@ import 'functions_scale_and_concurrency_response_triggers.dart';
 class FunctionsScaleAndConcurrencyResponse {
   /// 'Always Ready' configuration for the function app.
   final pulumi.Input<List<FunctionsAlwaysReadyConfigResponse>>? alwaysReady;
+
   /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
   final pulumi.Input<int>? instanceMemoryMB;
+
   /// The maximum number of instances for the function app.
   final pulumi.Input<int>? maximumInstanceCount;
+
   /// Scale and concurrency settings for the function app triggers.
   final pulumi.Input<FunctionsScaleAndConcurrencyResponseTriggers>? triggers;
 
@@ -29,20 +32,63 @@ class FunctionsScaleAndConcurrencyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alwaysReady': ?pulumi.Input.mapOptionalInputValue<List<FunctionsAlwaysReadyConfigResponse>, List<Map<String, dynamic>>>(alwaysReady, (value) => pulumi.Input.encodeList<FunctionsAlwaysReadyConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'alwaysReady':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FunctionsAlwaysReadyConfigResponse>,
+            List<Map<String, dynamic>>
+          >(
+            alwaysReady,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FunctionsAlwaysReadyConfigResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceMemoryMB': ?instanceMemoryMB,
       'maximumInstanceCount': ?maximumInstanceCount,
-      'triggers': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyResponseTriggers, Map<String, dynamic>>(triggers, (value) => value.toMap()),
+      'triggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionsScaleAndConcurrencyResponseTriggers,
+            Map<String, dynamic>
+          >(triggers, (value) => value.toMap()),
     };
   }
 
-  factory FunctionsScaleAndConcurrencyResponse.fromMap(Map<String, dynamic> map) {
+  factory FunctionsScaleAndConcurrencyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FunctionsScaleAndConcurrencyResponse(
-      alwaysReady: map['alwaysReady'] == null ? null : (pulumi.Input.decodeList<FunctionsAlwaysReadyConfigResponse>(map['alwaysReady']!, (value) => FunctionsAlwaysReadyConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceMemoryMB: map['instanceMemoryMB'] == null ? null : (map['instanceMemoryMB']! as int).input(),
-      maximumInstanceCount: map['maximumInstanceCount'] == null ? null : (map['maximumInstanceCount']! as int).input(),
-      triggers: map['triggers'] == null ? null : (FunctionsScaleAndConcurrencyResponseTriggers.fromMap((map['triggers']! as Map).cast<String, dynamic>())).input(),
+      alwaysReady: (() {
+        final guardedValue = map['alwaysReady'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FunctionsAlwaysReadyConfigResponse>(
+            guardedValue,
+            (value) => FunctionsAlwaysReadyConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      instanceMemoryMB: (() {
+        final guardedValue = map['instanceMemoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maximumInstanceCount: (() {
+        final guardedValue = map['maximumInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionsScaleAndConcurrencyResponseTriggers.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

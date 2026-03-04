@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib {
   /// Maximum.
   final pulumi.Input<int>? max;
+
   /// Minimum.
   final pulumi.Input<int>? min;
 
@@ -17,17 +18,23 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib(
-      max: map['max'] == null ? null : ((map['max'] as int).input()).input(),
-      min: map['min'] == null ? null : ((map['min'] as int).input()).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

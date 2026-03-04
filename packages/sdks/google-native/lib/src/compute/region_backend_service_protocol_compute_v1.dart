@@ -9,16 +9,17 @@ enum RegionBackendServiceProtocolComputeV1 {
   udp("UDP"),
   unspecified("UNSPECIFIED");
 
-  const RegionBackendServiceProtocolComputeV1(this.value);
-  final String value;
+  const RegionBackendServiceProtocolComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionBackendServiceProtocolComputeV1 fromValue(String value) {
     for (final item in RegionBackendServiceProtocolComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceProtocolComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceProtocolComputeV1 value: $value',
+    );
   }
 }
-

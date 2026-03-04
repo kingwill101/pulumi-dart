@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
   final pulumi.Input<String> parentName;
+
   /// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
   final pulumi.Input<String> parentType;
+
   /// The name of the private endpoint connection connection.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      parentName: (map['parentName'] as String).input(),
-      parentType: (map['parentType'] as String).input(),
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      parentName: pulumi.Input.fromValue(map['parentName'] as String),
+      parentType: pulumi.Input.fromValue(map['parentType'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

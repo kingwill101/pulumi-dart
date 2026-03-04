@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourceExtension {
   /// A JSON String which specifies the extension setting.
   final pulumi.Input<String> extensionJson;
+
   /// The name of the VM extension.
   final pulumi.Input<String> extensionName;
+
   /// Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performance_counter`, `windows_event_log`,and `syslog`.
   final pulumi.Input<List<String>> inputDataSources;
+
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
 
@@ -38,14 +42,17 @@ class GetDataCollectionRuleDataSourceExtension {
     };
   }
 
-  factory GetDataCollectionRuleDataSourceExtension.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDataSourceExtension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDataSourceExtension(
-      extensionJson: (map['extensionJson'] as String).input(),
-      extensionName: (map['extensionName'] as String).input(),
-      inputDataSources: ((map['inputDataSources'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
+      extensionJson: pulumi.Input.fromValue(map['extensionJson'] as String),
+      extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
+      inputDataSources: pulumi.Input.fromValue(
+        (map['inputDataSources'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
-

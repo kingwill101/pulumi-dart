@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentAutoScaleProfile {
   /// Specify the maximum number of NGINX capacity units for this NGINX Deployment.
   ///
-  /// > **Note:** If you're using autoscaling with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
+  /// &gt; **Note:** If you're using autoscaling with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
   final pulumi.Input<int> maxCapacity;
+
   /// Specify the minimum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> minCapacity;
+
   /// Specify the name of the autoscaling profile.
   final pulumi.Input<String> name;
 
@@ -32,10 +34,9 @@ class DeploymentAutoScaleProfile {
 
   factory DeploymentAutoScaleProfile.fromMap(Map<String, dynamic> map) {
     return DeploymentAutoScaleProfile(
-      maxCapacity: (map['maxCapacity'] as int).input(),
-      minCapacity: (map['minCapacity'] as int).input(),
-      name: (map['name'] as String).input(),
+      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
+      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

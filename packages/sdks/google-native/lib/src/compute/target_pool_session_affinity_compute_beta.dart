@@ -9,16 +9,17 @@ enum TargetPoolSessionAffinityComputeBeta {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const TargetPoolSessionAffinityComputeBeta(this.value);
-  final String value;
+  const TargetPoolSessionAffinityComputeBeta(this.wireValue);
+  final String wireValue;
 
   static TargetPoolSessionAffinityComputeBeta fromValue(String value) {
     for (final item in TargetPoolSessionAffinityComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetPoolSessionAffinityComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetPoolSessionAffinityComputeBeta value: $value',
+    );
   }
 }
-

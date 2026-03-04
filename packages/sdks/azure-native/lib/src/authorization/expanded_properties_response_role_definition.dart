@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpandedPropertiesResponseRoleDefinition {
   /// Display name of the role definition
   final pulumi.Input<String>? displayName;
+
   /// Id of the role definition
   final pulumi.Input<String>? id;
+
   /// Type of the role definition
   final pulumi.Input<String>? type;
 
@@ -29,12 +31,25 @@ class ExpandedPropertiesResponseRoleDefinition {
     };
   }
 
-  factory ExpandedPropertiesResponseRoleDefinition.fromMap(Map<String, dynamic> map) {
+  factory ExpandedPropertiesResponseRoleDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpandedPropertiesResponseRoleDefinition(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

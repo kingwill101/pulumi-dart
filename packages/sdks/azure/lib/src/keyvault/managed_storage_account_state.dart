@@ -6,18 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedStorageAccountState {
   /// The ID of the Key Vault where the Managed Storage Account should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultId;
+
   /// The name which should be used for this Key Vault Managed Storage Account. Changing this forces a new Key Vault Managed Storage Account to be created.
   final pulumi.Input<String>? name;
+
   /// Should Storage Account access key be regenerated periodically?
   ///
-  /// > **Note:** Azure Key Vault application needs to have access to Storage Account for auto regeneration to work. Example can be found above.
+  /// &gt; **Note:** Azure Key Vault application needs to have access to Storage Account for auto regeneration to work. Example can be found above.
   final pulumi.Input<bool>? regenerateKeyAutomatically;
+
   /// How often Storage Account access key should be regenerated. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   final pulumi.Input<String>? regenerationPeriod;
+
   /// The ID of the Storage Account.
   final pulumi.Input<String>? storageAccountId;
+
   /// Which Storage Account access key that is managed by Key Vault. Possible values are `key1` and `key2`.
   final pulumi.Input<String>? storageAccountKey;
+
   /// A mapping of tags which should be assigned to the Key Vault Managed Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -53,14 +59,43 @@ class ManagedStorageAccountState {
 
   factory ManagedStorageAccountState.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountState(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      regenerateKeyAutomatically: map['regenerateKeyAutomatically'] == null ? null : (map['regenerateKeyAutomatically']! as bool).input(),
-      regenerationPeriod: map['regenerationPeriod'] == null ? null : (map['regenerationPeriod']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regenerateKeyAutomatically: (() {
+        final guardedValue = map['regenerateKeyAutomatically'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      regenerationPeriod: (() {
+        final guardedValue = map['regenerationPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

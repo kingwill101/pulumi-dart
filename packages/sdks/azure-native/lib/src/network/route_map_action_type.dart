@@ -6,16 +6,15 @@ enum RouteMapActionType {
   valueReplace("Replace"),
   valueDrop("Drop");
 
-  const RouteMapActionType(this.value);
-  final String value;
+  const RouteMapActionType(this.wireValue);
+  final String wireValue;
 
   static RouteMapActionType fromValue(String value) {
     for (final item in RouteMapActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouteMapActionType value: $value');
   }
 }
-

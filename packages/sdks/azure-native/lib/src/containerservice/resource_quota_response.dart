@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceQuotaResponse {
   /// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
   final pulumi.Input<String>? cpuLimit;
+
   /// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
   final pulumi.Input<String>? cpuRequest;
+
   /// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
   final pulumi.Input<String>? memoryLimit;
+
   /// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
   final pulumi.Input<String>? memoryRequest;
 
@@ -36,11 +39,26 @@ class ResourceQuotaResponse {
 
   factory ResourceQuotaResponse.fromMap(Map<String, dynamic> map) {
     return ResourceQuotaResponse(
-      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit']! as String).input(),
-      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest']! as String).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit']! as String).input(),
-      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest']! as String).input(),
+      cpuLimit: (() {
+        final guardedValue = map['cpuLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuRequest: (() {
+        final guardedValue = map['cpuRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryLimit: (() {
+        final guardedValue = map['memoryLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryRequest: (() {
+        final guardedValue = map['memoryRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

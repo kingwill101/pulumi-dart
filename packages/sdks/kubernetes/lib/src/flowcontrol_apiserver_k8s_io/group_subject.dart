@@ -9,20 +9,13 @@ class GroupSubject {
 
   /// Creates a new [GroupSubject].
   /// [name] name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
-  GroupSubject({
-    required this.name,
-  });
+  GroupSubject({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GroupSubject.fromMap(Map<String, dynamic> map) {
-    return GroupSubject(
-      name: (map['name'] as String).input(),
-    );
+    return GroupSubject(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

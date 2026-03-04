@@ -5,7 +5,12 @@ import 'get_rules_rule_rule_action_traffic_mirror_config_mirror_group_config_ser
 
 class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
   /// The destination server group to which requests are forwarded.
-  final pulumi.Input<List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>> serverGroupTuples;
+  final pulumi.Input<
+    List<
+      GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
+    >
+  >
+  serverGroupTuples;
 
   /// Creates a new [GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig].
   /// [serverGroupTuples] The destination server group to which requests are forwarded.
@@ -15,14 +20,38 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverGroupTuples': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>, List<Map<String, dynamic>>>(serverGroupTuples, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serverGroupTuples':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
+            >,
+            List<Map<String, dynamic>>
+          >(
+            serverGroupTuples,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig(
-      serverGroupTuples: (pulumi.Input.decodeList<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>(map['serverGroupTuples'], (value) => GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverGroupTuples: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
+        >(
+          map['serverGroupTuples']!,
+          (value) =>
+              GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

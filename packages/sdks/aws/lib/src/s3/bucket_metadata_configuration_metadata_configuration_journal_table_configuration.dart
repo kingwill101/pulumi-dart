@@ -6,11 +6,20 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
   /// Encryption configuration for the journal table. See `encryption_configuration` Block for details.
-  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<
+    BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration
+  >?
+  encryptionConfiguration;
+
   /// Journal table record expiration settings. See `record_expiration` Block for details.
-  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration> recordExpiration;
+  final pulumi.Input<
+    BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
+  >
+  recordExpiration;
+
   /// Journal table ARN.
   final pulumi.Input<String>? tableArn;
+
   /// Journal table name.
   final pulumi.Input<String>? tableName;
 
@@ -28,20 +37,49 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
-      'recordExpiration': pulumi.Input.mapInputValue<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration, Map<String, dynamic>>(recordExpiration, (value) => value.toMap()),
+      'encryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration,
+            Map<String, dynamic>
+          >(encryptionConfiguration, (value) => value.toMap()),
+      'recordExpiration':
+          pulumi.Input.mapInputValue<
+            BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration,
+            Map<String, dynamic>
+          >(recordExpiration, (value) => value.toMap()),
       'tableArn': ?tableArn,
       'tableName': ?tableName,
     };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(Map<String, dynamic> map) {
+  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      recordExpiration: (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration']! as Map).cast<String, dynamic>())).input(),
-      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
-      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      encryptionConfiguration: (() {
+        final guardedValue = map['encryptionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recordExpiration: pulumi.Input.fromValue(
+        BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap(
+          (map['recordExpiration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tableArn: (() {
+        final guardedValue = map['tableArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

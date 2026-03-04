@@ -7,10 +7,12 @@ class EnvironmentNodeConfig {
   /// The current total number of gateway nodes that each environment currently has across
   /// all instances.
   final pulumi.Input<String>? currentAggregateNodeCount;
+
   /// The maximum total number of gateway nodes that the is reserved for all instances that
   /// has the specified environment. If not specified, the default is determined by the
   /// recommended maximum number of nodes for that gateway.
   final pulumi.Input<String>? maxNodeCount;
+
   /// The minimum total number of gateway nodes that the is reserved for all instances that
   /// has the specified environment. If not specified, the default is determined by the
   /// recommended minimum number of nodes for that gateway.
@@ -36,10 +38,21 @@ class EnvironmentNodeConfig {
 
   factory EnvironmentNodeConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentNodeConfig(
-      currentAggregateNodeCount: map['currentAggregateNodeCount'] == null ? null : (map['currentAggregateNodeCount']! as String).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as String).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as String).input(),
+      currentAggregateNodeCount: (() {
+        final guardedValue = map['currentAggregateNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxNodeCount: (() {
+        final guardedValue = map['maxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minNodeCount: (() {
+        final guardedValue = map['minNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

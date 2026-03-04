@@ -9,20 +9,13 @@ class Encryption {
 
   /// Creates a new [Encryption].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
-  Encryption({
-    required this.kmsKey,
-  });
+  Encryption({required this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': kmsKey};
   }
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
-    return Encryption(
-      kmsKey: (map['kmsKey'] as String).input(),
-    );
+    return Encryption(kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String));
   }
 }
-

@@ -11,19 +11,26 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_gateway_target_agentcore_gateway_target_args_doc}
 class AgentcoreGatewayTargetArgs {
   /// Configuration for authenticating requests to the target. Required when using `lambda`, `open_api_schema` and `smithy_model` in `mcp` block. If using `mcp_server` in `mcp` block with no authorization, it should not be specified. See `credential_provider_configuration` below.
-  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfiguration>? credentialProviderConfiguration;
+  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfiguration>?
+  credentialProviderConfiguration;
+
   /// Description of the gateway target.
   final pulumi.Input<String>? description;
+
   /// Identifier of the gateway that this target belongs to.
   final pulumi.Input<String> gatewayIdentifier;
+
   /// Name of the gateway target.
   final pulumi.Input<String>? name;
+
   /// AWS region where the resource will be created. If not provided, the region from the provider configuration will be used.
   final pulumi.Input<String>? region;
+
   /// Configuration for the target endpoint. See `target_configuration` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfiguration>
+  targetConfiguration;
   final pulumi.Input<AgentcoreGatewayTargetTimeouts>? timeouts;
 
   /// Creates a new [AgentcoreGatewayTargetArgs].
@@ -46,26 +53,71 @@ class AgentcoreGatewayTargetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentialProviderConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetCredentialProviderConfiguration, Map<String, dynamic>>(credentialProviderConfiguration, (value) => value.toMap()),
+      'credentialProviderConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentcoreGatewayTargetCredentialProviderConfiguration,
+            Map<String, dynamic>
+          >(credentialProviderConfiguration, (value) => value.toMap()),
       'description': ?description,
       'gatewayIdentifier': gatewayIdentifier,
       'name': ?name,
       'region': ?region,
-      'targetConfiguration': pulumi.Input.mapInputValue<AgentcoreGatewayTargetTargetConfiguration, Map<String, dynamic>>(targetConfiguration, (value) => value.toMap()),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'targetConfiguration':
+          pulumi.Input.mapInputValue<
+            AgentcoreGatewayTargetTargetConfiguration,
+            Map<String, dynamic>
+          >(targetConfiguration, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentcoreGatewayTargetTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreGatewayTargetArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetArgs(
-      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : ((AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      gatewayIdentifier: (map['gatewayIdentifier'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      targetConfiguration: (AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration']! as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : ((AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      credentialProviderConfiguration: (() {
+        final guardedValue = map['credentialProviderConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayIdentifier: pulumi.Input.fromValue(
+        map['gatewayIdentifier'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetConfiguration: pulumi.Input.fromValue(
+        AgentcoreGatewayTargetTargetConfiguration.fromMap(
+          (map['targetConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentcoreGatewayTargetTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

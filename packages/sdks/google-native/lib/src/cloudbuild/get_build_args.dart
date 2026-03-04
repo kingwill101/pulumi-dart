@@ -39,12 +39,15 @@ class GetBuildArgs {
 
   factory GetBuildArgs.fromMap(Map<String, dynamic> map) {
     return GetBuildArgs(
-      buildId: (map['buildId'] as String).input(),
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      buildId: pulumi.Input.fromValue(map['buildId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

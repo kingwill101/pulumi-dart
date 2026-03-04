@@ -272,27 +272,38 @@ import 'suspension_details_response.dart';
 class ReadWriteDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
+
   /// Indicates whether the database is followed.
   late final pulumi.Output<bool> isFollowed;
+
   /// KeyVault properties for the database encryption.
   late final pulumi.Output<KeyVaultPropertiesResponse?> keyVaultProperties;
+
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String?> softDeletePeriod;
+
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
+
   /// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   late final pulumi.Output<SuspensionDetailsResponse> suspensionDetails;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -305,22 +316,26 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     ReadWriteDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kusto:ReadWriteDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.isFollowed = registerOutput<bool>('isFollowed');
-    this.keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>('keyVaultProperties');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:kusto:ReadWriteDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    isFollowed = registerOutput<bool>('isFollowed');
+    keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
+      'keyVaultProperties',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.softDeletePeriod = registerOutput<String?>('softDeletePeriod');
-    this.statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
-    this.suspensionDetails = registerOutput<SuspensionDetailsResponse>('suspensionDetails');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String?>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    suspensionDetails = registerOutput<SuspensionDetailsResponse>(
+      'suspensionDetails',
+    );
+    type = registerOutput<String>('type');
   }
 }

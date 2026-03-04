@@ -8,20 +8,17 @@ class GroupAutoAccept {
 
   /// Creates a new [GroupAutoAccept].
   /// [autoAcceptProjects] A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
-  GroupAutoAccept({
-    required this.autoAcceptProjects,
-  });
+  GroupAutoAccept({required this.autoAcceptProjects});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoAcceptProjects': autoAcceptProjects,
-    };
+    return <String, dynamic>{'autoAcceptProjects': autoAcceptProjects};
   }
 
   factory GroupAutoAccept.fromMap(Map<String, dynamic> map) {
     return GroupAutoAccept(
-      autoAcceptProjects: ((map['autoAcceptProjects'] as List).cast<String>()).input(),
+      autoAcceptProjects: pulumi.Input.fromValue(
+        (map['autoAcceptProjects'] as List).cast<String>(),
+      ),
     );
   }
 }
-

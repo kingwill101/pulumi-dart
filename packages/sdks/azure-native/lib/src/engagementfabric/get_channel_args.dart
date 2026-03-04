@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChannelArgs {
   /// Account Name
   final pulumi.Input<String> accountName;
+
   /// Channel Name
   final pulumi.Input<String> channelName;
+
   /// Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetChannelArgs {
 
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
-      accountName: (map['accountName'] as String).input(),
-      channelName: (map['channelName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      channelName: pulumi.Input.fromValue(map['channelName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

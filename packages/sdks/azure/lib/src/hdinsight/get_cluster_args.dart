@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// Specifies the name of this HDInsight Cluster.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the Resource Group in which this HDInsight Cluster exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetClusterArgs].
   /// [name] Specifies the name of this HDInsight Cluster.
   /// [resourceGroupName] Specifies the name of the Resource Group in which this HDInsight Cluster exists.
-  GetClusterArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetClusterArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

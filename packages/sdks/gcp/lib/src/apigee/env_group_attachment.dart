@@ -34,8 +34,10 @@ class EnvGroupAttachment extends pulumi.CustomResource {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
   late final pulumi.Output<String> envgroupId;
+
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
+
   /// The name of the newly created  attachment (output parameter).
   late final pulumi.Output<String> name;
 
@@ -48,13 +50,13 @@ class EnvGroupAttachment extends pulumi.CustomResource {
     EnvGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.envgroupId = registerOutput<String>('envgroupId');
-    this.environment = registerOutput<String>('environment');
+         'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    envgroupId = registerOutput<String>('envgroupId');
+    environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
   }
 
@@ -76,13 +78,13 @@ class EnvGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.envgroupId = registerOutput<String>('envgroupId');
-    this.environment = registerOutput<String>('environment');
+         'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    envgroupId = registerOutput<String>('envgroupId');
+    environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
   }
 }

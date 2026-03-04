@@ -4,16 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtendedLocationOptions {
   final pulumi.Input<String>? supportedPolicy;
+
   /// The type.
   final pulumi.Input<String>? type;
 
   /// Creates a new [ExtendedLocationOptions].
   /// [supportedPolicy] Optional.
   /// [type] The type.
-  ExtendedLocationOptions({
-    this.supportedPolicy,
-    this.type,
-  });
+  ExtendedLocationOptions({this.supportedPolicy, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +22,16 @@ class ExtendedLocationOptions {
 
   factory ExtendedLocationOptions.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationOptions(
-      supportedPolicy: map['supportedPolicy'] == null ? null : (map['supportedPolicy']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      supportedPolicy: (() {
+        final guardedValue = map['supportedPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

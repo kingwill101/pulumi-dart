@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityDeviceGroupRangeRule {
   /// Specifies the time range. represented in ISO 8601 duration format.
   final pulumi.Input<String> duration;
+
   /// The maximum threshold in the given time window.
   final pulumi.Input<int> max;
+
   /// The minimum threshold in the given time window.
   final pulumi.Input<int> min;
+
   /// The type of supported rule type. Possible Values are `ActiveConnectionsNotInAllowedRange`, `AmqpC2DMessagesNotInAllowedRange`, `MqttC2DMessagesNotInAllowedRange`, `HttpC2DMessagesNotInAllowedRange`, `AmqpC2DRejectedMessagesNotInAllowedRange`, `MqttC2DRejectedMessagesNotInAllowedRange`, `HttpC2DRejectedMessagesNotInAllowedRange`, `AmqpD2CMessagesNotInAllowedRange`, `MqttD2CMessagesNotInAllowedRange`, `HttpD2CMessagesNotInAllowedRange`, `DirectMethodInvokesNotInAllowedRange`, `FailedLocalLoginsNotInAllowedRange`, `FileUploadsNotInAllowedRange`, `QueuePurgesNotInAllowedRange`, `TwinUpdatesNotInAllowedRange` and `UnauthorizedOperationsNotInAllowedRange`.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,10 @@ class SecurityDeviceGroupRangeRule {
 
   factory SecurityDeviceGroupRangeRule.fromMap(Map<String, dynamic> map) {
     return SecurityDeviceGroupRangeRule(
-      duration: (map['duration'] as String).input(),
-      max: (map['max'] as int).input(),
-      min: (map['min'] as int).input(),
-      type: (map['type'] as String).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      max: pulumi.Input.fromValue(map['max'] as int),
+      min: pulumi.Input.fromValue(map['min'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

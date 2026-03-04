@@ -3,16 +3,15 @@ enum SessionAddressProvider {
   valueMicrosoft("Microsoft"),
   valuePeer("Peer");
 
-  const SessionAddressProvider(this.value);
-  final String value;
+  const SessionAddressProvider(this.wireValue);
+  final String wireValue;
 
   static SessionAddressProvider fromValue(String value) {
     for (final item in SessionAddressProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionAddressProvider value: $value');
   }
 }
-

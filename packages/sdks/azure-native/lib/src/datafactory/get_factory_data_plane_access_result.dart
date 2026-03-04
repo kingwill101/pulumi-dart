@@ -6,8 +6,10 @@ import 'user_access_policy_response.dart';
 class GetFactoryDataPlaneAccessResult {
   /// Data Plane read only access token.
   final String? accessToken;
+
   /// Data Plane service base URL.
   final String? dataPlaneUrl;
+
   /// The user access policy.
   final UserAccessPolicyResponse? policy;
 
@@ -25,16 +27,29 @@ class GetFactoryDataPlaneAccessResult {
     return <String, dynamic>{
       'accessToken': ?accessToken,
       'dataPlaneUrl': ?dataPlaneUrl,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?policy?.toMap(),
     };
   }
 
   factory GetFactoryDataPlaneAccessResult.fromMap(Map<String, dynamic> map) {
     return GetFactoryDataPlaneAccessResult(
-      accessToken: map['accessToken'] == null ? null : map['accessToken']! as String,
-      dataPlaneUrl: map['dataPlaneUrl'] == null ? null : map['dataPlaneUrl']! as String,
-      policy: map['policy'] == null ? null : UserAccessPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dataPlaneUrl: (() {
+        final guardedValue = map['dataPlaneUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return UserAccessPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

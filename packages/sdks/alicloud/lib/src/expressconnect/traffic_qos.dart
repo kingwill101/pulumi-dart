@@ -8,7 +8,7 @@ import 'traffic_qos_state.dart';
 ///
 /// For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -142,13 +142,17 @@ class TrafficQos extends pulumi.CustomResource {
   /// The description of the QoS policy.
   /// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> qosDescription;
+
   /// The name of the QoS policy.
   /// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> qosName;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the QoS policy.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -161,16 +165,16 @@ class TrafficQos extends pulumi.CustomResource {
     TrafficQosArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/trafficQos:TrafficQos',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.qosDescription = registerOutput<String?>('qosDescription');
-    this.qosName = registerOutput<String?>('qosName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:expressconnect/trafficQos:TrafficQos',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    qosDescription = registerOutput<String?>('qosDescription');
+    qosName = registerOutput<String?>('qosName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [TrafficQos] resource's state with the given [name] and [id].
@@ -191,15 +195,15 @@ class TrafficQos extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/trafficQos:TrafficQos',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.qosDescription = registerOutput<String?>('qosDescription');
-    this.qosName = registerOutput<String?>('qosName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:expressconnect/trafficQos:TrafficQos',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    qosDescription = registerOutput<String?>('qosDescription');
+    qosName = registerOutput<String?>('qosName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

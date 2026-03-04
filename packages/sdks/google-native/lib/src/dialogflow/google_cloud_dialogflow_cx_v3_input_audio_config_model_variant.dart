@@ -5,16 +5,20 @@ enum GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
   useStandard("USE_STANDARD"),
   useEnhanced("USE_ENHANCED");
 
-  const GoogleCloudDialogflowCxV3InputAudioConfigModelVariant(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3InputAudioConfigModelVariant(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDialogflowCxV3InputAudioConfigModelVariant fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3InputAudioConfigModelVariant.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowCxV3InputAudioConfigModelVariant fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3InputAudioConfigModelVariant.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3InputAudioConfigModelVariant value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3InputAudioConfigModelVariant value: $value',
+    );
   }
 }
-

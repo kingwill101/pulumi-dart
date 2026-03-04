@@ -14,15 +14,16 @@ class EdgeLocationResponseNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metropolitanArea': metropolitanArea,
-    };
+    return <String, dynamic>{'metropolitanArea': metropolitanArea};
   }
 
-  factory EdgeLocationResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EdgeLocationResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeLocationResponseNetworkmanagementV1beta1(
-      metropolitanArea: (map['metropolitanArea'] as String).input(),
+      metropolitanArea: pulumi.Input.fromValue(
+        map['metropolitanArea'] as String,
+      ),
     );
   }
 }
-

@@ -10,8 +10,10 @@ import 'fast_snapshot_restore_timeouts.dart';
 class FastSnapshotRestoreArgs {
   /// Availability zone in which to enable fast snapshot restores.
   final pulumi.Input<String> availabilityZone;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the snapshot.
   final pulumi.Input<String> snapshotId;
   final pulumi.Input<FastSnapshotRestoreTimeouts>? timeouts;
@@ -33,17 +35,34 @@ class FastSnapshotRestoreArgs {
       'availabilityZone': availabilityZone,
       'region': ?region,
       'snapshotId': snapshotId,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<FastSnapshotRestoreTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            FastSnapshotRestoreTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory FastSnapshotRestoreArgs.fromMap(Map<String, dynamic> map) {
     return FastSnapshotRestoreArgs(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : ((FastSnapshotRestoreTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FastSnapshotRestoreTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

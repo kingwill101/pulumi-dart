@@ -145,39 +145,50 @@ import 'flavor_state.dart';
 /// ```
 class Flavor extends pulumi.CustomResource {
   /// The description of the flavor. Changing this
-  /// updates the description of the flavor. Requires microversion >= 2.55.
+  /// updates the description of the flavor. Requires microversion &gt;= 2.55.
   late final pulumi.Output<String?> description;
+
   /// The amount of disk space in GiB to use for the root
   /// (/) partition. Changing this creates a new flavor.
   late final pulumi.Output<int> disk;
+
   /// The amount of ephemeral in GiB. If unspecified,
   /// the default is 0. Changing this creates a new flavor.
   late final pulumi.Output<int?> ephemeral;
+
   /// Key/Value pairs of metadata for the flavor.
   late final pulumi.Output<Map<String, String>> extraSpecs;
+
   /// Unique ID (integer or UUID) of flavor to create. Changing
   /// this creates a new flavor.
   late final pulumi.Output<String> flavorId;
+
   /// Whether the flavor is public. Changing this creates
   /// a new flavor.
   late final pulumi.Output<bool?> isPublic;
+
   /// A unique name for the flavor. Changing this creates a new
   /// flavor.
   late final pulumi.Output<String> name;
+
   /// The amount of RAM to use, in megabytes. Changing this
   /// creates a new flavor.
   late final pulumi.Output<int> ram;
+
   /// The region in which to obtain the V2 Compute client.
   /// Flavors are associated with accounts, but a Compute client is needed to
   /// create one. If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new flavor.
   late final pulumi.Output<String> region;
+
   /// RX/TX bandwith factor. The default is 1. Changing
   /// this creates a new flavor.
   late final pulumi.Output<double?> rxTxFactor;
+
   /// The amount of disk space in megabytes to use. If
   /// unspecified, the default is 0. Changing this creates a new flavor.
   late final pulumi.Output<int?> swap;
+
   /// The number of virtual CPUs to use. Changing this creates
   /// a new flavor.
   late final pulumi.Output<int> vcpus;
@@ -186,28 +197,25 @@ class Flavor extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Flavor]. {@macro pulumi_compute_flavor_flavor_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Flavor(
-    String name, {
-    FlavorArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:compute/flavor:Flavor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disk = registerOutput<int>('disk');
-    this.ephemeral = registerOutput<int?>('ephemeral');
-    this.extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
-    this.flavorId = registerOutput<String>('flavorId');
-    this.isPublic = registerOutput<bool?>('isPublic');
+  Flavor(String name, {FlavorArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:compute/flavor:Flavor',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    disk = registerOutput<int>('disk');
+    ephemeral = registerOutput<int?>('ephemeral');
+    extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
+    flavorId = registerOutput<String>('flavorId');
+    isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
-    this.ram = registerOutput<int>('ram');
-    this.region = registerOutput<String>('region');
-    this.rxTxFactor = registerOutput<double?>('rxTxFactor');
-    this.swap = registerOutput<int?>('swap');
-    this.vcpus = registerOutput<int>('vcpus');
+    ram = registerOutput<int>('ram');
+    region = registerOutput<String>('region');
+    rxTxFactor = registerOutput<double?>('rxTxFactor');
+    swap = registerOutput<int?>('swap');
+    vcpus = registerOutput<int>('vcpus');
   }
 
   /// Gets an existing [Flavor] resource's state with the given [name] and [id].
@@ -228,22 +236,22 @@ class Flavor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/flavor:Flavor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disk = registerOutput<int>('disk');
-    this.ephemeral = registerOutput<int?>('ephemeral');
-    this.extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
-    this.flavorId = registerOutput<String>('flavorId');
-    this.isPublic = registerOutput<bool?>('isPublic');
+         'openstack:compute/flavor:Flavor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disk = registerOutput<int>('disk');
+    ephemeral = registerOutput<int?>('ephemeral');
+    extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
+    flavorId = registerOutput<String>('flavorId');
+    isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
-    this.ram = registerOutput<int>('ram');
-    this.region = registerOutput<String>('region');
-    this.rxTxFactor = registerOutput<double?>('rxTxFactor');
-    this.swap = registerOutput<int?>('swap');
-    this.vcpus = registerOutput<int>('vcpus');
+    ram = registerOutput<int>('ram');
+    region = registerOutput<String>('region');
+    rxTxFactor = registerOutput<double?>('rxTxFactor');
+    swap = registerOutput<int?>('swap');
+    vcpus = registerOutput<int>('vcpus');
   }
 }

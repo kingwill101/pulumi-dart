@@ -8,16 +8,15 @@ enum InvoiceSectionState {
   valueWarned("Warned"),
   valueRestricted("Restricted");
 
-  const InvoiceSectionState(this.value);
-  final String value;
+  const InvoiceSectionState(this.wireValue);
+  final String wireValue;
 
   static InvoiceSectionState fromValue(String value) {
     for (final item in InvoiceSectionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InvoiceSectionState value: $value');
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseImport {
   /// Specifies the name of the SQL administrator.
   final pulumi.Input<String> administratorLogin;
+
   /// Specifies the password of the SQL administrator.
   final pulumi.Input<String> administratorLoginPassword;
+
   /// Specifies the type of authentication used to access the server. Valid values are `SQL` or `ADPassword`.
   final pulumi.Input<String> authenticationType;
+
   /// The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storage_uri parameter.
   final pulumi.Input<String>? storageAccountId;
+
   /// Specifies the access key for the storage account.
   final pulumi.Input<String> storageKey;
+
   /// Specifies the type of access key for the storage account. Valid values are `StorageAccessKey` or `SharedAccessKey`.
   final pulumi.Input<String> storageKeyType;
+
   /// Specifies the blob URI of the .bacpac file.
   final pulumi.Input<String> storageUri;
 
@@ -50,14 +56,23 @@ class DatabaseImport {
 
   factory DatabaseImport.fromMap(Map<String, dynamic> map) {
     return DatabaseImport(
-      administratorLogin: (map['administratorLogin'] as String).input(),
-      administratorLoginPassword: (map['administratorLoginPassword'] as String).input(),
-      authenticationType: (map['authenticationType'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storageKey: (map['storageKey'] as String).input(),
-      storageKeyType: (map['storageKeyType'] as String).input(),
-      storageUri: (map['storageUri'] as String).input(),
+      administratorLogin: pulumi.Input.fromValue(
+        map['administratorLogin'] as String,
+      ),
+      administratorLoginPassword: pulumi.Input.fromValue(
+        map['administratorLoginPassword'] as String,
+      ),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageKey: pulumi.Input.fromValue(map['storageKey'] as String),
+      storageKeyType: pulumi.Input.fromValue(map['storageKeyType'] as String),
+      storageUri: pulumi.Input.fromValue(map['storageUri'] as String),
     );
   }
 }
-

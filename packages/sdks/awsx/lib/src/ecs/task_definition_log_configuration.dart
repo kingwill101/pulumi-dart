@@ -22,16 +22,41 @@ class TaskDefinitionLogConfiguration {
     return <String, dynamic>{
       'logDriver': logDriver,
       'options': ?options,
-      'secretOptions': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionSecret>, List<Map<String, dynamic>>>(secretOptions, (value) => pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secretOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionSecret>,
+            List<Map<String, dynamic>>
+          >(
+            secretOptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionSecret,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TaskDefinitionLogConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLogConfiguration(
-      logDriver: (map['logDriver'] as String).input(),
-      options: map['options'] == null ? null : (map['options']!).input(),
-      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionSecret>(map['secretOptions']!, (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logDriver: pulumi.Input.fromValue(map['logDriver'] as String),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      secretOptions: (() {
+        final guardedValue = map['secretOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionSecret>(
+            guardedValue,
+            (value) => TaskDefinitionSecret.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

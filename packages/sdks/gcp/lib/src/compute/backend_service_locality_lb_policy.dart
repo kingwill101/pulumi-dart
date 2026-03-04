@@ -9,6 +9,7 @@ class BackendServiceLocalityLbPolicy {
   /// deployed with the client.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceLocalityLbPolicyCustomPolicy>? customPolicy;
+
   /// The configuration for a built-in load balancing policy.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceLocalityLbPolicyPolicy>? policy;
@@ -16,23 +17,43 @@ class BackendServiceLocalityLbPolicy {
   /// Creates a new [BackendServiceLocalityLbPolicy].
   /// [customPolicy] The configuration for a custom policy implemented by the user and
   /// [policy] The configuration for a built-in load balancing policy.
-  BackendServiceLocalityLbPolicy({
-    this.customPolicy,
-    this.policy,
-  });
+  BackendServiceLocalityLbPolicy({this.customPolicy, this.policy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPolicy': ?pulumi.Input.mapOptionalInputValue<BackendServiceLocalityLbPolicyCustomPolicy, Map<String, dynamic>>(customPolicy, (value) => value.toMap()),
-      'policy': ?pulumi.Input.mapOptionalInputValue<BackendServiceLocalityLbPolicyPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'customPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendServiceLocalityLbPolicyCustomPolicy,
+            Map<String, dynamic>
+          >(customPolicy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendServiceLocalityLbPolicyPolicy,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
     };
   }
 
   factory BackendServiceLocalityLbPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicy(
-      customPolicy: map['customPolicy'] == null ? null : (BackendServiceLocalityLbPolicyCustomPolicy.fromMap((map['customPolicy']! as Map).cast<String, dynamic>())).input(),
-      policy: map['policy'] == null ? null : (BackendServiceLocalityLbPolicyPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      customPolicy: (() {
+        final guardedValue = map['customPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendServiceLocalityLbPolicyCustomPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendServiceLocalityLbPolicyPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

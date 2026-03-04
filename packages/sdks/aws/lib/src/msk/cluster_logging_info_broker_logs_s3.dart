@@ -6,6 +6,7 @@ class ClusterLoggingInfoBrokerLogsS3 {
   /// Name of the S3 bucket to deliver logs to.
   final pulumi.Input<String>? bucket;
   final pulumi.Input<bool> enabled;
+
   /// Prefix to append to the folder name.
   final pulumi.Input<String>? prefix;
 
@@ -29,10 +30,17 @@ class ClusterLoggingInfoBrokerLogsS3 {
 
   factory ClusterLoggingInfoBrokerLogsS3.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfoBrokerLogsS3(
-      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
-      enabled: (map['enabled'] as bool).input(),
-      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

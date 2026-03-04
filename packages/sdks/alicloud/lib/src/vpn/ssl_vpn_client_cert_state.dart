@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslVpnClientCertState {
   /// The client ca cert.
   final pulumi.Input<String>? caCert;
+
   /// The client cert.
   final pulumi.Input<String>? clientCert;
+
   /// The vpn client config.
   final pulumi.Input<String>? clientConfig;
+
   /// The client key.
   final pulumi.Input<String>? clientKey;
+
   /// The name of the client certificate.
   final pulumi.Input<String>? name;
+
   /// The ID of the SSL-VPN server.
   final pulumi.Input<String>? sslVpnServerId;
+
   /// The status of the client certificate.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class SslVpnClientCertState {
 
   factory SslVpnClientCertState.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertState(
-      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
-      clientCert: map['clientCert'] == null ? null : (map['clientCert']! as String).input(),
-      clientConfig: map['clientConfig'] == null ? null : (map['clientConfig']! as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sslVpnServerId: map['sslVpnServerId'] == null ? null : (map['sslVpnServerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      caCert: (() {
+        final guardedValue = map['caCert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCert: (() {
+        final guardedValue = map['clientCert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientConfig: (() {
+        final guardedValue = map['clientConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientKey: (() {
+        final guardedValue = map['clientKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslVpnServerId: (() {
+        final guardedValue = map['sslVpnServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,28 +7,40 @@ import 'system_data_response.dart';
 class GetStorageAccountCredentialResult {
   /// Encrypted storage key.
   final AsymmetricEncryptedSecretResponse? accountKey;
+
   /// Type of storage accessed on the storage account.
   final String accountType;
+
   /// Alias for the storage account.
   final String alias;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Blob end point for private clouds.
   final String? blobDomainName;
+
   /// Connection string for the storage account. Use this string if username and account key are not specified.
   final String? connectionString;
+
   /// The path ID that uniquely identifies the object.
   final String id;
+
   /// The object name.
   final String name;
+
   /// Signifies whether SSL needs to be enabled or not.
   final String sslStatus;
+
   /// Id of the storage account.
   final String? storageAccountId;
+
   /// Metadata pertaining to creation and last modification of StorageAccountCredential
   final SystemDataResponse systemData;
+
   /// The hierarchical type of the object.
   final String type;
+
   /// Username for the storage account.
   final String? userName;
 
@@ -64,7 +76,7 @@ class GetStorageAccountCredentialResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountKey': ?accountKey == null ? null : accountKey!.toMap(),
+      'accountKey': ?accountKey?.toMap(),
       'accountType': accountType,
       'alias': alias,
       'azureApiVersion': azureApiVersion,
@@ -82,20 +94,43 @@ class GetStorageAccountCredentialResult {
 
   factory GetStorageAccountCredentialResult.fromMap(Map<String, dynamic> map) {
     return GetStorageAccountCredentialResult(
-      accountKey: map['accountKey'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['accountKey']! as Map).cast<String, dynamic>()),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return AsymmetricEncryptedSecretResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       accountType: map['accountType'] as String,
       alias: map['alias'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      blobDomainName: map['blobDomainName'] == null ? null : map['blobDomainName']! as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString']! as String,
+      blobDomainName: (() {
+        final guardedValue = map['blobDomainName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       sslStatus: map['sslStatus'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName']! as String,
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

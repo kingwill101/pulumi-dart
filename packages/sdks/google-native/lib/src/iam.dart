@@ -1,5 +1,3 @@
-library module_iam;
-
 export 'iam/access_restrictions.dart';
 export 'iam/access_restrictions_response.dart';
 export 'iam/audit_config.dart';

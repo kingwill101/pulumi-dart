@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudServiceMarketplace {
   /// Specifies the plan ID of the 3rd Party Artifact that is being procured.
   final pulumi.Input<String> plan;
+
   /// Specifies the 3rd Party artifact that is being procured.
   final pulumi.Input<String> product;
+
   /// Specifies the publisher ID of the 3rd Party Artifact that is being procured.
   final pulumi.Input<String> publisher;
 
@@ -30,10 +32,9 @@ class SpringCloudServiceMarketplace {
 
   factory SpringCloudServiceMarketplace.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceMarketplace(
-      plan: (map['plan'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
+      plan: pulumi.Input.fromValue(map['plan'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
-

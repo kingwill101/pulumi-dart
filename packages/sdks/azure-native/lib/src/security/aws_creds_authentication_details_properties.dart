@@ -2,13 +2,15 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// AWS cloud account connector based credentials, the credentials is composed of access key ID and secret key, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">Creating an IAM User in Your AWS Account (write only)</a>
+/// AWS cloud account connector based credentials, the credentials is composed of access key ID and secret key, for more details, refer to &lt;a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html"&gt;Creating an IAM User in Your AWS Account (write only)&lt;/a&gt;
 class AwsCredsAuthenticationDetailsProperties {
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'awsCreds'.
   final pulumi.Input<String> authenticationType;
+
   /// Public key element of the AWS credential object (write only)
   final pulumi.Input<String> awsAccessKeyId;
+
   /// Secret key element of the AWS credential object (write only)
   final pulumi.Input<String> awsSecretAccessKey;
 
@@ -30,12 +32,17 @@ class AwsCredsAuthenticationDetailsProperties {
     };
   }
 
-  factory AwsCredsAuthenticationDetailsProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsCredsAuthenticationDetailsProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsCredsAuthenticationDetailsProperties(
-      authenticationType: (map['authenticationType'] as String).input(),
-      awsAccessKeyId: (map['awsAccessKeyId'] as String).input(),
-      awsSecretAccessKey: (map['awsSecretAccessKey'] as String).input(),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      awsAccessKeyId: pulumi.Input.fromValue(map['awsAccessKeyId'] as String),
+      awsSecretAccessKey: pulumi.Input.fromValue(
+        map['awsSecretAccessKey'] as String,
+      ),
     );
   }
 }
-

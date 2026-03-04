@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rules_engine_args.dart';
-import 'rules_engine_rule.dart';
 import 'rules_engine_state.dart';
 
-/// !> **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// !&gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
-/// !> **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// Manages an Azure Front Door (classic) Rules Engine configuration and rules.
 ///
@@ -653,16 +652,21 @@ import 'rules_engine_state.dart';
 class RulesEngine extends pulumi.CustomResource {
   /// Whether this Rules engine configuration is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The name of the Front Door instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> frontdoorName;
+
   /// The location in which the Front Door Rules Engine exists.
   late final pulumi.Output<String> location;
+
   /// The name of the Rules engine configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `rule` block as defined below.
-  late final pulumi.Output<List<RulesEngineRule>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
   /// Creates a new [RulesEngine].
   /// [name] The Pulumi resource name.
@@ -673,17 +677,17 @@ class RulesEngine extends pulumi.CustomResource {
     RulesEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/rulesEngine:RulesEngine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frontdoorName = registerOutput<String>('frontdoorName');
-    this.location = registerOutput<String>('location');
+         'azure:frontdoor/rulesEngine:RulesEngine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    frontdoorName = registerOutput<String>('frontdoorName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rules = registerOutput<List<RulesEngineRule>?>('rules');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 
   /// Gets an existing [RulesEngine] resource's state with the given [name] and [id].
@@ -704,16 +708,16 @@ class RulesEngine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/rulesEngine:RulesEngine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frontdoorName = registerOutput<String>('frontdoorName');
-    this.location = registerOutput<String>('location');
+         'azure:frontdoor/rulesEngine:RulesEngine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    frontdoorName = registerOutput<String>('frontdoorName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rules = registerOutput<List<RulesEngineRule>?>('rules');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 }

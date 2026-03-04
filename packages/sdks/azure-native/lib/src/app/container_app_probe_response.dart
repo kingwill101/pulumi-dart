@@ -8,20 +8,28 @@ import 'container_app_probe_response_tcp_socket.dart';
 class ContainerAppProbeResponse {
   /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
   final pulumi.Input<int>? failureThreshold;
+
   /// HTTPGet specifies the http request to perform.
   final pulumi.Input<ContainerAppProbeResponseHttpGet>? httpGet;
+
   /// Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
   final pulumi.Input<int>? initialDelaySeconds;
+
   /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
   final pulumi.Input<int>? periodSeconds;
+
   /// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
   final pulumi.Input<int>? successThreshold;
+
   /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
   final pulumi.Input<ContainerAppProbeResponseTcpSocket>? tcpSocket;
+
   /// Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
   final pulumi.Input<double>? terminationGracePeriodSeconds;
+
   /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
   final pulumi.Input<int>? timeoutSeconds;
+
   /// The type of probe.
   final pulumi.Input<String>? type;
 
@@ -50,11 +58,19 @@ class ContainerAppProbeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureThreshold': ?failureThreshold,
-      'httpGet': ?pulumi.Input.mapOptionalInputValue<ContainerAppProbeResponseHttpGet, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
+      'httpGet':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerAppProbeResponseHttpGet,
+            Map<String, dynamic>
+          >(httpGet, (value) => value.toMap()),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
-      'tcpSocket': ?pulumi.Input.mapOptionalInputValue<ContainerAppProbeResponseTcpSocket, Map<String, dynamic>>(tcpSocket, (value) => value.toMap()),
+      'tcpSocket':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerAppProbeResponseTcpSocket,
+            Map<String, dynamic>
+          >(tcpSocket, (value) => value.toMap()),
       'terminationGracePeriodSeconds': ?terminationGracePeriodSeconds,
       'timeoutSeconds': ?timeoutSeconds,
       'type': ?type,
@@ -63,16 +79,59 @@ class ContainerAppProbeResponse {
 
   factory ContainerAppProbeResponse.fromMap(Map<String, dynamic> map) {
     return ContainerAppProbeResponse(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
-      httpGet: map['httpGet'] == null ? null : (ContainerAppProbeResponseHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (ContainerAppProbeResponseTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as double).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      failureThreshold: (() {
+        final guardedValue = map['failureThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpGet: (() {
+        final guardedValue = map['httpGet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerAppProbeResponseHttpGet.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initialDelaySeconds: (() {
+        final guardedValue = map['initialDelaySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodSeconds: (() {
+        final guardedValue = map['periodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      successThreshold: (() {
+        final guardedValue = map['successThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tcpSocket: (() {
+        final guardedValue = map['tcpSocket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerAppProbeResponseTcpSocket.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      terminationGracePeriodSeconds: (() {
+        final guardedValue = map['terminationGracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      timeoutSeconds: (() {
+        final guardedValue = map['timeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

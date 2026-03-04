@@ -18,19 +18,16 @@ class GetListenerDefaultActionJwtValidationAdditionalClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'format': format,
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'format': format, 'name': name, 'values': values};
   }
 
-  factory GetListenerDefaultActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionJwtValidationAdditionalClaim.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionJwtValidationAdditionalClaim(
-      format: (map['format'] as String).input(),
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

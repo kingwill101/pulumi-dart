@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupQuotaSubscriptionIdResponseProperties {
   /// Status of this subscriptionId being associated with the GroupQuotasEntity.
   final pulumi.Input<String> provisioningState;
+
   /// An Azure subscriptionId.
   final pulumi.Input<String>? subscriptionId;
 
@@ -23,11 +24,18 @@ class GroupQuotaSubscriptionIdResponseProperties {
     };
   }
 
-  factory GroupQuotaSubscriptionIdResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory GroupQuotaSubscriptionIdResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupQuotaSubscriptionIdResponseProperties(
-      provisioningState: (map['provisioningState'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

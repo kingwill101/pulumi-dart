@@ -7,26 +7,38 @@ import 'cache_username_download_settings_response_credentials.dart';
 class CacheUsernameDownloadSettingsResponse {
   /// Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
   final pulumi.Input<bool>? autoDownloadCertificate;
+
   /// The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
   final pulumi.Input<String>? caCertificateURI;
+
   /// When present, these are the credentials for the secure LDAP connection.
-  final pulumi.Input<CacheUsernameDownloadSettingsResponseCredentials>? credentials;
+  final pulumi.Input<CacheUsernameDownloadSettingsResponseCredentials>?
+  credentials;
+
   /// Whether or not the LDAP connection should be encrypted.
   final pulumi.Input<bool>? encryptLdapConnection;
+
   /// Whether or not Extended Groups is enabled.
   final pulumi.Input<bool>? extendedGroups;
+
   /// The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
   final pulumi.Input<String>? groupFileURI;
+
   /// The base distinguished name for the LDAP domain.
   final pulumi.Input<String>? ldapBaseDN;
+
   /// The fully qualified domain name or IP address of the LDAP server to use.
   final pulumi.Input<String>? ldapServer;
+
   /// Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
   final pulumi.Input<bool>? requireValidCertificate;
+
   /// The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
   final pulumi.Input<String>? userFileURI;
+
   /// Indicates whether or not the HPC Cache has performed the username download successfully.
   final pulumi.Input<String> usernameDownloaded;
+
   /// This setting determines how the cache gets username and group names for clients.
   final pulumi.Input<String>? usernameSource;
 
@@ -62,7 +74,11 @@ class CacheUsernameDownloadSettingsResponse {
     return <String, dynamic>{
       'autoDownloadCertificate': ?autoDownloadCertificate,
       'caCertificateURI': ?caCertificateURI,
-      'credentials': ?pulumi.Input.mapOptionalInputValue<CacheUsernameDownloadSettingsResponseCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
+      'credentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheUsernameDownloadSettingsResponseCredentials,
+            Map<String, dynamic>
+          >(credentials, (value) => value.toMap()),
       'encryptLdapConnection': ?encryptLdapConnection,
       'extendedGroups': ?extendedGroups,
       'groupFileURI': ?groupFileURI,
@@ -75,21 +91,72 @@ class CacheUsernameDownloadSettingsResponse {
     };
   }
 
-  factory CacheUsernameDownloadSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory CacheUsernameDownloadSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CacheUsernameDownloadSettingsResponse(
-      autoDownloadCertificate: map['autoDownloadCertificate'] == null ? null : (map['autoDownloadCertificate']! as bool).input(),
-      caCertificateURI: map['caCertificateURI'] == null ? null : (map['caCertificateURI']! as String).input(),
-      credentials: map['credentials'] == null ? null : (CacheUsernameDownloadSettingsResponseCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
-      encryptLdapConnection: map['encryptLdapConnection'] == null ? null : (map['encryptLdapConnection']! as bool).input(),
-      extendedGroups: map['extendedGroups'] == null ? null : (map['extendedGroups']! as bool).input(),
-      groupFileURI: map['groupFileURI'] == null ? null : (map['groupFileURI']! as String).input(),
-      ldapBaseDN: map['ldapBaseDN'] == null ? null : (map['ldapBaseDN']! as String).input(),
-      ldapServer: map['ldapServer'] == null ? null : (map['ldapServer']! as String).input(),
-      requireValidCertificate: map['requireValidCertificate'] == null ? null : (map['requireValidCertificate']! as bool).input(),
-      userFileURI: map['userFileURI'] == null ? null : (map['userFileURI']! as String).input(),
-      usernameDownloaded: (map['usernameDownloaded'] as String).input(),
-      usernameSource: map['usernameSource'] == null ? null : (map['usernameSource']! as String).input(),
+      autoDownloadCertificate: (() {
+        final guardedValue = map['autoDownloadCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      caCertificateURI: (() {
+        final guardedValue = map['caCertificateURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheUsernameDownloadSettingsResponseCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encryptLdapConnection: (() {
+        final guardedValue = map['encryptLdapConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extendedGroups: (() {
+        final guardedValue = map['extendedGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupFileURI: (() {
+        final guardedValue = map['groupFileURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ldapBaseDN: (() {
+        final guardedValue = map['ldapBaseDN'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ldapServer: (() {
+        final guardedValue = map['ldapServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requireValidCertificate: (() {
+        final guardedValue = map['requireValidCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userFileURI: (() {
+        final guardedValue = map['userFileURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usernameDownloaded: pulumi.Input.fromValue(
+        map['usernameDownloaded'] as String,
+      ),
+      usernameSource: (() {
+        final guardedValue = map['usernameSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

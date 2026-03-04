@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransportLayerApplicationRule {
   /// Client IP pass-through protocol, supporting:
   final pulumi.Input<String> clientIpPassThroughMode;
+
   /// Comment information for the rule (optional).
   final pulumi.Input<String>? comment;
+
   /// Edge port. Supports:
   /// - A single port, such as 80.
   /// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
@@ -14,16 +16,21 @@ class TransportLayerApplicationRule {
   ///
   /// Edge ports within a single rule and between multiple rules must not overlap.
   final pulumi.Input<String> edgePort;
+
   /// Forwarding rule protocol, with values:
   /// - `TCP`: TCP protocol.
   /// - `UDP`: UDP protocol.
   final pulumi.Input<String> protocol;
+
   /// Rule ID
   final pulumi.Input<int>? ruleId;
+
   /// Specific value of the origin, which needs to match the origin type.
   final pulumi.Input<String> source;
+
   /// Source Port
   final pulumi.Input<String> sourcePort;
+
   /// Origin type, supporting:
   final pulumi.Input<String> sourceType;
 
@@ -62,15 +69,24 @@ class TransportLayerApplicationRule {
 
   factory TransportLayerApplicationRule.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationRule(
-      clientIpPassThroughMode: (map['clientIpPassThroughMode'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      edgePort: (map['edgePort'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as int).input(),
-      source: (map['source'] as String).input(),
-      sourcePort: (map['sourcePort'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
+      clientIpPassThroughMode: pulumi.Input.fromValue(
+        map['clientIpPassThroughMode'] as String,
+      ),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edgePort: pulumi.Input.fromValue(map['edgePort'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      sourcePort: pulumi.Input.fromValue(map['sourcePort'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
-

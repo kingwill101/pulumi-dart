@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointGroupsGroupEndpointConfiguration {
   /// Indicates whether client IP addresses are reserved.
   final pulumi.Input<bool> enableClientipPreservation;
+
   /// The IP address or domain name of Endpoint N in the endpoint group.
   final pulumi.Input<String> endpoint;
+
   /// Probe Port.
   final pulumi.Input<int> probePort;
+
   /// Probe Protocol.
   final pulumi.Input<String> probeProtocol;
+
   /// The type of Endpoint N in the endpoint group.
   final pulumi.Input<String> type;
+
   /// The weight of Endpoint N in the endpoint group.
   final pulumi.Input<int> weight;
 
@@ -43,15 +48,18 @@ class GetEndpointGroupsGroupEndpointConfiguration {
     };
   }
 
-  factory GetEndpointGroupsGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetEndpointGroupsGroupEndpointConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEndpointGroupsGroupEndpointConfiguration(
-      enableClientipPreservation: (map['enableClientipPreservation'] as bool).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      probePort: (map['probePort'] as int).input(),
-      probeProtocol: (map['probeProtocol'] as String).input(),
-      type: (map['type'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      enableClientipPreservation: pulumi.Input.fromValue(
+        map['enableClientipPreservation'] as bool,
+      ),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      probePort: pulumi.Input.fromValue(map['probePort'] as int),
+      probeProtocol: pulumi.Input.fromValue(map['probeProtocol'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

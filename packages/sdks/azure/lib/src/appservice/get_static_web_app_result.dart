@@ -8,34 +8,48 @@ import 'get_static_web_app_identity.dart';
 class GetStaticWebAppResult {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   final String apiKey;
+
   /// The map of key-value pairs of App Settings for the Static Web App.
   final Map<String, String> appSettings;
+
   /// A `basic_auth` block as defined below.
   final List<GetStaticWebAppBasicAuth> basicAuths;
+
   /// Are changes to the configuration file permitted.
   final bool configurationFileChangesEnabled;
+
   /// The default host name of the Static Web App.
   final String defaultHostName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as defined below.
   final List<GetStaticWebAppIdentity> identities;
+
   /// The Azure region in which this Static Web App exists.
   final String location;
   final String name;
+
   /// Are Preview (Staging) environments enabled.
   final bool previewEnvironmentsEnabled;
+
   /// Should public network access be enabled for the Static Web App.
   final bool publicNetworkAccessEnabled;
+
   /// Repository branch of the Static Web App.
   final String repositoryBranch;
+
   /// Repository URL of the Static Web App.
   final String repositoryUrl;
   final String resourceGroupName;
+
   /// The SKU size of the Static Web App.
   final String skuSize;
+
   /// The SKU tier of the Static Web App.
   final String skuTier;
+
   /// The mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -81,11 +95,19 @@ class GetStaticWebAppResult {
     return <String, dynamic>{
       'apiKey': apiKey,
       'appSettings': appSettings,
-      'basicAuths': pulumi.Input.encodeList<GetStaticWebAppBasicAuth, Map<String, dynamic>>(basicAuths, (value) => value.toMap()),
+      'basicAuths':
+          pulumi.Input.encodeList<
+            GetStaticWebAppBasicAuth,
+            Map<String, dynamic>
+          >(basicAuths, (value) => value.toMap()),
       'configurationFileChangesEnabled': configurationFileChangesEnabled,
       'defaultHostName': defaultHostName,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetStaticWebAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<
+            GetStaticWebAppIdentity,
+            Map<String, dynamic>
+          >(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'previewEnvironmentsEnabled': previewEnvironmentsEnabled,
@@ -103,11 +125,22 @@ class GetStaticWebAppResult {
     return GetStaticWebAppResult(
       apiKey: map['apiKey'] as String,
       appSettings: (map['appSettings'] as Map).cast<String, String>(),
-      basicAuths: pulumi.Input.decodeList<GetStaticWebAppBasicAuth>(map['basicAuths'], (value) => GetStaticWebAppBasicAuth.fromMap((value as Map).cast<String, dynamic>())),
-      configurationFileChangesEnabled: map['configurationFileChangesEnabled'] as bool,
+      basicAuths: pulumi.Input.decodeList<GetStaticWebAppBasicAuth>(
+        map['basicAuths']!,
+        (value) => GetStaticWebAppBasicAuth.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      configurationFileChangesEnabled:
+          map['configurationFileChangesEnabled'] as bool,
       defaultHostName: map['defaultHostName'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetStaticWebAppIdentity>(map['identities'], (value) => GetStaticWebAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetStaticWebAppIdentity>(
+        map['identities']!,
+        (value) => GetStaticWebAppIdentity.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       previewEnvironmentsEnabled: map['previewEnvironmentsEnabled'] as bool,
@@ -121,4 +154,3 @@ class GetStaticWebAppResult {
     );
   }
 }
-

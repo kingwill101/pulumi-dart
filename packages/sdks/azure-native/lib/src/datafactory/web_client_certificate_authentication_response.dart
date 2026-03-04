@@ -8,10 +8,13 @@ class WebClientCertificateAuthenticationResponse {
   /// Type of authentication used to connect to the web table source.
   /// Expected value is 'ClientCertificate'.
   final pulumi.Input<String> authenticationType;
+
   /// Password for the PFX file.
   final pulumi.Input<AzureKeyVaultSecretReferenceResponse> password;
+
   /// Base64-encoded contents of a PFX file.
   final pulumi.Input<AzureKeyVaultSecretReferenceResponse> pfx;
+
   /// The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
 
@@ -30,19 +33,38 @@ class WebClientCertificateAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationType': authenticationType,
-      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
-      'pfx': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(pfx, (value) => value.toMap()),
+      'password':
+          pulumi.Input.mapInputValue<
+            AzureKeyVaultSecretReferenceResponse,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
+      'pfx':
+          pulumi.Input.mapInputValue<
+            AzureKeyVaultSecretReferenceResponse,
+            Map<String, dynamic>
+          >(pfx, (value) => value.toMap()),
       'url': url,
     };
   }
 
-  factory WebClientCertificateAuthenticationResponse.fromMap(Map<String, dynamic> map) {
+  factory WebClientCertificateAuthenticationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebClientCertificateAuthenticationResponse(
-      authenticationType: (map['authenticationType'] as String).input(),
-      password: (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      pfx: (AzureKeyVaultSecretReferenceResponse.fromMap((map['pfx'] as Map).cast<String, dynamic>())).input(),
-      url: (map['url']).input(),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      password: pulumi.Input.fromValue(
+        AzureKeyVaultSecretReferenceResponse.fromMap(
+          (map['password']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      pfx: pulumi.Input.fromValue(
+        AzureKeyVaultSecretReferenceResponse.fromMap(
+          (map['pfx']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      url: pulumi.Input.fromValue(map['url']),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_profile_args.dart';
 import 'configuration_profile_state.dart';
-import 'configuration_profile_validator.dart';
 
 /// Provides an AppConfig Configuration Profile resource.
 ///
@@ -169,30 +168,42 @@ import 'configuration_profile_validator.dart';
 class ConfigurationProfile extends pulumi.CustomResource {
   /// Application ID. Must be between 4 and 7 characters in length.
   late final pulumi.Output<String> applicationId;
+
   /// ARN of the AppConfig Configuration Profile.
   late final pulumi.Output<String> arn;
+
   /// The configuration profile ID.
   late final pulumi.Output<String> configurationProfileId;
+
   /// Description of the configuration profile. Can be at most 1024 characters.
   late final pulumi.Output<String?> description;
+
   /// The identifier for an Key Management Service key to encrypt new configuration data versions in the AppConfig hosted configuration store. This attribute is only used for hosted configuration types. The identifier can be an KMS key ID, alias, or the Amazon Resource Name (ARN) of the key ID or alias.
   late final pulumi.Output<String?> kmsKeyIdentifier;
-  /// URI to locate the configuration. You can specify the AWS AppConfig hosted configuration store, Systems Manager (SSM) document, an SSM Parameter Store parameter, or an Amazon S3 object. For the hosted configuration store, specify `hosted`. For an SSM document, specify either the document name in the format `ssm-document://<Document_name>` or the ARN. For a parameter, specify either the parameter name in the format `ssm-parameter://<Parameter_name>` or the ARN. For an Amazon S3 object, specify the URI in the following format: `s3://<bucket>/<objectKey>`.
+
+  /// URI to locate the configuration. You can specify the AWS AppConfig hosted configuration store, Systems Manager (SSM) document, an SSM Parameter Store parameter, or an Amazon S3 object. For the hosted configuration store, specify `hosted`. For an SSM document, specify either the document name in the format `ssm-document://&lt;Document_name&gt;` or the ARN. For a parameter, specify either the parameter name in the format `ssm-parameter://&lt;Parameter_name&gt;` or the ARN. For an Amazon S3 object, specify the URI in the following format: `s3://&lt;bucket&gt;/&lt;objectKey&gt;`.
   late final pulumi.Output<String> locationUri;
+
   /// Name for the configuration profile. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of an IAM role with permission to access the configuration at the specified `location_uri`. A retrieval role ARN is not required for configurations stored in the AWS AppConfig `hosted` configuration store. It is required for all other sources that store your configuration.
   late final pulumi.Output<String?> retrievalRoleArn;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   late final pulumi.Output<String?> type;
+
   /// Set of methods for validating the configuration. Maximum of 2. See Validator below for more details.
-  late final pulumi.Output<List<ConfigurationProfileValidator>?> validators;
+  late final pulumi.Output<List<Map<String, dynamic>>?> validators;
 
   /// Creates a new [ConfigurationProfile].
   /// [name] The Pulumi resource name.
@@ -203,24 +214,24 @@ class ConfigurationProfile extends pulumi.CustomResource {
     ConfigurationProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appconfig/configurationProfile:ConfigurationProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.arn = registerOutput<String>('arn');
-    this.configurationProfileId = registerOutput<String>('configurationProfileId');
-    this.description = registerOutput<String?>('description');
-    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    this.locationUri = registerOutput<String>('locationUri');
+         'aws:appconfig/configurationProfile:ConfigurationProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    description = registerOutput<String?>('description');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
-    this.validators = registerOutput<List<ConfigurationProfileValidator>?>('validators');
+    region = registerOutput<String>('region');
+    retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
+    validators = registerOutput<List<Map<String, dynamic>>?>('validators');
   }
 
   /// Gets an existing [ConfigurationProfile] resource's state with the given [name] and [id].
@@ -241,23 +252,23 @@ class ConfigurationProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appconfig/configurationProfile:ConfigurationProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.arn = registerOutput<String>('arn');
-    this.configurationProfileId = registerOutput<String>('configurationProfileId');
-    this.description = registerOutput<String?>('description');
-    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    this.locationUri = registerOutput<String>('locationUri');
+         'aws:appconfig/configurationProfile:ConfigurationProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    description = registerOutput<String?>('description');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
-    this.validators = registerOutput<List<ConfigurationProfileValidator>?>('validators');
+    region = registerOutput<String>('region');
+    retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
+    validators = registerOutput<List<Map<String, dynamic>>?>('validators');
   }
 }

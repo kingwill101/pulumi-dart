@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_azure_sql_table_args.dart';
-import 'dataset_azure_sql_table_schema_column.dart';
 import 'dataset_azure_sql_table_state.dart';
 
 /// Manages an Azure SQL Table Dataset inside an Azure Data Factory.
@@ -229,24 +228,34 @@ import 'dataset_azure_sql_table_state.dart';
 class DatasetAzureSqlTable extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Dataset Azure SQL Table.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset Azure SQL Table.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset Azure SQL Table.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// The Data Factory Linked Service ID in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceId;
+
   /// Specifies the name of the Data Factory Dataset Azure SQL Table. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Dataset Azure SQL Table.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The schema name of the table in the Azure SQL Database.
   late final pulumi.Output<String?> schema;
+
   /// A `schema_column` block as defined below.
-  late final pulumi.Output<List<DatasetAzureSqlTableSchemaColumn>?> schemaColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+
   /// The table name of the table in the Azure SQL Database.
   late final pulumi.Output<String?> table;
 
@@ -259,22 +268,26 @@ class DatasetAzureSqlTable extends pulumi.CustomResource {
     DatasetAzureSqlTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetAzureSqlTable:DatasetAzureSqlTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedServiceId = registerOutput<String>('linkedServiceId');
+         'azure:datafactory/datasetAzureSqlTable:DatasetAzureSqlTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceId = registerOutput<String>('linkedServiceId');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schema = registerOutput<String?>('schema');
-    this.schemaColumns = registerOutput<List<DatasetAzureSqlTableSchemaColumn>?>('schemaColumns');
-    this.table = registerOutput<String?>('table');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schema = registerOutput<String?>('schema');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
+    table = registerOutput<String?>('table');
   }
 
   /// Gets an existing [DatasetAzureSqlTable] resource's state with the given [name] and [id].
@@ -295,21 +308,25 @@ class DatasetAzureSqlTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetAzureSqlTable:DatasetAzureSqlTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedServiceId = registerOutput<String>('linkedServiceId');
+         'azure:datafactory/datasetAzureSqlTable:DatasetAzureSqlTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceId = registerOutput<String>('linkedServiceId');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schema = registerOutput<String?>('schema');
-    this.schemaColumns = registerOutput<List<DatasetAzureSqlTableSchemaColumn>?>('schemaColumns');
-    this.table = registerOutput<String?>('table');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schema = registerOutput<String?>('schema');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
+    table = registerOutput<String?>('table');
   }
 }

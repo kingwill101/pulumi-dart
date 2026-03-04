@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
   /// The IPv4 address type. Possible values are `Dynamic` and `Static`.
   final pulumi.Input<String>? ipv4AddressType;
+
   /// The IPv6 address type. Possible values are `Dynamic` and `Static`.
   final pulumi.Input<String>? ipv6AddressType;
+
   /// The MAC address type. Possible values are `Dynamic` and `Static`.
   final pulumi.Input<String>? macAddressType;
+
   /// The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
   final pulumi.Input<String> name;
+
   /// The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
   final pulumi.Input<String>? virtualNetworkId;
 
@@ -38,14 +42,31 @@ class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
     };
   }
 
-  factory VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineManagerVirtualMachineInstanceNetworkInterface(
-      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType']! as String).input(),
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType']! as String).input(),
-      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType']! as String).input(),
-      name: (map['name'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      ipv4AddressType: (() {
+        final guardedValue = map['ipv4AddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AddressType: (() {
+        final guardedValue = map['ipv6AddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      macAddressType: (() {
+        final guardedValue = map['macAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      virtualNetworkId: (() {
+        final guardedValue = map['virtualNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

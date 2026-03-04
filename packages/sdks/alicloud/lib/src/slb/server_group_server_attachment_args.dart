@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupServerAttachmentArgs {
   /// The description of the backend server.
   final pulumi.Input<String>? description;
+
   /// The port that is used by the backend server. Valid values: `1` to `65535`.
   final pulumi.Input<int> port;
+
   /// The ID of the server group.
   final pulumi.Input<String> serverGroupId;
+
   /// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
   final pulumi.Input<String> serverId;
+
   /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
   final pulumi.Input<String>? type;
+
   /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
   final pulumi.Input<int>? weight;
 
@@ -49,13 +54,24 @@ class ServerGroupServerAttachmentArgs {
 
   factory ServerGroupServerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      port: (map['port'] as int).input(),
-      serverGroupId: (map['serverGroupId'] as String).input(),
-      serverId: (map['serverId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

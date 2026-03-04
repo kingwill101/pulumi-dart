@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterMulticastDomainSourcesArgs {
   /// A list of the multicast domain IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the multicast domain to which the multicast source belongs.
   final pulumi.Input<String> transitRouterMulticastDomainId;
 
@@ -32,12 +34,23 @@ class GetTransitRouterMulticastDomainSourcesArgs {
     };
   }
 
-  factory GetTransitRouterMulticastDomainSourcesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterMulticastDomainSourcesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterMulticastDomainSourcesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainId'] as String,
+      ),
     );
   }
 }
-

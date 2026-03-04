@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServicePlanRouteForVnetArgs {
   /// The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
   final pulumi.Input<String>? endAddress;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the App Service plan.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Virtual Network route.
   final pulumi.Input<String>? routeName;
+
   /// The type of route this is:
   /// DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
   /// INHERITED - Routes inherited from the real Virtual Network routes
@@ -24,8 +29,10 @@ class AppServicePlanRouteForVnetArgs {
   ///
   /// These values will be used for syncing an app's routes with those from a Virtual Network.
   final pulumi.Input<String>? routeType;
+
   /// The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   final pulumi.Input<String>? startAddress;
+
   /// Name of the Virtual Network.
   final pulumi.Input<String> vnetName;
 
@@ -64,15 +71,36 @@ class AppServicePlanRouteForVnetArgs {
 
   factory AppServicePlanRouteForVnetArgs.fromMap(Map<String, dynamic> map) {
     return AppServicePlanRouteForVnetArgs(
-      endAddress: map['endAddress'] == null ? null : (map['endAddress']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
-      routeType: map['routeType'] == null ? null : (map['routeType']! as String).input(),
-      startAddress: map['startAddress'] == null ? null : (map['startAddress']! as String).input(),
-      vnetName: (map['vnetName'] as String).input(),
+      endAddress: (() {
+        final guardedValue = map['endAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routeName: (() {
+        final guardedValue = map['routeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeType: (() {
+        final guardedValue = map['routeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startAddress: (() {
+        final guardedValue = map['startAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vnetName: pulumi.Input.fromValue(map['vnetName'] as String),
     );
   }
 }
-

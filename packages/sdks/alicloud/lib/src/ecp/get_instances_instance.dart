@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// Instance Description.
   final pulumi.Input<String> description;
+
   /// The ID of the Instance.
   final pulumi.Input<String> id;
+
   /// The ID Of The Image.
   final pulumi.Input<String> imageId;
+
   /// InstanceId.
   final pulumi.Input<String> instanceId;
+
   /// Instance Name.
   final pulumi.Input<String> instanceName;
+
   /// Instance Type.
   final pulumi.Input<String> instanceType;
+
   /// The Key Name.
   final pulumi.Input<String> keyPairName;
+
   /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
   final pulumi.Input<String> paymentType;
+
   /// Resolution.
   final pulumi.Input<String> resolution;
+
   /// Security Group ID.
   final pulumi.Input<String> securityGroupId;
+
   /// Instance Status.
   final pulumi.Input<String> status;
+
   /// VNC login address.
   final pulumi.Input<String> vncUrl;
+
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
   final pulumi.Input<String> zoneId;
@@ -84,21 +96,20 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      keyPairName: (map['keyPairName'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      resolution: (map['resolution'] as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      status: (map['status'] as String).input(),
-      vncUrl: (map['vncUrl'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      keyPairName: pulumi.Input.fromValue(map['keyPairName'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      resolution: pulumi.Input.fromValue(map['resolution'] as String),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vncUrl: pulumi.Input.fromValue(map['vncUrl'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

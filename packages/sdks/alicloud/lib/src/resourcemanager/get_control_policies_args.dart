@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPoliciesArgs {
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Control Policy IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
   final pulumi.Input<String>? language;
+
   /// A regex string to filter results by Control Policy name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The policy type of control policy. Valid values `System` and `Custom`.
   final pulumi.Input<String>? policyType;
 
@@ -49,13 +54,36 @@ class GetControlPoliciesArgs {
 
   factory GetControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      language: map['language'] == null ? null : (map['language']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      language: (() {
+        final guardedValue = map['language'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

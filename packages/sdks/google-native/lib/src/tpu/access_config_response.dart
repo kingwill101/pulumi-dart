@@ -9,20 +9,15 @@ class AccessConfigResponse {
 
   /// Creates a new [AccessConfigResponse].
   /// [externalIp] An external IP address associated with the TPU worker.
-  AccessConfigResponse({
-    required this.externalIp,
-  });
+  AccessConfigResponse({required this.externalIp});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalIp': externalIp,
-    };
+    return <String, dynamic>{'externalIp': externalIp};
   }
 
   factory AccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return AccessConfigResponse(
-      externalIp: (map['externalIp'] as String).input(),
+      externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
     );
   }
 }
-

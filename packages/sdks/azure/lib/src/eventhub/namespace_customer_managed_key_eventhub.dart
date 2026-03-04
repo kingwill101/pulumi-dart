@@ -4,7 +4,7 @@ import 'namespace_customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a EventHub Namespace.
 ///
-/// !> **Note:** In 2.x versions of the Azure Provider during deletion this resource will **delete and recreate the parent EventHub Namespace which may involve data loss** as it's not possible to remove the Customer Managed Key from the EventHub Namespace once it's been added. Version 3.0 of the Azure Provider will change this so that the Delete operation is a noop, requiring the parent EventHub Namespace is deleted/recreated to remove the Customer Managed Key.
+/// !&gt; **Note:** In 2.x versions of the Azure Provider during deletion this resource will **delete and recreate the parent EventHub Namespace which may involve data loss** as it's not possible to remove the Customer Managed Key from the EventHub Namespace once it's been added. Version 3.0 of the Azure Provider will change this so that the Delete operation is a noop, requiring the parent EventHub Namespace is deleted/recreated to remove the Customer Managed Key.
 ///
 /// ## Example Usage
 ///
@@ -1277,7 +1277,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -1292,15 +1292,18 @@ import 'namespace_customer_managed_key_state.dart';
 class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
   /// The ID of the EventHub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubNamespaceId;
+
   /// Whether to enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
+
   /// The list of keys of Key Vault.
   late final pulumi.Output<List<String>> keyVaultKeyIds;
+
   /// The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   ///
-  /// > **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
+  /// &gt; **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
   ///
-  /// > **Note:** If using `user_assigned_identity_id`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
+  /// &gt; **Note:** If using `user_assigned_identity_id`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
   /// Creates a new [NamespaceCustomerManagedKeyEventhub].
@@ -1312,15 +1315,17 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
     NamespaceCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 
   /// Gets an existing [NamespaceCustomerManagedKeyEventhub] resource's state with the given [name] and [id].
@@ -1341,14 +1346,16 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
-    this.infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
-    this.keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
+    infrastructureEncryptionEnabled = registerOutput<bool?>(
+      'infrastructureEncryptionEnabled',
+    );
+    keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 }

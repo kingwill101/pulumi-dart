@@ -1,5 +1,3 @@
-library module_config;
-
 export 'config/features.dart';
 export 'config/features_api_management.dart';
 export 'config/features_app_configuration.dart';

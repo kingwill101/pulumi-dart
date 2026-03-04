@@ -8,31 +8,43 @@ import 'agent_flow_timeouts.dart';
 class AgentFlowState {
   /// The Amazon Resource Name (ARN) of the flow.
   final pulumi.Input<String>? arn;
+
   /// The time at which the flow was created.
   final pulumi.Input<String>? createdAt;
+
   /// The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
   final pulumi.Input<String>? customerEncryptionKeyArn;
+
   /// A definition of the nodes and connections between nodes in the flow. See Definition for more information.
   final pulumi.Input<AgentFlowDefinition>? definition;
+
   /// A description for the flow.
   final pulumi.Input<String>? description;
+
   /// The Amazon Resource Name (ARN) of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? executionRoleArn;
+
   /// A name for the flow.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The status of the flow.
   final pulumi.Input<String>? status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AgentFlowTimeouts>? timeouts;
+
   /// The time at which the flow was last updated.
   final pulumi.Input<String>? updatedAt;
+
   /// The version of the flow.
   final pulumi.Input<String>? version;
 
@@ -73,7 +85,11 @@ class AgentFlowState {
       'arn': ?arn,
       'createdAt': ?createdAt,
       'customerEncryptionKeyArn': ?customerEncryptionKeyArn,
-      'definition': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinition,
+            Map<String, dynamic>
+          >(definition, (value) => value.toMap()),
       'description': ?description,
       'executionRoleArn': ?executionRoleArn,
       'name': ?name,
@@ -81,7 +97,11 @@ class AgentFlowState {
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentFlowTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'updatedAt': ?updatedAt,
       'version': ?version,
     };
@@ -89,21 +109,88 @@ class AgentFlowState {
 
   factory AgentFlowState.fromMap(Map<String, dynamic> map) {
     return AgentFlowState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : ((map['customerEncryptionKeyArn'] as String).input()).input(),
-      definition: map['definition'] == null ? null : ((AgentFlowDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AgentFlowTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEncryptionKeyArn: (() {
+        final guardedValue = map['customerEncryptionKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionRoleArn: (() {
+        final guardedValue = map['executionRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

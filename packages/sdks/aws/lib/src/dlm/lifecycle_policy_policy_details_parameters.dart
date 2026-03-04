@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LifecyclePolicyPolicyDetailsParameters {
   /// Indicates whether to exclude the root volume from snapshots created using CreateSnapshots. The default is `false`.
   final pulumi.Input<bool>? excludeBootVolume;
+
   /// Applies to AMI lifecycle policies only. Indicates whether targeted instances are rebooted when the lifecycle policy runs. `true` indicates that targeted instances are not rebooted when the policy runs. `false` indicates that target instances are rebooted when the policy runs. The default is `true` (instances are not rebooted).
   final pulumi.Input<bool>? noReboot;
 
@@ -23,11 +24,20 @@ class LifecyclePolicyPolicyDetailsParameters {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsParameters.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsParameters(
-      excludeBootVolume: map['excludeBootVolume'] == null ? null : ((map['excludeBootVolume'] as bool).input()).input(),
-      noReboot: map['noReboot'] == null ? null : ((map['noReboot'] as bool).input()).input(),
+      excludeBootVolume: (() {
+        final guardedValue = map['excludeBootVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      noReboot: (() {
+        final guardedValue = map['noReboot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

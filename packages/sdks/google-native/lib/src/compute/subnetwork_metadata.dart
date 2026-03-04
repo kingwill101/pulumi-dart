@@ -3,16 +3,15 @@ enum SubnetworkMetadata {
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
-  const SubnetworkMetadata(this.value);
-  final String value;
+  const SubnetworkMetadata(this.wireValue);
+  final String wireValue;
 
   static SubnetworkMetadata fromValue(String value) {
     for (final item in SubnetworkMetadata.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkMetadata value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification {
   /// Specifies the strategy to use in launching Spot instance fleets. Valid values include `capacity-optimized`, `diversified`, `lowest-price`, `price-capacity-optimized`. See the [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html#emr-instance-fleet-allocation-strategy) for details on each strategy type.
   final pulumi.Input<String> allocationStrategy;
+
   /// Defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
   final pulumi.Input<int>? blockDurationMinutes;
+
   /// Action to take when TargetSpotCapacity has not been fulfilled when the TimeoutDurationMinutes has expired; that is, when all Spot instances could not be provisioned within the Spot provisioning timeout. Valid values are `TERMINATE_CLUSTER` and `SWITCH_TO_ON_DEMAND`. SWITCH_TO_ON_DEMAND specifies that if no Spot instances are available, On-Demand Instances should be provisioned to fulfill any remaining Spot capacity.
   final pulumi.Input<String> timeoutAction;
+
   /// Spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the TimeOutAction is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.
   final pulumi.Input<int> timeoutDurationMinutes;
 
@@ -33,13 +36,22 @@ class ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification {
     };
   }
 
-  factory ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification.fromMap(Map<String, dynamic> map) {
+  factory ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification(
-      allocationStrategy: (map['allocationStrategy'] as String).input(),
-      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : ((map['blockDurationMinutes'] as int).input()).input(),
-      timeoutAction: (map['timeoutAction'] as String).input(),
-      timeoutDurationMinutes: (map['timeoutDurationMinutes'] as int).input(),
+      allocationStrategy: pulumi.Input.fromValue(
+        map['allocationStrategy'] as String,
+      ),
+      blockDurationMinutes: (() {
+        final guardedValue = map['blockDurationMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeoutAction: pulumi.Input.fromValue(map['timeoutAction'] as String),
+      timeoutDurationMinutes: pulumi.Input.fromValue(
+        map['timeoutDurationMinutes'] as int,
+      ),
     );
   }
 }
-

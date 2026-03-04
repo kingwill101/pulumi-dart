@@ -5,16 +5,17 @@ enum ServiceProviderProvisioningState {
   valueProvisioned("Provisioned"),
   valueDeprovisioning("Deprovisioning");
 
-  const ServiceProviderProvisioningState(this.value);
-  final String value;
+  const ServiceProviderProvisioningState(this.wireValue);
+  final String wireValue;
 
   static ServiceProviderProvisioningState fromValue(String value) {
     for (final item in ServiceProviderProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceProviderProvisioningState value: $value');
+    throw ArgumentError(
+      'Unknown ServiceProviderProvisioningState value: $value',
+    );
   }
 }
-

@@ -10,12 +10,16 @@ import 'mltable_data.dart';
 class RegistryDataVersionArgs {
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<MLTableData> dataVersionBaseProperties;
+
   /// Container name.
   final pulumi.Input<String> name;
+
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Version identifier.
   final pulumi.Input<String>? version;
 
@@ -35,7 +39,11 @@ class RegistryDataVersionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataVersionBaseProperties': pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(dataVersionBaseProperties, (value) => value.toMap()),
+      'dataVersionBaseProperties':
+          pulumi.Input.mapInputValue<MLTableData, Map<String, dynamic>>(
+            dataVersionBaseProperties,
+            (value) => value.toMap(),
+          ),
       'name': name,
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
@@ -45,12 +53,21 @@ class RegistryDataVersionArgs {
 
   factory RegistryDataVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryDataVersionArgs(
-      dataVersionBaseProperties: (MLTableData.fromMap((map['dataVersionBaseProperties'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      dataVersionBaseProperties: pulumi.Input.fromValue(
+        MLTableData.fromMap(
+          (map['dataVersionBaseProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

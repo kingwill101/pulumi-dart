@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccessMonitorState {
   /// The name of the bucket.
   final pulumi.Input<String>? bucket;
+
   /// Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
   final pulumi.Input<String>? status;
 
   /// Creates a new [BucketAccessMonitorState].
   /// [bucket] The name of the bucket.
   /// [status] Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
-  BucketAccessMonitorState({
-    this.bucket,
-    this.status,
-  });
+  BucketAccessMonitorState({this.bucket, this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': ?bucket,
-      'status': ?status,
-    };
+    return <String, dynamic>{'bucket': ?bucket, 'status': ?status};
   }
 
   factory BucketAccessMonitorState.fromMap(Map<String, dynamic> map) {
     return BucketAccessMonitorState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

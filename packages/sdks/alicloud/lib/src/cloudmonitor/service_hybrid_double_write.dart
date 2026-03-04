@@ -6,7 +6,7 @@ import 'service_hybrid_double_write_state.dart';
 ///
 /// For information about Cloud Monitor Service Hybrid Double Write and how to use it, see [What is Hybrid Double Write](https://next.api.alibabacloud.com/document/Cms/2018-03-08/CreateHybridDoubleWrite).
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -217,10 +217,13 @@ import 'service_hybrid_double_write_state.dart';
 class ServiceHybridDoubleWrite extends pulumi.CustomResource {
   /// Target Namespace.
   late final pulumi.Output<String> namespace;
+
   /// Source Namespace.
   late final pulumi.Output<String> sourceNamespace;
+
   /// Source UserId.
   late final pulumi.Output<String> sourceUserId;
+
   /// Target UserId.
   late final pulumi.Output<String> userId;
 
@@ -233,15 +236,15 @@ class ServiceHybridDoubleWrite extends pulumi.CustomResource {
     ServiceHybridDoubleWriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.namespace = registerOutput<String>('namespace');
-    this.sourceNamespace = registerOutput<String>('sourceNamespace');
-    this.sourceUserId = registerOutput<String>('sourceUserId');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    namespace = registerOutput<String>('namespace');
+    sourceNamespace = registerOutput<String>('sourceNamespace');
+    sourceUserId = registerOutput<String>('sourceUserId');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [ServiceHybridDoubleWrite] resource's state with the given [name] and [id].
@@ -262,14 +265,14 @@ class ServiceHybridDoubleWrite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.namespace = registerOutput<String>('namespace');
-    this.sourceNamespace = registerOutput<String>('sourceNamespace');
-    this.sourceUserId = registerOutput<String>('sourceUserId');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    namespace = registerOutput<String>('namespace');
+    sourceNamespace = registerOutput<String>('sourceNamespace');
+    sourceUserId = registerOutput<String>('sourceUserId');
+    userId = registerOutput<String>('userId');
   }
 }

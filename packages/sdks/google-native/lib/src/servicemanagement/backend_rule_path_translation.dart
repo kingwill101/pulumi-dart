@@ -3,16 +3,15 @@ enum BackendRulePathTranslation {
   constantAddress("CONSTANT_ADDRESS"),
   appendPathToAddress("APPEND_PATH_TO_ADDRESS");
 
-  const BackendRulePathTranslation(this.value);
-  final String value;
+  const BackendRulePathTranslation(this.wireValue);
+  final String wireValue;
 
   static BackendRulePathTranslation fromValue(String value) {
     for (final item in BackendRulePathTranslation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendRulePathTranslation value: $value');
   }
 }
-

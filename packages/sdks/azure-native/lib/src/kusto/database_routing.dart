@@ -3,16 +3,15 @@ enum DatabaseRouting {
   valueSingle("Single"),
   valueMulti("Multi");
 
-  const DatabaseRouting(this.value);
-  final String value;
+  const DatabaseRouting(this.wireValue);
+  final String wireValue;
 
   static DatabaseRouting fromValue(String value) {
     for (final item in DatabaseRouting.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseRouting value: $value');
   }
 }
-

@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeGroupArgs {
   /// The Elastic SAN ID within which the Elastic SAN Volume Group exists.
   final pulumi.Input<String> elasticSanId;
+
   /// The name of the Elastic SAN Volume Group.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetVolumeGroupArgs].
   /// [elasticSanId] The Elastic SAN ID within which the Elastic SAN Volume Group exists.
   /// [name] The name of the Elastic SAN Volume Group.
-  GetVolumeGroupArgs({
-    required this.elasticSanId,
-    required this.name,
-  });
+  GetVolumeGroupArgs({required this.elasticSanId, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'elasticSanId': elasticSanId,
-      'name': name,
-    };
+    return <String, dynamic>{'elasticSanId': elasticSanId, 'name': name};
   }
 
   factory GetVolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupArgs(
-      elasticSanId: (map['elasticSanId'] as String).input(),
-      name: (map['name'] as String).input(),
+      elasticSanId: pulumi.Input.fromValue(map['elasticSanId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

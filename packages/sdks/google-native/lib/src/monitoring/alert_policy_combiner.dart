@@ -5,16 +5,15 @@ enum AlertPolicyCombiner {
   or("OR"),
   andWithMatchingResource("AND_WITH_MATCHING_RESOURCE");
 
-  const AlertPolicyCombiner(this.value);
-  final String value;
+  const AlertPolicyCombiner(this.wireValue);
+  final String wireValue;
 
   static AlertPolicyCombiner fromValue(String value) {
     for (final item in AlertPolicyCombiner.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertPolicyCombiner value: $value');
   }
 }
-

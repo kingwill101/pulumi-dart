@@ -147,18 +147,25 @@ import 'system_data_response.dart';
 class StaticMember extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the scope assignment resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource region.
   late final pulumi.Output<String> region;
+
   /// Resource Id.
   late final pulumi.Output<String?> resourceId;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -171,18 +178,18 @@ class StaticMember extends pulumi.CustomResource {
     StaticMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:StaticMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:StaticMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String?>('resourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

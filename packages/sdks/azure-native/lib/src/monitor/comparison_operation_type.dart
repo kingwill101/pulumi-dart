@@ -7,16 +7,15 @@ enum ComparisonOperationType {
   valueLessThan("LessThan"),
   valueLessThanOrEqual("LessThanOrEqual");
 
-  const ComparisonOperationType(this.value);
-  final String value;
+  const ComparisonOperationType(this.wireValue);
+  final String wireValue;
 
   static ComparisonOperationType fromValue(String value) {
     for (final item in ComparisonOperationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComparisonOperationType value: $value');
   }
 }
-

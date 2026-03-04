@@ -7,6 +7,7 @@ import 'billing_meter_details_response.dart';
 class CostInformationResponse {
   /// Default url to display billing information.
   final pulumi.Input<String> billingInfoUrl;
+
   /// Details on the various billing aspects for the product system.
   final pulumi.Input<List<BillingMeterDetailsResponse>> billingMeterDetails;
 
@@ -21,15 +22,32 @@ class CostInformationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'billingInfoUrl': billingInfoUrl,
-      'billingMeterDetails': pulumi.Input.mapInputValue<List<BillingMeterDetailsResponse>, List<Map<String, dynamic>>>(billingMeterDetails, (value) => pulumi.Input.encodeList<BillingMeterDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'billingMeterDetails':
+          pulumi.Input.mapInputValue<
+            List<BillingMeterDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            billingMeterDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BillingMeterDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CostInformationResponse.fromMap(Map<String, dynamic> map) {
     return CostInformationResponse(
-      billingInfoUrl: (map['billingInfoUrl'] as String).input(),
-      billingMeterDetails: (pulumi.Input.decodeList<BillingMeterDetailsResponse>(map['billingMeterDetails'], (value) => BillingMeterDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      billingInfoUrl: pulumi.Input.fromValue(map['billingInfoUrl'] as String),
+      billingMeterDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<BillingMeterDetailsResponse>(
+          map['billingMeterDetails']!,
+          (value) => BillingMeterDetailsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

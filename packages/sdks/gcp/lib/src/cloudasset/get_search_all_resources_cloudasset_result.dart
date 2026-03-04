@@ -6,9 +6,11 @@ import 'get_search_all_resources_result.dart';
 /// Result data returned by getSearchAllResources.
 class GetSearchAllResourcesCloudassetResult {
   final List<String>? assetTypes;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? query;
+
   /// A list of search results based on provided inputs. Structure is defined below.
   final List<GetSearchAllResourcesResult> results;
   final String scope;
@@ -32,19 +34,37 @@ class GetSearchAllResourcesCloudassetResult {
       'assetTypes': ?assetTypes,
       'id': id,
       'query': ?query,
-      'results': pulumi.Input.encodeList<GetSearchAllResourcesResult, Map<String, dynamic>>(results, (value) => value.toMap()),
+      'results':
+          pulumi.Input.encodeList<
+            GetSearchAllResourcesResult,
+            Map<String, dynamic>
+          >(results, (value) => value.toMap()),
       'scope': scope,
     };
   }
 
-  factory GetSearchAllResourcesCloudassetResult.fromMap(Map<String, dynamic> map) {
+  factory GetSearchAllResourcesCloudassetResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSearchAllResourcesCloudassetResult(
-      assetTypes: map['assetTypes'] == null ? null : (map['assetTypes']! as List).cast<String>(),
+      assetTypes: (() {
+        final guardedValue = map['assetTypes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
-      query: map['query'] == null ? null : map['query']! as String,
-      results: pulumi.Input.decodeList<GetSearchAllResourcesResult>(map['results'], (value) => GetSearchAllResourcesResult.fromMap((value as Map).cast<String, dynamic>())),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      results: pulumi.Input.decodeList<GetSearchAllResourcesResult>(
+        map['results']!,
+        (value) => GetSearchAllResourcesResult.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       scope: map['scope'] as String,
     );
   }
 }
-

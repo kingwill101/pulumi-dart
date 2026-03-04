@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SupportedCapabilitiesResponse {
   /// True if the image from which the OS disk is created supports accelerated networking.
   final pulumi.Input<bool>? acceleratedNetwork;
+
   /// CPU architecture supported by an OS disk.
   final pulumi.Input<String>? architecture;
+
   /// The disk controllers that an OS disk supports. If set it can be SCSI or SCSI, NVME or NVME, SCSI.
   final pulumi.Input<String>? diskControllerTypes;
 
@@ -31,10 +33,21 @@ class SupportedCapabilitiesResponse {
 
   factory SupportedCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return SupportedCapabilitiesResponse(
-      acceleratedNetwork: map['acceleratedNetwork'] == null ? null : (map['acceleratedNetwork']! as bool).input(),
-      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
-      diskControllerTypes: map['diskControllerTypes'] == null ? null : (map['diskControllerTypes']! as String).input(),
+      acceleratedNetwork: (() {
+        final guardedValue = map['acceleratedNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskControllerTypes: (() {
+        final guardedValue = map['diskControllerTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

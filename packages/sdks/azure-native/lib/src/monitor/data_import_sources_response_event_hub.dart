@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataImportSourcesResponseEventHub {
   /// Event Hub consumer group name
   final pulumi.Input<String>? consumerGroup;
+
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
+
   /// The stream to collect from EventHub
   final pulumi.Input<String>? stream;
 
@@ -32,10 +34,21 @@ class DataImportSourcesResponseEventHub {
 
   factory DataImportSourcesResponseEventHub.fromMap(Map<String, dynamic> map) {
     return DataImportSourcesResponseEventHub(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      stream: map['stream'] == null ? null : (map['stream']! as String).input(),
+      consumerGroup: (() {
+        final guardedValue = map['consumerGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stream: (() {
+        final guardedValue = map['stream'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

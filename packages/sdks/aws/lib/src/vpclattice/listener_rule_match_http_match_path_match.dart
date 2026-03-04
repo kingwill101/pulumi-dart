@@ -7,6 +7,7 @@ class ListenerRuleMatchHttpMatchPathMatch {
   /// Indicates whether the match is case sensitive.
   /// Default is `false`.
   final pulumi.Input<bool>? caseSensitive;
+
   /// The header match type.
   /// See Path Match `match` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatchPathMatchMatch> match;
@@ -22,15 +23,28 @@ class ListenerRuleMatchHttpMatchPathMatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caseSensitive': ?caseSensitive,
-      'match': pulumi.Input.mapInputValue<ListenerRuleMatchHttpMatchPathMatchMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
+      'match':
+          pulumi.Input.mapInputValue<
+            ListenerRuleMatchHttpMatchPathMatchMatch,
+            Map<String, dynamic>
+          >(match, (value) => value.toMap()),
     };
   }
 
-  factory ListenerRuleMatchHttpMatchPathMatch.fromMap(Map<String, dynamic> map) {
+  factory ListenerRuleMatchHttpMatchPathMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerRuleMatchHttpMatchPathMatch(
-      caseSensitive: map['caseSensitive'] == null ? null : ((map['caseSensitive'] as bool).input()).input(),
-      match: (ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      caseSensitive: (() {
+        final guardedValue = map['caseSensitive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      match: pulumi.Input.fromValue(
+        ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(
+          (map['match']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

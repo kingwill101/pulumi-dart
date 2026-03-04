@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostingEnvironmentProfileResponse {
   /// Resource ID of the App Service Environment.
   final pulumi.Input<String>? id;
+
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
+
   /// Resource type of the App Service Environment.
   final pulumi.Input<String> type;
 
@@ -22,19 +24,18 @@ class HostingEnvironmentProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'id': ?id, 'name': name, 'type': type};
   }
 
   factory HostingEnvironmentProfileResponse.fromMap(Map<String, dynamic> map) {
     return HostingEnvironmentProfileResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

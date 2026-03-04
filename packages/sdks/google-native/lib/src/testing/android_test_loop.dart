@@ -8,12 +8,16 @@ import 'file_reference.dart';
 class AndroidTestLoop {
   /// The APK for the application under test.
   final pulumi.Input<FileReference>? appApk;
+
   /// A multi-apk app bundle for the application under test.
   final pulumi.Input<AppBundle>? appBundle;
+
   /// The java package for the application under test. The default is determined by examining the application's manifest.
   final pulumi.Input<String>? appPackageId;
+
   /// The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field.
   final pulumi.Input<List<String>>? scenarioLabels;
+
   /// The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.
   final pulumi.Input<List<int>>? scenarios;
 
@@ -33,8 +37,16 @@ class AndroidTestLoop {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appApk': ?pulumi.Input.mapOptionalInputValue<FileReference, Map<String, dynamic>>(appApk, (value) => value.toMap()),
-      'appBundle': ?pulumi.Input.mapOptionalInputValue<AppBundle, Map<String, dynamic>>(appBundle, (value) => value.toMap()),
+      'appApk':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileReference,
+            Map<String, dynamic>
+          >(appApk, (value) => value.toMap()),
+      'appBundle':
+          ?pulumi.Input.mapOptionalInputValue<AppBundle, Map<String, dynamic>>(
+            appBundle,
+            (value) => value.toMap(),
+          ),
       'appPackageId': ?appPackageId,
       'scenarioLabels': ?scenarioLabels,
       'scenarios': ?scenarios,
@@ -43,12 +55,35 @@ class AndroidTestLoop {
 
   factory AndroidTestLoop.fromMap(Map<String, dynamic> map) {
     return AndroidTestLoop(
-      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk']! as Map).cast<String, dynamic>())).input(),
-      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle']! as Map).cast<String, dynamic>())).input(),
-      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId']! as String).input(),
-      scenarioLabels: map['scenarioLabels'] == null ? null : ((map['scenarioLabels']! as List).cast<String>()).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<int>()).input(),
+      appApk: (() {
+        final guardedValue = map['appApk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileReference.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      appBundle: (() {
+        final guardedValue = map['appBundle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppBundle.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      appPackageId: (() {
+        final guardedValue = map['appPackageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scenarioLabels: (() {
+        final guardedValue = map['scenarioLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scenarios: (() {
+        final guardedValue = map['scenarios'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

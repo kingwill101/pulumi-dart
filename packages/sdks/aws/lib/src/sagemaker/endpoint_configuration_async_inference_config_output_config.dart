@@ -6,10 +6,16 @@ import 'endpoint_configuration_async_inference_config_output_config_notification
 class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   /// KMS key that SageMaker AI uses to encrypt the asynchronous inference output in S3.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Configuration for notifications of inference results for asynchronous inference.
-  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig>? notificationConfig;
+  final pulumi.Input<
+    EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig
+  >?
+  notificationConfig;
+
   /// S3 location to upload failure inference responses to.
   final pulumi.Input<String>? s3FailurePath;
+
   /// S3 location to upload inference responses to.
   final pulumi.Input<String> s3OutputPath;
 
@@ -28,19 +34,40 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kmsKeyId': ?kmsKeyId,
-      'notificationConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
+      'notificationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig,
+            Map<String, dynamic>
+          >(notificationConfig, (value) => value.toMap()),
       's3FailurePath': ?s3FailurePath,
       's3OutputPath': s3OutputPath,
     };
   }
 
-  factory EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(Map<String, dynamic> map) {
+  factory EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointConfigurationAsyncInferenceConfigOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : ((EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      s3FailurePath: map['s3FailurePath'] == null ? null : ((map['s3FailurePath'] as String).input()).input(),
-      s3OutputPath: (map['s3OutputPath'] as String).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationConfig: (() {
+        final guardedValue = map['notificationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3FailurePath: (() {
+        final guardedValue = map['s3FailurePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3OutputPath: pulumi.Input.fromValue(map['s3OutputPath'] as String),
     );
   }
 }
-

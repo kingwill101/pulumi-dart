@@ -4,7 +4,7 @@ import 'qos_association_v3_state.dart';
 
 /// Manages a V3 block storage Qos Association resource within OpenStack.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 ///
 /// ## Example Usage
@@ -187,10 +187,12 @@ class QosAssociationV3 extends pulumi.CustomResource {
   /// ID of the qos to associate. Changing this creates
   /// a new qos association.
   late final pulumi.Output<String> qosId;
+
   /// The region in which to create the qos association.
   /// If omitted, the `region` argument of the provider is used. Changing
   /// this creates a new qos association.
   late final pulumi.Output<String> region;
+
   /// ID of the volume_type to associate.
   /// Changing this creates a new qos association.
   late final pulumi.Output<String> volumeTypeId;
@@ -204,14 +206,14 @@ class QosAssociationV3 extends pulumi.CustomResource {
     QosAssociationV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.qosId = registerOutput<String>('qosId');
-    this.region = registerOutput<String>('region');
-    this.volumeTypeId = registerOutput<String>('volumeTypeId');
+         'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    qosId = registerOutput<String>('qosId');
+    region = registerOutput<String>('region');
+    volumeTypeId = registerOutput<String>('volumeTypeId');
   }
 
   /// Gets an existing [QosAssociationV3] resource's state with the given [name] and [id].
@@ -232,13 +234,13 @@ class QosAssociationV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.qosId = registerOutput<String>('qosId');
-    this.region = registerOutput<String>('region');
-    this.volumeTypeId = registerOutput<String>('volumeTypeId');
+         'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    qosId = registerOutput<String>('qosId');
+    region = registerOutput<String>('region');
+    volumeTypeId = registerOutput<String>('volumeTypeId');
   }
 }

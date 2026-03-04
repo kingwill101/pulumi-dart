@@ -4,16 +4,15 @@ enum SqlServerAuthenticationType {
   valueWindows("Windows"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
-  const SqlServerAuthenticationType(this.value);
-  final String value;
+  const SqlServerAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SqlServerAuthenticationType fromValue(String value) {
     for (final item in SqlServerAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlServerAuthenticationType value: $value');
   }
 }
-

@@ -10,9 +10,9 @@ import 'get_industrial_serice_result.dart';
 
 /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.117.0.
+/// &gt; **NOTE:** Available since v1.117.0.
 ///
-/// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+/// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 ///
 /// ## Example Usage
 ///
@@ -149,9 +149,9 @@ Future<GetIndustrialPidLoopsResult> getIndustrialPidLoops(
 
 /// This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
-/// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+/// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 ///
 /// ## Example Usage
 ///
@@ -282,9 +282,9 @@ Future<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizations(
 
 /// This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
-/// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+/// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 ///
 /// ## Example Usage
 ///
@@ -415,11 +415,11 @@ Future<GetIndustrialPidProjectsResult> getIndustrialPidProjects(
 
 /// Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
 ///
-/// > **NOTE:** Available since v1.115.0.
+/// &gt; **NOTE:** Available since v1.115.0.
 ///
-/// > **NOTE:** The Brain Industrial service is not support in the international site.
+/// &gt; **NOTE:** The Brain Industrial service is not support in the international site.
 ///
-/// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+/// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 ///
 /// ## Example Usage
 ///

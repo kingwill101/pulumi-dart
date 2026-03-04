@@ -9,20 +9,19 @@ class QueuedProvisioning {
 
   /// Creates a new [QueuedProvisioning].
   /// [enabled] Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
-  QueuedProvisioning({
-    this.enabled,
-  });
+  QueuedProvisioning({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory QueuedProvisioning.fromMap(Map<String, dynamic> map) {
     return QueuedProvisioning(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

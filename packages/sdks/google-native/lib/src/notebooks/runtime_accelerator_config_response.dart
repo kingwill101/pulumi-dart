@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeAcceleratorConfigResponse {
   /// Count of cores of this accelerator.
   final pulumi.Input<String> coreCount;
+
   /// Accelerator model.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,13 @@ class RuntimeAcceleratorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'coreCount': coreCount,
-      'type': type,
-    };
+    return <String, dynamic>{'coreCount': coreCount, 'type': type};
   }
 
   factory RuntimeAcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeAcceleratorConfigResponse(
-      coreCount: (map['coreCount'] as String).input(),
-      type: (map['type'] as String).input(),
+      coreCount: pulumi.Input.fromValue(map['coreCount'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

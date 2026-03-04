@@ -3,16 +3,15 @@ enum ActiveState {
   active("active"),
   inactive("inactive");
 
-  const ActiveState(this.value);
-  final String value;
+  const ActiveState(this.wireValue);
+  final String wireValue;
 
   static ActiveState fromValue(String value) {
     for (final item in ActiveState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActiveState value: $value');
   }
 }
-

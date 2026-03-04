@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetResourceSpec {
   /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
   final pulumi.Input<String>? name;
+
   /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
   final pulumi.Input<String>? readAccessMode;
+
   /// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
   ///
   /// - - -
@@ -16,11 +18,7 @@ class AssetResourceSpec {
   /// [name] Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
   /// [readAccessMode] Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
   /// [type] Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-  AssetResourceSpec({
-    this.name,
-    this.readAccessMode,
-    required this.type,
-  });
+  AssetResourceSpec({this.name, this.readAccessMode, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class AssetResourceSpec {
 
   factory AssetResourceSpec.fromMap(Map<String, dynamic> map) {
     return AssetResourceSpec(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      readAccessMode: map['readAccessMode'] == null ? null : (map['readAccessMode']! as String).input(),
-      type: (map['type'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readAccessMode: (() {
+        final guardedValue = map['readAccessMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

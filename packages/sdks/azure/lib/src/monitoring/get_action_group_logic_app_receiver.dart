@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupLogicAppReceiver {
   /// The callback url where HTTP request sent to.
   final pulumi.Input<String> callbackUrl;
+
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
+
   /// The Azure resource ID of the logic app.
   final pulumi.Input<String> resourceId;
+
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool> useCommonAlertSchema;
 
@@ -35,11 +38,12 @@ class GetActionGroupLogicAppReceiver {
 
   factory GetActionGroupLogicAppReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupLogicAppReceiver(
-      callbackUrl: (map['callbackUrl'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
+      callbackUrl: pulumi.Input.fromValue(map['callbackUrl'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      useCommonAlertSchema: pulumi.Input.fromValue(
+        map['useCommonAlertSchema'] as bool,
+      ),
     );
   }
 }
-

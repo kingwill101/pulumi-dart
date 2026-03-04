@@ -1,5 +1,3 @@
-library module_appmesh;
-
 export 'appmesh/functions.dart';
 export 'appmesh/gateway_route.dart';
 export 'appmesh/gateway_route_args.dart';

@@ -5,16 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupHealthCheckConfig {
   /// The status code for a successful health check
   final pulumi.Input<List<String>>? healthCheckCodes;
+
   /// The backend port that is used for health checks.
   ///
   /// Valid values: `0` to `65535`.
   ///
   /// If you set the value to `0`, the backend port is used for health checks.
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
   final pulumi.Input<int>? healthCheckConnectPort;
+
   /// Specifies whether to enable the health check feature. Valid values:
   final pulumi.Input<bool> healthCheckEnabled;
+
   /// The domain name that is used for health checks.
   ///
   /// *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
@@ -27,22 +30,25 @@ class ServerGroupHealthCheckConfig {
   /// *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
   /// *   The domain name cannot start or end with a hyphen (-).
   ///
-  /// > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
+  /// &gt; **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
   final pulumi.Input<String>? healthCheckHost;
+
   /// The HTTP version that is used for health checks. Valid values:
   ///
   /// *   **HTTP1.0**
   ///
   /// *   **HTTP1.1**
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
   final pulumi.Input<String>? healthCheckHttpVersion;
+
   /// The interval at which health checks are performed. Unit: seconds.
   ///
   /// Valid values: `1` to `50`.
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
   final pulumi.Input<int>? healthCheckInterval;
+
   /// The HTTP method that is used for health checks. Valid values:
   ///
   /// *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
@@ -51,14 +57,16 @@ class ServerGroupHealthCheckConfig {
   ///
   /// *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
   final pulumi.Input<String>? healthCheckMethod;
+
   /// The URL that is used for health checks.
   ///
   /// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
   final pulumi.Input<String>? healthCheckPath;
+
   /// The protocol that is used for health checks. Valid values:
   ///
   /// - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
@@ -66,18 +74,21 @@ class ServerGroupHealthCheckConfig {
   /// - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
   /// - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
   final pulumi.Input<String>? healthCheckProtocol;
+
   /// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
   ///
   /// Valid values: `1` to `300`.
   ///
-  /// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+  /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
   final pulumi.Input<int>? healthCheckTimeout;
+
   /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
   ///
   /// Valid values: `2` to `10`.
   ///
   /// Default value: `3`.
   final pulumi.Input<int>? healthyThreshold;
+
   /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
   ///
   /// Valid values: `2` to `10`.
@@ -132,19 +143,64 @@ class ServerGroupHealthCheckConfig {
 
   factory ServerGroupHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupHealthCheckConfig(
-      healthCheckCodes: map['healthCheckCodes'] == null ? null : ((map['healthCheckCodes']! as List).cast<String>()).input(),
-      healthCheckConnectPort: map['healthCheckConnectPort'] == null ? null : (map['healthCheckConnectPort']! as int).input(),
-      healthCheckEnabled: (map['healthCheckEnabled'] as bool).input(),
-      healthCheckHost: map['healthCheckHost'] == null ? null : (map['healthCheckHost']! as String).input(),
-      healthCheckHttpVersion: map['healthCheckHttpVersion'] == null ? null : (map['healthCheckHttpVersion']! as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
-      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod']! as String).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath']! as String).input(),
-      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : (map['healthCheckProtocol']! as String).input(),
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout']! as int).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
+      healthCheckCodes: (() {
+        final guardedValue = map['healthCheckCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      healthCheckConnectPort: (() {
+        final guardedValue = map['healthCheckConnectPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckEnabled: pulumi.Input.fromValue(
+        map['healthCheckEnabled'] as bool,
+      ),
+      healthCheckHost: (() {
+        final guardedValue = map['healthCheckHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckHttpVersion: (() {
+        final guardedValue = map['healthCheckHttpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckInterval: (() {
+        final guardedValue = map['healthCheckInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckMethod: (() {
+        final guardedValue = map['healthCheckMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckPath: (() {
+        final guardedValue = map['healthCheckPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckProtocol: (() {
+        final guardedValue = map['healthCheckProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckTimeout: (() {
+        final guardedValue = map['healthCheckTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthyThreshold: (() {
+        final guardedValue = map['healthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      unhealthyThreshold: (() {
+        final guardedValue = map['unhealthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

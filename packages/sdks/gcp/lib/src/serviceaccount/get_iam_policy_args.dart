@@ -12,20 +12,17 @@ class GetIamPolicyArgs {
 
   /// Creates a new [GetIamPolicyArgs].
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
-  GetIamPolicyArgs({
-    required this.serviceAccountId,
-  });
+  GetIamPolicyArgs({required this.serviceAccountId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccountId': serviceAccountId,
-    };
+    return <String, dynamic>{'serviceAccountId': serviceAccountId};
   }
 
   factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetIamPolicyArgs(
-      serviceAccountId: (map['serviceAccountId'] as String).input(),
+      serviceAccountId: pulumi.Input.fromValue(
+        map['serviceAccountId'] as String,
+      ),
     );
   }
 }
-

@@ -10,20 +10,29 @@ class HostWorkstationsV1beta {
 
   /// Creates a new [HostWorkstationsV1beta].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  HostWorkstationsV1beta({
-    this.gceInstance,
-  });
+  HostWorkstationsV1beta({this.gceInstance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstance': ?pulumi.Input.mapOptionalInputValue<GceInstanceWorkstationsV1beta, Map<String, dynamic>>(gceInstance, (value) => value.toMap()),
+      'gceInstance':
+          ?pulumi.Input.mapOptionalInputValue<
+            GceInstanceWorkstationsV1beta,
+            Map<String, dynamic>
+          >(gceInstance, (value) => value.toMap()),
     };
   }
 
   factory HostWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return HostWorkstationsV1beta(
-      gceInstance: map['gceInstance'] == null ? null : (GceInstanceWorkstationsV1beta.fromMap((map['gceInstance']! as Map).cast<String, dynamic>())).input(),
+      gceInstance: (() {
+        final guardedValue = map['gceInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GceInstanceWorkstationsV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

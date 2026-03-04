@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDpsCertificateArgs {
   /// Name of the certificate to retrieve.
   final pulumi.Input<String> certificateName;
+
   /// Name of the provisioning service the certificate is associated with.
   final pulumi.Input<String> provisioningServiceName;
+
   /// Resource group identifier.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetDpsCertificateArgs {
 
   factory GetDpsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetDpsCertificateArgs(
-      certificateName: (map['certificateName'] as String).input(),
-      provisioningServiceName: (map['provisioningServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      provisioningServiceName: pulumi.Input.fromValue(
+        map['provisioningServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

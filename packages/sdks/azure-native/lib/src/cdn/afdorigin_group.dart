@@ -255,26 +255,39 @@ import 'system_data_response.dart';
 /// ```
 class AFDOriginGroup extends pulumi.CustomResource {
   /// Authentication settings for origin in origin group.
-  late final pulumi.Output<OriginAuthenticationPropertiesResponse?> authentication;
+  late final pulumi.Output<OriginAuthenticationPropertiesResponse?>
+  authentication;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Health probe settings to the origin that is used to determine the health of the origin.
   late final pulumi.Output<HealthProbeParametersResponse?> healthProbeSettings;
+
   /// Load balancing settings for a backend pool
-  late final pulumi.Output<LoadBalancingSettingsParametersResponse?> loadBalancingSettings;
+  late final pulumi.Output<LoadBalancingSettingsParametersResponse?>
+  loadBalancingSettings;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The name of the profile which holds the origin group.
   late final pulumi.Output<String> profileName;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> sessionAffinityState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  late final pulumi.Output<int?> trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+  late final pulumi.Output<int?>
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -287,22 +300,32 @@ class AFDOriginGroup extends pulumi.CustomResource {
     AFDOriginGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:AFDOriginGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<OriginAuthenticationPropertiesResponse?>('authentication');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.healthProbeSettings = registerOutput<HealthProbeParametersResponse?>('healthProbeSettings');
-    this.loadBalancingSettings = registerOutput<LoadBalancingSettingsParametersResponse?>('loadBalancingSettings');
+         'azure-native:cdn:AFDOriginGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<OriginAuthenticationPropertiesResponse?>(
+      'authentication',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    healthProbeSettings = registerOutput<HealthProbeParametersResponse?>(
+      'healthProbeSettings',
+    );
+    loadBalancingSettings =
+        registerOutput<LoadBalancingSettingsParametersResponse?>(
+          'loadBalancingSettings',
+        );
     this.name = registerOutput<String>('name');
-    this.profileName = registerOutput<String>('profileName');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sessionAffinityState = registerOutput<String?>('sessionAffinityState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.trafficRestorationTimeToHealedOrNewEndpointsInMinutes = registerOutput<int?>('trafficRestorationTimeToHealedOrNewEndpointsInMinutes');
-    this.type = registerOutput<String>('type');
+    profileName = registerOutput<String>('profileName');
+    provisioningState = registerOutput<String>('provisioningState');
+    sessionAffinityState = registerOutput<String?>('sessionAffinityState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes =
+        registerOutput<int?>(
+          'trafficRestorationTimeToHealedOrNewEndpointsInMinutes',
+        );
+    type = registerOutput<String>('type');
   }
 }

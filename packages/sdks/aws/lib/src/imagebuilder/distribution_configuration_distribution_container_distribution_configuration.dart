@@ -6,10 +6,15 @@ import 'distribution_configuration_distribution_container_distribution_configura
 class DistributionConfigurationDistributionContainerDistributionConfiguration {
   /// Set of tags that are attached to the container distribution configuration.
   final pulumi.Input<List<String>>? containerTags;
+
   /// Description of the container distribution configuration.
   final pulumi.Input<String>? description;
+
   /// Configuration block with the destination repository for the container distribution configuration.
-  final pulumi.Input<DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository> targetRepository;
+  final pulumi.Input<
+    DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository
+  >
+  targetRepository;
 
   /// Creates a new [DistributionConfigurationDistributionContainerDistributionConfiguration].
   /// [containerTags] Set of tags that are attached to the container distribution configuration.
@@ -25,16 +30,33 @@ class DistributionConfigurationDistributionContainerDistributionConfiguration {
     return <String, dynamic>{
       'containerTags': ?containerTags,
       'description': ?description,
-      'targetRepository': pulumi.Input.mapInputValue<DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository, Map<String, dynamic>>(targetRepository, (value) => value.toMap()),
+      'targetRepository':
+          pulumi.Input.mapInputValue<
+            DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository,
+            Map<String, dynamic>
+          >(targetRepository, (value) => value.toMap()),
     };
   }
 
-  factory DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionConfigurationDistributionContainerDistributionConfiguration(
-      containerTags: map['containerTags'] == null ? null : (((map['containerTags'] as List).cast<String>()).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      targetRepository: (DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((map['targetRepository']! as Map).cast<String, dynamic>())).input(),
+      containerTags: (() {
+        final guardedValue = map['containerTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetRepository: pulumi.Input.fromValue(
+        DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap(
+          (map['targetRepository']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

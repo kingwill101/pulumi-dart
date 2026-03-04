@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PythonPackageResponse {
   /// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
   final pulumi.Input<List<String>> paths;
+
   /// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
   final pulumi.Input<String> repository;
 
   /// Creates a new [PythonPackageResponse].
   /// [paths] Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
   /// [repository] Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
-  PythonPackageResponse({
-    required this.paths,
-    required this.repository,
-  });
+  PythonPackageResponse({required this.paths, required this.repository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'paths': paths,
-      'repository': repository,
-    };
+    return <String, dynamic>{'paths': paths, 'repository': repository};
   }
 
   factory PythonPackageResponse.fromMap(Map<String, dynamic> map) {
     return PythonPackageResponse(
-      paths: ((map['paths'] as List).cast<String>()).input(),
-      repository: (map['repository'] as String).input(),
+      paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }
 }
-

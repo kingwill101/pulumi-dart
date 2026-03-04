@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
   /// Number of HTTP(S) requests for calculating the threshold.
   final pulumi.Input<int>? count;
+
   /// Interval over which the threshold is computed.
   final pulumi.Input<int>? intervalSec;
 
@@ -17,17 +18,23 @@ class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': ?count,
-      'intervalSec': ?intervalSec,
-    };
+    return <String, dynamic>{'count': ?count, 'intervalSec': ?intervalSec};
   }
 
-  factory RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold.fromMap(Map<String, dynamic> map) {
+  factory RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionSecurityPolicyRuleRateLimitOptionsRateLimitThreshold(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      intervalSec: map['intervalSec'] == null ? null : (map['intervalSec']! as int).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      intervalSec: (() {
+        final guardedValue = map['intervalSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

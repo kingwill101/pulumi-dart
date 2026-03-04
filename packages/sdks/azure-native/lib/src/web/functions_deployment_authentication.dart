@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionsDeploymentAuthentication {
   /// Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
   final pulumi.Input<String>? storageAccountConnectionStringName;
+
   /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
   final pulumi.Input<String>? type;
+
   /// Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
@@ -31,10 +33,21 @@ class FunctionsDeploymentAuthentication {
 
   factory FunctionsDeploymentAuthentication.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentAuthentication(
-      storageAccountConnectionStringName: map['storageAccountConnectionStringName'] == null ? null : (map['storageAccountConnectionStringName']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
+      storageAccountConnectionStringName: (() {
+        final guardedValue = map['storageAccountConnectionStringName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityResourceId: (() {
+        final guardedValue = map['userAssignedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

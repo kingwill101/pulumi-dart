@@ -9,20 +9,19 @@ class CloudEndpoints {
 
   /// Creates a new [CloudEndpoints].
   /// [service] The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
-  CloudEndpoints({
-    this.service,
-  });
+  CloudEndpoints({this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'service': ?service,
-    };
+    return <String, dynamic>{'service': ?service};
   }
 
   factory CloudEndpoints.fromMap(Map<String, dynamic> map) {
     return CloudEndpoints(
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

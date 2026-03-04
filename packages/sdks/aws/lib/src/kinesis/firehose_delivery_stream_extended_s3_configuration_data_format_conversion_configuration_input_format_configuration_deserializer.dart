@@ -6,9 +6,16 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer {
   /// Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hive_json_ser_de` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe>? hiveJsonSerDe;
+  final pulumi.Input<
+    FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe
+  >?
+  hiveJsonSerDe;
+
   /// Specifies the OpenX SerDe. See `open_x_json_ser_de` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe>? openXJsonSerDe;
+  final pulumi.Input<
+    FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe
+  >?
+  openXJsonSerDe;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer].
   /// [hiveJsonSerDe] Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hive_json_ser_de` block below for details.
@@ -20,16 +27,41 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hiveJsonSerDe': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe, Map<String, dynamic>>(hiveJsonSerDe, (value) => value.toMap()),
-      'openXJsonSerDe': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe, Map<String, dynamic>>(openXJsonSerDe, (value) => value.toMap()),
+      'hiveJsonSerDe':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe,
+            Map<String, dynamic>
+          >(hiveJsonSerDe, (value) => value.toMap()),
+      'openXJsonSerDe':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe,
+            Map<String, dynamic>
+          >(openXJsonSerDe, (value) => value.toMap()),
     };
   }
 
-  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer(
-      hiveJsonSerDe: map['hiveJsonSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap((map['hiveJsonSerDe']! as Map).cast<String, dynamic>())).input()).input(),
-      openXJsonSerDe: map['openXJsonSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe.fromMap((map['openXJsonSerDe']! as Map).cast<String, dynamic>())).input()).input(),
+      hiveJsonSerDe: (() {
+        final guardedValue = map['hiveJsonSerDe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      openXJsonSerDe: (() {
+        final guardedValue = map['openXJsonSerDe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

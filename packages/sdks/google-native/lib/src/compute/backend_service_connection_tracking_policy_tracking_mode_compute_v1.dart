@@ -4,16 +4,22 @@ enum BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 {
   perConnection("PER_CONNECTION"),
   perSession("PER_SESSION");
 
-  const BackendServiceConnectionTrackingPolicyTrackingModeComputeV1(this.value);
-  final String value;
+  const BackendServiceConnectionTrackingPolicyTrackingModeComputeV1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 fromValue(String value) {
-    for (final item in BackendServiceConnectionTrackingPolicyTrackingModeComputeV1.values) {
-      if (item.value == value) {
+  static BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in BackendServiceConnectionTrackingPolicyTrackingModeComputeV1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 value: $value',
+    );
   }
 }
-

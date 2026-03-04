@@ -35,11 +35,16 @@ class GetRuleArgs {
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
-      gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      ruleId: (map['ruleId'] as String).input(),
+      gatewaySecurityPolicyId: pulumi.Input.fromValue(
+        map['gatewaySecurityPolicyId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
     );
   }
 }
-

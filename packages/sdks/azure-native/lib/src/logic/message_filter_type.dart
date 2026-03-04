@@ -4,16 +4,15 @@ enum MessageFilterType {
   valueInclude("Include"),
   valueExclude("Exclude");
 
-  const MessageFilterType(this.value);
-  final String value;
+  const MessageFilterType(this.wireValue);
+  final String wireValue;
 
   static MessageFilterType fromValue(String value) {
     for (final item in MessageFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MessageFilterType value: $value');
   }
 }
-

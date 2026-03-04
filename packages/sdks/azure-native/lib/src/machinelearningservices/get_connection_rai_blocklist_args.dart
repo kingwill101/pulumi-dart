@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionRaiBlocklistArgs {
   /// Friendly name of the workspace connection
   final pulumi.Input<String> connectionName;
+
   /// The name of the RaiBlocklist.
   final pulumi.Input<String> raiBlocklistName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,14 @@ class GetConnectionRaiBlocklistArgs {
 
   factory GetConnectionRaiBlocklistArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionRaiBlocklistArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      raiBlocklistName: (map['raiBlocklistName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      raiBlocklistName: pulumi.Input.fromValue(
+        map['raiBlocklistName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

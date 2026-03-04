@@ -9,20 +9,15 @@ class ContactParametersContactProfile {
 
   /// Creates a new [ContactParametersContactProfile].
   /// [id] Resource ID.
-  ContactParametersContactProfile({
-    required this.id,
-  });
+  ContactParametersContactProfile({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory ContactParametersContactProfile.fromMap(Map<String, dynamic> map) {
     return ContactParametersContactProfile(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

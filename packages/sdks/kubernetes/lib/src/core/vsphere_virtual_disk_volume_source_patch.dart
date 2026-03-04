@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VsphereVirtualDiskVolumeSourcePatch {
   /// fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   final pulumi.Input<String>? fsType;
+
   /// storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.
   final pulumi.Input<String>? storagePolicyID;
+
   /// storagePolicyName is the storage Policy Based Management (SPBM) profile name.
   final pulumi.Input<String>? storagePolicyName;
+
   /// volumePath is the path that identifies vSphere volume vmdk
   final pulumi.Input<String>? volumePath;
 
@@ -34,13 +37,30 @@ class VsphereVirtualDiskVolumeSourcePatch {
     };
   }
 
-  factory VsphereVirtualDiskVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
+  factory VsphereVirtualDiskVolumeSourcePatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VsphereVirtualDiskVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
-      storagePolicyID: map['storagePolicyID'] == null ? null : (map['storagePolicyID']! as String).input(),
-      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName']! as String).input(),
-      volumePath: map['volumePath'] == null ? null : (map['volumePath']! as String).input(),
+      fsType: (() {
+        final guardedValue = map['fsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePolicyID: (() {
+        final guardedValue = map['storagePolicyID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePolicyName: (() {
+        final guardedValue = map['storagePolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumePath: (() {
+        final guardedValue = map['volumePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

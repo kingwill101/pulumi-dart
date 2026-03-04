@@ -10,12 +10,16 @@ import 'azure_storage_info_value.dart';
 class WebAppAzureStorageAccountsSlotArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Azure storage accounts.
   final pulumi.Input<Map<String, AzureStorageInfoValue>>? properties;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will update the Azure storage account configurations for the production slot.
   final pulumi.Input<String> slot;
 
@@ -37,7 +41,18 @@ class WebAppAzureStorageAccountsSlotArgs {
     return <String, dynamic>{
       'kind': ?kind,
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<Map<String, AzureStorageInfoValue>, Map<String, Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeMapValues<AzureStorageInfoValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, AzureStorageInfoValue>,
+            Map<String, Map<String, dynamic>>
+          >(
+            properties,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  AzureStorageInfoValue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupName': resourceGroupName,
       'slot': slot,
     };
@@ -45,12 +60,28 @@ class WebAppAzureStorageAccountsSlotArgs {
 
   factory WebAppAzureStorageAccountsSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppAzureStorageAccountsSlotArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<AzureStorageInfoValue>(map['properties']!, (value) => AzureStorageInfoValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<AzureStorageInfoValue>(
+            guardedValue,
+            (value) => AzureStorageInfoValue.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

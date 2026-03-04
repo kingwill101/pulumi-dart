@@ -479,7 +479,7 @@ import 'mover_job_definition_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageMover` - 2025-07-01
@@ -494,20 +494,28 @@ import 'mover_job_definition_state.dart';
 class MoverJobDefinition extends pulumi.CustomResource {
   /// Specifies the name of the Storage Mover Agent to assign for new Job Runs of this Storage Mover Job Definition.
   late final pulumi.Output<String?> agentName;
+
   /// Specifies the strategy to use for copy. Possible values are `Additive` and `Mirror`.
   late final pulumi.Output<String> copyMode;
+
   /// Specifies a description for this Storage Mover Job Definition.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name which should be used for this Storage Mover Job Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Storage Mover Source Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceName;
+
   /// Specifies the sub path to use when reading from the Storage Mover Source Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceSubPath;
+
   /// Specifies the ID of the Storage Mover Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageMoverProjectId;
+
   /// Specifies the name of the Storage Mover target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetName;
+
   /// Specifies the sub path to use when writing to the Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> targetSubPath;
 
@@ -520,20 +528,20 @@ class MoverJobDefinition extends pulumi.CustomResource {
     MoverJobDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverJobDefinition:MoverJobDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentName = registerOutput<String?>('agentName');
-    this.copyMode = registerOutput<String>('copyMode');
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverJobDefinition:MoverJobDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentName = registerOutput<String?>('agentName');
+    copyMode = registerOutput<String>('copyMode');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.sourceName = registerOutput<String>('sourceName');
-    this.sourceSubPath = registerOutput<String?>('sourceSubPath');
-    this.storageMoverProjectId = registerOutput<String>('storageMoverProjectId');
-    this.targetName = registerOutput<String>('targetName');
-    this.targetSubPath = registerOutput<String?>('targetSubPath');
+    sourceName = registerOutput<String>('sourceName');
+    sourceSubPath = registerOutput<String?>('sourceSubPath');
+    storageMoverProjectId = registerOutput<String>('storageMoverProjectId');
+    targetName = registerOutput<String>('targetName');
+    targetSubPath = registerOutput<String?>('targetSubPath');
   }
 
   /// Gets an existing [MoverJobDefinition] resource's state with the given [name] and [id].
@@ -554,19 +562,19 @@ class MoverJobDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverJobDefinition:MoverJobDefinition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentName = registerOutput<String?>('agentName');
-    this.copyMode = registerOutput<String>('copyMode');
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverJobDefinition:MoverJobDefinition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentName = registerOutput<String?>('agentName');
+    copyMode = registerOutput<String>('copyMode');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.sourceName = registerOutput<String>('sourceName');
-    this.sourceSubPath = registerOutput<String?>('sourceSubPath');
-    this.storageMoverProjectId = registerOutput<String>('storageMoverProjectId');
-    this.targetName = registerOutput<String>('targetName');
-    this.targetSubPath = registerOutput<String?>('targetSubPath');
+    sourceName = registerOutput<String>('sourceName');
+    sourceSubPath = registerOutput<String?>('sourceSubPath');
+    storageMoverProjectId = registerOutput<String>('storageMoverProjectId');
+    targetName = registerOutput<String>('targetName');
+    targetSubPath = registerOutput<String?>('targetSubPath');
   }
 }

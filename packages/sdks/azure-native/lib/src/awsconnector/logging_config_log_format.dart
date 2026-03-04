@@ -3,16 +3,15 @@ enum LoggingConfigLogFormat {
   jSON("JSON"),
   text("Text");
 
-  const LoggingConfigLogFormat(this.value);
-  final String value;
+  const LoggingConfigLogFormat(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigLogFormat fromValue(String value) {
     for (final item in LoggingConfigLogFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingConfigLogFormat value: $value');
   }
 }
-

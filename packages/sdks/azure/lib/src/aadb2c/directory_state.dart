@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryState {
   /// The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.
   final pulumi.Input<String>? billingType;
+
   /// Country code of the B2C tenant. The `country_code` should be valid for the specified `data_residency_location`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   final pulumi.Input<String>? countryCode;
+
   /// Location in which the B2C tenant is hosted and data resides. The `data_residency_location` should be valid for the specified `country_code`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
   final pulumi.Input<String>? dataResidencyLocation;
+
   /// The initial display name of the B2C tenant. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   final pulumi.Input<String>? displayName;
+
   /// Domain name of the B2C tenant, including the `.onmicrosoft.com` suffix. Changing this forces a new AAD B2C Directory to be created.
   final pulumi.Input<String>? domainName;
+
   /// The date from which the billing type took effect. May not be populated until after the first billing cycle.
   final pulumi.Input<String>? effectiveStartDate;
+
   /// The name of the Resource Group where the AAD B2C Directory should exist. Changing this forces a new AAD B2C Directory to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   final pulumi.Input<String>? skuName;
+
   /// A mapping of tags which should be assigned to the AAD B2C Directory.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Tenant ID for the AAD B2C tenant.
   final pulumi.Input<String>? tenantId;
 
@@ -66,17 +75,58 @@ class DirectoryState {
 
   factory DirectoryState.fromMap(Map<String, dynamic> map) {
     return DirectoryState(
-      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
-      dataResidencyLocation: map['dataResidencyLocation'] == null ? null : (map['dataResidencyLocation']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      effectiveStartDate: map['effectiveStartDate'] == null ? null : (map['effectiveStartDate']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      billingType: (() {
+        final guardedValue = map['billingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryCode: (() {
+        final guardedValue = map['countryCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataResidencyLocation: (() {
+        final guardedValue = map['dataResidencyLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveStartDate: (() {
+        final guardedValue = map['effectiveStartDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

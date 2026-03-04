@@ -6,32 +6,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciNicDetailResponse {
   /// Adapter Name of NIC
   final pulumi.Input<String> adapterName;
+
   /// Component Id of NIC
   final pulumi.Input<String> componentId;
+
   /// Default Gateway of NIC
   final pulumi.Input<String> defaultGateway;
+
   /// Default Isolation of Management NIC
   final pulumi.Input<String> defaultIsolationId;
+
   /// DNS Servers for NIC
   final pulumi.Input<List<String>> dnsServers;
+
   /// Driver Version of NIC
   final pulumi.Input<String> driverVersion;
+
   /// Interface Description of NIC
   final pulumi.Input<String> interfaceDescription;
+
   /// Subnet Mask of NIC
   final pulumi.Input<String> ip4Address;
+
   /// MAC address information of NIC.
   final pulumi.Input<String> macAddress;
+
   /// The status of NIC, up, disconnected.
   final pulumi.Input<String> nicStatus;
+
   /// The type of NIC, physical, virtual, management.
   final pulumi.Input<String> nicType;
+
   /// The slot attached to the NIC.
   final pulumi.Input<String> slot;
+
   /// Subnet Mask of NIC
   final pulumi.Input<String> subnetMask;
+
   /// The switch attached to the NIC, if any.
   final pulumi.Input<String> switchName;
+
   /// The VLAN ID of the physical NIC.
   final pulumi.Input<String> vlanId;
 
@@ -91,22 +105,27 @@ class HciNicDetailResponse {
 
   factory HciNicDetailResponse.fromMap(Map<String, dynamic> map) {
     return HciNicDetailResponse(
-      adapterName: (map['adapterName'] as String).input(),
-      componentId: (map['componentId'] as String).input(),
-      defaultGateway: (map['defaultGateway'] as String).input(),
-      defaultIsolationId: (map['defaultIsolationId'] as String).input(),
-      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
-      driverVersion: (map['driverVersion'] as String).input(),
-      interfaceDescription: (map['interfaceDescription'] as String).input(),
-      ip4Address: (map['ip4Address'] as String).input(),
-      macAddress: (map['macAddress'] as String).input(),
-      nicStatus: (map['nicStatus'] as String).input(),
-      nicType: (map['nicType'] as String).input(),
-      slot: (map['slot'] as String).input(),
-      subnetMask: (map['subnetMask'] as String).input(),
-      switchName: (map['switchName'] as String).input(),
-      vlanId: (map['vlanId'] as String).input(),
+      adapterName: pulumi.Input.fromValue(map['adapterName'] as String),
+      componentId: pulumi.Input.fromValue(map['componentId'] as String),
+      defaultGateway: pulumi.Input.fromValue(map['defaultGateway'] as String),
+      defaultIsolationId: pulumi.Input.fromValue(
+        map['defaultIsolationId'] as String,
+      ),
+      dnsServers: pulumi.Input.fromValue(
+        (map['dnsServers'] as List).cast<String>(),
+      ),
+      driverVersion: pulumi.Input.fromValue(map['driverVersion'] as String),
+      interfaceDescription: pulumi.Input.fromValue(
+        map['interfaceDescription'] as String,
+      ),
+      ip4Address: pulumi.Input.fromValue(map['ip4Address'] as String),
+      macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
+      nicStatus: pulumi.Input.fromValue(map['nicStatus'] as String),
+      nicType: pulumi.Input.fromValue(map['nicType'] as String),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
+      subnetMask: pulumi.Input.fromValue(map['subnetMask'] as String),
+      switchName: pulumi.Input.fromValue(map['switchName'] as String),
+      vlanId: pulumi.Input.fromValue(map['vlanId'] as String),
     );
   }
 }
-

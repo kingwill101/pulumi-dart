@@ -1,3 +1,1 @@
-library pulumi_aws_finspace;
-
 export 'package:pulumi_aws/src/finspace.dart';

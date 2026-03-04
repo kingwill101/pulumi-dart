@@ -4,16 +4,15 @@ enum SAPConfigurationType {
   discovery("Discovery"),
   deploymentWithOSConfig("DeploymentWithOSConfig");
 
-  const SAPConfigurationType(this.value);
-  final String value;
+  const SAPConfigurationType(this.wireValue);
+  final String wireValue;
 
   static SAPConfigurationType fromValue(String value) {
     for (final item in SAPConfigurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SAPConfigurationType value: $value');
   }
 }
-

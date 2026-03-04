@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse {
   /// The name of the input feature for which noise sigma is provided. The features are defined in explanation metadata inputs.
   final pulumi.Input<String> name;
+
   /// This represents the standard deviation of the Gaussian kernel that will be used to add noise to the feature prior to computing gradients. Similar to noise_sigma but represents the noise added to the current feature. Defaults to 0.1.
   final pulumi.Input<double> sigma;
 
@@ -18,17 +19,15 @@ class GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'sigma': sigma,
-    };
+    return <String, dynamic>{'name': name, 'sigma': sigma};
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse(
-      name: (map['name'] as String).input(),
-      sigma: (map['sigma'] as double).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sigma: pulumi.Input.fromValue(map['sigma'] as double),
     );
   }
 }
-

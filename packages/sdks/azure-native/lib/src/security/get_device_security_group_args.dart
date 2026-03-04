@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceSecurityGroupArgs {
   /// The name of the device security group. Note that the name of the device security group is case insensitive.
   final pulumi.Input<String> deviceSecurityGroupName;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
 
@@ -29,9 +30,10 @@ class GetDeviceSecurityGroupArgs {
 
   factory GetDeviceSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceSecurityGroupArgs(
-      deviceSecurityGroupName: (map['deviceSecurityGroupName'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      deviceSecurityGroupName: pulumi.Input.fromValue(
+        map['deviceSecurityGroupName'] as String,
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

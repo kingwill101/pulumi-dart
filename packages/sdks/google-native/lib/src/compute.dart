@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/accelerator_config.dart';
 export 'compute/accelerator_config_compute_beta.dart';
 export 'compute/accelerator_config_compute_v1.dart';

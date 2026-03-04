@@ -10,16 +10,17 @@ enum OwaspCrsExclusionEntryMatchVariable {
   valueRequestArgKeys("RequestArgKeys"),
   valueRequestArgValues("RequestArgValues");
 
-  const OwaspCrsExclusionEntryMatchVariable(this.value);
-  final String value;
+  const OwaspCrsExclusionEntryMatchVariable(this.wireValue);
+  final String wireValue;
 
   static OwaspCrsExclusionEntryMatchVariable fromValue(String value) {
     for (final item in OwaspCrsExclusionEntryMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OwaspCrsExclusionEntryMatchVariable value: $value');
+    throw ArgumentError(
+      'Unknown OwaspCrsExclusionEntryMatchVariable value: $value',
+    );
   }
 }
-

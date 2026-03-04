@@ -13,15 +13,16 @@ class GetClusterMasterAuthClientCertificateConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'issueClientCertificate': issueClientCertificate,
-    };
+    return <String, dynamic>{'issueClientCertificate': issueClientCertificate};
   }
 
-  factory GetClusterMasterAuthClientCertificateConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterMasterAuthClientCertificateConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterMasterAuthClientCertificateConfig(
-      issueClientCertificate: (map['issueClientCertificate'] as bool).input(),
+      issueClientCertificate: pulumi.Input.fromValue(
+        map['issueClientCertificate'] as bool,
+      ),
     );
   }
 }
-

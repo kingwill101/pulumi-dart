@@ -9,16 +9,22 @@ enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType {
   table("TABLE"),
   formField("FORM_FIELD");
 
-  const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType(this.value);
-  final String value;
+  const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType fromValue(String value) {
-    for (final item in GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.values) {
-      if (item.value == value) {
+  static GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType value: $value',
+    );
   }
 }
-

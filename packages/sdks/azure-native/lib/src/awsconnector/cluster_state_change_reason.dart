@@ -5,31 +5,44 @@ import 'cluster_state_change_reason_code_enum_value.dart';
 
 /// Definition of ClusterStateChangeReason
 class ClusterStateChangeReason {
-  /// <p>The programmatic code for the state change reason.</p>
+  /// &lt;p&gt;The programmatic code for the state change reason.&lt;/p&gt;
   final pulumi.Input<ClusterStateChangeReasonCodeEnumValue>? code;
-  /// <p>The descriptive message for the state change reason.</p>
+
+  /// &lt;p&gt;The descriptive message for the state change reason.&lt;/p&gt;
   final pulumi.Input<String>? message;
 
   /// Creates a new [ClusterStateChangeReason].
-  /// [code] <p>The programmatic code for the state change reason.</p>
-  /// [message] <p>The descriptive message for the state change reason.</p>
-  ClusterStateChangeReason({
-    this.code,
-    this.message,
-  });
+  /// [code] &lt;p&gt;The programmatic code for the state change reason.&lt;/p&gt;
+  /// [message] &lt;p&gt;The descriptive message for the state change reason.&lt;/p&gt;
+  ClusterStateChangeReason({this.code, this.message});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': ?pulumi.Input.mapOptionalInputValue<ClusterStateChangeReasonCodeEnumValue, Map<String, dynamic>>(code, (value) => value.toMap()),
+      'code':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterStateChangeReasonCodeEnumValue,
+            Map<String, dynamic>
+          >(code, (value) => value.toMap()),
       'message': ?message,
     };
   }
 
   factory ClusterStateChangeReason.fromMap(Map<String, dynamic> map) {
     return ClusterStateChangeReason(
-      code: map['code'] == null ? null : (ClusterStateChangeReasonCodeEnumValue.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterStateChangeReasonCodeEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

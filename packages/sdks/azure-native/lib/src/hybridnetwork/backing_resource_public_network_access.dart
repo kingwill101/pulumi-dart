@@ -3,16 +3,17 @@ enum BackingResourcePublicNetworkAccess {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const BackingResourcePublicNetworkAccess(this.value);
-  final String value;
+  const BackingResourcePublicNetworkAccess(this.wireValue);
+  final String wireValue;
 
   static BackingResourcePublicNetworkAccess fromValue(String value) {
     for (final item in BackingResourcePublicNetworkAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackingResourcePublicNetworkAccess value: $value');
+    throw ArgumentError(
+      'Unknown BackingResourcePublicNetworkAccess value: $value',
+    );
   }
 }
-

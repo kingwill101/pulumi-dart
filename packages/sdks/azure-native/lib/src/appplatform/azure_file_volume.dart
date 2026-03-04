@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileVolume {
   /// If set to true, it will create and mount a dedicated directory for every individual app instance.
   final pulumi.Input<bool>? enableSubPath;
+
   /// These are the mount options for a persistent disk.
   final pulumi.Input<List<String>>? mountOptions;
+
   /// The mount path of the persistent disk.
   final pulumi.Input<String> mountPath;
+
   /// Indicates whether the persistent disk is a readOnly one.
   final pulumi.Input<bool>? readOnly;
+
   /// The share name of the Azure File share.
   final pulumi.Input<String>? shareName;
+
   /// The type of the underlying resource to mount as a persistent disk.
   /// Expected value is 'AzureFileVolume'.
   final pulumi.Input<String> type;
@@ -47,13 +52,28 @@ class AzureFileVolume {
 
   factory AzureFileVolume.fromMap(Map<String, dynamic> map) {
     return AzureFileVolume(
-      enableSubPath: map['enableSubPath'] == null ? null : (map['enableSubPath']! as bool).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
-      mountPath: (map['mountPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
-      type: (map['type'] as String).input(),
+      enableSubPath: (() {
+        final guardedValue = map['enableSubPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mountOptions: (() {
+        final guardedValue = map['mountOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

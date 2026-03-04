@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLkeClusterControlPlaneAclAddress {
   /// A set of individual ipv4 addresses or CIDRs to ALLOW.
   final pulumi.Input<List<String>> ipv4s;
+
   /// A set of individual ipv6 addresses or CIDRs to ALLOW.
   final pulumi.Input<List<String>> ipv6s;
 
@@ -17,17 +18,15 @@ class GetLkeClusterControlPlaneAclAddress {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipv4s': ipv4s,
-      'ipv6s': ipv6s,
-    };
+    return <String, dynamic>{'ipv4s': ipv4s, 'ipv6s': ipv6s};
   }
 
-  factory GetLkeClusterControlPlaneAclAddress.fromMap(Map<String, dynamic> map) {
+  factory GetLkeClusterControlPlaneAclAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLkeClusterControlPlaneAclAddress(
-      ipv4s: ((map['ipv4s'] as List).cast<String>()).input(),
-      ipv6s: ((map['ipv6s'] as List).cast<String>()).input(),
+      ipv4s: pulumi.Input.fromValue((map['ipv4s'] as List).cast<String>()),
+      ipv6s: pulumi.Input.fromValue((map['ipv6s'] as List).cast<String>()),
     );
   }
 }
-

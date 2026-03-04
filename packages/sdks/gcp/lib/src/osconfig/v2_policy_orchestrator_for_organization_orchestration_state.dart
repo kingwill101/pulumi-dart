@@ -8,10 +8,19 @@ class V2PolicyOrchestratorForOrganizationOrchestrationState {
   /// (Output)
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>>? currentIterationStates;
+  final pulumi.Input<
+    List<
+      V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
+    >
+  >?
+  currentIterationStates;
+
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState>? previousIterationState;
+  final pulumi.Input<
+    V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState
+  >?
+  previousIterationState;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationState].
   /// [currentIterationStates] (Output)
@@ -23,16 +32,56 @@ class V2PolicyOrchestratorForOrganizationOrchestrationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentIterationStates': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>, List<Map<String, dynamic>>>(currentIterationStates, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'previousIterationState': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState, Map<String, dynamic>>(previousIterationState, (value) => value.toMap()),
+      'currentIterationStates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
+            >,
+            List<Map<String, dynamic>>
+          >(
+            currentIterationStates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'previousIterationState':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState,
+            Map<String, dynamic>
+          >(previousIterationState, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestrationState.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestrationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForOrganizationOrchestrationState(
-      currentIterationStates: map['currentIterationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>(map['currentIterationStates']!, (value) => V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      previousIterationState: map['previousIterationState'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState.fromMap((map['previousIterationState']! as Map).cast<String, dynamic>())).input(),
+      currentIterationStates: (() {
+        final guardedValue = map['currentIterationStates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
+          >(
+            guardedValue,
+            (value) =>
+                V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      previousIterationState: (() {
+        final guardedValue = map['previousIterationState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

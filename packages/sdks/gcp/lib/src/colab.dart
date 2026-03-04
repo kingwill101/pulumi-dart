@@ -1,5 +1,3 @@
-library module_colab;
-
 export 'colab/functions.dart';
 export 'colab/get_runtime_template_iam_policy_args.dart';
 export 'colab/get_runtime_template_iam_policy_result.dart';

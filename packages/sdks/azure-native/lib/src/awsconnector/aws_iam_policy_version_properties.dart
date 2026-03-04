@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsIamPolicyVersion
 class AwsIamPolicyVersionProperties {
-  /// <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the policy version was created.</p>
+  /// &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the policy version was created.&lt;/p&gt;
   final pulumi.Input<String>? createDate;
-  /// <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p> <p>The policy document returned in this structure is URL-encoded compliant with <a href='https://tools.ietf.org/html/rfc3986'>RFC 3986</a>. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the <code>decode</code> method of the <code>java.net.URLDecoder</code> utility class in the Java SDK. Other languages and SDKs provide similar functionality.</p>
+
+  /// &lt;p&gt;The policy document.&lt;/p&gt; &lt;p&gt;The policy document is returned in the response to the &lt;a&gt;GetPolicyVersion&lt;/a&gt; and &lt;a&gt;GetAccountAuthorizationDetails&lt;/a&gt; operations. It is not returned in the response to the &lt;a&gt;CreatePolicyVersion&lt;/a&gt; or &lt;a&gt;ListPolicyVersions&lt;/a&gt; operations. &lt;/p&gt; &lt;p&gt;The policy document returned in this structure is URL-encoded compliant with &lt;a href='https://tools.ietf.org/html/rfc3986'&gt;RFC 3986&lt;/a&gt;. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the &lt;code&gt;decode&lt;/code&gt; method of the &lt;code&gt;java.net.URLDecoder&lt;/code&gt; utility class in the Java SDK. Other languages and SDKs provide similar functionality.&lt;/p&gt;
   final pulumi.Input<String>? document;
-  /// <p>Specifies whether the policy version is set as the policy's default version.</p>
+
+  /// &lt;p&gt;Specifies whether the policy version is set as the policy's default version.&lt;/p&gt;
   final pulumi.Input<bool>? isDefaultVersion;
-  /// <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
+
+  /// &lt;p&gt;The identifier for the policy version.&lt;/p&gt; &lt;p&gt;Policy version identifiers always begin with &lt;code&gt;v&lt;/code&gt; (always lowercase). When a policy is created, the first policy version is &lt;code&gt;v1&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<String>? versionId;
 
   /// Creates a new [AwsIamPolicyVersionProperties].
-  /// [createDate] <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the policy version was created.</p>
-  /// [document] <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p> <p>The policy document returned in this structure is URL-encoded compliant with <a href='https://tools.ietf.org/html/rfc3986'>RFC 3986</a>. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the <code>decode</code> method of the <code>java.net.URLDecoder</code> utility class in the Java SDK. Other languages and SDKs provide similar functionality.</p>
-  /// [isDefaultVersion] <p>Specifies whether the policy version is set as the policy's default version.</p>
-  /// [versionId] <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
+  /// [createDate] &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the policy version was created.&lt;/p&gt;
+  /// [document] &lt;p&gt;The policy document.&lt;/p&gt; &lt;p&gt;The policy document is returned in the response to the &lt;a&gt;GetPolicyVersion&lt;/a&gt; and &lt;a&gt;GetAccountAuthorizationDetails&lt;/a&gt; operations. It is not returned in the response to the &lt;a&gt;CreatePolicyVersion&lt;/a&gt; or &lt;a&gt;ListPolicyVersions&lt;/a&gt; operations. &lt;/p&gt; &lt;p&gt;The policy document returned in this structure is URL-encoded compliant with &lt;a href='https://tools.ietf.org/html/rfc3986'&gt;RFC 3986&lt;/a&gt;. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the &lt;code&gt;decode&lt;/code&gt; method of the &lt;code&gt;java.net.URLDecoder&lt;/code&gt; utility class in the Java SDK. Other languages and SDKs provide similar functionality.&lt;/p&gt;
+  /// [isDefaultVersion] &lt;p&gt;Specifies whether the policy version is set as the policy's default version.&lt;/p&gt;
+  /// [versionId] &lt;p&gt;The identifier for the policy version.&lt;/p&gt; &lt;p&gt;Policy version identifiers always begin with &lt;code&gt;v&lt;/code&gt; (always lowercase). When a policy is created, the first policy version is &lt;code&gt;v1&lt;/code&gt;. &lt;/p&gt;
   AwsIamPolicyVersionProperties({
     this.createDate,
     this.document,
@@ -36,11 +39,26 @@ class AwsIamPolicyVersionProperties {
 
   factory AwsIamPolicyVersionProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamPolicyVersionProperties(
-      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
-      document: map['document'] == null ? null : (map['document']! as String).input(),
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion']! as bool).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
+      createDate: (() {
+        final guardedValue = map['createDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      document: (() {
+        final guardedValue = map['document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefaultVersion: (() {
+        final guardedValue = map['isDefaultVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      versionId: (() {
+        final guardedValue = map['versionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

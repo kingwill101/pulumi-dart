@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DCRConfiguration {
   /// Represents the data collection ingestion endpoint in log analytics.
   final pulumi.Input<String> dataCollectionEndpoint;
+
   /// The data collection rule immutable id, the rule defines the transformation and data destination.
   final pulumi.Input<String> dataCollectionRuleImmutableId;
+
   /// The stream we are sending the data to.
   final pulumi.Input<String> streamName;
 
@@ -31,10 +33,13 @@ class DCRConfiguration {
 
   factory DCRConfiguration.fromMap(Map<String, dynamic> map) {
     return DCRConfiguration(
-      dataCollectionEndpoint: (map['dataCollectionEndpoint'] as String).input(),
-      dataCollectionRuleImmutableId: (map['dataCollectionRuleImmutableId'] as String).input(),
-      streamName: (map['streamName'] as String).input(),
+      dataCollectionEndpoint: pulumi.Input.fromValue(
+        map['dataCollectionEndpoint'] as String,
+      ),
+      dataCollectionRuleImmutableId: pulumi.Input.fromValue(
+        map['dataCollectionRuleImmutableId'] as String,
+      ),
+      streamName: pulumi.Input.fromValue(map['streamName'] as String),
     );
   }
 }
-

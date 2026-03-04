@@ -8,12 +8,16 @@ import 'change_tracking_configuration.dart';
 class DesiredConfiguration {
   /// Configuration for the Azure Monitor Insights service.
   final pulumi.Input<AzureMonitorConfiguration> azureMonitorInsights;
+
   /// Configuration for the Change Tracking and Inventory service.
   final pulumi.Input<ChangeTrackingConfiguration> changeTrackingAndInventory;
+
   /// Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
   final pulumi.Input<String>? defenderCspm;
+
   /// Desired enablement state of the Defender For Servers service.
   final pulumi.Input<String>? defenderForServers;
+
   /// User assigned Managed Identity used to perform operations on machines managed by Ops360.
   final pulumi.Input<String> userAssignedManagedIdentityId;
 
@@ -33,8 +37,16 @@ class DesiredConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureMonitorInsights': pulumi.Input.mapInputValue<AzureMonitorConfiguration, Map<String, dynamic>>(azureMonitorInsights, (value) => value.toMap()),
-      'changeTrackingAndInventory': pulumi.Input.mapInputValue<ChangeTrackingConfiguration, Map<String, dynamic>>(changeTrackingAndInventory, (value) => value.toMap()),
+      'azureMonitorInsights':
+          pulumi.Input.mapInputValue<
+            AzureMonitorConfiguration,
+            Map<String, dynamic>
+          >(azureMonitorInsights, (value) => value.toMap()),
+      'changeTrackingAndInventory':
+          pulumi.Input.mapInputValue<
+            ChangeTrackingConfiguration,
+            Map<String, dynamic>
+          >(changeTrackingAndInventory, (value) => value.toMap()),
       'defenderCspm': ?defenderCspm,
       'defenderForServers': ?defenderForServers,
       'userAssignedManagedIdentityId': userAssignedManagedIdentityId,
@@ -43,12 +55,29 @@ class DesiredConfiguration {
 
   factory DesiredConfiguration.fromMap(Map<String, dynamic> map) {
     return DesiredConfiguration(
-      azureMonitorInsights: (AzureMonitorConfiguration.fromMap((map['azureMonitorInsights'] as Map).cast<String, dynamic>())).input(),
-      changeTrackingAndInventory: (ChangeTrackingConfiguration.fromMap((map['changeTrackingAndInventory'] as Map).cast<String, dynamic>())).input(),
-      defenderCspm: map['defenderCspm'] == null ? null : (map['defenderCspm']! as String).input(),
-      defenderForServers: map['defenderForServers'] == null ? null : (map['defenderForServers']! as String).input(),
-      userAssignedManagedIdentityId: (map['userAssignedManagedIdentityId'] as String).input(),
+      azureMonitorInsights: pulumi.Input.fromValue(
+        AzureMonitorConfiguration.fromMap(
+          (map['azureMonitorInsights']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      changeTrackingAndInventory: pulumi.Input.fromValue(
+        ChangeTrackingConfiguration.fromMap(
+          (map['changeTrackingAndInventory']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      defenderCspm: (() {
+        final guardedValue = map['defenderCspm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defenderForServers: (() {
+        final guardedValue = map['defenderForServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedManagedIdentityId: pulumi.Input.fromValue(
+        map['userAssignedManagedIdentityId'] as String,
+      ),
     );
   }
 }
-

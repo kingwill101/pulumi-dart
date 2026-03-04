@@ -8,11 +8,13 @@ class SecurityProfileCustomMirroringProfile {
   /// the deployment groups that the packet should be mirrored to by the broker.
   /// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
   final pulumi.Input<List<String>>? mirroringDeploymentGroups;
+
   /// The target Mirroring Endpoint Group.
   /// When a mirroring rule with this security profile attached matches a packet,
   /// a replica will be mirrored to the location-local target in this group.
   /// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
   final pulumi.Input<String> mirroringEndpointGroup;
+
   /// (Output, Beta)
   /// The type of the mirroring endpoint group this profile is attached to.
   /// Possible values:
@@ -38,12 +40,23 @@ class SecurityProfileCustomMirroringProfile {
     };
   }
 
-  factory SecurityProfileCustomMirroringProfile.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileCustomMirroringProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileCustomMirroringProfile(
-      mirroringDeploymentGroups: map['mirroringDeploymentGroups'] == null ? null : ((map['mirroringDeploymentGroups']! as List).cast<String>()).input(),
-      mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
-      mirroringEndpointGroupType: map['mirroringEndpointGroupType'] == null ? null : (map['mirroringEndpointGroupType']! as String).input(),
+      mirroringDeploymentGroups: (() {
+        final guardedValue = map['mirroringDeploymentGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mirroringEndpointGroup: pulumi.Input.fromValue(
+        map['mirroringEndpointGroup'] as String,
+      ),
+      mirroringEndpointGroupType: (() {
+        final guardedValue = map['mirroringEndpointGroupType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

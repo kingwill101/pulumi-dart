@@ -8,20 +8,19 @@ class DiJobDestinationDataSourceSetting {
 
   /// Creates a new [DiJobDestinationDataSourceSetting].
   /// [dataSourceName] Destination data source name
-  DiJobDestinationDataSourceSetting({
-    this.dataSourceName,
-  });
+  DiJobDestinationDataSourceSetting({this.dataSourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataSourceName': ?dataSourceName,
-    };
+    return <String, dynamic>{'dataSourceName': ?dataSourceName};
   }
 
   factory DiJobDestinationDataSourceSetting.fromMap(Map<String, dynamic> map) {
     return DiJobDestinationDataSourceSetting(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      dataSourceName: (() {
+        final guardedValue = map['dataSourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

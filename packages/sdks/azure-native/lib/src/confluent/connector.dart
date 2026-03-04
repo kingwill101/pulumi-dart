@@ -301,16 +301,24 @@ import 'system_data_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Connector Info Base
   late final pulumi.Output<ConnectorInfoBaseResponse?> connectorBasicInfo;
+
   /// Connector Service type info base properties.
-  late final pulumi.Output<AzureBlobStorageSinkConnectorServiceInfoResponse?> connectorServiceTypeInfo;
+  late final pulumi.Output<AzureBlobStorageSinkConnectorServiceInfoResponse?>
+  connectorServiceTypeInfo;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The connection information consumed by applications.
-  late final pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfoResponse?> partnerConnectorInfo;
+  late final pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfoResponse?>
+  partnerConnectorInfo;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -323,17 +331,25 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:confluent:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>('connectorBasicInfo');
-    this.connectorServiceTypeInfo = registerOutput<AzureBlobStorageSinkConnectorServiceInfoResponse?>('connectorServiceTypeInfo');
+         'azure-native:confluent:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>(
+      'connectorBasicInfo',
+    );
+    connectorServiceTypeInfo =
+        registerOutput<AzureBlobStorageSinkConnectorServiceInfoResponse?>(
+          'connectorServiceTypeInfo',
+        );
     this.name = registerOutput<String>('name');
-    this.partnerConnectorInfo = registerOutput<KafkaAzureBlobStorageSinkConnectorInfoResponse?>('partnerConnectorInfo');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    partnerConnectorInfo =
+        registerOutput<KafkaAzureBlobStorageSinkConnectorInfoResponse?>(
+          'partnerConnectorInfo',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

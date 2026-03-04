@@ -6,7 +6,7 @@ import 'honey_pot_state.dart';
 ///
 /// For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -224,18 +224,25 @@ import 'honey_pot_state.dart';
 class HoneyPot extends pulumi.CustomResource {
   /// Honeypot ID.
   late final pulumi.Output<String> honeypotId;
+
   /// The image ID of the honeypot.
   late final pulumi.Output<String> honeypotImageId;
+
   /// Honeypot mirror name.
   late final pulumi.Output<String> honeypotImageName;
+
   /// Honeypot custom name.
   late final pulumi.Output<String> honeypotName;
+
   /// The ID of the honeypot management node.
   late final pulumi.Output<String> nodeId;
+
   /// The custom parameter ID of honeypot.
   late final pulumi.Output<String> presetId;
+
   /// Honeypot status.
   late final pulumi.Output<List<String>> states;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -248,19 +255,19 @@ class HoneyPot extends pulumi.CustomResource {
     HoneyPotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeyPot:HoneyPot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.honeypotId = registerOutput<String>('honeypotId');
-    this.honeypotImageId = registerOutput<String>('honeypotImageId');
-    this.honeypotImageName = registerOutput<String>('honeypotImageName');
-    this.honeypotName = registerOutput<String>('honeypotName');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.presetId = registerOutput<String>('presetId');
-    this.states = registerOutput<List<String>>('states');
-    this.status = registerOutput<String>('status');
+         'alicloud:threatdetection/honeyPot:HoneyPot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    honeypotId = registerOutput<String>('honeypotId');
+    honeypotImageId = registerOutput<String>('honeypotImageId');
+    honeypotImageName = registerOutput<String>('honeypotImageName');
+    honeypotName = registerOutput<String>('honeypotName');
+    nodeId = registerOutput<String>('nodeId');
+    presetId = registerOutput<String>('presetId');
+    states = registerOutput<List<String>>('states');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [HoneyPot] resource's state with the given [name] and [id].
@@ -281,18 +288,18 @@ class HoneyPot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeyPot:HoneyPot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.honeypotId = registerOutput<String>('honeypotId');
-    this.honeypotImageId = registerOutput<String>('honeypotImageId');
-    this.honeypotImageName = registerOutput<String>('honeypotImageName');
-    this.honeypotName = registerOutput<String>('honeypotName');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.presetId = registerOutput<String>('presetId');
-    this.states = registerOutput<List<String>>('states');
-    this.status = registerOutput<String>('status');
+         'alicloud:threatdetection/honeyPot:HoneyPot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    honeypotId = registerOutput<String>('honeypotId');
+    honeypotImageId = registerOutput<String>('honeypotImageId');
+    honeypotImageName = registerOutput<String>('honeypotImageName');
+    honeypotName = registerOutput<String>('honeypotName');
+    nodeId = registerOutput<String>('nodeId');
+    presetId = registerOutput<String>('presetId');
+    states = registerOutput<List<String>>('states');
+    status = registerOutput<String>('status');
   }
 }

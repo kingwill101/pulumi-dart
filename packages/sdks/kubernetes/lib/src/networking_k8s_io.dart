@@ -1,5 +1,3 @@
-library module_networking_k8s_io;
-
 export 'networking_k8s_io/cluster_cidr.dart';
 export 'networking_k8s_io/cluster_cidrargs.dart';
 export 'networking_k8s_io/cluster_cidrlist.dart';

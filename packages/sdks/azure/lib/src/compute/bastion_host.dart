@@ -330,7 +330,7 @@ import 'bastion_host_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2024-01-01
@@ -345,52 +345,68 @@ import 'bastion_host_state.dart';
 class BastionHost extends pulumi.CustomResource {
   /// Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
   late final pulumi.Output<bool?> copyPasteEnabled;
+
   /// The FQDN for the Bastion Host.
   late final pulumi.Output<String> dnsName;
+
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> fileCopyEnabled;
+
   /// A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<BastionHostIpConfiguration?> ipConfiguration;
+
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> ipConnectEnabled;
+
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> kerberosEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
-  /// > **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
+  /// &gt; **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
   late final pulumi.Output<int?> scaleUnits;
+
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
+  /// &gt; **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
   late final pulumi.Output<bool?> sessionRecordingEnabled;
+
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> shareableLinkEnabled;
+
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
-  /// > **Note:** Downgrading the SKU will force a new resource to be created.
+  /// &gt; **Note:** Downgrading the SKU will force a new resource to be created.
   late final pulumi.Output<String?> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// > **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> tunnelingEnabled;
+
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> virtualNetworkId;
+
   /// Specifies a list of Availability Zones in which this Public Bastion Host should be located. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -403,28 +419,30 @@ class BastionHost extends pulumi.CustomResource {
     BastionHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/bastionHost:BastionHost',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
-    this.ipConfiguration = registerOutput<BastionHostIpConfiguration?>('ipConfiguration');
-    this.ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
-    this.kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/bastionHost:BastionHost',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
+    dnsName = registerOutput<String>('dnsName');
+    fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
+    ipConfiguration = registerOutput<BastionHostIpConfiguration?>(
+      'ipConfiguration',
+    );
+    ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scaleUnits = registerOutput<int?>('scaleUnits');
-    this.sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
-    this.shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
-    this.virtualNetworkId = registerOutput<String?>('virtualNetworkId');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scaleUnits = registerOutput<int?>('scaleUnits');
+    sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
+    shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [BastionHost] resource's state with the given [name] and [id].
@@ -445,27 +463,29 @@ class BastionHost extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/bastionHost:BastionHost',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
-    this.ipConfiguration = registerOutput<BastionHostIpConfiguration?>('ipConfiguration');
-    this.ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
-    this.kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/bastionHost:BastionHost',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
+    dnsName = registerOutput<String>('dnsName');
+    fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
+    ipConfiguration = registerOutput<BastionHostIpConfiguration?>(
+      'ipConfiguration',
+    );
+    ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scaleUnits = registerOutput<int?>('scaleUnits');
-    this.sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
-    this.shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
-    this.virtualNetworkId = registerOutput<String?>('virtualNetworkId');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scaleUnits = registerOutput<int?>('scaleUnits');
+    sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
+    shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

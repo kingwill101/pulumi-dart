@@ -35,11 +35,14 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      userId: (map['userId'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

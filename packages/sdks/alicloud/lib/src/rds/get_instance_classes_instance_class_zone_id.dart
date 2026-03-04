@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceClassesInstanceClassZoneId {
   /// The Zone to launch the DB instance
   final pulumi.Input<String> id;
+
   /// A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
   final pulumi.Input<List<String>> subZoneIds;
 
@@ -17,17 +18,17 @@ class GetInstanceClassesInstanceClassZoneId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'subZoneIds': subZoneIds,
-    };
+    return <String, dynamic>{'id': id, 'subZoneIds': subZoneIds};
   }
 
-  factory GetInstanceClassesInstanceClassZoneId.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceClassesInstanceClassZoneId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceClassesInstanceClassZoneId(
-      id: (map['id'] as String).input(),
-      subZoneIds: ((map['subZoneIds'] as List).cast<String>()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      subZoneIds: pulumi.Input.fromValue(
+        (map['subZoneIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

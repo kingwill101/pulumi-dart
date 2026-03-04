@@ -4,16 +4,15 @@ enum VectorIndexType {
   valueDiskANN("diskANN"),
   valueQuantizedFlat("quantizedFlat");
 
-  const VectorIndexType(this.value);
-  final String value;
+  const VectorIndexType(this.wireValue);
+  final String wireValue;
 
   static VectorIndexType fromValue(String value) {
     for (final item in VectorIndexType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VectorIndexType value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum NicTypeInRequest {
   valuePublicNic("PublicNic"),
   valuePrivateNic("PrivateNic");
 
-  const NicTypeInRequest(this.value);
-  final String value;
+  const NicTypeInRequest(this.wireValue);
+  final String wireValue;
 
   static NicTypeInRequest fromValue(String value) {
     for (final item in NicTypeInRequest.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NicTypeInRequest value: $value');
   }
 }
-

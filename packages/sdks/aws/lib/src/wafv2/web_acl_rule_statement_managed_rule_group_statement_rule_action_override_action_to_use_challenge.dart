@@ -5,7 +5,10 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge {
   /// Defines custom handling for the web request. See `custom_request_handling` below for details.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<
+    WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling
+  >?
+  customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
@@ -15,14 +18,27 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling, Map<String, dynamic>>(customRequestHandling, (value) => value.toMap()),
+      'customRequestHandling':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling,
+            Map<String, dynamic>
+          >(customRequestHandling, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge(
-      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
+      customRequestHandling: (() {
+        final guardedValue = map['customRequestHandling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallengeCustomRequestHandling.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

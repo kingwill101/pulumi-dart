@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteTableAttachmentState {
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// Specifies whether to only precheck this request. Default value: `false`.
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the IPv4 Gateway instance.
   final pulumi.Input<String>? ipv4GatewayId;
+
   /// The ID of the Gateway route table to be bound.
   final pulumi.Input<String>? routeTableId;
+
   /// The status of the IPv4 Gateway instance. Value:
   /// - **Creating**: The function is being created.
   /// - **Created**: Created and available.
@@ -47,12 +51,31 @@ class GatewayRouteTableAttachmentState {
 
   factory GatewayRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId']! as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv4GatewayId: (() {
+        final guardedValue = map['ipv4GatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: (() {
+        final guardedValue = map['routeTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

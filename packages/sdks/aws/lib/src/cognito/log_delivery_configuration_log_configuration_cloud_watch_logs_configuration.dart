@@ -13,15 +13,18 @@ class LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logGroupArn': ?logGroupArn,
-    };
+    return <String, dynamic>{'logGroupArn': ?logGroupArn};
   }
 
-  factory LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration(
-      logGroupArn: map['logGroupArn'] == null ? null : ((map['logGroupArn'] as String).input()).input(),
+      logGroupArn: (() {
+        final guardedValue = map['logGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

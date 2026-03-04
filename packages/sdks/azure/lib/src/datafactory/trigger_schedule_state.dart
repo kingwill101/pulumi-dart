@@ -8,30 +8,43 @@ import 'trigger_schedule_schedule.dart';
 class TriggerScheduleState {
   /// Specifies if the Data Factory Schedule Trigger is activated. Defaults to `true`.
   final pulumi.Input<bool>? activated;
+
   /// List of tags that can be used for describing the Data Factory Schedule Trigger.
   final pulumi.Input<List<String>>? annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
+
   /// The Schedule Trigger's description.
   final pulumi.Input<String>? description;
+
   /// The time the Schedule Trigger should end. The time will be represented in UTC.
   final pulumi.Input<String>? endTime;
+
   /// The trigger frequency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
   final pulumi.Input<String>? frequency;
+
   /// The interval for how often the trigger occurs. This defaults to `1`.
   final pulumi.Input<int>? interval;
+
   /// Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// The Data Factory Pipeline name that the trigger will act on.
   final pulumi.Input<String>? pipelineName;
+
   /// The pipeline parameters that the trigger will act upon.
   final pulumi.Input<Map<String, String>>? pipelineParameters;
+
   /// A `pipeline` block as defined below.
   final pulumi.Input<List<TriggerSchedulePipeline>>? pipelines;
+
   /// A `schedule` block as defined below, which further specifies the recurrence schedule for the trigger. A schedule is capable of limiting or increasing the number of trigger executions specified by the `frequency` and `interval` properties.
   final pulumi.Input<TriggerScheduleSchedule>? schedule;
+
   /// The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
   final pulumi.Input<String>? startTime;
+
   /// The timezone of the start/end time.
   final pulumi.Input<String>? timeZone;
 
@@ -79,8 +92,23 @@ class TriggerScheduleState {
       'name': ?name,
       'pipelineName': ?pipelineName,
       'pipelineParameters': ?pipelineParameters,
-      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerSchedulePipeline>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerSchedulePipeline, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'schedule': ?pulumi.Input.mapOptionalInputValue<TriggerScheduleSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'pipelines':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TriggerSchedulePipeline>,
+            List<Map<String, dynamic>>
+          >(
+            pipelines,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TriggerSchedulePipeline,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            TriggerScheduleSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
     };
@@ -88,21 +116,89 @@ class TriggerScheduleState {
 
   factory TriggerScheduleState.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleState(
-      activated: map['activated'] == null ? null : (map['activated']! as bool).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName']! as String).input(),
-      pipelineParameters: map['pipelineParameters'] == null ? null : ((map['pipelineParameters']! as Map).cast<String, String>()).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerSchedulePipeline>(map['pipelines']!, (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schedule: map['schedule'] == null ? null : (TriggerScheduleSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      activated: (() {
+        final guardedValue = map['activated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipelineName: (() {
+        final guardedValue = map['pipelineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipelineParameters: (() {
+        final guardedValue = map['pipelineParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      pipelines: (() {
+        final guardedValue = map['pipelines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TriggerSchedulePipeline>(
+            guardedValue,
+            (value) => TriggerSchedulePipeline.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TriggerScheduleSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

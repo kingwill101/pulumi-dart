@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpdArgs {
   /// The CIDR block of the VPD.
   final pulumi.Input<String> cidr;
+
   /// The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The additional CIDR block.
   final pulumi.Input<List<String>>? secondaryCidrBlocks;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the VPD instance.
   final pulumi.Input<String> vpdName;
 
@@ -44,12 +48,25 @@ class VpdArgs {
 
   factory VpdArgs.fromMap(Map<String, dynamic> map) {
     return VpdArgs(
-      cidr: (map['cidr'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : ((map['secondaryCidrBlocks']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpdName: (map['vpdName'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryCidrBlocks: (() {
+        final guardedValue = map['secondaryCidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpdName: pulumi.Input.fromValue(map['vpdName'] as String),
     );
   }
 }
-

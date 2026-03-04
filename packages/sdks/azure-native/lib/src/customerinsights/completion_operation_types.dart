@@ -4,16 +4,15 @@ enum CompletionOperationTypes {
   valueDeleteFile("DeleteFile"),
   valueMoveFile("MoveFile");
 
-  const CompletionOperationTypes(this.value);
-  final String value;
+  const CompletionOperationTypes(this.wireValue);
+  final String wireValue;
 
   static CompletionOperationTypes fromValue(String value) {
     for (final item in CompletionOperationTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompletionOperationTypes value: $value');
   }
 }
-

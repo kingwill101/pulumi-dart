@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceFromMachineImageReservationAffinitySpecificReservation {
   /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
   final pulumi.Input<String> key;
+
   /// Corresponds to the label values of a reservation resource.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class InstanceFromMachineImageReservationAffinitySpecificReservation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageReservationAffinitySpecificReservation(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

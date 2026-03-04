@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbAttachmentState {
   /// Name of the instance to attach to the load balancer.
   final pulumi.Input<String>? instanceName;
+
   /// Name of the Lightsail load balancer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? lbName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -17,11 +19,7 @@ class LbAttachmentState {
   /// [instanceName] Name of the instance to attach to the load balancer.
   /// [lbName] Name of the Lightsail load balancer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LbAttachmentState({
-    this.instanceName,
-    this.lbName,
-    this.region,
-  });
+  LbAttachmentState({this.instanceName, this.lbName, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class LbAttachmentState {
 
   factory LbAttachmentState.fromMap(Map<String, dynamic> map) {
     return LbAttachmentState(
-      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
-      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lbName: (() {
+        final guardedValue = map['lbName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

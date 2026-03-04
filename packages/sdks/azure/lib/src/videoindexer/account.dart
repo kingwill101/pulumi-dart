@@ -230,7 +230,7 @@ import 'account_storage.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.VideoIndexer` - 2025-04-01
@@ -245,16 +245,22 @@ import 'account_storage.dart';
 class Account extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity> identity;
+
   /// The Azure location where the Video Indexer Account exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Video Indexer Account. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The public network access for the Video Indexer Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The name of the Resource Group that the Video Indexer Account will be associated with. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `storage` block as defined below.
   late final pulumi.Output<AccountStorage> storage;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -267,18 +273,18 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:videoindexer/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:videoindexer/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storage = registerOutput<AccountStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storage = registerOutput<AccountStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -299,17 +305,17 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:videoindexer/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:videoindexer/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storage = registerOutput<AccountStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storage = registerOutput<AccountStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

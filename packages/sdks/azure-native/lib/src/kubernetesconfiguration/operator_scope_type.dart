@@ -3,16 +3,15 @@ enum OperatorScopeType {
   valueCluster("cluster"),
   valueNamespace("namespace");
 
-  const OperatorScopeType(this.value);
-  final String value;
+  const OperatorScopeType(this.wireValue);
+  final String wireValue;
 
   static OperatorScopeType fromValue(String value) {
     for (final item in OperatorScopeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperatorScopeType value: $value');
   }
 }
-

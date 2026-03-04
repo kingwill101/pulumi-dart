@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetGroupTargetGroupHealthDnsFailover {
   /// The minimum number of targets that must be healthy. If the number of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are `off` or an integer from `1` to the maximum number of targets. The default is `off`.
   final pulumi.Input<String>? minimumHealthyTargetsCount;
+
   /// The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are `off` or an integer from `1` to `100`. The default is `off`.
   final pulumi.Input<String>? minimumHealthyTargetsPercentage;
 
@@ -23,11 +24,20 @@ class TargetGroupTargetGroupHealthDnsFailover {
     };
   }
 
-  factory TargetGroupTargetGroupHealthDnsFailover.fromMap(Map<String, dynamic> map) {
+  factory TargetGroupTargetGroupHealthDnsFailover.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TargetGroupTargetGroupHealthDnsFailover(
-      minimumHealthyTargetsCount: map['minimumHealthyTargetsCount'] == null ? null : ((map['minimumHealthyTargetsCount'] as String).input()).input(),
-      minimumHealthyTargetsPercentage: map['minimumHealthyTargetsPercentage'] == null ? null : ((map['minimumHealthyTargetsPercentage'] as String).input()).input(),
+      minimumHealthyTargetsCount: (() {
+        final guardedValue = map['minimumHealthyTargetsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumHealthyTargetsPercentage: (() {
+        final guardedValue = map['minimumHealthyTargetsPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,16 +8,17 @@ enum OsConstraintOsTypeAccesscontextmanagerV1beta {
   android("ANDROID"),
   ios("IOS");
 
-  const OsConstraintOsTypeAccesscontextmanagerV1beta(this.value);
-  final String value;
+  const OsConstraintOsTypeAccesscontextmanagerV1beta(this.wireValue);
+  final String wireValue;
 
   static OsConstraintOsTypeAccesscontextmanagerV1beta fromValue(String value) {
     for (final item in OsConstraintOsTypeAccesscontextmanagerV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OsConstraintOsTypeAccesscontextmanagerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown OsConstraintOsTypeAccesscontextmanagerV1beta value: $value',
+    );
   }
 }
-

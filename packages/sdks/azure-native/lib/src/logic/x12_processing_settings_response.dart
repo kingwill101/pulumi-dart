@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12ProcessingSettingsResponse {
   /// The value indicating whether to convert numerical type to implied decimal.
   final pulumi.Input<bool> convertImpliedDecimal;
+
   /// The value indicating whether to create empty xml tags for trailing separators.
   final pulumi.Input<bool> createEmptyXmlTagsForTrailingSeparators;
+
   /// The value indicating whether to mask security information.
   final pulumi.Input<bool> maskSecurityInfo;
+
   /// The value indicating whether to preserve interchange.
   final pulumi.Input<bool> preserveInterchange;
+
   /// The value indicating whether to suspend interchange on error.
   final pulumi.Input<bool> suspendInterchangeOnError;
+
   /// The value indicating whether to use dot as decimal separator.
   final pulumi.Input<bool> useDotAsDecimalSeparator;
 
@@ -36,7 +41,8 @@ class X12ProcessingSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'convertImpliedDecimal': convertImpliedDecimal,
-      'createEmptyXmlTagsForTrailingSeparators': createEmptyXmlTagsForTrailingSeparators,
+      'createEmptyXmlTagsForTrailingSeparators':
+          createEmptyXmlTagsForTrailingSeparators,
       'maskSecurityInfo': maskSecurityInfo,
       'preserveInterchange': preserveInterchange,
       'suspendInterchangeOnError': suspendInterchangeOnError,
@@ -46,13 +52,22 @@ class X12ProcessingSettingsResponse {
 
   factory X12ProcessingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12ProcessingSettingsResponse(
-      convertImpliedDecimal: (map['convertImpliedDecimal'] as bool).input(),
-      createEmptyXmlTagsForTrailingSeparators: (map['createEmptyXmlTagsForTrailingSeparators'] as bool).input(),
-      maskSecurityInfo: (map['maskSecurityInfo'] as bool).input(),
-      preserveInterchange: (map['preserveInterchange'] as bool).input(),
-      suspendInterchangeOnError: (map['suspendInterchangeOnError'] as bool).input(),
-      useDotAsDecimalSeparator: (map['useDotAsDecimalSeparator'] as bool).input(),
+      convertImpliedDecimal: pulumi.Input.fromValue(
+        map['convertImpliedDecimal'] as bool,
+      ),
+      createEmptyXmlTagsForTrailingSeparators: pulumi.Input.fromValue(
+        map['createEmptyXmlTagsForTrailingSeparators'] as bool,
+      ),
+      maskSecurityInfo: pulumi.Input.fromValue(map['maskSecurityInfo'] as bool),
+      preserveInterchange: pulumi.Input.fromValue(
+        map['preserveInterchange'] as bool,
+      ),
+      suspendInterchangeOnError: pulumi.Input.fromValue(
+        map['suspendInterchangeOnError'] as bool,
+      ),
+      useDotAsDecimalSeparator: pulumi.Input.fromValue(
+        map['useDotAsDecimalSeparator'] as bool,
+      ),
     );
   }
 }
-

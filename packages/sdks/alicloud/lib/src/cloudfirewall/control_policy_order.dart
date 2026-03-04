@@ -6,7 +6,7 @@ import 'control_policy_order_state.dart';
 ///
 /// For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 ///
-/// > **NOTE:** Available since v1.130.0.
+/// &gt; **NOTE:** Available since v1.130.0.
 ///
 /// ## Example Usage
 ///
@@ -220,10 +220,12 @@ import 'control_policy_order_state.dart';
 class ControlPolicyOrder extends pulumi.CustomResource {
   /// The unique ID of the access control policy.
   late final pulumi.Output<String> aclUuid;
+
   /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   late final pulumi.Output<String> direction;
+
   /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
-  /// > **NOTE:** From version 1.227.1, `order` must be set.
+  /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
   late final pulumi.Output<int> order;
 
   /// Creates a new [ControlPolicyOrder].
@@ -235,14 +237,14 @@ class ControlPolicyOrder extends pulumi.CustomResource {
     ControlPolicyOrderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclUuid = registerOutput<String>('aclUuid');
-    this.direction = registerOutput<String>('direction');
-    this.order = registerOutput<int>('order');
+         'alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclUuid = registerOutput<String>('aclUuid');
+    direction = registerOutput<String>('direction');
+    order = registerOutput<int>('order');
   }
 
   /// Gets an existing [ControlPolicyOrder] resource's state with the given [name] and [id].
@@ -263,13 +265,13 @@ class ControlPolicyOrder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclUuid = registerOutput<String>('aclUuid');
-    this.direction = registerOutput<String>('direction');
-    this.order = registerOutput<int>('order');
+         'alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclUuid = registerOutput<String>('aclUuid');
+    direction = registerOutput<String>('direction');
+    order = registerOutput<int>('order');
   }
 }

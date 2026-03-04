@@ -1,5 +1,3 @@
-library module_baremetalinfrastructure;
-
 export 'baremetalinfrastructure/azure_bare_metal_hardware_type_names_enum.dart';
 export 'baremetalinfrastructure/azure_bare_metal_instance.dart';
 export 'baremetalinfrastructure/azure_bare_metal_instance_args.dart';

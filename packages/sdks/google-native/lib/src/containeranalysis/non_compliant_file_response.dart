@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NonCompliantFileResponse {
   /// Command to display the non-compliant files.
   final pulumi.Input<String> displayCommand;
+
   /// Empty if `display_command` is set.
   final pulumi.Input<String> path;
+
   /// Explains why a file is non compliant for a CIS check.
   final pulumi.Input<String> reason;
 
@@ -31,10 +33,9 @@ class NonCompliantFileResponse {
 
   factory NonCompliantFileResponse.fromMap(Map<String, dynamic> map) {
     return NonCompliantFileResponse(
-      displayCommand: (map['displayCommand'] as String).input(),
-      path: (map['path'] as String).input(),
-      reason: (map['reason'] as String).input(),
+      displayCommand: pulumi.Input.fromValue(map['displayCommand'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
     );
   }
 }
-

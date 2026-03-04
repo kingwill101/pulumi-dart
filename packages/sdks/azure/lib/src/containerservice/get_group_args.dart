@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupArgs {
   /// The name of this Container Group instance.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Container Group instance exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// A list of Availability Zones in which this Container Group is located.
   final pulumi.Input<List<String>>? zones;
 
@@ -34,10 +36,15 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

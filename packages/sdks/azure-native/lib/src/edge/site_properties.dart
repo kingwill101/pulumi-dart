@@ -7,12 +7,16 @@ import 'site_address_properties.dart';
 class SiteProperties {
   /// AddressResource ArmId of Site resource
   final pulumi.Input<String>? addressResourceId;
+
   /// Description of Site resource
   final pulumi.Input<String>? description;
+
   /// displayName of Site resource
   final pulumi.Input<String>? displayName;
+
   /// Key-value pairs for labeling the site resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Physical address of the site
   final pulumi.Input<SiteAddressProperties>? siteAddress;
 
@@ -36,18 +40,47 @@ class SiteProperties {
       'description': ?description,
       'displayName': ?displayName,
       'labels': ?labels,
-      'siteAddress': ?pulumi.Input.mapOptionalInputValue<SiteAddressProperties, Map<String, dynamic>>(siteAddress, (value) => value.toMap()),
+      'siteAddress':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteAddressProperties,
+            Map<String, dynamic>
+          >(siteAddress, (value) => value.toMap()),
     };
   }
 
   factory SiteProperties.fromMap(Map<String, dynamic> map) {
     return SiteProperties(
-      addressResourceId: map['addressResourceId'] == null ? null : (map['addressResourceId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      siteAddress: map['siteAddress'] == null ? null : (SiteAddressProperties.fromMap((map['siteAddress']! as Map).cast<String, dynamic>())).input(),
+      addressResourceId: (() {
+        final guardedValue = map['addressResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      siteAddress: (() {
+        final guardedValue = map['siteAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteAddressProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

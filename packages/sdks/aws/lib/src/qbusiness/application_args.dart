@@ -11,19 +11,27 @@ import 'application_timeouts.dart';
 /// {@macro pulumi_qbusiness_application_application_args_doc}
 class ApplicationArgs {
   /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
-  final pulumi.Input<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
+  final pulumi.Input<ApplicationAttachmentsConfiguration>
+  attachmentsConfiguration;
+
   /// Description of the Amazon Q application.
   final pulumi.Input<String>? description;
+
   /// Name of the Amazon Q application.
   final pulumi.Input<String> displayName;
+
   /// Information about encryption configuration. See `encryption_configuration` below.
-  final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<ApplicationEncryptionConfiguration>?
+  encryptionConfiguration;
+
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   final pulumi.Input<String> iamServiceRoleArn;
+
   /// ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identityCenterInstanceArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -53,30 +61,79 @@ class ApplicationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachmentsConfiguration': pulumi.Input.mapInputValue<ApplicationAttachmentsConfiguration, Map<String, dynamic>>(attachmentsConfiguration, (value) => value.toMap()),
+      'attachmentsConfiguration':
+          pulumi.Input.mapInputValue<
+            ApplicationAttachmentsConfiguration,
+            Map<String, dynamic>
+          >(attachmentsConfiguration, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
-      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'encryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationEncryptionConfiguration,
+            Map<String, dynamic>
+          >(encryptionConfiguration, (value) => value.toMap()),
       'iamServiceRoleArn': iamServiceRoleArn,
       'identityCenterInstanceArn': identityCenterInstanceArn,
       'region': ?region,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ApplicationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      attachmentsConfiguration: (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      displayName: (map['displayName'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      iamServiceRoleArn: (map['iamServiceRoleArn'] as String).input(),
-      identityCenterInstanceArn: (map['identityCenterInstanceArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      attachmentsConfiguration: pulumi.Input.fromValue(
+        ApplicationAttachmentsConfiguration.fromMap(
+          (map['attachmentsConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      encryptionConfiguration: (() {
+        final guardedValue = map['encryptionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationEncryptionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      iamServiceRoleArn: pulumi.Input.fromValue(
+        map['iamServiceRoleArn'] as String,
+      ),
+      identityCenterInstanceArn: pulumi.Input.fromValue(
+        map['identityCenterInstanceArn'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

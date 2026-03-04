@@ -9,20 +9,21 @@ class ApplicationInsightsComponentAnalyticsItemProperties {
 
   /// Creates a new [ApplicationInsightsComponentAnalyticsItemProperties].
   /// [functionAlias] A function alias, used when the type of the item is Function
-  ApplicationInsightsComponentAnalyticsItemProperties({
-    this.functionAlias,
-  });
+  ApplicationInsightsComponentAnalyticsItemProperties({this.functionAlias});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'functionAlias': ?functionAlias,
-    };
+    return <String, dynamic>{'functionAlias': ?functionAlias};
   }
 
-  factory ApplicationInsightsComponentAnalyticsItemProperties.fromMap(Map<String, dynamic> map) {
+  factory ApplicationInsightsComponentAnalyticsItemProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationInsightsComponentAnalyticsItemProperties(
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      functionAlias: (() {
+        final guardedValue = map['functionAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

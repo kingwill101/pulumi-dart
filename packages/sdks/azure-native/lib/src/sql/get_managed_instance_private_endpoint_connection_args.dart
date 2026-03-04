@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedInstancePrivateEndpointConnectionArgs {
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
+
   /// The name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,19 @@ class GetManagedInstancePrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetManagedInstancePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagedInstancePrivateEndpointConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedInstancePrivateEndpointConnectionArgs(
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

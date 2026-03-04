@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SAPAvailabilityZonePairResponse {
   /// The zone A.
   final pulumi.Input<double>? zoneA;
+
   /// The zone B.
   final pulumi.Input<double>? zoneB;
 
   /// Creates a new [SAPAvailabilityZonePairResponse].
   /// [zoneA] The zone A.
   /// [zoneB] The zone B.
-  SAPAvailabilityZonePairResponse({
-    this.zoneA,
-    this.zoneB,
-  });
+  SAPAvailabilityZonePairResponse({this.zoneA, this.zoneB});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'zoneA': ?zoneA,
-      'zoneB': ?zoneB,
-    };
+    return <String, dynamic>{'zoneA': ?zoneA, 'zoneB': ?zoneB};
   }
 
   factory SAPAvailabilityZonePairResponse.fromMap(Map<String, dynamic> map) {
     return SAPAvailabilityZonePairResponse(
-      zoneA: map['zoneA'] == null ? null : (map['zoneA']! as double).input(),
-      zoneB: map['zoneB'] == null ? null : (map['zoneB']! as double).input(),
+      zoneA: (() {
+        final guardedValue = map['zoneA'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      zoneB: (() {
+        final guardedValue = map['zoneB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

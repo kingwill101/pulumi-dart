@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteEntriesEntry {
   /// The destination CIDR block of the route entry.
   final pulumi.Input<String> cidrBlock;
+
   /// The instance ID of the next hop.
   final pulumi.Input<String> instanceId;
+
   /// The type of the next hop.
   final pulumi.Input<String> nextHopType;
+
   /// The ID of the router table to which the route entry belongs.
   final pulumi.Input<String> routeTableId;
+
   /// The status of the route entry.
   final pulumi.Input<String> status;
+
   /// The type of the route entry.
   final pulumi.Input<String> type;
 
@@ -45,13 +50,12 @@ class GetRouteEntriesEntry {
 
   factory GetRouteEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesEntry(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      nextHopType: (map['nextHopType'] as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

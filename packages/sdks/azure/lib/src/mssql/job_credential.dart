@@ -289,7 +289,7 @@ import 'job_credential_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -304,12 +304,16 @@ import 'job_credential_state.dart';
 class JobCredential extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Elastic Job Credential to be created.
   late final pulumi.Output<String> jobAgentId;
+
   /// The name which should be used for this Elastic Job Credential. Changing this forces a new Elastic Job Credential to be created.
   late final pulumi.Output<String> name;
+
   /// The password to use for this Elastic Job credential.
   late final pulumi.Output<String?> password;
+
   /// An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   late final pulumi.Output<int?> passwordWoVersion;
+
   /// The username to use for this Elastic Job credential.
   late final pulumi.Output<String> username;
 
@@ -322,16 +326,16 @@ class JobCredential extends pulumi.CustomResource {
     JobCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobCredential:JobCredential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.jobAgentId = registerOutput<String>('jobAgentId');
+         'azure:mssql/jobCredential:JobCredential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.passwordWoVersion = registerOutput<int?>('passwordWoVersion');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String?>('password');
+    passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [JobCredential] resource's state with the given [name] and [id].
@@ -352,15 +356,15 @@ class JobCredential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobCredential:JobCredential',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.jobAgentId = registerOutput<String>('jobAgentId');
+         'azure:mssql/jobCredential:JobCredential',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.passwordWoVersion = registerOutput<int?>('passwordWoVersion');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String?>('password');
+    passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    username = registerOutput<String>('username');
   }
 }

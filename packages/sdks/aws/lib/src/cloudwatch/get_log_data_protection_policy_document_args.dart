@@ -9,16 +9,20 @@ import 'get_log_data_protection_policy_document_statement.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cloudwatch_get_log_data_protection_policy_document_get_log_data_protection_policy_document_args_doc}
 class GetLogDataProtectionPolicyDocumentArgs {
-  final pulumi.Input<GetLogDataProtectionPolicyDocumentConfiguration>? configuration;
+  final pulumi.Input<GetLogDataProtectionPolicyDocumentConfiguration>?
+  configuration;
   final pulumi.Input<String>? description;
+
   /// The name of the data protection policy document.
   final pulumi.Input<String> name;
+
   /// Configures the data protection policy.
   ///
-  /// > There must be exactly two statements: the first with an `audit` operation, and the second with a `deidentify` operation.
+  /// &gt; There must be exactly two statements: the first with an `audit` operation, and the second with a `deidentify` operation.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<GetLogDataProtectionPolicyDocumentStatement>> statements;
+  final pulumi.Input<List<GetLogDataProtectionPolicyDocumentStatement>>
+  statements;
   final pulumi.Input<String>? version;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentArgs].
@@ -37,22 +41,61 @@ class GetLogDataProtectionPolicyDocumentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<GetLogDataProtectionPolicyDocumentConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            GetLogDataProtectionPolicyDocumentConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'description': ?description,
       'name': name,
-      'statements': pulumi.Input.mapInputValue<List<GetLogDataProtectionPolicyDocumentStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<GetLogDataProtectionPolicyDocumentStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statements':
+          pulumi.Input.mapInputValue<
+            List<GetLogDataProtectionPolicyDocumentStatement>,
+            List<Map<String, dynamic>>
+          >(
+            statements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLogDataProtectionPolicyDocumentStatement,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'version': ?version,
     };
   }
 
-  factory GetLogDataProtectionPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogDataProtectionPolicyDocumentArgs(
-      configuration: map['configuration'] == null ? null : ((GetLogDataProtectionPolicyDocumentConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      statements: (pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(map['statements']!, (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GetLogDataProtectionPolicyDocumentConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      statements: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(
+          map['statements']!,
+          (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_recoveryservices;
-
 export 'recoveryservices/functions.dart';
 export 'recoveryservices/get_vault_args.dart';
 export 'recoveryservices/get_vault_identity.dart';

@@ -7,6 +7,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric {
   ///
   /// - - -
   final pulumi.Input<List<String>>? metricOverrides;
+
   /// A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
   final pulumi.Input<String> metricSource;
 
@@ -25,11 +26,16 @@ class ClusterClusterConfigDataprocMetricConfigMetric {
     };
   }
 
-  factory ClusterClusterConfigDataprocMetricConfigMetric.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigDataprocMetricConfigMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigDataprocMetricConfigMetric(
-      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides']! as List).cast<String>()).input(),
-      metricSource: (map['metricSource'] as String).input(),
+      metricOverrides: (() {
+        final guardedValue = map['metricOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      metricSource: pulumi.Input.fromValue(map['metricSource'] as String),
     );
   }
 }
-

@@ -5,14 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleTimedPromoteReleaseRule {
   /// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
   final pulumi.Input<String>? destinationPhase;
+
   /// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
   /// - The last segment of a target name
   /// - "@next", the next target in the promotion sequence"
   final pulumi.Input<String>? destinationTargetId;
+
   /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
   final pulumi.Input<String> id;
+
   /// Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
   final pulumi.Input<String> schedule;
+
   /// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
   final pulumi.Input<String> timeZone;
 
@@ -40,14 +44,23 @@ class AutomationRuleTimedPromoteReleaseRule {
     };
   }
 
-  factory AutomationRuleTimedPromoteReleaseRule.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleTimedPromoteReleaseRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleTimedPromoteReleaseRule(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
-      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId']! as String).input(),
-      id: (map['id'] as String).input(),
-      schedule: (map['schedule'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      destinationPhase: (() {
+        final guardedValue = map['destinationPhase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationTargetId: (() {
+        final guardedValue = map['destinationTargetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

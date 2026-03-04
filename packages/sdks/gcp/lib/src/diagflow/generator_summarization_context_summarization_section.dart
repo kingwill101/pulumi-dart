@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GeneratorSummarizationContextSummarizationSection {
   /// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
   final pulumi.Input<String>? definition;
+
   /// Optional. Name of the section, for example, "situation".
   final pulumi.Input<String>? key;
+
   /// Optional. Type of the summarization section.
   /// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
   final pulumi.Input<String>? type;
@@ -29,12 +31,25 @@ class GeneratorSummarizationContextSummarizationSection {
     };
   }
 
-  factory GeneratorSummarizationContextSummarizationSection.fromMap(Map<String, dynamic> map) {
+  factory GeneratorSummarizationContextSummarizationSection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GeneratorSummarizationContextSummarizationSection(
-      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

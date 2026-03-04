@@ -29,13 +29,14 @@ class GetMonitorGroupInstancesInstanceInstance {
     };
   }
 
-  factory GetMonitorGroupInstancesInstanceInstance.fromMap(Map<String, dynamic> map) {
+  factory GetMonitorGroupInstancesInstanceInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMonitorGroupInstancesInstanceInstance(
-      category: (map['category'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

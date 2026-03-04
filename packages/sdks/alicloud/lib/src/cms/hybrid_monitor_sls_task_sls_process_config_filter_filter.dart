@@ -3,14 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
-  /// The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+  /// The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
   final pulumi.Input<String>? operator;
+
   /// The name of the key that is used to filter logs imported from Log Service.
   final pulumi.Input<String>? slsKeyName;
   final pulumi.Input<String>? value;
 
   /// Creates a new [HybridMonitorSlsTaskSlsProcessConfigFilterFilter].
-  /// [operator] The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+  /// [operator] The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
   /// [slsKeyName] The name of the key that is used to filter logs imported from Log Service.
   /// [value] Optional.
   HybridMonitorSlsTaskSlsProcessConfigFilterFilter({
@@ -27,12 +28,25 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
     };
   }
 
-  factory HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap(Map<String, dynamic> map) {
+  factory HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HybridMonitorSlsTaskSlsProcessConfigFilterFilter(
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsKeyName: (() {
+        final guardedValue = map['slsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

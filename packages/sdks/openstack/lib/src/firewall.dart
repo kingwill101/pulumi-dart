@@ -1,5 +1,3 @@
-library module_firewall;
-
 export 'firewall/functions.dart';
 export 'firewall/get_group_v2_args.dart';
 export 'firewall/get_group_v2_result.dart';

@@ -4,12 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyKeyProperty {
   final pulumi.Input<String> curve;
+
   /// Is this Certificate Exportable?
   final pulumi.Input<bool> exportable;
+
   /// The size of the Key used in the Certificate.
   final pulumi.Input<int> keySize;
+
   /// Specifies the Type of Key, for example `RSA`.
   final pulumi.Input<String> keyType;
+
   /// Is the key reusable?
   final pulumi.Input<bool> reuseKey;
 
@@ -37,14 +41,15 @@ class GetCertificateCertificatePolicyKeyProperty {
     };
   }
 
-  factory GetCertificateCertificatePolicyKeyProperty.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateCertificatePolicyKeyProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateCertificatePolicyKeyProperty(
-      curve: (map['curve'] as String).input(),
-      exportable: (map['exportable'] as bool).input(),
-      keySize: (map['keySize'] as int).input(),
-      keyType: (map['keyType'] as String).input(),
-      reuseKey: (map['reuseKey'] as bool).input(),
+      curve: pulumi.Input.fromValue(map['curve'] as String),
+      exportable: pulumi.Input.fromValue(map['exportable'] as bool),
+      keySize: pulumi.Input.fromValue(map['keySize'] as int),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
+      reuseKey: pulumi.Input.fromValue(map['reuseKey'] as bool),
     );
   }
 }
-

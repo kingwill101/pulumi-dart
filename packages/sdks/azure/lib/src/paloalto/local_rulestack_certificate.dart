@@ -181,7 +181,7 @@ import 'local_rulestack_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
@@ -196,17 +196,22 @@ import 'local_rulestack_certificate_state.dart';
 class LocalRulestackCertificate extends pulumi.CustomResource {
   /// The comment for Audit purposes.
   late final pulumi.Output<String?> auditComment;
+
   /// The description for the Certificate.
   late final pulumi.Output<String?> description;
+
   /// The `versionles_id` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   late final pulumi.Output<String?> keyVaultCertificateId;
+
   /// The name which should be used for this Palo Alto Networks Rulestack Certificate.
   late final pulumi.Output<String> name;
+
   /// The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   late final pulumi.Output<String> rulestackId;
+
   /// Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   ///
-  /// > **Note:** One and only one of `self_signed` or `key_vault_certificate_id` must be specified.
+  /// &gt; **Note:** One and only one of `self_signed` or `key_vault_certificate_id` must be specified.
   late final pulumi.Output<bool?> selfSigned;
 
   /// Creates a new [LocalRulestackCertificate].
@@ -218,17 +223,17 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
     LocalRulestackCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.description = registerOutput<String?>('description');
-    this.keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
+         'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
     this.name = registerOutput<String>('name');
-    this.rulestackId = registerOutput<String>('rulestackId');
-    this.selfSigned = registerOutput<bool?>('selfSigned');
+    rulestackId = registerOutput<String>('rulestackId');
+    selfSigned = registerOutput<bool?>('selfSigned');
   }
 
   /// Gets an existing [LocalRulestackCertificate] resource's state with the given [name] and [id].
@@ -249,16 +254,16 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.description = registerOutput<String?>('description');
-    this.keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
+         'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
     this.name = registerOutput<String>('name');
-    this.rulestackId = registerOutput<String>('rulestackId');
-    this.selfSigned = registerOutput<bool?>('selfSigned');
+    rulestackId = registerOutput<String>('rulestackId');
+    selfSigned = registerOutput<bool?>('selfSigned');
   }
 }

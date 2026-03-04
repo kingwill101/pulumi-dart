@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig {
   /// ARN of the nested region switch plan.
   final pulumi.Input<String> arn;
+
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
 
@@ -28,12 +30,21 @@ class PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig(
-      arn: (map['arn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

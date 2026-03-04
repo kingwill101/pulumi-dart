@@ -9,16 +9,17 @@ enum RegionBackendServiceSessionAffinity {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const RegionBackendServiceSessionAffinity(this.value);
-  final String value;
+  const RegionBackendServiceSessionAffinity(this.wireValue);
+  final String wireValue;
 
   static RegionBackendServiceSessionAffinity fromValue(String value) {
     for (final item in RegionBackendServiceSessionAffinity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceSessionAffinity value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceSessionAffinity value: $value',
+    );
   }
 }
-

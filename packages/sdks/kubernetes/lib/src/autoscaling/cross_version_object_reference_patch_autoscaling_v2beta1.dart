@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossVersionObjectReferencePatchAutoscalingV2beta1 {
   /// API version of the referent
   final pulumi.Input<String>? apiVersion;
+
   /// Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
   final pulumi.Input<String>? kind;
+
   /// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
   final pulumi.Input<String>? name;
 
@@ -29,12 +31,25 @@ class CrossVersionObjectReferencePatchAutoscalingV2beta1 {
     };
   }
 
-  factory CrossVersionObjectReferencePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
+  factory CrossVersionObjectReferencePatchAutoscalingV2beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CrossVersionObjectReferencePatchAutoscalingV2beta1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

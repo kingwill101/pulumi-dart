@@ -9,9 +9,9 @@ import 'crypto_key_iammember_state.dart';
 /// * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
 /// * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
 ///
-/// > **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 /// ```typescript
@@ -895,13 +895,16 @@ class CryptoKeyIAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<CryptoKeyIAMMemberCondition?> condition;
+
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
   /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
   /// the provider's project setting will be used as a fallback.
   late final pulumi.Output<String> cryptoKeyId;
+
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -911,6 +914,7 @@ class CryptoKeyIAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
@@ -924,16 +928,16 @@ class CryptoKeyIAMMember extends pulumi.CustomResource {
     CryptoKeyIAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition');
-    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition');
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [CryptoKeyIAMMember] resource's state with the given [name] and [id].
@@ -954,15 +958,15 @@ class CryptoKeyIAMMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition');
-    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition');
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

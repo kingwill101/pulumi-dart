@@ -152,60 +152,78 @@ import 'system_data_response.dart';
 class Domain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location where the Domains resource data is stored at rest.
   late final pulumi.Output<String> dataLocation;
+
   /// Describes how a Domains resource is being managed.
   late final pulumi.Output<String> domainManagement;
+
   /// P2 sender domain that is displayed to the email recipients [RFC 5322].
   late final pulumi.Output<String> fromSenderDomain;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// P1 sender domain that is present on the email envelope [RFC 5321].
   late final pulumi.Output<String> mailFromSenderDomain;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Describes whether user engagement tracking is enabled or disabled.
   late final pulumi.Output<String?> userEngagementTracking;
+
   /// List of DnsRecord
-  late final pulumi.Output<DomainPropertiesResponseVerificationRecords> verificationRecords;
+  late final pulumi.Output<DomainPropertiesResponseVerificationRecords>
+  verificationRecords;
+
   /// List of VerificationStatusRecord
-  late final pulumi.Output<DomainPropertiesResponseVerificationStates> verificationStates;
+  late final pulumi.Output<DomainPropertiesResponseVerificationStates>
+  verificationStates;
 
   /// Creates a new [Domain].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_communication_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:communication:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataLocation = registerOutput<String>('dataLocation');
-    this.domainManagement = registerOutput<String>('domainManagement');
-    this.fromSenderDomain = registerOutput<String>('fromSenderDomain');
-    this.location = registerOutput<String>('location');
-    this.mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:communication:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataLocation = registerOutput<String>('dataLocation');
+    domainManagement = registerOutput<String>('domainManagement');
+    fromSenderDomain = registerOutput<String>('fromSenderDomain');
+    location = registerOutput<String>('location');
+    mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.userEngagementTracking = registerOutput<String?>('userEngagementTracking');
-    this.verificationRecords = registerOutput<DomainPropertiesResponseVerificationRecords>('verificationRecords');
-    this.verificationStates = registerOutput<DomainPropertiesResponseVerificationStates>('verificationStates');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    userEngagementTracking = registerOutput<String?>('userEngagementTracking');
+    verificationRecords =
+        registerOutput<DomainPropertiesResponseVerificationRecords>(
+          'verificationRecords',
+        );
+    verificationStates =
+        registerOutput<DomainPropertiesResponseVerificationStates>(
+          'verificationStates',
+        );
   }
 }

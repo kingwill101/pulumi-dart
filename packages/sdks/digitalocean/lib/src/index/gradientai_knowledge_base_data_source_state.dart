@@ -8,8 +8,10 @@ import 'gradientai_knowledge_base_data_source_web_crawler_data_source.dart';
 class GradientaiKnowledgeBaseDataSourceState {
   /// UUID of the Knowledge Base
   final pulumi.Input<String>? knowledgeBaseUuid;
-  final pulumi.Input<GradientaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource;
-  final pulumi.Input<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource;
+  final pulumi.Input<GradientaiKnowledgeBaseDataSourceSpacesDataSource>?
+  spacesDataSource;
+  final pulumi.Input<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>?
+  webCrawlerDataSource;
 
   /// Creates a new [GradientaiKnowledgeBaseDataSourceState].
   /// [knowledgeBaseUuid] UUID of the Knowledge Base
@@ -24,17 +26,46 @@ class GradientaiKnowledgeBaseDataSourceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'knowledgeBaseUuid': ?knowledgeBaseUuid,
-      'spacesDataSource': ?pulumi.Input.mapOptionalInputValue<GradientaiKnowledgeBaseDataSourceSpacesDataSource, Map<String, dynamic>>(spacesDataSource, (value) => value.toMap()),
-      'webCrawlerDataSource': ?pulumi.Input.mapOptionalInputValue<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource, Map<String, dynamic>>(webCrawlerDataSource, (value) => value.toMap()),
+      'spacesDataSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GradientaiKnowledgeBaseDataSourceSpacesDataSource,
+            Map<String, dynamic>
+          >(spacesDataSource, (value) => value.toMap()),
+      'webCrawlerDataSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource,
+            Map<String, dynamic>
+          >(webCrawlerDataSource, (value) => value.toMap()),
     };
   }
 
-  factory GradientaiKnowledgeBaseDataSourceState.fromMap(Map<String, dynamic> map) {
+  factory GradientaiKnowledgeBaseDataSourceState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GradientaiKnowledgeBaseDataSourceState(
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
-      spacesDataSource: map['spacesDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource']! as Map).cast<String, dynamic>())).input(),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource']! as Map).cast<String, dynamic>())).input(),
+      knowledgeBaseUuid: (() {
+        final guardedValue = map['knowledgeBaseUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spacesDataSource: (() {
+        final guardedValue = map['spacesDataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      webCrawlerDataSource: (() {
+        final guardedValue = map['webCrawlerDataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

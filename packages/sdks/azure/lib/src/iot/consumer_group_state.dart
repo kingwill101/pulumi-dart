@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerGroupState {
   /// The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eventhubEndpointName;
+
   /// The name of the IoT Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iothubName;
+
   /// The name of this Consumer Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -36,11 +39,26 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      eventhubEndpointName: map['eventhubEndpointName'] == null ? null : (map['eventhubEndpointName']! as String).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      eventhubEndpointName: (() {
+        final guardedValue = map['eventhubEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iothubName: (() {
+        final guardedValue = map['iothubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

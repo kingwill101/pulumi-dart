@@ -1,5 +1,3 @@
-library module_networking;
-
 export 'networking/address_group_v2.dart';
 export 'networking/address_group_v2_args.dart';
 export 'networking/address_group_v2_state.dart';

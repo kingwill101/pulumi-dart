@@ -5,7 +5,12 @@ import 'get_region_instance_group_manager_instance_flexibility_policy_instance_s
 
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicy {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>> instanceSelections;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+    >
+  >
+  instanceSelections;
 
   /// Creates a new [GetRegionInstanceGroupManagerInstanceFlexibilityPolicy].
   /// [instanceSelections] Named instance selections configuring properties that the group will use when creating new VMs.
@@ -15,14 +20,38 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceSelections': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>, List<Map<String, dynamic>>>(instanceSelections, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instanceSelections':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+            >,
+            List<Map<String, dynamic>>
+          >(
+            instanceSelections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionInstanceGroupManagerInstanceFlexibilityPolicy(
-      instanceSelections: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>(map['instanceSelections'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceSelections: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        >(
+          map['instanceSelections']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

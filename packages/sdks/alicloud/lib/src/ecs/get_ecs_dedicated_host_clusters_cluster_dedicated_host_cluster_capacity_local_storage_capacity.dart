@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
   /// The available capacity of the local disk. Unit: `GiB`.
   final pulumi.Input<int> availableDisk;
+
   /// The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
   final pulumi.Input<String> dataDiskCategory;
+
   /// The total capacity of the local disk. Unit: `GiB`.
   final pulumi.Input<int> totalDisk;
 
@@ -28,12 +30,15 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
     };
   }
 
-  factory GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity.fromMap(Map<String, dynamic> map) {
+  factory GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity(
-      availableDisk: (map['availableDisk'] as int).input(),
-      dataDiskCategory: (map['dataDiskCategory'] as String).input(),
-      totalDisk: (map['totalDisk'] as int).input(),
+      availableDisk: pulumi.Input.fromValue(map['availableDisk'] as int),
+      dataDiskCategory: pulumi.Input.fromValue(
+        map['dataDiskCategory'] as String,
+      ),
+      totalDisk: pulumi.Input.fromValue(map['totalDisk'] as int),
     );
   }
 }
-

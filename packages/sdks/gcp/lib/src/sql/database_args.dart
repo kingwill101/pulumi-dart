@@ -13,23 +13,28 @@ class DatabaseArgs {
   /// for more details and supported values. Postgres databases only support
   /// a value of `UTF8` at creation time.
   final pulumi.Input<String>? charset;
+
   /// The collation value. See MySQL's
   /// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
   /// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of `en_US.UTF8` at creation time.
   final pulumi.Input<String>? collation;
+
   /// The deletion policy for the database. Setting ABANDON allows the resource
   /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
   /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
   /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
   final pulumi.Input<String>? deletionPolicy;
+
   /// The name of the Cloud SQL instance. This does not include the project
   /// ID.
   final pulumi.Input<String> instance;
+
   /// The name of the database in the Cloud SQL instance.
   /// This does not include the project ID or instance name.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -63,13 +68,32 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
-      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      instance: (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      charset: (() {
+        final guardedValue = map['charset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      collation: (() {
+        final guardedValue = map['collation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

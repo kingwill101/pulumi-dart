@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedClusterArgs {
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetManagedClusterArgs {
 
   factory GetManagedClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

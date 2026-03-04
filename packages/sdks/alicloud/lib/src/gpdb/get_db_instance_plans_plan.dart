@@ -6,27 +6,35 @@ import 'get_db_instance_plans_plan_plan_config.dart';
 class GetDbInstancePlansPlan {
   /// The name of the Plan.
   final pulumi.Input<String> dbInstancePlanName;
-  /// The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+
+  /// The ID of the resource. The value formats as `&lt;db_instance_id&gt;:&lt;plan_id&gt;`.
   final pulumi.Input<String> id;
+
   /// Plan configuration information.
   final pulumi.Input<List<GetDbInstancePlansPlanPlanConfig>> planConfigs;
   final pulumi.Input<String> planDesc;
+
   /// The end time of the Plan.
   final pulumi.Input<String> planEndDate;
+
   /// The ID of DB Instance Plan.
   final pulumi.Input<String> planId;
+
   /// Plan scheduling type. Valid values: `Postpone`, `Regular`.
   final pulumi.Input<String> planScheduleType;
+
   /// The start time of the Plan.
   final pulumi.Input<String> planStartDate;
+
   /// The type of the Plan. Valid values: `PauseResume`, `Resize`.
   final pulumi.Input<String> planType;
+
   /// The Status of the Plan.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetDbInstancePlansPlan].
   /// [dbInstancePlanName] The name of the Plan.
-  /// [id] The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+  /// [id] The ID of the resource. The value formats as `&lt;db_instance_id&gt;:&lt;plan_id&gt;`.
   /// [planConfigs] Plan configuration information.
   /// [planDesc] Required.
   /// [planEndDate] The end time of the Plan.
@@ -52,7 +60,18 @@ class GetDbInstancePlansPlan {
     return <String, dynamic>{
       'dbInstancePlanName': dbInstancePlanName,
       'id': id,
-      'planConfigs': pulumi.Input.mapInputValue<List<GetDbInstancePlansPlanPlanConfig>, List<Map<String, dynamic>>>(planConfigs, (value) => pulumi.Input.encodeList<GetDbInstancePlansPlanPlanConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'planConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetDbInstancePlansPlanPlanConfig>,
+            List<Map<String, dynamic>>
+          >(
+            planConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDbInstancePlansPlanPlanConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'planDesc': planDesc,
       'planEndDate': planEndDate,
       'planId': planId,
@@ -65,17 +84,27 @@ class GetDbInstancePlansPlan {
 
   factory GetDbInstancePlansPlan.fromMap(Map<String, dynamic> map) {
     return GetDbInstancePlansPlan(
-      dbInstancePlanName: (map['dbInstancePlanName'] as String).input(),
-      id: (map['id'] as String).input(),
-      planConfigs: (pulumi.Input.decodeList<GetDbInstancePlansPlanPlanConfig>(map['planConfigs'], (value) => GetDbInstancePlansPlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      planDesc: (map['planDesc'] as String).input(),
-      planEndDate: (map['planEndDate'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      planScheduleType: (map['planScheduleType'] as String).input(),
-      planStartDate: (map['planStartDate'] as String).input(),
-      planType: (map['planType'] as String).input(),
-      status: (map['status'] as String).input(),
+      dbInstancePlanName: pulumi.Input.fromValue(
+        map['dbInstancePlanName'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      planConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDbInstancePlansPlanPlanConfig>(
+          map['planConfigs']!,
+          (value) => GetDbInstancePlansPlanPlanConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      planDesc: pulumi.Input.fromValue(map['planDesc'] as String),
+      planEndDate: pulumi.Input.fromValue(map['planEndDate'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      planScheduleType: pulumi.Input.fromValue(
+        map['planScheduleType'] as String,
+      ),
+      planStartDate: pulumi.Input.fromValue(map['planStartDate'] as String),
+      planType: pulumi.Input.fromValue(map['planType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

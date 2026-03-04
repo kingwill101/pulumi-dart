@@ -10,34 +10,49 @@ import 'system_data_response.dart';
 class GetApiGatewayResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Information regarding how the gateway should integrate with backend systems.
   final BackendConfigurationResponse? backend;
+
   /// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
   final GatewayConfigurationApiResponse? configurationApi;
+
   /// Creation UTC date of the API Management gateway.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final String createdAtUtc;
+
   /// ETag of the resource.
   final String etag;
+
   /// Information regarding how the gateway should be exposed.
   final FrontendConfigurationResponse? frontend;
+
   /// Resource ID.
   final String id;
+
   /// Resource location.
   final String location;
+
   /// Resource name.
   final String name;
+
   /// The current provisioning state of the API Management gateway which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
   final String provisioningState;
+
   /// SKU properties of the API Management gateway.
   final ApiManagementGatewaySkuPropertiesResponse sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The provisioning state of the API Management gateway, which is targeted by the long running operation started on the gateway.
   final String targetProvisioningState;
+
   /// Resource type for API Management resource is set to Microsoft.ApiManagement.
   final String type;
+
   /// The type of VPN in which API Management gateway needs to be configured in.
   final String? virtualNetworkType;
 
@@ -80,11 +95,11 @@ class GetApiGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'backend': ?backend == null ? null : backend!.toMap(),
-      'configurationApi': ?configurationApi == null ? null : configurationApi!.toMap(),
+      'backend': ?backend?.toMap(),
+      'configurationApi': ?configurationApi?.toMap(),
       'createdAtUtc': createdAtUtc,
       'etag': etag,
-      'frontend': ?frontend == null ? null : frontend!.toMap(),
+      'frontend': ?frontend?.toMap(),
       'id': id,
       'location': location,
       'name': name,
@@ -101,22 +116,51 @@ class GetApiGatewayResult {
   factory GetApiGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backend: map['backend'] == null ? null : BackendConfigurationResponse.fromMap((map['backend']! as Map).cast<String, dynamic>()),
-      configurationApi: map['configurationApi'] == null ? null : GatewayConfigurationApiResponse.fromMap((map['configurationApi']! as Map).cast<String, dynamic>()),
+      backend: (() {
+        final guardedValue = map['backend'];
+        if (guardedValue == null) return null;
+        return BackendConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      configurationApi: (() {
+        final guardedValue = map['configurationApi'];
+        if (guardedValue == null) return null;
+        return GatewayConfigurationApiResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       createdAtUtc: map['createdAtUtc'] as String,
       etag: map['etag'] as String,
-      frontend: map['frontend'] == null ? null : FrontendConfigurationResponse.fromMap((map['frontend']! as Map).cast<String, dynamic>()),
+      frontend: (() {
+        final guardedValue = map['frontend'];
+        if (guardedValue == null) return null;
+        return FrontendConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: ApiManagementGatewaySkuPropertiesResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: ApiManagementGatewaySkuPropertiesResponse.fromMap(
+        (map['sku']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       targetProvisioningState: map['targetProvisioningState'] as String,
       type: map['type'] as String,
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : map['virtualNetworkType']! as String,
+      virtualNetworkType: (() {
+        final guardedValue = map['virtualNetworkType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'http_get_response.dart';
 class PreBuildStepResponse {
   /// Description of the pre-build step.
   final pulumi.Input<String>? description;
+
   /// Http get request to send before the build.
   final pulumi.Input<HttpGetResponse>? httpGet;
+
   /// List of custom commands to run.
   final pulumi.Input<List<String>>? scripts;
 
@@ -16,26 +18,41 @@ class PreBuildStepResponse {
   /// [description] Description of the pre-build step.
   /// [httpGet] Http get request to send before the build.
   /// [scripts] List of custom commands to run.
-  PreBuildStepResponse({
-    this.description,
-    this.httpGet,
-    this.scripts,
-  });
+  PreBuildStepResponse({this.description, this.httpGet, this.scripts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'httpGet': ?pulumi.Input.mapOptionalInputValue<HttpGetResponse, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
+      'httpGet':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpGetResponse,
+            Map<String, dynamic>
+          >(httpGet, (value) => value.toMap()),
       'scripts': ?scripts,
     };
   }
 
   factory PreBuildStepResponse.fromMap(Map<String, dynamic> map) {
     return PreBuildStepResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      httpGet: map['httpGet'] == null ? null : (HttpGetResponse.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
-      scripts: map['scripts'] == null ? null : ((map['scripts']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpGet: (() {
+        final guardedValue = map['httpGet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpGetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scripts: (() {
+        final guardedValue = map['scripts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -9,18 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationTemplateArgs {
   /// Specifies the display name of the templated application.
   final pulumi.Input<String>? displayName;
+
   /// Specifies the ID of the templated application.
   ///
-  /// > One of `template_id` or `display_name` must be specified.
+  /// &gt; One of `template_id` or `display_name` must be specified.
   final pulumi.Input<String>? templateId;
 
   /// Creates a new [GetApplicationTemplateArgs].
   /// [displayName] Specifies the display name of the templated application.
   /// [templateId] Specifies the ID of the templated application.
-  GetApplicationTemplateArgs({
-    this.displayName,
-    this.templateId,
-  });
+  GetApplicationTemplateArgs({this.displayName, this.templateId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +29,16 @@ class GetApplicationTemplateArgs {
 
   factory GetApplicationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationTemplateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

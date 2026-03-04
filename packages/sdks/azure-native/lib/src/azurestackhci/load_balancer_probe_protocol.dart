@@ -3,16 +3,15 @@ enum LoadBalancerProbeProtocol {
   tCP("Tcp"),
   hTTP("Http");
 
-  const LoadBalancerProbeProtocol(this.value);
-  final String value;
+  const LoadBalancerProbeProtocol(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerProbeProtocol fromValue(String value) {
     for (final item in LoadBalancerProbeProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoadBalancerProbeProtocol value: $value');
   }
 }
-

@@ -3,16 +3,17 @@ enum GlobalAddressIpv6EndpointTypeComputeBeta {
   netlb("NETLB"),
   vm("VM");
 
-  const GlobalAddressIpv6EndpointTypeComputeBeta(this.value);
-  final String value;
+  const GlobalAddressIpv6EndpointTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressIpv6EndpointTypeComputeBeta fromValue(String value) {
     for (final item in GlobalAddressIpv6EndpointTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressIpv6EndpointTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressIpv6EndpointTypeComputeBeta value: $value',
+    );
   }
 }
-

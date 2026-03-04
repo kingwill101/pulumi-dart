@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayGatewayIpConfiguration {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
+
   /// The ID of the subnet the private link configuration is connected to.
   final pulumi.Input<String> subnetId;
 
@@ -21,19 +23,16 @@ class GetApplicationGatewayGatewayIpConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'subnetId': subnetId,
-    };
+    return <String, dynamic>{'id': id, 'name': name, 'subnetId': subnetId};
   }
 
-  factory GetApplicationGatewayGatewayIpConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayGatewayIpConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayGatewayIpConfiguration(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

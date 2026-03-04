@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateChainsResponse {
   /// Cavium certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>> caviumCerts;
+
   /// Google card certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>> googleCardCerts;
+
   /// Google partition certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>> googlePartitionCerts;
 
@@ -31,10 +33,15 @@ class CertificateChainsResponse {
 
   factory CertificateChainsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateChainsResponse(
-      caviumCerts: ((map['caviumCerts'] as List).cast<String>()).input(),
-      googleCardCerts: ((map['googleCardCerts'] as List).cast<String>()).input(),
-      googlePartitionCerts: ((map['googlePartitionCerts'] as List).cast<String>()).input(),
+      caviumCerts: pulumi.Input.fromValue(
+        (map['caviumCerts'] as List).cast<String>(),
+      ),
+      googleCardCerts: pulumi.Input.fromValue(
+        (map['googleCardCerts'] as List).cast<String>(),
+      ),
+      googlePartitionCerts: pulumi.Input.fromValue(
+        (map['googlePartitionCerts'] as List).cast<String>(),
+      ),
     );
   }
 }
-

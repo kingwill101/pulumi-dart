@@ -10,20 +10,29 @@ class VirtualMachine {
 
   /// Creates a new [VirtualMachine].
   /// [virtualMachineConfig] Virtual Machine configuration settings.
-  VirtualMachine({
-    this.virtualMachineConfig,
-  });
+  VirtualMachine({this.virtualMachineConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualMachineConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineConfig, Map<String, dynamic>>(virtualMachineConfig, (value) => value.toMap()),
+      'virtualMachineConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineConfig,
+            Map<String, dynamic>
+          >(virtualMachineConfig, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachine.fromMap(Map<String, dynamic> map) {
     return VirtualMachine(
-      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (VirtualMachineConfig.fromMap((map['virtualMachineConfig']! as Map).cast<String, dynamic>())).input(),
+      virtualMachineConfig: (() {
+        final guardedValue = map['virtualMachineConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

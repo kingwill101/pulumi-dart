@@ -11,16 +11,15 @@ enum QueryStringOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const QueryStringOperator(this.value);
-  final String value;
+  const QueryStringOperator(this.wireValue);
+  final String wireValue;
 
   static QueryStringOperator fromValue(String value) {
     for (final item in QueryStringOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QueryStringOperator value: $value');
   }
 }
-

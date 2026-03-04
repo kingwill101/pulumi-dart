@@ -9,20 +9,17 @@ class LinuxServerLicensingSettingsResponse {
 
   /// Creates a new [LinuxServerLicensingSettingsResponse].
   /// [licenseCost] Licence Cost.
-  LinuxServerLicensingSettingsResponse({
-    required this.licenseCost,
-  });
+  LinuxServerLicensingSettingsResponse({required this.licenseCost});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'licenseCost': licenseCost,
-    };
+    return <String, dynamic>{'licenseCost': licenseCost};
   }
 
-  factory LinuxServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory LinuxServerLicensingSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxServerLicensingSettingsResponse(
-      licenseCost: (map['licenseCost'] as double).input(),
+      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
     );
   }
 }
-

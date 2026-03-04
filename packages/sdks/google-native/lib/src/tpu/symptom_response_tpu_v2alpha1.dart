@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SymptomResponseTpuV2alpha1 {
   /// Timestamp when the Symptom is created.
   final pulumi.Input<String> createTime;
+
   /// Detailed information of the current Symptom.
   final pulumi.Input<String> details;
+
   /// Type of the Symptom.
   final pulumi.Input<String> symptomType;
+
   /// A string used to uniquely distinguish a worker within a TPU node.
   final pulumi.Input<String> workerId;
 
@@ -36,11 +39,10 @@ class SymptomResponseTpuV2alpha1 {
 
   factory SymptomResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return SymptomResponseTpuV2alpha1(
-      createTime: (map['createTime'] as String).input(),
-      details: (map['details'] as String).input(),
-      symptomType: (map['symptomType'] as String).input(),
-      workerId: (map['workerId'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      symptomType: pulumi.Input.fromValue(map['symptomType'] as String),
+      workerId: pulumi.Input.fromValue(map['workerId'] as String),
     );
   }
 }
-

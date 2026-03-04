@@ -4,16 +4,15 @@ enum ProbeActionType {
   valueTCPSocketAction("TCPSocketAction"),
   valueExecAction("ExecAction");
 
-  const ProbeActionType(this.value);
-  final String value;
+  const ProbeActionType(this.wireValue);
+  final String wireValue;
 
   static ProbeActionType fromValue(String value) {
     for (final item in ProbeActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProbeActionType value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionAppSlotAuthSettingsTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerKey;
+
   /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerSecret;
 
@@ -25,9 +26,8 @@ class FunctionAppSlotAuthSettingsTwitter {
 
   factory FunctionAppSlotAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotAuthSettingsTwitter(
-      consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: (map['consumerSecret'] as String).input(),
+      consumerKey: pulumi.Input.fromValue(map['consumerKey'] as String),
+      consumerSecret: pulumi.Input.fromValue(map['consumerSecret'] as String),
     );
   }
 }
-

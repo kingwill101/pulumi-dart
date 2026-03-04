@@ -3,16 +3,15 @@ enum JoinedMethod {
   cREATED("CREATED"),
   iNVITED("INVITED");
 
-  const JoinedMethod(this.value);
-  final String value;
+  const JoinedMethod(this.wireValue);
+  final String wireValue;
 
   static JoinedMethod fromValue(String value) {
     for (final item in JoinedMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JoinedMethod value: $value');
   }
 }
-

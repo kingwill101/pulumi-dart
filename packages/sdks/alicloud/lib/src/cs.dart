@@ -1,5 +1,3 @@
-library module_cs;
-
 export 'cs/application.dart';
 export 'cs/application_args.dart';
 export 'cs/application_service.dart';

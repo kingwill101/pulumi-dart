@@ -5,16 +5,22 @@ enum VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 {
   commitmentPlanOneYear("COMMITMENT_PLAN_ONE_YEAR"),
   commitmentPlanThreeYears("COMMITMENT_PLAN_THREE_YEARS");
 
-  const VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1(this.value);
-  final String value;
+  const VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(String value) {
-    for (final item in VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
-      if (item.value == value) {
+  static VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1
+  fromValue(String value) {
+    for (final item
+        in VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value',
+    );
   }
 }
-

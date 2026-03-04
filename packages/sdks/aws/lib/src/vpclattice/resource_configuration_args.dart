@@ -11,29 +11,41 @@ import 'resource_configuration_timeouts.dart';
 class ResourceConfigurationArgs {
   /// Allow or Deny the association of this resource to a shareable service network.
   final pulumi.Input<bool>? allowAssociationToShareableServiceNetwork;
+
   /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
   final pulumi.Input<String>? customDomainName;
+
   /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   final pulumi.Input<String>? domainVerificationId;
+
   /// Name for the Resource Configuration.
   final pulumi.Input<String>? name;
+
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
   final pulumi.Input<List<String>>? portRanges;
+
   /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
   final pulumi.Input<String>? protocol;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinition>? resourceConfigurationDefinition;
+  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinition>?
+  resourceConfigurationDefinition;
+
   /// ID of Resource Configuration where `type` is `CHILD`.
   final pulumi.Input<String>? resourceConfigurationGroupId;
+
   /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
   final pulumi.Input<String>? resourceGatewayIdentifier;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ResourceConfigurationTimeouts>? timeouts;
+
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
   final pulumi.Input<String>? type;
 
@@ -69,38 +81,108 @@ class ResourceConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowAssociationToShareableServiceNetwork': ?allowAssociationToShareableServiceNetwork,
+      'allowAssociationToShareableServiceNetwork':
+          ?allowAssociationToShareableServiceNetwork,
       'customDomainName': ?customDomainName,
       'domainVerificationId': ?domainVerificationId,
       'name': ?name,
       'portRanges': ?portRanges,
       'protocol': ?protocol,
       'region': ?region,
-      'resourceConfigurationDefinition': ?pulumi.Input.mapOptionalInputValue<ResourceConfigurationResourceConfigurationDefinition, Map<String, dynamic>>(resourceConfigurationDefinition, (value) => value.toMap()),
+      'resourceConfigurationDefinition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceConfigurationResourceConfigurationDefinition,
+            Map<String, dynamic>
+          >(resourceConfigurationDefinition, (value) => value.toMap()),
       'resourceConfigurationGroupId': ?resourceConfigurationGroupId,
       'resourceGatewayIdentifier': ?resourceGatewayIdentifier,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ResourceConfigurationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceConfigurationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory ResourceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationArgs(
-      allowAssociationToShareableServiceNetwork: map['allowAssociationToShareableServiceNetwork'] == null ? null : ((map['allowAssociationToShareableServiceNetwork'] as bool).input()).input(),
-      customDomainName: map['customDomainName'] == null ? null : ((map['customDomainName'] as String).input()).input(),
-      domainVerificationId: map['domainVerificationId'] == null ? null : ((map['domainVerificationId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      portRanges: map['portRanges'] == null ? null : (((map['portRanges'] as List).cast<String>()).input()).input(),
-      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceConfigurationDefinition: map['resourceConfigurationDefinition'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinition.fromMap((map['resourceConfigurationDefinition']! as Map).cast<String, dynamic>())).input()).input(),
-      resourceConfigurationGroupId: map['resourceConfigurationGroupId'] == null ? null : ((map['resourceConfigurationGroupId'] as String).input()).input(),
-      resourceGatewayIdentifier: map['resourceGatewayIdentifier'] == null ? null : ((map['resourceGatewayIdentifier'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ResourceConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      allowAssociationToShareableServiceNetwork: (() {
+        final guardedValue = map['allowAssociationToShareableServiceNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      customDomainName: (() {
+        final guardedValue = map['customDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainVerificationId: (() {
+        final guardedValue = map['domainVerificationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portRanges: (() {
+        final guardedValue = map['portRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceConfigurationDefinition: (() {
+        final guardedValue = map['resourceConfigurationDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceConfigurationResourceConfigurationDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceConfigurationGroupId: (() {
+        final guardedValue = map['resourceConfigurationGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGatewayIdentifier: (() {
+        final guardedValue = map['resourceGatewayIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceConfigurationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

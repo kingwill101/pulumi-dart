@@ -504,18 +504,25 @@ import 'kubernetes_addon_state.dart';
 class KubernetesAddonCs extends pulumi.CustomResource {
   /// Is the addon ready for upgrade.
   late final pulumi.Output<bool> canUpgrade;
+
   /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
   late final pulumi.Output<bool?> cleanupCloudResources;
+
   /// The id of kubernetes cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
   late final pulumi.Output<String> config;
+
   /// The name of addon.
   late final pulumi.Output<String> name;
+
   /// The version which addon can be upgraded to.
   late final pulumi.Output<String> nextVersion;
+
   /// Is it a mandatory addon to be installed.
   late final pulumi.Output<bool> required;
+
   /// The current version of addon.
   late final pulumi.Output<String> version;
 
@@ -528,19 +535,19 @@ class KubernetesAddonCs extends pulumi.CustomResource {
     KubernetesAddonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/kubernetesAddon:KubernetesAddon',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.canUpgrade = registerOutput<bool>('canUpgrade');
-    this.cleanupCloudResources = registerOutput<bool?>('cleanupCloudResources');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.config = registerOutput<String>('config');
+         'alicloud:cs/kubernetesAddon:KubernetesAddon',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    canUpgrade = registerOutput<bool>('canUpgrade');
+    cleanupCloudResources = registerOutput<bool?>('cleanupCloudResources');
+    clusterId = registerOutput<String>('clusterId');
+    config = registerOutput<String>('config');
     this.name = registerOutput<String>('name');
-    this.nextVersion = registerOutput<String>('nextVersion');
-    this.required = registerOutput<bool>('required');
-    this.version = registerOutput<String>('version');
+    nextVersion = registerOutput<String>('nextVersion');
+    required = registerOutput<bool>('required');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [KubernetesAddonCs] resource's state with the given [name] and [id].
@@ -561,18 +568,18 @@ class KubernetesAddonCs extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/kubernetesAddon:KubernetesAddon',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.canUpgrade = registerOutput<bool>('canUpgrade');
-    this.cleanupCloudResources = registerOutput<bool?>('cleanupCloudResources');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.config = registerOutput<String>('config');
+         'alicloud:cs/kubernetesAddon:KubernetesAddon',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    canUpgrade = registerOutput<bool>('canUpgrade');
+    cleanupCloudResources = registerOutput<bool?>('cleanupCloudResources');
+    clusterId = registerOutput<String>('clusterId');
+    config = registerOutput<String>('config');
     this.name = registerOutput<String>('name');
-    this.nextVersion = registerOutput<String>('nextVersion');
-    this.required = registerOutput<bool>('required');
-    this.version = registerOutput<String>('version');
+    nextVersion = registerOutput<String>('nextVersion');
+    required = registerOutput<bool>('required');
+    version = registerOutput<String>('version');
   }
 }

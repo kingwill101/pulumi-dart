@@ -8,20 +8,17 @@ class AppSpecFunctionLogDestinationPapertrail {
 
   /// Creates a new [AppSpecFunctionLogDestinationPapertrail].
   /// [endpoint] Papertrail syslog endpoint.
-  AppSpecFunctionLogDestinationPapertrail({
-    required this.endpoint,
-  });
+  AppSpecFunctionLogDestinationPapertrail({required this.endpoint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpoint': endpoint,
-    };
+    return <String, dynamic>{'endpoint': endpoint};
   }
 
-  factory AppSpecFunctionLogDestinationPapertrail.fromMap(Map<String, dynamic> map) {
+  factory AppSpecFunctionLogDestinationPapertrail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppSpecFunctionLogDestinationPapertrail(
-      endpoint: (map['endpoint'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
-

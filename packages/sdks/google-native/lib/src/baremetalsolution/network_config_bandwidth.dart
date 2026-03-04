@@ -6,16 +6,15 @@ enum NetworkConfigBandwidth {
   bw5Gbps("BW_5_GBPS"),
   bw10Gbps("BW_10_GBPS");
 
-  const NetworkConfigBandwidth(this.value);
-  final String value;
+  const NetworkConfigBandwidth(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigBandwidth fromValue(String value) {
     for (final item in NetworkConfigBandwidth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkConfigBandwidth value: $value');
   }
 }
-

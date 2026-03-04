@@ -3,16 +3,17 @@
 enum TargetHydrationStorageProviderType {
   valueAzureFileShare("AzureFileShare");
 
-  const TargetHydrationStorageProviderType(this.value);
-  final String value;
+  const TargetHydrationStorageProviderType(this.wireValue);
+  final String wireValue;
 
   static TargetHydrationStorageProviderType fromValue(String value) {
     for (final item in TargetHydrationStorageProviderType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetHydrationStorageProviderType value: $value');
+    throw ArgumentError(
+      'Unknown TargetHydrationStorageProviderType value: $value',
+    );
   }
 }
-

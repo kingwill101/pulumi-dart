@@ -179,7 +179,7 @@ import 'storage_defender_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Security` - 2025-06-01
@@ -194,14 +194,19 @@ import 'storage_defender_state.dart';
 class StorageDefender extends pulumi.CustomResource {
   /// The max GB to be scanned per Month. Must be `-1` or above `0`. Omit this property or set to `-1` if no capping is needed. Defaults to `-1`.
   late final pulumi.Output<int?> malwareScanningOnUploadCapGbPerMonth;
+
   /// Whether On Upload malware scanning should be enabled. Defaults to `false`.
   late final pulumi.Output<bool?> malwareScanningOnUploadEnabled;
+
   /// Whether the settings defined for this storage account should override the settings defined for the subscription. Defaults to `false`.
   late final pulumi.Output<bool?> overrideSubscriptionSettingsEnabled;
+
   /// The Event Grid Topic where every scan result will be sent to. When you set an Event Grid custom topic, you must set `override_subscription_settings_enabled` to `true` to override the subscription-level settings.
   late final pulumi.Output<String?> scanResultsEventGridTopicId;
+
   /// Whether Sensitive Data Discovery should be enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sensitiveDataDiscoveryEnabled;
+
   /// The ID of the storage account the defender applied to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -214,17 +219,27 @@ class StorageDefender extends pulumi.CustomResource {
     StorageDefenderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/storageDefender:StorageDefender',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
-    this.malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');
-    this.overrideSubscriptionSettingsEnabled = registerOutput<bool?>('overrideSubscriptionSettingsEnabled');
-    this.scanResultsEventGridTopicId = registerOutput<String?>('scanResultsEventGridTopicId');
-    this.sensitiveDataDiscoveryEnabled = registerOutput<bool?>('sensitiveDataDiscoveryEnabled');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:securitycenter/storageDefender:StorageDefender',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>(
+      'malwareScanningOnUploadCapGbPerMonth',
+    );
+    malwareScanningOnUploadEnabled = registerOutput<bool?>(
+      'malwareScanningOnUploadEnabled',
+    );
+    overrideSubscriptionSettingsEnabled = registerOutput<bool?>(
+      'overrideSubscriptionSettingsEnabled',
+    );
+    scanResultsEventGridTopicId = registerOutput<String?>(
+      'scanResultsEventGridTopicId',
+    );
+    sensitiveDataDiscoveryEnabled = registerOutput<bool?>(
+      'sensitiveDataDiscoveryEnabled',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [StorageDefender] resource's state with the given [name] and [id].
@@ -245,16 +260,26 @@ class StorageDefender extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/storageDefender:StorageDefender',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
-    this.malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');
-    this.overrideSubscriptionSettingsEnabled = registerOutput<bool?>('overrideSubscriptionSettingsEnabled');
-    this.scanResultsEventGridTopicId = registerOutput<String?>('scanResultsEventGridTopicId');
-    this.sensitiveDataDiscoveryEnabled = registerOutput<bool?>('sensitiveDataDiscoveryEnabled');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:securitycenter/storageDefender:StorageDefender',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>(
+      'malwareScanningOnUploadCapGbPerMonth',
+    );
+    malwareScanningOnUploadEnabled = registerOutput<bool?>(
+      'malwareScanningOnUploadEnabled',
+    );
+    overrideSubscriptionSettingsEnabled = registerOutput<bool?>(
+      'overrideSubscriptionSettingsEnabled',
+    );
+    scanResultsEventGridTopicId = registerOutput<String?>(
+      'scanResultsEventGridTopicId',
+    );
+    sensitiveDataDiscoveryEnabled = registerOutput<bool?>(
+      'sensitiveDataDiscoveryEnabled',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

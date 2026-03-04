@@ -1,5 +1,3 @@
-library module_datashare;
-
 export 'datashare/account.dart';
 export 'datashare/account_args.dart';
 export 'datashare/account_identity.dart';

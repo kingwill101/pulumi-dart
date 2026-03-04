@@ -7,6 +7,7 @@ import 'get_ecs_invocations_invocation.dart';
 class GetEcsInvocationsResult {
   final String? commandId;
   final String? contentEncoding;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,7 +45,11 @@ class GetEcsInvocationsResult {
       'contentEncoding': ?contentEncoding,
       'id': id,
       'ids': ids,
-      'invocations': pulumi.Input.encodeList<GetEcsInvocationsInvocation, Map<String, dynamic>>(invocations, (value) => value.toMap()),
+      'invocations':
+          pulumi.Input.encodeList<
+            GetEcsInvocationsInvocation,
+            Map<String, dynamic>
+          >(invocations, (value) => value.toMap()),
       'invokeStatus': ?invokeStatus,
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
@@ -54,16 +59,44 @@ class GetEcsInvocationsResult {
 
   factory GetEcsInvocationsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsInvocationsResult(
-      commandId: map['commandId'] == null ? null : map['commandId']! as String,
-      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding']! as String,
+      commandId: (() {
+        final guardedValue = map['commandId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      contentEncoding: (() {
+        final guardedValue = map['contentEncoding'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      invocations: pulumi.Input.decodeList<GetEcsInvocationsInvocation>(map['invocations'], (value) => GetEcsInvocationsInvocation.fromMap((value as Map).cast<String, dynamic>())),
-      invokeStatus: map['invokeStatus'] == null ? null : map['invokeStatus']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      invocations: pulumi.Input.decodeList<GetEcsInvocationsInvocation>(
+        map['invocations']!,
+        (value) => GetEcsInvocationsInvocation.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      invokeStatus: (() {
+        final guardedValue = map['invokeStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum OrganizationDiscoveryConfigStatus {
   running("RUNNING"),
   paused("PAUSED");
 
-  const OrganizationDiscoveryConfigStatus(this.value);
-  final String value;
+  const OrganizationDiscoveryConfigStatus(this.wireValue);
+  final String wireValue;
 
   static OrganizationDiscoveryConfigStatus fromValue(String value) {
     for (final item in OrganizationDiscoveryConfigStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OrganizationDiscoveryConfigStatus value: $value');
+    throw ArgumentError(
+      'Unknown OrganizationDiscoveryConfigStatus value: $value',
+    );
   }
 }
-

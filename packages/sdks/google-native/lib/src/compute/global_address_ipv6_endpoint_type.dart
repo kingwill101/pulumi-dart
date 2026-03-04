@@ -3,16 +3,15 @@ enum GlobalAddressIpv6EndpointType {
   netlb("NETLB"),
   vm("VM");
 
-  const GlobalAddressIpv6EndpointType(this.value);
-  final String value;
+  const GlobalAddressIpv6EndpointType(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressIpv6EndpointType fromValue(String value) {
     for (final item in GlobalAddressIpv6EndpointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalAddressIpv6EndpointType value: $value');
   }
 }
-

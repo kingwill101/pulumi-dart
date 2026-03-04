@@ -13,23 +13,20 @@ class GetHealthCheckComputeBetaArgs {
   /// Creates a new [GetHealthCheckComputeBetaArgs].
   /// [healthCheck] Required.
   /// [project] Optional.
-  GetHealthCheckComputeBetaArgs({
-    required this.healthCheck,
-    this.project,
-  });
+  GetHealthCheckComputeBetaArgs({required this.healthCheck, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'healthCheck': healthCheck,
-      'project': ?project,
-    };
+    return <String, dynamic>{'healthCheck': healthCheck, 'project': ?project};
   }
 
   factory GetHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckComputeBetaArgs(
-      healthCheck: (map['healthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

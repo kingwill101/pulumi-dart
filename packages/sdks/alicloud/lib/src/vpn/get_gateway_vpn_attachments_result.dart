@@ -7,16 +7,20 @@ import 'get_gateway_vpn_attachments_attachment.dart';
 class GetGatewayVpnAttachmentsResult {
   /// A list of Vpn Attachment Entries. Each element contains the following attributes:
   final List<GetGatewayVpnAttachmentsAttachment> attachments;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Vpn Attachment IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of name of Vpn Attachments.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
   final String? status;
 
@@ -44,7 +48,11 @@ class GetGatewayVpnAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetGatewayVpnAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetGatewayVpnAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -58,16 +66,40 @@ class GetGatewayVpnAttachmentsResult {
 
   factory GetGatewayVpnAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayVpnAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetGatewayVpnAttachmentsAttachment>(map['attachments'], (value) => GetGatewayVpnAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      attachments: pulumi.Input.decodeList<GetGatewayVpnAttachmentsAttachment>(
+        map['attachments']!,
+        (value) => GetGatewayVpnAttachmentsAttachment.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

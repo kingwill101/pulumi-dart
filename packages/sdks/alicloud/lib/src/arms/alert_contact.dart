@@ -6,7 +6,7 @@ import 'alert_contact_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://next.api.aliyun.com/api/ARMS/2019-08-08/CreateAlertContact).
 ///
-/// > **NOTE:** Available since v1.129.0.
+/// &gt; **NOTE:** Available since v1.129.0.
 ///
 /// ## Example Usage
 ///
@@ -131,12 +131,16 @@ import 'alert_contact_state.dart';
 class AlertContact extends pulumi.CustomResource {
   /// The name of the alert contact.
   late final pulumi.Output<String?> alertContactName;
+
   /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   late final pulumi.Output<String?> dingRobotWebhookUrl;
+
   /// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   late final pulumi.Output<String?> email;
+
   /// The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   late final pulumi.Output<String?> phoneNum;
+
   /// Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
   late final pulumi.Output<bool?> systemNoc;
 
@@ -149,16 +153,16 @@ class AlertContact extends pulumi.CustomResource {
     AlertContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/alertContact:AlertContact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertContactName = registerOutput<String?>('alertContactName');
-    this.dingRobotWebhookUrl = registerOutput<String?>('dingRobotWebhookUrl');
-    this.email = registerOutput<String?>('email');
-    this.phoneNum = registerOutput<String?>('phoneNum');
-    this.systemNoc = registerOutput<bool?>('systemNoc');
+         'alicloud:arms/alertContact:AlertContact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertContactName = registerOutput<String?>('alertContactName');
+    dingRobotWebhookUrl = registerOutput<String?>('dingRobotWebhookUrl');
+    email = registerOutput<String?>('email');
+    phoneNum = registerOutput<String?>('phoneNum');
+    systemNoc = registerOutput<bool?>('systemNoc');
   }
 
   /// Gets an existing [AlertContact] resource's state with the given [name] and [id].
@@ -179,15 +183,15 @@ class AlertContact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/alertContact:AlertContact',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertContactName = registerOutput<String?>('alertContactName');
-    this.dingRobotWebhookUrl = registerOutput<String?>('dingRobotWebhookUrl');
-    this.email = registerOutput<String?>('email');
-    this.phoneNum = registerOutput<String?>('phoneNum');
-    this.systemNoc = registerOutput<bool?>('systemNoc');
+         'alicloud:arms/alertContact:AlertContact',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertContactName = registerOutput<String?>('alertContactName');
+    dingRobotWebhookUrl = registerOutput<String?>('dingRobotWebhookUrl');
+    email = registerOutput<String?>('email');
+    phoneNum = registerOutput<String?>('phoneNum');
+    systemNoc = registerOutput<bool?>('systemNoc');
   }
 }

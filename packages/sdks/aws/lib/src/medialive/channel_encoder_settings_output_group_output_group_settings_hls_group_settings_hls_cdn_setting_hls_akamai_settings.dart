@@ -7,8 +7,10 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   final pulumi.Input<int>? connectionRetryInterval;
   final pulumi.Input<int>? filecacheDuration;
   final pulumi.Input<String>? httpTransferMode;
+
   /// Number of retry attempts.
   final pulumi.Input<int>? numRetries;
+
   /// Number of seconds to wait until a restart is initiated.
   final pulumi.Input<int>? restartDelay;
   final pulumi.Input<String>? salt;
@@ -44,16 +46,45 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : ((map['connectionRetryInterval'] as int).input()).input(),
-      filecacheDuration: map['filecacheDuration'] == null ? null : ((map['filecacheDuration'] as int).input()).input(),
-      httpTransferMode: map['httpTransferMode'] == null ? null : ((map['httpTransferMode'] as String).input()).input(),
-      numRetries: map['numRetries'] == null ? null : ((map['numRetries'] as int).input()).input(),
-      restartDelay: map['restartDelay'] == null ? null : ((map['restartDelay'] as int).input()).input(),
-      salt: map['salt'] == null ? null : ((map['salt'] as String).input()).input(),
-      token: map['token'] == null ? null : ((map['token'] as String).input()).input(),
+      connectionRetryInterval: (() {
+        final guardedValue = map['connectionRetryInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      filecacheDuration: (() {
+        final guardedValue = map['filecacheDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      httpTransferMode: (() {
+        final guardedValue = map['httpTransferMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numRetries: (() {
+        final guardedValue = map['numRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      restartDelay: (() {
+        final guardedValue = map['restartDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      salt: (() {
+        final guardedValue = map['salt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

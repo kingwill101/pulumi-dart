@@ -9,16 +9,15 @@ enum KpiFunctions {
   valueNone("None"),
   valueCountDistinct("CountDistinct");
 
-  const KpiFunctions(this.value);
-  final String value;
+  const KpiFunctions(this.wireValue);
+  final String wireValue;
 
   static KpiFunctions fromValue(String value) {
     for (final item in KpiFunctions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KpiFunctions value: $value');
   }
 }
-

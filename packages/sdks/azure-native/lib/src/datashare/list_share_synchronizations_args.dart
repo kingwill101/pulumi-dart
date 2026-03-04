@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListShareSynchronizationsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// Filters the results using OData syntax.
   final pulumi.Input<String>? filter;
+
   /// Sorts the results using OData syntax.
   final pulumi.Input<String>? orderby;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the share.
   final pulumi.Input<String> shareName;
+
   /// Continuation token
   final pulumi.Input<String>? skipToken;
 
@@ -49,13 +54,26 @@ class ListShareSynchronizationsArgs {
 
   factory ListShareSynchronizationsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSynchronizationsArgs(
-      accountName: (map['accountName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      orderby: map['orderby'] == null ? null : (map['orderby']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderby: (() {
+        final guardedValue = map['orderby'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

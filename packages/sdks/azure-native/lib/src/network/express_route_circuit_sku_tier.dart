@@ -5,16 +5,15 @@ enum ExpressRouteCircuitSkuTier {
   valueBasic("Basic"),
   valueLocal("Local");
 
-  const ExpressRouteCircuitSkuTier(this.value);
-  final String value;
+  const ExpressRouteCircuitSkuTier(this.wireValue);
+  final String wireValue;
 
   static ExpressRouteCircuitSkuTier fromValue(String value) {
     for (final item in ExpressRouteCircuitSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRouteCircuitSkuTier value: $value');
   }
 }
-

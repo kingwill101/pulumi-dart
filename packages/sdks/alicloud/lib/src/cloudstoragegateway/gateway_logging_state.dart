@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayLoggingState {
   /// The ID of the Gateway.
   final pulumi.Input<String>? gatewayId;
+
   /// The name of the Log Store.
   final pulumi.Input<String>? slsLogstore;
+
   /// The name of the Project.
   final pulumi.Input<String>? slsProject;
+
   /// The status of the resource. Valid values: `Enabled`, `Disable`.
   final pulumi.Input<String>? status;
 
@@ -36,11 +39,26 @@ class GatewayLoggingState {
 
   factory GatewayLoggingState.fromMap(Map<String, dynamic> map) {
     return GatewayLoggingState(
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
-      slsLogstore: map['slsLogstore'] == null ? null : (map['slsLogstore']! as String).input(),
-      slsProject: map['slsProject'] == null ? null : (map['slsProject']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsLogstore: (() {
+        final guardedValue = map['slsLogstore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsProject: (() {
+        final guardedValue = map['slsProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

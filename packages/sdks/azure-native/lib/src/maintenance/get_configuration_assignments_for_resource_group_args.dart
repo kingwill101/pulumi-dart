@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationAssignmentsForResourceGroupArgs {
   /// The name of the ConfigurationAssignment
   final pulumi.Input<String> configurationAssignmentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,16 @@ class GetConfigurationAssignmentsForResourceGroupArgs {
     };
   }
 
-  factory GetConfigurationAssignmentsForResourceGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationAssignmentsForResourceGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationAssignmentsForResourceGroupArgs(
-      configurationAssignmentName: (map['configurationAssignmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configurationAssignmentName: pulumi.Input.fromValue(
+        map['configurationAssignmentName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

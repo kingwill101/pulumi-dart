@@ -3,25 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultTags {
-  /// Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_<tag_name>`.
+  /// Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_&lt;tag_name&gt;`.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DefaultTags].
-  /// [tags] Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_<tag_name>`.
-  DefaultTags({
-    this.tags,
-  });
+  /// [tags] Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_&lt;tag_name&gt;`.
+  DefaultTags({this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
   factory DefaultTags.fromMap(Map<String, dynamic> map) {
     return DefaultTags(
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedDisksDiskEncryptionSettingKeyEncryptionKey {
   /// The URL to the Key Vault Key used as the Key Encryption Key.
   final pulumi.Input<String> keyUrl;
+
   /// The ID of the source Key Vault.
   final pulumi.Input<String> sourceVaultId;
 
@@ -17,17 +18,15 @@ class GetManagedDisksDiskEncryptionSettingKeyEncryptionKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyUrl': keyUrl,
-      'sourceVaultId': sourceVaultId,
-    };
+    return <String, dynamic>{'keyUrl': keyUrl, 'sourceVaultId': sourceVaultId};
   }
 
-  factory GetManagedDisksDiskEncryptionSettingKeyEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory GetManagedDisksDiskEncryptionSettingKeyEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedDisksDiskEncryptionSettingKeyEncryptionKey(
-      keyUrl: (map['keyUrl'] as String).input(),
-      sourceVaultId: (map['sourceVaultId'] as String).input(),
+      keyUrl: pulumi.Input.fromValue(map['keyUrl'] as String),
+      sourceVaultId: pulumi.Input.fromValue(map['sourceVaultId'] as String),
     );
   }
 }
-

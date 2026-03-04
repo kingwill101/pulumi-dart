@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
   /// container is the name of the container in the pods of the scaling target
   final pulumi.Input<String>? container;
+
   /// name is the name of the resource in question.
   final pulumi.Input<String>? name;
+
   /// targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   final pulumi.Input<int>? targetAverageUtilization;
+
   /// targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.
   final pulumi.Input<String>? targetAverageValue;
 
@@ -34,13 +37,30 @@ class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
     };
   }
 
-  factory ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
+  factory ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerResourceMetricSourcePatchAutoscalingV2beta1(
-      container: map['container'] == null ? null : (map['container']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization']! as int).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
+      container: (() {
+        final guardedValue = map['container'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetAverageUtilization: (() {
+        final guardedValue = map['targetAverageUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetAverageValue: (() {
+        final guardedValue = map['targetAverageValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

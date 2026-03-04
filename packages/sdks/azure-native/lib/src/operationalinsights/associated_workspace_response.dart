@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociatedWorkspaceResponse {
   /// The time of workspace association.
   final pulumi.Input<String> associateDate;
+
   /// Associated workspace arm resource id, in the form of: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}.
   final pulumi.Input<String> resourceId;
+
   /// Associated workspace immutable id.
   final pulumi.Input<String> workspaceId;
+
   /// Associated workspace resource name.
   final pulumi.Input<String> workspaceName;
 
@@ -36,11 +39,10 @@ class AssociatedWorkspaceResponse {
 
   factory AssociatedWorkspaceResponse.fromMap(Map<String, dynamic> map) {
     return AssociatedWorkspaceResponse(
-      associateDate: (map['associateDate'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      associateDate: pulumi.Input.fromValue(map['associateDate'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

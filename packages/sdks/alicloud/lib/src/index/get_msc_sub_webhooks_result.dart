@@ -9,9 +9,11 @@ class GetMscSubWebhooksResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Webhook names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Msc Sub Webhooks. Each element contains the following attributes:
   final List<GetMscSubWebhooksWebhook> webhooks;
 
@@ -38,7 +40,11 @@ class GetMscSubWebhooksResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'webhooks': pulumi.Input.encodeList<GetMscSubWebhooksWebhook, Map<String, dynamic>>(webhooks, (value) => value.toMap()),
+      'webhooks':
+          pulumi.Input.encodeList<
+            GetMscSubWebhooksWebhook,
+            Map<String, dynamic>
+          >(webhooks, (value) => value.toMap()),
     };
   }
 
@@ -46,11 +52,23 @@ class GetMscSubWebhooksResult {
     return GetMscSubWebhooksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      webhooks: pulumi.Input.decodeList<GetMscSubWebhooksWebhook>(map['webhooks'], (value) => GetMscSubWebhooksWebhook.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      webhooks: pulumi.Input.decodeList<GetMscSubWebhooksWebhook>(
+        map['webhooks']!,
+        (value) => GetMscSubWebhooksWebhook.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

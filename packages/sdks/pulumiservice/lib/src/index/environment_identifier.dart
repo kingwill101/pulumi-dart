@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentIdentifier {
   /// The environment name.
   final pulumi.Input<String> name;
+
   /// The organization name.
   final pulumi.Input<String> organization;
+
   /// The project name.
   final pulumi.Input<String> project;
 
@@ -30,10 +32,9 @@ class EnvironmentIdentifier {
 
   factory EnvironmentIdentifier.fromMap(Map<String, dynamic> map) {
     return EnvironmentIdentifier(
-      name: (map['name'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      project: (map['project'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

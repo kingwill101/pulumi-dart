@@ -1,5 +1,3 @@
-library module_elasticcloud;
-
 export 'elasticcloud/elasticsearch.dart';
 export 'elasticcloud/elasticsearch_args.dart';
 export 'elasticcloud/elasticsearch_logs.dart';

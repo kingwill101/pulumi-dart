@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedZoneArgs {
   /// Description of the resource.
   final pulumi.Input<String>? description;
+
   /// DNS Name of the resource.
   final pulumi.Input<String> dns;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of Managed Zone needs to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The name of the Target Project.
   final pulumi.Input<String> targetProject;
+
   /// The name of the Target Project VPC Network.
   final pulumi.Input<String> targetVpc;
 
@@ -58,14 +64,31 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dns: (map['dns'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetProject: (map['targetProject'] as String).input(),
-      targetVpc: (map['targetVpc'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dns: pulumi.Input.fromValue(map['dns'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetProject: pulumi.Input.fromValue(map['targetProject'] as String),
+      targetVpc: pulumi.Input.fromValue(map['targetVpc'] as String),
     );
   }
 }
-

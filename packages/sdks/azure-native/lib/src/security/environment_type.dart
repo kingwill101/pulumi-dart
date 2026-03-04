@@ -8,16 +8,15 @@ enum EnvironmentType {
   valueDockerHubOrganization("DockerHubOrganization"),
   valueJFrogArtifactory("JFrogArtifactory");
 
-  const EnvironmentType(this.value);
-  final String value;
+  const EnvironmentType(this.wireValue);
+  final String wireValue;
 
   static EnvironmentType fromValue(String value) {
     for (final item in EnvironmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentType value: $value');
   }
 }
-

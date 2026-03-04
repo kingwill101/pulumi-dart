@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationResponseArgs {
   /// How to handle request payload content type conversions. Supported values are `CONVERT_TO_BINARY` and `CONVERT_TO_TEXT`. If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.
   final pulumi.Input<String>? contentHandling;
+
   /// HTTP method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`).
   final pulumi.Input<String> httpMethod;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// API resource ID.
   final pulumi.Input<String> resourceId;
+
   /// Map of response parameters that can be read from the backend response. For example: `response_parameters = { "method.response.header.X-Some-Header" = "integration.response.header.X-Some-Other-Header" }`.
   final pulumi.Input<Map<String, String>>? responseParameters;
+
   /// Map of templates used to transform the integration response body.
   final pulumi.Input<Map<String, String>>? responseTemplates;
+
   /// ID of the associated REST API.
   final pulumi.Input<String> restApi;
+
   /// Regular expression pattern used to choose an integration response based on the response from the backend. Omit configuring this to make the integration the default one. If the backend is an `AWS` Lambda function, the AWS Lambda function error header is matched. For all other `HTTP` and `AWS` backends, the HTTP status code is matched.
   final pulumi.Input<String>? selectionPattern;
+
   /// HTTP status code.
   ///
   /// The following arguments are optional:
@@ -66,16 +74,39 @@ class IntegrationResponseArgs {
 
   factory IntegrationResponseArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseArgs(
-      contentHandling: map['contentHandling'] == null ? null : ((map['contentHandling'] as String).input()).input(),
-      httpMethod: (map['httpMethod'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, String>()).input()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
-      restApi: (map['restApi'] as String).input(),
-      selectionPattern: map['selectionPattern'] == null ? null : ((map['selectionPattern'] as String).input()).input(),
-      statusCode: (map['statusCode'] as String).input(),
+      contentHandling: (() {
+        final guardedValue = map['contentHandling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpMethod: pulumi.Input.fromValue(map['httpMethod'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      responseParameters: (() {
+        final guardedValue = map['responseParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      responseTemplates: (() {
+        final guardedValue = map['responseTemplates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      restApi: pulumi.Input.fromValue(map['restApi'] as String),
+      selectionPattern: (() {
+        final guardedValue = map['selectionPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
-

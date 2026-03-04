@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterAdvertisedIpRangeResponseComputeBeta {
   /// User-specified description for the IP range.
   final pulumi.Input<String> description;
+
   /// The IP range to advertise. The value must be a CIDR-formatted string.
   final pulumi.Input<String> range;
 
@@ -18,17 +19,15 @@ class RouterAdvertisedIpRangeResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'range': range,
-    };
+    return <String, dynamic>{'description': description, 'range': range};
   }
 
-  factory RouterAdvertisedIpRangeResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory RouterAdvertisedIpRangeResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RouterAdvertisedIpRangeResponseComputeBeta(
-      description: (map['description'] as String).input(),
-      range: (map['range'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      range: pulumi.Input.fromValue(map['range'] as String),
     );
   }
 }
-

@@ -8,13 +8,16 @@ class GetDispatchRulesResult {
   /// The name of the dispatch rule.
   final String? dispatchRuleName;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Dispatch Rule names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Arms Dispatch Rules. Each element contains the following attributes:
   final List<GetDispatchRulesRule> rules;
 
@@ -47,21 +50,45 @@ class GetDispatchRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetDispatchRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<GetDispatchRulesRule, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetDispatchRulesResult.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesResult(
-      dispatchRuleName: map['dispatchRuleName'] == null ? null : map['dispatchRuleName']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      dispatchRuleName: (() {
+        final guardedValue = map['dispatchRuleName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      rules: pulumi.Input.decodeList<GetDispatchRulesRule>(map['rules'], (value) => GetDispatchRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rules: pulumi.Input.decodeList<GetDispatchRulesRule>(
+        map['rules']!,
+        (value) => GetDispatchRulesRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

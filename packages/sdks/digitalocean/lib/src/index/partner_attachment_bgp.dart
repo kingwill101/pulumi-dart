@@ -31,11 +31,26 @@ class PartnerAttachmentBgp {
 
   factory PartnerAttachmentBgp.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentBgp(
-      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
-      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp']! as String).input(),
-      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn']! as int).input(),
-      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp']! as String).input(),
+      authKey: (() {
+        final guardedValue = map['authKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localRouterIp: (() {
+        final guardedValue = map['localRouterIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peerRouterAsn: (() {
+        final guardedValue = map['peerRouterAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      peerRouterIp: (() {
+        final guardedValue = map['peerRouterIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

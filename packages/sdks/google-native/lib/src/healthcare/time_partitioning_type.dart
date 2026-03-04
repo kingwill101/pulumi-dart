@@ -6,16 +6,15 @@ enum TimePartitioningType {
   month("MONTH"),
   year("YEAR");
 
-  const TimePartitioningType(this.value);
-  final String value;
+  const TimePartitioningType(this.wireValue);
+  final String wireValue;
 
   static TimePartitioningType fromValue(String value) {
     for (final item in TimePartitioningType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TimePartitioningType value: $value');
   }
 }
-

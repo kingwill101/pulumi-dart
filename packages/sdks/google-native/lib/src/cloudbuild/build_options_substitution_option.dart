@@ -3,16 +3,15 @@ enum BuildOptionsSubstitutionOption {
   mustMatch("MUST_MATCH"),
   allowLoose("ALLOW_LOOSE");
 
-  const BuildOptionsSubstitutionOption(this.value);
-  final String value;
+  const BuildOptionsSubstitutionOption(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsSubstitutionOption fromValue(String value) {
     for (final item in BuildOptionsSubstitutionOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildOptionsSubstitutionOption value: $value');
   }
 }
-

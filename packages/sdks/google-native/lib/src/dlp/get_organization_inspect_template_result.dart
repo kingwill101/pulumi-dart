@@ -6,14 +6,19 @@ import 'google_privacy_dlp_v2_inspect_config_response.dart';
 class GetOrganizationInspectTemplateResult {
   /// The creation timestamp of an inspectTemplate.
   final String createTime;
+
   /// Short description (max 256 chars).
   final String description;
+
   /// Display name (max 256 chars).
   final String displayName;
+
   /// The core content of the template. Configuration of the scanning process.
   final GooglePrivacyDlpV2InspectConfigResponse inspectConfig;
+
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   final String name;
+
   /// The last update timestamp of an inspectTemplate.
   final String updateTime;
 
@@ -44,15 +49,18 @@ class GetOrganizationInspectTemplateResult {
     };
   }
 
-  factory GetOrganizationInspectTemplateResult.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationInspectTemplateResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationInspectTemplateResult(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      inspectConfig: GooglePrivacyDlpV2InspectConfigResponse.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>()),
+      inspectConfig: GooglePrivacyDlpV2InspectConfigResponse.fromMap(
+        (map['inspectConfig']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

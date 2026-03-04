@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkProfileArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the public IP prefix.
   final pulumi.Input<String> networkProfileName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetNetworkProfileArgs {
 
   factory GetNetworkProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkProfileArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      networkProfileName: (map['networkProfileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkProfileName: pulumi.Input.fromValue(
+        map['networkProfileName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

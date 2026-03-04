@@ -9,20 +9,41 @@ class GooglePrivacyDlpV2ImageTransformations {
 
   /// Creates a new [GooglePrivacyDlpV2ImageTransformations].
   /// [transforms] Optional.
-  GooglePrivacyDlpV2ImageTransformations({
-    this.transforms,
-  });
+  GooglePrivacyDlpV2ImageTransformations({this.transforms});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transforms': ?pulumi.Input.mapOptionalInputValue<List<GooglePrivacyDlpV2ImageTransformation>, List<Map<String, dynamic>>>(transforms, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2ImageTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transforms':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GooglePrivacyDlpV2ImageTransformation>,
+            List<Map<String, dynamic>>
+          >(
+            transforms,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GooglePrivacyDlpV2ImageTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GooglePrivacyDlpV2ImageTransformations.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ImageTransformations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ImageTransformations(
-      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(map['transforms']!, (value) => GooglePrivacyDlpV2ImageTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transforms: (() {
+        final guardedValue = map['transforms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(
+            guardedValue,
+            (value) => GooglePrivacyDlpV2ImageTransformation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

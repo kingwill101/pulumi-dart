@@ -4,16 +4,15 @@ enum DdosSettingsProtectionMode {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const DdosSettingsProtectionMode(this.value);
-  final String value;
+  const DdosSettingsProtectionMode(this.wireValue);
+  final String wireValue;
 
   static DdosSettingsProtectionMode fromValue(String value) {
     for (final item in DdosSettingsProtectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DdosSettingsProtectionMode value: $value');
   }
 }
-

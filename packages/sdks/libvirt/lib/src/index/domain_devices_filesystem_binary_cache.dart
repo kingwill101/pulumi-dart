@@ -8,20 +8,15 @@ class DomainDevicesFilesystemBinaryCache {
 
   /// Creates a new [DomainDevicesFilesystemBinaryCache].
   /// [mode] Sets the mode for the cache used by the binary filesystem device.
-  DomainDevicesFilesystemBinaryCache({
-    required this.mode,
-  });
+  DomainDevicesFilesystemBinaryCache({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory DomainDevicesFilesystemBinaryCache.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryCache(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

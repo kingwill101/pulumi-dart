@@ -1406,28 +1406,40 @@ import 'agent_knowledge_base_timeouts.dart';
 class AgentKnowledgeBase extends pulumi.CustomResource {
   /// ARN of the knowledge base.
   late final pulumi.Output<String> arn;
+
   /// Time at which the knowledge base was created.
   late final pulumi.Output<String> createdAt;
+
   /// Description of the knowledge base.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<List<String>> failureReasons;
+
   /// Details about the embeddings configuration of the knowledge base. See `knowledge_base_configuration` block for details.
-  late final pulumi.Output<AgentKnowledgeBaseKnowledgeBaseConfiguration> knowledgeBaseConfiguration;
+  late final pulumi.Output<AgentKnowledgeBaseKnowledgeBaseConfiguration>
+  knowledgeBaseConfiguration;
+
   /// Name of the knowledge base.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the IAM role with permissions to invoke API operations on the knowledge base.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
+
   /// Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
-  late final pulumi.Output<AgentKnowledgeBaseStorageConfiguration?> storageConfiguration;
+  late final pulumi.Output<AgentKnowledgeBaseStorageConfiguration?>
+  storageConfiguration;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentKnowledgeBaseTimeouts?> timeouts;
+
   /// Time at which the knowledge base was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -1440,24 +1452,30 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     AgentKnowledgeBaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.failureReasons = registerOutput<List<String>>('failureReasons');
-    this.knowledgeBaseConfiguration = registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>('knowledgeBaseConfiguration');
+         'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    failureReasons = registerOutput<List<String>>('failureReasons');
+    knowledgeBaseConfiguration =
+        registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(
+          'knowledgeBaseConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.storageConfiguration = registerOutput<AgentKnowledgeBaseStorageConfiguration?>('storageConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    storageConfiguration =
+        registerOutput<AgentKnowledgeBaseStorageConfiguration?>(
+          'storageConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [AgentKnowledgeBase] resource's state with the given [name] and [id].
@@ -1478,23 +1496,29 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.failureReasons = registerOutput<List<String>>('failureReasons');
-    this.knowledgeBaseConfiguration = registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>('knowledgeBaseConfiguration');
+         'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    failureReasons = registerOutput<List<String>>('failureReasons');
+    knowledgeBaseConfiguration =
+        registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(
+          'knowledgeBaseConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.storageConfiguration = registerOutput<AgentKnowledgeBaseStorageConfiguration?>('storageConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    storageConfiguration =
+        registerOutput<AgentKnowledgeBaseStorageConfiguration?>(
+          'storageConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

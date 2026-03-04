@@ -4,16 +4,15 @@ enum WebApplicationFirewallRuleType {
   valueRateLimitRule("RateLimitRule"),
   valueInvalid("Invalid");
 
-  const WebApplicationFirewallRuleType(this.value);
-  final String value;
+  const WebApplicationFirewallRuleType(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallRuleType fromValue(String value) {
     for (final item in WebApplicationFirewallRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebApplicationFirewallRuleType value: $value');
   }
 }
-

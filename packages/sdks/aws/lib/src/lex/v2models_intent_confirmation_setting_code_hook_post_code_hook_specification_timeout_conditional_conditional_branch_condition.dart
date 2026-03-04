@@ -13,15 +13,16 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expressionString': expressionString,
-    };
+    return <String, dynamic>{'expressionString': expressionString};
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchCondition(
-      expressionString: (map['expressionString'] as String).input(),
+      expressionString: pulumi.Input.fromValue(
+        map['expressionString'] as String,
+      ),
     );
   }
 }
-

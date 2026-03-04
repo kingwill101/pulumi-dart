@@ -10,14 +10,19 @@ import 'traffic_percent_strategy.dart';
 class RolloutArgs {
   /// Creation time of the rollout. Readonly.
   final pulumi.Input<String>? createTime;
+
   /// The user who created the Rollout. Readonly.
   final pulumi.Input<String>? createdBy;
+
   /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
   final pulumi.Input<Map<String, dynamic>>? deleteServiceStrategy;
+
   /// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
   final pulumi.Input<String>? rolloutId;
+
   /// The name of the service associated with this Rollout.
   final pulumi.Input<String> serviceName;
+
   /// Google Service Control selects service configurations based on traffic percentage.
   final pulumi.Input<TrafficPercentStrategy>? trafficPercentStrategy;
 
@@ -44,19 +49,48 @@ class RolloutArgs {
       'deleteServiceStrategy': ?deleteServiceStrategy,
       'rolloutId': ?rolloutId,
       'serviceName': serviceName,
-      'trafficPercentStrategy': ?pulumi.Input.mapOptionalInputValue<TrafficPercentStrategy, Map<String, dynamic>>(trafficPercentStrategy, (value) => value.toMap()),
+      'trafficPercentStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrafficPercentStrategy,
+            Map<String, dynamic>
+          >(trafficPercentStrategy, (value) => value.toMap()),
     };
   }
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
-      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : ((map['deleteServiceStrategy']! as Map).cast<String, dynamic>()).input(),
-      rolloutId: map['rolloutId'] == null ? null : (map['rolloutId']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : (TrafficPercentStrategy.fromMap((map['trafficPercentStrategy']! as Map).cast<String, dynamic>())).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteServiceStrategy: (() {
+        final guardedValue = map['deleteServiceStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rolloutId: (() {
+        final guardedValue = map['rolloutId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      trafficPercentStrategy: (() {
+        final guardedValue = map['trafficPercentStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TrafficPercentStrategy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

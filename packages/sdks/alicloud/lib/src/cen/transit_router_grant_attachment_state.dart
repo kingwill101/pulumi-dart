@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterGrantAttachmentState {
   /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
   final pulumi.Input<String>? cenId;
+
   /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
   final pulumi.Input<String>? cenOwnerId;
+
   /// The ID of the network instance.
   final pulumi.Input<String>? instanceId;
+
   /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   final pulumi.Input<String>? instanceType;
+
   /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   final pulumi.Input<String>? orderType;
 
@@ -41,12 +45,31 @@ class TransitRouterGrantAttachmentState {
 
   factory TransitRouterGrantAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterGrantAttachmentState(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenOwnerId: (() {
+        final guardedValue = map['cenOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

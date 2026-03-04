@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsProfileForVMInstanceResponse {
   /// Gets or sets computer name.
   final pulumi.Input<String>? computerName;
+
   /// Gets or sets os sku.
   final pulumi.Input<String> osSku;
+
   /// Gets or sets the type of the os.
   final pulumi.Input<String> osType;
+
   /// Gets os version.
   final pulumi.Input<String> osVersion;
 
@@ -36,11 +39,14 @@ class OsProfileForVMInstanceResponse {
 
   factory OsProfileForVMInstanceResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstanceResponse(
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
-      osSku: (map['osSku'] as String).input(),
-      osType: (map['osType'] as String).input(),
-      osVersion: (map['osVersion'] as String).input(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osSku: pulumi.Input.fromValue(map['osSku'] as String),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
     );
   }
 }
-

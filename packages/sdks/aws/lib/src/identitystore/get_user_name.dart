@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserName {
   /// The family name of the user.
   final pulumi.Input<String> familyName;
+
   /// The name that is typically displayed when the name is shown for display.
   final pulumi.Input<String> formatted;
+
   /// The given name of the user.
   final pulumi.Input<String> givenName;
+
   /// The honorific prefix of the user.
   final pulumi.Input<String> honorificPrefix;
+
   /// The honorific suffix of the user.
   final pulumi.Input<String> honorificSuffix;
+
   /// The middle name of the user.
   final pulumi.Input<String> middleName;
 
@@ -45,13 +50,12 @@ class GetUserName {
 
   factory GetUserName.fromMap(Map<String, dynamic> map) {
     return GetUserName(
-      familyName: (map['familyName'] as String).input(),
-      formatted: (map['formatted'] as String).input(),
-      givenName: (map['givenName'] as String).input(),
-      honorificPrefix: (map['honorificPrefix'] as String).input(),
-      honorificSuffix: (map['honorificSuffix'] as String).input(),
-      middleName: (map['middleName'] as String).input(),
+      familyName: pulumi.Input.fromValue(map['familyName'] as String),
+      formatted: pulumi.Input.fromValue(map['formatted'] as String),
+      givenName: pulumi.Input.fromValue(map['givenName'] as String),
+      honorificPrefix: pulumi.Input.fromValue(map['honorificPrefix'] as String),
+      honorificSuffix: pulumi.Input.fromValue(map['honorificSuffix'] as String),
+      middleName: pulumi.Input.fromValue(map['middleName'] as String),
     );
   }
 }
-

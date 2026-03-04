@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LakeAssetStatus {
   /// Number of active assets.
   final pulumi.Input<int>? activeAssets;
+
   /// Number of assets that are in process of updating the security policy on attached resources.
   final pulumi.Input<int>? securityPolicyApplyingAssets;
+
   /// Output only. The time when the lake was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -30,10 +32,21 @@ class LakeAssetStatus {
 
   factory LakeAssetStatus.fromMap(Map<String, dynamic> map) {
     return LakeAssetStatus(
-      activeAssets: map['activeAssets'] == null ? null : (map['activeAssets']! as int).input(),
-      securityPolicyApplyingAssets: map['securityPolicyApplyingAssets'] == null ? null : (map['securityPolicyApplyingAssets']! as int).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      activeAssets: (() {
+        final guardedValue = map['activeAssets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      securityPolicyApplyingAssets: (() {
+        final guardedValue = map['securityPolicyApplyingAssets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -19,17 +19,15 @@ class GetMembershipCloudidentityV1beta1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupId': groupId,
-      'membershipId': membershipId,
-    };
+    return <String, dynamic>{'groupId': groupId, 'membershipId': membershipId};
   }
 
-  factory GetMembershipCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMembershipCloudidentityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMembershipCloudidentityV1beta1Args(
-      groupId: (map['groupId'] as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
     );
   }
 }
-

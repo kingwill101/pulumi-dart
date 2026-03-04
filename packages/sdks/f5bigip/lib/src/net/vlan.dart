@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vlan_args.dart';
-import 'vlan_interface.dart';
 import 'vlan_state.dart';
 
 /// `f5bigip.net.Vlan` Manages a vlan configuration
@@ -135,12 +134,16 @@ import 'vlan_state.dart';
 class Vlan extends pulumi.CustomResource {
   /// Specifies how the traffic on the VLAN will be disaggregated. The value selected determines the traffic disaggregation method. possible options: [`default`, `src-ip`, `dst-ip`]
   late final pulumi.Output<String> cmpHash;
+
   /// Specifies which interfaces you want this VLAN to use for traffic management.
-  late final pulumi.Output<List<VlanInterface>?> interfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> interfaces;
+
   /// Specifies the maximum transmission unit (MTU) for traffic on this VLAN. The default value is `1500`.
   late final pulumi.Output<int?> mtu;
+
   /// Name of the vlan
   late final pulumi.Output<String> name;
+
   /// Specifies a number that the system adds into the header of any frame passing through the VLAN.
   late final pulumi.Output<int?> tag;
 
@@ -148,29 +151,22 @@ class Vlan extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vlan]. {@macro pulumi_net_vlan_vlan_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vlan(
-    String name, {
-    VlanArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:net/vlan:Vlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cmpHash = registerOutput<String>('cmpHash');
-    this.interfaces = registerOutput<List<VlanInterface>?>('interfaces');
-    this.mtu = registerOutput<int?>('mtu');
+  Vlan(String name, {VlanArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:net/vlan:Vlan',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cmpHash = registerOutput<String>('cmpHash');
+    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
-    this.tag = registerOutput<int?>('tag');
+    tag = registerOutput<int?>('tag');
   }
 
   /// Gets an existing [Vlan] resource's state with the given [name] and [id].
-  static Vlan get(
-    String name,
-    pulumi.Input<String> id, {
-    VlanState? state,
-  }) {
+  static Vlan get(String name, pulumi.Input<String> id, {VlanState? state}) {
     return Vlan._get(
       name,
       state: state?.toMap(),
@@ -183,15 +179,15 @@ class Vlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:net/vlan:Vlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cmpHash = registerOutput<String>('cmpHash');
-    this.interfaces = registerOutput<List<VlanInterface>?>('interfaces');
-    this.mtu = registerOutput<int?>('mtu');
+         'f5bigip:net/vlan:Vlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cmpHash = registerOutput<String>('cmpHash');
+    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
-    this.tag = registerOutput<int?>('tag');
+    tag = registerOutput<int?>('tag');
   }
 }

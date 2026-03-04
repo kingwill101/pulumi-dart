@@ -6,30 +6,43 @@ import 'get_v3_triggers_trigger_http_trigger.dart';
 class GetV3TriggersTrigger {
   /// Creation time
   final pulumi.Input<String> createTime;
+
   /// Description of the trigger
   final pulumi.Input<String> description;
+
   /// HTTP trigger information
   final pulumi.Input<GetV3TriggersTriggerHttpTrigger> httpTrigger;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// The role required by the event source (such as OSS) to call the function.
   final pulumi.Input<String> invocationRole;
+
   /// The last modified time of the trigger
   final pulumi.Input<String> lastModifiedTime;
+
   /// The version or alias of the function
   final pulumi.Input<String> qualifier;
+
   /// Trigger Event source ARN
   final pulumi.Input<String> sourceArn;
+
   /// The state of the trigger
   final pulumi.Input<String> status;
+
   /// Resource identity of the function
   final pulumi.Input<String> targetArn;
+
   /// Trigger configuration. The configuration varies for different types of triggers.
   final pulumi.Input<String> triggerConfig;
+
   /// Trigger ID
   final pulumi.Input<String> triggerId;
+
   /// Trigger Name
   final pulumi.Input<String> triggerName;
+
   /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
   final pulumi.Input<String> triggerType;
 
@@ -69,7 +82,11 @@ class GetV3TriggersTrigger {
     return <String, dynamic>{
       'createTime': createTime,
       'description': description,
-      'httpTrigger': pulumi.Input.mapInputValue<GetV3TriggersTriggerHttpTrigger, Map<String, dynamic>>(httpTrigger, (value) => value.toMap()),
+      'httpTrigger':
+          pulumi.Input.mapInputValue<
+            GetV3TriggersTriggerHttpTrigger,
+            Map<String, dynamic>
+          >(httpTrigger, (value) => value.toMap()),
       'id': id,
       'invocationRole': invocationRole,
       'lastModifiedTime': lastModifiedTime,
@@ -86,21 +103,26 @@ class GetV3TriggersTrigger {
 
   factory GetV3TriggersTrigger.fromMap(Map<String, dynamic> map) {
     return GetV3TriggersTrigger(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      httpTrigger: (GetV3TriggersTriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      invocationRole: (map['invocationRole'] as String).input(),
-      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
-      qualifier: (map['qualifier'] as String).input(),
-      sourceArn: (map['sourceArn'] as String).input(),
-      status: (map['status'] as String).input(),
-      targetArn: (map['targetArn'] as String).input(),
-      triggerConfig: (map['triggerConfig'] as String).input(),
-      triggerId: (map['triggerId'] as String).input(),
-      triggerName: (map['triggerName'] as String).input(),
-      triggerType: (map['triggerType'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      httpTrigger: pulumi.Input.fromValue(
+        GetV3TriggersTriggerHttpTrigger.fromMap(
+          (map['httpTrigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      invocationRole: pulumi.Input.fromValue(map['invocationRole'] as String),
+      lastModifiedTime: pulumi.Input.fromValue(
+        map['lastModifiedTime'] as String,
+      ),
+      qualifier: pulumi.Input.fromValue(map['qualifier'] as String),
+      sourceArn: pulumi.Input.fromValue(map['sourceArn'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetArn: pulumi.Input.fromValue(map['targetArn'] as String),
+      triggerConfig: pulumi.Input.fromValue(map['triggerConfig'] as String),
+      triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
+      triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
+      triggerType: pulumi.Input.fromValue(map['triggerType'] as String),
     );
   }
 }
-

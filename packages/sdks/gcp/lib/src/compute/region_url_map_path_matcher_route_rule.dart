@@ -12,10 +12,14 @@ class RegionUrlMapPathMatcherRouteRule {
   /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
   /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
   /// Structure is documented below.
-  final pulumi.Input<RegionUrlMapPathMatcherRouteRuleHeaderAction>? headerAction;
+  final pulumi.Input<RegionUrlMapPathMatcherRouteRuleHeaderAction>?
+  headerAction;
+
   /// The rules for determining a match.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRule>>? matchRules;
+  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRule>>?
+  matchRules;
+
   /// For routeRules within a given pathMatcher, priority determines the order
   /// in which load balancer will interpret routeRules. RouteRules are evaluated
   /// in order of priority, from the lowest to highest number. The priority of
@@ -30,6 +34,7 @@ class RegionUrlMapPathMatcherRouteRule {
   /// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
   /// future without any impact on existing rules.
   final pulumi.Input<int> priority;
+
   /// In response to a matching matchRule, the load balancer performs advanced routing
   /// actions like URL rewrites, header transformations, etc. prior to forwarding the
   /// request to the selected backend. If  routeAction specifies any
@@ -38,6 +43,7 @@ class RegionUrlMapPathMatcherRouteRule {
   /// or urlRedirect must be set.
   /// Structure is documented below.
   final pulumi.Input<RegionUrlMapPathMatcherRouteRuleRouteAction>? routeAction;
+
   /// The region backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -46,6 +52,7 @@ class RegionUrlMapPathMatcherRouteRule {
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
   final pulumi.Input<String>? service;
+
   /// When this rule is matched, the request is redirected to a URL specified by
   /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
   /// set.
@@ -70,24 +77,85 @@ class RegionUrlMapPathMatcherRouteRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headerAction': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherRouteRuleHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
-      'matchRules': ?pulumi.Input.mapOptionalInputValue<List<RegionUrlMapPathMatcherRouteRuleMatchRule>, List<Map<String, dynamic>>>(matchRules, (value) => pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headerAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionUrlMapPathMatcherRouteRuleHeaderAction,
+            Map<String, dynamic>
+          >(headerAction, (value) => value.toMap()),
+      'matchRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionUrlMapPathMatcherRouteRuleMatchRule>,
+            List<Map<String, dynamic>>
+          >(
+            matchRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionUrlMapPathMatcherRouteRuleMatchRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'priority': priority,
-      'routeAction': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherRouteRuleRouteAction, Map<String, dynamic>>(routeAction, (value) => value.toMap()),
+      'routeAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionUrlMapPathMatcherRouteRuleRouteAction,
+            Map<String, dynamic>
+          >(routeAction, (value) => value.toMap()),
       'service': ?service,
-      'urlRedirect': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherRouteRuleUrlRedirect, Map<String, dynamic>>(urlRedirect, (value) => value.toMap()),
+      'urlRedirect':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionUrlMapPathMatcherRouteRuleUrlRedirect,
+            Map<String, dynamic>
+          >(urlRedirect, (value) => value.toMap()),
     };
   }
 
   factory RegionUrlMapPathMatcherRouteRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRule(
-      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(map['matchRules']!, (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: (map['priority'] as int).input(),
-      routeAction: map['routeAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
+      headerAction: (() {
+        final guardedValue = map['headerAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      matchRules: (() {
+        final guardedValue = map['matchRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(
+            guardedValue,
+            (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      routeAction: (() {
+        final guardedValue = map['routeAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlRedirect: (() {
+        final guardedValue = map['urlRedirect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

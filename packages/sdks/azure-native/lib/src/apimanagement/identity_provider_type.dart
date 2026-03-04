@@ -7,16 +7,15 @@ enum IdentityProviderType {
   valueAad("aad"),
   valueAadB2C("aadB2C");
 
-  const IdentityProviderType(this.value);
-  final String value;
+  const IdentityProviderType(this.wireValue);
+  final String wireValue;
 
   static IdentityProviderType fromValue(String value) {
     for (final item in IdentityProviderType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentityProviderType value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ class DatascanExecutionStatus {
   /// (Output)
   /// The time when the latest DataScanJob started.
   final pulumi.Input<String>? latestJobEndTime;
+
   /// (Output)
   /// The time when the latest DataScanJob ended.
   final pulumi.Input<String>? latestJobStartTime;
@@ -13,10 +14,7 @@ class DatascanExecutionStatus {
   /// Creates a new [DatascanExecutionStatus].
   /// [latestJobEndTime] (Output)
   /// [latestJobStartTime] (Output)
-  DatascanExecutionStatus({
-    this.latestJobEndTime,
-    this.latestJobStartTime,
-  });
+  DatascanExecutionStatus({this.latestJobEndTime, this.latestJobStartTime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class DatascanExecutionStatus {
 
   factory DatascanExecutionStatus.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionStatus(
-      latestJobEndTime: map['latestJobEndTime'] == null ? null : (map['latestJobEndTime']! as String).input(),
-      latestJobStartTime: map['latestJobStartTime'] == null ? null : (map['latestJobStartTime']! as String).input(),
+      latestJobEndTime: (() {
+        final guardedValue = map['latestJobEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latestJobStartTime: (() {
+        final guardedValue = map['latestJobStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

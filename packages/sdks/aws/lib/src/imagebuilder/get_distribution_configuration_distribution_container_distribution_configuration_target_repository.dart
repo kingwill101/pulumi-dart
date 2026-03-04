@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository {
   /// Name of the container repository where the output container image is stored.
   final pulumi.Input<String> repositoryName;
+
   /// Service in which the image is registered.
   final pulumi.Input<String> service;
 
@@ -23,11 +24,12 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
     };
   }
 
-  factory GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository(
-      repositoryName: (map['repositoryName'] as String).input(),
-      service: (map['service'] as String).input(),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

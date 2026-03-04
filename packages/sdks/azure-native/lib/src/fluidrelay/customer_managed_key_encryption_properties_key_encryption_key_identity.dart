@@ -7,12 +7,13 @@ import 'cmk_identity_type.dart';
 class CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
   /// Values can be SystemAssigned or UserAssigned
   final pulumi.Input<CmkIdentityType>? identityType;
-  /// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
+
+  /// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
   /// Creates a new [CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Values can be SystemAssigned or UserAssigned
-  /// [userAssignedIdentityResourceId] user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
+  /// [userAssignedIdentityResourceId] user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
   CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity({
     this.identityType,
     this.userAssignedIdentityResourceId,
@@ -20,16 +21,31 @@ class CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityType': ?pulumi.Input.mapOptionalInputValue<CmkIdentityType, String>(identityType, (value) => value.value),
+      'identityType':
+          ?pulumi.Input.mapOptionalInputValue<CmkIdentityType, String>(
+            identityType,
+            (value) => value.wireValue,
+          ),
       'userAssignedIdentityResourceId': ?userAssignedIdentityResourceId,
     };
   }
 
-  factory CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
+  factory CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity(
-      identityType: map['identityType'] == null ? null : (CmkIdentityType.fromValue(map['identityType']! as String)).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
+      identityType: (() {
+        final guardedValue = map['identityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CmkIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
+      userAssignedIdentityResourceId: (() {
+        final guardedValue = map['userAssignedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

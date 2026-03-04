@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SAMLParamsResponse {
   /// SAML certificate
   final pulumi.Input<String> certificate;
+
   /// IdP field that maps to the user’s email address
   final pulumi.Input<String> emailMapping;
+
   /// Entity id URL
   final pulumi.Input<String> entityId;
+
   /// Single sign-on URL
   final pulumi.Input<String> ssoUri;
+
   /// Email address of the first admin users.
   final pulumi.Input<String> userEmail;
 
@@ -41,12 +45,11 @@ class SAMLParamsResponse {
 
   factory SAMLParamsResponse.fromMap(Map<String, dynamic> map) {
     return SAMLParamsResponse(
-      certificate: (map['certificate'] as String).input(),
-      emailMapping: (map['emailMapping'] as String).input(),
-      entityId: (map['entityId'] as String).input(),
-      ssoUri: (map['ssoUri'] as String).input(),
-      userEmail: (map['userEmail'] as String).input(),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      emailMapping: pulumi.Input.fromValue(map['emailMapping'] as String),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      ssoUri: pulumi.Input.fromValue(map['ssoUri'] as String),
+      userEmail: pulumi.Input.fromValue(map['userEmail'] as String),
     );
   }
 }
-

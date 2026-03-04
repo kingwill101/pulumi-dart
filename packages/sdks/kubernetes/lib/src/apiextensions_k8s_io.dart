@@ -1,5 +1,3 @@
-library module_apiextensions_k8s_io;
-
 export 'apiextensions_k8s_io/custom_resource_args.dart';
 export 'apiextensions_k8s_io/custom_resource_column_definition.dart';
 export 'apiextensions_k8s_io/custom_resource_column_definition_apiextensions_k8s_io_v1beta1.dart';

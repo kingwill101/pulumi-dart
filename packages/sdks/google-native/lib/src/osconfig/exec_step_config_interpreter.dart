@@ -5,16 +5,15 @@ enum ExecStepConfigInterpreter {
   shell("SHELL"),
   powershell("POWERSHELL");
 
-  const ExecStepConfigInterpreter(this.value);
-  final String value;
+  const ExecStepConfigInterpreter(this.wireValue);
+  final String wireValue;
 
   static ExecStepConfigInterpreter fromValue(String value) {
     for (final item in ExecStepConfigInterpreter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecStepConfigInterpreter value: $value');
   }
 }
-

@@ -10,20 +10,23 @@ class DiscoveryNote {
 
   /// Creates a new [DiscoveryNote].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryNote({
-    required this.analysisKind,
-  });
+  DiscoveryNote({required this.analysisKind});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analysisKind': pulumi.Input.mapInputValue<DiscoveryNoteAnalysisKind, String>(analysisKind, (value) => value.value),
+      'analysisKind':
+          pulumi.Input.mapInputValue<DiscoveryNoteAnalysisKind, String>(
+            analysisKind,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory DiscoveryNote.fromMap(Map<String, dynamic> map) {
     return DiscoveryNote(
-      analysisKind: (DiscoveryNoteAnalysisKind.fromValue(map['analysisKind'] as String)).input(),
+      analysisKind: pulumi.Input.fromValue(
+        DiscoveryNoteAnalysisKind.fromValue(map['analysisKind']! as String),
+      ),
     );
   }
 }
-

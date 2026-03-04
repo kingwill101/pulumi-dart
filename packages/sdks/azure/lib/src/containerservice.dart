@@ -1,5 +1,3 @@
-library module_containerservice;
-
 export 'containerservice/cluster_trusted_access_role_binding.dart';
 export 'containerservice/cluster_trusted_access_role_binding_args.dart';
 export 'containerservice/cluster_trusted_access_role_binding_state.dart';

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTemplateArgs {
   /// Provides a description for the policy template.
   final pulumi.Input<String>? description;
+
   /// The ID of the Policy Store.
   final pulumi.Input<String> policyStoreId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Defines the content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
@@ -41,11 +44,18 @@ class PolicyTemplateArgs {
 
   factory PolicyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      policyStoreId: (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      statement: (map['statement'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyStoreId: pulumi.Input.fromValue(map['policyStoreId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statement: pulumi.Input.fromValue(map['statement'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiJobResourceSettingsRealtimeResourceSettings {
   /// Scheduling resource group cu
   final pulumi.Input<double>? requestedCu;
+
   /// Scheduling resource group name
   final pulumi.Input<String>? resourceGroupIdentifier;
 
@@ -23,11 +24,20 @@ class DiJobResourceSettingsRealtimeResourceSettings {
     };
   }
 
-  factory DiJobResourceSettingsRealtimeResourceSettings.fromMap(Map<String, dynamic> map) {
+  factory DiJobResourceSettingsRealtimeResourceSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiJobResourceSettingsRealtimeResourceSettings(
-      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu']! as double).input(),
-      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier']! as String).input(),
+      requestedCu: (() {
+        final guardedValue = map['requestedCu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      resourceGroupIdentifier: (() {
+        final guardedValue = map['resourceGroupIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

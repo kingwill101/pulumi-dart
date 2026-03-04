@@ -7,14 +7,18 @@ import 'get_delivery_channels_channel.dart';
 class GetDeliveryChannelsResult {
   /// A list of Config Delivery Channels. Each element contains the following attributes:
   final List<GetDeliveryChannelsChannel> channels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Config Delivery Channel IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Config Delivery Channel names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the delivery channel.
   final int? status;
 
@@ -38,7 +42,11 @@ class GetDeliveryChannelsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.encodeList<GetDeliveryChannelsChannel, Map<String, dynamic>>(channels, (value) => value.toMap()),
+      'channels':
+          pulumi.Input.encodeList<
+            GetDeliveryChannelsChannel,
+            Map<String, dynamic>
+          >(channels, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -50,14 +58,30 @@ class GetDeliveryChannelsResult {
 
   factory GetDeliveryChannelsResult.fromMap(Map<String, dynamic> map) {
     return GetDeliveryChannelsResult(
-      channels: pulumi.Input.decodeList<GetDeliveryChannelsChannel>(map['channels'], (value) => GetDeliveryChannelsChannel.fromMap((value as Map).cast<String, dynamic>())),
+      channels: pulumi.Input.decodeList<GetDeliveryChannelsChannel>(
+        map['channels']!,
+        (value) => GetDeliveryChannelsChannel.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'get_virtual_machine_manager_inventory_items_inventory_item.dart';
 class GetVirtualMachineManagerInventoryItemsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// One or more `inventory_items` blocks as defined below.
-  final List<GetVirtualMachineManagerInventoryItemsInventoryItem> inventoryItems;
+  final List<GetVirtualMachineManagerInventoryItemsInventoryItem>
+  inventoryItems;
   final String inventoryType;
   final String systemCenterVirtualMachineManagerServerId;
 
@@ -27,19 +29,35 @@ class GetVirtualMachineManagerInventoryItemsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'inventoryItems': pulumi.Input.encodeList<GetVirtualMachineManagerInventoryItemsInventoryItem, Map<String, dynamic>>(inventoryItems, (value) => value.toMap()),
+      'inventoryItems':
+          pulumi.Input.encodeList<
+            GetVirtualMachineManagerInventoryItemsInventoryItem,
+            Map<String, dynamic>
+          >(inventoryItems, (value) => value.toMap()),
       'inventoryType': inventoryType,
-      'systemCenterVirtualMachineManagerServerId': systemCenterVirtualMachineManagerServerId,
+      'systemCenterVirtualMachineManagerServerId':
+          systemCenterVirtualMachineManagerServerId,
     };
   }
 
-  factory GetVirtualMachineManagerInventoryItemsResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualMachineManagerInventoryItemsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualMachineManagerInventoryItemsResult(
       id: map['id'] as String,
-      inventoryItems: pulumi.Input.decodeList<GetVirtualMachineManagerInventoryItemsInventoryItem>(map['inventoryItems'], (value) => GetVirtualMachineManagerInventoryItemsInventoryItem.fromMap((value as Map).cast<String, dynamic>())),
+      inventoryItems:
+          pulumi.Input.decodeList<
+            GetVirtualMachineManagerInventoryItemsInventoryItem
+          >(
+            map['inventoryItems']!,
+            (value) =>
+                GetVirtualMachineManagerInventoryItemsInventoryItem.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       inventoryType: map['inventoryType'] as String,
-      systemCenterVirtualMachineManagerServerId: map['systemCenterVirtualMachineManagerServerId'] as String,
+      systemCenterVirtualMachineManagerServerId:
+          map['systemCenterVirtualMachineManagerServerId'] as String,
     );
   }
 }
-

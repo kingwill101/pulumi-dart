@@ -13,15 +13,14 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recordRowPath': recordRowPath,
-    };
+    return <String, dynamic>{'recordRowPath': recordRowPath};
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters(
-      recordRowPath: (map['recordRowPath'] as String).input(),
+      recordRowPath: pulumi.Input.fromValue(map['recordRowPath'] as String),
     );
   }
 }
-

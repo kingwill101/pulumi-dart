@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlAssessmentV2OperationArgs {
   /// SQL Assessment arm name.
   final pulumi.Input<String> assessmentName;
+
   /// Group ARM name
   final pulumi.Input<String> groupName;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetSqlAssessmentV2OperationArgs {
 
   factory GetSqlAssessmentV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlAssessmentV2OperationArgs(
-      assessmentName: (map['assessmentName'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

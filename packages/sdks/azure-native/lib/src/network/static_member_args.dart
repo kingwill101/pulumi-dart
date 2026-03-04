@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticMemberArgs {
   /// The name of the network group.
   final pulumi.Input<String> networkGroupName;
+
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource Id.
   final pulumi.Input<String>? resourceId;
+
   /// The name of the static member.
   final pulumi.Input<String>? staticMemberName;
 
@@ -44,12 +48,25 @@ class StaticMemberArgs {
 
   factory StaticMemberArgs.fromMap(Map<String, dynamic> map) {
     return StaticMemberArgs(
-      networkGroupName: (map['networkGroupName'] as String).input(),
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      staticMemberName: map['staticMemberName'] == null ? null : (map['staticMemberName']! as String).input(),
+      networkGroupName: pulumi.Input.fromValue(
+        map['networkGroupName'] as String,
+      ),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      staticMemberName: (() {
+        final guardedValue = map['staticMemberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

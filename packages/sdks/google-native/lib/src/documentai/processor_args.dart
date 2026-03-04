@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProcessorArgs {
   /// The time the processor was created.
   final pulumi.Input<String>? createTime;
+
   /// The default processor version.
   final pulumi.Input<String>? defaultProcessorVersion;
+
   /// The display name of the processor.
   final pulumi.Input<String>? displayName;
+
   /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
   final pulumi.Input<String>? kmsKeyName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
   final pulumi.Input<String>? type;
 
@@ -52,14 +56,41 @@ class ProcessorArgs {
 
   factory ProcessorArgs.fromMap(Map<String, dynamic> map) {
     return ProcessorArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      defaultProcessorVersion: map['defaultProcessorVersion'] == null ? null : (map['defaultProcessorVersion']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultProcessorVersion: (() {
+        final guardedValue = map['defaultProcessorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

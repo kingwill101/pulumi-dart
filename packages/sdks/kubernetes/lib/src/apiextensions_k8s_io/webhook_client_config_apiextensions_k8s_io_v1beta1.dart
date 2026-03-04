@@ -7,10 +7,12 @@ import 'service_reference_apiextensions_k8s_io_v1beta1.dart';
 class WebhookClientConfigApiextensionsK8sIoV1beta1 {
   /// caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
   final pulumi.Input<String>? caBundle;
+
   /// service is a reference to the service for this webhook. Either service or url must be specified.
   ///
   /// If the webhook is running within the cluster, then you should use `service`.
   final pulumi.Input<ServiceReferenceApiextensionsK8sIoV1beta1>? service;
+
   /// url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
   ///
   /// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
@@ -37,17 +39,38 @@ class WebhookClientConfigApiextensionsK8sIoV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caBundle': ?caBundle,
-      'service': ?pulumi.Input.mapOptionalInputValue<ServiceReferenceApiextensionsK8sIoV1beta1, Map<String, dynamic>>(service, (value) => value.toMap()),
+      'service':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceReferenceApiextensionsK8sIoV1beta1,
+            Map<String, dynamic>
+          >(service, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
-  factory WebhookClientConfigApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WebhookClientConfigApiextensionsK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebhookClientConfigApiextensionsK8sIoV1beta1(
-      caBundle: map['caBundle'] == null ? null : (map['caBundle']! as String).input(),
-      service: map['service'] == null ? null : (ServiceReferenceApiextensionsK8sIoV1beta1.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      caBundle: (() {
+        final guardedValue = map['caBundle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceReferenceApiextensionsK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class OSPolicyAssignmentLabelSetResponse {
 
   /// Creates a new [OSPolicyAssignmentLabelSetResponse].
   /// [labels] Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
-  OSPolicyAssignmentLabelSetResponse({
-    required this.labels,
-  });
+  OSPolicyAssignmentLabelSetResponse({required this.labels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': labels,
-    };
+    return <String, dynamic>{'labels': labels};
   }
 
   factory OSPolicyAssignmentLabelSetResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyAssignmentLabelSetResponse(
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -10,20 +10,25 @@ class TIDataConnectorDataTypesResponse {
 
   /// Creates a new [TIDataConnectorDataTypesResponse].
   /// [indicators] Data type for indicators connection.
-  TIDataConnectorDataTypesResponse({
-    required this.indicators,
-  });
+  TIDataConnectorDataTypesResponse({required this.indicators});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'indicators': pulumi.Input.mapInputValue<TIDataConnectorDataTypesResponseIndicators, Map<String, dynamic>>(indicators, (value) => value.toMap()),
+      'indicators':
+          pulumi.Input.mapInputValue<
+            TIDataConnectorDataTypesResponseIndicators,
+            Map<String, dynamic>
+          >(indicators, (value) => value.toMap()),
     };
   }
 
   factory TIDataConnectorDataTypesResponse.fromMap(Map<String, dynamic> map) {
     return TIDataConnectorDataTypesResponse(
-      indicators: (TIDataConnectorDataTypesResponseIndicators.fromMap((map['indicators'] as Map).cast<String, dynamic>())).input(),
+      indicators: pulumi.Input.fromValue(
+        TIDataConnectorDataTypesResponseIndicators.fromMap(
+          (map['indicators']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum FeatureImportanceMode {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const FeatureImportanceMode(this.value);
-  final String value;
+  const FeatureImportanceMode(this.wireValue);
+  final String wireValue;
 
   static FeatureImportanceMode fromValue(String value) {
     for (final item in FeatureImportanceMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureImportanceMode value: $value');
   }
 }
-

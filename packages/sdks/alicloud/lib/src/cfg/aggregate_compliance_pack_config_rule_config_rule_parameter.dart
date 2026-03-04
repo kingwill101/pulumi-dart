@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AggregateCompliancePackConfigRuleConfigRuleParameter {
   /// The Parameter Name.
   final pulumi.Input<String>? parameterName;
+
   /// The Parameter Value.
   final pulumi.Input<String>? parameterValue;
 
@@ -23,11 +24,20 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter {
     };
   }
 
-  factory AggregateCompliancePackConfigRuleConfigRuleParameter.fromMap(Map<String, dynamic> map) {
+  factory AggregateCompliancePackConfigRuleConfigRuleParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AggregateCompliancePackConfigRuleConfigRuleParameter(
-      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue']! as String).input(),
+      parameterName: (() {
+        final guardedValue = map['parameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValue: (() {
+        final guardedValue = map['parameterValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

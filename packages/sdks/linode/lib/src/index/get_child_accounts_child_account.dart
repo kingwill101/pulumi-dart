@@ -5,34 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChildAccountsChildAccount {
   /// When this account was first activated
   final pulumi.Input<String> activeSince;
+
   /// First line of this Account's billing address.
   final pulumi.Input<String> address1;
+
   /// Second line of this Account's billing address.
   final pulumi.Input<String> address2;
+
   /// This Account's balance, in US dollars.
   final pulumi.Input<double> balance;
+
   /// A set containing all the capabilities of this Account.
   final pulumi.Input<List<String>> capabilities;
+
   /// The city for this Account's billing address.
   final pulumi.Input<String> city;
+
   /// The company name associated with this Account.
   final pulumi.Input<String> company;
+
   /// The two-letter country code of this Account's billing address.
   final pulumi.Input<String> country;
+
   /// The email address for this Account, for account management communications, and may be used for other communications as configured.
   final pulumi.Input<String> email;
+
   /// The unique ID of this Account.
   final pulumi.Input<String> euuid;
+
   /// The first name of the person associated with this Account.
   final pulumi.Input<String> firstName;
+
   /// The Email of the Account.
   final pulumi.Input<String> id;
+
   /// The last name of the person associated with this Account.
   final pulumi.Input<String> lastName;
+
   /// The phone number associated with this Account.
   final pulumi.Input<String> phone;
+
   /// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
   final pulumi.Input<String> state;
+
   /// The zip code of this Account's billing address.
   final pulumi.Input<String> zip;
 
@@ -95,23 +110,24 @@ class GetChildAccountsChildAccount {
 
   factory GetChildAccountsChildAccount.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsChildAccount(
-      activeSince: (map['activeSince'] as String).input(),
-      address1: (map['address1'] as String).input(),
-      address2: (map['address2'] as String).input(),
-      balance: (map['balance'] as double).input(),
-      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
-      city: (map['city'] as String).input(),
-      company: (map['company'] as String).input(),
-      country: (map['country'] as String).input(),
-      email: (map['email'] as String).input(),
-      euuid: (map['euuid'] as String).input(),
-      firstName: (map['firstName'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastName: (map['lastName'] as String).input(),
-      phone: (map['phone'] as String).input(),
-      state: (map['state'] as String).input(),
-      zip: (map['zip'] as String).input(),
+      activeSince: pulumi.Input.fromValue(map['activeSince'] as String),
+      address1: pulumi.Input.fromValue(map['address1'] as String),
+      address2: pulumi.Input.fromValue(map['address2'] as String),
+      balance: pulumi.Input.fromValue(map['balance'] as double),
+      capabilities: pulumi.Input.fromValue(
+        (map['capabilities'] as List).cast<String>(),
+      ),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      company: pulumi.Input.fromValue(map['company'] as String),
+      country: pulumi.Input.fromValue(map['country'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      euuid: pulumi.Input.fromValue(map['euuid'] as String),
+      firstName: pulumi.Input.fromValue(map['firstName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastName: pulumi.Input.fromValue(map['lastName'] as String),
+      phone: pulumi.Input.fromValue(map['phone'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      zip: pulumi.Input.fromValue(map['zip'] as String),
     );
   }
 }
-

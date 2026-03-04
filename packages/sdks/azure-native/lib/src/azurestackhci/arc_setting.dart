@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'arc_connectivity_properties_response.dart';
 import 'arc_setting_args.dart';
-import 'default_extension_details_response.dart';
-import 'per_node_state_response.dart';
 import 'system_data_response.dart';
 
 /// ArcSetting details.
@@ -138,30 +135,43 @@ import 'system_data_response.dart';
 class ArcSetting extends pulumi.CustomResource {
   /// Aggregate state of Arc agent across the nodes in this HCI cluster.
   late final pulumi.Output<String> aggregateState;
+
   /// App id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationClientId;
+
   /// Object id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationObjectId;
+
   /// Tenant id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationTenantId;
+
   /// The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources.
   late final pulumi.Output<String?> arcInstanceResourceGroup;
+
   /// Object id of arc AAD service principal.
   late final pulumi.Output<String?> arcServicePrincipalObjectId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// contains connectivity related configuration for ARC resources
-  late final pulumi.Output<List<ArcConnectivityPropertiesResponse>?> connectivityProperties;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connectivityProperties;
+
   /// Properties for each of the default extensions category
-  late final pulumi.Output<List<DefaultExtensionDetailsResponse>> defaultExtensions;
+  late final pulumi.Output<List<Map<String, dynamic>>> defaultExtensions;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of Arc agent in each of the nodes.
-  late final pulumi.Output<List<PerNodeStateResponse>> perNodeDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> perNodeDetails;
+
   /// Provisioning state of the ArcSetting proxy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -174,24 +184,34 @@ class ArcSetting extends pulumi.CustomResource {
     ArcSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:ArcSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregateState = registerOutput<String>('aggregateState');
-    this.arcApplicationClientId = registerOutput<String?>('arcApplicationClientId');
-    this.arcApplicationObjectId = registerOutput<String?>('arcApplicationObjectId');
-    this.arcApplicationTenantId = registerOutput<String?>('arcApplicationTenantId');
-    this.arcInstanceResourceGroup = registerOutput<String?>('arcInstanceResourceGroup');
-    this.arcServicePrincipalObjectId = registerOutput<String?>('arcServicePrincipalObjectId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectivityProperties = registerOutput<List<ArcConnectivityPropertiesResponse>?>('connectivityProperties');
-    this.defaultExtensions = registerOutput<List<DefaultExtensionDetailsResponse>>('defaultExtensions');
+         'azure-native:azurestackhci:ArcSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregateState = registerOutput<String>('aggregateState');
+    arcApplicationClientId = registerOutput<String?>('arcApplicationClientId');
+    arcApplicationObjectId = registerOutput<String?>('arcApplicationObjectId');
+    arcApplicationTenantId = registerOutput<String?>('arcApplicationTenantId');
+    arcInstanceResourceGroup = registerOutput<String?>(
+      'arcInstanceResourceGroup',
+    );
+    arcServicePrincipalObjectId = registerOutput<String?>(
+      'arcServicePrincipalObjectId',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectivityProperties = registerOutput<List<Map<String, dynamic>>?>(
+      'connectivityProperties',
+    );
+    defaultExtensions = registerOutput<List<Map<String, dynamic>>>(
+      'defaultExtensions',
+    );
     this.name = registerOutput<String>('name');
-    this.perNodeDetails = registerOutput<List<PerNodeStateResponse>>('perNodeDetails');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    perNodeDetails = registerOutput<List<Map<String, dynamic>>>(
+      'perNodeDetails',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,15 +7,27 @@ import 'get_spring_cloud_service_config_server_git_setting_ssh_auth.dart';
 
 class GetSpringCloudServiceConfigServerGitSetting {
   /// A `http_basic_auth` block as defined below.
-  final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>> httpBasicAuths;
+  final pulumi.Input<
+    List<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>
+  >
+  httpBasicAuths;
+
   /// The default label of the Git repository, which is a branch name, tag name, or commit-id of the repository
   final pulumi.Input<String> label;
+
   /// One or more `repository` blocks as defined below.
-  final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingRepository>> repositories;
+  final pulumi.Input<
+    List<GetSpringCloudServiceConfigServerGitSettingRepository>
+  >
+  repositories;
+
   /// An array of strings used to search subdirectories of the Git repository.
   final pulumi.Input<List<String>> searchPaths;
+
   /// A `ssh_auth` block as defined below.
-  final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingSshAuth>> sshAuths;
+  final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingSshAuth>>
+  sshAuths;
+
   /// The URI of the Git repository
   final pulumi.Input<String> uri;
 
@@ -37,24 +49,89 @@ class GetSpringCloudServiceConfigServerGitSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpBasicAuths': pulumi.Input.mapInputValue<List<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>, List<Map<String, dynamic>>>(httpBasicAuths, (value) => pulumi.Input.encodeList<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpBasicAuths':
+          pulumi.Input.mapInputValue<
+            List<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>,
+            List<Map<String, dynamic>>
+          >(
+            httpBasicAuths,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'label': label,
-      'repositories': pulumi.Input.mapInputValue<List<GetSpringCloudServiceConfigServerGitSettingRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<GetSpringCloudServiceConfigServerGitSettingRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositories':
+          pulumi.Input.mapInputValue<
+            List<GetSpringCloudServiceConfigServerGitSettingRepository>,
+            List<Map<String, dynamic>>
+          >(
+            repositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSpringCloudServiceConfigServerGitSettingRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'searchPaths': searchPaths,
-      'sshAuths': pulumi.Input.mapInputValue<List<GetSpringCloudServiceConfigServerGitSettingSshAuth>, List<Map<String, dynamic>>>(sshAuths, (value) => pulumi.Input.encodeList<GetSpringCloudServiceConfigServerGitSettingSshAuth, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sshAuths':
+          pulumi.Input.mapInputValue<
+            List<GetSpringCloudServiceConfigServerGitSettingSshAuth>,
+            List<Map<String, dynamic>>
+          >(
+            sshAuths,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSpringCloudServiceConfigServerGitSettingSshAuth,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'uri': uri,
     };
   }
 
-  factory GetSpringCloudServiceConfigServerGitSetting.fromMap(Map<String, dynamic> map) {
+  factory GetSpringCloudServiceConfigServerGitSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSpringCloudServiceConfigServerGitSetting(
-      httpBasicAuths: (pulumi.Input.decodeList<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>(map['httpBasicAuths'], (value) => GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: (map['label'] as String).input(),
-      repositories: (pulumi.Input.decodeList<GetSpringCloudServiceConfigServerGitSettingRepository>(map['repositories'], (value) => GetSpringCloudServiceConfigServerGitSettingRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searchPaths: ((map['searchPaths'] as List).cast<String>()).input(),
-      sshAuths: (pulumi.Input.decodeList<GetSpringCloudServiceConfigServerGitSettingSshAuth>(map['sshAuths'], (value) => GetSpringCloudServiceConfigServerGitSettingSshAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uri: (map['uri'] as String).input(),
+      httpBasicAuths: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth
+        >(
+          map['httpBasicAuths']!,
+          (value) =>
+              GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      repositories: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetSpringCloudServiceConfigServerGitSettingRepository
+        >(
+          map['repositories']!,
+          (value) =>
+              GetSpringCloudServiceConfigServerGitSettingRepository.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      searchPaths: pulumi.Input.fromValue(
+        (map['searchPaths'] as List).cast<String>(),
+      ),
+      sshAuths: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetSpringCloudServiceConfigServerGitSettingSshAuth
+        >(
+          map['sshAuths']!,
+          (value) => GetSpringCloudServiceConfigServerGitSettingSshAuth.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum EdgeZoneStorageAccountType {
   standardSSDLRS("StandardSSD_LRS"),
   premiumLRS("Premium_LRS");
 
-  const EdgeZoneStorageAccountType(this.value);
-  final String value;
+  const EdgeZoneStorageAccountType(this.wireValue);
+  final String wireValue;
 
   static EdgeZoneStorageAccountType fromValue(String value) {
     for (final item in EdgeZoneStorageAccountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EdgeZoneStorageAccountType value: $value');
   }
 }
-

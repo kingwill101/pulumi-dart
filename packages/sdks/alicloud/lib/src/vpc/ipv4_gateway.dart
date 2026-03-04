@@ -6,7 +6,7 @@ import 'ipv4_gateway_state.dart';
 ///
 /// For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 ///
-/// > **NOTE:** Available since v1.181.0.
+/// &gt; **NOTE:** Available since v1.181.0.
 ///
 /// ## Example Usage
 ///
@@ -220,26 +220,37 @@ import 'ipv4_gateway_state.dart';
 class Ipv4Gateway extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
   late final pulumi.Output<bool?> dryRun;
+
   /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
   late final pulumi.Output<bool> enabled;
+
   /// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
   late final pulumi.Output<String?> internetMode;
+
   /// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
   late final pulumi.Output<String?> ipv4GatewayDescription;
+
   /// Resource primary key field.
   late final pulumi.Output<String> ipv4GatewayId;
+
   /// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> ipv4GatewayName;
+
   /// ID of the route table associated with IPv4 Gateway
   late final pulumi.Output<String> ipv4GatewayRouteTableId;
+
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The tags of the current resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -252,23 +263,23 @@ class Ipv4Gateway extends pulumi.CustomResource {
     Ipv4GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.enabled = registerOutput<bool>('enabled');
-    this.internetMode = registerOutput<String?>('internetMode');
-    this.ipv4GatewayDescription = registerOutput<String?>('ipv4GatewayDescription');
-    this.ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
-    this.ipv4GatewayName = registerOutput<String?>('ipv4GatewayName');
-    this.ipv4GatewayRouteTableId = registerOutput<String>('ipv4GatewayRouteTableId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    enabled = registerOutput<bool>('enabled');
+    internetMode = registerOutput<String?>('internetMode');
+    ipv4GatewayDescription = registerOutput<String?>('ipv4GatewayDescription');
+    ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
+    ipv4GatewayName = registerOutput<String?>('ipv4GatewayName');
+    ipv4GatewayRouteTableId = registerOutput<String>('ipv4GatewayRouteTableId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [Ipv4Gateway] resource's state with the given [name] and [id].
@@ -289,22 +300,22 @@ class Ipv4Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.enabled = registerOutput<bool>('enabled');
-    this.internetMode = registerOutput<String?>('internetMode');
-    this.ipv4GatewayDescription = registerOutput<String?>('ipv4GatewayDescription');
-    this.ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
-    this.ipv4GatewayName = registerOutput<String?>('ipv4GatewayName');
-    this.ipv4GatewayRouteTableId = registerOutput<String>('ipv4GatewayRouteTableId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    enabled = registerOutput<bool>('enabled');
+    internetMode = registerOutput<String?>('internetMode');
+    ipv4GatewayDescription = registerOutput<String?>('ipv4GatewayDescription');
+    ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
+    ipv4GatewayName = registerOutput<String?>('ipv4GatewayName');
+    ipv4GatewayRouteTableId = registerOutput<String>('ipv4GatewayRouteTableId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

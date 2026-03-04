@@ -11,16 +11,15 @@ enum AmiType {
   bottlerocketArm64Nvidia("BOTTLEROCKET_ARM_64_NVIDIA"),
   bottlerocketX8664Nvidia("BOTTLEROCKET_x86_64_NVIDIA");
 
-  const AmiType(this.value);
-  final String value;
+  const AmiType(this.wireValue);
+  final String wireValue;
 
   static AmiType fromValue(String value) {
     for (final item in AmiType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AmiType value: $value');
   }
 }
-

@@ -122,20 +122,28 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// ARN of the appstream user.
   late final pulumi.Output<String> arn;
+
   /// Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
   late final pulumi.Output<String> authenticationType;
+
   /// Date and time, in UTC and extended RFC 3339 format, when the user was created.
   late final pulumi.Output<String> createdTime;
+
   /// Whether the user in the user pool is enabled.
   late final pulumi.Output<bool?> enabled;
+
   /// First name, or given name, of the user.
   late final pulumi.Output<String?> firstName;
+
   /// Last name, or surname, of the user.
   late final pulumi.Output<String?> lastName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Send an email notification.
   late final pulumi.Output<bool?> sendEmailNotification;
+
   /// Email address of the user.
   ///
   /// The following arguments are optional:
@@ -145,33 +153,26 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_appstream_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:appstream/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.firstName = registerOutput<String?>('firstName');
-    this.lastName = registerOutput<String?>('lastName');
-    this.region = registerOutput<String>('region');
-    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
-    this.userName = registerOutput<String>('userName');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:appstream/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    createdTime = registerOutput<String>('createdTime');
+    enabled = registerOutput<bool?>('enabled');
+    firstName = registerOutput<String?>('firstName');
+    lastName = registerOutput<String?>('lastName');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -184,19 +185,19 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appstream/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.firstName = registerOutput<String?>('firstName');
-    this.lastName = registerOutput<String?>('lastName');
-    this.region = registerOutput<String>('region');
-    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
-    this.userName = registerOutput<String>('userName');
+         'aws:appstream/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    createdTime = registerOutput<String>('createdTime');
+    enabled = registerOutput<bool?>('enabled');
+    firstName = registerOutput<String?>('firstName');
+    lastName = registerOutput<String?>('lastName');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    userName = registerOutput<String>('userName');
   }
 }

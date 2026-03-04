@@ -28,9 +28,10 @@ class GetAutonomousDatabaseBackupArgs {
 
   factory GetAutonomousDatabaseBackupArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseBackupArgs(
-      autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
-      name: (map['name'] as String).input(),
+      autonomousDatabaseId: pulumi.Input.fromValue(
+        map['autonomousDatabaseId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

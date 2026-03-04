@@ -6,6 +6,7 @@ class SiteDeliveryTaskOssDelivery {
   final pulumi.Input<String>? aliuid;
   final pulumi.Input<String>? bucketName;
   final pulumi.Input<String>? prefixPath;
+
   /// The region ID of the service.
   final pulumi.Input<String>? region;
 
@@ -32,11 +33,26 @@ class SiteDeliveryTaskOssDelivery {
 
   factory SiteDeliveryTaskOssDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskOssDelivery(
-      aliuid: map['aliuid'] == null ? null : (map['aliuid']! as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
-      prefixPath: map['prefixPath'] == null ? null : (map['prefixPath']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      aliuid: (() {
+        final guardedValue = map['aliuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixPath: (() {
+        final guardedValue = map['prefixPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

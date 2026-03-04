@@ -1,5 +1,3 @@
-library module_costmanagement;
-
 export 'costmanagement/accumulated_type.dart';
 export 'costmanagement/budget.dart';
 export 'costmanagement/budget_args.dart';

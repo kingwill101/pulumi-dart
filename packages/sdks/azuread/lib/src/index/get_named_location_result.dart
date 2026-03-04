@@ -8,6 +8,7 @@ import 'get_named_location_ip.dart';
 class GetNamedLocationResult {
   final List<GetNamedLocationCountry> countries;
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetNamedLocationIp> ips;
@@ -29,22 +30,37 @@ class GetNamedLocationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'countries': pulumi.Input.encodeList<GetNamedLocationCountry, Map<String, dynamic>>(countries, (value) => value.toMap()),
+      'countries':
+          pulumi.Input.encodeList<
+            GetNamedLocationCountry,
+            Map<String, dynamic>
+          >(countries, (value) => value.toMap()),
       'displayName': displayName,
       'id': id,
-      'ips': pulumi.Input.encodeList<GetNamedLocationIp, Map<String, dynamic>>(ips, (value) => value.toMap()),
+      'ips': pulumi.Input.encodeList<GetNamedLocationIp, Map<String, dynamic>>(
+        ips,
+        (value) => value.toMap(),
+      ),
       'objectId': objectId,
     };
   }
 
   factory GetNamedLocationResult.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationResult(
-      countries: pulumi.Input.decodeList<GetNamedLocationCountry>(map['countries'], (value) => GetNamedLocationCountry.fromMap((value as Map).cast<String, dynamic>())),
+      countries: pulumi.Input.decodeList<GetNamedLocationCountry>(
+        map['countries']!,
+        (value) => GetNamedLocationCountry.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      ips: pulumi.Input.decodeList<GetNamedLocationIp>(map['ips'], (value) => GetNamedLocationIp.fromMap((value as Map).cast<String, dynamic>())),
+      ips: pulumi.Input.decodeList<GetNamedLocationIp>(
+        map['ips']!,
+        (value) =>
+            GetNamedLocationIp.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       objectId: map['objectId'] as String,
     );
   }
 }
-

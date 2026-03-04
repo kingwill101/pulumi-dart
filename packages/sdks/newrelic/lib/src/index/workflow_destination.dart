@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowDestination {
   /// (Required) Destination's channel id.
   final pulumi.Input<String> channelId;
+
   /// The name of the workflow.
   final pulumi.Input<String>? name;
+
   /// List of triggers to notify about in this destination configuration.
   final pulumi.Input<List<String>>? notificationTriggers;
+
   /// (Required) The type of the destination. One of: (EMAIL, EVENT_BRIDGE, PAGERDUTY_ACCOUNT_INTEGRATION, PAGERDUTY_SERVICE_INTEGRATION, SERVICE_NOW, SERVICE_NOW_APP, WEBHOOK, MOBILE_PUSH, SLACK, JIRA, MICROSOFT_TEAMS, WORKFLOW_AUTOMATION).
   final pulumi.Input<String>? type;
+
   /// Update original notification message (Slack channels only)
   final pulumi.Input<bool>? updateOriginalMessage;
 
@@ -40,12 +44,27 @@ class WorkflowDestination {
 
   factory WorkflowDestination.fromMap(Map<String, dynamic> map) {
     return WorkflowDestination(
-      channelId: (map['channelId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notificationTriggers: map['notificationTriggers'] == null ? null : ((map['notificationTriggers']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      updateOriginalMessage: map['updateOriginalMessage'] == null ? null : (map['updateOriginalMessage']! as bool).input(),
+      channelId: pulumi.Input.fromValue(map['channelId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationTriggers: (() {
+        final guardedValue = map['notificationTriggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateOriginalMessage: (() {
+        final guardedValue = map['updateOriginalMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

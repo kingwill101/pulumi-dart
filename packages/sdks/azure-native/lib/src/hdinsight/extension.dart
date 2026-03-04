@@ -146,8 +146,10 @@ import 'extension_args.dart';
 class Extension extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The status of the monitor on the HDInsight cluster.
   late final pulumi.Output<bool?> clusterMonitoringEnabled;
+
   /// The workspace ID of the monitor on the HDInsight cluster.
   late final pulumi.Output<String?> workspaceId;
 
@@ -160,13 +162,15 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hdinsight:Extension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
-    this.workspaceId = registerOutput<String?>('workspaceId');
+         'azure-native:hdinsight:Extension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterMonitoringEnabled = registerOutput<bool?>(
+      'clusterMonitoringEnabled',
+    );
+    workspaceId = registerOutput<String?>('workspaceId');
   }
 }

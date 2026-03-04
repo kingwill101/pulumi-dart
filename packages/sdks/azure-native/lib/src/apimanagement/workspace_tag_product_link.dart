@@ -152,10 +152,13 @@ import 'workspace_tag_product_link_args.dart';
 class WorkspaceTagProductLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Full resource Id of a product.
   late final pulumi.Output<String> productId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -168,14 +171,14 @@ class WorkspaceTagProductLink extends pulumi.CustomResource {
     WorkspaceTagProductLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceTagProductLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:WorkspaceTagProductLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.productId = registerOutput<String>('productId');
-    this.type = registerOutput<String>('type');
+    productId = registerOutput<String>('productId');
+    type = registerOutput<String>('type');
   }
 }

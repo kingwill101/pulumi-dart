@@ -10,23 +10,35 @@ class AppLogsConfiguration {
   /// Creates a new [AppLogsConfiguration].
   /// [destination] Optional.
   /// [logAnalyticsConfiguration] Optional.
-  AppLogsConfiguration({
-    this.destination,
-    this.logAnalyticsConfiguration,
-  });
+  AppLogsConfiguration({this.destination, this.logAnalyticsConfiguration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destination': ?destination,
-      'logAnalyticsConfiguration': ?pulumi.Input.mapOptionalInputValue<LogAnalyticsConfiguration, Map<String, dynamic>>(logAnalyticsConfiguration, (value) => value.toMap()),
+      'logAnalyticsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogAnalyticsConfiguration,
+            Map<String, dynamic>
+          >(logAnalyticsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AppLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return AppLogsConfiguration(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      logAnalyticsConfiguration: map['logAnalyticsConfiguration'] == null ? null : (LogAnalyticsConfiguration.fromMap((map['logAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logAnalyticsConfiguration: (() {
+        final guardedValue = map['logAnalyticsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogAnalyticsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

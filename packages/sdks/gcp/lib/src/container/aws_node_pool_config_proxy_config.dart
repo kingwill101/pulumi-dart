@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsNodePoolConfigProxyConfig {
   /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final pulumi.Input<String> secretArn;
+
   /// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final pulumi.Input<String> secretVersion;
 
@@ -25,9 +26,8 @@ class AwsNodePoolConfigProxyConfig {
 
   factory AwsNodePoolConfigProxyConfig.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigProxyConfig(
-      secretArn: (map['secretArn'] as String).input(),
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

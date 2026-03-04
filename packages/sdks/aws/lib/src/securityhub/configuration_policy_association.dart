@@ -4,7 +4,7 @@ import 'configuration_policy_association_state.dart';
 
 /// Manages Security Hub configuration policy associations.
 ///
-/// > **NOTE:** This resource requires `aws.securityhub.OrganizationConfiguration` to be configured with type `CENTRAL`. More information about Security Hub central configuration and configuration policies can be found in the [How Security Hub configuration policies work](https://docs.aws.amazon.com/securityhub/latest/userguide/configuration-policies-overview.html) documentation.
+/// &gt; **NOTE:** This resource requires `aws.securityhub.OrganizationConfiguration` to be configured with type `CENTRAL`. More information about Security Hub central configuration and configuration policies can be found in the [How Security Hub configuration policies work](https://docs.aws.amazon.com/securityhub/latest/userguide/configuration-policies-overview.html) documentation.
 ///
 /// ## Example Usage
 ///
@@ -377,8 +377,10 @@ import 'configuration_policy_association_state.dart';
 class ConfigurationPolicyAssociation extends pulumi.CustomResource {
   /// The universally unique identifier (UUID) of the configuration policy.
   late final pulumi.Output<String> policyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
   late final pulumi.Output<String> targetId;
 
@@ -391,14 +393,14 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
     ConfigurationPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.region = registerOutput<String>('region');
-    this.targetId = registerOutput<String>('targetId');
+         'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
   }
 
   /// Gets an existing [ConfigurationPolicyAssociation] resource's state with the given [name] and [id].
@@ -419,13 +421,13 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.region = registerOutput<String>('region');
-    this.targetId = registerOutput<String>('targetId');
+         'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
   }
 }

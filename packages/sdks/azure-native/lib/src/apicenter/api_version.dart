@@ -159,14 +159,19 @@ import 'system_data_response.dart';
 class ApiVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current lifecycle stage of the API.
   late final pulumi.Output<String> lifecycleStage;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// API version title.
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,16 +184,16 @@ class ApiVersion extends pulumi.CustomResource {
     ApiVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apicenter:ApiVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.lifecycleStage = registerOutput<String>('lifecycleStage');
+         'azure-native:apicenter:ApiVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lifecycleStage = registerOutput<String>('lifecycleStage');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

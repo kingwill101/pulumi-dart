@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointConnectionAccepterState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// AWS VPC Endpoint ID.
   final pulumi.Input<String>? vpcEndpointId;
+
   /// AWS VPC Endpoint Service ID.
   final pulumi.Input<String>? vpcEndpointServiceId;
+
   /// State of the VPC Endpoint.
   final pulumi.Input<String>? vpcEndpointState;
 
@@ -36,11 +39,26 @@ class VpcEndpointConnectionAccepterState {
 
   factory VpcEndpointConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
-      vpcEndpointState: map['vpcEndpointState'] == null ? null : ((map['vpcEndpointState'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointId: (() {
+        final guardedValue = map['vpcEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointServiceId: (() {
+        final guardedValue = map['vpcEndpointServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointState: (() {
+        final guardedValue = map['vpcEndpointState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

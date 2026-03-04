@@ -8,16 +8,15 @@ enum AzureFunctionActivityMethod {
   valueHEAD("HEAD"),
   valueTRACE("TRACE");
 
-  const AzureFunctionActivityMethod(this.value);
-  final String value;
+  const AzureFunctionActivityMethod(this.wireValue);
+  final String wireValue;
 
   static AzureFunctionActivityMethod fromValue(String value) {
     for (final item in AzureFunctionActivityMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureFunctionActivityMethod value: $value');
   }
 }
-

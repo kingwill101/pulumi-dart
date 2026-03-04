@@ -4,16 +4,15 @@ enum SecurityPostureConfigMode {
   disabled("DISABLED"),
   basic("BASIC");
 
-  const SecurityPostureConfigMode(this.value);
-  final String value;
+  const SecurityPostureConfigMode(this.wireValue);
+  final String wireValue;
 
   static SecurityPostureConfigMode fromValue(String value) {
     for (final item in SecurityPostureConfigMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityPostureConfigMode value: $value');
   }
 }
-

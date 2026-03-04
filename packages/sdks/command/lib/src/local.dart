@@ -1,5 +1,3 @@
-library module_local;
-
 export 'local/command.dart';
 export 'local/command_args.dart';
 export 'local/functions.dart';

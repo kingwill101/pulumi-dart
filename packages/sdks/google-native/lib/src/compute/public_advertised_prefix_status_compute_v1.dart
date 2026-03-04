@@ -10,16 +10,17 @@ enum PublicAdvertisedPrefixStatusComputeV1 {
   reverseDnsLookupFailed("REVERSE_DNS_LOOKUP_FAILED"),
   validated("VALIDATED");
 
-  const PublicAdvertisedPrefixStatusComputeV1(this.value);
-  final String value;
+  const PublicAdvertisedPrefixStatusComputeV1(this.wireValue);
+  final String wireValue;
 
   static PublicAdvertisedPrefixStatusComputeV1 fromValue(String value) {
     for (final item in PublicAdvertisedPrefixStatusComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PublicAdvertisedPrefixStatusComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown PublicAdvertisedPrefixStatusComputeV1 value: $value',
+    );
   }
 }
-

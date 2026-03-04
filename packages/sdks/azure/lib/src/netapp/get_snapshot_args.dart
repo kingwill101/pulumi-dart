@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotArgs {
   /// The name of the NetApp Account where the NetApp Pool exists.
   final pulumi.Input<String> accountName;
+
   /// The name of the NetApp Snapshot.
   final pulumi.Input<String> name;
+
   /// The name of the NetApp Pool where the NetApp Volume exists.
   final pulumi.Input<String> poolName;
+
   /// The Name of the Resource Group where the NetApp Snapshot exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the NetApp Volume where the NetApp Snapshot exists.
   final pulumi.Input<String> volumeName;
 
@@ -44,12 +48,13 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      accountName: (map['accountName'] as String).input(),
-      name: (map['name'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

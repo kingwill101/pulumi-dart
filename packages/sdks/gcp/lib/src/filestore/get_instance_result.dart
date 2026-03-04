@@ -19,6 +19,7 @@ class GetInstanceResult {
   final List<GetInstanceEffectiveReplication> effectiveReplications;
   final String etag;
   final List<GetInstanceFileShare> fileShares;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetInstanceInitialReplication> initialReplications;
@@ -91,19 +92,43 @@ class GetInstanceResult {
       'deletionProtectionEnabled': deletionProtectionEnabled,
       'deletionProtectionReason': deletionProtectionReason,
       'description': description,
-      'directoryServices': pulumi.Input.encodeList<GetInstanceDirectoryService, Map<String, dynamic>>(directoryServices, (value) => value.toMap()),
+      'directoryServices':
+          pulumi.Input.encodeList<
+            GetInstanceDirectoryService,
+            Map<String, dynamic>
+          >(directoryServices, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
-      'effectiveReplications': pulumi.Input.encodeList<GetInstanceEffectiveReplication, Map<String, dynamic>>(effectiveReplications, (value) => value.toMap()),
+      'effectiveReplications':
+          pulumi.Input.encodeList<
+            GetInstanceEffectiveReplication,
+            Map<String, dynamic>
+          >(effectiveReplications, (value) => value.toMap()),
       'etag': etag,
-      'fileShares': pulumi.Input.encodeList<GetInstanceFileShare, Map<String, dynamic>>(fileShares, (value) => value.toMap()),
+      'fileShares':
+          pulumi.Input.encodeList<GetInstanceFileShare, Map<String, dynamic>>(
+            fileShares,
+            (value) => value.toMap(),
+          ),
       'id': id,
-      'initialReplications': pulumi.Input.encodeList<GetInstanceInitialReplication, Map<String, dynamic>>(initialReplications, (value) => value.toMap()),
+      'initialReplications':
+          pulumi.Input.encodeList<
+            GetInstanceInitialReplication,
+            Map<String, dynamic>
+          >(initialReplications, (value) => value.toMap()),
       'kmsKeyName': kmsKeyName,
       'labels': labels,
       'location': ?location,
       'name': name,
-      'networks': pulumi.Input.encodeList<GetInstanceNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
-      'performanceConfigs': pulumi.Input.encodeList<GetInstancePerformanceConfig, Map<String, dynamic>>(performanceConfigs, (value) => value.toMap()),
+      'networks':
+          pulumi.Input.encodeList<GetInstanceNetwork, Map<String, dynamic>>(
+            networks,
+            (value) => value.toMap(),
+          ),
+      'performanceConfigs':
+          pulumi.Input.encodeList<
+            GetInstancePerformanceConfig,
+            Map<String, dynamic>
+          >(performanceConfigs, (value) => value.toMap()),
       'project': ?project,
       'protocol': protocol,
       'pulumiLabels': pulumiLabels,
@@ -119,20 +144,59 @@ class GetInstanceResult {
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
       deletionProtectionReason: map['deletionProtectionReason'] as String,
       description: map['description'] as String,
-      directoryServices: pulumi.Input.decodeList<GetInstanceDirectoryService>(map['directoryServices'], (value) => GetInstanceDirectoryService.fromMap((value as Map).cast<String, dynamic>())),
+      directoryServices: pulumi.Input.decodeList<GetInstanceDirectoryService>(
+        map['directoryServices']!,
+        (value) => GetInstanceDirectoryService.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      effectiveReplications: pulumi.Input.decodeList<GetInstanceEffectiveReplication>(map['effectiveReplications'], (value) => GetInstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())),
+      effectiveReplications:
+          pulumi.Input.decodeList<GetInstanceEffectiveReplication>(
+            map['effectiveReplications']!,
+            (value) => GetInstanceEffectiveReplication.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       etag: map['etag'] as String,
-      fileShares: pulumi.Input.decodeList<GetInstanceFileShare>(map['fileShares'], (value) => GetInstanceFileShare.fromMap((value as Map).cast<String, dynamic>())),
+      fileShares: pulumi.Input.decodeList<GetInstanceFileShare>(
+        map['fileShares']!,
+        (value) => GetInstanceFileShare.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      initialReplications: pulumi.Input.decodeList<GetInstanceInitialReplication>(map['initialReplications'], (value) => GetInstanceInitialReplication.fromMap((value as Map).cast<String, dynamic>())),
+      initialReplications:
+          pulumi.Input.decodeList<GetInstanceInitialReplication>(
+            map['initialReplications']!,
+            (value) => GetInstanceInitialReplication.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      networks: pulumi.Input.decodeList<GetInstanceNetwork>(map['networks'], (value) => GetInstanceNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      performanceConfigs: pulumi.Input.decodeList<GetInstancePerformanceConfig>(map['performanceConfigs'], (value) => GetInstancePerformanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project']! as String,
+      networks: pulumi.Input.decodeList<GetInstanceNetwork>(
+        map['networks']!,
+        (value) =>
+            GetInstanceNetwork.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      performanceConfigs: pulumi.Input.decodeList<GetInstancePerformanceConfig>(
+        map['performanceConfigs']!,
+        (value) => GetInstancePerformanceConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       protocol: map['protocol'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -141,4 +205,3 @@ class GetInstanceResult {
     );
   }
 }
-

@@ -11,16 +11,15 @@ enum PolicyFactName {
   environmentTemplate("EnvironmentTemplate"),
   scheduleEditPermission("ScheduleEditPermission");
 
-  const PolicyFactName(this.value);
-  final String value;
+  const PolicyFactName(this.wireValue);
+  final String wireValue;
 
   static PolicyFactName fromValue(String value) {
     for (final item in PolicyFactName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyFactName value: $value');
   }
 }
-

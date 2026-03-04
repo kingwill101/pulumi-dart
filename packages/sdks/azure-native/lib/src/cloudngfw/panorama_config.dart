@@ -9,20 +9,15 @@ class PanoramaConfig {
 
   /// Creates a new [PanoramaConfig].
   /// [configString] Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
-  PanoramaConfig({
-    required this.configString,
-  });
+  PanoramaConfig({required this.configString});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configString': configString,
-    };
+    return <String, dynamic>{'configString': configString};
   }
 
   factory PanoramaConfig.fromMap(Map<String, dynamic> map) {
     return PanoramaConfig(
-      configString: (map['configString'] as String).input(),
+      configString: pulumi.Input.fromValue(map['configString'] as String),
     );
   }
 }
-

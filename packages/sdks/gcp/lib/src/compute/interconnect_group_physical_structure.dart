@@ -13,20 +13,39 @@ class InterconnectGroupPhysicalStructure {
 
   /// Creates a new [InterconnectGroupPhysicalStructure].
   /// [metros] (Output)
-  InterconnectGroupPhysicalStructure({
-    this.metros,
-  });
+  InterconnectGroupPhysicalStructure({this.metros});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metros': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupPhysicalStructureMetro>, List<Map<String, dynamic>>>(metros, (value) => pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetro, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metros':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InterconnectGroupPhysicalStructureMetro>,
+            List<Map<String, dynamic>>
+          >(
+            metros,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InterconnectGroupPhysicalStructureMetro,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory InterconnectGroupPhysicalStructure.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructure(
-      metros: map['metros'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetro>(map['metros']!, (value) => InterconnectGroupPhysicalStructureMetro.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metros: (() {
+        final guardedValue = map['metros'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetro>(
+            guardedValue,
+            (value) => InterconnectGroupPhysicalStructureMetro.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

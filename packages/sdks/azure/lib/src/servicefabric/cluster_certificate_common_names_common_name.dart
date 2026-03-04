@@ -5,9 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterCertificateCommonNamesCommonName {
   /// The common or subject name of the certificate.
   final pulumi.Input<String> certificateCommonName;
+
   /// The Issuer Thumbprint of the Certificate.
   ///
-  /// > **Note:** Certificate Issuer Thumbprint may become required in the future, `https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn#download-and-update-a-sample-template`.
+  /// &gt; **Note:** Certificate Issuer Thumbprint may become required in the future, `https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn#download-and-update-a-sample-template`.
   final pulumi.Input<String>? certificateIssuerThumbprint;
 
   /// Creates a new [ClusterCertificateCommonNamesCommonName].
@@ -25,11 +26,18 @@ class ClusterCertificateCommonNamesCommonName {
     };
   }
 
-  factory ClusterCertificateCommonNamesCommonName.fromMap(Map<String, dynamic> map) {
+  factory ClusterCertificateCommonNamesCommonName.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterCertificateCommonNamesCommonName(
-      certificateCommonName: (map['certificateCommonName'] as String).input(),
-      certificateIssuerThumbprint: map['certificateIssuerThumbprint'] == null ? null : (map['certificateIssuerThumbprint']! as String).input(),
+      certificateCommonName: pulumi.Input.fromValue(
+        map['certificateCommonName'] as String,
+      ),
+      certificateIssuerThumbprint: (() {
+        final guardedValue = map['certificateIssuerThumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

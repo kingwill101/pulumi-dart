@@ -9,20 +9,13 @@ class AlertChart {
 
   /// Creates a new [AlertChart].
   /// [name] The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  AlertChart({
-    required this.name,
-  });
+  AlertChart({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory AlertChart.fromMap(Map<String, dynamic> map) {
-    return AlertChart(
-      name: (map['name'] as String).input(),
-    );
+    return AlertChart(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

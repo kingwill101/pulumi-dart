@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedInstanceKeyArgs {
   /// The name of the managed instance key to be retrieved.
   final pulumi.Input<String> keyName;
+
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetManagedInstanceKeyArgs {
 
   factory GetManagedInstanceKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceKeyArgs(
-      keyName: (map['keyName'] as String).input(),
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

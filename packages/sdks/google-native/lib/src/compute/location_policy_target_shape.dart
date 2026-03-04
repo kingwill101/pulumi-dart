@@ -4,16 +4,15 @@ enum LocationPolicyTargetShape {
   anySingleZone("ANY_SINGLE_ZONE"),
   balanced("BALANCED");
 
-  const LocationPolicyTargetShape(this.value);
-  final String value;
+  const LocationPolicyTargetShape(this.wireValue);
+  final String wireValue;
 
   static LocationPolicyTargetShape fromValue(String value) {
     for (final item in LocationPolicyTargetShape.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocationPolicyTargetShape value: $value');
   }
 }
-

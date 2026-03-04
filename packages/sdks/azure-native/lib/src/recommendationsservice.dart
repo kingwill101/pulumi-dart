@@ -1,5 +1,3 @@
-library module_recommendationsservice;
-
 export 'recommendationsservice/account.dart';
 export 'recommendationsservice/account_args.dart';
 export 'recommendationsservice/account_configuration.dart';

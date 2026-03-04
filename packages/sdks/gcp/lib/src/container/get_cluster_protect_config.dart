@@ -5,7 +5,9 @@ import 'get_cluster_protect_config_workload_config.dart';
 
 class GetClusterProtectConfig {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
-  final pulumi.Input<List<GetClusterProtectConfigWorkloadConfig>> workloadConfigs;
+  final pulumi.Input<List<GetClusterProtectConfigWorkloadConfig>>
+  workloadConfigs;
+
   /// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
   final pulumi.Input<String> workloadVulnerabilityMode;
 
@@ -19,16 +21,35 @@ class GetClusterProtectConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workloadConfigs': pulumi.Input.mapInputValue<List<GetClusterProtectConfigWorkloadConfig>, List<Map<String, dynamic>>>(workloadConfigs, (value) => pulumi.Input.encodeList<GetClusterProtectConfigWorkloadConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workloadConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetClusterProtectConfigWorkloadConfig>,
+            List<Map<String, dynamic>>
+          >(
+            workloadConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterProtectConfigWorkloadConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'workloadVulnerabilityMode': workloadVulnerabilityMode,
     };
   }
 
   factory GetClusterProtectConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterProtectConfig(
-      workloadConfigs: (pulumi.Input.decodeList<GetClusterProtectConfigWorkloadConfig>(map['workloadConfigs'], (value) => GetClusterProtectConfigWorkloadConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workloadVulnerabilityMode: (map['workloadVulnerabilityMode'] as String).input(),
+      workloadConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClusterProtectConfigWorkloadConfig>(
+          map['workloadConfigs']!,
+          (value) => GetClusterProtectConfigWorkloadConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      workloadVulnerabilityMode: pulumi.Input.fromValue(
+        map['workloadVulnerabilityMode'] as String,
+      ),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'migration_job_state.dart';
 ///
 /// For information about DTS Migration Job and how to use it, see [What is Migration Job](https://www.alibabacloud.com/help/en/doc-detail/208399.html).
 ///
-/// > **NOTE:** Available since v1.157.0.
+/// &gt; **NOTE:** Available since v1.157.0.
 ///
 /// ## Example Usage
 ///
@@ -871,64 +871,94 @@ import 'migration_job_state.dart';
 class MigrationJob extends pulumi.CustomResource {
   /// Start time in Unix timestamp format.
   late final pulumi.Output<String> checkpoint;
+
   /// Whether to execute DTS supports schema migration.
   late final pulumi.Output<bool> dataInitialization;
+
   /// Whether to perform incremental data migration.
   late final pulumi.Output<bool> dataSynchronization;
+
   /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
   late final pulumi.Output<String> dbList;
+
   /// The name of migrate the database.
   late final pulumi.Output<String?> destinationEndpointDatabaseName;
+
   /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
   late final pulumi.Output<String> destinationEndpointEngineName;
+
   /// The ID of destination instance.
   late final pulumi.Output<String?> destinationEndpointInstanceId;
+
   /// The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
   late final pulumi.Output<String> destinationEndpointInstanceType;
+
   /// The ip of source endpoint.
   late final pulumi.Output<String?> destinationEndpointIp;
+
   /// The SID of Oracle database.
   late final pulumi.Output<String?> destinationEndpointOracleSid;
+
   /// The password of database account.
   late final pulumi.Output<String?> destinationEndpointPassword;
+
   /// The port of source endpoint.
   late final pulumi.Output<String?> destinationEndpointPort;
+
   /// The region of destination instance.
   late final pulumi.Output<String?> destinationEndpointRegion;
+
   /// The username of database account.
   late final pulumi.Output<String?> destinationEndpointUserName;
+
   /// The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
   late final pulumi.Output<String> dtsInstanceId;
+
   /// The name of migration job.
   late final pulumi.Output<String> dtsJobName;
+
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
   late final pulumi.Output<String> instanceClass;
+
   /// The name of migrate the database.
   late final pulumi.Output<String?> sourceEndpointDatabaseName;
+
   /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
   late final pulumi.Output<String> sourceEndpointEngineName;
+
   /// The ID of source instance.
   late final pulumi.Output<String?> sourceEndpointInstanceId;
+
   /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
   late final pulumi.Output<String> sourceEndpointInstanceType;
+
   /// The ip of source endpoint.
   late final pulumi.Output<String?> sourceEndpointIp;
+
   /// The SID of Oracle database.
   late final pulumi.Output<String?> sourceEndpointOracleSid;
+
   /// The Alibaba Cloud account ID to which the source instance belongs.
   late final pulumi.Output<String?> sourceEndpointOwnerId;
+
   /// The password of database account.
   late final pulumi.Output<String?> sourceEndpointPassword;
+
   /// The port of source endpoint.
   late final pulumi.Output<String?> sourceEndpointPort;
+
   /// The region of source instance.
   late final pulumi.Output<String?> sourceEndpointRegion;
+
   /// The name of the role configured for the cloud account to which the source instance belongs.
   late final pulumi.Output<String?> sourceEndpointRole;
+
   /// The username of database account.
   late final pulumi.Output<String?> sourceEndpointUserName;
+
   /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
   late final pulumi.Output<String> status;
+
   /// Whether to perform a database table structure to migrate.
   late final pulumi.Output<bool> structureInitialization;
 
@@ -941,42 +971,70 @@ class MigrationJob extends pulumi.CustomResource {
     MigrationJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/migrationJob:MigrationJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkpoint = registerOutput<String>('checkpoint');
-    this.dataInitialization = registerOutput<bool>('dataInitialization');
-    this.dataSynchronization = registerOutput<bool>('dataSynchronization');
-    this.dbList = registerOutput<String>('dbList');
-    this.destinationEndpointDatabaseName = registerOutput<String?>('destinationEndpointDatabaseName');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationEndpointInstanceId = registerOutput<String?>('destinationEndpointInstanceId');
-    this.destinationEndpointInstanceType = registerOutput<String>('destinationEndpointInstanceType');
-    this.destinationEndpointIp = registerOutput<String?>('destinationEndpointIp');
-    this.destinationEndpointOracleSid = registerOutput<String?>('destinationEndpointOracleSid');
-    this.destinationEndpointPassword = registerOutput<String?>('destinationEndpointPassword');
-    this.destinationEndpointPort = registerOutput<String?>('destinationEndpointPort');
-    this.destinationEndpointRegion = registerOutput<String?>('destinationEndpointRegion');
-    this.destinationEndpointUserName = registerOutput<String?>('destinationEndpointUserName');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.dtsJobName = registerOutput<String>('dtsJobName');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.sourceEndpointDatabaseName = registerOutput<String?>('sourceEndpointDatabaseName');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointInstanceId = registerOutput<String?>('sourceEndpointInstanceId');
-    this.sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
-    this.sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    this.sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
-    this.sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
-    this.sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
-    this.sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
-    this.sourceEndpointRegion = registerOutput<String?>('sourceEndpointRegion');
-    this.sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
-    this.sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
-    this.status = registerOutput<String>('status');
-    this.structureInitialization = registerOutput<bool>('structureInitialization');
+         'alicloud:dts/migrationJob:MigrationJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkpoint = registerOutput<String>('checkpoint');
+    dataInitialization = registerOutput<bool>('dataInitialization');
+    dataSynchronization = registerOutput<bool>('dataSynchronization');
+    dbList = registerOutput<String>('dbList');
+    destinationEndpointDatabaseName = registerOutput<String?>(
+      'destinationEndpointDatabaseName',
+    );
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationEndpointInstanceId = registerOutput<String?>(
+      'destinationEndpointInstanceId',
+    );
+    destinationEndpointInstanceType = registerOutput<String>(
+      'destinationEndpointInstanceType',
+    );
+    destinationEndpointIp = registerOutput<String?>('destinationEndpointIp');
+    destinationEndpointOracleSid = registerOutput<String?>(
+      'destinationEndpointOracleSid',
+    );
+    destinationEndpointPassword = registerOutput<String?>(
+      'destinationEndpointPassword',
+    );
+    destinationEndpointPort = registerOutput<String?>(
+      'destinationEndpointPort',
+    );
+    destinationEndpointRegion = registerOutput<String?>(
+      'destinationEndpointRegion',
+    );
+    destinationEndpointUserName = registerOutput<String?>(
+      'destinationEndpointUserName',
+    );
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    dtsJobName = registerOutput<String>('dtsJobName');
+    instanceClass = registerOutput<String>('instanceClass');
+    sourceEndpointDatabaseName = registerOutput<String?>(
+      'sourceEndpointDatabaseName',
+    );
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointInstanceId = registerOutput<String?>(
+      'sourceEndpointInstanceId',
+    );
+    sourceEndpointInstanceType = registerOutput<String>(
+      'sourceEndpointInstanceType',
+    );
+    sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
+    sourceEndpointOracleSid = registerOutput<String?>(
+      'sourceEndpointOracleSid',
+    );
+    sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
+    sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
+    sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
+    sourceEndpointRegion = registerOutput<String?>('sourceEndpointRegion');
+    sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
+    sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
+    status = registerOutput<String>('status');
+    structureInitialization = registerOutput<bool>('structureInitialization');
   }
 
   /// Gets an existing [MigrationJob] resource's state with the given [name] and [id].
@@ -997,41 +1055,69 @@ class MigrationJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/migrationJob:MigrationJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkpoint = registerOutput<String>('checkpoint');
-    this.dataInitialization = registerOutput<bool>('dataInitialization');
-    this.dataSynchronization = registerOutput<bool>('dataSynchronization');
-    this.dbList = registerOutput<String>('dbList');
-    this.destinationEndpointDatabaseName = registerOutput<String?>('destinationEndpointDatabaseName');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationEndpointInstanceId = registerOutput<String?>('destinationEndpointInstanceId');
-    this.destinationEndpointInstanceType = registerOutput<String>('destinationEndpointInstanceType');
-    this.destinationEndpointIp = registerOutput<String?>('destinationEndpointIp');
-    this.destinationEndpointOracleSid = registerOutput<String?>('destinationEndpointOracleSid');
-    this.destinationEndpointPassword = registerOutput<String?>('destinationEndpointPassword');
-    this.destinationEndpointPort = registerOutput<String?>('destinationEndpointPort');
-    this.destinationEndpointRegion = registerOutput<String?>('destinationEndpointRegion');
-    this.destinationEndpointUserName = registerOutput<String?>('destinationEndpointUserName');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.dtsJobName = registerOutput<String>('dtsJobName');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.sourceEndpointDatabaseName = registerOutput<String?>('sourceEndpointDatabaseName');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointInstanceId = registerOutput<String?>('sourceEndpointInstanceId');
-    this.sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
-    this.sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    this.sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
-    this.sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
-    this.sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
-    this.sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
-    this.sourceEndpointRegion = registerOutput<String?>('sourceEndpointRegion');
-    this.sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
-    this.sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
-    this.status = registerOutput<String>('status');
-    this.structureInitialization = registerOutput<bool>('structureInitialization');
+         'alicloud:dts/migrationJob:MigrationJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkpoint = registerOutput<String>('checkpoint');
+    dataInitialization = registerOutput<bool>('dataInitialization');
+    dataSynchronization = registerOutput<bool>('dataSynchronization');
+    dbList = registerOutput<String>('dbList');
+    destinationEndpointDatabaseName = registerOutput<String?>(
+      'destinationEndpointDatabaseName',
+    );
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationEndpointInstanceId = registerOutput<String?>(
+      'destinationEndpointInstanceId',
+    );
+    destinationEndpointInstanceType = registerOutput<String>(
+      'destinationEndpointInstanceType',
+    );
+    destinationEndpointIp = registerOutput<String?>('destinationEndpointIp');
+    destinationEndpointOracleSid = registerOutput<String?>(
+      'destinationEndpointOracleSid',
+    );
+    destinationEndpointPassword = registerOutput<String?>(
+      'destinationEndpointPassword',
+    );
+    destinationEndpointPort = registerOutput<String?>(
+      'destinationEndpointPort',
+    );
+    destinationEndpointRegion = registerOutput<String?>(
+      'destinationEndpointRegion',
+    );
+    destinationEndpointUserName = registerOutput<String?>(
+      'destinationEndpointUserName',
+    );
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    dtsJobName = registerOutput<String>('dtsJobName');
+    instanceClass = registerOutput<String>('instanceClass');
+    sourceEndpointDatabaseName = registerOutput<String?>(
+      'sourceEndpointDatabaseName',
+    );
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointInstanceId = registerOutput<String?>(
+      'sourceEndpointInstanceId',
+    );
+    sourceEndpointInstanceType = registerOutput<String>(
+      'sourceEndpointInstanceType',
+    );
+    sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
+    sourceEndpointOracleSid = registerOutput<String?>(
+      'sourceEndpointOracleSid',
+    );
+    sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
+    sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
+    sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
+    sourceEndpointRegion = registerOutput<String?>('sourceEndpointRegion');
+    sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
+    sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
+    status = registerOutput<String>('status');
+    structureInitialization = registerOutput<bool>('structureInitialization');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterRouteTableAssociationState {
   /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   final pulumi.Input<bool>? dryRun;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// TransitRouterAttachmentId
   final pulumi.Input<String>? transitRouterAttachmentId;
+
   /// TransitRouterRouteTableId
   final pulumi.Input<String>? transitRouterRouteTableId;
 
@@ -34,13 +37,30 @@ class TransitRouterRouteTableAssociationState {
     };
   }
 
-  factory TransitRouterRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
+  factory TransitRouterRouteTableAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitRouterRouteTableAssociationState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterAttachmentId: (() {
+        final guardedValue = map['transitRouterAttachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterRouteTableId: (() {
+        final guardedValue = map['transitRouterRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

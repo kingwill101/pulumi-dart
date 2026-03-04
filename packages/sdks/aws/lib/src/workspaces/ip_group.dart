@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_group_args.dart';
-import 'ip_group_rule.dart';
 import 'ip_group_state.dart';
 
 /// Provides an IP access control group in AWS WorkSpaces Service
@@ -192,14 +191,19 @@ import 'ip_group_state.dart';
 class IpGroup extends pulumi.CustomResource {
   /// The description of the IP group.
   late final pulumi.Output<String?> description;
+
   /// The name of the IP group.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-  late final pulumi.Output<List<IpGroupRule>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -212,17 +216,17 @@ class IpGroup extends pulumi.CustomResource {
     IpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspaces/ipGroup:IpGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:workspaces/ipGroup:IpGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<IpGroupRule>?>('rules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [IpGroup] resource's state with the given [name] and [id].
@@ -243,16 +247,16 @@ class IpGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspaces/ipGroup:IpGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:workspaces/ipGroup:IpGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<IpGroupRule>?>('rules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

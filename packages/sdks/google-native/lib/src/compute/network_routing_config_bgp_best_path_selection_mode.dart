@@ -3,16 +3,17 @@ enum NetworkRoutingConfigBgpBestPathSelectionMode {
   legacy("LEGACY"),
   standard("STANDARD");
 
-  const NetworkRoutingConfigBgpBestPathSelectionMode(this.value);
-  final String value;
+  const NetworkRoutingConfigBgpBestPathSelectionMode(this.wireValue);
+  final String wireValue;
 
   static NetworkRoutingConfigBgpBestPathSelectionMode fromValue(String value) {
     for (final item in NetworkRoutingConfigBgpBestPathSelectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigBgpBestPathSelectionMode value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigBgpBestPathSelectionMode value: $value',
+    );
   }
 }
-

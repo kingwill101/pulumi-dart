@@ -9,71 +9,92 @@ import 'source_type_enum_value_response.dart';
 
 /// Definition of awsSsmInstanceInformation
 class AwsSsmInstanceInformationPropertiesResponse {
-  /// <p>The activation ID created by Amazon Web Services Systems Manager when the server or virtual machine (VM) was registered.</p>
+  /// &lt;p&gt;The activation ID created by Amazon Web Services Systems Manager when the server or virtual machine (VM) was registered.&lt;/p&gt;
   final pulumi.Input<String>? activationId;
-  /// <p>The version of SSM Agent running on your Linux managed node. </p>
+
+  /// &lt;p&gt;The version of SSM Agent running on your Linux managed node. &lt;/p&gt;
   final pulumi.Input<String>? agentVersion;
-  /// <p>Information about the association.</p>
-  final pulumi.Input<InstanceAggregatedAssociationOverviewResponse>? associationOverview;
-  /// <p>The status of the association.</p>
+
+  /// &lt;p&gt;Information about the association.&lt;/p&gt;
+  final pulumi.Input<InstanceAggregatedAssociationOverviewResponse>?
+  associationOverview;
+
+  /// &lt;p&gt;The status of the association.&lt;/p&gt;
   final pulumi.Input<String>? associationStatus;
-  /// <p>The fully qualified host name of the managed node.</p>
+
+  /// &lt;p&gt;The fully qualified host name of the managed node.&lt;/p&gt;
   final pulumi.Input<String>? computerName;
-  /// <p>The Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed node. This call doesn't return the IAM role for Amazon Elastic Compute Cloud (Amazon EC2) instances. To retrieve the IAM role for an EC2 instance, use the Amazon EC2 <code>DescribeInstances</code> operation. For information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'>DescribeInstances</a> in the <i>Amazon EC2 API Reference</i> or <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'>describe-instances</a> in the <i>Amazon Web Services CLI Command Reference</i>.</p>
+
+  /// &lt;p&gt;The Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed node. This call doesn't return the IAM role for Amazon Elastic Compute Cloud (Amazon EC2) instances. To retrieve the IAM role for an EC2 instance, use the Amazon EC2 &lt;code&gt;DescribeInstances&lt;/code&gt; operation. For information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'&gt;DescribeInstances&lt;/a&gt; in the &lt;i&gt;Amazon EC2 API Reference&lt;/i&gt; or &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'&gt;describe-instances&lt;/a&gt; in the &lt;i&gt;Amazon Web Services CLI Command Reference&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? iamRole;
-  /// <p>The managed node ID. </p>
+
+  /// &lt;p&gt;The managed node ID. &lt;/p&gt;
   final pulumi.Input<String>? instanceId;
-  /// <p>The IP address of the managed node.</p>
+
+  /// &lt;p&gt;The IP address of the managed node.&lt;/p&gt;
   final pulumi.Input<String>? ipAddress;
-  /// <p>Indicates whether the latest version of SSM Agent is running on your Linux managed node. This field doesn't indicate whether or not the latest version is installed on Windows managed nodes, because some older versions of Windows Server use the EC2Config service to process Systems Manager requests.</p>
+
+  /// &lt;p&gt;Indicates whether the latest version of SSM Agent is running on your Linux managed node. This field doesn't indicate whether or not the latest version is installed on Windows managed nodes, because some older versions of Windows Server use the EC2Config service to process Systems Manager requests.&lt;/p&gt;
   final pulumi.Input<bool>? isLatestVersion;
-  /// <p>The date the association was last run.</p>
+
+  /// &lt;p&gt;The date the association was last run.&lt;/p&gt;
   final pulumi.Input<String>? lastAssociationExecutionDate;
-  /// <p>The date and time when the agent last pinged the Systems Manager service. </p>
+
+  /// &lt;p&gt;The date and time when the agent last pinged the Systems Manager service. &lt;/p&gt;
   final pulumi.Input<String>? lastPingDateTime;
-  /// <p>The last date the association was successfully run.</p>
+
+  /// &lt;p&gt;The last date the association was successfully run.&lt;/p&gt;
   final pulumi.Input<String>? lastSuccessfulAssociationExecutionDate;
-  /// <p>The name assigned to an on-premises server, edge device, or virtual machine (VM) when it is activated as a Systems Manager managed node. The name is specified as the <code>DefaultInstanceName</code> property using the <a>CreateActivation</a> command. It is applied to the managed node by specifying the Activation Code and Activation ID when you install SSM Agent on the node, as explained in <a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html'>Install SSM Agent for a hybrid and multicloud environment (Linux)</a> and <a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html'>Install SSM Agent for a hybrid and multicloud environment (Windows)</a>. To retrieve the <code>Name</code> tag of an EC2 instance, use the Amazon EC2 <code>DescribeInstances</code> operation. For information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'>DescribeInstances</a> in the <i>Amazon EC2 API Reference</i> or <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'>describe-instances</a> in the <i>Amazon Web Services CLI Command Reference</i>.</p>
+
+  /// &lt;p&gt;The name assigned to an on-premises server, edge device, or virtual machine (VM) when it is activated as a Systems Manager managed node. The name is specified as the &lt;code&gt;DefaultInstanceName&lt;/code&gt; property using the &lt;a&gt;CreateActivation&lt;/a&gt; command. It is applied to the managed node by specifying the Activation Code and Activation ID when you install SSM Agent on the node, as explained in &lt;a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html'&gt;Install SSM Agent for a hybrid and multicloud environment (Linux)&lt;/a&gt; and &lt;a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html'&gt;Install SSM Agent for a hybrid and multicloud environment (Windows)&lt;/a&gt;. To retrieve the &lt;code&gt;Name&lt;/code&gt; tag of an EC2 instance, use the Amazon EC2 &lt;code&gt;DescribeInstances&lt;/code&gt; operation. For information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'&gt;DescribeInstances&lt;/a&gt; in the &lt;i&gt;Amazon EC2 API Reference&lt;/i&gt; or &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'&gt;describe-instances&lt;/a&gt; in the &lt;i&gt;Amazon Web Services CLI Command Reference&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? name;
-  /// <p>Connection status of SSM Agent. </p> <note> <p>The status <code>Inactive</code> has been deprecated and is no longer in use.</p> </note>
+
+  /// &lt;p&gt;Connection status of SSM Agent. &lt;/p&gt; &lt;note&gt; &lt;p&gt;The status &lt;code&gt;Inactive&lt;/code&gt; has been deprecated and is no longer in use.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<PingStatusEnumValueResponse>? pingStatus;
-  /// <p>The name of the operating system platform running on your managed node. </p>
+
+  /// &lt;p&gt;The name of the operating system platform running on your managed node. &lt;/p&gt;
   final pulumi.Input<String>? platformName;
-  /// <p>The operating system platform type. </p>
+
+  /// &lt;p&gt;The operating system platform type. &lt;/p&gt;
   final pulumi.Input<PlatformTypeEnumValueResponse>? platformType;
-  /// <p>The version of the OS platform running on your managed node. </p>
+
+  /// &lt;p&gt;The version of the OS platform running on your managed node. &lt;/p&gt;
   final pulumi.Input<String>? platformVersion;
-  /// <p>The date the server or VM was registered with Amazon Web Services as a managed node.</p>
+
+  /// &lt;p&gt;The date the server or VM was registered with Amazon Web Services as a managed node.&lt;/p&gt;
   final pulumi.Input<String>? registrationDate;
-  /// <p>The type of instance. Instances are either EC2 instances or managed instances. </p>
+
+  /// &lt;p&gt;The type of instance. Instances are either EC2 instances or managed instances. &lt;/p&gt;
   final pulumi.Input<ResourceTypeEnumValueResponse>? resourceType;
-  /// <p>The ID of the source resource. For IoT Greengrass devices, <code>SourceId</code> is the Thing name. </p>
+
+  /// &lt;p&gt;The ID of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceId&lt;/code&gt; is the Thing name. &lt;/p&gt;
   final pulumi.Input<String>? sourceId;
-  /// <p>The type of the source resource. For IoT Greengrass devices, <code>SourceType</code> is <code>AWS::IoT::Thing</code>. </p>
+
+  /// &lt;p&gt;The type of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceType&lt;/code&gt; is &lt;code&gt;AWS::IoT::Thing&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<SourceTypeEnumValueResponse>? sourceType;
 
   /// Creates a new [AwsSsmInstanceInformationPropertiesResponse].
-  /// [activationId] <p>The activation ID created by Amazon Web Services Systems Manager when the server or virtual machine (VM) was registered.</p>
-  /// [agentVersion] <p>The version of SSM Agent running on your Linux managed node. </p>
-  /// [associationOverview] <p>Information about the association.</p>
-  /// [associationStatus] <p>The status of the association.</p>
-  /// [computerName] <p>The fully qualified host name of the managed node.</p>
-  /// [iamRole] <p>The Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed node. This call doesn't return the IAM role for Amazon Elastic Compute Cloud (Amazon EC2) instances. To retrieve the IAM role for an EC2 instance, use the Amazon EC2 <code>DescribeInstances</code> operation. For information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'>DescribeInstances</a> in the <i>Amazon EC2 API Reference</i> or <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'>describe-instances</a> in the <i>Amazon Web Services CLI Command Reference</i>.</p>
-  /// [instanceId] <p>The managed node ID. </p>
-  /// [ipAddress] <p>The IP address of the managed node.</p>
-  /// [isLatestVersion] <p>Indicates whether the latest version of SSM Agent is running on your Linux managed node. This field doesn't indicate whether or not the latest version is installed on Windows managed nodes, because some older versions of Windows Server use the EC2Config service to process Systems Manager requests.</p>
-  /// [lastAssociationExecutionDate] <p>The date the association was last run.</p>
-  /// [lastPingDateTime] <p>The date and time when the agent last pinged the Systems Manager service. </p>
-  /// [lastSuccessfulAssociationExecutionDate] <p>The last date the association was successfully run.</p>
-  /// [name] <p>The name assigned to an on-premises server, edge device, or virtual machine (VM) when it is activated as a Systems Manager managed node. The name is specified as the <code>DefaultInstanceName</code> property using the <a>CreateActivation</a> command. It is applied to the managed node by specifying the Activation Code and Activation ID when you install SSM Agent on the node, as explained in <a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html'>Install SSM Agent for a hybrid and multicloud environment (Linux)</a> and <a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html'>Install SSM Agent for a hybrid and multicloud environment (Windows)</a>. To retrieve the <code>Name</code> tag of an EC2 instance, use the Amazon EC2 <code>DescribeInstances</code> operation. For information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'>DescribeInstances</a> in the <i>Amazon EC2 API Reference</i> or <a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'>describe-instances</a> in the <i>Amazon Web Services CLI Command Reference</i>.</p>
-  /// [pingStatus] <p>Connection status of SSM Agent. </p> <note> <p>The status <code>Inactive</code> has been deprecated and is no longer in use.</p> </note>
-  /// [platformName] <p>The name of the operating system platform running on your managed node. </p>
-  /// [platformType] <p>The operating system platform type. </p>
-  /// [platformVersion] <p>The version of the OS platform running on your managed node. </p>
-  /// [registrationDate] <p>The date the server or VM was registered with Amazon Web Services as a managed node.</p>
-  /// [resourceType] <p>The type of instance. Instances are either EC2 instances or managed instances. </p>
-  /// [sourceId] <p>The ID of the source resource. For IoT Greengrass devices, <code>SourceId</code> is the Thing name. </p>
-  /// [sourceType] <p>The type of the source resource. For IoT Greengrass devices, <code>SourceType</code> is <code>AWS::IoT::Thing</code>. </p>
+  /// [activationId] &lt;p&gt;The activation ID created by Amazon Web Services Systems Manager when the server or virtual machine (VM) was registered.&lt;/p&gt;
+  /// [agentVersion] &lt;p&gt;The version of SSM Agent running on your Linux managed node. &lt;/p&gt;
+  /// [associationOverview] &lt;p&gt;Information about the association.&lt;/p&gt;
+  /// [associationStatus] &lt;p&gt;The status of the association.&lt;/p&gt;
+  /// [computerName] &lt;p&gt;The fully qualified host name of the managed node.&lt;/p&gt;
+  /// [iamRole] &lt;p&gt;The Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed node. This call doesn't return the IAM role for Amazon Elastic Compute Cloud (Amazon EC2) instances. To retrieve the IAM role for an EC2 instance, use the Amazon EC2 &lt;code&gt;DescribeInstances&lt;/code&gt; operation. For information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'&gt;DescribeInstances&lt;/a&gt; in the &lt;i&gt;Amazon EC2 API Reference&lt;/i&gt; or &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'&gt;describe-instances&lt;/a&gt; in the &lt;i&gt;Amazon Web Services CLI Command Reference&lt;/i&gt;.&lt;/p&gt;
+  /// [instanceId] &lt;p&gt;The managed node ID. &lt;/p&gt;
+  /// [ipAddress] &lt;p&gt;The IP address of the managed node.&lt;/p&gt;
+  /// [isLatestVersion] &lt;p&gt;Indicates whether the latest version of SSM Agent is running on your Linux managed node. This field doesn't indicate whether or not the latest version is installed on Windows managed nodes, because some older versions of Windows Server use the EC2Config service to process Systems Manager requests.&lt;/p&gt;
+  /// [lastAssociationExecutionDate] &lt;p&gt;The date the association was last run.&lt;/p&gt;
+  /// [lastPingDateTime] &lt;p&gt;The date and time when the agent last pinged the Systems Manager service. &lt;/p&gt;
+  /// [lastSuccessfulAssociationExecutionDate] &lt;p&gt;The last date the association was successfully run.&lt;/p&gt;
+  /// [name] &lt;p&gt;The name assigned to an on-premises server, edge device, or virtual machine (VM) when it is activated as a Systems Manager managed node. The name is specified as the &lt;code&gt;DefaultInstanceName&lt;/code&gt; property using the &lt;a&gt;CreateActivation&lt;/a&gt; command. It is applied to the managed node by specifying the Activation Code and Activation ID when you install SSM Agent on the node, as explained in &lt;a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html'&gt;Install SSM Agent for a hybrid and multicloud environment (Linux)&lt;/a&gt; and &lt;a href='https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html'&gt;Install SSM Agent for a hybrid and multicloud environment (Windows)&lt;/a&gt;. To retrieve the &lt;code&gt;Name&lt;/code&gt; tag of an EC2 instance, use the Amazon EC2 &lt;code&gt;DescribeInstances&lt;/code&gt; operation. For information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html'&gt;DescribeInstances&lt;/a&gt; in the &lt;i&gt;Amazon EC2 API Reference&lt;/i&gt; or &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html'&gt;describe-instances&lt;/a&gt; in the &lt;i&gt;Amazon Web Services CLI Command Reference&lt;/i&gt;.&lt;/p&gt;
+  /// [pingStatus] &lt;p&gt;Connection status of SSM Agent. &lt;/p&gt; &lt;note&gt; &lt;p&gt;The status &lt;code&gt;Inactive&lt;/code&gt; has been deprecated and is no longer in use.&lt;/p&gt; &lt;/note&gt;
+  /// [platformName] &lt;p&gt;The name of the operating system platform running on your managed node. &lt;/p&gt;
+  /// [platformType] &lt;p&gt;The operating system platform type. &lt;/p&gt;
+  /// [platformVersion] &lt;p&gt;The version of the OS platform running on your managed node. &lt;/p&gt;
+  /// [registrationDate] &lt;p&gt;The date the server or VM was registered with Amazon Web Services as a managed node.&lt;/p&gt;
+  /// [resourceType] &lt;p&gt;The type of instance. Instances are either EC2 instances or managed instances. &lt;/p&gt;
+  /// [sourceId] &lt;p&gt;The ID of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceId&lt;/code&gt; is the Thing name. &lt;/p&gt;
+  /// [sourceType] &lt;p&gt;The type of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceType&lt;/code&gt; is &lt;code&gt;AWS::IoT::Thing&lt;/code&gt;. &lt;/p&gt;
   AwsSsmInstanceInformationPropertiesResponse({
     this.activationId,
     this.agentVersion,
@@ -102,7 +123,11 @@ class AwsSsmInstanceInformationPropertiesResponse {
     return <String, dynamic>{
       'activationId': ?activationId,
       'agentVersion': ?agentVersion,
-      'associationOverview': ?pulumi.Input.mapOptionalInputValue<InstanceAggregatedAssociationOverviewResponse, Map<String, dynamic>>(associationOverview, (value) => value.toMap()),
+      'associationOverview':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceAggregatedAssociationOverviewResponse,
+            Map<String, dynamic>
+          >(associationOverview, (value) => value.toMap()),
       'associationStatus': ?associationStatus,
       'computerName': ?computerName,
       'iamRole': ?iamRole,
@@ -111,43 +136,165 @@ class AwsSsmInstanceInformationPropertiesResponse {
       'isLatestVersion': ?isLatestVersion,
       'lastAssociationExecutionDate': ?lastAssociationExecutionDate,
       'lastPingDateTime': ?lastPingDateTime,
-      'lastSuccessfulAssociationExecutionDate': ?lastSuccessfulAssociationExecutionDate,
+      'lastSuccessfulAssociationExecutionDate':
+          ?lastSuccessfulAssociationExecutionDate,
       'name': ?name,
-      'pingStatus': ?pulumi.Input.mapOptionalInputValue<PingStatusEnumValueResponse, Map<String, dynamic>>(pingStatus, (value) => value.toMap()),
+      'pingStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            PingStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(pingStatus, (value) => value.toMap()),
       'platformName': ?platformName,
-      'platformType': ?pulumi.Input.mapOptionalInputValue<PlatformTypeEnumValueResponse, Map<String, dynamic>>(platformType, (value) => value.toMap()),
+      'platformType':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlatformTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(platformType, (value) => value.toMap()),
       'platformVersion': ?platformVersion,
       'registrationDate': ?registrationDate,
-      'resourceType': ?pulumi.Input.mapOptionalInputValue<ResourceTypeEnumValueResponse, Map<String, dynamic>>(resourceType, (value) => value.toMap()),
+      'resourceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(resourceType, (value) => value.toMap()),
       'sourceId': ?sourceId,
-      'sourceType': ?pulumi.Input.mapOptionalInputValue<SourceTypeEnumValueResponse, Map<String, dynamic>>(sourceType, (value) => value.toMap()),
+      'sourceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(sourceType, (value) => value.toMap()),
     };
   }
 
-  factory AwsSsmInstanceInformationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsSsmInstanceInformationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsSsmInstanceInformationPropertiesResponse(
-      activationId: map['activationId'] == null ? null : (map['activationId']! as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
-      associationOverview: map['associationOverview'] == null ? null : (InstanceAggregatedAssociationOverviewResponse.fromMap((map['associationOverview']! as Map).cast<String, dynamic>())).input(),
-      associationStatus: map['associationStatus'] == null ? null : (map['associationStatus']! as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
-      iamRole: map['iamRole'] == null ? null : (map['iamRole']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      isLatestVersion: map['isLatestVersion'] == null ? null : (map['isLatestVersion']! as bool).input(),
-      lastAssociationExecutionDate: map['lastAssociationExecutionDate'] == null ? null : (map['lastAssociationExecutionDate']! as String).input(),
-      lastPingDateTime: map['lastPingDateTime'] == null ? null : (map['lastPingDateTime']! as String).input(),
-      lastSuccessfulAssociationExecutionDate: map['lastSuccessfulAssociationExecutionDate'] == null ? null : (map['lastSuccessfulAssociationExecutionDate']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      pingStatus: map['pingStatus'] == null ? null : (PingStatusEnumValueResponse.fromMap((map['pingStatus']! as Map).cast<String, dynamic>())).input(),
-      platformName: map['platformName'] == null ? null : (map['platformName']! as String).input(),
-      platformType: map['platformType'] == null ? null : (PlatformTypeEnumValueResponse.fromMap((map['platformType']! as Map).cast<String, dynamic>())).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion']! as String).input(),
-      registrationDate: map['registrationDate'] == null ? null : (map['registrationDate']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (ResourceTypeEnumValueResponse.fromMap((map['resourceType']! as Map).cast<String, dynamic>())).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
-      sourceType: map['sourceType'] == null ? null : (SourceTypeEnumValueResponse.fromMap((map['sourceType']! as Map).cast<String, dynamic>())).input(),
+      activationId: (() {
+        final guardedValue = map['activationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associationOverview: (() {
+        final guardedValue = map['associationOverview'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceAggregatedAssociationOverviewResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      associationStatus: (() {
+        final guardedValue = map['associationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRole: (() {
+        final guardedValue = map['iamRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isLatestVersion: (() {
+        final guardedValue = map['isLatestVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastAssociationExecutionDate: (() {
+        final guardedValue = map['lastAssociationExecutionDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastPingDateTime: (() {
+        final guardedValue = map['lastPingDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastSuccessfulAssociationExecutionDate: (() {
+        final guardedValue = map['lastSuccessfulAssociationExecutionDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pingStatus: (() {
+        final guardedValue = map['pingStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PingStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      platformName: (() {
+        final guardedValue = map['platformName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platformType: (() {
+        final guardedValue = map['platformType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlatformTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      platformVersion: (() {
+        final guardedValue = map['platformVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationDate: (() {
+        final guardedValue = map['registrationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceId: (() {
+        final guardedValue = map['sourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class UserInfoResponse {
 
   /// Creates a new [UserInfoResponse].
   /// [email] E-mail address of the user.
-  UserInfoResponse({
-    required this.email,
-  });
+  UserInfoResponse({required this.email});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      email: (map['email'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
-

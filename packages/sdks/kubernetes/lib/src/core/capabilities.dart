@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Capabilities {
   /// Added capabilities
   final pulumi.Input<List<String>>? add;
+
   /// Removed capabilities
   final pulumi.Input<List<String>>? drop;
 
   /// Creates a new [Capabilities].
   /// [add] Added capabilities
   /// [drop] Removed capabilities
-  Capabilities({
-    this.add,
-    this.drop,
-  });
+  Capabilities({this.add, this.drop});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'add': ?add,
-      'drop': ?drop,
-    };
+    return <String, dynamic>{'add': ?add, 'drop': ?drop};
   }
 
   factory Capabilities.fromMap(Map<String, dynamic> map) {
     return Capabilities(
-      add: map['add'] == null ? null : ((map['add']! as List).cast<String>()).input(),
-      drop: map['drop'] == null ? null : ((map['drop']! as List).cast<String>()).input(),
+      add: (() {
+        final guardedValue = map['add'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      drop: (() {
+        final guardedValue = map['drop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

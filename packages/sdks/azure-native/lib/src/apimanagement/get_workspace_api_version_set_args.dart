@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceApiVersionSetArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Api Version Set identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> versionSetId;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -39,11 +42,12 @@ class GetWorkspaceApiVersionSetArgs {
 
   factory GetWorkspaceApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiVersionSetArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      versionSetId: (map['versionSetId'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      versionSetId: pulumi.Input.fromValue(map['versionSetId'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

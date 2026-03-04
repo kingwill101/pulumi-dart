@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dicom_service_args.dart';
-import 'dicom_service_authentication.dart';
 import 'dicom_service_cors.dart';
 import 'dicom_service_identity.dart';
-import 'dicom_service_private_endpoint.dart';
 import 'dicom_service_state.dart';
 import 'dicom_service_storage.dart';
 
@@ -187,7 +185,7 @@ import 'dicom_service_storage.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2024-03-31
@@ -201,28 +199,39 @@ import 'dicom_service_storage.dart';
 /// ```
 class DicomService extends pulumi.CustomResource {
   /// The `authentication` block as defined below.
-  late final pulumi.Output<List<DicomServiceAuthentication>> authentications;
+  late final pulumi.Output<List<Map<String, dynamic>>> authentications;
+
   /// A `cors` block as defined below.
   late final pulumi.Output<DicomServiceCors> cors;
+
   /// If data partitions are enabled or not. Defaults to `false`. Changing this forces a new Healthcare DICOM Service to be created.
   late final pulumi.Output<bool?> dataPartitionsEnabled;
+
   /// The URL of the key to use for encryption as part of the customer-managed key encryption settings. For more details, refer to the [Azure Customer-Managed Keys Overview](https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview).
   late final pulumi.Output<String?> encryptionKeyUrl;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<DicomServiceIdentity?> identity;
+
   /// Specifies the Azure Region where the Healthcare DICOM Service should be created. Changing this forces a new Healthcare DICOM Service to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<DicomServicePrivateEndpoint>> privateEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpoints;
+
   /// Whether to enabled public networks when data plane traffic coming from public networks while private endpoint is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The url of the Healthcare DICOM Services.
   late final pulumi.Output<String> serviceUrl;
+
   /// A `storage` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DicomServiceStorage> storage;
+
   /// A mapping of tags to assign to the Healthcare DICOM Service.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the ID of the Healthcare Workspace where the Healthcare DICOM Service should exist. Changing this forces a new Healthcare DICOM Service to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -235,24 +244,30 @@ class DicomService extends pulumi.CustomResource {
     DicomServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/dicomService:DicomService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentications = registerOutput<List<DicomServiceAuthentication>>('authentications');
-    this.cors = registerOutput<DicomServiceCors>('cors');
-    this.dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
-    this.encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
-    this.identity = registerOutput<DicomServiceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:healthcare/dicomService:DicomService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentications = registerOutput<List<Map<String, dynamic>>>(
+      'authentications',
+    );
+    cors = registerOutput<DicomServiceCors>('cors');
+    dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
+    encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
+    identity = registerOutput<DicomServiceIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpoints = registerOutput<List<DicomServicePrivateEndpoint>>('privateEndpoints');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.serviceUrl = registerOutput<String>('serviceUrl');
-    this.storage = registerOutput<DicomServiceStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpoints',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    serviceUrl = registerOutput<String>('serviceUrl');
+    storage = registerOutput<DicomServiceStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [DicomService] resource's state with the given [name] and [id].
@@ -273,23 +288,29 @@ class DicomService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:healthcare/dicomService:DicomService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentications = registerOutput<List<DicomServiceAuthentication>>('authentications');
-    this.cors = registerOutput<DicomServiceCors>('cors');
-    this.dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
-    this.encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
-    this.identity = registerOutput<DicomServiceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:healthcare/dicomService:DicomService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentications = registerOutput<List<Map<String, dynamic>>>(
+      'authentications',
+    );
+    cors = registerOutput<DicomServiceCors>('cors');
+    dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
+    encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
+    identity = registerOutput<DicomServiceIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpoints = registerOutput<List<DicomServicePrivateEndpoint>>('privateEndpoints');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.serviceUrl = registerOutput<String>('serviceUrl');
-    this.storage = registerOutput<DicomServiceStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpoints',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    serviceUrl = registerOutput<String>('serviceUrl');
+    storage = registerOutput<DicomServiceStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuppressionState {
   /// The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? recommendationId;
+
   /// The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? resourceId;
+
   /// The GUID of the suppression.
   final pulumi.Input<String>? suppressionId;
+
   /// A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? ttl;
 
@@ -41,12 +45,31 @@ class SuppressionState {
 
   factory SuppressionState.fromMap(Map<String, dynamic> map) {
     return SuppressionState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      suppressionId: map['suppressionId'] == null ? null : (map['suppressionId']! as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendationId: (() {
+        final guardedValue = map['recommendationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suppressionId: (() {
+        final guardedValue = map['suppressionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

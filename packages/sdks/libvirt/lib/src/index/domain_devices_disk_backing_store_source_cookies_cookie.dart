@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskBackingStoreSourceCookiesCookie {
   /// Sets the name of the cookie for use in the backing store source configuration.
   final pulumi.Input<String> name;
+
   /// Sets the value associated with the cookie defined in the backing store source.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class DomainDevicesDiskBackingStoreSourceCookiesCookie {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory DomainDevicesDiskBackingStoreSourceCookiesCookie.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskBackingStoreSourceCookiesCookie.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskBackingStoreSourceCookiesCookie(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

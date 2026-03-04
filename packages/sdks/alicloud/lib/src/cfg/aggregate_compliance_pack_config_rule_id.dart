@@ -8,20 +8,21 @@ class AggregateCompliancePackConfigRuleId {
 
   /// Creates a new [AggregateCompliancePackConfigRuleId].
   /// [configRuleId] The rule ID of Aggregate Config Rule.
-  AggregateCompliancePackConfigRuleId({
-    this.configRuleId,
-  });
+  AggregateCompliancePackConfigRuleId({this.configRuleId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configRuleId': ?configRuleId,
-    };
+    return <String, dynamic>{'configRuleId': ?configRuleId};
   }
 
-  factory AggregateCompliancePackConfigRuleId.fromMap(Map<String, dynamic> map) {
+  factory AggregateCompliancePackConfigRuleId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AggregateCompliancePackConfigRuleId(
-      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId']! as String).input(),
+      configRuleId: (() {
+        final guardedValue = map['configRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

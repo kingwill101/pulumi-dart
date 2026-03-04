@@ -1,5 +1,3 @@
-library module_coordination_k8s_io;
-
 export 'coordination_k8s_io/lease.dart';
 export 'coordination_k8s_io/lease_args.dart';
 export 'coordination_k8s_io/lease_candidate.dart';

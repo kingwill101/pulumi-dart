@@ -154,22 +154,30 @@ import 'system_data_response.dart';
 class SchemaRegistry extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Exact time the Schema Group was created.
   late final pulumi.Output<String> createdAtUtc;
+
   /// The ETag value.
   late final pulumi.Output<String> eTag;
+
   /// dictionary object for SchemaGroup group properties
   late final pulumi.Output<Map<String, String>?> groupProperties;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> schemaCompatibility;
   late final pulumi.Output<String?> schemaType;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
+
   /// Exact time the Schema Group was updated
   late final pulumi.Output<String> updatedAtUtc;
 
@@ -182,21 +190,21 @@ class SchemaRegistry extends pulumi.CustomResource {
     SchemaRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventhub:SchemaRegistry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAtUtc = registerOutput<String>('createdAtUtc');
-    this.eTag = registerOutput<String>('eTag');
-    this.groupProperties = registerOutput<Map<String, String>?>('groupProperties');
-    this.location = registerOutput<String>('location');
+         'azure-native:eventhub:SchemaRegistry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAtUtc = registerOutput<String>('createdAtUtc');
+    eTag = registerOutput<String>('eTag');
+    groupProperties = registerOutput<Map<String, String>?>('groupProperties');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.schemaCompatibility = registerOutput<String?>('schemaCompatibility');
-    this.schemaType = registerOutput<String?>('schemaType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedAtUtc = registerOutput<String>('updatedAtUtc');
+    schemaCompatibility = registerOutput<String?>('schemaCompatibility');
+    schemaType = registerOutput<String?>('schemaType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedAtUtc = registerOutput<String>('updatedAtUtc');
   }
 }

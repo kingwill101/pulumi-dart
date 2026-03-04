@@ -20,8 +20,9 @@ class GetIndexIndexStatisticFaqStatistic {
 
   factory GetIndexIndexStatisticFaqStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatisticFaqStatistic(
-      indexedQuestionAnswersCount: (map['indexedQuestionAnswersCount'] as int).input(),
+      indexedQuestionAnswersCount: pulumi.Input.fromValue(
+        map['indexedQuestionAnswersCount'] as int,
+      ),
     );
   }
 }
-

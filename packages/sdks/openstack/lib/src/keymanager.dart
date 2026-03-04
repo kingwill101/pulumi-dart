@@ -1,5 +1,3 @@
-library module_keymanager;
-
 export 'keymanager/container_v1.dart';
 export 'keymanager/container_v1_acl.dart';
 export 'keymanager/container_v1_acl_read.dart';

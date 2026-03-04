@@ -12,18 +12,24 @@ import 'monitoring_config.dart';
 class MembershipArgs {
   /// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
   final pulumi.Input<Authority>? authority;
+
   /// Optional. Endpoint information to reach this member.
   final pulumi.Input<MembershipEndpoint>? endpoint;
+
   /// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
   final pulumi.Input<String>? externalId;
+
   /// Optional. Labels for this membership.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
   final pulumi.Input<String> membershipId;
+
   /// Optional. The monitoring config information for this membership.
   final pulumi.Input<MonitoringConfig>? monitoringConfig;
   final pulumi.Input<String>? project;
+
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -51,13 +57,25 @@ class MembershipArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authority': ?pulumi.Input.mapOptionalInputValue<Authority, Map<String, dynamic>>(authority, (value) => value.toMap()),
-      'endpoint': ?pulumi.Input.mapOptionalInputValue<MembershipEndpoint, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
+      'authority':
+          ?pulumi.Input.mapOptionalInputValue<Authority, Map<String, dynamic>>(
+            authority,
+            (value) => value.toMap(),
+          ),
+      'endpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            MembershipEndpoint,
+            Map<String, dynamic>
+          >(endpoint, (value) => value.toMap()),
       'externalId': ?externalId,
       'labels': ?labels,
       'location': ?location,
       'membershipId': membershipId,
-      'monitoringConfig': ?pulumi.Input.mapOptionalInputValue<MonitoringConfig, Map<String, dynamic>>(monitoringConfig, (value) => value.toMap()),
+      'monitoringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringConfig,
+            Map<String, dynamic>
+          >(monitoringConfig, (value) => value.toMap()),
       'project': ?project,
       'requestId': ?requestId,
     };
@@ -65,16 +83,59 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      authority: map['authority'] == null ? null : (Authority.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      membershipId: (map['membershipId'] as String).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfig.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Authority.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MembershipEndpoint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
+      monitoringConfig: (() {
+        final guardedValue = map['monitoringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

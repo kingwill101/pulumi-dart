@@ -141,28 +141,40 @@ import 'system_data_response.dart';
 class Assessment extends pulumi.CustomResource {
   /// Assessment Id.
   late final pulumi.Output<String> assessmentId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Assessment Type Description.
   late final pulumi.Output<String> description;
+
   /// Assessment Type Locale.
   late final pulumi.Output<String?> locale;
+
   /// Assessment Name
   late final pulumi.Output<String> name;
+
   /// Assessment Score.
   late final pulumi.Output<int> score;
+
   /// Assessment State.
   late final pulumi.Output<String> state;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// Assessment Type Id.
   late final pulumi.Output<String?> typeId;
+
   /// Assessment Type Version.
   late final pulumi.Output<String> typeVersion;
+
   /// Workload Id.
   late final pulumi.Output<String?> workloadId;
+
   /// Workload Name.
   late final pulumi.Output<String> workloadName;
 
@@ -175,23 +187,23 @@ class Assessment extends pulumi.CustomResource {
     AssessmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:advisor:Assessment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentId = registerOutput<String>('assessmentId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String>('description');
-    this.locale = registerOutput<String?>('locale');
+         'azure-native:advisor:Assessment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String>('description');
+    locale = registerOutput<String?>('locale');
     this.name = registerOutput<String>('name');
-    this.score = registerOutput<int>('score');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.typeId = registerOutput<String?>('typeId');
-    this.typeVersion = registerOutput<String>('typeVersion');
-    this.workloadId = registerOutput<String?>('workloadId');
-    this.workloadName = registerOutput<String>('workloadName');
+    score = registerOutput<int>('score');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    typeId = registerOutput<String?>('typeId');
+    typeVersion = registerOutput<String>('typeVersion');
+    workloadId = registerOutput<String?>('workloadId');
+    workloadName = registerOutput<String>('workloadName');
   }
 }

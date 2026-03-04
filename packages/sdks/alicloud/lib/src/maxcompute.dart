@@ -1,5 +1,3 @@
-library module_maxcompute;
-
 export 'maxcompute/functions.dart';
 export 'maxcompute/get_projects_args.dart';
 export 'maxcompute/get_projects_project.dart';

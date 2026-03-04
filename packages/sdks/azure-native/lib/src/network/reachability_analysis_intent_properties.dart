@@ -6,10 +6,13 @@ import 'iptraffic.dart';
 /// Represents the Reachability Analysis Intent properties.
 class ReachabilityAnalysisIntentProperties {
   final pulumi.Input<String>? description;
+
   /// Destination resource id to verify the reachability path of.
   final pulumi.Input<String> destinationResourceId;
+
   /// IP traffic information.
   final pulumi.Input<IPTraffic> ipTraffic;
+
   /// Source resource id to verify the reachability path of.
   final pulumi.Input<String> sourceResourceId;
 
@@ -29,18 +32,32 @@ class ReachabilityAnalysisIntentProperties {
     return <String, dynamic>{
       'description': ?description,
       'destinationResourceId': destinationResourceId,
-      'ipTraffic': pulumi.Input.mapInputValue<IPTraffic, Map<String, dynamic>>(ipTraffic, (value) => value.toMap()),
+      'ipTraffic': pulumi.Input.mapInputValue<IPTraffic, Map<String, dynamic>>(
+        ipTraffic,
+        (value) => value.toMap(),
+      ),
       'sourceResourceId': sourceResourceId,
     };
   }
 
-  factory ReachabilityAnalysisIntentProperties.fromMap(Map<String, dynamic> map) {
+  factory ReachabilityAnalysisIntentProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReachabilityAnalysisIntentProperties(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationResourceId: (map['destinationResourceId'] as String).input(),
-      ipTraffic: (IPTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
-      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationResourceId: pulumi.Input.fromValue(
+        map['destinationResourceId'] as String,
+      ),
+      ipTraffic: pulumi.Input.fromValue(
+        IPTraffic.fromMap((map['ipTraffic']! as Map).cast<String, dynamic>()),
+      ),
+      sourceResourceId: pulumi.Input.fromValue(
+        map['sourceResourceId'] as String,
+      ),
     );
   }
 }
-

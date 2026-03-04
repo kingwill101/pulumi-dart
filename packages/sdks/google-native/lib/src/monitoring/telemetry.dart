@@ -9,20 +9,19 @@ class Telemetry {
 
   /// Creates a new [Telemetry].
   /// [resourceName] The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
-  Telemetry({
-    this.resourceName,
-  });
+  Telemetry({this.resourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceName': ?resourceName,
-    };
+    return <String, dynamic>{'resourceName': ?resourceName};
   }
 
   factory Telemetry.fromMap(Map<String, dynamic> map) {
     return Telemetry(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

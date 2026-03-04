@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshkeysSshkey {
   /// The date this key was added.
   final pulumi.Input<String> created;
+
   /// The ID of the SSH Key.
   final pulumi.Input<String>? id;
+
   /// The label of the SSH Key.
   final pulumi.Input<String> label;
+
   /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
   final pulumi.Input<String> sshKey;
 
@@ -35,11 +38,14 @@ class GetSshkeysSshkey {
 
   factory GetSshkeysSshkey.fromMap(Map<String, dynamic> map) {
     return GetSshkeysSshkey(
-      created: (map['created'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      label: (map['label'] as String).input(),
-      sshKey: (map['sshKey'] as String).input(),
+      created: pulumi.Input.fromValue(map['created'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      sshKey: pulumi.Input.fromValue(map['sshKey'] as String),
     );
   }
 }
-

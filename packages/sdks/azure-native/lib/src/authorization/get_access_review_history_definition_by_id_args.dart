@@ -12,20 +12,19 @@ class GetAccessReviewHistoryDefinitionByIdArgs {
 
   /// Creates a new [GetAccessReviewHistoryDefinitionByIdArgs].
   /// [historyDefinitionId] The id of the access review history definition.
-  GetAccessReviewHistoryDefinitionByIdArgs({
-    required this.historyDefinitionId,
-  });
+  GetAccessReviewHistoryDefinitionByIdArgs({required this.historyDefinitionId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'historyDefinitionId': historyDefinitionId,
-    };
+    return <String, dynamic>{'historyDefinitionId': historyDefinitionId};
   }
 
-  factory GetAccessReviewHistoryDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAccessReviewHistoryDefinitionByIdArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessReviewHistoryDefinitionByIdArgs(
-      historyDefinitionId: (map['historyDefinitionId'] as String).input(),
+      historyDefinitionId: pulumi.Input.fromValue(
+        map['historyDefinitionId'] as String,
+      ),
     );
   }
 }
-

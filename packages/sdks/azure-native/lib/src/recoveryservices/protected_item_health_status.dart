@@ -6,16 +6,15 @@ enum ProtectedItemHealthStatus {
   valueNotReachable("NotReachable"),
   valueIRPending("IRPending");
 
-  const ProtectedItemHealthStatus(this.value);
-  final String value;
+  const ProtectedItemHealthStatus(this.wireValue);
+  final String wireValue;
 
   static ProtectedItemHealthStatus fromValue(String value) {
     for (final item in ProtectedItemHealthStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtectedItemHealthStatus value: $value');
   }
 }
-

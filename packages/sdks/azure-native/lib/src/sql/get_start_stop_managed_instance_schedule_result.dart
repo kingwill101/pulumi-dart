@@ -8,22 +8,31 @@ import 'system_data_response.dart';
 class GetStartStopManagedInstanceScheduleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The description of the schedule.
   final String? description;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
   final String nextExecutionTime;
+
   /// Next action to be executed (Start or Stop)
   final String nextRunAction;
+
   /// Schedule list.
   final List<ScheduleItemResponse> scheduleList;
+
   /// System data of the scheduled resource.
   final SystemDataResponse systemData;
+
   /// The time zone of the schedule.
   final String? timeZoneId;
+
   /// Resource type.
   final String type;
 
@@ -59,26 +68,46 @@ class GetStartStopManagedInstanceScheduleResult {
       'name': name,
       'nextExecutionTime': nextExecutionTime,
       'nextRunAction': nextRunAction,
-      'scheduleList': pulumi.Input.encodeList<ScheduleItemResponse, Map<String, dynamic>>(scheduleList, (value) => value.toMap()),
+      'scheduleList':
+          pulumi.Input.encodeList<ScheduleItemResponse, Map<String, dynamic>>(
+            scheduleList,
+            (value) => value.toMap(),
+          ),
       'systemData': systemData.toMap(),
       'timeZoneId': ?timeZoneId,
       'type': type,
     };
   }
 
-  factory GetStartStopManagedInstanceScheduleResult.fromMap(Map<String, dynamic> map) {
+  factory GetStartStopManagedInstanceScheduleResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStartStopManagedInstanceScheduleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       nextExecutionTime: map['nextExecutionTime'] as String,
       nextRunAction: map['nextRunAction'] as String,
-      scheduleList: pulumi.Input.decodeList<ScheduleItemResponse>(map['scheduleList'], (value) => ScheduleItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      timeZoneId: map['timeZoneId'] == null ? null : map['timeZoneId']! as String,
+      scheduleList: pulumi.Input.decodeList<ScheduleItemResponse>(
+        map['scheduleList']!,
+        (value) => ScheduleItemResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      timeZoneId: (() {
+        final guardedValue = map['timeZoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

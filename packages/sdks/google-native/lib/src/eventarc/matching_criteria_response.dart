@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MatchingCriteriaResponse {
   /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   final pulumi.Input<String> attribute;
+
   /// The value for the attribute.
   final pulumi.Input<String> value;
 
   /// Creates a new [MatchingCriteriaResponse].
   /// [attribute] The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   /// [value] The value for the attribute.
-  MatchingCriteriaResponse({
-    required this.attribute,
-    required this.value,
-  });
+  MatchingCriteriaResponse({required this.attribute, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attribute': attribute,
-      'value': value,
-    };
+    return <String, dynamic>{'attribute': attribute, 'value': value};
   }
 
   factory MatchingCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return MatchingCriteriaResponse(
-      attribute: (map['attribute'] as String).input(),
-      value: (map['value'] as String).input(),
+      attribute: pulumi.Input.fromValue(map['attribute'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

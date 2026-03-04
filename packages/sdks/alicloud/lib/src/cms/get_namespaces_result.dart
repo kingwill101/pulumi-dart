@@ -37,7 +37,11 @@ class GetNamespacesResult {
       'id': id,
       'ids': ids,
       'keyword': ?keyword,
-      'namespaces': pulumi.Input.encodeList<GetNamespacesNamespace, Map<String, dynamic>>(namespaces, (value) => value.toMap()),
+      'namespaces':
+          pulumi.Input.encodeList<GetNamespacesNamespace, Map<String, dynamic>>(
+            namespaces,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -48,12 +52,32 @@ class GetNamespacesResult {
     return GetNamespacesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      namespaces: pulumi.Input.decodeList<GetNamespacesNamespace>(map['namespaces'], (value) => GetNamespacesNamespace.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      namespaces: pulumi.Input.decodeList<GetNamespacesNamespace>(
+        map['namespaces']!,
+        (value) => GetNamespacesNamespace.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicScaling {
   /// Duration of time after the last request that an instance must wait before the instance is shut down.
   final pulumi.Input<String>? idleTimeout;
+
   /// Maximum number of instances to create for this version.
   final pulumi.Input<int>? maxInstances;
 
   /// Creates a new [BasicScaling].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
   /// [maxInstances] Maximum number of instances to create for this version.
-  BasicScaling({
-    this.idleTimeout,
-    this.maxInstances,
-  });
+  BasicScaling({this.idleTimeout, this.maxInstances});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BasicScaling {
 
   factory BasicScaling.fromMap(Map<String, dynamic> map) {
     return BasicScaling(
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      idleTimeout: (() {
+        final guardedValue = map['idleTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxInstances: (() {
+        final guardedValue = map['maxInstances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

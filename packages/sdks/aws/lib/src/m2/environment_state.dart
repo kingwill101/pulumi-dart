@@ -8,39 +8,54 @@ import 'environment_timeouts.dart';
 /// Input properties used for looking up and filtering Environment resources.
 class EnvironmentState {
   final pulumi.Input<bool>? applyChangesDuringMaintenanceWindow;
+
   /// ARN of the Environment.
   final pulumi.Input<String>? arn;
   final pulumi.Input<String>? description;
+
   /// Engine type must be `microfocus` or `bluage`.
   final pulumi.Input<String>? engineType;
+
   /// The specific version of the engine for the Environment.
   final pulumi.Input<String>? engineVersion;
+
   /// The id of the Environment.
   final pulumi.Input<String>? environmentId;
+
   /// Force update the environment even if applications are running.
   final pulumi.Input<bool>? forceUpdate;
   final pulumi.Input<EnvironmentHighAvailabilityConfig>? highAvailabilityConfig;
+
   /// M2 Instance Type.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? instanceType;
+
   /// ARN of the KMS key to use for the Environment.
   final pulumi.Input<String>? kmsKeyId;
+
   /// ARN of the load balancer created by the Environment.
   final pulumi.Input<String>? loadBalancerArn;
+
   /// Name of the runtime environment. Must be unique within the account.
   final pulumi.Input<String>? name;
+
   /// Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   final pulumi.Input<String>? preferredMaintenanceWindow;
+
   /// Allow applications deployed to this environment to be publicly accessible.
   final pulumi.Input<bool>? publiclyAccessible;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of security group ids.
   final pulumi.Input<List<String>>? securityGroupIds;
   final pulumi.Input<EnvironmentStorageConfiguration>? storageConfiguration;
+
   /// List of subnet ids to deploy environment to.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
@@ -94,14 +109,19 @@ class EnvironmentState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applyChangesDuringMaintenanceWindow': ?applyChangesDuringMaintenanceWindow,
+      'applyChangesDuringMaintenanceWindow':
+          ?applyChangesDuringMaintenanceWindow,
       'arn': ?arn,
       'description': ?description,
       'engineType': ?engineType,
       'engineVersion': ?engineVersion,
       'environmentId': ?environmentId,
       'forceUpdate': ?forceUpdate,
-      'highAvailabilityConfig': ?pulumi.Input.mapOptionalInputValue<EnvironmentHighAvailabilityConfig, Map<String, dynamic>>(highAvailabilityConfig, (value) => value.toMap()),
+      'highAvailabilityConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentHighAvailabilityConfig,
+            Map<String, dynamic>
+          >(highAvailabilityConfig, (value) => value.toMap()),
       'instanceType': ?instanceType,
       'kmsKeyId': ?kmsKeyId,
       'loadBalancerArn': ?loadBalancerArn,
@@ -110,38 +130,145 @@ class EnvironmentState {
       'publiclyAccessible': ?publiclyAccessible,
       'region': ?region,
       'securityGroupIds': ?securityGroupIds,
-      'storageConfiguration': ?pulumi.Input.mapOptionalInputValue<EnvironmentStorageConfiguration, Map<String, dynamic>>(storageConfiguration, (value) => value.toMap()),
+      'storageConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentStorageConfiguration,
+            Map<String, dynamic>
+          >(storageConfiguration, (value) => value.toMap()),
       'subnetIds': ?subnetIds,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<EnvironmentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      applyChangesDuringMaintenanceWindow: map['applyChangesDuringMaintenanceWindow'] == null ? null : ((map['applyChangesDuringMaintenanceWindow'] as bool).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      engineType: map['engineType'] == null ? null : ((map['engineType'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : ((map['forceUpdate'] as bool).input()).input(),
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : ((EnvironmentHighAvailabilityConfig.fromMap((map['highAvailabilityConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : ((map['loadBalancerArn'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : ((map['preferredMaintenanceWindow'] as String).input()).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : ((EnvironmentStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((EnvironmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      applyChangesDuringMaintenanceWindow: (() {
+        final guardedValue = map['applyChangesDuringMaintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineType: (() {
+        final guardedValue = map['engineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceUpdate: (() {
+        final guardedValue = map['forceUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      highAvailabilityConfig: (() {
+        final guardedValue = map['highAvailabilityConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnvironmentHighAvailabilityConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerArn: (() {
+        final guardedValue = map['loadBalancerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredMaintenanceWindow: (() {
+        final guardedValue = map['preferredMaintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publiclyAccessible: (() {
+        final guardedValue = map['publiclyAccessible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      storageConfiguration: (() {
+        final guardedValue = map['storageConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnvironmentStorageConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnvironmentTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

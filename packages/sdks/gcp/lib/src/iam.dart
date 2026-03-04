@@ -1,5 +1,3 @@
-library module_iam;
-
 export 'iam/access_boundary_policy.dart';
 export 'iam/access_boundary_policy_args.dart';
 export 'iam/access_boundary_policy_rule.dart';

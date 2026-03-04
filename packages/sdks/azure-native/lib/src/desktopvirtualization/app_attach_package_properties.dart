@@ -7,10 +7,13 @@ import 'app_attach_package_info_properties.dart';
 class AppAttachPackageProperties {
   /// Parameter indicating how the health check should behave if this package fails staging
   final pulumi.Input<String>? failHealthCheckOnStagingFailure;
+
   /// List of Hostpool resource Ids.
   final pulumi.Input<List<String>>? hostPoolReferences;
+
   /// Detailed properties for App Attach Package
   final pulumi.Input<AppAttachPackageInfoProperties>? image;
+
   /// URL path to certificate name located in keyVault
   final pulumi.Input<String>? keyVaultURL;
 
@@ -30,18 +33,41 @@ class AppAttachPackageProperties {
     return <String, dynamic>{
       'failHealthCheckOnStagingFailure': ?failHealthCheckOnStagingFailure,
       'hostPoolReferences': ?hostPoolReferences,
-      'image': ?pulumi.Input.mapOptionalInputValue<AppAttachPackageInfoProperties, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAttachPackageInfoProperties,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
       'keyVaultURL': ?keyVaultURL,
     };
   }
 
   factory AppAttachPackageProperties.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageProperties(
-      failHealthCheckOnStagingFailure: map['failHealthCheckOnStagingFailure'] == null ? null : (map['failHealthCheckOnStagingFailure']! as String).input(),
-      hostPoolReferences: map['hostPoolReferences'] == null ? null : ((map['hostPoolReferences']! as List).cast<String>()).input(),
-      image: map['image'] == null ? null : (AppAttachPackageInfoProperties.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      keyVaultURL: map['keyVaultURL'] == null ? null : (map['keyVaultURL']! as String).input(),
+      failHealthCheckOnStagingFailure: (() {
+        final guardedValue = map['failHealthCheckOnStagingFailure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostPoolReferences: (() {
+        final guardedValue = map['hostPoolReferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAttachPackageInfoProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultURL: (() {
+        final guardedValue = map['keyVaultURL'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

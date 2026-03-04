@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultNotificationsState {
   /// The ARN of the vault.
   final pulumi.Input<String>? backupVaultArn;
+
   /// An array of events that indicate the status of jobs to back up resources to the backup vault.
   final pulumi.Input<List<String>>? backupVaultEvents;
+
   /// Name of the backup vault to add notifications for.
   final pulumi.Input<String>? backupVaultName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   final pulumi.Input<String>? snsTopicArn;
 
@@ -41,12 +45,31 @@ class VaultNotificationsState {
 
   factory VaultNotificationsState.fromMap(Map<String, dynamic> map) {
     return VaultNotificationsState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : ((map['backupVaultArn'] as String).input()).input(),
-      backupVaultEvents: map['backupVaultEvents'] == null ? null : (((map['backupVaultEvents'] as List).cast<String>()).input()).input(),
-      backupVaultName: map['backupVaultName'] == null ? null : ((map['backupVaultName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
+      backupVaultArn: (() {
+        final guardedValue = map['backupVaultArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupVaultEvents: (() {
+        final guardedValue = map['backupVaultEvents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backupVaultName: (() {
+        final guardedValue = map['backupVaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snsTopicArn: (() {
+        final guardedValue = map['snsTopicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

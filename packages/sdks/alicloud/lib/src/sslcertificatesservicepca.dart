@@ -1,5 +1,3 @@
-library module_sslcertificatesservicepca;
-
 export 'sslcertificatesservicepca/cert.dart';
 export 'sslcertificatesservicepca/cert_args.dart';
 export 'sslcertificatesservicepca/cert_state.dart';

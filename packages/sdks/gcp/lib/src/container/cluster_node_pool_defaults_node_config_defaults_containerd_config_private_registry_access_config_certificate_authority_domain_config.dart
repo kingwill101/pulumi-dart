@@ -6,8 +6,12 @@ import 'cluster_node_pool_defaults_node_config_defaults_containerd_config_privat
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
   /// List of fully-qualified-domain-names. IPv4s and port specification are supported.
   final pulumi.Input<List<String>> fqdns;
+
   /// Parameters for configuring a certificate hosted in GCP SecretManager.
-  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig> gcpSecretManagerCertificateConfig;
+  final pulumi.Input<
+    ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig
+  >
+  gcpSecretManagerCertificateConfig;
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig].
   /// [fqdns] List of fully-qualified-domain-names. IPv4s and port specification are supported.
@@ -20,15 +24,25 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fqdns': fqdns,
-      'gcpSecretManagerCertificateConfig': pulumi.Input.mapInputValue<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig, Map<String, dynamic>>(gcpSecretManagerCertificateConfig, (value) => value.toMap()),
+      'gcpSecretManagerCertificateConfig':
+          pulumi.Input.mapInputValue<
+            ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig,
+            Map<String, dynamic>
+          >(gcpSecretManagerCertificateConfig, (value) => value.toMap()),
     };
   }
 
-  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(
-      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
-      gcpSecretManagerCertificateConfig: (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap((map['gcpSecretManagerCertificateConfig'] as Map).cast<String, dynamic>())).input(),
+      fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
+      gcpSecretManagerCertificateConfig: pulumi.Input.fromValue(
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap(
+          (map['gcpSecretManagerCertificateConfig']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

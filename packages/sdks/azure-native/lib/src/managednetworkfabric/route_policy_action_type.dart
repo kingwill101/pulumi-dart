@@ -4,16 +4,15 @@ enum RoutePolicyActionType {
   valueDeny("Deny"),
   valueContinue("Continue");
 
-  const RoutePolicyActionType(this.value);
-  final String value;
+  const RoutePolicyActionType(this.wireValue);
+  final String wireValue;
 
   static RoutePolicyActionType fromValue(String value) {
     for (final item in RoutePolicyActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutePolicyActionType value: $value');
   }
 }
-

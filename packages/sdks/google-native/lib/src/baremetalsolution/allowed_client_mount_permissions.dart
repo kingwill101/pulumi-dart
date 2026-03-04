@@ -4,16 +4,15 @@ enum AllowedClientMountPermissions {
   read("READ"),
   readWrite("READ_WRITE");
 
-  const AllowedClientMountPermissions(this.value);
-  final String value;
+  const AllowedClientMountPermissions(this.wireValue);
+  final String wireValue;
 
   static AllowedClientMountPermissions fromValue(String value) {
     for (final item in AllowedClientMountPermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllowedClientMountPermissions value: $value');
   }
 }
-

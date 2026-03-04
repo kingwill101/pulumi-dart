@@ -4,16 +4,20 @@ enum EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType {
   expectedMin("EXPECTED_MIN"),
   expectedMax("EXPECTED_MAX");
 
-  const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType value: $value',
+    );
   }
 }
-

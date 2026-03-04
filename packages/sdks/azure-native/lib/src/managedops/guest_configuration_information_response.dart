@@ -9,20 +9,19 @@ class GuestConfigurationInformationResponse {
 
   /// Creates a new [GuestConfigurationInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  GuestConfigurationInformationResponse({
-    required this.enablementStatus,
-  });
+  GuestConfigurationInformationResponse({required this.enablementStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enablementStatus': enablementStatus,
-    };
+    return <String, dynamic>{'enablementStatus': enablementStatus};
   }
 
-  factory GuestConfigurationInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory GuestConfigurationInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuestConfigurationInformationResponse(
-      enablementStatus: (map['enablementStatus'] as String).input(),
+      enablementStatus: pulumi.Input.fromValue(
+        map['enablementStatus'] as String,
+      ),
     );
   }
 }
-

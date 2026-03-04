@@ -5,16 +5,17 @@ enum RouterNatAutoNetworkTierComputeV1 {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const RouterNatAutoNetworkTierComputeV1(this.value);
-  final String value;
+  const RouterNatAutoNetworkTierComputeV1(this.wireValue);
+  final String wireValue;
 
   static RouterNatAutoNetworkTierComputeV1 fromValue(String value) {
     for (final item in RouterNatAutoNetworkTierComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatAutoNetworkTierComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatAutoNetworkTierComputeV1 value: $value',
+    );
   }
 }
-

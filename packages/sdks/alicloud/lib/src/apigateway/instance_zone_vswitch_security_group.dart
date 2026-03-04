@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceZoneVswitchSecurityGroup {
   /// The CIDR block of the VSwitch.
   final pulumi.Input<String> cidrBlock;
+
   /// The ID of the security group.
   final pulumi.Input<String> securityGroup;
+
   /// The VSwitch ID.
   final pulumi.Input<String> vswitchId;
+
   /// The zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -35,11 +38,10 @@ class InstanceZoneVswitchSecurityGroup {
 
   factory InstanceZoneVswitchSecurityGroup.fromMap(Map<String, dynamic> map) {
     return InstanceZoneVswitchSecurityGroup(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      securityGroup: (map['securityGroup'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      securityGroup: pulumi.Input.fromValue(map['securityGroup'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

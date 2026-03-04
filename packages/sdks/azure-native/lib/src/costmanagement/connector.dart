@@ -163,30 +163,43 @@ import 'connector_collection_info_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collection information
   late final pulumi.Output<ConnectorCollectionInfoResponse> collection;
+
   /// Connector definition creation datetime
   late final pulumi.Output<String> createdOn;
+
   /// Credentials authentication key (eg AWS ARN)
   late final pulumi.Output<String?> credentialsKey;
+
   /// Connector DisplayName (defaults to Name)
   late final pulumi.Output<String?> displayName;
+
   /// Connector kind (eg aws)
   late final pulumi.Output<String?> kind;
+
   /// Connector location
   late final pulumi.Output<String?> location;
+
   /// Connector last modified datetime
   late final pulumi.Output<String> modifiedOn;
+
   /// Connector name
   late final pulumi.Output<String> name;
+
   /// Connector providerAccountId (determined from credentials)
   late final pulumi.Output<String> providerAccountId;
+
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   late final pulumi.Output<String?> reportId;
+
   /// Connector status
   late final pulumi.Output<String?> status;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Connector type
   late final pulumi.Output<String> type;
 
@@ -199,24 +212,24 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:costmanagement:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collection = registerOutput<ConnectorCollectionInfoResponse>('collection');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.credentialsKey = registerOutput<String?>('credentialsKey');
-    this.displayName = registerOutput<String?>('displayName');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
-    this.modifiedOn = registerOutput<String>('modifiedOn');
+         'azure-native:costmanagement:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collection = registerOutput<ConnectorCollectionInfoResponse>('collection');
+    createdOn = registerOutput<String>('createdOn');
+    credentialsKey = registerOutput<String?>('credentialsKey');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
-    this.providerAccountId = registerOutput<String>('providerAccountId');
-    this.reportId = registerOutput<String?>('reportId');
-    this.status = registerOutput<String?>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    providerAccountId = registerOutput<String>('providerAccountId');
+    reportId = registerOutput<String?>('reportId');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

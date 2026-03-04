@@ -8,16 +8,15 @@ enum InstancePlatform {
   windowsWithSqlServerStandard("Windows with SQL Server Standard"),
   windowsWithSqlServerWeb("Windows with SQL Server Web");
 
-  const InstancePlatform(this.value);
-  final String value;
+  const InstancePlatform(this.wireValue);
+  final String wireValue;
 
   static InstancePlatform fromValue(String value) {
     for (final item in InstancePlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstancePlatform value: $value');
   }
 }
-

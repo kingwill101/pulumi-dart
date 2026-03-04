@@ -3,16 +3,15 @@ enum DiskFileFormat {
   vhdx("vhdx"),
   vhd("vhd");
 
-  const DiskFileFormat(this.value);
-  final String value;
+  const DiskFileFormat(this.wireValue);
+  final String wireValue;
 
   static DiskFileFormat fromValue(String value) {
     for (final item in DiskFileFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskFileFormat value: $value');
   }
 }
-

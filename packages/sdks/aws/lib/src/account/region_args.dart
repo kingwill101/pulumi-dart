@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must also be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned.
   final pulumi.Input<String>? accountId;
+
   /// Whether the region is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The region name to manage.
   final pulumi.Input<String> regionName;
 
@@ -18,11 +20,7 @@ class RegionArgs {
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must also be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned.
   /// [enabled] Whether the region is enabled.
   /// [regionName] The region name to manage.
-  RegionArgs({
-    this.accountId,
-    required this.enabled,
-    required this.regionName,
-  });
+  RegionArgs({this.accountId, required this.enabled, required this.regionName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,13 @@ class RegionArgs {
 
   factory RegionArgs.fromMap(Map<String, dynamic> map) {
     return RegionArgs(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      enabled: (map['enabled'] as bool).input(),
-      regionName: (map['regionName'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      regionName: pulumi.Input.fromValue(map['regionName'] as String),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'deployment_settings_response.dart';
 class DeploymentResourcePropertiesResponse {
   /// Indicates whether the Deployment is active
   final pulumi.Input<bool>? active;
+
   /// Deployment settings of the Deployment
   final pulumi.Input<DeploymentSettingsResponse>? deploymentSettings;
+
   /// Collection of instances belong to the Deployment
   final pulumi.Input<List<DeploymentInstanceResponse>> instances;
+
   /// Provisioning state of the Deployment
   final pulumi.Input<String> provisioningState;
+
   /// Uploaded source information of the deployment.
   final pulumi.Input<BuildResultUserSourceInfoResponse>? source;
+
   /// Status of the Deployment
   final pulumi.Input<String> status;
 
@@ -39,23 +44,72 @@ class DeploymentResourcePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': ?active,
-      'deploymentSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentSettingsResponse, Map<String, dynamic>>(deploymentSettings, (value) => value.toMap()),
-      'instances': pulumi.Input.mapInputValue<List<DeploymentInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<DeploymentInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deploymentSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentSettingsResponse,
+            Map<String, dynamic>
+          >(deploymentSettings, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.mapInputValue<
+            List<DeploymentInstanceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            instances,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentInstanceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
-      'source': ?pulumi.Input.mapOptionalInputValue<BuildResultUserSourceInfoResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildResultUserSourceInfoResponse,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
       'status': status,
     };
   }
 
-  factory DeploymentResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DeploymentResourcePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentResourcePropertiesResponse(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
-      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettingsResponse.fromMap((map['deploymentSettings']! as Map).cast<String, dynamic>())).input(),
-      instances: (pulumi.Input.decodeList<DeploymentInstanceResponse>(map['instances'], (value) => DeploymentInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      source: map['source'] == null ? null : (BuildResultUserSourceInfoResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
-      status: (map['status'] as String).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deploymentSettings: (() {
+        final guardedValue = map['deploymentSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instances: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DeploymentInstanceResponse>(
+          map['instances']!,
+          (value) => DeploymentInstanceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildResultUserSourceInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

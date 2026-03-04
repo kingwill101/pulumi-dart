@@ -5,16 +5,15 @@ enum Bypass {
   valueMetrics("Metrics"),
   valueAzureServices("AzureServices");
 
-  const Bypass(this.value);
-  final String value;
+  const Bypass(this.wireValue);
+  final String wireValue;
 
   static Bypass fromValue(String value) {
     for (final item in Bypass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Bypass value: $value');
   }
 }
-

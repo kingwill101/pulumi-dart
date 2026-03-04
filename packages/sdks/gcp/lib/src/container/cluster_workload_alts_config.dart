@@ -8,20 +8,15 @@ class ClusterWorkloadAltsConfig {
 
   /// Creates a new [ClusterWorkloadAltsConfig].
   /// [enableAlts] Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
-  ClusterWorkloadAltsConfig({
-    required this.enableAlts,
-  });
+  ClusterWorkloadAltsConfig({required this.enableAlts});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableAlts': enableAlts,
-    };
+    return <String, dynamic>{'enableAlts': enableAlts};
   }
 
   factory ClusterWorkloadAltsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterWorkloadAltsConfig(
-      enableAlts: (map['enableAlts'] as bool).input(),
+      enableAlts: pulumi.Input.fromValue(map['enableAlts'] as bool),
     );
   }
 }
-

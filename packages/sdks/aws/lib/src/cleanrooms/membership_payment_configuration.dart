@@ -8,20 +8,25 @@ class MembershipPaymentConfiguration {
 
   /// Creates a new [MembershipPaymentConfiguration].
   /// [queryCompute] Required.
-  MembershipPaymentConfiguration({
-    required this.queryCompute,
-  });
+  MembershipPaymentConfiguration({required this.queryCompute});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'queryCompute': pulumi.Input.mapInputValue<MembershipPaymentConfigurationQueryCompute, Map<String, dynamic>>(queryCompute, (value) => value.toMap()),
+      'queryCompute':
+          pulumi.Input.mapInputValue<
+            MembershipPaymentConfigurationQueryCompute,
+            Map<String, dynamic>
+          >(queryCompute, (value) => value.toMap()),
     };
   }
 
   factory MembershipPaymentConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipPaymentConfiguration(
-      queryCompute: (MembershipPaymentConfigurationQueryCompute.fromMap((map['queryCompute']! as Map).cast<String, dynamic>())).input(),
+      queryCompute: pulumi.Input.fromValue(
+        MembershipPaymentConfigurationQueryCompute.fromMap(
+          (map['queryCompute']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

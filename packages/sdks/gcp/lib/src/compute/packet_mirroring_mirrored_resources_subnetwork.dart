@@ -8,20 +8,17 @@ class PacketMirroringMirroredResourcesSubnetwork {
 
   /// Creates a new [PacketMirroringMirroredResourcesSubnetwork].
   /// [url] The URL of the subnetwork where this rule should be active.
-  PacketMirroringMirroredResourcesSubnetwork({
-    required this.url,
-  });
+  PacketMirroringMirroredResourcesSubnetwork({required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-    };
+    return <String, dynamic>{'url': url};
   }
 
-  factory PacketMirroringMirroredResourcesSubnetwork.fromMap(Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourcesSubnetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PacketMirroringMirroredResourcesSubnetwork(
-      url: (map['url'] as String).input(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

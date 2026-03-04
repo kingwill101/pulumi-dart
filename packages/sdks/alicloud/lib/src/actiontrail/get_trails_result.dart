@@ -8,18 +8,23 @@ import 'get_trails_trail.dart';
 class GetTrailsResult {
   /// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
   final List<GetTrailsActiontrail> actiontrails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of ActionTrail Trail ids. It is the same as trail name.
   final List<String> ids;
   final bool? includeOrganizationTrail;
   final bool? includeShadowTrails;
   final String? nameRegex;
+
   /// A list of trail names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the ActionTrail Trail.
   final String? status;
+
   /// A list of ActionTrail Trails. Each element contains the following attributes:
   final List<GetTrailsTrail> trails;
 
@@ -49,7 +54,11 @@ class GetTrailsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actiontrails': pulumi.Input.encodeList<GetTrailsActiontrail, Map<String, dynamic>>(actiontrails, (value) => value.toMap()),
+      'actiontrails':
+          pulumi.Input.encodeList<GetTrailsActiontrail, Map<String, dynamic>>(
+            actiontrails,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'includeOrganizationTrail': ?includeOrganizationTrail,
@@ -58,23 +67,54 @@ class GetTrailsResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'trails': pulumi.Input.encodeList<GetTrailsTrail, Map<String, dynamic>>(trails, (value) => value.toMap()),
+      'trails': pulumi.Input.encodeList<GetTrailsTrail, Map<String, dynamic>>(
+        trails,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetTrailsResult.fromMap(Map<String, dynamic> map) {
     return GetTrailsResult(
-      actiontrails: pulumi.Input.decodeList<GetTrailsActiontrail>(map['actiontrails'], (value) => GetTrailsActiontrail.fromMap((value as Map).cast<String, dynamic>())),
+      actiontrails: pulumi.Input.decodeList<GetTrailsActiontrail>(
+        map['actiontrails']!,
+        (value) => GetTrailsActiontrail.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : map['includeOrganizationTrail']! as bool,
-      includeShadowTrails: map['includeShadowTrails'] == null ? null : map['includeShadowTrails']! as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeOrganizationTrail: (() {
+        final guardedValue = map['includeOrganizationTrail'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      includeShadowTrails: (() {
+        final guardedValue = map['includeShadowTrails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      trails: pulumi.Input.decodeList<GetTrailsTrail>(map['trails'], (value) => GetTrailsTrail.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trails: pulumi.Input.decodeList<GetTrailsTrail>(
+        map['trails']!,
+        (value) =>
+            GetTrailsTrail.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

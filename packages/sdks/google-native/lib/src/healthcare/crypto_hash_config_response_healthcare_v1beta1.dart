@@ -7,6 +7,7 @@ import 'kms_wrapped_crypto_key_response_healthcare_v1beta1.dart';
 class CryptoHashConfigResponseHealthcareV1beta1 {
   /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
   final pulumi.Input<String> cryptoKey;
+
   /// KMS wrapped key. Must not be set if crypto_key is set.
   final pulumi.Input<KmsWrappedCryptoKeyResponseHealthcareV1beta1> kmsWrapped;
 
@@ -21,15 +22,24 @@ class CryptoHashConfigResponseHealthcareV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKey': cryptoKey,
-      'kmsWrapped': pulumi.Input.mapInputValue<KmsWrappedCryptoKeyResponseHealthcareV1beta1, Map<String, dynamic>>(kmsWrapped, (value) => value.toMap()),
+      'kmsWrapped':
+          pulumi.Input.mapInputValue<
+            KmsWrappedCryptoKeyResponseHealthcareV1beta1,
+            Map<String, dynamic>
+          >(kmsWrapped, (value) => value.toMap()),
     };
   }
 
-  factory CryptoHashConfigResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CryptoHashConfigResponseHealthcareV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CryptoHashConfigResponseHealthcareV1beta1(
-      cryptoKey: (map['cryptoKey'] as String).input(),
-      kmsWrapped: (KmsWrappedCryptoKeyResponseHealthcareV1beta1.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: pulumi.Input.fromValue(map['cryptoKey'] as String),
+      kmsWrapped: pulumi.Input.fromValue(
+        KmsWrappedCryptoKeyResponseHealthcareV1beta1.fromMap(
+          (map['kmsWrapped']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

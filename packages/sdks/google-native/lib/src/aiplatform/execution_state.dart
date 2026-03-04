@@ -8,16 +8,15 @@ enum ExecutionState {
   cached("CACHED"),
   cancelled("CANCELLED");
 
-  const ExecutionState(this.value);
-  final String value;
+  const ExecutionState(this.wireValue);
+  final String wireValue;
 
   static ExecutionState fromValue(String value) {
     for (final item in ExecutionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecutionState value: $value');
   }
 }
-

@@ -7,6 +7,7 @@ import 'fingerprint_response_containeranalysis_v1beta1.dart';
 class BasisResponseContaineranalysisV1beta1 {
   /// Immutable. The fingerprint of the base image.
   final pulumi.Input<FingerprintResponseContaineranalysisV1beta1> fingerprint;
+
   /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
   final pulumi.Input<String> resourceUrl;
 
@@ -20,16 +21,25 @@ class BasisResponseContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fingerprint': pulumi.Input.mapInputValue<FingerprintResponseContaineranalysisV1beta1, Map<String, dynamic>>(fingerprint, (value) => value.toMap()),
+      'fingerprint':
+          pulumi.Input.mapInputValue<
+            FingerprintResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(fingerprint, (value) => value.toMap()),
       'resourceUrl': resourceUrl,
     };
   }
 
-  factory BasisResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory BasisResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BasisResponseContaineranalysisV1beta1(
-      fingerprint: (FingerprintResponseContaineranalysisV1beta1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>())).input(),
-      resourceUrl: (map['resourceUrl'] as String).input(),
+      fingerprint: pulumi.Input.fromValue(
+        FingerprintResponseContaineranalysisV1beta1.fromMap(
+          (map['fingerprint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceUrl: pulumi.Input.fromValue(map['resourceUrl'] as String),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprResponseAppHealth {
   /// Boolean indicating if the health probe is enabled
   final pulumi.Input<bool>? enabled;
+
   /// Path for the health probe
   final pulumi.Input<String>? path;
+
   /// Interval for the health probe in seconds
   final pulumi.Input<int>? probeIntervalSeconds;
+
   /// Timeout for the health probe in milliseconds
   final pulumi.Input<int>? probeTimeoutMilliseconds;
+
   /// Threshold for the health probe
   final pulumi.Input<int>? threshold;
 
@@ -41,12 +45,31 @@ class DaprResponseAppHealth {
 
   factory DaprResponseAppHealth.fromMap(Map<String, dynamic> map) {
     return DaprResponseAppHealth(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      probeIntervalSeconds: map['probeIntervalSeconds'] == null ? null : (map['probeIntervalSeconds']! as int).input(),
-      probeTimeoutMilliseconds: map['probeTimeoutMilliseconds'] == null ? null : (map['probeTimeoutMilliseconds']! as int).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      probeIntervalSeconds: (() {
+        final guardedValue = map['probeIntervalSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      probeTimeoutMilliseconds: (() {
+        final guardedValue = map['probeTimeoutMilliseconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -140,18 +140,25 @@ import 'network_experiment_profile_args.dart';
 class NetworkExperimentProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The state of the Experiment
   late final pulumi.Output<String?> enabledState;
+
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource status.
   late final pulumi.Output<String> resourceState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -164,18 +171,18 @@ class NetworkExperimentProfile extends pulumi.CustomResource {
     NetworkExperimentProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:frontdoor:NetworkExperimentProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enabledState = registerOutput<String?>('enabledState');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:frontdoor:NetworkExperimentProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enabledState = registerOutput<String?>('enabledState');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    resourceState = registerOutput<String>('resourceState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigTableIODetailsResponse {
   /// InstanceId accessed in the connection.
   final pulumi.Input<String> instanceId;
+
   /// ProjectId accessed in the connection.
   final pulumi.Input<String> project;
+
   /// TableId accessed in the connection.
   final pulumi.Input<String> tableId;
 
@@ -31,10 +33,9 @@ class BigTableIODetailsResponse {
 
   factory BigTableIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return BigTableIODetailsResponse(
-      instanceId: (map['instanceId'] as String).input(),
-      project: (map['project'] as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

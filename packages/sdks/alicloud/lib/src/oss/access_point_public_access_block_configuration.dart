@@ -8,20 +8,21 @@ class AccessPointPublicAccessBlockConfiguration {
 
   /// Creates a new [AccessPointPublicAccessBlockConfiguration].
   /// [blockPublicAccess] Block public access enabled for access point
-  AccessPointPublicAccessBlockConfiguration({
-    this.blockPublicAccess,
-  });
+  AccessPointPublicAccessBlockConfiguration({this.blockPublicAccess});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'blockPublicAccess': ?blockPublicAccess,
-    };
+    return <String, dynamic>{'blockPublicAccess': ?blockPublicAccess};
   }
 
-  factory AccessPointPublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AccessPointPublicAccessBlockConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPointPublicAccessBlockConfiguration(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess']! as bool).input(),
+      blockPublicAccess: (() {
+        final guardedValue = map['blockPublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

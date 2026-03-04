@@ -5,23 +5,27 @@ import 'samlidp_response.dart';
 
 /// Definition of SAMLOptionsOutput
 class SAMLOptionsOutputResponse {
-  /// <p>True if SAML is enabled.</p>
+  /// &lt;p&gt;True if SAML is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
-  /// <p>Describes the SAML identity provider's information.</p>
+
+  /// &lt;p&gt;Describes the SAML identity provider's information.&lt;/p&gt;
   final pulumi.Input<SAMLIdpResponse>? idp;
-  /// <p>The key used for matching the SAML roles attribute.</p>
+
+  /// &lt;p&gt;The key used for matching the SAML roles attribute.&lt;/p&gt;
   final pulumi.Input<String>? rolesKey;
-  /// <p>The duration, in minutes, after which a user session becomes inactive.</p>
+
+  /// &lt;p&gt;The duration, in minutes, after which a user session becomes inactive.&lt;/p&gt;
   final pulumi.Input<int>? sessionTimeoutMinutes;
-  /// <p>The key used for matching the SAML subject attribute.</p>
+
+  /// &lt;p&gt;The key used for matching the SAML subject attribute.&lt;/p&gt;
   final pulumi.Input<String>? subjectKey;
 
   /// Creates a new [SAMLOptionsOutputResponse].
-  /// [enabled] <p>True if SAML is enabled.</p>
-  /// [idp] <p>Describes the SAML identity provider's information.</p>
-  /// [rolesKey] <p>The key used for matching the SAML roles attribute.</p>
-  /// [sessionTimeoutMinutes] <p>The duration, in minutes, after which a user session becomes inactive.</p>
-  /// [subjectKey] <p>The key used for matching the SAML subject attribute.</p>
+  /// [enabled] &lt;p&gt;True if SAML is enabled.&lt;/p&gt;
+  /// [idp] &lt;p&gt;Describes the SAML identity provider's information.&lt;/p&gt;
+  /// [rolesKey] &lt;p&gt;The key used for matching the SAML roles attribute.&lt;/p&gt;
+  /// [sessionTimeoutMinutes] &lt;p&gt;The duration, in minutes, after which a user session becomes inactive.&lt;/p&gt;
+  /// [subjectKey] &lt;p&gt;The key used for matching the SAML subject attribute.&lt;/p&gt;
   SAMLOptionsOutputResponse({
     this.enabled,
     this.idp,
@@ -33,7 +37,11 @@ class SAMLOptionsOutputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'idp': ?pulumi.Input.mapOptionalInputValue<SAMLIdpResponse, Map<String, dynamic>>(idp, (value) => value.toMap()),
+      'idp':
+          ?pulumi.Input.mapOptionalInputValue<
+            SAMLIdpResponse,
+            Map<String, dynamic>
+          >(idp, (value) => value.toMap()),
       'rolesKey': ?rolesKey,
       'sessionTimeoutMinutes': ?sessionTimeoutMinutes,
       'subjectKey': ?subjectKey,
@@ -42,12 +50,35 @@ class SAMLOptionsOutputResponse {
 
   factory SAMLOptionsOutputResponse.fromMap(Map<String, dynamic> map) {
     return SAMLOptionsOutputResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      idp: map['idp'] == null ? null : (SAMLIdpResponse.fromMap((map['idp']! as Map).cast<String, dynamic>())).input(),
-      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey']! as String).input(),
-      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes']! as int).input(),
-      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idp: (() {
+        final guardedValue = map['idp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SAMLIdpResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rolesKey: (() {
+        final guardedValue = map['rolesKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionTimeoutMinutes: (() {
+        final guardedValue = map['sessionTimeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      subjectKey: (() {
+        final guardedValue = map['subjectKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

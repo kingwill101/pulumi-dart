@@ -9,22 +9,31 @@ import 'system_data_response.dart';
 class GetPrivateLinkScopeResult {
   /// Access mode settings
   final AccessModeSettingsResponse accessModeSettings;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// List of private endpoint connections.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
   final String provisioningState;
+
   /// System data
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -59,7 +68,11 @@ class GetPrivateLinkScopeResult {
       'id': id,
       'location': location,
       'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections':
+          pulumi.Input.encodeList<
+            PrivateEndpointConnectionResponse,
+            Map<String, dynamic>
+          >(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -69,17 +82,30 @@ class GetPrivateLinkScopeResult {
 
   factory GetPrivateLinkScopeResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkScopeResult(
-      accessModeSettings: AccessModeSettingsResponse.fromMap((map['accessModeSettings'] as Map).cast<String, dynamic>()),
+      accessModeSettings: AccessModeSettingsResponse.fromMap(
+        (map['accessModeSettings']! as Map).cast<String, dynamic>(),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections:
+          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+            map['privateEndpointConnections']!,
+            (value) => PrivateEndpointConnectionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

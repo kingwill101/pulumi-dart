@@ -1,15 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scaling_rule_alarm_dimension.dart';
 import 'scaling_rule_args.dart';
-import 'scaling_rule_hybrid_metric.dart';
 import 'scaling_rule_state.dart';
-import 'scaling_rule_step_adjustment.dart';
 
 /// Provides a ESS scaling rule resource.
 ///
 /// For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
 ///
-/// > **NOTE:** Available since v1.39.0.
+/// &gt; **NOTE:** Available since v1.39.0.
 ///
 /// ## Example Usage
 ///
@@ -618,53 +616,76 @@ class ScalingRule extends pulumi.CustomResource {
   /// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
   /// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
   late final pulumi.Output<String?> adjustmentType;
+
   /// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
   /// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
   /// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
   /// - TotalCapacity：[0, 1000]
   late final pulumi.Output<int?> adjustmentValue;
+
   /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
   late final pulumi.Output<ScalingRuleAlarmDimension?> alarmDimension;
+
   /// The unique identifier of the scaling rule.
   late final pulumi.Output<String> ari;
+
   /// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
   late final pulumi.Output<int?> cooldown;
+
   /// Indicates whether scale in by the target tracking policy is disabled. Default to false.
   late final pulumi.Output<bool?> disableScaleIn;
+
   /// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
   late final pulumi.Output<int> estimatedInstanceWarmup;
+
   /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
-  late final pulumi.Output<List<ScalingRuleHybridMetric>?> hybridMetrics;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hybridMetrics;
+
   /// The ID of the Hybrid Cloud Monitoring metric repository.
   late final pulumi.Output<String?> hybridMonitorNamespace;
+
   /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
   late final pulumi.Output<int> initialMaxSize;
+
   /// A CloudMonitor metric name.
   late final pulumi.Output<String?> metricName;
+
   /// The type of the metric. Valid values: system, custom, hybrid.
   late final pulumi.Output<String> metricType;
+
   /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
   late final pulumi.Output<int?> minAdjustmentMagnitude;
+
   /// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
   late final pulumi.Output<String> predictiveScalingMode;
+
   /// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
   late final pulumi.Output<int> predictiveTaskBufferTime;
+
   /// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
   late final pulumi.Output<String> predictiveValueBehavior;
+
   /// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
   late final pulumi.Output<int> predictiveValueBuffer;
+
   /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
   late final pulumi.Output<int> scaleInEvaluationCount;
+
   /// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
   late final pulumi.Output<int> scaleOutEvaluationCount;
+
   /// ID of the scaling group of a scaling rule.
   late final pulumi.Output<String> scalingGroupId;
+
   /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
   late final pulumi.Output<String> scalingRuleName;
+
   /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
   late final pulumi.Output<String?> scalingRuleType;
+
   /// Steps for StepScalingRule. See `step_adjustment` below.
-  late final pulumi.Output<List<ScalingRuleStepAdjustment>?> stepAdjustments;
+  late final pulumi.Output<List<Map<String, dynamic>>?> stepAdjustments;
+
   /// The target value for the metric.
   late final pulumi.Output<double?> targetValue;
 
@@ -677,35 +698,41 @@ class ScalingRule extends pulumi.CustomResource {
     ScalingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingRule:ScalingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adjustmentType = registerOutput<String?>('adjustmentType');
-    this.adjustmentValue = registerOutput<int?>('adjustmentValue');
-    this.alarmDimension = registerOutput<ScalingRuleAlarmDimension?>('alarmDimension');
-    this.ari = registerOutput<String>('ari');
-    this.cooldown = registerOutput<int?>('cooldown');
-    this.disableScaleIn = registerOutput<bool?>('disableScaleIn');
-    this.estimatedInstanceWarmup = registerOutput<int>('estimatedInstanceWarmup');
-    this.hybridMetrics = registerOutput<List<ScalingRuleHybridMetric>?>('hybridMetrics');
-    this.hybridMonitorNamespace = registerOutput<String?>('hybridMonitorNamespace');
-    this.initialMaxSize = registerOutput<int>('initialMaxSize');
-    this.metricName = registerOutput<String?>('metricName');
-    this.metricType = registerOutput<String>('metricType');
-    this.minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
-    this.predictiveScalingMode = registerOutput<String>('predictiveScalingMode');
-    this.predictiveTaskBufferTime = registerOutput<int>('predictiveTaskBufferTime');
-    this.predictiveValueBehavior = registerOutput<String>('predictiveValueBehavior');
-    this.predictiveValueBuffer = registerOutput<int>('predictiveValueBuffer');
-    this.scaleInEvaluationCount = registerOutput<int>('scaleInEvaluationCount');
-    this.scaleOutEvaluationCount = registerOutput<int>('scaleOutEvaluationCount');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.scalingRuleName = registerOutput<String>('scalingRuleName');
-    this.scalingRuleType = registerOutput<String?>('scalingRuleType');
-    this.stepAdjustments = registerOutput<List<ScalingRuleStepAdjustment>?>('stepAdjustments');
-    this.targetValue = registerOutput<double?>('targetValue');
+         'alicloud:ess/scalingRule:ScalingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adjustmentType = registerOutput<String?>('adjustmentType');
+    adjustmentValue = registerOutput<int?>('adjustmentValue');
+    alarmDimension = registerOutput<ScalingRuleAlarmDimension?>(
+      'alarmDimension',
+    );
+    ari = registerOutput<String>('ari');
+    cooldown = registerOutput<int?>('cooldown');
+    disableScaleIn = registerOutput<bool?>('disableScaleIn');
+    estimatedInstanceWarmup = registerOutput<int>('estimatedInstanceWarmup');
+    hybridMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'hybridMetrics',
+    );
+    hybridMonitorNamespace = registerOutput<String?>('hybridMonitorNamespace');
+    initialMaxSize = registerOutput<int>('initialMaxSize');
+    metricName = registerOutput<String?>('metricName');
+    metricType = registerOutput<String>('metricType');
+    minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
+    predictiveScalingMode = registerOutput<String>('predictiveScalingMode');
+    predictiveTaskBufferTime = registerOutput<int>('predictiveTaskBufferTime');
+    predictiveValueBehavior = registerOutput<String>('predictiveValueBehavior');
+    predictiveValueBuffer = registerOutput<int>('predictiveValueBuffer');
+    scaleInEvaluationCount = registerOutput<int>('scaleInEvaluationCount');
+    scaleOutEvaluationCount = registerOutput<int>('scaleOutEvaluationCount');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    scalingRuleName = registerOutput<String>('scalingRuleName');
+    scalingRuleType = registerOutput<String?>('scalingRuleType');
+    stepAdjustments = registerOutput<List<Map<String, dynamic>>?>(
+      'stepAdjustments',
+    );
+    targetValue = registerOutput<double?>('targetValue');
   }
 
   /// Gets an existing [ScalingRule] resource's state with the given [name] and [id].
@@ -726,34 +753,40 @@ class ScalingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingRule:ScalingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adjustmentType = registerOutput<String?>('adjustmentType');
-    this.adjustmentValue = registerOutput<int?>('adjustmentValue');
-    this.alarmDimension = registerOutput<ScalingRuleAlarmDimension?>('alarmDimension');
-    this.ari = registerOutput<String>('ari');
-    this.cooldown = registerOutput<int?>('cooldown');
-    this.disableScaleIn = registerOutput<bool?>('disableScaleIn');
-    this.estimatedInstanceWarmup = registerOutput<int>('estimatedInstanceWarmup');
-    this.hybridMetrics = registerOutput<List<ScalingRuleHybridMetric>?>('hybridMetrics');
-    this.hybridMonitorNamespace = registerOutput<String?>('hybridMonitorNamespace');
-    this.initialMaxSize = registerOutput<int>('initialMaxSize');
-    this.metricName = registerOutput<String?>('metricName');
-    this.metricType = registerOutput<String>('metricType');
-    this.minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
-    this.predictiveScalingMode = registerOutput<String>('predictiveScalingMode');
-    this.predictiveTaskBufferTime = registerOutput<int>('predictiveTaskBufferTime');
-    this.predictiveValueBehavior = registerOutput<String>('predictiveValueBehavior');
-    this.predictiveValueBuffer = registerOutput<int>('predictiveValueBuffer');
-    this.scaleInEvaluationCount = registerOutput<int>('scaleInEvaluationCount');
-    this.scaleOutEvaluationCount = registerOutput<int>('scaleOutEvaluationCount');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.scalingRuleName = registerOutput<String>('scalingRuleName');
-    this.scalingRuleType = registerOutput<String?>('scalingRuleType');
-    this.stepAdjustments = registerOutput<List<ScalingRuleStepAdjustment>?>('stepAdjustments');
-    this.targetValue = registerOutput<double?>('targetValue');
+         'alicloud:ess/scalingRule:ScalingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adjustmentType = registerOutput<String?>('adjustmentType');
+    adjustmentValue = registerOutput<int?>('adjustmentValue');
+    alarmDimension = registerOutput<ScalingRuleAlarmDimension?>(
+      'alarmDimension',
+    );
+    ari = registerOutput<String>('ari');
+    cooldown = registerOutput<int?>('cooldown');
+    disableScaleIn = registerOutput<bool?>('disableScaleIn');
+    estimatedInstanceWarmup = registerOutput<int>('estimatedInstanceWarmup');
+    hybridMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'hybridMetrics',
+    );
+    hybridMonitorNamespace = registerOutput<String?>('hybridMonitorNamespace');
+    initialMaxSize = registerOutput<int>('initialMaxSize');
+    metricName = registerOutput<String?>('metricName');
+    metricType = registerOutput<String>('metricType');
+    minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
+    predictiveScalingMode = registerOutput<String>('predictiveScalingMode');
+    predictiveTaskBufferTime = registerOutput<int>('predictiveTaskBufferTime');
+    predictiveValueBehavior = registerOutput<String>('predictiveValueBehavior');
+    predictiveValueBuffer = registerOutput<int>('predictiveValueBuffer');
+    scaleInEvaluationCount = registerOutput<int>('scaleInEvaluationCount');
+    scaleOutEvaluationCount = registerOutput<int>('scaleOutEvaluationCount');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    scalingRuleName = registerOutput<String>('scalingRuleName');
+    scalingRuleType = registerOutput<String?>('scalingRuleType');
+    stepAdjustments = registerOutput<List<Map<String, dynamic>>?>(
+      'stepAdjustments',
+    );
+    targetValue = registerOutput<double?>('targetValue');
   }
 }

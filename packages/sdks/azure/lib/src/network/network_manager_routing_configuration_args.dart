@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerRoutingConfigurationArgs {
   /// The description of the Network Manager Routing Configuration.
   final pulumi.Input<String>? description;
+
   /// The name which should be used for this Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Configuration to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Network Manager. Changing this forces a new Network Manager Routing Configuration to be created.
   final pulumi.Input<String> networkManagerId;
+
   /// The route table usage mode for the Network Manager Routing Configuration. Possible values are `ManagedOnly` and `UseExisting`. Defaults to `ManagedOnly`.
   final pulumi.Input<String>? routeTableUsageMode;
 
@@ -37,13 +40,28 @@ class NetworkManagerRoutingConfigurationArgs {
     };
   }
 
-  factory NetworkManagerRoutingConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerRoutingConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerRoutingConfigurationArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
-      routeTableUsageMode: map['routeTableUsageMode'] == null ? null : (map['routeTableUsageMode']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
+      routeTableUsageMode: (() {
+        final guardedValue = map['routeTableUsageMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

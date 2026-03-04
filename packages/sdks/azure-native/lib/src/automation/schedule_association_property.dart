@@ -9,20 +9,19 @@ class ScheduleAssociationProperty {
 
   /// Creates a new [ScheduleAssociationProperty].
   /// [name] Gets or sets the name of the Schedule.
-  ScheduleAssociationProperty({
-    this.name,
-  });
+  ScheduleAssociationProperty({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory ScheduleAssociationProperty.fromMap(Map<String, dynamic> map) {
     return ScheduleAssociationProperty(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

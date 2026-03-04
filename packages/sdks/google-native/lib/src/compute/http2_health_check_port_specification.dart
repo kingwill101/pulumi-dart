@@ -4,16 +4,17 @@ enum HTTP2HealthCheckPortSpecification {
   useNamedPort("USE_NAMED_PORT"),
   useServingPort("USE_SERVING_PORT");
 
-  const HTTP2HealthCheckPortSpecification(this.value);
-  final String value;
+  const HTTP2HealthCheckPortSpecification(this.wireValue);
+  final String wireValue;
 
   static HTTP2HealthCheckPortSpecification fromValue(String value) {
     for (final item in HTTP2HealthCheckPortSpecification.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTP2HealthCheckPortSpecification value: $value');
+    throw ArgumentError(
+      'Unknown HTTP2HealthCheckPortSpecification value: $value',
+    );
   }
 }
-

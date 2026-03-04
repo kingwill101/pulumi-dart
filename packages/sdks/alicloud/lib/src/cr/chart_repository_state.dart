@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChartRepositoryState {
   /// The ID of the Container Registry instance.
   final pulumi.Input<String>? instanceId;
+
   /// The name of the repository that you want to create.
   final pulumi.Input<String>? repoName;
+
   /// The namespace to which the repository belongs.
   final pulumi.Input<String>? repoNamespaceName;
+
   /// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   final pulumi.Input<String>? repoType;
+
   /// The summary about the repository.
   final pulumi.Input<String>? summary;
 
@@ -41,12 +45,31 @@ class ChartRepositoryState {
 
   factory ChartRepositoryState.fromMap(Map<String, dynamic> map) {
     return ChartRepositoryState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName']! as String).input(),
-      repoType: map['repoType'] == null ? null : (map['repoType']! as String).input(),
-      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoName: (() {
+        final guardedValue = map['repoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoNamespaceName: (() {
+        final guardedValue = map['repoNamespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoType: (() {
+        final guardedValue = map['repoType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

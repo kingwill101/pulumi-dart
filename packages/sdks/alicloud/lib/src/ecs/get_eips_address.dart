@@ -6,27 +6,34 @@ class GetEipsAddress {
   final pulumi.Input<String> addressName;
   final pulumi.Input<String> allocationId;
   final pulumi.Input<List<String>> availableRegions;
+
   /// EIP internet max bandwidth in Mbps.
   final pulumi.Input<String> bandwidth;
   final pulumi.Input<String> bandwidthPackageBandwidth;
   final pulumi.Input<String> bandwidthPackageId;
   final pulumi.Input<String> bandwidthPackageType;
   final pulumi.Input<String> createTime;
+
   /// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
   final pulumi.Input<bool> deletionProtection;
   final pulumi.Input<String> description;
   final pulumi.Input<String> expiredTime;
   final pulumi.Input<String> hasReservationData;
   final pulumi.Input<String> hdMonitorStatus;
+
   /// ID of the EIP.
   final pulumi.Input<String> id;
+
   /// The ID of the instance that is being bound.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> instanceRegionId;
+
   /// The instance type of that the EIP is bound.
   final pulumi.Input<String> instanceType;
+
   /// EIP internet charge type.
   final pulumi.Input<String> internetChargeType;
+
   /// Public IP Address of the the EIP.
   final pulumi.Input<String> ipAddress;
   final pulumi.Input<String> isp;
@@ -36,12 +43,15 @@ class GetEipsAddress {
   final pulumi.Input<String> reservationBandwidth;
   final pulumi.Input<String> reservationInternetChargeType;
   final pulumi.Input<String> reservationOrderType;
+
   /// The Id of resource group which the eips belongs.
   final pulumi.Input<String> resourceGroupId;
   final pulumi.Input<bool> secondLimited;
   final pulumi.Input<String> segmentInstanceId;
+
   /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
   final pulumi.Input<String> status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -149,38 +159,65 @@ class GetEipsAddress {
 
   factory GetEipsAddress.fromMap(Map<String, dynamic> map) {
     return GetEipsAddress(
-      addressName: (map['addressName'] as String).input(),
-      allocationId: (map['allocationId'] as String).input(),
-      availableRegions: ((map['availableRegions'] as List).cast<String>()).input(),
-      bandwidth: (map['bandwidth'] as String).input(),
-      bandwidthPackageBandwidth: (map['bandwidthPackageBandwidth'] as String).input(),
-      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      bandwidthPackageType: (map['bandwidthPackageType'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      deletionProtection: (map['deletionProtection'] as bool).input(),
-      description: (map['description'] as String).input(),
-      expiredTime: (map['expiredTime'] as String).input(),
-      hasReservationData: (map['hasReservationData'] as String).input(),
-      hdMonitorStatus: (map['hdMonitorStatus'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceRegionId: (map['instanceRegionId'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      internetChargeType: (map['internetChargeType'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      isp: (map['isp'] as String).input(),
-      operationLocks: ((map['operationLocks'] as List).cast<String>()).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      reservationActiveTime: (map['reservationActiveTime'] as String).input(),
-      reservationBandwidth: (map['reservationBandwidth'] as String).input(),
-      reservationInternetChargeType: (map['reservationInternetChargeType'] as String).input(),
-      reservationOrderType: (map['reservationOrderType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      secondLimited: (map['secondLimited'] as bool).input(),
-      segmentInstanceId: (map['segmentInstanceId'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      addressName: pulumi.Input.fromValue(map['addressName'] as String),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      availableRegions: pulumi.Input.fromValue(
+        (map['availableRegions'] as List).cast<String>(),
+      ),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
+      bandwidthPackageBandwidth: pulumi.Input.fromValue(
+        map['bandwidthPackageBandwidth'] as String,
+      ),
+      bandwidthPackageId: pulumi.Input.fromValue(
+        map['bandwidthPackageId'] as String,
+      ),
+      bandwidthPackageType: pulumi.Input.fromValue(
+        map['bandwidthPackageType'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionProtection: pulumi.Input.fromValue(
+        map['deletionProtection'] as bool,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
+      hasReservationData: pulumi.Input.fromValue(
+        map['hasReservationData'] as String,
+      ),
+      hdMonitorStatus: pulumi.Input.fromValue(map['hdMonitorStatus'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceRegionId: pulumi.Input.fromValue(
+        map['instanceRegionId'] as String,
+      ),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      internetChargeType: pulumi.Input.fromValue(
+        map['internetChargeType'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      isp: pulumi.Input.fromValue(map['isp'] as String),
+      operationLocks: pulumi.Input.fromValue(
+        (map['operationLocks'] as List).cast<String>(),
+      ),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      reservationActiveTime: pulumi.Input.fromValue(
+        map['reservationActiveTime'] as String,
+      ),
+      reservationBandwidth: pulumi.Input.fromValue(
+        map['reservationBandwidth'] as String,
+      ),
+      reservationInternetChargeType: pulumi.Input.fromValue(
+        map['reservationInternetChargeType'] as String,
+      ),
+      reservationOrderType: pulumi.Input.fromValue(
+        map['reservationOrderType'] as String,
+      ),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      secondLimited: pulumi.Input.fromValue(map['secondLimited'] as bool),
+      segmentInstanceId: pulumi.Input.fromValue(
+        map['segmentInstanceId'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

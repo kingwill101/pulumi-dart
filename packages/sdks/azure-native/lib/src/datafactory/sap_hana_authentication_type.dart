@@ -3,16 +3,15 @@ enum SapHanaAuthenticationType {
   valueBasic("Basic"),
   valueWindows("Windows");
 
-  const SapHanaAuthenticationType(this.value);
-  final String value;
+  const SapHanaAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SapHanaAuthenticationType fromValue(String value) {
     for (final item in SapHanaAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SapHanaAuthenticationType value: $value');
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LimitRangeItem {
   /// Default resource requirement limit value by resource name if resource limit is omitted.
   final pulumi.Input<Map<String, String>>? default_;
+
   /// DefaultRequest is the default resource requirement request value by resource name if resource request is omitted.
   final pulumi.Input<Map<String, String>>? defaultRequest;
+
   /// Max usage constraints on this kind by resource name.
   final pulumi.Input<Map<String, String>>? max;
+
   /// MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.
   final pulumi.Input<Map<String, String>>? maxLimitRequestRatio;
+
   /// Min usage constraints on this kind by resource name.
   final pulumi.Input<Map<String, String>>? min;
+
   /// Type of resource that this limit applies to.
   final pulumi.Input<String> type;
 
@@ -46,13 +51,42 @@ class LimitRangeItem {
 
   factory LimitRangeItem.fromMap(Map<String, dynamic> map) {
     return LimitRangeItem(
-      default_: map['default'] == null ? null : ((map['default']! as Map).cast<String, String>()).input(),
-      defaultRequest: map['defaultRequest'] == null ? null : ((map['defaultRequest']! as Map).cast<String, String>()).input(),
-      max: map['max'] == null ? null : ((map['max']! as Map).cast<String, String>()).input(),
-      maxLimitRequestRatio: map['maxLimitRequestRatio'] == null ? null : ((map['maxLimitRequestRatio']! as Map).cast<String, String>()).input(),
-      min: map['min'] == null ? null : ((map['min']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      default_: (() {
+        final guardedValue = map['default'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      defaultRequest: (() {
+        final guardedValue = map['defaultRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      maxLimitRequestRatio: (() {
+        final guardedValue = map['maxLimitRequestRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

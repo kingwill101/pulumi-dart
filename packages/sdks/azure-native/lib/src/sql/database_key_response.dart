@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKeyResponse {
   /// The database key creation date.
   final pulumi.Input<String> creationDate;
+
   /// Subregion of the server key.
   final pulumi.Input<String> subregion;
+
   /// Thumbprint of the database key.
   final pulumi.Input<String> thumbprint;
+
   /// The database key type. Only supported value is 'AzureKeyVault'.
   final pulumi.Input<String> type;
 
@@ -36,11 +39,10 @@ class DatabaseKeyResponse {
 
   factory DatabaseKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseKeyResponse(
-      creationDate: (map['creationDate'] as String).input(),
-      subregion: (map['subregion'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
-      type: (map['type'] as String).input(),
+      creationDate: pulumi.Input.fromValue(map['creationDate'] as String),
+      subregion: pulumi.Input.fromValue(map['subregion'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

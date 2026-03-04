@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpdGrantRuleArgs {
   /// The ID of the ER instance under the cross-account tenant.
   final pulumi.Input<String> erId;
+
   /// Cross-account authorized tenant ID.
   final pulumi.Input<String> grantTenantId;
+
   /// Instance ID of VPD.
   final pulumi.Input<String> instanceId;
 
@@ -34,10 +36,9 @@ class VpdGrantRuleArgs {
 
   factory VpdGrantRuleArgs.fromMap(Map<String, dynamic> map) {
     return VpdGrantRuleArgs(
-      erId: (map['erId'] as String).input(),
-      grantTenantId: (map['grantTenantId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      erId: pulumi.Input.fromValue(map['erId'] as String),
+      grantTenantId: pulumi.Input.fromValue(map['grantTenantId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum LocalStorageDiskType {
   hDD("HDD"),
   sSD("SSD");
 
-  const LocalStorageDiskType(this.value);
-  final String value;
+  const LocalStorageDiskType(this.wireValue);
+  final String wireValue;
 
   static LocalStorageDiskType fromValue(String value) {
     for (final item in LocalStorageDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalStorageDiskType value: $value');
   }
 }
-

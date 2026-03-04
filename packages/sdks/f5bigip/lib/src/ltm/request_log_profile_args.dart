@@ -9,42 +9,61 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestLogProfileArgs {
   /// Specifies the profile from which this profile inherits settings. The default is the system-supplied `request-log` profile.
   final pulumi.Input<String>? defaultsFrom;
+
   /// Specifies user-defined description.
   final pulumi.Input<String>? description;
+
   /// Name of the Request Logging profile,name of Profile should be full path. Full path is the combination of the `partition + profile name`,For example `/Common/request-log-profile-tc1`.
   final pulumi.Input<String> name;
+
   /// Defines the pool associated with logging request errors. The default is None.
   final pulumi.Input<String>? proxyResponse;
+
   /// Defines the pool associated with logging request errors. The default is None.
   final pulumi.Input<String>? proxycloseOnError;
+
   /// Defines the pool associated with logging request errors. The default is None.
   final pulumi.Input<String>? proxyrespondOnLoggingerror;
+
   /// Enables or disables request logging. The default is `disabled`, possible values are `enabled` and `disabled`.
   final pulumi.Input<String>? requestLogging;
+
   /// Defines the pool associated with logging request errors. The default is None.
   final pulumi.Input<String>? requestlogErrorPool;
+
   /// Specifies the protocol to be used for high-speed logging of request errors. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   final pulumi.Input<String>? requestlogErrorProtocol;
+
   /// Specifies the directives and entries to be logged for request errors.
   final pulumi.Input<String>? requestlogErrorTemplate;
+
   /// Defines the pool to send logs to. Typically, the pool will contain one or more syslog servers. It is recommended that you create a pool specifically for logging requests. The default is `none`.
   final pulumi.Input<String>? requestlogPool;
+
   /// Specifies the protocol to be used for high-speed logging of requests. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   final pulumi.Input<String>? requestlogProtocol;
+
   /// Specifies the directives and entries to be logged. More infor on requestlog_template can be found [here](https://techdocs.f5.com/en-us/bigip-15-0-0/external-monitoring-of-big-ip-systems-implementations/configuring-request-logging.html). how to use can be find [here](https://my.f5.com/manage/s/article/K00847516).
   final pulumi.Input<String>? requestlogTemplate;
+
   /// Enables or disables response logging. The default is `disabled`, possible values are `enabled` and `disabled`.
   final pulumi.Input<String>? responseLogging;
+
   /// Defines the pool associated with logging response errors. The default is `none`.
   final pulumi.Input<String>? responselogErrorPool;
+
   /// Specifies the protocol to be used for high-speed logging of response errors. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   final pulumi.Input<String>? responselogErrorProtocol;
+
   /// Specifies the directives and entries to be logged for request errors.
   final pulumi.Input<String>? responselogErrorTemplate;
+
   /// Defines the pool to send logs to. Typically, the pool contains one or more syslog servers. It is recommended that you create a pool specifically for logging responses. The default is `none`.
   final pulumi.Input<String>? responselogPool;
+
   /// Specifies the protocol to be used for high-speed logging of responses. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   final pulumi.Input<String>? responselogProtocol;
+
   /// Specifies the directives and entries to be logged. More infor on responselog_template can be found [here](https://techdocs.f5.com/en-us/bigip-15-0-0/external-monitoring-of-big-ip-systems-implementations/configuring-request-logging.html). how to use can be find [here](https://my.f5.com/manage/s/article/K00847516).
   final pulumi.Input<String>? responselogTemplate;
 
@@ -119,27 +138,102 @@ class RequestLogProfileArgs {
 
   factory RequestLogProfileArgs.fromMap(Map<String, dynamic> map) {
     return RequestLogProfileArgs(
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      proxyResponse: map['proxyResponse'] == null ? null : (map['proxyResponse']! as String).input(),
-      proxycloseOnError: map['proxycloseOnError'] == null ? null : (map['proxycloseOnError']! as String).input(),
-      proxyrespondOnLoggingerror: map['proxyrespondOnLoggingerror'] == null ? null : (map['proxyrespondOnLoggingerror']! as String).input(),
-      requestLogging: map['requestLogging'] == null ? null : (map['requestLogging']! as String).input(),
-      requestlogErrorPool: map['requestlogErrorPool'] == null ? null : (map['requestlogErrorPool']! as String).input(),
-      requestlogErrorProtocol: map['requestlogErrorProtocol'] == null ? null : (map['requestlogErrorProtocol']! as String).input(),
-      requestlogErrorTemplate: map['requestlogErrorTemplate'] == null ? null : (map['requestlogErrorTemplate']! as String).input(),
-      requestlogPool: map['requestlogPool'] == null ? null : (map['requestlogPool']! as String).input(),
-      requestlogProtocol: map['requestlogProtocol'] == null ? null : (map['requestlogProtocol']! as String).input(),
-      requestlogTemplate: map['requestlogTemplate'] == null ? null : (map['requestlogTemplate']! as String).input(),
-      responseLogging: map['responseLogging'] == null ? null : (map['responseLogging']! as String).input(),
-      responselogErrorPool: map['responselogErrorPool'] == null ? null : (map['responselogErrorPool']! as String).input(),
-      responselogErrorProtocol: map['responselogErrorProtocol'] == null ? null : (map['responselogErrorProtocol']! as String).input(),
-      responselogErrorTemplate: map['responselogErrorTemplate'] == null ? null : (map['responselogErrorTemplate']! as String).input(),
-      responselogPool: map['responselogPool'] == null ? null : (map['responselogPool']! as String).input(),
-      responselogProtocol: map['responselogProtocol'] == null ? null : (map['responselogProtocol']! as String).input(),
-      responselogTemplate: map['responselogTemplate'] == null ? null : (map['responselogTemplate']! as String).input(),
+      defaultsFrom: (() {
+        final guardedValue = map['defaultsFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      proxyResponse: (() {
+        final guardedValue = map['proxyResponse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxycloseOnError: (() {
+        final guardedValue = map['proxycloseOnError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyrespondOnLoggingerror: (() {
+        final guardedValue = map['proxyrespondOnLoggingerror'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestLogging: (() {
+        final guardedValue = map['requestLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogErrorPool: (() {
+        final guardedValue = map['requestlogErrorPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogErrorProtocol: (() {
+        final guardedValue = map['requestlogErrorProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogErrorTemplate: (() {
+        final guardedValue = map['requestlogErrorTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogPool: (() {
+        final guardedValue = map['requestlogPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogProtocol: (() {
+        final guardedValue = map['requestlogProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestlogTemplate: (() {
+        final guardedValue = map['requestlogTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseLogging: (() {
+        final guardedValue = map['responseLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogErrorPool: (() {
+        final guardedValue = map['responselogErrorPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogErrorProtocol: (() {
+        final guardedValue = map['responselogErrorProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogErrorTemplate: (() {
+        final guardedValue = map['responselogErrorTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogPool: (() {
+        final guardedValue = map['responselogPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogProtocol: (() {
+        final guardedValue = map['responselogProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responselogTemplate: (() {
+        final guardedValue = map['responselogTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContactArgs {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   final pulumi.Input<String> arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,26 +20,27 @@ class GetContactArgs {
   /// [arn] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource.
-  GetContactArgs({
-    required this.arn,
-    this.region,
-    this.tags,
-  });
+  GetContactArgs({required this.arn, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'region': ?region,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'arn': arn, 'region': ?region, 'tags': ?tags};
   }
 
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
-      arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFloatingIp.
 class GetFloatingIpResult {
   final String? address;
+
   /// A set of string tags applied on the floating IP.
   final List<String> allTags;
   final String? description;
+
   /// The floating IP DNS domain. Available, when Neutron DNS
   /// extension is enabled.
   final String dnsDomain;
+
   /// The floating IP DNS name. Available, when Neutron DNS extension
   /// is enabled.
   final String dnsName;
   final String? fixedIp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? pool;
@@ -73,20 +76,55 @@ class GetFloatingIpResult {
 
   factory GetFloatingIpResult.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpResult(
-      address: map['address'] == null ? null : map['address']! as String,
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       allTags: (map['allTags'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       dnsDomain: map['dnsDomain'] as String,
       dnsName: map['dnsName'] as String,
-      fixedIp: map['fixedIp'] == null ? null : map['fixedIp']! as String,
+      fixedIp: (() {
+        final guardedValue = map['fixedIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      pool: map['pool'] == null ? null : map['pool']! as String,
-      portId: map['portId'] == null ? null : map['portId']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      pool: (() {
+        final guardedValue = map['pool'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      portId: (() {
+        final guardedValue = map['portId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

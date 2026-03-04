@@ -8,7 +8,7 @@ import 'transit_router_cidr_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 ///
-/// > **NOTE:** Available since v1.193.0.
+/// &gt; **NOTE:** Available since v1.193.0.
 ///
 /// ## Example Usage
 ///
@@ -205,16 +205,21 @@ import 'transit_router_cidr_state.dart';
 class TransitRouterCidr extends pulumi.CustomResource {
   /// The new CIDR block of the transit router.
   late final pulumi.Output<String> cidr;
+
   /// The new description of the transit router CIDR block.
   /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
   late final pulumi.Output<bool?> publishCidrRoute;
+
   /// The ID of the CIDR block.
   late final pulumi.Output<String> transitRouterCidrId;
+
   /// The new name of the transit router CIDR block.
   /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   late final pulumi.Output<String?> transitRouterCidrName;
+
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
 
@@ -227,17 +232,17 @@ class TransitRouterCidr extends pulumi.CustomResource {
     TransitRouterCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterCidr:TransitRouterCidr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.publishCidrRoute = registerOutput<bool?>('publishCidrRoute');
-    this.transitRouterCidrId = registerOutput<String>('transitRouterCidrId');
-    this.transitRouterCidrName = registerOutput<String?>('transitRouterCidrName');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
+         'alicloud:cen/transitRouterCidr:TransitRouterCidr',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    publishCidrRoute = registerOutput<bool?>('publishCidrRoute');
+    transitRouterCidrId = registerOutput<String>('transitRouterCidrId');
+    transitRouterCidrName = registerOutput<String?>('transitRouterCidrName');
+    transitRouterId = registerOutput<String>('transitRouterId');
   }
 
   /// Gets an existing [TransitRouterCidr] resource's state with the given [name] and [id].
@@ -258,16 +263,16 @@ class TransitRouterCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterCidr:TransitRouterCidr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.publishCidrRoute = registerOutput<bool?>('publishCidrRoute');
-    this.transitRouterCidrId = registerOutput<String>('transitRouterCidrId');
-    this.transitRouterCidrName = registerOutput<String?>('transitRouterCidrName');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
+         'alicloud:cen/transitRouterCidr:TransitRouterCidr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    publishCidrRoute = registerOutput<bool?>('publishCidrRoute');
+    transitRouterCidrId = registerOutput<String>('transitRouterCidrId');
+    transitRouterCidrName = registerOutput<String?>('transitRouterCidrName');
+    transitRouterId = registerOutput<String>('transitRouterId');
   }
 }

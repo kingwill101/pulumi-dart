@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstancePlanPlanConfigScaleIn {
   /// The executed time of the Plan.
   final pulumi.Input<String>? executeTime;
+
   /// The Cron Time of the plan.
   final pulumi.Input<String>? planCronTime;
+
   /// (Available since v1.231.0) The status of the plan task.
   final pulumi.Input<String>? planTaskStatus;
+
   /// The segment Node Num of the Plan.
   final pulumi.Input<String>? segmentNodeNum;
 
@@ -35,11 +38,26 @@ class DbInstancePlanPlanConfigScaleIn {
 
   factory DbInstancePlanPlanConfigScaleIn.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfigScaleIn(
-      executeTime: map['executeTime'] == null ? null : (map['executeTime']! as String).input(),
-      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime']! as String).input(),
-      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus']! as String).input(),
-      segmentNodeNum: map['segmentNodeNum'] == null ? null : (map['segmentNodeNum']! as String).input(),
+      executeTime: (() {
+        final guardedValue = map['executeTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planCronTime: (() {
+        final guardedValue = map['planCronTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planTaskStatus: (() {
+        final guardedValue = map['planTaskStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentNodeNum: (() {
+        final guardedValue = map['segmentNodeNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

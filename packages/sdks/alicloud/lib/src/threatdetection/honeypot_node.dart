@@ -6,7 +6,7 @@ import 'honeypot_node_state.dart';
 ///
 /// For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -151,14 +151,19 @@ import 'honeypot_node_state.dart';
 class HoneypotNode extends pulumi.CustomResource {
   /// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
   late final pulumi.Output<bool?> allowHoneypotAccessInternet;
+
   /// Number of probes available.
   late final pulumi.Output<int> availableProbeNum;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Management node name.
   late final pulumi.Output<String> nodeName;
+
   /// Release the collection of network segments.
   late final pulumi.Output<List<String>?> securityGroupProbeIpLists;
+
   /// The status of the resource
   late final pulumi.Output<int> status;
 
@@ -171,17 +176,21 @@ class HoneypotNode extends pulumi.CustomResource {
     HoneypotNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotNode:HoneypotNode',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowHoneypotAccessInternet = registerOutput<bool?>('allowHoneypotAccessInternet');
-    this.availableProbeNum = registerOutput<int>('availableProbeNum');
-    this.createTime = registerOutput<String>('createTime');
-    this.nodeName = registerOutput<String>('nodeName');
-    this.securityGroupProbeIpLists = registerOutput<List<String>?>('securityGroupProbeIpLists');
-    this.status = registerOutput<int>('status');
+         'alicloud:threatdetection/honeypotNode:HoneypotNode',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowHoneypotAccessInternet = registerOutput<bool?>(
+      'allowHoneypotAccessInternet',
+    );
+    availableProbeNum = registerOutput<int>('availableProbeNum');
+    createTime = registerOutput<String>('createTime');
+    nodeName = registerOutput<String>('nodeName');
+    securityGroupProbeIpLists = registerOutput<List<String>?>(
+      'securityGroupProbeIpLists',
+    );
+    status = registerOutput<int>('status');
   }
 
   /// Gets an existing [HoneypotNode] resource's state with the given [name] and [id].
@@ -202,16 +211,20 @@ class HoneypotNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotNode:HoneypotNode',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowHoneypotAccessInternet = registerOutput<bool?>('allowHoneypotAccessInternet');
-    this.availableProbeNum = registerOutput<int>('availableProbeNum');
-    this.createTime = registerOutput<String>('createTime');
-    this.nodeName = registerOutput<String>('nodeName');
-    this.securityGroupProbeIpLists = registerOutput<List<String>?>('securityGroupProbeIpLists');
-    this.status = registerOutput<int>('status');
+         'alicloud:threatdetection/honeypotNode:HoneypotNode',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowHoneypotAccessInternet = registerOutput<bool?>(
+      'allowHoneypotAccessInternet',
+    );
+    availableProbeNum = registerOutput<int>('availableProbeNum');
+    createTime = registerOutput<String>('createTime');
+    nodeName = registerOutput<String>('nodeName');
+    securityGroupProbeIpLists = registerOutput<List<String>?>(
+      'securityGroupProbeIpLists',
+    );
+    status = registerOutput<int>('status');
   }
 }

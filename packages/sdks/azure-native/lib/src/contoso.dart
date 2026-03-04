@@ -1,5 +1,3 @@
-library module_contoso;
-
 export 'contoso/employee.dart';
 export 'contoso/employee_args.dart';
 export 'contoso/employee_properties.dart';

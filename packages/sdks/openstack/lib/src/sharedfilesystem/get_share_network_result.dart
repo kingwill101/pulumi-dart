@@ -1,33 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getShareNetwork.
 class GetShareNetworkResult {
   /// See Argument Reference above.
   final String cidr;
+
   /// See Argument Reference above.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final int ipVersion;
+
   /// See Argument Reference above.
   final String name;
+
   /// See Argument Reference above.
   final String networkType;
+
   /// See Argument Reference above.
   final String neutronNetId;
+
   /// See Argument Reference above.
   final String neutronSubnetId;
+
   /// The owner of the Share Network.
   final String projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final String? securityServiceId;
+
   /// The list of security service IDs associated with
   /// the share network.
   final List<String> securityServiceIds;
+
   /// See Argument Reference above.
   final int segmentationId;
 
@@ -91,10 +102,13 @@ class GetShareNetworkResult {
       neutronSubnetId: map['neutronSubnetId'] as String,
       projectId: map['projectId'] as String,
       region: map['region'] as String,
-      securityServiceId: map['securityServiceId'] == null ? null : map['securityServiceId']! as String,
+      securityServiceId: (() {
+        final guardedValue = map['securityServiceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       securityServiceIds: (map['securityServiceIds'] as List).cast<String>(),
       segmentationId: map['segmentationId'] as int,
     );
   }
 }
-

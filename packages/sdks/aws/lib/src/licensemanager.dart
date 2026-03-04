@@ -1,5 +1,3 @@
-library module_licensemanager;
-
 export 'licensemanager/association.dart';
 export 'licensemanager/association_args.dart';
 export 'licensemanager/association_state.dart';

@@ -1,5 +1,3 @@
-library module_lighthouse;
-
 export 'lighthouse/assignment.dart';
 export 'lighthouse/assignment_args.dart';
 export 'lighthouse/assignment_state.dart';

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultPropertiesResponse {
   /// The name of the key associated with the Log Analytics cluster.
   final pulumi.Input<String>? keyName;
+
   /// Selected key minimum required size.
   final pulumi.Input<int>? keyRsaSize;
+
   /// The Key Vault uri which holds they key associated with the Log Analytics cluster.
   final pulumi.Input<String>? keyVaultUri;
+
   /// The version of the key associated with the Log Analytics cluster.
   final pulumi.Input<String>? keyVersion;
 
@@ -36,11 +39,26 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyRsaSize: map['keyRsaSize'] == null ? null : (map['keyRsaSize']! as int).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyRsaSize: (() {
+        final guardedValue = map['keyRsaSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

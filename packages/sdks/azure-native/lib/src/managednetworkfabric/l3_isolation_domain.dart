@@ -280,32 +280,48 @@ import 'system_data_response.dart';
 class L3IsolationDomain extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Aggregate route configurations.
-  late final pulumi.Output<AggregateRouteConfigurationResponse?> aggregateRouteConfiguration;
+  late final pulumi.Output<AggregateRouteConfigurationResponse?>
+  aggregateRouteConfiguration;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// Connected Subnet RoutePolicy
-  late final pulumi.Output<ConnectedSubnetRoutePolicyResponse?> connectedSubnetRoutePolicy;
+  late final pulumi.Output<ConnectedSubnetRoutePolicyResponse?>
+  connectedSubnetRoutePolicy;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ARM Resource ID of the Network Fabric.
   late final pulumi.Output<String> networkFabricId;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Advertise Connected Subnets. Ex: "True" | "False".
   late final pulumi.Output<String?> redistributeConnectedSubnets;
+
   /// Advertise Static Routes. Ex: "True" | "False".
   late final pulumi.Output<String?> redistributeStaticRoutes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -318,25 +334,35 @@ class L3IsolationDomain extends pulumi.CustomResource {
     L3IsolationDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:L3IsolationDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.aggregateRouteConfiguration = registerOutput<AggregateRouteConfigurationResponse?>('aggregateRouteConfiguration');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.connectedSubnetRoutePolicy = registerOutput<ConnectedSubnetRoutePolicyResponse?>('connectedSubnetRoutePolicy');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:L3IsolationDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    aggregateRouteConfiguration =
+        registerOutput<AggregateRouteConfigurationResponse?>(
+          'aggregateRouteConfiguration',
+        );
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    connectedSubnetRoutePolicy =
+        registerOutput<ConnectedSubnetRoutePolicyResponse?>(
+          'connectedSubnetRoutePolicy',
+        );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkFabricId = registerOutput<String>('networkFabricId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.redistributeConnectedSubnets = registerOutput<String?>('redistributeConnectedSubnets');
-    this.redistributeStaticRoutes = registerOutput<String?>('redistributeStaticRoutes');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    provisioningState = registerOutput<String>('provisioningState');
+    redistributeConnectedSubnets = registerOutput<String?>(
+      'redistributeConnectedSubnets',
+    );
+    redistributeStaticRoutes = registerOutput<String?>(
+      'redistributeStaticRoutes',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

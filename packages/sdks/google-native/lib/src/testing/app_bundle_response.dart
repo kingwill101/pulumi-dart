@@ -10,20 +10,25 @@ class AppBundleResponse {
 
   /// Creates a new [AppBundleResponse].
   /// [bundleLocation] .aab file representing the app bundle under test.
-  AppBundleResponse({
-    required this.bundleLocation,
-  });
+  AppBundleResponse({required this.bundleLocation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bundleLocation': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(bundleLocation, (value) => value.toMap()),
+      'bundleLocation':
+          pulumi.Input.mapInputValue<
+            FileReferenceResponse,
+            Map<String, dynamic>
+          >(bundleLocation, (value) => value.toMap()),
     };
   }
 
   factory AppBundleResponse.fromMap(Map<String, dynamic> map) {
     return AppBundleResponse(
-      bundleLocation: (FileReferenceResponse.fromMap((map['bundleLocation'] as Map).cast<String, dynamic>())).input(),
+      bundleLocation: pulumi.Input.fromValue(
+        FileReferenceResponse.fromMap(
+          (map['bundleLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

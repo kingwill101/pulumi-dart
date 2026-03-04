@@ -9,10 +9,14 @@ import 'jwtauthenticator_validation_rule.dart';
 class JWTAuthenticatorProperties {
   /// The mappings that define how user attributes are extracted from the token claims.
   final pulumi.Input<JWTAuthenticatorClaimMappings> claimMappings;
+
   /// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-  final pulumi.Input<List<JWTAuthenticatorValidationRule>>? claimValidationRules;
+  final pulumi.Input<List<JWTAuthenticatorValidationRule>>?
+  claimValidationRules;
+
   /// The JWT OIDC issuer details.
   final pulumi.Input<JWTAuthenticatorIssuer> issuer;
+
   /// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
   final pulumi.Input<List<JWTAuthenticatorValidationRule>>? userValidationRules;
 
@@ -30,20 +34,79 @@ class JWTAuthenticatorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'claimMappings': pulumi.Input.mapInputValue<JWTAuthenticatorClaimMappings, Map<String, dynamic>>(claimMappings, (value) => value.toMap()),
-      'claimValidationRules': ?pulumi.Input.mapOptionalInputValue<List<JWTAuthenticatorValidationRule>, List<Map<String, dynamic>>>(claimValidationRules, (value) => pulumi.Input.encodeList<JWTAuthenticatorValidationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'issuer': pulumi.Input.mapInputValue<JWTAuthenticatorIssuer, Map<String, dynamic>>(issuer, (value) => value.toMap()),
-      'userValidationRules': ?pulumi.Input.mapOptionalInputValue<List<JWTAuthenticatorValidationRule>, List<Map<String, dynamic>>>(userValidationRules, (value) => pulumi.Input.encodeList<JWTAuthenticatorValidationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'claimMappings':
+          pulumi.Input.mapInputValue<
+            JWTAuthenticatorClaimMappings,
+            Map<String, dynamic>
+          >(claimMappings, (value) => value.toMap()),
+      'claimValidationRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JWTAuthenticatorValidationRule>,
+            List<Map<String, dynamic>>
+          >(
+            claimValidationRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JWTAuthenticatorValidationRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'issuer':
+          pulumi.Input.mapInputValue<
+            JWTAuthenticatorIssuer,
+            Map<String, dynamic>
+          >(issuer, (value) => value.toMap()),
+      'userValidationRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JWTAuthenticatorValidationRule>,
+            List<Map<String, dynamic>>
+          >(
+            userValidationRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JWTAuthenticatorValidationRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory JWTAuthenticatorProperties.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorProperties(
-      claimMappings: (JWTAuthenticatorClaimMappings.fromMap((map['claimMappings'] as Map).cast<String, dynamic>())).input(),
-      claimValidationRules: map['claimValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['claimValidationRules']!, (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      issuer: (JWTAuthenticatorIssuer.fromMap((map['issuer'] as Map).cast<String, dynamic>())).input(),
-      userValidationRules: map['userValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['userValidationRules']!, (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      claimMappings: pulumi.Input.fromValue(
+        JWTAuthenticatorClaimMappings.fromMap(
+          (map['claimMappings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      claimValidationRules: (() {
+        final guardedValue = map['claimValidationRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(
+            guardedValue,
+            (value) => JWTAuthenticatorValidationRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      issuer: pulumi.Input.fromValue(
+        JWTAuthenticatorIssuer.fromMap(
+          (map['issuer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      userValidationRules: (() {
+        final guardedValue = map['userValidationRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(
+            guardedValue,
+            (value) => JWTAuthenticatorValidationRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

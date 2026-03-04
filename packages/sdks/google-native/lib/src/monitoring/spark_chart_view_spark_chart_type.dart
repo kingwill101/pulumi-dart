@@ -4,16 +4,15 @@ enum SparkChartViewSparkChartType {
   sparkLine("SPARK_LINE"),
   sparkBar("SPARK_BAR");
 
-  const SparkChartViewSparkChartType(this.value);
-  final String value;
+  const SparkChartViewSparkChartType(this.wireValue);
+  final String wireValue;
 
   static SparkChartViewSparkChartType fromValue(String value) {
     for (final item in SparkChartViewSparkChartType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SparkChartViewSparkChartType value: $value');
   }
 }
-

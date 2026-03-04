@@ -12,20 +12,13 @@ class GetReservedIpv6Args {
 
   /// Creates a new [GetReservedIpv6Args].
   /// [ip] The allocated IPv6 address of the specific reserved IPv6 to retrieve.
-  GetReservedIpv6Args({
-    required this.ip,
-  });
+  GetReservedIpv6Args({required this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ip,
-    };
+    return <String, dynamic>{'ip': ip};
   }
 
   factory GetReservedIpv6Args.fromMap(Map<String, dynamic> map) {
-    return GetReservedIpv6Args(
-      ip: (map['ip'] as String).input(),
-    );
+    return GetReservedIpv6Args(ip: pulumi.Input.fromValue(map['ip'] as String));
   }
 }
-

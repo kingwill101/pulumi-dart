@@ -13,15 +13,16 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceSelectionLists': instanceSelectionLists,
-    };
+    return <String, dynamic>{'instanceSelectionLists': instanceSelectionLists};
   }
 
-  factory InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta(
-      instanceSelectionLists: ((map['instanceSelectionLists'] as Map).cast<String, String>()).input(),
+      instanceSelectionLists: pulumi.Input.fromValue(
+        (map['instanceSelectionLists'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

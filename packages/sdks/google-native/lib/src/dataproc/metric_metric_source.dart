@@ -10,16 +10,15 @@ enum MetricMetricSource {
   hivemetastore("HIVEMETASTORE"),
   flink("FLINK");
 
-  const MetricMetricSource(this.value);
-  final String value;
+  const MetricMetricSource(this.wireValue);
+  final String wireValue;
 
   static MetricMetricSource fromValue(String value) {
     for (final item in MetricMetricSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricMetricSource value: $value');
   }
 }
-

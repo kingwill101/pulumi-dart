@@ -1,5 +1,3 @@
-library module_apigee;
-
 export 'apigee/addons_config.dart';
 export 'apigee/addons_config_addons_config.dart';
 export 'apigee/addons_config_addons_config_advanced_api_ops_config.dart';

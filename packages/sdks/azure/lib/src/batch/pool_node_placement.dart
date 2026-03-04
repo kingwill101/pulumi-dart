@@ -8,20 +8,19 @@ class PoolNodePlacement {
 
   /// Creates a new [PoolNodePlacement].
   /// [policy] The placement policy for allocating nodes in the pool. Values are: "Regional": All nodes in the pool will be allocated in the same region; "Zonal": Nodes in the pool will be spread across different zones with the best effort balancing. Defaults to `Regional`.
-  PoolNodePlacement({
-    this.policy,
-  });
+  PoolNodePlacement({this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy,
-    };
+    return <String, dynamic>{'policy': ?policy};
   }
 
   factory PoolNodePlacement.fromMap(Map<String, dynamic> map) {
     return PoolNodePlacement(
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

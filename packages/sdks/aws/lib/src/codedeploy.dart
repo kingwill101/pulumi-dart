@@ -1,5 +1,3 @@
-library module_codedeploy;
-
 export 'codedeploy/application.dart';
 export 'codedeploy/application_args.dart';
 export 'codedeploy/application_state.dart';

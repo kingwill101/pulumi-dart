@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGreyTagRoutesRouteDubboRuleItem {
   /// The comparison operator.
   final pulumi.Input<String> cond;
+
   /// The parameter value gets the expression.
   final pulumi.Input<String> expr;
+
   /// The parameter number.
   final pulumi.Input<int> index;
+
   /// The operator.
   final pulumi.Input<String> operator;
+
   /// The value of the parameter.
   final pulumi.Input<String> value;
 
@@ -40,12 +44,11 @@ class GetGreyTagRoutesRouteDubboRuleItem {
 
   factory GetGreyTagRoutesRouteDubboRuleItem.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteDubboRuleItem(
-      cond: (map['cond'] as String).input(),
-      expr: (map['expr'] as String).input(),
-      index: (map['index'] as int).input(),
-      operator: (map['operator'] as String).input(),
-      value: (map['value'] as String).input(),
+      cond: pulumi.Input.fromValue(map['cond'] as String),
+      expr: pulumi.Input.fromValue(map['expr'] as String),
+      index: pulumi.Input.fromValue(map['index'] as int),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

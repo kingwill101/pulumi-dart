@@ -9,20 +9,19 @@ class PeeringServiceSkuResponse {
 
   /// Creates a new [PeeringServiceSkuResponse].
   /// [name] The name of the peering service SKU.
-  PeeringServiceSkuResponse({
-    this.name,
-  });
+  PeeringServiceSkuResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory PeeringServiceSkuResponse.fromMap(Map<String, dynamic> map) {
     return PeeringServiceSkuResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

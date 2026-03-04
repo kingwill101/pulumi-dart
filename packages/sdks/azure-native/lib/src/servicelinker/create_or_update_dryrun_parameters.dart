@@ -13,20 +13,28 @@ class CreateOrUpdateDryrunParameters {
   /// The name of action for you dryrun job.
   /// Expected value is 'createOrUpdate'.
   final pulumi.Input<String> actionName;
+
   /// The authentication type.
   final pulumi.Input<AccessKeyInfoBase>? authInfo;
+
   /// The application client type
   final pulumi.Input<String>? clientType;
+
   /// The connection information consumed by applications, including secrets, connection strings.
   final pulumi.Input<ConfigurationInfo>? configurationInfo;
+
   /// The network solution.
   final pulumi.Input<PublicNetworkSolution>? publicNetworkSolution;
+
   /// connection scope in source service.
   final pulumi.Input<String>? scope;
+
   /// An option to store secret value in secure place
   final pulumi.Input<SecretStore>? secretStore;
+
   /// The target service properties
   final pulumi.Input<AzureResource>? targetService;
+
   /// The VNet solution.
   final pulumi.Input<VNetSolution>? vNetSolution;
 
@@ -55,29 +63,102 @@ class CreateOrUpdateDryrunParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionName': actionName,
-      'authInfo': ?pulumi.Input.mapOptionalInputValue<AccessKeyInfoBase, Map<String, dynamic>>(authInfo, (value) => value.toMap()),
+      'authInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessKeyInfoBase,
+            Map<String, dynamic>
+          >(authInfo, (value) => value.toMap()),
       'clientType': ?clientType,
-      'configurationInfo': ?pulumi.Input.mapOptionalInputValue<ConfigurationInfo, Map<String, dynamic>>(configurationInfo, (value) => value.toMap()),
-      'publicNetworkSolution': ?pulumi.Input.mapOptionalInputValue<PublicNetworkSolution, Map<String, dynamic>>(publicNetworkSolution, (value) => value.toMap()),
+      'configurationInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationInfo,
+            Map<String, dynamic>
+          >(configurationInfo, (value) => value.toMap()),
+      'publicNetworkSolution':
+          ?pulumi.Input.mapOptionalInputValue<
+            PublicNetworkSolution,
+            Map<String, dynamic>
+          >(publicNetworkSolution, (value) => value.toMap()),
       'scope': ?scope,
-      'secretStore': ?pulumi.Input.mapOptionalInputValue<SecretStore, Map<String, dynamic>>(secretStore, (value) => value.toMap()),
-      'targetService': ?pulumi.Input.mapOptionalInputValue<AzureResource, Map<String, dynamic>>(targetService, (value) => value.toMap()),
-      'vNetSolution': ?pulumi.Input.mapOptionalInputValue<VNetSolution, Map<String, dynamic>>(vNetSolution, (value) => value.toMap()),
+      'secretStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretStore,
+            Map<String, dynamic>
+          >(secretStore, (value) => value.toMap()),
+      'targetService':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureResource,
+            Map<String, dynamic>
+          >(targetService, (value) => value.toMap()),
+      'vNetSolution':
+          ?pulumi.Input.mapOptionalInputValue<
+            VNetSolution,
+            Map<String, dynamic>
+          >(vNetSolution, (value) => value.toMap()),
     };
   }
 
   factory CreateOrUpdateDryrunParameters.fromMap(Map<String, dynamic> map) {
     return CreateOrUpdateDryrunParameters(
-      actionName: (map['actionName'] as String).input(),
-      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBase.fromMap((map['authInfo']! as Map).cast<String, dynamic>())).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
-      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfo.fromMap((map['configurationInfo']! as Map).cast<String, dynamic>())).input(),
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolution.fromMap((map['publicNetworkSolution']! as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      secretStore: map['secretStore'] == null ? null : (SecretStore.fromMap((map['secretStore']! as Map).cast<String, dynamic>())).input(),
-      targetService: map['targetService'] == null ? null : (AzureResource.fromMap((map['targetService']! as Map).cast<String, dynamic>())).input(),
-      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolution.fromMap((map['vNetSolution']! as Map).cast<String, dynamic>())).input(),
+      actionName: pulumi.Input.fromValue(map['actionName'] as String),
+      authInfo: (() {
+        final guardedValue = map['authInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessKeyInfoBase.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientType: (() {
+        final guardedValue = map['clientType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationInfo: (() {
+        final guardedValue = map['configurationInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicNetworkSolution: (() {
+        final guardedValue = map['publicNetworkSolution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublicNetworkSolution.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretStore: (() {
+        final guardedValue = map['secretStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      targetService: (() {
+        final guardedValue = map['targetService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      vNetSolution: (() {
+        final guardedValue = map['vNetSolution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VNetSolution.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

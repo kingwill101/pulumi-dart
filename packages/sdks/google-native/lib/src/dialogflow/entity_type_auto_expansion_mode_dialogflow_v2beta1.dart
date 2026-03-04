@@ -3,16 +3,17 @@ enum EntityTypeAutoExpansionModeDialogflowV2beta1 {
   autoExpansionModeUnspecified("AUTO_EXPANSION_MODE_UNSPECIFIED"),
   autoExpansionModeDefault("AUTO_EXPANSION_MODE_DEFAULT");
 
-  const EntityTypeAutoExpansionModeDialogflowV2beta1(this.value);
-  final String value;
+  const EntityTypeAutoExpansionModeDialogflowV2beta1(this.wireValue);
+  final String wireValue;
 
   static EntityTypeAutoExpansionModeDialogflowV2beta1 fromValue(String value) {
     for (final item in EntityTypeAutoExpansionModeDialogflowV2beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EntityTypeAutoExpansionModeDialogflowV2beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EntityTypeAutoExpansionModeDialogflowV2beta1 value: $value',
+    );
   }
 }
-

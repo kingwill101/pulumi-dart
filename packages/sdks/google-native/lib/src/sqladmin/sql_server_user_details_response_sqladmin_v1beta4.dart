@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerUserDetailsResponseSqladminV1beta4 {
   /// If the user has been disabled
   final pulumi.Input<bool> disabled;
+
   /// The server roles for this user
   final pulumi.Input<List<String>> serverRoles;
 
@@ -18,17 +19,17 @@ class SqlServerUserDetailsResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': disabled,
-      'serverRoles': serverRoles,
-    };
+    return <String, dynamic>{'disabled': disabled, 'serverRoles': serverRoles};
   }
 
-  factory SqlServerUserDetailsResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory SqlServerUserDetailsResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerUserDetailsResponseSqladminV1beta4(
-      disabled: (map['disabled'] as bool).input(),
-      serverRoles: ((map['serverRoles'] as List).cast<String>()).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      serverRoles: pulumi.Input.fromValue(
+        (map['serverRoles'] as List).cast<String>(),
+      ),
     );
   }
 }
-

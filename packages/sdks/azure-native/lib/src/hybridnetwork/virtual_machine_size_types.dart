@@ -28,16 +28,15 @@ enum VirtualMachineSizeTypes {
   valueStandardF8s("Standard_F8s"),
   valueStandardF16s("Standard_F16s");
 
-  const VirtualMachineSizeTypes(this.value);
-  final String value;
+  const VirtualMachineSizeTypes(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineSizeTypes fromValue(String value) {
     for (final item in VirtualMachineSizeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualMachineSizeTypes value: $value');
   }
 }
-

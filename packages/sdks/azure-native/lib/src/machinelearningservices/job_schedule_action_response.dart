@@ -6,6 +6,7 @@ import 'auto_mljob_response.dart';
 class JobScheduleActionResponse {
   /// Expected value is 'CreateJob'.
   final pulumi.Input<String> actionType;
+
   /// [Required] Defines Schedule action definition details.
   final pulumi.Input<AutoMLJobResponse> jobBaseProperties;
 
@@ -20,15 +21,22 @@ class JobScheduleActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'jobBaseProperties': pulumi.Input.mapInputValue<AutoMLJobResponse, Map<String, dynamic>>(jobBaseProperties, (value) => value.toMap()),
+      'jobBaseProperties':
+          pulumi.Input.mapInputValue<AutoMLJobResponse, Map<String, dynamic>>(
+            jobBaseProperties,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory JobScheduleActionResponse.fromMap(Map<String, dynamic> map) {
     return JobScheduleActionResponse(
-      actionType: (map['actionType'] as String).input(),
-      jobBaseProperties: (AutoMLJobResponse.fromMap((map['jobBaseProperties'] as Map).cast<String, dynamic>())).input(),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      jobBaseProperties: pulumi.Input.fromValue(
+        AutoMLJobResponse.fromMap(
+          (map['jobBaseProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -261,14 +261,18 @@ class AggregateV2 extends pulumi.CustomResource {
   /// to Openstack and visible in the web interface, or the provider will fail to add them to the host
   /// aggregate.
   late final pulumi.Output<List<String>?> hosts;
+
   /// The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the Host Aggregate
   late final pulumi.Output<String> name;
+
   /// The region in which to create the Host Aggregate. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new Host Aggregate.
   late final pulumi.Output<String> region;
+
   /// The name of the Availability Zone to use. If ommited, it will take the default
   /// availability zone.
   late final pulumi.Output<String?> zone;
@@ -282,16 +286,16 @@ class AggregateV2 extends pulumi.CustomResource {
     AggregateV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/aggregateV2:AggregateV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hosts = registerOutput<List<String>?>('hosts');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'openstack:compute/aggregateV2:AggregateV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hosts = registerOutput<List<String>?>('hosts');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.zone = registerOutput<String?>('zone');
+    region = registerOutput<String>('region');
+    zone = registerOutput<String?>('zone');
   }
 
   /// Gets an existing [AggregateV2] resource's state with the given [name] and [id].
@@ -312,15 +316,15 @@ class AggregateV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/aggregateV2:AggregateV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hosts = registerOutput<List<String>?>('hosts');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'openstack:compute/aggregateV2:AggregateV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hosts = registerOutput<List<String>?>('hosts');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.zone = registerOutput<String?>('zone');
+    region = registerOutput<String>('region');
+    zone = registerOutput<String?>('zone');
   }
 }

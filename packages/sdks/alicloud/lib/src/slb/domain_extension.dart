@@ -5,9 +5,9 @@ import 'domain_extension_state.dart';
 /// HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
 /// Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
 ///
-/// > **NOTE:** Available in 1.60.0+
+/// &gt; **NOTE:** Available in 1.60.0+
 ///
-/// > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
+/// &gt; **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
 ///
 /// ## Example Usage
 ///
@@ -740,12 +740,16 @@ import 'domain_extension_state.dart';
 class DomainExtension extends pulumi.CustomResource {
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
+
   /// The domain name.
   late final pulumi.Output<String> domain;
+
   /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
   late final pulumi.Output<int> frontendPort;
+
   /// The ID of the SLB instance.
   late final pulumi.Output<String> loadBalancerId;
+
   /// The ID of the certificate used by the domain name.
   late final pulumi.Output<String> serverCertificateId;
 
@@ -758,16 +762,18 @@ class DomainExtension extends pulumi.CustomResource {
     DomainExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/domainExtension:DomainExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.domain = registerOutput<String>('domain');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.serverCertificateId = registerOutput<String>('serverCertificateId');
+         'alicloud:slb/domainExtension:DomainExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    domain = registerOutput<String>('domain');
+    frontendPort = registerOutput<int>('frontendPort');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    serverCertificateId = registerOutput<String>('serverCertificateId');
   }
 
   /// Gets an existing [DomainExtension] resource's state with the given [name] and [id].
@@ -788,15 +794,17 @@ class DomainExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/domainExtension:DomainExtension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.domain = registerOutput<String>('domain');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.serverCertificateId = registerOutput<String>('serverCertificateId');
+         'alicloud:slb/domainExtension:DomainExtension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    domain = registerOutput<String>('domain');
+    frontendPort = registerOutput<int>('frontendPort');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    serverCertificateId = registerOutput<String>('serverCertificateId');
   }
 }

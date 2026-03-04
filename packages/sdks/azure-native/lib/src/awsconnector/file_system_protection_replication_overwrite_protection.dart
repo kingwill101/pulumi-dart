@@ -3,16 +3,20 @@ enum FileSystemProtectionReplicationOverwriteProtection {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const FileSystemProtectionReplicationOverwriteProtection(this.value);
-  final String value;
+  const FileSystemProtectionReplicationOverwriteProtection(this.wireValue);
+  final String wireValue;
 
-  static FileSystemProtectionReplicationOverwriteProtection fromValue(String value) {
-    for (final item in FileSystemProtectionReplicationOverwriteProtection.values) {
-      if (item.value == value) {
+  static FileSystemProtectionReplicationOverwriteProtection fromValue(
+    String value,
+  ) {
+    for (final item
+        in FileSystemProtectionReplicationOverwriteProtection.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FileSystemProtectionReplicationOverwriteProtection value: $value');
+    throw ArgumentError(
+      'Unknown FileSystemProtectionReplicationOverwriteProtection value: $value',
+    );
   }
 }
-

@@ -11,16 +11,21 @@ import 'threat_prevention_profile.dart';
 class SecurityProfileArgs {
   /// Optional. An optional description of the profile. Max length 512 characters.
   final pulumi.Input<String>? description;
+
   /// Optional. Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1".
   final pulumi.Input<String> securityProfileId;
+
   /// The threat prevention configuration for the SecurityProfile.
   final pulumi.Input<ThreatPreventionProfile>? threatPreventionProfile;
+
   /// Immutable. The single ProfileType that the SecurityProfile resource configures.
   final pulumi.Input<SecurityProfileType>? type;
 
@@ -52,22 +57,62 @@ class SecurityProfileArgs {
       'name': ?name,
       'organizationId': organizationId,
       'securityProfileId': securityProfileId,
-      'threatPreventionProfile': ?pulumi.Input.mapOptionalInputValue<ThreatPreventionProfile, Map<String, dynamic>>(threatPreventionProfile, (value) => value.toMap()),
-      'type': ?pulumi.Input.mapOptionalInputValue<SecurityProfileType, String>(type, (value) => value.value),
+      'threatPreventionProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ThreatPreventionProfile,
+            Map<String, dynamic>
+          >(threatPreventionProfile, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<SecurityProfileType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      securityProfileId: (map['securityProfileId'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (ThreatPreventionProfile.fromMap((map['threatPreventionProfile']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (SecurityProfileType.fromValue(map['type']! as String)).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      securityProfileId: pulumi.Input.fromValue(
+        map['securityProfileId'] as String,
+      ),
+      threatPreventionProfile: (() {
+        final guardedValue = map['threatPreventionProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ThreatPreventionProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityProfileType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

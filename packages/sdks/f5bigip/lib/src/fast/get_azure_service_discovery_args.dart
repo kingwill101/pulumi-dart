@@ -9,23 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureServiceDiscoveryArgs {
   /// Specifies whether to look for public or private IP addresses,default `private`.
   final pulumi.Input<String>? addressRealm;
+
   /// Specifies whether you are updating your credentials,default `false`.
   final pulumi.Input<bool>? credentialUpdate;
+
   /// Member is down when fewer than minimum monitors report it healthy.
   final pulumi.Input<String>? minimumMonitors;
+
   /// Port to be used for Azure service discovery,default `80`.
   final pulumi.Input<int>? port;
+
   /// Azure Resource Group name.
   final pulumi.Input<String> resourceGroup;
+
   /// Azure subscription ID.
   final pulumi.Input<String> subscriptionId;
+
   /// The tag key associated with the node to add to this pool.
   final pulumi.Input<String>? tagKey;
+
   /// The tag value associated with the node to add to this pool.
   final pulumi.Input<String>? tagValue;
   final pulumi.Input<String>? type;
+
   /// Action to take when node cannot be detected,default `remove`.
   final pulumi.Input<String>? undetectableAction;
+
   /// Update interval for service discovery.
   final pulumi.Input<String>? updateInterval;
 
@@ -73,18 +82,53 @@ class GetAzureServiceDiscoveryArgs {
 
   factory GetAzureServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
+      addressRealm: (() {
+        final guardedValue = map['addressRealm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialUpdate: (() {
+        final guardedValue = map['credentialUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      minimumMonitors: (() {
+        final guardedValue = map['minimumMonitors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      undetectableAction: (() {
+        final guardedValue = map['undetectableAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateInterval: (() {
+        final guardedValue = map['updateInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

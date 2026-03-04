@@ -4,16 +4,15 @@ enum RegionDiskInterfaceComputeBeta {
   scsi("SCSI"),
   unspecified("UNSPECIFIED");
 
-  const RegionDiskInterfaceComputeBeta(this.value);
-  final String value;
+  const RegionDiskInterfaceComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionDiskInterfaceComputeBeta fromValue(String value) {
     for (final item in RegionDiskInterfaceComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionDiskInterfaceComputeBeta value: $value');
   }
 }
-

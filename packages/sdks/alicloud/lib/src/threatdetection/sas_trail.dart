@@ -6,7 +6,7 @@ import 'sas_trail_state.dart';
 ///
 /// For information about Threat Detection Sas Trail and how to use it, see [What is Sas Trail](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createservicetrail).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -120,6 +120,7 @@ import 'sas_trail_state.dart';
 class SasTrail extends pulumi.CustomResource {
   /// The service trace creation timestamp, in milliseconds.
   late final pulumi.Output<int> createTime;
+
   /// Service trace configuration information.
   late final pulumi.Output<SasTrailServiceTrail> serviceTrail;
 
@@ -132,13 +133,13 @@ class SasTrail extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/sasTrail:SasTrail',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
+         'alicloud:threatdetection/sasTrail:SasTrail',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
   }
 
   /// Gets an existing [SasTrail] resource's state with the given [name] and [id].
@@ -159,12 +160,12 @@ class SasTrail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/sasTrail:SasTrail',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
+         'alicloud:threatdetection/sasTrail:SasTrail',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
   }
 }

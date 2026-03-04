@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerInfoResponse {
   /// Resource identifier of the partner server.
   final pulumi.Input<String> id;
+
   /// Geo location of the partner server.
   final pulumi.Input<String> location;
+
   /// Replication role of the partner server.
   final pulumi.Input<String> replicationRole;
 
@@ -31,10 +33,9 @@ class PartnerInfoResponse {
 
   factory PartnerInfoResponse.fromMap(Map<String, dynamic> map) {
     return PartnerInfoResponse(
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      replicationRole: (map['replicationRole'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      replicationRole: pulumi.Input.fromValue(map['replicationRole'] as String),
     );
   }
 }
-

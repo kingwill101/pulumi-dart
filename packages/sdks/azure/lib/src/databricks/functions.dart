@@ -116,7 +116,7 @@ import 'get_workspace_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2022-10-01-preview
@@ -245,7 +245,7 @@ Future<GetAccessConnectorResult> getAccessConnector(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2024-05-01
@@ -374,13 +374,14 @@ Future<GetWorkspaceResult> getWorkspace(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2024-05-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_databricks_get_workspace_private_endpoint_connection_get_workspace_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointConnection(
+Future<GetWorkspacePrivateEndpointConnectionResult>
+getWorkspacePrivateEndpointConnection(
   GetWorkspacePrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

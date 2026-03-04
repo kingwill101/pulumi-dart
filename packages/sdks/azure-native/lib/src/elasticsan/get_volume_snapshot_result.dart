@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetVolumeSnapshotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Data used when creating a volume snapshot.
   final SnapshotCreationDataResponse creationData;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// State of the operation on the resource.
   final String provisioningState;
+
   /// Size of Source Volume
   final double sourceVolumeSizeGiB;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Source Volume Name of a snapshot
   final String volumeName;
 
@@ -63,15 +71,18 @@ class GetVolumeSnapshotResult {
   factory GetVolumeSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: SnapshotCreationDataResponse.fromMap((map['creationData'] as Map).cast<String, dynamic>()),
+      creationData: SnapshotCreationDataResponse.fromMap(
+        (map['creationData']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sourceVolumeSizeGiB: map['sourceVolumeSizeGiB'] as double,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       volumeName: map['volumeName'] as String,
     );
   }
 }
-

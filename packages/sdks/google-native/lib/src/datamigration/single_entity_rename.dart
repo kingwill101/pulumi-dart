@@ -9,20 +9,15 @@ class SingleEntityRename {
 
   /// Creates a new [SingleEntityRename].
   /// [newName] The new name of the destination entity
-  SingleEntityRename({
-    required this.newName,
-  });
+  SingleEntityRename({required this.newName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'newName': newName,
-    };
+    return <String, dynamic>{'newName': newName};
   }
 
   factory SingleEntityRename.fromMap(Map<String, dynamic> map) {
     return SingleEntityRename(
-      newName: (map['newName'] as String).input(),
+      newName: pulumi.Input.fromValue(map['newName'] as String),
     );
   }
 }
-

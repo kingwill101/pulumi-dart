@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualDirectory {
   /// Physical path.
   final pulumi.Input<String>? physicalPath;
+
   /// Path to virtual application.
   final pulumi.Input<String>? virtualPath;
 
   /// Creates a new [VirtualDirectory].
   /// [physicalPath] Physical path.
   /// [virtualPath] Path to virtual application.
-  VirtualDirectory({
-    this.physicalPath,
-    this.virtualPath,
-  });
+  VirtualDirectory({this.physicalPath, this.virtualPath});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VirtualDirectory {
 
   factory VirtualDirectory.fromMap(Map<String, dynamic> map) {
     return VirtualDirectory(
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
-      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath']! as String).input(),
+      physicalPath: (() {
+        final guardedValue = map['physicalPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualPath: (() {
+        final guardedValue = map['virtualPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

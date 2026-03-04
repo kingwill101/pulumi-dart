@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fast_tcp_app_args.dart';
 import 'fast_tcp_app_monitor.dart';
-import 'fast_tcp_app_pool_member.dart';
 import 'fast_tcp_app_state.dart';
 import 'fast_tcp_app_virtual_server.dart';
 
@@ -175,34 +174,48 @@ import 'fast_tcp_app_virtual_server.dart';
 class FastTcpApp extends pulumi.CustomResource {
   /// Name of the FAST TCP application.
   late final pulumi.Output<String> application;
+
   /// Name of an existing BIG-IP HTTPS pool monitor. Monitors are used to determine the health of the application on each server.
   late final pulumi.Output<String?> existingMonitor;
+
   /// Name of an existing BIG-IP pool.
   late final pulumi.Output<String?> existingPool;
+
   /// Name of an existing BIG-IP SNAT pool.
   late final pulumi.Output<String?> existingSnatPool;
+
   /// Type of fallback persistence record to be created for each new client connection.
   late final pulumi.Output<String?> fallbackPersistence;
+
   /// Json payload for FAST TCP application.
   late final pulumi.Output<String> fastTcpJson;
+
   /// A `load balancing method` is an algorithm that the BIG-IP system uses to select a pool member for processing a request. F5 recommends the Least Connections load balancing method
   late final pulumi.Output<String?> loadBalancingMode;
+
   /// `monitor` block takes input for FAST-Generated Pool Monitor.
   /// See Pool Monitor below for more details.
   late final pulumi.Output<FastTcpAppMonitor?> monitor;
+
   /// Name of an existing BIG-IP persistence profile to be used.
   late final pulumi.Output<String?> persistenceProfile;
+
   /// Type of persistence profile to be created. Using this option will enable use of FAST generated persistence profiles.
   late final pulumi.Output<String?> persistenceType;
+
   /// `pool_members` block takes input for FAST-Generated Pool.
   /// See Pool Members below for more details.
-  late final pulumi.Output<List<FastTcpAppPoolMember>?> poolMembers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> poolMembers;
+
   /// Slow ramp temporarily throttles the number of connections to a new pool member. The recommended value is 300 seconds
   late final pulumi.Output<int?> slowRampTime;
+
   /// List of address to be used for FAST-Generated SNAT Pool.
   late final pulumi.Output<List<String>?> snatPoolAddresses;
+
   /// Name of the FAST TCP application tenant.
   late final pulumi.Output<String> tenant;
+
   /// `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// See virtual server below for more details.
   late final pulumi.Output<FastTcpAppVirtualServer?> virtualServer;
@@ -216,26 +229,26 @@ class FastTcpApp extends pulumi.CustomResource {
     FastTcpAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastTcpApp:FastTcpApp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.application = registerOutput<String>('application');
-    this.existingMonitor = registerOutput<String?>('existingMonitor');
-    this.existingPool = registerOutput<String?>('existingPool');
-    this.existingSnatPool = registerOutput<String?>('existingSnatPool');
-    this.fallbackPersistence = registerOutput<String?>('fallbackPersistence');
-    this.fastTcpJson = registerOutput<String>('fastTcpJson');
-    this.loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    this.monitor = registerOutput<FastTcpAppMonitor?>('monitor');
-    this.persistenceProfile = registerOutput<String?>('persistenceProfile');
-    this.persistenceType = registerOutput<String?>('persistenceType');
-    this.poolMembers = registerOutput<List<FastTcpAppPoolMember>?>('poolMembers');
-    this.slowRampTime = registerOutput<int?>('slowRampTime');
-    this.snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
-    this.tenant = registerOutput<String>('tenant');
-    this.virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
+         'f5bigip:index/fastTcpApp:FastTcpApp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    application = registerOutput<String>('application');
+    existingMonitor = registerOutput<String?>('existingMonitor');
+    existingPool = registerOutput<String?>('existingPool');
+    existingSnatPool = registerOutput<String?>('existingSnatPool');
+    fallbackPersistence = registerOutput<String?>('fallbackPersistence');
+    fastTcpJson = registerOutput<String>('fastTcpJson');
+    loadBalancingMode = registerOutput<String?>('loadBalancingMode');
+    monitor = registerOutput<FastTcpAppMonitor?>('monitor');
+    persistenceProfile = registerOutput<String?>('persistenceProfile');
+    persistenceType = registerOutput<String?>('persistenceType');
+    poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
+    slowRampTime = registerOutput<int?>('slowRampTime');
+    snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
+    tenant = registerOutput<String>('tenant');
+    virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
   }
 
   /// Gets an existing [FastTcpApp] resource's state with the given [name] and [id].
@@ -256,25 +269,25 @@ class FastTcpApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastTcpApp:FastTcpApp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.application = registerOutput<String>('application');
-    this.existingMonitor = registerOutput<String?>('existingMonitor');
-    this.existingPool = registerOutput<String?>('existingPool');
-    this.existingSnatPool = registerOutput<String?>('existingSnatPool');
-    this.fallbackPersistence = registerOutput<String?>('fallbackPersistence');
-    this.fastTcpJson = registerOutput<String>('fastTcpJson');
-    this.loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    this.monitor = registerOutput<FastTcpAppMonitor?>('monitor');
-    this.persistenceProfile = registerOutput<String?>('persistenceProfile');
-    this.persistenceType = registerOutput<String?>('persistenceType');
-    this.poolMembers = registerOutput<List<FastTcpAppPoolMember>?>('poolMembers');
-    this.slowRampTime = registerOutput<int?>('slowRampTime');
-    this.snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
-    this.tenant = registerOutput<String>('tenant');
-    this.virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
+         'f5bigip:index/fastTcpApp:FastTcpApp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    application = registerOutput<String>('application');
+    existingMonitor = registerOutput<String?>('existingMonitor');
+    existingPool = registerOutput<String?>('existingPool');
+    existingSnatPool = registerOutput<String?>('existingSnatPool');
+    fallbackPersistence = registerOutput<String?>('fallbackPersistence');
+    fastTcpJson = registerOutput<String>('fastTcpJson');
+    loadBalancingMode = registerOutput<String?>('loadBalancingMode');
+    monitor = registerOutput<FastTcpAppMonitor?>('monitor');
+    persistenceProfile = registerOutput<String?>('persistenceProfile');
+    persistenceType = registerOutput<String?>('persistenceType');
+    poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
+    slowRampTime = registerOutput<int?>('slowRampTime');
+    snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
+    tenant = registerOutput<String>('tenant');
+    virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
   }
 }

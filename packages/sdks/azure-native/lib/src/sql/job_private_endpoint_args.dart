@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobPrivateEndpointArgs {
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
+
   /// The name of the private endpoint.
   final pulumi.Input<String>? privateEndpointName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// ARM resource id of the server the private endpoint will target.
   final pulumi.Input<String> targetServerAzureResourceId;
 
@@ -44,12 +48,19 @@ class JobPrivateEndpointArgs {
 
   factory JobPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return JobPrivateEndpointArgs(
-      jobAgentName: (map['jobAgentName'] as String).input(),
-      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      targetServerAzureResourceId: (map['targetServerAzureResourceId'] as String).input(),
+      jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
+      privateEndpointName: (() {
+        final guardedValue = map['privateEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      targetServerAzureResourceId: pulumi.Input.fromValue(
+        map['targetServerAzureResourceId'] as String,
+      ),
     );
   }
 }
-

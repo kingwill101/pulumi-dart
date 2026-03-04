@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseOnlineMigrationSource {
   /// The name of the default database
   final pulumi.Input<String> dbName;
+
   /// The FQDN pointing to the database cluster's current primary node.
   final pulumi.Input<String> host;
+
   /// A randomly generated password for the default user.
   final pulumi.Input<String> password;
+
   /// The port on which the database cluster is listening.
   final pulumi.Input<int> port;
+
   /// The default user for the database.
   final pulumi.Input<String> username;
 
@@ -40,12 +44,11 @@ class DatabaseOnlineMigrationSource {
 
   factory DatabaseOnlineMigrationSource.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationSource(
-      dbName: (map['dbName'] as String).input(),
-      host: (map['host'] as String).input(),
-      password: (map['password'] as String).input(),
-      port: (map['port'] as int).input(),
-      username: (map['username'] as String).input(),
+      dbName: pulumi.Input.fromValue(map['dbName'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

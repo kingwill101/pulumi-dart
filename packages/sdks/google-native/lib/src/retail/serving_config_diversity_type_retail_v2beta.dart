@@ -4,16 +4,17 @@ enum ServingConfigDiversityTypeRetailV2beta {
   ruleBasedDiversity("RULE_BASED_DIVERSITY"),
   dataDrivenDiversity("DATA_DRIVEN_DIVERSITY");
 
-  const ServingConfigDiversityTypeRetailV2beta(this.value);
-  final String value;
+  const ServingConfigDiversityTypeRetailV2beta(this.wireValue);
+  final String wireValue;
 
   static ServingConfigDiversityTypeRetailV2beta fromValue(String value) {
     for (final item in ServingConfigDiversityTypeRetailV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServingConfigDiversityTypeRetailV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ServingConfigDiversityTypeRetailV2beta value: $value',
+    );
   }
 }
-

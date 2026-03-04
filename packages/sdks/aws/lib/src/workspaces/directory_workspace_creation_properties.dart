@@ -5,18 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryWorkspaceCreationProperties {
   /// The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
   final pulumi.Input<String>? customSecurityGroupId;
-  /// The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=<value>,DC=<value>,...,DC=<value>"` pattern.
+
+  /// The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   final pulumi.Input<String>? defaultOu;
+
   /// Indicates whether internet access is enabled for your WorkSpaces.
   final pulumi.Input<bool>? enableInternetAccess;
+
   /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final pulumi.Input<bool>? enableMaintenanceMode;
+
   /// Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final pulumi.Input<bool>? userEnabledAsLocalAdministrator;
 
   /// Creates a new [DirectoryWorkspaceCreationProperties].
   /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
-  /// [defaultOu] The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=<value>,DC=<value>,...,DC=<value>"` pattern.
+  /// [defaultOu] The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
   /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   /// [userEnabledAsLocalAdministrator] Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
@@ -38,14 +42,35 @@ class DirectoryWorkspaceCreationProperties {
     };
   }
 
-  factory DirectoryWorkspaceCreationProperties.fromMap(Map<String, dynamic> map) {
+  factory DirectoryWorkspaceCreationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DirectoryWorkspaceCreationProperties(
-      customSecurityGroupId: map['customSecurityGroupId'] == null ? null : ((map['customSecurityGroupId'] as String).input()).input(),
-      defaultOu: map['defaultOu'] == null ? null : ((map['defaultOu'] as String).input()).input(),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : ((map['enableInternetAccess'] as bool).input()).input(),
-      enableMaintenanceMode: map['enableMaintenanceMode'] == null ? null : ((map['enableMaintenanceMode'] as bool).input()).input(),
-      userEnabledAsLocalAdministrator: map['userEnabledAsLocalAdministrator'] == null ? null : ((map['userEnabledAsLocalAdministrator'] as bool).input()).input(),
+      customSecurityGroupId: (() {
+        final guardedValue = map['customSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultOu: (() {
+        final guardedValue = map['defaultOu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableInternetAccess: (() {
+        final guardedValue = map['enableInternetAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableMaintenanceMode: (() {
+        final guardedValue = map['enableMaintenanceMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userEnabledAsLocalAdministrator: (() {
+        final guardedValue = map['userEnabledAsLocalAdministrator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

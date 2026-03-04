@@ -8,20 +8,21 @@ class AclConfigIdpConfigExternalIdpConfig {
 
   /// Creates a new [AclConfigIdpConfigExternalIdpConfig].
   /// [workforcePoolName] Workforce pool name: "locations/global/workforcePools/pool_id"
-  AclConfigIdpConfigExternalIdpConfig({
-    this.workforcePoolName,
-  });
+  AclConfigIdpConfigExternalIdpConfig({this.workforcePoolName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workforcePoolName': ?workforcePoolName,
-    };
+    return <String, dynamic>{'workforcePoolName': ?workforcePoolName};
   }
 
-  factory AclConfigIdpConfigExternalIdpConfig.fromMap(Map<String, dynamic> map) {
+  factory AclConfigIdpConfigExternalIdpConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AclConfigIdpConfigExternalIdpConfig(
-      workforcePoolName: map['workforcePoolName'] == null ? null : (map['workforcePoolName']! as String).input(),
+      workforcePoolName: (() {
+        final guardedValue = map['workforcePoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

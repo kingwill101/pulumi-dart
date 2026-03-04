@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricDimension {
   /// Name of the dimension.
   final pulumi.Input<String> name;
+
   /// the dimension operator. Only 'Include' and 'Exclude' are supported
   final pulumi.Input<String> operator;
+
   /// list of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,9 @@ class MetricDimension {
 
   factory MetricDimension.fromMap(Map<String, dynamic> map) {
     return MetricDimension(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

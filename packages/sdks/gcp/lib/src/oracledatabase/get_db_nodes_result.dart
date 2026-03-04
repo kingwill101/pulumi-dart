@@ -7,6 +7,7 @@ import 'get_db_nodes_db_node.dart';
 class GetDbNodesResult {
   final String cloudVmCluster;
   final List<GetDbNodesDbNode> dbNodes;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -29,7 +30,11 @@ class GetDbNodesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudVmCluster': cloudVmCluster,
-      'dbNodes': pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(dbNodes, (value) => value.toMap()),
+      'dbNodes':
+          pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(
+            dbNodes,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'location': location,
       'project': ?project,
@@ -39,11 +44,18 @@ class GetDbNodesResult {
   factory GetDbNodesResult.fromMap(Map<String, dynamic> map) {
     return GetDbNodesResult(
       cloudVmCluster: map['cloudVmCluster'] as String,
-      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes'], (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
+      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(
+        map['dbNodes']!,
+        (value) =>
+            GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

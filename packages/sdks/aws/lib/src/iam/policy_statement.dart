@@ -7,20 +7,28 @@ import 'policy_statement_effect.dart';
 class PolicyStatement {
   /// Include a list of actions that the policy allows or denies. Required (either Action or NotAction)
   final pulumi.Input<String>? action;
+
   /// Specify the circumstances under which the policy grants permission.
   final pulumi.Input<Map<String, dynamic>>? condition;
+
   /// Indicate whether the policy allows or denies access.
   final pulumi.Input<PolicyStatementEffect> effect;
+
   /// Include a list of actions that are not covered by this policy. Required (either Action or NotAction)
   final pulumi.Input<String>? notAction;
+
   /// Indicate the account, user, role, or federated user to which this policy does not apply.
   final pulumi.Input<String>? notPrincipal;
+
   /// A list of resources that are specifically excluded by this policy.
   final pulumi.Input<String>? notResource;
+
   /// Indicate the account, user, role, or federated user to which you would like to allow or deny access. If you are creating a policy to attach to a user or role, you cannot include this element. The principal is implied as that user or role.
   final pulumi.Input<String>? principal;
+
   /// A list of resources to which the actions apply.
   final pulumi.Input<String>? resource;
+
   /// An optional statement ID to differentiate between your statements.
   final pulumi.Input<String>? sid;
 
@@ -50,7 +58,10 @@ class PolicyStatement {
     return <String, dynamic>{
       'Action': ?action,
       'Condition': ?condition,
-      'Effect': pulumi.Input.mapInputValue<PolicyStatementEffect, String>(effect, (value) => value.value),
+      'Effect': pulumi.Input.mapInputValue<PolicyStatementEffect, String>(
+        effect,
+        (value) => value.wireValue,
+      ),
       'NotAction': ?notAction,
       'NotPrincipal': ?notPrincipal,
       'NotResource': ?notResource,
@@ -62,16 +73,51 @@ class PolicyStatement {
 
   factory PolicyStatement.fromMap(Map<String, dynamic> map) {
     return PolicyStatement(
-      action: map['Action'] == null ? null : ((map['Action'] as String).input()).input(),
-      condition: map['Condition'] == null ? null : (((map['Condition'] as Map).cast<String, dynamic>()).input()).input(),
-      effect: (PolicyStatementEffect.fromValue(map['Effect']! as String)).input(),
-      notAction: map['NotAction'] == null ? null : ((map['NotAction'] as String).input()).input(),
-      notPrincipal: map['NotPrincipal'] == null ? null : ((map['NotPrincipal'] as String).input()).input(),
-      notResource: map['NotResource'] == null ? null : ((map['NotResource'] as String).input()).input(),
-      principal: map['Principal'] == null ? null : ((map['Principal'] as String).input()).input(),
-      resource: map['Resource'] == null ? null : ((map['Resource'] as String).input()).input(),
-      sid: map['Sid'] == null ? null : ((map['Sid'] as String).input()).input(),
+      action: (() {
+        final guardedValue = map['Action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      condition: (() {
+        final guardedValue = map['Condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      effect: pulumi.Input.fromValue(
+        PolicyStatementEffect.fromValue(map['Effect']! as String),
+      ),
+      notAction: (() {
+        final guardedValue = map['NotAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notPrincipal: (() {
+        final guardedValue = map['NotPrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notResource: (() {
+        final guardedValue = map['NotResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principal: (() {
+        final guardedValue = map['Principal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: (() {
+        final guardedValue = map['Resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sid: (() {
+        final guardedValue = map['Sid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

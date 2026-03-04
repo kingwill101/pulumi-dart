@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointsArgs {
   /// AWS account ID for the account that owns the specified access points. If omitted, defaults to the caller's account ID.
   final pulumi.Input<String>? accountId;
+
   /// Name of the bucket associated with the access points.
   final pulumi.Input<String>? bucket;
+
   /// Unique identifier for the access points data source.
   final pulumi.Input<String>? dataSourceId;
+
   /// Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   final pulumi.Input<String>? dataSourceType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,12 +48,31 @@ class GetAccessPointsArgs {
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : ((map['dataSourceId'] as String).input()).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : ((map['dataSourceType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceId: (() {
+        final guardedValue = map['dataSourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceType: (() {
+        final guardedValue = map['dataSourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

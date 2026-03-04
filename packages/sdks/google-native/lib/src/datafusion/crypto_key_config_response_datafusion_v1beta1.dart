@@ -9,20 +9,17 @@ class CryptoKeyConfigResponseDatafusionV1beta1 {
 
   /// Creates a new [CryptoKeyConfigResponseDatafusionV1beta1].
   /// [keyReference] The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  CryptoKeyConfigResponseDatafusionV1beta1({
-    required this.keyReference,
-  });
+  CryptoKeyConfigResponseDatafusionV1beta1({required this.keyReference});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyReference': keyReference,
-    };
+    return <String, dynamic>{'keyReference': keyReference};
   }
 
-  factory CryptoKeyConfigResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CryptoKeyConfigResponseDatafusionV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CryptoKeyConfigResponseDatafusionV1beta1(
-      keyReference: (map['keyReference'] as String).input(),
+      keyReference: pulumi.Input.fromValue(map['keyReference'] as String),
     );
   }
 }
-

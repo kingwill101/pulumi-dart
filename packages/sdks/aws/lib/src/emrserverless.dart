@@ -1,5 +1,3 @@
-library module_emrserverless;
-
 export 'emrserverless/application.dart';
 export 'emrserverless/application_args.dart';
 export 'emrserverless/application_auto_start_configuration.dart';

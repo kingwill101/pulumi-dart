@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2IntentMessageImage {
   /// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
   final pulumi.Input<String>? accessibilityText;
+
   /// Optional. The public URI to an image file.
   final pulumi.Input<String>? imageUri;
 
@@ -24,11 +25,20 @@ class GoogleCloudDialogflowV2IntentMessageImage {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageImage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageImage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageImage(
-      accessibilityText: map['accessibilityText'] == null ? null : (map['accessibilityText']! as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      accessibilityText: (() {
+        final guardedValue = map['accessibilityText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageUri: (() {
+        final guardedValue = map['imageUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

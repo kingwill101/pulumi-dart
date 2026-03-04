@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceHybridDoubleWriteState {
   /// Target Namespace.
   final pulumi.Input<String>? namespace;
+
   /// Source Namespace.
   final pulumi.Input<String>? sourceNamespace;
+
   /// Source UserId.
   final pulumi.Input<String>? sourceUserId;
+
   /// Target UserId.
   final pulumi.Input<String>? userId;
 
@@ -36,11 +39,26 @@ class ServiceHybridDoubleWriteState {
 
   factory ServiceHybridDoubleWriteState.fromMap(Map<String, dynamic> map) {
     return ServiceHybridDoubleWriteState(
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace']! as String).input(),
-      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceNamespace: (() {
+        final guardedValue = map['sourceNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUserId: (() {
+        final guardedValue = map['sourceUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

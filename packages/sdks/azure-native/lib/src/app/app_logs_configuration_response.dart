@@ -7,8 +7,10 @@ import 'log_analytics_configuration_response.dart';
 class AppLogsConfigurationResponse {
   /// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
   final pulumi.Input<String>? destination;
+
   /// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
-  final pulumi.Input<LogAnalyticsConfigurationResponse>? logAnalyticsConfiguration;
+  final pulumi.Input<LogAnalyticsConfigurationResponse>?
+  logAnalyticsConfiguration;
 
   /// Creates a new [AppLogsConfigurationResponse].
   /// [destination] Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
@@ -21,15 +23,30 @@ class AppLogsConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destination': ?destination,
-      'logAnalyticsConfiguration': ?pulumi.Input.mapOptionalInputValue<LogAnalyticsConfigurationResponse, Map<String, dynamic>>(logAnalyticsConfiguration, (value) => value.toMap()),
+      'logAnalyticsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogAnalyticsConfigurationResponse,
+            Map<String, dynamic>
+          >(logAnalyticsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AppLogsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AppLogsConfigurationResponse(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      logAnalyticsConfiguration: map['logAnalyticsConfiguration'] == null ? null : (LogAnalyticsConfigurationResponse.fromMap((map['logAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logAnalyticsConfiguration: (() {
+        final guardedValue = map['logAnalyticsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogAnalyticsConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

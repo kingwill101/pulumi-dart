@@ -5,7 +5,11 @@ import 'get_vpc_firewall_cens_cen_local_vpc_vpc_cidr_table_list_route_entry_list
 
 class GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
   /// The list of route entries in the VPC.
-  final pulumi.Input<List<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList>> routeEntryLists;
+  final pulumi.Input<
+    List<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList>
+  >
+  routeEntryLists;
+
   /// The ID of the route table of the VPC.
   final pulumi.Input<String> routeTableId;
 
@@ -19,16 +23,38 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'routeEntryLists': pulumi.Input.mapInputValue<List<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList>, List<Map<String, dynamic>>>(routeEntryLists, (value) => pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeEntryLists':
+          pulumi.Input.mapInputValue<
+            List<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList>,
+            List<Map<String, dynamic>>
+          >(
+            routeEntryLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'routeTableId': routeTableId,
     };
   }
 
-  factory GetVpcFirewallCensCenLocalVpcVpcCidrTableList.fromMap(Map<String, dynamic> map) {
+  factory GetVpcFirewallCensCenLocalVpcVpcCidrTableList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpcFirewallCensCenLocalVpcVpcCidrTableList(
-      routeEntryLists: (pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList>(map['routeEntryLists'], (value) => GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
+      routeEntryLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList
+        >(
+          map['routeEntryLists']!,
+          (value) =>
+              GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
-

@@ -6,16 +6,17 @@ enum AuthorizationLoggingOptionsPermissionType {
   dataRead("DATA_READ"),
   dataWrite("DATA_WRITE");
 
-  const AuthorizationLoggingOptionsPermissionType(this.value);
-  final String value;
+  const AuthorizationLoggingOptionsPermissionType(this.wireValue);
+  final String wireValue;
 
   static AuthorizationLoggingOptionsPermissionType fromValue(String value) {
     for (final item in AuthorizationLoggingOptionsPermissionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionType value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizationLoggingOptionsPermissionType value: $value',
+    );
   }
 }
-

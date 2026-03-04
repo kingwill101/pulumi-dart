@@ -4,16 +4,17 @@ enum GalleryApplicationCustomActionParameterType {
   valueConfigurationDataBlob("ConfigurationDataBlob"),
   valueLogOutputBlob("LogOutputBlob");
 
-  const GalleryApplicationCustomActionParameterType(this.value);
-  final String value;
+  const GalleryApplicationCustomActionParameterType(this.wireValue);
+  final String wireValue;
 
   static GalleryApplicationCustomActionParameterType fromValue(String value) {
     for (final item in GalleryApplicationCustomActionParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GalleryApplicationCustomActionParameterType value: $value');
+    throw ArgumentError(
+      'Unknown GalleryApplicationCustomActionParameterType value: $value',
+    );
   }
 }
-

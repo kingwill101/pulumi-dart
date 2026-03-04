@@ -10,6 +10,7 @@ import 'job_iammember_condition.dart';
 class JobIAMMemberArgs {
   final pulumi.Input<JobIAMMemberCondition>? condition;
   final pulumi.Input<String> jobId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -19,12 +20,15 @@ class JobIAMMemberArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
+
   /// The project in which the job belongs. If it
   /// is not provided, the provider will use a default.
   final pulumi.Input<String>? project;
+
   /// The region in which the job belongs. If it
   /// is not provided, the provider will use a default.
   final pulumi.Input<String>? region;
+
   /// The role that should be applied. Only one
   /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -50,7 +54,11 @@ class JobIAMMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<JobIAMMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobIAMMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'jobId': jobId,
       'member': member,
       'project': ?project,
@@ -61,13 +69,28 @@ class JobIAMMemberArgs {
 
   factory JobIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return JobIAMMemberArgs(
-      condition: map['condition'] == null ? null : (JobIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      jobId: (map['jobId'] as String).input(),
-      member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobIAMMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      member: pulumi.Input.fromValue(map['member'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

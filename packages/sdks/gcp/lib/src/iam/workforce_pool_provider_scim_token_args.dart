@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolProviderScimTokenArgs {
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+
   /// The location for the resource.
   final pulumi.Input<String> location;
+
   /// The ID of the Provider.
   final pulumi.Input<String> providerId;
+
   /// The ID of the SCIM Tenant.
   final pulumi.Input<String> scimTenantId;
+
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   final pulumi.Input<String> scimTokenId;
+
   /// The ID of the Workforce Pool.
   final pulumi.Input<String> workforcePoolId;
 
@@ -49,13 +54,16 @@ class WorkforcePoolProviderScimTokenArgs {
 
   factory WorkforcePoolProviderScimTokenArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      providerId: (map['providerId'] as String).input(),
-      scimTenantId: (map['scimTenantId'] as String).input(),
-      scimTokenId: (map['scimTokenId'] as String).input(),
-      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      providerId: pulumi.Input.fromValue(map['providerId'] as String),
+      scimTenantId: pulumi.Input.fromValue(map['scimTenantId'] as String),
+      scimTokenId: pulumi.Input.fromValue(map['scimTokenId'] as String),
+      workforcePoolId: pulumi.Input.fromValue(map['workforcePoolId'] as String),
     );
   }
 }
-

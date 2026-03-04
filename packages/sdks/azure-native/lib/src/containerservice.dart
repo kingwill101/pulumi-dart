@@ -1,5 +1,3 @@
-library module_containerservice;
-
 export 'containerservice/absolute_monthly_schedule.dart';
 export 'containerservice/absolute_monthly_schedule_response.dart';
 export 'containerservice/adoption_policy.dart';

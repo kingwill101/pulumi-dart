@@ -4,16 +4,15 @@ enum RecordingStrategyType {
   eXCLUSIONBYRESOURCETYPES("EXCLUSION_BY_RESOURCE_TYPES"),
   iNCLUSIONBYRESOURCETYPES("INCLUSION_BY_RESOURCE_TYPES");
 
-  const RecordingStrategyType(this.value);
-  final String value;
+  const RecordingStrategyType(this.wireValue);
+  final String wireValue;
 
   static RecordingStrategyType fromValue(String value) {
     for (final item in RecordingStrategyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecordingStrategyType value: $value');
   }
 }
-

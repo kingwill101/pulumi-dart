@@ -3,16 +3,15 @@ enum AuditLogStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const AuditLogStatus(this.value);
-  final String value;
+  const AuditLogStatus(this.wireValue);
+  final String wireValue;
 
   static AuditLogStatus fromValue(String value) {
     for (final item in AuditLogStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuditLogStatus value: $value');
   }
 }
-

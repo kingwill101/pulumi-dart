@@ -12,23 +12,41 @@ class SlsaProvenanceV1 {
   /// Creates a new [SlsaProvenanceV1].
   /// [buildDefinition] Optional.
   /// [runDetails] Optional.
-  SlsaProvenanceV1({
-    this.buildDefinition,
-    this.runDetails,
-  });
+  SlsaProvenanceV1({this.buildDefinition, this.runDetails});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildDefinition': ?pulumi.Input.mapOptionalInputValue<BuildDefinition, Map<String, dynamic>>(buildDefinition, (value) => value.toMap()),
-      'runDetails': ?pulumi.Input.mapOptionalInputValue<RunDetails, Map<String, dynamic>>(runDetails, (value) => value.toMap()),
+      'buildDefinition':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildDefinition,
+            Map<String, dynamic>
+          >(buildDefinition, (value) => value.toMap()),
+      'runDetails':
+          ?pulumi.Input.mapOptionalInputValue<RunDetails, Map<String, dynamic>>(
+            runDetails,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory SlsaProvenanceV1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1(
-      buildDefinition: map['buildDefinition'] == null ? null : (BuildDefinition.fromMap((map['buildDefinition']! as Map).cast<String, dynamic>())).input(),
-      runDetails: map['runDetails'] == null ? null : (RunDetails.fromMap((map['runDetails']! as Map).cast<String, dynamic>())).input(),
+      buildDefinition: (() {
+        final guardedValue = map['buildDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      runDetails: (() {
+        final guardedValue = map['runDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RunDetails.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

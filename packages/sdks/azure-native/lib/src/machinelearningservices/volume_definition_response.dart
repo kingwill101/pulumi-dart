@@ -9,18 +9,25 @@ import 'volume_options_response.dart';
 class VolumeDefinitionResponse {
   /// Bind Options of the mount
   final pulumi.Input<BindOptionsResponse>? bind;
+
   /// Consistency of the volume
   final pulumi.Input<String>? consistency;
+
   /// Indicate whether to mount volume as readOnly. Default value for this is false.
   final pulumi.Input<bool>? readOnly;
+
   /// Source of the mount. For bind mounts this is the host path.
   final pulumi.Input<String>? source;
+
   /// Target of the mount. For bind mounts this is the path in the container.
   final pulumi.Input<String>? target;
+
   /// tmpfs option of the mount
   final pulumi.Input<TmpfsOptionsResponse>? tmpfs;
+
   /// Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
   final pulumi.Input<String>? type;
+
   /// Volume Options of the mount
   final pulumi.Input<VolumeOptionsResponse>? volume;
 
@@ -46,28 +53,83 @@ class VolumeDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bind': ?pulumi.Input.mapOptionalInputValue<BindOptionsResponse, Map<String, dynamic>>(bind, (value) => value.toMap()),
+      'bind':
+          ?pulumi.Input.mapOptionalInputValue<
+            BindOptionsResponse,
+            Map<String, dynamic>
+          >(bind, (value) => value.toMap()),
       'consistency': ?consistency,
       'readOnly': ?readOnly,
       'source': ?source,
       'target': ?target,
-      'tmpfs': ?pulumi.Input.mapOptionalInputValue<TmpfsOptionsResponse, Map<String, dynamic>>(tmpfs, (value) => value.toMap()),
+      'tmpfs':
+          ?pulumi.Input.mapOptionalInputValue<
+            TmpfsOptionsResponse,
+            Map<String, dynamic>
+          >(tmpfs, (value) => value.toMap()),
       'type': ?type,
-      'volume': ?pulumi.Input.mapOptionalInputValue<VolumeOptionsResponse, Map<String, dynamic>>(volume, (value) => value.toMap()),
+      'volume':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeOptionsResponse,
+            Map<String, dynamic>
+          >(volume, (value) => value.toMap()),
     };
   }
 
   factory VolumeDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return VolumeDefinitionResponse(
-      bind: map['bind'] == null ? null : (BindOptionsResponse.fromMap((map['bind']! as Map).cast<String, dynamic>())).input(),
-      consistency: map['consistency'] == null ? null : (map['consistency']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
-      tmpfs: map['tmpfs'] == null ? null : (TmpfsOptionsResponse.fromMap((map['tmpfs']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      volume: map['volume'] == null ? null : (VolumeOptionsResponse.fromMap((map['volume']! as Map).cast<String, dynamic>())).input(),
+      bind: (() {
+        final guardedValue = map['bind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BindOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      consistency: (() {
+        final guardedValue = map['consistency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tmpfs: (() {
+        final guardedValue = map['tmpfs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TmpfsOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volume: (() {
+        final guardedValue = map['volume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

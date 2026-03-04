@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FcTriggerState {
   /// The name of the Event.
   final pulumi.Input<String>? eventMetaName;
+
   /// The version of the Event.
   final pulumi.Input<String>? eventMetaVersion;
+
   /// The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
   final pulumi.Input<String>? functionArn;
+
   /// The Note information.
   final pulumi.Input<String>? notes;
+
   /// The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
   final pulumi.Input<String>? roleArn;
+
   /// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
   final pulumi.Input<String>? sourceArn;
+
   /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
   final pulumi.Input<String>? triggerArn;
 
@@ -51,14 +57,41 @@ class FcTriggerState {
 
   factory FcTriggerState.fromMap(Map<String, dynamic> map) {
     return FcTriggerState(
-      eventMetaName: map['eventMetaName'] == null ? null : (map['eventMetaName']! as String).input(),
-      eventMetaVersion: map['eventMetaVersion'] == null ? null : (map['eventMetaVersion']! as String).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
-      triggerArn: map['triggerArn'] == null ? null : (map['triggerArn']! as String).input(),
+      eventMetaName: (() {
+        final guardedValue = map['eventMetaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventMetaVersion: (() {
+        final guardedValue = map['eventMetaVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionArn: (() {
+        final guardedValue = map['functionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArn: (() {
+        final guardedValue = map['sourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerArn: (() {
+        final guardedValue = map['triggerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

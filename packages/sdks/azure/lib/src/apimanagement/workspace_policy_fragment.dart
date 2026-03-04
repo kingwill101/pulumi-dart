@@ -274,7 +274,7 @@ import 'workspace_policy_fragment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -283,7 +283,7 @@ import 'workspace_policy_fragment_state.dart';
 ///
 /// API Management Workspace Policy Fragments can be imported using the `resource id`, e.g.
 ///
-/// > **Note:** Due to the behaviour of the API, API Management Workspace Policy Fragments can only be imported as `xml`, but can be updated to the desired format after importing.
+/// &gt; **Note:** Due to the behaviour of the API, API Management Workspace Policy Fragments can only be imported as `xml`, but can be updated to the desired format after importing.
 ///
 /// ```sh
 /// $ pulumi import azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.ApiManagement/service/instance1/workspaces/workspace1/policyFragments/policyFragment1
@@ -291,12 +291,16 @@ import 'workspace_policy_fragment_state.dart';
 class WorkspacePolicyFragment extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
+
   /// Specifies the description for the API Management Workspace Policy Fragment.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name of the API Management Workspace Policy Fragment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the XML content of the API Management Workspace Policy Fragment.
   late final pulumi.Output<String> xmlContent;
+
   /// Specifies the XML format of the API Management Workspace Policy Fragment. Possible values are `xml` or `rawxml`. Defaults to `xml`.
   late final pulumi.Output<String?> xmlFormat;
 
@@ -309,16 +313,18 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
     WorkspacePolicyFragmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlFormat = registerOutput<String?>('xmlFormat');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlFormat = registerOutput<String?>('xmlFormat');
   }
 
   /// Gets an existing [WorkspacePolicyFragment] resource's state with the given [name] and [id].
@@ -339,15 +345,17 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlFormat = registerOutput<String?>('xmlFormat');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlFormat = registerOutput<String?>('xmlFormat');
   }
 }

@@ -3,16 +3,15 @@ enum CrossRegionRestore {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const CrossRegionRestore(this.value);
-  final String value;
+  const CrossRegionRestore(this.wireValue);
+  final String wireValue;
 
   static CrossRegionRestore fromValue(String value) {
     for (final item in CrossRegionRestore.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CrossRegionRestore value: $value');
   }
 }
-

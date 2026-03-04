@@ -6,9 +6,13 @@ import 'pipeline_job_mapping_pipeline_job_mapping_config_whistle_config_source.d
 class PipelineJobMappingPipelineJobMappingConfig {
   /// Describes the mapping configuration.
   final pulumi.Input<String>? description;
+
   /// Specifies the path to the mapping configuration for harmonization pipeline.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource>? whistleConfigSource;
+  final pulumi.Input<
+    PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource
+  >?
+  whistleConfigSource;
 
   /// Creates a new [PipelineJobMappingPipelineJobMappingConfig].
   /// [description] Describes the mapping configuration.
@@ -21,15 +25,32 @@ class PipelineJobMappingPipelineJobMappingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'whistleConfigSource': ?pulumi.Input.mapOptionalInputValue<PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource, Map<String, dynamic>>(whistleConfigSource, (value) => value.toMap()),
+      'whistleConfigSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource,
+            Map<String, dynamic>
+          >(whistleConfigSource, (value) => value.toMap()),
     };
   }
 
-  factory PipelineJobMappingPipelineJobMappingConfig.fromMap(Map<String, dynamic> map) {
+  factory PipelineJobMappingPipelineJobMappingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineJobMappingPipelineJobMappingConfig(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      whistleConfigSource: map['whistleConfigSource'] == null ? null : (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap((map['whistleConfigSource']! as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      whistleConfigSource: (() {
+        final guardedValue = map['whistleConfigSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

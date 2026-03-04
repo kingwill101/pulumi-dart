@@ -1,5 +1,3 @@
-library module_apigateway;
-
 export 'apigateway/api.dart';
 export 'apigateway/api_apigateway_v1beta.dart';
 export 'apigateway/api_apigateway_v1beta_args.dart';

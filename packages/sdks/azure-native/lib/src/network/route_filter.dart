@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'express_route_circuit_peering_response.dart';
 import 'route_filter_args.dart';
-import 'route_filter_rule_response.dart';
 
 /// Route Filter Resource.
 ///
@@ -211,22 +209,31 @@ import 'route_filter_rule_response.dart';
 class RouteFilter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// A collection of references to express route circuit ipv6 peerings.
-  late final pulumi.Output<List<ExpressRouteCircuitPeeringResponse>> ipv6Peerings;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipv6Peerings;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// A collection of references to express route circuit peerings.
-  late final pulumi.Output<List<ExpressRouteCircuitPeeringResponse>> peerings;
+  late final pulumi.Output<List<Map<String, dynamic>>> peerings;
+
   /// The provisioning state of the route filter resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Collection of RouteFilterRules contained within a route filter.
-  late final pulumi.Output<List<RouteFilterRuleResponse>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -239,20 +246,20 @@ class RouteFilter extends pulumi.CustomResource {
     RouteFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:RouteFilter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.ipv6Peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('ipv6Peerings');
-    this.location = registerOutput<String>('location');
+         'azure-native:network:RouteFilter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    ipv6Peerings = registerOutput<List<Map<String, dynamic>>>('ipv6Peerings');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('peerings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.rules = registerOutput<List<RouteFilterRuleResponse>?>('rules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    peerings = registerOutput<List<Map<String, dynamic>>>('peerings');
+    provisioningState = registerOutput<String>('provisioningState');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

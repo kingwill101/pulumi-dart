@@ -4,16 +4,15 @@ enum DefaultDecisionType {
   valueDeny("Deny"),
   valueRecommendation("Recommendation");
 
-  const DefaultDecisionType(this.value);
-  final String value;
+  const DefaultDecisionType(this.wireValue);
+  final String wireValue;
 
   static DefaultDecisionType fromValue(String value) {
     for (final item in DefaultDecisionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultDecisionType value: $value');
   }
 }
-

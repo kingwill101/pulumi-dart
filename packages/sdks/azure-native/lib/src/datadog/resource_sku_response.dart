@@ -8,20 +8,15 @@ class ResourceSkuResponse {
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
-  ResourceSkuResponse({
-    required this.name,
-  });
+  ResourceSkuResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -39,12 +39,15 @@ class GetSpecArgs {
 
   factory GetSpecArgs.fromMap(Map<String, dynamic> map) {
     return GetSpecArgs(
-      apiId: (map['apiId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      specId: (map['specId'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      specId: pulumi.Input.fromValue(map['specId'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

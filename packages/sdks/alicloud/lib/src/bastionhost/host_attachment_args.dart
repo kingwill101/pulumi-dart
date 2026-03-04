@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostAttachmentArgs {
   /// Specifies the added to the host group ID.
   final pulumi.Input<String> hostGroupId;
+
   /// Specified to be part of a host group of host ID.
   final pulumi.Input<String> hostId;
+
   /// The bastion host instance id.
   final pulumi.Input<String> instanceId;
 
@@ -34,10 +36,9 @@ class HostAttachmentArgs {
 
   factory HostAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HostAttachmentArgs(
-      hostGroupId: (map['hostGroupId'] as String).input(),
-      hostId: (map['hostId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      hostGroupId: pulumi.Input.fromValue(map['hostGroupId'] as String),
+      hostId: pulumi.Input.fromValue(map['hostId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

@@ -8,16 +8,15 @@ enum RestApiPollerRequestPagingKind {
   valueOffset("Offset"),
   valueCountBasedPaging("CountBasedPaging");
 
-  const RestApiPollerRequestPagingKind(this.value);
-  final String value;
+  const RestApiPollerRequestPagingKind(this.wireValue);
+  final String wireValue;
 
   static RestApiPollerRequestPagingKind fromValue(String value) {
     for (final item in RestApiPollerRequestPagingKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RestApiPollerRequestPagingKind value: $value');
   }
 }
-

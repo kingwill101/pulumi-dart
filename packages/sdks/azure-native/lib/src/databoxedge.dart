@@ -1,5 +1,3 @@
-library module_databoxedge;
-
 export 'databoxedge/account_type.dart';
 export 'databoxedge/addon_type.dart';
 export 'databoxedge/address.dart';

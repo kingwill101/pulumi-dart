@@ -13,15 +13,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'platformVersion': platformVersion,
-    };
+    return <String, dynamic>{'platformVersion': platformVersion};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration(
-      platformVersion: (map['platformVersion'] as String).input(),
+      platformVersion: pulumi.Input.fromValue(map['platformVersion'] as String),
     );
   }
 }
-

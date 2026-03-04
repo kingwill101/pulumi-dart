@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryRoleEligibilityScheduleRequestArgs {
   /// Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
   final pulumi.Input<String> directoryScopeId;
+
   /// Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
   final pulumi.Input<String> justification;
+
   /// The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
+
   /// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -37,13 +40,18 @@ class DirectoryRoleEligibilityScheduleRequestArgs {
     };
   }
 
-  factory DirectoryRoleEligibilityScheduleRequestArgs.fromMap(Map<String, dynamic> map) {
+  factory DirectoryRoleEligibilityScheduleRequestArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DirectoryRoleEligibilityScheduleRequestArgs(
-      directoryScopeId: (map['directoryScopeId'] as String).input(),
-      justification: (map['justification'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      directoryScopeId: pulumi.Input.fromValue(
+        map['directoryScopeId'] as String,
+      ),
+      justification: pulumi.Input.fromValue(map['justification'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      roleDefinitionId: pulumi.Input.fromValue(
+        map['roleDefinitionId'] as String,
+      ),
     );
   }
 }
-

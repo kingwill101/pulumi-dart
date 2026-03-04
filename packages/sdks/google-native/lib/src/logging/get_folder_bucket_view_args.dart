@@ -35,11 +35,10 @@ class GetFolderBucketViewArgs {
 
   factory GetFolderBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderBucketViewArgs(
-      bucketId: (map['bucketId'] as String).input(),
-      folderId: (map['folderId'] as String).input(),
-      location: (map['location'] as String).input(),
-      viewId: (map['viewId'] as String).input(),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'time_of_day.dart';
 class DenyMaintenancePeriod {
   /// End date of the deny maintenance period.
   final pulumi.Input<Date> endDate;
+
   /// Start date of the deny maintenance period.
   final pulumi.Input<Date> startDate;
+
   /// Time in UTC when the period starts and ends.
   final pulumi.Input<TimeOfDay> time;
 
@@ -25,18 +27,32 @@ class DenyMaintenancePeriod {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': pulumi.Input.mapInputValue<Date, Map<String, dynamic>>(endDate, (value) => value.toMap()),
-      'startDate': pulumi.Input.mapInputValue<Date, Map<String, dynamic>>(startDate, (value) => value.toMap()),
-      'time': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(time, (value) => value.toMap()),
+      'endDate': pulumi.Input.mapInputValue<Date, Map<String, dynamic>>(
+        endDate,
+        (value) => value.toMap(),
+      ),
+      'startDate': pulumi.Input.mapInputValue<Date, Map<String, dynamic>>(
+        startDate,
+        (value) => value.toMap(),
+      ),
+      'time': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(
+        time,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory DenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriod(
-      endDate: (Date.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
-      startDate: (Date.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
-      time: (TimeOfDay.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
+      endDate: pulumi.Input.fromValue(
+        Date.fromMap((map['endDate']! as Map).cast<String, dynamic>()),
+      ),
+      startDate: pulumi.Input.fromValue(
+        Date.fromMap((map['startDate']! as Map).cast<String, dynamic>()),
+      ),
+      time: pulumi.Input.fromValue(
+        TimeOfDay.fromMap((map['time']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

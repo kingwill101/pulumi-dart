@@ -9,20 +9,13 @@ class RoundToScale {
 
   /// Creates a new [RoundToScale].
   /// [scale] Scale value to be used
-  RoundToScale({
-    required this.scale,
-  });
+  RoundToScale({required this.scale});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scale': scale,
-    };
+    return <String, dynamic>{'scale': scale};
   }
 
   factory RoundToScale.fromMap(Map<String, dynamic> map) {
-    return RoundToScale(
-      scale: (map['scale'] as int).input(),
-    );
+    return RoundToScale(scale: pulumi.Input.fromValue(map['scale'] as int));
   }
 }
-

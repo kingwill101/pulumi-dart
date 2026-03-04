@@ -15,24 +15,30 @@ import 'csistorage_capacity_storage_k8s_io_v1beta1_args.dart';
 class CSIStorageCapacityResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
+
   /// Capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
   ///
   /// The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.
   late final pulumi.Output<String> capacity;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
+
   /// MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
   ///
   /// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
   late final pulumi.Output<String> maximumVolumeSize;
-  /// Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+
+  /// Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
   ///
   /// Objects are namespaced.
   ///
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
+
   /// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
   late final pulumi.Output<LabelSelector> nodeTopology;
+
   /// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
   late final pulumi.Output<String> storageClassName;
 
@@ -45,17 +51,17 @@ class CSIStorageCapacityResource extends pulumi.CustomResource {
     CSIStorageCapacityStorageK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacity',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.capacity = registerOutput<String>('capacity');
-    this.kind = registerOutput<String>('kind');
-    this.maximumVolumeSize = registerOutput<String>('maximumVolumeSize');
-    this.metadata = registerOutput<ObjectMeta>('metadata');
-    this.nodeTopology = registerOutput<LabelSelector>('nodeTopology');
-    this.storageClassName = registerOutput<String>('storageClassName');
+         'kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacity',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    capacity = registerOutput<String>('capacity');
+    kind = registerOutput<String>('kind');
+    maximumVolumeSize = registerOutput<String>('maximumVolumeSize');
+    metadata = registerOutput<ObjectMeta>('metadata');
+    nodeTopology = registerOutput<LabelSelector>('nodeTopology');
+    storageClassName = registerOutput<String>('storageClassName');
   }
 }

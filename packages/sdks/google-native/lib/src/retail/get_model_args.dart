@@ -35,11 +35,14 @@ class GetModelArgs {
 
   factory GetModelArgs.fromMap(Map<String, dynamic> map) {
     return GetModelArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      location: (map['location'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'express_route_connection_response.dart';
 import 'express_route_gateway_args.dart';
 import 'express_route_gateway_properties_response_auto_scale_configuration.dart';
 import 'virtual_hub_id_response.dart';
@@ -194,24 +193,37 @@ import 'virtual_hub_id_response.dart';
 class ExpressRouteGateway extends pulumi.CustomResource {
   /// Configures this gateway to accept traffic from non Virtual WAN networks.
   late final pulumi.Output<bool?> allowNonVirtualWanTraffic;
+
   /// Configuration for auto scaling.
-  late final pulumi.Output<ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?> autoScaleConfiguration;
+  late final pulumi.Output<
+    ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?
+  >
+  autoScaleConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of ExpressRoute connections to the ExpressRoute gateway.
-  late final pulumi.Output<List<ExpressRouteConnectionResponse>?> expressRouteConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> expressRouteConnections;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the express route gateway resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
   late final pulumi.Output<VirtualHubIdResponse> virtualHub;
 
@@ -224,21 +236,28 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     ExpressRouteGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
-    this.autoScaleConfiguration = registerOutput<ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?>('autoScaleConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.expressRouteConnections = registerOutput<List<ExpressRouteConnectionResponse>?>('expressRouteConnections');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:ExpressRouteGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowNonVirtualWanTraffic = registerOutput<bool?>(
+      'allowNonVirtualWanTraffic',
+    );
+    autoScaleConfiguration =
+        registerOutput<
+          ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?
+        >('autoScaleConfiguration');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    expressRouteConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'expressRouteConnections',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<VirtualHubIdResponse>('virtualHub');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<VirtualHubIdResponse>('virtualHub');
   }
 }

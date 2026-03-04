@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VvpInstanceResourceSpec {
   /// CPU number.
   final pulumi.Input<int>? cpu;
+
   /// Memory size.
   final pulumi.Input<int>? memoryGb;
 
   /// Creates a new [VvpInstanceResourceSpec].
   /// [cpu] CPU number.
   /// [memoryGb] Memory size.
-  VvpInstanceResourceSpec({
-    this.cpu,
-    this.memoryGb,
-  });
+  VvpInstanceResourceSpec({this.cpu, this.memoryGb});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpu': ?cpu,
-      'memoryGb': ?memoryGb,
-    };
+    return <String, dynamic>{'cpu': ?cpu, 'memoryGb': ?memoryGb};
   }
 
   factory VvpInstanceResourceSpec.fromMap(Map<String, dynamic> map) {
     return VvpInstanceResourceSpec(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as int).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

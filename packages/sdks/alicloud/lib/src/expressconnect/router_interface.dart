@@ -8,7 +8,7 @@ import 'router_interface_state.dart';
 ///
 /// For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
 ///
-/// > **NOTE:** Available since v1.199.0.
+/// &gt; **NOTE:** Available since v1.199.0.
 ///
 /// ## Example Usage
 ///
@@ -478,109 +478,150 @@ import 'router_interface_state.dart';
 class RouterInterface extends pulumi.CustomResource {
   /// Access point ID
   late final pulumi.Output<String?> accessPointId;
+
   /// . Field 'name' has been deprecated from provider version 1.263.0.
   late final pulumi.Output<bool?> autoPay;
+
   /// Whether to enable automatic renewal. Value:
   late final pulumi.Output<bool?> autoRenew;
+
   /// The bandwidth of the router interface
   late final pulumi.Output<int> bandwidth;
+
   /// The service status of the router interface.
   late final pulumi.Output<String> businessStatus;
+
   /// Time the connection was established
   late final pulumi.Output<String> connectedTime;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// CrossBorder
   late final pulumi.Output<bool> crossBorder;
+
   /// Whether to delete the health check IP address configured on the router interface. Value:
   late final pulumi.Output<bool?> deleteHealthCheckIp;
+
   /// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
   late final pulumi.Output<String?> description;
+
   /// End Time of Prepaid
   late final pulumi.Output<String> endTime;
+
   /// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
   late final pulumi.Output<bool?> fastLinkMode;
+
   /// Whether there is renewal data
   late final pulumi.Output<String> hasReservationData;
+
   /// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
   late final pulumi.Output<int?> hcRate;
+
   /// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
   late final pulumi.Output<String?> hcThreshold;
+
   /// Health check source IP address
   late final pulumi.Output<String?> healthCheckSourceIp;
+
   /// Health check destination IP address
   late final pulumi.Output<String?> healthCheckTargetIp;
+
   /// Peer access point ID
   late final pulumi.Output<String?> oppositeAccessPointId;
+
   /// opposite bandwidth
   late final pulumi.Output<int> oppositeBandwidth;
+
   /// The service status of the router interface on the opposite end of the connection.
   late final pulumi.Output<String> oppositeInterfaceBusinessStatus;
+
   /// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
   late final pulumi.Output<String> oppositeInterfaceId;
+
   /// Account ID of the peer router interface
   late final pulumi.Output<String?> oppositeInterfaceOwnerId;
+
   /// Specifications of the interface of the peer router.
   late final pulumi.Output<String> oppositeInterfaceSpec;
+
   /// The status of the router interface on the peer of the connection.
   late final pulumi.Output<String> oppositeInterfaceStatus;
+
   /// Region of the connection peer
   late final pulumi.Output<String> oppositeRegionId;
+
   /// The ID of the router to which the opposite router interface belongs.
   late final pulumi.Output<String?> oppositeRouterId;
+
   /// The router type associated with the peer router interface. Valid values:
   /// - VRouter: VPC router.
   /// - VBR: Virtual Border Router.
   late final pulumi.Output<String> oppositeRouterType;
+
   /// The peer VPC ID
   late final pulumi.Output<String> oppositeVpcInstanceId;
+
   /// The payment method of the router interface. Valid values:
   /// - Subscription : PrePaid.
   /// - PayAsYouGo : PostPaid.
   late final pulumi.Output<String> paymentType;
+
   /// Purchase duration, value:
   /// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
   /// - When you choose to pay per year, the value range is **1 to 3**.
   ///
-  /// > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+  /// &gt; **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> period;
+
   /// The billing cycle of the prepaid fee. Valid values:
   /// - `Month` (default): monthly payment.
   /// - `Year`: Pay per Year.
   ///
   ///
-  /// > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+  /// &gt; **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> pricingCycle;
+
   /// ReservationActiveTime
   late final pulumi.Output<String> reservationActiveTime;
+
   /// Renew Bandwidth
   late final pulumi.Output<String> reservationBandwidth;
+
   /// Payment Type for Renewal
   late final pulumi.Output<String> reservationInternetChargeType;
+
   /// Renewal Order Type
   late final pulumi.Output<String> reservationOrderType;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The role of the router interface. Valid values:
   /// - InitiatingSide : the initiator of the connection.
   /// - AcceptingSide : Connect to the receiving end.
   late final pulumi.Output<String> role;
+
   /// The ID of the router where the route entry is located.
   late final pulumi.Output<String> routerId;
+
   /// The first ID of the resource
   late final pulumi.Output<String> routerInterfaceId;
+
   /// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
   late final pulumi.Output<String?> routerInterfaceName;
+
   /// The type of the router where the routing table resides. Valid values:
   /// - VRouter:VPC router
   /// - VBR: Border Router
   late final pulumi.Output<String> routerType;
+
   /// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
   /// - Mini.2: 2 Mbps
   /// - Mini.5: 5 Mbps
@@ -597,6 +638,7 @@ class RouterInterface extends pulumi.CustomResource {
   ///
   /// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
   late final pulumi.Output<String> spec;
+
   /// Resource attribute fields that represent the status of the resource. Value range:
   /// - Idle : Initialize.
   /// - Connecting : the initiator is in the process of Connecting.
@@ -609,10 +651,12 @@ class RouterInterface extends pulumi.CustomResource {
   /// - Deleting : Deleting.
   /// - Deleted : Deleted.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// ID of the local VPC in the peering connection
   late final pulumi.Output<String> vpcInstanceId;
 
@@ -625,56 +669,62 @@ class RouterInterface extends pulumi.CustomResource {
     RouterInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerInterface:RouterInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointId = registerOutput<String?>('accessPointId');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.connectedTime = registerOutput<String>('connectedTime');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossBorder = registerOutput<bool>('crossBorder');
-    this.deleteHealthCheckIp = registerOutput<bool?>('deleteHealthCheckIp');
-    this.description = registerOutput<String?>('description');
-    this.endTime = registerOutput<String>('endTime');
-    this.fastLinkMode = registerOutput<bool?>('fastLinkMode');
-    this.hasReservationData = registerOutput<String>('hasReservationData');
-    this.hcRate = registerOutput<int?>('hcRate');
-    this.hcThreshold = registerOutput<String?>('hcThreshold');
-    this.healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
-    this.healthCheckTargetIp = registerOutput<String?>('healthCheckTargetIp');
-    this.oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
-    this.oppositeBandwidth = registerOutput<int>('oppositeBandwidth');
-    this.oppositeInterfaceBusinessStatus = registerOutput<String>('oppositeInterfaceBusinessStatus');
-    this.oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    this.oppositeInterfaceOwnerId = registerOutput<String?>('oppositeInterfaceOwnerId');
-    this.oppositeInterfaceSpec = registerOutput<String>('oppositeInterfaceSpec');
-    this.oppositeInterfaceStatus = registerOutput<String>('oppositeInterfaceStatus');
-    this.oppositeRegionId = registerOutput<String>('oppositeRegionId');
-    this.oppositeRouterId = registerOutput<String?>('oppositeRouterId');
-    this.oppositeRouterType = registerOutput<String>('oppositeRouterType');
-    this.oppositeVpcInstanceId = registerOutput<String>('oppositeVpcInstanceId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.reservationActiveTime = registerOutput<String>('reservationActiveTime');
-    this.reservationBandwidth = registerOutput<String>('reservationBandwidth');
-    this.reservationInternetChargeType = registerOutput<String>('reservationInternetChargeType');
-    this.reservationOrderType = registerOutput<String>('reservationOrderType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.role = registerOutput<String>('role');
-    this.routerId = registerOutput<String>('routerId');
-    this.routerInterfaceId = registerOutput<String>('routerInterfaceId');
-    this.routerInterfaceName = registerOutput<String?>('routerInterfaceName');
-    this.routerType = registerOutput<String>('routerType');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcInstanceId = registerOutput<String>('vpcInstanceId');
+         'alicloud:expressconnect/routerInterface:RouterInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointId = registerOutput<String?>('accessPointId');
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    bandwidth = registerOutput<int>('bandwidth');
+    businessStatus = registerOutput<String>('businessStatus');
+    connectedTime = registerOutput<String>('connectedTime');
+    createTime = registerOutput<String>('createTime');
+    crossBorder = registerOutput<bool>('crossBorder');
+    deleteHealthCheckIp = registerOutput<bool?>('deleteHealthCheckIp');
+    description = registerOutput<String?>('description');
+    endTime = registerOutput<String>('endTime');
+    fastLinkMode = registerOutput<bool?>('fastLinkMode');
+    hasReservationData = registerOutput<String>('hasReservationData');
+    hcRate = registerOutput<int?>('hcRate');
+    hcThreshold = registerOutput<String?>('hcThreshold');
+    healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
+    healthCheckTargetIp = registerOutput<String?>('healthCheckTargetIp');
+    oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
+    oppositeBandwidth = registerOutput<int>('oppositeBandwidth');
+    oppositeInterfaceBusinessStatus = registerOutput<String>(
+      'oppositeInterfaceBusinessStatus',
+    );
+    oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
+    oppositeInterfaceOwnerId = registerOutput<String?>(
+      'oppositeInterfaceOwnerId',
+    );
+    oppositeInterfaceSpec = registerOutput<String>('oppositeInterfaceSpec');
+    oppositeInterfaceStatus = registerOutput<String>('oppositeInterfaceStatus');
+    oppositeRegionId = registerOutput<String>('oppositeRegionId');
+    oppositeRouterId = registerOutput<String?>('oppositeRouterId');
+    oppositeRouterType = registerOutput<String>('oppositeRouterType');
+    oppositeVpcInstanceId = registerOutput<String>('oppositeVpcInstanceId');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    reservationActiveTime = registerOutput<String>('reservationActiveTime');
+    reservationBandwidth = registerOutput<String>('reservationBandwidth');
+    reservationInternetChargeType = registerOutput<String>(
+      'reservationInternetChargeType',
+    );
+    reservationOrderType = registerOutput<String>('reservationOrderType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    role = registerOutput<String>('role');
+    routerId = registerOutput<String>('routerId');
+    routerInterfaceId = registerOutput<String>('routerInterfaceId');
+    routerInterfaceName = registerOutput<String?>('routerInterfaceName');
+    routerType = registerOutput<String>('routerType');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcInstanceId = registerOutput<String>('vpcInstanceId');
   }
 
   /// Gets an existing [RouterInterface] resource's state with the given [name] and [id].
@@ -695,55 +745,61 @@ class RouterInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerInterface:RouterInterface',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointId = registerOutput<String?>('accessPointId');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.connectedTime = registerOutput<String>('connectedTime');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossBorder = registerOutput<bool>('crossBorder');
-    this.deleteHealthCheckIp = registerOutput<bool?>('deleteHealthCheckIp');
-    this.description = registerOutput<String?>('description');
-    this.endTime = registerOutput<String>('endTime');
-    this.fastLinkMode = registerOutput<bool?>('fastLinkMode');
-    this.hasReservationData = registerOutput<String>('hasReservationData');
-    this.hcRate = registerOutput<int?>('hcRate');
-    this.hcThreshold = registerOutput<String?>('hcThreshold');
-    this.healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
-    this.healthCheckTargetIp = registerOutput<String?>('healthCheckTargetIp');
-    this.oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
-    this.oppositeBandwidth = registerOutput<int>('oppositeBandwidth');
-    this.oppositeInterfaceBusinessStatus = registerOutput<String>('oppositeInterfaceBusinessStatus');
-    this.oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    this.oppositeInterfaceOwnerId = registerOutput<String?>('oppositeInterfaceOwnerId');
-    this.oppositeInterfaceSpec = registerOutput<String>('oppositeInterfaceSpec');
-    this.oppositeInterfaceStatus = registerOutput<String>('oppositeInterfaceStatus');
-    this.oppositeRegionId = registerOutput<String>('oppositeRegionId');
-    this.oppositeRouterId = registerOutput<String?>('oppositeRouterId');
-    this.oppositeRouterType = registerOutput<String>('oppositeRouterType');
-    this.oppositeVpcInstanceId = registerOutput<String>('oppositeVpcInstanceId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.reservationActiveTime = registerOutput<String>('reservationActiveTime');
-    this.reservationBandwidth = registerOutput<String>('reservationBandwidth');
-    this.reservationInternetChargeType = registerOutput<String>('reservationInternetChargeType');
-    this.reservationOrderType = registerOutput<String>('reservationOrderType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.role = registerOutput<String>('role');
-    this.routerId = registerOutput<String>('routerId');
-    this.routerInterfaceId = registerOutput<String>('routerInterfaceId');
-    this.routerInterfaceName = registerOutput<String?>('routerInterfaceName');
-    this.routerType = registerOutput<String>('routerType');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcInstanceId = registerOutput<String>('vpcInstanceId');
+         'alicloud:expressconnect/routerInterface:RouterInterface',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointId = registerOutput<String?>('accessPointId');
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    bandwidth = registerOutput<int>('bandwidth');
+    businessStatus = registerOutput<String>('businessStatus');
+    connectedTime = registerOutput<String>('connectedTime');
+    createTime = registerOutput<String>('createTime');
+    crossBorder = registerOutput<bool>('crossBorder');
+    deleteHealthCheckIp = registerOutput<bool?>('deleteHealthCheckIp');
+    description = registerOutput<String?>('description');
+    endTime = registerOutput<String>('endTime');
+    fastLinkMode = registerOutput<bool?>('fastLinkMode');
+    hasReservationData = registerOutput<String>('hasReservationData');
+    hcRate = registerOutput<int?>('hcRate');
+    hcThreshold = registerOutput<String?>('hcThreshold');
+    healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
+    healthCheckTargetIp = registerOutput<String?>('healthCheckTargetIp');
+    oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
+    oppositeBandwidth = registerOutput<int>('oppositeBandwidth');
+    oppositeInterfaceBusinessStatus = registerOutput<String>(
+      'oppositeInterfaceBusinessStatus',
+    );
+    oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
+    oppositeInterfaceOwnerId = registerOutput<String?>(
+      'oppositeInterfaceOwnerId',
+    );
+    oppositeInterfaceSpec = registerOutput<String>('oppositeInterfaceSpec');
+    oppositeInterfaceStatus = registerOutput<String>('oppositeInterfaceStatus');
+    oppositeRegionId = registerOutput<String>('oppositeRegionId');
+    oppositeRouterId = registerOutput<String?>('oppositeRouterId');
+    oppositeRouterType = registerOutput<String>('oppositeRouterType');
+    oppositeVpcInstanceId = registerOutput<String>('oppositeVpcInstanceId');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    reservationActiveTime = registerOutput<String>('reservationActiveTime');
+    reservationBandwidth = registerOutput<String>('reservationBandwidth');
+    reservationInternetChargeType = registerOutput<String>(
+      'reservationInternetChargeType',
+    );
+    reservationOrderType = registerOutput<String>('reservationOrderType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    role = registerOutput<String>('role');
+    routerId = registerOutput<String>('routerId');
+    routerInterfaceId = registerOutput<String>('routerInterfaceId');
+    routerInterfaceName = registerOutput<String?>('routerInterfaceName');
+    routerType = registerOutput<String>('routerType');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcInstanceId = registerOutput<String>('vpcInstanceId');
   }
 }

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListTopicSharedAccessKeysArgs {
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the topic.
   final pulumi.Input<String> topicName;
 
@@ -29,9 +30,10 @@ class ListTopicSharedAccessKeysArgs {
 
   factory ListTopicSharedAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListTopicSharedAccessKeysArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicName: (map['topicName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
-

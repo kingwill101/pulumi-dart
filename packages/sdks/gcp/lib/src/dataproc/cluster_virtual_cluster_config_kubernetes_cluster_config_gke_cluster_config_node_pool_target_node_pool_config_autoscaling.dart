@@ -3,14 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
-  /// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+  /// The maximum number of nodes in the node pool. Must be &gt;= minNodeCount, and must be &gt; 0.
   final pulumi.Input<int>? maxNodeCount;
-  /// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+
+  /// The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
   final pulumi.Input<int>? minNodeCount;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling].
-  /// [maxNodeCount] The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
-  /// [minNodeCount] The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+  /// [maxNodeCount] The maximum number of nodes in the node pool. Must be &gt;= minNodeCount, and must be &gt; 0.
+  /// [minNodeCount] The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
   ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling({
     this.maxNodeCount,
     this.minNodeCount,
@@ -23,11 +24,20 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap(Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling(
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      maxNodeCount: (() {
+        final guardedValue = map['maxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minNodeCount: (() {
+        final guardedValue = map['minNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'eventAction': eventAction,
-    };
+    return <String, dynamic>{'eventAction': eventAction};
   }
 
-  factory RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(Map<String, dynamic> map) {
+  factory RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RiskConfigurationCompromisedCredentialsRiskConfigurationActions(
-      eventAction: (map['eventAction'] as String).input(),
+      eventAction: pulumi.Input.fromValue(map['eventAction'] as String),
     );
   }
 }
-

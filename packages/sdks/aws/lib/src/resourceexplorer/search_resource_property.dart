@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SearchResourceProperty {
   /// Details about this property. The content of this field is a JSON object that varies based on the resource type.
   final pulumi.Input<String> data;
+
   /// The date and time that the information about this resource property was last updated.
   final pulumi.Input<String> lastReportedAt;
+
   /// Name of this property of the resource.
   final pulumi.Input<String> name;
 
@@ -30,10 +32,9 @@ class SearchResourceProperty {
 
   factory SearchResourceProperty.fromMap(Map<String, dynamic> map) {
     return SearchResourceProperty(
-      data: (map['data'] as String).input(),
-      lastReportedAt: (map['lastReportedAt'] as String).input(),
-      name: (map['name'] as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      lastReportedAt: pulumi.Input.fromValue(map['lastReportedAt'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

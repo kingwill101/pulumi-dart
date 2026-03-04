@@ -9,49 +9,70 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// Application Credential ID to login with.
   late final pulumi.Output<String?> applicationCredentialId;
+
   /// Application Credential name to login with.
   late final pulumi.Output<String?> applicationCredentialName;
+
   /// Application Credential secret to login with.
   late final pulumi.Output<String?> applicationCredentialSecret;
+
   /// The Identity authentication URL.
   late final pulumi.Output<String?> authUrl;
+
   /// A Custom CA certificate.
   late final pulumi.Output<String?> cacertFile;
+
   /// A client certificate to authenticate with.
   late final pulumi.Output<String?> cert;
+
   /// An entry in a `clouds.yaml` file to use.
   late final pulumi.Output<String?> cloud;
+
   /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
   late final pulumi.Output<String?> defaultDomain;
+
   /// The ID of the Domain to scope to (Identity v3).
   late final pulumi.Output<String?> domainId;
+
   /// The name of the Domain to scope to (Identity v3).
   late final pulumi.Output<String?> domainName;
   late final pulumi.Output<String?> endpointType;
+
   /// A client private key to authenticate with.
   late final pulumi.Output<String?> key;
+
   /// Password to login with.
   late final pulumi.Output<String?> password;
+
   /// The ID of the domain where the proejct resides (Identity v3).
   late final pulumi.Output<String?> projectDomainId;
+
   /// The name of the domain where the project resides (Identity v3).
   late final pulumi.Output<String?> projectDomainName;
+
   /// The OpenStack region to connect to.
   late final pulumi.Output<String?> region;
+
   /// The ID of the Tenant (Identity v2) or Project (Identity v3)
   /// to login with.
   late final pulumi.Output<String?> tenantId;
+
   /// The name of the Tenant (Identity v2) or Project (Identity v3)
   /// to login with.
   late final pulumi.Output<String?> tenantName;
+
   /// Authentication token to use as an alternative to username/password.
   late final pulumi.Output<String?> token;
+
   /// The ID of the domain where the user resides (Identity v3).
   late final pulumi.Output<String?> userDomainId;
+
   /// The name of the domain where the user resides (Identity v3).
   late final pulumi.Output<String?> userDomainName;
+
   /// User ID to login with.
   late final pulumi.Output<String?> userId;
+
   /// Username to login with.
   late final pulumi.Output<String?> userName;
 
@@ -64,34 +85,40 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationCredentialId = registerOutput<String?>('applicationCredentialId');
-    this.applicationCredentialName = registerOutput<String?>('applicationCredentialName');
-    this.applicationCredentialSecret = registerOutput<String?>('applicationCredentialSecret');
-    this.authUrl = registerOutput<String?>('authUrl');
-    this.cacertFile = registerOutput<String?>('cacertFile');
-    this.cert = registerOutput<String?>('cert');
-    this.cloud = registerOutput<String?>('cloud');
-    this.defaultDomain = registerOutput<String?>('defaultDomain');
-    this.domainId = registerOutput<String?>('domainId');
-    this.domainName = registerOutput<String?>('domainName');
-    this.endpointType = registerOutput<String?>('endpointType');
-    this.key = registerOutput<String?>('key');
-    this.password = registerOutput<String?>('password');
-    this.projectDomainId = registerOutput<String?>('projectDomainId');
-    this.projectDomainName = registerOutput<String?>('projectDomainName');
-    this.region = registerOutput<String?>('region');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.tenantName = registerOutput<String?>('tenantName');
-    this.token = registerOutput<String?>('token');
-    this.userDomainId = registerOutput<String?>('userDomainId');
-    this.userDomainName = registerOutput<String?>('userDomainName');
-    this.userId = registerOutput<String?>('userId');
-    this.userName = registerOutput<String?>('userName');
+         'openstack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationCredentialId = registerOutput<String?>(
+      'applicationCredentialId',
+    );
+    applicationCredentialName = registerOutput<String?>(
+      'applicationCredentialName',
+    );
+    applicationCredentialSecret = registerOutput<String?>(
+      'applicationCredentialSecret',
+    );
+    authUrl = registerOutput<String?>('authUrl');
+    cacertFile = registerOutput<String?>('cacertFile');
+    cert = registerOutput<String?>('cert');
+    cloud = registerOutput<String?>('cloud');
+    defaultDomain = registerOutput<String?>('defaultDomain');
+    domainId = registerOutput<String?>('domainId');
+    domainName = registerOutput<String?>('domainName');
+    endpointType = registerOutput<String?>('endpointType');
+    key = registerOutput<String?>('key');
+    password = registerOutput<String?>('password');
+    projectDomainId = registerOutput<String?>('projectDomainId');
+    projectDomainName = registerOutput<String?>('projectDomainName');
+    region = registerOutput<String?>('region');
+    tenantId = registerOutput<String?>('tenantId');
+    tenantName = registerOutput<String?>('tenantName');
+    token = registerOutput<String?>('token');
+    userDomainId = registerOutput<String?>('userDomainId');
+    userDomainName = registerOutput<String?>('userDomainName');
+    userId = registerOutput<String?>('userId');
+    userName = registerOutput<String?>('userName');
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

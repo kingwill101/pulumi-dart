@@ -1,5 +1,3 @@
-library module_orbital;
-
 export 'orbital/authorized_groundstation_response.dart';
 export 'orbital/auto_generated_domain_name_label_scope.dart';
 export 'orbital/auto_tracking_configuration.dart';

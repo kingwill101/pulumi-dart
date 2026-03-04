@@ -12,23 +12,16 @@ class AnalysisParametersStringParameter {
   /// Creates a new [AnalysisParametersStringParameter].
   /// [name] Display name for the analysis.
   /// [values] Required.
-  AnalysisParametersStringParameter({
-    required this.name,
-    required this.values,
-  });
+  AnalysisParametersStringParameter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory AnalysisParametersStringParameter.fromMap(Map<String, dynamic> map) {
     return AnalysisParametersStringParameter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

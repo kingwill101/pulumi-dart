@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
   /// Collection of cryptographic digests for the contents of this artifact.
   final pulumi.Input<Map<String, String>>? digest;
+
   /// The method by which this artifact was referenced during the build.
   final pulumi.Input<String>? uri;
 
@@ -18,17 +19,25 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': ?digest,
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'digest': ?digest, 'uri': ?uri};
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial(
-      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

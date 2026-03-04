@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppSitePushSettingsSlotArgs {
   /// Name of web app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of web app slot. If not specified then will default to production slot.
   final pulumi.Input<String> slot;
 
@@ -34,10 +36,11 @@ class ListWebAppSitePushSettingsSlotArgs {
 
   factory ListWebAppSitePushSettingsSlotArgs.fromMap(Map<String, dynamic> map) {
     return ListWebAppSitePushSettingsSlotArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentityConfigurationResponse {
   /// The objectId of the Managed Identity that is linked to the Managed Storage account.
   final pulumi.Input<String> principalId;
+
   /// The tenant Id where the Managed Identity is created.
   final pulumi.Input<String> tenantId;
+
   /// The type of Identity created. It can be either SystemAssigned or UserAssigned.
   final pulumi.Input<String> type;
 
@@ -29,12 +31,13 @@ class ManagedIdentityConfigurationResponse {
     };
   }
 
-  factory ManagedIdentityConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedIdentityConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedIdentityConfigurationResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

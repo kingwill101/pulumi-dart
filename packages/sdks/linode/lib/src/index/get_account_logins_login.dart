@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountLoginsLogin {
   /// When the login was initiated.
   final pulumi.Input<String> datetime;
+
   /// The unique ID of this login object.
   final pulumi.Input<int> id;
+
   /// The remote IP address that requested the login.
   final pulumi.Input<String> ip;
+
   /// True if the User that was logged into was a restricted User, false otherwise.
   final pulumi.Input<bool> restricted;
+
   /// Whether the login attempt succeeded or failed.
   final pulumi.Input<String> status;
+
   /// The username of the User that was logged into.
   final pulumi.Input<String> username;
 
@@ -45,13 +50,12 @@ class GetAccountLoginsLogin {
 
   factory GetAccountLoginsLogin.fromMap(Map<String, dynamic> map) {
     return GetAccountLoginsLogin(
-      datetime: (map['datetime'] as String).input(),
-      id: (map['id'] as int).input(),
-      ip: (map['ip'] as String).input(),
-      restricted: (map['restricted'] as bool).input(),
-      status: (map['status'] as String).input(),
-      username: (map['username'] as String).input(),
+      datetime: pulumi.Input.fromValue(map['datetime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      restricted: pulumi.Input.fromValue(map['restricted'] as bool),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

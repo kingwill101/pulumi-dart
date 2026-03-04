@@ -6,30 +6,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentState {
   /// Application ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String>? applicationId;
+
   /// ARN of the AppConfig Deployment.
   final pulumi.Input<String>? arn;
+
   /// Configuration profile ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String>? configurationProfileId;
+
   /// Configuration version to deploy. Can be at most 1024 characters.
   final pulumi.Input<String>? configurationVersion;
+
   /// Deployment number.
   final pulumi.Input<int>? deploymentNumber;
+
   /// Deployment strategy ID or name of a predefined deployment strategy. See [Predefined Deployment Strategies](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-deployment-strategy.html#appconfig-creating-deployment-strategy-predefined) for more details.
   final pulumi.Input<String>? deploymentStrategyId;
+
   /// Description of the deployment. Can be at most 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Environment ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String>? environmentId;
+
   /// ARN of the KMS key used to encrypt configuration data.
   final pulumi.Input<String>? kmsKeyArn;
+
   /// The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
   final pulumi.Input<String>? kmsKeyIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// State of the deployment.
   final pulumi.Input<String>? state;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -86,21 +99,80 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      configurationProfileId: map['configurationProfileId'] == null ? null : ((map['configurationProfileId'] as String).input()).input(),
-      configurationVersion: map['configurationVersion'] == null ? null : ((map['configurationVersion'] as String).input()).input(),
-      deploymentNumber: map['deploymentNumber'] == null ? null : ((map['deploymentNumber'] as int).input()).input(),
-      deploymentStrategyId: map['deploymentStrategyId'] == null ? null : ((map['deploymentStrategyId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationProfileId: (() {
+        final guardedValue = map['configurationProfileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationVersion: (() {
+        final guardedValue = map['configurationVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentNumber: (() {
+        final guardedValue = map['deploymentNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deploymentStrategyId: (() {
+        final guardedValue = map['deploymentStrategyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyIdentifier: (() {
+        final guardedValue = map['kmsKeyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

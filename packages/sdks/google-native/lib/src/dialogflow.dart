@@ -1,5 +1,3 @@
-library module_dialogflow;
-
 export 'dialogflow/agent.dart';
 export 'dialogflow/agent_args.dart';
 export 'dialogflow/agent_dialogflow_v3beta1.dart';

@@ -5,16 +5,15 @@ enum ConflictResolutionMode {
   valueOverwriteIfDirty("OverwriteIfDirty"),
   valueOverwriteAlways("OverwriteAlways");
 
-  const ConflictResolutionMode(this.value);
-  final String value;
+  const ConflictResolutionMode(this.wireValue);
+  final String wireValue;
 
   static ConflictResolutionMode fromValue(String value) {
     for (final item in ConflictResolutionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConflictResolutionMode value: $value');
   }
 }
-

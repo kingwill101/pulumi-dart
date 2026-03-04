@@ -8,6 +8,7 @@ class JobStorageAccountState {
   final pulumi.Input<String>? authenticationMode;
   final pulumi.Input<String>? storageAccountKey;
   final pulumi.Input<String>? storageAccountName;
+
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobId;
 
@@ -34,11 +35,26 @@ class JobStorageAccountState {
 
   factory JobStorageAccountState.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountState(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
+      authenticationMode: (() {
+        final guardedValue = map['authenticationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamAnalyticsJobId: (() {
+        final guardedValue = map['streamAnalyticsJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

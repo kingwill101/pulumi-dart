@@ -177,11 +177,14 @@ import 'protected_item_model_response_system_data.dart';
 class ProtectedItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Protected item model properties.
   late final pulumi.Output<ProtectedItemModelPropertiesResponse> properties;
   late final pulumi.Output<ProtectedItemModelResponseSystemData> systemData;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -194,15 +197,19 @@ class ProtectedItem extends pulumi.CustomResource {
     ProtectedItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datareplication:ProtectedItem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:datareplication:ProtectedItem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ProtectedItemModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<ProtectedItemModelResponseSystemData>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ProtectedItemModelPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<ProtectedItemModelResponseSystemData>(
+      'systemData',
+    );
+    type = registerOutput<String>('type');
   }
 }

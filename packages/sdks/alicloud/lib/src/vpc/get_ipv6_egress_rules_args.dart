@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpv6EgressRulesArgs {
   /// A list of Ipv6 Egress Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
   final pulumi.Input<String>? instanceId;
+
   /// The name of the resource.
   final pulumi.Input<String>? ipv6EgressRuleName;
+
   /// The ID of the IPv6 gateway.
   final pulumi.Input<String> ipv6GatewayId;
+
   /// A regex string to filter results by Ipv6 Egress Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
   final pulumi.Input<String>? status;
 
@@ -54,14 +60,37 @@ class GetIpv6EgressRulesArgs {
 
   factory GetIpv6EgressRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6EgressRulesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName']! as String).input(),
-      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6EgressRuleName: (() {
+        final guardedValue = map['ipv6EgressRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6GatewayId: pulumi.Input.fromValue(map['ipv6GatewayId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

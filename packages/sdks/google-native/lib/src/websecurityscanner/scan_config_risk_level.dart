@@ -4,16 +4,15 @@ enum ScanConfigRiskLevel {
   normal("NORMAL"),
   low("LOW");
 
-  const ScanConfigRiskLevel(this.value);
-  final String value;
+  const ScanConfigRiskLevel(this.wireValue);
+  final String wireValue;
 
   static ScanConfigRiskLevel fromValue(String value) {
     for (final item in ScanConfigRiskLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanConfigRiskLevel value: $value');
   }
 }
-

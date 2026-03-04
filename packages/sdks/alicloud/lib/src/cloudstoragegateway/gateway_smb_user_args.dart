@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewaySmbUserArgs {
   /// The Gateway ID of the Gateway SMB User.
   final pulumi.Input<String> gatewayId;
+
   /// The password of the Gateway SMB User.
   final pulumi.Input<String> password;
+
   /// The username of the Gateway SMB User.
   final pulumi.Input<String> username;
 
@@ -34,10 +36,9 @@ class GatewaySmbUserArgs {
 
   factory GatewaySmbUserArgs.fromMap(Map<String, dynamic> map) {
     return GatewaySmbUserArgs(
-      gatewayId: (map['gatewayId'] as String).input(),
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

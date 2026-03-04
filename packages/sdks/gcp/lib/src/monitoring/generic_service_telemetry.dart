@@ -10,20 +10,19 @@ class GenericServiceTelemetry {
 
   /// Creates a new [GenericServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GenericServiceTelemetry({
-    this.resourceName,
-  });
+  GenericServiceTelemetry({this.resourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceName': ?resourceName,
-    };
+    return <String, dynamic>{'resourceName': ?resourceName};
   }
 
   factory GenericServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return GenericServiceTelemetry(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

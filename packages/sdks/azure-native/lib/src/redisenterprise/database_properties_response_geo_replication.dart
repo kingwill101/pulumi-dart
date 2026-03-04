@@ -7,6 +7,7 @@ import 'linked_database_response.dart';
 class DatabasePropertiesResponseGeoReplication {
   /// Name for the group of linked database resources
   final pulumi.Input<String>? groupNickname;
+
   /// List of database resources to link with this database
   final pulumi.Input<List<LinkedDatabaseResponse>>? linkedDatabases;
 
@@ -21,15 +22,42 @@ class DatabasePropertiesResponseGeoReplication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupNickname': ?groupNickname,
-      'linkedDatabases': ?pulumi.Input.mapOptionalInputValue<List<LinkedDatabaseResponse>, List<Map<String, dynamic>>>(linkedDatabases, (value) => pulumi.Input.encodeList<LinkedDatabaseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedDatabases':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LinkedDatabaseResponse>,
+            List<Map<String, dynamic>>
+          >(
+            linkedDatabases,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LinkedDatabaseResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory DatabasePropertiesResponseGeoReplication.fromMap(Map<String, dynamic> map) {
+  factory DatabasePropertiesResponseGeoReplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabasePropertiesResponseGeoReplication(
-      groupNickname: map['groupNickname'] == null ? null : (map['groupNickname']! as String).input(),
-      linkedDatabases: map['linkedDatabases'] == null ? null : (pulumi.Input.decodeList<LinkedDatabaseResponse>(map['linkedDatabases']!, (value) => LinkedDatabaseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupNickname: (() {
+        final guardedValue = map['groupNickname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedDatabases: (() {
+        final guardedValue = map['linkedDatabases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LinkedDatabaseResponse>(
+            guardedValue,
+            (value) => LinkedDatabaseResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

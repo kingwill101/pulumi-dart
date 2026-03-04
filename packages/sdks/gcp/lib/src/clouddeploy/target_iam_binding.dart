@@ -21,18 +21,18 @@ class TargetIamBinding extends pulumi.CustomResource {
     TargetIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<TargetIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<TargetIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [TargetIamBinding] resource's state with the given [name] and [id].
@@ -53,17 +53,17 @@ class TargetIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<TargetIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:clouddeploy/targetIamBinding:TargetIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<TargetIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

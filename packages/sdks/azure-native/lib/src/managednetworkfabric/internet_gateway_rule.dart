@@ -189,22 +189,31 @@ import 'system_data_response.dart';
 class InternetGatewayRule extends pulumi.CustomResource {
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of Internet Gateway resource Id.
   late final pulumi.Output<List<String>> internetGatewayIds;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Rules for the InternetGateways
   late final pulumi.Output<RulePropertiesResponse> ruleProperties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -217,20 +226,20 @@ class InternetGatewayRule extends pulumi.CustomResource {
     InternetGatewayRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:InternetGatewayRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.internetGatewayIds = registerOutput<List<String>>('internetGatewayIds');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:InternetGatewayRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    internetGatewayIds = registerOutput<List<String>>('internetGatewayIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ruleProperties = registerOutput<RulePropertiesResponse>('ruleProperties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleProperties = registerOutput<RulePropertiesResponse>('ruleProperties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

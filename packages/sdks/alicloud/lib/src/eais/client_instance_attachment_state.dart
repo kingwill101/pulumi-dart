@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientInstanceAttachmentState {
   /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
   final pulumi.Input<String>? category;
+
   /// The ID of the ECS or ECI instance bound to the EAIS instance.
   final pulumi.Input<String>? clientInstanceId;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// The Ei instance specification, which is used to filter matching specifications for updating.
   final pulumi.Input<String>? eiInstanceType;
+
   /// The EAIS instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class ClientInstanceAttachmentState {
 
   factory ClientInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return ClientInstanceAttachmentState(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      clientInstanceId: map['clientInstanceId'] == null ? null : (map['clientInstanceId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientInstanceId: (() {
+        final guardedValue = map['clientInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eiInstanceType: (() {
+        final guardedValue = map['eiInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

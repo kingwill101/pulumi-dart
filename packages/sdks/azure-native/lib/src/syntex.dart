@@ -1,5 +1,3 @@
-library module_syntex;
-
 export 'syntex/document_processor.dart';
 export 'syntex/document_processor_args.dart';
 export 'syntex/document_processor_properties.dart';

@@ -6,34 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareNetworkState {
   /// The share network CIDR.
   final pulumi.Input<String>? cidr;
+
   /// The human-readable description for the share network.
   /// Changing this updates the description of the existing share network.
   final pulumi.Input<String>? description;
+
   /// The IP version of the share network. Can either be 4 or 6.
   final pulumi.Input<int>? ipVersion;
+
   /// The name for the share network. Changing this updates the name
   /// of the existing share network.
   final pulumi.Input<String>? name;
+
   /// The share network type. Can either be VLAN, VXLAN, GRE, or flat.
   final pulumi.Input<String>? networkType;
+
   /// The UUID of a neutron network when setting up or updating
   /// a share network. Changing this updates the existing share network if it's not used by
   /// shares.
   final pulumi.Input<String>? neutronNetId;
+
   /// The UUID of the neutron subnet when setting up or
   /// updating a share network. Changing this updates the existing share network if it's
   /// not used by shares.
   final pulumi.Input<String>? neutronSubnetId;
+
   /// The owner of the Share Network.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Shared File System client.
   /// A Shared File System client is needed to create a share network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// share network.
   final pulumi.Input<String>? region;
+
   /// The list of security service IDs to associate with
   /// the share network. The security service must be specified by ID and not name.
   final pulumi.Input<List<String>>? securityServiceIds;
+
   /// The share network segmentation ID.
   final pulumi.Input<int>? segmentationId;
 
@@ -81,18 +91,61 @@ class ShareNetworkState {
 
   factory ShareNetworkState.fromMap(Map<String, dynamic> map) {
     return ShareNetworkState(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
-      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId']! as String).input(),
-      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds']! as List).cast<String>()).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      neutronNetId: (() {
+        final guardedValue = map['neutronNetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      neutronSubnetId: (() {
+        final guardedValue = map['neutronSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityServiceIds: (() {
+        final guardedValue = map['securityServiceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      segmentationId: (() {
+        final guardedValue = map['segmentationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

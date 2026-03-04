@@ -7,18 +7,24 @@ import 'anycast_ip_list_timeouts.dart';
 class AnycastIpListState {
   /// The static IP addresses that are allocated to the Anycast IP list.
   final pulumi.Input<List<String>>? anycastIps;
+
   /// The Anycast IP list ARN.
   final pulumi.Input<String>? arn;
+
   /// The current version of the Anycast IP list.
   final pulumi.Input<String>? etag;
+
   /// The number of static IP addresses that are allocated to the Anycast IP list. Valid values: `3`, `21`.
   final pulumi.Input<int>? ipCount;
+
   /// Name of the Anycast IP list.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AnycastIpListTimeouts>? timeouts;
@@ -52,21 +58,64 @@ class AnycastIpListState {
       'name': ?name,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AnycastIpListTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnycastIpListTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AnycastIpListState.fromMap(Map<String, dynamic> map) {
     return AnycastIpListState(
-      anycastIps: map['anycastIps'] == null ? null : (((map['anycastIps'] as List).cast<String>()).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
-      ipCount: map['ipCount'] == null ? null : ((map['ipCount'] as int).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AnycastIpListTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      anycastIps: (() {
+        final guardedValue = map['anycastIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipCount: (() {
+        final guardedValue = map['ipCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnycastIpListTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

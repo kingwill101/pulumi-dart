@@ -3,16 +3,15 @@ enum LoadBalancerSkuTier {
   valueRegional("Regional"),
   valueGlobal("Global");
 
-  const LoadBalancerSkuTier(this.value);
-  final String value;
+  const LoadBalancerSkuTier(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerSkuTier fromValue(String value) {
     for (final item in LoadBalancerSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoadBalancerSkuTier value: $value');
   }
 }
-

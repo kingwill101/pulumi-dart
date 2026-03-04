@@ -1,5 +1,3 @@
-library module_cloudtrace;
-
 export 'cloudtrace/functions.dart';
 export 'cloudtrace/get_trace_sink_args.dart';
 export 'cloudtrace/get_trace_sink_result.dart';

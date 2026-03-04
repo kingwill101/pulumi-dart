@@ -4,16 +4,15 @@ enum FrontDoorRedirectProtocol {
   valueHttpsOnly("HttpsOnly"),
   valueMatchRequest("MatchRequest");
 
-  const FrontDoorRedirectProtocol(this.value);
-  final String value;
+  const FrontDoorRedirectProtocol(this.wireValue);
+  final String wireValue;
 
   static FrontDoorRedirectProtocol fromValue(String value) {
     for (final item in FrontDoorRedirectProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrontDoorRedirectProtocol value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountQueuePropertiesHourMetrics {
   /// Indicates whether metrics should generate summary statistics for called API operations.
   final pulumi.Input<bool>? includeApis;
+
   /// Specifies the number of days that logs will be retained.
   final pulumi.Input<int>? retentionPolicyDays;
+
   /// The version of storage analytics to configure.
   final pulumi.Input<String> version;
 
@@ -30,10 +32,17 @@ class AccountQueuePropertiesHourMetrics {
 
   factory AccountQueuePropertiesHourMetrics.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesHourMetrics(
-      includeApis: map['includeApis'] == null ? null : (map['includeApis']! as bool).input(),
-      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays']! as int).input(),
-      version: (map['version'] as String).input(),
+      includeApis: (() {
+        final guardedValue = map['includeApis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      retentionPolicyDays: (() {
+        final guardedValue = map['retentionPolicyDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

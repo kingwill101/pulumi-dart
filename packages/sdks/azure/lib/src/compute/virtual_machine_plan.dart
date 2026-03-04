@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePlan {
   /// Specifies the name of the image from the marketplace.
   final pulumi.Input<String> name;
+
   /// Specifies the product of the image from the marketplace.
   final pulumi.Input<String> product;
+
   /// Specifies the publisher of the image.
   final pulumi.Input<String> publisher;
 
@@ -30,10 +32,9 @@ class VirtualMachinePlan {
 
   factory VirtualMachinePlan.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePlan(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
-

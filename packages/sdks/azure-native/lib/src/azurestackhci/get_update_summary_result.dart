@@ -6,34 +6,49 @@ import 'system_data_response.dart';
 class GetUpdateSummaryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Current OEM Version.
   final String? currentOemVersion;
+
   /// Current Sbe version of the stamp.
   final String? currentSbeVersion;
+
   /// Current Solution Bundle version of the stamp.
   final String? currentVersion;
+
   /// Name of the hardware model.
   final String? hardwareModel;
+
   /// Last time the package-specific checks were run.
   final String? healthCheckDate;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Last time the update service successfully checked for updates
   final String? lastChecked;
+
   /// Last time an update installation completed successfully.
   final String? lastUpdated;
+
   /// The geo-location where the resource lives
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// OEM family name.
   final String? oemFamily;
+
   /// Provisioning state of the UpdateSummaries proxy resource.
   final String provisioningState;
+
   /// Overall update state of the stamp.
   final String? state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -97,22 +112,63 @@ class GetUpdateSummaryResult {
   factory GetUpdateSummaryResult.fromMap(Map<String, dynamic> map) {
     return GetUpdateSummaryResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      currentOemVersion: map['currentOemVersion'] == null ? null : map['currentOemVersion']! as String,
-      currentSbeVersion: map['currentSbeVersion'] == null ? null : map['currentSbeVersion']! as String,
-      currentVersion: map['currentVersion'] == null ? null : map['currentVersion']! as String,
-      hardwareModel: map['hardwareModel'] == null ? null : map['hardwareModel']! as String,
-      healthCheckDate: map['healthCheckDate'] == null ? null : map['healthCheckDate']! as String,
+      currentOemVersion: (() {
+        final guardedValue = map['currentOemVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      currentSbeVersion: (() {
+        final guardedValue = map['currentSbeVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      currentVersion: (() {
+        final guardedValue = map['currentVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      hardwareModel: (() {
+        final guardedValue = map['hardwareModel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      healthCheckDate: (() {
+        final guardedValue = map['healthCheckDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      lastChecked: map['lastChecked'] == null ? null : map['lastChecked']! as String,
-      lastUpdated: map['lastUpdated'] == null ? null : map['lastUpdated']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      lastChecked: (() {
+        final guardedValue = map['lastChecked'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastUpdated: (() {
+        final guardedValue = map['lastUpdated'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      oemFamily: map['oemFamily'] == null ? null : map['oemFamily']! as String,
+      oemFamily: (() {
+        final guardedValue = map['oemFamily'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

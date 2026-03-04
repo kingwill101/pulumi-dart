@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyArgs {
   /// The public key portion of an SSH key pair.
   final pulumi.Input<String> body;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Server ID of the Transfer Server (e.g., `s-12345678`)
   final pulumi.Input<String> serverId;
+
   /// The name of the user account that is assigned to one or more servers.
   final pulumi.Input<String> userName;
 
@@ -39,11 +42,14 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      body: (map['body'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serverId: (map['serverId'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      body: pulumi.Input.fromValue(map['body'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

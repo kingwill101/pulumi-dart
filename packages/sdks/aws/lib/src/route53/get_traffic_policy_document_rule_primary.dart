@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficPolicyDocumentRulePrimary {
   /// References to an endpoint.
   final pulumi.Input<String>? endpointReference;
+
   /// Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
   final pulumi.Input<bool>? evaluateTargetHealth;
+
   /// If you want to associate a health check with the endpoint or rule.
   final pulumi.Input<String>? healthCheck;
+
   /// References to a rule.
   final pulumi.Input<String>? ruleReference;
 
@@ -33,13 +36,30 @@ class GetTrafficPolicyDocumentRulePrimary {
     };
   }
 
-  factory GetTrafficPolicyDocumentRulePrimary.fromMap(Map<String, dynamic> map) {
+  factory GetTrafficPolicyDocumentRulePrimary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrafficPolicyDocumentRulePrimary(
-      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
-      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
-      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
+      endpointReference: (() {
+        final guardedValue = map['endpointReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluateTargetHealth: (() {
+        final guardedValue = map['evaluateTargetHealth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleReference: (() {
+        final guardedValue = map['ruleReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

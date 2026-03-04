@@ -4,16 +4,15 @@ enum SSEType {
   sseEbs("sse-ebs"),
   sseKms("sse-kms");
 
-  const SSEType(this.value);
-  final String value;
+  const SSEType(this.wireValue);
+  final String wireValue;
 
   static SSEType fromValue(String value) {
     for (final item in SSEType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SSEType value: $value');
   }
 }
-

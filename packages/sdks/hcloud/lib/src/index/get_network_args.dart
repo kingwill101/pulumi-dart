@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkArgs {
   /// ID of the Network.
   final pulumi.Input<int>? id;
+
   /// IPv4 prefix of the Network.
   final pulumi.Input<String>? ipRange;
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<bool>? mostRecent;
+
   /// Name of the Network.
   final pulumi.Input<String>? name;
+
   /// Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? withSelector;
 
@@ -47,13 +50,38 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipRange: (() {
+        final guardedValue = map['ipRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

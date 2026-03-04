@@ -5,7 +5,8 @@ import 'elastic_organization_to_azure_subscription_mapping_response_properties_r
 /// Result data returned by getOrganizationElasticToAzureSubscriptionMapping.
 class GetOrganizationElasticToAzureSubscriptionMappingResult {
   /// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
-  final ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse properties;
+  final ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse
+  properties;
 
   /// Creates a new [GetOrganizationElasticToAzureSubscriptionMappingResult].
   /// [properties] The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
@@ -14,15 +15,17 @@ class GetOrganizationElasticToAzureSubscriptionMappingResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
-  factory GetOrganizationElasticToAzureSubscriptionMappingResult.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationElasticToAzureSubscriptionMappingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationElasticToAzureSubscriptionMappingResult(
-      properties: ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties:
+          ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap(
+            (map['properties']! as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -8,20 +8,17 @@ class GetClusterOutpostConfigControlPlanePlacement {
 
   /// Creates a new [GetClusterOutpostConfigControlPlanePlacement].
   /// [groupName] The name of the placement group for the Kubernetes control plane instances.
-  GetClusterOutpostConfigControlPlanePlacement({
-    required this.groupName,
-  });
+  GetClusterOutpostConfigControlPlanePlacement({required this.groupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupName': groupName,
-    };
+    return <String, dynamic>{'groupName': groupName};
   }
 
-  factory GetClusterOutpostConfigControlPlanePlacement.fromMap(Map<String, dynamic> map) {
+  factory GetClusterOutpostConfigControlPlanePlacement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterOutpostConfigControlPlanePlacement(
-      groupName: (map['groupName'] as String).input(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorAction {
   /// Max tolerated failures
   final pulumi.Input<int>? maxToleratedFailures;
+
   /// Error action mode
   final pulumi.Input<String>? mode;
 
   /// Creates a new [ErrorAction].
   /// [maxToleratedFailures] Max tolerated failures
   /// [mode] Error action mode
-  ErrorAction({
-    this.maxToleratedFailures,
-    this.mode,
-  });
+  ErrorAction({this.maxToleratedFailures, this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ErrorAction {
 
   factory ErrorAction.fromMap(Map<String, dynamic> map) {
     return ErrorAction(
-      maxToleratedFailures: map['maxToleratedFailures'] == null ? null : (map['maxToleratedFailures']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      maxToleratedFailures: (() {
+        final guardedValue = map['maxToleratedFailures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -177,6 +177,7 @@ class ProjectInfo extends pulumi.CustomResource {
   /// any. Set to empty string to disable billing for the project.
   /// For example, `"012345-567890-ABCDEF"` or `""`.
   late final pulumi.Output<String> billingAccount;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -190,13 +191,13 @@ class ProjectInfo extends pulumi.CustomResource {
     ProjectInfoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:billing/projectInfo:ProjectInfo',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.billingAccount = registerOutput<String>('billingAccount');
-    this.project = registerOutput<String>('project');
+         'gcp:billing/projectInfo:ProjectInfo',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    billingAccount = registerOutput<String>('billingAccount');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [ProjectInfo] resource's state with the given [name] and [id].
@@ -217,12 +218,12 @@ class ProjectInfo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:billing/projectInfo:ProjectInfo',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.billingAccount = registerOutput<String>('billingAccount');
-    this.project = registerOutput<String>('project');
+         'gcp:billing/projectInfo:ProjectInfo',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    billingAccount = registerOutput<String>('billingAccount');
+    project = registerOutput<String>('project');
   }
 }

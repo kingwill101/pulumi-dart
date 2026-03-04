@@ -6,12 +6,15 @@ class DataExchangeSubscriptionLinkedDatasetMap {
   /// (Output)
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
   final pulumi.Input<String>? linkedDataset;
+
   /// (Output)
   /// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
   final pulumi.Input<String>? linkedPubsubSubscription;
+
   /// (Output)
   /// Output only. Listing for which linked resource is created.
   final pulumi.Input<String>? listing;
+
   /// (Required) The identifier for this object. Format specified above.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +39,26 @@ class DataExchangeSubscriptionLinkedDatasetMap {
     };
   }
 
-  factory DataExchangeSubscriptionLinkedDatasetMap.fromMap(Map<String, dynamic> map) {
+  factory DataExchangeSubscriptionLinkedDatasetMap.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataExchangeSubscriptionLinkedDatasetMap(
-      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset']! as String).input(),
-      linkedPubsubSubscription: map['linkedPubsubSubscription'] == null ? null : (map['linkedPubsubSubscription']! as String).input(),
-      listing: map['listing'] == null ? null : (map['listing']! as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      linkedDataset: (() {
+        final guardedValue = map['linkedDataset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedPubsubSubscription: (() {
+        final guardedValue = map['linkedPubsubSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listing: (() {
+        final guardedValue = map['listing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

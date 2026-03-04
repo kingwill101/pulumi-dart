@@ -6,7 +6,7 @@ import 'get_products_result.dart';
 
 /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///
@@ -211,7 +211,7 @@ Future<GetAppsResult> getApps(
 
 /// This data source provides the Mhub Products of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///

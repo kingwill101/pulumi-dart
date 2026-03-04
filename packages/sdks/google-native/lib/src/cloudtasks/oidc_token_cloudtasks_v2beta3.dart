@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OidcTokenCloudtasksV2beta3 {
   /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   final pulumi.Input<String>? audience;
+
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
   final pulumi.Input<String>? serviceAccountEmail;
 
   /// Creates a new [OidcTokenCloudtasksV2beta3].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-  OidcTokenCloudtasksV2beta3({
-    this.audience,
-    this.serviceAccountEmail,
-  });
+  OidcTokenCloudtasksV2beta3({this.audience, this.serviceAccountEmail});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class OidcTokenCloudtasksV2beta3 {
 
   factory OidcTokenCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return OidcTokenCloudtasksV2beta3(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountEmail: (() {
+        final guardedValue = map['serviceAccountEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

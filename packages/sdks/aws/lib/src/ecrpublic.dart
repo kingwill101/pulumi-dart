@@ -1,5 +1,3 @@
-library module_ecrpublic;
-
 export 'ecrpublic/functions.dart';
 export 'ecrpublic/get_authorization_token_args.dart';
 export 'ecrpublic/get_authorization_token_result.dart';

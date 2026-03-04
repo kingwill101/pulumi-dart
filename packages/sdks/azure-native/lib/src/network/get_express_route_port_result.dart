@@ -9,42 +9,61 @@ import 'sub_resource_response.dart';
 class GetExpressRoutePortResult {
   /// Date of the physical port allocation to be used in Letter of Authorization.
   final String allocationDate;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Bandwidth of procured ports in Gbps.
   final int? bandwidthInGbps;
+
   /// The billing type of the ExpressRoutePort resource.
   final String? billingType;
+
   /// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
   final List<SubResourceResponse> circuits;
+
   /// Encapsulation method on physical ports.
   final String? encapsulation;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Ether type of the physical port.
   final String etherType;
+
   /// Resource ID.
   final String? id;
+
   /// The identity of ExpressRoutePort, if configured.
   final ManagedServiceIdentityResponse? identity;
+
   /// The set of physical links of the ExpressRoutePort resource.
   final List<ExpressRouteLinkResponse>? links;
+
   /// Resource location.
   final String? location;
+
   /// Maximum transmission unit of the physical port pair(s).
   final String mtu;
+
   /// Resource name.
   final String name;
+
   /// The name of the peering location that the ExpressRoutePort is mapped to physically.
   final String? peeringLocation;
+
   /// Aggregate Gbps of associated circuit bandwidths.
   final double provisionedBandwidthInGbps;
+
   /// The provisioning state of the express route port resource.
   final String provisioningState;
+
   /// The resource GUID property of the express route port resource.
   final String resourceGuid;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -98,13 +117,24 @@ class GetExpressRoutePortResult {
       'azureApiVersion': azureApiVersion,
       'bandwidthInGbps': ?bandwidthInGbps,
       'billingType': ?billingType,
-      'circuits': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(circuits, (value) => value.toMap()),
+      'circuits':
+          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
+            circuits,
+            (value) => value.toMap(),
+          ),
       'encapsulation': ?encapsulation,
       'etag': etag,
       'etherType': etherType,
       'id': ?id,
-      'identity': ?identity == null ? null : identity!.toMap(),
-      'links': ?links == null ? null : pulumi.Input.encodeList<ExpressRouteLinkResponse, Map<String, dynamic>>(links!, (value) => value.toMap()),
+      'identity': ?identity?.toMap(),
+      'links': ?(() {
+        final guardedValue = links;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ExpressRouteLinkResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'location': ?location,
       'mtu': mtu,
       'name': name,
@@ -121,25 +151,71 @@ class GetExpressRoutePortResult {
     return GetExpressRoutePortResult(
       allocationDate: map['allocationDate'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : map['bandwidthInGbps']! as int,
-      billingType: map['billingType'] == null ? null : map['billingType']! as String,
-      circuits: pulumi.Input.decodeList<SubResourceResponse>(map['circuits'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      encapsulation: map['encapsulation'] == null ? null : map['encapsulation']! as String,
+      bandwidthInGbps: (() {
+        final guardedValue = map['bandwidthInGbps'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      billingType: (() {
+        final guardedValue = map['billingType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      circuits: pulumi.Input.decodeList<SubResourceResponse>(
+        map['circuits']!,
+        (value) =>
+            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      encapsulation: (() {
+        final guardedValue = map['encapsulation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       etherType: map['etherType'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      links: map['links'] == null ? null : pulumi.Input.decodeList<ExpressRouteLinkResponse>(map['links']!, (value) => ExpressRouteLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      links: (() {
+        final guardedValue = map['links'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ExpressRouteLinkResponse>(
+          guardedValue,
+          (value) => ExpressRouteLinkResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       mtu: map['mtu'] as String,
       name: map['name'] as String,
-      peeringLocation: map['peeringLocation'] == null ? null : map['peeringLocation']! as String,
+      peeringLocation: (() {
+        final guardedValue = map['peeringLocation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisionedBandwidthInGbps: map['provisionedBandwidthInGbps'] as double,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

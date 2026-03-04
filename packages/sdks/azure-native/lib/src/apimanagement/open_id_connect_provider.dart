@@ -170,22 +170,31 @@ import 'open_id_connect_provider_args.dart';
 class OpenIdConnectProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Client ID of developer console which is the client application.
   late final pulumi.Output<String> clientId;
+
   /// Client Secret of developer console which is the client application.
   late final pulumi.Output<String?> clientSecret;
+
   /// User-friendly description of OpenID Connect Provider.
   late final pulumi.Output<String?> description;
+
   /// User-friendly OpenID Connect Provider name.
   late final pulumi.Output<String> displayName;
+
   /// Metadata endpoint URI.
   late final pulumi.Output<String> metadataEndpoint;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
   late final pulumi.Output<bool?> useInApiDocumentation;
+
   /// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
   late final pulumi.Output<bool?> useInTestConsole;
 
@@ -198,20 +207,20 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     OpenIdConnectProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:OpenIdConnectProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientSecret = registerOutput<String?>('clientSecret');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.metadataEndpoint = registerOutput<String>('metadataEndpoint');
+         'azure-native:apimanagement:OpenIdConnectProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String?>('clientSecret');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    metadataEndpoint = registerOutput<String>('metadataEndpoint');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.useInApiDocumentation = registerOutput<bool?>('useInApiDocumentation');
-    this.useInTestConsole = registerOutput<bool?>('useInTestConsole');
+    type = registerOutput<String>('type');
+    useInApiDocumentation = registerOutput<bool?>('useInApiDocumentation');
+    useInTestConsole = registerOutput<bool?>('useInTestConsole');
   }
 }

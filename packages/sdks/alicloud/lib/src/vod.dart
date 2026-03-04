@@ -1,5 +1,3 @@
-library module_vod;
-
 export 'vod/domain.dart';
 export 'vod/domain_args.dart';
 export 'vod/domain_source.dart';

@@ -16,17 +16,23 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': ?content,
-      'path': ?path,
-    };
+    return <String, dynamic>{'content': ?content, 'path': ?path};
   }
 
-  factory ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupVolumeConfigFileVolumeConfigFileToPath(
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

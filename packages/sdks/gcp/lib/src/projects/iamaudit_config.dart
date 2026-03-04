@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iamaudit_config_args.dart';
-import 'iamaudit_config_audit_log_config.dart';
 import 'iamaudit_config_state.dart';
 
 /// Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
@@ -10,16 +9,16 @@ import 'iamaudit_config_state.dart';
 /// * `gcp.projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
 /// * `gcp.projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
-/// > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+/// &gt; **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 /// IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 ///
 /// ## gcp.projects.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your project
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your project
 /// using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
 /// from anyone without organization-level access to the project. Proceed with caution.
 /// It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -999,7 +998,7 @@ import 'iamaudit_config_state.dart';
 ///
 /// ## gcp.projects.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your project
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your project
 /// using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
 /// from anyone without organization-level access to the project. Proceed with caution.
 /// It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -2004,12 +2003,15 @@ import 'iamaudit_config_state.dart';
 /// ```
 class IAMAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  late final pulumi.Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> auditLogConfigs;
+
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   late final pulumi.Output<String> project;
+
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   late final pulumi.Output<String> service;
 
@@ -2022,15 +2024,17 @@ class IAMAuditConfig extends pulumi.CustomResource {
     IAMAuditConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMAuditConfig:IAMAuditConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs');
-    this.etag = registerOutput<String>('etag');
-    this.project = registerOutput<String>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:projects/iAMAuditConfig:IAMAuditConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'auditLogConfigs',
+    );
+    etag = registerOutput<String>('etag');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
   }
 
   /// Gets an existing [IAMAuditConfig] resource's state with the given [name] and [id].
@@ -2051,14 +2055,16 @@ class IAMAuditConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMAuditConfig:IAMAuditConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs');
-    this.etag = registerOutput<String>('etag');
-    this.project = registerOutput<String>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:projects/iAMAuditConfig:IAMAuditConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'auditLogConfigs',
+    );
+    etag = registerOutput<String>('etag');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
   }
 }

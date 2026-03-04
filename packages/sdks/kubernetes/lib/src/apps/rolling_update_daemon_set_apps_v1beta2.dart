@@ -9,20 +9,19 @@ class RollingUpdateDaemonSetAppsV1beta2 {
 
   /// Creates a new [RollingUpdateDaemonSetAppsV1beta2].
   /// [maxUnavailable] The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.
-  RollingUpdateDaemonSetAppsV1beta2({
-    this.maxUnavailable,
-  });
+  RollingUpdateDaemonSetAppsV1beta2({this.maxUnavailable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxUnavailable': ?maxUnavailable,
-    };
+    return <String, dynamic>{'maxUnavailable': ?maxUnavailable};
   }
 
   factory RollingUpdateDaemonSetAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return RollingUpdateDaemonSetAppsV1beta2(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      maxUnavailable: (() {
+        final guardedValue = map['maxUnavailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

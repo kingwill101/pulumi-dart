@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcState {
   /// The date and time of when the VPC was created.
   final pulumi.Input<String>? createdAt;
+
   /// A boolean indicating whether or not the VPC is the default one for the region.
   final pulumi.Input<bool>? default_;
+
   /// A free-form text field up to a limit of 255 characters to describe the VPC.
   final pulumi.Input<String>? description;
+
   /// The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
   final pulumi.Input<String>? ipRange;
+
   /// A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
   final pulumi.Input<String>? name;
+
   /// The DigitalOcean region slug for the VPC's location.
   final pulumi.Input<String>? region;
+
   /// The uniform resource name (URN) for the VPC.
   final pulumi.Input<String>? vpcUrn;
 
@@ -51,14 +57,41 @@ class VpcState {
 
   factory VpcState.fromMap(Map<String, dynamic> map) {
     return VpcState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      default_: map['default'] == null ? null : (map['default']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      vpcUrn: map['vpcUrn'] == null ? null : (map['vpcUrn']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      default_: (() {
+        final guardedValue = map['default'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRange: (() {
+        final guardedValue = map['ipRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcUrn: (() {
+        final guardedValue = map['vpcUrn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

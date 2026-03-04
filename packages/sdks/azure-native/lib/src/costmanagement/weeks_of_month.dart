@@ -6,16 +6,15 @@ enum WeeksOfMonth {
   valueFourth("Fourth"),
   valueLast("Last");
 
-  const WeeksOfMonth(this.value);
-  final String value;
+  const WeeksOfMonth(this.wireValue);
+  final String wireValue;
 
   static WeeksOfMonth fromValue(String value) {
     for (final item in WeeksOfMonth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeeksOfMonth value: $value');
   }
 }
-

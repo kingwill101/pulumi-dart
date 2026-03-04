@@ -6,11 +6,20 @@ import 'policy_target_tracking_configuration_predefined_metric_specification.dar
 
 class PolicyTargetTrackingConfiguration {
   /// Customized metric. Conflicts with `predefined_metric_specification`.
-  final pulumi.Input<PolicyTargetTrackingConfigurationCustomizedMetricSpecification>? customizedMetricSpecification;
+  final pulumi.Input<
+    PolicyTargetTrackingConfigurationCustomizedMetricSpecification
+  >?
+  customizedMetricSpecification;
+
   /// Whether scale in by the target tracking policy is disabled.
   final pulumi.Input<bool>? disableScaleIn;
+
   /// Predefined metric. Conflicts with `customized_metric_specification`.
-  final pulumi.Input<PolicyTargetTrackingConfigurationPredefinedMetricSpecification>? predefinedMetricSpecification;
+  final pulumi.Input<
+    PolicyTargetTrackingConfigurationPredefinedMetricSpecification
+  >?
+  predefinedMetricSpecification;
+
   /// Target value for the metric.
   final pulumi.Input<double> targetValue;
 
@@ -28,20 +37,47 @@ class PolicyTargetTrackingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizedMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyTargetTrackingConfigurationCustomizedMetricSpecification, Map<String, dynamic>>(customizedMetricSpecification, (value) => value.toMap()),
+      'customizedMetricSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyTargetTrackingConfigurationCustomizedMetricSpecification,
+            Map<String, dynamic>
+          >(customizedMetricSpecification, (value) => value.toMap()),
       'disableScaleIn': ?disableScaleIn,
-      'predefinedMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyTargetTrackingConfigurationPredefinedMetricSpecification, Map<String, dynamic>>(predefinedMetricSpecification, (value) => value.toMap()),
+      'predefinedMetricSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyTargetTrackingConfigurationPredefinedMetricSpecification,
+            Map<String, dynamic>
+          >(predefinedMetricSpecification, (value) => value.toMap()),
       'targetValue': targetValue,
     };
   }
 
   factory PolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfiguration(
-      customizedMetricSpecification: map['customizedMetricSpecification'] == null ? null : ((PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap((map['customizedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
-      disableScaleIn: map['disableScaleIn'] == null ? null : ((map['disableScaleIn'] as bool).input()).input(),
-      predefinedMetricSpecification: map['predefinedMetricSpecification'] == null ? null : ((PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap((map['predefinedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
-      targetValue: (map['targetValue'] as double).input(),
+      customizedMetricSpecification: (() {
+        final guardedValue = map['customizedMetricSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disableScaleIn: (() {
+        final guardedValue = map['disableScaleIn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      predefinedMetricSpecification: (() {
+        final guardedValue = map['predefinedMetricSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
     );
   }
 }
-

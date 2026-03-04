@@ -1,5 +1,3 @@
-library module_codecommit;
-
 export 'codecommit/approval_rule_template.dart';
 export 'codecommit/approval_rule_template_args.dart';
 export 'codecommit/approval_rule_template_association.dart';

@@ -9,8 +9,10 @@ import 'x12_agreement_content.dart';
 class AgreementContent {
   /// The AS2 agreement content.
   final pulumi.Input<AS2AgreementContent>? aS2;
+
   /// The EDIFACT agreement content.
   final pulumi.Input<EdifactAgreementContent>? edifact;
+
   /// The X12 agreement content.
   final pulumi.Input<X12AgreementContent>? x12;
 
@@ -18,26 +20,57 @@ class AgreementContent {
   /// [aS2] The AS2 agreement content.
   /// [edifact] The EDIFACT agreement content.
   /// [x12] The X12 agreement content.
-  AgreementContent({
-    this.aS2,
-    this.edifact,
-    this.x12,
-  });
+  AgreementContent({this.aS2, this.edifact, this.x12});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aS2': ?pulumi.Input.mapOptionalInputValue<AS2AgreementContent, Map<String, dynamic>>(aS2, (value) => value.toMap()),
-      'edifact': ?pulumi.Input.mapOptionalInputValue<EdifactAgreementContent, Map<String, dynamic>>(edifact, (value) => value.toMap()),
-      'x12': ?pulumi.Input.mapOptionalInputValue<X12AgreementContent, Map<String, dynamic>>(x12, (value) => value.toMap()),
+      'aS2':
+          ?pulumi.Input.mapOptionalInputValue<
+            AS2AgreementContent,
+            Map<String, dynamic>
+          >(aS2, (value) => value.toMap()),
+      'edifact':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdifactAgreementContent,
+            Map<String, dynamic>
+          >(edifact, (value) => value.toMap()),
+      'x12':
+          ?pulumi.Input.mapOptionalInputValue<
+            X12AgreementContent,
+            Map<String, dynamic>
+          >(x12, (value) => value.toMap()),
     };
   }
 
   factory AgreementContent.fromMap(Map<String, dynamic> map) {
     return AgreementContent(
-      aS2: map['aS2'] == null ? null : (AS2AgreementContent.fromMap((map['aS2']! as Map).cast<String, dynamic>())).input(),
-      edifact: map['edifact'] == null ? null : (EdifactAgreementContent.fromMap((map['edifact']! as Map).cast<String, dynamic>())).input(),
-      x12: map['x12'] == null ? null : (X12AgreementContent.fromMap((map['x12']! as Map).cast<String, dynamic>())).input(),
+      aS2: (() {
+        final guardedValue = map['aS2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AS2AgreementContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      edifact: (() {
+        final guardedValue = map['edifact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdifactAgreementContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      x12: (() {
+        final guardedValue = map['x12'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          X12AgreementContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

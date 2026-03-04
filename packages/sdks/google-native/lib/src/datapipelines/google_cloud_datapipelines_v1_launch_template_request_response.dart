@@ -7,12 +7,17 @@ import 'google_cloud_datapipelines_v1_launch_template_parameters_response.dart';
 class GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse {
   /// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
   final pulumi.Input<String> gcsPath;
+
   /// The parameters of the template to launch. This should be part of the body of the POST request.
-  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse> launchParameters;
+  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse>
+  launchParameters;
+
   /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
   final pulumi.Input<String> location;
+
   /// The ID of the Cloud Platform project that the job belongs to.
   final pulumi.Input<String> project;
+
   /// If true, the request is validated but not actually executed. Defaults to false.
   final pulumi.Input<bool> validateOnly;
 
@@ -33,21 +38,30 @@ class GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gcsPath': gcsPath,
-      'launchParameters': pulumi.Input.mapInputValue<GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse, Map<String, dynamic>>(launchParameters, (value) => value.toMap()),
+      'launchParameters':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse,
+            Map<String, dynamic>
+          >(launchParameters, (value) => value.toMap()),
       'location': location,
       'project': project,
       'validateOnly': validateOnly,
     };
   }
 
-  factory GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse(
-      gcsPath: (map['gcsPath'] as String).input(),
-      launchParameters: (GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse.fromMap((map['launchParameters'] as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      project: (map['project'] as String).input(),
-      validateOnly: (map['validateOnly'] as bool).input(),
+      gcsPath: pulumi.Input.fromValue(map['gcsPath'] as String),
+      launchParameters: pulumi.Input.fromValue(
+        GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse.fromMap(
+          (map['launchParameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      validateOnly: pulumi.Input.fromValue(map['validateOnly'] as bool),
     );
   }
 }
-

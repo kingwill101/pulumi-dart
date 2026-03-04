@@ -16,16 +16,17 @@ enum InventoryConfigurationOptionalFields {
   size("Size"),
   storageClass("StorageClass");
 
-  const InventoryConfigurationOptionalFields(this.value);
-  final String value;
+  const InventoryConfigurationOptionalFields(this.wireValue);
+  final String wireValue;
 
   static InventoryConfigurationOptionalFields fromValue(String value) {
     for (final item in InventoryConfigurationOptionalFields.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InventoryConfigurationOptionalFields value: $value');
+    throw ArgumentError(
+      'Unknown InventoryConfigurationOptionalFields value: $value',
+    );
   }
 }
-

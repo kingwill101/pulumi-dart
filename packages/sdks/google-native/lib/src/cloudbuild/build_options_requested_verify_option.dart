@@ -3,16 +3,17 @@ enum BuildOptionsRequestedVerifyOption {
   notVerified("NOT_VERIFIED"),
   verified("VERIFIED");
 
-  const BuildOptionsRequestedVerifyOption(this.value);
-  final String value;
+  const BuildOptionsRequestedVerifyOption(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsRequestedVerifyOption fromValue(String value) {
     for (final item in BuildOptionsRequestedVerifyOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildOptionsRequestedVerifyOption value: $value');
+    throw ArgumentError(
+      'Unknown BuildOptionsRequestedVerifyOption value: $value',
+    );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAndroidMAMPolicyByName.
 class GetAndroidMAMPolicyByNameResult {
   final String? accessRecheckOfflineTimeout;
@@ -8,6 +7,7 @@ class GetAndroidMAMPolicyByNameResult {
   final String? appSharingFromLevel;
   final String? appSharingToLevel;
   final String? authentication;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String? clipboardSharingLevel;
@@ -18,12 +18,15 @@ class GetAndroidMAMPolicyByNameResult {
   final String? fileSharingSaveAs;
   final String friendlyName;
   final String groupStatus;
+
   /// Resource Id
   final String id;
   final String lastModifiedTime;
+
   /// Resource Location
   final String? location;
   final String? managedBrowser;
+
   /// Resource name
   final String name;
   final int numOfApps;
@@ -31,8 +34,10 @@ class GetAndroidMAMPolicyByNameResult {
   final String? pin;
   final int? pinNumRetry;
   final String? screenCapture;
+
   /// Resource Tags
   final Map<String, String>? tags;
+
   /// Resource type
   final String type;
 
@@ -125,33 +130,104 @@ class GetAndroidMAMPolicyByNameResult {
 
   factory GetAndroidMAMPolicyByNameResult.fromMap(Map<String, dynamic> map) {
     return GetAndroidMAMPolicyByNameResult(
-      accessRecheckOfflineTimeout: map['accessRecheckOfflineTimeout'] == null ? null : map['accessRecheckOfflineTimeout']! as String,
-      accessRecheckOnlineTimeout: map['accessRecheckOnlineTimeout'] == null ? null : map['accessRecheckOnlineTimeout']! as String,
-      appSharingFromLevel: map['appSharingFromLevel'] == null ? null : map['appSharingFromLevel']! as String,
-      appSharingToLevel: map['appSharingToLevel'] == null ? null : map['appSharingToLevel']! as String,
-      authentication: map['authentication'] == null ? null : map['authentication']! as String,
+      accessRecheckOfflineTimeout: (() {
+        final guardedValue = map['accessRecheckOfflineTimeout'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      accessRecheckOnlineTimeout: (() {
+        final guardedValue = map['accessRecheckOnlineTimeout'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      appSharingFromLevel: (() {
+        final guardedValue = map['appSharingFromLevel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      appSharingToLevel: (() {
+        final guardedValue = map['appSharingToLevel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clipboardSharingLevel: map['clipboardSharingLevel'] == null ? null : map['clipboardSharingLevel']! as String,
-      dataBackup: map['dataBackup'] == null ? null : map['dataBackup']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      deviceCompliance: map['deviceCompliance'] == null ? null : map['deviceCompliance']! as String,
-      fileEncryption: map['fileEncryption'] == null ? null : map['fileEncryption']! as String,
-      fileSharingSaveAs: map['fileSharingSaveAs'] == null ? null : map['fileSharingSaveAs']! as String,
+      clipboardSharingLevel: (() {
+        final guardedValue = map['clipboardSharingLevel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dataBackup: (() {
+        final guardedValue = map['dataBackup'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      deviceCompliance: (() {
+        final guardedValue = map['deviceCompliance'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fileEncryption: (() {
+        final guardedValue = map['fileEncryption'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fileSharingSaveAs: (() {
+        final guardedValue = map['fileSharingSaveAs'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       friendlyName: map['friendlyName'] as String,
       groupStatus: map['groupStatus'] as String,
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      managedBrowser: map['managedBrowser'] == null ? null : map['managedBrowser']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      managedBrowser: (() {
+        final guardedValue = map['managedBrowser'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       numOfApps: map['numOfApps'] as int,
-      offlineWipeTimeout: map['offlineWipeTimeout'] == null ? null : map['offlineWipeTimeout']! as String,
-      pin: map['pin'] == null ? null : map['pin']! as String,
-      pinNumRetry: map['pinNumRetry'] == null ? null : map['pinNumRetry']! as int,
-      screenCapture: map['screenCapture'] == null ? null : map['screenCapture']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      offlineWipeTimeout: (() {
+        final guardedValue = map['offlineWipeTimeout'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pin: (() {
+        final guardedValue = map['pin'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pinNumRetry: (() {
+        final guardedValue = map['pinNumRetry'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      screenCapture: (() {
+        final guardedValue = map['screenCapture'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

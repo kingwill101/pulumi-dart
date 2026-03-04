@@ -8,20 +8,15 @@ class SchemaDefinition {
 
   /// Creates a new [SchemaDefinition].
   /// [value] A JSON string representation of the schema.
-  SchemaDefinition({
-    required this.value,
-  });
+  SchemaDefinition({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory SchemaDefinition.fromMap(Map<String, dynamic> map) {
     return SchemaDefinition(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -7,29 +7,39 @@ import 'scan_config_error_code.dart';
 class ScanConfigError {
   /// Indicates the reason code for a configuration failure.
   final pulumi.Input<ScanConfigErrorCode>? code;
+
   /// Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.
   final pulumi.Input<String>? fieldName;
 
   /// Creates a new [ScanConfigError].
   /// [code] Indicates the reason code for a configuration failure.
   /// [fieldName] Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.
-  ScanConfigError({
-    this.code,
-    this.fieldName,
-  });
+  ScanConfigError({this.code, this.fieldName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': ?pulumi.Input.mapOptionalInputValue<ScanConfigErrorCode, String>(code, (value) => value.value),
+      'code': ?pulumi.Input.mapOptionalInputValue<ScanConfigErrorCode, String>(
+        code,
+        (value) => value.wireValue,
+      ),
       'fieldName': ?fieldName,
     };
   }
 
   factory ScanConfigError.fromMap(Map<String, dynamic> map) {
     return ScanConfigError(
-      code: map['code'] == null ? null : (ScanConfigErrorCode.fromValue(map['code']! as String)).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScanConfigErrorCode.fromValue(guardedValue as String),
+        );
+      })(),
+      fieldName: (() {
+        final guardedValue = map['fieldName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

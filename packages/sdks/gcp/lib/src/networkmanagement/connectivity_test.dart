@@ -1023,9 +1023,11 @@ import 'connectivity_test_state.dart';
 class ConnectivityTest extends pulumi.CustomResource {
   /// Whether the analysis should skip firewall checking. Default value is false.
   late final pulumi.Output<bool?> bypassFirewallChecks;
+
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
   late final pulumi.Output<String?> description;
+
   /// Required. Destination specification of the Connectivity Test.
   /// You can use a combination of destination IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the destination location.
@@ -1034,30 +1036,39 @@ class ConnectivityTest extends pulumi.CustomResource {
   /// destination that you don't intend to test.
   /// Structure is documented below.
   late final pulumi.Output<ConnectivityTestDestination> destination;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Unique name for the connectivity test.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
   late final pulumi.Output<String?> protocol;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Other projects that may be relevant for reachability analysis.
   /// This is applicable to scenarios where a test can cross project
   /// boundaries.
   late final pulumi.Output<List<String>?> relatedProjects;
+
   /// Whether run analysis for the return path from destination to source.
   /// Default value is false.
   late final pulumi.Output<bool?> roundTrip;
+
   /// Required. Source specification of the Connectivity Test.
   /// You can use a combination of source IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the source location.
@@ -1076,23 +1087,23 @@ class ConnectivityTest extends pulumi.CustomResource {
     ConnectivityTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkmanagement/connectivityTest:ConnectivityTest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<ConnectivityTestDestination>('destination');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:networkmanagement/connectivityTest:ConnectivityTest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<ConnectivityTestDestination>('destination');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String?>('protocol');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.relatedProjects = registerOutput<List<String>?>('relatedProjects');
-    this.roundTrip = registerOutput<bool?>('roundTrip');
-    this.source = registerOutput<ConnectivityTestSource>('source');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String?>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    relatedProjects = registerOutput<List<String>?>('relatedProjects');
+    roundTrip = registerOutput<bool?>('roundTrip');
+    source = registerOutput<ConnectivityTestSource>('source');
   }
 
   /// Gets an existing [ConnectivityTest] resource's state with the given [name] and [id].
@@ -1113,22 +1124,22 @@ class ConnectivityTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkmanagement/connectivityTest:ConnectivityTest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<ConnectivityTestDestination>('destination');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:networkmanagement/connectivityTest:ConnectivityTest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<ConnectivityTestDestination>('destination');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String?>('protocol');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.relatedProjects = registerOutput<List<String>?>('relatedProjects');
-    this.roundTrip = registerOutput<bool?>('roundTrip');
-    this.source = registerOutput<ConnectivityTestSource>('source');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String?>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    relatedProjects = registerOutput<List<String>?>('relatedProjects');
+    roundTrip = registerOutput<bool?>('roundTrip');
+    source = registerOutput<ConnectivityTestSource>('source');
   }
 }

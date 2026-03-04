@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutonomousDatabaseBackupState {
   /// The azureId of the Autonomous Database that this backup is for. Changing this forces a new resource to be created.
   final pulumi.Input<String>? autonomousDatabaseId;
+
   /// The display name of the Autonomous Database Backup. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// (Updatable) The number of days to retain the backup. Must be between 90 and 3650 days.
   final pulumi.Input<int>? retentionPeriodInDays;
+
   /// The type of backup to create.Currently, only `LongTerm` backup operations are supported through the Oracle database At azure service. Defaults to `LongTerm`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? type;
 
@@ -36,11 +39,26 @@ class AutonomousDatabaseBackupState {
 
   factory AutonomousDatabaseBackupState.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseBackupState(
-      autonomousDatabaseId: map['autonomousDatabaseId'] == null ? null : (map['autonomousDatabaseId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      autonomousDatabaseId: (() {
+        final guardedValue = map['autonomousDatabaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionPeriodInDays: (() {
+        final guardedValue = map['retentionPeriodInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

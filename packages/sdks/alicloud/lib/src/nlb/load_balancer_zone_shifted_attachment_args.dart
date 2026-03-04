@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneShiftedAttachmentArgs {
   /// Network load balancer id
   final pulumi.Input<String> loadBalancerId;
+
   /// The list of zones and vSwitch mappings
   final pulumi.Input<String> vswitchId;
+
   /// ZoneId
   final pulumi.Input<String> zoneId;
 
@@ -32,12 +34,13 @@ class LoadBalancerZoneShiftedAttachmentArgs {
     };
   }
 
-  factory LoadBalancerZoneShiftedAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerZoneShiftedAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerZoneShiftedAttachmentArgs(
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

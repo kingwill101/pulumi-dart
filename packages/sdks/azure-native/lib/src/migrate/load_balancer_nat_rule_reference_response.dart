@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerNatRuleReferenceResponse {
   /// Gets the name of the proxy resource on the target side.
   final pulumi.Input<String>? name;
+
   /// Gets the ARM resource ID of the tracked resource being referenced.
   final pulumi.Input<String> sourceArmResourceId;
 
@@ -24,11 +25,18 @@ class LoadBalancerNatRuleReferenceResponse {
     };
   }
 
-  factory LoadBalancerNatRuleReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerNatRuleReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerNatRuleReferenceResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArmResourceId: pulumi.Input.fromValue(
+        map['sourceArmResourceId'] as String,
+      ),
     );
   }
 }
-

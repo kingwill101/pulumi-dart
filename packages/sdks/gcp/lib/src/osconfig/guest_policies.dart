@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guest_policies_args.dart';
 import 'guest_policies_assignment.dart';
-import 'guest_policies_package.dart';
-import 'guest_policies_package_repository.dart';
-import 'guest_policies_recipe.dart';
 import 'guest_policies_state.dart';
 
 /// An OS Config resource representing a guest configuration policy. These policies represent
@@ -1019,13 +1016,17 @@ class GuestPolicies extends pulumi.CustomResource {
   /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   /// Structure is documented below.
   late final pulumi.Output<GuestPoliciesAssignment> assignment;
+
   /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
+
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
   late final pulumi.Output<String> etag;
+
   /// The logical name of the guest policy in the project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -1033,22 +1034,28 @@ class GuestPolicies extends pulumi.CustomResource {
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
   late final pulumi.Output<String> guestPolicyId;
+
   /// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
   late final pulumi.Output<String> name;
+
   /// A list of package repositories to configure on the VM instance.
   /// This is done before any other configs are applied so they can use these repos.
   /// Package repositories are only configured if the corresponding package manager(s) are available.
   /// Structure is documented below.
-  late final pulumi.Output<List<GuestPoliciesPackageRepository>?> packageRepositories;
+  late final pulumi.Output<List<Map<String, dynamic>>?> packageRepositories;
+
   /// The software packages to be managed by this policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<GuestPoliciesPackage>?> packages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> packages;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// A list of Recipes to install on the VM instance.
   /// Structure is documented below.
-  late final pulumi.Output<List<GuestPoliciesRecipe>?> recipes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> recipes;
+
   /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
@@ -1062,22 +1069,24 @@ class GuestPolicies extends pulumi.CustomResource {
     GuestPoliciesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:osconfig/guestPolicies:GuestPolicies',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignment = registerOutput<GuestPoliciesAssignment>('assignment');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.guestPolicyId = registerOutput<String>('guestPolicyId');
+         'gcp:osconfig/guestPolicies:GuestPolicies',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignment = registerOutput<GuestPoliciesAssignment>('assignment');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    guestPolicyId = registerOutput<String>('guestPolicyId');
     this.name = registerOutput<String>('name');
-    this.packageRepositories = registerOutput<List<GuestPoliciesPackageRepository>?>('packageRepositories');
-    this.packages = registerOutput<List<GuestPoliciesPackage>?>('packages');
-    this.project = registerOutput<String>('project');
-    this.recipes = registerOutput<List<GuestPoliciesRecipe>?>('recipes');
-    this.updateTime = registerOutput<String>('updateTime');
+    packageRepositories = registerOutput<List<Map<String, dynamic>>?>(
+      'packageRepositories',
+    );
+    packages = registerOutput<List<Map<String, dynamic>>?>('packages');
+    project = registerOutput<String>('project');
+    recipes = registerOutput<List<Map<String, dynamic>>?>('recipes');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [GuestPolicies] resource's state with the given [name] and [id].
@@ -1098,21 +1107,23 @@ class GuestPolicies extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:osconfig/guestPolicies:GuestPolicies',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignment = registerOutput<GuestPoliciesAssignment>('assignment');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.guestPolicyId = registerOutput<String>('guestPolicyId');
+         'gcp:osconfig/guestPolicies:GuestPolicies',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignment = registerOutput<GuestPoliciesAssignment>('assignment');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    guestPolicyId = registerOutput<String>('guestPolicyId');
     this.name = registerOutput<String>('name');
-    this.packageRepositories = registerOutput<List<GuestPoliciesPackageRepository>?>('packageRepositories');
-    this.packages = registerOutput<List<GuestPoliciesPackage>?>('packages');
-    this.project = registerOutput<String>('project');
-    this.recipes = registerOutput<List<GuestPoliciesRecipe>?>('recipes');
-    this.updateTime = registerOutput<String>('updateTime');
+    packageRepositories = registerOutput<List<Map<String, dynamic>>?>(
+      'packageRepositories',
+    );
+    packages = registerOutput<List<Map<String, dynamic>>?>('packages');
+    project = registerOutput<String>('project');
+    recipes = registerOutput<List<Map<String, dynamic>>?>('recipes');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

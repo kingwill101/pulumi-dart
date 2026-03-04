@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerGroupServerAttachmentsArgs {
   /// A list of Server Group Server Attachment IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the server group.
   final pulumi.Input<String>? serverGroupId;
+
   /// The IDs of the servers. You can specify at most 40 server IDs in each call.
   final pulumi.Input<List<String>>? serverIds;
+
   /// The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
   final pulumi.Input<List<String>>? serverIps;
 
@@ -42,14 +46,35 @@ class GetServerGroupServerAttachmentsArgs {
     };
   }
 
-  factory GetServerGroupServerAttachmentsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServerGroupServerAttachmentsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServerGroupServerAttachmentsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
-      serverIds: map['serverIds'] == null ? null : ((map['serverIds']! as List).cast<String>()).input(),
-      serverIps: map['serverIps'] == null ? null : ((map['serverIps']! as List).cast<String>()).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverGroupId: (() {
+        final guardedValue = map['serverGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverIds: (() {
+        final guardedValue = map['serverIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serverIps: (() {
+        final guardedValue = map['serverIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerActiveDirectoryAdministratorState {
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant set as the Flexible Server Admin. Changing this forces a new resource to be created.
   final pulumi.Input<String>? objectId;
+
   /// The name of Azure Active Directory principal. Changing this forces a new resource to be created.
   final pulumi.Input<String>? principalName;
+
   /// The type of Azure Active Directory principal. Possible values are `Group`, `ServicePrincipal` and `User`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? principalType;
+
   /// The name of the resource group for the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serverName;
+
   /// The Azure Tenant ID. Changing this forces a new resource to be created.
   final pulumi.Input<String>? tenantId;
 
@@ -44,15 +49,40 @@ class FlexibleServerActiveDirectoryAdministratorState {
     };
   }
 
-  factory FlexibleServerActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
+  factory FlexibleServerActiveDirectoryAdministratorState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleServerActiveDirectoryAdministratorState(
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalName: (() {
+        final guardedValue = map['principalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverName: (() {
+        final guardedValue = map['serverName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

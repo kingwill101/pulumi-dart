@@ -189,16 +189,22 @@ import 'sku_response.dart';
 class DedicatedCloudNode extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure region
   late final pulumi.Output<String> location;
+
   /// {dedicatedCloudNodeName}
   late final pulumi.Output<String> name;
+
   /// Dedicated Cloud Nodes properties
   late final pulumi.Output<DedicatedCloudNodePropertiesResponse> properties;
+
   /// Dedicated Cloud Nodes SKU
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Dedicated Cloud Nodes tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// {resourceProviderNamespace}/{resourceType}
   late final pulumi.Output<String> type;
 
@@ -211,17 +217,19 @@ class DedicatedCloudNode extends pulumi.CustomResource {
     DedicatedCloudNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:vmwarecloudsimple:DedicatedCloudNode',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:vmwarecloudsimple:DedicatedCloudNode',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DedicatedCloudNodePropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DedicatedCloudNodePropertiesResponse>(
+      'properties',
+    );
+    sku = registerOutput<SkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

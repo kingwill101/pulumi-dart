@@ -6,16 +6,15 @@ enum TimeRange {
   month("Month"),
   custom("Custom");
 
-  const TimeRange(this.value);
-  final String value;
+  const TimeRange(this.wireValue);
+  final String wireValue;
 
   static TimeRange fromValue(String value) {
     for (final item in TimeRange.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TimeRange value: $value');
   }
 }
-

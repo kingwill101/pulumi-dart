@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationOwnerArgs {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
+
   /// The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> ownerObjectId;
 
@@ -29,9 +30,8 @@ class ApplicationOwnerArgs {
 
   factory ApplicationOwnerArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationOwnerArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      ownerObjectId: (map['ownerObjectId'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      ownerObjectId: pulumi.Input.fromValue(map['ownerObjectId'] as String),
     );
   }
 }
-

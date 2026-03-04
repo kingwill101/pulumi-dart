@@ -6,9 +6,12 @@ import 'service_connect_tls_certificate_authority_response.dart';
 /// Definition of ServiceConnectTlsConfiguration
 class ServiceConnectTlsConfigurationResponse {
   /// The signer certificate authority. An object that represents the AWS Private Certificate Authority certificate.
-  final pulumi.Input<ServiceConnectTlsCertificateAuthorityResponse>? issuerCertificateAuthority;
+  final pulumi.Input<ServiceConnectTlsCertificateAuthorityResponse>?
+  issuerCertificateAuthority;
+
   /// The AWS Key Management Service key.
   final pulumi.Input<String>? kmsKey;
+
   /// The Amazon Resource Name (ARN) of the IAM role that's associated with the Service Connect TLS.
   final pulumi.Input<String>? roleArn;
 
@@ -24,18 +27,39 @@ class ServiceConnectTlsConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issuerCertificateAuthority': ?pulumi.Input.mapOptionalInputValue<ServiceConnectTlsCertificateAuthorityResponse, Map<String, dynamic>>(issuerCertificateAuthority, (value) => value.toMap()),
+      'issuerCertificateAuthority':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceConnectTlsCertificateAuthorityResponse,
+            Map<String, dynamic>
+          >(issuerCertificateAuthority, (value) => value.toMap()),
       'kmsKey': ?kmsKey,
       'roleArn': ?roleArn,
     };
   }
 
-  factory ServiceConnectTlsConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ServiceConnectTlsConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceConnectTlsConfigurationResponse(
-      issuerCertificateAuthority: map['issuerCertificateAuthority'] == null ? null : (ServiceConnectTlsCertificateAuthorityResponse.fromMap((map['issuerCertificateAuthority']! as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      issuerCertificateAuthority: (() {
+        final guardedValue = map['issuerCertificateAuthority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceConnectTlsCertificateAuthorityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

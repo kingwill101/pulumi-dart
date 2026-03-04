@@ -4,16 +4,15 @@ enum ServiceReleaseChannel {
   canary("CANARY"),
   stable("STABLE");
 
-  const ServiceReleaseChannel(this.value);
-  final String value;
+  const ServiceReleaseChannel(this.wireValue);
+  final String wireValue;
 
   static ServiceReleaseChannel fromValue(String value) {
     for (final item in ServiceReleaseChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceReleaseChannel value: $value');
   }
 }
-

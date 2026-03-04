@@ -27,10 +27,9 @@ class ChannelInputSpecification {
 
   factory ChannelInputSpecification.fromMap(Map<String, dynamic> map) {
     return ChannelInputSpecification(
-      codec: (map['codec'] as String).input(),
-      inputResolution: (map['inputResolution'] as String).input(),
-      maximumBitrate: (map['maximumBitrate'] as String).input(),
+      codec: pulumi.Input.fromValue(map['codec'] as String),
+      inputResolution: pulumi.Input.fromValue(map['inputResolution'] as String),
+      maximumBitrate: pulumi.Input.fromValue(map['maximumBitrate'] as String),
     );
   }
 }
-

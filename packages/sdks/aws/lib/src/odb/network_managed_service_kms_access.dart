@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagedServiceKmsAccess {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
+
   /// Specifies the endpoint policy for KMS access from the ODB network.
   final pulumi.Input<String> kmsPolicyDocument;
+
   /// The status of the network resource.
   final pulumi.Input<String> status;
 
@@ -33,11 +35,14 @@ class NetworkManagedServiceKmsAccess {
 
   factory NetworkManagedServiceKmsAccess.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceKmsAccess(
-      domainName: (map['domainName'] as String).input(),
-      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
-      kmsPolicyDocument: (map['kmsPolicyDocument'] as String).input(),
-      status: (map['status'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      ipv4Addresses: pulumi.Input.fromValue(
+        (map['ipv4Addresses'] as List).cast<String>(),
+      ),
+      kmsPolicyDocument: pulumi.Input.fromValue(
+        map['kmsPolicyDocument'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

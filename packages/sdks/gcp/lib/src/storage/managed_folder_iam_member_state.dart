@@ -7,13 +7,17 @@ import 'managed_folder_iam_member_condition.dart';
 class ManagedFolderIamMemberState {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? bucket;
+
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<ManagedFolderIamMemberCondition>? condition;
+
   /// (Computed) The etag of the IAM policy.
   final pulumi.Input<String>? etag;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? managedFolder;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -26,6 +30,7 @@ class ManagedFolderIamMemberState {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   final pulumi.Input<String>? member;
+
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -50,7 +55,11 @@ class ManagedFolderIamMemberState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
-      'condition': ?pulumi.Input.mapOptionalInputValue<ManagedFolderIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedFolderIamMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'etag': ?etag,
       'managedFolder': ?managedFolder,
       'member': ?member,
@@ -60,13 +69,40 @@ class ManagedFolderIamMemberState {
 
   factory ManagedFolderIamMemberState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamMemberState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      condition: map['condition'] == null ? null : (ManagedFolderIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedFolderIamMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedFolder: (() {
+        final guardedValue = map['managedFolder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

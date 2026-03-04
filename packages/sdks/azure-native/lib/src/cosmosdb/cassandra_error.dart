@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CassandraError {
   /// Additional information about the error.
   final pulumi.Input<String>? additionalErrorInfo;
+
   /// The code of error that occurred.
   final pulumi.Input<String>? code;
+
   /// The message of the error.
   final pulumi.Input<String>? message;
+
   /// The target resource of the error.
   final pulumi.Input<String>? target;
 
@@ -35,11 +38,26 @@ class CassandraError {
 
   factory CassandraError.fromMap(Map<String, dynamic> map) {
     return CassandraError(
-      additionalErrorInfo: map['additionalErrorInfo'] == null ? null : (map['additionalErrorInfo']! as String).input(),
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      additionalErrorInfo: (() {
+        final guardedValue = map['additionalErrorInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -31,10 +31,13 @@ class GetSslCertSqladminV1beta4Args {
 
   factory GetSslCertSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetSslCertSqladminV1beta4Args(
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha1Fingerprint: pulumi.Input.fromValue(map['sha1Fingerprint'] as String),
     );
   }
 }
-

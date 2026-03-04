@@ -6,16 +6,17 @@ enum ServiceLbPolicyLoadBalancingAlgorithm {
   waterfallByRegion("WATERFALL_BY_REGION"),
   waterfallByZone("WATERFALL_BY_ZONE");
 
-  const ServiceLbPolicyLoadBalancingAlgorithm(this.value);
-  final String value;
+  const ServiceLbPolicyLoadBalancingAlgorithm(this.wireValue);
+  final String wireValue;
 
   static ServiceLbPolicyLoadBalancingAlgorithm fromValue(String value) {
     for (final item in ServiceLbPolicyLoadBalancingAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceLbPolicyLoadBalancingAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown ServiceLbPolicyLoadBalancingAlgorithm value: $value',
+    );
   }
 }
-

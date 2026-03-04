@@ -8,8 +8,10 @@ import 'pick_time_series_filter_ranking_method.dart';
 class PickTimeSeriesFilter {
   /// How to use the ranking to select time series that pass through the filter.
   final pulumi.Input<PickTimeSeriesFilterDirection>? direction;
+
   /// How many time series to allow to pass through the filter.
   final pulumi.Input<int>? numTimeSeries;
+
   /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
   final pulumi.Input<PickTimeSeriesFilterRankingMethod>? rankingMethod;
 
@@ -25,18 +27,41 @@ class PickTimeSeriesFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'direction': ?pulumi.Input.mapOptionalInputValue<PickTimeSeriesFilterDirection, String>(direction, (value) => value.value),
+      'direction':
+          ?pulumi.Input.mapOptionalInputValue<
+            PickTimeSeriesFilterDirection,
+            String
+          >(direction, (value) => value.wireValue),
       'numTimeSeries': ?numTimeSeries,
-      'rankingMethod': ?pulumi.Input.mapOptionalInputValue<PickTimeSeriesFilterRankingMethod, String>(rankingMethod, (value) => value.value),
+      'rankingMethod':
+          ?pulumi.Input.mapOptionalInputValue<
+            PickTimeSeriesFilterRankingMethod,
+            String
+          >(rankingMethod, (value) => value.wireValue),
     };
   }
 
   factory PickTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilter(
-      direction: map['direction'] == null ? null : (PickTimeSeriesFilterDirection.fromValue(map['direction']! as String)).input(),
-      numTimeSeries: map['numTimeSeries'] == null ? null : (map['numTimeSeries']! as int).input(),
-      rankingMethod: map['rankingMethod'] == null ? null : (PickTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod']! as String)).input(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PickTimeSeriesFilterDirection.fromValue(guardedValue as String),
+        );
+      })(),
+      numTimeSeries: (() {
+        final guardedValue = map['numTimeSeries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rankingMethod: (() {
+        final guardedValue = map['rankingMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PickTimeSeriesFilterRankingMethod.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

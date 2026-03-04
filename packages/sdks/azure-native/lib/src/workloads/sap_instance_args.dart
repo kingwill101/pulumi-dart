@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SapInstanceArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the discovery site resource for SAP Migration.
   final pulumi.Input<String> sapDiscoverySiteName;
+
   /// The name of SAP Instance resource for SAP Migration.
   final pulumi.Input<String>? sapInstanceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,29 @@ class SapInstanceArgs {
 
   factory SapInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapInstanceArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sapDiscoverySiteName: (map['sapDiscoverySiteName'] as String).input(),
-      sapInstanceName: map['sapInstanceName'] == null ? null : (map['sapInstanceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sapDiscoverySiteName: pulumi.Input.fromValue(
+        map['sapDiscoverySiteName'] as String,
+      ),
+      sapInstanceName: (() {
+        final guardedValue = map['sapInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,39 @@ class DeliveryPipelineSerialPipeline {
 
   /// Creates a new [DeliveryPipelineSerialPipeline].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  DeliveryPipelineSerialPipeline({
-    this.stages,
-  });
+  DeliveryPipelineSerialPipeline({this.stages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stages': ?pulumi.Input.mapOptionalInputValue<List<DeliveryPipelineSerialPipelineStage>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<DeliveryPipelineSerialPipelineStage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeliveryPipelineSerialPipelineStage>,
+            List<Map<String, dynamic>>
+          >(
+            stages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeliveryPipelineSerialPipelineStage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DeliveryPipelineSerialPipeline.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipeline(
-      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(map['stages']!, (value) => DeliveryPipelineSerialPipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stages: (() {
+        final guardedValue = map['stages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(
+            guardedValue,
+            (value) => DeliveryPipelineSerialPipelineStage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

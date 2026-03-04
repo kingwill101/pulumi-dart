@@ -6,24 +6,40 @@ import 'application_notification_endpoint.dart';
 /// Managed application notification policy.
 class ApplicationNotificationPolicy {
   /// The managed application notification endpoint.
-  final pulumi.Input<List<ApplicationNotificationEndpoint>> notificationEndpoints;
+  final pulumi.Input<List<ApplicationNotificationEndpoint>>
+  notificationEndpoints;
 
   /// Creates a new [ApplicationNotificationPolicy].
   /// [notificationEndpoints] The managed application notification endpoint.
-  ApplicationNotificationPolicy({
-    required this.notificationEndpoints,
-  });
+  ApplicationNotificationPolicy({required this.notificationEndpoints});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notificationEndpoints': pulumi.Input.mapInputValue<List<ApplicationNotificationEndpoint>, List<Map<String, dynamic>>>(notificationEndpoints, (value) => pulumi.Input.encodeList<ApplicationNotificationEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'notificationEndpoints':
+          pulumi.Input.mapInputValue<
+            List<ApplicationNotificationEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            notificationEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationNotificationEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ApplicationNotificationPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationNotificationPolicy(
-      notificationEndpoints: (pulumi.Input.decodeList<ApplicationNotificationEndpoint>(map['notificationEndpoints'], (value) => ApplicationNotificationEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationEndpoints: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApplicationNotificationEndpoint>(
+          map['notificationEndpoints']!,
+          (value) => ApplicationNotificationEndpoint.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

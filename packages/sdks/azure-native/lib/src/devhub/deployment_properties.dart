@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentProperties {
   /// Helm chart directory path in repository.
   final pulumi.Input<String>? helmChartPath;
+
   /// Helm Values.yaml file location in repository.
   final pulumi.Input<String>? helmValues;
   final pulumi.Input<List<String>>? kubeManifestLocations;
+
   /// Determines the type of manifests within the repository.
   final pulumi.Input<String>? manifestType;
+
   /// Manifest override values.
   final pulumi.Input<Map<String, String>>? overrides;
 
@@ -39,12 +42,33 @@ class DeploymentProperties {
 
   factory DeploymentProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentProperties(
-      helmChartPath: map['helmChartPath'] == null ? null : (map['helmChartPath']! as String).input(),
-      helmValues: map['helmValues'] == null ? null : (map['helmValues']! as String).input(),
-      kubeManifestLocations: map['kubeManifestLocations'] == null ? null : ((map['kubeManifestLocations']! as List).cast<String>()).input(),
-      manifestType: map['manifestType'] == null ? null : (map['manifestType']! as String).input(),
-      overrides: map['overrides'] == null ? null : ((map['overrides']! as Map).cast<String, String>()).input(),
+      helmChartPath: (() {
+        final guardedValue = map['helmChartPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      helmValues: (() {
+        final guardedValue = map['helmValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kubeManifestLocations: (() {
+        final guardedValue = map['kubeManifestLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      manifestType: (() {
+        final guardedValue = map['manifestType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overrides: (() {
+        final guardedValue = map['overrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

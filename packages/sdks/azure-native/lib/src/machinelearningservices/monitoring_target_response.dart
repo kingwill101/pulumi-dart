@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringTargetResponse {
   /// Reference to the deployment asset targeted by this monitor.
   final pulumi.Input<String>? deploymentId;
+
   /// Reference to the model asset targeted by this monitor.
   final pulumi.Input<String>? modelId;
+
   /// [Required] The machine learning task type of the monitored model.
   final pulumi.Input<String> taskType;
 
@@ -31,10 +33,17 @@ class MonitoringTargetResponse {
 
   factory MonitoringTargetResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringTargetResponse(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
-      taskType: (map['taskType'] as String).input(),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelId: (() {
+        final guardedValue = map['modelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
-

@@ -5,26 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The time when the snapshot was created.
   final pulumi.Input<String> createTime;
+
   /// The description of the snapshot.
   final pulumi.Input<String> description;
+
   /// The ID of the cloud desktop to which the snapshot belongs.
   final pulumi.Input<String> desktopId;
+
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
+
   /// The progress of creating the snapshot.
   final pulumi.Input<String> progress;
+
   /// The remaining time that is required to create the snapshot. Unit: seconds.
   final pulumi.Input<int> remainTime;
+
   /// The ID of the snapshot.
   final pulumi.Input<String> snapshotId;
+
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
+
   /// The type of the snapshot.
   final pulumi.Input<String> snapshotType;
+
   /// The capacity of the source disk. Unit: GiB.
   final pulumi.Input<String> sourceDiskSize;
+
   /// The type of the source disk.
   final pulumi.Input<String> sourceDiskType;
+
   /// The status of the snapshot.
   final pulumi.Input<String> status;
 
@@ -75,19 +86,18 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      desktopId: (map['desktopId'] as String).input(),
-      id: (map['id'] as String).input(),
-      progress: (map['progress'] as String).input(),
-      remainTime: (map['remainTime'] as int).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
-      snapshotType: (map['snapshotType'] as String).input(),
-      sourceDiskSize: (map['sourceDiskSize'] as String).input(),
-      sourceDiskType: (map['sourceDiskType'] as String).input(),
-      status: (map['status'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      desktopId: pulumi.Input.fromValue(map['desktopId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      progress: pulumi.Input.fromValue(map['progress'] as String),
+      remainTime: pulumi.Input.fromValue(map['remainTime'] as int),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
+      snapshotType: pulumi.Input.fromValue(map['snapshotType'] as String),
+      sourceDiskSize: pulumi.Input.fromValue(map['sourceDiskSize'] as String),
+      sourceDiskType: pulumi.Input.fromValue(map['sourceDiskType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

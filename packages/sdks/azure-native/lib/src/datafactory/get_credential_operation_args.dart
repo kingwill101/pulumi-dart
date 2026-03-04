@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCredentialOperationArgs {
   /// Credential name
   final pulumi.Input<String> credentialName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetCredentialOperationArgs {
 
   factory GetCredentialOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialOperationArgs(
-      credentialName: (map['credentialName'] as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      credentialName: pulumi.Input.fromValue(map['credentialName'] as String),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

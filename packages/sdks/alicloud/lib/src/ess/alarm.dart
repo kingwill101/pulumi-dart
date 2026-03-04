@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alarm_args.dart';
-import 'alarm_expression.dart';
 import 'alarm_state.dart';
 
 /// Provides a ESS alarm task resource.
 ///
 /// For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
 ///
-/// > **NOTE:** Available since v1.15.0.
+/// &gt; **NOTE:** Available since v1.15.0.
 ///
 /// ## Example Usage
 ///
@@ -726,41 +725,58 @@ import 'alarm_state.dart';
 class Alarm extends pulumi.CustomResource {
   /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
   late final pulumi.Output<List<String>> alarmActions;
+
   /// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
   late final pulumi.Output<int?> cloudMonitorGroupId;
-  /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+
+  /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
   late final pulumi.Output<String> comparisonOperator;
+
   /// The description for the alarm.
   late final pulumi.Output<String?> description;
+
   /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
   late final pulumi.Output<Map<String, String>> dimensions;
+
   /// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
   late final pulumi.Output<String> effective;
+
   /// Whether to enable specific ess alarm. Default to true.
   late final pulumi.Output<bool?> enable;
+
   /// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
   late final pulumi.Output<int?> evaluationCount;
+
   /// Support multi alert rule. See `expressions` below for details.
-  late final pulumi.Output<List<AlarmExpression>> expressions;
+  late final pulumi.Output<List<Map<String, dynamic>>> expressions;
+
   /// The relationship between the trigger conditions in the multi-metric alert rule.
   late final pulumi.Output<String> expressionsLogicOperator;
+
   /// The name for the alarm's associated metric. See `dimensions` below for details.
   late final pulumi.Output<String> metricName;
+
   /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
   late final pulumi.Output<String?> metricType;
+
   /// The name for ess alarm.
   late final pulumi.Output<String> name;
+
   /// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
   late final pulumi.Output<int> period;
+
   /// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
   late final pulumi.Output<String> scalingGroupId;
+
   /// The status of the event-triggered task. Valid values:
   /// - ALARM: The alert condition is met and an alert is triggered.
   /// - OK: The alert condition is not met.
   /// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
   late final pulumi.Output<String> state;
+
   /// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
   late final pulumi.Output<String> statistics;
+
   /// The value against which the specified statistics is compared.
   late final pulumi.Output<String> threshold;
 
@@ -768,42 +784,37 @@ class Alarm extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alarm]. {@macro pulumi_ess_alarm_alarm_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alarm(
-    String name, {
-    AlarmArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ess/alarm:Alarm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmActions = registerOutput<List<String>>('alarmActions');
-    this.cloudMonitorGroupId = registerOutput<int?>('cloudMonitorGroupId');
-    this.comparisonOperator = registerOutput<String>('comparisonOperator');
-    this.description = registerOutput<String?>('description');
-    this.dimensions = registerOutput<Map<String, String>>('dimensions');
-    this.effective = registerOutput<String>('effective');
-    this.enable = registerOutput<bool?>('enable');
-    this.evaluationCount = registerOutput<int?>('evaluationCount');
-    this.expressions = registerOutput<List<AlarmExpression>>('expressions');
-    this.expressionsLogicOperator = registerOutput<String>('expressionsLogicOperator');
-    this.metricName = registerOutput<String>('metricName');
-    this.metricType = registerOutput<String?>('metricType');
+  Alarm(String name, {AlarmArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ess/alarm:Alarm',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    alarmActions = registerOutput<List<String>>('alarmActions');
+    cloudMonitorGroupId = registerOutput<int?>('cloudMonitorGroupId');
+    comparisonOperator = registerOutput<String>('comparisonOperator');
+    description = registerOutput<String?>('description');
+    dimensions = registerOutput<Map<String, String>>('dimensions');
+    effective = registerOutput<String>('effective');
+    enable = registerOutput<bool?>('enable');
+    evaluationCount = registerOutput<int?>('evaluationCount');
+    expressions = registerOutput<List<Map<String, dynamic>>>('expressions');
+    expressionsLogicOperator = registerOutput<String>(
+      'expressionsLogicOperator',
+    );
+    metricName = registerOutput<String>('metricName');
+    metricType = registerOutput<String?>('metricType');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<int>('period');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.state = registerOutput<String>('state');
-    this.statistics = registerOutput<String>('statistics');
-    this.threshold = registerOutput<String>('threshold');
+    period = registerOutput<int>('period');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    state = registerOutput<String>('state');
+    statistics = registerOutput<String>('statistics');
+    threshold = registerOutput<String>('threshold');
   }
 
   /// Gets an existing [Alarm] resource's state with the given [name] and [id].
-  static Alarm get(
-    String name,
-    pulumi.Input<String> id, {
-    AlarmState? state,
-  }) {
+  static Alarm get(String name, pulumi.Input<String> id, {AlarmState? state}) {
     return Alarm._get(
       name,
       state: state?.toMap(),
@@ -816,28 +827,30 @@ class Alarm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/alarm:Alarm',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmActions = registerOutput<List<String>>('alarmActions');
-    this.cloudMonitorGroupId = registerOutput<int?>('cloudMonitorGroupId');
-    this.comparisonOperator = registerOutput<String>('comparisonOperator');
-    this.description = registerOutput<String?>('description');
-    this.dimensions = registerOutput<Map<String, String>>('dimensions');
-    this.effective = registerOutput<String>('effective');
-    this.enable = registerOutput<bool?>('enable');
-    this.evaluationCount = registerOutput<int?>('evaluationCount');
-    this.expressions = registerOutput<List<AlarmExpression>>('expressions');
-    this.expressionsLogicOperator = registerOutput<String>('expressionsLogicOperator');
-    this.metricName = registerOutput<String>('metricName');
-    this.metricType = registerOutput<String?>('metricType');
+         'alicloud:ess/alarm:Alarm',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmActions = registerOutput<List<String>>('alarmActions');
+    cloudMonitorGroupId = registerOutput<int?>('cloudMonitorGroupId');
+    comparisonOperator = registerOutput<String>('comparisonOperator');
+    description = registerOutput<String?>('description');
+    dimensions = registerOutput<Map<String, String>>('dimensions');
+    effective = registerOutput<String>('effective');
+    enable = registerOutput<bool?>('enable');
+    evaluationCount = registerOutput<int?>('evaluationCount');
+    expressions = registerOutput<List<Map<String, dynamic>>>('expressions');
+    expressionsLogicOperator = registerOutput<String>(
+      'expressionsLogicOperator',
+    );
+    metricName = registerOutput<String>('metricName');
+    metricType = registerOutput<String?>('metricType');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<int>('period');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
+    period = registerOutput<int>('period');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
     this.state = registerOutput<String>('state');
-    this.statistics = registerOutput<String>('statistics');
-    this.threshold = registerOutput<String>('threshold');
+    statistics = registerOutput<String>('statistics');
+    threshold = registerOutput<String>('threshold');
   }
 }

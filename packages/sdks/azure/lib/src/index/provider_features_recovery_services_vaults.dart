@@ -13,14 +13,20 @@ class ProviderFeaturesRecoveryServicesVaults {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recoverSoftDeletedBackupProtectedVm': ?recoverSoftDeletedBackupProtectedVm,
+      'recoverSoftDeletedBackupProtectedVm':
+          ?recoverSoftDeletedBackupProtectedVm,
     };
   }
 
-  factory ProviderFeaturesRecoveryServicesVaults.fromMap(Map<String, dynamic> map) {
+  factory ProviderFeaturesRecoveryServicesVaults.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProviderFeaturesRecoveryServicesVaults(
-      recoverSoftDeletedBackupProtectedVm: map['recoverSoftDeletedBackupProtectedVm'] == null ? null : (map['recoverSoftDeletedBackupProtectedVm']! as bool).input(),
+      recoverSoftDeletedBackupProtectedVm: (() {
+        final guardedValue = map['recoverSoftDeletedBackupProtectedVm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

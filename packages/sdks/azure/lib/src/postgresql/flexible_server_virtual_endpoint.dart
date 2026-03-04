@@ -318,11 +318,11 @@ import 'flexible_server_virtual_endpoint_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** If creating multiple replicas, an error can occur if virtual endpoints are created before all replicas have been completed. To avoid this error, use a `depends_on` property on `azure.postgresql.FlexibleServerVirtualEndpoint` that references all Postgres Flexible Server Replicas.
+/// &gt; **Note:** If creating multiple replicas, an error can occur if virtual endpoints are created before all replicas have been completed. To avoid this error, use a `depends_on` property on `azure.postgresql.FlexibleServerVirtualEndpoint` that references all Postgres Flexible Server Replicas.
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2025-08-01
@@ -336,12 +336,15 @@ import 'flexible_server_virtual_endpoint_state.dart';
 class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
   /// The name of the Virtual Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
-  /// > **Note:** If a fail-over has occurred, you will be unable to update `replica_server_id`. You can remove the resource from state and reimport it back in with `source_server_id` and `replica_server_id` flipped and then update `replica_server_id`.
+  /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replica_server_id`. You can remove the resource from state and reimport it back in with `source_server_id` and `replica_server_id` flipped and then update `replica_server_id`.
   late final pulumi.Output<String> replicaServerId;
+
   /// The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceServerId;
+
   /// The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
 
@@ -354,15 +357,15 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
     FlexibleServerVirtualEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.replicaServerId = registerOutput<String>('replicaServerId');
-    this.sourceServerId = registerOutput<String>('sourceServerId');
-    this.type = registerOutput<String>('type');
+    replicaServerId = registerOutput<String>('replicaServerId');
+    sourceServerId = registerOutput<String>('sourceServerId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [FlexibleServerVirtualEndpoint] resource's state with the given [name] and [id].
@@ -383,14 +386,14 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.replicaServerId = registerOutput<String>('replicaServerId');
-    this.sourceServerId = registerOutput<String>('sourceServerId');
-    this.type = registerOutput<String>('type');
+    replicaServerId = registerOutput<String>('replicaServerId');
+    sourceServerId = registerOutput<String>('sourceServerId');
+    type = registerOutput<String>('type');
   }
 }

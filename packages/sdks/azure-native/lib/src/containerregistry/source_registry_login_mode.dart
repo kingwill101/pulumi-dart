@@ -5,16 +5,15 @@ enum SourceRegistryLoginMode {
   valueNone("None"),
   valueDefault("Default");
 
-  const SourceRegistryLoginMode(this.value);
-  final String value;
+  const SourceRegistryLoginMode(this.wireValue);
+  final String wireValue;
 
   static SourceRegistryLoginMode fromValue(String value) {
     for (final item in SourceRegistryLoginMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourceRegistryLoginMode value: $value');
   }
 }
-

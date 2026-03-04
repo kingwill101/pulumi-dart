@@ -7,26 +7,34 @@ import 'app_template_init_container_volume_mount.dart';
 class AppTemplateInitContainer {
   /// A list of extra arguments to pass to the container.
   final pulumi.Input<List<String>>? args;
+
   /// A command to pass to the container to override the default. This is provided as a list of command line elements without spaces.
   final pulumi.Input<List<String>>? commands;
+
   /// The amount of vCPU to allocate to the container.
   ///
-  /// > **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
+  /// &gt; **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
   final pulumi.Input<double>? cpu;
+
   /// One or more `env` blocks as detailed below.
   final pulumi.Input<List<AppTemplateInitContainerEnv>>? envs;
+
   /// The amount of ephemeral storage available to the Container App.
   ///
-  /// > **Note:** `ephemeral_storage` is currently in preview and not configurable at this time.
+  /// &gt; **Note:** `ephemeral_storage` is currently in preview and not configurable at this time.
   final pulumi.Input<String>? ephemeralStorage;
+
   /// The image to use to create the container.
   final pulumi.Input<String> image;
+
   /// The amount of memory to allocate to the container.
   ///
-  /// > **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
+  /// &gt; **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
   final pulumi.Input<String>? memory;
+
   /// The name of the container
   final pulumi.Input<String> name;
+
   /// A `volume_mounts` block as detailed below.
   final pulumi.Input<List<AppTemplateInitContainerVolumeMount>>? volumeMounts;
 
@@ -57,27 +65,90 @@ class AppTemplateInitContainer {
       'args': ?args,
       'commands': ?commands,
       'cpu': ?cpu,
-      'envs': ?pulumi.Input.mapOptionalInputValue<List<AppTemplateInitContainerEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<AppTemplateInitContainerEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'envs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppTemplateInitContainerEnv>,
+            List<Map<String, dynamic>>
+          >(
+            envs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppTemplateInitContainerEnv,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ephemeralStorage': ?ephemeralStorage,
       'image': image,
       'memory': ?memory,
       'name': name,
-      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<AppTemplateInitContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<AppTemplateInitContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeMounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppTemplateInitContainerVolumeMount>,
+            List<Map<String, dynamic>>
+          >(
+            volumeMounts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppTemplateInitContainerVolumeMount,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AppTemplateInitContainer.fromMap(Map<String, dynamic> map) {
     return AppTemplateInitContainer(
-      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerEnv>(map['envs']!, (value) => AppTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage']! as String).input(),
-      image: (map['image'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
-      name: (map['name'] as String).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerVolumeMount>(map['volumeMounts']!, (value) => AppTemplateInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: (() {
+        final guardedValue = map['args'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      envs: (() {
+        final guardedValue = map['envs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppTemplateInitContainerEnv>(
+            guardedValue,
+            (value) => AppTemplateInitContainerEnv.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ephemeralStorage: (() {
+        final guardedValue = map['ephemeralStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      volumeMounts: (() {
+        final guardedValue = map['volumeMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppTemplateInitContainerVolumeMount>(
+            guardedValue,
+            (value) => AppTemplateInitContainerVolumeMount.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

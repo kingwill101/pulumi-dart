@@ -5,16 +5,15 @@ enum SslMode {
   verifyCA("VerifyCA"),
   verifyFull("VerifyFull");
 
-  const SslMode(this.value);
-  final String value;
+  const SslMode(this.wireValue);
+  final String wireValue;
 
   static SslMode fromValue(String value) {
     for (final item in SslMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslMode value: $value');
   }
 }
-

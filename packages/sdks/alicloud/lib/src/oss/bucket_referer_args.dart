@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketRefererArgs {
   /// Whether to allow empty Referer request headers.
   final pulumi.Input<bool> allowEmptyReferer;
+
   /// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
   final pulumi.Input<bool>? allowTruncateQueryString;
+
   /// Name of the Bucket.
   final pulumi.Input<String> bucket;
+
   /// The container that holds the Referer blacklist.
   final pulumi.Input<List<String>>? refererBlacklists;
+
   /// The container that holds the Referer whitelist.
   final pulumi.Input<List<String>>? refererLists;
+
   /// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
   final pulumi.Input<bool>? truncatePath;
 
@@ -49,13 +54,30 @@ class BucketRefererArgs {
 
   factory BucketRefererArgs.fromMap(Map<String, dynamic> map) {
     return BucketRefererArgs(
-      allowEmptyReferer: (map['allowEmptyReferer'] as bool).input(),
-      allowTruncateQueryString: map['allowTruncateQueryString'] == null ? null : (map['allowTruncateQueryString']! as bool).input(),
-      bucket: (map['bucket'] as String).input(),
-      refererBlacklists: map['refererBlacklists'] == null ? null : ((map['refererBlacklists']! as List).cast<String>()).input(),
-      refererLists: map['refererLists'] == null ? null : ((map['refererLists']! as List).cast<String>()).input(),
-      truncatePath: map['truncatePath'] == null ? null : (map['truncatePath']! as bool).input(),
+      allowEmptyReferer: pulumi.Input.fromValue(
+        map['allowEmptyReferer'] as bool,
+      ),
+      allowTruncateQueryString: (() {
+        final guardedValue = map['allowTruncateQueryString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      refererBlacklists: (() {
+        final guardedValue = map['refererBlacklists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      refererLists: (() {
+        final guardedValue = map['refererLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      truncatePath: (() {
+        final guardedValue = map['truncatePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

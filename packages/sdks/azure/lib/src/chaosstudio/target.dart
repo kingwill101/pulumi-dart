@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_args.dart';
 import 'target_state.dart';
 
-/// <!-- Note: This documentation is generated. Any manual changes will be overwritten -->
+/// &lt;!-- Note: This documentation is generated. Any manual changes will be overwritten --&gt;
 ///
 /// Manages a Chaos Studio Target.
 ///
@@ -270,8 +270,10 @@ import 'target_state.dart';
 class Target extends pulumi.CustomResource {
   /// The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
   late final pulumi.Output<String> targetResourceId;
+
   /// The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
   late final pulumi.Output<String> targetType;
 
@@ -279,19 +281,16 @@ class Target extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Target]. {@macro pulumi_chaosstudio_target_target_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Target(
-    String name, {
-    TargetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:chaosstudio/target:Target',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.targetType = registerOutput<String>('targetType');
+  Target(String name, {TargetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:chaosstudio/target:Target',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    location = registerOutput<String>('location');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    targetType = registerOutput<String>('targetType');
   }
 
   /// Gets an existing [Target] resource's state with the given [name] and [id].
@@ -312,13 +311,13 @@ class Target extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:chaosstudio/target:Target',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.targetType = registerOutput<String>('targetType');
+         'azure:chaosstudio/target:Target',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    targetType = registerOutput<String>('targetType');
   }
 }

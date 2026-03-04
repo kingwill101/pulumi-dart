@@ -5,23 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectsProject {
   /// The date and time when the project was created, (ISO8601)
   final pulumi.Input<String> createdAt;
+
   /// The description of the project
   final pulumi.Input<String> description;
+
   /// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
   final pulumi.Input<String> environment;
+
   /// The ID of the project
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isDefault;
+
   /// The name of the project
   final pulumi.Input<String> name;
+
   /// The ID of the project owner
   final pulumi.Input<int> ownerId;
+
   /// The unique universal identifier of the project owner
   final pulumi.Input<String> ownerUuid;
+
   /// The purpose of the project (Default: "Web Application")
   final pulumi.Input<String> purpose;
+
   /// A set of uniform resource names (URNs) for the resources associated with the project
   final pulumi.Input<List<String>> resources;
+
   /// The date and time when the project was last updated, (ISO8601)
   final pulumi.Input<String> updatedAt;
 
@@ -69,18 +78,19 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      createdAt: (map['createdAt'] as String).input(),
-      description: (map['description'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      id: (map['id'] as String).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      name: (map['name'] as String).input(),
-      ownerId: (map['ownerId'] as int).input(),
-      ownerUuid: (map['ownerUuid'] as String).input(),
-      purpose: (map['purpose'] as String).input(),
-      resources: ((map['resources'] as List).cast<String>()).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      ownerId: pulumi.Input.fromValue(map['ownerId'] as int),
+      ownerUuid: pulumi.Input.fromValue(map['ownerUuid'] as String),
+      purpose: pulumi.Input.fromValue(map['purpose'] as String),
+      resources: pulumi.Input.fromValue(
+        (map['resources'] as List).cast<String>(),
+      ),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

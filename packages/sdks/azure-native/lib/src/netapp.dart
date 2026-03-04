@@ -1,5 +1,3 @@
-library module_netapp;
-
 export 'netapp/account.dart';
 export 'netapp/account_args.dart';
 export 'netapp/account_encryption.dart';

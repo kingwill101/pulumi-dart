@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyArgs {
   /// Name of the access policy.
   final pulumi.Input<String>? accessPolicyName;
+
   /// An description of the access policy.
   final pulumi.Input<String>? description;
+
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
+
   /// The objectId of the principal in Azure Active Directory.
   final pulumi.Input<String>? principalObjectId;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The list of roles the principal is assigned on the environment.
   final pulumi.Input<List<String>>? roles;
 
@@ -49,13 +54,30 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      accessPolicyName: (() {
+        final guardedValue = map['accessPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      principalObjectId: (() {
+        final guardedValue = map['principalObjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

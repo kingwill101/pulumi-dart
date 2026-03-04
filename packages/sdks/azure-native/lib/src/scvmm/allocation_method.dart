@@ -3,16 +3,15 @@ enum AllocationMethod {
   valueDynamic("Dynamic"),
   valueStatic("Static");
 
-  const AllocationMethod(this.value);
-  final String value;
+  const AllocationMethod(this.wireValue);
+  final String wireValue;
 
   static AllocationMethod fromValue(String value) {
     for (final item in AllocationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllocationMethod value: $value');
   }
 }
-

@@ -3,20 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Component container definition.
-/// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+/// &lt;see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /&gt;
 class ComponentContainerResponse {
   /// The asset description text.
   final pulumi.Input<String>? description;
+
   /// Is the asset archived?
   final pulumi.Input<bool>? isArchived;
+
   /// The latest version inside this container.
   final pulumi.Input<String> latestVersion;
+
   /// The next auto incremental version
   final pulumi.Input<String> nextVersion;
+
   /// The asset property dictionary.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Provisioning state for the component container.
   final pulumi.Input<String> provisioningState;
+
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,14 +58,35 @@ class ComponentContainerResponse {
 
   factory ComponentContainerResponse.fromMap(Map<String, dynamic> map) {
     return ComponentContainerResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
-      latestVersion: (map['latestVersion'] as String).input(),
-      nextVersion: (map['nextVersion'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isArchived: (() {
+        final guardedValue = map['isArchived'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      latestVersion: pulumi.Input.fromValue(map['latestVersion'] as String),
+      nextVersion: pulumi.Input.fromValue(map['nextVersion'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

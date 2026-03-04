@@ -9,20 +9,19 @@ class SelectableFieldPatch {
 
   /// Creates a new [SelectableFieldPatch].
   /// [jsonPath] jsonPath is a simple JSON path which is evaluated against each custom resource to produce a field selector value. Only JSON paths without the array notation are allowed. Must point to a field of type string, boolean or integer. Types with enum values and strings with formats are allowed. If jsonPath refers to absent field in a resource, the jsonPath evaluates to an empty string. Must not point to metdata fields. Required.
-  SelectableFieldPatch({
-    this.jsonPath,
-  });
+  SelectableFieldPatch({this.jsonPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jsonPath': ?jsonPath,
-    };
+    return <String, dynamic>{'jsonPath': ?jsonPath};
   }
 
   factory SelectableFieldPatch.fromMap(Map<String, dynamic> map) {
     return SelectableFieldPatch(
-      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath']! as String).input(),
+      jsonPath: (() {
+        final guardedValue = map['jsonPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

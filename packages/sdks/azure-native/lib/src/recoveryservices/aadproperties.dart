@@ -35,12 +35,31 @@ class AADProperties {
 
   factory AADProperties.fromMap(Map<String, dynamic> map) {
     return AADProperties(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId']! as String).input(),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipalClientId: (() {
+        final guardedValue = map['servicePrincipalClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipalObjectId: (() {
+        final guardedValue = map['servicePrincipalObjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

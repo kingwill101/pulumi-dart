@@ -6,17 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnPremiseSqlResourceDetailsResponse {
   /// The Sql database name installed on the machine
   final pulumi.Input<String> databaseName;
+
   /// The name of the machine
   final pulumi.Input<String> machineName;
+
   /// The Sql server name installed on the machine
   final pulumi.Input<String> serverName;
+
   /// The platform where the assessed resource resides
   /// Expected value is 'OnPremiseSql'.
   final pulumi.Input<String> source;
+
   /// The oms agent Id installed on the machine
   final pulumi.Input<String> sourceComputerId;
+
   /// The unique Id of the machine
   final pulumi.Input<String> vmuuid;
+
   /// Azure resource Id of the workspace the machine is attached to
   final pulumi.Input<String> workspaceId;
 
@@ -50,16 +56,19 @@ class OnPremiseSqlResourceDetailsResponse {
     };
   }
 
-  factory OnPremiseSqlResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory OnPremiseSqlResourceDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OnPremiseSqlResourceDetailsResponse(
-      databaseName: (map['databaseName'] as String).input(),
-      machineName: (map['machineName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      source: (map['source'] as String).input(),
-      sourceComputerId: (map['sourceComputerId'] as String).input(),
-      vmuuid: (map['vmuuid'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      sourceComputerId: pulumi.Input.fromValue(
+        map['sourceComputerId'] as String,
+      ),
+      vmuuid: pulumi.Input.fromValue(map['vmuuid'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

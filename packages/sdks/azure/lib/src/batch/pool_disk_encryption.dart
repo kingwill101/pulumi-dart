@@ -8,20 +8,17 @@ class PoolDiskEncryption {
 
   /// Creates a new [PoolDiskEncryption].
   /// [diskEncryptionTarget] On Linux pool, only \"TemporaryDisk\" is supported; on Windows pool, \"OsDisk\" and \"TemporaryDisk\" must be specified.
-  PoolDiskEncryption({
-    required this.diskEncryptionTarget,
-  });
+  PoolDiskEncryption({required this.diskEncryptionTarget});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskEncryptionTarget': diskEncryptionTarget,
-    };
+    return <String, dynamic>{'diskEncryptionTarget': diskEncryptionTarget};
   }
 
   factory PoolDiskEncryption.fromMap(Map<String, dynamic> map) {
     return PoolDiskEncryption(
-      diskEncryptionTarget: (map['diskEncryptionTarget'] as String).input(),
+      diskEncryptionTarget: pulumi.Input.fromValue(
+        map['diskEncryptionTarget'] as String,
+      ),
     );
   }
 }
-

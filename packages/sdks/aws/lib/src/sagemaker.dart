@@ -1,5 +1,3 @@
-library module_sagemaker;
-
 export 'sagemaker/app.dart';
 export 'sagemaker/app_args.dart';
 export 'sagemaker/app_image_config.dart';

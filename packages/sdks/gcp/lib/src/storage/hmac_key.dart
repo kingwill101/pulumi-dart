@@ -168,20 +168,26 @@ import 'hmac_key_state.dart';
 class HmacKey extends pulumi.CustomResource {
   /// The access ID of the HMAC Key.
   late final pulumi.Output<String> accessId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// HMAC secret key material.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> secret;
+
   /// The email address of the key's associated service account.
   late final pulumi.Output<String> serviceAccountEmail;
+
   /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
   /// Default value is `ACTIVE`.
   /// Possible values are: `ACTIVE`, `INACTIVE`.
   late final pulumi.Output<String?> state;
+
   /// 'The creation time of the HMAC key in RFC 3339 format. '
   late final pulumi.Output<String> timeCreated;
+
   /// 'The last modification time of the HMAC key metadata in RFC 3339 format.'
   late final pulumi.Output<String> updated;
 
@@ -194,18 +200,18 @@ class HmacKey extends pulumi.CustomResource {
     HmacKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/hmacKey:HmacKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessId = registerOutput<String>('accessId');
-    this.project = registerOutput<String>('project');
-    this.secret = registerOutput<String>('secret');
-    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
-    this.state = registerOutput<String?>('state');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.updated = registerOutput<String>('updated');
+         'gcp:storage/hmacKey:HmacKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessId = registerOutput<String>('accessId');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    state = registerOutput<String?>('state');
+    timeCreated = registerOutput<String>('timeCreated');
+    updated = registerOutput<String>('updated');
   }
 
   /// Gets an existing [HmacKey] resource's state with the given [name] and [id].
@@ -226,17 +232,17 @@ class HmacKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/hmacKey:HmacKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessId = registerOutput<String>('accessId');
-    this.project = registerOutput<String>('project');
-    this.secret = registerOutput<String>('secret');
-    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+         'gcp:storage/hmacKey:HmacKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessId = registerOutput<String>('accessId');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     this.state = registerOutput<String?>('state');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.updated = registerOutput<String>('updated');
+    timeCreated = registerOutput<String>('timeCreated');
+    updated = registerOutput<String>('updated');
   }
 }

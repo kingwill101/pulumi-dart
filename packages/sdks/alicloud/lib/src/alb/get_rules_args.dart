@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesArgs {
   /// A list of Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The listener ids.
   final pulumi.Input<List<String>>? listenerIds;
+
   /// The load balancer ids.
   final pulumi.Input<List<String>>? loadBalancerIds;
+
   /// A regex string to filter results by Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The rule ids.
   final pulumi.Input<List<String>>? ruleIds;
+
   /// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
   final pulumi.Input<String>? status;
 
@@ -54,14 +60,41 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds']! as List).cast<String>()).input(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      ruleIds: map['ruleIds'] == null ? null : ((map['ruleIds']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      listenerIds: (() {
+        final guardedValue = map['listenerIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      loadBalancerIds: (() {
+        final guardedValue = map['loadBalancerIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleIds: (() {
+        final guardedValue = map['ruleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubIpState {
   /// The name which should be used for this Virtual Hub IP. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The private IP address of the IP configuration.
   final pulumi.Input<String>? privateIpAddress;
+
   /// The private IP address allocation method. Possible values are `Static` and `Dynamic` is allowed. Defaults to `Dynamic`.
   final pulumi.Input<String>? privateIpAllocationMethod;
+
   /// The ID of the Public IP Address. This option is required since September 1st 2021. Changing this forces a new resource to be created.
   final pulumi.Input<String>? publicIpAddressId;
+
   /// The ID of the Subnet that the IP will reside. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subnetId;
+
   /// The ID of the Virtual Hub within which this IP configuration should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualHubId;
 
@@ -46,13 +51,36 @@ class VirtualHubIpState {
 
   factory VirtualHubIpState.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod']! as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAllocationMethod: (() {
+        final guardedValue = map['privateIpAllocationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddressId: (() {
+        final guardedValue = map['publicIpAddressId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualHubId: (() {
+        final guardedValue = map['virtualHubId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

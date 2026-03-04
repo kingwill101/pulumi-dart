@@ -8,7 +8,7 @@ import 'gateway_endpoint_state.dart';
 ///
 /// For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 ///
-/// > **NOTE:** Available since v1.208.0.
+/// &gt; **NOTE:** Available since v1.208.0.
 ///
 /// ## Example Usage
 ///
@@ -289,23 +289,32 @@ import 'gateway_endpoint_state.dart';
 class GatewayEndpoint extends pulumi.CustomResource {
   /// The creation time of the VPC gateway endpoint.
   late final pulumi.Output<String> createTime;
+
   /// The description of the VPC gateway endpoint.
   /// The length of the description information is between 1 and 255 characters.
   late final pulumi.Output<String?> gatewayEndpointDescrption;
+
   /// The name of the VPC gateway endpoint.
   late final pulumi.Output<String?> gatewayEndpointName;
+
   /// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
   late final pulumi.Output<String?> policyDocument;
+
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
   late final pulumi.Output<List<String>> routeTables;
+
   /// The endpoint service name.
   late final pulumi.Output<String> serviceName;
+
   /// The status of VPC gateway endpoint.
   late final pulumi.Output<String> status;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -318,21 +327,23 @@ class GatewayEndpoint extends pulumi.CustomResource {
     GatewayEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayEndpoint:GatewayEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.gatewayEndpointDescrption = registerOutput<String?>('gatewayEndpointDescrption');
-    this.gatewayEndpointName = registerOutput<String?>('gatewayEndpointName');
-    this.policyDocument = registerOutput<String?>('policyDocument');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.routeTables = registerOutput<List<String>>('routeTables');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/gatewayEndpoint:GatewayEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    gatewayEndpointDescrption = registerOutput<String?>(
+      'gatewayEndpointDescrption',
+    );
+    gatewayEndpointName = registerOutput<String?>('gatewayEndpointName');
+    policyDocument = registerOutput<String?>('policyDocument');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    routeTables = registerOutput<List<String>>('routeTables');
+    serviceName = registerOutput<String>('serviceName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [GatewayEndpoint] resource's state with the given [name] and [id].
@@ -353,20 +364,22 @@ class GatewayEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayEndpoint:GatewayEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.gatewayEndpointDescrption = registerOutput<String?>('gatewayEndpointDescrption');
-    this.gatewayEndpointName = registerOutput<String?>('gatewayEndpointName');
-    this.policyDocument = registerOutput<String?>('policyDocument');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.routeTables = registerOutput<List<String>>('routeTables');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/gatewayEndpoint:GatewayEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    gatewayEndpointDescrption = registerOutput<String?>(
+      'gatewayEndpointDescrption',
+    );
+    gatewayEndpointName = registerOutput<String?>('gatewayEndpointName');
+    policyDocument = registerOutput<String?>('policyDocument');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    routeTables = registerOutput<List<String>>('routeTables');
+    serviceName = registerOutput<String>('serviceName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

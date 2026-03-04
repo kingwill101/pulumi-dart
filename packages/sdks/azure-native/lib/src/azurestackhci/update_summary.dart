@@ -165,32 +165,46 @@ import 'update_summary_args.dart';
 class UpdateSummary extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current OEM Version.
   late final pulumi.Output<String?> currentOemVersion;
+
   /// Current Sbe version of the stamp.
   late final pulumi.Output<String?> currentSbeVersion;
+
   /// Current Solution Bundle version of the stamp.
   late final pulumi.Output<String?> currentVersion;
+
   /// Name of the hardware model.
   late final pulumi.Output<String?> hardwareModel;
+
   /// Last time the package-specific checks were run.
   late final pulumi.Output<String?> healthCheckDate;
+
   /// Last time the update service successfully checked for updates
   late final pulumi.Output<String?> lastChecked;
+
   /// Last time an update installation completed successfully.
   late final pulumi.Output<String?> lastUpdated;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// OEM family name.
   late final pulumi.Output<String?> oemFamily;
+
   /// Provisioning state of the UpdateSummaries proxy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Overall update state of the stamp.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -203,25 +217,25 @@ class UpdateSummary extends pulumi.CustomResource {
     UpdateSummaryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:UpdateSummary',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.currentOemVersion = registerOutput<String?>('currentOemVersion');
-    this.currentSbeVersion = registerOutput<String?>('currentSbeVersion');
-    this.currentVersion = registerOutput<String?>('currentVersion');
-    this.hardwareModel = registerOutput<String?>('hardwareModel');
-    this.healthCheckDate = registerOutput<String?>('healthCheckDate');
-    this.lastChecked = registerOutput<String?>('lastChecked');
-    this.lastUpdated = registerOutput<String?>('lastUpdated');
-    this.location = registerOutput<String?>('location');
+         'azure-native:azurestackhci:UpdateSummary',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentOemVersion = registerOutput<String?>('currentOemVersion');
+    currentSbeVersion = registerOutput<String?>('currentSbeVersion');
+    currentVersion = registerOutput<String?>('currentVersion');
+    hardwareModel = registerOutput<String?>('hardwareModel');
+    healthCheckDate = registerOutput<String?>('healthCheckDate');
+    lastChecked = registerOutput<String?>('lastChecked');
+    lastUpdated = registerOutput<String?>('lastUpdated');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.oemFamily = registerOutput<String?>('oemFamily');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    oemFamily = registerOutput<String?>('oemFamily');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

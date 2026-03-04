@@ -1,5 +1,3 @@
-library module_quickbi;
-
 export 'quickbi/functions.dart';
 export 'quickbi/get_users_args.dart';
 export 'quickbi/get_users_result.dart';

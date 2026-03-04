@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicDetectionRuleResponse {
   /// Threshold direction
   final pulumi.Input<String> dynamicThresholdDirection;
+
   /// ML model to use for dynamic thresholds
   final pulumi.Input<String> dynamicThresholdModel;
+
   /// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
   final pulumi.Input<double> modelSensitivity;
+
   /// Start time of the training in UTC.
   final pulumi.Input<String>? trainingStartTime;
 
@@ -36,11 +39,20 @@ class DynamicDetectionRuleResponse {
 
   factory DynamicDetectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return DynamicDetectionRuleResponse(
-      dynamicThresholdDirection: (map['dynamicThresholdDirection'] as String).input(),
-      dynamicThresholdModel: (map['dynamicThresholdModel'] as String).input(),
-      modelSensitivity: (map['modelSensitivity'] as double).input(),
-      trainingStartTime: map['trainingStartTime'] == null ? null : (map['trainingStartTime']! as String).input(),
+      dynamicThresholdDirection: pulumi.Input.fromValue(
+        map['dynamicThresholdDirection'] as String,
+      ),
+      dynamicThresholdModel: pulumi.Input.fromValue(
+        map['dynamicThresholdModel'] as String,
+      ),
+      modelSensitivity: pulumi.Input.fromValue(
+        map['modelSensitivity'] as double,
+      ),
+      trainingStartTime: (() {
+        final guardedValue = map['trainingStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

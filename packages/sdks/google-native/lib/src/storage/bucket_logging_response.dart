@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLoggingResponse {
   /// The destination bucket where the current bucket's logs should be placed.
   final pulumi.Input<String> logBucket;
+
   /// A prefix for log object names.
   final pulumi.Input<String> logObjectPrefix;
 
@@ -26,9 +27,8 @@ class BucketLoggingResponse {
 
   factory BucketLoggingResponse.fromMap(Map<String, dynamic> map) {
     return BucketLoggingResponse(
-      logBucket: (map['logBucket'] as String).input(),
-      logObjectPrefix: (map['logObjectPrefix'] as String).input(),
+      logBucket: pulumi.Input.fromValue(map['logBucket'] as String),
+      logObjectPrefix: pulumi.Input.fromValue(map['logObjectPrefix'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_glue;
-
 export 'glue/catalog_database.dart';
 export 'glue/catalog_database_args.dart';
 export 'glue/catalog_database_create_table_default_permission.dart';

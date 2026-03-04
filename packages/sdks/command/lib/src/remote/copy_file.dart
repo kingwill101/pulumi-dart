@@ -6,12 +6,15 @@ import 'copy_file_args.dart';
 class CopyFile extends pulumi.CustomResource {
   /// The parameters with which to connect to the remote host.
   late final pulumi.Output<Connection> connection;
+
   /// The path of the file to be copied.
   late final pulumi.Output<String> localPath;
+
   /// The destination path in the remote host.
   late final pulumi.Output<String> remotePath;
+
   /// Trigger replacements on changes to this input.
-  late final pulumi.Output<List<dynamic>?> triggers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
 
   /// Creates a new [CopyFile].
   /// [name] The Pulumi resource name.
@@ -22,14 +25,14 @@ class CopyFile extends pulumi.CustomResource {
     CopyFileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'command:remote:CopyFile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connection = registerOutput<Connection>('connection');
-    this.localPath = registerOutput<String>('localPath');
-    this.remotePath = registerOutput<String>('remotePath');
-    this.triggers = registerOutput<List<dynamic>?>('triggers');
+         'command:remote:CopyFile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connection = registerOutput<Connection>('connection');
+    localPath = registerOutput<String>('localPath');
+    remotePath = registerOutput<String>('remotePath');
+    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
   }
 }

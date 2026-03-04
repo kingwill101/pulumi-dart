@@ -3,16 +3,15 @@ enum FrontDoorEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const FrontDoorEnabledState(this.value);
-  final String value;
+  const FrontDoorEnabledState(this.wireValue);
+  final String wireValue;
 
   static FrontDoorEnabledState fromValue(String value) {
     for (final item in FrontDoorEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrontDoorEnabledState value: $value');
   }
 }
-

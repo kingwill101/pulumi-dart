@@ -8,6 +8,7 @@ import 'resource_attributes.dart';
 class SelfSubjectAccessReviewSpec {
   /// NonResourceAttributes describes information for a non-resource access request
   final pulumi.Input<NonResourceAttributes>? nonResourceAttributes;
+
   /// ResourceAuthorizationAttributes describes information for a resource access request
   final pulumi.Input<ResourceAttributes>? resourceAttributes;
 
@@ -21,16 +22,39 @@ class SelfSubjectAccessReviewSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nonResourceAttributes': ?pulumi.Input.mapOptionalInputValue<NonResourceAttributes, Map<String, dynamic>>(nonResourceAttributes, (value) => value.toMap()),
-      'resourceAttributes': ?pulumi.Input.mapOptionalInputValue<ResourceAttributes, Map<String, dynamic>>(resourceAttributes, (value) => value.toMap()),
+      'nonResourceAttributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            NonResourceAttributes,
+            Map<String, dynamic>
+          >(nonResourceAttributes, (value) => value.toMap()),
+      'resourceAttributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceAttributes,
+            Map<String, dynamic>
+          >(resourceAttributes, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectAccessReviewSpec.fromMap(Map<String, dynamic> map) {
     return SelfSubjectAccessReviewSpec(
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributes.fromMap((map['nonResourceAttributes']! as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributes.fromMap((map['resourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      nonResourceAttributes: (() {
+        final guardedValue = map['nonResourceAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NonResourceAttributes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceAttributes: (() {
+        final guardedValue = map['resourceAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceAttributes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

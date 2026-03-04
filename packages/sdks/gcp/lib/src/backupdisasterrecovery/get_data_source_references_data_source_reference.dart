@@ -5,17 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceReferencesDataSourceReference {
   /// The state of the backup config for the data source.
   final pulumi.Input<String> backupConfigState;
+
   /// The number of backups for the data source.
   final pulumi.Input<int> backupCount;
+
   /// The underlying data source resource.
   final pulumi.Input<String> dataSource;
+
   /// The GCP resource name for the data source.
   final pulumi.Input<String> gcpResourceName;
+
   /// The state of the last backup.
   final pulumi.Input<String> lastBackupState;
+
   /// The last time a successful backup was made.
   final pulumi.Input<String> lastSuccessfulBackupTime;
   final pulumi.Input<String> name;
+
   /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
   final pulumi.Input<String> resourceType;
 
@@ -52,17 +58,22 @@ class GetDataSourceReferencesDataSourceReference {
     };
   }
 
-  factory GetDataSourceReferencesDataSourceReference.fromMap(Map<String, dynamic> map) {
+  factory GetDataSourceReferencesDataSourceReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSourceReferencesDataSourceReference(
-      backupConfigState: (map['backupConfigState'] as String).input(),
-      backupCount: (map['backupCount'] as int).input(),
-      dataSource: (map['dataSource'] as String).input(),
-      gcpResourceName: (map['gcpResourceName'] as String).input(),
-      lastBackupState: (map['lastBackupState'] as String).input(),
-      lastSuccessfulBackupTime: (map['lastSuccessfulBackupTime'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      backupConfigState: pulumi.Input.fromValue(
+        map['backupConfigState'] as String,
+      ),
+      backupCount: pulumi.Input.fromValue(map['backupCount'] as int),
+      dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
+      gcpResourceName: pulumi.Input.fromValue(map['gcpResourceName'] as String),
+      lastBackupState: pulumi.Input.fromValue(map['lastBackupState'] as String),
+      lastSuccessfulBackupTime: pulumi.Input.fromValue(
+        map['lastSuccessfulBackupTime'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

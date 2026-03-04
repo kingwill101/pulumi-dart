@@ -1,24 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// ARN of the certificate.
   final String arn;
+
   /// Type of certificate. For example, `CA`.
   final String certificateType;
+
   /// Boolean whether there is an override for the default certificate identifier.
   final bool customerOverride;
+
   /// If there is an override for the default certificate identifier, when the override expires.
   final String customerOverrideValidTill;
   final bool? defaultForNewLaunches;
   final String id;
   final bool? latestValidTill;
   final String region;
+
   /// Thumbprint of the certificate.
   final String thumbprint;
+
   /// [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate starting validity date.
   final String validFrom;
+
   /// [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate ending validity date.
   final String validTill;
 
@@ -70,9 +75,17 @@ class GetCertificateResult {
       certificateType: map['certificateType'] as String,
       customerOverride: map['customerOverride'] as bool,
       customerOverrideValidTill: map['customerOverrideValidTill'] as String,
-      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : map['defaultForNewLaunches'] as bool,
+      defaultForNewLaunches: (() {
+        final guardedValue = map['defaultForNewLaunches'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      latestValidTill: map['latestValidTill'] == null ? null : map['latestValidTill'] as bool,
+      latestValidTill: (() {
+        final guardedValue = map['latestValidTill'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       region: map['region'] as String,
       thumbprint: map['thumbprint'] as String,
       validFrom: map['validFrom'] as String,
@@ -80,4 +93,3 @@ class GetCertificateResult {
     );
   }
 }
-

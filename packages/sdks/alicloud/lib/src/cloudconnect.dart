@@ -1,5 +1,3 @@
-library module_cloudconnect;
-
 export 'cloudconnect/functions.dart';
 export 'cloudconnect/get_networks_args.dart';
 export 'cloudconnect/get_networks_network.dart';

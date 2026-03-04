@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsRecordState {
   /// The domain to add the record to.
   final pulumi.Input<String>? domain;
+
   /// The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
   final pulumi.Input<int>? flags;
+
   /// The FQDN of the record
   final pulumi.Input<String>? fqdn;
+
   /// The hostname of the record. Use `@` for records on domain's name itself.
   final pulumi.Input<String>? name;
+
   /// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
   final pulumi.Input<int>? port;
+
   /// The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
   final pulumi.Input<int>? priority;
+
   /// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
   final pulumi.Input<String>? tag;
+
   /// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
   final pulumi.Input<int>? ttl;
+
   /// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
   final pulumi.Input<String>? type;
+
   /// The value of the record.
   final pulumi.Input<String>? value;
+
   /// The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
   final pulumi.Input<int>? weight;
 
@@ -71,18 +81,61 @@ class DnsRecordState {
 
   factory DnsRecordState.fromMap(Map<String, dynamic> map) {
     return DnsRecordState(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      flags: map['flags'] == null ? null : (map['flags']! as int).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flags: (() {
+        final guardedValue = map['flags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tag: (() {
+        final guardedValue = map['tag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

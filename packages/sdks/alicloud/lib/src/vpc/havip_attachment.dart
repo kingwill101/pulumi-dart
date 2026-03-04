@@ -8,7 +8,7 @@ import 'havip_attachment_state.dart';
 ///
 /// For information about VPC Ha Vip Attachment and how to use it, see [What is Ha Vip Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateHaVip).
 ///
-/// > **NOTE:** Available since v1.18.0.
+/// &gt; **NOTE:** Available since v1.18.0.
 ///
 /// ## Example Usage
 ///
@@ -477,14 +477,19 @@ import 'havip_attachment_state.dart';
 class HAVipAttachment extends pulumi.CustomResource {
   /// Specifies whether to force delete the snapshot.
   late final pulumi.Output<bool?> force;
+
   /// The ID of the HaVip instance.
   late final pulumi.Output<String> haVipId;
+
   /// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
   late final pulumi.Output<String> havipId;
+
   /// The ID of the ECS instance bound to the HaVip instance.
   late final pulumi.Output<String> instanceId;
+
   /// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
   late final pulumi.Output<String> instanceType;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -497,17 +502,17 @@ class HAVipAttachment extends pulumi.CustomResource {
     HAVipAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/hAVipAttachment:HAVipAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.haVipId = registerOutput<String>('haVipId');
-    this.havipId = registerOutput<String>('havipId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/hAVipAttachment:HAVipAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    haVipId = registerOutput<String>('haVipId');
+    havipId = registerOutput<String>('havipId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [HAVipAttachment] resource's state with the given [name] and [id].
@@ -528,16 +533,16 @@ class HAVipAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/hAVipAttachment:HAVipAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.haVipId = registerOutput<String>('haVipId');
-    this.havipId = registerOutput<String>('havipId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/hAVipAttachment:HAVipAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    haVipId = registerOutput<String>('haVipId');
+    havipId = registerOutput<String>('havipId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    status = registerOutput<String>('status');
   }
 }

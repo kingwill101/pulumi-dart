@@ -6,14 +6,19 @@ import 'migration_item_properties_response.dart';
 class GetReplicationMigrationItemResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id
   final String id;
+
   /// Resource Location
   final String? location;
+
   /// Resource Name
   final String name;
+
   /// The migration item properties.
   final MigrationItemPropertiesResponse properties;
+
   /// Resource Type
   final String type;
 
@@ -48,11 +53,16 @@ class GetReplicationMigrationItemResult {
     return GetReplicationMigrationItemResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: MigrationItemPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: MigrationItemPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

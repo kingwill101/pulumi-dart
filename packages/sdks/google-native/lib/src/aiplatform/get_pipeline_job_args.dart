@@ -31,10 +31,13 @@ class GetPipelineJobArgs {
 
   factory GetPipelineJobArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineJobArgs(
-      location: (map['location'] as String).input(),
-      pipelineJobId: (map['pipelineJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      pipelineJobId: pulumi.Input.fromValue(map['pipelineJobId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

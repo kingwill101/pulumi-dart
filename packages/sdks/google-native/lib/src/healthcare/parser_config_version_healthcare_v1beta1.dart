@@ -5,16 +5,17 @@ enum ParserConfigVersionHealthcareV1beta1 {
   v2("V2"),
   v3("V3");
 
-  const ParserConfigVersionHealthcareV1beta1(this.value);
-  final String value;
+  const ParserConfigVersionHealthcareV1beta1(this.wireValue);
+  final String wireValue;
 
   static ParserConfigVersionHealthcareV1beta1 fromValue(String value) {
     for (final item in ParserConfigVersionHealthcareV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ParserConfigVersionHealthcareV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ParserConfigVersionHealthcareV1beta1 value: $value',
+    );
   }
 }
-

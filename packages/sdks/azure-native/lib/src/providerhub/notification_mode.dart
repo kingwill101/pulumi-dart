@@ -4,16 +4,15 @@ enum NotificationMode {
   eventHub("EventHub"),
   webHook("WebHook");
 
-  const NotificationMode(this.value);
-  final String value;
+  const NotificationMode(this.wireValue);
+  final String wireValue;
 
   static NotificationMode fromValue(String value) {
     for (final item in NotificationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotificationMode value: $value');
   }
 }
-

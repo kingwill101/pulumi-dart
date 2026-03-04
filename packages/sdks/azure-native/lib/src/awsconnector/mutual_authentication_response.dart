@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MutualAuthenticationResponse {
   /// Indicates whether expired client certificates are ignored.
   final pulumi.Input<bool>? ignoreClientCertificateExpiry;
+
   /// The client certificate handling method. Options are ``off``, ``passthrough`` or ``verify``. The default value is ``off``.
   final pulumi.Input<String>? mode;
+
   /// The Amazon Resource Name (ARN) of the trust store.
   final pulumi.Input<String>? trustStoreArn;
 
@@ -31,10 +33,21 @@ class MutualAuthenticationResponse {
 
   factory MutualAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return MutualAuthenticationResponse(
-      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : (map['ignoreClientCertificateExpiry']! as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn']! as String).input(),
+      ignoreClientCertificateExpiry: (() {
+        final guardedValue = map['ignoreClientCertificateExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustStoreArn: (() {
+        final guardedValue = map['trustStoreArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

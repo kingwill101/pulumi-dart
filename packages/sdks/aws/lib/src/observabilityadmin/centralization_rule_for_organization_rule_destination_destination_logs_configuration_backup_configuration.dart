@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration {
   /// ARN of the KMS key to use for backup encryption.
   final pulumi.Input<String>? kmsKeyArn;
+
   /// AWS region for backup storage.
   final pulumi.Input<String>? region;
 
@@ -17,17 +18,23 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyArn': ?kmsKeyArn,
-      'region': ?region,
-    };
+    return <String, dynamic>{'kmsKeyArn': ?kmsKeyArn, 'region': ?region};
   }
 
-  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

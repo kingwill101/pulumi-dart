@@ -4,16 +4,15 @@ enum OutputStartMode {
   valueCustomTime("CustomTime"),
   valueLastOutputEventTime("LastOutputEventTime");
 
-  const OutputStartMode(this.value);
-  final String value;
+  const OutputStartMode(this.wireValue);
+  final String wireValue;
 
   static OutputStartMode fromValue(String value) {
     for (final item in OutputStartMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutputStartMode value: $value');
   }
 }
-

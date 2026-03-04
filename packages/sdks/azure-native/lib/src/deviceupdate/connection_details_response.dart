@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionDetailsResponse {
   /// Group ID.
   final pulumi.Input<String> groupId;
+
   /// Connection details ID.
   final pulumi.Input<String> id;
+
   /// Link ID.
   final pulumi.Input<String> linkIdentifier;
+
   /// Member name.
   final pulumi.Input<String> memberName;
+
   /// Private IP address.
   final pulumi.Input<String> privateIpAddress;
 
@@ -41,12 +45,13 @@ class ConnectionDetailsResponse {
 
   factory ConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionDetailsResponse(
-      groupId: (map['groupId'] as String).input(),
-      id: (map['id'] as String).input(),
-      linkIdentifier: (map['linkIdentifier'] as String).input(),
-      memberName: (map['memberName'] as String).input(),
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      linkIdentifier: pulumi.Input.fromValue(map['linkIdentifier'] as String),
+      memberName: pulumi.Input.fromValue(map['memberName'] as String),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
     );
   }
 }
-

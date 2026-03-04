@@ -2,16 +2,15 @@
 enum IpActionType {
   valueAllow("Allow");
 
-  const IpActionType(this.value);
-  final String value;
+  const IpActionType(this.wireValue);
+  final String wireValue;
 
   static IpActionType fromValue(String value) {
     for (final item in IpActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpActionType value: $value');
   }
 }
-

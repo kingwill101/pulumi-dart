@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
   /// The target network segment of the peer VPC.
   final pulumi.Input<String> peerDestinationCidr;
+
   /// The ID of the next-hop instance in the peer VPC.
   final pulumi.Input<String> peerNextHopInstanceId;
 
@@ -23,11 +24,16 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
     };
   }
 
-  factory FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList.fromMap(Map<String, dynamic> map) {
+  factory FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(
-      peerDestinationCidr: (map['peerDestinationCidr'] as String).input(),
-      peerNextHopInstanceId: (map['peerNextHopInstanceId'] as String).input(),
+      peerDestinationCidr: pulumi.Input.fromValue(
+        map['peerDestinationCidr'] as String,
+      ),
+      peerNextHopInstanceId: pulumi.Input.fromValue(
+        map['peerNextHopInstanceId'] as String,
+      ),
     );
   }
 }
-

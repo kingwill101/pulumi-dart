@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
   /// The utilization triggering the scale-in operation in percent.
   final pulumi.Input<int> scaleIn;
+
   /// The utilization triggering the scale-out operation in percent.
   final pulumi.Input<int> scaleOut;
 
@@ -17,17 +18,15 @@ class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scaleIn': scaleIn,
-      'scaleOut': scaleOut,
-    };
+    return <String, dynamic>{'scaleIn': scaleIn, 'scaleOut': scaleOut};
   }
 
-  factory ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap(Map<String, dynamic> map) {
+  factory ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds(
-      scaleIn: (map['scaleIn'] as int).input(),
-      scaleOut: (map['scaleOut'] as int).input(),
+      scaleIn: pulumi.Input.fromValue(map['scaleIn'] as int),
+      scaleOut: pulumi.Input.fromValue(map['scaleOut'] as int),
     );
   }
 }
-

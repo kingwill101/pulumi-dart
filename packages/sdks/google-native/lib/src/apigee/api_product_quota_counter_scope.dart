@@ -4,16 +4,15 @@ enum ApiProductQuotaCounterScope {
   proxy("PROXY"),
   operation("OPERATION");
 
-  const ApiProductQuotaCounterScope(this.value);
-  final String value;
+  const ApiProductQuotaCounterScope(this.wireValue);
+  final String wireValue;
 
   static ApiProductQuotaCounterScope fromValue(String value) {
     for (final item in ApiProductQuotaCounterScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiProductQuotaCounterScope value: $value');
   }
 }
-

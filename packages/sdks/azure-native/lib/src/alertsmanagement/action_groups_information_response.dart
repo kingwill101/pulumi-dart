@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroupsInformationResponse {
   /// An optional custom email subject to use in email notifications.
   final pulumi.Input<String>? customEmailSubject;
+
   /// An optional custom web-hook payload to use in web-hook notifications.
   final pulumi.Input<String>? customWebhookPayload;
+
   /// The Action Group resource IDs.
   final pulumi.Input<List<String>> groupIds;
 
@@ -31,10 +33,19 @@ class ActionGroupsInformationResponse {
 
   factory ActionGroupsInformationResponse.fromMap(Map<String, dynamic> map) {
     return ActionGroupsInformationResponse(
-      customEmailSubject: map['customEmailSubject'] == null ? null : (map['customEmailSubject']! as String).input(),
-      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload']! as String).input(),
-      groupIds: ((map['groupIds'] as List).cast<String>()).input(),
+      customEmailSubject: (() {
+        final guardedValue = map['customEmailSubject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customWebhookPayload: (() {
+        final guardedValue = map['customWebhookPayload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupIds: pulumi.Input.fromValue(
+        (map['groupIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

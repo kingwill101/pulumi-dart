@@ -1,5 +1,3 @@
-library module_recoveryservices;
-
 export 'recoveryservices/a2_acontainer_mapping_input.dart';
 export 'recoveryservices/a2_across_cluster_migration_enable_protection_input.dart';
 export 'recoveryservices/a2_across_cluster_migration_policy_creation_input.dart';

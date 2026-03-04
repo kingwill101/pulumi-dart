@@ -6,16 +6,15 @@ enum AzureAvsNodeType {
   aV52("AV52"),
   aV64("AV64");
 
-  const AzureAvsNodeType(this.value);
-  final String value;
+  const AzureAvsNodeType(this.wireValue);
+  final String wireValue;
 
   static AzureAvsNodeType fromValue(String value) {
     for (final item in AzureAvsNodeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureAvsNodeType value: $value');
   }
 }
-

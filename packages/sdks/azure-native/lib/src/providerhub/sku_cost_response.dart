@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuCostResponse {
   /// The extended unit.
   final pulumi.Input<String>? extendedUnit;
+
   /// The meter id.
   final pulumi.Input<String> meterId;
+
   /// The quantity.
   final pulumi.Input<int>? quantity;
 
@@ -14,11 +16,7 @@ class SkuCostResponse {
   /// [extendedUnit] The extended unit.
   /// [meterId] The meter id.
   /// [quantity] The quantity.
-  SkuCostResponse({
-    this.extendedUnit,
-    required this.meterId,
-    this.quantity,
-  });
+  SkuCostResponse({this.extendedUnit, required this.meterId, this.quantity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,17 @@ class SkuCostResponse {
 
   factory SkuCostResponse.fromMap(Map<String, dynamic> map) {
     return SkuCostResponse(
-      extendedUnit: map['extendedUnit'] == null ? null : (map['extendedUnit']! as String).input(),
-      meterId: (map['meterId'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
+      extendedUnit: (() {
+        final guardedValue = map['extendedUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      meterId: pulumi.Input.fromValue(map['meterId'] as String),
+      quantity: (() {
+        final guardedValue = map['quantity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

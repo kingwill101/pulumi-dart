@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMedtechServiceArgs {
   /// The name of the Healthcare Med Tech Service.
   final pulumi.Input<String> name;
+
   /// The id of the Healthcare Workspace in which the Healthcare Med Tech Service exists.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [GetMedtechServiceArgs].
   /// [name] The name of the Healthcare Med Tech Service.
   /// [workspaceId] The id of the Healthcare Workspace in which the Healthcare Med Tech Service exists.
-  GetMedtechServiceArgs({
-    required this.name,
-    required this.workspaceId,
-  });
+  GetMedtechServiceArgs({required this.name, required this.workspaceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'workspaceId': workspaceId,
-    };
+    return <String, dynamic>{'name': name, 'workspaceId': workspaceId};
   }
 
   factory GetMedtechServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMedtechServiceArgs(
-      name: (map['name'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

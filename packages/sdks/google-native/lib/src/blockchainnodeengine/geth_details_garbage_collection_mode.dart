@@ -4,16 +4,17 @@ enum GethDetailsGarbageCollectionMode {
   full("FULL"),
   archive("ARCHIVE");
 
-  const GethDetailsGarbageCollectionMode(this.value);
-  final String value;
+  const GethDetailsGarbageCollectionMode(this.wireValue);
+  final String wireValue;
 
   static GethDetailsGarbageCollectionMode fromValue(String value) {
     for (final item in GethDetailsGarbageCollectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GethDetailsGarbageCollectionMode value: $value');
+    throw ArgumentError(
+      'Unknown GethDetailsGarbageCollectionMode value: $value',
+    );
   }
 }
-

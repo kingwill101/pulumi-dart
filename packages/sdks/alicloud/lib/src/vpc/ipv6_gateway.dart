@@ -6,7 +6,7 @@ import 'ipv6_gateway_state.dart';
 ///
 /// For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -248,26 +248,37 @@ import 'ipv6_gateway_state.dart';
 class Ipv6Gateway extends pulumi.CustomResource {
   /// The status of the IPv6 gateway.
   late final pulumi.Output<String> businessStatus;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
+
   /// The expiration time of IPv6 gateway.
   late final pulumi.Output<String> expiredTime;
+
   /// The charge type of IPv6 gateway.
   late final pulumi.Output<String> instanceChargeType;
+
   /// Resource primary key attribute field.
   late final pulumi.Output<String> ipv6GatewayId;
+
   /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
   late final pulumi.Output<String?> ipv6GatewayName;
+
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
   late final pulumi.Output<String> spec;
+
   /// The status of the resource. Valid values: Available, Pending and Deleting.
   late final pulumi.Output<String> status;
+
   /// The tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
   late final pulumi.Output<String> vpcId;
 
@@ -280,23 +291,23 @@ class Ipv6Gateway extends pulumi.CustomResource {
     Ipv6GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
-    this.ipv6GatewayName = registerOutput<String?>('ipv6GatewayName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessStatus = registerOutput<String>('businessStatus');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
+    ipv6GatewayName = registerOutput<String?>('ipv6GatewayName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [Ipv6Gateway] resource's state with the given [name] and [id].
@@ -317,22 +328,22 @@ class Ipv6Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessStatus = registerOutput<String>('businessStatus');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
-    this.ipv6GatewayName = registerOutput<String?>('ipv6GatewayName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessStatus = registerOutput<String>('businessStatus');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
+    ipv6GatewayName = registerOutput<String?>('ipv6GatewayName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

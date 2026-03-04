@@ -10,10 +10,13 @@ import 'bandwidth_limit.dart';
 class AgentPoolArgs {
   /// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
   final pulumi.Input<String> agentPoolId;
+
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   final pulumi.Input<BandwidthLimit>? bandwidthLimit;
+
   /// Specifies the client-specified AgentPool description.
   final pulumi.Input<String>? displayName;
+
   /// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -35,7 +38,11 @@ class AgentPoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentPoolId': agentPoolId,
-      'bandwidthLimit': ?pulumi.Input.mapOptionalInputValue<BandwidthLimit, Map<String, dynamic>>(bandwidthLimit, (value) => value.toMap()),
+      'bandwidthLimit':
+          ?pulumi.Input.mapOptionalInputValue<
+            BandwidthLimit,
+            Map<String, dynamic>
+          >(bandwidthLimit, (value) => value.toMap()),
       'displayName': ?displayName,
       'name': ?name,
       'project': ?project,
@@ -44,12 +51,29 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      agentPoolId: (map['agentPoolId'] as String).input(),
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (BandwidthLimit.fromMap((map['bandwidthLimit']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      agentPoolId: pulumi.Input.fromValue(map['agentPoolId'] as String),
+      bandwidthLimit: (() {
+        final guardedValue = map['bandwidthLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

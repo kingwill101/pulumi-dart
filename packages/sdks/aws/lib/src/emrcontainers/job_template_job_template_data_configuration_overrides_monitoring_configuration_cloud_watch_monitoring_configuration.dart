@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration {
   /// The name of the log group for log publishing.
   final pulumi.Input<String> logGroupName;
+
   /// The specified name prefix for log streams.
   final pulumi.Input<String>? logStreamNamePrefix;
 
@@ -23,11 +24,16 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationClo
     };
   }
 
-  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration(
-      logGroupName: (map['logGroupName'] as String).input(),
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : ((map['logStreamNamePrefix'] as String).input()).input(),
+      logGroupName: pulumi.Input.fromValue(map['logGroupName'] as String),
+      logStreamNamePrefix: (() {
+        final guardedValue = map['logStreamNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

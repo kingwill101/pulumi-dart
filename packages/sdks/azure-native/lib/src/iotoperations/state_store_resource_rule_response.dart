@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StateStoreResourceRuleResponse {
   /// Allowed keyTypes pattern, string, binary. The key type used for matching, for example pattern tries to match the key to a glob-style pattern and string checks key is equal to value provided in keys.
   final pulumi.Input<String> keyType;
+
   /// Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*').
   final pulumi.Input<List<String>> keys;
+
   /// Give access for `Read`, `Write` and `ReadWrite` access level.
   final pulumi.Input<String> method;
 
@@ -31,10 +33,9 @@ class StateStoreResourceRuleResponse {
 
   factory StateStoreResourceRuleResponse.fromMap(Map<String, dynamic> map) {
     return StateStoreResourceRuleResponse(
-      keyType: (map['keyType'] as String).input(),
-      keys: ((map['keys'] as List).cast<String>()).input(),
-      method: (map['method'] as String).input(),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
+      keys: pulumi.Input.fromValue((map['keys'] as List).cast<String>()),
+      method: pulumi.Input.fromValue(map['method'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_policy_args.dart';
-import 'route_policy_statement_properties_response.dart';
 import 'system_data_response.dart';
 
 /// The RoutePolicy resource definition.
@@ -452,30 +451,43 @@ import 'system_data_response.dart';
 class RoutePolicy extends pulumi.CustomResource {
   /// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
   late final pulumi.Output<String?> addressFamilyType;
+
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   late final pulumi.Output<String?> defaultAction;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Arm Resource ID of Network Fabric.
   late final pulumi.Output<String> networkFabricId;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Route Policy statements.
-  late final pulumi.Output<List<RoutePolicyStatementPropertiesResponse>> statements;
+  late final pulumi.Output<List<Map<String, dynamic>>> statements;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -488,24 +500,24 @@ class RoutePolicy extends pulumi.CustomResource {
     RoutePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:RoutePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressFamilyType = registerOutput<String?>('addressFamilyType');
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:RoutePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressFamilyType = registerOutput<String?>('addressFamilyType');
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    defaultAction = registerOutput<String?>('defaultAction');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkFabricId = registerOutput<String>('networkFabricId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statements = registerOutput<List<RoutePolicyStatementPropertiesResponse>>('statements');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    provisioningState = registerOutput<String>('provisioningState');
+    statements = registerOutput<List<Map<String, dynamic>>>('statements');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

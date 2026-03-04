@@ -125,12 +125,16 @@ import 'device_state.dart';
 /// ```
 class Device extends pulumi.CustomResource {
   late final pulumi.Output<String> agentVersion;
+
   /// The Amazon Resource Name (ARN) assigned by AWS to this Device.
   late final pulumi.Output<String> arn;
+
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
   late final pulumi.Output<DeviceDevice> device;
+
   /// The name of the Device Fleet.
   late final pulumi.Output<String> deviceFleetName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -138,21 +142,18 @@ class Device extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Device]. {@macro pulumi_sagemaker_device_device_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Device(
-    String name, {
-    DeviceArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:sagemaker/device:Device',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.arn = registerOutput<String>('arn');
-    this.device = registerOutput<DeviceDevice>('device');
-    this.deviceFleetName = registerOutput<String>('deviceFleetName');
-    this.region = registerOutput<String>('region');
+  Device(String name, {DeviceArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:sagemaker/device:Device',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arn = registerOutput<String>('arn');
+    device = registerOutput<DeviceDevice>('device');
+    deviceFleetName = registerOutput<String>('deviceFleetName');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Device] resource's state with the given [name] and [id].
@@ -173,15 +174,15 @@ class Device extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/device:Device',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.arn = registerOutput<String>('arn');
-    this.device = registerOutput<DeviceDevice>('device');
-    this.deviceFleetName = registerOutput<String>('deviceFleetName');
-    this.region = registerOutput<String>('region');
+         'aws:sagemaker/device:Device',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arn = registerOutput<String>('arn');
+    device = registerOutput<DeviceDevice>('device');
+    deviceFleetName = registerOutput<String>('deviceFleetName');
+    region = registerOutput<String>('region');
   }
 }

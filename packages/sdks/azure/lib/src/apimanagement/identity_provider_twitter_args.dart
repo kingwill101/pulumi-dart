@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderTwitterArgs {
   /// App Consumer API key for Twitter.
   final pulumi.Input<String> apiKey;
+
   /// The Name of the API Management Service where this Twitter Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
+
   /// App Consumer API secret key for Twitter.
   final pulumi.Input<String> apiSecretKey;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class IdentityProviderTwitterArgs {
 
   factory IdentityProviderTwitterArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderTwitterArgs(
-      apiKey: (map['apiKey'] as String).input(),
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      apiSecretKey: (map['apiSecretKey'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      apiSecretKey: pulumi.Input.fromValue(map['apiSecretKey'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

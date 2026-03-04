@@ -5,16 +5,15 @@ enum DocumentContentCategory {
   contentCategoryAudio("CONTENT_CATEGORY_AUDIO"),
   contentCategoryVideo("CONTENT_CATEGORY_VIDEO");
 
-  const DocumentContentCategory(this.value);
-  final String value;
+  const DocumentContentCategory(this.wireValue);
+  final String wireValue;
 
   static DocumentContentCategory fromValue(String value) {
     for (final item in DocumentContentCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DocumentContentCategory value: $value');
   }
 }
-

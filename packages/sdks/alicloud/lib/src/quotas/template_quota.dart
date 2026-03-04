@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_quota_args.dart';
-import 'template_quota_dimension.dart';
 import 'template_quota_state.dart';
 
 /// Provides a Quotas Template Quota resource.
 ///
 /// For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createtemplatequotaitem).
 ///
-/// > **NOTE:** Available since v1.206.0.
+/// &gt; **NOTE:** Available since v1.206.0.
 ///
 /// ## Example Usage
 ///
@@ -195,24 +194,32 @@ import 'template_quota_state.dart';
 class TemplateQuota extends pulumi.CustomResource {
   /// Quota application value.
   late final pulumi.Output<double> desireValue;
+
   /// The Quota Dimensions. See `dimensions` below.
-  late final pulumi.Output<List<TemplateQuotaDimension>?> dimensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dimensions;
+
   /// The UTC time when the quota takes effect.
   late final pulumi.Output<String?> effectiveTime;
+
   /// The language of the quota alert notification. Value:
   /// - zh: Chinese.
   /// - en: English.
   late final pulumi.Output<String> envLanguage;
+
   /// The UTC time when the quota expires.
   late final pulumi.Output<String?> expireTime;
+
   /// Whether to notify the result of quota promotion application. Value:
   /// - 0: No.
   /// - 3: Yes.
   late final pulumi.Output<int> noticeType;
+
   /// The abbreviation of the cloud service name.
   late final pulumi.Output<String> productCode;
+
   /// The quota ID.
   late final pulumi.Output<String> quotaActionCode;
+
   /// Type of quota. Value:
   /// - CommonQuota : Generic quota.
   /// - WhiteListLabel: Equity quota.
@@ -228,20 +235,20 @@ class TemplateQuota extends pulumi.CustomResource {
     TemplateQuotaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:quotas/templateQuota:TemplateQuota',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desireValue = registerOutput<double>('desireValue');
-    this.dimensions = registerOutput<List<TemplateQuotaDimension>?>('dimensions');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.envLanguage = registerOutput<String>('envLanguage');
-    this.expireTime = registerOutput<String?>('expireTime');
-    this.noticeType = registerOutput<int>('noticeType');
-    this.productCode = registerOutput<String>('productCode');
-    this.quotaActionCode = registerOutput<String>('quotaActionCode');
-    this.quotaCategory = registerOutput<String?>('quotaCategory');
+         'alicloud:quotas/templateQuota:TemplateQuota',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desireValue = registerOutput<double>('desireValue');
+    dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    envLanguage = registerOutput<String>('envLanguage');
+    expireTime = registerOutput<String?>('expireTime');
+    noticeType = registerOutput<int>('noticeType');
+    productCode = registerOutput<String>('productCode');
+    quotaActionCode = registerOutput<String>('quotaActionCode');
+    quotaCategory = registerOutput<String?>('quotaCategory');
   }
 
   /// Gets an existing [TemplateQuota] resource's state with the given [name] and [id].
@@ -262,19 +269,19 @@ class TemplateQuota extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:quotas/templateQuota:TemplateQuota',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desireValue = registerOutput<double>('desireValue');
-    this.dimensions = registerOutput<List<TemplateQuotaDimension>?>('dimensions');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.envLanguage = registerOutput<String>('envLanguage');
-    this.expireTime = registerOutput<String?>('expireTime');
-    this.noticeType = registerOutput<int>('noticeType');
-    this.productCode = registerOutput<String>('productCode');
-    this.quotaActionCode = registerOutput<String>('quotaActionCode');
-    this.quotaCategory = registerOutput<String?>('quotaCategory');
+         'alicloud:quotas/templateQuota:TemplateQuota',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desireValue = registerOutput<double>('desireValue');
+    dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    envLanguage = registerOutput<String>('envLanguage');
+    expireTime = registerOutput<String?>('expireTime');
+    noticeType = registerOutput<int>('noticeType');
+    productCode = registerOutput<String>('productCode');
+    quotaActionCode = registerOutput<String>('quotaActionCode');
+    quotaCategory = registerOutput<String?>('quotaCategory');
   }
 }

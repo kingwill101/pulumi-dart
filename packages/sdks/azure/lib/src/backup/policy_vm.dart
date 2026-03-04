@@ -427,30 +427,43 @@ import 'policy_vmtiering_policy.dart';
 class PolicyVM extends pulumi.CustomResource {
   /// Configures the Policy backup frequency, times & days as documented in the `backup` block below.
   late final pulumi.Output<PolicyVMBackup> backup;
+
   /// Specifies the instant restore resource group name as documented in the `instant_restore_resource_group` block below.
-  late final pulumi.Output<PolicyVMInstantRestoreResourceGroup?> instantRestoreResourceGroup;
+  late final pulumi.Output<PolicyVMInstantRestoreResourceGroup?>
+  instantRestoreResourceGroup;
+
   /// Specifies the instant restore retention range in days. Possible values are between `1` and `5` when `policy_type` is `V1`, and `1` to `30` when `policy_type` is `V2`.
   ///
-  /// > **Note:** `instant_restore_retention_days` **must** be set to `5` if the backup frequency is set to `Weekly`.
+  /// &gt; **Note:** `instant_restore_retention_days` **must** be set to `5` if the backup frequency is set to `Weekly`.
   late final pulumi.Output<int> instantRestoreRetentionDays;
+
   /// Specifies the name of the Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Type of the Backup Policy. Possible values are `V1` and `V2` where `V2` stands for the Enhanced Policy. Defaults to `V1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> policyType;
+
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Configures the policy daily retention as documented in the `retention_daily` block below. Required when backup frequency is `Daily`.
   late final pulumi.Output<PolicyVMRetentionDaily?> retentionDaily;
+
   /// Configures the policy monthly retention as documented in the `retention_monthly` block below.
   late final pulumi.Output<PolicyVMRetentionMonthly?> retentionMonthly;
+
   /// Configures the policy weekly retention as documented in the `retention_weekly` block below. Required when backup frequency is `Weekly`.
   late final pulumi.Output<PolicyVMRetentionWeekly?> retentionWeekly;
+
   /// Configures the policy yearly retention as documented in the `retention_yearly` block below.
   late final pulumi.Output<PolicyVMRetentionYearly?> retentionYearly;
+
   /// A `tiering_policy` block as defined below.
   late final pulumi.Output<PolicyVMTieringPolicy?> tieringPolicy;
+
   /// Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   late final pulumi.Output<String?> timezone;
 
@@ -463,24 +476,35 @@ class PolicyVM extends pulumi.CustomResource {
     PolicyVMArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/policyVM:PolicyVM',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backup = registerOutput<PolicyVMBackup>('backup');
-    this.instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup');
-    this.instantRestoreRetentionDays = registerOutput<int>('instantRestoreRetentionDays');
+         'azure:backup/policyVM:PolicyVM',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backup = registerOutput<PolicyVMBackup>('backup');
+    instantRestoreResourceGroup =
+        registerOutput<PolicyVMInstantRestoreResourceGroup?>(
+          'instantRestoreResourceGroup',
+        );
+    instantRestoreRetentionDays = registerOutput<int>(
+      'instantRestoreRetentionDays',
+    );
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
-    this.retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>('retentionMonthly');
-    this.retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>('retentionWeekly');
-    this.retentionYearly = registerOutput<PolicyVMRetentionYearly?>('retentionYearly');
-    this.tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
-    this.timezone = registerOutput<String?>('timezone');
+    policyType = registerOutput<String?>('policyType');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
+    retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>(
+      'retentionMonthly',
+    );
+    retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>(
+      'retentionWeekly',
+    );
+    retentionYearly = registerOutput<PolicyVMRetentionYearly?>(
+      'retentionYearly',
+    );
+    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
+    timezone = registerOutput<String?>('timezone');
   }
 
   /// Gets an existing [PolicyVM] resource's state with the given [name] and [id].
@@ -501,23 +525,34 @@ class PolicyVM extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/policyVM:PolicyVM',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backup = registerOutput<PolicyVMBackup>('backup');
-    this.instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup');
-    this.instantRestoreRetentionDays = registerOutput<int>('instantRestoreRetentionDays');
+         'azure:backup/policyVM:PolicyVM',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backup = registerOutput<PolicyVMBackup>('backup');
+    instantRestoreResourceGroup =
+        registerOutput<PolicyVMInstantRestoreResourceGroup?>(
+          'instantRestoreResourceGroup',
+        );
+    instantRestoreRetentionDays = registerOutput<int>(
+      'instantRestoreRetentionDays',
+    );
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
-    this.retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>('retentionMonthly');
-    this.retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>('retentionWeekly');
-    this.retentionYearly = registerOutput<PolicyVMRetentionYearly?>('retentionYearly');
-    this.tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
-    this.timezone = registerOutput<String?>('timezone');
+    policyType = registerOutput<String?>('policyType');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
+    retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>(
+      'retentionMonthly',
+    );
+    retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>(
+      'retentionWeekly',
+    );
+    retentionYearly = registerOutput<PolicyVMRetentionYearly?>(
+      'retentionYearly',
+    );
+    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
+    timezone = registerOutput<String?>('timezone');
   }
 }

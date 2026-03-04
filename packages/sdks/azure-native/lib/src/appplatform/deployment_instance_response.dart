@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentInstanceResponse {
   /// Discovery status of the deployment instance
   final pulumi.Input<String> discoveryStatus;
+
   /// Name of the deployment instance
   final pulumi.Input<String> name;
+
   /// Failed reason of the deployment instance
   final pulumi.Input<String> reason;
+
   /// Start time of the deployment instance
   final pulumi.Input<String> startTime;
+
   /// Status of the deployment instance
   final pulumi.Input<String> status;
+
   /// Availability zone information of the deployment instance
   final pulumi.Input<String> zone;
 
@@ -46,13 +51,12 @@ class DeploymentInstanceResponse {
 
   factory DeploymentInstanceResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentInstanceResponse(
-      discoveryStatus: (map['discoveryStatus'] as String).input(),
-      name: (map['name'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      discoveryStatus: pulumi.Input.fromValue(map['discoveryStatus'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

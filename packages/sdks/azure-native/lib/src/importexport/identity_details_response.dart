@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityDetailsResponse {
   /// Specifies the principal id for the identity for the job.
   final pulumi.Input<String> principalId;
+
   /// Specifies the tenant id for the identity for the job.
   final pulumi.Input<String> tenantId;
+
   /// The type of identity
   final pulumi.Input<String>? type;
 
@@ -31,10 +33,13 @@ class IdentityDetailsResponse {
 
   factory IdentityDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IdentityDetailsResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

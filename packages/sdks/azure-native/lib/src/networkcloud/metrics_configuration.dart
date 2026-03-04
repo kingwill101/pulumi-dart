@@ -218,30 +218,43 @@ import 'system_data_response.dart';
 class MetricsConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The interval in minutes by which metrics will be collected.
   late final pulumi.Output<double> collectionInterval;
+
   /// The more detailed status of the metrics configuration.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// The list of metrics that are available for the cluster but disabled at the moment.
   late final pulumi.Output<List<String>> disabledMetrics;
+
   /// The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics.
   late final pulumi.Output<List<String>?> enabledMetrics;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the metrics configuration.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -254,24 +267,26 @@ class MetricsConfiguration extends pulumi.CustomResource {
     MetricsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:MetricsConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collectionInterval = registerOutput<double>('collectionInterval');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.disabledMetrics = registerOutput<List<String>>('disabledMetrics');
-    this.enabledMetrics = registerOutput<List<String>?>('enabledMetrics');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkcloud:MetricsConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collectionInterval = registerOutput<double>('collectionInterval');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    disabledMetrics = registerOutput<List<String>>('disabledMetrics');
+    enabledMetrics = registerOutput<List<String>?>('enabledMetrics');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

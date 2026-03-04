@@ -12,23 +12,50 @@ class GrafeasV1beta1IntotoDetails {
   /// Creates a new [GrafeasV1beta1IntotoDetails].
   /// [signatures] Optional.
   /// [signed] Optional.
-  GrafeasV1beta1IntotoDetails({
-    this.signatures,
-    this.signed,
-  });
+  GrafeasV1beta1IntotoDetails({this.signatures, this.signed});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signatures': ?pulumi.Input.mapOptionalInputValue<List<GrafeasV1beta1IntotoSignature>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<GrafeasV1beta1IntotoSignature, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'signed': ?pulumi.Input.mapOptionalInputValue<Link, Map<String, dynamic>>(signed, (value) => value.toMap()),
+      'signatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GrafeasV1beta1IntotoSignature>,
+            List<Map<String, dynamic>>
+          >(
+            signatures,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GrafeasV1beta1IntotoSignature,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'signed': ?pulumi.Input.mapOptionalInputValue<Link, Map<String, dynamic>>(
+        signed,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GrafeasV1beta1IntotoDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoDetails(
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(map['signatures']!, (value) => GrafeasV1beta1IntotoSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      signed: map['signed'] == null ? null : (Link.fromMap((map['signed']! as Map).cast<String, dynamic>())).input(),
+      signatures: (() {
+        final guardedValue = map['signatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(
+            guardedValue,
+            (value) => GrafeasV1beta1IntotoSignature.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      signed: (() {
+        final guardedValue = map['signed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Link.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

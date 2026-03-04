@@ -4,7 +4,7 @@ import 'customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a Storage Account.
 ///
-/// > **Note:** It's possible to define a Customer Managed Key both within the `azure.storage.Account` resource via the `customer_managed_key` block and by using the `azure.storage.CustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.storage.Account` resource via the `customer_managed_key` block and by using the `azure.storage.CustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since there'll be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -632,7 +632,7 @@ import 'customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -649,13 +649,16 @@ class CustomerManagedKey extends pulumi.CustomResource {
   late final pulumi.Output<String?> federatedIdentityClientId;
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String> keyVaultId;
+
   /// The ID of the Key Vault Key.
   late final pulumi.Output<String> keyVaultKeyId;
   late final pulumi.Output<String> keyVaultUri;
   late final pulumi.Output<String> keyVersion;
   late final pulumi.Output<String> managedHsmKeyId;
+
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
+
   /// The ID of a user assigned identity.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
@@ -668,20 +671,22 @@ class CustomerManagedKey extends pulumi.CustomResource {
     CustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/customerManagedKey:CustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.federatedIdentityClientId = registerOutput<String?>('federatedIdentityClientId');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.keyVaultUri = registerOutput<String>('keyVaultUri');
-    this.keyVersion = registerOutput<String>('keyVersion');
-    this.managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:storage/customerManagedKey:CustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    federatedIdentityClientId = registerOutput<String?>(
+      'federatedIdentityClientId',
+    );
+    keyName = registerOutput<String>('keyName');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    keyVaultUri = registerOutput<String>('keyVaultUri');
+    keyVersion = registerOutput<String>('keyVersion');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 
   /// Gets an existing [CustomerManagedKey] resource's state with the given [name] and [id].
@@ -702,19 +707,21 @@ class CustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/customerManagedKey:CustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.federatedIdentityClientId = registerOutput<String?>('federatedIdentityClientId');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.keyVaultUri = registerOutput<String>('keyVaultUri');
-    this.keyVersion = registerOutput<String>('keyVersion');
-    this.managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:storage/customerManagedKey:CustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    federatedIdentityClientId = registerOutput<String?>(
+      'federatedIdentityClientId',
+    );
+    keyName = registerOutput<String>('keyName');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    keyVaultUri = registerOutput<String>('keyVaultUri');
+    keyVersion = registerOutput<String>('keyVersion');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 }

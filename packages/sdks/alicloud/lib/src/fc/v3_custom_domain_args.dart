@@ -15,18 +15,25 @@ import 'v3_custom_domain_waf_config.dart';
 class V3CustomDomainArgs {
   /// Permission authentication configuration See `auth_config` below.
   final pulumi.Input<V3CustomDomainAuthConfig>? authConfig;
+
   /// HTTPS certificate information See `cert_config` below.
   final pulumi.Input<V3CustomDomainCertConfig>? certConfig;
+
   /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
   final pulumi.Input<V3CustomDomainCorsConfig>? corsConfig;
+
   /// The name of the resource
   final pulumi.Input<String>? customDomainName;
+
   /// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
   final pulumi.Input<String>? protocol;
+
   /// Route matching rule configuration See `route_config` below.
   final pulumi.Input<V3CustomDomainRouteConfig>? routeConfig;
+
   /// TLS configuration information See `tls_config` below.
   final pulumi.Input<V3CustomDomainTlsConfig>? tlsConfig;
+
   /// Web application firewall configuration information See `waf_config` below.
   final pulumi.Input<V3CustomDomainWafConfig>? wafConfig;
 
@@ -52,28 +59,107 @@ class V3CustomDomainArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
-      'certConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainCertConfig, Map<String, dynamic>>(certConfig, (value) => value.toMap()),
-      'corsConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainCorsConfig, Map<String, dynamic>>(corsConfig, (value) => value.toMap()),
+      'authConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainAuthConfig,
+            Map<String, dynamic>
+          >(authConfig, (value) => value.toMap()),
+      'certConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainCertConfig,
+            Map<String, dynamic>
+          >(certConfig, (value) => value.toMap()),
+      'corsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainCorsConfig,
+            Map<String, dynamic>
+          >(corsConfig, (value) => value.toMap()),
       'customDomainName': ?customDomainName,
       'protocol': ?protocol,
-      'routeConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainRouteConfig, Map<String, dynamic>>(routeConfig, (value) => value.toMap()),
-      'tlsConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
-      'wafConfig': ?pulumi.Input.mapOptionalInputValue<V3CustomDomainWafConfig, Map<String, dynamic>>(wafConfig, (value) => value.toMap()),
+      'routeConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainRouteConfig,
+            Map<String, dynamic>
+          >(routeConfig, (value) => value.toMap()),
+      'tlsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainTlsConfig,
+            Map<String, dynamic>
+          >(tlsConfig, (value) => value.toMap()),
+      'wafConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3CustomDomainWafConfig,
+            Map<String, dynamic>
+          >(wafConfig, (value) => value.toMap()),
     };
   }
 
   factory V3CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainArgs(
-      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
-      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
-      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig']! as Map).cast<String, dynamic>())).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig']! as Map).cast<String, dynamic>())).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
-      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig']! as Map).cast<String, dynamic>())).input(),
+      authConfig: (() {
+        final guardedValue = map['authConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainAuthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      certConfig: (() {
+        final guardedValue = map['certConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainCertConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      corsConfig: (() {
+        final guardedValue = map['corsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainCorsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      customDomainName: (() {
+        final guardedValue = map['customDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeConfig: (() {
+        final guardedValue = map['routeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainRouteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tlsConfig: (() {
+        final guardedValue = map['tlsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainTlsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      wafConfig: (() {
+        final guardedValue = map['wafConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3CustomDomainWafConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

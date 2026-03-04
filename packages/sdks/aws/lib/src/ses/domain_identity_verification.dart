@@ -8,7 +8,7 @@ import 'domain_identity_verification_state.dart';
 /// `aws.ses.DomainIdentity` to request an SES domain identity,
 /// deploy the required DNS verification records, and wait for verification to complete.
 ///
-/// > **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
+/// &gt; **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
 ///
 /// ## Example Usage
 ///
@@ -201,8 +201,10 @@ import 'domain_identity_verification_state.dart';
 class DomainIdentityVerification extends pulumi.CustomResource {
   /// The ARN of the domain identity.
   late final pulumi.Output<String> arn;
+
   /// The domain name of the SES domain identity to verify.
   late final pulumi.Output<String> domain;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -215,14 +217,14 @@ class DomainIdentityVerification extends pulumi.CustomResource {
     DomainIdentityVerificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/domainIdentityVerification:DomainIdentityVerification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.domain = registerOutput<String>('domain');
-    this.region = registerOutput<String>('region');
+         'aws:ses/domainIdentityVerification:DomainIdentityVerification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    domain = registerOutput<String>('domain');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [DomainIdentityVerification] resource's state with the given [name] and [id].
@@ -243,13 +245,13 @@ class DomainIdentityVerification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/domainIdentityVerification:DomainIdentityVerification',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.domain = registerOutput<String>('domain');
-    this.region = registerOutput<String>('region');
+         'aws:ses/domainIdentityVerification:DomainIdentityVerification',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    domain = registerOutput<String>('domain');
+    region = registerOutput<String>('region');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeltaTableSchema {
   /// Delta table format supported.
   final pulumi.Input<String> format;
+
   /// Delta table schema mapping.
   final pulumi.Input<String> mapping;
+
   /// Delta table schema name.
   final pulumi.Input<String> name;
+
   /// Delta table schema optional.
   final pulumi.Input<bool> optional;
 
@@ -36,11 +39,10 @@ class DeltaTableSchema {
 
   factory DeltaTableSchema.fromMap(Map<String, dynamic> map) {
     return DeltaTableSchema(
-      format: (map['format'] as String).input(),
-      mapping: (map['mapping'] as String).input(),
-      name: (map['name'] as String).input(),
-      optional: (map['optional'] as bool).input(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      mapping: pulumi.Input.fromValue(map['mapping'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      optional: pulumi.Input.fromValue(map['optional'] as bool),
     );
   }
 }
-

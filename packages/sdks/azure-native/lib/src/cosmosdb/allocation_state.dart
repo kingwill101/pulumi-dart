@@ -3,16 +3,15 @@ enum AllocationState {
   valueActive("Active"),
   valueDeallocated("Deallocated");
 
-  const AllocationState(this.value);
-  final String value;
+  const AllocationState(this.wireValue);
+  final String wireValue;
 
   static AllocationState fromValue(String value) {
     for (final item in AllocationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllocationState value: $value');
   }
 }
-

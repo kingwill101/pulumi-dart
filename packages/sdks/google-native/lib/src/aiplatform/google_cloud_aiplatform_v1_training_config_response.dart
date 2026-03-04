@@ -19,10 +19,13 @@ class GoogleCloudAiplatformV1TrainingConfigResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1TrainingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1TrainingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1TrainingConfigResponse(
-      timeoutTrainingMilliHours: (map['timeoutTrainingMilliHours'] as String).input(),
+      timeoutTrainingMilliHours: pulumi.Input.fromValue(
+        map['timeoutTrainingMilliHours'] as String,
+      ),
     );
   }
 }
-

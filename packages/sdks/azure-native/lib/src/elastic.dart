@@ -1,5 +1,3 @@
-library module_elastic;
-
 export 'elastic/company_info.dart';
 export 'elastic/connected_partner_resource_properties_response.dart';
 export 'elastic/connected_partner_resources_list_format_response.dart';

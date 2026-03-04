@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hadoop_cluster_args.dart';
 import 'hadoop_cluster_component_version.dart';
 import 'hadoop_cluster_compute_isolation.dart';
-import 'hadoop_cluster_disk_encryption.dart';
 import 'hadoop_cluster_extension.dart';
 import 'hadoop_cluster_gateway.dart';
 import 'hadoop_cluster_metastores.dart';
@@ -12,7 +11,6 @@ import 'hadoop_cluster_private_link_configuration.dart';
 import 'hadoop_cluster_roles.dart';
 import 'hadoop_cluster_security_profile.dart';
 import 'hadoop_cluster_state.dart';
-import 'hadoop_cluster_storage_account.dart';
 import 'hadoop_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight Hadoop Cluster.
@@ -450,7 +448,7 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HDInsight` - 2021-06-01
@@ -465,49 +463,71 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 class HadoopCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
+
   /// A `component_version` block as defined below.
   late final pulumi.Output<HadoopClusterComponentVersion> componentVersion;
+
   /// A `compute_isolation` block as defined below.
   late final pulumi.Output<HadoopClusterComputeIsolation?> computeIsolation;
+
   /// One or more `disk_encryption` block as defined below.
-  late final pulumi.Output<List<HadoopClusterDiskEncryption>?> diskEncryptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+
   /// An `extension` block as defined below.
   late final pulumi.Output<HadoopClusterExtension?> extension;
+
   /// A `gateway` block as defined below.
   late final pulumi.Output<HadoopClusterGateway> gateway;
+
   /// The HTTPS Connectivity Endpoint for this HDInsight Hadoop Cluster.
   late final pulumi.Output<String> httpsEndpoint;
+
   /// Specifies the Azure Region which this HDInsight Hadoop Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `metastores` block as defined below.
   late final pulumi.Output<HadoopClusterMetastores?> metastores;
+
   /// A `monitor` block as defined below.
   late final pulumi.Output<HadoopClusterMonitor?> monitor;
+
   /// Specifies the name for this HDInsight Hadoop Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network` block as defined below.
   late final pulumi.Output<HadoopClusterNetwork?> network;
+
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<HadoopClusterPrivateLinkConfiguration?> privateLinkConfiguration;
+  late final pulumi.Output<HadoopClusterPrivateLinkConfiguration?>
+  privateLinkConfiguration;
+
   /// Specifies the name of the Resource Group in which this HDInsight Hadoop Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `roles` block as defined below.
   late final pulumi.Output<HadoopClusterRoles> roles;
+
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HadoopClusterSecurityProfile?> securityProfile;
+
   /// The SSH Connectivity Endpoint for this HDInsight Hadoop Cluster.
   late final pulumi.Output<String> sshEndpoint;
+
   /// A `storage_account_gen2` block as defined below.
   late final pulumi.Output<HadoopClusterStorageAccountGen2?> storageAccountGen2;
+
   /// One or more `storage_account` block as defined below.
-  late final pulumi.Output<List<HadoopClusterStorageAccount>?> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+
   /// A map of Tags which should be assigned to this HDInsight Hadoop Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Tier which should be used for this HDInsight Hadoop Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
+
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
+  /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
   late final pulumi.Output<String?> tlsMinVersion;
 
   /// Creates a new [HadoopCluster].
@@ -519,33 +539,48 @@ class HadoopCluster extends pulumi.CustomResource {
     HadoopClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/hadoopCluster:HadoopCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<HadoopClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<HadoopClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<HadoopClusterDiskEncryption>?>('diskEncryptions');
-    this.extension = registerOutput<HadoopClusterExtension?>('extension');
-    this.gateway = registerOutput<HadoopClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<HadoopClusterMetastores?>('metastores');
-    this.monitor = registerOutput<HadoopClusterMonitor?>('monitor');
+         'azure:hdinsight/hadoopCluster:HadoopCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<HadoopClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<HadoopClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    extension = registerOutput<HadoopClusterExtension?>('extension');
+    gateway = registerOutput<HadoopClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<HadoopClusterMetastores?>('metastores');
+    monitor = registerOutput<HadoopClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<HadoopClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<HadoopClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<HadoopClusterRoles>('roles');
-    this.securityProfile = registerOutput<HadoopClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<HadoopClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<HadoopClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<HadoopClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<HadoopClusterRoles>('roles');
+    securityProfile = registerOutput<HadoopClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 
   /// Gets an existing [HadoopCluster] resource's state with the given [name] and [id].
@@ -566,32 +601,47 @@ class HadoopCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/hadoopCluster:HadoopCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<HadoopClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<HadoopClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<HadoopClusterDiskEncryption>?>('diskEncryptions');
-    this.extension = registerOutput<HadoopClusterExtension?>('extension');
-    this.gateway = registerOutput<HadoopClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<HadoopClusterMetastores?>('metastores');
-    this.monitor = registerOutput<HadoopClusterMonitor?>('monitor');
+         'azure:hdinsight/hadoopCluster:HadoopCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<HadoopClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<HadoopClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    extension = registerOutput<HadoopClusterExtension?>('extension');
+    gateway = registerOutput<HadoopClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<HadoopClusterMetastores?>('metastores');
+    monitor = registerOutput<HadoopClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<HadoopClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<HadoopClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<HadoopClusterRoles>('roles');
-    this.securityProfile = registerOutput<HadoopClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<HadoopClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<HadoopClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<HadoopClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<HadoopClusterRoles>('roles');
+    securityProfile = registerOutput<HadoopClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 }

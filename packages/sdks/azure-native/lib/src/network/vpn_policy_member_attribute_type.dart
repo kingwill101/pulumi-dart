@@ -4,16 +4,15 @@ enum VpnPolicyMemberAttributeType {
   valueAADGroupId("AADGroupId"),
   valueRadiusAzureGroupId("RadiusAzureGroupId");
 
-  const VpnPolicyMemberAttributeType(this.value);
-  final String value;
+  const VpnPolicyMemberAttributeType(this.wireValue);
+  final String wireValue;
 
   static VpnPolicyMemberAttributeType fromValue(String value) {
     for (final item in VpnPolicyMemberAttributeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnPolicyMemberAttributeType value: $value');
   }
 }
-

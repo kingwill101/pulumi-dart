@@ -4,16 +4,15 @@ enum BatchLoggingLevel {
   valueWarning("Warning"),
   valueDebug("Debug");
 
-  const BatchLoggingLevel(this.value);
-  final String value;
+  const BatchLoggingLevel(this.wireValue);
+  final String wireValue;
 
   static BatchLoggingLevel fromValue(String value) {
     for (final item in BatchLoggingLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BatchLoggingLevel value: $value');
   }
 }
-

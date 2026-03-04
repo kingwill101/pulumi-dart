@@ -14,7 +14,7 @@ import 'access_level_state.dart';
 /// * How-to Guides
 /// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 ///
-/// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+/// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 /// you must specify a `billing_project` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
@@ -278,19 +278,24 @@ class AccessLevel extends pulumi.CustomResource {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelBasic?> basic;
+
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelCustom?> custom;
+
   /// Description of the AccessLevel and its use. Does not affect behavior.
   late final pulumi.Output<String?> description;
+
   /// Resource name for the Access Level. The short_name component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<String> name;
+
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
+
   /// Human readable title. Must be unique within the Policy.
   late final pulumi.Output<String> title;
 
@@ -303,17 +308,17 @@ class AccessLevel extends pulumi.CustomResource {
     AccessLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessLevel:AccessLevel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basic = registerOutput<AccessLevelBasic?>('basic');
-    this.custom = registerOutput<AccessLevelCustom?>('custom');
-    this.description = registerOutput<String?>('description');
+         'gcp:accesscontextmanager/accessLevel:AccessLevel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basic = registerOutput<AccessLevelBasic?>('basic');
+    custom = registerOutput<AccessLevelCustom?>('custom');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.title = registerOutput<String>('title');
+    parent = registerOutput<String>('parent');
+    title = registerOutput<String>('title');
   }
 
   /// Gets an existing [AccessLevel] resource's state with the given [name] and [id].
@@ -334,16 +339,16 @@ class AccessLevel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessLevel:AccessLevel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basic = registerOutput<AccessLevelBasic?>('basic');
-    this.custom = registerOutput<AccessLevelCustom?>('custom');
-    this.description = registerOutput<String?>('description');
+         'gcp:accesscontextmanager/accessLevel:AccessLevel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basic = registerOutput<AccessLevelBasic?>('basic');
+    custom = registerOutput<AccessLevelCustom?>('custom');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.title = registerOutput<String>('title');
+    parent = registerOutput<String>('parent');
+    title = registerOutput<String>('title');
   }
 }

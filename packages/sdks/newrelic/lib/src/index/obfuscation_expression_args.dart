@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObfuscationExpressionArgs {
   /// The account id associated with the obfuscation expression.
   final pulumi.Input<String>? accountId;
+
   /// Description of expression.
   final pulumi.Input<String>? description;
+
   /// Name of expression.
   final pulumi.Input<String>? name;
+
   /// Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
   final pulumi.Input<String> regex;
 
@@ -39,11 +42,22 @@ class ObfuscationExpressionArgs {
 
   factory ObfuscationExpressionArgs.fromMap(Map<String, dynamic> map) {
     return ObfuscationExpressionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      regex: (map['regex'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
-

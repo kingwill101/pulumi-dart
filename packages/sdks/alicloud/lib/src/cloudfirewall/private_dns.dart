@@ -8,7 +8,7 @@ import 'private_dns_state.dart';
 ///
 /// For information about Cloud Firewall Private Dns and how to use it, see [What is Private Dns](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreatePrivateDnsEndpoint).
 ///
-/// > **NOTE:** Available since v1.264.0.
+/// &gt; **NOTE:** Available since v1.264.0.
 ///
 /// ## Example Usage
 ///
@@ -355,36 +355,52 @@ import 'private_dns_state.dart';
 class PrivateDns extends pulumi.CustomResource {
   /// The id of Private DNS instance
   late final pulumi.Output<String> accessInstanceId;
+
   /// The name of Private DNS instance
   late final pulumi.Output<String> accessInstanceName;
+
   /// Private DNS domain name list
   late final pulumi.Output<List<String>?> domainNameLists;
+
   /// The type of firewall
   late final pulumi.Output<List<String>> firewallTypes;
+
   /// IP protocol
   late final pulumi.Output<String?> ipProtocol;
+
   /// The member Uid
   late final pulumi.Output<int?> memberUid;
+
   /// The Port of Private DNS instance
   late final pulumi.Output<int?> port;
+
   /// Primary DNS IP
   late final pulumi.Output<String?> primaryDns;
+
   /// Primary zone Switch ID
   late final pulumi.Output<String?> primaryVswitchId;
+
   /// Primary zone switch IP
   late final pulumi.Output<String?> primaryVswitchIp;
+
   /// The type of Private DNS instance
   late final pulumi.Output<String> privateDnsType;
+
   /// The region ID of Private DNS instance
   late final pulumi.Output<String> regionNo;
+
   /// Standby DNS IP
   late final pulumi.Output<String?> standbyDns;
+
   /// Standby zone switch ID
   late final pulumi.Output<String?> standbyVswitchId;
+
   /// Standby zone switch IP address
   late final pulumi.Output<String?> standbyVswitchIp;
+
   /// status
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -397,28 +413,28 @@ class PrivateDns extends pulumi.CustomResource {
     PrivateDnsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/privateDns:PrivateDns',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessInstanceId = registerOutput<String>('accessInstanceId');
-    this.accessInstanceName = registerOutput<String>('accessInstanceName');
-    this.domainNameLists = registerOutput<List<String>?>('domainNameLists');
-    this.firewallTypes = registerOutput<List<String>>('firewallTypes');
-    this.ipProtocol = registerOutput<String?>('ipProtocol');
-    this.memberUid = registerOutput<int?>('memberUid');
-    this.port = registerOutput<int?>('port');
-    this.primaryDns = registerOutput<String?>('primaryDns');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryVswitchIp = registerOutput<String?>('primaryVswitchIp');
-    this.privateDnsType = registerOutput<String>('privateDnsType');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.standbyDns = registerOutput<String?>('standbyDns');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyVswitchIp = registerOutput<String?>('standbyVswitchIp');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:cloudfirewall/privateDns:PrivateDns',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessInstanceId = registerOutput<String>('accessInstanceId');
+    accessInstanceName = registerOutput<String>('accessInstanceName');
+    domainNameLists = registerOutput<List<String>?>('domainNameLists');
+    firewallTypes = registerOutput<List<String>>('firewallTypes');
+    ipProtocol = registerOutput<String?>('ipProtocol');
+    memberUid = registerOutput<int?>('memberUid');
+    port = registerOutput<int?>('port');
+    primaryDns = registerOutput<String?>('primaryDns');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryVswitchIp = registerOutput<String?>('primaryVswitchIp');
+    privateDnsType = registerOutput<String>('privateDnsType');
+    regionNo = registerOutput<String>('regionNo');
+    standbyDns = registerOutput<String?>('standbyDns');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyVswitchIp = registerOutput<String?>('standbyVswitchIp');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [PrivateDns] resource's state with the given [name] and [id].
@@ -439,27 +455,27 @@ class PrivateDns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/privateDns:PrivateDns',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessInstanceId = registerOutput<String>('accessInstanceId');
-    this.accessInstanceName = registerOutput<String>('accessInstanceName');
-    this.domainNameLists = registerOutput<List<String>?>('domainNameLists');
-    this.firewallTypes = registerOutput<List<String>>('firewallTypes');
-    this.ipProtocol = registerOutput<String?>('ipProtocol');
-    this.memberUid = registerOutput<int?>('memberUid');
-    this.port = registerOutput<int?>('port');
-    this.primaryDns = registerOutput<String?>('primaryDns');
-    this.primaryVswitchId = registerOutput<String?>('primaryVswitchId');
-    this.primaryVswitchIp = registerOutput<String?>('primaryVswitchIp');
-    this.privateDnsType = registerOutput<String>('privateDnsType');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.standbyDns = registerOutput<String?>('standbyDns');
-    this.standbyVswitchId = registerOutput<String?>('standbyVswitchId');
-    this.standbyVswitchIp = registerOutput<String?>('standbyVswitchIp');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:cloudfirewall/privateDns:PrivateDns',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessInstanceId = registerOutput<String>('accessInstanceId');
+    accessInstanceName = registerOutput<String>('accessInstanceName');
+    domainNameLists = registerOutput<List<String>?>('domainNameLists');
+    firewallTypes = registerOutput<List<String>>('firewallTypes');
+    ipProtocol = registerOutput<String?>('ipProtocol');
+    memberUid = registerOutput<int?>('memberUid');
+    port = registerOutput<int?>('port');
+    primaryDns = registerOutput<String?>('primaryDns');
+    primaryVswitchId = registerOutput<String?>('primaryVswitchId');
+    primaryVswitchIp = registerOutput<String?>('primaryVswitchIp');
+    privateDnsType = registerOutput<String>('privateDnsType');
+    regionNo = registerOutput<String>('regionNo');
+    standbyDns = registerOutput<String?>('standbyDns');
+    standbyVswitchId = registerOutput<String?>('standbyVswitchId');
+    standbyVswitchIp = registerOutput<String?>('standbyVswitchIp');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

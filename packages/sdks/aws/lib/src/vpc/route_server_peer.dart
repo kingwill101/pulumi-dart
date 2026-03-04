@@ -478,31 +478,43 @@ import 'route_server_peer_timeouts.dart';
 class RouteServerPeer extends pulumi.CustomResource {
   /// The ARN of the route server peer.
   late final pulumi.Output<String> arn;
+
   /// The BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
   late final pulumi.Output<RouteServerPeerBgpOptions> bgpOptions;
+
   /// The IP address of the Elastic network interface for the route server endpoint.
   late final pulumi.Output<String> endpointEniAddress;
+
   /// The ID of the Elastic network interface for the route server endpoint.
   late final pulumi.Output<String> endpointEniId;
+
   /// The IPv4 address of the peer device.
   late final pulumi.Output<String> peerAddress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the route server endpoint for which to create a peer.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> routeServerEndpointId;
+
   /// The ID of the route server associated with this peer.
   late final pulumi.Output<String> routeServerId;
+
   /// The unique identifier of the route server peer.
   late final pulumi.Output<String> routeServerPeerId;
+
   /// The ID of the subnet containing the route server peer.
   late final pulumi.Output<String> subnetId;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RouteServerPeerTimeouts?> timeouts;
+
   /// The ID of the VPC containing the route server peer.
   late final pulumi.Output<String> vpcId;
 
@@ -515,25 +527,25 @@ class RouteServerPeer extends pulumi.CustomResource {
     RouteServerPeerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/routeServerPeer:RouteServerPeer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
-    this.endpointEniAddress = registerOutput<String>('endpointEniAddress');
-    this.endpointEniId = registerOutput<String>('endpointEniId');
-    this.peerAddress = registerOutput<String>('peerAddress');
-    this.region = registerOutput<String>('region');
-    this.routeServerEndpointId = registerOutput<String>('routeServerEndpointId');
-    this.routeServerId = registerOutput<String>('routeServerId');
-    this.routeServerPeerId = registerOutput<String>('routeServerPeerId');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:vpc/routeServerPeer:RouteServerPeer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
+    endpointEniAddress = registerOutput<String>('endpointEniAddress');
+    endpointEniId = registerOutput<String>('endpointEniId');
+    peerAddress = registerOutput<String>('peerAddress');
+    region = registerOutput<String>('region');
+    routeServerEndpointId = registerOutput<String>('routeServerEndpointId');
+    routeServerId = registerOutput<String>('routeServerId');
+    routeServerPeerId = registerOutput<String>('routeServerPeerId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [RouteServerPeer] resource's state with the given [name] and [id].
@@ -554,24 +566,24 @@ class RouteServerPeer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/routeServerPeer:RouteServerPeer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
-    this.endpointEniAddress = registerOutput<String>('endpointEniAddress');
-    this.endpointEniId = registerOutput<String>('endpointEniId');
-    this.peerAddress = registerOutput<String>('peerAddress');
-    this.region = registerOutput<String>('region');
-    this.routeServerEndpointId = registerOutput<String>('routeServerEndpointId');
-    this.routeServerId = registerOutput<String>('routeServerId');
-    this.routeServerPeerId = registerOutput<String>('routeServerPeerId');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:vpc/routeServerPeer:RouteServerPeer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
+    endpointEniAddress = registerOutput<String>('endpointEniAddress');
+    endpointEniId = registerOutput<String>('endpointEniId');
+    peerAddress = registerOutput<String>('peerAddress');
+    region = registerOutput<String>('region');
+    routeServerEndpointId = registerOutput<String>('routeServerEndpointId');
+    routeServerId = registerOutput<String>('routeServerId');
+    routeServerPeerId = registerOutput<String>('routeServerPeerId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

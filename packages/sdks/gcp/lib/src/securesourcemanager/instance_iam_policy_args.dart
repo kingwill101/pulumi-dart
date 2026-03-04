@@ -35,11 +35,18 @@ class InstanceIamPolicyArgs {
 
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyData: pulumi.Input.fromValue(map['policyData'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

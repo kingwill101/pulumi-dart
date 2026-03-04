@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataBoxAccountCopyLogDetailsResponse {
   /// Account name.
   final pulumi.Input<String> accountName;
+
   /// Indicates the type of job details.
   /// Expected value is 'DataBox'.
   final pulumi.Input<String> copyLogDetailsType;
+
   /// Link for copy logs.
   final pulumi.Input<String> copyLogLink;
+
   /// Link for copy verbose logs. This will be set only when LogCollectionLevel is set to Verbose.
   final pulumi.Input<String> copyVerboseLogLink;
 
@@ -35,13 +38,18 @@ class DataBoxAccountCopyLogDetailsResponse {
     };
   }
 
-  factory DataBoxAccountCopyLogDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory DataBoxAccountCopyLogDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataBoxAccountCopyLogDetailsResponse(
-      accountName: (map['accountName'] as String).input(),
-      copyLogDetailsType: (map['copyLogDetailsType'] as String).input(),
-      copyLogLink: (map['copyLogLink'] as String).input(),
-      copyVerboseLogLink: (map['copyVerboseLogLink'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      copyLogDetailsType: pulumi.Input.fromValue(
+        map['copyLogDetailsType'] as String,
+      ),
+      copyLogLink: pulumi.Input.fromValue(map['copyLogLink'] as String),
+      copyVerboseLogLink: pulumi.Input.fromValue(
+        map['copyVerboseLogLink'] as String,
+      ),
     );
   }
 }
-

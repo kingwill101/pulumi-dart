@@ -3,20 +3,19 @@ enum DataCollectorType {
   typeUnspecified("TYPE_UNSPECIFIED"),
   integer("INTEGER"),
   float("FLOAT"),
-  string("STRING"),
+  string_("STRING"),
   boolean("BOOLEAN"),
   datetime("DATETIME");
 
-  const DataCollectorType(this.value);
-  final String value;
+  const DataCollectorType(this.wireValue);
+  final String wireValue;
 
   static DataCollectorType fromValue(String value) {
     for (final item in DataCollectorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataCollectorType value: $value');
   }
 }
-

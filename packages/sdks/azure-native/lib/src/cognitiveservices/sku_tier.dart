@@ -6,16 +6,15 @@ enum SkuTier {
   valuePremium("Premium"),
   valueEnterprise("Enterprise");
 
-  const SkuTier(this.value);
-  final String value;
+  const SkuTier(this.wireValue);
+  final String wireValue;
 
   static SkuTier fromValue(String value) {
     for (final item in SkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuTier value: $value');
   }
 }
-

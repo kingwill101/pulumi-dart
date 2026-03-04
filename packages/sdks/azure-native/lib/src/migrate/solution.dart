@@ -164,12 +164,16 @@ import 'solution_properties_response.dart';
 class Solution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the ETAG for optimistic concurrency control.
   late final pulumi.Output<String?> etag;
+
   /// Gets the name of this REST resource.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the properties of the solution.
   late final pulumi.Output<SolutionPropertiesResponse> properties;
+
   /// Gets the type of this REST resource.
   late final pulumi.Output<String> type;
 
@@ -182,15 +186,15 @@ class Solution extends pulumi.CustomResource {
     SolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:Solution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:migrate:Solution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<SolutionPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<SolutionPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

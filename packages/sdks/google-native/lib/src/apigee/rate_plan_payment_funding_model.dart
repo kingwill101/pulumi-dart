@@ -4,16 +4,15 @@ enum RatePlanPaymentFundingModel {
   prepaid("PREPAID"),
   postpaid("POSTPAID");
 
-  const RatePlanPaymentFundingModel(this.value);
-  final String value;
+  const RatePlanPaymentFundingModel(this.wireValue);
+  final String wireValue;
 
   static RatePlanPaymentFundingModel fromValue(String value) {
     for (final item in RatePlanPaymentFundingModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RatePlanPaymentFundingModel value: $value');
   }
 }
-

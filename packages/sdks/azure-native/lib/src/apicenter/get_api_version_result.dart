@@ -6,16 +6,22 @@ import 'system_data_response.dart';
 class GetApiVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Current lifecycle stage of the API.
   final String lifecycleStage;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// API version title.
   final String title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,10 +61,11 @@ class GetApiVersionResult {
       id: map['id'] as String,
       lifecycleStage: map['lifecycleStage'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       title: map['title'] as String,
       type: map['type'] as String,
     );
   }
 }
-

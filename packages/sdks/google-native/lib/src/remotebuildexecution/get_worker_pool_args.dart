@@ -31,10 +31,13 @@ class GetWorkerPoolArgs {
 
   factory GetWorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workerpoolId: (map['workerpoolId'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workerpoolId: pulumi.Input.fromValue(map['workerpoolId'] as String),
     );
   }
 }
-

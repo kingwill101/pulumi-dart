@@ -9,20 +9,19 @@ class IosAppInfo {
 
   /// Creates a new [IosAppInfo].
   /// [name] The name of the app. Required
-  IosAppInfo({
-    this.name,
-  });
+  IosAppInfo({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory IosAppInfo.fromMap(Map<String, dynamic> map) {
     return IosAppInfo(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -14,14 +14,24 @@ import 'flow_schema_status_patch_flowcontrol_apiserver_k8s_io_v1alpha1.dart';
 class FlowSchemaPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  late final pulumi.Output<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1alpha1?> spec;
+  late final pulumi.Output<
+    FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1alpha1?
+  >
+  spec;
+
   /// `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  late final pulumi.Output<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1alpha1?> status;
+  late final pulumi.Output<
+    FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1alpha1?
+  >
+  status;
 
   /// Creates a new [FlowSchemaPatchResource].
   /// [name] The Pulumi resource name.
@@ -32,15 +42,21 @@ class FlowSchemaPatchResource extends pulumi.CustomResource {
     FlowSchemaPatchFlowcontrolApiserverK8sIoV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchemaPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1alpha1?>('spec');
-    this.status = registerOutput<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1alpha1?>('status');
+         'kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchemaPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec =
+        registerOutput<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1alpha1?>(
+          'spec',
+        );
+    status =
+        registerOutput<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1alpha1?>(
+          'status',
+        );
   }
 }

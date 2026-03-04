@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedInstanceArgs {
   /// The child resources to include in the response.
   final pulumi.Input<String>? expand;
+
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetManagedInstanceArgs {
 
   factory GetManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

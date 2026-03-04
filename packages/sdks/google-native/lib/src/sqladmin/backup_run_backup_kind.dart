@@ -4,16 +4,15 @@ enum BackupRunBackupKind {
   snapshot("SNAPSHOT"),
   physical("PHYSICAL");
 
-  const BackupRunBackupKind(this.value);
-  final String value;
+  const BackupRunBackupKind(this.wireValue);
+  final String wireValue;
 
   static BackupRunBackupKind fromValue(String value) {
     for (final item in BackupRunBackupKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupRunBackupKind value: $value');
   }
 }
-

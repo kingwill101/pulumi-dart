@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRaiPolicyArgs {
   /// Name of the endpoint resource.
   final pulumi.Input<String> endpointName;
+
   /// Name of the Rai Policy.
   final pulumi.Input<String> raiPolicyName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetRaiPolicyArgs {
 
   factory GetRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiPolicyArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      raiPolicyName: (map['raiPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      raiPolicyName: pulumi.Input.fromValue(map['raiPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

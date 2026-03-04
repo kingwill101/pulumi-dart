@@ -6,9 +6,9 @@ import 'extension_state.dart';
 /// Manages a Virtual Machine Extension to provide post deployment configuration
 /// and run automated tasks.
 ///
-/// > **Note:** Custom Script Extensions for Linux & Windows require that the `commandToExecute` returns a `0` exit code to be classified as successfully deployed. You can achieve this by appending `exit 0` to the end of your `commandToExecute`.
+/// &gt; **Note:** Custom Script Extensions for Linux & Windows require that the `commandToExecute` returns a `0` exit code to be classified as successfully deployed. You can achieve this by appending `exit 0` to the end of your `commandToExecute`.
 ///
-/// > **Note:** Custom Script Extensions require that the Azure Virtual Machine Guest Agent is running on the Virtual Machine.
+/// &gt; **Note:** Custom Script Extensions require that the Azure Virtual Machine Guest Agent is running on the Virtual Machine.
 ///
 /// ## Example Usage
 ///
@@ -555,7 +555,7 @@ import 'extension_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -570,42 +570,55 @@ import 'extension_state.dart';
 class Extension extends pulumi.CustomResource {
   /// Specifies if the platform deploys the latest minor version update to the `type_handler_version` specified.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
+
   /// Should the Extension be automatically updated whenever the Publisher releases a new version of this VM Extension?
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
+
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// > **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
+  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
   late final pulumi.Output<bool?> failureSuppressionEnabled;
+
   /// The name of the virtual machine extension peering. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
   ///
-  /// > **Note:** Certain VM Extensions require that the keys in the `protected_settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
+  /// &gt; **Note:** Certain VM Extensions require that the keys in the `protected_settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
   late final pulumi.Output<String?> protectedSettings;
+
   /// A `protected_settings_from_key_vault` block as defined below.
   ///
-  /// > **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
-  late final pulumi.Output<ExtensionProtectedSettingsFromKeyVault?> protectedSettingsFromKeyVault;
+  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  late final pulumi.Output<ExtensionProtectedSettingsFromKeyVault?>
+  protectedSettingsFromKeyVault;
+
   /// Specifies the collection of extension names after which this extension needs to be provisioned.
   late final pulumi.Output<List<String>?> provisionAfterExtensions;
+
   /// The publisher of the extension, available publishers can be found by using the Azure CLI. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publisher;
+
   /// The settings passed to the extension, these are specified as a JSON object in a string.
   ///
-  /// > **Note:** Certain VM Extensions require that the keys in the `settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
+  /// &gt; **Note:** Certain VM Extensions require that the keys in the `settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
   late final pulumi.Output<String?> settings;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of extension, available types for a publisher can be found using the Azure CLI.
   ///
-  /// > **Note:** The `Publisher` and `Type` of Virtual Machine Extensions can be found using the Azure CLI, via:
+  /// &gt; **Note:** The `Publisher` and `Type` of Virtual Machine Extensions can be found using the Azure CLI, via:
   ///
   /// ```shell
   /// az vm extension image list --location westus -o table
   /// ```
   late final pulumi.Output<String> type;
+
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   late final pulumi.Output<String> typeHandlerVersion;
+
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created
   late final pulumi.Output<String> virtualMachineId;
 
@@ -618,24 +631,31 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/extension:Extension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
+         'azure:compute/extension:Extension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>(
+      'failureSuppressionEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.protectedSettingsFromKeyVault = registerOutput<ExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault');
-    this.provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettingsFromKeyVault =
+        registerOutput<ExtensionProtectedSettingsFromKeyVault?>(
+          'protectedSettingsFromKeyVault',
+        );
+    provisionAfterExtensions = registerOutput<List<String>?>(
+      'provisionAfterExtensions',
+    );
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [Extension] resource's state with the given [name] and [id].
@@ -656,23 +676,30 @@ class Extension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/extension:Extension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
+         'azure:compute/extension:Extension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>(
+      'failureSuppressionEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.protectedSettingsFromKeyVault = registerOutput<ExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault');
-    this.provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettingsFromKeyVault =
+        registerOutput<ExtensionProtectedSettingsFromKeyVault?>(
+          'protectedSettingsFromKeyVault',
+        );
+    provisionAfterExtensions = registerOutput<List<String>?>(
+      'provisionAfterExtensions',
+    );
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

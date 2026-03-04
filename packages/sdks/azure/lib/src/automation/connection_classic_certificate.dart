@@ -222,7 +222,7 @@ import 'connection_classic_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -237,16 +237,22 @@ import 'connection_classic_certificate_state.dart';
 class ConnectionClassicCertificate extends pulumi.CustomResource {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The name of the certificate asset.
   late final pulumi.Output<String> certificateAssetName;
+
   /// A description for this Connection.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The id of subscription.
   late final pulumi.Output<String> subscriptionId;
+
   /// The name of subscription.
   late final pulumi.Output<String> subscriptionName;
 
@@ -259,18 +265,18 @@ class ConnectionClassicCertificate extends pulumi.CustomResource {
     ConnectionClassicCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.certificateAssetName = registerOutput<String>('certificateAssetName');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    certificateAssetName = registerOutput<String>('certificateAssetName');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.subscriptionName = registerOutput<String>('subscriptionName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionName = registerOutput<String>('subscriptionName');
   }
 
   /// Gets an existing [ConnectionClassicCertificate] resource's state with the given [name] and [id].
@@ -291,17 +297,17 @@ class ConnectionClassicCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.certificateAssetName = registerOutput<String>('certificateAssetName');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    certificateAssetName = registerOutput<String>('certificateAssetName');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.subscriptionName = registerOutput<String>('subscriptionName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionName = registerOutput<String>('subscriptionName');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableSchemaDefinitionClusteringKey {
   /// The name of the clustering key column.
   final pulumi.Input<String> name;
+
   /// The order modifier. Valid values: `ASC`, `DESC`.
   final pulumi.Input<String> orderBy;
 
@@ -17,17 +18,13 @@ class TableSchemaDefinitionClusteringKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'orderBy': orderBy,
-    };
+    return <String, dynamic>{'name': name, 'orderBy': orderBy};
   }
 
   factory TableSchemaDefinitionClusteringKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinitionClusteringKey(
-      name: (map['name'] as String).input(),
-      orderBy: (map['orderBy'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      orderBy: pulumi.Input.fromValue(map['orderBy'] as String),
     );
   }
 }
-

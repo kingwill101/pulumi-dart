@@ -4,16 +4,15 @@ enum PIMOnlyMode {
   valueEnabled("Enabled"),
   valueReportOnly("ReportOnly");
 
-  const PIMOnlyMode(this.value);
-  final String value;
+  const PIMOnlyMode(this.wireValue);
+  final String wireValue;
 
   static PIMOnlyMode fromValue(String value) {
     for (final item in PIMOnlyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PIMOnlyMode value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeKubernetesConnections {
   /// API Server Internet endpoint.
   final pulumi.Input<String>? apiServerInternet;
+
   /// API Server Intranet endpoint.
   final pulumi.Input<String>? apiServerIntranet;
+
   /// Master node SSH IP address.
   final pulumi.Input<String>? masterPublicIp;
+
   /// Service Access Domain.
   final pulumi.Input<String>? serviceDomain;
 
@@ -35,11 +38,26 @@ class EdgeKubernetesConnections {
 
   factory EdgeKubernetesConnections.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesConnections(
-      apiServerInternet: map['apiServerInternet'] == null ? null : (map['apiServerInternet']! as String).input(),
-      apiServerIntranet: map['apiServerIntranet'] == null ? null : (map['apiServerIntranet']! as String).input(),
-      masterPublicIp: map['masterPublicIp'] == null ? null : (map['masterPublicIp']! as String).input(),
-      serviceDomain: map['serviceDomain'] == null ? null : (map['serviceDomain']! as String).input(),
+      apiServerInternet: (() {
+        final guardedValue = map['apiServerInternet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiServerIntranet: (() {
+        final guardedValue = map['apiServerIntranet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterPublicIp: (() {
+        final guardedValue = map['masterPublicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDomain: (() {
+        final guardedValue = map['serviceDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

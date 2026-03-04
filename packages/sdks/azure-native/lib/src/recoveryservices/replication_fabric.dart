@@ -164,12 +164,16 @@ import 'replication_fabric_args.dart';
 class ReplicationFabric extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Location
   late final pulumi.Output<String?> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Fabric related data.
   late final pulumi.Output<FabricPropertiesResponse> properties;
+
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -182,15 +186,15 @@ class ReplicationFabric extends pulumi.CustomResource {
     ReplicationFabricArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:ReplicationFabric',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:recoveryservices:ReplicationFabric',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<FabricPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<FabricPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

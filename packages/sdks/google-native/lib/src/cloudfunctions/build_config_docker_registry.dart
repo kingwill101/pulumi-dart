@@ -4,16 +4,15 @@ enum BuildConfigDockerRegistry {
   containerRegistry("CONTAINER_REGISTRY"),
   artifactRegistry("ARTIFACT_REGISTRY");
 
-  const BuildConfigDockerRegistry(this.value);
-  final String value;
+  const BuildConfigDockerRegistry(this.wireValue);
+  final String wireValue;
 
   static BuildConfigDockerRegistry fromValue(String value) {
     for (final item in BuildConfigDockerRegistry.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildConfigDockerRegistry value: $value');
   }
 }
-

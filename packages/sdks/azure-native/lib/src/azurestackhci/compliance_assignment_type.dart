@@ -3,16 +3,15 @@ enum ComplianceAssignmentType {
   audit("Audit"),
   applyAndAutoCorrect("ApplyAndAutoCorrect");
 
-  const ComplianceAssignmentType(this.value);
-  final String value;
+  const ComplianceAssignmentType(this.wireValue);
+  final String wireValue;
 
   static ComplianceAssignmentType fromValue(String value) {
     for (final item in ComplianceAssignmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComplianceAssignmentType value: $value');
   }
 }
-

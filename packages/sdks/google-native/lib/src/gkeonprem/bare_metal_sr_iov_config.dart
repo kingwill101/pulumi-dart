@@ -9,20 +9,19 @@ class BareMetalSrIovConfig {
 
   /// Creates a new [BareMetalSrIovConfig].
   /// [enabled] Whether to install the SR-IOV operator.
-  BareMetalSrIovConfig({
-    this.enabled,
-  });
+  BareMetalSrIovConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory BareMetalSrIovConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalSrIovConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

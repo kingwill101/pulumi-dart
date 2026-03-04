@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssetEndpointProfileArgs {
   /// Asset Endpoint Profile name parameter.
   final pulumi.Input<String> assetEndpointProfileName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetAssetEndpointProfileArgs {
 
   factory GetAssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetEndpointProfileArgs(
-      assetEndpointProfileName: (map['assetEndpointProfileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assetEndpointProfileName: pulumi.Input.fromValue(
+        map['assetEndpointProfileName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

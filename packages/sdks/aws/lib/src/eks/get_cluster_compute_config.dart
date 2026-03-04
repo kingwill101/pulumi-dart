@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterComputeConfig {
   /// Whether zonal shift is enabled.
   final pulumi.Input<bool> enabled;
+
   /// List of node pools for the EKS Auto Mode compute capability.
   final pulumi.Input<List<String>> nodePools;
+
   /// The ARN of the IAM Role EKS will assign to EC2 Managed Instances in your EKS Auto Mode cluster.
   final pulumi.Input<String> nodeRoleArn;
 
@@ -30,10 +32,11 @@ class GetClusterComputeConfig {
 
   factory GetClusterComputeConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterComputeConfig(
-      enabled: (map['enabled'] as bool).input(),
-      nodePools: ((map['nodePools'] as List).cast<String>()).input(),
-      nodeRoleArn: (map['nodeRoleArn'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      nodePools: pulumi.Input.fromValue(
+        (map['nodePools'] as List).cast<String>(),
+      ),
+      nodeRoleArn: pulumi.Input.fromValue(map['nodeRoleArn'] as String),
     );
   }
 }
-

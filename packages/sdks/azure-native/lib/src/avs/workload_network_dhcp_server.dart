@@ -7,12 +7,16 @@ class WorkloadNetworkDhcpServer {
   /// Type of DHCP: SERVER or RELAY.
   /// Expected value is 'SERVER'.
   final pulumi.Input<String> dhcpType;
+
   /// Display name of the DHCP entity.
   final pulumi.Input<String>? displayName;
+
   /// DHCP Server Lease Time.
   final pulumi.Input<double>? leaseTime;
+
   /// NSX revision number.
   final pulumi.Input<double>? revision;
+
   /// DHCP Server Address.
   final pulumi.Input<String>? serverAddress;
 
@@ -42,12 +46,27 @@ class WorkloadNetworkDhcpServer {
 
   factory WorkloadNetworkDhcpServer.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpServer(
-      dhcpType: (map['dhcpType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime']! as double).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
+      dhcpType: pulumi.Input.fromValue(map['dhcpType'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      leaseTime: (() {
+        final guardedValue = map['leaseTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      serverAddress: (() {
+        final guardedValue = map['serverAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

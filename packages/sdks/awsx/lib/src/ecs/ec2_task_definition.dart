@@ -10,12 +10,16 @@ import 'package:pulumi_aws/iam.dart' as pulumi_aws_iam;
 class EC2TaskDefinition extends pulumi.ComponentResource {
   /// Auto-created IAM task execution role that the Amazon ECS container agent and the Docker daemon can assume.
   late final pulumi.Output<pulumi_aws_iam.Role?> executionRole;
+
   /// Computed load balancers from target groups specified of container port mappings.
-  late final pulumi.Output<List<pulumi_aws_ecs.ServiceLoadBalancer>> loadBalancers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
+
   /// Auto-created Log Group resource for use by containers.
   late final pulumi.Output<pulumi_aws_cloudwatch.LogGroup?> logGroup;
+
   /// Underlying ECS Task Definition resource
-  late final pulumi.Output<pulumi_aws_ecs.TaskDefinition> taskDefinition;
+  late final pulumi.Output<pulumi_aws_ecs.TaskDefinition?> taskDefinition;
+
   /// Auto-created IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   late final pulumi.Output<pulumi_aws_iam.Role?> taskRole;
 
@@ -28,15 +32,20 @@ class EC2TaskDefinition extends pulumi.ComponentResource {
     EC2TaskDefinitionArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'awsx:ecs:EC2TaskDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.executionRole = registerOutput<pulumi_aws_iam.Role?>('executionRole');
-    this.loadBalancers = registerOutput<List<pulumi_aws_ecs.ServiceLoadBalancer>>('loadBalancers');
-    this.logGroup = registerOutput<pulumi_aws_cloudwatch.LogGroup?>('logGroup');
-    this.taskDefinition = registerOutput<pulumi_aws_ecs.TaskDefinition>('taskDefinition');
-    this.taskRole = registerOutput<pulumi_aws_iam.Role?>('taskRole');
+         'awsx:ecs:EC2TaskDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    executionRole = registerOutput<pulumi_aws_iam.Role?>('executionRole');
+    loadBalancers = registerOutput<List<Map<String, dynamic>>?>(
+      'loadBalancers',
+    );
+    logGroup = registerOutput<pulumi_aws_cloudwatch.LogGroup?>('logGroup');
+    taskDefinition = registerOutput<pulumi_aws_ecs.TaskDefinition?>(
+      'taskDefinition',
+    );
+    taskRole = registerOutput<pulumi_aws_iam.Role?>('taskRole');
   }
 }

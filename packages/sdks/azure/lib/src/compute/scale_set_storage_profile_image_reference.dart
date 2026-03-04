@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSetStorageProfileImageReference {
   /// Specifies the ID of the (custom) image to use to create the virtual machine scale set, as in the example below.
   final pulumi.Input<String>? id;
+
   /// Specifies the offer of the image used to create the virtual machines.
   final pulumi.Input<String>? offer;
+
   /// Specifies the publisher of the image used to create the virtual machines.
   final pulumi.Input<String>? publisher;
+
   /// Specifies the SKU of the image used to create the virtual machines.
   final pulumi.Input<String>? sku;
+
   /// Specifies the version of the image used to create the virtual machines.
   final pulumi.Input<String>? version;
 
@@ -38,14 +42,35 @@ class ScaleSetStorageProfileImageReference {
     };
   }
 
-  factory ScaleSetStorageProfileImageReference.fromMap(Map<String, dynamic> map) {
+  factory ScaleSetStorageProfileImageReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScaleSetStorageProfileImageReference(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

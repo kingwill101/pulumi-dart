@@ -7,6 +7,7 @@ import 'instance_view_status_response.dart';
 class DiskRestorePointReplicationStatusResponse {
   /// Replication completion percentage.
   final pulumi.Input<int>? completionPercent;
+
   /// The resource status information.
   final pulumi.Input<InstanceViewStatusResponse>? status;
 
@@ -21,15 +22,32 @@ class DiskRestorePointReplicationStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completionPercent': ?completionPercent,
-      'status': ?pulumi.Input.mapOptionalInputValue<InstanceViewStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceViewStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
-  factory DiskRestorePointReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory DiskRestorePointReplicationStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiskRestorePointReplicationStatusResponse(
-      completionPercent: map['completionPercent'] == null ? null : (map['completionPercent']! as int).input(),
-      status: map['status'] == null ? null : (InstanceViewStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      completionPercent: (() {
+        final guardedValue = map['completionPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceViewStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

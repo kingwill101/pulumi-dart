@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointConnectionAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// AWS VPC Endpoint ID.
   final pulumi.Input<String> vpcEndpointId;
+
   /// AWS VPC Endpoint Service ID.
   final pulumi.Input<String> vpcEndpointServiceId;
 
@@ -34,10 +36,15 @@ class VpcEndpointConnectionAccepterArgs {
 
   factory VpcEndpointConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
-      vpcEndpointServiceId: (map['vpcEndpointServiceId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
+      vpcEndpointServiceId: pulumi.Input.fromValue(
+        map['vpcEndpointServiceId'] as String,
+      ),
     );
   }
 }
-

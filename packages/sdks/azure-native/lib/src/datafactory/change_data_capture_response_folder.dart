@@ -9,20 +9,19 @@ class ChangeDataCaptureResponseFolder {
 
   /// Creates a new [ChangeDataCaptureResponseFolder].
   /// [name] The name of the folder that this CDC is in.
-  ChangeDataCaptureResponseFolder({
-    this.name,
-  });
+  ChangeDataCaptureResponseFolder({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory ChangeDataCaptureResponseFolder.fromMap(Map<String, dynamic> map) {
     return ChangeDataCaptureResponseFolder(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

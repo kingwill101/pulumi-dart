@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppDapr {
   /// The Dapr Application Identifier.
   final pulumi.Input<String> appId;
+
   /// The port which the application is listening on. This is the same as the `ingress` port.
   final pulumi.Input<int>? appPort;
+
   /// The protocol for the app. Possible values include `http` and `grpc`. Defaults to `http`.
   final pulumi.Input<String>? appProtocol;
 
@@ -14,11 +16,7 @@ class AppDapr {
   /// [appId] The Dapr Application Identifier.
   /// [appPort] The port which the application is listening on. This is the same as the `ingress` port.
   /// [appProtocol] The protocol for the app. Possible values include `http` and `grpc`. Defaults to `http`.
-  AppDapr({
-    required this.appId,
-    this.appPort,
-    this.appProtocol,
-  });
+  AppDapr({required this.appId, this.appPort, this.appProtocol});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,17 @@ class AppDapr {
 
   factory AppDapr.fromMap(Map<String, dynamic> map) {
     return AppDapr(
-      appId: (map['appId'] as String).input(),
-      appPort: map['appPort'] == null ? null : (map['appPort']! as int).input(),
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appPort: (() {
+        final guardedValue = map['appPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      appProtocol: (() {
+        final guardedValue = map['appProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

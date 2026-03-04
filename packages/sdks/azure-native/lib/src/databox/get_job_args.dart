@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobArgs {
   /// $expand is supported on details parameter for job, which provides details on the job stages.
   final pulumi.Input<String>? expand;
+
   /// The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   final pulumi.Input<String> jobName;
+
   /// The Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetJobArgs {
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
     return GetJobArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

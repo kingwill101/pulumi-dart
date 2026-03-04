@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainSysInfoSmbiosChassisEntry {
   /// Specifies the file associated with the firmware configuration entry.
   final pulumi.Input<String>? file;
+
   /// Defines the name of the firmware configuration entry.
   final pulumi.Input<String> name;
+
   /// Sets the value for the firmware configuration entry.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,18 @@ class DomainSysInfoSmbiosChassisEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'file': ?file,
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'file': ?file, 'name': name, 'value': value};
   }
 
   factory DomainSysInfoSmbiosChassisEntry.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosChassisEntry(
-      file: map['file'] == null ? null : (map['file']! as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      file: (() {
+        final guardedValue = map['file'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

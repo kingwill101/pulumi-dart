@@ -8,11 +8,14 @@ import 'sku_recommendation_results_monthly_cost_response.dart';
 class SkuRecommendationResultsAzureSqlDatabaseResponse {
   /// The Monthly cost of the particular SKU.
   final pulumi.Input<SkuRecommendationResultsMonthlyCostResponse>? monthlyCost;
+
   /// Number of blocker issues to fix before migrating to the target platform.
   final pulumi.Input<int>? numberOfServerBlockerIssues;
+
   /// The target recommendation Status for this database.
   final pulumi.Input<String>? recommendationStatus;
-  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku>? targetSku;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku>?
+  targetSku;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponse].
   /// [monthlyCost] The Monthly cost of the particular SKU.
@@ -28,20 +31,53 @@ class SkuRecommendationResultsAzureSqlDatabaseResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monthlyCost': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsMonthlyCostResponse, Map<String, dynamic>>(monthlyCost, (value) => value.toMap()),
+      'monthlyCost':
+          ?pulumi.Input.mapOptionalInputValue<
+            SkuRecommendationResultsMonthlyCostResponse,
+            Map<String, dynamic>
+          >(monthlyCost, (value) => value.toMap()),
       'numberOfServerBlockerIssues': ?numberOfServerBlockerIssues,
       'recommendationStatus': ?recommendationStatus,
-      'targetSku': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku, Map<String, dynamic>>(targetSku, (value) => value.toMap()),
+      'targetSku':
+          ?pulumi.Input.mapOptionalInputValue<
+            SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku,
+            Map<String, dynamic>
+          >(targetSku, (value) => value.toMap()),
     };
   }
 
-  factory SkuRecommendationResultsAzureSqlDatabaseResponse.fromMap(Map<String, dynamic> map) {
+  factory SkuRecommendationResultsAzureSqlDatabaseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SkuRecommendationResultsAzureSqlDatabaseResponse(
-      monthlyCost: map['monthlyCost'] == null ? null : (SkuRecommendationResultsMonthlyCostResponse.fromMap((map['monthlyCost']! as Map).cast<String, dynamic>())).input(),
-      numberOfServerBlockerIssues: map['numberOfServerBlockerIssues'] == null ? null : (map['numberOfServerBlockerIssues']! as int).input(),
-      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus']! as String).input(),
-      targetSku: map['targetSku'] == null ? null : (SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku.fromMap((map['targetSku']! as Map).cast<String, dynamic>())).input(),
+      monthlyCost: (() {
+        final guardedValue = map['monthlyCost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SkuRecommendationResultsMonthlyCostResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      numberOfServerBlockerIssues: (() {
+        final guardedValue = map['numberOfServerBlockerIssues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recommendationStatus: (() {
+        final guardedValue = map['recommendationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSku: (() {
+        final guardedValue = map['targetSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

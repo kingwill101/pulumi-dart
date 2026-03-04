@@ -6,12 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentStacksWhatIfPropertyChangeResponse {
   /// The predicted value after the deployment is executed.
   final pulumi.Input<dynamic>? after;
+
   /// The predicted value before the deployment is executed.
   final pulumi.Input<dynamic>? before;
+
   /// Type of change that will be made to the resource when the deployment is executed.
   final pulumi.Input<String> changeType;
+
   /// Nested property changes.
-  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>? children;
+  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>?
+  children;
+
   /// Type of change that will be made to the resource when the deployment is executed.
   final pulumi.Input<String> path;
 
@@ -34,19 +39,50 @@ class DeploymentStacksWhatIfPropertyChangeResponse {
       'after': ?after,
       'before': ?before,
       'changeType': changeType,
-      'children': ?pulumi.Input.mapOptionalInputValue<List<DeploymentStacksWhatIfPropertyChangeResponse>, List<Map<String, dynamic>>>(children, (value) => pulumi.Input.encodeList<DeploymentStacksWhatIfPropertyChangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'children':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentStacksWhatIfPropertyChangeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            children,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentStacksWhatIfPropertyChangeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'path': path,
     };
   }
 
-  factory DeploymentStacksWhatIfPropertyChangeResponse.fromMap(Map<String, dynamic> map) {
+  factory DeploymentStacksWhatIfPropertyChangeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentStacksWhatIfPropertyChangeResponse(
-      after: map['after'] == null ? null : (map['after']!).input(),
-      before: map['before'] == null ? null : (map['before']!).input(),
-      changeType: (map['changeType'] as String).input(),
-      children: map['children'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['children']!, (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: (map['path'] as String).input(),
+      after: (() {
+        final guardedValue = map['after'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      before: (() {
+        final guardedValue = map['before'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      changeType: pulumi.Input.fromValue(map['changeType'] as String),
+      children: (() {
+        final guardedValue = map['children'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(
+            guardedValue,
+            (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

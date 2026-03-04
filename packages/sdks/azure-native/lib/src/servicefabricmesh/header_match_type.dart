@@ -2,16 +2,15 @@
 enum HeaderMatchType {
   valueExact("exact");
 
-  const HeaderMatchType(this.value);
-  final String value;
+  const HeaderMatchType(this.wireValue);
+  final String wireValue;
 
   static HeaderMatchType fromValue(String value) {
     for (final item in HeaderMatchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HeaderMatchType value: $value');
   }
 }
-

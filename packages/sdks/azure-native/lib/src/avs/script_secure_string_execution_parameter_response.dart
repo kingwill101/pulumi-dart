@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptSecureStringExecutionParameterResponse {
   /// The parameter name
   final pulumi.Input<String> name;
+
   /// A secure value for the passed parameter, not to be stored in logs
   final pulumi.Input<String>? secureValue;
+
   /// script execution parameter type
   /// Expected value is 'SecureValue'.
   final pulumi.Input<String> type;
@@ -30,12 +32,17 @@ class ScriptSecureStringExecutionParameterResponse {
     };
   }
 
-  factory ScriptSecureStringExecutionParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory ScriptSecureStringExecutionParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScriptSecureStringExecutionParameterResponse(
-      name: (map['name'] as String).input(),
-      secureValue: map['secureValue'] == null ? null : (map['secureValue']! as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secureValue: (() {
+        final guardedValue = map['secureValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ class BackendBucketCdnPolicyCacheKeyPolicy {
   /// Allows HTTP request headers (by name) to be used in the
   /// cache key.
   final pulumi.Input<List<String>>? includeHttpHeaders;
+
   /// Names of query string parameters to include in cache keys.
   /// Default parameters are always included. '&' and '=' will
   /// be percent encoded and not treated as delimiters.
@@ -26,11 +27,20 @@ class BackendBucketCdnPolicyCacheKeyPolicy {
     };
   }
 
-  factory BackendBucketCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
+  factory BackendBucketCdnPolicyCacheKeyPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendBucketCdnPolicyCacheKeyPolicy(
-      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders']! as List).cast<String>()).input(),
-      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : ((map['queryStringWhitelists']! as List).cast<String>()).input(),
+      includeHttpHeaders: (() {
+        final guardedValue = map['includeHttpHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      queryStringWhitelists: (() {
+        final guardedValue = map['queryStringWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TermCommitmentPreferences {
   /// Customer preferred Term Duration.
   final pulumi.Input<String>? preferredTermCommitmentDuration;
+
   /// Term Commitment Type
   final pulumi.Input<String> preferredTermCommitmentType;
 
@@ -26,9 +27,14 @@ class TermCommitmentPreferences {
 
   factory TermCommitmentPreferences.fromMap(Map<String, dynamic> map) {
     return TermCommitmentPreferences(
-      preferredTermCommitmentDuration: map['preferredTermCommitmentDuration'] == null ? null : (map['preferredTermCommitmentDuration']! as String).input(),
-      preferredTermCommitmentType: (map['preferredTermCommitmentType'] as String).input(),
+      preferredTermCommitmentDuration: (() {
+        final guardedValue = map['preferredTermCommitmentDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredTermCommitmentType: pulumi.Input.fromValue(
+        map['preferredTermCommitmentType'] as String,
+      ),
     );
   }
 }
-

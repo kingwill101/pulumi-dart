@@ -147,20 +147,28 @@ import 'system_data_response.dart';
 class BookmarkRelation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource ID of the related resource
   late final pulumi.Output<String> relatedResourceId;
+
   /// The resource kind of the related resource
   late final pulumi.Output<String> relatedResourceKind;
+
   /// The name of the related resource
   late final pulumi.Output<String> relatedResourceName;
+
   /// The resource type of the related resource
   late final pulumi.Output<String> relatedResourceType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -173,19 +181,19 @@ class BookmarkRelation extends pulumi.CustomResource {
     BookmarkRelationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:BookmarkRelation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:securityinsights:BookmarkRelation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.relatedResourceId = registerOutput<String>('relatedResourceId');
-    this.relatedResourceKind = registerOutput<String>('relatedResourceKind');
-    this.relatedResourceName = registerOutput<String>('relatedResourceName');
-    this.relatedResourceType = registerOutput<String>('relatedResourceType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    relatedResourceId = registerOutput<String>('relatedResourceId');
+    relatedResourceKind = registerOutput<String>('relatedResourceKind');
+    relatedResourceName = registerOutput<String>('relatedResourceName');
+    relatedResourceType = registerOutput<String>('relatedResourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,10 +7,13 @@ import 'machine_extension_instance_view_response_status.dart';
 class MachineExtensionPropertiesResponseInstanceView {
   /// The machine extension name.
   final pulumi.Input<String> name;
+
   /// Instance view status.
   final pulumi.Input<MachineExtensionInstanceViewResponseStatus>? status;
+
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
   final pulumi.Input<String> type;
+
   /// Specifies the version of the script handler.
   final pulumi.Input<String> typeHandlerVersion;
 
@@ -29,19 +32,34 @@ class MachineExtensionPropertiesResponseInstanceView {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'status': ?pulumi.Input.mapOptionalInputValue<MachineExtensionInstanceViewResponseStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            MachineExtensionInstanceViewResponseStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'type': type,
       'typeHandlerVersion': typeHandlerVersion,
     };
   }
 
-  factory MachineExtensionPropertiesResponseInstanceView.fromMap(Map<String, dynamic> map) {
+  factory MachineExtensionPropertiesResponseInstanceView.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MachineExtensionPropertiesResponseInstanceView(
-      name: (map['name'] as String).input(),
-      status: map['status'] == null ? null : (MachineExtensionInstanceViewResponseStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MachineExtensionInstanceViewResponseStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      typeHandlerVersion: pulumi.Input.fromValue(
+        map['typeHandlerVersion'] as String,
+      ),
     );
   }
 }
-

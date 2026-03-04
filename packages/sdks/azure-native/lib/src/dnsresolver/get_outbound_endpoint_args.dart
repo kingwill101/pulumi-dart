@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutboundEndpointArgs {
   /// The name of the DNS resolver.
   final pulumi.Input<String> dnsResolverName;
+
   /// The name of the outbound endpoint for the DNS resolver.
   final pulumi.Input<String> outboundEndpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetOutboundEndpointArgs {
 
   factory GetOutboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetOutboundEndpointArgs(
-      dnsResolverName: (map['dnsResolverName'] as String).input(),
-      outboundEndpointName: (map['outboundEndpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dnsResolverName: pulumi.Input.fromValue(map['dnsResolverName'] as String),
+      outboundEndpointName: pulumi.Input.fromValue(
+        map['outboundEndpointName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

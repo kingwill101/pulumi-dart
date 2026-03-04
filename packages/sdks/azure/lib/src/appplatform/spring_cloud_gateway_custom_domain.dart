@@ -4,9 +4,9 @@ import 'spring_cloud_gateway_custom_domain_state.dart';
 
 /// Manages a Spring Cloud Gateway Custom Domain.
 ///
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -226,8 +226,10 @@ import 'spring_cloud_gateway_custom_domain_state.dart';
 class SpringCloudGatewayCustomDomain extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud Gateway Custom Domain. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   late final pulumi.Output<String> springCloudGatewayId;
+
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Gateway Custom Domain.
   late final pulumi.Output<String?> thumbprint;
 
@@ -240,14 +242,14 @@ class SpringCloudGatewayCustomDomain extends pulumi.CustomResource {
     SpringCloudGatewayCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGatewayCustomDomain:SpringCloudGatewayCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudGatewayCustomDomain:SpringCloudGatewayCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
-    this.thumbprint = registerOutput<String?>('thumbprint');
+    springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
+    thumbprint = registerOutput<String?>('thumbprint');
   }
 
   /// Gets an existing [SpringCloudGatewayCustomDomain] resource's state with the given [name] and [id].
@@ -268,13 +270,13 @@ class SpringCloudGatewayCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGatewayCustomDomain:SpringCloudGatewayCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudGatewayCustomDomain:SpringCloudGatewayCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
-    this.thumbprint = registerOutput<String?>('thumbprint');
+    springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
+    thumbprint = registerOutput<String?>('thumbprint');
   }
 }

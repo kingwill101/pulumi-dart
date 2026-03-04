@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedThreatProtectionArgs {
   /// Should Advanced Threat Protection be enabled on this resource?
   final pulumi.Input<bool> enabled;
+
   /// The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetResourceId;
 
@@ -29,9 +30,10 @@ class AdvancedThreatProtectionArgs {
 
   factory AdvancedThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return AdvancedThreatProtectionArgs(
-      enabled: (map['enabled'] as bool).input(),
-      targetResourceId: (map['targetResourceId'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      targetResourceId: pulumi.Input.fromValue(
+        map['targetResourceId'] as String,
+      ),
     );
   }
 }
-

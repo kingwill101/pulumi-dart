@@ -6,32 +6,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceSamlConfigurationState {
   /// The admin role values.
   final pulumi.Input<List<String>>? adminRoleValues;
+
   /// The allowed organizations.
   final pulumi.Input<List<String>>? allowedOrganizations;
+
   /// The editor role values.
   final pulumi.Input<List<String>>? editorRoleValues;
+
   /// The email assertion.
   final pulumi.Input<String>? emailAssertion;
+
   /// The groups assertion.
   final pulumi.Input<String>? groupsAssertion;
+
   /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   final pulumi.Input<String>? idpMetadataUrl;
+
   /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   final pulumi.Input<String>? idpMetadataXml;
+
   /// The login assertion.
   final pulumi.Input<String>? loginAssertion;
+
   /// The login validity duration.
   final pulumi.Input<int>? loginValidityDuration;
+
   /// The name assertion.
   final pulumi.Input<String>? nameAssertion;
+
   /// The org assertion.
   final pulumi.Input<String>? orgAssertion;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The role assertion.
   final pulumi.Input<String>? roleAssertion;
+
   /// The status of the SAML configuration.
   final pulumi.Input<String>? status;
+
   /// The workspace id.
   ///
   /// The following arguments are optional:
@@ -93,22 +107,81 @@ class WorkspaceSamlConfigurationState {
 
   factory WorkspaceSamlConfigurationState.fromMap(Map<String, dynamic> map) {
     return WorkspaceSamlConfigurationState(
-      adminRoleValues: map['adminRoleValues'] == null ? null : (((map['adminRoleValues'] as List).cast<String>()).input()).input(),
-      allowedOrganizations: map['allowedOrganizations'] == null ? null : (((map['allowedOrganizations'] as List).cast<String>()).input()).input(),
-      editorRoleValues: map['editorRoleValues'] == null ? null : (((map['editorRoleValues'] as List).cast<String>()).input()).input(),
-      emailAssertion: map['emailAssertion'] == null ? null : ((map['emailAssertion'] as String).input()).input(),
-      groupsAssertion: map['groupsAssertion'] == null ? null : ((map['groupsAssertion'] as String).input()).input(),
-      idpMetadataUrl: map['idpMetadataUrl'] == null ? null : ((map['idpMetadataUrl'] as String).input()).input(),
-      idpMetadataXml: map['idpMetadataXml'] == null ? null : ((map['idpMetadataXml'] as String).input()).input(),
-      loginAssertion: map['loginAssertion'] == null ? null : ((map['loginAssertion'] as String).input()).input(),
-      loginValidityDuration: map['loginValidityDuration'] == null ? null : ((map['loginValidityDuration'] as int).input()).input(),
-      nameAssertion: map['nameAssertion'] == null ? null : ((map['nameAssertion'] as String).input()).input(),
-      orgAssertion: map['orgAssertion'] == null ? null : ((map['orgAssertion'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleAssertion: map['roleAssertion'] == null ? null : ((map['roleAssertion'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
+      adminRoleValues: (() {
+        final guardedValue = map['adminRoleValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowedOrganizations: (() {
+        final guardedValue = map['allowedOrganizations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      editorRoleValues: (() {
+        final guardedValue = map['editorRoleValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      emailAssertion: (() {
+        final guardedValue = map['emailAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupsAssertion: (() {
+        final guardedValue = map['groupsAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idpMetadataUrl: (() {
+        final guardedValue = map['idpMetadataUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idpMetadataXml: (() {
+        final guardedValue = map['idpMetadataXml'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginAssertion: (() {
+        final guardedValue = map['loginAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginValidityDuration: (() {
+        final guardedValue = map['loginValidityDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nameAssertion: (() {
+        final guardedValue = map['nameAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgAssertion: (() {
+        final guardedValue = map['orgAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleAssertion: (() {
+        final guardedValue = map['roleAssertion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

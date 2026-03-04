@@ -4,16 +4,15 @@ enum RuleCacheBehavior {
   overrideAlways("OverrideAlways"),
   overrideIfOriginMissing("OverrideIfOriginMissing");
 
-  const RuleCacheBehavior(this.value);
-  final String value;
+  const RuleCacheBehavior(this.wireValue);
+  final String wireValue;
 
   static RuleCacheBehavior fromValue(String value) {
     for (final item in RuleCacheBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleCacheBehavior value: $value');
   }
 }
-

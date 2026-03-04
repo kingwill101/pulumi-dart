@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule {
   /// Describes the override action to be applied when rule matches. Possible values are `Allow`, `AnomalyScoring`, `Block`, `JSChallenge` and `Log`. `JSChallenge` is only valid for rulesets of type `Microsoft_BotManagerRuleSet`.
   final pulumi.Input<String>? action;
+
   /// Describes if the managed rule is in enabled state or disabled state. Defaults to `false`.
   final pulumi.Input<bool>? enabled;
+
   /// Identifier for the managed rule.
   final pulumi.Input<String> id;
 
@@ -21,19 +23,24 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-      'enabled': ?enabled,
-      'id': id,
-    };
+    return <String, dynamic>{'action': ?action, 'enabled': ?enabled, 'id': id};
   }
 
-  factory PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule.fromMap(Map<String, dynamic> map) {
+  factory PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      id: (map['id'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

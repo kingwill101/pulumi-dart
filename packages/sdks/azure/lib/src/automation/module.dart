@@ -207,7 +207,7 @@ import 'module_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -222,10 +222,13 @@ import 'module_state.dart';
 class Module extends pulumi.CustomResource {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// A `module_link` block as defined below.
   late final pulumi.Output<ModuleModuleLink> moduleLink;
+
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -233,20 +236,17 @@ class Module extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Module]. {@macro pulumi_automation_module_module_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Module(
-    String name, {
-    ModuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:automation/module:Module',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
+  Module(String name, {ModuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:automation/module:Module',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [Module] resource's state with the given [name] and [id].
@@ -267,14 +267,14 @@ class Module extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/module:Module',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
+         'azure:automation/module:Module',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

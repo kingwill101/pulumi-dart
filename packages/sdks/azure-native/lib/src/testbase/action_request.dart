@@ -133,15 +133,20 @@ class ActionRequest extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> creationDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
-  late final pulumi.Output<PreReleaseAccessRequestSpecResponse?> preReleaseAccessRequestSpec;
+  late final pulumi.Output<PreReleaseAccessRequestSpecResponse?>
+  preReleaseAccessRequestSpec;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<String> requestType;
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -154,19 +159,22 @@ class ActionRequest extends pulumi.CustomResource {
     ActionRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:testbase:ActionRequest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
+         'azure-native:testbase:ActionRequest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
     this.name = registerOutput<String>('name');
-    this.preReleaseAccessRequestSpec = registerOutput<PreReleaseAccessRequestSpecResponse?>('preReleaseAccessRequestSpec');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requestType = registerOutput<String>('requestType');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    preReleaseAccessRequestSpec =
+        registerOutput<PreReleaseAccessRequestSpecResponse?>(
+          'preReleaseAccessRequestSpec',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    requestType = registerOutput<String>('requestType');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

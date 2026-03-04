@@ -217,8 +217,10 @@ import 'ssh_key_state.dart';
 class SshKey extends pulumi.CustomResource {
   /// The date this SSH Key was created.
   late final pulumi.Output<String> created;
+
   /// A label for the SSH Key.
   late final pulumi.Output<String> label;
+
   /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
   late final pulumi.Output<String> sshKey;
 
@@ -226,19 +228,16 @@ class SshKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SshKey]. {@macro pulumi_index_ssh_key_ssh_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SshKey(
-    String name, {
-    SshKeyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/sshKey:SshKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.label = registerOutput<String>('label');
-    this.sshKey = registerOutput<String>('sshKey');
+  SshKey(String name, {SshKeyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/sshKey:SshKey',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    created = registerOutput<String>('created');
+    label = registerOutput<String>('label');
+    sshKey = registerOutput<String>('sshKey');
   }
 
   /// Gets an existing [SshKey] resource's state with the given [name] and [id].
@@ -259,13 +258,13 @@ class SshKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/sshKey:SshKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.label = registerOutput<String>('label');
-    this.sshKey = registerOutput<String>('sshKey');
+         'linode:index/sshKey:SshKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    label = registerOutput<String>('label');
+    sshKey = registerOutput<String>('sshKey');
   }
 }

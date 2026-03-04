@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getExport.
 class GetExportResult {
   final String apiId;
+
   /// ID of the API.
   final String body;
   final String? exportVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includeExtensions;
@@ -55,14 +56,25 @@ class GetExportResult {
     return GetExportResult(
       apiId: map['apiId'] as String,
       body: map['body'] as String,
-      exportVersion: map['exportVersion'] == null ? null : map['exportVersion'] as String,
+      exportVersion: (() {
+        final guardedValue = map['exportVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      includeExtensions: map['includeExtensions'] == null ? null : map['includeExtensions'] as bool,
+      includeExtensions: (() {
+        final guardedValue = map['includeExtensions'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       outputType: map['outputType'] as String,
       region: map['region'] as String,
       specification: map['specification'] as String,
-      stageName: map['stageName'] == null ? null : map['stageName'] as String,
+      stageName: (() {
+        final guardedValue = map['stageName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

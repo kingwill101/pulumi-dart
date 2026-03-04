@@ -10,20 +10,27 @@ class ListConnectedEnvironmentsDaprComponentSecretsResult {
 
   /// Creates a new [ListConnectedEnvironmentsDaprComponentSecretsResult].
   /// [value] Collection of secrets used by a Dapr component
-  ListConnectedEnvironmentsDaprComponentSecretsResult({
-    required this.value,
-  });
+  ListConnectedEnvironmentsDaprComponentSecretsResult({required this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': pulumi.Input.encodeList<DaprSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<DaprSecretResponse, Map<String, dynamic>>(
+            value,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory ListConnectedEnvironmentsDaprComponentSecretsResult.fromMap(Map<String, dynamic> map) {
+  factory ListConnectedEnvironmentsDaprComponentSecretsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListConnectedEnvironmentsDaprComponentSecretsResult(
-      value: pulumi.Input.decodeList<DaprSecretResponse>(map['value'], (value) => DaprSecretResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<DaprSecretResponse>(
+        map['value']!,
+        (value) =>
+            DaprSecretResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

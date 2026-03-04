@@ -1,5 +1,3 @@
-library module_fileshares;
-
 export 'fileshares/file_share.dart';
 export 'fileshares/file_share_args.dart';
 export 'fileshares/file_share_limits_output_response.dart';

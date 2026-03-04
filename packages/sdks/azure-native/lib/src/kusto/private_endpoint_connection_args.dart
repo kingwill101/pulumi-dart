@@ -10,10 +10,14 @@ import 'private_link_service_connection_state_property.dart';
 class PrivateEndpointConnectionArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the private endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
+
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateProperty> privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateProperty>
+  privateLinkServiceConnectionState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +37,32 @@ class PrivateEndpointConnectionArgs {
     return <String, dynamic>{
       'clusterName': clusterName,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionStateProperty, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          pulumi.Input.mapInputValue<
+            PrivateLinkServiceConnectionStateProperty,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
-      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionStateProperty.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      privateEndpointConnectionName: (() {
+        final guardedValue = map['privateEndpointConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(
+        PrivateLinkServiceConnectionStateProperty.fromMap(
+          (map['privateLinkServiceConnectionState']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

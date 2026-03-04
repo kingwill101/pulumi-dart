@@ -1,5 +1,3 @@
-library module_mediaconvert;
-
 export 'mediaconvert/functions.dart';
 export 'mediaconvert/get_queue_args.dart';
 export 'mediaconvert/get_queue_result.dart';

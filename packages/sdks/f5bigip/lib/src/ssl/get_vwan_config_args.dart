@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVWanConfigArgs {
   /// Name of the Azure vWAN Name
   final pulumi.Input<String> azureVwanName;
+
   /// Name of the Azure vWAN resource group
   final pulumi.Input<String> azureVwanResourcegroup;
+
   /// Name of the Azure vWAN VPN site from which configuration to be download
   final pulumi.Input<String> azureVwanVpnsite;
 
@@ -34,10 +36,13 @@ class GetVWanConfigArgs {
 
   factory GetVWanConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetVWanConfigArgs(
-      azureVwanName: (map['azureVwanName'] as String).input(),
-      azureVwanResourcegroup: (map['azureVwanResourcegroup'] as String).input(),
-      azureVwanVpnsite: (map['azureVwanVpnsite'] as String).input(),
+      azureVwanName: pulumi.Input.fromValue(map['azureVwanName'] as String),
+      azureVwanResourcegroup: pulumi.Input.fromValue(
+        map['azureVwanResourcegroup'] as String,
+      ),
+      azureVwanVpnsite: pulumi.Input.fromValue(
+        map['azureVwanVpnsite'] as String,
+      ),
     );
   }
 }
-

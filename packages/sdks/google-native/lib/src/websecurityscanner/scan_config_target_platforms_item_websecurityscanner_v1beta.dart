@@ -5,16 +5,20 @@ enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta {
   cloudRun("CLOUD_RUN"),
   cloudFunctions("CLOUD_FUNCTIONS");
 
-  const ScanConfigTargetPlatformsItemWebsecurityscannerV1beta(this.value);
-  final String value;
+  const ScanConfigTargetPlatformsItemWebsecurityscannerV1beta(this.wireValue);
+  final String wireValue;
 
-  static ScanConfigTargetPlatformsItemWebsecurityscannerV1beta fromValue(String value) {
-    for (final item in ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.values) {
-      if (item.value == value) {
+  static ScanConfigTargetPlatformsItemWebsecurityscannerV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigTargetPlatformsItemWebsecurityscannerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigTargetPlatformsItemWebsecurityscannerV1beta value: $value',
+    );
   }
 }
-

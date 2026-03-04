@@ -1,138 +1,162 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_pulumiservice;
-
-import 'package:pulumi_pulumiservice/index.dart' as _index;
-import 'package:pulumi_pulumiservice/providers.dart' as _providers;
+import 'package:pulumi_pulumiservice/index.dart' as module_index;
+import 'package:pulumi_pulumiservice/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final AWSOIDCConfiguration = _index.AWSOIDCConfiguration.new;
-  final AWSOIDCConfigurationArgs = _index.AWSOIDCConfiguration.new;
-  final AccessToken = _index.AccessToken.new;
-  final AccessTokenArgs = _index.AccessTokenArgs.new;
-  final AgentPool = _index.AgentPool.new;
-  final AgentPoolArgs = _index.AgentPoolArgs.new;
-  final ApprovalRule = _index.ApprovalRule.new;
-  final ApprovalRuleArgs = _index.ApprovalRuleArgs.new;
-  final ApprovalRuleConfig = _index.ApprovalRuleConfig.new;
-  final ApprovalRuleConfigArgs = _index.ApprovalRuleConfig.new;
-  final AuthPolicyDecision = _index.AuthPolicyDecision.values;
-  final AuthPolicyDefinition = _index.AuthPolicyDefinition.new;
-  final AuthPolicyDefinitionArgs = _index.AuthPolicyDefinition.new;
-  final AuthPolicyPermissionLevel = _index.AuthPolicyPermissionLevel.values;
-  final AuthPolicyTokenType = _index.AuthPolicyTokenType.values;
-  final AzureOIDCConfiguration = _index.AzureOIDCConfiguration.new;
-  final AzureOIDCConfigurationArgs = _index.AzureOIDCConfiguration.new;
-  final CloudProvider = _index.CloudProvider.values;
-  final DeploymentSchedule = _index.DeploymentSchedule.new;
-  final DeploymentScheduleArgs = _index.DeploymentScheduleArgs.new;
-  final DeploymentSettings = _index.DeploymentSettings.new;
-  final DeploymentSettingsArgs = _index.DeploymentSettingsArgs.new;
-  final DeploymentSettingsCacheOptions = _index.DeploymentSettingsCacheOptions.new;
-  final DeploymentSettingsCacheOptionsArgs = _index.DeploymentSettingsCacheOptions.new;
-  final DeploymentSettingsExecutorContext = _index.DeploymentSettingsExecutorContext.new;
-  final DeploymentSettingsExecutorContextArgs = _index.DeploymentSettingsExecutorContext.new;
-  final DeploymentSettingsGitAuthBasicAuth = _index.DeploymentSettingsGitAuthBasicAuth.new;
-  final DeploymentSettingsGitAuthBasicAuthArgs = _index.DeploymentSettingsGitAuthBasicAuth.new;
-  final DeploymentSettingsGitAuthSSHAuth = _index.DeploymentSettingsGitAuthSSHAuth.new;
-  final DeploymentSettingsGitAuthSSHAuthArgs = _index.DeploymentSettingsGitAuthSSHAuth.new;
-  final DeploymentSettingsGitSource = _index.DeploymentSettingsGitSource.new;
-  final DeploymentSettingsGitSourceArgs = _index.DeploymentSettingsGitSource.new;
-  final DeploymentSettingsGitSourceGitAuth = _index.DeploymentSettingsGitSourceGitAuth.new;
-  final DeploymentSettingsGitSourceGitAuthArgs = _index.DeploymentSettingsGitSourceGitAuth.new;
-  final DeploymentSettingsGithub = _index.DeploymentSettingsGithub.new;
-  final DeploymentSettingsGithubArgs = _index.DeploymentSettingsGithub.new;
-  final DeploymentSettingsOperationContext = _index.DeploymentSettingsOperationContext.new;
-  final DeploymentSettingsOperationContextArgs = _index.DeploymentSettingsOperationContext.new;
-  final DeploymentSettingsSourceContext = _index.DeploymentSettingsSourceContext.new;
-  final DeploymentSettingsSourceContextArgs = _index.DeploymentSettingsSourceContext.new;
-  final DriftSchedule = _index.DriftSchedule.new;
-  final DriftScheduleArgs = _index.DriftScheduleArgs.new;
-  final EligibleApprover = _index.EligibleApprover.new;
-  final EligibleApproverArgs = _index.EligibleApprover.new;
-  final Environment = _index.Environment.new;
-  final EnvironmentArgs = _index.EnvironmentArgs.new;
-  final EnvironmentIdentifier = _index.EnvironmentIdentifier.new;
-  final EnvironmentIdentifierArgs = _index.EnvironmentIdentifier.new;
-  final EnvironmentPermission = _index.EnvironmentPermission.values;
-  final EnvironmentRotationSchedule = _index.EnvironmentRotationSchedule.new;
-  final EnvironmentRotationScheduleArgs = _index.EnvironmentRotationScheduleArgs.new;
-  final EnvironmentVersionTag = _index.EnvironmentVersionTag.new;
-  final EnvironmentVersionTagArgs = _index.EnvironmentVersionTagArgs.new;
-  final GCPOIDCConfiguration = _index.GCPOIDCConfiguration.new;
-  final GCPOIDCConfigurationArgs = _index.GCPOIDCConfiguration.new;
-  final GetInsightsAccountArgs = _index.GetInsightsAccountArgs.new;
-  final GetInsightsAccountResult = _index.GetInsightsAccountResult.new;
-  final GetInsightsAccountResultArgs = _index.GetInsightsAccountResult.new;
-  final GetInsightsAccountsArgs = _index.GetInsightsAccountsArgs.new;
-  final GetInsightsAccountsResult = _index.GetInsightsAccountsResult.new;
-  final GetInsightsAccountsResultArgs = _index.GetInsightsAccountsResult.new;
-  final GetPolicyPackArgs = _index.GetPolicyPackArgs.new;
-  final GetPolicyPackResult = _index.GetPolicyPackResult.new;
-  final GetPolicyPackResultArgs = _index.GetPolicyPackResult.new;
-  final GetPolicyPacksArgs = _index.GetPolicyPacksArgs.new;
-  final GetPolicyPacksResult = _index.GetPolicyPacksResult.new;
-  final GetPolicyPacksResultArgs = _index.GetPolicyPacksResult.new;
-  final InsightsAccount = _index.InsightsAccount.new;
-  final InsightsAccountArgs = _index.InsightsAccountArgs.new;
-  final InsightsAccountState = _index.InsightsAccountState.new;
-  final InsightsAccountStateArgs = _index.InsightsAccountState.new;
-  final OidcIssuer = _index.OidcIssuer.new;
-  final OidcIssuerArgs = _index.OidcIssuerArgs.new;
-  final OperationContextOIDC = _index.OperationContextOIDC.new;
-  final OperationContextOIDCArgs = _index.OperationContextOIDC.new;
-  final OperationContextOptions = _index.OperationContextOptions.new;
-  final OperationContextOptionsArgs = _index.OperationContextOptions.new;
-  final OrgAccessToken = _index.OrgAccessToken.new;
-  final OrgAccessTokenArgs = _index.OrgAccessTokenArgs.new;
-  final PolicyGroup = _index.PolicyGroup.new;
-  final PolicyGroupArgs = _index.PolicyGroupArgs.new;
-  final PolicyGroupPolicyPackReference = _index.PolicyGroupPolicyPackReference.new;
-  final PolicyGroupPolicyPackReferenceArgs = _index.PolicyGroupPolicyPackReference.new;
-  final PolicyGroupStackReference = _index.PolicyGroupStackReference.new;
-  final PolicyGroupStackReferenceArgs = _index.PolicyGroupStackReference.new;
-  final PulumiOperation = _index.PulumiOperation.values;
-  final RbacPermission = _index.RbacPermission.values;
-  final ScanSchedule = _index.ScanSchedule.values;
-  final Stack = _index.Stack.new;
-  final StackArgs = _index.StackArgs.new;
-  final StackTag = _index.StackTag.new;
-  final StackTagArgs = _index.StackTagArgs.new;
-  final TargetActionType = _index.TargetActionType.values;
-  final Team = _index.Team.new;
-  final TeamAccessToken = _index.TeamAccessToken.new;
-  final TeamAccessTokenArgs = _index.TeamAccessTokenArgs.new;
-  final TeamArgs = _index.TeamArgs.new;
-  final TeamEnvironmentPermission = _index.TeamEnvironmentPermission.new;
-  final TeamEnvironmentPermissionArgs = _index.TeamEnvironmentPermissionArgs.new;
-  final TeamStackPermission = _index.TeamStackPermission.new;
-  final TeamStackPermissionArgs = _index.TeamStackPermissionArgs.new;
-  final TeamStackPermissionScope = _index.TeamStackPermissionScope.values;
-  final TemplateSource = _index.TemplateSource.new;
-  final TemplateSourceArgs = _index.TemplateSourceArgs.new;
-  final TemplateSourceDestination = _index.TemplateSourceDestination.new;
-  final TemplateSourceDestinationArgs = _index.TemplateSourceDestination.new;
-  final TtlSchedule = _index.TtlSchedule.new;
-  final TtlScheduleArgs = _index.TtlScheduleArgs.new;
-  final Webhook = _index.Webhook.new;
-  final WebhookArgs = _index.WebhookArgs.new;
-  final WebhookFilters = _index.WebhookFilters.values;
-  final WebhookFormat = _index.WebhookFormat.values;
-  final WebhookGroup = _index.WebhookGroup.values;
-  final getInsightsAccount = _index.getInsightsAccount;
-  final getInsightsAccounts = _index.getInsightsAccounts;
-  final getPolicyPack = _index.getPolicyPack;
-  final getPolicyPacks = _index.getPolicyPacks;
+  final AWSOIDCConfiguration = module_index.AWSOIDCConfiguration.new;
+  final AWSOIDCConfigurationArgs = module_index.AWSOIDCConfiguration.new;
+  final AccessToken = module_index.AccessToken.new;
+  final AccessTokenArgs = module_index.AccessTokenArgs.new;
+  final AgentPool = module_index.AgentPool.new;
+  final AgentPoolArgs = module_index.AgentPoolArgs.new;
+  final ApprovalRule = module_index.ApprovalRule.new;
+  final ApprovalRuleArgs = module_index.ApprovalRuleArgs.new;
+  final ApprovalRuleConfig = module_index.ApprovalRuleConfig.new;
+  final ApprovalRuleConfigArgs = module_index.ApprovalRuleConfig.new;
+  final AuthPolicyDecision = module_index.AuthPolicyDecision.values;
+  final AuthPolicyDefinition = module_index.AuthPolicyDefinition.new;
+  final AuthPolicyDefinitionArgs = module_index.AuthPolicyDefinition.new;
+  final AuthPolicyPermissionLevel =
+      module_index.AuthPolicyPermissionLevel.values;
+  final AuthPolicyTokenType = module_index.AuthPolicyTokenType.values;
+  final AzureOIDCConfiguration = module_index.AzureOIDCConfiguration.new;
+  final AzureOIDCConfigurationArgs = module_index.AzureOIDCConfiguration.new;
+  final CloudProvider = module_index.CloudProvider.values;
+  final DeploymentSchedule = module_index.DeploymentSchedule.new;
+  final DeploymentScheduleArgs = module_index.DeploymentScheduleArgs.new;
+  final DeploymentSettings = module_index.DeploymentSettings.new;
+  final DeploymentSettingsArgs = module_index.DeploymentSettingsArgs.new;
+  final DeploymentSettingsCacheOptions =
+      module_index.DeploymentSettingsCacheOptions.new;
+  final DeploymentSettingsCacheOptionsArgs =
+      module_index.DeploymentSettingsCacheOptions.new;
+  final DeploymentSettingsExecutorContext =
+      module_index.DeploymentSettingsExecutorContext.new;
+  final DeploymentSettingsExecutorContextArgs =
+      module_index.DeploymentSettingsExecutorContext.new;
+  final DeploymentSettingsGitAuthBasicAuth =
+      module_index.DeploymentSettingsGitAuthBasicAuth.new;
+  final DeploymentSettingsGitAuthBasicAuthArgs =
+      module_index.DeploymentSettingsGitAuthBasicAuth.new;
+  final DeploymentSettingsGitAuthSSHAuth =
+      module_index.DeploymentSettingsGitAuthSSHAuth.new;
+  final DeploymentSettingsGitAuthSSHAuthArgs =
+      module_index.DeploymentSettingsGitAuthSSHAuth.new;
+  final DeploymentSettingsGitSource =
+      module_index.DeploymentSettingsGitSource.new;
+  final DeploymentSettingsGitSourceArgs =
+      module_index.DeploymentSettingsGitSource.new;
+  final DeploymentSettingsGitSourceGitAuth =
+      module_index.DeploymentSettingsGitSourceGitAuth.new;
+  final DeploymentSettingsGitSourceGitAuthArgs =
+      module_index.DeploymentSettingsGitSourceGitAuth.new;
+  final DeploymentSettingsGithub = module_index.DeploymentSettingsGithub.new;
+  final DeploymentSettingsGithubArgs =
+      module_index.DeploymentSettingsGithub.new;
+  final DeploymentSettingsOperationContext =
+      module_index.DeploymentSettingsOperationContext.new;
+  final DeploymentSettingsOperationContextArgs =
+      module_index.DeploymentSettingsOperationContext.new;
+  final DeploymentSettingsSourceContext =
+      module_index.DeploymentSettingsSourceContext.new;
+  final DeploymentSettingsSourceContextArgs =
+      module_index.DeploymentSettingsSourceContext.new;
+  final DriftSchedule = module_index.DriftSchedule.new;
+  final DriftScheduleArgs = module_index.DriftScheduleArgs.new;
+  final EligibleApprover = module_index.EligibleApprover.new;
+  final EligibleApproverArgs = module_index.EligibleApprover.new;
+  final Environment = module_index.Environment.new;
+  final EnvironmentArgs = module_index.EnvironmentArgs.new;
+  final EnvironmentIdentifier = module_index.EnvironmentIdentifier.new;
+  final EnvironmentIdentifierArgs = module_index.EnvironmentIdentifier.new;
+  final EnvironmentPermission = module_index.EnvironmentPermission.values;
+  final EnvironmentRotationSchedule =
+      module_index.EnvironmentRotationSchedule.new;
+  final EnvironmentRotationScheduleArgs =
+      module_index.EnvironmentRotationScheduleArgs.new;
+  final EnvironmentVersionTag = module_index.EnvironmentVersionTag.new;
+  final EnvironmentVersionTagArgs = module_index.EnvironmentVersionTagArgs.new;
+  final GCPOIDCConfiguration = module_index.GCPOIDCConfiguration.new;
+  final GCPOIDCConfigurationArgs = module_index.GCPOIDCConfiguration.new;
+  final GetInsightsAccountArgs = module_index.GetInsightsAccountArgs.new;
+  final GetInsightsAccountResult = module_index.GetInsightsAccountResult.new;
+  final GetInsightsAccountResultArgs =
+      module_index.GetInsightsAccountResult.new;
+  final GetInsightsAccountsArgs = module_index.GetInsightsAccountsArgs.new;
+  final GetInsightsAccountsResult = module_index.GetInsightsAccountsResult.new;
+  final GetInsightsAccountsResultArgs =
+      module_index.GetInsightsAccountsResult.new;
+  final GetPolicyPackArgs = module_index.GetPolicyPackArgs.new;
+  final GetPolicyPackResult = module_index.GetPolicyPackResult.new;
+  final GetPolicyPackResultArgs = module_index.GetPolicyPackResult.new;
+  final GetPolicyPacksArgs = module_index.GetPolicyPacksArgs.new;
+  final GetPolicyPacksResult = module_index.GetPolicyPacksResult.new;
+  final GetPolicyPacksResultArgs = module_index.GetPolicyPacksResult.new;
+  final InsightsAccount = module_index.InsightsAccount.new;
+  final InsightsAccountArgs = module_index.InsightsAccountArgs.new;
+  final InsightsAccountState = module_index.InsightsAccountState.new;
+  final InsightsAccountStateArgs = module_index.InsightsAccountState.new;
+  final OidcIssuer = module_index.OidcIssuer.new;
+  final OidcIssuerArgs = module_index.OidcIssuerArgs.new;
+  final OperationContextOIDC = module_index.OperationContextOIDC.new;
+  final OperationContextOIDCArgs = module_index.OperationContextOIDC.new;
+  final OperationContextOptions = module_index.OperationContextOptions.new;
+  final OperationContextOptionsArgs = module_index.OperationContextOptions.new;
+  final OrgAccessToken = module_index.OrgAccessToken.new;
+  final OrgAccessTokenArgs = module_index.OrgAccessTokenArgs.new;
+  final PolicyGroup = module_index.PolicyGroup.new;
+  final PolicyGroupArgs = module_index.PolicyGroupArgs.new;
+  final PolicyGroupPolicyPackReference =
+      module_index.PolicyGroupPolicyPackReference.new;
+  final PolicyGroupPolicyPackReferenceArgs =
+      module_index.PolicyGroupPolicyPackReference.new;
+  final PolicyGroupStackReference = module_index.PolicyGroupStackReference.new;
+  final PolicyGroupStackReferenceArgs =
+      module_index.PolicyGroupStackReference.new;
+  final PulumiOperation = module_index.PulumiOperation.values;
+  final RbacPermission = module_index.RbacPermission.values;
+  final ScanSchedule = module_index.ScanSchedule.values;
+  final Stack = module_index.Stack.new;
+  final StackArgs = module_index.StackArgs.new;
+  final StackTag = module_index.StackTag.new;
+  final StackTagArgs = module_index.StackTagArgs.new;
+  final TargetActionType = module_index.TargetActionType.values;
+  final Team = module_index.Team.new;
+  final TeamAccessToken = module_index.TeamAccessToken.new;
+  final TeamAccessTokenArgs = module_index.TeamAccessTokenArgs.new;
+  final TeamArgs = module_index.TeamArgs.new;
+  final TeamEnvironmentPermission = module_index.TeamEnvironmentPermission.new;
+  final TeamEnvironmentPermissionArgs =
+      module_index.TeamEnvironmentPermissionArgs.new;
+  final TeamStackPermission = module_index.TeamStackPermission.new;
+  final TeamStackPermissionArgs = module_index.TeamStackPermissionArgs.new;
+  final TeamStackPermissionScope = module_index.TeamStackPermissionScope.values;
+  final TemplateSource = module_index.TemplateSource.new;
+  final TemplateSourceArgs = module_index.TemplateSourceArgs.new;
+  final TemplateSourceDestination = module_index.TemplateSourceDestination.new;
+  final TemplateSourceDestinationArgs =
+      module_index.TemplateSourceDestination.new;
+  final TtlSchedule = module_index.TtlSchedule.new;
+  final TtlScheduleArgs = module_index.TtlScheduleArgs.new;
+  final Webhook = module_index.Webhook.new;
+  final WebhookArgs = module_index.WebhookArgs.new;
+  final WebhookFilters = module_index.WebhookFilters.values;
+  final WebhookFormat = module_index.WebhookFormat.values;
+  final WebhookGroup = module_index.WebhookGroup.values;
+  final getInsightsAccount = module_index.getInsightsAccount;
+  final getInsightsAccounts = module_index.getInsightsAccounts;
+  final getPolicyPack = module_index.getPolicyPack;
+  final getPolicyPacks = module_index.getPolicyPacks;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final Pulumiservice = _providers.ProviderProvider.new;
-  final PulumiserviceArgs = _providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final Pulumiservice = module_providers.ProviderProvider.new;
+  final PulumiserviceArgs = module_providers.ProviderArgs.new;
 }
-

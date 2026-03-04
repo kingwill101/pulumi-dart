@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerServicePublicDomainNamesCertificate {
   /// Name of the certificate.
   final pulumi.Input<String> certificateName;
+
   /// List of domain names for the certificate.
   final pulumi.Input<List<String>> domainNames;
 
@@ -23,11 +24,14 @@ class ContainerServicePublicDomainNamesCertificate {
     };
   }
 
-  factory ContainerServicePublicDomainNamesCertificate.fromMap(Map<String, dynamic> map) {
+  factory ContainerServicePublicDomainNamesCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerServicePublicDomainNamesCertificate(
-      certificateName: (map['certificateName'] as String).input(),
-      domainNames: ((map['domainNames'] as List).cast<String>()).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      domainNames: pulumi.Input.fromValue(
+        (map['domainNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

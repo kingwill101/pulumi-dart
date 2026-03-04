@@ -8,23 +8,34 @@ import 'get_policy_set_definition_policy_definition_reference.dart';
 class GetPolicySetDefinitionResult {
   /// The description of this policy definition group.
   final String description;
+
   /// The display name of this policy definition group.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? managementGroupName;
+
   /// Any Metadata defined in the Policy Set Definition.
   final String metadata;
+
   /// The name of this policy definition group.
   final String name;
+
   /// The mapping of the parameter values for the referenced policy rule. The keys are the parameter names.
   final String parameters;
+
   /// One or more `policy_definition_group` blocks as defined below.
-  final List<GetPolicySetDefinitionPolicyDefinitionGroup> policyDefinitionGroups;
+  final List<GetPolicySetDefinitionPolicyDefinitionGroup>
+  policyDefinitionGroups;
+
   /// One or more `policy_definition_reference` blocks as defined below.
-  final List<GetPolicySetDefinitionPolicyDefinitionReference> policyDefinitionReferences;
+  final List<GetPolicySetDefinitionPolicyDefinitionReference>
+  policyDefinitionReferences;
+
   /// The policy definitions contained within the policy set definition.
   final String policyDefinitions;
+
   /// The Type of the Policy Set Definition.
   final String policyType;
 
@@ -63,8 +74,16 @@ class GetPolicySetDefinitionResult {
       'metadata': metadata,
       'name': name,
       'parameters': parameters,
-      'policyDefinitionGroups': pulumi.Input.encodeList<GetPolicySetDefinitionPolicyDefinitionGroup, Map<String, dynamic>>(policyDefinitionGroups, (value) => value.toMap()),
-      'policyDefinitionReferences': pulumi.Input.encodeList<GetPolicySetDefinitionPolicyDefinitionReference, Map<String, dynamic>>(policyDefinitionReferences, (value) => value.toMap()),
+      'policyDefinitionGroups':
+          pulumi.Input.encodeList<
+            GetPolicySetDefinitionPolicyDefinitionGroup,
+            Map<String, dynamic>
+          >(policyDefinitionGroups, (value) => value.toMap()),
+      'policyDefinitionReferences':
+          pulumi.Input.encodeList<
+            GetPolicySetDefinitionPolicyDefinitionReference,
+            Map<String, dynamic>
+          >(policyDefinitionReferences, (value) => value.toMap()),
       'policyDefinitions': policyDefinitions,
       'policyType': policyType,
     };
@@ -75,15 +94,32 @@ class GetPolicySetDefinitionResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      managementGroupName: map['managementGroupName'] == null ? null : map['managementGroupName']! as String,
+      managementGroupName: (() {
+        final guardedValue = map['managementGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       metadata: map['metadata'] as String,
       name: map['name'] as String,
       parameters: map['parameters'] as String,
-      policyDefinitionGroups: pulumi.Input.decodeList<GetPolicySetDefinitionPolicyDefinitionGroup>(map['policyDefinitionGroups'], (value) => GetPolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>())),
-      policyDefinitionReferences: pulumi.Input.decodeList<GetPolicySetDefinitionPolicyDefinitionReference>(map['policyDefinitionReferences'], (value) => GetPolicySetDefinitionPolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>())),
+      policyDefinitionGroups:
+          pulumi.Input.decodeList<GetPolicySetDefinitionPolicyDefinitionGroup>(
+            map['policyDefinitionGroups']!,
+            (value) => GetPolicySetDefinitionPolicyDefinitionGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      policyDefinitionReferences:
+          pulumi.Input.decodeList<
+            GetPolicySetDefinitionPolicyDefinitionReference
+          >(
+            map['policyDefinitionReferences']!,
+            (value) => GetPolicySetDefinitionPolicyDefinitionReference.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       policyDefinitions: map['policyDefinitions'] as String,
       policyType: map['policyType'] as String,
     );
   }
 }
-

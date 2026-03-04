@@ -8,20 +8,17 @@ class DomainDevicesDiskSourceNetworkKnownHosts {
 
   /// Creates a new [DomainDevicesDiskSourceNetworkKnownHosts].
   /// [path] Specifies the path to the file containing known hosts for the network storage.
-  DomainDevicesDiskSourceNetworkKnownHosts({
-    required this.path,
-  });
+  DomainDevicesDiskSourceNetworkKnownHosts({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory DomainDevicesDiskSourceNetworkKnownHosts.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskSourceNetworkKnownHosts.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskSourceNetworkKnownHosts(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

@@ -129,16 +129,22 @@ import 'system_data_response.dart';
 class GuestUsage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Location of the Guest Usages resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the Guest Usages resource.
   late final pulumi.Output<String> name;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Key-value pairs of additional resource provisioning properties.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// An identifier for the tenant for which the resource is being created
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the Guest Usages resource.
   late final pulumi.Output<String> type;
 
@@ -151,17 +157,17 @@ class GuestUsage extends pulumi.CustomResource {
     GuestUsageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azureactivedirectory:GuestUsage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:azureactivedirectory:GuestUsage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_profile_args.dart';
 import 'frontdoor_profile_identity.dart';
-import 'frontdoor_profile_log_scrubbing_rule.dart';
 import 'frontdoor_profile_state.dart';
 
 /// Manages a Front Door (standard/premium) Profile which contains a collection of endpoints and origin groups.
@@ -261,7 +260,7 @@ import 'frontdoor_profile_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01
@@ -276,20 +275,27 @@ import 'frontdoor_profile_state.dart';
 class FrontdoorProfile extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<FrontdoorProfileIdentity?> identity;
+
   /// One or more `log_scrubbing_rule` blocks as defined below.
   ///
-  /// > **Note:** When no `log_scrubbing_rule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `log_scrubbing_rule` blocks are present, log scrubbing will be `enabled`.
-  late final pulumi.Output<List<FrontdoorProfileLogScrubbingRule>?> logScrubbingRules;
+  /// &gt; **Note:** When no `log_scrubbing_rule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `log_scrubbing_rule` blocks are present, log scrubbing will be `enabled`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> logScrubbingRules;
+
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The UUID of this Front Door Profile which will be sent in the HTTP Header as the `X-Azure-FDID` attribute.
   late final pulumi.Output<String> resourceGuid;
+
   /// Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
   late final pulumi.Output<int?> responseTimeoutSeconds;
+
   /// Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
+
   /// Specifies a mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -302,19 +308,21 @@ class FrontdoorProfile extends pulumi.CustomResource {
     FrontdoorProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorProfile:FrontdoorProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<FrontdoorProfileIdentity?>('identity');
-    this.logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules');
+         'azure:cdn/frontdoorProfile:FrontdoorProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<FrontdoorProfileIdentity?>('identity');
+    logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>(
+      'logScrubbingRules',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [FrontdoorProfile] resource's state with the given [name] and [id].
@@ -335,18 +343,20 @@ class FrontdoorProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorProfile:FrontdoorProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<FrontdoorProfileIdentity?>('identity');
-    this.logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules');
+         'azure:cdn/frontdoorProfile:FrontdoorProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<FrontdoorProfileIdentity?>('identity');
+    logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>(
+      'logScrubbingRules',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

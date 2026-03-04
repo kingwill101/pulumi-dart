@@ -8,7 +8,7 @@ import 'group_policy_attachment_state.dart';
 ///
 /// For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -338,8 +338,10 @@ import 'group_policy_attachment_state.dart';
 class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The name of the group.
   late final pulumi.Output<String> groupName;
+
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
+
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
@@ -354,14 +356,14 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     GroupPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
+         'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
   }
 
   /// Gets an existing [GroupPolicyAttachment] resource's state with the given [name] and [id].
@@ -382,13 +384,13 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
+         'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
   }
 }

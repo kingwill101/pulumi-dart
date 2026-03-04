@@ -10,20 +10,35 @@ class BucketLifecycleResponse {
 
   /// Creates a new [BucketLifecycleResponse].
   /// [rule] A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-  BucketLifecycleResponse({
-    required this.rule,
-  });
+  BucketLifecycleResponse({required this.rule});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rule': pulumi.Input.mapInputValue<List<BucketLifecycleRuleItemResponse>, List<Map<String, dynamic>>>(rule, (value) => pulumi.Input.encodeList<BucketLifecycleRuleItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rule':
+          pulumi.Input.mapInputValue<
+            List<BucketLifecycleRuleItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rule,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketLifecycleRuleItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BucketLifecycleResponse.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleResponse(
-      rule: (pulumi.Input.decodeList<BucketLifecycleRuleItemResponse>(map['rule'], (value) => BucketLifecycleRuleItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<BucketLifecycleRuleItemResponse>(
+          map['rule']!,
+          (value) => BucketLifecycleRuleItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

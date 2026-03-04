@@ -1,15 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'live_trace_configuration_response.dart';
 import 'managed_identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'resource_log_configuration_response.dart';
 import 'resource_sku_response.dart';
 import 'serverless_settings_response.dart';
 import 'serverless_upstream_settings_response.dart';
-import 'shared_private_link_resource_response.dart';
 import 'signal_rargs.dart';
 import 'signal_rcors_settings_response.dart';
-import 'signal_rfeature_response.dart';
 import 'signal_rnetwork_acls_response.dart';
 import 'signal_rtls_settings_response.dart';
 import 'system_data_response.dart';
@@ -660,79 +657,113 @@ import 'system_data_response.dart';
 class SignalR extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Cross-Origin Resource Sharing (CORS) settings.
   late final pulumi.Output<SignalRCorsSettingsResponse?> cors;
+
   /// DisableLocalAuth
   /// Enable or disable aad auth
   /// When set as true, connection with AuthType=aad won't work.
   late final pulumi.Output<bool?> disableAadAuth;
+
   /// DisableLocalAuth
   /// Enable or disable local auth with AccessKey
   /// When set as true, connection with AccessKey=xxx won't work.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// The publicly accessible IP of the resource.
   late final pulumi.Output<String> externalIP;
+
   /// List of the featureFlags.
   ///
   /// FeatureFlags that are not included in the parameters for the update operation will not be modified.
   /// And the response will only include featureFlags that are explicitly set.
   /// When a featureFlag is not explicitly set, its globally default value will be used
   /// But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
-  late final pulumi.Output<List<SignalRFeatureResponse>?> features;
+  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+
   /// FQDN of the service instance.
   late final pulumi.Output<String> hostName;
+
   /// Deprecated.
   late final pulumi.Output<String> hostNamePrefix;
+
   /// A class represent managed identities used for request and response
   late final pulumi.Output<ManagedIdentityResponse?> identity;
+
   /// The kind of the service
   late final pulumi.Output<String?> kind;
+
   /// Live trace configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<LiveTraceConfigurationResponse?> liveTraceConfiguration;
+  late final pulumi.Output<LiveTraceConfigurationResponse?>
+  liveTraceConfiguration;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network ACLs for the resource
   late final pulumi.Output<SignalRNetworkACLsResponse?> networkACLs;
+
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Enable or disable public network access. Default to "Enabled".
   /// When it's Enabled, network ACLs still apply.
   /// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The publicly accessible port of the resource which is designed for browser/client side usage.
   late final pulumi.Output<int> publicPort;
+
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
   /// This property is replica specific. Disable the regional endpoint without replica is not allowed.
   late final pulumi.Output<String?> regionEndpointEnabled;
+
   /// Resource log configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<ResourceLogConfigurationResponse?> resourceLogConfiguration;
+  late final pulumi.Output<ResourceLogConfigurationResponse?>
+  resourceLogConfiguration;
+
   /// Stop or start the resource.  Default to "False".
   /// When it's true, the data plane of the resource is shutdown.
   /// When it's false, the data plane of the resource is started.
   late final pulumi.Output<String?> resourceStopped;
+
   /// The publicly accessible port of the resource which is designed for customer server side usage.
   late final pulumi.Output<int> serverPort;
+
   /// Serverless settings.
   late final pulumi.Output<ServerlessSettingsResponse?> serverless;
+
   /// The list of shared private link resources.
-  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>> sharedPrivateLinkResources;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  sharedPrivateLinkResources;
+
   /// The billing information of the resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// TLS settings for the resource
   late final pulumi.Output<SignalRTlsSettingsResponse?> tls;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The settings for the Upstream when the service is in server-less mode.
   late final pulumi.Output<ServerlessUpstreamSettingsResponse?> upstream;
+
   /// Version of the resource. Probably you need the same or higher version of client SDKs.
   late final pulumi.Output<String> version;
 
@@ -745,41 +776,50 @@ class SignalR extends pulumi.CustomResource {
     SignalRArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:signalrservice:SignalR',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cors = registerOutput<SignalRCorsSettingsResponse?>('cors');
-    this.disableAadAuth = registerOutput<bool?>('disableAadAuth');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.externalIP = registerOutput<String>('externalIP');
-    this.features = registerOutput<List<SignalRFeatureResponse>?>('features');
-    this.hostName = registerOutput<String>('hostName');
-    this.hostNamePrefix = registerOutput<String>('hostNamePrefix');
-    this.identity = registerOutput<ManagedIdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>('liveTraceConfiguration');
-    this.location = registerOutput<String>('location');
+         'azure-native:signalrservice:SignalR',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cors = registerOutput<SignalRCorsSettingsResponse?>('cors');
+    disableAadAuth = registerOutput<bool?>('disableAadAuth');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    externalIP = registerOutput<String>('externalIP');
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    hostName = registerOutput<String>('hostName');
+    hostNamePrefix = registerOutput<String>('hostNamePrefix');
+    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>(
+      'liveTraceConfiguration',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
-    this.resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration');
-    this.resourceStopped = registerOutput<String?>('resourceStopped');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.serverless = registerOutput<ServerlessSettingsResponse?>('serverless');
-    this.sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources');
-    this.sku = registerOutput<ResourceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tls = registerOutput<SignalRTlsSettingsResponse?>('tls');
-    this.type = registerOutput<String>('type');
-    this.upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream');
-    this.version = registerOutput<String>('version');
+    networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publicPort = registerOutput<int>('publicPort');
+    regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
+    resourceLogConfiguration =
+        registerOutput<ResourceLogConfigurationResponse?>(
+          'resourceLogConfiguration',
+        );
+    resourceStopped = registerOutput<String?>('resourceStopped');
+    serverPort = registerOutput<int>('serverPort');
+    serverless = registerOutput<ServerlessSettingsResponse?>('serverless');
+    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
+      'sharedPrivateLinkResources',
+    );
+    sku = registerOutput<ResourceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tls = registerOutput<SignalRTlsSettingsResponse?>('tls');
+    type = registerOutput<String>('type');
+    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream');
+    version = registerOutput<String>('version');
   }
 }

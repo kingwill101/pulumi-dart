@@ -1,5 +1,3 @@
-library module_firebaserules;
-
 export 'firebaserules/file.dart';
 export 'firebaserules/file_response.dart';
 export 'firebaserules/functions.dart';

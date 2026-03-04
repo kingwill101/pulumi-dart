@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterNetworkConfigHostConfig {
   /// DNS search domains.
   ///
-  /// <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
+  /// &lt;a name="nested_network_config_control_plane_v2_config"&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
   final pulumi.Input<List<String>>? dnsSearchDomains;
+
   /// DNS servers.
   final pulumi.Input<List<String>>? dnsServers;
+
   /// NTP servers.
   final pulumi.Input<List<String>>? ntpServers;
 
@@ -30,12 +32,25 @@ class VMwareClusterNetworkConfigHostConfig {
     };
   }
 
-  factory VMwareClusterNetworkConfigHostConfig.fromMap(Map<String, dynamic> map) {
+  factory VMwareClusterNetworkConfigHostConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareClusterNetworkConfigHostConfig(
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains']! as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers']! as List).cast<String>()).input(),
+      dnsSearchDomains: (() {
+        final guardedValue = map['dnsSearchDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ntpServers: (() {
+        final guardedValue = map['ntpServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

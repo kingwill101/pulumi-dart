@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleActionIncidentTask {
   /// The description of the incident task.
   final pulumi.Input<String>? description;
+
   /// The execution order of this action.
   final pulumi.Input<int> order;
+
   /// The title of the incident task.
   final pulumi.Input<String> title;
 
@@ -30,10 +32,13 @@ class AutomationRuleActionIncidentTask {
 
   factory AutomationRuleActionIncidentTask.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionIncidentTask(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      order: (map['order'] as int).input(),
-      title: (map['title'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      order: pulumi.Input.fromValue(map['order'] as int),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

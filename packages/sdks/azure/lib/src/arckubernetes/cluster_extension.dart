@@ -247,7 +247,7 @@ import 'cluster_extension_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.KubernetesConfiguration` - 2024-11-01
@@ -262,24 +262,34 @@ import 'cluster_extension_state.dart';
 class ClusterExtension extends pulumi.CustomResource {
   /// Specifies the Cluster ID. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
+
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
+
   /// Configuration settings, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationSettings;
+
   /// The current version of the extension.
   late final pulumi.Output<String> currentVersion;
+
   /// Specifies the type of extension. It must be one of the extension types registered with Microsoft.KubernetesConfiguration by the Extension publisher. For more information, please refer to [Available Extensions for Arc-enabled Kubernetes clusters](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/extensions-release). Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> extensionType;
+
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<ClusterExtensionIdentity> identity;
+
   /// Specifies the name which should be used for this Arc Kubernetes Cluster Extension. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> name;
+
   /// Namespace where the extension release must be placed for a cluster scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseNamespace;
+
   /// The release train used by this extension. Possible values include but are not limited to `Stable`, `Preview`. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseTrain;
+
   /// Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> targetNamespace;
+
   /// User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String?> version;
 
@@ -292,22 +302,26 @@ class ClusterExtension extends pulumi.CustomResource {
     ClusterExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/clusterExtension:ClusterExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
-    this.currentVersion = registerOutput<String>('currentVersion');
-    this.extensionType = registerOutput<String>('extensionType');
-    this.identity = registerOutput<ClusterExtensionIdentity>('identity');
+         'azure:arckubernetes/clusterExtension:ClusterExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    configurationSettings = registerOutput<Map<String, String>?>(
+      'configurationSettings',
+    );
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
+    identity = registerOutput<ClusterExtensionIdentity>('identity');
     this.name = registerOutput<String>('name');
-    this.releaseNamespace = registerOutput<String>('releaseNamespace');
-    this.releaseTrain = registerOutput<String>('releaseTrain');
-    this.targetNamespace = registerOutput<String>('targetNamespace');
-    this.version = registerOutput<String?>('version');
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [ClusterExtension] resource's state with the given [name] and [id].
@@ -328,21 +342,25 @@ class ClusterExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/clusterExtension:ClusterExtension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
-    this.currentVersion = registerOutput<String>('currentVersion');
-    this.extensionType = registerOutput<String>('extensionType');
-    this.identity = registerOutput<ClusterExtensionIdentity>('identity');
+         'azure:arckubernetes/clusterExtension:ClusterExtension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    configurationSettings = registerOutput<Map<String, String>?>(
+      'configurationSettings',
+    );
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
+    identity = registerOutput<ClusterExtensionIdentity>('identity');
     this.name = registerOutput<String>('name');
-    this.releaseNamespace = registerOutput<String>('releaseNamespace');
-    this.releaseTrain = registerOutput<String>('releaseTrain');
-    this.targetNamespace = registerOutput<String>('targetNamespace');
-    this.version = registerOutput<String?>('version');
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
   }
 }

@@ -9,20 +9,35 @@ class GetInstanceManagedServerCa {
 
   /// Creates a new [GetInstanceManagedServerCa].
   /// [caCerts] The PEM encoded CA certificate chains for managed server authentication
-  GetInstanceManagedServerCa({
-    required this.caCerts,
-  });
+  GetInstanceManagedServerCa({required this.caCerts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': pulumi.Input.mapInputValue<List<GetInstanceManagedServerCaCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<GetInstanceManagedServerCaCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'caCerts':
+          pulumi.Input.mapInputValue<
+            List<GetInstanceManagedServerCaCaCert>,
+            List<Map<String, dynamic>>
+          >(
+            caCerts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstanceManagedServerCaCaCert,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetInstanceManagedServerCa.fromMap(Map<String, dynamic> map) {
     return GetInstanceManagedServerCa(
-      caCerts: (pulumi.Input.decodeList<GetInstanceManagedServerCaCaCert>(map['caCerts'], (value) => GetInstanceManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caCerts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInstanceManagedServerCaCaCert>(
+          map['caCerts']!,
+          (value) => GetInstanceManagedServerCaCaCert.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

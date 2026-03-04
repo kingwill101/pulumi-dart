@@ -6,15 +6,21 @@ import 'exclusion_managed_rule_set_response.dart';
 /// Adds exception to allow a request when the condition is satisfied.
 class ExceptionEntryResponse {
   /// The managed rule sets that are associated with the exception.
-  final pulumi.Input<List<ExclusionManagedRuleSetResponse>>? exceptionManagedRuleSets;
+  final pulumi.Input<List<ExclusionManagedRuleSetResponse>>?
+  exceptionManagedRuleSets;
+
   /// The variable on which we evaluate the exception condition
   final pulumi.Input<String> matchVariable;
+
   /// When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key.
   final pulumi.Input<String>? selector;
+
   /// When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
   final pulumi.Input<String>? selectorMatchOperator;
+
   /// Operates on the allowed values for the matchVariable
   final pulumi.Input<String> valueMatchOperator;
+
   /// Allowed values for the matchVariable
   final pulumi.Input<List<String>>? values;
 
@@ -36,7 +42,18 @@ class ExceptionEntryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exceptionManagedRuleSets': ?pulumi.Input.mapOptionalInputValue<List<ExclusionManagedRuleSetResponse>, List<Map<String, dynamic>>>(exceptionManagedRuleSets, (value) => pulumi.Input.encodeList<ExclusionManagedRuleSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exceptionManagedRuleSets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExclusionManagedRuleSetResponse>,
+            List<Map<String, dynamic>>
+          >(
+            exceptionManagedRuleSets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExclusionManagedRuleSetResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'matchVariable': matchVariable,
       'selector': ?selector,
       'selectorMatchOperator': ?selectorMatchOperator,
@@ -47,13 +64,37 @@ class ExceptionEntryResponse {
 
   factory ExceptionEntryResponse.fromMap(Map<String, dynamic> map) {
     return ExceptionEntryResponse(
-      exceptionManagedRuleSets: map['exceptionManagedRuleSets'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(map['exceptionManagedRuleSets']!, (value) => ExclusionManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator']! as String).input(),
-      valueMatchOperator: (map['valueMatchOperator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      exceptionManagedRuleSets: (() {
+        final guardedValue = map['exceptionManagedRuleSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(
+            guardedValue,
+            (value) => ExclusionManagedRuleSetResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selectorMatchOperator: (() {
+        final guardedValue = map['selectorMatchOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueMatchOperator: pulumi.Input.fromValue(
+        map['valueMatchOperator'] as String,
+      ),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

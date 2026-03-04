@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_network_rules_args.dart';
-import 'account_network_rules_private_link_access_rule.dart';
 import 'account_network_rules_state.dart';
 
 /// Manages network rules inside of a Azure Storage Account.
 ///
-/// > **Note:** Network Rules can be defined either directly on the `azure.storage.Account` resource, or using the `azure.storage.AccountNetworkRules` resource - but the two cannot be used together. Spurious changes will occur if both are used against the same Storage Account.
+/// &gt; **Note:** Network Rules can be defined either directly on the `azure.storage.Account` resource, or using the `azure.storage.AccountNetworkRules` resource - but the two cannot be used together. Spurious changes will occur if both are used against the same Storage Account.
 ///
-/// > **Note:** Only one `azure.storage.AccountNetworkRules` can be tied to an `azure.storage.Account`. Spurious changes will occur if more than `azure.storage.AccountNetworkRules` is tied to the same `azure.storage.Account`.
+/// &gt; **Note:** Only one `azure.storage.AccountNetworkRules` can be tied to an `azure.storage.Account`. Spurious changes will occur if more than `azure.storage.AccountNetworkRules` is tied to the same `azure.storage.Account`.
 ///
-/// > **Note:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
+/// &gt; **Note:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
 ///
 /// ## Example Usage
 ///
@@ -361,7 +360,7 @@ import 'account_network_rules_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -376,25 +375,30 @@ import 'account_network_rules_state.dart';
 class AccountNetworkRulesStorage extends pulumi.CustomResource {
   /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`. Defaults to `["AzureServices"]`.
   ///
-  /// > **Note:** User has to explicitly set `bypass` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `bypass` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>> bypasses;
+
   /// Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
   late final pulumi.Output<String> defaultAction;
+
   /// List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
   ///
-  /// > **Note:** Small address ranges using "/31" or "/32" prefix sizes are not supported. These ranges should be configured using individual IP address rules without prefix specified.
+  /// &gt; **Note:** Small address ranges using "/31" or "/32" prefix sizes are not supported. These ranges should be configured using individual IP address rules without prefix specified.
   ///
-  /// > **Note:** IP network rules have no effect on requests originating from the same Azure region as the storage account. Use Virtual network rules to allow same-region requests. Services deployed in the same region as the storage account use private Azure IP addresses for communication. Thus, you cannot restrict access to specific Azure services based on their public outbound IP address range.
+  /// &gt; **Note:** IP network rules have no effect on requests originating from the same Azure region as the storage account. Use Virtual network rules to allow same-region requests. Services deployed in the same region as the storage account use private Azure IP addresses for communication. Thus, you cannot restrict access to specific Azure services based on their public outbound IP address range.
   ///
-  /// > **Note:** User has to explicitly set `ip_rules` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `ip_rules` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> ipRules;
+
   /// One or more `private_link_access` block as defined below.
-  late final pulumi.Output<List<AccountNetworkRulesPrivateLinkAccessRule>?> privateLinkAccessRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkAccessRules;
+
   /// Specifies the ID of the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
+
   /// A list of virtual network subnet ids to secure the storage account.
   ///
-  /// > **Note:** User has to explicitly set `virtual_network_subnet_ids` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `virtual_network_subnet_ids` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> virtualNetworkSubnetIds;
 
   /// Creates a new [AccountNetworkRulesStorage].
@@ -406,17 +410,21 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
     AccountNetworkRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountNetworkRules:AccountNetworkRules',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypasses = registerOutput<List<String>>('bypasses');
-    this.defaultAction = registerOutput<String>('defaultAction');
-    this.ipRules = registerOutput<List<String>?>('ipRules');
-    this.privateLinkAccessRules = registerOutput<List<AccountNetworkRulesPrivateLinkAccessRule>?>('privateLinkAccessRules');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
+         'azure:storage/accountNetworkRules:AccountNetworkRules',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypasses = registerOutput<List<String>>('bypasses');
+    defaultAction = registerOutput<String>('defaultAction');
+    ipRules = registerOutput<List<String>?>('ipRules');
+    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkAccessRules',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
+    virtualNetworkSubnetIds = registerOutput<List<String>?>(
+      'virtualNetworkSubnetIds',
+    );
   }
 
   /// Gets an existing [AccountNetworkRulesStorage] resource's state with the given [name] and [id].
@@ -437,16 +445,20 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountNetworkRules:AccountNetworkRules',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypasses = registerOutput<List<String>>('bypasses');
-    this.defaultAction = registerOutput<String>('defaultAction');
-    this.ipRules = registerOutput<List<String>?>('ipRules');
-    this.privateLinkAccessRules = registerOutput<List<AccountNetworkRulesPrivateLinkAccessRule>?>('privateLinkAccessRules');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
+         'azure:storage/accountNetworkRules:AccountNetworkRules',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypasses = registerOutput<List<String>>('bypasses');
+    defaultAction = registerOutput<String>('defaultAction');
+    ipRules = registerOutput<List<String>?>('ipRules');
+    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkAccessRules',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
+    virtualNetworkSubnetIds = registerOutput<List<String>?>(
+      'virtualNetworkSubnetIds',
+    );
   }
 }

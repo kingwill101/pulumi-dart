@@ -4,7 +4,7 @@ import 'administrative_unit_member_state.dart';
 
 /// Manages a single administrative unit membership within Azure Active Directory.
 ///
-/// > **Warning** Do not use this resource at the same time as the `members` property of the `azuread.AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+/// &gt; **Warning** Do not use this resource at the same time as the `members` property of the `azuread.AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 ///
 /// ## API Permissions
 ///
@@ -172,9 +172,10 @@ import 'administrative_unit_member_state.dart';
 class AdministrativeUnitMember extends pulumi.CustomResource {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> administrativeUnitObjectId;
+
   /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   ///
-  /// > **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+  /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   late final pulumi.Output<String?> memberObjectId;
 
   /// Creates a new [AdministrativeUnitMember].
@@ -186,13 +187,15 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
     AdministrativeUnitMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
-    this.memberObjectId = registerOutput<String?>('memberObjectId');
+         'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeUnitObjectId = registerOutput<String?>(
+      'administrativeUnitObjectId',
+    );
+    memberObjectId = registerOutput<String?>('memberObjectId');
   }
 
   /// Gets an existing [AdministrativeUnitMember] resource's state with the given [name] and [id].
@@ -213,12 +216,14 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
-    this.memberObjectId = registerOutput<String?>('memberObjectId');
+         'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeUnitObjectId = registerOutput<String?>(
+      'administrativeUnitObjectId',
+    );
+    memberObjectId = registerOutput<String?>('memberObjectId');
   }
 }

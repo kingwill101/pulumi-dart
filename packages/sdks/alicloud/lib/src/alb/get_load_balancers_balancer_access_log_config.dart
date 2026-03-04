@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancersBalancerAccessLogConfig {
   /// The log service that access logs are shipped to.
   final pulumi.Input<String> logProject;
+
   /// The logstore that access logs are shipped to.
   final pulumi.Input<String> logStore;
 
@@ -17,17 +18,15 @@ class GetLoadBalancersBalancerAccessLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logProject': logProject,
-      'logStore': logStore,
-    };
+    return <String, dynamic>{'logProject': logProject, 'logStore': logStore};
   }
 
-  factory GetLoadBalancersBalancerAccessLogConfig.fromMap(Map<String, dynamic> map) {
+  factory GetLoadBalancersBalancerAccessLogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLoadBalancersBalancerAccessLogConfig(
-      logProject: (map['logProject'] as String).input(),
-      logStore: (map['logStore'] as String).input(),
+      logProject: pulumi.Input.fromValue(map['logProject'] as String),
+      logStore: pulumi.Input.fromValue(map['logStore'] as String),
     );
   }
 }
-

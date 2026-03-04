@@ -1,5 +1,3 @@
-library module_marketplace;
-
 export 'marketplace/functions.dart';
 export 'marketplace/get_product_args.dart';
 export 'marketplace/get_product_product.dart';

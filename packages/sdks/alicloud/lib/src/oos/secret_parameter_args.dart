@@ -13,20 +13,28 @@ class SecretParameterArgs {
   /// * `MinLength`: The minimum length of the encryption parameter.
   /// * `MaxLength`: The maximum length of the encryption parameter.
   final pulumi.Input<String>? constraints;
+
   /// The description of the encryption parameter. The description must be `1` to `200` characters in length.
   final pulumi.Input<String>? description;
+
   /// The ID of the KMS instance.
   final pulumi.Input<String>? dkmsInstanceId;
+
   /// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
   final pulumi.Input<String>? keyId;
+
   /// The ID of the Resource Group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
   final pulumi.Input<String> secretParameterName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The data type of the encryption parameter. Valid values: `Secret`.
   final pulumi.Input<String>? type;
+
   /// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
   final pulumi.Input<String> value;
 
@@ -68,16 +76,47 @@ class SecretParameterArgs {
 
   factory SecretParameterArgs.fromMap(Map<String, dynamic> map) {
     return SecretParameterArgs(
-      constraints: map['constraints'] == null ? null : (map['constraints']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dkmsInstanceId: map['dkmsInstanceId'] == null ? null : (map['dkmsInstanceId']! as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      secretParameterName: (map['secretParameterName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: (map['value'] as String).input(),
+      constraints: (() {
+        final guardedValue = map['constraints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dkmsInstanceId: (() {
+        final guardedValue = map['dkmsInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyId: (() {
+        final guardedValue = map['keyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretParameterName: pulumi.Input.fromValue(
+        map['secretParameterName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

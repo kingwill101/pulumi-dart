@@ -10,18 +10,25 @@ import 'user_defined_function_resource_uri.dart';
 class UserDefinedFunctionArgs {
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
   final pulumi.Input<String>? catalogId;
+
   /// The Java class that contains the function code.
   final pulumi.Input<String> className;
+
   /// The name of the Database to create the Function.
   final pulumi.Input<String> databaseName;
+
   /// The name of the function.
   final pulumi.Input<String>? name;
+
   /// The owner of the function.
   final pulumi.Input<String> ownerName;
+
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   final pulumi.Input<String> ownerType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The configuration block for Resource URIs. See resource uris below for more details.
   final pulumi.Input<List<UserDefinedFunctionResourceUri>>? resourceUris;
 
@@ -54,21 +61,54 @@ class UserDefinedFunctionArgs {
       'ownerName': ownerName,
       'ownerType': ownerType,
       'region': ?region,
-      'resourceUris': ?pulumi.Input.mapOptionalInputValue<List<UserDefinedFunctionResourceUri>, List<Map<String, dynamic>>>(resourceUris, (value) => pulumi.Input.encodeList<UserDefinedFunctionResourceUri, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceUris':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserDefinedFunctionResourceUri>,
+            List<Map<String, dynamic>>
+          >(
+            resourceUris,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserDefinedFunctionResourceUri,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory UserDefinedFunctionArgs.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionArgs(
-      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
-      className: (map['className'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      ownerName: (map['ownerName'] as String).input(),
-      ownerType: (map['ownerType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceUris: map['resourceUris'] == null ? null : ((pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris']!, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      className: pulumi.Input.fromValue(map['className'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerName: pulumi.Input.fromValue(map['ownerName'] as String),
+      ownerType: pulumi.Input.fromValue(map['ownerType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceUris: (() {
+        final guardedValue = map['resourceUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(
+            guardedValue,
+            (value) => UserDefinedFunctionResourceUri.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_lake_gen2_filesystem_ace.dart';
 import 'data_lake_gen2_filesystem_args.dart';
 import 'data_lake_gen2_filesystem_state.dart';
 
 /// Manages a Data Lake Gen2 File System within an Azure Storage Account.
 ///
-/// > **Note:** This resource requires some `Storage` specific roles which are not granted by default. Some of the built-ins roles that can be attributed are [`Storage Account Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor), [`Storage Blob Data Owner`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner), [`Storage Blob Data Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor), [`Storage Blob Data Reader`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
+/// &gt; **Note:** This resource requires some `Storage` specific roles which are not granted by default. Some of the built-ins roles that can be attributed are [`Storage Account Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor), [`Storage Blob Data Owner`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner), [`Storage Blob Data Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor), [`Storage Blob Data Reader`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
 ///
 /// ## Example Usage
 ///
@@ -225,19 +224,25 @@ import 'data_lake_gen2_filesystem_state.dart';
 /// ```
 class DataLakeGen2Filesystem extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
-  late final pulumi.Output<List<DataLakeGen2FilesystemAce>> aces;
+  late final pulumi.Output<List<Map<String, dynamic>>> aces;
+
   /// The default encryption scope to use for this filesystem. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultEncryptionScope;
+
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
   ///
-  /// > **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
+  /// &gt; **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
   late final pulumi.Output<String> group;
+
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the Object ID of the Azure Active Directory User to make the owning user of the root path (i.e. `/`). Possible values also include `$superuser`.
   late final pulumi.Output<String> owner;
+
   /// A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
   late final pulumi.Output<Map<String, String>?> properties;
+
   /// Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -250,18 +255,18 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
     DataLakeGen2FilesystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aces = registerOutput<List<DataLakeGen2FilesystemAce>>('aces');
-    this.defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
-    this.group = registerOutput<String>('group');
+         'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.owner = registerOutput<String>('owner');
-    this.properties = registerOutput<Map<String, String>?>('properties');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    owner = registerOutput<String>('owner');
+    properties = registerOutput<Map<String, String>?>('properties');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [DataLakeGen2Filesystem] resource's state with the given [name] and [id].
@@ -282,17 +287,17 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aces = registerOutput<List<DataLakeGen2FilesystemAce>>('aces');
-    this.defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
-    this.group = registerOutput<String>('group');
+         'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.owner = registerOutput<String>('owner');
-    this.properties = registerOutput<Map<String, String>?>('properties');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    owner = registerOutput<String>('owner');
+    properties = registerOutput<Map<String, String>?>('properties');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

@@ -8,7 +8,7 @@ import 'oss_scan_config_state.dart';
 ///
 /// For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
 ///
-/// > **NOTE:** Available since v1.214.0.
+/// &gt; **NOTE:** Available since v1.214.0.
 ///
 /// ## Example Usage
 ///
@@ -453,28 +453,40 @@ import 'oss_scan_config_state.dart';
 class OssScanConfig extends pulumi.CustomResource {
   /// Specifies whether to match the prefixes of all objects.
   late final pulumi.Output<bool> allKeyPrefix;
+
   /// The names of the buckets.
   late final pulumi.Output<List<String>> bucketNameLists;
+
   /// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
   late final pulumi.Output<int?> decompressMaxFileCount;
+
   /// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
   late final pulumi.Output<int?> decompressMaxLayer;
+
   /// The decryption methods.
   late final pulumi.Output<List<String>?> decryptionLists;
+
   /// Indicates whether the check policy is enabled. Valid values:
   late final pulumi.Output<int> enable;
+
   /// The end time of the check. The time is in the HH:mm:ss format.
   late final pulumi.Output<String> endTime;
+
   /// The prefixes of the objects.
   late final pulumi.Output<List<String>?> keyPrefixLists;
+
   /// The suffixes of the objects that are checked.
   late final pulumi.Output<List<String>> keySuffixLists;
+
   /// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
   late final pulumi.Output<int?> lastModifiedStartTime;
+
   /// The policy name.
   late final pulumi.Output<String?> ossScanConfigName;
+
   /// The days when the check is performed. The value indicates the days of the week.
   late final pulumi.Output<List<int>> scanDayLists;
+
   /// The start time of the check. The time is in the HH:mm:ss format.
   late final pulumi.Output<String> startTime;
 
@@ -487,24 +499,24 @@ class OssScanConfig extends pulumi.CustomResource {
     OssScanConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/ossScanConfig:OssScanConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allKeyPrefix = registerOutput<bool>('allKeyPrefix');
-    this.bucketNameLists = registerOutput<List<String>>('bucketNameLists');
-    this.decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');
-    this.decompressMaxLayer = registerOutput<int?>('decompressMaxLayer');
-    this.decryptionLists = registerOutput<List<String>?>('decryptionLists');
-    this.enable = registerOutput<int>('enable');
-    this.endTime = registerOutput<String>('endTime');
-    this.keyPrefixLists = registerOutput<List<String>?>('keyPrefixLists');
-    this.keySuffixLists = registerOutput<List<String>>('keySuffixLists');
-    this.lastModifiedStartTime = registerOutput<int?>('lastModifiedStartTime');
-    this.ossScanConfigName = registerOutput<String?>('ossScanConfigName');
-    this.scanDayLists = registerOutput<List<int>>('scanDayLists');
-    this.startTime = registerOutput<String>('startTime');
+         'alicloud:threatdetection/ossScanConfig:OssScanConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allKeyPrefix = registerOutput<bool>('allKeyPrefix');
+    bucketNameLists = registerOutput<List<String>>('bucketNameLists');
+    decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');
+    decompressMaxLayer = registerOutput<int?>('decompressMaxLayer');
+    decryptionLists = registerOutput<List<String>?>('decryptionLists');
+    enable = registerOutput<int>('enable');
+    endTime = registerOutput<String>('endTime');
+    keyPrefixLists = registerOutput<List<String>?>('keyPrefixLists');
+    keySuffixLists = registerOutput<List<String>>('keySuffixLists');
+    lastModifiedStartTime = registerOutput<int?>('lastModifiedStartTime');
+    ossScanConfigName = registerOutput<String?>('ossScanConfigName');
+    scanDayLists = registerOutput<List<int>>('scanDayLists');
+    startTime = registerOutput<String>('startTime');
   }
 
   /// Gets an existing [OssScanConfig] resource's state with the given [name] and [id].
@@ -525,23 +537,23 @@ class OssScanConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/ossScanConfig:OssScanConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allKeyPrefix = registerOutput<bool>('allKeyPrefix');
-    this.bucketNameLists = registerOutput<List<String>>('bucketNameLists');
-    this.decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');
-    this.decompressMaxLayer = registerOutput<int?>('decompressMaxLayer');
-    this.decryptionLists = registerOutput<List<String>?>('decryptionLists');
-    this.enable = registerOutput<int>('enable');
-    this.endTime = registerOutput<String>('endTime');
-    this.keyPrefixLists = registerOutput<List<String>?>('keyPrefixLists');
-    this.keySuffixLists = registerOutput<List<String>>('keySuffixLists');
-    this.lastModifiedStartTime = registerOutput<int?>('lastModifiedStartTime');
-    this.ossScanConfigName = registerOutput<String?>('ossScanConfigName');
-    this.scanDayLists = registerOutput<List<int>>('scanDayLists');
-    this.startTime = registerOutput<String>('startTime');
+         'alicloud:threatdetection/ossScanConfig:OssScanConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allKeyPrefix = registerOutput<bool>('allKeyPrefix');
+    bucketNameLists = registerOutput<List<String>>('bucketNameLists');
+    decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');
+    decompressMaxLayer = registerOutput<int?>('decompressMaxLayer');
+    decryptionLists = registerOutput<List<String>?>('decryptionLists');
+    enable = registerOutput<int>('enable');
+    endTime = registerOutput<String>('endTime');
+    keyPrefixLists = registerOutput<List<String>?>('keyPrefixLists');
+    keySuffixLists = registerOutput<List<String>>('keySuffixLists');
+    lastModifiedStartTime = registerOutput<int?>('lastModifiedStartTime');
+    ossScanConfigName = registerOutput<String?>('ossScanConfigName');
+    scanDayLists = registerOutput<List<int>>('scanDayLists');
+    startTime = registerOutput<String>('startTime');
   }
 }

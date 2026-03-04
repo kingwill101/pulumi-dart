@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustStoreCertificate {
   /// Certificate body in PEM format.
   final pulumi.Input<String> body;
+
   /// Certificate issuer.
   final pulumi.Input<String>? issuer;
+
   /// Date and time when the certificate expires in RFC3339 format.
   final pulumi.Input<String>? notValidAfter;
+
   /// Date and time when the certificate becomes valid in RFC3339 format.
   final pulumi.Input<String>? notValidBefore;
+
   /// Certificate subject.
   final pulumi.Input<String>? subject;
+
   /// Certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
 
@@ -45,13 +50,32 @@ class TrustStoreCertificate {
 
   factory TrustStoreCertificate.fromMap(Map<String, dynamic> map) {
     return TrustStoreCertificate(
-      body: (map['body'] as String).input(),
-      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
-      notValidAfter: map['notValidAfter'] == null ? null : ((map['notValidAfter'] as String).input()).input(),
-      notValidBefore: map['notValidBefore'] == null ? null : ((map['notValidBefore'] as String).input()).input(),
-      subject: map['subject'] == null ? null : ((map['subject'] as String).input()).input(),
-      thumbprint: map['thumbprint'] == null ? null : ((map['thumbprint'] as String).input()).input(),
+      body: pulumi.Input.fromValue(map['body'] as String),
+      issuer: (() {
+        final guardedValue = map['issuer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notValidAfter: (() {
+        final guardedValue = map['notValidAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notValidBefore: (() {
+        final guardedValue = map['notValidBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

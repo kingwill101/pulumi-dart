@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Observability {
   /// When set to true, collects log data to facilitate quicker issue resolution.
   final pulumi.Input<bool>? episodicDataUpload;
+
   /// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
   final pulumi.Input<bool>? euLocation;
+
   /// Enables telemetry data to be sent to Microsoft
   final pulumi.Input<bool>? streamingDataClient;
 
@@ -31,10 +33,21 @@ class Observability {
 
   factory Observability.fromMap(Map<String, dynamic> map) {
     return Observability(
-      episodicDataUpload: map['episodicDataUpload'] == null ? null : (map['episodicDataUpload']! as bool).input(),
-      euLocation: map['euLocation'] == null ? null : (map['euLocation']! as bool).input(),
-      streamingDataClient: map['streamingDataClient'] == null ? null : (map['streamingDataClient']! as bool).input(),
+      episodicDataUpload: (() {
+        final guardedValue = map['episodicDataUpload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      euLocation: (() {
+        final guardedValue = map['euLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      streamingDataClient: (() {
+        final guardedValue = map['streamingDataClient'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -7,11 +7,14 @@ import 'get_apps_app.dart';
 class GetAppsResult {
   /// A list of apps. Each element contains the following attributes:
   final List<GetAppsApp> apps;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of app IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of app names.
   final List<String> names;
   final String? outputFile;
@@ -37,7 +40,10 @@ class GetAppsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apps': pulumi.Input.encodeList<GetAppsApp, Map<String, dynamic>>(apps, (value) => value.toMap()),
+      'apps': pulumi.Input.encodeList<GetAppsApp, Map<String, dynamic>>(
+        apps,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -49,14 +55,28 @@ class GetAppsResult {
 
   factory GetAppsResult.fromMap(Map<String, dynamic> map) {
     return GetAppsResult(
-      apps: pulumi.Input.decodeList<GetAppsApp>(map['apps'], (value) => GetAppsApp.fromMap((value as Map).cast<String, dynamic>())),
+      apps: pulumi.Input.decodeList<GetAppsApp>(
+        map['apps']!,
+        (value) => GetAppsApp.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

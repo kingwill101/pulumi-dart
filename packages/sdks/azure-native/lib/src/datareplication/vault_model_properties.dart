@@ -9,20 +9,19 @@ class VaultModelProperties {
 
   /// Creates a new [VaultModelProperties].
   /// [vaultType] Gets or sets the type of vault.
-  VaultModelProperties({
-    this.vaultType,
-  });
+  VaultModelProperties({this.vaultType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vaultType': ?vaultType,
-    };
+    return <String, dynamic>{'vaultType': ?vaultType};
   }
 
   factory VaultModelProperties.fromMap(Map<String, dynamic> map) {
     return VaultModelProperties(
-      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
+      vaultType: (() {
+        final guardedValue = map['vaultType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

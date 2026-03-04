@@ -10,16 +10,22 @@ import 'studio_application_instance.dart';
 class StudioApplicationArgs {
   /// The name of the application.
   final pulumi.Input<String> applicationName;
+
   /// The id of the area.
   final pulumi.Input<String>? areaId;
+
   /// The configuration of the application.
   final pulumi.Input<Map<String, String>>? configuration;
+
   /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
   final pulumi.Input<List<StudioApplicationInstance>>? instances;
+
   /// The id of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The id of the template.
   final pulumi.Input<String> templateId;
+
   /// The variables of the application.
   final pulumi.Input<Map<String, String>>? variables;
 
@@ -46,7 +52,18 @@ class StudioApplicationArgs {
       'applicationName': applicationName,
       'areaId': ?areaId,
       'configuration': ?configuration,
-      'instances': ?pulumi.Input.mapOptionalInputValue<List<StudioApplicationInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<StudioApplicationInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instances':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StudioApplicationInstance>,
+            List<Map<String, dynamic>>
+          >(
+            instances,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StudioApplicationInstance,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupId': ?resourceGroupId,
       'templateId': templateId,
       'variables': ?variables,
@@ -55,14 +72,44 @@ class StudioApplicationArgs {
 
   factory StudioApplicationArgs.fromMap(Map<String, dynamic> map) {
     return StudioApplicationArgs(
-      applicationName: (map['applicationName'] as String).input(),
-      areaId: map['areaId'] == null ? null : (map['areaId']! as String).input(),
-      configuration: map['configuration'] == null ? null : ((map['configuration']! as Map).cast<String, String>()).input(),
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<StudioApplicationInstance>(map['instances']!, (value) => StudioApplicationInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      templateId: (map['templateId'] as String).input(),
-      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      areaId: (() {
+        final guardedValue = map['areaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      instances: (() {
+        final guardedValue = map['instances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StudioApplicationInstance>(
+            guardedValue,
+            (value) => StudioApplicationInstance.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
+      variables: (() {
+        final guardedValue = map['variables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

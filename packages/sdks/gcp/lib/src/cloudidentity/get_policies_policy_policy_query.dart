@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoliciesPolicyPolicyQuery {
   /// The group that the policy applies to.
   final pulumi.Input<String> group;
+
   /// The org unit that the policy applies to.
   final pulumi.Input<String> orgUnit;
+
   /// The query that defines which entities the policy applies to.
   final pulumi.Input<String> query;
+
   /// The sort order of the policy.
   final pulumi.Input<double> sortOrder;
 
@@ -35,11 +38,10 @@ class GetPoliciesPolicyPolicyQuery {
 
   factory GetPoliciesPolicyPolicyQuery.fromMap(Map<String, dynamic> map) {
     return GetPoliciesPolicyPolicyQuery(
-      group: (map['group'] as String).input(),
-      orgUnit: (map['orgUnit'] as String).input(),
-      query: (map['query'] as String).input(),
-      sortOrder: (map['sortOrder'] as double).input(),
+      group: pulumi.Input.fromValue(map['group'] as String),
+      orgUnit: pulumi.Input.fromValue(map['orgUnit'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      sortOrder: pulumi.Input.fromValue(map['sortOrder'] as double),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'data_transfer_service_resource_properties_response.dart';
 class GetServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The unique resource identifier of the database account.
   final String id;
+
   /// The name of the database account.
   final String name;
+
   /// Services response resource.
   final DataTransferServiceResourcePropertiesResponse properties;
+
   /// The type of Azure resource.
   final String type;
 
@@ -44,9 +48,10 @@ class GetServiceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: DataTransferServiceResourcePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: DataTransferServiceResourcePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

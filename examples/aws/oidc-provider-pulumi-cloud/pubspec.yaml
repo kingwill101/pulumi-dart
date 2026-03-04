@@ -8,8 +8,8 @@ environment:
 dependencies:
   pulumi: 0.1.0
   pulumi_aws: ^7.20.0
-  pulumi_pulumiservice: any
-  pulumi_tls: any
+  pulumi_pulumiservice: 0.34.0
+  pulumi_tls: 5.3.0
 
 dev_dependencies:
   lints: ^6.1.0

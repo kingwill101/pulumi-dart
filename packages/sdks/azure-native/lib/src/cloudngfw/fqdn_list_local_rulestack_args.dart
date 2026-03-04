@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FqdnListLocalRulestackArgs {
   /// comment for this object
   final pulumi.Input<String>? auditComment;
+
   /// fqdn object description
   final pulumi.Input<String>? description;
+
   /// fqdn list
   final pulumi.Input<List<String>> fqdnList;
+
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
+
   /// fqdn list name
   final pulumi.Input<String>? name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,30 @@ class FqdnListLocalRulestackArgs {
 
   factory FqdnListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return FqdnListLocalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      fqdnList: ((map['fqdnList'] as List).cast<String>()).input(),
-      localRulestackName: (map['localRulestackName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      auditComment: (() {
+        final guardedValue = map['auditComment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fqdnList: pulumi.Input.fromValue(
+        (map['fqdnList'] as List).cast<String>(),
+      ),
+      localRulestackName: pulumi.Input.fromValue(
+        map['localRulestackName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

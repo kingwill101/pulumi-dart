@@ -9,20 +9,19 @@ class RequestsResponse {
 
   /// Creates a new [RequestsResponse].
   /// [storage] Requested capacity of the pool in GiB.
-  RequestsResponse({
-    this.storage,
-  });
+  RequestsResponse({this.storage});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storage': ?storage,
-    };
+    return <String, dynamic>{'storage': ?storage};
   }
 
   factory RequestsResponse.fromMap(Map<String, dynamic> map) {
     return RequestsResponse(
-      storage: map['storage'] == null ? null : (map['storage']! as double).input(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

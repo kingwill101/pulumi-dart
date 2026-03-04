@@ -5,15 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlotAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
+
   /// The client secret associated with the Google web application.
   final pulumi.Input<String> clientSecret;
-  /// The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. <https://developers.google.com/identity/sign-in/web/>
+
+  /// The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. &lt;https://developers.google.com/identity/sign-in/web/&gt;
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [SlotAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.
   /// [clientSecret] The client secret associated with the Google web application.
-  /// [oauthScopes] The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. <https://developers.google.com/identity/sign-in/web/>
+  /// [oauthScopes] The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. &lt;https://developers.google.com/identity/sign-in/web/&gt;
   SlotAuthSettingsGoogle({
     required this.clientId,
     required this.clientSecret,
@@ -30,10 +32,13 @@ class SlotAuthSettingsGoogle {
 
   factory SlotAuthSettingsGoogle.fromMap(Map<String, dynamic> map) {
     return SlotAuthSettingsGoogle(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      oauthScopes: (() {
+        final guardedValue = map['oauthScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

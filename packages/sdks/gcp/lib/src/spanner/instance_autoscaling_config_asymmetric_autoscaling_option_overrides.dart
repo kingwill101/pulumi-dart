@@ -6,7 +6,10 @@ import 'instance_autoscaling_config_asymmetric_autoscaling_option_overrides_auto
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits> autoscalingLimits;
+  final pulumi.Input<
+    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits
+  >
+  autoscalingLimits;
 
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides].
   /// [autoscalingLimits] A nested object resource.
@@ -16,14 +19,23 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingLimits': pulumi.Input.mapInputValue<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits, Map<String, dynamic>>(autoscalingLimits, (value) => value.toMap()),
+      'autoscalingLimits':
+          pulumi.Input.mapInputValue<
+            InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits,
+            Map<String, dynamic>
+          >(autoscalingLimits, (value) => value.toMap()),
     };
   }
 
-  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap(Map<String, dynamic> map) {
+  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides(
-      autoscalingLimits: (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>())).input(),
+      autoscalingLimits: pulumi.Input.fromValue(
+        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits.fromMap(
+          (map['autoscalingLimits']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

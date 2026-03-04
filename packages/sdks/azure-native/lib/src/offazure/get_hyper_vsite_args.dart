@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHyperVSiteArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Site name.
   final pulumi.Input<String> siteName;
 
   /// Creates a new [GetHyperVSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
-  GetHyperVSiteArgs({
-    required this.resourceGroupName,
-    required this.siteName,
-  });
+  GetHyperVSiteArgs({required this.resourceGroupName, required this.siteName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetHyperVSiteArgs {
 
   factory GetHyperVSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetHyperVSiteArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
-

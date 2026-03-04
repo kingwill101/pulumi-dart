@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListOrderDCAccessCodeArgs {
   /// The device name
   final pulumi.Input<String> deviceName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListOrderDCAccessCodeArgs {
 
   factory ListOrderDCAccessCodeArgs.fromMap(Map<String, dynamic> map) {
     return ListOrderDCAccessCodeArgs(
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'oracle_connection_info_response.dart';
 class GetUserTablesOracleTaskInputResponse {
   /// Information for connecting to Oracle source
   final pulumi.Input<OracleConnectionInfoResponse> connectionInfo;
+
   /// List of Oracle schemas for which to collect tables
   final pulumi.Input<List<String>> selectedSchemas;
 
@@ -20,16 +21,27 @@ class GetUserTablesOracleTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
+      'connectionInfo':
+          pulumi.Input.mapInputValue<
+            OracleConnectionInfoResponse,
+            Map<String, dynamic>
+          >(connectionInfo, (value) => value.toMap()),
       'selectedSchemas': selectedSchemas,
     };
   }
 
-  factory GetUserTablesOracleTaskInputResponse.fromMap(Map<String, dynamic> map) {
+  factory GetUserTablesOracleTaskInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserTablesOracleTaskInputResponse(
-      connectionInfo: (OracleConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
-      selectedSchemas: ((map['selectedSchemas'] as List).cast<String>()).input(),
+      connectionInfo: pulumi.Input.fromValue(
+        OracleConnectionInfoResponse.fromMap(
+          (map['connectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      selectedSchemas: pulumi.Input.fromValue(
+        (map['selectedSchemas'] as List).cast<String>(),
+      ),
     );
   }
 }
-

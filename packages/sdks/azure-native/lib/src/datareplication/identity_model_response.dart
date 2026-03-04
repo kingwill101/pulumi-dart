@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityModelResponse {
   /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> aadAuthority;
+
   /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> applicationId;
+
   /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> audience;
+
   /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> objectId;
+
   /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> tenantId;
 
@@ -41,12 +45,11 @@ class IdentityModelResponse {
 
   factory IdentityModelResponse.fromMap(Map<String, dynamic> map) {
     return IdentityModelResponse(
-      aadAuthority: (map['aadAuthority'] as String).input(),
-      applicationId: (map['applicationId'] as String).input(),
-      audience: (map['audience'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      aadAuthority: pulumi.Input.fromValue(map['aadAuthority'] as String),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

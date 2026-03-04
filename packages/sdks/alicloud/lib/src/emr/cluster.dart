@@ -1,17 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
-import 'cluster_bootstrap_action.dart';
-import 'cluster_config.dart';
-import 'cluster_host_group.dart';
 import 'cluster_meta_store_conf.dart';
 import 'cluster_modify_cluster_service_config.dart';
 import 'cluster_state.dart';
 
 /// Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.204.0`. Please use new resource emrv2_cluster.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.204.0`. Please use new resource emrv2_cluster.
 ///
-/// > **NOTE:** Available since v1.57.0.
+/// &gt; **NOTE:** Available since v1.57.0.
 ///
 /// ## Example Usage
 ///
@@ -875,7 +872,7 @@ import 'cluster_state.dart';
 ///
 /// In the case of scaling up cluster, we should add the node_count of some host group.
 ///
-/// > **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
+/// &gt; **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
 /// Scaling down is only applicable to TASK group. If you want to scale down CORE group, please submit tickets or contact EMR support team.
 ///
 /// As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
@@ -1737,7 +1734,7 @@ import 'cluster_state.dart';
 ///
 /// In the case of scaling down a cluster, we need to specified the host group and the instance list.
 ///
-/// > **NOTE:** Graceful decommission of hadoop cluster has been supported Available since v1.168.0.
+/// &gt; **NOTE:** Graceful decommission of hadoop cluster has been supported Available since v1.168.0.
 ///
 /// The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 ///
@@ -3290,57 +3287,84 @@ import 'cluster_state.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// Boot action parameters.
-  late final pulumi.Output<List<ClusterBootstrapAction>?> bootstrapActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> bootstrapActions;
+
   /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
   late final pulumi.Output<String?> chargeType;
+
   /// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
   late final pulumi.Output<String> clusterType;
+
   /// The custom configurations of emr-cluster service.
-  late final pulumi.Output<List<ClusterConfig>?> configs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> configs;
+
   /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
   late final pulumi.Output<String?> depositType;
+
   /// High security cluster (true) or not. Default value is false.
   late final pulumi.Output<bool?> easEnable;
+
   /// EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
   late final pulumi.Output<String> emrVer;
+
   /// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
   late final pulumi.Output<bool?> highAvailabilityEnable;
+
   /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-  late final pulumi.Output<List<ClusterHostGroup>?> hostGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hostGroups;
+
   /// Whether the MASTER node has a public IP address enabled. Default value is false.
   late final pulumi.Output<bool?> isOpenPublicIp;
+
   /// Ssh key pair.
   late final pulumi.Output<String?> keyPairName;
+
   /// Master ssh password.
   late final pulumi.Output<String?> masterPwd;
+
   /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
   late final pulumi.Output<ClusterMetaStoreConf?> metaStoreConf;
+
   /// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
   late final pulumi.Output<String> metaStoreType;
+
   /// The configurations of emr-cluster service modification after cluster created.
-  late final pulumi.Output<ClusterModifyClusterServiceConfig?> modifyClusterServiceConfig;
+  late final pulumi.Output<ClusterModifyClusterServiceConfig?>
+  modifyClusterServiceConfig;
+
   /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
   late final pulumi.Output<String> name;
+
   /// Optional software list.
   late final pulumi.Output<List<String>?> optionSoftwareLists;
+
   /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
   late final pulumi.Output<int?> period;
+
   /// This specify the related cluster id, if this cluster is a Gateway.
   late final pulumi.Output<String?> relatedClusterId;
+
   /// The Id of resource group which the emr-cluster belongs.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// Security Group ID for Cluster, you can also specify this key for each host group.
   late final pulumi.Output<String?> securityGroupId;
+
   /// If this is set true, we can ssh into cluster. Default value is false.
   late final pulumi.Output<bool?> sshEnable;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>> tags;
+
   /// Use local metadb. Default is false.
   late final pulumi.Output<bool?> useLocalMetadb;
+
   /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
   late final pulumi.Output<String?> userDefinedEmrEcsRole;
+
   /// Global vswitch id, you can also specify it in host group.
   late final pulumi.Output<String?> vswitchId;
+
   /// Zone ID, e.g. cn-huhehaote-a
   late final pulumi.Output<String> zoneId;
 
@@ -3353,38 +3377,43 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:emr/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions');
-    this.chargeType = registerOutput<String?>('chargeType');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.configs = registerOutput<List<ClusterConfig>?>('configs');
-    this.depositType = registerOutput<String?>('depositType');
-    this.easEnable = registerOutput<bool?>('easEnable');
-    this.emrVer = registerOutput<String>('emrVer');
-    this.highAvailabilityEnable = registerOutput<bool?>('highAvailabilityEnable');
-    this.hostGroups = registerOutput<List<ClusterHostGroup>?>('hostGroups');
-    this.isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.masterPwd = registerOutput<String?>('masterPwd');
-    this.metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
-    this.metaStoreType = registerOutput<String>('metaStoreType');
-    this.modifyClusterServiceConfig = registerOutput<ClusterModifyClusterServiceConfig?>('modifyClusterServiceConfig');
+         'alicloud:emr/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
+      'bootstrapActions',
+    );
+    chargeType = registerOutput<String?>('chargeType');
+    clusterType = registerOutput<String>('clusterType');
+    configs = registerOutput<List<Map<String, dynamic>>?>('configs');
+    depositType = registerOutput<String?>('depositType');
+    easEnable = registerOutput<bool?>('easEnable');
+    emrVer = registerOutput<String>('emrVer');
+    highAvailabilityEnable = registerOutput<bool?>('highAvailabilityEnable');
+    hostGroups = registerOutput<List<Map<String, dynamic>>?>('hostGroups');
+    isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
+    keyPairName = registerOutput<String?>('keyPairName');
+    masterPwd = registerOutput<String?>('masterPwd');
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
+    metaStoreType = registerOutput<String>('metaStoreType');
+    modifyClusterServiceConfig =
+        registerOutput<ClusterModifyClusterServiceConfig?>(
+          'modifyClusterServiceConfig',
+        );
     this.name = registerOutput<String>('name');
-    this.optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
-    this.period = registerOutput<int?>('period');
-    this.relatedClusterId = registerOutput<String?>('relatedClusterId');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.sshEnable = registerOutput<bool?>('sshEnable');
-    this.tags = registerOutput<Map<String, String>>('tags');
-    this.useLocalMetadb = registerOutput<bool?>('useLocalMetadb');
-    this.userDefinedEmrEcsRole = registerOutput<String?>('userDefinedEmrEcsRole');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
+    period = registerOutput<int?>('period');
+    relatedClusterId = registerOutput<String?>('relatedClusterId');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    sshEnable = registerOutput<bool?>('sshEnable');
+    tags = registerOutput<Map<String, String>>('tags');
+    useLocalMetadb = registerOutput<bool?>('useLocalMetadb');
+    userDefinedEmrEcsRole = registerOutput<String?>('userDefinedEmrEcsRole');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -3405,37 +3434,42 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:emr/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions');
-    this.chargeType = registerOutput<String?>('chargeType');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.configs = registerOutput<List<ClusterConfig>?>('configs');
-    this.depositType = registerOutput<String?>('depositType');
-    this.easEnable = registerOutput<bool?>('easEnable');
-    this.emrVer = registerOutput<String>('emrVer');
-    this.highAvailabilityEnable = registerOutput<bool?>('highAvailabilityEnable');
-    this.hostGroups = registerOutput<List<ClusterHostGroup>?>('hostGroups');
-    this.isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.masterPwd = registerOutput<String?>('masterPwd');
-    this.metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
-    this.metaStoreType = registerOutput<String>('metaStoreType');
-    this.modifyClusterServiceConfig = registerOutput<ClusterModifyClusterServiceConfig?>('modifyClusterServiceConfig');
+         'alicloud:emr/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
+      'bootstrapActions',
+    );
+    chargeType = registerOutput<String?>('chargeType');
+    clusterType = registerOutput<String>('clusterType');
+    configs = registerOutput<List<Map<String, dynamic>>?>('configs');
+    depositType = registerOutput<String?>('depositType');
+    easEnable = registerOutput<bool?>('easEnable');
+    emrVer = registerOutput<String>('emrVer');
+    highAvailabilityEnable = registerOutput<bool?>('highAvailabilityEnable');
+    hostGroups = registerOutput<List<Map<String, dynamic>>?>('hostGroups');
+    isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
+    keyPairName = registerOutput<String?>('keyPairName');
+    masterPwd = registerOutput<String?>('masterPwd');
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
+    metaStoreType = registerOutput<String>('metaStoreType');
+    modifyClusterServiceConfig =
+        registerOutput<ClusterModifyClusterServiceConfig?>(
+          'modifyClusterServiceConfig',
+        );
     this.name = registerOutput<String>('name');
-    this.optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
-    this.period = registerOutput<int?>('period');
-    this.relatedClusterId = registerOutput<String?>('relatedClusterId');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.sshEnable = registerOutput<bool?>('sshEnable');
-    this.tags = registerOutput<Map<String, String>>('tags');
-    this.useLocalMetadb = registerOutput<bool?>('useLocalMetadb');
-    this.userDefinedEmrEcsRole = registerOutput<String?>('userDefinedEmrEcsRole');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
+    period = registerOutput<int?>('period');
+    relatedClusterId = registerOutput<String?>('relatedClusterId');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    sshEnable = registerOutput<bool?>('sshEnable');
+    tags = registerOutput<Map<String, String>>('tags');
+    useLocalMetadb = registerOutput<bool?>('useLocalMetadb');
+    userDefinedEmrEcsRole = registerOutput<String?>('userDefinedEmrEcsRole');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

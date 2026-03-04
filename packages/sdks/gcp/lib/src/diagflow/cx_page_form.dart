@@ -10,20 +10,39 @@ class CxPageForm {
 
   /// Creates a new [CxPageForm].
   /// [parameters] Parameters to collect from the user.
-  CxPageForm({
-    this.parameters,
-  });
+  CxPageForm({this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<CxPageFormParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<CxPageFormParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CxPageFormParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CxPageFormParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CxPageForm.fromMap(Map<String, dynamic> map) {
     return CxPageForm(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameter>(map['parameters']!, (value) => CxPageFormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CxPageFormParameter>(
+            guardedValue,
+            (value) => CxPageFormParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

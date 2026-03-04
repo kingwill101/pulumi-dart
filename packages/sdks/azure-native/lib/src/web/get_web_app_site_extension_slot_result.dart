@@ -1,55 +1,77 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppSiteExtensionSlot.
 class GetWebAppSiteExtensionSlotResult {
   /// List of authors.
   final List<String>? authors;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Site Extension comment.
   final String? comment;
+
   /// Detailed description.
   final String? description;
+
   /// Count of downloads.
   final int? downloadCount;
+
   /// Site extension ID.
   final String? extensionId;
+
   /// Site extension type.
   final String? extensionType;
+
   /// Extension URL.
   final String? extensionUrl;
+
   /// Feed URL.
   final String? feedUrl;
+
   /// Icon URL.
   final String? iconUrl;
+
   /// Resource Id.
   final String id;
+
   /// Installed timestamp.
   final String? installedDateTime;
+
   /// Installer command line parameters.
   final String? installerCommandLineParams;
+
   /// Kind of resource.
   final String? kind;
+
   /// License URL.
   final String? licenseUrl;
-  /// <code>true</code> if the local version is the latest version; <code>false</code> otherwise.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the local version is the latest version; &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? localIsLatestVersion;
+
   /// Local path.
   final String? localPath;
+
   /// Resource Name.
   final String name;
+
   /// Project URL.
   final String? projectUrl;
+
   /// Provisioning state.
   final String? provisioningState;
+
   /// Published timestamp.
   final String? publishedDateTime;
+
   /// Summary description.
   final String? summary;
   final String? title;
+
   /// Resource type.
   final String type;
+
   /// Version information.
   final String? version;
 
@@ -69,7 +91,7 @@ class GetWebAppSiteExtensionSlotResult {
   /// [installerCommandLineParams] Installer command line parameters.
   /// [kind] Kind of resource.
   /// [licenseUrl] License URL.
-  /// [localIsLatestVersion] <code>true</code> if the local version is the latest version; <code>false</code> otherwise.
+  /// [localIsLatestVersion] &lt;code&gt;true&lt;/code&gt; if the local version is the latest version; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [localPath] Local path.
   /// [name] Resource Name.
   /// [projectUrl] Project URL.
@@ -139,32 +161,115 @@ class GetWebAppSiteExtensionSlotResult {
 
   factory GetWebAppSiteExtensionSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteExtensionSlotResult(
-      authors: map['authors'] == null ? null : (map['authors']! as List).cast<String>(),
+      authors: (() {
+        final guardedValue = map['authors'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      comment: map['comment'] == null ? null : map['comment']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      downloadCount: map['downloadCount'] == null ? null : map['downloadCount']! as int,
-      extensionId: map['extensionId'] == null ? null : map['extensionId']! as String,
-      extensionType: map['extensionType'] == null ? null : map['extensionType']! as String,
-      extensionUrl: map['extensionUrl'] == null ? null : map['extensionUrl']! as String,
-      feedUrl: map['feedUrl'] == null ? null : map['feedUrl']! as String,
-      iconUrl: map['iconUrl'] == null ? null : map['iconUrl']! as String,
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      downloadCount: (() {
+        final guardedValue = map['downloadCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      extensionId: (() {
+        final guardedValue = map['extensionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      extensionType: (() {
+        final guardedValue = map['extensionType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      extensionUrl: (() {
+        final guardedValue = map['extensionUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      feedUrl: (() {
+        final guardedValue = map['feedUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      iconUrl: (() {
+        final guardedValue = map['iconUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      installedDateTime: map['installedDateTime'] == null ? null : map['installedDateTime']! as String,
-      installerCommandLineParams: map['installerCommandLineParams'] == null ? null : map['installerCommandLineParams']! as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      licenseUrl: map['licenseUrl'] == null ? null : map['licenseUrl']! as String,
-      localIsLatestVersion: map['localIsLatestVersion'] == null ? null : map['localIsLatestVersion']! as bool,
-      localPath: map['localPath'] == null ? null : map['localPath']! as String,
+      installedDateTime: (() {
+        final guardedValue = map['installedDateTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      installerCommandLineParams: (() {
+        final guardedValue = map['installerCommandLineParams'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      licenseUrl: (() {
+        final guardedValue = map['licenseUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      localIsLatestVersion: (() {
+        final guardedValue = map['localIsLatestVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      localPath: (() {
+        final guardedValue = map['localPath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      projectUrl: map['projectUrl'] == null ? null : map['projectUrl']! as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      publishedDateTime: map['publishedDateTime'] == null ? null : map['publishedDateTime']! as String,
-      summary: map['summary'] == null ? null : map['summary']! as String,
-      title: map['title'] == null ? null : map['title']! as String,
+      projectUrl: (() {
+        final guardedValue = map['projectUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      publishedDateTime: (() {
+        final guardedValue = map['publishedDateTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

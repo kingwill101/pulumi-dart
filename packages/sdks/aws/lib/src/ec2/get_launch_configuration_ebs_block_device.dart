@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchConfigurationEbsBlockDevice {
   /// Whether the EBS Volume will be deleted on instance termination.
   final pulumi.Input<bool> deleteOnTermination;
+
   /// Name of the device.
   final pulumi.Input<String> deviceName;
+
   /// Whether the volume is Encrypted.
   final pulumi.Input<bool> encrypted;
+
   /// Provisioned IOPs of the volume.
   final pulumi.Input<int> iops;
+
   /// Whether the device in the block device mapping of the AMI is suppressed.
   final pulumi.Input<bool> noDevice;
+
   /// Snapshot ID of the mount.
   final pulumi.Input<String> snapshotId;
+
   /// Throughput of the volume.
   final pulumi.Input<int> throughput;
+
   /// Size of the volume.
   final pulumi.Input<int> volumeSize;
+
   /// Type of the volume.
   final pulumi.Input<String> volumeType;
 
@@ -58,18 +66,21 @@ class GetLaunchConfigurationEbsBlockDevice {
     };
   }
 
-  factory GetLaunchConfigurationEbsBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchConfigurationEbsBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchConfigurationEbsBlockDevice(
-      deleteOnTermination: (map['deleteOnTermination'] as bool).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      encrypted: (map['encrypted'] as bool).input(),
-      iops: (map['iops'] as int).input(),
-      noDevice: (map['noDevice'] as bool).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      throughput: (map['throughput'] as int).input(),
-      volumeSize: (map['volumeSize'] as int).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      deleteOnTermination: pulumi.Input.fromValue(
+        map['deleteOnTermination'] as bool,
+      ),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      noDevice: pulumi.Input.fromValue(map['noDevice'] as bool),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      throughput: pulumi.Input.fromValue(map['throughput'] as int),
+      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

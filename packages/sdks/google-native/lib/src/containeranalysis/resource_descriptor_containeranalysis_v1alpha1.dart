@@ -41,16 +41,49 @@ class ResourceDescriptorContaineranalysisV1alpha1 {
     };
   }
 
-  factory ResourceDescriptorContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ResourceDescriptorContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceDescriptorContaineranalysisV1alpha1(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
-      downloadLocation: map['downloadLocation'] == null ? null : (map['downloadLocation']! as String).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      downloadLocation: (() {
+        final guardedValue = map['downloadLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mediaType: (() {
+        final guardedValue = map['mediaType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

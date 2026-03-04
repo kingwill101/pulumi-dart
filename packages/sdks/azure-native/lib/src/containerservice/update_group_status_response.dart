@@ -8,8 +8,10 @@ import 'update_status_response.dart';
 class UpdateGroupStatusResponse {
   /// The list of member this UpdateGroup updates.
   final pulumi.Input<List<MemberUpdateStatusResponse>> members;
+
   /// The name of the UpdateGroup.
   final pulumi.Input<String> name;
+
   /// The status of the UpdateGroup.
   final pulumi.Input<UpdateStatusResponse> status;
 
@@ -25,18 +27,43 @@ class UpdateGroupStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'members': pulumi.Input.mapInputValue<List<MemberUpdateStatusResponse>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<MemberUpdateStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'members':
+          pulumi.Input.mapInputValue<
+            List<MemberUpdateStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            members,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MemberUpdateStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            UpdateStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory UpdateGroupStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpdateGroupStatusResponse(
-      members: (pulumi.Input.decodeList<MemberUpdateStatusResponse>(map['members'], (value) => MemberUpdateStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      status: (UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      members: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MemberUpdateStatusResponse>(
+          map['members']!,
+          (value) => MemberUpdateStatusResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: pulumi.Input.fromValue(
+        UpdateStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

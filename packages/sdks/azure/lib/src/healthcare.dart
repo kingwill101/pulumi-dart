@@ -1,5 +1,3 @@
-library module_healthcare;
-
 export 'healthcare/dicom_service.dart';
 export 'healthcare/dicom_service_args.dart';
 export 'healthcare/dicom_service_authentication.dart';

@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsStorageCapacityUnitsUnit {
   /// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
   final pulumi.Input<String> allocationStatus;
+
   /// The capacity of the Storage Capacity Unit.
   final pulumi.Input<int> capacity;
+
   /// The time when the Storage Capacity Unit was created.
   final pulumi.Input<String> createTime;
+
   /// The description of the Storage Capacity Unit.
   final pulumi.Input<String> description;
+
   /// The time when the Storage Capacity Unit expires.
   final pulumi.Input<String> expiredTime;
+
   /// The ID of the Storage Capacity Unit.
   final pulumi.Input<String> id;
+
   /// The effective time of the Storage Capacity Unit.
   final pulumi.Input<String> startTime;
+
   /// The status of Storage Capacity Unit.
   final pulumi.Input<String> status;
+
   /// The ID of Storage Capacity Unit.
   final pulumi.Input<String> storageCapacityUnitId;
+
   /// The name of the Storage Capacity Unit.
   final pulumi.Input<String> storageCapacityUnitName;
 
@@ -65,17 +74,22 @@ class GetEcsStorageCapacityUnitsUnit {
 
   factory GetEcsStorageCapacityUnitsUnit.fromMap(Map<String, dynamic> map) {
     return GetEcsStorageCapacityUnitsUnit(
-      allocationStatus: (map['allocationStatus'] as String).input(),
-      capacity: (map['capacity'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      expiredTime: (map['expiredTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      storageCapacityUnitId: (map['storageCapacityUnitId'] as String).input(),
-      storageCapacityUnitName: (map['storageCapacityUnitName'] as String).input(),
+      allocationStatus: pulumi.Input.fromValue(
+        map['allocationStatus'] as String,
+      ),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageCapacityUnitId: pulumi.Input.fromValue(
+        map['storageCapacityUnitId'] as String,
+      ),
+      storageCapacityUnitName: pulumi.Input.fromValue(
+        map['storageCapacityUnitName'] as String,
+      ),
     );
   }
 }
-

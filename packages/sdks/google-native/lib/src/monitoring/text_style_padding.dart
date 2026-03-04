@@ -7,16 +7,15 @@ enum TextStylePadding {
   pLarge("P_LARGE"),
   pExtraLarge("P_EXTRA_LARGE");
 
-  const TextStylePadding(this.value);
-  final String value;
+  const TextStylePadding(this.wireValue);
+  final String wireValue;
 
   static TextStylePadding fromValue(String value) {
     for (final item in TextStylePadding.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextStylePadding value: $value');
   }
 }
-

@@ -31,10 +31,15 @@ class GetEndpointAttachmentArgs {
 
   factory GetEndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAttachmentArgs(
-      endpointAttachmentId: (map['endpointAttachmentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      endpointAttachmentId: pulumi.Input.fromValue(
+        map['endpointAttachmentId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

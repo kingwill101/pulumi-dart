@@ -10,20 +10,29 @@ class StorageAccountDetails {
 
   /// Creates a new [StorageAccountDetails].
   /// [systemCreatedStorageAccount] Details of system created storage account to be used for the registry
-  StorageAccountDetails({
-    this.systemCreatedStorageAccount,
-  });
+  StorageAccountDetails({this.systemCreatedStorageAccount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'systemCreatedStorageAccount': ?pulumi.Input.mapOptionalInputValue<SystemCreatedStorageAccount, Map<String, dynamic>>(systemCreatedStorageAccount, (value) => value.toMap()),
+      'systemCreatedStorageAccount':
+          ?pulumi.Input.mapOptionalInputValue<
+            SystemCreatedStorageAccount,
+            Map<String, dynamic>
+          >(systemCreatedStorageAccount, (value) => value.toMap()),
     };
   }
 
   factory StorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetails(
-      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccount.fromMap((map['systemCreatedStorageAccount']! as Map).cast<String, dynamic>())).input(),
+      systemCreatedStorageAccount: (() {
+        final guardedValue = map['systemCreatedStorageAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SystemCreatedStorageAccount.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

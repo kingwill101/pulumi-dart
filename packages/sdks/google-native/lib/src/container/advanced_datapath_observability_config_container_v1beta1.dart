@@ -7,8 +7,12 @@ import 'advanced_datapath_observability_config_relay_mode_container_v1beta1.dart
 class AdvancedDatapathObservabilityConfigContainerV1beta1 {
   /// Expose flow metrics on nodes
   final pulumi.Input<bool>? enableMetrics;
+
   /// Method used to make Relay available
-  final pulumi.Input<AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1>? relayMode;
+  final pulumi.Input<
+    AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1
+  >?
+  relayMode;
 
   /// Creates a new [AdvancedDatapathObservabilityConfigContainerV1beta1].
   /// [enableMetrics] Expose flow metrics on nodes
@@ -21,15 +25,32 @@ class AdvancedDatapathObservabilityConfigContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableMetrics': ?enableMetrics,
-      'relayMode': ?pulumi.Input.mapOptionalInputValue<AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1, String>(relayMode, (value) => value.value),
+      'relayMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1,
+            String
+          >(relayMode, (value) => value.wireValue),
     };
   }
 
-  factory AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AdvancedDatapathObservabilityConfigContainerV1beta1(
-      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics']! as bool).input(),
-      relayMode: map['relayMode'] == null ? null : (AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.fromValue(map['relayMode']! as String)).input(),
+      enableMetrics: (() {
+        final guardedValue = map['enableMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      relayMode: (() {
+        final guardedValue = map['relayMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlRewriteActionParameters {
   /// Define the relative URL to which the above requests will be rewritten by.
   final pulumi.Input<String> destination;
+
   /// Whether to preserve unmatched path. Default value is true.
   final pulumi.Input<bool>? preserveUnmatchedPath;
+
   /// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
   final pulumi.Input<String> sourcePattern;
+
   /// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -36,11 +39,14 @@ class UrlRewriteActionParameters {
 
   factory UrlRewriteActionParameters.fromMap(Map<String, dynamic> map) {
     return UrlRewriteActionParameters(
-      destination: (map['destination'] as String).input(),
-      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath']! as bool).input(),
-      sourcePattern: (map['sourcePattern'] as String).input(),
-      typeName: (map['typeName'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      preserveUnmatchedPath: (() {
+        final guardedValue = map['preserveUnmatchedPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourcePattern: pulumi.Input.fromValue(map['sourcePattern'] as String),
+      typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
-

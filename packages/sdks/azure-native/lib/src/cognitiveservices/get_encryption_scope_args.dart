@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEncryptionScopeArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the encryptionScope associated with the Cognitive Services Account
   final pulumi.Input<String> encryptionScopeName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetEncryptionScopeArgs {
 
   factory GetEncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionScopeArgs(
-      accountName: (map['accountName'] as String).input(),
-      encryptionScopeName: (map['encryptionScopeName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      encryptionScopeName: pulumi.Input.fromValue(
+        map['encryptionScopeName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

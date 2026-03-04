@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-export-eip-tags
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC EIP tag propagation example in Dart.

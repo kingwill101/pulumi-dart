@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagedServiceStsAccess {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
+
   /// The status of the network resource.
   final pulumi.Input<String> status;
+
   /// Specifies the endpoint policy for STS access from the ODB network.
   final pulumi.Input<String> stsPolicyDocument;
 
@@ -33,11 +35,14 @@ class NetworkManagedServiceStsAccess {
 
   factory NetworkManagedServiceStsAccess.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceStsAccess(
-      domainName: (map['domainName'] as String).input(),
-      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      stsPolicyDocument: (map['stsPolicyDocument'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      ipv4Addresses: pulumi.Input.fromValue(
+        (map['ipv4Addresses'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      stsPolicyDocument: pulumi.Input.fromValue(
+        map['stsPolicyDocument'] as String,
+      ),
     );
   }
 }
-

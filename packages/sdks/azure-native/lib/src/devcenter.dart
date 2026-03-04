@@ -1,5 +1,3 @@
-library module_devcenter;
-
 export 'devcenter/attached_network_by_dev_center.dart';
 export 'devcenter/attached_network_by_dev_center_args.dart';
 export 'devcenter/capability_response.dart';

@@ -8,6 +8,7 @@ class GitHubOrganizationProfileResponse {
   /// Discriminator property for OrganizationProfile.
   /// Expected value is 'GitHub'.
   final pulumi.Input<String> kind;
+
   /// The list of GitHub organizations/repositories the pool should be present in.
   final pulumi.Input<List<GitHubOrganizationResponse>> organizations;
 
@@ -22,15 +23,32 @@ class GitHubOrganizationProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': kind,
-      'organizations': pulumi.Input.mapInputValue<List<GitHubOrganizationResponse>, List<Map<String, dynamic>>>(organizations, (value) => pulumi.Input.encodeList<GitHubOrganizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'organizations':
+          pulumi.Input.mapInputValue<
+            List<GitHubOrganizationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            organizations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GitHubOrganizationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GitHubOrganizationProfileResponse.fromMap(Map<String, dynamic> map) {
     return GitHubOrganizationProfileResponse(
-      kind: (map['kind'] as String).input(),
-      organizations: (pulumi.Input.decodeList<GitHubOrganizationResponse>(map['organizations'], (value) => GitHubOrganizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      organizations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GitHubOrganizationResponse>(
+          map['organizations']!,
+          (value) => GitHubOrganizationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

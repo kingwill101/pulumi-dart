@@ -3,16 +3,17 @@ enum RegionInstanceGroupManagerFailoverAction {
   noFailover("NO_FAILOVER"),
   unknown("UNKNOWN");
 
-  const RegionInstanceGroupManagerFailoverAction(this.value);
-  final String value;
+  const RegionInstanceGroupManagerFailoverAction(this.wireValue);
+  final String wireValue;
 
   static RegionInstanceGroupManagerFailoverAction fromValue(String value) {
     for (final item in RegionInstanceGroupManagerFailoverAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionInstanceGroupManagerFailoverAction value: $value');
+    throw ArgumentError(
+      'Unknown RegionInstanceGroupManagerFailoverAction value: $value',
+    );
   }
 }
-

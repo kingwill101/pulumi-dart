@@ -7,10 +7,13 @@ import 'resource_id.dart';
 class ManagedNetworkPeeringPolicyProperties {
   /// Gets or sets the hub virtual network ID
   final pulumi.Input<ResourceId>? hub;
+
   /// Gets or sets the mesh group IDs
   final pulumi.Input<List<ResourceId>>? mesh;
+
   /// Gets or sets the spokes group IDs
   final pulumi.Input<List<ResourceId>>? spokes;
+
   /// Gets or sets the connectivity type of a network structure policy
   final pulumi.Input<String> type;
 
@@ -28,20 +31,73 @@ class ManagedNetworkPeeringPolicyProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hub': ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(hub, (value) => value.toMap()),
-      'mesh': ?pulumi.Input.mapOptionalInputValue<List<ResourceId>, List<Map<String, dynamic>>>(mesh, (value) => pulumi.Input.encodeList<ResourceId, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'spokes': ?pulumi.Input.mapOptionalInputValue<List<ResourceId>, List<Map<String, dynamic>>>(spokes, (value) => pulumi.Input.encodeList<ResourceId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hub':
+          ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(
+            hub,
+            (value) => value.toMap(),
+          ),
+      'mesh':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceId>,
+            List<Map<String, dynamic>>
+          >(
+            mesh,
+            (value) =>
+                pulumi.Input.encodeList<ResourceId, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'spokes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceId>,
+            List<Map<String, dynamic>>
+          >(
+            spokes,
+            (value) =>
+                pulumi.Input.encodeList<ResourceId, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'type': type,
     };
   }
 
-  factory ManagedNetworkPeeringPolicyProperties.fromMap(Map<String, dynamic> map) {
+  factory ManagedNetworkPeeringPolicyProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedNetworkPeeringPolicyProperties(
-      hub: map['hub'] == null ? null : (ResourceId.fromMap((map['hub']! as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['mesh']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spokes: map['spokes'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['spokes']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      hub: (() {
+        final guardedValue = map['hub'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceId.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      mesh: (() {
+        final guardedValue = map['mesh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceId>(
+            guardedValue,
+            (value) =>
+                ResourceId.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      spokes: (() {
+        final guardedValue = map['spokes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceId>(
+            guardedValue,
+            (value) =>
+                ResourceId.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -11,20 +11,28 @@ import 'sku.dart';
 class DevBoxDefinitionArgs {
   /// The name of the Dev Box definition.
   final pulumi.Input<String>? devBoxDefinitionName;
+
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
   final pulumi.Input<String>? hibernateSupport;
+
   /// Image reference information.
   final pulumi.Input<ImageReference> imageReference;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The storage type used for the Operating System disk of Dev Boxes created using this definition.
   final pulumi.Input<String>? osStorageType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The SKU for Dev Boxes created using this definition.
   final pulumi.Input<Sku> sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -55,27 +63,63 @@ class DevBoxDefinitionArgs {
       'devBoxDefinitionName': ?devBoxDefinitionName,
       'devCenterName': devCenterName,
       'hibernateSupport': ?hibernateSupport,
-      'imageReference': pulumi.Input.mapInputValue<ImageReference, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
+      'imageReference':
+          pulumi.Input.mapInputValue<ImageReference, Map<String, dynamic>>(
+            imageReference,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'osStorageType': ?osStorageType,
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory DevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionArgs(
-      devBoxDefinitionName: map['devBoxDefinitionName'] == null ? null : (map['devBoxDefinitionName']! as String).input(),
-      devCenterName: (map['devCenterName'] as String).input(),
-      hibernateSupport: map['hibernateSupport'] == null ? null : (map['hibernateSupport']! as String).input(),
-      imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      osStorageType: map['osStorageType'] == null ? null : (map['osStorageType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      devBoxDefinitionName: (() {
+        final guardedValue = map['devBoxDefinitionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      hibernateSupport: (() {
+        final guardedValue = map['hibernateSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageReference: pulumi.Input.fromValue(
+        ImageReference.fromMap(
+          (map['imageReference']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osStorageType: (() {
+        final guardedValue = map['osStorageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: pulumi.Input.fromValue(
+        Sku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

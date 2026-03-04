@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestUtilizationResponse {
   /// Target number of concurrent requests.
   final pulumi.Input<int> targetConcurrentRequests;
+
   /// Target requests per second.
   final pulumi.Input<int> targetRequestCountPerSecond;
 
@@ -26,9 +27,12 @@ class RequestUtilizationResponse {
 
   factory RequestUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return RequestUtilizationResponse(
-      targetConcurrentRequests: (map['targetConcurrentRequests'] as int).input(),
-      targetRequestCountPerSecond: (map['targetRequestCountPerSecond'] as int).input(),
+      targetConcurrentRequests: pulumi.Input.fromValue(
+        map['targetConcurrentRequests'] as int,
+      ),
+      targetRequestCountPerSecond: pulumi.Input.fromValue(
+        map['targetRequestCountPerSecond'] as int,
+      ),
     );
   }
 }
-

@@ -133,25 +133,36 @@ import 'system_data_response.dart';
 /// ```
 class Extension extends pulumi.CustomResource {
   /// Additional Api Properties.
-  late final pulumi.Output<Map<String, ApiPropertiesResponse>> additionalApiProperties;
+  late final pulumi.Output<Map<String, ApiPropertiesResponse>>
+  additionalApiProperties;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The ETag value to implement optimistic concurrency.
   late final pulumi.Output<String> eTag;
+
   /// Extension api docs link.
   late final pulumi.Output<String> extensionApiDocsLink;
+
   /// Extension auth link.
   late final pulumi.Output<String> extensionAuthLink;
+
   /// Extension category. e.g. weather/sensor/satellite.
   late final pulumi.Output<String> extensionCategory;
+
   /// Extension Id.
   late final pulumi.Output<String> extensionId;
+
   /// Installed extension version.
   late final pulumi.Output<String> installedExtensionVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -164,21 +175,26 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:agfoodplatform:Extension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalApiProperties = registerOutput<Map<String, ApiPropertiesResponse>>('additionalApiProperties');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
-    this.extensionApiDocsLink = registerOutput<String>('extensionApiDocsLink');
-    this.extensionAuthLink = registerOutput<String>('extensionAuthLink');
-    this.extensionCategory = registerOutput<String>('extensionCategory');
-    this.extensionId = registerOutput<String>('extensionId');
-    this.installedExtensionVersion = registerOutput<String>('installedExtensionVersion');
+         'azure-native:agfoodplatform:Extension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalApiProperties =
+        registerOutput<Map<String, ApiPropertiesResponse>>(
+          'additionalApiProperties',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    extensionApiDocsLink = registerOutput<String>('extensionApiDocsLink');
+    extensionAuthLink = registerOutput<String>('extensionAuthLink');
+    extensionCategory = registerOutput<String>('extensionCategory');
+    extensionId = registerOutput<String>('extensionId');
+    installedExtensionVersion = registerOutput<String>(
+      'installedExtensionVersion',
+    );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

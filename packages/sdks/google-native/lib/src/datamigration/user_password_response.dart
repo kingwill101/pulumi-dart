@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPasswordResponse {
   /// The initial password for the user.
   final pulumi.Input<String> password;
+
   /// Indicates if the initial_user.password field has been set.
   final pulumi.Input<bool> passwordSet;
+
   /// The database username.
   final pulumi.Input<String> user;
 
@@ -31,10 +33,9 @@ class UserPasswordResponse {
 
   factory UserPasswordResponse.fromMap(Map<String, dynamic> map) {
     return UserPasswordResponse(
-      password: (map['password'] as String).input(),
-      passwordSet: (map['passwordSet'] as bool).input(),
-      user: (map['user'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      passwordSet: pulumi.Input.fromValue(map['passwordSet'] as bool),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

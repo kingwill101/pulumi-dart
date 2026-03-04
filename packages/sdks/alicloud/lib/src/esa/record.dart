@@ -10,7 +10,7 @@ import 'record_state.dart';
 ///
 /// For information about ESA Record and how to use it, see [What is Record](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/add-parsing-record/).
 ///
-/// > **NOTE:** Available since v1.240.0.
+/// &gt; **NOTE:** Available since v1.240.0.
 ///
 /// ## Example Usage
 ///
@@ -306,24 +306,34 @@ import 'record_state.dart';
 class Record extends pulumi.CustomResource {
   /// The origin authentication information of the CNAME record. See `auth_conf` below.
   late final pulumi.Output<RecordAuthConf?> authConf;
+
   /// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
   late final pulumi.Output<String?> bizName;
+
   /// The comment of the record. The maximum length is 100 characters.
   late final pulumi.Output<String?> comment;
+
   /// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
   late final pulumi.Output<RecordData> data;
+
   /// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
   late final pulumi.Output<String?> hostPolicy;
+
   /// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
   late final pulumi.Output<bool?> proxied;
+
   /// The record name. This parameter specifies a filter condition for the query.
   late final pulumi.Output<String> recordName;
+
   /// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
   late final pulumi.Output<String> recordType;
+
   /// The website ID.
   late final pulumi.Output<String> siteId;
+
   /// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
   /// - `OSS`: OSS bucket.
   /// - `S3`: S3 bucket.
@@ -332,6 +342,7 @@ class Record extends pulumi.CustomResource {
   /// - `Domain`: domain name.
   /// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
   late final pulumi.Output<String?> sourceType;
+
   /// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
   late final pulumi.Output<int?> ttl;
 
@@ -339,28 +350,25 @@ class Record extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Record]. {@macro pulumi_esa_record_record_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Record(
-    String name, {
-    RecordArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:esa/record:Record',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authConf = registerOutput<RecordAuthConf?>('authConf');
-    this.bizName = registerOutput<String?>('bizName');
-    this.comment = registerOutput<String?>('comment');
-    this.createTime = registerOutput<String>('createTime');
-    this.data = registerOutput<RecordData>('data');
-    this.hostPolicy = registerOutput<String?>('hostPolicy');
-    this.proxied = registerOutput<bool?>('proxied');
-    this.recordName = registerOutput<String>('recordName');
-    this.recordType = registerOutput<String>('recordType');
-    this.siteId = registerOutput<String>('siteId');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.ttl = registerOutput<int?>('ttl');
+  Record(String name, {RecordArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:esa/record:Record',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authConf = registerOutput<RecordAuthConf?>('authConf');
+    bizName = registerOutput<String?>('bizName');
+    comment = registerOutput<String?>('comment');
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<RecordData>('data');
+    hostPolicy = registerOutput<String?>('hostPolicy');
+    proxied = registerOutput<bool?>('proxied');
+    recordName = registerOutput<String>('recordName');
+    recordType = registerOutput<String>('recordType');
+    siteId = registerOutput<String>('siteId');
+    sourceType = registerOutput<String?>('sourceType');
+    ttl = registerOutput<int?>('ttl');
   }
 
   /// Gets an existing [Record] resource's state with the given [name] and [id].
@@ -381,22 +389,22 @@ class Record extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/record:Record',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authConf = registerOutput<RecordAuthConf?>('authConf');
-    this.bizName = registerOutput<String?>('bizName');
-    this.comment = registerOutput<String?>('comment');
-    this.createTime = registerOutput<String>('createTime');
-    this.data = registerOutput<RecordData>('data');
-    this.hostPolicy = registerOutput<String?>('hostPolicy');
-    this.proxied = registerOutput<bool?>('proxied');
-    this.recordName = registerOutput<String>('recordName');
-    this.recordType = registerOutput<String>('recordType');
-    this.siteId = registerOutput<String>('siteId');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.ttl = registerOutput<int?>('ttl');
+         'alicloud:esa/record:Record',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authConf = registerOutput<RecordAuthConf?>('authConf');
+    bizName = registerOutput<String?>('bizName');
+    comment = registerOutput<String?>('comment');
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<RecordData>('data');
+    hostPolicy = registerOutput<String?>('hostPolicy');
+    proxied = registerOutput<bool?>('proxied');
+    recordName = registerOutput<String>('recordName');
+    recordType = registerOutput<String>('recordType');
+    siteId = registerOutput<String>('siteId');
+    sourceType = registerOutput<String?>('sourceType');
+    ttl = registerOutput<int?>('ttl');
   }
 }

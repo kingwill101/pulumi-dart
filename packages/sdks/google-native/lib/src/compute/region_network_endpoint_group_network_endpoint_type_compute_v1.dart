@@ -8,16 +8,20 @@ enum RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   serverless("SERVERLESS");
 
-  const RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1(this.value);
-  final String value;
+  const RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1(this.wireValue);
+  final String wireValue;
 
-  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(String value) {
-    for (final item in RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
-      if (item.value == value) {
+  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value',
+    );
   }
 }
-

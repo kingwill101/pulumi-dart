@@ -9,17 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HubNetworkconnectivityV1alpha1Args {
   /// Time when the Hub was created.
   final pulumi.Input<String>? createTime;
+
   /// Short description of the hub resource.
   final pulumi.Input<String>? description;
+
   /// Optional. Unique id for the Hub to create.
   final pulumi.Input<String>? hubId;
+
   /// User-defined labels.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Immutable. The name of a Hub resource.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// Time when the Hub was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -58,15 +64,48 @@ class HubNetworkconnectivityV1alpha1Args {
 
   factory HubNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return HubNetworkconnectivityV1alpha1Args(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      hubId: map['hubId'] == null ? null : (map['hubId']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hubId: (() {
+        final guardedValue = map['hubId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

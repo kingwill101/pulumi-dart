@@ -10,23 +10,24 @@ class RuleResponse {
   /// Creates a new [RuleResponse].
   /// [type] Rule type
   /// [value] Optional.
-  RuleResponse({
-    this.type,
-    this.value,
-  });
+  RuleResponse({this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'type': ?type, 'value': ?value};
   }
 
   factory RuleResponse.fromMap(Map<String, dynamic> map) {
     return RuleResponse(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

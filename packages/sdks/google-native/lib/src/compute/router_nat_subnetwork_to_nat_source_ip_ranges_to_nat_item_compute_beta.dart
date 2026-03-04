@@ -3,16 +3,22 @@ enum RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta {
   listOfSecondaryIpRanges("LIST_OF_SECONDARY_IP_RANGES"),
   primaryIpRange("PRIMARY_IP_RANGE");
 
-  const RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta(this.value);
-  final String value;
+  const RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta fromValue(String value) {
-    for (final item in RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.values) {
-      if (item.value == value) {
+  static RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta value: $value',
+    );
   }
 }
-

@@ -6,8 +6,12 @@ import 'agentcore_agent_runtime_network_configuration_network_mode_config.dart';
 class AgentcoreAgentRuntimeNetworkConfiguration {
   /// Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
+
   /// Network mode configuration. See `network_mode_config` below.
-  final pulumi.Input<AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig>? networkModeConfig;
+  final pulumi.Input<
+    AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig
+  >?
+  networkModeConfig;
 
   /// Creates a new [AgentcoreAgentRuntimeNetworkConfiguration].
   /// [networkMode] Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
@@ -20,15 +24,28 @@ class AgentcoreAgentRuntimeNetworkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkMode': networkMode,
-      'networkModeConfig': ?pulumi.Input.mapOptionalInputValue<AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig, Map<String, dynamic>>(networkModeConfig, (value) => value.toMap()),
+      'networkModeConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig,
+            Map<String, dynamic>
+          >(networkModeConfig, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreAgentRuntimeNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeNetworkConfiguration(
-      networkMode: (map['networkMode'] as String).input(),
-      networkModeConfig: map['networkModeConfig'] == null ? null : ((AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap((map['networkModeConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      networkMode: pulumi.Input.fromValue(map['networkMode'] as String),
+      networkModeConfig: (() {
+        final guardedValue = map['networkModeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

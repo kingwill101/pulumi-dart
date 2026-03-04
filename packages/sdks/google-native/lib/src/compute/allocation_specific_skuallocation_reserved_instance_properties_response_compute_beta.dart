@@ -7,17 +7,29 @@ import 'allocation_specific_skuallocation_allocated_instance_properties_reserved
 /// Properties of the SKU instances being reserved. Next ID: 9
 class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta {
   /// Specifies accelerator type and count.
-  final pulumi.Input<List<AcceleratorConfigResponseComputeBeta>> guestAccelerators;
+  final pulumi.Input<List<AcceleratorConfigResponseComputeBeta>>
+  guestAccelerators;
+
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
-  final pulumi.Input<List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta>> localSsds;
+  final pulumi.Input<
+    List<
+      AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta
+    >
+  >
+  localSsds;
+
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   final pulumi.Input<String> locationHint;
+
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
   final pulumi.Input<String> machineType;
+
   /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
   final pulumi.Input<int> maintenanceFreezeDurationHours;
+
   /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
   final pulumi.Input<String> maintenanceInterval;
+
   /// Minimum cpu platform the reservation.
   final pulumi.Input<String> minCpuPlatform;
 
@@ -41,8 +53,32 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guestAccelerators': pulumi.Input.mapInputValue<List<AcceleratorConfigResponseComputeBeta>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<AcceleratorConfigResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'localSsds': pulumi.Input.mapInputValue<List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta>, List<Map<String, dynamic>>>(localSsds, (value) => pulumi.Input.encodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'guestAccelerators':
+          pulumi.Input.mapInputValue<
+            List<AcceleratorConfigResponseComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            guestAccelerators,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AcceleratorConfigResponseComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'localSsds':
+          pulumi.Input.mapInputValue<
+            List<
+              AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta
+            >,
+            List<Map<String, dynamic>>
+          >(
+            localSsds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'locationHint': locationHint,
       'machineType': machineType,
       'maintenanceFreezeDurationHours': maintenanceFreezeDurationHours,
@@ -51,16 +87,38 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBe
     };
   }
 
-  factory AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta(
-      guestAccelerators: (pulumi.Input.decodeList<AcceleratorConfigResponseComputeBeta>(map['guestAccelerators'], (value) => AcceleratorConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localSsds: (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationHint: (map['locationHint'] as String).input(),
-      machineType: (map['machineType'] as String).input(),
-      maintenanceFreezeDurationHours: (map['maintenanceFreezeDurationHours'] as int).input(),
-      maintenanceInterval: (map['maintenanceInterval'] as String).input(),
-      minCpuPlatform: (map['minCpuPlatform'] as String).input(),
+      guestAccelerators: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AcceleratorConfigResponseComputeBeta>(
+          map['guestAccelerators']!,
+          (value) => AcceleratorConfigResponseComputeBeta.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      localSsds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta
+        >(
+          map['localSsds']!,
+          (value) =>
+              AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      locationHint: pulumi.Input.fromValue(map['locationHint'] as String),
+      machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      maintenanceFreezeDurationHours: pulumi.Input.fromValue(
+        map['maintenanceFreezeDurationHours'] as int,
+      ),
+      maintenanceInterval: pulumi.Input.fromValue(
+        map['maintenanceInterval'] as String,
+      ),
+      minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
     );
   }
 }
-

@@ -11,20 +11,15 @@ class SlrArgs {
 
   /// Creates a new [SlrArgs].
   /// [productName] Required.
-  SlrArgs({
-    required this.productName,
-  });
+  SlrArgs({required this.productName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'productName': productName,
-    };
+    return <String, dynamic>{'productName': productName};
   }
 
   factory SlrArgs.fromMap(Map<String, dynamic> map) {
     return SlrArgs(
-      productName: (map['productName'] as String).input(),
+      productName: pulumi.Input.fromValue(map['productName'] as String),
     );
   }
 }
-

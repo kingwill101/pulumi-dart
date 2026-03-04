@@ -8,6 +8,7 @@ class GetGenaiOpenaiApiKeyResult {
   final String createdAt;
   final String createdBy;
   final String deletedAt;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetGenaiOpenaiApiKeyModel> models;
@@ -41,7 +42,11 @@ class GetGenaiOpenaiApiKeyResult {
       'createdBy': createdBy,
       'deletedAt': deletedAt,
       'id': id,
-      'models': pulumi.Input.encodeList<GetGenaiOpenaiApiKeyModel, Map<String, dynamic>>(models, (value) => value.toMap()),
+      'models':
+          pulumi.Input.encodeList<
+            GetGenaiOpenaiApiKeyModel,
+            Map<String, dynamic>
+          >(models, (value) => value.toMap()),
       'name': name,
       'updatedAt': updatedAt,
       'uuid': uuid,
@@ -54,11 +59,15 @@ class GetGenaiOpenaiApiKeyResult {
       createdBy: map['createdBy'] as String,
       deletedAt: map['deletedAt'] as String,
       id: map['id'] as String,
-      models: pulumi.Input.decodeList<GetGenaiOpenaiApiKeyModel>(map['models'], (value) => GetGenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>())),
+      models: pulumi.Input.decodeList<GetGenaiOpenaiApiKeyModel>(
+        map['models']!,
+        (value) => GetGenaiOpenaiApiKeyModel.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
       updatedAt: map['updatedAt'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the network interface
   final pulumi.Input<String>? operationId;
+
   /// The status of the operation performed on the network interface [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 
@@ -18,17 +19,19 @@ class NetworkInterfaceStatusProvisioningStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operationId': ?operationId,
-      'status': status,
-    };
+    return <String, dynamic>{'operationId': ?operationId, 'status': status};
   }
 
-  factory NetworkInterfaceStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceStatusProvisioningStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
-      status: (map['status'] as String).input(),
+      operationId: (() {
+        final guardedValue = map['operationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'trigger_reference.dart';
 class TumblingWindowTriggerDependencyReference {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
   final pulumi.Input<String>? offset;
+
   /// Referenced trigger.
   final pulumi.Input<TriggerReference> referenceTrigger;
+
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
   final pulumi.Input<String>? size;
+
   /// The type of dependency reference.
   /// Expected value is 'TumblingWindowTriggerDependencyReference'.
   final pulumi.Input<String> type;
@@ -30,19 +33,36 @@ class TumblingWindowTriggerDependencyReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'offset': ?offset,
-      'referenceTrigger': pulumi.Input.mapInputValue<TriggerReference, Map<String, dynamic>>(referenceTrigger, (value) => value.toMap()),
+      'referenceTrigger':
+          pulumi.Input.mapInputValue<TriggerReference, Map<String, dynamic>>(
+            referenceTrigger,
+            (value) => value.toMap(),
+          ),
       'size': ?size,
       'type': type,
     };
   }
 
-  factory TumblingWindowTriggerDependencyReference.fromMap(Map<String, dynamic> map) {
+  factory TumblingWindowTriggerDependencyReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TumblingWindowTriggerDependencyReference(
-      offset: map['offset'] == null ? null : (map['offset']! as String).input(),
-      referenceTrigger: (TriggerReference.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>())).input(),
-      size: map['size'] == null ? null : (map['size']! as String).input(),
-      type: (map['type'] as String).input(),
+      offset: (() {
+        final guardedValue = map['offset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referenceTrigger: pulumi.Input.fromValue(
+        TriggerReference.fromMap(
+          (map['referenceTrigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -9,21 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyV2Args {
   /// Whether this policy has been audited.
   final pulumi.Input<bool>? audited;
+
   /// Human-readable description of the policy.
   final pulumi.Input<String>? description;
+
   /// The name of the firewall policy.
   final pulumi.Input<String>? name;
+
   /// The ID of the firewall policy.
   final pulumi.Input<String>? policyId;
+
   /// This argument conflicts and is interchangeable
   /// with `tenant_id`. The owner of the firewall policy.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// Whether this policy is shared across all projects.
   final pulumi.Input<bool>? shared;
+
   /// This argument conflicts and is interchangeable
   /// with `project_id`. The owner of the firewall policy.
   final pulumi.Input<String>? tenantId;
@@ -63,15 +70,46 @@ class GetPolicyV2Args {
 
   factory GetPolicyV2Args.fromMap(Map<String, dynamic> map) {
     return GetPolicyV2Args(
-      audited: map['audited'] == null ? null : (map['audited']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      audited: (() {
+        final guardedValue = map['audited'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

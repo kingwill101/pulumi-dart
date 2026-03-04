@@ -3,16 +3,15 @@ enum DatabaseReadScale {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const DatabaseReadScale(this.value);
-  final String value;
+  const DatabaseReadScale(this.wireValue);
+  final String wireValue;
 
   static DatabaseReadScale fromValue(String value) {
     for (final item in DatabaseReadScale.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseReadScale value: $value');
   }
 }
-

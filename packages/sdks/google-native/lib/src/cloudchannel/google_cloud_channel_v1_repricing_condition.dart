@@ -10,20 +10,31 @@ class GoogleCloudChannelV1RepricingCondition {
 
   /// Creates a new [GoogleCloudChannelV1RepricingCondition].
   /// [skuGroupCondition] SKU Group condition for override.
-  GoogleCloudChannelV1RepricingCondition({
-    this.skuGroupCondition,
-  });
+  GoogleCloudChannelV1RepricingCondition({this.skuGroupCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'skuGroupCondition': ?pulumi.Input.mapOptionalInputValue<GoogleCloudChannelV1SkuGroupCondition, Map<String, dynamic>>(skuGroupCondition, (value) => value.toMap()),
+      'skuGroupCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudChannelV1SkuGroupCondition,
+            Map<String, dynamic>
+          >(skuGroupCondition, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudChannelV1RepricingCondition.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1RepricingCondition(
-      skuGroupCondition: map['skuGroupCondition'] == null ? null : (GoogleCloudChannelV1SkuGroupCondition.fromMap((map['skuGroupCondition']! as Map).cast<String, dynamic>())).input(),
+      skuGroupCondition: (() {
+        final guardedValue = map['skuGroupCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudChannelV1SkuGroupCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

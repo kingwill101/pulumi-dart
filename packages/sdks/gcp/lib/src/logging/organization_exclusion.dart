@@ -8,7 +8,7 @@ import 'organization_exclusion_state.dart';
 /// * How-to Guides
 /// * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 ///
-/// > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.OrganizationSink`
+/// &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.OrganizationSink`
 ///
 /// ## Example Usage
 ///
@@ -132,15 +132,19 @@ import 'organization_exclusion_state.dart';
 class OrganizationExclusion extends pulumi.CustomResource {
   /// A human-readable description.
   late final pulumi.Output<String?> description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   late final pulumi.Output<bool?> disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String> filter;
+
   /// The name of the logging exclusion.
   late final pulumi.Output<String> name;
+
   /// The organization to create the exclusion in.
   late final pulumi.Output<String> orgId;
 
@@ -153,16 +157,16 @@ class OrganizationExclusion extends pulumi.CustomResource {
     OrganizationExclusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/organizationExclusion:OrganizationExclusion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.filter = registerOutput<String>('filter');
+         'gcp:logging/organizationExclusion:OrganizationExclusion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    filter = registerOutput<String>('filter');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
+    orgId = registerOutput<String>('orgId');
   }
 
   /// Gets an existing [OrganizationExclusion] resource's state with the given [name] and [id].
@@ -183,15 +187,15 @@ class OrganizationExclusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/organizationExclusion:OrganizationExclusion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.filter = registerOutput<String>('filter');
+         'gcp:logging/organizationExclusion:OrganizationExclusion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    filter = registerOutput<String>('filter');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
+    orgId = registerOutput<String>('orgId');
   }
 }

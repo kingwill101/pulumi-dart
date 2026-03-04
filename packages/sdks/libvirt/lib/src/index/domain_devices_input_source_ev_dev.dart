@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInputSourceEvDev {
   /// Specifies the device file for the event device source.
   final pulumi.Input<String> dev;
+
   /// Controls whether the input device source should grab input focus.
   final pulumi.Input<String>? grab;
+
   /// Configures grab toggle settings for the event device source.
   final pulumi.Input<String>? grabToggle;
+
   /// Sets repeat settings for events from the input device source.
   final pulumi.Input<String>? repeat;
 
@@ -35,11 +38,22 @@ class DomainDevicesInputSourceEvDev {
 
   factory DomainDevicesInputSourceEvDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputSourceEvDev(
-      dev: (map['dev'] as String).input(),
-      grab: map['grab'] == null ? null : (map['grab']! as String).input(),
-      grabToggle: map['grabToggle'] == null ? null : (map['grabToggle']! as String).input(),
-      repeat: map['repeat'] == null ? null : (map['repeat']! as String).input(),
+      dev: pulumi.Input.fromValue(map['dev'] as String),
+      grab: (() {
+        final guardedValue = map['grab'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grabToggle: (() {
+        final guardedValue = map['grabToggle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repeat: (() {
+        final guardedValue = map['repeat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,16 +15,17 @@ enum AggregationCrossSeriesReducerMonitoringV3 {
   reducePercentile50("REDUCE_PERCENTILE_50"),
   reducePercentile05("REDUCE_PERCENTILE_05");
 
-  const AggregationCrossSeriesReducerMonitoringV3(this.value);
-  final String value;
+  const AggregationCrossSeriesReducerMonitoringV3(this.wireValue);
+  final String wireValue;
 
   static AggregationCrossSeriesReducerMonitoringV3 fromValue(String value) {
     for (final item in AggregationCrossSeriesReducerMonitoringV3.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AggregationCrossSeriesReducerMonitoringV3 value: $value');
+    throw ArgumentError(
+      'Unknown AggregationCrossSeriesReducerMonitoringV3 value: $value',
+    );
   }
 }
-

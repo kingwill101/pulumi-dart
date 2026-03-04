@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WCFRelayAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String>? authorizationRuleName;
+
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// The relay name.
   final pulumi.Input<String> relayName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The rights associated with the rule.
   final pulumi.Input<List<String>> rights;
 
@@ -44,12 +48,17 @@ class WCFRelayAuthorizationRuleArgs {
 
   factory WCFRelayAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return WCFRelayAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      relayName: (map['relayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rights: ((map['rights'] as List).cast<String>()).input(),
+      authorizationRuleName: (() {
+        final guardedValue = map['authorizationRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      relayName: pulumi.Input.fromValue(map['relayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
     );
   }
 }
-

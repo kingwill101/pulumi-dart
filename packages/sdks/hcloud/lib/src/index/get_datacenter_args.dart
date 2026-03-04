@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatacenterArgs {
   /// ID of the Datacenter.
   final pulumi.Input<int>? id;
+
   /// Name of the Datacenter.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetDatacenterArgs].
   /// [id] ID of the Datacenter.
   /// [name] Name of the Datacenter.
-  GetDatacenterArgs({
-    this.id,
-    this.name,
-  });
+  GetDatacenterArgs({this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory GetDatacenterArgs.fromMap(Map<String, dynamic> map) {
     return GetDatacenterArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -248,24 +248,34 @@ import 'system_data_response.dart';
 class NeighborGroup extends pulumi.CustomResource {
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An array of destination IPv4 Addresses or IPv6 Addresses.
   late final pulumi.Output<NeighborGroupDestinationResponse> destination;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of NetworkTap IDs where neighbor group is associated.
   late final pulumi.Output<List<String>> networkTapIds;
+
   /// List of Network Tap Rule IDs where neighbor group is associated.
   late final pulumi.Output<List<String>> networkTapRuleIds;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -278,21 +288,23 @@ class NeighborGroup extends pulumi.CustomResource {
     NeighborGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:NeighborGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.destination = registerOutput<NeighborGroupDestinationResponse>('destination');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:NeighborGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destination = registerOutput<NeighborGroupDestinationResponse>(
+      'destination',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkTapIds = registerOutput<List<String>>('networkTapIds');
-    this.networkTapRuleIds = registerOutput<List<String>>('networkTapRuleIds');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkTapIds = registerOutput<List<String>>('networkTapIds');
+    networkTapRuleIds = registerOutput<List<String>>('networkTapRuleIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

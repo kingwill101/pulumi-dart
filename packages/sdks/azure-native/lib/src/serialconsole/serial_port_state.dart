@@ -3,16 +3,15 @@ enum SerialPortState {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const SerialPortState(this.value);
-  final String value;
+  const SerialPortState(this.wireValue);
+  final String wireValue;
 
   static SerialPortState fromValue(String value) {
     for (final item in SerialPortState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SerialPortState value: $value');
   }
 }
-

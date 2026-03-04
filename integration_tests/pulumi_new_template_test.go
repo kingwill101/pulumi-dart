@@ -182,5 +182,5 @@ func TestPulumiNewDartRandomTemplateE2E(t *testing.T) {
 		"preview",
 		"--non-interactive",
 	)
-	require.Contains(t, previewOutput, "random:index:RandomPet")
+	require.Contains(t, previewOutput, "petName")
 }

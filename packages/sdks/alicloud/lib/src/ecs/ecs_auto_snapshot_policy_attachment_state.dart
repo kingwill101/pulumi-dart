@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsAutoSnapshotPolicyAttachmentState {
   /// The ID of the automatic snapshot policy that is applied to the cloud disk.
   final pulumi.Input<String>? autoSnapshotPolicyId;
+
   /// The ID of the disk.
   final pulumi.Input<String>? diskId;
+
   /// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
   final pulumi.Input<String>? regionId;
 
@@ -29,12 +31,25 @@ class EcsAutoSnapshotPolicyAttachmentState {
     };
   }
 
-  factory EcsAutoSnapshotPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory EcsAutoSnapshotPolicyAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EcsAutoSnapshotPolicyAttachmentState(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId']! as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      autoSnapshotPolicyId: (() {
+        final guardedValue = map['autoSnapshotPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

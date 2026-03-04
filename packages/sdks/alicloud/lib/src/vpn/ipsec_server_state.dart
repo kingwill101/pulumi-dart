@@ -8,22 +8,31 @@ import 'ipsec_server_ipsec_config.dart';
 class IpsecServerState {
   /// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
   final pulumi.Input<String>? clientIpPool;
+
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
+
   /// Specifies whether you want the configuration to immediately take effect.
   final pulumi.Input<bool>? effectImmediately;
+
   /// The configuration of Phase 1 negotiations. See `ike_config` below.
   final pulumi.Input<List<IpsecServerIkeConfig>>? ikeConfigs;
+
   /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
   final pulumi.Input<List<IpsecServerIpsecConfig>>? ipsecConfigs;
+
   /// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
   final pulumi.Input<String>? ipsecServerName;
+
   /// The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
   final pulumi.Input<String>? localSubnet;
+
   /// The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
   final pulumi.Input<String>? psk;
+
   /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
   final pulumi.Input<bool>? pskEnabled;
+
   /// The ID of the VPN gateway.
   final pulumi.Input<String>? vpnGatewayId;
 
@@ -56,8 +65,30 @@ class IpsecServerState {
       'clientIpPool': ?clientIpPool,
       'dryRun': ?dryRun,
       'effectImmediately': ?effectImmediately,
-      'ikeConfigs': ?pulumi.Input.mapOptionalInputValue<List<IpsecServerIkeConfig>, List<Map<String, dynamic>>>(ikeConfigs, (value) => pulumi.Input.encodeList<IpsecServerIkeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ipsecConfigs': ?pulumi.Input.mapOptionalInputValue<List<IpsecServerIpsecConfig>, List<Map<String, dynamic>>>(ipsecConfigs, (value) => pulumi.Input.encodeList<IpsecServerIpsecConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ikeConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpsecServerIkeConfig>,
+            List<Map<String, dynamic>>
+          >(
+            ikeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpsecServerIkeConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ipsecConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpsecServerIpsecConfig>,
+            List<Map<String, dynamic>>
+          >(
+            ipsecConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpsecServerIpsecConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ipsecServerName': ?ipsecServerName,
       'localSubnet': ?localSubnet,
       'psk': ?psk,
@@ -68,17 +99,70 @@ class IpsecServerState {
 
   factory IpsecServerState.fromMap(Map<String, dynamic> map) {
     return IpsecServerState(
-      clientIpPool: map['clientIpPool'] == null ? null : (map['clientIpPool']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately']! as bool).input(),
-      ikeConfigs: map['ikeConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIkeConfig>(map['ikeConfigs']!, (value) => IpsecServerIkeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipsecConfigs: map['ipsecConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIpsecConfig>(map['ipsecConfigs']!, (value) => IpsecServerIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipsecServerName: map['ipsecServerName'] == null ? null : (map['ipsecServerName']! as String).input(),
-      localSubnet: map['localSubnet'] == null ? null : (map['localSubnet']! as String).input(),
-      psk: map['psk'] == null ? null : (map['psk']! as String).input(),
-      pskEnabled: map['pskEnabled'] == null ? null : (map['pskEnabled']! as bool).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
+      clientIpPool: (() {
+        final guardedValue = map['clientIpPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      effectImmediately: (() {
+        final guardedValue = map['effectImmediately'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ikeConfigs: (() {
+        final guardedValue = map['ikeConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpsecServerIkeConfig>(
+            guardedValue,
+            (value) => IpsecServerIkeConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ipsecConfigs: (() {
+        final guardedValue = map['ipsecConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpsecServerIpsecConfig>(
+            guardedValue,
+            (value) => IpsecServerIpsecConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ipsecServerName: (() {
+        final guardedValue = map['ipsecServerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localSubnet: (() {
+        final guardedValue = map['localSubnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      psk: (() {
+        final guardedValue = map['psk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pskEnabled: (() {
+        final guardedValue = map['pskEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vpnGatewayId: (() {
+        final guardedValue = map['vpnGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

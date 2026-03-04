@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbClusterParamChangeLog {
   /// The id of parameter change.
   final pulumi.Input<int>? configId;
+
   /// When the parameter change is created.
   final pulumi.Input<String>? gmtCreated;
+
   /// When the parameter change is modified.
   final pulumi.Input<String>? gmtModified;
+
   /// Whether the parameter changing is applied.
   final pulumi.Input<bool>? isApplied;
+
   /// Changed parameter name.
   final pulumi.Input<String>? name;
+
   /// The new value of parameter.
   final pulumi.Input<String>? newValue;
+
   /// The old value of parameter.
   final pulumi.Input<String>? oldValue;
 
@@ -50,14 +56,41 @@ class DbClusterParamChangeLog {
 
   factory DbClusterParamChangeLog.fromMap(Map<String, dynamic> map) {
     return DbClusterParamChangeLog(
-      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
-      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated']! as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
-      isApplied: map['isApplied'] == null ? null : (map['isApplied']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      newValue: map['newValue'] == null ? null : (map['newValue']! as String).input(),
-      oldValue: map['oldValue'] == null ? null : (map['oldValue']! as String).input(),
+      configId: (() {
+        final guardedValue = map['configId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gmtCreated: (() {
+        final guardedValue = map['gmtCreated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtModified: (() {
+        final guardedValue = map['gmtModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isApplied: (() {
+        final guardedValue = map['isApplied'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      newValue: (() {
+        final guardedValue = map['newValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oldValue: (() {
+        final guardedValue = map['oldValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

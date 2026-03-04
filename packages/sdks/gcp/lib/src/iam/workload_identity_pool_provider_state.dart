@@ -14,6 +14,7 @@ class WorkloadIdentityPoolProviderState {
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
   final pulumi.Input<String>? attributeCondition;
+
   /// Maps attributes from authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
   /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -66,28 +67,37 @@ class WorkloadIdentityPoolProviderState {
   /// {"google.subject": "assertion.sub"}
   /// ```
   final pulumi.Input<Map<String, String>>? attributeMapping;
+
   /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
   /// Structure is documented below.
   final pulumi.Input<WorkloadIdentityPoolProviderAws>? aws;
+
   /// A description for the provider. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
+
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
   final pulumi.Input<bool>? disabled;
+
   /// A display name for the provider. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+
   /// The resource name of the provider as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
   final pulumi.Input<String>? name;
+
   /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
   /// Structure is documented below.
   final pulumi.Input<WorkloadIdentityPoolProviderOidc>? oidc;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
   /// Structure is documented below.
   final pulumi.Input<WorkloadIdentityPoolProviderSaml>? saml;
+
   /// The state of the provider.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -96,14 +106,17 @@ class WorkloadIdentityPoolProviderState {
   /// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
   /// until it is permanently deleted.
   final pulumi.Input<String>? state;
+
   /// The ID used for the pool, which is the final component of the pool resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   final pulumi.Input<String>? workloadIdentityPoolId;
+
   /// The ID for the provider, which becomes the final component of the resource name. This
   /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   final pulumi.Input<String>? workloadIdentityPoolProviderId;
+
   /// An X.509-type identity provider represents a CA. It is trusted to assert a
   /// client identity if the client has a certificate that chains up to this CA.
   /// Structure is documented below.
@@ -145,38 +158,127 @@ class WorkloadIdentityPoolProviderState {
     return <String, dynamic>{
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
-      'aws': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderAws, Map<String, dynamic>>(aws, (value) => value.toMap()),
+      'aws':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadIdentityPoolProviderAws,
+            Map<String, dynamic>
+          >(aws, (value) => value.toMap()),
       'description': ?description,
       'disabled': ?disabled,
       'displayName': ?displayName,
       'name': ?name,
-      'oidc': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderOidc, Map<String, dynamic>>(oidc, (value) => value.toMap()),
+      'oidc':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadIdentityPoolProviderOidc,
+            Map<String, dynamic>
+          >(oidc, (value) => value.toMap()),
       'project': ?project,
-      'saml': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
+      'saml':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadIdentityPoolProviderSaml,
+            Map<String, dynamic>
+          >(saml, (value) => value.toMap()),
       'state': ?state,
       'workloadIdentityPoolId': ?workloadIdentityPoolId,
       'workloadIdentityPoolProviderId': ?workloadIdentityPoolProviderId,
-      'x509': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderX509, Map<String, dynamic>>(x509, (value) => value.toMap()),
+      'x509':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadIdentityPoolProviderX509,
+            Map<String, dynamic>
+          >(x509, (value) => value.toMap()),
     };
   }
 
   factory WorkloadIdentityPoolProviderState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderState(
-      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition']! as String).input(),
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping']! as Map).cast<String, String>()).input(),
-      aws: map['aws'] == null ? null : (WorkloadIdentityPoolProviderAws.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      oidc: map['oidc'] == null ? null : (WorkloadIdentityPoolProviderOidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      saml: map['saml'] == null ? null : (WorkloadIdentityPoolProviderSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId']! as String).input(),
-      workloadIdentityPoolProviderId: map['workloadIdentityPoolProviderId'] == null ? null : (map['workloadIdentityPoolProviderId']! as String).input(),
-      x509: map['x509'] == null ? null : (WorkloadIdentityPoolProviderX509.fromMap((map['x509']! as Map).cast<String, dynamic>())).input(),
+      attributeCondition: (() {
+        final guardedValue = map['attributeCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attributeMapping: (() {
+        final guardedValue = map['attributeMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      aws: (() {
+        final guardedValue = map['aws'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadIdentityPoolProviderAws.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidc: (() {
+        final guardedValue = map['oidc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadIdentityPoolProviderOidc.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      saml: (() {
+        final guardedValue = map['saml'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadIdentityPoolProviderSaml.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolId: (() {
+        final guardedValue = map['workloadIdentityPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolProviderId: (() {
+        final guardedValue = map['workloadIdentityPoolProviderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      x509: (() {
+        final guardedValue = map['x509'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadIdentityPoolProviderX509.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

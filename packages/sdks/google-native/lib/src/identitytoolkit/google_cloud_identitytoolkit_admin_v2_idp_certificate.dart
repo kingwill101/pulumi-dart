@@ -9,20 +9,21 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2IdpCertificate].
   /// [x509Certificate] The x509 certificate
-  GoogleCloudIdentitytoolkitAdminV2IdpCertificate({
-    this.x509Certificate,
-  });
+  GoogleCloudIdentitytoolkitAdminV2IdpCertificate({this.x509Certificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x509Certificate': ?x509Certificate,
-    };
+    return <String, dynamic>{'x509Certificate': ?x509Certificate};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2IdpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate']! as String).input(),
+      x509Certificate: (() {
+        final guardedValue = map['x509Certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

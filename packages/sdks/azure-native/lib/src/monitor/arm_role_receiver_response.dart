@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArmRoleReceiverResponse {
   /// The name of the arm role receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
+
   /// The arm role id.
   final pulumi.Input<String> roleId;
+
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool>? useCommonAlertSchema;
 
@@ -31,10 +33,13 @@ class ArmRoleReceiverResponse {
 
   factory ArmRoleReceiverResponse.fromMap(Map<String, dynamic> map) {
     return ArmRoleReceiverResponse(
-      name: (map['name'] as String).input(),
-      roleId: (map['roleId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      roleId: pulumi.Input.fromValue(map['roleId'] as String),
+      useCommonAlertSchema: (() {
+        final guardedValue = map['useCommonAlertSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

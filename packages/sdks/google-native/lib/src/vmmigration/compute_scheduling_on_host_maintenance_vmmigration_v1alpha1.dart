@@ -4,16 +4,20 @@ enum ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 {
   terminate("TERMINATE"),
   migrate("MIGRATE");
 
-  const ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1(this.value);
-  final String value;
+  const ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 fromValue(String value) {
-    for (final item in ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.values) {
-      if (item.value == value) {
+  static ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

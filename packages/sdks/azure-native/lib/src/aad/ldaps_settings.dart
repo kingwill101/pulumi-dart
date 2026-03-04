@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LdapsSettings {
   /// A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
   final pulumi.Input<String>? externalAccess;
+
   /// A flag to determine whether or not Secure LDAP is enabled or disabled.
   final pulumi.Input<String>? ldaps;
+
   /// The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
   final pulumi.Input<String>? pfxCertificate;
+
   /// The password to decrypt the provided Secure LDAP certificate pfx file.
   final pulumi.Input<String>? pfxCertificatePassword;
 
@@ -36,11 +39,26 @@ class LdapsSettings {
 
   factory LdapsSettings.fromMap(Map<String, dynamic> map) {
     return LdapsSettings(
-      externalAccess: map['externalAccess'] == null ? null : (map['externalAccess']! as String).input(),
-      ldaps: map['ldaps'] == null ? null : (map['ldaps']! as String).input(),
-      pfxCertificate: map['pfxCertificate'] == null ? null : (map['pfxCertificate']! as String).input(),
-      pfxCertificatePassword: map['pfxCertificatePassword'] == null ? null : (map['pfxCertificatePassword']! as String).input(),
+      externalAccess: (() {
+        final guardedValue = map['externalAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ldaps: (() {
+        final guardedValue = map['ldaps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pfxCertificate: (() {
+        final guardedValue = map['pfxCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pfxCertificatePassword: (() {
+        final guardedValue = map['pfxCertificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

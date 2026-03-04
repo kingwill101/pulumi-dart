@@ -5,26 +5,28 @@ import 'cluster_issue_code_enum_value.dart';
 
 /// Definition of ClusterIssue
 class ClusterIssue {
-  /// <p>The error code of the issue.</p>
+  /// &lt;p&gt;The error code of the issue.&lt;/p&gt;
   final pulumi.Input<ClusterIssueCodeEnumValue>? code;
-  /// <p>A description of the issue.</p>
+
+  /// &lt;p&gt;A description of the issue.&lt;/p&gt;
   final pulumi.Input<String>? message;
-  /// <p>The resource IDs that the issue relates to.</p>
+
+  /// &lt;p&gt;The resource IDs that the issue relates to.&lt;/p&gt;
   final pulumi.Input<List<String>>? resourceIds;
 
   /// Creates a new [ClusterIssue].
-  /// [code] <p>The error code of the issue.</p>
-  /// [message] <p>A description of the issue.</p>
-  /// [resourceIds] <p>The resource IDs that the issue relates to.</p>
-  ClusterIssue({
-    this.code,
-    this.message,
-    this.resourceIds,
-  });
+  /// [code] &lt;p&gt;The error code of the issue.&lt;/p&gt;
+  /// [message] &lt;p&gt;A description of the issue.&lt;/p&gt;
+  /// [resourceIds] &lt;p&gt;The resource IDs that the issue relates to.&lt;/p&gt;
+  ClusterIssue({this.code, this.message, this.resourceIds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': ?pulumi.Input.mapOptionalInputValue<ClusterIssueCodeEnumValue, Map<String, dynamic>>(code, (value) => value.toMap()),
+      'code':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterIssueCodeEnumValue,
+            Map<String, dynamic>
+          >(code, (value) => value.toMap()),
       'message': ?message,
       'resourceIds': ?resourceIds,
     };
@@ -32,10 +34,25 @@ class ClusterIssue {
 
   factory ClusterIssue.fromMap(Map<String, dynamic> map) {
     return ClusterIssue(
-      code: map['code'] == null ? null : (ClusterIssueCodeEnumValue.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds']! as List).cast<String>()).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterIssueCodeEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceIds: (() {
+        final guardedValue = map['resourceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

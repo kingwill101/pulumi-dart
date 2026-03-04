@@ -4,16 +4,17 @@ enum ApplicationGatewayLoadDistributionAlgorithm {
   valueLeastConnections("LeastConnections"),
   valueIpHash("IpHash");
 
-  const ApplicationGatewayLoadDistributionAlgorithm(this.value);
-  final String value;
+  const ApplicationGatewayLoadDistributionAlgorithm(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayLoadDistributionAlgorithm fromValue(String value) {
     for (final item in ApplicationGatewayLoadDistributionAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewayLoadDistributionAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewayLoadDistributionAlgorithm value: $value',
+    );
   }
 }
-

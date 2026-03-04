@@ -7,15 +7,20 @@ import 'databricks_properties.dart';
 class Databricks {
   /// Location for the underlying compute
   final pulumi.Input<String>? computeLocation;
+
   /// The type of compute
   /// Expected value is 'Databricks'.
   final pulumi.Input<String> computeType;
+
   /// The description of the Machine Learning compute.
   final pulumi.Input<String>? description;
+
   /// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   final pulumi.Input<bool>? disableLocalAuth;
+
   /// Properties of Databricks
   final pulumi.Input<DatabricksProperties>? properties;
+
   /// ARM resource id of the underlying compute
   final pulumi.Input<String>? resourceId;
 
@@ -41,20 +46,47 @@ class Databricks {
       'computeType': computeType,
       'description': ?description,
       'disableLocalAuth': ?disableLocalAuth,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DatabricksProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabricksProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceId': ?resourceId,
     };
   }
 
   factory Databricks.fromMap(Map<String, dynamic> map) {
     return Databricks(
-      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation']! as String).input(),
-      computeType: (map['computeType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
-      properties: map['properties'] == null ? null : (DatabricksProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      computeLocation: (() {
+        final guardedValue = map['computeLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computeType: pulumi.Input.fromValue(map['computeType'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabricksProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

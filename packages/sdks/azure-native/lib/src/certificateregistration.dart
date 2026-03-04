@@ -1,5 +1,3 @@
-library module_certificateregistration;
-
 export 'certificateregistration/app_service_certificate.dart';
 export 'certificateregistration/app_service_certificate_order.dart';
 export 'certificateregistration/app_service_certificate_order_args.dart';

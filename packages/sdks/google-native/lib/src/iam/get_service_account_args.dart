@@ -13,10 +13,7 @@ class GetServiceAccountArgs {
   /// Creates a new [GetServiceAccountArgs].
   /// [project] Optional.
   /// [serviceAccountId] Required.
-  GetServiceAccountArgs({
-    this.project,
-    required this.serviceAccountId,
-  });
+  GetServiceAccountArgs({this.project, required this.serviceAccountId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,14 @@ class GetServiceAccountArgs {
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceAccountId: (map['serviceAccountId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountId: pulumi.Input.fromValue(
+        map['serviceAccountId'] as String,
+      ),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddonReleaseArgs {
   /// Addon Name.
   final pulumi.Input<String> addonName;
+
   /// The name of the resource.
   final pulumi.Input<String>? addonReleaseName;
+
   /// Version number of Addon. Addon information can be obtained through ListAddons.
   final pulumi.Input<String> addonVersion;
+
   /// The installed locale.
   final pulumi.Input<String>? aliyunLang;
+
   /// Environment id.
   final pulumi.Input<String> environmentId;
+
   /// Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
   final pulumi.Input<String>? values;
 
@@ -49,13 +54,24 @@ class AddonReleaseArgs {
 
   factory AddonReleaseArgs.fromMap(Map<String, dynamic> map) {
     return AddonReleaseArgs(
-      addonName: (map['addonName'] as String).input(),
-      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName']! as String).input(),
-      addonVersion: (map['addonVersion'] as String).input(),
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      values: map['values'] == null ? null : (map['values']! as String).input(),
+      addonName: pulumi.Input.fromValue(map['addonName'] as String),
+      addonReleaseName: (() {
+        final guardedValue = map['addonReleaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addonVersion: pulumi.Input.fromValue(map['addonVersion'] as String),
+      aliyunLang: (() {
+        final guardedValue = map['aliyunLang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

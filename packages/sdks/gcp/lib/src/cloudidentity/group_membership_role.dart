@@ -8,6 +8,7 @@ class GroupMembershipRole {
   /// Other roles cannot be accompanied with MEMBER role having expiry.
   /// Structure is documented below.
   final pulumi.Input<GroupMembershipRoleExpiryDetail>? expiryDetail;
+
   /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
   /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
   final pulumi.Input<String> name;
@@ -15,23 +16,31 @@ class GroupMembershipRole {
   /// Creates a new [GroupMembershipRole].
   /// [expiryDetail] The MembershipRole expiry details, only supported for MEMBER role.
   /// [name] The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-  GroupMembershipRole({
-    this.expiryDetail,
-    required this.name,
-  });
+  GroupMembershipRole({this.expiryDetail, required this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiryDetail': ?pulumi.Input.mapOptionalInputValue<GroupMembershipRoleExpiryDetail, Map<String, dynamic>>(expiryDetail, (value) => value.toMap()),
+      'expiryDetail':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupMembershipRoleExpiryDetail,
+            Map<String, dynamic>
+          >(expiryDetail, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GroupMembershipRole.fromMap(Map<String, dynamic> map) {
     return GroupMembershipRole(
-      expiryDetail: map['expiryDetail'] == null ? null : (GroupMembershipRoleExpiryDetail.fromMap((map['expiryDetail']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      expiryDetail: (() {
+        final guardedValue = map['expiryDetail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupMembershipRoleExpiryDetail.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

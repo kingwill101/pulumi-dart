@@ -300,7 +300,7 @@ import 'stream_input_iot_hub_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2020-03-01
@@ -315,20 +315,28 @@ import 'stream_input_iot_hub_state.dart';
 class StreamInputIotHub extends pulumi.CustomResource {
   /// The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
   late final pulumi.Output<String> endpoint;
+
   /// The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub.
   late final pulumi.Output<String> eventhubConsumerGroupName;
+
   /// The name or the URI of the IoT Hub.
   late final pulumi.Output<String> iothubNamespace;
+
   /// The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `serialization` block as defined below.
   late final pulumi.Output<StreamInputIotHubSerialization> serialization;
+
   /// The shared access policy key for the specified shared access policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sharedAccessPolicyKey;
+
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   late final pulumi.Output<String> sharedAccessPolicyName;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
 
@@ -341,20 +349,24 @@ class StreamInputIotHub extends pulumi.CustomResource {
     StreamInputIotHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
-    this.iothubNamespace = registerOutput<String>('iothubNamespace');
+         'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    eventhubConsumerGroupName = registerOutput<String>(
+      'eventhubConsumerGroupName',
+    );
+    iothubNamespace = registerOutput<String>('iothubNamespace');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serialization = registerOutput<StreamInputIotHubSerialization>('serialization');
-    this.sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
-    this.sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serialization = registerOutput<StreamInputIotHubSerialization>(
+      'serialization',
+    );
+    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }
 
   /// Gets an existing [StreamInputIotHub] resource's state with the given [name] and [id].
@@ -375,19 +387,23 @@ class StreamInputIotHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
-    this.iothubNamespace = registerOutput<String>('iothubNamespace');
+         'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    eventhubConsumerGroupName = registerOutput<String>(
+      'eventhubConsumerGroupName',
+    );
+    iothubNamespace = registerOutput<String>('iothubNamespace');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serialization = registerOutput<StreamInputIotHubSerialization>('serialization');
-    this.sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
-    this.sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serialization = registerOutput<StreamInputIotHubSerialization>(
+      'serialization',
+    );
+    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }
 }

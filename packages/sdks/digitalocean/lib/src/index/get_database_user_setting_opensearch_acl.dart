@@ -15,17 +15,15 @@ class GetDatabaseUserSettingOpensearchAcl {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'index': index,
-      'permission': permission,
-    };
+    return <String, dynamic>{'index': index, 'permission': permission};
   }
 
-  factory GetDatabaseUserSettingOpensearchAcl.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseUserSettingOpensearchAcl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseUserSettingOpensearchAcl(
-      index: (map['index'] as String).input(),
-      permission: (map['permission'] as String).input(),
+      index: pulumi.Input.fromValue(map['index'] as String),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
     );
   }
 }
-

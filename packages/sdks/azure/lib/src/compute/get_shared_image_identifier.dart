@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImageIdentifier {
   /// The Offer Name for this Shared Image.
   final pulumi.Input<String> offer;
+
   /// (Optional) The Purchase Plan Publisher for this Gallery Image.
   final pulumi.Input<String> publisher;
+
   /// The Name of the SKU for this Gallery Image.
   final pulumi.Input<String> sku;
 
@@ -30,10 +32,9 @@ class GetSharedImageIdentifier {
 
   factory GetSharedImageIdentifier.fromMap(Map<String, dynamic> map) {
     return GetSharedImageIdentifier(
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
-

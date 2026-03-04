@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshMeshConfigPrometheus {
   /// The  service addresses of the Prometheus.
   final pulumi.Input<String> externalUrl;
+
   /// Whether to enable external Prometheus.
   final pulumi.Input<bool> useExternal;
 
@@ -23,11 +24,12 @@ class GetServiceMeshesMeshMeshConfigPrometheus {
     };
   }
 
-  factory GetServiceMeshesMeshMeshConfigPrometheus.fromMap(Map<String, dynamic> map) {
+  factory GetServiceMeshesMeshMeshConfigPrometheus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceMeshesMeshMeshConfigPrometheus(
-      externalUrl: (map['externalUrl'] as String).input(),
-      useExternal: (map['useExternal'] as bool).input(),
+      externalUrl: pulumi.Input.fromValue(map['externalUrl'] as String),
+      useExternal: pulumi.Input.fromValue(map['useExternal'] as bool),
     );
   }
 }
-

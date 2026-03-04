@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeypairArgs {
   /// The unique name of the keypair.
   final pulumi.Input<String> name;
+
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The user id of the owner of the key pair.
   /// This parameter can be specified only if the provider is configured to use
   /// the credentials of an OpenStack administrator.
@@ -21,11 +23,7 @@ class GetKeypairArgs {
   /// [name] The unique name of the keypair.
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userId] The user id of the owner of the key pair.
-  GetKeypairArgs({
-    required this.name,
-    this.region,
-    this.userId,
-  });
+  GetKeypairArgs({required this.name, this.region, this.userId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,17 @@ class GetKeypairArgs {
 
   factory GetKeypairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeypairArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

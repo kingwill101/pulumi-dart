@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_reservation_args.dart';
 import 'capacity_reservation_instance_view_response.dart';
 import 'sku_response.dart';
-import 'sub_resource_read_only_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the capacity reservation.
@@ -197,32 +196,48 @@ import 'system_data_response.dart';
 class CapacityReservation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Capacity reservation instance view.
-  late final pulumi.Output<CapacityReservationInstanceViewResponse> instanceView;
+  late final pulumi.Output<CapacityReservationInstanceViewResponse>
+  instanceView;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the value of fault domain count that Capacity Reservation supports for requested VM size. **Note:** The fault domain count specified for a resource (like virtual machines scale set) must be less than or equal to this value if it deploys using capacity reservation. Minimum api-version: 2022-08-01.
   late final pulumi.Output<int> platformFaultDomainCount;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The date time when the capacity reservation was last updated.
   late final pulumi.Output<String> provisioningTime;
+
   /// A unique id generated and assigned to the capacity reservation by the platform which does not change throughout the lifetime of the resource.
   late final pulumi.Output<String> reservationId;
+
   /// SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set.  For Block capacity reservations, sku.capacity can only accept values 1, 2, 4, 8, 16, 32, 64. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. When 'CapacityReservationSupported' is true, the SKU capability also specifies the 'SupportedCapacityReservationTypes', which lists the types of capacity reservations (such as Targeted or Block) that the SKU supports. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the time at which the Capacity Reservation resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A list of all virtual machine resource ids that are associated with the capacity reservation.
-  late final pulumi.Output<List<SubResourceReadOnlyResponse>> virtualMachinesAssociated;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  virtualMachinesAssociated;
+
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -235,25 +250,29 @@ class CapacityReservation extends pulumi.CustomResource {
     CapacityReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:CapacityReservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.instanceView = registerOutput<CapacityReservationInstanceViewResponse>('instanceView');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:CapacityReservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    instanceView = registerOutput<CapacityReservationInstanceViewResponse>(
+      'instanceView',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.provisioningTime = registerOutput<String>('provisioningTime');
-    this.reservationId = registerOutput<String>('reservationId');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.type = registerOutput<String>('type');
-    this.virtualMachinesAssociated = registerOutput<List<SubResourceReadOnlyResponse>>('virtualMachinesAssociated');
-    this.zones = registerOutput<List<String>?>('zones');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    provisioningState = registerOutput<String>('provisioningState');
+    provisioningTime = registerOutput<String>('provisioningTime');
+    reservationId = registerOutput<String>('reservationId');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    virtualMachinesAssociated = registerOutput<List<Map<String, dynamic>>>(
+      'virtualMachinesAssociated',
+    );
+    zones = registerOutput<List<String>?>('zones');
   }
 }

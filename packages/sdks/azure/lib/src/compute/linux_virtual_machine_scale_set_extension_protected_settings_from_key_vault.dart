@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault {
   /// The URL to the Key Vault Secret which stores the protected settings.
   final pulumi.Input<String> secretUrl;
+
   /// The ID of the source Key Vault.
   final pulumi.Input<String> sourceVaultId;
 
@@ -23,11 +24,12 @@ class LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault {
     };
   }
 
-  factory LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap(Map<String, dynamic> map) {
+  factory LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault(
-      secretUrl: (map['secretUrl'] as String).input(),
-      sourceVaultId: (map['sourceVaultId'] as String).input(),
+      secretUrl: pulumi.Input.fromValue(map['secretUrl'] as String),
+      sourceVaultId: pulumi.Input.fromValue(map['sourceVaultId'] as String),
     );
   }
 }
-

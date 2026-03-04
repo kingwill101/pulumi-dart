@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyGroupPlacementPolicyResponseComputeV1 {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
   final pulumi.Input<int> availabilityDomainCount;
+
   /// Specifies network collocation
   final pulumi.Input<String> collocation;
+
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
   final pulumi.Input<int> vmCount;
 
@@ -29,12 +31,15 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeV1 {
     };
   }
 
-  factory ResourcePolicyGroupPlacementPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyGroupPlacementPolicyResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeV1(
-      availabilityDomainCount: (map['availabilityDomainCount'] as int).input(),
-      collocation: (map['collocation'] as String).input(),
-      vmCount: (map['vmCount'] as int).input(),
+      availabilityDomainCount: pulumi.Input.fromValue(
+        map['availabilityDomainCount'] as int,
+      ),
+      collocation: pulumi.Input.fromValue(map['collocation'] as String),
+      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
     );
   }
 }
-

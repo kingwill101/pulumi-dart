@@ -1,5 +1,3 @@
-library module_eci;
-
 export 'eci/container_group.dart';
 export 'eci/container_group_acr_registry_info.dart';
 export 'eci/container_group_args.dart';

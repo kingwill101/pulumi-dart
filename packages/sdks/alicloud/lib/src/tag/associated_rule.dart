@@ -8,7 +8,7 @@ import 'associated_rule_state.dart';
 ///
 /// For information about TAG Associated Rule and how to use it, see [What is Associated Rule](https://www.alibabacloud.com/help/en/resource-management/tag/developer-reference/api-tag-2018-08-28-createassociatedresourcerules).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -153,8 +153,10 @@ import 'associated_rule_state.dart';
 class AssociatedRule extends pulumi.CustomResource {
   /// The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
   late final pulumi.Output<String> associatedSettingName;
+
   /// Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   late final pulumi.Output<String> status;
+
   /// List of tag keys for the associated resource tag rule.
   late final pulumi.Output<List<String>?> tagKeys;
 
@@ -167,14 +169,14 @@ class AssociatedRule extends pulumi.CustomResource {
     AssociatedRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/associatedRule:AssociatedRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedSettingName = registerOutput<String>('associatedSettingName');
-    this.status = registerOutput<String>('status');
-    this.tagKeys = registerOutput<List<String>?>('tagKeys');
+         'alicloud:tag/associatedRule:AssociatedRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedSettingName = registerOutput<String>('associatedSettingName');
+    status = registerOutput<String>('status');
+    tagKeys = registerOutput<List<String>?>('tagKeys');
   }
 
   /// Gets an existing [AssociatedRule] resource's state with the given [name] and [id].
@@ -195,13 +197,13 @@ class AssociatedRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/associatedRule:AssociatedRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedSettingName = registerOutput<String>('associatedSettingName');
-    this.status = registerOutput<String>('status');
-    this.tagKeys = registerOutput<List<String>?>('tagKeys');
+         'alicloud:tag/associatedRule:AssociatedRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedSettingName = registerOutput<String>('associatedSettingName');
+    status = registerOutput<String>('status');
+    tagKeys = registerOutput<List<String>?>('tagKeys');
   }
 }

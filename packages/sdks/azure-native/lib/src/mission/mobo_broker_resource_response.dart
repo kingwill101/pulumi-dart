@@ -9,20 +9,19 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource identifier of a Managed-On-Behalf-Of broker resource
-  MoboBrokerResourceResponse({
-    this.id,
-  });
+  MoboBrokerResourceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory MoboBrokerResourceResponse.fromMap(Map<String, dynamic> map) {
     return MoboBrokerResourceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

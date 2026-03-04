@@ -1,5 +1,3 @@
-library module_redisenterprise;
-
 export 'redisenterprise/access_keys_authentication.dart';
 export 'redisenterprise/access_policy_assignment.dart';
 export 'redisenterprise/access_policy_assignment_args.dart';

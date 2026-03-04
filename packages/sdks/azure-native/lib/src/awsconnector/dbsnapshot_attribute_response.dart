@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DBSnapshotAttribute
 class DBSnapshotAttributeResponse {
-  /// <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named <code>restore</code> refers to the list of Amazon Web Services accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
+  /// &lt;p&gt;The name of the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;The attribute named &lt;code&gt;restore&lt;/code&gt; refers to the list of Amazon Web Services accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the &lt;code&gt;ModifyDBSnapshotAttribute&lt;/code&gt; API action.&lt;/p&gt;
   final pulumi.Input<String>? attributeName;
-  /// <p>The value or values for the manual DB snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the Amazon Web Services accounts that are authorized to copy or restore the manual DB snapshot. If a value of <code>all</code> is in the list, then the manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.</p>
+
+  /// &lt;p&gt;The value or values for the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;AttributeName&lt;/code&gt; field is set to &lt;code&gt;restore&lt;/code&gt;, then this element returns a list of IDs of the Amazon Web Services accounts that are authorized to copy or restore the manual DB snapshot. If a value of &lt;code&gt;all&lt;/code&gt; is in the list, then the manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.&lt;/p&gt;
   final pulumi.Input<List<String>>? attributeValues;
 
   /// Creates a new [DBSnapshotAttributeResponse].
-  /// [attributeName] <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named <code>restore</code> refers to the list of Amazon Web Services accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-  /// [attributeValues] <p>The value or values for the manual DB snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the Amazon Web Services accounts that are authorized to copy or restore the manual DB snapshot. If a value of <code>all</code> is in the list, then the manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.</p>
-  DBSnapshotAttributeResponse({
-    this.attributeName,
-    this.attributeValues,
-  });
+  /// [attributeName] &lt;p&gt;The name of the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;The attribute named &lt;code&gt;restore&lt;/code&gt; refers to the list of Amazon Web Services accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the &lt;code&gt;ModifyDBSnapshotAttribute&lt;/code&gt; API action.&lt;/p&gt;
+  /// [attributeValues] &lt;p&gt;The value or values for the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;AttributeName&lt;/code&gt; field is set to &lt;code&gt;restore&lt;/code&gt;, then this element returns a list of IDs of the Amazon Web Services accounts that are authorized to copy or restore the manual DB snapshot. If a value of &lt;code&gt;all&lt;/code&gt; is in the list, then the manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.&lt;/p&gt;
+  DBSnapshotAttributeResponse({this.attributeName, this.attributeValues});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DBSnapshotAttributeResponse {
 
   factory DBSnapshotAttributeResponse.fromMap(Map<String, dynamic> map) {
     return DBSnapshotAttributeResponse(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
-      attributeValues: map['attributeValues'] == null ? null : ((map['attributeValues']! as List).cast<String>()).input(),
+      attributeName: (() {
+        final guardedValue = map['attributeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attributeValues: (() {
+        final guardedValue = map['attributeValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

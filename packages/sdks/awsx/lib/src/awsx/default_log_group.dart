@@ -8,8 +8,10 @@ import 'log_group.dart';
 class DefaultLogGroup {
   /// Arguments to use instead of the default values during creation.
   final pulumi.Input<LogGroup>? args;
+
   /// Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
   final pulumi.Input<ExistingLogGroup>? existing;
+
   /// Skip creation of the log group.
   final pulumi.Input<bool>? skip;
 
@@ -17,26 +19,47 @@ class DefaultLogGroup {
   /// [args] Arguments to use instead of the default values during creation.
   /// [existing] Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
   /// [skip] Skip creation of the log group.
-  DefaultLogGroup({
-    this.args,
-    this.existing,
-    this.skip,
-  });
+  DefaultLogGroup({this.args, this.existing, this.skip});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'args': ?pulumi.Input.mapOptionalInputValue<LogGroup, Map<String, dynamic>>(args, (value) => value.toMap()),
-      'existing': ?pulumi.Input.mapOptionalInputValue<ExistingLogGroup, Map<String, dynamic>>(existing, (value) => value.toMap()),
+      'args':
+          ?pulumi.Input.mapOptionalInputValue<LogGroup, Map<String, dynamic>>(
+            args,
+            (value) => value.toMap(),
+          ),
+      'existing':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExistingLogGroup,
+            Map<String, dynamic>
+          >(existing, (value) => value.toMap()),
       'skip': ?skip,
     };
   }
 
   factory DefaultLogGroup.fromMap(Map<String, dynamic> map) {
     return DefaultLogGroup(
-      args: map['args'] == null ? null : (LogGroup.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
-      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
+      args: (() {
+        final guardedValue = map['args'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogGroup.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      existing: (() {
+        final guardedValue = map['existing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExistingLogGroup.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

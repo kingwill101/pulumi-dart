@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixListReferenceArgs {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
   final pulumi.Input<bool>? blackhole;
+
   /// Identifier of EC2 Prefix List.
   final pulumi.Input<String> prefixListId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String>? transitGatewayAttachmentId;
+
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
@@ -46,12 +50,25 @@ class PrefixListReferenceArgs {
 
   factory PrefixListReferenceArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListReferenceArgs(
-      blackhole: map['blackhole'] == null ? null : ((map['blackhole'] as bool).input()).input(),
-      prefixListId: (map['prefixListId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
-      transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
+      blackhole: (() {
+        final guardedValue = map['blackhole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      prefixListId: pulumi.Input.fromValue(map['prefixListId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayAttachmentId: (() {
+        final guardedValue = map['transitGatewayAttachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayRouteTableId: pulumi.Input.fromValue(
+        map['transitGatewayRouteTableId'] as String,
+      ),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelState {
   /// API identifier.
   final pulumi.Input<String>? apiId;
+
   /// The content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   final pulumi.Input<String>? contentType;
+
   /// Description of the model. Must be between 1 and 128 characters in length.
   final pulumi.Input<String>? description;
+
   /// Name of the model. Must be alphanumeric. Must be between 1 and 128 characters in length.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model. Must be less than or equal to 32768 characters in length.
   final pulumi.Input<String>? schema;
 
@@ -46,13 +51,36 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
-      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
+      apiId: (() {
+        final guardedValue = map['apiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

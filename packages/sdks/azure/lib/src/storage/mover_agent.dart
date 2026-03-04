@@ -191,7 +191,7 @@ import 'mover_agent_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageMover` - 2023-03-01
@@ -206,12 +206,16 @@ import 'mover_agent_state.dart';
 class MoverAgent extends pulumi.CustomResource {
   /// Specifies the fully qualified ID of the Hybrid Compute resource for the Storage Mover Agent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> arcVirtualMachineId;
+
   /// Specifies the Hybrid Compute resource's unique SMBIOS ID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> arcVirtualMachineUuid;
+
   /// Specifies a description for this Storage Mover Agent.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name which should be used for this Storage Mover Agent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Storage Mover that this Agent should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageMoverId;
 
@@ -224,16 +228,16 @@ class MoverAgent extends pulumi.CustomResource {
     MoverAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverAgent:MoverAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
-    this.arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverAgent:MoverAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
+    arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.storageMoverId = registerOutput<String>('storageMoverId');
+    storageMoverId = registerOutput<String>('storageMoverId');
   }
 
   /// Gets an existing [MoverAgent] resource's state with the given [name] and [id].
@@ -254,15 +258,15 @@ class MoverAgent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverAgent:MoverAgent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
-    this.arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverAgent:MoverAgent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
+    arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.storageMoverId = registerOutput<String>('storageMoverId');
+    storageMoverId = registerOutput<String>('storageMoverId');
   }
 }

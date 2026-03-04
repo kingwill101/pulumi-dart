@@ -10,20 +10,27 @@ class GoogleCloudDataplexV1ContentNotebook {
 
   /// Creates a new [GoogleCloudDataplexV1ContentNotebook].
   /// [kernelType] Kernel Type of the notebook.
-  GoogleCloudDataplexV1ContentNotebook({
-    required this.kernelType,
-  });
+  GoogleCloudDataplexV1ContentNotebook({required this.kernelType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kernelType': pulumi.Input.mapInputValue<GoogleCloudDataplexV1ContentNotebookKernelType, String>(kernelType, (value) => value.value),
+      'kernelType':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1ContentNotebookKernelType,
+            String
+          >(kernelType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDataplexV1ContentNotebook.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ContentNotebook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ContentNotebook(
-      kernelType: (GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(map['kernelType'] as String)).input(),
+      kernelType: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(
+          map['kernelType']! as String,
+        ),
+      ),
     );
   }
 }
-

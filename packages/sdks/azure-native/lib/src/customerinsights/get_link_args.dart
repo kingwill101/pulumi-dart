@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The name of the link.
   final pulumi.Input<String> linkName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetLinkArgs {
 
   factory GetLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkArgs(
-      hubName: (map['hubName'] as String).input(),
-      linkName: (map['linkName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      linkName: pulumi.Input.fromValue(map['linkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

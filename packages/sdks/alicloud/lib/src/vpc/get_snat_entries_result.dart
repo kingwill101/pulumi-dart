@@ -7,23 +7,31 @@ import 'get_snat_entries_entry.dart';
 class GetSnatEntriesResult {
   /// A list of Snat Entries. Each element contains the following attributes:
   final List<GetSnatEntriesEntry> entries;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Optional) A list of Snat Entries IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Snat Entries names.
   final List<String> names;
   final String? outputFile;
+
   /// The name of snat entry.
   final String? snatEntryName;
+
   /// The public IP of the Snat Entry.
   final String? snatIp;
   final String snatTableId;
+
   /// The source CIDR block of the Snat Entry.
   final String? sourceCidr;
+
   /// The source vswitch ID.
   final String? sourceVswitchId;
+
   /// The status of the Snat Entry.
   final String? status;
 
@@ -57,7 +65,11 @@ class GetSnatEntriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': pulumi.Input.encodeList<GetSnatEntriesEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
+      'entries':
+          pulumi.Input.encodeList<GetSnatEntriesEntry, Map<String, dynamic>>(
+            entries,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -74,19 +86,50 @@ class GetSnatEntriesResult {
 
   factory GetSnatEntriesResult.fromMap(Map<String, dynamic> map) {
     return GetSnatEntriesResult(
-      entries: pulumi.Input.decodeList<GetSnatEntriesEntry>(map['entries'], (value) => GetSnatEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<GetSnatEntriesEntry>(
+        map['entries']!,
+        (value) =>
+            GetSnatEntriesEntry.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      snatEntryName: map['snatEntryName'] == null ? null : map['snatEntryName']! as String,
-      snatIp: map['snatIp'] == null ? null : map['snatIp']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snatEntryName: (() {
+        final guardedValue = map['snatEntryName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snatIp: (() {
+        final guardedValue = map['snatIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       snatTableId: map['snatTableId'] as String,
-      sourceCidr: map['sourceCidr'] == null ? null : map['sourceCidr']! as String,
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : map['sourceVswitchId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      sourceCidr: (() {
+        final guardedValue = map['sourceCidr'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sourceVswitchId: (() {
+        final guardedValue = map['sourceVswitchId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

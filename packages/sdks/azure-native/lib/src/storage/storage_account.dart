@@ -11,7 +11,6 @@ import 'immutable_storage_account_response.dart';
 import 'key_creation_time_response.dart';
 import 'key_policy_response.dart';
 import 'network_rule_set_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'routing_preference_response.dart';
 import 'sas_policy_response.dart';
 import 'sku_response.dart';
@@ -3361,102 +3360,155 @@ import 'storage_account_sku_conversion_status_response.dart';
 class StorageAccount extends pulumi.CustomResource {
   /// Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
   late final pulumi.Output<String> accessTier;
+
   /// If customer initiated account migration is in progress, the value will be true else it will be null.
   late final pulumi.Output<bool> accountMigrationInProgress;
+
   /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
   late final pulumi.Output<bool?> allowBlobPublicAccess;
+
   /// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
   late final pulumi.Output<bool?> allowCrossTenantReplication;
+
   /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
   late final pulumi.Output<bool?> allowSharedKeyAccess;
+
   /// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
   late final pulumi.Output<String?> allowedCopyScope;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Provides the identity based authentication settings for Azure Files.
-  late final pulumi.Output<AzureFilesIdentityBasedAuthenticationResponse?> azureFilesIdentityBasedAuthentication;
+  late final pulumi.Output<AzureFilesIdentityBasedAuthenticationResponse?>
+  azureFilesIdentityBasedAuthentication;
+
   /// Blob restore status
   late final pulumi.Output<BlobRestoreStatusResponse> blobRestoreStatus;
+
   /// Gets the creation date and time of the storage account in UTC.
   late final pulumi.Output<String> creationTime;
+
   /// Gets the custom domain the user assigned to this storage account.
   late final pulumi.Output<CustomDomainResponse> customDomain;
+
   /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
   late final pulumi.Output<bool?> defaultToOAuthAuthentication;
+
   /// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
   late final pulumi.Output<String?> dnsEndpointType;
+
   /// Enables extended group support with local users feature, if set to true
   late final pulumi.Output<bool?> enableExtendedGroups;
+
   /// Allows https traffic only to storage service if sets to true.
   late final pulumi.Output<bool?> enableHttpsTrafficOnly;
+
   /// NFS 3.0 protocol support enabled if set to true.
   late final pulumi.Output<bool?> enableNfsV3;
+
   /// Encryption settings to be used for server-side encryption for the storage account.
   late final pulumi.Output<EncryptionResponse> encryption;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// If the failover is in progress, the value will be true, otherwise, it will be null.
   late final pulumi.Output<bool> failoverInProgress;
+
   /// Geo Replication Stats
   late final pulumi.Output<GeoReplicationStatsResponse> geoReplicationStats;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the containers in the account by default.
-  late final pulumi.Output<ImmutableStorageAccountResponse?> immutableStorageWithVersioning;
+  late final pulumi.Output<ImmutableStorageAccountResponse?>
+  immutableStorageWithVersioning;
+
   /// Account HierarchicalNamespace enabled if sets to true.
   late final pulumi.Output<bool?> isHnsEnabled;
+
   /// Enables local users feature, if set to true
   late final pulumi.Output<bool?> isLocalUserEnabled;
+
   /// Enables Secure File Transfer Protocol, if set to true
   late final pulumi.Output<bool?> isSftpEnabled;
+
   /// This property will be set to true or false on an event of ongoing migration. Default value is null.
   late final pulumi.Output<bool> isSkuConversionBlocked;
+
   /// Storage account keys creation time.
   late final pulumi.Output<KeyCreationTimeResponse> keyCreationTime;
+
   /// KeyPolicy assigned to the storage account.
   late final pulumi.Output<KeyPolicyResponse> keyPolicy;
+
   /// Gets the Kind.
   late final pulumi.Output<String> kind;
+
   /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
   late final pulumi.Output<String?> largeFileSharesState;
+
   /// Gets the timestamp of the most recent instance of a failover to the secondary location. Only the most recent timestamp is retained. This element is not returned if there has never been a failover instance. Only available if the accountType is Standard_GRS or Standard_RAGRS.
   late final pulumi.Output<String> lastGeoFailoverTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network rule set
   late final pulumi.Output<NetworkRuleSetResponse> networkRuleSet;
+
   /// Gets the URLs that are used to perform a retrieval of a public blob, queue, or table object. Note that Standard_ZRS and Premium_LRS accounts only return the blob endpoint.
   late final pulumi.Output<EndpointsResponse> primaryEndpoints;
+
   /// Gets the location of the primary data center for the storage account.
   late final pulumi.Output<String> primaryLocation;
+
   /// List of private endpoint connection associated with the specified storage account
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Gets the status of the storage account at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Maintains information about the network routing choice opted by the user for data transfer
   late final pulumi.Output<RoutingPreferenceResponse?> routingPreference;
+
   /// SasPolicy assigned to the storage account.
   late final pulumi.Output<SasPolicyResponse> sasPolicy;
+
   /// Gets the URLs that are used to perform a retrieval of a public blob, queue, or table object from the secondary location of the storage account. Only available if the SKU name is Standard_RAGRS.
   late final pulumi.Output<EndpointsResponse> secondaryEndpoints;
+
   /// Gets the location of the geo-replicated secondary for the storage account. Only available if the accountType is Standard_GRS or Standard_RAGRS.
   late final pulumi.Output<String> secondaryLocation;
+
   /// Gets the SKU.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Gets the status indicating whether the primary location of the storage account is available or unavailable.
   late final pulumi.Output<String> statusOfPrimary;
+
   /// Gets the status indicating whether the secondary location of the storage account is available or unavailable. Only available if the SKU name is Standard_GRS or Standard_RAGRS.
   late final pulumi.Output<String> statusOfSecondary;
+
   /// This property is readOnly and is set by server during asynchronous storage account sku conversion operations.
-  late final pulumi.Output<StorageAccountSkuConversionStatusResponse?> storageAccountSkuConversionStatus;
+  late final pulumi.Output<StorageAccountSkuConversionStatusResponse?>
+  storageAccountSkuConversionStatus;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -3469,60 +3521,89 @@ class StorageAccount extends pulumi.CustomResource {
     StorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:StorageAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTier = registerOutput<String>('accessTier');
-    this.accountMigrationInProgress = registerOutput<bool>('accountMigrationInProgress');
-    this.allowBlobPublicAccess = registerOutput<bool?>('allowBlobPublicAccess');
-    this.allowCrossTenantReplication = registerOutput<bool?>('allowCrossTenantReplication');
-    this.allowSharedKeyAccess = registerOutput<bool?>('allowSharedKeyAccess');
-    this.allowedCopyScope = registerOutput<String?>('allowedCopyScope');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureFilesIdentityBasedAuthentication = registerOutput<AzureFilesIdentityBasedAuthenticationResponse?>('azureFilesIdentityBasedAuthentication');
-    this.blobRestoreStatus = registerOutput<BlobRestoreStatusResponse>('blobRestoreStatus');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.customDomain = registerOutput<CustomDomainResponse>('customDomain');
-    this.defaultToOAuthAuthentication = registerOutput<bool?>('defaultToOAuthAuthentication');
-    this.dnsEndpointType = registerOutput<String?>('dnsEndpointType');
-    this.enableExtendedGroups = registerOutput<bool?>('enableExtendedGroups');
-    this.enableHttpsTrafficOnly = registerOutput<bool?>('enableHttpsTrafficOnly');
-    this.enableNfsV3 = registerOutput<bool?>('enableNfsV3');
-    this.encryption = registerOutput<EncryptionResponse>('encryption');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.failoverInProgress = registerOutput<bool>('failoverInProgress');
-    this.geoReplicationStats = registerOutput<GeoReplicationStatsResponse>('geoReplicationStats');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.immutableStorageWithVersioning = registerOutput<ImmutableStorageAccountResponse?>('immutableStorageWithVersioning');
-    this.isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
-    this.isLocalUserEnabled = registerOutput<bool?>('isLocalUserEnabled');
-    this.isSftpEnabled = registerOutput<bool?>('isSftpEnabled');
-    this.isSkuConversionBlocked = registerOutput<bool>('isSkuConversionBlocked');
-    this.keyCreationTime = registerOutput<KeyCreationTimeResponse>('keyCreationTime');
-    this.keyPolicy = registerOutput<KeyPolicyResponse>('keyPolicy');
-    this.kind = registerOutput<String>('kind');
-    this.largeFileSharesState = registerOutput<String?>('largeFileSharesState');
-    this.lastGeoFailoverTime = registerOutput<String>('lastGeoFailoverTime');
-    this.location = registerOutput<String>('location');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure-native:storage:StorageAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTier = registerOutput<String>('accessTier');
+    accountMigrationInProgress = registerOutput<bool>(
+      'accountMigrationInProgress',
+    );
+    allowBlobPublicAccess = registerOutput<bool?>('allowBlobPublicAccess');
+    allowCrossTenantReplication = registerOutput<bool?>(
+      'allowCrossTenantReplication',
+    );
+    allowSharedKeyAccess = registerOutput<bool?>('allowSharedKeyAccess');
+    allowedCopyScope = registerOutput<String?>('allowedCopyScope');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureFilesIdentityBasedAuthentication =
+        registerOutput<AzureFilesIdentityBasedAuthenticationResponse?>(
+          'azureFilesIdentityBasedAuthentication',
+        );
+    blobRestoreStatus = registerOutput<BlobRestoreStatusResponse>(
+      'blobRestoreStatus',
+    );
+    creationTime = registerOutput<String>('creationTime');
+    customDomain = registerOutput<CustomDomainResponse>('customDomain');
+    defaultToOAuthAuthentication = registerOutput<bool?>(
+      'defaultToOAuthAuthentication',
+    );
+    dnsEndpointType = registerOutput<String?>('dnsEndpointType');
+    enableExtendedGroups = registerOutput<bool?>('enableExtendedGroups');
+    enableHttpsTrafficOnly = registerOutput<bool?>('enableHttpsTrafficOnly');
+    enableNfsV3 = registerOutput<bool?>('enableNfsV3');
+    encryption = registerOutput<EncryptionResponse>('encryption');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    failoverInProgress = registerOutput<bool>('failoverInProgress');
+    geoReplicationStats = registerOutput<GeoReplicationStatsResponse>(
+      'geoReplicationStats',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    immutableStorageWithVersioning =
+        registerOutput<ImmutableStorageAccountResponse?>(
+          'immutableStorageWithVersioning',
+        );
+    isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
+    isLocalUserEnabled = registerOutput<bool?>('isLocalUserEnabled');
+    isSftpEnabled = registerOutput<bool?>('isSftpEnabled');
+    isSkuConversionBlocked = registerOutput<bool>('isSkuConversionBlocked');
+    keyCreationTime = registerOutput<KeyCreationTimeResponse>(
+      'keyCreationTime',
+    );
+    keyPolicy = registerOutput<KeyPolicyResponse>('keyPolicy');
+    kind = registerOutput<String>('kind');
+    largeFileSharesState = registerOutput<String?>('largeFileSharesState');
+    lastGeoFailoverTime = registerOutput<String>('lastGeoFailoverTime');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkRuleSet = registerOutput<NetworkRuleSetResponse>('networkRuleSet');
-    this.primaryEndpoints = registerOutput<EndpointsResponse>('primaryEndpoints');
-    this.primaryLocation = registerOutput<String>('primaryLocation');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.routingPreference = registerOutput<RoutingPreferenceResponse?>('routingPreference');
-    this.sasPolicy = registerOutput<SasPolicyResponse>('sasPolicy');
-    this.secondaryEndpoints = registerOutput<EndpointsResponse>('secondaryEndpoints');
-    this.secondaryLocation = registerOutput<String>('secondaryLocation');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.statusOfPrimary = registerOutput<String>('statusOfPrimary');
-    this.statusOfSecondary = registerOutput<String>('statusOfSecondary');
-    this.storageAccountSkuConversionStatus = registerOutput<StorageAccountSkuConversionStatusResponse?>('storageAccountSkuConversionStatus');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse>('networkRuleSet');
+    primaryEndpoints = registerOutput<EndpointsResponse>('primaryEndpoints');
+    primaryLocation = registerOutput<String>('primaryLocation');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    routingPreference = registerOutput<RoutingPreferenceResponse?>(
+      'routingPreference',
+    );
+    sasPolicy = registerOutput<SasPolicyResponse>('sasPolicy');
+    secondaryEndpoints = registerOutput<EndpointsResponse>(
+      'secondaryEndpoints',
+    );
+    secondaryLocation = registerOutput<String>('secondaryLocation');
+    sku = registerOutput<SkuResponse>('sku');
+    statusOfPrimary = registerOutput<String>('statusOfPrimary');
+    statusOfSecondary = registerOutput<String>('statusOfSecondary');
+    storageAccountSkuConversionStatus =
+        registerOutput<StorageAccountSkuConversionStatusResponse?>(
+          'storageAccountSkuConversionStatus',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

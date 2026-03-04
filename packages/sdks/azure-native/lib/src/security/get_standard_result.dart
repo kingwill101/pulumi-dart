@@ -8,32 +8,46 @@ import 'system_data_response.dart';
 class GetStandardResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// category of the standard provided
   final String? category;
+
   /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
   final List<StandardComponentPropertiesResponse>? components;
+
   /// description of the standard
   final String? description;
+
   /// display name of the standard, equivalent to the standardId
   final String? displayName;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   final String? etag;
+
   /// Resource Id
   final String id;
+
   /// Kind of the resource
   final String? kind;
+
   /// Location where the resource is stored
   final String? location;
+
   /// Resource name
   final String name;
+
   /// standard type (Custom or BuiltIn only currently)
   final String standardType;
+
   /// List of all standard supported clouds.
   final List<String>? supportedClouds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// A list of key value pairs that describe the resource.
   final Map<String, String>? tags;
+
   /// Resource type
   final String type;
 
@@ -75,7 +89,14 @@ class GetStandardResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'category': ?category,
-      'components': ?components == null ? null : pulumi.Input.encodeList<StandardComponentPropertiesResponse, Map<String, dynamic>>(components!, (value) => value.toMap()),
+      'components': ?(() {
+        final guardedValue = components;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          StandardComponentPropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'description': ?description,
       'displayName': ?displayName,
       'etag': ?etag,
@@ -94,21 +115,63 @@ class GetStandardResult {
   factory GetStandardResult.fromMap(Map<String, dynamic> map) {
     return GetStandardResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      category: map['category'] == null ? null : map['category']! as String,
-      components: map['components'] == null ? null : pulumi.Input.decodeList<StandardComponentPropertiesResponse>(map['components']!, (value) => StandardComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      components: (() {
+        final guardedValue = map['components'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<StandardComponentPropertiesResponse>(
+          guardedValue,
+          (value) => StandardComponentPropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       standardType: map['standardType'] as String,
-      supportedClouds: map['supportedClouds'] == null ? null : (map['supportedClouds']! as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      supportedClouds: (() {
+        final guardedValue = map['supportedClouds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

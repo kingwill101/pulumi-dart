@@ -14,12 +14,16 @@ import 'resource_quota_status_patch.dart';
 class ResourceQuotaPatchCoreV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   late final pulumi.Output<ResourceQuotaSpecPatch?> spec;
+
   /// Status defines the actual enforced quota and its current usage. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   late final pulumi.Output<ResourceQuotaStatusPatch?> status;
 
@@ -32,15 +36,15 @@ class ResourceQuotaPatchCoreV1 extends pulumi.CustomResource {
     ResourceQuotaPatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:core/v1:ResourceQuotaPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<ResourceQuotaSpecPatch?>('spec');
-    this.status = registerOutput<ResourceQuotaStatusPatch?>('status');
+         'kubernetes:core/v1:ResourceQuotaPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<ResourceQuotaSpecPatch?>('spec');
+    status = registerOutput<ResourceQuotaStatusPatch?>('status');
   }
 }

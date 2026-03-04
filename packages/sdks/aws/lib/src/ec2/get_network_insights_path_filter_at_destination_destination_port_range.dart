@@ -15,17 +15,15 @@ class GetNetworkInsightsPathFilterAtDestinationDestinationPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': fromPort,
-      'toPort': toPort,
-    };
+    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
   }
 
-  factory GetNetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsPathFilterAtDestinationDestinationPortRange(
-      fromPort: (map['fromPort'] as int).input(),
-      toPort: (map['toPort'] as int).input(),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

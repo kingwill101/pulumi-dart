@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlMiSettingsResponse {
   /// Gets or sets the azure PAAS SQL instance type.
   final pulumi.Input<String>? azureSqlInstanceType;
+
   /// Gets or sets the azure SQL service tier.
   final pulumi.Input<String>? azureSqlServiceTier;
 
   /// Creates a new [SqlMiSettingsResponse].
   /// [azureSqlInstanceType] Gets or sets the azure PAAS SQL instance type.
   /// [azureSqlServiceTier] Gets or sets the azure SQL service tier.
-  SqlMiSettingsResponse({
-    this.azureSqlInstanceType,
-    this.azureSqlServiceTier,
-  });
+  SqlMiSettingsResponse({this.azureSqlInstanceType, this.azureSqlServiceTier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SqlMiSettingsResponse {
 
   factory SqlMiSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlMiSettingsResponse(
-      azureSqlInstanceType: map['azureSqlInstanceType'] == null ? null : (map['azureSqlInstanceType']! as String).input(),
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier']! as String).input(),
+      azureSqlInstanceType: (() {
+        final guardedValue = map['azureSqlInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureSqlServiceTier: (() {
+        final guardedValue = map['azureSqlServiceTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

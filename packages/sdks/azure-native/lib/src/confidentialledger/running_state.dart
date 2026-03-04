@@ -6,16 +6,15 @@ enum RunningState {
   valuePausing("Pausing"),
   valueResuming("Resuming");
 
-  const RunningState(this.value);
-  final String value;
+  const RunningState(this.wireValue);
+  final String wireValue;
 
   static RunningState fromValue(String value) {
     for (final item in RunningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RunningState value: $value');
   }
 }
-

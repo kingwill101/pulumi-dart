@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetGroupArgs {
   /// A description of the subnet group.
   final pulumi.Input<String>? description;
+
   /// The name of the subnet group.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A list of VPC subnet IDs for the subnet group.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -39,11 +42,24 @@ class SubnetGroupArgs {
 
   factory SubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return SubnetGroupArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

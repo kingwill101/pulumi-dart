@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationSecurityGroupArgs {
   /// The name of the application security group.
   final pulumi.Input<String> applicationSecurityGroupName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetApplicationSecurityGroupArgs {
 
   factory GetApplicationSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationSecurityGroupArgs(
-      applicationSecurityGroupName: (map['applicationSecurityGroupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      applicationSecurityGroupName: pulumi.Input.fromValue(
+        map['applicationSecurityGroupName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

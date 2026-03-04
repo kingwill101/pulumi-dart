@@ -9,20 +9,19 @@ class NamedResourcesIntSlicePatch {
 
   /// Creates a new [NamedResourcesIntSlicePatch].
   /// [ints] Ints is the slice of 64-bit integers.
-  NamedResourcesIntSlicePatch({
-    this.ints,
-  });
+  NamedResourcesIntSlicePatch({this.ints});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ints': ?ints,
-    };
+    return <String, dynamic>{'ints': ?ints};
   }
 
   factory NamedResourcesIntSlicePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesIntSlicePatch(
-      ints: map['ints'] == null ? null : ((map['ints']! as List).cast<int>()).input(),
+      ints: (() {
+        final guardedValue = map['ints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

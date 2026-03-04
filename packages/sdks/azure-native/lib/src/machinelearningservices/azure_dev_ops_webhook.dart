@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDevOpsWebhook {
   /// Send callback on a specified notification event
   final pulumi.Input<String>? eventType;
+
   /// Enum to determine the webhook callback service type.
   /// Expected value is 'AzureDevOps'.
   final pulumi.Input<String> webhookType;
@@ -13,10 +14,7 @@ class AzureDevOpsWebhook {
   /// Creates a new [AzureDevOpsWebhook].
   /// [eventType] Send callback on a specified notification event
   /// [webhookType] Enum to determine the webhook callback service type.
-  AzureDevOpsWebhook({
-    this.eventType,
-    required this.webhookType,
-  });
+  AzureDevOpsWebhook({this.eventType, required this.webhookType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class AzureDevOpsWebhook {
 
   factory AzureDevOpsWebhook.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsWebhook(
-      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
-      webhookType: (map['webhookType'] as String).input(),
+      eventType: (() {
+        final guardedValue = map['eventType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookType: pulumi.Input.fromValue(map['webhookType'] as String),
     );
   }
 }
-

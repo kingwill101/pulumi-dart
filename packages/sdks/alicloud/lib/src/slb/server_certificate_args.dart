@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerCertificateArgs {
   final pulumi.Input<String>? alicloudCertifacteId;
   final pulumi.Input<String>? alicloudCertifacteName;
+
   /// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
   final pulumi.Input<String>? alicloudCertificateId;
+
   /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
   final pulumi.Input<String>? alicloudCertificateName;
+
   /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
   final pulumi.Input<String>? alicloudCertificateRegionId;
+
   /// Name of the Server Certificate.
   final pulumi.Input<String>? name;
+
   /// the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
   final pulumi.Input<String>? privateKey;
+
   /// The Id of resource group which the slb server certificate belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
   final pulumi.Input<String>? serverCertificate;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -67,17 +75,58 @@ class ServerCertificateArgs {
 
   factory ServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerCertificateArgs(
-      alicloudCertifacteId: map['alicloudCertifacteId'] == null ? null : (map['alicloudCertifacteId']! as String).input(),
-      alicloudCertifacteName: map['alicloudCertifacteName'] == null ? null : (map['alicloudCertifacteName']! as String).input(),
-      alicloudCertificateId: map['alicloudCertificateId'] == null ? null : (map['alicloudCertificateId']! as String).input(),
-      alicloudCertificateName: map['alicloudCertificateName'] == null ? null : (map['alicloudCertificateName']! as String).input(),
-      alicloudCertificateRegionId: map['alicloudCertificateRegionId'] == null ? null : (map['alicloudCertificateRegionId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      alicloudCertifacteId: (() {
+        final guardedValue = map['alicloudCertifacteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alicloudCertifacteName: (() {
+        final guardedValue = map['alicloudCertifacteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alicloudCertificateId: (() {
+        final guardedValue = map['alicloudCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alicloudCertificateName: (() {
+        final guardedValue = map['alicloudCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alicloudCertificateRegionId: (() {
+        final guardedValue = map['alicloudCertificateRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverCertificate: (() {
+        final guardedValue = map['serverCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

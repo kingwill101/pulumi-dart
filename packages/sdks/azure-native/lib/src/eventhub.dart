@@ -1,5 +1,3 @@
-library module_eventhub;
-
 export 'eventhub/access_rights.dart';
 export 'eventhub/application_group.dart';
 export 'eventhub/application_group_args.dart';

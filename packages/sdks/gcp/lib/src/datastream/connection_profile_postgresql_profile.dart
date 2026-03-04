@@ -6,18 +6,24 @@ import 'connection_profile_postgresql_profile_ssl_config.dart';
 class ConnectionProfilePostgresqlProfile {
   /// Database for the PostgreSQL connection.
   final pulumi.Input<String> database;
+
   /// Hostname for the PostgreSQL connection.
   final pulumi.Input<String> hostname;
+
   /// Password for the PostgreSQL connection.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? password;
+
   /// Port for the PostgreSQL connection.
   final pulumi.Input<int>? port;
+
   /// A reference to a Secret Manager resource name storing the user's password.
   final pulumi.Input<String>? secretManagerStoredPassword;
+
   /// SSL configuration for the PostgreSQL connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfig>? sslConfig;
+
   /// Username for the PostgreSQL connection.
   final pulumi.Input<String> username;
 
@@ -46,21 +52,44 @@ class ConnectionProfilePostgresqlProfile {
       'password': ?password,
       'port': ?port,
       'secretManagerStoredPassword': ?secretManagerStoredPassword,
-      'sslConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresqlProfileSslConfig, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
+      'sslConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionProfilePostgresqlProfileSslConfig,
+            Map<String, dynamic>
+          >(sslConfig, (value) => value.toMap()),
       'username': username,
     };
   }
 
   factory ConnectionProfilePostgresqlProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresqlProfile(
-      database: (map['database'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword']! as String).input(),
-      sslConfig: map['sslConfig'] == null ? null : (ConnectionProfilePostgresqlProfileSslConfig.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
-      username: (map['username'] as String).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      secretManagerStoredPassword: (() {
+        final guardedValue = map['secretManagerStoredPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslConfig: (() {
+        final guardedValue = map['sslConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionProfilePostgresqlProfileSslConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

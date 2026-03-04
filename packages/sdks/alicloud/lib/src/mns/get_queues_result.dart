@@ -8,9 +8,11 @@ class GetQueuesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? namePrefix;
+
   /// A list of queue names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of queues. Each element contains the following attributes:
   final List<GetQueuesQueue> queues;
 
@@ -34,18 +36,32 @@ class GetQueuesResult {
       'namePrefix': ?namePrefix,
       'names': names,
       'outputFile': ?outputFile,
-      'queues': pulumi.Input.encodeList<GetQueuesQueue, Map<String, dynamic>>(queues, (value) => value.toMap()),
+      'queues': pulumi.Input.encodeList<GetQueuesQueue, Map<String, dynamic>>(
+        queues,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetQueuesResult.fromMap(Map<String, dynamic> map) {
     return GetQueuesResult(
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      queues: pulumi.Input.decodeList<GetQueuesQueue>(map['queues'], (value) => GetQueuesQueue.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      queues: pulumi.Input.decodeList<GetQueuesQueue>(
+        map['queues']!,
+        (value) =>
+            GetQueuesQueue.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

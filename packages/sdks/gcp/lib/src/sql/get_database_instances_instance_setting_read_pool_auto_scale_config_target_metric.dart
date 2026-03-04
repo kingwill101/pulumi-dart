@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric {
   /// Metric name for Read Pool Auto Scale.
   final pulumi.Input<String> metric;
+
   /// Target value for Read Pool Auto Scale.
   final pulumi.Input<double> targetValue;
 
@@ -17,17 +18,15 @@ class GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metric': metric,
-      'targetValue': targetValue,
-    };
+    return <String, dynamic>{'metric': metric, 'targetValue': targetValue};
   }
 
-  factory GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric(
-      metric: (map['metric'] as String).input(),
-      targetValue: (map['targetValue'] as double).input(),
+      metric: pulumi.Input.fromValue(map['metric'] as String),
+      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
     );
   }
 }
-

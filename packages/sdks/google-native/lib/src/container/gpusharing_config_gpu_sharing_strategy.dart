@@ -3,16 +3,17 @@ enum GPUSharingConfigGpuSharingStrategy {
   gpuSharingStrategyUnspecified("GPU_SHARING_STRATEGY_UNSPECIFIED"),
   timeSharing("TIME_SHARING");
 
-  const GPUSharingConfigGpuSharingStrategy(this.value);
-  final String value;
+  const GPUSharingConfigGpuSharingStrategy(this.wireValue);
+  final String wireValue;
 
   static GPUSharingConfigGpuSharingStrategy fromValue(String value) {
     for (final item in GPUSharingConfigGpuSharingStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GPUSharingConfigGpuSharingStrategy value: $value');
+    throw ArgumentError(
+      'Unknown GPUSharingConfigGpuSharingStrategy value: $value',
+    );
   }
 }
-

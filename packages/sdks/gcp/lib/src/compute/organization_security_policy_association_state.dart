@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationSecurityPolicyAssociationState {
   /// The resource that the security policy is attached to.
   final pulumi.Input<String>? attachmentId;
+
   /// The display name of the security policy of the association.
   final pulumi.Input<String>? displayName;
+
   /// The name for an association.
   final pulumi.Input<String>? name;
+
   /// The security policy ID of the association.
   final pulumi.Input<String>? policyId;
 
@@ -34,13 +37,30 @@ class OrganizationSecurityPolicyAssociationState {
     };
   }
 
-  factory OrganizationSecurityPolicyAssociationState.fromMap(Map<String, dynamic> map) {
+  factory OrganizationSecurityPolicyAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationSecurityPolicyAssociationState(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      attachmentId: (() {
+        final guardedValue = map['attachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

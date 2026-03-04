@@ -16,23 +16,24 @@ class ClusterV2ManagerScheduler {
   /// Creates a new [ClusterV2ManagerScheduler].
   /// [type] The scheduler type. Valid values:
   /// [version] Optional.
-  ClusterV2ManagerScheduler({
-    this.type,
-    this.version,
-  });
+  ClusterV2ManagerScheduler({this.type, this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-      'version': ?version,
-    };
+    return <String, dynamic>{'type': ?type, 'version': ?version};
   }
 
   factory ClusterV2ManagerScheduler.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerScheduler(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

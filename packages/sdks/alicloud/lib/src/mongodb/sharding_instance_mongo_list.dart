@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShardingInstanceMongoList {
   /// The connection address of the Config Server node.
   final pulumi.Input<String>? connectString;
+
   /// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
   final pulumi.Input<String> nodeClass;
+
   /// The ID of the Config Server node.
   final pulumi.Input<String>? nodeId;
+
   /// The connection port of the Config Server node.
   final pulumi.Input<int>? port;
 
@@ -35,11 +38,22 @@ class ShardingInstanceMongoList {
 
   factory ShardingInstanceMongoList.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceMongoList(
-      connectString: map['connectString'] == null ? null : (map['connectString']! as String).input(),
-      nodeClass: (map['nodeClass'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      connectString: (() {
+        final guardedValue = map['connectString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeClass: pulumi.Input.fromValue(map['nodeClass'] as String),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

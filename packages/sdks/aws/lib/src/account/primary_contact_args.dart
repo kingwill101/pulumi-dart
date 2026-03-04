@@ -9,28 +9,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrimaryContactArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   final pulumi.Input<String>? accountId;
+
   /// The first line of the primary contact address.
   final pulumi.Input<String> addressLine1;
+
   /// The second line of the primary contact address, if any.
   final pulumi.Input<String>? addressLine2;
+
   /// The third line of the primary contact address, if any.
   final pulumi.Input<String>? addressLine3;
+
   /// The city of the primary contact address.
   final pulumi.Input<String> city;
+
   /// The name of the company associated with the primary contact information, if any.
   final pulumi.Input<String>? companyName;
+
   /// The ISO-3166 two-letter country code for the primary contact address.
   final pulumi.Input<String> countryCode;
+
   /// The district or county of the primary contact address, if any.
   final pulumi.Input<String>? districtOrCounty;
+
   /// The full name of the primary contact address.
   final pulumi.Input<String> fullName;
+
   /// The phone number of the primary contact information. The number will be validated and, in some countries, checked for activation.
   final pulumi.Input<String> phoneNumber;
+
   /// The postal code of the primary contact address.
   final pulumi.Input<String> postalCode;
+
   /// The state or region of the primary contact address. This field is required in selected countries.
   final pulumi.Input<String>? stateOrRegion;
+
   /// The URL of the website associated with the primary contact information, if any.
   final pulumi.Input<String>? websiteUrl;
 
@@ -84,20 +96,47 @@ class PrimaryContactArgs {
 
   factory PrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryContactArgs(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      addressLine1: (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : ((map['addressLine2'] as String).input()).input(),
-      addressLine3: map['addressLine3'] == null ? null : ((map['addressLine3'] as String).input()).input(),
-      city: (map['city'] as String).input(),
-      companyName: map['companyName'] == null ? null : ((map['companyName'] as String).input()).input(),
-      countryCode: (map['countryCode'] as String).input(),
-      districtOrCounty: map['districtOrCounty'] == null ? null : ((map['districtOrCounty'] as String).input()).input(),
-      fullName: (map['fullName'] as String).input(),
-      phoneNumber: (map['phoneNumber'] as String).input(),
-      postalCode: (map['postalCode'] as String).input(),
-      stateOrRegion: map['stateOrRegion'] == null ? null : ((map['stateOrRegion'] as String).input()).input(),
-      websiteUrl: map['websiteUrl'] == null ? null : ((map['websiteUrl'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addressLine1: pulumi.Input.fromValue(map['addressLine1'] as String),
+      addressLine2: (() {
+        final guardedValue = map['addressLine2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addressLine3: (() {
+        final guardedValue = map['addressLine3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      companyName: (() {
+        final guardedValue = map['companyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      districtOrCounty: (() {
+        final guardedValue = map['districtOrCounty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fullName: pulumi.Input.fromValue(map['fullName'] as String),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
+      postalCode: pulumi.Input.fromValue(map['postalCode'] as String),
+      stateOrRegion: (() {
+        final guardedValue = map['stateOrRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      websiteUrl: (() {
+        final guardedValue = map['websiteUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

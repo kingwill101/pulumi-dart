@@ -10,6 +10,7 @@ class ReleaseArgs {
   /// Format: `projects/{project_id}/releases/{release_id}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   final pulumi.Input<String> rulesetName;
 
@@ -17,11 +18,7 @@ class ReleaseArgs {
   /// [name] Format: `projects/{project_id}/releases/{release_id}`
   /// [project] Optional.
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-  ReleaseArgs({
-    this.name,
-    this.project,
-    required this.rulesetName,
-  });
+  ReleaseArgs({this.name, this.project, required this.rulesetName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +30,17 @@ class ReleaseArgs {
 
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rulesetName: (map['rulesetName'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rulesetName: pulumi.Input.fromValue(map['rulesetName'] as String),
     );
   }
 }
-

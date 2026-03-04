@@ -2,16 +2,15 @@
 enum RpSkuTier {
   fabric("Fabric");
 
-  const RpSkuTier(this.value);
-  final String value;
+  const RpSkuTier(this.wireValue);
+  final String wireValue;
 
   static RpSkuTier fromValue(String value) {
     for (final item in RpSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RpSkuTier value: $value');
   }
 }
-

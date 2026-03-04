@@ -4,16 +4,15 @@ enum ResourceGroupResourceType {
   instance("INSTANCE"),
   awsElbLoadBalancer("AWS_ELB_LOAD_BALANCER");
 
-  const ResourceGroupResourceType(this.value);
-  final String value;
+  const ResourceGroupResourceType(this.wireValue);
+  final String wireValue;
 
   static ResourceGroupResourceType fromValue(String value) {
     for (final item in ResourceGroupResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceGroupResourceType value: $value');
   }
 }
-

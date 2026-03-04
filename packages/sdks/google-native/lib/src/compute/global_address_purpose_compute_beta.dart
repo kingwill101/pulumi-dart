@@ -9,16 +9,17 @@ enum GlobalAddressPurposeComputeBeta {
   sharedLoadbalancerVip("SHARED_LOADBALANCER_VIP"),
   vpcPeering("VPC_PEERING");
 
-  const GlobalAddressPurposeComputeBeta(this.value);
-  final String value;
+  const GlobalAddressPurposeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressPurposeComputeBeta fromValue(String value) {
     for (final item in GlobalAddressPurposeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressPurposeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressPurposeComputeBeta value: $value',
+    );
   }
 }
-

@@ -8,22 +8,31 @@ import 'job_step_output_response.dart';
 class GetJobStepResult {
   /// The action payload of the job step.
   final JobStepActionResponse action;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource ID of the job credential that will be used to connect to the targets.
   final String? credential;
+
   /// Execution options for the job step.
   final JobStepExecutionOptionsResponse? executionOptions;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Output destination properties of the job step.
   final JobStepOutputResponse? output;
+
   /// The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
   final int? stepId;
+
   /// The resource ID of the target group that the job step will be executed on.
   final String targetGroup;
+
   /// Resource type.
   final String type;
 
@@ -56,10 +65,10 @@ class GetJobStepResult {
       'action': action.toMap(),
       'azureApiVersion': azureApiVersion,
       'credential': ?credential,
-      'executionOptions': ?executionOptions == null ? null : executionOptions!.toMap(),
+      'executionOptions': ?executionOptions?.toMap(),
       'id': id,
       'name': name,
-      'output': ?output == null ? null : output!.toMap(),
+      'output': ?output?.toMap(),
       'stepId': ?stepId,
       'targetGroup': targetGroup,
       'type': type,
@@ -68,17 +77,38 @@ class GetJobStepResult {
 
   factory GetJobStepResult.fromMap(Map<String, dynamic> map) {
     return GetJobStepResult(
-      action: JobStepActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      action: JobStepActionResponse.fromMap(
+        (map['action']! as Map).cast<String, dynamic>(),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
-      credential: map['credential'] == null ? null : map['credential']! as String,
-      executionOptions: map['executionOptions'] == null ? null : JobStepExecutionOptionsResponse.fromMap((map['executionOptions']! as Map).cast<String, dynamic>()),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      executionOptions: (() {
+        final guardedValue = map['executionOptions'];
+        if (guardedValue == null) return null;
+        return JobStepExecutionOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      output: map['output'] == null ? null : JobStepOutputResponse.fromMap((map['output']! as Map).cast<String, dynamic>()),
-      stepId: map['stepId'] == null ? null : map['stepId']! as int,
+      output: (() {
+        final guardedValue = map['output'];
+        if (guardedValue == null) return null;
+        return JobStepOutputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      stepId: (() {
+        final guardedValue = map['stepId'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       targetGroup: map['targetGroup'] as String,
       type: map['type'] as String,
     );
   }
 }
-

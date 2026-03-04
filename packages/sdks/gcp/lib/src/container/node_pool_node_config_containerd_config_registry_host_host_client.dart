@@ -6,9 +6,16 @@ import 'node_pool_node_config_containerd_config_registry_host_host_client_key.da
 
 class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
-  final pulumi.Input<NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert> cert;
+  final pulumi.Input<
+    NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert
+  >
+  cert;
+
   /// Configures the client private key.
-  final pulumi.Input<NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey>? key;
+  final pulumi.Input<
+    NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey
+  >?
+  key;
 
   /// Creates a new [NodePoolNodeConfigContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.
@@ -20,16 +27,37 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cert': pulumi.Input.mapInputValue<NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert, Map<String, dynamic>>(cert, (value) => value.toMap()),
-      'key': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey, Map<String, dynamic>>(key, (value) => value.toMap()),
+      'cert':
+          pulumi.Input.mapInputValue<
+            NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert,
+            Map<String, dynamic>
+          >(cert, (value) => value.toMap()),
+      'key':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey,
+            Map<String, dynamic>
+          >(key, (value) => value.toMap()),
     };
   }
 
-  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
+  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClient(
-      cert: (NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      cert: pulumi.Input.fromValue(
+        NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
+          (map['cert']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

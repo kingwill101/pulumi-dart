@@ -7,6 +7,7 @@ import 'scheduled_source_synchronization_setting_response.dart';
 class ListShareSubscriptionSourceShareSynchronizationSettingsResult {
   /// The Url of next result page.
   final String? nextLink;
+
   /// Collection of items of type DataTransferObjects.
   final List<ScheduledSourceSynchronizationSettingResponse> value;
 
@@ -21,15 +22,31 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ScheduledSourceSynchronizationSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            ScheduledSourceSynchronizationSettingResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(Map<String, dynamic> map) {
+  factory ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListShareSubscriptionSourceShareSynchronizationSettingsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: pulumi.Input.decodeList<ScheduledSourceSynchronizationSettingResponse>(map['value'], (value) => ScheduledSourceSynchronizationSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value:
+          pulumi
+              .Input.decodeList<ScheduledSourceSynchronizationSettingResponse>(
+            map['value']!,
+            (value) => ScheduledSourceSynchronizationSettingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

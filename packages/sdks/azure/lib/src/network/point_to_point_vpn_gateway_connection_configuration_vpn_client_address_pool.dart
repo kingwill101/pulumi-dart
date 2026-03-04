@@ -13,15 +13,16 @@ class PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'addressPrefixes': addressPrefixes,
-    };
+    return <String, dynamic>{'addressPrefixes': addressPrefixes};
   }
 
-  factory PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap(Map<String, dynamic> map) {
+  factory PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool(
-      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
+      addressPrefixes: pulumi.Input.fromValue(
+        (map['addressPrefixes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

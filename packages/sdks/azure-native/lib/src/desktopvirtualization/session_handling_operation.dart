@@ -3,16 +3,15 @@ enum SessionHandlingOperation {
   valueNone("None"),
   valueDeallocate("Deallocate");
 
-  const SessionHandlingOperation(this.value);
-  final String value;
+  const SessionHandlingOperation(this.wireValue);
+  final String wireValue;
 
   static SessionHandlingOperation fromValue(String value) {
     for (final item in SessionHandlingOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionHandlingOperation value: $value');
   }
 }
-

@@ -199,7 +199,7 @@ import 'dsc_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -214,19 +214,26 @@ import 'dsc_configuration_state.dart';
 class DscConfiguration extends pulumi.CustomResource {
   /// The name of the automation account in which the DSC Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The PowerShell DSC Configuration script.
   late final pulumi.Output<String> contentEmbedded;
+
   /// Description to go with DSC Configuration.
   late final pulumi.Output<String?> description;
+
   /// Must be the same location as the Automation Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Verbose log option.
   late final pulumi.Output<bool?> logVerbose;
+
   /// Specifies the name of the DSC Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the DSC Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<String> state;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -239,20 +246,20 @@ class DscConfiguration extends pulumi.CustomResource {
     DscConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/dscConfiguration:DscConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.contentEmbedded = registerOutput<String>('contentEmbedded');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
-    this.logVerbose = registerOutput<bool?>('logVerbose');
+         'azure:automation/dscConfiguration:DscConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    contentEmbedded = registerOutput<String>('contentEmbedded');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DscConfiguration] resource's state with the given [name] and [id].
@@ -273,19 +280,19 @@ class DscConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/dscConfiguration:DscConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.contentEmbedded = registerOutput<String>('contentEmbedded');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
-    this.logVerbose = registerOutput<bool?>('logVerbose');
+         'azure:automation/dscConfiguration:DscConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    contentEmbedded = registerOutput<String>('contentEmbedded');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
     this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -8,13 +8,18 @@ import 'notebook_execution_custom_environment_spec_persistent_disk_spec.dart';
 class NotebookExecutionCustomEnvironmentSpec {
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecMachineSpec>? machineSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecMachineSpec>?
+  machineSpec;
+
   /// The network configuration for the runtime.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecNetworkSpec>? networkSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecNetworkSpec>?
+  networkSpec;
+
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec>? persistentDiskSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec>?
+  persistentDiskSpec;
 
   /// Creates a new [NotebookExecutionCustomEnvironmentSpec].
   /// [machineSpec] 'The machine configuration of the runtime.'
@@ -28,18 +33,55 @@ class NotebookExecutionCustomEnvironmentSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'machineSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecMachineSpec, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
-      'networkSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecNetworkSpec, Map<String, dynamic>>(networkSpec, (value) => value.toMap()),
-      'persistentDiskSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec, Map<String, dynamic>>(persistentDiskSpec, (value) => value.toMap()),
+      'machineSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotebookExecutionCustomEnvironmentSpecMachineSpec,
+            Map<String, dynamic>
+          >(machineSpec, (value) => value.toMap()),
+      'networkSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotebookExecutionCustomEnvironmentSpecNetworkSpec,
+            Map<String, dynamic>
+          >(networkSpec, (value) => value.toMap()),
+      'persistentDiskSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec,
+            Map<String, dynamic>
+          >(persistentDiskSpec, (value) => value.toMap()),
     };
   }
 
-  factory NotebookExecutionCustomEnvironmentSpec.fromMap(Map<String, dynamic> map) {
+  factory NotebookExecutionCustomEnvironmentSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NotebookExecutionCustomEnvironmentSpec(
-      machineSpec: map['machineSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())).input(),
-      networkSpec: map['networkSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap((map['networkSpec']! as Map).cast<String, dynamic>())).input(),
-      persistentDiskSpec: map['persistentDiskSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.fromMap((map['persistentDiskSpec']! as Map).cast<String, dynamic>())).input(),
+      machineSpec: (() {
+        final guardedValue = map['machineSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkSpec: (() {
+        final guardedValue = map['networkSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      persistentDiskSpec: (() {
+        final guardedValue = map['persistentDiskSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

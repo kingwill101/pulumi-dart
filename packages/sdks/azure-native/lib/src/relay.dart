@@ -1,5 +1,3 @@
-library module_relay;
-
 export 'relay/access_rights.dart';
 export 'relay/connection_state.dart';
 export 'relay/connection_state_response.dart';

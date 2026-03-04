@@ -3,16 +3,17 @@ enum VirtualMachineScaleSetScaleInRules {
   oldestVM("OldestVM"),
   newestVM("NewestVM");
 
-  const VirtualMachineScaleSetScaleInRules(this.value);
-  final String value;
+  const VirtualMachineScaleSetScaleInRules(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineScaleSetScaleInRules fromValue(String value) {
     for (final item in VirtualMachineScaleSetScaleInRules.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineScaleSetScaleInRules value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineScaleSetScaleInRules value: $value',
+    );
   }
 }
-

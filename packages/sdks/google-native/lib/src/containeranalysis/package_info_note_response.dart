@@ -8,36 +8,52 @@ import 'license_response_containeranalysis_v1alpha1.dart';
 class PackageInfoNoteResponse {
   /// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
   final pulumi.Input<bool> analyzed;
+
   /// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
   final pulumi.Input<String> attribution;
+
   /// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
   final pulumi.Input<String> checksum;
+
   /// Identify the copyright holders of the package, as well as any dates present
   final pulumi.Input<String> copyright;
+
   /// A more detailed description of the package
   final pulumi.Input<String> detailedDescription;
+
   /// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
   final pulumi.Input<String> downloadLocation;
+
   /// ExternalRef
   final pulumi.Input<List<ExternalRefResponse>> externalRefs;
+
   /// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
   final pulumi.Input<List<String>> filesLicenseInfo;
+
   /// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
   final pulumi.Input<String> homePage;
+
   /// List the licenses that have been declared by the authors of the package
   final pulumi.Input<LicenseResponseContaineranalysisV1alpha1> licenseDeclared;
+
   /// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
   final pulumi.Input<String> originator;
+
   /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
   final pulumi.Input<String> packageType;
+
   /// A short description of the package
   final pulumi.Input<String> summaryDescription;
+
   /// Identify the actual distribution source for the package/directory identified in the SPDX file
   final pulumi.Input<String> supplier;
+
   /// Identify the full name of the package as given by the Package Originator
   final pulumi.Input<String> title;
+
   /// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
   final pulumi.Input<String> verificationCode;
+
   /// Identify the version of the package
   final pulumi.Input<String> version;
 
@@ -87,10 +103,25 @@ class PackageInfoNoteResponse {
       'copyright': copyright,
       'detailedDescription': detailedDescription,
       'downloadLocation': downloadLocation,
-      'externalRefs': pulumi.Input.mapInputValue<List<ExternalRefResponse>, List<Map<String, dynamic>>>(externalRefs, (value) => pulumi.Input.encodeList<ExternalRefResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'externalRefs':
+          pulumi.Input.mapInputValue<
+            List<ExternalRefResponse>,
+            List<Map<String, dynamic>>
+          >(
+            externalRefs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExternalRefResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'filesLicenseInfo': filesLicenseInfo,
       'homePage': homePage,
-      'licenseDeclared': pulumi.Input.mapInputValue<LicenseResponseContaineranalysisV1alpha1, Map<String, dynamic>>(licenseDeclared, (value) => value.toMap()),
+      'licenseDeclared':
+          pulumi.Input.mapInputValue<
+            LicenseResponseContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(licenseDeclared, (value) => value.toMap()),
       'originator': originator,
       'packageType': packageType,
       'summaryDescription': summaryDescription,
@@ -103,24 +134,44 @@ class PackageInfoNoteResponse {
 
   factory PackageInfoNoteResponse.fromMap(Map<String, dynamic> map) {
     return PackageInfoNoteResponse(
-      analyzed: (map['analyzed'] as bool).input(),
-      attribution: (map['attribution'] as String).input(),
-      checksum: (map['checksum'] as String).input(),
-      copyright: (map['copyright'] as String).input(),
-      detailedDescription: (map['detailedDescription'] as String).input(),
-      downloadLocation: (map['downloadLocation'] as String).input(),
-      externalRefs: (pulumi.Input.decodeList<ExternalRefResponse>(map['externalRefs'], (value) => ExternalRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filesLicenseInfo: ((map['filesLicenseInfo'] as List).cast<String>()).input(),
-      homePage: (map['homePage'] as String).input(),
-      licenseDeclared: (LicenseResponseContaineranalysisV1alpha1.fromMap((map['licenseDeclared'] as Map).cast<String, dynamic>())).input(),
-      originator: (map['originator'] as String).input(),
-      packageType: (map['packageType'] as String).input(),
-      summaryDescription: (map['summaryDescription'] as String).input(),
-      supplier: (map['supplier'] as String).input(),
-      title: (map['title'] as String).input(),
-      verificationCode: (map['verificationCode'] as String).input(),
-      version: (map['version'] as String).input(),
+      analyzed: pulumi.Input.fromValue(map['analyzed'] as bool),
+      attribution: pulumi.Input.fromValue(map['attribution'] as String),
+      checksum: pulumi.Input.fromValue(map['checksum'] as String),
+      copyright: pulumi.Input.fromValue(map['copyright'] as String),
+      detailedDescription: pulumi.Input.fromValue(
+        map['detailedDescription'] as String,
+      ),
+      downloadLocation: pulumi.Input.fromValue(
+        map['downloadLocation'] as String,
+      ),
+      externalRefs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ExternalRefResponse>(
+          map['externalRefs']!,
+          (value) => ExternalRefResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      filesLicenseInfo: pulumi.Input.fromValue(
+        (map['filesLicenseInfo'] as List).cast<String>(),
+      ),
+      homePage: pulumi.Input.fromValue(map['homePage'] as String),
+      licenseDeclared: pulumi.Input.fromValue(
+        LicenseResponseContaineranalysisV1alpha1.fromMap(
+          (map['licenseDeclared']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      originator: pulumi.Input.fromValue(map['originator'] as String),
+      packageType: pulumi.Input.fromValue(map['packageType'] as String),
+      summaryDescription: pulumi.Input.fromValue(
+        map['summaryDescription'] as String,
+      ),
+      supplier: pulumi.Input.fromValue(map['supplier'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
+      verificationCode: pulumi.Input.fromValue(
+        map['verificationCode'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

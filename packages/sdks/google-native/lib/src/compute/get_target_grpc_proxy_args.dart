@@ -13,10 +13,7 @@ class GetTargetGrpcProxyArgs {
   /// Creates a new [GetTargetGrpcProxyArgs].
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
-  GetTargetGrpcProxyArgs({
-    this.project,
-    required this.targetGrpcProxy,
-  });
+  GetTargetGrpcProxyArgs({this.project, required this.targetGrpcProxy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,12 @@ class GetTargetGrpcProxyArgs {
 
   factory GetTargetGrpcProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetGrpcProxyArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetGrpcProxy: (map['targetGrpcProxy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetGrpcProxy: pulumi.Input.fromValue(map['targetGrpcProxy'] as String),
     );
   }
 }
-

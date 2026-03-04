@@ -1,5 +1,3 @@
-library module_ims;
-
 export 'ims/functions.dart';
 export 'ims/get_oidc_providers_args.dart';
 export 'ims/get_oidc_providers_provider.dart';

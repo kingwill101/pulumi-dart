@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_project_intelligence_config_args.dart';
-import 'control_project_intelligence_config_effective_intelligence_config.dart';
 import 'control_project_intelligence_config_filter.dart';
 import 'control_project_intelligence_config_state.dart';
-import 'control_project_intelligence_config_trial_config.dart';
 
 /// ## Example Usage
 ///
@@ -173,17 +171,23 @@ import 'control_project_intelligence_config_trial_config.dart';
 class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
   late final pulumi.Output<String> editionConfig;
+
   /// The Intelligence config that is effective for the resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>> effectiveIntelligenceConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  effectiveIntelligenceConfigs;
+
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
   late final pulumi.Output<ControlProjectIntelligenceConfigFilter?> filter;
+
   /// Identifier of the GCP project. For GCP project, this field can be project name or project number.
   late final pulumi.Output<String> name;
+
   /// The trial configuration of the Storage Intelligence resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<ControlProjectIntelligenceConfigTrialConfig>> trialConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> trialConfigs;
+
   /// The time at which the Storage Intelligence Config resource is last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -196,17 +200,19 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     ControlProjectIntelligenceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.editionConfig = registerOutput<String>('editionConfig');
-    this.effectiveIntelligenceConfigs = registerOutput<List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs');
-    this.filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
+         'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    editionConfig = registerOutput<String>('editionConfig');
+    effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'effectiveIntelligenceConfigs',
+    );
+    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
     this.name = registerOutput<String>('name');
-    this.trialConfigs = registerOutput<List<ControlProjectIntelligenceConfigTrialConfig>>('trialConfigs');
-    this.updateTime = registerOutput<String>('updateTime');
+    trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [ControlProjectIntelligenceConfig] resource's state with the given [name] and [id].
@@ -227,16 +233,18 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.editionConfig = registerOutput<String>('editionConfig');
-    this.effectiveIntelligenceConfigs = registerOutput<List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs');
-    this.filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
+         'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    editionConfig = registerOutput<String>('editionConfig');
+    effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'effectiveIntelligenceConfigs',
+    );
+    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
     this.name = registerOutput<String>('name');
-    this.trialConfigs = registerOutput<List<ControlProjectIntelligenceConfigTrialConfig>>('trialConfigs');
-    this.updateTime = registerOutput<String>('updateTime');
+    trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

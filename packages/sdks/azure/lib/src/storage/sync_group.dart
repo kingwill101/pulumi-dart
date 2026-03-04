@@ -175,7 +175,7 @@ import 'sync_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageSync` - 2020-03-01
@@ -190,6 +190,7 @@ import 'sync_group_state.dart';
 class SyncGroup extends pulumi.CustomResource {
   /// The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
   late final pulumi.Output<String> storageSyncId;
 
@@ -202,13 +203,13 @@ class SyncGroup extends pulumi.CustomResource {
     SyncGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/syncGroup:SyncGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:storage/syncGroup:SyncGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.storageSyncId = registerOutput<String>('storageSyncId');
+    storageSyncId = registerOutput<String>('storageSyncId');
   }
 
   /// Gets an existing [SyncGroup] resource's state with the given [name] and [id].
@@ -229,12 +230,12 @@ class SyncGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/syncGroup:SyncGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:storage/syncGroup:SyncGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.storageSyncId = registerOutput<String>('storageSyncId');
+    storageSyncId = registerOutput<String>('storageSyncId');
   }
 }

@@ -132,12 +132,16 @@ import 'workspace_setting_args.dart';
 class WorkspaceSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   late final pulumi.Output<String> scope;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// The full Azure ID of the workspace to save the data in
   late final pulumi.Output<String> workspaceId;
 
@@ -150,15 +154,15 @@ class WorkspaceSetting extends pulumi.CustomResource {
     WorkspaceSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:WorkspaceSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:security:WorkspaceSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<String>('scope');
-    this.type = registerOutput<String>('type');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    scope = registerOutput<String>('scope');
+    type = registerOutput<String>('type');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

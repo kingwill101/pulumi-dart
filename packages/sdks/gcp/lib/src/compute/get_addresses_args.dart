@@ -11,7 +11,7 @@ class GetAddressesArgs {
   /// filters resources listed in the response. The expression must specify
   /// the field name, an operator, and the value that you want to use for
   /// filtering. The value must be a string, a number, or a boolean. The
-  /// operator must be either "=", "!=", ">", "<", "<=", ">=" or ":". For
+  /// operator must be either "=", "!=", "&gt;", "&lt;", "&lt;=", "&gt;=" or ":". For
   /// example, if you are filtering Compute Engine instances, you can
   /// exclude instances named "example-instance" by specifying "name !=
   /// example-instance". The ":" operator can be used with string fields to
@@ -30,9 +30,11 @@ class GetAddressesArgs {
   /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
   /// AND (scheduling.automaticRestart = true)
   final pulumi.Input<String>? filter;
+
   /// The google project in which addresses are listed.
   /// Defaults to provider's configuration if missing.
   final pulumi.Input<String>? project;
+
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final pulumi.Input<String>? region;
@@ -41,11 +43,7 @@ class GetAddressesArgs {
   /// [filter] A filter expression that
   /// [project] The google project in which addresses are listed.
   /// [region] Region that should be considered to search addresses.
-  GetAddressesArgs({
-    this.filter,
-    this.project,
-    this.region,
-  });
+  GetAddressesArgs({this.filter, this.project, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,10 +55,21 @@ class GetAddressesArgs {
 
   factory GetAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressesArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

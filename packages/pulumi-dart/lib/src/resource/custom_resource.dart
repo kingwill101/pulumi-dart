@@ -87,8 +87,18 @@ class CustomResource extends Resource {
          remote: remote,
          dependency: dependency,
          registerPackageRequest: registerPackageRequest,
-      ) {
+       ) {
     id = Output<String>(_idCompleter.future);
+    unawaited(
+      _idCompleter.future.catchError(
+        (_) => OutputData<String>(
+          value: null,
+          isKnown: false,
+          isSecret: false,
+          resources: {this},
+        ),
+      ),
+    );
   }
 
   /// Resolves the provider-assigned ID for this resource.

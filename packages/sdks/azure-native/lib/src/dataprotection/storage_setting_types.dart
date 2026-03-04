@@ -4,16 +4,15 @@ enum StorageSettingTypes {
   valueLocallyRedundant("LocallyRedundant"),
   valueZoneRedundant("ZoneRedundant");
 
-  const StorageSettingTypes(this.value);
-  final String value;
+  const StorageSettingTypes(this.wireValue);
+  final String wireValue;
 
   static StorageSettingTypes fromValue(String value) {
     for (final item in StorageSettingTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageSettingTypes value: $value');
   }
 }
-

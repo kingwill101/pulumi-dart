@@ -1,5 +1,3 @@
-library module_outposts;
-
 export 'outposts/functions.dart';
 export 'outposts/get_asset_args.dart';
 export 'outposts/get_asset_result.dart';

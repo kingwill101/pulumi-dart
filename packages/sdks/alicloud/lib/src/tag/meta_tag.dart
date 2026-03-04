@@ -7,9 +7,9 @@ import 'meta_tag_state.dart';
 /// For information about Tag Meta Tag and how to use it,
 /// see [What is Meta Tag](https://www.alibabacloud.com/help/en/resource-management/latest/createtags).
 ///
-/// > **NOTE:** Available since v1.209.0.
+/// &gt; **NOTE:** Available since v1.209.0.
 ///
-/// > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
+/// &gt; **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
 ///
 /// ## Example Usage
 ///
@@ -128,6 +128,7 @@ import 'meta_tag_state.dart';
 class MetaTag extends pulumi.CustomResource {
   /// The key of the tag meta tag. key must be 1 to 128 characters in length.
   late final pulumi.Output<String> key;
+
   /// The values of the tag meta tag.
   late final pulumi.Output<List<String>> values;
 
@@ -140,13 +141,13 @@ class MetaTag extends pulumi.CustomResource {
     MetaTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/metaTag:MetaTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.values = registerOutput<List<String>>('values');
+         'alicloud:tag/metaTag:MetaTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    key = registerOutput<String>('key');
+    values = registerOutput<List<String>>('values');
   }
 
   /// Gets an existing [MetaTag] resource's state with the given [name] and [id].
@@ -167,12 +168,12 @@ class MetaTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tag/metaTag:MetaTag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.key = registerOutput<String>('key');
-    this.values = registerOutput<List<String>>('values');
+         'alicloud:tag/metaTag:MetaTag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    key = registerOutput<String>('key');
+    values = registerOutput<List<String>>('values');
   }
 }

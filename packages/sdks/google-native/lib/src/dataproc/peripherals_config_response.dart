@@ -7,6 +7,7 @@ import 'spark_history_server_config_response.dart';
 class PeripheralsConfigResponse {
   /// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
   final pulumi.Input<String> metastoreService;
+
   /// Optional. The Spark History Server configuration for the workload.
   final pulumi.Input<SparkHistoryServerConfigResponse> sparkHistoryServerConfig;
 
@@ -21,15 +22,24 @@ class PeripheralsConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'metastoreService': metastoreService,
-      'sparkHistoryServerConfig': pulumi.Input.mapInputValue<SparkHistoryServerConfigResponse, Map<String, dynamic>>(sparkHistoryServerConfig, (value) => value.toMap()),
+      'sparkHistoryServerConfig':
+          pulumi.Input.mapInputValue<
+            SparkHistoryServerConfigResponse,
+            Map<String, dynamic>
+          >(sparkHistoryServerConfig, (value) => value.toMap()),
     };
   }
 
   factory PeripheralsConfigResponse.fromMap(Map<String, dynamic> map) {
     return PeripheralsConfigResponse(
-      metastoreService: (map['metastoreService'] as String).input(),
-      sparkHistoryServerConfig: (SparkHistoryServerConfigResponse.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreService: pulumi.Input.fromValue(
+        map['metastoreService'] as String,
+      ),
+      sparkHistoryServerConfig: pulumi.Input.fromValue(
+        SparkHistoryServerConfigResponse.fromMap(
+          (map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

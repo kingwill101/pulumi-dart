@@ -14,6 +14,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfig {
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The default IPv4 address for SSH access and Kubernetes node.
   /// Example: 192.168.0.1
   final pulumi.Input<String>? nodeIp;
@@ -21,23 +22,28 @@ class BareMetalNodePoolNodePoolConfigNodeConfig {
   /// Creates a new [BareMetalNodePoolNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
   /// [nodeIp] The default IPv4 address for SSH access and Kubernetes node.
-  BareMetalNodePoolNodePoolConfigNodeConfig({
-    this.labels,
-    this.nodeIp,
-  });
+  BareMetalNodePoolNodePoolConfigNodeConfig({this.labels, this.nodeIp});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-      'nodeIp': ?nodeIp,
-    };
+    return <String, dynamic>{'labels': ?labels, 'nodeIp': ?nodeIp};
   }
 
-  factory BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalNodePoolNodePoolConfigNodeConfig(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      nodeIp: map['nodeIp'] == null ? null : (map['nodeIp']! as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      nodeIp: (() {
+        final guardedValue = map['nodeIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

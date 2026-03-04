@@ -13,15 +13,18 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespacedValue': ?namespacedValue,
-    };
+    return <String, dynamic>{'namespacedValue': ?namespacedValue};
   }
 
-  factory PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionTagResourcesTagConditionTag(
-      namespacedValue: map['namespacedValue'] == null ? null : (map['namespacedValue']! as String).input(),
+      namespacedValue: (() {
+        final guardedValue = map['namespacedValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

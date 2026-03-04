@@ -6,21 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VbrHealthCheckState {
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
   final pulumi.Input<int>? healthCheckInterval;
+
   /// The source IP address of health checks.
   final pulumi.Input<String>? healthCheckSourceIp;
+
   /// The destination IP address of health checks.
   final pulumi.Input<String>? healthCheckTargetIp;
+
   /// Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
   final pulumi.Input<int>? healthyThreshold;
+
   /// The ID of the VBR.
   final pulumi.Input<String>? vbrInstanceId;
+
   /// The ID of the account to which the VBR belongs.
   final pulumi.Input<int>? vbrInstanceOwnerId;
+
   /// The ID of the region to which the VBR belongs.
   ///
-  /// ->**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
+  /// -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
   final pulumi.Input<String>? vbrInstanceRegionId;
 
   /// Creates a new [VbrHealthCheckState].
@@ -58,15 +65,46 @@ class VbrHealthCheckState {
 
   factory VbrHealthCheckState.fromMap(Map<String, dynamic> map) {
     return VbrHealthCheckState(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp']! as String).input(),
-      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp']! as String).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
-      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId']! as String).input(),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId']! as int).input(),
-      vbrInstanceRegionId: map['vbrInstanceRegionId'] == null ? null : (map['vbrInstanceRegionId']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckInterval: (() {
+        final guardedValue = map['healthCheckInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckSourceIp: (() {
+        final guardedValue = map['healthCheckSourceIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckTargetIp: (() {
+        final guardedValue = map['healthCheckTargetIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthyThreshold: (() {
+        final guardedValue = map['healthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vbrInstanceId: (() {
+        final guardedValue = map['vbrInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vbrInstanceOwnerId: (() {
+        final guardedValue = map['vbrInstanceOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vbrInstanceRegionId: (() {
+        final guardedValue = map['vbrInstanceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

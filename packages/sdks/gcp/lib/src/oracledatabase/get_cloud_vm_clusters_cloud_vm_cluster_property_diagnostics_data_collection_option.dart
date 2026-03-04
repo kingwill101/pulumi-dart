@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
   /// Indicates whether diagnostic collection is enabled for the VM cluster
   final pulumi.Input<bool> diagnosticsEventsEnabled;
+
   /// Indicates whether health monitoring is enabled for the VM cluster
   final pulumi.Input<bool> healthMonitoringEnabled;
+
   /// Indicates whether incident logs and trace collection are enabled for the VM
   /// cluster
   final pulumi.Input<bool> incidentLogsEnabled;
@@ -29,12 +31,19 @@ class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
     };
   }
 
-  factory GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap(Map<String, dynamic> map) {
+  factory GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption(
-      diagnosticsEventsEnabled: (map['diagnosticsEventsEnabled'] as bool).input(),
-      healthMonitoringEnabled: (map['healthMonitoringEnabled'] as bool).input(),
-      incidentLogsEnabled: (map['incidentLogsEnabled'] as bool).input(),
+      diagnosticsEventsEnabled: pulumi.Input.fromValue(
+        map['diagnosticsEventsEnabled'] as bool,
+      ),
+      healthMonitoringEnabled: pulumi.Input.fromValue(
+        map['healthMonitoringEnabled'] as bool,
+      ),
+      incidentLogsEnabled: pulumi.Input.fromValue(
+        map['incidentLogsEnabled'] as bool,
+      ),
     );
   }
 }
-

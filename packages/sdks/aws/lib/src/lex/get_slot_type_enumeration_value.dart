@@ -9,23 +9,18 @@ class GetSlotTypeEnumerationValue {
   /// Creates a new [GetSlotTypeEnumerationValue].
   /// [synonyms] Required.
   /// [value] Required.
-  GetSlotTypeEnumerationValue({
-    required this.synonyms,
-    required this.value,
-  });
+  GetSlotTypeEnumerationValue({required this.synonyms, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'synonyms': synonyms,
-      'value': value,
-    };
+    return <String, dynamic>{'synonyms': synonyms, 'value': value};
   }
 
   factory GetSlotTypeEnumerationValue.fromMap(Map<String, dynamic> map) {
     return GetSlotTypeEnumerationValue(
-      synonyms: ((map['synonyms'] as List).cast<String>()).input(),
-      value: (map['value'] as String).input(),
+      synonyms: pulumi.Input.fromValue(
+        (map['synonyms'] as List).cast<String>(),
+      ),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

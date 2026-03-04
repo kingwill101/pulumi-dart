@@ -5,24 +5,47 @@ import 'web_acl_default_action_allow_custom_request_handling_insert_header.dart'
 
 class WebAclDefaultActionAllowCustomRequestHandling {
   /// The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  final pulumi.Input<List<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>> insertHeaders;
+  final pulumi.Input<
+    List<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>
+  >
+  insertHeaders;
 
   /// Creates a new [WebAclDefaultActionAllowCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  WebAclDefaultActionAllowCustomRequestHandling({
-    required this.insertHeaders,
-  });
+  WebAclDefaultActionAllowCustomRequestHandling({required this.insertHeaders});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders': pulumi.Input.mapInputValue<List<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>, List<Map<String, dynamic>>>(insertHeaders, (value) => pulumi.Input.encodeList<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'insertHeaders':
+          pulumi.Input.mapInputValue<
+            List<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>,
+            List<Map<String, dynamic>>
+          >(
+            insertHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclDefaultActionAllowCustomRequestHandlingInsertHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory WebAclDefaultActionAllowCustomRequestHandling.fromMap(Map<String, dynamic> map) {
+  factory WebAclDefaultActionAllowCustomRequestHandling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclDefaultActionAllowCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => WebAclDefaultActionAllowCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          WebAclDefaultActionAllowCustomRequestHandlingInsertHeader
+        >(
+          map['insertHeaders']!,
+          (value) =>
+              WebAclDefaultActionAllowCustomRequestHandlingInsertHeader.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

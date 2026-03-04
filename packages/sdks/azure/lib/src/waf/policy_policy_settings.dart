@@ -6,22 +6,31 @@ import 'policy_policy_settings_log_scrubbing.dart';
 class PolicyPolicySettings {
   /// Describes if the policy is in enabled state or disabled state. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Whether the firewall should block a request with upload size greater then `file_upload_limit_in_mb`.
   final pulumi.Input<bool>? fileUploadEnforcement;
+
   /// The File Upload Limit in MB. Accepted values are in the range `1` to `4000`. Defaults to `100`.
   final pulumi.Input<int>? fileUploadLimitInMb;
+
   /// Specifies the JavaScript challenge cookie validity lifetime in minutes. The user is challenged after the lifetime expires. Accepted values are in the range `5` to `1440`. Defaults to `30`.
   final pulumi.Input<int>? jsChallengeCookieExpirationInMinutes;
+
   /// One `log_scrubbing` block as defined below.
   final pulumi.Input<PolicyPolicySettingsLogScrubbing>? logScrubbing;
+
   /// The Maximum Request Body Size in KB. Accepted values are in the range `8` to `2000`. Defaults to `128`.
   final pulumi.Input<int>? maxRequestBodySizeInKb;
+
   /// Describes if it is in detection mode or prevention mode at the policy level. Valid values are `Detection` and `Prevention`. Defaults to `Prevention`.
   final pulumi.Input<String>? mode;
+
   /// Is Request Body Inspection enabled? Defaults to `true`.
   final pulumi.Input<bool>? requestBodyCheck;
+
   /// Whether the firewall should block a request with body size greater then `max_request_body_size_in_kb`. Defaults to `true`.
   final pulumi.Input<bool>? requestBodyEnforcement;
+
   /// Specifies the maximum request body inspection limit in KB for the Web Application Firewall. Defaults to `128`.
   final pulumi.Input<int>? requestBodyInspectLimitInKb;
 
@@ -54,8 +63,13 @@ class PolicyPolicySettings {
       'enabled': ?enabled,
       'fileUploadEnforcement': ?fileUploadEnforcement,
       'fileUploadLimitInMb': ?fileUploadLimitInMb,
-      'jsChallengeCookieExpirationInMinutes': ?jsChallengeCookieExpirationInMinutes,
-      'logScrubbing': ?pulumi.Input.mapOptionalInputValue<PolicyPolicySettingsLogScrubbing, Map<String, dynamic>>(logScrubbing, (value) => value.toMap()),
+      'jsChallengeCookieExpirationInMinutes':
+          ?jsChallengeCookieExpirationInMinutes,
+      'logScrubbing':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyPolicySettingsLogScrubbing,
+            Map<String, dynamic>
+          >(logScrubbing, (value) => value.toMap()),
       'maxRequestBodySizeInKb': ?maxRequestBodySizeInKb,
       'mode': ?mode,
       'requestBodyCheck': ?requestBodyCheck,
@@ -66,17 +80,60 @@ class PolicyPolicySettings {
 
   factory PolicyPolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicyPolicySettings(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement']! as bool).input(),
-      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb']! as int).input(),
-      jsChallengeCookieExpirationInMinutes: map['jsChallengeCookieExpirationInMinutes'] == null ? null : (map['jsChallengeCookieExpirationInMinutes']! as int).input(),
-      logScrubbing: map['logScrubbing'] == null ? null : (PolicyPolicySettingsLogScrubbing.fromMap((map['logScrubbing']! as Map).cast<String, dynamic>())).input(),
-      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck']! as bool).input(),
-      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement']! as bool).input(),
-      requestBodyInspectLimitInKb: map['requestBodyInspectLimitInKb'] == null ? null : (map['requestBodyInspectLimitInKb']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileUploadEnforcement: (() {
+        final guardedValue = map['fileUploadEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileUploadLimitInMb: (() {
+        final guardedValue = map['fileUploadLimitInMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      jsChallengeCookieExpirationInMinutes: (() {
+        final guardedValue = map['jsChallengeCookieExpirationInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logScrubbing: (() {
+        final guardedValue = map['logScrubbing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicyPolicySettingsLogScrubbing.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxRequestBodySizeInKb: (() {
+        final guardedValue = map['maxRequestBodySizeInKb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestBodyCheck: (() {
+        final guardedValue = map['requestBodyCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requestBodyEnforcement: (() {
+        final guardedValue = map['requestBodyEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requestBodyInspectLimitInKb: (() {
+        final guardedValue = map['requestBodyInspectLimitInKb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

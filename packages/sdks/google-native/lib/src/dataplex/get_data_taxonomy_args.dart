@@ -31,10 +31,13 @@ class GetDataTaxonomyArgs {
 
   factory GetDataTaxonomyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataTaxonomyArgs(
-      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dataTaxonomyId: pulumi.Input.fromValue(map['dataTaxonomyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

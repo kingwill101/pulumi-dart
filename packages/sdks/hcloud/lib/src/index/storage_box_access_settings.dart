@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBoxAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
   final pulumi.Input<bool>? reachableExternally;
+
   /// Whether the Samba subsystem is enabled.
   final pulumi.Input<bool>? sambaEnabled;
+
   /// Whether the SSH subsystem is enabled.
   final pulumi.Input<bool>? sshEnabled;
+
   /// Whether the WebDAV subsystem is enabled.
   final pulumi.Input<bool>? webdavEnabled;
+
   /// Whether the ZFS snapshot folder is visible.
   final pulumi.Input<bool>? zfsEnabled;
 
@@ -40,12 +44,31 @@ class StorageBoxAccessSettings {
 
   factory StorageBoxAccessSettings.fromMap(Map<String, dynamic> map) {
     return StorageBoxAccessSettings(
-      reachableExternally: map['reachableExternally'] == null ? null : (map['reachableExternally']! as bool).input(),
-      sambaEnabled: map['sambaEnabled'] == null ? null : (map['sambaEnabled']! as bool).input(),
-      sshEnabled: map['sshEnabled'] == null ? null : (map['sshEnabled']! as bool).input(),
-      webdavEnabled: map['webdavEnabled'] == null ? null : (map['webdavEnabled']! as bool).input(),
-      zfsEnabled: map['zfsEnabled'] == null ? null : (map['zfsEnabled']! as bool).input(),
+      reachableExternally: (() {
+        final guardedValue = map['reachableExternally'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sambaEnabled: (() {
+        final guardedValue = map['sambaEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sshEnabled: (() {
+        final guardedValue = map['sshEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      webdavEnabled: (() {
+        final guardedValue = map['webdavEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      zfsEnabled: (() {
+        final guardedValue = map['zfsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

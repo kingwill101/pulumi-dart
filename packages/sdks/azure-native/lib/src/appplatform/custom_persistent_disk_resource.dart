@@ -7,6 +7,7 @@ import 'azure_file_volume.dart';
 class CustomPersistentDiskResource {
   /// Properties of the custom persistent disk resource payload.
   final pulumi.Input<AzureFileVolume>? customPersistentDiskProperties;
+
   /// The resource id of Azure Spring Apps Storage resource.
   final pulumi.Input<String> storageId;
 
@@ -20,16 +21,27 @@ class CustomPersistentDiskResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPersistentDiskProperties': ?pulumi.Input.mapOptionalInputValue<AzureFileVolume, Map<String, dynamic>>(customPersistentDiskProperties, (value) => value.toMap()),
+      'customPersistentDiskProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFileVolume,
+            Map<String, dynamic>
+          >(customPersistentDiskProperties, (value) => value.toMap()),
       'storageId': storageId,
     };
   }
 
   factory CustomPersistentDiskResource.fromMap(Map<String, dynamic> map) {
     return CustomPersistentDiskResource(
-      customPersistentDiskProperties: map['customPersistentDiskProperties'] == null ? null : (AzureFileVolume.fromMap((map['customPersistentDiskProperties']! as Map).cast<String, dynamic>())).input(),
-      storageId: (map['storageId'] as String).input(),
+      customPersistentDiskProperties: (() {
+        final guardedValue = map['customPersistentDiskProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFileVolume.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageId: pulumi.Input.fromValue(map['storageId'] as String),
     );
   }
 }
-

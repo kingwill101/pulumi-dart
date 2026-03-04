@@ -9,16 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiArgs {
   /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
   final pulumi.Input<String> apiId;
+
   /// A user-visible name for the API.
   final pulumi.Input<String>? displayName;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
   /// If not specified, a new Service will automatically be created in the same project as this API.
   final pulumi.Input<String>? managedService;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -49,12 +53,29 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiId: (map['apiId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      managedService: map['managedService'] == null ? null : (map['managedService']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      managedService: (() {
+        final guardedValue = map['managedService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

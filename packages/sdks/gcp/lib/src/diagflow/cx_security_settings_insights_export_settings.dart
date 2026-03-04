@@ -13,15 +13,16 @@ class CxSecuritySettingsInsightsExportSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableInsightsExport': enableInsightsExport,
-    };
+    return <String, dynamic>{'enableInsightsExport': enableInsightsExport};
   }
 
-  factory CxSecuritySettingsInsightsExportSettings.fromMap(Map<String, dynamic> map) {
+  factory CxSecuritySettingsInsightsExportSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxSecuritySettingsInsightsExportSettings(
-      enableInsightsExport: (map['enableInsightsExport'] as bool).input(),
+      enableInsightsExport: pulumi.Input.fromValue(
+        map['enableInsightsExport'] as bool,
+      ),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum NotebookReferenceType {
   valueNotebookReference("NotebookReference");
 
-  const NotebookReferenceType(this.value);
-  final String value;
+  const NotebookReferenceType(this.wireValue);
+  final String wireValue;
 
   static NotebookReferenceType fromValue(String value) {
     for (final item in NotebookReferenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotebookReferenceType value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalNetworkGatewayBgpSettings {
   /// The BGP speaker's ASN.
   final pulumi.Input<int> asn;
+
   /// The BGP peering address and BGP identifier of this BGP speaker.
   final pulumi.Input<String> bgpPeeringAddress;
+
   /// The weight added to routes learned from this BGP speaker.
   final pulumi.Input<int>? peerWeight;
 
@@ -30,10 +32,15 @@ class LocalNetworkGatewayBgpSettings {
 
   factory LocalNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayBgpSettings(
-      asn: (map['asn'] as int).input(),
-      bgpPeeringAddress: (map['bgpPeeringAddress'] as String).input(),
-      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight']! as int).input(),
+      asn: pulumi.Input.fromValue(map['asn'] as int),
+      bgpPeeringAddress: pulumi.Input.fromValue(
+        map['bgpPeeringAddress'] as String,
+      ),
+      peerWeight: (() {
+        final guardedValue = map['peerWeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

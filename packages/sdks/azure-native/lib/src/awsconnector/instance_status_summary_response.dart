@@ -6,31 +6,62 @@ import 'summary_status_enum_value_response.dart';
 
 /// Definition of InstanceStatusSummary
 class InstanceStatusSummaryResponse {
-  /// <p>The system instance health or application instance health.</p>
+  /// &lt;p&gt;The system instance health or application instance health.&lt;/p&gt;
   final pulumi.Input<List<InstanceStatusDetailsResponse>>? details;
-  /// <p>The status.</p>
+
+  /// &lt;p&gt;The status.&lt;/p&gt;
   final pulumi.Input<SummaryStatusEnumValueResponse>? status;
 
   /// Creates a new [InstanceStatusSummaryResponse].
-  /// [details] <p>The system instance health or application instance health.</p>
-  /// [status] <p>The status.</p>
-  InstanceStatusSummaryResponse({
-    this.details,
-    this.status,
-  });
+  /// [details] &lt;p&gt;The system instance health or application instance health.&lt;/p&gt;
+  /// [status] &lt;p&gt;The status.&lt;/p&gt;
+  InstanceStatusSummaryResponse({this.details, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details': ?pulumi.Input.mapOptionalInputValue<List<InstanceStatusDetailsResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<InstanceStatusDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'status': ?pulumi.Input.mapOptionalInputValue<SummaryStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'details':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceStatusDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            details,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceStatusDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            SummaryStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory InstanceStatusSummaryResponse.fromMap(Map<String, dynamic> map) {
     return InstanceStatusSummaryResponse(
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<InstanceStatusDetailsResponse>(map['details']!, (value) => InstanceStatusDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (SummaryStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceStatusDetailsResponse>(
+            guardedValue,
+            (value) => InstanceStatusDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SummaryStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

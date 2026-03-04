@@ -4,7 +4,7 @@ import 'get_baselines_result.dart';
 
 /// This data source provides Governance Baseline available to the user.[What is Baseline](https://next.api.aliyun.com/document/governance/2021-01-20/CreateAccountFactoryBaseline)
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///

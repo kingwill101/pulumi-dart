@@ -8,20 +8,21 @@ class DataRepositoryAssociationS3AutoExportPolicy {
 
   /// Creates a new [DataRepositoryAssociationS3AutoExportPolicy].
   /// [events] A list of file event types to automatically export to your linked S3 bucket or import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
-  DataRepositoryAssociationS3AutoExportPolicy({
-    this.events,
-  });
+  DataRepositoryAssociationS3AutoExportPolicy({this.events});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'events': ?events,
-    };
+    return <String, dynamic>{'events': ?events};
   }
 
-  factory DataRepositoryAssociationS3AutoExportPolicy.fromMap(Map<String, dynamic> map) {
+  factory DataRepositoryAssociationS3AutoExportPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataRepositoryAssociationS3AutoExportPolicy(
-      events: map['events'] == null ? null : (((map['events'] as List).cast<String>()).input()).input(),
+      events: (() {
+        final guardedValue = map['events'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

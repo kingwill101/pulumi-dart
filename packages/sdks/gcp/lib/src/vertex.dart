@@ -1,5 +1,3 @@
-library module_vertex;
-
 export 'vertex/ai_cache_config.dart';
 export 'vertex/ai_cache_config_args.dart';
 export 'vertex/ai_cache_config_state.dart';

@@ -53,10 +53,14 @@ func pulumiSubmoduleRoot() (string, error) {
 		repoRoot := strings.TrimSpace(string(out))
 		if repoRoot != "" {
 			candidates = append(candidates, filepath.Join(repoRoot, "pulumi"))
+			candidates = append(candidates, filepath.Join(repoRoot, "thirdparty", "pulumi"))
 		}
 	}
 
 	if root, err := filepath.Abs("../pulumi"); err == nil {
+		candidates = append(candidates, root)
+	}
+	if root, err := filepath.Abs("../thirdparty/pulumi"); err == nil {
 		candidates = append(candidates, root)
 	}
 
@@ -88,7 +92,12 @@ func pulumiSubmodulePath(parts ...string) (string, error) {
 func testProviderPath() string {
 	path, err := pulumiSubmodulePath("tests", "testprovider")
 	if err != nil {
-		return "testprovider"
+		if fallback, fallbackErr := filepath.Abs("../thirdparty/pulumi/tests/testprovider"); fallbackErr == nil {
+			if info, statErr := os.Stat(fallback); statErr == nil && info.IsDir() {
+				return fallback
+			}
+		}
+		panic(fmt.Sprintf("unable to locate go testprovider (expected at pulumi/tests/testprovider): %v", err))
 	}
 	return path
 }
@@ -102,9 +111,13 @@ type assertPerfBenchmark struct {
 }
 
 func prepareDartProject(projInfo *engine.Projinfo) error {
-	cwd, _, err := projInfo.GetPwdMain()
-	if err != nil {
-		return err
+	cwd := strings.TrimSpace(projInfo.Root)
+	if cwd == "" {
+		var err error
+		cwd, _, err = projInfo.GetPwdMain()
+		if err != nil {
+			return err
+		}
 	}
 
 	pulumiSdkPath, err := pulumiSDKPath()
@@ -147,6 +160,7 @@ func prepareDartProject(projInfo *engine.Projinfo) error {
 
 func pulumiSDKPath() (string, error) {
 	for _, candidate := range []string{
+		"../pulumi-dart/packages/pulumi-dart",
 		"../packages/pulumi-dart",
 		"../pulumi-dart",
 	} {
@@ -154,12 +168,27 @@ func pulumiSDKPath() (string, error) {
 		if err != nil {
 			continue
 		}
-		if _, err := os.Stat(abs); err == nil {
+		if isPulumiSDKPackageDir(abs) {
 			return abs, nil
 		}
 	}
 
-	return "", fmt.Errorf("unable to locate pulumi-dart at ../packages/pulumi-dart or ../pulumi-dart")
+	return "", fmt.Errorf("unable to locate pulumi SDK package at ../pulumi-dart/packages/pulumi-dart, ../packages/pulumi-dart, or ../pulumi-dart")
+}
+
+func isPulumiSDKPackageDir(dir string) bool {
+	pubspecPath := filepath.Join(dir, "pubspec.yaml")
+	data, err := os.ReadFile(pubspecPath)
+	if err != nil {
+		return false
+	}
+
+	var pubspec map[string]interface{}
+	if err := yaml.Unmarshal(data, &pubspec); err != nil {
+		return false
+	}
+	name, _ := pubspec["name"].(string)
+	return strings.TrimSpace(name) == "pulumi"
 }
 
 func rewritePulumiPathDependency(pubspecPath string, pulumiSDKPath string) error {
@@ -210,7 +239,7 @@ func getProviderPath(providerDir string) string {
 		// Case-insensitive compare, as Windows will normally be "Path", not "PATH".
 		if strings.EqualFold(key, "PATH") {
 			// Prepend the provider directory to PATH so any calls to run
-			// pulumi-language-dotnet pick up the locally built one.
+			// pulumi-language-dart pick up the locally built one.
 			path := fmt.Sprintf("%s=%s%s%s", key, providerDir, string(os.PathListSeparator), value)
 			return path
 		}
@@ -232,6 +261,21 @@ func testDartProgram(t *testing.T, options *integration.ProgramTestOptions) {
 		return nil
 	}
 	options.Env = append(options.Env, getProviderPath(languagePluginPath))
+	hasPassphrase := false
+	hasPassphraseFile := false
+	for _, env := range options.Env {
+		if strings.HasPrefix(env, "PULUMI_CONFIG_PASSPHRASE=") {
+			hasPassphrase = true
+		}
+		if strings.HasPrefix(env, "PULUMI_CONFIG_PASSPHRASE_FILE=") {
+			hasPassphraseFile = true
+		}
+	}
+	if !hasPassphrase && !hasPassphraseFile {
+		// Avoid interactive prompts in ProgramTests when local backends need to
+		// decrypt stack config/secrets during preview/up/destroy.
+		options.Env = append(options.Env, "PULUMI_CONFIG_PASSPHRASE=pulumi-dart-test-passphrase")
+	}
 	integration.ProgramTest(t, options)
 }
 

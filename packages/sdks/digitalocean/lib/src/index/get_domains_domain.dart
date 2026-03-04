@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomain {
   /// (Required) The name of the domain.
   final pulumi.Input<String> name;
+
   /// The TTL of the domain.
   final pulumi.Input<int> ttl;
+
   /// The uniform resource name of the domain
   final pulumi.Input<String> urn;
 
@@ -14,26 +16,17 @@ class GetDomainsDomain {
   /// [name] (Required) The name of the domain.
   /// [ttl] The TTL of the domain.
   /// [urn] The uniform resource name of the domain
-  GetDomainsDomain({
-    required this.name,
-    required this.ttl,
-    required this.urn,
-  });
+  GetDomainsDomain({required this.name, required this.ttl, required this.urn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'ttl': ttl,
-      'urn': urn,
-    };
+    return <String, dynamic>{'name': name, 'ttl': ttl, 'urn': urn};
   }
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      name: (map['name'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
-      urn: (map['urn'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      urn: pulumi.Input.fromValue(map['urn'] as String),
     );
   }
 }
-

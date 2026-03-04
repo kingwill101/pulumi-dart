@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
   final pulumi.Input<List<String>>? allowedRequestExtensions;
+
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
   final pulumi.Input<List<String>>? allowedResponseExtensions;
+
   /// A list of full type names of provided contexts.
   final pulumi.Input<List<String>>? provided;
+
   /// A list of full type names of requested contexts.
   final pulumi.Input<List<String>>? requested;
+
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
   final pulumi.Input<String>? selector;
 
@@ -41,12 +45,31 @@ class ContextRule {
 
   factory ContextRule.fromMap(Map<String, dynamic> map) {
     return ContextRule(
-      allowedRequestExtensions: map['allowedRequestExtensions'] == null ? null : ((map['allowedRequestExtensions']! as List).cast<String>()).input(),
-      allowedResponseExtensions: map['allowedResponseExtensions'] == null ? null : ((map['allowedResponseExtensions']! as List).cast<String>()).input(),
-      provided: map['provided'] == null ? null : ((map['provided']! as List).cast<String>()).input(),
-      requested: map['requested'] == null ? null : ((map['requested']! as List).cast<String>()).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      allowedRequestExtensions: (() {
+        final guardedValue = map['allowedRequestExtensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowedResponseExtensions: (() {
+        final guardedValue = map['allowedResponseExtensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      provided: (() {
+        final guardedValue = map['provided'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      requested: (() {
+        final guardedValue = map['requested'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

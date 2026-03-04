@@ -7,8 +7,10 @@ import 'get_regions_filter.dart';
 class GetRegionsResult {
   final bool? allRegions;
   final List<GetRegionsFilter>? filters;
+
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String id;
+
   /// Names of regions that meets the criteria.
   final List<String> names;
 
@@ -27,7 +29,14 @@ class GetRegionsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allRegions': ?allRegions,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'names': names,
     };
@@ -35,11 +44,22 @@ class GetRegionsResult {
 
   factory GetRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionsResult(
-      allRegions: map['allRegions'] == null ? null : map['allRegions'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRegionsFilter>(map['filters']!, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      allRegions: (() {
+        final guardedValue = map['allRegions'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetRegionsFilter>(
+          guardedValue,
+          (value) =>
+              GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorTemplateHelmUpgradeConfiguration {
   /// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
   final pulumi.Input<bool>? atomic;
+
   /// Disable pre/post upgrade hooks for the operation.
   final pulumi.Input<bool>? disableHooks;
+
   /// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
   final pulumi.Input<int>? timeout;
+
   /// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
   final pulumi.Input<bool>? wait;
+
   /// If set, the operation will wait for jobs to complete before marking the release as successful.
   final pulumi.Input<bool>? waitForJobs;
 
@@ -39,14 +43,35 @@ class AkriConnectorTemplateHelmUpgradeConfiguration {
     };
   }
 
-  factory AkriConnectorTemplateHelmUpgradeConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorTemplateHelmUpgradeConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorTemplateHelmUpgradeConfiguration(
-      atomic: map['atomic'] == null ? null : (map['atomic']! as bool).input(),
-      disableHooks: map['disableHooks'] == null ? null : (map['disableHooks']! as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      wait: map['wait'] == null ? null : (map['wait']! as bool).input(),
-      waitForJobs: map['waitForJobs'] == null ? null : (map['waitForJobs']! as bool).input(),
+      atomic: (() {
+        final guardedValue = map['atomic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      disableHooks: (() {
+        final guardedValue = map['disableHooks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      wait: (() {
+        final guardedValue = map['wait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      waitForJobs: (() {
+        final guardedValue = map['waitForJobs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

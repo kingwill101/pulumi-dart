@@ -4,9 +4,9 @@ import 'get_organizations_result.dart';
 
 /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.137.0.
+/// &gt; **NOTE:** Available since v1.137.0.
 ///
-/// > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
+/// &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
 ///
 /// ## Example Usage
 ///

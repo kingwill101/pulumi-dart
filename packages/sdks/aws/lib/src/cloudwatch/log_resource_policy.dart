@@ -434,8 +434,10 @@ import 'log_resource_policy_state.dart';
 class LogResourcePolicy extends pulumi.CustomResource {
   /// Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
   late final pulumi.Output<String> policyDocument;
+
   /// Name of the resource policy.
   late final pulumi.Output<String> policyName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -448,14 +450,14 @@ class LogResourcePolicy extends pulumi.CustomResource {
     LogResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.policyName = registerOutput<String>('policyName');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyDocument = registerOutput<String>('policyDocument');
+    policyName = registerOutput<String>('policyName');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LogResourcePolicy] resource's state with the given [name] and [id].
@@ -476,13 +478,13 @@ class LogResourcePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.policyName = registerOutput<String>('policyName');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyDocument = registerOutput<String>('policyDocument');
+    policyName = registerOutput<String>('policyName');
+    region = registerOutput<String>('region');
   }
 }

@@ -185,16 +185,22 @@ import 'virtual_appliance_site_args.dart';
 class VirtualApplianceSite extends pulumi.CustomResource {
   /// Address Prefix.
   late final pulumi.Output<String?> addressPrefix;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Name of the virtual appliance site.
   late final pulumi.Output<String?> name;
+
   /// Office 365 Policy.
   late final pulumi.Output<Office365PolicyPropertiesResponse?> o365Policy;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Site type.
   late final pulumi.Output<String> type;
 
@@ -207,17 +213,19 @@ class VirtualApplianceSite extends pulumi.CustomResource {
     VirtualApplianceSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualApplianceSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:VirtualApplianceSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.o365Policy = registerOutput<Office365PolicyPropertiesResponse?>('o365Policy');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    o365Policy = registerOutput<Office365PolicyPropertiesResponse?>(
+      'o365Policy',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

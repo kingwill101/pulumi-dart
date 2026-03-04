@@ -12,20 +12,15 @@ class GetSubscriptionRaiPolicyArgs {
 
   /// Creates a new [GetSubscriptionRaiPolicyArgs].
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
-  GetSubscriptionRaiPolicyArgs({
-    required this.raiPolicyName,
-  });
+  GetSubscriptionRaiPolicyArgs({required this.raiPolicyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'raiPolicyName': raiPolicyName,
-    };
+    return <String, dynamic>{'raiPolicyName': raiPolicyName};
   }
 
   factory GetSubscriptionRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionRaiPolicyArgs(
-      raiPolicyName: (map['raiPolicyName'] as String).input(),
+      raiPolicyName: pulumi.Input.fromValue(map['raiPolicyName'] as String),
     );
   }
 }
-

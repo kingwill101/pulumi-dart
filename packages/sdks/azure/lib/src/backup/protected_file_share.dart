@@ -415,19 +415,23 @@ import 'protected_file_share_state.dart';
 /// $ pulumi import azure:backup/protectedFileShare:ProtectedFileShare item1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.RecoveryServices/vaults/example-recovery-vault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;group2;example-storage-account/protectedItems/AzureFileShare;3f6e3108a45793581bcbd1c61c87a3b2ceeb4ff4bc02a95ce9d1022b23722935"
 /// ```
 ///
-/// > **Note:** The ID requires quoting as there are semicolons. This user unfriendly ID can be found in the Deployments of the used resourcegroup, look for an Deployment which starts with `ConfigureAFSProtection-`, click then `Go to resource`.
+/// &gt; **Note:** The ID requires quoting as there are semicolons. This user unfriendly ID can be found in the Deployments of the used resourcegroup, look for an Deployment which starts with `ConfigureAFSProtection-`, click then `Go to resource`.
 class ProtectedFileShare extends pulumi.CustomResource {
   /// Specifies the ID of the backup policy to use. The policy must be an Azure File Share backup policy. Other types are not supported.
   late final pulumi.Output<String> backupPolicyId;
+
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// The name of the resource group in which to create the Azure Backup Protected File Share. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the file share to backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceFileShareName;
+
   /// Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The storage account must already be registered with the recovery vault in order to backup shares within the account. You can use the `azure.backup.ContainerStorageAccount` resource or the [Register-AzRecoveryServicesBackupContainer PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-3.2.0) to register a storage account with a vault. When using the `azure.backup.ContainerStorageAccount` resource to register, you can use `depends_on` to explicitly declare the dependency. It will make sure that the registration is completed before creating the `azure.backup.ProtectedFileShare` resource.
+  /// &gt; **Note:** The storage account must already be registered with the recovery vault in order to backup shares within the account. You can use the `azure.backup.ContainerStorageAccount` resource or the [Register-AzRecoveryServicesBackupContainer PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-3.2.0) to register a storage account with a vault. When using the `azure.backup.ContainerStorageAccount` resource to register, you can use `depends_on` to explicitly declare the dependency. It will make sure that the registration is completed before creating the `azure.backup.ProtectedFileShare` resource.
   late final pulumi.Output<String> sourceStorageAccountId;
 
   /// Creates a new [ProtectedFileShare].
@@ -439,16 +443,16 @@ class ProtectedFileShare extends pulumi.CustomResource {
     ProtectedFileShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/protectedFileShare:ProtectedFileShare',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceFileShareName = registerOutput<String>('sourceFileShareName');
-    this.sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+         'azure:backup/protectedFileShare:ProtectedFileShare',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceFileShareName = registerOutput<String>('sourceFileShareName');
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }
 
   /// Gets an existing [ProtectedFileShare] resource's state with the given [name] and [id].
@@ -469,15 +473,15 @@ class ProtectedFileShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:backup/protectedFileShare:ProtectedFileShare',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceFileShareName = registerOutput<String>('sourceFileShareName');
-    this.sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+         'azure:backup/protectedFileShare:ProtectedFileShare',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceFileShareName = registerOutput<String>('sourceFileShareName');
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }
 }

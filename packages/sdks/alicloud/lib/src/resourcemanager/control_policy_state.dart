@@ -7,21 +7,26 @@ class ControlPolicyState {
   /// The new name of the access control policy.
   /// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
   final pulumi.Input<String>? controlPolicyName;
+
   /// The time when the access control policy was created.
   final pulumi.Input<String>? createTime;
+
   /// The new description of the access control policy.
   /// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
   final pulumi.Input<String>? description;
+
   /// The effective scope of the access control policy. Valid values:
   ///
   /// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
   /// - RAM: The access control policy is in effect only for RAM users and RAM roles.
   final pulumi.Input<String>? effectScope;
+
   /// The new document of the access control policy.
   /// The document can be a maximum of 4,096 characters in length.
   /// For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
   /// For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
   final pulumi.Input<String>? policyDocument;
+
   /// The tags.
   /// You can specify a maximum of 20 tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -55,13 +60,38 @@ class ControlPolicyState {
 
   factory ControlPolicyState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyState(
-      controlPolicyName: map['controlPolicyName'] == null ? null : (map['controlPolicyName']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      effectScope: map['effectScope'] == null ? null : (map['effectScope']! as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      controlPolicyName: (() {
+        final guardedValue = map['controlPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectScope: (() {
+        final guardedValue = map['effectScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

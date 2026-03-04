@@ -4,16 +4,17 @@ enum TelemetryConfigLogFormatMetastoreV1alpha {
   legacy("LEGACY"),
   json("JSON");
 
-  const TelemetryConfigLogFormatMetastoreV1alpha(this.value);
-  final String value;
+  const TelemetryConfigLogFormatMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static TelemetryConfigLogFormatMetastoreV1alpha fromValue(String value) {
     for (final item in TelemetryConfigLogFormatMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TelemetryConfigLogFormatMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown TelemetryConfigLogFormatMetastoreV1alpha value: $value',
+    );
   }
 }
-

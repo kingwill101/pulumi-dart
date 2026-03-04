@@ -6,28 +6,40 @@ import 'table_level_sharing_properties_response.dart';
 class GetAttachedDatabaseConfigurationResult {
   /// The list of databases from the clusterResourceId which are currently attached to the cluster.
   final List<String> attachedDatabaseNames;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource id of the cluster where the databases you would like to attach reside.
   final String clusterResourceId;
+
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   final String databaseName;
+
   /// Overrides the original database name. Relevant only when attaching to a specific database.
   final String? databaseNameOverride;
+
   /// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
   final String? databaseNamePrefix;
+
   /// The default principals modification kind
   final String defaultPrincipalsModificationKind;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Resource location.
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// The provisioned state of the resource.
   final String provisioningState;
+
   /// Table level sharing specifications
   final TableLevelSharingPropertiesResponse? tableLevelSharingProperties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -74,27 +86,48 @@ class GetAttachedDatabaseConfigurationResult {
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
-      'tableLevelSharingProperties': ?tableLevelSharingProperties == null ? null : tableLevelSharingProperties!.toMap(),
+      'tableLevelSharingProperties': ?tableLevelSharingProperties?.toMap(),
       'type': type,
     };
   }
 
-  factory GetAttachedDatabaseConfigurationResult.fromMap(Map<String, dynamic> map) {
+  factory GetAttachedDatabaseConfigurationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAttachedDatabaseConfigurationResult(
-      attachedDatabaseNames: (map['attachedDatabaseNames'] as List).cast<String>(),
+      attachedDatabaseNames: (map['attachedDatabaseNames'] as List)
+          .cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       clusterResourceId: map['clusterResourceId'] as String,
       databaseName: map['databaseName'] as String,
-      databaseNameOverride: map['databaseNameOverride'] == null ? null : map['databaseNameOverride']! as String,
-      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : map['databaseNamePrefix']! as String,
-      defaultPrincipalsModificationKind: map['defaultPrincipalsModificationKind'] as String,
+      databaseNameOverride: (() {
+        final guardedValue = map['databaseNameOverride'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      databaseNamePrefix: (() {
+        final guardedValue = map['databaseNamePrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      defaultPrincipalsModificationKind:
+          map['defaultPrincipalsModificationKind'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>()),
+      tableLevelSharingProperties: (() {
+        final guardedValue = map['tableLevelSharingProperties'];
+        if (guardedValue == null) return null;
+        return TableLevelSharingPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

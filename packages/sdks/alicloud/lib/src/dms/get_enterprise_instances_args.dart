@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseInstancesArgs {
   /// The type of the environment to which the database instance belongs.
   final pulumi.Input<String>? envType;
+
   /// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
   final pulumi.Input<String>? instanceAliasRegex;
+
   /// The source of the database instance.
   final pulumi.Input<String>? instanceSource;
+
   /// The ID of the database instance.
   final pulumi.Input<String>? instanceType;
+
   /// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
   final pulumi.Input<String>? nameRegex;
+
   /// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
   final pulumi.Input<String>? netType;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The keyword used to query database instances.
   final pulumi.Input<String>? searchKey;
+
   /// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   final pulumi.Input<String>? status;
+
   /// The ID of the tenant in Data Management (DMS) Enterprise.
   final pulumi.Input<int>? tid;
 
@@ -69,17 +78,56 @@ class GetEnterpriseInstancesArgs {
 
   factory GetEnterpriseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesArgs(
-      envType: map['envType'] == null ? null : (map['envType']! as String).input(),
-      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : (map['instanceAliasRegex']! as String).input(),
-      instanceSource: map['instanceSource'] == null ? null : (map['instanceSource']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      searchKey: map['searchKey'] == null ? null : (map['searchKey']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
+      envType: (() {
+        final guardedValue = map['envType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceAliasRegex: (() {
+        final guardedValue = map['instanceAliasRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceSource: (() {
+        final guardedValue = map['instanceSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      netType: (() {
+        final guardedValue = map['netType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchKey: (() {
+        final guardedValue = map['searchKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

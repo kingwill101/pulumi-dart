@@ -10,20 +10,22 @@ class KeyData {
 
   /// Creates a new [KeyData].
   /// [keySpec] The specifications for the key.
-  KeyData({
-    required this.keySpec,
-  });
+  KeyData({required this.keySpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keySpec': pulumi.Input.mapInputValue<KeyDataKeySpec, String>(keySpec, (value) => value.value),
+      'keySpec': pulumi.Input.mapInputValue<KeyDataKeySpec, String>(
+        keySpec,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory KeyData.fromMap(Map<String, dynamic> map) {
     return KeyData(
-      keySpec: (KeyDataKeySpec.fromValue(map['keySpec'] as String)).input(),
+      keySpec: pulumi.Input.fromValue(
+        KeyDataKeySpec.fromValue(map['keySpec']! as String),
+      ),
     );
   }
 }
-

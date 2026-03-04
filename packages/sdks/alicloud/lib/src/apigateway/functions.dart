@@ -18,7 +18,7 @@ import 'get_service_result.dart';
 
 /// This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.22.0.
+/// &gt; **NOTE:** Available since v1.22.0.
 ///
 /// ## Example Usage
 ///
@@ -495,7 +495,7 @@ Future<GetAppsResult> getApps(
 
 /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.181.0+.
+/// &gt; **NOTE:** Available in v1.181.0+.
 ///
 /// ## Example Usage
 ///
@@ -720,7 +720,7 @@ Future<GetGroupsResult> getGroups(
 
 /// This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.185.0+.
+/// &gt; **NOTE:** Available in v1.185.0+.
 ///
 /// ## Example Usage
 ///
@@ -875,7 +875,7 @@ Future<GetLogConfigsResult> getLogConfigs(
 
 /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///
@@ -1036,7 +1036,7 @@ Future<GetModelsResult> getModels(
 
 /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///
@@ -1178,7 +1178,7 @@ Future<GetPluginsResult> getPlugins(
 ///
 /// For information about API Gateway and how to use it, see [What is API Gateway](https://www.alibabacloud.com/help/product/29462.htm).
 ///
-/// > **NOTE:** Available in v1.96.0+
+/// &gt; **NOTE:** Available in v1.96.0+
 ///
 /// ## Example Usage
 ///

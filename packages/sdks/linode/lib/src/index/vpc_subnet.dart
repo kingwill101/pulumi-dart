@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_subnet_args.dart';
-import 'vpc_subnet_ipv6.dart';
-import 'vpc_subnet_linode.dart';
 import 'vpc_subnet_state.dart';
 
 /// Manages a Linode VPC subnet.
@@ -297,7 +295,7 @@ import 'vpc_subnet_state.dart';
 ///
 /// ## IPv6
 ///
-/// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+/// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
 ///
 /// The following arguments can be configured for each entry under the `ipv6` field:
 ///
@@ -315,18 +313,24 @@ import 'vpc_subnet_state.dart';
 class VpcSubnet extends pulumi.CustomResource {
   /// The date and time when the VPC was created.
   late final pulumi.Output<String> created;
+
   /// The IPv4 range of this subnet in CIDR format.
   ///
   /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
   late final pulumi.Output<String?> ipv4;
+
   /// The IPv6 ranges of this subnet.
-  late final pulumi.Output<List<VpcSubnetIpv6>?> ipv6s;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipv6s;
+
   /// The label of the VPC. Only contains ASCII letters, digits and dashes.
   late final pulumi.Output<String> label;
+
   /// A list of Linode that added to this subnet.
-  late final pulumi.Output<List<VpcSubnetLinode>> linodes;
+  late final pulumi.Output<List<Map<String, dynamic>>> linodes;
+
   /// The date and time when the VPC was last updated.
   late final pulumi.Output<String> updated;
+
   /// The id of the parent VPC for this VPC subnet.
   late final pulumi.Output<int> vpcId;
 
@@ -339,18 +343,18 @@ class VpcSubnet extends pulumi.CustomResource {
     VpcSubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/vpcSubnet:VpcSubnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.ipv4 = registerOutput<String?>('ipv4');
-    this.ipv6s = registerOutput<List<VpcSubnetIpv6>?>('ipv6s');
-    this.label = registerOutput<String>('label');
-    this.linodes = registerOutput<List<VpcSubnetLinode>>('linodes');
-    this.updated = registerOutput<String>('updated');
-    this.vpcId = registerOutput<int>('vpcId');
+         'linode:index/vpcSubnet:VpcSubnet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    ipv4 = registerOutput<String?>('ipv4');
+    ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');
+    label = registerOutput<String>('label');
+    linodes = registerOutput<List<Map<String, dynamic>>>('linodes');
+    updated = registerOutput<String>('updated');
+    vpcId = registerOutput<int>('vpcId');
   }
 
   /// Gets an existing [VpcSubnet] resource's state with the given [name] and [id].
@@ -371,17 +375,17 @@ class VpcSubnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/vpcSubnet:VpcSubnet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.ipv4 = registerOutput<String?>('ipv4');
-    this.ipv6s = registerOutput<List<VpcSubnetIpv6>?>('ipv6s');
-    this.label = registerOutput<String>('label');
-    this.linodes = registerOutput<List<VpcSubnetLinode>>('linodes');
-    this.updated = registerOutput<String>('updated');
-    this.vpcId = registerOutput<int>('vpcId');
+         'linode:index/vpcSubnet:VpcSubnet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    ipv4 = registerOutput<String?>('ipv4');
+    ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');
+    label = registerOutput<String>('label');
+    linodes = registerOutput<List<Map<String, dynamic>>>('linodes');
+    updated = registerOutput<String>('updated');
+    vpcId = registerOutput<int>('vpcId');
   }
 }

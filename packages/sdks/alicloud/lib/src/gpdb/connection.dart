@@ -4,9 +4,9 @@ import 'connection_state.dart';
 
 /// Provides a connection resource to allocate an Internet connection string for instance.
 ///
-/// > **NOTE:** Available since v1.48.0.
+/// &gt; **NOTE:** Available since v1.48.0.
 ///
-/// > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
+/// &gt; **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
 /// To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 ///
 /// ## Example Usage
@@ -366,14 +366,18 @@ import 'connection_state.dart';
 /// $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
 /// ```
 class Connection extends pulumi.CustomResource {
-  /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
+  /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
   late final pulumi.Output<String> connectionPrefix;
+
   /// Connection instance string.
   late final pulumi.Output<String> connectionString;
+
   /// The Id of instance that can run database.
   late final pulumi.Output<String> instanceId;
+
   /// The ip address of connection string.
   late final pulumi.Output<String> ipAddress;
+
   /// Internet connection port. Valid value: [3200-3999]. Default to 3306.
   late final pulumi.Output<String?> port;
 
@@ -386,16 +390,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.port = registerOutput<String?>('port');
+         'alicloud:gpdb/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    connectionString = registerOutput<String>('connectionString');
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    port = registerOutput<String?>('port');
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -416,15 +420,15 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.port = registerOutput<String?>('port');
+         'alicloud:gpdb/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    connectionString = registerOutput<String>('connectionString');
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    port = registerOutput<String?>('port');
   }
 }

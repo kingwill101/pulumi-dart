@@ -3,16 +3,15 @@ enum TriggerStatus {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const TriggerStatus(this.value);
-  final String value;
+  const TriggerStatus(this.wireValue);
+  final String wireValue;
 
   static TriggerStatus fromValue(String value) {
     for (final item in TriggerStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TriggerStatus value: $value');
   }
 }
-

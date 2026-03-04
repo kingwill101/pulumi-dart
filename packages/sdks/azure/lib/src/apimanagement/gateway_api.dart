@@ -210,7 +210,7 @@ import 'gateway_api_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -225,6 +225,7 @@ import 'gateway_api_state.dart';
 class GatewayApi extends pulumi.CustomResource {
   /// The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   late final pulumi.Output<String> apiId;
+
   /// The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
   late final pulumi.Output<String> gatewayId;
 
@@ -237,13 +238,13 @@ class GatewayApi extends pulumi.CustomResource {
     GatewayApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gatewayApi:GatewayApi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.gatewayId = registerOutput<String>('gatewayId');
+         'azure:apimanagement/gatewayApi:GatewayApi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    gatewayId = registerOutput<String>('gatewayId');
   }
 
   /// Gets an existing [GatewayApi] resource's state with the given [name] and [id].
@@ -264,12 +265,12 @@ class GatewayApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gatewayApi:GatewayApi',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.gatewayId = registerOutput<String>('gatewayId');
+         'azure:apimanagement/gatewayApi:GatewayApi',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    gatewayId = registerOutput<String>('gatewayId');
   }
 }

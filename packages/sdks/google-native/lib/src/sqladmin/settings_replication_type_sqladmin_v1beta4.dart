@@ -4,16 +4,17 @@ enum SettingsReplicationTypeSqladminV1beta4 {
   synchronous("SYNCHRONOUS"),
   asynchronous("ASYNCHRONOUS");
 
-  const SettingsReplicationTypeSqladminV1beta4(this.value);
-  final String value;
+  const SettingsReplicationTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsReplicationTypeSqladminV1beta4 fromValue(String value) {
     for (final item in SettingsReplicationTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsReplicationTypeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsReplicationTypeSqladminV1beta4 value: $value',
+    );
   }
 }
-

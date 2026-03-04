@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteLinkMacSecConfigResponse {
   /// Keyvault Secret Identifier URL containing Mac security CAK key.
   final pulumi.Input<String>? cakSecretIdentifier;
+
   /// Mac security cipher.
   final pulumi.Input<String>? cipher;
+
   /// Keyvault Secret Identifier URL containing Mac security CKN key.
   final pulumi.Input<String>? cknSecretIdentifier;
+
   /// Sci mode enabled/disabled.
   final pulumi.Input<String>? sciState;
 
@@ -34,13 +37,30 @@ class ExpressRouteLinkMacSecConfigResponse {
     };
   }
 
-  factory ExpressRouteLinkMacSecConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteLinkMacSecConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteLinkMacSecConfigResponse(
-      cakSecretIdentifier: map['cakSecretIdentifier'] == null ? null : (map['cakSecretIdentifier']! as String).input(),
-      cipher: map['cipher'] == null ? null : (map['cipher']! as String).input(),
-      cknSecretIdentifier: map['cknSecretIdentifier'] == null ? null : (map['cknSecretIdentifier']! as String).input(),
-      sciState: map['sciState'] == null ? null : (map['sciState']! as String).input(),
+      cakSecretIdentifier: (() {
+        final guardedValue = map['cakSecretIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cipher: (() {
+        final guardedValue = map['cipher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cknSecretIdentifier: (() {
+        final guardedValue = map['cknSecretIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sciState: (() {
+        final guardedValue = map['sciState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

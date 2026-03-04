@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserGroupArgs {
   /// Name of the user group.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// User pool the client belongs to.
   final pulumi.Input<String> userPoolId;
 
@@ -18,11 +20,7 @@ class GetUserGroupArgs {
   /// [name] Name of the user group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] User pool the client belongs to.
-  GetUserGroupArgs({
-    required this.name,
-    this.region,
-    required this.userPoolId,
-  });
+  GetUserGroupArgs({required this.name, this.region, required this.userPoolId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,13 @@ class GetUserGroupArgs {
 
   factory GetUserGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetUserGroupArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

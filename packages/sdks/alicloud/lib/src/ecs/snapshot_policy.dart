@@ -3,13 +3,13 @@ import 'snapshot_policy_args.dart';
 import 'snapshot_policy_copy_encryption_configuration.dart';
 import 'snapshot_policy_state.dart';
 
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.AutoSnapshotPolicy from version 1.117.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.AutoSnapshotPolicy from version 1.117.0.
 ///
 /// Provides an ECS snapshot policy resource.
 ///
 /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 ///
-/// > **NOTE:** Available in 1.42.0+.
+/// &gt; **NOTE:** Available in 1.42.0+.
 ///
 /// ## Example Usage
 ///
@@ -177,17 +177,21 @@ import 'snapshot_policy_state.dart';
 class SnapshotPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> autoSnapshotPolicyName;
   late final pulumi.Output<int> copiedSnapshotsRetentionDays;
-  late final pulumi.Output<SnapshotPolicyCopyEncryptionConfiguration?> copyEncryptionConfiguration;
+  late final pulumi.Output<SnapshotPolicyCopyEncryptionConfiguration?>
+  copyEncryptionConfiguration;
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<bool?> enableCrossRegionCopy;
+
   /// The snapshot policy name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> regionId;
+
   /// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
   /// - A maximum of seven time points can be selected.
   /// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
   late final pulumi.Output<List<String>> repeatWeekdays;
   late final pulumi.Output<String?> resourceGroupId;
+
   /// The snapshot retention time, and the unit of measurement is day. Optional values:
   /// - -1: The automatic snapshots are retained permanently.
   /// - [1, 65536]: The number of days retained.
@@ -197,6 +201,7 @@ class SnapshotPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<List<String>?> targetCopyRegions;
+
   /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
   /// - A maximum of 24 time points can be selected.
   /// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -211,25 +216,30 @@ class SnapshotPolicy extends pulumi.CustomResource {
     SnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoSnapshotPolicyName = registerOutput<String>('autoSnapshotPolicyName');
-    this.copiedSnapshotsRetentionDays = registerOutput<int>('copiedSnapshotsRetentionDays');
-    this.copyEncryptionConfiguration = registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>('copyEncryptionConfiguration');
-    this.createTime = registerOutput<String>('createTime');
-    this.enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');
+         'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoSnapshotPolicyName = registerOutput<String>('autoSnapshotPolicyName');
+    copiedSnapshotsRetentionDays = registerOutput<int>(
+      'copiedSnapshotsRetentionDays',
+    );
+    copyEncryptionConfiguration =
+        registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>(
+          'copyEncryptionConfiguration',
+        );
+    createTime = registerOutput<String>('createTime');
+    enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');
     this.name = registerOutput<String>('name');
-    this.regionId = registerOutput<String>('regionId');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetCopyRegions = registerOutput<List<String>?>('targetCopyRegions');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+    regionId = registerOutput<String>('regionId');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetCopyRegions = registerOutput<List<String>?>('targetCopyRegions');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 
   /// Gets an existing [SnapshotPolicy] resource's state with the given [name] and [id].
@@ -250,24 +260,29 @@ class SnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoSnapshotPolicyName = registerOutput<String>('autoSnapshotPolicyName');
-    this.copiedSnapshotsRetentionDays = registerOutput<int>('copiedSnapshotsRetentionDays');
-    this.copyEncryptionConfiguration = registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>('copyEncryptionConfiguration');
-    this.createTime = registerOutput<String>('createTime');
-    this.enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');
+         'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoSnapshotPolicyName = registerOutput<String>('autoSnapshotPolicyName');
+    copiedSnapshotsRetentionDays = registerOutput<int>(
+      'copiedSnapshotsRetentionDays',
+    );
+    copyEncryptionConfiguration =
+        registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>(
+          'copyEncryptionConfiguration',
+        );
+    createTime = registerOutput<String>('createTime');
+    enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');
     this.name = registerOutput<String>('name');
-    this.regionId = registerOutput<String>('regionId');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetCopyRegions = registerOutput<List<String>?>('targetCopyRegions');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+    regionId = registerOutput<String>('regionId');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetCopyRegions = registerOutput<List<String>?>('targetCopyRegions');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 }

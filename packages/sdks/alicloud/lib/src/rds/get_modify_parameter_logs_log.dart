@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModifyParameterLogsLog {
   /// The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
   final pulumi.Input<String> modifyTime;
+
   /// The new value of the parameter.
   final pulumi.Input<String> newParameterValue;
+
   /// The original value of the parameter.
   final pulumi.Input<String> oldParameterValue;
+
   /// The name of the parameter.
   final pulumi.Input<String> parameterName;
+
   /// The status of the new value specified for the parameter. Valid values:
   /// * **Applied**: The new value has taken effect.
   /// * **Syncing**: The new value is being applied and has not taken effect.
@@ -42,12 +46,15 @@ class GetModifyParameterLogsLog {
 
   factory GetModifyParameterLogsLog.fromMap(Map<String, dynamic> map) {
     return GetModifyParameterLogsLog(
-      modifyTime: (map['modifyTime'] as String).input(),
-      newParameterValue: (map['newParameterValue'] as String).input(),
-      oldParameterValue: (map['oldParameterValue'] as String).input(),
-      parameterName: (map['parameterName'] as String).input(),
-      status: (map['status'] as String).input(),
+      modifyTime: pulumi.Input.fromValue(map['modifyTime'] as String),
+      newParameterValue: pulumi.Input.fromValue(
+        map['newParameterValue'] as String,
+      ),
+      oldParameterValue: pulumi.Input.fromValue(
+        map['oldParameterValue'] as String,
+      ),
+      parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

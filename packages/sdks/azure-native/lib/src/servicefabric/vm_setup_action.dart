@@ -3,16 +3,15 @@ enum VmSetupAction {
   valueEnableContainers("EnableContainers"),
   valueEnableHyperV("EnableHyperV");
 
-  const VmSetupAction(this.value);
-  final String value;
+  const VmSetupAction(this.wireValue);
+  final String wireValue;
 
   static VmSetupAction fromValue(String value) {
     for (final item in VmSetupAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VmSetupAction value: $value');
   }
 }
-

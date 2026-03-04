@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransparentDataEncryptionArgs {
   /// The name of the logical database for which the transparent data encryption is defined.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name of the transparent data encryption configuration.
   final pulumi.Input<String> tdeName;
 
@@ -39,11 +42,12 @@ class GetTransparentDataEncryptionArgs {
 
   factory GetTransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return GetTransparentDataEncryptionArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      tdeName: (map['tdeName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      tdeName: pulumi.Input.fromValue(map['tdeName'] as String),
     );
   }
 }
-

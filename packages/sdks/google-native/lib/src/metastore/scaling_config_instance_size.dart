@@ -7,16 +7,15 @@ enum ScalingConfigInstanceSize {
   large("LARGE"),
   extraLarge("EXTRA_LARGE");
 
-  const ScalingConfigInstanceSize(this.value);
-  final String value;
+  const ScalingConfigInstanceSize(this.wireValue);
+  final String wireValue;
 
   static ScalingConfigInstanceSize fromValue(String value) {
     for (final item in ScalingConfigInstanceSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScalingConfigInstanceSize value: $value');
   }
 }
-

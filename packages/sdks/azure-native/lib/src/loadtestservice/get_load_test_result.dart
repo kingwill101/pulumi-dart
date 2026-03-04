@@ -8,26 +8,37 @@ import 'system_data_response.dart';
 class GetLoadTestResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource data plane URI.
   final String dataPlaneURI;
+
   /// Description of the resource.
   final String? description;
+
   /// CMK Encryption property.
   final EncryptionPropertiesResponse? encryption;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Resource provisioning state.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -64,9 +75,9 @@ class GetLoadTestResult {
       'azureApiVersion': azureApiVersion,
       'dataPlaneURI': dataPlaneURI,
       'description': ?description,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?encryption?.toMap(),
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
@@ -80,17 +91,38 @@ class GetLoadTestResult {
     return GetLoadTestResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataPlaneURI: map['dataPlaneURI'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      encryption: map['encryption'] == null ? null : EncryptionPropertiesResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

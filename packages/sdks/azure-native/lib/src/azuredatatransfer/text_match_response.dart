@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TextMatchResponse {
   /// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
   final pulumi.Input<String> caseSensitivity;
+
   /// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
   final pulumi.Input<String> matchType;
+
   /// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
   final pulumi.Input<String> text;
 
@@ -31,10 +33,9 @@ class TextMatchResponse {
 
   factory TextMatchResponse.fromMap(Map<String, dynamic> map) {
     return TextMatchResponse(
-      caseSensitivity: (map['caseSensitivity'] as String).input(),
-      matchType: (map['matchType'] as String).input(),
-      text: (map['text'] as String).input(),
+      caseSensitivity: pulumi.Input.fromValue(map['caseSensitivity'] as String),
+      matchType: pulumi.Input.fromValue(map['matchType'] as String),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

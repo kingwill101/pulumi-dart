@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessReviewScope {
   /// This is used to indicate the resource id(s) to exclude
   final pulumi.Input<String>? excludeResourceId;
+
   /// This is used to indicate the role definition id(s) to exclude
   final pulumi.Input<String>? excludeRoleDefinitionId;
+
   /// Flag to indicate whether to expand nested memberships or not.
   final pulumi.Input<bool>? expandNestedMemberships;
+
   /// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
   final pulumi.Input<String>? inactiveDuration;
+
   /// Flag to indicate whether to expand nested memberships or not.
   final pulumi.Input<bool>? includeAccessBelowResource;
+
   /// Flag to indicate whether to expand nested memberships or not.
   final pulumi.Input<bool>? includeInheritedAccess;
 
@@ -46,13 +51,36 @@ class AccessReviewScope {
 
   factory AccessReviewScope.fromMap(Map<String, dynamic> map) {
     return AccessReviewScope(
-      excludeResourceId: map['excludeResourceId'] == null ? null : (map['excludeResourceId']! as String).input(),
-      excludeRoleDefinitionId: map['excludeRoleDefinitionId'] == null ? null : (map['excludeRoleDefinitionId']! as String).input(),
-      expandNestedMemberships: map['expandNestedMemberships'] == null ? null : (map['expandNestedMemberships']! as bool).input(),
-      inactiveDuration: map['inactiveDuration'] == null ? null : (map['inactiveDuration']! as String).input(),
-      includeAccessBelowResource: map['includeAccessBelowResource'] == null ? null : (map['includeAccessBelowResource']! as bool).input(),
-      includeInheritedAccess: map['includeInheritedAccess'] == null ? null : (map['includeInheritedAccess']! as bool).input(),
+      excludeResourceId: (() {
+        final guardedValue = map['excludeResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      excludeRoleDefinitionId: (() {
+        final guardedValue = map['excludeRoleDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expandNestedMemberships: (() {
+        final guardedValue = map['expandNestedMemberships'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      inactiveDuration: (() {
+        final guardedValue = map['inactiveDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeAccessBelowResource: (() {
+        final guardedValue = map['includeAccessBelowResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeInheritedAccess: (() {
+        final guardedValue = map['includeInheritedAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

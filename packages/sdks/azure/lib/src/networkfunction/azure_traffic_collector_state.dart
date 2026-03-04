@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureTrafficCollectorState {
   /// The list of Resource IDs of collector policies.
   final pulumi.Input<List<String>>? collectorPolicyIds;
+
   /// Specifies the Azure Region where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name which should be used for this Network Function Azure Traffic Collector. Changing this forces a new Network Function Azure Traffic Collector to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Resource ID of virtual hub.
   final pulumi.Input<List<String>>? virtualHubIds;
 
@@ -46,13 +51,38 @@ class AzureTrafficCollectorState {
 
   factory AzureTrafficCollectorState.fromMap(Map<String, dynamic> map) {
     return AzureTrafficCollectorState(
-      collectorPolicyIds: map['collectorPolicyIds'] == null ? null : ((map['collectorPolicyIds']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      virtualHubIds: map['virtualHubIds'] == null ? null : ((map['virtualHubIds']! as List).cast<String>()).input(),
+      collectorPolicyIds: (() {
+        final guardedValue = map['collectorPolicyIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualHubIds: (() {
+        final guardedValue = map['virtualHubIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

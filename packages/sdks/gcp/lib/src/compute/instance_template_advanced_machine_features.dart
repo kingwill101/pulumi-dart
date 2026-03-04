@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTemplateAdvancedMachineFeatures {
   /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
   final pulumi.Input<bool>? enableNestedVirtualization;
+
   /// Whether to enable UEFI networking for instance creation.
   final pulumi.Input<bool>? enableUefiNetworking;
+
   /// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
   final pulumi.Input<String>? performanceMonitoringUnit;
+
   /// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
   final pulumi.Input<int>? threadsPerCore;
+
   /// Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
   final pulumi.Input<String>? turboMode;
+
   /// The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
   final pulumi.Input<int>? visibleCoreCount;
 
@@ -43,15 +48,40 @@ class InstanceTemplateAdvancedMachineFeatures {
     };
   }
 
-  factory InstanceTemplateAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
+  factory InstanceTemplateAdvancedMachineFeatures.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceTemplateAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking']! as bool).input(),
-      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit']! as String).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
-      turboMode: map['turboMode'] == null ? null : (map['turboMode']! as String).input(),
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount']! as int).input(),
+      enableNestedVirtualization: (() {
+        final guardedValue = map['enableNestedVirtualization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableUefiNetworking: (() {
+        final guardedValue = map['enableUefiNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      performanceMonitoringUnit: (() {
+        final guardedValue = map['performanceMonitoringUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      threadsPerCore: (() {
+        final guardedValue = map['threadsPerCore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      turboMode: (() {
+        final guardedValue = map['turboMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibleCoreCount: (() {
+        final guardedValue = map['visibleCoreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -8,16 +8,15 @@ enum MetricThresholdComparison {
   comparisonEq("COMPARISON_EQ"),
   comparisonNe("COMPARISON_NE");
 
-  const MetricThresholdComparison(this.value);
-  final String value;
+  const MetricThresholdComparison(this.wireValue);
+  final String wireValue;
 
   static MetricThresholdComparison fromValue(String value) {
     for (final item in MetricThresholdComparison.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricThresholdComparison value: $value');
   }
 }
-

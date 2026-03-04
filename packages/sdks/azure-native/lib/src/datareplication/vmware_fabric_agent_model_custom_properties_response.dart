@@ -7,9 +7,11 @@ import 'identity_model_response.dart';
 class VMwareFabricAgentModelCustomPropertiesResponse {
   /// Gets or sets the BIOS Id of the fabric agent machine.
   final pulumi.Input<String> biosId;
+
   /// Discriminator property for FabricAgentModelCustomProperties.
   /// Expected value is 'VMware'.
   final pulumi.Input<String> instanceType;
+
   /// Identity model.
   final pulumi.Input<IdentityModelResponse> marsAuthenticationIdentity;
 
@@ -27,16 +29,25 @@ class VMwareFabricAgentModelCustomPropertiesResponse {
     return <String, dynamic>{
       'biosId': biosId,
       'instanceType': instanceType,
-      'marsAuthenticationIdentity': pulumi.Input.mapInputValue<IdentityModelResponse, Map<String, dynamic>>(marsAuthenticationIdentity, (value) => value.toMap()),
+      'marsAuthenticationIdentity':
+          pulumi.Input.mapInputValue<
+            IdentityModelResponse,
+            Map<String, dynamic>
+          >(marsAuthenticationIdentity, (value) => value.toMap()),
     };
   }
 
-  factory VMwareFabricAgentModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VMwareFabricAgentModelCustomPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareFabricAgentModelCustomPropertiesResponse(
-      biosId: (map['biosId'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      marsAuthenticationIdentity: (IdentityModelResponse.fromMap((map['marsAuthenticationIdentity'] as Map).cast<String, dynamic>())).input(),
+      biosId: pulumi.Input.fromValue(map['biosId'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      marsAuthenticationIdentity: pulumi.Input.fromValue(
+        IdentityModelResponse.fromMap(
+          (map['marsAuthenticationIdentity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

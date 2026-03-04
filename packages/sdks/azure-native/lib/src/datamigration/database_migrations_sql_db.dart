@@ -541,8 +541,10 @@ class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> name;
+
   /// Database Migration Resource properties for SQL database.
   late final pulumi.Output<DatabaseMigrationPropertiesSqlDbResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<String> type;
@@ -556,15 +558,17 @@ class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     DatabaseMigrationsSqlDbArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datamigration:DatabaseMigrationsSqlDb',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:datamigration:DatabaseMigrationsSqlDb',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DatabaseMigrationPropertiesSqlDbResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DatabaseMigrationPropertiesSqlDbResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

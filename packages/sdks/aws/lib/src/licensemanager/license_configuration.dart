@@ -4,7 +4,7 @@ import 'license_configuration_state.dart';
 
 /// Provides a License Manager license configuration resource.
 ///
-/// > **Note:** Removing the `license_count` attribute is not supported by the License Manager API.
+/// &gt; **Note:** Removing the `license_count` attribute is not supported by the License Manager API.
 ///
 /// ## Example Usage
 ///
@@ -170,24 +170,34 @@ import 'license_configuration_state.dart';
 class LicenseConfiguration extends pulumi.CustomResource {
   /// The license configuration ARN.
   late final pulumi.Output<String> arn;
+
   /// Description of the license configuration.
   late final pulumi.Output<String?> description;
+
   /// Number of licenses managed by the license configuration.
   late final pulumi.Output<int?> licenseCount;
+
   /// Sets the number of available licenses as a hard limit.
   late final pulumi.Output<bool?> licenseCountHardLimit;
+
   /// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
   late final pulumi.Output<String> licenseCountingType;
+
   /// Array of configured License Manager rules.
   late final pulumi.Output<List<String>?> licenseRules;
+
   /// Name of the license configuration.
   late final pulumi.Output<String> name;
+
   /// Account ID of the owner of the license configuration.
   late final pulumi.Output<String> ownerAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -200,22 +210,22 @@ class LicenseConfiguration extends pulumi.CustomResource {
     LicenseConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.licenseCount = registerOutput<int?>('licenseCount');
-    this.licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
-    this.licenseCountingType = registerOutput<String>('licenseCountingType');
-    this.licenseRules = registerOutput<List<String>?>('licenseRules');
+         'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    licenseCount = registerOutput<int?>('licenseCount');
+    licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
+    licenseCountingType = registerOutput<String>('licenseCountingType');
+    licenseRules = registerOutput<List<String>?>('licenseRules');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [LicenseConfiguration] resource's state with the given [name] and [id].
@@ -236,21 +246,21 @@ class LicenseConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.licenseCount = registerOutput<int?>('licenseCount');
-    this.licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
-    this.licenseCountingType = registerOutput<String>('licenseCountingType');
-    this.licenseRules = registerOutput<List<String>?>('licenseRules');
+         'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    licenseCount = registerOutput<int?>('licenseCount');
+    licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
+    licenseCountingType = registerOutput<String>('licenseCountingType');
+    licenseRules = registerOutput<List<String>?>('licenseRules');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

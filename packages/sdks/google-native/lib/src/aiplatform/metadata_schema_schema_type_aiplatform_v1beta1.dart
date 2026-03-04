@@ -5,16 +5,17 @@ enum MetadataSchemaSchemaTypeAiplatformV1beta1 {
   executionType("EXECUTION_TYPE"),
   contextType("CONTEXT_TYPE");
 
-  const MetadataSchemaSchemaTypeAiplatformV1beta1(this.value);
-  final String value;
+  const MetadataSchemaSchemaTypeAiplatformV1beta1(this.wireValue);
+  final String wireValue;
 
   static MetadataSchemaSchemaTypeAiplatformV1beta1 fromValue(String value) {
     for (final item in MetadataSchemaSchemaTypeAiplatformV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetadataSchemaSchemaTypeAiplatformV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown MetadataSchemaSchemaTypeAiplatformV1beta1 value: $value',
+    );
   }
 }
-

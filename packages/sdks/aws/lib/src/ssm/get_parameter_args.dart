@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParameterArgs {
   /// Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether to return decrypted `SecureString` value. Defaults to `true`.
   final pulumi.Input<bool>? withDecryption;
 
@@ -18,11 +20,7 @@ class GetParameterArgs {
   /// [name] Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [withDecryption] Whether to return decrypted `SecureString` value. Defaults to `true`.
-  GetParameterArgs({
-    required this.name,
-    this.region,
-    this.withDecryption,
-  });
+  GetParameterArgs({required this.name, this.region, this.withDecryption});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetParameterArgs {
 
   factory GetParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      withDecryption: map['withDecryption'] == null ? null : ((map['withDecryption'] as bool).input()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withDecryption: (() {
+        final guardedValue = map['withDecryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

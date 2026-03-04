@@ -9,16 +9,17 @@ enum ServiceLevelObjectiveCalendarPeriod {
   half("HALF"),
   year("YEAR");
 
-  const ServiceLevelObjectiveCalendarPeriod(this.value);
-  final String value;
+  const ServiceLevelObjectiveCalendarPeriod(this.wireValue);
+  final String wireValue;
 
   static ServiceLevelObjectiveCalendarPeriod fromValue(String value) {
     for (final item in ServiceLevelObjectiveCalendarPeriod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceLevelObjectiveCalendarPeriod value: $value');
+    throw ArgumentError(
+      'Unknown ServiceLevelObjectiveCalendarPeriod value: $value',
+    );
   }
 }
-

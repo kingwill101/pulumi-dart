@@ -55,17 +55,18 @@ class GetRoutersRouterBgpPeer {
 
   factory GetRoutersRouterBgpPeer.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgpPeer(
-      advertiseMode: (map['advertiseMode'] as String).input(),
-      advertisedRoutePriority: (map['advertisedRoutePriority'] as int).input(),
-      enable: (map['enable'] as String).input(),
-      enableIpv6: (map['enableIpv6'] as bool).input(),
-      interfaceName: (map['interfaceName'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      managementType: (map['managementType'] as String).input(),
-      name: (map['name'] as String).input(),
-      peerAsn: (map['peerAsn'] as int).input(),
-      peerIpAddress: (map['peerIpAddress'] as String).input(),
+      advertiseMode: pulumi.Input.fromValue(map['advertiseMode'] as String),
+      advertisedRoutePriority: pulumi.Input.fromValue(
+        map['advertisedRoutePriority'] as int,
+      ),
+      enable: pulumi.Input.fromValue(map['enable'] as String),
+      enableIpv6: pulumi.Input.fromValue(map['enableIpv6'] as bool),
+      interfaceName: pulumi.Input.fromValue(map['interfaceName'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      managementType: pulumi.Input.fromValue(map['managementType'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
+      peerIpAddress: pulumi.Input.fromValue(map['peerIpAddress'] as String),
     );
   }
 }
-

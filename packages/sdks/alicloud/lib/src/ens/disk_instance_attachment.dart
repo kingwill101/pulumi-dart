@@ -6,7 +6,7 @@ import 'disk_instance_attachment_state.dart';
 ///
 /// For information about ENS Disk Instance Attachment and how to use it, see [What is Disk Instance Attachment](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-attachdisk).
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -302,8 +302,10 @@ import 'disk_instance_attachment_state.dart';
 class DiskInstanceAttachment extends pulumi.CustomResource {
   /// Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
   late final pulumi.Output<String?> deleteWithInstance;
+
   /// The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
   late final pulumi.Output<String> diskId;
+
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
 
@@ -316,14 +318,14 @@ class DiskInstanceAttachment extends pulumi.CustomResource {
     DiskInstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteWithInstance = registerOutput<String?>('deleteWithInstance');
-    this.diskId = registerOutput<String>('diskId');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteWithInstance = registerOutput<String?>('deleteWithInstance');
+    diskId = registerOutput<String>('diskId');
+    instanceId = registerOutput<String>('instanceId');
   }
 
   /// Gets an existing [DiskInstanceAttachment] resource's state with the given [name] and [id].
@@ -344,13 +346,13 @@ class DiskInstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteWithInstance = registerOutput<String?>('deleteWithInstance');
-    this.diskId = registerOutput<String>('diskId');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteWithInstance = registerOutput<String?>('deleteWithInstance');
+    diskId = registerOutput<String>('diskId');
+    instanceId = registerOutput<String>('instanceId');
   }
 }

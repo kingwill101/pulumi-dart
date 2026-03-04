@@ -6,6 +6,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String> project;
+
   /// The project ID, should be same as the key of this project config in the parent map.
   final pulumi.Input<String>? projectId;
 
@@ -18,17 +19,19 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'projectId': ?projectId,
-    };
+    return <String, dynamic>{'project': project, 'projectId': ?projectId};
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap(
-      project: (map['project'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

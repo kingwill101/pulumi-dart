@@ -9,20 +9,15 @@ class ReleaseChannelResponse {
 
   /// Creates a new [ReleaseChannelResponse].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannelResponse({
-    required this.channel,
-  });
+  ReleaseChannelResponse({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
   factory ReleaseChannelResponse.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelResponse(
-      channel: (map['channel'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
-

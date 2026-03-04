@@ -3,16 +3,15 @@ enum VnetLocalRouteOverrideCriteria {
   valueContains("Contains"),
   valueEqual("Equal");
 
-  const VnetLocalRouteOverrideCriteria(this.value);
-  final String value;
+  const VnetLocalRouteOverrideCriteria(this.wireValue);
+  final String wireValue;
 
   static VnetLocalRouteOverrideCriteria fromValue(String value) {
     for (final item in VnetLocalRouteOverrideCriteria.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VnetLocalRouteOverrideCriteria value: $value');
   }
 }
-

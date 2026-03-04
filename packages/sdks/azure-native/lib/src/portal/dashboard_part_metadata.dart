@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardPartMetadata {
   /// Inputs to dashboard part.
   final pulumi.Input<List<dynamic>>? inputs;
+
   /// Settings of dashboard part.
   final pulumi.Input<Map<String, dynamic>>? settings;
+
   /// The type of dashboard part.
   final pulumi.Input<String> type;
 
@@ -15,11 +17,7 @@ class DashboardPartMetadata {
   /// [inputs] Inputs to dashboard part.
   /// [settings] Settings of dashboard part.
   /// [type] The type of dashboard part.
-  DashboardPartMetadata({
-    this.inputs,
-    this.settings,
-    required this.type,
-  });
+  DashboardPartMetadata({this.inputs, this.settings, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,19 @@ class DashboardPartMetadata {
 
   factory DashboardPartMetadata.fromMap(Map<String, dynamic> map) {
     return DashboardPartMetadata(
-      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<dynamic>()).input(),
-      settings: map['settings'] == null ? null : ((map['settings']! as Map).cast<String, dynamic>()).input(),
-      type: (map['type'] as String).input(),
+      inputs: (() {
+        final guardedValue = map['inputs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum EngineIndustryVertical {
   generic("GENERIC"),
   media("MEDIA");
 
-  const EngineIndustryVertical(this.value);
-  final String value;
+  const EngineIndustryVertical(this.wireValue);
+  final String wireValue;
 
   static EngineIndustryVertical fromValue(String value) {
     for (final item in EngineIndustryVertical.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EngineIndustryVertical value: $value');
   }
 }
-

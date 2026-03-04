@@ -7,20 +7,28 @@ import 'spring_cloud_api_portal_sso.dart';
 class SpringCloudApiPortalState {
   /// Specifies whether the API try-out feature is enabled. When enabled, users can try out the API by sending requests and viewing responses in API portal.
   final pulumi.Input<bool>? apiTryOutEnabled;
+
   /// Specifies a list of Spring Cloud Gateway.
   final pulumi.Input<List<String>>? gatewayIds;
+
   /// is only https is allowed?
   final pulumi.Input<bool>? httpsOnlyEnabled;
+
   /// Specifies the required instance count of the Spring Cloud API Portal. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   final pulumi.Input<int>? instanceCount;
+
   /// The name which should be used for this Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal to be created. The only possible value is `default`.
   final pulumi.Input<String>? name;
+
   /// Is the public network access enabled?
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud API Portal to be created.
   final pulumi.Input<String>? springCloudServiceId;
+
   /// A `sso` block as defined below.
   final pulumi.Input<SpringCloudApiPortalSso>? sso;
+
   /// TODO.
   final pulumi.Input<String>? url;
 
@@ -55,23 +63,66 @@ class SpringCloudApiPortalState {
       'name': ?name,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'springCloudServiceId': ?springCloudServiceId,
-      'sso': ?pulumi.Input.mapOptionalInputValue<SpringCloudApiPortalSso, Map<String, dynamic>>(sso, (value) => value.toMap()),
+      'sso':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringCloudApiPortalSso,
+            Map<String, dynamic>
+          >(sso, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory SpringCloudApiPortalState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalState(
-      apiTryOutEnabled: map['apiTryOutEnabled'] == null ? null : (map['apiTryOutEnabled']! as bool).input(),
-      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds']! as List).cast<String>()).input(),
-      httpsOnlyEnabled: map['httpsOnlyEnabled'] == null ? null : (map['httpsOnlyEnabled']! as bool).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
-      sso: map['sso'] == null ? null : (SpringCloudApiPortalSso.fromMap((map['sso']! as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      apiTryOutEnabled: (() {
+        final guardedValue = map['apiTryOutEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gatewayIds: (() {
+        final guardedValue = map['gatewayIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      httpsOnlyEnabled: (() {
+        final guardedValue = map['httpsOnlyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      springCloudServiceId: (() {
+        final guardedValue = map['springCloudServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sso: (() {
+        final guardedValue = map['sso'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringCloudApiPortalSso.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ecs_launch_template_args.dart';
-import 'ecs_launch_template_data_disk.dart';
 import 'ecs_launch_template_image_options.dart';
 import 'ecs_launch_template_network_interfaces.dart';
 import 'ecs_launch_template_state.dart';
@@ -10,7 +9,7 @@ import 'ecs_launch_template_system_disk.dart';
 ///
 /// For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -681,124 +680,179 @@ import 'ecs_launch_template_system_disk.dart';
 class EcsLaunchTemplate extends pulumi.CustomResource {
   /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
   late final pulumi.Output<String?> autoReleaseTime;
+
   /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
   late final pulumi.Output<bool> autoRenew;
+
   /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
   late final pulumi.Output<int> autoRenewPeriod;
+
   /// The list of data disks created with instance. See `data_disks` below.
-  late final pulumi.Output<List<EcsLaunchTemplateDataDisk>?> dataDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+
   /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
   late final pulumi.Output<int> defaultVersionNumber;
+
   /// The Deployment Set Id.
   late final pulumi.Output<String?> deploymentSetId;
+
   /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
   late final pulumi.Output<String?> description;
+
   /// Whether to enable the instance operating system configuration.
   late final pulumi.Output<bool?> enableVmOsConfig;
+
   /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
   late final pulumi.Output<String?> hostName;
+
   /// Whether to enable access to instance metadata. Valid values:
   /// - enabled: Enabled.
   /// - disabled: Disabled.
   /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
   late final pulumi.Output<String> httpEndpoint;
+
   /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
   late final pulumi.Output<int> httpPutResponseHopLimit;
+
   /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
   /// - optional: Not mandatory.
   /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
   /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
   late final pulumi.Output<String> httpTokens;
+
   /// The Image ID.
   late final pulumi.Output<String?> imageId;
+
   /// The options of images. See `image_options` below.
   late final pulumi.Output<EcsLaunchTemplateImageOptions> imageOptions;
+
   /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
   late final pulumi.Output<String?> imageOwnerAlias;
+
   /// Billing methods. Valid values: `PostPaid`, `PrePaid`.
   late final pulumi.Output<String?> instanceChargeType;
+
   /// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
   late final pulumi.Output<String?> instanceName;
+
   /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
   late final pulumi.Output<String?> instanceType;
+
   /// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
   late final pulumi.Output<String?> internetChargeType;
+
   /// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
   late final pulumi.Output<int> internetMaxBandwidthIn;
+
   /// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
   late final pulumi.Output<int?> internetMaxBandwidthOut;
+
   /// Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
   late final pulumi.Output<String?> ioOptimized;
+
   /// The name of the key pair.
   /// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
   /// - The password logon method for Linux instances is set to forbidden upon initialization.
   late final pulumi.Output<String?> keyPairName;
+
   /// The latest version number of the launch template.
   late final pulumi.Output<int> latestVersionNumber;
+
   /// The name of Launch Template.
   late final pulumi.Output<String> launchTemplateName;
+
   /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
   late final pulumi.Output<String> name;
+
   /// The list of network interfaces created with instance. See `network_interfaces` below.
-  late final pulumi.Output<EcsLaunchTemplateNetworkInterfaces?> networkInterfaces;
+  late final pulumi.Output<EcsLaunchTemplateNetworkInterfaces?>
+  networkInterfaces;
+
   /// Network type of the instance. Valid values: `classic`, `vpc`.
   late final pulumi.Output<String?> networkType;
+
   /// Whether to use the password preset by the mirror.
   late final pulumi.Output<bool?> passwordInherit;
+
   /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
   /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
   /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
   late final pulumi.Output<int> period;
+
   /// The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
   late final pulumi.Output<String> periodUnit;
+
   /// The private IP address of the instance.
   late final pulumi.Output<String?> privateIpAddress;
+
   /// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
   late final pulumi.Output<String?> ramRoleName;
+
   /// The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
   late final pulumi.Output<String?> securityEnhancementStrategy;
+
   /// The security group ID.
   late final pulumi.Output<String?> securityGroupId;
+
   /// The ID of security group N to which to assign the instance.
   late final pulumi.Output<List<String>?> securityGroupIds;
+
   /// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
   late final pulumi.Output<String?> spotDuration;
+
   /// Sets the maximum hourly instance price. Supports up to three decimal places.
   late final pulumi.Output<double?> spotPriceLimit;
+
   /// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
   late final pulumi.Output<String?> spotStrategy;
+
   /// The System Disk. See `system_disk` below.
   late final pulumi.Output<EcsLaunchTemplateSystemDisk> systemDisk;
+
   /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
   late final pulumi.Output<String> systemDiskCategory;
+
   /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
   late final pulumi.Output<String> systemDiskDescription;
+
   /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
   late final pulumi.Output<String> systemDiskName;
+
   /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
   late final pulumi.Output<int> systemDiskSize;
+
   /// A mapping of tags to assign to instance, block storage, and elastic network.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The template resource group id.
   late final pulumi.Output<String?> templateResourceGroupId;
+
   /// A mapping of tags to assign to the launch template.
   late final pulumi.Output<Map<String, String>?> templateTags;
+
   /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
   late final pulumi.Output<bool?> updateDefaultVersionNumber;
+
   /// The User Data.
   late final pulumi.Output<String> userData;
+
   /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
   late final pulumi.Output<String> userdata;
+
   /// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> versionDescription;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
   late final pulumi.Output<String?> vswitchId;
+
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -811,66 +865,76 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     EcsLaunchTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoReleaseTime = registerOutput<String?>('autoReleaseTime');
-    this.autoRenew = registerOutput<bool>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
-    this.dataDisks = registerOutput<List<EcsLaunchTemplateDataDisk>?>('dataDisks');
-    this.defaultVersionNumber = registerOutput<int>('defaultVersionNumber');
-    this.deploymentSetId = registerOutput<String?>('deploymentSetId');
-    this.description = registerOutput<String?>('description');
-    this.enableVmOsConfig = registerOutput<bool?>('enableVmOsConfig');
-    this.hostName = registerOutput<String?>('hostName');
-    this.httpEndpoint = registerOutput<String>('httpEndpoint');
-    this.httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
-    this.httpTokens = registerOutput<String>('httpTokens');
-    this.imageId = registerOutput<String?>('imageId');
-    this.imageOptions = registerOutput<EcsLaunchTemplateImageOptions>('imageOptions');
-    this.imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
-    this.instanceChargeType = registerOutput<String?>('instanceChargeType');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.instanceType = registerOutput<String?>('instanceType');
-    this.internetChargeType = registerOutput<String?>('internetChargeType');
-    this.internetMaxBandwidthIn = registerOutput<int>('internetMaxBandwidthIn');
-    this.internetMaxBandwidthOut = registerOutput<int?>('internetMaxBandwidthOut');
-    this.ioOptimized = registerOutput<String?>('ioOptimized');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.latestVersionNumber = registerOutput<int>('latestVersionNumber');
-    this.launchTemplateName = registerOutput<String>('launchTemplateName');
+         'alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoReleaseTime = registerOutput<String?>('autoReleaseTime');
+    autoRenew = registerOutput<bool>('autoRenew');
+    autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    defaultVersionNumber = registerOutput<int>('defaultVersionNumber');
+    deploymentSetId = registerOutput<String?>('deploymentSetId');
+    description = registerOutput<String?>('description');
+    enableVmOsConfig = registerOutput<bool?>('enableVmOsConfig');
+    hostName = registerOutput<String?>('hostName');
+    httpEndpoint = registerOutput<String>('httpEndpoint');
+    httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
+    httpTokens = registerOutput<String>('httpTokens');
+    imageId = registerOutput<String?>('imageId');
+    imageOptions = registerOutput<EcsLaunchTemplateImageOptions>(
+      'imageOptions',
+    );
+    imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
+    instanceChargeType = registerOutput<String?>('instanceChargeType');
+    instanceName = registerOutput<String?>('instanceName');
+    instanceType = registerOutput<String?>('instanceType');
+    internetChargeType = registerOutput<String?>('internetChargeType');
+    internetMaxBandwidthIn = registerOutput<int>('internetMaxBandwidthIn');
+    internetMaxBandwidthOut = registerOutput<int?>('internetMaxBandwidthOut');
+    ioOptimized = registerOutput<String?>('ioOptimized');
+    keyPairName = registerOutput<String?>('keyPairName');
+    latestVersionNumber = registerOutput<int>('latestVersionNumber');
+    launchTemplateName = registerOutput<String>('launchTemplateName');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>('networkInterfaces');
-    this.networkType = registerOutput<String?>('networkType');
-    this.passwordInherit = registerOutput<bool?>('passwordInherit');
-    this.period = registerOutput<int>('period');
-    this.periodUnit = registerOutput<String>('periodUnit');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.spotDuration = registerOutput<String?>('spotDuration');
-    this.spotPriceLimit = registerOutput<double?>('spotPriceLimit');
-    this.spotStrategy = registerOutput<String?>('spotStrategy');
-    this.systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
-    this.systemDiskCategory = registerOutput<String>('systemDiskCategory');
-    this.systemDiskDescription = registerOutput<String>('systemDiskDescription');
-    this.systemDiskName = registerOutput<String>('systemDiskName');
-    this.systemDiskSize = registerOutput<int>('systemDiskSize');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateResourceGroupId = registerOutput<String?>('templateResourceGroupId');
-    this.templateTags = registerOutput<Map<String, String>?>('templateTags');
-    this.updateDefaultVersionNumber = registerOutput<bool?>('updateDefaultVersionNumber');
-    this.userData = registerOutput<String>('userData');
-    this.userdata = registerOutput<String>('userdata');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>(
+      'networkInterfaces',
+    );
+    networkType = registerOutput<String?>('networkType');
+    passwordInherit = registerOutput<bool?>('passwordInherit');
+    period = registerOutput<int>('period');
+    periodUnit = registerOutput<String>('periodUnit');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityEnhancementStrategy = registerOutput<String?>(
+      'securityEnhancementStrategy',
+    );
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    spotDuration = registerOutput<String?>('spotDuration');
+    spotPriceLimit = registerOutput<double?>('spotPriceLimit');
+    spotStrategy = registerOutput<String?>('spotStrategy');
+    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
+    systemDiskCategory = registerOutput<String>('systemDiskCategory');
+    systemDiskDescription = registerOutput<String>('systemDiskDescription');
+    systemDiskName = registerOutput<String>('systemDiskName');
+    systemDiskSize = registerOutput<int>('systemDiskSize');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateResourceGroupId = registerOutput<String?>(
+      'templateResourceGroupId',
+    );
+    templateTags = registerOutput<Map<String, String>?>('templateTags');
+    updateDefaultVersionNumber = registerOutput<bool?>(
+      'updateDefaultVersionNumber',
+    );
+    userData = registerOutput<String>('userData');
+    userdata = registerOutput<String>('userdata');
+    versionDescription = registerOutput<String?>('versionDescription');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [EcsLaunchTemplate] resource's state with the given [name] and [id].
@@ -891,65 +955,75 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoReleaseTime = registerOutput<String?>('autoReleaseTime');
-    this.autoRenew = registerOutput<bool>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
-    this.dataDisks = registerOutput<List<EcsLaunchTemplateDataDisk>?>('dataDisks');
-    this.defaultVersionNumber = registerOutput<int>('defaultVersionNumber');
-    this.deploymentSetId = registerOutput<String?>('deploymentSetId');
-    this.description = registerOutput<String?>('description');
-    this.enableVmOsConfig = registerOutput<bool?>('enableVmOsConfig');
-    this.hostName = registerOutput<String?>('hostName');
-    this.httpEndpoint = registerOutput<String>('httpEndpoint');
-    this.httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
-    this.httpTokens = registerOutput<String>('httpTokens');
-    this.imageId = registerOutput<String?>('imageId');
-    this.imageOptions = registerOutput<EcsLaunchTemplateImageOptions>('imageOptions');
-    this.imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
-    this.instanceChargeType = registerOutput<String?>('instanceChargeType');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.instanceType = registerOutput<String?>('instanceType');
-    this.internetChargeType = registerOutput<String?>('internetChargeType');
-    this.internetMaxBandwidthIn = registerOutput<int>('internetMaxBandwidthIn');
-    this.internetMaxBandwidthOut = registerOutput<int?>('internetMaxBandwidthOut');
-    this.ioOptimized = registerOutput<String?>('ioOptimized');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.latestVersionNumber = registerOutput<int>('latestVersionNumber');
-    this.launchTemplateName = registerOutput<String>('launchTemplateName');
+         'alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoReleaseTime = registerOutput<String?>('autoReleaseTime');
+    autoRenew = registerOutput<bool>('autoRenew');
+    autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    defaultVersionNumber = registerOutput<int>('defaultVersionNumber');
+    deploymentSetId = registerOutput<String?>('deploymentSetId');
+    description = registerOutput<String?>('description');
+    enableVmOsConfig = registerOutput<bool?>('enableVmOsConfig');
+    hostName = registerOutput<String?>('hostName');
+    httpEndpoint = registerOutput<String>('httpEndpoint');
+    httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
+    httpTokens = registerOutput<String>('httpTokens');
+    imageId = registerOutput<String?>('imageId');
+    imageOptions = registerOutput<EcsLaunchTemplateImageOptions>(
+      'imageOptions',
+    );
+    imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
+    instanceChargeType = registerOutput<String?>('instanceChargeType');
+    instanceName = registerOutput<String?>('instanceName');
+    instanceType = registerOutput<String?>('instanceType');
+    internetChargeType = registerOutput<String?>('internetChargeType');
+    internetMaxBandwidthIn = registerOutput<int>('internetMaxBandwidthIn');
+    internetMaxBandwidthOut = registerOutput<int?>('internetMaxBandwidthOut');
+    ioOptimized = registerOutput<String?>('ioOptimized');
+    keyPairName = registerOutput<String?>('keyPairName');
+    latestVersionNumber = registerOutput<int>('latestVersionNumber');
+    launchTemplateName = registerOutput<String>('launchTemplateName');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>('networkInterfaces');
-    this.networkType = registerOutput<String?>('networkType');
-    this.passwordInherit = registerOutput<bool?>('passwordInherit');
-    this.period = registerOutput<int>('period');
-    this.periodUnit = registerOutput<String>('periodUnit');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.spotDuration = registerOutput<String?>('spotDuration');
-    this.spotPriceLimit = registerOutput<double?>('spotPriceLimit');
-    this.spotStrategy = registerOutput<String?>('spotStrategy');
-    this.systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
-    this.systemDiskCategory = registerOutput<String>('systemDiskCategory');
-    this.systemDiskDescription = registerOutput<String>('systemDiskDescription');
-    this.systemDiskName = registerOutput<String>('systemDiskName');
-    this.systemDiskSize = registerOutput<int>('systemDiskSize');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateResourceGroupId = registerOutput<String?>('templateResourceGroupId');
-    this.templateTags = registerOutput<Map<String, String>?>('templateTags');
-    this.updateDefaultVersionNumber = registerOutput<bool?>('updateDefaultVersionNumber');
-    this.userData = registerOutput<String>('userData');
-    this.userdata = registerOutput<String>('userdata');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>(
+      'networkInterfaces',
+    );
+    networkType = registerOutput<String?>('networkType');
+    passwordInherit = registerOutput<bool?>('passwordInherit');
+    period = registerOutput<int>('period');
+    periodUnit = registerOutput<String>('periodUnit');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityEnhancementStrategy = registerOutput<String?>(
+      'securityEnhancementStrategy',
+    );
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    spotDuration = registerOutput<String?>('spotDuration');
+    spotPriceLimit = registerOutput<double?>('spotPriceLimit');
+    spotStrategy = registerOutput<String?>('spotStrategy');
+    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
+    systemDiskCategory = registerOutput<String>('systemDiskCategory');
+    systemDiskDescription = registerOutput<String>('systemDiskDescription');
+    systemDiskName = registerOutput<String>('systemDiskName');
+    systemDiskSize = registerOutput<int>('systemDiskSize');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateResourceGroupId = registerOutput<String?>(
+      'templateResourceGroupId',
+    );
+    templateTags = registerOutput<Map<String, String>?>('templateTags');
+    updateDefaultVersionNumber = registerOutput<bool?>(
+      'updateDefaultVersionNumber',
+    );
+    userData = registerOutput<String>('userData');
+    userdata = registerOutput<String>('userdata');
+    versionDescription = registerOutput<String?>('versionDescription');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

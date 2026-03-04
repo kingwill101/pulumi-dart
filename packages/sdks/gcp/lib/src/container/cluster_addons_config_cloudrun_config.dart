@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterAddonsConfigCloudrunConfig {
   /// The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
   final pulumi.Input<bool> disabled;
+
   /// The load balancer type of CloudRun ingress service. It is external load balancer by default.
   /// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
   final pulumi.Input<String>? loadBalancerType;
@@ -26,9 +27,12 @@ class ClusterAddonsConfigCloudrunConfig {
 
   factory ClusterAddonsConfigCloudrunConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigCloudrunConfig(
-      disabled: (map['disabled'] as bool).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      loadBalancerType: (() {
+        final guardedValue = map['loadBalancerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

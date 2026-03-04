@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsIamMFADevice
 class AwsIamMFADeviceProperties {
-  /// <p>The date when the MFA device was enabled for the user.</p>
+  /// &lt;p&gt;The date when the MFA device was enabled for the user.&lt;/p&gt;
   final pulumi.Input<String>? enableDate;
-  /// <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p>
+
+  /// &lt;p&gt;The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.&lt;/p&gt;
   final pulumi.Input<String>? serialNumber;
-  /// <p>The user with whom the MFA device is associated.</p>
+
+  /// &lt;p&gt;The user with whom the MFA device is associated.&lt;/p&gt;
   final pulumi.Input<String>? userName;
 
   /// Creates a new [AwsIamMFADeviceProperties].
-  /// [enableDate] <p>The date when the MFA device was enabled for the user.</p>
-  /// [serialNumber] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p>
-  /// [userName] <p>The user with whom the MFA device is associated.</p>
+  /// [enableDate] &lt;p&gt;The date when the MFA device was enabled for the user.&lt;/p&gt;
+  /// [serialNumber] &lt;p&gt;The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.&lt;/p&gt;
+  /// [userName] &lt;p&gt;The user with whom the MFA device is associated.&lt;/p&gt;
   AwsIamMFADeviceProperties({
     this.enableDate,
     this.serialNumber,
@@ -31,10 +33,21 @@ class AwsIamMFADeviceProperties {
 
   factory AwsIamMFADeviceProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamMFADeviceProperties(
-      enableDate: map['enableDate'] == null ? null : (map['enableDate']! as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      enableDate: (() {
+        final guardedValue = map['enableDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serialNumber: (() {
+        final guardedValue = map['serialNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

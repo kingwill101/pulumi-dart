@@ -41,16 +41,19 @@ class GetVirtualGatewaySpecListenerHealthCheck {
     };
   }
 
-  factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualGatewaySpecListenerHealthCheck(
-      healthyThreshold: (map['healthyThreshold'] as int).input(),
-      intervalMillis: (map['intervalMillis'] as int).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
-      timeoutMillis: (map['timeoutMillis'] as int).input(),
-      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
+      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
+      intervalMillis: pulumi.Input.fromValue(map['intervalMillis'] as int),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      timeoutMillis: pulumi.Input.fromValue(map['timeoutMillis'] as int),
+      unhealthyThreshold: pulumi.Input.fromValue(
+        map['unhealthyThreshold'] as int,
+      ),
     );
   }
 }
-

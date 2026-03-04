@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GPUSharingConfigResponseContainerV1beta1 {
   /// The type of GPU sharing strategy to enable on the GPU node.
   final pulumi.Input<String> gpuSharingStrategy;
+
   /// The max number of containers that can share a physical GPU.
   final pulumi.Input<String> maxSharedClientsPerGpu;
 
@@ -24,11 +25,16 @@ class GPUSharingConfigResponseContainerV1beta1 {
     };
   }
 
-  factory GPUSharingConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GPUSharingConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GPUSharingConfigResponseContainerV1beta1(
-      gpuSharingStrategy: (map['gpuSharingStrategy'] as String).input(),
-      maxSharedClientsPerGpu: (map['maxSharedClientsPerGpu'] as String).input(),
+      gpuSharingStrategy: pulumi.Input.fromValue(
+        map['gpuSharingStrategy'] as String,
+      ),
+      maxSharedClientsPerGpu: pulumi.Input.fromValue(
+        map['maxSharedClientsPerGpu'] as String,
+      ),
     );
   }
 }
-

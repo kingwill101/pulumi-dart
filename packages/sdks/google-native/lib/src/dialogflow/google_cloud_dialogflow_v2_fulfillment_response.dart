@@ -8,12 +8,20 @@ import 'google_cloud_dialogflow_v2_fulfillment_generic_web_service_response.dart
 class GoogleCloudDialogflowV2FulfillmentResponse {
   /// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> displayName;
+
   /// Optional. Whether fulfillment is enabled.
   final pulumi.Input<bool> enabled;
+
   /// Optional. The field defines whether the fulfillment is enabled for certain features.
-  final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>> features;
+  final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>>
+  features;
+
   /// Configuration for a generic web service.
-  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse> genericWebService;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse
+  >
+  genericWebService;
+
   /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> name;
 
@@ -35,20 +43,49 @@ class GoogleCloudDialogflowV2FulfillmentResponse {
     return <String, dynamic>{
       'displayName': displayName,
       'enabled': enabled,
-      'features': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'genericWebService': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
+      'features':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>,
+            List<Map<String, dynamic>>
+          >(
+            features,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowV2FulfillmentFeatureResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'genericWebService':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse,
+            Map<String, dynamic>
+          >(genericWebService, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory GoogleCloudDialogflowV2FulfillmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2FulfillmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2FulfillmentResponse(
-      displayName: (map['displayName'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      features: (pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse>(map['features'], (value) => GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      genericWebService: (GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      features: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudDialogflowV2FulfillmentFeatureResponse
+        >(
+          map['features']!,
+          (value) => GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      genericWebService: pulumi.Input.fromValue(
+        GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap(
+          (map['genericWebService']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

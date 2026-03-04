@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CalloutPolicyResponse {
   /// Unique identifier for the callout configuration.
   final pulumi.Input<String> calloutId;
+
   /// Type of the callout service, specifying the kind of external resource or service being accessed.
   final pulumi.Input<String>? calloutType;
+
   /// Regular expression or FQDN pattern for the callout URI.
   final pulumi.Input<String>? calloutUriRegex;
+
   /// Indicates whether outbound access is permitted for the specified URI pattern.
   final pulumi.Input<String>? outboundAccess;
 
@@ -36,11 +39,22 @@ class CalloutPolicyResponse {
 
   factory CalloutPolicyResponse.fromMap(Map<String, dynamic> map) {
     return CalloutPolicyResponse(
-      calloutId: (map['calloutId'] as String).input(),
-      calloutType: map['calloutType'] == null ? null : (map['calloutType']! as String).input(),
-      calloutUriRegex: map['calloutUriRegex'] == null ? null : (map['calloutUriRegex']! as String).input(),
-      outboundAccess: map['outboundAccess'] == null ? null : (map['outboundAccess']! as String).input(),
+      calloutId: pulumi.Input.fromValue(map['calloutId'] as String),
+      calloutType: (() {
+        final guardedValue = map['calloutType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      calloutUriRegex: (() {
+        final guardedValue = map['calloutUriRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundAccess: (() {
+        final guardedValue = map['outboundAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

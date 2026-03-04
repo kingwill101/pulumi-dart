@@ -153,7 +153,7 @@ import 'workspace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DesktopVirtualization` - 2024-04-03
@@ -168,16 +168,22 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// A description for the Virtual Desktop Workspace.
   late final pulumi.Output<String?> description;
+
   /// A friendly name for the Virtual Desktop Workspace.
   late final pulumi.Output<String?> friendlyName;
+
   /// The location/region where the Virtual Desktop Workspace is located. Changing the location/region forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether public network access is allowed for this Virtual Desktop Workspace. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -190,18 +196,20 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.location = registerOutput<String>('location');
+         'azure:desktopvirtualization/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -222,17 +230,19 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.location = registerOutput<String>('location');
+         'azure:desktopvirtualization/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

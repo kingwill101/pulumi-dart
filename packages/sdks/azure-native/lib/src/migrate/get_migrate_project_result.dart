@@ -7,18 +7,25 @@ import 'migrate_project_response_tags.dart';
 class GetMigrateProjectResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the eTag for concurrency control.
   final String? eTag;
+
   /// Gets the relative URL to get this migrate project.
   final String id;
+
   /// Gets or sets the Azure location in which migrate project is created.
   final String? location;
+
   /// Gets the name of the migrate project.
   final String name;
+
   /// Gets or sets the nested properties.
   final MigrateProjectPropertiesResponse properties;
+
   /// Gets or sets the tags.
   final MigrateProjectResponseTags? tags;
+
   /// Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
   final String type;
 
@@ -50,7 +57,7 @@ class GetMigrateProjectResult {
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'tags': ?tags?.toMap(),
       'type': type,
     };
   }
@@ -58,14 +65,29 @@ class GetMigrateProjectResult {
   factory GetMigrateProjectResult.fromMap(Map<String, dynamic> map) {
     return GetMigrateProjectResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: MigrateProjectPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : MigrateProjectResponseTags.fromMap((map['tags']! as Map).cast<String, dynamic>()),
+      properties: MigrateProjectPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return MigrateProjectResponseTags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

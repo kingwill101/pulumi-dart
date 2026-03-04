@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SELinuxOptions {
   /// Level is SELinux level label that applies to the container.
   final pulumi.Input<String>? level;
+
   /// Role is a SELinux role label that applies to the container.
   final pulumi.Input<String>? role;
+
   /// Type is a SELinux type label that applies to the container.
   final pulumi.Input<String>? type;
+
   /// User is a SELinux user label that applies to the container.
   final pulumi.Input<String>? user;
 
@@ -18,12 +21,7 @@ class SELinuxOptions {
   /// [role] Role is a SELinux role label that applies to the container.
   /// [type] Type is a SELinux type label that applies to the container.
   /// [user] User is a SELinux user label that applies to the container.
-  SELinuxOptions({
-    this.level,
-    this.role,
-    this.type,
-    this.user,
-  });
+  SELinuxOptions({this.level, this.role, this.type, this.user});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class SELinuxOptions {
 
   factory SELinuxOptions.fromMap(Map<String, dynamic> map) {
     return SELinuxOptions(
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

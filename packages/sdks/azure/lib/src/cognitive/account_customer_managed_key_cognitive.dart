@@ -4,7 +4,7 @@ import 'account_customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a Cognitive Services Account.
 ///
-/// > **Note:** It's possible to define a Customer Managed Key both within the `azure.cognitive.Account` resource via the `customer_managed_key` block and by using the `azure.cognitive.AccountCustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Cognitive Account, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.cognitive.Account` resource via the `customer_managed_key` block and by using the `azure.cognitive.AccountCustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Cognitive Account, since there'll be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -826,7 +826,7 @@ import 'account_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -841,8 +841,10 @@ import 'account_customer_managed_key_state.dart';
 class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
   /// The ID of the Cognitive Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
+
   /// The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the Cognitive Account.
   late final pulumi.Output<String?> identityClientId;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Cognitive Account.
   late final pulumi.Output<String> keyVaultKeyId;
 
@@ -855,14 +857,14 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
     AccountCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.identityClientId = registerOutput<String?>('identityClientId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+         'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    identityClientId = registerOutput<String?>('identityClientId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 
   /// Gets an existing [AccountCustomerManagedKeyCognitive] resource's state with the given [name] and [id].
@@ -883,13 +885,13 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.identityClientId = registerOutput<String?>('identityClientId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+         'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    identityClientId = registerOutput<String?>('identityClientId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 }

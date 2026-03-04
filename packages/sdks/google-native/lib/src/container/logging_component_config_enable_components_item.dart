@@ -6,16 +6,17 @@ enum LoggingComponentConfigEnableComponentsItem {
   scheduler("SCHEDULER"),
   controllerManager("CONTROLLER_MANAGER");
 
-  const LoggingComponentConfigEnableComponentsItem(this.value);
-  final String value;
+  const LoggingComponentConfigEnableComponentsItem(this.wireValue);
+  final String wireValue;
 
   static LoggingComponentConfigEnableComponentsItem fromValue(String value) {
     for (final item in LoggingComponentConfigEnableComponentsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoggingComponentConfigEnableComponentsItem value: $value');
+    throw ArgumentError(
+      'Unknown LoggingComponentConfigEnableComponentsItem value: $value',
+    );
   }
 }
-

@@ -12,20 +12,15 @@ class GetVendorArgs {
 
   /// Creates a new [GetVendorArgs].
   /// [vendorName] The name of the vendor.
-  GetVendorArgs({
-    required this.vendorName,
-  });
+  GetVendorArgs({required this.vendorName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vendorName': vendorName,
-    };
+    return <String, dynamic>{'vendorName': vendorName};
   }
 
   factory GetVendorArgs.fromMap(Map<String, dynamic> map) {
     return GetVendorArgs(
-      vendorName: (map['vendorName'] as String).input(),
+      vendorName: pulumi.Input.fromValue(map['vendorName'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_mysql;
-
 export 'mysql/flexible_database.dart';
 export 'mysql/flexible_database_args.dart';
 export 'mysql/flexible_database_state.dart';

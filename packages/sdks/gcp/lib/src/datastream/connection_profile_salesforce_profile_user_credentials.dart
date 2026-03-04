@@ -5,14 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileSalesforceProfileUserCredentials {
   /// Password of the user.
   final pulumi.Input<String>? password;
+
   /// A reference to a Secret Manager resource name storing the user's password.
   final pulumi.Input<String>? secretManagerStoredPassword;
+
   /// A reference to a Secret Manager resource name storing the user's security token.
   ///
-  /// <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+  /// &lt;a name="nested_salesforce_profile_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
   final pulumi.Input<String>? secretManagerStoredSecurityToken;
+
   /// Security token of the user.
   final pulumi.Input<String>? securityToken;
+
   /// Username to use for authentication.
   final pulumi.Input<String>? username;
 
@@ -40,14 +44,35 @@ class ConnectionProfileSalesforceProfileUserCredentials {
     };
   }
 
-  factory ConnectionProfileSalesforceProfileUserCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileSalesforceProfileUserCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileSalesforceProfileUserCredentials(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword']! as String).input(),
-      secretManagerStoredSecurityToken: map['secretManagerStoredSecurityToken'] == null ? null : (map['secretManagerStoredSecurityToken']! as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretManagerStoredPassword: (() {
+        final guardedValue = map['secretManagerStoredPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretManagerStoredSecurityToken: (() {
+        final guardedValue = map['secretManagerStoredSecurityToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityToken: (() {
+        final guardedValue = map['securityToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

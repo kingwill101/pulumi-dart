@@ -31,10 +31,9 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      serviceId: (map['serviceId'] as String).input(),
-      v3Id: (map['v3Id'] as String).input(),
-      v3Id1: (map['v3Id1'] as String).input(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      v3Id: pulumi.Input.fromValue(map['v3Id'] as String),
+      v3Id1: pulumi.Input.fromValue(map['v3Id1'] as String),
     );
   }
 }
-

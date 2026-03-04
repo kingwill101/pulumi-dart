@@ -10,6 +10,7 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com` has
   /// `storage.objects.get` permission to the Cloud Storage object.
   final pulumi.Input<String>? gcsUri;
+
   /// (Output)
   /// Name of the prebuilt ambient sound.
   /// Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
@@ -17,6 +18,7 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
   /// -"room_1" - "room_2" - "room_3"
   /// -"room_4" - "room_5" - "air_conditioner"
   final pulumi.Input<String>? prebuiltAmbientSound;
+
   /// (Output)
   /// Volume gain (in dB) of the normal native volume supported by
   /// ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
@@ -46,12 +48,25 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
     };
   }
 
-  factory AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig(
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
-      prebuiltAmbientSound: map['prebuiltAmbientSound'] == null ? null : (map['prebuiltAmbientSound']! as String).input(),
-      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb']! as double).input(),
+      gcsUri: (() {
+        final guardedValue = map['gcsUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prebuiltAmbientSound: (() {
+        final guardedValue = map['prebuiltAmbientSound'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeGainDb: (() {
+        final guardedValue = map['volumeGainDb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

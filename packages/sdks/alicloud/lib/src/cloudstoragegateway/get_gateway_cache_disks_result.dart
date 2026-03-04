@@ -7,6 +7,7 @@ import 'get_gateway_cache_disks_disk.dart';
 class GetGatewayCacheDisksResult {
   final List<GetGatewayCacheDisksDisk> disks;
   final String gatewayId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -31,7 +32,11 @@ class GetGatewayCacheDisksResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': pulumi.Input.encodeList<GetGatewayCacheDisksDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks':
+          pulumi.Input.encodeList<
+            GetGatewayCacheDisksDisk,
+            Map<String, dynamic>
+          >(disks, (value) => value.toMap()),
       'gatewayId': gatewayId,
       'id': id,
       'ids': ids,
@@ -42,13 +47,25 @@ class GetGatewayCacheDisksResult {
 
   factory GetGatewayCacheDisksResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayCacheDisksResult(
-      disks: pulumi.Input.decodeList<GetGatewayCacheDisksDisk>(map['disks'], (value) => GetGatewayCacheDisksDisk.fromMap((value as Map).cast<String, dynamic>())),
+      disks: pulumi.Input.decodeList<GetGatewayCacheDisksDisk>(
+        map['disks']!,
+        (value) => GetGatewayCacheDisksDisk.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

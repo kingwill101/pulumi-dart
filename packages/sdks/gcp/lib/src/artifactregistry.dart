@@ -1,5 +1,3 @@
-library module_artifactregistry;
-
 export 'artifactregistry/functions.dart';
 export 'artifactregistry/get_docker_image_args.dart';
 export 'artifactregistry/get_docker_image_result.dart';

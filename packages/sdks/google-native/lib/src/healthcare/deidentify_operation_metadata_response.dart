@@ -10,20 +10,27 @@ class DeidentifyOperationMetadataResponse {
 
   /// Creates a new [DeidentifyOperationMetadataResponse].
   /// [fhirOutput] Details about the FHIR store to write the output to.
-  DeidentifyOperationMetadataResponse({
-    required this.fhirOutput,
-  });
+  DeidentifyOperationMetadataResponse({required this.fhirOutput});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fhirOutput': pulumi.Input.mapInputValue<FhirOutputResponse, Map<String, dynamic>>(fhirOutput, (value) => value.toMap()),
+      'fhirOutput':
+          pulumi.Input.mapInputValue<FhirOutputResponse, Map<String, dynamic>>(
+            fhirOutput,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory DeidentifyOperationMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory DeidentifyOperationMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeidentifyOperationMetadataResponse(
-      fhirOutput: (FhirOutputResponse.fromMap((map['fhirOutput'] as Map).cast<String, dynamic>())).input(),
+      fhirOutput: pulumi.Input.fromValue(
+        FhirOutputResponse.fromMap(
+          (map['fhirOutput']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

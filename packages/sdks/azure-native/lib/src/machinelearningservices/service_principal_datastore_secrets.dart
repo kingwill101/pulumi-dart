@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalDatastoreSecrets {
   /// Service principal secret.
   final pulumi.Input<String>? clientSecret;
+
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'ServicePrincipal'.
   final pulumi.Input<String> secretsType;
@@ -27,9 +28,12 @@ class ServicePrincipalDatastoreSecrets {
 
   factory ServicePrincipalDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDatastoreSecrets(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      secretsType: (map['secretsType'] as String).input(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretsType: pulumi.Input.fromValue(map['secretsType'] as String),
     );
   }
 }
-

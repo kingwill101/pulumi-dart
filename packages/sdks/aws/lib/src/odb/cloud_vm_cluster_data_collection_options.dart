@@ -25,12 +25,19 @@ class CloudVmClusterDataCollectionOptions {
     };
   }
 
-  factory CloudVmClusterDataCollectionOptions.fromMap(Map<String, dynamic> map) {
+  factory CloudVmClusterDataCollectionOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudVmClusterDataCollectionOptions(
-      isDiagnosticsEventsEnabled: (map['isDiagnosticsEventsEnabled'] as bool).input(),
-      isHealthMonitoringEnabled: (map['isHealthMonitoringEnabled'] as bool).input(),
-      isIncidentLogsEnabled: (map['isIncidentLogsEnabled'] as bool).input(),
+      isDiagnosticsEventsEnabled: pulumi.Input.fromValue(
+        map['isDiagnosticsEventsEnabled'] as bool,
+      ),
+      isHealthMonitoringEnabled: pulumi.Input.fromValue(
+        map['isHealthMonitoringEnabled'] as bool,
+      ),
+      isIncidentLogsEnabled: pulumi.Input.fromValue(
+        map['isIncidentLogsEnabled'] as bool,
+      ),
     );
   }
 }
-

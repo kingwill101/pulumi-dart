@@ -6,14 +6,19 @@ import 'saas_resource_response_properties.dart';
 class GetSaasSubscriptionLevelResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource uri
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// saas properties
   final SaasResourceResponseProperties properties;
+
   /// the resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -49,10 +54,15 @@ class GetSaasSubscriptionLevelResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SaasResourceResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: SaasResourceResponseProperties.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

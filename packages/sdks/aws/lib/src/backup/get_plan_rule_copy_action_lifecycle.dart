@@ -21,16 +21,18 @@ class GetPlanRuleCopyActionLifecycle {
     return <String, dynamic>{
       'coldStorageAfter': coldStorageAfter,
       'deleteAfter': deleteAfter,
-      'optInToArchiveForSupportedResources': optInToArchiveForSupportedResources,
+      'optInToArchiveForSupportedResources':
+          optInToArchiveForSupportedResources,
     };
   }
 
   factory GetPlanRuleCopyActionLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleCopyActionLifecycle(
-      coldStorageAfter: (map['coldStorageAfter'] as int).input(),
-      deleteAfter: (map['deleteAfter'] as int).input(),
-      optInToArchiveForSupportedResources: (map['optInToArchiveForSupportedResources'] as bool).input(),
+      coldStorageAfter: pulumi.Input.fromValue(map['coldStorageAfter'] as int),
+      deleteAfter: pulumi.Input.fromValue(map['deleteAfter'] as int),
+      optInToArchiveForSupportedResources: pulumi.Input.fromValue(
+        map['optInToArchiveForSupportedResources'] as bool,
+      ),
     );
   }
 }
-

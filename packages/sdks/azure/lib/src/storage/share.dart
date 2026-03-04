@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'share_acl.dart';
 import 'share_args.dart';
 import 'share_state.dart';
 
 /// Manages a File Share within Azure Storage.
 ///
-/// > **Note:** The storage share supports two storage tiers: premium and standard. Standard file shares are created in general purpose (GPv1 or GPv2) storage accounts and premium file shares are created in FileStorage storage accounts. For further information, refer to the section "What storage tiers are supported in Azure Files?" of [documentation](https://docs.microsoft.com/azure/storage/files/storage-files-faq#general).
+/// &gt; **Note:** The storage share supports two storage tiers: premium and standard. Standard file shares are created in general purpose (GPv1 or GPv2) storage accounts and premium file shares are created in FileStorage storage accounts. For further information, refer to the section "What storage tiers are supported in Azure Files?" of [documentation](https://docs.microsoft.com/azure/storage/files/storage-files-faq#general).
 ///
-/// > **Note:** Shared Key authentication will always be used for this resource, as AzureAD authentication is not supported by the Storage API for files.
+/// &gt; **Note:** Shared Key authentication will always be used for this resource, as AzureAD authentication is not supported by the Storage API for files.
 ///
 /// ## Example Usage
 ///
@@ -257,7 +256,7 @@ import 'share_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -272,34 +271,43 @@ import 'share_state.dart';
 class Share extends pulumi.CustomResource {
   /// The access tier of the File Share. Possible values are `Hot`, `Cool` and `TransactionOptimized`, `Premium`.
   ///
-  /// > **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` requires `Premium` `access_tier`.
+  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` requires `Premium` `access_tier`.
   late final pulumi.Output<String> accessTier;
+
   /// One or more `acl` blocks as defined below.
-  late final pulumi.Output<List<ShareAcl>?> acls;
+  late final pulumi.Output<List<Map<String, dynamic>>?> acls;
+
   /// The protocol used for the share. Possible values are `SMB` and `NFS`. The `SMB` indicates the share can be accessed by SMBv3.0, SMBv2.1 and REST. The `NFS` indicates the share can be accessed by NFSv4.1. Defaults to `SMB`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` is required for the `NFS` protocol.
+  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` is required for the `NFS` protocol.
   late final pulumi.Output<String?> enabledProtocol;
+
   /// A mapping of MetaData for this File Share.
   late final pulumi.Output<Map<String, String>> metadata;
+
   /// The name of the share. Must be unique within the storage account where the share is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The maximum size of the share, in gigabytes.
   ///
-  /// > **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `large_file_share_enabled` is set to `true` in the parent `azure.storage.Account`.
+  /// &gt; **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `large_file_share_enabled` is set to `true` in the parent `azure.storage.Account`.
   ///
-  /// > **Note:** For Premium FileStorage storage accounts, this must be greater than `100` GB and at most `102400` GB (`100` TB).
+  /// &gt; **Note:** For Premium FileStorage storage accounts, this must be greater than `100` GB and at most `102400` GB (`100` TB).
   late final pulumi.Output<int> quota;
+
   /// The Resource Manager ID of this File Share.
   late final pulumi.Output<String> resourceManagerId;
+
   /// Specifies the storage account in which to create the share.
   ///
-  /// > **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
   late final pulumi.Output<String?> storageAccountId;
+
   /// Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
   ///
-  /// > **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
   late final pulumi.Output<String?> storageAccountName;
+
   /// The URL of the File Share
   late final pulumi.Output<String> url;
 
@@ -307,34 +315,27 @@ class Share extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_storage_share_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(
-    String name, {
-    ShareArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:storage/share:Share',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTier = registerOutput<String>('accessTier');
-    this.acls = registerOutput<List<ShareAcl>?>('acls');
-    this.enabledProtocol = registerOutput<String?>('enabledProtocol');
-    this.metadata = registerOutput<Map<String, String>>('metadata');
+  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:storage/share:Share',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessTier = registerOutput<String>('accessTier');
+    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    enabledProtocol = registerOutput<String?>('enabledProtocol');
+    metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    this.quota = registerOutput<int>('quota');
-    this.resourceManagerId = registerOutput<String>('resourceManagerId');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.storageAccountName = registerOutput<String?>('storageAccountName');
-    this.url = registerOutput<String>('url');
+    quota = registerOutput<int>('quota');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [Share] resource's state with the given [name] and [id].
-  static Share get(
-    String name,
-    pulumi.Input<String> id, {
-    ShareState? state,
-  }) {
+  static Share get(String name, pulumi.Input<String> id, {ShareState? state}) {
     return Share._get(
       name,
       state: state?.toMap(),
@@ -347,20 +348,20 @@ class Share extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/share:Share',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTier = registerOutput<String>('accessTier');
-    this.acls = registerOutput<List<ShareAcl>?>('acls');
-    this.enabledProtocol = registerOutput<String?>('enabledProtocol');
-    this.metadata = registerOutput<Map<String, String>>('metadata');
+         'azure:storage/share:Share',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTier = registerOutput<String>('accessTier');
+    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    enabledProtocol = registerOutput<String?>('enabledProtocol');
+    metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    this.quota = registerOutput<int>('quota');
-    this.resourceManagerId = registerOutput<String>('resourceManagerId');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.storageAccountName = registerOutput<String?>('storageAccountName');
-    this.url = registerOutput<String>('url');
+    quota = registerOutput<int>('quota');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
   }
 }

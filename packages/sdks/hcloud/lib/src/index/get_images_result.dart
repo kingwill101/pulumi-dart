@@ -7,6 +7,7 @@ import 'get_images_image.dart';
 class GetImagesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (list) List of all matching images. See `data.hcloud_image` for schema.
   final List<GetImagesImage> images;
   final bool? includeDeprecated;
@@ -36,7 +37,10 @@ class GetImagesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(
+        images,
+        (value) => value.toMap(),
+      ),
       'includeDeprecated': ?includeDeprecated,
       'mostRecent': ?mostRecent,
       'withArchitectures': ?withArchitectures,
@@ -48,13 +52,36 @@ class GetImagesResult {
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
       id: map['id'] as String,
-      images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated']! as bool,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
-      withArchitectures: map['withArchitectures'] == null ? null : (map['withArchitectures']! as List).cast<String>(),
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
+      images: pulumi.Input.decodeList<GetImagesImage>(
+        map['images']!,
+        (value) =>
+            GetImagesImage.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      includeDeprecated: (() {
+        final guardedValue = map['includeDeprecated'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      withArchitectures: (() {
+        final guardedValue = map['withArchitectures'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      withStatuses: (() {
+        final guardedValue = map['withStatuses'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

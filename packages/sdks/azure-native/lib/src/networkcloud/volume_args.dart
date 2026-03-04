@@ -10,14 +10,19 @@ import 'extended_location.dart';
 class VolumeArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The size of the allocation for this volume in Mebibytes.
   final pulumi.Input<double> sizeMiB;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the volume.
   final pulumi.Input<String>? volumeName;
 
@@ -39,7 +44,11 @@ class VolumeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'sizeMiB': sizeMiB,
@@ -50,13 +59,32 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sizeMiB: (map['sizeMiB'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sizeMiB: pulumi.Input.fromValue(map['sizeMiB'] as double),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      volumeName: (() {
+        final guardedValue = map['volumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

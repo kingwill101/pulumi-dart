@@ -172,12 +172,16 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionDigitaltwins extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The connection properties.
   late final pulumi.Output<ConnectionPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the private endpoint connection.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -190,15 +194,15 @@ class PrivateEndpointConnectionDigitaltwins extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:digitaltwins:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:digitaltwins:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ConnectionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ConnectionPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

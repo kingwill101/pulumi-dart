@@ -10,12 +10,16 @@ import 'resolver_inbound_endpoint_ip_configurations.dart';
 class ResolverInboundEndpointArgs {
   /// One `ip_configurations` block as defined below. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   final pulumi.Input<ResolverInboundEndpointIpConfigurations> ipConfigurations;
+
   /// Specifies the Azure Region where the Private DNS Resolver Inbound Endpoint should exist. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name which should be used for this Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   final pulumi.Input<String> privateDnsResolverId;
+
   /// A mapping of tags which should be assigned to the Private DNS Resolver Inbound Endpoint.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +39,11 @@ class ResolverInboundEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigurations': pulumi.Input.mapInputValue<ResolverInboundEndpointIpConfigurations, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.mapInputValue<
+            ResolverInboundEndpointIpConfigurations,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'privateDnsResolverId': privateDnsResolverId,
@@ -45,12 +53,31 @@ class ResolverInboundEndpointArgs {
 
   factory ResolverInboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ResolverInboundEndpointArgs(
-      ipConfigurations: (ResolverInboundEndpointIpConfigurations.fromMap((map['ipConfigurations'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateDnsResolverId: (map['privateDnsResolverId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ipConfigurations: pulumi.Input.fromValue(
+        ResolverInboundEndpointIpConfigurations.fromMap(
+          (map['ipConfigurations']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsResolverId: pulumi.Input.fromValue(
+        map['privateDnsResolverId'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

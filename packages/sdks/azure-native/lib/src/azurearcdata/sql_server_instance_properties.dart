@@ -11,26 +11,37 @@ import 'monitoring.dart';
 class SqlServerInstanceProperties {
   /// Authentication related configuration for the SQL Server Instance.
   final pulumi.Input<Authentication>? authentication;
+
   /// The backup profile for the SQL server.
   final pulumi.Input<BackupPolicy>? backupPolicy;
+
   /// Client connection related configuration.
   final pulumi.Input<ClientConnection>? clientConnection;
+
   /// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
   final pulumi.Input<String>? cores;
+
   /// SQL Server edition.
   final pulumi.Input<String>? edition;
+
   /// Type of host for Azure Arc SQL Server
   final pulumi.Input<String>? hostType;
+
   /// SQL Server instance name.
   final pulumi.Input<String>? instanceName;
+
   /// Migration related configuration.
   final pulumi.Input<Migration>? migration;
+
   /// The monitoring configuration.
   final pulumi.Input<Monitoring>? monitoring;
+
   /// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
   final pulumi.Input<String>? serviceType;
+
   /// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
   final pulumi.Input<String>? upgradeLockedUntil;
+
   /// SQL Server version.
   final pulumi.Input<String>? version;
 
@@ -64,15 +75,35 @@ class SqlServerInstanceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?pulumi.Input.mapOptionalInputValue<Authentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
-      'backupPolicy': ?pulumi.Input.mapOptionalInputValue<BackupPolicy, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
-      'clientConnection': ?pulumi.Input.mapOptionalInputValue<ClientConnection, Map<String, dynamic>>(clientConnection, (value) => value.toMap()),
+      'authentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            Authentication,
+            Map<String, dynamic>
+          >(authentication, (value) => value.toMap()),
+      'backupPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupPolicy,
+            Map<String, dynamic>
+          >(backupPolicy, (value) => value.toMap()),
+      'clientConnection':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClientConnection,
+            Map<String, dynamic>
+          >(clientConnection, (value) => value.toMap()),
       'cores': ?cores,
       'edition': ?edition,
       'hostType': ?hostType,
       'instanceName': ?instanceName,
-      'migration': ?pulumi.Input.mapOptionalInputValue<Migration, Map<String, dynamic>>(migration, (value) => value.toMap()),
-      'monitoring': ?pulumi.Input.mapOptionalInputValue<Monitoring, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
+      'migration':
+          ?pulumi.Input.mapOptionalInputValue<Migration, Map<String, dynamic>>(
+            migration,
+            (value) => value.toMap(),
+          ),
+      'monitoring':
+          ?pulumi.Input.mapOptionalInputValue<Monitoring, Map<String, dynamic>>(
+            monitoring,
+            (value) => value.toMap(),
+          ),
       'serviceType': ?serviceType,
       'upgradeLockedUntil': ?upgradeLockedUntil,
       'version': ?version,
@@ -81,19 +112,78 @@ class SqlServerInstanceProperties {
 
   factory SqlServerInstanceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceProperties(
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
-      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input(),
-      clientConnection: map['clientConnection'] == null ? null : (ClientConnection.fromMap((map['clientConnection']! as Map).cast<String, dynamic>())).input(),
-      cores: map['cores'] == null ? null : (map['cores']! as String).input(),
-      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      migration: map['migration'] == null ? null : (Migration.fromMap((map['migration']! as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (Monitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
-      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : (map['upgradeLockedUntil']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      backupPolicy: (() {
+        final guardedValue = map['backupPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      clientConnection: (() {
+        final guardedValue = map['clientConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClientConnection.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cores: (() {
+        final guardedValue = map['cores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      edition: (() {
+        final guardedValue = map['edition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostType: (() {
+        final guardedValue = map['hostType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migration: (() {
+        final guardedValue = map['migration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Migration.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      monitoring: (() {
+        final guardedValue = map['monitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Monitoring.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      serviceType: (() {
+        final guardedValue = map['serviceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upgradeLockedUntil: (() {
+        final guardedValue = map['upgradeLockedUntil'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

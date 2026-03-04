@@ -1,5 +1,3 @@
-library module_hybridcloud;
-
 export 'hybridcloud/cloud_connection.dart';
 export 'hybridcloud/cloud_connection_args.dart';
 export 'hybridcloud/cloud_connector.dart';

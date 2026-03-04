@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkRouteArgs {
   /// Destination network or host of this route. Must be a subnet of the ip_range of the Network. Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first ip of the networks ip_range or with 172.31.1.1.
   final pulumi.Input<String> destination;
+
   /// Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   final pulumi.Input<String> gateway;
+
   /// ID of the Network the route should be added to.
   final pulumi.Input<int> networkId;
 
@@ -34,10 +36,9 @@ class NetworkRouteArgs {
 
   factory NetworkRouteArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRouteArgs(
-      destination: (map['destination'] as String).input(),
-      gateway: (map['gateway'] as String).input(),
-      networkId: (map['networkId'] as int).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      gateway: pulumi.Input.fromValue(map['gateway'] as String),
+      networkId: pulumi.Input.fromValue(map['networkId'] as int),
     );
   }
 }
-

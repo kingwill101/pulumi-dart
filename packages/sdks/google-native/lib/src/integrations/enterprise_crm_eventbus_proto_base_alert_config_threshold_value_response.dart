@@ -16,17 +16,15 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'absolute': absolute,
-      'percentage': percentage,
-    };
+    return <String, dynamic>{'absolute': absolute, 'percentage': percentage};
   }
 
-  factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse(
-      absolute: (map['absolute'] as String).input(),
-      percentage: (map['percentage'] as int).input(),
+      absolute: pulumi.Input.fromValue(map['absolute'] as String),
+      percentage: pulumi.Input.fromValue(map['percentage'] as int),
     );
   }
 }
-

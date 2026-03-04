@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse {
   /// The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
   final pulumi.Input<List<String>> categories;
+
   /// The confidence scores of the each category, higher value means higher confidence. Order matches the Categories.
   final pulumi.Input<List<double>> scores;
 
@@ -18,17 +19,17 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'categories': categories,
-      'scores': scores,
-    };
+    return <String, dynamic>{'categories': categories, 'scores': scores};
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse(
-      categories: ((map['categories'] as List).cast<String>()).input(),
-      scores: ((map['scores'] as List).cast<double>()).input(),
+      categories: pulumi.Input.fromValue(
+        (map['categories'] as List).cast<String>(),
+      ),
+      scores: pulumi.Input.fromValue((map['scores'] as List).cast<double>()),
     );
   }
 }
-

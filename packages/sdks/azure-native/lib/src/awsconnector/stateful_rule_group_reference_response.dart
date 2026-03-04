@@ -7,8 +7,10 @@ import 'stateful_rule_group_override_response.dart';
 class StatefulRuleGroupReferenceResponse {
   /// Property override
   final pulumi.Input<StatefulRuleGroupOverrideResponse>? override;
+
   /// Property priority
   final pulumi.Input<int>? priority;
+
   /// A resource ARN.
   final pulumi.Input<String>? resourceArn;
 
@@ -24,7 +26,11 @@ class StatefulRuleGroupReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'override': ?pulumi.Input.mapOptionalInputValue<StatefulRuleGroupOverrideResponse, Map<String, dynamic>>(override, (value) => value.toMap()),
+      'override':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatefulRuleGroupOverrideResponse,
+            Map<String, dynamic>
+          >(override, (value) => value.toMap()),
       'priority': ?priority,
       'resourceArn': ?resourceArn,
     };
@@ -32,10 +38,25 @@ class StatefulRuleGroupReferenceResponse {
 
   factory StatefulRuleGroupReferenceResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupReferenceResponse(
-      override: map['override'] == null ? null : (StatefulRuleGroupOverrideResponse.fromMap((map['override']! as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
+      override: (() {
+        final guardedValue = map['override'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatefulRuleGroupOverrideResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

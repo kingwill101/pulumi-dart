@@ -3,16 +3,17 @@ enum ReadWriteEndpointFailoverPolicy {
   valueManual("Manual"),
   valueAutomatic("Automatic");
 
-  const ReadWriteEndpointFailoverPolicy(this.value);
-  final String value;
+  const ReadWriteEndpointFailoverPolicy(this.wireValue);
+  final String wireValue;
 
   static ReadWriteEndpointFailoverPolicy fromValue(String value) {
     for (final item in ReadWriteEndpointFailoverPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReadWriteEndpointFailoverPolicy value: $value');
+    throw ArgumentError(
+      'Unknown ReadWriteEndpointFailoverPolicy value: $value',
+    );
   }
 }
-

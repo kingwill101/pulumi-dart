@@ -10,9 +10,7 @@ class FileSystemAssociationCacheAttributes {
 
   /// Creates a new [FileSystemAssociationCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  FileSystemAssociationCacheAttributes({
-    this.cacheStaleTimeoutInSeconds,
-  });
+  FileSystemAssociationCacheAttributes({this.cacheStaleTimeoutInSeconds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,10 +18,15 @@ class FileSystemAssociationCacheAttributes {
     };
   }
 
-  factory FileSystemAssociationCacheAttributes.fromMap(Map<String, dynamic> map) {
+  factory FileSystemAssociationCacheAttributes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FileSystemAssociationCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : ((map['cacheStaleTimeoutInSeconds'] as int).input()).input(),
+      cacheStaleTimeoutInSeconds: (() {
+        final guardedValue = map['cacheStaleTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

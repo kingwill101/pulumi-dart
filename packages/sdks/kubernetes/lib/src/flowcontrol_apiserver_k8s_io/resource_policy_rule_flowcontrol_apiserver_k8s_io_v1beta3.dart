@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3 {
   /// `apiGroups` is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required.
   final pulumi.Input<List<String>> apiGroups;
+
   /// `clusterScope` indicates whether to match requests that do not specify a namespace (which happens either because the resource is not namespaced or the request targets all namespaces). If this field is omitted or false then the `namespaces` field must contain a non-empty list.
   final pulumi.Input<bool>? clusterScope;
+
   /// `namespaces` is a list of target namespaces that restricts matches.  A request that specifies a target namespace matches only if either (a) this list contains that target namespace or (b) this list contains "*".  Note that "*" matches any specified namespace but does not match a request that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be empty, but only if `clusterScope` is true.
   final pulumi.Input<List<String>>? namespaces;
+
   /// `resources` is a list of matching resources (i.e., lowercase and plural) with, if desired, subresource.  For example, [ "services", "nodes/status" ].  This list may not be empty. "*" matches all resources and, if present, must be the only entry. Required.
   final pulumi.Input<List<String>> resources;
+
   /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required.
   final pulumi.Input<List<String>> verbs;
 
@@ -39,14 +43,27 @@ class ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3 {
     };
   }
 
-  factory ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3(
-      apiGroups: ((map['apiGroups'] as List).cast<String>()).input(),
-      clusterScope: map['clusterScope'] == null ? null : (map['clusterScope']! as bool).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
-      resources: ((map['resources'] as List).cast<String>()).input(),
-      verbs: ((map['verbs'] as List).cast<String>()).input(),
+      apiGroups: pulumi.Input.fromValue(
+        (map['apiGroups'] as List).cast<String>(),
+      ),
+      clusterScope: (() {
+        final guardedValue = map['clusterScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resources: pulumi.Input.fromValue(
+        (map['resources'] as List).cast<String>(),
+      ),
+      verbs: pulumi.Input.fromValue((map['verbs'] as List).cast<String>()),
     );
   }
 }
-

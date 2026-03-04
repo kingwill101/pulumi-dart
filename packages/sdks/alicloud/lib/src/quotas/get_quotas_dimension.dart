@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuotasDimension {
   /// The key of dimensions.
   final pulumi.Input<String>? key;
+
   /// The value of dimensions.
   final pulumi.Input<String>? value;
 
   /// Creates a new [GetQuotasDimension].
   /// [key] The key of dimensions.
   /// [value] The value of dimensions.
-  GetQuotasDimension({
-    this.key,
-    this.value,
-  });
+  GetQuotasDimension({this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
   factory GetQuotasDimension.fromMap(Map<String, dynamic> map) {
     return GetQuotasDimension(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

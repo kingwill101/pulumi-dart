@@ -6,10 +6,13 @@ import 'windows_web_app_slot_backup_schedule.dart';
 class WindowsWebAppSlotBackup {
   /// Should this backup job be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The name which should be used for this Backup.
   final pulumi.Input<String> name;
+
   /// A `schedule` block as defined below.
   final pulumi.Input<WindowsWebAppSlotBackupSchedule> schedule;
+
   /// The SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
@@ -29,18 +32,31 @@ class WindowsWebAppSlotBackup {
     return <String, dynamic>{
       'enabled': ?enabled,
       'name': name,
-      'schedule': pulumi.Input.mapInputValue<WindowsWebAppSlotBackupSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          pulumi.Input.mapInputValue<
+            WindowsWebAppSlotBackupSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory WindowsWebAppSlotBackup.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotBackup(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      schedule: (WindowsWebAppSlotBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      schedule: pulumi.Input.fromValue(
+        WindowsWebAppSlotBackupSchedule.fromMap(
+          (map['schedule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      storageAccountUrl: pulumi.Input.fromValue(
+        map['storageAccountUrl'] as String,
+      ),
     );
   }
 }
-

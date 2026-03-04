@@ -5,7 +5,10 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_subje
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames {
   /// Criteria for determining a SAN's match.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch> match;
+  final pulumi.Input<
+    VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch
+  >
+  match;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
@@ -15,14 +18,23 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternati
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'match': pulumi.Input.mapInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
+      'match':
+          pulumi.Input.mapInputValue<
+            VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch,
+            Map<String, dynamic>
+          >(match, (value) => value.toMap()),
     };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames(
-      match: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      match: pulumi.Input.fromValue(
+        VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap(
+          (map['match']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

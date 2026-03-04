@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsBucketServerSideEncryptionRule {
   /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
   final pulumi.Input<String> kmsMasterKeyId;
+
   /// The server-side encryption algorithm to use.
   final pulumi.Input<String> sseAlgorithm;
 
@@ -23,11 +24,12 @@ class GetBucketsBucketServerSideEncryptionRule {
     };
   }
 
-  factory GetBucketsBucketServerSideEncryptionRule.fromMap(Map<String, dynamic> map) {
+  factory GetBucketsBucketServerSideEncryptionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketsBucketServerSideEncryptionRule(
-      kmsMasterKeyId: (map['kmsMasterKeyId'] as String).input(),
-      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
+      kmsMasterKeyId: pulumi.Input.fromValue(map['kmsMasterKeyId'] as String),
+      sseAlgorithm: pulumi.Input.fromValue(map['sseAlgorithm'] as String),
     );
   }
 }
-

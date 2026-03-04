@@ -9,32 +9,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationRegistrationArgs {
   /// A description of the application, as shown to end users.
   final pulumi.Input<String>? description;
+
   /// The display name for the application.
   final pulumi.Input<String> displayName;
+
   /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
   final pulumi.Input<List<String>>? groupMembershipClaims;
+
   /// Home page or landing page of the application.
   final pulumi.Input<String>? homepageUrl;
+
   /// Whether this web application can request an access token using OAuth implicit flow.
   final pulumi.Input<bool>? implicitAccessTokenIssuanceEnabled;
+
   /// Whether this web application can request an ID token using OAuth implicit flow.
   final pulumi.Input<bool>? implicitIdTokenIssuanceEnabled;
+
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   final pulumi.Input<String>? logoutUrl;
+
   /// URL of the marketing page for the application.
   final pulumi.Input<String>? marketingUrl;
+
   /// User-specified notes relevant for the management of the application.
   final pulumi.Input<String>? notes;
+
   /// URL of the privacy statement for the application.
   final pulumi.Input<String>? privacyStatementUrl;
+
   /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
   final pulumi.Input<int>? requestedAccessTokenVersion;
+
   /// References application context information from a Service or Asset Management database.
   final pulumi.Input<String>? serviceManagementReference;
+
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   final pulumi.Input<String>? signInAudience;
+
   /// URL of the support page for the application.
   final pulumi.Input<String>? supportUrl;
+
   /// URL of the terms of service statement for the application.
   final pulumi.Input<String>? termsOfServiceUrl;
 
@@ -94,22 +108,77 @@ class ApplicationRegistrationArgs {
 
   factory ApplicationRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationRegistrationArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      groupMembershipClaims: map['groupMembershipClaims'] == null ? null : ((map['groupMembershipClaims']! as List).cast<String>()).input(),
-      homepageUrl: map['homepageUrl'] == null ? null : (map['homepageUrl']! as String).input(),
-      implicitAccessTokenIssuanceEnabled: map['implicitAccessTokenIssuanceEnabled'] == null ? null : (map['implicitAccessTokenIssuanceEnabled']! as bool).input(),
-      implicitIdTokenIssuanceEnabled: map['implicitIdTokenIssuanceEnabled'] == null ? null : (map['implicitIdTokenIssuanceEnabled']! as bool).input(),
-      logoutUrl: map['logoutUrl'] == null ? null : (map['logoutUrl']! as String).input(),
-      marketingUrl: map['marketingUrl'] == null ? null : (map['marketingUrl']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      privacyStatementUrl: map['privacyStatementUrl'] == null ? null : (map['privacyStatementUrl']! as String).input(),
-      requestedAccessTokenVersion: map['requestedAccessTokenVersion'] == null ? null : (map['requestedAccessTokenVersion']! as int).input(),
-      serviceManagementReference: map['serviceManagementReference'] == null ? null : (map['serviceManagementReference']! as String).input(),
-      signInAudience: map['signInAudience'] == null ? null : (map['signInAudience']! as String).input(),
-      supportUrl: map['supportUrl'] == null ? null : (map['supportUrl']! as String).input(),
-      termsOfServiceUrl: map['termsOfServiceUrl'] == null ? null : (map['termsOfServiceUrl']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      groupMembershipClaims: (() {
+        final guardedValue = map['groupMembershipClaims'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      homepageUrl: (() {
+        final guardedValue = map['homepageUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      implicitAccessTokenIssuanceEnabled: (() {
+        final guardedValue = map['implicitAccessTokenIssuanceEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      implicitIdTokenIssuanceEnabled: (() {
+        final guardedValue = map['implicitIdTokenIssuanceEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logoutUrl: (() {
+        final guardedValue = map['logoutUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      marketingUrl: (() {
+        final guardedValue = map['marketingUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privacyStatementUrl: (() {
+        final guardedValue = map['privacyStatementUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestedAccessTokenVersion: (() {
+        final guardedValue = map['requestedAccessTokenVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serviceManagementReference: (() {
+        final guardedValue = map['serviceManagementReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signInAudience: (() {
+        final guardedValue = map['signInAudience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportUrl: (() {
+        final guardedValue = map['supportUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      termsOfServiceUrl: (() {
+        final guardedValue = map['termsOfServiceUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

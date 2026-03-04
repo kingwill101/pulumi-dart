@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LockState {
   /// The ID of the entity to lock.
   final pulumi.Input<int>? entityId;
+
   /// The label of the locked entity.
   final pulumi.Input<String>? entityLabel;
+
   /// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   final pulumi.Input<String>? entityType;
+
   /// The URL of the locked entity.
   final pulumi.Input<String>? entityUrl;
+
   /// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   final pulumi.Input<String>? lockType;
 
@@ -41,12 +45,31 @@ class LockState {
 
   factory LockState.fromMap(Map<String, dynamic> map) {
     return LockState(
-      entityId: map['entityId'] == null ? null : (map['entityId']! as int).input(),
-      entityLabel: map['entityLabel'] == null ? null : (map['entityLabel']! as String).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
-      entityUrl: map['entityUrl'] == null ? null : (map['entityUrl']! as String).input(),
-      lockType: map['lockType'] == null ? null : (map['lockType']! as String).input(),
+      entityId: (() {
+        final guardedValue = map['entityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      entityLabel: (() {
+        final guardedValue = map['entityLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityType: (() {
+        final guardedValue = map['entityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityUrl: (() {
+        final guardedValue = map['entityUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lockType: (() {
+        final guardedValue = map['lockType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

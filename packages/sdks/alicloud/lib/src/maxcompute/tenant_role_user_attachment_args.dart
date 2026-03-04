@@ -18,16 +18,14 @@ class TenantRoleUserAttachmentArgs {
   /// 3. If the user is a RAM role, the AccountId format is v4_UID.
   /// Example: v4_300007628597555555
   final pulumi.Input<String>? accountId;
+
   /// Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
   final pulumi.Input<String>? tenantRole;
 
   /// Creates a new [TenantRoleUserAttachmentArgs].
   /// [accountId] Account UID
   /// [tenantRole] Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
-  TenantRoleUserAttachmentArgs({
-    this.accountId,
-    this.tenantRole,
-  });
+  TenantRoleUserAttachmentArgs({this.accountId, this.tenantRole});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +36,16 @@ class TenantRoleUserAttachmentArgs {
 
   factory TenantRoleUserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TenantRoleUserAttachmentArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      tenantRole: map['tenantRole'] == null ? null : (map['tenantRole']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantRole: (() {
+        final guardedValue = map['tenantRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

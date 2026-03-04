@@ -8,20 +8,15 @@ class HubGcmCredential {
 
   /// Creates a new [HubGcmCredential].
   /// [apiKey] The API Key associated with the Google Cloud Messaging service.
-  HubGcmCredential({
-    required this.apiKey,
-  });
+  HubGcmCredential({required this.apiKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiKey': apiKey,
-    };
+    return <String, dynamic>{'apiKey': apiKey};
   }
 
   factory HubGcmCredential.fromMap(Map<String, dynamic> map) {
     return HubGcmCredential(
-      apiKey: (map['apiKey'] as String).input(),
+      apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
     );
   }
 }
-

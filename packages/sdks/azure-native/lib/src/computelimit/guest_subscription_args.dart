@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuestSubscriptionArgs {
   /// The name of the GuestSubscription
   final pulumi.Input<String>? guestSubscriptionId;
+
   /// The name of the Azure region.
   final pulumi.Input<String> location;
 
   /// Creates a new [GuestSubscriptionArgs].
   /// [guestSubscriptionId] The name of the GuestSubscription
   /// [location] The name of the Azure region.
-  GuestSubscriptionArgs({
-    this.guestSubscriptionId,
-    required this.location,
-  });
+  GuestSubscriptionArgs({this.guestSubscriptionId, required this.location});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class GuestSubscriptionArgs {
 
   factory GuestSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GuestSubscriptionArgs(
-      guestSubscriptionId: map['guestSubscriptionId'] == null ? null : (map['guestSubscriptionId']! as String).input(),
-      location: (map['location'] as String).input(),
+      guestSubscriptionId: (() {
+        final guardedValue = map['guestSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

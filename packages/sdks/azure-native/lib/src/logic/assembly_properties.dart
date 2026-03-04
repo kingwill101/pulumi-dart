@@ -7,19 +7,26 @@ import 'content_link.dart';
 class AssemblyProperties {
   /// The assembly culture.
   final pulumi.Input<String>? assemblyCulture;
+
   /// The assembly name.
   final pulumi.Input<String> assemblyName;
+
   /// The assembly public key token.
   final pulumi.Input<String>? assemblyPublicKeyToken;
+
   /// The assembly version.
   final pulumi.Input<String>? assemblyVersion;
+
   /// The artifact changed time.
   final pulumi.Input<String>? changedTime;
   final pulumi.Input<dynamic>? content;
+
   /// The content link.
   final pulumi.Input<ContentLink>? contentLink;
+
   /// The content type.
   final pulumi.Input<String>? contentType;
+
   /// The artifact creation time.
   final pulumi.Input<String>? createdTime;
   final pulumi.Input<dynamic>? metadata;
@@ -56,7 +63,11 @@ class AssemblyProperties {
       'assemblyVersion': ?assemblyVersion,
       'changedTime': ?changedTime,
       'content': ?content,
-      'contentLink': ?pulumi.Input.mapOptionalInputValue<ContentLink, Map<String, dynamic>>(contentLink, (value) => value.toMap()),
+      'contentLink':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContentLink,
+            Map<String, dynamic>
+          >(contentLink, (value) => value.toMap()),
       'contentType': ?contentType,
       'createdTime': ?createdTime,
       'metadata': ?metadata,
@@ -65,17 +76,54 @@ class AssemblyProperties {
 
   factory AssemblyProperties.fromMap(Map<String, dynamic> map) {
     return AssemblyProperties(
-      assemblyCulture: map['assemblyCulture'] == null ? null : (map['assemblyCulture']! as String).input(),
-      assemblyName: (map['assemblyName'] as String).input(),
-      assemblyPublicKeyToken: map['assemblyPublicKeyToken'] == null ? null : (map['assemblyPublicKeyToken']! as String).input(),
-      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion']! as String).input(),
-      changedTime: map['changedTime'] == null ? null : (map['changedTime']! as String).input(),
-      content: map['content'] == null ? null : (map['content']!).input(),
-      contentLink: map['contentLink'] == null ? null : (ContentLink.fromMap((map['contentLink']! as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      assemblyCulture: (() {
+        final guardedValue = map['assemblyCulture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assemblyName: pulumi.Input.fromValue(map['assemblyName'] as String),
+      assemblyPublicKeyToken: (() {
+        final guardedValue = map['assemblyPublicKeyToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assemblyVersion: (() {
+        final guardedValue = map['assemblyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      changedTime: (() {
+        final guardedValue = map['changedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      contentLink: (() {
+        final guardedValue = map['contentLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContentLink.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationProtectionContainerMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
+
   /// Protection Container mapping name.
   final pulumi.Input<String> mappingName;
+
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -42,14 +46,19 @@ class GetReplicationProtectionContainerMappingArgs {
     };
   }
 
-  factory GetReplicationProtectionContainerMappingArgs.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationProtectionContainerMappingArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationProtectionContainerMappingArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      mappingName: (map['mappingName'] as String).input(),
-      protectionContainerName: (map['protectionContainerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      mappingName: pulumi.Input.fromValue(map['mappingName'] as String),
+      protectionContainerName: pulumi.Input.fromValue(
+        map['protectionContainerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

@@ -280,30 +280,43 @@ import 'system_data_response.dart';
 class CommunicationService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location where the communication service stores its data at rest.
   late final pulumi.Output<String> dataLocation;
+
   /// FQDN of the CommunicationService instance.
   late final pulumi.Output<String> hostName;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The immutable resource Id of the communication service.
   late final pulumi.Output<String> immutableResourceId;
+
   /// List of email Domain resource Ids.
   late final pulumi.Output<List<String>?> linkedDomains;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Resource ID of an Azure Notification Hub linked to this resource.
   late final pulumi.Output<String> notificationHubId;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the CommunicationService resource. Probably you need the same or higher version of client SDKs.
   late final pulumi.Output<String> version;
 
@@ -316,24 +329,24 @@ class CommunicationService extends pulumi.CustomResource {
     CommunicationServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:communication:CommunicationService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataLocation = registerOutput<String>('dataLocation');
-    this.hostName = registerOutput<String>('hostName');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.immutableResourceId = registerOutput<String>('immutableResourceId');
-    this.linkedDomains = registerOutput<List<String>?>('linkedDomains');
-    this.location = registerOutput<String>('location');
+         'azure-native:communication:CommunicationService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataLocation = registerOutput<String>('dataLocation');
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    immutableResourceId = registerOutput<String>('immutableResourceId');
+    linkedDomains = registerOutput<List<String>?>('linkedDomains');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notificationHubId = registerOutput<String>('notificationHubId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    notificationHubId = registerOutput<String>('notificationHubId');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

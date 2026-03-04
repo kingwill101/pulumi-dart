@@ -1,18 +1,17 @@
 /// Whether or not to keep the retain setting.
 enum MqttRetainType {
   keep("Keep"),
-  never("Never");
+  never_("Never");
 
-  const MqttRetainType(this.value);
-  final String value;
+  const MqttRetainType(this.wireValue);
+  final String wireValue;
 
   static MqttRetainType fromValue(String value) {
     for (final item in MqttRetainType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MqttRetainType value: $value');
   }
 }
-

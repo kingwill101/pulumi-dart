@@ -101,16 +101,22 @@ import 'resolver_firewall_rule_group_state.dart';
 class ResolverFirewallRuleGroup extends pulumi.CustomResource {
   /// The ARN (Amazon Resource Name) of the rule group.
   late final pulumi.Output<String> arn;
+
   /// A name that lets you identify the rule group, to manage and use it.
   late final pulumi.Output<String> name;
+
   /// The AWS account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Whether the rule group is shared with other AWS accounts, or was shared with the current account by another AWS account. Sharing is configured through AWS Resource Access Manager (AWS RAM). Valid values: `NOT_SHARED`, `SHARED_BY_ME`, `SHARED_WITH_ME`
   late final pulumi.Output<String> shareStatus;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -123,18 +129,18 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
     ResolverFirewallRuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.shareStatus = registerOutput<String>('shareStatus');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ResolverFirewallRuleGroup] resource's state with the given [name] and [id].
@@ -155,17 +161,17 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.shareStatus = registerOutput<String>('shareStatus');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

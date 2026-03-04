@@ -163,24 +163,34 @@ import 'ssl_key_cert_state.dart';
 class SslKeyCert extends pulumi.CustomResource {
   /// The content of the cert.
   late final pulumi.Output<String> certContent;
+
   /// full path of the SSL certificate on the BIGIP.
   late final pulumi.Output<String> certFullPath;
+
   /// Specifies the type of monitoring used.
   late final pulumi.Output<String?> certMonitoringType;
+
   /// Name of the SSL certificate to be Imported on to BIGIP.
   late final pulumi.Output<String> certName;
+
   /// Specifies the OCSP responder.
   late final pulumi.Output<String?> certOcsp;
+
   /// Specifies the issuer certificate.
   late final pulumi.Output<String?> issuerCert;
+
   /// The content of the key.
   late final pulumi.Output<String> keyContent;
+
   /// full path of the SSL key on the BIGIP.
   late final pulumi.Output<String> keyFullPath;
+
   /// Name of the SSL key to be Imported on to BIGIP.
   late final pulumi.Output<String> keyName;
+
   /// Partition on to SSL certificate and key to be imported.
   late final pulumi.Output<String?> partition;
+
   /// Passphrase on the SSL key.
   late final pulumi.Output<String?> passphrase;
 
@@ -193,22 +203,22 @@ class SslKeyCert extends pulumi.CustomResource {
     SslKeyCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/sslKeyCert:SslKeyCert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certContent = registerOutput<String>('certContent');
-    this.certFullPath = registerOutput<String>('certFullPath');
-    this.certMonitoringType = registerOutput<String?>('certMonitoringType');
-    this.certName = registerOutput<String>('certName');
-    this.certOcsp = registerOutput<String?>('certOcsp');
-    this.issuerCert = registerOutput<String?>('issuerCert');
-    this.keyContent = registerOutput<String>('keyContent');
-    this.keyFullPath = registerOutput<String>('keyFullPath');
-    this.keyName = registerOutput<String>('keyName');
-    this.partition = registerOutput<String?>('partition');
-    this.passphrase = registerOutput<String?>('passphrase');
+         'f5bigip:index/sslKeyCert:SslKeyCert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certContent = registerOutput<String>('certContent');
+    certFullPath = registerOutput<String>('certFullPath');
+    certMonitoringType = registerOutput<String?>('certMonitoringType');
+    certName = registerOutput<String>('certName');
+    certOcsp = registerOutput<String?>('certOcsp');
+    issuerCert = registerOutput<String?>('issuerCert');
+    keyContent = registerOutput<String>('keyContent');
+    keyFullPath = registerOutput<String>('keyFullPath');
+    keyName = registerOutput<String>('keyName');
+    partition = registerOutput<String?>('partition');
+    passphrase = registerOutput<String?>('passphrase');
   }
 
   /// Gets an existing [SslKeyCert] resource's state with the given [name] and [id].
@@ -229,21 +239,21 @@ class SslKeyCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/sslKeyCert:SslKeyCert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certContent = registerOutput<String>('certContent');
-    this.certFullPath = registerOutput<String>('certFullPath');
-    this.certMonitoringType = registerOutput<String?>('certMonitoringType');
-    this.certName = registerOutput<String>('certName');
-    this.certOcsp = registerOutput<String?>('certOcsp');
-    this.issuerCert = registerOutput<String?>('issuerCert');
-    this.keyContent = registerOutput<String>('keyContent');
-    this.keyFullPath = registerOutput<String>('keyFullPath');
-    this.keyName = registerOutput<String>('keyName');
-    this.partition = registerOutput<String?>('partition');
-    this.passphrase = registerOutput<String?>('passphrase');
+         'f5bigip:index/sslKeyCert:SslKeyCert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certContent = registerOutput<String>('certContent');
+    certFullPath = registerOutput<String>('certFullPath');
+    certMonitoringType = registerOutput<String?>('certMonitoringType');
+    certName = registerOutput<String>('certName');
+    certOcsp = registerOutput<String?>('certOcsp');
+    issuerCert = registerOutput<String?>('issuerCert');
+    keyContent = registerOutput<String>('keyContent');
+    keyFullPath = registerOutput<String>('keyFullPath');
+    keyName = registerOutput<String>('keyName');
+    partition = registerOutput<String?>('partition');
+    passphrase = registerOutput<String?>('passphrase');
   }
 }

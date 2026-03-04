@@ -33,13 +33,22 @@ class GetRegionClusterIamPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetRegionClusterIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionClusterIamPolicyDataprocV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionClusterIamPolicyDataprocV1beta2Args(
-      clusterId: (map['clusterId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

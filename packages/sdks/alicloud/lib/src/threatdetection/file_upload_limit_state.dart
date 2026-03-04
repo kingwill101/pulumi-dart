@@ -9,20 +9,19 @@ class FileUploadLimitState {
 
   /// Creates a new [FileUploadLimitState].
   /// [limit] File Upload Threshold.
-  FileUploadLimitState({
-    this.limit,
-  });
+  FileUploadLimitState({this.limit});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limit': ?limit,
-    };
+    return <String, dynamic>{'limit': ?limit};
   }
 
   factory FileUploadLimitState.fromMap(Map<String, dynamic> map) {
     return FileUploadLimitState(
-      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      limit: (() {
+        final guardedValue = map['limit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

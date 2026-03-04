@@ -5,16 +5,20 @@ enum ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 {
   computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
   computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
 
-  const ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1(this.value);
-  final String value;
+  const ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 fromValue(String value) {
-    for (final item in ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1.values) {
-      if (item.value == value) {
+  static ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

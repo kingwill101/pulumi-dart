@@ -4,16 +4,15 @@ enum ScriptExecutionParameterType {
   secureValue("SecureValue"),
   credential("Credential");
 
-  const ScriptExecutionParameterType(this.value);
-  final String value;
+  const ScriptExecutionParameterType(this.wireValue);
+  final String wireValue;
 
   static ScriptExecutionParameterType fromValue(String value) {
     for (final item in ScriptExecutionParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScriptExecutionParameterType value: $value');
   }
 }
-

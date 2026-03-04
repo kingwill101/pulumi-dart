@@ -7,10 +7,15 @@ import 'get_index_document_metadata_configuration_update_search.dart';
 class GetIndexDocumentMetadataConfigurationUpdate {
   /// Name of the index field. Minimum length of 1. Maximum length of 30.
   final pulumi.Input<String> name;
+
   /// Block that provides manual tuning parameters to determine how the field affects the search results. Documented below.
-  final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateRelevance>> relevances;
+  final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateRelevance>>
+  relevances;
+
   /// Block that provides information about how the field is used during a search. Documented below.
-  final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateSearch>> searches;
+  final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateSearch>>
+  searches;
+
   /// Data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
   final pulumi.Input<String> type;
 
@@ -29,19 +34,61 @@ class GetIndexDocumentMetadataConfigurationUpdate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'relevances': pulumi.Input.mapInputValue<List<GetIndexDocumentMetadataConfigurationUpdateRelevance>, List<Map<String, dynamic>>>(relevances, (value) => pulumi.Input.encodeList<GetIndexDocumentMetadataConfigurationUpdateRelevance, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'searches': pulumi.Input.mapInputValue<List<GetIndexDocumentMetadataConfigurationUpdateSearch>, List<Map<String, dynamic>>>(searches, (value) => pulumi.Input.encodeList<GetIndexDocumentMetadataConfigurationUpdateSearch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'relevances':
+          pulumi.Input.mapInputValue<
+            List<GetIndexDocumentMetadataConfigurationUpdateRelevance>,
+            List<Map<String, dynamic>>
+          >(
+            relevances,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetIndexDocumentMetadataConfigurationUpdateRelevance,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'searches':
+          pulumi.Input.mapInputValue<
+            List<GetIndexDocumentMetadataConfigurationUpdateSearch>,
+            List<Map<String, dynamic>>
+          >(
+            searches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetIndexDocumentMetadataConfigurationUpdateSearch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
-  factory GetIndexDocumentMetadataConfigurationUpdate.fromMap(Map<String, dynamic> map) {
+  factory GetIndexDocumentMetadataConfigurationUpdate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIndexDocumentMetadataConfigurationUpdate(
-      name: (map['name'] as String).input(),
-      relevances: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateRelevance>(map['relevances']!, (value) => GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searches: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateSearch>(map['searches']!, (value) => GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      relevances: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetIndexDocumentMetadataConfigurationUpdateRelevance
+        >(
+          map['relevances']!,
+          (value) =>
+              GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      searches: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetIndexDocumentMetadataConfigurationUpdateSearch
+        >(
+          map['searches']!,
+          (value) => GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -142,7 +142,7 @@ import 'email_service_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Communication` - 2023-03-31
@@ -157,10 +157,13 @@ import 'email_service_state.dart';
 class EmailService extends pulumi.CustomResource {
   /// The location where the Email Communication service stores its data at rest. Possible values are `Africa`, `Asia Pacific`, `Australia`, `Brazil`, `Canada`, `Europe`, `France`, `Germany`, `India`, `Japan`, `Korea`, `Norway`, `Switzerland`, `UAE`, `UK` `usgov` and `United States`. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> dataLocation;
+
   /// The name of the Email Communication Service resource. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Email Communication Service should exist. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Email Communication Service.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -173,15 +176,15 @@ class EmailService extends pulumi.CustomResource {
     EmailServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/emailService:EmailService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataLocation = registerOutput<String>('dataLocation');
+         'azure:communication/emailService:EmailService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataLocation = registerOutput<String>('dataLocation');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [EmailService] resource's state with the given [name] and [id].
@@ -202,14 +205,14 @@ class EmailService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/emailService:EmailService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataLocation = registerOutput<String>('dataLocation');
+         'azure:communication/emailService:EmailService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataLocation = registerOutput<String>('dataLocation');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

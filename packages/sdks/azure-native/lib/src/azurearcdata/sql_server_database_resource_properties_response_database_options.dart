@@ -46,17 +46,50 @@ class SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
     };
   }
 
-  factory SqlServerDatabaseResourcePropertiesResponseDatabaseOptions.fromMap(Map<String, dynamic> map) {
+  factory SqlServerDatabaseResourcePropertiesResponseDatabaseOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerDatabaseResourcePropertiesResponseDatabaseOptions(
-      isAutoCloseOn: map['isAutoCloseOn'] == null ? null : (map['isAutoCloseOn']! as bool).input(),
-      isAutoCreateStatsOn: map['isAutoCreateStatsOn'] == null ? null : (map['isAutoCreateStatsOn']! as bool).input(),
-      isAutoShrinkOn: map['isAutoShrinkOn'] == null ? null : (map['isAutoShrinkOn']! as bool).input(),
-      isAutoUpdateStatsOn: map['isAutoUpdateStatsOn'] == null ? null : (map['isAutoUpdateStatsOn']! as bool).input(),
-      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted']! as bool).input(),
-      isMemoryOptimizationEnabled: map['isMemoryOptimizationEnabled'] == null ? null : (map['isMemoryOptimizationEnabled']! as bool).input(),
-      isRemoteDataArchiveEnabled: map['isRemoteDataArchiveEnabled'] == null ? null : (map['isRemoteDataArchiveEnabled']! as bool).input(),
-      isTrustworthyOn: map['isTrustworthyOn'] == null ? null : (map['isTrustworthyOn']! as bool).input(),
+      isAutoCloseOn: (() {
+        final guardedValue = map['isAutoCloseOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isAutoCreateStatsOn: (() {
+        final guardedValue = map['isAutoCreateStatsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isAutoShrinkOn: (() {
+        final guardedValue = map['isAutoShrinkOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isAutoUpdateStatsOn: (() {
+        final guardedValue = map['isAutoUpdateStatsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isEncrypted: (() {
+        final guardedValue = map['isEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isMemoryOptimizationEnabled: (() {
+        final guardedValue = map['isMemoryOptimizationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isRemoteDataArchiveEnabled: (() {
+        final guardedValue = map['isRemoteDataArchiveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isTrustworthyOn: (() {
+        final guardedValue = map['isTrustworthyOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

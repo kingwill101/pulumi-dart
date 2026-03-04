@@ -8,20 +8,15 @@ class OrganizationPolicyBooleanPolicy {
 
   /// Creates a new [OrganizationPolicyBooleanPolicy].
   /// [enforced] If true, then the Policy is enforced. If false, then any configuration is acceptable.
-  OrganizationPolicyBooleanPolicy({
-    required this.enforced,
-  });
+  OrganizationPolicyBooleanPolicy({required this.enforced});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enforced': enforced,
-    };
+    return <String, dynamic>{'enforced': enforced};
   }
 
   factory OrganizationPolicyBooleanPolicy.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyBooleanPolicy(
-      enforced: (map['enforced'] as bool).input(),
+      enforced: pulumi.Input.fromValue(map['enforced'] as bool),
     );
   }
 }
-

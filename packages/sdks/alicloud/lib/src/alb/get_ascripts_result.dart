@@ -7,16 +7,21 @@ import 'get_ascripts_ascript.dart';
 class GetAscriptsResult {
   /// Script name.
   final String? ascriptName;
+
   /// A list of AScript Entries. Each element contains the following attributes:
   final List<GetAscriptsAscript> ascripts;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of AScript IDs.
   final List<String> ids;
+
   /// Listener ID of script attribution.
   final String? listenerId;
   final String? nameRegex;
+
   /// A list of name of AScripts.
   final List<String> names;
   final String? outputFile;
@@ -46,7 +51,11 @@ class GetAscriptsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ascriptName': ?ascriptName,
-      'ascripts': pulumi.Input.encodeList<GetAscriptsAscript, Map<String, dynamic>>(ascripts, (value) => value.toMap()),
+      'ascripts':
+          pulumi.Input.encodeList<GetAscriptsAscript, Map<String, dynamic>>(
+            ascripts,
+            (value) => value.toMap(),
+          ),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -59,16 +68,39 @@ class GetAscriptsResult {
 
   factory GetAscriptsResult.fromMap(Map<String, dynamic> map) {
     return GetAscriptsResult(
-      ascriptName: map['ascriptName'] == null ? null : map['ascriptName']! as String,
-      ascripts: pulumi.Input.decodeList<GetAscriptsAscript>(map['ascripts'], (value) => GetAscriptsAscript.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      ascriptName: (() {
+        final guardedValue = map['ascriptName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ascripts: pulumi.Input.decodeList<GetAscriptsAscript>(
+        map['ascripts']!,
+        (value) =>
+            GetAscriptsAscript.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: map['listenerId'] == null ? null : map['listenerId']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      listenerId: (() {
+        final guardedValue = map['listenerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

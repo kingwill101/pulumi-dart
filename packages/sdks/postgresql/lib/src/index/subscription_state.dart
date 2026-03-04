@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionState {
   /// The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
   final pulumi.Input<String>? conninfo;
+
   /// Specifies whether the command should create the replication slot on the publisher. Default behavior is true
   final pulumi.Input<bool>? createSlot;
+
   /// Which database to create the subscription on. Defaults to provider database.
   final pulumi.Input<String>? database;
+
   /// The name of the publication.
   final pulumi.Input<String>? name;
+
   /// Names of the publications on the publisher to subscribe to
   final pulumi.Input<List<String>>? publications;
+
   /// Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
   final pulumi.Input<String>? slotName;
 
@@ -46,13 +51,36 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      conninfo: map['conninfo'] == null ? null : (map['conninfo']! as String).input(),
-      createSlot: map['createSlot'] == null ? null : (map['createSlot']! as bool).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publications: map['publications'] == null ? null : ((map['publications']! as List).cast<String>()).input(),
-      slotName: map['slotName'] == null ? null : (map['slotName']! as String).input(),
+      conninfo: (() {
+        final guardedValue = map['conninfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createSlot: (() {
+        final guardedValue = map['createSlot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publications: (() {
+        final guardedValue = map['publications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      slotName: (() {
+        final guardedValue = map['slotName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

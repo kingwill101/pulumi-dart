@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetEnvironmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The custom metadata defined for API catalog entities.
   final dynamic customProperties;
+
   /// The environment description.
   final String? description;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Environment kind.
   final String kind;
+
   /// The name of the resource
   final String name;
+
   /// Environment onboarding information
   final OnboardingResponse? onboarding;
+
   /// Server information of the environment.
   final EnvironmentServerResponse? server;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Environment title.
   final String title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -63,8 +73,8 @@ class GetEnvironmentResult {
       'id': id,
       'kind': kind,
       'name': name,
-      'onboarding': ?onboarding == null ? null : onboarding!.toMap(),
-      'server': ?server == null ? null : server!.toMap(),
+      'onboarding': ?onboarding?.toMap(),
+      'server': ?server?.toMap(),
       'systemData': systemData.toMap(),
       'title': title,
       'type': type,
@@ -74,17 +84,38 @@ class GetEnvironmentResult {
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customProperties: map['customProperties'] == null ? null : map['customProperties']!,
-      description: map['description'] == null ? null : map['description']! as String,
+      customProperties: (() {
+        final guardedValue = map['customProperties'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      onboarding: map['onboarding'] == null ? null : OnboardingResponse.fromMap((map['onboarding']! as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : EnvironmentServerResponse.fromMap((map['server']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      onboarding: (() {
+        final guardedValue = map['onboarding'];
+        if (guardedValue == null) return null;
+        return OnboardingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return EnvironmentServerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       title: map['title'] as String,
       type: map['type'] as String,
     );
   }
 }
-

@@ -8,38 +8,55 @@ import 'user_settings_toolbar_configuration.dart';
 class UserSettingsState {
   /// Additional encryption context for the user settings.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+
   /// List of web portal ARNs to associate with the user settings.
   final pulumi.Input<List<String>>? associatedPortalArns;
+
   /// Configuration that specifies which cookies should be synchronized from the end user's local browser to the remote browser. Detailed below.
-  final pulumi.Input<UserSettingsCookieSynchronizationConfiguration>? cookieSynchronizationConfiguration;
+  final pulumi.Input<UserSettingsCookieSynchronizationConfiguration>?
+  cookieSynchronizationConfiguration;
+
   /// Specifies whether the user can copy text from the streaming session to the local device. Valid values are `Enabled` or `Disabled`.
   final pulumi.Input<String>? copyAllowed;
+
   /// ARN of the customer managed KMS key.
   final pulumi.Input<String>? customerManagedKey;
+
   /// Specifies whether the user can use deep links that open automatically when connecting to a session. Valid values are `Enabled` or `Disabled`.
   final pulumi.Input<String>? deepLinkAllowed;
+
   /// Amount of time that a streaming session remains active after users disconnect. Value must be between 1 and 600 minutes.
   final pulumi.Input<int>? disconnectTimeoutInMinutes;
+
   /// Specifies whether the user can download files from the streaming session to the local device. Valid values are `Enabled` or `Disabled`.
   final pulumi.Input<String>? downloadAllowed;
+
   /// Amount of time that users can be idle before they are disconnected from their streaming session. Value must be between 0 and 60 minutes.
   final pulumi.Input<int>? idleDisconnectTimeoutInMinutes;
+
   /// Specifies whether the user can paste text from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
   final pulumi.Input<String>? pasteAllowed;
+
   /// Specifies whether the user can print to the local device. Valid values are `Enabled` or `Disabled`.
   final pulumi.Input<String>? printAllowed;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Configuration of the toolbar. Detailed below.
   final pulumi.Input<UserSettingsToolbarConfiguration>? toolbarConfiguration;
+
   /// Specifies whether the user can upload files from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? uploadAllowed;
+
   /// ARN of the user settings resource.
   final pulumi.Input<String>? userSettingsArn;
 
@@ -85,7 +102,11 @@ class UserSettingsState {
     return <String, dynamic>{
       'additionalEncryptionContext': ?additionalEncryptionContext,
       'associatedPortalArns': ?associatedPortalArns,
-      'cookieSynchronizationConfiguration': ?pulumi.Input.mapOptionalInputValue<UserSettingsCookieSynchronizationConfiguration, Map<String, dynamic>>(cookieSynchronizationConfiguration, (value) => value.toMap()),
+      'cookieSynchronizationConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserSettingsCookieSynchronizationConfiguration,
+            Map<String, dynamic>
+          >(cookieSynchronizationConfiguration, (value) => value.toMap()),
       'copyAllowed': ?copyAllowed,
       'customerManagedKey': ?customerManagedKey,
       'deepLinkAllowed': ?deepLinkAllowed,
@@ -97,7 +118,11 @@ class UserSettingsState {
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'toolbarConfiguration': ?pulumi.Input.mapOptionalInputValue<UserSettingsToolbarConfiguration, Map<String, dynamic>>(toolbarConfiguration, (value) => value.toMap()),
+      'toolbarConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserSettingsToolbarConfiguration,
+            Map<String, dynamic>
+          >(toolbarConfiguration, (value) => value.toMap()),
       'uploadAllowed': ?uploadAllowed,
       'userSettingsArn': ?userSettingsArn,
     };
@@ -105,24 +130,105 @@ class UserSettingsState {
 
   factory UserSettingsState.fromMap(Map<String, dynamic> map) {
     return UserSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
-      cookieSynchronizationConfiguration: map['cookieSynchronizationConfiguration'] == null ? null : ((UserSettingsCookieSynchronizationConfiguration.fromMap((map['cookieSynchronizationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      copyAllowed: map['copyAllowed'] == null ? null : ((map['copyAllowed'] as String).input()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
-      deepLinkAllowed: map['deepLinkAllowed'] == null ? null : ((map['deepLinkAllowed'] as String).input()).input(),
-      disconnectTimeoutInMinutes: map['disconnectTimeoutInMinutes'] == null ? null : ((map['disconnectTimeoutInMinutes'] as int).input()).input(),
-      downloadAllowed: map['downloadAllowed'] == null ? null : ((map['downloadAllowed'] as String).input()).input(),
-      idleDisconnectTimeoutInMinutes: map['idleDisconnectTimeoutInMinutes'] == null ? null : ((map['idleDisconnectTimeoutInMinutes'] as int).input()).input(),
-      pasteAllowed: map['pasteAllowed'] == null ? null : ((map['pasteAllowed'] as String).input()).input(),
-      printAllowed: map['printAllowed'] == null ? null : ((map['printAllowed'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      toolbarConfiguration: map['toolbarConfiguration'] == null ? null : ((UserSettingsToolbarConfiguration.fromMap((map['toolbarConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      uploadAllowed: map['uploadAllowed'] == null ? null : ((map['uploadAllowed'] as String).input()).input(),
-      userSettingsArn: map['userSettingsArn'] == null ? null : ((map['userSettingsArn'] as String).input()).input(),
+      additionalEncryptionContext: (() {
+        final guardedValue = map['additionalEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      associatedPortalArns: (() {
+        final guardedValue = map['associatedPortalArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cookieSynchronizationConfiguration: (() {
+        final guardedValue = map['cookieSynchronizationConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserSettingsCookieSynchronizationConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      copyAllowed: (() {
+        final guardedValue = map['copyAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerManagedKey: (() {
+        final guardedValue = map['customerManagedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deepLinkAllowed: (() {
+        final guardedValue = map['deepLinkAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disconnectTimeoutInMinutes: (() {
+        final guardedValue = map['disconnectTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      downloadAllowed: (() {
+        final guardedValue = map['downloadAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idleDisconnectTimeoutInMinutes: (() {
+        final guardedValue = map['idleDisconnectTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pasteAllowed: (() {
+        final guardedValue = map['pasteAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      printAllowed: (() {
+        final guardedValue = map['printAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      toolbarConfiguration: (() {
+        final guardedValue = map['toolbarConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserSettingsToolbarConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uploadAllowed: (() {
+        final guardedValue = map['uploadAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userSettingsArn: (() {
+        final guardedValue = map['userSettingsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

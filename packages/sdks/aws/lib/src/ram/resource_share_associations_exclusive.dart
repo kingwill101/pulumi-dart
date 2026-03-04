@@ -4,11 +4,11 @@ import 'resource_share_associations_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of principal and resource associations for an AWS RAM (Resource Access Manager) Resource Share.
 ///
-/// !> This resource takes exclusive ownership over principal and resource associations for a resource share. This includes removal of principals and resources which are not explicitly configured.
+/// !&gt; This resource takes exclusive ownership over principal and resource associations for a resource share. This includes removal of principals and resources which are not explicitly configured.
 ///
-/// > Destruction of this resource will disassociate all configured principals and resources from the resource share.
+/// &gt; Destruction of this resource will disassociate all configured principals and resources from the resource share.
 ///
-/// > **NOTE:** This resource cannot be used in conjunction with `aws.ram.PrincipalAssociation` or `aws.ram.ResourceAssociation` for the same resource share. Using them together will cause persistent drift and conflicts.
+/// &gt; **NOTE:** This resource cannot be used in conjunction with `aws.ram.PrincipalAssociation` or `aws.ram.ResourceAssociation` for the same resource share. Using them together will cause persistent drift and conflicts.
 ///
 /// ## Example Usage
 ///
@@ -452,7 +452,7 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 /// When sharing resources with AWS services, use service principals. Service principals follow the pattern `service-id.amazonaws.com` (e.g., `pca-connector-ad.amazonaws.com`, `elasticmapreduce.amazonaws.com`). The `sources` argument can be used to restrict which AWS accounts the service can access the shared resources from.
 ///
-/// > **NOTE:** Service principals cannot be mixed with other principal types (AWS account IDs, organization ARNs, OU ARNs, IAM role ARNs, or IAM user ARNs) in the same resource.
+/// &gt; **NOTE:** Service principals cannot be mixed with other principal types (AWS account IDs, organization ARNs, OU ARNs, IAM role ARNs, or IAM user ARNs) in the same resource.
 ///
 ///
 /// ```typescript
@@ -698,7 +698,7 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 /// To automatically remove any configured associations, omit the `principals` and `resource_arns` arguments or set them to empty lists.
 ///
-/// > This will not **prevent** associations from being created via Terraform (or any other interface). This resource enables bringing associations into a configured state, however, this reconciliation happens only when `apply` is proactively run.
+/// &gt; This will not **prevent** associations from being created via Terraform (or any other interface). This resource enables bringing associations into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
 ///
 /// ```typescript
@@ -801,12 +801,16 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
   /// * IAM user ARN (e.g., `arn:aws:iam::123456789012:user/example-user`)
   /// * Service principal (e.g., `ec2.amazonaws.com`)
   late final pulumi.Output<List<String>?> principals;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
   late final pulumi.Output<List<String>?> resourceArns;
+
   /// The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   late final pulumi.Output<String> resourceShareArn;
+
   /// A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   late final pulumi.Output<List<String>?> sources;
 
@@ -819,16 +823,16 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
     ResourceShareAssociationsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.principals = registerOutput<List<String>?>('principals');
-    this.region = registerOutput<String>('region');
-    this.resourceArns = registerOutput<List<String>?>('resourceArns');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
-    this.sources = registerOutput<List<String>?>('sources');
+         'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    principals = registerOutput<List<String>?>('principals');
+    region = registerOutput<String>('region');
+    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+    sources = registerOutput<List<String>?>('sources');
   }
 
   /// Gets an existing [ResourceShareAssociationsExclusive] resource's state with the given [name] and [id].
@@ -849,15 +853,15 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.principals = registerOutput<List<String>?>('principals');
-    this.region = registerOutput<String>('region');
-    this.resourceArns = registerOutput<List<String>?>('resourceArns');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
-    this.sources = registerOutput<List<String>?>('sources');
+         'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    principals = registerOutput<List<String>?>('principals');
+    region = registerOutput<String>('region');
+    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+    sources = registerOutput<List<String>?>('sources');
   }
 }

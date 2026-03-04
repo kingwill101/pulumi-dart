@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIPPrefixArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the public IP prefix.
   final pulumi.Input<String> publicIpPrefixName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetPublicIPPrefixArgs {
 
   factory GetPublicIPPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIPPrefixArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      publicIpPrefixName: (map['publicIpPrefixName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpPrefixName: pulumi.Input.fromValue(
+        map['publicIpPrefixName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

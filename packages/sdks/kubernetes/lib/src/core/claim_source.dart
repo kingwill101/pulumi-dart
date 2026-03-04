@@ -8,9 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClaimSource {
   /// ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   final pulumi.Input<String>? resourceClaimName;
+
   /// ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
   ///
-  /// The template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The name of the ResourceClaim will be <pod name>-<resource name>, where <resource name> is the PodResourceClaim.Name. Pod validation will reject the pod if the concatenated name is not valid for a ResourceClaim (e.g. too long).
+  /// The template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The name of the ResourceClaim will be &lt;pod name&gt;-&lt;resource name&gt;, where &lt;resource name&gt; is the PodResourceClaim.Name. Pod validation will reject the pod if the concatenated name is not valid for a ResourceClaim (e.g. too long).
   ///
   /// An existing ResourceClaim with that name that is not owned by the pod will not be used for the pod to avoid using an unrelated resource by mistake. Scheduling and pod startup are then blocked until the unrelated ResourceClaim is removed.
   ///
@@ -20,10 +21,7 @@ class ClaimSource {
   /// Creates a new [ClaimSource].
   /// [resourceClaimName] ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   /// [resourceClaimTemplateName] ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
-  ClaimSource({
-    this.resourceClaimName,
-    this.resourceClaimTemplateName,
-  });
+  ClaimSource({this.resourceClaimName, this.resourceClaimTemplateName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +32,16 @@ class ClaimSource {
 
   factory ClaimSource.fromMap(Map<String, dynamic> map) {
     return ClaimSource(
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
-      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName']! as String).input(),
+      resourceClaimName: (() {
+        final guardedValue = map['resourceClaimName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceClaimTemplateName: (() {
+        final guardedValue = map['resourceClaimTemplateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

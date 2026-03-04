@@ -6,7 +6,9 @@ import 'instance_v2_engine_list_node_group.dart';
 
 class InstanceV2EngineList {
   /// Connect Address List
-  final pulumi.Input<List<InstanceV2EngineListConnectAddressList>>? connectAddressLists;
+  final pulumi.Input<List<InstanceV2EngineListConnectAddressList>>?
+  connectAddressLists;
+
   /// Engine
   ///
   /// Enumeration value:
@@ -22,12 +24,16 @@ class InstanceV2EngineList {
   /// - `LROW`: Wide table Engine 3.0
   /// - `LSTREAM`: Stream engine
   final pulumi.Input<String> engineType;
+
   /// Whether it is the latest version
   final pulumi.Input<bool>? isLastVersion;
+
   /// Latest Version
   final pulumi.Input<String>? latestVersion;
+
   /// Node Group List See `node_group` below.
   final pulumi.Input<List<InstanceV2EngineListNodeGroup>>? nodeGroups;
+
   /// Engine Version
   final pulumi.Input<String>? version;
 
@@ -49,24 +55,79 @@ class InstanceV2EngineList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectAddressLists': ?pulumi.Input.mapOptionalInputValue<List<InstanceV2EngineListConnectAddressList>, List<Map<String, dynamic>>>(connectAddressLists, (value) => pulumi.Input.encodeList<InstanceV2EngineListConnectAddressList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectAddressLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceV2EngineListConnectAddressList>,
+            List<Map<String, dynamic>>
+          >(
+            connectAddressLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceV2EngineListConnectAddressList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'engineType': engineType,
       'isLastVersion': ?isLastVersion,
       'latestVersion': ?latestVersion,
-      'nodeGroups': ?pulumi.Input.mapOptionalInputValue<List<InstanceV2EngineListNodeGroup>, List<Map<String, dynamic>>>(nodeGroups, (value) => pulumi.Input.encodeList<InstanceV2EngineListNodeGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceV2EngineListNodeGroup>,
+            List<Map<String, dynamic>>
+          >(
+            nodeGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceV2EngineListNodeGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'version': ?version,
     };
   }
 
   factory InstanceV2EngineList.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineList(
-      connectAddressLists: map['connectAddressLists'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListConnectAddressList>(map['connectAddressLists']!, (value) => InstanceV2EngineListConnectAddressList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      engineType: (map['engineType'] as String).input(),
-      isLastVersion: map['isLastVersion'] == null ? null : (map['isLastVersion']! as bool).input(),
-      latestVersion: map['latestVersion'] == null ? null : (map['latestVersion']! as String).input(),
-      nodeGroups: map['nodeGroups'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListNodeGroup>(map['nodeGroups']!, (value) => InstanceV2EngineListNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      connectAddressLists: (() {
+        final guardedValue = map['connectAddressLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceV2EngineListConnectAddressList>(
+            guardedValue,
+            (value) => InstanceV2EngineListConnectAddressList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      engineType: pulumi.Input.fromValue(map['engineType'] as String),
+      isLastVersion: (() {
+        final guardedValue = map['isLastVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      latestVersion: (() {
+        final guardedValue = map['latestVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroups: (() {
+        final guardedValue = map['nodeGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceV2EngineListNodeGroup>(
+            guardedValue,
+            (value) => InstanceV2EngineListNodeGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

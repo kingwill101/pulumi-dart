@@ -9,20 +9,15 @@ class DataflowEndpointAuthenticationX509 {
 
   /// Creates a new [DataflowEndpointAuthenticationX509].
   /// [secretRef] Secret reference of the X.509 certificate.
-  DataflowEndpointAuthenticationX509({
-    required this.secretRef,
-  });
+  DataflowEndpointAuthenticationX509({required this.secretRef});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretRef': secretRef,
-    };
+    return <String, dynamic>{'secretRef': secretRef};
   }
 
   factory DataflowEndpointAuthenticationX509.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationX509(
-      secretRef: (map['secretRef'] as String).input(),
+      secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
     );
   }
 }
-

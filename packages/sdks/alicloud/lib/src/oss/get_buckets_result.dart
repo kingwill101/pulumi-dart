@@ -7,9 +7,11 @@ import 'get_buckets_bucket.dart';
 class GetBucketsResult {
   /// A list of buckets. Each element contains the following attributes:
   final List<GetBucketsBucket> buckets;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
+
   /// A list of bucket names.
   final List<String> names;
   final String? outputFile;
@@ -30,7 +32,11 @@ class GetBucketsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+      'buckets':
+          pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(
+            buckets,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'nameRegex': ?nameRegex,
       'names': names,
@@ -40,12 +46,23 @@ class GetBucketsResult {
 
   factory GetBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketsResult(
-      buckets: pulumi.Input.decodeList<GetBucketsBucket>(map['buckets'], (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
+      buckets: pulumi.Input.decodeList<GetBucketsBucket>(
+        map['buckets']!,
+        (value) =>
+            GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

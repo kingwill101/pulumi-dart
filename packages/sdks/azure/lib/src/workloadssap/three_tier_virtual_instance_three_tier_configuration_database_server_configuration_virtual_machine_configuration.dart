@@ -6,9 +6,17 @@ import 'three_tier_virtual_instance_three_tier_configuration_database_server_con
 
 class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration {
   /// An `image` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage> image;
+  final pulumi.Input<
+    ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage
+  >
+  image;
+
   /// An `os_profile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile> osProfile;
+  final pulumi.Input<
+    ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile
+  >
+  osProfile;
+
   /// The size of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineSize;
 
@@ -24,18 +32,37 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationV
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'image': pulumi.Input.mapInputValue<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'osProfile': pulumi.Input.mapInputValue<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'image':
+          pulumi.Input.mapInputValue<
+            ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'osProfile':
+          pulumi.Input.mapInputValue<
+            ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
       'virtualMachineSize': virtualMachineSize,
     };
   }
 
-  factory ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration(
-      image: (ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      osProfile: (ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineSize: (map['virtualMachineSize'] as String).input(),
+      image: pulumi.Input.fromValue(
+        ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImage.fromMap(
+          (map['image']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      osProfile: pulumi.Input.fromValue(
+        ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfile.fromMap(
+          (map['osProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      virtualMachineSize: pulumi.Input.fromValue(
+        map['virtualMachineSize'] as String,
+      ),
     );
   }
 }
-

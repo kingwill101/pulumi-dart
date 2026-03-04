@@ -1,5 +1,3 @@
-library module_apicenter;
-
 export 'apicenter/api.dart';
 export 'apicenter/api_args.dart';
 export 'apicenter/api_definition.dart';

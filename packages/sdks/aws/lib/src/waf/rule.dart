@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_args.dart';
-import 'rule_predicate.dart';
 import 'rule_state.dart';
 
 /// Provides a WAF Rule Resource
@@ -220,14 +219,19 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The ARN of the WAF rule.
   late final pulumi.Output<String> arn;
+
   /// The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
   late final pulumi.Output<String> metricName;
+
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
+
   /// The objects to include in a rule (documented below).
-  late final pulumi.Output<List<RulePredicate>?> predicates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> predicates;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -235,30 +239,23 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_waf_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:waf/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.metricName = registerOutput<String>('metricName');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:waf/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    this.predicates = registerOutput<List<RulePredicate>?>('predicates');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(
-    String name,
-    pulumi.Input<String> id, {
-    RuleState? state,
-  }) {
+  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -271,16 +268,16 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.metricName = registerOutput<String>('metricName');
+         'aws:waf/rule:Rule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    this.predicates = registerOutput<List<RulePredicate>?>('predicates');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

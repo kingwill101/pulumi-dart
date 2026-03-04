@@ -4,16 +4,15 @@ enum OptionsPrimaryIds {
   keep("KEEP"),
   regen("REGEN");
 
-  const OptionsPrimaryIds(this.value);
-  final String value;
+  const OptionsPrimaryIds(this.wireValue);
+  final String wireValue;
 
   static OptionsPrimaryIds fromValue(String value) {
     for (final item in OptionsPrimaryIds.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OptionsPrimaryIds value: $value');
   }
 }
-

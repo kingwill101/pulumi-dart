@@ -7,6 +7,7 @@ import 'artifact_store_network_fabric_controller_end_points_response.dart';
 class ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult {
   /// The URI to get the next set of results.
   final String nextLink;
+
   /// A list of network fabric controllers.
   final List<ArtifactStoreNetworkFabricControllerEndPointsResponse>? value;
 
@@ -21,15 +22,35 @@ class ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<ArtifactStoreNetworkFabricControllerEndPointsResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ArtifactStoreNetworkFabricControllerEndPointsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap(Map<String, dynamic> map) {
+  factory ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ArtifactStoreNetworkFabricControllerEndPointsResponse>(map['value']!, (value) => ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<
+          ArtifactStoreNetworkFabricControllerEndPointsResponse
+        >(
+          guardedValue,
+          (value) =>
+              ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        );
+      })(),
     );
   }
 }
-

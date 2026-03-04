@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingState {
   /// Name of an existing S3 bucket where the log files are to be stored. Required when `log_destination_type` is `s3`. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions. For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
   final pulumi.Input<String>? bucketName;
+
   /// Identifier of the source cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? clusterIdentifier;
+
   /// Log destination type. Valid values are `s3` and `cloudwatch`.
   final pulumi.Input<String>? logDestinationType;
+
   /// Collection of exported log types. Required when `log_destination_type` is `cloudwatch`. Valid values are `connectionlog`, `useractivitylog`, and `userlog`.
   final pulumi.Input<List<String>>? logExports;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Prefix applied to the log file names.
   final pulumi.Input<String>? s3KeyPrefix;
 
@@ -48,13 +53,36 @@ class LoggingState {
 
   factory LoggingState.fromMap(Map<String, dynamic> map) {
     return LoggingState(
-      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
-      logDestinationType: map['logDestinationType'] == null ? null : ((map['logDestinationType'] as String).input()).input(),
-      logExports: map['logExports'] == null ? null : (((map['logExports'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterIdentifier: (() {
+        final guardedValue = map['clusterIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logDestinationType: (() {
+        final guardedValue = map['logDestinationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logExports: (() {
+        final guardedValue = map['logExports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3KeyPrefix: (() {
+        final guardedValue = map['s3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

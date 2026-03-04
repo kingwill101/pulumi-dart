@@ -6,16 +6,22 @@ enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
   upperCaseAlphaNumeric("UPPER_CASE_ALPHA_NUMERIC"),
   alphaNumeric("ALPHA_NUMERIC");
 
-  const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet(this.value);
-  final String value;
+  const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet value: $value',
+    );
   }
 }
-

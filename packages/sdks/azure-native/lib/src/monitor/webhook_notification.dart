@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebhookNotification {
   /// a property bag of settings. This value can be empty.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// the service address to receive the notification.
   final pulumi.Input<String>? serviceUri;
 
   /// Creates a new [WebhookNotification].
   /// [properties] a property bag of settings. This value can be empty.
   /// [serviceUri] the service address to receive the notification.
-  WebhookNotification({
-    this.properties,
-    this.serviceUri,
-  });
+  WebhookNotification({this.properties, this.serviceUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,18 @@ class WebhookNotification {
 
   factory WebhookNotification.fromMap(Map<String, dynamic> map) {
     return WebhookNotification(
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serviceUri: (() {
+        final guardedValue = map['serviceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

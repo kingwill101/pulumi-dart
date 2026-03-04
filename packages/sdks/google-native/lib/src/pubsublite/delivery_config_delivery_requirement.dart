@@ -4,16 +4,17 @@ enum DeliveryConfigDeliveryRequirement {
   deliverImmediately("DELIVER_IMMEDIATELY"),
   deliverAfterStored("DELIVER_AFTER_STORED");
 
-  const DeliveryConfigDeliveryRequirement(this.value);
-  final String value;
+  const DeliveryConfigDeliveryRequirement(this.wireValue);
+  final String wireValue;
 
   static DeliveryConfigDeliveryRequirement fromValue(String value) {
     for (final item in DeliveryConfigDeliveryRequirement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeliveryConfigDeliveryRequirement value: $value');
+    throw ArgumentError(
+      'Unknown DeliveryConfigDeliveryRequirement value: $value',
+    );
   }
 }
-

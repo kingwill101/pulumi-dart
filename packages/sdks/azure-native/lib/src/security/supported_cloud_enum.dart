@@ -3,16 +3,15 @@ enum SupportedCloudEnum {
   valueAWS("AWS"),
   valueGCP("GCP");
 
-  const SupportedCloudEnum(this.value);
-  final String value;
+  const SupportedCloudEnum(this.wireValue);
+  final String wireValue;
 
   static SupportedCloudEnum fromValue(String value) {
     for (final item in SupportedCloudEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SupportedCloudEnum value: $value');
   }
 }
-

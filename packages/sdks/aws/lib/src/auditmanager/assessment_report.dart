@@ -114,14 +114,19 @@ class AssessmentReport extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> assessmentId;
+
   /// Name of the user who created the assessment report.
   late final pulumi.Output<String> author;
+
   /// Description of the assessment report.
   late final pulumi.Output<String?> description;
+
   /// Name of the assessment report.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Current status of the specified assessment report. Valid values are `COMPLETE`, `IN_PROGRESS`, and `FAILED`.
   late final pulumi.Output<String> status;
 
@@ -134,17 +139,17 @@ class AssessmentReport extends pulumi.CustomResource {
     AssessmentReportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:auditmanager/assessmentReport:AssessmentReport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentId = registerOutput<String>('assessmentId');
-    this.author = registerOutput<String>('author');
-    this.description = registerOutput<String?>('description');
+         'aws:auditmanager/assessmentReport:AssessmentReport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    author = registerOutput<String>('author');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AssessmentReport] resource's state with the given [name] and [id].
@@ -165,16 +170,16 @@ class AssessmentReport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:auditmanager/assessmentReport:AssessmentReport',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentId = registerOutput<String>('assessmentId');
-    this.author = registerOutput<String>('author');
-    this.description = registerOutput<String?>('description');
+         'aws:auditmanager/assessmentReport:AssessmentReport',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    author = registerOutput<String>('author');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 }

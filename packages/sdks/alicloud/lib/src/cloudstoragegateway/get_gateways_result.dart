@@ -6,6 +6,7 @@ import 'get_gateways_gateway.dart';
 /// Result data returned by getGateways.
 class GetGatewaysResult {
   final List<GetGatewaysGateway> gateways;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -46,7 +47,11 @@ class GetGatewaysResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gateways': pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
+      'gateways':
+          pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(
+            gateways,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -62,18 +67,41 @@ class GetGatewaysResult {
 
   factory GetGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetGatewaysResult(
-      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(map['gateways'], (value) => GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
+      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(
+        map['gateways']!,
+        (value) =>
+            GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       storageBundleId: map['storageBundleId'] as String,
       totalCount: map['totalCount'] as int,
     );
   }
 }
-

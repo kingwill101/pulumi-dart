@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceBindingNetworkservicesV1beta1Args {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Optional. Set of label tags associated with the ServiceBinding resource.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   final pulumi.Input<String> service;
+
   /// Required. Short name of the ServiceBinding resource to be created.
   final pulumi.Input<String> serviceBindingId;
 
@@ -50,16 +54,41 @@ class ServiceBindingNetworkservicesV1beta1Args {
     };
   }
 
-  factory ServiceBindingNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory ServiceBindingNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceBindingNetworkservicesV1beta1Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      service: (map['service'] as String).input(),
-      serviceBindingId: (map['serviceBindingId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      serviceBindingId: pulumi.Input.fromValue(
+        map['serviceBindingId'] as String,
+      ),
     );
   }
 }
-

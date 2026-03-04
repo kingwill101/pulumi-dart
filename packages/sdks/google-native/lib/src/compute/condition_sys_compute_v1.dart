@@ -6,16 +6,15 @@ enum ConditionSysComputeV1 {
   region("REGION"),
   service("SERVICE");
 
-  const ConditionSysComputeV1(this.value);
-  final String value;
+  const ConditionSysComputeV1(this.wireValue);
+  final String wireValue;
 
   static ConditionSysComputeV1 fromValue(String value) {
     for (final item in ConditionSysComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionSysComputeV1 value: $value');
   }
 }
-

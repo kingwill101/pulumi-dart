@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterArgs {
   /// The name of the cluster that you want to create.
   final pulumi.Input<String> clusterName;
+
   /// The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
   final pulumi.Input<int> clusterType;
+
   /// The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
   final pulumi.Input<String>? logicalRegionId;
+
   /// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   final pulumi.Input<int> networkMode;
+
   /// The ID of the Virtual Private Cloud (VPC) for the cluster.
   final pulumi.Input<String>? vpcId;
 
@@ -44,12 +48,19 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      clusterType: (map['clusterType'] as int).input(),
-      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId']! as String).input(),
-      networkMode: (map['networkMode'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      clusterType: pulumi.Input.fromValue(map['clusterType'] as int),
+      logicalRegionId: (() {
+        final guardedValue = map['logicalRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkMode: pulumi.Input.fromValue(map['networkMode'] as int),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

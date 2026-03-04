@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
-import 'application_artifact_response.dart';
-import 'application_authorization_response.dart';
 import 'application_billing_details_definition_response.dart';
 import 'application_client_details_response.dart';
 import 'application_jit_access_policy_response.dart';
@@ -157,54 +155,80 @@ import 'system_data_response.dart';
 class Application extends pulumi.CustomResource {
   /// The fully qualified path of managed application definition Id.
   late final pulumi.Output<String?> applicationDefinitionId;
+
   /// The collection of managed application artifacts.
-  late final pulumi.Output<List<ApplicationArtifactResponse>> artifacts;
+  late final pulumi.Output<List<Map<String, dynamic>>> artifacts;
+
   /// The  read-only authorizations property that is retrieved from the application package.
-  late final pulumi.Output<List<ApplicationAuthorizationResponse>> authorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The managed application billing details.
-  late final pulumi.Output<ApplicationBillingDetailsDefinitionResponse> billingDetails;
+  late final pulumi.Output<ApplicationBillingDetailsDefinitionResponse>
+  billingDetails;
+
   /// The client entity that created the JIT request.
   late final pulumi.Output<ApplicationClientDetailsResponse> createdBy;
+
   /// The read-only customer support property that is retrieved from the application package.
   late final pulumi.Output<ApplicationPackageContactResponse> customerSupport;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The managed application Jit access policy.
   late final pulumi.Output<ApplicationJitAccessPolicyResponse?> jitAccessPolicy;
+
   /// The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
   late final pulumi.Output<String> kind;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The managed resource group Id.
   late final pulumi.Output<String?> managedResourceGroupId;
+
   /// The managed application management mode.
   late final pulumi.Output<String> managementMode;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Name and value pairs that define the managed application outputs.
   late final pulumi.Output<dynamic> outputs;
+
   /// Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string.
   late final pulumi.Output<dynamic> parameters;
+
   /// The plan information.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// The managed application provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The publisher tenant Id.
   late final pulumi.Output<String> publisherTenantId;
+
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The read-only support URLs property that is retrieved from the application package.
   late final pulumi.Output<ApplicationPackageSupportUrlsResponse> supportUrls;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// The client entity that last updated the JIT request.
   late final pulumi.Output<ApplicationClientDetailsResponse> updatedBy;
 
@@ -217,36 +241,49 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:solutions:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
-    this.artifacts = registerOutput<List<ApplicationArtifactResponse>>('artifacts');
-    this.authorizations = registerOutput<List<ApplicationAuthorizationResponse>>('authorizations');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingDetails = registerOutput<ApplicationBillingDetailsDefinitionResponse>('billingDetails');
-    this.createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy');
-    this.customerSupport = registerOutput<ApplicationPackageContactResponse>('customerSupport');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>('jitAccessPolicy');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
-    this.managedResourceGroupId = registerOutput<String?>('managedResourceGroupId');
-    this.managementMode = registerOutput<String>('managementMode');
+         'azure-native:solutions:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationDefinitionId = registerOutput<String?>(
+      'applicationDefinitionId',
+    );
+    artifacts = registerOutput<List<Map<String, dynamic>>>('artifacts');
+    authorizations = registerOutput<List<Map<String, dynamic>>>(
+      'authorizations',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingDetails =
+        registerOutput<ApplicationBillingDetailsDefinitionResponse>(
+          'billingDetails',
+        );
+    createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy');
+    customerSupport = registerOutput<ApplicationPackageContactResponse>(
+      'customerSupport',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>(
+      'jitAccessPolicy',
+    );
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    managedResourceGroupId = registerOutput<String?>('managedResourceGroupId');
+    managementMode = registerOutput<String>('managementMode');
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<dynamic>('outputs');
-    this.parameters = registerOutput<dynamic>('parameters');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publisherTenantId = registerOutput<String>('publisherTenantId');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>('supportUrls');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy');
+    outputs = registerOutput<dynamic>('outputs');
+    parameters = registerOutput<dynamic>('parameters');
+    plan = registerOutput<PlanResponse?>('plan');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisherTenantId = registerOutput<String>('publisherTenantId');
+    sku = registerOutput<SkuResponse?>('sku');
+    supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>(
+      'supportUrls',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy');
   }
 }

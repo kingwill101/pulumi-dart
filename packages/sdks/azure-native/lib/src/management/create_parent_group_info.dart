@@ -9,20 +9,19 @@ class CreateParentGroupInfo {
 
   /// Creates a new [CreateParentGroupInfo].
   /// [id] The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-  CreateParentGroupInfo({
-    this.id,
-  });
+  CreateParentGroupInfo({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory CreateParentGroupInfo.fromMap(Map<String, dynamic> map) {
     return CreateParentGroupInfo(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

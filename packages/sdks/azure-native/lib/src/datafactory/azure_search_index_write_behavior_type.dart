@@ -3,16 +3,17 @@ enum AzureSearchIndexWriteBehaviorType {
   valueMerge("Merge"),
   valueUpload("Upload");
 
-  const AzureSearchIndexWriteBehaviorType(this.value);
-  final String value;
+  const AzureSearchIndexWriteBehaviorType(this.wireValue);
+  final String wireValue;
 
   static AzureSearchIndexWriteBehaviorType fromValue(String value) {
     for (final item in AzureSearchIndexWriteBehaviorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureSearchIndexWriteBehaviorType value: $value');
+    throw ArgumentError(
+      'Unknown AzureSearchIndexWriteBehaviorType value: $value',
+    );
   }
 }
-

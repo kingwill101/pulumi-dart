@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig {
   /// Name of the Amazon S3 bucket.
   final pulumi.Input<String>? bucketName;
+
   /// Amazon S3 bucket prefix.
   final pulumi.Input<String>? bucketPrefix;
 
@@ -23,11 +24,20 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResp
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig(
-      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

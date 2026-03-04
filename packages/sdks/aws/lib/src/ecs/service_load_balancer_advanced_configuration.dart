@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceLoadBalancerAdvancedConfiguration {
   /// ARN of the alternate target group to use for Blue/Green deployments.
   final pulumi.Input<String> alternateTargetGroupArn;
+
   /// ARN of the listener rule that routes production traffic.
   final pulumi.Input<String> productionListenerRule;
+
   /// ARN of the IAM role that allows ECS to manage the target groups.
   final pulumi.Input<String> roleArn;
+
   /// ARN of the listener rule that routes test traffic.
   final pulumi.Input<String>? testListenerRule;
 
@@ -33,13 +36,22 @@ class ServiceLoadBalancerAdvancedConfiguration {
     };
   }
 
-  factory ServiceLoadBalancerAdvancedConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ServiceLoadBalancerAdvancedConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceLoadBalancerAdvancedConfiguration(
-      alternateTargetGroupArn: (map['alternateTargetGroupArn'] as String).input(),
-      productionListenerRule: (map['productionListenerRule'] as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      testListenerRule: map['testListenerRule'] == null ? null : ((map['testListenerRule'] as String).input()).input(),
+      alternateTargetGroupArn: pulumi.Input.fromValue(
+        map['alternateTargetGroupArn'] as String,
+      ),
+      productionListenerRule: pulumi.Input.fromValue(
+        map['productionListenerRule'] as String,
+      ),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      testListenerRule: (() {
+        final guardedValue = map['testListenerRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

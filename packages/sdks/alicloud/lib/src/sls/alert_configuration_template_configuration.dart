@@ -5,13 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertConfigurationTemplateConfiguration {
   /// Template Annotations.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Template Language.
   final pulumi.Input<String>? lang;
+
   /// Template ID.
   final pulumi.Input<String>? templateId;
+
   /// Template Variables.
   final pulumi.Input<Map<String, String>>? tokens;
   final pulumi.Input<String>? type;
+
   /// Template Version.
   final pulumi.Input<String>? version;
 
@@ -42,15 +46,44 @@ class AlertConfigurationTemplateConfiguration {
     };
   }
 
-  factory AlertConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AlertConfigurationTemplateConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertConfigurationTemplateConfiguration(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
-      tokens: map['tokens'] == null ? null : ((map['tokens']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokens: (() {
+        final guardedValue = map['tokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

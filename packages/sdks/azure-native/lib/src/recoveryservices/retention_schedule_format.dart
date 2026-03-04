@@ -4,16 +4,15 @@ enum RetentionScheduleFormat {
   valueDaily("Daily"),
   valueWeekly("Weekly");
 
-  const RetentionScheduleFormat(this.value);
-  final String value;
+  const RetentionScheduleFormat(this.wireValue);
+  final String wireValue;
 
   static RetentionScheduleFormat fromValue(String value) {
     for (final item in RetentionScheduleFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RetentionScheduleFormat value: $value');
   }
 }
-

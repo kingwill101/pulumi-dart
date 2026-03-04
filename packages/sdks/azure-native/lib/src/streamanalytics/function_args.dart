@@ -10,12 +10,16 @@ import 'aggregate_function_properties.dart';
 class FunctionArgs {
   /// The name of the function.
   final pulumi.Input<String>? functionName;
+
   /// The name of the streaming job.
   final pulumi.Input<String> jobName;
+
   /// Resource name
   final pulumi.Input<String>? name;
+
   /// The properties that are associated with a function.
   final pulumi.Input<AggregateFunctionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +42,40 @@ class FunctionArgs {
       'functionName': ?functionName,
       'jobName': jobName,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AggregateFunctionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AggregateFunctionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      functionName: (() {
+        final guardedValue = map['functionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AggregateFunctionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

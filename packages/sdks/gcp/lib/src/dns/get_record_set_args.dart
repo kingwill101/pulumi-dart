@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordSetArgs {
   /// The Name of the zone.
   final pulumi.Input<String> managedZone;
+
   /// The DNS name for the resource.
   final pulumi.Input<String> name;
+
   /// The ID of the project for the Google Cloud.
   final pulumi.Input<String>? project;
+
   /// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
   final pulumi.Input<String> type;
 
@@ -39,11 +42,14 @@ class GetRecordSetArgs {
 
   factory GetRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordSetArgs(
-      managedZone: (map['managedZone'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: (map['type'] as String).input(),
+      managedZone: pulumi.Input.fromValue(map['managedZone'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

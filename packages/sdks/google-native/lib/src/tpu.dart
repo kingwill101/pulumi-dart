@@ -1,5 +1,3 @@
-library module_tpu;
-
 export 'tpu/accelerator_config.dart';
 export 'tpu/accelerator_config_response.dart';
 export 'tpu/accelerator_config_response_tpu_v2alpha1.dart';

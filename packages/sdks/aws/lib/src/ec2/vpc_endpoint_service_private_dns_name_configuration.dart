@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServicePrivateDnsNameConfiguration {
   /// Name of the record subdomain the service provider needs to create.
   final pulumi.Input<String>? name;
+
   /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
   final pulumi.Input<String>? state;
+
   /// Endpoint service verification type, for example `TXT`.
   final pulumi.Input<String>? type;
+
   /// Value the service provider adds to the private DNS name domain record before verification.
   final pulumi.Input<String>? value;
 
@@ -33,13 +36,30 @@ class VpcEndpointServicePrivateDnsNameConfiguration {
     };
   }
 
-  factory VpcEndpointServicePrivateDnsNameConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointServicePrivateDnsNameConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointServicePrivateDnsNameConfiguration(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

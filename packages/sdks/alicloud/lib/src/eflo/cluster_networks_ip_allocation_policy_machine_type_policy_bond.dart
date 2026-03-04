@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
   /// The bond name
   final pulumi.Input<String>? name;
+
   /// IP source cluster subnet
   final pulumi.Input<String>? subnet;
 
@@ -17,17 +18,23 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'subnet': ?subnet,
-    };
+    return <String, dynamic>{'name': ?name, 'subnet': ?subnet};
   }
 
-  factory ClusterNetworksIpAllocationPolicyMachineTypePolicyBond.fromMap(Map<String, dynamic> map) {
+  factory ClusterNetworksIpAllocationPolicyMachineTypePolicyBond.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNetworksIpAllocationPolicyMachineTypePolicyBond(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

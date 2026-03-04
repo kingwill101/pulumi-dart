@@ -7,16 +7,15 @@ enum AccessRightsDescription {
   valueRegistrationStatusRead("RegistrationStatusRead"),
   valueRegistrationStatusWrite("RegistrationStatusWrite");
 
-  const AccessRightsDescription(this.value);
-  final String value;
+  const AccessRightsDescription(this.wireValue);
+  final String wireValue;
 
   static AccessRightsDescription fromValue(String value) {
     for (final item in AccessRightsDescription.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessRightsDescription value: $value');
   }
 }
-

@@ -7,33 +7,47 @@ import 'get_cluster_gateway.dart';
 class GetClusterResult {
   /// The HDInsight Cluster ID.
   final String clusterId;
+
   /// The version of HDInsights which is used on this HDInsight Cluster.
   final String clusterVersion;
+
   /// A map of versions of software used on this HDInsights Cluster.
   final Map<String, String> componentVersions;
+
   /// The SSH Endpoint of the Edge Node for this HDInsight Cluster, if an Edge Node exists.
   final String edgeSshEndpoint;
+
   /// A `gateway` block as defined below.
   final List<GetClusterGateway> gateways;
+
   /// The HTTPS Endpoint for this HDInsight Cluster.
   final String httpsEndpoint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Kafka Rest Proxy Endpoint for this HDInsight Cluster.
   final String kafkaRestProxyEndpoint;
+
   /// The kind of HDInsight Cluster this is, such as a Spark or Storm cluster.
   final String kind;
+
   /// The Azure Region in which this HDInsight Cluster exists.
   final String location;
+
   /// The HDInsight Cluster name.
   final String name;
   final String resourceGroupName;
+
   /// The SSH Endpoint for this HDInsight Cluster.
   final String sshEndpoint;
+
   /// A map of tags assigned to the HDInsight Cluster.
   final Map<String, String> tags;
+
   /// The SKU / Tier of this HDInsight Cluster.
   final String tier;
+
   /// The minimal supported TLS version.
   final String tlsMinVersion;
 
@@ -79,7 +93,11 @@ class GetClusterResult {
       'clusterVersion': clusterVersion,
       'componentVersions': componentVersions,
       'edgeSshEndpoint': edgeSshEndpoint,
-      'gateways': pulumi.Input.encodeList<GetClusterGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
+      'gateways':
+          pulumi.Input.encodeList<GetClusterGateway, Map<String, dynamic>>(
+            gateways,
+            (value) => value.toMap(),
+          ),
       'httpsEndpoint': httpsEndpoint,
       'id': id,
       'kafkaRestProxyEndpoint': kafkaRestProxyEndpoint,
@@ -98,9 +116,14 @@ class GetClusterResult {
     return GetClusterResult(
       clusterId: map['clusterId'] as String,
       clusterVersion: map['clusterVersion'] as String,
-      componentVersions: (map['componentVersions'] as Map).cast<String, String>(),
+      componentVersions: (map['componentVersions'] as Map)
+          .cast<String, String>(),
       edgeSshEndpoint: map['edgeSshEndpoint'] as String,
-      gateways: pulumi.Input.decodeList<GetClusterGateway>(map['gateways'], (value) => GetClusterGateway.fromMap((value as Map).cast<String, dynamic>())),
+      gateways: pulumi.Input.decodeList<GetClusterGateway>(
+        map['gateways']!,
+        (value) =>
+            GetClusterGateway.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       httpsEndpoint: map['httpsEndpoint'] as String,
       id: map['id'] as String,
       kafkaRestProxyEndpoint: map['kafkaRestProxyEndpoint'] as String,
@@ -115,4 +138,3 @@ class GetClusterResult {
     );
   }
 }
-

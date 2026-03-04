@@ -6,7 +6,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.112.0+.
+/// &gt; **NOTE:** Available in v1.112.0+.
 ///
 /// ## Example Usage
 ///
@@ -131,7 +131,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.112.0+.
+/// &gt; **NOTE:** Available in v1.112.0+.
 ///
 /// ## Example Usage
 ///

@@ -6,25 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessageContactState {
   /// The time when the contact was created.
   final pulumi.Input<String>? createTime;
+
   /// The email address of the contact.
   /// After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
   final pulumi.Input<String>? emailAddress;
+
   /// The name of the contact.
   /// The name must be unique in your resource directory.
   /// The name must be 2 to 12 characters in length and can contain only letters.
   final pulumi.Input<String>? messageContactName;
+
   /// The types of messages received by the contact.
   final pulumi.Input<List<String>>? messageTypes;
+
   /// The mobile phone number of the contact.
   ///
   /// Specify the mobile phone number in the `-` format.
   ///
-  /// > **NOTE:**  Only mobile phone numbers in the `86-` format in the Chinese mainland are supported.
+  /// &gt; **NOTE:**  Only mobile phone numbers in the `86-` format in the Chinese mainland are supported.
   ///
   /// After you specify a mobile phone number, you need to call SendPhoneVerificationForMessageContact to send verification information to the mobile phone number. After the verification is passed, the mobile phone number takes effect.
   final pulumi.Input<String>? phoneNumber;
+
   /// The status of the contact.
   final pulumi.Input<String>? status;
+
   /// The job title of the contact.Valid values:
   /// - FinanceDirector
   /// - TechnicalDirector
@@ -66,14 +72,41 @@ class MessageContactState {
 
   factory MessageContactState.fromMap(Map<String, dynamic> map) {
     return MessageContactState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
-      messageContactName: map['messageContactName'] == null ? null : (map['messageContactName']! as String).input(),
-      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes']! as List).cast<String>()).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailAddress: (() {
+        final guardedValue = map['emailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageContactName: (() {
+        final guardedValue = map['messageContactName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageTypes: (() {
+        final guardedValue = map['messageTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

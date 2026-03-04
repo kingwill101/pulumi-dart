@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleTemplateNrtTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> description;
+
   /// The query of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> query;
+
   /// The alert severity of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> severity;
+
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>> tactics;
 
@@ -35,11 +38,10 @@ class GetAlertRuleTemplateNrtTemplate {
 
   factory GetAlertRuleTemplateNrtTemplate.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateNrtTemplate(
-      description: (map['description'] as String).input(),
-      query: (map['query'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      tactics: ((map['tactics'] as List).cast<String>()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
     );
   }
 }
-

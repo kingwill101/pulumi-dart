@@ -9,23 +9,16 @@ class GetRulesRuleForwardIp {
   /// Creates a new [GetRulesRuleForwardIp].
   /// [ip] Required.
   /// [port] Required.
-  GetRulesRuleForwardIp({
-    required this.ip,
-    required this.port,
-  });
+  GetRulesRuleForwardIp({required this.ip, required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ip,
-      'port': port,
-    };
+    return <String, dynamic>{'ip': ip, 'port': port};
   }
 
   factory GetRulesRuleForwardIp.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleForwardIp(
-      ip: (map['ip'] as String).input(),
-      port: (map['port'] as int).input(),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

@@ -277,7 +277,7 @@ import 'subnet_nat_gateway_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -292,6 +292,7 @@ import 'subnet_nat_gateway_association_state.dart';
 class SubnetNatGatewayAssociation extends pulumi.CustomResource {
   /// The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natGatewayId;
+
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
 
@@ -304,13 +305,13 @@ class SubnetNatGatewayAssociation extends pulumi.CustomResource {
     SubnetNatGatewayAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [SubnetNatGatewayAssociation] resource's state with the given [name] and [id].
@@ -331,12 +332,12 @@ class SubnetNatGatewayAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

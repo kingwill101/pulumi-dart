@@ -1,5 +1,3 @@
-library module_delegatednetwork;
-
 export 'delegatednetwork/controller_details.dart';
 export 'delegatednetwork/controller_details_args.dart';
 export 'delegatednetwork/controller_details_delegatednetwork.dart';

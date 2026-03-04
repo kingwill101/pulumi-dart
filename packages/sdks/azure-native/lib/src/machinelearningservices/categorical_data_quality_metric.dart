@@ -4,16 +4,15 @@ enum CategoricalDataQualityMetric {
   valueDataTypeErrorRate("DataTypeErrorRate"),
   valueOutOfBoundsRate("OutOfBoundsRate");
 
-  const CategoricalDataQualityMetric(this.value);
-  final String value;
+  const CategoricalDataQualityMetric(this.wireValue);
+  final String wireValue;
 
   static CategoricalDataQualityMetric fromValue(String value) {
     for (final item in CategoricalDataQualityMetric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CategoricalDataQualityMetric value: $value');
   }
 }
-

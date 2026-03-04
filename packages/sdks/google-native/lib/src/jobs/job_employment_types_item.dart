@@ -11,16 +11,15 @@ enum JobEmploymentTypesItem {
   flyInFlyOut("FLY_IN_FLY_OUT"),
   otherEmploymentType("OTHER_EMPLOYMENT_TYPE");
 
-  const JobEmploymentTypesItem(this.value);
-  final String value;
+  const JobEmploymentTypesItem(this.wireValue);
+  final String wireValue;
 
   static JobEmploymentTypesItem fromValue(String value) {
     for (final item in JobEmploymentTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobEmploymentTypesItem value: $value');
   }
 }
-

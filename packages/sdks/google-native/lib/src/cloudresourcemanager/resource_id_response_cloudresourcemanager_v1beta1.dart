@@ -9,20 +9,17 @@ class ResourceIdResponseCloudresourcemanagerV1beta1 {
 
   /// Creates a new [ResourceIdResponseCloudresourcemanagerV1beta1].
   /// [type] Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
-  ResourceIdResponseCloudresourcemanagerV1beta1({
-    required this.type,
-  });
+  ResourceIdResponseCloudresourcemanagerV1beta1({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory ResourceIdResponseCloudresourcemanagerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ResourceIdResponseCloudresourcemanagerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceIdResponseCloudresourcemanagerV1beta1(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -12,42 +12,61 @@ import 'sub_resource_response.dart';
 class GetPublicIPPrefixResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The customIpPrefix that this prefix is associated with.
   final SubResourceResponse? customIPPrefix;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// The extended location of the public ip address.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Resource ID.
   final String? id;
+
   /// The allocated Prefix.
   final String ipPrefix;
+
   /// The list of tags associated with the public IP prefix.
   final List<IpTagResponse>? ipTags;
+
   /// The reference to load balancer frontend IP configuration associated with the public IP prefix.
   final SubResourceResponse loadBalancerFrontendIpConfiguration;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// NatGateway of Public IP Prefix.
   final NatGatewayResponse? natGateway;
+
   /// The Length of the Public IP Prefix.
   final int? prefixLength;
+
   /// The provisioning state of the public IP prefix resource.
   final String provisioningState;
+
   /// The public IP address version.
   final String? publicIPAddressVersion;
+
   /// The list of all referenced PublicIPAddresses.
   final List<ReferencedPublicIpAddressResponse> publicIPAddresses;
+
   /// The resource GUID property of the public IP prefix resource.
   final String resourceGuid;
+
   /// The public IP prefix SKU.
   final PublicIPPrefixSkuResponse? sku;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
+
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   final List<String>? zones;
 
@@ -98,22 +117,34 @@ class GetPublicIPPrefixResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'customIPPrefix': ?customIPPrefix == null ? null : customIPPrefix!.toMap(),
+      'customIPPrefix': ?customIPPrefix?.toMap(),
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': ?id,
       'ipPrefix': ipPrefix,
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
-      'loadBalancerFrontendIpConfiguration': loadBalancerFrontendIpConfiguration.toMap(),
+      'ipTags': ?(() {
+        final guardedValue = ipTags;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
+      'loadBalancerFrontendIpConfiguration': loadBalancerFrontendIpConfiguration
+          .toMap(),
       'location': ?location,
       'name': name,
-      'natGateway': ?natGateway == null ? null : natGateway!.toMap(),
+      'natGateway': ?natGateway?.toMap(),
       'prefixLength': ?prefixLength,
       'provisioningState': provisioningState,
       'publicIPAddressVersion': ?publicIPAddressVersion,
-      'publicIPAddresses': pulumi.Input.encodeList<ReferencedPublicIpAddressResponse, Map<String, dynamic>>(publicIPAddresses, (value) => value.toMap()),
+      'publicIPAddresses':
+          pulumi.Input.encodeList<
+            ReferencedPublicIpAddressResponse,
+            Map<String, dynamic>
+          >(publicIPAddresses, (value) => value.toMap()),
       'resourceGuid': resourceGuid,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'tags': ?tags,
       'type': type,
       'zones': ?zones,
@@ -123,26 +154,90 @@ class GetPublicIPPrefixResult {
   factory GetPublicIPPrefixResult.fromMap(Map<String, dynamic> map) {
     return GetPublicIPPrefixResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customIPPrefix: map['customIPPrefix'] == null ? null : SubResourceResponse.fromMap((map['customIPPrefix']! as Map).cast<String, dynamic>()),
+      customIPPrefix: (() {
+        final guardedValue = map['customIPPrefix'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id']! as String,
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       ipPrefix: map['ipPrefix'] as String,
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<IpTagResponse>(map['ipTags']!, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerFrontendIpConfiguration: SubResourceResponse.fromMap((map['loadBalancerFrontendIpConfiguration'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      ipTags: (() {
+        final guardedValue = map['ipTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<IpTagResponse>(
+          guardedValue,
+          (value) =>
+              IpTagResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
+      loadBalancerFrontendIpConfiguration: SubResourceResponse.fromMap(
+        (map['loadBalancerFrontendIpConfiguration']! as Map)
+            .cast<String, dynamic>(),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      natGateway: map['natGateway'] == null ? null : NatGatewayResponse.fromMap((map['natGateway']! as Map).cast<String, dynamic>()),
-      prefixLength: map['prefixLength'] == null ? null : map['prefixLength']! as int,
+      natGateway: (() {
+        final guardedValue = map['natGateway'];
+        if (guardedValue == null) return null;
+        return NatGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      prefixLength: (() {
+        final guardedValue = map['prefixLength'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : map['publicIPAddressVersion']! as String,
-      publicIPAddresses: pulumi.Input.decodeList<ReferencedPublicIpAddressResponse>(map['publicIPAddresses'], (value) => ReferencedPublicIpAddressResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicIPAddressVersion: (() {
+        final guardedValue = map['publicIPAddressVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      publicIPAddresses:
+          pulumi.Input.decodeList<ReferencedPublicIpAddressResponse>(
+            map['publicIPAddresses']!,
+            (value) => ReferencedPublicIpAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       resourceGuid: map['resourceGuid'] as String,
-      sku: map['sku'] == null ? null : PublicIPPrefixSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return PublicIPPrefixSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

@@ -7,9 +7,11 @@ import 'get_table_acl.dart';
 class GetTableResult {
   /// A mapping of ACLs for this Table.
   final List<GetTableAcl> acls;
+
   /// The ID of the Storage Table.
   final String id;
   final String name;
+
   /// The Resource Manager ID of this Storage Table.
   final String resourceManagerId;
   final String storageAccountName;
@@ -30,7 +32,10 @@ class GetTableResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': pulumi.Input.encodeList<GetTableAcl, Map<String, dynamic>>(acls, (value) => value.toMap()),
+      'acls': pulumi.Input.encodeList<GetTableAcl, Map<String, dynamic>>(
+        acls,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'name': name,
       'resourceManagerId': resourceManagerId,
@@ -40,7 +45,10 @@ class GetTableResult {
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
-      acls: pulumi.Input.decodeList<GetTableAcl>(map['acls'], (value) => GetTableAcl.fromMap((value as Map).cast<String, dynamic>())),
+      acls: pulumi.Input.decodeList<GetTableAcl>(
+        map['acls']!,
+        (value) => GetTableAcl.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
@@ -48,4 +56,3 @@ class GetTableResult {
     );
   }
 }
-

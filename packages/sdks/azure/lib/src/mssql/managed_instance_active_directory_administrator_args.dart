@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceActiveDirectoryAdministratorArgs {
   /// When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.
   final pulumi.Input<bool>? azureadAuthenticationOnly;
+
   /// The login name of the principal to set as the Managed Instance Administrator.
   final pulumi.Input<String> loginUsername;
+
   /// The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
   final pulumi.Input<String> managedInstanceId;
+
   /// The Object ID of the principal to set as the Managed Instance Administrator.
   final pulumi.Input<String> objectId;
+
   /// The Azure Active Directory Tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -42,14 +46,21 @@ class ManagedInstanceActiveDirectoryAdministratorArgs {
     };
   }
 
-  factory ManagedInstanceActiveDirectoryAdministratorArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedInstanceActiveDirectoryAdministratorArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedInstanceActiveDirectoryAdministratorArgs(
-      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : (map['azureadAuthenticationOnly']! as bool).input(),
-      loginUsername: (map['loginUsername'] as String).input(),
-      managedInstanceId: (map['managedInstanceId'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      azureadAuthenticationOnly: (() {
+        final guardedValue = map['azureadAuthenticationOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loginUsername: pulumi.Input.fromValue(map['loginUsername'] as String),
+      managedInstanceId: pulumi.Input.fromValue(
+        map['managedInstanceId'] as String,
+      ),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

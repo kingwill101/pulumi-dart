@@ -3,16 +3,15 @@ enum AutoRunState {
   autoRunEnabled("Enabled"),
   autoRunDisabled("Disabled");
 
-  const AutoRunState(this.value);
-  final String value;
+  const AutoRunState(this.wireValue);
+  final String wireValue;
 
   static AutoRunState fromValue(String value) {
     for (final item in AutoRunState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoRunState value: $value');
   }
 }
-

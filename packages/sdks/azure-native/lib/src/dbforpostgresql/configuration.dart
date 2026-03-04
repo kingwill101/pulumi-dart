@@ -147,32 +147,46 @@ import 'system_data_response.dart';
 class Configuration extends pulumi.CustomResource {
   /// Allowed values of the configuration (also known as server parameter).
   late final pulumi.Output<String> allowedValues;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Data type of the configuration (also known as server parameter).
   late final pulumi.Output<String> dataType;
+
   /// Value assigned by default to the configuration (also known as server parameter).
   late final pulumi.Output<String> defaultValue;
+
   /// Description of the configuration (also known as server parameter).
   late final pulumi.Output<String> description;
+
   /// Link pointing to the documentation of the configuration (also known as server parameter).
   late final pulumi.Output<String> documentationLink;
+
   /// Indicates if the value assigned to the configuration (also known as server parameter) is pending a server restart for it to take effect.
   late final pulumi.Output<bool> isConfigPendingRestart;
+
   /// Indicates if it's a dynamic (true) or static (false) configuration (also known as server parameter). Static server parameters require a server restart after changing the value assigned to them, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to them, for the change to take effect.
   late final pulumi.Output<bool> isDynamicConfig;
+
   /// Indicates if it's a read-only (true) or modifiable (false) configuration (also known as server parameter).
   late final pulumi.Output<bool> isReadOnly;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
   late final pulumi.Output<String?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Units in which the configuration (also known as server parameter) value is expressed.
   late final pulumi.Output<String> unit;
+
   /// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
   late final pulumi.Output<String?> value;
 
@@ -185,25 +199,25 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedValues = registerOutput<String>('allowedValues');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataType = registerOutput<String>('dataType');
-    this.defaultValue = registerOutput<String>('defaultValue');
-    this.description = registerOutput<String>('description');
-    this.documentationLink = registerOutput<String>('documentationLink');
-    this.isConfigPendingRestart = registerOutput<bool>('isConfigPendingRestart');
-    this.isDynamicConfig = registerOutput<bool>('isDynamicConfig');
-    this.isReadOnly = registerOutput<bool>('isReadOnly');
+         'azure-native:dbforpostgresql:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedValues = registerOutput<String>('allowedValues');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataType = registerOutput<String>('dataType');
+    defaultValue = registerOutput<String>('defaultValue');
+    description = registerOutput<String>('description');
+    documentationLink = registerOutput<String>('documentationLink');
+    isConfigPendingRestart = registerOutput<bool>('isConfigPendingRestart');
+    isDynamicConfig = registerOutput<bool>('isDynamicConfig');
+    isReadOnly = registerOutput<bool>('isReadOnly');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.unit = registerOutput<String>('unit');
-    this.value = registerOutput<String?>('value');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    unit = registerOutput<String>('unit');
+    value = registerOutput<String?>('value');
   }
 }

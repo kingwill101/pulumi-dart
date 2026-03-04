@@ -25,12 +25,21 @@ class LaunchConfigurationEphemeralBlockDevice {
     };
   }
 
-  factory LaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory LaunchConfigurationEphemeralBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LaunchConfigurationEphemeralBlockDevice(
-      deviceName: (map['deviceName'] as String).input(),
-      noDevice: map['noDevice'] == null ? null : ((map['noDevice'] as bool).input()).input(),
-      virtualName: map['virtualName'] == null ? null : ((map['virtualName'] as String).input()).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      noDevice: (() {
+        final guardedValue = map['noDevice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      virtualName: (() {
+        final guardedValue = map['virtualName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

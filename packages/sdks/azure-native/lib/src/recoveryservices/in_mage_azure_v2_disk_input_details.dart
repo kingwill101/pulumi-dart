@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageAzureV2DiskInputDetails {
   /// The DiskEncryptionSet ARM ID.
   final pulumi.Input<String>? diskEncryptionSetId;
+
   /// The DiskId.
   final pulumi.Input<String>? diskId;
+
   /// The disk type.
   final pulumi.Input<String>? diskType;
+
   /// The LogStorageAccountId.
   final pulumi.Input<String>? logStorageAccountId;
 
@@ -36,11 +39,26 @@ class InMageAzureV2DiskInputDetails {
 
   factory InMageAzureV2DiskInputDetails.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2DiskInputDetails(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId']! as String).input(),
+      diskEncryptionSetId: (() {
+        final guardedValue = map['diskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logStorageAccountId: (() {
+        final guardedValue = map['logStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

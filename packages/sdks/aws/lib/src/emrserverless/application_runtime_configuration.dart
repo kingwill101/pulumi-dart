@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationRuntimeConfiguration {
   /// The classification within a configuration.
   final pulumi.Input<String> classification;
+
   /// A set of properties specified within a configuration classification.
   final pulumi.Input<Map<String, String>>? properties;
 
@@ -25,9 +26,14 @@ class ApplicationRuntimeConfiguration {
 
   factory ApplicationRuntimeConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationRuntimeConfiguration(
-      classification: (map['classification'] as String).input(),
-      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
+      classification: pulumi.Input.fromValue(map['classification'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

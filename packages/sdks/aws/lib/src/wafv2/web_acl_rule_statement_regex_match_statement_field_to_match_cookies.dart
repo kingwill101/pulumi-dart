@@ -5,9 +5,14 @@ import 'web_acl_rule_statement_regex_match_statement_field_to_match_cookies_matc
 
 class WebAclRuleStatementRegexMatchStatementFieldToMatchCookies {
   /// The filter to use to identify the subset of cookies to inspect in a web request. You must specify exactly one setting: either `all`, `included_cookies` or `excluded_cookies`. More details: [CookieMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_CookieMatchPattern.html)
-  final pulumi.Input<List<WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>> matchPatterns;
+  final pulumi.Input<
+    List<WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>
+  >
+  matchPatterns;
+
   /// The parts of the cookies to inspect with the rule inspection criteria. If you specify All, AWS WAF inspects both keys and values. Valid values: `ALL`, `KEY`, `VALUE`
   final pulumi.Input<String> matchScope;
+
   /// What AWS WAF should do if the cookies of the request are larger than AWS WAF can inspect. AWS WAF does not support inspecting the entire contents of request cookies when they exceed 8 KB (8192 bytes) or 200 total cookies. The underlying host service forwards a maximum of 200 cookies and at most 8 KB of cookie contents to AWS WAF. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
   final pulumi.Input<String> oversizeHandling;
 
@@ -23,18 +28,44 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchCookies {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchPatterns': pulumi.Input.mapInputValue<List<WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>, List<Map<String, dynamic>>>(matchPatterns, (value) => pulumi.Input.encodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matchPatterns':
+          pulumi.Input.mapInputValue<
+            List<
+              WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern
+            >,
+            List<Map<String, dynamic>>
+          >(
+            matchPatterns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'matchScope': matchScope,
       'oversizeHandling': oversizeHandling,
     };
   }
 
-  factory WebAclRuleStatementRegexMatchStatementFieldToMatchCookies.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexMatchStatementFieldToMatchCookies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchCookies(
-      matchPatterns: (pulumi.Input.decodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>(map['matchPatterns']!, (value) => WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchScope: (map['matchScope'] as String).input(),
-      oversizeHandling: (map['oversizeHandling'] as String).input(),
+      matchPatterns: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern
+        >(
+          map['matchPatterns']!,
+          (value) =>
+              WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      matchScope: pulumi.Input.fromValue(map['matchScope'] as String),
+      oversizeHandling: pulumi.Input.fromValue(
+        map['oversizeHandling'] as String,
+      ),
     );
   }
 }
-

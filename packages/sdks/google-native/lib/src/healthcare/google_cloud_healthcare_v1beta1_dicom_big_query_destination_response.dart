@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse {
   /// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
   final pulumi.Input<bool> force;
+
   /// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
   final pulumi.Input<String> tableUri;
+
   /// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
   final pulumi.Input<String> writeDisposition;
 
@@ -29,12 +31,15 @@ class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse {
     };
   }
 
-  factory GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse(
-      force: (map['force'] as bool).input(),
-      tableUri: (map['tableUri'] as String).input(),
-      writeDisposition: (map['writeDisposition'] as String).input(),
+      force: pulumi.Input.fromValue(map['force'] as bool),
+      tableUri: pulumi.Input.fromValue(map['tableUri'] as String),
+      writeDisposition: pulumi.Input.fromValue(
+        map['writeDisposition'] as String,
+      ),
     );
   }
 }
-

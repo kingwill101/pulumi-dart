@@ -6,19 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamScopeState {
   /// The Amazon Resource Name (ARN) of the scope.
   final pulumi.Input<String>? arn;
+
   /// A description for the scope you're creating.
   final pulumi.Input<String>? description;
+
   /// The ARN of the IPAM for which you're creating this scope.
   final pulumi.Input<String>? ipamArn;
+
   /// The ID of the IPAM for which you're creating this scope.
   final pulumi.Input<String>? ipamId;
   final pulumi.Input<String>? ipamScopeType;
+
   /// Defines if the scope is the default scope or not.
   final pulumi.Input<bool>? isDefault;
+
   /// The number of pools in the scope.
   final pulumi.Input<int>? poolCount;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
@@ -64,17 +71,60 @@ class VpcIpamScopeState {
 
   factory VpcIpamScopeState.fromMap(Map<String, dynamic> map) {
     return VpcIpamScopeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      ipamArn: map['ipamArn'] == null ? null : ((map['ipamArn'] as String).input()).input(),
-      ipamId: map['ipamId'] == null ? null : ((map['ipamId'] as String).input()).input(),
-      ipamScopeType: map['ipamScopeType'] == null ? null : ((map['ipamScopeType'] as String).input()).input(),
-      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
-      poolCount: map['poolCount'] == null ? null : ((map['poolCount'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamArn: (() {
+        final guardedValue = map['ipamArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamId: (() {
+        final guardedValue = map['ipamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamScopeType: (() {
+        final guardedValue = map['ipamScopeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      poolCount: (() {
+        final guardedValue = map['poolCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

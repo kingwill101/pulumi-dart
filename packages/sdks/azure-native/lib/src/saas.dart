@@ -1,5 +1,3 @@
-library module_saas;
-
 export 'saas/functions.dart';
 export 'saas/get_saas_subscription_level_args.dart';
 export 'saas/get_saas_subscription_level_result.dart';

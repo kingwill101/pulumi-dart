@@ -6,10 +6,12 @@ import 'get_permissions_lf_tag_policy_expression.dart';
 class GetPermissionsLfTagPolicy {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String> catalogId;
+
   /// List of tag conditions that apply to the resource's tag policy. Configuration block for tag conditions that apply to the policy. See `expression` below.
   ///
   /// The following argument is optional:
   final pulumi.Input<List<GetPermissionsLfTagPolicyExpression>> expressions;
+
   /// Resource type for which the tag policy applies. Valid values are `DATABASE` and `TABLE`.
   final pulumi.Input<String> resourceType;
 
@@ -26,17 +28,34 @@ class GetPermissionsLfTagPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalogId': catalogId,
-      'expressions': pulumi.Input.mapInputValue<List<GetPermissionsLfTagPolicyExpression>, List<Map<String, dynamic>>>(expressions, (value) => pulumi.Input.encodeList<GetPermissionsLfTagPolicyExpression, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressions':
+          pulumi.Input.mapInputValue<
+            List<GetPermissionsLfTagPolicyExpression>,
+            List<Map<String, dynamic>>
+          >(
+            expressions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPermissionsLfTagPolicyExpression,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceType': resourceType,
     };
   }
 
   factory GetPermissionsLfTagPolicy.fromMap(Map<String, dynamic> map) {
     return GetPermissionsLfTagPolicy(
-      catalogId: (map['catalogId'] as String).input(),
-      expressions: (pulumi.Input.decodeList<GetPermissionsLfTagPolicyExpression>(map['expressions']!, (value) => GetPermissionsLfTagPolicyExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      expressions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetPermissionsLfTagPolicyExpression>(
+          map['expressions']!,
+          (value) => GetPermissionsLfTagPolicyExpression.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

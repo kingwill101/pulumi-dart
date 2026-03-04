@@ -14,15 +14,14 @@ class L2ConnectionsPropertiesResponseGroundStationPartnerRouter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory L2ConnectionsPropertiesResponseGroundStationPartnerRouter.fromMap(Map<String, dynamic> map) {
+  factory L2ConnectionsPropertiesResponseGroundStationPartnerRouter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return L2ConnectionsPropertiesResponseGroundStationPartnerRouter(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

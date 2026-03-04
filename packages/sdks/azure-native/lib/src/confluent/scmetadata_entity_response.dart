@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SCMetadataEntityResponse {
   /// Created Date Time
   final pulumi.Input<String>? createdTimestamp;
+
   /// Deleted Date time
   final pulumi.Input<String>? deletedTimestamp;
+
   /// Resource name of the record
   final pulumi.Input<String>? resourceName;
+
   /// Self lookup url
   final pulumi.Input<String>? self;
+
   /// Updated Date time
   final pulumi.Input<String>? updatedTimestamp;
 
@@ -41,12 +45,31 @@ class SCMetadataEntityResponse {
 
   factory SCMetadataEntityResponse.fromMap(Map<String, dynamic> map) {
     return SCMetadataEntityResponse(
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp']! as String).input(),
-      deletedTimestamp: map['deletedTimestamp'] == null ? null : (map['deletedTimestamp']! as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      self: map['self'] == null ? null : (map['self']! as String).input(),
-      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp']! as String).input(),
+      createdTimestamp: (() {
+        final guardedValue = map['createdTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletedTimestamp: (() {
+        final guardedValue = map['deletedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      self: (() {
+        final guardedValue = map['self'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedTimestamp: (() {
+        final guardedValue = map['updatedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

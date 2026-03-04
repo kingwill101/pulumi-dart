@@ -7,10 +7,13 @@ import 'error.dart';
 class MonitoringSettingProperties {
   /// Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
   final pulumi.Input<String>? appInsightsInstrumentationKey;
+
   /// Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
   final pulumi.Input<double>? appInsightsSamplingRate;
+
   /// Error when apply Monitoring Setting changes.
   final pulumi.Input<Error>? error;
+
   /// Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
   final pulumi.Input<bool>? traceEnabled;
 
@@ -30,18 +33,38 @@ class MonitoringSettingProperties {
     return <String, dynamic>{
       'appInsightsInstrumentationKey': ?appInsightsInstrumentationKey,
       'appInsightsSamplingRate': ?appInsightsSamplingRate,
-      'error': ?pulumi.Input.mapOptionalInputValue<Error, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<Error, Map<String, dynamic>>(
+        error,
+        (value) => value.toMap(),
+      ),
       'traceEnabled': ?traceEnabled,
     };
   }
 
   factory MonitoringSettingProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingProperties(
-      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : (map['appInsightsInstrumentationKey']! as String).input(),
-      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : (map['appInsightsSamplingRate']! as double).input(),
-      error: map['error'] == null ? null : (Error.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
-      traceEnabled: map['traceEnabled'] == null ? null : (map['traceEnabled']! as bool).input(),
+      appInsightsInstrumentationKey: (() {
+        final guardedValue = map['appInsightsInstrumentationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appInsightsSamplingRate: (() {
+        final guardedValue = map['appInsightsSamplingRate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Error.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      traceEnabled: (() {
+        final guardedValue = map['traceEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

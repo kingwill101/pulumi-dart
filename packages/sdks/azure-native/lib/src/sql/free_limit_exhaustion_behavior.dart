@@ -7,16 +7,15 @@ enum FreeLimitExhaustionBehavior {
   valueAutoPause("AutoPause"),
   valueBillOverUsage("BillOverUsage");
 
-  const FreeLimitExhaustionBehavior(this.value);
-  final String value;
+  const FreeLimitExhaustionBehavior(this.wireValue);
+  final String wireValue;
 
   static FreeLimitExhaustionBehavior fromValue(String value) {
     for (final item in FreeLimitExhaustionBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FreeLimitExhaustionBehavior value: $value');
   }
 }
-

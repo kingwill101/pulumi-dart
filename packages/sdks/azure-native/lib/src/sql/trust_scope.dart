@@ -2,16 +2,15 @@ enum TrustScope {
   valueGlobalTransactions("GlobalTransactions"),
   valueServiceBroker("ServiceBroker");
 
-  const TrustScope(this.value);
-  final String value;
+  const TrustScope(this.wireValue);
+  final String wireValue;
 
   static TrustScope fromValue(String value) {
     for (final item in TrustScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrustScope value: $value');
   }
 }
-

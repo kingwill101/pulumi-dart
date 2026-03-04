@@ -4,16 +4,17 @@ enum NodeGroupMaintenanceIntervalComputeBeta {
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
-  const NodeGroupMaintenanceIntervalComputeBeta(this.value);
-  final String value;
+  const NodeGroupMaintenanceIntervalComputeBeta(this.wireValue);
+  final String wireValue;
 
   static NodeGroupMaintenanceIntervalComputeBeta fromValue(String value) {
     for (final item in NodeGroupMaintenanceIntervalComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeGroupMaintenanceIntervalComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NodeGroupMaintenanceIntervalComputeBeta value: $value',
+    );
   }
 }
-

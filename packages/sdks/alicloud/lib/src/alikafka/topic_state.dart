@@ -8,26 +8,36 @@ class TopicState {
   /// - false: The delete cleanup policy is used.
   /// - true: The compact cleanup policy is used.
   final pulumi.Input<bool>? compactTopic;
+
   /// The advanced configurations.
   final pulumi.Input<String>? configs;
+
   /// (Available since v1.262.1) The time when the topic was created.
   final pulumi.Input<int>? createTime;
+
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
+
   /// The storage engine of the topic. Valid values:
   /// - false: Cloud storage.
   /// - true: Local storage.
   final pulumi.Input<bool>? localTopic;
+
   /// The number of partitions in the topic.
   final pulumi.Input<int>? partitionNum;
+
   /// (Available since v1.262.1) The ID of the region where the instance resides.
   final pulumi.Input<String>? regionId;
+
   /// The description of the topic.
   final pulumi.Input<String>? remark;
+
   /// (Available since v1.262.1) The status of the service.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The topic name.
   final pulumi.Input<String>? topic;
 
@@ -75,18 +85,63 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic']! as bool).input(),
-      configs: map['configs'] == null ? null : (map['configs']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      localTopic: map['localTopic'] == null ? null : (map['localTopic']! as bool).input(),
-      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum']! as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      compactTopic: (() {
+        final guardedValue = map['compactTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      configs: (() {
+        final guardedValue = map['configs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localTopic: (() {
+        final guardedValue = map['localTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      partitionNum: (() {
+        final guardedValue = map['partitionNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum AccessRights {
   send("Send"),
   listen("Listen");
 
-  const AccessRights(this.value);
-  final String value;
+  const AccessRights(this.wireValue);
+  final String wireValue;
 
   static AccessRights fromValue(String value) {
     for (final item in AccessRights.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessRights value: $value');
   }
 }
-

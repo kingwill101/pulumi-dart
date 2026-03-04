@@ -6,9 +6,11 @@ class EciScalingConfigurationImageRegistryCredential {
   /// The password used to log on to the image repository. It is required
   /// when `image_registry_credential` is configured.
   final pulumi.Input<String>? password;
+
   /// The address of the image repository. It is required when `image_registry_credential` is
   /// configured.
   final pulumi.Input<String>? server;
+
   /// The username used to log on to the image repository. It is required
   /// when `image_registry_credential` is configured.
   final pulumi.Input<String>? username;
@@ -31,12 +33,25 @@ class EciScalingConfigurationImageRegistryCredential {
     };
   }
 
-  factory EciScalingConfigurationImageRegistryCredential.fromMap(Map<String, dynamic> map) {
+  factory EciScalingConfigurationImageRegistryCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EciScalingConfigurationImageRegistryCredential(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -164,16 +164,22 @@ import 'long_term_retention_policy_args.dart';
 class LongTermRetentionPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> monthlyRetention;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The week of year to take the yearly backup in an ISO 8601 format.
   late final pulumi.Output<int?> weekOfYear;
+
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> weeklyRetention;
+
   /// The yearly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> yearlyRetention;
 
@@ -186,17 +192,17 @@ class LongTermRetentionPolicy extends pulumi.CustomResource {
     LongTermRetentionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:LongTermRetentionPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.monthlyRetention = registerOutput<String?>('monthlyRetention');
+         'azure-native:sql:LongTermRetentionPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    monthlyRetention = registerOutput<String?>('monthlyRetention');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.weekOfYear = registerOutput<int?>('weekOfYear');
-    this.weeklyRetention = registerOutput<String?>('weeklyRetention');
-    this.yearlyRetention = registerOutput<String?>('yearlyRetention');
+    type = registerOutput<String>('type');
+    weekOfYear = registerOutput<int?>('weekOfYear');
+    weeklyRetention = registerOutput<String?>('weeklyRetention');
+    yearlyRetention = registerOutput<String?>('yearlyRetention');
   }
 }

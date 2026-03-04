@@ -563,7 +563,7 @@ import 'custom_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -578,15 +578,18 @@ import 'custom_certificate_state.dart';
 class CustomCertificate extends pulumi.CustomResource {
   /// The certificate version of the Web PubSub Custom Certificate.
   late final pulumi.Output<String> certificateVersion;
+
   /// The certificate ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Self assigned certificate is not supported and the provisioning status will fail.
+  /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   late final pulumi.Output<String> customCertificateId;
+
   /// The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** custom certificate is only available for Web PubSub Premium tier. Please enable managed identity in the corresponding Web PubSub Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
+  /// &gt; **Note:** custom certificate is only available for Web PubSub Premium tier. Please enable managed identity in the corresponding Web PubSub Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
   late final pulumi.Output<String> webPubsubId;
 
   /// Creates a new [CustomCertificate].
@@ -598,15 +601,15 @@ class CustomCertificate extends pulumi.CustomResource {
     CustomCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/customCertificate:CustomCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVersion = registerOutput<String>('certificateVersion');
-    this.customCertificateId = registerOutput<String>('customCertificateId');
+         'azure:webpubsub/customCertificate:CustomCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVersion = registerOutput<String>('certificateVersion');
+    customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 
   /// Gets an existing [CustomCertificate] resource's state with the given [name] and [id].
@@ -627,14 +630,14 @@ class CustomCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/customCertificate:CustomCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVersion = registerOutput<String>('certificateVersion');
-    this.customCertificateId = registerOutput<String>('customCertificateId');
+         'azure:webpubsub/customCertificate:CustomCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVersion = registerOutput<String>('certificateVersion');
+    customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

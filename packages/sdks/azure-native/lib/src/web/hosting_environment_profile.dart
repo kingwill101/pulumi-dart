@@ -9,20 +9,19 @@ class HostingEnvironmentProfile {
 
   /// Creates a new [HostingEnvironmentProfile].
   /// [id] Resource ID of the App Service Environment.
-  HostingEnvironmentProfile({
-    this.id,
-  });
+  HostingEnvironmentProfile({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory HostingEnvironmentProfile.fromMap(Map<String, dynamic> map) {
     return HostingEnvironmentProfile(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

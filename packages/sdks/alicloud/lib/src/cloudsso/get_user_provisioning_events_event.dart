@@ -5,42 +5,61 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserProvisioningEventsEvent {
   /// Event content
   final pulumi.Input<String> content;
+
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// Processing policy when you delete a RAM user
   final pulumi.Input<String> deletionStrategy;
+
   /// Directory ID
   final pulumi.Input<String> directoryId;
+
   /// Conflict strategy
   final pulumi.Input<String> duplicationStrategy;
+
   /// Number of manual retry failures
   final pulumi.Input<double> errorCount;
+
   /// Error message for last failure
   final pulumi.Input<String> errorInfo;
+
   /// Dead letter event ID
   final pulumi.Input<String> eventId;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// Last synchronization time
   final pulumi.Input<String> lastSyncTime;
+
   /// User Provisioning body ID
   final pulumi.Input<String> principalId;
+
   /// User Provisioning body name
   final pulumi.Input<String> principalName;
+
   /// User Provisioning body type
   final pulumi.Input<String> principalType;
+
   /// The type of the source action that triggered the event.
   final pulumi.Input<String> sourceType;
+
   /// User Provisioning target ID
   final pulumi.Input<String> targetId;
+
   /// User Provisioning target name
   final pulumi.Input<String> targetName;
+
   /// RD path of User Provisioning target
   final pulumi.Input<String> targetPath;
+
   /// User Provisioning target type
   final pulumi.Input<String> targetType;
+
   /// Event update time
   final pulumi.Input<String> updateTime;
+
   /// The ID of the User Provisioning.
   final pulumi.Input<String> userProvisioningId;
 
@@ -115,27 +134,32 @@ class GetUserProvisioningEventsEvent {
 
   factory GetUserProvisioningEventsEvent.fromMap(Map<String, dynamic> map) {
     return GetUserProvisioningEventsEvent(
-      content: (map['content'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      deletionStrategy: (map['deletionStrategy'] as String).input(),
-      directoryId: (map['directoryId'] as String).input(),
-      duplicationStrategy: (map['duplicationStrategy'] as String).input(),
-      errorCount: (map['errorCount'] as double).input(),
-      errorInfo: (map['errorInfo'] as String).input(),
-      eventId: (map['eventId'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastSyncTime: (map['lastSyncTime'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalName: (map['principalName'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
-      targetName: (map['targetName'] as String).input(),
-      targetPath: (map['targetPath'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
-      userProvisioningId: (map['userProvisioningId'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionStrategy: pulumi.Input.fromValue(
+        map['deletionStrategy'] as String,
+      ),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      duplicationStrategy: pulumi.Input.fromValue(
+        map['duplicationStrategy'] as String,
+      ),
+      errorCount: pulumi.Input.fromValue(map['errorCount'] as double),
+      errorInfo: pulumi.Input.fromValue(map['errorInfo'] as String),
+      eventId: pulumi.Input.fromValue(map['eventId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastSyncTime: pulumi.Input.fromValue(map['lastSyncTime'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalName: pulumi.Input.fromValue(map['principalName'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
+      targetName: pulumi.Input.fromValue(map['targetName'] as String),
+      targetPath: pulumi.Input.fromValue(map['targetPath'] as String),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
+      userProvisioningId: pulumi.Input.fromValue(
+        map['userProvisioningId'] as String,
+      ),
     );
   }
 }
-

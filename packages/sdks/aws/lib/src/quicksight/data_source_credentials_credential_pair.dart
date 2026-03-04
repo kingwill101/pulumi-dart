@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceCredentialsCredentialPair {
   /// Password, maximum length of 1024 characters.
   final pulumi.Input<String> password;
+
   /// User name, maximum length of 64 characters.
   final pulumi.Input<String> username;
 
@@ -17,17 +18,15 @@ class DataSourceCredentialsCredentialPair {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
-  factory DataSourceCredentialsCredentialPair.fromMap(Map<String, dynamic> map) {
+  factory DataSourceCredentialsCredentialPair.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceCredentialsCredentialPair(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

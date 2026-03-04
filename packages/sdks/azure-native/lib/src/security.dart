@@ -1,5 +1,3 @@
-library module_security;
-
 export 'security/access_token_authentication.dart';
 export 'security/access_token_authentication_response.dart';
 export 'security/action_type.dart';

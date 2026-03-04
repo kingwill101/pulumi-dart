@@ -12,16 +12,15 @@ enum ConnectionStringType {
   valueRedisCache("RedisCache"),
   valuePostgreSQL("PostgreSQL");
 
-  const ConnectionStringType(this.value);
-  final String value;
+  const ConnectionStringType(this.wireValue);
+  final String wireValue;
 
   static ConnectionStringType fromValue(String value) {
     for (final item in ConnectionStringType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionStringType value: $value');
   }
 }
-

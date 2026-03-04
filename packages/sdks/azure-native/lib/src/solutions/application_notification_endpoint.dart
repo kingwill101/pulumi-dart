@@ -9,20 +9,15 @@ class ApplicationNotificationEndpoint {
 
   /// Creates a new [ApplicationNotificationEndpoint].
   /// [uri] The managed application notification endpoint uri.
-  ApplicationNotificationEndpoint({
-    required this.uri,
-  });
+  ApplicationNotificationEndpoint({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
   factory ApplicationNotificationEndpoint.fromMap(Map<String, dynamic> map) {
     return ApplicationNotificationEndpoint(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

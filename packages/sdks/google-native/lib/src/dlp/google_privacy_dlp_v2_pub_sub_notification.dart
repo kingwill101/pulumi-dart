@@ -8,11 +8,16 @@ import 'google_privacy_dlp_v2_pub_sub_notification_event.dart';
 /// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
 class GooglePrivacyDlpV2PubSubNotification {
   /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
-  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage>? detailOfMessage;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage>?
+  detailOfMessage;
+
   /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
   final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationEvent>? event;
+
   /// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
-  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubCondition>? pubsubCondition;
+  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubCondition>?
+  pubsubCondition;
+
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
   final pulumi.Input<String>? topic;
 
@@ -30,20 +35,61 @@ class GooglePrivacyDlpV2PubSubNotification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'detailOfMessage': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage, String>(detailOfMessage, (value) => value.value),
-      'event': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2PubSubNotificationEvent, String>(event, (value) => value.value),
-      'pubsubCondition': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DataProfilePubSubCondition, Map<String, dynamic>>(pubsubCondition, (value) => value.toMap()),
+      'detailOfMessage':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2PubSubNotificationDetailOfMessage,
+            String
+          >(detailOfMessage, (value) => value.wireValue),
+      'event':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2PubSubNotificationEvent,
+            String
+          >(event, (value) => value.wireValue),
+      'pubsubCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2DataProfilePubSubCondition,
+            Map<String, dynamic>
+          >(pubsubCondition, (value) => value.toMap()),
       'topic': ?topic,
     };
   }
 
-  factory GooglePrivacyDlpV2PubSubNotification.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2PubSubNotification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2PubSubNotification(
-      detailOfMessage: map['detailOfMessage'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(map['detailOfMessage']! as String)).input(),
-      event: map['event'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(map['event']! as String)).input(),
-      pubsubCondition: map['pubsubCondition'] == null ? null : (GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap((map['pubsubCondition']! as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      detailOfMessage: (() {
+        final guardedValue = map['detailOfMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      pubsubCondition: (() {
+        final guardedValue = map['pubsubCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

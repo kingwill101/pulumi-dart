@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImagePurchasePlan {
   /// The name of the Shared Image.
   final pulumi.Input<String> name;
+
   /// (Optional) The Purchase Plan Product for this Gallery Image.
   final pulumi.Input<String> product;
+
   /// (Optional) The Purchase Plan Publisher for this Gallery Image.
   final pulumi.Input<String> publisher;
 
@@ -30,10 +32,9 @@ class GetSharedImagePurchasePlan {
 
   factory GetSharedImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return GetSharedImagePurchasePlan(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
-

@@ -7,29 +7,51 @@ import 'postgresql_table.dart';
 class PostgresqlSchema {
   /// Tables in the schema.
   final pulumi.Input<List<PostgresqlTable>>? postgresqlTables;
+
   /// Schema name.
   final pulumi.Input<String>? schema;
 
   /// Creates a new [PostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.
   /// [schema] Schema name.
-  PostgresqlSchema({
-    this.postgresqlTables,
-    this.schema,
-  });
+  PostgresqlSchema({this.postgresqlTables, this.schema});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlTables': ?pulumi.Input.mapOptionalInputValue<List<PostgresqlTable>, List<Map<String, dynamic>>>(postgresqlTables, (value) => pulumi.Input.encodeList<PostgresqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'postgresqlTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PostgresqlTable>,
+            List<Map<String, dynamic>>
+          >(
+            postgresqlTables,
+            (value) =>
+                pulumi.Input.encodeList<PostgresqlTable, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'schema': ?schema,
     };
   }
 
   factory PostgresqlSchema.fromMap(Map<String, dynamic> map) {
     return PostgresqlSchema(
-      postgresqlTables: map['postgresqlTables'] == null ? null : (pulumi.Input.decodeList<PostgresqlTable>(map['postgresqlTables']!, (value) => PostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      postgresqlTables: (() {
+        final guardedValue = map['postgresqlTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PostgresqlTable>(
+            guardedValue,
+            (value) =>
+                PostgresqlTable.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

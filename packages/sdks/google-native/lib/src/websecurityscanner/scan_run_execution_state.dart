@@ -5,16 +5,15 @@ enum ScanRunExecutionState {
   scanning("SCANNING"),
   finished("FINISHED");
 
-  const ScanRunExecutionState(this.value);
-  final String value;
+  const ScanRunExecutionState(this.wireValue);
+  final String wireValue;
 
   static ScanRunExecutionState fromValue(String value) {
     for (final item in ScanRunExecutionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanRunExecutionState value: $value');
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'phone_number_args.dart';
 import 'phone_number_state.dart';
-import 'phone_number_status.dart';
 
 /// Provides an Amazon Connect Phone Number resource. For more information see
 /// [Amazon Connect: Getting Started](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html)
@@ -364,24 +363,34 @@ import 'phone_number_status.dart';
 class PhoneNumber extends pulumi.CustomResource {
   /// The ARN of the phone number.
   late final pulumi.Output<String> arn;
+
   /// The ISO country code. For a list of Valid values, refer to [PhoneNumberCountryCode](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html#connect-SearchAvailablePhoneNumbers-request-PhoneNumberCountryCode).
   late final pulumi.Output<String> countryCode;
+
   /// The description of the phone number.
   late final pulumi.Output<String?> description;
+
   /// The phone number. Phone numbers are formatted `[+] [country code] [subscriber number including area code]`.
   late final pulumi.Output<String> phoneNumber;
+
   /// The prefix of the phone number that is used to filter available phone numbers. If provided, it must contain `+` as part of the country code. Do not specify this argument when importing the resource.
   late final pulumi.Output<String?> prefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
-  late final pulumi.Output<List<PhoneNumberStatus>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   late final pulumi.Output<String> targetArn;
+
   /// The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
   late final pulumi.Output<String> type;
 
@@ -394,22 +403,22 @@ class PhoneNumber extends pulumi.CustomResource {
     PhoneNumberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/phoneNumber:PhoneNumber',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.countryCode = registerOutput<String>('countryCode');
-    this.description = registerOutput<String?>('description');
-    this.phoneNumber = registerOutput<String>('phoneNumber');
-    this.prefix = registerOutput<String?>('prefix');
-    this.region = registerOutput<String>('region');
-    this.statuses = registerOutput<List<PhoneNumberStatus>>('statuses');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.type = registerOutput<String>('type');
+         'aws:connect/phoneNumber:PhoneNumber',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    countryCode = registerOutput<String>('countryCode');
+    description = registerOutput<String?>('description');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetArn = registerOutput<String>('targetArn');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [PhoneNumber] resource's state with the given [name] and [id].
@@ -430,21 +439,21 @@ class PhoneNumber extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/phoneNumber:PhoneNumber',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.countryCode = registerOutput<String>('countryCode');
-    this.description = registerOutput<String?>('description');
-    this.phoneNumber = registerOutput<String>('phoneNumber');
-    this.prefix = registerOutput<String?>('prefix');
-    this.region = registerOutput<String>('region');
-    this.statuses = registerOutput<List<PhoneNumberStatus>>('statuses');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.type = registerOutput<String>('type');
+         'aws:connect/phoneNumber:PhoneNumber',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    countryCode = registerOutput<String>('countryCode');
+    description = registerOutput<String?>('description');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetArn = registerOutput<String>('targetArn');
+    type = registerOutput<String>('type');
   }
 }

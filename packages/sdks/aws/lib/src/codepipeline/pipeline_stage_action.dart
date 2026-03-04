@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineStageAction {
   /// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
   final pulumi.Input<String> category;
+
   /// A map of the action declaration's configuration. Configurations options for action types and providers can be found in the [Pipeline Structure Reference](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements) and [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation. Note: The `DetectChanges` parameter (optional, default value is true) in the `configuration` section causes CodePipeline to automatically start your pipeline upon new commits. Please refer to AWS Documentation for more details: https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-CodestarConnectionSource.html#action-reference-CodestarConnectionSource-config.
   final pulumi.Input<Map<String, String>>? configuration;
+
   /// A list of artifact names to be worked on.
   final pulumi.Input<List<String>>? inputArtifacts;
+
   /// The action declaration's name.
   final pulumi.Input<String> name;
+
   /// The namespace all output variables will be accessed from.
   final pulumi.Input<String>? namespace;
+
   /// A list of artifact names to output. Output artifact names must be unique within a pipeline.
   final pulumi.Input<List<String>>? outputArtifacts;
+
   /// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
   final pulumi.Input<String> owner;
+
   /// The provider of the service being called by the action. Valid providers are determined by the action category. Provider names are listed in the [Action Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference.html) documentation.
   final pulumi.Input<String> provider;
+
   /// The region in which to run the action.
   final pulumi.Input<String>? region;
+
   /// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
   final pulumi.Input<String>? roleArn;
+
   /// The order in which actions are run.
   final pulumi.Input<int>? runOrder;
+
   /// The action timeout for the rule.
   final pulumi.Input<int>? timeoutInMinutes;
+
   /// A string that identifies the action type.
   final pulumi.Input<String> version;
 
@@ -80,20 +92,53 @@ class PipelineStageAction {
 
   factory PipelineStageAction.fromMap(Map<String, dynamic> map) {
     return PipelineStageAction(
-      category: (map['category'] as String).input(),
-      configuration: map['configuration'] == null ? null : (((map['configuration'] as Map).cast<String, String>()).input()).input(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : (((map['inputArtifacts'] as List).cast<String>()).input()).input(),
-      name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
-      outputArtifacts: map['outputArtifacts'] == null ? null : (((map['outputArtifacts'] as List).cast<String>()).input()).input(),
-      owner: (map['owner'] as String).input(),
-      provider: (map['provider'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      runOrder: map['runOrder'] == null ? null : ((map['runOrder'] as int).input()).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : ((map['timeoutInMinutes'] as int).input()).input(),
-      version: (map['version'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      inputArtifacts: (() {
+        final guardedValue = map['inputArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputArtifacts: (() {
+        final guardedValue = map['outputArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
+      provider: pulumi.Input.fromValue(map['provider'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runOrder: (() {
+        final guardedValue = map['runOrder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeoutInMinutes: (() {
+        final guardedValue = map['timeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

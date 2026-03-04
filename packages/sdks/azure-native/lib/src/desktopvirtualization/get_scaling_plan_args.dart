@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScalingPlanArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the scaling plan.
   final pulumi.Input<String> scalingPlanName;
 
@@ -29,9 +30,10 @@ class GetScalingPlanArgs {
 
   factory GetScalingPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetScalingPlanArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scalingPlanName: (map['scalingPlanName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scalingPlanName: pulumi.Input.fromValue(map['scalingPlanName'] as String),
     );
   }
 }
-

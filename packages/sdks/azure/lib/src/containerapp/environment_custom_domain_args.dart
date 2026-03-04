@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentCustomDomainArgs {
   /// The bundle of Private Key and Certificate for the Custom DNS Suffix as a base64 encoded PFX or PEM.
   final pulumi.Input<String> certificateBlobBase64;
+
   /// The password for the Certificate bundle.
   final pulumi.Input<String> certificatePassword;
+
   /// The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
+
   /// Custom DNS Suffix for the Container App Environment.
   final pulumi.Input<String> dnsSuffix;
 
@@ -39,11 +42,16 @@ class EnvironmentCustomDomainArgs {
 
   factory EnvironmentCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentCustomDomainArgs(
-      certificateBlobBase64: (map['certificateBlobBase64'] as String).input(),
-      certificatePassword: (map['certificatePassword'] as String).input(),
-      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
-      dnsSuffix: (map['dnsSuffix'] as String).input(),
+      certificateBlobBase64: pulumi.Input.fromValue(
+        map['certificateBlobBase64'] as String,
+      ),
+      certificatePassword: pulumi.Input.fromValue(
+        map['certificatePassword'] as String,
+      ),
+      containerAppEnvironmentId: pulumi.Input.fromValue(
+        map['containerAppEnvironmentId'] as String,
+      ),
+      dnsSuffix: pulumi.Input.fromValue(map['dnsSuffix'] as String),
     );
   }
 }
-

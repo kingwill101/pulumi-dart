@@ -7,6 +7,7 @@ import 'error_management_types.dart';
 class ConnectorMappingErrorManagement {
   /// The error limit allowed while importing data.
   final pulumi.Input<int>? errorLimit;
+
   /// The type of error management to use for the mapping.
   final pulumi.Input<ErrorManagementTypes> errorManagementType;
 
@@ -21,15 +22,24 @@ class ConnectorMappingErrorManagement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errorLimit': ?errorLimit,
-      'errorManagementType': pulumi.Input.mapInputValue<ErrorManagementTypes, String>(errorManagementType, (value) => value.value),
+      'errorManagementType':
+          pulumi.Input.mapInputValue<ErrorManagementTypes, String>(
+            errorManagementType,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory ConnectorMappingErrorManagement.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingErrorManagement(
-      errorLimit: map['errorLimit'] == null ? null : (map['errorLimit']! as int).input(),
-      errorManagementType: (ErrorManagementTypes.fromValue(map['errorManagementType'] as String)).input(),
+      errorLimit: (() {
+        final guardedValue = map['errorLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      errorManagementType: pulumi.Input.fromValue(
+        ErrorManagementTypes.fromValue(map['errorManagementType']! as String),
+      ),
     );
   }
 }
-

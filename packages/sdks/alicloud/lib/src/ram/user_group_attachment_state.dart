@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupAttachmentState {
   /// The name of group.
   final pulumi.Input<String>? groupName;
+
   /// The name of user.
   final pulumi.Input<String>? userName;
 
   /// Creates a new [UserGroupAttachmentState].
   /// [groupName] The name of group.
   /// [userName] The name of user.
-  UserGroupAttachmentState({
-    this.groupName,
-    this.userName,
-  });
+  UserGroupAttachmentState({this.groupName, this.userName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupName': ?groupName,
-      'userName': ?userName,
-    };
+    return <String, dynamic>{'groupName': ?groupName, 'userName': ?userName};
   }
 
   factory UserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserGroupAttachmentState(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

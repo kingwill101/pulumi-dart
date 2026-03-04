@@ -1,5 +1,3 @@
-library module_marketplace;
-
 export 'marketplace/accessibility.dart';
 export 'marketplace/functions.dart';
 export 'marketplace/get_private_store_collection_args.dart';

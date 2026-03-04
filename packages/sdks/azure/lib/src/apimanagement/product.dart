@@ -223,7 +223,7 @@ import 'product_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -238,26 +238,35 @@ import 'product_state.dart';
 class Product extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// Do subscribers need to be approved prior to being able to use the Product?
   ///
-  /// > **Note:** `approval_required` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `approval_required` can only be set when `subscription_required` is set to `true`.
   late final pulumi.Output<bool?> approvalRequired;
+
   /// A description of this Product, which may include HTML formatting tags.
   late final pulumi.Output<String?> description;
+
   /// The Display Name for this API Management Product.
   late final pulumi.Output<String> displayName;
+
   /// The Identifier for this Product, which must be unique within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> productId;
+
   /// Is this Product Published?
   late final pulumi.Output<bool> published;
+
   /// The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Is a Subscription required to access API's included in this Product? Defaults to `true`.
   late final pulumi.Output<bool?> subscriptionRequired;
+
   /// The number of subscriptions a user can have to this Product at the same time.
   ///
-  /// > **Note:** `subscriptions_limit` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `subscriptions_limit` can only be set when `subscription_required` is set to `true`.
   late final pulumi.Output<int?> subscriptionsLimit;
+
   /// The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
   late final pulumi.Output<String?> terms;
 
@@ -270,21 +279,21 @@ class Product extends pulumi.CustomResource {
     ProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/product:Product',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.approvalRequired = registerOutput<bool?>('approvalRequired');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.productId = registerOutput<String>('productId');
-    this.published = registerOutput<bool>('published');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
-    this.subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
-    this.terms = registerOutput<String?>('terms');
+         'azure:apimanagement/product:Product',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    approvalRequired = registerOutput<bool?>('approvalRequired');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    productId = registerOutput<String>('productId');
+    published = registerOutput<bool>('published');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
+    terms = registerOutput<String?>('terms');
   }
 
   /// Gets an existing [Product] resource's state with the given [name] and [id].
@@ -305,20 +314,20 @@ class Product extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/product:Product',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.approvalRequired = registerOutput<bool?>('approvalRequired');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.productId = registerOutput<String>('productId');
-    this.published = registerOutput<bool>('published');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
-    this.subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
-    this.terms = registerOutput<String?>('terms');
+         'azure:apimanagement/product:Product',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    approvalRequired = registerOutput<bool?>('approvalRequired');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    productId = registerOutput<String>('productId');
+    published = registerOutput<bool>('published');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
+    terms = registerOutput<String?>('terms');
   }
 }

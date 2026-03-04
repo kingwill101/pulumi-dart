@@ -13,15 +13,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

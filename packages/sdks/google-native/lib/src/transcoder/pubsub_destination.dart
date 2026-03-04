@@ -9,20 +9,19 @@ class PubsubDestination {
 
   /// Creates a new [PubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-  PubsubDestination({
-    this.topic,
-  });
+  PubsubDestination({this.topic});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topic': ?topic,
-    };
+    return <String, dynamic>{'topic': ?topic};
   }
 
   factory PubsubDestination.fromMap(Map<String, dynamic> map) {
     return PubsubDestination(
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

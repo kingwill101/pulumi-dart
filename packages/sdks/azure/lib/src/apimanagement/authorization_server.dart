@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_server_args.dart';
 import 'authorization_server_state.dart';
-import 'authorization_server_token_body_parameter.dart';
 
 /// Manages an Authorization Server within an API Management Service.
 ///
@@ -191,7 +190,7 @@ import 'authorization_server_token_body_parameter.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -206,46 +205,64 @@ import 'authorization_server_token_body_parameter.dart';
 class AuthorizationServer extends pulumi.CustomResource {
   /// The name of the API Management Service in which this Authorization Server should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The OAUTH Authorization Endpoint.
   late final pulumi.Output<String> authorizationEndpoint;
+
   /// The HTTP Verbs supported by the Authorization Endpoint. Possible values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT` and `TRACE`.
   ///
-  /// > **Note:** `GET` must always be present.
+  /// &gt; **Note:** `GET` must always be present.
   late final pulumi.Output<List<String>> authorizationMethods;
+
   /// The mechanism by which Access Tokens are passed to the API. Possible values are `authorizationHeader` and `query`.
   late final pulumi.Output<List<String>?> bearerTokenSendingMethods;
+
   /// The Authentication Methods supported by the Token endpoint of this Authorization Server.. Possible values are `Basic` and `Body`.
   late final pulumi.Output<List<String>?> clientAuthenticationMethods;
+
   /// The Client/App ID registered with this Authorization Server.
   late final pulumi.Output<String> clientId;
+
   /// The URI of page where Client/App Registration is performed for this Authorization Server.
   late final pulumi.Output<String> clientRegistrationEndpoint;
+
   /// The Client/App Secret registered with this Authorization Server.
   late final pulumi.Output<String?> clientSecret;
+
   /// The Default Scope used when requesting an Access Token, specified as a string containing space-delimited values.
   late final pulumi.Output<String?> defaultScope;
+
   /// A description of the Authorization Server, which may contain HTML formatting tags.
   late final pulumi.Output<String?> description;
+
   /// The user-friendly name of this Authorization Server.
   late final pulumi.Output<String> displayName;
+
   /// Form of Authorization Grants required when requesting an Access Token. Possible values are `authorizationCode`, `clientCredentials`, `implicit` and `resourceOwnerPassword`.
   late final pulumi.Output<List<String>> grantTypes;
+
   /// The name of this Authorization Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The password associated with the Resource Owner.
   ///
-  /// > **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
   late final pulumi.Output<String?> resourceOwnerPassword;
+
   /// The username associated with the Resource Owner.
   ///
-  /// > **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
   late final pulumi.Output<String?> resourceOwnerUsername;
+
   /// Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
   late final pulumi.Output<bool?> supportState;
+
   /// A `token_body_parameter` block as defined below.
-  late final pulumi.Output<List<AuthorizationServerTokenBodyParameter>?> tokenBodyParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tokenBodyParameters;
+
   /// The OAUTH Token Endpoint.
   late final pulumi.Output<String?> tokenEndpoint;
 
@@ -258,30 +275,38 @@ class AuthorizationServer extends pulumi.CustomResource {
     AuthorizationServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/authorizationServer:AuthorizationServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
-    this.authorizationMethods = registerOutput<List<String>>('authorizationMethods');
-    this.bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods');
-    this.clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientRegistrationEndpoint = registerOutput<String>('clientRegistrationEndpoint');
-    this.clientSecret = registerOutput<String?>('clientSecret');
-    this.defaultScope = registerOutput<String?>('defaultScope');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.grantTypes = registerOutput<List<String>>('grantTypes');
+         'azure:apimanagement/authorizationServer:AuthorizationServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
+    authorizationMethods = registerOutput<List<String>>('authorizationMethods');
+    bearerTokenSendingMethods = registerOutput<List<String>?>(
+      'bearerTokenSendingMethods',
+    );
+    clientAuthenticationMethods = registerOutput<List<String>?>(
+      'clientAuthenticationMethods',
+    );
+    clientId = registerOutput<String>('clientId');
+    clientRegistrationEndpoint = registerOutput<String>(
+      'clientRegistrationEndpoint',
+    );
+    clientSecret = registerOutput<String?>('clientSecret');
+    defaultScope = registerOutput<String?>('defaultScope');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    grantTypes = registerOutput<List<String>>('grantTypes');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
-    this.resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
-    this.supportState = registerOutput<bool?>('supportState');
-    this.tokenBodyParameters = registerOutput<List<AuthorizationServerTokenBodyParameter>?>('tokenBodyParameters');
-    this.tokenEndpoint = registerOutput<String?>('tokenEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
+    resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
+    supportState = registerOutput<bool?>('supportState');
+    tokenBodyParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'tokenBodyParameters',
+    );
+    tokenEndpoint = registerOutput<String?>('tokenEndpoint');
   }
 
   /// Gets an existing [AuthorizationServer] resource's state with the given [name] and [id].
@@ -302,29 +327,37 @@ class AuthorizationServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/authorizationServer:AuthorizationServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
-    this.authorizationMethods = registerOutput<List<String>>('authorizationMethods');
-    this.bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods');
-    this.clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientRegistrationEndpoint = registerOutput<String>('clientRegistrationEndpoint');
-    this.clientSecret = registerOutput<String?>('clientSecret');
-    this.defaultScope = registerOutput<String?>('defaultScope');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.grantTypes = registerOutput<List<String>>('grantTypes');
+         'azure:apimanagement/authorizationServer:AuthorizationServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
+    authorizationMethods = registerOutput<List<String>>('authorizationMethods');
+    bearerTokenSendingMethods = registerOutput<List<String>?>(
+      'bearerTokenSendingMethods',
+    );
+    clientAuthenticationMethods = registerOutput<List<String>?>(
+      'clientAuthenticationMethods',
+    );
+    clientId = registerOutput<String>('clientId');
+    clientRegistrationEndpoint = registerOutput<String>(
+      'clientRegistrationEndpoint',
+    );
+    clientSecret = registerOutput<String?>('clientSecret');
+    defaultScope = registerOutput<String?>('defaultScope');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    grantTypes = registerOutput<List<String>>('grantTypes');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
-    this.resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
-    this.supportState = registerOutput<bool?>('supportState');
-    this.tokenBodyParameters = registerOutput<List<AuthorizationServerTokenBodyParameter>?>('tokenBodyParameters');
-    this.tokenEndpoint = registerOutput<String?>('tokenEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
+    resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
+    supportState = registerOutput<bool?>('supportState');
+    tokenBodyParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'tokenBodyParameters',
+    );
+    tokenEndpoint = registerOutput<String?>('tokenEndpoint');
   }
 }

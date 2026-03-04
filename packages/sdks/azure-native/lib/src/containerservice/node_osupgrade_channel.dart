@@ -5,16 +5,15 @@ enum NodeOSUpgradeChannel {
   valueNodeImage("NodeImage"),
   valueSecurityPatch("SecurityPatch");
 
-  const NodeOSUpgradeChannel(this.value);
-  final String value;
+  const NodeOSUpgradeChannel(this.wireValue);
+  final String wireValue;
 
   static NodeOSUpgradeChannel fromValue(String value) {
     for (final item in NodeOSUpgradeChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeOSUpgradeChannel value: $value');
   }
 }
-

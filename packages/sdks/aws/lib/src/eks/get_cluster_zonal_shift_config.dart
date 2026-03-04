@@ -8,20 +8,15 @@ class GetClusterZonalShiftConfig {
 
   /// Creates a new [GetClusterZonalShiftConfig].
   /// [enabled] Whether zonal shift is enabled.
-  GetClusterZonalShiftConfig({
-    required this.enabled,
-  });
+  GetClusterZonalShiftConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GetClusterZonalShiftConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterZonalShiftConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum StopOnDisconnectEnableStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const StopOnDisconnectEnableStatus(this.value);
-  final String value;
+  const StopOnDisconnectEnableStatus(this.wireValue);
+  final String wireValue;
 
   static StopOnDisconnectEnableStatus fromValue(String value) {
     for (final item in StopOnDisconnectEnableStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StopOnDisconnectEnableStatus value: $value');
   }
 }
-

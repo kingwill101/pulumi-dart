@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceCreationData {
   /// This enumerates the possible sources of a volume creation.
   final pulumi.Input<String>? createSource;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String>? sourceId;
 
   /// Creates a new [SourceCreationData].
   /// [createSource] This enumerates the possible sources of a volume creation.
   /// [sourceId] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  SourceCreationData({
-    this.createSource,
-    this.sourceId,
-  });
+  SourceCreationData({this.createSource, this.sourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SourceCreationData {
 
   factory SourceCreationData.fromMap(Map<String, dynamic> map) {
     return SourceCreationData(
-      createSource: map['createSource'] == null ? null : (map['createSource']! as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      createSource: (() {
+        final guardedValue = map['createSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceId: (() {
+        final guardedValue = map['sourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

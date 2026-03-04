@@ -31,10 +31,11 @@ class GetSecurityProfileArgs {
 
   factory GetSecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityProfileArgs(
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      securityProfileId: (map['securityProfileId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      securityProfileId: pulumi.Input.fromValue(
+        map['securityProfileId'] as String,
+      ),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'flow_log_state.dart';
 ///
 /// For information about CEN Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
 ///
-/// > **NOTE:** Available since v1.73.0.
+/// &gt; **NOTE:** Available since v1.73.0.
 ///
 /// ## Example Usage
 ///
@@ -260,32 +260,44 @@ import 'flow_log_state.dart';
 class FlowLog extends pulumi.CustomResource {
   /// cen id
   late final pulumi.Output<String> cenId;
+
   /// CreateTime
   late final pulumi.Output<String> createTime;
+
   /// The description of the flowlog.
   late final pulumi.Output<String?> description;
+
   /// The name of the flowlog.
   late final pulumi.Output<String?> flowLogName;
+
   /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
   late final pulumi.Output<int?> interval;
+
   /// Log Format
   late final pulumi.Output<String?> logFormatString;
+
   /// The LogStore that stores the flowlog.
   late final pulumi.Output<String> logStoreName;
+
   /// The Project that stores the flowlog.
   late final pulumi.Output<String> projectName;
+
   /// region id
   late final pulumi.Output<String> regionId;
+
   /// The status of the flow log. Valid values:
   /// - `Active`: started.
   /// - `InActive`: not started.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Cross-region Connection ID or VBR connection ID.
   ///
-  /// > **NOTE:**  This parameter is required.
+  /// &gt; **NOTE:**  This parameter is required.
   late final pulumi.Output<String?> transitRouterAttachmentId;
+
   /// Transit Router ID
   late final pulumi.Output<String?> transitRouterId;
 
@@ -298,24 +310,26 @@ class FlowLog extends pulumi.CustomResource {
     FlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/flowLog:FlowLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.interval = registerOutput<int?>('interval');
-    this.logFormatString = registerOutput<String?>('logFormatString');
-    this.logStoreName = registerOutput<String>('logStoreName');
-    this.projectName = registerOutput<String>('projectName');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentId = registerOutput<String?>('transitRouterAttachmentId');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
+         'alicloud:cen/flowLog:FlowLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    flowLogName = registerOutput<String?>('flowLogName');
+    interval = registerOutput<int?>('interval');
+    logFormatString = registerOutput<String?>('logFormatString');
+    logStoreName = registerOutput<String>('logStoreName');
+    projectName = registerOutput<String>('projectName');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentId = registerOutput<String?>(
+      'transitRouterAttachmentId',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
   }
 
   /// Gets an existing [FlowLog] resource's state with the given [name] and [id].
@@ -336,23 +350,25 @@ class FlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/flowLog:FlowLog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.interval = registerOutput<int?>('interval');
-    this.logFormatString = registerOutput<String?>('logFormatString');
-    this.logStoreName = registerOutput<String>('logStoreName');
-    this.projectName = registerOutput<String>('projectName');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterAttachmentId = registerOutput<String?>('transitRouterAttachmentId');
-    this.transitRouterId = registerOutput<String?>('transitRouterId');
+         'alicloud:cen/flowLog:FlowLog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    flowLogName = registerOutput<String?>('flowLogName');
+    interval = registerOutput<int?>('interval');
+    logFormatString = registerOutput<String?>('logFormatString');
+    logStoreName = registerOutput<String>('logStoreName');
+    projectName = registerOutput<String>('projectName');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterAttachmentId = registerOutput<String?>(
+      'transitRouterAttachmentId',
+    );
+    transitRouterId = registerOutput<String?>('transitRouterId');
   }
 }

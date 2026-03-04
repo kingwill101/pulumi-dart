@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGrantArgs {
   /// The ID of the CEN.
   final pulumi.Input<String> cenId;
+
   /// The owner UID of the  CEN which the child instance granted to.
   final pulumi.Input<String> cenOwnerId;
+
   /// The ID of the child instance to grant.
   final pulumi.Input<String> childInstanceId;
 
@@ -34,10 +36,9 @@ class InstanceGrantArgs {
 
   factory InstanceGrantArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGrantArgs(
-      cenId: (map['cenId'] as String).input(),
-      cenOwnerId: (map['cenOwnerId'] as String).input(),
-      childInstanceId: (map['childInstanceId'] as String).input(),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      cenOwnerId: pulumi.Input.fromValue(map['cenOwnerId'] as String),
+      childInstanceId: pulumi.Input.fromValue(map['childInstanceId'] as String),
     );
   }
 }
-

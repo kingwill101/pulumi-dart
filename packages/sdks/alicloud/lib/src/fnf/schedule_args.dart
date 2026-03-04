@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleArgs {
   /// The CRON expression of the time-based schedule to be created.
   final pulumi.Input<String> cronExpression;
+
   /// The description of the time-based schedule to be created.
   final pulumi.Input<String>? description;
+
   /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
   final pulumi.Input<bool>? enable;
+
   /// The name of the flow bound to the time-based schedule you want to create.
   final pulumi.Input<String> flowName;
+
   /// The trigger message of the time-based schedule to be created. It must be in JSON object format.
   final pulumi.Input<String>? payload;
+
   /// The name of the time-based schedule to be created.
   final pulumi.Input<String> scheduleName;
 
@@ -49,13 +54,24 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      cronExpression: (map['cronExpression'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      flowName: (map['flowName'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
-      scheduleName: (map['scheduleName'] as String).input(),
+      cronExpression: pulumi.Input.fromValue(map['cronExpression'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      flowName: pulumi.Input.fromValue(map['flowName'] as String),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleName: pulumi.Input.fromValue(map['scheduleName'] as String),
     );
   }
 }
-

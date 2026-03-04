@@ -9,8 +9,10 @@ import 'get_account_identity.dart';
 /// {@macro pulumi_netapp_get_account_get_account_args_doc}
 class GetAccountArgs {
   final pulumi.Input<GetAccountIdentity>? identity;
+
   /// The name of the NetApp Account.
   final pulumi.Input<String> name;
+
   /// The Name of the Resource Group where the NetApp Account exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -26,7 +28,11 @@ class GetAccountArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<GetAccountIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            GetAccountIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'name': name,
       'resourceGroupName': resourceGroupName,
     };
@@ -34,10 +40,19 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      identity: map['identity'] == null ? null : (GetAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GetAccountIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapVirtualInstanceInvokeSapSupportedSkuArgs {
   /// The geo-location where the resource is to be created.
   final pulumi.Input<String> appLocation;
+
   /// The database type. Eg: HANA, DB2, etc
   final pulumi.Input<String> databaseType;
+
   /// The deployment type. Eg: SingleServer/ThreeTier
   final pulumi.Input<String> deploymentType;
+
   /// Defines the environment type - Production/Non Production.
   final pulumi.Input<String> environment;
+
   /// The high availability type.
   final pulumi.Input<String>? highAvailabilityType;
+
   /// The name of the Azure region.
   final pulumi.Input<String> location;
+
   /// Defines the SAP Product type.
   final pulumi.Input<String> sapProduct;
 
@@ -52,16 +58,21 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuArgs {
     };
   }
 
-  factory GetSapVirtualInstanceInvokeSapSupportedSkuArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSapVirtualInstanceInvokeSapSupportedSkuArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSapVirtualInstanceInvokeSapSupportedSkuArgs(
-      appLocation: (map['appLocation'] as String).input(),
-      databaseType: (map['databaseType'] as String).input(),
-      deploymentType: (map['deploymentType'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType']! as String).input(),
-      location: (map['location'] as String).input(),
-      sapProduct: (map['sapProduct'] as String).input(),
+      appLocation: pulumi.Input.fromValue(map['appLocation'] as String),
+      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      highAvailabilityType: (() {
+        final guardedValue = map['highAvailabilityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      sapProduct: pulumi.Input.fromValue(map['sapProduct'] as String),
     );
   }
 }
-

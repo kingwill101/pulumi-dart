@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceConfigArgs {
   /// The location in which the Service config is to be initialized.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The resource type to which the default service config will be applied.
   final pulumi.Input<String> resourceType;
 
@@ -35,10 +37,13 @@ class ServiceConfigArgs {
 
   factory ServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

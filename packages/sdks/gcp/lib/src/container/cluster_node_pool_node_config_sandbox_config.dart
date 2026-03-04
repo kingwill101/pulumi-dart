@@ -11,20 +11,17 @@ class ClusterNodePoolNodeConfigSandboxConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Which sandbox to use for pods in the node pool.
-  ClusterNodePoolNodeConfigSandboxConfig({
-    required this.sandboxType,
-  });
+  ClusterNodePoolNodeConfigSandboxConfig({required this.sandboxType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sandboxType': sandboxType,
-    };
+    return <String, dynamic>{'sandboxType': sandboxType};
   }
 
-  factory ClusterNodePoolNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigSandboxConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolNodeConfigSandboxConfig(
-      sandboxType: (map['sandboxType'] as String).input(),
+      sandboxType: pulumi.Input.fromValue(map['sandboxType'] as String),
     );
   }
 }
-

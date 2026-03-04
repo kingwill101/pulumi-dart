@@ -7,7 +7,7 @@ import 'frontdoor_secret_state.dart';
 ///
 /// ## Required Key Vault Permissions
 ///
-/// !> **Note:** You must add an `Access Policy` to your `azure.keyvault.KeyVault` for the `Microsoft.AzurefrontDoor-Cdn` Enterprise Application Object ID.
+/// !&gt; **Note:** You must add an `Access Policy` to your `azure.keyvault.KeyVault` for the `Microsoft.AzurefrontDoor-Cdn` Enterprise Application Object ID.
 ///
 /// This can be created by running Az Powershell command like this:
 ///
@@ -31,10 +31,13 @@ import 'frontdoor_secret_state.dart';
 class FrontdoorSecret extends pulumi.CustomResource {
   /// The Resource ID of the Front Door Profile. Changing this forces a new Front Door Secret to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// The name of the Front Door Profile containing this Front Door Secret.
   late final pulumi.Output<String> cdnFrontdoorProfileName;
+
   /// The name which should be used for this Front Door Secret. Possible values must start with a letter or a number, only contain letters, numbers and hyphens and have a length of between 2 and 260 characters. Changing this forces a new Front Door Secret to be created.
   late final pulumi.Output<String> name;
+
   /// A `secret` block as defined below. Changing this forces a new Front Door Secret to be created.
   late final pulumi.Output<FrontdoorSecretSecret> secret;
 
@@ -47,15 +50,15 @@ class FrontdoorSecret extends pulumi.CustomResource {
     FrontdoorSecretArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorSecret:FrontdoorSecret',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
+         'azure:cdn/frontdoorSecret:FrontdoorSecret',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
     this.name = registerOutput<String>('name');
-    this.secret = registerOutput<FrontdoorSecretSecret>('secret');
+    secret = registerOutput<FrontdoorSecretSecret>('secret');
   }
 
   /// Gets an existing [FrontdoorSecret] resource's state with the given [name] and [id].
@@ -76,14 +79,14 @@ class FrontdoorSecret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorSecret:FrontdoorSecret',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
+         'azure:cdn/frontdoorSecret:FrontdoorSecret',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
     this.name = registerOutput<String>('name');
-    this.secret = registerOutput<FrontdoorSecretSecret>('secret');
+    secret = registerOutput<FrontdoorSecretSecret>('secret');
   }
 }

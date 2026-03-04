@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'policy_variable_column_response.dart';
 import 'system_data_response.dart';
 import 'variable_at_management_group_args.dart';
 
@@ -154,12 +153,16 @@ import 'variable_at_management_group_args.dart';
 class VariableAtManagementGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Variable column definitions.
-  late final pulumi.Output<List<PolicyVariableColumnResponse>> columns;
+  late final pulumi.Output<List<Map<String, dynamic>>> columns;
+
   /// The name of the variable.
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource (Microsoft.Authorization/variables).
   late final pulumi.Output<String> type;
 
@@ -172,15 +175,15 @@ class VariableAtManagementGroup extends pulumi.CustomResource {
     VariableAtManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:VariableAtManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.columns = registerOutput<List<PolicyVariableColumnResponse>>('columns');
+         'azure-native:authorization:VariableAtManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    columns = registerOutput<List<Map<String, dynamic>>>('columns');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

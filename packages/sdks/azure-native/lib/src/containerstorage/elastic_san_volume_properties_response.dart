@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticSanVolumePropertiesResponse {
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
   final pulumi.Input<String> targetIqn;
+
   /// iSCSI Target Portal Host Name
   final pulumi.Input<String> targetPortalHostname;
+
   /// iSCSI Target Portal Port
   final pulumi.Input<int> targetPortalPort;
 
@@ -31,10 +33,11 @@ class ElasticSanVolumePropertiesResponse {
 
   factory ElasticSanVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSanVolumePropertiesResponse(
-      targetIqn: (map['targetIqn'] as String).input(),
-      targetPortalHostname: (map['targetPortalHostname'] as String).input(),
-      targetPortalPort: (map['targetPortalPort'] as int).input(),
+      targetIqn: pulumi.Input.fromValue(map['targetIqn'] as String),
+      targetPortalHostname: pulumi.Input.fromValue(
+        map['targetPortalHostname'] as String,
+      ),
+      targetPortalPort: pulumi.Input.fromValue(map['targetPortalPort'] as int),
     );
   }
 }
-

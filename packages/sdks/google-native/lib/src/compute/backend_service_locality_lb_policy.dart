@@ -9,16 +9,15 @@ enum BackendServiceLocalityLbPolicy {
   roundRobin("ROUND_ROBIN"),
   weightedMaglev("WEIGHTED_MAGLEV");
 
-  const BackendServiceLocalityLbPolicy(this.value);
-  final String value;
+  const BackendServiceLocalityLbPolicy(this.wireValue);
+  final String wireValue;
 
   static BackendServiceLocalityLbPolicy fromValue(String value) {
     for (final item in BackendServiceLocalityLbPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendServiceLocalityLbPolicy value: $value');
   }
 }
-

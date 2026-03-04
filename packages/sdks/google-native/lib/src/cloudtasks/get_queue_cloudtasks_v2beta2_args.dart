@@ -35,11 +35,18 @@ class GetQueueCloudtasksV2beta2Args {
 
   factory GetQueueCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return GetQueueCloudtasksV2beta2Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      queueId: (map['queueId'] as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: pulumi.Input.fromValue(map['queueId'] as String),
+      readMask: (() {
+        final guardedValue = map['readMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

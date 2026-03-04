@@ -9,20 +9,19 @@ class MultiClusterIngressFeatureSpec {
 
   /// Creates a new [MultiClusterIngressFeatureSpec].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  MultiClusterIngressFeatureSpec({
-    this.configMembership,
-  });
+  MultiClusterIngressFeatureSpec({this.configMembership});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configMembership': ?configMembership,
-    };
+    return <String, dynamic>{'configMembership': ?configMembership};
   }
 
   factory MultiClusterIngressFeatureSpec.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpec(
-      configMembership: map['configMembership'] == null ? null : (map['configMembership']! as String).input(),
+      configMembership: (() {
+        final guardedValue = map['configMembership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

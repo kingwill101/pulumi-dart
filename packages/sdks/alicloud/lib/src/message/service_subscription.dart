@@ -9,7 +9,7 @@ import 'service_subscription_state.dart';
 ///
 /// For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
 ///
-/// > **NOTE:** Available since v1.188.0.
+/// &gt; **NOTE:** Available since v1.188.0.
 ///
 /// ## Example Usage
 ///
@@ -211,8 +211,10 @@ import 'service_subscription_state.dart';
 class ServiceSubscription extends pulumi.CustomResource {
   /// (Available since v1.244.0) The time when the subscription was created.
   late final pulumi.Output<int> createTime;
+
   /// The dead-letter queue policy. See `dlq_policy` below.
   late final pulumi.Output<ServiceSubscriptionDlqPolicy> dlqPolicy;
+
   /// The endpoint has three format. Available values format:
   /// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
   /// - `Queue Format`: A queue name.
@@ -220,20 +222,27 @@ class ServiceSubscription extends pulumi.CustomResource {
   /// - `Sms Format`: A mobile number
   /// - `Email Format`: An email address.
   late final pulumi.Output<String> endpoint;
+
   /// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
   late final pulumi.Output<String?> filterTag;
+
   /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
   late final pulumi.Output<String> notifyContentFormat;
+
   /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
   /// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
   /// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
   late final pulumi.Output<String> notifyStrategy;
+
   /// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
   late final pulumi.Output<String> pushType;
+
   /// The STS RoleArn.
   late final pulumi.Output<String?> stsRoleArn;
+
   /// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   late final pulumi.Output<String> subscriptionName;
+
   /// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   late final pulumi.Output<String> topicName;
 
@@ -246,21 +255,21 @@ class ServiceSubscription extends pulumi.CustomResource {
     ServiceSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceSubscription:ServiceSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.filterTag = registerOutput<String?>('filterTag');
-    this.notifyContentFormat = registerOutput<String>('notifyContentFormat');
-    this.notifyStrategy = registerOutput<String>('notifyStrategy');
-    this.pushType = registerOutput<String>('pushType');
-    this.stsRoleArn = registerOutput<String?>('stsRoleArn');
-    this.subscriptionName = registerOutput<String>('subscriptionName');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:message/serviceSubscription:ServiceSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
+    endpoint = registerOutput<String>('endpoint');
+    filterTag = registerOutput<String?>('filterTag');
+    notifyContentFormat = registerOutput<String>('notifyContentFormat');
+    notifyStrategy = registerOutput<String>('notifyStrategy');
+    pushType = registerOutput<String>('pushType');
+    stsRoleArn = registerOutput<String?>('stsRoleArn');
+    subscriptionName = registerOutput<String>('subscriptionName');
+    topicName = registerOutput<String>('topicName');
   }
 
   /// Gets an existing [ServiceSubscription] resource's state with the given [name] and [id].
@@ -281,20 +290,20 @@ class ServiceSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceSubscription:ServiceSubscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.filterTag = registerOutput<String?>('filterTag');
-    this.notifyContentFormat = registerOutput<String>('notifyContentFormat');
-    this.notifyStrategy = registerOutput<String>('notifyStrategy');
-    this.pushType = registerOutput<String>('pushType');
-    this.stsRoleArn = registerOutput<String?>('stsRoleArn');
-    this.subscriptionName = registerOutput<String>('subscriptionName');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:message/serviceSubscription:ServiceSubscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
+    endpoint = registerOutput<String>('endpoint');
+    filterTag = registerOutput<String?>('filterTag');
+    notifyContentFormat = registerOutput<String>('notifyContentFormat');
+    notifyStrategy = registerOutput<String>('notifyStrategy');
+    pushType = registerOutput<String>('pushType');
+    stsRoleArn = registerOutput<String?>('stsRoleArn');
+    subscriptionName = registerOutput<String>('subscriptionName');
+    topicName = registerOutput<String>('topicName');
   }
 }

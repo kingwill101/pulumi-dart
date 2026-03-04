@@ -9,20 +9,19 @@ class ImageMappingRuleProfile {
 
   /// Creates a new [ImageMappingRuleProfile].
   /// [userConfiguration] List of values.
-  ImageMappingRuleProfile({
-    this.userConfiguration,
-  });
+  ImageMappingRuleProfile({this.userConfiguration});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userConfiguration': ?userConfiguration,
-    };
+    return <String, dynamic>{'userConfiguration': ?userConfiguration};
   }
 
   factory ImageMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return ImageMappingRuleProfile(
-      userConfiguration: map['userConfiguration'] == null ? null : (map['userConfiguration']! as String).input(),
+      userConfiguration: (() {
+        final guardedValue = map['userConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_bcmdata;
-
 export 'bcmdata/export.dart';
 export 'bcmdata/export_args.dart';
 export 'bcmdata/export_export.dart';

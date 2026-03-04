@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMapArgs {
   /// Name of the map resource.
   final pulumi.Input<String> mapName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the map.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class GetMapArgs {
   /// [mapName] Name of the map resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the map.
-  GetMapArgs({
-    required this.mapName,
-    this.region,
-    this.tags,
-  });
+  GetMapArgs({required this.mapName, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class GetMapArgs {
 
   factory GetMapArgs.fromMap(Map<String, dynamic> map) {
     return GetMapArgs(
-      mapName: (map['mapName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      mapName: pulumi.Input.fromValue(map['mapName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

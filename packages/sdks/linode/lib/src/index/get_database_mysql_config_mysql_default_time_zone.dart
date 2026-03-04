@@ -41,16 +41,17 @@ class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlDefaultTimeZone(
-      description: (map['description'] as String).input(),
-      example: (map['example'] as String).input(),
-      maxLength: (map['maxLength'] as int).input(),
-      minLength: (map['minLength'] as int).input(),
-      pattern: (map['pattern'] as String).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      example: pulumi.Input.fromValue(map['example'] as String),
+      maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
+      minLength: pulumi.Input.fromValue(map['minLength'] as int),
+      pattern: pulumi.Input.fromValue(map['pattern'] as String),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

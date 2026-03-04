@@ -4,16 +4,15 @@ enum S3CompatibleMetadataProtocol {
   networkProtocolHttps("NETWORK_PROTOCOL_HTTPS"),
   networkProtocolHttp("NETWORK_PROTOCOL_HTTP");
 
-  const S3CompatibleMetadataProtocol(this.value);
-  final String value;
+  const S3CompatibleMetadataProtocol(this.wireValue);
+  final String wireValue;
 
   static S3CompatibleMetadataProtocol fromValue(String value) {
     for (final item in S3CompatibleMetadataProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown S3CompatibleMetadataProtocol value: $value');
   }
 }
-

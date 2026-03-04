@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesNodePoolsArgs {
   /// The id of kubernetes cluster.
   final pulumi.Input<String> clusterId;
+
   /// A list of Nodepool IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The name of node pool.
   final pulumi.Input<String>? nodePoolName;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -39,11 +42,22 @@ class GetKubernetesNodePoolsArgs {
 
   factory GetKubernetesNodePoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nodePoolName: map['nodePoolName'] == null ? null : (map['nodePoolName']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodePoolName: (() {
+        final guardedValue = map['nodePoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

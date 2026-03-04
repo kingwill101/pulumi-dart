@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppIdentity {
   /// The list of User Assigned Managed Identity IDs assigned to this Linux Web App.
   final pulumi.Input<List<String>> identityIds;
+
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Linux Web App.
   final pulumi.Input<String> principalId;
+
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Linux Web App.
   final pulumi.Input<String> tenantId;
+
   /// The Azure Storage Type.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,12 @@ class GetLinuxWebAppIdentity {
 
   factory GetLinuxWebAppIdentity.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppIdentity(
-      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: pulumi.Input.fromValue(
+        (map['identityIds'] as List).cast<String>(),
+      ),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -15,21 +15,26 @@ class UserStoreArgs {
   /// If the default license config doesn't have remaining license seats left,
   /// new users will not be assigned with license.
   final pulumi.Input<String>? defaultLicenseConfig;
+
   /// Whether to enable automatic license update for users with expired licenses
   /// in this user store. If enabled, users with expired licenses will
   /// automatically be updated to the default subscription if there are
   /// remaining license seats.
   final pulumi.Input<bool>? enableExpiredLicenseAutoUpdate;
+
   /// Whether to enable automatic license registration for new users created in
   /// this user store. If enabled, new users will automatically register under
   /// the default subscription.
   final pulumi.Input<bool>? enableLicenseAutoRegister;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID of the user store. Currently only accepts "default_user_store".
   final pulumi.Input<String>? userStoreId;
 
@@ -62,13 +67,32 @@ class UserStoreArgs {
 
   factory UserStoreArgs.fromMap(Map<String, dynamic> map) {
     return UserStoreArgs(
-      defaultLicenseConfig: map['defaultLicenseConfig'] == null ? null : (map['defaultLicenseConfig']! as String).input(),
-      enableExpiredLicenseAutoUpdate: map['enableExpiredLicenseAutoUpdate'] == null ? null : (map['enableExpiredLicenseAutoUpdate']! as bool).input(),
-      enableLicenseAutoRegister: map['enableLicenseAutoRegister'] == null ? null : (map['enableLicenseAutoRegister']! as bool).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      userStoreId: map['userStoreId'] == null ? null : (map['userStoreId']! as String).input(),
+      defaultLicenseConfig: (() {
+        final guardedValue = map['defaultLicenseConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableExpiredLicenseAutoUpdate: (() {
+        final guardedValue = map['enableExpiredLicenseAutoUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableLicenseAutoRegister: (() {
+        final guardedValue = map['enableLicenseAutoRegister'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userStoreId: (() {
+        final guardedValue = map['userStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

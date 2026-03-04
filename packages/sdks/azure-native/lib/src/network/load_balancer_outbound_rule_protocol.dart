@@ -4,16 +4,17 @@ enum LoadBalancerOutboundRuleProtocol {
   valueUdp("Udp"),
   valueAll("All");
 
-  const LoadBalancerOutboundRuleProtocol(this.value);
-  final String value;
+  const LoadBalancerOutboundRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerOutboundRuleProtocol fromValue(String value) {
     for (final item in LoadBalancerOutboundRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoadBalancerOutboundRuleProtocol value: $value');
+    throw ArgumentError(
+      'Unknown LoadBalancerOutboundRuleProtocol value: $value',
+    );
   }
 }
-

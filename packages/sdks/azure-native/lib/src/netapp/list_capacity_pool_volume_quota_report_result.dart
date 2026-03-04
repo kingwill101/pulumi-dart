@@ -7,29 +7,48 @@ import 'quota_report_response.dart';
 class ListCapacityPoolVolumeQuotaReportResult {
   /// URL to get the next set of results.
   final String? nextLink;
+
   /// List of volume quota report records
   final List<QuotaReportResponse>? value;
 
   /// Creates a new [ListCapacityPoolVolumeQuotaReportResult].
   /// [nextLink] URL to get the next set of results.
   /// [value] List of volume quota report records
-  ListCapacityPoolVolumeQuotaReportResult({
-    this.nextLink,
-    this.value,
-  });
+  ListCapacityPoolVolumeQuotaReportResult({this.nextLink, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<QuotaReportResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          QuotaReportResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListCapacityPoolVolumeQuotaReportResult.fromMap(Map<String, dynamic> map) {
+  factory ListCapacityPoolVolumeQuotaReportResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListCapacityPoolVolumeQuotaReportResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<QuotaReportResponse>(map['value']!, (value) => QuotaReportResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<QuotaReportResponse>(
+          guardedValue,
+          (value) => QuotaReportResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

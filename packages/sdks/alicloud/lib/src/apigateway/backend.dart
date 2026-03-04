@@ -6,7 +6,7 @@ import 'backend_state.dart';
 ///
 /// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 ///
-/// > **NOTE:** Available since v1.181.0.
+/// &gt; **NOTE:** Available since v1.181.0.
 ///
 /// ## Example Usage
 ///
@@ -145,10 +145,13 @@ import 'backend_state.dart';
 class Backend extends pulumi.CustomResource {
   /// The name of the Backend.
   late final pulumi.Output<String> backendName;
+
   /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
   late final pulumi.Output<String> backendType;
+
   /// Whether to create an Event bus service association role.
   late final pulumi.Output<bool> createEventBridgeServiceLinkedRole;
+
   /// The description of the Backend.
   late final pulumi.Output<String?> description;
 
@@ -161,15 +164,17 @@ class Backend extends pulumi.CustomResource {
     BackendArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/backend:Backend',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendName = registerOutput<String>('backendName');
-    this.backendType = registerOutput<String>('backendType');
-    this.createEventBridgeServiceLinkedRole = registerOutput<bool>('createEventBridgeServiceLinkedRole');
-    this.description = registerOutput<String?>('description');
+         'alicloud:apigateway/backend:Backend',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendName = registerOutput<String>('backendName');
+    backendType = registerOutput<String>('backendType');
+    createEventBridgeServiceLinkedRole = registerOutput<bool>(
+      'createEventBridgeServiceLinkedRole',
+    );
+    description = registerOutput<String?>('description');
   }
 
   /// Gets an existing [Backend] resource's state with the given [name] and [id].
@@ -190,14 +195,16 @@ class Backend extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/backend:Backend',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendName = registerOutput<String>('backendName');
-    this.backendType = registerOutput<String>('backendType');
-    this.createEventBridgeServiceLinkedRole = registerOutput<bool>('createEventBridgeServiceLinkedRole');
-    this.description = registerOutput<String?>('description');
+         'alicloud:apigateway/backend:Backend',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendName = registerOutput<String>('backendName');
+    backendType = registerOutput<String>('backendType');
+    createEventBridgeServiceLinkedRole = registerOutput<bool>(
+      'createEventBridgeServiceLinkedRole',
+    );
+    description = registerOutput<String?>('description');
   }
 }

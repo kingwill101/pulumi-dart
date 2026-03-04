@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmDiskInput {
   /// The DiskEncryptionSet ARM Id.
   final pulumi.Input<String>? diskEncryptionSetId;
+
   /// The disk Id.
   final pulumi.Input<String> diskId;
+
   /// The disk type.
   final pulumi.Input<String> diskType;
+
   /// The log storage account ARM Id.
   final pulumi.Input<String> logStorageAccountId;
+
   /// The logical sector size (in bytes), 512 by default.
   final pulumi.Input<int>? sectorSizeInBytes;
 
@@ -41,12 +45,21 @@ class InMageRcmDiskInput {
 
   factory InMageRcmDiskInput.fromMap(Map<String, dynamic> map) {
     return InMageRcmDiskInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
-      diskId: (map['diskId'] as String).input(),
-      diskType: (map['diskType'] as String).input(),
-      logStorageAccountId: (map['logStorageAccountId'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
+      diskEncryptionSetId: (() {
+        final guardedValue = map['diskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
+      logStorageAccountId: pulumi.Input.fromValue(
+        map['logStorageAccountId'] as String,
+      ),
+      sectorSizeInBytes: (() {
+        final guardedValue = map['sectorSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,19 @@ enum GoogleDatastoreAdminV1IndexedPropertyDirection {
   ascending("ASCENDING"),
   descending("DESCENDING");
 
-  const GoogleDatastoreAdminV1IndexedPropertyDirection(this.value);
-  final String value;
+  const GoogleDatastoreAdminV1IndexedPropertyDirection(this.wireValue);
+  final String wireValue;
 
-  static GoogleDatastoreAdminV1IndexedPropertyDirection fromValue(String value) {
+  static GoogleDatastoreAdminV1IndexedPropertyDirection fromValue(
+    String value,
+  ) {
     for (final item in GoogleDatastoreAdminV1IndexedPropertyDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleDatastoreAdminV1IndexedPropertyDirection value: $value');
+    throw ArgumentError(
+      'Unknown GoogleDatastoreAdminV1IndexedPropertyDirection value: $value',
+    );
   }
 }
-

@@ -29,12 +29,13 @@ class GetOrganizationReplayPolicysimulatorV1beta1Args {
     };
   }
 
-  factory GetOrganizationReplayPolicysimulatorV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationReplayPolicysimulatorV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationReplayPolicysimulatorV1beta1Args(
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      replayId: (map['replayId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      replayId: pulumi.Input.fromValue(map['replayId'] as String),
     );
   }
 }
-

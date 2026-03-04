@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingConfigResponse {
   /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   final pulumi.Input<bool> enableOnpremGcsTransferLogs;
+
   /// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final pulumi.Input<List<String>> logActionStates;
+
   /// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final pulumi.Input<List<String>> logActions;
 
@@ -31,10 +33,15 @@ class LoggingConfigResponse {
 
   factory LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponse(
-      enableOnpremGcsTransferLogs: (map['enableOnpremGcsTransferLogs'] as bool).input(),
-      logActionStates: ((map['logActionStates'] as List).cast<String>()).input(),
-      logActions: ((map['logActions'] as List).cast<String>()).input(),
+      enableOnpremGcsTransferLogs: pulumi.Input.fromValue(
+        map['enableOnpremGcsTransferLogs'] as bool,
+      ),
+      logActionStates: pulumi.Input.fromValue(
+        (map['logActionStates'] as List).cast<String>(),
+      ),
+      logActions: pulumi.Input.fromValue(
+        (map['logActions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

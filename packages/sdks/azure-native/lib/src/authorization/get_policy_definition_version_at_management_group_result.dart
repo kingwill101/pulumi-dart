@@ -8,28 +8,40 @@ import 'system_data_response.dart';
 class GetPolicyDefinitionVersionAtManagementGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The policy definition description.
   final String? description;
+
   /// The display name of the policy definition.
   final String? displayName;
+
   /// The ID of the policy definition version.
   final String id;
+
   /// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final dynamic metadata;
+
   /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
   final String? mode;
+
   /// The name of the policy definition version.
   final String name;
+
   /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
   final Map<String, ParameterDefinitionsValueResponse>? parameters;
+
   /// The policy rule.
   final dynamic policyRule;
+
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   final String? policyType;
+
   /// The system metadata relating to this resource.
   final SystemDataResponse systemData;
+
   /// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
   final String type;
+
   /// The policy definition version in #.#.# format.
   final String? version;
 
@@ -72,7 +84,14 @@ class GetPolicyDefinitionVersionAtManagementGroupResult {
       'metadata': ?metadata,
       'mode': ?mode,
       'name': name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterDefinitionsValueResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?(() {
+        final guardedValue = parameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          ParameterDefinitionsValueResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'policyRule': ?policyRule,
       'policyType': ?policyType,
       'systemData': systemData.toMap(),
@@ -81,22 +100,62 @@ class GetPolicyDefinitionVersionAtManagementGroupResult {
     };
   }
 
-  factory GetPolicyDefinitionVersionAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
+  factory GetPolicyDefinitionVersionAtManagementGroupResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicyDefinitionVersionAtManagementGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata']!,
-      mode: map['mode'] == null ? null : map['mode']! as String,
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(map['parameters']!, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policyRule: map['policyRule'] == null ? null : map['policyRule']!,
-      policyType: map['policyType'] == null ? null : map['policyType']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(
+          guardedValue,
+          (value) => ParameterDefinitionsValueResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policyRule: (() {
+        final guardedValue = map['policyRule'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

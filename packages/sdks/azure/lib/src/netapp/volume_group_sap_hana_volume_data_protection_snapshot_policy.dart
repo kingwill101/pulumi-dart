@@ -13,15 +13,16 @@ class VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'snapshotPolicyId': snapshotPolicyId,
-    };
+    return <String, dynamic>{'snapshotPolicyId': snapshotPolicyId};
   }
 
-  factory VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy.fromMap(Map<String, dynamic> map) {
+  factory VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy(
-      snapshotPolicyId: (map['snapshotPolicyId'] as String).input(),
+      snapshotPolicyId: pulumi.Input.fromValue(
+        map['snapshotPolicyId'] as String,
+      ),
     );
   }
 }
-

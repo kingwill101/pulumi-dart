@@ -7,16 +7,15 @@ enum IkeIntegrity {
   valueGCMAES256("GCMAES256"),
   valueGCMAES128("GCMAES128");
 
-  const IkeIntegrity(this.value);
-  final String value;
+  const IkeIntegrity(this.wireValue);
+  final String wireValue;
 
   static IkeIntegrity fromValue(String value) {
     for (final item in IkeIntegrity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IkeIntegrity value: $value');
   }
 }
-

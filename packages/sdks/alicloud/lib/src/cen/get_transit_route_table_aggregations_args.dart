@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouteTableAggregationsArgs {
   /// A list of Transit Route Table Aggregation IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Transit Route Table Aggregation name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
   final pulumi.Input<String>? status;
+
   /// The destination CIDR block of the aggregate route.
   final pulumi.Input<String>? transitRouteTableAggregationCidr;
+
   /// The ID of the route table of the Enterprise Edition transit router.
   final pulumi.Input<String> transitRouteTableId;
 
@@ -47,15 +52,38 @@ class GetTransitRouteTableAggregationsArgs {
     };
   }
 
-  factory GetTransitRouteTableAggregationsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouteTableAggregationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouteTableAggregationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr']! as String).input(),
-      transitRouteTableId: (map['transitRouteTableId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouteTableAggregationCidr: (() {
+        final guardedValue = map['transitRouteTableAggregationCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouteTableId: pulumi.Input.fromValue(
+        map['transitRouteTableId'] as String,
+      ),
     );
   }
 }
-

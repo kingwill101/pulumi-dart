@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Preconditions {
   /// Specifies the target ResourceVersion
   final pulumi.Input<String>? resourceVersion;
+
   /// Specifies the target UID.
   final pulumi.Input<String>? uid;
 
   /// Creates a new [Preconditions].
   /// [resourceVersion] Specifies the target ResourceVersion
   /// [uid] Specifies the target UID.
-  Preconditions({
-    this.resourceVersion,
-    this.uid,
-  });
+  Preconditions({this.resourceVersion, this.uid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceVersion': ?resourceVersion,
-      'uid': ?uid,
-    };
+    return <String, dynamic>{'resourceVersion': ?resourceVersion, 'uid': ?uid};
   }
 
   factory Preconditions.fromMap(Map<String, dynamic> map) {
     return Preconditions(
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      resourceVersion: (() {
+        final guardedValue = map['resourceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

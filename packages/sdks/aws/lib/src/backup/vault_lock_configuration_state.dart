@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultLockConfigurationState {
   /// The ARN of the vault.
   final pulumi.Input<String>? backupVaultArn;
+
   /// Name of the backup vault to add a lock configuration for.
   final pulumi.Input<String>? backupVaultName;
+
   /// The number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
   final pulumi.Input<int>? changeableForDays;
+
   /// The maximum retention period that the vault retains its recovery points.
   final pulumi.Input<int>? maxRetentionDays;
+
   /// The minimum retention period that the vault retains its recovery points.
   final pulumi.Input<int>? minRetentionDays;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -46,13 +51,36 @@ class VaultLockConfigurationState {
 
   factory VaultLockConfigurationState.fromMap(Map<String, dynamic> map) {
     return VaultLockConfigurationState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : ((map['backupVaultArn'] as String).input()).input(),
-      backupVaultName: map['backupVaultName'] == null ? null : ((map['backupVaultName'] as String).input()).input(),
-      changeableForDays: map['changeableForDays'] == null ? null : ((map['changeableForDays'] as int).input()).input(),
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : ((map['maxRetentionDays'] as int).input()).input(),
-      minRetentionDays: map['minRetentionDays'] == null ? null : ((map['minRetentionDays'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      backupVaultArn: (() {
+        final guardedValue = map['backupVaultArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupVaultName: (() {
+        final guardedValue = map['backupVaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      changeableForDays: (() {
+        final guardedValue = map['changeableForDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRetentionDays: (() {
+        final guardedValue = map['maxRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minRetentionDays: (() {
+        final guardedValue = map['minRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

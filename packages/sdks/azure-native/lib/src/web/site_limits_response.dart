@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteLimitsResponse {
   /// Maximum allowed disk size usage in MB.
   final pulumi.Input<double>? maxDiskSizeInMb;
+
   /// Maximum allowed memory usage in MB.
   final pulumi.Input<double>? maxMemoryInMb;
+
   /// Maximum allowed CPU usage percentage.
   final pulumi.Input<double>? maxPercentageCpu;
 
@@ -31,10 +33,21 @@ class SiteLimitsResponse {
 
   factory SiteLimitsResponse.fromMap(Map<String, dynamic> map) {
     return SiteLimitsResponse(
-      maxDiskSizeInMb: map['maxDiskSizeInMb'] == null ? null : (map['maxDiskSizeInMb']! as double).input(),
-      maxMemoryInMb: map['maxMemoryInMb'] == null ? null : (map['maxMemoryInMb']! as double).input(),
-      maxPercentageCpu: map['maxPercentageCpu'] == null ? null : (map['maxPercentageCpu']! as double).input(),
+      maxDiskSizeInMb: (() {
+        final guardedValue = map['maxDiskSizeInMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxMemoryInMb: (() {
+        final guardedValue = map['maxMemoryInMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxPercentageCpu: (() {
+        final guardedValue = map['maxPercentageCpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

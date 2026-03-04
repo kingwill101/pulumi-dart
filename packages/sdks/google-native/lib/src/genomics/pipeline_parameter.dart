@@ -7,10 +7,13 @@ import 'local_copy.dart';
 class PipelineParameter {
   /// The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
   final pulumi.Input<String>? defaultValue;
+
   /// Human-readable description.
   final pulumi.Input<String>? description;
+
   /// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
   final pulumi.Input<LocalCopy>? localCopy;
+
   /// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
   final pulumi.Input<String> name;
 
@@ -30,18 +33,35 @@ class PipelineParameter {
     return <String, dynamic>{
       'defaultValue': ?defaultValue,
       'description': ?description,
-      'localCopy': ?pulumi.Input.mapOptionalInputValue<LocalCopy, Map<String, dynamic>>(localCopy, (value) => value.toMap()),
+      'localCopy':
+          ?pulumi.Input.mapOptionalInputValue<LocalCopy, Map<String, dynamic>>(
+            localCopy,
+            (value) => value.toMap(),
+          ),
       'name': name,
     };
   }
 
   factory PipelineParameter.fromMap(Map<String, dynamic> map) {
     return PipelineParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      localCopy: map['localCopy'] == null ? null : (LocalCopy.fromMap((map['localCopy']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localCopy: (() {
+        final guardedValue = map['localCopy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LocalCopy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

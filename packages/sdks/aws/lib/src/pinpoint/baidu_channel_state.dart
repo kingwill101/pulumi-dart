@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaiduChannelState {
   /// Platform credential API key from Baidu.
   final pulumi.Input<String>? apiKey;
+
   /// The application ID.
   final pulumi.Input<String>? applicationId;
+
   /// Specifies whether to enable the channel. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Platform credential Secret key from Baidu.
   final pulumi.Input<String>? secretKey;
 
@@ -41,12 +45,31 @@ class BaiduChannelState {
 
   factory BaiduChannelState.fromMap(Map<String, dynamic> map) {
     return BaiduChannelState(
-      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
-      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secretKey: map['secretKey'] == null ? null : ((map['secretKey'] as String).input()).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretKey: (() {
+        final guardedValue = map['secretKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

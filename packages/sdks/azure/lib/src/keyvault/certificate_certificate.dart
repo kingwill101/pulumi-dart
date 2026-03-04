@@ -5,9 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateCertificate {
   /// The base64-encoded certificate contents.
   final pulumi.Input<String> contents;
+
   /// The password associated with the certificate.
   ///
-  /// > **NOTE:** A PEM certificate is already base64 encoded. To successfully import, the `contents` property should include a PEM encoded X509 certificate and a private_key in pkcs8 format. There should only be linux style `\n` line endings and the whole block should have the PEM begin/end blocks around the certificate data and the private key data.
+  /// &gt; **NOTE:** A PEM certificate is already base64 encoded. To successfully import, the `contents` property should include a PEM encoded X509 certificate and a private_key in pkcs8 format. There should only be linux style `\n` line endings and the whole block should have the PEM begin/end blocks around the certificate data and the private key data.
   ///
   /// To convert a private key to pkcs8 format with openssl use:
   /// ```shell
@@ -32,23 +33,20 @@ class CertificateCertificate {
   /// Creates a new [CertificateCertificate].
   /// [contents] The base64-encoded certificate contents.
   /// [password] The password associated with the certificate.
-  CertificateCertificate({
-    required this.contents,
-    this.password,
-  });
+  CertificateCertificate({required this.contents, this.password});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contents': contents,
-      'password': ?password,
-    };
+    return <String, dynamic>{'contents': contents, 'password': ?password};
   }
 
   factory CertificateCertificate.fromMap(Map<String, dynamic> map) {
     return CertificateCertificate(
-      contents: (map['contents'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
+      contents: pulumi.Input.fromValue(map['contents'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum ConfidentialVMEncryptionType {
   encryptedWithCmk("EncryptedWithCmk"),
   nonPersistedTPM("NonPersistedTPM");
 
-  const ConfidentialVMEncryptionType(this.value);
-  final String value;
+  const ConfidentialVMEncryptionType(this.wireValue);
+  final String wireValue;
 
   static ConfidentialVMEncryptionType fromValue(String value) {
     for (final item in ConfidentialVMEncryptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConfidentialVMEncryptionType value: $value');
   }
 }
-

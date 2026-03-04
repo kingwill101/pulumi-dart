@@ -1,13 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'script_monitor_args.dart';
-import 'script_monitor_location_private.dart';
 import 'script_monitor_state.dart';
-import 'script_monitor_tag.dart';
 
 /// Use this resource to create update, and delete a Script API or Script Browser Synthetics Monitor in New Relic.
 ///
-/// > **IMPORTANT:**  The **Synthetics Legacy Runtime** has reached its <b style="color:red;">end-of-life</b> on <b style="color:red;">October 22, 2024</b>. As a consequence, using the legacy runtime or blank runtime values with Synthetic monitor requests from the New Relic Terraform Provider will result in API errors. Starting with **v3.51.0** of the New Relic Terraform Provider, configurations of Synthetic monitors without runtime attributes or comprising legacy runtime values will be deemed invalid.
-/// <br><br>
+/// &gt; **IMPORTANT:**  The **Synthetics Legacy Runtime** has reached its &lt;b style="color:red;"&gt;end-of-life&lt;/b&gt; on &lt;b style="color:red;"&gt;October 22, 2024&lt;/b&gt;. As a consequence, using the legacy runtime or blank runtime values with Synthetic monitor requests from the New Relic Terraform Provider will result in API errors. Starting with **v3.51.0** of the New Relic Terraform Provider, configurations of Synthetic monitors without runtime attributes or comprising legacy runtime values will be deemed invalid.
+/// &lt;br&gt;&lt;br&gt;
 /// If your Synthetic monitors' configuration is not updated already with new runtime values, upgrade as soon as possible to avoid these consequences. For more details and instructions, please see the detailed warning in the **Deprecated Runtime** section.
 ///
 ///
@@ -448,7 +446,7 @@ import 'script_monitor_tag.dart';
 ///
 /// The below example shows how you can define a private location and attach it to a monitor.
 ///
-/// > **NOTE:** It can take up to 10 minutes for a private location to become available.
+/// &gt; **NOTE:** It can take up to 10 minutes for a private location to become available.
 ///
 /// ##### Type: `SCRIPT_API`
 ///
@@ -973,7 +971,7 @@ import 'script_monitor_tag.dart';
 /// The following example shows how to use `depends_on` to create a monitor that uses a new secure credential.
 /// The `depends_on` creates an explicit dependency between resources to ensure that the secure credential is created before the monitor that uses it.
 ///
-/// > **NOTE:** Use the `depends_on` when you are creating both monitor and its secure credentials together.
+/// &gt; **NOTE:** Use the `depends_on` when you are creating both monitor and its secure credentials together.
 ///
 /// ##### Type: `SCRIPT_BROWSER`
 ///
@@ -1191,46 +1189,66 @@ import 'script_monitor_tag.dart';
 class ScriptMonitor extends pulumi.CustomResource {
   /// The account in which the Synthetics monitor will be created.
   late final pulumi.Output<String> accountId;
+
   /// The multiple browsers list on which synthetic monitors will run. Valid values are `CHROME` and `FIREFOX`.
   late final pulumi.Output<List<String>?> browsers;
+
   /// Device emulation orientation field. Valid values are `LANDSCAPE` and `PORTRAIT`. We recommend you to use `devices` field instead of `device_type`,`device_orientation` fields, as it allows you to select multiple combinations of device types and orientations.
   late final pulumi.Output<String?> deviceOrientation;
+
   /// Device emulation type field. Valid values are `MOBILE` and `TABLET`. We recommend you to use `devices` field instead of `device_type`,`device_orientation` fields, as it allows you to select multiple combinations of device types and orientations.
   late final pulumi.Output<String?> deviceType;
+
   /// The multiple devices list on which synthetic monitors will run. Valid values are `DESKTOP`, `MOBILE_LANDSCAPE`, `MOBILE_PORTRAIT`, `TABLET_LANDSCAPE` and `TABLET_PORTRAIT`.
   late final pulumi.Output<List<String>?> devices;
+
   /// Capture a screenshot during job execution.
   late final pulumi.Output<bool?> enableScreenshotOnFailureAndScript;
+
   /// The unique entity identifier of the monitor in New Relic.
   late final pulumi.Output<String> guid;
+
   /// The location the monitor will run from. See Nested location_private blocks below for details. **At least one of either** `locations_public` **or** `location_private` **is required**.
-  late final pulumi.Output<List<ScriptMonitorLocationPrivate>?> locationPrivates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> locationPrivates;
+
   /// The location the monitor will run from. Check out [this page](https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/administration/synthetic-public-minion-ips/) for a list of valid public locations. The `AWS_` prefix is not needed, as the provider uses NerdGraph. **At least one of either** `locations_public` **or** `location_private` **is required**.
   late final pulumi.Output<List<String>?> locationsPublics;
+
   /// The monitor id of the Synthetics script monitor (not to be confused with the GUID of the monitor).
   late final pulumi.Output<String> monitorId;
+
   /// The name for the monitor.
   late final pulumi.Output<String> name;
+
   /// The interval at which this monitor should run. Valid values are `EVERY_MINUTE`, `EVERY_5_MINUTES`, `EVERY_10_MINUTES`, `EVERY_15_MINUTES`, `EVERY_30_MINUTES`, `EVERY_HOUR`, `EVERY_6_HOURS`, `EVERY_12_HOURS`, or `EVERY_DAY`.
   late final pulumi.Output<String> period;
+
   /// The interval in minutes at which Synthetic monitor should run.
   late final pulumi.Output<int> periodInMinutes;
+
   /// The runtime that the monitor will use to run jobs. For the `SCRIPT_API` monitor type, a valid value is `NODE_API`. For the `SCRIPT_BROWSER` monitor type, a valid value is `CHROME_BROWSER`.
   late final pulumi.Output<String?> runtimeType_;
+
   /// The specific version of the runtime type selected. For the `SCRIPT_API` monitor type, a valid value is `16.10`, which corresponds to the version of Node.js. For the `SCRIPT_BROWSER` monitor type, a valid value is `100`, which corresponds to the version of the Chrome browser.
   late final pulumi.Output<String?> runtimeTypeVersion;
+
   /// The script that the monitor runs.
   late final pulumi.Output<String?> script;
+
   /// The programing language that should execute the script.
   late final pulumi.Output<String?> scriptLanguage;
+
   /// The run state of the monitor. (`ENABLED` or `DISABLED`).
   late final pulumi.Output<String> status;
+
   /// The tags that will be associated with the monitor. See Nested tag blocks below for details.
   ///
   /// The `SCRIPTED_BROWSER` monitor type supports the following additional arguments:
-  late final pulumi.Output<List<ScriptMonitorTag>?> tags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+
   /// The plaintext representing the monitor script. Valid values are SCRIPT_BROWSER or SCRIPT_API
   late final pulumi.Output<String> type;
+
   /// A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   late final pulumi.Output<bool?> useUnsupportedLegacyRuntime;
 
@@ -1243,32 +1261,38 @@ class ScriptMonitor extends pulumi.CustomResource {
     ScriptMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/scriptMonitor:ScriptMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.browsers = registerOutput<List<String>?>('browsers');
-    this.deviceOrientation = registerOutput<String?>('deviceOrientation');
-    this.deviceType = registerOutput<String?>('deviceType');
-    this.devices = registerOutput<List<String>?>('devices');
-    this.enableScreenshotOnFailureAndScript = registerOutput<bool?>('enableScreenshotOnFailureAndScript');
-    this.guid = registerOutput<String>('guid');
-    this.locationPrivates = registerOutput<List<ScriptMonitorLocationPrivate>?>('locationPrivates');
-    this.locationsPublics = registerOutput<List<String>?>('locationsPublics');
-    this.monitorId = registerOutput<String>('monitorId');
+         'newrelic:synthetics/scriptMonitor:ScriptMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    browsers = registerOutput<List<String>?>('browsers');
+    deviceOrientation = registerOutput<String?>('deviceOrientation');
+    deviceType = registerOutput<String?>('deviceType');
+    devices = registerOutput<List<String>?>('devices');
+    enableScreenshotOnFailureAndScript = registerOutput<bool?>(
+      'enableScreenshotOnFailureAndScript',
+    );
+    guid = registerOutput<String>('guid');
+    locationPrivates = registerOutput<List<Map<String, dynamic>>?>(
+      'locationPrivates',
+    );
+    locationsPublics = registerOutput<List<String>?>('locationsPublics');
+    monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<String>('period');
-    this.periodInMinutes = registerOutput<int>('periodInMinutes');
-    this.runtimeType_ = registerOutput<String?>('runtimeType');
-    this.runtimeTypeVersion = registerOutput<String?>('runtimeTypeVersion');
-    this.script = registerOutput<String?>('script');
-    this.scriptLanguage = registerOutput<String?>('scriptLanguage');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<ScriptMonitorTag>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.useUnsupportedLegacyRuntime = registerOutput<bool?>('useUnsupportedLegacyRuntime');
+    period = registerOutput<String>('period');
+    periodInMinutes = registerOutput<int>('periodInMinutes');
+    runtimeType_ = registerOutput<String?>('runtimeType');
+    runtimeTypeVersion = registerOutput<String?>('runtimeTypeVersion');
+    script = registerOutput<String?>('script');
+    scriptLanguage = registerOutput<String?>('scriptLanguage');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    type = registerOutput<String>('type');
+    useUnsupportedLegacyRuntime = registerOutput<bool?>(
+      'useUnsupportedLegacyRuntime',
+    );
   }
 
   /// Gets an existing [ScriptMonitor] resource's state with the given [name] and [id].
@@ -1289,31 +1313,37 @@ class ScriptMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/scriptMonitor:ScriptMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.browsers = registerOutput<List<String>?>('browsers');
-    this.deviceOrientation = registerOutput<String?>('deviceOrientation');
-    this.deviceType = registerOutput<String?>('deviceType');
-    this.devices = registerOutput<List<String>?>('devices');
-    this.enableScreenshotOnFailureAndScript = registerOutput<bool?>('enableScreenshotOnFailureAndScript');
-    this.guid = registerOutput<String>('guid');
-    this.locationPrivates = registerOutput<List<ScriptMonitorLocationPrivate>?>('locationPrivates');
-    this.locationsPublics = registerOutput<List<String>?>('locationsPublics');
-    this.monitorId = registerOutput<String>('monitorId');
+         'newrelic:synthetics/scriptMonitor:ScriptMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    browsers = registerOutput<List<String>?>('browsers');
+    deviceOrientation = registerOutput<String?>('deviceOrientation');
+    deviceType = registerOutput<String?>('deviceType');
+    devices = registerOutput<List<String>?>('devices');
+    enableScreenshotOnFailureAndScript = registerOutput<bool?>(
+      'enableScreenshotOnFailureAndScript',
+    );
+    guid = registerOutput<String>('guid');
+    locationPrivates = registerOutput<List<Map<String, dynamic>>?>(
+      'locationPrivates',
+    );
+    locationsPublics = registerOutput<List<String>?>('locationsPublics');
+    monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<String>('period');
-    this.periodInMinutes = registerOutput<int>('periodInMinutes');
-    this.runtimeType_ = registerOutput<String?>('runtimeType');
-    this.runtimeTypeVersion = registerOutput<String?>('runtimeTypeVersion');
-    this.script = registerOutput<String?>('script');
-    this.scriptLanguage = registerOutput<String?>('scriptLanguage');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<ScriptMonitorTag>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.useUnsupportedLegacyRuntime = registerOutput<bool?>('useUnsupportedLegacyRuntime');
+    period = registerOutput<String>('period');
+    periodInMinutes = registerOutput<int>('periodInMinutes');
+    runtimeType_ = registerOutput<String?>('runtimeType');
+    runtimeTypeVersion = registerOutput<String?>('runtimeTypeVersion');
+    script = registerOutput<String?>('script');
+    scriptLanguage = registerOutput<String?>('scriptLanguage');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    type = registerOutput<String>('type');
+    useUnsupportedLegacyRuntime = registerOutput<bool?>(
+      'useUnsupportedLegacyRuntime',
+    );
   }
 }

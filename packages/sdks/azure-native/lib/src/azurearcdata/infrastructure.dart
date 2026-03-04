@@ -7,16 +7,15 @@ enum Infrastructure {
   valueOnpremises("onpremises"),
   valueOther("other");
 
-  const Infrastructure(this.value);
-  final String value;
+  const Infrastructure(this.wireValue);
+  final String wireValue;
 
   static Infrastructure fromValue(String value) {
     for (final item in Infrastructure.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Infrastructure value: $value');
   }
 }
-

@@ -164,24 +164,35 @@ import 'system_data_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource of private end point.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+
   /// A collection of information about the state of the connection between service consumer and provider.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse>
+  privateLinkServiceConnectionState;
+
   /// The provisioning state of the private endpoint connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The sku of the workspace.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -194,21 +205,26 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:machinelearningservices:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkServiceConnectionStateResponse>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

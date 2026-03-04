@@ -11,8 +11,10 @@ class GetClusterArgs {
   /// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
   /// be specified.
   final pulumi.Input<String>? location;
+
   /// The name of the cluster.
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -21,11 +23,7 @@ class GetClusterArgs {
   /// [location] The location (zone or region) this cluster has been
   /// [name] The name of the cluster.
   /// [project] The project in which the resource belongs. If it
-  GetClusterArgs({
-    this.location,
-    required this.name,
-    this.project,
-  });
+  GetClusterArgs({this.location, required this.name, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,17 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -147,14 +147,19 @@ import 'system_data_response.dart';
 class ArchiveVersion extends pulumi.CustomResource {
   /// The detailed error message for the archive version in the case of failure.
   late final pulumi.Output<String?> archiveVersionErrorMessage;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the archive at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -167,16 +172,18 @@ class ArchiveVersion extends pulumi.CustomResource {
     ArchiveVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:ArchiveVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.archiveVersionErrorMessage = registerOutput<String?>('archiveVersionErrorMessage');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:containerregistry:ArchiveVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    archiveVersionErrorMessage = registerOutput<String?>(
+      'archiveVersionErrorMessage',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

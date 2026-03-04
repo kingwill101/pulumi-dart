@@ -7,6 +7,7 @@ class AutoscalerAutoscalingPolicyCpuUtilization {
   /// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
   /// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
   final pulumi.Input<String>? predictiveMethod;
+
   /// The target CPU utilization that the autoscaler should maintain.
   /// Must be a float value in the range (0, 1]. If not specified, the
   /// default is 0.6.
@@ -35,11 +36,16 @@ class AutoscalerAutoscalingPolicyCpuUtilization {
     };
   }
 
-  factory AutoscalerAutoscalingPolicyCpuUtilization.fromMap(Map<String, dynamic> map) {
+  factory AutoscalerAutoscalingPolicyCpuUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoscalerAutoscalingPolicyCpuUtilization(
-      predictiveMethod: map['predictiveMethod'] == null ? null : (map['predictiveMethod']! as String).input(),
-      target: (map['target'] as double).input(),
+      predictiveMethod: (() {
+        final guardedValue = map['predictiveMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: pulumi.Input.fromValue(map['target'] as double),
     );
   }
 }
-

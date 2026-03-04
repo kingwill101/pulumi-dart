@@ -6,9 +6,13 @@ import 'deployment_config_traffic_routing_config_time_based_linear.dart';
 
 class DeploymentConfigTrafficRoutingConfig {
   /// The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
-  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedCanary>? timeBasedCanary;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedCanary>?
+  timeBasedCanary;
+
   /// The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
-  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedLinear>? timeBasedLinear;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedLinear>?
+  timeBasedLinear;
+
   /// Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
   final pulumi.Input<String>? type;
 
@@ -24,18 +28,47 @@ class DeploymentConfigTrafficRoutingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'timeBasedCanary': ?pulumi.Input.mapOptionalInputValue<DeploymentConfigTrafficRoutingConfigTimeBasedCanary, Map<String, dynamic>>(timeBasedCanary, (value) => value.toMap()),
-      'timeBasedLinear': ?pulumi.Input.mapOptionalInputValue<DeploymentConfigTrafficRoutingConfigTimeBasedLinear, Map<String, dynamic>>(timeBasedLinear, (value) => value.toMap()),
+      'timeBasedCanary':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentConfigTrafficRoutingConfigTimeBasedCanary,
+            Map<String, dynamic>
+          >(timeBasedCanary, (value) => value.toMap()),
+      'timeBasedLinear':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentConfigTrafficRoutingConfigTimeBasedLinear,
+            Map<String, dynamic>
+          >(timeBasedLinear, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
-  factory DeploymentConfigTrafficRoutingConfig.fromMap(Map<String, dynamic> map) {
+  factory DeploymentConfigTrafficRoutingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentConfigTrafficRoutingConfig(
-      timeBasedCanary: map['timeBasedCanary'] == null ? null : ((DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap((map['timeBasedCanary']! as Map).cast<String, dynamic>())).input()).input(),
-      timeBasedLinear: map['timeBasedLinear'] == null ? null : ((DeploymentConfigTrafficRoutingConfigTimeBasedLinear.fromMap((map['timeBasedLinear']! as Map).cast<String, dynamic>())).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      timeBasedCanary: (() {
+        final guardedValue = map['timeBasedCanary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeBasedLinear: (() {
+        final guardedValue = map['timeBasedLinear'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentConfigTrafficRoutingConfigTimeBasedLinear.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

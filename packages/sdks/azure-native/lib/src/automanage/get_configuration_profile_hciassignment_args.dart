@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationProfileHCIAssignmentArgs {
   /// The name of the Arc machine.
   final pulumi.Input<String> clusterName;
+
   /// The configuration profile assignment name.
   final pulumi.Input<String> configurationProfileAssignmentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetConfigurationProfileHCIAssignmentArgs {
     };
   }
 
-  factory GetConfigurationProfileHCIAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationProfileHCIAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationProfileHCIAssignmentArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      configurationProfileAssignmentName: (map['configurationProfileAssignmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      configurationProfileAssignmentName: pulumi.Input.fromValue(
+        map['configurationProfileAssignmentName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

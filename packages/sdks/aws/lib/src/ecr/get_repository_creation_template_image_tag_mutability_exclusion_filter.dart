@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter {
   /// The filter pattern to use for excluding image tags from the mutability setting.
   final pulumi.Input<String> filter;
+
   /// The type of filter to use.
   final pulumi.Input<String> filterType;
 
@@ -17,17 +18,15 @@ class GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': filter,
-      'filterType': filterType,
-    };
+    return <String, dynamic>{'filter': filter, 'filterType': filterType};
   }
 
-  factory GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter(
-      filter: (map['filter'] as String).input(),
-      filterType: (map['filterType'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      filterType: pulumi.Input.fromValue(map['filterType'] as String),
     );
   }
 }
-

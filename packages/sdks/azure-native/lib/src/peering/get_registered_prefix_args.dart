@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegisteredPrefixArgs {
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
+
   /// The name of the registered prefix.
   final pulumi.Input<String> registeredPrefixName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetRegisteredPrefixArgs {
 
   factory GetRegisteredPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredPrefixArgs(
-      peeringName: (map['peeringName'] as String).input(),
-      registeredPrefixName: (map['registeredPrefixName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
+      registeredPrefixName: pulumi.Input.fromValue(
+        map['registeredPrefixName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

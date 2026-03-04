@@ -9,20 +9,19 @@ class ProjectCatalogSettingsResponse {
 
   /// Creates a new [ProjectCatalogSettingsResponse].
   /// [catalogItemSyncTypes] Indicates catalog item types that can be synced.
-  ProjectCatalogSettingsResponse({
-    this.catalogItemSyncTypes,
-  });
+  ProjectCatalogSettingsResponse({this.catalogItemSyncTypes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'catalogItemSyncTypes': ?catalogItemSyncTypes,
-    };
+    return <String, dynamic>{'catalogItemSyncTypes': ?catalogItemSyncTypes};
   }
 
   factory ProjectCatalogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProjectCatalogSettingsResponse(
-      catalogItemSyncTypes: map['catalogItemSyncTypes'] == null ? null : ((map['catalogItemSyncTypes']! as List).cast<String>()).input(),
+      catalogItemSyncTypes: (() {
+        final guardedValue = map['catalogItemSyncTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionAppHostKeysArgs {
   /// The name of the Function App.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Function App exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetFunctionAppHostKeysArgs {
 
   factory GetFunctionAppHostKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppHostKeysArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

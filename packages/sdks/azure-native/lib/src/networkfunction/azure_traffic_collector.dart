@@ -150,22 +150,31 @@ import 'tracked_resource_response_system_data.dart';
 class AzureTrafficCollector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collector Policies for Azure Traffic Collector.
-  late final pulumi.Output<List<ResourceReferenceResponse>> collectorPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> collectorPolicies;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the application rule collection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<TrackedResourceResponseSystemData> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The virtualHub to which the Azure Traffic Collector belongs.
   late final pulumi.Output<ResourceReferenceResponse?> virtualHub;
 
@@ -178,20 +187,24 @@ class AzureTrafficCollector extends pulumi.CustomResource {
     AzureTrafficCollectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkfunction:AzureTrafficCollector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.collectorPolicies = registerOutput<List<ResourceReferenceResponse>>('collectorPolicies');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkfunction:AzureTrafficCollector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collectorPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'collectorPolicies',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<TrackedResourceResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<ResourceReferenceResponse?>('virtualHub');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<TrackedResourceResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<ResourceReferenceResponse?>('virtualHub');
   }
 }

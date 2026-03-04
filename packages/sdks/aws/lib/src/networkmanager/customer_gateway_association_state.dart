@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerGatewayAssociationState {
   /// ARN of the customer gateway.
   final pulumi.Input<String>? customerGatewayArn;
+
   /// ID of the device.
   final pulumi.Input<String>? deviceId;
+
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? globalNetworkId;
+
   /// ID of the link.
   final pulumi.Input<String>? linkId;
 
@@ -38,11 +41,26 @@ class CustomerGatewayAssociationState {
 
   factory CustomerGatewayAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayAssociationState(
-      customerGatewayArn: map['customerGatewayArn'] == null ? null : ((map['customerGatewayArn'] as String).input()).input(),
-      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
-      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
+      customerGatewayArn: (() {
+        final guardedValue = map['customerGatewayArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalNetworkId: (() {
+        final guardedValue = map['globalNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkId: (() {
+        final guardedValue = map['linkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

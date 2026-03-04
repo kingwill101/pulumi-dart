@@ -13,23 +13,16 @@ class GetFolderExclusionArgs {
   /// Creates a new [GetFolderExclusionArgs].
   /// [exclusionId] Required.
   /// [folderId] Required.
-  GetFolderExclusionArgs({
-    required this.exclusionId,
-    required this.folderId,
-  });
+  GetFolderExclusionArgs({required this.exclusionId, required this.folderId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exclusionId': exclusionId,
-      'folderId': folderId,
-    };
+    return <String, dynamic>{'exclusionId': exclusionId, 'folderId': folderId};
   }
 
   factory GetFolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderExclusionArgs(
-      exclusionId: (map['exclusionId'] as String).input(),
-      folderId: (map['folderId'] as String).input(),
+      exclusionId: pulumi.Input.fromValue(map['exclusionId'] as String),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
     );
   }
 }
-

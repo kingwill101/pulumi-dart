@@ -7,12 +7,16 @@ import 'conn_string_value_type_pair_response.dart';
 class ListWebAppConnectionStringsSlotResult {
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Connection strings.
   final Map<String, ConnStringValueTypePairResponse> properties;
+
   /// Resource type.
   final String type;
 
@@ -35,19 +39,33 @@ class ListWebAppConnectionStringsSlotResult {
       'id': id,
       'kind': ?kind,
       'name': name,
-      'properties': pulumi.Input.encodeMapValues<ConnStringValueTypePairResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.encodeMapValues<
+            ConnStringValueTypePairResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory ListWebAppConnectionStringsSlotResult.fromMap(Map<String, dynamic> map) {
+  factory ListWebAppConnectionStringsSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWebAppConnectionStringsSlotResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(map['properties'], (value) => ConnStringValueTypePairResponse.fromMap((value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(
+        map['properties']!,
+        (value) => ConnStringValueTypePairResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

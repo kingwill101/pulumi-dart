@@ -1,5 +1,3 @@
-library module_integrationconnectors;
-
 export 'integrationconnectors/connection.dart';
 export 'integrationconnectors/connection_args.dart';
 export 'integrationconnectors/connection_auth_config.dart';

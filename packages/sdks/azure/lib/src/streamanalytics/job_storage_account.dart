@@ -4,7 +4,7 @@ import 'job_storage_account_state.dart';
 
 /// Manages a Stream Analytics Job Storage Account. Use this resource for managing the Job Storage Account using `Msi` authentication with a `SystemAssigned` identity.
 ///
-/// > **Note:** The Job Storage Account for a Stream Analytics Job can be managed on the `azure.streamanalytics.Job` resource with the `job_storage_account` block, or with this resource. We do not recommend managing the Job Storage Account through both means as this can lead to conflicts.
+/// &gt; **Note:** The Job Storage Account for a Stream Analytics Job can be managed on the `azure.streamanalytics.Job` resource with the `job_storage_account` block, or with this resource. We do not recommend managing the Job Storage Account through both means as this can lead to conflicts.
 ///
 /// ## Example Usage
 ///
@@ -340,7 +340,7 @@ import 'job_storage_account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2021-10-01-preview
@@ -357,6 +357,7 @@ class JobStorageAccount extends pulumi.CustomResource {
   late final pulumi.Output<String> authenticationMode;
   late final pulumi.Output<String?> storageAccountKey;
   late final pulumi.Output<String> storageAccountName;
+
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -369,15 +370,15 @@ class JobStorageAccount extends pulumi.CustomResource {
     JobStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String>('authenticationMode');
-    this.storageAccountKey = registerOutput<String?>('storageAccountKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+         'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String>('authenticationMode');
+    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 
   /// Gets an existing [JobStorageAccount] resource's state with the given [name] and [id].
@@ -398,14 +399,14 @@ class JobStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String>('authenticationMode');
-    this.storageAccountKey = registerOutput<String?>('storageAccountKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+         'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String>('authenticationMode');
+    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 }

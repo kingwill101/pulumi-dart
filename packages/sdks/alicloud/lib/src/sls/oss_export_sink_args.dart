@@ -10,12 +10,16 @@ import 'oss_export_sink_configuration.dart';
 class OssExportSinkArgs {
   /// OSSExportConfiguration See `configuration` below.
   final pulumi.Input<OssExportSinkConfiguration> configuration;
+
   /// The description of the job.
   final pulumi.Input<String>? description;
+
   /// The display name of the job.
   final pulumi.Input<String> displayName;
+
   /// The unique identifier of the OSS data shipping job.
   final pulumi.Input<String> jobName;
+
   /// The name of the project.
   final pulumi.Input<String> project;
 
@@ -35,7 +39,11 @@ class OssExportSinkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': pulumi.Input.mapInputValue<OssExportSinkConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          pulumi.Input.mapInputValue<
+            OssExportSinkConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
       'jobName': jobName,
@@ -45,12 +53,19 @@ class OssExportSinkArgs {
 
   factory OssExportSinkArgs.fromMap(Map<String, dynamic> map) {
     return OssExportSinkArgs(
-      configuration: (OssExportSinkConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      project: (map['project'] as String).input(),
+      configuration: pulumi.Input.fromValue(
+        OssExportSinkConfiguration.fromMap(
+          (map['configuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

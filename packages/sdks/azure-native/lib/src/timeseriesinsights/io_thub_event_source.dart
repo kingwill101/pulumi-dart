@@ -246,33 +246,47 @@ import 'local_timestamp_response.dart';
 class IoTHubEventSource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the iot hub's consumer group that holds the partitions from which events will be read.
   late final pulumi.Output<String> consumerGroupName;
+
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
+
   /// The resource id of the event source in Azure Resource Manager.
   late final pulumi.Output<String> eventSourceResourceId;
+
   /// The name of the iot hub.
   late final pulumi.Output<String> iotHubName;
+
   /// The name of the Shared Access Policy key that grants the Time Series Insights service access to the iot hub. This shared access policy key must grant 'service connect' permissions to the iot hub.
   late final pulumi.Output<String> keyName;
+
   /// The kind of the event source.
   /// Expected value is 'Microsoft.IoTHub'.
   late final pulumi.Output<String> kind;
+
   /// An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
   late final pulumi.Output<LocalTimestampResponse?> localTimestamp;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// ISO8601 UTC datetime with seconds precision (milliseconds are optional), specifying the date and time that will be the starting point for Events to be consumed.
   late final pulumi.Output<String?> time;
+
   /// The event property that will be used as the event source's timestamp. If a value isn't specified for timestampPropertyName, or if null or empty-string is specified, the event creation time will be used.
   late final pulumi.Output<String?> timestampPropertyName;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -285,25 +299,25 @@ class IoTHubEventSource extends pulumi.CustomResource {
     IoTHubEventSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:timeseriesinsights:IoTHubEventSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.consumerGroupName = registerOutput<String>('consumerGroupName');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.eventSourceResourceId = registerOutput<String>('eventSourceResourceId');
-    this.iotHubName = registerOutput<String>('iotHubName');
-    this.keyName = registerOutput<String>('keyName');
-    this.kind = registerOutput<String>('kind');
-    this.localTimestamp = registerOutput<LocalTimestampResponse?>('localTimestamp');
-    this.location = registerOutput<String>('location');
+         'azure-native:timeseriesinsights:IoTHubEventSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroupName = registerOutput<String>('consumerGroupName');
+    creationTime = registerOutput<String>('creationTime');
+    eventSourceResourceId = registerOutput<String>('eventSourceResourceId');
+    iotHubName = registerOutput<String>('iotHubName');
+    keyName = registerOutput<String>('keyName');
+    kind = registerOutput<String>('kind');
+    localTimestamp = registerOutput<LocalTimestampResponse?>('localTimestamp');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.time = registerOutput<String?>('time');
-    this.timestampPropertyName = registerOutput<String?>('timestampPropertyName');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    time = registerOutput<String?>('time');
+    timestampPropertyName = registerOutput<String?>('timestampPropertyName');
+    type = registerOutput<String>('type');
   }
 }

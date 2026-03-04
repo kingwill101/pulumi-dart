@@ -9,7 +9,7 @@ import 'v3_async_invoke_config_state.dart';
 ///
 /// For information about FCV3 Async Invoke Config and how to use it, see [What is Async Invoke Config](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getasyncinvokeconfig).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -606,20 +606,29 @@ import 'v3_async_invoke_config_state.dart';
 class V3AsyncInvokeConfig extends pulumi.CustomResource {
   /// Whether to enable an asynchronous task
   late final pulumi.Output<bool?> asyncTask;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Target Configuration See `destination_config` below.
-  late final pulumi.Output<V3AsyncInvokeConfigDestinationConfig?> destinationConfig;
+  late final pulumi.Output<V3AsyncInvokeConfigDestinationConfig?>
+  destinationConfig;
+
   /// (Available since v1.234.0) Function resource identification
   late final pulumi.Output<String> functionArn;
+
   /// Function Name
   late final pulumi.Output<String> functionName;
+
   /// (Available since v1.234.0) Last modification time
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Event maximum survival time
   late final pulumi.Output<int?> maxAsyncEventAgeInSeconds;
+
   /// Number of Asynchronous call retries
   late final pulumi.Output<int?> maxAsyncRetryAttempts;
+
   /// Function version or alias
   late final pulumi.Output<String?> qualifier;
 
@@ -632,20 +641,24 @@ class V3AsyncInvokeConfig extends pulumi.CustomResource {
     V3AsyncInvokeConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asyncTask = registerOutput<bool?>('asyncTask');
-    this.createTime = registerOutput<String>('createTime');
-    this.destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>('destinationConfig');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.maxAsyncEventAgeInSeconds = registerOutput<int?>('maxAsyncEventAgeInSeconds');
-    this.maxAsyncRetryAttempts = registerOutput<int?>('maxAsyncRetryAttempts');
-    this.qualifier = registerOutput<String?>('qualifier');
+         'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asyncTask = registerOutput<bool?>('asyncTask');
+    createTime = registerOutput<String>('createTime');
+    destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>(
+      'destinationConfig',
+    );
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    maxAsyncEventAgeInSeconds = registerOutput<int?>(
+      'maxAsyncEventAgeInSeconds',
+    );
+    maxAsyncRetryAttempts = registerOutput<int?>('maxAsyncRetryAttempts');
+    qualifier = registerOutput<String?>('qualifier');
   }
 
   /// Gets an existing [V3AsyncInvokeConfig] resource's state with the given [name] and [id].
@@ -666,19 +679,23 @@ class V3AsyncInvokeConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asyncTask = registerOutput<bool?>('asyncTask');
-    this.createTime = registerOutput<String>('createTime');
-    this.destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>('destinationConfig');
-    this.functionArn = registerOutput<String>('functionArn');
-    this.functionName = registerOutput<String>('functionName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.maxAsyncEventAgeInSeconds = registerOutput<int?>('maxAsyncEventAgeInSeconds');
-    this.maxAsyncRetryAttempts = registerOutput<int?>('maxAsyncRetryAttempts');
-    this.qualifier = registerOutput<String?>('qualifier');
+         'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asyncTask = registerOutput<bool?>('asyncTask');
+    createTime = registerOutput<String>('createTime');
+    destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>(
+      'destinationConfig',
+    );
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    maxAsyncEventAgeInSeconds = registerOutput<int?>(
+      'maxAsyncEventAgeInSeconds',
+    );
+    maxAsyncRetryAttempts = registerOutput<int?>('maxAsyncRetryAttempts');
+    qualifier = registerOutput<String?>('qualifier');
   }
 }

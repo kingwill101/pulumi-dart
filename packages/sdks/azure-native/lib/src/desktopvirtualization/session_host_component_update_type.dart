@@ -3,16 +3,15 @@ enum SessionHostComponentUpdateType {
   valueDefault("Default"),
   valueScheduled("Scheduled");
 
-  const SessionHostComponentUpdateType(this.value);
-  final String value;
+  const SessionHostComponentUpdateType(this.wireValue);
+  final String wireValue;
 
   static SessionHostComponentUpdateType fromValue(String value) {
     for (final item in SessionHostComponentUpdateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionHostComponentUpdateType value: $value');
   }
 }
-

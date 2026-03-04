@@ -9,8 +9,11 @@ import 'google_privacy_dlp_v2_cloud_storage_path_response.dart';
 class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
   /// Field in a BigQuery table where each cell represents a dictionary phrase.
   final pulumi.Input<GooglePrivacyDlpV2BigQueryFieldResponse> bigQueryField;
+
   /// Set of files containing newline-delimited lists of dictionary phrases.
-  final pulumi.Input<GooglePrivacyDlpV2CloudStorageFileSetResponse> cloudStorageFileSet;
+  final pulumi.Input<GooglePrivacyDlpV2CloudStorageFileSetResponse>
+  cloudStorageFileSet;
+
   /// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
   final pulumi.Input<GooglePrivacyDlpV2CloudStoragePathResponse> outputPath;
 
@@ -26,18 +29,43 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQueryField': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryFieldResponse, Map<String, dynamic>>(bigQueryField, (value) => value.toMap()),
-      'cloudStorageFileSet': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CloudStorageFileSetResponse, Map<String, dynamic>>(cloudStorageFileSet, (value) => value.toMap()),
-      'outputPath': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CloudStoragePathResponse, Map<String, dynamic>>(outputPath, (value) => value.toMap()),
+      'bigQueryField':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2BigQueryFieldResponse,
+            Map<String, dynamic>
+          >(bigQueryField, (value) => value.toMap()),
+      'cloudStorageFileSet':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2CloudStorageFileSetResponse,
+            Map<String, dynamic>
+          >(cloudStorageFileSet, (value) => value.toMap()),
+      'outputPath':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2CloudStoragePathResponse,
+            Map<String, dynamic>
+          >(outputPath, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(
-      bigQueryField: (GooglePrivacyDlpV2BigQueryFieldResponse.fromMap((map['bigQueryField'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageFileSet: (GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap((map['cloudStorageFileSet'] as Map).cast<String, dynamic>())).input(),
-      outputPath: (GooglePrivacyDlpV2CloudStoragePathResponse.fromMap((map['outputPath'] as Map).cast<String, dynamic>())).input(),
+      bigQueryField: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2BigQueryFieldResponse.fromMap(
+          (map['bigQueryField']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      cloudStorageFileSet: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap(
+          (map['cloudStorageFileSet']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputPath: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2CloudStoragePathResponse.fromMap(
+          (map['outputPath']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

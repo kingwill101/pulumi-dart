@@ -5,8 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareAdminClusterLoadBalancerVipConfig {
   /// The VIP to configure the load balancer for add-ons.
   ///
-  /// <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
+  /// &lt;a name="nested_load_balancer_f5_config"&gt;&lt;/a&gt;The `f5_config` block supports:
   final pulumi.Input<String>? addonsVip;
+
   /// The VIP which you previously set aside for the Kubernetes
   /// API of this VMware Admin Cluster.
   final pulumi.Input<String> controlPlaneVip;
@@ -26,11 +27,16 @@ class VmwareAdminClusterLoadBalancerVipConfig {
     };
   }
 
-  factory VmwareAdminClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterLoadBalancerVipConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterLoadBalancerVipConfig(
-      addonsVip: map['addonsVip'] == null ? null : (map['addonsVip']! as String).input(),
-      controlPlaneVip: (map['controlPlaneVip'] as String).input(),
+      addonsVip: (() {
+        final guardedValue = map['addonsVip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlPlaneVip: pulumi.Input.fromValue(map['controlPlaneVip'] as String),
     );
   }
 }
-

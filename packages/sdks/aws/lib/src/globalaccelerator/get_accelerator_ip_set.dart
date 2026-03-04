@@ -9,23 +9,18 @@ class GetAcceleratorIpSet {
   /// Creates a new [GetAcceleratorIpSet].
   /// [ipAddresses] Required.
   /// [ipFamily] Required.
-  GetAcceleratorIpSet({
-    required this.ipAddresses,
-    required this.ipFamily,
-  });
+  GetAcceleratorIpSet({required this.ipAddresses, required this.ipFamily});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddresses': ipAddresses,
-      'ipFamily': ipFamily,
-    };
+    return <String, dynamic>{'ipAddresses': ipAddresses, 'ipFamily': ipFamily};
   }
 
   factory GetAcceleratorIpSet.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorIpSet(
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipFamily: (map['ipFamily'] as String).input(),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
+      ipFamily: pulumi.Input.fromValue(map['ipFamily'] as String),
     );
   }
 }
-

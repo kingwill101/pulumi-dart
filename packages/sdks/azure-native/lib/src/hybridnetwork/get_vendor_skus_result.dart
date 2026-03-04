@@ -7,28 +7,40 @@ import 'system_data_response.dart';
 class GetVendorSkusResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The sku deployment mode.
   final String? deploymentMode;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The parameters for the managed application to be supplied by the vendor.
   final dynamic managedApplicationParameters;
+
   /// The template for the managed application deployment.
   final dynamic managedApplicationTemplate;
+
   /// The name of the resource
   final String name;
+
   /// The template definition of the network function.
   final NetworkFunctionTemplateResponse? networkFunctionTemplate;
+
   /// The network function type.
   final String? networkFunctionType;
+
   /// Indicates if the vendor sku is in preview mode.
   final bool? preview;
+
   /// The provisioning state of the vendor sku sub resource.
   final String provisioningState;
+
   /// The sku type.
   final String? skuType;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -70,7 +82,7 @@ class GetVendorSkusResult {
       'managedApplicationParameters': ?managedApplicationParameters,
       'managedApplicationTemplate': ?managedApplicationTemplate,
       'name': name,
-      'networkFunctionTemplate': ?networkFunctionTemplate == null ? null : networkFunctionTemplate!.toMap(),
+      'networkFunctionTemplate': ?networkFunctionTemplate?.toMap(),
       'networkFunctionType': ?networkFunctionType,
       'preview': ?preview,
       'provisioningState': provisioningState,
@@ -83,19 +95,50 @@ class GetVendorSkusResult {
   factory GetVendorSkusResult.fromMap(Map<String, dynamic> map) {
     return GetVendorSkusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode']! as String,
+      deploymentMode: (() {
+        final guardedValue = map['deploymentMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : map['managedApplicationParameters']!,
-      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : map['managedApplicationTemplate']!,
+      managedApplicationParameters: (() {
+        final guardedValue = map['managedApplicationParameters'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      managedApplicationTemplate: (() {
+        final guardedValue = map['managedApplicationTemplate'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       name: map['name'] as String,
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : NetworkFunctionTemplateResponse.fromMap((map['networkFunctionTemplate']! as Map).cast<String, dynamic>()),
-      networkFunctionType: map['networkFunctionType'] == null ? null : map['networkFunctionType']! as String,
-      preview: map['preview'] == null ? null : map['preview']! as bool,
+      networkFunctionTemplate: (() {
+        final guardedValue = map['networkFunctionTemplate'];
+        if (guardedValue == null) return null;
+        return NetworkFunctionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      networkFunctionType: (() {
+        final guardedValue = map['networkFunctionType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      preview: (() {
+        final guardedValue = map['preview'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      skuType: map['skuType'] == null ? null : map['skuType']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      skuType: (() {
+        final guardedValue = map['skuType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

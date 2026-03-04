@@ -14,15 +14,18 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'includedLocations': ?includedLocations,
-    };
+    return <String, dynamic>{'includedLocations': ?includedLocations};
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector(
-      includedLocations: map['includedLocations'] == null ? null : ((map['includedLocations']! as List).cast<String>()).input(),
+      includedLocations: (() {
+        final guardedValue = map['includedLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum LoggingVariantConfigVariant {
   default_("DEFAULT"),
   maxThroughput("MAX_THROUGHPUT");
 
-  const LoggingVariantConfigVariant(this.value);
-  final String value;
+  const LoggingVariantConfigVariant(this.wireValue);
+  final String wireValue;
 
   static LoggingVariantConfigVariant fromValue(String value) {
     for (final item in LoggingVariantConfigVariant.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingVariantConfigVariant value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class BrokerAuthenticatorMethodSatResponse {
 
   /// Creates a new [BrokerAuthenticatorMethodSatResponse].
   /// [audiences] List of allowed audience.
-  BrokerAuthenticatorMethodSatResponse({
-    required this.audiences,
-  });
+  BrokerAuthenticatorMethodSatResponse({required this.audiences});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audiences': audiences,
-    };
+    return <String, dynamic>{'audiences': audiences};
   }
 
-  factory BrokerAuthenticatorMethodSatResponse.fromMap(Map<String, dynamic> map) {
+  factory BrokerAuthenticatorMethodSatResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BrokerAuthenticatorMethodSatResponse(
-      audiences: ((map['audiences'] as List).cast<String>()).input(),
+      audiences: pulumi.Input.fromValue(
+        (map['audiences'] as List).cast<String>(),
+      ),
     );
   }
 }
-

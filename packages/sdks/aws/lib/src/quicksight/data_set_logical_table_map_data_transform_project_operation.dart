@@ -13,15 +13,16 @@ class DataSetLogicalTableMapDataTransformProjectOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'projectedColumns': projectedColumns,
-    };
+    return <String, dynamic>{'projectedColumns': projectedColumns};
   }
 
-  factory DataSetLogicalTableMapDataTransformProjectOperation.fromMap(Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapDataTransformProjectOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetLogicalTableMapDataTransformProjectOperation(
-      projectedColumns: ((map['projectedColumns'] as List).cast<String>()).input(),
+      projectedColumns: pulumi.Input.fromValue(
+        (map['projectedColumns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

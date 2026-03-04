@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_book_args.dart';
-import 'address_book_ecs_tag.dart';
 import 'address_book_state.dart';
 
 /// Provides a Cloud Firewall Address Book resource.
 ///
 /// For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 ///
-/// > **NOTE:** Available since v1.178.0.
+/// &gt; **NOTE:** Available since v1.178.0.
 ///
 /// ## Example Usage
 ///
@@ -168,19 +167,26 @@ import 'address_book_state.dart';
 class AddressBook extends pulumi.CustomResource {
   /// The list of addresses.
   late final pulumi.Output<List<String>?> addressLists;
+
   /// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
   late final pulumi.Output<int?> autoAddTagEcs;
+
   /// The description of the Address Book.
   late final pulumi.Output<String> description;
+
   /// A list of ECS tags. See `ecs_tags` below.
-  late final pulumi.Output<List<AddressBookEcsTag>?> ecsTags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ecsTags;
+
   /// The name of the Address Book.
   late final pulumi.Output<String> groupName;
+
   /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
   /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
   late final pulumi.Output<String> groupType;
+
   /// The language of the content within the request and response. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> lang;
+
   /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
   late final pulumi.Output<String> tagRelation;
 
@@ -193,19 +199,19 @@ class AddressBook extends pulumi.CustomResource {
     AddressBookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/addressBook:AddressBook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressLists = registerOutput<List<String>?>('addressLists');
-    this.autoAddTagEcs = registerOutput<int?>('autoAddTagEcs');
-    this.description = registerOutput<String>('description');
-    this.ecsTags = registerOutput<List<AddressBookEcsTag>?>('ecsTags');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String>('groupType');
-    this.lang = registerOutput<String?>('lang');
-    this.tagRelation = registerOutput<String>('tagRelation');
+         'alicloud:cloudfirewall/addressBook:AddressBook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressLists = registerOutput<List<String>?>('addressLists');
+    autoAddTagEcs = registerOutput<int?>('autoAddTagEcs');
+    description = registerOutput<String>('description');
+    ecsTags = registerOutput<List<Map<String, dynamic>>?>('ecsTags');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String>('groupType');
+    lang = registerOutput<String?>('lang');
+    tagRelation = registerOutput<String>('tagRelation');
   }
 
   /// Gets an existing [AddressBook] resource's state with the given [name] and [id].
@@ -226,18 +232,18 @@ class AddressBook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/addressBook:AddressBook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressLists = registerOutput<List<String>?>('addressLists');
-    this.autoAddTagEcs = registerOutput<int?>('autoAddTagEcs');
-    this.description = registerOutput<String>('description');
-    this.ecsTags = registerOutput<List<AddressBookEcsTag>?>('ecsTags');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String>('groupType');
-    this.lang = registerOutput<String?>('lang');
-    this.tagRelation = registerOutput<String>('tagRelation');
+         'alicloud:cloudfirewall/addressBook:AddressBook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressLists = registerOutput<List<String>?>('addressLists');
+    autoAddTagEcs = registerOutput<int?>('autoAddTagEcs');
+    description = registerOutput<String>('description');
+    ecsTags = registerOutput<List<Map<String, dynamic>>?>('ecsTags');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String>('groupType');
+    lang = registerOutput<String?>('lang');
+    tagRelation = registerOutput<String>('tagRelation');
   }
 }

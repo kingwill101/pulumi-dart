@@ -6,16 +6,17 @@ enum ForwardingRulePscConnectionStatus {
   rejected("REJECTED"),
   statusUnspecified("STATUS_UNSPECIFIED");
 
-  const ForwardingRulePscConnectionStatus(this.value);
-  final String value;
+  const ForwardingRulePscConnectionStatus(this.wireValue);
+  final String wireValue;
 
   static ForwardingRulePscConnectionStatus fromValue(String value) {
     for (final item in ForwardingRulePscConnectionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ForwardingRulePscConnectionStatus value: $value');
+    throw ArgumentError(
+      'Unknown ForwardingRulePscConnectionStatus value: $value',
+    );
   }
 }
-

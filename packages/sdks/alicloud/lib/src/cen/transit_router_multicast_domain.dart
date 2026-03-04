@@ -9,7 +9,7 @@ import 'transit_router_multicast_domain_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutermulticastdomain).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -229,16 +229,22 @@ import 'transit_router_multicast_domain_state.dart';
 class TransitRouterMulticastDomain extends pulumi.CustomResource {
   /// The function options of the multicast domain. See `options` below.
   late final pulumi.Output<TransitRouterMulticastDomainOptions> options;
+
   /// (Available since v1.242.0) The region ID of the transit router.
   late final pulumi.Output<String> regionId;
+
   /// The status of the Transit Router Multicast Domain.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the forwarding router instance.
   late final pulumi.Output<String> transitRouterId;
+
   /// The description of the multicast domain.
   late final pulumi.Output<String?> transitRouterMulticastDomainDescription;
+
   /// The name of the multicast domain.
   late final pulumi.Output<String?> transitRouterMulticastDomainName;
 
@@ -251,18 +257,24 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
     TransitRouterMulticastDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.options = registerOutput<TransitRouterMulticastDomainOptions>('options');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterMulticastDomainDescription = registerOutput<String?>('transitRouterMulticastDomainDescription');
-    this.transitRouterMulticastDomainName = registerOutput<String?>('transitRouterMulticastDomainName');
+         'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.options = registerOutput<TransitRouterMulticastDomainOptions>(
+      'options',
+    );
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterMulticastDomainDescription = registerOutput<String?>(
+      'transitRouterMulticastDomainDescription',
+    );
+    transitRouterMulticastDomainName = registerOutput<String?>(
+      'transitRouterMulticastDomainName',
+    );
   }
 
   /// Gets an existing [TransitRouterMulticastDomain] resource's state with the given [name] and [id].
@@ -283,17 +295,23 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.options = registerOutput<TransitRouterMulticastDomainOptions>('options');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterMulticastDomainDescription = registerOutput<String?>('transitRouterMulticastDomainDescription');
-    this.transitRouterMulticastDomainName = registerOutput<String?>('transitRouterMulticastDomainName');
+         'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.options = registerOutput<TransitRouterMulticastDomainOptions>(
+      'options',
+    );
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterMulticastDomainDescription = registerOutput<String?>(
+      'transitRouterMulticastDomainDescription',
+    );
+    transitRouterMulticastDomainName = registerOutput<String?>(
+      'transitRouterMulticastDomainName',
+    );
   }
 }

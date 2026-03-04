@@ -153,7 +153,7 @@ Future<GetAclsResult> getAcls(
 
 /// This data source provides the server load balancers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in 1.123.1+
+/// &gt; **NOTE:** Available in 1.123.1+
 ///
 /// ## Example Usage
 ///
@@ -409,7 +409,7 @@ Future<GetAttachmentsResult> getAttachments(
 
 /// This data source provides the server load balancer backend servers related to a server load balancer..
 ///
-/// > **NOTE:** Available in 1.53.0+
+/// &gt; **NOTE:** Available in 1.53.0+
 ///
 /// ## Example Usage
 ///
@@ -632,7 +632,7 @@ Future<GetCaCertificatesResult> getCaCertificates(
 
 /// This data source provides the domain extensions associated with a server load balancer listener.
 ///
-/// > **NOTE:** Available in 1.60.0+
+/// &gt; **NOTE:** Available in 1.60.0+
 ///
 /// ## Example Usage
 ///
@@ -1003,7 +1003,7 @@ Future<GetListenersResult> getListeners(
   return GetListenersResult.fromMap(result);
 }
 
-/// > **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+/// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
 ///
 /// This data source provides the server load balancers of the current Alibaba Cloud user.
 ///
@@ -1146,7 +1146,7 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 
 /// This data source provides the master slave server groups related to a server load balancer.
 ///
-/// > **NOTE:** Available in 1.54.0+
+/// &gt; **NOTE:** Available in 1.54.0+
 /// [args] Arguments passed to this invoke. {@macro pulumi_slb_get_master_slave_server_groups_get_master_slave_server_groups_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(
@@ -2000,7 +2000,7 @@ Future<GetServerGroupsResult> getServerGroups(
 
 /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -2166,7 +2166,7 @@ Future<GetTlsCipherPoliciesResult> getTlsCipherPolicies(
 
 /// This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

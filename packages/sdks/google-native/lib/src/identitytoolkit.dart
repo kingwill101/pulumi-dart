@@ -1,5 +1,3 @@
-library module_identitytoolkit;
-
 export 'identitytoolkit/default_supported_idp_config.dart';
 export 'identitytoolkit/default_supported_idp_config_args.dart';
 export 'identitytoolkit/functions.dart';

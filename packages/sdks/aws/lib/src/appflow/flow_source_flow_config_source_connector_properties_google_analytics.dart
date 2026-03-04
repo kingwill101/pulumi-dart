@@ -3,24 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics {
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics].
-  /// [object] Required.
+  /// [object_] Required.
   FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics({
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'object': object,
-    };
+    return <String, dynamic>{'object': object_};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics(
-      object: (map['object'] as String).input(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

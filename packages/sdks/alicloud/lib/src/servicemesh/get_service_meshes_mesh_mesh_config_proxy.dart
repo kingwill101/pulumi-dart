@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshMeshConfigProxy {
   /// The domain name of the Cluster.
   final pulumi.Input<String> clusterDomain;
+
   /// Sidecar injector Pods on the throttle.
   final pulumi.Input<String> limitCpu;
+
   /// The memory limit  of the Sidecar injector Pods.
   final pulumi.Input<String> limitMemory;
+
   /// The requested cpu the Sidecar injector Pods.
   final pulumi.Input<String> requestCpu;
+
   /// The requested memory the Sidecar injector Pods.
   final pulumi.Input<String> requestMemory;
 
@@ -38,14 +42,15 @@ class GetServiceMeshesMeshMeshConfigProxy {
     };
   }
 
-  factory GetServiceMeshesMeshMeshConfigProxy.fromMap(Map<String, dynamic> map) {
+  factory GetServiceMeshesMeshMeshConfigProxy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceMeshesMeshMeshConfigProxy(
-      clusterDomain: (map['clusterDomain'] as String).input(),
-      limitCpu: (map['limitCpu'] as String).input(),
-      limitMemory: (map['limitMemory'] as String).input(),
-      requestCpu: (map['requestCpu'] as String).input(),
-      requestMemory: (map['requestMemory'] as String).input(),
+      clusterDomain: pulumi.Input.fromValue(map['clusterDomain'] as String),
+      limitCpu: pulumi.Input.fromValue(map['limitCpu'] as String),
+      limitMemory: pulumi.Input.fromValue(map['limitMemory'] as String),
+      requestCpu: pulumi.Input.fromValue(map['requestCpu'] as String),
+      requestMemory: pulumi.Input.fromValue(map['requestMemory'] as String),
     );
   }
 }
-

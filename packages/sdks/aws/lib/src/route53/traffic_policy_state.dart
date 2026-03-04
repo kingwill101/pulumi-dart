@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficPolicyState {
   /// Amazon Resource Name (ARN) of the traffic policy.
   final pulumi.Input<String>? arn;
+
   /// Comment for the traffic policy.
   final pulumi.Input<String>? comment;
+
   /// Policy document. This is a JSON formatted string. For more information about building Route53 traffic policy documents, see the [AWS Route53 Traffic Policy document format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html)
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? document;
+
   /// Name of the traffic policy.
   final pulumi.Input<String>? name;
+
   /// DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
   final pulumi.Input<String>? type;
+
   /// Version number of the traffic policy. This value is automatically incremented by AWS after each update of this resource.
   final pulumi.Input<int>? version;
 
@@ -48,13 +53,36 @@ class TrafficPolicyState {
 
   factory TrafficPolicyState.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      document: map['document'] == null ? null : ((map['document'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      document: (() {
+        final guardedValue = map['document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

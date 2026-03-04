@@ -4,16 +4,17 @@ enum UriOverrideUriOverrideEnforceMode {
   ifNotExists("IF_NOT_EXISTS"),
   always("ALWAYS");
 
-  const UriOverrideUriOverrideEnforceMode(this.value);
-  final String value;
+  const UriOverrideUriOverrideEnforceMode(this.wireValue);
+  final String wireValue;
 
   static UriOverrideUriOverrideEnforceMode fromValue(String value) {
     for (final item in UriOverrideUriOverrideEnforceMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UriOverrideUriOverrideEnforceMode value: $value');
+    throw ArgumentError(
+      'Unknown UriOverrideUriOverrideEnforceMode value: $value',
+    );
   }
 }
-

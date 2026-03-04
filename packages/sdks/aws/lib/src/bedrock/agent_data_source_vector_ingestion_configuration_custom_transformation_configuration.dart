@@ -6,9 +6,16 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration {
   /// The intermediate storage for custom transformation.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage>? intermediateStorage;
+  final pulumi.Input<
+    AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage
+  >?
+  intermediateStorage;
+
   /// A custom processing step for documents moving through the data source ingestion pipeline.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation>? transformation;
+  final pulumi.Input<
+    AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation
+  >?
+  transformation;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration].
   /// [intermediateStorage] The intermediate storage for custom transformation.
@@ -20,16 +27,41 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intermediateStorage': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage, Map<String, dynamic>>(intermediateStorage, (value) => value.toMap()),
-      'transformation': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation, Map<String, dynamic>>(transformation, (value) => value.toMap()),
+      'intermediateStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage,
+            Map<String, dynamic>
+          >(intermediateStorage, (value) => value.toMap()),
+      'transformation':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation,
+            Map<String, dynamic>
+          >(transformation, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration(
-      intermediateStorage: map['intermediateStorage'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage.fromMap((map['intermediateStorage']! as Map).cast<String, dynamic>())).input()).input(),
-      transformation: map['transformation'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap((map['transformation']! as Map).cast<String, dynamic>())).input()).input(),
+      intermediateStorage: (() {
+        final guardedValue = map['intermediateStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      transformation: (() {
+        final guardedValue = map['transformation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

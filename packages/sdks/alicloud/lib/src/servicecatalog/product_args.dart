@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductArgs {
   /// The description of the product
   final pulumi.Input<String>? description;
+
   /// The name of the product
   final pulumi.Input<String> productName;
+
   /// The type of the product
   final pulumi.Input<String> productType;
+
   /// The provider name of the product
   final pulumi.Input<String> providerName;
 
@@ -39,11 +42,14 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      productName: (map['productName'] as String).input(),
-      productType: (map['productType'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productName: pulumi.Input.fromValue(map['productName'] as String),
+      productType: pulumi.Input.fromValue(map['productType'] as String),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
     );
   }
 }
-

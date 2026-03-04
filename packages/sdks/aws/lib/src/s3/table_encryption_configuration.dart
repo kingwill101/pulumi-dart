@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableEncryptionConfiguration {
   /// The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
   final pulumi.Input<String> kmsKeyArn;
+
   /// One of `aws:kms` or `AES256`
   final pulumi.Input<String> sseAlgorithm;
 
@@ -25,9 +26,8 @@ class TableEncryptionConfiguration {
 
   factory TableEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return TableEncryptionConfiguration(
-      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
-      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
+      kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
+      sseAlgorithm: pulumi.Input.fromValue(map['sseAlgorithm'] as String),
     );
   }
 }
-

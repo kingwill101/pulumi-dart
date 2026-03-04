@@ -17,13 +17,13 @@ class TopicPubsubV1beta2 extends pulumi.CustomResource {
     TopicPubsubV1beta2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:pubsub/v1beta2:Topic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:pubsub/v1beta2:Topic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.topicId = registerOutput<String>('topicId');
+    project = registerOutput<String>('project');
+    topicId = registerOutput<String>('topicId');
   }
 }

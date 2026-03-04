@@ -10,12 +10,16 @@ import 'mongo_cluster_properties.dart';
 class MongoClusterArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the mongo cluster.
   final pulumi.Input<String>? mongoClusterName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<MongoClusterProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class MongoClusterArgs {
     return <String, dynamic>{
       'location': ?location,
       'mongoClusterName': ?mongoClusterName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<MongoClusterProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MongoClusterProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,35 @@ class MongoClusterArgs {
 
   factory MongoClusterArgs.fromMap(Map<String, dynamic> map) {
     return MongoClusterArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mongoClusterName: map['mongoClusterName'] == null ? null : (map['mongoClusterName']! as String).input(),
-      properties: map['properties'] == null ? null : (MongoClusterProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mongoClusterName: (() {
+        final guardedValue = map['mongoClusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MongoClusterProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

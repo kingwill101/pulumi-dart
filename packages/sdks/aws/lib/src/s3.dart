@@ -1,5 +1,3 @@
-library module_s3;
-
 export 's3/access_grant.dart';
 export 's3/access_grant_access_grants_location_configuration.dart';
 export 's3/access_grant_args.dart';

@@ -1,5 +1,3 @@
-library module_network;
-
 export 'network/aad_authentication_parameters.dart';
 export 'network/aad_authentication_parameters_response.dart';
 export 'network/access.dart';

@@ -9,20 +9,19 @@ class SleepActionPatch {
 
   /// Creates a new [SleepActionPatch].
   /// [seconds] Seconds is the number of seconds to sleep.
-  SleepActionPatch({
-    this.seconds,
-  });
+  SleepActionPatch({this.seconds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'seconds': ?seconds,
-    };
+    return <String, dynamic>{'seconds': ?seconds};
   }
 
   factory SleepActionPatch.fromMap(Map<String, dynamic> map) {
     return SleepActionPatch(
-      seconds: map['seconds'] == null ? null : (map['seconds']! as int).input(),
+      seconds: (() {
+        final guardedValue = map['seconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

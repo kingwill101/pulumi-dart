@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicIpAddressPoolCidrBlockState {
   /// The CIDR block.
   final pulumi.Input<String>? cidrBlock;
+
   /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
-  /// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+  /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
   final pulumi.Input<int>? cidrMask;
+
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// The ID of the VPC Public IP address pool.
   final pulumi.Input<String>? publicIpAddressPoolId;
+
   /// The status of the VPC Public Ip Address Pool Cidr Block.
   final pulumi.Input<String>? status;
 
@@ -42,12 +46,31 @@ class PublicIpAddressPoolCidrBlockState {
 
   factory PublicIpAddressPoolCidrBlockState.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolCidrBlockState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrMask: (() {
+        final guardedValue = map['cidrMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddressPoolId: (() {
+        final guardedValue = map['publicIpAddressPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

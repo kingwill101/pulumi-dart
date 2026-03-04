@@ -5,16 +5,15 @@ enum NumericalPredictionDriftMetric {
   valueNormalizedWassersteinDistance("NormalizedWassersteinDistance"),
   valueTwoSampleKolmogorovSmirnovTest("TwoSampleKolmogorovSmirnovTest");
 
-  const NumericalPredictionDriftMetric(this.value);
-  final String value;
+  const NumericalPredictionDriftMetric(this.wireValue);
+  final String wireValue;
 
   static NumericalPredictionDriftMetric fromValue(String value) {
     for (final item in NumericalPredictionDriftMetric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NumericalPredictionDriftMetric value: $value');
   }
 }
-

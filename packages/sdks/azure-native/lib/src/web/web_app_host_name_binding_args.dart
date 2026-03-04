@@ -13,26 +13,37 @@ import 'ssl_state.dart';
 class WebAppHostNameBindingArgs {
   /// Azure resource name.
   final pulumi.Input<String>? azureResourceName;
+
   /// Azure resource type.
   final pulumi.Input<AzureResourceType>? azureResourceType;
+
   /// Custom DNS record type.
   final pulumi.Input<CustomHostNameDnsRecordType>? customHostNameDnsRecordType;
+
   /// Fully qualified ARM domain resource URI.
   final pulumi.Input<String>? domainId;
+
   /// Hostname in the hostname binding.
   final pulumi.Input<String>? hostName;
+
   /// Hostname type.
   final pulumi.Input<HostNameType>? hostNameType;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// App Service app name.
   final pulumi.Input<String>? siteName;
+
   /// SSL type
   final pulumi.Input<SslState>? sslState;
+
   /// SSL certificate thumbprint
   final pulumi.Input<String>? thumbprint;
 
@@ -67,35 +78,98 @@ class WebAppHostNameBindingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureResourceName': ?azureResourceName,
-      'azureResourceType': ?pulumi.Input.mapOptionalInputValue<AzureResourceType, String>(azureResourceType, (value) => value.value),
-      'customHostNameDnsRecordType': ?pulumi.Input.mapOptionalInputValue<CustomHostNameDnsRecordType, String>(customHostNameDnsRecordType, (value) => value.value),
+      'azureResourceType':
+          ?pulumi.Input.mapOptionalInputValue<AzureResourceType, String>(
+            azureResourceType,
+            (value) => value.wireValue,
+          ),
+      'customHostNameDnsRecordType':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomHostNameDnsRecordType,
+            String
+          >(customHostNameDnsRecordType, (value) => value.wireValue),
       'domainId': ?domainId,
       'hostName': ?hostName,
-      'hostNameType': ?pulumi.Input.mapOptionalInputValue<HostNameType, String>(hostNameType, (value) => value.value),
+      'hostNameType': ?pulumi.Input.mapOptionalInputValue<HostNameType, String>(
+        hostNameType,
+        (value) => value.wireValue,
+      ),
       'kind': ?kind,
       'name': name,
       'resourceGroupName': resourceGroupName,
       'siteName': ?siteName,
-      'sslState': ?pulumi.Input.mapOptionalInputValue<SslState, String>(sslState, (value) => value.value),
+      'sslState': ?pulumi.Input.mapOptionalInputValue<SslState, String>(
+        sslState,
+        (value) => value.wireValue,
+      ),
       'thumbprint': ?thumbprint,
     };
   }
 
   factory WebAppHostNameBindingArgs.fromMap(Map<String, dynamic> map) {
     return WebAppHostNameBindingArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName']! as String).input(),
-      azureResourceType: map['azureResourceType'] == null ? null : (AzureResourceType.fromValue(map['azureResourceType']! as String)).input(),
-      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (CustomHostNameDnsRecordType.fromValue(map['customHostNameDnsRecordType']! as String)).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      hostNameType: map['hostNameType'] == null ? null : (HostNameType.fromValue(map['hostNameType']! as String)).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
-      sslState: map['sslState'] == null ? null : (SslState.fromValue(map['sslState']! as String)).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      azureResourceName: (() {
+        final guardedValue = map['azureResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureResourceType: (() {
+        final guardedValue = map['azureResourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureResourceType.fromValue(guardedValue as String),
+        );
+      })(),
+      customHostNameDnsRecordType: (() {
+        final guardedValue = map['customHostNameDnsRecordType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomHostNameDnsRecordType.fromValue(guardedValue as String),
+        );
+      })(),
+      domainId: (() {
+        final guardedValue = map['domainId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostNameType: (() {
+        final guardedValue = map['hostNameType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HostNameType.fromValue(guardedValue as String),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: (() {
+        final guardedValue = map['siteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslState: (() {
+        final guardedValue = map['sslState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SslState.fromValue(guardedValue as String),
+        );
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

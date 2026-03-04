@@ -390,10 +390,13 @@ import 'vpc_access_state.dart';
 class VpcAccess extends pulumi.CustomResource {
   /// The ID of an ECS or SLB instance in the VPC.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the authorization. The name must be unique.
   late final pulumi.Output<String> name;
+
   /// The port number that corresponds to the instance.
   late final pulumi.Output<int> port;
+
   /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
   late final pulumi.Output<String> vpcId;
 
@@ -406,15 +409,15 @@ class VpcAccess extends pulumi.CustomResource {
     VpcAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/vpcAccess:VpcAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:apigateway/vpcAccess:VpcAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int>('port');
-    this.vpcId = registerOutput<String>('vpcId');
+    port = registerOutput<int>('port');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [VpcAccess] resource's state with the given [name] and [id].
@@ -435,14 +438,14 @@ class VpcAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/vpcAccess:VpcAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:apigateway/vpcAccess:VpcAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int>('port');
-    this.vpcId = registerOutput<String>('vpcId');
+    port = registerOutput<int>('port');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -3879,7 +3879,7 @@ Future<GetInstanceSerialPortResult> getInstanceSerialPort(
   return GetInstanceSerialPortResult.fromMap(result);
 }
 
-/// > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+/// &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
 ///
 /// Get information about a VM instance template resource within GCE. For more information see
 /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -4552,8 +4552,7 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetLBIPRangesResult> getLBIPRanges(
-  {
+Future<GetLBIPRangesResult> getLBIPRanges({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

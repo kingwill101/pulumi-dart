@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectivityConfigurationArgs {
   /// The name of the network manager connectivity configuration.
   final pulumi.Input<String> configurationName;
+
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetConnectivityConfigurationArgs {
 
   factory GetConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectivityConfigurationArgs(
-      configurationName: (map['configurationName'] as String).input(),
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configurationName: pulumi.Input.fromValue(
+        map['configurationName'] as String,
+      ),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpAdvertisement {
   /// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
   final pulumi.Input<String>? advertiseToFabric;
+
   /// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
   final pulumi.Input<List<String>>? communities;
+
   /// The names of the IP address pools associated with this announcement.
   final pulumi.Input<List<String>> ipAddressPools;
+
   /// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
   final pulumi.Input<List<String>>? peers;
 
@@ -35,11 +38,24 @@ class BgpAdvertisement {
 
   factory BgpAdvertisement.fromMap(Map<String, dynamic> map) {
     return BgpAdvertisement(
-      advertiseToFabric: map['advertiseToFabric'] == null ? null : (map['advertiseToFabric']! as String).input(),
-      communities: map['communities'] == null ? null : ((map['communities']! as List).cast<String>()).input(),
-      ipAddressPools: ((map['ipAddressPools'] as List).cast<String>()).input(),
-      peers: map['peers'] == null ? null : ((map['peers']! as List).cast<String>()).input(),
+      advertiseToFabric: (() {
+        final guardedValue = map['advertiseToFabric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      communities: (() {
+        final guardedValue = map['communities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipAddressPools: pulumi.Input.fromValue(
+        (map['ipAddressPools'] as List).cast<String>(),
+      ),
+      peers: (() {
+        final guardedValue = map['peers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

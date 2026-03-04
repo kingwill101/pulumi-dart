@@ -12,7 +12,7 @@ import 'file_system_state.dart';
 ///
 /// For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
 ///
-/// > **NOTE:** Available since v1.33.0.
+/// &gt; **NOTE:** Available since v1.33.0.
 ///
 /// ## Example Usage
 ///
@@ -250,8 +250,10 @@ class FileSystem extends pulumi.CustomResource {
   /// -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
   /// -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
   late final pulumi.Output<int> capacity;
+
   /// CreateTime
   late final pulumi.Output<String> createTime;
+
   /// File system description.
   ///
   /// Restrictions:
@@ -259,6 +261,7 @@ class FileSystem extends pulumi.CustomResource {
   /// - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> description;
+
   /// Whether the file system is encrypted.
   ///
   /// Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
@@ -268,6 +271,7 @@ class FileSystem extends pulumi.CustomResource {
   /// - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
   /// - 2: User management key. You can manage keys only when FileSystemType = extreme.
   late final pulumi.Output<int> encryptType;
+
   /// File system type.
   ///
   /// Value:
@@ -277,63 +281,80 @@ class FileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> fileSystemType;
   late final pulumi.Output<String?> keytab;
   late final pulumi.Output<String?> keytabMd5;
+
   /// The ID of the KMS key.
   /// This parameter is required only when EncryptType = 2.
   late final pulumi.Output<String> kmsKeyId;
+
   /// NFS ACL See `nfs_acl` below.
   late final pulumi.Output<FileSystemNfsAcl> nfsAcl;
+
   /// Option. See `options` below.
   late final pulumi.Output<FileSystemOptions> options;
+
   /// File transfer protocol type.
   /// - When FileSystemType = standard, the values are NFS and SMB.
   /// - When FileSystemType = extreme, the value is NFS.
   /// - When FileSystemType = cpfs, the value is cpfs.
   late final pulumi.Output<String> protocolType;
+
   /// Recycle Bin See `recycle_bin` below.
   late final pulumi.Output<FileSystemRecycleBin> recycleBin;
+
   /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
   late final pulumi.Output<String> redundancyType;
+
   /// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
   late final pulumi.Output<List<String>?> redundancyVswitchIds;
+
   /// RegionId
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// SMB ACL See `smb_acl` below.
   late final pulumi.Output<FileSystemSmbAcl> smbAcl;
+
   /// Only extreme NAS is supported.
   ///
-  /// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+  /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> snapshotId;
+
   /// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
   late final pulumi.Output<String> status;
+
   /// The storage type.
   /// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
   /// - When FileSystemType = extreme, the value is standard or advance.
   /// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
   late final pulumi.Output<String> storageType;
+
   /// Label information collection.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC network.
   /// This parameter must be configured when FileSystemType = cpfs.
   /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
   late final pulumi.Output<String?> vpcId;
+
   /// The ID of the switch.
   /// This parameter must be configured when FileSystemType = cpfs.
   /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
   late final pulumi.Output<String?> vswitchId;
+
   /// The zone ID.
   ///
   /// The usable area refers to the physical area where power and network are independent of each other in the same area.
   ///
   /// When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
   ///
-  /// > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+  /// &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
   ///
-  /// > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+  /// &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
   late final pulumi.Output<String> zoneId;
 
   /// Creates a new [FileSystem].
@@ -345,35 +366,37 @@ class FileSystem extends pulumi.CustomResource {
     FileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacity = registerOutput<int>('capacity');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<int>('encryptType');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.keytab = registerOutput<String?>('keytab');
-    this.keytabMd5 = registerOutput<String?>('keytabMd5');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
+         'alicloud:nas/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacity = registerOutput<int>('capacity');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<int>('encryptType');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    keytab = registerOutput<String?>('keytab');
+    keytabMd5 = registerOutput<String?>('keytabMd5');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
     this.options = registerOutput<FileSystemOptions>('options');
-    this.protocolType = registerOutput<String>('protocolType');
-    this.recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
-    this.redundancyType = registerOutput<String>('redundancyType');
-    this.redundancyVswitchIds = registerOutput<List<String>?>('redundancyVswitchIds');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    protocolType = registerOutput<String>('protocolType');
+    recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
+    redundancyType = registerOutput<String>('redundancyType');
+    redundancyVswitchIds = registerOutput<List<String>?>(
+      'redundancyVswitchIds',
+    );
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [FileSystem] resource's state with the given [name] and [id].
@@ -394,34 +417,36 @@ class FileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacity = registerOutput<int>('capacity');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<int>('encryptType');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.keytab = registerOutput<String?>('keytab');
-    this.keytabMd5 = registerOutput<String?>('keytabMd5');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
+         'alicloud:nas/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacity = registerOutput<int>('capacity');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<int>('encryptType');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    keytab = registerOutput<String?>('keytab');
+    keytabMd5 = registerOutput<String?>('keytabMd5');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
     this.options = registerOutput<FileSystemOptions>('options');
-    this.protocolType = registerOutput<String>('protocolType');
-    this.recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
-    this.redundancyType = registerOutput<String>('redundancyType');
-    this.redundancyVswitchIds = registerOutput<List<String>?>('redundancyVswitchIds');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+    protocolType = registerOutput<String>('protocolType');
+    recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
+    redundancyType = registerOutput<String>('redundancyType');
+    redundancyVswitchIds = registerOutput<List<String>?>(
+      'redundancyVswitchIds',
+    );
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

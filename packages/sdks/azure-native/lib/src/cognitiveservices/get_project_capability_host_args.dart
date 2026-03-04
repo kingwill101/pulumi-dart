@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectCapabilityHostArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the capability host associated with the Cognitive Services Resource
   final pulumi.Input<String> capabilityHostName;
+
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetProjectCapabilityHostArgs {
 
   factory GetProjectCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCapabilityHostArgs(
-      accountName: (map['accountName'] as String).input(),
-      capabilityHostName: (map['capabilityHostName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      capabilityHostName: pulumi.Input.fromValue(
+        map['capabilityHostName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

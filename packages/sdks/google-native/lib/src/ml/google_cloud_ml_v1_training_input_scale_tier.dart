@@ -7,16 +7,17 @@ enum GoogleCloudMlV1TrainingInputScaleTier {
   basicTpu("BASIC_TPU"),
   custom("CUSTOM");
 
-  const GoogleCloudMlV1TrainingInputScaleTier(this.value);
-  final String value;
+  const GoogleCloudMlV1TrainingInputScaleTier(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1TrainingInputScaleTier fromValue(String value) {
     for (final item in GoogleCloudMlV1TrainingInputScaleTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1TrainingInputScaleTier value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1TrainingInputScaleTier value: $value',
+    );
   }
 }
-

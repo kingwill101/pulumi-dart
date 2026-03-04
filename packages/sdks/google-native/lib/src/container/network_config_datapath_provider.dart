@@ -4,16 +4,15 @@ enum NetworkConfigDatapathProvider {
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
-  const NetworkConfigDatapathProvider(this.value);
-  final String value;
+  const NetworkConfigDatapathProvider(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigDatapathProvider fromValue(String value) {
     for (final item in NetworkConfigDatapathProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkConfigDatapathProvider value: $value');
   }
 }
-

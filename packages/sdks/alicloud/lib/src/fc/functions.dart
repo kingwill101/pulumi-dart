@@ -18,7 +18,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in 1.98.0+
+/// &gt; **NOTE:** Available in 1.98.0+
 ///
 /// ## Example Usage
 ///
@@ -258,7 +258,7 @@ Future<GetFunctionsResult> getFunctions(
 ///
 /// For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
 ///
-/// > **NOTE:** Available since v1.112.0+
+/// &gt; **NOTE:** Available since v1.112.0+
 ///
 /// ## Example Usage
 ///
@@ -607,7 +607,7 @@ Future<GetTriggersResult> getTriggers(
 
 /// This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
 ///
-/// > **NOTE:** Available since v1.264.0.
+/// &gt; **NOTE:** Available since v1.264.0.
 ///
 /// ## Example Usage
 ///
@@ -744,7 +744,7 @@ Future<GetV3FunctionsResult> getV3Functions(
 
 /// This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
 ///
-/// > **NOTE:** Available since v1.250.0.
+/// &gt; **NOTE:** Available since v1.250.0.
 ///
 /// ## Example Usage
 ///
@@ -1123,7 +1123,7 @@ Future<GetV3TriggersResult> getV3Triggers(
 
 /// This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.74.0+.
+/// &gt; **NOTE:** Available in v1.74.0+.
 ///
 /// ## Example Usage
 ///

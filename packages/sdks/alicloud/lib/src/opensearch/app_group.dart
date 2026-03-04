@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_group_args.dart';
-import 'app_group_order.dart';
 import 'app_group_quota.dart';
 import 'app_group_state.dart';
 
@@ -8,7 +7,7 @@ import 'app_group_state.dart';
 ///
 /// For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -178,24 +177,34 @@ import 'app_group_state.dart';
 class AppGroup extends pulumi.CustomResource {
   /// Application Group Name.
   late final pulumi.Output<String> appGroupName;
+
   /// Billing model. Valid values:`compute_resource` and `qps`.
   late final pulumi.Output<String> chargeWay;
+
   /// The version of Application Group Name.
   late final pulumi.Output<String?> currentVersion;
+
   /// The description of the resource.
   late final pulumi.Output<String?> description;
+
   /// The instance id.
   late final pulumi.Output<String> instanceId;
+
   /// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
   late final pulumi.Output<String> orderType;
+
   /// Order cycle information. The details see Block order.
-  late final pulumi.Output<List<AppGroupOrder>?> orders;
+  late final pulumi.Output<List<Map<String, dynamic>>?> orders;
+
   /// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// Quota information.  The details see Block quota.
   late final pulumi.Output<AppGroupQuota> quota;
+
   /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
   late final pulumi.Output<String> status;
+
   /// Application type. Valid Values: `standard`, `enhanced`.
   late final pulumi.Output<String> type;
 
@@ -208,22 +217,22 @@ class AppGroup extends pulumi.CustomResource {
     AppGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:opensearch/appGroup:AppGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appGroupName = registerOutput<String>('appGroupName');
-    this.chargeWay = registerOutput<String>('chargeWay');
-    this.currentVersion = registerOutput<String?>('currentVersion');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.orderType = registerOutput<String>('orderType');
-    this.orders = registerOutput<List<AppGroupOrder>?>('orders');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.quota = registerOutput<AppGroupQuota>('quota');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:opensearch/appGroup:AppGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appGroupName = registerOutput<String>('appGroupName');
+    chargeWay = registerOutput<String>('chargeWay');
+    currentVersion = registerOutput<String?>('currentVersion');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    orderType = registerOutput<String>('orderType');
+    orders = registerOutput<List<Map<String, dynamic>>?>('orders');
+    paymentType = registerOutput<String>('paymentType');
+    quota = registerOutput<AppGroupQuota>('quota');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [AppGroup] resource's state with the given [name] and [id].
@@ -244,21 +253,21 @@ class AppGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:opensearch/appGroup:AppGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appGroupName = registerOutput<String>('appGroupName');
-    this.chargeWay = registerOutput<String>('chargeWay');
-    this.currentVersion = registerOutput<String?>('currentVersion');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.orderType = registerOutput<String>('orderType');
-    this.orders = registerOutput<List<AppGroupOrder>?>('orders');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.quota = registerOutput<AppGroupQuota>('quota');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:opensearch/appGroup:AppGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appGroupName = registerOutput<String>('appGroupName');
+    chargeWay = registerOutput<String>('chargeWay');
+    currentVersion = registerOutput<String?>('currentVersion');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    orderType = registerOutput<String>('orderType');
+    orders = registerOutput<List<Map<String, dynamic>>?>('orders');
+    paymentType = registerOutput<String>('paymentType');
+    quota = registerOutput<AppGroupQuota>('quota');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,9 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'one_dashboard_raw_args.dart';
-import 'one_dashboard_raw_page.dart';
 import 'one_dashboard_raw_state.dart';
 
-/// > **NOTE:** The newrelic.OneDashboardJson resource is preferred for configuring dashboards in New Relic. This resource does not support the latest dashboard features and will receive less investment compared to newrelic_one_dashboard_json.
+/// &gt; **NOTE:** The newrelic.OneDashboardJson resource is preferred for configuring dashboards in New Relic. This resource does not support the latest dashboard features and will receive less investment compared to newrelic_one_dashboard_json.
 ///
 /// ## Example Usage
 ///
@@ -491,16 +490,22 @@ import 'one_dashboard_raw_state.dart';
 class OneDashboardRaw extends pulumi.CustomResource {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// Brief text describing the dashboard.
   late final pulumi.Output<String?> description;
+
   /// The unique entity identifier of the dashboard page in New Relic.
   late final pulumi.Output<String> guid;
+
   /// The title of the dashboard.
   late final pulumi.Output<String> name;
+
   /// A nested block that describes a page. See Nested page blocks below for details.
-  late final pulumi.Output<List<OneDashboardRawPage>> pages;
+  late final pulumi.Output<List<Map<String, dynamic>>> pages;
+
   /// The URL for viewing the dashboard.
   late final pulumi.Output<String> permalink;
+
   /// Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
   late final pulumi.Output<String?> permissions;
 
@@ -513,18 +518,18 @@ class OneDashboardRaw extends pulumi.CustomResource {
     OneDashboardRawArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/oneDashboardRaw:OneDashboardRaw',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/oneDashboardRaw:OneDashboardRaw',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.pages = registerOutput<List<OneDashboardRawPage>>('pages');
-    this.permalink = registerOutput<String>('permalink');
-    this.permissions = registerOutput<String?>('permissions');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    permalink = registerOutput<String>('permalink');
+    permissions = registerOutput<String?>('permissions');
   }
 
   /// Gets an existing [OneDashboardRaw] resource's state with the given [name] and [id].
@@ -545,17 +550,17 @@ class OneDashboardRaw extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/oneDashboardRaw:OneDashboardRaw',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/oneDashboardRaw:OneDashboardRaw',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.pages = registerOutput<List<OneDashboardRawPage>>('pages');
-    this.permalink = registerOutput<String>('permalink');
-    this.permissions = registerOutput<String?>('permissions');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    permalink = registerOutput<String>('permalink');
+    permissions = registerOutput<String?>('permissions');
   }
 }

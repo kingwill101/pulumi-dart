@@ -6,7 +6,12 @@ import 'document_ai_warehouse_document_schema_property_definition_property_type_
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions {
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition>> propertyDefinitions;
+  final pulumi.Input<
+    List<
+      DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition
+    >
+  >
+  propertyDefinitions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions].
   /// [propertyDefinitions] Defines the metadata for a schema property.
@@ -16,14 +21,38 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'propertyDefinitions': pulumi.Input.mapInputValue<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition>, List<Map<String, dynamic>>>(propertyDefinitions, (value) => pulumi.Input.encodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'propertyDefinitions':
+          pulumi.Input.mapInputValue<
+            List<
+              DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition
+            >,
+            List<Map<String, dynamic>>
+          >(
+            propertyDefinitions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions.fromMap(Map<String, dynamic> map) {
+  factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions(
-      propertyDefinitions: (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition>(map['propertyDefinitions'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propertyDefinitions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition
+        >(
+          map['propertyDefinitions']!,
+          (value) =>
+              DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

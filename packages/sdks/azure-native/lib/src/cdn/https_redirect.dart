@@ -3,16 +3,15 @@ enum HttpsRedirect {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const HttpsRedirect(this.value);
-  final String value;
+  const HttpsRedirect(this.wireValue);
+  final String wireValue;
 
   static HttpsRedirect fromValue(String value) {
     for (final item in HttpsRedirect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpsRedirect value: $value');
   }
 }
-

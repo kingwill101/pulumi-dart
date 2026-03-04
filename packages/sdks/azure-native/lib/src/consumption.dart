@@ -1,5 +1,3 @@
-library module_consumption;
-
 export 'consumption/budget.dart';
 export 'consumption/budget_args.dart';
 export 'consumption/budget_comparison_expression.dart';

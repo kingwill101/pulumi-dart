@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseWorkspaceArgs {
   /// The description of the Workspace.
   final pulumi.Input<String> description;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The name of the Workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,9 @@ class EnterpriseWorkspaceArgs {
 
   factory EnterpriseWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseWorkspaceArgs(
-      description: (map['description'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

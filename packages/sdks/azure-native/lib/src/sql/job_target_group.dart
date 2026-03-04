@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_target_group_args.dart';
-import 'job_target_response.dart';
 
 /// A group of job targets.
 ///
@@ -430,10 +429,13 @@ import 'job_target_response.dart';
 class JobTargetGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Members of the target group.
-  late final pulumi.Output<List<JobTargetResponse>> members;
+  late final pulumi.Output<List<Map<String, dynamic>>> members;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -446,14 +448,14 @@ class JobTargetGroup extends pulumi.CustomResource {
     JobTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:JobTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.members = registerOutput<List<JobTargetResponse>>('members');
+         'azure-native:sql:JobTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    members = registerOutput<List<Map<String, dynamic>>>('members');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

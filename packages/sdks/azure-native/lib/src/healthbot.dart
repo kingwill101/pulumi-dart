@@ -1,5 +1,3 @@
-library module_healthbot;
-
 export 'healthbot/bot.dart';
 export 'healthbot/bot_args.dart';
 export 'healthbot/functions.dart';

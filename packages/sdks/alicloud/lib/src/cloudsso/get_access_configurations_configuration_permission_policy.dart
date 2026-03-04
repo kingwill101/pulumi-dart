@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessConfigurationsConfigurationPermissionPolicy {
   /// The Creation time of policy.
   final pulumi.Input<String> addTime;
+
   /// The Content of Policy.
   final pulumi.Input<String> permissionPolicyDocument;
+
   /// The Policy Name of policy.
   final pulumi.Input<String> permissionPolicyName;
+
   /// The Policy Type of policy. Valid values: `System`, `Inline`.
   final pulumi.Input<String> permissionPolicyType;
 
@@ -33,13 +36,20 @@ class GetAccessConfigurationsConfigurationPermissionPolicy {
     };
   }
 
-  factory GetAccessConfigurationsConfigurationPermissionPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetAccessConfigurationsConfigurationPermissionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessConfigurationsConfigurationPermissionPolicy(
-      addTime: (map['addTime'] as String).input(),
-      permissionPolicyDocument: (map['permissionPolicyDocument'] as String).input(),
-      permissionPolicyName: (map['permissionPolicyName'] as String).input(),
-      permissionPolicyType: (map['permissionPolicyType'] as String).input(),
+      addTime: pulumi.Input.fromValue(map['addTime'] as String),
+      permissionPolicyDocument: pulumi.Input.fromValue(
+        map['permissionPolicyDocument'] as String,
+      ),
+      permissionPolicyName: pulumi.Input.fromValue(
+        map['permissionPolicyName'] as String,
+      ),
+      permissionPolicyType: pulumi.Input.fromValue(
+        map['permissionPolicyType'] as String,
+      ),
     );
   }
 }
-

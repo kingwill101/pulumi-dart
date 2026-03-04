@@ -10,14 +10,18 @@ class GetIpv6AddressesArgs {
   /// The ID of the instance that is assigned the IPv6 address.
   final pulumi.Input<String>? associatedInstanceId;
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the IPv6 address. Valid values:`Pending` or `Available`.
   /// - `Pending`: The IPv6 address is being configured.
   /// - `Available`: The IPv6 address is available.
   final pulumi.Input<String>? status;
+
   /// The ID of the VPC to which the IPv6 address belongs.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the vSwitch to which the IPv6 address belongs.
   final pulumi.Input<String>? vswitchId;
 
@@ -50,13 +54,36 @@ class GetIpv6AddressesArgs {
 
   factory GetIpv6AddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesArgs(
-      associatedInstanceId: map['associatedInstanceId'] == null ? null : (map['associatedInstanceId']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      associatedInstanceId: (() {
+        final guardedValue = map['associatedInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

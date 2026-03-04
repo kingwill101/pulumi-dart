@@ -1,5 +1,3 @@
-library module_cfg;
-
 export 'cfg/aggregate_authorization.dart';
 export 'cfg/aggregate_authorization_args.dart';
 export 'cfg/aggregate_authorization_state.dart';

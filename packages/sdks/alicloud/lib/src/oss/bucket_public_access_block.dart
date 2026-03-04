@@ -6,7 +6,7 @@ import 'bucket_public_access_block_state.dart';
 ///
 /// For information about OSS Bucket Public Access Block and how to use it, see [What is Bucket Public Access Block](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketpublicaccessblock).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -211,6 +211,7 @@ import 'bucket_public_access_block_state.dart';
 class BucketPublicAccessBlock extends pulumi.CustomResource {
   /// Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   late final pulumi.Output<bool> blockPublicAccess;
+
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
 
@@ -223,13 +224,13 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
     BucketPublicAccessBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicAccess = registerOutput<bool>('blockPublicAccess');
-    this.bucket = registerOutput<String>('bucket');
+         'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicAccess = registerOutput<bool>('blockPublicAccess');
+    bucket = registerOutput<String>('bucket');
   }
 
   /// Gets an existing [BucketPublicAccessBlock] resource's state with the given [name] and [id].
@@ -250,12 +251,12 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicAccess = registerOutput<bool>('blockPublicAccess');
-    this.bucket = registerOutput<String>('bucket');
+         'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicAccess = registerOutput<bool>('blockPublicAccess');
+    bucket = registerOutput<String>('bucket');
   }
 }

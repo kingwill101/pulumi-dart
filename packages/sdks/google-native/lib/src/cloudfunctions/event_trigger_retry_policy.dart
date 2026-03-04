@@ -4,16 +4,15 @@ enum EventTriggerRetryPolicy {
   retryPolicyDoNotRetry("RETRY_POLICY_DO_NOT_RETRY"),
   retryPolicyRetry("RETRY_POLICY_RETRY");
 
-  const EventTriggerRetryPolicy(this.value);
-  final String value;
+  const EventTriggerRetryPolicy(this.wireValue);
+  final String wireValue;
 
   static EventTriggerRetryPolicy fromValue(String value) {
     for (final item in EventTriggerRetryPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventTriggerRetryPolicy value: $value');
   }
 }
-

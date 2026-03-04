@@ -2,16 +2,17 @@
 enum SparkConfigurationReferenceType {
   valueSparkConfigurationReference("SparkConfigurationReference");
 
-  const SparkConfigurationReferenceType(this.value);
-  final String value;
+  const SparkConfigurationReferenceType(this.wireValue);
+  final String wireValue;
 
   static SparkConfigurationReferenceType fromValue(String value) {
     for (final item in SparkConfigurationReferenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SparkConfigurationReferenceType value: $value');
+    throw ArgumentError(
+      'Unknown SparkConfigurationReferenceType value: $value',
+    );
   }
 }
-

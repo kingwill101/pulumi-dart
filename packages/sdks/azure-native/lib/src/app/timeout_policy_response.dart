@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeoutPolicyResponse {
   /// Timeout, in seconds, for a request to initiate a connection
   final pulumi.Input<int>? connectionTimeoutInSeconds;
+
   /// Timeout, in seconds, for a request to respond
   final pulumi.Input<int>? responseTimeoutInSeconds;
 
@@ -26,9 +27,16 @@ class TimeoutPolicyResponse {
 
   factory TimeoutPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TimeoutPolicyResponse(
-      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds']! as int).input(),
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds']! as int).input(),
+      connectionTimeoutInSeconds: (() {
+        final guardedValue = map['connectionTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      responseTimeoutInSeconds: (() {
+        final guardedValue = map['responseTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

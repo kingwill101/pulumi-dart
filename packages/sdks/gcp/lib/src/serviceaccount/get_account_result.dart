@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   final String accountId;
+
   /// Whether a service account is disabled or not.
   final bool disabled;
+
   /// The display name for the service account.
   final String displayName;
+
   /// The e-mail address of the service account. This value
   /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
   final String email;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   final String member;
+
   /// The fully-qualified name of the service account.
   final String name;
   final String? project;
+
   /// The unique id of the service account.
   final String uniqueId;
 
@@ -67,9 +73,12 @@ class GetAccountResult {
       id: map['id'] as String,
       member: map['member'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       uniqueId: map['uniqueId'] as String,
     );
   }
 }
-

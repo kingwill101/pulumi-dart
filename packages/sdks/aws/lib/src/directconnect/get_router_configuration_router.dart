@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouterConfigurationRouter {
   /// Router platform
   final pulumi.Input<String> platform;
+
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
   /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
@@ -24,10 +25,13 @@ class GetRouterConfigurationRouter {
   /// }
   /// ```
   final pulumi.Input<String> routerTypeIdentifier;
+
   /// Router operating system
   final pulumi.Input<String> software;
+
   /// Router vendor
   final pulumi.Input<String> vendor;
+
   /// Router XSLT Template Name
   final pulumi.Input<String> xsltTemplateName;
   final pulumi.Input<String> xsltTemplateNameForMacSec;
@@ -61,13 +65,18 @@ class GetRouterConfigurationRouter {
 
   factory GetRouterConfigurationRouter.fromMap(Map<String, dynamic> map) {
     return GetRouterConfigurationRouter(
-      platform: (map['platform'] as String).input(),
-      routerTypeIdentifier: (map['routerTypeIdentifier'] as String).input(),
-      software: (map['software'] as String).input(),
-      vendor: (map['vendor'] as String).input(),
-      xsltTemplateName: (map['xsltTemplateName'] as String).input(),
-      xsltTemplateNameForMacSec: (map['xsltTemplateNameForMacSec'] as String).input(),
+      platform: pulumi.Input.fromValue(map['platform'] as String),
+      routerTypeIdentifier: pulumi.Input.fromValue(
+        map['routerTypeIdentifier'] as String,
+      ),
+      software: pulumi.Input.fromValue(map['software'] as String),
+      vendor: pulumi.Input.fromValue(map['vendor'] as String),
+      xsltTemplateName: pulumi.Input.fromValue(
+        map['xsltTemplateName'] as String,
+      ),
+      xsltTemplateNameForMacSec: pulumi.Input.fromValue(
+        map['xsltTemplateNameForMacSec'] as String,
+      ),
     );
   }
 }
-

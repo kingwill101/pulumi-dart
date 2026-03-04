@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
   /// Object entity id.
   final pulumi.Input<String> objectId;
+
   /// Relationship description.
   final pulumi.Input<String> relation;
+
   /// Subject entity id.
   final pulumi.Input<String> subjectId;
 
@@ -29,12 +31,13 @@ class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentEntityRelationResponse(
-      objectId: (map['objectId'] as String).input(),
-      relation: (map['relation'] as String).input(),
-      subjectId: (map['subjectId'] as String).input(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      relation: pulumi.Input.fromValue(map['relation'] as String),
+      subjectId: pulumi.Input.fromValue(map['subjectId'] as String),
     );
   }
 }
-

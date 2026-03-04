@@ -15,17 +15,15 @@ class GetLaunchTemplateInstanceRequirementVcpuCount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateInstanceRequirementVcpuCount(
-      max: (map['max'] as int).input(),
-      min: (map['min'] as int).input(),
+      max: pulumi.Input.fromValue(map['max'] as int),
+      min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
-

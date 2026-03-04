@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegionSSLPolicy.
 class GetRegionSSLPolicyResult {
   final String creationTimestamp;
@@ -8,6 +7,7 @@ class GetRegionSSLPolicyResult {
   final String description;
   final List<String> enabledFeatures;
   final String fingerprint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String minTlsVersion;
@@ -73,10 +73,17 @@ class GetRegionSSLPolicyResult {
       minTlsVersion: map['minTlsVersion'] as String,
       name: map['name'] as String,
       profile: map['profile'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
-

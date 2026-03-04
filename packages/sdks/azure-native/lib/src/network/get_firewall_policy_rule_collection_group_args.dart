@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallPolicyRuleCollectionGroupArgs {
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the FirewallPolicyRuleCollectionGroup.
   final pulumi.Input<String> ruleCollectionGroupName;
 
@@ -32,12 +34,19 @@ class GetFirewallPolicyRuleCollectionGroupArgs {
     };
   }
 
-  factory GetFirewallPolicyRuleCollectionGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyRuleCollectionGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyRuleCollectionGroupArgs(
-      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleCollectionGroupName: (map['ruleCollectionGroupName'] as String).input(),
+      firewallPolicyName: pulumi.Input.fromValue(
+        map['firewallPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleCollectionGroupName: pulumi.Input.fromValue(
+        map['ruleCollectionGroupName'] as String,
+      ),
     );
   }
 }
-

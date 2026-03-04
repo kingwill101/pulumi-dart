@@ -9,20 +9,19 @@ class ActorResponse {
 
   /// Creates a new [ActorResponse].
   /// [name] The subject or username associated with the request context that generated the event.
-  ActorResponse({
-    this.name,
-  });
+  ActorResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory ActorResponse.fromMap(Map<String, dynamic> map) {
     return ActorResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

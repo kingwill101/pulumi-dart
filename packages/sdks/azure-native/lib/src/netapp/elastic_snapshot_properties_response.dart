@@ -9,20 +9,17 @@ class ElasticSnapshotPropertiesResponse {
 
   /// Creates a new [ElasticSnapshotPropertiesResponse].
   /// [provisioningState] Azure lifecycle management.
-  ElasticSnapshotPropertiesResponse({
-    required this.provisioningState,
-  });
+  ElasticSnapshotPropertiesResponse({required this.provisioningState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provisioningState': provisioningState,
-    };
+    return <String, dynamic>{'provisioningState': provisioningState};
   }
 
   factory ElasticSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

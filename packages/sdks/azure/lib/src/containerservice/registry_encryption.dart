@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEncryption {
   /// The client ID of the managed identity associated with the encryption key.
   final pulumi.Input<String> identityClientId;
+
   /// The ID of the Key Vault Key.
   final pulumi.Input<String> keyVaultKeyId;
 
@@ -25,9 +26,10 @@ class RegistryEncryption {
 
   factory RegistryEncryption.fromMap(Map<String, dynamic> map) {
     return RegistryEncryption(
-      identityClientId: (map['identityClientId'] as String).input(),
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      identityClientId: pulumi.Input.fromValue(
+        map['identityClientId'] as String,
+      ),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
     );
   }
 }
-

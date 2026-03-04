@@ -8,13 +8,28 @@ import 'get_linux_web_app_site_config_auto_heal_setting_trigger_status_code.dart
 
 class GetLinuxWebAppSiteConfigAutoHealSettingTrigger {
   /// A `requests` block as defined above.
-  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest>> requests;
+  final pulumi.Input<
+    List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest>
+  >
+  requests;
+
   /// (Optional) One or more `slow_request_with_path` blocks as defined above.
-  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>> slowRequestWithPaths;
+  final pulumi.Input<
+    List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>
+  >
+  slowRequestWithPaths;
+
   /// A `slow_request` block as defined above.
-  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>>? slowRequests;
+  final pulumi.Input<
+    List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>
+  >?
+  slowRequests;
+
   /// A `status_code` block as defined above.
-  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>> statusCodes;
+  final pulumi.Input<
+    List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>
+  >
+  statusCodes;
 
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingTrigger].
   /// [requests] A `requests` block as defined above.
@@ -30,20 +45,111 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requests': pulumi.Input.mapInputValue<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest>, List<Map<String, dynamic>>>(requests, (value) => pulumi.Input.encodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'slowRequestWithPaths': pulumi.Input.mapInputValue<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>, List<Map<String, dynamic>>>(slowRequestWithPaths, (value) => pulumi.Input.encodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'slowRequests': ?pulumi.Input.mapOptionalInputValue<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>, List<Map<String, dynamic>>>(slowRequests, (value) => pulumi.Input.encodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'statusCodes': pulumi.Input.mapInputValue<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>, List<Map<String, dynamic>>>(statusCodes, (value) => pulumi.Input.encodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requests':
+          pulumi.Input.mapInputValue<
+            List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest>,
+            List<Map<String, dynamic>>
+          >(
+            requests,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'slowRequestWithPaths':
+          pulumi.Input.mapInputValue<
+            List<
+              GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath
+            >,
+            List<Map<String, dynamic>>
+          >(
+            slowRequestWithPaths,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'slowRequests':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>,
+            List<Map<String, dynamic>>
+          >(
+            slowRequests,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'statusCodes':
+          pulumi.Input.mapInputValue<
+            List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>,
+            List<Map<String, dynamic>>
+          >(
+            statusCodes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetLinuxWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
+  factory GetLinuxWebAppSiteConfigAutoHealSettingTrigger.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTrigger(
-      requests: (pulumi.Input.decodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest>(map['requests'], (value) => GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slowRequestWithPaths: (pulumi.Input.decodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths'], (value) => GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slowRequests: map['slowRequests'] == null ? null : (pulumi.Input.decodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>(map['slowRequests']!, (value) => GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodes: (pulumi.Input.decodeList<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes'], (value) => GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest
+        >(
+          map['requests']!,
+          (value) =>
+              GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      slowRequestWithPaths: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath
+        >(
+          map['slowRequestWithPaths']!,
+          (value) =>
+              GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      slowRequests: (() {
+        final guardedValue = map['slowRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest
+          >(
+            guardedValue,
+            (value) =>
+                GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      statusCodes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode
+        >(
+          map['statusCodes']!,
+          (value) =>
+              GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

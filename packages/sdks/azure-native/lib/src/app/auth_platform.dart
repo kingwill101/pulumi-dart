@@ -4,19 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
 class AuthPlatform {
-  /// <code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
+  /// &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? enabled;
+
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
   /// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
   final pulumi.Input<String>? runtimeVersion;
 
   /// Creates a new [AuthPlatform].
-  /// [enabled] <code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
+  /// [enabled] &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [runtimeVersion] The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
-  AuthPlatform({
-    this.enabled,
-    this.runtimeVersion,
-  });
+  AuthPlatform({this.enabled, this.runtimeVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class AuthPlatform {
 
   factory AuthPlatform.fromMap(Map<String, dynamic> map) {
     return AuthPlatform(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      runtimeVersion: (() {
+        final guardedValue = map['runtimeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

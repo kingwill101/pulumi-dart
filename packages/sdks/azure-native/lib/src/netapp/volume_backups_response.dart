@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeBackupsResponse {
   /// Total count of backups for volume
   final pulumi.Input<int>? backupsCount;
+
   /// Policy enabled
   final pulumi.Input<bool>? policyEnabled;
+
   /// Volume name
   final pulumi.Input<String>? volumeName;
+
   /// ResourceId used to identify the Volume
   final pulumi.Input<String>? volumeResourceId;
 
@@ -36,11 +39,26 @@ class VolumeBackupsResponse {
 
   factory VolumeBackupsResponse.fromMap(Map<String, dynamic> map) {
     return VolumeBackupsResponse(
-      backupsCount: map['backupsCount'] == null ? null : (map['backupsCount']! as int).input(),
-      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled']! as bool).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
-      volumeResourceId: map['volumeResourceId'] == null ? null : (map['volumeResourceId']! as String).input(),
+      backupsCount: (() {
+        final guardedValue = map['backupsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      policyEnabled: (() {
+        final guardedValue = map['policyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      volumeName: (() {
+        final guardedValue = map['volumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeResourceId: (() {
+        final guardedValue = map['volumeResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

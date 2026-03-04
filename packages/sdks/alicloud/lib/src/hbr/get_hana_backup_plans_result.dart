@@ -7,6 +7,7 @@ import 'get_hana_backup_plans_plan.dart';
 class GetHanaBackupPlansResult {
   final String clusterId;
   final String? databaseName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -55,7 +56,11 @@ class GetHanaBackupPlansResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'plans': pulumi.Input.encodeList<GetHanaBackupPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
+      'plans':
+          pulumi.Input.encodeList<GetHanaBackupPlansPlan, Map<String, dynamic>>(
+            plans,
+            (value) => value.toMap(),
+          ),
       'vaultId': ?vaultId,
     };
   }
@@ -63,17 +68,45 @@ class GetHanaBackupPlansResult {
   factory GetHanaBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupPlansResult(
       clusterId: map['clusterId'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      plans: pulumi.Input.decodeList<GetHanaBackupPlansPlan>(map['plans'], (value) => GetHanaBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      vaultId: map['vaultId'] == null ? null : map['vaultId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      plans: pulumi.Input.decodeList<GetHanaBackupPlansPlan>(
+        map['plans']!,
+        (value) => GetHanaBackupPlansPlan.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

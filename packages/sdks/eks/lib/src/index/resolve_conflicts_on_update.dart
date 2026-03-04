@@ -4,16 +4,15 @@ enum ResolveConflictsOnUpdate {
   overwrite("OVERWRITE"),
   preserve("PRESERVE");
 
-  const ResolveConflictsOnUpdate(this.value);
-  final String value;
+  const ResolveConflictsOnUpdate(this.wireValue);
+  final String wireValue;
 
   static ResolveConflictsOnUpdate fromValue(String value) {
     for (final item in ResolveConflictsOnUpdate.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResolveConflictsOnUpdate value: $value');
   }
 }
-

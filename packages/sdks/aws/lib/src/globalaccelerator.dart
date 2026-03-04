@@ -1,5 +1,3 @@
-library module_globalaccelerator;
-
 export 'globalaccelerator/accelerator.dart';
 export 'globalaccelerator/accelerator_args.dart';
 export 'globalaccelerator/accelerator_attributes.dart';

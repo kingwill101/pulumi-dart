@@ -12,20 +12,19 @@ class PartnerArgs {
 
   /// Creates a new [PartnerArgs].
   /// [partnerId] Id of the Partner
-  PartnerArgs({
-    this.partnerId,
-  });
+  PartnerArgs({this.partnerId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'partnerId': ?partnerId,
-    };
+    return <String, dynamic>{'partnerId': ?partnerId};
   }
 
   factory PartnerArgs.fromMap(Map<String, dynamic> map) {
     return PartnerArgs(
-      partnerId: map['partnerId'] == null ? null : (map['partnerId']! as String).input(),
+      partnerId: (() {
+        final guardedValue = map['partnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

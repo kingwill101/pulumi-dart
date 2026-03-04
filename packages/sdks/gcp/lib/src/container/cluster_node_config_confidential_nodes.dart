@@ -6,6 +6,7 @@ class ClusterNodeConfigConfidentialNodes {
   /// Defines the type of technology used
   /// by the confidential node.
   final pulumi.Input<String>? confidentialInstanceType;
+
   /// Enable Confidential GKE Nodes for this cluster, to
   /// enforce encryption of data in-use.
   final pulumi.Input<bool> enabled;
@@ -27,9 +28,12 @@ class ClusterNodeConfigConfidentialNodes {
 
   factory ClusterNodeConfigConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigConfidentialNodes(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
+      confidentialInstanceType: (() {
+        final guardedValue = map['confidentialInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

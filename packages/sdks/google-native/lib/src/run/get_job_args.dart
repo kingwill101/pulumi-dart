@@ -13,23 +13,16 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [jobId] Required.
   /// [namespaceId] Required.
-  GetJobArgs({
-    required this.jobId,
-    required this.namespaceId,
-  });
+  GetJobArgs({required this.jobId, required this.namespaceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jobId': jobId,
-      'namespaceId': namespaceId,
-    };
+    return <String, dynamic>{'jobId': jobId, 'namespaceId': namespaceId};
   }
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
     return GetJobArgs(
-      jobId: (map['jobId'] as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
     );
   }
 }
-

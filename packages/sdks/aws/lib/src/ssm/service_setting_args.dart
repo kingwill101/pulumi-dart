@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSettingArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   final pulumi.Input<String> settingId;
+
   /// Value of the service setting.
   final pulumi.Input<String> settingValue;
 
@@ -34,10 +36,13 @@ class ServiceSettingArgs {
 
   factory ServiceSettingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSettingArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      settingId: (map['settingId'] as String).input(),
-      settingValue: (map['settingValue'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingId: pulumi.Input.fromValue(map['settingId'] as String),
+      settingValue: pulumi.Input.fromValue(map['settingValue'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'env_feature_state.dart';
 ///
 /// For information about ARMS Env Feature and how to use it, see [What is Env Feature](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-installenvironmentfeature).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -706,12 +706,16 @@ import 'env_feature_state.dart';
 class EnvFeature extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> envFeatureName;
+
   /// The first ID of the resource.
   late final pulumi.Output<String> environmentId;
+
   /// Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   late final pulumi.Output<String> featureVersion;
+
   /// Namespace.
   late final pulumi.Output<String> namespace;
+
   /// Status.
   late final pulumi.Output<String> status;
 
@@ -724,16 +728,16 @@ class EnvFeature extends pulumi.CustomResource {
     EnvFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envFeature:EnvFeature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.envFeatureName = registerOutput<String>('envFeatureName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.featureVersion = registerOutput<String>('featureVersion');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envFeature:EnvFeature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    envFeatureName = registerOutput<String>('envFeatureName');
+    environmentId = registerOutput<String>('environmentId');
+    featureVersion = registerOutput<String>('featureVersion');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EnvFeature] resource's state with the given [name] and [id].
@@ -754,15 +758,15 @@ class EnvFeature extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envFeature:EnvFeature',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.envFeatureName = registerOutput<String>('envFeatureName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.featureVersion = registerOutput<String>('featureVersion');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envFeature:EnvFeature',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    envFeatureName = registerOutput<String>('envFeatureName');
+    environmentId = registerOutput<String>('environmentId');
+    featureVersion = registerOutput<String>('featureVersion');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 }

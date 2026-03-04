@@ -9,8 +9,10 @@ import 'ephemeral_disk_response.dart';
 class PoolTypeResponse {
   /// Disk Pool Properties
   final pulumi.Input<AzureDiskResponse>? azureDisk;
+
   /// Elastic San Pool Properties
   final pulumi.Input<ElasticSanResponse>? elasticSan;
+
   /// Ephemeral Pool Properties
   final pulumi.Input<EphemeralDiskResponse>? ephemeralDisk;
 
@@ -18,26 +20,57 @@ class PoolTypeResponse {
   /// [azureDisk] Disk Pool Properties
   /// [elasticSan] Elastic San Pool Properties
   /// [ephemeralDisk] Ephemeral Pool Properties
-  PoolTypeResponse({
-    this.azureDisk,
-    this.elasticSan,
-    this.ephemeralDisk,
-  });
+  PoolTypeResponse({this.azureDisk, this.elasticSan, this.ephemeralDisk});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureDisk': ?pulumi.Input.mapOptionalInputValue<AzureDiskResponse, Map<String, dynamic>>(azureDisk, (value) => value.toMap()),
-      'elasticSan': ?pulumi.Input.mapOptionalInputValue<ElasticSanResponse, Map<String, dynamic>>(elasticSan, (value) => value.toMap()),
-      'ephemeralDisk': ?pulumi.Input.mapOptionalInputValue<EphemeralDiskResponse, Map<String, dynamic>>(ephemeralDisk, (value) => value.toMap()),
+      'azureDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureDiskResponse,
+            Map<String, dynamic>
+          >(azureDisk, (value) => value.toMap()),
+      'elasticSan':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticSanResponse,
+            Map<String, dynamic>
+          >(elasticSan, (value) => value.toMap()),
+      'ephemeralDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            EphemeralDiskResponse,
+            Map<String, dynamic>
+          >(ephemeralDisk, (value) => value.toMap()),
     };
   }
 
   factory PoolTypeResponse.fromMap(Map<String, dynamic> map) {
     return PoolTypeResponse(
-      azureDisk: map['azureDisk'] == null ? null : (AzureDiskResponse.fromMap((map['azureDisk']! as Map).cast<String, dynamic>())).input(),
-      elasticSan: map['elasticSan'] == null ? null : (ElasticSanResponse.fromMap((map['elasticSan']! as Map).cast<String, dynamic>())).input(),
-      ephemeralDisk: map['ephemeralDisk'] == null ? null : (EphemeralDiskResponse.fromMap((map['ephemeralDisk']! as Map).cast<String, dynamic>())).input(),
+      azureDisk: (() {
+        final guardedValue = map['azureDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureDiskResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      elasticSan: (() {
+        final guardedValue = map['elasticSan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticSanResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ephemeralDisk: (() {
+        final guardedValue = map['ephemeralDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EphemeralDiskResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

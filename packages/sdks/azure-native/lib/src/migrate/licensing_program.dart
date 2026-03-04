@@ -5,16 +5,15 @@ enum LicensingProgram {
   eA("EA"),
   mCA("MCA");
 
-  const LicensingProgram(this.value);
-  final String value;
+  const LicensingProgram(this.wireValue);
+  final String wireValue;
 
   static LicensingProgram fromValue(String value) {
     for (final item in LicensingProgram.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicensingProgram value: $value');
   }
 }
-

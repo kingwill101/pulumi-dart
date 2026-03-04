@@ -9,15 +9,20 @@ class EventActionState {
   /// Describes the action to take.
   /// Described in `action` Configuration Block below.
   final pulumi.Input<EventActionAction>? action;
+
   /// Amazon Resource Name (ARN) of the event action.
   final pulumi.Input<String>? arn;
+
   /// Date and time when the resource was created.
   final pulumi.Input<String>? createdAt;
+
   /// Describes the event that triggers the `action`.
   /// Described in `event` Configuration Block below.
   final pulumi.Input<EventActionEvent>? event;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Data and time when the resource was last updated.
   final pulumi.Input<String>? updatedAt;
 
@@ -39,10 +44,18 @@ class EventActionState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?pulumi.Input.mapOptionalInputValue<EventActionAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'action':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventActionAction,
+            Map<String, dynamic>
+          >(action, (value) => value.toMap()),
       'arn': ?arn,
       'createdAt': ?createdAt,
-      'event': ?pulumi.Input.mapOptionalInputValue<EventActionEvent, Map<String, dynamic>>(event, (value) => value.toMap()),
+      'event':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventActionEvent,
+            Map<String, dynamic>
+          >(event, (value) => value.toMap()),
       'region': ?region,
       'updatedAt': ?updatedAt,
     };
@@ -50,13 +63,44 @@ class EventActionState {
 
   factory EventActionState.fromMap(Map<String, dynamic> map) {
     return EventActionState(
-      action: map['action'] == null ? null : ((EventActionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
-      event: map['event'] == null ? null : ((EventActionEvent.fromMap((map['event']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventActionAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventActionEvent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionRoute {
   final pulumi.Input<String> destinationCidrBlock;
   final pulumi.Input<String> source;
+
   /// Current state of the VPN connection.
   final pulumi.Input<String> state;
 
@@ -28,10 +29,11 @@ class GetConnectionRoute {
 
   factory GetConnectionRoute.fromMap(Map<String, dynamic> map) {
     return GetConnectionRoute(
-      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      source: (map['source'] as String).input(),
-      state: (map['state'] as String).input(),
+      destinationCidrBlock: pulumi.Input.fromValue(
+        map['destinationCidrBlock'] as String,
+      ),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

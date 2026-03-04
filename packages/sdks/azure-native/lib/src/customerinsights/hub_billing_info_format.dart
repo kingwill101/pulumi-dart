@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HubBillingInfoFormat {
   /// The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
   final pulumi.Input<int>? maxUnits;
+
   /// The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions.
   final pulumi.Input<int>? minUnits;
+
   /// The sku name.
   final pulumi.Input<String>? skuName;
 
@@ -15,11 +17,7 @@ class HubBillingInfoFormat {
   /// [maxUnits] The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
   /// [minUnits] The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions.
   /// [skuName] The sku name.
-  HubBillingInfoFormat({
-    this.maxUnits,
-    this.minUnits,
-    this.skuName,
-  });
+  HubBillingInfoFormat({this.maxUnits, this.minUnits, this.skuName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class HubBillingInfoFormat {
 
   factory HubBillingInfoFormat.fromMap(Map<String, dynamic> map) {
     return HubBillingInfoFormat(
-      maxUnits: map['maxUnits'] == null ? null : (map['maxUnits']! as int).input(),
-      minUnits: map['minUnits'] == null ? null : (map['minUnits']! as int).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      maxUnits: (() {
+        final guardedValue = map['maxUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minUnits: (() {
+        final guardedValue = map['minUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

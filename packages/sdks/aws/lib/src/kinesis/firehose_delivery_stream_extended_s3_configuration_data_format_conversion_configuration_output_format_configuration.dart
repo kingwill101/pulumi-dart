@@ -5,7 +5,10 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration {
   /// Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet SerDe. See `serializer` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer> serializer;
+  final pulumi.Input<
+    FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer
+  >
+  serializer;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration].
   /// [serializer] Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet SerDe. See `serializer` block below for details.
@@ -15,14 +18,23 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serializer': pulumi.Input.mapInputValue<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer, Map<String, dynamic>>(serializer, (value) => value.toMap()),
+      'serializer':
+          pulumi.Input.mapInputValue<
+            FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer,
+            Map<String, dynamic>
+          >(serializer, (value) => value.toMap()),
     };
   }
 
-  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration(
-      serializer: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer.fromMap((map['serializer']! as Map).cast<String, dynamic>())).input(),
+      serializer: pulumi.Input.fromValue(
+        FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer.fromMap(
+          (map['serializer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

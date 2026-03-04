@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerIpamPoolArgs {
   /// The name of this Network Manager IPAM Pool.
   final pulumi.Input<String> name;
+
   /// The ID of the parent Network Manager.
   final pulumi.Input<String> networkManagerId;
 
@@ -29,9 +30,10 @@ class GetNetworkManagerIpamPoolArgs {
 
   factory GetNetworkManagerIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerIpamPoolArgs(
-      name: (map['name'] as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
     );
   }
 }
-

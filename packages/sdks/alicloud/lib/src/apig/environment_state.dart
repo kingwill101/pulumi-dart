@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentState {
   /// Description
   final pulumi.Input<String>? description;
+
   /// The name of the resource
   final pulumi.Input<String>? environmentName;
+
   /// Gateway id
   final pulumi.Input<String>? gatewayId;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
 
@@ -36,11 +39,26 @@ class EnvironmentState {
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: (() {
+        final guardedValue = map['environmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

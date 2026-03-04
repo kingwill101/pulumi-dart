@@ -8,20 +8,21 @@ class SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1 {
 
   /// Creates a new [SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1].
   /// [namespace] Namespace to evaluate rules for. Required.
-  SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1({
-    this.namespace,
-  });
+  SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1({this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'namespace': ?namespace};
   }
 
-  factory SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1(
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

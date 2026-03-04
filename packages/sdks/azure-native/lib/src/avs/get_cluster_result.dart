@@ -7,24 +7,34 @@ import 'system_data_response.dart';
 class GetClusterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The identity
   final int clusterId;
+
   /// The cluster size
   final int? clusterSize;
+
   /// The hosts
   final List<String>? hosts;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The state of the cluster provisioning
   final String provisioningState;
+
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final SkuResponse sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Name of the vsan datastore associated with the cluster
   final String? vsanDatastoreName;
 
@@ -74,16 +84,29 @@ class GetClusterResult {
     return GetClusterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clusterId: map['clusterId'] as int,
-      clusterSize: map['clusterSize'] == null ? null : map['clusterSize']! as int,
-      hosts: map['hosts'] == null ? null : (map['hosts']! as List).cast<String>(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : map['vsanDatastoreName']! as String,
+      vsanDatastoreName: (() {
+        final guardedValue = map['vsanDatastoreName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

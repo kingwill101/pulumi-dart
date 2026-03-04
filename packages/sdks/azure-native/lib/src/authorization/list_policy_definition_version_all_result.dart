@@ -7,29 +7,48 @@ import 'policy_definition_version_response.dart';
 class ListPolicyDefinitionVersionAllResult {
   /// The URL to use for getting the next set of results.
   final String? nextLink;
+
   /// An array of policy definitions versions.
   final List<PolicyDefinitionVersionResponse>? value;
 
   /// Creates a new [ListPolicyDefinitionVersionAllResult].
   /// [nextLink] The URL to use for getting the next set of results.
   /// [value] An array of policy definitions versions.
-  ListPolicyDefinitionVersionAllResult({
-    this.nextLink,
-    this.value,
-  });
+  ListPolicyDefinitionVersionAllResult({this.nextLink, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<PolicyDefinitionVersionResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PolicyDefinitionVersionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListPolicyDefinitionVersionAllResult.fromMap(Map<String, dynamic> map) {
+  factory ListPolicyDefinitionVersionAllResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListPolicyDefinitionVersionAllResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PolicyDefinitionVersionResponse>(map['value']!, (value) => PolicyDefinitionVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PolicyDefinitionVersionResponse>(
+          guardedValue,
+          (value) => PolicyDefinitionVersionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

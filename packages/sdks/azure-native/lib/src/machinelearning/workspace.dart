@@ -186,30 +186,43 @@ import 'workspace_args.dart';
 class Workspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation time for this workspace resource.
   late final pulumi.Output<String> creationTime;
+
   /// The key vault identifier used for encrypted workspaces.
   late final pulumi.Output<String?> keyVaultIdentifierId;
+
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The email id of the owner for this workspace.
   late final pulumi.Output<String> ownerEmail;
+
   /// The sku of the workspace.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The regional endpoint for the machine learning studio service which hosts this workspace.
   late final pulumi.Output<String> studioEndpoint;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The fully qualified arm id of the storage account associated with this workspace.
   late final pulumi.Output<String> userStorageAccountId;
+
   /// The immutable id associated with this workspace.
   late final pulumi.Output<String> workspaceId;
+
   /// The current state of workspace resource.
   late final pulumi.Output<String> workspaceState;
+
   /// The type of this workspace.
   late final pulumi.Output<String> workspaceType;
 
@@ -222,24 +235,24 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearning:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.keyVaultIdentifierId = registerOutput<String?>('keyVaultIdentifierId');
-    this.location = registerOutput<String>('location');
+         'azure-native:machinelearning:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    keyVaultIdentifierId = registerOutput<String?>('keyVaultIdentifierId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.ownerEmail = registerOutput<String>('ownerEmail');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.studioEndpoint = registerOutput<String>('studioEndpoint');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.userStorageAccountId = registerOutput<String>('userStorageAccountId');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceState = registerOutput<String>('workspaceState');
-    this.workspaceType = registerOutput<String>('workspaceType');
+    ownerEmail = registerOutput<String>('ownerEmail');
+    sku = registerOutput<SkuResponse?>('sku');
+    studioEndpoint = registerOutput<String>('studioEndpoint');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    userStorageAccountId = registerOutput<String>('userStorageAccountId');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceState = registerOutput<String>('workspaceState');
+    workspaceType = registerOutput<String>('workspaceType');
   }
 }

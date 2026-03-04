@@ -12,8 +12,10 @@ import 'storage_account_static_website_args.dart';
 class StorageAccountStaticWebsite extends pulumi.CustomResource {
   /// The name of the container to upload blobs to.
   late final pulumi.Output<String> containerName;
+
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   late final pulumi.Output<String?> error404Document;
+
   /// The webpage that Azure Storage serves for requests to the root of a website or any sub-folder. For example, 'index.html'. The value is case-sensitive.
   late final pulumi.Output<String?> indexDocument;
 
@@ -26,13 +28,13 @@ class StorageAccountStaticWebsite extends pulumi.CustomResource {
     StorageAccountStaticWebsiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:StorageAccountStaticWebsite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerName = registerOutput<String>('containerName');
-    this.error404Document = registerOutput<String?>('error404Document');
-    this.indexDocument = registerOutput<String?>('indexDocument');
+         'azure-native:storage:StorageAccountStaticWebsite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerName = registerOutput<String>('containerName');
+    error404Document = registerOutput<String?>('error404Document');
+    indexDocument = registerOutput<String?>('indexDocument');
   }
 }

@@ -3,16 +3,15 @@ enum LocalDNSProtocol {
   valuePreferUDP("PreferUDP"),
   valueForceTCP("ForceTCP");
 
-  const LocalDNSProtocol(this.value);
-  final String value;
+  const LocalDNSProtocol(this.wireValue);
+  final String wireValue;
 
   static LocalDNSProtocol fromValue(String value) {
     for (final item in LocalDNSProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalDNSProtocol value: $value');
   }
 }
-

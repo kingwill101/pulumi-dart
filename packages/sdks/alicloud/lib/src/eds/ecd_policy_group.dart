@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ecd_policy_group_args.dart';
-import 'ecd_policy_group_authorize_access_policy_rule.dart';
-import 'ecd_policy_group_authorize_security_policy_rule.dart';
 import 'ecd_policy_group_state.dart';
 
 /// Provides a Elastic Desktop Service (ECD) Policy Group resource.
 ///
 /// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 ///
-/// > **NOTE:** Available since v1.130.0.
+/// &gt; **NOTE:** Available since v1.130.0.
 ///
 /// ## Example Usage
 ///
@@ -228,43 +226,64 @@ import 'ecd_policy_group_state.dart';
 /// ```
 class EcdPolicyGroup extends pulumi.CustomResource {
   /// The rule of authorize access rule. See `authorize_access_policy_rules` below.
-  late final pulumi.Output<List<EcdPolicyGroupAuthorizeAccessPolicyRule>?> authorizeAccessPolicyRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  authorizeAccessPolicyRules;
+
   /// The policy rule. See `authorize_security_policy_rules` below.
-  late final pulumi.Output<List<EcdPolicyGroupAuthorizeSecurityPolicyRule>?> authorizeSecurityPolicyRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  authorizeSecurityPolicyRules;
+
   /// Whether to enable local camera redirection. Valid values: `on`, `off`.
   late final pulumi.Output<String> cameraRedirect;
+
   /// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
   late final pulumi.Output<String> clipboard;
+
   /// The list of domain.
   late final pulumi.Output<String?> domainList;
+
   /// The access of html5. Valid values: `off`, `on`.
   late final pulumi.Output<String> htmlAccess;
+
   /// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
   late final pulumi.Output<String> htmlFileTransfer;
+
   /// Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
   late final pulumi.Output<String> localDrive;
+
   /// The name of policy group.
   late final pulumi.Output<String?> policyGroupName;
+
   /// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
   late final pulumi.Output<String> recording;
+
   /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
   late final pulumi.Output<String?> recordingEndTime;
+
   /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
   late final pulumi.Output<int> recordingExpires;
+
   /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
   late final pulumi.Output<int> recordingFps;
+
   /// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
   late final pulumi.Output<String?> recordingStartTime;
+
   /// The status of policy.
   late final pulumi.Output<String> status;
+
   /// The usb redirect policy. Valid values: `off`, `on`.
   late final pulumi.Output<String> usbRedirect;
+
   /// The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
   late final pulumi.Output<String> visualQuality;
+
   /// The watermark policy. Valid values: `off`, `on`.
   late final pulumi.Output<String> watermark;
+
   /// The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
   late final pulumi.Output<String> watermarkTransparency;
+
   /// The type of watemark. Valid values: `EndUserId`, `HostName`.
   late final pulumi.Output<String> watermarkType;
 
@@ -277,31 +296,35 @@ class EcdPolicyGroup extends pulumi.CustomResource {
     EcdPolicyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizeAccessPolicyRules = registerOutput<List<EcdPolicyGroupAuthorizeAccessPolicyRule>?>('authorizeAccessPolicyRules');
-    this.authorizeSecurityPolicyRules = registerOutput<List<EcdPolicyGroupAuthorizeSecurityPolicyRule>?>('authorizeSecurityPolicyRules');
-    this.cameraRedirect = registerOutput<String>('cameraRedirect');
-    this.clipboard = registerOutput<String>('clipboard');
-    this.domainList = registerOutput<String?>('domainList');
-    this.htmlAccess = registerOutput<String>('htmlAccess');
-    this.htmlFileTransfer = registerOutput<String>('htmlFileTransfer');
-    this.localDrive = registerOutput<String>('localDrive');
-    this.policyGroupName = registerOutput<String?>('policyGroupName');
-    this.recording = registerOutput<String>('recording');
-    this.recordingEndTime = registerOutput<String?>('recordingEndTime');
-    this.recordingExpires = registerOutput<int>('recordingExpires');
-    this.recordingFps = registerOutput<int>('recordingFps');
-    this.recordingStartTime = registerOutput<String?>('recordingStartTime');
-    this.status = registerOutput<String>('status');
-    this.usbRedirect = registerOutput<String>('usbRedirect');
-    this.visualQuality = registerOutput<String>('visualQuality');
-    this.watermark = registerOutput<String>('watermark');
-    this.watermarkTransparency = registerOutput<String>('watermarkTransparency');
-    this.watermarkType = registerOutput<String>('watermarkType');
+         'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizeAccessPolicyRules',
+    );
+    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizeSecurityPolicyRules',
+    );
+    cameraRedirect = registerOutput<String>('cameraRedirect');
+    clipboard = registerOutput<String>('clipboard');
+    domainList = registerOutput<String?>('domainList');
+    htmlAccess = registerOutput<String>('htmlAccess');
+    htmlFileTransfer = registerOutput<String>('htmlFileTransfer');
+    localDrive = registerOutput<String>('localDrive');
+    policyGroupName = registerOutput<String?>('policyGroupName');
+    recording = registerOutput<String>('recording');
+    recordingEndTime = registerOutput<String?>('recordingEndTime');
+    recordingExpires = registerOutput<int>('recordingExpires');
+    recordingFps = registerOutput<int>('recordingFps');
+    recordingStartTime = registerOutput<String?>('recordingStartTime');
+    status = registerOutput<String>('status');
+    usbRedirect = registerOutput<String>('usbRedirect');
+    visualQuality = registerOutput<String>('visualQuality');
+    watermark = registerOutput<String>('watermark');
+    watermarkTransparency = registerOutput<String>('watermarkTransparency');
+    watermarkType = registerOutput<String>('watermarkType');
   }
 
   /// Gets an existing [EcdPolicyGroup] resource's state with the given [name] and [id].
@@ -322,30 +345,34 @@ class EcdPolicyGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizeAccessPolicyRules = registerOutput<List<EcdPolicyGroupAuthorizeAccessPolicyRule>?>('authorizeAccessPolicyRules');
-    this.authorizeSecurityPolicyRules = registerOutput<List<EcdPolicyGroupAuthorizeSecurityPolicyRule>?>('authorizeSecurityPolicyRules');
-    this.cameraRedirect = registerOutput<String>('cameraRedirect');
-    this.clipboard = registerOutput<String>('clipboard');
-    this.domainList = registerOutput<String?>('domainList');
-    this.htmlAccess = registerOutput<String>('htmlAccess');
-    this.htmlFileTransfer = registerOutput<String>('htmlFileTransfer');
-    this.localDrive = registerOutput<String>('localDrive');
-    this.policyGroupName = registerOutput<String?>('policyGroupName');
-    this.recording = registerOutput<String>('recording');
-    this.recordingEndTime = registerOutput<String?>('recordingEndTime');
-    this.recordingExpires = registerOutput<int>('recordingExpires');
-    this.recordingFps = registerOutput<int>('recordingFps');
-    this.recordingStartTime = registerOutput<String?>('recordingStartTime');
-    this.status = registerOutput<String>('status');
-    this.usbRedirect = registerOutput<String>('usbRedirect');
-    this.visualQuality = registerOutput<String>('visualQuality');
-    this.watermark = registerOutput<String>('watermark');
-    this.watermarkTransparency = registerOutput<String>('watermarkTransparency');
-    this.watermarkType = registerOutput<String>('watermarkType');
+         'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizeAccessPolicyRules',
+    );
+    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizeSecurityPolicyRules',
+    );
+    cameraRedirect = registerOutput<String>('cameraRedirect');
+    clipboard = registerOutput<String>('clipboard');
+    domainList = registerOutput<String?>('domainList');
+    htmlAccess = registerOutput<String>('htmlAccess');
+    htmlFileTransfer = registerOutput<String>('htmlFileTransfer');
+    localDrive = registerOutput<String>('localDrive');
+    policyGroupName = registerOutput<String?>('policyGroupName');
+    recording = registerOutput<String>('recording');
+    recordingEndTime = registerOutput<String?>('recordingEndTime');
+    recordingExpires = registerOutput<int>('recordingExpires');
+    recordingFps = registerOutput<int>('recordingFps');
+    recordingStartTime = registerOutput<String?>('recordingStartTime');
+    status = registerOutput<String>('status');
+    usbRedirect = registerOutput<String>('usbRedirect');
+    visualQuality = registerOutput<String>('visualQuality');
+    watermark = registerOutput<String>('watermark');
+    watermarkTransparency = registerOutput<String>('watermarkTransparency');
+    watermarkType = registerOutput<String>('watermarkType');
   }
 }

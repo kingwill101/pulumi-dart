@@ -9,17 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStudioApplicationsArgs {
   /// A list of Application IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The keyword of the Application.
   final pulumi.Input<String>? keyword;
   final pulumi.Input<int>? maxResults;
+
   /// A regex string to filter results by Application name.
   final pulumi.Input<String>? nameRegex;
+
   /// The order type of the Application. Valid values:
   final pulumi.Input<int>? orderType;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the Application. Valid values: `success`, `release`.
   final pulumi.Input<String>? status;
 
@@ -58,15 +64,46 @@ class GetStudioApplicationsArgs {
 
   factory GetStudioApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType']! as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxResults: (() {
+        final guardedValue = map['maxResults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

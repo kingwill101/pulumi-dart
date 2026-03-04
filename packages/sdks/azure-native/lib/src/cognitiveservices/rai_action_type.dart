@@ -6,16 +6,15 @@ enum RaiActionType {
   valueHITL("HITL"),
   valueRETRY("RETRY");
 
-  const RaiActionType(this.value);
-  final String value;
+  const RaiActionType(this.wireValue);
+  final String wireValue;
 
   static RaiActionType fromValue(String value) {
     for (final item in RaiActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RaiActionType value: $value');
   }
 }
-

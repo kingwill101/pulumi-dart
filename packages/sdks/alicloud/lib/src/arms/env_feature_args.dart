@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvFeatureArgs {
   /// The name of the resource.
   final pulumi.Input<String> envFeatureName;
+
   /// The first ID of the resource.
   final pulumi.Input<String> environmentId;
+
   /// Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   final pulumi.Input<String> featureVersion;
 
@@ -34,10 +36,9 @@ class EnvFeatureArgs {
 
   factory EnvFeatureArgs.fromMap(Map<String, dynamic> map) {
     return EnvFeatureArgs(
-      envFeatureName: (map['envFeatureName'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      featureVersion: (map['featureVersion'] as String).input(),
+      envFeatureName: pulumi.Input.fromValue(map['envFeatureName'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      featureVersion: pulumi.Input.fromValue(map['featureVersion'] as String),
     );
   }
 }
-

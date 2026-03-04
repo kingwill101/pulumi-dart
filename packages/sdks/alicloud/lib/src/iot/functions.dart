@@ -6,7 +6,7 @@ import 'get_service_result.dart';
 
 /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -118,7 +118,7 @@ Future<GetDeviceGroupsResult> getDeviceGroups(
 ///
 /// For information about IOT and how to use it, see [What is IOT](https://www.alibabacloud.com/help/en/product/30520.htm).
 ///
-/// > **NOTE:** Available in v1.115.0+
+/// &gt; **NOTE:** Available in v1.115.0+
 ///
 /// ## Example Usage
 ///

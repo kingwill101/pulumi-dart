@@ -10,10 +10,13 @@ import 'managed_environment_storage_properties.dart';
 class ManagedEnvironmentsStorageArgs {
   /// Name of the Environment.
   final pulumi.Input<String> environmentName;
+
   /// Storage properties
   final pulumi.Input<ManagedEnvironmentStorageProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the storage.
   final pulumi.Input<String>? storageName;
 
@@ -32,7 +35,11 @@ class ManagedEnvironmentsStorageArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentName': environmentName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ManagedEnvironmentStorageProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedEnvironmentStorageProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'storageName': ?storageName,
     };
@@ -40,11 +47,24 @@ class ManagedEnvironmentsStorageArgs {
 
   factory ManagedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentsStorageArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedEnvironmentStorageProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedEnvironmentStorageProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageName: (() {
+        final guardedValue = map['storageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

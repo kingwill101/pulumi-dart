@@ -8,20 +8,19 @@ class CertificateTemplatePredefinedValuesPolicyId {
 
   /// Creates a new [CertificateTemplatePredefinedValuesPolicyId].
   /// [objectIdPaths] Required. The parts of an OID path. The most significant parts of the path come first.
-  CertificateTemplatePredefinedValuesPolicyId({
-    required this.objectIdPaths,
-  });
+  CertificateTemplatePredefinedValuesPolicyId({required this.objectIdPaths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': objectIdPaths};
   }
 
-  factory CertificateTemplatePredefinedValuesPolicyId.fromMap(Map<String, dynamic> map) {
+  factory CertificateTemplatePredefinedValuesPolicyId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateTemplatePredefinedValuesPolicyId(
-      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: pulumi.Input.fromValue(
+        (map['objectIdPaths'] as List).cast<int>(),
+      ),
     );
   }
 }
-

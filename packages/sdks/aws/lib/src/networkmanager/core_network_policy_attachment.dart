@@ -6,7 +6,7 @@ import 'core_network_policy_attachment_state.dart';
 ///
 /// Use this resource to attach a Core Network Policy to an existing Core Network and execute the change set, which deploys changes globally based on the policy submitted (sets the policy to `LIVE`).
 ///
-/// > **NOTE:** Deleting this resource will not delete the current policy defined in this resource. Deleting this resource will also not revert the current `LIVE` policy to the previous version.
+/// &gt; **NOTE:** Deleting this resource will not delete the current policy defined in this resource. Deleting this resource will also not revert the current `LIVE` policy to the previous version.
 ///
 /// ## Example Usage
 ///
@@ -1831,8 +1831,10 @@ import 'core_network_policy_attachment_state.dart';
 class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
   /// ID of the core network that a policy will be attached to and made `LIVE`.
   late final pulumi.Output<String> coreNetworkId;
+
   /// Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   late final pulumi.Output<String> policyDocument;
+
   /// Current state of a core network.
   late final pulumi.Output<String> state;
 
@@ -1845,14 +1847,14 @@ class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
     CoreNetworkPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.state = registerOutput<String>('state');
+         'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    policyDocument = registerOutput<String>('policyDocument');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [CoreNetworkPolicyAttachment] resource's state with the given [name] and [id].
@@ -1873,13 +1875,13 @@ class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.policyDocument = registerOutput<String>('policyDocument');
+         'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    policyDocument = registerOutput<String>('policyDocument');
     this.state = registerOutput<String>('state');
   }
 }

@@ -9,20 +9,19 @@ class QuarantinePolicy {
 
   /// Creates a new [QuarantinePolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  QuarantinePolicy({
-    this.status,
-  });
+  QuarantinePolicy({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory QuarantinePolicy.fromMap(Map<String, dynamic> map) {
     return QuarantinePolicy(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,121 +10,176 @@ import 'database_mysql_v2_updates.dart';
 class DatabaseMysqlV2State {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
   final pulumi.Input<List<String>>? allowLists;
+
   /// The base64-encoded SSL CA certificate for the Managed Database.
   final pulumi.Input<String>? caCert;
+
   /// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
   final pulumi.Input<int>? clusterSize;
+
   /// When this Managed Database was created.
   final pulumi.Input<String>? created;
+
   /// Whether the Managed Databases is encrypted.
   final pulumi.Input<bool>? encrypted;
+
   /// The Managed Database engine. (e.g. `mysql`)
   final pulumi.Input<String>? engine;
+
   /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
   final pulumi.Input<int>? engineConfigBinlogRetentionPeriod;
+
   /// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
   final pulumi.Input<int>? engineConfigMysqlConnectTimeout;
+
   /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
   final pulumi.Input<String>? engineConfigMysqlDefaultTimeZone;
+
   /// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
   final pulumi.Input<double>? engineConfigMysqlGroupConcatMaxLen;
+
   /// The time, in seconds, before cached statistics expire.
   final pulumi.Input<int>? engineConfigMysqlInformationSchemaStatsExpiry;
+
   /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
   final pulumi.Input<int>? engineConfigMysqlInnodbChangeBufferMaxSize;
+
   /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
   final pulumi.Input<int>? engineConfigMysqlInnodbFlushNeighbors;
+
   /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
   final pulumi.Input<int>? engineConfigMysqlInnodbFtMinTokenSize;
+
   /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
   final pulumi.Input<String>? engineConfigMysqlInnodbFtServerStopwordTable;
+
   /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
   final pulumi.Input<int>? engineConfigMysqlInnodbLockWaitTimeout;
+
   /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
   final pulumi.Input<int>? engineConfigMysqlInnodbLogBufferSize;
+
   /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
   final pulumi.Input<int>? engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+
   /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
   final pulumi.Input<int>? engineConfigMysqlInnodbReadIoThreads;
+
   /// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
   final pulumi.Input<bool>? engineConfigMysqlInnodbRollbackOnTimeout;
+
   /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
   final pulumi.Input<int>? engineConfigMysqlInnodbThreadConcurrency;
+
   /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
   final pulumi.Input<int>? engineConfigMysqlInnodbWriteIoThreads;
+
   /// The number of seconds the server waits for activity on an interactive connection before closing it.
   final pulumi.Input<int>? engineConfigMysqlInteractiveTimeout;
+
   /// The storage engine for in-memory internal temporary tables.
   final pulumi.Input<String>? engineConfigMysqlInternalTmpMemStorageEngine;
+
   /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
   final pulumi.Input<int>? engineConfigMysqlMaxAllowedPacket;
+
   /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
   final pulumi.Input<int>? engineConfigMysqlMaxHeapTableSize;
+
   /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
   final pulumi.Input<int>? engineConfigMysqlNetBufferLength;
+
   /// The number of seconds to wait for more data from a connection before aborting the read.
   final pulumi.Input<int>? engineConfigMysqlNetReadTimeout;
+
   /// The number of seconds to wait for a block to be written to a connection before aborting the write.
   final pulumi.Input<int>? engineConfigMysqlNetWriteTimeout;
+
   /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
   final pulumi.Input<int>? engineConfigMysqlSortBufferSize;
+
   /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
   final pulumi.Input<String>? engineConfigMysqlSqlMode;
+
   /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
   final pulumi.Input<bool>? engineConfigMysqlSqlRequirePrimaryKey;
+
   /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
   final pulumi.Input<int>? engineConfigMysqlTmpTableSize;
+
   /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
   final pulumi.Input<int>? engineConfigMysqlWaitTimeout;
+
   /// The Managed Database engine in engine/version format. (e.g. `mysql`)
   final pulumi.Input<String>? engineId;
+
   /// The database timestamp from which it was restored.
   final pulumi.Input<String>? forkRestoreTime;
+
   /// The ID of the database that was forked from.
   ///
   /// * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
   ///
   /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
   final pulumi.Input<int>? forkSource;
+
   /// The primary host for the Managed Database.
   final pulumi.Input<String>? hostPrimary;
+
   /// The secondary/private host for the managed database.
   final pulumi.Input<String>? hostSecondary;
+
   /// A unique, user-defined string referring to the Managed Database.
   final pulumi.Input<String>? label;
+
   /// A mapping between IP addresses and strings designating them as primary or failover.
   final pulumi.Input<Map<String, String>>? members;
+
   /// The oldest time to which a database can be restored.
   final pulumi.Input<String>? oldestRestoreTime;
+
   /// A set of pending updates.
   final pulumi.Input<List<DatabaseMysqlV2PendingUpdate>>? pendingUpdates;
+
   /// The back-end platform for relational databases used by the service.
   final pulumi.Input<String>? platform;
+
   /// The access port for this Managed Database.
   final pulumi.Input<int>? port;
+
   /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
   final pulumi.Input<DatabaseMysqlV2PrivateNetwork>? privateNetwork;
+
   /// The region to use for the Managed Database.
   final pulumi.Input<String>? region;
+
   /// The randomly-generated root password for the Managed Database instance.
   final pulumi.Input<String>? rootPassword;
+
   /// The root username for the Managed Database instance.
   final pulumi.Input<String>? rootUsername;
+
   /// Whether to require SSL credentials to establish a connection to the Managed Database.
   final pulumi.Input<bool>? sslConnection;
+
   /// The operating status of the Managed Database.
   final pulumi.Input<String>? status;
+
   /// Whether this Managed Database should be suspended.
   final pulumi.Input<bool>? suspended;
   final pulumi.Input<DatabaseMysqlV2Timeouts>? timeouts;
+
   /// The Linode Instance type used for the nodes of the Managed Database.
   ///
   /// - - -
   final pulumi.Input<String>? type;
+
   /// When this Managed Database was last updated.
   final pulumi.Input<String>? updated;
+
   /// Configuration settings for automated patch update maintenance for the Managed Database.
   final pulumi.Input<DatabaseMysqlV2Updates>? updates;
+
   /// The Managed Database engine version. (e.g. `13.2`)
   final pulumi.Input<String>? version;
 
@@ -258,20 +313,34 @@ class DatabaseMysqlV2State {
       'engineConfigMysqlConnectTimeout': ?engineConfigMysqlConnectTimeout,
       'engineConfigMysqlDefaultTimeZone': ?engineConfigMysqlDefaultTimeZone,
       'engineConfigMysqlGroupConcatMaxLen': ?engineConfigMysqlGroupConcatMaxLen,
-      'engineConfigMysqlInformationSchemaStatsExpiry': ?engineConfigMysqlInformationSchemaStatsExpiry,
-      'engineConfigMysqlInnodbChangeBufferMaxSize': ?engineConfigMysqlInnodbChangeBufferMaxSize,
-      'engineConfigMysqlInnodbFlushNeighbors': ?engineConfigMysqlInnodbFlushNeighbors,
-      'engineConfigMysqlInnodbFtMinTokenSize': ?engineConfigMysqlInnodbFtMinTokenSize,
-      'engineConfigMysqlInnodbFtServerStopwordTable': ?engineConfigMysqlInnodbFtServerStopwordTable,
-      'engineConfigMysqlInnodbLockWaitTimeout': ?engineConfigMysqlInnodbLockWaitTimeout,
-      'engineConfigMysqlInnodbLogBufferSize': ?engineConfigMysqlInnodbLogBufferSize,
-      'engineConfigMysqlInnodbOnlineAlterLogMaxSize': ?engineConfigMysqlInnodbOnlineAlterLogMaxSize,
-      'engineConfigMysqlInnodbReadIoThreads': ?engineConfigMysqlInnodbReadIoThreads,
-      'engineConfigMysqlInnodbRollbackOnTimeout': ?engineConfigMysqlInnodbRollbackOnTimeout,
-      'engineConfigMysqlInnodbThreadConcurrency': ?engineConfigMysqlInnodbThreadConcurrency,
-      'engineConfigMysqlInnodbWriteIoThreads': ?engineConfigMysqlInnodbWriteIoThreads,
-      'engineConfigMysqlInteractiveTimeout': ?engineConfigMysqlInteractiveTimeout,
-      'engineConfigMysqlInternalTmpMemStorageEngine': ?engineConfigMysqlInternalTmpMemStorageEngine,
+      'engineConfigMysqlInformationSchemaStatsExpiry':
+          ?engineConfigMysqlInformationSchemaStatsExpiry,
+      'engineConfigMysqlInnodbChangeBufferMaxSize':
+          ?engineConfigMysqlInnodbChangeBufferMaxSize,
+      'engineConfigMysqlInnodbFlushNeighbors':
+          ?engineConfigMysqlInnodbFlushNeighbors,
+      'engineConfigMysqlInnodbFtMinTokenSize':
+          ?engineConfigMysqlInnodbFtMinTokenSize,
+      'engineConfigMysqlInnodbFtServerStopwordTable':
+          ?engineConfigMysqlInnodbFtServerStopwordTable,
+      'engineConfigMysqlInnodbLockWaitTimeout':
+          ?engineConfigMysqlInnodbLockWaitTimeout,
+      'engineConfigMysqlInnodbLogBufferSize':
+          ?engineConfigMysqlInnodbLogBufferSize,
+      'engineConfigMysqlInnodbOnlineAlterLogMaxSize':
+          ?engineConfigMysqlInnodbOnlineAlterLogMaxSize,
+      'engineConfigMysqlInnodbReadIoThreads':
+          ?engineConfigMysqlInnodbReadIoThreads,
+      'engineConfigMysqlInnodbRollbackOnTimeout':
+          ?engineConfigMysqlInnodbRollbackOnTimeout,
+      'engineConfigMysqlInnodbThreadConcurrency':
+          ?engineConfigMysqlInnodbThreadConcurrency,
+      'engineConfigMysqlInnodbWriteIoThreads':
+          ?engineConfigMysqlInnodbWriteIoThreads,
+      'engineConfigMysqlInteractiveTimeout':
+          ?engineConfigMysqlInteractiveTimeout,
+      'engineConfigMysqlInternalTmpMemStorageEngine':
+          ?engineConfigMysqlInternalTmpMemStorageEngine,
       'engineConfigMysqlMaxAllowedPacket': ?engineConfigMysqlMaxAllowedPacket,
       'engineConfigMysqlMaxHeapTableSize': ?engineConfigMysqlMaxHeapTableSize,
       'engineConfigMysqlNetBufferLength': ?engineConfigMysqlNetBufferLength,
@@ -279,7 +348,8 @@ class DatabaseMysqlV2State {
       'engineConfigMysqlNetWriteTimeout': ?engineConfigMysqlNetWriteTimeout,
       'engineConfigMysqlSortBufferSize': ?engineConfigMysqlSortBufferSize,
       'engineConfigMysqlSqlMode': ?engineConfigMysqlSqlMode,
-      'engineConfigMysqlSqlRequirePrimaryKey': ?engineConfigMysqlSqlRequirePrimaryKey,
+      'engineConfigMysqlSqlRequirePrimaryKey':
+          ?engineConfigMysqlSqlRequirePrimaryKey,
       'engineConfigMysqlTmpTableSize': ?engineConfigMysqlTmpTableSize,
       'engineConfigMysqlWaitTimeout': ?engineConfigMysqlWaitTimeout,
       'engineId': ?engineId,
@@ -290,84 +360,359 @@ class DatabaseMysqlV2State {
       'label': ?label,
       'members': ?members,
       'oldestRestoreTime': ?oldestRestoreTime,
-      'pendingUpdates': ?pulumi.Input.mapOptionalInputValue<List<DatabaseMysqlV2PendingUpdate>, List<Map<String, dynamic>>>(pendingUpdates, (value) => pulumi.Input.encodeList<DatabaseMysqlV2PendingUpdate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pendingUpdates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatabaseMysqlV2PendingUpdate>,
+            List<Map<String, dynamic>>
+          >(
+            pendingUpdates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatabaseMysqlV2PendingUpdate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'platform': ?platform,
       'port': ?port,
-      'privateNetwork': ?pulumi.Input.mapOptionalInputValue<DatabaseMysqlV2PrivateNetwork, Map<String, dynamic>>(privateNetwork, (value) => value.toMap()),
+      'privateNetwork':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseMysqlV2PrivateNetwork,
+            Map<String, dynamic>
+          >(privateNetwork, (value) => value.toMap()),
       'region': ?region,
       'rootPassword': ?rootPassword,
       'rootUsername': ?rootUsername,
       'sslConnection': ?sslConnection,
       'status': ?status,
       'suspended': ?suspended,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<DatabaseMysqlV2Timeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseMysqlV2Timeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'type': ?type,
       'updated': ?updated,
-      'updates': ?pulumi.Input.mapOptionalInputValue<DatabaseMysqlV2Updates, Map<String, dynamic>>(updates, (value) => value.toMap()),
+      'updates':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseMysqlV2Updates,
+            Map<String, dynamic>
+          >(updates, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory DatabaseMysqlV2State.fromMap(Map<String, dynamic> map) {
     return DatabaseMysqlV2State(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
-      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
-      engineConfigBinlogRetentionPeriod: map['engineConfigBinlogRetentionPeriod'] == null ? null : (map['engineConfigBinlogRetentionPeriod']! as int).input(),
-      engineConfigMysqlConnectTimeout: map['engineConfigMysqlConnectTimeout'] == null ? null : (map['engineConfigMysqlConnectTimeout']! as int).input(),
-      engineConfigMysqlDefaultTimeZone: map['engineConfigMysqlDefaultTimeZone'] == null ? null : (map['engineConfigMysqlDefaultTimeZone']! as String).input(),
-      engineConfigMysqlGroupConcatMaxLen: map['engineConfigMysqlGroupConcatMaxLen'] == null ? null : (map['engineConfigMysqlGroupConcatMaxLen']! as double).input(),
-      engineConfigMysqlInformationSchemaStatsExpiry: map['engineConfigMysqlInformationSchemaStatsExpiry'] == null ? null : (map['engineConfigMysqlInformationSchemaStatsExpiry']! as int).input(),
-      engineConfigMysqlInnodbChangeBufferMaxSize: map['engineConfigMysqlInnodbChangeBufferMaxSize'] == null ? null : (map['engineConfigMysqlInnodbChangeBufferMaxSize']! as int).input(),
-      engineConfigMysqlInnodbFlushNeighbors: map['engineConfigMysqlInnodbFlushNeighbors'] == null ? null : (map['engineConfigMysqlInnodbFlushNeighbors']! as int).input(),
-      engineConfigMysqlInnodbFtMinTokenSize: map['engineConfigMysqlInnodbFtMinTokenSize'] == null ? null : (map['engineConfigMysqlInnodbFtMinTokenSize']! as int).input(),
-      engineConfigMysqlInnodbFtServerStopwordTable: map['engineConfigMysqlInnodbFtServerStopwordTable'] == null ? null : (map['engineConfigMysqlInnodbFtServerStopwordTable']! as String).input(),
-      engineConfigMysqlInnodbLockWaitTimeout: map['engineConfigMysqlInnodbLockWaitTimeout'] == null ? null : (map['engineConfigMysqlInnodbLockWaitTimeout']! as int).input(),
-      engineConfigMysqlInnodbLogBufferSize: map['engineConfigMysqlInnodbLogBufferSize'] == null ? null : (map['engineConfigMysqlInnodbLogBufferSize']! as int).input(),
-      engineConfigMysqlInnodbOnlineAlterLogMaxSize: map['engineConfigMysqlInnodbOnlineAlterLogMaxSize'] == null ? null : (map['engineConfigMysqlInnodbOnlineAlterLogMaxSize']! as int).input(),
-      engineConfigMysqlInnodbReadIoThreads: map['engineConfigMysqlInnodbReadIoThreads'] == null ? null : (map['engineConfigMysqlInnodbReadIoThreads']! as int).input(),
-      engineConfigMysqlInnodbRollbackOnTimeout: map['engineConfigMysqlInnodbRollbackOnTimeout'] == null ? null : (map['engineConfigMysqlInnodbRollbackOnTimeout']! as bool).input(),
-      engineConfigMysqlInnodbThreadConcurrency: map['engineConfigMysqlInnodbThreadConcurrency'] == null ? null : (map['engineConfigMysqlInnodbThreadConcurrency']! as int).input(),
-      engineConfigMysqlInnodbWriteIoThreads: map['engineConfigMysqlInnodbWriteIoThreads'] == null ? null : (map['engineConfigMysqlInnodbWriteIoThreads']! as int).input(),
-      engineConfigMysqlInteractiveTimeout: map['engineConfigMysqlInteractiveTimeout'] == null ? null : (map['engineConfigMysqlInteractiveTimeout']! as int).input(),
-      engineConfigMysqlInternalTmpMemStorageEngine: map['engineConfigMysqlInternalTmpMemStorageEngine'] == null ? null : (map['engineConfigMysqlInternalTmpMemStorageEngine']! as String).input(),
-      engineConfigMysqlMaxAllowedPacket: map['engineConfigMysqlMaxAllowedPacket'] == null ? null : (map['engineConfigMysqlMaxAllowedPacket']! as int).input(),
-      engineConfigMysqlMaxHeapTableSize: map['engineConfigMysqlMaxHeapTableSize'] == null ? null : (map['engineConfigMysqlMaxHeapTableSize']! as int).input(),
-      engineConfigMysqlNetBufferLength: map['engineConfigMysqlNetBufferLength'] == null ? null : (map['engineConfigMysqlNetBufferLength']! as int).input(),
-      engineConfigMysqlNetReadTimeout: map['engineConfigMysqlNetReadTimeout'] == null ? null : (map['engineConfigMysqlNetReadTimeout']! as int).input(),
-      engineConfigMysqlNetWriteTimeout: map['engineConfigMysqlNetWriteTimeout'] == null ? null : (map['engineConfigMysqlNetWriteTimeout']! as int).input(),
-      engineConfigMysqlSortBufferSize: map['engineConfigMysqlSortBufferSize'] == null ? null : (map['engineConfigMysqlSortBufferSize']! as int).input(),
-      engineConfigMysqlSqlMode: map['engineConfigMysqlSqlMode'] == null ? null : (map['engineConfigMysqlSqlMode']! as String).input(),
-      engineConfigMysqlSqlRequirePrimaryKey: map['engineConfigMysqlSqlRequirePrimaryKey'] == null ? null : (map['engineConfigMysqlSqlRequirePrimaryKey']! as bool).input(),
-      engineConfigMysqlTmpTableSize: map['engineConfigMysqlTmpTableSize'] == null ? null : (map['engineConfigMysqlTmpTableSize']! as int).input(),
-      engineConfigMysqlWaitTimeout: map['engineConfigMysqlWaitTimeout'] == null ? null : (map['engineConfigMysqlWaitTimeout']! as int).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
-      forkRestoreTime: map['forkRestoreTime'] == null ? null : (map['forkRestoreTime']! as String).input(),
-      forkSource: map['forkSource'] == null ? null : (map['forkSource']! as int).input(),
-      hostPrimary: map['hostPrimary'] == null ? null : (map['hostPrimary']! as String).input(),
-      hostSecondary: map['hostSecondary'] == null ? null : (map['hostSecondary']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      members: map['members'] == null ? null : ((map['members']! as Map).cast<String, String>()).input(),
-      oldestRestoreTime: map['oldestRestoreTime'] == null ? null : (map['oldestRestoreTime']! as String).input(),
-      pendingUpdates: map['pendingUpdates'] == null ? null : (pulumi.Input.decodeList<DatabaseMysqlV2PendingUpdate>(map['pendingUpdates']!, (value) => DatabaseMysqlV2PendingUpdate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (DatabaseMysqlV2PrivateNetwork.fromMap((map['privateNetwork']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      rootPassword: map['rootPassword'] == null ? null : (map['rootPassword']! as String).input(),
-      rootUsername: map['rootUsername'] == null ? null : (map['rootUsername']! as String).input(),
-      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      suspended: map['suspended'] == null ? null : (map['suspended']! as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (DatabaseMysqlV2Timeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
-      updates: map['updates'] == null ? null : (DatabaseMysqlV2Updates.fromMap((map['updates']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      allowLists: (() {
+        final guardedValue = map['allowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      caCert: (() {
+        final guardedValue = map['caCert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineConfigBinlogRetentionPeriod: (() {
+        final guardedValue = map['engineConfigBinlogRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlConnectTimeout: (() {
+        final guardedValue = map['engineConfigMysqlConnectTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlDefaultTimeZone: (() {
+        final guardedValue = map['engineConfigMysqlDefaultTimeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineConfigMysqlGroupConcatMaxLen: (() {
+        final guardedValue = map['engineConfigMysqlGroupConcatMaxLen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      engineConfigMysqlInformationSchemaStatsExpiry: (() {
+        final guardedValue =
+            map['engineConfigMysqlInformationSchemaStatsExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbChangeBufferMaxSize: (() {
+        final guardedValue = map['engineConfigMysqlInnodbChangeBufferMaxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbFlushNeighbors: (() {
+        final guardedValue = map['engineConfigMysqlInnodbFlushNeighbors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbFtMinTokenSize: (() {
+        final guardedValue = map['engineConfigMysqlInnodbFtMinTokenSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbFtServerStopwordTable: (() {
+        final guardedValue =
+            map['engineConfigMysqlInnodbFtServerStopwordTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineConfigMysqlInnodbLockWaitTimeout: (() {
+        final guardedValue = map['engineConfigMysqlInnodbLockWaitTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbLogBufferSize: (() {
+        final guardedValue = map['engineConfigMysqlInnodbLogBufferSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbOnlineAlterLogMaxSize: (() {
+        final guardedValue =
+            map['engineConfigMysqlInnodbOnlineAlterLogMaxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbReadIoThreads: (() {
+        final guardedValue = map['engineConfigMysqlInnodbReadIoThreads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbRollbackOnTimeout: (() {
+        final guardedValue = map['engineConfigMysqlInnodbRollbackOnTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engineConfigMysqlInnodbThreadConcurrency: (() {
+        final guardedValue = map['engineConfigMysqlInnodbThreadConcurrency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInnodbWriteIoThreads: (() {
+        final guardedValue = map['engineConfigMysqlInnodbWriteIoThreads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInteractiveTimeout: (() {
+        final guardedValue = map['engineConfigMysqlInteractiveTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlInternalTmpMemStorageEngine: (() {
+        final guardedValue =
+            map['engineConfigMysqlInternalTmpMemStorageEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineConfigMysqlMaxAllowedPacket: (() {
+        final guardedValue = map['engineConfigMysqlMaxAllowedPacket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlMaxHeapTableSize: (() {
+        final guardedValue = map['engineConfigMysqlMaxHeapTableSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlNetBufferLength: (() {
+        final guardedValue = map['engineConfigMysqlNetBufferLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlNetReadTimeout: (() {
+        final guardedValue = map['engineConfigMysqlNetReadTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlNetWriteTimeout: (() {
+        final guardedValue = map['engineConfigMysqlNetWriteTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlSortBufferSize: (() {
+        final guardedValue = map['engineConfigMysqlSortBufferSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlSqlMode: (() {
+        final guardedValue = map['engineConfigMysqlSqlMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineConfigMysqlSqlRequirePrimaryKey: (() {
+        final guardedValue = map['engineConfigMysqlSqlRequirePrimaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engineConfigMysqlTmpTableSize: (() {
+        final guardedValue = map['engineConfigMysqlTmpTableSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineConfigMysqlWaitTimeout: (() {
+        final guardedValue = map['engineConfigMysqlWaitTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineId: (() {
+        final guardedValue = map['engineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forkRestoreTime: (() {
+        final guardedValue = map['forkRestoreTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forkSource: (() {
+        final guardedValue = map['forkSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      hostPrimary: (() {
+        final guardedValue = map['hostPrimary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostSecondary: (() {
+        final guardedValue = map['hostSecondary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      oldestRestoreTime: (() {
+        final guardedValue = map['oldestRestoreTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pendingUpdates: (() {
+        final guardedValue = map['pendingUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatabaseMysqlV2PendingUpdate>(
+            guardedValue,
+            (value) => DatabaseMysqlV2PendingUpdate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      privateNetwork: (() {
+        final guardedValue = map['privateNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseMysqlV2PrivateNetwork.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootPassword: (() {
+        final guardedValue = map['rootPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootUsername: (() {
+        final guardedValue = map['rootUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslConnection: (() {
+        final guardedValue = map['sslConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suspended: (() {
+        final guardedValue = map['suspended'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseMysqlV2Timeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updates: (() {
+        final guardedValue = map['updates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseMysqlV2Updates.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

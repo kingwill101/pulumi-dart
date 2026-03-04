@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeWindowCustomAlertRule {
   /// Status of the custom alert.
   final pulumi.Input<bool> isEnabled;
+
   /// The maximum threshold.
   final pulumi.Input<int> maxThreshold;
+
   /// The minimum threshold.
   final pulumi.Input<int> minThreshold;
+
   /// The type of the custom alert rule.
   /// Expected value is 'TimeWindowCustomAlertRule'.
   final pulumi.Input<String> ruleType;
+
   /// The time window size in iso8601 format.
   final pulumi.Input<String> timeWindowSize;
 
@@ -42,12 +46,11 @@ class TimeWindowCustomAlertRule {
 
   factory TimeWindowCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return TimeWindowCustomAlertRule(
-      isEnabled: (map['isEnabled'] as bool).input(),
-      maxThreshold: (map['maxThreshold'] as int).input(),
-      minThreshold: (map['minThreshold'] as int).input(),
-      ruleType: (map['ruleType'] as String).input(),
-      timeWindowSize: (map['timeWindowSize'] as String).input(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      maxThreshold: pulumi.Input.fromValue(map['maxThreshold'] as int),
+      minThreshold: pulumi.Input.fromValue(map['minThreshold'] as int),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      timeWindowSize: pulumi.Input.fromValue(map['timeWindowSize'] as String),
     );
   }
 }
-

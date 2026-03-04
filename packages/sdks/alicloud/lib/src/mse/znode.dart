@@ -6,7 +6,7 @@ import 'znode_state.dart';
 ///
 /// For information about Microservice Engine (MSE) Znode and how to use it, see [What is Znode](https://help.aliyun.com/document_detail/393622.html).
 ///
-/// > **NOTE:** Available since v1.162.0.
+/// &gt; **NOTE:** Available since v1.162.0.
 ///
 /// ## Example Usage
 ///
@@ -326,10 +326,13 @@ import 'znode_state.dart';
 class Znode extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh` or `en`.
   late final pulumi.Output<String?> acceptLanguage;
+
   /// The ID of the Cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The Node data.
   late final pulumi.Output<String?> data;
+
   /// The Node path. The value must start with a forward slash (/).
   late final pulumi.Output<String> path;
 
@@ -337,28 +340,21 @@ class Znode extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Znode]. {@macro pulumi_mse_znode_znode_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Znode(
-    String name, {
-    ZnodeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:mse/znode:Znode',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.data = registerOutput<String?>('data');
-    this.path = registerOutput<String>('path');
+  Znode(String name, {ZnodeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:mse/znode:Znode',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    clusterId = registerOutput<String>('clusterId');
+    data = registerOutput<String?>('data');
+    path = registerOutput<String>('path');
   }
 
   /// Gets an existing [Znode] resource's state with the given [name] and [id].
-  static Znode get(
-    String name,
-    pulumi.Input<String> id, {
-    ZnodeState? state,
-  }) {
+  static Znode get(String name, pulumi.Input<String> id, {ZnodeState? state}) {
     return Znode._get(
       name,
       state: state?.toMap(),
@@ -371,14 +367,14 @@ class Znode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/znode:Znode',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.data = registerOutput<String?>('data');
-    this.path = registerOutput<String>('path');
+         'alicloud:mse/znode:Znode',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    clusterId = registerOutput<String>('clusterId');
+    data = registerOutput<String?>('data');
+    path = registerOutput<String>('path');
   }
 }

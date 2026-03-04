@@ -4,16 +4,15 @@ enum SecondaryType {
   valueNamed("Named"),
   valueStandby("Standby");
 
-  const SecondaryType(this.value);
-  final String value;
+  const SecondaryType(this.wireValue);
+  final String wireValue;
 
   static SecondaryType fromValue(String value) {
     for (final item in SecondaryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecondaryType value: $value');
   }
 }
-

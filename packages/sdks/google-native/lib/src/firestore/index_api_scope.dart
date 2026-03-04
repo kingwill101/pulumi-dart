@@ -3,16 +3,15 @@ enum IndexApiScope {
   anyApi("ANY_API"),
   datastoreModeApi("DATASTORE_MODE_API");
 
-  const IndexApiScope(this.value);
-  final String value;
+  const IndexApiScope(this.wireValue);
+  final String wireValue;
 
   static IndexApiScope fromValue(String value) {
     for (final item in IndexApiScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexApiScope value: $value');
   }
 }
-

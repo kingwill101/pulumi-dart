@@ -2,16 +2,15 @@
 enum NatGatewaySkuName {
   valueStandard("Standard");
 
-  const NatGatewaySkuName(this.value);
-  final String value;
+  const NatGatewaySkuName(this.wireValue);
+  final String wireValue;
 
   static NatGatewaySkuName fromValue(String value) {
     for (final item in NatGatewaySkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NatGatewaySkuName value: $value');
   }
 }
-

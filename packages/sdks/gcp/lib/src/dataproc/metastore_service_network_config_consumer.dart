@@ -6,6 +6,7 @@ class MetastoreServiceNetworkConfigConsumer {
   /// (Output)
   /// The URI of the endpoint used to access the metastore service.
   final pulumi.Input<String>? endpointUri;
+
   /// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
   /// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
   /// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
@@ -27,11 +28,16 @@ class MetastoreServiceNetworkConfigConsumer {
     };
   }
 
-  factory MetastoreServiceNetworkConfigConsumer.fromMap(Map<String, dynamic> map) {
+  factory MetastoreServiceNetworkConfigConsumer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetastoreServiceNetworkConfigConsumer(
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
-      subnetwork: (map['subnetwork'] as String).input(),
+      endpointUri: (() {
+        final guardedValue = map['endpointUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
-

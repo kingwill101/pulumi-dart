@@ -5,7 +5,11 @@ import 'application_initial_capacity_initial_capacity_config_worker_configuratio
 
 class ApplicationInitialCapacityInitialCapacityConfig {
   /// The resource configuration of the initial capacity configuration.
-  final pulumi.Input<ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration>? workerConfiguration;
+  final pulumi.Input<
+    ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration
+  >?
+  workerConfiguration;
+
   /// The number of workers in the initial capacity configuration.
   final pulumi.Input<int> workerCount;
 
@@ -19,16 +23,29 @@ class ApplicationInitialCapacityInitialCapacityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workerConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration, Map<String, dynamic>>(workerConfiguration, (value) => value.toMap()),
+      'workerConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration,
+            Map<String, dynamic>
+          >(workerConfiguration, (value) => value.toMap()),
       'workerCount': workerCount,
     };
   }
 
-  factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(Map<String, dynamic> map) {
+  factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationInitialCapacityInitialCapacityConfig(
-      workerConfiguration: map['workerConfiguration'] == null ? null : ((ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((map['workerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      workerCount: (map['workerCount'] as int).input(),
+      workerConfiguration: (() {
+        final guardedValue = map['workerConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workerCount: pulumi.Input.fromValue(map['workerCount'] as int),
     );
   }
 }
-

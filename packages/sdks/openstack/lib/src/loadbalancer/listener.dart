@@ -4,7 +4,7 @@ import 'listener_state.dart';
 
 /// Manages a V2 listener resource within OpenStack.
 ///
-/// > **Note:** This resource has attributes that depend on octavia minor versions.
+/// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
 /// Please ensure your Openstack cloud supports the required minor version.
 ///
 /// ## Example Usage
@@ -459,116 +459,143 @@ class Listener extends pulumi.CustomResource {
   /// The administrative state of the Listener. A
   /// valid value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
+
   /// A list of CIDR blocks that are permitted to
   /// connect to this listener, denying all other source addresses. If not present,
   /// defaults to allow all.
   late final pulumi.Output<List<String>?> allowedCidrs;
+
   /// A list of ALPN protocols. Available protocols:
-  /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+  /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
   /// 2.20**.
   late final pulumi.Output<List<String>> alpnProtocols;
+
   /// The TLS client authentication mode.
   /// Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
   /// `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-  /// Supported only in **Octavia minor version >= 2.8**.
+  /// Supported only in **Octavia minor version &gt;= 2.8**.
   late final pulumi.Output<String?> clientAuthentication;
+
   /// The ref of the key manager service
   /// secret containing a PEM format client CA certificate bundle for
   /// `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-  /// `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
+  /// `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
   /// 2.8**.
   late final pulumi.Output<String?> clientCaTlsContainerRef;
+
   /// The URI of the key manager service
   /// secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-  /// listeners. Supported only in **Octavia minor version >= 2.8**.
+  /// listeners. Supported only in **Octavia minor version &gt;= 2.8**.
   late final pulumi.Output<String?> clientCrlContainerRef;
+
   /// The maximum number of connections allowed for
   /// the Listener.
   late final pulumi.Output<int> connectionLimit;
+
   /// The ID of the default pool with which the
   /// Listener is associated.
   late final pulumi.Output<String> defaultPoolId;
+
   /// A reference to a Barbican Secrets
   /// container which stores TLS information. This is required if the protocol is
   /// `TERMINATED_HTTPS`. See
   /// [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
   /// for more information.
   late final pulumi.Output<String?> defaultTlsContainerRef;
+
   /// Human-readable description for the Listener.
   late final pulumi.Output<String?> description;
+
   /// Defines whether the
   /// **includeSubDomains** directive should be added to the
   /// Strict-Transport-Security HTTP response header. This requires setting the
   /// `hsts_max_age` option as well in order to become effective. Requires
   /// `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-  /// version >= 2.27**.
+  /// version &gt;= 2.27**.
   late final pulumi.Output<bool?> hstsIncludeSubdomains;
+
   /// The value of the **max_age** directive for the
   /// Strict-Transport-Security HTTP response header. Setting this enables HTTP
   /// Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
   /// `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-  /// version >= 2.27**.
+  /// version &gt;= 2.27**.
   late final pulumi.Output<int?> hstsMaxAge;
+
   /// Defines whether the **preload** directive should
   /// be added to the Strict-Transport-Security HTTP response header. This requires
   /// setting the `hsts_max_age` option as well in order to become effective.
   /// Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-  /// minor version >= 2.27**.
+  /// minor version &gt;= 2.27**.
   late final pulumi.Output<bool?> hstsPreload;
+
   /// The list of key value pairs representing
   /// headers to insert into the request before it is sent to the backend members.
   /// Changing this updates the headers of the existing listener.
   late final pulumi.Output<Map<String, String>?> insertHeaders;
+
   /// The load balancer on which to provision this
   /// Listener. Changing this creates a new Listener.
   late final pulumi.Output<String> loadbalancerId;
+
   /// Human-readable name for the Listener. Does not have to be
   /// unique.
   late final pulumi.Output<String> name;
+
   /// The protocol can be either `TCP`, `HTTP`, `HTTPS`,
   /// `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-  /// \>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
+  /// \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
   /// 2.25**). Changing this creates a new Listener.
   late final pulumi.Output<String> protocol;
+
   /// The port on which to listen for client traffic.
   /// * Changing this creates a new Listener.
   late final pulumi.Output<int> protocolPort;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a listener. If omitted, the `region`
   /// argument of the provider is used. Changing this creates a new Listener.
   late final pulumi.Output<String> region;
+
   /// A list of references to Barbican Secrets
   /// containers which store SNI information. See
   /// [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
   /// for more information.
   late final pulumi.Output<List<String>?> sniContainerRefs;
+
   /// A list of simple strings assigned to the pool. Available
   /// for Octavia **minor version 2.5 or later**.
   late final pulumi.Output<List<String>?> tags;
+
   /// Required for admins. The UUID of the tenant who owns
   /// the Listener.  Only administrative users can specify a tenant UUID other than
   /// their own. Changing this creates a new Listener.
   late final pulumi.Output<String> tenantId;
+
   /// The client inactivity timeout in
   /// milliseconds.
   late final pulumi.Output<int> timeoutClientData;
+
   /// The member connection timeout in
   /// milliseconds.
   late final pulumi.Output<int> timeoutMemberConnect;
+
   /// The member inactivity timeout in
   /// milliseconds.
   late final pulumi.Output<int> timeoutMemberData;
+
   /// The time in milliseconds, to wait for
   /// additional TCP packets for content inspection.
   late final pulumi.Output<int> timeoutTcpInspect;
+
   /// List of ciphers in OpenSSL format
   /// (colon-separated). See
   /// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-  /// Supported only in **Octavia minor version >= 2.15**.
+  /// Supported only in **Octavia minor version &gt;= 2.15**.
   late final pulumi.Output<String> tlsCiphers;
+
   /// A list of TLS protocol versions. Available
   /// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-  /// **Octavia minor version >= 2.17**.
+  /// **Octavia minor version &gt;= 2.17**.
   late final pulumi.Output<List<String>> tlsVersions;
 
   /// Creates a new [Listener].
@@ -580,39 +607,41 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.allowedCidrs = registerOutput<List<String>?>('allowedCidrs');
-    this.alpnProtocols = registerOutput<List<String>>('alpnProtocols');
-    this.clientAuthentication = registerOutput<String?>('clientAuthentication');
-    this.clientCaTlsContainerRef = registerOutput<String?>('clientCaTlsContainerRef');
-    this.clientCrlContainerRef = registerOutput<String?>('clientCrlContainerRef');
-    this.connectionLimit = registerOutput<int>('connectionLimit');
-    this.defaultPoolId = registerOutput<String>('defaultPoolId');
-    this.defaultTlsContainerRef = registerOutput<String?>('defaultTlsContainerRef');
-    this.description = registerOutput<String?>('description');
-    this.hstsIncludeSubdomains = registerOutput<bool?>('hstsIncludeSubdomains');
-    this.hstsMaxAge = registerOutput<int?>('hstsMaxAge');
-    this.hstsPreload = registerOutput<bool?>('hstsPreload');
-    this.insertHeaders = registerOutput<Map<String, String>?>('insertHeaders');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'openstack:loadbalancer/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    allowedCidrs = registerOutput<List<String>?>('allowedCidrs');
+    alpnProtocols = registerOutput<List<String>>('alpnProtocols');
+    clientAuthentication = registerOutput<String?>('clientAuthentication');
+    clientCaTlsContainerRef = registerOutput<String?>(
+      'clientCaTlsContainerRef',
+    );
+    clientCrlContainerRef = registerOutput<String?>('clientCrlContainerRef');
+    connectionLimit = registerOutput<int>('connectionLimit');
+    defaultPoolId = registerOutput<String>('defaultPoolId');
+    defaultTlsContainerRef = registerOutput<String?>('defaultTlsContainerRef');
+    description = registerOutput<String?>('description');
+    hstsIncludeSubdomains = registerOutput<bool?>('hstsIncludeSubdomains');
+    hstsMaxAge = registerOutput<int?>('hstsMaxAge');
+    hstsPreload = registerOutput<bool?>('hstsPreload');
+    insertHeaders = registerOutput<Map<String, String>?>('insertHeaders');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.protocolPort = registerOutput<int>('protocolPort');
-    this.region = registerOutput<String>('region');
-    this.sniContainerRefs = registerOutput<List<String>?>('sniContainerRefs');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.timeoutClientData = registerOutput<int>('timeoutClientData');
-    this.timeoutMemberConnect = registerOutput<int>('timeoutMemberConnect');
-    this.timeoutMemberData = registerOutput<int>('timeoutMemberData');
-    this.timeoutTcpInspect = registerOutput<int>('timeoutTcpInspect');
-    this.tlsCiphers = registerOutput<String>('tlsCiphers');
-    this.tlsVersions = registerOutput<List<String>>('tlsVersions');
+    protocol = registerOutput<String>('protocol');
+    protocolPort = registerOutput<int>('protocolPort');
+    region = registerOutput<String>('region');
+    sniContainerRefs = registerOutput<List<String>?>('sniContainerRefs');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    timeoutClientData = registerOutput<int>('timeoutClientData');
+    timeoutMemberConnect = registerOutput<int>('timeoutMemberConnect');
+    timeoutMemberData = registerOutput<int>('timeoutMemberData');
+    timeoutTcpInspect = registerOutput<int>('timeoutTcpInspect');
+    tlsCiphers = registerOutput<String>('tlsCiphers');
+    tlsVersions = registerOutput<List<String>>('tlsVersions');
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -633,38 +662,40 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.allowedCidrs = registerOutput<List<String>?>('allowedCidrs');
-    this.alpnProtocols = registerOutput<List<String>>('alpnProtocols');
-    this.clientAuthentication = registerOutput<String?>('clientAuthentication');
-    this.clientCaTlsContainerRef = registerOutput<String?>('clientCaTlsContainerRef');
-    this.clientCrlContainerRef = registerOutput<String?>('clientCrlContainerRef');
-    this.connectionLimit = registerOutput<int>('connectionLimit');
-    this.defaultPoolId = registerOutput<String>('defaultPoolId');
-    this.defaultTlsContainerRef = registerOutput<String?>('defaultTlsContainerRef');
-    this.description = registerOutput<String?>('description');
-    this.hstsIncludeSubdomains = registerOutput<bool?>('hstsIncludeSubdomains');
-    this.hstsMaxAge = registerOutput<int?>('hstsMaxAge');
-    this.hstsPreload = registerOutput<bool?>('hstsPreload');
-    this.insertHeaders = registerOutput<Map<String, String>?>('insertHeaders');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'openstack:loadbalancer/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    allowedCidrs = registerOutput<List<String>?>('allowedCidrs');
+    alpnProtocols = registerOutput<List<String>>('alpnProtocols');
+    clientAuthentication = registerOutput<String?>('clientAuthentication');
+    clientCaTlsContainerRef = registerOutput<String?>(
+      'clientCaTlsContainerRef',
+    );
+    clientCrlContainerRef = registerOutput<String?>('clientCrlContainerRef');
+    connectionLimit = registerOutput<int>('connectionLimit');
+    defaultPoolId = registerOutput<String>('defaultPoolId');
+    defaultTlsContainerRef = registerOutput<String?>('defaultTlsContainerRef');
+    description = registerOutput<String?>('description');
+    hstsIncludeSubdomains = registerOutput<bool?>('hstsIncludeSubdomains');
+    hstsMaxAge = registerOutput<int?>('hstsMaxAge');
+    hstsPreload = registerOutput<bool?>('hstsPreload');
+    insertHeaders = registerOutput<Map<String, String>?>('insertHeaders');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.protocolPort = registerOutput<int>('protocolPort');
-    this.region = registerOutput<String>('region');
-    this.sniContainerRefs = registerOutput<List<String>?>('sniContainerRefs');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.timeoutClientData = registerOutput<int>('timeoutClientData');
-    this.timeoutMemberConnect = registerOutput<int>('timeoutMemberConnect');
-    this.timeoutMemberData = registerOutput<int>('timeoutMemberData');
-    this.timeoutTcpInspect = registerOutput<int>('timeoutTcpInspect');
-    this.tlsCiphers = registerOutput<String>('tlsCiphers');
-    this.tlsVersions = registerOutput<List<String>>('tlsVersions');
+    protocol = registerOutput<String>('protocol');
+    protocolPort = registerOutput<int>('protocolPort');
+    region = registerOutput<String>('region');
+    sniContainerRefs = registerOutput<List<String>?>('sniContainerRefs');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    timeoutClientData = registerOutput<int>('timeoutClientData');
+    timeoutMemberConnect = registerOutput<int>('timeoutMemberConnect');
+    timeoutMemberData = registerOutput<int>('timeoutMemberData');
+    timeoutTcpInspect = registerOutput<int>('timeoutTcpInspect');
+    tlsCiphers = registerOutput<String>('tlsCiphers');
+    tlsVersions = registerOutput<List<String>>('tlsVersions');
   }
 }

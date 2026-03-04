@@ -7,6 +7,7 @@ class RegionalSecretRotation {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? nextRotationTime;
+
   /// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
   /// and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
   /// be set. `next_rotation_time` will be advanced by this period when the service
@@ -16,10 +17,7 @@ class RegionalSecretRotation {
   /// Creates a new [RegionalSecretRotation].
   /// [nextRotationTime] Timestamp in UTC at which the Secret is scheduled to rotate.
   /// [rotationPeriod] The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
-  RegionalSecretRotation({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
+  RegionalSecretRotation({this.nextRotationTime, this.rotationPeriod});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,9 +28,16 @@ class RegionalSecretRotation {
 
   factory RegionalSecretRotation.fromMap(Map<String, dynamic> map) {
     return RegionalSecretRotation(
-      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime']! as String).input(),
-      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod']! as String).input(),
+      nextRotationTime: (() {
+        final guardedValue = map['nextRotationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rotationPeriod: (() {
+        final guardedValue = map['rotationPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -11,6 +11,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_HARASSMENT
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
   final pulumi.Input<String>? category;
+
   /// (Output)
   /// The harm block threshold.
   /// Possible values:
@@ -30,17 +31,23 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'category': ?category,
-      'threshold': ?threshold,
-    };
+    return <String, dynamic>{'category': ?category, 'threshold': ?threshold};
   }
 
-  factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotGuardrailModelSafetySafetySetting(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

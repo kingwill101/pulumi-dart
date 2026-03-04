@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionSetArgs {
   /// The description of the Permission Set.
   final pulumi.Input<String>? description;
+
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   final pulumi.Input<String> instanceArn;
+
   /// The name of the Permission Set.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The relay state URL used to redirect users within the application during the federation authentication process.
   final pulumi.Input<String>? relayState;
+
   /// The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   final pulumi.Input<String>? sessionDuration;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,14 +60,39 @@ class PermissionSetArgs {
 
   factory PermissionSetArgs.fromMap(Map<String, dynamic> map) {
     return PermissionSetArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      instanceArn: (map['instanceArn'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      relayState: map['relayState'] == null ? null : ((map['relayState'] as String).input()).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : ((map['sessionDuration'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceArn: pulumi.Input.fromValue(map['instanceArn'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relayState: (() {
+        final guardedValue = map['relayState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionDuration: (() {
+        final guardedValue = map['sessionDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpstreamPolicyResponse {
   /// Entries with a greater priority value take precedence in the pull order.
   final pulumi.Input<int> priority;
+
   /// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
   final pulumi.Input<String> repository;
 
   /// Creates a new [UpstreamPolicyResponse].
   /// [priority] Entries with a greater priority value take precedence in the pull order.
   /// [repository] A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
-  UpstreamPolicyResponse({
-    required this.priority,
-    required this.repository,
-  });
+  UpstreamPolicyResponse({required this.priority, required this.repository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'priority': priority,
-      'repository': repository,
-    };
+    return <String, dynamic>{'priority': priority, 'repository': repository};
   }
 
   factory UpstreamPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamPolicyResponse(
-      priority: (map['priority'] as int).input(),
-      repository: (map['repository'] as String).input(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }
 }
-

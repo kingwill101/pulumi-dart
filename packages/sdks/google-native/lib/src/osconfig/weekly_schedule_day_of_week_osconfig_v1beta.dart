@@ -9,16 +9,17 @@ enum WeeklyScheduleDayOfWeekOsconfigV1beta {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeeklyScheduleDayOfWeekOsconfigV1beta(this.value);
-  final String value;
+  const WeeklyScheduleDayOfWeekOsconfigV1beta(this.wireValue);
+  final String wireValue;
 
   static WeeklyScheduleDayOfWeekOsconfigV1beta fromValue(String value) {
     for (final item in WeeklyScheduleDayOfWeekOsconfigV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WeeklyScheduleDayOfWeekOsconfigV1beta value: $value');
+    throw ArgumentError(
+      'Unknown WeeklyScheduleDayOfWeekOsconfigV1beta value: $value',
+    );
   }
 }
-

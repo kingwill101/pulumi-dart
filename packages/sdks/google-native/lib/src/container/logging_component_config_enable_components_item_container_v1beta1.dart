@@ -6,16 +6,22 @@ enum LoggingComponentConfigEnableComponentsItemContainerV1beta1 {
   scheduler("SCHEDULER"),
   controllerManager("CONTROLLER_MANAGER");
 
-  const LoggingComponentConfigEnableComponentsItemContainerV1beta1(this.value);
-  final String value;
+  const LoggingComponentConfigEnableComponentsItemContainerV1beta1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static LoggingComponentConfigEnableComponentsItemContainerV1beta1 fromValue(String value) {
-    for (final item in LoggingComponentConfigEnableComponentsItemContainerV1beta1.values) {
-      if (item.value == value) {
+  static LoggingComponentConfigEnableComponentsItemContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in LoggingComponentConfigEnableComponentsItemContainerV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoggingComponentConfigEnableComponentsItemContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown LoggingComponentConfigEnableComponentsItemContainerV1beta1 value: $value',
+    );
   }
 }
-

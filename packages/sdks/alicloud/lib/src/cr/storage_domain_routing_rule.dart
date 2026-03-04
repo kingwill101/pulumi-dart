@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_domain_routing_rule_args.dart';
-import 'storage_domain_routing_rule_route.dart';
 import 'storage_domain_routing_rule_state.dart';
 
 /// Provides a CR Storage Domain Routing Rule resource.
@@ -9,7 +8,7 @@ import 'storage_domain_routing_rule_state.dart';
 ///
 /// For information about CR Storage Domain Routing Rule and how to use it, see [What is Storage Domain Routing Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateStorageDomainRoutingRule).
 ///
-/// > **NOTE:** Available since v1.265.0.
+/// &gt; **NOTE:** Available since v1.265.0.
 ///
 /// ## Example Usage
 ///
@@ -235,10 +234,13 @@ import 'storage_domain_routing_rule_state.dart';
 class StorageDomainRoutingRule extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<int> createTime;
+
   /// The ID of the Container Registry Instance.
   late final pulumi.Output<String> instanceId;
+
   /// Domain name routing entry See `routes` below.
-  late final pulumi.Output<List<StorageDomainRoutingRuleRoute>> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+
   /// The ID of the Rule.
   late final pulumi.Output<String> ruleId;
 
@@ -251,15 +253,15 @@ class StorageDomainRoutingRule extends pulumi.CustomResource {
     StorageDomainRoutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.routes = registerOutput<List<StorageDomainRoutingRuleRoute>>('routes');
-    this.ruleId = registerOutput<String>('ruleId');
+         'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    ruleId = registerOutput<String>('ruleId');
   }
 
   /// Gets an existing [StorageDomainRoutingRule] resource's state with the given [name] and [id].
@@ -280,14 +282,14 @@ class StorageDomainRoutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.routes = registerOutput<List<StorageDomainRoutingRuleRoute>>('routes');
-    this.ruleId = registerOutput<String>('ruleId');
+         'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    ruleId = registerOutput<String>('ruleId');
   }
 }

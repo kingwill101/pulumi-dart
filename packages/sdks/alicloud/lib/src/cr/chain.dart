@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'chain_args.dart';
-import 'chain_chain_config.dart';
 import 'chain_state.dart';
 
 /// Provides a CR Chain resource.
 ///
 /// For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
 ///
-/// > **NOTE:** Available since v1.161.0.
+/// &gt; **NOTE:** Available since v1.161.0.
 ///
 /// ## Example Usage
 ///
@@ -1137,17 +1136,23 @@ import 'chain_state.dart';
 /// ```
 class Chain extends pulumi.CustomResource {
   /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
-  late final pulumi.Output<List<ChainChainConfig>?> chainConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> chainConfigs;
+
   /// Delivery chain ID.
   late final pulumi.Output<String> chainId;
+
   /// The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
   late final pulumi.Output<String> chainName;
+
   /// The description delivery chain.
   late final pulumi.Output<String?> description;
+
   /// The ID of CR Enterprise Edition instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
   late final pulumi.Output<String?> repoName;
+
   /// The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
   late final pulumi.Output<String?> repoNamespaceName;
 
@@ -1155,31 +1160,24 @@ class Chain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Chain]. {@macro pulumi_cr_chain_chain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Chain(
-    String name, {
-    ChainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cr/chain:Chain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.chainConfigs = registerOutput<List<ChainChainConfig>?>('chainConfigs');
-    this.chainId = registerOutput<String>('chainId');
-    this.chainName = registerOutput<String>('chainName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.repoName = registerOutput<String?>('repoName');
-    this.repoNamespaceName = registerOutput<String?>('repoNamespaceName');
+  Chain(String name, {ChainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cr/chain:Chain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    chainConfigs = registerOutput<List<Map<String, dynamic>>?>('chainConfigs');
+    chainId = registerOutput<String>('chainId');
+    chainName = registerOutput<String>('chainName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    repoName = registerOutput<String?>('repoName');
+    repoNamespaceName = registerOutput<String?>('repoNamespaceName');
   }
 
   /// Gets an existing [Chain] resource's state with the given [name] and [id].
-  static Chain get(
-    String name,
-    pulumi.Input<String> id, {
-    ChainState? state,
-  }) {
+  static Chain get(String name, pulumi.Input<String> id, {ChainState? state}) {
     return Chain._get(
       name,
       state: state?.toMap(),
@@ -1192,17 +1190,17 @@ class Chain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/chain:Chain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.chainConfigs = registerOutput<List<ChainChainConfig>?>('chainConfigs');
-    this.chainId = registerOutput<String>('chainId');
-    this.chainName = registerOutput<String>('chainName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.repoName = registerOutput<String?>('repoName');
-    this.repoNamespaceName = registerOutput<String?>('repoNamespaceName');
+         'alicloud:cr/chain:Chain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    chainConfigs = registerOutput<List<Map<String, dynamic>>?>('chainConfigs');
+    chainId = registerOutput<String>('chainId');
+    chainName = registerOutput<String>('chainName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    repoName = registerOutput<String?>('repoName');
+    repoNamespaceName = registerOutput<String?>('repoNamespaceName');
   }
 }

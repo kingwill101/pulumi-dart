@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VPCDerivedInfo
 class VPCDerivedInfoResponse {
-  /// <p>The list of Availability Zones associated with the VPC subnets.</p>
+  /// &lt;p&gt;The list of Availability Zones associated with the VPC subnets.&lt;/p&gt;
   final pulumi.Input<List<String>>? availabilityZones;
-  /// <p>The list of security group IDs associated with the VPC endpoints for the domain.</p>
+
+  /// &lt;p&gt;The list of security group IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// <p>A list of subnet IDs associated with the VPC endpoints for the domain.</p>
+
+  /// &lt;p&gt;A list of subnet IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
   final pulumi.Input<List<String>>? subnetIds;
-  /// <p>The ID for your VPC. Amazon VPC generates this value when you create a VPC.</p>
+
+  /// &lt;p&gt;The ID for your VPC. Amazon VPC generates this value when you create a VPC.&lt;/p&gt;
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [VPCDerivedInfoResponse].
-  /// [availabilityZones] <p>The list of Availability Zones associated with the VPC subnets.</p>
-  /// [securityGroupIds] <p>The list of security group IDs associated with the VPC endpoints for the domain.</p>
-  /// [subnetIds] <p>A list of subnet IDs associated with the VPC endpoints for the domain.</p>
-  /// [vpcId] <p>The ID for your VPC. Amazon VPC generates this value when you create a VPC.</p>
+  /// [availabilityZones] &lt;p&gt;The list of Availability Zones associated with the VPC subnets.&lt;/p&gt;
+  /// [securityGroupIds] &lt;p&gt;The list of security group IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
+  /// [subnetIds] &lt;p&gt;A list of subnet IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
+  /// [vpcId] &lt;p&gt;The ID for your VPC. Amazon VPC generates this value when you create a VPC.&lt;/p&gt;
   VPCDerivedInfoResponse({
     this.availabilityZones,
     this.securityGroupIds,
@@ -36,11 +39,26 @@ class VPCDerivedInfoResponse {
 
   factory VPCDerivedInfoResponse.fromMap(Map<String, dynamic> map) {
     return VPCDerivedInfoResponse(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      availabilityZones: (() {
+        final guardedValue = map['availabilityZones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

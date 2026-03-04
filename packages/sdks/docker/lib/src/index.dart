@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/builder_version.dart';
 export 'index/buildx_builder.dart';
 export 'index/buildx_builder_args.dart';

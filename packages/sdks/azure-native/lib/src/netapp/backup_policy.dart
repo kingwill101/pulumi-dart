@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_args.dart';
 import 'system_data_response.dart';
-import 'volume_backups_response.dart';
 
 /// Backup policy information
 ///
@@ -166,32 +165,46 @@ import 'volume_backups_response.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Backup Policy GUID ID
   late final pulumi.Output<String> backupPolicyId;
+
   /// Daily backups count to keep
   late final pulumi.Output<int?> dailyBackupsToKeep;
+
   /// The property to decide policy is enabled or not
   late final pulumi.Output<bool?> enabled;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Monthly backups count to keep
   late final pulumi.Output<int?> monthlyBackupsToKeep;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A list of volumes assigned to this policy
-  late final pulumi.Output<List<VolumeBackupsResponse>> volumeBackups;
+  late final pulumi.Output<List<Map<String, dynamic>>> volumeBackups;
+
   /// Volumes using current backup policy
   late final pulumi.Output<int> volumesAssigned;
+
   /// Weekly backups count to keep
   late final pulumi.Output<int?> weeklyBackupsToKeep;
 
@@ -204,25 +217,25 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
+         'azure-native:netapp:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
+    enabled = registerOutput<bool?>('enabled');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.volumeBackups = registerOutput<List<VolumeBackupsResponse>>('volumeBackups');
-    this.volumesAssigned = registerOutput<int>('volumesAssigned');
-    this.weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    volumeBackups = registerOutput<List<Map<String, dynamic>>>('volumeBackups');
+    volumesAssigned = registerOutput<int>('volumesAssigned');
+    weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
   }
 }

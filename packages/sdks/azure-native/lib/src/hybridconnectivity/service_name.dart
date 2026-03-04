@@ -3,16 +3,15 @@ enum ServiceName {
   sSH("SSH"),
   wAC("WAC");
 
-  const ServiceName(this.value);
-  final String value;
+  const ServiceName(this.wireValue);
+  final String wireValue;
 
   static ServiceName fromValue(String value) {
     for (final item in ServiceName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceName value: $value');
   }
 }
-

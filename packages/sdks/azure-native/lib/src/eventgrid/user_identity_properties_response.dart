@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserIdentityPropertiesResponse {
   /// The client id of user assigned identity.
   final pulumi.Input<String>? clientId;
+
   /// The principal id of user assigned identity.
   final pulumi.Input<String>? principalId;
 
   /// Creates a new [UserIdentityPropertiesResponse].
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  UserIdentityPropertiesResponse({
-    this.clientId,
-    this.principalId,
-  });
+  UserIdentityPropertiesResponse({this.clientId, this.principalId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class UserIdentityPropertiesResponse {
 
   factory UserIdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityPropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

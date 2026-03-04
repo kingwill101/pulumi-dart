@@ -9,20 +9,15 @@ class OAuthRequirementsResponse {
 
   /// Creates a new [OAuthRequirementsResponse].
   /// [canonicalScopes] The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
-  OAuthRequirementsResponse({
-    required this.canonicalScopes,
-  });
+  OAuthRequirementsResponse({required this.canonicalScopes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'canonicalScopes': canonicalScopes,
-    };
+    return <String, dynamic>{'canonicalScopes': canonicalScopes};
   }
 
   factory OAuthRequirementsResponse.fromMap(Map<String, dynamic> map) {
     return OAuthRequirementsResponse(
-      canonicalScopes: (map['canonicalScopes'] as String).input(),
+      canonicalScopes: pulumi.Input.fromValue(map['canonicalScopes'] as String),
     );
   }
 }
-

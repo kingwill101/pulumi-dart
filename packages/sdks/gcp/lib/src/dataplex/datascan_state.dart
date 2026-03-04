@@ -12,55 +12,75 @@ import 'datascan_execution_status.dart';
 class DatascanState {
   /// The time when the scan was created.
   final pulumi.Input<String>? createTime;
+
   /// The data source for DataScan.
   /// Structure is documented below.
   final pulumi.Input<DatascanData>? data;
+
   /// DataDiscoveryScan related setting.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataDiscoverySpec>? dataDiscoverySpec;
+
   /// DataDocumentationScan related setting.
   final pulumi.Input<Map<String, dynamic>>? dataDocumentationSpec;
+
   /// DataProfileScan related setting.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpec>? dataProfileSpec;
+
   /// DataQualityScan related setting.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataQualitySpec>? dataQualitySpec;
+
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
   final pulumi.Input<String>? dataScanId;
+
   /// Description of the scan.
   final pulumi.Input<String>? description;
+
   /// User friendly display name.
   final pulumi.Input<String>? displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// DataScan execution settings.
   /// Structure is documented below.
   final pulumi.Input<DatascanExecutionSpec>? executionSpec;
+
   /// Status of the data scan execution.
   /// Structure is documented below.
   final pulumi.Input<List<DatascanExecutionStatus>>? executionStatuses;
-  /// User-defined labels for the scan. A list of key->value pairs.
+
+  /// User-defined labels for the scan. A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location where the data scan should reside.
   final pulumi.Input<String>? location;
+
   /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Current state of the DataScan.
   final pulumi.Input<String>? state;
+
   /// The type of DataScan.
   final pulumi.Input<String>? type;
+
   /// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
   final pulumi.Input<String>? uid;
+
   /// The time when the scan was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -77,7 +97,7 @@ class DatascanState {
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [executionSpec] DataScan execution settings.
   /// [executionStatuses] Status of the data scan execution.
-  /// [labels] User-defined labels for the scan. A list of key->value pairs.
+  /// [labels] User-defined labels for the scan. A list of key-&gt;value pairs.
   /// [location] The location where the data scan should reside.
   /// [name] The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
   /// [project] The ID of the project in which the resource belongs.
@@ -113,17 +133,48 @@ class DatascanState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
-      'data': ?pulumi.Input.mapOptionalInputValue<DatascanData, Map<String, dynamic>>(data, (value) => value.toMap()),
-      'dataDiscoverySpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataDiscoverySpec, Map<String, dynamic>>(dataDiscoverySpec, (value) => value.toMap()),
+      'data':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatascanData,
+            Map<String, dynamic>
+          >(data, (value) => value.toMap()),
+      'dataDiscoverySpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatascanDataDiscoverySpec,
+            Map<String, dynamic>
+          >(dataDiscoverySpec, (value) => value.toMap()),
       'dataDocumentationSpec': ?dataDocumentationSpec,
-      'dataProfileSpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataProfileSpec, Map<String, dynamic>>(dataProfileSpec, (value) => value.toMap()),
-      'dataQualitySpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataQualitySpec, Map<String, dynamic>>(dataQualitySpec, (value) => value.toMap()),
+      'dataProfileSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatascanDataProfileSpec,
+            Map<String, dynamic>
+          >(dataProfileSpec, (value) => value.toMap()),
+      'dataQualitySpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatascanDataQualitySpec,
+            Map<String, dynamic>
+          >(dataQualitySpec, (value) => value.toMap()),
       'dataScanId': ?dataScanId,
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
-      'executionSpec': ?pulumi.Input.mapOptionalInputValue<DatascanExecutionSpec, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
-      'executionStatuses': ?pulumi.Input.mapOptionalInputValue<List<DatascanExecutionStatus>, List<Map<String, dynamic>>>(executionStatuses, (value) => pulumi.Input.encodeList<DatascanExecutionStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'executionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatascanExecutionSpec,
+            Map<String, dynamic>
+          >(executionSpec, (value) => value.toMap()),
+      'executionStatuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatascanExecutionStatus>,
+            List<Map<String, dynamic>>
+          >(
+            executionStatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatascanExecutionStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
@@ -138,28 +189,144 @@ class DatascanState {
 
   factory DatascanState.fromMap(Map<String, dynamic> map) {
     return DatascanState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      data: map['data'] == null ? null : (DatascanData.fromMap((map['data']! as Map).cast<String, dynamic>())).input(),
-      dataDiscoverySpec: map['dataDiscoverySpec'] == null ? null : (DatascanDataDiscoverySpec.fromMap((map['dataDiscoverySpec']! as Map).cast<String, dynamic>())).input(),
-      dataDocumentationSpec: map['dataDocumentationSpec'] == null ? null : ((map['dataDocumentationSpec']! as Map).cast<String, dynamic>()).input(),
-      dataProfileSpec: map['dataProfileSpec'] == null ? null : (DatascanDataProfileSpec.fromMap((map['dataProfileSpec']! as Map).cast<String, dynamic>())).input(),
-      dataQualitySpec: map['dataQualitySpec'] == null ? null : (DatascanDataQualitySpec.fromMap((map['dataQualitySpec']! as Map).cast<String, dynamic>())).input(),
-      dataScanId: map['dataScanId'] == null ? null : (map['dataScanId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      executionSpec: map['executionSpec'] == null ? null : (DatascanExecutionSpec.fromMap((map['executionSpec']! as Map).cast<String, dynamic>())).input(),
-      executionStatuses: map['executionStatuses'] == null ? null : (pulumi.Input.decodeList<DatascanExecutionStatus>(map['executionStatuses']!, (value) => DatascanExecutionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatascanData.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      dataDiscoverySpec: (() {
+        final guardedValue = map['dataDiscoverySpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatascanDataDiscoverySpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataDocumentationSpec: (() {
+        final guardedValue = map['dataDocumentationSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      dataProfileSpec: (() {
+        final guardedValue = map['dataProfileSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatascanDataProfileSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataQualitySpec: (() {
+        final guardedValue = map['dataQualitySpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatascanDataQualitySpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataScanId: (() {
+        final guardedValue = map['dataScanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      executionSpec: (() {
+        final guardedValue = map['executionSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatascanExecutionSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      executionStatuses: (() {
+        final guardedValue = map['executionStatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatascanExecutionStatus>(
+            guardedValue,
+            (value) => DatascanExecutionStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

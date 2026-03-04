@@ -7,8 +7,10 @@ import 'application_gateway_backend_address.dart';
 class ApplicationGatewayBackendAddressPool {
   /// Backend addresses.
   final pulumi.Input<List<ApplicationGatewayBackendAddress>>? backendAddresses;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Name of the backend address pool that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
 
@@ -24,18 +26,49 @@ class ApplicationGatewayBackendAddressPool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddresses': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendAddress>, List<Map<String, dynamic>>>(backendAddresses, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backendAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationGatewayBackendAddress>,
+            List<Map<String, dynamic>>
+          >(
+            backendAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationGatewayBackendAddress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'name': ?name,
     };
   }
 
-  factory ApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayBackendAddressPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayBackendAddressPool(
-      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(map['backendAddresses']!, (value) => ApplicationGatewayBackendAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      backendAddresses: (() {
+        final guardedValue = map['backendAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(
+            guardedValue,
+            (value) => ApplicationGatewayBackendAddress.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

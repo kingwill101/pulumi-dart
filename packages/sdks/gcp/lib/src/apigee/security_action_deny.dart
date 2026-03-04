@@ -8,20 +8,19 @@ class SecurityActionDeny {
 
   /// Creates a new [SecurityActionDeny].
   /// [responseCode] The HTTP response code if the Action = DENY.
-  SecurityActionDeny({
-    this.responseCode,
-  });
+  SecurityActionDeny({this.responseCode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'responseCode': ?responseCode,
-    };
+    return <String, dynamic>{'responseCode': ?responseCode};
   }
 
   factory SecurityActionDeny.fromMap(Map<String, dynamic> map) {
     return SecurityActionDeny(
-      responseCode: map['responseCode'] == null ? null : (map['responseCode']! as int).input(),
+      responseCode: (() {
+        final guardedValue = map['responseCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

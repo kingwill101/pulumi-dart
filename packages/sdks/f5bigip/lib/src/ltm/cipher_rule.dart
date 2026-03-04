@@ -123,12 +123,16 @@ import 'cipher_rule_state.dart';
 class CipherRule extends pulumi.CustomResource {
   /// Specifies one or more Cipher Suites used,this is a colon (:) separated string of cipher suites. example, `TLS13-AES128-GCM-SHA256:TLS13-AES256-GCM-SHA384`.
   late final pulumi.Output<String> cipher;
+
   /// The Partition in which the Cipher Rule will be created.
   late final pulumi.Output<String?> description;
+
   /// Specifies the DH Groups algorithms, separated by colons (:).
   late final pulumi.Output<String> dhGroups;
+
   /// Name of the Cipher Rule. Name should be in pattern `partition` + `cipher_rule_name`
   late final pulumi.Output<String> name;
+
   /// Specifies the Signature Algorithms, separated by colons (:).
   late final pulumi.Output<String> signatureAlgorithms;
 
@@ -141,16 +145,16 @@ class CipherRule extends pulumi.CustomResource {
     CipherRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/cipherRule:CipherRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cipher = registerOutput<String>('cipher');
-    this.description = registerOutput<String?>('description');
-    this.dhGroups = registerOutput<String>('dhGroups');
+         'f5bigip:ltm/cipherRule:CipherRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cipher = registerOutput<String>('cipher');
+    description = registerOutput<String?>('description');
+    dhGroups = registerOutput<String>('dhGroups');
     this.name = registerOutput<String>('name');
-    this.signatureAlgorithms = registerOutput<String>('signatureAlgorithms');
+    signatureAlgorithms = registerOutput<String>('signatureAlgorithms');
   }
 
   /// Gets an existing [CipherRule] resource's state with the given [name] and [id].
@@ -171,15 +175,15 @@ class CipherRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/cipherRule:CipherRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cipher = registerOutput<String>('cipher');
-    this.description = registerOutput<String?>('description');
-    this.dhGroups = registerOutput<String>('dhGroups');
+         'f5bigip:ltm/cipherRule:CipherRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cipher = registerOutput<String>('cipher');
+    description = registerOutput<String?>('description');
+    dhGroups = registerOutput<String>('dhGroups');
     this.name = registerOutput<String>('name');
-    this.signatureAlgorithms = registerOutput<String>('signatureAlgorithms');
+    signatureAlgorithms = registerOutput<String>('signatureAlgorithms');
   }
 }

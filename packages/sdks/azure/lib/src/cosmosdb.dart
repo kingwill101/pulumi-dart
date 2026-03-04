@@ -1,5 +1,3 @@
-library module_cosmosdb;
-
 export 'cosmosdb/account.dart';
 export 'cosmosdb/account_analytical_storage.dart';
 export 'cosmosdb/account_args.dart';

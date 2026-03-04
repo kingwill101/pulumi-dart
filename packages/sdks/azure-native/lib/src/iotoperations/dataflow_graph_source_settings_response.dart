@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowGraphSourceSettingsResponse {
   /// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
   final pulumi.Input<String>? assetRef;
+
   /// List of data sources.
   final pulumi.Input<List<String>> dataSources;
+
   /// The endpoint reference for the source.
   final pulumi.Input<String> endpointRef;
 
@@ -29,12 +31,19 @@ class DataflowGraphSourceSettingsResponse {
     };
   }
 
-  factory DataflowGraphSourceSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory DataflowGraphSourceSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowGraphSourceSettingsResponse(
-      assetRef: map['assetRef'] == null ? null : (map['assetRef']! as String).input(),
-      dataSources: ((map['dataSources'] as List).cast<String>()).input(),
-      endpointRef: (map['endpointRef'] as String).input(),
+      assetRef: (() {
+        final guardedValue = map['assetRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSources: pulumi.Input.fromValue(
+        (map['dataSources'] as List).cast<String>(),
+      ),
+      endpointRef: pulumi.Input.fromValue(map['endpointRef'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_dataplex;
-
 export 'dataplex/aspect_type.dart';
 export 'dataplex/aspect_type_args.dart';
 export 'dataplex/aspect_type_iam_binding.dart';

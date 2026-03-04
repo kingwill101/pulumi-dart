@@ -19,10 +19,13 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse(
-      synthesizeSpeechConfigs: ((map['synthesizeSpeechConfigs'] as Map).cast<String, String>()).input(),
+      synthesizeSpeechConfigs: pulumi.Input.fromValue(
+        (map['synthesizeSpeechConfigs'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -17,10 +17,19 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   final pulumi.Input<int>? bitrate;
   final pulumi.Input<String>? bufferModel;
   final pulumi.Input<String>? ccDescriptor;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings>? dvbNitSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings>? dvbSdtSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings
+  >?
+  dvbNitSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings
+  >?
+  dvbSdtSettings;
   final pulumi.Input<String>? dvbSubPids;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings>? dvbTdtSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings
+  >?
+  dvbTdtSettings;
   final pulumi.Input<String>? dvbTeletextPid;
   final pulumi.Input<String>? ebif;
   final pulumi.Input<String>? ebpAudioInterval;
@@ -45,6 +54,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   final pulumi.Input<String>? rateMode;
   final pulumi.Input<String>? scte27Pids;
   final pulumi.Input<String>? scte35Control;
+
   /// PID from which to read SCTE-35 messages.
   final pulumi.Input<String>? scte35Pid;
   final pulumi.Input<String>? segmentationMarkers;
@@ -166,10 +176,22 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
       'bitrate': ?bitrate,
       'bufferModel': ?bufferModel,
       'ccDescriptor': ?ccDescriptor,
-      'dvbNitSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings, Map<String, dynamic>>(dvbNitSettings, (value) => value.toMap()),
-      'dvbSdtSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings, Map<String, dynamic>>(dvbSdtSettings, (value) => value.toMap()),
+      'dvbNitSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings,
+            Map<String, dynamic>
+          >(dvbNitSettings, (value) => value.toMap()),
+      'dvbSdtSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings,
+            Map<String, dynamic>
+          >(dvbSdtSettings, (value) => value.toMap()),
       'dvbSubPids': ?dvbSubPids,
-      'dvbTdtSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings, Map<String, dynamic>>(dvbTdtSettings, (value) => value.toMap()),
+      'dvbTdtSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings,
+            Map<String, dynamic>
+          >(dvbTdtSettings, (value) => value.toMap()),
       'dvbTeletextPid': ?dvbTeletextPid,
       'ebif': ?ebif,
       'ebpAudioInterval': ?ebpAudioInterval,
@@ -205,56 +227,257 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings(
-      absentInputAudioBehavior: map['absentInputAudioBehavior'] == null ? null : ((map['absentInputAudioBehavior'] as String).input()).input(),
-      arib: map['arib'] == null ? null : ((map['arib'] as String).input()).input(),
-      aribCaptionsPid: map['aribCaptionsPid'] == null ? null : ((map['aribCaptionsPid'] as String).input()).input(),
-      aribCaptionsPidControl: map['aribCaptionsPidControl'] == null ? null : ((map['aribCaptionsPidControl'] as String).input()).input(),
-      audioBufferModel: map['audioBufferModel'] == null ? null : ((map['audioBufferModel'] as String).input()).input(),
-      audioFramesPerPes: map['audioFramesPerPes'] == null ? null : ((map['audioFramesPerPes'] as int).input()).input(),
-      audioPids: map['audioPids'] == null ? null : ((map['audioPids'] as String).input()).input(),
-      audioStreamType: map['audioStreamType'] == null ? null : ((map['audioStreamType'] as String).input()).input(),
-      bitrate: map['bitrate'] == null ? null : ((map['bitrate'] as int).input()).input(),
-      bufferModel: map['bufferModel'] == null ? null : ((map['bufferModel'] as String).input()).input(),
-      ccDescriptor: map['ccDescriptor'] == null ? null : ((map['ccDescriptor'] as String).input()).input(),
-      dvbNitSettings: map['dvbNitSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap((map['dvbNitSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      dvbSdtSettings: map['dvbSdtSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap((map['dvbSdtSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      dvbSubPids: map['dvbSubPids'] == null ? null : ((map['dvbSubPids'] as String).input()).input(),
-      dvbTdtSettings: map['dvbTdtSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap((map['dvbTdtSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      dvbTeletextPid: map['dvbTeletextPid'] == null ? null : ((map['dvbTeletextPid'] as String).input()).input(),
-      ebif: map['ebif'] == null ? null : ((map['ebif'] as String).input()).input(),
-      ebpAudioInterval: map['ebpAudioInterval'] == null ? null : ((map['ebpAudioInterval'] as String).input()).input(),
-      ebpLookaheadMs: map['ebpLookaheadMs'] == null ? null : ((map['ebpLookaheadMs'] as int).input()).input(),
-      ebpPlacement: map['ebpPlacement'] == null ? null : ((map['ebpPlacement'] as String).input()).input(),
-      ecmPid: map['ecmPid'] == null ? null : ((map['ecmPid'] as String).input()).input(),
-      esRateInPes: map['esRateInPes'] == null ? null : ((map['esRateInPes'] as String).input()).input(),
-      etvPlatformPid: map['etvPlatformPid'] == null ? null : ((map['etvPlatformPid'] as String).input()).input(),
-      etvSignalPid: map['etvSignalPid'] == null ? null : ((map['etvSignalPid'] as String).input()).input(),
-      fragmentTime: map['fragmentTime'] == null ? null : ((map['fragmentTime'] as double).input()).input(),
-      klv: map['klv'] == null ? null : ((map['klv'] as String).input()).input(),
-      klvDataPids: map['klvDataPids'] == null ? null : ((map['klvDataPids'] as String).input()).input(),
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : ((map['nielsenId3Behavior'] as String).input()).input(),
-      nullPacketBitrate: map['nullPacketBitrate'] == null ? null : ((map['nullPacketBitrate'] as double).input()).input(),
-      patInterval: map['patInterval'] == null ? null : ((map['patInterval'] as int).input()).input(),
-      pcrControl: map['pcrControl'] == null ? null : ((map['pcrControl'] as String).input()).input(),
-      pcrPeriod: map['pcrPeriod'] == null ? null : ((map['pcrPeriod'] as int).input()).input(),
-      pcrPid: map['pcrPid'] == null ? null : ((map['pcrPid'] as String).input()).input(),
-      pmtInterval: map['pmtInterval'] == null ? null : ((map['pmtInterval'] as int).input()).input(),
-      pmtPid: map['pmtPid'] == null ? null : ((map['pmtPid'] as String).input()).input(),
-      programNum: map['programNum'] == null ? null : ((map['programNum'] as int).input()).input(),
-      rateMode: map['rateMode'] == null ? null : ((map['rateMode'] as String).input()).input(),
-      scte27Pids: map['scte27Pids'] == null ? null : ((map['scte27Pids'] as String).input()).input(),
-      scte35Control: map['scte35Control'] == null ? null : ((map['scte35Control'] as String).input()).input(),
-      scte35Pid: map['scte35Pid'] == null ? null : ((map['scte35Pid'] as String).input()).input(),
-      segmentationMarkers: map['segmentationMarkers'] == null ? null : ((map['segmentationMarkers'] as String).input()).input(),
-      segmentationStyle: map['segmentationStyle'] == null ? null : ((map['segmentationStyle'] as String).input()).input(),
-      segmentationTime: map['segmentationTime'] == null ? null : ((map['segmentationTime'] as double).input()).input(),
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : ((map['timedMetadataBehavior'] as String).input()).input(),
-      timedMetadataPid: map['timedMetadataPid'] == null ? null : ((map['timedMetadataPid'] as String).input()).input(),
-      transportStreamId: map['transportStreamId'] == null ? null : ((map['transportStreamId'] as int).input()).input(),
-      videoPid: map['videoPid'] == null ? null : ((map['videoPid'] as String).input()).input(),
+      absentInputAudioBehavior: (() {
+        final guardedValue = map['absentInputAudioBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arib: (() {
+        final guardedValue = map['arib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aribCaptionsPid: (() {
+        final guardedValue = map['aribCaptionsPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aribCaptionsPidControl: (() {
+        final guardedValue = map['aribCaptionsPidControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audioBufferModel: (() {
+        final guardedValue = map['audioBufferModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audioFramesPerPes: (() {
+        final guardedValue = map['audioFramesPerPes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      audioPids: (() {
+        final guardedValue = map['audioPids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audioStreamType: (() {
+        final guardedValue = map['audioStreamType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bitrate: (() {
+        final guardedValue = map['bitrate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bufferModel: (() {
+        final guardedValue = map['bufferModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ccDescriptor: (() {
+        final guardedValue = map['ccDescriptor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dvbNitSettings: (() {
+        final guardedValue = map['dvbNitSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dvbSdtSettings: (() {
+        final guardedValue = map['dvbSdtSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dvbSubPids: (() {
+        final guardedValue = map['dvbSubPids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dvbTdtSettings: (() {
+        final guardedValue = map['dvbTdtSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dvbTeletextPid: (() {
+        final guardedValue = map['dvbTeletextPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebif: (() {
+        final guardedValue = map['ebif'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebpAudioInterval: (() {
+        final guardedValue = map['ebpAudioInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebpLookaheadMs: (() {
+        final guardedValue = map['ebpLookaheadMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ebpPlacement: (() {
+        final guardedValue = map['ebpPlacement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecmPid: (() {
+        final guardedValue = map['ecmPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      esRateInPes: (() {
+        final guardedValue = map['esRateInPes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etvPlatformPid: (() {
+        final guardedValue = map['etvPlatformPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etvSignalPid: (() {
+        final guardedValue = map['etvSignalPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fragmentTime: (() {
+        final guardedValue = map['fragmentTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      klv: (() {
+        final guardedValue = map['klv'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      klvDataPids: (() {
+        final guardedValue = map['klvDataPids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nielsenId3Behavior: (() {
+        final guardedValue = map['nielsenId3Behavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nullPacketBitrate: (() {
+        final guardedValue = map['nullPacketBitrate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      patInterval: (() {
+        final guardedValue = map['patInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pcrControl: (() {
+        final guardedValue = map['pcrControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pcrPeriod: (() {
+        final guardedValue = map['pcrPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pcrPid: (() {
+        final guardedValue = map['pcrPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pmtInterval: (() {
+        final guardedValue = map['pmtInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pmtPid: (() {
+        final guardedValue = map['pmtPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      programNum: (() {
+        final guardedValue = map['programNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rateMode: (() {
+        final guardedValue = map['rateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scte27Pids: (() {
+        final guardedValue = map['scte27Pids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scte35Control: (() {
+        final guardedValue = map['scte35Control'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scte35Pid: (() {
+        final guardedValue = map['scte35Pid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentationMarkers: (() {
+        final guardedValue = map['segmentationMarkers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentationStyle: (() {
+        final guardedValue = map['segmentationStyle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentationTime: (() {
+        final guardedValue = map['segmentationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      timedMetadataBehavior: (() {
+        final guardedValue = map['timedMetadataBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timedMetadataPid: (() {
+        final guardedValue = map['timedMetadataPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transportStreamId: (() {
+        final guardedValue = map['transportStreamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      videoPid: (() {
+        final guardedValue = map['videoPid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

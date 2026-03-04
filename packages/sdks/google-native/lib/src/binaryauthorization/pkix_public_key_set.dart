@@ -10,20 +10,34 @@ class PkixPublicKeySet {
 
   /// Creates a new [PkixPublicKeySet].
   /// [pkixPublicKeys] `pkix_public_keys` must have at least one entry.
-  PkixPublicKeySet({
-    required this.pkixPublicKeys,
-  });
+  PkixPublicKeySet({required this.pkixPublicKeys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pkixPublicKeys': pulumi.Input.mapInputValue<List<PkixPublicKey>, List<Map<String, dynamic>>>(pkixPublicKeys, (value) => pulumi.Input.encodeList<PkixPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pkixPublicKeys':
+          pulumi.Input.mapInputValue<
+            List<PkixPublicKey>,
+            List<Map<String, dynamic>>
+          >(
+            pkixPublicKeys,
+            (value) =>
+                pulumi.Input.encodeList<PkixPublicKey, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory PkixPublicKeySet.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeySet(
-      pkixPublicKeys: (pulumi.Input.decodeList<PkixPublicKey>(map['pkixPublicKeys'], (value) => PkixPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pkixPublicKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PkixPublicKey>(
+          map['pkixPublicKeys']!,
+          (value) =>
+              PkixPublicKey.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

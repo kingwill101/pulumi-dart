@@ -8,20 +8,15 @@ class DomainFeaturesSbbc {
 
   /// Creates a new [DomainFeaturesSbbc].
   /// [value] Sets the value attribute for the SBBC feature, indicating its configuration.
-  DomainFeaturesSbbc({
-    required this.value,
-  });
+  DomainFeaturesSbbc({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory DomainFeaturesSbbc.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesSbbc(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

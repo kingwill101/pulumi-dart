@@ -14,16 +14,15 @@ enum SubscriptionTransitioningState {
   suspendedToDeleted("SuspendedToDeleted"),
   suspendedToUnregistered("SuspendedToUnregistered");
 
-  const SubscriptionTransitioningState(this.value);
-  final String value;
+  const SubscriptionTransitioningState(this.wireValue);
+  final String wireValue;
 
   static SubscriptionTransitioningState fromValue(String value) {
     for (final item in SubscriptionTransitioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubscriptionTransitioningState value: $value');
   }
 }
-

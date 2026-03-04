@@ -8,7 +8,7 @@ import 'origin_ca_certificate_state.dart';
 ///
 /// For information about ESA Origin Ca Certificate and how to use it, see [What is Origin Ca Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/UploadOriginCaCertificate).
 ///
-/// > **NOTE:** Available since v1.256.0.
+/// &gt; **NOTE:** Available since v1.256.0.
 ///
 /// ## Example Usage
 ///
@@ -335,14 +335,19 @@ import 'origin_ca_certificate_state.dart';
 class OriginCaCertificate extends pulumi.CustomResource {
   /// Certificate content.
   late final pulumi.Output<String> certificate;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// The certificate name.
   late final pulumi.Output<String> name;
+
   /// OriginCaCertificate Id
   late final pulumi.Output<String> originCaCertificateId;
+
   /// Site Id
   late final pulumi.Output<String> siteId;
+
   /// Certificate status.
   late final pulumi.Output<String> status;
 
@@ -355,17 +360,17 @@ class OriginCaCertificate extends pulumi.CustomResource {
     OriginCaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originCaCertificate:OriginCaCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:esa/originCaCertificate:OriginCaCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.originCaCertificateId = registerOutput<String>('originCaCertificateId');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+    originCaCertificateId = registerOutput<String>('originCaCertificateId');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [OriginCaCertificate] resource's state with the given [name] and [id].
@@ -386,16 +391,16 @@ class OriginCaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originCaCertificate:OriginCaCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:esa/originCaCertificate:OriginCaCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.originCaCertificateId = registerOutput<String>('originCaCertificateId');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+    originCaCertificateId = registerOutput<String>('originCaCertificateId');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 }

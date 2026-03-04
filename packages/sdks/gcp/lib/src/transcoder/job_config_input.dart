@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobConfigInput {
   /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
   final pulumi.Input<String>? key;
+
   /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
   /// If empty, the value is populated from Job.input_uri.
   final pulumi.Input<String>? uri;
@@ -12,23 +13,24 @@ class JobConfigInput {
   /// Creates a new [JobConfigInput].
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.
   /// [uri] URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
-  JobConfigInput({
-    this.key,
-    this.uri,
-  });
+  JobConfigInput({this.key, this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'key': ?key, 'uri': ?uri};
   }
 
   factory JobConfigInput.fromMap(Map<String, dynamic> map) {
     return JobConfigInput(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

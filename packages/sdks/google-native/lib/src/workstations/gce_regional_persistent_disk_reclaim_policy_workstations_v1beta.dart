@@ -4,16 +4,22 @@ enum GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta {
   delete("DELETE"),
   retain("RETAIN");
 
-  const GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta(this.value);
-  final String value;
+  const GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta fromValue(String value) {
-    for (final item in GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.values) {
-      if (item.value == value) {
+  static GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta value: $value');
+    throw ArgumentError(
+      'Unknown GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta value: $value',
+    );
   }
 }
-

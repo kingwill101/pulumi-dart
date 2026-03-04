@@ -3,16 +3,15 @@ enum NpmRepositoryPublicRepository {
   publicRepositoryUnspecified("PUBLIC_REPOSITORY_UNSPECIFIED"),
   npmjs("NPMJS");
 
-  const NpmRepositoryPublicRepository(this.value);
-  final String value;
+  const NpmRepositoryPublicRepository(this.wireValue);
+  final String wireValue;
 
   static NpmRepositoryPublicRepository fromValue(String value) {
     for (final item in NpmRepositoryPublicRepository.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NpmRepositoryPublicRepository value: $value');
   }
 }
-

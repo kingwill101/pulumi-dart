@@ -10,20 +10,27 @@ import 'workload_attributes.dart';
 class WorkloadArgs {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> applicationId;
+
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<WorkloadAttributes>? attributes;
+
   /// User-defined description of a Workload.
   final pulumi.Input<String>? description;
+
   /// Immutable. The resource name of the original discovered workload.
   final pulumi.Input<String> discoveredWorkload;
+
   /// User-defined name for the Workload.
   final pulumi.Input<String>? displayName;
+
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Workload identifier.
   final pulumi.Input<String> workloadId;
 
@@ -50,7 +57,11 @@ class WorkloadArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes': ?pulumi.Input.mapOptionalInputValue<WorkloadAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadAttributes,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'description': ?description,
       'discoveredWorkload': discoveredWorkload,
       'displayName': ?displayName,
@@ -62,15 +73,36 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (WorkloadAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      discoveredWorkload: (map['discoveredWorkload'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workloadId: (map['workloadId'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadAttributes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoveredWorkload: pulumi.Input.fromValue(
+        map['discoveredWorkload'] as String,
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadId: pulumi.Input.fromValue(map['workloadId'] as String),
     );
   }
 }
-

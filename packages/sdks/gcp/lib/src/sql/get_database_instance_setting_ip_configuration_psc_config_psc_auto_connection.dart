@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
   /// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
   final pulumi.Input<String> consumerNetwork;
+
   /// The connection policy status of the consumer network.
   final pulumi.Input<String> consumerNetworkStatus;
+
   /// The project ID of consumer service project of this consumer endpoint.
   final pulumi.Input<String> consumerServiceProjectId;
+
   /// The IP address of the consumer endpoint.
   final pulumi.Input<String> ipAddress;
+
   /// The connection status of the consumer endpoint.
   final pulumi.Input<String> status;
 
@@ -38,14 +42,19 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
     };
   }
 
-  factory GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection(
-      consumerNetwork: (map['consumerNetwork'] as String).input(),
-      consumerNetworkStatus: (map['consumerNetworkStatus'] as String).input(),
-      consumerServiceProjectId: (map['consumerServiceProjectId'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      status: (map['status'] as String).input(),
+      consumerNetwork: pulumi.Input.fromValue(map['consumerNetwork'] as String),
+      consumerNetworkStatus: pulumi.Input.fromValue(
+        map['consumerNetworkStatus'] as String,
+      ),
+      consumerServiceProjectId: pulumi.Input.fromValue(
+        map['consumerServiceProjectId'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

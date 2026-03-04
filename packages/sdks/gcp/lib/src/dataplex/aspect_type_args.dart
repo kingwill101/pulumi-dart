@@ -9,25 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AspectTypeArgs {
   /// The aspect type id of the aspect type.
   final pulumi.Input<String>? aspectTypeId;
+
   /// Classifies the data stored by the aspect.
   /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
   /// while `METADATA_AND_DATA` indicates data derived content.
-  /// <br><br>
+  /// &lt;br&gt;&lt;br&gt;
   /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
   final pulumi.Input<String>? dataClassification;
+
   /// Description of the AspectType.
   final pulumi.Input<String>? description;
+
   /// User friendly display name.
   final pulumi.Input<String>? displayName;
+
   /// User-defined labels for the AspectType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location where aspect type will be created in.
   final pulumi.Input<String>? location;
+
   /// MetadataTemplate of the Aspect.
   final pulumi.Input<String>? metadataTemplate;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -67,15 +74,48 @@ class AspectTypeArgs {
 
   factory AspectTypeArgs.fromMap(Map<String, dynamic> map) {
     return AspectTypeArgs(
-      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId']! as String).input(),
-      dataClassification: map['dataClassification'] == null ? null : (map['dataClassification']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      metadataTemplate: map['metadataTemplate'] == null ? null : (map['metadataTemplate']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      aspectTypeId: (() {
+        final guardedValue = map['aspectTypeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataClassification: (() {
+        final guardedValue = map['dataClassification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadataTemplate: (() {
+        final guardedValue = map['metadataTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

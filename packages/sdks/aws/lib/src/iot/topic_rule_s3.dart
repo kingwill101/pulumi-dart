@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleS3 {
   /// The Amazon S3 bucket name.
   final pulumi.Input<String> bucketName;
+
   /// The Amazon S3 canned ACL that controls access to the object identified by the object key. [Valid values](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   final pulumi.Input<String>? cannedAcl;
+
   /// The object key.
   final pulumi.Input<String> key;
+
   /// The ARN of the IAM role that grants access.
   final pulumi.Input<String> roleArn;
 
@@ -35,11 +38,14 @@ class TopicRuleS3 {
 
   factory TopicRuleS3.fromMap(Map<String, dynamic> map) {
     return TopicRuleS3(
-      bucketName: (map['bucketName'] as String).input(),
-      cannedAcl: map['cannedAcl'] == null ? null : ((map['cannedAcl'] as String).input()).input(),
-      key: (map['key'] as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      cannedAcl: (() {
+        final guardedValue = map['cannedAcl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

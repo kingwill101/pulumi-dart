@@ -32,7 +32,10 @@ class GetUsersResult {
       'ids': ids,
       'outputFile': ?outputFile,
       'status': ?status,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(
+        users,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -40,10 +43,20 @@ class GetUsersResult {
     return GetUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      users: pulumi.Input.decodeList<GetUsersUser>(
+        map['users']!,
+        (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

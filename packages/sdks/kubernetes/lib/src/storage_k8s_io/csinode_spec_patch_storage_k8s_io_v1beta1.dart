@@ -10,20 +10,41 @@ class CSINodeSpecPatchStorageK8sIoV1beta1 {
 
   /// Creates a new [CSINodeSpecPatchStorageK8sIoV1beta1].
   /// [drivers] drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
-  CSINodeSpecPatchStorageK8sIoV1beta1({
-    this.drivers,
-  });
+  CSINodeSpecPatchStorageK8sIoV1beta1({this.drivers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'drivers': ?pulumi.Input.mapOptionalInputValue<List<CSINodeDriverPatchStorageK8sIoV1beta1>, List<Map<String, dynamic>>>(drivers, (value) => pulumi.Input.encodeList<CSINodeDriverPatchStorageK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'drivers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CSINodeDriverPatchStorageK8sIoV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            drivers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CSINodeDriverPatchStorageK8sIoV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory CSINodeSpecPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CSINodeSpecPatchStorageK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CSINodeSpecPatchStorageK8sIoV1beta1(
-      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatchStorageK8sIoV1beta1>(map['drivers']!, (value) => CSINodeDriverPatchStorageK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      drivers: (() {
+        final guardedValue = map['drivers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CSINodeDriverPatchStorageK8sIoV1beta1>(
+            guardedValue,
+            (value) => CSINodeDriverPatchStorageK8sIoV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsIamAccessKeyLastUsed
 class AwsIamAccessKeyLastUsedProperties {
-  /// <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the access key was most recently used. This field is null in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM began tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul>
+  /// &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the access key was most recently used. This field is null in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM began tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? lastUsedDate;
-  /// <p>The Amazon Web Services Region where this access key was most recently used. The value for this field is 'N/A' in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM began tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul> <p>For more information about Amazon Web Services Regions, see <a href='https://docs.aws.amazon.com/general/latest/gr/rande.html'>Regions and endpoints</a> in the Amazon Web Services General Reference.</p>
+
+  /// &lt;p&gt;The Amazon Web Services Region where this access key was most recently used. The value for this field is 'N/A' in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM began tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about Amazon Web Services Regions, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/rande.html'&gt;Regions and endpoints&lt;/a&gt; in the Amazon Web Services General Reference.&lt;/p&gt;
   final pulumi.Input<String>? region;
-  /// <p>The name of the Amazon Web Services service with which this access key was most recently used. The value of this field is 'N/A' in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM started tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul>
+
+  /// &lt;p&gt;The name of the Amazon Web Services service with which this access key was most recently used. The value of this field is 'N/A' in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM started tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? serviceName;
 
   /// Creates a new [AwsIamAccessKeyLastUsedProperties].
-  /// [lastUsedDate] <p>The date and time, in <a href='http://www.iso.org/iso/iso8601'>ISO 8601 date-time format</a>, when the access key was most recently used. This field is null in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM began tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul>
-  /// [region] <p>The Amazon Web Services Region where this access key was most recently used. The value for this field is 'N/A' in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM began tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul> <p>For more information about Amazon Web Services Regions, see <a href='https://docs.aws.amazon.com/general/latest/gr/rande.html'>Regions and endpoints</a> in the Amazon Web Services General Reference.</p>
-  /// [serviceName] <p>The name of the Amazon Web Services service with which this access key was most recently used. The value of this field is 'N/A' in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has not been used since IAM started tracking this information.</p> </li> <li> <p>There is no sign-in data associated with the user.</p> </li> </ul>
+  /// [lastUsedDate] &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the access key was most recently used. This field is null in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM began tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [region] &lt;p&gt;The Amazon Web Services Region where this access key was most recently used. The value for this field is 'N/A' in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM began tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about Amazon Web Services Regions, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/rande.html'&gt;Regions and endpoints&lt;/a&gt; in the Amazon Web Services General Reference.&lt;/p&gt;
+  /// [serviceName] &lt;p&gt;The name of the Amazon Web Services service with which this access key was most recently used. The value of this field is 'N/A' in the following situations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The user does not have an access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An access key exists but has not been used since IAM started tracking this information.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;There is no sign-in data associated with the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   AwsIamAccessKeyLastUsedProperties({
     this.lastUsedDate,
     this.region,
@@ -31,10 +33,21 @@ class AwsIamAccessKeyLastUsedProperties {
 
   factory AwsIamAccessKeyLastUsedProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamAccessKeyLastUsedProperties(
-      lastUsedDate: map['lastUsedDate'] == null ? null : (map['lastUsedDate']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      lastUsedDate: (() {
+        final guardedValue = map['lastUsedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

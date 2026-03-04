@@ -6,24 +6,43 @@ import 'stream_backfill_all_salesforce_excluded_objects_object.dart';
 class StreamBackfillAllSalesforceExcludedObjects {
   /// Salesforce objects in Salesforce Org.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSalesforceExcludedObjectsObject>> objects;
+  final pulumi.Input<List<StreamBackfillAllSalesforceExcludedObjectsObject>>
+  objects;
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjects].
   /// [objects] Salesforce objects in Salesforce Org.
-  StreamBackfillAllSalesforceExcludedObjects({
-    required this.objects,
-  });
+  StreamBackfillAllSalesforceExcludedObjects({required this.objects});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'objects': pulumi.Input.mapInputValue<List<StreamBackfillAllSalesforceExcludedObjectsObject>, List<Map<String, dynamic>>>(objects, (value) => pulumi.Input.encodeList<StreamBackfillAllSalesforceExcludedObjectsObject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'objects':
+          pulumi.Input.mapInputValue<
+            List<StreamBackfillAllSalesforceExcludedObjectsObject>,
+            List<Map<String, dynamic>>
+          >(
+            objects,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamBackfillAllSalesforceExcludedObjectsObject,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamBackfillAllSalesforceExcludedObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllSalesforceExcludedObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllSalesforceExcludedObjects(
-      objects: (pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObject>(map['objects'], (value) => StreamBackfillAllSalesforceExcludedObjectsObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objects: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObject>(
+          map['objects']!,
+          (value) => StreamBackfillAllSalesforceExcludedObjectsObject.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

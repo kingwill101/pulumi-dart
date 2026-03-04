@@ -401,12 +401,16 @@ import 'container_registry_docker_credentials_state.dart';
 class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
   /// The date and time the registry access token will expire.
   late final pulumi.Output<String> credentialExpirationTime;
+
   /// Credentials for the container registry.
   late final pulumi.Output<String> dockerCredentials;
+
   /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
   late final pulumi.Output<int?> expirySeconds;
+
   /// The name of the container registry.
   late final pulumi.Output<String> registryName;
+
   /// Allow for write access to the container registry. Defaults to false.
   late final pulumi.Output<bool?> write;
 
@@ -419,16 +423,18 @@ class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     ContainerRegistryDockerCredentialsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.credentialExpirationTime = registerOutput<String>('credentialExpirationTime');
-    this.dockerCredentials = registerOutput<String>('dockerCredentials');
-    this.expirySeconds = registerOutput<int?>('expirySeconds');
-    this.registryName = registerOutput<String>('registryName');
-    this.write = registerOutput<bool?>('write');
+         'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    credentialExpirationTime = registerOutput<String>(
+      'credentialExpirationTime',
+    );
+    dockerCredentials = registerOutput<String>('dockerCredentials');
+    expirySeconds = registerOutput<int?>('expirySeconds');
+    registryName = registerOutput<String>('registryName');
+    write = registerOutput<bool?>('write');
   }
 
   /// Gets an existing [ContainerRegistryDockerCredentials] resource's state with the given [name] and [id].
@@ -449,15 +455,17 @@ class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.credentialExpirationTime = registerOutput<String>('credentialExpirationTime');
-    this.dockerCredentials = registerOutput<String>('dockerCredentials');
-    this.expirySeconds = registerOutput<int?>('expirySeconds');
-    this.registryName = registerOutput<String>('registryName');
-    this.write = registerOutput<bool?>('write');
+         'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    credentialExpirationTime = registerOutput<String>(
+      'credentialExpirationTime',
+    );
+    dockerCredentials = registerOutput<String>('dockerCredentials');
+    expirySeconds = registerOutput<int?>('expirySeconds');
+    registryName = registerOutput<String>('registryName');
+    write = registerOutput<bool?>('write');
   }
 }

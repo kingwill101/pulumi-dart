@@ -1,5 +1,3 @@
-library module_modelarmor;
-
 export 'modelarmor/floorsetting.dart';
 export 'modelarmor/floorsetting_ai_platform_floor_setting.dart';
 export 'modelarmor/floorsetting_args.dart';

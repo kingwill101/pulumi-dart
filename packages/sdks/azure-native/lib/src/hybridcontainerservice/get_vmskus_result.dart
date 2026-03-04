@@ -8,15 +8,20 @@ import 'vm_sku_profile_response_properties.dart';
 class GetVMSkusResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Extended location pointing to the underlying infrastructure
   final ExtendedLocationResponse? extendedLocation;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
   final VmSkuProfileResponseProperties properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -41,7 +46,7 @@ class GetVMSkusResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': id,
       'name': name,
       'properties': properties.toMap(),
@@ -53,13 +58,22 @@ class GetVMSkusResult {
   factory GetVMSkusResult.fromMap(Map<String, dynamic> map) {
     return GetVMSkusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: VmSkuProfileResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: VmSkuProfileResponseProperties.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

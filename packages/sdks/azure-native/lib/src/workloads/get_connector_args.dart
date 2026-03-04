@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// The name of the connector resource
   final pulumi.Input<String> connectorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: (map['connectorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

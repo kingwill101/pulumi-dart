@@ -5,11 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BastionHostIpConfiguration {
   /// The name of the IP configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
+
   /// Reference to a Public IP Address to associate with this Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String> publicIpAddressId;
+
   /// Reference to a subnet in which this Bastion Host has been created. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The Subnet used for the Bastion Host must have the name `AzureBastionSubnet` and the subnet mask must be at least a `/26`.
+  /// &gt; **Note:** The Subnet used for the Bastion Host must have the name `AzureBastionSubnet` and the subnet mask must be at least a `/26`.
   final pulumi.Input<String> subnetId;
 
   /// Creates a new [BastionHostIpConfiguration].
@@ -32,10 +34,11 @@ class BastionHostIpConfiguration {
 
   factory BastionHostIpConfiguration.fromMap(Map<String, dynamic> map) {
     return BastionHostIpConfiguration(
-      name: (map['name'] as String).input(),
-      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicIpAddressId: pulumi.Input.fromValue(
+        map['publicIpAddressId'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

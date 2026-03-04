@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayAutoscaleConfiguration {
   /// Maximum capacity for autoscaling.
   final pulumi.Input<int> maxCapacity;
+
   /// Minimum capacity for autoscaling.
   final pulumi.Input<int> minCapacity;
 
@@ -23,11 +24,12 @@ class GetApplicationGatewayAutoscaleConfiguration {
     };
   }
 
-  factory GetApplicationGatewayAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayAutoscaleConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayAutoscaleConfiguration(
-      maxCapacity: (map['maxCapacity'] as int).input(),
-      minCapacity: (map['minCapacity'] as int).input(),
+      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
+      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
     );
   }
 }
-

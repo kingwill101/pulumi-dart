@@ -27,10 +27,11 @@ class GetPlanScanSetting {
 
   factory GetPlanScanSetting.fromMap(Map<String, dynamic> map) {
     return GetPlanScanSetting(
-      malwareScanner: (map['malwareScanner'] as String).input(),
-      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
-      scannerRoleArn: (map['scannerRoleArn'] as String).input(),
+      malwareScanner: pulumi.Input.fromValue(map['malwareScanner'] as String),
+      resourceTypes: pulumi.Input.fromValue(
+        (map['resourceTypes'] as List).cast<String>(),
+      ),
+      scannerRoleArn: pulumi.Input.fromValue(map['scannerRoleArn'] as String),
     );
   }
 }
-

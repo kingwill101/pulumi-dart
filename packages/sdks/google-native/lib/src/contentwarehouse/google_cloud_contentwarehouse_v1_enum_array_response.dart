@@ -9,20 +9,17 @@ class GoogleCloudContentwarehouseV1EnumArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumArrayResponse].
   /// [values] List of enum values.
-  GoogleCloudContentwarehouseV1EnumArrayResponse({
-    required this.values,
-  });
+  GoogleCloudContentwarehouseV1EnumArrayResponse({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory GoogleCloudContentwarehouseV1EnumArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1EnumArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1EnumArrayResponse(
-      values: ((map['values'] as List).cast<String>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

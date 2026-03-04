@@ -4,7 +4,7 @@ import 'customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a Data Factory.
 ///
-/// > **Note:** The Customer Managed Key cannot be removed from the Data Factory once added. To remove the Customer Managed Key delete and recreate the parent Data Factory.
+/// &gt; **Note:** The Customer Managed Key cannot be removed from the Data Factory once added. To remove the Customer Managed Key delete and recreate the parent Data Factory.
 ///
 /// ## Example Usage
 ///
@@ -607,7 +607,7 @@ import 'customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataFactory` - 2018-06-01
@@ -622,8 +622,10 @@ import 'customer_managed_key_state.dart';
 class CustomerManagedKey extends pulumi.CustomResource {
   /// The ID the of the Customer Managed Key to associate with the Data Factory.
   late final pulumi.Output<String> customerManagedKeyId;
+
   /// The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
@@ -636,14 +638,14 @@ class CustomerManagedKey extends pulumi.CustomResource {
     CustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/customerManagedKey:CustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:datafactory/customerManagedKey:CustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 
   /// Gets an existing [CustomerManagedKey] resource's state with the given [name] and [id].
@@ -664,13 +666,13 @@ class CustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/customerManagedKey:CustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:datafactory/customerManagedKey:CustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 }

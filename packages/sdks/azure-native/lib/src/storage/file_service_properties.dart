@@ -780,16 +780,23 @@ import 'sku_response.dart';
 class FileServiceProperties extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
   late final pulumi.Output<CorsRulesResponse?> cors;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Protocol settings for file service
   late final pulumi.Output<ProtocolSettingsResponse?> protocolSettings;
+
   /// The file service properties for share soft delete.
-  late final pulumi.Output<DeleteRetentionPolicyResponse?> shareDeleteRetentionPolicy;
+  late final pulumi.Output<DeleteRetentionPolicyResponse?>
+  shareDeleteRetentionPolicy;
+
   /// Sku name and tier.
   late final pulumi.Output<SkuResponse> sku;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -802,17 +809,21 @@ class FileServiceProperties extends pulumi.CustomResource {
     FileServicePropertiesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:FileServiceProperties',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cors = registerOutput<CorsRulesResponse?>('cors');
+         'azure-native:storage:FileServiceProperties',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cors = registerOutput<CorsRulesResponse?>('cors');
     this.name = registerOutput<String>('name');
-    this.protocolSettings = registerOutput<ProtocolSettingsResponse?>('protocolSettings');
-    this.shareDeleteRetentionPolicy = registerOutput<DeleteRetentionPolicyResponse?>('shareDeleteRetentionPolicy');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.type = registerOutput<String>('type');
+    protocolSettings = registerOutput<ProtocolSettingsResponse?>(
+      'protocolSettings',
+    );
+    shareDeleteRetentionPolicy = registerOutput<DeleteRetentionPolicyResponse?>(
+      'shareDeleteRetentionPolicy',
+    );
+    sku = registerOutput<SkuResponse>('sku');
+    type = registerOutput<String>('type');
   }
 }

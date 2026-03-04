@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12SecuritySettings {
   /// The authorization qualifier.
   final pulumi.Input<String> authorizationQualifier;
+
   /// The authorization value.
   final pulumi.Input<String>? authorizationValue;
+
   /// The password value.
   final pulumi.Input<String>? passwordValue;
+
   /// The security qualifier.
   final pulumi.Input<String> securityQualifier;
 
@@ -36,11 +39,22 @@ class X12SecuritySettings {
 
   factory X12SecuritySettings.fromMap(Map<String, dynamic> map) {
     return X12SecuritySettings(
-      authorizationQualifier: (map['authorizationQualifier'] as String).input(),
-      authorizationValue: map['authorizationValue'] == null ? null : (map['authorizationValue']! as String).input(),
-      passwordValue: map['passwordValue'] == null ? null : (map['passwordValue']! as String).input(),
-      securityQualifier: (map['securityQualifier'] as String).input(),
+      authorizationQualifier: pulumi.Input.fromValue(
+        map['authorizationQualifier'] as String,
+      ),
+      authorizationValue: (() {
+        final guardedValue = map['authorizationValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordValue: (() {
+        final guardedValue = map['passwordValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityQualifier: pulumi.Input.fromValue(
+        map['securityQualifier'] as String,
+      ),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class ContactProfilesPropertiesNetworkConfiguration {
 
   /// Creates a new [ContactProfilesPropertiesNetworkConfiguration].
   /// [subnetId] ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it.
-  ContactProfilesPropertiesNetworkConfiguration({
-    required this.subnetId,
-  });
+  ContactProfilesPropertiesNetworkConfiguration({required this.subnetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': subnetId,
-    };
+    return <String, dynamic>{'subnetId': subnetId};
   }
 
-  factory ContactProfilesPropertiesNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ContactProfilesPropertiesNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactProfilesPropertiesNetworkConfiguration(
-      subnetId: (map['subnetId'] as String).input(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

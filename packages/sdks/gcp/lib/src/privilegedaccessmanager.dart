@@ -1,5 +1,3 @@
-library module_privilegedaccessmanager;
-
 export 'privilegedaccessmanager/entitlement.dart';
 export 'privilegedaccessmanager/entitlement_additional_notification_targets.dart';
 export 'privilegedaccessmanager/entitlement_approval_workflow.dart';

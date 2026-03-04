@@ -9,20 +9,19 @@ class UserAssignedProperties {
 
   /// Creates a new [UserAssignedProperties].
   /// [resourceId] Arm resource id for user assigned identity to be used to fetch MSI token.
-  UserAssignedProperties({
-    this.resourceId,
-  });
+  UserAssignedProperties({this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': ?resourceId,
-    };
+    return <String, dynamic>{'resourceId': ?resourceId};
   }
 
   factory UserAssignedProperties.fromMap(Map<String, dynamic> map) {
     return UserAssignedProperties(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

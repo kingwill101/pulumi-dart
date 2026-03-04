@@ -9,16 +9,15 @@ enum ApplicationGatewaySkuName {
   valueWAFV2("WAF_v2"),
   valueBasic("Basic");
 
-  const ApplicationGatewaySkuName(this.value);
-  final String value;
+  const ApplicationGatewaySkuName(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewaySkuName fromValue(String value) {
     for (final item in ApplicationGatewaySkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationGatewaySkuName value: $value');
   }
 }
-

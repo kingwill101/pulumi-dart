@@ -9,18 +9,25 @@ import 'psc_config.dart';
 class IpConfiguration {
   /// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
   final pulumi.Input<String>? allocatedIpRange;
+
   /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
   final pulumi.Input<List<AclEntry>>? authorizedNetworks;
+
   /// Controls connectivity to private IP instances from Google services, such as BigQuery.
   final pulumi.Input<bool>? enablePrivatePathForGoogleCloudServices;
+
   /// Whether the instance is assigned a public IP address or not.
   final pulumi.Input<bool>? ipv4Enabled;
+
   /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
   final pulumi.Input<String>? privateNetwork;
+
   /// PSC settings for this instance.
   final pulumi.Input<PscConfig>? pscConfig;
+
   /// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
   final pulumi.Input<bool>? requireSsl;
+
   /// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
   final pulumi.Input<IpConfigurationSslMode>? sslMode;
 
@@ -47,27 +54,86 @@ class IpConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedIpRange': ?allocatedIpRange,
-      'authorizedNetworks': ?pulumi.Input.mapOptionalInputValue<List<AclEntry>, List<Map<String, dynamic>>>(authorizedNetworks, (value) => pulumi.Input.encodeList<AclEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'enablePrivatePathForGoogleCloudServices': ?enablePrivatePathForGoogleCloudServices,
+      'authorizedNetworks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AclEntry>,
+            List<Map<String, dynamic>>
+          >(
+            authorizedNetworks,
+            (value) => pulumi.Input.encodeList<AclEntry, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'enablePrivatePathForGoogleCloudServices':
+          ?enablePrivatePathForGoogleCloudServices,
       'ipv4Enabled': ?ipv4Enabled,
       'privateNetwork': ?privateNetwork,
-      'pscConfig': ?pulumi.Input.mapOptionalInputValue<PscConfig, Map<String, dynamic>>(pscConfig, (value) => value.toMap()),
+      'pscConfig':
+          ?pulumi.Input.mapOptionalInputValue<PscConfig, Map<String, dynamic>>(
+            pscConfig,
+            (value) => value.toMap(),
+          ),
       'requireSsl': ?requireSsl,
-      'sslMode': ?pulumi.Input.mapOptionalInputValue<IpConfigurationSslMode, String>(sslMode, (value) => value.value),
+      'sslMode':
+          ?pulumi.Input.mapOptionalInputValue<IpConfigurationSslMode, String>(
+            sslMode,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory IpConfiguration.fromMap(Map<String, dynamic> map) {
     return IpConfiguration(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<AclEntry>(map['authorizedNetworks']!, (value) => AclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices']! as bool).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork']! as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
-      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl']! as bool).input(),
-      sslMode: map['sslMode'] == null ? null : (IpConfigurationSslMode.fromValue(map['sslMode']! as String)).input(),
+      allocatedIpRange: (() {
+        final guardedValue = map['allocatedIpRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizedNetworks: (() {
+        final guardedValue = map['authorizedNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AclEntry>(
+            guardedValue,
+            (value) => AclEntry.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      enablePrivatePathForGoogleCloudServices: (() {
+        final guardedValue = map['enablePrivatePathForGoogleCloudServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv4Enabled: (() {
+        final guardedValue = map['ipv4Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      privateNetwork: (() {
+        final guardedValue = map['privateNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pscConfig: (() {
+        final guardedValue = map['pscConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      requireSsl: (() {
+        final guardedValue = map['requireSsl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sslMode: (() {
+        final guardedValue = map['sslMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpConfigurationSslMode.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

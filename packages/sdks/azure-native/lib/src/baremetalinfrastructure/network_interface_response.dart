@@ -9,20 +9,19 @@ class NetworkInterfaceResponse {
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddress] Specifies the IP address of the network interface.
-  NetworkInterfaceResponse({
-    this.ipAddress,
-  });
+  NetworkInterfaceResponse({this.ipAddress});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ?ipAddress,
-    };
+    return <String, dynamic>{'ipAddress': ?ipAddress};
   }
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

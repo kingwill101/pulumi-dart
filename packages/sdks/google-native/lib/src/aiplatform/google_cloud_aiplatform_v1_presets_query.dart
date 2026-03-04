@@ -3,16 +3,17 @@ enum GoogleCloudAiplatformV1PresetsQuery {
   precise("PRECISE"),
   fast("FAST");
 
-  const GoogleCloudAiplatformV1PresetsQuery(this.value);
-  final String value;
+  const GoogleCloudAiplatformV1PresetsQuery(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudAiplatformV1PresetsQuery fromValue(String value) {
     for (final item in GoogleCloudAiplatformV1PresetsQuery.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1PresetsQuery value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1PresetsQuery value: $value',
+    );
   }
 }
-

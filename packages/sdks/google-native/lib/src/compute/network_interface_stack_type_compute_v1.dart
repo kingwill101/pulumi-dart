@@ -3,16 +3,17 @@ enum NetworkInterfaceStackTypeComputeV1 {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY");
 
-  const NetworkInterfaceStackTypeComputeV1(this.value);
-  final String value;
+  const NetworkInterfaceStackTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceStackTypeComputeV1 fromValue(String value) {
     for (final item in NetworkInterfaceStackTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkInterfaceStackTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkInterfaceStackTypeComputeV1 value: $value',
+    );
   }
 }
-

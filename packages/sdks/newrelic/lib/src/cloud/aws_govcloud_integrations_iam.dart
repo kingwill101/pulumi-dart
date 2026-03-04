@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsGovcloudIntegrationsIam {
   /// The data polling interval in seconds
   final pulumi.Input<int>? metricsPollingInterval;
+
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagKey;
+
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagValue;
 
@@ -30,10 +32,21 @@ class AwsGovcloudIntegrationsIam {
 
   factory AwsGovcloudIntegrationsIam.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsIam(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

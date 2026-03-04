@@ -9,20 +9,15 @@ class NetworkTagsResponse {
 
   /// Creates a new [NetworkTagsResponse].
   /// [tags] List of network tags.
-  NetworkTagsResponse({
-    required this.tags,
-  });
+  NetworkTagsResponse({required this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': tags,
-    };
+    return <String, dynamic>{'tags': tags};
   }
 
   factory NetworkTagsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkTagsResponse(
-      tags: ((map['tags'] as List).cast<String>()).input(),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
-

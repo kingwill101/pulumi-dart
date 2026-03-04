@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionIdentity {
   /// ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.
   final pulumi.Input<String>? encryptionFederatedIdentityClientId;
+
   /// Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account.
   final pulumi.Input<String>? encryptionUserAssignedIdentity;
 
@@ -19,16 +20,24 @@ class EncryptionIdentity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionFederatedIdentityClientId': ?encryptionFederatedIdentityClientId,
+      'encryptionFederatedIdentityClientId':
+          ?encryptionFederatedIdentityClientId,
       'encryptionUserAssignedIdentity': ?encryptionUserAssignedIdentity,
     };
   }
 
   factory EncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentity(
-      encryptionFederatedIdentityClientId: map['encryptionFederatedIdentityClientId'] == null ? null : (map['encryptionFederatedIdentityClientId']! as String).input(),
-      encryptionUserAssignedIdentity: map['encryptionUserAssignedIdentity'] == null ? null : (map['encryptionUserAssignedIdentity']! as String).input(),
+      encryptionFederatedIdentityClientId: (() {
+        final guardedValue = map['encryptionFederatedIdentityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionUserAssignedIdentity: (() {
+        final guardedValue = map['encryptionUserAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

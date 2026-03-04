@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendAddressPoolAddressArgs {
   /// The ip config ID of the regional load balancer that's added to the global load balancer's backend address pool.
   ///
-  /// > **Note:** For cross-region load balancer, please append the name of the load balancers, virtual machines, and other resources in each region with a -R1 and -R2.
+  /// &gt; **Note:** For cross-region load balancer, please append the name of the load balancers, virtual machines, and other resources in each region with a -R1 and -R2.
   final pulumi.Input<String>? backendAddressIpConfigurationId;
+
   /// The ID of the Backend Address Pool. Changing this forces a new Backend Address Pool Address to be created.
   final pulumi.Input<String> backendAddressPoolId;
+
   /// The Static IP Address which should be allocated to this Backend Address Pool.
   final pulumi.Input<String>? ipAddress;
+
   /// The name which should be used for this Backend Address Pool Address. Changing this forces a new Backend Address Pool Address to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
   final pulumi.Input<String>? virtualNetworkId;
 
@@ -46,12 +50,29 @@ class BackendAddressPoolAddressArgs {
 
   factory BackendAddressPoolAddressArgs.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolAddressArgs(
-      backendAddressIpConfigurationId: map['backendAddressIpConfigurationId'] == null ? null : (map['backendAddressIpConfigurationId']! as String).input(),
-      backendAddressPoolId: (map['backendAddressPoolId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      backendAddressIpConfigurationId: (() {
+        final guardedValue = map['backendAddressIpConfigurationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backendAddressPoolId: pulumi.Input.fromValue(
+        map['backendAddressPoolId'] as String,
+      ),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkId: (() {
+        final guardedValue = map['virtualNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

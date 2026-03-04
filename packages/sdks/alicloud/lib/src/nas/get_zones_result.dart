@@ -6,9 +6,11 @@ import 'get_zones_zone.dart';
 /// Result data returned by getZones.
 class GetZonesResult {
   final String? fileSystemType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
+
   /// A list of availability zone information collection.
   final List<GetZonesZone> zones;
 
@@ -29,17 +31,30 @@ class GetZonesResult {
       'fileSystemType': ?fileSystemType,
       'id': id,
       'outputFile': ?outputFile,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
+        zones,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType']! as String,
+      fileSystemType: (() {
+        final guardedValue = map['fileSystemType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(
+        map['zones']!,
+        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

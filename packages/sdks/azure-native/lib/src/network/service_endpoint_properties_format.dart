@@ -7,10 +7,13 @@ import 'sub_resource.dart';
 class ServiceEndpointPropertiesFormat {
   /// A list of locations.
   final pulumi.Input<List<String>>? locations;
+
   /// SubResource as network identifier.
   final pulumi.Input<SubResource>? networkIdentifier;
+
   /// The provisioning state of the resource.
   final pulumi.Input<String>? provisioningState;
+
   /// The type of the endpoint service.
   final pulumi.Input<String>? service;
 
@@ -29,7 +32,11 @@ class ServiceEndpointPropertiesFormat {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'locations': ?locations,
-      'networkIdentifier': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(networkIdentifier, (value) => value.toMap()),
+      'networkIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(networkIdentifier, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'service': ?service,
     };
@@ -37,11 +44,28 @@ class ServiceEndpointPropertiesFormat {
 
   factory ServiceEndpointPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPropertiesFormat(
-      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
-      networkIdentifier: map['networkIdentifier'] == null ? null : (SubResource.fromMap((map['networkIdentifier']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      networkIdentifier: (() {
+        final guardedValue = map['networkIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

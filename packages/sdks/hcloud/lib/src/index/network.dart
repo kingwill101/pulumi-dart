@@ -110,12 +110,16 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
+
   /// Enable or disable exposing the routes to the vSwitch connection. The exposing only takes effect if a vSwitch connection is active.
   late final pulumi.Output<bool?> exposeRoutesToVswitch;
+
   /// IP Range of the whole Network which must span all included subnets and route destinations. Must be one of the private ipv4 ranges of RFC1918.
   late final pulumi.Output<String> ipRange;
+
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Name of the Network to create (must be unique per project).
   late final pulumi.Output<String> name;
 
@@ -128,15 +132,15 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/network:Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
-    this.ipRange = registerOutput<String>('ipRange');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/network:Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
+    ipRange = registerOutput<String>('ipRange');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
   }
 
@@ -158,15 +162,15 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/network:Network',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
-    this.ipRange = registerOutput<String>('ipRange');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/network:Network',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
+    ipRange = registerOutput<String>('ipRange');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
   }
 }

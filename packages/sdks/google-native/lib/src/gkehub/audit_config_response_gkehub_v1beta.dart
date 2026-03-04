@@ -7,6 +7,7 @@ import 'audit_log_config_response_gkehub_v1beta.dart';
 class AuditConfigResponseGkehubV1beta {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigResponseGkehubV1beta>> auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String> service;
 
@@ -20,16 +21,33 @@ class AuditConfigResponseGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.mapInputValue<List<AuditLogConfigResponseGkehubV1beta>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigResponseGkehubV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          pulumi.Input.mapInputValue<
+            List<AuditLogConfigResponseGkehubV1beta>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuditLogConfigResponseGkehubV1beta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'service': service,
     };
   }
 
   factory AuditConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponseGkehubV1beta(
-      auditLogConfigs: (pulumi.Input.decodeList<AuditLogConfigResponseGkehubV1beta>(map['auditLogConfigs'], (value) => AuditLogConfigResponseGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: (map['service'] as String).input(),
+      auditLogConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AuditLogConfigResponseGkehubV1beta>(
+          map['auditLogConfigs']!,
+          (value) => AuditLogConfigResponseGkehubV1beta.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

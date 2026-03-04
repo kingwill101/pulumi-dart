@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderFoDatabasesAwsOfferingResponseRds {
   /// The cloud role ARN in AWS for this feature
   final pulumi.Input<String>? cloudRoleArn;
+
   /// Is RDS protection enabled
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderFoDatabasesAwsOfferingResponseRds].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is RDS protection enabled
-  DefenderFoDatabasesAwsOfferingResponseRds({
-    this.cloudRoleArn,
-    this.enabled,
-  });
+  DefenderFoDatabasesAwsOfferingResponseRds({this.cloudRoleArn, this.enabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class DefenderFoDatabasesAwsOfferingResponseRds {
     };
   }
 
-  factory DefenderFoDatabasesAwsOfferingResponseRds.fromMap(Map<String, dynamic> map) {
+  factory DefenderFoDatabasesAwsOfferingResponseRds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderFoDatabasesAwsOfferingResponseRds(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

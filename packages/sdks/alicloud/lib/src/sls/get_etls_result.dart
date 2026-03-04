@@ -7,14 +7,18 @@ import 'get_etls_etl.dart';
 class GetEtlsResult {
   /// A list of Etl Entries. Each element contains the following attributes:
   final List<GetEtlsEtl> etls;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Etl IDs.
   final List<String> ids;
+
   /// Destination Logstore Name.
   final String logstore;
   final int? offset;
   final String? outputFile;
+
   /// Target Project name.
   final String project;
   final int? size;
@@ -41,7 +45,10 @@ class GetEtlsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'etls': pulumi.Input.encodeList<GetEtlsEtl, Map<String, dynamic>>(etls, (value) => value.toMap()),
+      'etls': pulumi.Input.encodeList<GetEtlsEtl, Map<String, dynamic>>(
+        etls,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'logstore': logstore,
@@ -54,15 +61,29 @@ class GetEtlsResult {
 
   factory GetEtlsResult.fromMap(Map<String, dynamic> map) {
     return GetEtlsResult(
-      etls: pulumi.Input.decodeList<GetEtlsEtl>(map['etls'], (value) => GetEtlsEtl.fromMap((value as Map).cast<String, dynamic>())),
+      etls: pulumi.Input.decodeList<GetEtlsEtl>(
+        map['etls']!,
+        (value) => GetEtlsEtl.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       logstore: map['logstore'] as String,
-      offset: map['offset'] == null ? null : map['offset']! as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      offset: (() {
+        final guardedValue = map['offset'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       project: map['project'] as String,
-      size: map['size'] == null ? null : map['size']! as int,
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

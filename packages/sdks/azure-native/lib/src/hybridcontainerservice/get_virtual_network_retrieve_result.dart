@@ -9,18 +9,25 @@ class GetVirtualNetworkRetrieveResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final VirtualNetworksResponseExtendedLocation? extendedLocation;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
   final VirtualNetworksPropertiesResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -49,7 +56,7 @@ class GetVirtualNetworkRetrieveResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': id,
       'location': location,
       'name': name,
@@ -63,15 +70,28 @@ class GetVirtualNetworkRetrieveResult {
   factory GetVirtualNetworkRetrieveResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRetrieveResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : VirtualNetworksResponseExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return VirtualNetworksResponseExtendedLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: VirtualNetworksPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: VirtualNetworksPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

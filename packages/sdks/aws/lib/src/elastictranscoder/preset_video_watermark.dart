@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PresetVideoWatermark {
   /// The horizontal position of the watermark unless you specify a nonzero value for `horzontal_offset`.
   final pulumi.Input<String>? horizontalAlign;
+
   /// The amount by which you want the horizontal position of the watermark to be offset from the position specified by `horizontal_align`.
   final pulumi.Input<String>? horizontalOffset;
+
   /// A unique identifier for the settings for one watermark. The value of Id can be up to 40 characters long. You can specify settings for up to four watermarks.
   final pulumi.Input<String>? id;
+
   /// The maximum height of the watermark.
   final pulumi.Input<String>? maxHeight;
+
   /// The maximum width of the watermark.
   final pulumi.Input<String>? maxWidth;
+
   /// A percentage that indicates how much you want a watermark to obscure the video in the location where it appears.
   final pulumi.Input<String>? opacity;
+
   /// A value that controls scaling of the watermark. Valid values are: `Fit`, `Stretch`, `ShrinkToFit`
   final pulumi.Input<String>? sizingPolicy;
+
   /// A value that determines how Elastic Transcoder interprets values that you specified for `video_watermarks.horizontal_offset`, `video_watermarks.vertical_offset`, `video_watermarks.max_width`, and `video_watermarks.max_height`. Valid values are `Content` and `Frame`.
   final pulumi.Input<String>? target;
+
   /// The vertical position of the watermark unless you specify a nonzero value for `vertical_align`. Valid values are `Top`, `Bottom`, `Center`.
   final pulumi.Input<String>? verticalAlign;
+
   /// The amount by which you want the vertical position of the watermark to be offset from the position specified by `vertical_align`
   final pulumi.Input<String>? verticalOffset;
 
@@ -65,17 +74,56 @@ class PresetVideoWatermark {
 
   factory PresetVideoWatermark.fromMap(Map<String, dynamic> map) {
     return PresetVideoWatermark(
-      horizontalAlign: map['horizontalAlign'] == null ? null : ((map['horizontalAlign'] as String).input()).input(),
-      horizontalOffset: map['horizontalOffset'] == null ? null : ((map['horizontalOffset'] as String).input()).input(),
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      maxHeight: map['maxHeight'] == null ? null : ((map['maxHeight'] as String).input()).input(),
-      maxWidth: map['maxWidth'] == null ? null : ((map['maxWidth'] as String).input()).input(),
-      opacity: map['opacity'] == null ? null : ((map['opacity'] as String).input()).input(),
-      sizingPolicy: map['sizingPolicy'] == null ? null : ((map['sizingPolicy'] as String).input()).input(),
-      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
-      verticalAlign: map['verticalAlign'] == null ? null : ((map['verticalAlign'] as String).input()).input(),
-      verticalOffset: map['verticalOffset'] == null ? null : ((map['verticalOffset'] as String).input()).input(),
+      horizontalAlign: (() {
+        final guardedValue = map['horizontalAlign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      horizontalOffset: (() {
+        final guardedValue = map['horizontalOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxHeight: (() {
+        final guardedValue = map['maxHeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxWidth: (() {
+        final guardedValue = map['maxWidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      opacity: (() {
+        final guardedValue = map['opacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sizingPolicy: (() {
+        final guardedValue = map['sizingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verticalAlign: (() {
+        final guardedValue = map['verticalAlign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verticalOffset: (() {
+        final guardedValue = map['verticalOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

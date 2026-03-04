@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointServiceResourcesResource {
   /// The ID of the Vpc Endpoint Service Resource.
   final pulumi.Input<String> id;
+
   /// The ID of Resource.
   final pulumi.Input<String> resourceId;
+
   /// The type of Resource.
   final pulumi.Input<String> resourceType;
 
@@ -28,12 +30,13 @@ class GetVpcEndpointServiceResourcesResource {
     };
   }
 
-  factory GetVpcEndpointServiceResourcesResource.fromMap(Map<String, dynamic> map) {
+  factory GetVpcEndpointServiceResourcesResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpcEndpointServiceResourcesResource(
-      id: (map['id'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

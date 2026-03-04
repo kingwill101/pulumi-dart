@@ -29,13 +29,16 @@ class GetReplicationRecoveryPlanAzureToAzureSetting {
     };
   }
 
-  factory GetReplicationRecoveryPlanAzureToAzureSetting.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationRecoveryPlanAzureToAzureSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationRecoveryPlanAzureToAzureSetting(
-      primaryEdgeZone: (map['primaryEdgeZone'] as String).input(),
-      primaryZone: (map['primaryZone'] as String).input(),
-      recoveryEdgeZone: (map['recoveryEdgeZone'] as String).input(),
-      recoveryZone: (map['recoveryZone'] as String).input(),
+      primaryEdgeZone: pulumi.Input.fromValue(map['primaryEdgeZone'] as String),
+      primaryZone: pulumi.Input.fromValue(map['primaryZone'] as String),
+      recoveryEdgeZone: pulumi.Input.fromValue(
+        map['recoveryEdgeZone'] as String,
+      ),
+      recoveryZone: pulumi.Input.fromValue(map['recoveryZone'] as String),
     );
   }
 }
-

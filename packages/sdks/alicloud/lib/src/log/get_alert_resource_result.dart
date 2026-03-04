@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAlertResource.
 class GetAlertResourceResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -33,10 +32,17 @@ class GetAlertResourceResult {
   factory GetAlertResourceResult.fromMap(Map<String, dynamic> map) {
     return GetAlertResourceResult(
       id: map['id'] as String,
-      lang: map['lang'] == null ? null : map['lang']! as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

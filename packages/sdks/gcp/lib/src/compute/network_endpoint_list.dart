@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_list_args.dart';
-import 'network_endpoint_list_network_endpoint.dart';
 import 'network_endpoint_list_state.dart';
 
 /// A set of network endpoints belonging to a network endpoint group (NEG). A
@@ -12,7 +11,7 @@ import 'network_endpoint_list_state.dart';
 /// This resource is authoritative for a single NEG. Any endpoints not specified
 /// by this resource will be deleted when the resource configuration is applied.
 ///
-/// > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+/// &gt; **NOTE** In case the Endpoint's Instance is recreated, it's needed to
 /// perform `apply` twice. To avoid situations like this, please use this resource
 /// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
 ///
@@ -579,14 +578,17 @@ import 'network_endpoint_list_state.dart';
 class NetworkEndpointList extends pulumi.CustomResource {
   /// The network endpoint group these endpoints are part of.
   late final pulumi.Output<String> networkEndpointGroup;
+
   /// The network endpoints to be added to the enclosing network endpoint group
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  late final pulumi.Output<List<NetworkEndpointListNetworkEndpoint>?> networkEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkEndpoints;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Zone where the containing network endpoint group is located.
   late final pulumi.Output<String> zone;
 
@@ -599,15 +601,17 @@ class NetworkEndpointList extends pulumi.CustomResource {
     NetworkEndpointListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkEndpointList:NetworkEndpointList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    this.networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints');
-    this.project = registerOutput<String>('project');
-    this.zone = registerOutput<String>('zone');
+         'gcp:compute/networkEndpointList:NetworkEndpointList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    networkEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'networkEndpoints',
+    );
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [NetworkEndpointList] resource's state with the given [name] and [id].
@@ -628,14 +632,16 @@ class NetworkEndpointList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkEndpointList:NetworkEndpointList',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    this.networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints');
-    this.project = registerOutput<String>('project');
-    this.zone = registerOutput<String>('zone');
+         'gcp:compute/networkEndpointList:NetworkEndpointList',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    networkEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'networkEndpoints',
+    );
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
   }
 }

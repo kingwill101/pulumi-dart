@@ -1,5 +1,3 @@
-library module_iotoperationsdataprocessor;
-
 export 'iotoperationsdataprocessor/dataset.dart';
 export 'iotoperationsdataprocessor/dataset_args.dart';
 export 'iotoperationsdataprocessor/dataset_property_key.dart';

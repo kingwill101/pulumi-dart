@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateValidationState {
   /// ARN of the certificate that is being validated.
   final pulumi.Input<String>? certificateArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
   final pulumi.Input<List<String>>? validationRecordFqdns;
 
@@ -31,10 +33,21 @@ class CertificateValidationState {
 
   factory CertificateValidationState.fromMap(Map<String, dynamic> map) {
     return CertificateValidationState(
-      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : (((map['validationRecordFqdns'] as List).cast<String>()).input()).input(),
+      certificateArn: (() {
+        final guardedValue = map['certificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validationRecordFqdns: (() {
+        final guardedValue = map['validationRecordFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

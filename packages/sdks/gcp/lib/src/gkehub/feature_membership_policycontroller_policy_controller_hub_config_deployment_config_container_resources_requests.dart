@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
   /// CPU requirement expressed in Kubernetes resource units.
   final pulumi.Input<String>? cpu;
+
   /// Memory requirement expressed in Kubernetes resource units.
   final pulumi.Input<String>? memory;
 
@@ -17,17 +18,23 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpu': ?cpu,
-      'memory': ?memory,
-    };
+    return <String, dynamic>{'cpu': ?cpu, 'memory': ?memory};
   }
 
-  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap(Map<String, dynamic> map) {
+  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

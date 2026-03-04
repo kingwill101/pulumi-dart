@@ -6,16 +6,15 @@ enum CorsRuleAllowedMethods {
   pOST("POST"),
   pUT("PUT");
 
-  const CorsRuleAllowedMethods(this.value);
-  final String value;
+  const CorsRuleAllowedMethods(this.wireValue);
+  final String wireValue;
 
   static CorsRuleAllowedMethods fromValue(String value) {
     for (final item in CorsRuleAllowedMethods.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CorsRuleAllowedMethods value: $value');
   }
 }
-

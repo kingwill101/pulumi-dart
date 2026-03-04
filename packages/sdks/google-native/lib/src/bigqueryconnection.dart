@@ -1,5 +1,3 @@
-library module_bigqueryconnection;
-
 export 'bigqueryconnection/audit_config.dart';
 export 'bigqueryconnection/audit_config_response.dart';
 export 'bigqueryconnection/audit_log_config.dart';

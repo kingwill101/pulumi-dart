@@ -9,16 +9,15 @@ enum VMCategory {
   fpgaAccelerated("FpgaAccelerated"),
   highPerformanceCompute("HighPerformanceCompute");
 
-  const VMCategory(this.value);
-  final String value;
+  const VMCategory(this.wireValue);
+  final String wireValue;
 
   static VMCategory fromValue(String value) {
     for (final item in VMCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VMCategory value: $value');
   }
 }
-

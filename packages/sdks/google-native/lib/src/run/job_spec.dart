@@ -10,20 +10,29 @@ class JobSpec {
 
   /// Creates a new [JobSpec].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpec({
-    this.template,
-  });
+  JobSpec({this.template});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'template': ?pulumi.Input.mapOptionalInputValue<ExecutionTemplateSpec, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'template':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionTemplateSpec,
+            Map<String, dynamic>
+          >(template, (value) => value.toMap()),
     };
   }
 
   factory JobSpec.fromMap(Map<String, dynamic> map) {
     return JobSpec(
-      template: map['template'] == null ? null : (ExecutionTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionTemplateSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

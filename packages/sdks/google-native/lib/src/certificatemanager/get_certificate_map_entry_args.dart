@@ -35,11 +35,18 @@ class GetCertificateMapEntryArgs {
 
   factory GetCertificateMapEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateMapEntryArgs(
-      certificateMapEntryId: (map['certificateMapEntryId'] as String).input(),
-      certificateMapId: (map['certificateMapId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      certificateMapEntryId: pulumi.Input.fromValue(
+        map['certificateMapEntryId'] as String,
+      ),
+      certificateMapId: pulumi.Input.fromValue(
+        map['certificateMapId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

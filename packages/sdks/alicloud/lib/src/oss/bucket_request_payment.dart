@@ -12,6 +12,7 @@ import 'bucket_request_payment_state.dart';
 class BucketRequestPayment extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
   late final pulumi.Output<String> payer;
 
@@ -24,13 +25,13 @@ class BucketRequestPayment extends pulumi.CustomResource {
     BucketRequestPaymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketRequestPayment:BucketRequestPayment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.payer = registerOutput<String>('payer');
+         'alicloud:oss/bucketRequestPayment:BucketRequestPayment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    payer = registerOutput<String>('payer');
   }
 
   /// Gets an existing [BucketRequestPayment] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class BucketRequestPayment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketRequestPayment:BucketRequestPayment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.payer = registerOutput<String>('payer');
+         'alicloud:oss/bucketRequestPayment:BucketRequestPayment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    payer = registerOutput<String>('payer');
   }
 }

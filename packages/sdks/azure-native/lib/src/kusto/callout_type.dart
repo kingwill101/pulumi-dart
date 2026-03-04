@@ -12,16 +12,15 @@ enum CalloutType {
   valueGenevametrics("genevametrics"),
   valueAzureOpenai("azure_openai");
 
-  const CalloutType(this.value);
-  final String value;
+  const CalloutType(this.wireValue);
+  final String wireValue;
 
   static CalloutType fromValue(String value) {
     for (final item in CalloutType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CalloutType value: $value');
   }
 }
-

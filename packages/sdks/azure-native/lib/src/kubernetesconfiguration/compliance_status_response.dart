@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComplianceStatusResponse {
   /// The compliance state of the configuration.
   final pulumi.Input<String> complianceState;
+
   /// Datetime the configuration was last applied.
   final pulumi.Input<String>? lastConfigApplied;
+
   /// Message from when the configuration was applied.
   final pulumi.Input<String>? message;
+
   /// Level of the message.
   final pulumi.Input<String>? messageLevel;
 
@@ -36,11 +39,22 @@ class ComplianceStatusResponse {
 
   factory ComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceStatusResponse(
-      complianceState: (map['complianceState'] as String).input(),
-      lastConfigApplied: map['lastConfigApplied'] == null ? null : (map['lastConfigApplied']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      messageLevel: map['messageLevel'] == null ? null : (map['messageLevel']! as String).input(),
+      complianceState: pulumi.Input.fromValue(map['complianceState'] as String),
+      lastConfigApplied: (() {
+        final guardedValue = map['lastConfigApplied'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageLevel: (() {
+        final guardedValue = map['messageLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

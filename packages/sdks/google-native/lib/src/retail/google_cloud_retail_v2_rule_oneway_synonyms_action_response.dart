@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2RuleOnewaySynonymsActionResponse {
   /// Will be [deprecated = true] post migration;
   final pulumi.Input<List<String>> onewayTerms;
+
   /// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
   final pulumi.Input<List<String>> queryTerms;
+
   /// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
   final pulumi.Input<List<String>> synonyms;
 
@@ -29,12 +31,19 @@ class GoogleCloudRetailV2RuleOnewaySynonymsActionResponse {
     };
   }
 
-  factory GoogleCloudRetailV2RuleOnewaySynonymsActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2RuleOnewaySynonymsActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2RuleOnewaySynonymsActionResponse(
-      onewayTerms: ((map['onewayTerms'] as List).cast<String>()).input(),
-      queryTerms: ((map['queryTerms'] as List).cast<String>()).input(),
-      synonyms: ((map['synonyms'] as List).cast<String>()).input(),
+      onewayTerms: pulumi.Input.fromValue(
+        (map['onewayTerms'] as List).cast<String>(),
+      ),
+      queryTerms: pulumi.Input.fromValue(
+        (map['queryTerms'] as List).cast<String>(),
+      ),
+      synonyms: pulumi.Input.fromValue(
+        (map['synonyms'] as List).cast<String>(),
+      ),
     );
   }
 }
-

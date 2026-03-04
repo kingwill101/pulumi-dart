@@ -6,7 +6,7 @@ import 'resource_record_state.dart';
 ///
 /// For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 ///
-/// > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
+/// &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
 ///
 /// ## Example Usage
 ///
@@ -370,10 +370,13 @@ import 'resource_record_state.dart';
 class ResourceRecord extends pulumi.CustomResource {
   /// The record's id, should be unique.
   late final pulumi.Output<String> recordId;
+
   /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
   late final pulumi.Output<String> resourceName;
+
   /// The record's tag, can be used for search.
   late final pulumi.Output<String> tag;
+
   /// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
   late final pulumi.Output<String> value;
 
@@ -386,15 +389,15 @@ class ResourceRecord extends pulumi.CustomResource {
     ResourceRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/resourceRecord:ResourceRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.recordId = registerOutput<String>('recordId');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.tag = registerOutput<String>('tag');
-    this.value = registerOutput<String>('value');
+         'alicloud:log/resourceRecord:ResourceRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    recordId = registerOutput<String>('recordId');
+    resourceName = registerOutput<String>('resourceName');
+    tag = registerOutput<String>('tag');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [ResourceRecord] resource's state with the given [name] and [id].
@@ -415,14 +418,14 @@ class ResourceRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/resourceRecord:ResourceRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.recordId = registerOutput<String>('recordId');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.tag = registerOutput<String>('tag');
-    this.value = registerOutput<String>('value');
+         'alicloud:log/resourceRecord:ResourceRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    recordId = registerOutput<String>('recordId');
+    resourceName = registerOutput<String>('resourceName');
+    tag = registerOutput<String>('tag');
+    value = registerOutput<String>('value');
   }
 }

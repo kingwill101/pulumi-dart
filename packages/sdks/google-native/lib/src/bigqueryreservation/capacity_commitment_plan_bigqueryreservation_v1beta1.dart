@@ -6,16 +6,20 @@ enum CapacityCommitmentPlanBigqueryreservationV1beta1 {
   monthly("MONTHLY"),
   annual("ANNUAL");
 
-  const CapacityCommitmentPlanBigqueryreservationV1beta1(this.value);
-  final String value;
+  const CapacityCommitmentPlanBigqueryreservationV1beta1(this.wireValue);
+  final String wireValue;
 
-  static CapacityCommitmentPlanBigqueryreservationV1beta1 fromValue(String value) {
-    for (final item in CapacityCommitmentPlanBigqueryreservationV1beta1.values) {
-      if (item.value == value) {
+  static CapacityCommitmentPlanBigqueryreservationV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in CapacityCommitmentPlanBigqueryreservationV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CapacityCommitmentPlanBigqueryreservationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CapacityCommitmentPlanBigqueryreservationV1beta1 value: $value',
+    );
   }
 }
-

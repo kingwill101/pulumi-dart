@@ -7,16 +7,15 @@ enum ClientCertMode {
   valueOptional("Optional"),
   valueOptionalInteractiveUser("OptionalInteractiveUser");
 
-  const ClientCertMode(this.value);
-  final String value;
+  const ClientCertMode(this.wireValue);
+  final String wireValue;
 
   static ClientCertMode fromValue(String value) {
     for (final item in ClientCertMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientCertMode value: $value');
   }
 }
-

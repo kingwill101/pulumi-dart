@@ -1,5 +1,3 @@
-library module_cdn;
-
 export 'cdn/domain.dart';
 export 'cdn/domain_args.dart';
 export 'cdn/domain_auth_config.dart';

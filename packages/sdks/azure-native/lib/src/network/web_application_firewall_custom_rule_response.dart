@@ -8,22 +8,31 @@ import 'match_condition_response.dart';
 class WebApplicationFirewallCustomRuleResponse {
   /// Type of Actions.
   final pulumi.Input<String> action;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// List of user session identifier group by clauses.
   final pulumi.Input<List<GroupByUserSessionResponse>>? groupByUserSession;
+
   /// List of match conditions.
   final pulumi.Input<List<MatchConditionResponse>> matchConditions;
+
   /// The name of the resource that is unique within a policy. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// Priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
+
   /// Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.
   final pulumi.Input<String>? rateLimitDuration;
+
   /// Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1
   final pulumi.Input<int>? rateLimitThreshold;
+
   /// The rule type.
   final pulumi.Input<String> ruleType;
+
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
   final pulumi.Input<String>? state;
 
@@ -55,8 +64,30 @@ class WebApplicationFirewallCustomRuleResponse {
     return <String, dynamic>{
       'action': action,
       'etag': etag,
-      'groupByUserSession': ?pulumi.Input.mapOptionalInputValue<List<GroupByUserSessionResponse>, List<Map<String, dynamic>>>(groupByUserSession, (value) => pulumi.Input.encodeList<GroupByUserSessionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'matchConditions': pulumi.Input.mapInputValue<List<MatchConditionResponse>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<MatchConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupByUserSession':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupByUserSessionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            groupByUserSession,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GroupByUserSessionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'matchConditions':
+          pulumi.Input.mapInputValue<
+            List<MatchConditionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            matchConditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MatchConditionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'priority': priority,
       'rateLimitDuration': ?rateLimitDuration,
@@ -66,19 +97,54 @@ class WebApplicationFirewallCustomRuleResponse {
     };
   }
 
-  factory WebApplicationFirewallCustomRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory WebApplicationFirewallCustomRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebApplicationFirewallCustomRuleResponse(
-      action: (map['action'] as String).input(),
-      etag: (map['etag'] as String).input(),
-      groupByUserSession: map['groupByUserSession'] == null ? null : (pulumi.Input.decodeList<GroupByUserSessionResponse>(map['groupByUserSession']!, (value) => GroupByUserSessionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConditions: (pulumi.Input.decodeList<MatchConditionResponse>(map['matchConditions'], (value) => MatchConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: (map['priority'] as int).input(),
-      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration']! as String).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
-      ruleType: (map['ruleType'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      groupByUserSession: (() {
+        final guardedValue = map['groupByUserSession'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupByUserSessionResponse>(
+            guardedValue,
+            (value) => GroupByUserSessionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      matchConditions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MatchConditionResponse>(
+          map['matchConditions']!,
+          (value) => MatchConditionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rateLimitDuration: (() {
+        final guardedValue = map['rateLimitDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rateLimitThreshold: (() {
+        final guardedValue = map['rateLimitThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

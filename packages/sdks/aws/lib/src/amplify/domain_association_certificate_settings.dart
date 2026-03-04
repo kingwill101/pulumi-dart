@@ -3,17 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAssociationCertificateSettings {
-  /// DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
+  /// DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
   final pulumi.Input<String>? certificateVerificationDnsRecord;
+
   /// The Amazon resource name (ARN) for the custom certificate.
   /// Required when `type` is `CUSTOM`.
   final pulumi.Input<String>? customCertificateArn;
+
   /// The certificate type.
   /// Valid values are `AMPLIFY_MANAGED` and `CUSTOM`.
   final pulumi.Input<String> type;
 
   /// Creates a new [DomainAssociationCertificateSettings].
-  /// [certificateVerificationDnsRecord] DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
+  /// [certificateVerificationDnsRecord] DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
   /// [customCertificateArn] The Amazon resource name (ARN) for the custom certificate.
   /// [type] The certificate type.
   DomainAssociationCertificateSettings({
@@ -30,12 +32,21 @@ class DomainAssociationCertificateSettings {
     };
   }
 
-  factory DomainAssociationCertificateSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainAssociationCertificateSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainAssociationCertificateSettings(
-      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : ((map['certificateVerificationDnsRecord'] as String).input()).input(),
-      customCertificateArn: map['customCertificateArn'] == null ? null : ((map['customCertificateArn'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      certificateVerificationDnsRecord: (() {
+        final guardedValue = map['certificateVerificationDnsRecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customCertificateArn: (() {
+        final guardedValue = map['customCertificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,22 +6,31 @@ import 'job_template_container_startup_probe_header.dart';
 class JobTemplateContainerStartupProbe {
   /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `10`. Defaults to `3`.
   final pulumi.Input<int>? failureCountThreshold;
+
   /// A `header` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerStartupProbeHeader>>? headers;
+
   /// The value for the host header which should be sent with this probe. If unspecified, the IP Address of the Pod is used as the host header. Setting a value for `Host` in `headers` can be used to override this for `HTTP` and `HTTPS` type probes.
   final pulumi.Input<String>? host;
+
   /// The number of seconds elapsed after the container has started before the probe is initiated. Possible values are between `0` and `60`. Defaults to `0` seconds.
   final pulumi.Input<int>? initialDelay;
+
   /// How often, in seconds, the probe should run. Possible values are between `1` and `240`. Defaults to `10`
   final pulumi.Input<int>? intervalSeconds;
+
   /// The URI to use with the `host` for http type probes. Not valid for `TCP` type probes. Defaults to `/`.
   final pulumi.Input<String>? path;
+
   /// The port number on which to connect. Possible values are between `1` and `65535`.
   final pulumi.Input<int> port;
+
   /// The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   final pulumi.Input<int>? terminationGracePeriodSeconds;
+
   /// Time in seconds after which the probe times out. Possible values are in the range `1` - `240`. Defaults to `1`.
   final pulumi.Input<int>? timeout;
+
   /// Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
   final pulumi.Input<String> transport;
 
@@ -52,7 +61,18 @@ class JobTemplateContainerStartupProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureCountThreshold': ?failureCountThreshold,
-      'headers': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateContainerStartupProbeHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<JobTemplateContainerStartupProbeHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JobTemplateContainerStartupProbeHeader>,
+            List<Map<String, dynamic>>
+          >(
+            headers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JobTemplateContainerStartupProbeHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'host': ?host,
       'initialDelay': ?initialDelay,
       'intervalSeconds': ?intervalSeconds,
@@ -66,17 +86,55 @@ class JobTemplateContainerStartupProbe {
 
   factory JobTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return JobTemplateContainerStartupProbe(
-      failureCountThreshold: map['failureCountThreshold'] == null ? null : (map['failureCountThreshold']! as int).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerStartupProbeHeader>(map['headers']!, (value) => JobTemplateContainerStartupProbeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay']! as int).input(),
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: (map['port'] as int).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      transport: (map['transport'] as String).input(),
+      failureCountThreshold: (() {
+        final guardedValue = map['failureCountThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JobTemplateContainerStartupProbeHeader>(
+            guardedValue,
+            (value) => JobTemplateContainerStartupProbeHeader.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialDelay: (() {
+        final guardedValue = map['initialDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      intervalSeconds: (() {
+        final guardedValue = map['intervalSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      terminationGracePeriodSeconds: (() {
+        final guardedValue = map['terminationGracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      transport: pulumi.Input.fromValue(map['transport'] as String),
     );
   }
 }
-

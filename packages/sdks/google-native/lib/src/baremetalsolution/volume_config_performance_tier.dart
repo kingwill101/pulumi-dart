@@ -5,16 +5,15 @@ enum VolumeConfigPerformanceTier {
   volumePerformanceTierAssigned("VOLUME_PERFORMANCE_TIER_ASSIGNED"),
   volumePerformanceTierHt("VOLUME_PERFORMANCE_TIER_HT");
 
-  const VolumeConfigPerformanceTier(this.value);
-  final String value;
+  const VolumeConfigPerformanceTier(this.wireValue);
+  final String wireValue;
 
   static VolumeConfigPerformanceTier fromValue(String value) {
     for (final item in VolumeConfigPerformanceTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeConfigPerformanceTier value: $value');
   }
 }
-

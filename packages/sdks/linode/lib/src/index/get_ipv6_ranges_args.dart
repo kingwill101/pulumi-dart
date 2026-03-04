@@ -12,20 +12,39 @@ class GetIpv6RangesArgs {
 
   /// Creates a new [GetIpv6RangesArgs].
   /// [filters] Optional.
-  GetIpv6RangesArgs({
-    this.filters,
-  });
+  GetIpv6RangesArgs({this.filters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetIpv6RangesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetIpv6RangesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetIpv6RangesFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetIpv6RangesFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetIpv6RangesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6RangesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetIpv6RangesFilter>(map['filters']!, (value) => GetIpv6RangesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetIpv6RangesFilter>(
+            guardedValue,
+            (value) => GetIpv6RangesFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

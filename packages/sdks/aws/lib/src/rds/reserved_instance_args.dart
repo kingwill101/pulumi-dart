@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedInstanceArgs {
   /// Number of instances to reserve. Default value is `1`.
   final pulumi.Input<int>? instanceCount;
+
   /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> offeringId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Customer-specified identifier to track this reservation.
   final pulumi.Input<String>? reservationId;
+
   /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,12 +50,29 @@ class ReservedInstanceArgs {
 
   factory ReservedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceArgs(
-      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
-      offeringId: (map['offeringId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      reservationId: map['reservationId'] == null ? null : ((map['reservationId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      offeringId: pulumi.Input.fromValue(map['offeringId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservationId: (() {
+        final guardedValue = map['reservationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

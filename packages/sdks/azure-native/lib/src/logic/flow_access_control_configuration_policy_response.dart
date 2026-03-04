@@ -8,8 +8,10 @@ import 'open_authentication_access_policies_response.dart';
 class FlowAccessControlConfigurationPolicyResponse {
   /// The allowed caller IP address ranges.
   final pulumi.Input<List<IpAddressRangeResponse>>? allowedCallerIpAddresses;
+
   /// The authentication policies for workflow.
-  final pulumi.Input<OpenAuthenticationAccessPoliciesResponse>? openAuthenticationPolicies;
+  final pulumi.Input<OpenAuthenticationAccessPoliciesResponse>?
+  openAuthenticationPolicies;
 
   /// Creates a new [FlowAccessControlConfigurationPolicyResponse].
   /// [allowedCallerIpAddresses] The allowed caller IP address ranges.
@@ -21,16 +23,51 @@ class FlowAccessControlConfigurationPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedCallerIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<IpAddressRangeResponse>, List<Map<String, dynamic>>>(allowedCallerIpAddresses, (value) => pulumi.Input.encodeList<IpAddressRangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'openAuthenticationPolicies': ?pulumi.Input.mapOptionalInputValue<OpenAuthenticationAccessPoliciesResponse, Map<String, dynamic>>(openAuthenticationPolicies, (value) => value.toMap()),
+      'allowedCallerIpAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressRangeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            allowedCallerIpAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpAddressRangeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'openAuthenticationPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            OpenAuthenticationAccessPoliciesResponse,
+            Map<String, dynamic>
+          >(openAuthenticationPolicies, (value) => value.toMap()),
     };
   }
 
-  factory FlowAccessControlConfigurationPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory FlowAccessControlConfigurationPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowAccessControlConfigurationPolicyResponse(
-      allowedCallerIpAddresses: map['allowedCallerIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressRangeResponse>(map['allowedCallerIpAddresses']!, (value) => IpAddressRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openAuthenticationPolicies: map['openAuthenticationPolicies'] == null ? null : (OpenAuthenticationAccessPoliciesResponse.fromMap((map['openAuthenticationPolicies']! as Map).cast<String, dynamic>())).input(),
+      allowedCallerIpAddresses: (() {
+        final guardedValue = map['allowedCallerIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressRangeResponse>(
+            guardedValue,
+            (value) => IpAddressRangeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      openAuthenticationPolicies: (() {
+        final guardedValue = map['openAuthenticationPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OpenAuthenticationAccessPoliciesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainProperties {
   /// The bound certificate name of domain.
   final pulumi.Input<String>? certName;
+
   /// The thumbprint of bound certificate.
   final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [CustomDomainProperties].
   /// [certName] The bound certificate name of domain.
   /// [thumbprint] The thumbprint of bound certificate.
-  CustomDomainProperties({
-    this.certName,
-    this.thumbprint,
-  });
+  CustomDomainProperties({this.certName, this.thumbprint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certName': ?certName,
-      'thumbprint': ?thumbprint,
-    };
+    return <String, dynamic>{'certName': ?certName, 'thumbprint': ?thumbprint};
   }
 
   factory CustomDomainProperties.fromMap(Map<String, dynamic> map) {
     return CustomDomainProperties(
-      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      certName: (() {
+        final guardedValue = map['certName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

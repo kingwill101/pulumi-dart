@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridConnectionConfigResponse {
   /// Timestamp when this token will be expired.
   final pulumi.Input<double> expirationTime;
+
   /// Name of the connection
   final pulumi.Input<String> hybridConnectionName;
+
   /// Name of the relay.
   final pulumi.Input<String> relay;
+
   /// Sender access token
   final pulumi.Input<String> token;
 
@@ -36,11 +39,12 @@ class HybridConnectionConfigResponse {
 
   factory HybridConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return HybridConnectionConfigResponse(
-      expirationTime: (map['expirationTime'] as double).input(),
-      hybridConnectionName: (map['hybridConnectionName'] as String).input(),
-      relay: (map['relay'] as String).input(),
-      token: (map['token'] as String).input(),
+      expirationTime: pulumi.Input.fromValue(map['expirationTime'] as double),
+      hybridConnectionName: pulumi.Input.fromValue(
+        map['hybridConnectionName'] as String,
+      ),
+      relay: pulumi.Input.fromValue(map['relay'] as String),
+      token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
-

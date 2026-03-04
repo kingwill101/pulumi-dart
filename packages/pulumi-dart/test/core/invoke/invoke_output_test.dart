@@ -122,7 +122,7 @@ void main() {
         runtime.setMocks(mocks);
 
         final dependency = MockCustomResource();
-        when(dependency.id).thenReturn(Output.createUnknown<String?>());
+        when(dependency.id).thenReturn(Output.createUnknown<String>());
 
         final result = invokeOutput<Map<String, dynamic>>(
           'test:index:Echo',

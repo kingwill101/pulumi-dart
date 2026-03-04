@@ -12,20 +12,19 @@ class GetStorageBoxesArgs {
 
   /// Creates a new [GetStorageBoxesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxesArgs({
-    this.withSelector,
-  });
+  GetStorageBoxesArgs({this.withSelector});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'withSelector': ?withSelector,
-    };
+    return <String, dynamic>{'withSelector': ?withSelector};
   }
 
   factory GetStorageBoxesArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

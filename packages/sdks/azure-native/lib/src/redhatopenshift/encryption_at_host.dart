@@ -3,16 +3,15 @@ enum EncryptionAtHost {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const EncryptionAtHost(this.value);
-  final String value;
+  const EncryptionAtHost(this.wireValue);
+  final String wireValue;
 
   static EncryptionAtHost fromValue(String value) {
     for (final item in EncryptionAtHost.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionAtHost value: $value');
   }
 }
-

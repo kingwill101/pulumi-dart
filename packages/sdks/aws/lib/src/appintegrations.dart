@@ -1,5 +1,3 @@
-library module_appintegrations;
-
 export 'appintegrations/data_integration.dart';
 export 'appintegrations/data_integration_args.dart';
 export 'appintegrations/data_integration_schedule_config.dart';

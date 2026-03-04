@@ -9,23 +9,16 @@ class InsightFiltersNoteText {
   /// Creates a new [InsightFiltersNoteText].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNoteText({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersNoteText({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersNoteText.fromMap(Map<String, dynamic> map) {
     return InsightFiltersNoteText(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

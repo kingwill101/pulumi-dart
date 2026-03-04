@@ -3,16 +3,15 @@ enum IPAction {
   valueAccept("Accept"),
   valueReject("Reject");
 
-  const IPAction(this.value);
-  final String value;
+  const IPAction(this.wireValue);
+  final String wireValue;
 
   static IPAction fromValue(String value) {
     for (final item in IPAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPAction value: $value');
   }
 }
-

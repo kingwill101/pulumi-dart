@@ -4,16 +4,17 @@ enum ServerSideEncryptionByDefaultSSEAlgorithm {
   awsKms("aws:kms"),
   awsKmsDsse("aws:kms:dsse");
 
-  const ServerSideEncryptionByDefaultSSEAlgorithm(this.value);
-  final String value;
+  const ServerSideEncryptionByDefaultSSEAlgorithm(this.wireValue);
+  final String wireValue;
 
   static ServerSideEncryptionByDefaultSSEAlgorithm fromValue(String value) {
     for (final item in ServerSideEncryptionByDefaultSSEAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServerSideEncryptionByDefaultSSEAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown ServerSideEncryptionByDefaultSSEAlgorithm value: $value',
+    );
   }
 }
-

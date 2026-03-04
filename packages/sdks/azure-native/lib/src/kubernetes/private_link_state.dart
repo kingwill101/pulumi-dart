@@ -3,16 +3,15 @@ enum PrivateLinkState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const PrivateLinkState(this.value);
-  final String value;
+  const PrivateLinkState(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkState fromValue(String value) {
     for (final item in PrivateLinkState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateLinkState value: $value');
   }
 }
-

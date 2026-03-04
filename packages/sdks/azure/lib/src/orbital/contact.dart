@@ -4,7 +4,7 @@ import 'contact_state.dart';
 
 /// Manages an orbital contact.
 ///
-/// > **Note:** The `azure.orbital.Contact` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
+/// &gt; **Note:** The `azure.orbital.Contact` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
 ///
 /// ## Example Usage
 ///
@@ -650,7 +650,7 @@ import 'contact_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Orbital` - 2022-11-01
@@ -665,14 +665,19 @@ import 'contact_state.dart';
 class Contact extends pulumi.CustomResource {
   /// ID of the orbital contact profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> contactProfileId;
+
   /// Name of the Azure ground station. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groundStationName;
+
   /// The name of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Reservation end time of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> reservationEndTime;
+
   /// Reservation start time of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> reservationStartTime;
+
   /// The ID of the spacecraft which the contact will be made to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> spacecraftId;
 
@@ -685,17 +690,17 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/contact:Contact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactProfileId = registerOutput<String>('contactProfileId');
-    this.groundStationName = registerOutput<String>('groundStationName');
+         'azure:orbital/contact:Contact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactProfileId = registerOutput<String>('contactProfileId');
+    groundStationName = registerOutput<String>('groundStationName');
     this.name = registerOutput<String>('name');
-    this.reservationEndTime = registerOutput<String>('reservationEndTime');
-    this.reservationStartTime = registerOutput<String>('reservationStartTime');
-    this.spacecraftId = registerOutput<String>('spacecraftId');
+    reservationEndTime = registerOutput<String>('reservationEndTime');
+    reservationStartTime = registerOutput<String>('reservationStartTime');
+    spacecraftId = registerOutput<String>('spacecraftId');
   }
 
   /// Gets an existing [Contact] resource's state with the given [name] and [id].
@@ -716,16 +721,16 @@ class Contact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/contact:Contact',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactProfileId = registerOutput<String>('contactProfileId');
-    this.groundStationName = registerOutput<String>('groundStationName');
+         'azure:orbital/contact:Contact',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactProfileId = registerOutput<String>('contactProfileId');
+    groundStationName = registerOutput<String>('groundStationName');
     this.name = registerOutput<String>('name');
-    this.reservationEndTime = registerOutput<String>('reservationEndTime');
-    this.reservationStartTime = registerOutput<String>('reservationStartTime');
-    this.spacecraftId = registerOutput<String>('spacecraftId');
+    reservationEndTime = registerOutput<String>('reservationEndTime');
+    reservationStartTime = registerOutput<String>('reservationStartTime');
+    spacecraftId = registerOutput<String>('spacecraftId');
   }
 }

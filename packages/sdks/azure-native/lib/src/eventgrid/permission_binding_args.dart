@@ -10,16 +10,22 @@ class PermissionBindingArgs {
   /// The name of the client group resource that the permission is bound to.
   /// The client group needs to be a resource under the same namespace the permission binding is a part of.
   final pulumi.Input<String>? clientGroupName;
+
   /// Description for the Permission Binding resource.
   final pulumi.Input<String>? description;
+
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The allowed permission.
   final pulumi.Input<String>? permission;
+
   /// The permission binding name.
   final pulumi.Input<String>? permissionBindingName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Topic Space resource that the permission is bound to.
   /// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
   final pulumi.Input<String>? topicSpaceName;
@@ -56,14 +62,35 @@ class PermissionBindingArgs {
 
   factory PermissionBindingArgs.fromMap(Map<String, dynamic> map) {
     return PermissionBindingArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
-      permissionBindingName: map['permissionBindingName'] == null ? null : (map['permissionBindingName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName']! as String).input(),
+      clientGroupName: (() {
+        final guardedValue = map['clientGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      permission: (() {
+        final guardedValue = map['permission'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissionBindingName: (() {
+        final guardedValue = map['permissionBindingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicSpaceName: (() {
+        final guardedValue = map['topicSpaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

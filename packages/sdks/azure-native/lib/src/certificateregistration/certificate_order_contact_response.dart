@@ -31,11 +31,26 @@ class CertificateOrderContactResponse {
 
   factory CertificateOrderContactResponse.fromMap(Map<String, dynamic> map) {
     return CertificateOrderContactResponse(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      nameFirst: map['nameFirst'] == null ? null : (map['nameFirst']! as String).input(),
-      nameLast: map['nameLast'] == null ? null : (map['nameLast']! as String).input(),
-      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameFirst: (() {
+        final guardedValue = map['nameFirst'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameLast: (() {
+        final guardedValue = map['nameLast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phone: (() {
+        final guardedValue = map['phone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

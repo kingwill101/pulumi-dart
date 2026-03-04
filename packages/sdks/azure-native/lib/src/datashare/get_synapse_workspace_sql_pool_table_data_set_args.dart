@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSynapseWorkspaceSqlPoolTableDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// The name of the dataSet.
   final pulumi.Input<String> dataSetName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the share.
   final pulumi.Input<String> shareName;
 
@@ -37,13 +40,16 @@ class GetSynapseWorkspaceSqlPoolTableDataSetArgs {
     };
   }
 
-  factory GetSynapseWorkspaceSqlPoolTableDataSetArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSynapseWorkspaceSqlPoolTableDataSetArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSynapseWorkspaceSqlPoolTableDataSetArgs(
-      accountName: (map['accountName'] as String).input(),
-      dataSetName: (map['dataSetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      dataSetName: pulumi.Input.fromValue(map['dataSetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
-

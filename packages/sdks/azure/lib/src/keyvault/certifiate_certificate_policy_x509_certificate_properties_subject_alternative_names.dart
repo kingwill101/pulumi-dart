@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames {
   /// A list of alternative DNS names (FQDNs) identified by the Certificate.
   final pulumi.Input<List<String>>? dnsNames;
+
   /// A list of email addresses identified by this Certificate.
   final pulumi.Input<List<String>>? emails;
+
   /// A list of User Principal Names identified by the Certificate.
   final pulumi.Input<List<String>>? upns;
 
@@ -28,12 +30,25 @@ class CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeName
     };
   }
 
-  factory CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
+  factory CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames(
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
-      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
-      upns: map['upns'] == null ? null : ((map['upns']! as List).cast<String>()).input(),
+      dnsNames: (() {
+        final guardedValue = map['dnsNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      emails: (() {
+        final guardedValue = map['emails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      upns: (() {
+        final guardedValue = map['upns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

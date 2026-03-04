@@ -4,16 +4,17 @@ enum ValueListFilterValuePresentList {
   valuePresentInListIfValueList("VALUE_PRESENT_IN_LIST_IF_VALUE_LIST"),
   valuePresentInListIfValueNotList("VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST");
 
-  const ValueListFilterValuePresentList(this.value);
-  final String value;
+  const ValueListFilterValuePresentList(this.wireValue);
+  final String wireValue;
 
   static ValueListFilterValuePresentList fromValue(String value) {
     for (final item in ValueListFilterValuePresentList.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValueListFilterValuePresentList value: $value');
+    throw ArgumentError(
+      'Unknown ValueListFilterValuePresentList value: $value',
+    );
   }
 }
-

@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_args.dart';
 import 'ingress_default_rule.dart';
-import 'ingress_rule.dart';
 import 'ingress_state.dart';
 
 /// Provides a Serverless App Engine (SAE) Ingress resource.
 ///
 /// For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://next.api.aliyun.com/api/sae/2019-05-06/CreateIngress).
 ///
-/// > **NOTE:** Available since v1.137.0.
+/// &gt; **NOTE:** Available since v1.137.0.
 ///
 /// ## Example Usage
 ///
@@ -601,22 +600,31 @@ import 'ingress_state.dart';
 class Ingress extends pulumi.CustomResource {
   /// The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
   late final pulumi.Output<String?> certId;
+
   /// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
   late final pulumi.Output<String?> certIds;
+
   /// Default Rule. See `default_rule` below.
   late final pulumi.Output<IngressDefaultRule?> defaultRule;
+
   /// Description.
   late final pulumi.Output<String?> description;
+
   /// SLB listening port.
   late final pulumi.Output<int> listenerPort;
+
   /// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
   late final pulumi.Output<String> listenerProtocol;
+
   /// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
   late final pulumi.Output<String> loadBalanceType;
+
   /// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
   late final pulumi.Output<String> namespaceId;
+
   /// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
-  late final pulumi.Output<List<IngressRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+
   /// SLB ID.
   late final pulumi.Output<String> slbId;
 
@@ -629,21 +637,21 @@ class Ingress extends pulumi.CustomResource {
     IngressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/ingress:Ingress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certId = registerOutput<String?>('certId');
-    this.certIds = registerOutput<String?>('certIds');
-    this.defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
-    this.description = registerOutput<String?>('description');
-    this.listenerPort = registerOutput<int>('listenerPort');
-    this.listenerProtocol = registerOutput<String>('listenerProtocol');
-    this.loadBalanceType = registerOutput<String>('loadBalanceType');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.rules = registerOutput<List<IngressRule>>('rules');
-    this.slbId = registerOutput<String>('slbId');
+         'alicloud:sae/ingress:Ingress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certId = registerOutput<String?>('certId');
+    certIds = registerOutput<String?>('certIds');
+    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
+    description = registerOutput<String?>('description');
+    listenerPort = registerOutput<int>('listenerPort');
+    listenerProtocol = registerOutput<String>('listenerProtocol');
+    loadBalanceType = registerOutput<String>('loadBalanceType');
+    namespaceId = registerOutput<String>('namespaceId');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    slbId = registerOutput<String>('slbId');
   }
 
   /// Gets an existing [Ingress] resource's state with the given [name] and [id].
@@ -664,20 +672,20 @@ class Ingress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/ingress:Ingress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certId = registerOutput<String?>('certId');
-    this.certIds = registerOutput<String?>('certIds');
-    this.defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
-    this.description = registerOutput<String?>('description');
-    this.listenerPort = registerOutput<int>('listenerPort');
-    this.listenerProtocol = registerOutput<String>('listenerProtocol');
-    this.loadBalanceType = registerOutput<String>('loadBalanceType');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.rules = registerOutput<List<IngressRule>>('rules');
-    this.slbId = registerOutput<String>('slbId');
+         'alicloud:sae/ingress:Ingress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certId = registerOutput<String?>('certId');
+    certIds = registerOutput<String?>('certIds');
+    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
+    description = registerOutput<String?>('description');
+    listenerPort = registerOutput<int>('listenerPort');
+    listenerProtocol = registerOutput<String>('listenerProtocol');
+    loadBalanceType = registerOutput<String>('loadBalanceType');
+    namespaceId = registerOutput<String>('namespaceId');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    slbId = registerOutput<String>('slbId');
   }
 }

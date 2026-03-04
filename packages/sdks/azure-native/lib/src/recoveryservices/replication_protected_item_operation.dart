@@ -14,16 +14,17 @@ enum ReplicationProtectedItemOperation {
   valueSwitchProtection("SwitchProtection"),
   valueCompleteMigration("CompleteMigration");
 
-  const ReplicationProtectedItemOperation(this.value);
-  final String value;
+  const ReplicationProtectedItemOperation(this.wireValue);
+  final String wireValue;
 
   static ReplicationProtectedItemOperation fromValue(String value) {
     for (final item in ReplicationProtectedItemOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReplicationProtectedItemOperation value: $value');
+    throw ArgumentError(
+      'Unknown ReplicationProtectedItemOperation value: $value',
+    );
   }
 }
-

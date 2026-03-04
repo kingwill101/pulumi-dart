@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DimensionResponse {
   /// Name of the dimension
   final pulumi.Input<String> name;
+
   /// Operator for dimension values
   final pulumi.Input<String> operator;
+
   /// List of dimension values
   final pulumi.Input<List<String>> values;
 
@@ -31,10 +33,9 @@ class DimensionResponse {
 
   factory DimensionResponse.fromMap(Map<String, dynamic> map) {
     return DimensionResponse(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

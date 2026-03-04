@@ -3,25 +3,28 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
-  /// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+  /// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
   final pulumi.Input<String>? agent;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig].
-  /// [agent] The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+  /// [agent] The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
   ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig({
     this.agent,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': ?agent,
-    };
+    return <String, dynamic>{'agent': ?agent};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig(
-      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
+      agent: (() {
+        final guardedValue = map['agent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

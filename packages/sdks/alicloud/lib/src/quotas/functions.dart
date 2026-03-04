@@ -27,7 +27,7 @@ Future<GetApplicationInfosResult> getApplicationInfos(
 
 /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.116.0+.
+/// &gt; **NOTE:** Available in v1.116.0+.
 ///
 /// ## Example Usage
 ///
@@ -158,7 +158,7 @@ Future<GetQuotaAlarmsResult> getQuotaAlarms(
 
 /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.117.0.
+/// &gt; **NOTE:** Available since v1.117.0.
 ///
 /// ## Example Usage
 ///
@@ -381,7 +381,7 @@ Future<GetQuotaApplicationsResult> getQuotaApplications(
 
 /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.115.0+.
+/// &gt; **NOTE:** Available in v1.115.0+.
 ///
 /// ## Example Usage
 ///
@@ -506,7 +506,7 @@ Future<GetQuotasResult> getQuotas(
 
 /// This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
 ///
-/// > **NOTE:** Available since v1.214.0.
+/// &gt; **NOTE:** Available since v1.214.0.
 ///
 /// ## Example Usage
 ///

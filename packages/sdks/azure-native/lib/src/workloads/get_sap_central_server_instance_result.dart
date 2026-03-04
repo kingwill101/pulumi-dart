@@ -14,44 +14,65 @@ import 'system_data_response.dart';
 class GetSapCentralServerInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Defines the SAP Enqueue Replication Server (ERS) properties.
-  final EnqueueReplicationServerPropertiesResponse? enqueueReplicationServerProperties;
+  final EnqueueReplicationServerPropertiesResponse?
+  enqueueReplicationServerProperties;
+
   /// Defines the SAP Enqueue Server properties.
   final EnqueueServerPropertiesResponse? enqueueServerProperties;
+
   /// Defines the errors related to SAP Central Services Instance resource.
   final SAPVirtualInstanceErrorResponse errors;
+
   /// Defines the SAP Gateway Server properties.
   final GatewayServerPropertiesResponse? gatewayServerProperties;
+
   /// Defines the health of SAP Instances.
   final String health;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The central services instance number.
   final String instanceNo;
+
   /// The central services instance Kernel Patch level.
   final String kernelPatch;
+
   /// The central services instance Kernel Version.
   final String kernelVersion;
+
   /// The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
   final LoadBalancerDetailsResponse loadBalancerDetails;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Defines the SAP message server properties.
   final MessageServerPropertiesResponse? messageServerProperties;
+
   /// The name of the resource
   final String name;
+
   /// Defines the provisioning states.
   final String provisioningState;
+
   /// Defines the SAP Instance status.
   final String status;
+
   /// The central services instance subnet.
   final String subnet;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The list of virtual machines corresponding to the Central Services instance.
   final List<CentralServerVmDetailsResponse> vmDetails;
 
@@ -104,10 +125,11 @@ class GetSapCentralServerInstanceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'enqueueReplicationServerProperties': ?enqueueReplicationServerProperties == null ? null : enqueueReplicationServerProperties!.toMap(),
-      'enqueueServerProperties': ?enqueueServerProperties == null ? null : enqueueServerProperties!.toMap(),
+      'enqueueReplicationServerProperties': ?enqueueReplicationServerProperties
+          ?.toMap(),
+      'enqueueServerProperties': ?enqueueServerProperties?.toMap(),
       'errors': errors.toMap(),
-      'gatewayServerProperties': ?gatewayServerProperties == null ? null : gatewayServerProperties!.toMap(),
+      'gatewayServerProperties': ?gatewayServerProperties?.toMap(),
       'health': health,
       'id': id,
       'instanceNo': instanceNo,
@@ -115,7 +137,7 @@ class GetSapCentralServerInstanceResult {
       'kernelVersion': kernelVersion,
       'loadBalancerDetails': loadBalancerDetails.toMap(),
       'location': location,
-      'messageServerProperties': ?messageServerProperties == null ? null : messageServerProperties!.toMap(),
+      'messageServerProperties': ?messageServerProperties?.toMap(),
       'name': name,
       'provisioningState': provisioningState,
       'status': status,
@@ -123,34 +145,76 @@ class GetSapCentralServerInstanceResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'vmDetails': pulumi.Input.encodeList<CentralServerVmDetailsResponse, Map<String, dynamic>>(vmDetails, (value) => value.toMap()),
+      'vmDetails':
+          pulumi.Input.encodeList<
+            CentralServerVmDetailsResponse,
+            Map<String, dynamic>
+          >(vmDetails, (value) => value.toMap()),
     };
   }
 
   factory GetSapCentralServerInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetSapCentralServerInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      enqueueReplicationServerProperties: map['enqueueReplicationServerProperties'] == null ? null : EnqueueReplicationServerPropertiesResponse.fromMap((map['enqueueReplicationServerProperties']! as Map).cast<String, dynamic>()),
-      enqueueServerProperties: map['enqueueServerProperties'] == null ? null : EnqueueServerPropertiesResponse.fromMap((map['enqueueServerProperties']! as Map).cast<String, dynamic>()),
-      errors: SAPVirtualInstanceErrorResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
-      gatewayServerProperties: map['gatewayServerProperties'] == null ? null : GatewayServerPropertiesResponse.fromMap((map['gatewayServerProperties']! as Map).cast<String, dynamic>()),
+      enqueueReplicationServerProperties: (() {
+        final guardedValue = map['enqueueReplicationServerProperties'];
+        if (guardedValue == null) return null;
+        return EnqueueReplicationServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      enqueueServerProperties: (() {
+        final guardedValue = map['enqueueServerProperties'];
+        if (guardedValue == null) return null;
+        return EnqueueServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      errors: SAPVirtualInstanceErrorResponse.fromMap(
+        (map['errors']! as Map).cast<String, dynamic>(),
+      ),
+      gatewayServerProperties: (() {
+        final guardedValue = map['gatewayServerProperties'];
+        if (guardedValue == null) return null;
+        return GatewayServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       health: map['health'] as String,
       id: map['id'] as String,
       instanceNo: map['instanceNo'] as String,
       kernelPatch: map['kernelPatch'] as String,
       kernelVersion: map['kernelVersion'] as String,
-      loadBalancerDetails: LoadBalancerDetailsResponse.fromMap((map['loadBalancerDetails'] as Map).cast<String, dynamic>()),
+      loadBalancerDetails: LoadBalancerDetailsResponse.fromMap(
+        (map['loadBalancerDetails']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
-      messageServerProperties: map['messageServerProperties'] == null ? null : MessageServerPropertiesResponse.fromMap((map['messageServerProperties']! as Map).cast<String, dynamic>()),
+      messageServerProperties: (() {
+        final guardedValue = map['messageServerProperties'];
+        if (guardedValue == null) return null;
+        return MessageServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       subnet: map['subnet'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      vmDetails: pulumi.Input.decodeList<CentralServerVmDetailsResponse>(map['vmDetails'], (value) => CentralServerVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      vmDetails: pulumi.Input.decodeList<CentralServerVmDetailsResponse>(
+        map['vmDetails']!,
+        (value) => CentralServerVmDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

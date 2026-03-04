@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lite_reservation_args.dart';
 import 'lite_reservation_state.dart';
 
-/// > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
+/// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
 ///
 /// A named resource representing a shared pool of capacity.
 ///
@@ -169,11 +169,14 @@ import 'lite_reservation_state.dart';
 class LiteReservation extends pulumi.CustomResource {
   /// Name of the reservation.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the pubsub lite reservation.
   late final pulumi.Output<String?> region;
+
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
@@ -188,15 +191,15 @@ class LiteReservation extends pulumi.CustomResource {
     LiteReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteReservation:LiteReservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:pubsub/liteReservation:LiteReservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.throughputCapacity = registerOutput<int>('throughputCapacity');
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    throughputCapacity = registerOutput<int>('throughputCapacity');
   }
 
   /// Gets an existing [LiteReservation] resource's state with the given [name] and [id].
@@ -217,14 +220,14 @@ class LiteReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteReservation:LiteReservation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:pubsub/liteReservation:LiteReservation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.throughputCapacity = registerOutput<int>('throughputCapacity');
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    throughputCapacity = registerOutput<int>('throughputCapacity');
   }
 }

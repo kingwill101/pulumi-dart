@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureArcMonitoringSettingsResponse {
   /// Number of alert rules settings.
   final pulumi.Input<int> alertRulesCount;
+
   /// Logs volume settings.
   final pulumi.Input<double> logsVolumeInGB;
 
@@ -26,9 +27,8 @@ class AzureArcMonitoringSettingsResponse {
 
   factory AzureArcMonitoringSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcMonitoringSettingsResponse(
-      alertRulesCount: (map['alertRulesCount'] as int).input(),
-      logsVolumeInGB: (map['logsVolumeInGB'] as double).input(),
+      alertRulesCount: pulumi.Input.fromValue(map['alertRulesCount'] as int),
+      logsVolumeInGB: pulumi.Input.fromValue(map['logsVolumeInGB'] as double),
     );
   }
 }
-

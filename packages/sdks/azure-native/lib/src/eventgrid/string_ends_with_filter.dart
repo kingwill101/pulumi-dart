@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StringEndsWithFilter {
   /// The field/property in the event based on which you want to filter.
   final pulumi.Input<String>? key;
+
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'StringEndsWith'.
   final pulumi.Input<String> operatorType;
+
   /// The set of filter values.
   final pulumi.Input<List<String>>? values;
 
@@ -16,11 +18,7 @@ class StringEndsWithFilter {
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// [values] The set of filter values.
-  StringEndsWithFilter({
-    this.key,
-    required this.operatorType,
-    this.values,
-  });
+  StringEndsWithFilter({this.key, required this.operatorType, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class StringEndsWithFilter {
 
   factory StringEndsWithFilter.fromMap(Map<String, dynamic> map) {
     return StringEndsWithFilter(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      operatorType: (map['operatorType'] as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatorType: pulumi.Input.fromValue(map['operatorType'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

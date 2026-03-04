@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAvailabilityGroupListenerArgs {
   /// Name of the availability group listener.
   final pulumi.Input<String> availabilityGroupListenerName;
+
   /// The child resources to include in the response.
   final pulumi.Input<String>? expand;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the SQL virtual machine group.
   final pulumi.Input<String> sqlVirtualMachineGroupName;
 
@@ -39,11 +42,20 @@ class GetAvailabilityGroupListenerArgs {
 
   factory GetAvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityGroupListenerArgs(
-      availabilityGroupListenerName: (map['availabilityGroupListenerName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
+      availabilityGroupListenerName: pulumi.Input.fromValue(
+        map['availabilityGroupListenerName'] as String,
+      ),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlVirtualMachineGroupName: pulumi.Input.fromValue(
+        map['sqlVirtualMachineGroupName'] as String,
+      ),
     );
   }
 }
-

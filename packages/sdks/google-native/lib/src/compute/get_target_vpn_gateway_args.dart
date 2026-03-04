@@ -31,10 +31,15 @@ class GetTargetVpnGatewayArgs {
 
   factory GetTargetVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetVpnGatewayArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      targetVpnGateway: (map['targetVpnGateway'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      targetVpnGateway: pulumi.Input.fromValue(
+        map['targetVpnGateway'] as String,
+      ),
     );
   }
 }
-

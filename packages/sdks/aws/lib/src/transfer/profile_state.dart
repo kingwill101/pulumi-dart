@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileState {
   /// The ARN of the profile.
   final pulumi.Input<String>? arn;
+
   /// The As2Id is the AS2 name as defined in the RFC 4130. For inbound ttransfers this is the AS2 From Header for the AS2 messages sent from the partner. For Outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. his ID cannot include spaces.
   final pulumi.Input<String>? as2Id;
+
   /// The list of certificate Ids from the imported certificate operation.
   final pulumi.Input<List<String>>? certificateIds;
+
   /// The unique identifier for the AS2 profile.
   final pulumi.Input<String>? profileId;
+
   /// The profile type should be LOCAL or PARTNER.
   final pulumi.Input<String>? profileType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
@@ -55,15 +61,50 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      as2Id: map['as2Id'] == null ? null : ((map['as2Id'] as String).input()).input(),
-      certificateIds: map['certificateIds'] == null ? null : (((map['certificateIds'] as List).cast<String>()).input()).input(),
-      profileId: map['profileId'] == null ? null : ((map['profileId'] as String).input()).input(),
-      profileType: map['profileType'] == null ? null : ((map['profileType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      as2Id: (() {
+        final guardedValue = map['as2Id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateIds: (() {
+        final guardedValue = map['certificateIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      profileId: (() {
+        final guardedValue = map['profileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profileType: (() {
+        final guardedValue = map['profileType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

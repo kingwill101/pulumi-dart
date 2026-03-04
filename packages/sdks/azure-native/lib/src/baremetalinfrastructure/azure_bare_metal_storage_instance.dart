@@ -227,20 +227,30 @@ import 'system_data_response.dart';
 class AzureBareMetalStorageInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the AzureBareMetaStorageInstance unique ID.
-  late final pulumi.Output<String?> azureBareMetalStorageInstanceUniqueIdentifier;
+  late final pulumi.Output<String?>
+  azureBareMetalStorageInstanceUniqueIdentifier;
+
   /// The identity of Azure Bare Metal Storage Instance, if configured.
-  late final pulumi.Output<AzureBareMetalStorageInstanceIdentityResponse?> identity;
+  late final pulumi.Output<AzureBareMetalStorageInstanceIdentityResponse?>
+  identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the storage properties for the AzureBareMetalStorage instance.
   late final pulumi.Output<StoragePropertiesResponse?> storageProperties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -253,19 +263,25 @@ class AzureBareMetalStorageInstance extends pulumi.CustomResource {
     AzureBareMetalStorageInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureBareMetalStorageInstanceUniqueIdentifier = registerOutput<String?>('azureBareMetalStorageInstanceUniqueIdentifier');
-    this.identity = registerOutput<AzureBareMetalStorageInstanceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureBareMetalStorageInstanceUniqueIdentifier = registerOutput<String?>(
+      'azureBareMetalStorageInstanceUniqueIdentifier',
+    );
+    identity = registerOutput<AzureBareMetalStorageInstanceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.storageProperties = registerOutput<StoragePropertiesResponse?>('storageProperties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    storageProperties = registerOutput<StoragePropertiesResponse?>(
+      'storageProperties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

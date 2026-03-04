@@ -39,12 +39,15 @@ class GetRunAiplatformV1beta1Args {
 
   factory GetRunAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetRunAiplatformV1beta1Args(
-      experimentId: (map['experimentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      runId: (map['runId'] as String).input(),
-      tensorboardId: (map['tensorboardId'] as String).input(),
+      experimentId: pulumi.Input.fromValue(map['experimentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runId: pulumi.Input.fromValue(map['runId'] as String),
+      tensorboardId: pulumi.Input.fromValue(map['tensorboardId'] as String),
     );
   }
 }
-

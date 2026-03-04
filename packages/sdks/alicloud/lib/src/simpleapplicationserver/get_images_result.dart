@@ -40,7 +40,10 @@ class GetImagesResult {
       'id': id,
       'ids': ids,
       'imageType': ?imageType,
-      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(
+        images,
+        (value) => value.toMap(),
+      ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -52,13 +55,32 @@ class GetImagesResult {
     return GetImagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageType: map['imageType'] == null ? null : map['imageType']! as String,
-      images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      imageType: (() {
+        final guardedValue = map['imageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      images: pulumi.Input.decodeList<GetImagesImage>(
+        map['images']!,
+        (value) =>
+            GetImagesImage.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      platform: map['platform'] == null ? null : map['platform']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

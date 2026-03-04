@@ -6,6 +6,7 @@ class GetReservationSpecificReservationInstancePropertyGuestAccelerator {
   /// The number of the guest accelerator cards exposed to
   /// this instance.
   final pulumi.Input<int> acceleratorCount;
+
   /// The full or partial URL of the accelerator type to
   /// attach to this instance. For example:
   /// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
@@ -28,11 +29,12 @@ class GetReservationSpecificReservationInstancePropertyGuestAccelerator {
     };
   }
 
-  factory GetReservationSpecificReservationInstancePropertyGuestAccelerator.fromMap(Map<String, dynamic> map) {
+  factory GetReservationSpecificReservationInstancePropertyGuestAccelerator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationSpecificReservationInstancePropertyGuestAccelerator(
-      acceleratorCount: (map['acceleratorCount'] as int).input(),
-      acceleratorType: (map['acceleratorType'] as String).input(),
+      acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as int),
+      acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
     );
   }
 }
-

@@ -6,14 +6,20 @@ import 'response_plan_incident_template_notification_target.dart';
 class ResponsePlanIncidentTemplate {
   /// A string used to stop Incident Manager from creating multiple incident records for the same incident.
   final pulumi.Input<String>? dedupeString;
+
   /// The impact value of a generated incident. The following values are supported:
   final pulumi.Input<int> impact;
+
   /// The tags assigned to an incident template. When an incident starts, Incident Manager assigns the tags specified in the template to the incident.
   final pulumi.Input<Map<String, String>>? incidentTags;
+
   /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
-  final pulumi.Input<List<ResponsePlanIncidentTemplateNotificationTarget>>? notificationTargets;
+  final pulumi.Input<List<ResponsePlanIncidentTemplateNotificationTarget>>?
+  notificationTargets;
+
   /// The summary of an incident.
   final pulumi.Input<String>? summary;
+
   /// The title of a generated incident.
   final pulumi.Input<String> title;
 
@@ -38,7 +44,18 @@ class ResponsePlanIncidentTemplate {
       'dedupeString': ?dedupeString,
       'impact': impact,
       'incidentTags': ?incidentTags,
-      'notificationTargets': ?pulumi.Input.mapOptionalInputValue<List<ResponsePlanIncidentTemplateNotificationTarget>, List<Map<String, dynamic>>>(notificationTargets, (value) => pulumi.Input.encodeList<ResponsePlanIncidentTemplateNotificationTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'notificationTargets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResponsePlanIncidentTemplateNotificationTarget>,
+            List<Map<String, dynamic>>
+          >(
+            notificationTargets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResponsePlanIncidentTemplateNotificationTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'summary': ?summary,
       'title': title,
     };
@@ -46,13 +63,38 @@ class ResponsePlanIncidentTemplate {
 
   factory ResponsePlanIncidentTemplate.fromMap(Map<String, dynamic> map) {
     return ResponsePlanIncidentTemplate(
-      dedupeString: map['dedupeString'] == null ? null : ((map['dedupeString'] as String).input()).input(),
-      impact: (map['impact'] as int).input(),
-      incidentTags: map['incidentTags'] == null ? null : (((map['incidentTags'] as Map).cast<String, String>()).input()).input(),
-      notificationTargets: map['notificationTargets'] == null ? null : ((pulumi.Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(map['notificationTargets']!, (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      summary: map['summary'] == null ? null : ((map['summary'] as String).input()).input(),
-      title: (map['title'] as String).input(),
+      dedupeString: (() {
+        final guardedValue = map['dedupeString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      impact: pulumi.Input.fromValue(map['impact'] as int),
+      incidentTags: (() {
+        final guardedValue = map['incidentTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      notificationTargets: (() {
+        final guardedValue = map['notificationTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(
+            guardedValue,
+            (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

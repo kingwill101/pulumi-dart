@@ -6,9 +6,9 @@ import 'face_config_state.dart';
 ///
 /// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/zh/id-verification/cloudauth/product-overview/end-of-integration-announcement-on-id-verification).
 ///
-/// > **NOTE:** Available since v1.137.0.
+/// &gt; **NOTE:** Available since v1.137.0.
 ///
-/// > **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
+/// &gt; **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
 ///
 /// ## Example Usage
 ///
@@ -243,8 +243,10 @@ import 'face_config_state.dart';
 class FaceConfig extends pulumi.CustomResource {
   /// Scene name.
   late final pulumi.Output<String> bizName;
+
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   late final pulumi.Output<String> bizType;
+
   /// Last Modified Date.
   late final pulumi.Output<String> gmtModified;
 
@@ -257,14 +259,14 @@ class FaceConfig extends pulumi.CustomResource {
     FaceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudauth/faceConfig:FaceConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizName = registerOutput<String>('bizName');
-    this.bizType = registerOutput<String>('bizType');
-    this.gmtModified = registerOutput<String>('gmtModified');
+         'alicloud:cloudauth/faceConfig:FaceConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizName = registerOutput<String>('bizName');
+    bizType = registerOutput<String>('bizType');
+    gmtModified = registerOutput<String>('gmtModified');
   }
 
   /// Gets an existing [FaceConfig] resource's state with the given [name] and [id].
@@ -285,13 +287,13 @@ class FaceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudauth/faceConfig:FaceConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizName = registerOutput<String>('bizName');
-    this.bizType = registerOutput<String>('bizType');
-    this.gmtModified = registerOutput<String>('gmtModified');
+         'alicloud:cloudauth/faceConfig:FaceConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizName = registerOutput<String>('bizName');
+    bizType = registerOutput<String>('bizType');
+    gmtModified = registerOutput<String>('gmtModified');
   }
 }

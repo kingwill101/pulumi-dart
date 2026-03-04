@@ -5,25 +5,37 @@ import 'maximum_execution_frequency_enum_value_response.dart';
 
 /// Definition of ConfigSnapshotDeliveryProperties
 class ConfigSnapshotDeliveryPropertiesResponse {
-  /// <p>The frequency with which Config delivers configuration snapshots.</p>
-  final pulumi.Input<MaximumExecutionFrequencyEnumValueResponse>? deliveryFrequency;
+  /// &lt;p&gt;The frequency with which Config delivers configuration snapshots.&lt;/p&gt;
+  final pulumi.Input<MaximumExecutionFrequencyEnumValueResponse>?
+  deliveryFrequency;
 
   /// Creates a new [ConfigSnapshotDeliveryPropertiesResponse].
-  /// [deliveryFrequency] <p>The frequency with which Config delivers configuration snapshots.</p>
-  ConfigSnapshotDeliveryPropertiesResponse({
-    this.deliveryFrequency,
-  });
+  /// [deliveryFrequency] &lt;p&gt;The frequency with which Config delivers configuration snapshots.&lt;/p&gt;
+  ConfigSnapshotDeliveryPropertiesResponse({this.deliveryFrequency});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveryFrequency': ?pulumi.Input.mapOptionalInputValue<MaximumExecutionFrequencyEnumValueResponse, Map<String, dynamic>>(deliveryFrequency, (value) => value.toMap()),
+      'deliveryFrequency':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaximumExecutionFrequencyEnumValueResponse,
+            Map<String, dynamic>
+          >(deliveryFrequency, (value) => value.toMap()),
     };
   }
 
-  factory ConfigSnapshotDeliveryPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ConfigSnapshotDeliveryPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigSnapshotDeliveryPropertiesResponse(
-      deliveryFrequency: map['deliveryFrequency'] == null ? null : (MaximumExecutionFrequencyEnumValueResponse.fromMap((map['deliveryFrequency']! as Map).cast<String, dynamic>())).input(),
+      deliveryFrequency: (() {
+        final guardedValue = map['deliveryFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaximumExecutionFrequencyEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

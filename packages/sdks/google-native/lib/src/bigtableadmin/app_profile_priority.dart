@@ -5,16 +5,15 @@ enum AppProfilePriority {
   priorityMedium("PRIORITY_MEDIUM"),
   priorityHigh("PRIORITY_HIGH");
 
-  const AppProfilePriority(this.value);
-  final String value;
+  const AppProfilePriority(this.wireValue);
+  final String wireValue;
 
   static AppProfilePriority fromValue(String value) {
     for (final item in AppProfilePriority.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppProfilePriority value: $value');
   }
 }
-

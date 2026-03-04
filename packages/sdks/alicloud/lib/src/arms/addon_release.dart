@@ -6,7 +6,7 @@ import 'addon_release_state.dart';
 ///
 /// For information about ARMS Addon Release and how to use it, see [What is Addon Release](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-installaddon).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -759,16 +759,22 @@ import 'addon_release_state.dart';
 class AddonRelease extends pulumi.CustomResource {
   /// Addon Name.
   late final pulumi.Output<String> addonName;
+
   /// The name of the resource.
   late final pulumi.Output<String> addonReleaseName;
+
   /// Version number of Addon. Addon information can be obtained through ListAddons.
   late final pulumi.Output<String> addonVersion;
+
   /// The installed locale.
   late final pulumi.Output<String> aliyunLang;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// Environment id.
   late final pulumi.Output<String> environmentId;
+
   /// Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
   late final pulumi.Output<String?> values;
 
@@ -781,18 +787,18 @@ class AddonRelease extends pulumi.CustomResource {
     AddonReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/addonRelease:AddonRelease',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonName = registerOutput<String>('addonName');
-    this.addonReleaseName = registerOutput<String>('addonReleaseName');
-    this.addonVersion = registerOutput<String>('addonVersion');
-    this.aliyunLang = registerOutput<String>('aliyunLang');
-    this.createTime = registerOutput<String>('createTime');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.values = registerOutput<String?>('values');
+         'alicloud:arms/addonRelease:AddonRelease',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonName = registerOutput<String>('addonName');
+    addonReleaseName = registerOutput<String>('addonReleaseName');
+    addonVersion = registerOutput<String>('addonVersion');
+    aliyunLang = registerOutput<String>('aliyunLang');
+    createTime = registerOutput<String>('createTime');
+    environmentId = registerOutput<String>('environmentId');
+    values = registerOutput<String?>('values');
   }
 
   /// Gets an existing [AddonRelease] resource's state with the given [name] and [id].
@@ -813,17 +819,17 @@ class AddonRelease extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/addonRelease:AddonRelease',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonName = registerOutput<String>('addonName');
-    this.addonReleaseName = registerOutput<String>('addonReleaseName');
-    this.addonVersion = registerOutput<String>('addonVersion');
-    this.aliyunLang = registerOutput<String>('aliyunLang');
-    this.createTime = registerOutput<String>('createTime');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.values = registerOutput<String?>('values');
+         'alicloud:arms/addonRelease:AddonRelease',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonName = registerOutput<String>('addonName');
+    addonReleaseName = registerOutput<String>('addonReleaseName');
+    addonVersion = registerOutput<String>('addonVersion');
+    aliyunLang = registerOutput<String>('aliyunLang');
+    createTime = registerOutput<String>('createTime');
+    environmentId = registerOutput<String>('environmentId');
+    values = registerOutput<String?>('values');
   }
 }

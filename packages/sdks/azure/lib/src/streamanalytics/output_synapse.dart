@@ -383,7 +383,7 @@ import 'output_synapse_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2021-10-01-preview
@@ -398,18 +398,25 @@ import 'output_synapse_state.dart';
 class OutputSynapse extends pulumi.CustomResource {
   /// The name of the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> database;
+
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The password that will be used to connect to the Azure SQL database.
   late final pulumi.Output<String> password;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the SQL server containing the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> server;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
+
   /// The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> table;
+
   /// The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> user;
 
@@ -422,19 +429,19 @@ class OutputSynapse extends pulumi.CustomResource {
     OutputSynapseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputSynapse:OutputSynapse',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.database = registerOutput<String>('database');
+         'azure:streamanalytics/outputSynapse:OutputSynapse',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String>('table');
-    this.user = registerOutput<String>('user');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String>('user');
   }
 
   /// Gets an existing [OutputSynapse] resource's state with the given [name] and [id].
@@ -455,18 +462,18 @@ class OutputSynapse extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputSynapse:OutputSynapse',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.database = registerOutput<String>('database');
+         'azure:streamanalytics/outputSynapse:OutputSynapse',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String>('table');
-    this.user = registerOutput<String>('user');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String>('user');
   }
 }

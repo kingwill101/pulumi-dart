@@ -1,5 +1,3 @@
-library module_pipes;
-
 export 'pipes/pipe.dart';
 export 'pipes/pipe_args.dart';
 export 'pipes/pipe_enrichment_parameters.dart';

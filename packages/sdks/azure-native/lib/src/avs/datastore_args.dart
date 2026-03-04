@@ -12,16 +12,22 @@ import 'net_app_volume.dart';
 class DatastoreArgs {
   /// Name of the cluster
   final pulumi.Input<String> clusterName;
+
   /// Name of the datastore
   final pulumi.Input<String>? datastoreName;
+
   /// An iSCSI volume
   final pulumi.Input<DiskPoolVolume>? diskPoolVolume;
+
   /// An Elastic SAN volume
   final pulumi.Input<ElasticSanVolume>? elasticSanVolume;
+
   /// An Azure NetApp Files volume
   final pulumi.Input<NetAppVolume>? netAppVolume;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -47,9 +53,21 @@ class DatastoreArgs {
     return <String, dynamic>{
       'clusterName': clusterName,
       'datastoreName': ?datastoreName,
-      'diskPoolVolume': ?pulumi.Input.mapOptionalInputValue<DiskPoolVolume, Map<String, dynamic>>(diskPoolVolume, (value) => value.toMap()),
-      'elasticSanVolume': ?pulumi.Input.mapOptionalInputValue<ElasticSanVolume, Map<String, dynamic>>(elasticSanVolume, (value) => value.toMap()),
-      'netAppVolume': ?pulumi.Input.mapOptionalInputValue<NetAppVolume, Map<String, dynamic>>(netAppVolume, (value) => value.toMap()),
+      'diskPoolVolume':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskPoolVolume,
+            Map<String, dynamic>
+          >(diskPoolVolume, (value) => value.toMap()),
+      'elasticSanVolume':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticSanVolume,
+            Map<String, dynamic>
+          >(elasticSanVolume, (value) => value.toMap()),
+      'netAppVolume':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetAppVolume,
+            Map<String, dynamic>
+          >(netAppVolume, (value) => value.toMap()),
       'privateCloudName': privateCloudName,
       'resourceGroupName': resourceGroupName,
     };
@@ -57,14 +75,41 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
-      diskPoolVolume: map['diskPoolVolume'] == null ? null : (DiskPoolVolume.fromMap((map['diskPoolVolume']! as Map).cast<String, dynamic>())).input(),
-      elasticSanVolume: map['elasticSanVolume'] == null ? null : (ElasticSanVolume.fromMap((map['elasticSanVolume']! as Map).cast<String, dynamic>())).input(),
-      netAppVolume: map['netAppVolume'] == null ? null : (NetAppVolume.fromMap((map['netAppVolume']! as Map).cast<String, dynamic>())).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      datastoreName: (() {
+        final guardedValue = map['datastoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskPoolVolume: (() {
+        final guardedValue = map['diskPoolVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskPoolVolume.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      elasticSanVolume: (() {
+        final guardedValue = map['elasticSanVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticSanVolume.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      netAppVolume: (() {
+        final guardedValue = map['netAppVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetAppVolume.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

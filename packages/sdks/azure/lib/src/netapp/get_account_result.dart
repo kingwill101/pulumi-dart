@@ -7,6 +7,7 @@ class GetAccountResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final GetAccountIdentity? identity;
+
   /// The Azure Region where the NetApp Account exists.
   final String location;
   final String name;
@@ -32,7 +33,7 @@ class GetAccountResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -43,7 +44,13 @@ class GetAccountResult {
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : GetAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return GetAccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -51,4 +58,3 @@ class GetAccountResult {
     );
   }
 }
-

@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getStorageContainer.
 class GetStorageContainerResult {
   /// The Access Level configured for this Container.
   final String containerAccessType;
+
   /// The default encryption scope in use for blobs uploaded to this container.
   final String defaultEncryptionScope;
+
   /// Whether blobs are allowed to override the default encryption scope for this container.
   final bool encryptionScopeOverrideEnabled;
+
   /// Is there an Immutability Policy configured on this Storage Container?
   final bool hasImmutabilityPolicy;
+
   /// Is there a Legal Hold configured on this Storage Container?
   final bool hasLegalHold;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A mapping of MetaData for this Container.
   final Map<String, String> metadata;
   final String name;
@@ -68,16 +73,24 @@ class GetStorageContainerResult {
     return GetStorageContainerResult(
       containerAccessType: map['containerAccessType'] as String,
       defaultEncryptionScope: map['defaultEncryptionScope'] as String,
-      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] as bool,
+      encryptionScopeOverrideEnabled:
+          map['encryptionScopeOverrideEnabled'] as bool,
       hasImmutabilityPolicy: map['hasImmutabilityPolicy'] as bool,
       hasLegalHold: map['hasLegalHold'] as bool,
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName']! as String,
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -5,16 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrawlerCatalogTarget {
   /// The name of the connection for an Amazon S3-backed Data Catalog table to be a target of the crawl when using a Catalog connection type paired with a `NETWORK` Connection type.
   final pulumi.Input<String>? connectionName;
+
   /// The name of the Glue database to be synchronized.
   final pulumi.Input<String> databaseName;
+
   /// A valid Amazon SQS ARN.
   ///
-  /// > **Note:** `deletion_behavior` of catalog target doesn't support `DEPRECATE_IN_DATABASE`.
+  /// &gt; **Note:** `deletion_behavior` of catalog target doesn't support `DEPRECATE_IN_DATABASE`.
   ///
-  /// > **Note:** `configuration` for catalog target crawlers will have `{ ... "Grouping": { "TableGroupingPolicy": "CombineCompatibleSchemas"} }` by default.
+  /// &gt; **Note:** `configuration` for catalog target crawlers will have `{ ... "Grouping": { "TableGroupingPolicy": "CombineCompatibleSchemas"} }` by default.
   final pulumi.Input<String>? dlqEventQueueArn;
+
   /// A valid Amazon SQS ARN.
   final pulumi.Input<String>? eventQueueArn;
+
   /// A list of catalog tables to be synchronized.
   final pulumi.Input<List<String>> tables;
 
@@ -44,12 +48,23 @@ class CrawlerCatalogTarget {
 
   factory CrawlerCatalogTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerCatalogTarget(
-      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : ((map['dlqEventQueueArn'] as String).input()).input(),
-      eventQueueArn: map['eventQueueArn'] == null ? null : ((map['eventQueueArn'] as String).input()).input(),
-      tables: ((map['tables'] as List).cast<String>()).input(),
+      connectionName: (() {
+        final guardedValue = map['connectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      dlqEventQueueArn: (() {
+        final guardedValue = map['dlqEventQueueArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventQueueArn: (() {
+        final guardedValue = map['eventQueueArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tables: pulumi.Input.fromValue((map['tables'] as List).cast<String>()),
     );
   }
 }
-

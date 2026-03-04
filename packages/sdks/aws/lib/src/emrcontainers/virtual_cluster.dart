@@ -164,14 +164,19 @@ import 'virtual_cluster_state.dart';
 class VirtualCluster extends pulumi.CustomResource {
   /// ARN of the cluster.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the container provider associated with your cluster.
   late final pulumi.Output<VirtualClusterContainerProvider> containerProvider;
+
   /// Name of the virtual cluster.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -184,17 +189,19 @@ class VirtualCluster extends pulumi.CustomResource {
     VirtualClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:emrcontainers/virtualCluster:VirtualCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider');
+         'aws:emrcontainers/virtualCluster:VirtualCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    containerProvider = registerOutput<VirtualClusterContainerProvider>(
+      'containerProvider',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [VirtualCluster] resource's state with the given [name] and [id].
@@ -215,16 +222,18 @@ class VirtualCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:emrcontainers/virtualCluster:VirtualCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider');
+         'aws:emrcontainers/virtualCluster:VirtualCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    containerProvider = registerOutput<VirtualClusterContainerProvider>(
+      'containerProvider',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

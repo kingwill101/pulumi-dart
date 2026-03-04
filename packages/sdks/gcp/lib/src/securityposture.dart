@@ -1,5 +1,3 @@
-library module_securityposture;
-
 export 'securityposture/posture.dart';
 export 'securityposture/posture_args.dart';
 export 'securityposture/posture_deployment.dart';

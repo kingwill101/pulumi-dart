@@ -5,26 +5,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssetsAsset {
   /// The ID of the cluster.
   final pulumi.Input<String> clusterId;
+
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// The UUID of the asset.
   final pulumi.Input<String> id;
+
   /// The ID of the asset.
   final pulumi.Input<String> instanceId;
+
   /// The name of the asset.
   final pulumi.Input<String> instanceName;
+
   /// The public IP address of the asset.
   final pulumi.Input<String> internetIp;
+
   /// The private IP address of the asset.
   final pulumi.Input<String> intranetIp;
+
   /// The status of the asset. Valid values:
   /// - **Running**: running
   /// - **notRunning**: stopped
   final pulumi.Input<String> status;
+
   /// The UUID of the asset. Same as `id`.
   final pulumi.Input<String> uuid;
+
   /// The ID of the VPC to which the asset belongs.
   final pulumi.Input<String> vpcInstanceId;
 
@@ -72,18 +82,17 @@ class GetAssetsAsset {
 
   factory GetAssetsAsset.fromMap(Map<String, dynamic> map) {
     return GetAssetsAsset(
-      clusterId: (map['clusterId'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      internetIp: (map['internetIp'] as String).input(),
-      intranetIp: (map['intranetIp'] as String).input(),
-      status: (map['status'] as String).input(),
-      uuid: (map['uuid'] as String).input(),
-      vpcInstanceId: (map['vpcInstanceId'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      internetIp: pulumi.Input.fromValue(map['internetIp'] as String),
+      intranetIp: pulumi.Input.fromValue(map['intranetIp'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
+      vpcInstanceId: pulumi.Input.fromValue(map['vpcInstanceId'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_education;
-
 export 'education/amount.dart';
 export 'education/amount_response.dart';
 export 'education/functions.dart';

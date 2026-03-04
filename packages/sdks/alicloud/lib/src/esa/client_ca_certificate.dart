@@ -8,7 +8,7 @@ import 'client_ca_certificate_state.dart';
 ///
 /// For information about ESA Client Ca Certificate and how to use it, see [What is Client Ca Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/UploadClientCaCertificate).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -168,14 +168,19 @@ import 'client_ca_certificate_state.dart';
 class ClientCaCertificate extends pulumi.CustomResource {
   /// Certificate content.
   late final pulumi.Output<String> certificate;
+
   /// ClientCaCertificate Id
   late final pulumi.Output<String> clientCaCertId;
+
   /// The certificate name.
   late final pulumi.Output<String?> clientCaCertName;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// Site Id
   late final pulumi.Output<String> siteId;
+
   /// Certificate status.
   late final pulumi.Output<String> status;
 
@@ -188,17 +193,17 @@ class ClientCaCertificate extends pulumi.CustomResource {
     ClientCaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/clientCaCertificate:ClientCaCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.clientCaCertId = registerOutput<String>('clientCaCertId');
-    this.clientCaCertName = registerOutput<String?>('clientCaCertName');
-    this.createTime = registerOutput<String>('createTime');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/clientCaCertificate:ClientCaCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    clientCaCertId = registerOutput<String>('clientCaCertId');
+    clientCaCertName = registerOutput<String?>('clientCaCertName');
+    createTime = registerOutput<String>('createTime');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ClientCaCertificate] resource's state with the given [name] and [id].
@@ -219,16 +224,16 @@ class ClientCaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/clientCaCertificate:ClientCaCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.clientCaCertId = registerOutput<String>('clientCaCertId');
-    this.clientCaCertName = registerOutput<String?>('clientCaCertName');
-    this.createTime = registerOutput<String>('createTime');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/clientCaCertificate:ClientCaCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    clientCaCertId = registerOutput<String>('clientCaCertId');
+    clientCaCertName = registerOutput<String?>('clientCaCertName');
+    createTime = registerOutput<String>('createTime');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 }

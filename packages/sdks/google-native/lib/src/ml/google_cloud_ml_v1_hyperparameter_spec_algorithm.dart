@@ -4,16 +4,17 @@ enum GoogleCloudMlV1HyperparameterSpecAlgorithm {
   gridSearch("GRID_SEARCH"),
   randomSearch("RANDOM_SEARCH");
 
-  const GoogleCloudMlV1HyperparameterSpecAlgorithm(this.value);
-  final String value;
+  const GoogleCloudMlV1HyperparameterSpecAlgorithm(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1HyperparameterSpecAlgorithm fromValue(String value) {
     for (final item in GoogleCloudMlV1HyperparameterSpecAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1HyperparameterSpecAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1HyperparameterSpecAlgorithm value: $value',
+    );
   }
 }
-

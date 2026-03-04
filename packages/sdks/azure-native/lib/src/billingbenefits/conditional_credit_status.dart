@@ -10,16 +10,15 @@ enum ConditionalCreditStatus {
   valueStopped("Stopped"),
   valuePendingSettlement("PendingSettlement");
 
-  const ConditionalCreditStatus(this.value);
-  final String value;
+  const ConditionalCreditStatus(this.wireValue);
+  final String wireValue;
 
   static ConditionalCreditStatus fromValue(String value) {
     for (final item in ConditionalCreditStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionalCreditStatus value: $value');
   }
 }
-

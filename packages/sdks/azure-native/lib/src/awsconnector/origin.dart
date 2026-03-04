@@ -3,16 +3,15 @@ enum Origin {
   aWSKMS("AWS_KMS"),
   eXTERNAL("EXTERNAL");
 
-  const Origin(this.value);
-  final String value;
+  const Origin(this.wireValue);
+  final String wireValue;
 
   static Origin fromValue(String value) {
     for (final item in Origin.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Origin value: $value');
   }
 }
-

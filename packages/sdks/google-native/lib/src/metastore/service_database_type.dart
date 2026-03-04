@@ -4,16 +4,15 @@ enum ServiceDatabaseType {
   mysql("MYSQL"),
   spanner("SPANNER");
 
-  const ServiceDatabaseType(this.value);
-  final String value;
+  const ServiceDatabaseType(this.wireValue);
+  final String wireValue;
 
   static ServiceDatabaseType fromValue(String value) {
     for (final item in ServiceDatabaseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceDatabaseType value: $value');
   }
 }
-

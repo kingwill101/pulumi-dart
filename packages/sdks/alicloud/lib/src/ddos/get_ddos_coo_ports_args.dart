@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooPortsArgs {
   /// The forwarding port.
   final pulumi.Input<String>? frontendPort;
+
   /// The forwarding protocol. Valid values `tcp` and `udp`.
   final pulumi.Input<String>? frontendProtocol;
+
   /// A list of Port IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The DdosCoo instance ID.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -44,12 +48,27 @@ class GetDdosCooPortsArgs {
 
   factory GetDdosCooPortsArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsArgs(
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as String).input(),
-      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      frontendPort: (() {
+        final guardedValue = map['frontendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frontendProtocol: (() {
+        final guardedValue = map['frontendProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

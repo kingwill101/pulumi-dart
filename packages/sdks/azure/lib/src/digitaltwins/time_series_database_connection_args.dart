@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeSeriesDatabaseConnectionArgs {
   /// The ID of the Digital Twins. Changing this forces a new resource to be created.
   final pulumi.Input<String> digitalTwinsId;
+
   /// Name of the Event Hub Consumer Group. Changing this forces a new resource to be created. Defaults to `$Default`.
   final pulumi.Input<String>? eventhubConsumerGroupName;
+
   /// Name of the Event Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubName;
+
   /// URI of the Event Hub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubNamespaceEndpointUri;
+
   /// The ID of the Event Hub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubNamespaceId;
+
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> kustoClusterId;
+
   /// URI of the Kusto Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> kustoClusterUri;
+
   /// Name of the Kusto Database. Changing this forces a new resource to be created.
   final pulumi.Input<String> kustoDatabaseName;
+
   /// Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? kustoTableName;
+
   /// The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
 
@@ -69,17 +78,34 @@ class TimeSeriesDatabaseConnectionArgs {
 
   factory TimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionArgs(
-      digitalTwinsId: (map['digitalTwinsId'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
-      eventhubName: (map['eventhubName'] as String).input(),
-      eventhubNamespaceEndpointUri: (map['eventhubNamespaceEndpointUri'] as String).input(),
-      eventhubNamespaceId: (map['eventhubNamespaceId'] as String).input(),
-      kustoClusterId: (map['kustoClusterId'] as String).input(),
-      kustoClusterUri: (map['kustoClusterUri'] as String).input(),
-      kustoDatabaseName: (map['kustoDatabaseName'] as String).input(),
-      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      digitalTwinsId: pulumi.Input.fromValue(map['digitalTwinsId'] as String),
+      eventhubConsumerGroupName: (() {
+        final guardedValue = map['eventhubConsumerGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventhubName: pulumi.Input.fromValue(map['eventhubName'] as String),
+      eventhubNamespaceEndpointUri: pulumi.Input.fromValue(
+        map['eventhubNamespaceEndpointUri'] as String,
+      ),
+      eventhubNamespaceId: pulumi.Input.fromValue(
+        map['eventhubNamespaceId'] as String,
+      ),
+      kustoClusterId: pulumi.Input.fromValue(map['kustoClusterId'] as String),
+      kustoClusterUri: pulumi.Input.fromValue(map['kustoClusterUri'] as String),
+      kustoDatabaseName: pulumi.Input.fromValue(
+        map['kustoDatabaseName'] as String,
+      ),
+      kustoTableName: (() {
+        final guardedValue = map['kustoTableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum AutoUpdateRingType {
   slow("Slow"),
   fast("Fast");
 
-  const AutoUpdateRingType(this.value);
-  final String value;
+  const AutoUpdateRingType(this.wireValue);
+  final String wireValue;
 
   static AutoUpdateRingType fromValue(String value) {
     for (final item in AutoUpdateRingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoUpdateRingType value: $value');
   }
 }
-

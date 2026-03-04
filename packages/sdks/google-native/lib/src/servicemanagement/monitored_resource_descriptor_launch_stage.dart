@@ -9,16 +9,17 @@ enum MonitoredResourceDescriptorLaunchStage {
   ga("GA"),
   deprecated("DEPRECATED");
 
-  const MonitoredResourceDescriptorLaunchStage(this.value);
-  final String value;
+  const MonitoredResourceDescriptorLaunchStage(this.wireValue);
+  final String wireValue;
 
   static MonitoredResourceDescriptorLaunchStage fromValue(String value) {
     for (final item in MonitoredResourceDescriptorLaunchStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoredResourceDescriptorLaunchStage value: $value');
+    throw ArgumentError(
+      'Unknown MonitoredResourceDescriptorLaunchStage value: $value',
+    );
   }
 }
-

@@ -12,9 +12,9 @@ import 'get_stores_result.dart';
 ///
 /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 ///
-/// > **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+/// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
 ///
-/// > **NOTE:** Available since v1.161.0.
+/// &gt; **NOTE:** Available since v1.161.0.
 ///
 /// ## Example Usage
 ///
@@ -127,7 +127,7 @@ Future<GetAlertResourceResult> getAlertResource(
 
 /// This data source provides the Log Projects of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.126.0+.
+/// &gt; **NOTE:** Available in v1.126.0+.
 ///
 /// ## Example Usage
 ///
@@ -254,7 +254,7 @@ Future<GetProjectsResult> getProjects(
 ///
 /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 ///
-/// > **NOTE:** Available since v1.96.0
+/// &gt; **NOTE:** Available since v1.96.0
 ///
 /// ## Example Usage
 ///
@@ -361,7 +361,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Log Stores of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.126.0+.
+/// &gt; **NOTE:** Available in v1.126.0+.
 ///
 /// ## Example Usage
 ///

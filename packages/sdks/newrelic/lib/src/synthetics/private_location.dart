@@ -110,18 +110,25 @@ import 'private_location_state.dart';
 class PrivateLocation extends pulumi.CustomResource {
   /// The account in which the private location will be created.
   late final pulumi.Output<String> accountId;
+
   /// The private location description.
   late final pulumi.Output<String> description;
+
   /// The private location globally unique identifier.
   late final pulumi.Output<String> domainId;
+
   /// The unique client identifier for the private location in New Relic. Same as `id`.
   late final pulumi.Output<String> guid;
+
   /// The private locations key.
   late final pulumi.Output<String> key;
+
   /// An alternate identifier based on name.
   late final pulumi.Output<String> locationId;
+
   /// The name of the private location.
   late final pulumi.Output<String> name;
+
   /// The private location requires a password to edit if value is true. Defaults to `false`
   late final pulumi.Output<bool?> verifiedScriptExecution;
 
@@ -134,19 +141,19 @@ class PrivateLocation extends pulumi.CustomResource {
     PrivateLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/privateLocation:PrivateLocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.guid = registerOutput<String>('guid');
-    this.key = registerOutput<String>('key');
-    this.locationId = registerOutput<String>('locationId');
+         'newrelic:synthetics/privateLocation:PrivateLocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String>('description');
+    domainId = registerOutput<String>('domainId');
+    guid = registerOutput<String>('guid');
+    key = registerOutput<String>('key');
+    locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
-    this.verifiedScriptExecution = registerOutput<bool?>('verifiedScriptExecution');
+    verifiedScriptExecution = registerOutput<bool?>('verifiedScriptExecution');
   }
 
   /// Gets an existing [PrivateLocation] resource's state with the given [name] and [id].
@@ -167,18 +174,18 @@ class PrivateLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/privateLocation:PrivateLocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.guid = registerOutput<String>('guid');
-    this.key = registerOutput<String>('key');
-    this.locationId = registerOutput<String>('locationId');
+         'newrelic:synthetics/privateLocation:PrivateLocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String>('description');
+    domainId = registerOutput<String>('domainId');
+    guid = registerOutput<String>('guid');
+    key = registerOutput<String>('key');
+    locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
-    this.verifiedScriptExecution = registerOutput<bool?>('verifiedScriptExecution');
+    verifiedScriptExecution = registerOutput<bool?>('verifiedScriptExecution');
   }
 }

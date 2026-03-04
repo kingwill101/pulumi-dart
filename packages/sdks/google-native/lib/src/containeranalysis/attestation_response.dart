@@ -9,20 +9,25 @@ class AttestationResponse {
 
   /// Creates a new [AttestationResponse].
   /// [pgpSignedAttestation] Required.
-  AttestationResponse({
-    required this.pgpSignedAttestation,
-  });
+  AttestationResponse({required this.pgpSignedAttestation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pgpSignedAttestation': pulumi.Input.mapInputValue<PgpSignedAttestationResponse, Map<String, dynamic>>(pgpSignedAttestation, (value) => value.toMap()),
+      'pgpSignedAttestation':
+          pulumi.Input.mapInputValue<
+            PgpSignedAttestationResponse,
+            Map<String, dynamic>
+          >(pgpSignedAttestation, (value) => value.toMap()),
     };
   }
 
   factory AttestationResponse.fromMap(Map<String, dynamic> map) {
     return AttestationResponse(
-      pgpSignedAttestation: (PgpSignedAttestationResponse.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>())).input(),
+      pgpSignedAttestation: pulumi.Input.fromValue(
+        PgpSignedAttestationResponse.fromMap(
+          (map['pgpSignedAttestation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

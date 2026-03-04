@@ -31,10 +31,17 @@ class GetPolicyDnsV1beta2Args {
 
   factory GetPolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetPolicyDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
-      policy: (map['policy'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clientOperationId: (() {
+        final guardedValue = map['clientOperationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

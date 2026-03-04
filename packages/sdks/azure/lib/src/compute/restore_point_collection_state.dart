@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestorePointCollectionState {
   /// The Azure location where the Virtual Machine Restore Point Collection should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Virtual Machine Restore Point Collection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group in which the Virtual Machine Restore Point Collection should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The ID of the virtual machine that will be associated with this Virtual Machine Restore Point Collection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sourceVirtualMachineId;
+
   /// A mapping of tags which should be assigned to this Virtual Machine Restore Point Collection.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,12 +45,33 @@ class RestorePointCollectionState {
 
   factory RestorePointCollectionState.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionState(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceVirtualMachineId: (() {
+        final guardedValue = map['sourceVirtualMachineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

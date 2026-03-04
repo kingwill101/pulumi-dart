@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileMetadataResponse {
   /// Indicates whether the file was deleted from the storage account.
   final pulumi.Input<String> deleteStatus;
+
   /// A URI with a valid SAS token to allow uploading / downloading the file.
   final pulumi.Input<String> fileContentUri;
+
   /// The format of the file
   final pulumi.Input<String>? fileFormat;
+
   /// The name of the file.
   final pulumi.Input<String>? fileName;
+
   /// The size of the file.
   final pulumi.Input<int>? fileSize;
 
@@ -41,12 +45,23 @@ class FileMetadataResponse {
 
   factory FileMetadataResponse.fromMap(Map<String, dynamic> map) {
     return FileMetadataResponse(
-      deleteStatus: (map['deleteStatus'] as String).input(),
-      fileContentUri: (map['fileContentUri'] as String).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
-      fileSize: map['fileSize'] == null ? null : (map['fileSize']! as int).input(),
+      deleteStatus: pulumi.Input.fromValue(map['deleteStatus'] as String),
+      fileContentUri: pulumi.Input.fromValue(map['fileContentUri'] as String),
+      fileFormat: (() {
+        final guardedValue = map['fileFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileSize: (() {
+        final guardedValue = map['fileSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

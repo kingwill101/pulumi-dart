@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileNoteResponse {
   /// Provide a unique identifier to match analysis information on each specific file in a package
   final pulumi.Input<List<String>> checksum;
+
   /// This field provides information about the type of file identified
   final pulumi.Input<String> fileType;
+
   /// Identify the full path and filename that corresponds to the file information in this section
   final pulumi.Input<String> title;
 
@@ -31,10 +33,11 @@ class FileNoteResponse {
 
   factory FileNoteResponse.fromMap(Map<String, dynamic> map) {
     return FileNoteResponse(
-      checksum: ((map['checksum'] as List).cast<String>()).input(),
-      fileType: (map['fileType'] as String).input(),
-      title: (map['title'] as String).input(),
+      checksum: pulumi.Input.fromValue(
+        (map['checksum'] as List).cast<String>(),
+      ),
+      fileType: pulumi.Input.fromValue(map['fileType'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

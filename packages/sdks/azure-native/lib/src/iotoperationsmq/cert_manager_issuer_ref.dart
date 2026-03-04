@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertManagerIssuerRef {
   /// group of issuer.
   final pulumi.Input<String> group;
+
   /// kind of issuer (Issuer or ClusterIssuer).
   final pulumi.Input<String> kind;
+
   /// name of issuer.
   final pulumi.Input<String> name;
 
@@ -22,19 +24,14 @@ class CertManagerIssuerRef {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'group': group,
-      'kind': kind,
-      'name': name,
-    };
+    return <String, dynamic>{'group': group, 'kind': kind, 'name': name};
   }
 
   factory CertManagerIssuerRef.fromMap(Map<String, dynamic> map) {
     return CertManagerIssuerRef(
-      group: (map['group'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
+      group: pulumi.Input.fromValue(map['group'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

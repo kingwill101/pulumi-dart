@@ -8,6 +8,7 @@ class AppVersionSnapshotExampleMessage {
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotExampleMessageChunk>>? chunks;
+
   /// (Output)
   /// The role within the conversation, e.g., user, agent.
   final pulumi.Input<String>? role;
@@ -15,23 +16,45 @@ class AppVersionSnapshotExampleMessage {
   /// Creates a new [AppVersionSnapshotExampleMessage].
   /// [chunks] (Output)
   /// [role] (Output)
-  AppVersionSnapshotExampleMessage({
-    this.chunks,
-    this.role,
-  });
+  AppVersionSnapshotExampleMessage({this.chunks, this.role});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chunks': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunk>, List<Map<String, dynamic>>>(chunks, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'chunks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotExampleMessageChunk>,
+            List<Map<String, dynamic>>
+          >(
+            chunks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotExampleMessageChunk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'role': ?role,
     };
   }
 
   factory AppVersionSnapshotExampleMessage.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessage(
-      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunk>(map['chunks']!, (value) => AppVersionSnapshotExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      chunks: (() {
+        final guardedValue = map['chunks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunk>(
+            guardedValue,
+            (value) => AppVersionSnapshotExampleMessageChunk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

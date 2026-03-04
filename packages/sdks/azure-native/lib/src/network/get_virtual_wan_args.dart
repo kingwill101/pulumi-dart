@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualWanArgs {
   /// The resource group name of the VirtualWan.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the VirtualWAN being retrieved.
   final pulumi.Input<String> virtualWANName;
 
@@ -29,9 +30,10 @@ class GetVirtualWanArgs {
 
   factory GetVirtualWanArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualWanArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualWANName: (map['virtualWANName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualWANName: pulumi.Input.fromValue(map['virtualWANName'] as String),
     );
   }
 }
-

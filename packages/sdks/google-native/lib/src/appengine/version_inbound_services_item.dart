@@ -9,16 +9,15 @@ enum VersionInboundServicesItem {
   inboundServiceChannelPresence("INBOUND_SERVICE_CHANNEL_PRESENCE"),
   inboundServiceWarmup("INBOUND_SERVICE_WARMUP");
 
-  const VersionInboundServicesItem(this.value);
-  final String value;
+  const VersionInboundServicesItem(this.wireValue);
+  final String wireValue;
 
   static VersionInboundServicesItem fromValue(String value) {
     for (final item in VersionInboundServicesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionInboundServicesItem value: $value');
   }
 }
-

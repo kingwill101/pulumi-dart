@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListInferenceGroupDeltaModelsAsyncArgs {
   /// Gets or sets number of delta models to return. Default: -1, means that all will be returned.
   final pulumi.Input<int>? count;
+
   /// InferenceGroup name.
   final pulumi.Input<String> groupName;
+
   /// InferencePool name.
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets skip token for paginated response.
   final pulumi.Input<String>? skipToken;
+
   /// Gets or sets target base model.
   final pulumi.Input<String>? targetBaseModel;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -52,16 +58,31 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
     };
   }
 
-  factory ListInferenceGroupDeltaModelsAsyncArgs.fromMap(Map<String, dynamic> map) {
+  factory ListInferenceGroupDeltaModelsAsyncArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListInferenceGroupDeltaModelsAsyncArgs(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      groupName: (map['groupName'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
-      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetBaseModel: (() {
+        final guardedValue = map['targetBaseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

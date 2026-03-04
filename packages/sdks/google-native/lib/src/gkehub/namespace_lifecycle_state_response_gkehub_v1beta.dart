@@ -9,20 +9,17 @@ class NamespaceLifecycleStateResponseGkehubV1beta {
 
   /// Creates a new [NamespaceLifecycleStateResponseGkehubV1beta].
   /// [code] The current state of the Namespace resource.
-  NamespaceLifecycleStateResponseGkehubV1beta({
-    required this.code,
-  });
+  NamespaceLifecycleStateResponseGkehubV1beta({required this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-    };
+    return <String, dynamic>{'code': code};
   }
 
-  factory NamespaceLifecycleStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory NamespaceLifecycleStateResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespaceLifecycleStateResponseGkehubV1beta(
-      code: (map['code'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
-

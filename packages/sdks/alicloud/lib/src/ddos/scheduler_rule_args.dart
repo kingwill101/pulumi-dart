@@ -10,15 +10,19 @@ import 'scheduler_rule_rule.dart';
 class SchedulerRuleArgs {
   /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
   final pulumi.Input<String>? param;
+
   /// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of the rule.
   final pulumi.Input<String> ruleName;
+
   /// The rule type. Valid values:
   /// `2`: tiered protection.
   /// `3`: globalization acceleration.
   /// `6`: Cloud product interaction.
   final pulumi.Input<int> ruleType;
+
   /// The information about the scheduling rules. See `rules` below.
   final pulumi.Input<List<SchedulerRuleRule>> rules;
 
@@ -42,18 +46,42 @@ class SchedulerRuleArgs {
       'resourceGroupId': ?resourceGroupId,
       'ruleName': ruleName,
       'ruleType': ruleType,
-      'rules': pulumi.Input.mapInputValue<List<SchedulerRuleRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<SchedulerRuleRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<SchedulerRuleRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SchedulerRuleRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SchedulerRuleArgs.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleArgs(
-      param: map['param'] == null ? null : (map['param']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      ruleName: (map['ruleName'] as String).input(),
-      ruleType: (map['ruleType'] as int).input(),
-      rules: (pulumi.Input.decodeList<SchedulerRuleRule>(map['rules'], (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      param: (() {
+        final guardedValue = map['param'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as int),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SchedulerRuleRule>(
+          map['rules']!,
+          (value) =>
+              SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

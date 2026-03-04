@@ -10,20 +10,25 @@ class ListenerRuleMatch {
 
   /// Creates a new [ListenerRuleMatch].
   /// [httpMatch] The HTTP criteria that a rule must match.
-  ListenerRuleMatch({
-    required this.httpMatch,
-  });
+  ListenerRuleMatch({required this.httpMatch});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpMatch': pulumi.Input.mapInputValue<ListenerRuleMatchHttpMatch, Map<String, dynamic>>(httpMatch, (value) => value.toMap()),
+      'httpMatch':
+          pulumi.Input.mapInputValue<
+            ListenerRuleMatchHttpMatch,
+            Map<String, dynamic>
+          >(httpMatch, (value) => value.toMap()),
     };
   }
 
   factory ListenerRuleMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatch(
-      httpMatch: (ListenerRuleMatchHttpMatch.fromMap((map['httpMatch']! as Map).cast<String, dynamic>())).input(),
+      httpMatch: pulumi.Input.fromValue(
+        ListenerRuleMatchHttpMatch.fromMap(
+          (map['httpMatch']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

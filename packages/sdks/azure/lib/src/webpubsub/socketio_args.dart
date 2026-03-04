@@ -11,37 +11,51 @@ import 'socketio_sku.dart';
 class SocketioArgs {
   /// Whether Azure Active Directory authentication is enabled. Defaults to `true`.
   final pulumi.Input<bool>? aadAuthEnabled;
+
   /// An `identity` block as defined below.
   final pulumi.Input<SocketioIdentity>? identity;
+
   /// Whether the connectivity log category for live trace is enabled. Defaults to `true`.
   final pulumi.Input<bool>? liveTraceConnectivityLogsEnabled;
+
   /// Whether the live trace tool is enabled. Defaults to `true`.
   final pulumi.Input<bool>? liveTraceEnabled;
+
   /// Whether the HTTP request log category for live trace is enabled. Defaults to `true`.
   final pulumi.Input<bool>? liveTraceHttpRequestLogsEnabled;
+
   /// Whether the messaging log category for live trace is enabled. Defaults to `true`.
   final pulumi.Input<bool>? liveTraceMessagingLogsEnabled;
+
   /// Whether local authentication using an access key is enabled. Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
+
   /// The Azure Region where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Web PubSub Service. Changing this forces a new Web PubSub Service to be created.
   final pulumi.Input<String>? name;
+
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
-  /// > **Note:** `public_network_access` cannot be set to `Disabled` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `public_network_access` cannot be set to `Disabled` when `sku` is `Free_F1`.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the Resource Group where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The service mode of this Web PubSub Service. Defaults to `Default`. Possible values are `Default` and `Serverless`.
   final pulumi.Input<String>? serviceMode;
+
   /// One or more `sku` blocks as defined below.
   final pulumi.Input<SocketioSku> sku;
+
   /// A mapping of tags which should be assigned to the Web PubSub Service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
-  /// > **Note:** `tls_client_cert_enabled` cannot be set to `true` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` when `sku` is `Free_F1`.
   final pulumi.Input<bool>? tlsClientCertEnabled;
 
   /// Creates a new [SocketioArgs].
@@ -81,7 +95,11 @@ class SocketioArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aadAuthEnabled': ?aadAuthEnabled,
-      'identity': ?pulumi.Input.mapOptionalInputValue<SocketioIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SocketioIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'liveTraceConnectivityLogsEnabled': ?liveTraceConnectivityLogsEnabled,
       'liveTraceEnabled': ?liveTraceEnabled,
       'liveTraceHttpRequestLogsEnabled': ?liveTraceHttpRequestLogsEnabled,
@@ -92,7 +110,10 @@ class SocketioArgs {
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
       'serviceMode': ?serviceMode,
-      'sku': pulumi.Input.mapInputValue<SocketioSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<SocketioSku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
       'tlsClientCertEnabled': ?tlsClientCertEnabled,
     };
@@ -100,22 +121,83 @@ class SocketioArgs {
 
   factory SocketioArgs.fromMap(Map<String, dynamic> map) {
     return SocketioArgs(
-      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled']! as bool).input(),
-      identity: map['identity'] == null ? null : (SocketioIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      liveTraceConnectivityLogsEnabled: map['liveTraceConnectivityLogsEnabled'] == null ? null : (map['liveTraceConnectivityLogsEnabled']! as bool).input(),
-      liveTraceEnabled: map['liveTraceEnabled'] == null ? null : (map['liveTraceEnabled']! as bool).input(),
-      liveTraceHttpRequestLogsEnabled: map['liveTraceHttpRequestLogsEnabled'] == null ? null : (map['liveTraceHttpRequestLogsEnabled']! as bool).input(),
-      liveTraceMessagingLogsEnabled: map['liveTraceMessagingLogsEnabled'] == null ? null : (map['liveTraceMessagingLogsEnabled']! as bool).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode']! as String).input(),
-      sku: (SocketioSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled']! as bool).input(),
+      aadAuthEnabled: (() {
+        final guardedValue = map['aadAuthEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SocketioIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      liveTraceConnectivityLogsEnabled: (() {
+        final guardedValue = map['liveTraceConnectivityLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      liveTraceEnabled: (() {
+        final guardedValue = map['liveTraceEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      liveTraceHttpRequestLogsEnabled: (() {
+        final guardedValue = map['liveTraceHttpRequestLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      liveTraceMessagingLogsEnabled: (() {
+        final guardedValue = map['liveTraceMessagingLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      localAuthEnabled: (() {
+        final guardedValue = map['localAuthEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceMode: (() {
+        final guardedValue = map['serviceMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: pulumi.Input.fromValue(
+        SocketioSku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tlsClientCertEnabled: (() {
+        final guardedValue = map['tlsClientCertEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

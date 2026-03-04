@@ -10,10 +10,13 @@ import 'module_module_link.dart';
 class ModuleArgs {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
+
   /// A `module_link` block as defined below.
   final pulumi.Input<ModuleModuleLink> moduleLink;
+
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,7 +35,11 @@ class ModuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
-      'moduleLink': pulumi.Input.mapInputValue<ModuleModuleLink, Map<String, dynamic>>(moduleLink, (value) => value.toMap()),
+      'moduleLink':
+          pulumi.Input.mapInputValue<ModuleModuleLink, Map<String, dynamic>>(
+            moduleLink,
+            (value) => value.toMap(),
+          ),
       'name': ?name,
       'resourceGroupName': resourceGroupName,
     };
@@ -40,11 +47,22 @@ class ModuleArgs {
 
   factory ModuleArgs.fromMap(Map<String, dynamic> map) {
     return ModuleArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      moduleLink: (ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      moduleLink: pulumi.Input.fromValue(
+        ModuleModuleLink.fromMap(
+          (map['moduleLink']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class TransitRouterMulticastDomainOptions {
 
   /// Creates a new [TransitRouterMulticastDomainOptions].
   /// [igmpv2Support] Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
-  TransitRouterMulticastDomainOptions({
-    this.igmpv2Support,
-  });
+  TransitRouterMulticastDomainOptions({this.igmpv2Support});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'igmpv2Support': ?igmpv2Support,
-    };
+    return <String, dynamic>{'igmpv2Support': ?igmpv2Support};
   }
 
-  factory TransitRouterMulticastDomainOptions.fromMap(Map<String, dynamic> map) {
+  factory TransitRouterMulticastDomainOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitRouterMulticastDomainOptions(
-      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support']! as String).input(),
+      igmpv2Support: (() {
+        final guardedValue = map['igmpv2Support'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

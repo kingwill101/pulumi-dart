@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendArgs {
   /// Identifier of the Backend entity. Must be unique in the current API Management service instance.
   final pulumi.Input<String> backendId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,11 @@ class GetBackendArgs {
 
   factory GetBackendArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendArgs(
-      backendId: (map['backendId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      backendId: pulumi.Input.fromValue(map['backendId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

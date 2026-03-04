@@ -7,8 +7,10 @@ import 'node_taint_effect.dart';
 class NodeTaint {
   /// Effect for taint.
   final pulumi.Input<NodeTaintEffect>? effect;
+
   /// Key for taint.
   final pulumi.Input<String>? key;
+
   /// Value for taint.
   final pulumi.Input<String>? value;
 
@@ -16,15 +18,14 @@ class NodeTaint {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  NodeTaint({
-    this.effect,
-    this.key,
-    this.value,
-  });
+  NodeTaint({this.effect, this.key, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'effect': ?pulumi.Input.mapOptionalInputValue<NodeTaintEffect, String>(effect, (value) => value.value),
+      'effect': ?pulumi.Input.mapOptionalInputValue<NodeTaintEffect, String>(
+        effect,
+        (value) => value.wireValue,
+      ),
       'key': ?key,
       'value': ?value,
     };
@@ -32,10 +33,23 @@ class NodeTaint {
 
   factory NodeTaint.fromMap(Map<String, dynamic> map) {
     return NodeTaint(
-      effect: map['effect'] == null ? null : (NodeTaintEffect.fromValue(map['effect']! as String)).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeTaintEffect.fromValue(guardedValue as String),
+        );
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,39 @@ class PostgresqlRdbms {
 
   /// Creates a new [PostgresqlRdbms].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
-  PostgresqlRdbms({
-    this.postgresqlSchemas,
-  });
+  PostgresqlRdbms({this.postgresqlSchemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlSchemas': ?pulumi.Input.mapOptionalInputValue<List<PostgresqlSchema>, List<Map<String, dynamic>>>(postgresqlSchemas, (value) => pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'postgresqlSchemas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PostgresqlSchema>,
+            List<Map<String, dynamic>>
+          >(
+            postgresqlSchemas,
+            (value) =>
+                pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory PostgresqlRdbms.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbms(
-      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : (pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas']!, (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postgresqlSchemas: (() {
+        final guardedValue = map['postgresqlSchemas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PostgresqlSchema>(
+            guardedValue,
+            (value) => PostgresqlSchema.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

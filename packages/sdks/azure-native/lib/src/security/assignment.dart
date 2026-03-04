@@ -382,37 +382,54 @@ import 'system_data_response.dart';
 /// ```
 class Assignment extends pulumi.CustomResource {
   /// Additional data about the assignment
-  late final pulumi.Output<AssignmentPropertiesResponseAdditionalData?> additionalData;
+  late final pulumi.Output<AssignmentPropertiesResponseAdditionalData?>
+  additionalData;
+
   /// Component item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedComponentItemResponse?> assignedComponent;
+
   /// Standard item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedStandardItemResponse?> assignedStandard;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// description of the standardAssignment
   late final pulumi.Output<String?> description;
+
   /// display name of the standardAssignment
   late final pulumi.Output<String?> displayName;
+
   /// expected effect of this assignment (Disable/Exempt/etc)
   late final pulumi.Output<String?> effect;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
+
   /// Expiration date of this assignment as a full ISO date
   late final pulumi.Output<String?> expiresOn;
+
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
+
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
+
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   late final pulumi.Output<dynamic> metadata;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   late final pulumi.Output<String?> scope;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -425,27 +442,34 @@ class Assignment extends pulumi.CustomResource {
     AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Assignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<AssignmentPropertiesResponseAdditionalData?>('additionalData');
-    this.assignedComponent = registerOutput<AssignedComponentItemResponse?>('assignedComponent');
-    this.assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effect = registerOutput<String?>('effect');
-    this.etag = registerOutput<String?>('etag');
-    this.expiresOn = registerOutput<String?>('expiresOn');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:security:Assignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData =
+        registerOutput<AssignmentPropertiesResponseAdditionalData?>(
+          'additionalData',
+        );
+    assignedComponent = registerOutput<AssignedComponentItemResponse?>(
+      'assignedComponent',
+    );
+    assignedStandard = registerOutput<AssignedStandardItemResponse?>(
+      'assignedStandard',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effect = registerOutput<String?>('effect');
+    etag = registerOutput<String?>('etag');
+    expiresOn = registerOutput<String?>('expiresOn');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<String?>('scope');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

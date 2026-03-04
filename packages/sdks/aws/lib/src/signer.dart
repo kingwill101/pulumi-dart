@@ -1,5 +1,3 @@
-library module_signer;
-
 export 'signer/functions.dart';
 export 'signer/get_signing_job_args.dart';
 export 'signer/get_signing_job_result.dart';

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationAssignmentParentArgs {
   /// The name of the ConfigurationAssignment
   final pulumi.Input<String> configurationAssignmentName;
+
   /// Resource provider name
   final pulumi.Input<String> providerName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource name
   final pulumi.Input<String> resourceName;
+
   /// Resource parent name
   final pulumi.Input<String> resourceParentName;
+
   /// Resource parent type
   final pulumi.Input<String> resourceParentType;
+
   /// Resource type
   final pulumi.Input<String> resourceType;
 
@@ -52,16 +58,25 @@ class GetConfigurationAssignmentParentArgs {
     };
   }
 
-  factory GetConfigurationAssignmentParentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationAssignmentParentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationAssignmentParentArgs(
-      configurationAssignmentName: (map['configurationAssignmentName'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resourceParentName: (map['resourceParentName'] as String).input(),
-      resourceParentType: (map['resourceParentType'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      configurationAssignmentName: pulumi.Input.fromValue(
+        map['configurationAssignmentName'] as String,
+      ),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resourceParentName: pulumi.Input.fromValue(
+        map['resourceParentName'] as String,
+      ),
+      resourceParentType: pulumi.Input.fromValue(
+        map['resourceParentType'] as String,
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

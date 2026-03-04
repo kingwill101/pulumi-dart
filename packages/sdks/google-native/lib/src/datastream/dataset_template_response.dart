@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetTemplateResponse {
   /// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
   final pulumi.Input<String> datasetIdPrefix;
+
   /// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
   final pulumi.Input<String> kmsKeyName;
+
   /// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
   final pulumi.Input<String> location;
 
@@ -31,10 +33,9 @@ class DatasetTemplateResponse {
 
   factory DatasetTemplateResponse.fromMap(Map<String, dynamic> map) {
     return DatasetTemplateResponse(
-      datasetIdPrefix: (map['datasetIdPrefix'] as String).input(),
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
-      location: (map['location'] as String).input(),
+      datasetIdPrefix: pulumi.Input.fromValue(map['datasetIdPrefix'] as String),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

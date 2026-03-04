@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomMetric {
   /// Allows filtering on the metric's fields.
   final pulumi.Input<String>? filter;
+
   /// The name of the metric.
   final pulumi.Input<String>? metricName;
+
   /// May be used instead of target_utilization when an instance can handle a specific amount of work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will try to keep the number of instances equal to the metric value divided by single_instance_assignment.
   final pulumi.Input<double>? singleInstanceAssignment;
+
   /// The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE, DELTA_PER_SECOND, etc.
   final pulumi.Input<String>? targetType;
+
   /// The target value for the metric.
   final pulumi.Input<double>? targetUtilization;
 
@@ -41,12 +45,31 @@ class CustomMetric {
 
   factory CustomMetric.fromMap(Map<String, dynamic> map) {
     return CustomMetric(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
-      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment']! as double).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
-      targetUtilization: map['targetUtilization'] == null ? null : (map['targetUtilization']! as double).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricName: (() {
+        final guardedValue = map['metricName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      singleInstanceAssignment: (() {
+        final guardedValue = map['singleInstanceAssignment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetUtilization: (() {
+        final guardedValue = map['targetUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

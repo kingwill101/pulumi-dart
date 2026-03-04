@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hbase_cluster_args.dart';
 import 'hbase_cluster_component_version.dart';
 import 'hbase_cluster_compute_isolation.dart';
-import 'hbase_cluster_disk_encryption.dart';
 import 'hbase_cluster_extension.dart';
 import 'hbase_cluster_gateway.dart';
 import 'hbase_cluster_metastores.dart';
@@ -12,7 +11,6 @@ import 'hbase_cluster_private_link_configuration.dart';
 import 'hbase_cluster_roles.dart';
 import 'hbase_cluster_security_profile.dart';
 import 'hbase_cluster_state.dart';
-import 'hbase_cluster_storage_account.dart';
 import 'hbase_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight HBase Cluster.
@@ -450,7 +448,7 @@ import 'hbase_cluster_storage_account_gen2.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HDInsight` - 2021-06-01
@@ -465,49 +463,71 @@ import 'hbase_cluster_storage_account_gen2.dart';
 class HBaseCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
+
   /// A `component_version` block as defined below.
   late final pulumi.Output<HBaseClusterComponentVersion> componentVersion;
+
   /// A `compute_isolation` block as defined below.
   late final pulumi.Output<HBaseClusterComputeIsolation?> computeIsolation;
+
   /// One or more `disk_encryption` block as defined below.
-  late final pulumi.Output<List<HBaseClusterDiskEncryption>?> diskEncryptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+
   /// An `extension` block as defined below.
   late final pulumi.Output<HBaseClusterExtension?> extension;
+
   /// A `gateway` block as defined below.
   late final pulumi.Output<HBaseClusterGateway> gateway;
+
   /// The HTTPS Connectivity Endpoint for this HDInsight HBase Cluster.
   late final pulumi.Output<String> httpsEndpoint;
+
   /// Specifies the Azure Region which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `metastores` block as defined below.
   late final pulumi.Output<HBaseClusterMetastores?> metastores;
+
   /// A `monitor` block as defined below.
   late final pulumi.Output<HBaseClusterMonitor?> monitor;
+
   /// Specifies the name for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network` block as defined below.
   late final pulumi.Output<HBaseClusterNetwork?> network;
+
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<HBaseClusterPrivateLinkConfiguration?> privateLinkConfiguration;
+  late final pulumi.Output<HBaseClusterPrivateLinkConfiguration?>
+  privateLinkConfiguration;
+
   /// Specifies the name of the Resource Group in which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `roles` block as defined below.
   late final pulumi.Output<HBaseClusterRoles> roles;
+
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HBaseClusterSecurityProfile?> securityProfile;
+
   /// The SSH Connectivity Endpoint for this HDInsight HBase Cluster.
   late final pulumi.Output<String> sshEndpoint;
+
   /// A `storage_account_gen2` block as defined below.
   late final pulumi.Output<HBaseClusterStorageAccountGen2?> storageAccountGen2;
+
   /// One or more `storage_account` block as defined below.
-  late final pulumi.Output<List<HBaseClusterStorageAccount>?> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+
   /// A map of Tags which should be assigned to this HDInsight HBase Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Tier which should be used for this HDInsight HBase Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
+
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
+  /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
   late final pulumi.Output<String?> tlsMinVersion;
 
   /// Creates a new [HBaseCluster].
@@ -519,33 +539,48 @@ class HBaseCluster extends pulumi.CustomResource {
     HBaseClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/hBaseCluster:HBaseCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<HBaseClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<HBaseClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<HBaseClusterDiskEncryption>?>('diskEncryptions');
-    this.extension = registerOutput<HBaseClusterExtension?>('extension');
-    this.gateway = registerOutput<HBaseClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<HBaseClusterMetastores?>('metastores');
-    this.monitor = registerOutput<HBaseClusterMonitor?>('monitor');
+         'azure:hdinsight/hBaseCluster:HBaseCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<HBaseClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    extension = registerOutput<HBaseClusterExtension?>('extension');
+    gateway = registerOutput<HBaseClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<HBaseClusterMetastores?>('metastores');
+    monitor = registerOutput<HBaseClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<HBaseClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<HBaseClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<HBaseClusterRoles>('roles');
-    this.securityProfile = registerOutput<HBaseClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<HBaseClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<HBaseClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<HBaseClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<HBaseClusterRoles>('roles');
+    securityProfile = registerOutput<HBaseClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 
   /// Gets an existing [HBaseCluster] resource's state with the given [name] and [id].
@@ -566,32 +601,47 @@ class HBaseCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/hBaseCluster:HBaseCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<HBaseClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<HBaseClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<HBaseClusterDiskEncryption>?>('diskEncryptions');
-    this.extension = registerOutput<HBaseClusterExtension?>('extension');
-    this.gateway = registerOutput<HBaseClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<HBaseClusterMetastores?>('metastores');
-    this.monitor = registerOutput<HBaseClusterMonitor?>('monitor');
+         'azure:hdinsight/hBaseCluster:HBaseCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<HBaseClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    extension = registerOutput<HBaseClusterExtension?>('extension');
+    gateway = registerOutput<HBaseClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<HBaseClusterMetastores?>('metastores');
+    monitor = registerOutput<HBaseClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<HBaseClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<HBaseClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<HBaseClusterRoles>('roles');
-    this.securityProfile = registerOutput<HBaseClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<HBaseClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<HBaseClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<HBaseClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<HBaseClusterRoles>('roles');
+    securityProfile = registerOutput<HBaseClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>(
+      'storageAccountGen2',
+    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 }

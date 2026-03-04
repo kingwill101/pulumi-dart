@@ -6,16 +6,17 @@ enum LocalDiskInitializeParamsDiskType {
   pdBalanced("PD_BALANCED"),
   pdExtreme("PD_EXTREME");
 
-  const LocalDiskInitializeParamsDiskType(this.value);
-  final String value;
+  const LocalDiskInitializeParamsDiskType(this.wireValue);
+  final String wireValue;
 
   static LocalDiskInitializeParamsDiskType fromValue(String value) {
     for (final item in LocalDiskInitializeParamsDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LocalDiskInitializeParamsDiskType value: $value');
+    throw ArgumentError(
+      'Unknown LocalDiskInitializeParamsDiskType value: $value',
+    );
   }
 }
-

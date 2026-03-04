@@ -12,20 +12,15 @@ class GetTagKeysArgs {
 
   /// Creates a new [GetTagKeysArgs].
   /// [parent] The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
-  GetTagKeysArgs({
-    required this.parent,
-  });
+  GetTagKeysArgs({required this.parent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parent': parent,
-    };
+    return <String, dynamic>{'parent': parent};
   }
 
   factory GetTagKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeysArgs(
-      parent: (map['parent'] as String).input(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

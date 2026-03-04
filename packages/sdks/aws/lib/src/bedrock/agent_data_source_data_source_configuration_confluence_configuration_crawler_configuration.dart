@@ -5,7 +5,10 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration {
   /// The Salesforce standard object configuration. See `filter_configuration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration>? filterConfiguration;
+  final pulumi.Input<
+    AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration
+  >?
+  filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
@@ -15,14 +18,27 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration, Map<String, dynamic>>(filterConfiguration, (value) => value.toMap()),
+      'filterConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration,
+            Map<String, dynamic>
+          >(filterConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration(
-      filterConfiguration: map['filterConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      filterConfiguration: (() {
+        final guardedValue = map['filterConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

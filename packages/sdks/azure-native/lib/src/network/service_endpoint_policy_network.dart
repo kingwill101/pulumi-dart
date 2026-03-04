@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_endpoint_policy_args.dart';
-import 'service_endpoint_policy_definition_response.dart';
-import 'subnet_response.dart';
 
 /// Service End point policy resource.
 ///
@@ -314,28 +312,41 @@ import 'subnet_response.dart';
 class ServiceEndpointPolicyNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A collection of contextual service endpoint policy.
   late final pulumi.Output<List<String>?> contextualServiceEndpointPolicies;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Kind of service endpoint policy. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the service endpoint policy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the service endpoint policy resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The alias indicating if the policy belongs to a service
   late final pulumi.Output<String?> serviceAlias;
+
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  late final pulumi.Output<List<ServiceEndpointPolicyDefinitionResponse>?> serviceEndpointPolicyDefinitions;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  serviceEndpointPolicyDefinitions;
+
   /// A collection of references to subnets.
-  late final pulumi.Output<List<SubnetResponse>> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -348,23 +359,28 @@ class ServiceEndpointPolicyNetwork extends pulumi.CustomResource {
     ServiceEndpointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ServiceEndpointPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contextualServiceEndpointPolicies = registerOutput<List<String>?>('contextualServiceEndpointPolicies');
-    this.etag = registerOutput<String>('etag');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:ServiceEndpointPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contextualServiceEndpointPolicies = registerOutput<List<String>?>(
+      'contextualServiceEndpointPolicies',
+    );
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.serviceAlias = registerOutput<String?>('serviceAlias');
-    this.serviceEndpointPolicyDefinitions = registerOutput<List<ServiceEndpointPolicyDefinitionResponse>?>('serviceEndpointPolicyDefinitions');
-    this.subnets = registerOutput<List<SubnetResponse>>('subnets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    serviceAlias = registerOutput<String?>('serviceAlias');
+    serviceEndpointPolicyDefinitions =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'serviceEndpointPolicyDefinitions',
+        );
+    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

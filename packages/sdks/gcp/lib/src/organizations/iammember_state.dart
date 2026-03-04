@@ -8,8 +8,10 @@ class IAMMemberState {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<IAMMemberCondition>? condition;
+
   /// (Computed) The etag of the organization's IAM policy.
   final pulumi.Input<String>? etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -17,8 +19,10 @@ class IAMMemberState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String>? member;
+
   /// The organization id of the target organization.
   final pulumi.Input<String>? orgId;
+
   /// The role that should be applied. Only one
   /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -40,7 +44,11 @@ class IAMMemberState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<IAMMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            IAMMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'etag': ?etag,
       'member': ?member,
       'orgId': ?orgId,
@@ -50,12 +58,35 @@ class IAMMemberState {
 
   factory IAMMemberState.fromMap(Map<String, dynamic> map) {
     return IAMMemberState(
-      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IAMMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: (() {
+        final guardedValue = map['orgId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

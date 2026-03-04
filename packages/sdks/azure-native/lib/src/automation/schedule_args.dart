@@ -10,24 +10,34 @@ import 'advanced_schedule.dart';
 class ScheduleArgs {
   /// Gets or sets the AdvancedSchedule.
   final pulumi.Input<AdvancedSchedule>? advancedSchedule;
+
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the description of the schedule.
   final pulumi.Input<String>? description;
+
   /// Gets or sets the end time of the schedule.
   final pulumi.Input<String>? expiryTime;
+
   /// Gets or sets the frequency of the schedule.
   final pulumi.Input<String> frequency;
+
   /// Gets or sets the interval of the schedule.
   final pulumi.Input<dynamic>? interval;
+
   /// Gets or sets the name of the Schedule.
   final pulumi.Input<String> name;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The schedule name.
   final pulumi.Input<String>? scheduleName;
+
   /// Gets or sets the start time of the schedule.
   final pulumi.Input<String> startTime;
+
   /// Gets or sets the time zone of the schedule.
   final pulumi.Input<String>? timeZone;
 
@@ -59,7 +69,11 @@ class ScheduleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSchedule': ?pulumi.Input.mapOptionalInputValue<AdvancedSchedule, Map<String, dynamic>>(advancedSchedule, (value) => value.toMap()),
+      'advancedSchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            AdvancedSchedule,
+            Map<String, dynamic>
+          >(advancedSchedule, (value) => value.toMap()),
       'automationAccountName': automationAccountName,
       'description': ?description,
       'expiryTime': ?expiryTime,
@@ -75,18 +89,49 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule']! as Map).cast<String, dynamic>())).input(),
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
-      frequency: (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']!).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      advancedSchedule: (() {
+        final guardedValue = map['advancedSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AdvancedSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiryTime: (() {
+        final guardedValue = map['expiryTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scheduleName: (() {
+        final guardedValue = map['scheduleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceBackupConfigInfoGcpBackupConfig {
   /// The name of the backup plan.
   final pulumi.Input<String> backupPlan;
+
   /// The name of the backup plan association.
   final pulumi.Input<String> backupPlanAssociation;
+
   /// The description of the backup plan.
   final pulumi.Input<String> backupPlanDescription;
+
   /// The names of the backup plan rules which point to this backupvault
   final pulumi.Input<List<String>> backupPlanRules;
 
@@ -33,13 +36,20 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
     };
   }
 
-  factory GetDataSourceBackupConfigInfoGcpBackupConfig.fromMap(Map<String, dynamic> map) {
+  factory GetDataSourceBackupConfigInfoGcpBackupConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSourceBackupConfigInfoGcpBackupConfig(
-      backupPlan: (map['backupPlan'] as String).input(),
-      backupPlanAssociation: (map['backupPlanAssociation'] as String).input(),
-      backupPlanDescription: (map['backupPlanDescription'] as String).input(),
-      backupPlanRules: ((map['backupPlanRules'] as List).cast<String>()).input(),
+      backupPlan: pulumi.Input.fromValue(map['backupPlan'] as String),
+      backupPlanAssociation: pulumi.Input.fromValue(
+        map['backupPlanAssociation'] as String,
+      ),
+      backupPlanDescription: pulumi.Input.fromValue(
+        map['backupPlanDescription'] as String,
+      ),
+      backupPlanRules: pulumi.Input.fromValue(
+        (map['backupPlanRules'] as List).cast<String>(),
+      ),
     );
   }
 }
-

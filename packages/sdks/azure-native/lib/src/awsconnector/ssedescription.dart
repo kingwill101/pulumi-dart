@@ -5,25 +5,34 @@ import 'ssestatus_enum_value.dart';
 
 /// Definition of SSEDescription
 class SSEDescription {
-  /// <p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> </ul>
+  /// &lt;p&gt;The current state of server-side encryption:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLING&lt;/code&gt; - Server-side encryption is being enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt; - Server-side encryption is enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLING&lt;/code&gt; - Server-side encryption is being disabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt; - Server-side encryption is disabled.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<SSEStatusEnumValue>? status;
 
   /// Creates a new [SSEDescription].
-  /// [status] <p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> </ul>
-  SSEDescription({
-    this.status,
-  });
+  /// [status] &lt;p&gt;The current state of server-side encryption:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLING&lt;/code&gt; - Server-side encryption is being enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt; - Server-side encryption is enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLING&lt;/code&gt; - Server-side encryption is being disabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt; - Server-side encryption is disabled.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  SSEDescription({this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': ?pulumi.Input.mapOptionalInputValue<SSEStatusEnumValue, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            SSEStatusEnumValue,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory SSEDescription.fromMap(Map<String, dynamic> map) {
     return SSEDescription(
-      status: map['status'] == null ? null : (SSEStatusEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SSEStatusEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class CloudProviderProfileResponseInfraNetworkProfile {
 
   /// Creates a new [CloudProviderProfileResponseInfraNetworkProfile].
   /// [vnetSubnetIds] Array of references to azure resource corresponding to the new HybridAKSNetwork object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}
-  CloudProviderProfileResponseInfraNetworkProfile({
-    this.vnetSubnetIds,
-  });
+  CloudProviderProfileResponseInfraNetworkProfile({this.vnetSubnetIds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vnetSubnetIds': ?vnetSubnetIds,
-    };
+    return <String, dynamic>{'vnetSubnetIds': ?vnetSubnetIds};
   }
 
-  factory CloudProviderProfileResponseInfraNetworkProfile.fromMap(Map<String, dynamic> map) {
+  factory CloudProviderProfileResponseInfraNetworkProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudProviderProfileResponseInfraNetworkProfile(
-      vnetSubnetIds: map['vnetSubnetIds'] == null ? null : ((map['vnetSubnetIds']! as List).cast<String>()).input(),
+      vnetSubnetIds: (() {
+        final guardedValue = map['vnetSubnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

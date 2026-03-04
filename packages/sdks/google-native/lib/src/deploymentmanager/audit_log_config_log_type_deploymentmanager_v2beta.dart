@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeDeploymentmanagerV2beta {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeDeploymentmanagerV2beta(this.value);
-  final String value;
+  const AuditLogConfigLogTypeDeploymentmanagerV2beta(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeDeploymentmanagerV2beta fromValue(String value) {
     for (final item in AuditLogConfigLogTypeDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

@@ -7,20 +7,28 @@ import 'quick_connect_quick_connect_config.dart';
 class QuickConnectState {
   /// The Amazon Resource Name (ARN) of the Quick Connect.
   final pulumi.Input<String>? arn;
+
   /// Specifies the description of the Quick Connect.
   final pulumi.Input<String>? description;
+
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String>? instanceId;
+
   /// Specifies the name of the Quick Connect.
   final pulumi.Input<String>? name;
+
   /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   final pulumi.Input<QuickConnectQuickConnectConfig>? quickConnectConfig;
+
   /// The identifier for the Quick Connect.
   final pulumi.Input<String>? quickConnectId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -52,7 +60,11 @@ class QuickConnectState {
       'description': ?description,
       'instanceId': ?instanceId,
       'name': ?name,
-      'quickConnectConfig': ?pulumi.Input.mapOptionalInputValue<QuickConnectQuickConnectConfig, Map<String, dynamic>>(quickConnectConfig, (value) => value.toMap()),
+      'quickConnectConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            QuickConnectQuickConnectConfig,
+            Map<String, dynamic>
+          >(quickConnectConfig, (value) => value.toMap()),
       'quickConnectId': ?quickConnectId,
       'region': ?region,
       'tags': ?tags,
@@ -62,16 +74,59 @@ class QuickConnectState {
 
   factory QuickConnectState.fromMap(Map<String, dynamic> map) {
     return QuickConnectState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      quickConnectConfig: map['quickConnectConfig'] == null ? null : ((QuickConnectQuickConnectConfig.fromMap((map['quickConnectConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      quickConnectId: map['quickConnectId'] == null ? null : ((map['quickConnectId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quickConnectConfig: (() {
+        final guardedValue = map['quickConnectConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QuickConnectQuickConnectConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      quickConnectId: (() {
+        final guardedValue = map['quickConnectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

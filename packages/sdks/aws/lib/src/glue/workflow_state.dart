@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowState {
   /// Amazon Resource Name (ARN) of Glue Workflow
   final pulumi.Input<String>? arn;
+
   /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
   final pulumi.Input<Map<String, String>>? defaultRunProperties;
+
   /// Description of the workflow.
   final pulumi.Input<String>? description;
+
   /// Prevents exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.
   final pulumi.Input<int>? maxConcurrentRuns;
+
   /// The name you assign to this workflow.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -56,15 +63,52 @@ class WorkflowState {
 
   factory WorkflowState.fromMap(Map<String, dynamic> map) {
     return WorkflowState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      defaultRunProperties: map['defaultRunProperties'] == null ? null : (((map['defaultRunProperties'] as Map).cast<String, String>()).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : ((map['maxConcurrentRuns'] as int).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultRunProperties: (() {
+        final guardedValue = map['defaultRunProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxConcurrentRuns: (() {
+        final guardedValue = map['maxConcurrentRuns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

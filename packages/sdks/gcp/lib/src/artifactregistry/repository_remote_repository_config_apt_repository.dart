@@ -6,24 +6,38 @@ import 'repository_remote_repository_config_apt_repository_public_repository.dar
 class RepositoryRemoteRepositoryConfigAptRepository {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<
+    RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
+  >?
+  publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigAptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.
-  RepositoryRemoteRepositoryConfigAptRepository({
-    this.publicRepository,
-  });
+  RepositoryRemoteRepositoryConfigAptRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository, Map<String, dynamic>>(publicRepository, (value) => value.toMap()),
+      'publicRepository':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository,
+            Map<String, dynamic>
+          >(publicRepository, (value) => value.toMap()),
     };
   }
 
-  factory RepositoryRemoteRepositoryConfigAptRepository.fromMap(Map<String, dynamic> map) {
+  factory RepositoryRemoteRepositoryConfigAptRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryRemoteRepositoryConfigAptRepository(
-      publicRepository: map['publicRepository'] == null ? null : (RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository']! as Map).cast<String, dynamic>())).input(),
+      publicRepository: (() {
+        final guardedValue = map['publicRepository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

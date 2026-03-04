@@ -9,13 +9,16 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
   /// The project root will be added to Python sys.path, allowing
   /// imports to be specified relative to the root.
   final pulumi.Input<String>? entrypointModule;
+
   /// Optional. The name of the callable object within the
   /// entrypointModule to use as the application If not specified,
   /// defaults to "root_agent".
   final pulumi.Input<String>? entrypointObject;
+
   /// Optional. The path to the requirements file, relative to the
   /// source root. If not specified, defaults to "requirements.txt".
   final pulumi.Input<String>? requirementsFile;
+
   /// Optional. The version of Python to use. Support version
   /// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
   /// default value is 3.10.
@@ -42,13 +45,30 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
     };
   }
 
-  factory AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap(Map<String, dynamic> map) {
+  factory AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiReasoningEngineSpecSourceCodeSpecPythonSpec(
-      entrypointModule: map['entrypointModule'] == null ? null : (map['entrypointModule']! as String).input(),
-      entrypointObject: map['entrypointObject'] == null ? null : (map['entrypointObject']! as String).input(),
-      requirementsFile: map['requirementsFile'] == null ? null : (map['requirementsFile']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      entrypointModule: (() {
+        final guardedValue = map['entrypointModule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entrypointObject: (() {
+        final guardedValue = map['entrypointObject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requirementsFile: (() {
+        final guardedValue = map['requirementsFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

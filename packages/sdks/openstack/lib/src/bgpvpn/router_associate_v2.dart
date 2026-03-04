@@ -116,19 +116,23 @@ class RouterAssociateV2 extends pulumi.CustomResource {
   /// A boolean flag indicating whether extra
   /// routes should be advertised. Defaults to true.
   late final pulumi.Output<bool> advertiseExtraRoutes;
+
   /// The ID of the BGP VPN to which the router will be
   /// associated. Changing this creates a new BGP VPN router association.
   late final pulumi.Output<String> bgpvpnId;
+
   /// The ID of the project that owns the BGP VPN router
   /// association. Only administrative and users with `advsvc` role can specify a
   /// project ID other than their own. Changing this creates a new BGP VPN router
   /// association.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a BGP VPN router association. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new BGP VPN router association.
   late final pulumi.Output<String> region;
+
   /// The ID of the router to be associated with the BGP
   /// VPN. Changing this creates a new BGP VPN router association.
   late final pulumi.Output<String> routerId;
@@ -142,16 +146,16 @@ class RouterAssociateV2 extends pulumi.CustomResource {
     RouterAssociateV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:bgpvpn/routerAssociateV2:RouterAssociateV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advertiseExtraRoutes = registerOutput<bool>('advertiseExtraRoutes');
-    this.bgpvpnId = registerOutput<String>('bgpvpnId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
+         'openstack:bgpvpn/routerAssociateV2:RouterAssociateV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advertiseExtraRoutes = registerOutput<bool>('advertiseExtraRoutes');
+    bgpvpnId = registerOutput<String>('bgpvpnId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
   }
 
   /// Gets an existing [RouterAssociateV2] resource's state with the given [name] and [id].
@@ -172,15 +176,15 @@ class RouterAssociateV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:bgpvpn/routerAssociateV2:RouterAssociateV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advertiseExtraRoutes = registerOutput<bool>('advertiseExtraRoutes');
-    this.bgpvpnId = registerOutput<String>('bgpvpnId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
+         'openstack:bgpvpn/routerAssociateV2:RouterAssociateV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advertiseExtraRoutes = registerOutput<bool>('advertiseExtraRoutes');
+    bgpvpnId = registerOutput<String>('bgpvpnId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
   }
 }

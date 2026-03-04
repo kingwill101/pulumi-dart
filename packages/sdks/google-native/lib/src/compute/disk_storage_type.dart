@@ -3,16 +3,15 @@ enum DiskStorageType {
   hdd("HDD"),
   ssd("SSD");
 
-  const DiskStorageType(this.value);
-  final String value;
+  const DiskStorageType(this.wireValue);
+  final String wireValue;
 
   static DiskStorageType fromValue(String value) {
     for (final item in DiskStorageType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskStorageType value: $value');
   }
 }
-

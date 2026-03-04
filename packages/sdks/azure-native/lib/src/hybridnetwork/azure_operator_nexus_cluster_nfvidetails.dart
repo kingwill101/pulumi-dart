@@ -7,8 +7,10 @@ import 'referenced_resource.dart';
 class AzureOperatorNexusClusterNFVIDetails {
   /// The reference to the custom location.
   final pulumi.Input<ReferencedResource>? customLocationReference;
+
   /// Name of the nfvi.
   final pulumi.Input<String>? name;
+
   /// The NFVI type.
   /// Expected value is 'AzureOperatorNexus'.
   final pulumi.Input<String> nfviType;
@@ -25,18 +27,35 @@ class AzureOperatorNexusClusterNFVIDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customLocationReference': ?pulumi.Input.mapOptionalInputValue<ReferencedResource, Map<String, dynamic>>(customLocationReference, (value) => value.toMap()),
+      'customLocationReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResource,
+            Map<String, dynamic>
+          >(customLocationReference, (value) => value.toMap()),
       'name': ?name,
       'nfviType': nfviType,
     };
   }
 
-  factory AzureOperatorNexusClusterNFVIDetails.fromMap(Map<String, dynamic> map) {
+  factory AzureOperatorNexusClusterNFVIDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureOperatorNexusClusterNFVIDetails(
-      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResource.fromMap((map['customLocationReference']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nfviType: (map['nfviType'] as String).input(),
+      customLocationReference: (() {
+        final guardedValue = map['customLocationReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfviType: pulumi.Input.fromValue(map['nfviType'] as String),
     );
   }
 }
-

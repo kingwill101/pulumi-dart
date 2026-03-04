@@ -7,10 +7,13 @@ import 'network_security_group_status_provisioning_status_response.dart';
 class NetworkSecurityGroupStatusResponse {
   /// NetworkSecurityGroup provisioning error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
+
   /// network security group provisioning status
-  final pulumi.Input<NetworkSecurityGroupStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<NetworkSecurityGroupStatusProvisioningStatusResponse>?
+  provisioningStatus;
 
   /// Creates a new [NetworkSecurityGroupStatusResponse].
   /// [errorCode] NetworkSecurityGroup provisioning error code
@@ -26,16 +29,35 @@ class NetworkSecurityGroupStatusResponse {
     return <String, dynamic>{
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<NetworkSecurityGroupStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkSecurityGroupStatusProvisioningStatusResponse,
+            Map<String, dynamic>
+          >(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory NetworkSecurityGroupStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (NetworkSecurityGroupStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatus: (() {
+        final guardedValue = map['provisioningStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkSecurityGroupStatusProvisioningStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

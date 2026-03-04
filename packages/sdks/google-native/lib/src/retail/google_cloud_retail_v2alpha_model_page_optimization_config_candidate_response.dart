@@ -14,15 +14,14 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'servingConfigId': servingConfigId,
-    };
+    return <String, dynamic>{'servingConfigId': servingConfigId};
   }
 
-  factory GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse(
-      servingConfigId: (map['servingConfigId'] as String).input(),
+      servingConfigId: pulumi.Input.fromValue(map['servingConfigId'] as String),
     );
   }
 }
-

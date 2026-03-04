@@ -8,20 +8,17 @@ class GetAppSpecWorkerAutoscalingMetricsCpu {
 
   /// Creates a new [GetAppSpecWorkerAutoscalingMetricsCpu].
   /// [percent] The average target CPU utilization for the component.
-  GetAppSpecWorkerAutoscalingMetricsCpu({
-    required this.percent,
-  });
+  GetAppSpecWorkerAutoscalingMetricsCpu({required this.percent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'percent': percent,
-    };
+    return <String, dynamic>{'percent': percent};
   }
 
-  factory GetAppSpecWorkerAutoscalingMetricsCpu.fromMap(Map<String, dynamic> map) {
+  factory GetAppSpecWorkerAutoscalingMetricsCpu.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppSpecWorkerAutoscalingMetricsCpu(
-      percent: (map['percent'] as int).input(),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
     );
   }
 }
-

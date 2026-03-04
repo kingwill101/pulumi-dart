@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeEnvironmentUpdatePolicy {
   /// Specifies the job timeout (in minutes) when the compute environment infrastructure is updated.
   final pulumi.Input<int>? jobExecutionTimeoutMinutes;
+
   /// Specifies whether jobs are automatically terminated when the compute environment infrastructure is updated.
   final pulumi.Input<bool>? terminateJobsOnUpdate;
 
@@ -25,9 +26,16 @@ class ComputeEnvironmentUpdatePolicy {
 
   factory ComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: map['jobExecutionTimeoutMinutes'] == null ? null : ((map['jobExecutionTimeoutMinutes'] as int).input()).input(),
-      terminateJobsOnUpdate: map['terminateJobsOnUpdate'] == null ? null : ((map['terminateJobsOnUpdate'] as bool).input()).input(),
+      jobExecutionTimeoutMinutes: (() {
+        final guardedValue = map['jobExecutionTimeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      terminateJobsOnUpdate: (() {
+        final guardedValue = map['terminateJobsOnUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

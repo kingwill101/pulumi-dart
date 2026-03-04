@@ -5,16 +5,17 @@ enum IntegrationRuntimeSsisCatalogPricingTier {
   valuePremium("Premium"),
   valuePremiumRS("PremiumRS");
 
-  const IntegrationRuntimeSsisCatalogPricingTier(this.value);
-  final String value;
+  const IntegrationRuntimeSsisCatalogPricingTier(this.wireValue);
+  final String wireValue;
 
   static IntegrationRuntimeSsisCatalogPricingTier fromValue(String value) {
     for (final item in IntegrationRuntimeSsisCatalogPricingTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value');
+    throw ArgumentError(
+      'Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value',
+    );
   }
 }
-

@@ -31,10 +31,13 @@ class GetNodeGroupComputeV1Args {
 
   factory GetNodeGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupComputeV1Args(
-      nodeGroup: (map['nodeGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      nodeGroup: pulumi.Input.fromValue(map['nodeGroup'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

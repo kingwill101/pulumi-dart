@@ -6,16 +6,22 @@ import 'get_resource_groups_group_region_status.dart';
 class GetResourceGroupsGroup {
   /// The ID of the Alibaba Cloud account to which the resource group belongs.
   final pulumi.Input<String> accountId;
+
   /// The display name of the resource group.
   final pulumi.Input<String> displayName;
+
   /// The ID of the resource group.
   final pulumi.Input<String> id;
+
   /// The unique identifier of the resource group.
   final pulumi.Input<String> name;
+
   /// (Available since v1.114.0) The status of the resource group in all regions.
   final pulumi.Input<List<GetResourceGroupsGroupRegionStatus>> regionStatuses;
+
   /// (Available since v1.114.0) The unique identifier of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
   final pulumi.Input<String> status;
 
@@ -43,7 +49,18 @@ class GetResourceGroupsGroup {
       'displayName': displayName,
       'id': id,
       'name': name,
-      'regionStatuses': pulumi.Input.mapInputValue<List<GetResourceGroupsGroupRegionStatus>, List<Map<String, dynamic>>>(regionStatuses, (value) => pulumi.Input.encodeList<GetResourceGroupsGroupRegionStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regionStatuses':
+          pulumi.Input.mapInputValue<
+            List<GetResourceGroupsGroupRegionStatus>,
+            List<Map<String, dynamic>>
+          >(
+            regionStatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetResourceGroupsGroupRegionStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupName': resourceGroupName,
       'status': status,
     };
@@ -51,14 +68,22 @@ class GetResourceGroupsGroup {
 
   factory GetResourceGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsGroup(
-      accountId: (map['accountId'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      regionStatuses: (pulumi.Input.decodeList<GetResourceGroupsGroupRegionStatus>(map['regionStatuses'], (value) => GetResourceGroupsGroupRegionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: (map['status'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      regionStatuses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetResourceGroupsGroupRegionStatus>(
+          map['regionStatuses']!,
+          (value) => GetResourceGroupsGroupRegionStatus.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

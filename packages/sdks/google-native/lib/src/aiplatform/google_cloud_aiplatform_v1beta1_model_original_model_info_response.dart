@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'model': model,
-    };
+    return <String, dynamic>{'model': model};
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse(
-      model: (map['model'] as String).input(),
+      model: pulumi.Input.fromValue(map['model'] as String),
     );
   }
 }
-

@@ -201,26 +201,37 @@ import 'source_control_args.dart';
 class SourceControl extends pulumi.CustomResource {
   /// The auto sync of the source control. Default is false.
   late final pulumi.Output<bool?> autoSync;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The repo branch of the source control. Include branch as empty string for VsoTfvc.
   late final pulumi.Output<String?> branch;
+
   /// The creation time.
   late final pulumi.Output<String?> creationTime;
+
   /// The description.
   late final pulumi.Output<String?> description;
+
   /// The folder path of the source control.
   late final pulumi.Output<String?> folderPath;
+
   /// The last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The auto publish of the source control. Default is true.
   late final pulumi.Output<bool?> publishRunbook;
+
   /// The repo url of the source control.
   late final pulumi.Output<String?> repoUrl;
+
   /// The source type. Must be one of VsoGit, VsoTfvc, GitHub.
   late final pulumi.Output<String?> sourceType;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -233,22 +244,22 @@ class SourceControl extends pulumi.CustomResource {
     SourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:SourceControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoSync = registerOutput<bool?>('autoSync');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.branch = registerOutput<String?>('branch');
-    this.creationTime = registerOutput<String?>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.folderPath = registerOutput<String?>('folderPath');
-    this.lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+         'azure-native:automation:SourceControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoSync = registerOutput<bool?>('autoSync');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branch = registerOutput<String?>('branch');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    folderPath = registerOutput<String?>('folderPath');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.publishRunbook = registerOutput<bool?>('publishRunbook');
-    this.repoUrl = registerOutput<String?>('repoUrl');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.type = registerOutput<String>('type');
+    publishRunbook = registerOutput<bool?>('publishRunbook');
+    repoUrl = registerOutput<String?>('repoUrl');
+    sourceType = registerOutput<String?>('sourceType');
+    type = registerOutput<String>('type');
   }
 }

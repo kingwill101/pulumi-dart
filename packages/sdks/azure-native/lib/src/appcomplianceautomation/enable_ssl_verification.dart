@@ -3,16 +3,15 @@ enum EnableSslVerification {
   true_("true"),
   false_("false");
 
-  const EnableSslVerification(this.value);
-  final String value;
+  const EnableSslVerification(this.wireValue);
+  final String wireValue;
 
   static EnableSslVerification fromValue(String value) {
     for (final item in EnableSslVerification.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnableSslVerification value: $value');
   }
 }
-

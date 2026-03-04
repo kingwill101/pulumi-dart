@@ -8,16 +8,17 @@ enum ExecutionStateAiplatformV1beta1 {
   cached("CACHED"),
   cancelled("CANCELLED");
 
-  const ExecutionStateAiplatformV1beta1(this.value);
-  final String value;
+  const ExecutionStateAiplatformV1beta1(this.wireValue);
+  final String wireValue;
 
   static ExecutionStateAiplatformV1beta1 fromValue(String value) {
     for (final item in ExecutionStateAiplatformV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExecutionStateAiplatformV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ExecutionStateAiplatformV1beta1 value: $value',
+    );
   }
 }
-

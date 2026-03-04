@@ -11,12 +11,18 @@ import 'mutating_webhook_patch_admissionregistration_k8s_io_v1beta1.dart';
 class MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   final pulumi.Input<ObjectMetaPatch>? metadata;
+
   /// Webhooks is a list of webhooks and the affected resources and operations.
-  final pulumi.Input<List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>>? webhooks;
+  final pulumi.Input<
+    List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>
+  >?
+  webhooks;
 
   /// Creates a new [MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -34,18 +40,64 @@ class MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'webhooks': ?pulumi.Input.mapOptionalInputValue<List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>, List<Map<String, dynamic>>>(webhooks, (value) => pulumi.Input.encodeList<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectMetaPatch,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'webhooks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            webhooks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>(map['webhooks']!, (value) => MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMetaPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      webhooks: (() {
+        final guardedValue = map['webhooks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1
+          >(
+            guardedValue,
+            (value) =>
+                MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

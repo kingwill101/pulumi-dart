@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkstationConfigHostGceInstanceAccelerator {
   /// Number of accelerator cards exposed to the instance.
   final pulumi.Input<int> count;
+
   /// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class WorkstationConfigHostGceInstanceAccelerator {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'type': type,
-    };
+    return <String, dynamic>{'count': count, 'type': type};
   }
 
-  factory WorkstationConfigHostGceInstanceAccelerator.fromMap(Map<String, dynamic> map) {
+  factory WorkstationConfigHostGceInstanceAccelerator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkstationConfigHostGceInstanceAccelerator(
-      count: (map['count'] as int).input(),
-      type: (map['type'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

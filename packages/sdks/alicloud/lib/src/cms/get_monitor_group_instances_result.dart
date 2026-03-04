@@ -30,7 +30,11 @@ class GetMonitorGroupInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetMonitorGroupInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetMonitorGroupInstancesInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'keyword': ?keyword,
       'outputFile': ?outputFile,
     };
@@ -40,10 +44,22 @@ class GetMonitorGroupInstancesResult {
     return GetMonitorGroupInstancesResult(
       id: map['id'] as String,
       ids: map['ids'] as String,
-      instances: pulumi.Input.decodeList<GetMonitorGroupInstancesInstance>(map['instances'], (value) => GetMonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      instances: pulumi.Input.decodeList<GetMonitorGroupInstancesInstance>(
+        map['instances']!,
+        (value) => GetMonitorGroupInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

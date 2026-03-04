@@ -6,7 +6,10 @@ import 'google_cloud_dialogflow_cx_v3beta1_agent_git_integration_settings_github
 /// Settings for connecting to Git repository for an agent.
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
   /// GitHub settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings>? githubSettings;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings
+  >?
+  githubSettings;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings].
   /// [githubSettings] GitHub settings.
@@ -16,14 +19,27 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'githubSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings, Map<String, dynamic>>(githubSettings, (value) => value.toMap()),
+      'githubSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings,
+            Map<String, dynamic>
+          >(githubSettings, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings(
-      githubSettings: map['githubSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings']! as Map).cast<String, dynamic>())).input(),
+      githubSettings: (() {
+        final guardedValue = map['githubSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum OnboardingResourceType {
   hybridComputeMachine("HybridComputeMachine");
 
-  const OnboardingResourceType(this.value);
-  final String value;
+  const OnboardingResourceType(this.wireValue);
+  final String wireValue;
 
   static OnboardingResourceType fromValue(String value) {
     for (final item in OnboardingResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OnboardingResourceType value: $value');
   }
 }
-

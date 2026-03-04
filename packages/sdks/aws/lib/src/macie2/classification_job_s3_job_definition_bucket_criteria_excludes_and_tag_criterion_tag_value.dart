@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue {
   /// The tag key.
   final pulumi.Input<String>? key;
+
   /// The tag value.
   final pulumi.Input<String>? value;
 
@@ -17,17 +18,23 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagVa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
-  factory ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue(
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

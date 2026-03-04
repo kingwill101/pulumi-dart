@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetInboundEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// ETag of the inbound endpoint.
   final String etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// IP configurations for the inbound endpoint.
   final List<IpConfigurationResponse> ipConfigurations;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The current provisioning state of the inbound endpoint. This is a read-only property and any attempt to set this value will be ignored.
   final String provisioningState;
+
   /// The resourceGuid property of the inbound endpoint resource.
   final String resourceGuid;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -60,7 +70,11 @@ class GetInboundEndpointResult {
       'azureApiVersion': azureApiVersion,
       'etag': etag,
       'id': id,
-      'ipConfigurations': pulumi.Input.encodeList<IpConfigurationResponse, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.encodeList<
+            IpConfigurationResponse,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
@@ -76,15 +90,25 @@ class GetInboundEndpointResult {
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<IpConfigurationResponse>(map['ipConfigurations'], (value) => IpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: pulumi.Input.decodeList<IpConfigurationResponse>(
+        map['ipConfigurations']!,
+        (value) => IpConfigurationResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSecurityPerimeterLinkArgs {
   /// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
   final pulumi.Input<String>? autoApprovedRemotePerimeterResourceId;
+
   /// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
   final pulumi.Input<String>? description;
+
   /// The name of the NSP link.
   final pulumi.Input<String>? linkName;
+
   /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
   final pulumi.Input<List<String>>? localInboundProfiles;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
   final pulumi.Input<List<String>>? remoteInboundProfiles;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,7 +48,8 @@ class NetworkSecurityPerimeterLinkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoApprovedRemotePerimeterResourceId': ?autoApprovedRemotePerimeterResourceId,
+      'autoApprovedRemotePerimeterResourceId':
+          ?autoApprovedRemotePerimeterResourceId,
       'description': ?description,
       'linkName': ?linkName,
       'localInboundProfiles': ?localInboundProfiles,
@@ -54,14 +61,37 @@ class NetworkSecurityPerimeterLinkArgs {
 
   factory NetworkSecurityPerimeterLinkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterLinkArgs(
-      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : (map['autoApprovedRemotePerimeterResourceId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      linkName: map['linkName'] == null ? null : (map['linkName']! as String).input(),
-      localInboundProfiles: map['localInboundProfiles'] == null ? null : ((map['localInboundProfiles']! as List).cast<String>()).input(),
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : ((map['remoteInboundProfiles']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      autoApprovedRemotePerimeterResourceId: (() {
+        final guardedValue = map['autoApprovedRemotePerimeterResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkName: (() {
+        final guardedValue = map['linkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localInboundProfiles: (() {
+        final guardedValue = map['localInboundProfiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      remoteInboundProfiles: (() {
+        final guardedValue = map['remoteInboundProfiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

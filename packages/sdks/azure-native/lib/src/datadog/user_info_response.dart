@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInfoResponse {
   /// Email of the user used by Datadog for contacting them if needed
   final pulumi.Input<String>? emailAddress;
+
   /// Name of the user
   final pulumi.Input<String>? name;
+
   /// Phone number of the user used by Datadog for contacting them if needed
   final pulumi.Input<String>? phoneNumber;
 
@@ -15,11 +17,7 @@ class UserInfoResponse {
   /// [emailAddress] Email of the user used by Datadog for contacting them if needed
   /// [name] Name of the user
   /// [phoneNumber] Phone number of the user used by Datadog for contacting them if needed
-  UserInfoResponse({
-    this.emailAddress,
-    this.name,
-    this.phoneNumber,
-  });
+  UserInfoResponse({this.emailAddress, this.name, this.phoneNumber});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      emailAddress: (() {
+        final guardedValue = map['emailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

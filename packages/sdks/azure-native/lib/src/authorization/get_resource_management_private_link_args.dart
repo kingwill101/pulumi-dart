@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceManagementPrivateLinkArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource management private link.
   final pulumi.Input<String> rmplName;
 
@@ -27,11 +28,14 @@ class GetResourceManagementPrivateLinkArgs {
     };
   }
 
-  factory GetResourceManagementPrivateLinkArgs.fromMap(Map<String, dynamic> map) {
+  factory GetResourceManagementPrivateLinkArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResourceManagementPrivateLinkArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rmplName: (map['rmplName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rmplName: pulumi.Input.fromValue(map['rmplName'] as String),
     );
   }
 }
-

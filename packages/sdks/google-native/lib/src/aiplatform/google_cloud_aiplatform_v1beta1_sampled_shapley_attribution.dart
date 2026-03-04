@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1SampledShapleyAttribution {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pathCount': pathCount,
-    };
+    return <String, dynamic>{'pathCount': pathCount};
   }
 
-  factory GoogleCloudAiplatformV1beta1SampledShapleyAttribution.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SampledShapleyAttribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1SampledShapleyAttribution(
-      pathCount: (map['pathCount'] as int).input(),
+      pathCount: pulumi.Input.fromValue(map['pathCount'] as int),
     );
   }
 }
-

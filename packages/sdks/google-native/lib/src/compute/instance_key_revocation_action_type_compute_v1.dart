@@ -4,16 +4,17 @@ enum InstanceKeyRevocationActionTypeComputeV1 {
   none("NONE"),
   stop("STOP");
 
-  const InstanceKeyRevocationActionTypeComputeV1(this.value);
-  final String value;
+  const InstanceKeyRevocationActionTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static InstanceKeyRevocationActionTypeComputeV1 fromValue(String value) {
     for (final item in InstanceKeyRevocationActionTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceKeyRevocationActionTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceKeyRevocationActionTypeComputeV1 value: $value',
+    );
   }
 }
-

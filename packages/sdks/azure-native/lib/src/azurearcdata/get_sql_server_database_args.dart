@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerDatabaseArgs {
   /// Name of the database
   final pulumi.Input<String> databaseName;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
 
@@ -34,10 +36,13 @@ class GetSqlServerDatabaseArgs {
 
   factory GetSqlServerDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerDatabaseArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerInstanceName: pulumi.Input.fromValue(
+        map['sqlServerInstanceName'] as String,
+      ),
     );
   }
 }
-

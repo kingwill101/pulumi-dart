@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'lake_account_account_privilege.dart';
 import 'lake_account_args.dart';
 import 'lake_account_state.dart';
 
@@ -8,7 +7,7 @@ import 'lake_account_state.dart';
 /// For information about ADB Lake Account and how to use it, see [What is Lake Account](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createaccount).
 /// For information about ADB Lake Account Privileges and how to use it, see [What are Lake Account Privileges](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-modifyaccountprivileges/).
 ///
-/// > **NOTE:** Available since v1.214.0.
+/// &gt; **NOTE:** Available since v1.214.0.
 ///
 /// ## Example Usage
 ///
@@ -523,16 +522,22 @@ import 'lake_account_state.dart';
 class LakeAccount extends pulumi.CustomResource {
   /// The description of the account.
   late final pulumi.Output<String?> accountDescription;
+
   /// The name of the account.
   late final pulumi.Output<String> accountName;
+
   /// AccountPassword.
   late final pulumi.Output<String> accountPassword;
+
   /// List of permissions granted. See `account_privileges` below.
-  late final pulumi.Output<List<LakeAccountAccountPrivilege>> accountPrivileges;
+  late final pulumi.Output<List<Map<String, dynamic>>> accountPrivileges;
+
   /// The type of the account.
   late final pulumi.Output<String?> accountType;
+
   /// The DBCluster ID.
   late final pulumi.Output<String> dbClusterId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -545,18 +550,20 @@ class LakeAccount extends pulumi.CustomResource {
     LakeAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/lakeAccount:LakeAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountPrivileges = registerOutput<List<LakeAccountAccountPrivilege>>('accountPrivileges');
-    this.accountType = registerOutput<String?>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.status = registerOutput<String>('status');
+         'alicloud:adb/lakeAccount:LakeAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountPrivileges = registerOutput<List<Map<String, dynamic>>>(
+      'accountPrivileges',
+    );
+    accountType = registerOutput<String?>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [LakeAccount] resource's state with the given [name] and [id].
@@ -577,17 +584,19 @@ class LakeAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/lakeAccount:LakeAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountPrivileges = registerOutput<List<LakeAccountAccountPrivilege>>('accountPrivileges');
-    this.accountType = registerOutput<String?>('accountType');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.status = registerOutput<String>('status');
+         'alicloud:adb/lakeAccount:LakeAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountPrivileges = registerOutput<List<Map<String, dynamic>>>(
+      'accountPrivileges',
+    );
+    accountType = registerOutput<String?>('accountType');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    status = registerOutput<String>('status');
   }
 }

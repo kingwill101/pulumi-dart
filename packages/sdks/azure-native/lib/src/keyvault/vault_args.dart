@@ -10,12 +10,16 @@ import 'vault_properties.dart';
 class VaultArgs {
   /// The supported Azure location where the key vault should be created.
   final pulumi.Input<String>? location;
+
   /// Properties of the vault
   final pulumi.Input<VaultProperties> properties;
+
   /// The name of the Resource Group to which the server belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The tags that will be assigned to the key vault.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of the vault
   final pulumi.Input<String>? vaultName;
 
@@ -36,7 +40,11 @@ class VaultArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<VaultProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<VaultProperties, Map<String, dynamic>>(
+            properties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vaultName': ?vaultName,
@@ -45,12 +53,31 @@ class VaultArgs {
 
   factory VaultArgs.fromMap(Map<String, dynamic> map) {
     return VaultArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (VaultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        VaultProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vaultName: (() {
+        final guardedValue = map['vaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

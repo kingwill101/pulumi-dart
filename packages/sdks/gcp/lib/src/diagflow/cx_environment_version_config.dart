@@ -8,20 +8,15 @@ class CxEnvironmentVersionConfig {
 
   /// Creates a new [CxEnvironmentVersionConfig].
   /// [version] Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-  CxEnvironmentVersionConfig({
-    required this.version,
-  });
+  CxEnvironmentVersionConfig({required this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': version,
-    };
+    return <String, dynamic>{'version': version};
   }
 
   factory CxEnvironmentVersionConfig.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentVersionConfig(
-      version: (map['version'] as String).input(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

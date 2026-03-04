@@ -102,12 +102,14 @@ class SecurityTokenServicePreferences extends pulumi.CustomResource {
     SecurityTokenServicePreferencesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalEndpointTokenVersion = registerOutput<String>('globalEndpointTokenVersion');
+         'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalEndpointTokenVersion = registerOutput<String>(
+      'globalEndpointTokenVersion',
+    );
   }
 
   /// Gets an existing [SecurityTokenServicePreferences] resource's state with the given [name] and [id].
@@ -128,11 +130,13 @@ class SecurityTokenServicePreferences extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalEndpointTokenVersion = registerOutput<String>('globalEndpointTokenVersion');
+         'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalEndpointTokenVersion = registerOutput<String>(
+      'globalEndpointTokenVersion',
+    );
   }
 }

@@ -8,10 +8,13 @@ import 'time.dart';
 class UploadLimitWeeklyRecurrence {
   /// The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
   final pulumi.Input<List<DayOfWeek>> days;
+
   /// The end time of the schedule recurrence. Full hour and 30-minute intervals are supported.
   final pulumi.Input<Time> endTime;
+
   /// The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
   final pulumi.Input<int> limitInMbps;
+
   /// The start time of the schedule recurrence. Full hour and 30-minute intervals are supported.
   final pulumi.Input<Time> startTime;
 
@@ -29,20 +32,40 @@ class UploadLimitWeeklyRecurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'days': pulumi.Input.mapInputValue<List<DayOfWeek>, List<String>>(days, (value) => pulumi.Input.encodeList<DayOfWeek, String>(value, (value) => value.value)),
-      'endTime': pulumi.Input.mapInputValue<Time, Map<String, dynamic>>(endTime, (value) => value.toMap()),
+      'days': pulumi.Input.mapInputValue<List<DayOfWeek>, List<String>>(
+        days,
+        (value) => pulumi.Input.encodeList<DayOfWeek, String>(
+          value,
+          (value) => value.wireValue,
+        ),
+      ),
+      'endTime': pulumi.Input.mapInputValue<Time, Map<String, dynamic>>(
+        endTime,
+        (value) => value.toMap(),
+      ),
       'limitInMbps': limitInMbps,
-      'startTime': pulumi.Input.mapInputValue<Time, Map<String, dynamic>>(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<Time, Map<String, dynamic>>(
+        startTime,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory UploadLimitWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return UploadLimitWeeklyRecurrence(
-      days: (pulumi.Input.decodeList<DayOfWeek>(map['days'], (value) => DayOfWeek.fromValue(value as String))).input(),
-      endTime: (Time.fromMap((map['endTime'] as Map).cast<String, dynamic>())).input(),
-      limitInMbps: (map['limitInMbps'] as int).input(),
-      startTime: (Time.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      days: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DayOfWeek>(
+          map['days']!,
+          (value) => DayOfWeek.fromValue(value as String),
+        ),
+      ),
+      endTime: pulumi.Input.fromValue(
+        Time.fromMap((map['endTime']! as Map).cast<String, dynamic>()),
+      ),
+      limitInMbps: pulumi.Input.fromValue(map['limitInMbps'] as int),
+      startTime: pulumi.Input.fromValue(
+        Time.fromMap((map['startTime']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

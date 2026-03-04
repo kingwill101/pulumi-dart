@@ -6,26 +6,37 @@ import 'system_data_response.dart';
 class GetGraphQueryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The description of a graph query.
   final String? description;
+
   /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   final String? etag;
+
   /// Azure resource Id
   final String id;
+
   /// The location of the resource
   final String? location;
+
   /// Azure resource name. This is GUID value. The display name should be assigned within properties field.
   final String name;
+
   /// KQL query that will be graph.
   final String query;
+
   /// Enum indicating a type of graph query.
   final String resultKind;
+
   /// The system metadata relating to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Date and time in UTC of the last modification that was made to this graph query definition.
   final String timeModified;
+
   /// Azure resource type
   final String type;
 
@@ -77,18 +88,35 @@ class GetGraphQueryResult {
   factory GetGraphQueryResult.fromMap(Map<String, dynamic> map) {
     return GetGraphQueryResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       query: map['query'] as String,
       resultKind: map['resultKind'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       timeModified: map['timeModified'] as String,
       type: map['type'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_route_args.dart';
-import 'tls_route_rule.dart';
 import 'tls_route_state.dart';
 
 /// TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.
@@ -1013,25 +1012,33 @@ import 'tls_route_state.dart';
 class TlsRoute extends pulumi.CustomResource {
   /// Time the TlsRoute was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
+
   /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-  /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+  /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
   late final pulumi.Output<List<String>?> gateways;
+
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-  /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+  /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
   /// The attached Mesh should be of a type SIDECAR
   late final pulumi.Output<List<String>?> meshes;
+
   /// Name of the TlsRoute resource.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
-  late final pulumi.Output<List<TlsRouteRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
+
   /// Time the TlsRoute was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -1044,20 +1051,20 @@ class TlsRoute extends pulumi.CustomResource {
     TlsRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkservices/tlsRoute:TlsRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.gateways = registerOutput<List<String>?>('gateways');
-    this.meshes = registerOutput<List<String>?>('meshes');
+         'gcp:networkservices/tlsRoute:TlsRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    gateways = registerOutput<List<String>?>('gateways');
+    meshes = registerOutput<List<String>?>('meshes');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.rules = registerOutput<List<TlsRouteRule>>('rules');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [TlsRoute] resource's state with the given [name] and [id].
@@ -1078,19 +1085,19 @@ class TlsRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkservices/tlsRoute:TlsRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.gateways = registerOutput<List<String>?>('gateways');
-    this.meshes = registerOutput<List<String>?>('meshes');
+         'gcp:networkservices/tlsRoute:TlsRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    gateways = registerOutput<List<String>?>('gateways');
+    meshes = registerOutput<List<String>?>('meshes');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.rules = registerOutput<List<TlsRouteRule>>('rules');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

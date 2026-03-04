@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleTemplateScheduledTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> description;
+
   /// The query of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> query;
+
   /// The ISO 8601 timespan duration between two consecutive queries.
   final pulumi.Input<String> queryFrequency;
+
   /// The ISO 8601 timespan duration, which determine the time period of the data covered by the query.
   final pulumi.Input<String> queryPeriod;
+
   /// The alert severity of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> severity;
+
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>> tactics;
+
   /// The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> triggerOperator;
+
   /// The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<int> triggerThreshold;
 
@@ -53,17 +60,18 @@ class GetAlertRuleTemplateScheduledTemplate {
     };
   }
 
-  factory GetAlertRuleTemplateScheduledTemplate.fromMap(Map<String, dynamic> map) {
+  factory GetAlertRuleTemplateScheduledTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAlertRuleTemplateScheduledTemplate(
-      description: (map['description'] as String).input(),
-      query: (map['query'] as String).input(),
-      queryFrequency: (map['queryFrequency'] as String).input(),
-      queryPeriod: (map['queryPeriod'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      tactics: ((map['tactics'] as List).cast<String>()).input(),
-      triggerOperator: (map['triggerOperator'] as String).input(),
-      triggerThreshold: (map['triggerThreshold'] as int).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      queryFrequency: pulumi.Input.fromValue(map['queryFrequency'] as String),
+      queryPeriod: pulumi.Input.fromValue(map['queryPeriod'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
+      triggerOperator: pulumi.Input.fromValue(map['triggerOperator'] as String),
+      triggerThreshold: pulumi.Input.fromValue(map['triggerThreshold'] as int),
     );
   }
 }
-

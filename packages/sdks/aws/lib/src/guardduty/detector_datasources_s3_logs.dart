@@ -9,20 +9,15 @@ class DetectorDatasourcesS3Logs {
 
   /// Creates a new [DetectorDatasourcesS3Logs].
   /// [enable] If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  DetectorDatasourcesS3Logs({
-    required this.enable,
-  });
+  DetectorDatasourcesS3Logs({required this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-    };
+    return <String, dynamic>{'enable': enable};
   }
 
   factory DetectorDatasourcesS3Logs.fromMap(Map<String, dynamic> map) {
     return DetectorDatasourcesS3Logs(
-      enable: (map['enable'] as bool).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'ssh_configuration.dart';
 class VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
   /// DisablePasswordAuthentication - whether password authentication should be disabled
   final pulumi.Input<bool>? disablePasswordAuthentication;
+
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
   final pulumi.Input<bool>? provisionVMAgent;
+
   /// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
   final pulumi.Input<bool>? provisionVMConfigAgent;
+
   /// Specifies the ssh key configuration for a Linux OS.
   final pulumi.Input<SshConfiguration>? ssh;
 
@@ -31,17 +34,42 @@ class VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
       'disablePasswordAuthentication': ?disablePasswordAuthentication,
       'provisionVMAgent': ?provisionVMAgent,
       'provisionVMConfigAgent': ?provisionVMConfigAgent,
-      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfiguration, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'ssh':
+          ?pulumi.Input.mapOptionalInputValue<
+            SshConfiguration,
+            Map<String, dynamic>
+          >(ssh, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineInstancePropertiesOsProfileLinuxConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstancePropertiesOsProfileLinuxConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstancePropertiesOsProfileLinuxConfiguration(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
-      provisionVMConfigAgent: map['provisionVMConfigAgent'] == null ? null : (map['provisionVMConfigAgent']! as bool).input(),
-      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      disablePasswordAuthentication: (() {
+        final guardedValue = map['disablePasswordAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provisionVMAgent: (() {
+        final guardedValue = map['provisionVMAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provisionVMConfigAgent: (() {
+        final guardedValue = map['provisionVMConfigAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ssh: (() {
+        final guardedValue = map['ssh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SshConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

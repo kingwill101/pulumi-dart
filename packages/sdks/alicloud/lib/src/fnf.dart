@@ -1,5 +1,3 @@
-library module_fnf;
-
 export 'fnf/execution.dart';
 export 'fnf/execution_args.dart';
 export 'fnf/execution_state.dart';

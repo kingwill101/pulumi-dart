@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsSnapshotArgs {
   /// A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
   final pulumi.Input<String>? name;
+
   /// The region where the NFS snapshot will be created.
   final pulumi.Input<String> region;
+
   /// The ID of the NFS share to snapshot.
   final pulumi.Input<String> shareId;
 
@@ -18,11 +20,7 @@ class NfsSnapshotArgs {
   /// [name] A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
   /// [region] The region where the NFS snapshot will be created.
   /// [shareId] The ID of the NFS share to snapshot.
-  NfsSnapshotArgs({
-    this.name,
-    required this.region,
-    required this.shareId,
-  });
+  NfsSnapshotArgs({this.name, required this.region, required this.shareId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,13 @@ class NfsSnapshotArgs {
 
   factory NfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return NfsSnapshotArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: (map['region'] as String).input(),
-      shareId: (map['shareId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
-

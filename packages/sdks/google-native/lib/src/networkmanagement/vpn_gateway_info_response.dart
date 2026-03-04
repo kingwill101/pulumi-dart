@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayInfoResponse {
   /// Name of a VPN gateway.
   final pulumi.Input<String> displayName;
+
   /// IP address of the VPN gateway.
   final pulumi.Input<String> ipAddress;
+
   /// URI of a Compute Engine network where the VPN gateway is configured.
   final pulumi.Input<String> networkUri;
+
   /// Name of a Google Cloud region where this VPN gateway is configured.
   final pulumi.Input<String> region;
+
   /// URI of a VPN gateway.
   final pulumi.Input<String> uri;
+
   /// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
   final pulumi.Input<String> vpnTunnelUri;
 
@@ -46,13 +51,12 @@ class VpnGatewayInfoResponse {
 
   factory VpnGatewayInfoResponse.fromMap(Map<String, dynamic> map) {
     return VpnGatewayInfoResponse(
-      displayName: (map['displayName'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      networkUri: (map['networkUri'] as String).input(),
-      region: (map['region'] as String).input(),
-      uri: (map['uri'] as String).input(),
-      vpnTunnelUri: (map['vpnTunnelUri'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      vpnTunnelUri: pulumi.Input.fromValue(map['vpnTunnelUri'] as String),
     );
   }
 }
-

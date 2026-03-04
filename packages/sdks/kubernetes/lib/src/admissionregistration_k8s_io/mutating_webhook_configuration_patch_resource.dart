@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'mutating_webhook_configuration_patch_admissionregistration_k8s_io_v1beta1_args.dart';
-import 'mutating_webhook_patch_admissionregistration_k8s_io_v1beta1.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -13,12 +12,15 @@ import 'mutating_webhook_patch_admissionregistration_k8s_io_v1beta1.dart';
 class MutatingWebhookConfigurationPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Webhooks is a list of webhooks and the affected resources and operations.
-  late final pulumi.Output<List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>?> webhooks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> webhooks;
 
   /// Creates a new [MutatingWebhookConfigurationPatchResource].
   /// [name] The Pulumi resource name.
@@ -26,17 +28,18 @@ class MutatingWebhookConfigurationPatchResource extends pulumi.CustomResource {
   /// [options] Resource options controlling this resource's behavior.
   MutatingWebhookConfigurationPatchResource(
     String name, {
-    MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args? args,
+    MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args?
+    args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.webhooks = registerOutput<List<MutatingWebhookPatchAdmissionregistrationK8sIoV1beta1>?>('webhooks');
+         'kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    webhooks = registerOutput<List<Map<String, dynamic>>?>('webhooks');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceCapacityProviderStrategy {
   /// Number of tasks using the specified capacity provider
   final pulumi.Input<int> base;
+
   /// Name of the capacity provider
   final pulumi.Input<String> capacityProvider;
+
   /// Relative percentage of total tasks to launch
   final pulumi.Input<int> weight;
 
@@ -30,10 +32,11 @@ class GetServiceCapacityProviderStrategy {
 
   factory GetServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return GetServiceCapacityProviderStrategy(
-      base: (map['base'] as int).input(),
-      capacityProvider: (map['capacityProvider'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      base: pulumi.Input.fromValue(map['base'] as int),
+      capacityProvider: pulumi.Input.fromValue(
+        map['capacityProvider'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

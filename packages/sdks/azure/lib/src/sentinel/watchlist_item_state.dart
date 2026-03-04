@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WatchlistItemState {
   /// The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
   final pulumi.Input<String>? name;
+
   /// The key value pairs of the Sentinel Watchlist Item.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
   final pulumi.Input<String>? watchlistId;
 
@@ -15,11 +17,7 @@ class WatchlistItemState {
   /// [name] The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
   /// [properties] The key value pairs of the Sentinel Watchlist Item.
   /// [watchlistId] The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
-  WatchlistItemState({
-    this.name,
-    this.properties,
-    this.watchlistId,
-  });
+  WatchlistItemState({this.name, this.properties, this.watchlistId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,23 @@ class WatchlistItemState {
 
   factory WatchlistItemState.fromMap(Map<String, dynamic> map) {
     return WatchlistItemState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      watchlistId: (() {
+        final guardedValue = map['watchlistId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

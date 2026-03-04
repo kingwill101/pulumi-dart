@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRulesResponse {
   /// Allow Azure services to access the target service if true.
   final pulumi.Input<String>? azureServices;
+
   /// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
   final pulumi.Input<String>? callerClientIP;
+
   /// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
   final pulumi.Input<List<String>>? ipRanges;
 
@@ -31,10 +33,21 @@ class FirewallRulesResponse {
 
   factory FirewallRulesResponse.fromMap(Map<String, dynamic> map) {
     return FirewallRulesResponse(
-      azureServices: map['azureServices'] == null ? null : (map['azureServices']! as String).input(),
-      callerClientIP: map['callerClientIP'] == null ? null : (map['callerClientIP']! as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      azureServices: (() {
+        final guardedValue = map['azureServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      callerClientIP: (() {
+        final guardedValue = map['callerClientIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRanges: (() {
+        final guardedValue = map['ipRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

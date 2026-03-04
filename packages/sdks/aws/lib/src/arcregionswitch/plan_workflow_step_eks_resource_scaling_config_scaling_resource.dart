@@ -6,8 +6,12 @@ import 'plan_workflow_step_eks_resource_scaling_config_scaling_resource_resource
 class PlanWorkflowStepEksResourceScalingConfigScalingResource {
   /// Kubernetes namespace.
   final pulumi.Input<String> namespace;
+
   /// Set of resources to scale. See Resources below.
-  final pulumi.Input<List<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>>? resources;
+  final pulumi.Input<
+    List<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>
+  >?
+  resources;
 
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigScalingResource].
   /// [namespace] Kubernetes namespace.
@@ -20,15 +24,43 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'namespace': namespace,
-      'resources': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              PlanWorkflowStepEksResourceScalingConfigScalingResourceResource
+            >,
+            List<Map<String, dynamic>>
+          >(
+            resources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlanWorkflowStepEksResourceScalingConfigScalingResourceResource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigScalingResource.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEksResourceScalingConfigScalingResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEksResourceScalingConfigScalingResource(
-      namespace: (map['namespace'] as String).input(),
-      resources: map['resources'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>(map['resources']!, (value) => PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PlanWorkflowStepEksResourceScalingConfigScalingResourceResource
+          >(
+            guardedValue,
+            (value) =>
+                PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

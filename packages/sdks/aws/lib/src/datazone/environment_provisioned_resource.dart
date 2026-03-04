@@ -7,6 +7,7 @@ class EnvironmentProvisionedResource {
   final pulumi.Input<String> name;
   final pulumi.Input<String> provider;
   final pulumi.Input<String> type;
+
   /// The value of an environment profile parameter.
   final pulumi.Input<String> value;
 
@@ -33,11 +34,10 @@ class EnvironmentProvisionedResource {
 
   factory EnvironmentProvisionedResource.fromMap(Map<String, dynamic> map) {
     return EnvironmentProvisionedResource(
-      name: (map['name'] as String).input(),
-      provider: (map['provider'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      provider: pulumi.Input.fromValue(map['provider'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

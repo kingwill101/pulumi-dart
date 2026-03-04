@@ -22,10 +22,13 @@ class ListProvisionedClusterInstanceUserKubeconfigArgs {
     };
   }
 
-  factory ListProvisionedClusterInstanceUserKubeconfigArgs.fromMap(Map<String, dynamic> map) {
+  factory ListProvisionedClusterInstanceUserKubeconfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListProvisionedClusterInstanceUserKubeconfigArgs(
-      connectedClusterResourceUri: (map['connectedClusterResourceUri'] as String).input(),
+      connectedClusterResourceUri: pulumi.Input.fromValue(
+        map['connectedClusterResourceUri'] as String,
+      ),
     );
   }
 }
-

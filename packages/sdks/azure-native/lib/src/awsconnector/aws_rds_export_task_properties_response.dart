@@ -5,56 +5,71 @@ import 'export_source_type_enum_value_response.dart';
 
 /// Definition of awsRdsExportTask
 class AwsRdsExportTaskPropertiesResponse {
-  /// <p>The data exported from the snapshot or cluster.</p> <p>Valid Values:</p> <ul> <li> <p> <code>database</code> - Export all the data from a specified database.</p> </li> <li> <p> <code>database.table</code> <i>table-name</i> - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL.</p> </li> <li> <p> <code>database.schema</code> <i>schema-name</i> - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> <li> <p> <code>database.schema.table</code> <i>table-name</i> - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> </ul>
+  /// &lt;p&gt;The data exported from the snapshot or cluster.&lt;/p&gt; &lt;p&gt;Valid Values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database&lt;/code&gt; - Export all the data from a specified database.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.table&lt;/code&gt; &lt;i&gt;table-name&lt;/i&gt; - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.schema&lt;/code&gt; &lt;i&gt;schema-name&lt;/i&gt; - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.schema.table&lt;/code&gt; &lt;i&gt;table-name&lt;/i&gt; - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<List<String>>? exportOnly;
-  /// <p>A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the Amazon S3 bucket where the data is exported.</p>
+
+  /// &lt;p&gt;A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the Amazon S3 bucket where the data is exported.&lt;/p&gt;
   final pulumi.Input<String>? exportTaskIdentifier;
-  /// <p>The reason the export failed, if it failed.</p>
+
+  /// &lt;p&gt;The reason the export failed, if it failed.&lt;/p&gt;
   final pulumi.Input<String>? failureCause;
-  /// <p>The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.</p>
+
+  /// &lt;p&gt;The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.&lt;/p&gt;
   final pulumi.Input<String>? iamRoleArn;
-  /// <p>The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The IAM role used for the export must have encryption and decryption permissions to use this KMS key.</p>
+
+  /// &lt;p&gt;The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The IAM role used for the export must have encryption and decryption permissions to use this KMS key.&lt;/p&gt;
   final pulumi.Input<String>? kmsKeyId;
-  /// <p>The progress of the snapshot or cluster export task as a percentage.</p>
+
+  /// &lt;p&gt;The progress of the snapshot or cluster export task as a percentage.&lt;/p&gt;
   final pulumi.Input<int>? percentProgress;
-  /// <p>The Amazon S3 bucket where the snapshot or cluster is exported to.</p>
+
+  /// &lt;p&gt;The Amazon S3 bucket where the snapshot or cluster is exported to.&lt;/p&gt;
   final pulumi.Input<String>? s3Bucket;
-  /// <p>The Amazon S3 bucket prefix that is the file name and path of the exported data.</p>
+
+  /// &lt;p&gt;The Amazon S3 bucket prefix that is the file name and path of the exported data.&lt;/p&gt;
   final pulumi.Input<String>? s3Prefix;
-  /// <p>The time when the snapshot was created.</p>
+
+  /// &lt;p&gt;The time when the snapshot was created.&lt;/p&gt;
   final pulumi.Input<String>? snapshotTime;
-  /// <p>The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.&lt;/p&gt;
   final pulumi.Input<String>? sourceArn;
-  /// <p>The type of source for the export.</p>
+
+  /// &lt;p&gt;The type of source for the export.&lt;/p&gt;
   final pulumi.Input<ExportSourceTypeEnumValueResponse>? sourceType;
-  /// <p>The progress status of the export task. The status can be one of the following:</p> <ul> <li> <p> <code>CANCELED</code> </p> </li> <li> <p> <code>CANCELING</code> </p> </li> <li> <p> <code>COMPLETE</code> </p> </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>IN_PROGRESS</code> </p> </li> <li> <p> <code>STARTING</code> </p> </li> </ul>
+
+  /// &lt;p&gt;The progress status of the export task. The status can be one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CANCELED&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CANCELING&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;COMPLETE&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;STARTING&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? status;
-  /// <p>The time when the snapshot or cluster export task ended.</p>
+
+  /// &lt;p&gt;The time when the snapshot or cluster export task ended.&lt;/p&gt;
   final pulumi.Input<String>? taskEndTime;
-  /// <p>The time when the snapshot or cluster export task started.</p>
+
+  /// &lt;p&gt;The time when the snapshot or cluster export task started.&lt;/p&gt;
   final pulumi.Input<String>? taskStartTime;
-  /// <p>The total amount of data exported, in gigabytes.</p>
+
+  /// &lt;p&gt;The total amount of data exported, in gigabytes.&lt;/p&gt;
   final pulumi.Input<int>? totalExtractedDataInGB;
-  /// <p>A warning about the snapshot or cluster export task.</p>
+
+  /// &lt;p&gt;A warning about the snapshot or cluster export task.&lt;/p&gt;
   final pulumi.Input<String>? warningMessage;
 
   /// Creates a new [AwsRdsExportTaskPropertiesResponse].
-  /// [exportOnly] <p>The data exported from the snapshot or cluster.</p> <p>Valid Values:</p> <ul> <li> <p> <code>database</code> - Export all the data from a specified database.</p> </li> <li> <p> <code>database.table</code> <i>table-name</i> - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL.</p> </li> <li> <p> <code>database.schema</code> <i>schema-name</i> - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> <li> <p> <code>database.schema.table</code> <i>table-name</i> - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> </ul>
-  /// [exportTaskIdentifier] <p>A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the Amazon S3 bucket where the data is exported.</p>
-  /// [failureCause] <p>The reason the export failed, if it failed.</p>
-  /// [iamRoleArn] <p>The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.</p>
-  /// [kmsKeyId] <p>The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The IAM role used for the export must have encryption and decryption permissions to use this KMS key.</p>
-  /// [percentProgress] <p>The progress of the snapshot or cluster export task as a percentage.</p>
-  /// [s3Bucket] <p>The Amazon S3 bucket where the snapshot or cluster is exported to.</p>
-  /// [s3Prefix] <p>The Amazon S3 bucket prefix that is the file name and path of the exported data.</p>
-  /// [snapshotTime] <p>The time when the snapshot was created.</p>
-  /// [sourceArn] <p>The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.</p>
-  /// [sourceType] <p>The type of source for the export.</p>
-  /// [status] <p>The progress status of the export task. The status can be one of the following:</p> <ul> <li> <p> <code>CANCELED</code> </p> </li> <li> <p> <code>CANCELING</code> </p> </li> <li> <p> <code>COMPLETE</code> </p> </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>IN_PROGRESS</code> </p> </li> <li> <p> <code>STARTING</code> </p> </li> </ul>
-  /// [taskEndTime] <p>The time when the snapshot or cluster export task ended.</p>
-  /// [taskStartTime] <p>The time when the snapshot or cluster export task started.</p>
-  /// [totalExtractedDataInGB] <p>The total amount of data exported, in gigabytes.</p>
-  /// [warningMessage] <p>A warning about the snapshot or cluster export task.</p>
+  /// [exportOnly] &lt;p&gt;The data exported from the snapshot or cluster.&lt;/p&gt; &lt;p&gt;Valid Values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database&lt;/code&gt; - Export all the data from a specified database.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.table&lt;/code&gt; &lt;i&gt;table-name&lt;/i&gt; - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.schema&lt;/code&gt; &lt;i&gt;schema-name&lt;/i&gt; - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;database.schema.table&lt;/code&gt; &lt;i&gt;table-name&lt;/i&gt; - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [exportTaskIdentifier] &lt;p&gt;A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the Amazon S3 bucket where the data is exported.&lt;/p&gt;
+  /// [failureCause] &lt;p&gt;The reason the export failed, if it failed.&lt;/p&gt;
+  /// [iamRoleArn] &lt;p&gt;The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.&lt;/p&gt;
+  /// [kmsKeyId] &lt;p&gt;The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The IAM role used for the export must have encryption and decryption permissions to use this KMS key.&lt;/p&gt;
+  /// [percentProgress] &lt;p&gt;The progress of the snapshot or cluster export task as a percentage.&lt;/p&gt;
+  /// [s3Bucket] &lt;p&gt;The Amazon S3 bucket where the snapshot or cluster is exported to.&lt;/p&gt;
+  /// [s3Prefix] &lt;p&gt;The Amazon S3 bucket prefix that is the file name and path of the exported data.&lt;/p&gt;
+  /// [snapshotTime] &lt;p&gt;The time when the snapshot was created.&lt;/p&gt;
+  /// [sourceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.&lt;/p&gt;
+  /// [sourceType] &lt;p&gt;The type of source for the export.&lt;/p&gt;
+  /// [status] &lt;p&gt;The progress status of the export task. The status can be one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CANCELED&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CANCELING&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;COMPLETE&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;STARTING&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [taskEndTime] &lt;p&gt;The time when the snapshot or cluster export task ended.&lt;/p&gt;
+  /// [taskStartTime] &lt;p&gt;The time when the snapshot or cluster export task started.&lt;/p&gt;
+  /// [totalExtractedDataInGB] &lt;p&gt;The total amount of data exported, in gigabytes.&lt;/p&gt;
+  /// [warningMessage] &lt;p&gt;A warning about the snapshot or cluster export task.&lt;/p&gt;
   AwsRdsExportTaskPropertiesResponse({
     this.exportOnly,
     this.exportTaskIdentifier,
@@ -86,7 +101,11 @@ class AwsRdsExportTaskPropertiesResponse {
       's3Prefix': ?s3Prefix,
       'snapshotTime': ?snapshotTime,
       'sourceArn': ?sourceArn,
-      'sourceType': ?pulumi.Input.mapOptionalInputValue<ExportSourceTypeEnumValueResponse, Map<String, dynamic>>(sourceType, (value) => value.toMap()),
+      'sourceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportSourceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(sourceType, (value) => value.toMap()),
       'status': ?status,
       'taskEndTime': ?taskEndTime,
       'taskStartTime': ?taskStartTime,
@@ -97,23 +116,90 @@ class AwsRdsExportTaskPropertiesResponse {
 
   factory AwsRdsExportTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsExportTaskPropertiesResponse(
-      exportOnly: map['exportOnly'] == null ? null : ((map['exportOnly']! as List).cast<String>()).input(),
-      exportTaskIdentifier: map['exportTaskIdentifier'] == null ? null : (map['exportTaskIdentifier']! as String).input(),
-      failureCause: map['failureCause'] == null ? null : (map['failureCause']! as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      percentProgress: map['percentProgress'] == null ? null : (map['percentProgress']! as int).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket']! as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix']! as String).input(),
-      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime']! as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
-      sourceType: map['sourceType'] == null ? null : (ExportSourceTypeEnumValueResponse.fromMap((map['sourceType']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      taskEndTime: map['taskEndTime'] == null ? null : (map['taskEndTime']! as String).input(),
-      taskStartTime: map['taskStartTime'] == null ? null : (map['taskStartTime']! as String).input(),
-      totalExtractedDataInGB: map['totalExtractedDataInGB'] == null ? null : (map['totalExtractedDataInGB']! as int).input(),
-      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage']! as String).input(),
+      exportOnly: (() {
+        final guardedValue = map['exportOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      exportTaskIdentifier: (() {
+        final guardedValue = map['exportTaskIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failureCause: (() {
+        final guardedValue = map['failureCause'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRoleArn: (() {
+        final guardedValue = map['iamRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentProgress: (() {
+        final guardedValue = map['percentProgress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      s3Bucket: (() {
+        final guardedValue = map['s3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3Prefix: (() {
+        final guardedValue = map['s3Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotTime: (() {
+        final guardedValue = map['snapshotTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArn: (() {
+        final guardedValue = map['sourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportSourceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskEndTime: (() {
+        final guardedValue = map['taskEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskStartTime: (() {
+        final guardedValue = map['taskStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalExtractedDataInGB: (() {
+        final guardedValue = map['totalExtractedDataInGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      warningMessage: (() {
+        final guardedValue = map['warningMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRoutingEndpointGroupDestinationArgs {
   /// The ID of the endpoint group.
   final pulumi.Input<String> endpointGroupId;
+
   /// The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   final pulumi.Input<int> fromPort;
+
   /// The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   final pulumi.Input<List<String>> protocols;
+
   /// The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   final pulumi.Input<int> toPort;
 
@@ -37,13 +40,16 @@ class CustomRoutingEndpointGroupDestinationArgs {
     };
   }
 
-  factory CustomRoutingEndpointGroupDestinationArgs.fromMap(Map<String, dynamic> map) {
+  factory CustomRoutingEndpointGroupDestinationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomRoutingEndpointGroupDestinationArgs(
-      endpointGroupId: (map['endpointGroupId'] as String).input(),
-      fromPort: (map['fromPort'] as int).input(),
-      protocols: ((map['protocols'] as List).cast<String>()).input(),
-      toPort: (map['toPort'] as int).input(),
+      endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      protocols: pulumi.Input.fromValue(
+        (map['protocols'] as List).cast<String>(),
+      ),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

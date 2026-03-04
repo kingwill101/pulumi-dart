@@ -7,17 +7,23 @@ import 'system_data_response.dart';
 class GetHciEdgeDeviceJobResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Edge device kind.
   /// Expected value is 'HCI'.
   final String kind;
+
   /// The name of the resource
   final String name;
+
   /// HCI Edge device job properties
   final HciCollectLogJobPropertiesResponse properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -57,10 +63,13 @@ class GetHciEdgeDeviceJobResult {
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      properties: HciCollectLogJobPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: HciCollectLogJobPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

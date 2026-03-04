@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAclAttachmentState {
   /// The ID of the ACL to attach.
   final pulumi.Input<String>? aclId;
+
   /// The type of the ACL. Valid values: `white`, `black`.
   final pulumi.Input<String>? aclType;
+
   /// The ID of the API Gateway instance that the ACL will be attached to.
   final pulumi.Input<String>? instanceId;
 
@@ -15,11 +17,7 @@ class InstanceAclAttachmentState {
   /// [aclId] The ID of the ACL to attach.
   /// [aclType] The type of the ACL. Valid values: `white`, `black`.
   /// [instanceId] The ID of the API Gateway instance that the ACL will be attached to.
-  InstanceAclAttachmentState({
-    this.aclId,
-    this.aclType,
-    this.instanceId,
-  });
+  InstanceAclAttachmentState({this.aclId, this.aclType, this.instanceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class InstanceAclAttachmentState {
 
   factory InstanceAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAclAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      aclId: (() {
+        final guardedValue = map['aclId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aclType: (() {
+        final guardedValue = map['aclType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

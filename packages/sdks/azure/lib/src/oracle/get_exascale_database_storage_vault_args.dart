@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExascaleDatabaseStorageVaultArgs {
   /// The name of this Exadata Database Storage Vault.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Exadata Database Storage Vault exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetExascaleDatabaseStorageVaultArgs {
     };
   }
 
-  factory GetExascaleDatabaseStorageVaultArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExascaleDatabaseStorageVaultArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExascaleDatabaseStorageVaultArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

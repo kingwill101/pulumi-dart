@@ -9,15 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SfdcChannelArgs {
   /// The Channel topic defined by salesforce once an channel is opened
   final pulumi.Input<String>? channelTopic;
+
   /// The description for this channel
   final pulumi.Input<String>? description;
+
   /// Client level unique name/alias to easily reference a channel.
   final pulumi.Input<String>? displayName;
+
   /// Indicated if a channel has any active integrations referencing it. Set to false when the channel is created, and set to true if there is any integration published with the channel configured in it.
   final pulumi.Input<bool>? isActive;
+
   /// Last sfdc messsage replay id for channel
   final pulumi.Input<String>? lastReplayId;
   final pulumi.Input<String>? location;
+
   /// Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> productId;
@@ -65,17 +70,48 @@ class SfdcChannelArgs {
 
   factory SfdcChannelArgs.fromMap(Map<String, dynamic> map) {
     return SfdcChannelArgs(
-      channelTopic: map['channelTopic'] == null ? null : (map['channelTopic']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
-      lastReplayId: map['lastReplayId'] == null ? null : (map['lastReplayId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sfdcInstanceId: (map['sfdcInstanceId'] as String).input(),
+      channelTopic: (() {
+        final guardedValue = map['channelTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isActive: (() {
+        final guardedValue = map['isActive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastReplayId: (() {
+        final guardedValue = map['lastReplayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sfdcInstanceId: pulumi.Input.fromValue(map['sfdcInstanceId'] as String),
     );
   }
 }
-

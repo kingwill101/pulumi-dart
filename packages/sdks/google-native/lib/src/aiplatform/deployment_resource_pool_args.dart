@@ -9,10 +9,13 @@ import 'google_cloud_aiplatform_v1_dedicated_resources.dart';
 /// {@macro pulumi_aiplatform_v1_deployment_resource_pool_args_doc}
 class DeploymentResourcePoolArgs {
   /// The underlying DedicatedResources that the DeploymentResourcePool uses.
-  final pulumi.Input<GoogleCloudAiplatformV1DedicatedResources> dedicatedResources;
+  final pulumi.Input<GoogleCloudAiplatformV1DedicatedResources>
+  dedicatedResources;
+
   /// The ID to use for the DeploymentResourcePool, which will become the final component of the DeploymentResourcePool's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
   final pulumi.Input<String> deploymentResourcePoolId;
   final pulumi.Input<String>? location;
+
   /// Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -33,7 +36,11 @@ class DeploymentResourcePoolArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dedicatedResources': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1DedicatedResources, Map<String, dynamic>>(dedicatedResources, (value) => value.toMap()),
+      'dedicatedResources':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1DedicatedResources,
+            Map<String, dynamic>
+          >(dedicatedResources, (value) => value.toMap()),
       'deploymentResourcePoolId': deploymentResourcePoolId,
       'location': ?location,
       'name': ?name,
@@ -43,12 +50,29 @@ class DeploymentResourcePoolArgs {
 
   factory DeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentResourcePoolArgs(
-      dedicatedResources: (GoogleCloudAiplatformV1DedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dedicatedResources: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1DedicatedResources.fromMap(
+          (map['dedicatedResources']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      deploymentResourcePoolId: pulumi.Input.fromValue(
+        map['deploymentResourcePoolId'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

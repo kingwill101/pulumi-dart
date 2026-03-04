@@ -7,7 +7,7 @@ import 'cluster_state.dart';
 ///
 /// For information about Ack One Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/en/ack/distributed-cloud-container-platform-for-kubernetes/developer-reference/api-adcp-2022-01-01-createhubcluster).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -271,16 +271,21 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
   late final pulumi.Output<bool> argocdEnabled;
+
   /// Cluster name.
   late final pulumi.Output<String> clusterName;
+
   /// Cluster creation time.
   late final pulumi.Output<String> createTime;
+
   /// Cluster network information. See `network` below.
   late final pulumi.Output<ClusterNetwork> network;
+
   /// Cluster attributes. Valid values: 'Default', 'XFlow'.
   ///
   /// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
   late final pulumi.Output<String> profile;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -293,17 +298,17 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ackone/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.argocdEnabled = registerOutput<bool>('argocdEnabled');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.createTime = registerOutput<String>('createTime');
-    this.network = registerOutput<ClusterNetwork>('network');
-    this.profile = registerOutput<String>('profile');
-    this.status = registerOutput<String>('status');
+         'alicloud:ackone/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    argocdEnabled = registerOutput<bool>('argocdEnabled');
+    clusterName = registerOutput<String>('clusterName');
+    createTime = registerOutput<String>('createTime');
+    network = registerOutput<ClusterNetwork>('network');
+    profile = registerOutput<String>('profile');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -324,16 +329,16 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ackone/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.argocdEnabled = registerOutput<bool>('argocdEnabled');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.createTime = registerOutput<String>('createTime');
-    this.network = registerOutput<ClusterNetwork>('network');
-    this.profile = registerOutput<String>('profile');
-    this.status = registerOutput<String>('status');
+         'alicloud:ackone/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    argocdEnabled = registerOutput<bool>('argocdEnabled');
+    clusterName = registerOutput<String>('clusterName');
+    createTime = registerOutput<String>('createTime');
+    network = registerOutput<ClusterNetwork>('network');
+    profile = registerOutput<String>('profile');
+    status = registerOutput<String>('status');
   }
 }

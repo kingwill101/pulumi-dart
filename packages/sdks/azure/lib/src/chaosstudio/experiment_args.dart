@@ -12,14 +12,19 @@ import 'experiment_step.dart';
 class ExperimentArgs {
   /// A `identity` block as defined below.
   final pulumi.Input<ExperimentIdentity>? identity;
+
   /// The Azure Region where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Chaos Studio Experiment. Changing this forces a new Chaos Studio Experiment to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// One or more `selectors` blocks as defined below.
   final pulumi.Input<List<ExperimentSelector>> selectors;
+
   /// One or more `steps` blocks as defined below.
   final pulumi.Input<List<ExperimentStep>> steps;
 
@@ -41,24 +46,80 @@ class ExperimentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ExperimentIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExperimentIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'selectors': pulumi.Input.mapInputValue<List<ExperimentSelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<ExperimentSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'steps': pulumi.Input.mapInputValue<List<ExperimentStep>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<ExperimentStep, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selectors':
+          pulumi.Input.mapInputValue<
+            List<ExperimentSelector>,
+            List<Map<String, dynamic>>
+          >(
+            selectors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExperimentSelector,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'steps':
+          pulumi.Input.mapInputValue<
+            List<ExperimentStep>,
+            List<Map<String, dynamic>>
+          >(
+            steps,
+            (value) =>
+                pulumi.Input.encodeList<ExperimentStep, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ExperimentArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentArgs(
-      identity: map['identity'] == null ? null : (ExperimentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      selectors: (pulumi.Input.decodeList<ExperimentSelector>(map['selectors'], (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      steps: (pulumi.Input.decodeList<ExperimentStep>(map['steps'], (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExperimentIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      selectors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ExperimentSelector>(
+          map['selectors']!,
+          (value) => ExperimentSelector.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      steps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ExperimentStep>(
+          map['steps']!,
+          (value) =>
+              ExperimentStep.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

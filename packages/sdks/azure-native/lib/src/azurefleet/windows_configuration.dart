@@ -9,27 +9,34 @@ import 'win_rmconfiguration.dart';
 class WindowsConfiguration {
   /// Specifies additional base-64 encoded XML formatted information that can be
   /// included in the Unattend.xml file, which is used by Windows Setup.
-  final pulumi.Input<List<AdditionalUnattendContent>>? additionalUnattendContent;
+  final pulumi.Input<List<AdditionalUnattendContent>>?
+  additionalUnattendContent;
+
   /// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
   /// Default value is true. For virtual machine scale sets, this property can be
   /// updated and updates will take effect on OS reprovisioning.
   final pulumi.Input<bool>? enableAutomaticUpdates;
+
   /// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
   /// machine. Default value is false.
   final pulumi.Input<bool>? enableVMAgentPlatformUpdates;
+
   /// [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
   final pulumi.Input<PatchSettings>? patchSettings;
+
   /// Indicates whether virtual machine agent should be provisioned on the virtual
   /// machine. When this property is not specified in the request body, it is set to
   /// true by default. This will ensure that VM Agent is installed on the VM so that
   /// extensions can be added to the VM later.
   final pulumi.Input<bool>? provisionVMAgent;
+
   /// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
   /// Possible values can be
   /// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
   /// value from time zones returned by
   /// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
   final pulumi.Input<String>? timeZone;
+
   /// Specifies the Windows Remote Management listeners. This enables remote Windows
   /// PowerShell.
   final pulumi.Input<WinRMConfiguration>? winRM;
@@ -54,26 +61,85 @@ class WindowsConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalUnattendContent': ?pulumi.Input.mapOptionalInputValue<List<AdditionalUnattendContent>, List<Map<String, dynamic>>>(additionalUnattendContent, (value) => pulumi.Input.encodeList<AdditionalUnattendContent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalUnattendContent':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AdditionalUnattendContent>,
+            List<Map<String, dynamic>>
+          >(
+            additionalUnattendContent,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AdditionalUnattendContent,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enableAutomaticUpdates': ?enableAutomaticUpdates,
       'enableVMAgentPlatformUpdates': ?enableVMAgentPlatformUpdates,
-      'patchSettings': ?pulumi.Input.mapOptionalInputValue<PatchSettings, Map<String, dynamic>>(patchSettings, (value) => value.toMap()),
+      'patchSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            PatchSettings,
+            Map<String, dynamic>
+          >(patchSettings, (value) => value.toMap()),
       'provisionVMAgent': ?provisionVMAgent,
       'timeZone': ?timeZone,
-      'winRM': ?pulumi.Input.mapOptionalInputValue<WinRMConfiguration, Map<String, dynamic>>(winRM, (value) => value.toMap()),
+      'winRM':
+          ?pulumi.Input.mapOptionalInputValue<
+            WinRMConfiguration,
+            Map<String, dynamic>
+          >(winRM, (value) => value.toMap()),
     };
   }
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      additionalUnattendContent: map['additionalUnattendContent'] == null ? null : (pulumi.Input.decodeList<AdditionalUnattendContent>(map['additionalUnattendContent']!, (value) => AdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
-      enableVMAgentPlatformUpdates: map['enableVMAgentPlatformUpdates'] == null ? null : (map['enableVMAgentPlatformUpdates']! as bool).input(),
-      patchSettings: map['patchSettings'] == null ? null : (PatchSettings.fromMap((map['patchSettings']! as Map).cast<String, dynamic>())).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
-      winRM: map['winRM'] == null ? null : (WinRMConfiguration.fromMap((map['winRM']! as Map).cast<String, dynamic>())).input(),
+      additionalUnattendContent: (() {
+        final guardedValue = map['additionalUnattendContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AdditionalUnattendContent>(
+            guardedValue,
+            (value) => AdditionalUnattendContent.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enableAutomaticUpdates: (() {
+        final guardedValue = map['enableAutomaticUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableVMAgentPlatformUpdates: (() {
+        final guardedValue = map['enableVMAgentPlatformUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      patchSettings: (() {
+        final guardedValue = map['patchSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PatchSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      provisionVMAgent: (() {
+        final guardedValue = map['provisionVMAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      winRM: (() {
+        final guardedValue = map['winRM'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WinRMConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

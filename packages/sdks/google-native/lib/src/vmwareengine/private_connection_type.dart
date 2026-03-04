@@ -6,16 +6,15 @@ enum PrivateConnectionType {
   dellPowerscale("DELL_POWERSCALE"),
   thirdPartyService("THIRD_PARTY_SERVICE");
 
-  const PrivateConnectionType(this.value);
-  final String value;
+  const PrivateConnectionType(this.wireValue);
+  final String wireValue;
 
   static PrivateConnectionType fromValue(String value) {
     for (final item in PrivateConnectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateConnectionType value: $value');
   }
 }
-

@@ -209,21 +209,30 @@ import 'web_app_collector_operation_args.dart';
 /// ```
 class WebAppCollectorOperation extends pulumi.CustomResource {
   /// Gets or sets the collector agent properties.
-  late final pulumi.Output<CollectorAgentPropertiesBaseResponse?> agentProperties;
+  late final pulumi.Output<CollectorAgentPropertiesBaseResponse?>
+  agentProperties;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the Timestamp when collector was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Gets the discovery site id.
   late final pulumi.Output<String?> discoverySiteId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Timestamp when collector was last updated.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -236,19 +245,21 @@ class WebAppCollectorOperation extends pulumi.CustomResource {
     WebAppCollectorOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:WebAppCollectorOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentProperties = registerOutput<CollectorAgentPropertiesBaseResponse?>('agentProperties');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.discoverySiteId = registerOutput<String?>('discoverySiteId');
+         'azure-native:migrate:WebAppCollectorOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentProperties = registerOutput<CollectorAgentPropertiesBaseResponse?>(
+      'agentProperties',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    discoverySiteId = registerOutput<String?>('discoverySiteId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
 }

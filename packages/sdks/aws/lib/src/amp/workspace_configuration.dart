@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_configuration_args.dart';
-import 'workspace_configuration_limits_per_label_set.dart';
 import 'workspace_configuration_state.dart';
 import 'workspace_configuration_timeouts.dart';
 
@@ -382,12 +381,15 @@ import 'workspace_configuration_timeouts.dart';
 /// ```
 class WorkspaceConfiguration extends pulumi.CustomResource {
   /// Configuration block for setting limits on metrics with specific label sets. Detailed below.
-  late final pulumi.Output<List<WorkspaceConfigurationLimitsPerLabelSet>?> limitsPerLabelSets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> limitsPerLabelSets;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Number of days to retain metric data in the workspace.
   late final pulumi.Output<int> retentionPeriodInDays;
   late final pulumi.Output<WorkspaceConfigurationTimeouts?> timeouts;
+
   /// ID of the workspace to configure.
   ///
   /// The following arguments are optional:
@@ -402,16 +404,18 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
     WorkspaceConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets');
-    this.region = registerOutput<String>('region');
-    this.retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
-    this.timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    limitsPerLabelSets = registerOutput<List<Map<String, dynamic>>?>(
+      'limitsPerLabelSets',
+    );
+    region = registerOutput<String>('region');
+    retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceConfiguration] resource's state with the given [name] and [id].
@@ -432,15 +436,17 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets');
-    this.region = registerOutput<String>('region');
-    this.retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
-    this.timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    limitsPerLabelSets = registerOutput<List<Map<String, dynamic>>?>(
+      'limitsPerLabelSets',
+    );
+    region = registerOutput<String>('region');
+    retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

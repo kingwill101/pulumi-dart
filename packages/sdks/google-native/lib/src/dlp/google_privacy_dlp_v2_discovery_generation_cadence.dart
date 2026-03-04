@@ -7,9 +7,12 @@ import 'google_privacy_dlp_v2_discovery_table_modified_cadence.dart';
 /// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
 class GooglePrivacyDlpV2DiscoveryGenerationCadence {
   /// Governs when to update data profiles when a schema is modified.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence>? schemaModifiedCadence;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence>?
+  schemaModifiedCadence;
+
   /// Governs when to update data profiles when a table is modified.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryTableModifiedCadence>? tableModifiedCadence;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoveryTableModifiedCadence>?
+  tableModifiedCadence;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryGenerationCadence].
   /// [schemaModifiedCadence] Governs when to update data profiles when a schema is modified.
@@ -21,16 +24,41 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemaModifiedCadence': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence, Map<String, dynamic>>(schemaModifiedCadence, (value) => value.toMap()),
-      'tableModifiedCadence': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DiscoveryTableModifiedCadence, Map<String, dynamic>>(tableModifiedCadence, (value) => value.toMap()),
+      'schemaModifiedCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2DiscoverySchemaModifiedCadence,
+            Map<String, dynamic>
+          >(schemaModifiedCadence, (value) => value.toMap()),
+      'tableModifiedCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2DiscoveryTableModifiedCadence,
+            Map<String, dynamic>
+          >(tableModifiedCadence, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoveryGenerationCadence(
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap((map['schemaModifiedCadence']! as Map).cast<String, dynamic>())).input(),
-      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap((map['tableModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      schemaModifiedCadence: (() {
+        final guardedValue = map['schemaModifiedCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tableModifiedCadence: (() {
+        final guardedValue = map['tableModifiedCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'get_server_types_server_type.dart';
 /// Result data returned by getServerTypes.
 class GetServerTypesResult {
   final List<String> descriptions;
+
   /// The ID of this resource.
   final String id;
   final List<String> names;
@@ -32,7 +33,11 @@ class GetServerTypesResult {
       'id': id,
       'names': names,
       'serverTypeIds': serverTypeIds,
-      'serverTypes': pulumi.Input.encodeList<GetServerTypesServerType, Map<String, dynamic>>(serverTypes, (value) => value.toMap()),
+      'serverTypes':
+          pulumi.Input.encodeList<
+            GetServerTypesServerType,
+            Map<String, dynamic>
+          >(serverTypes, (value) => value.toMap()),
     };
   }
 
@@ -42,8 +47,12 @@ class GetServerTypesResult {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       serverTypeIds: (map['serverTypeIds'] as List).cast<String>(),
-      serverTypes: pulumi.Input.decodeList<GetServerTypesServerType>(map['serverTypes'], (value) => GetServerTypesServerType.fromMap((value as Map).cast<String, dynamic>())),
+      serverTypes: pulumi.Input.decodeList<GetServerTypesServerType>(
+        map['serverTypes']!,
+        (value) => GetServerTypesServerType.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

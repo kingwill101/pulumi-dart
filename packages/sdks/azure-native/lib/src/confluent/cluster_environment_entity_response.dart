@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterEnvironmentEntityResponse {
   /// Environment of the referred resource
   final pulumi.Input<String>? environment;
+
   /// ID of the referred resource
   final pulumi.Input<String>? id;
+
   /// API URL for accessing or modifying the referred object
   final pulumi.Input<String>? related;
+
   /// CRN reference to the referred resource
   final pulumi.Input<String>? resourceName;
 
@@ -36,11 +39,26 @@ class ClusterEnvironmentEntityResponse {
 
   factory ClusterEnvironmentEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterEnvironmentEntityResponse(
-      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      related: map['related'] == null ? null : (map['related']! as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      related: (() {
+        final guardedValue = map['related'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

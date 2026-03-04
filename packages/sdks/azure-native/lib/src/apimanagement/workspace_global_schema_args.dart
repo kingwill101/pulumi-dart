@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceGlobalSchemaArgs {
   /// Free-form schema entity description.
   final pulumi.Input<String>? description;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schema id identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? schemaId;
+
   /// Schema Type. Immutable.
   final pulumi.Input<String> schemaType;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Json-encoded string for non json-based schema.
   final pulumi.Input<dynamic>? value;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -54,14 +60,27 @@ class WorkspaceGlobalSchemaArgs {
 
   factory WorkspaceGlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceGlobalSchemaArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
-      schemaType: (map['schemaType'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaId: (() {
+        final guardedValue = map['schemaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

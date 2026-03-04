@@ -185,14 +185,19 @@ import 'channel_args.dart';
 class Channel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The functions to be enabled for the channel
   late final pulumi.Output<List<String>?> channelFunctions;
+
   /// The channel type
   late final pulumi.Output<String> channelType;
+
   /// The channel credentials
   late final pulumi.Output<Map<String, String>?> credentials;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The fully qualified type of the resource
   late final pulumi.Output<String> type;
 
@@ -205,16 +210,16 @@ class Channel extends pulumi.CustomResource {
     ChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:engagementfabric:Channel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.channelFunctions = registerOutput<List<String>?>('channelFunctions');
-    this.channelType = registerOutput<String>('channelType');
-    this.credentials = registerOutput<Map<String, String>?>('credentials');
+         'azure-native:engagementfabric:Channel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    channelFunctions = registerOutput<List<String>?>('channelFunctions');
+    channelType = registerOutput<String>('channelType');
+    credentials = registerOutput<Map<String, String>?>('credentials');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

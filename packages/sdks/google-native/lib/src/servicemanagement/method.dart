@@ -8,16 +8,22 @@ import 'option.dart';
 class Method {
   /// The simple name of this method.
   final pulumi.Input<String>? name;
+
   /// Any metadata attached to the method.
   final pulumi.Input<List<Option>>? options;
+
   /// If true, the request is streamed.
   final pulumi.Input<bool>? requestStreaming;
+
   /// A URL of the input message type.
   final pulumi.Input<String>? requestTypeUrl;
+
   /// If true, the response is streamed.
   final pulumi.Input<bool>? responseStreaming;
+
   /// The URL of the output message type.
   final pulumi.Input<String>? responseTypeUrl;
+
   /// The source syntax of this method.
   final pulumi.Input<MethodSyntax>? syntax;
 
@@ -42,25 +48,72 @@ class Method {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'options': ?pulumi.Input.mapOptionalInputValue<List<Option>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<Option, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'options':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Option>,
+            List<Map<String, dynamic>>
+          >(
+            options,
+            (value) => pulumi.Input.encodeList<Option, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'requestStreaming': ?requestStreaming,
       'requestTypeUrl': ?requestTypeUrl,
       'responseStreaming': ?responseStreaming,
       'responseTypeUrl': ?responseTypeUrl,
-      'syntax': ?pulumi.Input.mapOptionalInputValue<MethodSyntax, String>(syntax, (value) => value.value),
+      'syntax': ?pulumi.Input.mapOptionalInputValue<MethodSyntax, String>(
+        syntax,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory Method.fromMap(Map<String, dynamic> map) {
     return Method(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestStreaming: map['requestStreaming'] == null ? null : (map['requestStreaming']! as bool).input(),
-      requestTypeUrl: map['requestTypeUrl'] == null ? null : (map['requestTypeUrl']! as String).input(),
-      responseStreaming: map['responseStreaming'] == null ? null : (map['responseStreaming']! as bool).input(),
-      responseTypeUrl: map['responseTypeUrl'] == null ? null : (map['responseTypeUrl']! as String).input(),
-      syntax: map['syntax'] == null ? null : (MethodSyntax.fromValue(map['syntax']! as String)).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Option>(
+            guardedValue,
+            (value) => Option.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      requestStreaming: (() {
+        final guardedValue = map['requestStreaming'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requestTypeUrl: (() {
+        final guardedValue = map['requestTypeUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseStreaming: (() {
+        final guardedValue = map['responseStreaming'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      responseTypeUrl: (() {
+        final guardedValue = map['responseTypeUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syntax: (() {
+        final guardedValue = map['syntax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MethodSyntax.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

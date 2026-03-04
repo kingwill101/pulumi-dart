@@ -8,9 +8,11 @@ import 'user_subject_flowcontrol_apiserver_k8s_io_v1alpha1.dart';
 /// Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 class SubjectFlowcontrolApiserverK8sIoV1alpha1 {
   final pulumi.Input<GroupSubjectFlowcontrolApiserverK8sIoV1alpha1>? group;
+
   /// Required
   final pulumi.Input<String> kind;
-  final pulumi.Input<ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1>? serviceAccount;
+  final pulumi.Input<ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1>?
+  serviceAccount;
   final pulumi.Input<UserSubjectFlowcontrolApiserverK8sIoV1alpha1>? user;
 
   /// Creates a new [SubjectFlowcontrolApiserverK8sIoV1alpha1].
@@ -27,20 +29,57 @@ class SubjectFlowcontrolApiserverK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'group': ?pulumi.Input.mapOptionalInputValue<GroupSubjectFlowcontrolApiserverK8sIoV1alpha1, Map<String, dynamic>>(group, (value) => value.toMap()),
+      'group':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupSubjectFlowcontrolApiserverK8sIoV1alpha1,
+            Map<String, dynamic>
+          >(group, (value) => value.toMap()),
       'kind': kind,
-      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
-      'user': ?pulumi.Input.mapOptionalInputValue<UserSubjectFlowcontrolApiserverK8sIoV1alpha1, Map<String, dynamic>>(user, (value) => value.toMap()),
+      'serviceAccount':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1,
+            Map<String, dynamic>
+          >(serviceAccount, (value) => value.toMap()),
+      'user':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserSubjectFlowcontrolApiserverK8sIoV1alpha1,
+            Map<String, dynamic>
+          >(user, (value) => value.toMap()),
     };
   }
 
-  factory SubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory SubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubjectFlowcontrolApiserverK8sIoV1alpha1(
-      group: map['group'] == null ? null : (GroupSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['group']! as Map).cast<String, dynamic>())).input(),
-      kind: (map['kind'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (UserSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

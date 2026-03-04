@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListDeviceRegistrationKeyArgs {
   /// The name of the device resource.
   final pulumi.Input<String> deviceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListDeviceRegistrationKeyArgs {
 
   factory ListDeviceRegistrationKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListDeviceRegistrationKeyArgs(
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

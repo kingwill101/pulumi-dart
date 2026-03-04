@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkConnectionStateResponse {
   /// A message indicating if changes on the service provider require any updates on the consumer.
   final pulumi.Input<String> actionsRequired;
+
   /// The reason for approval/rejection of the connection.
   final pulumi.Input<String> description;
+
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the remote resource/service.
   final pulumi.Input<String> status;
 
@@ -31,10 +33,9 @@ class PrivateLinkConnectionStateResponse {
 
   factory PrivateLinkConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkConnectionStateResponse(
-      actionsRequired: (map['actionsRequired'] as String).input(),
-      description: (map['description'] as String).input(),
-      status: (map['status'] as String).input(),
+      actionsRequired: pulumi.Input.fromValue(map['actionsRequired'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

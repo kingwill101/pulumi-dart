@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
   final pulumi.Input<String>? availabilityZone;
+
   /// ID of the Dedicated Host on which build and test instances run. Conflicts with `host_resource_group_arn`.
   final pulumi.Input<String>? hostId;
+
   /// ARN of the host resource group in which to launch build and test instances. Conflicts with `host_id`.
   final pulumi.Input<String>? hostResourceGroupArn;
+
   /// Placement tenancy of the instance. Valid values: `default`, `dedicated` and `host`.
   final pulumi.Input<String>? tenancy;
 
@@ -33,13 +36,30 @@ class InfrastructureConfigurationPlacement {
     };
   }
 
-  factory InfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
+  factory InfrastructureConfigurationPlacement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InfrastructureConfigurationPlacement(
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      hostId: map['hostId'] == null ? null : ((map['hostId'] as String).input()).input(),
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : ((map['hostResourceGroupArn'] as String).input()).input(),
-      tenancy: map['tenancy'] == null ? null : ((map['tenancy'] as String).input()).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostId: (() {
+        final guardedValue = map['hostId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostResourceGroupArn: (() {
+        final guardedValue = map['hostResourceGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenancy: (() {
+        final guardedValue = map['tenancy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,16 +9,17 @@ enum PrivateEndpointConnectionProvisioningState {
   deletingByProxy("DeletingByProxy"),
   deleted("Deleted");
 
-  const PrivateEndpointConnectionProvisioningState(this.value);
-  final String value;
+  const PrivateEndpointConnectionProvisioningState(this.wireValue);
+  final String wireValue;
 
   static PrivateEndpointConnectionProvisioningState fromValue(String value) {
     for (final item in PrivateEndpointConnectionProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateEndpointConnectionProvisioningState value: $value');
+    throw ArgumentError(
+      'Unknown PrivateEndpointConnectionProvisioningState value: $value',
+    );
   }
 }
-

@@ -190,7 +190,7 @@ import 'resource_bridge_appliance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ResourceConnector` - 2022-10-27
@@ -205,18 +205,25 @@ import 'resource_bridge_appliance_state.dart';
 class ResourceBridgeAppliance extends pulumi.CustomResource {
   /// Specifies a supported Fabric/Infrastructure for this Arc Resource Bridge Appliance. The possible value is `AKSEdge`.
   late final pulumi.Output<String> distro;
+
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ResourceBridgeApplianceIdentity> identity;
+
   /// The infrastructure provider about the connected Arc Resource Bridge Appliance. Possible values are `HCI`,`SCVMM` and `VMWare`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> infrastructureProvider;
+
   /// The Azure Region where the Arc Resource Bridge Appliance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The Name which should be used for this Arc Resource Bridge Appliance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The `public_key_base64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> publicKeyBase64;
+
   /// Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Arc Resource Bridge Appliance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -229,19 +236,19 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
     ResourceBridgeApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.distro = registerOutput<String>('distro');
-    this.identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
-    this.infrastructureProvider = registerOutput<String>('infrastructureProvider');
-    this.location = registerOutput<String>('location');
+         'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    distro = registerOutput<String>('distro');
+    identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
+    infrastructureProvider = registerOutput<String>('infrastructureProvider');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ResourceBridgeAppliance] resource's state with the given [name] and [id].
@@ -262,18 +269,18 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.distro = registerOutput<String>('distro');
-    this.identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
-    this.infrastructureProvider = registerOutput<String>('infrastructureProvider');
-    this.location = registerOutput<String>('location');
+         'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    distro = registerOutput<String>('distro');
+    identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
+    infrastructureProvider = registerOutput<String>('infrastructureProvider');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

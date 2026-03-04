@@ -8,12 +8,16 @@ import 'domain_devices_hostdev_subsys_usb_source_vendor.dart';
 class DomainDevicesHostdevSubsysUsbSource {
   /// Defines the address configuration for the USB subsystem source.
   final pulumi.Input<DomainDevicesHostdevSubsysUsbSourceAddress>? address;
+
   /// Controls whether the guest can reset the USB device.
   final pulumi.Input<String>? guestReset;
+
   /// Identifies the vendor of the USB device.
   final pulumi.Input<DomainDevicesHostdevSubsysUsbSourceProduct>? product;
+
   /// Configures the startup policy for the USB subsystem device.
   final pulumi.Input<String>? startUpPolicy;
+
   /// Identifies the vendor of the USB device.
   final pulumi.Input<DomainDevicesHostdevSubsysUsbSourceVendor>? vendor;
 
@@ -33,22 +37,67 @@ class DomainDevicesHostdevSubsysUsbSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysUsbSourceAddress, Map<String, dynamic>>(address, (value) => value.toMap()),
+      'address':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevSubsysUsbSourceAddress,
+            Map<String, dynamic>
+          >(address, (value) => value.toMap()),
       'guestReset': ?guestReset,
-      'product': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysUsbSourceProduct, Map<String, dynamic>>(product, (value) => value.toMap()),
+      'product':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevSubsysUsbSourceProduct,
+            Map<String, dynamic>
+          >(product, (value) => value.toMap()),
       'startUpPolicy': ?startUpPolicy,
-      'vendor': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysUsbSourceVendor, Map<String, dynamic>>(vendor, (value) => value.toMap()),
+      'vendor':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevSubsysUsbSourceVendor,
+            Map<String, dynamic>
+          >(vendor, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesHostdevSubsysUsbSource.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesHostdevSubsysUsbSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesHostdevSubsysUsbSource(
-      address: map['address'] == null ? null : (DomainDevicesHostdevSubsysUsbSourceAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
-      guestReset: map['guestReset'] == null ? null : (map['guestReset']! as String).input(),
-      product: map['product'] == null ? null : (DomainDevicesHostdevSubsysUsbSourceProduct.fromMap((map['product']! as Map).cast<String, dynamic>())).input(),
-      startUpPolicy: map['startUpPolicy'] == null ? null : (map['startUpPolicy']! as String).input(),
-      vendor: map['vendor'] == null ? null : (DomainDevicesHostdevSubsysUsbSourceVendor.fromMap((map['vendor']! as Map).cast<String, dynamic>())).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevSubsysUsbSourceAddress.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      guestReset: (() {
+        final guardedValue = map['guestReset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      product: (() {
+        final guardedValue = map['product'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevSubsysUsbSourceProduct.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startUpPolicy: (() {
+        final guardedValue = map['startUpPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vendor: (() {
+        final guardedValue = map['vendor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevSubsysUsbSourceVendor.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

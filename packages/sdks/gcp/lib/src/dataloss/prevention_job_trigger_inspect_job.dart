@@ -9,11 +9,15 @@ class PreventionJobTriggerInspectJob {
   /// Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
   /// Structure is documented below.
   final pulumi.Input<List<PreventionJobTriggerInspectJobAction>>? actions;
+
   /// The core content of the template.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfig>? inspectConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfig>?
+  inspectConfig;
+
   /// The name of the template to run when this job is triggered.
   final pulumi.Input<String>? inspectTemplateName;
+
   /// Information on where to inspect
   /// Structure is documented below.
   final pulumi.Input<PreventionJobTriggerInspectJobStorageConfig> storageConfig;
@@ -32,20 +36,65 @@ class PreventionJobTriggerInspectJob {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<PreventionJobTriggerInspectJobAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PreventionJobTriggerInspectJobAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'inspectConfig': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfig, Map<String, dynamic>>(inspectConfig, (value) => value.toMap()),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PreventionJobTriggerInspectJobAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PreventionJobTriggerInspectJobAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'inspectConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionJobTriggerInspectJobInspectConfig,
+            Map<String, dynamic>
+          >(inspectConfig, (value) => value.toMap()),
       'inspectTemplateName': ?inspectTemplateName,
-      'storageConfig': pulumi.Input.mapInputValue<PreventionJobTriggerInspectJobStorageConfig, Map<String, dynamic>>(storageConfig, (value) => value.toMap()),
+      'storageConfig':
+          pulumi.Input.mapInputValue<
+            PreventionJobTriggerInspectJobStorageConfig,
+            Map<String, dynamic>
+          >(storageConfig, (value) => value.toMap()),
     };
   }
 
   factory PreventionJobTriggerInspectJob.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJob(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobAction>(map['actions']!, (value) => PreventionJobTriggerInspectJobAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (PreventionJobTriggerInspectJobInspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
-      inspectTemplateName: map['inspectTemplateName'] == null ? null : (map['inspectTemplateName']! as String).input(),
-      storageConfig: (PreventionJobTriggerInspectJobStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PreventionJobTriggerInspectJobAction>(
+            guardedValue,
+            (value) => PreventionJobTriggerInspectJobAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      inspectConfig: (() {
+        final guardedValue = map['inspectConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionJobTriggerInspectJobInspectConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inspectTemplateName: (() {
+        final guardedValue = map['inspectTemplateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageConfig: pulumi.Input.fromValue(
+        PreventionJobTriggerInspectJobStorageConfig.fromMap(
+          (map['storageConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

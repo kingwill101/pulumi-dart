@@ -10,14 +10,19 @@ import 'provisioned_cluster_identity.dart';
 class HybridIdentityMetadatumArgs {
   /// Parameter for the name of the hybrid identity metadata resource.
   final pulumi.Input<String>? hybridIdentityMetadataResourceName;
+
   /// The identity of the provisioned cluster.
   final pulumi.Input<ProvisionedClusterIdentity>? identity;
+
   /// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
   final pulumi.Input<String>? publicKey;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Parameter for the name of the provisioned cluster
   final pulumi.Input<String> resourceName;
+
   /// Unique id of the parent provisioned cluster resource.
   final pulumi.Input<String>? resourceUid;
 
@@ -40,7 +45,11 @@ class HybridIdentityMetadatumArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hybridIdentityMetadataResourceName': ?hybridIdentityMetadataResourceName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ProvisionedClusterIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProvisionedClusterIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'publicKey': ?publicKey,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
@@ -50,13 +59,34 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      hybridIdentityMetadataResourceName: map['hybridIdentityMetadataResourceName'] == null ? null : (map['hybridIdentityMetadataResourceName']! as String).input(),
-      identity: map['identity'] == null ? null : (ProvisionedClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
+      hybridIdentityMetadataResourceName: (() {
+        final guardedValue = map['hybridIdentityMetadataResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProvisionedClusterIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resourceUid: (() {
+        final guardedValue = map['resourceUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

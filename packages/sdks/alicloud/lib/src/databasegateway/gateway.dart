@@ -6,7 +6,7 @@ import 'gateway_state.dart';
 ///
 /// For information about Database Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/doc-detail/123415.htm).
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -110,8 +110,10 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The description of Gateway.
   late final pulumi.Output<String?> gatewayDesc;
+
   /// The name of the Gateway.
   late final pulumi.Output<String> gatewayName;
+
   /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   late final pulumi.Output<String> status;
 
@@ -124,14 +126,14 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasegateway/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayDesc = registerOutput<String?>('gatewayDesc');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.status = registerOutput<String>('status');
+         'alicloud:databasegateway/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayDesc = registerOutput<String?>('gatewayDesc');
+    gatewayName = registerOutput<String>('gatewayName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Gateway] resource's state with the given [name] and [id].
@@ -152,13 +154,13 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasegateway/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayDesc = registerOutput<String?>('gatewayDesc');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.status = registerOutput<String>('status');
+         'alicloud:databasegateway/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayDesc = registerOutput<String?>('gatewayDesc');
+    gatewayName = registerOutput<String>('gatewayName');
+    status = registerOutput<String>('status');
   }
 }

@@ -354,7 +354,7 @@ import 'standalone_gateway_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -369,16 +369,22 @@ import 'standalone_gateway_state.dart';
 class StandaloneGateway extends pulumi.CustomResource {
   /// Specifies the subnet ID in which the backend systems are hosted. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> backendSubnetId;
+
   /// Specifies the Azure Region where the API Management Standalone Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this API Management Standalone Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the API Management Standalone Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `sku` block as defined below.
   late final pulumi.Output<StandaloneGatewaySku> sku;
+
   /// A mapping of tags which should be assigned to the API Management Standalone Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the type of VPN in which API Management gateway needs to be configured. Possible values are `External` and `Internal`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> virtualNetworkType;
 
@@ -391,18 +397,18 @@ class StandaloneGateway extends pulumi.CustomResource {
     StandaloneGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/standaloneGateway:StandaloneGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendSubnetId = registerOutput<String?>('backendSubnetId');
-    this.location = registerOutput<String>('location');
+         'azure:apimanagement/standaloneGateway:StandaloneGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendSubnetId = registerOutput<String?>('backendSubnetId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<StandaloneGatewaySku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<StandaloneGatewaySku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
   }
 
   /// Gets an existing [StandaloneGateway] resource's state with the given [name] and [id].
@@ -423,17 +429,17 @@ class StandaloneGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/standaloneGateway:StandaloneGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendSubnetId = registerOutput<String?>('backendSubnetId');
-    this.location = registerOutput<String>('location');
+         'azure:apimanagement/standaloneGateway:StandaloneGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendSubnetId = registerOutput<String?>('backendSubnetId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<StandaloneGatewaySku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<StandaloneGatewaySku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
   }
 }

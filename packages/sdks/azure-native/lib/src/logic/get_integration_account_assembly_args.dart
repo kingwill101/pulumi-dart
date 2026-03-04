@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationAccountAssemblyArgs {
   /// The assembly artifact name.
   final pulumi.Input<String> assemblyArtifactName;
+
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetIntegrationAccountAssemblyArgs {
 
   factory GetIntegrationAccountAssemblyArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountAssemblyArgs(
-      assemblyArtifactName: (map['assemblyArtifactName'] as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assemblyArtifactName: pulumi.Input.fromValue(
+        map['assemblyArtifactName'] as String,
+      ),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

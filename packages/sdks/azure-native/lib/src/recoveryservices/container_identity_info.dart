@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerIdentityInfo {
   /// Protection container identity - AAD Tenant
   final pulumi.Input<String>? aadTenantId;
+
   /// Protection container identity - Audience
   final pulumi.Input<String>? audience;
+
   /// Protection container identity - AAD Service Principal
   final pulumi.Input<String>? servicePrincipalClientId;
+
   /// Unique name of the container
   final pulumi.Input<String>? uniqueName;
 
@@ -36,11 +39,26 @@ class ContainerIdentityInfo {
 
   factory ContainerIdentityInfo.fromMap(Map<String, dynamic> map) {
     return ContainerIdentityInfo(
-      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId']! as String).input(),
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId']! as String).input(),
-      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName']! as String).input(),
+      aadTenantId: (() {
+        final guardedValue = map['aadTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipalClientId: (() {
+        final guardedValue = map['servicePrincipalClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uniqueName: (() {
+        final guardedValue = map['uniqueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

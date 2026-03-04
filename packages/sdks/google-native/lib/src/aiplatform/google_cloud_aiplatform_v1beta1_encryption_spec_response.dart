@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1EncryptionSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
-  factory GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1EncryptionSpecResponse(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

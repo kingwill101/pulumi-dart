@@ -7,15 +7,17 @@ import 'functions_deployment_response_authentication.dart';
 class FunctionsDeploymentResponseStorage {
   /// Authentication method to access the storage account for deployment.
   final pulumi.Input<FunctionsDeploymentResponseAuthentication>? authentication;
+
   /// Property to select Azure Storage type. Available options: blobContainer.
   final pulumi.Input<String>? type;
-  /// Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+
+  /// Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://&lt;storageAccountName&gt;.blob.core.windows.net/&lt;containerName&gt;.
   final pulumi.Input<String>? value;
 
   /// Creates a new [FunctionsDeploymentResponseStorage].
   /// [authentication] Authentication method to access the storage account for deployment.
   /// [type] Property to select Azure Storage type. Available options: blobContainer.
-  /// [value] Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+  /// [value] Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://&lt;storageAccountName&gt;.blob.core.windows.net/&lt;containerName&gt;.
   FunctionsDeploymentResponseStorage({
     this.authentication,
     this.type,
@@ -24,7 +26,11 @@ class FunctionsDeploymentResponseStorage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?pulumi.Input.mapOptionalInputValue<FunctionsDeploymentResponseAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'authentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionsDeploymentResponseAuthentication,
+            Map<String, dynamic>
+          >(authentication, (value) => value.toMap()),
       'type': ?type,
       'value': ?value,
     };
@@ -32,10 +38,25 @@ class FunctionsDeploymentResponseStorage {
 
   factory FunctionsDeploymentResponseStorage.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentResponseStorage(
-      authentication: map['authentication'] == null ? null : (FunctionsDeploymentResponseAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionsDeploymentResponseAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

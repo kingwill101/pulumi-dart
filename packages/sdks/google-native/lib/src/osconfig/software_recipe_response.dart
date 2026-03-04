@@ -8,14 +8,19 @@ import 'software_recipe_step_response.dart';
 class SoftwareRecipeResponse {
   /// Resources available to be used in the steps in the recipe.
   final pulumi.Input<List<SoftwareRecipeArtifactResponse>> artifacts;
+
   /// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
   final pulumi.Input<String> desiredState;
+
   /// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
   final pulumi.Input<List<SoftwareRecipeStepResponse>> installSteps;
+
   /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
   final pulumi.Input<String> name;
+
   /// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
   final pulumi.Input<List<SoftwareRecipeStepResponse>> updateSteps;
+
   /// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
   final pulumi.Input<String> version;
 
@@ -37,24 +42,77 @@ class SoftwareRecipeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifacts': pulumi.Input.mapInputValue<List<SoftwareRecipeArtifactResponse>, List<Map<String, dynamic>>>(artifacts, (value) => pulumi.Input.encodeList<SoftwareRecipeArtifactResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'artifacts':
+          pulumi.Input.mapInputValue<
+            List<SoftwareRecipeArtifactResponse>,
+            List<Map<String, dynamic>>
+          >(
+            artifacts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeArtifactResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'desiredState': desiredState,
-      'installSteps': pulumi.Input.mapInputValue<List<SoftwareRecipeStepResponse>, List<Map<String, dynamic>>>(installSteps, (value) => pulumi.Input.encodeList<SoftwareRecipeStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'installSteps':
+          pulumi.Input.mapInputValue<
+            List<SoftwareRecipeStepResponse>,
+            List<Map<String, dynamic>>
+          >(
+            installSteps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeStepResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'updateSteps': pulumi.Input.mapInputValue<List<SoftwareRecipeStepResponse>, List<Map<String, dynamic>>>(updateSteps, (value) => pulumi.Input.encodeList<SoftwareRecipeStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'updateSteps':
+          pulumi.Input.mapInputValue<
+            List<SoftwareRecipeStepResponse>,
+            List<Map<String, dynamic>>
+          >(
+            updateSteps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeStepResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'version': version,
     };
   }
 
   factory SoftwareRecipeResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeResponse(
-      artifacts: (pulumi.Input.decodeList<SoftwareRecipeArtifactResponse>(map['artifacts'], (value) => SoftwareRecipeArtifactResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredState: (map['desiredState'] as String).input(),
-      installSteps: (pulumi.Input.decodeList<SoftwareRecipeStepResponse>(map['installSteps'], (value) => SoftwareRecipeStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      updateSteps: (pulumi.Input.decodeList<SoftwareRecipeStepResponse>(map['updateSteps'], (value) => SoftwareRecipeStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: (map['version'] as String).input(),
+      artifacts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SoftwareRecipeArtifactResponse>(
+          map['artifacts']!,
+          (value) => SoftwareRecipeArtifactResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      desiredState: pulumi.Input.fromValue(map['desiredState'] as String),
+      installSteps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SoftwareRecipeStepResponse>(
+          map['installSteps']!,
+          (value) => SoftwareRecipeStepResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      updateSteps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SoftwareRecipeStepResponse>(
+          map['updateSteps']!,
+          (value) => SoftwareRecipeStepResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

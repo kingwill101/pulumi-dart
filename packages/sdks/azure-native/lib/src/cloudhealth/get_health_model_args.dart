@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHealthModelArgs {
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetHealthModelArgs {
 
   factory GetHealthModelArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthModelArgs(
-      healthModelName: (map['healthModelName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

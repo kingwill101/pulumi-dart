@@ -4,16 +4,15 @@ enum KafkaConfigurationIdentityType {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
-  const KafkaConfigurationIdentityType(this.value);
-  final String value;
+  const KafkaConfigurationIdentityType(this.wireValue);
+  final String wireValue;
 
   static KafkaConfigurationIdentityType fromValue(String value) {
     for (final item in KafkaConfigurationIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KafkaConfigurationIdentityType value: $value');
   }
 }
-

@@ -21,11 +21,16 @@ class GetTableGlobalSecondaryIndexOnDemandThroughput {
     };
   }
 
-  factory GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
+  factory GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableGlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: (map['maxReadRequestUnits'] as int).input(),
-      maxWriteRequestUnits: (map['maxWriteRequestUnits'] as int).input(),
+      maxReadRequestUnits: pulumi.Input.fromValue(
+        map['maxReadRequestUnits'] as int,
+      ),
+      maxWriteRequestUnits: pulumi.Input.fromValue(
+        map['maxWriteRequestUnits'] as int,
+      ),
     );
   }
 }
-

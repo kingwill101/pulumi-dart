@@ -6,7 +6,7 @@ import 'publish_task_state.dart';
 ///
 /// For information about Chatbot Publish Task and how to use it, see [What is Publish Task](https://help.aliyun.com/document_detail/433996.html).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -138,14 +138,19 @@ import 'publish_task_state.dart';
 class PublishTask extends pulumi.CustomResource {
   /// The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   late final pulumi.Output<String> agentKey;
+
   /// The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   late final pulumi.Output<String> bizType;
+
   /// UTC time of task creation
   late final pulumi.Output<String> createTime;
+
   /// Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   late final pulumi.Output<List<String>?> dataIdLists;
+
   /// UTC time for task modification
   late final pulumi.Output<String> modifyTime;
+
   /// The status of the task.
   late final pulumi.Output<String> status;
 
@@ -158,17 +163,17 @@ class PublishTask extends pulumi.CustomResource {
     PublishTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:chatbot/publishTask:PublishTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentKey = registerOutput<String>('agentKey');
-    this.bizType = registerOutput<String>('bizType');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataIdLists = registerOutput<List<String>?>('dataIdLists');
-    this.modifyTime = registerOutput<String>('modifyTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:chatbot/publishTask:PublishTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentKey = registerOutput<String>('agentKey');
+    bizType = registerOutput<String>('bizType');
+    createTime = registerOutput<String>('createTime');
+    dataIdLists = registerOutput<List<String>?>('dataIdLists');
+    modifyTime = registerOutput<String>('modifyTime');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [PublishTask] resource's state with the given [name] and [id].
@@ -189,16 +194,16 @@ class PublishTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:chatbot/publishTask:PublishTask',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentKey = registerOutput<String>('agentKey');
-    this.bizType = registerOutput<String>('bizType');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataIdLists = registerOutput<List<String>?>('dataIdLists');
-    this.modifyTime = registerOutput<String>('modifyTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:chatbot/publishTask:PublishTask',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentKey = registerOutput<String>('agentKey');
+    bizType = registerOutput<String>('bizType');
+    createTime = registerOutput<String>('createTime');
+    dataIdLists = registerOutput<List<String>?>('dataIdLists');
+    modifyTime = registerOutput<String>('modifyTime');
+    status = registerOutput<String>('status');
   }
 }

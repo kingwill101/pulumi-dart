@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OperationErrorErrorsItemResponse {
   /// The error type identifier for this error.
   final pulumi.Input<String> code;
+
   /// Indicates the field in the request that caused the error. This property is optional.
   final pulumi.Input<String> location;
+
   /// An optional, human-readable error message.
   final pulumi.Input<String> message;
 
@@ -30,10 +32,9 @@ class OperationErrorErrorsItemResponse {
 
   factory OperationErrorErrorsItemResponse.fromMap(Map<String, dynamic> map) {
     return OperationErrorErrorsItemResponse(
-      code: (map['code'] as String).input(),
-      location: (map['location'] as String).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

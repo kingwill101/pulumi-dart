@@ -1,5 +1,3 @@
-library module_vmwareengine;
-
 export 'vmwareengine/audit_config.dart';
 export 'vmwareengine/audit_config_response.dart';
 export 'vmwareengine/audit_log_config.dart';

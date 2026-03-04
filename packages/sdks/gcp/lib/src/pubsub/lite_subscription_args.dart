@@ -11,15 +11,20 @@ class LiteSubscriptionArgs {
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
   final pulumi.Input<LiteSubscriptionDeliveryConfig>? deliveryConfig;
+
   /// Name of the subscription.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the pubsub lite topic.
   final pulumi.Input<String>? region;
+
   /// A reference to a Topic resource.
   final pulumi.Input<String> topic;
+
   /// The zone of the pubsub lite topic.
   final pulumi.Input<String>? zone;
 
@@ -41,7 +46,11 @@ class LiteSubscriptionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveryConfig': ?pulumi.Input.mapOptionalInputValue<LiteSubscriptionDeliveryConfig, Map<String, dynamic>>(deliveryConfig, (value) => value.toMap()),
+      'deliveryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            LiteSubscriptionDeliveryConfig,
+            Map<String, dynamic>
+          >(deliveryConfig, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'region': ?region,
@@ -52,13 +61,36 @@ class LiteSubscriptionArgs {
 
   factory LiteSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionArgs(
-      deliveryConfig: map['deliveryConfig'] == null ? null : (LiteSubscriptionDeliveryConfig.fromMap((map['deliveryConfig']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      topic: (map['topic'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      deliveryConfig: (() {
+        final guardedValue = map['deliveryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LiteSubscriptionDeliveryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

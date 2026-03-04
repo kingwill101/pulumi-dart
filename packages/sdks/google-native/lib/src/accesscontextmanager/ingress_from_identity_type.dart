@@ -5,16 +5,15 @@ enum IngressFromIdentityType {
   anyUserAccount("ANY_USER_ACCOUNT"),
   anyServiceAccount("ANY_SERVICE_ACCOUNT");
 
-  const IngressFromIdentityType(this.value);
-  final String value;
+  const IngressFromIdentityType(this.wireValue);
+  final String wireValue;
 
   static IngressFromIdentityType fromValue(String value) {
     for (final item in IngressFromIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IngressFromIdentityType value: $value');
   }
 }
-

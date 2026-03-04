@@ -5,19 +5,27 @@ import 'get_traffic_manager_profile_monitor_config_custom_header.dart';
 
 class GetTrafficManagerProfileMonitorConfig {
   /// One or more `custom_header` blocks as defined below.
-  final pulumi.Input<List<GetTrafficManagerProfileMonitorConfigCustomHeader>> customHeaders;
+  final pulumi.Input<List<GetTrafficManagerProfileMonitorConfigCustomHeader>>
+  customHeaders;
+
   /// A list of status code ranges.
   final pulumi.Input<List<String>> expectedStatusCodeRanges;
+
   /// The interval used to check the endpoint health from a Traffic Manager probing agent.
   final pulumi.Input<int> intervalInSeconds;
+
   /// The path used by the monitoring checks.
   final pulumi.Input<String> path;
+
   /// The port number used by the monitoring checks.
   final pulumi.Input<int> port;
+
   /// The protocol used by the monitoring checks.
   final pulumi.Input<String> protocol;
+
   /// The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint.
   final pulumi.Input<int> timeoutInSeconds;
+
   /// The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy.
   final pulumi.Input<int> toleratedNumberOfFailures;
 
@@ -43,7 +51,18 @@ class GetTrafficManagerProfileMonitorConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customHeaders': pulumi.Input.mapInputValue<List<GetTrafficManagerProfileMonitorConfigCustomHeader>, List<Map<String, dynamic>>>(customHeaders, (value) => pulumi.Input.encodeList<GetTrafficManagerProfileMonitorConfigCustomHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customHeaders':
+          pulumi.Input.mapInputValue<
+            List<GetTrafficManagerProfileMonitorConfigCustomHeader>,
+            List<Map<String, dynamic>>
+          >(
+            customHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTrafficManagerProfileMonitorConfigCustomHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'expectedStatusCodeRanges': expectedStatusCodeRanges,
       'intervalInSeconds': intervalInSeconds,
       'path': path,
@@ -54,17 +73,33 @@ class GetTrafficManagerProfileMonitorConfig {
     };
   }
 
-  factory GetTrafficManagerProfileMonitorConfig.fromMap(Map<String, dynamic> map) {
+  factory GetTrafficManagerProfileMonitorConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrafficManagerProfileMonitorConfig(
-      customHeaders: (pulumi.Input.decodeList<GetTrafficManagerProfileMonitorConfigCustomHeader>(map['customHeaders'], (value) => GetTrafficManagerProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedStatusCodeRanges: ((map['expectedStatusCodeRanges'] as List).cast<String>()).input(),
-      intervalInSeconds: (map['intervalInSeconds'] as int).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
-      timeoutInSeconds: (map['timeoutInSeconds'] as int).input(),
-      toleratedNumberOfFailures: (map['toleratedNumberOfFailures'] as int).input(),
+      customHeaders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetTrafficManagerProfileMonitorConfigCustomHeader
+        >(
+          map['customHeaders']!,
+          (value) => GetTrafficManagerProfileMonitorConfigCustomHeader.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      expectedStatusCodeRanges: pulumi.Input.fromValue(
+        (map['expectedStatusCodeRanges'] as List).cast<String>(),
+      ),
+      intervalInSeconds: pulumi.Input.fromValue(
+        map['intervalInSeconds'] as int,
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      timeoutInSeconds: pulumi.Input.fromValue(map['timeoutInSeconds'] as int),
+      toleratedNumberOfFailures: pulumi.Input.fromValue(
+        map['toleratedNumberOfFailures'] as int,
+      ),
     );
   }
 }
-

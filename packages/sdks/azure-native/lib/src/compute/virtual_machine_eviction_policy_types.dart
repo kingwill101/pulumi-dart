@@ -3,16 +3,17 @@ enum VirtualMachineEvictionPolicyTypes {
   deallocate("Deallocate"),
   delete("Delete");
 
-  const VirtualMachineEvictionPolicyTypes(this.value);
-  final String value;
+  const VirtualMachineEvictionPolicyTypes(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineEvictionPolicyTypes fromValue(String value) {
     for (final item in VirtualMachineEvictionPolicyTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineEvictionPolicyTypes value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineEvictionPolicyTypes value: $value',
+    );
   }
 }
-

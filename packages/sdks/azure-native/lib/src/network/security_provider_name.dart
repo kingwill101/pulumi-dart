@@ -4,16 +4,15 @@ enum SecurityProviderName {
   valueIBoss("IBoss"),
   valueCheckpoint("Checkpoint");
 
-  const SecurityProviderName(this.value);
-  final String value;
+  const SecurityProviderName(this.wireValue);
+  final String wireValue;
 
   static SecurityProviderName fromValue(String value) {
     for (final item in SecurityProviderName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityProviderName value: $value');
   }
 }
-

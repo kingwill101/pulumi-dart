@@ -5,16 +5,15 @@ enum PolicyExecutionType {
   bypassPolicies("BypassPolicies"),
   expectPartialPutRequests("ExpectPartialPutRequests");
 
-  const PolicyExecutionType(this.value);
-  final String value;
+  const PolicyExecutionType(this.wireValue);
+  final String wireValue;
 
   static PolicyExecutionType fromValue(String value) {
     for (final item in PolicyExecutionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyExecutionType value: $value');
   }
 }
-

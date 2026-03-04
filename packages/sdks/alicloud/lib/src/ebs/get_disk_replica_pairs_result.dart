@@ -7,9 +7,11 @@ import 'get_disk_replica_pairs_pair.dart';
 class GetDiskReplicaPairsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Disk Replica Pair IDs.
   final List<String> ids;
   final String? outputFile;
+
   /// A list of Disk Replica Pair Entries. Each element contains the following attributes:
   final List<GetDiskReplicaPairsPair> pairs;
   final String? replicaGroupId;
@@ -36,7 +38,11 @@ class GetDiskReplicaPairsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'pairs': pulumi.Input.encodeList<GetDiskReplicaPairsPair, Map<String, dynamic>>(pairs, (value) => value.toMap()),
+      'pairs':
+          pulumi.Input.encodeList<
+            GetDiskReplicaPairsPair,
+            Map<String, dynamic>
+          >(pairs, (value) => value.toMap()),
       'replicaGroupId': ?replicaGroupId,
       'site': ?site,
     };
@@ -46,11 +52,27 @@ class GetDiskReplicaPairsResult {
     return GetDiskReplicaPairsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pairs: pulumi.Input.decodeList<GetDiskReplicaPairsPair>(map['pairs'], (value) => GetDiskReplicaPairsPair.fromMap((value as Map).cast<String, dynamic>())),
-      replicaGroupId: map['replicaGroupId'] == null ? null : map['replicaGroupId']! as String,
-      site: map['site'] == null ? null : map['site']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pairs: pulumi.Input.decodeList<GetDiskReplicaPairsPair>(
+        map['pairs']!,
+        (value) => GetDiskReplicaPairsPair.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      replicaGroupId: (() {
+        final guardedValue = map['replicaGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      site: (() {
+        final guardedValue = map['site'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'arc_auto_provisioning_response_configuration.dart';
 class DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning {
   /// Configuration for servers Arc auto provisioning for a given environment
   final pulumi.Input<ArcAutoProvisioningResponseConfiguration>? configuration;
+
   /// Is arc auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -20,16 +21,33 @@ class DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<ArcAutoProvisioningResponseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArcAutoProvisioningResponseConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
+  factory DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArcAutoProvisioningResponseConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

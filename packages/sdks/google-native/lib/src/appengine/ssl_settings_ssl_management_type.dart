@@ -4,16 +4,15 @@ enum SslSettingsSslManagementType {
   automatic("AUTOMATIC"),
   manual("MANUAL");
 
-  const SslSettingsSslManagementType(this.value);
-  final String value;
+  const SslSettingsSslManagementType(this.wireValue);
+  final String wireValue;
 
   static SslSettingsSslManagementType fromValue(String value) {
     for (final item in SslSettingsSslManagementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslSettingsSslManagementType value: $value');
   }
 }
-

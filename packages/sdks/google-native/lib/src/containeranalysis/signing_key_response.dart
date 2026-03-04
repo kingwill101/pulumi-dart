@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningKeyResponse {
   /// key_id is an identifier for the signing key.
   final pulumi.Input<String> keyId;
+
   /// This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".
   final pulumi.Input<String> keyScheme;
+
   /// This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".
   final pulumi.Input<String> keyType;
+
   /// This field contains the actual public key.
   final pulumi.Input<String> publicKeyValue;
 
@@ -36,11 +39,10 @@ class SigningKeyResponse {
 
   factory SigningKeyResponse.fromMap(Map<String, dynamic> map) {
     return SigningKeyResponse(
-      keyId: (map['keyId'] as String).input(),
-      keyScheme: (map['keyScheme'] as String).input(),
-      keyType: (map['keyType'] as String).input(),
-      publicKeyValue: (map['publicKeyValue'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      keyScheme: pulumi.Input.fromValue(map['keyScheme'] as String),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
+      publicKeyValue: pulumi.Input.fromValue(map['publicKeyValue'] as String),
     );
   }
 }
-

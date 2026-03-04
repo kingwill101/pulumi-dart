@@ -13,30 +13,41 @@ import 'express_gateway_service_timeouts.dart';
 class ExpressGatewayServiceArgs {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
   final pulumi.Input<String>? cluster;
+
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
   final pulumi.Input<String>? cpu;
+
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   final pulumi.Input<String> executionRoleArn;
+
   /// Path for health check requests. Defaults to `/ping`.
   final pulumi.Input<String>? healthCheckPath;
+
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> infrastructureRoleArn;
+
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
   final pulumi.Input<String>? memory;
-  final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>>? networkConfigurations;
+  final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>>?
+  networkConfigurations;
   final pulumi.Input<ExpressGatewayServicePrimaryContainer> primaryContainer;
+
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
   final pulumi.Input<String>? region;
   final pulumi.Input<List<ExpressGatewayServiceScalingTarget>>? scalingTargets;
+
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serviceName;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   final pulumi.Input<String>? taskRoleArn;
   final pulumi.Input<ExpressGatewayServiceTimeouts>? timeouts;
+
   /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
   final pulumi.Input<bool>? waitForSteadyState;
 
@@ -82,36 +93,141 @@ class ExpressGatewayServiceArgs {
       'healthCheckPath': ?healthCheckPath,
       'infrastructureRoleArn': infrastructureRoleArn,
       'memory': ?memory,
-      'networkConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ExpressGatewayServiceNetworkConfiguration>, List<Map<String, dynamic>>>(networkConfigurations, (value) => pulumi.Input.encodeList<ExpressGatewayServiceNetworkConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'primaryContainer': pulumi.Input.mapInputValue<ExpressGatewayServicePrimaryContainer, Map<String, dynamic>>(primaryContainer, (value) => value.toMap()),
+      'networkConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExpressGatewayServiceNetworkConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            networkConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExpressGatewayServiceNetworkConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'primaryContainer':
+          pulumi.Input.mapInputValue<
+            ExpressGatewayServicePrimaryContainer,
+            Map<String, dynamic>
+          >(primaryContainer, (value) => value.toMap()),
       'region': ?region,
-      'scalingTargets': ?pulumi.Input.mapOptionalInputValue<List<ExpressGatewayServiceScalingTarget>, List<Map<String, dynamic>>>(scalingTargets, (value) => pulumi.Input.encodeList<ExpressGatewayServiceScalingTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scalingTargets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExpressGatewayServiceScalingTarget>,
+            List<Map<String, dynamic>>
+          >(
+            scalingTargets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExpressGatewayServiceScalingTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceName': ?serviceName,
       'tags': ?tags,
       'taskRoleArn': ?taskRoleArn,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ExpressGatewayServiceTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExpressGatewayServiceTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'waitForSteadyState': ?waitForSteadyState,
     };
   }
 
   factory ExpressGatewayServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceArgs(
-      cluster: map['cluster'] == null ? null : ((map['cluster'] as String).input()).input(),
-      cpu: map['cpu'] == null ? null : ((map['cpu'] as String).input()).input(),
-      executionRoleArn: (map['executionRoleArn'] as String).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : ((map['healthCheckPath'] as String).input()).input(),
-      infrastructureRoleArn: (map['infrastructureRoleArn'] as String).input(),
-      memory: map['memory'] == null ? null : ((map['memory'] as String).input()).input(),
-      networkConfigurations: map['networkConfigurations'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(map['networkConfigurations']!, (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      primaryContainer: (ExpressGatewayServicePrimaryContainer.fromMap((map['primaryContainer']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scalingTargets: map['scalingTargets'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(map['scalingTargets']!, (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      taskRoleArn: map['taskRoleArn'] == null ? null : ((map['taskRoleArn'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ExpressGatewayServiceTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      waitForSteadyState: map['waitForSteadyState'] == null ? null : ((map['waitForSteadyState'] as bool).input()).input(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionRoleArn: pulumi.Input.fromValue(
+        map['executionRoleArn'] as String,
+      ),
+      healthCheckPath: (() {
+        final guardedValue = map['healthCheckPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      infrastructureRoleArn: pulumi.Input.fromValue(
+        map['infrastructureRoleArn'] as String,
+      ),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConfigurations: (() {
+        final guardedValue = map['networkConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(
+            guardedValue,
+            (value) => ExpressGatewayServiceNetworkConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      primaryContainer: pulumi.Input.fromValue(
+        ExpressGatewayServicePrimaryContainer.fromMap(
+          (map['primaryContainer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingTargets: (() {
+        final guardedValue = map['scalingTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(
+            guardedValue,
+            (value) => ExpressGatewayServiceScalingTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      taskRoleArn: (() {
+        final guardedValue = map['taskRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExpressGatewayServiceTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      waitForSteadyState: (() {
+        final guardedValue = map['waitForSteadyState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

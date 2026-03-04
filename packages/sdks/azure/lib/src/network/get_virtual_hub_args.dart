@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHubArgs {
   /// The name of the Virtual Hub.
   final pulumi.Input<String> name;
+
   /// The Name of the Resource Group where the Virtual Hub exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetVirtualHubArgs].
   /// [name] The name of the Virtual Hub.
   /// [resourceGroupName] The Name of the Resource Group where the Virtual Hub exists.
-  GetVirtualHubArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetVirtualHubArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetVirtualHubArgs {
 
   factory GetVirtualHubArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

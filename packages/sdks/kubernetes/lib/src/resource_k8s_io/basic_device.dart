@@ -8,7 +8,9 @@ class BasicDevice {
   /// Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.
   ///
   /// The maximum number of attributes and capacities combined is 32.
-  final pulumi.Input<Map<String, DeviceAttributeResourceK8sIoV1alpha3>>? attributes;
+  final pulumi.Input<Map<String, DeviceAttributeResourceK8sIoV1alpha3>>?
+  attributes;
+
   /// Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
   ///
   /// The maximum number of attributes and capacities combined is 32.
@@ -17,23 +19,47 @@ class BasicDevice {
   /// Creates a new [BasicDevice].
   /// [attributes] Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.
   /// [capacity] Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
-  BasicDevice({
-    this.attributes,
-    this.capacity,
-  });
+  BasicDevice({this.attributes, this.capacity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?pulumi.Input.mapOptionalInputValue<Map<String, DeviceAttributeResourceK8sIoV1alpha3>, Map<String, Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeMapValues<DeviceAttributeResourceK8sIoV1alpha3, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, DeviceAttributeResourceK8sIoV1alpha3>,
+            Map<String, Map<String, dynamic>>
+          >(
+            attributes,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  DeviceAttributeResourceK8sIoV1alpha3,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'capacity': ?capacity,
     };
   }
 
   factory BasicDevice.fromMap(Map<String, dynamic> map) {
     return BasicDevice(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(map['attributes']!, (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      capacity: map['capacity'] == null ? null : ((map['capacity']! as Map).cast<String, String>()).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(
+            guardedValue,
+            (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

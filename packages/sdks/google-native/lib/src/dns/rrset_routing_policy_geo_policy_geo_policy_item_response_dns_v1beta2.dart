@@ -6,11 +6,14 @@ import 'rrset_routing_policy_health_check_targets_response_dns_v1beta2.dart';
 /// ResourceRecordSet data for one geo location.
 class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2 {
   /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
-  final pulumi.Input<RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2> healthCheckedTargets;
+  final pulumi.Input<RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2>
+  healthCheckedTargets;
   final pulumi.Input<String> kind;
+
   /// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
   final pulumi.Input<String> location;
   final pulumi.Input<List<String>> rrdatas;
+
   /// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
   final pulumi.Input<List<String>> signatureRrdatas;
 
@@ -30,7 +33,11 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckedTargets': pulumi.Input.mapInputValue<RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2, Map<String, dynamic>>(healthCheckedTargets, (value) => value.toMap()),
+      'healthCheckedTargets':
+          pulumi.Input.mapInputValue<
+            RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2,
+            Map<String, dynamic>
+          >(healthCheckedTargets, (value) => value.toMap()),
       'kind': kind,
       'location': location,
       'rrdatas': rrdatas,
@@ -38,14 +45,21 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2 {
     };
   }
 
-  factory RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseDnsV1beta2(
-      healthCheckedTargets: (RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
-      kind: (map['kind'] as String).input(),
-      location: (map['location'] as String).input(),
-      rrdatas: ((map['rrdatas'] as List).cast<String>()).input(),
-      signatureRrdatas: ((map['signatureRrdatas'] as List).cast<String>()).input(),
+      healthCheckedTargets: pulumi.Input.fromValue(
+        RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2.fromMap(
+          (map['healthCheckedTargets']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      rrdatas: pulumi.Input.fromValue((map['rrdatas'] as List).cast<String>()),
+      signatureRrdatas: pulumi.Input.fromValue(
+        (map['signatureRrdatas'] as List).cast<String>(),
+      ),
     );
   }
 }
-

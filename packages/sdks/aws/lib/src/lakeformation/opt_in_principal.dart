@@ -7,9 +7,7 @@ class OptInPrincipal {
 
   /// Creates a new [OptInPrincipal].
   /// [dataLakePrincipalIdentifier] Required.
-  OptInPrincipal({
-    required this.dataLakePrincipalIdentifier,
-  });
+  OptInPrincipal({required this.dataLakePrincipalIdentifier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,8 +17,9 @@ class OptInPrincipal {
 
   factory OptInPrincipal.fromMap(Map<String, dynamic> map) {
     return OptInPrincipal(
-      dataLakePrincipalIdentifier: (map['dataLakePrincipalIdentifier'] as String).input(),
+      dataLakePrincipalIdentifier: pulumi.Input.fromValue(
+        map['dataLakePrincipalIdentifier'] as String,
+      ),
     );
   }
 }
-

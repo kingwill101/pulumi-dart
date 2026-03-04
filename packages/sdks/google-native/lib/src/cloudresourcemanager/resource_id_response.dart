@@ -9,20 +9,15 @@ class ResourceIdResponse {
 
   /// Creates a new [ResourceIdResponse].
   /// [type] The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
-  ResourceIdResponse({
-    required this.type,
-  });
+  ResourceIdResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

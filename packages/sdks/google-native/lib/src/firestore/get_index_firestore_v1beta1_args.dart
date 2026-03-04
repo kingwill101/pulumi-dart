@@ -31,10 +31,13 @@ class GetIndexFirestoreV1beta1Args {
 
   factory GetIndexFirestoreV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIndexFirestoreV1beta1Args(
-      databaseId: (map['databaseId'] as String).input(),
-      indexId: (map['indexId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      indexId: pulumi.Input.fromValue(map['indexId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

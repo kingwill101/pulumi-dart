@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigFileArgs {
   /// Path or URL to a Kubernetes manifest file. File must exist.
   final pulumi.Input<String> file;
+
   /// A prefix for the auto-generated resource names. Defaults to the name of the ConfigFile. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   final pulumi.Input<String>? resourcePrefix;
+
   /// Indicates that child resources should skip the await logic.
   final pulumi.Input<bool>? skipAwait;
 
@@ -18,11 +20,7 @@ class ConfigFileArgs {
   /// [file] Path or URL to a Kubernetes manifest file. File must exist.
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the ConfigFile. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
-  ConfigFileArgs({
-    required this.file,
-    this.resourcePrefix,
-    this.skipAwait,
-  });
+  ConfigFileArgs({required this.file, this.resourcePrefix, this.skipAwait});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class ConfigFileArgs {
 
   factory ConfigFileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigFileArgs(
-      file: (map['file'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
-      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait']! as bool).input(),
+      file: pulumi.Input.fromValue(map['file'] as String),
+      resourcePrefix: (() {
+        final guardedValue = map['resourcePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipAwait: (() {
+        final guardedValue = map['skipAwait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FloatingIpAssignmentState {
   /// ID of the Floating IP.
   final pulumi.Input<int>? floatingIpId;
+
   /// Server to assign the Floating IP to.
   final pulumi.Input<int>? serverId;
 
   /// Creates a new [FloatingIpAssignmentState].
   /// [floatingIpId] ID of the Floating IP.
   /// [serverId] Server to assign the Floating IP to.
-  FloatingIpAssignmentState({
-    this.floatingIpId,
-    this.serverId,
-  });
+  FloatingIpAssignmentState({this.floatingIpId, this.serverId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class FloatingIpAssignmentState {
 
   factory FloatingIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentState(
-      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId']! as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      floatingIpId: (() {
+        final guardedValue = map['floatingIpId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serverId: (() {
+        final guardedValue = map['serverId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

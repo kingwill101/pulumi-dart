@@ -427,22 +427,27 @@ import 'policy_tag_state.dart';
 class PolicyTag extends pulumi.CustomResource {
   /// Resource names of child policy tags of this policy tag.
   late final pulumi.Output<List<String>> childPolicyTags;
+
   /// Description of this policy tag. It must: contain only unicode characters, tabs,
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
   /// If not set, defaults to an empty description.
   late final pulumi.Output<String?> description;
+
   /// User defined name of this policy tag. It must: be unique within the parent
   /// taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
   /// not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
   late final pulumi.Output<String> displayName;
+
   /// Resource name of this policy tag, whose format is:
   /// "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
   late final pulumi.Output<String> name;
+
   /// Resource name of this policy tag's parent policy tag.
   /// If empty, it means this policy tag is a top level policy tag.
   /// If not set, defaults to an empty string.
   late final pulumi.Output<String?> parentPolicyTag;
+
   /// Taxonomy the policy tag is associated with
   late final pulumi.Output<String> taxonomy;
 
@@ -455,17 +460,17 @@ class PolicyTag extends pulumi.CustomResource {
     PolicyTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:datacatalog/policyTag:PolicyTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.childPolicyTags = registerOutput<List<String>>('childPolicyTags');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'gcp:datacatalog/policyTag:PolicyTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parentPolicyTag = registerOutput<String?>('parentPolicyTag');
-    this.taxonomy = registerOutput<String>('taxonomy');
+    parentPolicyTag = registerOutput<String?>('parentPolicyTag');
+    taxonomy = registerOutput<String>('taxonomy');
   }
 
   /// Gets an existing [PolicyTag] resource's state with the given [name] and [id].
@@ -486,16 +491,16 @@ class PolicyTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:datacatalog/policyTag:PolicyTag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.childPolicyTags = registerOutput<List<String>>('childPolicyTags');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'gcp:datacatalog/policyTag:PolicyTag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parentPolicyTag = registerOutput<String?>('parentPolicyTag');
-    this.taxonomy = registerOutput<String>('taxonomy');
+    parentPolicyTag = registerOutput<String?>('parentPolicyTag');
+    taxonomy = registerOutput<String>('taxonomy');
   }
 }

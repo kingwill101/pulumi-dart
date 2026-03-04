@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort {
   /// The lower limit of the port range. This must be less than or equal to the `to_port`.
   final pulumi.Input<int> fromPort;
+
   /// The upper limit of the port range. This must be greater than or equal to the `from_port`.
   final pulumi.Input<int> toPort;
 
@@ -17,17 +18,15 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': fromPort,
-      'toPort': toPort,
-    };
+    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort.fromMap(Map<String, dynamic> map) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort(
-      fromPort: (map['fromPort'] as int).input(),
-      toPort: (map['toPort'] as int).input(),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaterializedViewState {
   /// Set to true to make the MaterializedView protected against deletion.
   final pulumi.Input<bool>? deletionProtection;
+
   /// The name of the instance to create the materialized view within.
   final pulumi.Input<String>? instance;
+
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   final pulumi.Input<String>? materializedViewId;
-  /// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
+
+  /// The unique name of the requested materialized view. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/materializedViews/&lt;materializedViewId&gt;`.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The materialized view's select query.
   final pulumi.Input<String>? query;
 
@@ -22,7 +27,7 @@ class MaterializedViewState {
   /// [deletionProtection] Set to true to make the MaterializedView protected against deletion.
   /// [instance] The name of the instance to create the materialized view within.
   /// [materializedViewId] The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-  /// [name] The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
+  /// [name] The unique name of the requested materialized view. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/materializedViews/&lt;materializedViewId&gt;`.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The materialized view's select query.
   MaterializedViewState({
@@ -47,13 +52,36 @@ class MaterializedViewState {
 
   factory MaterializedViewState.fromMap(Map<String, dynamic> map) {
     return MaterializedViewState(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      materializedViewId: map['materializedViewId'] == null ? null : (map['materializedViewId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      query: map['query'] == null ? null : (map['query']! as String).input(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      materializedViewId: (() {
+        final guardedValue = map['materializedViewId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

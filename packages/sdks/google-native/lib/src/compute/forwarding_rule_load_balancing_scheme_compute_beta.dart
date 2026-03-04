@@ -7,16 +7,17 @@ enum ForwardingRuleLoadBalancingSchemeComputeBeta {
   internalSelfManaged("INTERNAL_SELF_MANAGED"),
   invalid("INVALID");
 
-  const ForwardingRuleLoadBalancingSchemeComputeBeta(this.value);
-  final String value;
+  const ForwardingRuleLoadBalancingSchemeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleLoadBalancingSchemeComputeBeta fromValue(String value) {
     for (final item in ForwardingRuleLoadBalancingSchemeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ForwardingRuleLoadBalancingSchemeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ForwardingRuleLoadBalancingSchemeComputeBeta value: $value',
+    );
   }
 }
-

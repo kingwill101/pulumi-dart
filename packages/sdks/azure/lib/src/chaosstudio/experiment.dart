@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experiment_args.dart';
 import 'experiment_identity.dart';
-import 'experiment_selector.dart';
 import 'experiment_state.dart';
-import 'experiment_step.dart';
 
 /// Manages a Chaos Studio Experiment.
 ///
@@ -732,7 +730,7 @@ import 'experiment_step.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Chaos` - 2023-11-01
@@ -747,16 +745,21 @@ import 'experiment_step.dart';
 class Experiment extends pulumi.CustomResource {
   /// A `identity` block as defined below.
   late final pulumi.Output<ExperimentIdentity?> identity;
+
   /// The Azure Region where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Chaos Studio Experiment. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `selectors` blocks as defined below.
-  late final pulumi.Output<List<ExperimentSelector>> selectors;
+  late final pulumi.Output<List<Map<String, dynamic>>> selectors;
+
   /// One or more `steps` blocks as defined below.
-  late final pulumi.Output<List<ExperimentStep>> steps;
+  late final pulumi.Output<List<Map<String, dynamic>>> steps;
 
   /// Creates a new [Experiment].
   /// [name] The Pulumi resource name.
@@ -767,17 +770,17 @@ class Experiment extends pulumi.CustomResource {
     ExperimentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:chaosstudio/experiment:Experiment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<ExperimentIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:chaosstudio/experiment:Experiment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<ExperimentIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.selectors = registerOutput<List<ExperimentSelector>>('selectors');
-    this.steps = registerOutput<List<ExperimentStep>>('steps');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    steps = registerOutput<List<Map<String, dynamic>>>('steps');
   }
 
   /// Gets an existing [Experiment] resource's state with the given [name] and [id].
@@ -798,16 +801,16 @@ class Experiment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:chaosstudio/experiment:Experiment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<ExperimentIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:chaosstudio/experiment:Experiment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<ExperimentIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.selectors = registerOutput<List<ExperimentSelector>>('selectors');
-    this.steps = registerOutput<List<ExperimentStep>>('steps');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    steps = registerOutput<List<Map<String, dynamic>>>('steps');
   }
 }

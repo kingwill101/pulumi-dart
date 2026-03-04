@@ -3,16 +3,15 @@ enum MatchProcessingBehavior {
   valueContinue("Continue"),
   valueStop("Stop");
 
-  const MatchProcessingBehavior(this.value);
-  final String value;
+  const MatchProcessingBehavior(this.wireValue);
+  final String wireValue;
 
   static MatchProcessingBehavior fromValue(String value) {
     for (final item in MatchProcessingBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MatchProcessingBehavior value: $value');
   }
 }
-

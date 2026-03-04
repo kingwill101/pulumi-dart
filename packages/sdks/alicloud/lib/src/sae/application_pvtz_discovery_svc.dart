@@ -6,10 +6,14 @@ import 'application_pvtz_discovery_svc_port_protocol.dart';
 class ApplicationPvtzDiscoverySvc {
   /// Enables the Kubernetes Service-based registration and discovery feature.
   final pulumi.Input<bool>? enable;
+
   /// The ID of the namespace.
   final pulumi.Input<String>? namespaceId;
+
   /// The port number and protocol. See `port_protocols` below.
-  final pulumi.Input<List<ApplicationPvtzDiscoverySvcPortProtocol>>? portProtocols;
+  final pulumi.Input<List<ApplicationPvtzDiscoverySvcPortProtocol>>?
+  portProtocols;
+
   /// The name of the Service.
   final pulumi.Input<String>? serviceName;
 
@@ -29,18 +33,51 @@ class ApplicationPvtzDiscoverySvc {
     return <String, dynamic>{
       'enable': ?enable,
       'namespaceId': ?namespaceId,
-      'portProtocols': ?pulumi.Input.mapOptionalInputValue<List<ApplicationPvtzDiscoverySvcPortProtocol>, List<Map<String, dynamic>>>(portProtocols, (value) => pulumi.Input.encodeList<ApplicationPvtzDiscoverySvcPortProtocol, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portProtocols':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationPvtzDiscoverySvcPortProtocol>,
+            List<Map<String, dynamic>>
+          >(
+            portProtocols,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationPvtzDiscoverySvcPortProtocol,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceName': ?serviceName,
     };
   }
 
   factory ApplicationPvtzDiscoverySvc.fromMap(Map<String, dynamic> map) {
     return ApplicationPvtzDiscoverySvc(
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      portProtocols: map['portProtocols'] == null ? null : (pulumi.Input.decodeList<ApplicationPvtzDiscoverySvcPortProtocol>(map['portProtocols']!, (value) => ApplicationPvtzDiscoverySvcPortProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portProtocols: (() {
+        final guardedValue = map['portProtocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationPvtzDiscoverySvcPortProtocol>(
+            guardedValue,
+            (value) => ApplicationPvtzDiscoverySvcPortProtocol.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

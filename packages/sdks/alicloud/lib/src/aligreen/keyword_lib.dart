@@ -8,7 +8,7 @@ import 'keyword_lib_state.dart';
 ///
 /// For information about Aligreen Keyword Lib and how to use it, see [What is Keyword Lib](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateKeywordLib).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -266,20 +266,28 @@ import 'keyword_lib_state.dart';
 class KeywordLib extends pulumi.CustomResource {
   /// The business scenario. Example:["bizTypeA","bizTypeB"]
   late final pulumi.Output<List<String>?> bizTypes;
+
   /// The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
   late final pulumi.Output<String> category;
+
   /// Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
   late final pulumi.Output<bool> enable;
+
   /// The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
   late final pulumi.Output<String> keywordLibName;
+
   /// Language.
   late final pulumi.Output<String?> lang;
+
   /// Language used by the text Library
   late final pulumi.Output<String> language;
+
   /// The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
   late final pulumi.Output<String> libType;
+
   /// The matching method. Valid values:fuzzy: fuzzy match precise: exact match
   late final pulumi.Output<String> matchMode;
+
   /// The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
   late final pulumi.Output<String> resourceType;
 
@@ -292,20 +300,20 @@ class KeywordLib extends pulumi.CustomResource {
     KeywordLibArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/keywordLib:KeywordLib',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizTypes = registerOutput<List<String>?>('bizTypes');
-    this.category = registerOutput<String>('category');
-    this.enable = registerOutput<bool>('enable');
-    this.keywordLibName = registerOutput<String>('keywordLibName');
-    this.lang = registerOutput<String?>('lang');
-    this.language = registerOutput<String>('language');
-    this.libType = registerOutput<String>('libType');
-    this.matchMode = registerOutput<String>('matchMode');
-    this.resourceType = registerOutput<String>('resourceType');
+         'alicloud:aligreen/keywordLib:KeywordLib',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizTypes = registerOutput<List<String>?>('bizTypes');
+    category = registerOutput<String>('category');
+    enable = registerOutput<bool>('enable');
+    keywordLibName = registerOutput<String>('keywordLibName');
+    lang = registerOutput<String?>('lang');
+    language = registerOutput<String>('language');
+    libType = registerOutput<String>('libType');
+    matchMode = registerOutput<String>('matchMode');
+    resourceType = registerOutput<String>('resourceType');
   }
 
   /// Gets an existing [KeywordLib] resource's state with the given [name] and [id].
@@ -326,19 +334,19 @@ class KeywordLib extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/keywordLib:KeywordLib',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizTypes = registerOutput<List<String>?>('bizTypes');
-    this.category = registerOutput<String>('category');
-    this.enable = registerOutput<bool>('enable');
-    this.keywordLibName = registerOutput<String>('keywordLibName');
-    this.lang = registerOutput<String?>('lang');
-    this.language = registerOutput<String>('language');
-    this.libType = registerOutput<String>('libType');
-    this.matchMode = registerOutput<String>('matchMode');
-    this.resourceType = registerOutput<String>('resourceType');
+         'alicloud:aligreen/keywordLib:KeywordLib',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizTypes = registerOutput<List<String>?>('bizTypes');
+    category = registerOutput<String>('category');
+    enable = registerOutput<bool>('enable');
+    keywordLibName = registerOutput<String>('keywordLibName');
+    lang = registerOutput<String?>('lang');
+    language = registerOutput<String>('language');
+    libType = registerOutput<String>('libType');
+    matchMode = registerOutput<String>('matchMode');
+    resourceType = registerOutput<String>('resourceType');
   }
 }

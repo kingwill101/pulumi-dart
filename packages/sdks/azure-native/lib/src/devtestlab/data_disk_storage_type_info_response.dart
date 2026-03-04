@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataDiskStorageTypeInfoResponse {
   /// Disk Lun
   final pulumi.Input<String>? lun;
+
   /// Disk Storage Type
   final pulumi.Input<String>? storageType;
 
   /// Creates a new [DataDiskStorageTypeInfoResponse].
   /// [lun] Disk Lun
   /// [storageType] Disk Storage Type
-  DataDiskStorageTypeInfoResponse({
-    this.lun,
-    this.storageType,
-  });
+  DataDiskStorageTypeInfoResponse({this.lun, this.storageType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lun': ?lun,
-      'storageType': ?storageType,
-    };
+    return <String, dynamic>{'lun': ?lun, 'storageType': ?storageType};
   }
 
   factory DataDiskStorageTypeInfoResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskStorageTypeInfoResponse(
-      lun: map['lun'] == null ? null : (map['lun']! as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      lun: (() {
+        final guardedValue = map['lun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

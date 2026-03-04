@@ -8,20 +8,17 @@ class VMwareClusterAuthorizationAdminUser {
 
   /// Creates a new [VMwareClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  VMwareClusterAuthorizationAdminUser({
-    required this.username,
-  });
+  VMwareClusterAuthorizationAdminUser({required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': username,
-    };
+    return <String, dynamic>{'username': username};
   }
 
-  factory VMwareClusterAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
+  factory VMwareClusterAuthorizationAdminUser.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareClusterAuthorizationAdminUser(
-      username: (map['username'] as String).input(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ContainerExec {
 
   /// Creates a new [ContainerExec].
   /// [command] The commands to execute within the container.
-  ContainerExec({
-    this.command,
-  });
+  ContainerExec({this.command});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'command': ?command,
-    };
+    return <String, dynamic>{'command': ?command};
   }
 
   factory ContainerExec.fromMap(Map<String, dynamic> map) {
     return ContainerExec(
-      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      command: (() {
+        final guardedValue = map['command'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

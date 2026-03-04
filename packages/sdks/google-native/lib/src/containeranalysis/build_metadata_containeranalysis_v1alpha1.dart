@@ -25,12 +25,25 @@ class BuildMetadataContaineranalysisV1alpha1 {
     };
   }
 
-  factory BuildMetadataContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BuildMetadataContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BuildMetadataContaineranalysisV1alpha1(
-      finishedOn: map['finishedOn'] == null ? null : (map['finishedOn']! as String).input(),
-      invocationId: map['invocationId'] == null ? null : (map['invocationId']! as String).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
+      finishedOn: (() {
+        final guardedValue = map['finishedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invocationId: (() {
+        final guardedValue = map['invocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startedOn: (() {
+        final guardedValue = map['startedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

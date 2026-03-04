@@ -3,16 +3,15 @@ enum TargetRollingWindowSizeMode {
   valueAuto("Auto"),
   valueCustom("Custom");
 
-  const TargetRollingWindowSizeMode(this.value);
-  final String value;
+  const TargetRollingWindowSizeMode(this.wireValue);
+  final String wireValue;
 
   static TargetRollingWindowSizeMode fromValue(String value) {
     for (final item in TargetRollingWindowSizeMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetRollingWindowSizeMode value: $value');
   }
 }
-

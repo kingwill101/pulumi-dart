@@ -8,20 +8,19 @@ class DataSourceParametersAthena {
 
   /// Creates a new [DataSourceParametersAthena].
   /// [workGroup] The work-group to which to connect.
-  DataSourceParametersAthena({
-    this.workGroup,
-  });
+  DataSourceParametersAthena({this.workGroup});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workGroup': ?workGroup,
-    };
+    return <String, dynamic>{'workGroup': ?workGroup};
   }
 
   factory DataSourceParametersAthena.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAthena(
-      workGroup: map['workGroup'] == null ? null : ((map['workGroup'] as String).input()).input(),
+      workGroup: (() {
+        final guardedValue = map['workGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

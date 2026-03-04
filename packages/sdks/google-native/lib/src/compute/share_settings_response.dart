@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareSettingsResponse {
   /// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
   final pulumi.Input<Map<String, String>> folderMap;
+
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   final pulumi.Input<Map<String, String>> projectMap;
+
   /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   final pulumi.Input<List<String>> projects;
+
   /// Type of sharing for this shared-reservation
   final pulumi.Input<String> shareType;
 
@@ -36,11 +39,16 @@ class ShareSettingsResponse {
 
   factory ShareSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ShareSettingsResponse(
-      folderMap: ((map['folderMap'] as Map).cast<String, String>()).input(),
-      projectMap: ((map['projectMap'] as Map).cast<String, String>()).input(),
-      projects: ((map['projects'] as List).cast<String>()).input(),
-      shareType: (map['shareType'] as String).input(),
+      folderMap: pulumi.Input.fromValue(
+        (map['folderMap'] as Map).cast<String, String>(),
+      ),
+      projectMap: pulumi.Input.fromValue(
+        (map['projectMap'] as Map).cast<String, String>(),
+      ),
+      projects: pulumi.Input.fromValue(
+        (map['projects'] as List).cast<String>(),
+      ),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
     );
   }
 }
-

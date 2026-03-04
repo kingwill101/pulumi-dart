@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbStickinessPolicyArgs {
   /// Cookie duration in seconds. This determines the length of the session stickiness.
   final pulumi.Input<int> cookieDuration;
+
   /// Whether to enable session stickiness for the load balancer.
   final pulumi.Input<bool> enabled;
+
   /// Name of the load balancer to which you want to enable session stickiness.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> lbName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,11 +44,14 @@ class LbStickinessPolicyArgs {
 
   factory LbStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyArgs(
-      cookieDuration: (map['cookieDuration'] as int).input(),
-      enabled: (map['enabled'] as bool).input(),
-      lbName: (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      cookieDuration: pulumi.Input.fromValue(map['cookieDuration'] as int),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      lbName: pulumi.Input.fromValue(map['lbName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

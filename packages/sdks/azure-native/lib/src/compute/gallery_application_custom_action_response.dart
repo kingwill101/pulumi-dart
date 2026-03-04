@@ -7,10 +7,14 @@ import 'gallery_application_custom_action_parameter_response.dart';
 class GalleryApplicationCustomActionResponse {
   /// Description to help the users understand what this custom action does.
   final pulumi.Input<String>? description;
+
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
   final pulumi.Input<String> name;
+
   /// The parameters that this custom action uses
-  final pulumi.Input<List<GalleryApplicationCustomActionParameterResponse>>? parameters;
+  final pulumi.Input<List<GalleryApplicationCustomActionParameterResponse>>?
+  parameters;
+
   /// The script to run when executing this custom action.
   final pulumi.Input<String> script;
 
@@ -30,18 +34,47 @@ class GalleryApplicationCustomActionResponse {
     return <String, dynamic>{
       'description': ?description,
       'name': name,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<GalleryApplicationCustomActionParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GalleryApplicationCustomActionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GalleryApplicationCustomActionParameterResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GalleryApplicationCustomActionParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'script': script,
     };
   }
 
-  factory GalleryApplicationCustomActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GalleryApplicationCustomActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryApplicationCustomActionResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomActionParameterResponse>(map['parameters']!, (value) => GalleryApplicationCustomActionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      script: (map['script'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GalleryApplicationCustomActionParameterResponse
+          >(
+            guardedValue,
+            (value) => GalleryApplicationCustomActionParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      script: pulumi.Input.fromValue(map['script'] as String),
     );
   }
 }
-

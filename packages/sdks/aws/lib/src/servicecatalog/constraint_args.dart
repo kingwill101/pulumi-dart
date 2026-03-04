@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// Description of the constraint.
   final pulumi.Input<String>? description;
+
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
   final pulumi.Input<String> parameters;
+
   /// Portfolio identifier.
   final pulumi.Input<String> portfolioId;
+
   /// Product identifier.
   final pulumi.Input<String> productId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:
@@ -56,14 +62,25 @@ class ConstraintArgs {
 
   factory ConstraintArgs.fromMap(Map<String, dynamic> map) {
     return ConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      parameters: (map['parameters'] as String).input(),
-      portfolioId: (map['portfolioId'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: pulumi.Input.fromValue(map['parameters'] as String),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

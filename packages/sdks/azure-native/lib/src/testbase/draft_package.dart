@@ -1,15 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'draft_package_args.dart';
 import 'draft_package_intune_app_metadata_response.dart';
-import 'first_party_app_definition_response.dart';
-import 'gallery_app_definition_response.dart';
-import 'highlighted_file_response.dart';
 import 'inplace_upgrade_osinfo_response.dart';
 import 'intune_enrollment_metadata_response.dart';
 import 'system_data_response.dart';
 import 'tab_state_response.dart';
-import 'target_osinfo_response.dart';
-import 'test_response.dart';
 
 /// The Test Base Draft Package resource.
 ///
@@ -172,64 +167,96 @@ import 'test_response.dart';
 class DraftPackage extends pulumi.CustomResource {
   /// The name of the app file.
   late final pulumi.Output<String?> appFileName;
+
   /// Application name
   late final pulumi.Output<String?> applicationName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Comments added by user.
   late final pulumi.Output<String?> comments;
+
   /// The relative path of the folder hosting package files.
   late final pulumi.Output<String> draftPackagePath;
+
   /// Specifies whether this draft package is used to edit a package.
   late final pulumi.Output<bool?> editPackage;
+
   /// The executable launch command for script auto-fill. Will be used to run the application.
   late final pulumi.Output<String?> executableLaunchCommand;
+
   /// The list of first party applications to test along with user application.
-  late final pulumi.Output<List<FirstPartyAppDefinitionResponse>?> firstPartyApps;
+  late final pulumi.Output<List<Map<String, dynamic>>?> firstPartyApps;
+
   /// The flighting ring for feature update.
   late final pulumi.Output<String?> flightingRing;
+
   /// The list of gallery apps to test along with user application.
-  late final pulumi.Output<List<GalleryAppDefinitionResponse>?> galleryApps;
+  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApps;
+
   /// The highlight files in the package.
-  late final pulumi.Output<List<HighlightedFileResponse>?> highlightedFiles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> highlightedFiles;
+
   /// Specifies the baseline os and target os for inplace upgrade.
   late final pulumi.Output<InplaceUpgradeOSInfoResponse?> inplaceUpgradeOSPair;
+
   /// The metadata of Intune enrollment.
-  late final pulumi.Output<IntuneEnrollmentMetadataResponse?> intuneEnrollmentMetadata;
+  late final pulumi.Output<IntuneEnrollmentMetadataResponse?>
+  intuneEnrollmentMetadata;
+
   /// Metadata used to generate draft package folder and scripts.
-  late final pulumi.Output<DraftPackageIntuneAppMetadataResponse?> intuneMetadata;
+  late final pulumi.Output<DraftPackageIntuneAppMetadataResponse?>
+  intuneMetadata;
+
   /// The UTC timestamp when the package was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the package id from which the draft package copied.
   late final pulumi.Output<String?> packageId;
+
   /// Tags of the package to be created.
   late final pulumi.Output<Map<String, String>?> packageTags;
+
   /// The process name for script auto-fill. Will be used to identify the application process.
   late final pulumi.Output<String?> processName;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The source type.
   late final pulumi.Output<String?> sourceType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tab state.
   late final pulumi.Output<TabStateResponse?> tabState;
+
   /// Specifies the target OSs of specific OS Update types.
-  late final pulumi.Output<List<TargetOSInfoResponse>?> targetOSList;
+  late final pulumi.Output<List<Map<String, dynamic>>?> targetOSList;
+
   /// OOB, functional or flow driven. Mapped to the data in 'tests' property.
   late final pulumi.Output<List<String>?> testTypes;
+
   /// The detailed test information.
-  late final pulumi.Output<List<TestResponse>?> tests;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Indicates whether user choose to enable script auto-fill.
   late final pulumi.Output<bool?> useAutofill;
+
   /// Specifies whether a sample package should be used instead of the one uploaded by the user.
   late final pulumi.Output<bool?> useSample;
+
   /// Application version
   late final pulumi.Output<String?> version;
+
   /// The relative path for a temporarily folder for package creation work.
   late final pulumi.Output<String> workingPath;
 
@@ -242,41 +269,54 @@ class DraftPackage extends pulumi.CustomResource {
     DraftPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:testbase:DraftPackage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appFileName = registerOutput<String?>('appFileName');
-    this.applicationName = registerOutput<String?>('applicationName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.comments = registerOutput<String?>('comments');
-    this.draftPackagePath = registerOutput<String>('draftPackagePath');
-    this.editPackage = registerOutput<bool?>('editPackage');
-    this.executableLaunchCommand = registerOutput<String?>('executableLaunchCommand');
-    this.firstPartyApps = registerOutput<List<FirstPartyAppDefinitionResponse>?>('firstPartyApps');
-    this.flightingRing = registerOutput<String?>('flightingRing');
-    this.galleryApps = registerOutput<List<GalleryAppDefinitionResponse>?>('galleryApps');
-    this.highlightedFiles = registerOutput<List<HighlightedFileResponse>?>('highlightedFiles');
-    this.inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair');
-    this.intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata');
-    this.intuneMetadata = registerOutput<DraftPackageIntuneAppMetadataResponse?>('intuneMetadata');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:testbase:DraftPackage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appFileName = registerOutput<String?>('appFileName');
+    applicationName = registerOutput<String?>('applicationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comments = registerOutput<String?>('comments');
+    draftPackagePath = registerOutput<String>('draftPackagePath');
+    editPackage = registerOutput<bool?>('editPackage');
+    executableLaunchCommand = registerOutput<String?>(
+      'executableLaunchCommand',
+    );
+    firstPartyApps = registerOutput<List<Map<String, dynamic>>?>(
+      'firstPartyApps',
+    );
+    flightingRing = registerOutput<String?>('flightingRing');
+    galleryApps = registerOutput<List<Map<String, dynamic>>?>('galleryApps');
+    highlightedFiles = registerOutput<List<Map<String, dynamic>>?>(
+      'highlightedFiles',
+    );
+    inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>(
+      'inplaceUpgradeOSPair',
+    );
+    intuneEnrollmentMetadata =
+        registerOutput<IntuneEnrollmentMetadataResponse?>(
+          'intuneEnrollmentMetadata',
+        );
+    intuneMetadata = registerOutput<DraftPackageIntuneAppMetadataResponse?>(
+      'intuneMetadata',
+    );
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.packageId = registerOutput<String?>('packageId');
-    this.packageTags = registerOutput<Map<String, String>?>('packageTags');
-    this.processName = registerOutput<String?>('processName');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tabState = registerOutput<TabStateResponse?>('tabState');
-    this.targetOSList = registerOutput<List<TargetOSInfoResponse>?>('targetOSList');
-    this.testTypes = registerOutput<List<String>?>('testTypes');
-    this.tests = registerOutput<List<TestResponse>?>('tests');
-    this.type = registerOutput<String>('type');
-    this.useAutofill = registerOutput<bool?>('useAutofill');
-    this.useSample = registerOutput<bool?>('useSample');
-    this.version = registerOutput<String?>('version');
-    this.workingPath = registerOutput<String>('workingPath');
+    packageId = registerOutput<String?>('packageId');
+    packageTags = registerOutput<Map<String, String>?>('packageTags');
+    processName = registerOutput<String?>('processName');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceType = registerOutput<String?>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tabState = registerOutput<TabStateResponse?>('tabState');
+    targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
+    testTypes = registerOutput<List<String>?>('testTypes');
+    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    type = registerOutput<String>('type');
+    useAutofill = registerOutput<bool?>('useAutofill');
+    useSample = registerOutput<bool?>('useSample');
+    version = registerOutput<String?>('version');
+    workingPath = registerOutput<String>('workingPath');
   }
 }

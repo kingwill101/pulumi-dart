@@ -13,11 +13,11 @@ import 'managed_folder_iam_member_state.dart';
 ///
 /// * `gcp.storage.ManagedFolderIamPolicy`: Retrieves the IAM policy for the managedfolder
 ///
-/// > **Note:** `gcp.storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `gcp.storage.ManagedFolderIamBinding` and `gcp.storage.ManagedFolderIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `gcp.storage.ManagedFolderIamBinding` and `gcp.storage.ManagedFolderIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `gcp.storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `gcp.storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.storage.ManagedFolderIamPolicy
@@ -872,7 +872,7 @@ import 'managed_folder_iam_member_state.dart';
 /// ```
 ///
 ///
-/// ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// ## &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 /// -
@@ -888,11 +888,11 @@ import 'managed_folder_iam_member_state.dart';
 ///
 /// * `gcp.storage.ManagedFolderIamPolicy`: Retrieves the IAM policy for the managedfolder
 ///
-/// > **Note:** `gcp.storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `gcp.storage.ManagedFolderIamBinding` and `gcp.storage.ManagedFolderIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `gcp.storage.ManagedFolderIamBinding` and `gcp.storage.ManagedFolderIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `gcp.storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `gcp.storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.storage.ManagedFolderIamPolicy
@@ -1777,19 +1777,23 @@ import 'managed_folder_iam_member_state.dart';
 /// $ pulumi import gcp:storage/managedFolderIamMember:ManagedFolderIamMember editor b/{{bucket}}/managedFolders/{{managed_folder}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ManagedFolderIamMember extends pulumi.CustomResource {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> bucket;
+
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<ManagedFolderIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> managedFolder;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -1802,6 +1806,7 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -1816,17 +1821,17 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
     ManagedFolderIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.condition = registerOutput<ManagedFolderIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.managedFolder = registerOutput<String>('managedFolder');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<ManagedFolderIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    managedFolder = registerOutput<String>('managedFolder');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [ManagedFolderIamMember] resource's state with the given [name] and [id].
@@ -1847,16 +1852,16 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.condition = registerOutput<ManagedFolderIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.managedFolder = registerOutput<String>('managedFolder');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<ManagedFolderIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    managedFolder = registerOutput<String>('managedFolder');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

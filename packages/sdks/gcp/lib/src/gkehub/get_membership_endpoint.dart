@@ -9,20 +9,35 @@ class GetMembershipEndpoint {
 
   /// Creates a new [GetMembershipEndpoint].
   /// [gkeClusters] If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
-  GetMembershipEndpoint({
-    required this.gkeClusters,
-  });
+  GetMembershipEndpoint({required this.gkeClusters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gkeClusters': pulumi.Input.mapInputValue<List<GetMembershipEndpointGkeCluster>, List<Map<String, dynamic>>>(gkeClusters, (value) => pulumi.Input.encodeList<GetMembershipEndpointGkeCluster, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gkeClusters':
+          pulumi.Input.mapInputValue<
+            List<GetMembershipEndpointGkeCluster>,
+            List<Map<String, dynamic>>
+          >(
+            gkeClusters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetMembershipEndpointGkeCluster,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetMembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return GetMembershipEndpoint(
-      gkeClusters: (pulumi.Input.decodeList<GetMembershipEndpointGkeCluster>(map['gkeClusters'], (value) => GetMembershipEndpointGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gkeClusters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetMembershipEndpointGkeCluster>(
+          map['gkeClusters']!,
+          (value) => GetMembershipEndpointGkeCluster.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

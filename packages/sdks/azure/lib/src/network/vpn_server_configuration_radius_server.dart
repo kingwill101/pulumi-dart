@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationRadiusServer {
   /// The Address of the Radius Server.
   final pulumi.Input<String> address;
+
   /// The Score of the Radius Server determines the priority of the server. Ranges from 1 to 30.
   final pulumi.Input<int> score;
+
   /// The Secret used to communicate with the Radius Server.
   final pulumi.Input<String> secret;
 
@@ -30,10 +32,9 @@ class VpnServerConfigurationRadiusServer {
 
   factory VpnServerConfigurationRadiusServer.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationRadiusServer(
-      address: (map['address'] as String).input(),
-      score: (map['score'] as int).input(),
-      secret: (map['secret'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      score: pulumi.Input.fromValue(map['score'] as int),
+      secret: pulumi.Input.fromValue(map['secret'] as String),
     );
   }
 }
-

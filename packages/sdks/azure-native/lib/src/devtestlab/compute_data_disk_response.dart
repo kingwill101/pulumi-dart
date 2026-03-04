@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeDataDiskResponse {
   /// Gets data disk size in GiB.
   final pulumi.Input<int>? diskSizeGiB;
+
   /// When backed by a blob, the URI of underlying blob.
   final pulumi.Input<String>? diskUri;
+
   /// When backed by managed disk, this is the ID of the compute disk resource.
   final pulumi.Input<String>? managedDiskId;
+
   /// Gets data disk name.
   final pulumi.Input<String>? name;
 
@@ -36,11 +39,26 @@ class ComputeDataDiskResponse {
 
   factory ComputeDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return ComputeDataDiskResponse(
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
-      diskUri: map['diskUri'] == null ? null : (map['diskUri']! as String).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      diskSizeGiB: (() {
+        final guardedValue = map['diskSizeGiB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskUri: (() {
+        final guardedValue = map['diskUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedDiskId: (() {
+        final guardedValue = map['managedDiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

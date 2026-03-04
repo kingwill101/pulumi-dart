@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostsHostProtocol {
   /// Host fingerprint information, it is possible to uniquely identify a host.
   final pulumi.Input<String> hostFingerPrint;
+
   /// Host the service port of the RDS.
   final pulumi.Input<int> port;
+
   /// The host uses the protocol name.
   final pulumi.Input<String> protocolName;
 
@@ -30,10 +32,9 @@ class GetHostsHostProtocol {
 
   factory GetHostsHostProtocol.fromMap(Map<String, dynamic> map) {
     return GetHostsHostProtocol(
-      hostFingerPrint: (map['hostFingerPrint'] as String).input(),
-      port: (map['port'] as int).input(),
-      protocolName: (map['protocolName'] as String).input(),
+      hostFingerPrint: pulumi.Input.fromValue(map['hostFingerPrint'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocolName: pulumi.Input.fromValue(map['protocolName'] as String),
     );
   }
 }
-

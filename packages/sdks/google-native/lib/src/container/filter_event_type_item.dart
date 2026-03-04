@@ -4,16 +4,15 @@ enum FilterEventTypeItem {
   upgradeEvent("UPGRADE_EVENT"),
   securityBulletinEvent("SECURITY_BULLETIN_EVENT");
 
-  const FilterEventTypeItem(this.value);
-  final String value;
+  const FilterEventTypeItem(this.wireValue);
+  final String wireValue;
 
   static FilterEventTypeItem fromValue(String value) {
     for (final item in FilterEventTypeItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FilterEventTypeItem value: $value');
   }
 }
-

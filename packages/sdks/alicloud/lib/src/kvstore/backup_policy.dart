@@ -6,9 +6,9 @@ import 'backup_policy_state.dart';
 ///
 /// For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
 ///
-/// > **NOTE:** Available since v1.15.0.
+/// &gt; **NOTE:** Available since v1.15.0.
 ///
-/// > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+/// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
 ///
 /// ## Example Usage
 ///
@@ -378,8 +378,10 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
   late final pulumi.Output<List<String>> backupPeriods;
+
   /// Backup time, in the format of HH:mmZ- HH:mm Z.
   late final pulumi.Output<String?> backupTime;
+
   /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   late final pulumi.Output<String> instanceId;
 
@@ -392,14 +394,14 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kvstore/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPeriods = registerOutput<List<String>>('backupPeriods');
-    this.backupTime = registerOutput<String?>('backupTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:kvstore/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPeriods = registerOutput<List<String>>('backupPeriods');
+    backupTime = registerOutput<String?>('backupTime');
+    instanceId = registerOutput<String>('instanceId');
   }
 
   /// Gets an existing [BackupPolicy] resource's state with the given [name] and [id].
@@ -420,13 +422,13 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kvstore/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPeriods = registerOutput<List<String>>('backupPeriods');
-    this.backupTime = registerOutput<String?>('backupTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:kvstore/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPeriods = registerOutput<List<String>>('backupPeriods');
+    backupTime = registerOutput<String?>('backupTime');
+    instanceId = registerOutput<String>('instanceId');
   }
 }

@@ -7,13 +7,16 @@ import 'get_disk_types_type.dart';
 class GetDiskTypesResult {
   final String clusterType;
   final String destinationResource;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of data disk and system disk type IDs.
   final List<String> ids;
   final String instanceChargeType;
   final String instanceType;
   final String? outputFile;
+
   /// A list of emr instance types. Each element contains the following attributes:
   final List<GetDiskTypesType> types;
   final String? zoneId;
@@ -49,7 +52,10 @@ class GetDiskTypesResult {
       'instanceChargeType': instanceChargeType,
       'instanceType': instanceType,
       'outputFile': ?outputFile,
-      'types': pulumi.Input.encodeList<GetDiskTypesType, Map<String, dynamic>>(types, (value) => value.toMap()),
+      'types': pulumi.Input.encodeList<GetDiskTypesType, Map<String, dynamic>>(
+        types,
+        (value) => value.toMap(),
+      ),
       'zoneId': ?zoneId,
     };
   }
@@ -62,10 +68,21 @@ class GetDiskTypesResult {
       ids: (map['ids'] as List).cast<String>(),
       instanceChargeType: map['instanceChargeType'] as String,
       instanceType: map['instanceType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      types: pulumi.Input.decodeList<GetDiskTypesType>(map['types'], (value) => GetDiskTypesType.fromMap((value as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      types: pulumi.Input.decodeList<GetDiskTypesType>(
+        map['types']!,
+        (value) =>
+            GetDiskTypesType.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

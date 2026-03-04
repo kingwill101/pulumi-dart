@@ -3,16 +3,15 @@ enum GalleryExtendedLocationType {
   edgeZone("EdgeZone"),
   unknown("Unknown");
 
-  const GalleryExtendedLocationType(this.value);
-  final String value;
+  const GalleryExtendedLocationType(this.wireValue);
+  final String wireValue;
 
   static GalleryExtendedLocationType fromValue(String value) {
     for (final item in GalleryExtendedLocationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GalleryExtendedLocationType value: $value');
   }
 }
-

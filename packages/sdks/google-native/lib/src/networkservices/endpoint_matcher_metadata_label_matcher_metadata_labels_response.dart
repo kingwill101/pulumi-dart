@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
   /// Label name presented as key in xDS Node Metadata.
   final pulumi.Input<String> labelName;
+
   /// Label value presented as value corresponding to the above key, in xDS Node Metadata.
   final pulumi.Input<String> labelValue;
 
@@ -18,17 +19,15 @@ class EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labelName': labelName,
-      'labelValue': labelValue,
-    };
+    return <String, dynamic>{'labelName': labelName, 'labelValue': labelValue};
   }
 
-  factory EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse.fromMap(Map<String, dynamic> map) {
+  factory EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse(
-      labelName: (map['labelName'] as String).input(),
-      labelValue: (map['labelValue'] as String).input(),
+      labelName: pulumi.Input.fromValue(map['labelName'] as String),
+      labelValue: pulumi.Input.fromValue(map['labelValue'] as String),
     );
   }
 }
-

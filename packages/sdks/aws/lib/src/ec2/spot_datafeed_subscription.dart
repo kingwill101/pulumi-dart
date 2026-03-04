@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spot_datafeed_subscription_args.dart';
 import 'spot_datafeed_subscription_state.dart';
 
-/// > **Note:** There is only a single subscription allowed per account.
+/// &gt; **Note:** There is only a single subscription allowed per account.
 ///
 /// To help you understand the charges for your Spot instances, Amazon EC2 provides a data feed that describes your Spot instance usage and pricing.
 /// This data feed is sent to an Amazon S3 bucket that you specify when you subscribe to the data feed.
@@ -138,8 +138,10 @@ import 'spot_datafeed_subscription_state.dart';
 class SpotDatafeedSubscription extends pulumi.CustomResource {
   /// The Amazon S3 bucket in which to store the Spot instance data feed.
   late final pulumi.Output<String> bucket;
+
   /// Path of folder inside bucket to place spot pricing data.
   late final pulumi.Output<String?> prefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -152,14 +154,14 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
     SpotDatafeedSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.prefix = registerOutput<String?>('prefix');
-    this.region = registerOutput<String>('region');
+         'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [SpotDatafeedSubscription] resource's state with the given [name] and [id].
@@ -180,13 +182,13 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.prefix = registerOutput<String?>('prefix');
-    this.region = registerOutput<String>('region');
+         'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
   }
 }

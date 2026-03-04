@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSetExtension {
   /// Specifies whether or not to use the latest minor version available.
   final pulumi.Input<bool>? autoUpgradeMinorVersion;
+
   /// Specifies the name of the extension.
   final pulumi.Input<String> name;
+
   /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
   final pulumi.Input<String>? protectedSettings;
+
   /// Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
   final pulumi.Input<List<String>>? provisionAfterExtensions;
+
   /// The publisher of the extension, available publishers can be found by using the Azure CLI.
   final pulumi.Input<String> publisher;
+
   /// The settings passed to the extension, these are specified as a JSON object in a string.
   final pulumi.Input<String>? settings;
+
   /// The type of extension, available types for a publisher can be found using the Azure CLI.
   final pulumi.Input<String> type;
+
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   final pulumi.Input<String> typeHandlerVersion;
 
@@ -55,15 +62,32 @@ class ScaleSetExtension {
 
   factory ScaleSetExtension.fromMap(Map<String, dynamic> map) {
     return ScaleSetExtension(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
-      name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
-      publisher: (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings']! as String).input(),
-      type: (map['type'] as String).input(),
-      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
+      autoUpgradeMinorVersion: (() {
+        final guardedValue = map['autoUpgradeMinorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protectedSettings: (() {
+        final guardedValue = map['protectedSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionAfterExtensions: (() {
+        final guardedValue = map['provisionAfterExtensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      typeHandlerVersion: pulumi.Input.fromValue(
+        map['typeHandlerVersion'] as String,
+      ),
     );
   }
 }
-

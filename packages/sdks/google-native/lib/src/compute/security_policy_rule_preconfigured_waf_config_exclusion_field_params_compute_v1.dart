@@ -5,7 +5,11 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_op_
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1 {
   /// The match operator for the field.
-  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1>? op;
+  final pulumi.Input<
+    SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1
+  >?
+  op;
+
   /// The value of the field.
   final pulumi.Input<String>? val;
 
@@ -19,16 +23,33 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'op': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1, String>(op, (value) => value.value),
+      'op':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1,
+            String
+          >(op, (value) => value.wireValue),
       'val': ?val,
     };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1(
-      op: map['op'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1.fromValue(map['op']! as String)).input(),
-      val: map['val'] == null ? null : (map['val']! as String).input(),
+      op: (() {
+        final guardedValue = map['op'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      val: (() {
+        final guardedValue = map['val'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

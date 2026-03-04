@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerLicensePropertiesResponse {
   /// The activation state of the license.
   final pulumi.Input<String> activationState;
+
   /// SQL Server license type.
   final pulumi.Input<String> billingPlan;
+
   /// The timestamp of the most recent activation of the SqlServerLicense.
   final pulumi.Input<String> lastActivatedAt;
+
   /// The timestamp of the most recent deactivation of the SqlServerLicense.
   final pulumi.Input<String> lastDeactivatedAt;
+
   /// This property represents the choice between SQL Server Core and ESU licenses.
   final pulumi.Input<String> licenseCategory;
+
   /// The number of total cores of the license covers.
   final pulumi.Input<int> physicalCores;
+
   /// The Azure scope to which the license will apply.
   final pulumi.Input<String> scopeType;
+
   /// The tenantId the SQL Server license resource subscription resides in.
   final pulumi.Input<String> tenantId;
 
@@ -56,15 +63,16 @@ class SqlServerLicensePropertiesResponse {
 
   factory SqlServerLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensePropertiesResponse(
-      activationState: (map['activationState'] as String).input(),
-      billingPlan: (map['billingPlan'] as String).input(),
-      lastActivatedAt: (map['lastActivatedAt'] as String).input(),
-      lastDeactivatedAt: (map['lastDeactivatedAt'] as String).input(),
-      licenseCategory: (map['licenseCategory'] as String).input(),
-      physicalCores: (map['physicalCores'] as int).input(),
-      scopeType: (map['scopeType'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      activationState: pulumi.Input.fromValue(map['activationState'] as String),
+      billingPlan: pulumi.Input.fromValue(map['billingPlan'] as String),
+      lastActivatedAt: pulumi.Input.fromValue(map['lastActivatedAt'] as String),
+      lastDeactivatedAt: pulumi.Input.fromValue(
+        map['lastDeactivatedAt'] as String,
+      ),
+      licenseCategory: pulumi.Input.fromValue(map['licenseCategory'] as String),
+      physicalCores: pulumi.Input.fromValue(map['physicalCores'] as int),
+      scopeType: pulumi.Input.fromValue(map['scopeType'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

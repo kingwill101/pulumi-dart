@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_replicated_vm_args.dart';
-import 'vmware_replicated_vm_managed_disk.dart';
-import 'vmware_replicated_vm_network_interface.dart';
 import 'vmware_replicated_vm_state.dart';
 
 /// Manages a VMWare replicated VM using Azure Site Recovery (VMWare to Azure only). A replicated VM keeps a copiously updated image of the VM in Azure in order to be able to start the VM in Azure in case of a disaster.
@@ -530,7 +528,7 @@ import 'vmware_replicated_vm_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OffAzure` - 2020-01-01
@@ -547,70 +545,91 @@ import 'vmware_replicated_vm_state.dart';
 class VmwareReplicatedVm extends pulumi.CustomResource {
   /// The name of VMWare appliance which handles the replication. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applianceName;
+
   /// The ID of the stroage account that should be used for logging during replication.
   ///
-  /// > **Note:** Only standard types of storage accounts are allowed.
+  /// &gt; **Note:** Only standard types of storage accounts are allowed.
   ///
-  /// > **Note:** Only one of `default_log_storage_account_id` or `managed_disk` must be specified.
+  /// &gt; **Note:** Only one of `default_log_storage_account_id` or `managed_disk` must be specified.
   ///
-  /// > **Note:** Changing `default_log_storage_account_id` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_log_storage_account_id` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_log_storage_account_id` co-exist with `managed_disk`, the value of `default_log_storage_account_id` must be as same as `log_storage_account_id` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_log_storage_account_id` co-exist with `managed_disk`, the value of `default_log_storage_account_id` must be as same as `log_storage_account_id` of every `managed_disk` or it forces a new resource to be created.
   late final pulumi.Output<String?> defaultLogStorageAccountId;
+
   /// The type of storage account that should be used for recovery disks when a failover is done. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`.
   ///
-  /// > **Note:** Only one of `default_recovery_disk_type` or `managed_disk` must be specified.
+  /// &gt; **Note:** Only one of `default_recovery_disk_type` or `managed_disk` must be specified.
   ///
-  /// > **Note:** Changing `default_recovery_disk_type` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_recovery_disk_type` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_recovery_disk_type` co-exist with `managed_disk`, the value of `default_recovery_disk_type` must be as same as `target_disk_type` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_recovery_disk_type` co-exist with `managed_disk`, the value of `default_recovery_disk_type` must be as same as `target_disk_type` of every `managed_disk` or it forces a new resource to be created.
   late final pulumi.Output<String?> defaultRecoveryDiskType;
+
   /// The ID of the default Disk Encryption Set that should be used for the disks when a failover is done.
   ///
-  /// > **Note:** Changing `default_target_disk_encryption_set_id` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_target_disk_encryption_set_id` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_target_disk_encryption_set_id` co-exist with `managed_disk`, the value of `default_target_disk_encryption_set_id` must be as same as `target_disk_encryption_set_id` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_target_disk_encryption_set_id` co-exist with `managed_disk`, the value of `default_target_disk_encryption_set_id` must be as same as `target_disk_encryption_set_id` of every `managed_disk` or it forces a new resource to be created.
   late final pulumi.Output<String?> defaultTargetDiskEncryptionSetId;
+
   /// The license type of the VM. Possible values are `NoLicenseType`, `NotSpecified` and `WindowsServer`. Defaults to `NotSpecified`.
   late final pulumi.Output<String?> licenseType;
+
   /// One or more `managed_disk` block as defined below. It's available only if mobility service is already installed on the source VM.
   ///
-  /// > **Note:** A replicated VM could be created without `managed_disk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
-  late final pulumi.Output<List<VmwareReplicatedVmManagedDisk>?> managedDisks;
+  /// &gt; **Note:** A replicated VM could be created without `managed_disk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
+  late final pulumi.Output<List<Map<String, dynamic>>?> managedDisks;
+
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   late final pulumi.Output<String?> multiVmGroupName;
+
   /// The name of the replicated VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `network_interface` block as defined below.
-  late final pulumi.Output<List<VmwareReplicatedVmNetworkInterface>?> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+
   /// The name of the credential to access the source VM. Changing this forces a new resource to be created. More information about the credentials could be found [here](https://learn.microsoft.com/en-us/azure/site-recovery/deploy-vmware-azure-replication-appliance-modernized).
   late final pulumi.Output<String> physicalServerCredentialName;
+
   /// The ID of the policy to use for this replicated VM.
   late final pulumi.Output<String> recoveryReplicationPolicyId;
+
   /// The ID of the Recovery Services Vault where the replicated VM is created.
   late final pulumi.Output<String> recoveryVaultId;
+
   /// The name of the source VM in VMWare. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceVmName;
+
   /// The ID of availability set that the new VM should belong to when a failover is done.
   late final pulumi.Output<String?> targetAvailabilitySetId;
+
   /// The ID of the storage account that should be used for boot diagnostics when a failover is done.
   late final pulumi.Output<String?> targetBootDiagnosticsStorageAccountId;
+
   /// The ID of network to use when a failover is done.
   ///
-  /// > **Note:** `target_network_id` is required when `network_interface` is specified.
+  /// &gt; **Note:** `target_network_id` is required when `network_interface` is specified.
   late final pulumi.Output<String?> targetNetworkId;
+
   /// The ID of Proximity Placement Group the new VM should belong to when a failover is done.
   ///
-  /// > **Note:** Only one of `target_availability_set_id` or `target_zone` can be specified.
+  /// &gt; **Note:** Only one of `target_availability_set_id` or `target_zone` can be specified.
   late final pulumi.Output<String?> targetProximityPlacementGroupId;
+
   /// The ID of resource group where the VM should be created when a failover is done.
   late final pulumi.Output<String> targetResourceGroupId;
+
   /// Name of the VM that should be created when a failover is done. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetVmName;
+
   /// Size of the VM that should be created when a failover is done, such as `Standard_F2`. If it's not specified, it will automatically be set by detecting the source VM size.
   late final pulumi.Output<String?> targetVmSize;
+
   /// Specifies the Availability Zone where the Failover VM should exist.
   late final pulumi.Output<String?> targetZone;
+
   /// The ID of network to use when a test failover is done.
   late final pulumi.Output<String?> testNetworkId;
 
@@ -623,33 +642,51 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
     VmwareReplicatedVmArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applianceName = registerOutput<String>('applianceName');
-    this.defaultLogStorageAccountId = registerOutput<String?>('defaultLogStorageAccountId');
-    this.defaultRecoveryDiskType = registerOutput<String?>('defaultRecoveryDiskType');
-    this.defaultTargetDiskEncryptionSetId = registerOutput<String?>('defaultTargetDiskEncryptionSetId');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.managedDisks = registerOutput<List<VmwareReplicatedVmManagedDisk>?>('managedDisks');
-    this.multiVmGroupName = registerOutput<String?>('multiVmGroupName');
+         'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applianceName = registerOutput<String>('applianceName');
+    defaultLogStorageAccountId = registerOutput<String?>(
+      'defaultLogStorageAccountId',
+    );
+    defaultRecoveryDiskType = registerOutput<String?>(
+      'defaultRecoveryDiskType',
+    );
+    defaultTargetDiskEncryptionSetId = registerOutput<String?>(
+      'defaultTargetDiskEncryptionSetId',
+    );
+    licenseType = registerOutput<String?>('licenseType');
+    managedDisks = registerOutput<List<Map<String, dynamic>>?>('managedDisks');
+    multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<VmwareReplicatedVmNetworkInterface>?>('networkInterfaces');
-    this.physicalServerCredentialName = registerOutput<String>('physicalServerCredentialName');
-    this.recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    this.sourceVmName = registerOutput<String>('sourceVmName');
-    this.targetAvailabilitySetId = registerOutput<String?>('targetAvailabilitySetId');
-    this.targetBootDiagnosticsStorageAccountId = registerOutput<String?>('targetBootDiagnosticsStorageAccountId');
-    this.targetNetworkId = registerOutput<String?>('targetNetworkId');
-    this.targetProximityPlacementGroupId = registerOutput<String?>('targetProximityPlacementGroupId');
-    this.targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
-    this.targetVmName = registerOutput<String>('targetVmName');
-    this.targetVmSize = registerOutput<String?>('targetVmSize');
-    this.targetZone = registerOutput<String?>('targetZone');
-    this.testNetworkId = registerOutput<String?>('testNetworkId');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    physicalServerCredentialName = registerOutput<String>(
+      'physicalServerCredentialName',
+    );
+    recoveryReplicationPolicyId = registerOutput<String>(
+      'recoveryReplicationPolicyId',
+    );
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    sourceVmName = registerOutput<String>('sourceVmName');
+    targetAvailabilitySetId = registerOutput<String?>(
+      'targetAvailabilitySetId',
+    );
+    targetBootDiagnosticsStorageAccountId = registerOutput<String?>(
+      'targetBootDiagnosticsStorageAccountId',
+    );
+    targetNetworkId = registerOutput<String?>('targetNetworkId');
+    targetProximityPlacementGroupId = registerOutput<String?>(
+      'targetProximityPlacementGroupId',
+    );
+    targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
+    targetVmName = registerOutput<String>('targetVmName');
+    targetVmSize = registerOutput<String?>('targetVmSize');
+    targetZone = registerOutput<String?>('targetZone');
+    testNetworkId = registerOutput<String?>('testNetworkId');
   }
 
   /// Gets an existing [VmwareReplicatedVm] resource's state with the given [name] and [id].
@@ -670,32 +707,50 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applianceName = registerOutput<String>('applianceName');
-    this.defaultLogStorageAccountId = registerOutput<String?>('defaultLogStorageAccountId');
-    this.defaultRecoveryDiskType = registerOutput<String?>('defaultRecoveryDiskType');
-    this.defaultTargetDiskEncryptionSetId = registerOutput<String?>('defaultTargetDiskEncryptionSetId');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.managedDisks = registerOutput<List<VmwareReplicatedVmManagedDisk>?>('managedDisks');
-    this.multiVmGroupName = registerOutput<String?>('multiVmGroupName');
+         'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applianceName = registerOutput<String>('applianceName');
+    defaultLogStorageAccountId = registerOutput<String?>(
+      'defaultLogStorageAccountId',
+    );
+    defaultRecoveryDiskType = registerOutput<String?>(
+      'defaultRecoveryDiskType',
+    );
+    defaultTargetDiskEncryptionSetId = registerOutput<String?>(
+      'defaultTargetDiskEncryptionSetId',
+    );
+    licenseType = registerOutput<String?>('licenseType');
+    managedDisks = registerOutput<List<Map<String, dynamic>>?>('managedDisks');
+    multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<VmwareReplicatedVmNetworkInterface>?>('networkInterfaces');
-    this.physicalServerCredentialName = registerOutput<String>('physicalServerCredentialName');
-    this.recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    this.sourceVmName = registerOutput<String>('sourceVmName');
-    this.targetAvailabilitySetId = registerOutput<String?>('targetAvailabilitySetId');
-    this.targetBootDiagnosticsStorageAccountId = registerOutput<String?>('targetBootDiagnosticsStorageAccountId');
-    this.targetNetworkId = registerOutput<String?>('targetNetworkId');
-    this.targetProximityPlacementGroupId = registerOutput<String?>('targetProximityPlacementGroupId');
-    this.targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
-    this.targetVmName = registerOutput<String>('targetVmName');
-    this.targetVmSize = registerOutput<String?>('targetVmSize');
-    this.targetZone = registerOutput<String?>('targetZone');
-    this.testNetworkId = registerOutput<String?>('testNetworkId');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    physicalServerCredentialName = registerOutput<String>(
+      'physicalServerCredentialName',
+    );
+    recoveryReplicationPolicyId = registerOutput<String>(
+      'recoveryReplicationPolicyId',
+    );
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    sourceVmName = registerOutput<String>('sourceVmName');
+    targetAvailabilitySetId = registerOutput<String?>(
+      'targetAvailabilitySetId',
+    );
+    targetBootDiagnosticsStorageAccountId = registerOutput<String?>(
+      'targetBootDiagnosticsStorageAccountId',
+    );
+    targetNetworkId = registerOutput<String?>('targetNetworkId');
+    targetProximityPlacementGroupId = registerOutput<String?>(
+      'targetProximityPlacementGroupId',
+    );
+    targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
+    targetVmName = registerOutput<String>('targetVmName');
+    targetVmSize = registerOutput<String?>('targetVmSize');
+    targetZone = registerOutput<String?>('targetZone');
+    testNetworkId = registerOutput<String?>('testNetworkId');
   }
 }

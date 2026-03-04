@@ -8,12 +8,17 @@ import 'mapper_connection_reference_response.dart';
 class DataMapperMappingResponse {
   /// This holds the user provided attribute mapping information.
   final pulumi.Input<MapperAttributeMappingsResponse>? attributeMappingInfo;
+
   /// The connection reference for the source connection.
-  final pulumi.Input<MapperConnectionReferenceResponse>? sourceConnectionReference;
+  final pulumi.Input<MapperConnectionReferenceResponse>?
+  sourceConnectionReference;
+
   /// This holds the source denormalization information used while joining multiple sources.
   final pulumi.Input<dynamic>? sourceDenormalizeInfo;
+
   /// Name of the source table
   final pulumi.Input<String>? sourceEntityName;
+
   /// Name of the target table
   final pulumi.Input<String>? targetEntityName;
 
@@ -33,8 +38,16 @@ class DataMapperMappingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeMappingInfo': ?pulumi.Input.mapOptionalInputValue<MapperAttributeMappingsResponse, Map<String, dynamic>>(attributeMappingInfo, (value) => value.toMap()),
-      'sourceConnectionReference': ?pulumi.Input.mapOptionalInputValue<MapperConnectionReferenceResponse, Map<String, dynamic>>(sourceConnectionReference, (value) => value.toMap()),
+      'attributeMappingInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            MapperAttributeMappingsResponse,
+            Map<String, dynamic>
+          >(attributeMappingInfo, (value) => value.toMap()),
+      'sourceConnectionReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            MapperConnectionReferenceResponse,
+            Map<String, dynamic>
+          >(sourceConnectionReference, (value) => value.toMap()),
       'sourceDenormalizeInfo': ?sourceDenormalizeInfo,
       'sourceEntityName': ?sourceEntityName,
       'targetEntityName': ?targetEntityName,
@@ -43,12 +56,39 @@ class DataMapperMappingResponse {
 
   factory DataMapperMappingResponse.fromMap(Map<String, dynamic> map) {
     return DataMapperMappingResponse(
-      attributeMappingInfo: map['attributeMappingInfo'] == null ? null : (MapperAttributeMappingsResponse.fromMap((map['attributeMappingInfo']! as Map).cast<String, dynamic>())).input(),
-      sourceConnectionReference: map['sourceConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['sourceConnectionReference']! as Map).cast<String, dynamic>())).input(),
-      sourceDenormalizeInfo: map['sourceDenormalizeInfo'] == null ? null : (map['sourceDenormalizeInfo']!).input(),
-      sourceEntityName: map['sourceEntityName'] == null ? null : (map['sourceEntityName']! as String).input(),
-      targetEntityName: map['targetEntityName'] == null ? null : (map['targetEntityName']! as String).input(),
+      attributeMappingInfo: (() {
+        final guardedValue = map['attributeMappingInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MapperAttributeMappingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceConnectionReference: (() {
+        final guardedValue = map['sourceConnectionReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MapperConnectionReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceDenormalizeInfo: (() {
+        final guardedValue = map['sourceDenormalizeInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      sourceEntityName: (() {
+        final guardedValue = map['sourceEntityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetEntityName: (() {
+        final guardedValue = map['targetEntityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

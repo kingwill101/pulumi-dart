@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkstationArgs {
   /// Optional. Client-specified annotations.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Optional. Human-readable name for this workstation.
   final pulumi.Input<String>? displayName;
+
   /// Optional. Environment variables passed to the workstation container's entrypoint.
   final pulumi.Input<Map<String, String>>? env;
+
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
+
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Identifier. Full name of this workstation.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> workstationClusterId;
   final pulumi.Input<String> workstationConfigId;
+
   /// Required. ID to use for the workstation.
   final pulumi.Input<String> workstationId;
 
@@ -70,18 +76,59 @@ class WorkstationArgs {
 
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workstationClusterId: (map['workstationClusterId'] as String).input(),
-      workstationConfigId: (map['workstationConfigId'] as String).input(),
-      workstationId: (map['workstationId'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      env: (() {
+        final guardedValue = map['env'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workstationClusterId: pulumi.Input.fromValue(
+        map['workstationClusterId'] as String,
+      ),
+      workstationConfigId: pulumi.Input.fromValue(
+        map['workstationConfigId'] as String,
+      ),
+      workstationId: pulumi.Input.fromValue(map['workstationId'] as String),
     );
   }
 }
-

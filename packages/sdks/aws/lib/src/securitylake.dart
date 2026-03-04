@@ -1,5 +1,3 @@
-library module_securitylake;
-
 export 'securitylake/aws_log_source.dart';
 export 'securitylake/aws_log_source_args.dart';
 export 'securitylake/aws_log_source_source.dart';

@@ -520,21 +520,29 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
   /// The CIDR you want to assign to the pool.
   late final pulumi.Output<String> cidr;
+
   /// The description for the allocation.
   late final pulumi.Output<String?> description;
+
   /// Exclude a particular CIDR range from being returned by the pool.
   late final pulumi.Output<List<String>?> disallowedCidrs;
   late final pulumi.Output<String> ipamPoolAllocationId;
+
   /// The ID of the pool to which you want to assign a CIDR.
   late final pulumi.Output<String> ipamPoolId;
+
   /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   late final pulumi.Output<int> netmaskLength;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the resource.
   late final pulumi.Output<String> resourceId;
+
   /// The owner of the resource.
   late final pulumi.Output<String> resourceOwner;
+
   /// The type of the resource.
   late final pulumi.Output<String> resourceType;
 
@@ -547,21 +555,21 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
     VpcIpamPoolCidrAllocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
-    this.ipamPoolAllocationId = registerOutput<String>('ipamPoolAllocationId');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.netmaskLength = registerOutput<int>('netmaskLength');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceOwner = registerOutput<String>('resourceOwner');
-    this.resourceType = registerOutput<String>('resourceType');
+         'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    ipamPoolAllocationId = registerOutput<String>('ipamPoolAllocationId');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    netmaskLength = registerOutput<int>('netmaskLength');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    resourceType = registerOutput<String>('resourceType');
   }
 
   /// Gets an existing [VpcIpamPoolCidrAllocation] resource's state with the given [name] and [id].
@@ -582,20 +590,20 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.description = registerOutput<String?>('description');
-    this.disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
-    this.ipamPoolAllocationId = registerOutput<String>('ipamPoolAllocationId');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.netmaskLength = registerOutput<int>('netmaskLength');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceOwner = registerOutput<String>('resourceOwner');
-    this.resourceType = registerOutput<String>('resourceType');
+         'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    ipamPoolAllocationId = registerOutput<String>('ipamPoolAllocationId');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    netmaskLength = registerOutput<int>('netmaskLength');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    resourceType = registerOutput<String>('resourceType');
   }
 }

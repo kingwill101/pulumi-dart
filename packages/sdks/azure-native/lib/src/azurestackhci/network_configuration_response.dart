@@ -10,20 +10,39 @@ class NetworkConfigurationResponse {
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [networkAdapters] List of network adapters.
-  NetworkConfigurationResponse({
-    this.networkAdapters,
-  });
+  NetworkConfigurationResponse({this.networkAdapters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkAdapters': ?pulumi.Input.mapOptionalInputValue<List<NetworkAdapterResponse>, List<Map<String, dynamic>>>(networkAdapters, (value) => pulumi.Input.encodeList<NetworkAdapterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkAdapters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkAdapterResponse>,
+            List<Map<String, dynamic>>
+          >(
+            networkAdapters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkAdapterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      networkAdapters: map['networkAdapters'] == null ? null : (pulumi.Input.decodeList<NetworkAdapterResponse>(map['networkAdapters']!, (value) => NetworkAdapterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAdapters: (() {
+        final guardedValue = map['networkAdapters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkAdapterResponse>(
+            guardedValue,
+            (value) => NetworkAdapterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

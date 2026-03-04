@@ -7,8 +7,10 @@ import 'hpascaling_policy_autoscaling_v2beta2.dart';
 class HPAScalingRulesAutoscalingV2beta2 {
   /// policies is a list of potential scaling polices which can be used during scaling. At least one policy must be specified, otherwise the HPAScalingRules will be discarded as invalid
   final pulumi.Input<List<HPAScalingPolicyAutoscalingV2beta2>>? policies;
+
   /// selectPolicy is used to specify which policy should be used. If not set, the default value MaxPolicySelect is used.
   final pulumi.Input<String>? selectPolicy;
+
   /// StabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: - For scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window is 300 seconds long).
   final pulumi.Input<int>? stabilizationWindowSeconds;
 
@@ -24,7 +26,18 @@ class HPAScalingRulesAutoscalingV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies': ?pulumi.Input.mapOptionalInputValue<List<HPAScalingPolicyAutoscalingV2beta2>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<HPAScalingPolicyAutoscalingV2beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HPAScalingPolicyAutoscalingV2beta2>,
+            List<Map<String, dynamic>>
+          >(
+            policies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HPAScalingPolicyAutoscalingV2beta2,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'selectPolicy': ?selectPolicy,
       'stabilizationWindowSeconds': ?stabilizationWindowSeconds,
     };
@@ -32,10 +45,28 @@ class HPAScalingRulesAutoscalingV2beta2 {
 
   factory HPAScalingRulesAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HPAScalingRulesAutoscalingV2beta2(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyAutoscalingV2beta2>(map['policies']!, (value) => HPAScalingPolicyAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy']! as String).input(),
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds']! as int).input(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HPAScalingPolicyAutoscalingV2beta2>(
+            guardedValue,
+            (value) => HPAScalingPolicyAutoscalingV2beta2.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      selectPolicy: (() {
+        final guardedValue = map['selectPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stabilizationWindowSeconds: (() {
+        final guardedValue = map['stabilizationWindowSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

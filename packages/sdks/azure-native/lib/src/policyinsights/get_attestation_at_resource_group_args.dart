@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttestationAtResourceGroupArgs {
   /// The name of the attestation.
   final pulumi.Input<String> attestationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetAttestationAtResourceGroupArgs {
 
   factory GetAttestationAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtResourceGroupArgs(
-      attestationName: (map['attestationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      attestationName: pulumi.Input.fromValue(map['attestationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAccessServiceAccountsArgs {
   /// Organization resource name
   final pulumi.Input<String> organizationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Search filters for the request
   final pulumi.Input<Map<String, String>>? searchFilters;
 
@@ -34,10 +36,19 @@ class ListAccessServiceAccountsArgs {
 
   factory ListAccessServiceAccountsArgs.fromMap(Map<String, dynamic> map) {
     return ListAccessServiceAccountsArgs(
-      organizationName: (map['organizationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      searchFilters: map['searchFilters'] == null ? null : ((map['searchFilters']! as Map).cast<String, String>()).input(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      searchFilters: (() {
+        final guardedValue = map['searchFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

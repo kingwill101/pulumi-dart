@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WatchlistUserInfoResponse {
   /// The email of the user.
   final pulumi.Input<String> email;
+
   /// The name of the user.
   final pulumi.Input<String> name;
+
   /// The object id of the user.
   final pulumi.Input<String>? objectId;
 
@@ -31,10 +33,13 @@ class WatchlistUserInfoResponse {
 
   factory WatchlistUserInfoResponse.fromMap(Map<String, dynamic> map) {
     return WatchlistUserInfoResponse(
-      email: (map['email'] as String).input(),
-      name: (map['name'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

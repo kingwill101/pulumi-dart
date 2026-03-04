@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
   /// The stage site identifier.
   final pulumi.Input<String> environmentName;
+
   /// Name of the function app registered with the static site build.
   final pulumi.Input<String> functionAppName;
+
   /// Name of the static site.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,16 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
     };
   }
 
-  factory GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs.fromMap(Map<String, dynamic> map) {
+  factory GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      functionAppName: (map['functionAppName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      functionAppName: pulumi.Input.fromValue(map['functionAppName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

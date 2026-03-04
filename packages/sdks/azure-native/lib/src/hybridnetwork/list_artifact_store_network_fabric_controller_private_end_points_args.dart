@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs {
   /// The name of the artifact store.
   final pulumi.Input<String> artifactStoreName;
+
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs {
     };
   }
 
-  factory ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs(
-      artifactStoreName: (map['artifactStoreName'] as String).input(),
-      publisherName: (map['publisherName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      artifactStoreName: pulumi.Input.fromValue(
+        map['artifactStoreName'] as String,
+      ),
+      publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

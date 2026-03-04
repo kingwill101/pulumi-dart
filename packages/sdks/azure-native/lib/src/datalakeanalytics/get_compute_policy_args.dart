@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetComputePolicyArgs {
   /// The name of the Data Lake Analytics account.
   final pulumi.Input<String> accountName;
+
   /// The name of the compute policy to retrieve.
   final pulumi.Input<String> computePolicyName;
+
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetComputePolicyArgs {
 
   factory GetComputePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetComputePolicyArgs(
-      accountName: (map['accountName'] as String).input(),
-      computePolicyName: (map['computePolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      computePolicyName: pulumi.Input.fromValue(
+        map['computePolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

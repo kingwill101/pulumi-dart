@@ -3,16 +3,15 @@ enum FirewallPolicyVpcNetworkScope {
   globalVpcNetwork("GLOBAL_VPC_NETWORK"),
   regionalVpcNetwork("REGIONAL_VPC_NETWORK");
 
-  const FirewallPolicyVpcNetworkScope(this.value);
-  final String value;
+  const FirewallPolicyVpcNetworkScope(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyVpcNetworkScope fromValue(String value) {
     for (final item in FirewallPolicyVpcNetworkScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallPolicyVpcNetworkScope value: $value');
   }
 }
-

@@ -168,15 +168,21 @@ import 'nsp_logging_configuration_properties_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:network:NetworkSecurityPerimeterLoggingConfiguration instance /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}
 /// ```
-class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomResource {
+class NetworkSecurityPerimeterLoggingConfiguration
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Properties of the NSP logging configuration.
-  late final pulumi.Output<NspLoggingConfigurationPropertiesResponse> properties;
+  late final pulumi.Output<NspLoggingConfigurationPropertiesResponse>
+  properties;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -189,15 +195,17 @@ class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomResource
     NetworkSecurityPerimeterLoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkSecurityPerimeterLoggingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:NetworkSecurityPerimeterLoggingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<NspLoggingConfigurationPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<NspLoggingConfigurationPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

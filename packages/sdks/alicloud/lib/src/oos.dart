@@ -1,5 +1,3 @@
-library module_oos;
-
 export 'oos/application.dart';
 export 'oos/application_args.dart';
 export 'oos/application_group.dart';

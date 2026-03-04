@@ -361,7 +361,7 @@ import 'spaces_bucket_policy_state.dart';
 /// ```
 ///
 ///
-/// !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
+/// !&gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 ///
 /// ## Import
 ///
@@ -373,8 +373,10 @@ import 'spaces_bucket_policy_state.dart';
 class SpacesBucketPolicy extends pulumi.CustomResource {
   /// The name of the bucket to which to apply the policy.
   late final pulumi.Output<String> bucket;
+
   /// The text of the policy.
   late final pulumi.Output<String> policy;
+
   /// The region where the bucket resides.
   late final pulumi.Output<String> region;
 
@@ -387,14 +389,14 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     SpacesBucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [SpacesBucketPolicy] resource's state with the given [name] and [id].
@@ -415,13 +417,13 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

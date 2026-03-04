@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterTrAssociationArgs {
   /// List of allowed route prefixes.
   final pulumi.Input<List<String>>? allowedPrefixes;
+
   /// The region to which the VPC or TR belongs.
   final pulumi.Input<String> associationRegionId;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// The ID of the leased line gateway instance.
   final pulumi.Input<String> ecrId;
+
   /// The ID of the forwarding router instance.
   final pulumi.Input<String>? transitRouterId;
+
   /// The ID of the Alibaba Cloud account to which the forwarding router belongs.
   final pulumi.Input<int>? transitRouterOwnerId;
 
@@ -49,13 +54,30 @@ class RouterTrAssociationArgs {
 
   factory RouterTrAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouterTrAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
-      associationRegionId: (map['associationRegionId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      ecrId: (map['ecrId'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
-      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId']! as int).input(),
+      allowedPrefixes: (() {
+        final guardedValue = map['allowedPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      associationRegionId: pulumi.Input.fromValue(
+        map['associationRegionId'] as String,
+      ),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecrId: pulumi.Input.fromValue(map['ecrId'] as String),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterOwnerId: (() {
+        final guardedValue = map['transitRouterOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

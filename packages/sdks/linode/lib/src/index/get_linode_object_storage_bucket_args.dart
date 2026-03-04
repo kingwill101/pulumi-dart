@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinodeObjectStorageBucketArgs {
   /// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
   final pulumi.Input<String>? cluster;
+
   /// The name of this bucket.
   final pulumi.Input<String> label;
+
   /// The ID of the region this bucket is in. Required if `cluster` is not configured.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,17 @@ class GetLinodeObjectStorageBucketArgs {
 
   factory GetLinodeObjectStorageBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetLinodeObjectStorageBucketArgs(
-      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
-      label: (map['label'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum NetworkInterfaceMigrationPhase {
   valueAbort("Abort"),
   valueCommitted("Committed");
 
-  const NetworkInterfaceMigrationPhase(this.value);
-  final String value;
+  const NetworkInterfaceMigrationPhase(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceMigrationPhase fromValue(String value) {
     for (final item in NetworkInterfaceMigrationPhase.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkInterfaceMigrationPhase value: $value');
   }
 }
-

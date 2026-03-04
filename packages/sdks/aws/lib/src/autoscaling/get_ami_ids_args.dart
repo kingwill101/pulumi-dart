@@ -10,8 +10,10 @@ import 'get_ami_ids_filter.dart';
 class GetAmiIdsArgs {
   /// Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
   final pulumi.Input<List<GetAmiIdsFilter>>? filters;
+
   /// List of autoscaling group names
   final pulumi.Input<List<String>>? names;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,15 +21,22 @@ class GetAmiIdsArgs {
   /// [filters] Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
   /// [names] List of autoscaling group names
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAmiIdsArgs({
-    this.filters,
-    this.names,
-    this.region,
-  });
+  GetAmiIdsArgs({this.filters, this.names, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetAmiIdsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetAmiIdsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'names': ?names,
       'region': ?region,
     };
@@ -35,10 +44,27 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters']!, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      names: map['names'] == null ? null : (((map['names'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetAmiIdsFilter>(
+            guardedValue,
+            (value) =>
+                GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      names: (() {
+        final guardedValue = map['names'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

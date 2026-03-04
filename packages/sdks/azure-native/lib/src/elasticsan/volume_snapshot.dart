@@ -299,18 +299,25 @@ import 'volume_snapshot_args.dart';
 class VolumeSnapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Data used when creating a volume snapshot.
   late final pulumi.Output<SnapshotCreationDataResponse> creationData;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Size of Source Volume
   late final pulumi.Output<double> sourceVolumeSizeGiB;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Source Volume Name of a snapshot
   late final pulumi.Output<String> volumeName;
 
@@ -323,18 +330,18 @@ class VolumeSnapshot extends pulumi.CustomResource {
     VolumeSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:elasticsan:VolumeSnapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationData = registerOutput<SnapshotCreationDataResponse>('creationData');
+         'azure-native:elasticsan:VolumeSnapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationData = registerOutput<SnapshotCreationDataResponse>('creationData');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceVolumeSizeGiB = registerOutput<double>('sourceVolumeSizeGiB');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.volumeName = registerOutput<String>('volumeName');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceVolumeSizeGiB = registerOutput<double>('sourceVolumeSizeGiB');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    volumeName = registerOutput<String>('volumeName');
   }
 }

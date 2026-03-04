@@ -6,10 +6,13 @@ import 'contact_profile_link_channel.dart';
 class ContactProfileLink {
   /// A list of contact profile link channels. A `channels` block as defined below.
   final pulumi.Input<List<ContactProfileLinkChannel>> channels;
+
   /// Direction of the link. Possible values are `Uplink` and `Downlink`.
   final pulumi.Input<String> direction;
+
   /// Name of the link.
   final pulumi.Input<String> name;
+
   /// Polarization of the link. Possible values are `LHCP`, `RHCP`, `linearVertical` and `linearHorizontal`.
   final pulumi.Input<String> polarization;
 
@@ -27,7 +30,18 @@ class ContactProfileLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.mapInputValue<List<ContactProfileLinkChannel>, List<Map<String, dynamic>>>(channels, (value) => pulumi.Input.encodeList<ContactProfileLinkChannel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'channels':
+          pulumi.Input.mapInputValue<
+            List<ContactProfileLinkChannel>,
+            List<Map<String, dynamic>>
+          >(
+            channels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContactProfileLinkChannel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'direction': direction,
       'name': name,
       'polarization': polarization,
@@ -36,11 +50,17 @@ class ContactProfileLink {
 
   factory ContactProfileLink.fromMap(Map<String, dynamic> map) {
     return ContactProfileLink(
-      channels: (pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      direction: (map['direction'] as String).input(),
-      name: (map['name'] as String).input(),
-      polarization: (map['polarization'] as String).input(),
+      channels: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ContactProfileLinkChannel>(
+          map['channels']!,
+          (value) => ContactProfileLinkChannel.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      polarization: pulumi.Input.fromValue(map['polarization'] as String),
     );
   }
 }
-

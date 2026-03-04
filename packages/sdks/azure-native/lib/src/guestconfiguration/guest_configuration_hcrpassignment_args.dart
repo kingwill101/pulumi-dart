@@ -10,14 +10,19 @@ import 'guest_configuration_assignment_properties.dart';
 class GuestConfigurationHCRPAssignmentArgs {
   /// The guest configuration assignment name.
   final pulumi.Input<String>? guestConfigurationAssignmentName;
+
   /// Region where the VM is located.
   final pulumi.Input<String>? location;
+
   /// The name of the ARC machine.
   final pulumi.Input<String> machineName;
+
   /// The guest configuration assignment name.
   final pulumi.Input<String> name;
+
   /// Properties of the Guest configuration assignment.
   final pulumi.Input<GuestConfigurationAssignmentProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,20 +48,43 @@ class GuestConfigurationHCRPAssignmentArgs {
       'location': ?location,
       'machineName': machineName,
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<GuestConfigurationAssignmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            GuestConfigurationAssignmentProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory GuestConfigurationHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory GuestConfigurationHCRPAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuestConfigurationHCRPAssignmentArgs(
-      guestConfigurationAssignmentName: map['guestConfigurationAssignmentName'] == null ? null : (map['guestConfigurationAssignmentName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      machineName: (map['machineName'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (GuestConfigurationAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      guestConfigurationAssignmentName: (() {
+        final guardedValue = map['guestConfigurationAssignmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GuestConfigurationAssignmentProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -7,29 +7,41 @@ import 'managed_identity_reference.dart';
 class AzureDataExplorerConnectionProperties {
   /// The name of the Azure Data Explorer database.
   final pulumi.Input<String> adxDatabaseName;
+
   /// The URI of the Azure Data Explorer endpoint.
   final pulumi.Input<String> adxEndpointUri;
+
   /// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
   final pulumi.Input<String>? adxRelationshipLifecycleEventsTableName;
+
   /// The resource ID of the Azure Data Explorer cluster.
   final pulumi.Input<String> adxResourceId;
+
   /// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
   final pulumi.Input<String>? adxTableName;
+
   /// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
   final pulumi.Input<String>? adxTwinLifecycleEventsTableName;
+
   /// The type of time series connection resource.
   /// Expected value is 'AzureDataExplorer'.
   final pulumi.Input<String> connectionType;
+
   /// The EventHub consumer group to use when ADX reads from EventHub. Defaults to $Default.
   final pulumi.Input<String>? eventHubConsumerGroup;
+
   /// The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
   final pulumi.Input<String> eventHubEndpointUri;
+
   /// The EventHub name in the EventHub namespace for identity-based authentication.
   final pulumi.Input<String> eventHubEntityPath;
+
   /// The resource ID of the EventHub namespace.
   final pulumi.Input<String> eventHubNamespaceResourceId;
+
   /// Managed identity properties for the time series database connection resource.
   final pulumi.Input<ManagedIdentityReference>? identity;
+
   /// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
   final pulumi.Input<String>? recordPropertyAndItemRemovals;
 
@@ -67,7 +79,8 @@ class AzureDataExplorerConnectionProperties {
     return <String, dynamic>{
       'adxDatabaseName': adxDatabaseName,
       'adxEndpointUri': adxEndpointUri,
-      'adxRelationshipLifecycleEventsTableName': ?adxRelationshipLifecycleEventsTableName,
+      'adxRelationshipLifecycleEventsTableName':
+          ?adxRelationshipLifecycleEventsTableName,
       'adxResourceId': adxResourceId,
       'adxTableName': ?adxTableName,
       'adxTwinLifecycleEventsTableName': ?adxTwinLifecycleEventsTableName,
@@ -76,27 +89,66 @@ class AzureDataExplorerConnectionProperties {
       'eventHubEndpointUri': eventHubEndpointUri,
       'eventHubEntityPath': eventHubEntityPath,
       'eventHubNamespaceResourceId': eventHubNamespaceResourceId,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityReference, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedIdentityReference,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'recordPropertyAndItemRemovals': ?recordPropertyAndItemRemovals,
     };
   }
 
-  factory AzureDataExplorerConnectionProperties.fromMap(Map<String, dynamic> map) {
+  factory AzureDataExplorerConnectionProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureDataExplorerConnectionProperties(
-      adxDatabaseName: (map['adxDatabaseName'] as String).input(),
-      adxEndpointUri: (map['adxEndpointUri'] as String).input(),
-      adxRelationshipLifecycleEventsTableName: map['adxRelationshipLifecycleEventsTableName'] == null ? null : (map['adxRelationshipLifecycleEventsTableName']! as String).input(),
-      adxResourceId: (map['adxResourceId'] as String).input(),
-      adxTableName: map['adxTableName'] == null ? null : (map['adxTableName']! as String).input(),
-      adxTwinLifecycleEventsTableName: map['adxTwinLifecycleEventsTableName'] == null ? null : (map['adxTwinLifecycleEventsTableName']! as String).input(),
-      connectionType: (map['connectionType'] as String).input(),
-      eventHubConsumerGroup: map['eventHubConsumerGroup'] == null ? null : (map['eventHubConsumerGroup']! as String).input(),
-      eventHubEndpointUri: (map['eventHubEndpointUri'] as String).input(),
-      eventHubEntityPath: (map['eventHubEntityPath'] as String).input(),
-      eventHubNamespaceResourceId: (map['eventHubNamespaceResourceId'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      recordPropertyAndItemRemovals: map['recordPropertyAndItemRemovals'] == null ? null : (map['recordPropertyAndItemRemovals']! as String).input(),
+      adxDatabaseName: pulumi.Input.fromValue(map['adxDatabaseName'] as String),
+      adxEndpointUri: pulumi.Input.fromValue(map['adxEndpointUri'] as String),
+      adxRelationshipLifecycleEventsTableName: (() {
+        final guardedValue = map['adxRelationshipLifecycleEventsTableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adxResourceId: pulumi.Input.fromValue(map['adxResourceId'] as String),
+      adxTableName: (() {
+        final guardedValue = map['adxTableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adxTwinLifecycleEventsTableName: (() {
+        final guardedValue = map['adxTwinLifecycleEventsTableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
+      eventHubConsumerGroup: (() {
+        final guardedValue = map['eventHubConsumerGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventHubEndpointUri: pulumi.Input.fromValue(
+        map['eventHubEndpointUri'] as String,
+      ),
+      eventHubEntityPath: pulumi.Input.fromValue(
+        map['eventHubEntityPath'] as String,
+      ),
+      eventHubNamespaceResourceId: pulumi.Input.fromValue(
+        map['eventHubNamespaceResourceId'] as String,
+      ),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedIdentityReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recordPropertyAndItemRemovals: (() {
+        final guardedValue = map['recordPropertyAndItemRemovals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

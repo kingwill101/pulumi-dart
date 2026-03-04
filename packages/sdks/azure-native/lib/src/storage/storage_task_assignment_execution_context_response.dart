@@ -8,6 +8,7 @@ import 'execution_trigger_response.dart';
 class StorageTaskAssignmentExecutionContextResponse {
   /// Execution target of the storage task assignment
   final pulumi.Input<ExecutionTargetResponse>? target;
+
   /// Execution trigger of the storage task assignment
   final pulumi.Input<ExecutionTriggerResponse> trigger;
 
@@ -21,16 +22,37 @@ class StorageTaskAssignmentExecutionContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'target': ?pulumi.Input.mapOptionalInputValue<ExecutionTargetResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
-      'trigger': pulumi.Input.mapInputValue<ExecutionTriggerResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionTargetResponse,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
+      'trigger':
+          pulumi.Input.mapInputValue<
+            ExecutionTriggerResponse,
+            Map<String, dynamic>
+          >(trigger, (value) => value.toMap()),
     };
   }
 
-  factory StorageTaskAssignmentExecutionContextResponse.fromMap(Map<String, dynamic> map) {
+  factory StorageTaskAssignmentExecutionContextResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageTaskAssignmentExecutionContextResponse(
-      target: map['target'] == null ? null : (ExecutionTargetResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
-      trigger: (ExecutionTriggerResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionTargetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trigger: pulumi.Input.fromValue(
+        ExecutionTriggerResponse.fromMap(
+          (map['trigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

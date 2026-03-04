@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsOrganizationalDataMasterResponse {
   /// If the multi cloud account is of membership type organization, list of accounts excluded from offering
   final pulumi.Input<List<String>>? excludedAccountIds;
+
   /// The multi cloud account's membership type in the organization
   /// Expected value is 'Organization'.
   final pulumi.Input<String> organizationMembershipType;
+
   /// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
   final pulumi.Input<String>? stacksetName;
 
@@ -30,12 +32,23 @@ class AwsOrganizationalDataMasterResponse {
     };
   }
 
-  factory AwsOrganizationalDataMasterResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsOrganizationalDataMasterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsOrganizationalDataMasterResponse(
-      excludedAccountIds: map['excludedAccountIds'] == null ? null : ((map['excludedAccountIds']! as List).cast<String>()).input(),
-      organizationMembershipType: (map['organizationMembershipType'] as String).input(),
-      stacksetName: map['stacksetName'] == null ? null : (map['stacksetName']! as String).input(),
+      excludedAccountIds: (() {
+        final guardedValue = map['excludedAccountIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      organizationMembershipType: pulumi.Input.fromValue(
+        map['organizationMembershipType'] as String,
+      ),
+      stacksetName: (() {
+        final guardedValue = map['stacksetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

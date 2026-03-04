@@ -3,16 +3,15 @@ enum RoleDefinitionType {
   valueBuiltInRole("BuiltInRole"),
   valueCustomRole("CustomRole");
 
-  const RoleDefinitionType(this.value);
-  final String value;
+  const RoleDefinitionType(this.wireValue);
+  final String wireValue;
 
   static RoleDefinitionType fromValue(String value) {
     for (final item in RoleDefinitionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoleDefinitionType value: $value');
   }
 }
-

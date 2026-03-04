@@ -33,13 +33,20 @@ class GetScopeRbacRoleBindingGkehubV1betaArgs {
     };
   }
 
-  factory GetScopeRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetScopeRbacRoleBindingGkehubV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScopeRbacRoleBindingGkehubV1betaArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rbacrolebindingId: pulumi.Input.fromValue(
+        map['rbacrolebindingId'] as String,
+      ),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
-

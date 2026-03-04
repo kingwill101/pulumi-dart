@@ -3,16 +3,15 @@ enum DefenderForServers {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const DefenderForServers(this.value);
-  final String value;
+  const DefenderForServers(this.wireValue);
+  final String wireValue;
 
   static DefenderForServers fromValue(String value) {
     for (final item in DefenderForServers.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefenderForServers value: $value');
   }
 }
-

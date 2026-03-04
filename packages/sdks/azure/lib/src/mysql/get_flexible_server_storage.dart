@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerStorage {
   /// Is Storage Auto Grow enabled?
   final pulumi.Input<bool> autoGrowEnabled;
+
   /// Should IOPS be scaled automatically?
   final pulumi.Input<bool> ioScalingEnabled;
+
   /// The storage IOPS of the MySQL Flexible Server.
   final pulumi.Input<int> iops;
+
   /// The max storage allowed for the MySQL Flexible Server.
   final pulumi.Input<int> sizeGb;
 
@@ -35,11 +38,10 @@ class GetFlexibleServerStorage {
 
   factory GetFlexibleServerStorage.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerStorage(
-      autoGrowEnabled: (map['autoGrowEnabled'] as bool).input(),
-      ioScalingEnabled: (map['ioScalingEnabled'] as bool).input(),
-      iops: (map['iops'] as int).input(),
-      sizeGb: (map['sizeGb'] as int).input(),
+      autoGrowEnabled: pulumi.Input.fromValue(map['autoGrowEnabled'] as bool),
+      ioScalingEnabled: pulumi.Input.fromValue(map['ioScalingEnabled'] as bool),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
     );
   }
 }
-

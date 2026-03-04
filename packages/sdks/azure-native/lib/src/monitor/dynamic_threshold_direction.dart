@@ -4,16 +4,15 @@ enum DynamicThresholdDirection {
   greaterThan("GreaterThan"),
   greaterOrLowerThan("GreaterOrLowerThan");
 
-  const DynamicThresholdDirection(this.value);
-  final String value;
+  const DynamicThresholdDirection(this.wireValue);
+  final String wireValue;
 
   static DynamicThresholdDirection fromValue(String value) {
     for (final item in DynamicThresholdDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicThresholdDirection value: $value');
   }
 }
-

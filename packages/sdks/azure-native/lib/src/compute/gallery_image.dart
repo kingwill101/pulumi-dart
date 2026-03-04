@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disallowed_response.dart';
 import 'gallery_image_args.dart';
-import 'gallery_image_feature_response.dart';
 import 'gallery_image_identifier_response.dart';
 import 'image_purchase_plan_response.dart';
 import 'recommended_machine_configuration_response.dart';
@@ -195,46 +194,68 @@ import 'system_data_response.dart';
 class GalleryImage extends pulumi.CustomResource {
   /// Optional. Must be set to true if the gallery image features are being updated.
   late final pulumi.Output<bool?> allowUpdateImage;
+
   /// The architecture of the image. Applicable to OS disks only.
   late final pulumi.Output<String?> architecture;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of this gallery image definition resource. This property is updatable.
   late final pulumi.Output<String?> description;
+
   /// Describes the disallowed disk types.
   late final pulumi.Output<DisallowedResponse?> disallowed;
+
   /// The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
   late final pulumi.Output<String?> endOfLifeDate;
+
   /// The Eula agreement for the gallery image definition.
   late final pulumi.Output<String?> eula;
+
   /// A list of gallery image features.
-  late final pulumi.Output<List<GalleryImageFeatureResponse>?> features;
+  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   late final pulumi.Output<String?> hyperVGeneration;
+
   /// This is the gallery image definition identifier.
   late final pulumi.Output<GalleryImageIdentifierResponse> identifier;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
   late final pulumi.Output<String> osState;
+
   /// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
   late final pulumi.Output<String> osType;
+
   /// The privacy statement uri.
   late final pulumi.Output<String?> privacyStatementUri;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Describes the gallery image definition purchase plan. This is used by marketplace images.
   late final pulumi.Output<ImagePurchasePlanResponse?> purchasePlan;
+
   /// The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
-  late final pulumi.Output<RecommendedMachineConfigurationResponse?> recommended;
+  late final pulumi.Output<RecommendedMachineConfigurationResponse?>
+  recommended;
+
   /// The release note uri.
   late final pulumi.Output<String?> releaseNoteUri;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,32 +268,34 @@ class GalleryImage extends pulumi.CustomResource {
     GalleryImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:GalleryImage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowUpdateImage = registerOutput<bool?>('allowUpdateImage');
-    this.architecture = registerOutput<String?>('architecture');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.disallowed = registerOutput<DisallowedResponse?>('disallowed');
-    this.endOfLifeDate = registerOutput<String?>('endOfLifeDate');
-    this.eula = registerOutput<String?>('eula');
-    this.features = registerOutput<List<GalleryImageFeatureResponse>?>('features');
-    this.hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    this.identifier = registerOutput<GalleryImageIdentifierResponse>('identifier');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:GalleryImage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowUpdateImage = registerOutput<bool?>('allowUpdateImage');
+    architecture = registerOutput<String?>('architecture');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    disallowed = registerOutput<DisallowedResponse?>('disallowed');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    identifier = registerOutput<GalleryImageIdentifierResponse>('identifier');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osState = registerOutput<String>('osState');
-    this.osType = registerOutput<String>('osType');
-    this.privacyStatementUri = registerOutput<String?>('privacyStatementUri');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.purchasePlan = registerOutput<ImagePurchasePlanResponse?>('purchasePlan');
-    this.recommended = registerOutput<RecommendedMachineConfigurationResponse?>('recommended');
-    this.releaseNoteUri = registerOutput<String?>('releaseNoteUri');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    osState = registerOutput<String>('osState');
+    osType = registerOutput<String>('osType');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    provisioningState = registerOutput<String>('provisioningState');
+    purchasePlan = registerOutput<ImagePurchasePlanResponse?>('purchasePlan');
+    recommended = registerOutput<RecommendedMachineConfigurationResponse?>(
+      'recommended',
+    );
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

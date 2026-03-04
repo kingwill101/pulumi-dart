@@ -31,10 +31,15 @@ class GetProvisioningConfigArgs {
 
   factory GetProvisioningConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetProvisioningConfigArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      provisioningConfigId: (map['provisioningConfigId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningConfigId: pulumi.Input.fromValue(
+        map['provisioningConfigId'] as String,
+      ),
     );
   }
 }
-

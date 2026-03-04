@@ -9,20 +9,19 @@ class DisplayDevice {
 
   /// Creates a new [DisplayDevice].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDevice({
-    this.enableDisplay,
-  });
+  DisplayDevice({this.enableDisplay});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableDisplay': ?enableDisplay,
-    };
+    return <String, dynamic>{'enableDisplay': ?enableDisplay};
   }
 
   factory DisplayDevice.fromMap(Map<String, dynamic> map) {
     return DisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay']! as bool).input(),
+      enableDisplay: (() {
+        final guardedValue = map['enableDisplay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_profile_args.dart';
-import 'contact_profile_link.dart';
 import 'contact_profile_state.dart';
 
 /// Manages a Contact profile.
 ///
-/// > **Note:** The `azure.orbital.ContactProfile` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
+/// &gt; **Note:** The `azure.orbital.ContactProfile` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
 ///
 /// ## Example Usage
 ///
@@ -456,7 +455,7 @@ import 'contact_profile_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Orbital` - 2022-11-01
@@ -471,22 +470,31 @@ import 'contact_profile_state.dart';
 class ContactProfile extends pulumi.CustomResource {
   /// Auto-tracking configurations for a spacecraft. Possible values are `disabled`, `xBand` and `sBand`.
   late final pulumi.Output<String> autoTracking;
+
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
   late final pulumi.Output<String?> eventHubUri;
+
   /// A list of spacecraft links. A `links` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<ContactProfileLink>> links;
+  late final pulumi.Output<List<Map<String, dynamic>>> links;
+
   /// The location where the contact profile exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Maximum elevation of the antenna during the contact in decimal degrees.
   late final pulumi.Output<double?> minimumElevationDegrees;
+
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
   late final pulumi.Output<String> minimumVariableContactDuration;
+
   /// The name of the contact profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkConfigurationSubnetId;
+
   /// The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -499,21 +507,27 @@ class ContactProfile extends pulumi.CustomResource {
     ContactProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/contactProfile:ContactProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoTracking = registerOutput<String>('autoTracking');
-    this.eventHubUri = registerOutput<String?>('eventHubUri');
-    this.links = registerOutput<List<ContactProfileLink>>('links');
-    this.location = registerOutput<String>('location');
-    this.minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
-    this.minimumVariableContactDuration = registerOutput<String>('minimumVariableContactDuration');
+         'azure:orbital/contactProfile:ContactProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoTracking = registerOutput<String>('autoTracking');
+    eventHubUri = registerOutput<String?>('eventHubUri');
+    links = registerOutput<List<Map<String, dynamic>>>('links');
+    location = registerOutput<String>('location');
+    minimumElevationDegrees = registerOutput<double?>(
+      'minimumElevationDegrees',
+    );
+    minimumVariableContactDuration = registerOutput<String>(
+      'minimumVariableContactDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.networkConfigurationSubnetId = registerOutput<String>('networkConfigurationSubnetId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkConfigurationSubnetId = registerOutput<String>(
+      'networkConfigurationSubnetId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ContactProfile] resource's state with the given [name] and [id].
@@ -534,20 +548,26 @@ class ContactProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/contactProfile:ContactProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoTracking = registerOutput<String>('autoTracking');
-    this.eventHubUri = registerOutput<String?>('eventHubUri');
-    this.links = registerOutput<List<ContactProfileLink>>('links');
-    this.location = registerOutput<String>('location');
-    this.minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
-    this.minimumVariableContactDuration = registerOutput<String>('minimumVariableContactDuration');
+         'azure:orbital/contactProfile:ContactProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoTracking = registerOutput<String>('autoTracking');
+    eventHubUri = registerOutput<String?>('eventHubUri');
+    links = registerOutput<List<Map<String, dynamic>>>('links');
+    location = registerOutput<String>('location');
+    minimumElevationDegrees = registerOutput<double?>(
+      'minimumElevationDegrees',
+    );
+    minimumVariableContactDuration = registerOutput<String>(
+      'minimumVariableContactDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.networkConfigurationSubnetId = registerOutput<String>('networkConfigurationSubnetId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkConfigurationSubnetId = registerOutput<String>(
+      'networkConfigurationSubnetId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

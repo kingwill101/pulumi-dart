@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoresAliasesSelfSignedCertSubject {
   /// Common name of the organization. Maximum length is 64 characters.
   final pulumi.Input<String>? commonName;
+
   /// Two-letter country code. Example, IN for India, US for United States of America.
   final pulumi.Input<String>? countryCode;
+
   /// Email address. Max 255 characters.
   final pulumi.Input<String>? email;
+
   /// City or town name. Maximum length is 128 characters.
   final pulumi.Input<String>? locality;
+
   /// Organization name. Maximum length is 64 characters.
   final pulumi.Input<String>? org;
+
   /// Organization team name. Maximum length is 64 characters.
   final pulumi.Input<String>? orgUnit;
+
   /// State or district name. Maximum length is 128 characters.
   final pulumi.Input<String>? state;
 
@@ -48,16 +54,45 @@ class KeystoresAliasesSelfSignedCertSubject {
     };
   }
 
-  factory KeystoresAliasesSelfSignedCertSubject.fromMap(Map<String, dynamic> map) {
+  factory KeystoresAliasesSelfSignedCertSubject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KeystoresAliasesSelfSignedCertSubject(
-      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      locality: map['locality'] == null ? null : (map['locality']! as String).input(),
-      org: map['org'] == null ? null : (map['org']! as String).input(),
-      orgUnit: map['orgUnit'] == null ? null : (map['orgUnit']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      commonName: (() {
+        final guardedValue = map['commonName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryCode: (() {
+        final guardedValue = map['countryCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locality: (() {
+        final guardedValue = map['locality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      org: (() {
+        final guardedValue = map['org'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgUnit: (() {
+        final guardedValue = map['orgUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

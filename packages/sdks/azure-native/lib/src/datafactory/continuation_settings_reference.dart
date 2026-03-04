@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContinuationSettingsReference {
   /// Continuation TTL in minutes.
   final pulumi.Input<dynamic>? continuationTtlInMinutes;
+
   /// Customized checkpoint key.
   final pulumi.Input<dynamic>? customizedCheckpointKey;
+
   /// Idle condition.
   final pulumi.Input<dynamic>? idleCondition;
 
@@ -31,10 +33,21 @@ class ContinuationSettingsReference {
 
   factory ContinuationSettingsReference.fromMap(Map<String, dynamic> map) {
     return ContinuationSettingsReference(
-      continuationTtlInMinutes: map['continuationTtlInMinutes'] == null ? null : (map['continuationTtlInMinutes']!).input(),
-      customizedCheckpointKey: map['customizedCheckpointKey'] == null ? null : (map['customizedCheckpointKey']!).input(),
-      idleCondition: map['idleCondition'] == null ? null : (map['idleCondition']!).input(),
+      continuationTtlInMinutes: (() {
+        final guardedValue = map['continuationTtlInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      customizedCheckpointKey: (() {
+        final guardedValue = map['customizedCheckpointKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      idleCondition: (() {
+        final guardedValue = map['idleCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

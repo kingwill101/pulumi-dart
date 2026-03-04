@@ -4,16 +4,17 @@ enum RegionCommitmentCategoryComputeBeta {
   license("LICENSE"),
   machine("MACHINE");
 
-  const RegionCommitmentCategoryComputeBeta(this.value);
-  final String value;
+  const RegionCommitmentCategoryComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionCommitmentCategoryComputeBeta fromValue(String value) {
     for (final item in RegionCommitmentCategoryComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionCommitmentCategoryComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionCommitmentCategoryComputeBeta value: $value',
+    );
   }
 }
-

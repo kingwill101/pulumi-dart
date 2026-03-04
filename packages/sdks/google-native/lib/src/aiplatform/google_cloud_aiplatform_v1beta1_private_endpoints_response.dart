@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1PrivateEndpointsResponse {
   /// Http(s) path to send explain requests.
   final pulumi.Input<String> explainHttpUri;
+
   /// Http(s) path to send health check requests.
   final pulumi.Input<String> healthHttpUri;
+
   /// Http(s) path to send prediction requests.
   final pulumi.Input<String> predictHttpUri;
+
   /// The name of the service attachment resource. Populated if private service connect is enabled.
   final pulumi.Input<String> serviceAttachment;
 
@@ -34,13 +37,16 @@ class GoogleCloudAiplatformV1beta1PrivateEndpointsResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1PrivateEndpointsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PrivateEndpointsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1PrivateEndpointsResponse(
-      explainHttpUri: (map['explainHttpUri'] as String).input(),
-      healthHttpUri: (map['healthHttpUri'] as String).input(),
-      predictHttpUri: (map['predictHttpUri'] as String).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      explainHttpUri: pulumi.Input.fromValue(map['explainHttpUri'] as String),
+      healthHttpUri: pulumi.Input.fromValue(map['healthHttpUri'] as String),
+      predictHttpUri: pulumi.Input.fromValue(map['predictHttpUri'] as String),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

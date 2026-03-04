@@ -6,12 +6,17 @@ import 'connection_auth_config_oauth2_auth_code_flow_client_secret.dart';
 class ConnectionAuthConfigOauth2AuthCodeFlow {
   /// Auth URL for Authorization Code Flow.
   final pulumi.Input<String>? authUri;
+
   /// Client ID for user-provided OAuth app.
   final pulumi.Input<String>? clientId;
+
   /// Client secret for user-provided OAuth app.
-  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlowClientSecret>? clientSecret;
+  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlowClientSecret>?
+  clientSecret;
+
   /// Whether to enable PKCE when the user performs the auth code flow.
   final pulumi.Input<bool>? enablePkce;
+
   /// Scopes the connection will request when the user performs the auth code flow.
   final pulumi.Input<List<String>>? scopes;
 
@@ -33,20 +38,49 @@ class ConnectionAuthConfigOauth2AuthCodeFlow {
     return <String, dynamic>{
       'authUri': ?authUri,
       'clientId': ?clientId,
-      'clientSecret': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigOauth2AuthCodeFlowClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionAuthConfigOauth2AuthCodeFlowClientSecret,
+            Map<String, dynamic>
+          >(clientSecret, (value) => value.toMap()),
       'enablePkce': ?enablePkce,
       'scopes': ?scopes,
     };
   }
 
-  factory ConnectionAuthConfigOauth2AuthCodeFlow.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthConfigOauth2AuthCodeFlow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthConfigOauth2AuthCodeFlow(
-      authUri: map['authUri'] == null ? null : (map['authUri']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
-      enablePkce: map['enablePkce'] == null ? null : (map['enablePkce']! as bool).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      authUri: (() {
+        final guardedValue = map['authUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enablePkce: (() {
+        final guardedValue = map['enablePkce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

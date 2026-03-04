@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VnpGatewayNatRuleInternalMapping {
   /// The string CIDR representing the address space for the VPN Gateway Nat Rule internal mapping.
   final pulumi.Input<String> addressSpace;
+
   /// The single port range for the VPN Gateway Nat Rule internal mapping.
   final pulumi.Input<String>? portRange;
 
@@ -25,9 +26,12 @@ class VnpGatewayNatRuleInternalMapping {
 
   factory VnpGatewayNatRuleInternalMapping.fromMap(Map<String, dynamic> map) {
     return VnpGatewayNatRuleInternalMapping(
-      addressSpace: (map['addressSpace'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
+      addressSpace: pulumi.Input.fromValue(map['addressSpace'] as String),
+      portRange: (() {
+        final guardedValue = map['portRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

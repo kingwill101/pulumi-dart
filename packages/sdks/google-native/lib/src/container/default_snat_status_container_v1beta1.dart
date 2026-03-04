@@ -9,20 +9,19 @@ class DefaultSnatStatusContainerV1beta1 {
 
   /// Creates a new [DefaultSnatStatusContainerV1beta1].
   /// [disabled] Disables cluster default sNAT rules.
-  DefaultSnatStatusContainerV1beta1({
-    this.disabled,
-  });
+  DefaultSnatStatusContainerV1beta1({this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': ?disabled,
-    };
+    return <String, dynamic>{'disabled': ?disabled};
   }
 
   factory DefaultSnatStatusContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DefaultSnatStatusContainerV1beta1(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

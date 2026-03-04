@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderArgs {
   /// Access Token to authenticate with Pulumi Cloud.
   final pulumi.Input<String>? accessToken;
+
   /// Optional override of Pulumi Cloud API endpoint.
   final pulumi.Input<String>? apiUrl;
 
   /// Creates a new [ProviderArgs].
   /// [accessToken] Access Token to authenticate with Pulumi Cloud.
   /// [apiUrl] Optional override of Pulumi Cloud API endpoint.
-  ProviderArgs({
-    this.accessToken,
-    this.apiUrl,
-  });
+  ProviderArgs({this.accessToken, this.apiUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessToken': ?accessToken,
-      'apiUrl': ?apiUrl,
-    };
+    return <String, dynamic>{'accessToken': ?accessToken, 'apiUrl': ?apiUrl};
   }
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiUrl: (() {
+        final guardedValue = map['apiUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

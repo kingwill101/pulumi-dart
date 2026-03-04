@@ -6,16 +6,15 @@ enum ProfileType {
   vBSEnclave("VBSEnclave"),
   publicTrustTest("PublicTrustTest");
 
-  const ProfileType(this.value);
-  final String value;
+  const ProfileType(this.wireValue);
+  final String wireValue;
 
   static ProfileType fromValue(String value) {
     for (final item in ProfileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProfileType value: $value');
   }
 }
-

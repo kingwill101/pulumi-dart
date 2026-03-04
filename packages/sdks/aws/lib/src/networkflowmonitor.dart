@@ -1,5 +1,3 @@
-library module_networkflowmonitor;
-
 export 'networkflowmonitor/monitor.dart';
 export 'networkflowmonitor/monitor_args.dart';
 export 'networkflowmonitor/monitor_local_resource.dart';

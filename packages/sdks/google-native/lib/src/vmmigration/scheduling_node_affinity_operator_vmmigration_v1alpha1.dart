@@ -4,16 +4,20 @@ enum SchedulingNodeAffinityOperatorVmmigrationV1alpha1 {
   in_("IN"),
   notIn("NOT_IN");
 
-  const SchedulingNodeAffinityOperatorVmmigrationV1alpha1(this.value);
-  final String value;
+  const SchedulingNodeAffinityOperatorVmmigrationV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static SchedulingNodeAffinityOperatorVmmigrationV1alpha1 fromValue(String value) {
-    for (final item in SchedulingNodeAffinityOperatorVmmigrationV1alpha1.values) {
-      if (item.value == value) {
+  static SchedulingNodeAffinityOperatorVmmigrationV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in SchedulingNodeAffinityOperatorVmmigrationV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingNodeAffinityOperatorVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingNodeAffinityOperatorVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

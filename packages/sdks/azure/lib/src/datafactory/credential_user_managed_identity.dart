@@ -280,7 +280,7 @@ import 'credential_user_managed_identity_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataFactory` - 2018-06-01
@@ -295,16 +295,20 @@ import 'credential_user_managed_identity_state.dart';
 class CredentialUserManagedIdentity extends pulumi.CustomResource {
   /// List of tags that can be used for describing the Data Factory Credential.
   ///
-  /// > **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
+  /// &gt; **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Credential.
   late final pulumi.Output<String?> description;
+
   /// The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
+  /// &gt; **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
   late final pulumi.Output<String> identityId;
+
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -317,15 +321,15 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
     CredentialUserManagedIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.identityId = registerOutput<String>('identityId');
+         'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    identityId = registerOutput<String>('identityId');
     this.name = registerOutput<String>('name');
   }
 
@@ -347,15 +351,15 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.identityId = registerOutput<String>('identityId');
+         'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    identityId = registerOutput<String>('identityId');
     this.name = registerOutput<String>('name');
   }
 }

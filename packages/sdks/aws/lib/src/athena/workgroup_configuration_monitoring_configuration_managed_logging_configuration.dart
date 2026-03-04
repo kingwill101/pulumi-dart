@@ -16,17 +16,19 @@ class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'kmsKey': ?kmsKey,
-    };
+    return <String, dynamic>{'enabled': enabled, 'kmsKey': ?kmsKey};
   }
 
-  factory WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration(
-      enabled: (map['enabled'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

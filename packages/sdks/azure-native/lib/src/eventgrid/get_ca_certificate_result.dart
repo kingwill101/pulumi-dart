@@ -6,22 +6,31 @@ import 'system_data_response.dart';
 class GetCaCertificateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description for the CA Certificate resource.
   final String? description;
+
   /// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
   final String? encodedCertificate;
+
   /// Certificate expiry time in UTC. This is a read-only field.
   final String expiryTimeInUtc;
+
   /// Fully qualified identifier of the resource.
   final String id;
+
   /// Certificate issue time in UTC. This is a read-only field.
   final String issueTimeInUtc;
+
   /// Name of the resource.
   final String name;
+
   /// Provisioning state of the CA Certificate resource.
   final String provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
+
   /// Type of the resource.
   final String type;
 
@@ -67,16 +76,25 @@ class GetCaCertificateResult {
   factory GetCaCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCaCertificateResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      encodedCertificate: map['encodedCertificate'] == null ? null : map['encodedCertificate']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      encodedCertificate: (() {
+        final guardedValue = map['encodedCertificate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       expiryTimeInUtc: map['expiryTimeInUtc'] as String,
       id: map['id'] as String,
       issueTimeInUtc: map['issueTimeInUtc'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

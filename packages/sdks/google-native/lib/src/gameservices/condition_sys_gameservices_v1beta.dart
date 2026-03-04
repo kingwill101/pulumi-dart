@@ -6,16 +6,15 @@ enum ConditionSysGameservicesV1beta {
   name("NAME"),
   ip("IP");
 
-  const ConditionSysGameservicesV1beta(this.value);
-  final String value;
+  const ConditionSysGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static ConditionSysGameservicesV1beta fromValue(String value) {
     for (final item in ConditionSysGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionSysGameservicesV1beta value: $value');
   }
 }
-

@@ -259,7 +259,7 @@ import 'api_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2016-06-01
@@ -274,16 +274,21 @@ import 'api_connection_state.dart';
 class ApiConnection extends pulumi.CustomResource {
   /// A display name for this API Connection.
   late final pulumi.Output<String> displayName;
+
   /// The ID of the Managed API which this API Connection is linked to. Changing this forces a new API Connection to be created.
   late final pulumi.Output<String> managedApiId;
+
   /// The Name which should be used for this API Connection. Changing this forces a new API Connection to be created.
   late final pulumi.Output<String> name;
+
   /// A map of parameter values associated with this API Connection.
   ///
-  /// > **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
+  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
   late final pulumi.Output<Map<String, String>?> parameterValues;
+
   /// The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the API Connection.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -296,17 +301,17 @@ class ApiConnection extends pulumi.CustomResource {
     ApiConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:connections/apiConnection:ApiConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.managedApiId = registerOutput<String>('managedApiId');
+         'azure:connections/apiConnection:ApiConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    managedApiId = registerOutput<String>('managedApiId');
     this.name = registerOutput<String>('name');
-    this.parameterValues = registerOutput<Map<String, String>?>('parameterValues');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    parameterValues = registerOutput<Map<String, String>?>('parameterValues');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ApiConnection] resource's state with the given [name] and [id].
@@ -327,16 +332,16 @@ class ApiConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:connections/apiConnection:ApiConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.managedApiId = registerOutput<String>('managedApiId');
+         'azure:connections/apiConnection:ApiConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    managedApiId = registerOutput<String>('managedApiId');
     this.name = registerOutput<String>('name');
-    this.parameterValues = registerOutput<Map<String, String>?>('parameterValues');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    parameterValues = registerOutput<Map<String, String>?>('parameterValues');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

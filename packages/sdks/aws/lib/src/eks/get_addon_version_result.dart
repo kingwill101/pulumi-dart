@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAddonVersion.
 class GetAddonVersionResult {
   final String addonName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kubernetesVersion;
   final bool? mostRecent;
   final String region;
+
   /// Version of the EKS add-on.
   final String version;
 
@@ -44,10 +45,13 @@ class GetAddonVersionResult {
       addonName: map['addonName'] as String,
       id: map['id'] as String,
       kubernetesVersion: map['kubernetesVersion'] as String,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       region: map['region'] as String,
       version: map['version'] as String,
     );
   }
 }
-

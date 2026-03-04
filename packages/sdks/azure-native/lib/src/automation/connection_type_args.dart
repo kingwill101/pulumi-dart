@@ -10,14 +10,19 @@ import 'field_definition.dart';
 class ConnectionTypeArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// The parameters supplied to the create or update connection type operation.
   final pulumi.Input<String>? connectionTypeName;
+
   /// Gets or sets the field definitions of the connection type.
   final pulumi.Input<Map<String, FieldDefinition>> fieldDefinitions;
+
   /// Gets or sets a Boolean value to indicate if the connection type is global.
   final pulumi.Input<bool>? isGlobal;
+
   /// Gets or sets the name of the connection type.
   final pulumi.Input<String> name;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -41,7 +46,18 @@ class ConnectionTypeArgs {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
       'connectionTypeName': ?connectionTypeName,
-      'fieldDefinitions': pulumi.Input.mapInputValue<Map<String, FieldDefinition>, Map<String, Map<String, dynamic>>>(fieldDefinitions, (value) => pulumi.Input.encodeMapValues<FieldDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fieldDefinitions':
+          pulumi.Input.mapInputValue<
+            Map<String, FieldDefinition>,
+            Map<String, Map<String, dynamic>>
+          >(
+            fieldDefinitions,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  FieldDefinition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'isGlobal': ?isGlobal,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -50,13 +66,30 @@ class ConnectionTypeArgs {
 
   factory ConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      connectionTypeName: map['connectionTypeName'] == null ? null : (map['connectionTypeName']! as String).input(),
-      fieldDefinitions: (pulumi.Input.decodeMapValues<FieldDefinition>(map['fieldDefinitions'], (value) => FieldDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as bool).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      connectionTypeName: (() {
+        final guardedValue = map['connectionTypeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldDefinitions: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<FieldDefinition>(
+          map['fieldDefinitions']!,
+          (value) =>
+              FieldDefinition.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      isGlobal: (() {
+        final guardedValue = map['isGlobal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

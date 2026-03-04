@@ -5,7 +5,9 @@ import 'sql_injection_match_set_sql_injection_match_tuple_field_to_match.dart';
 
 class SqlInjectionMatchSetSqlInjectionMatchTuple {
   /// Specifies where in a web request to look for snippets of malicious SQL code.
-  final pulumi.Input<SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch> fieldToMatch;
+  final pulumi.Input<SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch>
+  fieldToMatch;
+
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   /// If you specify a transformation, AWS WAF performs the transformation on `field_to_match` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
@@ -23,16 +25,27 @@ class SqlInjectionMatchSetSqlInjectionMatchTuple {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldToMatch': pulumi.Input.mapInputValue<SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
+      'fieldToMatch':
+          pulumi.Input.mapInputValue<
+            SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
       'textTransformation': textTransformation,
     };
   }
 
-  factory SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap(Map<String, dynamic> map) {
+  factory SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlInjectionMatchSetSqlInjectionMatchTuple(
-      fieldToMatch: (SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
-      textTransformation: (map['textTransformation'] as String).input(),
+      fieldToMatch: pulumi.Input.fromValue(
+        SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch.fromMap(
+          (map['fieldToMatch']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      textTransformation: pulumi.Input.fromValue(
+        map['textTransformation'] as String,
+      ),
     );
   }
 }
-

@@ -12,16 +12,22 @@ import 'sign_in_behavior.dart';
 class InboundSsoAssignmentArgs {
   /// Immutable. The customer. For example: `customers/C0123abc`.
   final pulumi.Input<String>? customer;
+
   /// Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set and must be greater-than-or-equal-to one for assignments with `target_group` set.
   final pulumi.Input<int>? rank;
+
   /// SAML SSO details. Must be set if and only if `sso_mode` is set to `SAML_SSO`.
   final pulumi.Input<SamlSsoInfo>? samlSsoInfo;
+
   /// Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration.
   final pulumi.Input<SignInBehavior>? signInBehavior;
+
   /// Inbound SSO behavior.
   final pulumi.Input<InboundSsoAssignmentSsoMode>? ssoMode;
+
   /// Immutable. Must be of the form `groups/{group}`.
   final pulumi.Input<String>? targetGroup;
+
   /// Immutable. Must be of the form `orgUnits/{org_unit}`.
   final pulumi.Input<String>? targetOrgUnit;
 
@@ -47,9 +53,21 @@ class InboundSsoAssignmentArgs {
     return <String, dynamic>{
       'customer': ?customer,
       'rank': ?rank,
-      'samlSsoInfo': ?pulumi.Input.mapOptionalInputValue<SamlSsoInfo, Map<String, dynamic>>(samlSsoInfo, (value) => value.toMap()),
-      'signInBehavior': ?pulumi.Input.mapOptionalInputValue<SignInBehavior, Map<String, dynamic>>(signInBehavior, (value) => value.toMap()),
-      'ssoMode': ?pulumi.Input.mapOptionalInputValue<InboundSsoAssignmentSsoMode, String>(ssoMode, (value) => value.value),
+      'samlSsoInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            SamlSsoInfo,
+            Map<String, dynamic>
+          >(samlSsoInfo, (value) => value.toMap()),
+      'signInBehavior':
+          ?pulumi.Input.mapOptionalInputValue<
+            SignInBehavior,
+            Map<String, dynamic>
+          >(signInBehavior, (value) => value.toMap()),
+      'ssoMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            InboundSsoAssignmentSsoMode,
+            String
+          >(ssoMode, (value) => value.wireValue),
       'targetGroup': ?targetGroup,
       'targetOrgUnit': ?targetOrgUnit,
     };
@@ -57,14 +75,47 @@ class InboundSsoAssignmentArgs {
 
   factory InboundSsoAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return InboundSsoAssignmentArgs(
-      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
-      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
-      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfo.fromMap((map['samlSsoInfo']! as Map).cast<String, dynamic>())).input(),
-      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehavior.fromMap((map['signInBehavior']! as Map).cast<String, dynamic>())).input(),
-      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoMode.fromValue(map['ssoMode']! as String)).input(),
-      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup']! as String).input(),
-      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit']! as String).input(),
+      customer: (() {
+        final guardedValue = map['customer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rank: (() {
+        final guardedValue = map['rank'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      samlSsoInfo: (() {
+        final guardedValue = map['samlSsoInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SamlSsoInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      signInBehavior: (() {
+        final guardedValue = map['signInBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SignInBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      ssoMode: (() {
+        final guardedValue = map['ssoMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InboundSsoAssignmentSsoMode.fromValue(guardedValue as String),
+        );
+      })(),
+      targetGroup: (() {
+        final guardedValue = map['targetGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetOrgUnit: (() {
+        final guardedValue = map['targetOrgUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

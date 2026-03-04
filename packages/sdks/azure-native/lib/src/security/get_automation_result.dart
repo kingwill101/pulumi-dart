@@ -9,28 +9,40 @@ import 'automation_source_response.dart';
 class GetAutomationResult {
   /// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
   final List<AutomationActionEventHubResponse>? actions;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The security automation description.
   final String? description;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   final String? etag;
+
   /// Resource Id
   final String id;
+
   /// Indicates whether the security automation is enabled.
   final bool? isEnabled;
+
   /// Kind of the resource
   final String? kind;
+
   /// Location where the resource is stored
   final String? location;
+
   /// Resource name
   final String name;
+
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   final List<AutomationScopeResponse>? scopes;
+
   /// A collection of the source event types which evaluate the security automation set of rules.
   final List<AutomationSourceResponse>? sources;
+
   /// A list of key value pairs that describe the resource.
   final Map<String, String>? tags;
+
   /// Resource type
   final String type;
 
@@ -66,7 +78,14 @@ class GetAutomationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?actions == null ? null : pulumi.Input.encodeList<AutomationActionEventHubResponse, Map<String, dynamic>>(actions!, (value) => value.toMap()),
+      'actions': ?(() {
+        final guardedValue = actions;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AutomationActionEventHubResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'etag': ?etag,
@@ -75,8 +94,22 @@ class GetAutomationResult {
       'kind': ?kind,
       'location': ?location,
       'name': name,
-      'scopes': ?scopes == null ? null : pulumi.Input.encodeList<AutomationScopeResponse, Map<String, dynamic>>(scopes!, (value) => value.toMap()),
-      'sources': ?sources == null ? null : pulumi.Input.encodeList<AutomationSourceResponse, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+      'scopes': ?(() {
+        final guardedValue = scopes;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AutomationScopeResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'sources': ?(() {
+        final guardedValue = sources;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AutomationSourceResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'tags': ?tags,
       'type': type,
     };
@@ -84,20 +117,70 @@ class GetAutomationResult {
 
   factory GetAutomationResult.fromMap(Map<String, dynamic> map) {
     return GetAutomationResult(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<AutomationActionEventHubResponse>(map['actions']!, (value) => AutomationActionEventHubResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AutomationActionEventHubResponse>(
+          guardedValue,
+          (value) => AutomationActionEventHubResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      scopes: map['scopes'] == null ? null : pulumi.Input.decodeList<AutomationScopeResponse>(map['scopes']!, (value) => AutomationScopeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sources: map['sources'] == null ? null : pulumi.Input.decodeList<AutomationSourceResponse>(map['sources']!, (value) => AutomationSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AutomationScopeResponse>(
+          guardedValue,
+          (value) => AutomationScopeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AutomationSourceResponse>(
+          guardedValue,
+          (value) => AutomationSourceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

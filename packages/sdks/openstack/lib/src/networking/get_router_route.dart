@@ -9,10 +9,7 @@ class GetRouterRoute {
   /// Creates a new [GetRouterRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetRouterRoute({
-    required this.destinationCidr,
-    required this.nextHop,
-  });
+  GetRouterRoute({required this.destinationCidr, required this.nextHop});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,8 @@ class GetRouterRoute {
 
   factory GetRouterRoute.fromMap(Map<String, dynamic> map) {
     return GetRouterRoute(
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
     );
   }
 }
-

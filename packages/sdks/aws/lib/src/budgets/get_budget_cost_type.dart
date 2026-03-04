@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetCostType {
   /// A boolean value whether to include credits in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeCredit;
+
   /// Whether a budget includes discounts. Defaults to `true`.
   final pulumi.Input<bool> includeDiscount;
+
   /// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeOtherSubscription;
+
   /// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeRecurring;
+
   /// A boolean value whether to include refunds in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeRefund;
+
   /// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeSubscription;
+
   /// A boolean value whether to include support costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeSupport;
+
   /// A boolean value whether to include tax in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeTax;
+
   /// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool> includeUpfront;
+
   /// Whether a budget uses the amortized rate. Defaults to `false`.
   final pulumi.Input<bool> useAmortized;
+
   /// A boolean value whether to use blended costs in the cost budget. Defaults to `false`.
   final pulumi.Input<bool> useBlended;
 
@@ -70,18 +80,21 @@ class GetBudgetCostType {
 
   factory GetBudgetCostType.fromMap(Map<String, dynamic> map) {
     return GetBudgetCostType(
-      includeCredit: (map['includeCredit'] as bool).input(),
-      includeDiscount: (map['includeDiscount'] as bool).input(),
-      includeOtherSubscription: (map['includeOtherSubscription'] as bool).input(),
-      includeRecurring: (map['includeRecurring'] as bool).input(),
-      includeRefund: (map['includeRefund'] as bool).input(),
-      includeSubscription: (map['includeSubscription'] as bool).input(),
-      includeSupport: (map['includeSupport'] as bool).input(),
-      includeTax: (map['includeTax'] as bool).input(),
-      includeUpfront: (map['includeUpfront'] as bool).input(),
-      useAmortized: (map['useAmortized'] as bool).input(),
-      useBlended: (map['useBlended'] as bool).input(),
+      includeCredit: pulumi.Input.fromValue(map['includeCredit'] as bool),
+      includeDiscount: pulumi.Input.fromValue(map['includeDiscount'] as bool),
+      includeOtherSubscription: pulumi.Input.fromValue(
+        map['includeOtherSubscription'] as bool,
+      ),
+      includeRecurring: pulumi.Input.fromValue(map['includeRecurring'] as bool),
+      includeRefund: pulumi.Input.fromValue(map['includeRefund'] as bool),
+      includeSubscription: pulumi.Input.fromValue(
+        map['includeSubscription'] as bool,
+      ),
+      includeSupport: pulumi.Input.fromValue(map['includeSupport'] as bool),
+      includeTax: pulumi.Input.fromValue(map['includeTax'] as bool),
+      includeUpfront: pulumi.Input.fromValue(map['includeUpfront'] as bool),
+      useAmortized: pulumi.Input.fromValue(map['useAmortized'] as bool),
+      useBlended: pulumi.Input.fromValue(map['useBlended'] as bool),
     );
   }
 }
-

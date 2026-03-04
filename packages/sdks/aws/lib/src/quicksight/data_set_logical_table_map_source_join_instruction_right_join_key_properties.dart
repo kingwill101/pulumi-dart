@@ -13,15 +13,18 @@ class DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uniqueKey': ?uniqueKey,
-    };
+    return <String, dynamic>{'uniqueKey': ?uniqueKey};
   }
 
-  factory DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap(Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties(
-      uniqueKey: map['uniqueKey'] == null ? null : ((map['uniqueKey'] as bool).input()).input(),
+      uniqueKey: (() {
+        final guardedValue = map['uniqueKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

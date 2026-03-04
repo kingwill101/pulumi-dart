@@ -13,14 +13,19 @@ import 'job_collection_properties_response.dart';
 class JobCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the storage account location.
   late final pulumi.Output<String?> location;
+
   /// Gets or sets the job collection resource name.
   late final pulumi.Output<String?> name;
+
   /// Gets or sets the job collection properties.
   late final pulumi.Output<JobCollectionPropertiesResponse> properties;
+
   /// Gets or sets the tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the job collection resource type.
   late final pulumi.Output<String> type;
 
@@ -33,16 +38,16 @@ class JobCollection extends pulumi.CustomResource {
     JobCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scheduler:JobCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:scheduler:JobCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    this.properties = registerOutput<JobCollectionPropertiesResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<JobCollectionPropertiesResponse>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertConfigurationSinkEventStore {
   /// Open.
   final pulumi.Input<bool>? enabled;
+
   /// SLS service endpoint.
   final pulumi.Input<String>? endpoint;
+
   /// Event Library Name.
   final pulumi.Input<String>? eventStore;
+
   /// Project Name.
   final pulumi.Input<String>? project;
+
   /// Roles used to write alarm data to the event Library.
   final pulumi.Input<String>? roleArn;
 
@@ -40,12 +44,31 @@ class AlertConfigurationSinkEventStore {
 
   factory AlertConfigurationSinkEventStore.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSinkEventStore(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      eventStore: map['eventStore'] == null ? null : (map['eventStore']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventStore: (() {
+        final guardedValue = map['eventStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

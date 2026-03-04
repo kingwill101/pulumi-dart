@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsagePlanApiStageThrottle {
   /// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
   final pulumi.Input<int>? burstLimit;
+
   /// Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
   final pulumi.Input<String> path;
+
   /// The API request steady-state rate limit.
   final pulumi.Input<double>? rateLimit;
 
@@ -30,10 +32,17 @@ class UsagePlanApiStageThrottle {
 
   factory UsagePlanApiStageThrottle.fromMap(Map<String, dynamic> map) {
     return UsagePlanApiStageThrottle(
-      burstLimit: map['burstLimit'] == null ? null : ((map['burstLimit'] as int).input()).input(),
-      path: (map['path'] as String).input(),
-      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as double).input()).input(),
+      burstLimit: (() {
+        final guardedValue = map['burstLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      rateLimit: (() {
+        final guardedValue = map['rateLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

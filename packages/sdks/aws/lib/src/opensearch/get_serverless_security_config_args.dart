@@ -10,8 +10,10 @@ import 'get_serverless_security_config_saml_option.dart';
 class GetServerlessSecurityConfigArgs {
   /// The unique identifier of the security configuration.
   final pulumi.Input<String> id;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// SAML options for the security configuration.
   final pulumi.Input<List<GetServerlessSecurityConfigSamlOption>>? samlOptions;
 
@@ -29,16 +31,41 @@ class GetServerlessSecurityConfigArgs {
     return <String, dynamic>{
       'id': id,
       'region': ?region,
-      'samlOptions': ?pulumi.Input.mapOptionalInputValue<List<GetServerlessSecurityConfigSamlOption>, List<Map<String, dynamic>>>(samlOptions, (value) => pulumi.Input.encodeList<GetServerlessSecurityConfigSamlOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'samlOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetServerlessSecurityConfigSamlOption>,
+            List<Map<String, dynamic>>
+          >(
+            samlOptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServerlessSecurityConfigSamlOption,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessSecurityConfigArgs(
-      id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      samlOptions: map['samlOptions'] == null ? null : ((pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions']!, (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      samlOptions: (() {
+        final guardedValue = map['samlOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(
+            guardedValue,
+            (value) => GetServerlessSecurityConfigSamlOption.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

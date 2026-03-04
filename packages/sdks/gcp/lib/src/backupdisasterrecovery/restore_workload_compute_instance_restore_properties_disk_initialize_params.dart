@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
   /// Optional. Specifies the disk name.
   final pulumi.Input<String>? diskName;
+
   /// Optional. URL of the zone where the disk should be created.
   final pulumi.Input<List<String>>? replicaZones;
 
@@ -23,11 +24,20 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams(
-      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
-      replicaZones: map['replicaZones'] == null ? null : ((map['replicaZones']! as List).cast<String>()).input(),
+      diskName: (() {
+        final guardedValue = map['diskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicaZones: (() {
+        final guardedValue = map['replicaZones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

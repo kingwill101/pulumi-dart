@@ -7,6 +7,7 @@ import 'tld_legal_agreement_response.dart';
 class ListTopLevelDomainAgreementsResult {
   /// Link to next page of resources.
   final String nextLink;
+
   /// Collection of resources.
   final List<TldLegalAgreementResponse> value;
 
@@ -21,15 +22,23 @@ class ListTopLevelDomainAgreementsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<TldLegalAgreementResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            TldLegalAgreementResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
   factory ListTopLevelDomainAgreementsResult.fromMap(Map<String, dynamic> map) {
     return ListTopLevelDomainAgreementsResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<TldLegalAgreementResponse>(map['value'], (value) => TldLegalAgreementResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<TldLegalAgreementResponse>(
+        map['value']!,
+        (value) => TldLegalAgreementResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

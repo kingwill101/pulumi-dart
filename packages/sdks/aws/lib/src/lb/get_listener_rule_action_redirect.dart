@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleActionRedirect {
   /// The hostname.
   final pulumi.Input<String> host;
+
   /// The absolute path, starting with `/`.
   final pulumi.Input<String> path;
+
   /// The port.
   final pulumi.Input<String> port;
+
   /// The protocol.
   final pulumi.Input<String> protocol;
+
   /// The query parameters.
   final pulumi.Input<String> query;
+
   /// The HTTP redirect code.
   final pulumi.Input<String> statusCode;
 
@@ -45,13 +50,12 @@ class GetListenerRuleActionRedirect {
 
   factory GetListenerRuleActionRedirect.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionRedirect(
-      host: (map['host'] as String).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      query: (map['query'] as String).input(),
-      statusCode: (map['statusCode'] as String).input(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
-

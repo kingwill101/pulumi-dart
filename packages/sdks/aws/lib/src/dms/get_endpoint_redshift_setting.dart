@@ -35,12 +35,15 @@ class GetEndpointRedshiftSetting {
 
   factory GetEndpointRedshiftSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointRedshiftSetting(
-      bucketFolder: (map['bucketFolder'] as String).input(),
-      bucketName: (map['bucketName'] as String).input(),
-      encryptionMode: (map['encryptionMode'] as String).input(),
-      serverSideEncryptionKmsKeyId: (map['serverSideEncryptionKmsKeyId'] as String).input(),
-      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
+      bucketFolder: pulumi.Input.fromValue(map['bucketFolder'] as String),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      encryptionMode: pulumi.Input.fromValue(map['encryptionMode'] as String),
+      serverSideEncryptionKmsKeyId: pulumi.Input.fromValue(
+        map['serverSideEncryptionKmsKeyId'] as String,
+      ),
+      serviceAccessRoleArn: pulumi.Input.fromValue(
+        map['serviceAccessRoleArn'] as String,
+      ),
     );
   }
 }
-

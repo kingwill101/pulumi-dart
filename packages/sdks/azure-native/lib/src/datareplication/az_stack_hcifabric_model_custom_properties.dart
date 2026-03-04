@@ -7,11 +7,14 @@ import 'az_stack_hcicluster_properties.dart';
 class AzStackHCIFabricModelCustomProperties {
   /// Gets or sets the ARM Id of the AzStackHCI site.
   final pulumi.Input<String> azStackHciSiteId;
+
   /// AzStackHCI cluster properties.
   final pulumi.Input<AzStackHCIClusterProperties> cluster;
+
   /// Gets or sets the instance type.
   /// Expected value is 'AzStackHCI'.
   final pulumi.Input<String> instanceType;
+
   /// Gets or sets the Migration solution ARM Id.
   final pulumi.Input<String> migrationSolutionId;
 
@@ -30,19 +33,32 @@ class AzStackHCIFabricModelCustomProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azStackHciSiteId': azStackHciSiteId,
-      'cluster': pulumi.Input.mapInputValue<AzStackHCIClusterProperties, Map<String, dynamic>>(cluster, (value) => value.toMap()),
+      'cluster':
+          pulumi.Input.mapInputValue<
+            AzStackHCIClusterProperties,
+            Map<String, dynamic>
+          >(cluster, (value) => value.toMap()),
       'instanceType': instanceType,
       'migrationSolutionId': migrationSolutionId,
     };
   }
 
-  factory AzStackHCIFabricModelCustomProperties.fromMap(Map<String, dynamic> map) {
+  factory AzStackHCIFabricModelCustomProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzStackHCIFabricModelCustomProperties(
-      azStackHciSiteId: (map['azStackHciSiteId'] as String).input(),
-      cluster: (AzStackHCIClusterProperties.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
+      azStackHciSiteId: pulumi.Input.fromValue(
+        map['azStackHciSiteId'] as String,
+      ),
+      cluster: pulumi.Input.fromValue(
+        AzStackHCIClusterProperties.fromMap(
+          (map['cluster']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      migrationSolutionId: pulumi.Input.fromValue(
+        map['migrationSolutionId'] as String,
+      ),
     );
   }
 }
-

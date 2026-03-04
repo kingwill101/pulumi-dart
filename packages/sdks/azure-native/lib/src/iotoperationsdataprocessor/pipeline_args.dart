@@ -12,22 +12,31 @@ import 'pipeline_stage.dart';
 class PipelineArgs {
   /// Detailed description of the Pipeline.
   final pulumi.Input<String>? description;
+
   /// Flag indicating whether the pipeline should be running or not.
   final pulumi.Input<bool> enabled;
+
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// Information about where to pull input data from.
   final pulumi.Input<PipelineInput> input;
+
   /// Name of instance.
   final pulumi.Input<String> instanceName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of pipeline
   final pulumi.Input<String>? pipelineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Map of stage ids to stage configurations for all pipeline processing and output stages.
   final pulumi.Input<Map<String, PipelineStage>> stages;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,30 +68,79 @@ class PipelineArgs {
     return <String, dynamic>{
       'description': ?description,
       'enabled': enabled,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'input': pulumi.Input.mapInputValue<PipelineInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
+      'input': pulumi.Input.mapInputValue<PipelineInput, Map<String, dynamic>>(
+        input,
+        (value) => value.toMap(),
+      ),
       'instanceName': instanceName,
       'location': ?location,
       'pipelineName': ?pipelineName,
       'resourceGroupName': resourceGroupName,
-      'stages': pulumi.Input.mapInputValue<Map<String, PipelineStage>, Map<String, Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeMapValues<PipelineStage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stages':
+          pulumi.Input.mapInputValue<
+            Map<String, PipelineStage>,
+            Map<String, Map<String, dynamic>>
+          >(
+            stages,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  PipelineStage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
     };
   }
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      input: (PipelineInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      stages: (pulumi.Input.decodeMapValues<PipelineStage>(map['stages'], (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      input: pulumi.Input.fromValue(
+        PipelineInput.fromMap((map['input']! as Map).cast<String, dynamic>()),
+      ),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipelineName: (() {
+        final guardedValue = map['pipelineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      stages: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<PipelineStage>(
+          map['stages']!,
+          (value) =>
+              PipelineStage.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbInstancePlansPlanPlanConfigScaleIn {
   /// The executed time of the Plan.
   final pulumi.Input<String> executeTime;
+
   /// The Cron Time of the plan.
   final pulumi.Input<String> planCronTime;
+
   /// The Status of the plan Task.
   final pulumi.Input<String> planTaskStatus;
+
   /// The segment Node Num of the Plan.
   final pulumi.Input<String> segmentNodeNum;
 
@@ -33,13 +36,14 @@ class GetDbInstancePlansPlanPlanConfigScaleIn {
     };
   }
 
-  factory GetDbInstancePlansPlanPlanConfigScaleIn.fromMap(Map<String, dynamic> map) {
+  factory GetDbInstancePlansPlanPlanConfigScaleIn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDbInstancePlansPlanPlanConfigScaleIn(
-      executeTime: (map['executeTime'] as String).input(),
-      planCronTime: (map['planCronTime'] as String).input(),
-      planTaskStatus: (map['planTaskStatus'] as String).input(),
-      segmentNodeNum: (map['segmentNodeNum'] as String).input(),
+      executeTime: pulumi.Input.fromValue(map['executeTime'] as String),
+      planCronTime: pulumi.Input.fromValue(map['planCronTime'] as String),
+      planTaskStatus: pulumi.Input.fromValue(map['planTaskStatus'] as String),
+      segmentNodeNum: pulumi.Input.fromValue(map['segmentNodeNum'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum WorkflowRunStatus {
   valueInprogress("inprogress"),
   valueCompleted("completed");
 
-  const WorkflowRunStatus(this.value);
-  final String value;
+  const WorkflowRunStatus(this.wireValue);
+  final String wireValue;
 
   static WorkflowRunStatus fromValue(String value) {
     for (final item in WorkflowRunStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkflowRunStatus value: $value');
   }
 }
-

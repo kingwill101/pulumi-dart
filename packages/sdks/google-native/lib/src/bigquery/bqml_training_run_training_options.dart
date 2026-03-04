@@ -52,16 +52,51 @@ class BqmlTrainingRunTrainingOptions {
 
   factory BqmlTrainingRunTrainingOptions.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRunTrainingOptions(
-      earlyStop: map['earlyStop'] == null ? null : (map['earlyStop']! as bool).input(),
-      l1Reg: map['l1Reg'] == null ? null : (map['l1Reg']! as double).input(),
-      l2Reg: map['l2Reg'] == null ? null : (map['l2Reg']! as double).input(),
-      learnRate: map['learnRate'] == null ? null : (map['learnRate']! as double).input(),
-      learnRateStrategy: map['learnRateStrategy'] == null ? null : (map['learnRateStrategy']! as String).input(),
-      lineSearchInitLearnRate: map['lineSearchInitLearnRate'] == null ? null : (map['lineSearchInitLearnRate']! as double).input(),
-      maxIteration: map['maxIteration'] == null ? null : (map['maxIteration']! as String).input(),
-      minRelProgress: map['minRelProgress'] == null ? null : (map['minRelProgress']! as double).input(),
-      warmStart: map['warmStart'] == null ? null : (map['warmStart']! as bool).input(),
+      earlyStop: (() {
+        final guardedValue = map['earlyStop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      l1Reg: (() {
+        final guardedValue = map['l1Reg'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      l2Reg: (() {
+        final guardedValue = map['l2Reg'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      learnRate: (() {
+        final guardedValue = map['learnRate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      learnRateStrategy: (() {
+        final guardedValue = map['learnRateStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lineSearchInitLearnRate: (() {
+        final guardedValue = map['lineSearchInitLearnRate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxIteration: (() {
+        final guardedValue = map['maxIteration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minRelProgress: (() {
+        final guardedValue = map['minRelProgress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      warmStart: (() {
+        final guardedValue = map['warmStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

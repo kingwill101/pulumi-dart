@@ -8,7 +8,7 @@ import 'node_state.dart';
 ///
 /// For information about Mongodb Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateNode).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -508,55 +508,67 @@ class Node extends pulumi.CustomResource {
   /// - Consists of lowercase letters, numbers, or underscores (_).
   /// - 4~16 characters in length.
   ///
-  /// > **NOTE:** - apsaradb for MongoDB does not support using keywords as accounts.
+  /// &gt; **NOTE:** - apsaradb for MongoDB does not support using keywords as accounts.
   /// - The permissions of the account are fixed to read-only permissions.
   /// - When applying for a direct connection address of a Shard node for the first time, you need to set an account and password.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> accountName;
+
   /// Account password, value description:
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
   /// - Length is 8~32 characters.
   ///
-  /// > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
+  /// &gt; **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> accountPassword;
+
   /// Whether to pay automatically. Value description:
   late final pulumi.Output<bool?> autoPay;
+
   /// Additional parameters, business information.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> businessInfo;
+
   /// The ID of the sharded cluster instance.
   late final pulumi.Output<String> dbInstanceId;
   late final pulumi.Output<String?> effectiveTime;
+
   /// Request Source, value description:
   /// - `OpenApi`: The request source is OpenApi.
   late final pulumi.Output<String?> fromApp;
+
   /// The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
   late final pulumi.Output<String> nodeClass;
+
   /// The first ID of the resource
   late final pulumi.Output<String> nodeId;
+
   /// The disk space of the Node. Unit: GB.
   ///
   /// Value range: `10` to `2000`, with a step size of 10GB.
   ///
-  /// > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
+  /// &gt; **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
   late final pulumi.Output<int?> nodeStorage;
+
   /// Node type, value description:
   late final pulumi.Output<String> nodeType;
   late final pulumi.Output<String?> orderType;
+
   /// The number of read-only nodes in the Shard.
   ///
   /// Value range: `0` to `5` (integer). Default value: **0 * *.
   ///
-  /// > **NOTE:**  This parameter is currently only supported by China Station.
+  /// &gt; **NOTE:**  This parameter is currently only supported by China Station.
   late final pulumi.Output<int> readonlyReplicas;
+
   /// Whether to apply for the direct connection address of the Shard node. Value description:
   late final pulumi.Output<bool?> shardDirect;
+
   /// Running status of node in sharded cluster
   late final pulumi.Output<String> status;
   late final pulumi.Output<String?> switchTime;
@@ -565,40 +577,33 @@ class Node extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Node]. {@macro pulumi_mongodb_node_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Node(
-    String name, {
-    NodeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:mongodb/node:Node',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String?>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.businessInfo = registerOutput<String?>('businessInfo');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.fromApp = registerOutput<String?>('fromApp');
-    this.nodeClass = registerOutput<String>('nodeClass');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.nodeStorage = registerOutput<int?>('nodeStorage');
-    this.nodeType = registerOutput<String>('nodeType');
-    this.orderType = registerOutput<String?>('orderType');
-    this.readonlyReplicas = registerOutput<int>('readonlyReplicas');
-    this.shardDirect = registerOutput<bool?>('shardDirect');
-    this.status = registerOutput<String>('status');
-    this.switchTime = registerOutput<String?>('switchTime');
+  Node(String name, {NodeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:mongodb/node:Node',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountName = registerOutput<String?>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    autoPay = registerOutput<bool?>('autoPay');
+    businessInfo = registerOutput<String?>('businessInfo');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    fromApp = registerOutput<String?>('fromApp');
+    nodeClass = registerOutput<String>('nodeClass');
+    nodeId = registerOutput<String>('nodeId');
+    nodeStorage = registerOutput<int?>('nodeStorage');
+    nodeType = registerOutput<String>('nodeType');
+    orderType = registerOutput<String?>('orderType');
+    readonlyReplicas = registerOutput<int>('readonlyReplicas');
+    shardDirect = registerOutput<bool?>('shardDirect');
+    status = registerOutput<String>('status');
+    switchTime = registerOutput<String?>('switchTime');
   }
 
   /// Gets an existing [Node] resource's state with the given [name] and [id].
-  static Node get(
-    String name,
-    pulumi.Input<String> id, {
-    NodeState? state,
-  }) {
+  static Node get(String name, pulumi.Input<String> id, {NodeState? state}) {
     return Node._get(
       name,
       state: state?.toMap(),
@@ -611,26 +616,26 @@ class Node extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/node:Node',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String?>('accountName');
-    this.accountPassword = registerOutput<String?>('accountPassword');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.businessInfo = registerOutput<String?>('businessInfo');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.fromApp = registerOutput<String?>('fromApp');
-    this.nodeClass = registerOutput<String>('nodeClass');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.nodeStorage = registerOutput<int?>('nodeStorage');
-    this.nodeType = registerOutput<String>('nodeType');
-    this.orderType = registerOutput<String?>('orderType');
-    this.readonlyReplicas = registerOutput<int>('readonlyReplicas');
-    this.shardDirect = registerOutput<bool?>('shardDirect');
-    this.status = registerOutput<String>('status');
-    this.switchTime = registerOutput<String?>('switchTime');
+         'alicloud:mongodb/node:Node',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String?>('accountName');
+    accountPassword = registerOutput<String?>('accountPassword');
+    autoPay = registerOutput<bool?>('autoPay');
+    businessInfo = registerOutput<String?>('businessInfo');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    fromApp = registerOutput<String?>('fromApp');
+    nodeClass = registerOutput<String>('nodeClass');
+    nodeId = registerOutput<String>('nodeId');
+    nodeStorage = registerOutput<int?>('nodeStorage');
+    nodeType = registerOutput<String>('nodeType');
+    orderType = registerOutput<String?>('orderType');
+    readonlyReplicas = registerOutput<int>('readonlyReplicas');
+    shardDirect = registerOutput<bool?>('shardDirect');
+    status = registerOutput<String>('status');
+    switchTime = registerOutput<String?>('switchTime');
   }
 }

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterUserManagedKeysConfig {
   /// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
   final pulumi.Input<String> aggregationCa;
+
   /// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
   final pulumi.Input<String> clusterCa;
+
   /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
   final pulumi.Input<String> controlPlaneDiskEncryptionKey;
+
   /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
   final pulumi.Input<String> etcdApiCa;
+
   /// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
   final pulumi.Input<String> etcdPeerCa;
+
   /// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
   final pulumi.Input<String> gkeopsEtcdBackupEncryptionKey;
+
   /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
   final pulumi.Input<List<String>> serviceAccountSigningKeys;
+
   /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
   final pulumi.Input<List<String>> serviceAccountVerificationKeys;
 
@@ -55,15 +62,22 @@ class GetClusterUserManagedKeysConfig {
 
   factory GetClusterUserManagedKeysConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterUserManagedKeysConfig(
-      aggregationCa: (map['aggregationCa'] as String).input(),
-      clusterCa: (map['clusterCa'] as String).input(),
-      controlPlaneDiskEncryptionKey: (map['controlPlaneDiskEncryptionKey'] as String).input(),
-      etcdApiCa: (map['etcdApiCa'] as String).input(),
-      etcdPeerCa: (map['etcdPeerCa'] as String).input(),
-      gkeopsEtcdBackupEncryptionKey: (map['gkeopsEtcdBackupEncryptionKey'] as String).input(),
-      serviceAccountSigningKeys: ((map['serviceAccountSigningKeys'] as List).cast<String>()).input(),
-      serviceAccountVerificationKeys: ((map['serviceAccountVerificationKeys'] as List).cast<String>()).input(),
+      aggregationCa: pulumi.Input.fromValue(map['aggregationCa'] as String),
+      clusterCa: pulumi.Input.fromValue(map['clusterCa'] as String),
+      controlPlaneDiskEncryptionKey: pulumi.Input.fromValue(
+        map['controlPlaneDiskEncryptionKey'] as String,
+      ),
+      etcdApiCa: pulumi.Input.fromValue(map['etcdApiCa'] as String),
+      etcdPeerCa: pulumi.Input.fromValue(map['etcdPeerCa'] as String),
+      gkeopsEtcdBackupEncryptionKey: pulumi.Input.fromValue(
+        map['gkeopsEtcdBackupEncryptionKey'] as String,
+      ),
+      serviceAccountSigningKeys: pulumi.Input.fromValue(
+        (map['serviceAccountSigningKeys'] as List).cast<String>(),
+      ),
+      serviceAccountVerificationKeys: pulumi.Input.fromValue(
+        (map['serviceAccountVerificationKeys'] as List).cast<String>(),
+      ),
     );
   }
 }
-

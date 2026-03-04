@@ -7,18 +7,25 @@ import 'group_members_item_response.dart';
 class ConfigurationGroupResponse {
   /// Network group conditional filter.
   final pulumi.Input<String>? conditionalMembership;
+
   /// A description of the network group.
   final pulumi.Input<String>? description;
+
   /// A friendly name for the network group.
   final pulumi.Input<String>? displayName;
+
   /// Group members of network group.
   final pulumi.Input<List<GroupMembersItemResponse>>? groupMembers;
+
   /// Network group ID.
   final pulumi.Input<String>? id;
+
   /// The type of the group member.
   final pulumi.Input<String>? memberType;
+
   /// The provisioning state of the scope assignment resource.
   final pulumi.Input<String> provisioningState;
+
   /// Unique identifier for this resource.
   final pulumi.Input<String> resourceGuid;
 
@@ -47,7 +54,18 @@ class ConfigurationGroupResponse {
       'conditionalMembership': ?conditionalMembership,
       'description': ?description,
       'displayName': ?displayName,
-      'groupMembers': ?pulumi.Input.mapOptionalInputValue<List<GroupMembersItemResponse>, List<Map<String, dynamic>>>(groupMembers, (value) => pulumi.Input.encodeList<GroupMembersItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupMembers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupMembersItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            groupMembers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GroupMembersItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'memberType': ?memberType,
       'provisioningState': provisioningState,
@@ -57,15 +75,47 @@ class ConfigurationGroupResponse {
 
   factory ConfigurationGroupResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupResponse(
-      conditionalMembership: map['conditionalMembership'] == null ? null : (map['conditionalMembership']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      groupMembers: map['groupMembers'] == null ? null : (pulumi.Input.decodeList<GroupMembersItemResponse>(map['groupMembers']!, (value) => GroupMembersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      memberType: map['memberType'] == null ? null : (map['memberType']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceGuid: (map['resourceGuid'] as String).input(),
+      conditionalMembership: (() {
+        final guardedValue = map['conditionalMembership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupMembers: (() {
+        final guardedValue = map['groupMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupMembersItemResponse>(
+            guardedValue,
+            (value) => GroupMembersItemResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberType: (() {
+        final guardedValue = map['memberType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
     );
   }
 }
-

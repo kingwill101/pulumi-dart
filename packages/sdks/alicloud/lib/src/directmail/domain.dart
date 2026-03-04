@@ -6,7 +6,7 @@ import 'domain_state.dart';
 ///
 /// For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -148,6 +148,7 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
   late final pulumi.Output<String> domainName;
+
   /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
   late final pulumi.Output<String> status;
 
@@ -155,18 +156,15 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_directmail_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:directmail/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.status = registerOutput<String>('status');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:directmail/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    domainName = registerOutput<String>('domainName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -187,12 +185,12 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.status = registerOutput<String>('status');
+         'alicloud:directmail/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    status = registerOutput<String>('status');
   }
 }

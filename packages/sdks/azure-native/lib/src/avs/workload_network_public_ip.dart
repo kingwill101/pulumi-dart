@@ -147,18 +147,25 @@ import 'workload_network_public_ipargs.dart';
 class WorkloadNetworkPublicIP extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Display name of the Public IP Block.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Number of Public IPs requested.
   late final pulumi.Output<double?> numberOfPublicIPs;
+
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// CIDR Block of the Public IP Block.
   late final pulumi.Output<String> publicIPBlock;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,18 +178,18 @@ class WorkloadNetworkPublicIP extends pulumi.CustomResource {
     WorkloadNetworkPublicIPArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:WorkloadNetworkPublicIP',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:avs:WorkloadNetworkPublicIP',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.numberOfPublicIPs = registerOutput<double?>('numberOfPublicIPs');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPBlock = registerOutput<String>('publicIPBlock');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    numberOfPublicIPs = registerOutput<double?>('numberOfPublicIPs');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPBlock = registerOutput<String>('publicIPBlock');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

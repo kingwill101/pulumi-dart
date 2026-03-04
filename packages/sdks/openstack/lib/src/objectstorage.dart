@@ -1,5 +1,3 @@
-library module_objectstorage;
-
 export 'objectstorage/account_v1.dart';
 export 'objectstorage/account_v1_args.dart';
 export 'objectstorage/account_v1_state.dart';

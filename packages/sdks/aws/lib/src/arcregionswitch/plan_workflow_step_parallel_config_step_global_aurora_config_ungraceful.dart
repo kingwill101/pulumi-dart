@@ -12,15 +12,14 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ungraceful': ungraceful,
-    };
+    return <String, dynamic>{'ungraceful': ungraceful};
   }
 
-  factory PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful(
-      ungraceful: (map['ungraceful'] as String).input(),
+      ungraceful: pulumi.Input.fromValue(map['ungraceful'] as String),
     );
   }
 }
-

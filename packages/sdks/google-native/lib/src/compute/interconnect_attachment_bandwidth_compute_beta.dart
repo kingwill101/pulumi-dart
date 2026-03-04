@@ -13,16 +13,17 @@ enum InterconnectAttachmentBandwidthComputeBeta {
   bps50m("BPS_50M"),
   bps5g("BPS_5G");
 
-  const InterconnectAttachmentBandwidthComputeBeta(this.value);
-  final String value;
+  const InterconnectAttachmentBandwidthComputeBeta(this.wireValue);
+  final String wireValue;
 
   static InterconnectAttachmentBandwidthComputeBeta fromValue(String value) {
     for (final item in InterconnectAttachmentBandwidthComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectAttachmentBandwidthComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectAttachmentBandwidthComputeBeta value: $value',
+    );
   }
 }
-

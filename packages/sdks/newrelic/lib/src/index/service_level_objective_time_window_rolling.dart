@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceLevelObjectiveTimeWindowRolling {
   /// Valid values are `1`, `7` and `28`.
   final pulumi.Input<int> count;
+
   /// The only supported value is `DAY`.
   final pulumi.Input<String> unit;
 
@@ -17,17 +18,15 @@ class ServiceLevelObjectiveTimeWindowRolling {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'unit': unit,
-    };
+    return <String, dynamic>{'count': count, 'unit': unit};
   }
 
-  factory ServiceLevelObjectiveTimeWindowRolling.fromMap(Map<String, dynamic> map) {
+  factory ServiceLevelObjectiveTimeWindowRolling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceLevelObjectiveTimeWindowRolling(
-      count: (map['count'] as int).input(),
-      unit: (map['unit'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareSubscriptionArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// The expiration date of the share subscription.
   final pulumi.Input<String>? expirationDate;
+
   /// The invitation id.
   final pulumi.Input<String> invitationId;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the shareSubscription.
   final pulumi.Input<String>? shareSubscriptionName;
+
   /// Source share location.
   final pulumi.Input<String> sourceShareLocation;
 
@@ -49,13 +54,24 @@ class ShareSubscriptionArgs {
 
   factory ShareSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ShareSubscriptionArgs(
-      accountName: (map['accountName'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
-      invitationId: (map['invitationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareSubscriptionName: map['shareSubscriptionName'] == null ? null : (map['shareSubscriptionName']! as String).input(),
-      sourceShareLocation: (map['sourceShareLocation'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invitationId: pulumi.Input.fromValue(map['invitationId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareSubscriptionName: (() {
+        final guardedValue = map['shareSubscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceShareLocation: pulumi.Input.fromValue(
+        map['sourceShareLocation'] as String,
+      ),
     );
   }
 }
-

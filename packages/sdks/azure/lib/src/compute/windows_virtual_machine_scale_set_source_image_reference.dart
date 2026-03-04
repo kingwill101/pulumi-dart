@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineScaleSetSourceImageReference {
   /// Specifies the offer of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
+
   /// Specifies the publisher of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
+
   /// Specifies the SKU of the image used to create the virtual machines.
   final pulumi.Input<String> sku;
+
   /// Specifies the version of the image used to create the virtual machines.
   final pulumi.Input<String> version;
 
@@ -33,13 +36,14 @@ class WindowsVirtualMachineScaleSetSourceImageReference {
     };
   }
 
-  factory WindowsVirtualMachineScaleSetSourceImageReference.fromMap(Map<String, dynamic> map) {
+  factory WindowsVirtualMachineScaleSetSourceImageReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsVirtualMachineScaleSetSourceImageReference(
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
-      version: (map['version'] as String).input(),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

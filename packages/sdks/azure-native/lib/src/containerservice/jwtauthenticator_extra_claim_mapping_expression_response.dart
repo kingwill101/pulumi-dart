@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JWTAuthenticatorExtraClaimMappingExpressionResponse {
   /// The key of the extra attribute.
   final pulumi.Input<String> key;
+
   /// The CEL expression used to extract the value of the extra attribute.
   final pulumi.Input<String> valueExpression;
 
@@ -18,17 +19,15 @@ class JWTAuthenticatorExtraClaimMappingExpressionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'valueExpression': valueExpression,
-    };
+    return <String, dynamic>{'key': key, 'valueExpression': valueExpression};
   }
 
-  factory JWTAuthenticatorExtraClaimMappingExpressionResponse.fromMap(Map<String, dynamic> map) {
+  factory JWTAuthenticatorExtraClaimMappingExpressionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JWTAuthenticatorExtraClaimMappingExpressionResponse(
-      key: (map['key'] as String).input(),
-      valueExpression: (map['valueExpression'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      valueExpression: pulumi.Input.fromValue(map['valueExpression'] as String),
     );
   }
 }
-

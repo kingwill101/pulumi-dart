@@ -4,16 +4,17 @@ enum DevicePolicyAllowedDeviceManagementLevelsItem {
   basic("BASIC"),
   complete("COMPLETE");
 
-  const DevicePolicyAllowedDeviceManagementLevelsItem(this.value);
-  final String value;
+  const DevicePolicyAllowedDeviceManagementLevelsItem(this.wireValue);
+  final String wireValue;
 
   static DevicePolicyAllowedDeviceManagementLevelsItem fromValue(String value) {
     for (final item in DevicePolicyAllowedDeviceManagementLevelsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DevicePolicyAllowedDeviceManagementLevelsItem value: $value');
+    throw ArgumentError(
+      'Unknown DevicePolicyAllowedDeviceManagementLevelsItem value: $value',
+    );
   }
 }
-

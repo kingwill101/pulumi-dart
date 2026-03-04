@@ -1,11 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_rule_list_response.dart';
-import 'frontend_endpoint_link_response.dart';
 import 'managed_rule_set_list_response.dart';
 import 'policy_args.dart';
 import 'policy_settings_response.dart';
-import 'routing_rule_link_response.dart';
-import 'security_policy_link_response.dart';
 import 'sku_response.dart';
 
 /// Defines web application firewall policy.
@@ -746,31 +743,44 @@ import 'sku_response.dart';
 class Policy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Describes custom rules inside the policy.
   late final pulumi.Output<CustomRuleListResponse?> customRules;
+
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
+
   /// Describes Frontend Endpoints associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<FrontendEndpointLinkResponse>> frontendEndpointLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> frontendEndpointLinks;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Describes managed rules inside the policy.
   late final pulumi.Output<ManagedRuleSetListResponse?> managedRules;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Describes settings for the policy.
   late final pulumi.Output<PolicySettingsResponse?> policySettings;
+
   /// Provisioning state of the policy.
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<String> resourceState;
+
   /// Describes Routing Rules associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<RoutingRuleLinkResponse>> routingRuleLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> routingRuleLinks;
+
   /// Describes Security Policy associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<SecurityPolicyLinkResponse>> securityPolicyLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> securityPolicyLinks;
+
   /// The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -778,30 +788,33 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_frontdoor_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:frontdoor:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customRules = registerOutput<CustomRuleListResponse?>('customRules');
-    this.etag = registerOutput<String?>('etag');
-    this.frontendEndpointLinks = registerOutput<List<FrontendEndpointLinkResponse>>('frontendEndpointLinks');
-    this.location = registerOutput<String?>('location');
-    this.managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:frontdoor:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customRules = registerOutput<CustomRuleListResponse?>('customRules');
+    etag = registerOutput<String?>('etag');
+    frontendEndpointLinks = registerOutput<List<Map<String, dynamic>>>(
+      'frontendEndpointLinks',
+    );
+    location = registerOutput<String?>('location');
+    managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules');
     this.name = registerOutput<String>('name');
-    this.policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.routingRuleLinks = registerOutput<List<RoutingRuleLinkResponse>>('routingRuleLinks');
-    this.securityPolicyLinks = registerOutput<List<SecurityPolicyLinkResponse>>('securityPolicyLinks');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    routingRuleLinks = registerOutput<List<Map<String, dynamic>>>(
+      'routingRuleLinks',
+    );
+    securityPolicyLinks = registerOutput<List<Map<String, dynamic>>>(
+      'securityPolicyLinks',
+    );
+    sku = registerOutput<SkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

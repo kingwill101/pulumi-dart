@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_rule_args.dart';
-import 'sub_resource_response.dart';
-import 'vpn_nat_rule_mapping_response.dart';
 
 /// VpnGatewayNatRule Resource.
 ///
@@ -201,24 +199,36 @@ import 'vpn_nat_rule_mapping_response.dart';
 class NatRuleNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of egress VpnSiteLinkConnections.
-  late final pulumi.Output<List<SubResourceResponse>> egressVpnSiteLinkConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  egressVpnSiteLinkConnections;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The private IP address external mapping for NAT.
-  late final pulumi.Output<List<VpnNatRuleMappingResponse>?> externalMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> externalMappings;
+
   /// List of ingress VpnSiteLinkConnections.
-  late final pulumi.Output<List<SubResourceResponse>> ingressVpnSiteLinkConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  ingressVpnSiteLinkConnections;
+
   /// The private IP address internal mapping for NAT.
-  late final pulumi.Output<List<VpnNatRuleMappingResponse>?> internalMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> internalMappings;
+
   /// The IP Configuration ID this NAT rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;
+
   /// The Source NAT direction of a VPN NAT.
   late final pulumi.Output<String?> mode;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the NAT Rule resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -231,21 +241,29 @@ class NatRuleNetwork extends pulumi.CustomResource {
     NatRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NatRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.egressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('egressVpnSiteLinkConnections');
-    this.etag = registerOutput<String>('etag');
-    this.externalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('externalMappings');
-    this.ingressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('ingressVpnSiteLinkConnections');
-    this.internalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('internalMappings');
-    this.ipConfigurationId = registerOutput<String?>('ipConfigurationId');
-    this.mode = registerOutput<String?>('mode');
+         'azure-native:network:NatRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    egressVpnSiteLinkConnections = registerOutput<List<Map<String, dynamic>>>(
+      'egressVpnSiteLinkConnections',
+    );
+    etag = registerOutput<String>('etag');
+    externalMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'externalMappings',
+    );
+    ingressVpnSiteLinkConnections = registerOutput<List<Map<String, dynamic>>>(
+      'ingressVpnSiteLinkConnections',
+    );
+    internalMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'internalMappings',
+    );
+    ipConfigurationId = registerOutput<String?>('ipConfigurationId');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

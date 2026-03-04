@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityProfileGroupArgs {
   /// Optional. An optional description of the profile group. Max length 2048 characters.
   final pulumi.Input<String>? description;
+
   /// Optional. Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1".
   final pulumi.Input<String> securityProfileGroupId;
+
   /// Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   final pulumi.Input<String>? threatPreventionProfile;
 
@@ -52,14 +56,37 @@ class SecurityProfileGroupArgs {
 
   factory SecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      securityProfileGroupId: (map['securityProfileGroupId'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      securityProfileGroupId: pulumi.Input.fromValue(
+        map['securityProfileGroupId'] as String,
+      ),
+      threatPreventionProfile: (() {
+        final guardedValue = map['threatPreventionProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

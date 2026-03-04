@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroupVoiceReceiver {
   /// The country code of the voice receiver.
   final pulumi.Input<String> countryCode;
+
   /// The name of the voice receiver.
   final pulumi.Input<String> name;
+
   /// The phone number of the voice receiver.
   final pulumi.Input<String> phoneNumber;
 
@@ -30,10 +32,9 @@ class ActionGroupVoiceReceiver {
 
   factory ActionGroupVoiceReceiver.fromMap(Map<String, dynamic> map) {
     return ActionGroupVoiceReceiver(
-      countryCode: (map['countryCode'] as String).input(),
-      name: (map['name'] as String).input(),
-      phoneNumber: (map['phoneNumber'] as String).input(),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
-

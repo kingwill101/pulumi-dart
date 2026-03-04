@@ -9,20 +9,15 @@ class DiskImageDefaults {
 
   /// Creates a new [DiskImageDefaults].
   /// [sourceImage] The Image resource used when creating the disk.
-  DiskImageDefaults({
-    required this.sourceImage,
-  });
+  DiskImageDefaults({required this.sourceImage});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourceImage': sourceImage,
-    };
+    return <String, dynamic>{'sourceImage': sourceImage};
   }
 
   factory DiskImageDefaults.fromMap(Map<String, dynamic> map) {
     return DiskImageDefaults(
-      sourceImage: (map['sourceImage'] as String).input(),
+      sourceImage: pulumi.Input.fromValue(map['sourceImage'] as String),
     );
   }
 }
-

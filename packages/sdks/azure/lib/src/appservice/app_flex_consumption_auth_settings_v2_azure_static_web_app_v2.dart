@@ -8,20 +8,17 @@ class AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2({
-    required this.clientId,
-  });
+  AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2({required this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': clientId,
-    };
+    return <String, dynamic>{'clientId': clientId};
   }
 
-  factory AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
+  factory AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2(
-      clientId: (map['clientId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
-

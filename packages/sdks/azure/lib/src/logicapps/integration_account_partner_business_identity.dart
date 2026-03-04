@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountPartnerBusinessIdentity {
   /// The authenticating body that provides unique business identities to organizations.
   final pulumi.Input<String> qualifier;
+
   /// The value that identifies the documents that your logic apps receive.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class IntegrationAccountPartnerBusinessIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'qualifier': qualifier,
-      'value': value,
-    };
+    return <String, dynamic>{'qualifier': qualifier, 'value': value};
   }
 
-  factory IntegrationAccountPartnerBusinessIdentity.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountPartnerBusinessIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountPartnerBusinessIdentity(
-      qualifier: (map['qualifier'] as String).input(),
-      value: (map['value'] as String).input(),
+      qualifier: pulumi.Input.fromValue(map['qualifier'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

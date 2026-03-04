@@ -432,7 +432,11 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  late final pulumi.Output<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?> defaultKeyAccessJustificationPolicy;
+  late final pulumi.Output<
+    FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+  >
+  defaultKeyAccessJustificationPolicy;
+
   /// The numeric folder number for which to retrieve config.
   late final pulumi.Output<String> folder;
 
@@ -445,13 +449,16 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
     FolderKajPolicyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultKeyAccessJustificationPolicy = registerOutput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy');
-    this.folder = registerOutput<String>('folder');
+         'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultKeyAccessJustificationPolicy =
+        registerOutput<
+          FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+        >('defaultKeyAccessJustificationPolicy');
+    folder = registerOutput<String>('folder');
   }
 
   /// Gets an existing [FolderKajPolicyConfig] resource's state with the given [name] and [id].
@@ -472,12 +479,15 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultKeyAccessJustificationPolicy = registerOutput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy');
-    this.folder = registerOutput<String>('folder');
+         'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultKeyAccessJustificationPolicy =
+        registerOutput<
+          FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+        >('defaultKeyAccessJustificationPolicy');
+    folder = registerOutput<String>('folder');
   }
 }

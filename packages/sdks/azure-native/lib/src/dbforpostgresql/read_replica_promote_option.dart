@@ -3,16 +3,15 @@ enum ReadReplicaPromoteOption {
   planned("Planned"),
   forced("Forced");
 
-  const ReadReplicaPromoteOption(this.value);
-  final String value;
+  const ReadReplicaPromoteOption(this.wireValue);
+  final String wireValue;
 
   static ReadReplicaPromoteOption fromValue(String value) {
     for (final item in ReadReplicaPromoteOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReadReplicaPromoteOption value: $value');
   }
 }
-

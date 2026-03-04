@@ -4,16 +4,15 @@ enum ScheduleActionType {
   valueInvokeBatchEndpoint("InvokeBatchEndpoint"),
   valueCreateMonitor("CreateMonitor");
 
-  const ScheduleActionType(this.value);
-  final String value;
+  const ScheduleActionType(this.wireValue);
+  final String wireValue;
 
   static ScheduleActionType fromValue(String value) {
     for (final item in ScheduleActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleActionType value: $value');
   }
 }
-

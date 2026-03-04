@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoredResourceResponse {
   /// The ARM id of the resource.
   final pulumi.Input<String>? id;
+
   /// Reason for why the resource is sending logs (or why it is not sending).
   final pulumi.Input<String>? reasonForLogsStatus;
+
   /// Flag indicating the status of the resource for sending logs operation to Elastic.
   final pulumi.Input<String>? sendingLogs;
 
@@ -31,10 +33,21 @@ class MonitoredResourceResponse {
 
   factory MonitoredResourceResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus']! as String).input(),
-      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reasonForLogsStatus: (() {
+        final guardedValue = map['reasonForLogsStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendingLogs: (() {
+        final guardedValue = map['sendingLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

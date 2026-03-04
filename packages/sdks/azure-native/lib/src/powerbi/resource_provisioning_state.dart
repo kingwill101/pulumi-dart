@@ -7,16 +7,15 @@ enum ResourceProvisioningState {
   valueCanceled("Canceled"),
   valueFailed("Failed");
 
-  const ResourceProvisioningState(this.value);
-  final String value;
+  const ResourceProvisioningState(this.wireValue);
+  final String wireValue;
 
   static ResourceProvisioningState fromValue(String value) {
     for (final item in ResourceProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceProvisioningState value: $value');
   }
 }
-

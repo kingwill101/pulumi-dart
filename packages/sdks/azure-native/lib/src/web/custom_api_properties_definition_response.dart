@@ -10,26 +10,38 @@ import 'wsdl_definition_response.dart';
 class CustomApiPropertiesDefinitionResponse {
   /// API Definitions
   final pulumi.Input<ApiResourceDefinitionsResponse>? apiDefinitions;
+
   /// The API type
   final pulumi.Input<String>? apiType;
+
   /// The API backend service
   final pulumi.Input<ApiResourceBackendServiceResponse>? backendService;
+
   /// Brand color
   final pulumi.Input<String>? brandColor;
+
   /// The custom API capabilities
   final pulumi.Input<List<String>>? capabilities;
+
   /// Connection parameters
-  final pulumi.Input<Map<String, ConnectionParameterResponse>>? connectionParameters;
+  final pulumi.Input<Map<String, ConnectionParameterResponse>>?
+  connectionParameters;
+
   /// The custom API description
   final pulumi.Input<String>? description;
+
   /// The display name
   final pulumi.Input<String>? displayName;
+
   /// The icon URI
   final pulumi.Input<String>? iconUri;
+
   /// Runtime URLs
   final pulumi.Input<List<String>>? runtimeUrls;
+
   /// The JSON representation of the swagger
   final pulumi.Input<dynamic>? swagger;
+
   /// The WSDL definition
   final pulumi.Input<WsdlDefinitionResponse>? wsdlDefinition;
 
@@ -63,36 +75,127 @@ class CustomApiPropertiesDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiDefinitions': ?pulumi.Input.mapOptionalInputValue<ApiResourceDefinitionsResponse, Map<String, dynamic>>(apiDefinitions, (value) => value.toMap()),
+      'apiDefinitions':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiResourceDefinitionsResponse,
+            Map<String, dynamic>
+          >(apiDefinitions, (value) => value.toMap()),
       'apiType': ?apiType,
-      'backendService': ?pulumi.Input.mapOptionalInputValue<ApiResourceBackendServiceResponse, Map<String, dynamic>>(backendService, (value) => value.toMap()),
+      'backendService':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiResourceBackendServiceResponse,
+            Map<String, dynamic>
+          >(backendService, (value) => value.toMap()),
       'brandColor': ?brandColor,
       'capabilities': ?capabilities,
-      'connectionParameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ConnectionParameterResponse>, Map<String, Map<String, dynamic>>>(connectionParameters, (value) => pulumi.Input.encodeMapValues<ConnectionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ConnectionParameterResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            connectionParameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ConnectionParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'displayName': ?displayName,
       'iconUri': ?iconUri,
       'runtimeUrls': ?runtimeUrls,
       'swagger': ?swagger,
-      'wsdlDefinition': ?pulumi.Input.mapOptionalInputValue<WsdlDefinitionResponse, Map<String, dynamic>>(wsdlDefinition, (value) => value.toMap()),
+      'wsdlDefinition':
+          ?pulumi.Input.mapOptionalInputValue<
+            WsdlDefinitionResponse,
+            Map<String, dynamic>
+          >(wsdlDefinition, (value) => value.toMap()),
     };
   }
 
-  factory CustomApiPropertiesDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory CustomApiPropertiesDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomApiPropertiesDefinitionResponse(
-      apiDefinitions: map['apiDefinitions'] == null ? null : (ApiResourceDefinitionsResponse.fromMap((map['apiDefinitions']! as Map).cast<String, dynamic>())).input(),
-      apiType: map['apiType'] == null ? null : (map['apiType']! as String).input(),
-      backendService: map['backendService'] == null ? null : (ApiResourceBackendServiceResponse.fromMap((map['backendService']! as Map).cast<String, dynamic>())).input(),
-      brandColor: map['brandColor'] == null ? null : (map['brandColor']! as String).input(),
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
-      connectionParameters: map['connectionParameters'] == null ? null : (pulumi.Input.decodeMapValues<ConnectionParameterResponse>(map['connectionParameters']!, (value) => ConnectionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      iconUri: map['iconUri'] == null ? null : (map['iconUri']! as String).input(),
-      runtimeUrls: map['runtimeUrls'] == null ? null : ((map['runtimeUrls']! as List).cast<String>()).input(),
-      swagger: map['swagger'] == null ? null : (map['swagger']!).input(),
-      wsdlDefinition: map['wsdlDefinition'] == null ? null : (WsdlDefinitionResponse.fromMap((map['wsdlDefinition']! as Map).cast<String, dynamic>())).input(),
+      apiDefinitions: (() {
+        final guardedValue = map['apiDefinitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiResourceDefinitionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      apiType: (() {
+        final guardedValue = map['apiType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backendService: (() {
+        final guardedValue = map['backendService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiResourceBackendServiceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      brandColor: (() {
+        final guardedValue = map['brandColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capabilities: (() {
+        final guardedValue = map['capabilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      connectionParameters: (() {
+        final guardedValue = map['connectionParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ConnectionParameterResponse>(
+            guardedValue,
+            (value) => ConnectionParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iconUri: (() {
+        final guardedValue = map['iconUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeUrls: (() {
+        final guardedValue = map['runtimeUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      swagger: (() {
+        final guardedValue = map['swagger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      wsdlDefinition: (() {
+        final guardedValue = map['wsdlDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WsdlDefinitionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

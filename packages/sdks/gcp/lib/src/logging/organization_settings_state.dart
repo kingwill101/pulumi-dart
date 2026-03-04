@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationSettingsState {
   /// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
   final pulumi.Input<bool>? disableDefaultSink;
+
   /// The resource name for the configured Cloud KMS key.
   final pulumi.Input<String>? kmsKeyName;
+
   /// The service account that will be used by the Log Router to access your Cloud KMS key.
   final pulumi.Input<String>? kmsServiceAccountId;
+
   /// The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
   final pulumi.Input<String>? loggingServiceAccountId;
+
   /// The resource name of the settings.
   final pulumi.Input<String>? name;
+
   /// The organization for which to retrieve or configure settings.
   final pulumi.Input<String>? organization;
+
   /// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
   final pulumi.Input<String>? storageLocation;
 
@@ -51,14 +57,41 @@ class OrganizationSettingsState {
 
   factory OrganizationSettingsState.fromMap(Map<String, dynamic> map) {
     return OrganizationSettingsState(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink']! as bool).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
-      kmsServiceAccountId: map['kmsServiceAccountId'] == null ? null : (map['kmsServiceAccountId']! as String).input(),
-      loggingServiceAccountId: map['loggingServiceAccountId'] == null ? null : (map['loggingServiceAccountId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation']! as String).input(),
+      disableDefaultSink: (() {
+        final guardedValue = map['disableDefaultSink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsServiceAccountId: (() {
+        final guardedValue = map['kmsServiceAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggingServiceAccountId: (() {
+        final guardedValue = map['loggingServiceAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageLocation: (() {
+        final guardedValue = map['storageLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

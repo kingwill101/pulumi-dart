@@ -6,16 +6,22 @@ enum GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsI
   potentialPolicyViolation("POTENTIAL_POLICY_VIOLATION"),
   llmAddonNotEnabled("LLM_ADDON_NOT_ENABLED");
 
-  const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem(this.value);
-  final String value;
+  const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem fromValue(String value) {
-    for (final item in GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem.values) {
-      if (item.value == value) {
+  static GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem value: $value',
+    );
   }
 }
-

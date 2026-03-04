@@ -6,30 +6,44 @@ import 'get_nest_service_instances_service_instance_service.dart';
 class GetNestServiceInstancesServiceInstance {
   /// Whether the service instance has the O&M function.
   final pulumi.Input<bool> enableInstanceOps;
+
   /// The ID of the Service Instance.
   final pulumi.Input<String> id;
+
   /// The ID of the imported service instance.
   final pulumi.Input<String> operatedServiceInstanceId;
+
   /// The end time of O&M.
   final pulumi.Input<String> operationEndTime;
+
   /// The start time of O&M.
   final pulumi.Input<String> operationStartTime;
+
   /// The parameters entered by the deployment service instance.
   final pulumi.Input<String> parameters;
+
   /// The list of imported resources.
   final pulumi.Input<String> resources;
+
   /// The ID of the Service Instance.
   final pulumi.Input<String> serviceInstanceId;
+
   /// The name of the Service Instance.
   final pulumi.Input<String> serviceInstanceName;
+
   /// Service details.
-  final pulumi.Input<List<GetNestServiceInstancesServiceInstanceService>> services;
+  final pulumi.Input<List<GetNestServiceInstancesServiceInstanceService>>
+  services;
+
   /// The source of the Service Instance.
   final pulumi.Input<String> source;
+
   /// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
   final pulumi.Input<String> status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The name of the template.
   final pulumi.Input<String> templateName;
 
@@ -76,7 +90,18 @@ class GetNestServiceInstancesServiceInstance {
       'resources': resources,
       'serviceInstanceId': serviceInstanceId,
       'serviceInstanceName': serviceInstanceName,
-      'services': pulumi.Input.mapInputValue<List<GetNestServiceInstancesServiceInstanceService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<GetNestServiceInstancesServiceInstanceService, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'services':
+          pulumi.Input.mapInputValue<
+            List<GetNestServiceInstancesServiceInstanceService>,
+            List<Map<String, dynamic>>
+          >(
+            services,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNestServiceInstancesServiceInstanceService,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'source': source,
       'status': status,
       'tags': tags,
@@ -84,23 +109,43 @@ class GetNestServiceInstancesServiceInstance {
     };
   }
 
-  factory GetNestServiceInstancesServiceInstance.fromMap(Map<String, dynamic> map) {
+  factory GetNestServiceInstancesServiceInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNestServiceInstancesServiceInstance(
-      enableInstanceOps: (map['enableInstanceOps'] as bool).input(),
-      id: (map['id'] as String).input(),
-      operatedServiceInstanceId: (map['operatedServiceInstanceId'] as String).input(),
-      operationEndTime: (map['operationEndTime'] as String).input(),
-      operationStartTime: (map['operationStartTime'] as String).input(),
-      parameters: (map['parameters'] as String).input(),
-      resources: (map['resources'] as String).input(),
-      serviceInstanceId: (map['serviceInstanceId'] as String).input(),
-      serviceInstanceName: (map['serviceInstanceName'] as String).input(),
-      services: (pulumi.Input.decodeList<GetNestServiceInstancesServiceInstanceService>(map['services'], (value) => GetNestServiceInstancesServiceInstanceService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: (map['source'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      templateName: (map['templateName'] as String).input(),
+      enableInstanceOps: pulumi.Input.fromValue(
+        map['enableInstanceOps'] as bool,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      operatedServiceInstanceId: pulumi.Input.fromValue(
+        map['operatedServiceInstanceId'] as String,
+      ),
+      operationEndTime: pulumi.Input.fromValue(
+        map['operationEndTime'] as String,
+      ),
+      operationStartTime: pulumi.Input.fromValue(
+        map['operationStartTime'] as String,
+      ),
+      parameters: pulumi.Input.fromValue(map['parameters'] as String),
+      resources: pulumi.Input.fromValue(map['resources'] as String),
+      serviceInstanceId: pulumi.Input.fromValue(
+        map['serviceInstanceId'] as String,
+      ),
+      serviceInstanceName: pulumi.Input.fromValue(
+        map['serviceInstanceName'] as String,
+      ),
+      services: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetNestServiceInstancesServiceInstanceService>(
+          map['services']!,
+          (value) => GetNestServiceInstancesServiceInstanceService.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
     );
   }
 }
-

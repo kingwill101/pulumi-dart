@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayRoutePropagationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The id of the `aws.ec2.RouteTable` to propagate routes into.
   final pulumi.Input<String>? routeTableId;
+
   /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
   final pulumi.Input<String>? vpnGatewayId;
 
@@ -31,10 +33,21 @@ class VpnGatewayRoutePropagationState {
 
   factory VpnGatewayRoutePropagationState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayRoutePropagationState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : ((map['vpnGatewayId'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: (() {
+        final guardedValue = map['routeTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpnGatewayId: (() {
+        final guardedValue = map['vpnGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

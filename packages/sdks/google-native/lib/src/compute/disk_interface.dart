@@ -4,16 +4,15 @@ enum DiskInterface {
   scsi("SCSI"),
   unspecified("UNSPECIFIED");
 
-  const DiskInterface(this.value);
-  final String value;
+  const DiskInterface(this.wireValue);
+  final String wireValue;
 
   static DiskInterface fromValue(String value) {
     for (final item in DiskInterface.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskInterface value: $value');
   }
 }
-

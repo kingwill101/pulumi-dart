@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppEngineVersionIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> appId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> service;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> versionId;
 
@@ -40,11 +43,14 @@ class GetAppEngineVersionIamPolicyArgs {
 
   factory GetAppEngineVersionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAppEngineVersionIamPolicyArgs(
-      appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      service: (map['service'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

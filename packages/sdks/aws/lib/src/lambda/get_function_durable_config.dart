@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionDurableConfig {
   /// Maximum execution time in seconds for the durable function.
   final pulumi.Input<int> executionTimeout;
+
   /// Number of days to retain the function's execution state.
   final pulumi.Input<int> retentionPeriod;
 
@@ -25,9 +26,8 @@ class GetFunctionDurableConfig {
 
   factory GetFunctionDurableConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionDurableConfig(
-      executionTimeout: (map['executionTimeout'] as int).input(),
-      retentionPeriod: (map['retentionPeriod'] as int).input(),
+      executionTimeout: pulumi.Input.fromValue(map['executionTimeout'] as int),
+      retentionPeriod: pulumi.Input.fromValue(map['retentionPeriod'] as int),
     );
   }
 }
-

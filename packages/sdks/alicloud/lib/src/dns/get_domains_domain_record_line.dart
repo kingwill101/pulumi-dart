@@ -31,11 +31,10 @@ class GetDomainsDomainRecordLine {
 
   factory GetDomainsDomainRecordLine.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainRecordLine(
-      fatherCode: (map['fatherCode'] as String).input(),
-      lineCode: (map['lineCode'] as String).input(),
-      lineDisplayName: (map['lineDisplayName'] as String).input(),
-      lineName: (map['lineName'] as String).input(),
+      fatherCode: pulumi.Input.fromValue(map['fatherCode'] as String),
+      lineCode: pulumi.Input.fromValue(map['lineCode'] as String),
+      lineDisplayName: pulumi.Input.fromValue(map['lineDisplayName'] as String),
+      lineName: pulumi.Input.fromValue(map['lineName'] as String),
     );
   }
 }
-

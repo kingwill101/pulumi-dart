@@ -297,28 +297,40 @@ import 'system_data_response.dart';
 class StorageTask extends pulumi.CustomResource {
   /// The storage task action that is executed
   late final pulumi.Output<StorageTaskActionResponse> action;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date and time of the storage task in UTC.
   late final pulumi.Output<String> creationTimeInUtc;
+
   /// Text that describes the purpose of the storage task
   late final pulumi.Output<String> description;
+
   /// Storage Task is enabled when set to true and disabled when set to false
   late final pulumi.Output<bool> enabled;
+
   /// The managed service identity of the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Represents the provisioning state of the storage task.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Storage task version.
   late final pulumi.Output<double> taskVersion;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -331,23 +343,23 @@ class StorageTask extends pulumi.CustomResource {
     StorageTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storageactions:StorageTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<StorageTaskActionResponse>('action');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTimeInUtc = registerOutput<String>('creationTimeInUtc');
-    this.description = registerOutput<String>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.identity = registerOutput<ManagedServiceIdentityResponse>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:storageactions:StorageTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<StorageTaskActionResponse>('action');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTimeInUtc = registerOutput<String>('creationTimeInUtc');
+    description = registerOutput<String>('description');
+    enabled = registerOutput<bool>('enabled');
+    identity = registerOutput<ManagedServiceIdentityResponse>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.taskVersion = registerOutput<double>('taskVersion');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    taskVersion = registerOutput<double>('taskVersion');
+    type = registerOutput<String>('type');
   }
 }

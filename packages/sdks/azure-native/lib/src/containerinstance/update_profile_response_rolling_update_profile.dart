@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpdateProfileResponseRollingUpdateProfile {
   /// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
   final pulumi.Input<bool>? inPlaceUpdate;
+
   /// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
   final pulumi.Input<int>? maxBatchPercent;
+
   /// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
   final pulumi.Input<int>? maxUnhealthyPercent;
+
   /// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
   final pulumi.Input<String>? pauseTimeBetweenBatches;
 
@@ -34,13 +37,30 @@ class UpdateProfileResponseRollingUpdateProfile {
     };
   }
 
-  factory UpdateProfileResponseRollingUpdateProfile.fromMap(Map<String, dynamic> map) {
+  factory UpdateProfileResponseRollingUpdateProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UpdateProfileResponseRollingUpdateProfile(
-      inPlaceUpdate: map['inPlaceUpdate'] == null ? null : (map['inPlaceUpdate']! as bool).input(),
-      maxBatchPercent: map['maxBatchPercent'] == null ? null : (map['maxBatchPercent']! as int).input(),
-      maxUnhealthyPercent: map['maxUnhealthyPercent'] == null ? null : (map['maxUnhealthyPercent']! as int).input(),
-      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches']! as String).input(),
+      inPlaceUpdate: (() {
+        final guardedValue = map['inPlaceUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxBatchPercent: (() {
+        final guardedValue = map['maxBatchPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxUnhealthyPercent: (() {
+        final guardedValue = map['maxUnhealthyPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pauseTimeBetweenBatches: (() {
+        final guardedValue = map['pauseTimeBetweenBatches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   /// Password to be used
   final pulumi.Input<String>? password;
+
   /// Username to be used
   final pulumi.Input<String>? username;
 
@@ -18,17 +19,23 @@ class GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': ?password,
-      'username': ?username,
-    };
+    return <String, dynamic>{'password': ?password, 'username': ?username};
   }
 
-  factory GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaUsernameAndPassword(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

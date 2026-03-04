@@ -1,5 +1,3 @@
-library module_healthcareapis;
-
 export 'healthcareapis/analytics_connector.dart';
 export 'healthcareapis/analytics_connector_args.dart';
 export 'healthcareapis/analytics_connector_data_destination_type.dart';

@@ -1,5 +1,3 @@
-library module_appconfiguration;
-
 export 'appconfiguration/api_key_response.dart';
 export 'appconfiguration/authentication_mode.dart';
 export 'appconfiguration/configuration_store.dart';

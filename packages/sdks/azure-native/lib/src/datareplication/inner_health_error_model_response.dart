@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InnerHealthErrorModelResponse {
   /// Gets or sets the error category.
   final pulumi.Input<String> category;
+
   /// Gets or sets possible causes of the error.
   final pulumi.Input<String> causes;
+
   /// Gets or sets the error code.
   final pulumi.Input<String> code;
+
   /// Gets or sets the error creation time.
   final pulumi.Input<String> creationTime;
+
   /// Gets or sets the health category.
   final pulumi.Input<String> healthCategory;
+
   /// Gets or sets a value indicating whether the error is customer resolvable.
   final pulumi.Input<bool> isCustomerResolvable;
+
   /// Gets or sets the error message.
   final pulumi.Input<String> message;
+
   /// Gets or sets recommended action to resolve the error.
   final pulumi.Input<String> recommendation;
+
   /// Gets or sets the error severity.
   final pulumi.Input<String> severity;
+
   /// Gets or sets the error source.
   final pulumi.Input<String> source;
+
   /// Gets or sets the error summary.
   final pulumi.Input<String> summary;
 
@@ -71,18 +81,19 @@ class InnerHealthErrorModelResponse {
 
   factory InnerHealthErrorModelResponse.fromMap(Map<String, dynamic> map) {
     return InnerHealthErrorModelResponse(
-      category: (map['category'] as String).input(),
-      causes: (map['causes'] as String).input(),
-      code: (map['code'] as String).input(),
-      creationTime: (map['creationTime'] as String).input(),
-      healthCategory: (map['healthCategory'] as String).input(),
-      isCustomerResolvable: (map['isCustomerResolvable'] as bool).input(),
-      message: (map['message'] as String).input(),
-      recommendation: (map['recommendation'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      source: (map['source'] as String).input(),
-      summary: (map['summary'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      causes: pulumi.Input.fromValue(map['causes'] as String),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      healthCategory: pulumi.Input.fromValue(map['healthCategory'] as String),
+      isCustomerResolvable: pulumi.Input.fromValue(
+        map['isCustomerResolvable'] as bool,
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      recommendation: pulumi.Input.fromValue(map['recommendation'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      summary: pulumi.Input.fromValue(map['summary'] as String),
     );
   }
 }
-

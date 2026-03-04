@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreferencesState {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   final pulumi.Input<String>? memberAccountDiscountVisibility;
+
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
   final pulumi.Input<String>? savingsEstimationMode;
 
@@ -26,9 +27,16 @@ class PreferencesState {
 
   factory PreferencesState.fromMap(Map<String, dynamic> map) {
     return PreferencesState(
-      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : ((map['memberAccountDiscountVisibility'] as String).input()).input(),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : ((map['savingsEstimationMode'] as String).input()).input(),
+      memberAccountDiscountVisibility: (() {
+        final guardedValue = map['memberAccountDiscountVisibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      savingsEstimationMode: (() {
+        final guardedValue = map['savingsEstimationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

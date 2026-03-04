@@ -5,16 +5,15 @@ enum ConnectorBillingModel {
   valuePremium("premium"),
   valueExpired("expired");
 
-  const ConnectorBillingModel(this.value);
-  final String value;
+  const ConnectorBillingModel(this.wireValue);
+  final String wireValue;
 
   static ConnectorBillingModel fromValue(String value) {
     for (final item in ConnectorBillingModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectorBillingModel value: $value');
   }
 }
-

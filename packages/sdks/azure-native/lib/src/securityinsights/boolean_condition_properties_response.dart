@@ -6,7 +6,9 @@ import 'automation_rule_boolean_condition_response.dart';
 /// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
 class BooleanConditionPropertiesResponse {
   /// Describes an automation rule condition with boolean operators.
-  final pulumi.Input<AutomationRuleBooleanConditionResponse>? conditionProperties;
+  final pulumi.Input<AutomationRuleBooleanConditionResponse>?
+  conditionProperties;
+
   /// Expected value is 'Boolean'.
   final pulumi.Input<String> conditionType;
 
@@ -20,16 +22,27 @@ class BooleanConditionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionProperties': ?pulumi.Input.mapOptionalInputValue<AutomationRuleBooleanConditionResponse, Map<String, dynamic>>(conditionProperties, (value) => value.toMap()),
+      'conditionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutomationRuleBooleanConditionResponse,
+            Map<String, dynamic>
+          >(conditionProperties, (value) => value.toMap()),
       'conditionType': conditionType,
     };
   }
 
   factory BooleanConditionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BooleanConditionPropertiesResponse(
-      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRuleBooleanConditionResponse.fromMap((map['conditionProperties']! as Map).cast<String, dynamic>())).input(),
-      conditionType: (map['conditionType'] as String).input(),
+      conditionProperties: (() {
+        final guardedValue = map['conditionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutomationRuleBooleanConditionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      conditionType: pulumi.Input.fromValue(map['conditionType'] as String),
     );
   }
 }
-

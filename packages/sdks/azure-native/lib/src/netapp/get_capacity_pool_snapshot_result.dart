@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetCapacityPoolSnapshotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The creation date of the snapshot
   final String created;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Resource location
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Azure lifecycle management
   final String provisioningState;
+
   /// UUID v4 used to identify the Snapshot
   final String snapshotId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,9 +76,10 @@ class GetCapacityPoolSnapshotResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       snapshotId: map['snapshotId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

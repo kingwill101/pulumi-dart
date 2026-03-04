@@ -3,16 +3,15 @@ enum UnmaskedIpLoggingStatus {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const UnmaskedIpLoggingStatus(this.value);
-  final String value;
+  const UnmaskedIpLoggingStatus(this.wireValue);
+  final String wireValue;
 
   static UnmaskedIpLoggingStatus fromValue(String value) {
     for (final item in UnmaskedIpLoggingStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UnmaskedIpLoggingStatus value: $value');
   }
 }
-

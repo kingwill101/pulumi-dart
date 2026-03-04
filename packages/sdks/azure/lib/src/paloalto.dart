@@ -1,5 +1,3 @@
-library module_paloalto;
-
 export 'paloalto/functions.dart';
 export 'paloalto/get_local_rulestack_args.dart';
 export 'paloalto/get_local_rulestack_result.dart';

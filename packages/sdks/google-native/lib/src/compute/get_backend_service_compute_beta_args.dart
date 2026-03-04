@@ -27,9 +27,12 @@ class GetBackendServiceComputeBetaArgs {
 
   factory GetBackendServiceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceComputeBetaArgs(
-      backendService: (map['backendService'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

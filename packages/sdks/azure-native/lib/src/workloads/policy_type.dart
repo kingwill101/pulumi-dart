@@ -9,16 +9,15 @@ enum PolicyType {
   valueSnapshotFull("SnapshotFull"),
   valueSnapshotCopyOnlyFull("SnapshotCopyOnlyFull");
 
-  const PolicyType(this.value);
-  final String value;
+  const PolicyType(this.wireValue);
+  final String wireValue;
 
   static PolicyType fromValue(String value) {
     for (final item in PolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyType value: $value');
   }
 }
-

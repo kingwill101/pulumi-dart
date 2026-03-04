@@ -2,15 +2,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_analytical_storage.dart';
 import 'account_args.dart';
 import 'account_backup.dart';
-import 'account_capability.dart';
 import 'account_capacity.dart';
 import 'account_consistency_policy.dart';
 import 'account_cors_rule.dart';
-import 'account_geo_location.dart';
 import 'account_identity.dart';
 import 'account_restore.dart';
 import 'account_state.dart';
-import 'account_virtual_network_rule.dart';
 
 /// Manages a CosmosDB (formally DocumentDB) Account.
 ///
@@ -682,7 +679,7 @@ import 'account_virtual_network_rule.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2024-08-15
@@ -696,82 +693,107 @@ import 'account_virtual_network_rule.dart';
 /// ```
 class Account extends pulumi.CustomResource {
   late final pulumi.Output<bool?> accessKeyMetadataWritesEnabled;
+
   /// An `analytical_storage` block as defined below.
   late final pulumi.Output<AccountAnalyticalStorage> analyticalStorage;
   late final pulumi.Output<bool?> analyticalStorageEnabled;
   late final pulumi.Output<bool?> automaticFailoverEnabled;
   late final pulumi.Output<AccountBackup> backup;
   late final pulumi.Output<bool?> burstCapacityEnabled;
-  late final pulumi.Output<List<AccountCapability>> capabilities;
+  late final pulumi.Output<List<Map<String, dynamic>>> capabilities;
+
   /// A `capacity` block as defined below.
   late final pulumi.Output<AccountCapacity> capacity;
   late final pulumi.Output<AccountConsistencyPolicy> consistencyPolicy;
   late final pulumi.Output<AccountCorsRule?> corsRule;
+
   /// The creation mode for the CosmosDB Account. Possible values are `Default` and `Restore`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `create_mode` can only be defined when the `backup.type` is set to `Continuous`.
+  /// &gt; **Note:** `create_mode` can only be defined when the `backup.type` is set to `Continuous`.
   late final pulumi.Output<String> createMode;
+
   /// The default identity for accessing Key Vault. Possible values are `FirstPartyIdentity`, `SystemAssignedIdentity` or `UserAssignedIdentity`. Defaults to `FirstPartyIdentity`.
   late final pulumi.Output<String?> defaultIdentityType;
+
   /// The endpoint used to connect to the CosmosDB account.
   late final pulumi.Output<String> endpoint;
   late final pulumi.Output<bool?> freeTierEnabled;
-  late final pulumi.Output<List<AccountGeoLocation>> geoLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>> geoLocations;
   late final pulumi.Output<AccountIdentity?> identity;
   late final pulumi.Output<List<String>?> ipRangeFilters;
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
   late final pulumi.Output<String?> keyVaultKeyId;
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<bool?> localAuthenticationDisabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String?> managedHsmKeyId;
+
   /// Specifies the minimal TLS version for the CosmosDB account. Possible values are: `Tls`, `Tls11`, and `Tls12`. Defaults to `Tls12`.
   ///
-  /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more details.
+  /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more details.
   late final pulumi.Output<String?> minimalTlsVersion;
   late final pulumi.Output<String> mongoServerVersion;
   late final pulumi.Output<bool?> multipleWriteLocationsEnabled;
+
   /// Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<bool?> networkAclBypassForAzureServices;
   late final pulumi.Output<List<String>?> networkAclBypassIds;
+
   /// Specifies the Offer Type to use for this CosmosDB Account; currently, this can only be set to `Standard`.
   late final pulumi.Output<String> offerType;
   late final pulumi.Output<bool?> partitionMergeEnabled;
+
   /// The Primary key for the CosmosDB Account.
   late final pulumi.Output<String> primaryKey;
+
   /// Primary Mongodb connection string for the CosmosDB Account.
   late final pulumi.Output<String> primaryMongodbConnectionString;
+
   /// The Primary read-only Key for the CosmosDB Account.
   late final pulumi.Output<String> primaryReadonlyKey;
+
   /// Primary readonly Mongodb connection string for the CosmosDB Account.
   late final pulumi.Output<String> primaryReadonlyMongodbConnectionString;
+
   /// Primary readonly SQL connection string for the CosmosDB Account.
   late final pulumi.Output<String> primaryReadonlySqlConnectionString;
+
   /// Primary SQL connection string for the CosmosDB Account.
   late final pulumi.Output<String> primarySqlConnectionString;
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// A list of read endpoints available for this CosmosDB account.
   late final pulumi.Output<List<String>> readEndpoints;
+
   /// The name of the resource group in which the CosmosDB Account is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<AccountRestore?> restore;
+
   /// The Secondary key for the CosmosDB Account.
   late final pulumi.Output<String> secondaryKey;
+
   /// Secondary Mongodb connection string for the CosmosDB Account.
   late final pulumi.Output<String> secondaryMongodbConnectionString;
+
   /// The Secondary read-only key for the CosmosDB Account.
   late final pulumi.Output<String> secondaryReadonlyKey;
+
   /// Secondary readonly Mongodb connection string for the CosmosDB Account.
   late final pulumi.Output<String> secondaryReadonlyMongodbConnectionString;
+
   /// Secondary readonly SQL connection string for the CosmosDB Account.
   late final pulumi.Output<String> secondaryReadonlySqlConnectionString;
+
   /// Secondary SQL connection string for the CosmosDB Account.
   late final pulumi.Output<String> secondarySqlConnectionString;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  late final pulumi.Output<List<AccountVirtualNetworkRule>?> virtualNetworkRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
+
   /// A list of write endpoints available for this CosmosDB account.
   late final pulumi.Output<List<String>> writeEndpoints;
 
@@ -784,61 +806,99 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKeyMetadataWritesEnabled = registerOutput<bool?>('accessKeyMetadataWritesEnabled');
-    this.analyticalStorage = registerOutput<AccountAnalyticalStorage>('analyticalStorage');
-    this.analyticalStorageEnabled = registerOutput<bool?>('analyticalStorageEnabled');
-    this.automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
-    this.backup = registerOutput<AccountBackup>('backup');
-    this.burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
-    this.capabilities = registerOutput<List<AccountCapability>>('capabilities');
-    this.capacity = registerOutput<AccountCapacity>('capacity');
-    this.consistencyPolicy = registerOutput<AccountConsistencyPolicy>('consistencyPolicy');
-    this.corsRule = registerOutput<AccountCorsRule?>('corsRule');
-    this.createMode = registerOutput<String>('createMode');
-    this.defaultIdentityType = registerOutput<String?>('defaultIdentityType');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
-    this.geoLocations = registerOutput<List<AccountGeoLocation>>('geoLocations');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
-    this.isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    this.kind = registerOutput<String?>('kind');
-    this.localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
-    this.location = registerOutput<String>('location');
-    this.managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
-    this.mongoServerVersion = registerOutput<String>('mongoServerVersion');
-    this.multipleWriteLocationsEnabled = registerOutput<bool?>('multipleWriteLocationsEnabled');
+         'azure:cosmosdb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKeyMetadataWritesEnabled = registerOutput<bool?>(
+      'accessKeyMetadataWritesEnabled',
+    );
+    analyticalStorage = registerOutput<AccountAnalyticalStorage>(
+      'analyticalStorage',
+    );
+    analyticalStorageEnabled = registerOutput<bool?>(
+      'analyticalStorageEnabled',
+    );
+    automaticFailoverEnabled = registerOutput<bool?>(
+      'automaticFailoverEnabled',
+    );
+    backup = registerOutput<AccountBackup>('backup');
+    burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
+    capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
+    capacity = registerOutput<AccountCapacity>('capacity');
+    consistencyPolicy = registerOutput<AccountConsistencyPolicy>(
+      'consistencyPolicy',
+    );
+    corsRule = registerOutput<AccountCorsRule?>('corsRule');
+    createMode = registerOutput<String>('createMode');
+    defaultIdentityType = registerOutput<String?>('defaultIdentityType');
+    endpoint = registerOutput<String>('endpoint');
+    freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
+    geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
+    identity = registerOutput<AccountIdentity?>('identity');
+    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>(
+      'isVirtualNetworkFilterEnabled',
+    );
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    kind = registerOutput<String?>('kind');
+    localAuthenticationDisabled = registerOutput<bool?>(
+      'localAuthenticationDisabled',
+    );
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    mongoServerVersion = registerOutput<String>('mongoServerVersion');
+    multipleWriteLocationsEnabled = registerOutput<bool?>(
+      'multipleWriteLocationsEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAclBypassForAzureServices = registerOutput<bool?>('networkAclBypassForAzureServices');
-    this.networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
-    this.offerType = registerOutput<String>('offerType');
-    this.partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString');
-    this.primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
-    this.primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString');
-    this.primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString');
-    this.primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.readEndpoints = registerOutput<List<String>>('readEndpoints');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restore = registerOutput<AccountRestore?>('restore');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString');
-    this.secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
-    this.secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString');
-    this.secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString');
-    this.secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkRules = registerOutput<List<AccountVirtualNetworkRule>?>('virtualNetworkRules');
-    this.writeEndpoints = registerOutput<List<String>>('writeEndpoints');
+    networkAclBypassForAzureServices = registerOutput<bool?>(
+      'networkAclBypassForAzureServices',
+    );
+    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
+    offerType = registerOutput<String>('offerType');
+    partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
+    primaryKey = registerOutput<String>('primaryKey');
+    primaryMongodbConnectionString = registerOutput<String>(
+      'primaryMongodbConnectionString',
+    );
+    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
+    primaryReadonlyMongodbConnectionString = registerOutput<String>(
+      'primaryReadonlyMongodbConnectionString',
+    );
+    primaryReadonlySqlConnectionString = registerOutput<String>(
+      'primaryReadonlySqlConnectionString',
+    );
+    primarySqlConnectionString = registerOutput<String>(
+      'primarySqlConnectionString',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    readEndpoints = registerOutput<List<String>>('readEndpoints');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<AccountRestore?>('restore');
+    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryMongodbConnectionString = registerOutput<String>(
+      'secondaryMongodbConnectionString',
+    );
+    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
+    secondaryReadonlyMongodbConnectionString = registerOutput<String>(
+      'secondaryReadonlyMongodbConnectionString',
+    );
+    secondaryReadonlySqlConnectionString = registerOutput<String>(
+      'secondaryReadonlySqlConnectionString',
+    );
+    secondarySqlConnectionString = registerOutput<String>(
+      'secondarySqlConnectionString',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworkRules',
+    );
+    writeEndpoints = registerOutput<List<String>>('writeEndpoints');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -859,60 +919,98 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKeyMetadataWritesEnabled = registerOutput<bool?>('accessKeyMetadataWritesEnabled');
-    this.analyticalStorage = registerOutput<AccountAnalyticalStorage>('analyticalStorage');
-    this.analyticalStorageEnabled = registerOutput<bool?>('analyticalStorageEnabled');
-    this.automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
-    this.backup = registerOutput<AccountBackup>('backup');
-    this.burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
-    this.capabilities = registerOutput<List<AccountCapability>>('capabilities');
-    this.capacity = registerOutput<AccountCapacity>('capacity');
-    this.consistencyPolicy = registerOutput<AccountConsistencyPolicy>('consistencyPolicy');
-    this.corsRule = registerOutput<AccountCorsRule?>('corsRule');
-    this.createMode = registerOutput<String>('createMode');
-    this.defaultIdentityType = registerOutput<String?>('defaultIdentityType');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
-    this.geoLocations = registerOutput<List<AccountGeoLocation>>('geoLocations');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
-    this.isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    this.kind = registerOutput<String?>('kind');
-    this.localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
-    this.location = registerOutput<String>('location');
-    this.managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
-    this.mongoServerVersion = registerOutput<String>('mongoServerVersion');
-    this.multipleWriteLocationsEnabled = registerOutput<bool?>('multipleWriteLocationsEnabled');
+         'azure:cosmosdb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKeyMetadataWritesEnabled = registerOutput<bool?>(
+      'accessKeyMetadataWritesEnabled',
+    );
+    analyticalStorage = registerOutput<AccountAnalyticalStorage>(
+      'analyticalStorage',
+    );
+    analyticalStorageEnabled = registerOutput<bool?>(
+      'analyticalStorageEnabled',
+    );
+    automaticFailoverEnabled = registerOutput<bool?>(
+      'automaticFailoverEnabled',
+    );
+    backup = registerOutput<AccountBackup>('backup');
+    burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
+    capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
+    capacity = registerOutput<AccountCapacity>('capacity');
+    consistencyPolicy = registerOutput<AccountConsistencyPolicy>(
+      'consistencyPolicy',
+    );
+    corsRule = registerOutput<AccountCorsRule?>('corsRule');
+    createMode = registerOutput<String>('createMode');
+    defaultIdentityType = registerOutput<String?>('defaultIdentityType');
+    endpoint = registerOutput<String>('endpoint');
+    freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
+    geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
+    identity = registerOutput<AccountIdentity?>('identity');
+    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>(
+      'isVirtualNetworkFilterEnabled',
+    );
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    kind = registerOutput<String?>('kind');
+    localAuthenticationDisabled = registerOutput<bool?>(
+      'localAuthenticationDisabled',
+    );
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    mongoServerVersion = registerOutput<String>('mongoServerVersion');
+    multipleWriteLocationsEnabled = registerOutput<bool?>(
+      'multipleWriteLocationsEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAclBypassForAzureServices = registerOutput<bool?>('networkAclBypassForAzureServices');
-    this.networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
-    this.offerType = registerOutput<String>('offerType');
-    this.partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString');
-    this.primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
-    this.primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString');
-    this.primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString');
-    this.primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.readEndpoints = registerOutput<List<String>>('readEndpoints');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restore = registerOutput<AccountRestore?>('restore');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString');
-    this.secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
-    this.secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString');
-    this.secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString');
-    this.secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkRules = registerOutput<List<AccountVirtualNetworkRule>?>('virtualNetworkRules');
-    this.writeEndpoints = registerOutput<List<String>>('writeEndpoints');
+    networkAclBypassForAzureServices = registerOutput<bool?>(
+      'networkAclBypassForAzureServices',
+    );
+    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
+    offerType = registerOutput<String>('offerType');
+    partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
+    primaryKey = registerOutput<String>('primaryKey');
+    primaryMongodbConnectionString = registerOutput<String>(
+      'primaryMongodbConnectionString',
+    );
+    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
+    primaryReadonlyMongodbConnectionString = registerOutput<String>(
+      'primaryReadonlyMongodbConnectionString',
+    );
+    primaryReadonlySqlConnectionString = registerOutput<String>(
+      'primaryReadonlySqlConnectionString',
+    );
+    primarySqlConnectionString = registerOutput<String>(
+      'primarySqlConnectionString',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    readEndpoints = registerOutput<List<String>>('readEndpoints');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<AccountRestore?>('restore');
+    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryMongodbConnectionString = registerOutput<String>(
+      'secondaryMongodbConnectionString',
+    );
+    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
+    secondaryReadonlyMongodbConnectionString = registerOutput<String>(
+      'secondaryReadonlyMongodbConnectionString',
+    );
+    secondaryReadonlySqlConnectionString = registerOutput<String>(
+      'secondaryReadonlySqlConnectionString',
+    );
+    secondarySqlConnectionString = registerOutput<String>(
+      'secondarySqlConnectionString',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworkRules',
+    );
+    writeEndpoints = registerOutput<List<String>>('writeEndpoints');
   }
 }

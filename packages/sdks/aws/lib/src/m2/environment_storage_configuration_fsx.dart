@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentStorageConfigurationFsx {
   /// Id of the FSX filesystem to mount.
   final pulumi.Input<String> fileSystemId;
+
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final pulumi.Input<String> mountPoint;
 
@@ -25,9 +26,8 @@ class EnvironmentStorageConfigurationFsx {
 
   factory EnvironmentStorageConfigurationFsx.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfigurationFsx(
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      mountPoint: (map['mountPoint'] as String).input(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
     );
   }
 }
-

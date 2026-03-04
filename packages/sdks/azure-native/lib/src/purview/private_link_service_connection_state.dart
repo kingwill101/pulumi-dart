@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnectionState {
   /// The required actions.
   final pulumi.Input<String>? actionsRequired;
+
   /// The description.
   final pulumi.Input<String>? description;
+
   /// The status.
   final pulumi.Input<String>? status;
 
@@ -31,10 +33,21 @@ class PrivateLinkServiceConnectionState {
 
   factory PrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      actionsRequired: (() {
+        final guardedValue = map['actionsRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

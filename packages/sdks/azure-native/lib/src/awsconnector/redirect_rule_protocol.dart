@@ -3,16 +3,15 @@ enum RedirectRuleProtocol {
   http("http"),
   https("https");
 
-  const RedirectRuleProtocol(this.value);
-  final String value;
+  const RedirectRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static RedirectRuleProtocol fromValue(String value) {
     for (final item in RedirectRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RedirectRuleProtocol value: $value');
   }
 }
-

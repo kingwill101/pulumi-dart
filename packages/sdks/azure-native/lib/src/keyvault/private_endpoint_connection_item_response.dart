@@ -8,12 +8,17 @@ import 'private_link_service_connection_state_response.dart';
 class PrivateEndpointConnectionItemResponse {
   /// Modified whenever there is a change in the state of private endpoint connection.
   final pulumi.Input<String>? etag;
+
   /// Id of private endpoint connection.
   final pulumi.Input<String>? id;
+
   /// Properties of the private endpoint object.
   final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+
   /// Approval state of the private link connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>?
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
 
@@ -35,20 +40,55 @@ class PrivateEndpointConnectionItemResponse {
     return <String, dynamic>{
       'etag': ?etag,
       'id': ?id,
-      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
-      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateEndpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateEndpointResponse,
+            Map<String, dynamic>
+          >(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateLinkServiceConnectionStateResponse,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
-  factory PrivateEndpointConnectionItemResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateEndpointConnectionItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateEndpointConnectionItemResponse(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpoint: (() {
+        final guardedValue = map['privateEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateEndpointResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateLinkServiceConnectionStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

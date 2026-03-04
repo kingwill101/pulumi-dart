@@ -3,16 +3,15 @@ enum PasswordBasedAuth {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const PasswordBasedAuth(this.value);
-  final String value;
+  const PasswordBasedAuth(this.wireValue);
+  final String wireValue;
 
   static PasswordBasedAuth fromValue(String value) {
     for (final item in PasswordBasedAuth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PasswordBasedAuth value: $value');
   }
 }
-

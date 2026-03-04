@@ -7,29 +7,51 @@ import 'forest_trust.dart';
 class ResourceForestSettings {
   /// Resource Forest
   final pulumi.Input<String>? resourceForest;
+
   /// List of settings for Resource Forest
   final pulumi.Input<List<ForestTrust>>? settings;
 
   /// Creates a new [ResourceForestSettings].
   /// [resourceForest] Resource Forest
   /// [settings] List of settings for Resource Forest
-  ResourceForestSettings({
-    this.resourceForest,
-    this.settings,
-  });
+  ResourceForestSettings({this.resourceForest, this.settings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resourceForest': ?resourceForest,
-      'settings': ?pulumi.Input.mapOptionalInputValue<List<ForestTrust>, List<Map<String, dynamic>>>(settings, (value) => pulumi.Input.encodeList<ForestTrust, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ForestTrust>,
+            List<Map<String, dynamic>>
+          >(
+            settings,
+            (value) =>
+                pulumi.Input.encodeList<ForestTrust, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ResourceForestSettings.fromMap(Map<String, dynamic> map) {
     return ResourceForestSettings(
-      resourceForest: map['resourceForest'] == null ? null : (map['resourceForest']! as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ForestTrust>(map['settings']!, (value) => ForestTrust.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceForest: (() {
+        final guardedValue = map['resourceForest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ForestTrust>(
+            guardedValue,
+            (value) =>
+                ForestTrust.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

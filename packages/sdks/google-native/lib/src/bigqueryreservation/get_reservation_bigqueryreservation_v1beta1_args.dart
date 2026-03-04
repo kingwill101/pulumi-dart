@@ -29,12 +29,17 @@ class GetReservationBigqueryreservationV1beta1Args {
     };
   }
 
-  factory GetReservationBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetReservationBigqueryreservationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationBigqueryreservationV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reservationId: (map['reservationId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservationId: pulumi.Input.fromValue(map['reservationId'] as String),
     );
   }
 }
-

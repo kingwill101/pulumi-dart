@@ -1,5 +1,3 @@
-library module_odb;
-
 export 'odb/cloud_autonomous_vm_cluster.dart';
 export 'odb/cloud_autonomous_vm_cluster_args.dart';
 export 'odb/cloud_autonomous_vm_cluster_maintenance_window.dart';

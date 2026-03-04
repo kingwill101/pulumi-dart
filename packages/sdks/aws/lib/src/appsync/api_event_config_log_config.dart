@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiEventConfigLogConfig {
   /// ARN of the IAM role for CloudWatch logs.
   final pulumi.Input<String> cloudwatchLogsRoleArn;
+
   /// Log level. Valid values: `NONE`, `ERROR`, `ALL`, `INFO`, `DEBUG`.
   final pulumi.Input<String> logLevel;
 
@@ -25,9 +26,10 @@ class ApiEventConfigLogConfig {
 
   factory ApiEventConfigLogConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigLogConfig(
-      cloudwatchLogsRoleArn: (map['cloudwatchLogsRoleArn'] as String).input(),
-      logLevel: (map['logLevel'] as String).input(),
+      cloudwatchLogsRoleArn: pulumi.Input.fromValue(
+        map['cloudwatchLogsRoleArn'] as String,
+      ),
+      logLevel: pulumi.Input.fromValue(map['logLevel'] as String),
     );
   }
 }
-

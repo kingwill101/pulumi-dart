@@ -119,22 +119,30 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
   /// ARN of the associated Agent Runtime.
   late final pulumi.Output<String> agentRuntimeArn;
+
   /// ARN of the Agent Runtime Endpoint.
   late final pulumi.Output<String> agentRuntimeEndpointArn;
+
   /// ID of the agent runtime this endpoint belongs to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> agentRuntimeId;
+
   /// Version of the agent runtime to use for this endpoint.
   late final pulumi.Output<String> agentRuntimeVersion;
+
   /// Description of the agent runtime endpoint.
   late final pulumi.Output<String?> description;
+
   /// Name of the agent runtime endpoint.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeEndpointTimeouts?> timeouts;
@@ -148,21 +156,23 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     AgentcoreAgentRuntimeEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
-    this.agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
-    this.agentRuntimeId = registerOutput<String>('agentRuntimeId');
-    this.agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
-    this.description = registerOutput<String?>('description');
+         'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
+    agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
+    agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>(
+      'timeouts',
+    );
   }
 
   /// Gets an existing [AgentcoreAgentRuntimeEndpoint] resource's state with the given [name] and [id].
@@ -183,20 +193,22 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
-    this.agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
-    this.agentRuntimeId = registerOutput<String>('agentRuntimeId');
-    this.agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
-    this.description = registerOutput<String?>('description');
+         'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
+    agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
+    agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>(
+      'timeouts',
+    );
   }
 }

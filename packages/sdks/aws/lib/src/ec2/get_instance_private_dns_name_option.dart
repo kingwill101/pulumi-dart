@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancePrivateDnsNameOption {
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records.
   final pulumi.Input<bool> enableResourceNameDnsARecord;
+
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.
   final pulumi.Input<bool> enableResourceNameDnsAaaaRecord;
+
   /// Type of hostname for EC2 instances.
   final pulumi.Input<String> hostnameType;
 
@@ -30,10 +32,13 @@ class GetInstancePrivateDnsNameOption {
 
   factory GetInstancePrivateDnsNameOption.fromMap(Map<String, dynamic> map) {
     return GetInstancePrivateDnsNameOption(
-      enableResourceNameDnsARecord: (map['enableResourceNameDnsARecord'] as bool).input(),
-      enableResourceNameDnsAaaaRecord: (map['enableResourceNameDnsAaaaRecord'] as bool).input(),
-      hostnameType: (map['hostnameType'] as String).input(),
+      enableResourceNameDnsARecord: pulumi.Input.fromValue(
+        map['enableResourceNameDnsARecord'] as bool,
+      ),
+      enableResourceNameDnsAaaaRecord: pulumi.Input.fromValue(
+        map['enableResourceNameDnsAaaaRecord'] as bool,
+      ),
+      hostnameType: pulumi.Input.fromValue(map['hostnameType'] as String),
     );
   }
 }
-

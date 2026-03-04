@@ -6,28 +6,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationServiceGitRepositoryResponse {
   /// Resource Id of CA certificate for https URL of Git repository.
   final pulumi.Input<String>? caCertResourceId;
+
   /// Git libraries used to support various repository providers
   final pulumi.Input<String>? gitImplementation;
+
   /// Public sshKey of git repository.
   final pulumi.Input<String>? hostKey;
+
   /// SshKey algorithm of git repository.
   final pulumi.Input<String>? hostKeyAlgorithm;
+
   /// Label of the repository
   final pulumi.Input<String> label;
+
   /// Name of the repository
   final pulumi.Input<String> name;
+
   /// Password of git repository basic auth.
   final pulumi.Input<String>? password;
+
   /// Collection of patterns of the repository
   final pulumi.Input<List<String>> patterns;
+
   /// Private sshKey algorithm of git repository.
   final pulumi.Input<String>? privateKey;
+
   /// Searching path of the repository
   final pulumi.Input<List<String>>? searchPaths;
+
   /// Strict host key checking or not.
   final pulumi.Input<bool>? strictHostKeyChecking;
+
   /// URI of the repository
   final pulumi.Input<String> uri;
+
   /// Username of git repository basic auth.
   final pulumi.Input<String>? username;
 
@@ -79,22 +91,61 @@ class ConfigurationServiceGitRepositoryResponse {
     };
   }
 
-  factory ConfigurationServiceGitRepositoryResponse.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationServiceGitRepositoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationServiceGitRepositoryResponse(
-      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId']! as String).input(),
-      gitImplementation: map['gitImplementation'] == null ? null : (map['gitImplementation']! as String).input(),
-      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm']! as String).input(),
-      label: (map['label'] as String).input(),
-      name: (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      patterns: ((map['patterns'] as List).cast<String>()).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths']! as List).cast<String>()).input(),
-      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : (map['strictHostKeyChecking']! as bool).input(),
-      uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      caCertResourceId: (() {
+        final guardedValue = map['caCertResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gitImplementation: (() {
+        final guardedValue = map['gitImplementation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostKey: (() {
+        final guardedValue = map['hostKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostKeyAlgorithm: (() {
+        final guardedValue = map['hostKeyAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patterns: pulumi.Input.fromValue(
+        (map['patterns'] as List).cast<String>(),
+      ),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchPaths: (() {
+        final guardedValue = map['searchPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      strictHostKeyChecking: (() {
+        final guardedValue = map['strictHostKeyChecking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

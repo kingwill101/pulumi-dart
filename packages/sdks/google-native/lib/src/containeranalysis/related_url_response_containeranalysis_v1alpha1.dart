@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelatedUrlResponseContaineranalysisV1alpha1 {
   /// Label to describe usage of the URL
   final pulumi.Input<String> label;
+
   /// Specific URL to associate with the note
   final pulumi.Input<String> url;
 
@@ -18,17 +19,15 @@ class RelatedUrlResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'label': label,
-      'url': url,
-    };
+    return <String, dynamic>{'label': label, 'url': url};
   }
 
-  factory RelatedUrlResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory RelatedUrlResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelatedUrlResponseContaineranalysisV1alpha1(
-      label: (map['label'] as String).input(),
-      url: (map['url'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

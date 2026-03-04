@@ -7,18 +7,24 @@ import 'get_transit_router_peer_attachments_attachment.dart';
 class GetTransitRouterPeerAttachmentsResult {
   final List<GetTransitRouterPeerAttachmentsAttachment> attachments;
   final String cenId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of CEN Transit Router peer attachments IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of CEN Transit Router peer attachments names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the transit router attachment.
   final String? status;
+
   /// ID of the transit router attachment.
   final String? transitRouterAttachmentId;
+
   /// ID of the transit router.
   final String? transitRouterId;
 
@@ -48,7 +54,11 @@ class GetTransitRouterPeerAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetTransitRouterPeerAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetTransitRouterPeerAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'cenId': cenId,
       'id': id,
       'ids': ids,
@@ -61,19 +71,46 @@ class GetTransitRouterPeerAttachmentsResult {
     };
   }
 
-  factory GetTransitRouterPeerAttachmentsResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterPeerAttachmentsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterPeerAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetTransitRouterPeerAttachmentsAttachment>(map['attachments'], (value) => GetTransitRouterPeerAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      attachments:
+          pulumi.Input.decodeList<GetTransitRouterPeerAttachmentsAttachment>(
+            map['attachments']!,
+            (value) => GetTransitRouterPeerAttachmentsAttachment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       cenId: map['cenId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterAttachmentId: (() {
+        final guardedValue = map['transitRouterAttachmentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

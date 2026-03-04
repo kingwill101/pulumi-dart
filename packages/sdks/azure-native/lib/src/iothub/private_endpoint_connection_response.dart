@@ -7,10 +7,13 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnectionResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The properties of a private endpoint connection
   final pulumi.Input<PrivateEndpointConnectionPropertiesResponse> properties;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -30,18 +33,25 @@ class PrivateEndpointConnectionResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'properties': pulumi.Input.mapInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            PrivateEndpointConnectionPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        PrivateEndpointConnectionPropertiesResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'acceptEula': acceptEula,
-    };
+    return <String, dynamic>{'acceptEula': acceptEula};
   }
 
-  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig(
-      acceptEula: (map['acceptEula'] as bool).input(),
+      acceptEula: pulumi.Input.fromValue(map['acceptEula'] as bool),
     );
   }
 }
-

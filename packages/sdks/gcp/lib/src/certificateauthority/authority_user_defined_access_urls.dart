@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorityUserDefinedAccessUrls {
   /// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
   final pulumi.Input<List<String>>? aiaIssuingCertificateUrls;
+
   /// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
   final pulumi.Input<List<String>>? crlAccessUrls;
 
@@ -25,9 +26,16 @@ class AuthorityUserDefinedAccessUrls {
 
   factory AuthorityUserDefinedAccessUrls.fromMap(Map<String, dynamic> map) {
     return AuthorityUserDefinedAccessUrls(
-      aiaIssuingCertificateUrls: map['aiaIssuingCertificateUrls'] == null ? null : ((map['aiaIssuingCertificateUrls']! as List).cast<String>()).input(),
-      crlAccessUrls: map['crlAccessUrls'] == null ? null : ((map['crlAccessUrls']! as List).cast<String>()).input(),
+      aiaIssuingCertificateUrls: (() {
+        final guardedValue = map['aiaIssuingCertificateUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      crlAccessUrls: (() {
+        final guardedValue = map['crlAccessUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

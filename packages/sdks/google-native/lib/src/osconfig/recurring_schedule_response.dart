@@ -10,20 +10,28 @@ import 'weekly_schedule_response.dart';
 class RecurringScheduleResponse {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
   final pulumi.Input<String> endTime;
+
   /// The frequency unit of this recurring schedule.
   final pulumi.Input<String> frequency;
+
   /// The time the last patch job ran successfully.
   final pulumi.Input<String> lastExecuteTime;
+
   /// Schedule with monthly executions.
   final pulumi.Input<MonthlyScheduleResponse> monthly;
+
   /// The time the next patch job is scheduled to run.
   final pulumi.Input<String> nextExecuteTime;
+
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
   final pulumi.Input<String> startTime;
+
   /// Time of the day to run a recurring deployment.
   final pulumi.Input<TimeOfDayResponse> timeOfDay;
+
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   final pulumi.Input<TimeZoneResponse> timeZone;
+
   /// Schedule with weekly executions.
   final pulumi.Input<WeeklyScheduleResponse> weekly;
 
@@ -54,27 +62,58 @@ class RecurringScheduleResponse {
       'endTime': endTime,
       'frequency': frequency,
       'lastExecuteTime': lastExecuteTime,
-      'monthly': pulumi.Input.mapInputValue<MonthlyScheduleResponse, Map<String, dynamic>>(monthly, (value) => value.toMap()),
+      'monthly':
+          pulumi.Input.mapInputValue<
+            MonthlyScheduleResponse,
+            Map<String, dynamic>
+          >(monthly, (value) => value.toMap()),
       'nextExecuteTime': nextExecuteTime,
       'startTime': startTime,
-      'timeOfDay': pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(timeOfDay, (value) => value.toMap()),
-      'timeZone': pulumi.Input.mapInputValue<TimeZoneResponse, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
-      'weekly': pulumi.Input.mapInputValue<WeeklyScheduleResponse, Map<String, dynamic>>(weekly, (value) => value.toMap()),
+      'timeOfDay':
+          pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(
+            timeOfDay,
+            (value) => value.toMap(),
+          ),
+      'timeZone':
+          pulumi.Input.mapInputValue<TimeZoneResponse, Map<String, dynamic>>(
+            timeZone,
+            (value) => value.toMap(),
+          ),
+      'weekly':
+          pulumi.Input.mapInputValue<
+            WeeklyScheduleResponse,
+            Map<String, dynamic>
+          >(weekly, (value) => value.toMap()),
     };
   }
 
   factory RecurringScheduleResponse.fromMap(Map<String, dynamic> map) {
     return RecurringScheduleResponse(
-      endTime: (map['endTime'] as String).input(),
-      frequency: (map['frequency'] as String).input(),
-      lastExecuteTime: (map['lastExecuteTime'] as String).input(),
-      monthly: (MonthlyScheduleResponse.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
-      nextExecuteTime: (map['nextExecuteTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      timeOfDay: (TimeOfDayResponse.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
-      timeZone: (TimeZoneResponse.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
-      weekly: (WeeklyScheduleResponse.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      lastExecuteTime: pulumi.Input.fromValue(map['lastExecuteTime'] as String),
+      monthly: pulumi.Input.fromValue(
+        MonthlyScheduleResponse.fromMap(
+          (map['monthly']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nextExecuteTime: pulumi.Input.fromValue(map['nextExecuteTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      timeOfDay: pulumi.Input.fromValue(
+        TimeOfDayResponse.fromMap(
+          (map['timeOfDay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      timeZone: pulumi.Input.fromValue(
+        TimeZoneResponse.fromMap(
+          (map['timeZone']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      weekly: pulumi.Input.fromValue(
+        WeeklyScheduleResponse.fromMap(
+          (map['weekly']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

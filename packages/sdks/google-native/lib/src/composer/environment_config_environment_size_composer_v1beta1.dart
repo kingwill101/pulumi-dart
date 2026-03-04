@@ -5,16 +5,19 @@ enum EnvironmentConfigEnvironmentSizeComposerV1beta1 {
   environmentSizeMedium("ENVIRONMENT_SIZE_MEDIUM"),
   environmentSizeLarge("ENVIRONMENT_SIZE_LARGE");
 
-  const EnvironmentConfigEnvironmentSizeComposerV1beta1(this.value);
-  final String value;
+  const EnvironmentConfigEnvironmentSizeComposerV1beta1(this.wireValue);
+  final String wireValue;
 
-  static EnvironmentConfigEnvironmentSizeComposerV1beta1 fromValue(String value) {
+  static EnvironmentConfigEnvironmentSizeComposerV1beta1 fromValue(
+    String value,
+  ) {
     for (final item in EnvironmentConfigEnvironmentSizeComposerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnvironmentConfigEnvironmentSizeComposerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EnvironmentConfigEnvironmentSizeComposerV1beta1 value: $value',
+    );
   }
 }
-

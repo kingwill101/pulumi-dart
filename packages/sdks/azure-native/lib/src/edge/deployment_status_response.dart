@@ -7,18 +7,25 @@ import 'target_status_response.dart';
 class DeploymentStatusResponse {
   /// Indicates if Instance is deployed
   final pulumi.Input<int>? deployed;
+
   /// The expected running job id
   final pulumi.Input<int>? expectedRunningJobId;
+
   /// Deployment Generation
   final pulumi.Input<int>? generation;
+
   /// The lastModified of the Status
   final pulumi.Input<String>? lastModified;
+
   /// The running job id
   final pulumi.Input<int>? runningJobId;
+
   /// Deployment status
   final pulumi.Input<String>? status;
+
   /// Status details
   final pulumi.Input<String>? statusDetails;
+
   /// Target resource statuses
   final pulumi.Input<List<TargetStatusResponse>>? targetStatuses;
 
@@ -51,21 +58,70 @@ class DeploymentStatusResponse {
       'runningJobId': ?runningJobId,
       'status': ?status,
       'statusDetails': ?statusDetails,
-      'targetStatuses': ?pulumi.Input.mapOptionalInputValue<List<TargetStatusResponse>, List<Map<String, dynamic>>>(targetStatuses, (value) => pulumi.Input.encodeList<TargetStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetStatuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TargetStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            targetStatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TargetStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusResponse(
-      deployed: map['deployed'] == null ? null : (map['deployed']! as int).input(),
-      expectedRunningJobId: map['expectedRunningJobId'] == null ? null : (map['expectedRunningJobId']! as int).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
-      runningJobId: map['runningJobId'] == null ? null : (map['runningJobId']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
-      targetStatuses: map['targetStatuses'] == null ? null : (pulumi.Input.decodeList<TargetStatusResponse>(map['targetStatuses']!, (value) => TargetStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deployed: (() {
+        final guardedValue = map['deployed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      expectedRunningJobId: (() {
+        final guardedValue = map['expectedRunningJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lastModified: (() {
+        final guardedValue = map['lastModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runningJobId: (() {
+        final guardedValue = map['runningJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusDetails: (() {
+        final guardedValue = map['statusDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetStatuses: (() {
+        final guardedValue = map['targetStatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TargetStatusResponse>(
+            guardedValue,
+            (value) => TargetStatusResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

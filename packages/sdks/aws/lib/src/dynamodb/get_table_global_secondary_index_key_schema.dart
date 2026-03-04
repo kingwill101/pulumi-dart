@@ -21,11 +21,12 @@ class GetTableGlobalSecondaryIndexKeySchema {
     };
   }
 
-  factory GetTableGlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
+  factory GetTableGlobalSecondaryIndexKeySchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableGlobalSecondaryIndexKeySchema(
-      attributeName: (map['attributeName'] as String).input(),
-      keyType: (map['keyType'] as String).input(),
+      attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
     );
   }
 }
-

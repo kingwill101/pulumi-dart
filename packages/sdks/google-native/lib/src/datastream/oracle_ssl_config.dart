@@ -9,20 +9,19 @@ class OracleSslConfig {
 
   /// Creates a new [OracleSslConfig].
   /// [caCertificate] Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
-  OracleSslConfig({
-    this.caCertificate,
-  });
+  OracleSslConfig({this.caCertificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caCertificate': ?caCertificate,
-    };
+    return <String, dynamic>{'caCertificate': ?caCertificate};
   }
 
   factory OracleSslConfig.fromMap(Map<String, dynamic> map) {
     return OracleSslConfig(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      caCertificate: (() {
+        final guardedValue = map['caCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

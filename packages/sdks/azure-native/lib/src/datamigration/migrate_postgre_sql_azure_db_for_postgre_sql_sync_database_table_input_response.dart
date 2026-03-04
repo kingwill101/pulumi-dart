@@ -14,15 +14,18 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
-  factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse.fromMap(Map<String, dynamic> map) {
+  factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

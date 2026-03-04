@@ -13,23 +13,20 @@ class GetAndroidAppConfigArgs {
   /// Creates a new [GetAndroidAppConfigArgs].
   /// [appId] Required.
   /// [project] Optional.
-  GetAndroidAppConfigArgs({
-    required this.appId,
-    this.project,
-  });
+  GetAndroidAppConfigArgs({required this.appId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'appId': appId, 'project': ?project};
   }
 
   factory GetAndroidAppConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetAndroidAppConfigArgs(
-      appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

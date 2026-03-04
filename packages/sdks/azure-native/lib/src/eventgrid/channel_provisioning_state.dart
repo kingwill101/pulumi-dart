@@ -6,18 +6,19 @@ enum ChannelProvisioningState {
   valueSucceeded("Succeeded"),
   valueCanceled("Canceled"),
   valueFailed("Failed"),
-  valueIdleDueToMirroredPartnerTopicDeletion("IdleDueToMirroredPartnerTopicDeletion");
+  valueIdleDueToMirroredPartnerTopicDeletion(
+    "IdleDueToMirroredPartnerTopicDeletion",
+  );
 
-  const ChannelProvisioningState(this.value);
-  final String value;
+  const ChannelProvisioningState(this.wireValue);
+  final String wireValue;
 
   static ChannelProvisioningState fromValue(String value) {
     for (final item in ChannelProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChannelProvisioningState value: $value');
   }
 }
-

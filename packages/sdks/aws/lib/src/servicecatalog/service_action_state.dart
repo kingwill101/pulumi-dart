@@ -7,14 +7,18 @@ import 'service_action_definition.dart';
 class ServiceActionState {
   /// Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// Self-service action definition configuration block. Detailed below.
   final pulumi.Input<ServiceActionDefinition>? definition;
+
   /// Self-service action description.
   final pulumi.Input<String>? description;
+
   /// Self-service action name.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -35,7 +39,11 @@ class ServiceActionState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceptLanguage': ?acceptLanguage,
-      'definition': ?pulumi.Input.mapOptionalInputValue<ServiceActionDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceActionDefinition,
+            Map<String, dynamic>
+          >(definition, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'region': ?region,
@@ -44,12 +52,35 @@ class ServiceActionState {
 
   factory ServiceActionState.fromMap(Map<String, dynamic> map) {
     return ServiceActionState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
-      definition: map['definition'] == null ? null : ((ServiceActionDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceActionDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

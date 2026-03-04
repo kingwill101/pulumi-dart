@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionCustomDnsDnsOption {
   /// Configuration Item Name.
   final pulumi.Input<String> name;
+
   /// Configuration Item Value.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetV3FunctionsFunctionCustomDnsDnsOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetV3FunctionsFunctionCustomDnsDnsOption.fromMap(Map<String, dynamic> map) {
+  factory GetV3FunctionsFunctionCustomDnsDnsOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetV3FunctionsFunctionCustomDnsDnsOption(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'instance_view_status_response.dart';
 class DedicatedHostInstanceViewResponse {
   /// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
   final pulumi.Input<String> assetId;
+
   /// Unutilized capacity of the dedicated host.
   final pulumi.Input<DedicatedHostAvailableCapacityResponse>? availableCapacity;
+
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
 
@@ -26,17 +28,50 @@ class DedicatedHostInstanceViewResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assetId': assetId,
-      'availableCapacity': ?pulumi.Input.mapOptionalInputValue<DedicatedHostAvailableCapacityResponse, Map<String, dynamic>>(availableCapacity, (value) => value.toMap()),
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'availableCapacity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DedicatedHostAvailableCapacityResponse,
+            Map<String, dynamic>
+          >(availableCapacity, (value) => value.toMap()),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DedicatedHostInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostInstanceViewResponse(
-      assetId: (map['assetId'] as String).input(),
-      availableCapacity: map['availableCapacity'] == null ? null : (DedicatedHostAvailableCapacityResponse.fromMap((map['availableCapacity']! as Map).cast<String, dynamic>())).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assetId: pulumi.Input.fromValue(map['assetId'] as String),
+      availableCapacity: (() {
+        final guardedValue = map['availableCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DedicatedHostAvailableCapacityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatusResponse>(
+            guardedValue,
+            (value) => InstanceViewStatusResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

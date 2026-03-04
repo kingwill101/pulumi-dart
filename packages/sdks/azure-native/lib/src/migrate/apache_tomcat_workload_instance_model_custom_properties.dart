@@ -7,11 +7,14 @@ import 'apache_tomcat_web_application.dart';
 class ApacheTomcatWorkloadInstanceModelCustomProperties {
   /// ApacheTomcat web application.
   final pulumi.Input<ApacheTomcatWebApplication>? apacheTomcatWebApplication;
+
   /// Gets or sets the instance type.
   /// Expected value is 'ApacheTomcatWorkloadInstanceModelCustomProperties'.
   final pulumi.Input<String> instanceType;
+
   /// Gets or sets the Web application ARM id.
   final pulumi.Input<String>? webAppArmId;
+
   /// Gets or sets the Web application site name.
   final pulumi.Input<String>? webAppSiteName;
 
@@ -29,20 +32,41 @@ class ApacheTomcatWorkloadInstanceModelCustomProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apacheTomcatWebApplication': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatWebApplication, Map<String, dynamic>>(apacheTomcatWebApplication, (value) => value.toMap()),
+      'apacheTomcatWebApplication':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApacheTomcatWebApplication,
+            Map<String, dynamic>
+          >(apacheTomcatWebApplication, (value) => value.toMap()),
       'instanceType': instanceType,
       'webAppArmId': ?webAppArmId,
       'webAppSiteName': ?webAppSiteName,
     };
   }
 
-  factory ApacheTomcatWorkloadInstanceModelCustomProperties.fromMap(Map<String, dynamic> map) {
+  factory ApacheTomcatWorkloadInstanceModelCustomProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApacheTomcatWorkloadInstanceModelCustomProperties(
-      apacheTomcatWebApplication: map['apacheTomcatWebApplication'] == null ? null : (ApacheTomcatWebApplication.fromMap((map['apacheTomcatWebApplication']! as Map).cast<String, dynamic>())).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId']! as String).input(),
-      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName']! as String).input(),
+      apacheTomcatWebApplication: (() {
+        final guardedValue = map['apacheTomcatWebApplication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApacheTomcatWebApplication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      webAppArmId: (() {
+        final guardedValue = map['webAppArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webAppSiteName: (() {
+        final guardedValue = map['webAppSiteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

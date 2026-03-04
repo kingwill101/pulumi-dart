@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserVpcAuthorizationState {
   /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
   final pulumi.Input<String>? authChannel;
+
   /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
   final pulumi.Input<String>? authType;
+
   /// The primary account ID of the user who authorizes the resource.
   final pulumi.Input<String>? authorizedUserId;
 
@@ -31,10 +33,21 @@ class UserVpcAuthorizationState {
 
   factory UserVpcAuthorizationState.fromMap(Map<String, dynamic> map) {
     return UserVpcAuthorizationState(
-      authChannel: map['authChannel'] == null ? null : (map['authChannel']! as String).input(),
-      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
-      authorizedUserId: map['authorizedUserId'] == null ? null : (map['authorizedUserId']! as String).input(),
+      authChannel: (() {
+        final guardedValue = map['authChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizedUserId: (() {
+        final guardedValue = map['authorizedUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

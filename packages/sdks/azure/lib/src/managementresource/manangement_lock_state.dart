@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManangementLockState {
   /// Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
+  /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   final pulumi.Input<String>? lockLevel;
+
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String>? notes;
+
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scope;
 
@@ -20,12 +23,7 @@ class ManangementLockState {
   /// [name] Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   /// [notes] Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   /// [scope] Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
-  ManangementLockState({
-    this.lockLevel,
-    this.name,
-    this.notes,
-    this.scope,
-  });
+  ManangementLockState({this.lockLevel, this.name, this.notes, this.scope});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,11 +36,26 @@ class ManangementLockState {
 
   factory ManangementLockState.fromMap(Map<String, dynamic> map) {
     return ManangementLockState(
-      lockLevel: map['lockLevel'] == null ? null : (map['lockLevel']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      lockLevel: (() {
+        final guardedValue = map['lockLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

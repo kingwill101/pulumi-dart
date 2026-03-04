@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHubApnsCredential {
   /// The Application Mode which defines which server the APNS Messages should be sent to. Possible values are `Production` and `Sandbox`.
   final pulumi.Input<String> applicationMode;
+
   /// The Bundle ID of the iOS/macOS application to send push notifications for, such as `com.org.example`.
   final pulumi.Input<String> bundleId;
+
   /// The Apple Push Notifications Service (APNS) Key.
   final pulumi.Input<String> keyId;
+
   /// The ID of the team the Token.
   final pulumi.Input<String> teamId;
+
   /// The Push Token associated with the Apple Developer Account.
   final pulumi.Input<String> token;
 
@@ -40,12 +44,11 @@ class GetHubApnsCredential {
 
   factory GetHubApnsCredential.fromMap(Map<String, dynamic> map) {
     return GetHubApnsCredential(
-      applicationMode: (map['applicationMode'] as String).input(),
-      bundleId: (map['bundleId'] as String).input(),
-      keyId: (map['keyId'] as String).input(),
-      teamId: (map['teamId'] as String).input(),
-      token: (map['token'] as String).input(),
+      applicationMode: pulumi.Input.fromValue(map['applicationMode'] as String),
+      bundleId: pulumi.Input.fromValue(map['bundleId'] as String),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      teamId: pulumi.Input.fromValue(map['teamId'] as String),
+      token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
-

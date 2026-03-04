@@ -3,16 +3,15 @@ enum RouterBgpPeerEnableComputeBeta {
   false_("FALSE"),
   true_("TRUE");
 
-  const RouterBgpPeerEnableComputeBeta(this.value);
-  final String value;
+  const RouterBgpPeerEnableComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerEnableComputeBeta fromValue(String value) {
     for (final item in RouterBgpPeerEnableComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpPeerEnableComputeBeta value: $value');
   }
 }
-

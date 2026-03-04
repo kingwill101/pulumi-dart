@@ -8,7 +8,7 @@ import 'folder_state.dart';
 ///
 /// For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -170,10 +170,13 @@ import 'folder_state.dart';
 class Folder extends pulumi.CustomResource {
   /// (Available since v1.259.0) The time when the folder was created.
   late final pulumi.Output<String> createTime;
+
   /// The name of the folder.
   late final pulumi.Output<String> folderName;
+
   /// The ID of the parent folder.
   late final pulumi.Output<String> parentFolderId;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -181,20 +184,17 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_resourcemanager_folder_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(
-    String name, {
-    FolderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:resourcemanager/folder:Folder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.folderName = registerOutput<String>('folderName');
-    this.parentFolderId = registerOutput<String>('parentFolderId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:resourcemanager/folder:Folder',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    folderName = registerOutput<String>('folderName');
+    parentFolderId = registerOutput<String>('parentFolderId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Folder] resource's state with the given [name] and [id].
@@ -215,14 +215,14 @@ class Folder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/folder:Folder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.folderName = registerOutput<String>('folderName');
-    this.parentFolderId = registerOutput<String>('parentFolderId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:resourcemanager/folder:Folder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    folderName = registerOutput<String>('folderName');
+    parentFolderId = registerOutput<String>('parentFolderId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

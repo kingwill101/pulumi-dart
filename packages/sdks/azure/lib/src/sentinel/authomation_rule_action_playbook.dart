@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthomationRuleActionPlaybook {
   /// The ID of the Logic App that defines the playbook's logic.
   final pulumi.Input<String> logicAppId;
+
   /// The execution order of this action.
   final pulumi.Input<int> order;
+
   /// The ID of the Tenant that owns the playbook.
   final pulumi.Input<String>? tenantId;
 
@@ -30,10 +32,13 @@ class AuthomationRuleActionPlaybook {
 
   factory AuthomationRuleActionPlaybook.fromMap(Map<String, dynamic> map) {
     return AuthomationRuleActionPlaybook(
-      logicAppId: (map['logicAppId'] as String).input(),
-      order: (map['order'] as int).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
+      order: pulumi.Input.fromValue(map['order'] as int),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

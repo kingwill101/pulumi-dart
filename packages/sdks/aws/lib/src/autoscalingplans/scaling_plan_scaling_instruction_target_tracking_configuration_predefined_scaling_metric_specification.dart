@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification {
   /// Metric type. Valid values: `ALBRequestCountPerTarget`, `ASGAverageCPUUtilization`, `ASGAverageNetworkIn`, `ASGAverageNetworkOut`, `DynamoDBReadCapacityUtilization`, `DynamoDBWriteCapacityUtilization`, `ECSServiceAverageCPUUtilization`, `ECSServiceAverageMemoryUtilization`, `EC2SpotFleetRequestAverageCPUUtilization`, `EC2SpotFleetRequestAverageNetworkIn`, `EC2SpotFleetRequestAverageNetworkOut`, `RDSReaderAverageCPUUtilization`, `RDSReaderAverageDatabaseConnections`.
   final pulumi.Input<String> predefinedScalingMetricType;
+
   /// Identifies the resource associated with the metric type.
   final pulumi.Input<String>? resourceLabel;
 
@@ -23,11 +24,18 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingM
     };
   }
 
-  factory ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification(
-      predefinedScalingMetricType: (map['predefinedScalingMetricType'] as String).input(),
-      resourceLabel: map['resourceLabel'] == null ? null : ((map['resourceLabel'] as String).input()).input(),
+      predefinedScalingMetricType: pulumi.Input.fromValue(
+        map['predefinedScalingMetricType'] as String,
+      ),
+      resourceLabel: (() {
+        final guardedValue = map['resourceLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

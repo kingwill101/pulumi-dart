@@ -10,20 +10,26 @@ import 'example_message.dart';
 class ExampleArgs {
   /// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> app;
+
   /// Human-readable description of the example.
   final pulumi.Input<String>? description;
+
   /// Display name of the example.
   final pulumi.Input<String> displayName;
+
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   final pulumi.Input<String>? entryAgent;
   final pulumi.Input<String> exampleId;
+
   /// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
   final pulumi.Input<List<ExampleMessage>>? messages;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -56,22 +62,54 @@ class ExampleArgs {
       'entryAgent': ?entryAgent,
       'exampleId': exampleId,
       'location': location,
-      'messages': ?pulumi.Input.mapOptionalInputValue<List<ExampleMessage>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<ExampleMessage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'messages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExampleMessage>,
+            List<Map<String, dynamic>>
+          >(
+            messages,
+            (value) =>
+                pulumi.Input.encodeList<ExampleMessage, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'project': ?project,
     };
   }
 
   factory ExampleArgs.fromMap(Map<String, dynamic> map) {
     return ExampleArgs(
-      app: (map['app'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent']! as String).input(),
-      exampleId: (map['exampleId'] as String).input(),
-      location: (map['location'] as String).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ExampleMessage>(map['messages']!, (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      app: pulumi.Input.fromValue(map['app'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      entryAgent: (() {
+        final guardedValue = map['entryAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exampleId: pulumi.Input.fromValue(map['exampleId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      messages: (() {
+        final guardedValue = map['messages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExampleMessage>(
+            guardedValue,
+            (value) =>
+                ExampleMessage.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

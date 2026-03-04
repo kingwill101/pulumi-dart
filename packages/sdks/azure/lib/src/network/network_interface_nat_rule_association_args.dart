@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceNatRuleAssociationArgs {
   /// The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String> ipConfigurationName;
+
   /// The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> natRuleId;
+
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkInterfaceId;
 
@@ -32,12 +34,17 @@ class NetworkInterfaceNatRuleAssociationArgs {
     };
   }
 
-  factory NetworkInterfaceNatRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceNatRuleAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceNatRuleAssociationArgs(
-      ipConfigurationName: (map['ipConfigurationName'] as String).input(),
-      natRuleId: (map['natRuleId'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      ipConfigurationName: pulumi.Input.fromValue(
+        map['ipConfigurationName'] as String,
+      ),
+      natRuleId: pulumi.Input.fromValue(map['natRuleId'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum DiscoveryRuleRelationshipDiscoveryBehavior {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const DiscoveryRuleRelationshipDiscoveryBehavior(this.value);
-  final String value;
+  const DiscoveryRuleRelationshipDiscoveryBehavior(this.wireValue);
+  final String wireValue;
 
   static DiscoveryRuleRelationshipDiscoveryBehavior fromValue(String value) {
     for (final item in DiscoveryRuleRelationshipDiscoveryBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryRuleRelationshipDiscoveryBehavior value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryRuleRelationshipDiscoveryBehavior value: $value',
+    );
   }
 }
-

@@ -13,15 +13,14 @@ class GetClusterNodePoolNodeConfigKubeletConfigMemoryManager {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': policy,
-    };
+    return <String, dynamic>{'policy': policy};
   }
 
-  factory GetClusterNodePoolNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigKubeletConfigMemoryManager.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigKubeletConfigMemoryManager(
-      policy: (map['policy'] as String).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
-

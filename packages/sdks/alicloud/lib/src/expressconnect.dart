@@ -1,5 +1,3 @@
-library module_expressconnect;
-
 export 'expressconnect/ec_failover_test_job.dart';
 export 'expressconnect/ec_failover_test_job_args.dart';
 export 'expressconnect/ec_failover_test_job_state.dart';

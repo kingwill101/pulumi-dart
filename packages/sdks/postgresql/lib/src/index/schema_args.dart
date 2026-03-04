@@ -10,15 +10,20 @@ import 'schema_policy.dart';
 class SchemaArgs {
   /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
   final pulumi.Input<String>? database;
+
   /// When true, will also drop all the objects that are contained in the schema. (Default: false)
   final pulumi.Input<bool>? dropCascade;
+
   /// When true, use the existing schema if it exists. (Default: true)
   final pulumi.Input<bool>? ifNotExists;
+
   /// The name of the schema. Must be unique in the PostgreSQL
   /// database instance where it is configured.
   final pulumi.Input<String>? name;
+
   /// The ROLE who owns the schema.
   final pulumi.Input<String>? owner;
+
   /// Can be specified multiple times for each policy.  Each
   /// policy block supports fields documented below.
   final pulumi.Input<List<SchemaPolicy>>? policies;
@@ -46,19 +51,59 @@ class SchemaArgs {
       'ifNotExists': ?ifNotExists,
       'name': ?name,
       'owner': ?owner,
-      'policies': ?pulumi.Input.mapOptionalInputValue<List<SchemaPolicy>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<SchemaPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SchemaPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            policies,
+            (value) =>
+                pulumi.Input.encodeList<SchemaPolicy, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
-      ifNotExists: map['ifNotExists'] == null ? null : (map['ifNotExists']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<SchemaPolicy>(map['policies']!, (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dropCascade: (() {
+        final guardedValue = map['dropCascade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ifNotExists: (() {
+        final guardedValue = map['ifNotExists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SchemaPolicy>(
+            guardedValue,
+            (value) =>
+                SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

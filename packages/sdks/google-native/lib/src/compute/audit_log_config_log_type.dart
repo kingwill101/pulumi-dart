@@ -5,16 +5,15 @@ enum AuditLogConfigLogType {
   dataWrite("DATA_WRITE"),
   logTypeUnspecified("LOG_TYPE_UNSPECIFIED");
 
-  const AuditLogConfigLogType(this.value);
-  final String value;
+  const AuditLogConfigLogType(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogType fromValue(String value) {
     for (final item in AuditLogConfigLogType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuditLogConfigLogType value: $value');
   }
 }
-

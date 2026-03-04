@@ -1,5 +1,3 @@
-library module_alloydb;
-
 export 'alloydb/automated_backup_policy.dart';
 export 'alloydb/automated_backup_policy_alloydb_v1alpha.dart';
 export 'alloydb/automated_backup_policy_alloydb_v1beta.dart';

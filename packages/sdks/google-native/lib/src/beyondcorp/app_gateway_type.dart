@@ -3,16 +3,15 @@ enum AppGatewayType {
   typeUnspecified("TYPE_UNSPECIFIED"),
   tcpProxy("TCP_PROXY");
 
-  const AppGatewayType(this.value);
-  final String value;
+  const AppGatewayType(this.wireValue);
+  final String wireValue;
 
   static AppGatewayType fromValue(String value) {
     for (final item in AppGatewayType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppGatewayType value: $value');
   }
 }
-

@@ -8,16 +8,15 @@ enum AssessmentDayOfWeek {
   valueSaturday("Saturday"),
   valueSunday("Sunday");
 
-  const AssessmentDayOfWeek(this.value);
-  final String value;
+  const AssessmentDayOfWeek(this.wireValue);
+  final String wireValue;
 
   static AssessmentDayOfWeek fromValue(String value) {
     for (final item in AssessmentDayOfWeek.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssessmentDayOfWeek value: $value');
   }
 }
-

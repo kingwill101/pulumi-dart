@@ -276,26 +276,37 @@ import 'user_detail_response.dart';
 class Organization extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createdTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Confluent offer detail
   late final pulumi.Output<OfferDetailResponse> offerDetail;
+
   /// Id of the Confluent organization.
   late final pulumi.Output<String> organizationId;
+
   /// Provision states for confluent RP
   late final pulumi.Output<String> provisioningState;
+
   /// SSO url for the Confluent organization.
   late final pulumi.Output<String> ssoUrl;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Subscriber detail
   late final pulumi.Output<UserDetailResponse> userDetail;
 
@@ -308,22 +319,22 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:confluent:Organization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.location = registerOutput<String>('location');
+         'azure-native:confluent:Organization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offerDetail = registerOutput<OfferDetailResponse>('offerDetail');
-    this.organizationId = registerOutput<String>('organizationId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ssoUrl = registerOutput<String>('ssoUrl');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.userDetail = registerOutput<UserDetailResponse>('userDetail');
+    offerDetail = registerOutput<OfferDetailResponse>('offerDetail');
+    organizationId = registerOutput<String>('organizationId');
+    provisioningState = registerOutput<String>('provisioningState');
+    ssoUrl = registerOutput<String>('ssoUrl');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    userDetail = registerOutput<UserDetailResponse>('userDetail');
   }
 }

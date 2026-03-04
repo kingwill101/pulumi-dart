@@ -7,14 +7,18 @@ import 'get_public_ip_address_pool_cidr_blocks_block.dart';
 class GetPublicIpAddressPoolCidrBlocksResult {
   /// A list of Vpc Public Ip Address Pool Cidr Blocks. Each element contains the following attributes:
   final List<GetPublicIpAddressPoolCidrBlocksBlock> blocks;
+
   /// The CIDR block.
   final String? cidrBlock;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? outputFile;
+
   /// The ID of the Vpc Public IP address pool.
   final String publicIpAddressPoolId;
+
   /// The status of the CIDR block in the Vpc Public IP address pool.
   final String? status;
 
@@ -38,7 +42,11 @@ class GetPublicIpAddressPoolCidrBlocksResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blocks': pulumi.Input.encodeList<GetPublicIpAddressPoolCidrBlocksBlock, Map<String, dynamic>>(blocks, (value) => value.toMap()),
+      'blocks':
+          pulumi.Input.encodeList<
+            GetPublicIpAddressPoolCidrBlocksBlock,
+            Map<String, dynamic>
+          >(blocks, (value) => value.toMap()),
       'cidrBlock': ?cidrBlock,
       'id': id,
       'ids': ids,
@@ -48,16 +56,34 @@ class GetPublicIpAddressPoolCidrBlocksResult {
     };
   }
 
-  factory GetPublicIpAddressPoolCidrBlocksResult.fromMap(Map<String, dynamic> map) {
+  factory GetPublicIpAddressPoolCidrBlocksResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPublicIpAddressPoolCidrBlocksResult(
-      blocks: pulumi.Input.decodeList<GetPublicIpAddressPoolCidrBlocksBlock>(map['blocks'], (value) => GetPublicIpAddressPoolCidrBlocksBlock.fromMap((value as Map).cast<String, dynamic>())),
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock']! as String,
+      blocks: pulumi.Input.decodeList<GetPublicIpAddressPoolCidrBlocksBlock>(
+        map['blocks']!,
+        (value) => GetPublicIpAddressPoolCidrBlocksBlock.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       publicIpAddressPoolId: map['publicIpAddressPoolId'] as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class TermsOfServiceResponse {
 
   /// Creates a new [TermsOfServiceResponse].
   /// [url] URL pointing to the terms of service.
-  TermsOfServiceResponse({
-    required this.url,
-  });
+  TermsOfServiceResponse({required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-    };
+    return <String, dynamic>{'url': url};
   }
 
   factory TermsOfServiceResponse.fromMap(Map<String, dynamic> map) {
     return TermsOfServiceResponse(
-      url: (map['url'] as String).input(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeRuntimeHandlerFeatures {
   /// RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.
   final pulumi.Input<bool>? recursiveReadOnlyMounts;
+
   /// UserNamespaces is set to true if the runtime handler supports UserNamespaces, including for volumes.
   final pulumi.Input<bool>? userNamespaces;
 
@@ -26,9 +27,16 @@ class NodeRuntimeHandlerFeatures {
 
   factory NodeRuntimeHandlerFeatures.fromMap(Map<String, dynamic> map) {
     return NodeRuntimeHandlerFeatures(
-      recursiveReadOnlyMounts: map['recursiveReadOnlyMounts'] == null ? null : (map['recursiveReadOnlyMounts']! as bool).input(),
-      userNamespaces: map['userNamespaces'] == null ? null : (map['userNamespaces']! as bool).input(),
+      recursiveReadOnlyMounts: (() {
+        final guardedValue = map['recursiveReadOnlyMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userNamespaces: (() {
+        final guardedValue = map['userNamespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

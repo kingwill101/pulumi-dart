@@ -4,16 +4,17 @@ enum GoogleCloudMlV1HyperparameterSpecGoal {
   maximize("MAXIMIZE"),
   minimize("MINIMIZE");
 
-  const GoogleCloudMlV1HyperparameterSpecGoal(this.value);
-  final String value;
+  const GoogleCloudMlV1HyperparameterSpecGoal(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1HyperparameterSpecGoal fromValue(String value) {
     for (final item in GoogleCloudMlV1HyperparameterSpecGoal.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1HyperparameterSpecGoal value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1HyperparameterSpecGoal value: $value',
+    );
   }
 }
-

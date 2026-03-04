@@ -435,21 +435,27 @@ import 'origin_access_identity_state.dart';
 class OriginAccessIdentity extends pulumi.CustomResource {
   /// The origin access identity ARN.
   late final pulumi.Output<String> arn;
+
   /// Internal value used by CloudFront to allow future
   /// updates to the origin access identity.
   late final pulumi.Output<String> callerReference;
+
   /// A shortcut to the full path for the
   /// origin access identity to use in CloudFront, see below.
   late final pulumi.Output<String> cloudfrontAccessIdentityPath;
+
   /// An optional comment for the origin access identity.
   late final pulumi.Output<String?> comment;
+
   /// The current version of the origin access identity's information.
   /// For example: `E2QWRUHAPOMQZL`.
   late final pulumi.Output<String> etag;
+
   /// A pre-generated ARN for use in S3 bucket policies (see below).
   /// Example: `arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity
   /// E2QWRUHAPOMQZL`.
   late final pulumi.Output<String> iamArn;
+
   /// The Amazon S3 canonical user ID for the origin
   /// access identity, which you use when giving the origin access identity read
   /// permission to an object in Amazon S3.
@@ -464,18 +470,20 @@ class OriginAccessIdentity extends pulumi.CustomResource {
     OriginAccessIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.cloudfrontAccessIdentityPath = registerOutput<String>('cloudfrontAccessIdentityPath');
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.iamArn = registerOutput<String>('iamArn');
-    this.s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
+         'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    cloudfrontAccessIdentityPath = registerOutput<String>(
+      'cloudfrontAccessIdentityPath',
+    );
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    iamArn = registerOutput<String>('iamArn');
+    s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
   }
 
   /// Gets an existing [OriginAccessIdentity] resource's state with the given [name] and [id].
@@ -496,17 +504,19 @@ class OriginAccessIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.cloudfrontAccessIdentityPath = registerOutput<String>('cloudfrontAccessIdentityPath');
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.iamArn = registerOutput<String>('iamArn');
-    this.s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
+         'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    cloudfrontAccessIdentityPath = registerOutput<String>(
+      'cloudfrontAccessIdentityPath',
+    );
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    iamArn = registerOutput<String>('iamArn');
+    s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
   }
 }

@@ -836,16 +836,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 class CentralizationRuleForOrganization extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for the centralization rule. See `rule` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<CentralizationRuleForOrganizationRule> rule;
+
   /// ARN of the centralization rule.
   late final pulumi.Output<String> ruleArn;
+
   /// Name of the centralization rule. Must be unique within the organization.
   late final pulumi.Output<String> ruleName;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CentralizationRuleForOrganizationTimeouts?> timeouts;
@@ -859,18 +864,20 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
     CentralizationRuleForOrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
-    this.ruleArn = registerOutput<String>('ruleArn');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts');
+         'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
+    ruleArn = registerOutput<String>('ruleArn');
+    ruleName = registerOutput<String>('ruleName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>(
+      'timeouts',
+    );
   }
 
   /// Gets an existing [CentralizationRuleForOrganization] resource's state with the given [name] and [id].
@@ -891,17 +898,19 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
-    this.ruleArn = registerOutput<String>('ruleArn');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts');
+         'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
+    ruleArn = registerOutput<String>('ruleArn');
+    ruleName = registerOutput<String>('ruleName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>(
+      'timeouts',
+    );
   }
 }

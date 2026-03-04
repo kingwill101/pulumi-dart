@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SinkPolicyState {
   /// ARN of the Sink.
   final pulumi.Input<String>? arn;
+
   /// JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
   final pulumi.Input<String>? policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID string that AWS generated as part of the sink ARN.
   final pulumi.Input<String>? sinkId;
+
   /// ARN of the sink to attach this policy to.
   final pulumi.Input<String>? sinkIdentifier;
 
@@ -41,12 +45,31 @@ class SinkPolicyState {
 
   factory SinkPolicyState.fromMap(Map<String, dynamic> map) {
     return SinkPolicyState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sinkId: map['sinkId'] == null ? null : ((map['sinkId'] as String).input()).input(),
-      sinkIdentifier: map['sinkIdentifier'] == null ? null : ((map['sinkIdentifier'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sinkId: (() {
+        final guardedValue = map['sinkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sinkIdentifier: (() {
+        final guardedValue = map['sinkIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeoutMs': startTimeoutMs,
-    };
+    return <String, dynamic>{'startTimeoutMs': startTimeoutMs};
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
-      startTimeoutMs: (map['startTimeoutMs'] as int).input(),
+      startTimeoutMs: pulumi.Input.fromValue(map['startTimeoutMs'] as int),
     );
   }
 }
-

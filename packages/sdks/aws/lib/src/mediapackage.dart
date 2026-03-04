@@ -1,5 +1,3 @@
-library module_mediapackage;
-
 export 'mediapackage/channel.dart';
 export 'mediapackage/channel_args.dart';
 export 'mediapackage/channel_hls_ingest.dart';

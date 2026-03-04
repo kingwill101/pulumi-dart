@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowEndpointAuthenticationUserAssignedManagedIdentity {
   /// Client ID for the user-assigned managed identity.
   final pulumi.Input<String> clientId;
+
   /// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
   final pulumi.Input<String>? scope;
+
   /// Tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -29,12 +31,17 @@ class DataflowEndpointAuthenticationUserAssignedManagedIdentity {
     };
   }
 
-  factory DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointAuthenticationUserAssignedManagedIdentity(
-      clientId: (map['clientId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

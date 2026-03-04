@@ -9,20 +9,19 @@ class GuestAgentProfile {
 
   /// Creates a new [GuestAgentProfile].
   /// [clientPublicKey] Gets or sets the Public Key provided by the client for enabling guest management.
-  GuestAgentProfile({
-    this.clientPublicKey,
-  });
+  GuestAgentProfile({this.clientPublicKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientPublicKey': ?clientPublicKey,
-    };
+    return <String, dynamic>{'clientPublicKey': ?clientPublicKey};
   }
 
   factory GuestAgentProfile.fromMap(Map<String, dynamic> map) {
     return GuestAgentProfile(
-      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey']! as String).input(),
+      clientPublicKey: (() {
+        final guardedValue = map['clientPublicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

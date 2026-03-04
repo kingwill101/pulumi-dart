@@ -8,10 +8,13 @@ class AzureSqlProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'AzureSql'.
   final pulumi.Input<String> backupManagementType;
+
   /// Number of items associated with this policy.
   final pulumi.Input<int>? protectedItemsCount;
+
   /// ResourceGuard Operation Requests
   final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+
   /// Retention policy details.
   final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
 
@@ -32,17 +35,38 @@ class AzureSqlProtectionPolicy {
       'backupManagementType': backupManagementType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            LongTermRetentionPolicy,
+            Map<String, dynamic>
+          >(retentionPolicy, (value) => value.toMap()),
     };
   }
 
   factory AzureSqlProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return AzureSqlProtectionPolicy(
-      backupManagementType: (map['backupManagementType'] as String).input(),
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount']! as int).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      backupManagementType: pulumi.Input.fromValue(
+        map['backupManagementType'] as String,
+      ),
+      protectedItemsCount: (() {
+        final guardedValue = map['protectedItemsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGuardOperationRequests: (() {
+        final guardedValue = map['resourceGuardOperationRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      retentionPolicy: (() {
+        final guardedValue = map['retentionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LongTermRetentionPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

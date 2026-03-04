@@ -6,16 +6,15 @@ enum CVSSAttackVector {
   attackVectorLocal("ATTACK_VECTOR_LOCAL"),
   attackVectorPhysical("ATTACK_VECTOR_PHYSICAL");
 
-  const CVSSAttackVector(this.value);
-  final String value;
+  const CVSSAttackVector(this.wireValue);
+  final String wireValue;
 
   static CVSSAttackVector fromValue(String value) {
     for (final item in CVSSAttackVector.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSAttackVector value: $value');
   }
 }
-

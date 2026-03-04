@@ -1,0 +1,14 @@
+name: awsx_dart_ts_ecr_simple
+description: AWSX simple ECR image example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: ^7.20.0
+  pulumi_awsx: ^3.2.1
+
+dev_dependencies:
+  lints: ^6.1.0

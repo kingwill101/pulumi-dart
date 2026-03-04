@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoSnapShotPolicyArgs {
   /// Automatic snapshot policy name
   final pulumi.Input<String> policyName;
+
   /// A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
   final pulumi.Input<List<String>> repeatWeekdays;
+
   /// Automatic snapshot retention days.
   final pulumi.Input<int> retentionDays;
+
   /// The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
   final pulumi.Input<List<String>> timePoints;
 
@@ -39,11 +42,14 @@ class AutoSnapShotPolicyArgs {
 
   factory AutoSnapShotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoSnapShotPolicyArgs(
-      policyName: (map['policyName'] as String).input(),
-      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      retentionDays: (map['retentionDays'] as int).input(),
-      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      repeatWeekdays: pulumi.Input.fromValue(
+        (map['repeatWeekdays'] as List).cast<String>(),
+      ),
+      retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
+      timePoints: pulumi.Input.fromValue(
+        (map['timePoints'] as List).cast<String>(),
+      ),
     );
   }
 }
-

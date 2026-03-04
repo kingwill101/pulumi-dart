@@ -4,16 +4,20 @@ enum TemplateContentsInterpreterDeploymentmanagerV2beta {
   python("PYTHON"),
   jinja("JINJA");
 
-  const TemplateContentsInterpreterDeploymentmanagerV2beta(this.value);
-  final String value;
+  const TemplateContentsInterpreterDeploymentmanagerV2beta(this.wireValue);
+  final String wireValue;
 
-  static TemplateContentsInterpreterDeploymentmanagerV2beta fromValue(String value) {
-    for (final item in TemplateContentsInterpreterDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+  static TemplateContentsInterpreterDeploymentmanagerV2beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in TemplateContentsInterpreterDeploymentmanagerV2beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TemplateContentsInterpreterDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown TemplateContentsInterpreterDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

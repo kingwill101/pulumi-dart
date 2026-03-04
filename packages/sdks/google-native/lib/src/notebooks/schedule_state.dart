@@ -7,16 +7,15 @@ enum ScheduleState {
   initializing("INITIALIZING"),
   deleting("DELETING");
 
-  const ScheduleState(this.value);
-  final String value;
+  const ScheduleState(this.wireValue);
+  final String wireValue;
 
   static ScheduleState fromValue(String value) {
     for (final item in ScheduleState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleState value: $value');
   }
 }
-

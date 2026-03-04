@@ -7,14 +7,18 @@ import 'get_certificate_issuer_admin.dart';
 class GetCertificateIssuerResult {
   /// The account number with the third-party Certificate Issuer.
   final String accountId;
+
   /// A list of `admin` blocks as defined below.
   final List<GetCertificateIssuerAdmin> admins;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyVaultId;
   final String name;
+
   /// The organization ID with the third-party Certificate Issuer.
   final String orgId;
+
   /// The name of the third-party Certificate Issuer.
   final String providerName;
 
@@ -39,7 +43,11 @@ class GetCertificateIssuerResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
-      'admins': pulumi.Input.encodeList<GetCertificateIssuerAdmin, Map<String, dynamic>>(admins, (value) => value.toMap()),
+      'admins':
+          pulumi.Input.encodeList<
+            GetCertificateIssuerAdmin,
+            Map<String, dynamic>
+          >(admins, (value) => value.toMap()),
       'id': id,
       'keyVaultId': keyVaultId,
       'name': name,
@@ -51,7 +59,12 @@ class GetCertificateIssuerResult {
   factory GetCertificateIssuerResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateIssuerResult(
       accountId: map['accountId'] as String,
-      admins: pulumi.Input.decodeList<GetCertificateIssuerAdmin>(map['admins'], (value) => GetCertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>())),
+      admins: pulumi.Input.decodeList<GetCertificateIssuerAdmin>(
+        map['admins']!,
+        (value) => GetCertificateIssuerAdmin.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       keyVaultId: map['keyVaultId'] as String,
       name: map['name'] as String,
@@ -60,4 +73,3 @@ class GetCertificateIssuerResult {
     );
   }
 }
-

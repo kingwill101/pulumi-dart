@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PoolTargetTimestamps {
   /// Configures the last access time for the storage pool target.
   final pulumi.Input<String> atime;
+
   /// Sets the last metadata change time for the storage pool target.
   final pulumi.Input<String> ctime;
+
   /// Specifies the last modification time for the storage pool target.
   final pulumi.Input<String> mtime;
 
@@ -21,19 +23,14 @@ class PoolTargetTimestamps {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'atime': atime,
-      'ctime': ctime,
-      'mtime': mtime,
-    };
+    return <String, dynamic>{'atime': atime, 'ctime': ctime, 'mtime': mtime};
   }
 
   factory PoolTargetTimestamps.fromMap(Map<String, dynamic> map) {
     return PoolTargetTimestamps(
-      atime: (map['atime'] as String).input(),
-      ctime: (map['ctime'] as String).input(),
-      mtime: (map['mtime'] as String).input(),
+      atime: pulumi.Input.fromValue(map['atime'] as String),
+      ctime: pulumi.Input.fromValue(map['ctime'] as String),
+      mtime: pulumi.Input.fromValue(map['mtime'] as String),
     );
   }
 }
-

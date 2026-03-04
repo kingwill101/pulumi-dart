@@ -7,20 +7,17 @@ class GetClusterAddonsConfigNetworkPolicyConfig {
 
   /// Creates a new [GetClusterAddonsConfigNetworkPolicyConfig].
   /// [disabled] Required.
-  GetClusterAddonsConfigNetworkPolicyConfig({
-    required this.disabled,
-  });
+  GetClusterAddonsConfigNetworkPolicyConfig({required this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': disabled,
-    };
+    return <String, dynamic>{'disabled': disabled};
   }
 
-  factory GetClusterAddonsConfigNetworkPolicyConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigNetworkPolicyConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAddonsConfigNetworkPolicyConfig(
-      disabled: (map['disabled'] as bool).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
-

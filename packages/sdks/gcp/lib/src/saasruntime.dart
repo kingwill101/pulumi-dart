@@ -1,5 +1,3 @@
-library module_saasruntime;
-
 export 'saasruntime/release.dart';
 export 'saasruntime/release_args.dart';
 export 'saasruntime/release_blueprint.dart';

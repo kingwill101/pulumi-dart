@@ -9,26 +9,36 @@ import 'update_run_strategy_response.dart';
 class GetUpdateRunResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String eTag;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
   final ManagedClusterUpdateResponse managedClusterUpdate;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state of the UpdateRun resource.
   final String provisioningState;
+
   /// The status of the UpdateRun.
   final UpdateRunStatusResponse status;
+
   /// The strategy defines the order in which the clusters will be updated.
   /// If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
   /// The strategy of the UpdateRun can be modified until the run is started.
   final UpdateRunStrategyResponse? strategy;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The resource id of the FleetUpdateStrategy resource to reference.
   ///
   /// When creating a new run, there are three ways to define a strategy for the run:
@@ -78,7 +88,7 @@ class GetUpdateRunResult {
       'name': name,
       'provisioningState': provisioningState,
       'status': status.toMap(),
-      'strategy': ?strategy == null ? null : strategy!.toMap(),
+      'strategy': ?strategy?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
       'updateStrategyId': ?updateStrategyId,
@@ -90,15 +100,30 @@ class GetUpdateRunResult {
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
-      managedClusterUpdate: ManagedClusterUpdateResponse.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>()),
+      managedClusterUpdate: ManagedClusterUpdateResponse.fromMap(
+        (map['managedClusterUpdate']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: UpdateRunStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      strategy: map['strategy'] == null ? null : UpdateRunStrategyResponse.fromMap((map['strategy']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      status: UpdateRunStatusResponse.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
+      strategy: (() {
+        final guardedValue = map['strategy'];
+        if (guardedValue == null) return null;
+        return UpdateRunStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      updateStrategyId: map['updateStrategyId'] == null ? null : map['updateStrategyId']! as String,
+      updateStrategyId: (() {
+        final guardedValue = map['updateStrategyId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

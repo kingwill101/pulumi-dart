@@ -1,5 +1,3 @@
-library module_dlm;
-
 export 'dlm/lifecycle_policy.dart';
 export 'dlm/lifecycle_policy_args.dart';
 export 'dlm/lifecycle_policy_policy_details.dart';

@@ -1,5 +1,3 @@
-library module_pubsub;
-
 export 'pubsub/avro_config.dart';
 export 'pubsub/avro_config_response.dart';
 export 'pubsub/big_query_config.dart';

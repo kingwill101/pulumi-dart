@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:test/test.dart';
@@ -266,6 +269,103 @@ void main() {
       expect(tuple3Data.value, equals((1, 'a', true)));
       expect(tuple4Data.isSecret, isTrue);
       expect(tuple4Data.value, equals((1, 'a', true, 2.5)));
+    });
+  });
+
+  group('output resolution recursion', () {
+    test('apply resolves Input.fromValue return value', () async {
+      final resolved = Output.create(
+        'seed',
+      ).apply<String>((_) => Input.fromValue('resolved'));
+      final data = await resolved.getData();
+
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('resolved'));
+    });
+
+    test('apply resolves nested Input/output wrapper chains', () async {
+      final leaf = Output.create('leaf');
+      final middle = Output<dynamic>(
+        Future.value(
+          OutputData<dynamic>(
+            value: Input.fromOutput(leaf),
+            isKnown: true,
+            isSecret: false,
+            resources: {},
+          ),
+        ),
+      );
+      final wrapped = Input.fromOutput(
+        Output<dynamic>(
+          Future.value(
+            OutputData<dynamic>(
+              value: middle,
+              isKnown: true,
+              isSecret: true,
+              resources: {},
+            ),
+          ),
+        ),
+      );
+
+      final resolved = Output.create('seed').apply<String>((_) => wrapped);
+      final data = await resolved.getData();
+
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('leaf'));
+      expect(data.isSecret, isTrue);
+    });
+
+    test('apply keeps unknown and secret from nested Input output', () async {
+      final inner = createOutputRetainingUnknown('inner', false, true);
+      final resolved = Output.create(
+        'seed',
+      ).apply<String>((_) => Input.fromOutput(inner));
+      final data = await resolved.getData();
+
+      expect(data.isKnown, isFalse);
+      expect(data.value, equals('inner'));
+      expect(data.isSecret, isTrue);
+    });
+
+    test('apply resolves Output that returns Input chain', () async {
+      final inner = Output.create('inner');
+      final wrapped = Output.create(Input.fromOutput(inner));
+      final resolved = wrapped.apply<String>((_) => wrapped);
+
+      final data = await resolved.getData();
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('inner'));
+    });
+
+    test('apply throws on recursive Output/Input cycle', () async {
+      final completer = Completer<OutputData<dynamic>>();
+      final recursive = Output<dynamic>(completer.future);
+      final cycle = Input.fromOutput(recursive);
+
+      completer.complete(
+        OutputData<dynamic>(
+          value: cycle,
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      final resolved = Output.create('seed').apply<String>((_) => cycle);
+
+      await expectLater(
+        resolved.getData(),
+        throwsA(
+          predicate(
+            (error) =>
+                error is StateError &&
+                error.toString().contains(
+                  'Detected recursive Output/Input graph while resolving output value.',
+                ),
+          ),
+        ),
+      );
     });
   });
 }

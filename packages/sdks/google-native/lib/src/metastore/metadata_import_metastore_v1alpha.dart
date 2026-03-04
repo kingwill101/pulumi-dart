@@ -8,23 +8,31 @@ import 'metadata_import_metastore_v1alpha_args.dart';
 class MetadataImportMetastoreV1alpha extends pulumi.CustomResource {
   /// The time when the metadata import was started.
   late final pulumi.Output<String> createTime;
+
   /// Immutable. A database dump from a pre-existing metastore's database.
   late final pulumi.Output<DatabaseDumpResponseMetastoreV1alpha> databaseDump;
+
   /// The description of the metadata import.
   late final pulumi.Output<String> description;
+
   /// The time when the metadata import finished.
   late final pulumi.Output<String> endTime;
   late final pulumi.Output<String> location;
+
   /// Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
   late final pulumi.Output<String> metadataImportId;
+
   /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   late final pulumi.Output<String?> requestId;
   late final pulumi.Output<String> serviceId;
+
   /// The current state of the metadata import.
   late final pulumi.Output<String> state;
+
   /// The time when the metadata import was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -37,22 +45,24 @@ class MetadataImportMetastoreV1alpha extends pulumi.CustomResource {
     MetadataImportMetastoreV1alphaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:metastore/v1alpha:MetadataImport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.databaseDump = registerOutput<DatabaseDumpResponseMetastoreV1alpha>('databaseDump');
-    this.description = registerOutput<String>('description');
-    this.endTime = registerOutput<String>('endTime');
-    this.location = registerOutput<String>('location');
-    this.metadataImportId = registerOutput<String>('metadataImportId');
+         'google-native:metastore/v1alpha:MetadataImport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    databaseDump = registerOutput<DatabaseDumpResponseMetastoreV1alpha>(
+      'databaseDump',
+    );
+    description = registerOutput<String>('description');
+    endTime = registerOutput<String>('endTime');
+    location = registerOutput<String>('location');
+    metadataImportId = registerOutput<String>('metadataImportId');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.requestId = registerOutput<String?>('requestId');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    serviceId = registerOutput<String>('serviceId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

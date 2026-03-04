@@ -4,16 +4,17 @@ enum InstanceReadReplicasModeRedisV1beta1 {
   readReplicasDisabled("READ_REPLICAS_DISABLED"),
   readReplicasEnabled("READ_REPLICAS_ENABLED");
 
-  const InstanceReadReplicasModeRedisV1beta1(this.value);
-  final String value;
+  const InstanceReadReplicasModeRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static InstanceReadReplicasModeRedisV1beta1 fromValue(String value) {
     for (final item in InstanceReadReplicasModeRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceReadReplicasModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceReadReplicasModeRedisV1beta1 value: $value',
+    );
   }
 }
-

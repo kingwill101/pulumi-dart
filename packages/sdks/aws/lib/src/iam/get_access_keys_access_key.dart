@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessKeysAccessKey {
   /// Access key ID.
   final pulumi.Input<String> accessKeyId;
+
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the access key was created.
   final pulumi.Input<String> createDate;
+
   /// Access key status. Possible values are `Active` and `Inactive`.
   final pulumi.Input<String> status;
 
@@ -30,10 +32,9 @@ class GetAccessKeysAccessKey {
 
   factory GetAccessKeysAccessKey.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysAccessKey(
-      accessKeyId: (map['accessKeyId'] as String).input(),
-      createDate: (map['createDate'] as String).input(),
-      status: (map['status'] as String).input(),
+      accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
+      createDate: pulumi.Input.fromValue(map['createDate'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

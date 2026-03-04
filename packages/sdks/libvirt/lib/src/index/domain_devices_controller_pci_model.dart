@@ -8,20 +8,15 @@ class DomainDevicesControllerPciModel {
 
   /// Creates a new [DomainDevicesControllerPciModel].
   /// [name] Specifies the name of the PCI model being used.
-  DomainDevicesControllerPciModel({
-    required this.name,
-  });
+  DomainDevicesControllerPciModel({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesControllerPciModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerPciModel(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

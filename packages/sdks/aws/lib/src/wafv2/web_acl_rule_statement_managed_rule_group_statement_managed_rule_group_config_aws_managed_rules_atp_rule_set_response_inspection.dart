@@ -8,13 +8,28 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection {
   /// Configures inspection of the response body. See `body_contains` for more details.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains>? bodyContains;
+  final pulumi.Input<
+    WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains
+  >?
+  bodyContains;
+
   /// Configures inspection of the response header.See `header` for more details.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader>? header;
+  final pulumi.Input<
+    WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader
+  >?
+  header;
+
   /// Configures inspection of the response JSON. See `json` for more details.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson>? json;
+  final pulumi.Input<
+    WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson
+  >?
+  json;
+
   /// Configures inspection of the response status code.See `status_code` for more details.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode>? statusCode;
+  final pulumi.Input<
+    WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode
+  >?
+  statusCode;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection].
   /// [bodyContains] Configures inspection of the response body. See `body_contains` for more details.
@@ -30,20 +45,69 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bodyContains': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains, Map<String, dynamic>>(bodyContains, (value) => value.toMap()),
-      'header': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader, Map<String, dynamic>>(header, (value) => value.toMap()),
-      'json': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson, Map<String, dynamic>>(json, (value) => value.toMap()),
-      'statusCode': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode, Map<String, dynamic>>(statusCode, (value) => value.toMap()),
+      'bodyContains':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains,
+            Map<String, dynamic>
+          >(bodyContains, (value) => value.toMap()),
+      'header':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader,
+            Map<String, dynamic>
+          >(header, (value) => value.toMap()),
+      'json':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson,
+            Map<String, dynamic>
+          >(json, (value) => value.toMap()),
+      'statusCode':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode,
+            Map<String, dynamic>
+          >(statusCode, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection(
-      bodyContains: map['bodyContains'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains.fromMap((map['bodyContains']! as Map).cast<String, dynamic>())).input()).input(),
-      header: map['header'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader.fromMap((map['header']! as Map).cast<String, dynamic>())).input()).input(),
-      json: map['json'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson.fromMap((map['json']! as Map).cast<String, dynamic>())).input()).input(),
-      statusCode: map['statusCode'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode.fromMap((map['statusCode']! as Map).cast<String, dynamic>())).input()).input(),
+      bodyContains: (() {
+        final guardedValue = map['bodyContains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      header: (() {
+        final guardedValue = map['header'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      json: (() {
+        final guardedValue = map['json'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

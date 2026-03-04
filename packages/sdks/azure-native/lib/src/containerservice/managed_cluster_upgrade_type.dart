@@ -4,16 +4,15 @@ enum ManagedClusterUpgradeType {
   nodeImageOnly("NodeImageOnly"),
   controlPlaneOnly("ControlPlaneOnly");
 
-  const ManagedClusterUpgradeType(this.value);
-  final String value;
+  const ManagedClusterUpgradeType(this.wireValue);
+  final String wireValue;
 
   static ManagedClusterUpgradeType fromValue(String value) {
     for (final item in ManagedClusterUpgradeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedClusterUpgradeType value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum ServiceLoadMetricWeight {
   medium("Medium"),
   high("High");
 
-  const ServiceLoadMetricWeight(this.value);
-  final String value;
+  const ServiceLoadMetricWeight(this.wireValue);
+  final String wireValue;
 
   static ServiceLoadMetricWeight fromValue(String value) {
     for (final item in ServiceLoadMetricWeight.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceLoadMetricWeight value: $value');
   }
 }
-

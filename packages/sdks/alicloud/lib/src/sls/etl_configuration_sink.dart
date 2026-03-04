@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EtlConfigurationSink {
   /// Result datasets to write to.
   final pulumi.Input<List<String>> datasets;
+
   /// The endpoint of the region where the destination project resides.
   final pulumi.Input<String> endpoint;
+
   /// The name of the destination Logstore.
   final pulumi.Input<String> logstore;
+
   /// The name of the output destination.
   final pulumi.Input<String> name;
+
   /// Project name.
   final pulumi.Input<String> project;
+
   /// The ARN of the role authorized to write to the destination Logstore.
   final pulumi.Input<String> roleArn;
 
@@ -45,13 +50,14 @@ class EtlConfigurationSink {
 
   factory EtlConfigurationSink.fromMap(Map<String, dynamic> map) {
     return EtlConfigurationSink(
-      datasets: ((map['datasets'] as List).cast<String>()).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      logstore: (map['logstore'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: (map['project'] as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      datasets: pulumi.Input.fromValue(
+        (map['datasets'] as List).cast<String>(),
+      ),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      logstore: pulumi.Input.fromValue(map['logstore'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

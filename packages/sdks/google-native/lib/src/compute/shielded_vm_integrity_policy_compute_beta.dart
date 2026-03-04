@@ -9,20 +9,21 @@ class ShieldedVmIntegrityPolicyComputeBeta {
 
   /// Creates a new [ShieldedVmIntegrityPolicyComputeBeta].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  ShieldedVmIntegrityPolicyComputeBeta({
-    this.updateAutoLearnPolicy,
-  });
+  ShieldedVmIntegrityPolicyComputeBeta({this.updateAutoLearnPolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'updateAutoLearnPolicy': ?updateAutoLearnPolicy,
-    };
+    return <String, dynamic>{'updateAutoLearnPolicy': ?updateAutoLearnPolicy};
   }
 
-  factory ShieldedVmIntegrityPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ShieldedVmIntegrityPolicyComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ShieldedVmIntegrityPolicyComputeBeta(
-      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] == null ? null : (map['updateAutoLearnPolicy']! as bool).input(),
+      updateAutoLearnPolicy: (() {
+        final guardedValue = map['updateAutoLearnPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

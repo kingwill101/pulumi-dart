@@ -12,10 +12,13 @@ import 'audit_policy_state.dart';
 class AuditPolicy extends pulumi.CustomResource {
   /// Audit state, Valid values: `enable`, `disabled`.
   late final pulumi.Output<String> auditStatus;
+
   /// Database Instance Id
   late final pulumi.Output<String> dbInstanceId;
+
   /// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
   late final pulumi.Output<String> filter;
+
   /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
   late final pulumi.Output<int> storagePeriod;
 
@@ -28,15 +31,15 @@ class AuditPolicy extends pulumi.CustomResource {
     AuditPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/auditPolicy:AuditPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditStatus = registerOutput<String>('auditStatus');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.filter = registerOutput<String>('filter');
-    this.storagePeriod = registerOutput<int>('storagePeriod');
+         'alicloud:mongodb/auditPolicy:AuditPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditStatus = registerOutput<String>('auditStatus');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    filter = registerOutput<String>('filter');
+    storagePeriod = registerOutput<int>('storagePeriod');
   }
 
   /// Gets an existing [AuditPolicy] resource's state with the given [name] and [id].
@@ -57,14 +60,14 @@ class AuditPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/auditPolicy:AuditPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditStatus = registerOutput<String>('auditStatus');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.filter = registerOutput<String>('filter');
-    this.storagePeriod = registerOutput<int>('storagePeriod');
+         'alicloud:mongodb/auditPolicy:AuditPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditStatus = registerOutput<String>('auditStatus');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    filter = registerOutput<String>('filter');
+    storagePeriod = registerOutput<int>('storagePeriod');
   }
 }

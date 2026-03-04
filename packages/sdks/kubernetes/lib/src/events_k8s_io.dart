@@ -1,5 +1,3 @@
-library module_events_k8s_io;
-
 export 'events_k8s_io/event.dart';
 export 'events_k8s_io/event_args.dart';
 export 'events_k8s_io/event_events_k8s_io_v1.dart';

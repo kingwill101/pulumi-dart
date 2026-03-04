@@ -3,16 +3,17 @@ enum ZonalPlatformFaultDomainAlignMode {
   aligned("Aligned"),
   unaligned("Unaligned");
 
-  const ZonalPlatformFaultDomainAlignMode(this.value);
-  final String value;
+  const ZonalPlatformFaultDomainAlignMode(this.wireValue);
+  final String wireValue;
 
   static ZonalPlatformFaultDomainAlignMode fromValue(String value) {
     for (final item in ZonalPlatformFaultDomainAlignMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ZonalPlatformFaultDomainAlignMode value: $value');
+    throw ArgumentError(
+      'Unknown ZonalPlatformFaultDomainAlignMode value: $value',
+    );
   }
 }
-

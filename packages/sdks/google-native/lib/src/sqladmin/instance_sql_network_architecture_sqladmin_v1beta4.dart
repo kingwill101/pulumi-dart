@@ -4,16 +4,17 @@ enum InstanceSqlNetworkArchitectureSqladminV1beta4 {
   newNetworkArchitecture("NEW_NETWORK_ARCHITECTURE"),
   oldNetworkArchitecture("OLD_NETWORK_ARCHITECTURE");
 
-  const InstanceSqlNetworkArchitectureSqladminV1beta4(this.value);
-  final String value;
+  const InstanceSqlNetworkArchitectureSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static InstanceSqlNetworkArchitectureSqladminV1beta4 fromValue(String value) {
     for (final item in InstanceSqlNetworkArchitectureSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceSqlNetworkArchitectureSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceSqlNetworkArchitectureSqladminV1beta4 value: $value',
+    );
   }
 }
-

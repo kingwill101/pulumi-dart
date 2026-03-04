@@ -1,5 +1,3 @@
-library module_rbac_authorization_k8s_io;
-
 export 'rbac_authorization_k8s_io/aggregation_rule.dart';
 export 'rbac_authorization_k8s_io/aggregation_rule_patch.dart';
 export 'rbac_authorization_k8s_io/aggregation_rule_patch_rbac_authorization_k8s_io_v1alpha1.dart';

@@ -6,9 +6,12 @@ import 'get_cluster_remote_network_config_remote_pod_network.dart';
 
 class GetClusterRemoteNetworkConfig {
   /// The networks that can contain hybrid nodes.
-  final pulumi.Input<List<GetClusterRemoteNetworkConfigRemoteNodeNetwork>> remoteNodeNetworks;
+  final pulumi.Input<List<GetClusterRemoteNetworkConfigRemoteNodeNetwork>>
+  remoteNodeNetworks;
+
   /// The networks that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  final pulumi.Input<List<GetClusterRemoteNetworkConfigRemotePodNetwork>> remotePodNetworks;
+  final pulumi.Input<List<GetClusterRemoteNetworkConfigRemotePodNetwork>>
+  remotePodNetworks;
 
   /// Creates a new [GetClusterRemoteNetworkConfig].
   /// [remoteNodeNetworks] The networks that can contain hybrid nodes.
@@ -20,16 +23,51 @@ class GetClusterRemoteNetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'remoteNodeNetworks': pulumi.Input.mapInputValue<List<GetClusterRemoteNetworkConfigRemoteNodeNetwork>, List<Map<String, dynamic>>>(remoteNodeNetworks, (value) => pulumi.Input.encodeList<GetClusterRemoteNetworkConfigRemoteNodeNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'remotePodNetworks': pulumi.Input.mapInputValue<List<GetClusterRemoteNetworkConfigRemotePodNetwork>, List<Map<String, dynamic>>>(remotePodNetworks, (value) => pulumi.Input.encodeList<GetClusterRemoteNetworkConfigRemotePodNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'remoteNodeNetworks':
+          pulumi.Input.mapInputValue<
+            List<GetClusterRemoteNetworkConfigRemoteNodeNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            remoteNodeNetworks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterRemoteNetworkConfigRemoteNodeNetwork,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'remotePodNetworks':
+          pulumi.Input.mapInputValue<
+            List<GetClusterRemoteNetworkConfigRemotePodNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            remotePodNetworks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterRemoteNetworkConfigRemotePodNetwork,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetClusterRemoteNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterRemoteNetworkConfig(
-      remoteNodeNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemoteNodeNetwork>(map['remoteNodeNetworks']!, (value) => GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remotePodNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemotePodNetwork>(map['remotePodNetworks']!, (value) => GetClusterRemoteNetworkConfigRemotePodNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteNodeNetworks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemoteNodeNetwork>(
+          map['remoteNodeNetworks']!,
+          (value) => GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      remotePodNetworks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemotePodNetwork>(
+          map['remotePodNetworks']!,
+          (value) => GetClusterRemoteNetworkConfigRemotePodNetwork.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

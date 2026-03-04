@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'quota_schedule_args.dart';
-import 'quota_schedule_schedule_list.dart';
 import 'quota_schedule_state.dart';
 
 /// ## Import
@@ -13,8 +12,10 @@ import 'quota_schedule_state.dart';
 class QuotaSchedule extends pulumi.CustomResource {
   /// The nickname of level-1 compute quota.
   late final pulumi.Output<String> nickname;
+
   /// schedule list See `schedule_list` below.
-  late final pulumi.Output<List<QuotaScheduleScheduleList>?> scheduleLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scheduleLists;
+
   /// Time zone, reference value: UTC +8
   late final pulumi.Output<String> timezone;
 
@@ -27,14 +28,16 @@ class QuotaSchedule extends pulumi.CustomResource {
     QuotaScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nickname = registerOutput<String>('nickname');
-    this.scheduleLists = registerOutput<List<QuotaScheduleScheduleList>?>('scheduleLists');
-    this.timezone = registerOutput<String>('timezone');
+         'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nickname = registerOutput<String>('nickname');
+    scheduleLists = registerOutput<List<Map<String, dynamic>>?>(
+      'scheduleLists',
+    );
+    timezone = registerOutput<String>('timezone');
   }
 
   /// Gets an existing [QuotaSchedule] resource's state with the given [name] and [id].
@@ -55,13 +58,15 @@ class QuotaSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nickname = registerOutput<String>('nickname');
-    this.scheduleLists = registerOutput<List<QuotaScheduleScheduleList>?>('scheduleLists');
-    this.timezone = registerOutput<String>('timezone');
+         'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nickname = registerOutput<String>('nickname');
+    scheduleLists = registerOutput<List<Map<String, dynamic>>?>(
+      'scheduleLists',
+    );
+    timezone = registerOutput<String>('timezone');
   }
 }

@@ -198,14 +198,19 @@ import 'deployment_properties_extended_response.dart';
 class DeploymentAtTenantScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// the location of the deployment.
   late final pulumi.Output<String?> location;
+
   /// The name of the deployment.
   late final pulumi.Output<String> name;
+
   /// Deployment properties.
   late final pulumi.Output<DeploymentPropertiesExtendedResponse> properties;
+
   /// Deployment tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the deployment.
   late final pulumi.Output<String> type;
 
@@ -218,16 +223,18 @@ class DeploymentAtTenantScope extends pulumi.CustomResource {
     DeploymentAtTenantScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resources:DeploymentAtTenantScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:resources:DeploymentAtTenantScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DeploymentPropertiesExtendedResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DeploymentPropertiesExtendedResponse>(
+      'properties',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

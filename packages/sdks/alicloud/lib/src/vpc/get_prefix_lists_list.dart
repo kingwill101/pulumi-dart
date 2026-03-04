@@ -6,20 +6,28 @@ import 'get_prefix_lists_list_entry.dart';
 class GetPrefixListsList {
   /// The time when the prefix list was created.
   final pulumi.Input<String> createTime;
+
   /// The CIDR address block list of the prefix list.
   final pulumi.Input<List<GetPrefixListsListEntry>> entrys;
+
   /// The ID of the Prefix List.
   final pulumi.Input<String> id;
+
   /// The IP version of the prefix list.
   final pulumi.Input<String> ipVersion;
+
   /// The maximum number of entries for CIDR address blocks in the prefix list.
   final pulumi.Input<int> maxEntries;
+
   /// The description of the prefix list.
   final pulumi.Input<String> prefixListDescription;
+
   /// The ID of the query Prefix List.
   final pulumi.Input<String> prefixListId;
+
   /// The name of the prefix list.
   final pulumi.Input<String> prefixListName;
+
   /// The share type of the prefix list.
   final pulumi.Input<String> shareType;
 
@@ -48,7 +56,18 @@ class GetPrefixListsList {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'entrys': pulumi.Input.mapInputValue<List<GetPrefixListsListEntry>, List<Map<String, dynamic>>>(entrys, (value) => pulumi.Input.encodeList<GetPrefixListsListEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'entrys':
+          pulumi.Input.mapInputValue<
+            List<GetPrefixListsListEntry>,
+            List<Map<String, dynamic>>
+          >(
+            entrys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPrefixListsListEntry,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': id,
       'ipVersion': ipVersion,
       'maxEntries': maxEntries,
@@ -61,16 +80,24 @@ class GetPrefixListsList {
 
   factory GetPrefixListsList.fromMap(Map<String, dynamic> map) {
     return GetPrefixListsList(
-      createTime: (map['createTime'] as String).input(),
-      entrys: (pulumi.Input.decodeList<GetPrefixListsListEntry>(map['entrys'], (value) => GetPrefixListsListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: (map['id'] as String).input(),
-      ipVersion: (map['ipVersion'] as String).input(),
-      maxEntries: (map['maxEntries'] as int).input(),
-      prefixListDescription: (map['prefixListDescription'] as String).input(),
-      prefixListId: (map['prefixListId'] as String).input(),
-      prefixListName: (map['prefixListName'] as String).input(),
-      shareType: (map['shareType'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      entrys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetPrefixListsListEntry>(
+          map['entrys']!,
+          (value) => GetPrefixListsListEntry.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipVersion: pulumi.Input.fromValue(map['ipVersion'] as String),
+      maxEntries: pulumi.Input.fromValue(map['maxEntries'] as int),
+      prefixListDescription: pulumi.Input.fromValue(
+        map['prefixListDescription'] as String,
+      ),
+      prefixListId: pulumi.Input.fromValue(map['prefixListId'] as String),
+      prefixListName: pulumi.Input.fromValue(map['prefixListName'] as String),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
     );
   }
 }
-

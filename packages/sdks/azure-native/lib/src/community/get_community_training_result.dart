@@ -8,34 +8,49 @@ import 'system_data_response.dart';
 class GetCommunityTrainingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// To indicate whether the Community Training instance has Disaster Recovery enabled
   final bool disasterRecoveryEnabled;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The identity configuration of the Community Training resource
   final IdentityConfigurationPropertiesResponse identityConfiguration;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The email address of the portal admin
   final String portalAdminEmailAddress;
+
   /// The portal name (website name) of the Community Training instance
   final String portalName;
+
   /// The email address of the portal owner. Will be used as the primary contact
   final String portalOwnerEmailAddress;
+
   /// The organization name of the portal owner
   final String portalOwnerOrganizationName;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final SkuResponse? sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// To indicate whether the Community Training instance has Zone Redundancy enabled
   final bool zoneRedundancyEnabled;
 
@@ -88,7 +103,7 @@ class GetCommunityTrainingResult {
       'portalOwnerEmailAddress': portalOwnerEmailAddress,
       'portalOwnerOrganizationName': portalOwnerOrganizationName,
       'provisioningState': provisioningState,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -101,7 +116,9 @@ class GetCommunityTrainingResult {
       azureApiVersion: map['azureApiVersion'] as String,
       disasterRecoveryEnabled: map['disasterRecoveryEnabled'] as bool,
       id: map['id'] as String,
-      identityConfiguration: IdentityConfigurationPropertiesResponse.fromMap((map['identityConfiguration'] as Map).cast<String, dynamic>()),
+      identityConfiguration: IdentityConfigurationPropertiesResponse.fromMap(
+        (map['identityConfiguration']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       portalAdminEmailAddress: map['portalAdminEmailAddress'] as String,
@@ -109,12 +126,23 @@ class GetCommunityTrainingResult {
       portalOwnerEmailAddress: map['portalOwnerEmailAddress'] as String,
       portalOwnerOrganizationName: map['portalOwnerOrganizationName'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       zoneRedundancyEnabled: map['zoneRedundancyEnabled'] as bool,
     );
   }
 }
-

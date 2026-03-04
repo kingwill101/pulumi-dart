@@ -10,14 +10,19 @@ import 'virtual_network_tap_network.dart';
 class NetworkInterfaceTapConfigurationArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The name of the network interface.
   final pulumi.Input<String> networkInterfaceName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the tap configuration.
   final pulumi.Input<String>? tapConfigurationName;
+
   /// The reference to the Virtual Network Tap resource.
   final pulumi.Input<VirtualNetworkTapNetwork>? virtualNetworkTap;
 
@@ -48,15 +53,36 @@ class NetworkInterfaceTapConfigurationArgs {
     };
   }
 
-  factory NetworkInterfaceTapConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceTapConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceTapConfigurationArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tapConfigurationName: map['tapConfigurationName'] == null ? null : (map['tapConfigurationName']! as String).input(),
-      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (map['virtualNetworkTap']! as VirtualNetworkTapNetwork).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceName: pulumi.Input.fromValue(
+        map['networkInterfaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tapConfigurationName: (() {
+        final guardedValue = map['tapConfigurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkTap: (() {
+        final guardedValue = map['virtualNetworkTap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as VirtualNetworkTapNetwork);
+      })(),
     );
   }
 }
-

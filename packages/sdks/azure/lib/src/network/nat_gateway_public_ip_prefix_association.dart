@@ -238,7 +238,7 @@ import 'nat_gateway_public_ip_prefix_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -251,10 +251,11 @@ import 'nat_gateway_public_ip_prefix_association_state.dart';
 /// $ pulumi import azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation example "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/natGateways/gateway1|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/publicIPPrefixes/myPublicIpPrefix1"
 /// ```
 ///
-/// > **Note:** This is a Terraform Specific ID in the format `{natGatewayID}|{publicIPPrefixID}`
+/// &gt; **Note:** This is a Terraform Specific ID in the format `{natGatewayID}|{publicIPPrefixID}`
 class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
   /// The ID of the NAT Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natGatewayId;
+
   /// The ID of the Public IP Prefix which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publicIpPrefixId;
 
@@ -267,13 +268,13 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
     NatGatewayPublicIpPrefixAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
+         'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
   }
 
   /// Gets an existing [NatGatewayPublicIpPrefixAssociation] resource's state with the given [name] and [id].
@@ -294,12 +295,12 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
+         'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
   }
 }

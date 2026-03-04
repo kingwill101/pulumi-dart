@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseProperties {
   /// The build number of the OS release.
   final pulumi.Input<String>? buildNumber;
+
   /// The build revision of the OS release.
   final pulumi.Input<String>? buildRevision;
+
   /// The name of the OS release.
   final pulumi.Input<String>? releaseName;
+
   /// The release version date of the OS release.
   final pulumi.Input<String>? releaseVersionDate;
 
@@ -36,11 +39,26 @@ class ReleaseProperties {
 
   factory ReleaseProperties.fromMap(Map<String, dynamic> map) {
     return ReleaseProperties(
-      buildNumber: map['buildNumber'] == null ? null : (map['buildNumber']! as String).input(),
-      buildRevision: map['buildRevision'] == null ? null : (map['buildRevision']! as String).input(),
-      releaseName: map['releaseName'] == null ? null : (map['releaseName']! as String).input(),
-      releaseVersionDate: map['releaseVersionDate'] == null ? null : (map['releaseVersionDate']! as String).input(),
+      buildNumber: (() {
+        final guardedValue = map['buildNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      buildRevision: (() {
+        final guardedValue = map['buildRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseName: (() {
+        final guardedValue = map['releaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseVersionDate: (() {
+        final guardedValue = map['releaseVersionDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

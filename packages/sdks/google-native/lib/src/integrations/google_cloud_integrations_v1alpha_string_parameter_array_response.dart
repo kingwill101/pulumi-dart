@@ -14,15 +14,16 @@ class GoogleCloudIntegrationsV1alphaStringParameterArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'stringValues': stringValues,
-    };
+    return <String, dynamic>{'stringValues': stringValues};
   }
 
-  factory GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaStringParameterArrayResponse(
-      stringValues: ((map['stringValues'] as List).cast<String>()).input(),
+      stringValues: pulumi.Input.fromValue(
+        (map['stringValues'] as List).cast<String>(),
+      ),
     );
   }
 }
-

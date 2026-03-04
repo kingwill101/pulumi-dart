@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The name of the the service
   final pulumi.Input<String> serviceName;
 
   /// Creates a new [GetServiceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceName] The name of the the service
-  GetServiceArgs({
-    required this.resourceUri,
-    required this.serviceName,
-  });
+  GetServiceArgs({required this.resourceUri, required this.serviceName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      resourceUri: (map['resourceUri'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1ApiSecurityConfigResponse {
   /// Flag that specifies whether the API security add-on is enabled.
   final pulumi.Input<bool> enabled;
+
   /// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
   final pulumi.Input<String> expiresAt;
 
@@ -18,17 +19,15 @@ class GoogleCloudApigeeV1ApiSecurityConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'expiresAt': expiresAt,
-    };
+    return <String, dynamic>{'enabled': enabled, 'expiresAt': expiresAt};
   }
 
-  factory GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ApiSecurityConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
-      expiresAt: (map['expiresAt'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
     );
   }
 }
-

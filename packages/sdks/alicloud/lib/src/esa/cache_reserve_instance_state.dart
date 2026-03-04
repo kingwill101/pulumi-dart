@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheReserveInstanceState {
   /// Automatic payment.
   final pulumi.Input<bool>? autoPay;
+
   /// Whether to auto-renew:
   final pulumi.Input<bool>? autoRenew;
+
   /// Cache holding area
   /// - `HK`: Hong Kong, China
   /// - `CN`: Mainland China
   final pulumi.Input<String>? crRegion;
+
   /// Instance purchase time.
   final pulumi.Input<String>? createTime;
+
   /// Specifies whether to enable auto payment.
   final pulumi.Input<String>? paymentType;
+
   /// Purchase period (unit: month).
   final pulumi.Input<int>? period;
+
   /// Cache retention specification (unit: GB).
   final pulumi.Input<int>? quotaGb;
+
   /// The status of the cache reserve instance. , it is unavailable.
   final pulumi.Input<String>? status;
 
@@ -58,15 +65,46 @@ class CacheReserveInstanceState {
 
   factory CacheReserveInstanceState.fromMap(Map<String, dynamic> map) {
     return CacheReserveInstanceState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      crRegion: map['crRegion'] == null ? null : (map['crRegion']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      crRegion: (() {
+        final guardedValue = map['crRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      quotaGb: (() {
+        final guardedValue = map['quotaGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

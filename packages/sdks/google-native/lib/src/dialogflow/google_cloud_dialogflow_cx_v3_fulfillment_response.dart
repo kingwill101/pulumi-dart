@@ -9,19 +9,34 @@ import 'google_cloud_dialogflow_cx_v3_response_message_response.dart';
 /// A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
 class GoogleCloudDialogflowCxV3FulfillmentResponse {
   /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettingsResponse> advancedSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettingsResponse>
+  advancedSettings;
+
   /// Conditional cases for this fulfillment.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse>> conditionalCases;
+  final pulumi.Input<
+    List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse>
+  >
+  conditionalCases;
+
   /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
   final pulumi.Input<bool> enableGenerativeFallback;
+
   /// The list of rich message responses to present to the user.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3ResponseMessageResponse>> messages;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ResponseMessageResponse>>
+  messages;
+
   /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
   final pulumi.Input<bool> returnPartialResponses;
+
   /// Set parameter values before executing the webhook.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse>> setParameterActions;
+  final pulumi.Input<
+    List<GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse>
+  >
+  setParameterActions;
+
   /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
   final pulumi.Input<String> tag;
+
   /// The webhook to call. Format: `projects//locations//agents//webhooks/`.
   final pulumi.Input<String> webhook;
 
@@ -47,28 +62,104 @@ class GoogleCloudDialogflowCxV3FulfillmentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSettings': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3AdvancedSettingsResponse, Map<String, dynamic>>(advancedSettings, (value) => value.toMap()),
-      'conditionalCases': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse>, List<Map<String, dynamic>>>(conditionalCases, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'advancedSettings':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowCxV3AdvancedSettingsResponse,
+            Map<String, dynamic>
+          >(advancedSettings, (value) => value.toMap()),
+      'conditionalCases':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            conditionalCases,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enableGenerativeFallback': enableGenerativeFallback,
-      'messages': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowCxV3ResponseMessageResponse>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3ResponseMessageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'messages':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudDialogflowCxV3ResponseMessageResponse>,
+            List<Map<String, dynamic>>
+          >(
+            messages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowCxV3ResponseMessageResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'returnPartialResponses': returnPartialResponses,
-      'setParameterActions': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse>, List<Map<String, dynamic>>>(setParameterActions, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'setParameterActions':
+          pulumi.Input.mapInputValue<
+            List<
+              GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse
+            >,
+            List<Map<String, dynamic>>
+          >(
+            setParameterActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tag': tag,
       'webhook': webhook,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3FulfillmentResponse(
-      advancedSettings: (GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      conditionalCases: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse>(map['conditionalCases'], (value) => GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableGenerativeFallback: (map['enableGenerativeFallback'] as bool).input(),
-      messages: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessageResponse>(map['messages'], (value) => GoogleCloudDialogflowCxV3ResponseMessageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse>(map['setParameterActions'], (value) => GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: (map['tag'] as String).input(),
-      webhook: (map['webhook'] as String).input(),
+      advancedSettings: pulumi.Input.fromValue(
+        GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap(
+          (map['advancedSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      conditionalCases: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse
+        >(
+          map['conditionalCases']!,
+          (value) =>
+              GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      enableGenerativeFallback: pulumi.Input.fromValue(
+        map['enableGenerativeFallback'] as bool,
+      ),
+      messages: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessageResponse>(
+          map['messages']!,
+          (value) => GoogleCloudDialogflowCxV3ResponseMessageResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      returnPartialResponses: pulumi.Input.fromValue(
+        map['returnPartialResponses'] as bool,
+      ),
+      setParameterActions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse
+        >(
+          map['setParameterActions']!,
+          (value) =>
+              GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
+      webhook: pulumi.Input.fromValue(map['webhook'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertProcessingRuleSuppressionConditionTargetResourceType {
   /// The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   final pulumi.Input<String> operator;
+
   /// A list of values to match for a given condition. The values should be valid resource types. (e.g. Microsoft.Compute/VirtualMachines)
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class AlertProcessingRuleSuppressionConditionTargetResourceType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operator': operator,
-      'values': values,
-    };
+    return <String, dynamic>{'operator': operator, 'values': values};
   }
 
-  factory AlertProcessingRuleSuppressionConditionTargetResourceType.fromMap(Map<String, dynamic> map) {
+  factory AlertProcessingRuleSuppressionConditionTargetResourceType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertProcessingRuleSuppressionConditionTargetResourceType(
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

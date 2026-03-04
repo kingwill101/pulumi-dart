@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSlotTypeArgs {
   /// Name of the slot type. The name is case sensitive.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Version of the slot type.
   final pulumi.Input<String>? version;
 
@@ -18,11 +20,7 @@ class GetSlotTypeArgs {
   /// [name] Name of the slot type. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the slot type.
-  GetSlotTypeArgs({
-    required this.name,
-    this.region,
-    this.version,
-  });
+  GetSlotTypeArgs({required this.name, this.region, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetSlotTypeArgs {
 
   factory GetSlotTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSlotTypeArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

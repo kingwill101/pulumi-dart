@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
   /// When the next Scheduler job is going to run.
   final pulumi.Input<String> nextJobTime;
+
   /// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
   final pulumi.Input<String> schedule;
+
   /// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
   final pulumi.Input<String> timeZone;
 
@@ -29,12 +31,13 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
     };
   }
 
-  factory GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatapipelinesV1ScheduleSpecResponse(
-      nextJobTime: (map['nextJobTime'] as String).input(),
-      schedule: (map['schedule'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      nextJobTime: pulumi.Input.fromValue(map['nextJobTime'] as String),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

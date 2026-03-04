@@ -7,8 +7,10 @@ import 'manifest_artifact_format_response.dart';
 class ArtifactManifestPropertiesFormatResponse {
   /// The artifact manifest state.
   final pulumi.Input<String> artifactManifestState;
+
   /// The artifacts list.
   final pulumi.Input<List<ManifestArtifactFormatResponse>>? artifacts;
+
   /// The provisioning state of the ArtifactManifest resource.
   final pulumi.Input<String> provisioningState;
 
@@ -25,17 +27,44 @@ class ArtifactManifestPropertiesFormatResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifactManifestState': artifactManifestState,
-      'artifacts': ?pulumi.Input.mapOptionalInputValue<List<ManifestArtifactFormatResponse>, List<Map<String, dynamic>>>(artifacts, (value) => pulumi.Input.encodeList<ManifestArtifactFormatResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'artifacts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManifestArtifactFormatResponse>,
+            List<Map<String, dynamic>>
+          >(
+            artifacts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManifestArtifactFormatResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
     };
   }
 
-  factory ArtifactManifestPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
+  factory ArtifactManifestPropertiesFormatResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ArtifactManifestPropertiesFormatResponse(
-      artifactManifestState: (map['artifactManifestState'] as String).input(),
-      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<ManifestArtifactFormatResponse>(map['artifacts']!, (value) => ManifestArtifactFormatResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      artifactManifestState: pulumi.Input.fromValue(
+        map['artifactManifestState'] as String,
+      ),
+      artifacts: (() {
+        final guardedValue = map['artifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManifestArtifactFormatResponse>(
+            guardedValue,
+            (value) => ManifestArtifactFormatResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

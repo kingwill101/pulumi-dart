@@ -12,25 +12,52 @@ import 'stream_rule_set_object_filter_source_object_identifier_sql_server_identi
 class StreamRuleSetObjectFilterSourceObjectIdentifier {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier>? mongodbIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier
+  >?
+  mongodbIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier>? mysqlIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier
+  >?
+  mysqlIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier>? oracleIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier
+  >?
+  oracleIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier>? postgresqlIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier
+  >?
+  postgresqlIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier>? salesforceIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier
+  >?
+  salesforceIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier>? spannerIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier
+  >?
+  spannerIdentifier;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier>? sqlServerIdentifier;
+  final pulumi.Input<
+    StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier
+  >?
+  sqlServerIdentifier;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifier].
   /// [mongodbIdentifier] A nested object resource.
@@ -52,26 +79,111 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mongodbIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier, Map<String, dynamic>>(mongodbIdentifier, (value) => value.toMap()),
-      'mysqlIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier, Map<String, dynamic>>(mysqlIdentifier, (value) => value.toMap()),
-      'oracleIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier, Map<String, dynamic>>(oracleIdentifier, (value) => value.toMap()),
-      'postgresqlIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier, Map<String, dynamic>>(postgresqlIdentifier, (value) => value.toMap()),
-      'salesforceIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier, Map<String, dynamic>>(salesforceIdentifier, (value) => value.toMap()),
-      'spannerIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier, Map<String, dynamic>>(spannerIdentifier, (value) => value.toMap()),
-      'sqlServerIdentifier': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier, Map<String, dynamic>>(sqlServerIdentifier, (value) => value.toMap()),
+      'mongodbIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier,
+            Map<String, dynamic>
+          >(mongodbIdentifier, (value) => value.toMap()),
+      'mysqlIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier,
+            Map<String, dynamic>
+          >(mysqlIdentifier, (value) => value.toMap()),
+      'oracleIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier,
+            Map<String, dynamic>
+          >(oracleIdentifier, (value) => value.toMap()),
+      'postgresqlIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier,
+            Map<String, dynamic>
+          >(postgresqlIdentifier, (value) => value.toMap()),
+      'salesforceIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier,
+            Map<String, dynamic>
+          >(salesforceIdentifier, (value) => value.toMap()),
+      'spannerIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier,
+            Map<String, dynamic>
+          >(spannerIdentifier, (value) => value.toMap()),
+      'sqlServerIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier,
+            Map<String, dynamic>
+          >(sqlServerIdentifier, (value) => value.toMap()),
     };
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetObjectFilterSourceObjectIdentifier(
-      mongodbIdentifier: map['mongodbIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier.fromMap((map['mongodbIdentifier']! as Map).cast<String, dynamic>())).input(),
-      mysqlIdentifier: map['mysqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap((map['mysqlIdentifier']! as Map).cast<String, dynamic>())).input(),
-      oracleIdentifier: map['oracleIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap((map['oracleIdentifier']! as Map).cast<String, dynamic>())).input(),
-      postgresqlIdentifier: map['postgresqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier.fromMap((map['postgresqlIdentifier']! as Map).cast<String, dynamic>())).input(),
-      salesforceIdentifier: map['salesforceIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap((map['salesforceIdentifier']! as Map).cast<String, dynamic>())).input(),
-      spannerIdentifier: map['spannerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap((map['spannerIdentifier']! as Map).cast<String, dynamic>())).input(),
-      sqlServerIdentifier: map['sqlServerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier.fromMap((map['sqlServerIdentifier']! as Map).cast<String, dynamic>())).input(),
+      mongodbIdentifier: (() {
+        final guardedValue = map['mongodbIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mysqlIdentifier: (() {
+        final guardedValue = map['mysqlIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      oracleIdentifier: (() {
+        final guardedValue = map['oracleIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      postgresqlIdentifier: (() {
+        final guardedValue = map['postgresqlIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      salesforceIdentifier: (() {
+        final guardedValue = map['salesforceIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spannerIdentifier: (() {
+        final guardedValue = map['spannerIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sqlServerIdentifier: (() {
+        final guardedValue = map['sqlServerIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReportByBillingAccountArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
+
   /// Report Name.
   final pulumi.Input<String> reportName;
 
@@ -29,9 +30,10 @@ class GetReportByBillingAccountArgs {
 
   factory GetReportByBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetReportByBillingAccountArgs(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      reportName: (map['reportName'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      reportName: pulumi.Input.fromValue(map['reportName'] as String),
     );
   }
 }
-

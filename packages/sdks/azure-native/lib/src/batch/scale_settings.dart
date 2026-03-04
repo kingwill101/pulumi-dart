@@ -8,29 +8,50 @@ import 'fixed_scale_settings.dart';
 class ScaleSettings {
   /// This property and fixedScale are mutually exclusive and one of the properties must be specified.
   final pulumi.Input<AutoScaleSettings>? autoScale;
+
   /// This property and autoScale are mutually exclusive and one of the properties must be specified.
   final pulumi.Input<FixedScaleSettings>? fixedScale;
 
   /// Creates a new [ScaleSettings].
   /// [autoScale] This property and fixedScale are mutually exclusive and one of the properties must be specified.
   /// [fixedScale] This property and autoScale are mutually exclusive and one of the properties must be specified.
-  ScaleSettings({
-    this.autoScale,
-    this.fixedScale,
-  });
+  ScaleSettings({this.autoScale, this.fixedScale});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoScale': ?pulumi.Input.mapOptionalInputValue<AutoScaleSettings, Map<String, dynamic>>(autoScale, (value) => value.toMap()),
-      'fixedScale': ?pulumi.Input.mapOptionalInputValue<FixedScaleSettings, Map<String, dynamic>>(fixedScale, (value) => value.toMap()),
+      'autoScale':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoScaleSettings,
+            Map<String, dynamic>
+          >(autoScale, (value) => value.toMap()),
+      'fixedScale':
+          ?pulumi.Input.mapOptionalInputValue<
+            FixedScaleSettings,
+            Map<String, dynamic>
+          >(fixedScale, (value) => value.toMap()),
     };
   }
 
   factory ScaleSettings.fromMap(Map<String, dynamic> map) {
     return ScaleSettings(
-      autoScale: map['autoScale'] == null ? null : (AutoScaleSettings.fromMap((map['autoScale']! as Map).cast<String, dynamic>())).input(),
-      fixedScale: map['fixedScale'] == null ? null : (FixedScaleSettings.fromMap((map['fixedScale']! as Map).cast<String, dynamic>())).input(),
+      autoScale: (() {
+        final guardedValue = map['autoScale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoScaleSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fixedScale: (() {
+        final guardedValue = map['fixedScale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FixedScaleSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

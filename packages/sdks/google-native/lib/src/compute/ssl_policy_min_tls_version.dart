@@ -4,16 +4,15 @@ enum SslPolicyMinTlsVersion {
   tls11("TLS_1_1"),
   tls12("TLS_1_2");
 
-  const SslPolicyMinTlsVersion(this.value);
-  final String value;
+  const SslPolicyMinTlsVersion(this.wireValue);
+  final String wireValue;
 
   static SslPolicyMinTlsVersion fromValue(String value) {
     for (final item in SslPolicyMinTlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslPolicyMinTlsVersion value: $value');
   }
 }
-

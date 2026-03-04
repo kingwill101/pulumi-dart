@@ -11,16 +11,21 @@ import 'ethereum_details.dart';
 class BlockchainNodeArgs {
   /// Required. ID of the requesting object.
   final pulumi.Input<String> blockchainNodeId;
+
   /// Immutable. The blockchain type of the node.
   final pulumi.Input<BlockchainNodeBlockchainType>? blockchainType;
+
   /// Ethereum-specific blockchain node details.
   final pulumi.Input<EthereumDetails>? ethereumDetails;
+
   /// User-provided key-value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
   final pulumi.Input<bool>? privateServiceConnectEnabled;
   final pulumi.Input<String>? project;
+
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -47,8 +52,16 @@ class BlockchainNodeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blockchainNodeId': blockchainNodeId,
-      'blockchainType': ?pulumi.Input.mapOptionalInputValue<BlockchainNodeBlockchainType, String>(blockchainType, (value) => value.value),
-      'ethereumDetails': ?pulumi.Input.mapOptionalInputValue<EthereumDetails, Map<String, dynamic>>(ethereumDetails, (value) => value.toMap()),
+      'blockchainType':
+          ?pulumi.Input.mapOptionalInputValue<
+            BlockchainNodeBlockchainType,
+            String
+          >(blockchainType, (value) => value.wireValue),
+      'ethereumDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            EthereumDetails,
+            Map<String, dynamic>
+          >(ethereumDetails, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
       'privateServiceConnectEnabled': ?privateServiceConnectEnabled,
@@ -59,15 +72,52 @@ class BlockchainNodeArgs {
 
   factory BlockchainNodeArgs.fromMap(Map<String, dynamic> map) {
     return BlockchainNodeArgs(
-      blockchainNodeId: (map['blockchainNodeId'] as String).input(),
-      blockchainType: map['blockchainType'] == null ? null : (BlockchainNodeBlockchainType.fromValue(map['blockchainType']! as String)).input(),
-      ethereumDetails: map['ethereumDetails'] == null ? null : (EthereumDetails.fromMap((map['ethereumDetails']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      privateServiceConnectEnabled: map['privateServiceConnectEnabled'] == null ? null : (map['privateServiceConnectEnabled']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      blockchainNodeId: pulumi.Input.fromValue(
+        map['blockchainNodeId'] as String,
+      ),
+      blockchainType: (() {
+        final guardedValue = map['blockchainType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BlockchainNodeBlockchainType.fromValue(guardedValue as String),
+        );
+      })(),
+      ethereumDetails: (() {
+        final guardedValue = map['ethereumDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EthereumDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateServiceConnectEnabled: (() {
+        final guardedValue = map['privateServiceConnectEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

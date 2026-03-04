@@ -9,34 +9,49 @@ import 'system_data_response.dart';
 class GetMSIXPackageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// User friendly Name to be displayed in the portal.
   final String? displayName;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// VHD/CIM image path on Network Share.
   final String? imagePath;
+
   /// Make this version of the package the active one across the hostpool.
   final bool? isActive;
+
   /// Specifies how to register Package in feed.
   final bool? isRegularRegistration;
+
   /// Date Package was last updated, found in the appxmanifest.xml.
   final String? lastUpdated;
+
   /// The name of the resource
   final String name;
+
   /// List of package applications.
   final List<MsixPackageApplicationsResponse>? packageApplications;
+
   /// List of package dependencies.
   final List<MsixPackageDependenciesResponse>? packageDependencies;
+
   /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
   final String? packageFamilyName;
+
   /// Package Name from appxmanifest.xml.
   final String? packageName;
+
   /// Relative Path to the package inside the image.
   final String? packageRelativePath;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Package version found in the appxmanifest.xml.
   final String? version;
 
@@ -86,8 +101,22 @@ class GetMSIXPackageResult {
       'isRegularRegistration': ?isRegularRegistration,
       'lastUpdated': ?lastUpdated,
       'name': name,
-      'packageApplications': ?packageApplications == null ? null : pulumi.Input.encodeList<MsixPackageApplicationsResponse, Map<String, dynamic>>(packageApplications!, (value) => value.toMap()),
-      'packageDependencies': ?packageDependencies == null ? null : pulumi.Input.encodeList<MsixPackageDependenciesResponse, Map<String, dynamic>>(packageDependencies!, (value) => value.toMap()),
+      'packageApplications': ?(() {
+        final guardedValue = packageApplications;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          MsixPackageApplicationsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'packageDependencies': ?(() {
+        final guardedValue = packageDependencies;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          MsixPackageDependenciesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'packageFamilyName': ?packageFamilyName,
       'packageName': ?packageName,
       'packageRelativePath': ?packageRelativePath,
@@ -100,22 +129,77 @@ class GetMSIXPackageResult {
   factory GetMSIXPackageResult.fromMap(Map<String, dynamic> map) {
     return GetMSIXPackageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      imagePath: map['imagePath'] == null ? null : map['imagePath']! as String,
-      isActive: map['isActive'] == null ? null : map['isActive']! as bool,
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : map['isRegularRegistration']! as bool,
-      lastUpdated: map['lastUpdated'] == null ? null : map['lastUpdated']! as String,
+      imagePath: (() {
+        final guardedValue = map['imagePath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      isActive: (() {
+        final guardedValue = map['isActive'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isRegularRegistration: (() {
+        final guardedValue = map['isRegularRegistration'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastUpdated: (() {
+        final guardedValue = map['lastUpdated'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      packageApplications: map['packageApplications'] == null ? null : pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications']!, (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      packageDependencies: map['packageDependencies'] == null ? null : pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies']!, (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      packageFamilyName: map['packageFamilyName'] == null ? null : map['packageFamilyName']! as String,
-      packageName: map['packageName'] == null ? null : map['packageName']! as String,
-      packageRelativePath: map['packageRelativePath'] == null ? null : map['packageRelativePath']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      packageApplications: (() {
+        final guardedValue = map['packageApplications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<MsixPackageApplicationsResponse>(
+          guardedValue,
+          (value) => MsixPackageApplicationsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      packageDependencies: (() {
+        final guardedValue = map['packageDependencies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<MsixPackageDependenciesResponse>(
+          guardedValue,
+          (value) => MsixPackageDependenciesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      packageFamilyName: (() {
+        final guardedValue = map['packageFamilyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packageName: (() {
+        final guardedValue = map['packageName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packageRelativePath: (() {
+        final guardedValue = map['packageRelativePath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

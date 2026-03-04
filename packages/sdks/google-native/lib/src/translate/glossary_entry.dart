@@ -9,11 +9,14 @@ class GlossaryEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> glossaryId;
   late final pulumi.Output<String> location;
+
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Used for an unidirectional glossary.
   late final pulumi.Output<GlossaryTermsPairResponse> termsPair;
+
   /// Used for an equivalent term sets glossary.
   late final pulumi.Output<GlossaryTermsSetResponse> termsSet;
 
@@ -26,17 +29,17 @@ class GlossaryEntry extends pulumi.CustomResource {
     GlossaryEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:translate/v3:GlossaryEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.glossaryId = registerOutput<String>('glossaryId');
-    this.location = registerOutput<String>('location');
+         'google-native:translate/v3:GlossaryEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    glossaryId = registerOutput<String>('glossaryId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.termsPair = registerOutput<GlossaryTermsPairResponse>('termsPair');
-    this.termsSet = registerOutput<GlossaryTermsSetResponse>('termsSet');
+    project = registerOutput<String>('project');
+    termsPair = registerOutput<GlossaryTermsPairResponse>('termsPair');
+    termsSet = registerOutput<GlossaryTermsSetResponse>('termsSet');
   }
 }

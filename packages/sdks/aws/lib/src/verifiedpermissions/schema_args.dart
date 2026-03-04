@@ -10,8 +10,10 @@ import 'schema_definition.dart';
 class SchemaArgs {
   /// The definition of the schema.
   final pulumi.Input<SchemaDefinition> definition;
+
   /// The ID of the Policy Store.
   final pulumi.Input<String> policyStoreId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -27,7 +29,11 @@ class SchemaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition': pulumi.Input.mapInputValue<SchemaDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'definition':
+          pulumi.Input.mapInputValue<SchemaDefinition, Map<String, dynamic>>(
+            definition,
+            (value) => value.toMap(),
+          ),
       'policyStoreId': policyStoreId,
       'region': ?region,
     };
@@ -35,10 +41,17 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: (SchemaDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input(),
-      policyStoreId: (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      definition: pulumi.Input.fromValue(
+        SchemaDefinition.fromMap(
+          (map['definition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      policyStoreId: pulumi.Input.fromValue(map['policyStoreId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

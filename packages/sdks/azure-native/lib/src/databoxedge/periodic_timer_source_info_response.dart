@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PeriodicTimerSourceInfoResponse {
   /// Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
   final pulumi.Input<String> schedule;
+
   /// The time of the day that results in a valid trigger. Schedule is computed with reference to the time specified upto seconds. If timezone is not specified the time will considered to be in device timezone. The value will always be returned as UTC time.
   final pulumi.Input<String> startTime;
+
   /// Topic where periodic events are published to IoT device.
   final pulumi.Input<String>? topic;
 
@@ -31,10 +33,13 @@ class PeriodicTimerSourceInfoResponse {
 
   factory PeriodicTimerSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicTimerSourceInfoResponse(
-      schedule: (map['schedule'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

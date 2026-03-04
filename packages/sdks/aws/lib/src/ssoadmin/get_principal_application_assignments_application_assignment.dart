@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrincipalApplicationAssignmentsApplicationAssignment {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
+
   /// An identifier for an object in IAM Identity Center, such as a user or group.
   final pulumi.Input<String> principalId;
+
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   final pulumi.Input<String> principalType;
 
@@ -28,12 +30,13 @@ class GetPrincipalApplicationAssignmentsApplicationAssignment {
     };
   }
 
-  factory GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap(Map<String, dynamic> map) {
+  factory GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrincipalApplicationAssignmentsApplicationAssignment(
-      applicationArn: (map['applicationArn'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
+      applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
     );
   }
 }
-

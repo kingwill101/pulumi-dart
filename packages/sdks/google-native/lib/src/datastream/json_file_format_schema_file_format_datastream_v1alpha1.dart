@@ -4,16 +4,20 @@ enum JsonFileFormatSchemaFileFormatDatastreamV1alpha1 {
   noSchemaFile("NO_SCHEMA_FILE"),
   avroSchemaFile("AVRO_SCHEMA_FILE");
 
-  const JsonFileFormatSchemaFileFormatDatastreamV1alpha1(this.value);
-  final String value;
+  const JsonFileFormatSchemaFileFormatDatastreamV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static JsonFileFormatSchemaFileFormatDatastreamV1alpha1 fromValue(String value) {
-    for (final item in JsonFileFormatSchemaFileFormatDatastreamV1alpha1.values) {
-      if (item.value == value) {
+  static JsonFileFormatSchemaFileFormatDatastreamV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in JsonFileFormatSchemaFileFormatDatastreamV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown JsonFileFormatSchemaFileFormatDatastreamV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown JsonFileFormatSchemaFileFormatDatastreamV1alpha1 value: $value',
+    );
   }
 }
-

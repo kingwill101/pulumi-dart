@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnStringInfoResponse {
   /// Connection string value.
   final pulumi.Input<String>? connectionString;
+
   /// Name of connection string.
   final pulumi.Input<String>? name;
+
   /// Type of database.
   final pulumi.Input<String>? type;
 
@@ -15,11 +17,7 @@ class ConnStringInfoResponse {
   /// [connectionString] Connection string value.
   /// [name] Name of connection string.
   /// [type] Type of database.
-  ConnStringInfoResponse({
-    this.connectionString,
-    this.name,
-    this.type,
-  });
+  ConnStringInfoResponse({this.connectionString, this.name, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ConnStringInfoResponse {
 
   factory ConnStringInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnStringInfoResponse(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

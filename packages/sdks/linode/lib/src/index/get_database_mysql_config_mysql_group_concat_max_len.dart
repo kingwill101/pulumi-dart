@@ -37,15 +37,16 @@ class GetDatabaseMysqlConfigMysqlGroupConcatMaxLen {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlGroupConcatMaxLen(
-      description: (map['description'] as String).input(),
-      example: (map['example'] as double).input(),
-      maximum: (map['maximum'] as double).input(),
-      minimum: (map['minimum'] as double).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      example: pulumi.Input.fromValue(map['example'] as double),
+      maximum: pulumi.Input.fromValue(map['maximum'] as double),
+      minimum: pulumi.Input.fromValue(map['minimum'] as double),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

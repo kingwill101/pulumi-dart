@@ -9,20 +9,19 @@ class ReferencedPublicIpAddressResponse {
 
   /// Creates a new [ReferencedPublicIpAddressResponse].
   /// [id] The PublicIPAddress Reference.
-  ReferencedPublicIpAddressResponse({
-    this.id,
-  });
+  ReferencedPublicIpAddressResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ReferencedPublicIpAddressResponse.fromMap(Map<String, dynamic> map) {
     return ReferencedPublicIpAddressResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

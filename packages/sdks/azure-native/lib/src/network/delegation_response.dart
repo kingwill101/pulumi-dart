@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegationResponse {
   /// The actions permitted to the service upon delegation.
   final pulumi.Input<List<String>> actions;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a subnet. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The provisioning state of the service delegation resource.
   final pulumi.Input<String> provisioningState;
+
   /// The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers).
   final pulumi.Input<String>? serviceName;
+
   /// Resource type.
   final pulumi.Input<String>? type;
 
@@ -51,14 +57,31 @@ class DelegationResponse {
 
   factory DelegationResponse.fromMap(Map<String, dynamic> map) {
     return DelegationResponse(
-      actions: ((map['actions'] as List).cast<String>()).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

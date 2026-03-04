@@ -9,20 +9,17 @@ class ConfigurationPropertiesResponse {
 
   /// Creates a new [ConfigurationPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
-  ConfigurationPropertiesResponse({
-    required this.provisioningState,
-  });
+  ConfigurationPropertiesResponse({required this.provisioningState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provisioningState': provisioningState,
-    };
+    return <String, dynamic>{'provisioningState': provisioningState};
   }
 
   factory ConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

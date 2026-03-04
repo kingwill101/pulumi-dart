@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowWorkflowV2Args {
   /// The name of the workflow.
   final pulumi.Input<String>? name;
+
   /// The namespace of the workflow.
   final pulumi.Input<String>? namespace;
+
   /// The id of the project to retrieve the workflow.
   /// Requires admin privileges.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Workflow client.
   final pulumi.Input<String>? region;
 
@@ -40,11 +43,26 @@ class WorkflowWorkflowV2Args {
 
   factory WorkflowWorkflowV2Args.fromMap(Map<String, dynamic> map) {
     return WorkflowWorkflowV2Args(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,21 +6,30 @@ import 'backup_retention_settings_response_sqladmin_v1beta4.dart';
 /// Database instance backup configuration.
 class BackupConfigurationResponseSqladminV1beta4 {
   /// Backup retention settings.
-  final pulumi.Input<BackupRetentionSettingsResponseSqladminV1beta4> backupRetentionSettings;
+  final pulumi.Input<BackupRetentionSettingsResponseSqladminV1beta4>
+  backupRetentionSettings;
+
   /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
   final pulumi.Input<bool> binaryLogEnabled;
+
   /// Whether this configuration is enabled.
   final pulumi.Input<bool> enabled;
+
   /// This is always `sql#backupConfiguration`.
   final pulumi.Input<String> kind;
+
   /// Location of the backup
   final pulumi.Input<String> location;
+
   /// Whether point in time recovery is enabled.
   final pulumi.Input<bool> pointInTimeRecoveryEnabled;
+
   /// Reserved for future use.
   final pulumi.Input<bool> replicationLogArchivingEnabled;
+
   /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
   final pulumi.Input<String> startTime;
+
   /// The number of days of transaction logs we retain for point in time restore, from 1-7.
   final pulumi.Input<int> transactionLogRetentionDays;
 
@@ -48,7 +57,11 @@ class BackupConfigurationResponseSqladminV1beta4 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupRetentionSettings': pulumi.Input.mapInputValue<BackupRetentionSettingsResponseSqladminV1beta4, Map<String, dynamic>>(backupRetentionSettings, (value) => value.toMap()),
+      'backupRetentionSettings':
+          pulumi.Input.mapInputValue<
+            BackupRetentionSettingsResponseSqladminV1beta4,
+            Map<String, dynamic>
+          >(backupRetentionSettings, (value) => value.toMap()),
       'binaryLogEnabled': binaryLogEnabled,
       'enabled': enabled,
       'kind': kind,
@@ -60,18 +73,29 @@ class BackupConfigurationResponseSqladminV1beta4 {
     };
   }
 
-  factory BackupConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory BackupConfigurationResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupConfigurationResponseSqladminV1beta4(
-      backupRetentionSettings: (BackupRetentionSettingsResponseSqladminV1beta4.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>())).input(),
-      binaryLogEnabled: (map['binaryLogEnabled'] as bool).input(),
-      enabled: (map['enabled'] as bool).input(),
-      kind: (map['kind'] as String).input(),
-      location: (map['location'] as String).input(),
-      pointInTimeRecoveryEnabled: (map['pointInTimeRecoveryEnabled'] as bool).input(),
-      replicationLogArchivingEnabled: (map['replicationLogArchivingEnabled'] as bool).input(),
-      startTime: (map['startTime'] as String).input(),
-      transactionLogRetentionDays: (map['transactionLogRetentionDays'] as int).input(),
+      backupRetentionSettings: pulumi.Input.fromValue(
+        BackupRetentionSettingsResponseSqladminV1beta4.fromMap(
+          (map['backupRetentionSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      binaryLogEnabled: pulumi.Input.fromValue(map['binaryLogEnabled'] as bool),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      pointInTimeRecoveryEnabled: pulumi.Input.fromValue(
+        map['pointInTimeRecoveryEnabled'] as bool,
+      ),
+      replicationLogArchivingEnabled: pulumi.Input.fromValue(
+        map['replicationLogArchivingEnabled'] as bool,
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      transactionLogRetentionDays: pulumi.Input.fromValue(
+        map['transactionLogRetentionDays'] as int,
+      ),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class GoogleCloudDatalabelingV1beta1CsvInstructionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcsFileUri': gcsFileUri,
-    };
+    return <String, dynamic>{'gcsFileUri': gcsFileUri};
   }
 
-  factory GoogleCloudDatalabelingV1beta1CsvInstructionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1CsvInstructionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1CsvInstructionResponse(
-      gcsFileUri: (map['gcsFileUri'] as String).input(),
+      gcsFileUri: pulumi.Input.fromValue(map['gcsFileUri'] as String),
     );
   }
 }
-

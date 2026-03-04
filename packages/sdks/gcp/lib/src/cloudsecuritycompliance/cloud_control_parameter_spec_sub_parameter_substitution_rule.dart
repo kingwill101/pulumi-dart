@@ -7,10 +7,17 @@ import 'cloud_control_parameter_spec_sub_parameter_substitution_rule_placeholder
 class CloudControlParameterSpecSubParameterSubstitutionRule {
   /// Attribute at the given path is substituted entirely.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule>? attributeSubstitutionRule;
+  final pulumi.Input<
+    CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule
+  >?
+  attributeSubstitutionRule;
+
   /// Placeholder is substituted in the rendered string.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule>? placeholderSubstitutionRule;
+  final pulumi.Input<
+    CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule
+  >?
+  placeholderSubstitutionRule;
 
   /// Creates a new [CloudControlParameterSpecSubParameterSubstitutionRule].
   /// [attributeSubstitutionRule] Attribute at the given path is substituted entirely.
@@ -22,16 +29,41 @@ class CloudControlParameterSpecSubParameterSubstitutionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeSubstitutionRule': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule, Map<String, dynamic>>(attributeSubstitutionRule, (value) => value.toMap()),
-      'placeholderSubstitutionRule': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule, Map<String, dynamic>>(placeholderSubstitutionRule, (value) => value.toMap()),
+      'attributeSubstitutionRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule,
+            Map<String, dynamic>
+          >(attributeSubstitutionRule, (value) => value.toMap()),
+      'placeholderSubstitutionRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule,
+            Map<String, dynamic>
+          >(placeholderSubstitutionRule, (value) => value.toMap()),
     };
   }
 
-  factory CloudControlParameterSpecSubParameterSubstitutionRule.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterSubstitutionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecSubParameterSubstitutionRule(
-      attributeSubstitutionRule: map['attributeSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule.fromMap((map['attributeSubstitutionRule']! as Map).cast<String, dynamic>())).input(),
-      placeholderSubstitutionRule: map['placeholderSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap((map['placeholderSubstitutionRule']! as Map).cast<String, dynamic>())).input(),
+      attributeSubstitutionRule: (() {
+        final guardedValue = map['attributeSubstitutionRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      placeholderSubstitutionRule: (() {
+        final guardedValue = map['placeholderSubstitutionRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

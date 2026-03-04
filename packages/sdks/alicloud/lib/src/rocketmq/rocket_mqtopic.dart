@@ -6,7 +6,7 @@ import 'rocket_mqtopic_state.dart';
 ///
 /// For information about RocketMQ Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createtopic).
 ///
-/// > **NOTE:** Available since v1.211.0.
+/// &gt; **NOTE:** Available since v1.211.0.
 ///
 /// ## Example Usage
 ///
@@ -514,18 +514,25 @@ import 'rocket_mqtopic_state.dart';
 class RocketMQTopic extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The maximum TPS for message sending.
   late final pulumi.Output<int?> maxSendTps;
+
   /// Message type.
   late final pulumi.Output<String?> messageType;
+
   /// (Available since v1.247.0) The region ID to which the instance belongs.
   late final pulumi.Output<String> regionId;
+
   /// Custom remarks.
   late final pulumi.Output<String?> remark;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Topic name and identification.
   late final pulumi.Output<String> topicName;
 
@@ -538,19 +545,19 @@ class RocketMQTopic extends pulumi.CustomResource {
     RocketMQTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxSendTps = registerOutput<int?>('maxSendTps');
-    this.messageType = registerOutput<String?>('messageType');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.status = registerOutput<String>('status');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    maxSendTps = registerOutput<int?>('maxSendTps');
+    messageType = registerOutput<String?>('messageType');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    status = registerOutput<String>('status');
+    topicName = registerOutput<String>('topicName');
   }
 
   /// Gets an existing [RocketMQTopic] resource's state with the given [name] and [id].
@@ -571,18 +578,18 @@ class RocketMQTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxSendTps = registerOutput<int?>('maxSendTps');
-    this.messageType = registerOutput<String?>('messageType');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.status = registerOutput<String>('status');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    maxSendTps = registerOutput<int?>('maxSendTps');
+    messageType = registerOutput<String?>('messageType');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    status = registerOutput<String>('status');
+    topicName = registerOutput<String>('topicName');
   }
 }

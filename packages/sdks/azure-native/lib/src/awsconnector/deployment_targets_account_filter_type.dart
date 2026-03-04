@@ -5,16 +5,17 @@ enum DeploymentTargetsAccountFilterType {
   nONE("NONE"),
   uNION("UNION");
 
-  const DeploymentTargetsAccountFilterType(this.value);
-  final String value;
+  const DeploymentTargetsAccountFilterType(this.wireValue);
+  final String wireValue;
 
   static DeploymentTargetsAccountFilterType fromValue(String value) {
     for (final item in DeploymentTargetsAccountFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeploymentTargetsAccountFilterType value: $value');
+    throw ArgumentError(
+      'Unknown DeploymentTargetsAccountFilterType value: $value',
+    );
   }
 }
-

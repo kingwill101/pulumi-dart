@@ -4,16 +4,17 @@ enum InstanceTransitEncryptionModeRedisV1beta1 {
   serverAuthentication("SERVER_AUTHENTICATION"),
   disabled("DISABLED");
 
-  const InstanceTransitEncryptionModeRedisV1beta1(this.value);
-  final String value;
+  const InstanceTransitEncryptionModeRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static InstanceTransitEncryptionModeRedisV1beta1 fromValue(String value) {
     for (final item in InstanceTransitEncryptionModeRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceTransitEncryptionModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceTransitEncryptionModeRedisV1beta1 value: $value',
+    );
   }
 }
-

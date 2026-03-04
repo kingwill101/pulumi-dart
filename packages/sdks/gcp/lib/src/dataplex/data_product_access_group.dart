@@ -6,12 +6,16 @@ import 'data_product_access_group_principal.dart';
 class DataProductAccessGroup {
   /// Description of the access group.
   final pulumi.Input<String>? description;
+
   /// User friendly display name.
   final pulumi.Input<String> displayName;
+
   /// Unique identifier of the access group.
   final pulumi.Input<String> groupId;
+
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> id;
+
   /// The principal entity.
   /// Structure is documented below.
   final pulumi.Input<DataProductAccessGroupPrincipal> principal;
@@ -36,18 +40,29 @@ class DataProductAccessGroup {
       'displayName': displayName,
       'groupId': groupId,
       'id': id,
-      'principal': pulumi.Input.mapInputValue<DataProductAccessGroupPrincipal, Map<String, dynamic>>(principal, (value) => value.toMap()),
+      'principal':
+          pulumi.Input.mapInputValue<
+            DataProductAccessGroupPrincipal,
+            Map<String, dynamic>
+          >(principal, (value) => value.toMap()),
     };
   }
 
   factory DataProductAccessGroup.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroup(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      id: (map['id'] as String).input(),
-      principal: (DataProductAccessGroupPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      principal: pulumi.Input.fromValue(
+        DataProductAccessGroupPrincipal.fromMap(
+          (map['principal']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

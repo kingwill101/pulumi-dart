@@ -11,28 +11,41 @@ import 'upload_watermark_response.dart';
 class DataControllerPropertiesResponse {
   /// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
   final pulumi.Input<BasicLoginInformationResponse>? basicLoginInformation;
+
   /// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
   final pulumi.Input<String>? clusterId;
+
   /// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
   final pulumi.Input<String>? extensionId;
+
   /// The infrastructure the data controller is running on.
   final pulumi.Input<String>? infrastructure;
+
   /// The raw kubernetes information
   final pulumi.Input<dynamic>? k8sRaw;
+
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
   final pulumi.Input<String>? lastUploadedDate;
+
   /// Log analytics workspace id and primary key
-  final pulumi.Input<LogAnalyticsWorkspaceConfigResponse>? logAnalyticsWorkspaceConfig;
+  final pulumi.Input<LogAnalyticsWorkspaceConfigResponse>?
+  logAnalyticsWorkspaceConfig;
+
   /// Login credential for logs dashboard on the Kubernetes cluster.
   final pulumi.Input<BasicLoginInformationResponse>? logsDashboardCredential;
+
   /// Login credential for metrics dashboard on the Kubernetes cluster.
   final pulumi.Input<BasicLoginInformationResponse>? metricsDashboardCredential;
+
   /// Properties from the Kubernetes data controller
   final pulumi.Input<OnPremisePropertyResponse>? onPremiseProperty;
+
   /// The provisioning state of the Arc Data Controller resource.
   final pulumi.Input<String> provisioningState;
+
   /// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
   final pulumi.Input<UploadServicePrincipalResponse>? uploadServicePrincipal;
+
   /// Properties on upload watermark.  Mostly timestamp for each upload data type
   final pulumi.Input<UploadWatermarkResponse>? uploadWatermark;
 
@@ -68,38 +81,143 @@ class DataControllerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformationResponse, Map<String, dynamic>>(basicLoginInformation, (value) => value.toMap()),
+      'basicLoginInformation':
+          ?pulumi.Input.mapOptionalInputValue<
+            BasicLoginInformationResponse,
+            Map<String, dynamic>
+          >(basicLoginInformation, (value) => value.toMap()),
       'clusterId': ?clusterId,
       'extensionId': ?extensionId,
       'infrastructure': ?infrastructure,
       'k8sRaw': ?k8sRaw,
       'lastUploadedDate': ?lastUploadedDate,
-      'logAnalyticsWorkspaceConfig': ?pulumi.Input.mapOptionalInputValue<LogAnalyticsWorkspaceConfigResponse, Map<String, dynamic>>(logAnalyticsWorkspaceConfig, (value) => value.toMap()),
-      'logsDashboardCredential': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformationResponse, Map<String, dynamic>>(logsDashboardCredential, (value) => value.toMap()),
-      'metricsDashboardCredential': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformationResponse, Map<String, dynamic>>(metricsDashboardCredential, (value) => value.toMap()),
-      'onPremiseProperty': ?pulumi.Input.mapOptionalInputValue<OnPremisePropertyResponse, Map<String, dynamic>>(onPremiseProperty, (value) => value.toMap()),
+      'logAnalyticsWorkspaceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogAnalyticsWorkspaceConfigResponse,
+            Map<String, dynamic>
+          >(logAnalyticsWorkspaceConfig, (value) => value.toMap()),
+      'logsDashboardCredential':
+          ?pulumi.Input.mapOptionalInputValue<
+            BasicLoginInformationResponse,
+            Map<String, dynamic>
+          >(logsDashboardCredential, (value) => value.toMap()),
+      'metricsDashboardCredential':
+          ?pulumi.Input.mapOptionalInputValue<
+            BasicLoginInformationResponse,
+            Map<String, dynamic>
+          >(metricsDashboardCredential, (value) => value.toMap()),
+      'onPremiseProperty':
+          ?pulumi.Input.mapOptionalInputValue<
+            OnPremisePropertyResponse,
+            Map<String, dynamic>
+          >(onPremiseProperty, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'uploadServicePrincipal': ?pulumi.Input.mapOptionalInputValue<UploadServicePrincipalResponse, Map<String, dynamic>>(uploadServicePrincipal, (value) => value.toMap()),
-      'uploadWatermark': ?pulumi.Input.mapOptionalInputValue<UploadWatermarkResponse, Map<String, dynamic>>(uploadWatermark, (value) => value.toMap()),
+      'uploadServicePrincipal':
+          ?pulumi.Input.mapOptionalInputValue<
+            UploadServicePrincipalResponse,
+            Map<String, dynamic>
+          >(uploadServicePrincipal, (value) => value.toMap()),
+      'uploadWatermark':
+          ?pulumi.Input.mapOptionalInputValue<
+            UploadWatermarkResponse,
+            Map<String, dynamic>
+          >(uploadWatermark, (value) => value.toMap()),
     };
   }
 
   factory DataControllerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataControllerPropertiesResponse(
-      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['basicLoginInformation']! as Map).cast<String, dynamic>())).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      extensionId: map['extensionId'] == null ? null : (map['extensionId']! as String).input(),
-      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure']! as String).input(),
-      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']!).input(),
-      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate']! as String).input(),
-      logAnalyticsWorkspaceConfig: map['logAnalyticsWorkspaceConfig'] == null ? null : (LogAnalyticsWorkspaceConfigResponse.fromMap((map['logAnalyticsWorkspaceConfig']! as Map).cast<String, dynamic>())).input(),
-      logsDashboardCredential: map['logsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['logsDashboardCredential']! as Map).cast<String, dynamic>())).input(),
-      metricsDashboardCredential: map['metricsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['metricsDashboardCredential']! as Map).cast<String, dynamic>())).input(),
-      onPremiseProperty: map['onPremiseProperty'] == null ? null : (OnPremisePropertyResponse.fromMap((map['onPremiseProperty']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      uploadServicePrincipal: map['uploadServicePrincipal'] == null ? null : (UploadServicePrincipalResponse.fromMap((map['uploadServicePrincipal']! as Map).cast<String, dynamic>())).input(),
-      uploadWatermark: map['uploadWatermark'] == null ? null : (UploadWatermarkResponse.fromMap((map['uploadWatermark']! as Map).cast<String, dynamic>())).input(),
+      basicLoginInformation: (() {
+        final guardedValue = map['basicLoginInformation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BasicLoginInformationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionId: (() {
+        final guardedValue = map['extensionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      infrastructure: (() {
+        final guardedValue = map['infrastructure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      k8sRaw: (() {
+        final guardedValue = map['k8sRaw'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      lastUploadedDate: (() {
+        final guardedValue = map['lastUploadedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logAnalyticsWorkspaceConfig: (() {
+        final guardedValue = map['logAnalyticsWorkspaceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogAnalyticsWorkspaceConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logsDashboardCredential: (() {
+        final guardedValue = map['logsDashboardCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BasicLoginInformationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metricsDashboardCredential: (() {
+        final guardedValue = map['metricsDashboardCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BasicLoginInformationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      onPremiseProperty: (() {
+        final guardedValue = map['onPremiseProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OnPremisePropertyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      uploadServicePrincipal: (() {
+        final guardedValue = map['uploadServicePrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UploadServicePrincipalResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uploadWatermark: (() {
+        final guardedValue = map['uploadWatermark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UploadWatermarkResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

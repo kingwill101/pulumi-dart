@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'click_house_enterprise_db_cluster_args.dart';
-import 'click_house_enterprise_db_cluster_endpoint.dart';
-import 'click_house_enterprise_db_cluster_multi_zone.dart';
 import 'click_house_enterprise_db_cluster_state.dart';
 
 /// Provides a Click House Enterprise Db Cluster resource.
@@ -10,7 +8,7 @@ import 'click_house_enterprise_db_cluster_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -499,50 +497,73 @@ import 'click_house_enterprise_db_cluster_state.dart';
 class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
   /// Instance type.
   late final pulumi.Output<String> category;
+
   /// The billing method.
   late final pulumi.Output<String> chargeType;
+
   /// List of computing group IDs.
   late final pulumi.Output<List<String>> computingGroupIds;
+
   /// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
   late final pulumi.Output<String> createTime;
+
   /// Cluster description.
   late final pulumi.Output<String> description;
+
   /// List of endpoint details.
-  late final pulumi.Output<List<ClickHouseEnterpriseDbClusterEndpoint>> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+
   /// The minor version number of the cluster engine.
   late final pulumi.Output<String> engineMinorVersion;
+
   /// Network type of the instance.
   late final pulumi.Output<String> instanceNetworkType;
+
   /// The multi-zone configuration. See `multi_zones` below.
-  late final pulumi.Output<List<ClickHouseEnterpriseDbClusterMultiZone>> multiZones;
+  late final pulumi.Output<List<Map<String, dynamic>>> multiZones;
+
   /// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
   late final pulumi.Output<int> nodeCount;
+
   /// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
   late final pulumi.Output<int> nodeScaleMax;
+
   /// The minimum value for serverless node auto-scaling. Valid values: 4–32.
   late final pulumi.Output<int> nodeScaleMin;
+
   /// The region ID.
   late final pulumi.Output<String> regionId;
+
   /// Resource group ID of the cluster.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
   late final pulumi.Output<String> scaleMax;
+
   /// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
   late final pulumi.Output<String> scaleMin;
+
   /// The instance status.
   late final pulumi.Output<String> status;
+
   /// Pre-purchased storage capacity (GB).
   late final pulumi.Output<String> storageQuota;
+
   /// The storage capacity.
   late final pulumi.Output<int> storageSize;
+
   /// The storage type.
   late final pulumi.Output<String> storageType;
+
   /// Tag information.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The VPC ID.
   late final pulumi.Output<String?> vpcId;
+
   /// vSwitch ID.
   late final pulumi.Output<String?> vswitchId;
+
   /// The zone ID.
   late final pulumi.Output<String?> zoneId;
 
@@ -555,35 +576,35 @@ class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
     ClickHouseEnterpriseDbClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String>('category');
-    this.chargeType = registerOutput<String>('chargeType');
-    this.computingGroupIds = registerOutput<List<String>>('computingGroupIds');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.endpoints = registerOutput<List<ClickHouseEnterpriseDbClusterEndpoint>>('endpoints');
-    this.engineMinorVersion = registerOutput<String>('engineMinorVersion');
-    this.instanceNetworkType = registerOutput<String>('instanceNetworkType');
-    this.multiZones = registerOutput<List<ClickHouseEnterpriseDbClusterMultiZone>>('multiZones');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.nodeScaleMax = registerOutput<int>('nodeScaleMax');
-    this.nodeScaleMin = registerOutput<int>('nodeScaleMin');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scaleMax = registerOutput<String>('scaleMax');
-    this.scaleMin = registerOutput<String>('scaleMin');
-    this.status = registerOutput<String>('status');
-    this.storageQuota = registerOutput<String>('storageQuota');
-    this.storageSize = registerOutput<int>('storageSize');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String?>('zoneId');
+         'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String>('category');
+    chargeType = registerOutput<String>('chargeType');
+    computingGroupIds = registerOutput<List<String>>('computingGroupIds');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    engineMinorVersion = registerOutput<String>('engineMinorVersion');
+    instanceNetworkType = registerOutput<String>('instanceNetworkType');
+    multiZones = registerOutput<List<Map<String, dynamic>>>('multiZones');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeScaleMax = registerOutput<int>('nodeScaleMax');
+    nodeScaleMin = registerOutput<int>('nodeScaleMin');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scaleMax = registerOutput<String>('scaleMax');
+    scaleMin = registerOutput<String>('scaleMin');
+    status = registerOutput<String>('status');
+    storageQuota = registerOutput<String>('storageQuota');
+    storageSize = registerOutput<int>('storageSize');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String?>('zoneId');
   }
 
   /// Gets an existing [ClickHouseEnterpriseDbCluster] resource's state with the given [name] and [id].
@@ -604,34 +625,34 @@ class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String>('category');
-    this.chargeType = registerOutput<String>('chargeType');
-    this.computingGroupIds = registerOutput<List<String>>('computingGroupIds');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.endpoints = registerOutput<List<ClickHouseEnterpriseDbClusterEndpoint>>('endpoints');
-    this.engineMinorVersion = registerOutput<String>('engineMinorVersion');
-    this.instanceNetworkType = registerOutput<String>('instanceNetworkType');
-    this.multiZones = registerOutput<List<ClickHouseEnterpriseDbClusterMultiZone>>('multiZones');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.nodeScaleMax = registerOutput<int>('nodeScaleMax');
-    this.nodeScaleMin = registerOutput<int>('nodeScaleMin');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scaleMax = registerOutput<String>('scaleMax');
-    this.scaleMin = registerOutput<String>('scaleMin');
-    this.status = registerOutput<String>('status');
-    this.storageQuota = registerOutput<String>('storageQuota');
-    this.storageSize = registerOutput<int>('storageSize');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.zoneId = registerOutput<String?>('zoneId');
+         'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String>('category');
+    chargeType = registerOutput<String>('chargeType');
+    computingGroupIds = registerOutput<List<String>>('computingGroupIds');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    engineMinorVersion = registerOutput<String>('engineMinorVersion');
+    instanceNetworkType = registerOutput<String>('instanceNetworkType');
+    multiZones = registerOutput<List<Map<String, dynamic>>>('multiZones');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeScaleMax = registerOutput<int>('nodeScaleMax');
+    nodeScaleMin = registerOutput<int>('nodeScaleMin');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scaleMax = registerOutput<String>('scaleMax');
+    scaleMin = registerOutput<String>('scaleMin');
+    status = registerOutput<String>('status');
+    storageQuota = registerOutput<String>('storageQuota');
+    storageSize = registerOutput<int>('storageSize');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    zoneId = registerOutput<String?>('zoneId');
   }
 }

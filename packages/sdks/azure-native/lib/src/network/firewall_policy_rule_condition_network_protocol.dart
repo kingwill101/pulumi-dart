@@ -5,16 +5,17 @@ enum FirewallPolicyRuleConditionNetworkProtocol {
   valueAny("Any"),
   valueICMP("ICMP");
 
-  const FirewallPolicyRuleConditionNetworkProtocol(this.value);
-  final String value;
+  const FirewallPolicyRuleConditionNetworkProtocol(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyRuleConditionNetworkProtocol fromValue(String value) {
     for (final item in FirewallPolicyRuleConditionNetworkProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyRuleConditionNetworkProtocol value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyRuleConditionNetworkProtocol value: $value',
+    );
   }
 }
-

@@ -1,14 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_args.dart';
-import 'api_constant_parameter.dart';
 import 'api_fc_service_config.dart';
 import 'api_http_service_config.dart';
 import 'api_http_vpc_service_config.dart';
 import 'api_mock_service_config.dart';
 import 'api_request_config.dart';
-import 'api_request_parameter.dart';
 import 'api_state.dart';
-import 'api_system_parameter.dart';
 
 /// ## Example Usage
 ///
@@ -333,7 +330,7 @@ import 'api_system_parameter.dart';
 ///
 /// ## Import
 ///
-/// Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
+/// Api gateway api can be imported using the id.Format to `&lt;API Group Id&gt;:&lt;API Id&gt;` e.g.
 ///
 /// ```sh
 /// $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
@@ -341,75 +338,95 @@ import 'api_system_parameter.dart';
 class Api extends pulumi.CustomResource {
   /// The ID of the api of api gateway.
   late final pulumi.Output<String> apiId;
+
   /// The authorization Type including APP and ANONYMOUS. Defaults to null.
   late final pulumi.Output<String> authType;
+
   /// constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
-  late final pulumi.Output<List<ApiConstantParameter>?> constantParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> constantParameters;
+
   /// The description of the api. Defaults to null.
   late final pulumi.Output<String> description;
+
   /// fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
   late final pulumi.Output<ApiFcServiceConfig?> fcServiceConfig;
+
   /// Whether to prevent API replay attack. Default value: `false`.
   late final pulumi.Output<bool> forceNonceCheck;
+
   /// The api gateway that the api belongs to. Defaults to null.
   late final pulumi.Output<String> groupId;
+
   /// http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
   late final pulumi.Output<ApiHttpServiceConfig?> httpServiceConfig;
+
   /// http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
   late final pulumi.Output<ApiHttpVpcServiceConfig?> httpVpcServiceConfig;
+
   /// http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
   late final pulumi.Output<ApiMockServiceConfig?> mockServiceConfig;
+
   /// The name of the api gateway api. Defaults to null.
   late final pulumi.Output<String> name;
+
   /// Request_config defines how users can send requests to your API. See `request_config` below.
   late final pulumi.Output<ApiRequestConfig> requestConfig;
+
   /// request_parameters defines the request parameters of the api. See `request_parameters` below.
-  late final pulumi.Output<List<ApiRequestParameter>?> requestParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> requestParameters;
+
   /// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
   late final pulumi.Output<String> serviceType;
+
   /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
   late final pulumi.Output<List<String>?> stageNames;
+
   /// system_parameters defines the system parameters of the api. See `system_parameters` below.
-  late final pulumi.Output<List<ApiSystemParameter>?> systemParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> systemParameters;
 
   /// Creates a new [Api].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_apigateway_api_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(
-    String name, {
-    ApiArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:apigateway/api:Api',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.authType = registerOutput<String>('authType');
-    this.constantParameters = registerOutput<List<ApiConstantParameter>?>('constantParameters');
-    this.description = registerOutput<String>('description');
-    this.fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
-    this.forceNonceCheck = registerOutput<bool>('forceNonceCheck');
-    this.groupId = registerOutput<String>('groupId');
-    this.httpServiceConfig = registerOutput<ApiHttpServiceConfig?>('httpServiceConfig');
-    this.httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>('httpVpcServiceConfig');
-    this.mockServiceConfig = registerOutput<ApiMockServiceConfig?>('mockServiceConfig');
+  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:apigateway/api:Api',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiId = registerOutput<String>('apiId');
+    authType = registerOutput<String>('authType');
+    constantParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'constantParameters',
+    );
+    description = registerOutput<String>('description');
+    fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
+    forceNonceCheck = registerOutput<bool>('forceNonceCheck');
+    groupId = registerOutput<String>('groupId');
+    httpServiceConfig = registerOutput<ApiHttpServiceConfig?>(
+      'httpServiceConfig',
+    );
+    httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>(
+      'httpVpcServiceConfig',
+    );
+    mockServiceConfig = registerOutput<ApiMockServiceConfig?>(
+      'mockServiceConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
-    this.requestParameters = registerOutput<List<ApiRequestParameter>?>('requestParameters');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.stageNames = registerOutput<List<String>?>('stageNames');
-    this.systemParameters = registerOutput<List<ApiSystemParameter>?>('systemParameters');
+    requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
+    requestParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'requestParameters',
+    );
+    serviceType = registerOutput<String>('serviceType');
+    stageNames = registerOutput<List<String>?>('stageNames');
+    systemParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'systemParameters',
+    );
   }
 
   /// Gets an existing [Api] resource's state with the given [name] and [id].
-  static Api get(
-    String name,
-    pulumi.Input<String> id, {
-    ApiState? state,
-  }) {
+  static Api get(String name, pulumi.Input<String> id, {ApiState? state}) {
     return Api._get(
       name,
       state: state?.toMap(),
@@ -422,26 +439,38 @@ class Api extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/api:Api',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.authType = registerOutput<String>('authType');
-    this.constantParameters = registerOutput<List<ApiConstantParameter>?>('constantParameters');
-    this.description = registerOutput<String>('description');
-    this.fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
-    this.forceNonceCheck = registerOutput<bool>('forceNonceCheck');
-    this.groupId = registerOutput<String>('groupId');
-    this.httpServiceConfig = registerOutput<ApiHttpServiceConfig?>('httpServiceConfig');
-    this.httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>('httpVpcServiceConfig');
-    this.mockServiceConfig = registerOutput<ApiMockServiceConfig?>('mockServiceConfig');
+         'alicloud:apigateway/api:Api',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    authType = registerOutput<String>('authType');
+    constantParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'constantParameters',
+    );
+    description = registerOutput<String>('description');
+    fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
+    forceNonceCheck = registerOutput<bool>('forceNonceCheck');
+    groupId = registerOutput<String>('groupId');
+    httpServiceConfig = registerOutput<ApiHttpServiceConfig?>(
+      'httpServiceConfig',
+    );
+    httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>(
+      'httpVpcServiceConfig',
+    );
+    mockServiceConfig = registerOutput<ApiMockServiceConfig?>(
+      'mockServiceConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
-    this.requestParameters = registerOutput<List<ApiRequestParameter>?>('requestParameters');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.stageNames = registerOutput<List<String>?>('stageNames');
-    this.systemParameters = registerOutput<List<ApiSystemParameter>?>('systemParameters');
+    requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
+    requestParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'requestParameters',
+    );
+    serviceType = registerOutput<String>('serviceType');
+    stageNames = registerOutput<List<String>?>('stageNames');
+    systemParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'systemParameters',
+    );
   }
 }

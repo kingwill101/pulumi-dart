@@ -7,14 +7,19 @@ import 'bgp_session.dart';
 class DirectConnection {
   /// The bandwidth of the connection.
   final pulumi.Input<int>? bandwidthInMbps;
+
   /// The BGP session associated with the connection.
   final pulumi.Input<BgpSession>? bgpSession;
+
   /// The unique identifier (GUID) for the connection.
   final pulumi.Input<String>? connectionIdentifier;
+
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
   final pulumi.Input<int>? peeringDBFacilityId;
+
   /// The field indicating if Microsoft provides session ip addresses.
   final pulumi.Input<String>? sessionAddressProvider;
+
   /// The flag that indicates whether or not the connection is used for peering service.
   final pulumi.Input<bool>? useForPeeringService;
 
@@ -37,7 +42,11 @@ class DirectConnection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bandwidthInMbps': ?bandwidthInMbps,
-      'bgpSession': ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(bgpSession, (value) => value.toMap()),
+      'bgpSession':
+          ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(
+            bgpSession,
+            (value) => value.toMap(),
+          ),
       'connectionIdentifier': ?connectionIdentifier,
       'peeringDBFacilityId': ?peeringDBFacilityId,
       'sessionAddressProvider': ?sessionAddressProvider,
@@ -47,13 +56,38 @@ class DirectConnection {
 
   factory DirectConnection.fromMap(Map<String, dynamic> map) {
     return DirectConnection(
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps']! as int).input(),
-      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession']! as Map).cast<String, dynamic>())).input(),
-      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier']! as String).input(),
-      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId']! as int).input(),
-      sessionAddressProvider: map['sessionAddressProvider'] == null ? null : (map['sessionAddressProvider']! as String).input(),
-      useForPeeringService: map['useForPeeringService'] == null ? null : (map['useForPeeringService']! as bool).input(),
+      bandwidthInMbps: (() {
+        final guardedValue = map['bandwidthInMbps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bgpSession: (() {
+        final guardedValue = map['bgpSession'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BgpSession.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      connectionIdentifier: (() {
+        final guardedValue = map['connectionIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringDBFacilityId: (() {
+        final guardedValue = map['peeringDBFacilityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sessionAddressProvider: (() {
+        final guardedValue = map['sessionAddressProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useForPeeringService: (() {
+        final guardedValue = map['useForPeeringService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

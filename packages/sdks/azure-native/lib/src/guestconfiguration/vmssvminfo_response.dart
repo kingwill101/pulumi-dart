@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMSSVMInfoResponse {
   /// A value indicating compliance status of the machine for the assigned guest configuration.
   final pulumi.Input<String> complianceStatus;
+
   /// Date and time when last compliance status was checked.
   final pulumi.Input<String> lastComplianceChecked;
+
   /// Id of the latest report for the guest configuration assignment.
   final pulumi.Input<String> latestReportId;
+
   /// UUID of the VM.
   final pulumi.Input<String> vmId;
+
   /// Azure resource Id of the VM.
   final pulumi.Input<String> vmResourceId;
 
@@ -41,12 +45,15 @@ class VMSSVMInfoResponse {
 
   factory VMSSVMInfoResponse.fromMap(Map<String, dynamic> map) {
     return VMSSVMInfoResponse(
-      complianceStatus: (map['complianceStatus'] as String).input(),
-      lastComplianceChecked: (map['lastComplianceChecked'] as String).input(),
-      latestReportId: (map['latestReportId'] as String).input(),
-      vmId: (map['vmId'] as String).input(),
-      vmResourceId: (map['vmResourceId'] as String).input(),
+      complianceStatus: pulumi.Input.fromValue(
+        map['complianceStatus'] as String,
+      ),
+      lastComplianceChecked: pulumi.Input.fromValue(
+        map['lastComplianceChecked'] as String,
+      ),
+      latestReportId: pulumi.Input.fromValue(map['latestReportId'] as String),
+      vmId: pulumi.Input.fromValue(map['vmId'] as String),
+      vmResourceId: pulumi.Input.fromValue(map['vmResourceId'] as String),
     );
   }
 }
-

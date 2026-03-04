@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolFixedScale {
   /// The timeout for resize operations.
   final pulumi.Input<String> resizeTimeout;
+
   /// The number of nodes in the Batch pool.
   final pulumi.Input<int> targetDedicatedNodes;
+
   /// The number of low priority nodes in the Batch pool.
   final pulumi.Input<int> targetLowPriorityNodes;
 
@@ -30,10 +32,13 @@ class GetPoolFixedScale {
 
   factory GetPoolFixedScale.fromMap(Map<String, dynamic> map) {
     return GetPoolFixedScale(
-      resizeTimeout: (map['resizeTimeout'] as String).input(),
-      targetDedicatedNodes: (map['targetDedicatedNodes'] as int).input(),
-      targetLowPriorityNodes: (map['targetLowPriorityNodes'] as int).input(),
+      resizeTimeout: pulumi.Input.fromValue(map['resizeTimeout'] as String),
+      targetDedicatedNodes: pulumi.Input.fromValue(
+        map['targetDedicatedNodes'] as int,
+      ),
+      targetLowPriorityNodes: pulumi.Input.fromValue(
+        map['targetLowPriorityNodes'] as int,
+      ),
     );
   }
 }
-

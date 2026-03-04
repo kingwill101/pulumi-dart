@@ -6,7 +6,7 @@ import 'alert_resource_state.dart';
 ///
 /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 ///
-/// > **NOTE:** Available since v1.219.0.
+/// &gt; **NOTE:** Available since v1.219.0.
 ///
 /// ## Example Usage
 ///
@@ -118,8 +118,10 @@ import 'alert_resource_state.dart';
 class AlertResource extends pulumi.CustomResource {
   /// The lang of alert center resource when type is user.
   late final pulumi.Output<String?> lang;
+
   /// The project of alert resource when type is project.
   late final pulumi.Output<String?> project;
+
   /// The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
   late final pulumi.Output<String> type;
 
@@ -132,14 +134,14 @@ class AlertResource extends pulumi.CustomResource {
     AlertResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/alertResource:AlertResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.project = registerOutput<String?>('project');
-    this.type = registerOutput<String>('type');
+         'alicloud:log/alertResource:AlertResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    project = registerOutput<String?>('project');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [AlertResource] resource's state with the given [name] and [id].
@@ -160,13 +162,13 @@ class AlertResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/alertResource:AlertResource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.project = registerOutput<String?>('project');
-    this.type = registerOutput<String>('type');
+         'alicloud:log/alertResource:AlertResource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    project = registerOutput<String?>('project');
+    type = registerOutput<String>('type');
   }
 }

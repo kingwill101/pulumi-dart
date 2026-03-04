@@ -2,16 +2,15 @@
 enum SAPDatabaseScaleMethod {
   scaleUp("ScaleUp");
 
-  const SAPDatabaseScaleMethod(this.value);
-  final String value;
+  const SAPDatabaseScaleMethod(this.wireValue);
+  final String wireValue;
 
   static SAPDatabaseScaleMethod fromValue(String value) {
     for (final item in SAPDatabaseScaleMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SAPDatabaseScaleMethod value: $value');
   }
 }
-

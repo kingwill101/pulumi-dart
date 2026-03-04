@@ -136,19 +136,26 @@ import 'system_data_response.dart';
 class CloudEdgeManagementRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Edge Profile of the resource
   late final pulumi.Output<EdgeProfileResponse> edgeProfile;
+
   /// Role type.
   /// Expected value is 'CloudEdgeManagement'.
   late final pulumi.Output<String> kind;
+
   /// Local Edge Management Status
   late final pulumi.Output<String> localManagementStatus;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Role status.
   late final pulumi.Output<String> roleStatus;
+
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -161,18 +168,18 @@ class CloudEdgeManagementRole extends pulumi.CustomResource {
     CloudEdgeManagementRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:CloudEdgeManagementRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile');
-    this.kind = registerOutput<String>('kind');
-    this.localManagementStatus = registerOutput<String>('localManagementStatus');
+         'azure-native:databoxedge:CloudEdgeManagementRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile');
+    kind = registerOutput<String>('kind');
+    localManagementStatus = registerOutput<String>('localManagementStatus');
     this.name = registerOutput<String>('name');
-    this.roleStatus = registerOutput<String>('roleStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    roleStatus = registerOutput<String>('roleStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

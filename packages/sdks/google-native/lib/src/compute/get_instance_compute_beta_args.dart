@@ -31,10 +31,13 @@ class GetInstanceComputeBetaArgs {
 
   factory GetInstanceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceComputeBetaArgs(
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

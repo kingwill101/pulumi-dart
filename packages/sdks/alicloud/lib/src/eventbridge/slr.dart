@@ -9,25 +9,18 @@ class Slr extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Slr]. {@macro pulumi_eventbridge_slr_slr_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Slr(
-    String name, {
-    SlrArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:eventbridge/slr:Slr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+  Slr(String name, {SlrArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:eventbridge/slr:Slr',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    productName = registerOutput<String>('productName');
   }
 
   /// Gets an existing [Slr] resource's state with the given [name] and [id].
-  static Slr get(
-    String name,
-    pulumi.Input<String> id, {
-    SlrState? state,
-  }) {
+  static Slr get(String name, pulumi.Input<String> id, {SlrState? state}) {
     return Slr._get(
       name,
       state: state?.toMap(),
@@ -40,11 +33,11 @@ class Slr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/slr:Slr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+         'alicloud:eventbridge/slr:Slr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
   }
 }

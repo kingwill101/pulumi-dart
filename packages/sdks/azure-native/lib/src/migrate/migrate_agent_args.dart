@@ -10,14 +10,19 @@ import 'migrate_agent_model_properties.dart';
 class MigrateAgentArgs {
   /// MigrateAgent name.
   final pulumi.Input<String>? agentName;
+
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
+
   /// MigrateAgent model properties.
   final pulumi.Input<MigrateAgentModelProperties>? properties;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Subscription Id in which project was created.
   final pulumi.Input<String>? subscriptionId;
+
   /// Gets or sets the resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,7 +46,11 @@ class MigrateAgentArgs {
     return <String, dynamic>{
       'agentName': ?agentName,
       'modernizeProjectName': modernizeProjectName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<MigrateAgentModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MigrateAgentModelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
       'tags': ?tags,
@@ -50,13 +59,38 @@ class MigrateAgentArgs {
 
   factory MigrateAgentArgs.fromMap(Map<String, dynamic> map) {
     return MigrateAgentArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
-      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (MigrateAgentModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      agentName: (() {
+        final guardedValue = map['agentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modernizeProjectName: pulumi.Input.fromValue(
+        map['modernizeProjectName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MigrateAgentModelProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

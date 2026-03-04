@@ -7,10 +7,13 @@ class GetCertificatesCertificateManagedAuthorizationAttemptInfo {
   /// address the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
   final pulumi.Input<String> details;
+
   /// Domain name of the authorization attempt.
   final pulumi.Input<String> domain;
+
   /// Reason for failure of the authorization attempt for the domain.
   final pulumi.Input<String> failureReason;
+
   /// State of the domain for managed certificate issuance.
   final pulumi.Input<String> state;
 
@@ -35,13 +38,14 @@ class GetCertificatesCertificateManagedAuthorizationAttemptInfo {
     };
   }
 
-  factory GetCertificatesCertificateManagedAuthorizationAttemptInfo.fromMap(Map<String, dynamic> map) {
+  factory GetCertificatesCertificateManagedAuthorizationAttemptInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificatesCertificateManagedAuthorizationAttemptInfo(
-      details: (map['details'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      failureReason: (map['failureReason'] as String).input(),
-      state: (map['state'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      failureReason: pulumi.Input.fromValue(map['failureReason'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionedAgentReferenceResponse {
   /// Gets the agent's unique identifier within the organization (subscription).
   final pulumi.Input<String>? agentId;
+
   /// Gets the agent's name (unique within the project/app).
   final pulumi.Input<String>? agentName;
+
   /// Gets the agent's version (unique for each agent lineage).
   final pulumi.Input<String>? agentVersion;
 
@@ -31,10 +33,21 @@ class VersionedAgentReferenceResponse {
 
   factory VersionedAgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VersionedAgentReferenceResponse(
-      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
-      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      agentId: (() {
+        final guardedValue = map['agentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentName: (() {
+        final guardedValue = map['agentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

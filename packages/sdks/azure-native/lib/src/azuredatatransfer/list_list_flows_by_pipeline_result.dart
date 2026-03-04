@@ -10,20 +10,33 @@ class ListListFlowsByPipelineResult {
 
   /// Creates a new [ListListFlowsByPipelineResult].
   /// [value] List flows by pipeline result by connection
-  ListListFlowsByPipelineResult({
-    this.value,
-  });
+  ListListFlowsByPipelineResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<ListFlowsByPipelineConnectionResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ListFlowsByPipelineConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListListFlowsByPipelineResult.fromMap(Map<String, dynamic> map) {
     return ListListFlowsByPipelineResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ListFlowsByPipelineConnectionResponse>(map['value']!, (value) => ListFlowsByPipelineConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ListFlowsByPipelineConnectionResponse>(
+          guardedValue,
+          (value) => ListFlowsByPipelineConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

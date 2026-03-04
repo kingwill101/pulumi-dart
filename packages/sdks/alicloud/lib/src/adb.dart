@@ -1,5 +1,3 @@
-library module_adb;
-
 export 'adb/account.dart';
 export 'adb/account_args.dart';
 export 'adb/account_state.dart';

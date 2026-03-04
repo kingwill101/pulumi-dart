@@ -9,20 +9,17 @@ class RuntimeMetricsResponse {
 
   /// Creates a new [RuntimeMetricsResponse].
   /// [systemMetrics] The system metrics.
-  RuntimeMetricsResponse({
-    required this.systemMetrics,
-  });
+  RuntimeMetricsResponse({required this.systemMetrics});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'systemMetrics': systemMetrics,
-    };
+    return <String, dynamic>{'systemMetrics': systemMetrics};
   }
 
   factory RuntimeMetricsResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeMetricsResponse(
-      systemMetrics: ((map['systemMetrics'] as Map).cast<String, String>()).input(),
+      systemMetrics: pulumi.Input.fromValue(
+        (map['systemMetrics'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'mapper_connection_reference.dart';
 class MapperAttributeReference {
   /// Name of the table.
   final pulumi.Input<String>? entity;
+
   /// The connection reference for the connection.
   final pulumi.Input<MapperConnectionReference>? entityConnectionReference;
+
   /// Name of the column.
   final pulumi.Input<String>? name;
 
@@ -25,17 +27,36 @@ class MapperAttributeReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'entity': ?entity,
-      'entityConnectionReference': ?pulumi.Input.mapOptionalInputValue<MapperConnectionReference, Map<String, dynamic>>(entityConnectionReference, (value) => value.toMap()),
+      'entityConnectionReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            MapperConnectionReference,
+            Map<String, dynamic>
+          >(entityConnectionReference, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory MapperAttributeReference.fromMap(Map<String, dynamic> map) {
     return MapperAttributeReference(
-      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
-      entityConnectionReference: map['entityConnectionReference'] == null ? null : (MapperConnectionReference.fromMap((map['entityConnectionReference']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      entity: (() {
+        final guardedValue = map['entity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityConnectionReference: (() {
+        final guardedValue = map['entityConnectionReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MapperConnectionReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceHybridDoubleWriteArgs {
   /// Target Namespace.
   final pulumi.Input<String> namespace;
+
   /// Source Namespace.
   final pulumi.Input<String> sourceNamespace;
+
   /// Source UserId.
   final pulumi.Input<String> sourceUserId;
+
   /// Target UserId.
   final pulumi.Input<String> userId;
 
@@ -39,11 +42,10 @@ class ServiceHybridDoubleWriteArgs {
 
   factory ServiceHybridDoubleWriteArgs.fromMap(Map<String, dynamic> map) {
     return ServiceHybridDoubleWriteArgs(
-      namespace: (map['namespace'] as String).input(),
-      sourceNamespace: (map['sourceNamespace'] as String).input(),
-      sourceUserId: (map['sourceUserId'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      sourceNamespace: pulumi.Input.fromValue(map['sourceNamespace'] as String),
+      sourceUserId: pulumi.Input.fromValue(map['sourceUserId'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

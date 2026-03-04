@@ -2,16 +2,15 @@
 enum ValueFormat {
   valueJSON("JSON");
 
-  const ValueFormat(this.value);
-  final String value;
+  const ValueFormat(this.wireValue);
+  final String wireValue;
 
   static ValueFormat fromValue(String value) {
     for (final item in ValueFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ValueFormat value: $value');
   }
 }
-

@@ -4,16 +4,22 @@ enum GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm
   reinforcementLearning("REINFORCEMENT_LEARNING"),
   gridSearch("GRID_SEARCH");
 
-  const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm(this.value);
-  final String value;
+  const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm fromValue(String value) {
-    for (final item in GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm.values) {
-      if (item.value == value) {
+  static GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm value: $value',
+    );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_network_rule_collection_args.dart';
-import 'firewall_network_rule_collection_rule.dart';
 import 'firewall_network_rule_collection_state.dart';
 
 /// Manages a Network Rule Collection within an Azure Firewall.
@@ -489,7 +488,7 @@ import 'firewall_network_rule_collection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -504,16 +503,21 @@ import 'firewall_network_rule_collection_state.dart';
 class FirewallNetworkRuleCollection extends pulumi.CustomResource {
   /// Specifies the action the rule will apply to matching traffic. Possible values are `Allow` and `Deny`.
   late final pulumi.Output<String> action;
+
   /// Specifies the name of the Firewall in which the Network Rule Collection should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> azureFirewallName;
+
   /// Specifies the name of the Network Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
   late final pulumi.Output<int> priority;
+
   /// Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `rule` blocks as defined below.
-  late final pulumi.Output<List<FirewallNetworkRuleCollectionRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
   /// Creates a new [FirewallNetworkRuleCollection].
   /// [name] The Pulumi resource name.
@@ -524,17 +528,17 @@ class FirewallNetworkRuleCollection extends pulumi.CustomResource {
     FirewallNetworkRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.azureFirewallName = registerOutput<String>('azureFirewallName');
+         'azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    azureFirewallName = registerOutput<String>('azureFirewallName');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rules = registerOutput<List<FirewallNetworkRuleCollectionRule>>('rules');
+    priority = registerOutput<int>('priority');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
 
   /// Gets an existing [FirewallNetworkRuleCollection] resource's state with the given [name] and [id].
@@ -555,16 +559,16 @@ class FirewallNetworkRuleCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.azureFirewallName = registerOutput<String>('azureFirewallName');
+         'azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    azureFirewallName = registerOutput<String>('azureFirewallName');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rules = registerOutput<List<FirewallNetworkRuleCollectionRule>>('rules');
+    priority = registerOutput<int>('priority');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
 }

@@ -4,16 +4,17 @@ enum GatewayLoadBalancerTunnelInterfaceType {
   valueInternal("Internal"),
   valueExternal("External");
 
-  const GatewayLoadBalancerTunnelInterfaceType(this.value);
-  final String value;
+  const GatewayLoadBalancerTunnelInterfaceType(this.wireValue);
+  final String wireValue;
 
   static GatewayLoadBalancerTunnelInterfaceType fromValue(String value) {
     for (final item in GatewayLoadBalancerTunnelInterfaceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GatewayLoadBalancerTunnelInterfaceType value: $value');
+    throw ArgumentError(
+      'Unknown GatewayLoadBalancerTunnelInterfaceType value: $value',
+    );
   }
 }
-

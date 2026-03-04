@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudWatchAlarmArgs {
   /// Name of CloudWatchAlarm
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCloudWatchAlarmArgs].
   /// [name] Name of CloudWatchAlarm
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudWatchAlarmArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetCloudWatchAlarmArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetCloudWatchAlarmArgs {
 
   factory GetCloudWatchAlarmArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudWatchAlarmArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_endpoints;
-
 export 'endpoints/consumers_iam_binding.dart';
 export 'endpoints/consumers_iam_binding_args.dart';
 export 'endpoints/consumers_iam_binding_condition.dart';

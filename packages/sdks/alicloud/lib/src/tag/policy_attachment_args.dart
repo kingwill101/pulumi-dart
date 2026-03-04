@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentArgs {
   /// The ID of the tag policy.
   final pulumi.Input<String> policyId;
+
   /// The ID of the object.
   final pulumi.Input<String> targetId;
+
   /// The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   final pulumi.Input<String> targetType;
 
@@ -34,10 +36,9 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      policyId: (map['policyId'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
-      targetType: (map['targetType'] as String).input(),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
-

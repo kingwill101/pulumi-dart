@@ -9,78 +9,115 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanArgs {
   /// The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
   final pulumi.Input<String>? backupGatewayId;
+
   /// The backup log interval seconds.
   final pulumi.Input<int>? backupLogIntervalSeconds;
+
   /// Backup method. Valid values: `duplication`, `logical`, `physical`.
   final pulumi.Input<String> backupMethod;
+
   /// The backup object.
   final pulumi.Input<String>? backupObjects;
+
   /// Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
   final pulumi.Input<String>? backupPeriod;
+
   /// The name of the resource.
   final pulumi.Input<String> backupPlanName;
+
   /// The backup rate limit.
   final pulumi.Input<String>? backupRateLimit;
+
   /// The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
   final pulumi.Input<int>? backupRetentionPeriod;
+
   /// The backup speed limit.
   final pulumi.Input<String>? backupSpeedLimit;
-  /// The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
+
+  /// The start time of full Backup. The format is `&lt;I&gt; HH:mm&lt;/I&gt;` Z(UTC time).
   final pulumi.Input<String>? backupStartTime;
+
   /// Built-in storage type, Valid values: `system`.
   final pulumi.Input<String>? backupStorageType;
+
   /// The backup strategy type. Valid values: `simple`, `manual`.
   final pulumi.Input<String>? backupStrategyType;
+
   /// The UID that is backed up across Alibaba cloud accounts.
   final pulumi.Input<String>? crossAliyunId;
+
   /// The name of the RAM role that is backed up across Alibaba cloud accounts.
   final pulumi.Input<String>? crossRoleName;
+
   /// The database region.
   final pulumi.Input<String>? databaseRegion;
+
   /// Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
   final pulumi.Input<String> databaseType;
+
   /// The storage time for conversion to archive cold standby is 365 days by default.
   final pulumi.Input<int>? duplicationArchivePeriod;
+
   /// The storage time is converted to low-frequency access. The default time is 180 days.
   final pulumi.Input<int>? duplicationInfrequentAccessPeriod;
+
   /// Whether to enable incremental log Backup.
   final pulumi.Input<bool>? enableBackupLog;
+
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
   final pulumi.Input<String> instanceClass;
+
   /// The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
   final pulumi.Input<String>? instanceType;
+
   /// The OSS Bucket name. The system automatically generates a new name by default.
   final pulumi.Input<String>? ossBucketName;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
   final pulumi.Input<String>? paymentType;
+
   /// Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
   final pulumi.Input<String>? period;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
   final pulumi.Input<String>? sourceEndpointDatabaseName;
+
   /// The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
   final pulumi.Input<String>? sourceEndpointInstanceId;
+
   /// The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
   final pulumi.Input<String> sourceEndpointInstanceType;
+
   /// The source endpoint ip.
   final pulumi.Input<String>? sourceEndpointIp;
+
   /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
   final pulumi.Input<String>? sourceEndpointOracleSid;
+
   /// The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
   final pulumi.Input<String>? sourceEndpointPassword;
+
   /// The source endpoint port.
   final pulumi.Input<int>? sourceEndpointPort;
+
   /// The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
   final pulumi.Input<String>? sourceEndpointRegion;
+
   /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
   final pulumi.Input<String>? sourceEndpointSid;
+
   /// The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
   final pulumi.Input<String>? sourceEndpointUserName;
+
   /// The status of the resource. Valid values: `pause`, `running`.
   final pulumi.Input<String>? status;
+
   /// The storage region.
   final pulumi.Input<String>? storageRegion;
+
   /// Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
   final pulumi.Input<int>? usedTime;
 
@@ -94,7 +131,7 @@ class BackupPlanArgs {
   /// [backupRateLimit] The backup rate limit.
   /// [backupRetentionPeriod] The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
   /// [backupSpeedLimit] The backup speed limit.
-  /// [backupStartTime] The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
+  /// [backupStartTime] The start time of full Backup. The format is `&lt;I&gt; HH:mm&lt;/I&gt;` Z(UTC time).
   /// [backupStorageType] Built-in storage type, Valid values: `system`.
   /// [backupStrategyType] The backup strategy type. Valid values: `simple`, `manual`.
   /// [crossAliyunId] The UID that is backed up across Alibaba cloud accounts.
@@ -209,45 +246,178 @@ class BackupPlanArgs {
 
   factory BackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanArgs(
-      backupGatewayId: map['backupGatewayId'] == null ? null : (map['backupGatewayId']! as String).input(),
-      backupLogIntervalSeconds: map['backupLogIntervalSeconds'] == null ? null : (map['backupLogIntervalSeconds']! as int).input(),
-      backupMethod: (map['backupMethod'] as String).input(),
-      backupObjects: map['backupObjects'] == null ? null : (map['backupObjects']! as String).input(),
-      backupPeriod: map['backupPeriod'] == null ? null : (map['backupPeriod']! as String).input(),
-      backupPlanName: (map['backupPlanName'] as String).input(),
-      backupRateLimit: map['backupRateLimit'] == null ? null : (map['backupRateLimit']! as String).input(),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
-      backupSpeedLimit: map['backupSpeedLimit'] == null ? null : (map['backupSpeedLimit']! as String).input(),
-      backupStartTime: map['backupStartTime'] == null ? null : (map['backupStartTime']! as String).input(),
-      backupStorageType: map['backupStorageType'] == null ? null : (map['backupStorageType']! as String).input(),
-      backupStrategyType: map['backupStrategyType'] == null ? null : (map['backupStrategyType']! as String).input(),
-      crossAliyunId: map['crossAliyunId'] == null ? null : (map['crossAliyunId']! as String).input(),
-      crossRoleName: map['crossRoleName'] == null ? null : (map['crossRoleName']! as String).input(),
-      databaseRegion: map['databaseRegion'] == null ? null : (map['databaseRegion']! as String).input(),
-      databaseType: (map['databaseType'] as String).input(),
-      duplicationArchivePeriod: map['duplicationArchivePeriod'] == null ? null : (map['duplicationArchivePeriod']! as int).input(),
-      duplicationInfrequentAccessPeriod: map['duplicationInfrequentAccessPeriod'] == null ? null : (map['duplicationInfrequentAccessPeriod']! as int).input(),
-      enableBackupLog: map['enableBackupLog'] == null ? null : (map['enableBackupLog']! as bool).input(),
-      instanceClass: (map['instanceClass'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      sourceEndpointDatabaseName: map['sourceEndpointDatabaseName'] == null ? null : (map['sourceEndpointDatabaseName']! as String).input(),
-      sourceEndpointInstanceId: map['sourceEndpointInstanceId'] == null ? null : (map['sourceEndpointInstanceId']! as String).input(),
-      sourceEndpointInstanceType: (map['sourceEndpointInstanceType'] as String).input(),
-      sourceEndpointIp: map['sourceEndpointIp'] == null ? null : (map['sourceEndpointIp']! as String).input(),
-      sourceEndpointOracleSid: map['sourceEndpointOracleSid'] == null ? null : (map['sourceEndpointOracleSid']! as String).input(),
-      sourceEndpointPassword: map['sourceEndpointPassword'] == null ? null : (map['sourceEndpointPassword']! as String).input(),
-      sourceEndpointPort: map['sourceEndpointPort'] == null ? null : (map['sourceEndpointPort']! as int).input(),
-      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : (map['sourceEndpointRegion']! as String).input(),
-      sourceEndpointSid: map['sourceEndpointSid'] == null ? null : (map['sourceEndpointSid']! as String).input(),
-      sourceEndpointUserName: map['sourceEndpointUserName'] == null ? null : (map['sourceEndpointUserName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      storageRegion: map['storageRegion'] == null ? null : (map['storageRegion']! as String).input(),
-      usedTime: map['usedTime'] == null ? null : (map['usedTime']! as int).input(),
+      backupGatewayId: (() {
+        final guardedValue = map['backupGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupLogIntervalSeconds: (() {
+        final guardedValue = map['backupLogIntervalSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupMethod: pulumi.Input.fromValue(map['backupMethod'] as String),
+      backupObjects: (() {
+        final guardedValue = map['backupObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupPeriod: (() {
+        final guardedValue = map['backupPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupPlanName: pulumi.Input.fromValue(map['backupPlanName'] as String),
+      backupRateLimit: (() {
+        final guardedValue = map['backupRateLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupRetentionPeriod: (() {
+        final guardedValue = map['backupRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupSpeedLimit: (() {
+        final guardedValue = map['backupSpeedLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupStartTime: (() {
+        final guardedValue = map['backupStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupStorageType: (() {
+        final guardedValue = map['backupStorageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupStrategyType: (() {
+        final guardedValue = map['backupStrategyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossAliyunId: (() {
+        final guardedValue = map['crossAliyunId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossRoleName: (() {
+        final guardedValue = map['crossRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseRegion: (() {
+        final guardedValue = map['databaseRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
+      duplicationArchivePeriod: (() {
+        final guardedValue = map['duplicationArchivePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      duplicationInfrequentAccessPeriod: (() {
+        final guardedValue = map['duplicationInfrequentAccessPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableBackupLog: (() {
+        final guardedValue = map['enableBackupLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ossBucketName: (() {
+        final guardedValue = map['ossBucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointDatabaseName: (() {
+        final guardedValue = map['sourceEndpointDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointInstanceId: (() {
+        final guardedValue = map['sourceEndpointInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointInstanceType: pulumi.Input.fromValue(
+        map['sourceEndpointInstanceType'] as String,
+      ),
+      sourceEndpointIp: (() {
+        final guardedValue = map['sourceEndpointIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointOracleSid: (() {
+        final guardedValue = map['sourceEndpointOracleSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointPassword: (() {
+        final guardedValue = map['sourceEndpointPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointPort: (() {
+        final guardedValue = map['sourceEndpointPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sourceEndpointRegion: (() {
+        final guardedValue = map['sourceEndpointRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointSid: (() {
+        final guardedValue = map['sourceEndpointSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointUserName: (() {
+        final guardedValue = map['sourceEndpointUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageRegion: (() {
+        final guardedValue = map['storageRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usedTime: (() {
+        final guardedValue = map['usedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

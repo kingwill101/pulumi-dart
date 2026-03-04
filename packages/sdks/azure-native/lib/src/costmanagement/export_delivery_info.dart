@@ -10,20 +10,25 @@ class ExportDeliveryInfo {
 
   /// Creates a new [ExportDeliveryInfo].
   /// [destination] Has destination for the export being delivered.
-  ExportDeliveryInfo({
-    required this.destination,
-  });
+  ExportDeliveryInfo({required this.destination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': pulumi.Input.mapInputValue<ExportDeliveryDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            ExportDeliveryDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
     };
   }
 
   factory ExportDeliveryInfo.fromMap(Map<String, dynamic> map) {
     return ExportDeliveryInfo(
-      destination: (ExportDeliveryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      destination: pulumi.Input.fromValue(
+        ExportDeliveryDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

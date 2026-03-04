@@ -227,7 +227,7 @@ import 'private_link_scoped_service_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2019-10-17-preview
@@ -242,10 +242,13 @@ import 'private_link_scoped_service_state.dart';
 class PrivateLinkScopedService extends pulumi.CustomResource {
   /// The ID of the linked resource. It must be the Log Analytics workspace or the Application Insights component or the Data Collection endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> linkedResourceId;
+
   /// The name of the Azure Monitor Private Link Scoped Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Azure Monitor Private Link Scoped Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopeName;
 
@@ -258,15 +261,15 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
     PrivateLinkScopedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedResourceId = registerOutput<String>('linkedResourceId');
+         'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedResourceId = registerOutput<String>('linkedResourceId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopeName = registerOutput<String>('scopeName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeName = registerOutput<String>('scopeName');
   }
 
   /// Gets an existing [PrivateLinkScopedService] resource's state with the given [name] and [id].
@@ -287,14 +290,14 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedResourceId = registerOutput<String>('linkedResourceId');
+         'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedResourceId = registerOutput<String>('linkedResourceId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scopeName = registerOutput<String>('scopeName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeName = registerOutput<String>('scopeName');
   }
 }

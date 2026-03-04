@@ -1,5 +1,3 @@
-library module_batch;
-
 export 'batch/application.dart';
 export 'batch/application_args.dart';
 export 'batch/application_package.dart';

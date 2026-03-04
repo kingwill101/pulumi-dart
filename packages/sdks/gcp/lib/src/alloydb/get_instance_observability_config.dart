@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceObservabilityConfig {
   /// Whether assistive experiences are enabled for this AlloyDB instance.
   final pulumi.Input<bool> assistiveExperiencesEnabled;
+
   /// Observability feature status for an instance.
   final pulumi.Input<bool> enabled;
+
   /// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
   final pulumi.Input<int> maxQueryStringLength;
+
   /// Preserve comments in the query string.
   final pulumi.Input<bool> preserveComments;
+
   /// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
   final pulumi.Input<int> queryPlansPerMinute;
+
   /// Record application tags for an instance. This flag is turned "on" by default.
   final pulumi.Input<bool> recordApplicationTags;
+
   /// Track actively running queries. If not set, default value is "off".
   final pulumi.Input<bool> trackActiveQueries;
+
   /// Record wait event types during query execution for an instance.
   final pulumi.Input<bool> trackWaitEventTypes;
+
   /// Record wait events during query execution for an instance.
   final pulumi.Input<bool> trackWaitEvents;
 
@@ -60,16 +68,27 @@ class GetInstanceObservabilityConfig {
 
   factory GetInstanceObservabilityConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceObservabilityConfig(
-      assistiveExperiencesEnabled: (map['assistiveExperiencesEnabled'] as bool).input(),
-      enabled: (map['enabled'] as bool).input(),
-      maxQueryStringLength: (map['maxQueryStringLength'] as int).input(),
-      preserveComments: (map['preserveComments'] as bool).input(),
-      queryPlansPerMinute: (map['queryPlansPerMinute'] as int).input(),
-      recordApplicationTags: (map['recordApplicationTags'] as bool).input(),
-      trackActiveQueries: (map['trackActiveQueries'] as bool).input(),
-      trackWaitEventTypes: (map['trackWaitEventTypes'] as bool).input(),
-      trackWaitEvents: (map['trackWaitEvents'] as bool).input(),
+      assistiveExperiencesEnabled: pulumi.Input.fromValue(
+        map['assistiveExperiencesEnabled'] as bool,
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      maxQueryStringLength: pulumi.Input.fromValue(
+        map['maxQueryStringLength'] as int,
+      ),
+      preserveComments: pulumi.Input.fromValue(map['preserveComments'] as bool),
+      queryPlansPerMinute: pulumi.Input.fromValue(
+        map['queryPlansPerMinute'] as int,
+      ),
+      recordApplicationTags: pulumi.Input.fromValue(
+        map['recordApplicationTags'] as bool,
+      ),
+      trackActiveQueries: pulumi.Input.fromValue(
+        map['trackActiveQueries'] as bool,
+      ),
+      trackWaitEventTypes: pulumi.Input.fromValue(
+        map['trackWaitEventTypes'] as bool,
+      ),
+      trackWaitEvents: pulumi.Input.fromValue(map['trackWaitEvents'] as bool),
     );
   }
 }
-

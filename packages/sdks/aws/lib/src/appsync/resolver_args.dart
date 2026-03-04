@@ -13,30 +13,43 @@ import 'resolver_sync_config.dart';
 class ResolverArgs {
   /// API ID for the GraphQL API.
   final pulumi.Input<String> apiId;
+
   /// The Caching Config. See Caching Config.
   final pulumi.Input<ResolverCachingConfig>? cachingConfig;
+
   /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   final pulumi.Input<String>? code;
+
   /// Data source name.
   final pulumi.Input<String>? dataSource;
+
   /// Field name from the schema defined in the GraphQL API.
   final pulumi.Input<String> field;
+
   /// Resolver type. Valid values are `UNIT` and `PIPELINE`.
   final pulumi.Input<String>? kind;
+
   /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
   final pulumi.Input<int>? maxBatchSize;
+
   /// The caching configuration for the resolver. See Pipeline Config.
   final pulumi.Input<ResolverPipelineConfig>? pipelineConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   final pulumi.Input<String>? requestTemplate;
+
   /// Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   final pulumi.Input<String>? responseTemplate;
+
   /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
   final pulumi.Input<ResolverRuntime>? runtime;
+
   /// Describes a Sync configuration for a resolver. See Sync Config.
   final pulumi.Input<ResolverSyncConfig>? syncConfig;
+
   /// Type name from the schema defined in the GraphQL API.
   final pulumi.Input<String> type;
 
@@ -75,39 +88,114 @@ class ResolverArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiId': apiId,
-      'cachingConfig': ?pulumi.Input.mapOptionalInputValue<ResolverCachingConfig, Map<String, dynamic>>(cachingConfig, (value) => value.toMap()),
+      'cachingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResolverCachingConfig,
+            Map<String, dynamic>
+          >(cachingConfig, (value) => value.toMap()),
       'code': ?code,
       'dataSource': ?dataSource,
       'field': field,
       'kind': ?kind,
       'maxBatchSize': ?maxBatchSize,
-      'pipelineConfig': ?pulumi.Input.mapOptionalInputValue<ResolverPipelineConfig, Map<String, dynamic>>(pipelineConfig, (value) => value.toMap()),
+      'pipelineConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResolverPipelineConfig,
+            Map<String, dynamic>
+          >(pipelineConfig, (value) => value.toMap()),
       'region': ?region,
       'requestTemplate': ?requestTemplate,
       'responseTemplate': ?responseTemplate,
-      'runtime': ?pulumi.Input.mapOptionalInputValue<ResolverRuntime, Map<String, dynamic>>(runtime, (value) => value.toMap()),
-      'syncConfig': ?pulumi.Input.mapOptionalInputValue<ResolverSyncConfig, Map<String, dynamic>>(syncConfig, (value) => value.toMap()),
+      'runtime':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResolverRuntime,
+            Map<String, dynamic>
+          >(runtime, (value) => value.toMap()),
+      'syncConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResolverSyncConfig,
+            Map<String, dynamic>
+          >(syncConfig, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ResolverArgs.fromMap(Map<String, dynamic> map) {
     return ResolverArgs(
-      apiId: (map['apiId'] as String).input(),
-      cachingConfig: map['cachingConfig'] == null ? null : ((ResolverCachingConfig.fromMap((map['cachingConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
-      dataSource: map['dataSource'] == null ? null : ((map['dataSource'] as String).input()).input(),
-      field: (map['field'] as String).input(),
-      kind: map['kind'] == null ? null : ((map['kind'] as String).input()).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
-      pipelineConfig: map['pipelineConfig'] == null ? null : ((ResolverPipelineConfig.fromMap((map['pipelineConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      requestTemplate: map['requestTemplate'] == null ? null : ((map['requestTemplate'] as String).input()).input(),
-      responseTemplate: map['responseTemplate'] == null ? null : ((map['responseTemplate'] as String).input()).input(),
-      runtime: map['runtime'] == null ? null : ((ResolverRuntime.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input()).input(),
-      syncConfig: map['syncConfig'] == null ? null : ((ResolverSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      type: (map['type'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      cachingConfig: (() {
+        final guardedValue = map['cachingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResolverCachingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSource: (() {
+        final guardedValue = map['dataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      field: pulumi.Input.fromValue(map['field'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxBatchSize: (() {
+        final guardedValue = map['maxBatchSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pipelineConfig: (() {
+        final guardedValue = map['pipelineConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResolverPipelineConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestTemplate: (() {
+        final guardedValue = map['requestTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseTemplate: (() {
+        final guardedValue = map['responseTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtime: (() {
+        final guardedValue = map['runtime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResolverRuntime.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      syncConfig: (() {
+        final guardedValue = map['syncConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResolverSyncConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,19 +6,26 @@ class GetIndustrialPidLoopsLoop {
   /// The ID of the Pid Loop.
   final pulumi.Input<String> id;
   final pulumi.Input<String> pidLoopConfiguration;
+
   /// The dcs type of Pid Loop.
   final pulumi.Input<String> pidLoopDcsType;
   final pulumi.Input<String> pidLoopDesc;
+
   /// The ID of the Pid Loop.
   final pulumi.Input<String> pidLoopId;
+
   /// Whether is crucial Pid Loop.
   final pulumi.Input<bool> pidLoopIsCrucial;
+
   /// The name of Pid Loop.
   final pulumi.Input<String> pidLoopName;
+
   /// The type of Pid Loop.
   final pulumi.Input<String> pidLoopType;
+
   /// The pid project id.
   final pulumi.Input<String> pidProjectId;
+
   /// The status of Pid Loop.
   final pulumi.Input<String> status;
 
@@ -63,17 +70,18 @@ class GetIndustrialPidLoopsLoop {
 
   factory GetIndustrialPidLoopsLoop.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidLoopsLoop(
-      id: (map['id'] as String).input(),
-      pidLoopConfiguration: (map['pidLoopConfiguration'] as String).input(),
-      pidLoopDcsType: (map['pidLoopDcsType'] as String).input(),
-      pidLoopDesc: (map['pidLoopDesc'] as String).input(),
-      pidLoopId: (map['pidLoopId'] as String).input(),
-      pidLoopIsCrucial: (map['pidLoopIsCrucial'] as bool).input(),
-      pidLoopName: (map['pidLoopName'] as String).input(),
-      pidLoopType: (map['pidLoopType'] as String).input(),
-      pidProjectId: (map['pidProjectId'] as String).input(),
-      status: (map['status'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pidLoopConfiguration: pulumi.Input.fromValue(
+        map['pidLoopConfiguration'] as String,
+      ),
+      pidLoopDcsType: pulumi.Input.fromValue(map['pidLoopDcsType'] as String),
+      pidLoopDesc: pulumi.Input.fromValue(map['pidLoopDesc'] as String),
+      pidLoopId: pulumi.Input.fromValue(map['pidLoopId'] as String),
+      pidLoopIsCrucial: pulumi.Input.fromValue(map['pidLoopIsCrucial'] as bool),
+      pidLoopName: pulumi.Input.fromValue(map['pidLoopName'] as String),
+      pidLoopType: pulumi.Input.fromValue(map['pidLoopType'] as String),
+      pidProjectId: pulumi.Input.fromValue(map['pidProjectId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

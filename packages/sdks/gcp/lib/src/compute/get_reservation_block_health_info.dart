@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationBlockHealthInfo {
   /// The number of sub-blocks that are degraded.
   final pulumi.Input<int> degradedSubBlockCount;
+
   /// The health status of the reservation block.
   final pulumi.Input<String> healthStatus;
+
   /// The number of sub-blocks that are healthy.
   final pulumi.Input<int> healthySubBlockCount;
 
@@ -30,10 +32,13 @@ class GetReservationBlockHealthInfo {
 
   factory GetReservationBlockHealthInfo.fromMap(Map<String, dynamic> map) {
     return GetReservationBlockHealthInfo(
-      degradedSubBlockCount: (map['degradedSubBlockCount'] as int).input(),
-      healthStatus: (map['healthStatus'] as String).input(),
-      healthySubBlockCount: (map['healthySubBlockCount'] as int).input(),
+      degradedSubBlockCount: pulumi.Input.fromValue(
+        map['degradedSubBlockCount'] as int,
+      ),
+      healthStatus: pulumi.Input.fromValue(map['healthStatus'] as String),
+      healthySubBlockCount: pulumi.Input.fromValue(
+        map['healthySubBlockCount'] as int,
+      ),
     );
   }
 }
-

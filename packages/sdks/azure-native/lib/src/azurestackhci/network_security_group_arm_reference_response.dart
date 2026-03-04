@@ -9,20 +9,21 @@ class NetworkSecurityGroupArmReferenceResponse {
 
   /// Creates a new [NetworkSecurityGroupArmReferenceResponse].
   /// [id] The Azure Resource ID for a Network Security Group.
-  NetworkSecurityGroupArmReferenceResponse({
-    this.id,
-  });
+  NetworkSecurityGroupArmReferenceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory NetworkSecurityGroupArmReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkSecurityGroupArmReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkSecurityGroupArmReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

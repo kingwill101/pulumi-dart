@@ -10,12 +10,16 @@ import 'access_rights.dart';
 class QueueAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String>? authorizationRuleName;
+
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// The queue name.
   final pulumi.Input<String> queueName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The rights associated with the rule.
   final pulumi.Input<List<AccessRights>> rights;
 
@@ -39,18 +43,34 @@ class QueueAuthorizationRuleArgs {
       'namespaceName': namespaceName,
       'queueName': queueName,
       'resourceGroupName': resourceGroupName,
-      'rights': pulumi.Input.mapInputValue<List<AccessRights>, List<String>>(rights, (value) => pulumi.Input.encodeList<AccessRights, String>(value, (value) => value.value)),
+      'rights': pulumi.Input.mapInputValue<List<AccessRights>, List<String>>(
+        rights,
+        (value) => pulumi.Input.encodeList<AccessRights, String>(
+          value,
+          (value) => value.wireValue,
+        ),
+      ),
     };
   }
 
   factory QueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return QueueAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      queueName: (map['queueName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rights: (pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))).input(),
+      authorizationRuleName: (() {
+        final guardedValue = map['authorizationRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      queueName: pulumi.Input.fromValue(map['queueName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rights: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AccessRights>(
+          map['rights']!,
+          (value) => AccessRights.fromValue(value as String),
+        ),
+      ),
     );
   }
 }
-

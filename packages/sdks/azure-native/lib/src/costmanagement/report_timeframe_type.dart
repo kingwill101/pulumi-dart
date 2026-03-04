@@ -5,16 +5,15 @@ enum ReportTimeframeType {
   valueYearToDate("YearToDate"),
   valueCustom("Custom");
 
-  const ReportTimeframeType(this.value);
-  final String value;
+  const ReportTimeframeType(this.wireValue);
+  final String wireValue;
 
   static ReportTimeframeType fromValue(String value) {
     for (final item in ReportTimeframeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportTimeframeType value: $value');
   }
 }
-

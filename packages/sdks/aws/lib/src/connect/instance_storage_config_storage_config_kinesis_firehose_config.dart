@@ -13,15 +13,14 @@ class InstanceStorageConfigStorageConfigKinesisFirehoseConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'firehoseArn': firehoseArn,
-    };
+    return <String, dynamic>{'firehoseArn': firehoseArn};
   }
 
-  factory InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceStorageConfigStorageConfigKinesisFirehoseConfig(
-      firehoseArn: (map['firehoseArn'] as String).input(),
+      firehoseArn: pulumi.Input.fromValue(map['firehoseArn'] as String),
     );
   }
 }
-

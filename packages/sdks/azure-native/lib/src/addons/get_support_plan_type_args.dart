@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSupportPlanTypeArgs {
   /// The Canonical support plan type.
   final pulumi.Input<String> planTypeName;
+
   /// The support plan type. For now the only valid type is "canonical".
   final pulumi.Input<String> providerName;
 
@@ -29,9 +30,8 @@ class GetSupportPlanTypeArgs {
 
   factory GetSupportPlanTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSupportPlanTypeArgs(
-      planTypeName: (map['planTypeName'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
+      planTypeName: pulumi.Input.fromValue(map['planTypeName'] as String),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
     );
   }
 }
-

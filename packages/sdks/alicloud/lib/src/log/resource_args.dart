@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceArgs {
   /// The meta store's description.
   final pulumi.Input<String>? description;
+
   /// The ext info of meta store.
   final pulumi.Input<String>? extInfo;
+
   /// The meta store's name, can be used as table name.
   final pulumi.Input<String>? name;
+
   /// The meta store's schema info, which is json string format, used to define table's fields.
   final pulumi.Input<String> schema;
+
   /// The meta store's type, userdefine e.g.
   final pulumi.Input<String> type;
 
@@ -44,12 +48,23 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      extInfo: map['extInfo'] == null ? null : (map['extInfo']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      schema: (map['schema'] as String).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extInfo: (() {
+        final guardedValue = map['extInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRecipeTargetRepository {
   /// Name of the container repository where the output container image is stored. The name is prefixed by the repository location.
   final pulumi.Input<String> repositoryName;
+
   /// Service in which this image is registered.
   final pulumi.Input<String> service;
 
@@ -25,9 +26,8 @@ class GetContainerRecipeTargetRepository {
 
   factory GetContainerRecipeTargetRepository.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeTargetRepository(
-      repositoryName: (map['repositoryName'] as String).input(),
-      service: (map['service'] as String).input(),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

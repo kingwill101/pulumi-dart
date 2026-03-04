@@ -8,11 +8,14 @@ class GetTransitRouterVbrAttachmentsResult {
   /// A list of CEN Transit Router VBR Attachments. Each element contains the following attributes:
   final List<GetTransitRouterVbrAttachmentsAttachment> attachments;
   final String cenId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of CEN Transit Router VBR attachment IDs.
   final List<String> ids;
   final String? outputFile;
+
   /// The status of the transit router attachment.
   final String? status;
   final String? transitRouterId;
@@ -37,7 +40,11 @@ class GetTransitRouterVbrAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.encodeList<GetTransitRouterVbrAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetTransitRouterVbrAttachmentsAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
       'cenId': cenId,
       'id': id,
       'ids': ids,
@@ -47,16 +54,35 @@ class GetTransitRouterVbrAttachmentsResult {
     };
   }
 
-  factory GetTransitRouterVbrAttachmentsResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterVbrAttachmentsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterVbrAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetTransitRouterVbrAttachmentsAttachment>(map['attachments'], (value) => GetTransitRouterVbrAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      attachments:
+          pulumi.Input.decodeList<GetTransitRouterVbrAttachmentsAttachment>(
+            map['attachments']!,
+            (value) => GetTransitRouterVbrAttachmentsAttachment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       cenId: map['cenId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

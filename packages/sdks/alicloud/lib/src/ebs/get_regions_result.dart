@@ -28,17 +28,32 @@ class GetRegionsResult {
       'id': id,
       'outputFile': ?outputFile,
       'regionId': ?regionId,
-      'regions': pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
+      'regions':
+          pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
+            regions,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      regionId: map['regionId'] == null ? null : map['regionId']! as String,
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions'], (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(
+        map['regions']!,
+        (value) =>
+            GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

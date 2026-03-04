@@ -351,7 +351,7 @@ import 'shared_private_link_resource_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -366,17 +366,22 @@ import 'shared_private_link_resource_state.dart';
 class SharedPrivateLinkResource extends pulumi.CustomResource {
   /// The name of the Signalr Shared Private Link Resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The request message for requesting approval of the Shared Private Link Enabled Remote Resource.
   late final pulumi.Output<String?> requestMessage;
+
   /// The id of the Signalr Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrServiceId;
+
   /// The status of a private endpoint connection. Possible values are `Pending`, `Approved`, `Rejected` or `Disconnected`.
   late final pulumi.Output<String> status;
+
   /// The sub resource name which the Signalr Private Endpoint can connect to. Possible values are `sites`, `vault`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subResourceName;
+
   /// The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `sub_resource_name` should match with the type of the `target_resource_id` that's being specified.
+  /// &gt; **Note:** The `sub_resource_name` should match with the type of the `target_resource_id` that's being specified.
   late final pulumi.Output<String> targetResourceId;
 
   /// Creates a new [SharedPrivateLinkResource].
@@ -388,17 +393,17 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     SharedPrivateLinkResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/sharedPrivateLinkResource:SharedPrivateLinkResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:signalr/sharedPrivateLinkResource:SharedPrivateLinkResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
-    this.status = registerOutput<String>('status');
-    this.subResourceName = registerOutput<String>('subResourceName');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+    requestMessage = registerOutput<String?>('requestMessage');
+    signalrServiceId = registerOutput<String>('signalrServiceId');
+    status = registerOutput<String>('status');
+    subResourceName = registerOutput<String>('subResourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 
   /// Gets an existing [SharedPrivateLinkResource] resource's state with the given [name] and [id].
@@ -419,16 +424,16 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/sharedPrivateLinkResource:SharedPrivateLinkResource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:signalr/sharedPrivateLinkResource:SharedPrivateLinkResource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
-    this.status = registerOutput<String>('status');
-    this.subResourceName = registerOutput<String>('subResourceName');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+    requestMessage = registerOutput<String?>('requestMessage');
+    signalrServiceId = registerOutput<String>('signalrServiceId');
+    status = registerOutput<String>('status');
+    subResourceName = registerOutput<String>('subResourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

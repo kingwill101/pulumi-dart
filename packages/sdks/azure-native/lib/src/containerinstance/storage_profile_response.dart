@@ -9,20 +9,39 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [fileShares] Optional.
-  StorageProfileResponse({
-    this.fileShares,
-  });
+  StorageProfileResponse({this.fileShares});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fileShares': ?pulumi.Input.mapOptionalInputValue<List<FileShareResponse>, List<Map<String, dynamic>>>(fileShares, (value) => pulumi.Input.encodeList<FileShareResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fileShares':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FileShareResponse>,
+            List<Map<String, dynamic>>
+          >(
+            fileShares,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FileShareResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareResponse>(map['fileShares']!, (value) => FileShareResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileShares: (() {
+        final guardedValue = map['fileShares'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FileShareResponse>(
+            guardedValue,
+            (value) => FileShareResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

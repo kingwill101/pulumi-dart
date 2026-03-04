@@ -9,9 +9,9 @@ import 'fhir_store_iam_member_state.dart';
 /// * `gcp.healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
 /// * `gcp.healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
 ///
-/// > **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.healthcare.FhirStoreIamPolicy
 ///
@@ -618,13 +618,16 @@ import 'fhir_store_iam_member_state.dart';
 /// ```
 class FhirStoreIamMember extends pulumi.CustomResource {
   late final pulumi.Output<FhirStoreIamMemberCondition?> condition;
+
   /// (Computed) The etag of the FHIR store's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The FHIR store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   late final pulumi.Output<String> fhirStoreId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -634,6 +637,7 @@ class FhirStoreIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -648,16 +652,16 @@ class FhirStoreIamMember extends pulumi.CustomResource {
     FhirStoreIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.fhirStoreId = registerOutput<String>('fhirStoreId');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    fhirStoreId = registerOutput<String>('fhirStoreId');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [FhirStoreIamMember] resource's state with the given [name] and [id].
@@ -678,15 +682,15 @@ class FhirStoreIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.fhirStoreId = registerOutput<String>('fhirStoreId');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    fhirStoreId = registerOutput<String>('fhirStoreId');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

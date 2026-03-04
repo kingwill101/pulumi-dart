@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParentReferenceNetworkingK8sIoV1alpha1 {
   /// Group is the group of the object being referenced.
   final pulumi.Input<String>? group;
+
   /// Name is the name of the object being referenced.
   final pulumi.Input<String> name;
+
   /// Namespace is the namespace of the object being referenced.
   final pulumi.Input<String>? namespace;
+
   /// Resource is the resource of the object being referenced.
   final pulumi.Input<String> resource;
+
   /// UID is the uid of the object being referenced.
   final pulumi.Input<String>? uid;
 
@@ -39,14 +43,27 @@ class ParentReferenceNetworkingK8sIoV1alpha1 {
     };
   }
 
-  factory ParentReferenceNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ParentReferenceNetworkingK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ParentReferenceNetworkingK8sIoV1alpha1(
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      resource: (map['resource'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

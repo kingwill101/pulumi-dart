@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta {
   /// The match operator for the field.
   final pulumi.Input<String> op;
+
   /// The value of the field.
   final pulumi.Input<String> val;
 
@@ -17,17 +18,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComput
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'op': op,
-      'val': val,
-    };
+    return <String, dynamic>{'op': op, 'val': val};
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta(
-      op: (map['op'] as String).input(),
-      val: (map['val'] as String).input(),
+      op: pulumi.Input.fromValue(map['op'] as String),
+      val: pulumi.Input.fromValue(map['val'] as String),
     );
   }
 }
-

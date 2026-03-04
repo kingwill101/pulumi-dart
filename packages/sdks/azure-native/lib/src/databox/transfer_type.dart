@@ -3,16 +3,15 @@ enum TransferType {
   valueImportToAzure("ImportToAzure"),
   valueExportFromAzure("ExportFromAzure");
 
-  const TransferType(this.value);
-  final String value;
+  const TransferType(this.wireValue);
+  final String wireValue;
 
   static TransferType fromValue(String value) {
     for (final item in TransferType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransferType value: $value');
   }
 }
-

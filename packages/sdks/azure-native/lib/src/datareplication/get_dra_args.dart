@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDraArgs {
   /// The fabric agent (Dra) name.
   final pulumi.Input<String> fabricAgentName;
+
   /// The fabric name.
   final pulumi.Input<String> fabricName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDraArgs {
 
   factory GetDraArgs.fromMap(Map<String, dynamic> map) {
     return GetDraArgs(
-      fabricAgentName: (map['fabricAgentName'] as String).input(),
-      fabricName: (map['fabricName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      fabricAgentName: pulumi.Input.fromValue(map['fabricAgentName'] as String),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

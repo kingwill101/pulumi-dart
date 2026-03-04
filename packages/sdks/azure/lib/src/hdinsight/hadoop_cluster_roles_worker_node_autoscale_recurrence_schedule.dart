@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   /// The days of the week to perform autoscale. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   final pulumi.Input<List<String>> days;
+
   /// The number of worker nodes to autoscale at the specified time.
   final pulumi.Input<int> targetInstanceCount;
+
   /// The time of day to perform the autoscale in 24hour format.
   final pulumi.Input<String> time;
 
@@ -28,12 +30,15 @@ class HadoopClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
     };
   }
 
-  factory HadoopClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
+  factory HadoopClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HadoopClusterRolesWorkerNodeAutoscaleRecurrenceSchedule(
-      days: ((map['days'] as List).cast<String>()).input(),
-      targetInstanceCount: (map['targetInstanceCount'] as int).input(),
-      time: (map['time'] as String).input(),
+      days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
+      targetInstanceCount: pulumi.Input.fromValue(
+        map['targetInstanceCount'] as int,
+      ),
+      time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
-

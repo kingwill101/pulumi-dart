@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontdoorCustomDomainTl {
   /// The Resource ID of the Front Door Secret.
   final pulumi.Input<String> cdnFrontdoorSecretId;
+
   /// The SSL certificate type.
   final pulumi.Input<String> certificateType;
+
   /// The TLS protocol version that will be used for Https connections.
   final pulumi.Input<String> minimumTlsVersion;
 
@@ -30,10 +32,13 @@ class GetFrontdoorCustomDomainTl {
 
   factory GetFrontdoorCustomDomainTl.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorCustomDomainTl(
-      cdnFrontdoorSecretId: (map['cdnFrontdoorSecretId'] as String).input(),
-      certificateType: (map['certificateType'] as String).input(),
-      minimumTlsVersion: (map['minimumTlsVersion'] as String).input(),
+      cdnFrontdoorSecretId: pulumi.Input.fromValue(
+        map['cdnFrontdoorSecretId'] as String,
+      ),
+      certificateType: pulumi.Input.fromValue(map['certificateType'] as String),
+      minimumTlsVersion: pulumi.Input.fromValue(
+        map['minimumTlsVersion'] as String,
+      ),
     );
   }
 }
-

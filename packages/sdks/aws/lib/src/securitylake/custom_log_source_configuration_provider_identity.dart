@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomLogSourceConfigurationProviderIdentity {
   /// The external ID used to estalish trust relationship with the AWS identity.
   final pulumi.Input<String> externalId;
+
   /// The AWS identity principal.
   final pulumi.Input<String> principal;
 
@@ -17,17 +18,15 @@ class CustomLogSourceConfigurationProviderIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalId': externalId,
-      'principal': principal,
-    };
+    return <String, dynamic>{'externalId': externalId, 'principal': principal};
   }
 
-  factory CustomLogSourceConfigurationProviderIdentity.fromMap(Map<String, dynamic> map) {
+  factory CustomLogSourceConfigurationProviderIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomLogSourceConfigurationProviderIdentity(
-      externalId: (map['externalId'] as String).input(),
-      principal: (map['principal'] as String).input(),
+      externalId: pulumi.Input.fromValue(map['externalId'] as String),
+      principal: pulumi.Input.fromValue(map['principal'] as String),
     );
   }
 }
-

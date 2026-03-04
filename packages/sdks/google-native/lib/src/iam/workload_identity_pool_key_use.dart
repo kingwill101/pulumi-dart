@@ -3,16 +3,15 @@ enum WorkloadIdentityPoolKeyUse {
   keyUseUnspecified("KEY_USE_UNSPECIFIED"),
   encryption("ENCRYPTION");
 
-  const WorkloadIdentityPoolKeyUse(this.value);
-  final String value;
+  const WorkloadIdentityPoolKeyUse(this.wireValue);
+  final String wireValue;
 
   static WorkloadIdentityPoolKeyUse fromValue(String value) {
     for (final item in WorkloadIdentityPoolKeyUse.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadIdentityPoolKeyUse value: $value');
   }
 }
-

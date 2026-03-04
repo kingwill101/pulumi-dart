@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayFirewallExclusion {
   /// The variable to be excluded.
   final pulumi.Input<String> matchVariable;
+
   /// When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
   final pulumi.Input<String> selector;
+
   /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
   final pulumi.Input<String> selectorMatchOperator;
 
@@ -29,12 +31,15 @@ class ApplicationGatewayFirewallExclusion {
     };
   }
 
-  factory ApplicationGatewayFirewallExclusion.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayFirewallExclusion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayFirewallExclusion(
-      matchVariable: (map['matchVariable'] as String).input(),
-      selector: (map['selector'] as String).input(),
-      selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),
+      matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
+      selector: pulumi.Input.fromValue(map['selector'] as String),
+      selectorMatchOperator: pulumi.Input.fromValue(
+        map['selectorMatchOperator'] as String,
+      ),
     );
   }
 }
-

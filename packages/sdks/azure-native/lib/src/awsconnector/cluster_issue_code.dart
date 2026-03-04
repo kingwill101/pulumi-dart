@@ -20,16 +20,15 @@ enum ClusterIssueCode {
   unsupportedVersion("UnsupportedVersion"),
   vpcNotFound("VpcNotFound");
 
-  const ClusterIssueCode(this.value);
-  final String value;
+  const ClusterIssueCode(this.wireValue);
+  final String wireValue;
 
   static ClusterIssueCode fromValue(String value) {
     for (final item in ClusterIssueCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterIssueCode value: $value');
   }
 }
-

@@ -14,14 +14,19 @@ import 'flexible_server_active_directory_administrator_state.dart';
 class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant set as the Flexible Server Admin. Changing this forces a new resource to be created.
   late final pulumi.Output<String> objectId;
+
   /// The name of Azure Active Directory principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalName;
+
   /// The type of Azure Active Directory principal. Possible values are `Group`, `ServicePrincipal` and `User`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
+
   /// The name of the resource group for the PostgreSQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// The Azure Tenant ID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tenantId;
 
@@ -34,17 +39,17 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
     FlexibleServerActiveDirectoryAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.objectId = registerOutput<String>('objectId');
-    this.principalName = registerOutput<String>('principalName');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    objectId = registerOutput<String>('objectId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [FlexibleServerActiveDirectoryAdministrator] resource's state with the given [name] and [id].
@@ -65,16 +70,16 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.objectId = registerOutput<String>('objectId');
-    this.principalName = registerOutput<String>('principalName');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    objectId = registerOutput<String>('objectId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

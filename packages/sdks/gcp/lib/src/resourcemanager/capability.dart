@@ -236,8 +236,10 @@ import 'capability_state.dart';
 class Capability extends pulumi.CustomResource {
   /// Capability name that should be updated on the folder.
   late final pulumi.Output<String> capabilityName;
+
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
   late final pulumi.Output<String> parent;
+
   /// Capability Value.
   late final pulumi.Output<bool> value;
 
@@ -250,14 +252,14 @@ class Capability extends pulumi.CustomResource {
     CapabilityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:resourcemanager/capability:Capability',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capabilityName = registerOutput<String>('capabilityName');
-    this.parent = registerOutput<String>('parent');
-    this.value = registerOutput<bool>('value');
+         'gcp:resourcemanager/capability:Capability',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capabilityName = registerOutput<String>('capabilityName');
+    parent = registerOutput<String>('parent');
+    value = registerOutput<bool>('value');
   }
 
   /// Gets an existing [Capability] resource's state with the given [name] and [id].
@@ -278,13 +280,13 @@ class Capability extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:resourcemanager/capability:Capability',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capabilityName = registerOutput<String>('capabilityName');
-    this.parent = registerOutput<String>('parent');
-    this.value = registerOutput<bool>('value');
+         'gcp:resourcemanager/capability:Capability',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capabilityName = registerOutput<String>('capabilityName');
+    parent = registerOutput<String>('parent');
+    value = registerOutput<bool>('value');
   }
 }

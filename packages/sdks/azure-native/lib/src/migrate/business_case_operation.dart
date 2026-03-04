@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'business_case_operation_args.dart';
-import 'report_details_response.dart';
 import 'settings_response.dart';
 import 'system_data_response.dart';
 
@@ -766,18 +765,25 @@ import 'system_data_response.dart';
 class BusinessCaseOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Gets the state of business case reports.
-  late final pulumi.Output<List<ReportDetailsResponse>> reportStatusDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> reportStatusDetails;
+
   /// Business case settings.
   late final pulumi.Output<SettingsResponse?> settings;
+
   /// Business case state.
   late final pulumi.Output<String> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -790,18 +796,20 @@ class BusinessCaseOperation extends pulumi.CustomResource {
     BusinessCaseOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:BusinessCaseOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:migrate:BusinessCaseOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reportStatusDetails = registerOutput<List<ReportDetailsResponse>>('reportStatusDetails');
-    this.settings = registerOutput<SettingsResponse?>('settings');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    reportStatusDetails = registerOutput<List<Map<String, dynamic>>>(
+      'reportStatusDetails',
+    );
+    settings = registerOutput<SettingsResponse?>('settings');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'component_properties_response.dart';
 import 'extended_location_response.dart';
 import 'solution_args.dart';
 import 'system_data_response.dart';
@@ -222,22 +221,31 @@ import 'system_data_response.dart';
 class Solution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A list of components
-  late final pulumi.Output<List<ComponentPropertiesResponse>?> components;
+  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the particular resource.
   late final pulumi.Output<String?> version;
 
@@ -250,20 +258,22 @@ class Solution extends pulumi.CustomResource {
     SolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsorchestrator:Solution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.components = registerOutput<List<ComponentPropertiesResponse>?>('components');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsorchestrator:Solution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

@@ -180,20 +180,29 @@ import 'system_data_response.dart';
 class ManagedClusterSnapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// CreationData to be used to specify the source resource ID to create this snapshot.
   late final pulumi.Output<CreationDataResponse?> creationData;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
-  late final pulumi.Output<ManagedClusterPropertiesForSnapshotResponse> managedClusterPropertiesReadOnly;
+  late final pulumi.Output<ManagedClusterPropertiesForSnapshotResponse>
+  managedClusterPropertiesReadOnly;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of a snapshot. The default is NodePool.
   late final pulumi.Output<String?> snapshotType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,19 +215,22 @@ class ManagedClusterSnapshot extends pulumi.CustomResource {
     ManagedClusterSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:ManagedClusterSnapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationData = registerOutput<CreationDataResponse?>('creationData');
-    this.location = registerOutput<String>('location');
-    this.managedClusterPropertiesReadOnly = registerOutput<ManagedClusterPropertiesForSnapshotResponse>('managedClusterPropertiesReadOnly');
+         'azure-native:containerservice:ManagedClusterSnapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationData = registerOutput<CreationDataResponse?>('creationData');
+    location = registerOutput<String>('location');
+    managedClusterPropertiesReadOnly =
+        registerOutput<ManagedClusterPropertiesForSnapshotResponse>(
+          'managedClusterPropertiesReadOnly',
+        );
     this.name = registerOutput<String>('name');
-    this.snapshotType = registerOutput<String?>('snapshotType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    snapshotType = registerOutput<String?>('snapshotType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

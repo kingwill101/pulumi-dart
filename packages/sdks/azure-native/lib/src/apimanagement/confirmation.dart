@@ -3,16 +3,15 @@ enum Confirmation {
   valueSignup("signup"),
   valueInvite("invite");
 
-  const Confirmation(this.value);
-  final String value;
+  const Confirmation(this.wireValue);
+  final String wireValue;
 
   static Confirmation fromValue(String value) {
     for (final item in Confirmation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Confirmation value: $value');
   }
 }
-

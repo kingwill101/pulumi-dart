@@ -3,16 +3,15 @@ enum ProcessorFeatureName {
   coreCount("coreCount"),
   threadsPerCore("threadsPerCore");
 
-  const ProcessorFeatureName(this.value);
-  final String value;
+  const ProcessorFeatureName(this.wireValue);
+  final String wireValue;
 
   static ProcessorFeatureName fromValue(String value) {
     for (final item in ProcessorFeatureName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProcessorFeatureName value: $value');
   }
 }
-

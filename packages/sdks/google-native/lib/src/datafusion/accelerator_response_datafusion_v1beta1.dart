@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorResponseDatafusionV1beta1 {
   /// The type of an accelator for a CDF instance.
   final pulumi.Input<String> acceleratorType;
+
   /// The state of the accelerator.
   final pulumi.Input<String> state;
 
@@ -24,11 +25,12 @@ class AcceleratorResponseDatafusionV1beta1 {
     };
   }
 
-  factory AcceleratorResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AcceleratorResponseDatafusionV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AcceleratorResponseDatafusionV1beta1(
-      acceleratorType: (map['acceleratorType'] as String).input(),
-      state: (map['state'] as String).input(),
+      acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

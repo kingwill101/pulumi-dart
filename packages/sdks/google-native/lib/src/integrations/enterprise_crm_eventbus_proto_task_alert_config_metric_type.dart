@@ -6,16 +6,20 @@ enum EnterpriseCrmEventbusProtoTaskAlertConfigMetricType {
   taskAverageDuration("TASK_AVERAGE_DURATION"),
   taskPercentileDuration("TASK_PERCENTILE_DURATION");
 
-  const EnterpriseCrmEventbusProtoTaskAlertConfigMetricType(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskAlertConfigMetricType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskAlertConfigMetricType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoTaskAlertConfigMetricType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoTaskAlertConfigMetricType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoTaskAlertConfigMetricType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskAlertConfigMetricType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskAlertConfigMetricType value: $value',
+    );
   }
 }
-

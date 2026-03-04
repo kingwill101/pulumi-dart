@@ -7,6 +7,7 @@ import 'get_budget_resource_group_filter_not_tag.dart';
 class GetBudgetResourceGroupFilterNot {
   /// A `dimension` block as defined below.
   final pulumi.Input<List<GetBudgetResourceGroupFilterNotDimension>> dimensions;
+
   /// A `tag` block as defined below.
   final pulumi.Input<List<GetBudgetResourceGroupFilterNotTag>> tags;
 
@@ -20,16 +21,51 @@ class GetBudgetResourceGroupFilterNot {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': pulumi.Input.mapInputValue<List<GetBudgetResourceGroupFilterNotDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetBudgetResourceGroupFilterNotDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tags': pulumi.Input.mapInputValue<List<GetBudgetResourceGroupFilterNotTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetBudgetResourceGroupFilterNotTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions':
+          pulumi.Input.mapInputValue<
+            List<GetBudgetResourceGroupFilterNotDimension>,
+            List<Map<String, dynamic>>
+          >(
+            dimensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetBudgetResourceGroupFilterNotDimension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'tags':
+          pulumi.Input.mapInputValue<
+            List<GetBudgetResourceGroupFilterNotTag>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetBudgetResourceGroupFilterNotTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetBudgetResourceGroupFilterNot.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupFilterNot(
-      dimensions: (pulumi.Input.decodeList<GetBudgetResourceGroupFilterNotDimension>(map['dimensions'], (value) => GetBudgetResourceGroupFilterNotDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: (pulumi.Input.decodeList<GetBudgetResourceGroupFilterNotTag>(map['tags'], (value) => GetBudgetResourceGroupFilterNotTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetBudgetResourceGroupFilterNotDimension>(
+          map['dimensions']!,
+          (value) => GetBudgetResourceGroupFilterNotDimension.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      tags: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetBudgetResourceGroupFilterNotTag>(
+          map['tags']!,
+          (value) => GetBudgetResourceGroupFilterNotTag.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -20,6 +20,7 @@ class GetForwardingRulesRule {
   /// forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
   /// true.
   final pulumi.Input<bool> allPorts;
+
   /// This field is used along with the 'backend_service' field for
   /// internal load balancing or with the 'target' field for internal
   /// TargetInstance.
@@ -30,23 +31,30 @@ class GetForwardingRulesRule {
   /// Otherwise only allows access from clients in the same region as the
   /// internal load balancer.
   final pulumi.Input<bool> allowGlobalAccess;
+
   /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
   final pulumi.Input<bool> allowPscGlobalAccess;
+
   /// Identifies the backend service to which the forwarding rule sends traffic.
   ///
   /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
   /// must be omitted for all other load balancer types.
   final pulumi.Input<String> backendService;
+
   /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
   final pulumi.Input<String> baseForwardingRule;
+
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
+
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String> description;
   final pulumi.Input<Map<String, String>> effectiveLabels;
+
   /// The unique identifier number for the resource. This identifier is defined by the server.
   final pulumi.Input<int> forwardingRuleId;
+
   /// IP address for which this forwarding rule accepts traffic. When a client
   /// sends traffic to this IP address, the forwarding rule directs the traffic
   /// to the referenced 'target' or 'backendService'.
@@ -86,6 +94,7 @@ class GetForwardingRulesRule {
   /// When reading an 'IPAddress', the API always returns the IP
   /// address number.
   final pulumi.Input<String> ipAddress;
+
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
   /// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
   /// Use one of the following formats to specify a sub-PDP when creating an
@@ -96,6 +105,7 @@ class GetForwardingRulesRule {
   /// * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
   /// * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
   final pulumi.Input<String> ipCollection;
+
   /// The IP protocol to which this rule applies.
   ///
   /// For protocol forwarding, valid
@@ -111,11 +121,13 @@ class GetForwardingRulesRule {
   /// backend service with UNSPECIFIED protocol.
   /// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
   final pulumi.Input<String> ipProtocol;
+
   /// The IP address version that will be used by this forwarding rule.
   /// Valid options are IPV4 and IPV6.
   ///
   /// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
   final pulumi.Input<String> ipVersion;
+
   /// Indicates whether or not this load balancer can be used as a collector for
   /// packet mirroring. To prevent mirroring loops, instances behind this
   /// load balancer will not have their traffic mirrored even if a
@@ -124,15 +136,18 @@ class GetForwardingRulesRule {
   /// This can only be set to true for load balancers that have their
   /// 'loadBalancingScheme' set to 'INTERNAL'.
   final pulumi.Input<bool> isMirroringCollector;
+
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   final pulumi.Input<String> labelFingerprint;
-  /// Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+  /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   ///
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>> labels;
+
   /// Specifies the forwarding rule type.
   ///
   /// Note that an empty string value ('""') is also supported for some use
@@ -142,6 +157,7 @@ class GetForwardingRulesRule {
   /// For more information about forwarding rules, refer to
   /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
   final pulumi.Input<String> loadBalancingScheme;
+
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -156,6 +172,7 @@ class GetForwardingRulesRule {
   /// APIs, the forwarding rule name must be a 1-20 characters string with
   /// lowercase letters and numbers and must start with a letter.
   final pulumi.Input<String> name;
+
   /// This field is not used for external load balancing.
   ///
   /// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -167,6 +184,7 @@ class GetForwardingRulesRule {
   /// For Private Service Connect forwarding rules that forward traffic to Google
   /// APIs, a network must be provided.
   final pulumi.Input<String> network;
+
   /// This signifies the networking tier used for configuring
   /// this load balancer and can only take the following values:
   /// 'PREMIUM', 'STANDARD'.
@@ -179,8 +197,10 @@ class GetForwardingRulesRule {
   /// If 'IPAddress' is specified, this value must be equal to the
   /// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
   final pulumi.Input<String> networkTier;
+
   /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
   final pulumi.Input<bool> noAutomateDnsZone;
+
   /// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
   /// Only packets addressed to ports in the specified range will be forwarded
   /// to the backends configured with this forwarding rule.
@@ -206,6 +226,7 @@ class GetForwardingRulesRule {
   ///
   /// @pattern: \d+(?:-\d+)?
   final pulumi.Input<String> portRange;
+
   /// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
   /// Only packets addressed to ports in the specified range will be forwarded
   /// to the backends configured with this forwarding rule.
@@ -229,26 +250,35 @@ class GetForwardingRulesRule {
   ///
   /// @pattern: \d+(?:-\d+)?
   final pulumi.Input<List<String>> ports;
+
   /// The name of the project.
   final pulumi.Input<String> project;
+
   /// The PSC connection id of the PSC Forwarding Rule.
   final pulumi.Input<String> pscConnectionId;
+
   /// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
   final pulumi.Input<String> pscConnectionStatus;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>> pulumiLabels;
   final pulumi.Input<bool> recreateClosedPsc;
+
   /// The region you want to get the forwarding rules from.
   ///
   /// These arguments must be set in either the provider or the resource in order for the information to be queried.
   final pulumi.Input<String> region;
+
   /// The URI of the resource.
   final pulumi.Input<String> selfLink;
+
   /// Service Directory resources to register this forwarding rule with.
   ///
   /// Currently, only supports a single Service Directory resource.
-  final pulumi.Input<List<GetForwardingRulesRuleServiceDirectoryRegistration>> serviceDirectoryRegistrations;
+  final pulumi.Input<List<GetForwardingRulesRuleServiceDirectoryRegistration>>
+  serviceDirectoryRegistrations;
+
   /// An optional prefix to the service name for this Forwarding Rule.
   /// If specified, will be the first label of the fully qualified service
   /// name.
@@ -262,12 +292,15 @@ class GetForwardingRulesRule {
   ///
   /// This field is only used for INTERNAL load balancing.
   final pulumi.Input<String> serviceLabel;
+
   /// The internal fully qualified service name for this Forwarding Rule.
   ///
   /// This field is only used for INTERNAL load balancing.
   final pulumi.Input<String> serviceName;
+
   /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
   final pulumi.Input<List<String>> sourceIpRanges;
+
   /// This field identifies the subnetwork that the load balanced IP should
   /// belong to for this Forwarding Rule, used in internal load balancing and
   /// network load balancing with IPv6.
@@ -276,6 +309,7 @@ class GetForwardingRulesRule {
   /// However, a subnetwork must be specified if the network is in custom subnet
   /// mode or when creating external forwarding rule with IPv6.
   final pulumi.Input<String> subnetwork;
+
   /// The URL of the target resource to receive the matched traffic.  For
   /// regional forwarding rules, this target must be in the same region as the
   /// forwarding rule. For global forwarding rules, this target must be a global
@@ -303,7 +337,7 @@ class GetForwardingRulesRule {
   /// [ipVersion] The IP address version that will be used by this forwarding rule.
   /// [isMirroringCollector] Indicates whether or not this load balancer can be used as a collector for
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource.  Used
-  /// [labels] Labels to apply to this forwarding rule.  A list of key->value pairs.
+  /// [labels] Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   /// [loadBalancingScheme] Specifies the forwarding rule type.
   /// [name] Name of the resource; provided by the client when the resource is created.
   /// [network] This field is not used for external load balancing.
@@ -395,7 +429,18 @@ class GetForwardingRulesRule {
       'recreateClosedPsc': recreateClosedPsc,
       'region': region,
       'selfLink': selfLink,
-      'serviceDirectoryRegistrations': pulumi.Input.mapInputValue<List<GetForwardingRulesRuleServiceDirectoryRegistration>, List<Map<String, dynamic>>>(serviceDirectoryRegistrations, (value) => pulumi.Input.encodeList<GetForwardingRulesRuleServiceDirectoryRegistration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceDirectoryRegistrations':
+          pulumi.Input.mapInputValue<
+            List<GetForwardingRulesRuleServiceDirectoryRegistration>,
+            List<Map<String, dynamic>>
+          >(
+            serviceDirectoryRegistrations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetForwardingRulesRuleServiceDirectoryRegistration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceLabel': serviceLabel,
       'serviceName': serviceName,
       'sourceIpRanges': sourceIpRanges,
@@ -406,43 +451,79 @@ class GetForwardingRulesRule {
 
   factory GetForwardingRulesRule.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesRule(
-      allPorts: (map['allPorts'] as bool).input(),
-      allowGlobalAccess: (map['allowGlobalAccess'] as bool).input(),
-      allowPscGlobalAccess: (map['allowPscGlobalAccess'] as bool).input(),
-      backendService: (map['backendService'] as String).input(),
-      baseForwardingRule: (map['baseForwardingRule'] as String).input(),
-      creationTimestamp: (map['creationTimestamp'] as String).input(),
-      description: (map['description'] as String).input(),
-      effectiveLabels: ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      forwardingRuleId: (map['forwardingRuleId'] as int).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      ipCollection: (map['ipCollection'] as String).input(),
-      ipProtocol: (map['ipProtocol'] as String).input(),
-      ipVersion: (map['ipVersion'] as String).input(),
-      isMirroringCollector: (map['isMirroringCollector'] as bool).input(),
-      labelFingerprint: (map['labelFingerprint'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancingScheme: (map['loadBalancingScheme'] as String).input(),
-      name: (map['name'] as String).input(),
-      network: (map['network'] as String).input(),
-      networkTier: (map['networkTier'] as String).input(),
-      noAutomateDnsZone: (map['noAutomateDnsZone'] as bool).input(),
-      portRange: (map['portRange'] as String).input(),
-      ports: ((map['ports'] as List).cast<String>()).input(),
-      project: (map['project'] as String).input(),
-      pscConnectionId: (map['pscConnectionId'] as String).input(),
-      pscConnectionStatus: (map['pscConnectionStatus'] as String).input(),
-      pulumiLabels: ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      recreateClosedPsc: (map['recreateClosedPsc'] as bool).input(),
-      region: (map['region'] as String).input(),
-      selfLink: (map['selfLink'] as String).input(),
-      serviceDirectoryRegistrations: (pulumi.Input.decodeList<GetForwardingRulesRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations'], (value) => GetForwardingRulesRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceLabel: (map['serviceLabel'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      sourceIpRanges: ((map['sourceIpRanges'] as List).cast<String>()).input(),
-      subnetwork: (map['subnetwork'] as String).input(),
-      target: (map['target'] as String).input(),
+      allPorts: pulumi.Input.fromValue(map['allPorts'] as bool),
+      allowGlobalAccess: pulumi.Input.fromValue(
+        map['allowGlobalAccess'] as bool,
+      ),
+      allowPscGlobalAccess: pulumi.Input.fromValue(
+        map['allowPscGlobalAccess'] as bool,
+      ),
+      backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      baseForwardingRule: pulumi.Input.fromValue(
+        map['baseForwardingRule'] as String,
+      ),
+      creationTimestamp: pulumi.Input.fromValue(
+        map['creationTimestamp'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      effectiveLabels: pulumi.Input.fromValue(
+        (map['effectiveLabels'] as Map).cast<String, String>(),
+      ),
+      forwardingRuleId: pulumi.Input.fromValue(map['forwardingRuleId'] as int),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipCollection: pulumi.Input.fromValue(map['ipCollection'] as String),
+      ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
+      ipVersion: pulumi.Input.fromValue(map['ipVersion'] as String),
+      isMirroringCollector: pulumi.Input.fromValue(
+        map['isMirroringCollector'] as bool,
+      ),
+      labelFingerprint: pulumi.Input.fromValue(
+        map['labelFingerprint'] as String,
+      ),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      loadBalancingScheme: pulumi.Input.fromValue(
+        map['loadBalancingScheme'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      networkTier: pulumi.Input.fromValue(map['networkTier'] as String),
+      noAutomateDnsZone: pulumi.Input.fromValue(
+        map['noAutomateDnsZone'] as bool,
+      ),
+      portRange: pulumi.Input.fromValue(map['portRange'] as String),
+      ports: pulumi.Input.fromValue((map['ports'] as List).cast<String>()),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      pscConnectionId: pulumi.Input.fromValue(map['pscConnectionId'] as String),
+      pscConnectionStatus: pulumi.Input.fromValue(
+        map['pscConnectionStatus'] as String,
+      ),
+      pulumiLabels: pulumi.Input.fromValue(
+        (map['pulumiLabels'] as Map).cast<String, String>(),
+      ),
+      recreateClosedPsc: pulumi.Input.fromValue(
+        map['recreateClosedPsc'] as bool,
+      ),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
+      serviceDirectoryRegistrations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetForwardingRulesRuleServiceDirectoryRegistration
+        >(
+          map['serviceDirectoryRegistrations']!,
+          (value) => GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      serviceLabel: pulumi.Input.fromValue(map['serviceLabel'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      sourceIpRanges: pulumi.Input.fromValue(
+        (map['sourceIpRanges'] as List).cast<String>(),
+      ),
+      subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
+      target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
-

@@ -6,29 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowGraphGraphNodeConfiguration {
   /// Key of the configuration.
   final pulumi.Input<String> key;
+
   /// Value of the configuration.
   final pulumi.Input<String> value;
 
   /// Creates a new [DataflowGraphGraphNodeConfiguration].
   /// [key] Key of the configuration.
   /// [value] Value of the configuration.
-  DataflowGraphGraphNodeConfiguration({
-    required this.key,
-    required this.value,
-  });
+  DataflowGraphGraphNodeConfiguration({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory DataflowGraphGraphNodeConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataflowGraphGraphNodeConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowGraphGraphNodeConfiguration(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

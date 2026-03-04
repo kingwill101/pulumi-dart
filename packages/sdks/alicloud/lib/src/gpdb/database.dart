@@ -8,7 +8,7 @@ import 'database_state.dart';
 ///
 /// For information about GPDB Database and how to use it, see [What is Database](https://www.alibabacloud.com/help/en/).
 ///
-/// > **NOTE:** Available since v1.232.0.
+/// &gt; **NOTE:** Available since v1.232.0.
 ///
 /// ## Example Usage
 ///
@@ -343,16 +343,22 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// Character set, default value is UTF8
   late final pulumi.Output<String?> characterSetName;
+
   /// Database locale parameters, specifying string comparison/collation
   late final pulumi.Output<String?> collate;
+
   /// Database locale parameters, specifying character classification/case conversion rules
   late final pulumi.Output<String?> ctype;
+
   /// Database Name
   late final pulumi.Output<String> databaseName;
+
   /// Instance ID
   late final pulumi.Output<String> dbInstanceId;
+
   /// Database Description
   late final pulumi.Output<String?> description;
+
   /// Data Sheet owner
   late final pulumi.Output<String> owner;
 
@@ -365,18 +371,18 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/database:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.characterSetName = registerOutput<String?>('characterSetName');
-    this.collate = registerOutput<String?>('collate');
-    this.ctype = registerOutput<String?>('ctype');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String?>('description');
-    this.owner = registerOutput<String>('owner');
+         'alicloud:gpdb/database:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    characterSetName = registerOutput<String?>('characterSetName');
+    collate = registerOutput<String?>('collate');
+    ctype = registerOutput<String?>('ctype');
+    databaseName = registerOutput<String>('databaseName');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String?>('description');
+    owner = registerOutput<String>('owner');
   }
 
   /// Gets an existing [Database] resource's state with the given [name] and [id].
@@ -397,17 +403,17 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/database:Database',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.characterSetName = registerOutput<String?>('characterSetName');
-    this.collate = registerOutput<String?>('collate');
-    this.ctype = registerOutput<String?>('ctype');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String?>('description');
-    this.owner = registerOutput<String>('owner');
+         'alicloud:gpdb/database:Database',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    characterSetName = registerOutput<String?>('characterSetName');
+    collate = registerOutput<String?>('collate');
+    ctype = registerOutput<String?>('ctype');
+    databaseName = registerOutput<String>('databaseName');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String?>('description');
+    owner = registerOutput<String>('owner');
   }
 }

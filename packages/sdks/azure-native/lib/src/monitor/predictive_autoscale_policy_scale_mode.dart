@@ -4,16 +4,17 @@ enum PredictiveAutoscalePolicyScaleMode {
   valueForecastOnly("ForecastOnly"),
   valueEnabled("Enabled");
 
-  const PredictiveAutoscalePolicyScaleMode(this.value);
-  final String value;
+  const PredictiveAutoscalePolicyScaleMode(this.wireValue);
+  final String wireValue;
 
   static PredictiveAutoscalePolicyScaleMode fromValue(String value) {
     for (final item in PredictiveAutoscalePolicyScaleMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PredictiveAutoscalePolicyScaleMode value: $value');
+    throw ArgumentError(
+      'Unknown PredictiveAutoscalePolicyScaleMode value: $value',
+    );
   }
 }
-
